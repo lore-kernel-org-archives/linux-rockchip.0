@@ -4,110 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C72B7C369B2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 15:19:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7002C369C9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 15:23:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=txTSG9yqATyxyUP9ec3eQjSyjT3SlESjD6TBAvJRYdk=; b=h53QpjvkjRWjk+
-	fvZNOCki9zNG8G4piKVANUjMI/LmuNZl2tcAgUupFOOqBSzB2WqhKon/Xw/dNp9+wnjKiLJKUJKKm
-	rz3WoLHVbX2BPrI0Y6TVs3O4hjC8TqSFF9cySUMps8aE4DjqO4nkwyLpJkCWEqinaboxH6uGZ5SWk
-	1CkDPIbAd/WQvanUFOJZ2B8sBypal6L/Rx1AzZfzjtgKepJY7LoiT9s/+5Nu6Q2pO6UEpvOFCWoAD
-	LqM86ohmT2R8TCPI6PiHWS0tYbI5neAnEEk35AU4NXEZ6hyPbBNjDoM4rFe1ZbZ4QEyK1sDP/b8M6
-	STkVyaJaUVSzru8PN4qQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=E4mXOGYeDori8V6AcNvBma1BHf1/Z2mRlsX17/I44Zw=; b=0OKHTM+QVa7Er7
+	9r6nwxJcQCk1OeY0/06LwZrnQ/NoK5Qhj9xAHePZrpJRHEu4Q4I2goSys14QbxgbQLQEhM6O0EDIf
+	JRGI98ENHAcz4ptHumPFZpfJO0E9ROKNf0woQuQ3cISPLPqZ5eABxC9t7O1EoJm9smoMDiJzQig+C
+	7Toh/nic9Znvzw+JXe3IEP0yvijg+kbHWe2XiayKp6qHUZ+na4Kq/27Ku8m0D8Fq5gDF7S1KchYMM
+	RZ5b/NlI4ycy5GzHnkRkEVwFWrmNnujYdG+yEfQe3W2OOBii8Wm9wKDp6jy5QT6yvJ68/jGMJwqZm
+	Bigx67U9pj2Av1HDSjfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5R1Y-0000000DTkV-1Dvm;
-	Thu, 17 Apr 2025 15:19:32 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1u5R5E-0000000DUau-0KkN;
+	Thu, 17 Apr 2025 15:23:20 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5QMR-0000000DLRN-0IoL;
-	Thu, 17 Apr 2025 14:37:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id D95C7A4B42D;
-	Thu, 17 Apr 2025 14:31:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DC85C4CEE4;
-	Thu, 17 Apr 2025 14:36:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744900621;
-	bh=Y4mpXQaMpeWkp9waH3d1fmjKivjlRtPJBQfXTXDaeJ4=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=Pk/gCEDN3KXb+CZF1QvEJUAvh9nRY6NrrEa8/7jELTpIsCHhIeVANNRXwRsPlom3y
-	 5sMATAS9SnbzXQOkwUuSc336pG71/heINr8gpHxoSmf2Qxsi0scfFnZgbH9hRPEsv+
-	 zXfQhVogmRxtc1idbHw3RGq9xyQPNfnPzO1orVQ5uZk1dXIteP8Dvxf4sylzY70nKq
-	 hC1dMSHyza6cX2qButHjFd5/RKkN9nJR7mC15M91yGK6Y12W6WK9A+qxG8elgC/R+z
-	 A7Zfa4GAGsMmAC77bQ4oFWm7NCYKRy4hbpBDoedWQInC/ye0YQkA/zTrhCjZDQHllV
-	 j0NSbWRo342PA==
-Message-ID: <c6d3e343-7005-48a9-a133-bf39cb6790ee@kernel.org>
-Date: Thu, 17 Apr 2025 16:36:57 +0200
+	id 1u5QMi-0000000DLUV-2UyK;
+	Thu, 17 Apr 2025 14:37:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=mFQOhJl4uBa6VXsYhtAHOjHnTPxXkHRJOd9KvAYBeNo=; b=kRE6cfqr0/p7iCsbYHqsx6eXae
+	97VCb3pSsGY8DXrFuqa5NugfprvqQ9t7fEVrTE9jkCx6/IMhzS4IOu8Et+9RxYzzIX69/V1iy0BId
+	WWsqL9q2TnX8yHqbnzUT3HmkLRVtljf+fFSQhDp7UDTfJMrCbHwYs+32bAYwbZ6HzIU9DMyOF2ABU
+	ZBAu3Kccpj7Z5/t/De7rTlkeUvvmpz7C0d/tXjwnrNRiUow2EhPKtimCovAfjtG4Z/34y6Q3m7KoL
+	/1+sZnGoOS+6uw/F5j1twSq/UajZ9ZdT3Q8AapzFzg55Y+PN0Gc4sJ5gGnLuU8fQrSwbzQOKwm1jX
+	MwwCGtNw==;
+Received: from layka.disroot.org ([178.21.23.139])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u5QMd-0000000AJSW-1azY;
+	Thu, 17 Apr 2025 14:37:19 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 79C0F2023B;
+	Thu, 17 Apr 2025 16:37:07 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5kFlxYkdvA7D; Thu, 17 Apr 2025 16:37:06 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1744900626; bh=sYtHglBTVqXwt7DqWYSQlT7eDYzzYmQoAxAuuz6prkY=;
+	h=From:To:Cc:Subject:Date;
+	b=CtFTaMrS9Q+TSxO0qI73LNZSjfy2Si13/GMGsEFMoe+/mbx6pkaJ4d7SQW1fH/MiM
+	 8eo6JtCxzDkmC7Yte3Imi8kjGbp0cE4ModoLDgaG2oCSKAyuaWnX6SP05y8mNHlvxn
+	 dDQPBNp83KXEqMK3ETDBlmz9i3oEAQ4DAqcm6rhg8eBjfX20HYjYhoEs0zKezUgaOK
+	 raFIThbYXrOOgl1zf/Ct5aMuNNm/1eG6JwtGJ6J3//yN0eKjp2sDvQXDRVxfoEQmZx
+	 zKMcAbvX+41WNYubZCIIx+HHNoy8A9gb/G6Ugh8v5oIHn3d48QS2Sgv/tsFLxIKmzp
+	 BmBrZEj1P1Ymw==
+From: Yao Zi <ziyao@disroot.org>
+To: Ulf Hansson <ulf.hansson@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Shresth Prasad <shresthprasad7@gmail.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Cc: linux-mmc@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	Yao Zi <ziyao@disroot.org>
+Subject: [PATCH v4 0/5] Support SD/SDIO controllers on RK3528
+Date: Thu, 17 Apr 2025 14:36:42 +0000
+Message-ID: <20250417143647.43860-1-ziyao@disroot.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Add I2C controllers for
- RK3528
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Yao Zi <ziyao@disroot.org>, Heiko Stuebner <heiko@sntech.de>,
- Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
- Chukun Pan <amadeus@jmu.edu.cn>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20250417120118.17610-3-ziyao@disroot.org>
- <20250417120118.17610-5-ziyao@disroot.org>
- <ff583eb3-d01d-4850-9f9b-f6b15ddaf137@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <ff583eb3-d01d-4850-9f9b-f6b15ddaf137@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_073703_242559_3660AA3A 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250417_153715_642522_68186802 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,39 +99,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 17/04/2025 16:36, Krzysztof Kozlowski wrote:
-> On 17/04/2025 14:01, Yao Zi wrote:
->> Describe I2C controllers shipped by RK3528 in devicetree. For I2C-2,
->> I2C-4 and I2C-7 which come with only a set of possible pins, a default
->> pin configuration is included.
->>
->> Signed-off-by: Yao Zi <ziyao@disroot.org>
->> ---
->>  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 110 +++++++++++++++++++++++
->>  1 file changed, 110 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
->> index 826f9be0be19..2c9780069af9 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
->> @@ -24,6 +24,14 @@ aliases {
->>  		gpio2 = &gpio2;
->>  		gpio3 = &gpio3;
->>  		gpio4 = &gpio4;
->> +		i2c0 = &i2c0;
->> +		i2c1 = &i2c1;
->> +		i2c2 = &i2c2;
->> +		i2c3 = &i2c3;
->> +		i2c4 = &i2c4;
->> +		i2c5 = &i2c5;
->> +		i2c6 = &i2c6;
->> +		i2c7 = &i2c7;
-> Aliases are not properties of the SoC but boards.
+RK3528 features two SDIO controllers and one SD/MMC controller. This
+series adds essential support for their tuning clocks and brings the
+SD/MMC one up on Radxa E20C board. Both HS and SDR104 mode are verified.
 
-Of course this should be: Bus/interface aliases are not...
+- Changed from v3
+  - Drop applied binding patch of MMC controller
+  - Rebase on top of linux-rockchip/for-next
+  - Link to v3: https://lore.kernel.org/all/20250309055348.9299-1-ziyao@disroot.org/
+- Changed from v2
+  - Apply review tags
+  - Rebase on top of linux-rockchip/for-next and drop applied patches
+  - RK3528 devicetree
+    - Fix accidentally dropped status property of saradc node
+    - drop det and pwren pinctrls for SDIO{0,1} according to the
+      reference design
+    - Correct max-frequency for SDIO{0,1}
+  - rk3528-radxa-e20c devicetree
+    - Don't disable sdio for sdmmc as claimed in the hw design guide
+  - Link to v2: https://lore.kernel.org/all/20250305194217.47052-1-ziyao@disroot.org/
+- Changed from v1
+  - Apply review tags
+  - Rebase on top of linux-rockchip/for-next and saradc v2 series
+  - rk3528 clock driver:
+    - explicitly include minmax.h, replace MAX() with more robust max()
+    - readability improvements
+    - fix error checks: ERR_PTR(-ENODEV), instead of ERR_PTR(ENODEV), is
+      returned when syscon_regmap_lookup_by_compatible() fails for missing
+      such syscon
+  - RK3528 devicetree
+    - Add default pinctrl
+    - Move the per-SoC property, rockchip,default-sample-phase, into the
+      SoC devicetree
+  - rk3528-radxa-e20c devicetree
+    - Assign sdcard to mmc1
+    - Add missing regulators
+    - Apply no-sdio for the sdmmc controller
+    - Sort nodes
+  - Link to v1: https://lore.kernel.org/all/20250301104250.36295-1-ziyao@disroot.org/
 
-Best regards,
-Krzysztof
+Thanks for your time and review.
+
+Yao Zi (5):
+  dt-bindings: clock: Add GRF clock definition for RK3528
+  clk: rockchip: Support MMC clocks in GRF region
+  clk: rockchip: rk3528: Add SD/SDIO tuning clocks in GRF region
+  arm64: dts: rockchip: Add SDMMC/SDIO controllers for RK3528
+  arm64: dts: rockchip: Enable SD-card interface on Radxa E20C
+
+ .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 30 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 69 +++++++++++++++++++
+ drivers/clk/rockchip/clk-mmc-phase.c          | 24 +++++--
+ drivers/clk/rockchip/clk-rk3528.c             | 61 ++++++++++++++--
+ drivers/clk/rockchip/clk.c                    | 42 +++++++++++
+ drivers/clk/rockchip/clk.h                    | 23 ++++++-
+ .../dt-bindings/clock/rockchip,rk3528-cru.h   |  6 ++
+ 7 files changed, 244 insertions(+), 11 deletions(-)
+
+-- 
+2.49.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
