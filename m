@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10FD0C369C2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 11:11:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02B0FC369B2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 12:07:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tSmplO3+oAshH/GGUw95dnEjaRV4qe/pw4nXfLm6rPY=; b=1xVtFzjNiG71QQ
-	UswFWVL7Ub/25gHlfGVQrwTepDZD0G22z/MfV7IA9NMnmitCXlqTMkpRaaacRGNN5pIm2LndLTCCg
-	N04GR7O+mnWKpPT2rcHjx+b1UVVqWQaOY3bIKKLd59AGBqlv0und30+qpGcIMyllLlCbXFwq7kEZ7
-	hO4EJSw/iHVGSSWvP55cbMNAFJ7VlNccxQ6rda9jGVSJJI/mGSUgexwCcKDcCxkhOWK7Qei3HsIzp
-	OkkiSGVTclt+LLnChskbRWeXOGyPeuD8Bt8b1sQx3od5ImdhLQT4gkswqEhYAOWrxmybOvlMRAjJZ
-	IK2PjrUi1BcVb4Sdd28Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/AwMTgpxmkasYqyEj6WLyV2o/Y0gZ2K88+kP/BSv0As=; b=OAVKTeOSMQuxdK
+	ChG5cExAAGp6diZGDgYlGNXXmJDuOhTEt/YPJ4Bpk0oLTDrU+iIhcFzMODpwze3ORyz5UpJxCZnkh
+	NCUQCe4aZzy5XPz/ABTxYlDEwXuYTQP1Rzty5pUoSEt0tWfa3PLIJb/EbGUCNa/urE7L84m2gYcNt
+	rp0pDABtjR6+PispJ3ZbwRQC36fixh0AL01dUKP42ZMgDKBVVWuCRoNa4w9NEB6NjG1bLtZIHXzOG
+	somJYfFJ90SL6bfeVdTe1/I0gbccmZ4HsUWp+suVmA2+KMCBZyqxSCd7KhcsPB/bYNvbjgH97ucKn
+	aMnoCEpY2PK7VjCctH/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5N9i-0000000CkCO-0ZWk;
-	Thu, 17 Apr 2025 11:11:42 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1u5O1x-0000000Cscz-1t6Q;
+	Thu, 17 Apr 2025 12:07:45 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Mq0-0000000Ch9c-2gcM
-	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Apr 2025 10:51:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E23A144D58;
-	Thu, 17 Apr 2025 10:51:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 755DBC4CEE4;
-	Thu, 17 Apr 2025 10:51:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744887079;
-	bh=w2+g1NX7wWlo9CSoPsjKyOrgEH+RDOELr9+ZARryBwk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=isynGMiGn9RmDZubA0lSht3/BYsxom4Voy5egIQVnM9nsx5IEo5VclimHVHqjwz6V
-	 4KRg9E/2hsTQ/4+zY5v0WkIeViFSvkZWvw0z/W55W4je2XhWLMv6JzTTGrp/Tvl+Kn
-	 CqGz1P1c15huRSG4kqEyRjfyM2BvD9WPqTMKgHXawpknAQxLDvSUVMH4YfUuYV/Sxb
-	 B9rcIt42RYPoEW+bUuLz2Whsh0Q/GztHfHgmPvMqxNFfv01Qw7NFqW90hSiGNkTDAk
-	 C82u4pMfcJnHZkdezRgB7tyKqeVgbztlUgm7wVGonvXpheQK9QJ9OlEOBK7IjCdxhu
-	 ftE/1M0ysA4Tw==
-Date: Thu, 17 Apr 2025 12:51:15 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Add system PM support
-Message-ID: <aADdI7ByEImYy3Pq@ryzen>
-References: <1744352048-178994-1-git-send-email-shawn.lin@rock-chips.com>
- <Z_5aib0WGKfIANj_@ryzen>
+	id 1u5NwQ-0000000Cr9T-1fTA;
+	Thu, 17 Apr 2025 12:02:04 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id AF6E525DAF;
+	Thu, 17 Apr 2025 14:01:57 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id EJdCT95lv0-O; Thu, 17 Apr 2025 14:01:57 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1744891317; bh=OxekrltX8CslSDgfz+SNyaS8erECtuzT/O/V5NUoSbI=;
+	h=From:To:Cc:Subject:Date;
+	b=Yrmpd6bJSHrgWNqB+FyfnUELsF4p2/rXvXK6N8qn+KciOlI5uiWr9fm0ZC5uSdnh6
+	 ogEUvBijRoSp5lnWxI6SvbIUA/iKRRQCvk5XOLcVW+qg1eKbnmugrIK/lve7LBF/bm
+	 1LGs9PgOYJd6dr78bUdA+YmoK/Ma+cLnoeRp3OMgwgJW5yFfqjE3cTR6iUO609nyfD
+	 Ae3qYTPsTycEpjlnKUIsLM7ntKVWgGgPApSJpvWcURc+wdNMDLW9gC1Mc6UULMhYd+
+	 Pvt7dcBG3fx9WDbav5YQ38QSAWu3yS2L4jjPKXnYr9HGyu0YlRN67iXEbOtoPFgN5b
+	 w5ekjQJbwyc7Q==
+From: Yao Zi <ziyao@disroot.org>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Yao Zi <ziyao@disroot.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-i2c@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/3] Support I2C controllers in RK3528
+Date: Thu, 17 Apr 2025 12:01:16 +0000
+Message-ID: <20250417120118.17610-3-ziyao@disroot.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <Z_5aib0WGKfIANj_@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_035120_699144_D6759F07 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20250417_050202_838753_89FB139E 
+X-CRM114-Status: UNSURE (   7.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,33 +80,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 15, 2025 at 03:09:29PM +0200, Niklas Cassel wrote:
-> On Fri, Apr 11, 2025 at 02:14:08PM +0800, Shawn Lin wrote:
+RK3528 integrates eight I2C controllers which are compatible with the
+RK3399 variant of i2c-rk3x. This series documents the controllers in
+dt-bindings, describe them in SoC devicetree and enable the onboard
+EEPROM of Radxa E20C which is connected to I2C-2.
 
-(snip)
+Changed from v1
+- rebase on top of linux-rockchip/for-next
+- dt-binding: collect review tags
+- SoC devicetree
+  - sort i2c and gpio in /aliases
+  - provide default pinctrl for controllers with only one set of
+    possible pins
+- Radxa E20C devicetree: mark eeprom as read-only
 
-> > +
-> > +	rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_RC_MODE);
-> 
-> Here you are setting PCIE_CLIENT_RC_MODE unconditionally.
-> 
-> I really don't think that you have tested these callbacks with EP mode.
-> 
-> If we look at pcie-qcom.c and pcie-qcom-ep.c, dev_pm_ops is defined in
-> pcie-qcom.c, but not in pcie-qcom-ep.c.
-> 
-> Perhaps it is starting to be time to have two separate drivers also for
-> rockchip?
+Yao Zi (3):
+  dt-bindings: i2c: i2c-rk3x: Add compatible string for RK3528
+  arm64: dts: rockchip: Add I2C controllers for RK3528
+  arm64: dts: rockchip: Add onboard EEPROM for Radxa E20C
 
-Hmm.. looking at pcie-tegra194.c, they do still have both RC and EP in the
-same file, but they simply return -ENOTSUPP in the EP case:
-https://github.com/torvalds/linux/blob/v6.15-rc2/drivers/pci/controller/dwc/pcie-tegra194.c#L2381-L2384
+ .../devicetree/bindings/i2c/i2c-rk3x.yaml     |   1 +
+ .../boot/dts/rockchip/rk3528-radxa-e20c.dts   |  14 +++
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 110 ++++++++++++++++++
+ 3 files changed, 125 insertions(+)
 
-Perhaps you could do something similar?
+-- 
+2.49.0
 
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
