@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19B93C369C9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 16:28:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACDD0C369B2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 16:54:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ebDsY2pN4dGNxXTiE38TnlLIwy4hNNg0Xl0g+sbKQcM=; b=rxbrAlfCoOwK5l4oPeqQtI459X
-	bUF2kZ1GYcFoPhHbbEy6+O/UM+x1vx7OX/Exsuk28ETFsYPpiyMhUray+mtRZsy4AEfDZS7Hs0mLK
-	flVj9GFyMc+G0cNc91y6AjUphZlX9T6Hhl74RMhQZAMdlO16QAsBIq9ZgOnUp8eLsD7Yq8m40k9XS
-	aHch0qbiT87dAdON7PpeQG1qlDFMlZUci0zMF9daooE49ziwE4rQFp0iTas69BAXAOKuLW0TeRLX2
-	rvSiAXi+VPR5/lpyACDNQQEW3R0JNngQeyZGBAGqTBI9ebGPy5cNnNMnexH4q14074H69otBFLESF
-	YPKvR9WA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=Gv9L9VjK3t3QDImQlhLZ8Xej0t8rl6ogvMSszEplbgo=; b=U8gpt+3x/zWWLm
+	E32/hh8B+rrGXWC4etomt4wBCJ6z2cTtgfhqPwssl4YnP0zC3hltLMqqdcLi4MoXYbYQ44cGNLpcn
+	YXLPoEbBiDUa8y+CTSZtIpD/xSV+5MXrcV3qjcorNVDPAlhUOajZmXOfTW6buXAVIRR3/fTp19EhB
+	5uU93qe7IQrbeJs0y6e9evW3MSu5ididAL/kZg6eDqVjUyb5bu4Ja3t/eEzKyIFqquUrjPUji4WgR
+	zai7KXkvtjaN5vj6vBolt3RS6jV2VcuVQS0L5tzkag0SZFBwwm3UhhVtTRDcKxM28KaXLanN/Nq2l
+	521c8CYEgXMfHE5LKMhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5S6C-0000000DfbW-1oI7;
-	Thu, 17 Apr 2025 16:28:24 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1u5SVH-0000000Djqs-0jx2;
+	Thu, 17 Apr 2025 16:54:19 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Rz5-0000000DePn-3Dfp;
-	Thu, 17 Apr 2025 16:21:08 +0000
+	id 1u5STN-0000000DjQP-3E4l;
+	Thu, 17 Apr 2025 16:52:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 085CC5C547C;
+	Thu, 17 Apr 2025 16:50:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E678C4CEE4;
+	Thu, 17 Apr 2025 16:52:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744908740;
+	bh=Us5KGJ06EpniB9Lq8EokWDK/QvSzQfAUWxcm5rSlsLM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=gTtyo+yR7ipvHNpFgGtC0rJ0C7obiBFQy/2hOweKNa78SHw1xMChSfPjq0ku5R4Dl
+	 nZEmNhITeZNFbB3imQka3GltevciNGZiW8rZ3V4JEEc/0nHvCs8LuNkERn1W2hDgr4
+	 ssR6qKGmmp2I6O8rN6RX6Rvfwc/mbeG/nUZkveU6BgZrJS9UqZ3xOp+c13Lu8NUQGF
+	 JCqnk7FL8fUP6vdlxy3NfIPIphVafLJuL915uDh1At6Y8muC1rdff7+XPkhOnDs2JT
+	 0cxb5bW7V45t7oz0hjkE77COfGnkywwEaVQqFIEHJ5yxGD24ThUFE1yhd5M7AkIviY
+	 cCaIg9TeuBhrA==
+Date: Thu, 17 Apr 2025 11:52:19 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Hans Zhang <18255117159@163.com>, Shawn Lin <shawn.lin@rock-chips.com>,
+	lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+	heiko@sntech.de, manivannan.sadhasivam@linaro.org, robh@kernel.org,
+	jingoohan1@gmail.com, thomas.richard@bootlin.com,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
+Message-ID: <20250417165219.GA115235@bhelgaas>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1744906855;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Jy2VD4whmMy3I5b19h40sBNvZxMXt8NVw/R9fRE1Af8=;
-	b=kucmAJQrSj8aUR00+fmsRWYFWXrdis+l+pkpy7eT+bl5PW6okRBsgCADav+upAPx4S45Y1
-	tYW7KOY+/bYi5K/Zum3EHUBzuo+UUY5OfhFzZYHPWbreCDulpkssrW2F97Ntm4wEtZR5TF
-	TXZkPLvb5jCQpShxvhmYug0jRjCBF9uMhzRBZnX46krzzo+tV1ICtyvpzF5oWG0Zjvoi40
-	kb+a4AH2paAwi9GFeL9VhedE46AbQOYl8EJLXZL6LldB154YqoCZmbfQIEWn1ci6th90EU
-	JxzIVwGlVolMa57URgVAmnnXd1OKhHPXI8NVuCkalXnOScMy1wr2FM3m5LTZKg==
-Date: Thu, 17 Apr 2025 18:20:54 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Diederik de Haas <didi.debian@cknow.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy?=
- =?UTF-8?Q?=C5=84ski?= <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>, Manivannan Sadhasivam
- <manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, Shawn Lin
- <shawn.lin@rock-chips.com>, Niklas Cassel <cassel@kernel.org>,
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org
-Subject: Re: [PATCH] PCI: dw-rockchip: Fix function call sequence in
- rockchip_pcie_phy_deinit
-In-Reply-To: <20250417142138.1377451-1-didi.debian@cknow.org>
-References: <20250417142138.1377451-1-didi.debian@cknow.org>
-Message-ID: <3e000468679b4371a7942a3e07d99894@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Content-Disposition: inline
+In-Reply-To: <aAC-VTqJpCqcz6NK@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_092104_037559_CE3B483A 
-X-CRM114-Status: GOOD (  19.71  )
+X-CRM114-CacheID: sfid-20250417_095221_891012_11A8BE63 
+X-CRM114-Status: GOOD (  26.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,63 +70,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Diederik,
-
-On 2025-04-17 16:21, Diederik de Haas wrote:
-> The documentation for the phy_power_off() function explicitly says
+On Thu, Apr 17, 2025 at 10:39:49AM +0200, Niklas Cassel wrote:
+> On Thu, Apr 17, 2025 at 04:07:51PM +0800, Hans Zhang wrote:
+> > On 2025/4/17 15:48, Niklas Cassel wrote:
+> > 
+> > Hi Niklas and Shawn,
+> > 
+> > Thank you very much for your discussion and reply.
+> > 
+> > I tested it on RK3588 and our platform. By setting pci=pcie_bus_safe, the
+> > maximum MPS will be automatically matched in the end.
+> > 
+> > So is my patch no longer needed? For RK3588, does the customer have to
+> > configure CONFIG_PCIE_BUS_SAFE or pci=pcie_bus_safe?
+> > 
+> > Also, for pci-meson.c, can the meson_set_max_payload be deleted?
 > 
->   Must be called before phy_exit().
+> I think the only reason why this works is because
+> pcie_bus_configure_settings(), in the case of
+> pcie_bus_config == PCIE_BUS_SAFE, will walk the bus and set MPS in
+> the bridge to the lowest of the downstream devices:
+> https://github.com/torvalds/linux/blob/v6.15-rc2/drivers/pci/probe.c#L2994-L2999
 > 
-> So let's follow that instruction.
+> So Hans, if you look at lspci for the other RCs/bridges that don't
+> have any downstream devices connected, do they also show DevCtl.MPS 256B
+> or do they still show 128B ?
 > 
-> Fixes: 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip RK356X host
-> controller driver")
-> Cc: stable@vger.kernel.org	# v5.15+
-> Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
-> ---
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> One could argue that for all policies (execept for maybe PCIE_BUS_TUNE_OFF),
+> pcie_bus_configure_settings() should start off by initializing DevCtl.MPS to
+> DevCap.MPS (for the bridge itself), and after that pcie_bus_configure_settings()
+> can override it depending on policy, e.g. set MPS to 128B in case of
+> pcie_bus_config == PCIE_BUS_PEER2PEER, or walk the bus in case of
+> pcie_bus_config == PCIE_BUS_SAFE.
 > 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index c624b7ebd118..4f92639650e3 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -410,8 +410,8 @@ static int rockchip_pcie_phy_init(struct
-> rockchip_pcie *rockchip)
-> 
->  static void rockchip_pcie_phy_deinit(struct rockchip_pcie *rockchip)
->  {
-> -	phy_exit(rockchip->phy);
->  	phy_power_off(rockchip->phy);
-> +	phy_exit(rockchip->phy);
->  }
-> 
->  static const struct dw_pcie_ops dw_pcie_ops = {
+> That way, we should be able to remove the setting for pci-meson.c as well.
 
-Thanks for the patch, it's looking good to me.  The current state
-of the rockchip_pcie_phy_deinit() function might actually not cause
-issues because the rockchip_pcie_phy_deinit() function is used only
-in the error-handling path in the rockchip_pcie_probe() function,
-so having no runtime errors leads to no possible issues.
+Thanks, I came here to say basically the same thing.  Ideally I think
+the generic code in pcie_bus_configure_settings() should be able to
+increase MPS or decrease it such that neither meson_set_max_payload()
+nor rockchip_pcie_set_max_payload() is required.
 
-However, it doesn't mean it shouldn't be fixed, and it would actually
-be good to dissolve the rockchip_pcie_phy_deinit() function into the
-above-mentioned error-handling path.  It's a short, two-line function
-local to the compile unit, used in a single place only, so dissolving
-it is safe and would actually improve the readability of the code.
+However, the requirement to pick a Kconfig setting makes it a mess.  I
+would love to get rid of those Kconfig symbols.  I don't like the
+command-line parameters either, but it would definitely be an
+improvement if we could nuke the Kconfig symbols and rely on the
+command-line parameters.
 
-Thus, please feel free to include
+It's also a problem when devices are hot-added after the hierarchy has
+already been set up because the new device might not work correctly in
+the existing config.
 
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+It's a hard problem to solve.
 
-and please consider dissolving the rockchip_pcie_phy_deinit() function
-in the possible v2 of this patch, as suggested above.
+For new platforms without an install base, maybe it would be easier to
+rely on the command-line parameters since there aren't a bunch of
+users that would have to change the Kconfig.
+
+Bjorn
 
 _______________________________________________
 Linux-rockchip mailing list
