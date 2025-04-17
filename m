@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A2E7C369BD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 02:21:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11577C369B2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 04:23:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q0jUJEXO5VaikiucZSn6UbnQPjQJe/VUOC54EgqBbA4=; b=1Vppxv28WseTzE
-	I89GvE8/c2/4YFKlmdin4rw9O/yXX0RANL72na4V+F+VHPGbTcUmIxAdGPydVpYynkY/nsDuI+dIl
-	zbNF1uAYW/OADdYbIfByOUJhEafuabGvmoSIboTl/2/jOc9KBbR0Kwsva/2O+GLW0FoUjGSHL8lCV
-	lDfCImT57X5zrtj7jMxGzDGXbniWbV5UO4x7dM+4UEZfYx0iULM3dKfGte6126i4xm+b5fVid8NK5
-	t/G7YF8o7V2Qa/o3ut99eOVey67NIpPRe2fdqanB/Ykai682ykJrdfEl55iGJ5wr90MU/xWVzGapw
-	9BgorCmZNmYRz/R+NiLw==;
+	List-Owner; bh=pkb5BE2VRDnupld2/wIiGQxrpKXP/6CJKZlXdaQb1Gg=; b=WhFhabWMaroDHB
+	+apbQeFDfIhNn508/wrI7tb7D3ej7IX+FsDp3uK6IRR17iCbAVBgnme9TMf0MiWcL4rpFKN4gRRIU
+	2fehg6lh0KhatHaxmOSxCLE24TMvybpZNDE9o/kkNnIqLp09U+LJeBeI6PWNNIoW+7I2VDVQM+CRp
+	xthVNSXsiLegHc26OwAqHROkcWaVAapeol34BD0q/U58vb98ekghJGENJg1qcDos4JeC2huf0/6to
+	VvIzmE9jlR2CdS0MLIpewn6AFhYo/FiX7M1bBKmb0dEVZGdpzVJyqd8jDlmfFU/RSIoxr2WsGLcAu
+	uqpc5XCFeY+K/XEpqThw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Esr-0000000BWSJ-1osq;
-	Thu, 17 Apr 2025 02:21:45 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Eqx-0000000BWGl-31wA;
-	Thu, 17 Apr 2025 02:19:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
-	Content-Type; bh=wrKLwquI8zlHwCmcvYouUws+LNMJVPBRxnJSH3TqZEo=;
-	b=TxHfXf0JNkDJq28oDhfkuSjz3NcQoj1Jh1u0c3idb0dCKsdxpeC39NTfPjeCqX
-	rXyyizFUt+M5nFntEaPeVIdpJcnk5IM7tGum9evxpnx4yb986HMrIjKbhrcpQkMQ
-	oHBPqNC0HJT2V+MjJsmkpLov3bZqG5ToAl4l1r6Ld2vUg=
-Received: from [192.168.142.52] (unknown [])
-	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wD3Xw0eZQBoZg1+AQ--.60903S2;
-	Thu, 17 Apr 2025 10:19:13 +0800 (CST)
-Message-ID: <bb40385c-6839-484c-90b2-d6c7ecb95ba9@163.com>
-Date: Thu, 17 Apr 2025 10:19:10 +0800
+	id 1u5Gme-0000000BfqK-2ADw;
+	Thu, 17 Apr 2025 04:23:28 +0000
+Received: from p-west1-cluster1-host3-snip6-10.eps.apple.com ([2a01:b747:3003:200::21] helo=outbound.pv.icloud.com)
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u5Gko-0000000BfiZ-0q3r
+	for linux-rockchip@lists.infradead.org;
+	Thu, 17 Apr 2025 04:21:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=etehtsea.me; s=sig1;
+	bh=s8Ze0YrAsRvM56Guf/YtrV37Q0EOqSVlsBXfjoOyn44=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+	b=vhp8GUSLBS9mDgmUKnWpMptHb4zydL8N8Q+yPOxVFS09PTXCud15z3gPBzO3dX0tR
+	 D4wVQlPUv8ekGnXXgWTPArmYE6P2Y6kszaQHor1oci2Z/C9hnySBVEzGfLk3hBNe8q
+	 AC/QsW4+2F4JhMYw+Eu6KJIeJMpHTfz0x62ti+hy4zjPqqwxNXEXVpiReEFhK15o4j
+	 FkDWrllt0iUyfxzUfxKthOgXrLhnmgvdJb0pxbfuuzh5af/kGWDmqem406WC+lW6rJ
+	 GNjjuiW/KPBzFldVR55+nCT0DHzALxy5khBU+U60TmdYsBtoB0PkifETVNBABr2GmB
+	 EmaixC3zjIU5Q==
+Received: from localhost (pv-asmtp-me-k8s.p00.prod.me.com [17.56.9.36])
+	by outbound.pv.icloud.com (Postfix) with ESMTPSA id CF1A418000AF;
+	Thu, 17 Apr 2025 04:21:18 +0000 (UTC)
+From: Konstantin Shabanov <mail@etehtsea.me>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>
+Cc: Konstantin Shabanov <mail@etehtsea.me>,
+	Daniel Stone <daniel@fooishbar.org>,
+	Andy Yan <andyshrk@163.com>,
+	Dan Callaghan <djc@djc.id.au>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3] drm/rockchip: Disable AFBC for res >2560 on rk3399
+Date: Thu, 17 Apr 2025 04:20:08 +0000
+Message-ID: <20250417042008.28536-1-mail@etehtsea.me>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250414095332.9674-1-mail@etehtsea.me>
+References: <20250414095332.9674-1-mail@etehtsea.me>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
- heiko@sntech.de, manivannan.sadhasivam@linaro.org, robh@kernel.org,
- jingoohan1@gmail.com, thomas.richard@bootlin.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20250416204051.GA78956@bhelgaas>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <20250416204051.GA78956@bhelgaas>
-X-CM-TRANSID: _____wD3Xw0eZQBoZg1+AQ--.60903S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW3uFyrXF4DZrWkKF1rXFW5KFg_yoWDuw4kpF
-	WqqFsrKrW8JayagFs2yF48CF4Utrn2yay3Kr9xW34Uta12grWDt3sI9rn8Z3WxAr1F93W2
-	yrWDt3yIqrn8JaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07Uq0PhUUUUU=
-X-Originating-IP: [222.71.101.198]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiWwUyo2gAY2hPoAAAsD
+X-Proofpoint-GUID: MXRK0RV78ZYYop4SgACsYfnc7XchLLpL
+X-Proofpoint-ORIG-GUID: MXRK0RV78ZYYop4SgACsYfnc7XchLLpL
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-04-17_01,2025-04-15_01,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 suspectscore=0
+ mlxlogscore=999 clxscore=1030 spamscore=0 malwarescore=0 mlxscore=0
+ bulkscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2308100000 definitions=main-2504170032
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_191948_201656_C5631F55 
-X-CRM114-Status: GOOD (  36.64  )
+X-CRM114-CacheID: sfid-20250416_212134_250950_36B2002C 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,298 +86,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2025/4/17 04:40, Bjorn Helgaas wrote:
-> On Wed, Apr 16, 2025 at 11:19:26PM +0800, Hans Zhang wrote:
->> The RK3588's PCIe controller defaults to a 128-byte max payload size,
->> but its hardware capability actually supports 256 bytes. This results
->> in suboptimal performance with devices that support larger payloads.
->>
->> Signed-off-by: Hans Zhang <18255117159@163.com>
->> ---
->>   drivers/pci/controller/dwc/pcie-dw-rockchip.c | 18 ++++++++++++++++++
->>   1 file changed, 18 insertions(+)
->>
->> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->> index c624b7ebd118..5bbb536a2576 100644
->> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->> @@ -477,6 +477,22 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
->>   	return IRQ_HANDLED;
->>   }
->>   
->> +static void rockchip_pcie_set_max_payload(struct rockchip_pcie *rockchip)
->> +{
->> +	struct dw_pcie *pci = &rockchip->pci;
->> +	u32 dev_cap, dev_ctrl;
->> +	u16 offset;
->> +
->> +	offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
->> +	dev_cap = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCAP);
->> +	dev_cap &= PCI_EXP_DEVCAP_PAYLOAD;
->> +
->> +	dev_ctrl = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
->> +	dev_ctrl &= ~PCI_EXP_DEVCTL_PAYLOAD;
->> +	dev_ctrl |= dev_cap << 5;
->> +	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, dev_ctrl);
->> +}
-> 
-> I can't really complain too much about this since meson does basically
-> the same thing, but there are some things I don't like about this:
-> 
->    - I don't think it's safe to set MPS higher in all cases.  If we set
->      the Root Port MPS=256, and an Endpoint only supports MPS=128, the
->      Endpoint may do a 256-byte DMA read (assuming its MRRS>=256).  In
->      that case the RP may respond with a 256-byte payload the Endpoint
->      can't handle.  The generic code in pci_configure_mps() might be
->      smart enough to avoid that situation, but I'm not confident about
->      it.  Maybe I could be convinced.
-> 
+As it isn't supported by hardware. At least, RK3399 doesn't support
+it. From the datasheet[1]
+("1.2.10 Video IN/OUT", "Display Interface", p. 17):
 
-Dear Bjorn,
+  Support AFBC function co-operation with GPU
+    * support 2560x1600 UI
 
-Thank you very much for your reply. If we set the Root Port MPS=256, and 
-an Endpoint only supports MPS=128. Finally, Root Port is also set to 
-MPS=128 in pci_configure_mps.
+Manually tested on RockPro64 (rk3399):
+- ARM_AFBC modifier is used for 1920x1080
+- DRM_FORMAT_MOD_LINEAR modifier us used for 3840x2160
+- No noise on the screen when sway is running in 4k
+- Dynamic resolution switching works correctly in sway
 
+Signed-off-by: Konstantin Shabanov <mail@etehtsea.me>
+Cc: Daniel Stone <daniel@fooishbar.org>
+Cc: Andy Yan <andyshrk@163.com>
+Reported-by: Dan Callaghan <djc@djc.id.au>
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7968
 
-lspci information before the patch was submitted:
+[1]: https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
+---
+V2 -> V3: Run check only on rk3399
+V1 -> V2: Move the check to the fb_create callback
 
-root@firefly:~# lspci -vvv
-00:00.0 PCI bridge: Fuzhou Rockchip Electronics Co., Ltd Device 3588 
-(rev 01) (prog-if 00 [Normal decode])
-         Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- 
-ParErr- Stepping- SERR+ FastB2B- DisINTx+
-         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- 
-<TAbort- <MAbort- >SERR- <PERR- INTx-
-         Latency: 0
-         Interrupt: pin A routed to IRQ 73
-         Bus: primary=00, secondary=01, subordinate=ff, sec-latency=0
-         I/O behind bridge: 0000f000-00000fff [disabled]
-         Memory behind bridge: f0200000-f02fffff [size=1M]
-         Prefetchable memory behind bridge: 
-00000000fff00000-00000000000fffff [disabled]
-         Secondary status: 66MHz- FastB2B- ParErr- DEVSEL=fast >TAbort- 
-<TAbort- <MAbort- <SERR- <PERR-
-         Expansion ROM at f0300000 [virtual] [disabled] [size=64K]
-         BridgeCtl: Parity- SERR+ NoISA- VGA- VGA16- MAbort- >Reset- 
-FastB2B-
-                 PriDiscTmr- SecDiscTmr- DiscTmrStat- DiscTmrSERREn-
-         Capabilities: [40] Power Management version 3
-                 Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=375mA 
-PME(D0+,D1+,D2-,D3hot+,D3cold-)
-                 Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
-         Capabilities: [50] MSI: Enable+ Count=16/32 Maskable+ 64bit+
-                 Address: 00000000fe670040  Data: 0000
-                 Masking: fffffeff  Pending: 00000000
-         Capabilities: [70] Express (v2) Root Port (Slot-), MSI 08
-                 DevCap: MaxPayload 256 bytes, PhantFunc 0
-                         ExtTag+ RBE+
-                 DevCtl: CorrErr- NonFatalErr- FatalErr- UnsupReq-
-                         RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop-
-                         MaxPayload 128 bytes, MaxReadReq 512 bytes
+Hi Andy and Daniel!
+Thank you for the review!
 
+Best wishes,
+Konstantin
 
-01:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd 
-Device a80c (prog-if 02 [NVM Express])
-         Subsystem: Samsung Electronics Co Ltd Device a801
-         Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- 
-ParErr- Stepping- SERR- FastB2B- DisINTx+
-         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- 
-<TAbort- <MAbort- >SERR- <PERR- INTx-
-         Latency: 0
-         Interrupt: pin A routed to IRQ 72
-         Region 0: Memory at f0200000 (64-bit, non-prefetchable) [size=16K]
-         Capabilities: [40] Power Management version 3
-                 Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA 
-PME(D0-,D1-,D2-,D3hot-,D3cold-)
-                 Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
-         Capabilities: [50] MSI: Enable- Count=1/32 Maskable- 64bit+
-                 Address: 0000000000000000  Data: 0000
-         Capabilities: [70] Express (v2) Endpoint, MSI 00
-                 DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s 
-unlimited, L1 unlimited
-                         ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ 
-SlotPowerLimit 0.000W
-                 DevCtl: CorrErr- NonFatalErr- FatalErr- UnsupReq-
-                         RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ 
-FLReset-
-                         MaxPayload 128 bytes, MaxReadReq 512 bytes
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index dcc1f07632c3..6ca757f80a30 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -5,6 +5,7 @@
+  */
 
+ #include <linux/kernel.h>
++#include <linux/of.h>
 
-lspci information after the patch was submitted:
-root@firefly:~# lspci -vvv
-00:00.0 PCI bridge: Fuzhou Rockchip Electronics Co., Ltd Device 3588 
-(rev 01) (prog-if 00 [Normal decode])
-         Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- 
-ParErr- Stepping- SERR+ FastB2B- DisINTx+
-         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- 
-<TAbort- <MAbort- >SERR- <PERR- INTx-
-         Latency: 0
-         Interrupt: pin A routed to IRQ 73
-         Bus: primary=00, secondary=01, subordinate=ff, sec-latency=0
-         I/O behind bridge: 0000f000-00000fff [disabled]
-         Memory behind bridge: f0200000-f02fffff [size=1M]
-         Prefetchable memory behind bridge: 
-00000000fff00000-00000000000fffff [disabled]
-         Secondary status: 66MHz- FastB2B- ParErr- DEVSEL=fast >TAbort- 
-<TAbort- <MAbort- <SERR- <PERR-
-         Expansion ROM at f0300000 [virtual] [disabled] [size=64K]
-         BridgeCtl: Parity- SERR+ NoISA- VGA- VGA16- MAbort- >Reset- 
-FastB2B-
-                 PriDiscTmr- SecDiscTmr- DiscTmrStat- DiscTmrSERREn-
-         Capabilities: [40] Power Management version 3
-                 Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=375mA 
-PME(D0+,D1+,D2-,D3hot+,D3cold-)
-                 Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
-         Capabilities: [50] MSI: Enable+ Count=16/32 Maskable+ 64bit+
-                 Address: 00000000fe670040  Data: 0000
-                 Masking: fffffeff  Pending: 00000000
-         Capabilities: [70] Express (v2) Root Port (Slot-), MSI 08
-                 DevCap: MaxPayload 256 bytes, PhantFunc 0
-                         ExtTag+ RBE+
-                 DevCtl: CorrErr- NonFatalErr- FatalErr- UnsupReq-
-                         RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop-
-                         MaxPayload 256 bytes, MaxReadReq 512 bytes
+ #include <drm/drm.h>
+ #include <drm/drm_atomic.h>
+@@ -17,6 +18,9 @@
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_fb.h"
+ #include "rockchip_drm_gem.h"
++#include "rockchip_drm_vop.h"
++
++#define RK3399_AFBC_MAX_WIDTH		2560
 
-01:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd 
-Device a80c (prog-if 02 [NVM Express])
-         Subsystem: Samsung Electronics Co Ltd Device a801
-         Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- 
-ParErr- Stepping- SERR- FastB2B- DisINTx+
-         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- 
-<TAbort- <MAbort- >SERR- <PERR- INTx-
-         Latency: 0
-         Interrupt: pin A routed to IRQ 72
-         Region 0: Memory at f0200000 (64-bit, non-prefetchable) [size=16K]
-         Capabilities: [40] Power Management version 3
-                 Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA 
-PME(D0-,D1-,D2-,D3hot-,D3cold-)
-                 Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
-         Capabilities: [50] MSI: Enable- Count=1/32 Maskable- 64bit+
-                 Address: 0000000000000000  Data: 0000
-         Capabilities: [70] Express (v2) Endpoint, MSI 00
-                 DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s 
-unlimited, L1 unlimited
-                         ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ 
-SlotPowerLimit 0.000W
-                 DevCtl: CorrErr- NonFatalErr- FatalErr- UnsupReq-
-                         RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ 
-FLReset-
-                         MaxPayload 256 bytes, MaxReadReq 512 bytes
+ static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
+ 	.destroy       = drm_gem_fb_destroy,
+@@ -52,6 +56,15 @@ rockchip_fb_create(struct drm_device *dev, struct drm_file *file,
+ 	}
 
+ 	if (drm_is_afbc(mode_cmd->modifier[0])) {
++		if (of_machine_is_compatible("rockchip,rk3399")) {
++			if (mode_cmd->width > RK3399_AFBC_MAX_WIDTH) {
++				DRM_DEBUG_KMS("AFBC is not supported for the width %d (max %d)\n",
++					      mode_cmd->width,
++					      RK3399_AFBC_MAX_WIDTH);
++				return ERR_PTR(-EINVAL);
++			};
++		}
++
+ 		int ret, i;
 
+ 		ret = drm_gem_fb_afbc_init(dev, mode_cmd, afbc_fb);
 
-Here are my tests and the NVMe SSD worked fine.
-
-root@firefly:~# df -h
-Filesystem           Size  Used Avail Use% Mounted on
-......
-/dev/nvme0n1         916G   28K  870G   1% /root/nvme
-......
-root@firefly:~#
-root@firefly:~# ls -l nvme/
-total 16
-drwx------ 2 root root 16384 Dec 24 06:34 lost+found
-root@firefly:~#
-root@firefly:~# cd nvme/
-root@firefly:~/nvme# time dd if=/dev/zero of=test bs=1M count=1024
-1024+0 records in
-1024+0 records out
-1073741824 bytes (1.1 GB, 1.0 GiB) copied, 0.875072 s, 1.2 GB/s
-
-real    0m0.881s
-user    0m0.001s
-sys     0m0.874s
-root@firefly:~/nvme# ls -l
-total 1048596
-drwx------ 2 root root      16384 Dec 24 06:34 lost+found
--rw-r--r-- 1 root root 1073741824 Apr 17 02:11 test
-root@firefly:~/nvme# time cp -rf test test1
-
-real    0m0.901s
-user    0m0.005s
-sys     0m0.889s
-root@firefly:~/nvme# ls -lh
-total 2.1G
-drwx------ 2 root root  16K Dec 24 06:34 lost+found
--rw-r--r-- 1 root root 1.0G Apr 17 02:11 test
--rw-r--r-- 1 root root 1.0G Apr 17 02:12 test1
-
-
-
->    - There's nothing rockchip-specific about this.
-> 
->    - It's very similar to meson_set_max_payload(), so it'd be nice to
->      share that code somehow.
-
-The next version will be added to DWC.
-
-> 
->    - The commit log is specific about Max_Payload_Size Supported being
->      256 bytes, but the patch actually reads the value from Device
->      Capabilities.
-The commit log will be modified.
-
-> 
->    - I'd like to see FIELD_PREP()/FIELD_GET() used when possible.
->      PCIE_LTSSM_STATUS_MASK is probably the only other place.
-> 
-
-Will change.
-
-> These would be material for a separate patch:
-> 
-
-Thank you very much for your reminding and advice. I will submit another 
-patch separately for modification.
-
->    - The #defines for register offsets and bits are kind of a mess,
->      e.g., PCIE_SMLH_LINKUP, PCIE_RDLH_LINKUP, PCIE_LINKUP,
->      PCIE_L0S_ENTRY, and PCIE_LTSSM_STATUS_MASK are in
->      PCIE_CLIENT_LTSSM_STATUS, but you couldn't tell that from the
->      names, and they're not even defined together.
-> 
->    - Same for PCIE_RDLH_LINK_UP_CHGED, PCIE_LINK_REQ_RST_NOT_INT,
->      PCIE_RDLH_LINK_UP_CHGED, which are in
->      PCIE_CLIENT_INTR_STATUS_MISC.
-> 
->    - PCIE_LTSSM_ENABLE_ENHANCE is apparently in
->      PCIE_CLIENT_HOT_RESET_CTRL?  Sure wouldn't guess that from the
->      names or the order of #defines.
-> 
->    - PCIE_CLIENT_GENERAL_DEBUG isn't used at all.
-
-Will delete.
-
-
-Best regard,
-Hans
-
-> 
->>   static int rockchip_pcie_configure_rc(struct platform_device *pdev,
->>   				      struct rockchip_pcie *rockchip)
->>   {
->> @@ -511,6 +527,8 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
->>   	pp->ops = &rockchip_pcie_host_ops;
->>   	pp->use_linkup_irq = true;
->>   
->> +	rockchip_pcie_set_max_payload(rockchip);
->> +
->>   	ret = dw_pcie_host_init(pp);
->>   	if (ret) {
->>   		dev_err(dev, "failed to initialize host\n");
->>
->> base-commit: a24588245776dafc227243a01bfbeb8a59bafba9
->> -- 
->> 2.25.1
->>
-
+base-commit: 4890d68db651562ea80250f2c93205a5c0327a6a
+--
+2.48.1
 
 _______________________________________________
 Linux-rockchip mailing list
