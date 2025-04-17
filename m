@@ -4,64 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09122C369C2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 15:15:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50C26C369B2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 15:17:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JrVIfMSZmdVHr81zQX86ZDj93w2ZaDZGnfdrpaai16I=; b=4Wcjxx+bJ/CL4r
-	wR6eSLUnFJhqjNBMADMHQxDi00Ct26ipIbBhqDmmVUgKPfRjxb/kApwfoIVi/k9d2JxkPxDBGxKq6
-	vmLpyMtvEdNK04SYnw85yVqMoFkNRebiMwhwhcQGPLPI6kQSe6EPmH8mFufyC5Q9VCntFV/PW6QbA
-	ulmS9ZSxN4JLuFAH9YxErIVR0bv/GTNsIwQo7y53xleNX5vDYNJZYQEIacdkvtaS4G5VDhy8/tiLx
-	iOK8cJXrRWhBTAB8xfcAE8trJiX6LOG5UYHVJhfxO1wOGnPiyLpMSGwsTR/VmnuPH/1kHld5KiqiD
-	3kpoaCVbwcjlWyqSFYZw==;
+	List-Owner; bh=PsDbTkRH/+x/oabJeLz239quQNV4qgP2xWwx6+BAv2M=; b=ehf2noMrXuD3Ra
+	6yhTybWV9BqRALlynvQA4m0dv9i6GBpkTjyJqhfuI33jC8N2/XrmiGNIZdwDIprw+N/oAq1vZrzNJ
+	KdRZ5T/lWb57M2q+0fjGuD8GVnBEZA9PxSoB8RvT0k1CvzsZnskr9xQ+E3/2WfS+U+3hbZg0WN8HG
+	LmgZs4IFUXjGRA6RmMCHMulR/b3Ty9bZk/gI00WQbP698zWoMcTLLytDeimjbr6UNZRkQ21+K+ZeK
+	ngN4+slJ1E1UEIrUm06lCAzNhNkx/sUxKRBcdQV9xEXT/W8wMJI1DWNlyZt9PnSgZHXrqDC8ll3Or
+	h+18ZA/LXxzrQQQaifQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Qxs-0000000DSzc-42oc;
-	Thu, 17 Apr 2025 15:15:44 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1u5Qzi-0000000DTN7-0yCy;
+	Thu, 17 Apr 2025 15:17:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5QKv-0000000DL7m-35Dx
-	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Apr 2025 14:35:31 +0000
+	id 1u5QLs-0000000DLLj-18Ph;
+	Thu, 17 Apr 2025 14:36:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 043A7A4B431;
-	Thu, 17 Apr 2025 14:30:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 935E9C4CEE4;
-	Thu, 17 Apr 2025 14:35:26 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8317E45016;
+	Thu, 17 Apr 2025 14:36:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F77EC4CEE4;
+	Thu, 17 Apr 2025 14:36:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744900528;
-	bh=wnrScLvNMWAdpvl0Ot+SMpbyDyceQMrcNClqUjt96MY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OzA0qzRCBUy5GF6fE5vGg1MbVEUMJpKgv4P3BDwDb9eN+jZigMFCncUKnqtmrvSmn
-	 8VDaGwAa3Q7cxyM6nCj/uE3NwVMA5XZbkiWeUIOcylsplj8BLQWnwNlJciLKLgOfRP
-	 ywsebgp6msX8SIwA49ZT4YqdAHwGkDfKecTDvhAfjJKkvRiB74JYVHVzTFcU5P7PL8
-	 SbK5KN/RPszB62Xv1OVy2H+Zf16LAkEDfqMThdp3RIx8HbbsmBHAHeVg6ZmWxjr2HB
-	 J7/eFFGRxF0U/gg2iRdQkaeEknYgdpTKEh9a7F5YvQw7/IUP6WhrCHemWx6Jc/8fQG
-	 7tyWIDX1C7f4w==
-Date: Thu, 17 Apr 2025 16:35:23 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	linux-pci@vger.kernel.org
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Add system PM support
-Message-ID: <aAERqx6LNZpcv7KO@ryzen>
-References: <1744352048-178994-1-git-send-email-shawn.lin@rock-chips.com>
- <Z_5aib0WGKfIANj_@ryzen>
- <8815983.T7Z3S40VBb@workhorse>
+	s=k20201202; t=1744900587;
+	bh=SBvQ73WYivvfdzl3CJZHVlcNEi0joPRJF/v4trctjCU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=U47VK4s2ZLew93JI7p+xs+UYJC7O9l2oKkXj/dF+84H5ZIdRl+s5L+fGRGn3cPnpm
+	 20PraA0E0V/8SWFpgKmIW8a/BluR0EShkgjGNq887euZwD+gN1UU5O5JZGhkH3TVuu
+	 TBy45c1Bo+EogU8RTAY3Ot/WRKRFHq8LGeWZ17YmPDmntGkJnuohmGu2nPm6s0uvhB
+	 yIaEsbIgAANXe2eteArELeqvf9rjPi/4icHcF/P7mWUBAHGoEBf/hv4f4wewlbIKVh
+	 vcGiyjnIPIcZPYqVNbUOxNv3TJ1zzWUlXtGH8l4k1vWxVc3LnNQK/76fyIIc9qnKRY
+	 2k/B64gxl/T6g==
+Message-ID: <ff583eb3-d01d-4850-9f9b-f6b15ddaf137@kernel.org>
+Date: Thu, 17 Apr 2025 16:36:18 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <8815983.T7Z3S40VBb@workhorse>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Add I2C controllers for
+ RK3528
+To: Yao Zi <ziyao@disroot.org>, Heiko Stuebner <heiko@sntech.de>,
+ Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
+ Chukun Pan <amadeus@jmu.edu.cn>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <20250417120118.17610-3-ziyao@disroot.org>
+ <20250417120118.17610-5-ziyao@disroot.org>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20250417120118.17610-5-ziyao@disroot.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_073529_838394_C91A381A 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20250417_073628_354846_BFE0E62E 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,56 +122,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Nicolas,
-
-On Thu, Apr 17, 2025 at 03:24:34PM +0200, Nicolas Frattaroli wrote:
-> On Tuesday, 15 April 2025 15:09:29 Central European Summer Time Niklas Cassel wrote:
-> > On Fri, Apr 11, 2025 at 02:14:08PM +0800, Shawn Lin wrote:
-> > > [...]
-> > > +      rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_RC_MODE);
-> > 
-> > Here you are setting PCIE_CLIENT_RC_MODE unconditionally.
-> > 
-> > I really don't think that you have tested these callbacks with EP mode.
+On 17/04/2025 14:01, Yao Zi wrote:
+> Describe I2C controllers shipped by RK3528 in devicetree. For I2C-2,
+> I2C-4 and I2C-7 which come with only a set of possible pins, a default
+> pin configuration is included.
 > 
-> Hi Niklas,
+> Signed-off-by: Yao Zi <ziyao@disroot.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 110 +++++++++++++++++++++++
+>  1 file changed, 110 insertions(+)
 > 
-> I may be reading too much into your tone here, but I think it'd be good if
-> you didn't formulate this in such a passive-aggressive accusatory way. You
-> can just express your concern as a question about whether this was tested
-> with EP mode.
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> index 826f9be0be19..2c9780069af9 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> @@ -24,6 +24,14 @@ aliases {
+>  		gpio2 = &gpio2;
+>  		gpio3 = &gpio3;
+>  		gpio4 = &gpio4;
+> +		i2c0 = &i2c0;
+> +		i2c1 = &i2c1;
+> +		i2c2 = &i2c2;
+> +		i2c3 = &i2c3;
+> +		i2c4 = &i2c4;
+> +		i2c5 = &i2c5;
+> +		i2c6 = &i2c6;
+> +		i2c7 = &i2c7;
+Aliases are not properties of the SoC but boards.
 
-I provided a suggestion further down in the same email
-(perhaps split the driver to RC and EP part like the qcom driver).
-
-I also provided a further suggestion here:
-https://lore.kernel.org/linux-pci/aADdI7ByEImYy3Pq@ryzen/
-(perhaps do like the tegra driver and let the callback return -ENOTSUPP
-if running in EP mode.)
-
-
-> 
-> After all, I'm giving you specifically the same benefit of the doubt with
-> RC mode that has broken BAR resource mapping on RK3588 in timing-related
-> ways in v6.15-rc that has already taken me about a day of unreliable
-> bisects to try and track down, and may in fact end up bisecting to one of
-> your recent commits touching that part.
-
-It would have been nice if you waited until your bisect was done,
-so you could have provided some facts, rather than speculation.
-
-Nonetheless, may I suggest that you try with Shawn's recent patch:
-https://lore.kernel.org/linux-pci/aACaupQvmiiBE29l@ryzen/T/#m5ec27d0ee4d2345dd4539385b3c7c8f6b98ee72e
-which fixes the .link_up() callback.
-
-The link_up() callback is used e.g. by dw_pcie_other_conf_map_bus():
-https://github.com/torvalds/linux/blob/v6.15-rc2/drivers/pci/controller/dwc/pcie-designware-host.c#L622-L631
-
-So bad things could happen if this callback is not implemented correctly.
-
-
-Kind regards,
-Niklas
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
