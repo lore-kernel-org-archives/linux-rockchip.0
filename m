@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50C26C369B2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 15:17:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C72B7C369B2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 15:19:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PsDbTkRH/+x/oabJeLz239quQNV4qgP2xWwx6+BAv2M=; b=ehf2noMrXuD3Ra
-	6yhTybWV9BqRALlynvQA4m0dv9i6GBpkTjyJqhfuI33jC8N2/XrmiGNIZdwDIprw+N/oAq1vZrzNJ
-	KdRZ5T/lWb57M2q+0fjGuD8GVnBEZA9PxSoB8RvT0k1CvzsZnskr9xQ+E3/2WfS+U+3hbZg0WN8HG
-	LmgZs4IFUXjGRA6RmMCHMulR/b3Ty9bZk/gI00WQbP698zWoMcTLLytDeimjbr6UNZRkQ21+K+ZeK
-	ngN4+slJ1E1UEIrUm06lCAzNhNkx/sUxKRBcdQV9xEXT/W8wMJI1DWNlyZt9PnSgZHXrqDC8ll3Or
-	h+18ZA/LXxzrQQQaifQg==;
+	List-Owner; bh=txTSG9yqATyxyUP9ec3eQjSyjT3SlESjD6TBAvJRYdk=; b=h53QpjvkjRWjk+
+	fvZNOCki9zNG8G4piKVANUjMI/LmuNZl2tcAgUupFOOqBSzB2WqhKon/Xw/dNp9+wnjKiLJKUJKKm
+	rz3WoLHVbX2BPrI0Y6TVs3O4hjC8TqSFF9cySUMps8aE4DjqO4nkwyLpJkCWEqinaboxH6uGZ5SWk
+	1CkDPIbAd/WQvanUFOJZ2B8sBypal6L/Rx1AzZfzjtgKepJY7LoiT9s/+5Nu6Q2pO6UEpvOFCWoAD
+	LqM86ohmT2R8TCPI6PiHWS0tYbI5neAnEEk35AU4NXEZ6hyPbBNjDoM4rFe1ZbZ4QEyK1sDP/b8M6
+	STkVyaJaUVSzru8PN4qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Qzi-0000000DTN7-0yCy;
-	Thu, 17 Apr 2025 15:17:38 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1u5R1Y-0000000DTkV-1Dvm;
+	Thu, 17 Apr 2025 15:19:32 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5QLs-0000000DLLj-18Ph;
-	Thu, 17 Apr 2025 14:36:29 +0000
+	id 1u5QMR-0000000DLRN-0IoL;
+	Thu, 17 Apr 2025 14:37:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8317E45016;
-	Thu, 17 Apr 2025 14:36:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F77EC4CEE4;
-	Thu, 17 Apr 2025 14:36:24 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id D95C7A4B42D;
+	Thu, 17 Apr 2025 14:31:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DC85C4CEE4;
+	Thu, 17 Apr 2025 14:36:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744900587;
-	bh=SBvQ73WYivvfdzl3CJZHVlcNEi0joPRJF/v4trctjCU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=U47VK4s2ZLew93JI7p+xs+UYJC7O9l2oKkXj/dF+84H5ZIdRl+s5L+fGRGn3cPnpm
-	 20PraA0E0V/8SWFpgKmIW8a/BluR0EShkgjGNq887euZwD+gN1UU5O5JZGhkH3TVuu
-	 TBy45c1Bo+EogU8RTAY3Ot/WRKRFHq8LGeWZ17YmPDmntGkJnuohmGu2nPm6s0uvhB
-	 yIaEsbIgAANXe2eteArELeqvf9rjPi/4icHcF/P7mWUBAHGoEBf/hv4f4wewlbIKVh
-	 vcGiyjnIPIcZPYqVNbUOxNv3TJ1zzWUlXtGH8l4k1vWxVc3LnNQK/76fyIIc9qnKRY
-	 2k/B64gxl/T6g==
-Message-ID: <ff583eb3-d01d-4850-9f9b-f6b15ddaf137@kernel.org>
-Date: Thu, 17 Apr 2025 16:36:18 +0200
+	s=k20201202; t=1744900621;
+	bh=Y4mpXQaMpeWkp9waH3d1fmjKivjlRtPJBQfXTXDaeJ4=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=Pk/gCEDN3KXb+CZF1QvEJUAvh9nRY6NrrEa8/7jELTpIsCHhIeVANNRXwRsPlom3y
+	 5sMATAS9SnbzXQOkwUuSc336pG71/heINr8gpHxoSmf2Qxsi0scfFnZgbH9hRPEsv+
+	 zXfQhVogmRxtc1idbHw3RGq9xyQPNfnPzO1orVQ5uZk1dXIteP8Dvxf4sylzY70nKq
+	 hC1dMSHyza6cX2qButHjFd5/RKkN9nJR7mC15M91yGK6Y12W6WK9A+qxG8elgC/R+z
+	 A7Zfa4GAGsMmAC77bQ4oFWm7NCYKRy4hbpBDoedWQInC/ye0YQkA/zTrhCjZDQHllV
+	 j0NSbWRo342PA==
+Message-ID: <c6d3e343-7005-48a9-a133-bf39cb6790ee@kernel.org>
+Date: Thu, 17 Apr 2025 16:36:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Add I2C controllers for
  RK3528
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Yao Zi <ziyao@disroot.org>, Heiko Stuebner <heiko@sntech.de>,
  Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -57,8 +58,8 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20250417120118.17610-3-ziyao@disroot.org>
  <20250417120118.17610-5-ziyao@disroot.org>
+ <ff583eb3-d01d-4850-9f9b-f6b15ddaf137@kernel.org>
 Content-Language: en-US
-From: Krzysztof Kozlowski <krzk@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -102,10 +103,11 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20250417120118.17610-5-ziyao@disroot.org>
+In-Reply-To: <ff583eb3-d01d-4850-9f9b-f6b15ddaf137@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_073628_354846_BFE0E62E 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20250417_073703_242559_3660AA3A 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,33 +124,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 17/04/2025 14:01, Yao Zi wrote:
-> Describe I2C controllers shipped by RK3528 in devicetree. For I2C-2,
-> I2C-4 and I2C-7 which come with only a set of possible pins, a default
-> pin configuration is included.
-> 
-> Signed-off-by: Yao Zi <ziyao@disroot.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 110 +++++++++++++++++++++++
->  1 file changed, 110 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> index 826f9be0be19..2c9780069af9 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> @@ -24,6 +24,14 @@ aliases {
->  		gpio2 = &gpio2;
->  		gpio3 = &gpio3;
->  		gpio4 = &gpio4;
-> +		i2c0 = &i2c0;
-> +		i2c1 = &i2c1;
-> +		i2c2 = &i2c2;
-> +		i2c3 = &i2c3;
-> +		i2c4 = &i2c4;
-> +		i2c5 = &i2c5;
-> +		i2c6 = &i2c6;
-> +		i2c7 = &i2c7;
-Aliases are not properties of the SoC but boards.
+On 17/04/2025 16:36, Krzysztof Kozlowski wrote:
+> On 17/04/2025 14:01, Yao Zi wrote:
+>> Describe I2C controllers shipped by RK3528 in devicetree. For I2C-2,
+>> I2C-4 and I2C-7 which come with only a set of possible pins, a default
+>> pin configuration is included.
+>>
+>> Signed-off-by: Yao Zi <ziyao@disroot.org>
+>> ---
+>>  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 110 +++++++++++++++++++++++
+>>  1 file changed, 110 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+>> index 826f9be0be19..2c9780069af9 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+>> @@ -24,6 +24,14 @@ aliases {
+>>  		gpio2 = &gpio2;
+>>  		gpio3 = &gpio3;
+>>  		gpio4 = &gpio4;
+>> +		i2c0 = &i2c0;
+>> +		i2c1 = &i2c1;
+>> +		i2c2 = &i2c2;
+>> +		i2c3 = &i2c3;
+>> +		i2c4 = &i2c4;
+>> +		i2c5 = &i2c5;
+>> +		i2c6 = &i2c6;
+>> +		i2c7 = &i2c7;
+> Aliases are not properties of the SoC but boards.
+
+Of course this should be: Bus/interface aliases are not...
 
 Best regards,
 Krzysztof
