@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE79C369B2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 06:56:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B98ADC369C7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 07:00:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JyQic4tycFkaGruZ1Snw6d637kYifN71U9Qdj5GwI5s=; b=BBPdL28gLRsDtr
-	G8P2v0CWEYNierPe4/Gz93hiash5WD7Z2Fqlhk7NRca8DH2Rs/aB1lPFlVPBzsDRUA3M/FTklwrUs
-	FymDcGr3i9MmJjrGQorotMbNhh6hW5jewCi70gtFzkBpvR96P0or7Xh64SOQNaiptG8I/tJHKNBeL
-	4jNU25eXVEISksv6k/Xw7iq1q6U5EcYOYZpuL9i9oOup3yNn4fX0myL5PGU13Ywg2lhSgGwGeQGNA
-	pRoH4MD2rQoq4DVtebjHCuN2iC3jCNj10tlfmB9+Q2tCRk1YYj97TJxEPiWekXN3o0bXSyjM+Az4X
-	pYYvyHyj6NyIe7M2J7eQ==;
+	List-Owner; bh=ZffPG8skNB8ly3rbpaCsEWe9Dhp31/+gicW/bFTsf94=; b=RuGAimmGAC1nD5
+	oRp8rr67ughg1uPYHrEvkittdviGVV8AoAfsFO5YiTAm3b0ao9jn6HwhSFsjaxJyS2juRmCa5iLna
+	LxSo+WoYhDb4/aBwA3ioN3HDOKptnCL6ZVWTcVJnzZdvsfovhUAmC3Pt8AIIUx0Yh+soN0+ZbkrvP
+	l2aA7GBGERPHWgiYBMo+FyYvDHZViJZtKbdEYUF3g4SGKxHCqAXdzegu8dfChvTySHcnZbW11oXmw
+	YR04RDjMgZnth72++jGksmiOdpCxnbX6ESqryqXyDqweny309aD66M4pBcRHmEYF3YefnEm668udc
+	SBrEC4YpUldjzDvuV7ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5JAU-0000000BydN-2Ys7;
-	Thu, 17 Apr 2025 06:56:14 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5J2W-0000000Bwwo-1v6d;
-	Thu, 17 Apr 2025 06:48:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
-	Content-Type; bh=rbiGEnPXfTJBFF8/Jzz38hsNkOYWx3lXorEkxn6cETU=;
-	b=kK5v809ETPJ3ci6A09qlTPH3adIYbW9/Wauc6MkwQWvQRd9/IEBmozRHpc54gC
-	beR3IZ7QNyYS2A6bsWB9lC2X4ufe5Z1KXmlpjYrAVWcIYRMQBuayV0qNfqbvNePj
-	fFU4aG/eE57jAb6wKfZwxdKctJIffsLPv2dTN1P9fNeWM=
-Received: from [192.168.142.52] (unknown [])
-	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wBn37D7owBo5BmAAg--.29857S2;
-	Thu, 17 Apr 2025 14:47:26 +0800 (CST)
-Message-ID: <a8cc995e-c6d5-4079-b6d9-765f76a7ec7a@163.com>
-Date: Thu, 17 Apr 2025 14:47:23 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
-To: Niklas Cassel <cassel@kernel.org>
+	id 1u5JE9-0000000C035-01Ox;
+	Thu, 17 Apr 2025 07:00:01 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u5J8P-0000000By0r-2VPJ;
+	Thu, 17 Apr 2025 06:54:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 726DDA4B198;
+	Thu, 17 Apr 2025 06:48:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60F3EC4CEE4;
+	Thu, 17 Apr 2025 06:54:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744872844;
+	bh=zGx86VkJkAakclDafCUd0oRxkLBcph7gdNZjHRMEECk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=T0vzRiicC8CgwUdGtXlwnPeRM3Fy1/8/xHDj4ghRoMEXHFXlaYkcTczfT8Y2qVpOc
+	 2Y+1fAHYD4qrAMc2Fy2tQxPS0pRupS41t4ZneW8LtuLQLCk8C3zd4rsbcUSCtYkoKG
+	 bc7BUp5qxGJVXz4X/kgqEyl+Vep9c5AP0Csv+DEHTI68ICAIZ8dtqL717ufU2sQNh2
+	 VkkUkSuTgqDX7OcylvDtkSykf+MrTPXHdA5r2bz8YrmXYQItiJfZ5D+ihEJWh3GIOc
+	 uh1dZmxudlOO0bdzxP22b2IOOEgmjq74k30KBrh46I5PuJKzprqLRNA2V/mO7HHmAD
+	 JlrieEajUPb7g==
+Date: Thu, 17 Apr 2025 08:53:58 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Hans Zhang <18255117159@163.com>
 Cc: Bjorn Helgaas <helgaas@kernel.org>, lpieralisi@kernel.org, kw@linux.com,
- bhelgaas@google.com, heiko@sntech.de, manivannan.sadhasivam@linaro.org,
- robh@kernel.org, jingoohan1@gmail.com, thomas.richard@bootlin.com,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Shawn Lin <shawn.lin@rock-chips.com>
+	bhelgaas@google.com, heiko@sntech.de,
+	manivannan.sadhasivam@linaro.org, robh@kernel.org,
+	jingoohan1@gmail.com, thomas.richard@bootlin.com,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
+Message-ID: <aAClhmwO3caYMonN@ryzen>
 References: <20250416204051.GA78956@bhelgaas>
- <bb40385c-6839-484c-90b2-d6c7ecb95ba9@163.com> <aACZP48pWk5Y62dK@ryzen>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <aACZP48pWk5Y62dK@ryzen>
-X-CM-TRANSID: _____wBn37D7owBo5BmAAg--.29857S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW3Ww15ZrW5WFW5urWkAr4fZrb_yoW3ZF15p3
-	4ayF13KrWkJrW7K3Z5tF1DGr1xtr1qyF4UGF45G34rtF1a9r1Dtry29r1Sqa47Wry5JFya
-	gw4UJ3yIvw45J3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UmiihUUUUU=
-X-Originating-IP: [222.71.101.198]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiWxMyo2gAnhDdWQAAs7
+ <bb40385c-6839-484c-90b2-d6c7ecb95ba9@163.com>
+ <aACZP48pWk5Y62dK@ryzen>
+ <a8cc995e-c6d5-4079-b6d9-765f76a7ec7a@163.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <a8cc995e-c6d5-4079-b6d9-765f76a7ec7a@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_234800_912234_583E3499 
-X-CRM114-Status: GOOD (  22.60  )
+X-CRM114-CacheID: sfid-20250416_235405_761190_DD2E5191 
+X-CRM114-Status: GOOD (  36.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,201 +75,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 2025/4/17 14:01, Niklas Cassel wrote:
-> On Thu, Apr 17, 2025 at 10:19:10AM +0800, Hans Zhang wrote:
->> On 2025/4/17 04:40, Bjorn Helgaas wrote:
->>> On Wed, Apr 16, 2025 at 11:19:26PM +0800, Hans Zhang wrote:
->>>> The RK3588's PCIe controller defaults to a 128-byte max payload size,
->>>> but its hardware capability actually supports 256 bytes. This results
->>>> in suboptimal performance with devices that support larger payloads.
->>>>
->>>> Signed-off-by: Hans Zhang <18255117159@163.com>
->>>> ---
->>>>    drivers/pci/controller/dwc/pcie-dw-rockchip.c | 18 ++++++++++++++++++
->>>>    1 file changed, 18 insertions(+)
->>>>
->>>> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->>>> index c624b7ebd118..5bbb536a2576 100644
->>>> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->>>> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->>>> @@ -477,6 +477,22 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
->>>>    	return IRQ_HANDLED;
->>>>    }
->>>> +static void rockchip_pcie_set_max_payload(struct rockchip_pcie *rockchip)
->>>> +{
->>>> +	struct dw_pcie *pci = &rockchip->pci;
->>>> +	u32 dev_cap, dev_ctrl;
->>>> +	u16 offset;
->>>> +
->>>> +	offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
->>>> +	dev_cap = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCAP);
->>>> +	dev_cap &= PCI_EXP_DEVCAP_PAYLOAD;
->>>> +
->>>> +	dev_ctrl = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
->>>> +	dev_ctrl &= ~PCI_EXP_DEVCTL_PAYLOAD;
->>>> +	dev_ctrl |= dev_cap << 5;
->>>> +	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, dev_ctrl);
->>>> +}
->>>
->>> I can't really complain too much about this since meson does basically
->>> the same thing, but there are some things I don't like about this:
->>>
->>>     - I don't think it's safe to set MPS higher in all cases.  If we set
->>>       the Root Port MPS=256, and an Endpoint only supports MPS=128, the
->>>       Endpoint may do a 256-byte DMA read (assuming its MRRS>=256).  In
->>>       that case the RP may respond with a 256-byte payload the Endpoint
->>>       can't handle.  The generic code in pci_configure_mps() might be
->>>       smart enough to avoid that situation, but I'm not confident about
->>>       it.  Maybe I could be convinced.
->>>
->>
->> Dear Bjorn,
->>
->> Thank you very much for your reply. If we set the Root Port MPS=256, and an
->> Endpoint only supports MPS=128. Finally, Root Port is also set to MPS=128 in
->> pci_configure_mps.
+On Thu, Apr 17, 2025 at 02:47:23PM +0800, Hans Zhang wrote:
+> On 2025/4/17 14:01, Niklas Cassel wrote:
+> > On Thu, Apr 17, 2025 at 10:19:10AM +0800, Hans Zhang wrote:
+> > > On 2025/4/17 04:40, Bjorn Helgaas wrote:
+> > > > On Wed, Apr 16, 2025 at 11:19:26PM +0800, Hans Zhang wrote:
+> > > > > The RK3588's PCIe controller defaults to a 128-byte max payload size,
+> > > > > but its hardware capability actually supports 256 bytes. This results
+> > > > > in suboptimal performance with devices that support larger payloads.
+> > > > > 
+> > > > > Signed-off-by: Hans Zhang <18255117159@163.com>
+> > > > > ---
+> > > > >    drivers/pci/controller/dwc/pcie-dw-rockchip.c | 18 ++++++++++++++++++
+> > > > >    1 file changed, 18 insertions(+)
+> > > > > 
+> > > > > diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > > > > index c624b7ebd118..5bbb536a2576 100644
+> > > > > --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > > > > +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > > > > @@ -477,6 +477,22 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+> > > > >    	return IRQ_HANDLED;
+> > > > >    }
+> > > > > +static void rockchip_pcie_set_max_payload(struct rockchip_pcie *rockchip)
+> > > > > +{
+> > > > > +	struct dw_pcie *pci = &rockchip->pci;
+> > > > > +	u32 dev_cap, dev_ctrl;
+> > > > > +	u16 offset;
+> > > > > +
+> > > > > +	offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
+> > > > > +	dev_cap = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCAP);
+> > > > > +	dev_cap &= PCI_EXP_DEVCAP_PAYLOAD;
+> > > > > +
+> > > > > +	dev_ctrl = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
+> > > > > +	dev_ctrl &= ~PCI_EXP_DEVCTL_PAYLOAD;
+> > > > > +	dev_ctrl |= dev_cap << 5;
+> > > > > +	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, dev_ctrl);
+> > > > > +}
+> > > > 
+> > > > I can't really complain too much about this since meson does basically
+> > > > the same thing, but there are some things I don't like about this:
+> > > > 
+> > > >     - I don't think it's safe to set MPS higher in all cases.  If we set
+> > > >       the Root Port MPS=256, and an Endpoint only supports MPS=128, the
+> > > >       Endpoint may do a 256-byte DMA read (assuming its MRRS>=256).  In
+> > > >       that case the RP may respond with a 256-byte payload the Endpoint
+> > > >       can't handle.  The generic code in pci_configure_mps() might be
+> > > >       smart enough to avoid that situation, but I'm not confident about
+> > > >       it.  Maybe I could be convinced.
+> > > > 
+> > > 
+> > > Dear Bjorn,
+> > > 
+> > > Thank you very much for your reply. If we set the Root Port MPS=256, and an
+> > > Endpoint only supports MPS=128. Finally, Root Port is also set to MPS=128 in
+> > > pci_configure_mps.
+> > 
+> > In you example below, the Endpoint has:
+> >   DevCap: MaxPayload 512 bytes
+> > 
+> > So at least your example can't be used to prove this specific point.
+> > But perhaps you just wanted to show that your Max Payload Size increase
+> > actually works?
+> > 
 > 
-> In you example below, the Endpoint has:
->   DevCap: MaxPayload 512 bytes
+> Dear Niklas,
 > 
-> So at least your example can't be used to prove this specific point.
-> But perhaps you just wanted to show that your Max Payload Size increase
-> actually works?
-> 
+> Do you have an Endpoint with MPS=128? If so, you can also help verify the
+> logic of the pci_configure_mps function. I don't have an Endpoint with
+> MPS=128 here.
 
-Dear Niklas,
-
-Do you have an Endpoint with MPS=128? If so, you can also help verify 
-the logic of the pci_configure_mps function. I don't have an Endpoint 
-with MPS=128 here.
+I imagine that it would be trivial to test with a PCIe controller running
+in endpoint mode with the PCI endpoint subsystem in the kernel.
+(As you should be able to set CAP.MPS before starting link training.)
 
 
-The processing logic of the pci_configure_mps function has been verified 
-on our own SOC platform. Please refer to the following log.
-Our Root Port will set MPS=512.
+> The processing logic of the pci_configure_mps function has been verified on
+> our own SOC platform. Please refer to the following log.
+> Our Root Port will set MPS=512.
+
+(snip)
+
+Ok, since it works to downgrade 512B to 256B, I would imagine that it also
+would downgrade to 128B properly.
 
 
-0002:30:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
-         Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- 
-ParErr- Stepping- SERR- FastB2B- DisINTx+
-         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- 
-<TAbort- <MAbort- >SERR- <PERR- INTx-
-         Latency: 0
-         Interrupt: pin A routed to IRQ 167
-         Bus: primary=30, secondary=31, subordinate=5f, sec-latency=0
-         I/O behind bridge: 300000-300fff [size=4K] [16-bit]
-         Memory behind bridge: 38300000-383fffff [size=1M] [32-bit]
-         Prefetchable memory behind bridge: 
-00000000fff00000-00000000000fffff [disabled] [64-bit]
-         Secondary status: 66MHz- FastB2B- ParErr- DEVSEL=fast >TAbort- 
-<TAbort- <MAbort- <SERR- <PERR-
-         Expansion ROM at 38200000 [virtual] [disabled] [size=1M]
-         BridgeCtl: Parity- SERR+ NoISA- VGA- VGA16- MAbort- >Reset- 
-FastB2B-
-                 PriDiscTmr- SecDiscTmr- DiscTmrStat- DiscTmrSERREn-
-         Capabilities: [80] Power Management version 3
-                 Flags: PMEClk- DSI- D1+ D2- AuxCurrent=0mA 
-PME(D0+,D1+,D2-,D3hot+,D3cold-)
-                 Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
-         Capabilities: [90] MSI: Enable+ Count=1/32 Maskable+ 64bit+
-                 Address: 000000000e060040  Data: 0000
-                 Masking: fffffffe  Pending: 00000000
-         Capabilities: [b0] MSI-X: Enable- Count=2 Masked-
-                 Vector table: BAR=0 offset=00000040
-                 PBA: BAR=0 offset=00000040
-         Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
-                 DevCap: MaxPayload 512 bytes, PhantFunc 0
-                         ExtTag- RBE+
-                 DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
-                         RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
-                         MaxPayload 256 bytes, MaxReadReq 1024 bytes
-
-
-0002:31:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. 
-RTL8125 2.5GbE Controller (rev 05)
-         Subsystem: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE 
-Controller
-         Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- 
-ParErr- Stepping- SERR- FastB2B- DisINTx+
-         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- 
-<TAbort- <MAbort- >SERR- <PERR- INTx-
-         Latency: 0, Cache Line Size: 64 bytes
-         Interrupt: pin A routed to IRQ 166
-         Region 0: I/O ports at 300000 [size=256]
-         Region 2: Memory at 38300000 (64-bit, non-prefetchable) [size=64K]
-         Region 4: Memory at 38310000 (64-bit, non-prefetchable) [size=16K]
-         Capabilities: [40] Power Management version 3
-                 Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=375mA 
-PME(D0+,D1+,D2+,D3hot+,D3cold+)
-                 Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
-         Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
-                 Address: 0000000000000000  Data: 0000
-                 Masking: 00000000  Pending: 00000000
-         Capabilities: [70] Express (v2) Endpoint, MSI 01
-                 DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s 
-<512ns, L1 <64us
-                         ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset- 
-SlotPowerLimit 0W
-                 DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
-                         RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop-
-                         MaxPayload 256 bytes, MaxReadReq 2048 bytes
-
-
-hans@hans:~$ iperf3 -s
------------------------------------------------------------
-Server listening on 5201
------------------------------------------------------------
-Accepted connection from ethernet_ip, port 47114
-[  5] local ubuntu_host_ip port 5201 connected to ethernet_ip port 47122
-[ ID] Interval           Transfer     Bitrate
-[  5]   0.00-1.00   sec   108 MBytes   902 Mbits/sec
-[  5]   1.00-2.00   sec   112 MBytes   941 Mbits/sec
-[  5]   2.00-3.00   sec   112 MBytes   941 Mbits/sec
-[  5]   3.00-4.00   sec   112 MBytes   941 Mbits/sec
-[  5]   4.00-5.00   sec   112 MBytes   941 Mbits/sec
-[  5]   5.00-6.00   sec   112 MBytes   941 Mbits/sec
-[  5]   6.00-7.00   sec   112 MBytes   941 Mbits/sec
-[  5]   7.00-8.00   sec   112 MBytes   941 Mbits/sec
-[  5]   8.00-9.00   sec   112 MBytes   941 Mbits/sec
-[  5]   9.00-10.00  sec   112 MBytes   941 Mbits/sec
-[  5]  10.00-10.04  sec  4.92 MBytes   941 Mbits/sec
-- - - - - - - - - - - - - - - - - - - - - - - - -
-[ ID] Interval           Transfer     Bitrate
-[  5]   0.00-10.04  sec  1.10 GBytes   938 Mbits/sec 
-receiver
------------------------------------------------------------
-
-
-root@cix-localhost:~# iperf3 -c ubuntu_host_ip
-Connecting to host ubuntu_host_ip, port 5201
-[  5] local ethernet_ip port 47122 connected to ubuntu_host_ip port 5201
-[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
-[  5]   0.00-1.00   sec   114 MBytes   958 Mbits/sec    0    484 KBytes
-[  5]   1.00-2.00   sec   113 MBytes   946 Mbits/sec    0    535 KBytes
-[  5]   2.00-3.00   sec   112 MBytes   936 Mbits/sec    0    559 KBytes
-[  5]   3.00-4.00   sec   113 MBytes   946 Mbits/sec    0    587 KBytes
-[  5]   4.00-5.00   sec   112 MBytes   939 Mbits/sec    0    587 KBytes
-[  5]   5.00-6.00   sec   113 MBytes   948 Mbits/sec    0    587 KBytes
-[  5]   6.00-7.00   sec   112 MBytes   936 Mbits/sec    0    587 KBytes
-[  5]   7.00-8.00   sec   112 MBytes   939 Mbits/sec    0    587 KBytes
-[  5]   8.00-9.00   sec   112 MBytes   942 Mbits/sec    0    619 KBytes
-[  5]   9.00-10.00  sec   113 MBytes   945 Mbits/sec    0    677 KBytes
-- - - - - - - - - - - - - - - - - - - - - - - - -
-[ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.00  sec  1.10 GBytes   944 Mbits/sec    0             sender
-[  5]   0.00-10.04  sec  1.10 GBytes   938 Mbits/sec 
-receiver
-
-Best regards,
-Hans
-
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
