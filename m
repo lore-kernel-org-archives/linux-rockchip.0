@@ -4,66 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19751C369C2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 14:26:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD00CC369B2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 14:35:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=saAEjAVh3odpnfRcGU3OsF0LIzRnZWjLfu8Zat2r6EI=; b=0hqW4aWsE9f3zN
-	7KlR/BPTSk5cmr49LUSZF3HXxwI2OnyIQV68fSs0Yzy2/hgX93EdnVKR8Czr2+7k6dwxB2Pfbo/er
-	ChmPAHRCXmlWOp4UJF6vEz4iqomQF3QvXLwMNhB+mgZaucY3tLZgYknU6Ucm45c4MZ2aqw6gT0Lzw
-	9Ev08SFAHmmajawocggprTXzHS3bswrnGLRXBuuPVTH1OpVpXW+aHbv7I6BcsgV/cf1Nads76NTHh
-	7YwT33laA0RO7BmmQjGHr+PJq2bURqnlYi1hXcemQc3Nelet9QzGQD5TCrN9lmVCk2BDxw/ck/MyN
-	6rXCxJ9QVjKrJB5oTU+Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=T5zFKHOp5T3oajIunWia8AQhzzR8cVUIdHfcgalGw+0=; b=HNeWS7/q7db/PX
+	2Kdb8HiiHJKCPad9eRE4x56146AjP/sxwvmEqWd+E3q0QAupyjCfaO/ZPE5oBU2Y2km8A+OVAc5Nq
+	J31rsZO21ynfCcI0xmNn8ynfEwLNewT7fx+I+M0z3B8gTvg4d8dJVKzndFFy4vF0UANPQJa0/Gf74
+	soBEk0vce/Sjmg3VGjiRO/odAP6F8bBjiBE2sDk3zXYlk2vlO5yYVaaz5QwbjryrM2Bw8IYJzqboH
+	nF1f+O89AanNqplKXcI1IEdGqcFinmQBO4cKdDWHz75T1XXkEhAtKG1v+O6KNQvKksm7/fV46VhGB
+	hZV+w20h26ao73NwDQUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5QC8-0000000DIze-1saC;
-	Thu, 17 Apr 2025 14:26:24 +0000
-Received: from out-187.mta1.migadu.com ([2001:41d0:203:375::bb])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Q8n-0000000DIH6-0W8l
-	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Apr 2025 14:22:58 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1744899764;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=i674xOwrjdf/AAf3vaDDj/zXNM7PUpgpfGixq0BvJVM=;
-	b=epf/QWi0fEMbAePO0z2eV4VX/swstqahqUqzcygHP0DUZtjjOHcjgeViy27Yytj7Be690M
-	ySo035j0wLDy5r1/hXLft9L0MrK9XDkOFsUqji7vLGPO61zUiowfKaBPniuXs+3/0Zpmge
-	/5NGI5R7h5IKsgJFebHve85QL3fvfN3cbdxlh4MwZZjNj2I0w74cWJlNksgOGqz6GoDZam
-	KcBBqm3QSadwVwLWZnfrrJV14r45Vng8AottX3TkeiReqBt+kG/Mit/xfgHyEWPskklxNw
-	v/fAQ33/TVTWCXevtP/iPE/iy9iMwZKKGJP8IwxryliX6s6W21Hl7qPPTUQQRw==
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Dragan Simic <dsimic@manjaro.org>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
+	id 1u5QLK-0000000DLCg-28hx;
+	Thu, 17 Apr 2025 14:35:54 +0000
+Received: from mail.8bytes.org ([85.214.250.239])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u5QBO-0000000DIdQ-0jC2;
+	Thu, 17 Apr 2025 14:25:39 +0000
+Received: from 8bytes.org (p4ffe03ae.dip0.t-ipconnect.de [79.254.3.174])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id E900D485FD;
+	Thu, 17 Apr 2025 16:25:30 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1744899931;
+	bh=/HJPLJW7CBCK1J9D/Tt5sZhelJYUDsDIjSLUZbWv1OE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EuElz7+Qx317T37R6Xk86MhTtQwxCkmp7UHTFVuhPJMl9k8WUHkrpkhEHjiIIU05a
+	 HAzRnmkgmL+RUvIuZioUKw7Vlp9fZaCDnvU3iA4vVdaEZsHSVM/0fMzv6HIRkOKA1H
+	 chS5VzHsAK7xJzIE/CfhOd0QMQq1TCQw4LQUF9XGapf525Y1ufDPhOH9Vvq34bzNc5
+	 NoIPQRHmnCzb7eL4G8h21D64hMj6oM4CkSXYLdrD78OqxWTP5I/Jl8OmL36GnsK76B
+	 +iNsSxMcEukAqjZx3Ur+ZnLAflFKwuDuR6GXgtRCL8p4ZN1N1sjzsv0I5KMogrNGV2
+	 EkNWoKRqfm8Eg==
+Date: Thu, 17 Apr 2025 16:25:29 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
+	David Woodhouse <dwmw2@infradead.org>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Janne Grunau <j@jannau.net>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Diederik de Haas <didi.debian@cknow.org>,
-	stable@vger.kernel.org
-Subject: [PATCH] PCI: dw-rockchip: Fix function call sequence in rockchip_pcie_phy_deinit
-Date: Thu, 17 Apr 2025 16:21:18 +0200
-Message-ID: <20250417142138.1377451-1-didi.debian@cknow.org>
+	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Neal Gompa <neal@gompa.dev>, Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Sven Peter <sven@svenpeter.dev>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Tomasz Jeznach <tjeznach@rivosinc.com>,
+	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Alejandro Jimenez <alejandro.j.jimenez@oracle.com>,
+	Bagas Sanjaya <bagasdotme@gmail.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>, Joerg Roedel <jroedel@suse.de>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Pasha Tatashin <pasha.tatashin@soleen.com>, patches@lists.linux.dev,
+	David Rientjes <rientjes@google.com>,
+	Mostafa Saleh <smostafa@google.com>,
+	Matthew Wilcox <willy@infradead.org>
+Subject: Re: [PATCH v4 00/23] iommu: Further abstract iommu-pages
+Message-ID: <aAEPWXaBocqgsvbR@8bytes.org>
+References: <0-v4-c8663abbb606+3f7-iommu_pages_jgg@nvidia.com>
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+Content-Disposition: inline
+In-Reply-To: <0-v4-c8663abbb606+3f7-iommu_pages_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_072257_297681_59BC3FA2 
-X-CRM114-Status: UNSURE (   8.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250417_072538_438764_B4B212DD 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,35 +102,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The documentation for the phy_power_off() function explicitly says
+> Jason Gunthorpe (23):
+>   iommu/terga: Do not use struct page as the handle for as->pd memory
+>   iommu/tegra: Do not use struct page as the handle for pts
+>   iommu/pages: Remove __iommu_alloc_pages()/__iommu_free_pages()
+>   iommu/pages: Make iommu_put_pages_list() work with high order
+>     allocations
+>   iommu/pages: Remove the order argument to iommu_free_pages()
+>   iommu/pages: Remove iommu_free_page()
+>   iommu/pages: De-inline the substantial functions
+>   iommu/pages: Formalize the freelist API
+>   iommu/riscv: Convert to use struct iommu_pages_list
+>   iommu/amd: Convert to use struct iommu_pages_list
+>   iommu: Change iommu_iotlb_gather to use iommu_page_list
+>   iommu/pages: Remove iommu_put_pages_list_old and the _Generic
+>   iommu/pages: Move from struct page to struct ioptdesc and folio
+>   iommu/pages: Move the __GFP_HIGHMEM checks into the common code
+>   iommu/pages: Allow sub page sizes to be passed into the allocator
+>   iommu/amd: Change rlookup, irq_lookup, and alias to use kvalloc()
+>   iommu/amd: Use roundup_pow_two() instead of get_order()
+>   iommu/riscv: Update to use iommu_alloc_pages_node_lg2()
+>   iommu: Update various drivers to pass in lg2sz instead of order to
+>     iommu pages
+>   iommu/pages: Remove iommu_alloc_page/pages()
+>   iommu/pages: Remove iommu_alloc_page_node()
+>   iommu/amd: Use iommu_alloc_pages_node_sz() for the IRT
+>   iommu/vtd: Remove iommu_alloc_pages_node()
 
-  Must be called before phy_exit().
+Applied to the new iommu-pages branch. I think this has the potential to
+become a conflict nightmare, let's see how it goes in this cycle.
 
-So let's follow that instruction.
-
-Fixes: 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
-Cc: stable@vger.kernel.org	# v5.15+
-Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index c624b7ebd118..4f92639650e3 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -410,8 +410,8 @@ static int rockchip_pcie_phy_init(struct rockchip_pcie *rockchip)
- 
- static void rockchip_pcie_phy_deinit(struct rockchip_pcie *rockchip)
- {
--	phy_exit(rockchip->phy);
- 	phy_power_off(rockchip->phy);
-+	phy_exit(rockchip->phy);
- }
- 
- static const struct dw_pcie_ops dw_pcie_ops = {
--- 
-2.49.0
+ 	Joerg
 
 
 _______________________________________________
