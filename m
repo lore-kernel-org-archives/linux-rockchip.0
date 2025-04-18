@@ -4,58 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FE3BC369AB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Apr 2025 11:45:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62ACAC369AB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Apr 2025 12:28:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gvjM7raTIwYuFneyfb86P/ke6qcAFdYOrQSIxvyFXoQ=; b=v50CdwAwTvH/9HBcdQOKL8XpgR
-	uVVfAy8+gvYuoOaH62RxW+WXVqdZMsOzPCHCXcE53fnNCgoZycSdZKP6xR20AaTvqQxmOKDjIT7HS
-	brOqXuTiyiQzN/muSxbsUhCS9isR3/casJfBGIZ4m5Pb7TBK6+056RKhqRrGPRC6th+3Wc0O/ApfN
-	p3ETeRWqBD6+t0nlV7QQL5hCRZHfkfIZlqYQu9clcz/+csmt7rwKsU9wtzVecv7pK9v9xuX7RxX/0
-	J+on7NNlG/EBC3nKlD/KuM4oWfvsPt/F7eZioJ0JYyD/6OelvaQeTnvxyoSvx5I63VRwFC4zsxSqi
-	+LiYP6OQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cw9wBb0CNIqS7iHTo9oNlLAn7yM6Vh0Pdn5Lb0ZDjq4=; b=c2Fs2VWnlNYWOK
+	jcWhWWWmgAgi9Zvt9upqH7mDWvunEaTNT9tCxKFlDxhn0koRTI7xvgz+3RdUAepyZMRi2SJMXm6LT
+	Ml58qojalYyDUtT0PsyJXcQ2xKzzgDTy/y6CIQ1YTTy1EvofFs7WKHy2ei5b9+Auo8SVEkzgPFQsw
+	x5dVe8yogOmepNMYIuMbMhB0lDGX0irBEximrnMtYHdrLy/9rtyt/2TqDYgEqgA+R6uXOqrIiJ4OF
+	oW+8swNxUuY+5s58YCJks64ncmSKi+yi95Z57EH6qaNKnPXivDOWKhxUov/iLRQSKTtYzr6ENOgtH
+	z7XxpGkJlHH/exZQdkgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5kAA-0000000Fzz5-2PLz;
-	Fri, 18 Apr 2025 11:45:42 +0000
-Received: from out-189.mta0.migadu.com ([91.218.175.189])
+	id 1u5kpn-0000000G4dD-1Yuj;
+	Fri, 18 Apr 2025 12:28:43 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5kA6-0000000FzyN-29qg
+	id 1u5kpk-0000000G4cV-3K5d
 	for linux-rockchip@lists.infradead.org;
-	Fri, 18 Apr 2025 11:45:40 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1744976732;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+pKArFsMcV1twEuEApjeMF+AmY+/ECoXgfNbrjnGlo0=;
-	b=xEoGYTdTck1JVn6h6n60BfedloWuXHkfsKcqtmq73RjbFo4SQb+z9FvN8gByieubUonmFn
-	h0RFTJQUlY4kC3yshPS9zUr4DwfixrBYwoC+ZD1X1DudPEd/B69asbjW95JUnU47mjFqLy
-	DaVkWaYfjuY6uufxZva6Bq27aliOPjh8HmHIYxaZsxcIwHPuK35FLn3jV8ZnMOSFfHnGhr
-	uw7eqToGt2hXbjqc1jyhBZUj8vJ7In/Zjmr0cCVFXZMwceu87OLh9xQkLC8v6A5m/B6coR
-	FAAMLmfa7cIi3iIpyxwhJzl8jce6rvzyl4QuE26+V3kPuk/ozmNs3G7eBm/F3Q==
-Date: Fri, 18 Apr 2025 13:45:23 +0200
-Message-Id: <D99QMGBHHYJO.1D7D0ZXJLBG9Y@cknow.org>
-Cc: <davem@davemloft.net>, <thierry.reding@gmail.com>,
- <jonathanh@nvidia.com>, <linux-crypto@vger.kernel.org>,
- <linux-tegra@vger.kernel.org>, "Dragan Simic" <dsimic@manjaro.org>,
- "Corentin Labbe" <clabbe@baylibre.com>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v3 00/10] Tegra Security Engine driver improvements
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Akhil R" <akhilrajeev@nvidia.com>, <herbert@gondor.apana.org.au>
-References: <20250224091610.49683-1-akhilrajeev@nvidia.com>
-In-Reply-To: <20250224091610.49683-1-akhilrajeev@nvidia.com>
-X-Migadu-Flow: FLOW_OUT
+	Fri, 18 Apr 2025 12:28:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1744979318;
+	bh=lYG0KfV33Uwr1Ob7HNyhn/2xoAxGlPJZBkB55E4P6aQ=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=hvAAh2qTxnkbKjOiu3fdw6pfGvlvVlSa81V9eaDcW/iMjRXjaPRNwCzkI7IKmGqWn
+	 /XkHnGx77ddnC86k8vzo12qipvxl9Pf9Lq53hLZJ1/1J3rwtykKnuBYYjY2y6K00p4
+	 mKPk4XG8tz7HBrI/HasI09Tj3MCf6h9ChCx+p4NyxB2oc1ye4ib/jxN9mgNzKBQ6+c
+	 HDFeK35qHjTSy3gdfDiTibNnfpw4By7l0TRVGNGlUZOHfMWpkvt699QOMhHcLoyObt
+	 f27iDZrKtEUKQ1yEJNtl7jnFAZ3h2n63uMHQXBxl8LlsLCMkMEOVPQTZgnNSm3bqSg
+	 Ymgd+X9iESMog==
+Received: from [IPv6:2606:6d00:15:9913::5ac] (unknown [IPv6:2606:6d00:15:9913::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ABD8D17E00F0;
+	Fri, 18 Apr 2025 14:28:37 +0200 (CEST)
+Message-ID: <4be400281b3fe53b724025ffa837ceed777d7699.camel@collabora.com>
+Subject: Re: [PATCH v9 3/4] media: rkvdec: Add get_image_fmt ops
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+	 <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Date: Fri, 18 Apr 2025 08:28:35 -0400
+In-Reply-To: <8d1c3c82-dbdc-4064-8188-bab586996302@kwiboo.se>
+References: <20250417-b4-rkvdec_h264_high10_and_422_support-v9-0-0e8738ccb46b@collabora.com>
+	 <20250417-b4-rkvdec_h264_high10_and_422_support-v9-3-0e8738ccb46b@collabora.com>
+	 <8d1c3c82-dbdc-4064-8188-bab586996302@kwiboo.se>
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.0 (3.56.0-1.fc42) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250418_044539_122856_F9483C4B 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20250418_052841_006865_89B6A5C9 
+X-CRM114-Status: GOOD (  21.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,178 +74,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8630638012894311957=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============8630638012894311957==
-Content-Type: multipart/signed;
- boundary=1b697cfb805afad669590ac602a8a82f42215c1070e50bde362d177e9cb2;
- micalg=pgp-sha512; protocol="application/pgp-signature"
-
---1b697cfb805afad669590ac602a8a82f42215c1070e50bde362d177e9cb2
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-
-
-Hi,
-
-Earlier today I tried to boot my 6.15-rc1 kernel on my RockPro64
-(rk3399) and that didn't go too well:
-
-```
-[   13.946999] Unable to handle kernel paging request at virtual address fe=
-fefefefefeff46
-[   13.947010] Mem abort info:
-[   13.947012]   ESR =3D 0x0000000096000044
-[   13.947014]   EC =3D 0x25: DABT (current EL), IL =3D 32 bits
-[   13.947018]   SET =3D 0, FnV =3D 0
-[   13.947020]   EA =3D 0, S1PTW =3D 0
-[   13.947022]   FSC =3D 0x04: level 0 translation fault
-[   13.947024] Data abort info:
-[   13.947026]   ISV =3D 0, ISS =3D 0x00000044, ISS2 =3D 0x00000000
-[   13.947029]   CM =3D 0, WnR =3D 1, TnD =3D 0, TagAccess =3D 0
-[   13.947031]   GCS =3D 0, Overlay =3D 0, DirtyBit =3D 0, Xs =3D 0
-[   13.947034] [fefefefefefeff46] address between user and kernel address r=
-anges
-[   13.947039] Internal error: Oops: 0000000096000044 [#1]  SMP
-[   13.947044] Modules linked in: snd_soc_core(+) dw_hdmi_cec(+) des_generi=
-c rockchip_rga gpio_ir_recv leds_gpio(+) panfrost(+) v4l2_vp9 v4l2_h264 ecd=
-h_generic snd_compress rk_crypto gpu_sched videobuf2_dma_contig spi_nor(+) =
-rfkill snd_pcm_dmaengine videobuf2_dma_sg v4l2_mem2mem drm_shmem_helper vid=
-eobuf2_memops snd_pcm crypto_engine rockchip_saradc snd_timer libdes videob=
-uf2_v4l2 snd pwrseq_core mtd soundcore videodev industrialio_triggered_buff=
-er videobuf2_common kfifo_buf mc coresight_cpu_debug rockchip_thermal cores=
-ight_etm4x industrialio coresight cpufreq_dt binfmt_misc pkcs8_key_parser e=
-fi_pstore configfs nfnetlink ip_tables x_tables autofs4 ext4 crc16 mbcache =
-jbd2 phy_rockchip_samsung_hdptx phy_rockchip_naneng_combphy panel_boe_th101=
-mb31ig002_28a xhci_plat_hcd realtek xhci_hcd rockchipdrm dw_hdmi_qp dwmac_r=
-k stmmac_platform dw_hdmi rk808_regulator stmmac dwc3 cec fusb302 udc_core =
-rc_core ulpi tcpm pcs_xpcs dw_mipi_dsi fan53555 typec analogix_dp phylink p=
-hy_rockchip_emmc mdio_devres pwm_regulator dwc3_of_simple
-[   13.947183]  drm_display_helper sdhci_of_arasan of_mdio gpio_rockchip sd=
-hci_pltfm fixed_phy drm_client_lib ehci_platform ohci_platform fixed drm_dm=
-a_helper gpio_keys phy_rockchip_pcie phy_rockchip_inno_usb2 ohci_hcd sdhci =
-ehci_hcd drm_kms_helper fwnode_mdio usbcore nvmem_rockchip_efuse phy_rockch=
-ip_typec dw_wdt drm pl330 rockchip_dfi io_domain libphy i2c_rk3x cqhci dw_m=
-mc_rockchip spi_rockchip pwm_rockchip usb_common dw_mmc_pltfm dw_mmc
-[   13.947244] CPU: 5 UID: 0 PID: 617 Comm: cryptomgr_test Tainted: G      =
-   C          6.15-rc1+unreleased-arm64-cknow #1 NONE  Debian 6.15~rc1-1~ex=
-p1
-[   13.947252] Tainted: [C]=3DCRAP
-[   13.947254] Hardware name: Pine64 RockPro64 v2.1 (DT)
-[   13.947257] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=
-=3D--)
-[   13.947262] pc : crypto_ahash_init+0x68/0xf0
-[   13.947273] lr : crypto_ahash_init+0x50/0xf0
-[   13.947277] sp : ffff80008097b950
-[   13.947278] x29: ffff80008097b950 x28: 0000000000000000 x27: ffff5e7f8d1=
-10200
-[   13.947285] x26: 0000000000000014 x25: ffff80008097bb48 x24: ffff5e7f817=
-d0400
-[   13.947292] x23: ffffd5ef022c5008 x22: 0000000000000000 x21: ffff5e7f8d1=
-10610
-[   13.947298] x20: ffff5e7f817d0450 x19: fefefefefefefefe x18: 00000000fff=
-fffff
-[   13.947304] x17: 0000000000000001 x16: ffffd5ef1ee6c8a8 x15: ffff8000809=
-7bc78
-[   13.947310] x14: ffff80008097baa0 x13: 0000000000000000 x12: 00000000000=
-00000
-[   13.947316] x11: ffff5e80777cd470 x10: ffff5e80777cd450 x9 : ffffd5ef022=
-c50ac
-[   13.947322] x8 : ffff80008097ba08 x7 : 0000000000000000 x6 : ffffff79be1=
-40702
-[   13.947327] x5 : 1032547698badcfe x4 : efcdab8967452301 x3 : 00000000c3d=
-2e1f0
-[   13.947333] x2 : 0000000000000000 x1 : ffff5e7f8d110400 x0 : 00000000000=
-00000
-[   13.947339] Call trace:
-[   13.947342]  crypto_ahash_init+0x68/0xf0 (P)
-[   13.947348]  rk_ahash_init+0x3c/0x58 [rk_crypto]
-[   13.947358]  ahash_do_req_chain+0x13c/0x278
-[   13.947363]  crypto_ahash_init+0xc4/0xf0
-[   13.947367]  test_ahash_vec_cfg+0x340/0x748
-[   13.947372]  __alg_test_hash.isra.0+0x1e0/0x3b8
-[   13.947375]  alg_test_hash+0xe8/0x130
-[   13.947379]  alg_test+0x180/0x710
-[   13.947383]  cryptomgr_test+0x2c/0x58
-[   13.947389]  kthread+0x120/0x220
-[   13.947397]  ret_from_fork+0x10/0x20
-[   13.947406] Code: b9002e96 eb13029f 540001c0 f94012a1 (f9002661)=20
-[   13.947410] ---[ end trace 0000000000000000 ]---
-```
-
-Much more, including full dmesg output can be found at
-https://paste.sr.ht/~diederik/f440d669e7f94983b70acebda18a0b9d716f230e
-
-When I mentioned this to Dragan Simic, he noted there were similarities
-between Rockchip's crypto engine and Tegra's.
-Trying to find a good commit to (shorttrack) a ``git bisect`` operation,
-I stumbled upon this patch set. And that just seemed like too much of a
-coincidence :-)
-
-I don't have the skills/knowledge to fix this myself, but I was
-wondering/hoping you could maybe directly see/point to where things are
-going (so) wrong in the Rockchip code?
-
-Thanks in advance,
-  Diederik
-
-On Mon Feb 24, 2025 at 10:16 AM CET, Akhil R wrote:
-> With the CRYPTO_TEST now being run asynchronously unveiled some
-> concurrency issues in the Security Engine driver. These were not
-> caught during functional or fuzz testing as all the tests were run
-> synchronously.
->
-> This patchset contains the fixes for the concurrency issues and few
-> other improvements identified during the stress-ng and cryptsetup tests.
->
-> ---
->
-> Akhil R (10):
->   crypto: tegra: Use separate buffer for setkey
->   crypto: tegra: Do not use fixed size buffers
->   crypto: tegra: finalize crypto req on error
->   crypto: tegra: check return value for hash do_one_req
->   crypto: tegra: Transfer HASH init function to crypto engine
->   crypto: tegra: Fix HASH intermediate result handling
->   crypto: tegra: Fix CMAC intermediate result handling
->   crypto: tegra: Set IV to NULL explicitly for AES ECB
->   crypto: tegra: Reserve keyslots to allocate dynamically
->   crypto: tegra: Use HMAC fallback when keyslots are full
->
->  drivers/crypto/tegra/tegra-se-aes.c  | 401 ++++++++++++++++++---------
->  drivers/crypto/tegra/tegra-se-hash.c | 287 ++++++++++++-------
->  drivers/crypto/tegra/tegra-se-key.c  |  27 +-
->  drivers/crypto/tegra/tegra-se-main.c |  16 +-
->  drivers/crypto/tegra/tegra-se.h      |  39 ++-
->  5 files changed, 523 insertions(+), 247 deletions(-)
-
-
---1b697cfb805afad669590ac602a8a82f42215c1070e50bde362d177e9cb2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaAI7VgAKCRDXblvOeH7b
-bnlmAQCZE3ooULP3BkjzEPOsJBp2ZB5l3ncqiOxI1MXlJtoZcAD+Km+imkb91I0p
-lDUO5FnFCynorpXbTC9a0sjrgQD06wk=
-=atQd
------END PGP SIGNATURE-----
-
---1b697cfb805afad669590ac602a8a82f42215c1070e50bde362d177e9cb2--
-
-
---===============8630638012894311957==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8630638012894311957==--
-
+TGUgdmVuZHJlZGkgMTggYXZyaWwgMjAyNSDDoCAwODoyMiArMDIwMCwgSm9uYXMgS2FybG1hbiBh
+IMOpY3JpdMKgOgo+IEhpIE5pY29sYXMsCj4gCj4gT24gMjAyNS0wNC0xNyAyMzo1OCwgTmljb2xh
+cyBEdWZyZXNuZSB3cm90ZToKPiA+IEZyb206IEpvbmFzIEthcmxtYW4gPGpvbmFzQGt3aWJvby5z
+ZT4KPiA+IAo+ID4gQWRkIHN1cHBvcnQgZm9yIGEgZ2V0X2ltYWdlX2ZtdCgpIG9wcyB0aGF0IHJl
+dHVybnMgdGhlIHJlcXVpcmVkIGltYWdlCj4gPiBmb3JtYXQuCj4gPiAKPiA+IFRoZSBDQVBUVVJF
+IGZvcm1hdCBpcyByZXNldCB3aGVuIHRoZSByZXF1aXJlZCBpbWFnZSBmb3JtYXQgY2hhbmdlcyBh
+bmQKPiA+IHRoZSBidWZmZXIgcXVldWUgaXMgbm90IGJ1c3kuCj4gPiAKPiA+IFNpZ25lZC1vZmYt
+Ynk6IEpvbmFzIEthcmxtYW4gPGpvbmFzQGt3aWJvby5zZT4KPiA+IFRlc3RlZC1ieTogTmljb2xh
+cyBEdWZyZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPgo+ID4gQ28tZGV2ZWxv
+cGVkLWJ5OiBOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+
+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1ZnJlc25lQGNv
+bGxhYm9yYS5jb20+Cj4gPiAtLS0KPiA+IMKgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9y
+a3ZkZWMuYyB8IDM1ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gPiDCoGRy
+aXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmggfMKgIDIgKysKPiA+IMKgMiBmaWxl
+cyBjaGFuZ2VkLCAzNyBpbnNlcnRpb25zKCspCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3Jr
+dmRlYy9ya3ZkZWMuYwo+ID4gaW5kZXggN2I3ODAzOTJiYjZhNjNjYzk1NDY1NWVmOTQwZTg3MTQ2
+ZDJiODUyZi4uNmM2ZmU0MTFmNDg3NzI0MTllMTgxMGQ4NjlhYjQwZDE2ODg0OGU2NSAxMDA2NDQK
+PiA+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMKPiA+ICsrKyBi
+L2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMKPiA+IEBAIC03Miw2ICs3Miwx
+NSBAQCBzdGF0aWMgYm9vbCBya3ZkZWNfaXNfdmFsaWRfZm10KHN0cnVjdCBya3ZkZWNfY3R4ICpj
+dHgsIHUzMiBmb3VyY2MsCj4gPiDCoAlyZXR1cm4gZmFsc2U7Cj4gPiDCoH0KPiA+IMKgCj4gPiAr
+c3RhdGljIGJvb2wgcmt2ZGVjX2ZtdF9jaGFuZ2VkKHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgsCj4g
+PiArCQkJwqDCoMKgwqDCoMKgIGVudW0gcmt2ZGVjX2ltYWdlX2ZtdCBpbWFnZV9mbXQpCj4gCj4g
+SnVzdCBhIHNtYWxsIG5pdHBpY2s6Cj4gCj4gTWF5YmUgdGhpcyBmdW5jdGlvbiBzaG91bGQgYmUg
+Y2FsbGVkIHJrdmRlY19pbWFnZV9mbXRfY2hhbmdlZCgpIGFuZAo+IGNvdWxkIGJlIG1vdmVkIGNs
+b3NlciB0byBya3ZkZWNfaW1hZ2VfZm10X21hdGNoKCkgYXMgdGhvc2UgdHdvIGFyZQo+IHJlbGF0
+ZWQgdG8gaW1hZ2VfZm10IGFuZCBub3QgdGhlIHBpeGZtdC9mb3VyY2MuCgpBcHBsaWVkIGxvY2Fs
+bHkuIFdpdGggdGhpcyBjaGFuZ2UsIG1heSBJIGhhdmUgeW91ciBSYiA/Cgp0aGFua3MsCk5pY29s
+YXMKCj4gCj4gUmVnYXJkcywKPiBKb25hcwo+IAo+ID4gK3sKPiA+ICsJaWYgKGltYWdlX2ZtdCA9
+PSBSS1ZERUNfSU1HX0ZNVF9BTlkpCj4gPiArCQlyZXR1cm4gZmFsc2U7Cj4gPiArCj4gPiArCXJl
+dHVybiBjdHgtPmltYWdlX2ZtdCAhPSBpbWFnZV9mbXQ7Cj4gPiArfQo+ID4gKwo+ID4gwqBzdGF0
+aWMgdm9pZCBya3ZkZWNfZmlsbF9kZWNvZGVkX3BpeGZtdChzdHJ1Y3Qgcmt2ZGVjX2N0eCAqY3R4
+LAo+ID4gwqAJCQkJwqDCoMKgwqDCoMKgIHN0cnVjdCB2NGwyX3BpeF9mb3JtYXRfbXBsYW5lICpw
+aXhfbXApCj4gPiDCoHsKPiA+IEBAIC0xMTgsOCArMTI3LDM0IEBAIHN0YXRpYyBpbnQgcmt2ZGVj
+X3RyeV9jdHJsKHN0cnVjdCB2NGwyX2N0cmwgKmN0cmwpCj4gPiDCoAlyZXR1cm4gMDsKPiA+IMKg
+fQo+ID4gwqAKPiA+ICtzdGF0aWMgaW50IHJrdmRlY19zX2N0cmwoc3RydWN0IHY0bDJfY3RybCAq
+Y3RybCkKPiA+ICt7Cj4gPiArCXN0cnVjdCBya3ZkZWNfY3R4ICpjdHggPSBjb250YWluZXJfb2Yo
+Y3RybC0+aGFuZGxlciwgc3RydWN0IHJrdmRlY19jdHgsIGN0cmxfaGRsKTsKPiA+ICsJY29uc3Qg
+c3RydWN0IHJrdmRlY19jb2RlZF9mbXRfZGVzYyAqZGVzYyA9IGN0eC0+Y29kZWRfZm10X2Rlc2M7
+Cj4gPiArCWVudW0gcmt2ZGVjX2ltYWdlX2ZtdCBpbWFnZV9mbXQ7Cj4gPiArCXN0cnVjdCB2YjJf
+cXVldWUgKnZxOwo+ID4gKwo+ID4gKwkvKiBDaGVjayBpZiB0aGlzIGNoYW5nZSByZXF1aXJlcyBh
+IGNhcHR1cmUgZm9ybWF0IHJlc2V0ICovCj4gPiArCWlmICghZGVzYy0+b3BzLT5nZXRfaW1hZ2Vf
+Zm10KQo+ID4gKwkJcmV0dXJuIDA7Cj4gPiArCj4gPiArCWltYWdlX2ZtdCA9IGRlc2MtPm9wcy0+
+Z2V0X2ltYWdlX2ZtdChjdHgsIGN0cmwpOwo+ID4gKwlpZiAocmt2ZGVjX2ZtdF9jaGFuZ2VkKGN0
+eCwgaW1hZ2VfZm10KSkgewo+ID4gKwkJdnEgPSB2NGwyX20ybV9nZXRfdnEoY3R4LT5maC5tMm1f
+Y3R4LAo+ID4gKwkJCQnCoMKgwqDCoCBWNEwyX0JVRl9UWVBFX1ZJREVPX0NBUFRVUkVfTVBMQU5F
+KTsKPiA+ICsJCWlmICh2YjJfaXNfYnVzeSh2cSkpCj4gPiArCQkJcmV0dXJuIC1FQlVTWTsKPiA+
+ICsKPiA+ICsJCWN0eC0+aW1hZ2VfZm10ID0gaW1hZ2VfZm10Owo+ID4gKwkJcmt2ZGVjX3Jlc2V0
+X2RlY29kZWRfZm10KGN0eCk7Cj4gPiArCX0KPiA+ICsKPiA+ICsJcmV0dXJuIDA7Cj4gPiArfQo+
+ID4gKwo+ID4gwqBzdGF0aWMgY29uc3Qgc3RydWN0IHY0bDJfY3RybF9vcHMgcmt2ZGVjX2N0cmxf
+b3BzID0gewo+ID4gwqAJLnRyeV9jdHJsID0gcmt2ZGVjX3RyeV9jdHJsLAo+ID4gKwkuc19jdHJs
+ID0gcmt2ZGVjX3NfY3RybCwKPiA+IMKgfTsKPiA+IMKgCj4gPiDCoHN0YXRpYyBjb25zdCBzdHJ1
+Y3Qgcmt2ZGVjX2N0cmxfZGVzYyBya3ZkZWNfaDI2NF9jdHJsX2Rlc2NzW10gPSB7Cj4gPiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuaCBiL2RyaXZlcnMv
+c3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmgKPiA+IGluZGV4IDZmOGNmNTBjNWQ5OWFhZDJm
+NTJlMzIxZjU0ZjNjYTE3MTY2ZGRmOTguLmU0NjZhMjc1M2NjZmMxMzczOGUwYTY3MmJjNTc4ZTUy
+MWFmMmMzZjIgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3Jr
+dmRlYy5oCj4gPiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5oCj4g
+PiBAQCAtNzMsNiArNzMsOCBAQCBzdHJ1Y3Qgcmt2ZGVjX2NvZGVkX2ZtdF9vcHMgewo+ID4gwqAJ
+CcKgwqDCoMKgIHN0cnVjdCB2YjJfdjRsMl9idWZmZXIgKmRzdF9idWYsCj4gPiDCoAkJwqDCoMKg
+wqAgZW51bSB2YjJfYnVmZmVyX3N0YXRlIHJlc3VsdCk7Cj4gPiDCoAlpbnQgKCp0cnlfY3RybCko
+c3RydWN0IHJrdmRlY19jdHggKmN0eCwgc3RydWN0IHY0bDJfY3RybCAqY3RybCk7Cj4gPiArCWVu
+dW0gcmt2ZGVjX2ltYWdlX2ZtdCAoKmdldF9pbWFnZV9mbXQpKHN0cnVjdCBya3ZkZWNfY3R4ICpj
+dHgsCj4gPiArCQkJCQnCoMKgwqDCoMKgwqAgc3RydWN0IHY0bDJfY3RybCAqY3RybCk7Cj4gPiDC
+oH07Cj4gPiDCoAo+ID4gwqBlbnVtIHJrdmRlY19pbWFnZV9mbXQgewo+ID4gCj4gCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
