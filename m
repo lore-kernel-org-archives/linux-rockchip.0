@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97D24C369AB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Apr 2025 09:57:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8315AC369C9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Apr 2025 10:01:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ehRF0fUTWEbG2DN6EhrGVOfahyBsniXzi1WC7PQzIS0=; b=nruWUoofOk5+Gn
-	WVclP7bf4EWSY0s53UJqoAHJd7LTt7Flpf2+9A2xVG/osHOEJuwhEE181lZBVpY9u8HYn4fJEN2lC
-	zXEYITFpjwdnR3gNk3Ka1ywi0GYS6ZqdjBGstDuMwP0oECIWSUKJZ3Bumq3JBV6GyavsHqcTJcnMh
-	gt/wlNXMrbUVdt4lLVpCAJ+XwA8I0Zphj/y+nUcVDzw30JOW8yi2lJ9EFPgX6/dSlPtsPTfYxqeX+
-	ALelQ1N9Ht1xuq2dTxOXcB4Um0QHRetM56ZRAyDjc8ENyaCoWf9UgPb5hngR2rQ2tDAldyiCJz1Ek
-	09Mx5SiTCXJ2gRvg/LxQ==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Yf0CSgsYsJtWNTku6ikm5CmwCeQYQHbjzi7+7gd/550=; b=q4Mx0E6U4p+P4i
+	9VTd90CMPTuNoIyMQebkYzlkfK/6uZm9xFYkvmiw1mUkh7pOeIrdXg7LwSCkkE2VfqaDvxjlWJQYB
+	4l/hyCzYbHF/Tdk2EddJvuZA9ur8ya9vL53Iv7ecNSX58+4+5wds02lyrzYprjJwUCgTN93kSN3No
+	MVohbi+hccETWbK+/KlXf/Dfb8F57rLki8a+w/oDP+ZTNZBquOnC/hAqYw6Z3tx3sqesCugKAY5UK
+	zq/Dswpp5iL+RBFNQFVd6TDRuLPhIm3vBEPaOupuny978SaNIRA2+Lz1WB+gbDFFOsGpTwIFRJ5DQ
+	Z27OPfZqBFzuXnrh/Zaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5iT7-0000000FoJ9-1iv1;
-	Fri, 18 Apr 2025 09:57:09 +0000
-Received: from mail-m49248.qiye.163.com ([45.254.49.248])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5iNd-0000000FnVj-0oW3;
-	Fri, 18 Apr 2025 09:51:30 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 125a9718a;
-	Fri, 18 Apr 2025 17:51:16 +0800 (GMT+08:00)
-From: Kever Yang <kever.yang@rock-chips.com>
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Rob Herring <robh@kernel.org>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	"David S. Miller" <davem@davemloft.net>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	David Wu <david.wu@rock-chips.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3 1/3] dt-bindings: net: Add support for rk3562 dwmac
-Date: Fri, 18 Apr 2025 17:51:12 +0800
-Message-Id: <20250418095114.271562-1-kever.yang@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
+	id 1u5iWo-0000000Foyd-0kiV;
+	Fri, 18 Apr 2025 10:00:58 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u5iNx-0000000Fnbi-3sxB;
+	Fri, 18 Apr 2025 09:51:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=/lz4kzDd+Ofx/tYRxsAmzeEQiMcP0P6DAZ6wk+IAMqs=; b=A
+	8865jdie+Au4JHglYjTkQ0ldqnWZIR0oMh3m5Aq/jB2eTyOPM8AyGa1VWuNqhcUD
+	B7FesdBs1MfaNnT9h2TYICN4dqOb0tOTn9Cg9v1bBk91R7PgLB64tSazJSStNfou
+	663VV4GGjYsCwW1VpVVnNniDfMaUqKkXTBnrn3+3lI=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-120 (Coremail) ; Fri, 18 Apr 2025 17:50:55 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Fri, 18 Apr 2025 17:50:55 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Daniel Stone" <daniel@fooishbar.org>
+Cc: "Konstantin Shabanov" <mail@etehtsea.me>,
+	"Sandy Huang" <hjc@rock-chips.com>,
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+	"Andy Yan" <andy.yan@rock-chips.com>,
+	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>,
+	"Maxime Ripard" <mripard@kernel.org>,
+	"Thomas Zimmermann" <tzimmermann@suse.de>,
+	"David Airlie" <airlied@gmail.com>,
+	"Simona Vetter" <simona@ffwll.ch>, "Dan Callaghan" <djc@djc.id.au>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re:Re: [PATCH v4] drm/rockchip: Disable AFBC for res >2560 on
+ rk3399
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2025 www.mailtech.cn 163com
+In-Reply-To: <CAPj87rNDsyBfy=P=0SzTm7u6Na6BpeZSpEt1mRPhLCd6rHXzTA@mail.gmail.com>
+References: <20250414095332.9674-1-mail@etehtsea.me>
+ <20250417065759.5948-1-mail@etehtsea.me>
+ <17402f2e.360.1964640c3d3.Coremail.andyshrk@163.com>
+ <CAPj87rNDsyBfy=P=0SzTm7u6Na6BpeZSpEt1mRPhLCd6rHXzTA@mail.gmail.com>
+X-NTES-SC: AL_Qu2fBvWdtkAu4yadYOkfmkcVgOw9UcO5v/Qk3oZXOJF8jDLp/j0HdmVSAWfk9OO0GyOzmgmGQhZw7+16UYtfUYcQTnngy+GPTIlCzbjsNbhLSQ==
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRpKSVZDT00ZSUsfTBpDQkxWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a96484f455003afkunm125a9718a
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MRQ6GTo4DDIMAgouIk4UI0lO
-	PzcwCjNVSlVKTE9PQk1CQ0xDTUhOVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFISUNLNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=QWT88HbvamFv90XR9yBLMFnQCm6eCs3/nVDkf5NLLpqNUvkbt1AIkBqXuAaCQDsRrcdrxFk3ooh0W8cI/yLSCihrnL+6gPNC59XfMc8GygwNI6zOfG+hNkmYwnUuKyXDaKEnBAqMGyIAsvvyANtXWZ2Pe0Bis8nHGBiLrzj+wPA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=+3Zq6GxI1QoLvi6Yw419evhTpUoxkex9H7YRQ3ne+wo=;
-	h=date:mime-version:subject:message-id:from;
+Message-ID: <a893834.9206.196484ef2ab.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: eCgvCgD3P7Z_IAJowZyaAA--.49852W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hkzXmgCGhqq-gACsa
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250418_025129_509948_6B1850AB 
-X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-CacheID: sfid-20250418_025150_288959_F8FCAE8C 
+X-CRM114-Status: UNSURE (   6.14  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,69 +88,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a rockchip,rk3562-gmac compatible for supporting the 2 gmac
-devices on the rk3562.
-rk3562 only has 4 clocks available for gmac module.
 
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
----
+Hi 
+At 2025-04-18 17:43:19, "Daniel Stone" <daniel@fooishbar.org> wrote:
+>Hi Andy,
+>
+>On Fri, 18 Apr 2025 at 01:16, Andy Yan <andyshrk@163.com> wrote:
+>> I prefer the V1 version PATCH[0]. This is because we do not deal with hardware-related
+>> differences at this level.  It involves a VOP-related restriction and we always  handle
+>> limitiation like this  within the VOP driver .
+>
+>As said in the review for v1, this is not enough for generic userspace.
+>
+>If drmModeAddFB2WithModifiers() fails, userspace knows that the buffer
+>can never work in that configuration, and it should fall back. If
+>drmModeAtomicCommit(DRM_MODE_ATOMIC_TEST_ONLY) fails, userspace does
+>not know that the buffer can _never_ work, because the failure may be
+>transient or due to a combination of things.
+>
+>Returning the more localised error saves userspace a lot of work and
+>enables a more optimal system.
 
-Changes in v3:
-- Collect ack tag
-- rebase to v6.15-rc1
+Okay,  fine, ACK.
 
-Changes in v2:
-- Fix schema entry and add clocks minItem change
-
- Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 3 +++
- Documentation/devicetree/bindings/net/snps,dwmac.yaml     | 1 +
- 2 files changed, 4 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-index 0ac7c4b47d6b..a0814e807bd5 100644
---- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-@@ -25,6 +25,7 @@ select:
-           - rockchip,rk3368-gmac
-           - rockchip,rk3399-gmac
-           - rockchip,rk3528-gmac
-+          - rockchip,rk3562-gmac
-           - rockchip,rk3568-gmac
-           - rockchip,rk3576-gmac
-           - rockchip,rk3588-gmac
-@@ -51,6 +52,7 @@ properties:
-       - items:
-           - enum:
-               - rockchip,rk3528-gmac
-+              - rockchip,rk3562-gmac
-               - rockchip,rk3568-gmac
-               - rockchip,rk3576-gmac
-               - rockchip,rk3588-gmac
-@@ -149,6 +151,7 @@ allOf:
-             contains:
-               enum:
-                 - rockchip,rk3528-gmac
-+                - rockchip,rk3562-gmac
-     then:
-       properties:
-         clocks:
-diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-index 78b3030dc56d..7498bcad895a 100644
---- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-@@ -83,6 +83,7 @@ properties:
-         - rockchip,rk3328-gmac
-         - rockchip,rk3366-gmac
-         - rockchip,rk3368-gmac
-+        - rockchip,rk3562-gmac
-         - rockchip,rk3576-gmac
-         - rockchip,rk3588-gmac
-         - rockchip,rk3399-gmac
--- 
-2.25.1
-
-
+>
+>Cheers,
+>Daniel
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
