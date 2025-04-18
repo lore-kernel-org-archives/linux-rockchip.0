@@ -4,67 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 070BDC369C2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Apr 2025 00:44:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D5C9C369C2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Apr 2025 01:46:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kuHzDFfK8pdU4FZpSLXHOJbg4vAiV5Qweq1cefrqL5I=; b=G8yjwZ6JgMPgG/
-	+mG7cQWksSA8y0PJ6DVv+enKbtsUbEWCtPau3Cs6ODgPTyRdd+PiLU1JMqEoPBKvmCDO/PMTP3wVM
-	6hFMODwnwVskjn0RgNI1UXfX3e2WJvHbrSpMRAepFNtdJ8YvdXz36gHf7ml6ix2a2t++Unyg/QTej
-	DkBrm7nTQ2qfpx7tNIZ1Sl4MX1ebrgQvpk/6+PBcnk+X8FlSFtyG8xnCyZO/NWpdTusnE5j4CCJW3
-	HMkpZrbubfvPZbLz5te85eqKscubZNJ9yrKK0m4xxfaPq/Oa4FmZEcgGyw19dIJbzAfKisfSpUwHr
-	L4iZ4V1imAUfcPFONiiQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=O2BpXRpoPJ7qN7pcoOsPbhQF/AW27hBAChAjjjE9sZ4=; b=FEEbYfDuK6/huJ
+	trurVVyGIQdOFMEmJTuM9PYDp9jSy6klnfjQm2TW/aUrQRpcnmeRqLHY4R6qcyoEKOX6uh5mQM/vB
+	hl2TThobLtjIYZAbyLsXBRmOc7XO7vAqKlJdEMgbXjYj+VtDCDW6s/JqOdQxMPTAaRqudxNTF0PZR
+	ulqy9aImjGq7a1/UyPH2+SW4F3Kx3ZOdWhQCvV2Es1gzYNaFgjhflPvvvNKnmZCVzKFB0+IbOjhum
+	CMegEFLHUCHtf1q+NbroxFddGlbTPKJEX2r0eorbJiYjNwH4U4xS0HzN80DxegTQqzfeLCpEUvrZL
+	0L9605SAnJ4T6OZD3f7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5ZqY-0000000EiQv-0V9G;
-	Fri, 18 Apr 2025 00:44:46 +0000
-Received: from mail-m1973178.qiye.163.com ([220.197.31.78])
+	id 1u5aoB-0000000EnGi-3Nj7;
+	Fri, 18 Apr 2025 01:46:23 +0000
+Received: from mail-m15577.qiye.163.com ([101.71.155.77])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5ZqU-0000000EiOo-3Cvb;
-	Fri, 18 Apr 2025 00:44:44 +0000
-Received: from [172.16.12.129] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 12477934f;
-	Fri, 18 Apr 2025 08:44:31 +0800 (GMT+08:00)
-Message-ID: <c70cef1b-9f37-5a73-faf3-4d1cac6bcdde@rock-chips.com>
-Date: Fri, 18 Apr 2025 08:43:54 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Cc: shawn.lin@rock-chips.com, Detlev Casanova
- <detlev.casanova@collabora.com>, linux-pm@vger.kernel.org,
- linux-mmc@vger.kernel.org,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2] mmc: sdhci-of-dwcmshc: add PD workaround on RK3576
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- Finley Xiao <finley.xiao@rock-chips.com>,
- Adrian Hunter <adrian.hunter@intel.com>
-References: <20250412-rk3576-emmc-fix-v2-1-830e653ad4f0@collabora.com>
+	id 1u5ao9-0000000EnFV-0pg9
+	for linux-rockchip@lists.infradead.org;
+	Fri, 18 Apr 2025 01:46:23 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 12496460c;
+	Fri, 18 Apr 2025 09:46:15 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20250412-rk3576-emmc-fix-v2-1-830e653ad4f0@collabora.com>
+To: Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>
+Cc: Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v3] PCI: dw-rockchip: Add system PM support
+Date: Fri, 18 Apr 2025 09:45:59 +0800
+Message-Id: <1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkpITlZNGk9PHRhKT0hNH05WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0IYS1YaTxhISUseGU8ZTEtWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a96465ab30c09cckunm12477934f
+X-HM-Tid: 0a9646933a4809cckunm12496460c
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NiI6Tio5GjJNFhU4Mg8fS0ks
-	NTUwCRBVSlVKTE9PQkhMS0xJQ09IVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQU1KTkk3Bg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MTo6Hww5FjJLTxUMDjoSLi8v
+	ERIKCw5VSlVKTE9PQk9LTExMSEJPVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpJS0lJNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=Tk//MLA56Ghww08hBdr9vFuE8XaqrrlB+sMy2CcuqZJ3Ion+u7E9rGD/rlImMVOzl/RJ1cGe5d/e6fGfqh5LKM5ABl2DSUs6liUiPPBhBSXaeBm77NSls+uwEOj4zX9UlsU1xyrp7rIE+06HHojiLnttWKb5J/whbh7OB6+Tfs0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=Lcb43dSZS3+Y/L9GUNHVrV5chNZ/V2WVLs/FwGaCc1s=;
+	b=RGq0rn4KB8o4qve8Gn2sEr3VZEC4v3ebdmoFxdbf6tPQLIedtRTAoITWuqIuNt+8AYOo3xjH9NxhI4TqpBBIVP4n5Jaeq42u30RlqAnzw8Po83GRlEUGpgdLFa+0O0ZeCYHUgpkZ0ywlk1SkS5jpMFEt9gFBxaIrXXdwKuXwqzs=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=tAnUEtBhTHweDMKSeGThgbL6GGunvad+35JgxNSWfBY=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_174443_275770_727BE24C 
-X-CRM114-Status: GOOD (  34.81  )
+X-CRM114-CacheID: sfid-20250417_184621_713173_D508F2AE 
+X-CRM114-Status: GOOD (  23.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,97 +69,373 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTmljb2xhcywKCuWcqCAyMDI1LzA0LzEzIOaYn+acn+aXpSA0OjQ1LCBOaWNvbGFzIEZyYXR0
-YXJvbGkg5YaZ6YGTOgo+IFJLMzU3NidzIHBvd2VyIGRvbWFpbnMgaGF2ZSBhIHBlY3VsaWFyIHBy
-b2JsZW0gd2hlcmUgdGhlIFBEX05WTQo+IHBvd2VyIGRvbWFpbiwgb2Ygd2hpY2ggdGhlIHNkaGNp
-IGNvbnRyb2xsZXIgaXMgYSBwYXJ0LCBzZWVtaW5nbHkgZG9lcwo+IG5vdCBoYXZlIGlkZW1wb3Rl
-bnQgZGlzYWJsZS9lbmFibGUuIFRoZSBlbmQgZWZmZWN0IGlzIHRoYXQgaWYgUERfTlZNCj4gZ2V0
-cyB0dXJuZWQgb2ZmIGJ5IHRoZSBnZW5lcmljIHBvd2VyIGRvbWFpbiBsb2dpYyBiZWNhdXNlIGFs
-bCB0aGUKPiBkZXZpY2VzIGRlcGVuZGluZyBvbiBpdCBhcmUgc3VzcGVuZGVkLCB0aGVuIHRoZSBu
-ZXh0IHRpbWUgdGhlIHNkaGNpCj4gZGV2aWNlIGlzIHVuc3VzcGVuZGVkLCBpdCdsbCBoYW5nIHRo
-ZSBTb0MgYXMgc29vbiBhcyBpdCB0cmllcyBhY2Nlc3NpbmcKPiB0aGUgQ1FIQ0kgcmVnaXN0ZXJz
-Lgo+IAo+IFJLMzU3NidzIFVGUyBzdXBwb3J0IG5lZWRlZCBhIG5ldyBkZXZfcG1fZ2VucGRfcnBt
-X2Fsd2F5c19vbiBmdW5jdGlvbgo+IGFkZGVkIHRvIHRoZSBnZW5lcmljIHBvd2VyIGRvbWFpbnMg
-QVBJIHRvIGhhbmRsZSB3aGF0IGFwcGVhcnMgdG8gYmUgYQo+IHNpbWlsYXIgaGFyZHdhcmUgaXNz
-dWUuCj4gCj4gVXNlIHRoaXMgbmV3IGZ1bmN0aW9uIHRvIGFzayBmb3IgdGhlIHNhbWUgdHJlYXRt
-ZW50IGluIHRoZSBzZGhjaQo+IGNvbnRyb2xsZXIgYnkgZ2l2aW5nIHJrMzU3NiBpdHMgb3duIHBs
-YXRmb3JtIGRhdGEgd2l0aCBpdHMgb3duIHBvc3Rpbml0Cj4gZnVuY3Rpb24uIFRoZSBiZW5lZml0
-IG9mIGRvaW5nIHRoaXMgaW5zdGVhZCBvZiBtYXJraW5nIHRoZSBwb3dlciBkb21haW5zCj4gYWx3
-YXlzIG9uIGluIHRoZSBwb3dlciBkb21haW4gY29yZSBpcyB0aGF0IHdlIG9ubHkgZG8gdGhpcyBp
-ZiB3ZSBrbm93Cj4gdGhlIHBsYXRmb3JtIHdlJ3JlIHJ1bm5pbmcgb24gYWN0dWFsbHkgdXNlcyB0
-aGUgc2RoY2kgY29udHJvbGxlci4gRm9yCj4gb3RoZXJzLCBrZWVwaW5nIFBEX05WTSBhbHdheXMg
-b24gd291bGQgYmUgYSB3YXN0ZSwgYXMgdGhleSB3b24ndCBydW4KPiBpbnRvIHRoaXMgc3BlY2lm
-aWMgaXNzdWUuIFRoZSBvbmx5IG90aGVyIElQIGluIFBEX05WTSB0aGF0IGNvdWxkIGJlCj4gYWZm
-ZWN0ZWQgaXMgRlNQSTAuIElmIGl0IGdldHMgYSBtYWlubGluZSBkcml2ZXIsIGl0IHdpbGwgcHJv
-YmFibHkgd2FudAo+IHRvIGRvIHRoZSBzYW1lIHRoaW5nLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE5p
-Y29sYXMgRnJhdHRhcm9saSA8bmljb2xhcy5mcmF0dGFyb2xpQGNvbGxhYm9yYS5jb20+Cj4gLS0t
-Cj4gQ2hhbmdlcyBpbiB2MjoKPiAtIFJld3JpdGUgcGF0Y2ggdG8gdXNlIGRldl9wbV9nZW5wZF9y
-cG1fYWx3YXlzX29uIGluIHNkaGNpIGRyaXZlcgo+ICAgIGluc3RlYWQsIGFmdGVyIFVsZiBIYW5z
-c29uIG1hZGUgbWUgYXdhcmUgb2YgaXRzIGV4aXN0ZW5jZQo+IC0gTGluayB0byB2MTogaHR0cHM6
-Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDI1MDQwOC1yazM1NzYtZW1tYy1maXgtdjEtMS0zMDA5ODI4
-YjFiMzFAY29sbGFib3JhLmNvbQo+IC0tLQo+ICAgZHJpdmVycy9tbWMvaG9zdC9zZGhjaS1vZi1k
-d2Ntc2hjLmMgfCAzOSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gICAx
-IGZpbGUgY2hhbmdlZCwgMzkgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L21tYy9ob3N0L3NkaGNpLW9mLWR3Y21zaGMuYyBiL2RyaXZlcnMvbW1jL2hvc3Qvc2RoY2ktb2Yt
-ZHdjbXNoYy5jCj4gaW5kZXggMDliOWFiMTVlNDk5NWYwYmRkZjU3ZGQzMDljMDEwYzg0OWJlNDBk
-OS4uYTAwYWVjMDVlZmYyZGE4MTk3Y2M2NDY5MGJhOTY2NWJlNzU2ZTU0YSAxMDA2NDQKPiAtLS0g
-YS9kcml2ZXJzL21tYy9ob3N0L3NkaGNpLW9mLWR3Y21zaGMuYwo+ICsrKyBiL2RyaXZlcnMvbW1j
-L2hvc3Qvc2RoY2ktb2YtZHdjbXNoYy5jCj4gQEAgLTE3LDYgKzE3LDcgQEAKPiAgICNpbmNsdWRl
-IDxsaW51eC9tb2R1bGUuaD4KPiAgICNpbmNsdWRlIDxsaW51eC9vZi5oPgo+ICAgI2luY2x1ZGUg
-PGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ICsjaW5jbHVkZSA8bGludXgvcG1fZG9tYWluLmg+
-Cj4gICAjaW5jbHVkZSA8bGludXgvcG1fcnVudGltZS5oPgo+ICAgI2luY2x1ZGUgPGxpbnV4L3Jl
-c2V0Lmg+Cj4gICAjaW5jbHVkZSA8bGludXgvc2l6ZXMuaD4KPiBAQCAtNzQ1LDYgKzc0NiwyOCBA
-QCBzdGF0aWMgdm9pZCBkd2Ntc2hjX3JrMzV4eF9wb3N0aW5pdChzdHJ1Y3Qgc2RoY2lfaG9zdCAq
-aG9zdCwgc3RydWN0IGR3Y21zaGNfcHJpdgo+ICAgCX0KPiAgIH0KPiAgIAo+ICtzdGF0aWMgdm9p
-ZCBkd2Ntc2hjX3JrMzU3Nl9wb3N0aW5pdChzdHJ1Y3Qgc2RoY2lfaG9zdCAqaG9zdCwgc3RydWN0
-IGR3Y21zaGNfcHJpdiAqZHdjX3ByaXYpCj4gK3sKPiArCXN0cnVjdCBkZXZpY2UgKmRldiA9IG1t
-Y19kZXYoaG9zdC0+bW1jKTsKPiArCWludCByZXQ7Cj4gKwo+ICsJLyoKPiArCSAqIFRoaXMgd29y
-a3MgYXJvdW5kIHdoYXQgYXBwZWFycyB0byBiZSBhIHNpbGljb24gYnVnLCB3aGljaCBtYWtlcyB0
-aGUKCkFmdGVyIGRpc2N1c3Npb24gd2l0aCBGaW5sZXksIHdlIGFncmVlIHdpdGggdGhpcyBwYXRj
-aCB3aGljaCBpcwpiYXNpY2FsbHkgdGhlIHNhbWUgd2F5IHdlIGhhbmRsZSBpdCBvbiB2ZW5kb3Ig
-dHJlZS4gQnV0IGl0J3Mgbm90IGEKc2lsaWNvbiBidWcgdG8gdXMsIHNvIG1heWJlIHRoZSBjb21t
-ZW50cyBuZWVkIGEgYml0IG9mIGFkanVzdG1lbnQuCgoKPiArCSAqIFBEX05WTSBwb3dlciBkb21h
-aW4sIHdoaWNoIHRoZSBzZGhjaSBjb250cm9sbGVyIG9uIHRoZSBSSzM1NzYgaXMgaW4sCj4gKwkg
-KiBuZXZlciBjb21lIGJhY2sgdGhlIHNhbWUgd2F5IG9uY2UgaXQncyB0dXJuZWQgb2ZmIG9uY2Uu
-IFRoaXMgY2FuCj4gKwkgKiBoYXBwZW4gZHVyaW5nIGVhcmx5IGtlcm5lbCBib290IGlmIG5vIGRy
-aXZlciBpcyB1c2luZyBlaXRoZXIgUERfTlZNCj4gKwkgKiBvciBpdHMgY2hpbGQgcG93ZXIgZG9t
-YWluIFBEX1NER01BQyBmb3IgYSBzaG9ydCBtb21lbnQsIGxlYWRpbmcgdG8gaXQKPiArCSAqIGJl
-aW5nIHR1cm5lZCBvZmYgdG8gc2F2ZSBwb3dlci4gQnkga2VlcGluZyBpdCBvbiwgc2RoY2kgc3Vz
-cGVuZGluZwo+ICsJICogd29uJ3QgbGVhZCB0byBQRF9OVk0gYmVjb21pbmcgYSBjYW5kaWRhdGUg
-Zm9yIGdldHRpbmcgdHVybmVkIG9mZi4KPiArCSAqLwo+ICsJcmV0ID0gZGV2X3BtX2dlbnBkX3Jw
-bV9hbHdheXNfb24oZGV2LCB0cnVlKTsKPiArCWlmIChyZXQgJiYgcmV0ICE9IC1FT1BOT1RTVVBQ
-KQo+ICsJCWRldl93YXJuKGRldiwgImZhaWxlZCB0byBzZXQgUEQgcnBtIGFsd2F5cyBvbiwgU29D
-IG1heSBoYW5nIGxhdGVyOiAlcGVcbiIsCj4gKwkJCSBFUlJfUFRSKHJldCkpOwo+ICsKPiArCWR3
-Y21zaGNfcmszNXh4X3Bvc3Rpbml0KGhvc3QsIGR3Y19wcml2KTsKPiArfQo+ICsKPiAgIHN0YXRp
-YyBpbnQgdGgxNTIwX2V4ZWN1dGVfdHVuaW5nKHN0cnVjdCBzZGhjaV9ob3N0ICpob3N0LCB1MzIg
-b3Bjb2RlKQo+ICAgewo+ICAgCXN0cnVjdCBzZGhjaV9wbHRmbV9ob3N0ICpwbHRmbV9ob3N0ID0g
-c2RoY2lfcHJpdihob3N0KTsKPiBAQCAtMTE3Niw2ICsxMTk5LDE4IEBAIHN0YXRpYyBjb25zdCBz
-dHJ1Y3QgZHdjbXNoY19wbHRmbV9kYXRhIHNkaGNpX2R3Y21zaGNfcmszNXh4X3BkYXRhID0gewo+
-ICAgCS5wb3N0aW5pdCA9IGR3Y21zaGNfcmszNXh4X3Bvc3Rpbml0LAo+ICAgfTsKPiAgIAo+ICtz
-dGF0aWMgY29uc3Qgc3RydWN0IGR3Y21zaGNfcGx0Zm1fZGF0YSBzZGhjaV9kd2Ntc2hjX3JrMzU3
-Nl9wZGF0YSA9IHsKPiArCS5wZGF0YSA9IHsKPiArCQkub3BzID0gJnNkaGNpX2R3Y21zaGNfcmsz
-NXh4X29wcywKPiArCQkucXVpcmtzID0gU0RIQ0lfUVVJUktfQ0FQX0NMT0NLX0JBU0VfQlJPS0VO
-IHwKPiArCQkJICBTREhDSV9RVUlSS19CUk9LRU5fVElNRU9VVF9WQUwsCj4gKwkJLnF1aXJrczIg
-PSBTREhDSV9RVUlSSzJfUFJFU0VUX1ZBTFVFX0JST0tFTiB8Cj4gKwkJCSAgIFNESENJX1FVSVJL
-Ml9DTE9DS19ESVZfWkVST19CUk9LRU4sCj4gKwl9LAo+ICsJLmluaXQgPSBkd2Ntc2hjX3JrMzV4
-eF9pbml0LAo+ICsJLnBvc3Rpbml0ID0gZHdjbXNoY19yazM1NzZfcG9zdGluaXQsCj4gK307Cj4g
-Kwo+ICAgc3RhdGljIGNvbnN0IHN0cnVjdCBkd2Ntc2hjX3BsdGZtX2RhdGEgc2RoY2lfZHdjbXNo
-Y190aDE1MjBfcGRhdGEgPSB7Cj4gICAJLnBkYXRhID0gewo+ICAgCQkub3BzID0gJnNkaGNpX2R3
-Y21zaGNfdGgxNTIwX29wcywKPiBAQCAtMTI3NCw2ICsxMzA5LDEwIEBAIHN0YXRpYyBjb25zdCBz
-dHJ1Y3Qgb2ZfZGV2aWNlX2lkIHNkaGNpX2R3Y21zaGNfZHRfaWRzW10gPSB7Cj4gICAJCS5jb21w
-YXRpYmxlID0gInJvY2tjaGlwLHJrMzU4OC1kd2Ntc2hjIiwKPiAgIAkJLmRhdGEgPSAmc2RoY2lf
-ZHdjbXNoY19yazM1eHhfcGRhdGEsCj4gICAJfSwKPiArCXsKPiArCQkuY29tcGF0aWJsZSA9ICJy
-b2NrY2hpcCxyazM1NzYtZHdjbXNoYyIsCj4gKwkJLmRhdGEgPSAmc2RoY2lfZHdjbXNoY19yazM1
-NzZfcGRhdGEsCj4gKwl9LAo+ICAgCXsKPiAgIAkJLmNvbXBhdGlibGUgPSAicm9ja2NoaXAscmsz
-NTY4LWR3Y21zaGMiLAo+ICAgCQkuZGF0YSA9ICZzZGhjaV9kd2Ntc2hjX3JrMzV4eF9wZGF0YSwK
-PiAKPiAtLS0KPiBiYXNlLWNvbW1pdDogNjRlOWZkZmM4OWE3NmZlZDM4ZDhkZGVlZDcyZDQyZWM3
-MTk1N2VkOQo+IGNoYW5nZS1pZDogMjAyNTAzMTctcmszNTc2LWVtbWMtZml4LTdkYzgxYTYyNzQy
-Mgo+IAo+IEJlc3QgcmVnYXJkcywKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+This patch adds system PM support for Rockchip platforms by adding
+.pme_turn_off and .get_ltssm hook and tries to reuse possible existing
+code.
+
+It's tested on RK3576 EVB1 board with Some NVMes and PCIe-2-SATA/XHCI
+devices. And check the PCIe protocol analyzer to make sure the L2 process
+fits the spec.
+
+  nvme nvme0: missing or invalid SUBNQN field.
+  nvme nvme0: allocated 64 MiB host memory buffer (16 segments).
+  nvme nvme0: 8/0/0 default/read/poll queues
+  nvme nvme0: Ignoring bogus Namespace Identifiers
+
+  echo N > /sys/module/printk/parameters/console_suspend
+  echo core > /sys/power/pm_test
+  echo mem > /sys/power/state
+
+  PM: suspend entry (deep)
+  Filesystems sync: 0.000 seconds
+  Freezing user space processes
+  Freezing user space processes completed (elapsed 0.001 seconds)
+  OOM killer disabled.
+  Freezing remaining freezable tasks
+  Freezing remaining freezable tasks completed (elapsed 0.000 seconds)
+
+  ...
+
+  rockchip-dw-pcie 22400000.pcie: PCIe Gen.2 x1 link up
+  OOM killer enabled.
+  Restarting tasks ... done.
+  random: crng reseeded on system resumption
+  PM: suspend exit
+  nvme nvme0: 8/0/0 default/read/poll queues
+  nvme nvme0: Ignoring bogus Namespace Identifiers
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+
+Changes in v3:
+- amend the commit msg suggested by Bjorn
+- reuse more code suggested by Diederik
+- bail out EP case suggested by Niklas
+
+Changes in v2:
+- Use NOIRQ_SYSTEM_SLEEP_PM_OPS
+
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 197 +++++++++++++++++++++++---
+ 1 file changed, 177 insertions(+), 20 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 56acfea..4bcd4006 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -21,6 +21,7 @@
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
+ 
++#include "../../pci.h"
+ #include "pcie-designware.h"
+ 
+ /*
+@@ -37,8 +38,14 @@
+ #define PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
+ #define PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
+ #define PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
++#define PCIE_CLIENT_INTR_STATUS_MSG_RX	0x04
+ #define PCIE_CLIENT_INTR_STATUS_MISC	0x10
+ #define PCIE_CLIENT_INTR_MASK_MISC	0x24
++#define PCIE_CLIENT_POWER		0x2c
++#define PCIE_CLIENT_MSG_GEN		0x34
++#define PME_READY_ENTER_L23		BIT(3)
++#define PME_TURN_OFF			(BIT(4) | BIT(20))
++#define PME_TO_ACK			(BIT(9) | BIT(25))
+ #define PCIE_SMLH_LINKUP		BIT(16)
+ #define PCIE_RDLH_LINKUP		BIT(17)
+ #define PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
+@@ -63,6 +70,7 @@ struct rockchip_pcie {
+ 	struct gpio_desc *rst_gpio;
+ 	struct regulator *vpcie3v3;
+ 	struct irq_domain *irq_domain;
++	u32 intx;
+ 	const struct rockchip_pcie_of_data *data;
+ };
+ 
+@@ -159,6 +167,13 @@ static u32 rockchip_pcie_get_ltssm(struct rockchip_pcie *rockchip)
+ 	return rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS);
+ }
+ 
++static u32 rockchip_pcie_get_pure_ltssm(struct dw_pcie *pci)
++{
++	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
++
++	return rockchip_pcie_get_ltssm(rockchip) & PCIE_LTSSM_STATUS_MASK;
++}
++
+ static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
+ {
+ 	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
+@@ -248,8 +263,46 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
+ 	return 0;
+ }
+ 
++static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
++{
++	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
++	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
++	struct device *dev = rockchip->pci.dev;
++	int ret;
++	u32 status;
++
++	/* 1. Broadcast PME_Turn_Off Message, bit 4 self-clear once done */
++	rockchip_pcie_writel_apb(rockchip, PME_TURN_OFF, PCIE_CLIENT_MSG_GEN);
++	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_MSG_GEN,
++				 status, !(status & BIT(4)), PCIE_PME_TO_L2_TIMEOUT_US / 10,
++				 PCIE_PME_TO_L2_TIMEOUT_US);
++	if (ret) {
++		dev_warn(dev, "Failed to send PME_Turn_Off\n");
++		return;
++	}
++
++	/* 2. Wait for PME_TO_Ack, bit 9 will be set once received */
++	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_INTR_STATUS_MSG_RX,
++				 status, status & BIT(9), PCIE_PME_TO_L2_TIMEOUT_US / 10,
++				 PCIE_PME_TO_L2_TIMEOUT_US);
++	if (ret) {
++		dev_warn(dev, "Failed to receive PME_TO_Ack\n");
++		return;
++	}
++
++	/* 3. Clear PME_TO_Ack and Wait for ready to enter L23 message */
++	rockchip_pcie_writel_apb(rockchip, PME_TO_ACK, PCIE_CLIENT_INTR_STATUS_MSG_RX);
++	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_POWER,
++				 status, status & PME_READY_ENTER_L23,
++				 PCIE_PME_TO_L2_TIMEOUT_US / 10,
++				 PCIE_PME_TO_L2_TIMEOUT_US);
++	if (ret)
++		dev_err(dev, "Failed to get ready to enter L23 message\n");
++}
++
+ static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
+ 	.init = rockchip_pcie_host_init,
++	.pme_turn_off = rockchip_pcie_pme_turn_off,
+ };
+ 
+ /*
+@@ -404,10 +457,12 @@ static int rockchip_pcie_phy_init(struct rockchip_pcie *rockchip)
+ 	struct device *dev = rockchip->pci.dev;
+ 	int ret;
+ 
+-	rockchip->phy = devm_phy_get(dev, "pcie-phy");
+-	if (IS_ERR(rockchip->phy))
+-		return dev_err_probe(dev, PTR_ERR(rockchip->phy),
+-				     "missing PHY\n");
++	if (!rockchip->phy) {
++		rockchip->phy = devm_phy_get(dev, "pcie-phy");
++		if (IS_ERR(rockchip->phy))
++			return dev_err_probe(dev, PTR_ERR(rockchip->phy),
++					     "missing PHY\n");
++	}
+ 
+ 	ret = phy_init(rockchip->phy);
+ 	if (ret < 0)
+@@ -430,6 +485,7 @@ static const struct dw_pcie_ops dw_pcie_ops = {
+ 	.link_up = rockchip_pcie_link_up,
+ 	.start_link = rockchip_pcie_start_link,
+ 	.stop_link = rockchip_pcie_stop_link,
++	.get_ltssm = rockchip_pcie_get_pure_ltssm,
+ };
+ 
+ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
+@@ -489,13 +545,32 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ 	return IRQ_HANDLED;
+ }
+ 
++static void rockchip_pcie_ltssm_enable_control_mode(struct rockchip_pcie *rockchip, u32 mode)
++{
++	u32 val;
++
++	/* LTSSM enable control mode */
++	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
++
++	rockchip_pcie_writel_apb(rockchip, mode, PCIE_CLIENT_GENERAL_CONTROL);
++}
++
++static void rockchip_pcie_unmask_dll_indicator(struct rockchip_pcie *rockchip)
++{
++	u32 val;
++
++	/* unmask DLL up/down indicator */
++	val = HIWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED, 0);
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
++}
++
+ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 				      struct rockchip_pcie *rockchip)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct dw_pcie_rp *pp;
+ 	int irq, ret;
+-	u32 val;
+ 
+ 	if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
+ 		return -ENODEV;
+@@ -512,12 +587,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 		return ret;
+ 	}
+ 
+-	/* LTSSM enable control mode */
+-	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
+-	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+-
+-	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_RC_MODE,
+-				 PCIE_CLIENT_GENERAL_CONTROL);
++	rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_RC_MODE);
+ 
+ 	pp = &rockchip->pci.pp;
+ 	pp->ops = &rockchip_pcie_host_ops;
+@@ -529,9 +599,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 		return ret;
+ 	}
+ 
+-	/* unmask DLL up/down indicator */
+-	val = HIWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED, 0);
+-	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
++	rockchip_pcie_unmask_dll_indicator(rockchip);
+ 
+ 	return ret;
+ }
+@@ -558,12 +626,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+ 		return ret;
+ 	}
+ 
+-	/* LTSSM enable control mode */
+-	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
+-	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+-
+-	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_EP_MODE,
+-				 PCIE_CLIENT_GENERAL_CONTROL);
++	rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_EP_MODE);
+ 
+ 	rockchip->pci.ep.ops = &rockchip_pcie_ep_ops;
+ 	rockchip->pci.ep.page_size = SZ_64K;
+@@ -677,6 +740,94 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
++static int rockchip_pcie_suspend(struct device *dev)
++{
++	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
++	struct dw_pcie *pci = &rockchip->pci;
++	int ret;
++
++	if (rockchip->data->mode == DW_PCIE_EP_TYPE) {
++		dev_err(dev, "suspend is not supported in EP mode\n");
++		return -EOPNOTSUPP;
++	}
++
++	rockchip->intx = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_MASK_LEGACY);
++
++	ret = dw_pcie_suspend_noirq(pci);
++	if (ret) {
++		dev_err(dev, "failed to suspend\n");
++		return ret;
++	}
++
++	rockchip_pcie_phy_deinit(rockchip);
++	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
++	reset_control_assert(rockchip->rst);
++	if (rockchip->vpcie3v3)
++		regulator_disable(rockchip->vpcie3v3);
++	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
++
++	return 0;
++}
++
++static int rockchip_pcie_resume(struct device *dev)
++{
++	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
++	struct dw_pcie *pci = &rockchip->pci;
++	int ret;
++
++	if (rockchip->data->mode == DW_PCIE_EP_TYPE) {
++		dev_err(dev, "resume is not supported in EP mode\n");
++		return -EOPNOTSUPP;
++	}
++
++	reset_control_assert(rockchip->rst);
++
++	ret = clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
++	if (ret) {
++		dev_err(dev, "clock init failed\n");
++		goto err_clk;
++	}
++
++	if (rockchip->vpcie3v3) {
++		ret = regulator_enable(rockchip->vpcie3v3);
++		if (ret)
++			goto err_power;
++	}
++
++	ret = rockchip_pcie_phy_init(rockchip);
++	if (ret) {
++		dev_err(dev, "phy init failed\n");
++		goto err_phy_init;
++	}
++
++	reset_control_deassert(rockchip->rst);
++
++	rockchip_pcie_writel_apb(rockchip, HIWORD_UPDATE(0xffff, rockchip->intx),
++				 PCIE_CLIENT_INTR_MASK_LEGACY);
++
++	rockchip_pcie_ltssm_enable_control_mode(rockchip, PCIE_CLIENT_RC_MODE);
++	rockchip_pcie_unmask_dll_indicator(rockchip);
++
++	ret = dw_pcie_resume_noirq(pci);
++	if (ret) {
++		dev_err(dev, "fail to resume\n");
++		goto err_resume;
++	}
++
++	return 0;
++
++err_resume:
++	rockchip_pcie_phy_deinit(rockchip);
++err_phy_init:
++	if (rockchip->vpcie3v3)
++		regulator_disable(rockchip->vpcie3v3);
++err_power:
++	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
++err_clk:
++	reset_control_deassert(rockchip->rst);
++	return ret;
++}
++
+ static const struct rockchip_pcie_of_data rockchip_pcie_rc_of_data_rk3568 = {
+ 	.mode = DW_PCIE_RC_TYPE,
+ };
+@@ -707,11 +858,17 @@ static const struct of_device_id rockchip_pcie_of_match[] = {
+ 	{},
+ };
+ 
++static const struct dev_pm_ops rockchip_pcie_pm_ops = {
++	NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend,
++				  rockchip_pcie_resume)
++};
++
+ static struct platform_driver rockchip_pcie_driver = {
+ 	.driver = {
+ 		.name	= "rockchip-dw-pcie",
+ 		.of_match_table = rockchip_pcie_of_match,
+ 		.suppress_bind_attrs = true,
++		.pm = &rockchip_pcie_pm_ops,
+ 	},
+ 	.probe = rockchip_pcie_probe,
+ };
+-- 
+2.7.4
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
