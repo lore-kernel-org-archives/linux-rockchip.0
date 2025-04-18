@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D52AC369D1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Apr 2025 21:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F7BAC369CF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Apr 2025 00:19:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NsooStTbTVqWMT+q4JVx9K8xNVQXcEX0kyI7+E4hHvQ=; b=bIlGBoJ5ddjT25
-	Fqr8oJ6j3XvaE+er15jUQYVXbLEslFBG2DGZnbxespp68hX7A1nZkKZu+KuEqxHIxFIVqE5RLAsHI
-	nLgW2lrooZpotD6+/tR64YUF/BB36qdwmT1ZsjfZkLFuSShWwtr/Q43jZGJzfoWBGyj7zbx7YoFbj
-	Zirn2KcAwkJU7mjZ+T3SKBcSD0pkRbdxDGFoPNIIvmbUVYslkK6CQI3p+9hOuviaD7Z2FqSexU4y6
-	e0SRYH5yZCa6Fm+U7SrVrZj7Y73PyxJcUP2waqrdKjy+jvGmsTrj6OPSMxXUju7eb94kBPgPqJ8zc
-	+ZxY+Lq5r0p1b2CJQJBQ==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=x28P86XnExesBwBCL/n+oaDd/LdZ5IrwVfut8DmhH68=; b=r2UfR+Y5fqEz1R
+	EKmXwZZa+xO4LRnItsD7cpHgYfmcKPoerB/lkHelMGxSyDPmE1DLxJ/5YhO6r4sSG+UIg5nmwH1r7
+	9vvPv5koi57DYT8V2zKFF8lbebYGgolY92r3z4OOxU+jscWlNUrm+ZVAdMJGNP+I0yMQWAnXqOLUO
+	RBM4jCc932r2tp7Am7ZhIYmR302WqKzPi+vQF3bO8eGjuuSQN9TUnOQzPRPaBBmut49B4G81D1UZI
+	yXscLmtkX3XMb5NECCNW5mEryxye2Ck001m4ChBOPVxNIXJ/vunbd6lpWRCUozYXzHRbfQCge/jOf
+	coCQJmwN9GQfgDtw3IRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5XFV-0000000EQ7p-2NUB;
-	Thu, 17 Apr 2025 21:58:21 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5XFT-0000000EQ6Z-0Aiq
-	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Apr 2025 21:58:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744927096;
-	bh=zh8TkzCK9EqLdvUCPON67laOmeDwj6HXLIzNqsIYSgU=;
-	h=From:Subject:Date:To:Cc:From;
-	b=j2+/y0QZ7HjiP/rEdf1NlrDhBGgSwG/Ey/EwJWy0PDb09gxXSwGachDL+ficYHGrk
-	 EpsVko1BzpC/asv0jxXA1+StDMDl17SQcT3hWw4/QfpO91p0FLKT5RbDyj2RDsVmUh
-	 bsMtwzXggDKSqDdK5OSR00YabnWgGurZe/xIGYVEGwMplVJGLkawQvyqtzDyUJQxhf
-	 D9XZm8C3su2To56xtUFIVqSLvbt7KvwBKM/HAW2iXmV7VEnThbp5ib1SUIlocZViy6
-	 vQVnevyQ7g4EsMZua16JdM/xYlLJ/dERTs0/1pqT+SyzkSjBNrfo3tB/SVcQKtjwYs
-	 EN5PWgiJdPkWA==
-Received: from [192.168.13.3] (unknown [IPv6:2606:6d00:15:9913::c73])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 68C5F17E0F85;
-	Thu, 17 Apr 2025 23:58:15 +0200 (CEST)
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: [PATCH v9 0/4] media: rkvdec: Add H.264 High 10 and 4:2:2 profile
- support
-Date: Thu, 17 Apr 2025 17:57:57 -0400
-Message-Id: <20250417-b4-rkvdec_h264_high10_and_422_support-v9-0-0e8738ccb46b@collabora.com>
+	id 1u5ZRv-0000000EfQ5-0Lju;
+	Fri, 18 Apr 2025 00:19:19 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u5ZQ3-0000000EfJg-2RZK;
+	Fri, 18 Apr 2025 00:17:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=ACoMjeqQEK5QbJmghOEEcrUjtymI5asACgjcWs598NQ=; b=O
+	KIOo5KHOR64c/8UirzmT5CgdF5UgcdDCpO+iHZkeqW+oIiHSaxkhd8X66jBfmIKL
+	49bD6AZ2R5tAtRDB0iI8RSLsk0em5BcxtOK5O8gNFFR+pVs8GhplAsh8/1WZCj73
+	0cOsaOPhovHRVT0AKtxSOg1YZpsPW2GWr9Q5r/W4Ic=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-120 (Coremail) ; Fri, 18 Apr 2025 08:16:11 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Fri, 18 Apr 2025 08:16:11 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Konstantin Shabanov" <mail@etehtsea.me>
+Cc: "Sandy Huang" <hjc@rock-chips.com>,
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+	"Andy Yan" <andy.yan@rock-chips.com>,
+	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>,
+	"Maxime Ripard" <mripard@kernel.org>,
+	"Thomas Zimmermann" <tzimmermann@suse.de>,
+	"David Airlie" <airlied@gmail.com>,
+	"Simona Vetter" <simona@ffwll.ch>,
+	"Daniel Stone" <daniel@fooishbar.org>,
+	"Dan Callaghan" <djc@djc.id.au>, dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re:[PATCH v4] drm/rockchip: Disable AFBC for res >2560 on rk3399
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2025 www.mailtech.cn 163com
+In-Reply-To: <20250417065759.5948-1-mail@etehtsea.me>
+References: <20250414095332.9674-1-mail@etehtsea.me>
+ <20250417065759.5948-1-mail@etehtsea.me>
+X-NTES-SC: AL_Qu2fBvWYukss5yeaYukfmkcVgOw9UcO5v/Qk3oZXOJF8jDLp/j0HdmVSAWfk9OO0GyOzmgmGQhZw7+16UYtfUYcQ2sF/6GvOriIdCw400ymGgg==
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAGV5AWgC/43NSw6DIBSF4a0YxqWBKz7aUffRGIJ4FVIVA5a0M
- e691KTzDv8zON9GAnqLgVyzjXiMNlg3p7icMqKNmgektktNgEHBBC9pK6h/xA61NFAKaexgOJN
- q7qQAkOG5LM6vNK+5qgQvOC+BpK/FY29fh3NvUhsbVuffBxvr7/oTqj+FWFNGBeQ9MgWIFd60G
- 0fVOq/O2k2k2ff9A6hsQEPeAAAA
-X-Change-ID: 20250416-b4-rkvdec_h264_high10_and_422_support-381a74151162
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Sebastian Fricke <sebastian.fricke@collabora.com>, 
- Jonas Karlman <jonas@kwiboo.se>, 
- Christopher Obbard <christopher.obbard@linaro.org>
-X-Mailer: b4 0.14.2
+Message-ID: <17402f2e.360.1964640c3d3.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: eCgvCgCnzPPLmQFoYdSZAA--.47571W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkBQzXmgBloInMwAEsE
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_145819_380841_5DC583F4 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20250417_171723_918849_1153B3D1 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,130 +84,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series add H.264 High 10 and 4:2:2 profile support to the Rockchip
-Video Decoder driver.
-
-Patch 1 limits the minimum profile to constrained baseline due to
-unsupported features in the full baseline profile.
-
-Patch 2 refactors code to support filtering of CAPTURE formats based
-on the image format returned from a new get_image_fmt() ops.
-
-Patch 3 adds final bits to support H.264 High 10 and 4:2:2 profiles.
-
-Tested with Fluster on a Libre Computer Renegade Elite (RK3399).
-
-Decoder:                        GStreamer
-Commit:                         8c7ad20e4e82296ed9916f53c201e110c629f0f5
-JVT-AVC_V1:                     129/135
-JVT-FR-EXT:                     65/69
-JVT-Professional_profiles:      12/38
-JVT-MVC:                        0/20 (not supported)
-JVT-SVC:                        38/185 (temporal only)
-
-In summary, all tests that are 4:2:2 sub-sampled are now passing with
-the exception of the following that display some unexplained artifacts.
-
- - Hi422FREXT17_SONY_A
- - Hi422FREXT19_SONY_A
-
-This score also includes 4:2:0 10bit tests, that may have been reported
-as failing due to lack of userspace support for NV15 format. It also
-includes results from test suite that did not exists before (Pro, MVC
-and SVC).
-
-Changes in v9:
-- Moved v4l2_m2m_ctx init before the controls
-- Removed unneeded changes in try_ctrl ops
-- Link to v8: https://lore.kernel.org/r/20250417-b4-rkvdec_h264_high10_and_422_support-v8-0-423fe0a2ee7e@collabora.com
-
-Changes in v8:
-- Removed patches that got applied from v7
-- Move the constrained-baseline fix first
-- Move the format checks into s_ctrl only
-- Simplify the checks
-- Retest against a newer GStreamer version with NV16 and NV20 support.
-- Test against the new fluster suite Professions, SVC and MVC.
-Link to v7: https://lore.kernel.org/linux-media/20250225-rkvdec_h264_high10_and_422_support-v7-0-7992a68a4910@collabora.com/
-
-Changes in v7:
-- Split out the change with the minimum profile
-- s/v4l2_format_plane_width/v4l2_format_plane_stride/
-- Move V4L2_PIX_FMT_NV15/V4L2_PIX_FMT_NV20 documentation as suggested
-- Change return value from int to bool on rkvdec_image_fmt_match
-- Add reviewed-by tags
-Link to v6: https://lore.kernel.org/linux-media/20240909192522.1076704-1-jonas@kwiboo.se/
-
-Changes in v6:
-- Change to use fmt_idx instead of j++ tucked inside a condition (Dan)
-- Add patch to fix enumerated frame sizes returned to userspace (Alex)
-- Fluster test score is same as v4 and v5, see [4] and [5]
-Link to v5: https://lore.kernel.org/linux-media/20240618194647.742037-1-jonas@kwiboo.se/
-
-Changes in v5:
-- Drop Remove SPS validation at streaming start patch
-- Move buffer align from rkvdec_fill_decoded_pixfmt to min/step_width
-- Use correct profiles for V4L2_CID_MPEG_VIDEO_H264_PROFILE
-- Collect r-b and t-b tags
-- Fluster test score is same as v4, see [4] and [5]
-Link to v4: https://lore.kernel.org/linux-media/20231105165521.3592037-1-jonas@kwiboo.se/
-
-Changes in v4:
-- Fix failed v4l2-compliance tests related to CAPTURE queue
-- Rework CAPTURE format filter anv validate to use an image format
-- Run fluster test suite JVT-FR-EXT [4] and JVT-AVC_V1 [5]
-Link to v3: https://lore.kernel.org/linux-media/20231029183427.1781554-1-jonas@kwiboo.se/
-
-Changes in v3:
-- Drop merged patches
-- Use bpp and bpp_div instead of prior misuse of block_w/block_h
-- New patch to use values from SPS/PPS control to configure the HW
-- New patch to remove an unnecessary call to validate sps at streaming start
-- Reworked pixel format validation
-Link to v2: https://lore.kernel.org/linux-media/20200706215430.22859-1-jonas@kwiboo.se/
-
-Changes in v2:
-- Collect r-b tags
-- SPS pic width and height in mbs validation moved to rkvdec_try_ctrl
-- New patch to not override output buffer sizeimage
-- Reworked pixel format validation
-- Only align decoded buffer instead of changing frmsize step_width
-Link to v1: https://lore.kernel.org/linux-media/20200701215616.30874-1-jonas@kwiboo.se/
-
-To fully runtime test this series you may need FFmpeg patches from [1]
-and fluster patches from [2], this series is also available at [3].
-
-[1] https://github.com/Kwiboo/FFmpeg/commits/v4l2request-2024-v2-rkvdec/
-[2] https://github.com/Kwiboo/fluster/commits/ffmpeg-v4l2request-rkvdec/
-[3] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-high-10-v6/
-[4] https://gist.github.com/Kwiboo/f4ac15576b2c72887ae2bc5d58b5c865
-[5] https://gist.github.com/Kwiboo/459a1c8f1dcb56e45dc7a7a29cc28adf
-
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
-Jonas Karlman (2):
-      media: rkvdec: Add get_image_fmt ops
-      media: rkvdec: h264: Support High 10 and 4:2:2 profiles
-
-Nicolas Dufresne (1):
-      media: rkvdec: Initialize the m2m context before the controls
-
-Sebastian Fricke (1):
-      media: rkvdec: h264: Limit minimum profile to constrained baseline
-
- drivers/staging/media/rkvdec/rkvdec-h264.c | 37 ++++++++++---
- drivers/staging/media/rkvdec/rkvdec.c      | 89 ++++++++++++++++++++++++------
- drivers/staging/media/rkvdec/rkvdec.h      |  5 ++
- 3 files changed, 105 insertions(+), 26 deletions(-)
----
-base-commit: 3105a6d6088a79d091990f2107f67ad7fa04ee8d
-change-id: 20250416-b4-rkvdec_h264_high10_and_422_support-381a74151162
-
-Best regards,
--- 
-Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
 
+Hi Konstantin,
+
+At 2025-04-17 14:57:58, "Konstantin Shabanov" <mail@etehtsea.me> wrote:
+>As it isn't supported by hardware. At least, RK3399 doesn't support
+>it. From the datasheet[1]
+>("1.2.10 Video IN/OUT", "Display Interface", p. 17):
+>
+>  Support AFBC function co-operation with GPU
+>    * support 2560x1600 UI
+>
+>Manually tested on RockPro64 (rk3399):
+>- ARM_AFBC modifier is used for 1920x1080
+>- DRM_FORMAT_MOD_LINEAR modifier us used for 3840x2160
+>- No noise on the screen when sway is running in 4k
+>- Dynamic resolution switching works correctly in sway
+>
+>Signed-off-by: Konstantin Shabanov <mail@etehtsea.me>
+>Cc: Daniel Stone <daniel@fooishbar.org>
+>Cc: Andy Yan <andyshrk@163.com>
+>Reported-by: Dan Callaghan <djc@djc.id.au>
+>Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7968
+>
+>[1]: https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
+>---
+>V3 -> V4: Correct redundant header inclusion
+>V2 -> V3: Run check only on rk3399
+>V1 -> V2: Move the check to the fb_create callback
+>
+> drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 12 ++++++++++++
+> 1 file changed, 12 insertions(+)
+>
+>diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+>index dcc1f07632c3..45e1619b5c97 100644
+>--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+>+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+>@@ -5,6 +5,7 @@
+>  */
+>
+> #include <linux/kernel.h>
+>+#include <linux/of.h>
+>
+> #include <drm/drm.h>
+> #include <drm/drm_atomic.h>
+>@@ -18,6 +19,8 @@
+> #include "rockchip_drm_fb.h"
+> #include "rockchip_drm_gem.h"
+>
+>+#define RK3399_AFBC_MAX_WIDTH		2560
+>+
+> static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
+> 	.destroy       = drm_gem_fb_destroy,
+> 	.create_handle = drm_gem_fb_create_handle,
+>@@ -52,6 +55,15 @@ rockchip_fb_create(struct drm_device *dev, struct drm_file *file,
+> 	}
+>
+> 	if (drm_is_afbc(mode_cmd->modifier[0])) {
+>+		if (of_machine_is_compatible("rockchip,rk3399")) {
+>+			if (mode_cmd->width > RK3399_AFBC_MAX_WIDTH) {
+>+				DRM_DEBUG_KMS("AFBC is not supported for the width %d (max %d)\n",
+>+					      mode_cmd->width,
+>+					      RK3399_AFBC_MAX_WIDTH);
+>+				return ERR_PTR(-EINVAL);
+>+			};
+>+		}
+>+
+
+
+I prefer the V1 version PATCH[0]. This is because we do not deal with hardware-related
+differences at this level.  It involves a VOP-related restriction and we always  handle
+limitiation like this  within the VOP driver . 
+
+[0] https://lore.kernel.org/dri-devel/20250402125320.21836-1-mail@etehtsea.me/
+
+
+> 		int ret, i;
+>
+> 		ret = drm_gem_fb_afbc_init(dev, mode_cmd, afbc_fb);
+>
+>base-commit: 4890d68db651562ea80250f2c93205a5c0327a6a
+>--
+>2.48.1
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
