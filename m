@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4774C369AB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Apr 2025 12:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B294DC369AB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Apr 2025 15:15:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Iuzg7yH5HSFkYTDs+Y3R7RdpVamfmP6LTUrgQmN6v4A=; b=cmKyfMkkGFJe5X
-	GfkQLzkTgVzLNtC7pj48lnxbFIf4IZf5Pnuyw8auFxCnf4Kaguwea3h3ZL8ZHdQFRrdZBRrQtM1k3
-	fTJIMw1wmtsiNf4zwT4mFvEbdk3tOU6NSIaUTMomh0wu0z41oaz+wdyLSDs2TSOkIRD7fenDn390z
-	GNeqSVrc3JkcfBPzAoWDwzlG3toee5zcvvIUwPocdQdNIYcozDfyJsxwpDRKnArAhiViImJuZdYI6
-	2OJcB4W1RxhxjiGkx8CU36SNTGNHz9ugcu/scYJDdhndmbGTEWDdMoZ7Hs/5bd5/U5u35vlgNZkfk
-	ZyN0TiHgkNOptG6zqK1w==;
+	List-Owner; bh=DuNyEV23bxKb7C3DAbwVTaKj89oR9wmsG/mGU4KYoTU=; b=4U30k1N0QJBd2f
+	fyLosUed+m0e7Hc9+NQZUSDV7PIgklftzjur5IuLck7vs9fophYB4PR5eqnzgbwVlew7u4hK822vI
+	jLKAnC7/EUH1mucWW2BbZ+VKgkhVCADEvmWrkXEsb+RlOsMA1C3krzQNHXOoFjUFeL+/CfnyRpnB7
+	DbwjBpPK1UgpvKlFV0k0g2Lz1Vnb+HwbynLU+eYyFwz/Z0qPJqZHU2v1vQgBk1uotsG8fNiNxYmUf
+	xc3R/OrZAq6R39kCEaiHgU2sIStH+JnwenQDZ1xX2aS6AsGRj3qiSmOw8OEwMZHdFq30PI5GNz4XA
+	RW//o4K2rhIWopO86Y6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5kwh-0000000G5zh-19E8;
-	Fri, 18 Apr 2025 12:35:51 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5kul-0000000G5cv-16f5;
-	Fri, 18 Apr 2025 12:33:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
-	Content-Type; bh=UBDa95ya3cXHyPB4tt8cCTy+Vp36SNsAM/119FvW6N4=;
-	b=bJvzxzPlNdGkw+LZC9dvPrYW8aqNO6eGW8ZI3fbxhzW7pvN1GW+LJpa+uDxhPK
-	ebJvUlDMfYrQp0SIiVtO/C98MDAXCMT47eYpfWD2oB33MOZupFs/kxCAr8fxfaDZ
-	0P6UlRP8rMCpLq4lua26jUN0JW7yEy7sqCYR6ghEjl8dU=
-Received: from [192.168.142.52] (unknown [])
-	by gzga-smtp-mtada-g0-0 (Coremail) with SMTP id _____wDXH0qFRgJosq3aAw--.53778S2;
-	Fri, 18 Apr 2025 20:33:10 +0800 (CST)
-Message-ID: <22720eef-f5a3-4e72-9c41-35335ec20f80@163.com>
-Date: Fri, 18 Apr 2025 20:33:08 +0800
+	id 1u5nRL-0000000GcUf-3MPt;
+	Fri, 18 Apr 2025 15:15:39 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u5nNx-0000000GbPj-2HK9
+	for linux-rockchip@lists.infradead.org;
+	Fri, 18 Apr 2025 15:12:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1744989127;
+ bh=gZ99nEDhjJPtKYQc2hoc52nGqWB8ytY2CleaomSYJWE=;
+ b=FJ6BkAZKhw5HDl64y0/loSnvgt2uGFb4ogckuwXXLYpPoiBWGEcMvB8XlTGYqbnToM/hBwa1d
+ CBAVZZXHa0QTbYodP9xo2Fa5QDa+8OJM8v7+yMmhCG4OHroROzOPT7b4Sis3OF8wMjPItm4Qs5O
+ ska8G+8JWBFJxlnBHRQCAHFilrq5QmYk+RGaVOtaGbKN8k5sB2ZqStqo/x0pzK0yQdlp1AiRCsk
+ dvLUisDndlaQObUs1CgfYNitAyxjmGbi+E2HHokxVLTAQCoqfIOWFLQM0xaiT+2AKjJ+Atygdp0
+ OQ3/2ouKCqto/bN2oTs7JG9yeYXL95VsRLP4kQOwdfiQ==
+X-Forward-Email-ID: 68026bbf750a8e94b92eccb3
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 1.0.2
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <4161ab9e-3be5-4738-9bbe-0dba636b838a@kwiboo.se>
+Date: Fri, 18 Apr 2025 17:11:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] PCI: dw-rockchip: Configure max payload size on host init
-To: Bjorn Helgaas <helgaas@kernel.org>, Niklas Cassel <cassel@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, lpieralisi@kernel.org,
- kw@linux.com, bhelgaas@google.com, heiko@sntech.de,
- manivannan.sadhasivam@linaro.org, robh@kernel.org, jingoohan1@gmail.com,
- thomas.richard@bootlin.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20250417165219.GA115235@bhelgaas>
+Subject: Re: [PATCH v9 3/4] media: rkvdec: Add get_image_fmt ops
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <20250417-b4-rkvdec_h264_high10_and_422_support-v9-0-0e8738ccb46b@collabora.com>
+ <20250417-b4-rkvdec_h264_high10_and_422_support-v9-3-0e8738ccb46b@collabora.com>
+ <8d1c3c82-dbdc-4064-8188-bab586996302@kwiboo.se>
+ <4be400281b3fe53b724025ffa837ceed777d7699.camel@collabora.com>
 Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <20250417165219.GA115235@bhelgaas>
-X-CM-TRANSID: _____wDXH0qFRgJosq3aAw--.53778S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxGw1xCw47Kw47Gr45WryfZwb_yoW5CF1Upa
-	yag3W5Kr1DGF4fJw4kZw1F9Fy0yrnxAFW3Xw15t3yDZ3s8AFW3ArWqka12kFyxWrn7G3W3
-	JFyF9FW3Xwn8ZFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07Ul0PhUUUUU=
-X-Originating-IP: [222.71.101.198]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbBDwgzo2gCPnz1oQAAsr
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <4be400281b3fe53b724025ffa837ceed777d7699.camel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250418_053351_778896_286207CB 
-X-CRM114-Status: GOOD (  27.06  )
+X-CRM114-CacheID: sfid-20250418_081209_984431_0534ADE4 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,87 +77,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 2025/4/18 00:52, Bjorn Helgaas wrote:
-> On Thu, Apr 17, 2025 at 10:39:49AM +0200, Niklas Cassel wrote:
->> On Thu, Apr 17, 2025 at 04:07:51PM +0800, Hans Zhang wrote:
->>> On 2025/4/17 15:48, Niklas Cassel wrote:
->>>
->>> Hi Niklas and Shawn,
->>>
->>> Thank you very much for your discussion and reply.
->>>
->>> I tested it on RK3588 and our platform. By setting pci=pcie_bus_safe, the
->>> maximum MPS will be automatically matched in the end.
->>>
->>> So is my patch no longer needed? For RK3588, does the customer have to
->>> configure CONFIG_PCIE_BUS_SAFE or pci=pcie_bus_safe?
->>>
->>> Also, for pci-meson.c, can the meson_set_max_payload be deleted?
->>
->> I think the only reason why this works is because
->> pcie_bus_configure_settings(), in the case of
->> pcie_bus_config == PCIE_BUS_SAFE, will walk the bus and set MPS in
->> the bridge to the lowest of the downstream devices:
->> https://github.com/torvalds/linux/blob/v6.15-rc2/drivers/pci/probe.c#L2994-L2999
->>
->> So Hans, if you look at lspci for the other RCs/bridges that don't
->> have any downstream devices connected, do they also show DevCtl.MPS 256B
->> or do they still show 128B ?
->>
->> One could argue that for all policies (execept for maybe PCIE_BUS_TUNE_OFF),
->> pcie_bus_configure_settings() should start off by initializing DevCtl.MPS to
->> DevCap.MPS (for the bridge itself), and after that pcie_bus_configure_settings()
->> can override it depending on policy, e.g. set MPS to 128B in case of
->> pcie_bus_config == PCIE_BUS_PEER2PEER, or walk the bus in case of
->> pcie_bus_config == PCIE_BUS_SAFE.
->>
->> That way, we should be able to remove the setting for pci-meson.c as well.
-> 
-> Thanks, I came here to say basically the same thing.  Ideally I think
-> the generic code in pcie_bus_configure_settings() should be able to
-> increase MPS or decrease it such that neither meson_set_max_payload()
-> nor rockchip_pcie_set_max_payload() is required.
-> 
-> However, the requirement to pick a Kconfig setting makes it a mess.  I
-> would love to get rid of those Kconfig symbols.  I don't like the
-> command-line parameters either, but it would definitely be an
-> improvement if we could nuke the Kconfig symbols and rely on the
-> command-line parameters.
-> 
-> It's also a problem when devices are hot-added after the hierarchy has
-> already been set up because the new device might not work correctly in
-> the existing config.
-> 
-> It's a hard problem to solve.
-> 
-> For new platforms without an install base, maybe it would be easier to
-> rely on the command-line parameters since there aren't a bunch of
-> users that would have to change the Kconfig.
-> 
-
-Dear Bjorn,
-
-Thanks your for reply. Niklas and I attempted to modify the relevant 
-logic in drivers/pci/probe.c and found that there was a lot of code 
-judging the global variable pcie_bus_config. At present, there is no 
-good method. I will keep trying.
-
-I wonder if you have any good suggestions? It seems that the code logic 
-regarding pcie_bus_config is a little complicated and cannot be modified 
-for the time being?
-
-Best regards,
-Hans
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTmljb2xhcywKCk9uIDIwMjUtMDQtMTggMTQ6MjgsIE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6
+Cj4gTGUgdmVuZHJlZGkgMTggYXZyaWwgMjAyNSDDoCAwODoyMiArMDIwMCwgSm9uYXMgS2FybG1h
+biBhIMOpY3JpdMKgOgo+PiBIaSBOaWNvbGFzLAo+Pgo+PiBPbiAyMDI1LTA0LTE3IDIzOjU4LCBO
+aWNvbGFzIER1ZnJlc25lIHdyb3RlOgo+Pj4gRnJvbTogSm9uYXMgS2FybG1hbiA8am9uYXNAa3dp
+Ym9vLnNlPgo+Pj4KPj4+IEFkZCBzdXBwb3J0IGZvciBhIGdldF9pbWFnZV9mbXQoKSBvcHMgdGhh
+dCByZXR1cm5zIHRoZSByZXF1aXJlZCBpbWFnZQo+Pj4gZm9ybWF0Lgo+Pj4KPj4+IFRoZSBDQVBU
+VVJFIGZvcm1hdCBpcyByZXNldCB3aGVuIHRoZSByZXF1aXJlZCBpbWFnZSBmb3JtYXQgY2hhbmdl
+cyBhbmQKPj4+IHRoZSBidWZmZXIgcXVldWUgaXMgbm90IGJ1c3kuCj4+Pgo+Pj4gU2lnbmVkLW9m
+Zi1ieTogSm9uYXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNlPgo+Pj4gVGVzdGVkLWJ5OiBOaWNv
+bGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+Cj4+PiBDby1kZXZl
+bG9wZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNv
+bT4KPj4+IFNpZ25lZC1vZmYtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVA
+Y29sbGFib3JhLmNvbT4KPj4+IC0tLQo+Pj4gwqBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVj
+L3JrdmRlYy5jIHwgMzUgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPj4+IMKg
+ZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuaCB8wqAgMiArKwo+Pj4gwqAyIGZp
+bGVzIGNoYW5nZWQsIDM3IGluc2VydGlvbnMoKykKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9y
+a3ZkZWMvcmt2ZGVjLmMKPj4+IGluZGV4IDdiNzgwMzkyYmI2YTYzY2M5NTQ2NTVlZjk0MGU4NzE0
+NmQyYjg1MmYuLjZjNmZlNDExZjQ4NzcyNDE5ZTE4MTBkODY5YWI0MGQxNjg4NDhlNjUgMTAwNjQ0
+Cj4+PiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jCj4+PiArKysg
+Yi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jCj4+PiBAQCAtNzIsNiArNzIs
+MTUgQEAgc3RhdGljIGJvb2wgcmt2ZGVjX2lzX3ZhbGlkX2ZtdChzdHJ1Y3Qgcmt2ZGVjX2N0eCAq
+Y3R4LCB1MzIgZm91cmNjLAo+Pj4gwqAJcmV0dXJuIGZhbHNlOwo+Pj4gwqB9Cj4+PiDCoAo+Pj4g
+K3N0YXRpYyBib29sIHJrdmRlY19mbXRfY2hhbmdlZChzdHJ1Y3Qgcmt2ZGVjX2N0eCAqY3R4LAo+
+Pj4gKwkJCcKgwqDCoMKgwqDCoCBlbnVtIHJrdmRlY19pbWFnZV9mbXQgaW1hZ2VfZm10KQo+Pgo+
+PiBKdXN0IGEgc21hbGwgbml0cGljazoKPj4KPj4gTWF5YmUgdGhpcyBmdW5jdGlvbiBzaG91bGQg
+YmUgY2FsbGVkIHJrdmRlY19pbWFnZV9mbXRfY2hhbmdlZCgpIGFuZAo+PiBjb3VsZCBiZSBtb3Zl
+ZCBjbG9zZXIgdG8gcmt2ZGVjX2ltYWdlX2ZtdF9tYXRjaCgpIGFzIHRob3NlIHR3byBhcmUKPj4g
+cmVsYXRlZCB0byBpbWFnZV9mbXQgYW5kIG5vdCB0aGUgcGl4Zm10L2ZvdXJjYy4KPiAKPiBBcHBs
+aWVkIGxvY2FsbHkuIFdpdGggdGhpcyBjaGFuZ2UsIG1heSBJIGhhdmUgeW91ciBSYiA/CgpTdXJl
+LCBhbmQgdGhhbmtzIGZvciBoZWxwaW5nIGdldHRpbmcgdGhpcyBvbGQgc2VyaWVzIHRvIGxhbmQg
+Oi0pCgpSZXZpZXdlZC1ieTogSm9uYXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNlPgoKUmVnYXJk
+cywKSm9uYXMKCj4gCj4gdGhhbmtzLAo+IE5pY29sYXMKPiAKPj4KPj4gUmVnYXJkcywKPj4gSm9u
+YXMKPj4KPj4+ICt7Cj4+PiArCWlmIChpbWFnZV9mbXQgPT0gUktWREVDX0lNR19GTVRfQU5ZKQo+
+Pj4gKwkJcmV0dXJuIGZhbHNlOwo+Pj4gKwo+Pj4gKwlyZXR1cm4gY3R4LT5pbWFnZV9mbXQgIT0g
+aW1hZ2VfZm10Owo+Pj4gK30KPj4+ICsKPj4+IMKgc3RhdGljIHZvaWQgcmt2ZGVjX2ZpbGxfZGVj
+b2RlZF9waXhmbXQoc3RydWN0IHJrdmRlY19jdHggKmN0eCwKPj4+IMKgCQkJCcKgwqDCoMKgwqDC
+oCBzdHJ1Y3QgdjRsMl9waXhfZm9ybWF0X21wbGFuZSAqcGl4X21wKQo+Pj4gwqB7Cj4+PiBAQCAt
+MTE4LDggKzEyNywzNCBAQCBzdGF0aWMgaW50IHJrdmRlY190cnlfY3RybChzdHJ1Y3QgdjRsMl9j
+dHJsICpjdHJsKQo+Pj4gwqAJcmV0dXJuIDA7Cj4+PiDCoH0KPj4+IMKgCj4+PiArc3RhdGljIGlu
+dCBya3ZkZWNfc19jdHJsKHN0cnVjdCB2NGwyX2N0cmwgKmN0cmwpCj4+PiArewo+Pj4gKwlzdHJ1
+Y3Qgcmt2ZGVjX2N0eCAqY3R4ID0gY29udGFpbmVyX29mKGN0cmwtPmhhbmRsZXIsIHN0cnVjdCBy
+a3ZkZWNfY3R4LCBjdHJsX2hkbCk7Cj4+PiArCWNvbnN0IHN0cnVjdCBya3ZkZWNfY29kZWRfZm10
+X2Rlc2MgKmRlc2MgPSBjdHgtPmNvZGVkX2ZtdF9kZXNjOwo+Pj4gKwllbnVtIHJrdmRlY19pbWFn
+ZV9mbXQgaW1hZ2VfZm10Owo+Pj4gKwlzdHJ1Y3QgdmIyX3F1ZXVlICp2cTsKPj4+ICsKPj4+ICsJ
+LyogQ2hlY2sgaWYgdGhpcyBjaGFuZ2UgcmVxdWlyZXMgYSBjYXB0dXJlIGZvcm1hdCByZXNldCAq
+Lwo+Pj4gKwlpZiAoIWRlc2MtPm9wcy0+Z2V0X2ltYWdlX2ZtdCkKPj4+ICsJCXJldHVybiAwOwo+
+Pj4gKwo+Pj4gKwlpbWFnZV9mbXQgPSBkZXNjLT5vcHMtPmdldF9pbWFnZV9mbXQoY3R4LCBjdHJs
+KTsKPj4+ICsJaWYgKHJrdmRlY19mbXRfY2hhbmdlZChjdHgsIGltYWdlX2ZtdCkpIHsKPj4+ICsJ
+CXZxID0gdjRsMl9tMm1fZ2V0X3ZxKGN0eC0+ZmgubTJtX2N0eCwKPj4+ICsJCQkJwqDCoMKgwqAg
+VjRMMl9CVUZfVFlQRV9WSURFT19DQVBUVVJFX01QTEFORSk7Cj4+PiArCQlpZiAodmIyX2lzX2J1
+c3kodnEpKQo+Pj4gKwkJCXJldHVybiAtRUJVU1k7Cj4+PiArCj4+PiArCQljdHgtPmltYWdlX2Zt
+dCA9IGltYWdlX2ZtdDsKPj4+ICsJCXJrdmRlY19yZXNldF9kZWNvZGVkX2ZtdChjdHgpOwo+Pj4g
+Kwl9Cj4+PiArCj4+PiArCXJldHVybiAwOwo+Pj4gK30KPj4+ICsKPj4+IMKgc3RhdGljIGNvbnN0
+IHN0cnVjdCB2NGwyX2N0cmxfb3BzIHJrdmRlY19jdHJsX29wcyA9IHsKPj4+IMKgCS50cnlfY3Ry
+bCA9IHJrdmRlY190cnlfY3RybCwKPj4+ICsJLnNfY3RybCA9IHJrdmRlY19zX2N0cmwsCj4+PiDC
+oH07Cj4+PiDCoAo+Pj4gwqBzdGF0aWMgY29uc3Qgc3RydWN0IHJrdmRlY19jdHJsX2Rlc2Mgcmt2
+ZGVjX2gyNjRfY3RybF9kZXNjc1tdID0gewo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2lu
+Zy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmggYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3Jr
+dmRlYy5oCj4+PiBpbmRleCA2ZjhjZjUwYzVkOTlhYWQyZjUyZTMyMWY1NGYzY2ExNzE2NmRkZjk4
+Li5lNDY2YTI3NTNjY2ZjMTM3MzhlMGE2NzJiYzU3OGU1MjFhZjJjM2YyIDEwMDY0NAo+Pj4gLS0t
+IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuaAo+Pj4gKysrIGIvZHJpdmVy
+cy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuaAo+Pj4gQEAgLTczLDYgKzczLDggQEAgc3Ry
+dWN0IHJrdmRlY19jb2RlZF9mbXRfb3BzIHsKPj4+IMKgCQnCoMKgwqDCoCBzdHJ1Y3QgdmIyX3Y0
+bDJfYnVmZmVyICpkc3RfYnVmLAo+Pj4gwqAJCcKgwqDCoMKgIGVudW0gdmIyX2J1ZmZlcl9zdGF0
+ZSByZXN1bHQpOwo+Pj4gwqAJaW50ICgqdHJ5X2N0cmwpKHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgs
+IHN0cnVjdCB2NGwyX2N0cmwgKmN0cmwpOwo+Pj4gKwllbnVtIHJrdmRlY19pbWFnZV9mbXQgKCpn
+ZXRfaW1hZ2VfZm10KShzdHJ1Y3Qgcmt2ZGVjX2N0eCAqY3R4LAo+Pj4gKwkJCQkJwqDCoMKgwqDC
+oMKgIHN0cnVjdCB2NGwyX2N0cmwgKmN0cmwpOwo+Pj4gwqB9Owo+Pj4gwqAKPj4+IMKgZW51bSBy
+a3ZkZWNfaW1hZ2VfZm10IHsKPj4+Cj4+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
