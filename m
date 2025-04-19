@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1533DC369BD
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Apr 2025 04:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98FF1C369BD
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Apr 2025 08:00:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l00LHEXA+CV5d+oFcU+SaD5uVqXkzHo1JBedXSVEJSc=; b=WVRoVoWiJkDGq1
-	DVr5/rlX80YvzJ85Ut3qtb6OdkITfu8iv0UQxOC5p7v0Wc0K0mdMcbNqPXOcHOwtL2U0xdb0tOv9R
-	EJHhgyeVRZpKH72DQF0uccS7lhbGNHO+uwFVUTcjJkmaT7Z6k0wm8HA5vy7px5nG353sS0MArbJi6
-	V+iB1FLCaG1djq2CEggc5dWLhxJq4Xddp5QamlGPvetpFyZ5nE8LDXZ9rGTZKW0++tLPtKSATm5uY
-	J4e4xim8Y7Xx+F86eQiwYOqqBmS8CXhrosWD0Ct5Ndlr33LwD5ok3kw4f2BSgWzrDFuUpKUMDdpbl
-	6UQrP5W9wpBQoPKT3fsw==;
+	List-Owner; bh=Hro4hyFU106gTwAGT/z64B/x6OBC6MbSfHzcnJgGCuM=; b=femEdCC9htqSEZ
+	aMq764OaUlLdtFh0Gs3+4VfEWPs+7CI1lXzKYD2xjEdhPJfeYdMYMQvA74ITvnN/lIzdNuIVkaLtO
+	4czIrXCqebFv7S72xd12vx3JedCHj2xbGxwZrEFX4clVz0e1qrltHsfZiqB2RdxQA1A3r5xsmNnj0
+	5HJFUsnWt+XRdgIYejIRs3KyXWUbzm8g1TcmX/uS7I+uJqWVEOwQ36zTvZg/W6YfqANJTMSUbrzE3
+	3WQwFNL07Hj5rBzzPtrpsviIKECMA3CtapbB1nRCewAS9Fv42L3436pufwWDGCGTFGLg9gtaXQQJj
+	RE52bKTwtwmiyBj09rLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5zUJ-00000000oL9-1pHC;
-	Sat, 19 Apr 2025 04:07:31 +0000
-Received: from abb.hmeau.com ([144.6.53.87])
+	id 1u637f-000000010YM-0as7;
+	Sat, 19 Apr 2025 08:00:23 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5zUG-00000000oKf-1l8I
-	for linux-rockchip@lists.infradead.org;
-	Sat, 19 Apr 2025 04:07:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hmeau.com;
-	s=formenos; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=mGOL1PpCjzxYDOyt68iLzxOF7neGzcJzaEFed48nI64=; b=fpEMYrW4F3s5PLFL/Ef9G1NbgQ
-	QQyoMzDUPfQuWxEFTTf6xkxvAW7+Vh98b5rCfmot6EC24KjxAzsgN5qJiRSPxMcFTTf6EEPTh5hk0
-	R1l9nY2TeLw4TAqfvF1juHCWtYI7As6qp88q7FIV0xZBKKHNzcVZSlkUJcgWT5aPbe80JxIj4sbvQ
-	8CEDqH/I6mSZUb6WHaZ/M+/wnquNzEJ0zEBbRluNbjhhu42Ybyzm/DaRSHWWjZXiafojk034Zcuf2
-	TzKdOtuahJkcbECreTpBBHQ3OCvl30fhVInYzjS6gSPubNgHjjl/Yl3Ky0PCSrd/vndzaaU9ryjJL
-	VQKzWDeQ==;
-Received: from loth.rohan.me.apana.org.au ([192.168.167.2])
-	by formenos.hmeau.com with smtp (Exim 4.96 #2 (Debian))
-	id 1u5zTl-00Guwx-2S;
-	Sat, 19 Apr 2025 12:06:58 +0800
-Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Sat, 19 Apr 2025 12:06:57 +0800
-Date: Sat, 19 Apr 2025 12:06:57 +0800
-From: Herbert Xu <herbert@gondor.apana.org.au>
-To: Diederik de Haas <didi.debian@cknow.org>
-Cc: Akhil R <akhilrajeev@nvidia.com>, davem@davemloft.net,
-	thierry.reding@gmail.com, jonathanh@nvidia.com,
-	linux-crypto@vger.kernel.org, linux-tegra@vger.kernel.org,
-	Dragan Simic <dsimic@manjaro.org>,
-	Corentin Labbe <clabbe@baylibre.com>,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 00/10] Tegra Security Engine driver improvements
-Message-ID: <aAMhYaq0Ze-z6E8q@gondor.apana.org.au>
-References: <20250224091610.49683-1-akhilrajeev@nvidia.com>
- <D99QMGBHHYJO.1D7D0ZXJLBG9Y@cknow.org>
+	id 1u637c-000000010XQ-1vxs;
+	Sat, 19 Apr 2025 08:00:22 +0000
+Received: from localhost.localdomain (unknown [119.122.214.249])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 126b5e5d2;
+	Sat, 19 Apr 2025 16:00:05 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: jonas@kwiboo.se
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	dsimic@manjaro.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org,
+	ziyao@disroot.org
+Subject: Re: [PATCH 1/1] arm64: dts: rockchip: rk3528: Add CPU frequency scaling support
+Date: Sat, 19 Apr 2025 16:00:01 +0800
+Message-Id: <20250419080001.16514-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <bcedff66-26e4-4630-88cd-6ab9fbcf5598@kwiboo.se>
+References: <bcedff66-26e4-4630-88cd-6ab9fbcf5598@kwiboo.se>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <D99QMGBHHYJO.1D7D0ZXJLBG9Y@cknow.org>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZQklMVhpJGB9OGkMeSxkZTFYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VJT0JZV1kWGg8SFR0UWUFZT0tIVUpLSUhCS0NVSktLVU
+	pCWQY+
+X-HM-Tid: 0a964d0fd4e803a2kunm126b5e5d2
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OD46Eyo6IjIMKA8PEzYdSiEO
+	VjYKCxhVSlVKTE9OS09CTUtNSkhKVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpPVUlPQllXWQgBWUFJSU1NNwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250418_210728_460373_D0383420 
-X-CRM114-Status: UNSURE (   7.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250419_010020_722648_2E0D6979 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,19 +76,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 18, 2025 at 01:45:23PM +0200, Diederik de Haas wrote:
-> 
-> Earlier today I tried to boot my 6.15-rc1 kernel on my RockPro64
-> (rk3399) and that didn't go too well:
+Hi,
 
-This should be fixed in the latest mainline kernel where hash
-request chaining has been disabled.
+> There is only one cpu cluster on this SoC, I suggest we name this node
+> opp-table-cpu with a cpu_opp_table label.
+
+Sorry for the late reply, I was sick a while ago.
+Will do in PATCH v2.
+
+> Both 408 and 600 MHz freq will use a normal PLL and based on the vendor
+> opp-table there are chip variants that presumably require 875000
+> microvolt.
+>
+> Because of this 875000 is the lowest microvolt we should use in the
+> entire table, to ensure all chip variants can run stable.
+
+Running at 408 to 1008 MHz frequency under bsp kernel, one
+of my boards voltages is 850mV and the other is 875mV.
+I will use 875mV here instead.
+
+> For remaining freq TF-A will use PVTPLL and configure an osc ring length,
+> then the voltage supplied in opp and chip quality will determine/limit
+> the real cpu clock speed.
+>
+> This means that the voltage used is less important when it comes to
+> stability. However, we should keep 875000 as the lowest microvolt for
+> all opp above.
+
+According to your suggestion, I will use 875mV for 1008/1200 MHz.
+Maybe it would be more appropriate to use 900mV for 1200 MHz.
+
+> The voltage for remaining opp does not matter, historically mainline
+> picks the highest voltage from vendor tree to ensure stability. With the
+> use of PVTPLL that should not really be an issue, and we could pick
+> voltages that will give closest speed for majority of users.
+
+Thanks for your suggestion, I will keep this part (> 1200 MHz) unchanged.
 
 Thanks,
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+Chukun
+
+--
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
