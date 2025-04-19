@@ -4,60 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9CEEC369BD
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Apr 2025 09:49:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AC6AC369BD
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Apr 2025 09:50:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:Cc:To:From:Subject:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tpCrqAT/E76WJAaQTKpsSWL/4Jq0euvor5V8meFFvGs=; b=uyGLIeO8d8JinTE4sPe4Y/oHKI
-	GIHJpdCS5ZSttQ5gJL+UFpKUJSch6nwvD1p39R0GjmE0XlFeMOdeiiEP9ENSemuQif5VDhjwqxmFd
-	tfZawE1yn/lZVCGz3cZl9SkT/qYbnEf6ocQznwlN1EoqIyBwVKQPm28aAdJ//+odKRNVi44d+kU8w
-	P7pmXSIJMIQnp4l0MLgyfj+yncb26YjSAY1VIo6af5EeJy4Kw6zIb3Gs1+z7RLunicqVS6KihYDBP
-	idMNE1xAZSsZKEOylE+SrM2vsHJHjZEHWFP1XpebAP3Zp6IYO8BMkWJNlUEuEcF0N7xI9v053VP5g
-	TOZAySJg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0TYYd8oTnxfc06P8tPH7k/SGr6Tfysh7+Xq4X+gx16g=; b=RsczanFm19PUeh
+	R7uKgvdHQLOzpmiEJ/luv+KcCwZhp5xdpvFmhgHC447NTn7PKdFb+SfGVN9e0sn+o4dvntgxjmmvj
+	cEuvEOqIPn3NV9SXz71v67kg9dmkd9sKBeGMZeNPIeBphAqVCEygGMLQlD/c2CXzVGflDzMJaUt0u
+	P0mtEo7jOx+WZTm0qSHHEu5CQ8Awv5Xv0g0OJVeyS+XYmQR3yUsFaCzoaBJ/WGbu2WRTEK85Kxd6e
+	Qa6Pbp3kqhkFa3k9Cu1t0HLfFrAMHAh9WsLZXFmly+Fn2B5a1AAsAuMsHklLYwP3ofcUz9fseRyDJ
+	Eh1QuCGjSUuN60YGd3uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u64on-000000016qG-1kWw;
-	Sat, 19 Apr 2025 09:49:01 +0000
-Received: from out-170.mta1.migadu.com ([95.215.58.170])
+	id 1u64py-000000016y1-3TUs;
+	Sat, 19 Apr 2025 09:50:14 +0000
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u64ol-000000016pR-0V1z
+	id 1u64pw-000000016xJ-2HlS
 	for linux-rockchip@lists.infradead.org;
-	Sat, 19 Apr 2025 09:49:00 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1745056135;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WYcIiX7im0SwEgUBjW9RpMKMf9b+aamLPfpMOC5NliI=;
-	b=XKnDJwgwVh+2AJkayQ0NeH2Kvg8qAbd1tnYvcMl+DKXHqiczpSpLHXSIzPBsxU/16t7iF4
-	hlYG9UTJWjXQNnUnkl64Qgc/oFfw/T8qtw6j0f9K6IvZmc7UEmQIKrmtpBHirzgLvOQPh0
-	J3ZWdIczd+6ufV4zdSA/E+qA1OtlNVgCdyNgn29IB8XuTI5EEc9vqkSezr7poIUqsoBwmV
-	MxMirsfelUlnq6h9recCZVOrPLxjseiwhEtSocWqQ96RR6A5TKgXHBsJoiTs3TwP6IiEf0
-	CejUseD8cefGgezfsiE2cTsZxrvlhitP1egzdsgPVf3AdOdTHVAn/I5JnviHXA==
-Date: Sat, 19 Apr 2025 11:48:46 +0200
-Message-Id: <D9AIRPBIHXAO.3SDHEJW99DP4X@cknow.org>
-Subject: Re: [PATCH v3 00/10] Tegra Security Engine driver improvements
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Herbert Xu" <herbert@gondor.apana.org.au>
-Cc: "Akhil R" <akhilrajeev@nvidia.com>, <davem@davemloft.net>,
- <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
- <linux-crypto@vger.kernel.org>, <linux-tegra@vger.kernel.org>, "Dragan
- Simic" <dsimic@manjaro.org>, "Corentin Labbe" <clabbe@baylibre.com>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-References: <20250224091610.49683-1-akhilrajeev@nvidia.com>
- <D99QMGBHHYJO.1D7D0ZXJLBG9Y@cknow.org>
- <aAMhYaq0Ze-z6E8q@gondor.apana.org.au>
-In-Reply-To: <aAMhYaq0Ze-z6E8q@gondor.apana.org.au>
-X-Migadu-Flow: FLOW_OUT
+	Sat, 19 Apr 2025 09:50:13 +0000
+Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-af590aea813so3531795a12.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 19 Apr 2025 02:50:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1745056211; x=1745661011; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=s1smWoXBsF07yb0kdhSazKV5zZrD5jTCHEvASrG6ZXY=;
+        b=Ib4493/yLTf0ZinJ7rTwkphBoDtdO2LT+KerqrBjUu2RwPLYgFuB67dS3l2hQpB5q1
+         7aDsJ+01K1G5VQxMiOcDpiOnJd/aqbe+1+kGnaR8MT99vCOG3ssJmC1ltm4OAukoulTf
+         ePu2Vqr2U7IcEdas3ciKzHaVExVsZ5xX+kZuGwDj8jI5453EO3sH5EHIuROM4INnIdWi
+         iwxtEvCEKs95G3CU77E9zkc1smyZp/WoU6YRXSDFVaOEgHfZhkMHl7LaMy1e6vRDT2/F
+         8QKqDGPGfKNI8Z7zZB/vTsC3Sjql54P/1eAMNXncn0msDZeicy99iKPTdaBCPIO11xIq
+         krDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745056211; x=1745661011;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=s1smWoXBsF07yb0kdhSazKV5zZrD5jTCHEvASrG6ZXY=;
+        b=aKecWW0iH/h3O1bK2yK4uvzYn0VEMvix/WV6FKYYy3Nr/u2VVP5N1rGcoyI6CZmtEu
+         SrvZ+RqPynqpOJoNXA3lX6dGZd1CAi3OnL7CzjMAYntdysZ7TuZcK5sRWc60fUtsu71K
+         Fe4H5jDsgT7p+vLKEoXIRwmnDIMwyKQ5e9Pa2D9RZZRhIRzGOgcsEmIvYaJ9gqIGypOr
+         v7oa6eYNKewFnhiGKRkEFYvAxWThbNpY9ry+Kw/D9CnlUjQdiS3+9yNyzesvbhSXHok2
+         8T5X88cwRY4WlV20r/xC71YQgbxMYxH+27LNVMvwnDNALOSMYlX/LkduPRN1BWaZBFYv
+         Brkg==
+X-Forwarded-Encrypted: i=1; AJvYcCVUBZFnSpPn5ReXioDRk0SppMAFlfHi2/j46RlVuXiI82hTbgaw3ApgxZbPFzU2Bq9/31BWBMBilteog3wGmw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwN3MnXuxcKbF5ODLywbQHhnhQZB/7SEmFGEqnRsPDfNHEDo0lS
+	TFdpbKbmhtvI289mE0op4V3o/trQIF59HevD3fROBP/oEtKnRkQ9lrdMTm9+TQ==
+X-Gm-Gg: ASbGnctSupS7eyicGbGaw3KwPC5wre6sn5o287h2WeOvwJGl/HWHyvD6UDzLJ97mcZG
+	lTAvu7bx5EEzMH2PaqoKtjQ/Px7i9wgGMl1NnQBllGSPka5h2LoRBgDUcTEXaKKoA6OWyOoeKrD
+	RGv7aGoazKyAwqPioUfdYYOxN8aQA3mPO0pZ6i6dmzkZml1WJSTnt1WXRPHP11U9K54WCOjK3g/
+	HYngNrAKaVi1XsVclaxaedRVpuA0bt2Pbc5eHpnei7qgVmRsIY/IspDE62oGkwu5qbLw3J8SS1C
+	FkxME5g5rQYYczSX9ECipYJySGlXyUbb8E0aDuQmfeMFVAF/04jiTQ==
+X-Google-Smtp-Source: AGHT+IEq9phG3rDT0nEB9hkvWvaXKiYNwe1s5RXKu8uLzKTD8MFTWep3kqRGNKf8OTR2vRkuBkxE6g==
+X-Received: by 2002:a17:90b:2705:b0:2ee:8cbb:de28 with SMTP id 98e67ed59e1d1-3087c2ca65fmr8403803a91.8.1745056211696;
+        Sat, 19 Apr 2025 02:50:11 -0700 (PDT)
+Received: from thinkpad.. ([36.255.17.167])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3087df4e12asm2697981a91.37.2025.04.19.02.50.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 19 Apr 2025 02:50:11 -0700 (PDT)
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: heiko@sntech.de,
+	Kever Yang <kever.yang@rock-chips.com>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	andersson@kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Simon Xue <xxm@rock-chips.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	linux-pci@vger.kernel.org,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v9 1/2] dt-bindings: PCI: dw: rockchip: Add rk3576 support
+Date: Sat, 19 Apr 2025 15:19:59 +0530
+Message-ID: <174505612709.29229.7221551173436866910.b4-ty@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250414145110.11275-2-kever.yang@rock-chips.com>
+References: <20250414145110.11275-1-kever.yang@rock-chips.com> <20250414145110.11275-2-kever.yang@rock-chips.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250419_024859_569700_888F52A5 
-X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-CacheID: sfid-20250419_025012_601946_B9006820 
+X-CRM114-Status: UNSURE (   8.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,58 +109,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6785649902256670332=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============6785649902256670332==
-Content-Type: multipart/signed;
- boundary=787e13d5ada3b08197d931c1726e36235e1092534fb802965a37df9b17c0;
- micalg=pgp-sha512; protocol="application/pgp-signature"
 
---787e13d5ada3b08197d931c1726e36235e1092534fb802965a37df9b17c0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+On Mon, 14 Apr 2025 22:51:09 +0800, Kever Yang wrote:
+> rk3576 is using DWC PCIe controller, with msi interrupt directly to GIC
+> instead of using GIC ITS, so
+> - no ITS support is required and the 'msi-map' is not required,
+> - a new 'msi' interrupt is needed.
+> 
+> 
 
-On Sat Apr 19, 2025 at 6:06 AM CEST, Herbert Xu wrote:
-> On Fri, Apr 18, 2025 at 01:45:23PM +0200, Diederik de Haas wrote:
->>=20
->> Earlier today I tried to boot my 6.15-rc1 kernel on my RockPro64
->> (rk3399) and that didn't go too well:
->
-> This should be fixed in the latest mainline kernel where hash
-> request chaining has been disabled.
+Applied to pci/dt-bindings, thanks!
 
-Excellent, thanks for letting me know.
-b2e689baf220 ("crypto: ahash - Disable request chaining")
+[1/2] dt-bindings: PCI: dw: rockchip: Add rk3576 support
+      commit: b5516efc1ec610e75f320385a3a2ecb5932a49d3
 
-Cheers,
-  Diederik
-
---787e13d5ada3b08197d931c1726e36235e1092534fb802965a37df9b17c0
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaANxgAAKCRDXblvOeH7b
-blJ4AP4v0v8uHn92ZBD/ipPt+rGobZitRKp0xpoUesLYwz/VOQD+ObBSY+Fau99D
-uvbyarhPlqm3RUyDXRzJnNuy1XXOEwY=
-=82VX
------END PGP SIGNATURE-----
-
---787e13d5ada3b08197d931c1726e36235e1092534fb802965a37df9b17c0--
-
-
---===============6785649902256670332==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Best regards,
+-- 
+Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6785649902256670332==--
-
