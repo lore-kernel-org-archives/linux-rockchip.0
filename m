@@ -4,63 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2DBCC369C2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Apr 2025 12:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B9E5C369C2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Apr 2025 12:50:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q04Og+0OnB+GkEOrzQC6SJAEslxD1T/y3ubF7/wiQQw=; b=R/WZ+IjgfMUtFD
-	8qO2Lo6zH9oSyKs+//6nSzotUff1nJBEyOUbBnu6DutmsPwDmnF/GyZrJHghKLqO8YusWuKzQlU8D
-	NL5GsVCB9locCdgPj9YMwIy5IIGdetnxbchGMEGa5z3pccFFh7OPG4L9DL2H42iDot07b3EMyXZcG
-	snrhoF7l7Y6pgzLwyhRER9blIuzyRlhasBgUlbKLPPhFOHu2NP2p7+ho1jrPm4U660lxbnLy71jho
-	WHK0jF71k8Ekf0tPEihx25CO4vWEAE5dQqoEmlV5OlXnSDZNyjVDoxGWijRbxvhIN76ilxgG4U3zG
-	T45Hd3+xcSUt9V2cyBVQ==;
+	List-Owner; bh=L5Tq7mlHVk/Ch6LBcqHXKLmYEkYzKB0IsaiAX9BPH0s=; b=CQ8m69d0O0IDus
+	rWBj9eW6BOl4PkjkQsDBhY0X9IneaQHZ47Atb66bhOsXPm+b5FbJnneGvuQyKurhH8eVnV1JXpdvB
+	Vn+SebHL5soSKmNC2nJ6P2BwYvDb3DCdldfJDI7r/7+aJCeVCpMSftt81Si0lGmNv7zOOEzp9tC/9
+	Jpy6AZkGq0Z68PfzJ+DiQZO1d2z5hISlE8VIG2gLKKSZiomAQIBGBFxKO+ZUPWfyXWprzD6mWwky4
+	XoJqncA4LfKV2q8IvlyijyA0udKxmeJl3oPvEHHn4c2gP66ftBVcgXarxq89BVC73i6r717SndlZZ
+	ALG/uSLPfa7Dv2xaA8qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7D1P-00000007B1q-46Ho;
-	Tue, 22 Apr 2025 12:46:43 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1u7D56-00000007Brn-3ROa;
+	Tue, 22 Apr 2025 12:50:32 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Byi-00000006z1B-2E8O;
-	Tue, 22 Apr 2025 11:39:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B29855C479A;
-	Tue, 22 Apr 2025 11:37:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DEC25C4CEE9;
-	Tue, 22 Apr 2025 11:39:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745321991;
-	bh=LvVe3mABaUW4+b16EtPFOLNobUI0Izc6wjH25SG4f3k=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Lxq+6wdbVCOSDSPGRxd2NJJi8at9gu0uT3YEYGZcGvaLp4Hkw7gqYT926bcNdFBsO
-	 ZJES5SwEOCu1cE7wHVqNq9FYZM96sUKQIZWHPX5lSMhCANM4jTX0gRBWfSdgv/WRaw
-	 0pEZaBS35Ja5OcQ2a8C4yq1wUziyx+T/MhrUJc6dgAVZq1/DUZFbyaC32dk93K588E
-	 4U/5ERv3zZbwRz0Z6wMQTCtuEulkVD1v06qHOubA3OrRYgcwBlVJPgCgg5U+bJM2hw
-	 tshbHzNrqMxBU4eeaUJMevxt9rpE7XqAz2JN8gpRzS2DEvqx6jedihlYxi/QkxS35t
-	 uoEB6B2JL+PDQ==
-Date: Tue, 22 Apr 2025 13:39:46 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
-	heiko@sntech.de, manivannan.sadhasivam@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, shawn.lin@rock-chips.com,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/3] PCI: dw-rockchip: Unify link status checks with
- FIELD_GET
-Message-ID: <aAeAAhb4R8ya_mBO@ryzen>
-References: <20250422112830.204374-1-18255117159@163.com>
- <20250422112830.204374-4-18255117159@163.com>
+	id 1u7C3S-00000007022-0dc6;
+	Tue, 22 Apr 2025 11:44:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=7sB1dmuD3GoUpGEiENNK8mtmzVT+tPo02Qc2OEU6BSI=; b=1le15bX3kNYT4sUNY2Wrjt/GOy
+	ii2yyzYgWEbcGsSzMMBiQ+xE+hPzZwy8wUPqDMJEYntpikNZhzaXLFYecyMRHkQyjoPe8iIhrwKDE
+	Ec8uTlmACS5xjGK94UqaO/TiTKUepSRje0NVodc+Vag4d5CYTfdP9egLdQFqHPtxBncnLeHmb3+nG
+	qrhWQPKlZ63/m3gUBPMDeBv+glssWPXZHqLfJefm3WpMIUSzj7NH6BnmRZWd3D21X3381/PYvUJn1
+	MgImJGhPrbFMBsW6YI1N7d7GgP7FioNbCJauCmJ05CR4/YwFl/aksPkTXqz9tACb+JMoeNobg391G
+	fnzu0iwg==;
+Received: from i53875b95.versanet.de ([83.135.91.149] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1u7C3I-0002kK-4j; Tue, 22 Apr 2025 13:44:36 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: (subset) [PATCH v9 0/2] rockchip: Add rk3576 pcie dts nodes
+Date: Tue, 22 Apr 2025 13:44:24 +0200
+Message-ID: <174532226023.263993.13596887054519094900.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250414145110.11275-1-kever.yang@rock-chips.com>
+References: <20250414145110.11275-1-kever.yang@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250422112830.204374-4-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_043952_686902_72970984 
-X-CRM114-Status: GOOD (  18.32  )
+X-CRM114-CacheID: sfid-20250422_044446_187253_6D1817E8 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,85 +65,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Detlev Casanova <detlev.casanova@collabora.com>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Frank Wang <frank.wang@rock-chips.com>, linux-pci@vger.kernel.org, andersson@kernel.org, =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, linux-kernel@vger.kernel.org, Lorenzo Pieralisi <lpieralisi@kernel.org>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Finley Xiao <finley.xiao@rock-chips.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Bjorn Helgaas <bhelgaas@google.com>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Simon Xue <xxm@rock-chips.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 22, 2025 at 07:28:30PM +0800, Hans Zhang wrote:
-> Link-up detection manually checked PCIE_LINKUP bits across RC/EP modes,
-> leading to code duplication. Centralize the logic using FIELD_GET. This
-> removes redundancy and abstracts hardware-specific bit masking, ensuring
-> consistent link state handling.
-> 
-> Signed-off-by: Hans Zhang <18255117159@163.com>
-> ---
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 15 +++++----------
->  1 file changed, 5 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index cdc8afc6cfc1..2b26060af5c2 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -196,10 +196,7 @@ static int rockchip_pcie_link_up(struct dw_pcie *pci)
->  	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
->  	u32 val = rockchip_pcie_get_ltssm(rockchip);
->  
-> -	if ((val & PCIE_LINKUP) == PCIE_LINKUP)
-> -		return 1;
-> -
-> -	return 0;
-> +	return FIELD_GET(PCIE_LINKUP_MASK, val) == 3;
 
-While I like the idea of your patch, here you are replacing something that
-is easy to read (PCIE_LINKUP) with a magic value, which IMO is a step in
-the wrong direction.
-
-
->  }
->  
->  static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
-> @@ -499,7 +496,7 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
->  	struct dw_pcie *pci = &rockchip->pci;
->  	struct dw_pcie_rp *pp = &pci->pp;
->  	struct device *dev = pci->dev;
-> -	u32 reg, val;
-> +	u32 reg;
->  
->  	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
->  	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
-> @@ -508,8 +505,7 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
->  	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm(rockchip));
->  
->  	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
-> -		val = rockchip_pcie_get_ltssm(rockchip);
-> -		if ((val & PCIE_LINKUP) == PCIE_LINKUP) {
-> +		if (rockchip_pcie_link_up(pci)) {
->  			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
->  			/* Rescan the bus to enumerate endpoint devices */
->  			pci_lock_rescan_remove();
-> @@ -526,7 +522,7 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
->  	struct rockchip_pcie *rockchip = arg;
->  	struct dw_pcie *pci = &rockchip->pci;
->  	struct device *dev = pci->dev;
-> -	u32 reg, val;
-> +	u32 reg;
->  
->  	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
->  	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
-> @@ -540,8 +536,7 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
->  	}
->  
->  	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
-> -		val = rockchip_pcie_get_ltssm(rockchip);
-> -		if ((val & PCIE_LINKUP) == PCIE_LINKUP) {
-> +		if (rockchip_pcie_link_up(pci)) {
->  			dev_dbg(dev, "link up\n");
->  			dw_pcie_ep_linkup(&pci->ep);
->  		}
-> -- 
-> 2.25.1
+On Mon, 14 Apr 2025 22:51:08 +0800, Kever Yang wrote:
+> This patch set adds support for rk3576 pcie by adding the dts node,
+> and this series is a re-base on v6.15-rc1 and collect tags without code
+> change.
 > 
+> Please help take the dt-binding to PCI tree if there is no more change request.
+> 
+> Thanks,
+> Kever
+> 
+> [...]
+
+Applied, thanks!
+
+[2/2] arm64: dts: rockchip: Add rk3576 pcie nodes
+      commit: d4b9fc2af45d2b91b1654c4aaa1edcb4dd8f4918
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
