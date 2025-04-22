@@ -4,81 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14293C369C2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Apr 2025 12:06:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6413AC369C2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Apr 2025 12:41:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=IcFxU7mCa/L5xxA6oJ1JpVtNyLYq9QAqa9fDxFlXOVw=; b=f4jxsrKSKVdrKB
-	6o/ZSqAw6V0JvHdvgF0l6K8nSUl0xpnCkkLuVmrrtFalmaeo7SxT78EnSvN2u2BpCQDM1Oz/7/GMl
-	0iH1QkAYNdQ6Sqj+DQWqpbsDwoONKE0BOuX2mLQy12gmD2lIJ4x4wZImOVbYPZ3Hnjw5o7FCtdom5
-	cqWqpmhLpp6CKsUwRzz68/x6gdzk3HggEVesd3yZcERK+2lKKjE+/9+PU1C14JBq7g/fjfp8kr++A
-	9fV8PzZmHk1XWzNrUDQKeJuvHuamTg3+KZDrxcbEESQrPRUZ5SFiErPCbTQIO3su2czNfT4P/9pwi
-	TR+tnHEBxlN7uT8MyMbw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=EdtJZrHzc5lz10x5HargZKsLG3FXIRSgNsOdHenFg2A=; b=C/90nLzmL1fQl5
+	hXFolBCEts7JnWDahafExJOLhpXhK0tQ0Xf4umgwgzFZlLqJeVYrZV07iBGTl5FaAdoMTAZYwIxyl
+	eCW4dLa7zZI/rK1Hefu7Wu+qdHsp48h2MALjF5yTQ7MrwWK2qMt5o5/GAYNJzcKh5T7sSSSZnB7js
+	b3f0/Li5RikQxD9S+TbF2GpTN4cqD4xKmlhKFML9X9d+IxCydQOk6NOpH5JYvwiox6AvbjeBXQ+Bh
+	DMN862bBMkpjhHlC8vQF1wgCPMEYcZLUpdugsHgqNJWZqC9QhetvJqjHlaVdsRtw/ka+5trzOnl6i
+	Z36hQIzVEnC2VwKtS1Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7COd-000000073O2-1KRc;
-	Tue, 22 Apr 2025 12:06:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1u7Cvr-000000079oP-3E7h;
+	Tue, 22 Apr 2025 12:40:59 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7BoY-00000006wZT-0rPV;
-	Tue, 22 Apr 2025 11:29:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=hk85iY4ymzyKE4GF/XJIv+VOxpEfbG0odDZoakglHzU=; b=SfG2liOjtE8RtpLEAT6qSRXJvl
-	SezmnOdPMP+f+hUx399KlsfJR7OmHqtk2FspCn3S/wa3Xmcy++o/bYH882dT+XMErDTv49mBDD+80
-	DfFqv4LuGYIcxmw3KWtLjmk/rwZCOkND4v1T3wGJ+5MuOkfaStdb6KphxBE4KGTqAHrhUv/EpaCcg
-	B5OrSVTtb/uuZ3gILpuzf9PLdC7QkqP2C+12up7NPBfAzuxG8k2P6Gp4ZiqCpHcR3elCHNdQsIeOg
-	PK+4sqYHBsWnQZ1hiM5feQTtaliy71WalrA7Isw3o+BOvROfbYbDpU3Z1XRoOWcijWJqt5XDyXFYX
-	SNu4aVMg==;
-Received: from m16.mail.163.com ([117.135.210.4])
-	by desiato.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u7BoU-0000000BCBU-0JRK;
-	Tue, 22 Apr 2025 11:29:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=hk85i
-	Y4ymzyKE4GF/XJIv+VOxpEfbG0odDZoakglHzU=; b=lp8bbt1AYA98UYm7u9TfQ
-	ynqlrk6uZpn4Yt2QLQDYSlHVGrZWmWmzl4cQGOuoLtfKNfbQafTsg3ExvSVV1SUi
-	1qlhPQFeyhWntuZSTOZ23yUHa6DdhBtV67b8lZefbIkAMFxWaEgQZrjBC1Vb2nYz
-	USj6gNOPnihzMm/y2DqpjA=
-Received: from localhost.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wCXbK1gfQdoRW2NBg--.44191S2;
-	Tue, 22 Apr 2025 19:28:33 +0800 (CST)
-From: Hans Zhang <18255117159@163.com>
-To: lpieralisi@kernel.org,
-	kw@linux.com,
-	bhelgaas@google.com,
-	heiko@sntech.de
-Cc: manivannan.sadhasivam@linaro.org,
-	robh@kernel.org,
-	jingoohan1@gmail.com,
-	shawn.lin@rock-chips.com,
-	linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Hans Zhang <18255117159@163.com>
-Subject: [PATCH 0/3] PCI: dw-rockchip: Reorganize register and bitfield definitions
-Date: Tue, 22 Apr 2025 19:28:27 +0800
-Message-Id: <20250422112830.204374-1-18255117159@163.com>
-X-Mailer: git-send-email 2.25.1
+	id 1u7Bua-00000006xyA-0752;
+	Tue, 22 Apr 2025 11:35:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id CF831A4B95E;
+	Tue, 22 Apr 2025 11:30:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 438DDC4CEEC;
+	Tue, 22 Apr 2025 11:35:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1745321734;
+	bh=iyIAAmPJNlz3e5gWT5Kk9P9NWMtpV70iP2nADcdxgfw=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=Qsd2/Oj84sxfH8BnbFIuKLhjSmYzFcLJOdoqyUbluLNb/RkJUVIgOpjMvG+7KJyh6
+	 sq0cn+MAvwZz4jEl7Lw78rU9TieE+Mhd/wX5KgDiCqP88ymO7ExiCT2r+1DVd+H/zu
+	 5+ApLuxwmsphup3ib4DhazauAYACtlis1FE6flSHCxH+PS3C49VwAL/Z53tQxrNlfx
+	 OgOTleJOXuFl4brJSwlda6PBP7wKaXMqd2cv5r0zbTnvNBy7WXZ4+nBNG4ZHdxfUn6
+	 kJubSLHhTVj58Qx84dWEzw2fdCzRv8VaD30Yn8F8wKfgnGtzWEiGDfuEWEkn6k5bvP
+	 1vYK/nFCz6hfg==
+Date: Tue, 22 Apr 2025 06:35:32 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Jensen Huang <jensenhuang@friendlyarm.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Anand Moon <linux.amoon@gmail.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] PCI: rockchip: Fix order of rockchip_pci_core_rsts
+Message-ID: <20250422113532.GA321792@bhelgaas>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wCXbK1gfQdoRW2NBg--.44191S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7WFykKw4ruF18XrW7Xr4kCrg_yoW8Kryxp3
-	Z8JFWrur4fJw40vws7tw17ZFy8K3ZrCFyY9w4DKw10qa40qa48WFyftF1F9ry7Xr4xKF17
-	ZwsrX34I93Wav3JanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pEJPEPUUUUU=
-X-Originating-IP: [61.171.199.116]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbBDw83o2gHegpLtwADs0
+Content-Disposition: inline
+In-Reply-To: <20250328105822.3946767-1-jensenhuang@friendlyarm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_122918_777851_C1DE48D8 
-X-CRM114-Status: UNSURE (   6.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250422_043536_126934_B9442C7C 
+X-CRM114-Status: GOOD (  20.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,54 +79,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-1. PCI: dw-rockchip: Remove unused PCIE_CLIENT_GENERAL_DEBUG
-2. PCI: dw-rockchip: Reorganize register and bitfield definitions
-3. PCI: dw-rockchip: Unify link status checks with FIELD_GET
+On Fri, Mar 28, 2025 at 06:58:22PM +0800, Jensen Huang wrote:
+> The order of rockchip_pci_core_rsts follows the previous comments suggesting
+> to avoid reordering. However, reset_control_bulk_deassert() applies resets in
+> reverse, which may lead to the link downgrading to 2.5 GT/s.
+> 
+> This patch restores the deassert order and comments for core_rsts, introduced in
+> commit 58c6990c5ee7 ("PCI: rockchip: Improve the deassert sequence of four reset pins").
+> 
+> Tested on NanoPC-T4 with Samsung 970 Pro.
+> 
+> Fixes: 18715931a5c0 ("PCI: rockchip: Simplify reset control handling by using reset_control_bulk*() function")
+> Signed-off-by: Jensen Huang <jensenhuang@friendlyarm.com>
 
----
-https://patchwork.kernel.org/project/linux-pci/patch/20250416151926.140202-1-18255117159@163.com/
+Thanks for the fix!  It looks like 18715931a5c0 appeared in v6.14, so
+we should probably add a stable tag so it gets backported there?
 
-Bjorn Helgaas:
-These would be material for a separate patch:
-
-- The #defines for register offsets and bits are kind of a mess,
-  e.g., PCIE_SMLH_LINKUP, PCIE_RDLH_LINKUP, PCIE_LINKUP,
-  PCIE_L0S_ENTRY, and PCIE_LTSSM_STATUS_MASK are in
-  PCIE_CLIENT_LTSSM_STATUS, but you couldn't tell that from the
-  names, and they're not even defined together.
-
-- Same for PCIE_RDLH_LINK_UP_CHGED, PCIE_LINK_REQ_RST_NOT_INT,
-  PCIE_RDLH_LINK_UP_CHGED, which are in PCIE_CLIENT_INTR_STATUS_MISC.
-
-- PCIE_LTSSM_ENABLE_ENHANCE is apparently in PCIE_CLIENT_HOT_RESET_CTRL?
-  Sure wouldn't guess that from the names or the order of #defines.
-
-- PCIE_CLIENT_GENERAL_DEBUG isn't used at all.
-
-- Submissions based on the following v5 patches:
-https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-1-git-send-email-shawn.lin@rock-chips.com/
-https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-2-git-send-email-shawn.lin@rock-chips.com/
-https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-3-git-send-email-shawn.lin@rock-chips.com/
-https://patchwork.kernel.org/project/linux-pci/patch/1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com/
----
-
-Hans Zhang (3):
-  PCI: dw-rockchip: Remove unused PCIE_CLIENT_GENERAL_DEBUG
-  PCI: dw-rockchip: Reorganize register and bitfield definitions
-  PCI: dw-rockchip: Unify link status checks with FIELD_GET
-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 58 +++++++++----------
- 1 file changed, 29 insertions(+), 29 deletions(-)
-
-
-base-commit: 9d7a0577c9db35c4cc52db90bc415ea248446472
-prerequisite-patch-id: 5d9f110f238212cde763b841f1337d0045d93f5b
-prerequisite-patch-id: b63975b89227a41b9b6d701c9130ee342848c8b6
-prerequisite-patch-id: 46f02da0db4737b46cd06cd0d25ba69b8d789f90
-prerequisite-patch-id: d06e25de3658b73ad85d148728ed3948bfcec731
--- 
-2.25.1
-
+> ---
+>  drivers/pci/controller/pcie-rockchip.h | 10 +++++++---
+>  1 file changed, 7 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+> index 11def598534b..4f63a03d535c 100644
+> --- a/drivers/pci/controller/pcie-rockchip.h
+> +++ b/drivers/pci/controller/pcie-rockchip.h
+> @@ -320,11 +320,15 @@ static const char * const rockchip_pci_pm_rsts[] = {
+>  	"aclk",
+>  };
+>  
+> +/*
+> + * Please don't reorder the deassert sequence of the following
+> + * four reset pins.
+> + */
+>  static const char * const rockchip_pci_core_rsts[] = {
+> -	"mgmt-sticky",
+> -	"core",
+> -	"mgmt",
+>  	"pipe",
+> +	"mgmt",
+> +	"core",
+> +	"mgmt-sticky",
+>  };
+>  
+>  struct rockchip_pcie {
+> -- 
+> 2.49.0-1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
