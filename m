@@ -4,64 +4,204 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 601A6C369C2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Apr 2025 13:21:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16CC6C369C2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Apr 2025 14:57:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vMY4AFZH9LTrdLXsgqyTALZ/+bgYS+mX7GCmivmEuYs=; b=GJyQcfxqebmMUh
-	vC4glxMyryEdNMjp5f8z94GLg5Lu/Ly7fk/ff2zgaPBHZa9lQkegAje661FFKPPNq/HDeRNxLbvhD
-	JC6aUC59814iPB17jL1pgADOTLzZp8T0nypAbTcs6UKR/WSHKhU+42kQL03dfNNYnaySXWrKj7nDt
-	KihI75vfk78ibA5Jd0TrzlnrDN1Z5LMUXtnJjGr2ZGTBM7JN72T8vQ4Rpr8Ozohh+RLrfp9wWOBB9
-	khefTzR1tribR7v4TJhmkpSKEJ/cBUrtDzomI/WJXNADDFqNBZYy6OPEmzSuMjFb5dXnmz02b6Uha
-	ji0BRy2wjRLNU/U6/ANA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:CC:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=FHEzoZX8bEheYCcHij49R307tixa2D+wTjD8jy7L340=; b=HaaJ1JmzClcrQ/pQPqe4RlBXwJ
+	5cKKgJEbCEglj5NK7h0NajgS4rAgRm8rf9vNZb2ZkrY6SnmBkNQf4EiQ7bZLVEsFgKXqtmmBVozGb
+	tp25HjU3yHxs0Q1sefgQE2kB/MdwkGaUfdBt0c0AS3fMMlQ4xnOOuC2TNhWEwYaoxCJGOBEsYuhNx
+	1+BE8KBR+56hzc1qwgR9qggId0Pm/U0QpumHUuEqcq/RyvEcpYpeLydo3bMK0cVw4QTlGyRd5Wk/h
+	DEB1HqpRZHqy2I6KGvKdU92ztRYQ0ha0I0aR7upNUjXA1juJ4EP3q9kbSMiUZTHd6vuf7biabrbGo
+	Paf7fjkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7DYu-00000007HAg-0bPr;
-	Tue, 22 Apr 2025 13:21:20 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Cuz-000000079bj-2q3v;
-	Tue, 22 Apr 2025 12:40:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
-	Content-Type; bh=cTzRbkM6e3CdpYQF8r9G7TR3PmD/Whi+UBdMJ87yaKg=;
-	b=YHAcsb4fCK+mVs+1/RIOX/B33lTJigwJNK+2WBDz1r5I+AClbmRQdt8ZlhkDh+
-	ix5NqovTJVvcMtB0lpVnPFfzXQv4sGRMwQAxFP84cihao5McHAVGDyoW+cePu805
-	xoqmadSKC3tc/MfUt7C0Kzd+dxrXbqhDuLCy/zNivic4A=
-Received: from [192.168.142.52] (unknown [])
-	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wC3NeXvjQdo93IeBw--.12901S2;
-	Tue, 22 Apr 2025 20:39:12 +0800 (CST)
-Message-ID: <047950c0-fcf0-428a-8ca1-dff0a6f944cd@163.com>
-Date: Tue, 22 Apr 2025 20:39:11 +0800
-MIME-Version: 1.0
+	id 1u7F3b-00000007agx-1wbv;
+	Tue, 22 Apr 2025 14:57:07 +0000
+Received: from mgamail.intel.com ([192.198.163.13])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u7Ded-00000007ILI-30av;
+	Tue, 22 Apr 2025 13:27:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1745328436; x=1776864436;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=w2w2ZoDxOR7XaqeMwcaAOvSQYGDzSalD9z7Cq9vCZ1E=;
+  b=XM4/QDNwpDdscB2dfPwoXMGAyk9F3IC2HzG8rAt281H75fejOvH+6VYZ
+   b07UKUEuSEVpOXEDGIBKUCEam8TL3lY6LBc3+gSZs83Upp4lD2xfcj4g5
+   O++cpERJC1Rh17v2qs1mhwy1N1u8SSKuXcsdhbdaosZowZ56585sfSxiy
+   2b65wkHOOOhOk7DmgN2+WMmAZsNdkHR9BiAHgnQcd5HBuSjg/B6FxXpwF
+   FBeJuWFi+FmJejFOTqzsho09/ya+vlcZMQq/RwUeQNg8VwQtTa3Yy7YMD
+   J7FZQV0PlEWg09S/1rGnUAcS83UVTAxRqEXoT3P+4poY16yBvEWlyjfVS
+   g==;
+X-CSE-ConnectionGUID: wp+15XqkTHSUPkctucJQGg==
+X-CSE-MsgGUID: GUpoScxMTx+UAxt44KI1JQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11411"; a="49549451"
+X-IronPort-AV: E=Sophos;i="6.15,231,1739865600"; 
+   d="scan'208";a="49549451"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2025 06:27:15 -0700
+X-CSE-ConnectionGUID: SFEPd8asRi29po6ADvQuKA==
+X-CSE-MsgGUID: N0zDG/5CR5SMAfhsxbgj5g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,231,1739865600"; 
+   d="scan'208";a="131762179"
+Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
+  by orviesa009.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2025 06:27:15 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Tue, 22 Apr 2025 06:27:14 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Tue, 22 Apr 2025 06:27:14 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.40) by
+ edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Tue, 22 Apr 2025 06:27:13 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=jgBpfXH/FzNjEvsGz1ILfbjUDLu5UqCY7Wz+ifOZjqSc7Avy4Atp/EIaZ+uAnqxmzt/EfweCrz3c1X/mboT4llT6x3L5aNMd/OFpagxgNo9s3GRdx+yBJNMfu4cz6pT9ztSeZk1o59OWpA2QS0Sslvh2E1/lzZq4VDnSuchVXlCCYMtgWFiy0Yh8O7D0VSl5D6/xYOoTBf9ZSm4lYJKk4vHLBvAhbas2ydE6mgZeUcnEg52ldYznuVNVjnEpnaI5O3y/b9ro3DdaqUDUo+uXs1PDA/sIC8JF7yyc2kf+bg9d7kxN4UejFLeS+GKI1nFUm1gp4acVoYLr7swrhZcwgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bUKrBT+VLoNEaf/ujL5r+SvHsLgLIMnGR/nEbg7VZnw=;
+ b=KUW3que/somhOs/9r4ximkhRhGKL6tcnfAa0zcPvmuYWKg6x/dfXFsAItyoDE+miEsPfZR/UCrTd+kjpGYM6sxu6B7a0fJGnGDCqZ9GO8QEGVlFnrai2C9vMoVe2kwJX5h/rAt2w2a1smnnmlUINuI/mzwcJ+WnmwnwC4be9c0GJfCTuG7Fv14MLi30UGZCemGLqRCi5qmwPS4gmYAwPZNR9bo0o7ALl7CfhAbzf+NEzi43U6QxmKWFxSgD8CBSzNFQyX3I+ByYEzt2vRvlkb9Xhfp6L/+3vbUnoSoI4c/vyBctdQiBo/zTMziI9adCO7qz1DaWw4Qo896NfzQZlFg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from PH7PR11MB6054.namprd11.prod.outlook.com (2603:10b6:510:1d2::8)
+ by SA1PR11MB6614.namprd11.prod.outlook.com (2603:10b6:806:255::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8655.34; Tue, 22 Apr
+ 2025 13:27:11 +0000
+Received: from PH7PR11MB6054.namprd11.prod.outlook.com
+ ([fe80::a255:8692:8575:1301]) by PH7PR11MB6054.namprd11.prod.outlook.com
+ ([fe80::a255:8692:8575:1301%2]) with mapi id 15.20.8655.031; Tue, 22 Apr 2025
+ 13:27:11 +0000
+Message-ID: <ec22dba9-10c4-4a89-a381-17c0b09a2db4@intel.com>
+Date: Tue, 22 Apr 2025 16:27:01 +0300
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] PCI: dw-rockchip: Reorganize register and bitfield
- definitions
-To: Niklas Cassel <cassel@kernel.org>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
- heiko@sntech.de, manivannan.sadhasivam@linaro.org, robh@kernel.org,
- jingoohan1@gmail.com, shawn.lin@rock-chips.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20250422112830.204374-1-18255117159@163.com>
- <20250422112830.204374-3-18255117159@163.com> <aAeL_Wr42ETm7S96@ryzen>
+Subject: Re: [PATCH v2] mmc: sdhci-of-dwcmshc: add PD workaround on RK3576
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Shawn Lin
+	<shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>, "Heiko
+ Stuebner" <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>, "Finley
+ Xiao" <finley.xiao@rock-chips.com>
+CC: Sebastian Reichel <sebastian.reichel@collabora.com>, Detlev Casanova
+	<detlev.casanova@collabora.com>, <kernel@collabora.com>,
+	<linux-pm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mmc@vger.kernel.org>
+References: <20250412-rk3576-emmc-fix-v2-1-830e653ad4f0@collabora.com>
 Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <aAeL_Wr42ETm7S96@ryzen>
-X-CM-TRANSID: _____wC3NeXvjQdo93IeBw--.12901S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxWFW7ArW8CF18Xr4kuF4UArb_yoWrJrW8pa
-	98JFySkrs8J3y5Cw1vg3Z8JFyxtF4fKFWjgrWSgrWUC3Z5A3W8Gr18KF15WFy2qr4kur1S
-	93s8W34agFZxCrDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07Ul-erUUUUU=
-X-Originating-IP: [61.171.199.116]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOhQ3o2gHi1dc-QAAso
+From: Adrian Hunter <adrian.hunter@intel.com>
+Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
+ Business Identity Code: 0357606 - 4, Domiciled in Helsinki
+In-Reply-To: <20250412-rk3576-emmc-fix-v2-1-830e653ad4f0@collabora.com>
+X-ClientProxiedBy: WA2P291CA0030.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1f::26) To PH7PR11MB6054.namprd11.prod.outlook.com
+ (2603:10b6:510:1d2::8)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH7PR11MB6054:EE_|SA1PR11MB6614:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5d6e6ab3-5668-4763-671a-08dd81a16301
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014|7053199007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?VUlHYmdwcFI4VWdNQVA0VjZDbmtPNHVwemlJNENqMnk2R0JXdkliVFovOHRp?=
+ =?utf-8?B?WjM2Q2VBMklEOS9kZGZSVUNiM2cxSm1ZVjM4UnQxaHBJd1k2TlpRRTZ1ZTVZ?=
+ =?utf-8?B?MEtZNWZSMisrdkhjNEdYazVKdEE3cCs2aGVvWkZxYStLSWV1TFZUazF6ZDN5?=
+ =?utf-8?B?aFdlSFJpNi8zTkZSQ3F4YTRBWTRDUmlTRFREVjdRZW96MzVWWnZTNWw3eis4?=
+ =?utf-8?B?YVN0ZzJDVWl4N3pJckJDc240Qk4wTUdrS0NXY0FSOGh4Q1c2bzlhd1VZNFJk?=
+ =?utf-8?B?YUZQVXdWNnF2Y3pma05vTDRWaU5XaXRQdkJUYWNDM3F0TEdoR1BYdXlkeVU0?=
+ =?utf-8?B?ZVpWMnNRa3dSUDRqT1RkQTJjeVBIRUptbzZRaTlTQ2dNdW1yeWJFZ3FUWDdy?=
+ =?utf-8?B?THkzSmZsK3ZKb2gvWjFMR0dWVElOeTFybWRLSTY4UUhiRlAwNzBrR0xXUHFp?=
+ =?utf-8?B?TFh3TUFVc2RudVJFVDEyclA0MVhZRlZ6Q0tzZmwvMTc5aDE4WUp5TUJNK3Rt?=
+ =?utf-8?B?VFozRXU0YmVNSUI1azRmakcway90dWZkcCtGd1MwVFQvSElPdndlck9WZ09m?=
+ =?utf-8?B?TkZDdWlERVllY2YwZmdmYnJxOEVIc1pMU1lZd2FEMHNBdUJBdmladldld1Vn?=
+ =?utf-8?B?OGV3NW9yTTRGK2JBdUJ0clFsb2dyMjZVSGNUNE0yVXlBYXJBUFNUaFpzQTRO?=
+ =?utf-8?B?Q1JVZ0ZCa29wMHZ1bVhuSEJBZ3lpaVpNT0RrSE5DbEtWaytoamxseTdpV3Ju?=
+ =?utf-8?B?N0ZQcmpFdmRtVHAxcHNneHFjUDl3dFc3YUJxRXp0NHNVOGZpSWI1VXVIRDdj?=
+ =?utf-8?B?VGtmLy9abGhwbjhKaGJnK2VHbE1QMXN3RVRNVzdXU29SSDY0eFY5c3kyMnBN?=
+ =?utf-8?B?OWEzd0JUR0I4Z3V2S09ldVd4bEo5ZmFlZ1dpbUJOZjNjZzJOYjkyYWRKMWxI?=
+ =?utf-8?B?ZzZPdXNvZURTQm0yeWVnWGZYVHVJdUZ5YUZONVg2QjZKZVpiWVZoMDdqNm5I?=
+ =?utf-8?B?WVlkOXhKWXA1dmxQVDNGUTJuTU9oYUdZYkFES2ViOVRLcUVMQVExUFJ4RVI5?=
+ =?utf-8?B?MkdBWFBMVDByRE5LVEhtcHNyK003bXFUV2huTUFSM1hRclhWWG9Yc1pRY2U1?=
+ =?utf-8?B?WTYrK3NidnVuRnlKSEovNTJQSGxvaEFaeG5MUGJ2ZjBueWxyUWpxK1lnZ1I2?=
+ =?utf-8?B?MVFWMzVqY3VKK21jdk82a2J6ejBFVVNwWThycGlMa3ZUd0RhRzRqNEttRGVo?=
+ =?utf-8?B?dWxrVlJlL09YcDg0T2hlZC9sMWJmaWl1SUVrN2pkMmFmRmx5elBKS293MFNW?=
+ =?utf-8?B?V2wzNlQvTFR3WGpkRFRWYjZnU1M4MlhLTjdvekoxcEhIU0RJTnV4NGR3RDNZ?=
+ =?utf-8?B?NGhPd0FJaGhablRMTU10Tk55R1lBZmdyMWFGR1hrRi81UjBDQml6cXZHem4z?=
+ =?utf-8?B?MWtQZlJRWmd3ZzVBbklTbFQyZ3FodTVLcVYrbUFoaDlJYlRIMlBKR2FhS1Ny?=
+ =?utf-8?B?cVp6aWVUa0hsRENZejNWQVc3L0JKbVF5andGRDdGTFQyUEgyNUh3STcvZGhi?=
+ =?utf-8?B?bXR0dk1zNmpTZHVFVG5FdzNpVVQxZ2RyNlE0WjBTWDdnQ1B4eExwTmdkZ2xD?=
+ =?utf-8?B?QnlqbUkvbkU0Q3JMUjVhUEpLWk5rN21qa2lvZEFxdTdCb2lMNk4wMHpwS0Nk?=
+ =?utf-8?B?SzNkUUxHeXgwVXNiSnlDMjFkdDFLOFE2TC9tdngvM1BZTGtOTWM3aW9aUmdN?=
+ =?utf-8?B?RllwdFhrWnR1OUR1MGJXVmhadkZxTjdUVnFGVDY4dEFDRUpWUmlPOHVGRzBZ?=
+ =?utf-8?B?Mjh3aFJ6Nit4dVM5bTVUbUpxK0JWZ083NEUwVjNveGhIZitJbW1lUXY2OU8w?=
+ =?utf-8?B?OWEzNWZKU3BzcThEVURWd0V3OWd4RW1YeGhxV0NMS3NRQ2tZVVF2VkFzYzU0?=
+ =?utf-8?Q?2D7q7ACg+4M=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR11MB6054.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(7416014)(376014)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YWY2bmJqMUI0ZzJNZFZNcVJXblZGUklHTkZEeVF3b0RGZGpNcjVzNXFvcmNx?=
+ =?utf-8?B?KzBneVRPSDk3N0p5ZnBoa1htWGFCVjU5M3VpT3FJY1hna3ZDL3E1N1R1ak0z?=
+ =?utf-8?B?V3ZNQld1UGlCMGNtaG5FMTVGM01XbTRWOThFUUZJMDJ0Q1BMTG40MnBFUEZo?=
+ =?utf-8?B?MW5uUjRDY0U5U0k1WTVzMFJ3VDF5Q0trQ0JzQXRUaHFXNVBnK0ZDRzhHa24x?=
+ =?utf-8?B?eEJacC9keFJkNjl6S2V6Y3JHYnlQRTk3aSsyL3cxdzRBbVo0MWdaRDJkY3NK?=
+ =?utf-8?B?MDRCOTIzdHYvbzA1NkVkeDA2anN1YUNhQnptVzlYR2JwSkd1bFUrU2IxRGY0?=
+ =?utf-8?B?MmpPWU1NSTZkTWM3Q3N1bW9UUDEzV2ROWmVYeURvd0hHaEFXOG9pUVNpa1Nj?=
+ =?utf-8?B?THl2TkxUMHFweWdjcHhEdkxsenVUNVFTWktYWms2VzIrRzhJeDI3TTNlMjUr?=
+ =?utf-8?B?dTJzeTB6UWpLOURZaTZEWGYzTnVHWW4yTEdoaTFmaGoxK1ZHekNsaVlFNWJC?=
+ =?utf-8?B?aEJWRGlMdGgxcmxjRnhjSThJMGZJMGw1MGh6R3J3M252V0UyTEtyaUUwMm1D?=
+ =?utf-8?B?ODZpblBoL3ZxeEg3dElRbGs4bHh3eG01SS9YMzlSZ3lMcXVLRmtZdSs1Y2lR?=
+ =?utf-8?B?ZVpqanduRisycVBtNVpkUW84cmNNY1JxbDd5Q1B4N2JweG1XMzM0ckRiTXFu?=
+ =?utf-8?B?dFQ2TE45NlM2cWtsdVZQcTdnMUVjbWcwT3h5SDBBVCtvVXlBRVUvdXRPRWh5?=
+ =?utf-8?B?MkszSEg2R1dlOWRBZkl1c055YkRxYUt0dGpnY1NhZzBZUktBMzc3YXNibUNl?=
+ =?utf-8?B?YkhyMW9lYWlZbHI2RjBkcG5WS2ZGSDBDYjVqR1lWalQyS2NLSVZQbFpJNzB3?=
+ =?utf-8?B?QlJNY3o0dDJMNDk2OG9RZXFyUGhobk9MS2tyWm5UWXo4RzdJR3FFbHlDZnlW?=
+ =?utf-8?B?cE01dUJ2T0RsYWJOU0t5SHJSdTN6bUh4SWJ1eWdjUVN1K1Vva0dkQXNvTUlE?=
+ =?utf-8?B?WEd0dE9FeFRGUVFyY3NNM0loekE4YVd6SlZUR0t5aUFUSEREajE2S0s4VGVV?=
+ =?utf-8?B?Mnc0cG41MnBEWmYyMVBveWhxV2Z0RlZjd2V4RTRPcUNvNGxQTzExQTJZRW9i?=
+ =?utf-8?B?NGY1bFprZUtSTHgwTDF5RFd6NDJjc3ZSOFROc0ZNYll3b2J0NTNjQXp4SFl0?=
+ =?utf-8?B?UDBwdGNlV3BRUnQ1ckEzV1N2TVFvVXZoR0w0djVkcWo1SklnVHBMNGlnV3BC?=
+ =?utf-8?B?bjZVeGpEdGhwNEpETDR3aEZncGVhQ2JobGgvQjE5ckhSTW9yK0hUL1ZnOGVY?=
+ =?utf-8?B?L1VXemlzVTVITXR5L1Z3MVAzNUhySW9GaUx1aXZ2WndFRzdxME5tcFcvV3I0?=
+ =?utf-8?B?N21ZS2dxdGtoNjB0bERQeTJvdDhvUVBRbTVlUHlSRmZtVW9UYkZyejhyUjBN?=
+ =?utf-8?B?OVg2d0lYN2htVzRrUjlueE5OS0pXaGdvQ1luNXB0ZTVRc2dNZVYxTGlYNWw2?=
+ =?utf-8?B?amZod3hEaHpqN1YyUlUrUUJxVzB3QU5uZ1k2SG5IR0FpRVJSb1U5cFJBOGNZ?=
+ =?utf-8?B?RVVSclFWWHNuSk5pcWlDVGtXbC9UWGNRL0U3b0NtYy8wQ0w5dkdHQ3ZneFEx?=
+ =?utf-8?B?cW9LeUt0YzlMUVduN3REU3ZHczl5ZmdDeXJrS2k5V1dxY1dBWm1WTEJEV1FU?=
+ =?utf-8?B?Q1NHU1JGZGdIUGFaOTgrS2o0MGp4Zm8xbysrcHJxQW0xRWltdVNrMkt5anl4?=
+ =?utf-8?B?NElyekwwcDF1eitpdXk2MUZvazZQbnlNb0Z1eFVXMWpnTklONmhvU1ZRblpy?=
+ =?utf-8?B?dVlYM0MvdDlZRjZqeXdSM29qWVkrVzNobHVVZ3B1VE9XTlZsY0IzbUFHZ3Zj?=
+ =?utf-8?B?ME9nREk0akhlYVpKdTVML1hmbWNDUW12OUNrOUxDT2w5MzYvV1JGRnFmcnNO?=
+ =?utf-8?B?R1BmbzZ6T1RMYWJqQ3FXa2txbHdFbE1oclIxQnV3TWNxSkliSmsxbGJFV2RP?=
+ =?utf-8?B?SEtQWXpyZkdXaVc3d1htNG1NLzQvTXVOOTNYR0JvYjd1Qk1ySFNtWnpOVm1n?=
+ =?utf-8?B?cGtkbGxUQ0NJQUhZYVlmS1p1VUhiTWNnY0FyYzZnZjAvT2F6ZjQyRXFWSHVO?=
+ =?utf-8?B?b05GV0hGd0g3YXM3Rkl2QUlkdG83OVNtTWIrU3RMVmtWd0R3cGpNQy9mTERU?=
+ =?utf-8?B?SWc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5d6e6ab3-5668-4763-671a-08dd81a16301
+X-MS-Exchange-CrossTenant-AuthSource: PH7PR11MB6054.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Apr 2025 13:27:11.0573
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 5QppgHCJ5xK3flt9eqcwFR2MiWnQW/DeM+I8XGT27eJoNO/LtZBuh9WA2jGTbA3mR9wia5H23xO9d305EpxHDw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB6614
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_054006_089642_33E193CB 
-X-CRM114-Status: GOOD (  21.15  )
+X-CRM114-CacheID: sfid-20250422_062715_796469_2F3557AC 
+X-CRM114-Status: GOOD (  32.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,110 +213,126 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 12/04/25 23:45, Nicolas Frattaroli wrote:
+> RK3576's power domains have a peculiar problem where the PD_NVM
+> power domain, of which the sdhci controller is a part, seemingly does
+> not have idempotent disable/enable. The end effect is that if PD_NVM
+> gets turned off by the generic power domain logic because all the
+> devices depending on it are suspended, then the next time the sdhci
+> device is unsuspended, it'll hang the SoC as soon as it tries accessing
+> the CQHCI registers.
+> 
+> RK3576's UFS support needed a new dev_pm_genpd_rpm_always_on function
+> added to the generic power domains API to handle what appears to be a
+> similar hardware issue.
+> 
+> Use this new function to ask for the same treatment in the sdhci
+> controller by giving rk3576 its own platform data with its own postinit
+> function. The benefit of doing this instead of marking the power domains
+> always on in the power domain core is that we only do this if we know
+> the platform we're running on actually uses the sdhci controller. For
+> others, keeping PD_NVM always on would be a waste, as they won't run
+> into this specific issue. The only other IP in PD_NVM that could be
+> affected is FSPI0. If it gets a mainline driver, it will probably want
+> to do the same thing.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
+Shawn suggested tweaking the comment, otherwise:
 
-On 2025/4/22 20:30, Niklas Cassel wrote:
-> On Tue, Apr 22, 2025 at 07:28:29PM +0800, Hans Zhang wrote:
->> Register definitions were scattered with ambiguous names (e.g.,
->> PCIE_RDLH_LINK_UP_CHGED in PCIE_CLIENT_INTR_STATUS_MISC) and lacked
->> hierarchical grouping. Magic values for bit operations reduced code
->> clarity.
->>
->> Group registers and their associated bitfields logically. This improves
->> maintainability and aligns the code with hardware documentation.
->>
->> Signed-off-by: Hans Zhang <18255117159@163.com>
->> ---
->>   drivers/pci/controller/dwc/pcie-dw-rockchip.c | 42 +++++++++++--------
->>   1 file changed, 24 insertions(+), 18 deletions(-)
->>
->> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->> index fd5827bbfae3..cdc8afc6cfc1 100644
->> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->> @@ -8,6 +8,7 @@
->>    * Author: Simon Xue <xxm@rock-chips.com>
->>    */
->>   
->> +#include <linux/bitfield.h>
->>   #include <linux/clk.h>
->>   #include <linux/gpio/consumer.h>
->>   #include <linux/irqchip/chained_irq.h>
->> @@ -34,30 +35,35 @@
->>   
->>   #define to_rockchip_pcie(x) dev_get_drvdata((x)->dev)
->>   
->> -#define PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
->> -#define PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
->> -#define PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
->> -#define PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
->> -#define PCIE_CLIENT_INTR_STATUS_MSG_RX	0x04
->> +#define PCIE_CLIENT_GENERAL_CONTROL	0x0
->> +#define  PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
->> +#define  PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
->> +#define  PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
->> +#define  PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
->> +
->> +#define PCIE_CLIENT_INTR_STATUS_MSG_RX	0x4
->> +#define PCIE_CLIENT_INTR_STATUS_LEGACY	0x8
->> +
->>   #define PCIE_CLIENT_INTR_STATUS_MISC	0x10
->> +#define  PCIE_RDLH_LINK_UP_CHGED	BIT(1)
->> +#define  PCIE_LINK_REQ_RST_NOT_INT	BIT(2)
->> +
->> +#define PCIE_CLIENT_INTR_MASK_LEGACY	0x1c
->>   #define PCIE_CLIENT_INTR_MASK_MISC	0x24
->> +
->>   #define PCIE_CLIENT_POWER		0x2c
->> +#define  PME_READY_ENTER_L23		BIT(3)
->> +
->>   #define PCIE_CLIENT_MSG_GEN		0x34
->> -#define PME_READY_ENTER_L23		BIT(3)
->> -#define PME_TURN_OFF			(BIT(4) | BIT(20))
->> -#define PME_TO_ACK			(BIT(9) | BIT(25))
->> -#define PCIE_SMLH_LINKUP		BIT(16)
->> -#define PCIE_RDLH_LINKUP		BIT(17)
->> -#define PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
-> 
-> This patch removes PCIE_LINKUP, without adding it somewhere else
-> so I don't think this patch will compile.
-> 
-> I think the removal of this line has to be in patch 3/3.
-> 
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
 
-Hi Niklas,
-
-Thank you very much for your reply.  Yes, I replied to you in patch 0003.
-
+> ---
+> Changes in v2:
+> - Rewrite patch to use dev_pm_genpd_rpm_always_on in sdhci driver
+>   instead, after Ulf Hansson made me aware of its existence
+> - Link to v1: https://lore.kernel.org/r/20250408-rk3576-emmc-fix-v1-1-3009828b1b31@collabora.com
+> ---
+>  drivers/mmc/host/sdhci-of-dwcmshc.c | 39 +++++++++++++++++++++++++++++++++++++
+>  1 file changed, 39 insertions(+)
 > 
+> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
+> index 09b9ab15e4995f0bddf57dd309c010c849be40d9..a00aec05eff2da8197cc64690ba9665be756e54a 100644
+> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
+> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
+> @@ -17,6 +17,7 @@
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+>  #include <linux/platform_device.h>
+> +#include <linux/pm_domain.h>
+>  #include <linux/pm_runtime.h>
+>  #include <linux/reset.h>
+>  #include <linux/sizes.h>
+> @@ -745,6 +746,28 @@ static void dwcmshc_rk35xx_postinit(struct sdhci_host *host, struct dwcmshc_priv
+>  	}
+>  }
+>  
+> +static void dwcmshc_rk3576_postinit(struct sdhci_host *host, struct dwcmshc_priv *dwc_priv)
+> +{
+> +	struct device *dev = mmc_dev(host->mmc);
+> +	int ret;
+> +
+> +	/*
+> +	 * This works around what appears to be a silicon bug, which makes the
+> +	 * PD_NVM power domain, which the sdhci controller on the RK3576 is in,
+> +	 * never come back the same way once it's turned off once. This can
+> +	 * happen during early kernel boot if no driver is using either PD_NVM
+> +	 * or its child power domain PD_SDGMAC for a short moment, leading to it
+> +	 * being turned off to save power. By keeping it on, sdhci suspending
+> +	 * won't lead to PD_NVM becoming a candidate for getting turned off.
+> +	 */
+> +	ret = dev_pm_genpd_rpm_always_on(dev, true);
+> +	if (ret && ret != -EOPNOTSUPP)
+> +		dev_warn(dev, "failed to set PD rpm always on, SoC may hang later: %pe\n",
+> +			 ERR_PTR(ret));
+> +
+> +	dwcmshc_rk35xx_postinit(host, dwc_priv);
+> +}
+> +
+>  static int th1520_execute_tuning(struct sdhci_host *host, u32 opcode)
+>  {
+>  	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+> @@ -1176,6 +1199,18 @@ static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk35xx_pdata = {
+>  	.postinit = dwcmshc_rk35xx_postinit,
+>  };
+>  
+> +static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk3576_pdata = {
+> +	.pdata = {
+> +		.ops = &sdhci_dwcmshc_rk35xx_ops,
+> +		.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
+> +			  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
+> +		.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
+> +			   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
+> +	},
+> +	.init = dwcmshc_rk35xx_init,
+> +	.postinit = dwcmshc_rk3576_postinit,
+> +};
+> +
+>  static const struct dwcmshc_pltfm_data sdhci_dwcmshc_th1520_pdata = {
+>  	.pdata = {
+>  		.ops = &sdhci_dwcmshc_th1520_ops,
+> @@ -1274,6 +1309,10 @@ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
+>  		.compatible = "rockchip,rk3588-dwcmshc",
+>  		.data = &sdhci_dwcmshc_rk35xx_pdata,
+>  	},
+> +	{
+> +		.compatible = "rockchip,rk3576-dwcmshc",
+> +		.data = &sdhci_dwcmshc_rk3576_pdata,
+> +	},
+>  	{
+>  		.compatible = "rockchip,rk3568-dwcmshc",
+>  		.data = &sdhci_dwcmshc_rk35xx_pdata,
 > 
-> Also, I think that Bjorn's primary concern:
-> """
-> The #defines for register offsets and bits are kind of a mess,
-> e.g., PCIE_SMLH_LINKUP, PCIE_RDLH_LINKUP, PCIE_LINKUP,
-> PCIE_L0S_ENTRY, and PCIE_LTSSM_STATUS_MASK are in
-> PCIE_CLIENT_LTSSM_STATUS, but you couldn't tell that from the
-> names, and they're not even defined together.
-> """"
+> ---
+> base-commit: 64e9fdfc89a76fed38d8ddeed72d42ec71957ed9
+> change-id: 20250317-rk3576-emmc-fix-7dc81a627422
 > 
-> is that the fields are not prefixed with the register name.
-> 
-> the secondary concern is that they are not grouped together.
-> 
-> This patch is just solving the secondary concern.
-> 
-> Since you are fixing his secondary concern, should you perhaps also
-> address his primary concern?
-
-Ok. I missed this problem and I will fix it in the next version.
-
-Best regards,
-Hans
+> Best regards,
 
 
 _______________________________________________
