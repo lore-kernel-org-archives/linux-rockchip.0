@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC1A2C369D8
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8C86C369D7
 	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Apr 2025 11:57:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IGiN+IEODu4KAOdKAGRKAjX9bM6DDd0yKzJMWrZugtg=; b=EoA/U+5+MrccZs
-	J+POotvUZML80SV4iXcDji64VAvFsndVd3lf1ijUa5tszHkvtS632k6Wc6uLgwUKdbbOMqtmAiV0W
-	0yyfWJ3Fyxz3Eq3HhCAdc/D4FRnPNXQDm0M+X5NAqedidXb1JTfO/s0+D82GH4VQmCzxzFTuPfc5S
-	5DVdKb8BmUbIRK0Beryt3Bz0Y5sSJpYDuCjUdEhPrP9t57UIbGp9i6z4+bii6Kd4pLhOyqUarVOL2
-	ahqaiouhiiQP20R7oQDe1oOtXAL4sTZ5B2uBaUrPx+CklWlZikw+vpHHg8rGTEFUjQ/WXfELQh4zK
-	fPYh83E7Ej22fPF8QhZw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1UWOumNFl0WgsSrjR0Gh5hSlBK/bkJ/Ysp4GJCPwrlM=; b=OxjcOMK0/QKoMA
+	xU2DV/EQhPB/HvuHmpXE/mmXd6Lzf5vufazLYqtfTquO/vzAD2xFyZTrXdaime58rAY7fespOBCJ7
+	6JQbXS8zNO9FyHhsgokSoDvJQAUVWQAwD3Mmx/qIQUQAgAVfeV2i0njK5CzZD0ehcEWB+6D0qq8Ls
+	M13XxDK0M+4VGscWiVe4dJh7a8ceEITgp8505IDFgR2/nzavk844oBYesdYB9WNjwVvwaCD4YmIDW
+	sA9aEfFUeQZ5NWj2VBFXTaT2q9pUjaPQCBT87aSj5yoQysUFQTu/yY40kBHBWdyEbs0WbbOoS5TS6
+	9fiQ8Miw+ibEip0sDPIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Yio-0000000AP6S-1eCN;
-	Wed, 23 Apr 2025 11:56:58 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
+	id 1u7Yip-0000000AP7T-292V;
+	Wed, 23 Apr 2025 11:56:59 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Xka-0000000AEiw-3BFd;
-	Wed, 23 Apr 2025 10:54:46 +0000
+	id 1u7Xkg-0000000AEkH-1qgF;
+	Wed, 23 Apr 2025 10:54:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=BwcYZ
-	3QAYUzjwMBUPfQj13lIgXFp+SqbT5MeM2baqWQ=; b=GpmujaI8FCZcKvs82Yh3z
-	zYps0LtQ7AUYKfvsrt4o+w9MeEgsfcFMpON4kByy8qL/8vOB0Ha4cu5bQIMBVX9C
-	snluvgaim8xQ4FfgXhZNtyfWlaIEkNRjT1BUiC7BYQWFC6xXlsV+3TKIWvYbb14F
-	eFT81BmbPVGms5iUa1+OGc=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=8Zmrb
+	eq6bLjH06q2d/S498jz0cbVk1UENxMwcMkAn1U=; b=VJUCQCItXqAHYSERxhXjG
+	bogofW1u71PDTk9/YcgKwHGZN3XSd8B+zNnzTV9GekBPgDrmFhovExSPKcONQ2Nl
+	QKohm02Z8KmKgOAXEf8STgZ/0iA3/pncnoCMSrwEv4xi/SttMnUj/6d/v2MwP7SJ
+	DeIDW1gRBnkVAXYPle2cAo=
 Received: from localhost.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wAnRTjYxghozJctBw--.58909S5;
-	Wed, 23 Apr 2025 18:54:22 +0800 (CST)
+	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wAnRTjYxghozJctBw--.58909S2;
+	Wed, 23 Apr 2025 18:54:18 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
 To: lpieralisi@kernel.org,
 	kw@linux.com,
@@ -49,23 +49,22 @@ Cc: manivannan.sadhasivam@linaro.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v2 3/3] PCI: dw-rockchip: Unify link status checks with FIELD_GET
-Date: Wed, 23 Apr 2025 18:54:15 +0800
-Message-Id: <20250423105415.305556-4-18255117159@163.com>
+Subject: [PATCH v2 0/3] PCI: dw-rockchip: Reorganize register and bitfield definitions
+Date: Wed, 23 Apr 2025 18:54:12 +0800
+Message-Id: <20250423105415.305556-1-18255117159@163.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250423105415.305556-1-18255117159@163.com>
-References: <20250423105415.305556-1-18255117159@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wAnRTjYxghozJctBw--.58909S5
-X-Coremail-Antispam: 1Uf129KBjvJXoWxCF15Gr13Cw17GFW7Zw18Zrb_yoW5uF4xpa
-	98Aa4vkr48Gw4j9F1kCFZ5ZFW5tFnI9ayUCrn7K3WxW3ZIyw1UG3WUWr9Iqr4xJr4rCFy3
-	Cw4rta4xJr43ZwUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UoBTwUUUUU=
+X-CM-TRANSID: _____wAnRTjYxghozJctBw--.58909S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7WFykKw4ruF1kZry5tryfCrg_yoW5Jry7p3
+	Z8JFZ8ur43Jw40van7tw17XFy8K3ZrCFyY9w4UKw18Xa40qa48WFyftF1rury7XrWxKF17
+	ZwsrX3yI9a4av3JanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zE4E_JUUUUU=
 X-Originating-IP: [222.71.101.198]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbBDwI4o2gIwTqyAgAAs9
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbBDws4o2gIwTqxqgAAsf
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_035445_218013_4E0B0EFC 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20250423_035450_821985_CEA017C5 
+X-CRM114-Status: UNSURE (   7.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,90 +81,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Link-up detection manually checked PCIE_LINKUP bits across RC/EP modes,
-leading to code duplication. Centralize the logic using FIELD_GET. This
-removes redundancy and abstracts hardware-specific bit masking, ensuring
-consistent link state handling.
+1. PCI: dw-rockchip: Remove unused PCIE_CLIENT_GENERAL_DEBUG
+2. PCI: dw-rockchip: Reorganize register and bitfield definitions
+3. PCI: dw-rockchip: Unify link status checks with FIELD_GET
 
-Signed-off-by: Hans Zhang <18255117159@163.com>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 21 +++++++------------
- 1 file changed, 8 insertions(+), 13 deletions(-)
+Changes for v2:
+- Add register annotations to enhance readability.
+- Use macro definitions instead of magic numbers.
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 6cf75160fb1c..8c2b2b642ba7 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -8,6 +8,7 @@
-  * Author: Simon Xue <xxm@rock-chips.com>
-  */
- 
-+#include <linux/bitfield.h>
- #include <linux/clk.h>
- #include <linux/gpio/consumer.h>
- #include <linux/irqchip/chained_irq.h>
-@@ -73,9 +74,8 @@
- 
- /* LTSSM Status Register */
- #define PCIE_CLIENT_LTSSM_STATUS	0x300
--#define  PCIE_SMLH_LINKUP		BIT(16)
--#define  PCIE_RDLH_LINKUP		BIT(17)
--#define  PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
-+#define  PCIE_LINKUP			0x3
-+#define  PCIE_LINKUP_MASK		GENMASK(17, 16)
- #define  PCIE_LTSSM_STATUS_MASK		GENMASK(5, 0)
- 
- struct rockchip_pcie {
-@@ -209,10 +209,7 @@ static int rockchip_pcie_link_up(struct dw_pcie *pci)
- 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
- 	u32 val = rockchip_pcie_get_ltssm(rockchip);
- 
--	if ((val & PCIE_LINKUP) == PCIE_LINKUP)
--		return 1;
--
--	return 0;
-+	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
- }
- 
- static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
-@@ -512,7 +509,7 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
- 	struct dw_pcie *pci = &rockchip->pci;
- 	struct dw_pcie_rp *pp = &pci->pp;
- 	struct device *dev = pci->dev;
--	u32 reg, val;
-+	u32 reg;
- 
- 	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
- 	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
-@@ -521,8 +518,7 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
- 	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm(rockchip));
- 
- 	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
--		val = rockchip_pcie_get_ltssm(rockchip);
--		if ((val & PCIE_LINKUP) == PCIE_LINKUP) {
-+		if (rockchip_pcie_link_up(pci)) {
- 			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
- 			/* Rescan the bus to enumerate endpoint devices */
- 			pci_lock_rescan_remove();
-@@ -539,7 +535,7 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- 	struct rockchip_pcie *rockchip = arg;
- 	struct dw_pcie *pci = &rockchip->pci;
- 	struct device *dev = pci->dev;
--	u32 reg, val;
-+	u32 reg;
- 
- 	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
- 	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
-@@ -553,8 +549,7 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- 	}
- 
- 	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
--		val = rockchip_pcie_get_ltssm(rockchip);
--		if ((val & PCIE_LINKUP) == PCIE_LINKUP) {
-+		if (rockchip_pcie_link_up(pci)) {
- 			dev_dbg(dev, "link up\n");
- 			dw_pcie_ep_linkup(&pci->ep);
- 		}
+https://patchwork.kernel.org/project/linux-pci/patch/20250416151926.140202-1-18255117159@163.com/
+
+Bjorn Helgaas:
+These would be material for a separate patch:
+
+- The #defines for register offsets and bits are kind of a mess,
+  e.g., PCIE_SMLH_LINKUP, PCIE_RDLH_LINKUP, PCIE_LINKUP,
+  PCIE_L0S_ENTRY, and PCIE_LTSSM_STATUS_MASK are in
+  PCIE_CLIENT_LTSSM_STATUS, but you couldn't tell that from the
+  names, and they're not even defined together.
+
+- Same for PCIE_RDLH_LINK_UP_CHGED, PCIE_LINK_REQ_RST_NOT_INT,
+  PCIE_RDLH_LINK_UP_CHGED, which are in PCIE_CLIENT_INTR_STATUS_MISC.
+
+- PCIE_LTSSM_ENABLE_ENHANCE is apparently in PCIE_CLIENT_HOT_RESET_CTRL?
+  Sure wouldn't guess that from the names or the order of #defines.
+
+- PCIE_CLIENT_GENERAL_DEBUG isn't used at all.
+
+- Submissions based on the following v5 patches:
+https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-1-git-send-email-shawn.lin@rock-chips.com/
+https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-2-git-send-email-shawn.lin@rock-chips.com/
+https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-3-git-send-email-shawn.lin@rock-chips.com/
+https://patchwork.kernel.org/project/linux-pci/patch/1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com/
+---
+
+Hans Zhang (3):
+  PCI: dw-rockchip: Remove unused PCIE_CLIENT_GENERAL_DEBUG
+  PCI: dw-rockchip: Reorganize register and bitfield definitions
+  PCI: dw-rockchip: Unify link status checks with FIELD_GET
+
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 87 +++++++++++--------
+ 1 file changed, 50 insertions(+), 37 deletions(-)
+
+
+base-commit: 9d7a0577c9db35c4cc52db90bc415ea248446472
+prerequisite-patch-id: 5d9f110f238212cde763b841f1337d0045d93f5b
+prerequisite-patch-id: b63975b89227a41b9b6d701c9130ee342848c8b6
+prerequisite-patch-id: 46f02da0db4737b46cd06cd0d25ba69b8d789f90
+prerequisite-patch-id: d06e25de3658b73ad85d148728ed3948bfcec731
 -- 
 2.25.1
 
