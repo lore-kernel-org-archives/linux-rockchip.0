@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8C86C369D7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Apr 2025 11:57:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08791C369CB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Apr 2025 14:26:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=1UWOumNFl0WgsSrjR0Gh5hSlBK/bkJ/Ysp4GJCPwrlM=; b=OxjcOMK0/QKoMA
-	xU2DV/EQhPB/HvuHmpXE/mmXd6Lzf5vufazLYqtfTquO/vzAD2xFyZTrXdaime58rAY7fespOBCJ7
-	6JQbXS8zNO9FyHhsgokSoDvJQAUVWQAwD3Mmx/qIQUQAgAVfeV2i0njK5CzZD0ehcEWB+6D0qq8Ls
-	M13XxDK0M+4VGscWiVe4dJh7a8ceEITgp8505IDFgR2/nzavk844oBYesdYB9WNjwVvwaCD4YmIDW
-	sA9aEfFUeQZ5NWj2VBFXTaT2q9pUjaPQCBT87aSj5yoQysUFQTu/yY40kBHBWdyEbs0WbbOoS5TS6
-	9fiQ8Miw+ibEip0sDPIw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=g3zBCC0I2D3vl85BVRmLs4BdWK111nh/Vxri2+bbiYs=; b=fE3Q8LrFfxgquD
+	OAQ/uNjXb5OSFxAIKSiH5XJOH6/uP/xFovDn5osFk/bqeRV5gfJU6pwg2G0w3Ojp+/bj94yTUK0+3
+	8XmQ1cpzYO9zxC5X6/93u2ODiR03tnKZbZXc31rHwASFNhpb6To70tVfLsNu8jC44WX1dkOESveha
+	7C+Gdg2/1Sk1sR7y7WW978YvloKrgOcwlBo9dv/7uNxk7otFVw/MSq/aepvtlHNO5jgDUto6XCfyd
+	acLrV0f99W23sbKRkUZJfZEtFKo62r9r+kyzYaJUMjh0ripdRJYPaB2ekiPVz4Za6/G8eptf30H68
+	SsG/IaZdi26tStWnPQGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Yip-0000000AP7T-292V;
-	Wed, 23 Apr 2025 11:56:59 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Xkg-0000000AEkH-1qgF;
-	Wed, 23 Apr 2025 10:54:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=8Zmrb
-	eq6bLjH06q2d/S498jz0cbVk1UENxMwcMkAn1U=; b=VJUCQCItXqAHYSERxhXjG
-	bogofW1u71PDTk9/YcgKwHGZN3XSd8B+zNnzTV9GekBPgDrmFhovExSPKcONQ2Nl
-	QKohm02Z8KmKgOAXEf8STgZ/0iA3/pncnoCMSrwEv4xi/SttMnUj/6d/v2MwP7SJ
-	DeIDW1gRBnkVAXYPle2cAo=
-Received: from localhost.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wAnRTjYxghozJctBw--.58909S2;
-	Wed, 23 Apr 2025 18:54:18 +0800 (CST)
-From: Hans Zhang <18255117159@163.com>
-To: lpieralisi@kernel.org,
-	kw@linux.com,
-	bhelgaas@google.com,
-	heiko@sntech.de
-Cc: manivannan.sadhasivam@linaro.org,
-	robh@kernel.org,
-	jingoohan1@gmail.com,
-	shawn.lin@rock-chips.com,
-	linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1u7b3Y-0000000Ap8h-206g;
+	Wed, 23 Apr 2025 14:26:32 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u7aNu-0000000AeLw-2ZHe;
+	Wed, 23 Apr 2025 13:43:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 91CC25C5CD6;
+	Wed, 23 Apr 2025 13:41:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 995B3C4CEE2;
+	Wed, 23 Apr 2025 13:43:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1745415809;
+	bh=RkSxu8+Z8qu5S8q9vP5yPS9GfAqR33hG2mgDplUda0A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=m+XMiSyXBbgt1xJDQN1CCEw+xs1+/DC9D5DEOaSZ7thsO40MS3cDf0JUu0P21h5sj
+	 /7A1Ux1kGPGmL1mlvJwXGhQZTzaBCpVG05AzmUoYTbp4WQPWst6Jzo/B2BmURUtxNk
+	 mI4/kiZFbe8KiJUMUq2VedOH7saGlOqMwouOBbG/f14i/eoI+0H/gZmumGktjQ0exd
+	 SFcaA4V9XAD5XvZR7bbw3RL5m2FWvTCB/OdS5zg5F4R0fHwKVxCY7aq1t2FXESldjO
+	 fbVvzi+GNTAc4v6NDZTmTv3C6ibPBxtzuiHovfSOhdjCWT8Kcd6AkNQjqUnZ/2Z2BO
+	 E1KeXoxXkCjew==
+Date: Wed, 23 Apr 2025 15:43:24 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+	heiko@sntech.de, manivannan.sadhasivam@linaro.org, robh@kernel.org,
+	jingoohan1@gmail.com, shawn.lin@rock-chips.com,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v2 0/3] PCI: dw-rockchip: Reorganize register and bitfield definitions
-Date: Wed, 23 Apr 2025 18:54:12 +0800
-Message-Id: <20250423105415.305556-1-18255117159@163.com>
-X-Mailer: git-send-email 2.25.1
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 2/3] PCI: dw-rockchip: Reorganize register and
+ bitfield definitions
+Message-ID: <aAjufPQnBsR6ysAH@ryzen>
+References: <20250423105415.305556-1-18255117159@163.com>
+ <20250423105415.305556-3-18255117159@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wAnRTjYxghozJctBw--.58909S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7WFykKw4ruF1kZry5tryfCrg_yoW5Jry7p3
-	Z8JFZ8ur43Jw40van7tw17XFy8K3ZrCFyY9w4UKw18Xa40qa48WFyftF1rury7XrWxKF17
-	ZwsrX3yI9a4av3JanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zE4E_JUUUUU=
-X-Originating-IP: [222.71.101.198]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbBDws4o2gIwTqxqgAAsf
+Content-Disposition: inline
+In-Reply-To: <20250423105415.305556-3-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_035450_821985_CEA017C5 
-X-CRM114-Status: UNSURE (   7.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250423_064330_769068_72F346C7 
+X-CRM114-Status: GOOD (  18.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,58 +77,153 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-1. PCI: dw-rockchip: Remove unused PCIE_CLIENT_GENERAL_DEBUG
-2. PCI: dw-rockchip: Reorganize register and bitfield definitions
-3. PCI: dw-rockchip: Unify link status checks with FIELD_GET
+On Wed, Apr 23, 2025 at 06:54:14PM +0800, Hans Zhang wrote:
+> Register definitions were scattered with ambiguous names (e.g.,
+> PCIE_RDLH_LINK_UP_CHGED in PCIE_CLIENT_INTR_STATUS_MISC) and lacked
+> hierarchical grouping. Magic values for bit operations reduced code
+> clarity.
+> 
+> Group registers and their associated bitfields logically. This improves
+> maintainability and aligns the code with hardware documentation.
+> 
+> Signed-off-by: Hans Zhang <18255117159@163.com>
+> ---
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 71 ++++++++++++-------
+>  1 file changed, 45 insertions(+), 26 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index fd5827bbfae3..6cf75160fb1c 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -34,30 +34,49 @@
+>  
+>  #define to_rockchip_pcie(x) dev_get_drvdata((x)->dev)
+>  
+> -#define PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
+> -#define PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
+> -#define PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
+> -#define PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
+> -#define PCIE_CLIENT_INTR_STATUS_MSG_RX	0x04
+> -#define PCIE_CLIENT_INTR_STATUS_MISC	0x10
+> -#define PCIE_CLIENT_INTR_MASK_MISC	0x24
+> -#define PCIE_CLIENT_POWER		0x2c
+> -#define PCIE_CLIENT_MSG_GEN		0x34
+> -#define PME_READY_ENTER_L23		BIT(3)
+> -#define PME_TURN_OFF			(BIT(4) | BIT(20))
+> -#define PME_TO_ACK			(BIT(9) | BIT(25))
+> -#define PCIE_SMLH_LINKUP		BIT(16)
+> -#define PCIE_RDLH_LINKUP		BIT(17)
+> -#define PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
+> -#define PCIE_RDLH_LINK_UP_CHGED		BIT(1)
+> -#define PCIE_LINK_REQ_RST_NOT_INT	BIT(2)
+> -#define PCIE_CLIENT_GENERAL_CONTROL	0x0
+> +/* General Control Register */
+> +#define PCIE_CLIENT_GENERAL_CON		0x0
+> +#define  PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
+> +#define  PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
+> +#define  PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
+> +#define  PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
+> +
+> +/* Interrupt Status Register Related to Message Reception */
+> +#define PCIE_CLIENT_INTR_STATUS_MSG_RX	0x4
+> +
+> +/* Interrupt Status Register Related to Legacy Interrupt */
+>  #define PCIE_CLIENT_INTR_STATUS_LEGACY	0x8
+> +
+> +/*  Interrupt Status Register Related to Miscellaneous Operation */
 
----
-Changes for v2:
-- Add register annotations to enhance readability.
-- Use macro definitions instead of magic numbers.
-
-https://patchwork.kernel.org/project/linux-pci/patch/20250416151926.140202-1-18255117159@163.com/
-
-Bjorn Helgaas:
-These would be material for a separate patch:
-
-- The #defines for register offsets and bits are kind of a mess,
-  e.g., PCIE_SMLH_LINKUP, PCIE_RDLH_LINKUP, PCIE_LINKUP,
-  PCIE_L0S_ENTRY, and PCIE_LTSSM_STATUS_MASK are in
-  PCIE_CLIENT_LTSSM_STATUS, but you couldn't tell that from the
-  names, and they're not even defined together.
-
-- Same for PCIE_RDLH_LINK_UP_CHGED, PCIE_LINK_REQ_RST_NOT_INT,
-  PCIE_RDLH_LINK_UP_CHGED, which are in PCIE_CLIENT_INTR_STATUS_MISC.
-
-- PCIE_LTSSM_ENABLE_ENHANCE is apparently in PCIE_CLIENT_HOT_RESET_CTRL?
-  Sure wouldn't guess that from the names or the order of #defines.
-
-- PCIE_CLIENT_GENERAL_DEBUG isn't used at all.
-
-- Submissions based on the following v5 patches:
-https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-1-git-send-email-shawn.lin@rock-chips.com/
-https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-2-git-send-email-shawn.lin@rock-chips.com/
-https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-3-git-send-email-shawn.lin@rock-chips.com/
-https://patchwork.kernel.org/project/linux-pci/patch/1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com/
----
-
-Hans Zhang (3):
-  PCI: dw-rockchip: Remove unused PCIE_CLIENT_GENERAL_DEBUG
-  PCI: dw-rockchip: Reorganize register and bitfield definitions
-  PCI: dw-rockchip: Unify link status checks with FIELD_GET
-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 87 +++++++++++--------
- 1 file changed, 50 insertions(+), 37 deletions(-)
+double spaces, other comments just have one space.
 
 
-base-commit: 9d7a0577c9db35c4cc52db90bc415ea248446472
-prerequisite-patch-id: 5d9f110f238212cde763b841f1337d0045d93f5b
-prerequisite-patch-id: b63975b89227a41b9b6d701c9130ee342848c8b6
-prerequisite-patch-id: 46f02da0db4737b46cd06cd0d25ba69b8d789f90
-prerequisite-patch-id: d06e25de3658b73ad85d148728ed3948bfcec731
--- 
-2.25.1
+> +#define PCIE_CLIENT_INTR_STATUS_MISC	0x10
+> +#define  PCIE_RDLH_LINK_UP_CHGED	BIT(1)
+> +#define  PCIE_LINK_REQ_RST_NOT_INT	BIT(2)
+> +
+> +/* Interrupt Mask Register Related to Legacy Interrupt */
+>  #define PCIE_CLIENT_INTR_MASK_LEGACY	0x1c
+> +
+> +/* Interrupt Mask Register Related to Miscellaneous Operation */
+> +#define PCIE_CLIENT_INTR_MASK_MISC	0x24
+> +
+> +/* Power Management Control Register */
+> +#define PCIE_CLIENT_POWER_CON		0x2c
+> +#define  PME_READY_ENTER_L23		BIT(3)
+> +
+> +/*  Message Generation Control Register */
 
+double spaces, other comments just have one space.
+
+
+> +#define PCIE_CLIENT_MSG_GEN_CON		0x34
+> +#define  PME_TURN_OFF			HIWORD_UPDATE_BIT(BIT(4))
+> +#define  PME_TO_ACK			HIWORD_UPDATE_BIT(BIT(9))
+> +
+> +/* Hot Reset Control Register */
+>  #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
+> +#define  PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
+> +
+> +/* LTSSM Status Register */
+>  #define PCIE_CLIENT_LTSSM_STATUS	0x300
+> -#define PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
+> -#define PCIE_LTSSM_STATUS_MASK		GENMASK(5, 0)
+> +#define  PCIE_SMLH_LINKUP		BIT(16)
+> +#define  PCIE_RDLH_LINKUP		BIT(17)
+> +#define  PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
+> +#define  PCIE_LTSSM_STATUS_MASK		GENMASK(5, 0)
+>  
+>  struct rockchip_pcie {
+>  	struct dw_pcie pci;
+> @@ -176,13 +195,13 @@ static u32 rockchip_pcie_get_pure_ltssm(struct dw_pcie *pci)
+>  static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
+>  {
+>  	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
+> -				 PCIE_CLIENT_GENERAL_CONTROL);
+> +				 PCIE_CLIENT_GENERAL_CON);
+>  }
+>  
+>  static void rockchip_pcie_disable_ltssm(struct rockchip_pcie *rockchip)
+>  {
+>  	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DISABLE_LTSSM,
+> -				 PCIE_CLIENT_GENERAL_CONTROL);
+> +				 PCIE_CLIENT_GENERAL_CON);
+>  }
+>  
+>  static int rockchip_pcie_link_up(struct dw_pcie *pci)
+> @@ -274,8 +293,8 @@ static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+>  	u32 status;
+>  
+>  	/* 1. Broadcast PME_Turn_Off Message, bit 4 self-clear once done */
+> -	rockchip_pcie_writel_apb(rockchip, PME_TURN_OFF, PCIE_CLIENT_MSG_GEN);
+> -	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_MSG_GEN,
+> +	rockchip_pcie_writel_apb(rockchip, PME_TURN_OFF, PCIE_CLIENT_MSG_GEN_CON);
+> +	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_MSG_GEN_CON,
+>  				 status, !(status & BIT(4)), PCIE_PME_TO_L2_TIMEOUT_US / 10,
+>  				 PCIE_PME_TO_L2_TIMEOUT_US);
+>  	if (ret) {
+> @@ -294,7 +313,7 @@ static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+>  
+>  	/* 3. Clear PME_TO_Ack and Wait for ready to enter L23 message */
+>  	rockchip_pcie_writel_apb(rockchip, PME_TO_ACK, PCIE_CLIENT_INTR_STATUS_MSG_RX);
+> -	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_POWER,
+> +	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_POWER_CON,
+>  				 status, status & PME_READY_ENTER_L23,
+>  				 PCIE_PME_TO_L2_TIMEOUT_US / 10,
+>  				 PCIE_PME_TO_L2_TIMEOUT_US);
+> @@ -552,7 +571,7 @@ static void rockchip_pcie_ltssm_enable_control_mode(struct rockchip_pcie *rockch
+>  	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
+>  	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+>  
+> -	rockchip_pcie_writel_apb(rockchip, mode, PCIE_CLIENT_GENERAL_CONTROL);
+> +	rockchip_pcie_writel_apb(rockchip, mode, PCIE_CLIENT_GENERAL_CON);
+
+I can see why you renamed PCIE_CLIENT_GENERAL_CONTROL to PCIE_CLIENT_GENERAL_CON
+(to match PCIE_CLIENT_MSG_GEN_CON).
+
+But now we have PCIE_CLIENT_MSG_GEN_CON / PCIE_CLIENT_GENERAL_CON and
+PCIE_CLIENT_HOT_RESET_CTRL.
+
+_CTRL seems like a more common shortening. How about renaming all three to
+end with _CTRL ?
 
 _______________________________________________
 Linux-rockchip mailing list
