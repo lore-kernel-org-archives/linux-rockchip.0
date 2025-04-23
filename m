@@ -4,57 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C778C369C2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Apr 2025 01:23:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 559F4C369CB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Apr 2025 08:40:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=khpCLihXVMeFtfzZ7Au6xi02Xyk+xfLl7f28DDkJ/Uo=; b=mqXYpylF12OA0Y
-	0D9SsGlzwwhpXqFkt8oqvuYgoimnXAFaACr6sc7u5QHp6uJXevN/LZkYYYTQnrmAD7XW95OJDnI9t
-	92JD+4j4rVn8rlyxQ97av+dv37KkBe8AsXYR7iIRoQ8lxkd2gtwqUDJwQF1rbK4Zw6+EBBuYPpuRZ
-	jhHPXrE6T+Dxn/YjvmFaHnvT2dpKzYpfEMiOxJYX5Ug8T5raU/a141PZnmWkZT/q3EN8htyxyrH9Y
-	yAvIJj9i4HuidwofyOGJRI63/uRf/I7zzrr1eSRJuwGjtiZqedI1rJ4tCpg+6uiWDkB+tJM7SzHNY
-	jeeWakrYTHWSEu6hmCEQ==;
+	List-Owner; bh=kxxMd8o7tSFwKAwkcj+DPj3WLmRMJ6MeBRLB0tcOmGo=; b=qyucsNXNJhvdOU
+	Cez37pmexXZXn/Kv2lF5hbU7QnpsdfhPT+VZl2kPAXsyJWqgwJJ9RR5F5Q7X4sCeYHpccLIAu5yUS
+	ufj6VEeRrmYVP0vcnM1xqkzSI2Y1cUCf7ZCFuV8Uh3ih6OQlMXYbEpLRvLUx8l9NsHAhre3y7GHiE
+	3ONHIsyp9kNzGwNtN1DSTLFYrD3nJmXa5jAmjGy1X4fi4i7K8NkpT5dykHAlmguSOMBdHGva1clwu
+	lbLKljkbzbSGO7XIgfQdgbcevNj5H51f0JzUX7usUoKniXWEjYFGeYeyCCK+DDcwInSqfn1ogP/QD
+	vYBDXYYR/XngQ+9A+B4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7OpC-00000008xN6-4C46;
-	Wed, 23 Apr 2025 01:22:55 +0000
-Received: from mail-m1973193.qiye.163.com ([220.197.31.93])
+	id 1u7Ves-00000009nI3-0t8B;
+	Wed, 23 Apr 2025 08:40:42 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7OpA-00000008xLn-35EO
-	for linux-rockchip@lists.infradead.org;
-	Wed, 23 Apr 2025 01:22:54 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 12c927d32;
-	Wed, 23 Apr 2025 09:22:47 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: Add pcie1 slot for rk3576 evb1 board
-Date: Wed, 23 Apr 2025 09:22:39 +0800
-Message-Id: <1745371359-30443-1-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkkeS1ZIQk8dGUIeGR8fGEJWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a96603d870509cckunm12c927d32
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MBQ6SQw5SzJLQ0hDPwMJHhdD
-	OQhPCg5VSlVKTE9OSExKSE1MQk5DVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpNS0o3Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=DgSekd1UMNw31ZSTg0wpZ48mFl9hATv3aPFNo6nex1Uh5PPXDNM8Tm/oPYi0sSlu4mf5ciU74dAcKy4Dez48GqaJ5xV6KDLQcVcIK50n/A3rgeaB255q5pQm34ozCsvt3T5fXNlfztkeXre9LrnesTcNeWU5tLH7mg/GXJ1BKqE=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=FIhCJo3q1AwrUZ/79S564gX+70Ily7amwz9KfqL0qOc=;
-	h=date:mime-version:subject:message-id:from;
+	id 1u7Uvh-00000009aPQ-2bwV;
+	Wed, 23 Apr 2025 07:54:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1745394828; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=l2QuKe/naQtdCK/UHh5fyBtiP47dQkbaOA1fo4k3vk0lt3/LssUVniRCYGSiocb+TOGDUKsYSYKPGUx9bvWQAx3+KylYPcHNY7Oce1Bj7j01l4Sj0CBcmVtLkSSlqyV3vx8g0rJQdiCtLd1xMY7vmSZKpESKYXr6wwV3keXBcjk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1745394828; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Oijd0aKBdyplMTnNPJrIqrieZmKmWwupu3pm2u3MJ64=; 
+	b=I0eHXxv5l1nsUJD8DGsbw644Z6TIdJ13y3TFHmlJYPiscH8PgMhQ2fjSlQRU6pfcNxbeAvDPTT6+VoQlo2/V2aOWmmsUO0WQ11xzvnoU4fw38B16cRlHrJC4X5GD1S73J5A5bTYzojG6oTPDQ//MlAocdlSGEQOxx1bLiD6+nf0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745394828;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=Oijd0aKBdyplMTnNPJrIqrieZmKmWwupu3pm2u3MJ64=;
+	b=EeQspoWrECM8FVvMhgq0pxQ/UpzK7XmT0IycpYq3W6VvHXwbyCzFjicjSZzF0i/l
+	whh9XZv+NwxWQPWd+exftk33dP/V3kyOaL/uyuKlK7u++wPwiZE+os13oRmI+z38W/N
+	zJBF15oaarzdvGT2+83SaHD9tlrjQf92yYh/YIK4=
+Received: by mx.zohomail.com with SMTPS id 1745394825558639.0210285939858;
+	Wed, 23 Apr 2025 00:53:45 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Wed, 23 Apr 2025 09:53:32 +0200
+Subject: [PATCH v3] mmc: sdhci-of-dwcmshc: add PD workaround on RK3576
+MIME-Version: 1.0
+Message-Id: <20250423-rk3576-emmc-fix-v3-1-0bf80e29967f@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAHucCGgC/3WOwW7DIBBEf8XiXCJ2AZvklP+IesCwTlDj0IKLW
+ kX+92DnECltjjOaeTNXlikFymzXXFmiEnKIlyrkW8PcyV6OxIOvmqFALSR0PH1I3bWcxtHxIfz
+ wzjsDtsVOIbLa+kxU7ZV4eL/rRF/fFTzdTdbbTNzFcQzTrintBjRPTrIlfAp5iul3fVNgTb8cL
+ sCBey2VV1urYNB7F89n28dkN5W+fFm7Spj/u1KIrUHTQy/hqbt8KfjYV4B/GVgZRgpqtbReDeK
+ ZMc/zDQ3pxEpfAQAA
+X-Change-ID: 20250317-rk3576-emmc-fix-7dc81a627422
+To: Shawn Lin <shawn.lin@rock-chips.com>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, 
+ Finley Xiao <finley.xiao@rock-chips.com>, 
+ Adrian Hunter <adrian.hunter@intel.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_182253_267374_A6724B3F 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20250423_005401_743047_2AD52E31 
+X-CRM114-Status: GOOD (  23.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,46 +77,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: Detlev Casanova <detlev.casanova@collabora.com>, linux-pm@vger.kernel.org, linux-mmc@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-PCIe1 and usb_drd1_dwc3 is sharing the same PHY on RK3576 platform.
-For pcie1 slot and USB interface, there is a swich IC labelled as
-Dial_Switch_1 on evb1 board. If we need to make pcie1 slot work for this
-board, we should first disable usb_drd1_dwc3 and then set Dial_Switch_1
-to low state.
+RK3576's power domains have a peculiar design where the PD_NVM power
+domain, of which the sdhci controller is a part, seemingly does not have
+idempotent runtime disable/enable. The end effect is that if PD_NVM gets
+turned off by the generic power domain logic because all the devices
+depending on it are suspended, then the next time the sdhci device is
+unsuspended, it'll hang the SoC as soon as it tries accessing the CQHCI
+registers.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+RK3576's UFS support needed a new dev_pm_genpd_rpm_always_on function
+added to the generic power domains API to handle what appears to be a
+similar hardware design.
+
+Use this new function to ask for the same treatment in the sdhci
+controller by giving rk3576 its own platform data with its own postinit
+function. The benefit of doing this instead of marking the power domains
+always on in the power domain core is that we only do this if we know
+the platform we're running on actually uses the sdhci controller. For
+others, keeping PD_NVM always on would be a waste, as they won't run
+into this specific issue. The only other IP in PD_NVM that could be
+affected is FSPI0. If it gets a mainline driver, it will probably want
+to do the same thing.
+
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
+Changes in v3:
+- Reword comment and commit message to correct that this is not a
+  silicon bug, but seemingly intentional design with regards to runtime
+  power management.
+- Link to v2: https://lore.kernel.org/r/20250412-rk3576-emmc-fix-v2-1-830e653ad4f0@collabora.com
 
- arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts | 9 +++++++++
- 1 file changed, 9 insertions(+)
+Changes in v2:
+- Rewrite patch to use dev_pm_genpd_rpm_always_on in sdhci driver
+  instead, after Ulf Hansson made me aware of its existence
+- Link to v1: https://lore.kernel.org/r/20250408-rk3576-emmc-fix-v1-1-3009828b1b31@collabora.com
+---
+ drivers/mmc/host/sdhci-of-dwcmshc.c | 40 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-index ac397ac..d51f3f1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-@@ -691,6 +691,15 @@
- 	};
+diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
+index 09b9ab15e4995f0bddf57dd309c010c849be40d9..a20d03fdd6a93ecc5229c71f825bade5ac730370 100644
+--- a/drivers/mmc/host/sdhci-of-dwcmshc.c
++++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
+@@ -17,6 +17,7 @@
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_domain.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+ #include <linux/sizes.h>
+@@ -745,6 +746,29 @@ static void dwcmshc_rk35xx_postinit(struct sdhci_host *host, struct dwcmshc_priv
+ 	}
+ }
+ 
++static void dwcmshc_rk3576_postinit(struct sdhci_host *host, struct dwcmshc_priv *dwc_priv)
++{
++	struct device *dev = mmc_dev(host->mmc);
++	int ret;
++
++	/*
++	 * This works around the design of the RK3576's power domains, which
++	 * makes the PD_NVM power domain, which the sdhci controller on the
++	 * RK3576 is in, never come back the same way once it's run-time
++	 * suspended once. This can happen during early kernel boot if no driver
++	 * is using either PD_NVM or its child power domain PD_SDGMAC for a
++	 * short moment, leading to it being turned off to save power. By
++	 * keeping it on, sdhci suspending won't lead to PD_NVM becoming a
++	 * candidate for getting turned off.
++	 */
++	ret = dev_pm_genpd_rpm_always_on(dev, true);
++	if (ret && ret != -EOPNOTSUPP)
++		dev_warn(dev, "failed to set PD rpm always on, SoC may hang later: %pe\n",
++			 ERR_PTR(ret));
++
++	dwcmshc_rk35xx_postinit(host, dwc_priv);
++}
++
+ static int th1520_execute_tuning(struct sdhci_host *host, u32 opcode)
+ {
+ 	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+@@ -1176,6 +1200,18 @@ static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk35xx_pdata = {
+ 	.postinit = dwcmshc_rk35xx_postinit,
  };
  
-+&pcie1 {
-+	reset-gpios = <&gpio4 RK_PC4 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_pcie1>;
-+	/* Disable usb_drd1_dwc3 if enabling pcie1 and set Dial_Switch_1
-+	 * to low state according to the schematic of page 17.
-+	 */
-+	status = "disabled";
++static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk3576_pdata = {
++	.pdata = {
++		.ops = &sdhci_dwcmshc_rk35xx_ops,
++		.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
++			  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
++		.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
++			   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
++	},
++	.init = dwcmshc_rk35xx_init,
++	.postinit = dwcmshc_rk3576_postinit,
 +};
 +
- &pinctrl {
- 	usb {
- 		usb_host_pwren: usb-host-pwren {
+ static const struct dwcmshc_pltfm_data sdhci_dwcmshc_th1520_pdata = {
+ 	.pdata = {
+ 		.ops = &sdhci_dwcmshc_th1520_ops,
+@@ -1274,6 +1310,10 @@ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
+ 		.compatible = "rockchip,rk3588-dwcmshc",
+ 		.data = &sdhci_dwcmshc_rk35xx_pdata,
+ 	},
++	{
++		.compatible = "rockchip,rk3576-dwcmshc",
++		.data = &sdhci_dwcmshc_rk3576_pdata,
++	},
+ 	{
+ 		.compatible = "rockchip,rk3568-dwcmshc",
+ 		.data = &sdhci_dwcmshc_rk35xx_pdata,
+
+---
+base-commit: f34da179a4517854b2ffbe4bce8c3405bd9be04e
+change-id: 20250317-rk3576-emmc-fix-7dc81a627422
+
+Best regards,
 -- 
-2.7.4
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
