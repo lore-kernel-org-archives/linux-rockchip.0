@@ -4,105 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C88A0C369CB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Apr 2025 17:57:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21DF4C369D3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Apr 2025 18:16:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+mzSPhcKB5USV3jOyT0zmkjMvTqjjyGRgevAxkdjgog=; b=s/h4+HqmNelkz5
-	fOr0CTwlACgrAPvHVS23SaRqZBuYxr/FLVGIlP66UbYPhFSfGNz4r56SuQA++iwRrB30OBDsQBqTt
-	BvJ+enugaZpHlwIP2E/zML8vuLFUkEiGZXTWVnG/EPozzUAajbw/9Vz4b1/up8nXG3O+ooPieHZEA
-	sSSdy1EKG9TZOWuQKSOsgbPvNcU9owEivdZQeQ98xazQsT891GWOzaggXBcj6eC2OPdSJiuRSz5Tn
-	MtLkRP0IaLz1OFgMYafOv/Ayt1aOs5JFi2oo7ewj30bDwxKnuytYP5G+B8rqibCvT1zblIX9WXCsP
-	f/UQEEJRPh7kiAGEZK3w==;
+	List-Owner; bh=tytXK/g6gxn37HmtsxDJP/ML9j2GfAOmDxlVWEXxuwA=; b=fDoyjjpP8NeRad
+	KV9EICdk+ZeKadBK5yquJgHm5BWCj1QB4a19gfnalVv0uULJ+qU3AU9MivTqST8BNtiXq7Bk89mXV
+	0bD6GgfYZvgHvmmoRsNxHJF9gDFHL6qdyIkqCnGGf4mRrAIeGyzk5suy0Y5eEU6bUy9povbaAHIYx
+	YH13NylvCYXoxLLwxq582zPAnUGu4dCq4LqhpVMprSU8VRBGOI8GjMFz1KMAkWAGckhFUEftjqb+/
+	oXQzyY7S5pQEm6Pu0T4qv873WXacfEFQ0ijMXQWr8uZlFp2P/9PAFo7H3oA+bwtYWOkMmOU/weWgp
+	rjJtB3gVinQz5j+uxttQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7eLA-0000000BRCa-2uyX;
-	Wed, 23 Apr 2025 17:56:56 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1u7eeD-0000000BWD0-01ac;
+	Wed, 23 Apr 2025 18:16:37 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7dkI-0000000BFIl-3mlj
-	for linux-rockchip@lists.infradead.org;
-	Wed, 23 Apr 2025 17:18:52 +0000
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53NAaDBc015927
-	for <linux-rockchip@lists.infradead.org>; Wed, 23 Apr 2025 17:18:50 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=WDO88YLi7hpWsK2u0hPMTkEs
-	gQvBzxRt+jPQGFOJ+w8=; b=IekQLsG2extxrqNLyKp5XBR0b6EvA524PJBBBKYR
-	QEBc7W2dgxFPPFKocappfMI17JugezOKVFv1q0i5PgtRgi3QQD4sr4mXJof7uQV+
-	+H7gEpHRlszCWegkZlyi1qRH01EnHuY+sanHCurwJmDK78nCF1Tlqs+du0HigG/h
-	FJM6lFGCFvCvcLxMC9pkdZrV4ygOaX82rZHQQmgSNk1Blzuoad+mdywya3erwOwp
-	XfgMlca6OU8lkgJuq98ORSXj3mvY0pFHyLF3b1L0m21EGgV/4bPtotEmyzjhx6Gc
-	fgHLEZwGrIjzZ5jreKSGsLFHhwuxKEK81OdNKpObQCZSBA==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 466jh0awy2-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 23 Apr 2025 17:18:49 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-7c53e316734so9915185a.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 23 Apr 2025 10:18:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745428729; x=1746033529;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=WDO88YLi7hpWsK2u0hPMTkEsgQvBzxRt+jPQGFOJ+w8=;
-        b=F9zQ9vX0t8HKqaUjzVTAvVpdJAfWrDSGV/Bey+c5MWddhfXWV3PEq3Al/1OuPUWaeD
-         f4JoUETx56V+ilLRajFeT8rDUxcPZGF29B31/hZJc8x1JPMz6WaoHHD/TcB6RrvKPptp
-         EBj7VT5X+zzPFXF6VQ0wOBDXyT31TMGT74VzJPyIY2QJLD3Rg7r77KP0Q44kjs9z4Mgm
-         3MG3Ux1lTLHuzGsnMJ5ZZrnHEu/aZd3jy4/M7Vw2gVuvW0vPzAY1JpZ6SxHLzCFQoTl4
-         nR04fjdCFPw+kF7xeOlWGhs2kIW2ZMrXoSQB7C1Qs8+VcKmO1eZXtwt1zq1JYrFW11Hg
-         LvHg==
-X-Forwarded-Encrypted: i=1; AJvYcCUCGikAlxyn+DdrieYGv5idqkkR5AAqJj23BVEZtQRN36i9zwuU46kpb4t8iCZaqYQLPkMaSJJGgydI3EM1Ng==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxA/g0AscEZyPhBr41sygWRya9GhoIjT5d1gx9+Tn9DURr5gFya
-	Gea6sutuNNvGGU0ZlBm/IsHpNKEt9TzD611cet0T8KQ6/eAyH2GTNlhLAVBcrsT7vGgYQmfbD3k
-	G0/lDC3spXRh4o0gjDU8gT3Pr27xoWGb0PUPyur+knzPg8Irzr8fs0SaBCWO6XvYLBVniOsM=
-X-Gm-Gg: ASbGncu1aiKslFRrKUcg06NJSzpWUigId39bfhE8Gbi4TWv63TX/5/rMJmi8mH1UFvF
-	32z1gHwtwDppy8NtbmNHrSyp5UaJPBD+HjpL4VQie5uF4ifZRsFHaEi9oJNJQZkecm7jXXNt9Gx
-	p6XPv9x4SM+snMa/4I0+wBJ1dmaUWuSkyOJtPXHLp72SRrI263hb+ydYIaWCjxAxX53yQmFVYQ2
-	po6r6SGZLakjQXtO1BKKNHHTgC1GgJaYAEw1z1G9SGKT0xvvt4vQ2weoTm/x6CeOqYsmKICOBRN
-	mEVdqYw/l8A4b3aKEbqwLDZsig/SYto8/ddjnSilx4iSlVAL+PNYLn/yZfFoMPKqd6vRowHamLE
-	=
-X-Received: by 2002:a05:620a:199d:b0:7c9:2612:32d6 with SMTP id af79cd13be357-7c92805fbe9mr3542964885a.48.1745428728645;
-        Wed, 23 Apr 2025 10:18:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG4YRFe2I2adKtjK/DTqagD31VvQyfxBA06e/fj1CyPoBrdGi/d4dL6lTARcuXkFMIqRSCSow==
-X-Received: by 2002:a05:620a:199d:b0:7c9:2612:32d6 with SMTP id af79cd13be357-7c92805fbe9mr3542959585a.48.1745428728212;
-        Wed, 23 Apr 2025 10:18:48 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-31090826cafsm18525361fa.69.2025.04.23.10.18.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Apr 2025 10:18:47 -0700 (PDT)
-Date: Wed, 23 Apr 2025 20:18:45 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Arnd Bergmann <arnd@kernel.org>
-Subject: Re: [PATCH] drm/rockchip: add CONFIG_OF dependency
-Message-ID: <a4tcrxepuvvxixpab3txz6tdbh6janiedjqddl2ybfo6plhjcl@r5bxdabuhjep>
-References: <20250423164422.2793634-1-arnd@kernel.org>
+	id 1u7eEp-0000000BPne-1dgq;
+	Wed, 23 Apr 2025 17:50:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 47E6EA4BEDD;
+	Wed, 23 Apr 2025 17:44:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79EBCC4CEE2;
+	Wed, 23 Apr 2025 17:50:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1745430622;
+	bh=Egp3Yszj4dH8xTnJVf5ZAxkxoyrRymUIA54q4ihDQHE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=a7Hx2Et6Gc58QrcEBYMSxR4ISbAAzxE36+ukyUOr7y3CPDLBhIK0sTsC0/zxaYHEl
+	 DfLzLcxqfCD4RAV2ToZbpZcVkpYp5JN8u7F5tlZYVb63jscDdepELpvhqdihfd8MOX
+	 L6sPy/Lfjtzs106AqLsHozQ+8Bir45pOHn2mPLpVGoAVPd4h5vAbe9gNKUyJ1W0SQ1
+	 wSmoHkgyHZls087dZMOY0oikCvUsKNvVmlbq/Hr8OqAYMhneUHgKkAm5Vy4KWy9ttS
+	 mslgMN1ZZn4Te57TvTL9m8CZXJVTXhHcKA2pcq07gliK+vZpYDMm8lNZX9ZzZjhxdw
+	 2C1CrEmYmAXrA==
+Date: Wed, 23 Apr 2025 19:50:16 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+	heiko@sntech.de, manivannan.sadhasivam@linaro.org, robh@kernel.org,
+	jingoohan1@gmail.com, shawn.lin@rock-chips.com,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 2/3] PCI: dw-rockchip: Reorganize register and
+ bitfield definitions
+Message-ID: <aAkoWCtCS7Lxx3Gx@ryzen>
+References: <20250423153214.16405-1-18255117159@163.com>
+ <20250423153214.16405-3-18255117159@163.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250423164422.2793634-1-arnd@kernel.org>
-X-Proofpoint-GUID: OKV5UtuxWfn-eNycyqZeX2sIcaNj4YtS
-X-Proofpoint-ORIG-GUID: OKV5UtuxWfn-eNycyqZeX2sIcaNj4YtS
-X-Authority-Analysis: v=2.4 cv=Fv0F/3rq c=1 sm=1 tr=0 ts=680920fa cx=c_pps a=HLyN3IcIa5EE8TELMZ618Q==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10 a=XR8D0OoHHMoA:10 a=EUspDBNiAAAA:8 a=8SeTOrC02ZtG1eAnSgcA:9 a=CjuIK1q_8ugA:10 a=bTQJ7kPSJx9SKPbeHEYW:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNDIzMDEyMSBTYWx0ZWRfX6ViW1gF9jh2S gzGlCE5H/gy5IL25ax/qcd7HzppzIJpitz2ny+bF8uWNdY3jbqX0f1VUvKh5UN67Br9keUu8sqB KXvIyfv8kwGDf1JZWtjKUxVoEa8yT8nEFUPwiNfQMXi2seMvbwmL1gkOmOHUEEdoHwii67hXFBY
- JiLKVjGfpMe37QrSx4/CP5ErjUOdlkyYTa+LJvKZTAkk7sbUK8ShC8JZpobNuB1Ruvy6c8l70KY f+GAS4uJKvSxV3S7Sk6+ud8rLNy5XGQTUhPCo/onZAk2aaHTCU6jxhMY8HmpYb4RWQ0LxEek1ZE FhHRX+DT9TEGTdWkviHJ2PL5vOgewYei8dQL2NxDBGftqKal1ocXZV/qcsmMmplSuSVYNGmvm7T
- /FjID61JtMgCyYWXrOvSfhfpf7CFPUyUQyHiKWqG9AmGT31IPuq5TOLjpWW9mL58Cev6mnWJ
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.680,FMLib:17.12.80.40
- definitions=2025-04-23_09,2025-04-22_01,2025-02-21_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 mlxscore=0
- malwarescore=0 mlxlogscore=999 priorityscore=1501 suspectscore=0
- adultscore=0 bulkscore=0 clxscore=1015 spamscore=0 lowpriorityscore=0
- phishscore=0 classifier=spam authscore=0 authtc=n/a authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.19.0-2504070000
- definitions=main-2504230121
+In-Reply-To: <20250423153214.16405-3-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_101850_963634_9FC90DE4 
-X-CRM114-Status: GOOD (  16.26  )
+X-CRM114-CacheID: sfid-20250423_105023_491925_401505C6 
+X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,37 +73,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Simona Vetter <simona@ffwll.ch>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sandy Huang <hjc@rock-chips.com>, Maxime Ripard <mripard@kernel.org>, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Heiko Stuebner <heiko.stuebner@cherry.de>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Geert Uytterhoeven <geert+renesas@glider.be>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <lumag@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 23, 2025 at 06:44:16PM +0200, Arnd Bergmann wrote:
-> From: Arnd Bergmann <arnd@arndb.de>
+On Wed, Apr 23, 2025 at 11:32:13PM +0800, Hans Zhang wrote:
+> Register definitions were scattered with ambiguous names (e.g.,
+> PCIE_RDLH_LINK_UP_CHGED in PCIE_CLIENT_INTR_STATUS_MISC) and lacked
+> hierarchical grouping. Magic values for bit operations reduced code
+> clarity.
 > 
-> DRM_DISPLAY_DP_AUX_BUS cannot be selected when CONFIG_OF is disabled:
+> Group registers and their associated bitfields logically. This improves
+> maintainability and aligns the code with hardware documentation.
 > 
-> WARNING: unmet direct dependencies detected for DRM_DISPLAY_DP_AUX_BUS
->   Depends on [n]: HAS_IOMEM [=y] && DRM [=y] && OF [=n]
->   Selected by [y]:
->   - DRM_ROCKCHIP [=y] && HAS_IOMEM [=y] && DRM [=y] && ROCKCHIP_IOMMU [=y] && ROCKCHIP_ANALOGIX_DP [=y]
-> 
-> Rockchip platforms all depend on OF anyway, so add the dependency here
-> for compile testing.
-> 
-> Fixes: d7b4936b2bc0 ("drm/rockchip: analogix_dp: Add support to get panel from the DP AUX bus")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> Signed-off-by: Hans Zhang <18255117159@163.com>
 > ---
->  drivers/gpu/drm/rockchip/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
-> 
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-
--- 
-With best wishes
-Dmitry
+Reviewed-by: Niklas Cassel <cassel@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
