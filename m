@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEFF9C369DF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Apr 2025 20:22:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6444AC369D5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Apr 2025 21:37:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ixjL2XoGsbDqm865WKGiXu8bYWFJcxATXxKRy7T0NFU=; b=fJ5KXPQBbKi3f5
-	4t6O+d6ibQi11xdnfmgZ/Ymg9g97+mZ3nW4fJug25wmi9UyqP33IsHsbk9LW0+8skA15foqIRsCHj
-	jdDL0q2in8hvezuNV3EV2woppd4mQziKOi9OThIUwQIsqlRpk0fUbMHnQpVjRwWWhWPKYv8K3V/Q/
-	GmXMgn1NfzSKhZnRiM2s4Q3pmxqJRD4/2XmGX75jxlaGr6AjkNE81LhapuljaQ72ZjrC1ZQN2Pfbm
-	OK5pY4FJ+VEkSqVWuawABccWOx5wlMSQ1Ro1ZP4xbCJNu3ZCLaRh02J0oCJToJbyLJb15Mn5xBWUV
-	qj0f/9Yn5wJLHDMSxr/Q==;
+	List-Owner; bh=/94k+IqgxOWjGV+g0DoI21k3BJbq4aoYZY7m2Fb5rx8=; b=uC0wX+7BSVnrtx
+	RxKsg6mms3CVHQ4zXO9hyED5hXhwQMBqLLj/v4X/Yc9GUadDRFvYFSYxaFmgol7xz98Lm6tCYHwMH
+	t4IB2b3cv815mKNxZCmpl4jNxFZ8bXNkihwAMv96ICITTZX+DKVTJjlC8VHyeIUkfDTt1lwfSrlwK
+	p9S27UZWgGfYo6TD32Nk/SmsP5EUEdSjSh30ivhj92SW+Awo8Kq9iEBmARpXlovSuGM5Z7W7TBK+T
+	/nVpaTSqQyCRUytbcOSZyLsw/u0wAEUcJhjVPYoM5OTm9pex+PIkaoDSsssobMgGy7XqhqZd7OGAc
+	P64LyKttxOQwr7Yq/uaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u835U-0000000FKDD-483u;
-	Thu, 24 Apr 2025 20:22:24 +0000
+	id 1u84G5-0000000FQO6-3E5i;
+	Thu, 24 Apr 2025 21:37:25 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u81gm-0000000F5GB-0lHR;
-	Thu, 24 Apr 2025 18:52:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1745520755; cv=none; 
+	id 1u81go-0000000F5Gm-49EG;
+	Thu, 24 Apr 2025 18:52:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1745520759; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=NCamvSjAd1TPlup5KpNJxV8L6yt2XPpYm5bOijTs3biV1cZ5KQ5X8gKkBZkEZmiT7Mzbvp3Kx99eawUPTeSH7ySrWkULwNtcTVPlA6ZLibQ4/xFF+oPtL13/l4mvB5fUNO21+1IFYHlKb+OtfMVDN05CUCX61MKVpXkqBP5SIAI=
+	b=f67g/KglThRw5wVky3xH3nsJxM3eoPm5hIn3wIWY4iOPe5HwXKP1RHzKfGVh0C3M/XQkben49bhPSSOTFNw/G8IzA55lJXiyiVE7iZXchD9/+vuFo/GP2HRzN4I0H0pSS3SF5IaOaVB6E4PD5mQ3ILEs+5AxTQX9yIKYnNVxQ2k=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1745520755; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=nSm85WrOXXd0xYU8c9OOo0pnjRflgeYS11s36aD5s1U=; 
-	b=SP6u549Lk0DjrwCyDxdRdS9/fq3dcb2jM53xq5Ww0HB0ACnjwJwG5X/frK8EkoRUTbSY1K9MdrwHTntLPh6sJtrzb0kVFb4biT66vkg01ozAEGOgq+kkKNjVaEe+etb9oftG202XdsbJ07l7bIdTXElzmbPqUxEJkMKgGrDT2IE=
+	t=1745520759; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=/9frCnYTMVTpm5V5w18G/k5cDEAONcnNNbo6wTNm04s=; 
+	b=hP8WLG6fOselEXBQxz0BWOU/y2Ut31m2VmH5SkMA6r6STNkJ1qDrpwOYruqna2dFLvluRyG4zGJ1yFMhKzZRJnkEda0uptTmrnV7ltB2okFT0wbY8JVOXxMRBVQMWMWGhwWWw65LGEZeJABa/7SteN5WwN4lZC0TQPv/v1G5ims=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745520755;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745520759;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=nSm85WrOXXd0xYU8c9OOo0pnjRflgeYS11s36aD5s1U=;
-	b=PrHLdNKRkF34UzA3HCrdw+tWQGyujwnbX2l+zKOurm+FTHamBoK7V/xKh95oUDwq
-	PWCqW++EPaXaSFsDhGoibTNJmezCPWlF9wfyVElc3U+o5PdPBUSlXiQe4iDLNrUUDSj
-	3aFmKHDoTBMxtteG1sCw2E1KczTDxEU42V8N7DZY=
-Received: by mx.zohomail.com with SMTPS id 1745520753589285.7033388625773;
-	Thu, 24 Apr 2025 11:52:33 -0700 (PDT)
+	bh=/9frCnYTMVTpm5V5w18G/k5cDEAONcnNNbo6wTNm04s=;
+	b=GLoPQ0qk1WjR+1lIkWWUByBXveFgWAkJUxbLRBc+5cA6tt8Jf6BHMFNWLzrpuvd4
+	dPTcaH2V+S5yJUjlogYeDPuiATLZJKZK292R9CZtoN4Vrvkk8jRRANml9FBBmXbiqwP
+	yqU4qcC/IMeL4aOoQNteksUTtZT0ugMpYZjCMUMA=
+Received: by mx.zohomail.com with SMTPS id 1745520756849524.09816512909;
+	Thu, 24 Apr 2025 11:52:36 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 24 Apr 2025 20:52:22 +0200
-Subject: [PATCH 1/2] dt-bindings: ata: rockchip-dwc-ahci: add RK3576
- compatible
+Date: Thu, 24 Apr 2025 20:52:23 +0200
+Subject: [PATCH 2/2] arm64: dts: rockchip: add SATA nodes to RK3576
 MIME-Version: 1.0
-Message-Id: <20250424-rk3576-sata-v1-1-23ee89c939fe@collabora.com>
+Message-Id: <20250424-rk3576-sata-v1-2-23ee89c939fe@collabora.com>
 References: <20250424-rk3576-sata-v1-0-23ee89c939fe@collabora.com>
 In-Reply-To: <20250424-rk3576-sata-v1-0-23ee89c939fe@collabora.com>
 To: Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>, 
@@ -60,8 +59,8 @@ To: Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>,
  Serge Semin <fancer.lancer@gmail.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_115248_285005_87BC7E57 
-X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-CacheID: sfid-20250424_115251_087620_DF3138CB 
+X-CRM114-Status: UNSURE (   9.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,42 +79,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip RK3576 has two SATA controllers. They work the same as the
-RK3568 SATA controllers, having the same number of clocks and ports.
+The Rockchip RK3576 features two SATA nodes. The first, sata0, is behind
+combphy0, which muxes between pcie0 and sata0.
+
+The second, sata1, is behind combphy1, which muxes between pcie1, sata1
+and usb_drd1_dwc3.
+
+I've only been able to test sata0 on my board, but it appears to work
+just fine.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml b/Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml
-index 13eaa8d9a16e5a4bd43b3e184f9277494acf27a1..b5ecaabfe2e2537afe6093558fb0ab975dcf6058 100644
---- a/Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml
-+++ b/Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml
-@@ -20,6 +20,7 @@ select:
-       contains:
-         enum:
-           - rockchip,rk3568-dwc-ahci
-+          - rockchip,rk3576-dwc-ahci
-           - rockchip,rk3588-dwc-ahci
-   required:
-     - compatible
-@@ -29,6 +30,7 @@ properties:
-     items:
-       - enum:
-           - rockchip,rk3568-dwc-ahci
-+          - rockchip,rk3576-dwc-ahci
-           - rockchip,rk3588-dwc-ahci
-       - const: snps,dwc-ahci
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index ebb5fc8bb8b1363127b9d3782801c4a79b678a92..6e27d744acad2111616eaf4807aea1eac4f00c7f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -1334,6 +1334,36 @@ gmac1_mtl_tx_setup: tx-queues-config {
+ 			};
+ 		};
  
-@@ -83,6 +85,7 @@ allOf:
-           contains:
-             enum:
-               - rockchip,rk3568-dwc-ahci
-+              - rockchip,rk3576-dwc-ahci
-     then:
-       properties:
-         clocks:
++		sata0: sata@2a240000 {
++			compatible = "rockchip,rk3576-dwc-ahci", "snps,dwc-ahci";
++			reg = <0x0 0x2a240000 0x0 0x1000>;
++			clocks = <&cru ACLK_SATA0>, <&cru CLK_PMALIVE0>,
++				 <&cru CLK_RXOOB0>;
++			clock-names = "sata", "pmalive", "rxoob";
++			interrupts = <GIC_SPI 262 IRQ_TYPE_LEVEL_HIGH>;
++			power-domains = <&power RK3576_PD_SUBPHP>;
++			phys = <&combphy0_ps PHY_TYPE_SATA>;
++			phy-names = "sata-phy";
++			ports-implemented = <0x1>;
++			dma-coherent;
++			status = "disabled";
++		};
++
++		sata1: sata@2a250000 {
++			compatible = "rockchip,rk3576-dwc-ahci", "snps,dwc-ahci";
++			reg = <0x0 0x2a250000 0x0 0x1000>;
++			clocks = <&cru ACLK_SATA1>, <&cru CLK_PMALIVE1>,
++				 <&cru CLK_RXOOB1>;
++			clock-names = "sata", "pmalive", "rxoob";
++			interrupts = <GIC_SPI 263 IRQ_TYPE_LEVEL_HIGH>;
++			power-domains = <&power RK3576_PD_SUBPHP>;
++			phys = <&combphy1_psu PHY_TYPE_SATA>;
++			phy-names = "sata-phy";
++			ports-implemented = <0x1>;
++			dma-coherent;
++			status = "disabled";
++		};
++
+ 		ufshc: ufshc@2a2d0000 {
+ 			compatible = "rockchip,rk3576-ufshc";
+ 			reg = <0x0 0x2a2d0000 0x0 0x10000>,
 
 -- 
 2.49.0
