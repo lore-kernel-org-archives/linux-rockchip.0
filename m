@@ -4,119 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C95C369D5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 13:11:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F395DC369C2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 15:33:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=El+2SLYY1WcwcD3+AOs87QHWSvVgoiI8tsVS1Z6/9ms=; b=1Faf6XmYbSak5Ariuske/pqGLE
-	Kjem9Tb+sX22ey8KaYqfWA6H7SOqv7+/HSEEzSHSMx+nz8vUhQNRYfw+VEW2lSbkRADGevkXv87Ob
-	4FsLQI/la288H7J4Hm0tBP+cwhh7xSDI9S5itiJxExwY4wQI438EZ8tBIIiECnymwAzlrHJDbvkO4
-	7Dx7UvgbK6dYjFjZRlFWYlhP/RatMi+E8HBypGDc/L+DaAWeLI7zuf9ksvZyYKnqg7rlmJxdeG3Yx
-	lUFxCqb5nOHseQfVT57JxtUFAiPExiMJdNx1+WMQfk5cvZ5JS0frHQqfTpLOk2SvWlrhfuiO39CZF
-	CqO6wgpQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YM0JjnY7BCtlhcLuvNz2jDIoE4XaF5kJs46znzkV81o=; b=cpP+uQvWpNLBZp
+	8cAvwTiUnROXr32FVKOTQxaGh8dN6LsabGg8c8aw5myqlw/XNdC2QwJ/UjBI/f3YQ+99mUi+YEZBS
+	Td16jetxaFU5eLh1YtGNDioOcc1Hu1qZ5mBM9E4G12g29myh4ucrE8fdGPELzFp1A3YxvSXwBOyD7
+	SUJYTJxEx8GcQVaKspQ6hjyQnuxn+cje1aAPK5WXhWV5N5MiCLYTp4XxgMdNutGrx6ZQsYH1iDbTb
+	WXWWEQYX9bd77HAd5WAzePR+lCb6MUyN+pSwuX+cFJp7ry4Q8M1uDri70nIYRquYpxP5znjIgQAdj
+	daU/mCVEZwd+HxaFtj1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8IqF-0000000HENI-33mB;
-	Fri, 25 Apr 2025 13:11:43 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1u8L3L-000000003ZE-0IY9;
+	Fri, 25 Apr 2025 15:33:23 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8Hid-0000000H2qv-0S6u
-	for linux-rockchip@lists.infradead.org;
-	Fri, 25 Apr 2025 11:59:48 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-43cf680d351so19459575e9.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 25 Apr 2025 04:59:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1745582385; x=1746187185; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=1BMXqgQl7jfC6H77AGknLL1fmdPdkIRiy2JGqphh2TI=;
-        b=w6bHL1CMyn0EVVsCmZdJvS+q1PphbeqsFAMXIs2IMS6CJgXDfZ8iOa6Ui33BHOGcjL
-         ywaiDnOlDb+o9AiTbj0B0x82wOnMMT36a7kRc+VmO0ZZR38esp3sj/LdT2LFMLHz0xre
-         UOz9erjjejzxkwMumj/HiIq3U9O8R6jLe0j7JItrmFahjmpwoJCe7jO4Y/H2OZ/H0BKl
-         WdOxgD5Sm94UJrGXZR0ZQ30ILxt0N8NKELFNGJAeI+T5CrlgX40SUVaMZqTTYrljOjFD
-         so7T1tPtcxnj/JTlw/BmXdRBx1noACt85Otii5wjlYB36ZxJ/7qKcgjdsfQRdSQD8RXf
-         Wn/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745582385; x=1746187185;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=1BMXqgQl7jfC6H77AGknLL1fmdPdkIRiy2JGqphh2TI=;
-        b=F4uUXyAthD3JvYKZQiwLB3tvS1RWltu1E9rPALlnOy0BvikvUhEUpPlStURjjOkcUr
-         cnInepKTzh8tL2zpPYGm1iy2ApYHk20nn9iuiSFAmZBCmfiH8jvqPTvCGujVC6IVt2uM
-         yz26BmQ7e07oFkR139zQ5Cx+VLJNloIPswGxXfBsoHnnLSqU8JhBXA3X3zuGSKCuzYsY
-         vGaXpc5fw17b0LcWqieNHIZhTayPhzLJr0/cS+G+6je1BwPCWMN/dClphPhRmuX+GMQH
-         Uh6n/0zlyzlnd3jWrsuUz3Qd/z4UGiFjU8sCw6oPzSb3ZWzp762Es/UZWnNCTagjxR2i
-         Zjnw==
-X-Forwarded-Encrypted: i=1; AJvYcCWr22gStTTN7YIgA8w+ByAzJd7wb8Tn3JBnAadH5QYJ2Z2tn7W07mgJXkuMcJf9KYQwwiYo8m5geaHV/yop+Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyOjZ5AOZjKvMxTwQaaVYhNkMTYnPg5Q3QuMko9mI6pe8NmYZvF
-	nhDHbGoHxpYUpLm5iklqYuwclILHKjV/jMjvw+v8+DWtsS0ssOX2ugYYED2m5hY=
-X-Gm-Gg: ASbGncu3K8sFrdOnv1WqsHxa5HfouCy1NzwVXrR/h8YUeebsxjKQjvHRbv1+tyYpiNU
-	R75VjK1CfgMhUkhaNO+fLpca5E2xtUthZ6g3Bgx2xSiTdx6DPfJT0Yk3+v9aLLjEDcz84hkzkjo
-	PxkNu/waeKMxaf0KQSRYRJguxR5N6Vd0eOuRXvG0m3oecYsy58ecXCwtVFDQxNhxjdzI3YhdK2v
-	YMx5ZkKEM4rjgkhFLWcAQ+qdbncJwkzo4ccpzQdMwwu2sOwcB4y4bHzpCWGKSM6CopcGpAcGhlc
-	GGYAWqzYyW/OpHCwh+cv2W6WeOS/D0ZAPsHwrOBEChHsaH5JvfNRs8c8hxQTsSTNt80bcsEo4+c
-	A7RQGVsKm8hUNmNE=
-X-Google-Smtp-Source: AGHT+IFUziGPo9gQMFmCnZNYEF+uivB8dimTgfWb3U4m2/eIphhsJOITXlVU1qUIZpOSQaR9a2Vnog==
-X-Received: by 2002:a05:600c:c88:b0:439:5f04:4f8d with SMTP id 5b1f17b1804b1-440a6693e9fmr16619325e9.12.1745582384889;
-        Fri, 25 Apr 2025 04:59:44 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:3d9:2080:d16:61ed:6880:1168? ([2a01:e0a:3d9:2080:d16:61ed:6880:1168])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-440a530a6e9sm22682585e9.16.2025.04.25.04.59.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Apr 2025 04:59:44 -0700 (PDT)
-Message-ID: <e6752451-4492-4ae2-9bad-3865c4945dbe@linaro.org>
-Date: Fri, 25 Apr 2025 13:59:43 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: neil.armstrong@linaro.org
-Subject: Re: [PATCH v2 2/2] PCI: Remove redundant MPS configuration
-To: Hans Zhang <18255117159@163.com>, lpieralisi@kernel.org, kw@linux.com,
- bhelgaas@google.com, heiko@sntech.de, thomas.petazzoni@bootlin.com,
- manivannan.sadhasivam@linaro.org, yue.wang@Amlogic.com
-Cc: pali@kernel.org, robh@kernel.org, jingoohan1@gmail.com,
- khilman@baylibre.com, jbrunet@baylibre.com,
- martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
+	id 1u8JOg-0000000HL5e-1oua;
+	Fri, 25 Apr 2025 13:47:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id DC61A6847B;
+	Fri, 25 Apr 2025 13:46:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C85DC4CEE4;
+	Fri, 25 Apr 2025 13:47:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1745588837;
+	bh=qi5h6vjHGkHHkMx48KdWOPGfCyT72085egpIwqt06EU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QVkHX+kql50+epGydmhjz+95MQSE8WEDlV87c70IY7HI4V1UG99qCiZRm1luxGYeO
+	 BVUaapBHvKfebXlGIwSGgPRO1pnmU00p2MUxCjvBFZEvNQ0Wke+4d9nmwMNwSkqjeK
+	 7DvdYe2JdWwvsenW+3ms5MsvBk4A7gUXIGS614Xh0d3FeRP9g+JidG4w5MUU5wef+B
+	 u7JuJ2bVjV1wS5LpFglBj3eelV/u0rhDOWAQqec5PEBdJELIg64PiO6k90NX4ZRriR
+	 drDucaxBTBnQHYnuTN84bbCm6mX7qLCkKbxUde4DshAfnex+OCWaQYmKoHHZgOyCvw
+	 eF4uPsyzoOzqA==
+Date: Fri, 25 Apr 2025 15:47:10 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+	heiko@sntech.de, thomas.petazzoni@bootlin.com,
+	manivannan.sadhasivam@linaro.org, yue.wang@amlogic.com,
+	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
+	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
+	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/2] PCI: Configure root port MPS to hardware maximum
+ during host probing
+Message-ID: <aAuSXhmRiKQabjLO@ryzen>
 References: <20250425095708.32662-1-18255117159@163.com>
- <20250425095708.32662-3-18255117159@163.com>
-Content-Language: en-US, fr
-Autocrypt: addr=neil.armstrong@linaro.org; keydata=
- xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
- GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
- BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
- qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
- 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
- AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
- OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
- Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
- YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
- GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
- UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
- GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
- yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
- QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
- SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
- 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
- Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
- oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
- M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
- 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
- KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
- 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
- QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
-Organization: Linaro
-In-Reply-To: <20250425095708.32662-3-18255117159@163.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250425_045947_160271_FBC39769 
-X-CRM114-Status: GOOD (  15.39  )
+ <20250425095708.32662-2-18255117159@163.com>
+ <aAtikPOYlGeJCsiA@ryzen>
+ <a4963173-dd9a-4341-b7f9-5fdb9485233a@163.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <a4963173-dd9a-4341-b7f9-5fdb9485233a@163.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,87 +74,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: neil.armstrong@linaro.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25/04/2025 11:57, Hans Zhang wrote:
-> With the PCI core now centrally configuring root port MPS to
-> hardware-supported maximums (via 128 << pcie_mpss) during host probing,
-> platform-specific MPS adjustments are redundant. This patch removes the
-> custom the configuration of the max payload logic to align with the
-> standardized initialization flow.
+Hello Hans,
+
+On Fri, Apr 25, 2025 at 06:56:53PM +0800, Hans Zhang wrote:
 > 
-> By eliminating redundant code, this change prevents conflicts with global
-> PCIe hierarchy tuning policies and reduces maintenance overhead. The Meson
-> driver now fully relies on the core PCI framework for MPS configuration,
-> ensuring consistency across the PCIe topology while preserving
-> hardware-specific MRRS handling.
+> But I discovered a problem:
 > 
-> Signed-off-by: Hans Zhang <18255117159@163.com>
-> ---
->   drivers/pci/controller/dwc/pci-meson.c | 17 -----------------
->   drivers/pci/controller/pci-aardvark.c  |  2 --
->   2 files changed, 19 deletions(-)
+> 0001:90:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
+>          ......
+>          Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
+>                  DevCap: MaxPayload 512 bytes, PhantFunc 0
+>                          ExtTag- RBE+
+>                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+>                          RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
+>                          MaxPayload 512 bytes, MaxReadReq 1024 bytes
 > 
-> diff --git a/drivers/pci/controller/dwc/pci-meson.c b/drivers/pci/controller/dwc/pci-meson.c
-> index db9482a113e9..126f38ed453d 100644
-> --- a/drivers/pci/controller/dwc/pci-meson.c
-> +++ b/drivers/pci/controller/dwc/pci-meson.c
-> @@ -261,22 +261,6 @@ static int meson_size_to_payload(struct meson_pcie *mp, int size)
->   	return fls(size) - 8;
->   }
->   
-> -static void meson_set_max_payload(struct meson_pcie *mp, int size)
-> -{
-> -	struct dw_pcie *pci = &mp->pci;
-> -	u32 val;
-> -	u16 offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
-> -	int max_payload_size = meson_size_to_payload(mp, size);
-> -
-> -	val = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
-> -	val &= ~PCI_EXP_DEVCTL_PAYLOAD;
-> -	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, val);
-> -
-> -	val = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
-> -	val |= PCIE_CAP_MAX_PAYLOAD_SIZE(max_payload_size);
-> -	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, val);
-> -}
-> -
->   static void meson_set_max_rd_req_size(struct meson_pcie *mp, int size)
->   {
->   	struct dw_pcie *pci = &mp->pci;
-> @@ -381,7 +365,6 @@ static int meson_pcie_host_init(struct dw_pcie_rp *pp)
->   
->   	pp->bridge->ops = &meson_pci_ops;
->   
-> -	meson_set_max_payload(mp, MAX_PAYLOAD_SIZE);
->   	meson_set_max_rd_req_size(mp, MAX_READ_REQ_SIZE);
+> 
+> 
+> 			Should the DevCtl MaxPayload be 256B?
+> 
+> But I tested that the file reading and writing were normal. Is the display
+> of 512B here what we expected?
+> 
+> Root Port 0003:30:00.0 has the same problem. May I ask what your opinion is?
+> 
+> 
+> 		......
+> 0001:91:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd
+> NVMe SSD Controller PM9A1/PM9A3/980PRO (prog-if 02 [NVM Express])
+>          ......
+>          Capabilities: [70] Express (v2) Endpoint, MSI 00
+>                  DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s
+> unlimited, L1 unlimited
+>                          ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+
+> SlotPowerLimit 0W
+>                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+>                          RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+
+> FLReset-
+>                          MaxPayload 256 bytes, MaxReadReq 512 bytes
+> 		......
 
-Seems you can also remove meson_set_max_rd_req_size() since it's
-done by pcie_write_mrrs()
+Here we see that the bridge has a higher DevCtl.MPS than the DevCap.MPS of
+the endpoint.
 
-Neil
+Let me quote Bjorn from the previous mail thread:
 
->   
->   	return 0;
-> diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
-> index a29796cce420..d8852892994a 100644
-> --- a/drivers/pci/controller/pci-aardvark.c
-> +++ b/drivers/pci/controller/pci-aardvark.c
-> @@ -549,9 +549,7 @@ static void advk_pcie_setup_hw(struct advk_pcie *pcie)
->   	reg = advk_readl(pcie, PCIE_CORE_PCIEXP_CAP + PCI_EXP_DEVCTL);
->   	reg &= ~PCI_EXP_DEVCTL_RELAX_EN;
->   	reg &= ~PCI_EXP_DEVCTL_NOSNOOP_EN;
-> -	reg &= ~PCI_EXP_DEVCTL_PAYLOAD;
->   	reg &= ~PCI_EXP_DEVCTL_READRQ;
-> -	reg |= PCI_EXP_DEVCTL_PAYLOAD_512B;
->   	reg |= PCI_EXP_DEVCTL_READRQ_512B;
->   	advk_writel(pcie, reg, PCIE_CORE_PCIEXP_CAP + PCI_EXP_DEVCTL);
->   
+"""
+  - I don't think it's safe to set MPS higher in all cases.  If we set
+    the Root Port MPS=256, and an Endpoint only supports MPS=128, the
+    Endpoint may do a 256-byte DMA read (assuming its MRRS>=256).  In
+    that case the RP may respond with a 256-byte payload the Endpoint
+    can't handle.
+"""
 
+
+
+I think the problem with this patch is that pcie_write_mps() call in
+pci_host_probe() is done after the pci_scan_root_bus_bridge() call in
+pci_host_probe().
+
+So pci_configure_mps() (called by pci_configure_device()),
+which does the limiting of the bus to what the endpoint supports,
+is actually called before the pcie_write_mps() call added by this patch
+(which increases DevCtl.MPS for the bridge).
+
+
+So I think the code added in this patch needs to be executed before
+pci_configure_device() is done for the EP.
+
+It appears that pci_configure_device() is called for each device
+during scan, first for the bridges and then for the EPs.
+
+So I think something like this should work (totally untested):
+
+--- a/drivers/pci/probe.c
++++ b/drivers/pci/probe.c
+@@ -45,6 +45,8 @@ struct pci_domain_busn_res {
+        int domain_nr;
+ };
+ 
++static void pcie_write_mps(struct pci_dev *dev, int mps);
++
+ static struct resource *get_pci_domain_busn_res(int domain_nr)
+ {
+        struct pci_domain_busn_res *r;
+@@ -2178,6 +2180,11 @@ static void pci_configure_mps(struct pci_dev *dev)
+                return;
+        }
+ 
++       if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
++           pcie_bus_config != PCIE_BUS_TUNE_OFF) {
++               pcie_write_mps(dev, 128 << dev->pcie_mpss);
++       }
++
+        if (!bridge || !pci_is_pcie(bridge))
+                return;
+
+
+
+But we would probably need to move some code to avoid the
+forward declaration.
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
