@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CE46C369D7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 18:29:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14ADDC369C2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 18:51:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aPt0+71U6rwQA4GPXbatjo5+2REN7AF0Sr/iKYunRWg=; b=x3ObEqNv2cWwnC
-	YxsYEZsohV0UfiCgzfQnrt0Du3n102O5nc/pv/FQ7GlxlfLA0dbt0rW2HSwuHVKPunbC2HPaSYiQk
-	AosVFptGSr2iMg06w2uXRiMDrk+BlIluYzHSp2rLsCZLow/aPMh2mbPpSnr/D1aAdzeoTzFEwlOoV
-	Yyg8le+qGM+lKllEj/NDL6SM9HCW9FnwSRSu2K+zjAHl9GX2wvJ86HPwX1v8b14wtXaEuTRrqa69k
-	dCR/SZUCYeqdc5DmAGNk5HyDpsZowM0mbirY/7iq4sL+9fo8JiD2DhCZGrYcGiWOVaBOrLWcLwmsz
-	WFCinJUFfv5QErXckFoQ==;
+	List-Owner; bh=wr60oy18NyDg9hJc+5mYitEpQob0s1oEq1cuYcIpBbw=; b=hMnCWCcUWNBlFL
+	iF7dLETtGZrXninNXPforlZan0+fvuIIvkH6i3Sla1uLcrKh1iuhFSHXfMs8o72n+LFo07bHwibV+
+	vDTuRI0I3mDisb0Q0OaGjM5GKmFXIIbWzkwpYEX1TxDwK4V87TpRl9zJcIYr5G8dtI4A3YzZoVnSK
+	zwFREJvUvsAKPy1dsQeHY6QMS6rKdrWTCHSR19qGtMVe73luazCZj4vbhwyQo6LpXRo1qDR7fh87p
+	w/hDdScAcX2LY+X48VZRxB5+mvycEkm/sgODsVG+Ow0n6Cl5ngb6Sexl+gsGKBopL6qS7A12n10SX
+	GOgqkojgyvSTtCkYaczw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8Nn0-00000000XHm-2Efd;
-	Fri, 25 Apr 2025 18:28:42 +0000
-Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
+	id 1u8O8V-00000000Z3P-01Ms;
+	Fri, 25 Apr 2025 18:50:55 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8Ni1-00000000WdP-3nm0;
-	Fri, 25 Apr 2025 18:23:35 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1745605385; cv=none; 
+	id 1u8O8S-00000000Z2f-1v4Q;
+	Fri, 25 Apr 2025 18:50:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1745607031; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=XR4vgjGGKgdTAQTS2rACu8DaNC0+4UT/y6l9t417lb2cEStrUiXb49602fgwtccUsuX6Y7kHT14MvO7LiXz/8vP2d9vyBMllb1yfwmw+lyFAzcy6j11bYeX9roXbD72We6/FhhaGdz4R22SLlAc7fOCP1UFTbutm9Mb8ATzOW+w=
+	b=PZblNby2kNMGIbAGzDVzwLiumkkQhhxjcsBYLiOL8UD+2K2d0EtoWEFqnCouiiLqtOAvfl/Qhw+7qvmEi04zwvH3gzT7v2gRv8VmjCogvFNeLMBJA9qMiqWZ9iqG2AjXYrq96nDGb82ZUdbU5sz40HOAQBSt1rzPmRp5mVRpgZA=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1745605385; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=0RChf9eM3DaEmdKL7oMWpMmY3Kl6bXdjA82ZsWOcius=; 
-	b=HeWEfNg05JGno+gblt9+NGBaOAc8R0q0ykioi6LxZ/YCrqqzWMn92WJP7wUnuLEU13sUQx4iPR0F5Y8oudQIORyGqJl3AQ9iSL4f4awb9YYVdgX3oO0WCm07xBMCeaAvUIncNk9u6U6px46oXvLSeXZ9mNfpdGv7lcXldvx9ml4=
+	t=1745607031; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=87movGfsgkKvCCO2hsLlnVrga1A0glMJM4uj70IwRA4=; 
+	b=PuySUUok4jjuwpyxKWK3hE0vMWd5hkFuzO4+h/W2NcDzZDa06IfMxzwR2msIDlSuqn5ozjBaeib3XBCLDGrI3Q44MRamBuvWlDqojZmyhpCBsZ8eOgHSq7w8c0qi2wq25CojDG9oak+IcTNcav/f1CUFKHQ6lMLyuFdeFAIe7kI=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745605385;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745607031;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=0RChf9eM3DaEmdKL7oMWpMmY3Kl6bXdjA82ZsWOcius=;
-	b=FQXA+UJmtg+IY7UgzEQ+P9azZOu+hNcePPWPRlkIrfJ+s8uJDDZI/ISowa6uJow9
-	FRLma6kBaxPxT8zOpGE3SAbplMgma1cSyjpRidXiVhN8Llw9AXWiT7APRkqa5RxjwLk
-	uqkyIB9cMsYFPNm1mNRFQkNmUZ1p3tlYCA5RYoVA=
-Received: by mx.zohomail.com with SMTPS id 1745605383428608.9673402692126;
-	Fri, 25 Apr 2025 11:23:03 -0700 (PDT)
+	bh=87movGfsgkKvCCO2hsLlnVrga1A0glMJM4uj70IwRA4=;
+	b=al6VijCaLZB9Ojg/CKlBpPpTiL4L3l7bnLYNsd3XxABO+a0i9ArBlgH6/pNQgvmw
+	i2wxG3w96SF06YXzw9QwprVhD2lASN8UGy+OqLVEwhlQAKGpgTbA2Q31tFVZDA2UHlZ
+	53mE1YO5TJSM/79t3EN/Inuxk3Vm6KA0OhJHhhKQ=
+Received: by mx.zohomail.com with SMTPS id 1745607028843569.4630920933195;
+	Fri, 25 Apr 2025 11:50:28 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
@@ -59,19 +59,20 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Jeffrey Hugo <quic_jhugo@quicinc.com>, linux-rockchip@lists.infradead.org,
  Tomeu Vizoso <tomeu@tomeuvizoso.net>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-doc@vger.kernel.org, linux-media@vger.kernel.org,
- linaro-mm-sig@lists.linaro.org
-Subject: Re: [PATCH v2 4/7] accel/rocket: Add a new driver for Rockchip's NPU
-Date: Fri, 25 Apr 2025 20:22:55 +0200
-Message-ID: <2950819.ElGaqSPkdT@workhorse>
-In-Reply-To: <20250225-6-10-rocket-v2-4-d4dbcfafc141@tomeuvizoso.net>
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
+ Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: Re: [PATCH v2 1/7] dt-bindings: npu: rockchip,rknn: Add bindings
+Date: Fri, 25 Apr 2025 20:50:21 +0200
+Message-ID: <14333638.uLZWGnKmhe@workhorse>
+In-Reply-To: <20250225-6-10-rocket-v2-1-d4dbcfafc141@tomeuvizoso.net>
 References: <20250225-6-10-rocket-v2-0-d4dbcfafc141@tomeuvizoso.net>
- <20250225-6-10-rocket-v2-4-d4dbcfafc141@tomeuvizoso.net>
+ <20250225-6-10-rocket-v2-1-d4dbcfafc141@tomeuvizoso.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250425_112333_983148_4244C4F9 
-X-CRM114-Status: GOOD (  28.97  )
+X-CRM114-CacheID: sfid-20250425_115052_549423_0844C6A1 
+X-CRM114-Status: GOOD (  25.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,99 +89,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 25 February 2025 08:55:50 Central European Summer Time Tomeu Vizoso wrote:
-> This initial version supports the NPU as shipped in the RK3588 SoC and
-> described in the first part of its TRM, in Chapter 36.
-> 
-> This NPU contains 3 independent cores that the driver can submit jobs
-> to.
-> 
-> This commit adds just hardware initialization and power management.
+On Tuesday, 25 February 2025 08:55:47 Central European Summer Time Tomeu Vizoso wrote:
+> Add the bindings for the Neural Processing Unit IP from Rockchip.
 > 
 > v2:
-> - Split cores and IOMMUs as independent devices (Sebastian Reichel)
-> - Add some documentation (Jeffrey Hugo)
-> - Be more explicit in the Kconfig documentation (Jeffrey Hugo)
-> - Remove resets, as these haven't been found useful so far (Zenghui Yu)
-> - Repack structs (Jeffrey Hugo)
-> - Use DEFINE_DRM_ACCEL_FOPS (Jeffrey Hugo)
-> - Use devm_drm_dev_alloc (Jeffrey Hugo)
-> - Use probe log helper (Jeffrey Hugo)
-> - Introduce UABI header in a later patch (Jeffrey Hugo)
+> - Adapt to new node structure (one node per core, each with its own
+>   IOMMU)
+> - Several misc. fixes from Sebastian Reichel
 > 
 > Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
->  Documentation/accel/index.rst           |    1 +
->  Documentation/accel/rocket/index.rst    |   19 +
->  MAINTAINERS                             |    8 +
->  drivers/accel/Kconfig                   |    1 +
->  drivers/accel/Makefile                  |    1 +
->  drivers/accel/rocket/Kconfig            |   25 +
->  drivers/accel/rocket/Makefile           |    8 +
->  drivers/accel/rocket/rocket_core.c      |   71 +
->  drivers/accel/rocket/rocket_core.h      |   29 +
->  drivers/accel/rocket/rocket_device.c    |   29 +
->  drivers/accel/rocket/rocket_device.h    |   29 +
->  drivers/accel/rocket/rocket_drv.c       |  273 ++
->  drivers/accel/rocket/rocket_drv.h       |   13 +
->  drivers/accel/rocket/rocket_registers.h | 4425 +++++++++++++++++++++++++++++++
->  14 files changed, 4932 insertions(+)
+>  .../bindings/npu/rockchip,rknn-core.yaml           | 152 +++++++++++++++++++++
+>  1 file changed, 152 insertions(+)
 > 
-> [...]
-> diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+> diff --git a/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml b/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml
 > new file mode 100644
-> index 0000000000000000000000000000000000000000..c22d965f20f1239a36b1d823d5fe5f372713555d
+> index 0000000000000000000000000000000000000000..e8d0afe4a7d1c4f166cf13a9f4aa7c1901362a3f
 > --- /dev/null
-> +++ b/drivers/accel/rocket/rocket_drv.c
-> @@ -0,0 +1,273 @@
-> [...]
-> +static int rocket_probe(struct platform_device *pdev)
-> +{
-> +	struct component_match *match = NULL;
-> +	struct device_node *core_node;
+> +++ b/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml
+> @@ -0,0 +1,152 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +	if (fwnode_device_is_compatible(pdev->dev.fwnode, "rockchip,rk3588-rknn-core"))
-> +		return component_add(&pdev->dev, &rocket_core_ops);
+> +title: Neural Processing Unit IP from Rockchip
 > +
-> +	for_each_compatible_node(core_node, NULL, "rockchip,rk3588-rknn-core") {
-> +		if (!of_device_is_available(core_node))
-> +			continue;
+> +maintainers:
+> +  - Tomeu Vizoso <tomeu@tomeuvizoso.net>
 > +
-> +		drm_of_component_match_add(&pdev->dev, &match,
-> +					   component_compare_of, core_node);
-> +	}
+> +description:
+> +  Rockchip IP for accelerating inference of neural networks, based on NVIDIA's
+> +  open source NVDLA IP.
 > +
-> +	return component_master_add_with_match(&pdev->dev, &rocket_drm_ops, match);
-> +}
+> +properties:
+> +  $nodename:
+> +    pattern: '^npu-core@[a-f0-9]+$'
+> +
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - enum:
+> +              - rockchip,rk3588-rknn-core-top
+> +          - const: rockchip,rknn-core-top
+> +      - items:
+> +          - enum:
+> +              - rockchip,rk3588-rknn-core
+> +          - const: rockchip,rknn-core
+> +
+> +  reg:
+> +    maxItems: 1
 
 Hi Tomeu,
 
-something I've noticed while playing with this: currently, it doesn't seem like
-it's possible to support 1-core NPUs. rknn-core-top is a real core, but if no
-rknn-core is enabled beside it, it'll call component_master_add_with_match with
-match being NULL. This causes a kernel Oops.
+as you probably know, RK3576 has quite a similar NPU. This is why I'm currently
+poking at this patch series. One of the differences I ran into was that the
+IOMMU of each NPU core now sits within the reg address space range of the core
+as described by the single reg item binding and assumed by the driver.
 
-I'm not sure what the proper fix is, since the component API doesn't seem to
-really have a consideration for a master with no other components.
+This seemed weird to me at first, since I would've guessed the cores would be
+exactly the same, but I noticed that they kind of still are; the RK3588's NPU
+also has a "hole" between 0x2000 and 0x2fff on each core, which is where RK3576
+put its IOMMU.
 
-I ran into this when I was trying to debug why I get job timeouts followed by
-a full SoC lock-up on RK3576 by running with only one of the two cores enabled.
+This is some information I gleaned from the RK3588 TRM, specifically section
+36.4.1 "Internal Address Mapping", which shows where each "part" of the NPU core
+has its address space.
 
-As an aside note, my throwaway rocket-on-RK3576-hacking-branch is at [1] and
-contains some changes you may want to consider for v3, e.g. [2] and [3]+[4]. In
-[4], specifically the `domain-supply` part which means the NPU regulators don't
-have to be always-on. Though feel free to pull in my entire ROCK 5B enablement
-patch.
+Right now we just represent this as a single reg item per core. I've played
+with the idea of splitting this up into the distinct ranges the TRM lists and
+giving each a reg-names entry, but this would require a major rework of the
+driver from what I can tell, including to the auto-generated register header.
+
+For now, my hack on RK3576 is to just ioremap the range defined by resource 
+start to resource end inside rocket manually if I get -EBUSY trying to ioremap 
+the resource proper. This is quite an ugly hack though, it means the IOMMU node 
+still has its address overlapping with another node in the DT, and it also means 
+we have an unavoidable error message printed into the kernel log. This is also
+what the vendor driver seems to do.
+
+What do you reckon is a reg setup in the binding that is both reasonable to
+implement in the driver while accurately describing the hardware?
+
+The RK3568, which uses a similar NPU design has the IOMMU at an offset of 0xb000 
+from the core's start of PC, so probably after any core specifics but before the 
+global registers if I hazard a guess.
+
+For those without access to the TRM: splitting this up into multiple reg items
+per core precisely the way the TRM does it would result in no less than 10 reg
+items on RK3588, if I count correctly.
 
 Kind regards,
-Nicolas Frattaroli, who discovered that his cat is apparently 5% space heater
-according to mobilenet while playing with this patch series.
-
-[1]: https://gitlab.collabora.com/fratti/linux/-/commits/tomeu-npu?ref_type=heads
-[2]: https://gitlab.collabora.com/fratti/linux/-/commit/73aba31a00b34c254be575b524da568e115d985d
-[3]: https://gitlab.collabora.com/fratti/linux/-/commit/bd3a7bf5054c54c2915a9dc0396730d0f24b3b7c
-[4]: https://gitlab.collabora.com/fratti/linux/-/commit/5da44d61b09c345309f76159574d447d071c295d
-
+Nicolas Frattaroli
 
 
 
