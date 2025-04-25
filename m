@@ -4,75 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14ADDC369C2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 18:51:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4805AC369C2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 19:26:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wr60oy18NyDg9hJc+5mYitEpQob0s1oEq1cuYcIpBbw=; b=hMnCWCcUWNBlFL
-	iF7dLETtGZrXninNXPforlZan0+fvuIIvkH6i3Sla1uLcrKh1iuhFSHXfMs8o72n+LFo07bHwibV+
-	vDTuRI0I3mDisb0Q0OaGjM5GKmFXIIbWzkwpYEX1TxDwK4V87TpRl9zJcIYr5G8dtI4A3YzZoVnSK
-	zwFREJvUvsAKPy1dsQeHY6QMS6rKdrWTCHSR19qGtMVe73luazCZj4vbhwyQo6LpXRo1qDR7fh87p
-	w/hDdScAcX2LY+X48VZRxB5+mvycEkm/sgODsVG+Ow0n6Cl5ngb6Sexl+gsGKBopL6qS7A12n10SX
-	GOgqkojgyvSTtCkYaczw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jV588AMRIZVxPstfsf+Z7MI74B0ngNCpSlc+XIhG+J0=; b=Cc4iOyfkeYww3n
+	s61iclQDMMof4JgkJ/zDNkRyNbXSONqy/Hq0zd5wTJ7dmRp/7Ye/uGg0+2KIuRypZVPPdllzTe5Jp
+	YT+hDEAyxBqWSUISn1650XaBxKNpbdD74kf4UYy01Ls4r03mYTCRsE7Ajgau2Accok1lT5vStcqtg
+	sJBssKDdliG2bminunyP4xZ3VHP8CGY4porO15a1zbkXlqTeA/SJ5cM6IVa4jZBTC9Gp2L/bsUyHx
+	pavViYyjk/BumKYRkR60/2YeDkfMN6KW6bxE+kv3C/8NB7ApjkuC99y/BMEwBWq6QvM5faP3YN7jC
+	6YTPQfcT+XhNCJIclSMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8O8V-00000000Z3P-01Ms;
-	Fri, 25 Apr 2025 18:50:55 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1u8OgT-00000000eAn-1A2E;
+	Fri, 25 Apr 2025 19:26:01 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8O8S-00000000Z2f-1v4Q;
-	Fri, 25 Apr 2025 18:50:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1745607031; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=PZblNby2kNMGIbAGzDVzwLiumkkQhhxjcsBYLiOL8UD+2K2d0EtoWEFqnCouiiLqtOAvfl/Qhw+7qvmEi04zwvH3gzT7v2gRv8VmjCogvFNeLMBJA9qMiqWZ9iqG2AjXYrq96nDGb82ZUdbU5sz40HOAQBSt1rzPmRp5mVRpgZA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1745607031; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=87movGfsgkKvCCO2hsLlnVrga1A0glMJM4uj70IwRA4=; 
-	b=PuySUUok4jjuwpyxKWK3hE0vMWd5hkFuzO4+h/W2NcDzZDa06IfMxzwR2msIDlSuqn5ozjBaeib3XBCLDGrI3Q44MRamBuvWlDqojZmyhpCBsZ8eOgHSq7w8c0qi2wq25CojDG9oak+IcTNcav/f1CUFKHQ6lMLyuFdeFAIe7kI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745607031;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=87movGfsgkKvCCO2hsLlnVrga1A0glMJM4uj70IwRA4=;
-	b=al6VijCaLZB9Ojg/CKlBpPpTiL4L3l7bnLYNsd3XxABO+a0i9ArBlgH6/pNQgvmw
-	i2wxG3w96SF06YXzw9QwprVhD2lASN8UGy+OqLVEwhlQAKGpgTbA2Q31tFVZDA2UHlZ
-	53mE1YO5TJSM/79t3EN/Inuxk3Vm6KA0OhJHhhKQ=
-Received: by mx.zohomail.com with SMTPS id 1745607028843569.4630920933195;
-	Fri, 25 Apr 2025 11:50:28 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Oded Gabbay <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Jeffrey Hugo <quic_jhugo@quicinc.com>, linux-rockchip@lists.infradead.org,
- Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Subject: Re: [PATCH v2 1/7] dt-bindings: npu: rockchip,rknn: Add bindings
-Date: Fri, 25 Apr 2025 20:50:21 +0200
-Message-ID: <14333638.uLZWGnKmhe@workhorse>
-In-Reply-To: <20250225-6-10-rocket-v2-1-d4dbcfafc141@tomeuvizoso.net>
-References: <20250225-6-10-rocket-v2-0-d4dbcfafc141@tomeuvizoso.net>
- <20250225-6-10-rocket-v2-1-d4dbcfafc141@tomeuvizoso.net>
+	id 1u8OgB-00000000e7c-2NA0
+	for linux-rockchip@lists.infradead.org;
+	Fri, 25 Apr 2025 19:25:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1745609141;
+	bh=neGbJ6Lymfsq8nEeLfmyJwBxDlpuW4G5Q1AEGS8l+uw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=nvTKPqNdOBzSU+7+8MLXFwCszgzruXwUSY1c3l4gHmVVNDGWQmfvse4+ekF5hnyJe
+	 a+S1r65YH1bt6wnHHTnPcV9gqm3QJcijRuyEOFVZCgKE3STFQDxxgVioqWF36HUIyx
+	 grzXMhPOkih3z5tEvbBJkQDrm+ShsjNHYIQlELB3gNNLBGBaF0jX2G2OOlyvtoGwkg
+	 p9T/VT72boveO3A2dStmpUqPQpxvYyuzjovouDtf5EeoUtVlTWyYbbomKBjGYNF5xP
+	 ijJ03P/wQMfx0q/GnLkbLWCF4lp0P1ye+too+xfQLh1WT1SzML4lnXi148oFb48ThO
+	 TEsWLvjevCmIw==
+Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DCFA417E0987;
+	Fri, 25 Apr 2025 21:25:39 +0200 (CEST)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com,
+	Detlev Casanova <detlev.casanova@collabora.com>
+Subject: [PATCH] media: verisilicon: Free post processor buffers on error
+Date: Fri, 25 Apr 2025 15:24:47 -0400
+Message-ID: <20250425192447.227063-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250425_115052_549423_0844C6A1 
-X-CRM114-Status: GOOD (  25.02  )
+X-CRM114-CacheID: sfid-20250425_122543_776902_799C0DE0 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,101 +78,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 25 February 2025 08:55:47 Central European Summer Time Tomeu Vizoso wrote:
-> Add the bindings for the Neural Processing Unit IP from Rockchip.
-> 
-> v2:
-> - Adapt to new node structure (one node per core, each with its own
->   IOMMU)
-> - Several misc. fixes from Sebastian Reichel
-> 
-> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  .../bindings/npu/rockchip,rknn-core.yaml           | 152 +++++++++++++++++++++
->  1 file changed, 152 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml b/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..e8d0afe4a7d1c4f166cf13a9f4aa7c1901362a3f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml
-> @@ -0,0 +1,152 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Neural Processing Unit IP from Rockchip
-> +
-> +maintainers:
-> +  - Tomeu Vizoso <tomeu@tomeuvizoso.net>
-> +
-> +description:
-> +  Rockchip IP for accelerating inference of neural networks, based on NVIDIA's
-> +  open source NVDLA IP.
-> +
-> +properties:
-> +  $nodename:
-> +    pattern: '^npu-core@[a-f0-9]+$'
-> +
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          - enum:
-> +              - rockchip,rk3588-rknn-core-top
-> +          - const: rockchip,rknn-core-top
-> +      - items:
-> +          - enum:
-> +              - rockchip,rk3588-rknn-core
-> +          - const: rockchip,rknn-core
-> +
-> +  reg:
-> +    maxItems: 1
+When initializing the post processor, it allocates the same number of
+buffers as the buf queue.
+As the init function is called in streamon(), if an allocation fails,
+streamon will return an error and streamoff() will not be called, keeping
+all post processor buffers allocated.
 
-Hi Tomeu,
+To avoid that, all post proc buffers are freed in case of an allocation
+error.
 
-as you probably know, RK3576 has quite a similar NPU. This is why I'm currently
-poking at this patch series. One of the differences I ran into was that the
-IOMMU of each NPU core now sits within the reg address space range of the core
-as described by the single reg item binding and assumed by the driver.
+Fixes: 26711491a807 ("media: verisilicon: Refactor postprocessor to store more buffers")
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+ drivers/media/platform/verisilicon/hantro_postproc.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-This seemed weird to me at first, since I would've guessed the cores would be
-exactly the same, but I noticed that they kind of still are; the RK3588's NPU
-also has a "hole" between 0x2000 and 0x2fff on each core, which is where RK3576
-put its IOMMU.
-
-This is some information I gleaned from the RK3588 TRM, specifically section
-36.4.1 "Internal Address Mapping", which shows where each "part" of the NPU core
-has its address space.
-
-Right now we just represent this as a single reg item per core. I've played
-with the idea of splitting this up into the distinct ranges the TRM lists and
-giving each a reg-names entry, but this would require a major rework of the
-driver from what I can tell, including to the auto-generated register header.
-
-For now, my hack on RK3576 is to just ioremap the range defined by resource 
-start to resource end inside rocket manually if I get -EBUSY trying to ioremap 
-the resource proper. This is quite an ugly hack though, it means the IOMMU node 
-still has its address overlapping with another node in the DT, and it also means 
-we have an unavoidable error message printed into the kernel log. This is also
-what the vendor driver seems to do.
-
-What do you reckon is a reg setup in the binding that is both reasonable to
-implement in the driver while accurately describing the hardware?
-
-The RK3568, which uses a similar NPU design has the IOMMU at an offset of 0xb000 
-from the core's start of PC, so probably after any core specifics but before the 
-global registers if I hazard a guess.
-
-For those without access to the TRM: splitting this up into multiple reg items
-per core precisely the way the TRM does it would result in no less than 10 reg
-items on RK3588, if I count correctly.
-
-Kind regards,
-Nicolas Frattaroli
-
+diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
+index c435a393e0cb7..9f559a13d409b 100644
+--- a/drivers/media/platform/verisilicon/hantro_postproc.c
++++ b/drivers/media/platform/verisilicon/hantro_postproc.c
+@@ -250,8 +250,10 @@ int hantro_postproc_init(struct hantro_ctx *ctx)
+ 
+ 	for (i = 0; i < num_buffers; i++) {
+ 		ret = hantro_postproc_alloc(ctx, i);
+-		if (ret)
++		if (ret) {
++			hantro_postproc_free(ctx);
+ 			return ret;
++		}
+ 	}
+ 
+ 	return 0;
+-- 
+2.49.0
 
 
 _______________________________________________
