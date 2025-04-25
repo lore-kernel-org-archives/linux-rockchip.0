@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF98BC369C2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 19:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 882C8C369C2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 22:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ulC2bfgLAIuF+8sHnZRtSxe7LsXnH1LYdMJIzz3v0a0=; b=W6KapxDiU+EeSD
-	QgF91zZWr174hl/1121mIzu2bPmRYoV5wmV8DuvEZjWeg5y+aPgNgRdMznh7JmVPRi/lHDA1byHo2
-	9iGflXAn00M5cugiNX7B8LY25g4VoMCOnlVdi99lMB2iy38sJWL14nkmHhSGaK4pcRZm4Tk6wLAhO
-	+0d9mdbSvBfDMPuYzAvKgxGee6+tA55Icjs5QRCWj5K48aNqZ3VUUWkpRBGP7mzaDNE9yviB7ACWv
-	FriEj9vDiEBWEwFaJWnPbeahE3j2/9eod+28YINt31V3ms+IVlVBFor3tWOTX8gJQ7O8EBJU0EHo6
-	yKH60hYWzsLdCmGtO4xg==;
+	List-Owner; bh=mN3bRhf2XaFe54VU0vdVKSlGq9H8YuIti1eZNZGnWls=; b=fGAcZhE1cBsE54
+	0nIAYopE/pbXjpnOgPordyr9qic2FpTWtWcLpfNwjU5Qr2TTWuYQeIFQQpIkaH6ND7yQvp+DsoVG7
+	RAaQAOOOL72vO7tI6YDrCdvC4NkfFT9HBUZ6RdFbzqjZGt7/WYMEHgGPLhNCDAURNzzg5j6z9qZrx
+	UDqHx24NZUcSQCOHPveGEk06I9kYIBT8NX8cv/sQ6Xga3qYOyuqX17wNQFNmIFMOvBG5ZA6RycHgo
+	dnIPfO0CGblW11IZmeiGfFEmk25EWb05HSNt04I8IBRF7EUnklA9Kw4toCH4uBcGjOCG8P4UPFELk
+	095iH2IsMBKmTsTgrUQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8P4J-00000000igT-2D5H;
-	Fri, 25 Apr 2025 19:50:39 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1u8RGR-000000011bu-2VYM;
+	Fri, 25 Apr 2025 22:11:19 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8Ops-00000000fYl-2rHl;
-	Fri, 25 Apr 2025 19:35:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1745609732; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=McvM/5S/gudmAvogvJYT0yoqtZLnRN40s9bXXHlvL67PHEcnw7xpKBAPDCcRJlAUNWhiV5AILJ9nD4IRaTJzcvG4BJjbQjdzmyuLTDMFsomkjUZE81TF7KpdVVNnXisI5PngPQmGgf0FXE/w+ra2zt0rYyNHZSH1yt6CjDVGX6w=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1745609732; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=G6WkyjIM6JJr1zT7YnCAra6NvTRkyDobXnkB7/hgoLI=; 
-	b=fz9a52cGJvDD35pNj1DEF6CoWdZyZ0UxT67U/klgz6oyV9cw2BSKZyVjJ1HbXboKyDuVFSfSDSCwls29ULeecb23gtfP8Fhc72L3MmlKbSZF3MSs9YAObQHLgl4QToCzcZgm9uhW+88RDNqNxozq6BHodRftEVLVwxyDpqNZ1jU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745609732;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=G6WkyjIM6JJr1zT7YnCAra6NvTRkyDobXnkB7/hgoLI=;
-	b=GNIWyK0pHy0ghHmQQrpGnPIUBz6duDhzalEWJ75VwQFzs/zd7K5/5e0wJjPYd+in
-	Gs8el+NHGVSKNnIwv4g96BT1HHE8TKp1RWVlysIhEUckcLV/RA3Lh/mTJGBapQZNhiW
-	T+G3pt9ir6TumFuvTiXscaVRSkl/FWed1P/vcGn0=
-Received: by mx.zohomail.com with SMTPS id 1745609730234755.6078636363667;
-	Fri, 25 Apr 2025 12:35:30 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Fri, 25 Apr 2025 21:34:41 +0200
-Subject: [PATCH v5 7/7] arm64: dts: rockchip: Add thermal trim OTP and
- tsadc nodes
+	id 1u8REX-000000011A1-3YhZ;
+	Fri, 25 Apr 2025 22:09:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=U33urWJ0nbHUSj4/Ei55DnraHJ93Xd3t00xN2jKFwUw=; b=R2A0oH31L8HOyJJ3pZ3Q+UUzRc
+	o8mEE4btAzk82MmSOlVcj24R+jgnLh+OsOAczxgLLgS7G3hElozLwNVypRWDYOepIbpoVJYYpl+LF
+	afGJodDUn06LsKLeAysAE0DoQVb269hnPe18BDB6CbXe1pT0+m5eOJ81KEBdzwIb6gFoOffAhiPeu
+	KUnwTRFJuKDYHk42LkkmxZsEWzULaSispPBUoLgj9Szq1ggFQvwQamvith2pRqh8E0cfSxpxyfVmu
+	evz/qWNUPvxPBnP/IKu7+r7HYvCLQ7LVaFIi7Nz0dAkZj5B97TD25ozt98qv8jDXvXg0BjQ/+Pu2p
+	xi4wANtQ==;
+Received: from i53875aba.versanet.de ([83.135.90.186] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1u8REO-0008Uk-72; Sat, 26 Apr 2025 00:09:12 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: srinivas.kandagatla@linaro.org,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	detlev.casanova@collabora.com,
+	sebastian.reichel@collabora.com
+Subject: Re: (subset) [PATCH RESEND v2 0/6] RK3576 OTP support
+Date: Sat, 26 Apr 2025 00:09:02 +0200
+Message-ID: <174561877790.431677.17884049982561107688.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250210224510.1194963-1-heiko@sntech.de>
+References: <20250210224510.1194963-1-heiko@sntech.de>
 MIME-Version: 1.0
-Message-Id: <20250425-rk3576-tsadc-upstream-v5-7-0c840b99c30e@collabora.com>
-References: <20250425-rk3576-tsadc-upstream-v5-0-0c840b99c30e@collabora.com>
-In-Reply-To: <20250425-rk3576-tsadc-upstream-v5-0-0c840b99c30e@collabora.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
- Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Jonas Karlman <jonas@kwiboo.se>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250425_123544_782745_9F16BA2D 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20250425_150921_908946_8A20C99E 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,102 +76,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Thanks to Heiko's work getting OTP working on the RK3576, we can specify
-the thermal sensor trim values which are stored there now, and with my
-driver addition to rockchip_thermal, we can make use of these.
 
-Add them to the devicetree for the SoC.
+On Mon, 10 Feb 2025 23:45:04 +0100, Heiko Stuebner wrote:
+> This enables OTP support in the nvmem driver for rk3576.
+> 
+> I expect to pick the clock patch (patch1) and the arm64-dts patch (patch6)
+> myself, after the nvmem-driver and -binding patches have been applied
+> (patches 2-5).
+> 
+> But kept them together for people wanting to try this series.
+> 
+> [...]
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 57 ++++++++++++++++++++++++++++++++
- 1 file changed, 57 insertions(+)
+Applied, thanks!
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 1c07ad78c9230f1e46b0ef8817834f58b19eb86b..b95546163e1c54296edd3346469eed733b1670da 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1708,6 +1708,30 @@ gpu_leakage: gpu-leakage@21 {
- 			log_leakage: log-leakage@22 {
- 				reg = <0x22 0x1>;
- 			};
-+			bigcore_tsadc_trim: bigcore-tsadc-trim@24 {
-+				reg = <0x24 0x2>;
-+				bits = <0 10>;
-+			};
-+			litcore_tsadc_trim: litcore-tsadc-trim@26 {
-+				reg = <0x26 0x2>;
-+				bits = <0 10>;
-+			};
-+			ddr_tsadc_trim: ddr-tsadc-trim@28 {
-+				reg = <0x28 0x2>;
-+				bits = <0 10>;
-+			};
-+			npu_tsadc_trim: npu-tsadc-trim@2a {
-+				reg = <0x2a 0x2>;
-+				bits = <0 10>;
-+			};
-+			gpu_tsadc_trim: gpu-tsadc-trim@2c {
-+				reg = <0x2c 0x2>;
-+				bits = <0 10>;
-+			};
-+			soc_tsadc_trim: soc-tsadc-trim@64 {
-+				reg = <0x64 0x2>;
-+				bits = <0 10>;
-+			};
- 		};
- 
- 		gic: interrupt-controller@2a701000 {
-@@ -2119,6 +2143,39 @@ tsadc: tsadc@2ae70000 {
- 			rockchip,hw-tshut-temp = <120000>;
- 			rockchip,hw-tshut-mode = <0>; /* tshut mode 0:CRU 1:GPIO */
- 			rockchip,hw-tshut-polarity = <0>; /* tshut polarity 0:LOW 1:HIGH */
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			sensor@0 {
-+				reg = <0>;
-+				nvmem-cells = <&soc_tsadc_trim>;
-+				nvmem-cell-names = "trim";
-+			};
-+			sensor@1 {
-+				reg = <1>;
-+				nvmem-cells = <&bigcore_tsadc_trim>;
-+				nvmem-cell-names = "trim";
-+			};
-+			sensor@2 {
-+				reg = <2>;
-+				nvmem-cells = <&litcore_tsadc_trim>;
-+				nvmem-cell-names = "trim";
-+			};
-+			sensor@3 {
-+				reg = <3>;
-+				nvmem-cells = <&ddr_tsadc_trim>;
-+				nvmem-cell-names = "trim";
-+			};
-+			sensor@4 {
-+				reg = <4>;
-+				nvmem-cells = <&npu_tsadc_trim>;
-+				nvmem-cell-names = "trim";
-+			};
-+			sensor@5 {
-+				reg = <5>;
-+				nvmem-cells = <&gpu_tsadc_trim>;
-+				nvmem-cell-names = "trim";
-+			};
- 		};
- 
- 		i2c9: i2c@2ae80000 {
+[1/6] clk: rockchip: rk3576: define clk_otp_phy_g
+      commit: d934a93bbcccd551c142206b8129903d18126261
 
+While the original nvmem applied message [0] listed the clock patch,
+it was in fact not applied there - probable for being a clock patch.
+
+So I've done that now, hopefully as fix for 6.15 to make the
+nvmem work in this timeframe.
+
+
+[0] https://lore.kernel.org/linux-arm-kernel/173978599692.25901.15315285566342669137.b4-ty@linaro.org/
+
+Best regards,
 -- 
-2.49.0
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
