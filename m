@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6444AC369D5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Apr 2025 21:37:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A065C369AB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 02:37:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/94k+IqgxOWjGV+g0DoI21k3BJbq4aoYZY7m2Fb5rx8=; b=uC0wX+7BSVnrtx
-	RxKsg6mms3CVHQ4zXO9hyED5hXhwQMBqLLj/v4X/Yc9GUadDRFvYFSYxaFmgol7xz98Lm6tCYHwMH
-	t4IB2b3cv815mKNxZCmpl4jNxFZ8bXNkihwAMv96ICITTZX+DKVTJjlC8VHyeIUkfDTt1lwfSrlwK
-	p9S27UZWgGfYo6TD32Nk/SmsP5EUEdSjSh30ivhj92SW+Awo8Kq9iEBmARpXlovSuGM5Z7W7TBK+T
-	/nVpaTSqQyCRUytbcOSZyLsw/u0wAEUcJhjVPYoM5OTm9pex+PIkaoDSsssobMgGy7XqhqZd7OGAc
-	P64LyKttxOQwr7Yq/uaw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+L2i3dIjIbjoxNaHf2pGC1bfg2aynqxbvMR+2jvxJLw=; b=eJpnazeDrOTDAz
+	Vp2VZIvUFwL6hKFDnyE6+667i7d6oS7A9osHtuj4P71pTkr7TkkUo5Tv25mijJ90FFqVEb3DPpaN7
+	RY7ApjrehfdCtqXBsrRKkvfwfFTaOubHF8fJXr8opy/N3JHUflEFZ/scwIrlLAahopu7ruNtoEBag
+	c3XsezrFxtExw/+JVLRTunygy6pdErH1culVHKVy8CJYPkYffMNu3yYZpzNoGZJWN98Q+JjsWwXHw
+	AQba96+yEVfqQs3KSANIvq0GGKytsDyyVXaccBJQl5TGK4z/BlxCib4l/APi2PNNVUTJF1sHkZghF
+	0AE0xj2AV9rVGvfRi8lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u84G5-0000000FQO6-3E5i;
-	Thu, 24 Apr 2025 21:37:25 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1u88wg-0000000Fnc7-2vNI;
+	Fri, 25 Apr 2025 02:37:42 +0000
+Received: from mail-m15588.qiye.163.com ([101.71.155.88])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u81go-0000000F5Gm-49EG;
-	Thu, 24 Apr 2025 18:52:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1745520759; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=f67g/KglThRw5wVky3xH3nsJxM3eoPm5hIn3wIWY4iOPe5HwXKP1RHzKfGVh0C3M/XQkben49bhPSSOTFNw/G8IzA55lJXiyiVE7iZXchD9/+vuFo/GP2HRzN4I0H0pSS3SF5IaOaVB6E4PD5mQ3ILEs+5AxTQX9yIKYnNVxQ2k=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1745520759; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=/9frCnYTMVTpm5V5w18G/k5cDEAONcnNNbo6wTNm04s=; 
-	b=hP8WLG6fOselEXBQxz0BWOU/y2Ut31m2VmH5SkMA6r6STNkJ1qDrpwOYruqna2dFLvluRyG4zGJ1yFMhKzZRJnkEda0uptTmrnV7ltB2okFT0wbY8JVOXxMRBVQMWMWGhwWWw65LGEZeJABa/7SteN5WwN4lZC0TQPv/v1G5ims=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745520759;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=/9frCnYTMVTpm5V5w18G/k5cDEAONcnNNbo6wTNm04s=;
-	b=GLoPQ0qk1WjR+1lIkWWUByBXveFgWAkJUxbLRBc+5cA6tt8Jf6BHMFNWLzrpuvd4
-	dPTcaH2V+S5yJUjlogYeDPuiATLZJKZK292R9CZtoN4Vrvkk8jRRANml9FBBmXbiqwP
-	yqU4qcC/IMeL4aOoQNteksUTtZT0ugMpYZjCMUMA=
-Received: by mx.zohomail.com with SMTPS id 1745520756849524.09816512909;
-	Thu, 24 Apr 2025 11:52:36 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 24 Apr 2025 20:52:23 +0200
-Subject: [PATCH 2/2] arm64: dts: rockchip: add SATA nodes to RK3576
+	id 1u88wd-0000000FnYD-38jL;
+	Fri, 25 Apr 2025 02:37:41 +0000
+Received: from crj-HP.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 13112a5bc;
+	Fri, 25 Apr 2025 10:37:23 +0800 (GMT+08:00)
+From: Algea Cao <algea.cao@rock-chips.com>
+To: vkoul@kernel.org,
+	kishon@kernel.org,
+	heiko@sntech.de,
+	cristian.ciocaltea@collabora.com,
+	andy.yan@rock-chips.com
+Cc: linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Algea Cao <algea.cao@rock-chips.com>
+Subject: [PATCH] phy: phy-rockchip-samsung-hdptx: Fix PHY PLL output 50.25MHz error
+Date: Fri, 25 Apr 2025 10:37:20 +0800
+Message-ID: <20250425023720.3296069-1-algea.cao@rock-chips.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Message-Id: <20250424-rk3576-sata-v1-2-23ee89c939fe@collabora.com>
-References: <20250424-rk3576-sata-v1-0-23ee89c939fe@collabora.com>
-In-Reply-To: <20250424-rk3576-sata-v1-0-23ee89c939fe@collabora.com>
-To: Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Serge Semin <fancer.lancer@gmail.com>
-X-Mailer: b4 0.14.2
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhhCHlYaSR4ZSU9CTRkeS0JWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUJMTU
+	xVSktLVUtZBg++
+X-HM-Tid: 0a966ace8e4b09dakunm13112a5bc
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pz46Ogw5GDJPNzg6DQIOIU8O
+	Hg4wCUJVSlVKTE9OTk9DTU9OS0pLVTMWGhIXVRoXHB4aVRgaFDsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUlLQ0w3Bg++
+DKIM-Signature: a=rsa-sha256;
+	b=ZxTdw2oQjErLaB1LCUnnvx8Jv0MePVT41slrasjLOGTRSxGTerajB/sjbSw4aSAVC7zICXzLYwfwAubMuGKcQymGqBh0XQj1hszkBbLK+snKHsV3VoDWF5eBfYK2cBHhnmgZOd748GaKMTzGMOFdi3rt1MEsbGO9/PTxl6Upt3c=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=wzcaSWol41pI08NDxtqKY2YqU38iBEqEtGi1EuR4uKI=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_115251_087620_DF3138CB 
-X-CRM114-Status: UNSURE (   9.39  )
+X-CRM114-CacheID: sfid-20250424_193740_246214_BFEE2A66 
+X-CRM114-Status: UNSURE (   7.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,70 +73,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip RK3576 features two SATA nodes. The first, sata0, is behind
-combphy0, which muxes between pcie0 and sata0.
+When using HDMI PLL frequency division coefficient at 50.25MHz
+that calculated by rk_hdptx_phy_clk_pll_calc(), it is failed to
+get PHY LANE lock. Although the calculated values are within the
+allowable range of PHY PLL configuration.
 
-The second, sata1, is behind combphy1, which muxes between pcie1, sata1
-and usb_drd1_dwc3.
+So we manually calculated PHY PLL frequency division coefficient
+at 50.25Mhz and added it to ropll_tmds_cfg. Manually calculated
+value  can make PHY LANE lock normally and output 50.25MHz normally.
 
-I've only been able to test sata0 on my board, but it appears to work
-just fine.
-
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index ebb5fc8bb8b1363127b9d3782801c4a79b678a92..6e27d744acad2111616eaf4807aea1eac4f00c7f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1334,6 +1334,36 @@ gmac1_mtl_tx_setup: tx-queues-config {
- 			};
- 		};
- 
-+		sata0: sata@2a240000 {
-+			compatible = "rockchip,rk3576-dwc-ahci", "snps,dwc-ahci";
-+			reg = <0x0 0x2a240000 0x0 0x1000>;
-+			clocks = <&cru ACLK_SATA0>, <&cru CLK_PMALIVE0>,
-+				 <&cru CLK_RXOOB0>;
-+			clock-names = "sata", "pmalive", "rxoob";
-+			interrupts = <GIC_SPI 262 IRQ_TYPE_LEVEL_HIGH>;
-+			power-domains = <&power RK3576_PD_SUBPHP>;
-+			phys = <&combphy0_ps PHY_TYPE_SATA>;
-+			phy-names = "sata-phy";
-+			ports-implemented = <0x1>;
-+			dma-coherent;
-+			status = "disabled";
-+		};
-+
-+		sata1: sata@2a250000 {
-+			compatible = "rockchip,rk3576-dwc-ahci", "snps,dwc-ahci";
-+			reg = <0x0 0x2a250000 0x0 0x1000>;
-+			clocks = <&cru ACLK_SATA1>, <&cru CLK_PMALIVE1>,
-+				 <&cru CLK_RXOOB1>;
-+			clock-names = "sata", "pmalive", "rxoob";
-+			interrupts = <GIC_SPI 263 IRQ_TYPE_LEVEL_HIGH>;
-+			power-domains = <&power RK3576_PD_SUBPHP>;
-+			phys = <&combphy1_psu PHY_TYPE_SATA>;
-+			phy-names = "sata-phy";
-+			ports-implemented = <0x1>;
-+			dma-coherent;
-+			status = "disabled";
-+		};
-+
- 		ufshc: ufshc@2a2d0000 {
- 			compatible = "rockchip,rk3576-ufshc";
- 			reg = <0x0 0x2a2d0000 0x0 0x10000>,
-
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index fe7c05748356..77236f012a1f 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -476,6 +476,8 @@ static const struct ropll_config ropll_tmds_cfg[] = {
+ 	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
+ 	{ 650000, 162, 162, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 54, 0, 16, 4, 1,
+ 	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
++	{ 502500, 84, 84, 1, 1, 7, 1, 1, 1, 1, 1, 1, 1, 11, 1, 4, 5,
++	  4, 11, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
+ 	{ 337500, 0x70, 0x70, 1, 1, 0xf, 1, 1, 1, 1, 1, 1, 1, 0x2, 0, 0x01, 5,
+ 	  1, 1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
+ 	{ 400000, 100, 100, 1, 1, 11, 1, 1, 0, 1, 0, 1, 1, 0x9, 0, 0x05, 0,
 -- 
-2.49.0
+2.43.0
 
 
 _______________________________________________
