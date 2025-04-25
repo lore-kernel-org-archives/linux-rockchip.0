@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F395DC369C2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 15:33:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19AF0C369C2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 16:07:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YM0JjnY7BCtlhcLuvNz2jDIoE4XaF5kJs46znzkV81o=; b=cpP+uQvWpNLBZp
-	8cAvwTiUnROXr32FVKOTQxaGh8dN6LsabGg8c8aw5myqlw/XNdC2QwJ/UjBI/f3YQ+99mUi+YEZBS
-	Td16jetxaFU5eLh1YtGNDioOcc1Hu1qZ5mBM9E4G12g29myh4ucrE8fdGPELzFp1A3YxvSXwBOyD7
-	SUJYTJxEx8GcQVaKspQ6hjyQnuxn+cje1aAPK5WXhWV5N5MiCLYTp4XxgMdNutGrx6ZQsYH1iDbTb
-	WXWWEQYX9bd77HAd5WAzePR+lCb6MUyN+pSwuX+cFJp7ry4Q8M1uDri70nIYRquYpxP5znjIgQAdj
-	daU/mCVEZwd+HxaFtj1Q==;
+	List-Owner; bh=2jeu0N+i37liO5iN/R4sxGc4o1HyAkuXulzICspSMtI=; b=GHb6hgkWKkhMG5
+	Ttnp4Tm2MIC3Fye3x3/PohADZYu9Bad3nAT1w1Yc1SXwulOgKisa6jyJ+qoZehwz2FGlkNr5yIzwM
+	YreCOTTuto+Frn2YK5dXXLHugSvBsbQLMC8fdLkOxyf+qB5xqiFZ9vKf/ZyTOuQ6TLddd+FfvbkID
+	CfcgHPMWMQ1SLxOAmhC7ZRC7YyM5dI13RNccM3L5L2JMZjWYvoy3xOMtmnVGdURwEJuWOiT2+ySHe
+	ue/fwAdS1n1Lfq61qP7z7XWiTFpmIfleOFP+uVGuacJpTX/Fy0BwDD/r1qTDEcWHRI+JuCvMuy3dc
+	JIAWtZmgZLuY38Gb4sfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8L3L-000000003ZE-0IY9;
-	Fri, 25 Apr 2025 15:33:23 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8JOg-0000000HL5e-1oua;
-	Fri, 25 Apr 2025 13:47:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id DC61A6847B;
-	Fri, 25 Apr 2025 13:46:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C85DC4CEE4;
-	Fri, 25 Apr 2025 13:47:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745588837;
-	bh=qi5h6vjHGkHHkMx48KdWOPGfCyT72085egpIwqt06EU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QVkHX+kql50+epGydmhjz+95MQSE8WEDlV87c70IY7HI4V1UG99qCiZRm1luxGYeO
-	 BVUaapBHvKfebXlGIwSGgPRO1pnmU00p2MUxCjvBFZEvNQ0Wke+4d9nmwMNwSkqjeK
-	 7DvdYe2JdWwvsenW+3ms5MsvBk4A7gUXIGS614Xh0d3FeRP9g+JidG4w5MUU5wef+B
-	 u7JuJ2bVjV1wS5LpFglBj3eelV/u0rhDOWAQqec5PEBdJELIg64PiO6k90NX4ZRriR
-	 drDucaxBTBnQHYnuTN84bbCm6mX7qLCkKbxUde4DshAfnex+OCWaQYmKoHHZgOyCvw
-	 eF4uPsyzoOzqA==
-Date: Fri, 25 Apr 2025 15:47:10 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
-	heiko@sntech.de, thomas.petazzoni@bootlin.com,
-	manivannan.sadhasivam@linaro.org, yue.wang@amlogic.com,
-	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
+	id 1u8LaU-000000009UJ-25qY;
+	Fri, 25 Apr 2025 16:07:38 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u8Jt4-0000000HPZe-2MbC;
+	Fri, 25 Apr 2025 14:18:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
+	Content-Type; bh=T5dUauytFt6G0vhlS6nMmP45chnWZOXEMoc/tzxHhIM=;
+	b=GaGj7k2R/HA+At4zWfBYbU5M1Nqxcf4OPnU9y/mEnnsYleW6Td0tc+noxG7Ufo
+	sBnc+qihnveVY8CAK+jyZEZuemSJ2FBpEeg51ULwZeDMQCMeCAQNKmVpRNpu5Ykv
+	DNV/h0xkLAGJLhUGuCBbOQA9oX4vk6QkfTfGIlltPs9Ug=
+Received: from [192.168.71.89] (unknown [])
+	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wDnn7+UmQtocRMiCQ--.4501S2;
+	Fri, 25 Apr 2025 22:17:57 +0800 (CST)
+Message-ID: <1904ac4c-832a-4d2c-ab8b-15d3fdf515d0@163.com>
+Date: Fri, 25 Apr 2025 22:17:55 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 1/2] PCI: Configure root port MPS to hardware maximum
  during host probing
-Message-ID: <aAuSXhmRiKQabjLO@ryzen>
+To: Niklas Cassel <cassel@kernel.org>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Bjorn Helgaas <bhelgaas@google.com>
+Cc: lpieralisi@kernel.org, kw@linux.com, heiko@sntech.de,
+ thomas.petazzoni@bootlin.com, yue.wang@amlogic.com, pali@kernel.org,
+ neil.armstrong@linaro.org, robh@kernel.org, jingoohan1@gmail.com,
+ khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
 References: <20250425095708.32662-1-18255117159@163.com>
- <20250425095708.32662-2-18255117159@163.com>
- <aAtikPOYlGeJCsiA@ryzen>
- <a4963173-dd9a-4341-b7f9-5fdb9485233a@163.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <a4963173-dd9a-4341-b7f9-5fdb9485233a@163.com>
+ <20250425095708.32662-2-18255117159@163.com> <aAtikPOYlGeJCsiA@ryzen>
+ <a4963173-dd9a-4341-b7f9-5fdb9485233a@163.com> <aAuSXhmRiKQabjLO@ryzen>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <aAuSXhmRiKQabjLO@ryzen>
+X-CM-TRANSID: _____wDnn7+UmQtocRMiCQ--.4501S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxuFWDCFy7Xry3ArW8Cw4xCrg_yoWxZF17pr
+	WaqF43trWkJFW5ta9rtF1UuFW7twsYvFW3tFsxGr1kta1fuFn3CwsFgry0qw47Cr9YvF1U
+	taykJ3y0qF98Ja7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jorWwUUUUU=
+X-Originating-IP: [124.79.128.52]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiWxg6o2gLk-CiFQAAst
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250425_071842_985530_C6D8BBC2 
+X-CRM114-Status: GOOD (  30.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,115 +78,229 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Hans,
 
-On Fri, Apr 25, 2025 at 06:56:53PM +0800, Hans Zhang wrote:
+
+On 2025/4/25 21:47, Niklas Cassel wrote:
+> Hello Hans,
 > 
-> But I discovered a problem:
+> On Fri, Apr 25, 2025 at 06:56:53PM +0800, Hans Zhang wrote:
+>>
+>> But I discovered a problem:
+>>
+>> 0001:90:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
+>>           ......
+>>           Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
+>>                   DevCap: MaxPayload 512 bytes, PhantFunc 0
+>>                           ExtTag- RBE+
+>>                   DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+>>                           RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
+>>                           MaxPayload 512 bytes, MaxReadReq 1024 bytes
+>>
+>>
+>>
+>> 			Should the DevCtl MaxPayload be 256B?
+>>
+>> But I tested that the file reading and writing were normal. Is the display
+>> of 512B here what we expected?
+>>
+>> Root Port 0003:30:00.0 has the same problem. May I ask what your opinion is?
+>>
+>>
+>> 		......
+>> 0001:91:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd
+>> NVMe SSD Controller PM9A1/PM9A3/980PRO (prog-if 02 [NVM Express])
+>>           ......
+>>           Capabilities: [70] Express (v2) Endpoint, MSI 00
+>>                   DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s
+>> unlimited, L1 unlimited
+>>                           ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+
+>> SlotPowerLimit 0W
+>>                   DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+>>                           RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+
+>> FLReset-
+>>                           MaxPayload 256 bytes, MaxReadReq 512 bytes
+>> 		......
 > 
-> 0001:90:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
->          ......
->          Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
->                  DevCap: MaxPayload 512 bytes, PhantFunc 0
->                          ExtTag- RBE+
->                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
->                          RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
->                          MaxPayload 512 bytes, MaxReadReq 1024 bytes
+> Here we see that the bridge has a higher DevCtl.MPS than the DevCap.MPS of
+> the endpoint.
+> 
+> Let me quote Bjorn from the previous mail thread:
+> 
+> """
+>    - I don't think it's safe to set MPS higher in all cases.  If we set
+>      the Root Port MPS=256, and an Endpoint only supports MPS=128, the
+>      Endpoint may do a 256-byte DMA read (assuming its MRRS>=256).  In
+>      that case the RP may respond with a 256-byte payload the Endpoint
+>      can't handle.
+> """
 > 
 > 
 > 
-> 			Should the DevCtl MaxPayload be 256B?
+> I think the problem with this patch is that pcie_write_mps() call in
+> pci_host_probe() is done after the pci_scan_root_bus_bridge() call in
+> pci_host_probe().
 > 
-> But I tested that the file reading and writing were normal. Is the display
-> of 512B here what we expected?
+> So pci_configure_mps() (called by pci_configure_device()),
+> which does the limiting of the bus to what the endpoint supports,
+> is actually called before the pcie_write_mps() call added by this patch
+> (which increases DevCtl.MPS for the bridge).
 > 
-> Root Port 0003:30:00.0 has the same problem. May I ask what your opinion is?
+> 
+> So I think the code added in this patch needs to be executed before
+> pci_configure_device() is done for the EP.
+> 
+> It appears that pci_configure_device() is called for each device
+> during scan, first for the bridges and then for the EPs.
+> 
+> So I think something like this should work (totally untested):
+> 
+> --- a/drivers/pci/probe.c
+> +++ b/drivers/pci/probe.c
+> @@ -45,6 +45,8 @@ struct pci_domain_busn_res {
+>          int domain_nr;
+>   };
+>   
+> +static void pcie_write_mps(struct pci_dev *dev, int mps);
+> +
+>   static struct resource *get_pci_domain_busn_res(int domain_nr)
+>   {
+>          struct pci_domain_busn_res *r;
+> @@ -2178,6 +2180,11 @@ static void pci_configure_mps(struct pci_dev *dev)
+>                  return;
+>          }
+>   
+> +       if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
+> +           pcie_bus_config != PCIE_BUS_TUNE_OFF) {
+> +               pcie_write_mps(dev, 128 << dev->pcie_mpss);
+> +       }
+> +
+>          if (!bridge || !pci_is_pcie(bridge))
+>                  return;
 > 
 > 
-> 		......
-> 0001:91:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd
-> NVMe SSD Controller PM9A1/PM9A3/980PRO (prog-if 02 [NVM Express])
->          ......
->          Capabilities: [70] Express (v2) Endpoint, MSI 00
->                  DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s
-> unlimited, L1 unlimited
->                          ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+
-> SlotPowerLimit 0W
->                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
->                          RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+
-> FLReset-
->                          MaxPayload 256 bytes, MaxReadReq 512 bytes
-> 		......
+> 
+> But we would probably need to move some code to avoid the
+> forward declaration.
+> 
 
-Here we see that the bridge has a higher DevCtl.MPS than the DevCap.MPS of
-the endpoint.
+Dear Niklas,
 
-Let me quote Bjorn from the previous mail thread:
-
-"""
-  - I don't think it's safe to set MPS higher in all cases.  If we set
-    the Root Port MPS=256, and an Endpoint only supports MPS=128, the
-    Endpoint may do a 256-byte DMA read (assuming its MRRS>=256).  In
-    that case the RP may respond with a 256-byte payload the Endpoint
-    can't handle.
-"""
+Thank you very much for your reply and suggestions. The patch you 
+provided has been tested by me and is normal.
 
 
 
-I think the problem with this patch is that pcie_write_mps() call in
-pci_host_probe() is done after the pci_scan_root_bus_bridge() call in
-pci_host_probe().
-
-So pci_configure_mps() (called by pci_configure_device()),
-which does the limiting of the bus to what the endpoint supports,
-is actually called before the pcie_write_mps() call added by this patch
-(which increases DevCtl.MPS for the bridge).
+Bjorn and Mani, thoughts?
 
 
-So I think the code added in this patch needs to be executed before
-pci_configure_device() is done for the EP.
+Please see the following log:
 
-It appears that pci_configure_device() is called for each device
-during scan, first for the bridges and then for the EPs.
+lspci -vvv
+0000:c0:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
+         ......
+         Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
+                 DevCap: MaxPayload 512 bytes, PhantFunc 0
+                         ExtTag+ RBE+
+                 DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+                         RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+
+                         MaxPayload 512 bytes, MaxReadReq 1024 bytes
+         ......
 
-So I think something like this should work (totally untested):
+0000:c1:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd 
+NVMe SSD Controller S4LV008[Pascal] (prog-if 02 [NVM Express])
+         ......
+         Capabilities: [70] Express (v2) Endpoint, MSI 00
+                 DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s 
+unlimited, L1 unlimited
+                         ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ 
+SlotPowerLimit 0W
+                 DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+                         RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ 
+FLReset-
+                         MaxPayload 512 bytes, MaxReadReq 512 bytes
+         ......
 
---- a/drivers/pci/probe.c
-+++ b/drivers/pci/probe.c
-@@ -45,6 +45,8 @@ struct pci_domain_busn_res {
-        int domain_nr;
- };
- 
-+static void pcie_write_mps(struct pci_dev *dev, int mps);
-+
- static struct resource *get_pci_domain_busn_res(int domain_nr)
- {
-        struct pci_domain_busn_res *r;
-@@ -2178,6 +2180,11 @@ static void pci_configure_mps(struct pci_dev *dev)
-                return;
-        }
- 
-+       if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
-+           pcie_bus_config != PCIE_BUS_TUNE_OFF) {
-+               pcie_write_mps(dev, 128 << dev->pcie_mpss);
-+       }
-+
-        if (!bridge || !pci_is_pcie(bridge))
-                return;
+0001:90:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
+         ......
+         Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
+                 DevCap: MaxPayload 512 bytes, PhantFunc 0
+                         ExtTag- RBE+
+                 DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+                         RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
+                         MaxPayload 256 bytes, MaxReadReq 1024 bytes
+         ......
+
+0001:91:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd 
+NVMe SSD Controller PM9A1/PM9A3/980PRO (prog-if 02 [NVM Express])
+         ......
+         Capabilities: [70] Express (v2) Endpoint, MSI 00
+                 DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s 
+unlimited, L1 unlimited
+                         ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ 
+SlotPowerLimit 0W
+                 DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+                         RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ 
+FLReset-
+                         MaxPayload 256 bytes, MaxReadReq 512 bytes
+         ......
+
+0003:30:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
+         ......
+         Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
+                 DevCap: MaxPayload 512 bytes, PhantFunc 0
+                         ExtTag- RBE+
+                 DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+                         RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
+                         MaxPayload 256 bytes, MaxReadReq 1024 bytes
+         ......
+
+0003:31:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. 
+RTL8125 2.5GbE Controller (rev 05)
+         ......
+         Capabilities: [70] Express (v2) Endpoint, MSI 01
+                 DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s 
+<512ns, L1 <64us
+                         ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset- 
+SlotPowerLimit 0W
+                 DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+                         RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop-
+                         MaxPayload 256 bytes, MaxReadReq 4096 bytes
+         ......
+
+0004:00:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
+         ......
+         Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
+                 DevCap: MaxPayload 512 bytes, PhantFunc 0
+                         ExtTag- RBE+
+                 DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+                         RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
+                         MaxPayload 256 bytes, MaxReadReq 1024 bytes
+         ......
+
+0004:01:00.0 Network controller: Realtek Semiconductor Co., Ltd. 
+RTL8852BE PCIe 802.11ax Wireless Network Controller
+         ......
+         Capabilities: [70] Express (v2) Endpoint, MSI 00
+                 DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s 
+<4us, L1 <64us
+                         ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ 
+SlotPowerLimit 0W
+                 DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+                         RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop- 
+FLReset-
+                         MaxPayload 256 bytes, MaxReadReq 512 bytes
+         ......
 
 
+Best regards,
+Hans
 
-But we would probably need to move some code to avoid the
-forward declaration.
 
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
