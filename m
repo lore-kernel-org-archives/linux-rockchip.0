@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D6E1C369D3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 16:30:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 694A9C369C2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 16:31:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X/k9ZRt0PHIzdt3a3ynRdhtzYxbs3S8Th9/sos5JDLg=; b=ohDBivNoQt9V/1
-	FtrwjwUjcKAeJf2D7DXpSBV2D7f3mC2wxwnj+/YUUTxiRABTfaSVAxuajsq/Tu8nZCkdRD5fs7Q77
-	Q0qPnxwDkF6hNirHSKPGu2gLmpbbZpjN4uVhhipxR4cGbr0Fk4zHyiazxc2hZsfl8vkve/uDfkpnP
-	doy4nk3C/Tj5UhlZFLANDvgUz1vq2JlcUVD3a1+4HHoUX1flZcnj+LPSBhtaqklNLgsyA+MeqoPos
-	ApkTgLTqDODyoc4iqamKsBMFE7BNcW96RjZpjKkWcso8SbWIAr35xeBOQRV4hi/wRllimxdYuNRDp
-	3S5m4SEItRwq6aPL+NMw==;
+	List-Owner; bh=uO2yzxgZH6XDDbbf3vJRUxH/PfAvlJjMMPJddU12OcU=; b=o8gwDKo4fj5nTW
+	0fzn9tF5O1TGhBZ1ILZ+y/J9TAClaJJVJ13CTeEeaxHwLbXIBiUXlQgccG99ShM8XBqzRwuBQlquV
+	TwbAFUBxd68kASGCxExNk+GCgz2vaPQfAswbZwub848nHVair724OMJmC/WDL2Ao+tzSH/mJ1n7xa
+	vZlbt3ZTe7O7SJZuQ5YCCvtcJs7Kiawkff4clmsFhZ99YD6vSn3tpf1N4fQLViHxPontvwr/rvumQ
+	ZOdh/uSh/UNE4f3knmWuTpvA6rq7rvee0MIAgnDrFhQZK8Fs1Xl5M5ukM1GhHscfGHG/mPcqM+Kwc
+	vkJaaE4LnSqK31bmYqRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8Lwq-00000000E7p-2rLs;
-	Fri, 25 Apr 2025 16:30:44 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1u8LxC-00000000EFp-1KwN;
+	Fri, 25 Apr 2025 16:31:06 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8KpG-00000000161-3v2B
+	id 1u8KpI-0000000017M-2VJD
 	for linux-rockchip@lists.infradead.org;
-	Fri, 25 Apr 2025 15:18:52 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-acb615228a4so595319666b.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 25 Apr 2025 08:18:50 -0700 (PDT)
+	Fri, 25 Apr 2025 15:18:53 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-aaecf50578eso365205866b.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 25 Apr 2025 08:18:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=thaumatec-com.20230601.gappssmtp.com; s=20230601; t=1745594329; x=1746199129; darn=lists.infradead.org;
+        d=thaumatec-com.20230601.gappssmtp.com; s=20230601; t=1745594331; x=1746199131; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=ow+UI0NPOq4F4k1XRdbs16ucXtgoo6yarOk2Eu1UB88=;
-        b=PAFZryrliSmp9h5L5o45kWaWdwjLGCeljw92L9RIVY2+81lfXhUDFLSNw//CtTw9qX
-         JdJxxbfx+RnRB9mbwPH3tVPceCNPIic/HfpTnCKqzBRTSQU6panieFD+dQs9RX1+C8Dp
-         b35vZcCA+T9ihFA0i7YXFacnS9G/CqwkSrMqy7PIOo/9sip5yFYP07Q4QKuTzW3/ldXc
-         Bwf4dj61g9HXlhdzpmGabeJTLq6FskuGwrBYzH1FUT/JxGF3UwhRaOCebSH8+yQp8dRq
-         u929exCQquD8SzitzSZeSssB5yNLYNnOpWdA2O3n+s1eq4P3igKSsgHTKAXZNdSjKqR/
-         qZKA==
+        bh=/OY31xp7Dll9vOIEOmAuyrG07iLGmNS/7kqtV/vhc5Y=;
+        b=j42Mt5qxCJoOQSAZ67W/QfhQdbkruiN8scys5w72FR/PJT4SkMiuvSysOixXR9NJAT
+         Szooa0MhhB0unOV9Ti6R9o+kTVBsHSEeOpQrqwI4pHg6qXyuJWCXlXJdvoljsAU5nVEp
+         CKZYawRNh4dwCEVooHT2e1x03O50YwGwzh/NS95EedFJ/ikDy0zmWpWp2kZ6ho6YOqmT
+         9fsLBBy3gt543ewtrZBYC7QypUjUy/vT4DRjhZ+uu8eyH6t8BcgXEa6TYfn5JjK4/W3i
+         +DV2fmV0QFZHn5kRW6DwFSlGpYiJP5UJ6Af4TT3w6GhKxyS314i+OJzxroIfyiqiZD4S
+         M/6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745594329; x=1746199129;
+        d=1e100.net; s=20230601; t=1745594331; x=1746199131;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ow+UI0NPOq4F4k1XRdbs16ucXtgoo6yarOk2Eu1UB88=;
-        b=k+ucnLoJR7Cu1HR0LkNz+67mVy7gneSJklcl0b0AG4TuOkfe/fYSJOWGw2G3U8UjBz
-         tWVS3aTMs1dSu2pGyV7vnwn8KkeHJg0cAYEgig3vvHFkuP8Ii2ITjpe+Qna7ehjkn6b/
-         QrIIU8ktf9f86QJE0F9BGU9Xfm+CrWkipv5+P8jaALo6/JDvN37XYT1H2zeCm9NzFqEK
-         FtNjWFc6kbAcLl6B384sYJ/b6PQP3R9mGO9V52LFGuBOvACXdrDn2NgeQWPEX46XLnaG
-         xfQlrw8mksQff7d+3H+9T0GY8zdaelIwH5mPyqI0YX8Ver6eQHkx8d9s82AecsA2aHrH
-         pl4g==
-X-Forwarded-Encrypted: i=1; AJvYcCXyljLpWI+FxPrv4v/SITLbSpSUbmN8VLMtcBzq/oqxJq1g7sclbw04M7ViNm4XC7QMv/pHPOyTQpUK1CjR/w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxUV6cxmy9hN18YmqQTKoFrliME3ciqMPpKAhcDunu/IRptxopF
-	Htx3Xqj89K1KxJElSP0Evp3kzQVJoXg95zCZBWTtN9tOZM5X7M7Tq+ahXN8G6uQ=
-X-Gm-Gg: ASbGncuLRab+1yU782yAKEUkYKrMaoUfNxeA2opVROohdAzHVT4Vmb4oGj6f3up10bU
-	BDqyD4N9pMXWYXG7Cw045DjSUQOawxfIKkyQyBxX3ItObbw5r6j+oTmAIMbpzw/HINju/qtntYa
-	j5YBJLeWPqBgogwgme/fk/SVY2YE0quP+UxDE4+mfasAGVT8Ixitb9KiP1e4+9nCBjvszMF+ORy
-	IMqjn5Qw8OlMXpKJJBqY7eQbUgleHb67ULYozV74O8NZoUTdeRUeZxesy8LHzMouIJ1Sl+M3drg
-	cH6YbcmNrw0+9OhDrhX8JKtFDiMf+AuG4YHcrNmPBEe7bmln8ZmPs9ilrQ==
-X-Google-Smtp-Source: AGHT+IHLD6XdK+4P1TnWS4a50TCqQBANW7xBQ8lr6hgbyOsYBCK2P26JRQZuJdTwivbVOS6RTnoM6A==
-X-Received: by 2002:a17:907:3f0d:b0:ac8:1bbe:1a5b with SMTP id a640c23a62f3a-ace5a27b983mr482588066b.9.1745594329437;
-        Fri, 25 Apr 2025 08:18:49 -0700 (PDT)
+        bh=/OY31xp7Dll9vOIEOmAuyrG07iLGmNS/7kqtV/vhc5Y=;
+        b=KSsF0287cY6pWxsLDKREYz7NEv/KJ3QF8bH/QDoYk27+kWKaNsYE29z/2biio6hkdK
+         xsFTRQ4b168DLIzmEgkK/+pBcBOf74GvTAC9kWXYEJt4SwesPStrIOaUrTnUFN76i00y
+         SPH1xO7L4SGu/HGct9S6zN4XYQHfUvt97qUweh6SU9lza2htw+iR/WJC6KZfeuPfoDxV
+         9sJ9KR9ewHq8eNpYZwTn1RAlCGIz1RyPuGU0lZ+ufpG9VdDOvfzR+CVHqP8e5gNBbreD
+         ecow81LiW+ViubBAA9gU+r+1RHxUb7/mV77WMKEkux9ee+JlhMb+ZrE8h5/Idg3CtOaX
+         1/2Q==
+X-Forwarded-Encrypted: i=1; AJvYcCW83ZSSlasHrQN6XX1K2/T+c2oHKYHykeA/4VyYVGm6k/Wyg6nrY+cYpdhCUJOvhezV5qMWfdw2FlqDb6uaRg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyk2aTq5jeJGRAXYU5AyR3F75NzxF5KMIT/bEursNndwDDSON8a
+	DQaiDKbzki+aoLVZQakoWB56KIuLbzfvdcI2DQEBed3QnrTnduUEBoakirG1Ck8=
+X-Gm-Gg: ASbGncsSTxazT+cFrif8e2vQwDW0m++9lgoenDMmMTuwbV5BGLWm48A/v3LAF/w9jA5
+	/44Jijjyq2itdpuPxxpq0NmvQ+aPmr3so7DO9XpllfVG1VMdusPQMZ5JXPkvuMRwDcY2smLNoL+
+	mAqqp8OzZjF+MO4Z3q2lDk2gIx57pRvxsDOSmWVeZdrWmxQYAiqhW2VAKeppjqZfnBwxwD15sdS
+	nz9n5CdrvwQXPeIXfSCvWPAC1Yk7aVQFaxUhGrz91ynTvAq4dQtEmPnVhgtb/xMzNH+24BfYLj4
+	y03OniCcJf9MJhsbAPXYCdj3Kz27g+n6MsZtIW2+idvOty5xeBni7TBJ4A==
+X-Google-Smtp-Source: AGHT+IF/D7KC9l8++rWqiUEiNq3eyx2s0Qq/rmeB9HU9Sb4W5K3CdWLHL8yd44YFf3+hogCSyIirhg==
+X-Received: by 2002:a17:907:2dab:b0:acb:bbc4:3344 with SMTP id a640c23a62f3a-ace71098d8dmr246518666b.22.1745594330687;
+        Fri, 25 Apr 2025 08:18:50 -0700 (PDT)
 Received: from [127.0.1.1] ([185.164.142.188])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ace6e59649fsm151099766b.85.2025.04.25.08.18.48
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ace6e59649fsm151099766b.85.2025.04.25.08.18.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Apr 2025 08:18:48 -0700 (PDT)
+        Fri, 25 Apr 2025 08:18:50 -0700 (PDT)
 From: Lukasz Czechowski <lukasz.czechowski@thaumatec.com>
-Date: Fri, 25 Apr 2025 17:18:09 +0200
-Subject: [PATCH v2 4/5] arm64: dts: rockchip: disable unrouted USB
- controllers and PHY on RK3399 Puma
+Date: Fri, 25 Apr 2025 17:18:10 +0200
+Subject: [PATCH v2 5/5] arm64: dts: rockchip: disable unrouted USB
+ controllers and PHY on RK3399 Puma with Haikou
 MIME-Version: 1.0
-Message-Id: <20250425-onboard_usb_dev-v2-4-4a76a474a010@thaumatec.com>
+Message-Id: <20250425-onboard_usb_dev-v2-5-4a76a474a010@thaumatec.com>
 References: <20250425-onboard_usb_dev-v2-0-4a76a474a010@thaumatec.com>
 In-Reply-To: <20250425-onboard_usb_dev-v2-0-4a76a474a010@thaumatec.com>
 To: Matthias Kaehlcke <mka@chromium.org>, 
@@ -89,8 +89,8 @@ Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
  Quentin Schulz <quentin.schulz@cherry.de>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250425_081850_975651_A722BA47 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20250425_081852_628920_ABB76616 
+X-CRM114-Status: GOOD (  16.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,13 +109,25 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@cherry.de>
 
-The u2phy1_host port is the part of the USB PHY1 (namely the
-HOST1_DP/DM lanes) which routes directly to the USB2.0 HOST
+The u2phy0_host port is the part of the USB PHY0 (namely the
+HOST0_DP/DM lanes) which routes directly to the USB2.0 HOST
 controller[1]. The other lanes of the PHY are routed to the USB3.0 OTG
 controller (dwc3), which we do use.
 
-The HOST1_DP/DM lanes aren't routed on RK3399 Puma so let's simply
-disable the USB2.0 controllers and associated part in USB2.0 PHY.
+The HOST0_DP/DM lanes aren't routed on RK3399 Puma so let's simply
+disable the USB2.0 controllers.
+
+USB3 OTG has been known to be unstable on RK3399 Puma Haikou for a
+while, one of the recurring issues being that only USB2 is detected and
+not USB3 in host mode. Reading the justification above and seeing that
+we are keeping u2phy0_host in the Haikou carrierboard DTS probably may
+have bothered you since it should be changed to u2phy0_otg. The issue is
+that if it's switched to that, USB OTG on Haikou is entirely broken. I
+have checked the routing in the Gerber file, the lanes are going to the
+expected ball pins (that is, NOT HOST0_DP/DM).
+u2phy0_host is for sure the wrong part of the PHY to use, but it's the
+only one that works at the moment for that board so keep it until we
+figure out what exactly is broken.
 
 No intended functional change.
 
@@ -125,36 +137,28 @@ Fixes: 2c66fc34e945 ("arm64: dts: rockchip: add RK3399-Q7 (Puma) SoM")
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 Signed-off-by: Lukasz Czechowski <lukasz.czechowski@thaumatec.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 12 ------------
- 1 file changed, 12 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index dd5a9bca26d1d221607e73071685d5774330d760..5c1162e2f34f9c9786da1f774dffa71adda23dbc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -579,10 +579,6 @@ &u2phy1 {
- 	u2phy1_otg: otg-port {
- 		status = "okay";
- 	};
--
--	u2phy1_host: host-port {
--		status = "okay";
--	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+index 947bbd62a6b09ce55320d0889ee8cf50ca59dfd4..93cefacc7a01ec8f9716de828077b3395a5e7696 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+@@ -292,14 +292,6 @@ &uart2 {
+ 	status = "okay";
  };
  
- &usbdrd3_1 {
-@@ -616,11 +612,3 @@ hub_3_0: hub@2 {
- 		vdd2-supply = <&vcc3v3_sys>;
- 	};
+-&usb_host0_ehci {
+-	status = "okay";
+-};
+-
+-&usb_host0_ohci {
+-	status = "okay";
+-};
+-
+ &vopb {
+ 	status = "okay";
  };
--
--&usb_host1_ehci {
--	status = "okay";
--};
--
--&usb_host1_ohci {
--	status = "okay";
--};
 
 -- 
 2.43.0
