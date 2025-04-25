@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1677C369C2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 18:29:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CE46C369D7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 18:29:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MJPQToy/tzIUI26Cf6SdgiTM63OQBhwTqF7gTWBWVp4=; b=q6bvMM4DPFT7a9
-	/dYxqaqAyLOhzrTNSECsLOdEwoPjlRA5R/qfwPyIWPB39Tvi0so3wAgsVCAgyfEnIOYJVF1ZZWkK5
-	45PZz8N+JM26dlcvZzDtLaYBjamakh0FJ3DOmXZXbWhxZCZLE2v1cYkVRipylTa3qJSvpqBhdJExk
-	ECjjaMUV7QOEyFMwf8dw8YJzZ/cQ0d65+uW9svU5yRRMcdL9fjVfLWElK1lvbTmjSB5n4TC1i+lZ9
-	1b9CdyGgZuJEe9egBZb0+NPVZFDHn+J9Yxlg5ZnUbKJlooAvTz2vIqiSZkoaLndheHSpUuKMr41YD
-	v994QkuVOcnXBlVCKgSA==;
+	List-Owner; bh=aPt0+71U6rwQA4GPXbatjo5+2REN7AF0Sr/iKYunRWg=; b=x3ObEqNv2cWwnC
+	YxsYEZsohV0UfiCgzfQnrt0Du3n102O5nc/pv/FQ7GlxlfLA0dbt0rW2HSwuHVKPunbC2HPaSYiQk
+	AosVFptGSr2iMg06w2uXRiMDrk+BlIluYzHSp2rLsCZLow/aPMh2mbPpSnr/D1aAdzeoTzFEwlOoV
+	Yyg8le+qGM+lKllEj/NDL6SM9HCW9FnwSRSu2K+zjAHl9GX2wvJ86HPwX1v8b14wtXaEuTRrqa69k
+	dCR/SZUCYeqdc5DmAGNk5HyDpsZowM0mbirY/7iq4sL+9fo8JiD2DhCZGrYcGiWOVaBOrLWcLwmsz
+	WFCinJUFfv5QErXckFoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8Nn0-00000000XHh-0rts;
+	id 1u8Nn0-00000000XHm-2Efd;
 	Fri, 25 Apr 2025 18:28:42 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8NYc-00000000VVs-3OzS;
-	Fri, 25 Apr 2025 18:13:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6ACAEA4D41E;
-	Fri, 25 Apr 2025 18:08:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF013C4CEE4;
-	Fri, 25 Apr 2025 18:13:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745604829;
-	bh=+R7PIio0jdtEKpan0a9pq9Eg4ukFgKIiHhho8TZ3TVA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eWawd3FCDXLQyP3oEO5T2ceR+TcSbYfbLR3o4X4X4ik9GlDlD5RaZn0/m5DVZHrDj
-	 Kl+1DjYkvmLsI8kgTz9/0kk1+f+Bxr8FX8DvB9y66tz3SCtgoaFj8nMCOS+nRmvhpR
-	 aK1Kj1OR3QFhqyh5pH96Y/mItoaIC8GdoZC3tngiDyUlnLF1Nz8uQmrVLIf6nYt++a
-	 A7F/42LG/xOgOBA80oR1s8EL70PNiq/iVpIn681FTDQh48eHs44IFV3p4m+gFYztq9
-	 54yBDjRarWqBmz96F2LClKtL6JKLeiUxs/QSsejfrupm45Rlo8FVZ/jUMsRqjZuDgm
-	 XwH0m3MgSRYGA==
-Received: by pali.im (Postfix)
-	id CD881880; Fri, 25 Apr 2025 20:13:45 +0200 (CEST)
-Date: Fri, 25 Apr 2025 20:13:45 +0200
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
-	heiko@sntech.de, thomas.petazzoni@bootlin.com,
-	manivannan.sadhasivam@linaro.org, yue.wang@Amlogic.com,
-	neil.armstrong@linaro.org, robh@kernel.org, jingoohan1@gmail.com,
-	khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 2/2] PCI: Remove redundant MPS configuration
-Message-ID: <20250425181345.bybgcht5tweyg43k@pali>
-References: <20250425095708.32662-1-18255117159@163.com>
- <20250425095708.32662-3-18255117159@163.com>
+	id 1u8Ni1-00000000WdP-3nm0;
+	Fri, 25 Apr 2025 18:23:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1745605385; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=XR4vgjGGKgdTAQTS2rACu8DaNC0+4UT/y6l9t417lb2cEStrUiXb49602fgwtccUsuX6Y7kHT14MvO7LiXz/8vP2d9vyBMllb1yfwmw+lyFAzcy6j11bYeX9roXbD72We6/FhhaGdz4R22SLlAc7fOCP1UFTbutm9Mb8ATzOW+w=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1745605385; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=0RChf9eM3DaEmdKL7oMWpMmY3Kl6bXdjA82ZsWOcius=; 
+	b=HeWEfNg05JGno+gblt9+NGBaOAc8R0q0ykioi6LxZ/YCrqqzWMn92WJP7wUnuLEU13sUQx4iPR0F5Y8oudQIORyGqJl3AQ9iSL4f4awb9YYVdgX3oO0WCm07xBMCeaAvUIncNk9u6U6px46oXvLSeXZ9mNfpdGv7lcXldvx9ml4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745605385;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=0RChf9eM3DaEmdKL7oMWpMmY3Kl6bXdjA82ZsWOcius=;
+	b=FQXA+UJmtg+IY7UgzEQ+P9azZOu+hNcePPWPRlkIrfJ+s8uJDDZI/ISowa6uJow9
+	FRLma6kBaxPxT8zOpGE3SAbplMgma1cSyjpRidXiVhN8Llw9AXWiT7APRkqa5RxjwLk
+	uqkyIB9cMsYFPNm1mNRFQkNmUZ1p3tlYCA5RYoVA=
+Received: by mx.zohomail.com with SMTPS id 1745605383428608.9673402692126;
+	Fri, 25 Apr 2025 11:23:03 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Oded Gabbay <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Jeffrey Hugo <quic_jhugo@quicinc.com>, linux-rockchip@lists.infradead.org,
+ Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-doc@vger.kernel.org, linux-media@vger.kernel.org,
+ linaro-mm-sig@lists.linaro.org
+Subject: Re: [PATCH v2 4/7] accel/rocket: Add a new driver for Rockchip's NPU
+Date: Fri, 25 Apr 2025 20:22:55 +0200
+Message-ID: <2950819.ElGaqSPkdT@workhorse>
+In-Reply-To: <20250225-6-10-rocket-v2-4-d4dbcfafc141@tomeuvizoso.net>
+References: <20250225-6-10-rocket-v2-0-d4dbcfafc141@tomeuvizoso.net>
+ <20250225-6-10-rocket-v2-4-d4dbcfafc141@tomeuvizoso.net>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250425095708.32662-3-18255117159@163.com>
-User-Agent: NeoMutt/20180716
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250425_111350_910066_AC5C1A5D 
-X-CRM114-Status: GOOD (  10.47  )
+X-CRM114-CacheID: sfid-20250425_112333_983148_4244C4F9 
+X-CRM114-Status: GOOD (  28.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,28 +88,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Friday 25 April 2025 17:57:08 Hans Zhang wrote:
-> diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
-> index a29796cce420..d8852892994a 100644
-> --- a/drivers/pci/controller/pci-aardvark.c
-> +++ b/drivers/pci/controller/pci-aardvark.c
-> @@ -549,9 +549,7 @@ static void advk_pcie_setup_hw(struct advk_pcie *pcie)
->  	reg = advk_readl(pcie, PCIE_CORE_PCIEXP_CAP + PCI_EXP_DEVCTL);
->  	reg &= ~PCI_EXP_DEVCTL_RELAX_EN;
->  	reg &= ~PCI_EXP_DEVCTL_NOSNOOP_EN;
-> -	reg &= ~PCI_EXP_DEVCTL_PAYLOAD;
->  	reg &= ~PCI_EXP_DEVCTL_READRQ;
-> -	reg |= PCI_EXP_DEVCTL_PAYLOAD_512B;
->  	reg |= PCI_EXP_DEVCTL_READRQ_512B;
->  	advk_writel(pcie, reg, PCIE_CORE_PCIEXP_CAP + PCI_EXP_DEVCTL);
->  
-> -- 
-> 2.25.1
+On Tuesday, 25 February 2025 08:55:50 Central European Summer Time Tomeu Vizoso wrote:
+> This initial version supports the NPU as shipped in the RK3588 SoC and
+> described in the first part of its TRM, in Chapter 36.
 > 
+> This NPU contains 3 independent cores that the driver can submit jobs
+> to.
+> 
+> This commit adds just hardware initialization and power management.
+> 
+> v2:
+> - Split cores and IOMMUs as independent devices (Sebastian Reichel)
+> - Add some documentation (Jeffrey Hugo)
+> - Be more explicit in the Kconfig documentation (Jeffrey Hugo)
+> - Remove resets, as these haven't been found useful so far (Zenghui Yu)
+> - Repack structs (Jeffrey Hugo)
+> - Use DEFINE_DRM_ACCEL_FOPS (Jeffrey Hugo)
+> - Use devm_drm_dev_alloc (Jeffrey Hugo)
+> - Use probe log helper (Jeffrey Hugo)
+> - Introduce UABI header in a later patch (Jeffrey Hugo)
+> 
+> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+> ---
+>  Documentation/accel/index.rst           |    1 +
+>  Documentation/accel/rocket/index.rst    |   19 +
+>  MAINTAINERS                             |    8 +
+>  drivers/accel/Kconfig                   |    1 +
+>  drivers/accel/Makefile                  |    1 +
+>  drivers/accel/rocket/Kconfig            |   25 +
+>  drivers/accel/rocket/Makefile           |    8 +
+>  drivers/accel/rocket/rocket_core.c      |   71 +
+>  drivers/accel/rocket/rocket_core.h      |   29 +
+>  drivers/accel/rocket/rocket_device.c    |   29 +
+>  drivers/accel/rocket/rocket_device.h    |   29 +
+>  drivers/accel/rocket/rocket_drv.c       |  273 ++
+>  drivers/accel/rocket/rocket_drv.h       |   13 +
+>  drivers/accel/rocket/rocket_registers.h | 4425 +++++++++++++++++++++++++++++++
+>  14 files changed, 4932 insertions(+)
+> 
+> [...]
+> diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..c22d965f20f1239a36b1d823d5fe5f372713555d
+> --- /dev/null
+> +++ b/drivers/accel/rocket/rocket_drv.c
+> @@ -0,0 +1,273 @@
+> [...]
+> +static int rocket_probe(struct platform_device *pdev)
+> +{
+> +	struct component_match *match = NULL;
+> +	struct device_node *core_node;
+> +
+> +	if (fwnode_device_is_compatible(pdev->dev.fwnode, "rockchip,rk3588-rknn-core"))
+> +		return component_add(&pdev->dev, &rocket_core_ops);
+> +
+> +	for_each_compatible_node(core_node, NULL, "rockchip,rk3588-rknn-core") {
+> +		if (!of_device_is_available(core_node))
+> +			continue;
+> +
+> +		drm_of_component_match_add(&pdev->dev, &match,
+> +					   component_compare_of, core_node);
+> +	}
+> +
+> +	return component_master_add_with_match(&pdev->dev, &rocket_drm_ops, match);
+> +}
 
-Please do not remove this code. It is required part of the
-initialization of the aardvark PCI controller at the specific phase,
-as defined in the Armada 3700 Functional Specification.
+Hi Tomeu,
+
+something I've noticed while playing with this: currently, it doesn't seem like
+it's possible to support 1-core NPUs. rknn-core-top is a real core, but if no
+rknn-core is enabled beside it, it'll call component_master_add_with_match with
+match being NULL. This causes a kernel Oops.
+
+I'm not sure what the proper fix is, since the component API doesn't seem to
+really have a consideration for a master with no other components.
+
+I ran into this when I was trying to debug why I get job timeouts followed by
+a full SoC lock-up on RK3576 by running with only one of the two cores enabled.
+
+As an aside note, my throwaway rocket-on-RK3576-hacking-branch is at [1] and
+contains some changes you may want to consider for v3, e.g. [2] and [3]+[4]. In
+[4], specifically the `domain-supply` part which means the NPU regulators don't
+have to be always-on. Though feel free to pull in my entire ROCK 5B enablement
+patch.
+
+Kind regards,
+Nicolas Frattaroli, who discovered that his cat is apparently 5% space heater
+according to mobilenet while playing with this patch series.
+
+[1]: https://gitlab.collabora.com/fratti/linux/-/commits/tomeu-npu?ref_type=heads
+[2]: https://gitlab.collabora.com/fratti/linux/-/commit/73aba31a00b34c254be575b524da568e115d985d
+[3]: https://gitlab.collabora.com/fratti/linux/-/commit/bd3a7bf5054c54c2915a9dc0396730d0f24b3b7c
+[4]: https://gitlab.collabora.com/fratti/linux/-/commit/5da44d61b09c345309f76159574d447d071c295d
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
