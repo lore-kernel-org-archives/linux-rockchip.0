@@ -4,67 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0849BC369C2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 12:22:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89ED0C369D1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Apr 2025 13:00:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gdaG61WoKFF3magGGjFSTc3RkqFWBW32qTLrGS8zRu4=; b=ryH+hzE52F8aL9
-	vxcgkUo1190rr8JVCQYwVNdZXgxIU5Kw6JIyn+Z0fScp7sMv5PhlZUOsdmqxLTlChLmVwO3zpqQ1b
-	jig8xzUDro5h8TtKEu1kN7cMLSgp7jS/7aQmaiSzZCdsACJd1kzJ08oYNMFOGYVB9xU/f3Fifv1yR
-	YVsinhfzBcsv1ONd/wA6qD+CNvbMPHyQ8M4CQuVYfJr2MSupUtPuhbT0tJwrfLnPYFGwqf00GYmml
-	8Cncnbjj+EXMb9mzVXMVD8kC6XUeZJLsCXx5apQuDzTwUKdQ7MSRAvRvuKhWcsO0SEgr2XK5e0g6N
-	m6WRyhKHcbbFJmyZnDKQ==;
+	List-Owner; bh=8N6i8yIu4DO4Wi34OVmvzcIq8rGhnt0lbqVu2hjsLsE=; b=x5lmv+QEir7s9p
+	OMt30sYO/Tg/nHMP9mMjU7VvM25ucUNtM5lh3+VgRxXKq3KI1Vf3Ats5M46k0rTdWVqChoW04cPKM
+	O1vb+Ojc72JzSV5ORW+5mFzfc6nUl99an3dSueU22s4x0WEGDZNXKrIELn/EoB+OuZczL8BFl7ZFe
+	4Eu79u2uD0lzNUGhhMvxIws+3GUmA1pXYguqzKuCMs3485xs+pVrRSMOnGIkzePTKcxkC7SxSlZ4h
+	FdSCWkZMJIoVOi3Oke2CD+rwQkwmdcY+gqZJhNAH4MpOptZabUjC07S0A6NcbfVsuqaOWVbDcoTl1
+	F+/tgPZJehWv9gYFpJbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8I4b-0000000H72c-1Ysi;
-	Fri, 25 Apr 2025 12:22:29 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8GkL-0000000GqGa-413o;
-	Fri, 25 Apr 2025 10:57:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
-	Content-Type; bh=nli07KgLUrDYMWH1Lc6yMKqrWlicadkP3LHn0B363Ng=;
-	b=QK67PW4FjfSzrmfyXNv5GmvlkVPoZEf2davAV77hrwJvc+qVVB1LzVsDPWl8vz
-	p6/EwY+XU+RSGhim+vaB3ppkMRytTNQrWT/BipxTXBhDRmekRXwrvClHv5dDlPaU
-	SI21SaaGPJ2Ule5IuvpoUNSfCKl4KLveY51UECCuqwoL0=
-Received: from [192.168.142.52] (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wCH5yx1agto6+qPCQ--.28259S2;
-	Fri, 25 Apr 2025 18:56:55 +0800 (CST)
-Message-ID: <a4963173-dd9a-4341-b7f9-5fdb9485233a@163.com>
-Date: Fri, 25 Apr 2025 18:56:53 +0800
+	id 1u8IfF-0000000HCrx-359F;
+	Fri, 25 Apr 2025 13:00:21 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u8H3Q-0000000GvV3-2NsO;
+	Fri, 25 Apr 2025 11:17:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7DE844378E;
+	Fri, 25 Apr 2025 11:17:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D956C4CEE4;
+	Fri, 25 Apr 2025 11:17:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1745579832;
+	bh=WhwOteXj64XGivhOiwvnlcDEYElHNPlWxr/veIpt9QA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dwrSyhc0nfxJs4zr5Kxh7IyD+y3bTA/T0NqycOb19T2Nz/ENOIm0cY8YCKP50LdWP
+	 ubRqbt78/ak+GhrafY1iSKp1NeKXyY2IuGIwPG+apCSBMsw4Ll4N1CuHM15IPdvEz7
+	 JL+qWAZcK34SOQjgZTisUb4f6iKokg65BA7Jg3mY=
+Date: Fri, 25 Apr 2025 13:17:09 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-usb@vger.kernel.org
+Subject: Re: [PATCH v2] dt-bindings: phy: rockchip: Convert RK3399 Type-C PHY
+ to schema
+Message-ID: <2025042559-badland-uncombed-c484@gregkh>
+References: <20250416202419.3836688-1-robh@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] PCI: Configure root port MPS to hardware maximum
- during host probing
-To: Niklas Cassel <cassel@kernel.org>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
- heiko@sntech.de, thomas.petazzoni@bootlin.com,
- manivannan.sadhasivam@linaro.org, yue.wang@amlogic.com, pali@kernel.org,
- neil.armstrong@linaro.org, robh@kernel.org, jingoohan1@gmail.com,
- khilman@baylibre.com, jbrunet@baylibre.com,
- martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20250425095708.32662-1-18255117159@163.com>
- <20250425095708.32662-2-18255117159@163.com> <aAtikPOYlGeJCsiA@ryzen>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <aAtikPOYlGeJCsiA@ryzen>
-X-CM-TRANSID: _____wCH5yx1agto6+qPCQ--.28259S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW3WFy8Jw4fXr47ury3ZFyrZwb_yoW3Xw17pF
-	W2qF42yF4kJF43Ka97tF18uFWjq3ZY9FW3JFsxJr1qv3Z3u3Z5C3sFkFyFq3y7Jr9Yvr1U
-	taykJ340vFs8JaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jzmhwUUUUU=
-X-Originating-IP: [222.71.101.198]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbBDws6o2gLX6dyxAABsx
+Content-Disposition: inline
+In-Reply-To: <20250416202419.3836688-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250425_035730_362218_D86AC883 
-X-CRM114-Status: GOOD (  20.56  )
+X-CRM114-CacheID: sfid-20250425_041712_625239_58BD93E9 
+X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,212 +71,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 2025/4/25 18:23, Niklas Cassel wrote:
-> On Fri, Apr 25, 2025 at 05:57:07PM +0800, Hans Zhang wrote:
->> Current PCIe initialization logic may leave root ports operating with
->> non-optimal Maximum Payload Size (MPS) settings. While downstream device
->> configuration is handled during bus enumeration, root port MPS values
->> inherited from firmware or hardware defaults might not utilize the full
->> capabilities supported by the controller hardware. This can result in
->> suboptimal data transfer efficiency across the PCIe hierarchy.
->>
->> During host controller probing phase, when PCIe bus tuning is enabled,
->> the implementation now configures root port MPS settings to their
->> hardware-supported maximum values. By iterating through bridge devices
->> under the root bus and identifying PCIe root ports, each port's MPS is set
->> to 128 << pcie_mpss to match the device's maximum supported payload size.
->> The Max Read Request Size (MRRS) is subsequently adjusted through existing
->> companion logic to maintain compatibility with PCIe specifications.
->>
->> Explicit initialization at host probing stage ensures consistent PCIe
->> topology configuration before downstream devices perform their own MPS
->> negotiations. This proactive approach addresses platform-specific
->> requirements where controller drivers depend on properly initialized root
->> port settings, while maintaining backward compatibility through
->> PCIE_BUS_TUNE_OFF conditional checks. Hardware capabilities are fully
->> utilized without altering existing device negotiation behaviors.
->>
->> Signed-off-by: Hans Zhang <18255117159@163.com>
+On Wed, Apr 16, 2025 at 03:24:17PM -0500, Rob Herring (Arm) wrote:
+> Convert the Rockchip RK3399 Type-C PHY to DT schema format. Add the
+> missing "power-domains" property and "port" and "orientation-switch"
+> properties in the child nodes.
 > 
-> Perhaps Mani deserves a Suggested-by tag?
+> Omit the previously deprecated properties as they aren't used anywhere.
 > 
-
-Dear Niklas,
-
-Thank you very much for your reply. Ok. Sorry, I missed it. I 'm going 
-to add Suggested-by tag.
-
+> Drop the 2nd example which was pretty much identical to the 1st example.
 > 
->> ---
->>   drivers/pci/probe.c | 12 ++++++++++++
->>   1 file changed, 12 insertions(+)
->>
->> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
->> index 364fa2a514f8..3973c593fdcf 100644
->> --- a/drivers/pci/probe.c
->> +++ b/drivers/pci/probe.c
->> @@ -3206,6 +3206,7 @@ EXPORT_SYMBOL_GPL(pci_create_root_bus);
->>   int pci_host_probe(struct pci_host_bridge *bridge)
->>   {
->>   	struct pci_bus *bus, *child;
->> +	struct pci_dev *dev;
->>   	int ret;
->>   
->>   	pci_lock_rescan_remove();
->> @@ -3228,6 +3229,17 @@ int pci_host_probe(struct pci_host_bridge *bridge)
->>   	 */
->>   	pci_assign_unassigned_root_bus_resources(bus);
->>   
->> +	if (pcie_bus_config != PCIE_BUS_TUNE_OFF) {
->> +		/* Configure root ports MPS to be MPSS by default */
->> +		for_each_pci_bridge(dev, bus) {
->> +			if (pci_pcie_type(dev) != PCI_EXP_TYPE_ROOT_PORT)
->> +				continue;
->> +
->> +			pcie_write_mps(dev, 128 << dev->pcie_mpss);
->> +			pcie_write_mrrs(dev);
-> 
-> The comment says configure MPS, but the code also calls pcie_write_mrrs().
-> 
-> Should we update the comment or should we remove the call to pcie_write_mrrs()?
-> 
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 
-I have tested and found that the result is the same whether 
-pcie_write_mrrs() is called or not.
-
-> Note that even when calling pcie_write_mrrs(), it will not update MRRS for the
-> common case (pcie_bus_config == PCIE_BUS_DEFAULT).
-
-But I discovered a problem:
-
-0001:90:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
-          ......
-          Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
-                  DevCap: MaxPayload 512 bytes, PhantFunc 0
-                          ExtTag- RBE+
-                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
-                          RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
-                          MaxPayload 512 bytes, MaxReadReq 1024 bytes
-
-
-
-			Should the DevCtl MaxPayload be 256B?
-
-But I tested that the file reading and writing were normal. Is the 
-display of 512B here what we expected?
-
-Root Port 0003:30:00.0 has the same problem. May I ask what your opinion is?
-
-
-		......
-0001:91:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd
-NVMe SSD Controller PM9A1/PM9A3/980PRO (prog-if 02 [NVM Express])
-          ......
-          Capabilities: [70] Express (v2) Endpoint, MSI 00
-                  DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s
-unlimited, L1 unlimited
-                          ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+
-SlotPowerLimit 0W
-                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
-                          RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+
-FLReset-
-                          MaxPayload 256 bytes, MaxReadReq 512 bytes
-		......
-
-
-
-
-
-Several PCIe ports that I enabled.
-
-root@cix-localhost:~# cat /proc/version
-Linux version 6.15.0-rc2-00015-gced1536aaf04-dirty (hans@hans) ......
-root@cix-localhost:~# lspci
-0000:c0:00.0 PCI bridge: Device 1f6c:0001
-0000:c1:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd
-NVMe SSD Controller S4LV008[Pascal]
-0001:90:00.0 PCI bridge: Device 1f6c:0001
-0001:91:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd
-NVMe SSD Controller PM9A1/PM9A3/980PRO
-0003:30:00.0 PCI bridge: Device 1f6c:0001
-0003:31:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd.
-RTL8125 2.5GbE Controller (rev 05)root@cix-localhost:~# lspci -vvv
-0000:c0:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
-          ......
-          Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
-                  DevCap: MaxPayload 512 bytes, PhantFunc 0
-                          ExtTag+ RBE+
-                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
-                          RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+
-                          MaxPayload 512 bytes, MaxReadReq 1024 bytes
-		......
-0000:c1:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd
-NVMe SSD Controller S4LV008[Pascal] (prog-if 02 [NVM Express])
-          ......
-          Capabilities: [70] Express (v2) Endpoint, MSI 00
-                  DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s
-unlimited, L1 unlimited
-                          ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+
-SlotPowerLimit 0W
-                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
-                          RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+
-FLReset-
-                          MaxPayload 512 bytes, MaxReadReq 512 bytes
-		......
-0001:90:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
-          ......
-          Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
-                  DevCap: MaxPayload 512 bytes, PhantFunc 0
-                          ExtTag- RBE+
-                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
-                          RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
-                          MaxPayload 512 bytes, MaxReadReq 1024 bytes
-		......
-0001:91:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd
-NVMe SSD Controller PM9A1/PM9A3/980PRO (prog-if 02 [NVM Express])
-          ......
-          Capabilities: [70] Express (v2) Endpoint, MSI 00
-                  DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s
-unlimited, L1 unlimited
-                          ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+
-SlotPowerLimit 0W
-                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
-                          RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+
-FLReset-
-                          MaxPayload 256 bytes, MaxReadReq 512 bytes
-		......
-0003:30:00.0 PCI bridge: Device 1f6c:0001 (prog-if 00 [Normal decode])
-          ......
-          Capabilities: [c0] Express (v2) Root Port (Slot-), MSI 00
-                  DevCap: MaxPayload 512 bytes, PhantFunc 0
-                          ExtTag- RBE+
-                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
-                          RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
-                          MaxPayload 512 bytes, MaxReadReq 1024 bytes
-		......
-0003:31:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd.
-RTL8125 2.5GbE Controller (rev 05)
-          ......
-          Capabilities: [70] Express (v2) Endpoint, MSI 01
-                  DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s
-<512ns, L1 <64us
-                          ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset-
-SlotPowerLimit 0W
-                  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
-                          RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop-
-                          MaxPayload 256 bytes, MaxReadReq 4096 bytes
-          ......
-
-Best regards,
-Hans
-
+Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 _______________________________________________
 Linux-rockchip mailing list
