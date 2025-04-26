@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 059BAC369CB
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Apr 2025 09:51:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADF69C369CB
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Apr 2025 15:05:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1UaL3kDcXvqJL97j/wMsjFRqQPB/EZM77G+y8xsTaiY=; b=SYXAEmdUd4EnJpOroeT194oBt2
-	En6nOfhgrE9+K/tKMOCgUEw2XmMTUHAMHrGShMhUBG2Pt5ZGX/4sOFsJUWayWVu9/t8kka6atsRMc
-	XyAhsPooBQye1FSsisxyL9cl306vbHCMvZX3SexnxLaWOdB1krwM7S4vFP9cYcsiDodEXVJmJCQTh
-	IF+lt/WMEUTie47RDscpbhTTa/tw3/HF+1Y42nWU3ruNmCh6geKOWxw2oAoE9B2NBPpmxZaa9AcKg
-	NBUKdyMJrycdZenFHduWcA4aUQzyxJhRLT/G0qZyY5Ug7vajC2Qog2ZJSPjTzrJbhZVORQhnYS/fZ
-	5uzhkmSA==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2alOG8RMCa7MWdhm5qFMN10IRo7sVafF/4KhVtDhcfc=; b=Atn9dfj13bsjQd
+	weWWguCsUHs5n0M6XoyJFHxQ3dVUjPS37aoQsYhkMG3sfws61CYATzH0aP1CHTIDcei53m8ZhZKBi
+	rahKZLcDcJMlkNq8ON6KoVV16lkiv9xZVEa1SJ3BrGYk9xy2+MRcci/kv3qqeLRdKju4d20KtL52X
+	lgdo4jq7azt9Va6kJbvG1Eic+IV/JOIFyc8iE0cH4TktGcfvb0RzP31QTD33aOexaxPzYg8TubMfp
+	s7iJv/+KFtUX/upf0s31VuVbmRKVgw5B+KuUNd+TEs+pabtt6oCwzPAQICF1dvD+QjApamqFttc+1
+	BKM+LFsoBnRhCT6szePQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8cC0-00000001phy-2WmP;
-	Sat, 26 Apr 2025 09:51:28 +0000
-Received: from out-187.mta1.migadu.com ([2001:41d0:203:375::bb])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8cAE-00000001pat-3YOY
-	for linux-rockchip@lists.infradead.org;
-	Sat, 26 Apr 2025 09:49:40 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1745660966;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=w3LCgJPF74Xbd9a4LK3HZnV1+d98aQdvtMSQTN4S4yY=;
-	b=mL2Dr4PBjwgXUrKJj/AgVVRKSL5GmFbusKHF+A70PvEUaDDYfnu1lcLBih37M0FWhRTjSK
-	vYJ9Vm4TF5gn53WfmmM/fR3Bw6Bu6dbDgYaLkhb5Gh3eZStC8TADhI9CrKfu5mwgpI9YfQ
-	R8xX69n+r5XDJx9TYxayaqFF8zXg5A+zADwQ2njEyLmR+fJ3krEiHw8bFj8O/tiS4ojfvS
-	TL/PL3CptmOq27C9PLh9muXvi7K8WoYfr/ytT5yvh9rT10WIgQc9ilZjUehgU60VtW4SV2
-	JSGQvb7iVja5A61Cq0KkHqIe7dtE0RYSbcrDaKU14O0kVRjYwmMf7tRFRAMhQA==
-Date: Sat, 26 Apr 2025 11:49:13 +0200
-Message-Id: <D9GH5V09WW47.358SY1F7LJ9ZV@cknow.org>
-Cc: <devicetree@vger.kernel.org>, <linux-pm@vger.kernel.org>, "Sebastian
- Reichel" <sebastian.reichel@collabora.com>, <linux-kernel@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>, <kernel@collabora.com>,
- <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH v5 5/7] thermal: rockchip: support reading trim values
- from OTP
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com>, "Rafael J.
- Wysocki" <rafael@kernel.org>, "Daniel Lezcano" <daniel.lezcano@linaro.org>,
- "Zhang Rui" <rui.zhang@intel.com>, "Lukasz Luba" <lukasz.luba@arm.com>,
- "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko
- Stuebner" <heiko@sntech.de>, "Jonas Karlman" <jonas@kwiboo.se>
-References: <20250425-rk3576-tsadc-upstream-v5-0-0c840b99c30e@collabora.com>
- <20250425-rk3576-tsadc-upstream-v5-5-0c840b99c30e@collabora.com>
-In-Reply-To: <20250425-rk3576-tsadc-upstream-v5-5-0c840b99c30e@collabora.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1u8h5Q-00000002Cf7-2K1E;
+	Sat, 26 Apr 2025 15:05:00 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u8h3W-00000002CRa-2CYl;
+	Sat, 26 Apr 2025 15:03:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
+	Content-Type; bh=2NTP26rZSO4aLxowU1tMWp58BMiXt/URHc+KIhHuxrE=;
+	b=MTNfI1bjj/6sOwjhpxl6bkmPC/+LTUKOPSiUAIeVV8nKWRz27uFqb1sJ+lDGtQ
+	63MoHFbayfTFrFSrFK+NANLTRI56wf+0T1ppXgIdKpVkRgIFTswtZJ8DfmcNUM85
+	eMNUYZOx0YDL/JumkNNFBNzS8YHXDrsFhuJdclLcPClrM=
+Received: from [192.168.71.89] (unknown [])
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wBXbM5v9QxolMNQCw--.59638S2;
+	Sat, 26 Apr 2025 23:02:08 +0800 (CST)
+Message-ID: <5e2844cc-8359-4b87-a8ce-eb5ebb85f8ff@163.com>
+Date: Sat, 26 Apr 2025 23:02:08 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] PCI: Remove redundant MPS configuration
+To: =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+ heiko@sntech.de, thomas.petazzoni@bootlin.com,
+ manivannan.sadhasivam@linaro.org, yue.wang@Amlogic.com,
+ neil.armstrong@linaro.org, robh@kernel.org, jingoohan1@gmail.com,
+ khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20250425095708.32662-1-18255117159@163.com>
+ <20250425095708.32662-3-18255117159@163.com>
+ <20250425181345.bybgcht5tweyg43k@pali>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <20250425181345.bybgcht5tweyg43k@pali>
+X-CM-TRANSID: _____wBXbM5v9QxolMNQCw--.59638S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7ZryUGr4UtrWfAw1rGF18Grg_yoW8Wr4xpa
+	13XFs3JF4Fqr15uF17Ja10gr1fXasIkFy5Xws8GFW3Za4aqw1UGFy2krs0kasrXr4v9F17
+	Za42v3ySyanxtaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UmYL9UUUUU=
+X-Originating-IP: [124.79.128.52]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbBDxM6o2gLzK+LogABst
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250426_024939_243655_3CF7BF14 
-X-CRM114-Status: GOOD (  24.42  )
+X-CRM114-CacheID: sfid-20250426_080302_958063_69DE318A 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,134 +76,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2468626682508086187=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2468626682508086187==
-Content-Type: multipart/signed;
- boundary=3f073c5a59fc125928ba9034ef05e53a7e470d8fbbe478b43f705ef13c24;
- micalg=pgp-sha512; protocol="application/pgp-signature"
-
---3f073c5a59fc125928ba9034ef05e53a7e470d8fbbe478b43f705ef13c24
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-
-Hi Nicolas,
-
-On Fri Apr 25, 2025 at 9:34 PM CEST, Nicolas Frattaroli wrote:
-> Many of the Rockchip SoCs support storing trim values for the sensors in
-> factory programmable memory. These values specify a fixed offset from
-> the sensor's returned temperature to get a more accurate picture of what
-> temperature the silicon is actually at.
->
-> The way this is implemented is with various OTP cells, which may be
-> absent. There may both be whole-TSADC trim values, as well as per-sensor
-> trim values.
->
-> In the downstream driver, whole-chip trim values override the per-sensor
-> trim values. This rewrite of the functionality changes the semantics to
-> something I see as slightly more useful: allow the whole-chip trim
-> values to serve as a fallback for lacking per-sensor trim values,
-> instead of overriding already present sensor trim values.
->
-> Additionally, the chip may specify an offset (trim_base, trim_base_frac)
-> in degrees celsius and degrees decicelsius respectively which defines
-> what the basis is from which the trim, if any, should be calculated
-> from. By default, this is 30 degrees Celsius, but the chip can once
-> again specify a different value through OTP cells.
-
-Would it be useful to define all the values in the same unit?
-Having celsius and decicelsius and millicelsius sounds like a recipe for
-(future) off-by-10/-100/-1000 errors.
-
-And possibly define-ing the '30' so people don't need this commit
-message to figure out where that magic number comes from?
-And also the '923' for ``.trim_slope``?
-
-> The implementation of these trim calculations have been tested
-> extensively on an RK3576, where it was confirmed to get rid of pesky 1.8
-> degree Celsius offsets between certain sensors.
->
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  drivers/thermal/rockchip_thermal.c | 221 +++++++++++++++++++++++++++++++=
-++----
->  1 file changed, 202 insertions(+), 19 deletions(-)
->
-> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchi=
-p_thermal.c
-> index 89e3180667e2a8f0ef5542b0db4d9e19a21a24d3..3beff9b6fac3abe8948b56132=
-b618ff1bed57217 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -9,6 +9,7 @@
->  #include <linux/interrupt.h>
->  #include <linux/io.h>
->  #include <linux/module.h>
-> +#include <linux/nvmem-consumer.h>
->  #include <linux/of.h>
->  #include <linux/of_address.h>
->  #include <linux/of_irq.h>
-> @@ -69,16 +70,18 @@ struct chip_tsadc_table {
->   * struct rockchip_tsadc_chip - hold the private data of tsadc chip
->   * @chn_offset: the channel offset of the first channel
->   * @chn_num: the channel number of tsadc chip
-> - * @tshut_temp: the hardware-controlled shutdown temperature value
-> + * @trim_slope: used to convert the trim code to a temperature in millic=
-elsius
-> + * @tshut_temp: the hardware-controlled shutdown temperature value, with=
- no trim
-
-Having the same units used everywhere would also avoid possible
-confusion here as ``trim_slope`` explicitly mentions millicelsius, but
-``tshut_temp`` does not, but AFAIK it's also in millicelsius.
-
-Cheers,
-  Diederik
-
->   * @tshut_mode: the hardware-controlled shutdown mode (0:CRU 1:GPIO)
->   * @tshut_polarity: the hardware-controlled active polarity (0:LOW 1:HIG=
-H)
->   * @initialize: SoC special initialize tsadc controller method
->   * @irq_ack: clear the interrupt
->   * @control: enable/disable method for the tsadc controller
-> - * @get_temp: get the temperature
-> + * @get_temp: get the raw temperature, unadjusted by trim
->   * @set_alarm_temp: set the high temperature interrupt
->   * @set_tshut_temp: set the hardware-controlled shutdown temperature
->   * @set_tshut_mode: set the hardware-controlled shutdown mode
-> + * @get_trim_code: convert a hardware temperature code to one adjusted f=
-or by trim
->   * @table: the chip-specific conversion table
->   */
->  struct rockchip_tsadc_chip {
-> @@ -86,6 +89,9 @@ struct rockchip_tsadc_chip {
-
---3f073c5a59fc125928ba9034ef05e53a7e470d8fbbe478b43f705ef13c24
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaAysHwAKCRDXblvOeH7b
-btwyAP0TuDcK9Aa/VqKu9kTOU2O3d5xjx4EzW+e6XJ2ZOqBbGAEApqUGJ4a2zPpi
-S1Shb4PtPJRr9dktGwogIP97AP7t3AY=
-=e2Pn
------END PGP SIGNATURE-----
-
---3f073c5a59fc125928ba9034ef05e53a7e470d8fbbe478b43f705ef13c24--
-
-
---===============2468626682508086187==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2468626682508086187==--
-
+CgpPbiAyMDI1LzQvMjYgMDI6MTMsIFBhbGkgUm9ow6FyIHdyb3RlOgo+IE9uIEZyaWRheSAyNSBB
+cHJpbCAyMDI1IDE3OjU3OjA4IEhhbnMgWmhhbmcgd3JvdGU6Cj4+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1hYXJkdmFyay5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxl
+ci9wY2ktYWFyZHZhcmsuYwo+PiBpbmRleCBhMjk3OTZjY2U0MjAuLmQ4ODUyODkyOTk0YSAxMDA2
+NDQKPj4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ktYWFyZHZhcmsuYwo+PiArKysg
+Yi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1hYXJkdmFyay5jCj4+IEBAIC01NDksOSArNTQ5
+LDcgQEAgc3RhdGljIHZvaWQgYWR2a19wY2llX3NldHVwX2h3KHN0cnVjdCBhZHZrX3BjaWUgKnBj
+aWUpCj4+ICAgCXJlZyA9IGFkdmtfcmVhZGwocGNpZSwgUENJRV9DT1JFX1BDSUVYUF9DQVAgKyBQ
+Q0lfRVhQX0RFVkNUTCk7Cj4+ICAgCXJlZyAmPSB+UENJX0VYUF9ERVZDVExfUkVMQVhfRU47Cj4+
+ICAgCXJlZyAmPSB+UENJX0VYUF9ERVZDVExfTk9TTk9PUF9FTjsKPj4gLQlyZWcgJj0gflBDSV9F
+WFBfREVWQ1RMX1BBWUxPQUQ7Cj4+ICAgCXJlZyAmPSB+UENJX0VYUF9ERVZDVExfUkVBRFJROwo+
+PiAtCXJlZyB8PSBQQ0lfRVhQX0RFVkNUTF9QQVlMT0FEXzUxMkI7Cj4+ICAgCXJlZyB8PSBQQ0lf
+RVhQX0RFVkNUTF9SRUFEUlFfNTEyQjsKPj4gICAJYWR2a193cml0ZWwocGNpZSwgcmVnLCBQQ0lF
+X0NPUkVfUENJRVhQX0NBUCArIFBDSV9FWFBfREVWQ1RMKTsKPj4gICAKPj4gLS0gCj4+IDIuMjUu
+MQo+Pgo+IAo+IFBsZWFzZSBkbyBub3QgcmVtb3ZlIHRoaXMgY29kZS4gSXQgaXMgcmVxdWlyZWQg
+cGFydCBvZiB0aGUKPiBpbml0aWFsaXphdGlvbiBvZiB0aGUgYWFyZHZhcmsgUENJIGNvbnRyb2xs
+ZXIgYXQgdGhlIHNwZWNpZmljIHBoYXNlLAo+IGFzIGRlZmluZWQgaW4gdGhlIEFybWFkYSAzNzAw
+IEZ1bmN0aW9uYWwgU3BlY2lmaWNhdGlvbi4KCkhpIFBhbGksCgpUaGlzIHNlcmllcyBvZiBwYXRj
+aGVzIGlzIGRpc2N1c3NpbmcgdGhlIGluaXRpYWxpemF0aW9uIG9mIERldkN0bC5NUFMgYnkgCnRo
+ZSBSb290IFBvcnQuIFBsZWFzZSBsb29rIGF0IHRoZSBmaXJzdCBwYXRjaCBJIHN1Ym1pdHRlZC4g
+SWYgdGhlcmUgaXMgYSAKcmVhc29uYWJsZSBtZXRob2QgaW4gdGhlIGVuZCwgRGV2Q3RsLk1QUyB3
+aWxsIGFsc28gYmUgY29uZmlndXJlZCAKc3VjY2Vzc2Z1bGx5LiBUaGUgUENJZSBtYWludGFpbmVy
+IHdpbGwgZ2l2ZSB0aGUgcmV2aWV3IG9waW5pb25zLiBQbGVhc2UgCnJlc3QgYXNzdXJlZCB0aGF0
+IGl0IHdpbGwgbm90IGFmZmVjdCB0aGUgZnVuY3Rpb25zIG9mIHRoZSBhYXJkdmFyayBQQ0kgCmNv
+bnRyb2xsZXIuCgpSb2NrY2hpcCdzIFJLMzU4OCBhbHNvIGhhcyB0aGUgc2FtZSBwcm9ibGVtLgoK
+Cmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1wY2kvcGF0Y2gvMjAy
+NTA0MTYxNTE5MjYuMTQwMjAyLTEtMTgyNTUxMTcxNTlAMTYzLmNvbS8KCkJlc3QgcmVnYXJkcywK
+SGFucwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
