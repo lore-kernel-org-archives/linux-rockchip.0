@@ -4,89 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FADAC369D1
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Apr 2025 14:14:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17D89C369D1
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Apr 2025 14:35:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mBB7QQS1lZy4tSB9Ojy+/2iVs78miNYfL2RKqhm2hoU=; b=DkM+UKJ3XzXAV8
-	IqCaLKt1mWKy9FrD5s9aubGidkksgy7/KBeK4ghZ9Zy5XJI3H6RK0TOqyp2Z+4FFNV67hpb9O6tYD
-	ARgJZkp6EAfsW//yZ63EvD83z10GvzuBu/1sNvecCYqW3cKPuJcQ93NjxLZPOtrGQmTB90dN8MA3K
-	N125Un6zN4FtOgs2iaCWFX0Kb7mUZDWuJ09PDDrHN5RLb0QE2DUVjBKh5xdH1qR1hxdUsfRt+rOkA
-	BD3fHfsuEEruppradlXT3gqSL4gkxHRKLujS5oC+2cHJcde6bA73Et5TvCRvZLjqVNUrCR/9WWyou
-	uL3rj5yHb56IN2QCT1Ng==;
+	List-Owner; bh=RnJt8odi9Jfs/YOYkUkqE3LWZJkg/JA4XVdHbUc5GJQ=; b=MUFno4h3e3sj8T
+	Nn0zvyJAvTo1UgAhODCidDg9643hEEkurf0zgJLylYb1lqMUGa7G+v3M7ukMNEkeUFFxhtfXlzxB2
+	Art9EvX6y/5b0QyJALlqu5YDEy3TcxNxlh+ylFf+rXB2BPxBX94EADk/9jETQtjjI9X0JRUFWOeHc
+	z5A/7bzn5vlZZS7/McQQ5JkcAxydpo55HYkP5uSGzGLgeh1UWLEvZA9LlIc/rssKn+zKHnAmQcJ7U
+	K1aCvzuok9cG/58D7KDP0yhlcGwcd+fdYZWMTmGQxim/+CE2S0pQ849Gmfctz/AL1sKeIS0FzQ+aS
+	P04mL6awHsok5A8YjFmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u92lu-00000003dzu-13Ke;
-	Sun, 27 Apr 2025 14:14:18 +0000
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u92lr-00000003dzA-3Wls
-	for linux-rockchip@lists.infradead.org;
-	Sun, 27 Apr 2025 14:14:17 +0000
-Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-736c277331eso4649276b3a.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 27 Apr 2025 07:14:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1745763255; x=1746368055; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=ACNBxPO8ZTcboVmh3x2UF5/k0ixRgW7g046Uv0nuIS4=;
-        b=ecx9dFBdjtovJcsVrHurwLDKllgMjKn/6yaeJj/QZRvJrc2bM7NpKJE7knEUJHMEfq
-         QrZi34r/Yg9bcHOkhTvSiuhX+SFK4tQPXkUvD4wesqYJZwg07QOUsBxxcgBSBKtJh60i
-         cNxKD84t0REsWOzW+LzmhBSB3cNbGL2Uct8q3iwlzyIqpkapQpEXSBQwd6kMceAgAjtl
-         IxL2I1gpem+E8Fdd5vYFLNYXEfZ1K6AEUc0RT8WNKbA0UyXBCSqOScIBHB803a9xSHPH
-         utgpp2NTK8Mj0j12CKmpSzLhl4VeEl+OqyF14pfSeSOxSs2/nxSanKnlhE+JWvvkxx3S
-         CKbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745763255; x=1746368055;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ACNBxPO8ZTcboVmh3x2UF5/k0ixRgW7g046Uv0nuIS4=;
-        b=CDvqOCN3Tf2pXI2Q1qmp5UxZ7u63rTZ8oHsNg+NnpL7exwgCOrGMDm/f/iMHNLVbwy
-         Tw6DqqG8EzCqePNIvZgoc4VEW6SMGor5Z221bOALINBpXIzIjCHhFGhpsNpyYS7Tsx2b
-         sxlRAh66SHXlQYAX8mT8f6cNpkRfN5QFCTNNKjxJsxkYPN7bobb0l7Z2f2IEM5DcuPL7
-         8FsHl9YQA6zS111ivDppwuC9OI3vssc3Aplw9JKU00P5i3yuodr2tXOApkJAm3acyoMc
-         lEaknw7yrJ/u5Hc8yGsNA9PcyIBA0jwDszBOKQtmb6HsUKwGmbOFxlnWAti4xJMWqxsI
-         Q8rA==
-X-Forwarded-Encrypted: i=1; AJvYcCUrcEoD1nIy7LmAzIHlnntu248/cQBgL2iENF+9472oitDkzTmTi+Ci9NiC/S33u18E+bJX+iAMuU9hxJPxSA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyZ+e5m7HtLolflubJ+qipC+96RR1n72aT96Zt9a3aNnZSX4O/M
-	FMchlKdQ71qj/a+BXG5u4ymn5U/XTlj2mWOpRtJ97NuTSx3ax/taFWm744+beg==
-X-Gm-Gg: ASbGnctMNN7iaYvDdZQERx+r5czRoor8pOWAHh1jSUZR9eqfzPF1LXCQSrjHoEaj8z5
-	eUN4fHEuiJ18zc6xG/aSO1fSIxD6k7QPDNnbjDy7nZCXeCC5430XJN/Fm+ORjhpFdG3b/jPDkh/
-	fys04+rt3xinwQm+BhOpIO8VOhB/6SJ6mwY8iQ5QKTBMdUrEBZafMLJrWI2z6Ul9g+OvFciCtiM
-	QA1VjAGsT3bbLcWb5/++gGMZtv3hK6e3d667aqWiSMuaxeoJfumAzdION19TWsn2UK6Mbknn7Sc
-	6MlKZaK/AV/DYFsmtGpKJmUvka56EnhjHDQqtMHoxkOblh3EyTY3
-X-Google-Smtp-Source: AGHT+IHjWEH0dSAl/SHWrSYJFzYKk/J+piJ5N7UDrAAAZ6BtOMkHd9X5c8VlDHgDtN0O4ARPSiTzjA==
-X-Received: by 2002:a05:6a20:c6ca:b0:1fd:f4df:ab67 with SMTP id adf61e73a8af0-2045b64f481mr12361009637.21.1745763254720;
-        Sun, 27 Apr 2025 07:14:14 -0700 (PDT)
-Received: from thinkpad ([120.60.143.241])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73e25912325sm6480321b3a.14.2025.04.27.07.14.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Apr 2025 07:14:14 -0700 (PDT)
-Date: Sun, 27 Apr 2025 19:44:08 +0530
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com, 
-	heiko@sntech.de, robh@kernel.org, jingoohan1@gmail.com, shawn.lin@rock-chips.com, 
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	Niklas Cassel <cassel@kernel.org>
-Subject: Re: [PATCH v4 2/3] PCI: dw-rockchip: Reorganize register and
- bitfield definitions
-Message-ID: <mbgc46teac74goifhuj4fegmtaagfoqkhlm4uid23jurbvi2xa@wnhycs77kk6w>
+	id 1u9368-00000003fvx-3avr;
+	Sun, 27 Apr 2025 14:35:12 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u92yq-00000003f4L-1tQE;
+	Sun, 27 Apr 2025 14:27:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
+	Content-Type; bh=6hi3ytW2JJOVFOaND+zNAN3cQVQYz5DqcVtZd66jYcc=;
+	b=TqUXsezzrI68t0pq8SAyOPLMcSZPD/TOy9nhOxYI1Pxb9h73VjBklZt2FnMyLb
+	/yOdzzwpq7iocWGZnF1CR6arfo9YsdKOLHb4KSNxzWdC+fP/le8rPRAwSZSqVkD7
+	cN4XPeeAtY5hlEmypu149GH+lqLQ7fbvcP00fSGqnqVy8=
+Received: from [192.168.71.89] (unknown [])
+	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wA3jySSPg5ofRKLCw--.19505S2;
+	Sun, 27 Apr 2025 22:26:27 +0800 (CST)
+Message-ID: <c12ac95a-51d6-45a6-bf1b-29964e817a7d@163.com>
+Date: Sun, 27 Apr 2025 22:26:26 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/3] PCI: dw-rockchip: Reorganize register and bitfield
+ definitions
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+ heiko@sntech.de, robh@kernel.org, jingoohan1@gmail.com,
+ shawn.lin@rock-chips.com, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Niklas Cassel <cassel@kernel.org>
 References: <20250427125316.99627-1-18255117159@163.com>
  <20250427125316.99627-3-18255117159@163.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250427125316.99627-3-18255117159@163.com>
+ <mbgc46teac74goifhuj4fegmtaagfoqkhlm4uid23jurbvi2xa@wnhycs77kk6w>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <mbgc46teac74goifhuj4fegmtaagfoqkhlm4uid23jurbvi2xa@wnhycs77kk6w>
+X-CM-TRANSID: _____wA3jySSPg5ofRKLCw--.19505S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW3Wr13Ww18try3uF1DCFykZrb_yoW7Xr47pa
+	4DAa4Ikr45t3y7Z3sY9F98ZFWIqrnxKFWUGrs3K3y8u3WkAw18Gr1jgF95Wry7Jr4kAryf
+	uwn8u34xWFWakrDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UBrWwUUUUU=
+X-Originating-IP: [124.79.128.52]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOhw8o2gOIurF2wACsL
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250427_071415_910278_C4F7827F 
-X-CRM114-Status: GOOD (  16.62  )
+X-CRM114-CacheID: sfid-20250427_072740_872422_C30CBC8A 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,93 +74,144 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCBBcHIgMjcsIDIwMjUgYXQgMDg6NTM6MTVQTSArMDgwMCwgSGFucyBaaGFuZyB3cm90
-ZToKPiBSZWdpc3RlciBkZWZpbml0aW9ucyB3ZXJlIHNjYXR0ZXJlZCB3aXRoIGFtYmlndW91cyBu
-YW1lcyAoZS5nLiwKPiBQQ0lFX1JETEhfTElOS19VUF9DSEdFRCBpbiBQQ0lFX0NMSUVOVF9JTlRS
-X1NUQVRVU19NSVNDKSBhbmQgbGFja2VkCj4gaGllcmFyY2hpY2FsIGdyb3VwaW5nLiBNYWdpYyB2
-YWx1ZXMgZm9yIGJpdCBvcGVyYXRpb25zIHJlZHVjZWQgY29kZQo+IGNsYXJpdHkuCj4gCj4gR3Jv
-dXAgcmVnaXN0ZXJzIGFuZCB0aGVpciBhc3NvY2lhdGVkIGJpdGZpZWxkcyBsb2dpY2FsbHkuIFRo
-aXMgaW1wcm92ZXMKPiBtYWludGFpbmFiaWxpdHkgYW5kIGFsaWducyB0aGUgY29kZSB3aXRoIGhh
-cmR3YXJlIGRvY3VtZW50YXRpb24uCj4gCj4gU2lnbmVkLW9mZi1ieTogSGFucyBaaGFuZyA8MTgy
-NTUxMTcxNTlAMTYzLmNvbT4KPiBSZXZpZXdlZC1ieTogTmlrbGFzIENhc3NlbCA8Y2Fzc2VsQGtl
-cm5lbC5vcmc+Cj4gUmV2aWV3ZWQtYnk6IE1hbml2YW5uYW4gU2FkaGFzaXZhbSA8bWFuaXZhbm5h
-bi5zYWRoYXNpdmFtQGxpbmFyby5vcmc+Cj4gLS0tCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIv
-ZHdjL3BjaWUtZHctcm9ja2NoaXAuYyB8IDQ5ICsrKysrKysrKysrKy0tLS0tLS0KPiAgMSBmaWxl
-IGNoYW5nZWQsIDMxIGluc2VydGlvbnMoKyksIDE4IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMgYi9kcml2
-ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMKPiBpbmRleCBlN2QzM2Q1
-NDVkNWIuLmE3NzhmNGY2MTU5NSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250cm9sbGVy
-L2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMKPiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3
-Yy9wY2llLWR3LXJvY2tjaGlwLmMKPiBAQCAtMzMsMjQgKzMzLDM3IEBACj4gIAo+ICAjZGVmaW5l
-IHRvX3JvY2tjaGlwX3BjaWUoeCkgZGV2X2dldF9kcnZkYXRhKCh4KS0+ZGV2KQo+ICAKPiAtI2Rl
-ZmluZSBQQ0lFX0NMSUVOVF9SQ19NT0RFCQlISVdPUkRfVVBEQVRFX0JJVCgweDQwKQo+IC0jZGVm
-aW5lIFBDSUVfQ0xJRU5UX0VQX01PREUJCUhJV09SRF9VUERBVEUoMHhmMCwgMHgwKQo+IC0jZGVm
-aW5lIFBDSUVfQ0xJRU5UX0VOQUJMRV9MVFNTTQlISVdPUkRfVVBEQVRFX0JJVCgweGMpCj4gLSNk
-ZWZpbmUgUENJRV9DTElFTlRfRElTQUJMRV9MVFNTTQlISVdPUkRfVVBEQVRFKDB4MGMsIDB4OCkK
-PiAtI2RlZmluZSBQQ0lFX0NMSUVOVF9JTlRSX1NUQVRVU19NSVNDCTB4MTAKPiAtI2RlZmluZSBQ
-Q0lFX0NMSUVOVF9JTlRSX01BU0tfTUlTQwkweDI0Cj4gLSNkZWZpbmUgUENJRV9TTUxIX0xJTktV
-UAkJQklUKDE2KQo+IC0jZGVmaW5lIFBDSUVfUkRMSF9MSU5LVVAJCUJJVCgxNykKPiAtI2RlZmlu
-ZSBQQ0lFX0xJTktVUAkJCShQQ0lFX1NNTEhfTElOS1VQIHwgUENJRV9SRExIX0xJTktVUCkKPiAt
-I2RlZmluZSBQQ0lFX1JETEhfTElOS19VUF9DSEdFRAkJQklUKDEpCj4gLSNkZWZpbmUgUENJRV9M
-SU5LX1JFUV9SU1RfTk9UX0lOVAlCSVQoMikKPiAtI2RlZmluZSBQQ0lFX0NMSUVOVF9HRU5FUkFM
-X0NPTlRST0wJMHgwCj4gKy8qIEdlbmVyYWwgQ29udHJvbCBSZWdpc3RlciAqLwo+ICsjZGVmaW5l
-IFBDSUVfQ0xJRU5UX0dFTkVSQUxfQ09OCQkweDAKCklzIHRoaXMgdGhlIGFjdHVhbCBuYW1lIG9m
-IHRoZSByZWdpc3RlciBhcyBwZXIgdGhlIGRvY3VtZW50YXRpb24/IEp1c3QgYXNraW5nCmJlY2F1
-c2Ugb2YgJ19DT04nIGluc3RlYWQgb2YgJ19DT05UUk9MJy4KCi0gTWFuaQoKPiArI2RlZmluZSAg
-UENJRV9DTElFTlRfUkNfTU9ERQkJSElXT1JEX1VQREFURV9CSVQoMHg0MCkKPiArI2RlZmluZSAg
-UENJRV9DTElFTlRfRVBfTU9ERQkJSElXT1JEX1VQREFURSgweGYwLCAweDApCj4gKyNkZWZpbmUg
-IFBDSUVfQ0xJRU5UX0VOQUJMRV9MVFNTTQlISVdPUkRfVVBEQVRFX0JJVCgweGMpCj4gKyNkZWZp
-bmUgIFBDSUVfQ0xJRU5UX0RJU0FCTEVfTFRTU00JSElXT1JEX1VQREFURSgweDBjLCAweDgpCj4g
-Kwo+ICsvKiBJbnRlcnJ1cHQgU3RhdHVzIFJlZ2lzdGVyIFJlbGF0ZWQgdG8gTGVnYWN5IEludGVy
-cnVwdCAqLwo+ICAjZGVmaW5lIFBDSUVfQ0xJRU5UX0lOVFJfU1RBVFVTX0xFR0FDWQkweDgKPiAr
-Cj4gKy8qIEludGVycnVwdCBTdGF0dXMgUmVnaXN0ZXIgUmVsYXRlZCB0byBNaXNjZWxsYW5lb3Vz
-IE9wZXJhdGlvbiAqLwo+ICsjZGVmaW5lIFBDSUVfQ0xJRU5UX0lOVFJfU1RBVFVTX01JU0MJMHgx
-MAo+ICsjZGVmaW5lICBQQ0lFX1JETEhfTElOS19VUF9DSEdFRAlCSVQoMSkKPiArI2RlZmluZSAg
-UENJRV9MSU5LX1JFUV9SU1RfTk9UX0lOVAlCSVQoMikKPiArCj4gKy8qIEludGVycnVwdCBNYXNr
-IFJlZ2lzdGVyIFJlbGF0ZWQgdG8gTGVnYWN5IEludGVycnVwdCAqLwo+ICAjZGVmaW5lIFBDSUVf
-Q0xJRU5UX0lOVFJfTUFTS19MRUdBQ1kJMHgxYwo+ICsKPiArLyogSW50ZXJydXB0IE1hc2sgUmVn
-aXN0ZXIgUmVsYXRlZCB0byBNaXNjZWxsYW5lb3VzIE9wZXJhdGlvbiAqLwo+ICsjZGVmaW5lIFBD
-SUVfQ0xJRU5UX0lOVFJfTUFTS19NSVNDCTB4MjQKPiArCj4gKy8qIEhvdCBSZXNldCBDb250cm9s
-IFJlZ2lzdGVyICovCj4gICNkZWZpbmUgUENJRV9DTElFTlRfSE9UX1JFU0VUX0NUUkwJMHgxODAK
-PiArI2RlZmluZSAgUENJRV9MVFNTTV9FTkFCTEVfRU5IQU5DRQlCSVQoNCkKPiArCj4gKy8qIExU
-U1NNIFN0YXR1cyBSZWdpc3RlciAqLwo+ICAjZGVmaW5lIFBDSUVfQ0xJRU5UX0xUU1NNX1NUQVRV
-UwkweDMwMAo+IC0jZGVmaW5lIFBDSUVfTFRTU01fRU5BQkxFX0VOSEFOQ0UJQklUKDQpCj4gLSNk
-ZWZpbmUgUENJRV9MVFNTTV9TVEFUVVNfTUFTSwkJR0VOTUFTSyg1LCAwKQo+ICsjZGVmaW5lICBQ
-Q0lFX1NNTEhfTElOS1VQCQlCSVQoMTYpCj4gKyNkZWZpbmUgIFBDSUVfUkRMSF9MSU5LVVAJCUJJ
-VCgxNykKPiArI2RlZmluZSAgUENJRV9MSU5LVVAJCQkoUENJRV9TTUxIX0xJTktVUCB8IFBDSUVf
-UkRMSF9MSU5LVVApCj4gKyNkZWZpbmUgIFBDSUVfTFRTU01fU1RBVFVTX01BU0sJCUdFTk1BU0so
-NSwgMCkKPiAgCj4gIHN0cnVjdCByb2NrY2hpcF9wY2llIHsKPiAgCXN0cnVjdCBkd19wY2llIHBj
-aTsKPiBAQCAtMTYxLDEzICsxNzQsMTMgQEAgc3RhdGljIHUzMiByb2NrY2hpcF9wY2llX2dldF9s
-dHNzbShzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXApCj4gIHN0YXRpYyB2b2lkIHJvY2tj
-aGlwX3BjaWVfZW5hYmxlX2x0c3NtKHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCkKPiAg
-ewo+ICAJcm9ja2NoaXBfcGNpZV93cml0ZWxfYXBiKHJvY2tjaGlwLCBQQ0lFX0NMSUVOVF9FTkFC
-TEVfTFRTU00sCj4gLQkJCQkgUENJRV9DTElFTlRfR0VORVJBTF9DT05UUk9MKTsKPiArCQkJCSBQ
-Q0lFX0NMSUVOVF9HRU5FUkFMX0NPTik7Cj4gIH0KPiAgCj4gIHN0YXRpYyB2b2lkIHJvY2tjaGlw
-X3BjaWVfZGlzYWJsZV9sdHNzbShzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXApCj4gIHsK
-PiAgCXJvY2tjaGlwX3BjaWVfd3JpdGVsX2FwYihyb2NrY2hpcCwgUENJRV9DTElFTlRfRElTQUJM
-RV9MVFNTTSwKPiAtCQkJCSBQQ0lFX0NMSUVOVF9HRU5FUkFMX0NPTlRST0wpOwo+ICsJCQkJIFBD
-SUVfQ0xJRU5UX0dFTkVSQUxfQ09OKTsKPiAgfQo+ICAKPiAgc3RhdGljIGludCByb2NrY2hpcF9w
-Y2llX2xpbmtfdXAoc3RydWN0IGR3X3BjaWUgKnBjaSkKPiBAQCAtNTE2LDcgKzUyOSw3IEBAIHN0
-YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV9jb25maWd1cmVfcmMoc3RydWN0IHBsYXRmb3JtX2Rldmlj
-ZSAqcGRldiwKPiAgCXJvY2tjaGlwX3BjaWVfd3JpdGVsX2FwYihyb2NrY2hpcCwgdmFsLCBQQ0lF
-X0NMSUVOVF9IT1RfUkVTRVRfQ1RSTCk7Cj4gIAo+ICAJcm9ja2NoaXBfcGNpZV93cml0ZWxfYXBi
-KHJvY2tjaGlwLCBQQ0lFX0NMSUVOVF9SQ19NT0RFLAo+IC0JCQkJIFBDSUVfQ0xJRU5UX0dFTkVS
-QUxfQ09OVFJPTCk7Cj4gKwkJCQkgUENJRV9DTElFTlRfR0VORVJBTF9DT04pOwo+ICAKPiAgCXBw
-ID0gJnJvY2tjaGlwLT5wY2kucHA7Cj4gIAlwcC0+b3BzID0gJnJvY2tjaGlwX3BjaWVfaG9zdF9v
-cHM7Cj4gQEAgLTU2Miw3ICs1NzUsNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3BjaWVfY29uZmln
-dXJlX2VwKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4gIAlyb2NrY2hpcF9wY2llX3dy
-aXRlbF9hcGIocm9ja2NoaXAsIHZhbCwgUENJRV9DTElFTlRfSE9UX1JFU0VUX0NUUkwpOwo+ICAK
-PiAgCXJvY2tjaGlwX3BjaWVfd3JpdGVsX2FwYihyb2NrY2hpcCwgUENJRV9DTElFTlRfRVBfTU9E
-RSwKPiAtCQkJCSBQQ0lFX0NMSUVOVF9HRU5FUkFMX0NPTlRST0wpOwo+ICsJCQkJIFBDSUVfQ0xJ
-RU5UX0dFTkVSQUxfQ09OKTsKPiAgCj4gIAlyb2NrY2hpcC0+cGNpLmVwLm9wcyA9ICZyb2NrY2hp
-cF9wY2llX2VwX29wczsKPiAgCXJvY2tjaGlwLT5wY2kuZXAucGFnZV9zaXplID0gU1pfNjRLOwo+
-IC0tIAo+IDIuMjUuMQo+IAoKLS0gCuCuruCuo+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDgrprgrqTg
-rr7grprgrr/grrXgrq7gr40KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+
+
+On 2025/4/27 22:14, Manivannan Sadhasivam wrote:
+> On Sun, Apr 27, 2025 at 08:53:15PM +0800, Hans Zhang wrote:
+>> Register definitions were scattered with ambiguous names (e.g.,
+>> PCIE_RDLH_LINK_UP_CHGED in PCIE_CLIENT_INTR_STATUS_MISC) and lacked
+>> hierarchical grouping. Magic values for bit operations reduced code
+>> clarity.
+>>
+>> Group registers and their associated bitfields logically. This improves
+>> maintainability and aligns the code with hardware documentation.
+>>
+>> Signed-off-by: Hans Zhang <18255117159@163.com>
+>> Reviewed-by: Niklas Cassel <cassel@kernel.org>
+>> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+>> ---
+>>   drivers/pci/controller/dwc/pcie-dw-rockchip.c | 49 ++++++++++++-------
+>>   1 file changed, 31 insertions(+), 18 deletions(-)
+>>
+>> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+>> index e7d33d545d5b..a778f4f61595 100644
+>> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+>> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+>> @@ -33,24 +33,37 @@
+>>   
+>>   #define to_rockchip_pcie(x) dev_get_drvdata((x)->dev)
+>>   
+>> -#define PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
+>> -#define PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
+>> -#define PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
+>> -#define PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
+>> -#define PCIE_CLIENT_INTR_STATUS_MISC	0x10
+>> -#define PCIE_CLIENT_INTR_MASK_MISC	0x24
+>> -#define PCIE_SMLH_LINKUP		BIT(16)
+>> -#define PCIE_RDLH_LINKUP		BIT(17)
+>> -#define PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
+>> -#define PCIE_RDLH_LINK_UP_CHGED		BIT(1)
+>> -#define PCIE_LINK_REQ_RST_NOT_INT	BIT(2)
+>> -#define PCIE_CLIENT_GENERAL_CONTROL	0x0
+>> +/* General Control Register */
+>> +#define PCIE_CLIENT_GENERAL_CON		0x0
+> 
+> Is this the actual name of the register as per the documentation? Just asking
+> because of '_CON' instead of '_CONTROL'.
+> 
+
+Hi Mani,
+
+Yes. I saw that RK3588 TRM is named like this.
+
+PCIE_CLIENT_GENERAL_CON
+
+Best regards,
+Hans
+
+
+> - Mani
+> 
+>> +#define  PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
+>> +#define  PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
+>> +#define  PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
+>> +#define  PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
+>> +
+>> +/* Interrupt Status Register Related to Legacy Interrupt */
+>>   #define PCIE_CLIENT_INTR_STATUS_LEGACY	0x8
+>> +
+>> +/* Interrupt Status Register Related to Miscellaneous Operation */
+>> +#define PCIE_CLIENT_INTR_STATUS_MISC	0x10
+>> +#define  PCIE_RDLH_LINK_UP_CHGED	BIT(1)
+>> +#define  PCIE_LINK_REQ_RST_NOT_INT	BIT(2)
+>> +
+>> +/* Interrupt Mask Register Related to Legacy Interrupt */
+>>   #define PCIE_CLIENT_INTR_MASK_LEGACY	0x1c
+>> +
+>> +/* Interrupt Mask Register Related to Miscellaneous Operation */
+>> +#define PCIE_CLIENT_INTR_MASK_MISC	0x24
+>> +
+>> +/* Hot Reset Control Register */
+>>   #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
+>> +#define  PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
+>> +
+>> +/* LTSSM Status Register */
+>>   #define PCIE_CLIENT_LTSSM_STATUS	0x300
+>> -#define PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
+>> -#define PCIE_LTSSM_STATUS_MASK		GENMASK(5, 0)
+>> +#define  PCIE_SMLH_LINKUP		BIT(16)
+>> +#define  PCIE_RDLH_LINKUP		BIT(17)
+>> +#define  PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
+>> +#define  PCIE_LTSSM_STATUS_MASK		GENMASK(5, 0)
+>>   
+>>   struct rockchip_pcie {
+>>   	struct dw_pcie pci;
+>> @@ -161,13 +174,13 @@ static u32 rockchip_pcie_get_ltssm(struct rockchip_pcie *rockchip)
+>>   static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
+>>   {
+>>   	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
+>> -				 PCIE_CLIENT_GENERAL_CONTROL);
+>> +				 PCIE_CLIENT_GENERAL_CON);
+>>   }
+>>   
+>>   static void rockchip_pcie_disable_ltssm(struct rockchip_pcie *rockchip)
+>>   {
+>>   	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DISABLE_LTSSM,
+>> -				 PCIE_CLIENT_GENERAL_CONTROL);
+>> +				 PCIE_CLIENT_GENERAL_CON);
+>>   }
+>>   
+>>   static int rockchip_pcie_link_up(struct dw_pcie *pci)
+>> @@ -516,7 +529,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+>>   	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+>>   
+>>   	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_RC_MODE,
+>> -				 PCIE_CLIENT_GENERAL_CONTROL);
+>> +				 PCIE_CLIENT_GENERAL_CON);
+>>   
+>>   	pp = &rockchip->pci.pp;
+>>   	pp->ops = &rockchip_pcie_host_ops;
+>> @@ -562,7 +575,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+>>   	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+>>   
+>>   	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_EP_MODE,
+>> -				 PCIE_CLIENT_GENERAL_CONTROL);
+>> +				 PCIE_CLIENT_GENERAL_CON);
+>>   
+>>   	rockchip->pci.ep.ops = &rockchip_pcie_ep_ops;
+>>   	rockchip->pci.ep.page_size = SZ_64K;
+>> -- 
+>> 2.25.1
+>>
+> 
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
