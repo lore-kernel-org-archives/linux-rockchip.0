@@ -4,65 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17D89C369D1
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Apr 2025 14:35:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD197C369D1
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Apr 2025 15:18:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RnJt8odi9Jfs/YOYkUkqE3LWZJkg/JA4XVdHbUc5GJQ=; b=MUFno4h3e3sj8T
-	Nn0zvyJAvTo1UgAhODCidDg9643hEEkurf0zgJLylYb1lqMUGa7G+v3M7ukMNEkeUFFxhtfXlzxB2
-	Art9EvX6y/5b0QyJALlqu5YDEy3TcxNxlh+ylFf+rXB2BPxBX94EADk/9jETQtjjI9X0JRUFWOeHc
-	z5A/7bzn5vlZZS7/McQQ5JkcAxydpo55HYkP5uSGzGLgeh1UWLEvZA9LlIc/rssKn+zKHnAmQcJ7U
-	K1aCvzuok9cG/58D7KDP0yhlcGwcd+fdYZWMTmGQxim/+CE2S0pQ849Gmfctz/AL1sKeIS0FzQ+aS
-	P04mL6awHsok5A8YjFmA==;
+	List-Owner; bh=p7ugCpN6YYZGhIWqCRJIwXddZO7eeRMxWbMbEhKZS7Q=; b=sDWV3u9+LORgzo
+	UABznKw3EKUwo+xikVa5MdA+oQjvmQETHIzz1k83tE3V5//sAFocnyunBJqe+IU5VYn8HT7q9+hKq
+	dPdvdOIIXFHukYgGwOxk86TWmHAvsCARzzNegkIniUZ2Zyji4/SjB1JJCB6T9supwVacUJzhu1iyd
+	tRDWsdeMBAkHq6U8wVq6grFnqYh7fN8AJHc+Q0Jz1YVrgEtpmSD8exsEoFhCOrXOLPUsLl/8MySO1
+	quwN5rJdOsUKzBtyKj1KyAcA7WIeyeo4ha9q3ZfwrD+uxUqqc48w9C1hkK5uuCKtQGoXp6T+vTnKw
+	PWmaaVuzqGM9DrGWYGdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9368-00000003fvx-3avr;
-	Sun, 27 Apr 2025 14:35:12 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u92yq-00000003f4L-1tQE;
-	Sun, 27 Apr 2025 14:27:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
-	Content-Type; bh=6hi3ytW2JJOVFOaND+zNAN3cQVQYz5DqcVtZd66jYcc=;
-	b=TqUXsezzrI68t0pq8SAyOPLMcSZPD/TOy9nhOxYI1Pxb9h73VjBklZt2FnMyLb
-	/yOdzzwpq7iocWGZnF1CR6arfo9YsdKOLHb4KSNxzWdC+fP/le8rPRAwSZSqVkD7
-	cN4XPeeAtY5hlEmypu149GH+lqLQ7fbvcP00fSGqnqVy8=
-Received: from [192.168.71.89] (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wA3jySSPg5ofRKLCw--.19505S2;
-	Sun, 27 Apr 2025 22:26:27 +0800 (CST)
-Message-ID: <c12ac95a-51d6-45a6-bf1b-29964e817a7d@163.com>
-Date: Sun, 27 Apr 2025 22:26:26 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/3] PCI: dw-rockchip: Reorganize register and bitfield
- definitions
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
- heiko@sntech.de, robh@kernel.org, jingoohan1@gmail.com,
- shawn.lin@rock-chips.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Niklas Cassel <cassel@kernel.org>
+	id 1u93lU-00000003iSp-0FNi;
+	Sun, 27 Apr 2025 15:17:56 +0000
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u93lR-00000003iS7-1jls
+	for linux-rockchip@lists.infradead.org;
+	Sun, 27 Apr 2025 15:17:54 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id 41be03b00d2f7-af51596da56so3233094a12.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 27 Apr 2025 08:17:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1745767072; x=1746371872; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=n6wXrjzsVf3DH1Jrc73Ekpfc7PLUWri8Lq7HSEYSNfM=;
+        b=dycefAmjFNyhdkdN7FJz2Y/PZ4EqQyj0t6Yxw4CKEFnMMWd3Zen4nUZJA5jigo+hbp
+         o8hroqx9A3pajFertE6jreVGrDdskeLJcbjUf9xwFU/q5feMoEDOCXCSJcm9GltrrE3F
+         i3IQosgaPjmlojzHbr7gCb72N+zOuwLpP8mqxShmtR4baWx4T6vEipiorY307zC4QSAj
+         zSl9GFwKRVkFw3uAnCPO70ZvzoHElTtRGRHblNg7ValGET79Hg1NgcCBnLB23K2/NW1n
+         NBCAEvyCkZeM3zjLevMoU38XKbNyiYwe4Vv5dOSHFlNg88CY5NICJHl5j/iESaKyfOKN
+         GmUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745767072; x=1746371872;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=n6wXrjzsVf3DH1Jrc73Ekpfc7PLUWri8Lq7HSEYSNfM=;
+        b=X+KOHYOPL5P0TgLKD+3xaQQOCbQ9MwIR8eaTl91WfQsIE9RqfdKs4cHh1mgKoWLkVY
+         pzEibHSIXO3Xc82cUe05Y3673TiHKNNXpY/UYjUh9y4azpnnhVSk5Q9ZsAZpwNKSZE8m
+         d9xVvV9WEI5zQIcG9IzQPCd7TvuhehqpDUjRHO24MunwYXGWVsWHURq3IeA74zIsmnZg
+         J+6x+Qy44jvymFmFjWVIOQk7GNW8OBb79CzM5yDr2vYM7cs5eAHhzUk0HJpgIidhL5RP
+         UP2e1QiI66QCZU7PTfFYVEnlsQzU/cy3yczHVzwpwO6HQdTxCSHf/kpK7m59Hg7MJ+ud
+         mkXg==
+X-Forwarded-Encrypted: i=1; AJvYcCVYKwWsnLJP3zh4AZWZAjbNpuEizHWY/EO4O4HsbPQU0MxB5sx0HBG1M3PdkNVNuVd90m7GH3FEpA8u+rB/Zw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzWPq+k++dv+ACtVH2aVB0ADRSSpI0YOUke5SdtxycRob9gKuRT
+	svq3q/UQaV7DzD9p18PkPx3TNz4PwIHSSt6mGPmd19q1CQVIzFVvwTXtCFn5OQ==
+X-Gm-Gg: ASbGncupFm9wFtP+6zxS2GADenn8dmdoL/AZHZVXMmZpMpBBKHibsI5F9XXK5L2TRTz
+	7YJbNpdFQmlGPs64W2puXUXYVE4dMd2uteerEVnGLMWZ14hVDsFkbvLHrYucG4lwfx0VAhHmiwp
+	9EmyyhwLlP42IjRJszT5v5eWqCoMORyvga1aSrp5sTGKcbRuCUjghTnrz7ejeAK1HjiB6ZRJePG
+	fztEAeGm2M0MLscA3Sn45c0b3CQt6PHIZ9qgOhXavYAjAB/SXG2aql8oDbt0vHR+NSiZGeKptWe
+	dHrZ1ZI4Y8KaEYUDUi2wFPzEqurfiaXyv2MKyhQfPQRe+kAAH/X8
+X-Google-Smtp-Source: AGHT+IHsKSGV7qVUDINwXMp3Zeljydm0ITfFLTON/CQSAoFjpJ4D36vJUKUIXlOMdJUWWo9Rrih6uw==
+X-Received: by 2002:a17:90b:2810:b0:2ff:502e:62d4 with SMTP id 98e67ed59e1d1-309f7e8ec70mr11258975a91.32.1745767072425;
+        Sun, 27 Apr 2025 08:17:52 -0700 (PDT)
+Received: from thinkpad.. ([120.60.52.11])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-309ef124cffsm7834594a91.32.2025.04.27.08.17.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 27 Apr 2025 08:17:51 -0700 (PDT)
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: lpieralisi@kernel.org,
+	kw@linux.com,
+	bhelgaas@google.com,
+	heiko@sntech.de,
+	Hans Zhang <18255117159@163.com>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	robh@kernel.org,
+	jingoohan1@gmail.com,
+	shawn.lin@rock-chips.com,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 0/3] PCI: dw-rockchip: Reorganize register and bitfield definitions
+Date: Sun, 27 Apr 2025 20:47:39 +0530
+Message-ID: <174576703760.21368.17997982524874077646.b4-ty@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250427125316.99627-1-18255117159@163.com>
 References: <20250427125316.99627-1-18255117159@163.com>
- <20250427125316.99627-3-18255117159@163.com>
- <mbgc46teac74goifhuj4fegmtaagfoqkhlm4uid23jurbvi2xa@wnhycs77kk6w>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <mbgc46teac74goifhuj4fegmtaagfoqkhlm4uid23jurbvi2xa@wnhycs77kk6w>
-X-CM-TRANSID: _____wA3jySSPg5ofRKLCw--.19505S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW3Wr13Ww18try3uF1DCFykZrb_yoW7Xr47pa
-	4DAa4Ikr45t3y7Z3sY9F98ZFWIqrnxKFWUGrs3K3y8u3WkAw18Gr1jgF95Wry7Jr4kAryf
-	uwn8u34xWFWakrDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UBrWwUUUUU=
-X-Originating-IP: [124.79.128.52]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOhw8o2gOIurF2wACsL
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250427_072740_872422_C30CBC8A 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20250427_081753_465318_097C9297 
+X-CRM114-Status: UNSURE (   5.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,142 +104,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-
-On 2025/4/27 22:14, Manivannan Sadhasivam wrote:
-> On Sun, Apr 27, 2025 at 08:53:15PM +0800, Hans Zhang wrote:
->> Register definitions were scattered with ambiguous names (e.g.,
->> PCIE_RDLH_LINK_UP_CHGED in PCIE_CLIENT_INTR_STATUS_MISC) and lacked
->> hierarchical grouping. Magic values for bit operations reduced code
->> clarity.
->>
->> Group registers and their associated bitfields logically. This improves
->> maintainability and aligns the code with hardware documentation.
->>
->> Signed-off-by: Hans Zhang <18255117159@163.com>
->> Reviewed-by: Niklas Cassel <cassel@kernel.org>
->> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
->> ---
->>   drivers/pci/controller/dwc/pcie-dw-rockchip.c | 49 ++++++++++++-------
->>   1 file changed, 31 insertions(+), 18 deletions(-)
->>
->> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->> index e7d33d545d5b..a778f4f61595 100644
->> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
->> @@ -33,24 +33,37 @@
->>   
->>   #define to_rockchip_pcie(x) dev_get_drvdata((x)->dev)
->>   
->> -#define PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
->> -#define PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
->> -#define PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
->> -#define PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
->> -#define PCIE_CLIENT_INTR_STATUS_MISC	0x10
->> -#define PCIE_CLIENT_INTR_MASK_MISC	0x24
->> -#define PCIE_SMLH_LINKUP		BIT(16)
->> -#define PCIE_RDLH_LINKUP		BIT(17)
->> -#define PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
->> -#define PCIE_RDLH_LINK_UP_CHGED		BIT(1)
->> -#define PCIE_LINK_REQ_RST_NOT_INT	BIT(2)
->> -#define PCIE_CLIENT_GENERAL_CONTROL	0x0
->> +/* General Control Register */
->> +#define PCIE_CLIENT_GENERAL_CON		0x0
-> 
-> Is this the actual name of the register as per the documentation? Just asking
-> because of '_CON' instead of '_CONTROL'.
+On Sun, 27 Apr 2025 20:53:13 +0800, Hans Zhang wrote:
+> 1. PCI: dw-rockchip: Remove unused PCIE_CLIENT_GENERAL_DEBUG
+> 2. PCI: dw-rockchip: Reorganize register and bitfield definitions
+> 3. PCI: dw-rockchip: Unify link status checks with FIELD_GET
 > 
 
-Hi Mani,
+Applied, thanks!
 
-Yes. I saw that RK3588 TRM is named like this.
-
-PCIE_CLIENT_GENERAL_CON
+[1/3] PCI: dw-rockchip: Remove unused PCIE_CLIENT_GENERAL_DEBUG
+      commit: c2f61b8479b2abcd9e20f8bd4c46e54bb7f5286f
+[2/3] PCI: dw-rockchip: Reorganize register and bitfield definitions
+      commit: ae8ed2b091ee8bd92da365d3332eebf159de8e0f
+[3/3] PCI: dw-rockchip: Unify link status checks with FIELD_GET
+      commit: 5e5a3bf48eed8d90bc5c5b710466f24663231f0a
 
 Best regards,
-Hans
-
-
-> - Mani
-> 
->> +#define  PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
->> +#define  PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
->> +#define  PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
->> +#define  PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
->> +
->> +/* Interrupt Status Register Related to Legacy Interrupt */
->>   #define PCIE_CLIENT_INTR_STATUS_LEGACY	0x8
->> +
->> +/* Interrupt Status Register Related to Miscellaneous Operation */
->> +#define PCIE_CLIENT_INTR_STATUS_MISC	0x10
->> +#define  PCIE_RDLH_LINK_UP_CHGED	BIT(1)
->> +#define  PCIE_LINK_REQ_RST_NOT_INT	BIT(2)
->> +
->> +/* Interrupt Mask Register Related to Legacy Interrupt */
->>   #define PCIE_CLIENT_INTR_MASK_LEGACY	0x1c
->> +
->> +/* Interrupt Mask Register Related to Miscellaneous Operation */
->> +#define PCIE_CLIENT_INTR_MASK_MISC	0x24
->> +
->> +/* Hot Reset Control Register */
->>   #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
->> +#define  PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
->> +
->> +/* LTSSM Status Register */
->>   #define PCIE_CLIENT_LTSSM_STATUS	0x300
->> -#define PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
->> -#define PCIE_LTSSM_STATUS_MASK		GENMASK(5, 0)
->> +#define  PCIE_SMLH_LINKUP		BIT(16)
->> +#define  PCIE_RDLH_LINKUP		BIT(17)
->> +#define  PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
->> +#define  PCIE_LTSSM_STATUS_MASK		GENMASK(5, 0)
->>   
->>   struct rockchip_pcie {
->>   	struct dw_pcie pci;
->> @@ -161,13 +174,13 @@ static u32 rockchip_pcie_get_ltssm(struct rockchip_pcie *rockchip)
->>   static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
->>   {
->>   	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
->> -				 PCIE_CLIENT_GENERAL_CONTROL);
->> +				 PCIE_CLIENT_GENERAL_CON);
->>   }
->>   
->>   static void rockchip_pcie_disable_ltssm(struct rockchip_pcie *rockchip)
->>   {
->>   	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DISABLE_LTSSM,
->> -				 PCIE_CLIENT_GENERAL_CONTROL);
->> +				 PCIE_CLIENT_GENERAL_CON);
->>   }
->>   
->>   static int rockchip_pcie_link_up(struct dw_pcie *pci)
->> @@ -516,7 +529,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
->>   	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
->>   
->>   	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_RC_MODE,
->> -				 PCIE_CLIENT_GENERAL_CONTROL);
->> +				 PCIE_CLIENT_GENERAL_CON);
->>   
->>   	pp = &rockchip->pci.pp;
->>   	pp->ops = &rockchip_pcie_host_ops;
->> @@ -562,7 +575,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
->>   	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
->>   
->>   	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_EP_MODE,
->> -				 PCIE_CLIENT_GENERAL_CONTROL);
->> +				 PCIE_CLIENT_GENERAL_CON);
->>   
->>   	rockchip->pci.ep.ops = &rockchip_pcie_ep_ops;
->>   	rockchip->pci.ep.page_size = SZ_64K;
->> -- 
->> 2.25.1
->>
-> 
-
+-- 
+Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
