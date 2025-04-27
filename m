@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AD98C369D1
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Apr 2025 13:01:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D371C369D1
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Apr 2025 13:05:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=PddI6Qk0HXZbXEjZfdgzyAQjQDYxA0SYfT0MRrp+7oA=; b=B0rWqMXLBQj5F0
-	v3WfajSyAOIAumXD3rtqnF5AT4PbaboyeOGJQRET5QG4ImC0NhB/A3Tz3pzaUseUtnUTNJF14Fz/o
-	fpf1wBEu9WVQdFC/7L8eB8wqLaxwnPDw++uprbw0jcK9OyFMJDkP/U0OgLYAZY9d/FbPA7x5oVp2u
-	N9fz5+z7eceWeRYntj6WfVcGiQm/3nFeZrzTZH0/q9Vvh/vSDbdP2Iiu3f1T6uuM/yHIStVqpBH6T
-	vCyuETdYzdCNkc0NcFCsmW8mhRqrTaGS7cL2rZAGQjOoW41UZni36dcBiNpeL4BtA+SaehYca3VQ9
-	rCBHLPkB3DORkeVFV2Ug==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dUkUEnGhvsdrYNd+NK62RIURWrh5MSxePa27dy0REMo=; b=SRNAilvhWzFxGb
+	HRY3wVfT/okyScPRq3A3jNMUX5hQVrddAH557kmamCiiYyP0UNV9TEnLv3OHD176ZDauY9QNzSwwV
+	kc7A+ln9UUGSxLybbaVNP2Gc84cpwu5/mqnKFu2VRSUQzuOv1BT3s9nwWl2liNBsCx13vX/gEL+9A
+	FuKABQOK2Bkr4Kh3F5kzvvNnM2lkAdEznTEVkouRKbMd0Yy8ifzYC8zFE5AeAO1eYh69iYCUrt9vc
+	OXzzG7vYWHkrbzq4VvDJTFLfeNJJNSYFpL6F6/jb8sUaVH2YSai8s1rnXnqYdhn6jbwL9QCmc+8ZE
+	PfXD2vkkr13Aokuh3Dzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u91dm-00000003ZFs-34v2;
-	Sun, 27 Apr 2025 13:01:50 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
+	id 1u91hd-00000003ZmT-0X2k;
+	Sun, 27 Apr 2025 13:05:49 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u91W8-00000003Xt9-19Il;
-	Sun, 27 Apr 2025 12:53:57 +0000
+	id 1u91bY-00000003YuM-1lkQ;
+	Sun, 27 Apr 2025 12:59:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=a4qEw
-	fske43/vfxYVnMiAvY6fWKRLGjrP0gzaLq1nD4=; b=FP3RFEvRSxhbARzBfEvlf
-	VV5ox97bb+Qk1pM4K86E10rDHHvT21qSGKzb/UvzCR2tF4kd+X31noRgJhvZw35y
-	D33ppMi9AGHENYdvMTqodWe/+TIUVwkNFPeYBofk4vFuGmi18xAGdkNNiKyAE/UB
-	To7h/tNcLjJ4drwTbth8BQ=
-Received: from localhost.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wD3LwC9KA5oNqx8Cw--.63816S2;
-	Sun, 27 Apr 2025 20:53:19 +0800 (CST)
-From: Hans Zhang <18255117159@163.com>
-To: lpieralisi@kernel.org,
-	kw@linux.com,
-	bhelgaas@google.com,
-	heiko@sntech.de
-Cc: manivannan.sadhasivam@linaro.org,
-	robh@kernel.org,
-	jingoohan1@gmail.com,
-	shawn.lin@rock-chips.com,
-	linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v4 0/3] PCI: dw-rockchip: Reorganize register and bitfield definitions
-Date: Sun, 27 Apr 2025 20:53:13 +0800
-Message-Id: <20250427125316.99627-1-18255117159@163.com>
-X-Mailer: git-send-email 2.25.1
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
+	Content-Type; bh=DQSPcZTtwb3AyD/BZAXLpksdXqfkUHT2zq46CYmEdMo=;
+	b=W+o3lnqkGrJokPTPdUKgRc8dwTJEGEBZXqXDzpzBAphAGv0S3ucsCC4ciSNyAw
+	54nZPdtYvnX8mrIZkIeARrVv6XR6YPeuLTUchZ6CIOc/K3nrrY9ggild7Dg5fJ5o
+	a+uwQyRZELgr/MsaeTeo5jAxITNQvaWR0fHQYNyhcuSbY=
+Received: from [192.168.142.52] (unknown [])
+	by gzsmtp3 (Coremail) with SMTP id PigvCgC3lQ4ZKg5onKoZBA--.22488S2;
+	Sun, 27 Apr 2025 20:59:08 +0800 (CST)
+Message-ID: <40658509-180d-435b-aa1c-663e7536eba2@163.com>
+Date: Sun, 27 Apr 2025 20:59:05 +0800
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3LwC9KA5oNqx8Cw--.63816S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxJFyfXw4kGrWkWw1DCF47XFb_yoW5Gw1fpF
-	s8WFZ3Wr47Jw4Fvan7Kw17ZFy8K3ZxCFZ8Zw4DKw1xJ34Yg3W8WFyfKF1F9ry7JrWIgF1I
-	vw47X3409FyYya7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zEwIDUUUUUU=
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/3] PCI: dw-rockchip: Reorganize register and bitfield
+ definitions
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+ heiko@sntech.de, robh@kernel.org, jingoohan1@gmail.com,
+ shawn.lin@rock-chips.com, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20250423153214.16405-1-18255117159@163.com>
+ <yhcnrmmmphqz2egrws5sxobysf6ntnd7xxl5vuzo34y5aunbj5@pe7i352kgdm7>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <yhcnrmmmphqz2egrws5sxobysf6ntnd7xxl5vuzo34y5aunbj5@pe7i352kgdm7>
+X-CM-TRANSID: PigvCgC3lQ4ZKg5onKoZBA--.22488S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxWr4fAFykAw45XrWfGF4Uurg_yoW5GFy8pa
+	s5Ga93Cr47Jw4xAan2yr1xZFy0g3ZxAF98Zws8Kw1jyay5X3WfXFWS9F1Y9ry7Xr4fKr1I
+	vw47Xw1I934Yva7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UloGQUUUUU=
 X-Originating-IP: [222.71.101.198]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbBDx88o2gOJqQ3gAAAsc
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbBDwU8o2gOJqRbegAAsQ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250427_055356_654882_1D020390 
-X-CRM114-Status: UNSURE (   8.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250427_055932_851042_C576809C 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,71 +73,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-1. PCI: dw-rockchip: Remove unused PCIE_CLIENT_GENERAL_DEBUG
-2. PCI: dw-rockchip: Reorganize register and bitfield definitions
-3. PCI: dw-rockchip: Unify link status checks with FIELD_GET
-
----
-Changes for v4:
-- According to Mani's suggestion, submit based on the following branches
-  and do not rely on others' patches.
-
-  Because of *this* dependency, I couldn't apply this series. I'd suggest
-  to respin this series avoiding the above mentioned patch and just rebase
-  on top of controller/dw-rockchip branch:
-
-https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git/log/?h=controller/dw-rockchip
-
-Changes for v3:
-- Delete the redundant Spaces in the comments of patch 2/3.
-
-Changes for v2:
-- Add register annotations to enhance readability.
-- Use macro definitions instead of magic numbers.
-
-https://patchwork.kernel.org/project/linux-pci/patch/20250416151926.140202-1-18255117159@163.com/
-
-Bjorn Helgaas:
-These would be material for a separate patch:
-
-- The #defines for register offsets and bits are kind of a mess,
-  e.g., PCIE_SMLH_LINKUP, PCIE_RDLH_LINKUP, PCIE_LINKUP,
-  PCIE_L0S_ENTRY, and PCIE_LTSSM_STATUS_MASK are in
-  PCIE_CLIENT_LTSSM_STATUS, but you couldn't tell that from the
-  names, and they're not even defined together.
-
-- Same for PCIE_RDLH_LINK_UP_CHGED, PCIE_LINK_REQ_RST_NOT_INT,
-  PCIE_RDLH_LINK_UP_CHGED, which are in PCIE_CLIENT_INTR_STATUS_MISC.
-
-- PCIE_LTSSM_ENABLE_ENHANCE is apparently in PCIE_CLIENT_HOT_RESET_CTRL?
-  Sure wouldn't guess that from the names or the order of #defines.
-
-- PCIE_CLIENT_GENERAL_DEBUG isn't used at all.
-
-- Submissions based on the following patches:
-https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-1-git-send-email-shawn.lin@rock-chips.com/
-https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-2-git-send-email-shawn.lin@rock-chips.com/
-https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-3-git-send-email-shawn.lin@rock-chips.com/
-https://patchwork.kernel.org/project/linux-pci/patch/1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com/
----
-
-Hans Zhang (3):
-  PCI: dw-rockchip: Remove unused PCIE_CLIENT_GENERAL_DEBUG
-  PCI: dw-rockchip: Reorganize register and bitfield definitions
-  PCI: dw-rockchip: Unify link status checks with FIELD_GET
-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 65 ++++++++++---------
- 1 file changed, 36 insertions(+), 29 deletions(-)
 
 
-base-commit: d4a5d7e6d91f6e53c8bf6ec72b7ee6c51f781695
--- 
-2.25.1
+On 2025/4/27 19:10, Manivannan Sadhasivam wrote:
+> On Wed, Apr 23, 2025 at 11:32:11PM +0800, Hans Zhang wrote:
+>> 1. PCI: dw-rockchip: Remove unused PCIE_CLIENT_GENERAL_DEBUG
+>> 2. PCI: dw-rockchip: Reorganize register and bitfield definitions
+>> 3. PCI: dw-rockchip: Unify link status checks with FIELD_GET
+>>
+>> ---
+>> Changes for v3:
+>> - Delete the redundant Spaces in the comments of patch 2/3.
+>>
+>> Changes for v2:
+>> - Add register annotations to enhance readability.
+>> - Use macro definitions instead of magic numbers.
+>>
+>> https://patchwork.kernel.org/project/linux-pci/patch/20250416151926.140202-1-18255117159@163.com/
+>>
+>> Bjorn Helgaas:
+>> These would be material for a separate patch:
+>>
+>> - The #defines for register offsets and bits are kind of a mess,
+>>    e.g., PCIE_SMLH_LINKUP, PCIE_RDLH_LINKUP, PCIE_LINKUP,
+>>    PCIE_L0S_ENTRY, and PCIE_LTSSM_STATUS_MASK are in
+>>    PCIE_CLIENT_LTSSM_STATUS, but you couldn't tell that from the
+>>    names, and they're not even defined together.
+>>
+>> - Same for PCIE_RDLH_LINK_UP_CHGED, PCIE_LINK_REQ_RST_NOT_INT,
+>>    PCIE_RDLH_LINK_UP_CHGED, which are in PCIE_CLIENT_INTR_STATUS_MISC.
+>>
+>> - PCIE_LTSSM_ENABLE_ENHANCE is apparently in PCIE_CLIENT_HOT_RESET_CTRL?
+>>    Sure wouldn't guess that from the names or the order of #defines.
+>>
+>> - PCIE_CLIENT_GENERAL_DEBUG isn't used at all.
+>>
+>> - Submissions based on the following v5 patches:
+>> https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-1-git-send-email-shawn.lin@rock-chips.com/
+>> https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-2-git-send-email-shawn.lin@rock-chips.com/
+>> https://patchwork.kernel.org/project/linux-pci/patch/1744850111-236269-3-git-send-email-shawn.lin@rock-chips.com/
+> 
+>> https://patchwork.kernel.org/project/linux-pci/patch/1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com/
+> 
+> Because of *this* dependency, I couldn't apply this series. I'd suggest to
+> respin this series avoiding the above mentioned patch and just rebase on top of
+> controller/dw-rockchip branch:
+> https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git/log/?h=controller/dw-rockchip
+
+Dear Mani,
+
+Thank you very much for your reply and suggestions. I have submitted the 
+V4 patch based on the controller/dw-rockchip branch. Please help merge 
+it. :)
+
+V4:
+https://patchwork.kernel.org/project/linux-pci/cover/20250427125316.99627-1-18255117159@163.com/
+
+Best regards,
+Hans
 
 
 _______________________________________________
