@@ -4,60 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EE32C36005
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Apr 2025 08:42:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91165C369D3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Apr 2025 08:54:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A1UDNJlgxEhr1qxRyH796AhpW4mOge0E8ghK8+bHVX8=; b=37UYCiCdL/RqKE
-	oB7Y/6qnftZyat2bVQo7SVFk1yKmZ/97TzLHUIf+OPPTCQQiOdcCoUmDhj/dRO03uXlNuP9I/SmZ3
-	lasioLr/9mKEjhGyx63X6+9HJwda791AqZeIsNkSZPNnRyGjG5qbAWXClpv8udpIfnSy3hXlLFRKk
-	zXQe7Zy0QP2iRW1C2CHcRzgI6D9ntsVCZOa7DL97ehyXQukH3O0YzObyjkZChN1Oi8yjsQQJr+4/Q
-	kmD9h4g6MZ69bWuBAjlRSiiMiHwT88bMWKpVMwfZ3/AZ+eCpVdqYBTz7vAbmPEPkXAvKY5hhFfniI
-	tItKoY2OeJMdUoLs5PNA==;
+	List-Owner; bh=l0nI1Ioi5MwOUOp/RQbXVUcWssCVgwHbU6Ay44Yqar0=; b=fRLuKa3a6+w0qr
+	BR46ReXaA4vqcDwckWC45HVi1zHjIWrIBn3AA+n6+b1hjWNmrutQJ40I93ZhqwL8j28+BSKQ06sd2
+	xLRBetXBoRZ4On3XzsoItbP9W3dhFIHjZtE8k0i7G/1QMYNm+8dx00Eoo4jSldvK2h3p9GVN4Gzbs
+	Ai7t+HniioFCXZjLNEm5cuLKggrVNxaXI/Hlj4/S+MxXtPjEHUqDfdKGqVm97D3ukly7LV/39hbmr
+	S+eRGDDkTC+nG8tGGiChDFUIgs96Skj2oNDYNsXO6vocZWA6ixAZdZfEufcD+vJxmYoFezN71Xeux
+	ULvlzWfIr3FC0kO+gxuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9K3y-00000005Usd-0dzO;
-	Mon, 28 Apr 2025 08:42:06 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u9KFc-00000005WTQ-0MGf;
+	Mon, 28 Apr 2025 08:54:08 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9Jqc-00000005RD5-2rO1;
-	Mon, 28 Apr 2025 08:28:18 +0000
+	id 1u9K47-00000005Uvo-0LJa;
+	Mon, 28 Apr 2025 08:42:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=LnmNm7WNI3dN0hZzkI0OO7d/tL89uZg4kPZ2C++s6Ig=; b=CXO1Uk9Xj0LQCKde41itDnhIxT
+	vGH0l8qjoM0j53itiIYHdzzYDZvgDBjQ+Z1JzI3m0FYIaOBYlzQR+Wsy+0ng4LCQhTZ8b8BuxAnC+
+	c1NNcu5O2iIEzzJfk/4mlvTRoAI1gZwOsod2Pz8WXgdzqi0xwU8UYTvmOeNnMQhargxGxR+hBqswO
+	p2f4TS2PY1ejdFM0LWE+HkCbwTu/HKcheV3Eur5xkNJtisc5DczE90GxmuZc6k5fQH+Ncg44JbWZa
+	cCyr/v99mdYCEDVC6ags1p2fP1pSaK/MFXZz6ehFEB7BJtT2APukeHeYA2geUKwjEoNpfVIrOagxY
+	fKfqsEwA==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u9K43-0000000CblL-3fqa;
+	Mon, 28 Apr 2025 08:42:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4F67E6115B;
-	Mon, 28 Apr 2025 08:27:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50208C4CEE4;
-	Mon, 28 Apr 2025 08:28:17 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E8FB44A8AB;
+	Mon, 28 Apr 2025 08:42:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 966BBC4CEEC;
+	Mon, 28 Apr 2025 08:42:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745828897;
-	bh=ay1sGqMLLXsxFuARu/F9cw+9JCB2xo4TRuqASGpOyn8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IJVNyZQSz2Nv9WHNFl0z/dkO0H4bi+6+KUIjeGJD1mE9fWtjmrkqexNOVqJp1RMU7
-	 2MIk4RqL+qcgt5OF/qPh7xzOvxiBNLwHbgLWEpv6wImGvhPjNBvvsViWWKXTw16nfI
-	 B73eRUKWFn1fEn3TCip0sz5KxpM8MNx63PnMAkbGhiIqN1TU1RjFnIFiOTFkgvuQuH
-	 nI3Mx4e78EftMUh/3Ozb3zEaAlgfqy9mm/VI2dK1CGCKx1iEatQXss1jxSB5RsxjWO
-	 1PCgARg+twom2ixOA9ks0+tiPj8mmdRVB+A7ubWAYabPhyt+hGzj1hpfIg9PnSG3fe
-	 Br/IKb+Ucc6yg==
-Date: Mon, 28 Apr 2025 10:28:15 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Serge Semin <fancer.lancer@gmail.com>, kernel@collabora.com, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>, linux-ide@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: ata: rockchip-dwc-ahci: add RK3576
- compatible
-Message-ID: <20250428-vengeful-outgoing-pudu-b19b8e@kuoka>
+	s=k20201202; t=1745829725;
+	bh=bEhWigbCGAEUWFJ8JkgGyCA/a4Jw1TYA21NKw6cRiPc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=j/Gg3E3fhyeQLQVMiNG1WHtkk53Qf5q9PVGm54dj42RztAU2xCtIsDNi8tWVa33QZ
+	 qVaQ0Vx5Thv6Z+BRv8GJDt6m91NDyHFaD+2eyfMDXuQMNfcqBVEiVc/JtADE97rCLJ
+	 /1eoeiP72GuEn3gshvawW/CvYdWipskarCM7wH68m+7CRbyyzSvggEiiP5LoM8eJYc
+	 MIUExiVVOxLWm2mszicYR4iYigJ9PZ4xvenUIjaQ0AfceCDOqgYR3jSChSSmLLC3mg
+	 ztdpKRZYbenHiqWvY9YDuMVOqnb1jOMCvCcZgSy12VlDNSIVef8SW7FmfR9NQE8rGf
+	 4bIl3NOmzQRfw==
+From: Niklas Cassel <cassel@kernel.org>
+To: Damien Le Moal <dlemoal@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Niklas Cassel <cassel@kernel.org>,
+	kernel@collabora.com,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-ide@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: (subset) [PATCH 0/2] RK3576 SATA Enablement
+Date: Mon, 28 Apr 2025 10:41:32 +0200
+Message-ID: <174582939239.704591.18413477868629759543.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250424-rk3576-sata-v1-0-23ee89c939fe@collabora.com>
 References: <20250424-rk3576-sata-v1-0-23ee89c939fe@collabora.com>
- <20250424-rk3576-sata-v1-1-23ee89c939fe@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250424-rk3576-sata-v1-1-23ee89c939fe@collabora.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=687; i=cassel@kernel.org; h=from:subject:message-id; bh=bEhWigbCGAEUWFJ8JkgGyCA/a4Jw1TYA21NKw6cRiPc=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDL47e3WNM4Q6W/6UpNetH99SP87w9LUbD7DNzLnI4wbz XfxunzvKGVhEONikBVTZPH94bK/uNt9ynHFOzYwc1iZQIYwcHEKwEQq7jL8FbKwWjHbfNr8siOi CbMcpWyvMvvfPsXqs+3ao0a9jh+c3Ax/xVfyO7EcLtyfLmQTljxh3Zcs/3TDHFGZkvZD3/tPZNu xAAA=
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250428_094212_131045_A607E57A 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,20 +99,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 24, 2025 at 08:52:22PM GMT, Nicolas Frattaroli wrote:
-> The Rockchip RK3576 has two SATA controllers. They work the same as the
-> RK3568 SATA controllers, having the same number of clocks and ports.
+On Thu, 24 Apr 2025 20:52:21 +0200, Nicolas Frattaroli wrote:
+> This is a tiny series to enable SATA on RK3576. It consists of a patch
+> to add the compatible to the bindings, and a second patch to add the
+> nodes to the SoC .dtsi.
 > 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml | 3 +++
->  1 file changed, 3 insertions(+)
+> I've only been able to test sata0 on my board (Sige5), but the
+> successful test gave me confidence that downstream's "dma-coherent"
+> property here is appropriate and true.
+> 
+> [...]
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Applied to libata/linux.git (for-6.16), thanks!
 
-Best regards,
-Krzysztof
+[1/2] dt-bindings: ata: rockchip-dwc-ahci: add RK3576 compatible
+      https://git.kernel.org/libata/linux/c/b8ed9475
 
+
+I'm assuming that Heiko will pick up patch [2/2].
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
