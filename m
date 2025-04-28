@@ -4,54 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56773C3ABAA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Apr 2025 14:16:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4A6EC369D5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Apr 2025 15:48:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KBcz38IdgxRx1DtvE796mWfK3h6rogfDi5F5JiEmkY4=; b=bqF4QeXBEmFByB
-	CX+wqPXaUYVuqoe5N+KrcaW62ep8yF0oux5KDcgFSEASyvUDbpwWz6J83gGIpu42zDKDUQPkgMD2i
-	1vECPelyG2YSuDX7DhhVTEqCDtXlayi+vxI/ggrorLs+DOxepXayqdVzbCGiKVCBTFHMOPVvTH51t
-	m/nRW7lvAJ7ZrkwoUO8ot4nHa/SXwekgWxcpIaghmh69D9pZs2mqXdlkkbrAZQtJFriQ6rzZS6fFV
-	RuAkUX7ZfeovzXIFnGBuWl/r1gM1NaYfymTDfhyFkTvNPArWO78jsnRrItdky5F7izTkl5T/z0M2a
-	zHcprI9jnUdS0Rosq5hg==;
+	List-Owner; bh=4PgsJfYYcX1QCn1HqoNwszjuE1qwiib9qqptOqBDTuI=; b=g51XBXIp3+YRAl
+	fkoUcCneElkSP4uhRcIuC7JoFn+fej38uCZIj1yyih7Jej67WeMZ5GFGIWnzUF1oXKN4QiUSZJ53o
+	FQgZ8kQlAxOfhFAEKk49c77mf3yFR4wdbExMUAxXQzUcYgrbQ/2q8gpndmRYLZNTwTXjlWz5P4a86
+	Bn4UWhgyU8D0tGATV1jvN3B28IeyHSRAsdP1SpAW4ByYtFCPH17FPBUTU8m0c7dd80/q99cpq0LlM
+	o74unZa1mTU/Fhbk2NBXxzE7DtCvNlRkpv4tjqyaGDQClegOrXWavCfKLCivuFhj1cgmMLNOsWGIx
+	ex5C70QqaSI9IzzIbkKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9PHE-00000006bBQ-3kIp;
-	Mon, 28 Apr 2025 14:16:08 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1u9QiS-00000006ooD-35zy;
+	Mon, 28 Apr 2025 15:48:20 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9Ns7-00000006FfF-1gB0;
-	Mon, 28 Apr 2025 12:46:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=M8HFfAjikHg///ljRi+LTR+AKhrdVRjDdpitnpTBu/M=; b=rVu+aJxMy3TeYosH2Nev8ql1Ry
-	76SzVzr+BlV+154A+GFXvAu87sxcC3PZ0IaLykHvK5rXFdMNP57p3yYBJhFtpa/55HmxKeVolCjwt
-	wNc2ZGRYLV5UZRjqzIKAZjf4EOzyXDFV+U4S5TQCb5kCLuOkcqMXt6lpnjfbiQWzAB2g=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1u9Nrn-00ApwX-Uy; Mon, 28 Apr 2025 14:45:47 +0200
-Date: Mon, 28 Apr 2025 14:45:47 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add rk3399-evb-ind board
-Message-ID: <15ee1a6b-55ba-41e9-b8a0-6e0bf62cabf0@lunn.ch>
-References: <20250427094211.246-1-kernel@airkyi.com>
- <20250427094211.246-3-kernel@airkyi.com>
- <6291f6b8-75d3-4243-9935-9b64450e2b7f@lunn.ch>
- <c583c59a-d5b7-4e20-9a1f-96f51bd7b4f3@rock-chips.com>
+	id 1u9Qah-00000006nLs-3bl2;
+	Mon, 28 Apr 2025 15:40:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1745854820; x=1777390820;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=nDnWSYm2uhi44SrpmNV/sw0ueOaJSKlGmyHJtCM9s4E=;
+  b=TWfb+bYSQXW3rwwia4xa/k3sTvbB3n+Hcg/7NbAIFbHI+oK9fhGk/Ijl
+   NzBqr4b0tlIyVsrtqiEIBVtWJUrOQl/6NPsAeFwpunvwU7YewAJhdmjDX
+   JWBmab4O9ynzK829BiuOdGLM43oJWmJeIEvsI2Vtfs11dsuFd9cWgsCs4
+   fNcW8kKGxBN4iG55ChQ+X9XYGrr5TPrQYBqH3tpT5nZr6H5VeG7Ixe2yo
+   nPtixz4qHTswVOEfYPN5oWjdclW5CptNrEgYuggdxdH5SzrYEUSDkWOYu
+   crEeFiwcyxNNHRfTXDHvko3x/WF3T8ithxQLo3y8tAs6EOcpjTU80VtrU
+   Q==;
+X-CSE-ConnectionGUID: PpCL02bgQaaAyoeRxl/XCw==
+X-CSE-MsgGUID: eF0yjfV8ST6BosHJCosf9Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11417"; a="51261017"
+X-IronPort-AV: E=Sophos;i="6.15,246,1739865600"; 
+   d="scan'208";a="51261017"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Apr 2025 08:40:18 -0700
+X-CSE-ConnectionGUID: QXZPgBYiRWSthXzzyKmoSw==
+X-CSE-MsgGUID: PUvveIRiSM+GHLWP7gNzQg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,246,1739865600"; 
+   d="scan'208";a="133866951"
+Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
+  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Apr 2025 08:40:12 -0700
+Received: from kekkonen.localdomain (localhost [127.0.0.1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id 5B17A1208E5;
+	Mon, 28 Apr 2025 18:40:10 +0300 (EEST)
+Date: Mon, 28 Apr 2025 15:40:10 +0000
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Michael Riesch <michael.riesch@wolfvision.net>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	=?iso-8859-1?Q?Th=E9o?= Lebrun <theo.lebrun@bootlin.com>,
+	Gerald Loacker <gerald.loacker@wolfvision.net>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Alexander Shiyan <eagle.alexander923@gmail.com>,
+	Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 07/11] media: rockchip: rkcif: add support for mipi
+ csi-2 receiver
+Message-ID: <aA-hWug1bpRR_qYh@kekkonen.localdomain>
+References: <20250306-v6-8-topic-rk3568-vicap-v5-0-f02152534f3c@wolfvision.net>
+ <20250306-v6-8-topic-rk3568-vicap-v5-7-f02152534f3c@wolfvision.net>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <c583c59a-d5b7-4e20-9a1f-96f51bd7b4f3@rock-chips.com>
+In-Reply-To: <20250306-v6-8-topic-rk3568-vicap-v5-7-f02152534f3c@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250428_054607_441936_E062EEAE 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20250428_084019_979603_96A11528 
+X-CRM114-Status: GOOD (  20.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,37 +104,900 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Chaoyi Chen <kernel@airkyi.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Jonas Karlman <jonas@kwiboo.se>, Jimmy Hon <honyuenkwun@gmail.com>, linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Quentin Schulz <quentin.schulz@cherry.de>, Alexey Charkov <alchark@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Dragan Simic <dsimic@manjaro.org>, linux-arm-kernel@lists.infradead.org, Jianfeng Liu <liujianfeng1994@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 28, 2025 at 09:47:34AM +0800, Chaoyi Chen wrote:
-> Hi Andrew,
+Hi Michael,
+
+On Thu, Mar 06, 2025 at 05:56:08PM +0100, Michael Riesch wrote:
+> The RK3568 Video Capture (VICAP) unit features a MIPI CSI-2 receiver
+> that can receive video data and write it into system memory using the
+> ping-pong scheme. Add support for it.
 > 
-> On 2025/4/28 4:42, Andrew Lunn wrote:
-> > > +&gmac {
-> > > +	assigned-clocks = <&cru SCLK_RMII_SRC>;
-> > > +	assigned-clock-parents = <&clkin_gmac>;
-> > > +	pinctrl-names = "default";
-> > > +	pinctrl-0 = <&rgmii_pins>;
-> > > +	clock_in_out = "input";
-> > > +	phy-supply = <&vcc_phy>;
-> > > +	phy-mode = "rgmii";
-> > Does the PCB have extra long clock lines to implement the RGMII 2ns
-> > delay?
-> The 2ns delay of RGMII is implemented inside the RK3399 chip instead of PCB
-> lines, and there are also additional delayline configurations.
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> ---
+>  .../platform/rockchip/rkcif/rkcif-capture-mipi.c   | 695 +++++++++++++++++++++
+>  .../platform/rockchip/rkcif/rkcif-capture-mipi.h   |   2 +
+>  .../media/platform/rockchip/rkcif/rkcif-common.h   |  16 +
+>  drivers/media/platform/rockchip/rkcif/rkcif-dev.c  |   1 +
+>  .../platform/rockchip/rkcif/rkcif-interface.c      |   5 +-
+>  drivers/media/platform/rockchip/rkcif/rkcif-regs.h |  24 +-
+>  6 files changed, 741 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+> index 0c3f7b8cfa18..dcc0c4aeeec4 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+> @@ -6,22 +6,717 @@
+>   * Copyright (C) 2025 Michael Riesch <michael.riesch@wolfvision.net>
+>   */
+>  
+> +#include <linux/interrupt.h>
+> +
+> +#include <media/mipi-csi2.h>
+> +#include <media/v4l2-common.h>
+> +#include <media/v4l2-event.h>
+> +#include <media/v4l2-fh.h>
+> +#include <media/v4l2-fwnode.h>
+> +#include <media/v4l2-ioctl.h>
+> +#include <media/v4l2-mc.h>
+> +#include <media/v4l2-subdev.h>
+> +
+>  #include "rkcif-capture-mipi.h"
+>  #include "rkcif-common.h"
+> +#include "rkcif-interface.h"
+> +#include "rkcif-regs.h"
+>  #include "rkcif-stream.h"
+>  
+> +#define RKCIF_MIPI_CTRL0_COMPACT_EN    BIT(6)
+> +#define RKCIF_MIPI_CTRL0_CROP_EN       BIT(5)
+> +#define RKCIF_MIPI_CTRL0_TYPE(type)    ((type) << 1)
+> +#define RKCIF_MIPI_CTRL0_TYPE_RAW8     RKCIF_MIPI_CTRL0_TYPE(0x0)
+> +#define RKCIF_MIPI_CTRL0_TYPE_RAW10    RKCIF_MIPI_CTRL0_TYPE(0x1)
+> +#define RKCIF_MIPI_CTRL0_TYPE_RAW12    RKCIF_MIPI_CTRL0_TYPE(0x2)
+> +#define RKCIF_MIPI_CTRL0_TYPE_RGB888   RKCIF_MIPI_CTRL0_TYPE(0x3)
+> +#define RKCIF_MIPI_CTRL0_TYPE_YUV422SP RKCIF_MIPI_CTRL0_TYPE(0x4)
+> +#define RKCIF_MIPI_CTRL0_TYPE_YUV420SP RKCIF_MIPI_CTRL0_TYPE(0x5)
+> +#define RKCIF_MIPI_CTRL0_TYPE_YUV400   RKCIF_MIPI_CTRL0_TYPE(0x6)
+> +#define RKCIF_MIPI_CTRL0_CAP_EN	       BIT(0)
+> +
+> +#define RKCIF_MIPI_INT_FRAME0_END(id)  BIT(8 + (id) * 2 + 0)
+> +#define RKCIF_MIPI_INT_FRAME1_END(id)  BIT(8 + (id) * 2 + 1)
+> +
+> +static const struct rkcif_output_fmt mipi_out_fmts[] = {
+> +	/* YUV formats */
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_YUYV,
+> +		.mbus_code = MEDIA_BUS_FMT_YUYV8_1X16,
+> +		.depth = 16,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_YUV422_8B,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW8,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_UYVY,
+> +		.mbus_code = MEDIA_BUS_FMT_UYVY8_1X16,
+> +		.depth = 16,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_YUV422_8B,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW8,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_YVYU,
+> +		.mbus_code = MEDIA_BUS_FMT_YVYU8_1X16,
+> +		.depth = 16,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_YUV422_8B,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW8,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_VYUY,
+> +		.mbus_code = MEDIA_BUS_FMT_VYUY8_1X16,
+> +		.depth = 16,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_YUV422_8B,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW8,
+> +		},
+> +	},
+> +	/* RGB formats */
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_RGB24,
+> +		.mbus_code = MEDIA_BUS_FMT_RGB888_1X24,
+> +		.depth = 24,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RGB888,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RGB888,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_BGR24,
+> +		.mbus_code = MEDIA_BUS_FMT_BGR888_1X24,
+> +		.depth = 24,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RGB888,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RGB888,
+> +		},
+> +	},
+> +	/* Bayer formats */
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SBGGR8,
+> +		.mbus_code = MEDIA_BUS_FMT_SBGGR8_1X8,
+> +		.depth = 8,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW8,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW8,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SGBRG8,
+> +		.mbus_code = MEDIA_BUS_FMT_SGBRG8_1X8,
+> +		.depth = 8,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW8,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW8,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SGRBG8,
+> +		.mbus_code = MEDIA_BUS_FMT_SGRBG8_1X8,
+> +		.depth = 8,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW8,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW8,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SRGGB8,
+> +		.mbus_code = MEDIA_BUS_FMT_SRGGB8_1X8,
+> +		.depth = 8,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW8,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW8,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SBGGR10,
+> +		.mbus_code = MEDIA_BUS_FMT_SBGGR10_1X10,
+> +		.depth = 10,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW10,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW10,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SBGGR10P,
+> +		.mbus_code = MEDIA_BUS_FMT_SBGGR10_1X10,
+> +		.depth = 10,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW10,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW10 | RKCIF_MIPI_CTRL0_COMPACT_EN,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SGBRG10,
+> +		.mbus_code = MEDIA_BUS_FMT_SGBRG10_1X10,
+> +		.depth = 10,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW10,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW10,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SGBRG10P,
+> +		.mbus_code = MEDIA_BUS_FMT_SGBRG10_1X10,
+> +		.depth = 10,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW10,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW10 | RKCIF_MIPI_CTRL0_COMPACT_EN,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SGRBG10,
+> +		.mbus_code = MEDIA_BUS_FMT_SGRBG10_1X10,
+> +		.depth = 10,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW10,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW10,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SGRBG10P,
+> +		.mbus_code = MEDIA_BUS_FMT_SGRBG10_1X10,
+> +		.depth = 10,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW10,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW10 | RKCIF_MIPI_CTRL0_COMPACT_EN,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SRGGB10,
+> +		.mbus_code = MEDIA_BUS_FMT_SRGGB10_1X10,
+> +		.depth = 10,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW10,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW10,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SRGGB10P,
+> +		.mbus_code = MEDIA_BUS_FMT_SRGGB10_1X10,
+> +		.depth = 10,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW10,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW10 | RKCIF_MIPI_CTRL0_COMPACT_EN,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SBGGR12,
+> +		.mbus_code = MEDIA_BUS_FMT_SBGGR12_1X12,
+> +		.depth = 12,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW12,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW12,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SBGGR12P,
+> +		.mbus_code = MEDIA_BUS_FMT_SBGGR12_1X12,
+> +		.depth = 12,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW12,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW12 | RKCIF_MIPI_CTRL0_COMPACT_EN,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SGBRG12,
+> +		.mbus_code = MEDIA_BUS_FMT_SGBRG12_1X12,
+> +		.depth = 12,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW12,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW12,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SGBRG12P,
+> +		.mbus_code = MEDIA_BUS_FMT_SGBRG12_1X12,
+> +		.depth = 12,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW12,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW12 | RKCIF_MIPI_CTRL0_COMPACT_EN,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SGRBG12,
+> +		.mbus_code = MEDIA_BUS_FMT_SGRBG12_1X12,
+> +		.depth = 12,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW12,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW12,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SGRBG12P,
+> +		.mbus_code = MEDIA_BUS_FMT_SGRBG12_1X12,
+> +		.depth = 12,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW12,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW12 | RKCIF_MIPI_CTRL0_COMPACT_EN,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SRGGB12,
+> +		.mbus_code = MEDIA_BUS_FMT_SRGGB12_1X12,
+> +		.depth = 12,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW12,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW12,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_SRGGB12P,
+> +		.mbus_code = MEDIA_BUS_FMT_SRGGB12_1X12,
+> +		.depth = 12,
+> +		.cplanes = 1,
+> +		.mipi = {
+> +			.dt = MIPI_CSI2_DT_RAW12,
+> +			.ctrl0_val = RKCIF_MIPI_CTRL0_TYPE_RAW12 | RKCIF_MIPI_CTRL0_COMPACT_EN,
+> +		},
+> +	},
+> +};
+> +
+> +static const struct rkcif_input_fmt mipi_in_fmts[] = {
+> +	/* YUV formats */
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_YUYV8_1X16,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_UYVY8_1X16,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_YVYU8_1X16,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_VYUY8_1X16,
+> +	},
+> +	/* RGB formats */
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_RGB888_1X24,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_BGR888_1X24,
+> +	},
+> +	/* Bayer formats */
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SBGGR8_1X8,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SGBRG8_1X8,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SGRBG8_1X8,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SRGGB8_1X8,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SBGGR10_1X10,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SGBRG10_1X10,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SGRBG10_1X10,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SRGGB10_1X10,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SBGGR12_1X12,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SGBRG12_1X12,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SGRBG12_1X12,
+> +	},
+> +	{
+> +		.mbus_code = MEDIA_BUS_FMT_SRGGB12_1X12,
+> +	},
+> +};
+> +
+> +const struct rkcif_mipi_match_data rk3568_vicap_mipi_match_data = {
+> +	.mipi_num = 1,
+> +	.regs = {
+> +		[RKCIF_MIPI_CTRL] = 0x20,
+> +		[RKCIF_MIPI_INTEN] = 0xa4,
+> +		[RKCIF_MIPI_INTSTAT] = 0xa8,
+> +	},
+> +	.regs_id = {
+> +		[RKCIF_ID0] = {
+> +			[RKCIF_MIPI_CTRL0] = 0x00,
+> +			[RKCIF_MIPI_CTRL1] = 0x04,
+> +			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x24,
+> +			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x2c,
+> +			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x34,
+> +			[RKCIF_MIPI_FRAME0_VLW_UV] = 0x3c,
+> +			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x28,
+> +			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x30,
+> +			[RKCIF_MIPI_FRAME1_VLW_Y] = 0x38,
+> +			[RKCIF_MIPI_FRAME1_VLW_UV] = 0x40,
+> +			[RKCIF_MIPI_CROP_START] = 0xbc,
+> +		},
+> +		[RKCIF_ID1] = {
+> +			[RKCIF_MIPI_CTRL0] = 0x08,
+> +			[RKCIF_MIPI_CTRL1] = 0x0c,
+> +			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x44,
+> +			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x4c,
+> +			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x54,
+> +			[RKCIF_MIPI_FRAME0_VLW_UV] = 0x5c,
+> +			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x48,
+> +			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x50,
+> +			[RKCIF_MIPI_FRAME1_VLW_Y] = 0x58,
+> +			[RKCIF_MIPI_FRAME1_VLW_UV] = 0x60,
+> +			[RKCIF_MIPI_CROP_START] = 0xc0,
+> +		},
+> +		[RKCIF_ID2] = {
+> +			[RKCIF_MIPI_CTRL0] = 0x10,
+> +			[RKCIF_MIPI_CTRL1] = 0x14,
+> +			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x64,
+> +			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x6c,
+> +			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x74,
+> +			[RKCIF_MIPI_FRAME0_VLW_UV] = 0x7c,
+> +			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x68,
+> +			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x70,
+> +			[RKCIF_MIPI_FRAME1_VLW_Y] = 0x78,
+> +			[RKCIF_MIPI_FRAME1_VLW_UV] = 0x80,
+> +			[RKCIF_MIPI_CROP_START] = 0xc4,
+> +		},
+> +		[RKCIF_ID3] = {
+> +			[RKCIF_MIPI_CTRL0] = 0x18,
+> +			[RKCIF_MIPI_CTRL1] = 0x1c,
+> +			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x84,
+> +			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x8c,
+> +			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x94,
+> +			[RKCIF_MIPI_FRAME0_VLW_UV] = 0x9c,
+> +			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x88,
+> +			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x90,
+> +			[RKCIF_MIPI_FRAME1_VLW_Y] = 0x98,
+> +			[RKCIF_MIPI_FRAME1_VLW_UV] = 0xa0,
+> +			[RKCIF_MIPI_CROP_START] = 0xc8,
+> +		},
+> +	},
+> +	.blocks = {
+> +		{
+> +			.offset = 0x80,
+> +		},
+> +	},
+> +};
+> +
+> +static inline unsigned int rkcif_mipi_get_reg(struct rkcif_interface *interface,
+> +					      unsigned int index)
+> +{
+> +	struct rkcif_device *rkcif = interface->rkcif;
+> +	unsigned int block, offset, reg;
+> +
+> +	block = interface->index - RKCIF_MIPI_BASE;
+> +
+> +	if (WARN_ON(block > RKCIF_MIPI_MAX - RKCIF_MIPI_BASE) ||
+> +	    WARN_ON(index > RKCIF_MIPI_REGISTER_MAX))
+> +		return RKCIF_REGISTER_NOTSUPPORTED;
+> +
+> +	offset = rkcif->match_data->mipi->blocks[block].offset;
+> +	reg = rkcif->match_data->mipi->regs[index];
+> +	if (reg == RKCIF_REGISTER_NOTSUPPORTED)
+> +		return reg;
+> +
+> +	return offset + reg;
+> +}
+> +
+> +static inline unsigned int rkcif_mipi_id_get_reg(struct rkcif_stream *stream,
+> +						 unsigned int index)
+> +{
+> +	struct rkcif_device *rkcif = stream->rkcif;
+> +	unsigned int block, id, offset, reg;
+> +
+> +	block = stream->interface->index - RKCIF_MIPI_BASE;
+> +	id = stream->id;
+> +
+> +	if (WARN_ON(block > RKCIF_MIPI_MAX - RKCIF_MIPI_BASE) ||
+> +	    WARN_ON(id > RKCIF_ID_MAX) ||
+> +	    WARN_ON(index > RKCIF_MIPI_ID_REGISTER_MAX))
 
-If the PCB does not implement the delay, rgmii is wrong.
+I think WARN_ON_ONCE() would be reasonable.
 
-If the MAC/PHY pair is implementing the delay, you need to use
-rgmii-id. You can then use additional properties to fine tune the
-delay the MAC/PHY is adding. And the Linux preference is that the PHY
-adds the delay.
+> +		return RKCIF_REGISTER_NOTSUPPORTED;
+> +
+> +	offset = rkcif->match_data->mipi->blocks[block].offset;
+> +	reg = rkcif->match_data->mipi->regs_id[id][index];
+> +	if (reg == RKCIF_REGISTER_NOTSUPPORTED)
+> +		return reg;
+> +
+> +	return offset + reg;
+> +}
+> +
+> +static inline __maybe_unused void
+> +rkcif_mipi_write(struct rkcif_interface *interface, unsigned int index, u32 val)
+> +{
+> +	unsigned int addr = rkcif_mipi_get_reg(interface, index);
+> +
+> +	if (addr == RKCIF_REGISTER_NOTSUPPORTED)
+> +		return;
+> +
+> +	writel(val, interface->rkcif->base_addr + addr);
+> +}
+> +
+> +static inline __maybe_unused void
+> +rkcif_mipi_stream_write(struct rkcif_stream *stream, unsigned int index,
+> +			u32 val)
+> +{
+> +	unsigned int addr = rkcif_mipi_id_get_reg(stream, index);
+> +
+> +	if (addr == RKCIF_REGISTER_NOTSUPPORTED)
+> +		return;
+> +
+> +	writel(val, stream->rkcif->base_addr + addr);
+> +}
+> +
+> +static inline __maybe_unused u32
+> +rkcif_mipi_read(struct rkcif_interface *interface, unsigned int index)
+> +{
+> +	unsigned int addr = rkcif_mipi_get_reg(interface, index);
+> +
+> +	if (addr == RKCIF_REGISTER_NOTSUPPORTED)
+> +		return 0;
+> +
+> +	return readl(interface->rkcif->base_addr + addr);
+> +}
+> +
+> +static inline __maybe_unused u32
+> +rkcif_mipi_stream_read(struct rkcif_stream *stream, unsigned int index)
+> +{
+> +	unsigned int addr = rkcif_mipi_id_get_reg(stream, index);
+> +
+> +	if (addr == RKCIF_REGISTER_NOTSUPPORTED)
+> +		return 0;
+> +
+> +	return readl(stream->rkcif->base_addr + addr);
+> +}
+> +
+> +static void rkcif_mipi_queue_buffer(struct rkcif_stream *stream,
+> +				    unsigned int index)
+> +{
+> +	struct rkcif_buffer *buffer = stream->buffers[index];
+> +	u32 frm_addr_y, frm_addr_uv;
+> +
+> +	frm_addr_y = index ? RKCIF_MIPI_FRAME1_ADDR_Y :
+> +			     RKCIF_MIPI_FRAME0_ADDR_Y;
+> +	frm_addr_uv = index ? RKCIF_MIPI_FRAME1_ADDR_UV :
+> +			      RKCIF_MIPI_FRAME0_ADDR_UV;
+> +
+> +	rkcif_mipi_stream_write(stream, frm_addr_y,
+> +				buffer->buff_addr[RKCIF_PLANE_Y]);
+> +	rkcif_mipi_stream_write(stream, frm_addr_uv,
+> +				buffer->buff_addr[RKCIF_PLANE_UV]);
+> +}
+> +
+> +static int rkcif_mipi_start_streaming(struct rkcif_stream *stream)
+> +{
+> +	struct rkcif_interface *interface = stream->interface;
+> +	const struct rkcif_output_fmt *active_out_fmt;
+> +	struct v4l2_subdev_state *state;
+> +	u32 ctrl0 = 0, ctrl1 = 0, int_temp = 0, int_mask = 0, vlw = 0;
+> +	u16 height, width;
+> +	int ret = -EINVAL;
+> +
+> +	state = v4l2_subdev_lock_and_get_active_state(&interface->sd);
+> +
+> +	active_out_fmt = rkcif_stream_find_output_fmt(stream, false,
+> +						      stream->pix.pixelformat);
+> +	if (!active_out_fmt)
+> +		goto out;
+> +
+> +	height = stream->pix.height;
+> +	width = stream->pix.width;
+> +	/* TODO there may be different factors and/or alignment constraints */
+> +	vlw = ALIGN(width * 2, 8);
+> +
+> +	ctrl0 |= active_out_fmt->mipi.dt << 10;
+> +	ctrl0 |= active_out_fmt->mipi.ctrl0_val;
+> +	ctrl0 |= RKCIF_MIPI_CTRL0_CROP_EN;
+> +	ctrl0 |= RKCIF_MIPI_CTRL0_CAP_EN;
+> +
+> +	ctrl1 = RKCIF_XY_COORD(width, height);
+> +
+> +	int_mask |= RKCIF_MIPI_INT_FRAME0_END(stream->id);
+> +	int_mask |= RKCIF_MIPI_INT_FRAME1_END(stream->id);
+> +
+> +	int_temp = rkcif_mipi_read(interface, RKCIF_MIPI_INTEN);
+> +	int_temp |= int_mask;
+> +	rkcif_mipi_write(interface, RKCIF_MIPI_INTEN, int_temp);
+> +
+> +	int_temp = rkcif_mipi_read(interface, RKCIF_MIPI_INTSTAT);
+> +	int_temp &= ~int_mask;
+> +	rkcif_mipi_write(interface, RKCIF_MIPI_INTSTAT, int_temp);
+> +
+> +	rkcif_mipi_stream_write(stream, RKCIF_MIPI_FRAME0_VLW_Y, vlw);
+> +	rkcif_mipi_stream_write(stream, RKCIF_MIPI_FRAME1_VLW_Y, vlw);
+> +	rkcif_mipi_stream_write(stream, RKCIF_MIPI_FRAME0_VLW_UV, vlw);
+> +	rkcif_mipi_stream_write(stream, RKCIF_MIPI_FRAME1_VLW_UV, vlw);
+> +	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CROP_START, 0x0);
+> +	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL1, ctrl1);
+> +	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL0, ctrl0);
+> +
+> +	ret = 0;
+> +
+> +out:
+> +	v4l2_subdev_unlock_state(state);
+> +	return ret;
+> +}
+> +
+> +static void rkcif_mipi_stop_streaming(struct rkcif_stream *stream)
+> +{
+> +	struct rkcif_interface *interface = stream->interface;
+> +	struct v4l2_subdev_state *state;
+> +	u32 int_temp = 0, int_mask = 0;
+> +
+> +	state = v4l2_subdev_lock_and_get_active_state(&interface->sd);
+> +
+> +	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL0, 0);
+> +
+> +	int_mask |= RKCIF_MIPI_INT_FRAME0_END(stream->id);
+> +	int_mask |= RKCIF_MIPI_INT_FRAME1_END(stream->id);
+> +
+> +	int_temp = rkcif_mipi_read(interface, RKCIF_MIPI_INTEN);
+> +	int_temp &= ~int_mask;
+> +	rkcif_mipi_write(interface, RKCIF_MIPI_INTEN, int_temp);
+> +
+> +	int_temp = rkcif_mipi_read(interface, RKCIF_MIPI_INTSTAT);
+> +	int_temp &= ~int_mask;
+> +	rkcif_mipi_write(interface, RKCIF_MIPI_INTSTAT, int_temp);
+> +
+> +	stream->stopping = false;
+> +
+> +	v4l2_subdev_unlock_state(state);
+> +}
+> +
+> +static void rkcif_mipi_set_crop(struct rkcif_stream *stream, u16 left, u16 top)
+> +{
+> +	u32 val;
+> +
+> +	val = RKCIF_XY_COORD(left, top);
+> +	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CROP_START, val);
+> +}
+> +
+>  irqreturn_t rkcif_mipi_isr(int irq, void *ctx)
+>  {
+> +	struct device *dev = ctx;
+> +	struct rkcif_device *rkcif = dev_get_drvdata(dev);
+>  	irqreturn_t ret = IRQ_NONE;
+> +	u32 intstat;
+> +
+> +	for (int i = 0; i < rkcif->match_data->mipi->mipi_num; i++) {
+> +		enum rkcif_interface_index index = RKCIF_MIPI_BASE + i;
+> +		struct rkcif_interface *interface = &rkcif->interfaces[index];
+> +
+> +		intstat = rkcif_mipi_read(interface, RKCIF_MIPI_INTSTAT);
+> +		rkcif_mipi_write(interface, RKCIF_MIPI_INTSTAT, intstat);
+> +
+> +		for (int j = 0; j < interface->streams_num; j++) {
+> +			struct rkcif_stream *stream = &interface->streams[j];
+> +
+> +			if (intstat & RKCIF_MIPI_INT_FRAME0_END(stream->id) ||
+> +			    intstat & RKCIF_MIPI_INT_FRAME1_END(stream->id)) {
+> +				rkcif_stream_pingpong(stream);
+> +				ret = IRQ_HANDLED;
+> +			}
+> +		}
+> +	}
+>  
+>  	return ret;
+>  }
+>  
+>  int rkcif_mipi_register(struct rkcif_device *rkcif)
+>  {
+> +	int ret, i;
+> +
+> +	if (!rkcif->match_data->mipi)
+> +		return 0;
+> +
+> +	for (i = 0; i < rkcif->match_data->mipi->mipi_num; i++) {
+> +		enum rkcif_interface_index index = RKCIF_MIPI_BASE + i;
+> +		struct rkcif_interface *interface = &rkcif->interfaces[index];
+> +
+> +		interface->index = index;
+> +		interface->type = RKCIF_IF_MIPI;
+> +		interface->in_fmts = mipi_in_fmts;
+> +		interface->in_fmts_num = ARRAY_SIZE(mipi_in_fmts);
+> +		interface->set_crop = rkcif_mipi_set_crop;
+> +		interface->streams_num = 0;
+> +		ret = rkcif_interface_register(rkcif, interface);
+> +		if (ret)
+> +			continue;
+> +
+> +		for (int j = 0; j < 4; j++) {
 
-	Andrew
+Could you give a human-readable (macro) name for 4?
+
+> +			struct rkcif_stream *stream = &interface->streams[j];
+> +
+> +			stream->id = j;
+> +			stream->interface = interface;
+> +			stream->out_fmts = mipi_out_fmts;
+> +			stream->out_fmts_num = ARRAY_SIZE(mipi_out_fmts);
+> +			stream->queue_buffer = rkcif_mipi_queue_buffer;
+> +			stream->start_streaming = rkcif_mipi_start_streaming;
+> +			stream->stop_streaming = rkcif_mipi_stop_streaming;
+> +			ret = rkcif_stream_register(rkcif, stream);
+> +			if (ret)
+> +				goto err;
+> +			interface->streams_num++;
+> +		}
+> +	}
+> +
+>  	return 0;
+> +
+> +err:
+> +	for (; i >= 0; i--) {
+
+	for (i++; i--; )
+
+And you can make i unsigned. :-) Up to you. Same elsewhere, too.
+
+> +		enum rkcif_interface_index index = RKCIF_MIPI_BASE + i;
+> +		struct rkcif_interface *interface = &rkcif->interfaces[index];
+> +
+> +		for (int j = 0; j < interface->streams_num; j++)
+> +			rkcif_stream_unregister(&interface->streams[j]);
+> +
+> +		rkcif_interface_unregister(interface);
+> +	}
+> +	return ret;
+>  }
+>  
+>  void rkcif_mipi_unregister(struct rkcif_device *rkcif)
+>  {
+> +	if (!rkcif->match_data->mipi)
+> +		return;
+> +
+> +	for (int i = 0; i < rkcif->match_data->mipi->mipi_num; i++) {
+
+unsigned int i?
+
+> +		enum rkcif_interface_index index = RKCIF_MIPI_BASE + i;
+> +		struct rkcif_interface *interface = &rkcif->interfaces[index];
+> +
+> +		for (int j = 0; j < interface->streams_num; j++)
+
+unsigned int j?
+
+This applies elsewhere, too.
+
+> +			rkcif_stream_unregister(&interface->streams[j]);
+> +
+> +		rkcif_interface_unregister(interface);
+> +	}
+>  }
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h
+> index ee1a50a59505..48d04a60c750 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h
+> @@ -11,6 +11,8 @@
+>  
+>  #include "rkcif-common.h"
+>  
+> +extern const struct rkcif_mipi_match_data rk3568_vicap_mipi_match_data;
+> +
+>  int rkcif_mipi_register(struct rkcif_device *rkcif);
+>  
+>  void rkcif_mipi_unregister(struct rkcif_device *rkcif);
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-common.h b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
+> index 32f6f0238656..99249a85048e 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-common.h
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
+> @@ -93,9 +93,14 @@ struct rkcif_output_fmt {
+>  	u32 fourcc;
+>  	u32 mbus_code;
+>  	u8 cplanes;
+> +	u8 depth;
+>  
+>  	union {
+>  		u32 dvp_fmt_val;
+> +		struct {
+> +			u8 dt;
+> +			u32 ctrl0_val;
+> +		} mipi;
+>  	};
+>  };
+>  
+> @@ -183,6 +188,16 @@ struct rkcif_interface {
+>  	void (*set_crop)(struct rkcif_stream *stream, u16 left, u16 top);
+>  };
+>  
+> +struct rkcif_mipi_match_data {
+> +	unsigned int mipi_num;
+> +	unsigned int regs[RKCIF_MIPI_REGISTER_MAX];
+> +	unsigned int regs_id[RKCIF_ID_MAX][RKCIF_MIPI_ID_REGISTER_MAX];
+> +
+> +	struct {
+> +		unsigned int offset;
+> +	} blocks[RKCIF_MIPI_MAX - RKCIF_MIPI_BASE];
+> +};
+> +
+>  struct rkcif_dvp_match_data {
+>  	const struct rkcif_input_fmt *in_fmts;
+>  	unsigned int in_fmts_num;
+> @@ -198,6 +213,7 @@ struct rkcif_match_data {
+>  	const char *const *clks;
+>  	unsigned int clks_num;
+>  	const struct rkcif_dvp_match_data *dvp;
+> +	const struct rkcif_mipi_match_data *mipi;
+>  };
+>  
+>  struct rkcif_device {
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-dev.c b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
+> index 2f45229183f6..5cc4e458ffa1 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
+> @@ -49,6 +49,7 @@ static const struct rkcif_match_data rk3568_vicap_match_data = {
+>  	.clks = rk3568_vicap_clks,
+>  	.clks_num = ARRAY_SIZE(rk3568_vicap_clks),
+>  	.dvp = &rk3568_vicap_dvp_match_data,
+> +	.mipi = &rk3568_vicap_mipi_match_data,
+>  };
+>  
+>  static const struct of_device_id rkcif_plat_of_match[] = {
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-interface.c b/drivers/media/platform/rockchip/rkcif/rkcif-interface.c
+> index 7131de68de2c..163ee9e2fc6f 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-interface.c
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-interface.c
+> @@ -188,7 +188,10 @@ static int rkcif_interface_enable_streams(struct v4l2_subdev *sd,
+>  		stream = &interface->streams[RKCIF_ID0];
+>  		rkcif_interface_apply_crop(stream, state);
+>  	} else {
+> -		/* TODO implement for MIPI */
+> +		for_each_active_route(&state->routing, route) {
+> +			stream = &interface->streams[route->sink_stream];
+> +			rkcif_interface_apply_crop(stream, state);
+> +		}
+>  	}
+>  
+>  	mask = v4l2_subdev_state_xlate_streams(state, RKCIF_IF_PAD_SINK,
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-regs.h b/drivers/media/platform/rockchip/rkcif/rkcif-regs.h
+> index 07fd64174e80..3d1f0c45c638 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-regs.h
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-regs.h
+> @@ -30,7 +30,29 @@ enum rkcif_dvp_register_index {
+>  	RKCIF_DVP_REGISTER_MAX
+>  };
+>  
+> -#define RKCIF_REGISTER_NOTSUPPORTED           0x420000
+> +enum rkcif_mipi_register_index {
+> +	RKCIF_MIPI_CTRL,
+> +	RKCIF_MIPI_INTEN,
+> +	RKCIF_MIPI_INTSTAT,
+> +	RKCIF_MIPI_REGISTER_MAX
+> +};
+> +
+> +enum rkcif_mipi_id_register_index {
+> +	RKCIF_MIPI_CTRL0,
+> +	RKCIF_MIPI_CTRL1,
+> +	RKCIF_MIPI_FRAME0_ADDR_Y,
+> +	RKCIF_MIPI_FRAME0_ADDR_UV,
+> +	RKCIF_MIPI_FRAME0_VLW_Y,
+> +	RKCIF_MIPI_FRAME0_VLW_UV,
+> +	RKCIF_MIPI_FRAME1_ADDR_Y,
+> +	RKCIF_MIPI_FRAME1_ADDR_UV,
+> +	RKCIF_MIPI_FRAME1_VLW_Y,
+> +	RKCIF_MIPI_FRAME1_VLW_UV,
+> +	RKCIF_MIPI_CROP_START,
+> +	RKCIF_MIPI_ID_REGISTER_MAX
+> +};
+> +
+> +#define RKCIF_REGISTER_NOTSUPPORTED	       0x420000
+>  
+>  #define RKCIF_FETCH_Y(VAL)		       ((VAL) & 0x1fff)
+
+Any other reason for macro target alignment than this is what the driver
+uses? It'd be nice to clean it up but this is outside the scope of the set
+IMO.
+
+>  
+> 
+
+-- 
+Regards,
+
+Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
