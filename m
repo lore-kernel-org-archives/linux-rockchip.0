@@ -4,85 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91165C369D3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Apr 2025 08:54:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2C90C36005
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Apr 2025 09:40:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l0nI1Ioi5MwOUOp/RQbXVUcWssCVgwHbU6Ay44Yqar0=; b=fRLuKa3a6+w0qr
-	BR46ReXaA4vqcDwckWC45HVi1zHjIWrIBn3AA+n6+b1hjWNmrutQJ40I93ZhqwL8j28+BSKQ06sd2
-	xLRBetXBoRZ4On3XzsoItbP9W3dhFIHjZtE8k0i7G/1QMYNm+8dx00Eoo4jSldvK2h3p9GVN4Gzbs
-	Ai7t+HniioFCXZjLNEm5cuLKggrVNxaXI/Hlj4/S+MxXtPjEHUqDfdKGqVm97D3ukly7LV/39hbmr
-	S+eRGDDkTC+nG8tGGiChDFUIgs96Skj2oNDYNsXO6vocZWA6ixAZdZfEufcD+vJxmYoFezN71Xeux
-	ULvlzWfIr3FC0kO+gxuQ==;
+	List-Owner; bh=k7oc1Sq69O8KuX6snsfdMCrhbNlS5rrrU1H8B7zD3Xk=; b=AFeOVVWXciXNWT
+	zMJXbxKEcPGp795Ve5UxKgiU0mxhVxBdaMHURWw+9lOWQQ0mQkQdOwNeAp45dYxIraYlWrusd9qbJ
+	tEZ0YaXHK/mUFG3NJ5F0Ctqm5k03gqky7lD4qm41vyw59FnKSop0Slxxvp4ZKuWkVL8ABWox4H43+
+	e7tEViisLSqkpdFsDSsdXTnAiPbTqsv4OWj1PPHDftgOotqi4SsQ+dLplsBaGTsWWedlZZDE+uu7O
+	NMO9RLS5y38kms9w+txQOCf4UwL3NXxWr5bb18QW+LVWnVNAz5X2xS2ST8CpCvsFY+NOTiow+4e+b
+	xocu4ovLkooB5jKZWOOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9KFc-00000005WTQ-0MGf;
-	Mon, 28 Apr 2025 08:54:08 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1u9KyE-00000005gD9-2rqH;
+	Mon, 28 Apr 2025 09:40:14 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9K47-00000005Uvo-0LJa;
-	Mon, 28 Apr 2025 08:42:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=LnmNm7WNI3dN0hZzkI0OO7d/tL89uZg4kPZ2C++s6Ig=; b=CXO1Uk9Xj0LQCKde41itDnhIxT
-	vGH0l8qjoM0j53itiIYHdzzYDZvgDBjQ+Z1JzI3m0FYIaOBYlzQR+Wsy+0ng4LCQhTZ8b8BuxAnC+
-	c1NNcu5O2iIEzzJfk/4mlvTRoAI1gZwOsod2Pz8WXgdzqi0xwU8UYTvmOeNnMQhargxGxR+hBqswO
-	p2f4TS2PY1ejdFM0LWE+HkCbwTu/HKcheV3Eur5xkNJtisc5DczE90GxmuZc6k5fQH+Ncg44JbWZa
-	cCyr/v99mdYCEDVC6ags1p2fP1pSaK/MFXZz6ehFEB7BJtT2APukeHeYA2geUKwjEoNpfVIrOagxY
-	fKfqsEwA==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u9K43-0000000CblL-3fqa;
-	Mon, 28 Apr 2025 08:42:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E8FB44A8AB;
-	Mon, 28 Apr 2025 08:42:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 966BBC4CEEC;
-	Mon, 28 Apr 2025 08:42:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745829725;
-	bh=bEhWigbCGAEUWFJ8JkgGyCA/a4Jw1TYA21NKw6cRiPc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=j/Gg3E3fhyeQLQVMiNG1WHtkk53Qf5q9PVGm54dj42RztAU2xCtIsDNi8tWVa33QZ
-	 qVaQ0Vx5Thv6Z+BRv8GJDt6m91NDyHFaD+2eyfMDXuQMNfcqBVEiVc/JtADE97rCLJ
-	 /1eoeiP72GuEn3gshvawW/CvYdWipskarCM7wH68m+7CRbyyzSvggEiiP5LoM8eJYc
-	 MIUExiVVOxLWm2mszicYR4iYigJ9PZ4xvenUIjaQ0AfceCDOqgYR3jSChSSmLLC3mg
-	 ztdpKRZYbenHiqWvY9YDuMVOqnb1jOMCvCcZgSy12VlDNSIVef8SW7FmfR9NQE8rGf
-	 4bIl3NOmzQRfw==
-From: Niklas Cassel <cassel@kernel.org>
-To: Damien Le Moal <dlemoal@kernel.org>,
-	Rob Herring <robh@kernel.org>,
+	id 1u9KhJ-00000005aBf-1ika;
+	Mon, 28 Apr 2025 09:22:47 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 22ADC475;
+	Mon, 28 Apr 2025 11:22:33 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1745832153;
+	bh=NY/33MR9wfSNfzTcGXyyEDpLjwV3dc9w3keIJgd0PrI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KuZykKApfPKPCcLx822+/Vfr0vTuqQO0py4EQJ3h3F6veI9WAG61Z5QHrIYYDZHXn
+	 MPCOIyQ7524Hsv8DRnD2dWjg8+Hp42PmxKWQ7cT0E2fqGOPJXfCp5YHUy2huerdEZX
+	 6xt048WplYGxYMMcLth80hfar/aSE88EG6NjSdL4=
+Date: Mon, 28 Apr 2025 12:22:32 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	=?utf-8?B?VGjDqW8=?= Lebrun <theo.lebrun@bootlin.com>,
+	Gerald Loacker <gerald.loacker@wolfvision.net>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Niklas Cassel <cassel@kernel.org>,
-	kernel@collabora.com,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	linux-ide@vger.kernel.org,
-	devicetree@vger.kernel.org,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Alexander Shiyan <eagle.alexander923@gmail.com>,
+	Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: (subset) [PATCH 0/2] RK3576 SATA Enablement
-Date: Mon, 28 Apr 2025 10:41:32 +0200
-Message-ID: <174582939239.704591.18413477868629759543.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250424-rk3576-sata-v1-0-23ee89c939fe@collabora.com>
-References: <20250424-rk3576-sata-v1-0-23ee89c939fe@collabora.com>
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 03/11] media: dt-bindings: media: add bindings for
+ rockchip rk3568 vicap
+Message-ID: <20250428092232.GC3371@pendragon.ideasonboard.com>
+References: <20250306-v6-8-topic-rk3568-vicap-v5-0-f02152534f3c@wolfvision.net>
+ <20250306-v6-8-topic-rk3568-vicap-v5-3-f02152534f3c@wolfvision.net>
+ <20250307-pink-dalmatian-of-kindness-f87ad2@krzk-bin>
+ <Z8rBGHK9Tjx7D1D2@kekkonen.localdomain>
+ <4a1e5834-df52-43d2-ab19-e3117840a001@collabora.com>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=687; i=cassel@kernel.org; h=from:subject:message-id; bh=bEhWigbCGAEUWFJ8JkgGyCA/a4Jw1TYA21NKw6cRiPc=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDL47e3WNM4Q6W/6UpNetH99SP87w9LUbD7DNzLnI4wbz XfxunzvKGVhEONikBVTZPH94bK/uNt9ynHFOzYwc1iZQIYwcHEKwEQq7jL8FbKwWjHbfNr8siOi CbMcpWyvMvvfPsXqs+3ao0a9jh+c3Ax/xVfyO7EcLtyfLmQTljxh3Zcs/3TDHFGZkvZD3/tPZNu xAAA=
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+Content-Disposition: inline
+In-Reply-To: <4a1e5834-df52-43d2-ab19-e3117840a001@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250428_094212_131045_A607E57A 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20250428_022245_769098_8D8C104B 
+X-CRM114-Status: GOOD (  34.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,28 +92,191 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Apr 2025 20:52:21 +0200, Nicolas Frattaroli wrote:
-> This is a tiny series to enable SATA on RK3576. It consists of a patch
-> to add the compatible to the bindings, and a second patch to add the
-> nodes to the SoC .dtsi.
+On Mon, Apr 28, 2025 at 10:11:51AM +0200, Michael Riesch wrote:
+> Hi Krzysztof, Sakari,
 > 
-> I've only been able to test sata0 on my board (Sige5), but the
-> successful test gave me confidence that downstream's "dma-coherent"
-> property here is appropriate and true.
+> Thanks for your feedback! Also, sorry for the delayed response, but as
+> the e-mail address indicates, there has been a job change in between
+> that kept me busy :-)
 > 
-> [...]
+> On 3/7/25 10:49, Sakari Ailus wrote:
+> > Hi Krzysztof, Michael,
+> > 
+> > On Fri, Mar 07, 2025 at 08:51:54AM +0100, Krzysztof Kozlowski wrote:
+> >> On Thu, Mar 06, 2025 at 05:56:04PM +0100, Michael Riesch wrote:
+> >>> Add documentation for the Rockchip RK3568 Video Capture (VICAP) unit.
+> >>>
+> >>> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> >>
+> >> subject: only one media prefix, the first
+> >>
+> >> A nit, subject: drop second/last, redundant "bindings". The
+> >> "dt-bindings" prefix is already stating that these are bindings.
+> >> See also:
+> >> https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
+> 
+> Ack. Plain "media: dt-bindings: add rockchip rk3568 vicap" it is, then.
+> 
+> >>
+> >>> ---
+> >>>  .../bindings/media/rockchip,rk3568-vicap.yaml      | 169 +++++++++++++++++++++
+> >>>  MAINTAINERS                                        |   1 +
+> >>>  2 files changed, 170 insertions(+)
+> >>>
+> >>
+> >> ...
+> >>
+> >>> +  clocks:
+> >>> +    items:
+> >>> +      - description: ACLK
+> >>> +      - description: HCLK
+> >>> +      - description: DCLK
+> >>> +      - description: ICLK
+> >>> +
+> >>> +  clock-names:
+> >>> +    items:
+> >>> +      - const: aclk
+> >>> +      - const: hclk
+> >>> +      - const: dclk
+> >>> +      - const: iclk
+> >>> +
+> >>> +  rockchip,cif-clk-delaynum:
+> >>> +    $ref: /schemas/types.yaml#/definitions/uint32
+> >>> +    minimum: 0
+> >>> +    maximum: 127
+> >>> +    description:
+> >>> +      Delay the DVP path clock input to align the sampling phase, only valid
+> >>> +      in dual edge sampling mode. Delay is zero by default and can be adjusted
+> >>> +      optionally.
+> >>
+> >> default: 0
+> 
+> Ack.
+> 
+> > 
+> > And this is technically specific to the DVP port (0). Should (or could?) it
+> > be located there?
+> 
+> "Should"? Yes, makes sense to me.
+> "Could"? I guess, as we are referencing port-base here it should be
+> feasible. Not an expert opinion, mind you.
+> 
+> > 
+> >>
+> >>> +
+> >>> +  iommus:
+> >>> +    maxItems: 1
+> >>> +
+> >>> +  resets:
+> >>> +    items:
+> >>> +      - description: ARST
+> >>> +      - description: HRST
+> >>> +      - description: DRST
+> >>> +      - description: PRST
+> >>> +      - description: IRST
+> >>> +
+> >>> +  reset-names:
+> >>> +    items:
+> >>> +      - const: arst
+> >>> +      - const: hrst
+> >>> +      - const: drst
+> >>> +      - const: prst
+> >>> +      - const: irst
+> >>> +
+> >>> +  rockchip,grf:
+> >>> +    $ref: /schemas/types.yaml#/definitions/phandle
+> >>> +    description: Phandle to general register file used for video input block control.
+> >>> +
+> >>> +  power-domains:
+> >>> +    maxItems: 1
+> >>> +
+> >>> +  ports:
+> >>> +    $ref: /schemas/graph.yaml#/properties/ports
+> >>> +
+> >>> +    properties:
+> >>> +      port@0:
+> >>> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> >>> +        unevaluatedProperties: false
+> >>> +        description: The digital video port (DVP, a parallel video interface).
+> >>> +
+> >>> +        properties:
+> >>> +          endpoint:
+> >>> +            $ref: video-interfaces.yaml#
+> >>> +            unevaluatedProperties: false
+> >>> +
+> >>> +            properties:
+> >>> +              bus-type:
+> >>> +                enum: [5, 6]
+> >>> +
+> >>> +            required:
+> >>> +              - bus-type
+> >>> +
+> >>> +      port@1:
+> >>> +        $ref: /schemas/graph.yaml#/properties/port
+> >>> +        description: Internal port connected to a MIPI CSI-2 host.
+> >>> +
+> >>> +        properties:
+> >>> +          endpoint:
+> >>> +            $ref: video-interfaces.yaml#
+> >>> +            unevaluatedProperties: false
+> >>
+> >> Hm, does it actually work? graph/port does not allow any other
+> >> properties. You should use graph/port-base and probably still narrow
+> >> lanes for both of port@0 and port@1.
+> > 
+> > I'd list the relevant properties for both DVP and CSI-2, either as
+> > mandatory or with defaults (could be reasonable for DVP signal polarities
+> > but not e.g. on number of CSI-2 lanes).
+> 
+> Not sure whether we are on the same page here. As pointed out in the
+> last round of feedback
+> (https://lore.kernel.org/all/0b19c544-f773-435e-9829-aaaa1c6daf7a@wolfvision.net/),
+> port@1 is not MIPI CSI, but some internal interface.
+> 
+> I tried to clarify this by changing the description of this port to
+> "Internal port connected to a MIPI CSI-2 host." The host (see
+> rockchip,rk3568-mipi-csi.yaml) has a port that is actually MIPI CSI and
+> one port that is the other end of port@1 here.
 
-Applied to libata/linux.git (for-6.16), thanks!
+I'd write "Port connected to the MIPI CSI-2 receiver output". We use
+"receiver" instead of "host".
 
-[1/2] dt-bindings: ata: rockchip-dwc-ahci: add RK3576 compatible
-      https://git.kernel.org/libata/linux/c/b8ed9475
+> As to port@1 here, I am not aware of any properties that can be set. Not
+> even very peculiar ones similar to rockchip,cif-clk-delaynum. Should I
+> have overlooked something, I think we can relax the constraints, but we
+> should start strict, right?
+> 
+> >>> +
+> >>> +required:
+> >>> +  - compatible
+> >>> +  - reg
+> >>> +  - interrupts
+> >>> +  - clocks
+> >>> +  - ports
+> >>> +
+> >>> +additionalProperties: false
+> >>> +
+> >>> +examples:
+> >>> +  - |
+> >>> +    #include <dt-bindings/clock/rk3568-cru.h>
+> >>> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> >>> +    #include <dt-bindings/interrupt-controller/irq.h>
+> >>> +    #include <dt-bindings/power/rk3568-power.h>
+> >>> +    #include <dt-bindings/media/video-interfaces.h>
+> >>> +
+> >>> +    parent {
+> >>
+> >> soc {
+> 
+> Ack.
+> 
+> >>> +        #address-cells = <2>;
+> >>> +        #size-cells = <2>;
 
+-- 
+Regards,
 
-I'm assuming that Heiko will pick up patch [2/2].
-
-
-Kind regards,
-Niklas
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
