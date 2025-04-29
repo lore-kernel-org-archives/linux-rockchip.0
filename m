@@ -4,60 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CC46C369D5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Apr 2025 02:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64A26C369DC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Apr 2025 09:41:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CNnYCECovVGC2QLo0M3WHlWcfG2uVzty991nkerMmoY=; b=MaQNtYP2+u71b64Rn0c1Ip0NMH
-	UPlDqflkHFWQJOjWenCk9afCI9hVix8d20Jtx+om788/9VgUxPGNihBdapXWJ6v4K3tmt8+tecsiL
-	EVCmnz9HpQg1EkVxSgne4rePJmq+qHQ3m76njBP3QPtvk8iyN4UXWGcgMNmQ9DW4hrSAejWqf5vEV
-	jfPKvPSeLOREk18bNc2g0lMRl2wiX8gr3RYOoo62GUMqLGPd0uSYZF8J/bml1SlrhYwuKtjgTVTiw
-	EgcZDW719RV7rcm2JRq15G+Nz/cn9LCrUvkM2PVTEB43t3qzNX+bTZFj4TxrBb9PGbtkwOj+V2mQZ
-	dtyPoMGQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=exZ3YXrrK3BrtQPE+9+FNiauCln38To+ZS41AZkTicc=; b=X2SoYaCACUVivR
+	i4Zlfq2Ni4i6ErVsENfAc2AgjCzQVFEOpzXOW3UX8FUXYQ/Q4KD6kmpcHv6M4UXDIwY6SF4DMh/Zo
+	swcSzO1tyRBJd8+FvIn1QgxnLZXgSSsM6UGEZtaEpm33Qz7BMm4bqr7O/m2heJ8Vr3S/CJJaKOJVV
+	X/1GtcZmdOKmHbMFjWBV0NXvt7kqMg2pwrF5x4Rq4TcUtMJvzpsutQ/mIEdPCMEXmLflMXEDBJEgO
+	q/1rgQPoLNX6KJp2ncyHoM2TbjjfpLMUvzgRiVCNaTiTN+J3SBQXzKUbFqnd8TLKh8RBh/ECkKzyc
+	3wzPNYBjpWHC9PQoX4nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9awJ-000000087Ov-0aFG;
-	Tue, 29 Apr 2025 02:43:19 +0000
-Received: from mail-m49205.qiye.163.com ([45.254.49.205])
+	id 1u9hTG-00000009BEV-2zyP;
+	Tue, 29 Apr 2025 09:41:46 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9awG-000000087OG-1Yv1;
-	Tue, 29 Apr 2025 02:43:18 +0000
-Received: from [127.0.0.1] (gy-adaptive-ssl-proxy-1-entmail-virt204.gy.ntes [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 137882886;
-	Tue, 29 Apr 2025 10:42:59 +0800 (GMT+08:00)
-Message-ID: <027de192-4227-4010-a759-5283b6af1531@rock-chips.com>
-Date: Tue, 29 Apr 2025 10:42:59 +0800
+	id 1u9hS3-00000009B02-2qEQ;
+	Tue, 29 Apr 2025 09:40:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=hLcmBIsCACJDjUqAJtkO3HjgZL+AZDeLLjzKL5Mpp1Q=; b=hAxLNYMpFQAQiWXMAuvh4Hp+4s
+	/n+yIEvRWdRV4iazthpj8FDjGrRexfXp8rA3n+RQ1n9HoA5fSEPfCA4Rhg4Tky+zLQeJolOXi+prq
+	0PeM9D3QQXmrhHn0mV0y2RsAo40yAZaK3yBSckstoYuRWoRbjre3cdrQtAGhZtFaT3hXAaGqCvy+V
+	dZu+GBbjz/Hnspd2SIzih5fX7emlg+AUZhEF2tvm6xaHpiPIK+c7FN+9IkYzwjo5370q3Jar0rD7W
+	04aaMzymk0FCkG6boE/mS0U7vaMqDGIsUaFolYIwFyD/fM98SuxOVvn9Y1F8YL/az1UpsAmxBUxCe
+	GEUeKOLg==;
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u9hRz-0000000DFtu-3nc9;
+	Tue, 29 Apr 2025 09:40:30 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1745919602; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=CrRxVW/rjrrTpEX877OQp09PyFktoNq4tLm8pehDoxuZm9tRiQej5iH1DAx5qDT9Lc4NOb6SmFIJhPQWWjj3NXtAVhj7dwEyFkZR+qD6SRCsZSDTo3irFeJnHxGrejqVL7as981LljIPT+GW/s6CBivRwxQj3gYeaX4+BVwzJ7M=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1745919602; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=hLcmBIsCACJDjUqAJtkO3HjgZL+AZDeLLjzKL5Mpp1Q=; 
+	b=GPZeeF9NHa0+ftrpZl4aZ8Mop5XFx2Ruj4qp5aB37/XaCRaadIfTDNlR2t4LuGXZAcebXlk8pR5Mhj+rsWbtSPnWUbHIcrnEvSnlGG2jGoEyw4XjVKvqCCHrL4bNDIQsz5OoEM6oSBdpbndb2kqeSi87n6aaTXIWYRJOD5iRSck=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745919602;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=hLcmBIsCACJDjUqAJtkO3HjgZL+AZDeLLjzKL5Mpp1Q=;
+	b=FUWvce3l0LAyC3oL+PJY12QkqhLVXz42z07AN6mnx/ARAY67DZuYjHPP+ne+jW8q
+	gI8fLDMp8XW+4rLBKWxRzGoc90GHy3t3UK0r6m9ZX4b/ekFufCgRHaBKLUpepFbtKtL
+	LPD2Ge/TYfWhDsirdN40DB7REFsV5aAKJ3Ago1+Q=
+Received: by mx.zohomail.com with SMTPS id 1745919600383113.998544462219;
+	Tue, 29 Apr 2025 02:40:00 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Oded Gabbay <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Jeffrey Hugo <quic_jhugo@quicinc.com>, linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
+ Tomeu Vizoso <tomeu@tomeuvizoso.net>, Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: Re: [PATCH v2 4/7] accel/rocket: Add a new driver for Rockchip's NPU
+Date: Tue, 29 Apr 2025 11:39:52 +0200
+Message-ID: <12654406.O9o76ZdvQC@workhorse>
+In-Reply-To: <20250225-6-10-rocket-v2-4-d4dbcfafc141@tomeuvizoso.net>
+References: <20250225-6-10-rocket-v2-0-d4dbcfafc141@tomeuvizoso.net>
+ <20250225-6-10-rocket-v2-4-d4dbcfafc141@tomeuvizoso.net>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add rk3399-evb-ind board
-To: Andrew Lunn <andrew@lunn.ch>
-References: <20250427094211.246-1-kernel@airkyi.com>
- <20250427094211.246-3-kernel@airkyi.com>
- <6291f6b8-75d3-4243-9935-9b64450e2b7f@lunn.ch>
- <c583c59a-d5b7-4e20-9a1f-96f51bd7b4f3@rock-chips.com>
- <15ee1a6b-55ba-41e9-b8a0-6e0bf62cabf0@lunn.ch>
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <15ee1a6b-55ba-41e9-b8a0-6e0bf62cabf0@lunn.ch>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkpKT1YaHh0ZH05OSEIYTB1WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
-	5VSktLVUpCS0tZBg++
-X-HM-Tid: 0a967f6d1f6303abkunm137882886
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MhA6Hww5QjJCHSkuOjw5LhUD
-	C0lPCg9VSlVKTE9OQ0JPTkNMSEpPVTMWGhIXVRgTGhQCElUYEx4VOwkUGBBWGBMSCwhVGBQWRVlX
-	WRILWUFZTkNVSUlVTFVKSk9ZV1kIAVlBSElCSzcG
-DKIM-Signature: a=rsa-sha256;
-	b=EpGcqWX9zy7b4aOQJQl3I+h7mRCxOtfrxcfOyZWgCO5Xbg67xbaFmiQOrSj42HnlGh3mT2NSrLAHkxuGFUuURJhC9/XoiI1g47KLJ33keDr/FvfvjP0JhZUJzOwuhpVsunq+3DGBVLesmqCEjhgrA/sFnyq1HT1xtUBZjxkaPhQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=gkmGwA1JNJSi9vWgEDnuu8pe72dV9P14DRuR/dc+N4Y=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250428_194316_945850_2C3C02FB 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20250429_104028_612352_4AE13FBD 
+X-CRM114-Status: GOOD (  37.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,42 +97,211 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Chaoyi Chen <kernel@airkyi.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Jonas Karlman <jonas@kwiboo.se>, Jimmy Hon <honyuenkwun@gmail.com>, linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Quentin Schulz <quentin.schulz@cherry.de>, Alexey Charkov <alchark@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Dragan Simic <dsimic@manjaro.org>, linux-arm-kernel@lists.infradead.org, Jianfeng Liu <liujianfeng1994@gmail.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQW5kcmV3LAoKT24gMjAyNS80LzI4IDIwOjQ1LCBBbmRyZXcgTHVubiB3cm90ZToKPiBPbiBN
-b24sIEFwciAyOCwgMjAyNSBhdCAwOTo0NzozNEFNICswODAwLCBDaGFveWkgQ2hlbiB3cm90ZToK
-Pj4gSGkgQW5kcmV3LAo+Pgo+PiBPbiAyMDI1LzQvMjggNDo0MiwgQW5kcmV3IEx1bm4gd3JvdGU6
-Cj4+Pj4gKyZnbWFjIHsKPj4+PiArCWFzc2lnbmVkLWNsb2NrcyA9IDwmY3J1IFNDTEtfUk1JSV9T
-UkM+Owo+Pj4+ICsJYXNzaWduZWQtY2xvY2stcGFyZW50cyA9IDwmY2xraW5fZ21hYz47Cj4+Pj4g
-KwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+Pj4+ICsJcGluY3RybC0wID0gPCZyZ21paV9w
-aW5zPjsKPj4+PiArCWNsb2NrX2luX291dCA9ICJpbnB1dCI7Cj4+Pj4gKwlwaHktc3VwcGx5ID0g
-PCZ2Y2NfcGh5PjsKPj4+PiArCXBoeS1tb2RlID0gInJnbWlpIjsKPj4+IERvZXMgdGhlIFBDQiBo
-YXZlIGV4dHJhIGxvbmcgY2xvY2sgbGluZXMgdG8gaW1wbGVtZW50IHRoZSBSR01JSSAybnMKPj4+
-IGRlbGF5Pwo+PiBUaGUgMm5zIGRlbGF5IG9mIFJHTUlJIGlzIGltcGxlbWVudGVkIGluc2lkZSB0
-aGUgUkszMzk5IGNoaXAgaW5zdGVhZCBvZiBQQ0IKPj4gbGluZXMsIGFuZCB0aGVyZSBhcmUgYWxz
-byBhZGRpdGlvbmFsIGRlbGF5bGluZSBjb25maWd1cmF0aW9ucy4KPiBJZiB0aGUgUENCIGRvZXMg
-bm90IGltcGxlbWVudCB0aGUgZGVsYXksIHJnbWlpIGlzIHdyb25nLgo+Cj4gSWYgdGhlIE1BQy9Q
-SFkgcGFpciBpcyBpbXBsZW1lbnRpbmcgdGhlIGRlbGF5LCB5b3UgbmVlZCB0byB1c2UKPiByZ21p
-aS1pZC4gWW91IGNhbiB0aGVuIHVzZSBhZGRpdGlvbmFsIHByb3BlcnRpZXMgdG8gZmluZSB0dW5l
-IHRoZQo+IGRlbGF5IHRoZSBNQUMvUEhZIGlzIGFkZGluZy4gQW5kIHRoZSBMaW51eCBwcmVmZXJl
-bmNlIGlzIHRoYXQgdGhlIFBIWQo+IGFkZHMgdGhlIGRlbGF5LgoKVGhlIHNpZ25hbCBwYXRoIG9m
-IFJLMzM5OSBpcyBhcyBmb2xsb3dzOgoKTUFDIDwtLS0+IElPIDwtLS0+IFBIWQoKSW4gZmFjdCwg
-dGhlIGRlbGF5IGlzIGFkZGVkIHRvIHRoZSBwYXRoIGJldHdlZW4gdGhlIE1BQyBhbmQgdGhlIElP
-LCAKcmF0aGVyIHRoYW4gYmVpbmcgaW1wbGVtZW50ZWQgaW4gdGhlIE1BQyBpdHNlbGYuIFRoZXNl
-IGRlbGF5IHZhbHVlIGlzIApjb250cm9sbGVkIGJ5IHRoZSBHUkYgcmVnaXN0ZXJbMF0gLiBUaGVz
-ZSBwYXRocyBhcmUgaW1wbGVtZW50ZWQgaW5zaWRlIAp0aGUgU29DIGFuZCBoYXZlIG5vdCB5ZXQg
-cmVhY2hlZCB0aGUgYm9hcmQgbGV2ZWwuCgpBY2NvcmRpbmcgdG8gdGhlIGRvY3VtZW50WzFdLCB1
-c2UgInJnbWlpIiB3aGVuICJSWCBhbmQgVFggZGVsYXlzIGFyZSAKYWRkZWQgYnkgdGhlIE1BQyB3
-aGVuIHJlcXVpcmVkIi4gSW4gYWRkaXRpb24sIGN1cnJlbnRseSB3ZSBjYW4gc2VlIHRoYXQgCmFs
-bCBSSzMzOTkgYm9hcmRzIHVzZSAicmdtaWkiLsKgIElzIHRoZXJlIGFueXRoaW5nIEkgbWlzc2Vk
-PyBUaGFuayB5b3UuCgoKWzBdOiAKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbmV0ZGV2LzE0NzI3
-NTIyMDQtODkyNC0yLWdpdC1zZW5kLWVtYWlsLXd4dEByb2NrLWNoaXBzLmNvbS8KClsxXTogCmh0
-dHBzOi8vd3d3Lmtlcm5lbC5vcmcvZG9jL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9uZXQvZXRoZXJuZXQtY29udHJvbGxlci55YW1sCgo+Cj4gCUFuZHJldwo+Cj4KCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tuesday, 25 February 2025 08:55:50 Central European Summer Time Tomeu Vizoso wrote:
+> This initial version supports the NPU as shipped in the RK3588 SoC and
+> described in the first part of its TRM, in Chapter 36.
+> 
+> This NPU contains 3 independent cores that the driver can submit jobs
+> to.
+> 
+> This commit adds just hardware initialization and power management.
+> 
+> v2:
+> - Split cores and IOMMUs as independent devices (Sebastian Reichel)
+> - Add some documentation (Jeffrey Hugo)
+> - Be more explicit in the Kconfig documentation (Jeffrey Hugo)
+> - Remove resets, as these haven't been found useful so far (Zenghui Yu)
+> - Repack structs (Jeffrey Hugo)
+> - Use DEFINE_DRM_ACCEL_FOPS (Jeffrey Hugo)
+> - Use devm_drm_dev_alloc (Jeffrey Hugo)
+> - Use probe log helper (Jeffrey Hugo)
+> - Introduce UABI header in a later patch (Jeffrey Hugo)
+> 
+> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+> ---
+>  Documentation/accel/index.rst           |    1 +
+>  Documentation/accel/rocket/index.rst    |   19 +
+>  MAINTAINERS                             |    8 +
+>  drivers/accel/Kconfig                   |    1 +
+>  drivers/accel/Makefile                  |    1 +
+>  drivers/accel/rocket/Kconfig            |   25 +
+>  drivers/accel/rocket/Makefile           |    8 +
+>  drivers/accel/rocket/rocket_core.c      |   71 +
+>  drivers/accel/rocket/rocket_core.h      |   29 +
+>  drivers/accel/rocket/rocket_device.c    |   29 +
+>  drivers/accel/rocket/rocket_device.h    |   29 +
+>  drivers/accel/rocket/rocket_drv.c       |  273 ++
+>  drivers/accel/rocket/rocket_drv.h       |   13 +
+>  drivers/accel/rocket/rocket_registers.h | 4425 +++++++++++++++++++++++++++++++
+>  14 files changed, 4932 insertions(+)
+
+Hi Tomeu,
+
+I've got some more comments on the driver, this time specific to some power
+management stuff I've noticed.
+
+> +++ b/drivers/accel/rocket/rocket_core.c
+>
+> [...]
+>
+> +int rocket_core_init(struct rocket_core *core)
+> +{
+> +	struct device *dev = core->dev;
+> +	struct platform_device *pdev = to_platform_device(dev);
+> +	uint32_t version;
+> +	int err = 0;
+> +
+> +	err = rocket_clk_init(core);
+> +	if (err) {
+> +		dev_err(dev, "clk init failed %d\n", err);
+> +		return err;
+> +	}
+> +
+> +	core->iomem = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(core->iomem))
+> +		return PTR_ERR(core->iomem);
+> +
+> +	pm_runtime_use_autosuspend(dev);
+
+We're enabling autosuspend here, but don't use
+  pm_runtime_dont_use_autosuspend(core->dev);
+in rocket_core_fini. dont_use_autosuspend is only handled for us automagically
+on driver unload if we use devm wrappers for pm_runtime_enable, so this is most
+definitely an oversight.
+
+> +	pm_runtime_set_autosuspend_delay(dev, 50); /* ~3 frames */
+
+The 50 = 3 frames thing here seems suspect. 3 frames of what, and why? If it's
+3 frames of something the hardware processed, then doesn't that depend on the
+specific hardware and its clock rate, which may change? Plus, shouldn't auto-
+suspend be blocked anyway when there's still a job processing? The RK3588 TRM
+doesn't make a mention of "frame" in the RKNN section, so if this refers to a
+specific workload then that will be another parameter.
+
+> +	pm_runtime_enable(dev);
+> +
+> +	err = pm_runtime_get_sync(dev);
+
+No error checking done here, so if a clock fails to enable, we just hang on the
+read later if it was the register's clock. Though that particular error case is
+never passed out from the runtime resume callback, which should probably be
+fixed as well. 
+
+> +
+> +	version = rocket_read(core, REG_PC_VERSION);
+> +	version += rocket_read(core, REG_PC_VERSION_NUM) & 0xffff;
+> +
+> +	pm_runtime_mark_last_busy(dev);
+> +	pm_runtime_put_autosuspend(dev);
+> +
+> +	dev_info(dev, "Rockchip NPU core %d version: %d\n", core->index, version);
+> +
+> +	return 0;
+> +}
+> +
+> +void rocket_core_fini(struct rocket_core *core)
+> +{
+> +	pm_runtime_disable(core->dev);
+> +}
+>
+> [...]
+>
+> diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..c22d965f20f1239a36b1d823d5fe5f372713555d
+> --- /dev/null
+> +++ b/drivers/accel/rocket/rocket_drv.c
+>
+> [...]
+>
+> +static int rocket_device_runtime_resume(struct device *dev)
+> +{
+> +	struct rocket_device *rdev = dev_get_drvdata(dev);
+> +
+> +	for (unsigned int core = 0; core < rdev->num_cores; core++) {
+> +		if (dev != rdev->cores[core].dev)
+> +			continue;
+> +
+> +		if (core == 0) {
+> +			clk_prepare_enable(rdev->clk_npu);
+> +			clk_prepare_enable(rdev->pclk);
+> +		}
+> +
+> +		clk_prepare_enable(rdev->cores[core].a_clk);
+> +		clk_prepare_enable(rdev->cores[core].h_clk);
+> +	}
+> +
+> +	return 0;
+> +}
+
+Here is where we will probably want to check the return code of each
+clk_prepare_enable, and potentially do quite ugly "always return hardware to
+known state" handling if any of them fails to enable, i.e. unwind the enables
+in the function exit before returning the error code.
+
+Seems pointless because if a clock fails to enable it's a nuclear meltdown type
+situation anyway, but especially when people are writing DTSes or porting things
+to new SoCs, it can be nicer to have the driver fail rather than the whole SoC.
+
+I do wish we had cleanup.h helpers for clock enables though...
+
+> +
+> +static int rocket_device_runtime_suspend(struct device *dev)
+> +{
+> +	struct rocket_device *rdev = dev_get_drvdata(dev);
+> +
+> +	for (unsigned int core = 0; core < rdev->num_cores; core++) {
+> +		if (dev != rdev->cores[core].dev)
+> +			continue;
+> +
+> +		clk_disable_unprepare(rdev->cores[core].a_clk);
+> +		clk_disable_unprepare(rdev->cores[core].h_clk);
+> +
+> +		if (core == 0) {
+> +			clk_disable_unprepare(rdev->pclk);
+> +			clk_disable_unprepare(rdev->clk_npu);
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +EXPORT_GPL_DEV_PM_OPS(rocket_pm_ops) = {
+> +	RUNTIME_PM_OPS(rocket_device_runtime_suspend, rocket_device_runtime_resume, NULL)
+> +	SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend, pm_runtime_force_resume)
+> +};
+> +
+> +static struct platform_driver rocket_driver = {
+> +	.probe = rocket_probe,
+> +	.remove = rocket_remove,
+> +	.driver	 = {
+> +		.name = "rocket",
+> +		.pm = pm_ptr(&rocket_pm_ops),
+> +		.of_match_table = dt_match,
+> +	},
+> +};
+> +module_platform_driver(rocket_driver);
+> +
+> +MODULE_LICENSE("GPL");
+> +MODULE_DESCRIPTION("DRM driver for the Rockchip NPU IP");
+> +MODULE_AUTHOR("Tomeu Vizoso");
+>
+> [...]
+
+I'll send a second reply with PM comments on the job stuff in the patch that
+adds it, since I found something peculiar there while experimenting on RK3576.
+
+Kind regards,
+Nicolas Frattaroli
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
