@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E68CC369DC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Apr 2025 16:52:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 847DCC3ABA5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Apr 2025 21:28:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vZQiKs7Ae0pRCJWNPhGnNPwIa95bveoLiAFXodxWWiM=; b=Z286kIFJHsAO6o
-	r5jkSaWICyPxeFKIx/UlVWs23ESjfHMfcVrT21Lo5nxWUvc7WgYIuBkK5MVgj1b2Fu+Iy0aauTtjO
-	3uU4Zxa8h/W4E5HFk3p1tp/XcYZFb1xXcOf62xylvqfDqkQO1uyR2crsLmYOj1qkNxTZzAbFcrv4h
-	7t2THQM43isKmFsIzx1jPFV+KUiGuAw3frL7Z26CyYXAzA8dX+zvnz+W4A8PxJJMi3n46/zdgvBJa
-	s3tNQh8GjeqDbNP7Ly3o4rsniQag8MFp2LdTerqX/cJ9vkMg24jBwvMvecnGwxVjX7/hTxRdO1Q1f
-	s94llG1UEDHTQpjzLytw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NT2rovU06bPFAHNHGIT8S8N2jhG5fH/3MznSnsKGaGg=; b=m6v3DV+ijIWexH
+	i0zV2SxJ8VRDZb8MCFMcpQtfFWjjjkXbPiCNbc5CXJkNGMnqUZ2UDV58g8FhIjjLqX6zQgEk0Kj0D
+	RKk81pq+pHAOcP1DFpzwSB8vTjWcg12WFsTxXbJDog0LrL4pE0SX6or9odFtaFudGFrB03u4qpqWQ
+	juIs9FKD6DWzrnS3ij/B5FDsx1r5YH3DKdAQhjnPa7zGptioXv2C6Uf4TWSyeWZsv1rSeRMLt0eQh
+	375TUQZIhesr77aGt0LtYXbh6f5eQHtWQQGTJhtxDRI0UIqcEKyj1FuqzWhPmyUolr0svmbRWr6j9
+	7l/+ELD6LPCVdYHD6DYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9oCJ-0000000AKIW-0hrS;
-	Tue, 29 Apr 2025 16:52:43 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1u9sUx-0000000ArBR-0MV2;
+	Tue, 29 Apr 2025 21:28:15 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9oC6-0000000AKHG-310w;
-	Tue, 29 Apr 2025 16:52:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1745945533; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=IQBQTzconYJkqWZwYVbRGCr0fE2QNxTFfE3QMFz6gVJvqqjVNRcp2WzYj6h+XjBoGDtnOwgRXtU4MQotaYUT7/jbbr50Xbg6I79CiNY/zyud3E4Q9mX8xFOoKJLaFQUUaZnfQaOFpSxS+znfdhhs0wQeqrvItZnZemNMOS1zkSs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1745945533; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=3hn7TI/NIifsiTf4RtEzy2zuXp6Q4rhXJuOfP6jWeJw=; 
-	b=YKACafeXthLiyZt4GzZHB89ADiQiUemvk91QX01rpznlzPVelZ2D700U4mpJudnJD+Z1zzaKxOXvPQae3EwQjLwwZW5WzluKVEApp0yGf30eDKkAfX0R0N90PMas83qOyh2CmGBWY8pHImSW5+uIglGNU7pPcWl1HfXVVf+MGgg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745945532;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=3hn7TI/NIifsiTf4RtEzy2zuXp6Q4rhXJuOfP6jWeJw=;
-	b=LrKvbKunSVI/bXi0eGOSIhTtqmEIxNKK8+JHQmS6zxTAqs7D9di/oS1wd8kmygIq
-	+KVSl52vk2D2C+eLPatAmN+tCgO71mESSy3jpjvZwPNZMB6GbnAsdvjQ4pIr7P2ubrr
-	ITZukGJ3wGH7l9tGmZqoP+i2VQkKYTKRsExjpbJM=
-Received: by mx.zohomail.com with SMTPS id 1745945531729697.7459362757056;
-	Tue, 29 Apr 2025 09:52:11 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 29 Apr 2025 18:51:55 +0200
-Subject: [PATCH] arm64: dts: rockchip: fix Sige5 RTC interrupt pin
+	id 1u9sSy-0000000Aqt4-3L0g;
+	Tue, 29 Apr 2025 21:26:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=+SGSB4/+nlLFVQyK8SYD92uIgww4SyT7f0UDpG1s4xk=; b=O8BwmQCopy+yAIs0PC3ozSdz11
+	gSfGlzpYnSLJ9S+QMILMlUgY7xpn4dkO36BCISW3XbaY/I9fu3blr6BiMyr1OR4bn8hWkwhob7y0O
+	lGvHX7rr8cX9XjQb85McsZx/ZhGjNyl07wtSIiCwe5syx/fJyvy78P8txx2XqB7m2zkpqBIXYx2rp
+	F8Xe7UOx27ts9Wt20/QJRRCGSAENq1/e4jI3dUfiWw/wScqIIvVuOWkwMZqAF9OMvTTmRzj39L0fJ
+	x+X05eb7aPiYuwYqO8ZbH9konGVSN56TkvNYBkFHQQXV5b1W8WAssroADmFrOmUM6oM08nE8YdeJn
+	a49Nts2A==;
+Received: from i53875aba.versanet.de ([83.135.90.186] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1u9sSs-0008Pg-B3; Tue, 29 Apr 2025 23:26:06 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Damien Le Moal <dlemoal@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	kernel@collabora.com,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-ide@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: (subset) [PATCH 0/2] RK3576 SATA Enablement
+Date: Tue, 29 Apr 2025 23:25:48 +0200
+Message-ID: <174596194661.227689.3642609522784038361.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250424-rk3576-sata-v1-0-23ee89c939fe@collabora.com>
+References: <20250424-rk3576-sata-v1-0-23ee89c939fe@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20250429-sige5-rtc-oopsie-v1-1-8686767d0f1f@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAKoDEWgC/y3MQQ6CMBCF4as0s3YSrDZFrmJY1DLiLGhxphgSw
- t1txOX/kvdtoCRMCp3ZQOjDyjnVOJ8MxFdIIyEPtcE21jVXe0PlkRxKiZjzrEw4XKIL3nvyoYV
- 6m4WevP7Ie3+00HupcjlGeAQljHmauHQm0Vrwr7fQ7/sXWxEMNZMAAAA=
-X-Change-ID: 20250429-sige5-rtc-oopsie-d3c5a777e7a8
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Detlev Casanova <detlev.casanova@collabora.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250429_095230_845467_115E18CB 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20250429_142612_839216_7385D69D 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,47 +79,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Someone made a typo when they added the RTC to the Sige5 DTS, which
-resulted in it using interrupts from GPIO0 B0 instead of GPIO0 A0. The
-pinctrl entry for it wasn't typoed though, curiously enough.
 
-The Sige5 v1.1 schematic was used to verify that GPIO0 A0 is the correct
-pin for the RTC wakeup interrupt, so let's change it to that.
+On Thu, 24 Apr 2025 20:52:21 +0200, Nicolas Frattaroli wrote:
+> This is a tiny series to enable SATA on RK3576. It consists of a patch
+> to add the compatible to the bindings, and a second patch to add the
+> nodes to the SoC .dtsi.
+> 
+> I've only been able to test sata0 on my board (Sige5), but the
+> successful test gave me confidence that downstream's "dma-coherent"
+> property here is appropriate and true.
+> 
+> [...]
 
-Fixes: 40f742b07ab2 ("arm64: dts: rockchip: Add rk3576-armsom-sige5 board")
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Applied, thanks!
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-index 964ee351d3b63fcb4ede70f4b6c06541715cfe19..570252c4c0bfe56a3c269e47d81fca7676e61787 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-@@ -616,7 +616,7 @@ hym8563: rtc@51 {
- 		reg = <0x51>;
- 		clock-output-names = "hym8563";
- 		interrupt-parent = <&gpio0>;
--		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
-+		interrupts = <RK_PA0 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&hym8563_int>;
- 		wakeup-source;
-
----
-base-commit: 05c58e5408604391298fccf956f8cd0a4662da73
-change-id: 20250429-sige5-rtc-oopsie-d3c5a777e7a8
+[2/2] arm64: dts: rockchip: add SATA nodes to RK3576
+      commit: 24d8127d801560c8fa811d554e8ab5db7e51511c
 
 Best regards,
 -- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
