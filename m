@@ -4,62 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64A26C369DC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Apr 2025 09:41:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67758C3ABAA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Apr 2025 10:10:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=exZ3YXrrK3BrtQPE+9+FNiauCln38To+ZS41AZkTicc=; b=X2SoYaCACUVivR
-	i4Zlfq2Ni4i6ErVsENfAc2AgjCzQVFEOpzXOW3UX8FUXYQ/Q4KD6kmpcHv6M4UXDIwY6SF4DMh/Zo
-	swcSzO1tyRBJd8+FvIn1QgxnLZXgSSsM6UGEZtaEpm33Qz7BMm4bqr7O/m2heJ8Vr3S/CJJaKOJVV
-	X/1GtcZmdOKmHbMFjWBV0NXvt7kqMg2pwrF5x4Rq4TcUtMJvzpsutQ/mIEdPCMEXmLflMXEDBJEgO
-	q/1rgQPoLNX6KJp2ncyHoM2TbjjfpLMUvzgRiVCNaTiTN+J3SBQXzKUbFqnd8TLKh8RBh/ECkKzyc
-	3wzPNYBjpWHC9PQoX4nw==;
+	List-Owner; bh=YzZPhu1wrFl/9q00CXD0eAISvp9560P4PkKhUlmb4dM=; b=C0dXLH+hb40YFy
+	ESlhledYiZoLtRn/Ian/YXGezJLXlJjdpwEQ0KxATijpXXxlJl0KWkyNGNrXbVhl/G01T6rP98fQ5
+	eJ+FovmdfbZIqgTje0n2rMzUcjk1LQ83/6ZUobqjMbEMNzRWT3bDsbC2P4iShvAv6RsGE9B8mHloK
+	ggoRvfUicl/Eskqfo5p2MeMPTpGUMaiRI572nbd/y2XaEsTOFFXeIyfE1W19wpFE5TMQBloXP7CZg
+	W7txUprCbNG7mtPafk5I0cvrmjHsBKlyj3kfkJ9Xv9Q9RS3TFL8of2fM+/AXq5h9hRJ6d9lN6XSn/
+	yixIRgs3nniREa1aPrVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9hTG-00000009BEV-2zyP;
-	Tue, 29 Apr 2025 09:41:46 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1u9hv6-00000009FsW-2F66;
+	Tue, 29 Apr 2025 10:10:32 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9hS3-00000009B02-2qEQ;
-	Tue, 29 Apr 2025 09:40:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=hLcmBIsCACJDjUqAJtkO3HjgZL+AZDeLLjzKL5Mpp1Q=; b=hAxLNYMpFQAQiWXMAuvh4Hp+4s
-	/n+yIEvRWdRV4iazthpj8FDjGrRexfXp8rA3n+RQ1n9HoA5fSEPfCA4Rhg4Tky+zLQeJolOXi+prq
-	0PeM9D3QQXmrhHn0mV0y2RsAo40yAZaK3yBSckstoYuRWoRbjre3cdrQtAGhZtFaT3hXAaGqCvy+V
-	dZu+GBbjz/Hnspd2SIzih5fX7emlg+AUZhEF2tvm6xaHpiPIK+c7FN+9IkYzwjo5370q3Jar0rD7W
-	04aaMzymk0FCkG6boE/mS0U7vaMqDGIsUaFolYIwFyD/fM98SuxOVvn9Y1F8YL/az1UpsAmxBUxCe
-	GEUeKOLg==;
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u9hRz-0000000DFtu-3nc9;
-	Tue, 29 Apr 2025 09:40:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1745919602; cv=none; 
+	id 1u9hqf-00000009Esx-2CQS;
+	Tue, 29 Apr 2025 10:05:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1745921137; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=CrRxVW/rjrrTpEX877OQp09PyFktoNq4tLm8pehDoxuZm9tRiQej5iH1DAx5qDT9Lc4NOb6SmFIJhPQWWjj3NXtAVhj7dwEyFkZR+qD6SRCsZSDTo3irFeJnHxGrejqVL7as981LljIPT+GW/s6CBivRwxQj3gYeaX4+BVwzJ7M=
+	b=jpSzhwxlzOAiAzYn1qgSNGg8hpGzpfBH9ZSCGDbaaQWaYBf+YTPl5HH5Y2t2me7v9d7Nqt9ShWyU/To8C5dpiQKL2aiNXBunoimO6cOc0f0dvRz6hN2jaAvgLenXRYp4rx0zkLJ8StgkMH3sI7h+Ow2hlEgQezjW5j4OGT9aIVM=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1745919602; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=hLcmBIsCACJDjUqAJtkO3HjgZL+AZDeLLjzKL5Mpp1Q=; 
-	b=GPZeeF9NHa0+ftrpZl4aZ8Mop5XFx2Ruj4qp5aB37/XaCRaadIfTDNlR2t4LuGXZAcebXlk8pR5Mhj+rsWbtSPnWUbHIcrnEvSnlGG2jGoEyw4XjVKvqCCHrL4bNDIQsz5OoEM6oSBdpbndb2kqeSi87n6aaTXIWYRJOD5iRSck=
+	t=1745921137; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=JxbCFy+YVAok7lkWS9hgSHArZDCzdlEOMBm9HS++e8M=; 
+	b=GKpj86eYoSeNFysHu2RMVKHTLtlZZzBLvMvKoBNr7LcpO+Z4Znm7AnG7AuZ9MdQ/qdj2qKDpK/fAs72EzucerpNxuxBl4dFmgoONR6L/FT/KtbHbAadNOUR9IX3AM8qy0kWUq0YhI+kJvAHyoCKKbHcuyuWTBB3vkzeCzRrUEvs=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745919602;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745921137;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=hLcmBIsCACJDjUqAJtkO3HjgZL+AZDeLLjzKL5Mpp1Q=;
-	b=FUWvce3l0LAyC3oL+PJY12QkqhLVXz42z07AN6mnx/ARAY67DZuYjHPP+ne+jW8q
-	gI8fLDMp8XW+4rLBKWxRzGoc90GHy3t3UK0r6m9ZX4b/ekFufCgRHaBKLUpepFbtKtL
-	LPD2Ge/TYfWhDsirdN40DB7REFsV5aAKJ3Ago1+Q=
-Received: by mx.zohomail.com with SMTPS id 1745919600383113.998544462219;
-	Tue, 29 Apr 2025 02:40:00 -0700 (PDT)
+	bh=JxbCFy+YVAok7lkWS9hgSHArZDCzdlEOMBm9HS++e8M=;
+	b=ScUGTsBQeOdzXPal+jTXkQH/TtCHyCJS3xVRpl0+uUm5bDvVOrABlUbBHKOKQNex
+	CpvEWt235HdE+Hb2sFR6N01jaBy52WClbaN3+ye+vb+cQLyL8dRzGH84JXN/SQnxi/3
+	gj/y5VEPmR225Abunl34QxehV4TCifdRWstIpdhI=
+Received: by mx.zohomail.com with SMTPS id 1745921136083931.6736324937333;
+	Tue, 29 Apr 2025 03:05:36 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
@@ -70,22 +56,23 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Sumit Semwal <sumit.semwal@linaro.org>,
  Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
  Sebastian Reichel <sebastian.reichel@collabora.com>,
- Jeffrey Hugo <quic_jhugo@quicinc.com>, linux-rockchip@lists.infradead.org
+ Jeffrey Hugo <quic_jhugo@quicinc.com>, linux-rockchip@lists.infradead.org,
+ Tomeu Vizoso <tomeu@tomeuvizoso.net>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
  linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- Tomeu Vizoso <tomeu@tomeuvizoso.net>, Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Subject: Re: [PATCH v2 4/7] accel/rocket: Add a new driver for Rockchip's NPU
-Date: Tue, 29 Apr 2025 11:39:52 +0200
-Message-ID: <12654406.O9o76ZdvQC@workhorse>
-In-Reply-To: <20250225-6-10-rocket-v2-4-d4dbcfafc141@tomeuvizoso.net>
+ Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: Re: [PATCH v2 6/7] accel/rocket: Add job submission IOCTL
+Date: Tue, 29 Apr 2025 12:05:28 +0200
+Message-ID: <2365360.ElGaqSPkdT@workhorse>
+In-Reply-To: <20250225-6-10-rocket-v2-6-d4dbcfafc141@tomeuvizoso.net>
 References: <20250225-6-10-rocket-v2-0-d4dbcfafc141@tomeuvizoso.net>
- <20250225-6-10-rocket-v2-4-d4dbcfafc141@tomeuvizoso.net>
+ <20250225-6-10-rocket-v2-6-d4dbcfafc141@tomeuvizoso.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250429_104028_612352_4AE13FBD 
-X-CRM114-Status: GOOD (  37.96  )
+X-CRM114-CacheID: sfid-20250429_030557_660544_2581D089 
+X-CRM114-Status: GOOD (  30.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,199 +89,158 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 25 February 2025 08:55:50 Central European Summer Time Tomeu Vizoso wrote:
-> This initial version supports the NPU as shipped in the RK3588 SoC and
-> described in the first part of its TRM, in Chapter 36.
+On Tuesday, 25 February 2025 08:55:52 Central European Summer Time Tomeu Vizoso wrote:
+> Using the DRM GPU scheduler infrastructure, with a scheduler for each
+> core.
 > 
-> This NPU contains 3 independent cores that the driver can submit jobs
-> to.
+> Userspace can decide for a series of tasks to be executed sequentially
+> in the same core, so SRAM locality can be taken advantage of.
 > 
-> This commit adds just hardware initialization and power management.
+> The job submission code was initially based on Panfrost.
 > 
 > v2:
-> - Split cores and IOMMUs as independent devices (Sebastian Reichel)
-> - Add some documentation (Jeffrey Hugo)
-> - Be more explicit in the Kconfig documentation (Jeffrey Hugo)
-> - Remove resets, as these haven't been found useful so far (Zenghui Yu)
-> - Repack structs (Jeffrey Hugo)
-> - Use DEFINE_DRM_ACCEL_FOPS (Jeffrey Hugo)
-> - Use devm_drm_dev_alloc (Jeffrey Hugo)
-> - Use probe log helper (Jeffrey Hugo)
-> - Introduce UABI header in a later patch (Jeffrey Hugo)
+> - Remove hardcoded number of cores
+> - Misc. style fixes (Jeffrey Hugo)
+> - Repack IOCTL struct (Jeffrey Hugo)
 > 
 > Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
 > ---
->  Documentation/accel/index.rst           |    1 +
->  Documentation/accel/rocket/index.rst    |   19 +
->  MAINTAINERS                             |    8 +
->  drivers/accel/Kconfig                   |    1 +
->  drivers/accel/Makefile                  |    1 +
->  drivers/accel/rocket/Kconfig            |   25 +
->  drivers/accel/rocket/Makefile           |    8 +
->  drivers/accel/rocket/rocket_core.c      |   71 +
->  drivers/accel/rocket/rocket_core.h      |   29 +
->  drivers/accel/rocket/rocket_device.c    |   29 +
->  drivers/accel/rocket/rocket_device.h    |   29 +
->  drivers/accel/rocket/rocket_drv.c       |  273 ++
->  drivers/accel/rocket/rocket_drv.h       |   13 +
->  drivers/accel/rocket/rocket_registers.h | 4425 +++++++++++++++++++++++++++++++
->  14 files changed, 4932 insertions(+)
+>  drivers/accel/rocket/Makefile        |   3 +-
+>  drivers/accel/rocket/rocket_core.c   |   6 +
+>  drivers/accel/rocket/rocket_core.h   |  14 +
+>  drivers/accel/rocket/rocket_device.c |   2 +
+>  drivers/accel/rocket/rocket_device.h |   2 +
+>  drivers/accel/rocket/rocket_drv.c    |  15 +
+>  drivers/accel/rocket/rocket_drv.h    |   4 +
+>  drivers/accel/rocket/rocket_job.c    | 710 +++++++++++++++++++++++++++++++++++
+>  drivers/accel/rocket/rocket_job.h    |  50 +++
+>  include/uapi/drm/rocket_accel.h      |  55 +++
+>  10 files changed, 860 insertions(+), 1 deletion(-)
 
 Hi Tomeu,
 
-I've got some more comments on the driver, this time specific to some power
-management stuff I've noticed.
+some more power management things I've noticed here.
 
-> +++ b/drivers/accel/rocket/rocket_core.c
 >
 > [...]
 >
-> +int rocket_core_init(struct rocket_core *core)
-> +{
-> +	struct device *dev = core->dev;
-> +	struct platform_device *pdev = to_platform_device(dev);
-> +	uint32_t version;
-> +	int err = 0;
-> +
-> +	err = rocket_clk_init(core);
-> +	if (err) {
-> +		dev_err(dev, "clk init failed %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	core->iomem = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(core->iomem))
-> +		return PTR_ERR(core->iomem);
-> +
-> +	pm_runtime_use_autosuspend(dev);
-
-We're enabling autosuspend here, but don't use
-  pm_runtime_dont_use_autosuspend(core->dev);
-in rocket_core_fini. dont_use_autosuspend is only handled for us automagically
-on driver unload if we use devm wrappers for pm_runtime_enable, so this is most
-definitely an oversight.
-
-> +	pm_runtime_set_autosuspend_delay(dev, 50); /* ~3 frames */
-
-The 50 = 3 frames thing here seems suspect. 3 frames of what, and why? If it's
-3 frames of something the hardware processed, then doesn't that depend on the
-specific hardware and its clock rate, which may change? Plus, shouldn't auto-
-suspend be blocked anyway when there's still a job processing? The RK3588 TRM
-doesn't make a mention of "frame" in the RKNN section, so if this refers to a
-specific workload then that will be another parameter.
-
-> +	pm_runtime_enable(dev);
-> +
-> +	err = pm_runtime_get_sync(dev);
-
-No error checking done here, so if a clock fails to enable, we just hang on the
-read later if it was the register's clock. Though that particular error case is
-never passed out from the runtime resume callback, which should probably be
-fixed as well. 
-
-> +
-> +	version = rocket_read(core, REG_PC_VERSION);
-> +	version += rocket_read(core, REG_PC_VERSION_NUM) & 0xffff;
-> +
-> +	pm_runtime_mark_last_busy(dev);
-> +	pm_runtime_put_autosuspend(dev);
-> +
-> +	dev_info(dev, "Rockchip NPU core %d version: %d\n", core->index, version);
-> +
-> +	return 0;
-> +}
-> +
-> +void rocket_core_fini(struct rocket_core *core)
-> +{
-> +	pm_runtime_disable(core->dev);
-> +}
->
-> [...]
->
-> diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+> diff --git a/drivers/accel/rocket/rocket_job.c b/drivers/accel/rocket/rocket_job.c
 > new file mode 100644
-> index 0000000000000000000000000000000000000000..c22d965f20f1239a36b1d823d5fe5f372713555d
+> index 0000000000000000000000000000000000000000..25b31f28e932aaee86173b9a0962932c9c640c03
 > --- /dev/null
-> +++ b/drivers/accel/rocket/rocket_drv.c
+> +++ b/drivers/accel/rocket/rocket_job.c
 >
 > [...]
 >
-> +static int rocket_device_runtime_resume(struct device *dev)
+> +static void
+> +rocket_reset(struct rocket_core *core, struct drm_sched_job *bad)
 > +{
-> +	struct rocket_device *rdev = dev_get_drvdata(dev);
+> +	bool cookie;
 > +
-> +	for (unsigned int core = 0; core < rdev->num_cores; core++) {
-> +		if (dev != rdev->cores[core].dev)
-> +			continue;
+> +	if (!atomic_read(&core->reset.pending))
+> +		return;
 > +
-> +		if (core == 0) {
-> +			clk_prepare_enable(rdev->clk_npu);
-> +			clk_prepare_enable(rdev->pclk);
-> +		}
+> +	/*
+> +	 * Stop the scheduler.
+> +	 *
+> +	 * FIXME: We temporarily get out of the dma_fence_signalling section
+> +	 * because the cleanup path generate lockdep splats when taking locks
+> +	 * to release job resources. We should rework the code to follow this
+> +	 * pattern:
+> +	 *
+> +	 *	try_lock
+> +	 *	if (locked)
+> +	 *		release
+> +	 *	else
+> +	 *		schedule_work_to_release_later
+> +	 */
+> +	drm_sched_stop(&core->sched, bad);
 > +
-> +		clk_prepare_enable(rdev->cores[core].a_clk);
-> +		clk_prepare_enable(rdev->cores[core].h_clk);
-> +	}
+> +	cookie = dma_fence_begin_signalling();
 > +
-> +	return 0;
+> +	if (bad)
+> +		drm_sched_increase_karma(bad);
+> +
+> +	/*
+> +	 * Mask job interrupts and synchronize to make sure we won't be
+> +	 * interrupted during our reset.
+> +	 */
+> +	rocket_write(core, REG_PC_INTERRUPT_MASK, 0x0);
+> +	synchronize_irq(core->irq);
+> +
+> +	/* Handle the remaining interrupts before we reset. */
+> +	rocket_job_handle_irq(core);
+> +
+> +	/*
+> +	 * Remaining interrupts have been handled, but we might still have
+> +	 * stuck jobs. Let's make sure the PM counters stay balanced by
+> +	 * manually calling pm_runtime_put_noidle() and
+> +	 * rocket_devfreq_record_idle() for each stuck job.
+> +	 * Let's also make sure the cycle counting register's refcnt is
+> +	 * kept balanced to prevent it from running forever
+> +	 */
+> +	spin_lock(&core->job_lock);
+> +	if (core->in_flight_job)
+> +		pm_runtime_put_noidle(core->dev);
+
+This particular line of code caused me issues when I was experimenting with the
+driver on RK3576. My current situation is that every job that gets submitted
+times out because of some IRQs never arriving, which is besides the point, but
+it did expose a power management bug here that I suspect may affect RK3588 as
+well. After like 3 timeouts, we reset again and hang in the interrupt mask write
+just a few lines above. This is because we somehow managed to get into a
+situation where this function is called with pclk disabled, and this manual
+balancing act may be part of it. Not doing the manual balancing at all here
+doesn't fix it, I had to explicitly wrap the reset function in
+pm_runtime_get_sync and pm_runtime_put_noidle to avoid having this function
+execute with disabled clocks. That seems like the "wrong solution" though
+because it means something already powered off our hardware too eagerly before
+we got the reset done.
+
+My gut instinct tells me that there's a bug here with multiple timed out jobs
+being in flight, but I'm not 100% on it. Maybe you'll be able to reproduce it
+on an RK3588 by artificially forcing all your jobs to time out with some very
+low timeout value or by masking the interrupts.
+
+> +
+> +	core->in_flight_job = NULL;
+> +	spin_unlock(&core->job_lock);
+> +
+> +	/* Proceed with reset now. */
+> +	pm_runtime_force_suspend(core->dev);
+> +	pm_runtime_force_resume(core->dev);
+
+Do we need to guarantee some sort of exclusivity here so that nothing tries to
+concurrently use the device while we're forcing it off and back on again? I'm
+unfamiliar with the drm fence stuff, so I may be overthinking this.
+
+> +
+> +	/* GPU has been reset, we can clear the reset pending bit. */
+> +	atomic_set(&core->reset.pending, 0);
+
+Nitpick: should probably be "NPU" ;)
+
+> +
+> +	/*
+> +	 * Now resubmit jobs that were previously queued but didn't have a
+> +	 * chance to finish.
+> +	 * FIXME: We temporarily get out of the DMA fence signalling section
+> +	 * while resubmitting jobs because the job submission logic will
+> +	 * allocate memory with the GFP_KERNEL flag which can trigger memory
+> +	 * reclaim and exposes a lock ordering issue.
+> +	 */
+> +	dma_fence_end_signalling(cookie);
+> +	drm_sched_resubmit_jobs(&core->sched);
+> +	cookie = dma_fence_begin_signalling();
+> +
+> +	/* Restart the scheduler */
+> +	drm_sched_start(&core->sched, 0);
+> +
+> +	dma_fence_end_signalling(cookie);
 > +}
-
-Here is where we will probably want to check the return code of each
-clk_prepare_enable, and potentially do quite ugly "always return hardware to
-known state" handling if any of them fails to enable, i.e. unwind the enables
-in the function exit before returning the error code.
-
-Seems pointless because if a clock fails to enable it's a nuclear meltdown type
-situation anyway, but especially when people are writing DTSes or porting things
-to new SoCs, it can be nicer to have the driver fail rather than the whole SoC.
-
-I do wish we had cleanup.h helpers for clock enables though...
-
-> +
-> +static int rocket_device_runtime_suspend(struct device *dev)
-> +{
-> +	struct rocket_device *rdev = dev_get_drvdata(dev);
-> +
-> +	for (unsigned int core = 0; core < rdev->num_cores; core++) {
-> +		if (dev != rdev->cores[core].dev)
-> +			continue;
-> +
-> +		clk_disable_unprepare(rdev->cores[core].a_clk);
-> +		clk_disable_unprepare(rdev->cores[core].h_clk);
-> +
-> +		if (core == 0) {
-> +			clk_disable_unprepare(rdev->pclk);
-> +			clk_disable_unprepare(rdev->clk_npu);
-> +		}
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +EXPORT_GPL_DEV_PM_OPS(rocket_pm_ops) = {
-> +	RUNTIME_PM_OPS(rocket_device_runtime_suspend, rocket_device_runtime_resume, NULL)
-> +	SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend, pm_runtime_force_resume)
-> +};
-> +
-> +static struct platform_driver rocket_driver = {
-> +	.probe = rocket_probe,
-> +	.remove = rocket_remove,
-> +	.driver	 = {
-> +		.name = "rocket",
-> +		.pm = pm_ptr(&rocket_pm_ops),
-> +		.of_match_table = dt_match,
-> +	},
-> +};
-> +module_platform_driver(rocket_driver);
-> +
-> +MODULE_LICENSE("GPL");
-> +MODULE_DESCRIPTION("DRM driver for the Rockchip NPU IP");
-> +MODULE_AUTHOR("Tomeu Vizoso");
 >
 > [...]
-
-I'll send a second reply with PM comments on the job stuff in the patch that
-adds it, since I found something peculiar there while experimenting on RK3576.
+>
 
 Kind regards,
 Nicolas Frattaroli
