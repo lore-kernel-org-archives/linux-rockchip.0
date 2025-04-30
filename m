@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39E13C3ABA9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Apr 2025 09:38:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F2E6C369DC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Apr 2025 09:40:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ahzSdA2DcC/5rBWHVBDJJ2uqVAH3Qx1G30GTiNoBS+o=; b=D/PV8vntPlvVI9
-	Z46eklVQM0KEgyD4yHwesHe+zZI1eo5X1zpjA0dBSYpEbQyhnr9mZo0NAXiYliSTQzrfi6F8UoX2R
-	KgDLuaZ6vuHseQO5+LZJn7YzniuJ5JXWyFglCHG9kNPs59o4pVXZze65xU70s9x0c+/KW+wuEVlGM
-	A5Ra8HlA3agZpKafVsykqpxl1S79l0Dnk2v4Iqi7vezfs3OeeuYMpc1ypEw5ErPOF30S41lzgEiea
-	/dIQp3V1MeivUfNuDez4Y108V3wZQf7EIic8W0IE/NQgj5858C19o8p/d2PUDsYN7HJf1MxiymLcN
-	ArMz+QqR37xXt3iN8xkQ==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=j2ZNMBfjBDR52KkUql0eDFA0w7uq2FUm8zryDUHB3W8=; b=AqjoWS23x/MJ36
+	r+7EuboxC3HP52WUzD6jEB4amFbcMnrBSA75vwnjnofm/HxgNWqU+NOxjs4XJZhbU9+QyS1Ic+J3a
+	UjcbkfD9saNmtaScxia40Z8/w9GIUid3KuRHSSteekuw2OOkCfU+mkLBYB/+g8xkMwvqhiaNEh2gZ
+	YjRupCFnC6uu7x1q09hWStpZKZR1U3rIMzZT/RWe08xQN7MbBaMB8pFHN5y7/Pijsg9izlQ0CGxKj
+	peIlTw2nCHsZW7mODKU7pDnPCmVd+AbcHv3Y8hleopZ7SiGMly5xFJMua4laGZQr5xwgaL7rrGmm4
+	1YMpUBNDGQsbuUyM2csA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uA3tC-0000000COYx-2iEC;
-	Wed, 30 Apr 2025 09:38:02 +0000
+	id 1uA3v7-0000000CP03-0y9f;
+	Wed, 30 Apr 2025 09:40:01 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uA3jM-0000000CMPE-1UVQ;
-	Wed, 30 Apr 2025 09:27:52 +0000
+	id 1uA3jN-0000000CMQ7-2Xnt;
+	Wed, 30 Apr 2025 09:27:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Reply-To:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Sender:Content-ID:Content-Description:In-Reply-To:References;
-	bh=sXfFs/j/ebwytC1QXe9hJ2gwzA6xsDFC8/g4FoxtvxA=; b=FsNf5n6l74zKP7synUi3kB4TQW
-	LVgFtRZ/4u8PgfqsXIdAXiE8gqpttQ7m2w7z143eLQw40W0w8Dw96IzDvg3gy+0eX2JHG665EhFN/
-	rqOXvuAml7BxQzGkoWfSsbZQ3V/N0wlrOariCYZvXw75+EY/KhbIAgHp3c26XVaGy5WoCfdZnvM2L
-	S1Ia+c/26aN2Inpf+OQ6sDaRVQebnqU0Wxs9aerqze7AGZgvwZX9arSRkASXLQuFtD8mT1Yi2gdMa
-	fo+NzRfsvCLmPkBmP5sS7M+U7bsG/nJRz3TgZJk+FvtDR1DxoHo4Dp5cf2P5QkkclTtWUyXhMNOQE
-	0I9utiTA==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	d=infradead.org; s=desiato.20200630; h=Reply-To:Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Content-ID:Content-Description;
+	bh=xNelkcNrh9iKHHVlU+c3Zs2HJS3/6EKa10Vt/d5D8Tg=; b=MksMOJE7ccXh3GzmGHM+ZRqita
+	8zG8AgQagMAblFo/uKoLlw0Md3d6iSL+2BX79Xiz9FgR3ATEikKZy69aqIxn4E4U186Snq8DG9Aj8
+	2CJaq8UiZRoXRZys76LEhzzC2tIbigGk4bSLruMbCHJG/Sy+bsRw5WWT32vvLZWyAYM5OUiAzAPn3
+	dTilBVqkg28Xcce7wqBHMDpdlNeqQtbMB8IomMQFe3S/dDwqKlKglFdNZykIh98sUXwsdsOeYE5jF
+	LbyN5Rh40EO4MXfuleUIxM7rMeNRAXk5YSF5weFl+zRndTzYrgprqZdgQF6Etxy6wEulxdajcGFYo
+	wC5ZhSMw==;
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1uA3jI-0000000Dl32-3d56;
-	Wed, 30 Apr 2025 09:27:51 +0000
+	id 1uA3jJ-0000000Dl34-1sRV;
+	Wed, 30 Apr 2025 09:27:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E347C5C1D08;
-	Wed, 30 Apr 2025 09:25:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A63B9C4CEE9;
+	by nyc.source.kernel.org (Postfix) with ESMTP id 52145A4852B;
+	Wed, 30 Apr 2025 09:22:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B26E6C4CEEA;
 	Wed, 30 Apr 2025 09:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1746005264;
-	bh=glpH88pfvH7StBOd9nEA4l/NrucuG2u08NFOjlIyols=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=T0ALInuVXID6BOiXeVU6ecThxdMK9xGfYhIl/pDlKbPl027xA0ZZwyf/T3cCXEbfl
-	 GXaUDcp00SOOsBXBB92II+lbYqpCBRyhzJoR6Gbb26Hajdaaqw8cEjd6vqFJDQeezM
-	 nBlP3tNID9Fd8pPxjeWVDXcSSC6FW8R78ne/1gAfNLuW3Aa3D9eAFjZk3E0tF3dnmK
-	 GP+QrsIKG7NRLHXhNqtrmbLTmAleVCGj9wJwMt+AMpzu5MfzE426jqnmrbo5QCaa2A
-	 as5okmiavTl+3b8q+5ZuSXd4Gbha4WUFt6RJUHfJEbjfsynSJP5qtrinGN7rX8mZcD
-	 WnnLJASiwu7Qg==
+	bh=LhjzYTVbEmq8KN4Wgt9+26RV811P+w/qGS6tZIYmKcg=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=nFYwVgzvxpJM64jAQ8yaHa54+UUO/ooHqpjStYq7wOFcAdB9LT0rBMu1thar7b+kO
+	 WDNMOJ4t+7io+PpQqH0uJM406g7vGNhdTNWMWQ5S61rr06y3AvnTLikRI1Ipjj7x4F
+	 EOe1Yv8WisBxXiZthWR9GXFFaokT+zwySMyOKUKeJT7RHIjpeS0qnAzaXEiE3CzRDl
+	 G9NguwJakyTpo2YGLfud4d9GZWEgMEyLrSyU2uxE131ZhZXvIiWKV/NseZuG/cMN0J
+	 1MoXHqZUAwhUJuyt5/5Q9sUVLEdRPQnWDlrIMcU1P1Ac4YdykzGGwQ2y8xoMjj9USf
+	 0NOQ904GvwPbw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 91DB3C369D9;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A204AC3ABA9;
 	Wed, 30 Apr 2025 09:27:44 +0000 (UTC)
 From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Subject: [PATCH v6 00/13] media: rockchip: add a driver for the rockchip
+Date: Wed, 30 Apr 2025 11:15:50 +0200
+Subject: [PATCH v6 01/13] Documentation: admin-guide: media: add rockchip
  camera interface
-Date: Wed, 30 Apr 2025 11:15:49 +0200
-Message-Id: <20240220-rk3568-vicap-v6-0-d2f5fbee1551@collabora.com>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAEXqEWgC/33OTU7EMAwF4KuMsibIcX5oWHEPNIskdWgEtFVah
- UGj3p10EAyIluWz5e/5zCbKiSZ2fzizTCVNaehrMDcHFjrXPxFPbc0MARUgAs/PUpuGlxTcyL3
- 1MlqLOirF6ol3E3GfXR+69eiVujbxIuS6GzPFdLpUPR5r7tI0D/n90lzEOr2WFMMbPg9jCr/7i
- uDA0TTgRHRGgX94G17i59e3Pc1shQt+YwLF3T6GFfOiVU0TQ4BWbmLyC9OAYPYxWTFjWxGFJR0
- UbGLqBybsPqYqRhaMAXAk/Tamr5j87zNdsVj7NGqpogx/sGVZPgCjDpKBCAIAAA==
+Message-Id: <20240220-rk3568-vicap-v6-1-d2f5fbee1551@collabora.com>
+References: <20240220-rk3568-vicap-v6-0-d2f5fbee1551@collabora.com>
+In-Reply-To: <20240220-rk3568-vicap-v6-0-d2f5fbee1551@collabora.com>
 To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
  Maxime Chevallier <maxime.chevallier@bootlin.com>, 
  =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
@@ -91,22 +88,21 @@ Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, 
  Michael Riesch <michael.riesch@wolfvision.net>, 
- Michael Riesch <michael.riesch@collabora.com>, 
- Mehdi Djait <mehdi.djait@bootlin.com>
+ Michael Riesch <michael.riesch@collabora.com>
 X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1746004564; l=8722;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1746004564; l=7140;
  i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=glpH88pfvH7StBOd9nEA4l/NrucuG2u08NFOjlIyols=;
- b=VqraQhLXJuQ7bwjc6OBrqVlq/Sn4+Etf5XcMdVjvIJy4FBVgN6nr3wPBt4W3WqzxbcU2abklV
- 2x3ymr+pNt8Dke9efZkBFkmfsKh8oatCg45t2seUZQz9vvDRalWltnA
+ bh=lgdL2UknSGLykwZSJIFR4WTJWtgKAnMYvukM6U3+Y4Q=;
+ b=C/k8awCE9Zax42BQaKv/HrCTRwdROkU9HCGFEInBwM1NhCEX/oZoapaOb95p8dujUjN1sUQqZ
+ evrkHhp6G/MA1n+e+WLuN1jU9x+bEMngHEvpFoMn3VG727n2+XyQKdr
 X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
  pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
 X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
  with auth_id=371
 X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250430_102749_279797_A725AB86 
-X-CRM114-Status: GOOD (  22.60  )
+X-CRM114-CacheID: sfid-20250430_102749_977310_D79B68E5 
+X-CRM114-Status: GOOD (  20.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,161 +115,179 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Reply-To: michael.riesch@collabora.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGFiaWRlcmUsCgpUaGlzIHNlcmllcyBpbnRyb2R1Y2VzIHN1cHBvcnQgZm9yIHRoZSBSb2NrY2hp
-cCBDYW1lcmEgSW50ZXJmYWNlIChDSUYpLAp3aGljaCBpcyBmZWF0dXJlZCBpbiBtYW55IFJvY2tj
-aGlwIFNvQ3MgaW4gZGlmZmVyZW50IHZhcmlhdGlvbnMuCkZvciBleGFtcGxlLCB0aGUgUFgzMCBW
-aWRlbyBJbnB1dCBQcm9jZXNzb3IgKFZJUCkgaXMgYWJsZSB0byByZWNlaXZlCnZpZGVvIGRhdGEg
-dmlhIHRoZSBEaWdpdGFsIFZpZGVvIFBvcnQgKERWUCwgYSBwYXJhbGxlbCBkYXRhIGludGVyZmFj
-ZSkKYW5kIHRyYW5zZmVyIGl0IGludG8gc3lzdGVtIG1lbW9yeSB1c2luZyBhIGRvdWJsZS1idWZm
-ZXJpbmcgbWVjaGFuaXNtCmNhbGxlZCBwaW5nLXBvbmcgbW9kZS4KVGhlIFJLMzU2OCBWaWRlbyBD
-YXB0dXJlIChWSUNBUCkgdW5pdCwgb24gdGhlIG90aGVyIGhhbmQsIGZlYXR1cmVzIGEKRFZQIGFu
-ZCBhIE1JUEkgQ1NJLTIgcmVjZWl2ZXIgdGhhdCBjYW4gcmVjZWl2ZSB2aWRlbyBkYXRhIGluZGVw
-ZW5kZW50bHkKKGJvdGggdXNpbmcgdGhlIHBpbmctcG9uZyBzY2hlbWUpLgpUaGUgZGlmZmVyZW50
-IHZhcmlhbnRzIG1heSBoYXZlIGFkZGl0aW9uYWwgZmVhdHVyZXMsIHN1Y2ggYXMgc2NhbGluZwph
-bmQvb3IgY3JvcHBpbmcuCkZpbmFsbHksIHRoZSBSSzM1ODggVklDQVAgdW5pdCBjb25zdGl0dXRl
-cyBhbiBlc3NlbnRpYWwgcGllY2Ugb2YgdGhlCmNhbWVyYSBpbnRlcmZhY2Ugd2l0aCBvbmUgRFZQ
-LCBzaXggTUlQSSBDU0ktMiByZWNlaXZlcnMsIHNjYWxlL2Nyb3AKdW5pdHMsIGFuZCBhIGRhdGEg
-cGF0aCBtdWx0aXBsZXhlciAodG8gc2NhbGVyIHVuaXRzLCB0byBJU1AsIC4uLikuCgpUaGUgdjYg
-b2YgdGhlIHNlcmllcyBhZGRzIGEgbWVkaWEgY29udHJvbGxlciBjZW50cmljIFY0TDIgZHJpdmVy
-IGZvcgp0aGUgUm9ja2NoaXAgQ0lGIHdpdGgKIC0gc3VwcG9ydCBmb3IgdGhlIFBYMzAgVklQIChu
-b3QgdGVzdGVkLCB0aG91Z2gsIGR1ZSB0byB0aGUgbGFjayBvZiBIVykKIC0gc3VwcG9ydCBmb3Ig
-dGhlIFJLMzU2OCBWSUNBUCBEVlAKIC0gc3VwcG9ydCBmb3IgdGhlIFJLMzU2OCBWSUNBUCBNSVBJ
-IENTSS0yIHJlY2VpdmVyCiAtIGFic3RyYWN0aW9uIGZvciB0aGUgcGluZy1wb25nIHNjaGVtZSB0
-byBhbGxvdyBmb3IgZnV0dXJlIGV4dGVuc2lvbnMKIC0gYWJzdHJhY3Rpb24gZm9yIHRoZSBJTlRF
-UkZBQ0UgYW5kIENST1AgcGFydHMgdG8gYWxsb3cgZm9yIGZ1dHVyZQogICBleHRlbnNpb25zCiAt
-IGluaXRpYWwgc3VwcG9ydCBmb3IgZGlmZmVyZW50IHZpcnR1YWwgY2hhbm5lbHMgKG5vdCB0ZXN0
-ZWQsIHRob3VnaCwKICAgZHVlIHRvIHRoZSBsYWNrIG9mIEhXKQoKVGhlIHBhdGNoZXMgYXJlIGZ1
-bmN0aW9uYWwgYW5kIGhhdmUgYmVlbiB0ZXN0ZWQgc3VjY2Vzc2Z1bGx5IG9uIGEKY3VzdG9tIFJL
-MzU2OCBib2FyZCBpbmNsdWRpbmcgdGhlIElURSBUZWNoLiBJVDY4MDEgSERNSSByZWNlaXZlciBh
-bmQKdGhlIFNvbnkgSU1YNDE1IGltYWdlIHNlbnNvciBhcyBzdWJkZXZpY2VzIGF0dGFjaGVkIHRv
-IHRoZSBEVlAgYW5kIHRoZQpNSVBJIENTSS0yIHJlY2VpdmVyLCByZXNwZWN0aXZlbHkuClRoZSBJ
-VDY4MDEgZHJpdmVyIHN0aWxsIG5lZWRzIHNvbWUgbG92aW5nIGNhcmUgYnV0IHNoYWxsIGJlIHN1
-Ym1pdHRlZAphcyB3ZWxsIGF0IHNvbWUgcG9pbnQuCgpIb3dldmVyLCBzZXZlcmFsIGZlYXR1cmVz
-IGFyZSBub3QgeWV0IGFkZHJlc3NlZCwgc3VjaCBhcwogLSBzdXBwb3J0IGZvciB0aGUgUkszNTg4
-IHZhcmlhbnQgKC0+IG5leHQgaXRlbSBvbiBteSBUT0RPKQogLSBzdXBwb3J0IGZvciB0aGUgc2Nh
-bGluZyB1bml0IGluIHRoZSBQWDMwICgtPiBjYW5ub3QgZG8gZHVlIHRvIHRoZQogICBsYWNrIG9m
-IEhXKQogLSBzdXBwb3J0IGZvciB0aGUgaW50ZXJmYWNlIHRvIHRoZSBSb2NrY2hpcCBJU1AgaW4g
-dGhlIFJLMzU2OAogICAoYXBwYXJlbnRseSwgZGF0YSByZWNlaXZlIHZpYSBWSUNBUCBEVlAgYW5k
-IHRoZSBWSUNBUCBNSVBJIENTSS0yCiAgIHJlY2VpdmVyIGNhbiBiZSBwcm9jZXNzZWQgYnkgdGhl
-IFJLMzU2OCBJU1ApCiAtIHN1cHBvcnQgZm9yIHRoZSBNVVgvU0NBTEUvVE9JU1AgYmxvY2sgaW4g
-dGhlIFJLMzU4OCBWSUNBUCAod2hpY2gKICAgcHJvdmlkZXMgdGhlIGJhc2UgZm9yIGltYWdlIHBy
-b2Nlc3Npbmcgb24gdGhlIFJLMzU4OCkKCkxvb2tpbmcgZm9yd2FyZCB0byB5b3VyIGNvbW1lbnRz
-IQoKVG86IE1laGRpIERqYWl0IDxtZWhkaS5kamFpdEBsaW51eC5pbnRlbC5jb20+ClRvOiBNYXhp
-bWUgQ2hldmFsbGllciA8bWF4aW1lLmNoZXZhbGxpZXJAYm9vdGxpbi5jb20+ClRvOiBUaMOpbyBM
-ZWJydW4gPHRoZW8ubGVicnVuQGJvb3RsaW4uY29tPgpUbzogR2VyYWxkIExvYWNrZXIgPGdlcmFs
-ZC5sb2Fja2VyQHdvbGZ2aXNpb24ubmV0PgpUbzogVGhvbWFzIFBldGF6em9uaSA8dGhvbWFzLnBl
-dGF6em9uaUBib290bGluLmNvbT4KVG86IFNha2FyaSBBaWx1cyA8c2FrYXJpLmFpbHVzQGlraS5m
-aT4KVG86IExhdXJlbnQgUGluY2hhcnQgPGxhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNv
-bT4KVG86IE1hdXJvIENhcnZhbGhvIENoZWhhYiA8bWNoZWhhYkBrZXJuZWwub3JnPgpUbzogUm9i
-IEhlcnJpbmcgPHJvYmgrZHRAa2VybmVsLm9yZz4KVG86IEtyenlzenRvZiBLb3psb3dza2kgPGty
-emsrZHRAa2VybmVsLm9yZz4KVG86IENvbm9yIERvb2xleSA8Y29ub3IrZHRAa2VybmVsLm9yZz4K
-VG86IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+ClRvOiBLZXZlciBZYW5nIDxrZXZl
-ci55YW5nQHJvY2stY2hpcHMuY29tPgpUbzogTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhcy5kdWZy
-ZXNuZUBjb2xsYWJvcmEuY29tPgpUbzogU2ViYXN0aWFuIFJlaWNoZWwgPHNlYmFzdGlhbi5yZWlj
-aGVsQGNvbGxhYm9yYS5jb20+ClRvOiBDb2xsYWJvcmEgS2VybmVsIFRlYW0gPGtlcm5lbEBjb2xs
-YWJvcmEuY29tPgpUbzogUGF1bCBLb2NpYWxrb3dza2kgPHBhdWxrQHN5cy1iYXNlLmlvPgpUbzog
-QWxleGFuZGVyIFNoaXlhbiA8ZWFnbGUuYWxleGFuZGVyOTIzQGdtYWlsLmNvbT4KVG86IFZhbCBQ
-YWNrZXR0IDx2YWxAcGFja2V0dC5jb29sPgpUbzogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9y
-Zz4KVG86IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+CkNjOiBsaW51eC1t
-ZWRpYUB2Z2VyLmtlcm5lbC5vcmcKQ2M6IGRldmljZXRyZWVAdmdlci5rZXJuZWwub3JnCkNjOiBs
-aW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnCkNjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKU2lnbmVk
-LW9mZi1ieTogTWljaGFlbCBSaWVzY2ggPG1pY2hhZWwucmllc2NoQHdvbGZ2aXNpb24ubmV0PgpT
-aWduZWQtb2ZmLWJ5OiBNaWNoYWVsIFJpZXNjaCA8bWljaGFlbC5yaWVzY2hAY29sbGFib3JhLmNv
-bT4KCkNoYW5nZXMgaW4gdjY6Ci0gcmViYXNlZCBvbnRvIHY2LjE1LXJjMQotIHJlbmFtZWQgIk1J
-UEkgQ1NJIEhPU1QiIC0+ICJNSVBJIENTSSBSRUNFSVZFUiIgKExhdXJlbnQpCi0gcy9Ad29sZnZp
-c2lvbi5uZXQvQGNvbGxhYm9yYS5jb20gd2hlcmUgYXBwcm9wcmlhdGUKLSByZW5hbWVkIERWUCBk
-ZWxheSBwcm9wZXJ0eSBhbmQgbW92ZWQgaXQgdG8gdGhlIGVuZHBvaW50IChTYWthcmkpCi0gaW1w
-bGVtZW50ZWQgRFQgcmV2aWV3IGNvbW1lbnRzIChLcnp5c3p0b2YgYW5kIFNha2FyaSkKLSBpbXBs
-ZW1lbnRlZCBkcml2ZXIgcmV2aWV3IGNvbW1lbnRzIChTYWthcmkpCi0gZml4ZWQgaXNzdWVzIHJh
-aXNlZCBieSBtZWRpYS1jaSAoeWV0IGFnYWluKQotIGFkZGVkIGRvY3VtZW50YXRpb24gaW5jbHVk
-aW5nIGEgUkszNTY4IHRvcG9sb2d5IChuZXcgcGF0Y2ggMSkKICAoU2FrYXJpKQotIGFkZGVkIHBh
-dGNoIHRoYXQgZW5hYmxlcyBya2NpZiBpbiB0aGUgZGVmY29uZmlnIChuZXcgcGF0Y2ggOSkKLSBM
-aW5rIHRvIHY1OiBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIwMjUwMzA2LXY2LTgtdG9waWMt
-cmszNTY4LXZpY2FwLXY1LTAtZjAyMTUyNTM0ZjNjQHdvbGZ2aXNpb24ubmV0CgpDaGFuZ2VzIGlu
-IHY1OgotIGZpeGVkIGlzc3VlcyByYWlzZWQgYnkgbWVkaWEtY2kKLSBmaXhlZCBkdCBiaW5kaW5n
-cyAoY29tbWVudHMgYnkgUm9iIGFuZCBTYWthcmkpCi0gZml4ZWQgcHJvYmUgb24gc3lzdGVtcyB3
-aXRoIG5vIERWUCBpbiBEVCAoY29tbWVudCBieSBBbGV4YW5kZXIpCi0gZml4ZWQgZXJyb3IgcGF0
-aCBpbiByZWdpc3RlciBvZmZzZXQgY2FsY3VsYXRpb24KLSBzcGxpdCBvZmYgTUlQSSBDU0kgaG9z
-dCBkcml2ZXIgaW50byBzZXBhcmF0ZSBtb2R1bGUgKGNvbW1lbnQKICBieSBNZWhkaSkKLSBhZGRl
-ZCBNT0RVTEVfREVWSUNFX1RBQkxFKCkgZm9yIGJvdGggZHJpdmVycyAoY29tbWVudCBieSBNZWhk
-aSkKLSBMaW5rIHRvIHY0OiBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIwMjUwMjE5LXY2LTgt
-dG9waWMtcmszNTY4LXZpY2FwLXY0LTAtZTkwNjYwMGFlM2IwQHdvbGZ2aXNpb24ubmV0CgpDaGFu
-Z2VzIGluIHY0OgotIGFkZGVkIHN1cHBvcnQgZm9yIHRoZSBNSVBJIENTSS0yIHJlY2VpdmVyIChu
-ZXcgcGF0Y2hlcyA0LCA2LCA3LCAxMCkKLSBmaXhlZCBhc3NlcnRzIG9uIHN0cmVhbSBzdG9wCi0g
-Zml4ZWQgcmVnaXN0ZXIgYWRkcmVzcyBsb29rdXAKLSBmaXhlZCBsaW5rIHZhbGlkaWF0aW9uIGNh
-bGxiYWNrCi0gZml4ZWQgaXNzdWVzIHJhaXNlZCBieSBSb2IncyBib3QsIGtlcm5lbCB0ZXN0IHJv
-Ym90LCBhbmQgbWVkaWEtY2kKLSBMaW5rIHRvIHYzOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9y
-LzIwMjUwMjA2LXY2LTgtdG9waWMtcmszNTY4LXZpY2FwLXYzLTAtNjlkMWYxOWU1YzQwQHdvbGZ2
-aXNpb24ubmV0CgpDaGFuZ2VzIGluIHYzOgotIHJlbmFtZWQgdGhlIGRyaXZlciAiY2lmIiAtPiAi
-cmtjaWYiCi0gcmViYXNlZCBvbnRvIHY2LjE0LXJjMQotIGFic3RyYWN0ZWQgdGhlIGdlbmVyaWMg
-SU5URVJGQUNFK0NST1AgcGFydAotIGFkZHJlc3NlZCBjb21tZW50cyBieSBSb2IgYW5kIFNha2Fy
-aQotIGFkZGVkIFY0TDIgTVBMQU5FIGZvcm1hdHMgdG8gRFZQCi0gYWRkZWQgcGF0Y2ggdGhhdCBl
-bmFibGVzIHRoZSBSSzM1NjggVklDQVAgRFZQIG9uIFBGNSBJTyBFeHBhbmRlcgotIGZpeGVkIGZv
-cm1hdHRpbmcgaXNzdWVzIHJhaXNlZCBieSBtZWRpYS1jaSBib3QKLSBMaW5rIHRvIHYyOiBodHRw
-czovL2xvcmUua2VybmVsLm9yZy9yLzIwMjQxMjE3LXY2LTgtdG9waWMtcmszNTY4LXZpY2FwLXYy
-LTAtYjFkNDg4ZmNjMGQzQHdvbGZ2aXNpb24ubmV0CgpDaGFuZ2VzIGluIHYyOgotIG1lcmdlZCB3
-aXRoIE1laGRpJ3MgdjEzCi0gcmVmYWN0b3JlZCB0aGUgY29tcGxldGUgZHJpdmVyIHRvd2FyZHMg
-YSBtZWRpYSBjb250cm9sbGVyIGNlbnRyaWMgZHJpdmVyCi0gYWJzdHJhY3RlZCB0aGUgZ2VuZXJp
-YyBwaW5nLXBvbmcgc3RyZWFtIChjYW4gYmUgdXNlZCBmb3IgRFZQIGFzIHdlbGwgYXMgZm9yIENT
-SS0yKQotIHN3aXRjaGVkIHRvIE1QTEFORSBBUEkKLSBhZGRlZCBzdXBwb3J0IGZvciBub3RpZmlj
-YXRpb25zCi0gTGluayB0byB2MTogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDI0MDIyMC12
-Ni04LXRvcGljLXJrMzU2OC12aWNhcC12MS0wLTI2ODBhMWZhNjQwYkB3b2xmdmlzaW9uLm5ldAoK
-LS0tCk1laGRpIERqYWl0ICgyKToKICAgICAgbWVkaWE6IGR0LWJpbmRpbmdzOiBhZGQgcm9ja2No
-aXAgcHgzMCB2aXAKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCB0aGUgdmlwIG5vZGUg
-dG8gcHgzMAoKTWljaGFlbCBSaWVzY2ggKDExKToKICAgICAgRG9jdW1lbnRhdGlvbjogYWRtaW4t
-Z3VpZGU6IG1lZGlhOiBhZGQgcm9ja2NoaXAgY2FtZXJhIGludGVyZmFjZQogICAgICBtZWRpYTog
-ZHQtYmluZGluZ3M6IHZpZGVvLWludGVyZmFjZXM6IGFkZCBkZWZpbmVzIGZvciBzYW1wbGluZyBt
-b2RlcwogICAgICBtZWRpYTogZHQtYmluZGluZ3M6IGFkZCByb2NrY2hpcCByazM1NjggdmljYXAK
-ICAgICAgbWVkaWE6IGR0LWJpbmRpbmdzOiBhZGQgcm9ja2NoaXAgcmszNTY4IG1pcGkgY3NpIHJl
-Y2VpdmVyCiAgICAgIG1lZGlhOiByb2NrY2hpcDogYWRkIGEgZHJpdmVyIGZvciB0aGUgcm9ja2No
-aXAgY2FtZXJhIGludGVyZmFjZQogICAgICBtZWRpYTogcm9ja2NoaXA6IHJrY2lmOiBhZGQgZHJp
-dmVyIGZvciBtaXBpIGNzaS0yIHJlY2VpdmVyCiAgICAgIG1lZGlhOiByb2NrY2hpcDogcmtjaWY6
-IGFkZCBzdXBwb3J0IGZvciBtaXBpIGNzaS0yIGNhcHR1cmUKICAgICAgYXJtNjQ6IGRlZmNvbmZp
-ZzogZW5hYmxlIHJvY2tjaGlwIGNhbWVyYSBpbnRlcmZhY2UKICAgICAgYXJtNjQ6IGR0czogcm9j
-a2NoaXA6IGFkZCB2aWNhcCBub2RlIHRvIHJrMzU2eAogICAgICBhcm02NDogZHRzOiByb2NrY2hp
-cDogYWRkIG1pcGkgY3NpIHJlY2VpdmVyIG5vZGUgdG8gcmszNTZ4CiAgICAgIGFybTY0OiBkdHM6
-IHJvY2tjaGlwOiBlbmFibGUgdmljYXAgZHZwIG9uIHdvbGZ2aXNpb24gcGY1IGlvIGV4cGFuZGVy
-CgogLi4uL2FkbWluLWd1aWRlL21lZGlhL3JrY2lmLXJrMzU2OC12aWNhcC5kb3QgICAgICAgfCAg
-MjEgKwogRG9jdW1lbnRhdGlvbi9hZG1pbi1ndWlkZS9tZWRpYS9ya2NpZi5yc3QgICAgICAgICAg
-fCAgODMgKysKIERvY3VtZW50YXRpb24vYWRtaW4tZ3VpZGUvbWVkaWEvdjRsLWRyaXZlcnMucnN0
-ICAgIHwgICAxICsKIC4uLi9iaW5kaW5ncy9tZWRpYS9yb2NrY2hpcCxweDMwLXZpcC55YW1sICAg
-ICAgICAgIHwgMTIyICsrKwogLi4uL2JpbmRpbmdzL21lZGlhL3JvY2tjaGlwLHJrMzU2OC1taXBp
-LWNzaS55YW1sICAgfCAxMTMgKysrCiAuLi4vYmluZGluZ3MvbWVkaWEvcm9ja2NoaXAscmszNTY4
-LXZpY2FwLnlhbWwgICAgICB8IDE3MCArKysrCiBNQUlOVEFJTkVSUyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICB8ICAxMSArCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
-aGlwL3B4MzAuZHRzaSAgICAgICAgICAgICB8ICAxMiArCiAuLi4vcmszNTY4LXdvbGZ2aXNpb24t
-cGY1LWlvLWV4cGFuZGVyLmR0c28gICAgICAgICB8ICAyMCArCiBhcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzU2eC1iYXNlLmR0c2kgICAgICB8ICA3NSArKwogYXJjaC9hcm02NC9jb25m
-aWdzL2RlZmNvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgfCAgIDEgKwogZHJpdmVycy9tZWRp
-YS9wbGF0Zm9ybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgfCAgIDEgKwogZHJpdmVycy9t
-ZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgfCAgIDEgKwogZHJpdmVy
-cy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2NpZi9LY29uZmlnICAgICAgfCAgMTUgKwogZHJp
-dmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2NpZi9NYWtlZmlsZSAgICAgfCAgMTAgKwog
-Li4uL3BsYXRmb3JtL3JvY2tjaGlwL3JrY2lmL3JrY2lmLWNhcHR1cmUtZHZwLmMgICAgfCA4NTgg
-KysrKysrKysrKysrKysrKysrKysrCiAuLi4vcGxhdGZvcm0vcm9ja2NoaXAvcmtjaWYvcmtjaWYt
-Y2FwdHVyZS1kdnAuaCAgICB8ICAyNCArCiAuLi4vcGxhdGZvcm0vcm9ja2NoaXAvcmtjaWYvcmtj
-aWYtY2FwdHVyZS1taXBpLmMgICB8IDcyMiArKysrKysrKysrKysrKysrKwogLi4uL3BsYXRmb3Jt
-L3JvY2tjaGlwL3JrY2lmL3JrY2lmLWNhcHR1cmUtbWlwaS5oICAgfCAgMjIgKwogLi4uL21lZGlh
-L3BsYXRmb3JtL3JvY2tjaGlwL3JrY2lmL3JrY2lmLWNvbW1vbi5oICAgfCAyMzYgKysrKysrCiBk
-cml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JrY2lmL3JrY2lmLWRldi5jICB8IDMwMCAr
-KysrKysrCiAuLi4vcGxhdGZvcm0vcm9ja2NoaXAvcmtjaWYvcmtjaWYtaW50ZXJmYWNlLmMgICAg
-ICB8IDQyNiArKysrKysrKysrCiAuLi4vcGxhdGZvcm0vcm9ja2NoaXAvcmtjaWYvcmtjaWYtaW50
-ZXJmYWNlLmggICAgICB8ICAzMCArCiAuLi4vcm9ja2NoaXAvcmtjaWYvcmtjaWYtbWlwaS1jc2kt
-cmVjZWl2ZXIuYyAgICAgICB8IDczMSArKysrKysrKysrKysrKysrKysKIGRyaXZlcnMvbWVkaWEv
-cGxhdGZvcm0vcm9ja2NoaXAvcmtjaWYvcmtjaWYtcmVncy5oIHwgMTU0ICsrKysKIC4uLi9tZWRp
-YS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2NpZi9ya2NpZi1zdHJlYW0uYyAgIHwgNjIyICsrKysrKysr
-KysrKysrKwogLi4uL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JrY2lmL3JrY2lmLXN0cmVhbS5o
-ICAgfCAgMzEgKwogaW5jbHVkZS9kdC1iaW5kaW5ncy9tZWRpYS92aWRlby1pbnRlcmZhY2VzLmgg
-ICAgICAgfCAgIDQgKwogMjggZmlsZXMgY2hhbmdlZCwgNDgxNiBpbnNlcnRpb25zKCspCi0tLQpi
-YXNlLWNvbW1pdDogMGFmMmY2YmUxYjQyODEzODViNjE4Y2I4NmFkOTQ2ZWRlZDA4OWFjOApjaGFu
-Z2UtaWQ6IDIwMjQwMjIwLXJrMzU2OC12aWNhcC1iOWIzZjk5MjVmNDQKCkJlc3QgcmVnYXJkcywK
-LS0gCk1pY2hhZWwgUmllc2NoIDxtaWNoYWVsLnJpZXNjaEBjb2xsYWJvcmEuY29tPgoKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Michael Riesch <michael.riesch@collabora.com>
+
+Add a document that describes the different variants of the Rockchip
+Camera Interface (CIF), their hardware layout, as well as their
+representation in the media controller centric rkcif device driver,
+which is located under drivers/media/platform/rockchip/rkcif.
+
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+ .../admin-guide/media/rkcif-rk3568-vicap.dot       | 21 ++++++
+ Documentation/admin-guide/media/rkcif.rst          | 83 ++++++++++++++++++++++
+ Documentation/admin-guide/media/v4l-drivers.rst    |  1 +
+ MAINTAINERS                                        |  7 ++
+ 4 files changed, 112 insertions(+)
+
+diff --git a/Documentation/admin-guide/media/rkcif-rk3568-vicap.dot b/Documentation/admin-guide/media/rkcif-rk3568-vicap.dot
+new file mode 100644
+index 000000000000..4cc6963e681e
+--- /dev/null
++++ b/Documentation/admin-guide/media/rkcif-rk3568-vicap.dot
+@@ -0,0 +1,21 @@
++digraph board {
++        rankdir=TB
++        n00000001 [label="{{<port0> 0} | rkcif-dvp0\n/dev/v4l-subdev0 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
++        n00000001:port1 -> n00000004
++        n00000004 [label="rkcif-dvp0-id0\n/dev/video0", shape=box, style=filled, fillcolor=yellow]
++        n0000000d [label="{{} | it6801 2-0048\n/dev/v4l-subdev1 | {<port0> 0}}", shape=Mrecord, style=filled, fillcolor=green]
++        n0000000d:port0 -> n00000001:port0
++        n00000011 [label="{{} | imx415 4-001a\n/dev/v4l-subdev4 | {<port0> 0}}", shape=Mrecord, style=filled, fillcolor=green]
++        n00000011:port1 -> n00000014
++        n00000014 [label="{{<port0> 0} | rockchip-mipi-csi fdfb0000.csi\n/dev/v4l-subdev3 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
++        n00000014:port1 -> n0000001d
++        n0000001d [label="{{<port0> 0} | rkcif-mipi0\n/dev/v4l-subdev2 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
++        n0000001d:port1 -> n00000021
++        n0000001d:port1 -> n00000022
++        n0000001d:port1 -> n00000023
++        n0000001d:port1 -> n00000024
++        n00000021 [label="rkcif-mipi0-id0\n/dev/video1", shape=box, style=filled, fillcolor=yellow]
++        n00000022 [label="rkcif-mipi0-id1\n/dev/video2", shape=box, style=filled, fillcolor=yellow]
++        n00000023 [label="rkcif-mipi0-id2\n/dev/video3", shape=box, style=filled, fillcolor=yellow]
++        n00000024 [label="rkcif-mipi0-id3\n/dev/video4", shape=box, style=filled, fillcolor=yellow]
++}
+diff --git a/Documentation/admin-guide/media/rkcif.rst b/Documentation/admin-guide/media/rkcif.rst
+new file mode 100644
+index 000000000000..f35f644a54a0
+--- /dev/null
++++ b/Documentation/admin-guide/media/rkcif.rst
+@@ -0,0 +1,83 @@
++.. SPDX-License-Identifier: GPL-2.0
++
++=========================================
++Rockchip Camera Interface (CIF)
++=========================================
++
++Introduction
++============
++
++The Rockchip Camera Interface (CIF) is featured in many Rockchip SoCs in
++different variants.
++The different variants are combinations of common building blocks, such as
++
++* INTERFACE blocks of different types, namely
++
++  * the Digital Video Port (DVP, a parallel data interface)
++  * the interface block for the MIPI CSI-2 receiver
++
++* CROP units
++
++* MIPI CSI-2 receiver (not available on all variants): This unit is referred
++  to as MIPI CSI HOST in the Rockchip documentation.
++  Technically, it is a separate hardware block, but it is strongly coupled to
++  the CIF and therefore included here.
++
++* MUX units (not available on all variants) that pass the video data to an
++  image signal processor (ISP)
++
++* SCALE units (not available on all variants)
++
++* DMA engines that transfer video data into system memory using a
++  double-buffering mechanism called ping-pong mode
++
++* Support for four streams per INTERFACE block (not available on all
++  variants), e.g., for MIPI CSI-2 Virtual Channels (VCs)
++
++This document describes the different variants of the CIF, their hardware
++layout, as well as their representation in the media controller centric rkcif
++device driver, which is located under drivers/media/platform/rockchip/rkcif.
++
++Variants
++========
++
++Rockchip PX30 Video Input Processor (VIP)
++-----------------------------------------
++
++The PX30 Video Input Processor (VIP) features a digital video port that accepts
++parallel video data or BT.656.
++Since these protocols do not feature multiple streams, the VIP has one DMA
++engine that transfers the input video data into system memory.
++
++The rkcif driver represents this hardware variant by exposing one V4L2 subdevice
++(the DVP INTERFACE/CROP block) and one V4L2 device (the DVP DMA engine).
++
++Rockchip RK3568 Video Capture (VICAP)
++-------------------------------------
++
++The RK3568 Video Capture (VICAP) unit features a digital video port and a MIPI
++CSI-2 receiver that can receive video data independently.
++The DVP accepts parallel video data, BT.656 and BT.1120.
++Since the BT.1120 protocol may feature more than one stream, the RK3568 VICAP
++DVP features four DMA engines that can capture different streams.
++Similarly, the RK3568 VICAP MIPI CSI-2 receiver features four DMA engines to
++handle different Virtual Channels (VCs).
++
++The rkcif driver represents this hardware variant by exposing up to three V4L2
++subdevices:
++
++* rkcif-dvp0: INTERFACE/CROP block for the DVP
++* rockchip-mipi-csi fdfb0000.csi: MIPI CSI-2 receiver
++* rkcif-mipi0: INTERFACE/CROP block for the MIPI CSI-2 receiver
++
++and up to five V4L2 devices:
++
++* rkcif-dvp0-id0: The support for multiple streams on the DVP is not yet
++  implemented, as it is hard to find test hardware. Thus, this video device
++  represents the first DMA engine of the RK3568 DVP.
++* rkcif-mipi0-id[0...3]: The four DMA engines of the RK3568 MIPI CSI-2
++  receiver. Each DMA engine can capture a certain MIPI CSI-2 Virtual Channel.
++
++.. kernel-figure:: rkcif-rk3568-vicap.dot
++    :alt:   Topology of the RK3568 Video Capture (VICAP) unit
++    :align: center
+diff --git a/Documentation/admin-guide/media/v4l-drivers.rst b/Documentation/admin-guide/media/v4l-drivers.rst
+index e8761561b2fe..f6497541d55b 100644
+--- a/Documentation/admin-guide/media/v4l-drivers.rst
++++ b/Documentation/admin-guide/media/v4l-drivers.rst
+@@ -24,6 +24,7 @@ Video4Linux (V4L) driver-specific documentation
+ 	qcom_camss
+ 	raspberrypi-pisp-be
+ 	rcar-fdp1
++	rkcif
+ 	rkisp1
+ 	raspberrypi-rp1-cfe
+ 	saa7134
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 96b827049501..d1184d571b64 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -20859,6 +20859,13 @@ S:	Maintained
+ F:	Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
+ F:	drivers/net/can/rockchip/
+ 
++ROCKCHIP CAMERA INTERFACE (RKCIF) DRIVER
++M:	Mehdi Djait <mehdi.djait@linux.intel.com>
++M:	Michael Riesch <michael.riesch@collabora.com>
++L:	linux-media@vger.kernel.org
++S:	Maintained
++F:	Documentation/admin-guide/media/rkcif*
++
+ ROCKCHIP CRYPTO DRIVERS
+ M:	Corentin Labbe <clabbe@baylibre.com>
+ L:	linux-crypto@vger.kernel.org
+
+-- 
+2.39.5
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
