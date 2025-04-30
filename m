@@ -4,65 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC7CCC369D9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Apr 2025 16:26:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C2A3C3ABA9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Apr 2025 18:51:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gSwk+PXfIJJwJMWpBuqDuDcWFcQOOiFPg3B3jvUaxV8=; b=A7f5vyJAGnkob9
-	6iJqI+JeuatMRJQ2i1qx7ciizh+mPsixx1wu7ARYFfCggtjZPjGj2jBHyCsdKZyj1MPNL31lnOHcW
-	PVjie5IvG1v3/AXAn4xIPpd6focrpasW97BnVxT3UVfAFGq8jQGKVrv0RuFKVyPhWhCeC+CUWPsOE
-	KHUIND4CMUjAbT6HznTBIk0MIBeMqBi72j5oeYy8WwaV0Y6hnw599g+4RUF6mUF4Mns1lhesoqkps
-	Y3Ii8OrxugMcPFjGaZQybNhTHyiI9oucWUeW18fMYnHy/CuvVJrjMxFsrKa0DrM58wEkYUaTAj8y2
-	WQjZHLZrEznl91rsNvNg==;
+	List-Owner; bh=u+p9wamlmoR6cR75EKN6AckKT/MOCzQoRc6H/6H+n88=; b=NeOCRAdxR4Y+og
+	q5i/Pn+RTJ+c98V6EQuoUSdnFYlU8KFkycJve9c9EzkGkxnHPFBED7Hft0cUT3TSUhRAIsErImY3p
+	EUyWIU/nWTaa4b9B4AkPGJiMtdUsbc9BaVk92ivMNMJk2NfGffF+hUQD2qOgKFVu34B5ENWlL/KoB
+	taIymRILtoPSiaip3kRiOJq5uNglrIlEpjPhFt8dBpBWZZP3tBeqQT1xn2KmtJSy/fW0uQ5svBMLK
+	h9flqblNGTt5kn8KYHsGzFSlR9/yvgqyJRVoVO+X6AFcei3mogSygszVko9uX8AYB9NU7lmDV7yDc
+	ROmtR9bG8nDwo+JjVmgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAAGJ-0000000DQp4-23fr;
-	Wed, 30 Apr 2025 16:26:19 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uACWd-0000000Dk1J-1J49;
+	Wed, 30 Apr 2025 18:51:19 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAA7y-0000000DPL5-0ZKm;
-	Wed, 30 Apr 2025 16:17:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1746029822; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=f+93AWjXW5VDIYoO0E8YkXtcP4BNlDbolM9nmkTGiVwL68mOHaRgl7DboLKuv8bcPK2Jcd0AhTUZdwV4/AlzQU0nIsNqhKQkkyzVd1mY+jqabGVhjRmAVPJjxdjoUMi6+b5Xl42lVoayoktTy6+RSqtvNevw5YTaBaynbP9Quh0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1746029822; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=PqaMC8w6qtB1n0xipg6hxZmuKd9Q6kyn2/VlH0Aqgtg=; 
-	b=f4aEIU8IMcZFVD8SF9NY5xKGsw4lA1Q7usyi756Q5oMolxZS3oLCIEXM9e30A1AK3WlJu5Hm0fGEK+XXy9BIDVG4OuismmG50gxuQXC079FRnYC0IAfrrCaMYlEi6XxSVeFT8u5U95wHFGYy9oWu2xN7PvrGgpkd0R7z11oqU3c=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1746029822;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=PqaMC8w6qtB1n0xipg6hxZmuKd9Q6kyn2/VlH0Aqgtg=;
-	b=Z9TRme2wLZNYuuNwMyq+DF6xQHWyn8Ly6bn2n+YAwblU1fFtJasEEs8LqT2GeuOb
-	ST6jMaIKHJj2rzuzlNfMDRZE0xSG1xGpPEXvaXoGeBj27ksCPZ7k2GXLQ7f32UWjQ4Q
-	kZKtbcPHXyURRbSLwCAsr24jyM3Vx5FPpiopDfXs=
-Received: by mx.zohomail.com with SMTPS id 1746029821190216.44843874019614;
-	Wed, 30 Apr 2025 09:17:01 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Wed, 30 Apr 2025 18:16:36 +0200
-Subject: [PATCH 3/3] arm64: dts: rockchip: add RK3576 RNG node
+	id 1uACUf-0000000Djj1-0yAe;
+	Wed, 30 Apr 2025 18:49:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4A1615C540C;
+	Wed, 30 Apr 2025 18:46:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3294C4CEE7;
+	Wed, 30 Apr 2025 18:49:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746038956;
+	bh=+LfRjGOAcA/ZNp7nozEagZXeGpN5vDil4CgLGdsdzg4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=rHAqhIFMAfEBQ7Pgk4A5ZHwzHuTZH3LQYzWHaK1PlXm5PPfqIdygwKSYhm/G+Ve6g
+	 zb29B8LgeIQOvG7vQxJW00+wSwhmdr5R2EU055oBhNvjKxryeQOEKFdySz4eBfW8LR
+	 r3W1g48NR2AE+IHdvrGRBNnSOyu818ta0CG3Zrv85/TS4CJY53bIHbGM3DGbOeS9Gr
+	 jJYxp+T/Z5R51QcPkl1Cmp70AONtZVDHq00qOkRcEgbn7MbJX3lGav0qqWHdAjn+7M
+	 A4Qj1H2F8VcEi88FoE2Z/+3vh3FXL382JaRYUEm1OYq3SQq5sVTZ9rGGxdcRWKIwj1
+	 mYdFPj9b3+GZg==
+Message-ID: <6f3d1259-1a47-48fd-9718-aa5228f42a01@kernel.org>
+Date: Wed, 30 Apr 2025 20:49:09 +0200
 MIME-Version: 1.0
-Message-Id: <20250430-rk3576-hwrng-v1-3-480c15b5843e@collabora.com>
-References: <20250430-rk3576-hwrng-v1-0-480c15b5843e@collabora.com>
-In-Reply-To: <20250430-rk3576-hwrng-v1-0-480c15b5843e@collabora.com>
-To: Daniel Golle <daniel@makrotopia.org>, 
- Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>, 
- Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] dt-bindings: rng: rockchip,rk3588-rng: add rk3576-rng
+ compatible
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Daniel Golle <daniel@makrotopia.org>, Aurelien Jarno <aurelien@aurel32.net>,
+ Olivia Mackall <olivia@selenic.com>, Herbert Xu
+ <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Jonas Karlman <jonas@kwiboo.se>
-X-Mailer: b4 0.14.2
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ kernel@collabora.com, linux-crypto@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250430-rk3576-hwrng-v1-0-480c15b5843e@collabora.com>
+ <20250430-rk3576-hwrng-v1-1-480c15b5843e@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20250430-rk3576-hwrng-v1-1-480c15b5843e@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250430_091742_238911_62F7E6AC 
-X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-CacheID: sfid-20250430_114917_383225_13B0BB29 
+X-CRM114-Status: UNSURE (   9.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,44 +121,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-crypto@vger.kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3576 has a hardware random number generator IP built into the SoC.
+On 30/04/2025 18:16, Nicolas Frattaroli wrote:
+> The RK3576 SoC contains another standalone TRNG implementation. While
+> the register map and hardware is different, it has the same
+> clocks/interrupts/resets as the RK3588's TRNG, so can go in the same
+> binding.
+> 
+> Add the compatible and generalise the title/description of the binding
+> some more.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
 
-Add it to the SoC's .dtsi, now that there's a binding and driver for it.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index a6bfef82d50bc9b0203a04324d61e0f232b61a65..ce8bcab215c0e6b7786ab3baae6977072497ed2f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1527,6 +1527,14 @@ sfc0: spi@2a340000 {
- 			status = "disabled";
- 		};
- 
-+		rng: rng@2a410000 {
-+			compatible = "rockchip,rk3576-rng";
-+			reg = <0x0 0x2a410000 0x0 0x200>;
-+			clocks = <&cru HCLK_TRNG_NS>;
-+			interrupts = <GIC_SPI 181 IRQ_TYPE_LEVEL_HIGH>;
-+			resets = <&cru SRST_H_TRNG_NS>;
-+		};
-+
- 		otp: otp@2a580000 {
- 			compatible = "rockchip,rk3576-otp";
- 			reg = <0x0 0x2a580000 0x0 0x400>;
-
--- 
-2.49.0
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
