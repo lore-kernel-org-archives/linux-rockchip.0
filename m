@@ -4,54 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7CF6C369D9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Apr 2025 10:46:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C93AC369D9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Apr 2025 11:35:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=is8c4wEncY6cgU/3xPlNc/TNC5OCB5JKnnnN/8BfIMk=; b=0fU8kXBwnxN6iN
-	wLV6W/uNiuzA3ZCJrmugMuzS3CLnoWMVjuoYhRAZ4ZYBVcgUy2ndsn5s6OV91RQSBihpArVfR+sMY
-	oYdVitl7wnRc2Jjei4Li9fz067qTA7flm3rR+nAe/GGQPhyIEfnsjX3olOthP3cxticKr7ZMeNbIz
-	rS0ceJL6Yi3i18BFaZMgbCnHQWkF4K7E5PMw+TPc00dDJH9U7R6q23/KnKIIxxkMZvxiQM/bq2P4L
-	rlrms+t4owQ2YLNVm0dyA8STLZnnMCa94kJe4lvW3rx1oPHVUFC0X6y0ZyPRVx3E7lvcDQ5pnv6g+
-	C4D33Xz4sTwCB0ZiRQ0w==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=3mDJ9lxtP+Ku6UDuknIYvNieDWn30hvO17FnsEvZX0w=; b=mg8EWJl16z6XiFqvPdXEsjuxa4
+	I8JfVb9lj4ySj+TU2TZl06UOsehRSyCZdS+Hjl3vl/9cuzaJ4bvEZRGuzfSOV9AXZ1/xcOlGc2Qqb
+	w13Ww6C7y46cCOoeziyj/VFnldei4qIHf9BNX+Blh56weaTB4Rb7XlkPNOgHZeLS1NgtFdiuLamXv
+	6FFBQA6ArtWH6gTi+EH6ahJar/01JjXG1da4l9YqoC5n129XuvOgogF4QDBtT/na3+DuhPdQmODSt
+	gTl/UIVJn6GIPcxBO28724bd71FOhR0sj2J+hZ6hECd2mdD/f5VkjPwk0EfiSFxuQInqBBzCoerZy
+	Im2DKraw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uA4x5-0000000CaEu-3pu6;
-	Wed, 30 Apr 2025 10:46:07 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uA5if-0000000Chvc-1uDW;
+	Wed, 30 Apr 2025 11:35:17 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uA4af-0000000CVwx-2J7w;
-	Wed, 30 Apr 2025 10:22:57 +0000
+	id 1uA51k-0000000CazR-1b2v;
+	Wed, 30 Apr 2025 10:50:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id ED5F96111C;
-	Wed, 30 Apr 2025 10:22:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2AC0C4CEE9;
-	Wed, 30 Apr 2025 10:22:55 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B32124A8E3;
+	Wed, 30 Apr 2025 10:50:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 992C5C4CEE9;
+	Wed, 30 Apr 2025 10:50:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746008576;
-	bh=3Yw9ztdY5WEc4kBWw0QPEtWQp8inoc+qPFkV13xi6rI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KHtxCrlVKQ/c7Di3/EPrP4Klw2sjrcpp0ng93iIQd0JjoHnRQLbGXkbhx0Ujz2zAV
-	 HD9gcP5h6jiGU6nFPnu3w7h7kdZuCma8f8/q4OSJYysgOnWqOdrhoHDd0495PHeNjl
-	 Wf5/QpHW0IamoyeZrvBi3oBvlEOs0Hsmjp0WpzDEDF+NT8WAR0eVsVuT/ZX2ddHB+r
-	 YyDeS/9KFYdtYvMrBPY+yNzmYbHTTV0bacwcDYUgTc/8rvkxXsm7VFLdaTmJshfgfv
-	 kP5mio1gMtnGEA3czsFJiYTbseAmQAhUsUcGN+xcN6TdurME3r26bA3Iqzm/Zv8LKU
-	 mz+b/rVpnf0mw==
-Date: Wed, 30 Apr 2025 12:22:53 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Chaoyi Chen <kernel@airkyi.com>
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add rk3399 industry
- evaluation board
-Message-ID: <20250430-light-chital-of-cookies-b8f2ab@kuoka>
-References: <20250427094211.246-1-kernel@airkyi.com>
- <20250427094211.246-2-kernel@airkyi.com>
+	s=k20201202; t=1746010254;
+	bh=ZjzGktDuEXTVBXBesmsZddLH/eT94AqUPytgvMpqg0c=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=YtkmVCYFSPPq2DvJRioYCjMT4Mcl+xYmUXng0aOdlomNdNeWz8b8HJViDUOJgRPFm
+	 8lC/lPz0VG88pfupxMhOdV/9oSILxHmHUZhRg3p7/0xusNYlaMnBCYFHVMa3cF+kyd
+	 L0XTdoHYdJn6NCNkM7vAcIowqqsD7p4v0mvJaKUkUGXqEzDXQ6ZDWg1RZD9X/iKnur
+	 qrG26wIJWCVtB2mn0SV8wG4W/yC+FaIIjzjNDLsDB7hpw6e7NJiNrnowiY4SwctCRp
+	 cMkBd+tRK2LuuCi+nd0FwnjvSpcFwS2grCCVQy8AFs70mm9qA+jkx0j0ZsKhnKudAL
+	 +P0fabQTwSeRw==
+Date: Wed, 30 Apr 2025 05:50:53 -0500
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250427094211.246-2-kernel@airkyi.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ linux-media@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ devicetree@vger.kernel.org, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Alexander Shiyan <eagle.alexander923@gmail.com>, 
+ linux-rockchip@lists.infradead.org, 
+ Collabora Kernel Team <kernel@collabora.com>, 
+ Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+ Gerald Loacker <gerald.loacker@wolfvision.net>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
+ linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
+ linux-kernel@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>, Val Packett <val@packett.cool>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Michael Riesch <michael.riesch@wolfvision.net>, 
+ Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, Rob Herring <robh+dt@kernel.org>
+To: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20240220-rk3568-vicap-v6-5-d2f5fbee1551@collabora.com>
+References: <20240220-rk3568-vicap-v6-0-d2f5fbee1551@collabora.com>
+ <20240220-rk3568-vicap-v6-5-d2f5fbee1551@collabora.com>
+Message-Id: <174601024955.2105633.4770841218138986246.robh@kernel.org>
+Subject: Re: [PATCH v6 05/13] media: dt-bindings: add rockchip rk3568 mipi
+ csi receiver
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250430_035056_458973_AE32C90F 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,26 +87,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Jonas Karlman <jonas@kwiboo.se>, Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Quentin Schulz <quentin.schulz@cherry.de>, Alexey Charkov <alchark@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>, linux-arm-kernel@lists.infradead.org, Jianfeng Liu <liujianfeng1994@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Apr 27, 2025 at 05:42:10PM GMT, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
+On Wed, 30 Apr 2025 11:15:54 +0200, Michael Riesch wrote:
+> From: Michael Riesch <michael.riesch@wolfvision.net>
 > 
-> Add devicetree binding for the rk3399 industry evaluation board.
+> Add documentation for the Rockchip RK3568 MIPI CSI-2 Receiver.
 > 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 > ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
+>  .../bindings/media/rockchip,rk3568-mipi-csi.yaml   | 113 +++++++++++++++++++++
+>  MAINTAINERS                                        |   1 +
+>  2 files changed, 114 insertions(+)
+> 
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Best regards,
-Krzysztof
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.example.dtb: csi@fdfb0000 (rockchip,rk3568-mipi-csi): 'phy-names' is a required property
+	from schema $id: http://devicetree.org/schemas/media/rockchip,rk3568-mipi-csi.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240220-rk3568-vicap-v6-5-d2f5fbee1551@collabora.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
