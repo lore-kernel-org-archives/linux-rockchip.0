@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27BEFC369D9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Apr 2025 08:11:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B68AC369DC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Apr 2025 08:11:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=yOnqUgpXZEKNi4v+8+kS2ptV0CPxzxgsiYVyOKygHWY=; b=enpe1nro91PaCOYPB5R3xChd3T
-	XkCGkIA1FlDDEJtO4XC9hNJ7QGt8W+wBt86Zvcvtjekn3oViwyblHEMYvgHvpAWXifn0x/S7ETWBI
-	Cd2d6gQ2GXq11lQU2u5kkhEJbjsGk0qH3ewuqVuSEFhO01//5C1Zx16wKO1d0oRpl+C1VtkjP1Z7t
-	FkSckJ2h7n0fH7DSckRJVy4ppuWPFJTSNGKCwF/LN0HjbXoNWNoEjXvxcUYIQGkLlfBytfYMYTdA4
-	hdvTrxtyh76+ge/KX9n5DGgCElkHl9xrzJxJfUjiawalGxThikg4l/hn9BLJAkNgwCdThmHHLNJEW
-	yNdtN5RA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=YJvaQn2C1l4SnsHtNuJMPwSBraEv991s1rG3/ILAWmE=; b=u3t
+	ju7z4/z0YEe0B9ISnpkoNxrqoLspb38gxT2l0Htw6M2BR3NTa7cWWFjRPnDUFjjjeyaZEqOU1qyk8
+	TB7zKd8rBoZ2sBXSZ8BggQYDWTWby70fmZEyW9cXdpLxsRrHABZc7YnGAxnWJBFu6YihYKgpKs6vd
+	Ombm2M6u7lLeLOZ07zEY4GWGJa5gUOE37SdETcNmuhjuuMQeksinXpx5tn7fQ2j1AsH6S7yXjnsyE
+	h4z9y/bhoaSMLJf8+/qqmqz2x1dFKweBHl64H/rAUkrDVe7iQeBtuF3c+pPDxn+Ky8fHtDEIBfL9k
+	O9JO56rXTSg5ZbzFql2SnhJWmkTkPbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uA2XE-0000000C6et-2dES;
+	id 1uA2XE-0000000C6eg-1E73;
 	Wed, 30 Apr 2025 08:11:16 +0000
-Received: from smtpbgsg1.qq.com ([54.254.200.92])
+Received: from smtpbgsg2.qq.com ([54.254.200.128])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uA2CI-0000000C2iR-4524;
+	id 1uA2CI-0000000C2iO-05wM;
 	Wed, 30 Apr 2025 07:49:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1745999356;
-	bh=RtbWXu1Lq4oqcNF7F9S6wJjaCfZrKW9sN45LGyNkuKA=;
+	s=altu2504; t=1745999348;
+	bh=+d4fR6VsE8K98b06ZfGfVcJfkmPTj4iC/ITe2QUEp3Q=;
 	h=From:To:Subject:Date:Message-Id;
-	b=EbUAMf+31sUqFXdzW+G9uuu4h/owyzfuykHCFXnXtAhSqFw2Nv6sQRu1zz6CFdnPm
-	 TYsq3fY4mOVc5tmwW8hRwovTaqkbZI2UuiGExrQZ0XXsxxStfhoHNd4CRmx/D9JGPH
-	 D9a16j/FYoQdZj/ffVBnBNZbQzmtKHVkJNiiSlak=
-X-QQ-mid: zesmtpsz5t1745999345tbad6bb5a
-X-QQ-Originating-IP: mMG6lTOs1jj7ZfCB8QDuvDT3HCvOcEXEIRd00n7uVZA=
+	b=H4yNWKKkDtGTGnKGR41qxy9uTc7jCermVCX71QTWbyeQvrIFOMZU4fGDvOn06Syhw
+	 pCMbSyCImXYBjlZC6WyK+7uXebxg2HVIbAUWXE/A9BfEBoOKhFH/knZ70nh5tlzSeu
+	 WAE6wZTx50+DO9dT2eb/q+edZbwZZCAWjExwWxa8=
+X-QQ-mid: zesmtpsz5t1745999341tb79c6fed
+X-QQ-Originating-IP: 3hVTGwwMeynXOkLvnusX0Aj+/TdHKKnbUh4MGuOPP5c=
 Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 30 Apr 2025 15:49:02 +0800 (CST)
+	id ; Wed, 30 Apr 2025 15:48:59 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 708952558315222896
+X-BIZMAIL-ID: 4290321111533396376
 EX-QQ-RecipientCnt: 21
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add rk3399 industry evaluation board
-Date: Wed, 30 Apr 2025 15:48:47 +0800
-Message-Id: <20250430074848.539-2-kernel@airkyi.com>
+Subject: [PATCH v2 0/2] Add support for rk3399 industry evaluation board
+Date: Wed, 30 Apr 2025 15:48:46 +0800
+Message-Id: <20250430074848.539-1-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20250430074848.539-1-kernel@airkyi.com>
-References: <20250430074848.539-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: Md8NwmqZYy3fGFbeVKWadYOXuN0hE2n1euAcwBemCKk80UQMyeVF2j6E
-	ie3+AbiOfMcMNOkMr4oy26GcE32e6Wf/pg3ul8x7DcWdasdlFUkCpG9l///q/+dSoCs9Ky7
-	cyVSiQ+s+mGfs4zaVPWbRf+SxJ3hQQzDeKpndsRc0Z6Qje5M/S5uCu7Bt93NKT3Lum1yVzx
-	eJXoOhFZkky7F19t9EZdfa/2xKt9rn/ZLRdkhZZn4Jam+kl+9LU7gN3k+dR3qYgvscRQ0DL
-	l4K3bv08qOUq3UAnhDTxywXBTMne0l6tq4JUOKiVbLVDzVYDRPLwW8+bjl0PYB6P0HwEQ3k
-	TAu6CP8Zi0buqOmuJ7w+S9iFrEa//4GVfcboyNOSMJWkCFKBrKssWHc9/Yq7lrs3DVFMtXr
-	842e+Jg6uATVbXzKXBAqgfKtDv8p2Q3/8/rZHK6oxGOqtAgVZolLPKrlGooVhVF8zXpcEYn
-	hKbb2CeRGGo08RdLTATWbtjuUJAoN9fXsLuSnOH83gz7bG+zxnQ+6dwgJNvCnMpIKbnINN/
-	2DWznzw2D/4T9GwMVZovqjtMQXCNrWTir2GRQSyqXUev4g0QL9dzFL7BZ/TX1txul9x/0V9
-	7qYVFPHqchki3RRgDj9HA+zGsx9zuq7RtHRReRe8dHmLOeZrplxpIjdmtWbzQPpFmRYODxQ
-	lNrqGJNdBG4NRNb34y0hjzszE7DBghx1Stnkn2fiUpbBagoFWPtcDhSsrPNlbrsfIs+JZLg
-	ENH1lz8i9lneuSoDMR3UqWuXtv5x6js1OC0BnI067Cgbnw4vh2Kp9Nkj39+owYlqfp5+bC6
-	qaou/fRcnJDFks0hfdpkLGoKVHGAo1DK/mMaKDmJpISAp0Uaa2RMNI7j0lHRJ+lUMw+Qa16
-	d7rFIsh2gQTvWxNjfQ9tWV0+GnQz0iNLen7RUOObixybdLLnPHn44N9E5uj/rSLUXBrwoMC
-	eF97L5jFb+K8rEjmGWgKOO4cl8kjHw+GaYAWj6Ko1lzqZlkBwdDXhDPipcK9OO4VtjAsWEH
-	R7HqZKVWtSiYQCZVymG7GGJ8B00EZg2wKZD1vKhxrhxTLdlXcjyabtFTXHDGA=
-X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
+X-QQ-XMAILINFO: NBPcaZsd6bGOBaoPj5rbOz1NA1QE3vISWNkMI1OuQCe4T5kDl4Yv/H1I
+	VpeGKZvftgU4TTqQ/cpvODrOWbaYFGgm7/bKVxKUPfBmFu41PJkY/N65HVbCmLrjNrMmNNg
+	sN5O4d7XQPnQ4Q5SUH49Keqduqt9AiC/a4CmKmDP0nsK/TxM5jsHjdn7nhbgDfqefZpRC90
+	8Kp+VP/F6E92kcWZMstpU1eWYCMf9aKz1G8qTveLISM9s+fOSsJsuzt2iV6Gefhes9KFr4O
+	2LXMTD8cVtyxZ2XhTzxxCxcmFrahvfU/VCSXNItjVZfxrxWoHuuaSfhyggrJMZ+L8LoAtdq
+	Wun7GGomb19X3JC3OIduQPt2vOwo/PGFJ6K42HoBsIJg5k9rFe1v2rXcBJIjGmgAdT4410m
+	K6pmldt4KGCB8uw7XJhWMhY90kKtvWFRzpk/mStolxFBgs4GfkZPcbUA0/YApljqidoMtdl
+	xL7I9Hw71MTJMzKgeJfy4wbVu92oaJ/XE4sq2qnKkJ3dvNHCxjncotMaLQpqS6kNeVe6dkx
+	GahDLWsK5hISoPMYcEed8bDJoEWDPgES0H2sS/AAejfJkLMb3nq0w7GpFIqd6JiZc7D39Vw
+	kcNwbCBh6MquXjGa2mTEHpMf9qzauUQPTGapI6vGEjNtUETNRlFpc+h8S5SAY2JnCRKV0ve
+	QBXHXwwkBE0a7vkDa6nPdStmOoXSmuACXGKVUw5l2oBx7uGjyxHraElUmIfowMbNuvB/WVL
+	r3A3XoHMkNJ3qO4/m0x+PterXUMDUZh/VJ+PTA4JQFKIePgtgPn6a2YAqcMpKOtodJ0PAe9
+	+m+gT+rG4xavOj//Icn7frmGGaUqn5KBYI3j/YK6YCKzmRkXVDvtEsGWaS/5uUqt5FuELuB
+	j/zlooaIcUAJuQoo5HUn0RuDVDvaczrNnlBl+dNzlB2RcDym+ViuaIEii8CfBJ4+K0vegiS
+	Do/2TO/dRhA3j/neLbKUg+6B6YNfc2uCHwEc/TjTLhmphtRhIR56OMYmIsaUyydP+gZElN+
+	R/gE7k6DkCsoBDtBJfx3yHe9V+FM4H/hreI5JI4oEXqhcP8qXkxlS7NIXk6EYq3Ph0OjeLK
+	5p5JtItkej2qZ6bmiViKvY=
+X-QQ-XMRINFO: MSVp+SPm3vtS1Vd6Y4Mggwc=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250430_004939_368198_02E09131 
-X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-CacheID: sfid-20250430_004938_434423_725712A4 
+X-CRM114-Status: UNSURE (   9.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,32 +93,38 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Add devicetree binding for the rk3399 industry evaluation board.
+General feature for rk3399 industry evaluation board:
+- Rockchip RK3399
+- 4GB LPDDR4
+- emmc5.1
+- SDIO3.0 compatible TF card
+- 1x HDMI2.0a TX
+- 1x HDMI1.4b RX with TC358749XBG HDMI to MIPI CSI2 bridge chip
+- 1x type-c DisplayPort
+- 3x USB3.0 Host
+- 1x USB2.0 Host
+- 1x Ethernet / USB3.0 to Ethernet
 
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
+Tested with HDMI/GPU/USB2.0/USB3.0/TF card/emmc.
 
-(no changes since v1)
+Changes in v2:
+- Link to V1: https://lore.kernel.org/all/20250427094211.246-1-kernel@airkyi.com/
+- Remove gmac
+- Add rk809 PMIC
+- Add CPU supply
+- Fix io-domain for sdmmc
+- Enable vopl
 
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+Chaoyi Chen (2):
+  dt-bindings: arm: rockchip: Add rk3399 industry evaluation board
+  arm64: dts: rockchip: Add rk3399-evb-ind board
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 650fb833d96e..684d48ba20fc 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -1047,6 +1047,11 @@ properties:
-           - const: rockchip,rk3399-evb
-           - const: rockchip,rk3399
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3399-evb-ind.dts      | 466 ++++++++++++++++++
+ 3 files changed, 472 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts
 
-+      - description: Rockchip RK3399 Industry Evaluation board
-+        items:
-+          - const: rockchip,rk3399-evb-ind
-+          - const: rockchip,rk3399
-+
-       - description: Rockchip RK3399 Sapphire standalone
-         items:
-           - const: rockchip,rk3399-sapphire
 --
 2.49.0
 
