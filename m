@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EB4FC3ABA3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 May 2025 11:09:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DC4FC3ABA9
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 May 2025 12:31:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JOKAYDNiQgvLK/R2oLbNLNAy6mrvtWSlzJe64ewz8t0=; b=kfN1+dTFhi04JW
-	n6Qae09tLsU6FK8/vou5oycTPatKBPmf6Me68MS4CrOlbacFd0ddoVKgR3wG0gY4aPBJLEPFeoCjd
-	MNMBu6JZ4OMplF31AVNmtKT1AqxR3TSCYGAuBFTNVmc7LPW4BWQhnxbRjoK1vXiMgZdzten5XZVWg
-	uF+6fC8va3pCxb7P07284e2nM6cj7f2JYGhfhMp+9ybzfnAugaobgIAzDb+YuRIYdda9NaUMa9tLd
-	FoML6VarQVlXnsaZ8Cu4hb4RpotkL0CUg9FMrXrSxqVk1D448AraT0Yl+FyGV4bVbNRugly01YaXo
-	PiRlQHkxS7pvbkehWzjw==;
+	List-Owner; bh=Qh4QYHh77mytUgbaeQzHTE84fJHOjfDYJfEcErXWw1w=; b=XOvh/EvgBiwMoX
+	9BZAIUtQnFMEWKH5n9zyxAFToW2YCOfchMC2Tu6zg4dYWul5XFXKBAWjw4W1/ZMgbYhe0BPKwYaab
+	pBXg9Uou/KkHBw7LyMrxWlL1a98z0Nf+yyZDPgJB20tPXlNZtzDSvqJ+8fMBZH/+QsJFecdxoecHj
+	oSIHFFgfmURi6Ap4mpBcPFOKrk3qgCqw1/Aa1dilYLR/d+bScsY4e3/4GlysO6VdGTAyfQYFdHF+8
+	nX9+rio4n6D5383qaPGqtrL5aq5UVvG8h6hrsyjxwrgZAp2B14b1M1AOupttkKey6tzfLqXZDuS7W
+	HASXTBAA8B6q+jgEoMMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uARna-0000000FFpK-1GYc;
-	Thu, 01 May 2025 11:09:50 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uAT4O-0000000Fg3v-0iQT;
+	Thu, 01 May 2025 12:31:16 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uARiG-0000000FFKJ-3fcv;
-	Thu, 01 May 2025 11:04:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=rDixLVJkJSr18pzCi3I0mc9yi7XCZ3dvASfzpKmBjGA=; b=1caFzCaEIheOlZdhkSdrPr/m/L
-	dOyj2gNULahSxTBEWMVYwOnUOlZhUY7mH4bFy6Maw4wC+VvIBvKFYdes6SDWkgM1OgzKYDs9GfGpM
-	O4IDJ2lJAWd+I8qU0gXouPgNw36xGfPHAC6XEFyvMhFZeHu0aO14gD0GyhrmiIeYh74kemsNT1Ia/
-	0tZz8In13dEW5at2YezKMRL2b//83IBEYlMUyqHRgTXSQLJXzoahcKIstDAfn8FZYlh2f/nkTyCYr
-	78oqLz7jpYWpAh8GzMt8zgToj/idx5JjenvQQbCfEKlS/ZI39q2kVmY0GhKb8r7VwP1w2kxvq4V6q
-	s99JoitA==;
-Received: from i53875bbc.versanet.de ([83.135.91.188] helo=phil.fritz.box)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uARhj-000890-IR; Thu, 01 May 2025 13:03:47 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Douglas Anderson <dianders@chromium.org>,
-	Damon Ding <damon.ding@rock-chips.com>,
-	Arnd Bergmann <arnd@kernel.org>
-Subject: Re: [PATCH] drm/rockchip: add CONFIG_OF dependency
-Date: Thu,  1 May 2025 13:03:44 +0200
-Message-ID: <174609741908.389921.4591931319484146397.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250423164422.2793634-1-arnd@kernel.org>
-References: <20250423164422.2793634-1-arnd@kernel.org>
+	id 1uASQ6-0000000FJth-0dO9;
+	Thu, 01 May 2025 11:49:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 248A14A6C4;
+	Thu,  1 May 2025 11:49:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B567AC4CEE3;
+	Thu,  1 May 2025 11:49:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746100177;
+	bh=FTxRP/NnhPU5ICm8D7Ow5D8WYpEp0BGoUoIw9tq6zRE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=u7biSUC90d0iurJoQdGw/mhEIxzn2WC1jyuPfbexApRPFHI5LH1eKc+ylGYrFqkVQ
+	 e8NvnwS1/wNGEVkdiz/233X45/rQDBvZRbyE0arJTV0ZcI3Pa+KDgDeZUhfyQVEh4q
+	 HpF1fu9rfIxFwI/VioUSE+ouKAymUZhHrIflRk12fopd8edCxI1WqyzS4v6bKZ2A7+
+	 2FqH21nDu+x1MSqZwzpXoJj1w8l8eyUdAqHO+L3eMVshZpgfGkVN2VJEHbWCa186W+
+	 AxZXKYDAicejeRAsiIKHLS59+H7Rl45JCkGroI0PgEGkmteSIribnilTMYvCZ6RQNp
+	 8nWuKpsJZeA3g==
+Date: Thu, 1 May 2025 13:49:34 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>, 
+	Maxime Chevallier <maxime.chevallier@bootlin.com>, =?utf-8?B?VGjDqW8=?= Lebrun <theo.lebrun@bootlin.com>, 
+	Gerald Loacker <gerald.loacker@wolfvision.net>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Kever Yang <kever.yang@rock-chips.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Collabora Kernel Team <kernel@collabora.com>, 
+	Paul Kocialkowski <paulk@sys-base.io>, Alexander Shiyan <eagle.alexander923@gmail.com>, 
+	Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: Re: [PATCH v6 04/13] media: dt-bindings: add rockchip rk3568 vicap
+Message-ID: <20250501-tidy-bittern-of-genius-ed375e@kuoka>
+References: <20240220-rk3568-vicap-v6-0-d2f5fbee1551@collabora.com>
+ <20240220-rk3568-vicap-v6-4-d2f5fbee1551@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240220-rk3568-vicap-v6-4-d2f5fbee1551@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250501_040420_912280_1215E305 
-X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-CacheID: sfid-20250501_044938_213598_59BB6234 
+X-CRM114-Status: UNSURE (   9.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,31 +80,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>, linux-rockchip@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 23 Apr 2025 18:44:16 +0200, Arnd Bergmann wrote:
-> DRM_DISPLAY_DP_AUX_BUS cannot be selected when CONFIG_OF is disabled:
+On Wed, Apr 30, 2025 at 11:15:53AM GMT, Michael Riesch wrote:
+> From: Michael Riesch <michael.riesch@wolfvision.net>
 > 
-> WARNING: unmet direct dependencies detected for DRM_DISPLAY_DP_AUX_BUS
->   Depends on [n]: HAS_IOMEM [=y] && DRM [=y] && OF [=n]
->   Selected by [y]:
->   - DRM_ROCKCHIP [=y] && HAS_IOMEM [=y] && DRM [=y] && ROCKCHIP_IOMMU [=y] && ROCKCHIP_ANALOGIX_DP [=y]
+> Add documentation for the Rockchip RK3568 Video Capture (VICAP) unit.
 > 
-> [...]
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> ---
+>  .../bindings/media/rockchip,rk3568-vicap.yaml      | 170 +++++++++++++++++++++
+>  MAINTAINERS                                        |   1 +
+>  2 files changed, 171 insertions(+)
 
-Applied, thanks!
-
-[1/1] drm/rockchip: add CONFIG_OF dependency
-      commit: 4f1a965d592a0ca7d4ee2125f54d19ba8292295a
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
