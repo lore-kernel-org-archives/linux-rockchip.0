@@ -4,134 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CB5FC3ABA3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 May 2025 19:13:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FDADC369DC
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 May 2025 19:56:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:References:In-Reply-To:
-	Message-Id:Cc:To:From:Date:MIME-Version:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=CPcuo3IYi9UdF0ErON95cMQyZrpl0qWIaJXFqwWEeKE=; b=bIzkANj4VBsl/WnHHRFfWnq0Dc
-	RKE++TyKliTTyu1gzq8AfRaYHr6r9pQUie0b0AyY3dHOoRsnHYL1WPXJixazTDemHFkg/Cj8ifHLU
-	KaV5/Y4dtTN2LfpXj/a0toRKjeZYlHAysbfWU4pcH0Bsb0C8tXFD2FeNHhOlSSitPEEVwQ0OSZp3Y
-	kRT8EbKw3NK+nPl7owQuQmvAlZjo2R4IVi0lGc4KomstDwwkhRU7ci0th3EA1umwWScn3JclrH6R2
-	AqLu6I4srTp0I24CsRH+gwrn9UqP3i/t6GPVSLI1cZppFVQFHZV04e4TQtxR0u99hSmJytw1hY/Fg
-	/XIN2qLA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m8QSfol8v6LYBooJjJdvyf0rQ8W/WlANR5tDIUGTZ0M=; b=JqwxvQaTeRm+R5
+	oE9gHYH9e8s9Z4huhW5JNcPP+WniU/EB8Fc+qX0ec973gJlEuz/QCgAaqZwhakB2Ku9jqFcM35hAL
+	tmu6pg/HAOOW25nus/TrPodCXKHL/nJz5DraechS0j1U+g+3nU0yWzS9xiG11URffg5pfsdE8a7+2
+	mkph264okFXu/xvwsXCUcPoVeg1NS+CTQvirzY9n3ZXdTBgiEtthDU7mV8YbR35OH+Je7r9wzNztE
+	3KUD8kcJO2oF1XEMzttpPimG6vnAPZPPzeAthp8GGZbVuABToM7KA/YW6zKoPAcziZPH+GBFoSur0
+	Kx0EBKMCfeZV2O8pyc/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAZLg-0000000GSgK-2Kw5;
-	Thu, 01 May 2025 19:13:32 +0000
-Received: from flow-a8-smtp.messagingengine.com ([103.168.172.143])
+	id 1uAa14-0000000GX7N-29D5;
+	Thu, 01 May 2025 19:56:18 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAZGV-0000000GSBy-0kzP;
-	Thu, 01 May 2025 19:08:12 +0000
-Received: from phl-compute-04.internal (phl-compute-04.phl.internal [10.202.2.44])
-	by mailflow.phl.internal (Postfix) with ESMTP id 2F84F2007A6;
-	Thu,  1 May 2025 15:08:09 -0400 (EDT)
-Received: from phl-imap-07 ([10.202.2.97])
-  by phl-compute-04.internal (MEProxy); Thu, 01 May 2025 15:08:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=svenpeter.dev;
-	 h=cc:cc:content-transfer-encoding:content-type:content-type
-	:date:date:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:subject:subject:to:to; s=fm1;
-	 t=1746126489; x=1746133689; bh=uy2Z23D4UX2pb4MGng/RS7Rc0DqXehjP
-	gXYL1GZyHEA=; b=gMWu11vIGwyUkebQS6FfJoMbvmG1K5I4PcYPfgos/+3IKTG9
-	gplwSngSdL9b0tzDvioUBprhL4wfVkOmTpNtoAAODeB28Xg6R/kwHB7dvxSuftFL
-	yhPHuhfnyZhbGy1Hk4LH0DS38ZnX4s0nqvPXJdj6j6YsCbSDjUNCmIVLH/A/20KP
-	oo3/VMPCqW0WLap/EGtkYjtqLqADG6I7601JRBgJjC9L0IW/fnmqPmRfywBz38B2
-	l4rECgxFIIXyjmPcKpJ3MKrLDuuogSY9AnqaHJ7N27iyCvQLDrLJO+Uzbvq2a1Ob
-	z/jW7mFvVIaWGr7pr0l6vyW2GdTQ2Hejj4c04Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1746126489; x=
-	1746133689; bh=uy2Z23D4UX2pb4MGng/RS7Rc0DqXehjPgXYL1GZyHEA=; b=k
-	RRWrsXtBP2dGvKqi4W7O8NcUE4T3criJTN4RNqnwM3jvVZB6DFHHOoJRSzF4WwTC
-	zyfSgrVfEAEZo6Ar3KWwXFFgpo9OcSnMRAJNahqn3nlXJrX0g/PcOryetxJVwBdg
-	bMvCV+WGJfrIwElsLCpZTQGf+AFh+vAPQIz7pR9L3B7fo46k+1htBqhXoVi3Nr6i
-	iPfXM7t0uPbUxV6yQuN2xxuUHDxXOhwyx1GBr0m/YPvpPLJFGrE4r55Y1vhjLJkG
-	EYbgK2ov6OqW9yBM/N3vWdDrYa4RmB3gucHV7PaTEJHhJOlijJtkhtTp35Hug9Lp
-	KdTUch2CHWx/XAiNccw8Q==
-X-ME-Sender: <xms:lMYTaGgjwoD9jvvLQF3kWWQqAITXOwX2J_Tz44npf0_rwZTz5vZWuA>
-    <xme:lMYTaHCfTlr4IcDYYP9mfLiZVIcfetmb5w7EMXV6Z0z5aHP8l6w5d06NcLSmpdfDF
-    y_HHxOzjxiGRzZWmjM>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvjedtfeekucetufdoteggodetrf
-    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
-    pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
-    gvnhhtshculddquddttddmnecujfgurhepofggfffhvfevkfgjfhfutgfgsehtjeertder
-    tddtnecuhfhrohhmpedfufhvvghnucfrvghtvghrfdcuoehsvhgvnhesshhvvghnphgvth
-    gvrhdruggvvheqnecuggftrfgrthhtvghrnhepleefteeugeduudeuudeuhfefheegveek
-    ueefffdvffektdffffelveffvddvueffnecuvehluhhsthgvrhfuihiivgeptdenucfrrg
-    hrrghmpehmrghilhhfrhhomhepshhvvghnsehsvhgvnhhpvghtvghrrdguvghvpdhnsggp
-    rhgtphhtthhopeegledpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepjhhorhhose
-    eksgihthgvshdrohhrghdprhgtphhtthhopehrohgsihhnrdhmuhhrphhhhiesrghrmhdr
-    tghomhdprhgtphhtthhopegrnhhgvghlohhgihhorggttghhihhnohdruggvlhhrvghgnh
-    hosegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohepfigvnhhssegtshhivgdrohhr
-    ghdprhgtphhtthhopehprghlmhgvrhesuggrsggsvghlthdrtghomhdprhgtphhtthhope
-    grohhusegvvggtshdrsggvrhhkvghlvgihrdgvughupdhrtghpthhtoheprghlvgigsehg
-    hhhithhirdhfrhdprhgtphhtthhopehjvghrnhgvjhdrshhkrhgrsggvtgesghhmrghilh
-    drtghomhdprhgtphhtthhopehmrghtthhhihgrshdrsghgghesghhmrghilhdrtghomh
-X-ME-Proxy: <xmx:lMYTaOHaWClXa7praEdCDETzg-YVo8ghBfqAEKgcYyCNv-z3uiOvlg>
-    <xmx:lMYTaPTDyplPkZ6QrXRyRgI6CFJO6g9IDexaTEMgKEAyXB5CcIWOgQ>
-    <xmx:lMYTaDxrliDpH1IiImjsat2Qz56tDsozwSqIgW3l_ha48UqBCKavYA>
-    <xmx:lMYTaN4smmith_jw1KGBc7w4dLVQ7r3zWaP24jB2SlIhLdcRPVRmOw>
-    <xmx:mcYTaH2ZstH58KGLmGnY3MmWQlgQtyVkrQuLwkep4LE-hnCp6R9N54B6>
-Feedback-ID: i51094778:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id 6CE25BA0070; Thu,  1 May 2025 15:08:04 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
+	id 1uAa11-0000000GX5H-3yfM
+	for linux-rockchip@lists.infradead.org;
+	Thu, 01 May 2025 19:56:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1746129374;
+	bh=f616yrOSy1JlqMAl6xMN5xGmnBssOqtti51vKKOA0CM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=m7md2BkW2DHpZt4+nsAq0kOCuce+O/vkMXlaXvuPfxq9vfZiNkBpFA64WOpu4Q+nG
+	 0wZboUJeboZqO9Sfcy3oD385sUD0o/pjxp72wFAG0CWfHK49wfge9soS6FNCwxSve2
+	 Q8mDJYLAzAcZKHuieSxMCqkHssYiCNwJAi/yikT3n66/d3rcEWt5/eAfgmumAOkfh4
+	 N/X7GElDOUrWLOBvyH2GLSBu4joF0SGmbSebK8RhPUPlbt78vz3nm2Xgv9IPGfwt2F
+	 VtbUH3XgwQhCun2mC3y/eVvqdDs0Pqo7fGsIg1vFSJVp8Wr7rSRevzPzTfglQI+3L4
+	 F9HmTGtraAUtQ==
+Received: from [192.168.13.3] (unknown [IPv6:2606:6d00:17:8242::c73])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4837D17E1503;
+	Thu,  1 May 2025 21:56:13 +0200 (CEST)
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Date: Thu, 01 May 2025 15:55:50 -0400
+Subject: [PATCH v10 4/4] media: rkvdec: h264: Support High 10 and 4:2:2
+ profiles
 MIME-Version: 1.0
-X-ThreadId: T5b013bf7ff4edb46
-Date: Thu, 01 May 2025 21:07:44 +0200
-From: "Sven Peter" <sven@svenpeter.dev>
-To: "Jason Gunthorpe" <jgg@nvidia.com>, "Alexandre Ghiti" <alex@ghiti.fr>,
- "Alim Akhtar" <alim.akhtar@samsung.com>,
- "Alyssa Rosenzweig" <alyssa@rosenzweig.io>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- "Albert Ou" <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
- "Baolin Wang" <baolin.wang@linux.alibaba.com>,
- "Lu Baolu" <baolu.lu@linux.intel.com>,
- "David Woodhouse" <dwmw2@infradead.org>,
- "Gerald Schaefer" <gerald.schaefer@linux.ibm.com>,
- "Heiko Stuebner" <heiko@sntech.de>, iommu@lists.linux.dev,
- "Janne Grunau" <j@jannau.net>,
- "Jean-Philippe Brucker" <jean-philippe@linaro.org>,
- "Jernej Skrabec" <jernej.skrabec@gmail.com>,
- "Jonathan Hunter" <jonathanh@nvidia.com>,
- "Joerg Roedel" <joro@8bytes.org>, "Kevin Tian" <kevin.tian@intel.com>,
- "Krzysztof Kozlowski" <krzk@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org,
- "Marek Szyprowski" <m.szyprowski@samsung.com>,
- "Matthias Brugger" <matthias.bgg@gmail.com>,
- "Matthew Rosato" <mjrosato@linux.ibm.com>, "Neal Gompa" <neal@gompa.dev>,
- "Orson Zhai" <orsonzhai@gmail.com>,
- "Palmer Dabbelt" <palmer@dabbelt.com>,
- "Paul Walmsley" <paul.walmsley@sifive.com>,
- "Rob Clark" <robdclark@gmail.com>, "Robin Murphy" <robin.murphy@arm.com>,
- "Samuel Holland" <samuel@sholland.org>,
- "Niklas Schnelle" <schnelle@linux.ibm.com>,
- "Thierry Reding" <thierry.reding@gmail.com>,
- "Tomasz Jeznach" <tjeznach@rivosinc.com>,
- "Krishna Reddy" <vdumpa@nvidia.com>, virtualization@lists.linux.dev,
- "Chen-Yu Tsai" <wens@csie.org>, "Will Deacon" <will@kernel.org>,
- "Yong Wu" <yong.wu@mediatek.com>,
- "Chunyan Zhang" <zhang.lyra@gmail.com>
-Cc: patches@lists.linux.dev
-Message-Id: <38706b77-4e58-4dfb-add3-814746f4a3c5@app.fastmail.com>
-In-Reply-To: <3-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
-References: <3-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
-Subject: Re: [PATCH 3/7] iommu: Remove ops.pgsize_bitmap from drivers that don't use it
+Message-Id: <20250501-b4-rkvdec_h264_high10_and_422_support-v10-4-c380ba452108@collabora.com>
+References: <20250501-b4-rkvdec_h264_high10_and_422_support-v10-0-c380ba452108@collabora.com>
+In-Reply-To: <20250501-b4-rkvdec_h264_high10_and_422_support-v10-0-c380ba452108@collabora.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, kernel@collabora.com, 
+ Jonas Karlman <jonas@kwiboo.se>, 
+ Christopher Obbard <christopher.obbard@linaro.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250501_120811_687166_49A030F5 
-X-CRM114-Status: GOOD (  13.09  )
+X-CRM114-CacheID: sfid-20250501_125616_139221_2B50B415 
+X-CRM114-Status: GOOD (  17.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,41 +80,199 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 29, 2025, at 16:34, Jason Gunthorpe wrote:
-> These drivers all set the domain->pgsize_bitmap in their
-> domain_alloc_paging() functions, so the ops value is never used. Delete
-> it.
->
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/iommu/apple-dart.c       | 1 -
->  drivers/iommu/intel/iommu.c      | 1 -
->  drivers/iommu/iommufd/selftest.c | 1 -
->  drivers/iommu/riscv/iommu.c      | 1 -
->  drivers/iommu/virtio-iommu.c     | 6 ++----
->  5 files changed, 2 insertions(+), 8 deletions(-)
->
-> diff --git a/drivers/iommu/apple-dart.c b/drivers/iommu/apple-dart.c
-> index 757d24f67ad45a..190f28d7661515 100644
-> --- a/drivers/iommu/apple-dart.c
-> +++ b/drivers/iommu/apple-dart.c
-> @@ -991,7 +991,6 @@ static const struct iommu_ops apple_dart_iommu_ops = {
->  	.of_xlate = apple_dart_of_xlate,
->  	.def_domain_type = apple_dart_def_domain_type,
->  	.get_resv_regions = apple_dart_get_resv_regions,
-> -	.pgsize_bitmap = -1UL, /* Restricted during dart probe */
->  	.owner = THIS_MODULE,
->  	.default_domain_ops = &(const struct iommu_domain_ops) {
->  		.attach_dev	= apple_dart_attach_dev_paging,
+From: Jonas Karlman <jonas@kwiboo.se>
 
-Reviewed-by: Sven Peter <sven@svenpeter.dev> # for Apple DART
+Add support and enable decoding of H264 High 10 and 4:2:2 profiles.
 
+Decoded CAPTURE buffer width is aligned to 64 pixels to accommodate HW
+requirement of 10-bit format buffers, fixes decoding of all the 4:2:2
+and 10bit 4:2:2 flusters tests except two stream that present some
+visual artifacts.
 
+- Hi422FREXT17_SONY_A
+- Hi422FREXT19_SONY_A
 
-Best,
+The get_image_fmt() ops is implemented to select an image format
+required for the provided SPS control, and returns RKVDEC_IMG_FMT_ANY
+for other controls.
 
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Tested-by: Christopher Obbard <chris.obbard@collabora.com>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 37 ++++++++++++++++++++++-------
+ drivers/staging/media/rkvdec/rkvdec.c      | 38 +++++++++++++++++++++++-------
+ drivers/staging/media/rkvdec/rkvdec.h      |  3 +++
+ 3 files changed, 60 insertions(+), 18 deletions(-)
 
-Sven
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 8bce8902b8dda39bb2058c8504bd52ccae6b4204..d14b4d173448dbcce4ab978a83806064b100ca24 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -1027,24 +1027,42 @@ static int rkvdec_h264_adjust_fmt(struct rkvdec_ctx *ctx,
+ 	return 0;
+ }
+ 
++static enum rkvdec_image_fmt rkvdec_h264_get_image_fmt(struct rkvdec_ctx *ctx,
++						       struct v4l2_ctrl *ctrl)
++{
++	const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
++
++	if (ctrl->id != V4L2_CID_STATELESS_H264_SPS)
++		return RKVDEC_IMG_FMT_ANY;
++
++	if (sps->bit_depth_luma_minus8 == 0) {
++		if (sps->chroma_format_idc == 2)
++			return RKVDEC_IMG_FMT_422_8BIT;
++		else
++			return RKVDEC_IMG_FMT_420_8BIT;
++	} else if (sps->bit_depth_luma_minus8 == 2) {
++		if (sps->chroma_format_idc == 2)
++			return RKVDEC_IMG_FMT_422_10BIT;
++		else
++			return RKVDEC_IMG_FMT_420_10BIT;
++	}
++
++	return RKVDEC_IMG_FMT_ANY;
++}
++
+ static int rkvdec_h264_validate_sps(struct rkvdec_ctx *ctx,
+ 				    const struct v4l2_ctrl_h264_sps *sps)
+ {
+ 	unsigned int width, height;
+ 
+-	/*
+-	 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
+-	 * but it's currently broken in the driver.
+-	 * Reject them for now, until it's fixed.
+-	 */
+-	if (sps->chroma_format_idc > 1)
+-		/* Only 4:0:0 and 4:2:0 are supported */
++	if (sps->chroma_format_idc > 2)
++		/* Only 4:0:0, 4:2:0 and 4:2:2 are supported */
+ 		return -EINVAL;
+ 	if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
+ 		/* Luma and chroma bit depth mismatch */
+ 		return -EINVAL;
+-	if (sps->bit_depth_luma_minus8 != 0)
+-		/* Only 8-bit is supported */
++	if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
++		/* Only 8-bit and 10-bit is supported */
+ 		return -EINVAL;
+ 
+ 	width = (sps->pic_width_in_mbs_minus1 + 1) * 16;
+@@ -1190,4 +1208,5 @@ const struct rkvdec_coded_fmt_ops rkvdec_h264_fmt_ops = {
+ 	.stop = rkvdec_h264_stop,
+ 	.run = rkvdec_h264_run,
+ 	.try_ctrl = rkvdec_h264_try_ctrl,
++	.get_image_fmt = rkvdec_h264_get_image_fmt,
+ };
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index f7eb67520ab0edd9ac1da3d0daf2af1bc6d37a09..3367902f22de3415d3040ae3ae28e7a3f38e910c 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -186,9 +186,10 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
+ 	{
+ 		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
+ 		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_CONSTRAINED_BASELINE,
+-		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
++		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_422_INTRA,
+ 		.cfg.menu_skip_mask =
+-			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
++			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED) |
++			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_444_PREDICTIVE),
+ 		.cfg.def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
+ 	},
+ 	{
+@@ -203,11 +204,23 @@ static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
+ 	.num_ctrls = ARRAY_SIZE(rkvdec_h264_ctrl_descs),
+ };
+ 
+-static const struct rkvdec_decoded_fmt_desc rkvdec_h264_vp9_decoded_fmts[] = {
++static const struct rkvdec_decoded_fmt_desc rkvdec_h264_decoded_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.image_fmt = RKVDEC_IMG_FMT_420_8BIT,
+ 	},
++	{
++		.fourcc = V4L2_PIX_FMT_NV15,
++		.image_fmt = RKVDEC_IMG_FMT_420_10BIT,
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_NV16,
++		.image_fmt = RKVDEC_IMG_FMT_422_8BIT,
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_NV20,
++		.image_fmt = RKVDEC_IMG_FMT_422_10BIT,
++	},
+ };
+ 
+ static const struct rkvdec_ctrl_desc rkvdec_vp9_ctrl_descs[] = {
+@@ -230,21 +243,28 @@ static const struct rkvdec_ctrls rkvdec_vp9_ctrls = {
+ 	.num_ctrls = ARRAY_SIZE(rkvdec_vp9_ctrl_descs),
+ };
+ 
++static const struct rkvdec_decoded_fmt_desc rkvdec_vp9_decoded_fmts[] = {
++	{
++		.fourcc = V4L2_PIX_FMT_NV12,
++		.image_fmt = RKVDEC_IMG_FMT_420_8BIT,
++	},
++};
++
+ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
+ 		.frmsize = {
+-			.min_width = 48,
++			.min_width = 64,
+ 			.max_width = 4096,
+-			.step_width = 16,
++			.step_width = 64,
+ 			.min_height = 48,
+ 			.max_height = 2560,
+ 			.step_height = 16,
+ 		},
+ 		.ctrls = &rkvdec_h264_ctrls,
+ 		.ops = &rkvdec_h264_fmt_ops,
+-		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
+-		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
++		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_decoded_fmts),
++		.decoded_fmts = rkvdec_h264_decoded_fmts,
+ 		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
+ 	},
+ 	{
+@@ -259,8 +279,8 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
+ 		},
+ 		.ctrls = &rkvdec_vp9_ctrls,
+ 		.ops = &rkvdec_vp9_fmt_ops,
+-		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
+-		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
++		.num_decoded_fmts = ARRAY_SIZE(rkvdec_vp9_decoded_fmts),
++		.decoded_fmts = rkvdec_vp9_decoded_fmts,
+ 	}
+ };
+ 
+diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
+index e466a2753ccfc13738e0a672bc578e521af2c3f2..9a9f4fced7a184b952d341d75c7faedaa75163d6 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.h
++++ b/drivers/staging/media/rkvdec/rkvdec.h
+@@ -80,6 +80,9 @@ struct rkvdec_coded_fmt_ops {
+ enum rkvdec_image_fmt {
+ 	RKVDEC_IMG_FMT_ANY = 0,
+ 	RKVDEC_IMG_FMT_420_8BIT,
++	RKVDEC_IMG_FMT_420_10BIT,
++	RKVDEC_IMG_FMT_422_8BIT,
++	RKVDEC_IMG_FMT_422_10BIT,
+ };
+ 
+ struct rkvdec_decoded_fmt_desc {
+
+-- 
+2.49.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
