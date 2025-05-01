@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCE28C369DC
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 May 2025 13:29:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AD55C369DC
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 May 2025 13:33:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5T8rkNkwKQqnCv/IVMynyawrYytltD7FkWzc4PIs/HI=; b=SIj7IptUy5WQlV
-	HGRMtdSGJVspJJZx75irVQF++T9EVfxwS49uusN8K2Bubb6DFwVZH5dnah6Az4K7isWrlrwOfwsbE
-	hrKKc+s1DUazTp4y42jcaBHSW8FPwounmFo1m4etLw4j7iOrV6PupdqDZSDUEZO2EejBP+rtmGqjQ
-	sYrpsGDNwX2myasUKbbJSErhSwFAtTbreM5CNcvaNO9Owwfoj3srchQGMn94nb0JDETTAmLNlcf41
-	xs9I55vAhr44wdkJgRlFDxYtJNAL68hC5EGRKYBf5ICKR/riW0TIzdsCxlUH/yu7saq4681JercwI
-	CyMWY/JQLgey184XLZdg==;
+	List-Owner; bh=It5sbwMiSLPT2ElmTPZUfu92thlP8kze/XRv0PwP38g=; b=WyjjytrXUc6a/p
+	KnB/9ITLRtA2z6rJPTagXQxKNvoPlgKLzBlS0de+akufkGmkB3ypSHKT2oyM2zchPZAy2qm1FsDzd
+	AbXABGMSVhAh2p2lvjbdpAmdxMtTz8zrTaSZLcLKIUA9vqDiBxglJjQR4Gnu6XWvXcHJGzBih6aiM
+	ZVOc5kvH4UJd8ePKRypnukDuxt8ys7qfz8FAgi/yb0bNS4Dg/u5spzZkSawafOyedPATF1OqyuOl+
+	bagbVaFgMt6ggWN40D1yygtDX4wUSwmlIFqBnoEynZXJmYuOKcL+djsexhfoioUDKe2p2Frm/IEXK
+	p7wBwbT/p/DWmXGGdGFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uATym-0000000FpAe-1DT0;
-	Thu, 01 May 2025 13:29:32 +0000
+	id 1uAU2T-0000000FpkE-3yHU;
+	Thu, 01 May 2025 13:33:21 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uATxg-0000000Fp3i-3LWL;
-	Thu, 01 May 2025 13:28:26 +0000
+	id 1uATz0-0000000FpDv-2ivB;
+	Thu, 01 May 2025 13:29:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=5pF0zRMnxqpAZiQDV2tjp1OzcmcfhmgifjwYB3Den84=; b=RD6jBeYdyI6NdHc8c+BcRx6sC1
-	wYRv+O8cKAFHt/LDHeN6Qf0L2jJiSGAtBvMTFUJaYubq+l2HSoQ5YZQ9weBPv8PGy0OyVrlqXAXUb
-	DlQ10tPQVsfUPBnm8N2YjE/kN7gWGxY533Hv4snOu4o1pOWN8EP0eGwhOz2cw0IdbTc/F0xpOBXUq
-	7EWoYgdB7XoQ5FofLvL9ESHj7ShhmDlZigg6QZ92lbq98encWmo9U9w4KhM168tkMpWnZk1XNEilB
-	6ceAZewhyyJKZe6sZSgy1rIHlnScM+ig7Fnl9ldZIfVbB9jhuuYxr1BCIT5hN+rRJueA43s5Lhp/B
-	N63Gh5+A==;
-Received: from i53875bbc.versanet.de ([83.135.91.188] helo=diego.localnet)
+	bh=D1o1hEI9ehFzjcmFIjKLUxGqLLuWtSgWzjdJQmZ5TVU=; b=mhB7DIOajWNSMuUcbfvMHL7kB8
+	un6M7OMns1VYgULwqEMU0qZeYMnfGsiWTyUvRF/yDynCr0WQvA/JCVXjz6VFAUJ04l9bf6WopKwGt
+	wG7SJ2F2yszv9CeyTwzAUD1UBs9hyPlOxMFTtuoeMbxcNHqM35fZLEe2KJg1KiEI0mdGgifwYlz8Q
+	WXIH2k1yVgQ8TfTNlmEG513/1GtuYbPLtHf4dQfhteST54RF3GudkWTQ+/4Oe8m+PdaKI5HFNJ2fz
+	44VfLxqqD5yltUBpaYkFx/IfgVmorXr4oF2/LEZIv1yiQLYSx4ovd+f8H7Xc5NVHbQmyfVu/FdLKF
+	nae3z9WQ==;
+Received: from i53875bbc.versanet.de ([83.135.91.188] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uATxY-0001u3-Vx; Thu, 01 May 2025 15:28:17 +0200
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org,
- Finley Xiao <finley.xiao@rock-chips.com>,
- Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org,
- ulf.hansson@linaro.org, Rob Herring <robh@kernel.org>,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v4 6/7] arm64: dts: rockchip: add core dtsi for RK3562 Soc
-Date: Thu, 01 May 2025 15:28:16 +0200
-Message-ID: <47204993.fMDQidcC6G@diego>
-In-Reply-To: <20250415051855.59740-7-kever.yang@rock-chips.com>
-References: <20250415051855.59740-1-kever.yang@rock-chips.com>
- <20250415051855.59740-7-kever.yang@rock-chips.com>
+	id 1uATyz-0001xd-6X; Thu, 01 May 2025 15:29:45 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: robh@kernel.org,
+	krzk@kernel.org,
+	John Clark <inindev@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	sigmaris@gmail.com
+Subject: Re: [PATCH v2] arm64: dts: rockchip: rk3588-nanopc-t6: fix usb-c port functionality
+Date: Thu,  1 May 2025 15:29:34 +0200
+Message-ID: <174610616060.401554.9572972965046310319.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250422210345.196050-1-inindev@gmail.com>
+References: <20250419023715.16811-1-inindev@gmail.com> <20250422210345.196050-1-inindev@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250501_062824_834635_DC5BC28F 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20250501_062946_703415_ED36CF2E 
+X-CRM114-Status: GOOD (  13.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,31 +72,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgS2V2ZXIsCgpBbSBEaWVuc3RhZywgMTUuIEFwcmlsIDIwMjUsIDA3OjE4OjU0IE1pdHRlbGV1
-cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgS2V2ZXIgWWFuZzoKPiBGcm9tOiBGaW5sZXkg
-WGlhbyA8ZmlubGV5LnhpYW9Acm9jay1jaGlwcy5jb20+Cj4gCj4gUkszNTYyIGlzIGEgU29jIGZy
-b20gUm9ja2NoaXAsIHdoaWNoIGVtYmVkZGVkIHdpdGggcXVhZAo+IEFSTSBDb3J0ZXgtQTUzLgo+
-IAo+IFNpZ25lZC1vZmYtYnk6IEZpbmxleSBYaWFvIDxmaW5sZXkueGlhb0Byb2NrLWNoaXBzLmNv
-bT4KPiBTaWduZWQtb2ZmLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29t
-Pgo+IC0tLQo+IAo+IENoYW5nZXMgaW4gdjQ6Cj4gLSByZW1vdmUgZ21hYyBhbmQgb3RwIG5vZGVz
-Cj4gCj4gQ2hhbmdlcyBpbiB2MzoKPiAtIHJlbW92ZSBpMmMvc2VyaWFsL3NwaSBhbGlhcwo+IC0g
-YWRkIHNvYyBub2RlCj4gCj4gQ2hhbmdlcyBpbiB2MjoKPiAtIHJlbW92ZSBncmYgaW4gY3J1Cj4g
-LSBVcGRhdGUgc29tZSBwcm9wZXJ0aWVzIG9yZGVyCj4gCgo+ICsJc29jIHsKPiArCQljb21wYXRp
-YmxlID0gInNpbXBsZS1idXMiOwo+ICsJCSNhZGRyZXNzLWNlbGxzID0gPDI+Owo+ICsJCSNzaXpl
-LWNlbGxzID0gPDI+Owo+ICsJCXJhbmdlczsKPiArCj4gKwkJc2NtaV9zaG1lbTogc2NtaS1zaG1l
-bUAxMGYwMDAgewo+ICsJCQljb21wYXRpYmxlID0gImFybSxzY21pLXNobWVtIjsKPiArCQkJcmVn
-ID0gPDB4MCAweDAwMTBmMDAwIDB4MCAweDEwMD47Cj4gKwkJfTsKCnRoZSBzY21pIHNobWVtIGlz
-IG5vdCBhIHNvYy1kZXZpY2UsIGJ1dCBpbnN0ZWFkIGEgcGllY2Ugb2YgbWFpbiBtZW1vcnkuCldl
-IHJlY2VudGx5IGZpeGVkIHRoYXQgZm9yIGV4YW1wbGUgZm9yIHRoZSByazM1ODggWzBdLCBzbyBw
-bGVhc2UgZm9sbG93CmFsb25nIGZvciB0aGlzIG5ldyBzb2MuCgpUaGFua3MgYSBsb3QKSGVpa28K
-CgpbMF0gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbW1p
-bmQvbGludXgtcm9ja2NoaXAuZ2l0L2NvbW1pdC8/aWQ9OGVjZDA5NmQwMThiZThhNmJkM2JkOTMw
-ZjNhNDFhODVkYjY2YTY3ZAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+On Tue, 22 Apr 2025 17:03:45 -0400, John Clark wrote:
+> The USB-C port on the NanoPC-T6 was not providing VBUS (vbus5v0_typec
+> regulator disabled, gpio-58 out lo) due to misconfiguration. The
+> original setup with regulator-always-on and regulator-boot-on forced
+> the port on, masking the issue, but removing these properties revealed
+> that the fusb302 driver was not enabling the regulator dynamically.
+> 
+> Changes:
+> - Removed regulator-always-on and regulator-boot-on from vbus5v0_typec
+>   and vbus5v0_usb to allow driver control.
+> - Changed power-role from "source" to "dual" in the usb-c-connector to
+>   support OTG functionality.
+> - Added pd-revision = /bits/ 8 <0x2 0x0 0x1 0x2> to the FUSB302MPX
+>   node to specify USB Power Delivery (PD) Revision 2.0, Version 1.2,
+>   ensuring the driver correctly advertises PD capabilities and
+>   negotiates power roles (source/sink).
+> - Added op-sink-microwatt and sink-pdos for proper sink mode
+>   configuration (1W min, 15W max).
+> - Added typec-power-opmode = "1.5A" to enable 1.5A fallback for non-PD
+>   USB-C devices, aligning with the 5V/2A hardware limit.
+> - Set try-power-role to "source" to prioritize VBUS enablement.
+> - Adjusted usb_host0_xhci dr_mode from "host" to "otg" and added
+>   usb-role-switch for dual-role support.
+> 
+> [...]
+
+Applied, thanks!
+
+[1/1] arm64: dts: rockchip: rk3588-nanopc-t6: fix usb-c port functionality
+      commit: 60087bcbd1206a546c570c453dee5f5d961ef5b3
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
