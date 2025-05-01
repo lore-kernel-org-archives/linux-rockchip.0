@@ -4,64 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59291C3ABAA
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 May 2025 21:01:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C2ADC369DC
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 May 2025 21:59:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SQEzifbQ/hYb0WhIAL4J/+1NzMvF1lMTafNIUEkR7hM=; b=E1elfQTALDPnsI
-	Kn/9rcEaYn6358QHHVIti37b/tpHP1mFuPgMdCLP8w1de0WeeI/nLxkLUE8Xm3ovzw0cwAWGG2pY/
-	wXjpqUX10riXCz1dCDdxRHBK/wwe6LpR4UUpVwqOgzrnRBmhLM9Izg19w3N7W2Zfg0gIerRA+4rhb
-	rgFHfi4YSaDgQ0Ss6tZXtNBreBnjbdwW5U2mVgp89Yfub86/x7itj0PoBtW1xNuJOCIIdkoTFdpNF
-	XEpnvnZItsc0EeARBobx01zuGr+K12cK/xiJP0VdDBB6D5v0PeUxakeTNEOYrRrMHiizhIzxQvCnX
-	OeJOAkZxNVfcCXXnS0xA==;
+	List-Owner; bh=/EqxGm+5z6rDnXt5DnSJpdLvENUXK0vF2/JlQ5kQEFM=; b=dwUtTbFL6yjZ74
+	zu+GWyyL6PyXOw3SKBpX2fcObOir19aS7qpZVg5zPvLGSEaRsGngUCu19+QCI1x0lC03sRHTzDcAg
+	XK30fprO/EIe9xWWYhUoV+Js9N6KrPYuZh0IGNHe0A3w6DmEZDH4o25SpdacKgvlRDxkrX/Zo0dJM
+	2NST9H0XjXpkOm/RPx6t3/QmFjS+p6K63ySZON0lG6IsY1V5uKUbe4O2e1D57QpHUgfNgaLdBSc1s
+	Kb8AUp7AMmqBJeZOHUdnFppiir+CD2Er+G27YYiFD89ZgjTk/UD3v/4Ml2nIXSLrFLrDo8cXhmKd3
+	0rTscoVHWNhMNpKd27bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAb2G-0000000GpZA-0Cy0;
-	Thu, 01 May 2025 21:01:36 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uAbwG-0000000HN9m-3fMT;
+	Thu, 01 May 2025 21:59:28 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAa0z-0000000GX4Y-33Cs
-	for linux-rockchip@lists.infradead.org;
-	Thu, 01 May 2025 19:56:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746129371;
-	bh=aeUagMt9j8V0x7zgrJ7xP0jWmkoNz11VjTWuvk0eDDc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=oDBFpjb2/InFEqWx+LkSnpjseD+S8IIZPtE+mz+w7c/xo2E/9yo4ggRHdeAzb8vwL
-	 Q71ClFeVpUT1cQB4LMjd3bc5weEbzKo3ql01LCYNWeb7KqvwHcNm9un7IWJ4+P+WzO
-	 b/MKlczz1KHEpcYA2YSmIAlwQiLbBznfRPWwLm0Bg9h+/GqefRfcpmu8K9HfgLJTKZ
-	 nQ0wbHVg4rlIvTxEUb84IXUmnXmqUosxaLMjYCgNoiGH6sOuoI/ANuSMQhljdgJofk
-	 YFtAvpp3E8/Bx1IpBgcj5mclMqSaf1U8b66/dk/W3JodchOle1nl1zSTLDptZFDAJ1
-	 UO7PpLKJ/QumQ==
-Received: from [192.168.13.3] (unknown [IPv6:2606:6d00:17:8242::c73])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7134317E0C8C;
-	Thu,  1 May 2025 21:56:10 +0200 (CEST)
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Date: Thu, 01 May 2025 15:55:48 -0400
-Subject: [PATCH v10 2/4] media: rkvdec: Initialize the m2m context before
- the controls
+	id 1uAbuK-0000000HM2Z-3T3h;
+	Thu, 01 May 2025 21:57:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1746136649; x=1777672649;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=zWcnDLE5VTMy5WKRBj0IgzuPoGG7eGMUv76ZlXgPRDg=;
+  b=i5ulbcVZgwSv/YujoyFZ05cf9At7IehOJUUE+HiCfk6sp3pnIQqs6NgY
+   iCQphNS3BcILsPOoKArPCMt9Wnev6aR46XSKsGh1JEkS4Vi34V7wGeXKD
+   hKIBMTOh9j93iZ4ySK8eycIXue4Wa7/Jatv9HGF/YPpQ0+4gssTomHcLm
+   MEZ+LgNzAZDtPTprLWdHffZV8klrnDStfFGhFeIy7/PCk+bU3u1lgaenU
+   YxK5qkyp62WphiPKU6OHCUu+tgLrikpW97cCjVOzt3p/29a4weLpIi6Q0
+   nwYXJABBn5U8Ya9NnjFrnGfkxycAVu0QtwtnHbwN+GbDufQyLRRVO6GkQ
+   Q==;
+X-CSE-ConnectionGUID: RV8wNcJTR62OhYdwE5y35g==
+X-CSE-MsgGUID: i6X0YeYdSBeylLqeHkG/8w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11420"; a="47536276"
+X-IronPort-AV: E=Sophos;i="6.15,254,1739865600"; 
+   d="scan'208";a="47536276"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 May 2025 14:57:25 -0700
+X-CSE-ConnectionGUID: gQXAToqySNCoS87O/jrCWA==
+X-CSE-MsgGUID: uoquiMHcSzC+zHBill9Nqw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,254,1739865600"; 
+   d="scan'208";a="135015910"
+Received: from ettammin-desk.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.244.38])
+  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 May 2025 14:57:19 -0700
+Received: from kekkonen.localdomain (localhost [127.0.0.1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id 49E991201E4;
+	Fri,  2 May 2025 00:57:16 +0300 (EEST)
+Date: Thu, 1 May 2025 21:57:16 +0000
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: michael.riesch@collabora.com
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	=?iso-8859-1?Q?Th=E9o?= Lebrun <theo.lebrun@bootlin.com>,
+	Gerald Loacker <gerald.loacker@wolfvision.net>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Collabora Kernel Team <kernel@collabora.com>,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Alexander Shiyan <eagle.alexander923@gmail.com>,
+	Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: Re: [PATCH v6 07/13] media: rockchip: rkcif: add driver for mipi
+ csi-2 receiver
+Message-ID: <aBPuPGM-YBZo5AbI@kekkonen.localdomain>
+References: <20240220-rk3568-vicap-v6-0-d2f5fbee1551@collabora.com>
+ <20240220-rk3568-vicap-v6-7-d2f5fbee1551@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20250501-b4-rkvdec_h264_high10_and_422_support-v10-2-c380ba452108@collabora.com>
-References: <20250501-b4-rkvdec_h264_high10_and_422_support-v10-0-c380ba452108@collabora.com>
-In-Reply-To: <20250501-b4-rkvdec_h264_high10_and_422_support-v10-0-c380ba452108@collabora.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, kernel@collabora.com
-X-Mailer: b4 0.14.2
+Content-Disposition: inline
+In-Reply-To: <20240220-rk3568-vicap-v6-7-d2f5fbee1551@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250501_125613_913052_30962EFC 
-X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-CacheID: sfid-20250501_145728_905987_61F7697E 
+X-CRM114-Status: UNSURE (   8.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,55 +111,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Setting up the control handler calls into .s_ctrl ops. While validating
-the controls the ops may need to access some of the context state, which
-could lead to a crash if not properly initialized.
+Hi Michael,
 
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
- drivers/staging/media/rkvdec/rkvdec.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+On Wed, Apr 30, 2025 at 11:15:56AM +0200, Michael Riesch via B4 Relay wrote:
+> +	link_freq = v4l2_get_link_freq(csi_dev->source_sd->ctrl_handler, 0, 0);
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 65c6f1d07a493e017ae941780b823d41314a49b8..7b780392bb6a63cc954655ef940e87146d2b852f 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -871,24 +871,24 @@ static int rkvdec_open(struct file *filp)
- 	rkvdec_reset_decoded_fmt(ctx);
- 	v4l2_fh_init(&ctx->fh, video_devdata(filp));
- 
--	ret = rkvdec_init_ctrls(ctx);
--	if (ret)
--		goto err_free_ctx;
--
- 	ctx->fh.m2m_ctx = v4l2_m2m_ctx_init(rkvdec->m2m_dev, ctx,
- 					    rkvdec_queue_init);
- 	if (IS_ERR(ctx->fh.m2m_ctx)) {
- 		ret = PTR_ERR(ctx->fh.m2m_ctx);
--		goto err_cleanup_ctrls;
-+		goto err_free_ctx;
- 	}
- 
-+	ret = rkvdec_init_ctrls(ctx);
-+	if (ret)
-+		goto err_cleanup_m2m_ctx;
-+
- 	filp->private_data = &ctx->fh;
- 	v4l2_fh_add(&ctx->fh);
- 
- 	return 0;
- 
--err_cleanup_ctrls:
--	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
-+err_cleanup_m2m_ctx:
-+	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
- 
- err_free_ctx:
- 	kfree(ctx);
+Use the source pad for this, the control handler is there just for
+compatibility and will be removed soon.
 
 -- 
-2.49.0
-
+Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
