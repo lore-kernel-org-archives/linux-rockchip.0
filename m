@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F2A5C3ABAA
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 15:17:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40DE9C3ABAD
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 15:17:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ywk/jAggGdRn5elLDOhiQcey3pIRKNiyW1YGdPsMePk=; b=PmYztCf0WQQzVh
-	s+TilMl2QvX5sZQfTchJOpG5RcDeCCvfhl8051B1PeEqjsIOwKHKYnSxj4dEAi+iXdyCML++TPZUy
-	a5fCE9Td4FJghDfZ8xcwhNImFwUpfwMLVoQy2tVsQsT5G2lPe8NTnrbwmNlhrNAcKJXP9JYEsFZCQ
-	88t0CGzMW+8AROUoC5TKqD55CDpiz6TNmpT2omVxFr4YZtWZB1qoQSOvvvhL86XGktxZASeOatZj3
-	Cfioh9c2xzV8HM8ggUK2nNSv9aVjhDPZu1QcPno93mMnD589rr68f8fBbgqp7M0T+Wn4yq/cAAGed
-	6MXT55QzgvuZnaZVptyg==;
+	List-Owner; bh=7iTGU5EsSmmo5qFba+sFvrRd5iqh0DBt0ws/HuKNPCo=; b=eCZW/vpzgjlggB
+	BhAZWEGu3MXRbdPIQiEfvX1f61EI01LZ9D4Re8I3MlEZR3LjcAXIsA8rBRRCgDgE9iT9abNOfgsR/
+	3Vk4qQuZhr236248IONvB+b2vUvrwJ0SYNlBM+3xFNVSylUMHm+G8zj+eOUSTbxoNK2BNAdURd2nK
+	IaxjdAqWJCkOIBc8Enci3VD+MVa6RjHkxJGbQaNnhpXia9QU4OCHMBxUKq7nOG9eCZ98mkjo6eM9F
+	Au4yXDqWFbZVZ1k/rCZZ/5gFQi9X7doTh6zbJqSjFTFaqVh8Ts67PyU09zDSif17TKrroGIYyG85f
+	P5DtKZ8Go7ciYgM4+9YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAs96-00000002JIM-2GvG;
+	id 1uAs96-00000002JIc-3gAl;
 	Fri, 02 May 2025 15:17:48 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAryh-00000002Hmn-283X
+	id 1uAryi-00000002HnO-1cjj
 	for linux-rockchip@lists.infradead.org;
 	Fri, 02 May 2025 15:07:05 +0000
 Received: from dude02.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::28])
 	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <m.felsch@pengutronix.de>)
-	id 1uAryS-0004HG-57; Fri, 02 May 2025 17:06:48 +0200
+	id 1uAryU-0004HG-7G; Fri, 02 May 2025 17:06:50 +0200
 From: Marco Felsch <m.felsch@pengutronix.de>
 To: nicolas.dufresne@collabora.com,
 	benjamin.gaignard@collabora.com,
@@ -55,9 +55,9 @@ Cc: linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Michael Tretter <m.tretter@pengutronix.de>
-Subject: [RFC PATCH 03/11] media: uapi: add nal unit header fields to encode_params
-Date: Fri,  2 May 2025 17:05:06 +0200
-Message-Id: <20250502150513.4169098-4-m.felsch@pengutronix.de>
+Subject: [RFC PATCH 04/11] media: uapi: add more V4L2_H264_ENCODE_FLAGs
+Date: Fri,  2 May 2025 17:05:07 +0200
+Message-Id: <20250502150513.4169098-5-m.felsch@pengutronix.de>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250502150513.4169098-1-m.felsch@pengutronix.de>
 References: <20250502150513.4169098-1-m.felsch@pengutronix.de>
@@ -67,8 +67,9 @@ X-SA-Exim-Mail-From: m.felsch@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250502_080703_535688_2D11D8E5 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20250502_080704_416165_3B234BD6 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,59 +88,29 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Michael Tretter <m.tretter@pengutronix.de>
 
-The VEPU540 and VEPU580 may prepare the NAL unit headers in the coded
-params. These values have to be provided by user space and be written
-into the hardware registers.
-
-Furthermore, nal_ref_idc indicates if a picture will be used as
-reference and is a hint to the driver, if it needs to keep the
-reconstructed buffer or not.
+The encode flags may be written into the slice header by the hardware
+encoder. User space decides if the flags are set and which features are
+used, but the driver has to write it into the registers.
 
 Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 ---
- include/uapi/linux/v4l2-controls.h | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ include/uapi/linux/v4l2-controls.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-index 670f822ee758..a8df393c9ead 100644
+index a8df393c9ead..152b6b0cfe78 100644
 --- a/include/uapi/linux/v4l2-controls.h
 +++ b/include/uapi/linux/v4l2-controls.h
-@@ -1694,6 +1694,9 @@ struct v4l2_ctrl_h264_decode_params {
- 	__u32 flags;
- };
+@@ -1774,6 +1774,9 @@ struct v4l2_ctrl_h264_encode_params {
+ #define V4L2_H264_ENCODE_FLAG_ENTROPY_CODING_MODE	0x01
+ #define V4L2_H264_ENCODE_FLAG_TRANSFORM_8X8_MODE	0x02
+ #define V4L2_H264_ENCODE_FLAG_CONSTRAINED_INTRA_PRED	0x04
++#define V4L2_H264_ENCODE_FLAG_NUM_REF_IDX_OVERRIDE	0x08
++#define V4L2_H264_ENCODE_FLAG_NO_OUTPUT_OF_PRIOR_PICS	0x10
++#define V4L2_H264_ENCODE_FLAG_LONG_TERM_REFERENCE	0x20
  
-+#define V4L2_H264_NAL_CODED_SLICE_NON_IDR_PIC	1
-+#define V4L2_H264_NAL_CODED_SLICE_IDR_PIC	5
-+
- #define V4L2_CID_STATELESS_H264_ENCODE_PARAMS	(V4L2_CID_CODEC_STATELESS_BASE + 8)
+ #define V4L2_CID_STATELESS_H264_ENCODE_RC	(V4L2_CID_CODEC_STATELESS_BASE + 9)
  
- /**
-@@ -1719,6 +1722,8 @@ struct v4l2_ctrl_h264_decode_params {
-  * @pic_init_qp_minus26: initial value minus 26 of luma qp for each slice.
-  * @chroma_qp_index_offset: offset that shall be added to qp luma for addressing the
-  * table of qp chroma values for the Cb chroma component.
-+ * @nal_ref_idc: nal_ref_idc for the header of the generated NAL unit
-+ * @nal_unit_type: one of the V4L2_H264_NAL_CODED_SLICE_{} values
-  * @flags: combination of V4L2_H264_ENCODE_FLAG_{} flags.
-  * @reference_ts: timestamp of the V4L2 buffer to use as reference
-  */
-@@ -1751,6 +1756,16 @@ struct v4l2_ctrl_h264_encode_params {
- 
- 	__u32 flags; /* V4L2_H264_ENCODE_FLAG_ */
- 
-+	/*
-+	 * If nal_ref_idc is 0, the NAL unit won't be used as reference by
-+	 * later NAL units. Any other value indicates that the NAL unit may be
-+	 * used as reference.
-+	 */
-+	__u8 nal_ref_idc;
-+
-+	/* TODO Can we infer the nal_unit_type from the slice_type? */
-+	__u8 nal_unit_type;
-+
- 	/* Reference */
- 
- 	__u64 reference_ts;
 -- 
 2.39.5
 
