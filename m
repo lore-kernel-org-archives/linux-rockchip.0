@@ -4,98 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F5B0C369DC
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 May 2025 22:05:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A8CEC369DC
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 01:32:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fU+YjDw/IQ19sR9Be/tu/acIPaxhkq5zvSbyqyAJ9GY=; b=JT93/3kJ2e7Obg
-	Fv+fATrCUX4zzQuEwqcPL/OQavM9z5Orhr44gysMalAhCSXHC3eRh9w2X7EKkvLhyZNXdlToX9GTJ
-	mBHUFk/CffJiYj2ry0DFeyaJ1EJHCpFmgqKvW+eB6E9vc0/yJiwQAfSu6uFGFipSpdYd7TokD81HV
-	TRHvwMCDkx9P1kDXyiQw/fcDuGKN+/Co+nBnQ4wh9Zn3JoGEJdQbjmLWOgupKIvhM/s7lbiZ8JZzS
-	k4Wf5jNf5SZ+aP6mMNAEQvPGyLXm0LzBrqSwMtiTx2pFrPqk5WNHpNk3IP8U0BjU56Ynddxz77ed+
-	nwDsSrkEa7NRSjfzNFew==;
+	List-Owner; bh=fQtchIPYchHiEJW/+prwLl/5j4hSfpA83sCGYZPwNjk=; b=LR2UipuPnAczoa
+	OP6G4d0Cvt9mlMZx7671WkoxRQ7e3FevBvGOHQMa94LyonktdP/BpOL36yeOdS6HaiCpEGLt3P89n
+	Zai08vrqMtq4RY8mvjm+aaYnvcy/wPHpZvnDRMh0O+K1kbrj0gvk+mxXruNQH6yiLqvdqRBu2wWBZ
+	X5G/kwxWtt0UECClbmXMfLKGhy93/NbB++IXlPK+h/kV5sKoFnbqDGT1KYcY/ij+4cagzlBeKJpLU
+	tCamZbILOxIBPAIyR0Cx+J2448n/lGMudKUe5ObgRnoYEpnC7MKeGdiwQrAxubf1qyOQtshQCiiKt
+	TjjDh6gJ24p4kL35TvNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAc1x-0000000HQ8U-1B6o;
-	Thu, 01 May 2025 22:05:21 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1uAfGA-00000000W2R-0Z3R;
+	Fri, 02 May 2025 01:32:14 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAc01-0000000HOss-1zlR;
-	Thu, 01 May 2025 22:03:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1746137001; x=1777673001;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=DPAjQ3tcmkEJv3Lg42rr0PDxLthYy4jnQbe2u0kwB4M=;
-  b=RApLwJeJk6ptJzI+/Bsu58pF7Og1dEi9aT2pM7kfMFe7wj3JuKGBqKS+
-   yWoNugWOiUoW2bBb91CP6F+FYFQZIRDv4ahpkQ9xWc+U1bjuaJcxBKzkQ
-   CU+3rN5OxENuR2yKQL/Vgyu0T4tb9I32vF4O0eo3i3Nn0t+D6fZYEPwZg
-   Zp9Y4Yw+mdee6cZOIUs+NLNv1I3o2exfi2cghDIqhhWP/rVZyYTIFdavq
-   hQWGGmHsSQqeSj6jxHwFqUl6Knk1SpxMtIWWTyPiO9jaFsn6rkMZdzwXE
-   fNBq1zJKK7Oxzn/MqpSW9jaL5co+GjCHOL3LdzBWXEkaPyiliN71dqqvb
-   Q==;
-X-CSE-ConnectionGUID: f3qcSXxeRFyo4flPbu9AQQ==
-X-CSE-MsgGUID: aRTtksJFQie8hZ5BUGKIUw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11420"; a="47707637"
-X-IronPort-AV: E=Sophos;i="6.15,254,1739865600"; 
-   d="scan'208";a="47707637"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 May 2025 15:03:19 -0700
-X-CSE-ConnectionGUID: x/h8zWSZSKGq/ivGo4f39A==
-X-CSE-MsgGUID: oZ/+2AXHTPKdy9kwJsTIpA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,254,1739865600"; 
-   d="scan'208";a="165547378"
-Received: from ettammin-desk.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.244.38])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 May 2025 15:03:13 -0700
-Received: from kekkonen.localdomain (localhost [127.0.0.1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id 1EC6011F96E;
-	Fri,  2 May 2025 01:03:10 +0300 (EEST)
-Date: Thu, 1 May 2025 22:03:10 +0000
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	=?iso-8859-1?Q?Th=E9o?= Lebrun <theo.lebrun@bootlin.com>,
-	Gerald Loacker <gerald.loacker@wolfvision.net>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Paul Kocialkowski <paulk@sys-base.io>,
-	Alexander Shiyan <eagle.alexander923@gmail.com>,
-	Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Mehdi Djait <mehdi.djait@bootlin.com>
-Subject: Re: [PATCH v5 05/11] media: rockchip: add a driver for the rockchip
- camera interface
-Message-ID: <aBPvnkdakh9AtAjv@kekkonen.localdomain>
-References: <20250306-v6-8-topic-rk3568-vicap-v5-0-f02152534f3c@wolfvision.net>
- <20250306-v6-8-topic-rk3568-vicap-v5-5-f02152534f3c@wolfvision.net>
- <aA-hsrXa_bwiDVKS@kekkonen.localdomain>
- <43682906-f965-4e6e-8f60-22217c34fd39@collabora.com>
+	id 1uAfED-00000000Vtd-1Eut;
+	Fri, 02 May 2025 01:30:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id C1105A4BE7E;
+	Fri,  2 May 2025 01:24:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12CF4C4CEE3;
+	Fri,  2 May 2025 01:30:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746149412;
+	bh=7yPiM/BTKprD4dt1k+8OG/eUHYXJCorznVvQ6X6X/Ns=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YYjHviPrXUxcfLLV6rgJajN7utTKn9Gt6bKvVT4rPDHzEFeRV4Zabxll1z5MPMmNq
+	 wFfAcZt4grrvoqSvzcHZGU4rPJGY8e5QA1awo/Fzopelk9bvu4/rUwKaA1ptjQrKqH
+	 mkM8d+aldzRzIhac950E6ITQG0OXA2Z8rsNH6AZlnO5LxvtXV4oy8lDwJVd5poQlgw
+	 USpMSEBhvs1f7zAU/YBQo2pZ8+MlKJUiEIYmXhc5Exd+ujSYSQcpH1jpTq6V+kHb29
+	 iySZwI6udC+ygJ4CFxig9QneVM7rE1/bSXJsAcrh9EnX/B8QdSChNW9i5BWYis6j9M
+	 5lIHItPsE7smA==
+Date: Thu, 1 May 2025 20:30:10 -0500
+From: Rob Herring <robh@kernel.org>
+To: Quentin Schulz <quentin.schulz@cherry.de>
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add rk3399 industry
+ evaluation board
+Message-ID: <20250502013010.GA3405545-robh@kernel.org>
+References: <20250430074848.539-1-kernel@airkyi.com>
+ <20250430074848.539-2-kernel@airkyi.com>
+ <174602375195.3396795.11425847299435773154.robh@kernel.org>
+ <9c51863c-95a6-4c40-9268-0b2be9b8835b@cherry.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <43682906-f965-4e6e-8f60-22217c34fd39@collabora.com>
+In-Reply-To: <9c51863c-95a6-4c40-9268-0b2be9b8835b@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250501_150321_533651_CA2FD003 
-X-CRM114-Status: GOOD (  29.36  )
+X-CRM114-CacheID: sfid-20250501_183013_401369_4455DC25 
+X-CRM114-Status: GOOD (  19.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,115 +68,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Chaoyi Chen <kernel@airkyi.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Jonas Karlman <jonas@kwiboo.se>, Jimmy Hon <honyuenkwun@gmail.com>, Jianfeng Liu <liujianfeng1994@gmail.com>, linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>, Andrew Lunn <andrew@lunn.ch>, linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>, Alexey Charkov <alchark@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>, linux-arm-kernel@lists.infradead.org, Sebastian Reichel <sebastian.reichel@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
-
-On Tue, Apr 29, 2025 at 06:08:51PM +0200, Michael Riesch wrote:
-> Hi Sakari,
+On Wed, Apr 30, 2025 at 04:48:35PM +0200, Quentin Schulz wrote:
+> Hi Rob,
 > 
-> Thanks for your review.
-> 
-> On 4/28/25 17:41, Sakari Ailus wrote:
-> > Hi Michael,
+> On 4/30/25 4:36 PM, Rob Herring (Arm) wrote:
 > > 
-> > On Thu, Mar 06, 2025 at 05:56:06PM +0100, Michael Riesch wrote:
-> >> [...]
-> >> +
-> >> +const struct rkcif_dvp_match_data px30_vip_dvp_match_data = {
+> > On Wed, 30 Apr 2025 15:48:47 +0800, Chaoyi Chen wrote:
+> > > From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> > > 
+> > > Add devicetree binding for the rk3399 industry evaluation board.
+> > > 
+> > > Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> > > ---
+> > > 
+> > > (no changes since v1)
+> > > 
+> > >   Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+> > >   1 file changed, 5 insertions(+)
+> > > 
 > > 
-> > Can you prefix this with e.g. "rk_"? It's not static...
-> 
-> Will do. "rkcif_" is the prefix for the other global symbols, so I'll
-> use that here as well.
-
-Ack.
-
-> 
-> > [...]
-> >> +const struct rkcif_dvp_match_data rk3568_vicap_dvp_match_data = {
-> >> +	.in_fmts = rk3568_dvp_in_fmts,
-> >> +	.in_fmts_num = ARRAY_SIZE(rk3568_dvp_in_fmts),
-> >> +	.out_fmts = dvp_out_fmts,
-> >> +	.out_fmts_num = ARRAY_SIZE(dvp_out_fmts),
-> >> +	.setup = rk3568_dvp_grf_setup,
-> >> +	.has_scaler = false,
-> >> +	.regs = {
-> >> +		[RKCIF_DVP_CTRL] = 0x00,
-> >> +		[RKCIF_DVP_INTEN] = 0x04,
-> >> +		[RKCIF_DVP_INTSTAT] = 0x08,
-> >> +		[RKCIF_DVP_FOR] = 0x0c,
-> >> +		[RKCIF_DVP_LINE_NUM_ADDR] = 0x2c,
-> >> +		[RKCIF_DVP_FRM0_ADDR_Y] = 0x14,
-> >> +		[RKCIF_DVP_FRM0_ADDR_UV] = 0x18,
-> >> +		[RKCIF_DVP_FRM1_ADDR_Y] = 0x1c,
-> >> +		[RKCIF_DVP_FRM1_ADDR_UV] = 0x20,
-> >> +		[RKCIF_DVP_VIR_LINE_WIDTH] = 0x24,
-> >> +		[RKCIF_DVP_SET_SIZE] = 0x28,
-> >> +		[RKCIF_DVP_CROP] = 0x34,
-> >> +		[RKCIF_DVP_FRAME_STATUS] = 0x3c,
-> >> +		[RKCIF_DVP_LAST_LINE] = 0x44,
-> >> +		[RKCIF_DVP_LAST_PIX] = 0x48,
-> >> +	},
-> >> +};
 > > 
-> > Does this belong here? Or on the user's side?
-> 
-> Not sure I understand your question. The *_dvp_match_data structs are
-> mostly used by rkcif-capture-dvp.c, which would mean that they belong
-> here. rkcif-dev.c stores the pointer to it, but I think it can be
-> considered an opaque data structure.
-
-Ack.
-
-> 
+> > Please add Acked-by/Reviewed-by tags when posting new versions. However,
+> > there's no need to repost patches *only* to add the tags. The upstream
+> > maintainer will do that for acks received on the version they apply.
 > > 
-> >> [...]
-> >> +err_streams_unregister:
-> >> +	for (; i >= 0; i--)
+> > If a tag was not added on purpose, please state why and what changed.
 > > 
-> > You can
-> 
-> ... use
-> 
->    for (i++; i--; )
-> 
-> as you pointed out in your other mail? I would rather not, actually. I
-> think this would require using "i - 1"...
-> 
+> > Missing tags:
 > > 
-> >> +		rkcif_stream_unregister(&interface->streams[i]);
+> > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > 
 > 
-> ... here:
-> 
-> rkcif_stream_unregister(&interface->streams[i - 1]);
-> 
-> which I find less readable. Or I am wrong, but then I did not understand
-> the for loop definition above, which would mean that it is less readable
-> than my version.
+> To be fair, the Acked-by was given on the v1[1] after the v2[2] was sent, we
+> cannot expect Chaoyi Chen to travel back in time :)
 
-Would it? The values inside the loop are the same, it's just the loop that
-is different and does not require a signed counter variable.
+Usually a sign of sending new versions too quickly...
 
-> 
-> OK for you if I leave this as is?
+But I just send this semi-automated email so we capture the ack and I 
+can clear it out of my inbox.
 
-Yours might be slightly easier to grasp but making the variable signed just
-for that is not very pretty.
-
-> 
-> Unfortunately, your mail seems to be cut off here. Any further comments
-> to the part below?
-
-No, that was all for now.
-
--- 
-Regards,
-
-Sakari Ailus
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
