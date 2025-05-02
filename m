@@ -4,72 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DD47C3ABB0
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 17:23:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07FC8C3ABAC
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 20:58:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ykGqbrEKUMCqG2H+q8B29ctPu3lOegiDzw3drLTgM9w=; b=JIa7B6AUI2Lb8a
-	hOgjR7wXR3Y48Rre0Cjw+dfG5i5XTPjRpEg+m3c0vu7C4HqfcqR1byHSEu3BWsBisObjad2qCVLmu
-	fjeID+uQEPFK12KXalsMG/fHG7CtG9ScM6/YI4GffD0wJhDnfrWNYOu0Y6SPboCGTSkGHwXk+p0zI
-	ZgI+b9dyXTc2yB1iP23YMkttOgG3Ff+QrYLinuzOn5gmxvcb6tUDhVm0QA/9ZJSBPFvxXXxRP/DFc
-	mNIRNoyNMnH/QeyabtXou3pKsZSl8Lk1w0rAFmnDdGMS9dDE1catC6a6c6I78f6QcDNdi7CarZlxC
-	7BGcLuXZbMBjK0ch6cbA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hyNsyI/TRuUGjuCZH5HigfnuXWP1efpzJyFERDk8sDA=; b=dFCzGHQ/TFl2YE
+	xnBp9Cp4e3l7QNIzcea+UqGL+r3zdpEEOtz5IGP2TuN/Rd7CuRHoYgxFpfErZB/AlX1mJ8oREWb2n
+	gRuwO6riQBxfgPrb71iY0ex8DTRGz4D3qbHF4uATpevhqMpfzNw0OXbFe5StzW9jKurStbw6zcOFy
+	sTqTgvZekWnnEINjGrWLNVHcn+eQLjBOZT/0K6KJFUR5eLho9BqtoCW9jUP51T8wJMlcP0faMbZzc
+	rYu8LQIRF85WR65Ud3vx/vXXXPdjojaNoS3J/0maCpnod+lYr6mPRJfboVa8/NwHlv9jh2cbnUhXR
+	STmjiGRfbvw/Fykb5jnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAu6Y-00000002eJL-2XJ2;
-	Fri, 02 May 2025 17:23:18 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1uAxS1-0000000312T-1zl2;
+	Fri, 02 May 2025 20:57:41 +0000
+Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAtg0-00000002aZs-1RfA
-	for linux-rockchip@lists.infradead.org;
-	Fri, 02 May 2025 16:55:53 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <mfe@pengutronix.de>)
-	id 1uAtfk-0006vQ-DD; Fri, 02 May 2025 18:55:36 +0200
-Received: from pty.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::c5])
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <mfe@pengutronix.de>)
-	id 1uAtfj-000mM7-2r;
-	Fri, 02 May 2025 18:55:35 +0200
-Received: from mfe by pty.whiteo.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <mfe@pengutronix.de>)
-	id 1uAtfj-00Gai4-2R;
-	Fri, 02 May 2025 18:55:35 +0200
-Date: Fri, 2 May 2025 18:55:35 +0200
-From: Marco Felsch <m.felsch@pengutronix.de>
-To: Adam Ford <aford173@gmail.com>
-Cc: nicolas.dufresne@collabora.com, benjamin.gaignard@collabora.com,
-	p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
-	Sascha Hauer <s.hauer@pengutronix.de>, kernel@pengutronix.de,
-	festevam@gmail.com, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, paulk@sys-base.io, hverkuil@xs4all.nl,
-	laurent.pinchart@ideasonboard.com, sebastian.fricke@collabora.com,
-	ming.qian@nxp.com, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: [RFC PATCH 07/11] arm64: dts: imx8mp: fix VPU_BUS clock setting
-Message-ID: <20250502165535.aeb2osq2vnxsudmq@pengutronix.de>
-References: <20250502150513.4169098-1-m.felsch@pengutronix.de>
- <20250502150513.4169098-8-m.felsch@pengutronix.de>
- <CAHCN7x+Lu9momgX3Vwp+Yu+Tet5Q=k2vCL83SMLuad24SDchEg@mail.gmail.com>
+	id 1uAxQ3-000000030Ze-2fYv;
+	Fri, 02 May 2025 20:55:40 +0000
+Received: by mail-qv1-xf32.google.com with SMTP id 6a1803df08f44-6e8f06e13a4so43884666d6.0;
+        Fri, 02 May 2025 13:55:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1746219338; x=1746824138; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=PR3SQ2n/Joo4f0tjdIatGVPhytTBC5rTKfPKzKHMJpM=;
+        b=QoDtbN/iR4o7zMBHhbVnQ3M5CeeX3WkazcCFzDqYW/5zCBaoQhH1FCLMuKOOtEhlLC
+         12dOtmH6dAcAkv/V6Ym7jKppLVtnq8PJyhYpP29UA2uRuVHYk0d77xKLz1uB3utdnv5F
+         koLvGZR+SD/ezz2+dGVOUps0UMpk/T/+om1iezJJatzEWr45ukMjbLV8atQrmmAT8+m5
+         Ev4aaV5TT59FeS1Ju/bAszQjGRUk7yoOUqey/7LoRcqclLyQSu8lRxY2fMGo2eq+TgBe
+         7whVhzIC1NUPAABzE30ZgQeAAB2hLEvKcjERZD3/CxaHfCRP/kMyAjpq2mqbMvS7ObWc
+         xXgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746219338; x=1746824138;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=PR3SQ2n/Joo4f0tjdIatGVPhytTBC5rTKfPKzKHMJpM=;
+        b=mW73tfmID4VGElaa9JiR6rj3PvVW3d1+8UN9pMuIQ32qtAWPS/1XSGEe+9rnjcaPRv
+         2GIXyjNlbIXo0b9cbPo95mxGE+CLh7obvPSWqfKlvh3xHycbU+z6UBybGnEUvGWubp0t
+         a2JG2kTfcua9YpYUIT5so9UR2UfLiPSwQMWkdz3QT9/sKjjzlPxWaXy1xk7O7oJLw/Cl
+         7LuadfSB//MKUddpdZ8d+2Bzb2c01gDvMl4wLc9pfM5DHNMwHQSauYg+rzdeH1FmwXTA
+         nqbL0VQH7KogyQ9dHBjAWI7fzV9nJEYsWuGrrz/Kk2Bn17vBji3gpwPyMSUIY1mzDWas
+         r3gQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUIeYpRMmOJVFLgZ0vrpNPDlxbcUbh5Nv+STDq6APLS9hNH5DwB8oX4is2GiAFCYYYfsyziazJqbzA5Ifo0RTRT@lists.infradead.org, AJvYcCXwWTGfyL0Atxjk1PnxLD6quKiacZW75JqUngRQRsAc2sgvlbTpwHrT20JA9B1fZsfr4gSsJtBY6wQr2KNbqTU=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzrzbjldbg6rRfj3o48XcbDr+HPiF9TofDHd4Ddvv01/MPllioz
+	D7a/G32O98lj2eUzLovS+nzKib6JC8FR8lBZ9ZiUt1VawzDprNAZ
+X-Gm-Gg: ASbGnctby6auMThab6GeLqvUCAQBragQlGeU52A0+iho2l46AKfbOfuoNgwHgIi7uuN
+	RHWFnabPshyj/Jq0U3B7TVYjfd33l+sYeZlRddw2lUCsM1Lwjf/N1P8S5Xt+1C2CWb/aNMe6i1C
+	nzhJcSgGQxaSsY0Gtm935FrKUzl5yxezT6gTiLx1WWG+ZFCUfmdcR3L5LwaW/dyd+a/I2ccmIIi
+	xz8i8slyAkQLGjsTeING2gHBATdXBy6cpODqc7ksyCgcxX8PlAgsRjQeA3J67cHxnftFQo9bcdV
+	uVfTKvwz+zQBjyj320ZXURAQDsZvbOnIuG9h5DWiSlb3usBi6K65
+X-Google-Smtp-Source: AGHT+IGhSrEvyii3iCaUEnI1ury80sSSWAUDqJmSFWGySZCyG+UuPVblXaYsIftJReV0Y5/BXthobg==
+X-Received: by 2002:a05:6214:20e6:b0:6f5:dad:5a60 with SMTP id 6a1803df08f44-6f515264f21mr72860706d6.3.1746219337829;
+        Fri, 02 May 2025 13:55:37 -0700 (PDT)
+Received: from localhost.localdomain ([216.237.233.165])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6f50f3d2844sm23129936d6.56.2025.05.02.13.55.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 02 May 2025 13:55:37 -0700 (PDT)
+From: John Clark <inindev@gmail.com>
+To: heiko@sntech.de
+Subject: [PATCH v1 0/3] Add Luckfox Omni3576 Carrier Board support for RK3576
+Date: Fri,  2 May 2025 16:55:30 -0400
+Message-Id: <20250502205533.51744-1-inindev@gmail.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAHCN7x+Lu9momgX3Vwp+Yu+Tet5Q=k2vCL83SMLuad24SDchEg@mail.gmail.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: mfe@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250502_095552_376401_96EC75EF 
-X-CRM114-Status: GOOD (  20.76  )
+X-CRM114-CacheID: sfid-20250502_135539_674533_A803D782 
+X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,45 +88,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: robh@kernel.org, conor+dt@kernel.org, John Clark <inindev@gmail.com>, detlev.casanova@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjUtMDUtMDIsIEFkYW0gRm9yZCB3cm90ZToKPiBPbiBGcmksIE1heSAyLCAyMDI1IGF0IDEw
-OjEw4oCvQU0gTWFyY28gRmVsc2NoIDxtLmZlbHNjaEBwZW5ndXRyb25peC5kZT4gd3JvdGU6Cj4g
-Pgo+ID4gVGhlIFZQVV9QTEwgY2xvY2sgbXVzdCBiZSBzZXQgYmVmb3JlIHRoZSBWUFVfQlVTIGNs
-b2NrIHdoaWNoIGlzIGRlcml2ZWQKPiA+IGZyb20gdGhlIFZQVV9QTEwgY2xvY2sgZWxzZSB0aGUg
-VlBVX0JVUyBjbG9jayBpcyAzMDBNSHogYW5kIG5vdCA2MDBNSHouCj4gPgo+ID4gU2lnbmVkLW9m
-Zi1ieTogTWFyY28gRmVsc2NoIDxtLmZlbHNjaEBwZW5ndXRyb25peC5kZT4KPiA+IC0tLQo+ID4g
-IGFyY2gvYXJtNjQvYm9vdC9kdHMvZnJlZXNjYWxlL2lteDhtcC5kdHNpIHwgNCArKy0tCj4gPiAg
-MSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiA+Cj4gPiBk
-aWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2NhbGUvaW14OG1wLmR0c2kgYi9h
-cmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXAuZHRzaQo+ID4gaW5kZXggOTdiMDli
-NjQ3ZWM3Li43ZjRiZGVmYjM0ODAgMTAwNjQ0Cj4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRz
-L2ZyZWVzY2FsZS9pbXg4bXAuZHRzaQo+ID4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9mcmVl
-c2NhbGUvaW14OG1wLmR0c2kKPiA+IEBAIC0yMjg5LDggKzIyODksOCBAQCB2cHVtaXhfYmxrX2N0
-cmw6IGJsay1jdHJsQDM4MzMwMDAwIHsKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIDwmY2xrIElNWDhNUF9DTEtfVlBVX0cyX1JPT1Q+LAo+ID4gICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgPCZjbGsgSU1YOE1QX0NMS19WUFVfVkM4S0VfUk9PVD47Cj4gPiAgICAg
-ICAgICAgICAgICAgICAgICAgICBjbG9jay1uYW1lcyA9ICJnMSIsICJnMiIsICJ2YzgwMDBlIjsK
-PiA+IC0gICAgICAgICAgICAgICAgICAgICAgIGFzc2lnbmVkLWNsb2NrcyA9IDwmY2xrIElNWDhN
-UF9DTEtfVlBVX0JVUz4sIDwmY2xrIElNWDhNUF9WUFVfUExMPjsKPiA+IC0gICAgICAgICAgICAg
-ICAgICAgICAgIGFzc2lnbmVkLWNsb2NrLXBhcmVudHMgPSA8JmNsayBJTVg4TVBfVlBVX1BMTF9P
-VVQ+Owo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgYXNzaWduZWQtY2xvY2tzID0gPCZjbGsg
-SU1YOE1QX1ZQVV9QTEw+LCA8JmNsayBJTVg4TVBfQ0xLX1ZQVV9CVVM+Owo+ID4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgYXNzaWduZWQtY2xvY2stcGFyZW50cyA9IDwwPiwgPCZjbGsgSU1YOE1Q
-X1ZQVV9QTExfT1VUPjsKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgIGFzc2lnbmVkLWNsb2Nr
-LXJhdGVzID0gPDYwMDAwMDAwMD4sIDw2MDAwMDAwMDA+Owo+IAo+IEkgdGhpbmsgdGhlcmUgd2Fz
-IGEgbW92ZSB0byBtYWtlIHRoZSBkZWZhdWx0IGJlIG92ZXJkcml2ZSBbMV0gIGFuZCBbMl0KPiBh
-bmQgdXNlIGEgJ25vbWluYWwnIGRldmljZSB0cmVlIGZvciB0aG9zZSB3aG8gYXJlIG5vdCBpbiBv
-dmVyZHJpdmUKPiBtb2RlLiAgQWNjb3JkaW5nIHRvIHRoZSBUUk0sIHRoZSBWUFVfQlVTX0NMS19S
-T09ULCB0aGUgbm9taW5hbCBpcwo+IDYwME1IeiBhbmQgdGhlIG92ZXJkcml2ZSBpcyA4MDBNSHou
-ICBCYXNlZCBvbiB0aGF0LCBJIHdvbmRlciBpZiB0aGUKPiB2YWx1ZXMgaGVyZSBzaG91bGQgYmUg
-ODAwTUh6IGFuZCBpZiB3ZSBzaG91bGQgYWRkIHRoZSBub21pbmFsIHZhbHVlcwo+IG9mIDYwME1I
-eiB0byB0aGUgaW14OG0tbm9taW5hbC5kdHNpIGZpbGUuCgpZb3UncmUgcmlnaHQsIEFoYW1kIGFu
-ZCBMdWNhcyBkaWQgY2hhbmdlIHRoaXMuIEkgd2lsbCBhZGFwdCBpdCBsYXRlciBvbi4KClJlZ2Fy
-ZHMsCiAgTWFyY28KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+This series adds device tree support for the Luckfox Omni3576 Carrier Board
+with Core3576 Module, developed by Shenzhen Luckfox Technology Co., Ltd., based
+on the Rockchip RK3576 SoC. The board supports various peripherals, with this
+initial implementation enabling essential functionality for booting Linux and
+basic connectivity.
+
+Supported and tested features (on Linux 6.15-rc4):
+- UART: Serial console operational.
+- SD card: Mounts and reads/writes successfully.
+- PCIe: NVMe SSD detected via lspci.
+- Ethernet 0: Functional with RGMII PHY.
+- USB: Host ports detect devices.
+- RTC: Timekeeping and wake-up tested.
+- LED: Heartbeat trigger works.
+
+Disabled features:
+- eMMC: Not populated on the tested board; believed to be functional but disabled.
+- HDMI: Disabled due to mainline driver maturity issues (basic 1080p output works; audio and 4K untested).
+- Ethernet 1: Disabled as it does not come up, possibly due to PHY configuration or driver issues.
+
+Patch 1: Add luckfox vendor prefix for Shenzhen Luckfox Technology Co., Ltd.
+Patch 2: Add luckfox,omni3576 binding to rockchip.yaml
+Patch 3: Add rk3576-luckfox-omni3576.dts and Makefile update
+
+The new DTS is covered by the existing ROCKCHIP ARCHITECTURE entry in MAINTAINERS.
+
+I am aware of ongoing RK3576 upstreaming efforts (e.g., by Collabora) and
+welcome feedback or collaboration to align with mainline driver development.
+
+Signed-off-by: John Clark <inindev@gmail.com>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
