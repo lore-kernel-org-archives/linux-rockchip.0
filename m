@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69B6BC3ABA3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 11:11:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18DB4C3ABAA
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 11:13:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1e3Byf5IB/XZeunYn8A84dIizUTnFP6lmfealudWtQM=; b=ZKhSWBX4zvaMpx
-	k0sajZ0wtI/ijuP0t19kdzhdVIQDdNFK4wZbpty5Co1hKCcNnJkI3WjpnyH9YT+9Lv3Se07mg5uZm
-	XttWAWJOwr4jPFKERZToknT2QTQr6ZX79WM8Wt6A3riyo7EUl7M8axLeYb/R6gABjTTDRREqmDPqW
-	O+WExtRzLD+jpznoEI9Xs06+eUSBnrTj45v7CL8R2iCXp3LJt3L8/x0pEcIB8HBaECU2LRMbEw682
-	Ngc0I0zXjBGPwKtOOSJKniCQNu1fuZN3o7+Y2lxBG4aHxGgn1RMXVJdSxoUyi+v+40J/P+FwwVLtO
-	RSbu6XfQYOCqQYDRDbmw==;
+	List-Owner; bh=I0flaJTR/noCgsTs+bheUo4LxtPBJ/DezBGXvEaHTA0=; b=mfI/jvqfBfIdXD
+	NRVybZpXAXEOAIHXvKFZIHZ4g6IkrffodHpy37PvVsPkf/S+47NR1wFf4X7diPJKIccnaklowrZYB
+	zSJkuQ4jLxN1vyJFHKukg/RFC9vWjuVWH02cmvtkXBp2a8wWvt0hnHC9BtcMip5vU2KFOytVgSTwF
+	8zDInRP3oLF+SjRrqRM1osBaHcRzBin9cOSyqKeoYXiiTemlCwMW3YNCs3YBiEJtEvWlqwSF0iwR0
+	GtDbBDsm4GFawKD5unjT4PkoH2j2wp1MJnoCd4FbU8NO/RUOYTlnUiudxV+qKC8/wI6tbzJ4+T+I7
+	sOgrsRuVaET8Tzh4cJbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAoJ5-00000001k8q-0i9j;
-	Fri, 02 May 2025 11:11:51 +0000
+	id 1uAoL1-00000001keg-27xe;
+	Fri, 02 May 2025 11:13:51 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAoBa-00000001ihR-0TYB;
-	Fri, 02 May 2025 11:04:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1746183833; cv=none; 
+	id 1uAoBd-00000001ihr-1UP9;
+	Fri, 02 May 2025 11:04:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1746183810; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=ZcFVGoEOKZ6opSPiRm58lBwy31HbQCD7AArR7Py7RK4KmyDZ81Eg5bQxKHai4PJoD9U2c2FTUgNQXapsi0Ymoqzo46WvxlAgISKboR5bxphl4dxbw20Ei0pgwX9ktK7AOFBPiYlmnBimEKyNBQSPGAdKQedkv1TnQ0K3ZotIF7w=
+	b=Wuk9VY6+HZcfXuRN67EKlUwM3sJq2okMWDRnwBuDoNSJM1hs4LWAjTwcfPjecsuZl0bNEVm9yvRkMLXdC0HRC6ASybcUQOLCaGIr0UZfzXdfvK3RJ/GZdq0eFlkwVqce8gKE75uDZT1HcgH8jFy/WN6x6/gK3nJhGuoggR7fy48=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1746183833; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=KsJ0uu0+k5q97j0fojNsiTYMw+kcsIPUow5pYeDRNeA=; 
-	b=kNDhVEp72aLlVqsrQvzKOBRWP7q4GpO0ue6cT8+kWl/FaCwIPDgTWfyrLqDFw7hhCHuYjYqNLOfsI38bq4lEXcUDdyZk8Fm7fAZHI4Pl/YzoZ1leQSk37G7qU5uEnQitsxuGJt5zhHYZWJeyrGWIUraOybfl7X8r37MyGgx2+K0=
+	t=1746183810; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=vLcyEazL4MwkJMa6AXHbeFliu5XVPS/TvBzOMo6zWY4=; 
+	b=Lqkqd2o80YHYSQv8kXOWLuPfX7fonkMpFKE4U+t4dhHen4jYbXLvh3isP7We+vG+qMK3fThd8j156Q521Y6TuiNHm8coJ2CQvfJifVZTIe/knWebZhRNtxhTUd8vImBnO2aHH3jrLL3z7Tk/u3nazV7XMsLgK9PS4dNtlQjGulk=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1746183833;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1746183810;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=KsJ0uu0+k5q97j0fojNsiTYMw+kcsIPUow5pYeDRNeA=;
-	b=E4Y2QTv1+WRePRFi8E1hKzIUehShpcAAhtEGPNPAm+Ja6v+brMxfgOBGuIT/kdaI
-	qD6vC11jwDIRgIuS9liO5AM7dqrMVRIbsuoPdPM6c30FP72K1+W3lKjpBqRyPdNpnZJ
-	HisSr4IT1/fc//dSqJRXxTMgP85SIDkyZnZg3E5E=
-Received: by mx.zohomail.com with SMTPS id 1746183831926614.9332549402269;
-	Fri, 2 May 2025 04:03:51 -0700 (PDT)
+	bh=vLcyEazL4MwkJMa6AXHbeFliu5XVPS/TvBzOMo6zWY4=;
+	b=b2Ijr5M8fYEB1+Ufw1d+lgXzLkzQFssdAb2gNvPiYyYw2mPV2gL5mL0GJS1XCBfk
+	4tYaniJSDIF0R4J1Kst3rnA7OwiPMDpwDc3fTo2FcTPeztLwDgFrFRlxY2W3dyxwwlN
+	RPZ45TOy1lK18uLonoRxMqc2QWvTzOTqUL+YC37A=
+Received: by mx.zohomail.com with SMTPS id 1746183809886671.6040478081637;
+	Fri, 2 May 2025 04:03:29 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Fri, 02 May 2025 13:03:11 +0200
-Subject: [PATCH v3 05/10] arm64: dts: rockchip: Add RK3576 SAI nodes
+Date: Fri, 02 May 2025 13:03:07 +0200
+Subject: [PATCH v3 01/10] dt-bindings: clock: rk3576: add IOC gated clocks
 MIME-Version: 1.0
-Message-Id: <20250502-rk3576-sai-v3-5-376cef19dd7c@collabora.com>
+Message-Id: <20250502-rk3576-sai-v3-1-376cef19dd7c@collabora.com>
 References: <20250502-rk3576-sai-v3-0-376cef19dd7c@collabora.com>
 In-Reply-To: <20250502-rk3576-sai-v3-0-376cef19dd7c@collabora.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -64,8 +64,8 @@ To: Michael Turquette <mturquette@baylibre.com>,
  Sugar Zhang <sugar.zhang@rock-chips.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250502_040406_219155_11C5F1CA 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20250502_040409_456528_38D3D9B3 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,250 +77,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, Luca Ceresoli <luca.ceresoli@bootlin.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, kernel@collabora.com, Luca Ceresoli <luca.ceresoli@bootlin.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3576 SoC has 10 SAI controllers in total. Five of them are in the
-video output power domains, and are used for digital audio output along
-with the video signal of those, e.g. HDMI audio.
+Certain clocks on the RK3576 are additionally essentially "gated" behind
+some bit toggles in the IOC GRF range. Downstream ungates these by
+adding a separate clock driver that maps over the GRF range and leaks
+their implementation of this into the DT.
 
-The other five, SAI0 through SAI4, are exposed externally. SAI0 and SAI1
-are capable of 8-channel audio, whereas SAI2, SAI3 and SAI4 are limited
-to two channels. These five are in the audio power domain.
+Instead, define some new clock IDs for these, so that consumers of these
+types of clocks can properly articulate which clock they're using, so
+that we can then add them to the clock driver for SoCs that need them.
 
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 200 +++++++++++++++++++++++++++++++
- 1 file changed, 200 insertions(+)
+ include/dt-bindings/clock/rockchip,rk3576-cru.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index ddc92ccc530d6757660971f0a609b5127784bb04..7bb906c3cb4e80691abf39d0e57888f79370bc75 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1010,6 +1010,41 @@ vop_mmu: iommu@27d07e00 {
- 			status = "disabled";
- 		};
+diff --git a/include/dt-bindings/clock/rockchip,rk3576-cru.h b/include/dt-bindings/clock/rockchip,rk3576-cru.h
+index f576e61bec7041455e10ac18c92f3b33ec0760e3..ded5ce42e62a7f4bc8058fd71b5e9e1d4580f49c 100644
+--- a/include/dt-bindings/clock/rockchip,rk3576-cru.h
++++ b/include/dt-bindings/clock/rockchip,rk3576-cru.h
+@@ -594,4 +594,14 @@
+ #define SCMI_ARMCLK_B			11
+ #define SCMI_CLK_GPU			456
  
-+		sai5: sai@27d40000 {
-+			compatible = "rockchip,rk3576-sai";
-+			reg = <0x0 0x27d40000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 192 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SAI5_8CH>, <&cru HCLK_SAI5_8CH>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac2 3>;
-+			dma-names = "rx";
-+			power-domains = <&power RK3576_PD_VO0>;
-+			resets = <&cru SRST_M_SAI5_8CH>, <&cru SRST_H_SAI5_8CH>;
-+			reset-names = "m", "h";
-+			rockchip,sai-rx-route = <0 1 2 3>;
-+			#sound-dai-cells = <0>;
-+			sound-name-prefix = "SAI5";
-+			status = "disabled";
-+		};
++/* IOC-controlled output clocks */
++#define CLK_SAI0_MCLKOUT_TO_IO		571
++#define CLK_SAI1_MCLKOUT_TO_IO		572
++#define CLK_SAI2_MCLKOUT_TO_IO		573
++#define CLK_SAI3_MCLKOUT_TO_IO		574
++#define CLK_SAI4_MCLKOUT_TO_IO		575
++#define CLK_SAI4_MCLKOUT_TO_IO		575
++#define CLK_FSPI0_TO_IO			576
++#define CLK_FSPI1_TO_IO			577
 +
-+		sai6: sai@27d50000 {
-+			compatible = "rockchip,rk3576-sai";
-+			reg = <0x0 0x27d50000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 193 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SAI6_8CH>, <&cru HCLK_SAI6_8CH>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac2 4>, <&dmac2 5>;
-+			dma-names = "tx", "rx";
-+			power-domains = <&power RK3576_PD_VO0>;
-+			resets = <&cru SRST_M_SAI6_8CH>, <&cru SRST_H_SAI6_8CH>;
-+			reset-names = "m", "h";
-+			rockchip,sai-rx-route = <0 1 2 3>;
-+			rockchip,sai-tx-route = <0 1 2 3>;
-+			#sound-dai-cells = <0>;
-+			sound-name-prefix = "SAI6";
-+			status = "disabled";
-+		};
-+
- 		hdmi: hdmi@27da0000 {
- 			compatible = "rockchip,rk3576-dw-hdmi-qp";
- 			reg = <0x0 0x27da0000 0x0 0x20000>;
-@@ -1050,6 +1085,57 @@ hdmi_out: port@1 {
- 			};
- 		};
- 
-+		sai7: sai@27ed0000 {
-+			compatible = "rockchip,rk3576-sai";
-+			reg = <0x0 0x27ed0000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SAI7_8CH>, <&cru HCLK_SAI7_8CH>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac2 19>;
-+			dma-names = "tx";
-+			power-domains = <&power RK3576_PD_VO1>;
-+			resets = <&cru SRST_M_SAI7_8CH>, <&cru SRST_H_SAI7_8CH>;
-+			reset-names = "m", "h";
-+			rockchip,sai-tx-route = <0 1 2 3>;
-+			#sound-dai-cells = <0>;
-+			sound-name-prefix = "SAI7";
-+			status = "disabled";
-+		};
-+
-+		sai8: sai@27ee0000 {
-+			compatible = "rockchip,rk3576-sai";
-+			reg = <0x0 0x27ee0000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 372 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SAI8_8CH>, <&cru HCLK_SAI8_8CH>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac1 7>;
-+			dma-names = "tx";
-+			power-domains = <&power RK3576_PD_VO1>;
-+			resets = <&cru SRST_M_SAI8_8CH>, <&cru SRST_H_SAI8_8CH>;
-+			reset-names = "m", "h";
-+			rockchip,sai-tx-route = <0 1 2 3>;
-+			#sound-dai-cells = <0>;
-+			sound-name-prefix = "SAI8";
-+			status = "disabled";
-+		};
-+
-+		sai9: sai@27ef0000 {
-+			compatible = "rockchip,rk3576-sai";
-+			reg = <0x0 0x27ef0000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 373 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SAI9_8CH>, <&cru HCLK_SAI9_8CH>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac0 26>;
-+			dma-names = "tx";
-+			power-domains = <&power RK3576_PD_VO1>;
-+			resets = <&cru SRST_M_SAI9_8CH>, <&cru SRST_H_SAI9_8CH>;
-+			reset-names = "m", "h";
-+			rockchip,sai-tx-route = <0 1 2 3>;
-+			#sound-dai-cells = <0>;
-+			sound-name-prefix = "SAI9";
-+			status = "disabled";
-+		};
-+
- 		qos_hdcp1: qos@27f02000 {
- 			compatible = "rockchip,rk3576-qos", "syscon";
- 			reg = <0x0 0x27f02000 0x0 0x20>;
-@@ -1596,6 +1682,120 @@ log_leakage: log-leakage@22 {
- 			};
- 		};
- 
-+		sai0: sai@2a600000 {
-+			compatible = "rockchip,rk3576-sai";
-+			reg = <0x0 0x2a600000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SAI0_8CH>, <&cru HCLK_SAI0_8CH>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac0 0>, <&dmac0 1>;
-+			dma-names = "tx", "rx";
-+			power-domains = <&power RK3576_PD_AUDIO>;
-+			resets = <&cru SRST_M_SAI0_8CH>, <&cru SRST_H_SAI0_8CH>;
-+			reset-names = "m", "h";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&sai0m0_lrck
-+				&sai0m0_sclk
-+				&sai0m0_sdi0
-+				&sai0m0_sdi1
-+				&sai0m0_sdi2
-+				&sai0m0_sdi3
-+				&sai0m0_sdo0
-+				&sai0m0_sdo1
-+				&sai0m0_sdo2
-+				&sai0m0_sdo3>;
-+			#sound-dai-cells = <0>;
-+			sound-name-prefix = "SAI0";
-+			status = "disabled";
-+		};
-+
-+		sai1: sai@2a610000 {
-+			compatible = "rockchip,rk3576-sai";
-+			reg = <0x0 0x2a610000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 188 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SAI1_8CH>, <&cru HCLK_SAI1_8CH>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac0 2>, <&dmac0 3>;
-+			dma-names = "tx", "rx";
-+			power-domains = <&power RK3576_PD_AUDIO>;
-+			resets = <&cru SRST_M_SAI1_8CH>, <&cru SRST_H_SAI1_8CH>;
-+			reset-names = "m", "h";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&sai1m0_lrck
-+				&sai1m0_sclk
-+				&sai1m0_sdi0
-+				&sai1m0_sdo0
-+				&sai1m0_sdo1
-+				&sai1m0_sdo2
-+				&sai1m0_sdo3>;
-+			#sound-dai-cells = <0>;
-+			sound-name-prefix = "SAI1";
-+			status = "disabled";
-+		};
-+
-+		sai2: sai@2a620000 {
-+			compatible = "rockchip,rk3576-sai";
-+			reg = <0x0 0x2a620000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SAI2_2CH>, <&cru HCLK_SAI2_2CH>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac1 0>, <&dmac1 1>;
-+			dma-names = "tx", "rx";
-+			power-domains = <&power RK3576_PD_AUDIO>;
-+			resets = <&cru SRST_M_SAI2_2CH>, <&cru SRST_H_SAI2_2CH>;
-+			reset-names = "m", "h";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&sai2m0_lrck
-+				&sai2m0_sclk
-+				&sai2m0_sdi
-+				&sai2m0_sdo>;
-+			#sound-dai-cells = <0>;
-+			sound-name-prefix = "SAI2";
-+			status = "disabled";
-+		};
-+
-+		sai3: sai@2a630000 {
-+			compatible = "rockchip,rk3576-sai";
-+			reg = <0x0 0x2a630000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 190 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SAI3_2CH>, <&cru HCLK_SAI3_2CH>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac1 2>, <&dmac1 3>;
-+			dma-names = "tx", "rx";
-+			power-domains = <&power RK3576_PD_AUDIO>;
-+			resets = <&cru SRST_M_SAI3_2CH>, <&cru SRST_H_SAI3_2CH>;
-+			reset-names = "m", "h";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&sai3m0_lrck
-+				&sai3m0_sclk
-+				&sai3m0_sdi
-+				&sai3m0_sdo>;
-+			#sound-dai-cells = <0>;
-+			sound-name-prefix = "SAI3";
-+			status = "disabled";
-+		};
-+
-+		sai4: sai@2a640000 {
-+			compatible = "rockchip,rk3576-sai";
-+			reg = <0x0 0x2a640000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 191 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SAI4_2CH>, <&cru HCLK_SAI4_2CH>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac2 0>, <&dmac2 1>;
-+			dma-names = "tx", "rx";
-+			power-domains = <&power RK3576_PD_AUDIO>;
-+			resets = <&cru SRST_M_SAI4_2CH>, <&cru SRST_H_SAI4_2CH>;
-+			reset-names = "m", "h";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&sai4m0_lrck
-+				&sai4m0_sclk
-+				&sai4m0_sdi
-+				&sai4m0_sdo>;
-+			#sound-dai-cells = <0>;
-+			sound-name-prefix = "SAI4";
-+			status = "disabled";
-+		};
-+
- 		gic: interrupt-controller@2a701000 {
- 			compatible = "arm,gic-400";
- 			reg = <0x0 0x2a701000 0 0x10000>,
+ #endif
 
 -- 
 2.49.0
