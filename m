@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B54C2C3ABAC
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 15:09:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F2A5C3ABAA
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 15:17:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f6mrsg6QX3Qdl0fm93lKdV3W+u/rEs2aaieaCgfqp+s=; b=x2KVmE8IXWaCXK
-	hUqRFvxOZJz/zE+FPzcX2OocWBEhv6BioDDDLHZpzJJnKYcPR1n5prhEwnu4L9spVBvNHlfZDQSIp
-	y0o63I8SHIyoAQlA5hGwbWdOvvM3ItFbKSG02IZZpfMjtLaifX7IXDsH+3JvqeoaQQb5EocfqDmz9
-	1KG8ey+G72lX8JabTaniGCizA6yj87lb+6xqo2ieBTOHPziuvTNEOfBi0J6FHdWuQ6YMBCCWD0iMt
-	ne5P6n0LksLoL892iiqwcfizhj3Y2R6KDRqdrr2mlN5KyxLSKKguF9CWjr+ZAtitcd0EejJuopUiZ
-	2GAqKYU0lnSTArJy5OPg==;
+	List-Owner; bh=Ywk/jAggGdRn5elLDOhiQcey3pIRKNiyW1YGdPsMePk=; b=PmYztCf0WQQzVh
+	s+TilMl2QvX5sZQfTchJOpG5RcDeCCvfhl8051B1PeEqjsIOwKHKYnSxj4dEAi+iXdyCML++TPZUy
+	a5fCE9Td4FJghDfZ8xcwhNImFwUpfwMLVoQy2tVsQsT5G2lPe8NTnrbwmNlhrNAcKJXP9JYEsFZCQ
+	88t0CGzMW+8AROUoC5TKqD55CDpiz6TNmpT2omVxFr4YZtWZB1qoQSOvvvhL86XGktxZASeOatZj3
+	Cfioh9c2xzV8HM8ggUK2nNSv9aVjhDPZu1QcPno93mMnD589rr68f8fBbgqp7M0T+Wn4yq/cAAGed
+	6MXT55QzgvuZnaZVptyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAs1P-00000002IOz-2Jjx;
-	Fri, 02 May 2025 15:09:51 +0000
+	id 1uAs96-00000002JIM-2GvG;
+	Fri, 02 May 2025 15:17:48 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAryF-00000002HfX-2yzF
+	id 1uAryh-00000002Hmn-283X
 	for linux-rockchip@lists.infradead.org;
-	Fri, 02 May 2025 15:06:37 +0000
+	Fri, 02 May 2025 15:07:05 +0000
 Received: from dude02.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::28])
 	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <m.felsch@pengutronix.de>)
-	id 1uAry0-0004HG-9b; Fri, 02 May 2025 17:06:20 +0200
+	id 1uAryS-0004HG-57; Fri, 02 May 2025 17:06:48 +0200
 From: Marco Felsch <m.felsch@pengutronix.de>
 To: nicolas.dufresne@collabora.com,
 	benjamin.gaignard@collabora.com,
@@ -55,9 +55,9 @@ Cc: linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Michael Tretter <m.tretter@pengutronix.de>
-Subject: [RFC PATCH 02/11] media: uapi: add documentation for the V4L2 H.264 stateless encoding API
-Date: Fri,  2 May 2025 17:05:05 +0200
-Message-Id: <20250502150513.4169098-3-m.felsch@pengutronix.de>
+Subject: [RFC PATCH 03/11] media: uapi: add nal unit header fields to encode_params
+Date: Fri,  2 May 2025 17:05:06 +0200
+Message-Id: <20250502150513.4169098-4-m.felsch@pengutronix.de>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250502150513.4169098-1-m.felsch@pengutronix.de>
 References: <20250502150513.4169098-1-m.felsch@pengutronix.de>
@@ -67,8 +67,8 @@ X-SA-Exim-Mail-From: m.felsch@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250502_080635_749537_246B8F3E 
-X-CRM114-Status: GOOD (  16.26  )
+X-CRM114-CacheID: sfid-20250502_080703_535688_2D11D8E5 
+X-CRM114-Status: GOOD (  12.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,86 +87,59 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Michael Tretter <m.tretter@pengutronix.de>
 
-Document the parameters that are passed to the stateless encoding API
-since they need to be filled by user space and knowing what the
-parameters do helps when filling it.
+The VEPU540 and VEPU580 may prepare the NAL unit headers in the coded
+params. These values have to be provided by user space and be written
+into the hardware registers.
+
+Furthermore, nal_ref_idc indicates if a picture will be used as
+reference and is a hint to the driver, if it needs to keep the
+reconstructed buffer or not.
 
 Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 ---
- include/uapi/linux/v4l2-controls.h | 46 ++++++++++++++++++++++++++++--
- 1 file changed, 44 insertions(+), 2 deletions(-)
+ include/uapi/linux/v4l2-controls.h | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-index 4f6b37513edc..670f822ee758 100644
+index 670f822ee758..a8df393c9ead 100644
 --- a/include/uapi/linux/v4l2-controls.h
 +++ b/include/uapi/linux/v4l2-controls.h
-@@ -1696,6 +1696,32 @@ struct v4l2_ctrl_h264_decode_params {
+@@ -1694,6 +1694,9 @@ struct v4l2_ctrl_h264_decode_params {
+ 	__u32 flags;
+ };
  
++#define V4L2_H264_NAL_CODED_SLICE_NON_IDR_PIC	1
++#define V4L2_H264_NAL_CODED_SLICE_IDR_PIC	5
++
  #define V4L2_CID_STATELESS_H264_ENCODE_PARAMS	(V4L2_CID_CODEC_STATELESS_BASE + 8)
  
-+/**
-+ * struct v4l2_ctrl_h264_encode_params - H264 encoding parameters
-+ *
-+ * @slice_type: selects slice type. Set to one of V4L2_H264_SLICE_TYPE_{}
-+ * @pic_parameter_set_id: identifies the picture parameter set that is referred to
-+ * in the slice header. The value shall be in the range of 0 to 255, inclusive.
-+ * @frame_num: an identifier for pictures.
-+ * @idr_pic_id: identifies an IDR picture.
-+ * @cabac_init_idc: index for determining the initialization table used in the
-+ * initialization process for context variables. The value of cabac_init_idc
-+ * shall be in the range of 0 to 2, inclusive.
-+ * @disable_deblocking_filter_idc: specifies whether the operation of the
-+ * deblocking filter shall be disabled across some block edges of the slice and
-+ * specifies for which edges the filtering is disabled.
-+ * @slice_alpha_c0_offset_div2: offset used in accessing the alpha and tC0
-+ * deblocking filter tables for filtering operations controlled by the macroblocks
-+ * within the slice.
-+ * @slice_beta_offset_div2: offset used in accessing the beta deblocking filter
-+ * table for filtering operations controlled by the macroblocks within the slice.
-+ * @slice_size_mb_rows: number of macroblock rows in a slice.
-+ * @pic_init_qp_minus26: initial value minus 26 of luma qp for each slice.
-+ * @chroma_qp_index_offset: offset that shall be added to qp luma for addressing the
-+ * table of qp chroma values for the Cb chroma component.
-+ * @flags: combination of V4L2_H264_ENCODE_FLAG_{} flags.
-+ * @reference_ts: timestamp of the V4L2 buffer to use as reference
-+ */
- struct v4l2_ctrl_h264_encode_params {
- 	/* Slice parameters */
+ /**
+@@ -1719,6 +1722,8 @@ struct v4l2_ctrl_h264_decode_params {
+  * @pic_init_qp_minus26: initial value minus 26 of luma qp for each slice.
+  * @chroma_qp_index_offset: offset that shall be added to qp luma for addressing the
+  * table of qp chroma values for the Cb chroma component.
++ * @nal_ref_idc: nal_ref_idc for the header of the generated NAL unit
++ * @nal_unit_type: one of the V4L2_H264_NAL_CODED_SLICE_{} values
+  * @flags: combination of V4L2_H264_ENCODE_FLAG_{} flags.
+  * @reference_ts: timestamp of the V4L2 buffer to use as reference
+  */
+@@ -1751,6 +1756,16 @@ struct v4l2_ctrl_h264_encode_params {
  
-@@ -1710,8 +1736,16 @@ struct v4l2_ctrl_h264_encode_params {
+ 	__u32 flags; /* V4L2_H264_ENCODE_FLAG_ */
  
- 	__s32 slice_size_mb_rows;
- 
--	/* PPS parameters */
--
 +	/*
-+	 * PPS parameters
-+	 *
-+	 * TODO Duplicating the PPS in the encode_params may not be necessary,
-+	 * if the PPS are set via separate control. Otherwise, it may be useful
-+	 * to just use struct v4l2_ctrl_h264_pps here.
-+	 *
-+	 * Needs to be consistent with the values set in the PPS referenced by
-+	 * pic_parameter_set_id.
++	 * If nal_ref_idc is 0, the NAL unit won't be used as reference by
++	 * later NAL units. Any other value indicates that the NAL unit may be
++	 * used as reference.
 +	 */
- 	__s8 pic_init_qp_minus26;
- 	__s8 chroma_qp_index_offset;
++	__u8 nal_ref_idc;
++
++	/* TODO Can we infer the nal_unit_type from the slice_type? */
++	__u8 nal_unit_type;
++
+ 	/* Reference */
  
-@@ -1728,6 +1762,14 @@ struct v4l2_ctrl_h264_encode_params {
- 
- #define V4L2_CID_STATELESS_H264_ENCODE_RC	(V4L2_CID_CODEC_STATELESS_BASE + 9)
- 
-+/**
-+ * struct v4l2_ctrl_h264_encode_rc
-+ *
-+ * @qp: quantization parameter for the currently encoded slice
-+ *
-+ * TODO Setting the QP is enough for implementing const QP, but probably the
-+ * entire rate control mechanism has to be reworked.
-+ */
- struct v4l2_ctrl_h264_encode_rc {
- 	__u32 qp;
- 	__u32 qp_min;
+ 	__u64 reference_ts;
 -- 
 2.39.5
 
