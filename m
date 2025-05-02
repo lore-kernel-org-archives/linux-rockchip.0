@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BDA3C3ABAA
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 14:25:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F706C3ABAA
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 14:25:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rb058freRv14x4Jp9bxVP0VFXYUs6MgYx7cXAdUkqXA=; b=CA//wAABYvxSfn
-	dN/MncJ4CuvDnRt/8wXNYYmOy7I4BpvjTR6qtoAEo/aY7icI3d6XUBNz84Z6jHyyoX4ggd5j6gV8v
-	/0issnCHxKolCk4hyGxxKPs8Hj6RCm/WVFDtSGvBCoTkw6w0IBdivP4QHDfb5A0DGGTM6GK5+BjVN
-	Bk9dvPDNgzh0zA4isQ/8rJZ+t3E2PMkcksMz3L5Q2OP4hhLpRF11/8k5VR4XiYv4hC2tLnuWd8/V1
-	zTo4pQHpUucXP6/mW1jida1hqqzHTUAh6Z3QSqnrbcrSo9KOnnDnRW+vSl4JqFLVl532rBk3VcbqY
-	MfppU2rp8EeBtgx3G1AQ==;
+	List-Owner; bh=YVRYWce8OsYEGxQEFPKBQUg4oxu09H1SyqxSD8BMnCI=; b=UgAQksroilP0Fy
+	HdilFnppyqYgMXlCRBk5g6a5xl9Ybrkomy92dqCeNk6zqdu+8aShzk1W99t7b6z+Snxeuoel9MHrM
+	0xwU61E48qyH/21LtbeO+RyQUok4ePim+Ws+5L2QRzRTNCrq9CsDr49WzRHwCOwZvwlw8Kej2Ror8
+	aZ9eUt18Nq2vKuZot4g2HsybVbSeUyisRg5sZj9TCWD6igg0Gea/Or+j3zND8UfB6GJoiXymFRRCO
+	UGYMbhKsKot3E7xutP5ICw0NEwo7/z1TZL/jfuIDxFshiARoq8Ou3DSVVITi7VvvEQRT6fassIhR3
+	DpgnBmGh8KKsoUKHaTKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uArKk-00000002BRu-2UnI;
+	id 1uArKk-00000002BRh-134c;
 	Fri, 02 May 2025 14:25:46 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAr9S-000000029jL-1aLc
+	id 1uAr9S-000000029jI-1aMD
 	for linux-rockchip@bombadil.infradead.org;
 	Fri, 02 May 2025 14:14:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=/CCmG1GxGMYjK1pBoA+K9OycS51+5qtS5xym4iB2BW4=; b=EQomSmkelBqm0ec+HCfawPDJKM
-	5AplLQXw+NuEhyt28VfIXH2yzkOT614+AOnZQofXOSSWpYqa7hACoz/1M7nBQQqPOCZpqkPMAAlLq
-	s7ZjML61huRq7zr+hCfIebRC+L2Llk99PmYcIFRbogIwTYYCfxP+XrmiLdu8cJVAUPyk7eOCOa9+s
-	Sr1TZPXvL6WDf29gzXXa/e52oEg1O2bg2okPcij+59fg0s2rrAnOEkceZ3zAd4tsOVr380lDKLG6T
-	/CHYPZfjFNs4LYZo8osPL3yc6NIHA81vKWFkSuS9qL9HII3zYnVdLkrISq9Z6DQERmYV6ZZuxt3+N
-	O99Kb8yQ==;
+	bh=sYrYrkNOortt4zG5RN2BZmwFtyXOovuTBoX7tmUX9BQ=; b=Rv9wPcAZM48DZJbnHmONT/6T4m
+	2OwMaVU6zCUqETWn4j/G1JTgyULScIfFS+tZ45uwz4niVa92AJvNcdpz/2pUjNHesENnOfkjRXWNk
+	OmnFBwjuBsQ0FUJfijeZu2rM2eIqRDJuWdPVQvQmh4E/2NurtRv1qODEZSXt1edEMEnX50fk6lRby
+	bAlKQe3Fnu87b0/rwLyA69aRffKl4QJcv4bJEXbLEN9hd5epdJNiTYKnxYLTdtp8McY78QV/CVELt
+	Bmk9ph0KZPoXUGdAtUdJmmLSuZxQkzq6r8GAEM8+G1fwxeYn3AQ5p9UIeVSTrYs01oC0t/XjKBhT8
+	pA0hY01Q==;
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1uAr9P-0000000EydC-0FLs
+	id 1uAr9P-0000000EydD-0Luk
 	for linux-rockchip@lists.infradead.org;
 	Fri, 02 May 2025 14:14:05 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1uAr9K-0000sy-FY
+	id 1uAr9K-0000sx-En
 	for linux-rockchip@lists.infradead.org; Fri, 02 May 2025 16:13:58 +0200
 Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1uAr9K-000lPK-0r
+	id 1uAr9K-000lPG-0n
 	for linux-rockchip@lists.infradead.org;
 	Fri, 02 May 2025 16:13:58 +0200
 Received: from dspam.blackshift.org (localhost [127.0.0.1])
-	by bjornoya.blackshift.org (Postfix) with SMTP id EEA054065B0
+	by bjornoya.blackshift.org (Postfix) with SMTP id DC7794065AF
 	for <linux-rockchip@lists.infradead.org>; Fri, 02 May 2025 14:13:57 +0000 (UTC)
 Received: from hardanger.blackshift.org (unknown [172.20.34.65])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(Client did not present a certificate)
-	by bjornoya.blackshift.org (Postfix) with ESMTPS id E74FA4065A0;
+	by bjornoya.blackshift.org (Postfix) with ESMTPS id C8D7840659F;
 	Fri, 02 May 2025 14:13:56 +0000 (UTC)
 Received: from hardanger.blackshift.org (localhost [::1])
-	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id de45ef16;
+	by hardanger.blackshift.org (OpenSMTPD) with ESMTP id 2f2dab4b;
 	Fri, 2 May 2025 14:13:56 +0000 (UTC)
 From: Marc Kleine-Budde <mkl@pengutronix.de>
-Date: Fri, 02 May 2025 16:13:46 +0200
-Subject: [PATCH 3/3] can: mcan: m_can_class_unregister: fix order of
- unregistration calls
+Date: Fri, 02 May 2025 16:13:45 +0200
+Subject: [PATCH 2/3] can: rockchip_canfd: m_can_class_unregister: fix order
+ of unregistration calls
 MIME-Version: 1.0
-Message-Id: <20250502-can-rx-offload-del-v1-3-59a9b131589d@pengutronix.de>
+Message-Id: <20250502-can-rx-offload-del-v1-2-59a9b131589d@pengutronix.de>
 References: <20250502-can-rx-offload-del-v1-0-59a9b131589d@pengutronix.de>
 In-Reply-To: <20250502-can-rx-offload-del-v1-0-59a9b131589d@pengutronix.de>
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
@@ -85,15 +85,15 @@ Cc: linux-can@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  Marc Kleine-Budde <mkl@pengutronix.de>, stable@vger.kernel.org
 X-Mailer: b4 0.15-dev-048ad
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1395; i=mkl@pengutronix.de;
- h=from:subject:message-id; bh=Q5aUEap/j8onzIWPM9KgOWl8xHnHPU8XimRr1awIUwI=;
- b=owEBbQGS/pANAwAKAQx0Zd/5kJGcAcsmYgBoFNMh3UbqdYlr7CYNpBI0bFUBQXmQiPOeOyZrU
- g8+euFtBeaJATMEAAEKAB0WIQSf+wzYr2eoX/wVbPMMdGXf+ZCRnAUCaBTTIQAKCRAMdGXf+ZCR
- nPHaB/97GcHyND3HHSgiFPYIWFmO62VdzZbPx/n1WNPQt1+uqtw6LMICf3+QNpl8SOJVJJFj2SV
- TRg60q5Yo8pEZWbfVp6/Buppex7/67VKXM7BBTd9Q2Htu6g0O8WNBLXU9yPeIn74/rju2WhuVvz
- jJXwsVpuSCH98sk2UdAZVlyamEy2Gn3nwAbWZSmk8ansBmAlO4YCnWIqzraIuB1ChMseY/LsNyl
- 6GauScLC3qQGpZV+OgcI11FsiBak3FQcC/2pjGqQLtWZ0gityXXQiOSbvJg40uCNnwN6N0kAnO7
- pk4Oo43gTPDZyYIDfIGtkX3asiE4A5y8xEQvHwsrEYwmJOBW
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1452; i=mkl@pengutronix.de;
+ h=from:subject:message-id; bh=5nFrpQd9CUa012/GckQTi/lhWF6yzNe/Y2s7EnVqJ/g=;
+ b=owEBbQGS/pANAwAKAQx0Zd/5kJGcAcsmYgBoFNMeP4LWFCBDYcQbczXAXiVIxU95CWbmX7+W/
+ wOU0gSWp1GJATMEAAEKAB0WIQSf+wzYr2eoX/wVbPMMdGXf+ZCRnAUCaBTTHgAKCRAMdGXf+ZCR
+ nCn0B/0UMKR2GTxZ/k7J5SU8yW/Bhib/H3TGkg7426M95DLuHIPgf8B6VWddUWQAikF6m/DfuvL
+ vLIy/2LqUeBT7O2b+aKjH7MOYKCGekmmtJLyJBIwNapj7kxahfmdkLIQlKjA5RR3WiHkW+as5+2
+ 5ASOR93haIYNulqKd2CmRh072BXfZOMe+37ykvupQ/IKQMEQz67Vbc931Ht2Fuml4oZnY73g2LO
+ WqAMfEpvrCeM1rLeWhCOS8O7hfLg2wAPsOl1MiukX8qwGyUyJWWiWmtSmy1dWfXqQ8pHT/wMlZr
+ /AxjoZCWiNoN2t2DQCJhPd3pN1etMVw7k/Kis3xHfXZnpa4+
 X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
  fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -101,8 +101,8 @@ X-SA-Exim-Mail-From: mkl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250502_151403_277247_195C1ED0 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20250502_151403_372438_E9F5BB39 
+X-CRM114-Status: GOOD (  15.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,27 +132,26 @@ To fix the warning, first unregister the network interface, which
 calls net_device_ops::ndo_stop, which disables the NAPI, and then call
 can_rx_offload_del().
 
-Fixes: 1be37d3b0414 ("can: m_can: fix periph RX path: use rx-offload to ensure skbs are sent from softirq context")
+Fixes: ff60bfbaf67f ("can: rockchip_canfd: add driver for Rockchip CAN-FD controller")
 Cc: stable@vger.kernel.org
 Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 ---
- drivers/net/can/m_can/m_can.c | 2 +-
+ drivers/net/can/rockchip/rockchip_canfd-core.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/can/m_can/m_can.c b/drivers/net/can/m_can/m_can.c
-index 884a6352c42b..7c430eaff5dd 100644
---- a/drivers/net/can/m_can/m_can.c
-+++ b/drivers/net/can/m_can/m_can.c
-@@ -2462,9 +2462,9 @@ EXPORT_SYMBOL_GPL(m_can_class_register);
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
+index 7107a37da36c..c3fb3176ce42 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-core.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
+@@ -937,8 +937,8 @@ static void rkcanfd_remove(struct platform_device *pdev)
+ 	struct rkcanfd_priv *priv = platform_get_drvdata(pdev);
+ 	struct net_device *ndev = priv->ndev;
  
- void m_can_class_unregister(struct m_can_classdev *cdev)
- {
-+	unregister_candev(cdev->net);
- 	if (cdev->is_peripheral)
- 		can_rx_offload_del(&cdev->offload);
--	unregister_candev(cdev->net);
+-	can_rx_offload_del(&priv->offload);
+ 	rkcanfd_unregister(priv);
++	can_rx_offload_del(&priv->offload);
+ 	free_candev(ndev);
  }
- EXPORT_SYMBOL_GPL(m_can_class_unregister);
  
 
 -- 
