@@ -4,59 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A8CEC369DC
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 01:32:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17C83C3ABA9
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 May 2025 07:01:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fQtchIPYchHiEJW/+prwLl/5j4hSfpA83sCGYZPwNjk=; b=LR2UipuPnAczoa
-	OP6G4d0Cvt9mlMZx7671WkoxRQ7e3FevBvGOHQMa94LyonktdP/BpOL36yeOdS6HaiCpEGLt3P89n
-	Zai08vrqMtq4RY8mvjm+aaYnvcy/wPHpZvnDRMh0O+K1kbrj0gvk+mxXruNQH6yiLqvdqRBu2wWBZ
-	X5G/kwxWtt0UECClbmXMfLKGhy93/NbB++IXlPK+h/kV5sKoFnbqDGT1KYcY/ij+4cagzlBeKJpLU
-	tCamZbILOxIBPAIyR0Cx+J2448n/lGMudKUe5ObgRnoYEpnC7MKeGdiwQrAxubf1qyOQtshQCiiKt
-	TjjDh6gJ24p4kL35TvNw==;
+	List-Owner; bh=PVfLdua99lYSGntC28/g5V0GDclw/MgV2SNMno+ghtw=; b=4tWeABDaxPWt9p
+	vo2mjHriYTw8i+GBeYgPBZUAve2UGjwuNxH+ATGlsnoEvhq8d6IIInd+jKGGSTjMlM0yWkwB2h/iC
+	8XOUVDMjLu334BC0sR8oAQ9tV8Pq0c476zEgwJrCBxTJU0RhXj1/5qOZCuQ70Tfsk9tyJl9WTfbSI
+	I7Tix5A0wwaeUdCYNnxVJfuQ/5g1GH5QlcAKQDc6bclJ9VLU9Vnb0Cvcoo0xm3xr2iGiVFU83vrue
+	GR1GMdzPZKcYQM7KpJxfpEyfyCvdG7Urm89HF2YGNBpvV3MGyqA38Ga5Kyw9ygzky0J9KyZZBXXD+
+	TgLFgp8hV8T8+UrUv4iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAfGA-00000000W2R-0Z3R;
-	Fri, 02 May 2025 01:32:14 +0000
+	id 1uAkOS-000000012q6-0Oec;
+	Fri, 02 May 2025 07:01:08 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAfED-00000000Vtd-1Eut;
-	Fri, 02 May 2025 01:30:14 +0000
+	id 1uAkMV-000000012XX-20Dd;
+	Fri, 02 May 2025 06:59:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C1105A4BE7E;
-	Fri,  2 May 2025 01:24:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12CF4C4CEE3;
-	Fri,  2 May 2025 01:30:11 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 82F09A4B4DC;
+	Fri,  2 May 2025 06:53:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E737C4CEE4;
+	Fri,  2 May 2025 06:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746149412;
-	bh=7yPiM/BTKprD4dt1k+8OG/eUHYXJCorznVvQ6X6X/Ns=;
+	s=k20201202; t=1746169146;
+	bh=6sClcWYGukBbkpULYb0l3opl4yAyv99xyShFUXuykaE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YYjHviPrXUxcfLLV6rgJajN7utTKn9Gt6bKvVT4rPDHzEFeRV4Zabxll1z5MPMmNq
-	 wFfAcZt4grrvoqSvzcHZGU4rPJGY8e5QA1awo/Fzopelk9bvu4/rUwKaA1ptjQrKqH
-	 mkM8d+aldzRzIhac950E6ITQG0OXA2Z8rsNH6AZlnO5LxvtXV4oy8lDwJVd5poQlgw
-	 USpMSEBhvs1f7zAU/YBQo2pZ8+MlKJUiEIYmXhc5Exd+ujSYSQcpH1jpTq6V+kHb29
-	 iySZwI6udC+ygJ4CFxig9QneVM7rE1/bSXJsAcrh9EnX/B8QdSChNW9i5BWYis6j9M
-	 5lIHItPsE7smA==
-Date: Thu, 1 May 2025 20:30:10 -0500
-From: Rob Herring <robh@kernel.org>
-To: Quentin Schulz <quentin.schulz@cherry.de>
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add rk3399 industry
- evaluation board
-Message-ID: <20250502013010.GA3405545-robh@kernel.org>
-References: <20250430074848.539-1-kernel@airkyi.com>
- <20250430074848.539-2-kernel@airkyi.com>
- <174602375195.3396795.11425847299435773154.robh@kernel.org>
- <9c51863c-95a6-4c40-9268-0b2be9b8835b@cherry.de>
+	b=YZ+518aayrvUeQVuipI53moncuZzz4Ed/Dxji11skD7ZoU/b8gOmjfcFisHFnOejD
+	 2H5xYuuxFMt83VfJdsM7XgiERYCLpi+Vp7GPfHA9/+FVKOMljmLiY8ZpT6e/iKg7wJ
+	 nizYqciu1F9qXd4WqTODYU2hO5nO8p7Tr2SM3InYqL1ZXhj48gc2MHuwECjTbfWsSE
+	 nxl0K8UkWJ+BABy1L3v4uOSlh1iyZZ7HEgsGwd+N3IkkBZvgbSi8bl0oBeX9CNQqF/
+	 vE/ksOsT8chgpOzjxV3Qp8JItztaXuCleeQfhQHliip5rBU/ZMNjodJXuwNkE5CpKp
+	 dWtzAxdeOe4nw==
+Date: Fri, 2 May 2025 08:59:00 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Wilfred Mallawa <wilfred.opensource@gmail.com>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>
+Subject: Re: [PATCH v2] PCI: dwc: Add support for slot reset on link down
+ event
+Message-ID: <aBRtNOLQ6R-5iOB4@ryzen>
+References: <20250501-b4-pci_dwc_reset_support-v2-1-d6912ab174c4@wdc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <9c51863c-95a6-4c40-9268-0b2be9b8835b@cherry.de>
+In-Reply-To: <20250501-b4-pci_dwc_reset_support-v2-1-d6912ab174c4@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250501_183013_401369_4455DC25 
-X-CRM114-Status: GOOD (  19.17  )
+X-CRM114-CacheID: sfid-20250501_235907_576708_F818F8F3 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,52 +77,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Chaoyi Chen <kernel@airkyi.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Jonas Karlman <jonas@kwiboo.se>, Jimmy Hon <honyuenkwun@gmail.com>, Jianfeng Liu <liujianfeng1994@gmail.com>, linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>, Andrew Lunn <andrew@lunn.ch>, linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>, Alexey Charkov <alchark@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>, linux-arm-kernel@lists.infradead.org, Sebastian Reichel <sebastian.reichel@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 30, 2025 at 04:48:35PM +0200, Quentin Schulz wrote:
-> Hi Rob,
-> 
-> On 4/30/25 4:36 PM, Rob Herring (Arm) wrote:
-> > 
-> > On Wed, 30 Apr 2025 15:48:47 +0800, Chaoyi Chen wrote:
-> > > From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> > > 
-> > > Add devicetree binding for the rk3399 industry evaluation board.
-> > > 
-> > > Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> > > ---
-> > > 
-> > > (no changes since v1)
-> > > 
-> > >   Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
-> > >   1 file changed, 5 insertions(+)
-> > > 
-> > 
-> > 
-> > Please add Acked-by/Reviewed-by tags when posting new versions. However,
-> > there's no need to repost patches *only* to add the tags. The upstream
-> > maintainer will do that for acks received on the version they apply.
-> > 
-> > If a tag was not added on purpose, please state why and what changed.
-> > 
-> > Missing tags:
-> > 
-> > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> > 
-> 
-> To be fair, the Acked-by was given on the v1[1] after the v2[2] was sent, we
-> cannot expect Chaoyi Chen to travel back in time :)
+Hello Wilfred,
 
-Usually a sign of sending new versions too quickly...
+On Thu, May 01, 2025 at 11:57:39AM +1000, Wilfred Mallawa wrote:
+> @@ -688,6 +699,79 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  	return ret;
+>  }
+>  
+> +static int rockchip_pcie_rc_reset_slot(struct pci_host_bridge *bridge,
+> +				       struct pci_dev *pdev)
+> +{
+> +	struct pci_bus *bus = bridge->bus;
+> +	struct dw_pcie_rp *pp = bus->sysdata;
+> +	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+> +	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+> +	struct device *dev = rockchip->pci.dev;
+> +	u32 val;
+> +	int ret;
+> +
+> +	dw_pcie_stop_link(pci);
+> +	rockchip_pcie_phy_deinit(rockchip);
+> +	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
 
-But I just send this semi-automated email so we capture the ack and I 
-can clear it out of my inbox.
+Sorry that I didn't see/mention this earlier, but the order which we deinit
+things should be the reversed order of how we initialized things.
 
-Rob
+(i.e. it should match the ordering of the error path.)
+
+In both the error path of this function, and the error path of
+rockchip_pcie_probe(), we do deinit_clk before deinit_phy, so I suggest we
+do the same here.
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
