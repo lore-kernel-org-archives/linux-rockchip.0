@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CEB1C369C2
-	for <linux-rockchip@archiver.kernel.org>; Sat,  3 May 2025 15:32:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C057C369C2
+	for <linux-rockchip@archiver.kernel.org>; Sat,  3 May 2025 15:36:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RLdgul1ynU2oR6ZTYFn69/+tj1QHbZDxKtZ4rfHMJnw=; b=BiFj8YDDL8PetL
-	k3N62vHENnKVnso6SImRTxP5RV+EZEJNNIXQjViJYaPq4cmONE4R9HS8a5oQmidWCb8Pj29Rq599t
-	VVpr+xRx9/k7sCg9Y7nR/vVOwU6BGy8+7h3ZjZMWHI7wqkkAdxXndTL+fKjkaUanc7RZ5PZGEXlZ6
-	6w5/X1td73kjTlTVZ/eho7XyqbUgTzevWczC8clhMVgNT44yaUwtQsXINUBLqylLMhsNlW7cJ6W+p
-	XqAfZlCwpVpdfM8Qy5BMjt9KufcaeqM04EAhUNzQup2UsbxnTw2vEMjK4W2zZSk5Qgt+Y2UbxI0d2
-	QtPILARhcCqlGNlddPXQ==;
+	List-Owner; bh=hbZfXAJSt3SsHrD4B5V3x3/N6WYGIkrKeSxFTgJRuJA=; b=dImiK397G8d9P9
+	ocWhYaLC4M+sSE+TD+QsbDEbwb/GzOgMIZ6iaZpaAAG/nwluieVDoeeijXSq6jh1vz56utxAU49eg
+	dxaXtAB5g0GwMK3hGU1uwVZCIFTDfag1DW/7HSiVDuM1DEkcE2CrIPUD0hBqgkq+GZcG8iZu/uaLl
+	Oag6lMQgHebb6xWP/hPDAGsdK8WFoIk4Tq2rJBtfBmNR/9vtHjVdjTh0YY0jCsnNhC6nXo6o1rAp8
+	ROF9W8bnzf4OiatnnTZ9kTeVxS0AxzyxE4wtVZeOctc3jsbh8oBYGdb5WSnOEtIM/V7QibIeFDpfy
+	qJ6zPDxp2YDvkRU1Iusw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBEqn-000000042h1-1Oeo;
-	Sat, 03 May 2025 15:32:25 +0000
-Received: from out-183.mta0.migadu.com ([91.218.175.183])
+	id 1uBEub-000000042sg-2N4j;
+	Sat, 03 May 2025 15:36:21 +0000
+Received: from out-185.mta0.migadu.com ([2001:41d0:1004:224b::b9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBEoI-000000042Q5-42YD
+	id 1uBEoR-000000042SI-3jQX
 	for linux-rockchip@lists.infradead.org;
-	Sat, 03 May 2025 15:29:52 +0000
+	Sat, 03 May 2025 15:30:01 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1746286188;
+	t=1746286197;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Mhu99ySLYaiKPPq+v39y472i2/ykn+7Aa2t0YVWjSFU=;
-	b=ExritJkc/ZH/pgOIYSIXHlXiTjfAwntkACKCM23oZb8qrIVmoMuLu56qHDAycV4MfE//Uk
-	N5Qk+hcK3ED9GfwZlqKuUHmIpOx5IyoQreumdTYO3ecJuPL7FTGzAFCLvX1HDwawUH/8G5
-	+QWTo2NxN/fd9CEhq08FYKZ19oI5G1sB0VZ8cuGf6GhKhsTTV1dPqQ+XlwTMH/oc5KozKs
-	NXrSdvwfjUILGruRYDzZYZN4+EpiOCtIxP8t30Y0Ps2n6kXONWJ5Tog0TEDR/HGnHLE2Wf
-	Q7agf8WIjKfG5UeBIhZJLEqExD9AzyOpqy7PelziQRTLl0whjjMsaHLkxEeiFQ==
+	bh=eeQFPClstvwoZtBpTw1enwh36lgdeWvNmapxU6wc1lw=;
+	b=YMBUxxQ95w+z72G58zuI1TiGCa9i+RhhlCB2BXyk36bSKa8KTeTajosafbGi9LUkIT5oRN
+	e0+M0sSsznrIemJAje6+9L9tW70L8ByuNmv7hdSp2Jt48RofuhM+CSv83AyIw0jnUfBEOP
+	pXO4/34WbdOePbpAQpzWIyWKeo6cCoBiIBh/fgYGNbCjQti73Xiy8Qi4LeJ8D5DvSf+mpO
+	Zk7O5wuf+xVJHZkDscGRZsW/P6f5CGaxzlKvtN2Xrs1YW+zNtikKT4Y9qkwY06oO6iIieK
+	pY05Y9TXWIb3TB32Cgrc6auw9JpcdCxNoPlBqp+p5IA8+26vdyrq2mUuhkBidw==
 From: Diederik de Haas <didi.debian@cknow.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -53,16 +53,16 @@ Cc: devicetree@vger.kernel.org,
 	Vasily Khoruzhick <anarsoul@gmail.com>,
 	Tianling Shen <cnsztl@gmail.com>,
 	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH 1/2] arm64: dts: rockchip: Add phy-supply to gmac0 on NanoPi R5S
-Date: Sat,  3 May 2025 17:22:18 +0200
-Message-ID: <20250503152917.138648-2-didi.debian@cknow.org>
+Subject: [PATCH 2/2] arm64: dts: rockchip: Add vcc-supply to SPI flash on rk3566-quartz64-b
+Date: Sat,  3 May 2025 17:22:19 +0200
+Message-ID: <20250503152917.138648-3-didi.debian@cknow.org>
 In-Reply-To: <20250503152917.138648-1-didi.debian@cknow.org>
 References: <20250503152917.138648-1-didi.debian@cknow.org>
 MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250503_082951_138749_D589F8D5 
-X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-CacheID: sfid-20250503_083000_065225_E97A2562 
+X-CRM114-Status: UNSURE (   9.24  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,32 +80,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to paragraph "7.16. Power" of the RTL8211F-CG datasheet, gmac0
-needs to have a 3.3V power supply.
-On page 22 of the NanoPi R5S version 2204, that is identified as
-VCC_GEPHY_3V3 which is connected to the VCC_3V3 power source.
+The Quartz64 Model B has a Winbound 25Q64DWZPIG SPI flash chip,
+identified as 'U13' on the component placement schematic.
+In the Quartz 64 Model-B Schematic from 20220124 on page 17, we can see
+that the VCC connector is connected to VCCIO_FLASH and page 4 shows that
+that in turn is connected to the VCCIO2 domain.
+That domain uses vcc_1v8 as its power source.
 
 This fixes the following warning:
 
-  rk_gmac-dwmac fe2a0000.ethernet: supply phy not found, using dummy regulator
+  spi-nor spi4.0: supply vcc not found, using dummy regulator
 
 Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts | 1 +
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
-index e50f1585244a..805cb23493e8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
-@@ -61,6 +61,7 @@ &gmac0 {
- 	clock_in_out = "output";
- 	phy-handle = <&rgmii_phy0>;
- 	phy-mode = "rgmii";
-+	phy-supply = <&vcc_3v3>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&gmac0_miim
- 		     &gmac0_tx_bus2
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+index 5707321a1144..f8cf03380636 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+@@ -648,6 +648,7 @@ flash@0 {
+ 		spi-max-frequency = <24000000>;
+ 		spi-rx-bus-width = <4>;
+ 		spi-tx-bus-width = <1>;
++		vcc-supply = <&vcc_1v8>;
+ 	};
+ };
+ 
 -- 
 2.49.0
 
