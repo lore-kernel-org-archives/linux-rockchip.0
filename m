@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74E4BC369C2
-	for <linux-rockchip@archiver.kernel.org>; Sat,  3 May 2025 20:24:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27C60C369C2
+	for <linux-rockchip@archiver.kernel.org>; Sat,  3 May 2025 20:28:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xDRAFEwxySoNCAg/Gk7dL5FSscIAXjkXr3wgyYKqZ1k=; b=J/MlhA42lJBKTo
-	ai0IcZS4FZX/UAvOih1vgslKGcg5aEz45tTvtGO8Z+A7EFRDq4qNcntXiceZtkEzWVu6Ag85a5bPP
-	DPCphxBSZDzqGTFnYVfaod47HJkiO5zjmM2ke0qBKWLXE0LzwDnZTrWE8TCYM3caiDr+PJBYs82ht
-	K4azDDoKJ/sh2yMhLsTykxGnzAlVcD2hUuzwN+CcNx2CNraRudYS/KBLx6WY982Z36dkt0zkg1JjA
-	lJw9e1IHpVlfbeW4IpzW3uf1vkpVr0zIXfOjuAN/8os53WrRPchY5dyj89gsIjNHzlimlPNYChi+j
-	5FCfyFGJ5pfQ2b925Iww==;
+	List-Owner; bh=dpYtjWXFfmorrLL0+ajIcw1KMoiBtYWs5ONpoHWHDbQ=; b=ajLWdWuAXyTxry
+	ET/AXQx7eyKiqh0g0sqs0BjtAumM9upb8zsgHjAPDeGavWYKTbYGvy7uosPvZZUX87C3U6hbAXbOK
+	OAem9v+MTFCXt0jJRFEPx1PoLIHen9KcePdDFkWZyB4KGVg6wI8sS13RPNHl2MLAGXnGLAsptUtwG
+	nBpM6Xin3goBWzhxN9xByE/y8Sq0f6AC7F0j85GnIyQDqVvmG5dmWMwDlgdlXgDVf+OvxA9SnGltz
+	sEUglNrEZFQzz2hP5NmBy+cxSDDbtV+fZ76P0VGoXC8QUWwUOmHMjKj4U83vDvrZ2n/HPkP8V7trd
+	kWReFjGZZXpn4CejRSqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBJPe-00000004T07-1MoB;
-	Sat, 03 May 2025 20:24:42 +0000
+	id 1uBJTS-00000004TTm-3Jlq;
+	Sat, 03 May 2025 20:28:38 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBJGj-00000004SAr-2ueT;
-	Sat, 03 May 2025 20:15:30 +0000
+	id 1uBJQq-00000004T9p-15BG;
+	Sat, 03 May 2025 20:25:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=dRXQYLMOtnePQ7YbWkM8o16EQIb+GohHo7W9tpPQOkw=; b=PGqNdqZk+Q47r5f2uiWdNxBu3Y
-	8mX1lBVhj+rLAD4Qx+tZjVikQgZ3JAUcL7Mf507LvCNeb76bitz5cZSmsUZfCaQWLMwwR/ei3XWsT
-	TgDMLmnjYCwAZLSGIQvFMsHfJHFxpPbFz4CZWwX1J0R5b4kOCW0AuwIBizoJk5+GoEST0l1KdS87L
-	nLpaluc3csD0QCjNkmbelA0+2Y4wwfFQX6NVq2bcyhv6M2S3+2YN9NwkTaPCeW6W23z84iZ+I0/0c
-	DX15PRsYQalgHgGGGsXqG/ehJLYSXccQ8lgLBFiI66ErjL77g9vPMyQte5s0HqaeUkl4B7D78emYf
-	D3nhoWXg==;
+	bh=55rdvZGXpLc0PvWcYDr6+AWR3J6006+iF/1mc6xK2sA=; b=Okhsv0Pq+pX/ySFZzbgwx0eVIc
+	iPU3DvZWWj3chx7l+QqrUc8+CbNwKj71pkKxZp6eyNEZ/eCkUKNP9tgtUZT+CkMZ87MJZonP60+/a
+	XIwhzsxIoqSeSDgZWqvgi+Z9SblkXlcjYvBYuNk474xs+4Jkd7ImyTxD1LBn9/hdBAHTWU9ddC39m
+	enRqOjZjP862g3Lx+f6BcKAV4EVrmzIAD4AeazVDVfLVyjD9FxGn4HeCrUn5cROyFH75Hg+w1G69L
+	jfnvbYNexpZTwO5OQPIV7WJZ/EMmfLonVsD0XTlBfFJf1K1BorJSnkZ4IHRLwfWawYN95NbuN6hBe
+	AiwTmKaQ==;
 Received: from i53875bbc.versanet.de ([83.135.91.188] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uBJGi-0001hY-EI; Sat, 03 May 2025 22:15:28 +0200
+	id 1uBJQo-0001s2-EX; Sat, 03 May 2025 22:25:54 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: vkoul@kernel.org,
-	kishon@kernel.org
-Cc: robh@kernel.org,
+To: heiko@sntech.de
+Cc: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
-	heiko@sntech.de,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
+	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 3/3] ARM: dts: rockchip: add rk3036 usb2phy nodes and enable them on kylin
-Date: Sat,  3 May 2025 22:15:12 +0200
-Message-ID: <20250503201512.991277-4-heiko@sntech.de>
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH 1/3] dt-bindings: clock: rk3036: add SCLK_USB480M clock-id
+Date: Sat,  3 May 2025 22:25:29 +0200
+Message-ID: <20250503202532.992033-2-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250503201512.991277-1-heiko@sntech.de>
-References: <20250503201512.991277-1-heiko@sntech.de>
+In-Reply-To: <20250503202532.992033-1-heiko@sntech.de>
+References: <20250503202532.992033-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250503_131529_735676_AEB158B9 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20250503_132556_294986_395B2436 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,108 +80,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rk3036 does contain a usb2phy, just until now it was just used
-implicitly without additional configuration. As we now have the bits
-in place for it getting actually controlled, add the necessary phy-node
-to the GRF simple-mfd.
+Contrary to how it is implemented right now, the usb480m clock is a
+controllable mux that can switch between the 24MHz oscillator and the
+clock output of the usb2phy.
 
-Enable the phy-ports in the same patch to not create bisectability
-issues, as hooking up the phys to the usb controllers would create
-probe deferrals until a board enables them. Doing everything in one
-patch, solves that issue.
-
-Only rk3036-kylin actually enabled the usb controllers, so is the only
-board affected.
+Add the needed clock-id to allow setting this mux from DT.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- arch/arm/boot/dts/rockchip/rk3036-kylin.dts | 12 +++++++
- arch/arm/boot/dts/rockchip/rk3036.dtsi      | 35 +++++++++++++++++++++
- 2 files changed, 47 insertions(+)
+ include/dt-bindings/clock/rk3036-cru.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3036-kylin.dts b/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
-index 4f928c7898e9..51a74f79c935 100644
---- a/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
-+++ b/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
-@@ -382,6 +382,18 @@ &usb_otg {
- 	status = "okay";
- };
+diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
+index 99cc617e1e54..5cbc0e2b08ff 100644
+--- a/include/dt-bindings/clock/rk3036-cru.h
++++ b/include/dt-bindings/clock/rk3036-cru.h
+@@ -47,6 +47,7 @@
+ #define SCLK_MACREF		152
+ #define SCLK_MACPLL		153
+ #define SCLK_SFC		160
++#define SCLK_USB480M		161
  
-+&usb2phy {
-+	status = "okay";
-+};
-+
-+&usb2phy_host {
-+	status = "okay";
-+};
-+
-+&usb2phy_otg {
-+	status = "okay";
-+};
-+
- &vop {
- 	status = "okay";
- };
-diff --git a/arch/arm/boot/dts/rockchip/rk3036.dtsi b/arch/arm/boot/dts/rockchip/rk3036.dtsi
-index f4292b586bc2..fca21ebb224b 100644
---- a/arch/arm/boot/dts/rockchip/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3036.dtsi
-@@ -213,6 +213,8 @@ usb_otg: usb@10180000 {
- 		g-np-tx-fifo-size = <16>;
- 		g-rx-fifo-size = <275>;
- 		g-tx-fifo-size = <256 128 128 64 64 32>;
-+		phys = <&usb2phy_otg>;
-+		phy-names = "usb2-phy";
- 		status = "disabled";
- 	};
- 
-@@ -224,6 +226,8 @@ usb_host: usb@101c0000 {
- 		clocks = <&cru HCLK_OTG1>;
- 		clock-names = "otg";
- 		dr_mode = "host";
-+		phys = <&usb2phy_host>;
-+		phy-names = "usb2-phy";
- 		status = "disabled";
- 	};
- 
-@@ -342,6 +346,37 @@ cru: clock-controller@20000000 {
- 	grf: syscon@20008000 {
- 		compatible = "rockchip,rk3036-grf", "syscon", "simple-mfd";
- 		reg = <0x20008000 0x1000>;
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+
-+		usb2phy: usb2phy@17c {
-+			compatible = "rockchip,rk3036-usb2phy";
-+			reg = <0x017c 0x20>;
-+			clocks = <&cru SCLK_OTGPHY0>;
-+			clock-names = "phyclk";
-+			clock-output-names = "usb480m_phy";
-+			assigned-clocks = <&cru SCLK_USB480M>;
-+			assigned-clock-parents = <&usb2phy>;
-+			#clock-cells = <0>;
-+			status = "disabled";
-+
-+			usb2phy_host: host-port {
-+				interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
-+				interrupt-names = "linestate";
-+				#phy-cells = <0>;
-+				status = "disabled";
-+			};
-+
-+			usb2phy_otg: otg-port {
-+				interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>,
-+					     <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>,
-+					     <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH>;
-+				interrupt-names = "otg-bvalid", "otg-id",
-+						  "linestate";
-+				#phy-cells = <0>;
-+				status = "disabled";
-+			};
-+		};
- 
- 		power: power-controller {
- 			compatible = "rockchip,rk3036-power-controller";
+ /* aclk gates */
+ #define ACLK_DMAC2		194
 -- 
 2.47.2
 
