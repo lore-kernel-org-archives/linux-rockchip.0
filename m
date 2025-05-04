@@ -4,91 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3B84C3ABB0
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 May 2025 21:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10E69C369DC
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 May 2025 22:09:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ot3So54dw7IpXdssTCsqF+boqOuV/JqZqHjBiQmWo6c=; b=Su/iQWfjr9IiPg
-	dFfFCDTrqCiqB/MhC84HYEgGQFVkmAgrp82nTM9/ip9+CqgGgXhDqdYnaPU5j6sO1mXTh7G/oiSRP
-	8gKsDyDdVEbWgolFZY8cJpv74OXpWLmBS1BicUND+LhG2UZ4/WiqEKDwT5xqmljHa5YANXAIgOFwu
-	JWSMmq8cjspfIiqLDTcIN5AIqHfDMWouaIGuwfD/SMKrqAaiRAEexcWW1Hv2Dj9fuFjRS8/EkZXRC
-	D8qMayJzPpkX7Fuwyvvw2Skr1ilWSwB4beVx/TLS6WDr1pSQJ5ybXEKs2hdkiTXBdRRTZbUif7D9d
-	vXaGnvkOlNc3+QxrbErw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2yL/TpETQ7UhvGCaWkWvm4V/zF6RnLvZgoaOJDz6Slg=; b=aViFyvKH2PdELh
+	T6Y7OKvii1ESLDLZmjQnmIS1YkAPxOYdWaR8aHeFICy/NTjWahQ1DFu0efUExwPkyeEksZZWaXBq/
+	yaPDlsqE9p+U18itEwsFHVSMUB5I45zBHu9crRQ3xLKeIy7Aj9gmmjVrp2AzEgfOyw0yO3j0CsHw3
+	hbuU02xErAznNezaK4uylKA3jkCLRnK9iMfdzh1xNWwEtrEH/VGVqq3Jcmw0w/C2tnkiFzZMsXyNS
+	xXKbGjwzWLdkp0mLmSU0ZTQqQqy3s6JFwZVyS6DxzqmAT7DGYwOhAnlYJTsSlSeL/p5fclqbfLSPV
+	it0uv5qgZ72Dqv7YSxEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBgTw-00000005wz0-1mTz;
-	Sun, 04 May 2025 21:02:40 +0000
-Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
+	id 1uBhWL-000000062GE-1jFO;
+	Sun, 04 May 2025 22:09:13 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBgTt-00000005wyZ-1ebO;
-	Sun, 04 May 2025 21:02:38 +0000
-Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-7c597760323so408066685a.3;
-        Sun, 04 May 2025 14:02:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1746392556; x=1746997356; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ML8DjRZA7cKit0Oa6eU0aLRHGdDqUBnThTiiLI5SiXM=;
-        b=i2VTaY1IRl0cJwJukD/UonBeMgZ6vu6j985hLZP6p/hUSO6LxFy2CayyFhaX6rEeNV
-         IVb7+3o6SKLUIAydEVn1Y00DEtFEfNfyLRLDO+Tb9Rwb8Z6nf9hGvNQbo4JR56gJ94Ry
-         /t7AnrrdxJOZA7hmincJZFh8RRQRBMTrQQWKuXIioz5fOfaWyXJtHK59o3WuHIcLnmD/
-         3s0mYp9j7V8VnZTD8z5d4X425/xW4M8is9Cyfx5XSgdtHpcOpzEITajpwUFQCoHq26Y0
-         ApkpwoLJCH4V6v0jdYZBtCQxaTSu08R9HCYrujPLGu07dNWrApm12VVVKatuKjAaik3X
-         TulA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746392556; x=1746997356;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ML8DjRZA7cKit0Oa6eU0aLRHGdDqUBnThTiiLI5SiXM=;
-        b=hIXqf75l0HL2jehLXFK+BVoz3Zuto4Uc930Falmo4/fajEO81BBjVAJomCLhB76DMT
-         vvlIzH4NccLtERak/xjVDMwRUAzA3u8ut6hwqZK+mf1Oa1gpTi/k1mokR76iHFGyCSTv
-         3ENV3anby2OudEZq64IhlG0xuvd8EGSkeFtq/aC0GRE3YEDrlr+whJWXtiZ27qAG43ve
-         3chCwhzCXPDQxspiC32pyY+Yf2pqocSo7m6YTIqDTv+/U7p0we1e6AZ+V/iOBnuC/T5w
-         00SAwesCg7JzocN+EACUwf0tr82maHChdyI4zsSJL3VE4eRNWHoBifqiqArt7D+qsXBk
-         OPyA==
-X-Forwarded-Encrypted: i=1; AJvYcCVMddlnodrUb8p4SbL0NWZTCRdv0xeWUzuguvkx9cUt9p+gLZomH/z3FsZrnvtmjEt3rl5OBudsoLmYY7Xp7Daw@lists.infradead.org, AJvYcCVxBPBNFt1lUTPwMWm4ge87psbtB+Fsruhfe4hFpu+95lL9HyYl6DAjZuSzSWwUVGJJ+MyX1Tgo31bZ3i91DXQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzZUyapxmn8cYXnE5uAB5DjpwnkCKSDStlERh6stFajuNKnmqcL
-	/6cJ7Y/UR2jhnKVkmmOl+zUBHZrOGkG/lVqgnsTvYHLe0lPjYakC
-X-Gm-Gg: ASbGncvWCLN/2Z3aBJGxp9RwQnr8gT8jR9n9HVpB3H6nEAV5aXA/3GWD61L/lfeXtGP
-	ySYQjMDGecyHOnfwoAxt2mAMF0K2vu3ksuFXDz6VERykfjQEaJUl6fSdu150y+a7iSdfnuCL7EI
-	nfibRBsL4RG+8HyiZqV2AtecOoYWYbaAXJQQ4DIsYK2bP+lC28pSwqcgoBLBqZX2v5eQRRYJ6DE
-	f7qe28bnR/B+fiU1Ra5sAF9Ewk8qqBhysWVS2gM4ppHSp6Z7l3haSrXGfQto5p16VgQH2OVm/+7
-	M0L8vqbY4dz7XGB8g0a2QlgyE78RzIL5IFc2r1lz/IVaFbM02GIIJ3OQNnCEuQ==
-X-Google-Smtp-Source: AGHT+IE28+xEK7288oQImXpZSUZs2LbwMwLdxQciIh7WFkHeIOKTXFrxgU5POHxG3pYM8Mke5GY4gQ==
-X-Received: by 2002:a05:620a:2697:b0:7c5:49b7:237c with SMTP id af79cd13be357-7cadfe16d0dmr954871285a.27.1746392555994;
-        Sun, 04 May 2025 14:02:35 -0700 (PDT)
-Received: from [192.168.21.149] ([216.237.233.165])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7cad243f339sm472102685a.90.2025.05.04.14.02.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 04 May 2025 14:02:34 -0700 (PDT)
-Message-ID: <b603e92f-8c1a-4aea-8bab-82a1f035c7fa@gmail.com>
-Date: Sun, 4 May 2025 17:02:33 -0400
+	id 1uBhWI-000000062Fa-1tYk
+	for linux-rockchip@lists.infradead.org;
+	Sun, 04 May 2025 22:09:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References;
+	bh=UJHS/deKALTS1fEsNNm2kcY+92bgBd8Nc8/JBeUNYdM=; b=POgwbCERqcEyY6iBwWLO8DP3cu
+	USU9WJFu4XDFaG2MTk0mskNDOGnfMtamWVGjEUyEj1PtOXM+Yf8gTspp1GP20A/JjmumL9Yca+eBq
+	S9dVfoPE3gwr1cSVAYSjV3pxRcS57XM0wqAEbHjLeTf/7j91rd5CTu2gLuJuTWsLAsiCspdF2rYMd
+	lOC88edKHXlpSawMWidRcLS9NHX1bRL0SdZU0JcakWxswJXrCrM8lQ6SmN0BW/5r6A/caFN4JH3Ef
+	2wjtyHvHL/ghh9RGVmUde5HrZORZ9CVHzu/BDH5lHnPYMsrm9w0bPjcEnhFo8YjFBRoHPWoFb2bsz
+	EYRh13XA==;
+Received: from i53875bbc.versanet.de ([83.135.91.188] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uBhVz-00069J-QR; Mon, 05 May 2025 00:08:51 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: [GIT PULL] Rockchip clock fixes for 6.15
+Date: Mon, 05 May 2025 00:08:50 +0200
+Message-ID: <3034384.VdNmn5OnKV@diego>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: Add Luckfox Omni3576 Board
- support
-To: Andrew Lunn <andrew@lunn.ch>, Jonas Karlman <jonas@kwiboo.se>
-Cc: heiko@sntech.de, robh@kernel.org, conor+dt@kernel.org,
- detlev.casanova@collabora.com, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20250502205533.51744-1-inindev@gmail.com>
- <20250504102447.153551-1-inindev@gmail.com>
- <20250504102447.153551-4-inindev@gmail.com>
- <bb171ae2-c495-49a3-a7eb-a4b865e54199@kwiboo.se>
- <87892840-bdbf-43d4-bd93-cb98f5e1c672@lunn.ch>
-Content-Language: en-US
-From: John Clark <inindev@gmail.com>
-In-Reply-To: <87892840-bdbf-43d4-bd93-cb98f5e1c672@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250504_140237_435196_96DAFE98 
-X-CRM114-Status: GOOD (  18.13  )
+X-CRM114-CacheID: sfid-20250504_150910_519659_7E93102A 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,54 +64,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gNS80LzI1IDEwOjEyIEFNLCBBbmRyZXcgTHVubiB3cm90ZToKPj4+ICsmZ21hYzAgewo+Pj4g
-KwljbG9ja19pbl9vdXQgPSAib3V0cHV0IjsKPj4+ICsJcGh5LWhhbmRsZSA9IDwmcmdtaWlfcGh5
-MD47Cj4+PiArCXBoeS1tb2RlID0gInJnbWlpLXJ4aWQiOwo+Pgo+PiBTZWUgQW5kcmV3J3MgcmVt
-YXJrIG9uIHYxIG9mIHRoaXMgcGF0Y2guCj4gCj4gSGkgSm9obgo+IAo+IElmIHlvdSBoYXZlIHF1
-ZXN0aW9ucywgcGxlYXNlIGFzay4gSXQgaXMgbm90IGEgZ29vZCBpZGVhIHRvIHNpbGVudGx5Cj4g
-aWdub3JlIHJldmlld2VycyBjb21tZW50cy4gRWl0aGVyIGRvIHNvbWV0aGluZyBhYm91dCBpdCwg
-YXNrCj4gcXVlc3Rpb25zLCBvciBwb2xpdGVseSBhcmd1ZSB3aHkgdGhlIHJldmlld2VyIGlzIHdy
-b25nLCBiZWNhdXNlCj4gc29tZXRpbWVzIHdlIGFyZS4KPiAKSGkgQW5kcmV3LApUaGFua3MgZm9y
-IHlvdXIgZmVlZGJhY2sgYW5kIHRoZSBsaW5rIHRvIHRoZSBSR01JSSBkZWxheXMgZGlzY3Vzc2lv
-bi4gSSAKYXNzdW1lZCB5b3Ugc3VnZ2VzdGVkIHN3aXRjaGluZyB0byBwaHktbW9kZSA9ICJyZ21p
-aS1pZCIgZnJvbSAKcmdtaWktcnhpZC4gVGhlIHZlbmRvcuKAmXMgZG93bnN0cmVhbSBrZXJuZWwg
-dXNlcyByZ21paS1yeGlkIHdpdGggdHhfZGVsYXkgCj0gPDB4MjA+LCBhcyBzaG93biBpbiBteSBw
-b3N0LiBJIHRyaWVkIHJnbWlpLWlkIGFuZCByZW1vdmVkIHR4X2RlbGF5LCAKYnV0IHRoZSBpbnRl
-cmZhY2UgZmFpbGVkIHRvIGdldCBhIERIQ1AgYWRkcmVzcy4gUmV2ZXJ0aW5nIHRvIHJnbWlpLXJ4
-aWQgCndpdGggdGhlIGRlbGF5IHJlc3RvcmVkIGZ1bmN0aW9uYWxpdHkuIEFueSBhZHZpY2Ugb24g
-Y29ycmVjdGx5IApjb25maWd1cmluZyByZ21paS1pZCBvciBhZGp1c3RpbmcgZGVsYXlzIGZvciB0
-aGlzIGJvYXJkPwpCZXN0LApKb2huIENsYXJrCgo+Pj4gKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1
-bHQiOwo+Pj4gKwlwaW5jdHJsLTAgPSA8JmV0aDBtMF9taWltCj4+PiArCQkgICAgICZldGgwbTBf
-dHhfYnVzMgo+Pj4gKwkJICAgICAmZXRoMG0wX3J4X2J1czIKPj4+ICsJCSAgICAgJmV0aDBtMF9y
-Z21paV9jbGsKPj4+ICsJCSAgICAgJmV0aDBtMF9yZ21paV9idXMKPj4+ICsJCSAgICAgJmV0aG0w
-X2NsazBfMjVtX291dD47Cj4+PiArCXNucHMscmVzZXQtZ3BpbyA9IDwmZ3BpbzIgUktfUEIzIEdQ
-SU9fQUNUSVZFX0xPVz47Cj4+PiArCXNucHMscmVzZXQtYWN0aXZlLWxvdzsKPj4+ICsJc25wcyxy
-ZXNldC1kZWxheXMtdXMgPSA8MCAyMDAwMCAxMDAwMDA+Owo+Pgo+PiBUaGUgc25wcyxyZXNldC0g
-cHJvcHMgYXJlIGRlcHJhY2F0ZWQsIHBsZWFzZSBtb3ZlIHRvIHJlc2V0IHByb3BzIGluIHRoZQo+
-PiBFdGhlcm5ldCBQSFkgbm9kZS4KPiAKPiBGWUk6IHNucHMsZHdtYWMueWFtbCBzYXlzOgo+IAo+
-IHNucHMscmVzZXQtZ3BpbzoKPiAgICAgIGRlcHJlY2F0ZWQ6IHRydWUKPiAgICAgIG1heEl0ZW1z
-OiAxCj4gICAgICBkZXNjcmlwdGlvbjoKPiAgICAgICAgUEhZIFJlc2V0IEdQSU8KPiAKPiBBbnl0
-aGluZyB3aXRoICdkZXByZWNhdGVkOiB0cnVlJyB5b3Ugc2hvdWxkIG5vdCBiZSB1c2luZyBpbiBu
-ZXcgRFQKPiBibG9icy4gRG9uJ3QgYmxpbmRseSBjb3B5IHZlbmRvciBEVCwgeW91IG5lZWQgdG8g
-dmVyaWZ5IGl0IGlzIHVwIHRvCj4gTWFpbmxpbmUgcXVhbGl0eSwgYW5kIGlmIG5vdCwgYnJpbmcg
-aXQgdXAgdG8gTWFpbmxpbmUgcXVhbGl0eS4KPiAKPj4+ICsJdHhfZGVsYXkgPSA8MHgyMD47Cj4g
-Cj4gVGhpcyBwcm9wZXJ0eSBwcm9iYWJseSBwbGF5cyBhIHJvbGUgaW4gdGhlIGlzc3VlIHdpdGgg
-cGh5LW1vZGUuCj4gCj4gYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcCQgZ3JlcCAicmdtaWkt
-aWQiICoKPiByazMzMjgtb3JhbmdlcGktcjEtcGx1cy1sdHMuZHRzOglwaHktbW9kZSA9ICJyZ21p
-aS1pZCI7Cj4gcmszNTY2LWJpZ3RyZWV0ZWNoLWNiMi5kdHNpOglwaHktbW9kZSA9ICJyZ21paS1p
-ZCI7Cj4gcmszNTY2LW5hbm9waS1yM3MuZHRzOglwaHktbW9kZSA9ICJyZ21paS1pZCI7Cj4gcmsz
-NTY2LW9kcm9pZC1tMXMuZHRzOglwaHktbW9kZSA9ICJyZ21paS1pZCI7Cj4gcmszNTY2LW9yYW5n
-ZXBpLTNiLmR0c2k6CXBoeS1tb2RlID0gInJnbWlpLWlkIjsKPiByazM1NjYtcmFkeGEtemVyby0z
-ZS5kdHM6CXBoeS1tb2RlID0gInJnbWlpLWlkIjsKPiByazM1NjYtcm9jay0zYy5kdHM6CXBoeS1t
-b2RlID0gInJnbWlpLWlkIjsKPiByazM1NjgtZXZiMS12MTAuZHRzOglwaHktbW9kZSA9ICJyZ21p
-aS1pZCI7Cj4gcmszNTY4LWV2YjEtdjEwLmR0czoJcGh5LW1vZGUgPSAicmdtaWktaWQiOwo+IC4u
-Lgo+IGV0Yy4KPiAKPiBZb3UgbWlnaHQgYmUgYWJsZSB0byBsZWFybiBzb21ldGhpbmcgZnJvbSB0
-aGVzZS4KPiAKPiAJQW5kcmV3CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Mike, Stephen,
+
+for once I do have a fix for the running 6.15-rc round.
+The nvmem support for the rk3576 encountered a number of mishaps.
+
+First the clk patch was marked as applied with the driver patches [0], then
+on the way from the nvmem tree to GregKH's tree something went wrong which
+caused the whole nvmem patches to reach Greg after the merge-window [1]
+which in turn meant that the otp driver change landed only after 6.15-rc3 .
+
+
+So right now, both the driver change as well as the devicetree parts are in
+6.15-rc, but that one gate definition from below is missing for everything
+to work.
+
+So, please pull :-) 
+
+Thanks a lot
+Heiko
+
+
+
+[0] https://lore.kernel.org/all/173978599692.25901.15315285566342669137.b4-ty@linaro.org/
+[1] https://lore.kernel.org/all/20250411112251.68002-1-srinivas.kandagatla@linaro.org/
+
+
+
+The following changes since commit 0af2f6be1b4281385b618cb86ad946eded089ac8:
+
+  Linux 6.15-rc1 (2025-04-06 13:11:33 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.15-rockchip-clkfixes1
+
+for you to fetch changes up to d934a93bbcccd551c142206b8129903d18126261:
+
+  clk: rockchip: rk3576: define clk_otp_phy_g (2025-04-26 00:04:49 +0200)
+
+----------------------------------------------------------------
+Actually define the gate-clk for the otg-phy on rk3576 to make the nvmem-
+support work, that was merged for 6.15 .
+
+----------------------------------------------------------------
+Heiko Stuebner (1):
+      clk: rockchip: rk3576: define clk_otp_phy_g
+
+ drivers/clk/rockchip/clk-rk3576.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
