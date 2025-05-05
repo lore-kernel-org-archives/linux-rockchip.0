@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 791F8C3ABB7
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 08:42:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1401EC3ABB0
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 09:28:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tz22HZJuOGjyKl0Wg13yYhZeNNWrBVJi7NShpAmEYMs=; b=b9Q3kluY3XOtSF
-	rQ8hlNMkh0tx2WOAKHYjQr+L6K82kClxCcL9xtAbB+xWD2gVHFsHWeKesLCKSam4BX81DedPYPJ8D
-	krHU93w7/s7saK0oBqBMz+/utwSU2h5yr7aWZasdIZzIyjd5Ipn0gn62S9J+aMEw/a2++/4CIvbUR
-	xao1iBVcy6ixIMncshgzKzKiIB+nq+ZxIuc/O7aF9Jmhh0/zqGZNlAslok6RbQvyRODqhXJ2lLS+j
-	vVG68+rdH8gKW0EFF0MI/hPJfET0hdmfurLY6+xEsLYPOF6LStMms+O75XaycpFX3w/4Kx4vPGIgw
-	leA22kZnFvgx5AvDkO6Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mh5Nj+2ZqUGAig/sSEKuERLnoqvE5tQHSwPEbhNI8VQ=; b=BuHE38J2+0VuM1
+	ZU9v3hRId4D7X0uNT5O7bIaTybk15sEXvZvtaL8yegfygg+yyeZLB6kuUhzaODncfqPk4eDWY2vqS
+	MC+fAUuzt1SisJ6tWQ+nVFZ+ksv1tkAm+YL7d6wQq1+MkCtUuNQvKiARFW30csiVfwf1W0QTELcEg
+	oXN6ax1VVcWr/pTuP0e65PxqfsszHrtRkSBYGuE3vi19DQtyHYqLOoM4pHx70sWxL7mZjdC6AKZ+t
+	3N69CSfPHL9vFuZUgeTATZeHZbKUUPMXX+h+kvBfeFOhldutJNIdT6mdvYKE3UxC+agm9Z6CaUKUV
+	GLCyg1PtRvizTcvNZ6/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBrPK-00000006oEa-2Lrw;
-	Mon, 05 May 2025 08:42:38 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uBs7g-00000006vEo-2Nmi;
+	Mon, 05 May 2025 09:28:28 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBr9u-00000006mSX-3JNC;
-	Mon, 05 May 2025 08:26:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=79u0OVf8LkWKmm3Wdou6FM0hujmZjDHVeYn1Q2NENsw=; b=EqsgzOBIrGjPuFoBjKNtkB308w
-	VTwCJi+SJq3zdiiMnB0g/cGN/OfXfz5oX/LxhKDV5Aqw6BGKKn/omiK9PJtN6WdV0rhjCj+gAatKr
-	xSiyKBYAagXWW4JtDEWQf55eutefx2YZ5YLRuA6tSsJv6+C1pEzMk+bgCzc0hTfVXmKfz0OoTbN7f
-	+0r5DekvMq0MYaohIUjW9LY0b3qwI+V2i2/nvzDvJ232eeDzPtqWrHGF1cJd25OpbsbVRYedbyNOL
-	cFk9IVPb6nbOsGrDEm+n87CAg0vkwSLZCRPdirkOIkn0Izc2B+crQtTpEtezTcm/G4wm+Cy7xC2ap
-	s712kSyQ==;
-Received: from i53875a1d.versanet.de ([83.135.90.29] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uBr9g-0001Ho-BB; Mon, 05 May 2025 10:26:28 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	hjc@rock-chips.com,
-	mripard@kernel.org,
-	neil.armstrong@linaro.org,
-	dmitry.baryshkov@oss.qualcomm.com,
-	knaerzche@gmail.com,
-	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
+	id 1uBs5d-00000006ulH-2Yni;
+	Mon, 05 May 2025 09:26:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 505AD5C555D;
+	Mon,  5 May 2025 09:24:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECB01C4CEE4;
+	Mon,  5 May 2025 09:26:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746437180;
+	bh=DN3ERg8zsCk+ghA8/wCrbbGaeNolgYO/AVElrgswuPE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=VvX+ZyN0o0c8Rt/vlhx+eqQs7PTPAfcpzfaOC5POHtDY5EQLrSbqNxsM0ISNy/5kt
+	 UpcZCXGg/+SZ1i2OBxDec47MDXsty/6EdmSMt75EskDWSH+T5i0VbDGDlq3Q6bSrgc
+	 c8sH3aMWiO1AVrrZa4dxRHwvYPYWxvpigmh01BRmxtuLPeEqKc/lD4HYpZvjIskyMO
+	 SZu8rXFUgqlVFP8Crq7oG3ykIwWM6VHFnk7NZxa/YjfHRbyx6XNMgtjU8bbwjDYPxw
+	 z/tD+u/m/GdGsmJGz3E201GdNx2IXcBk4BynOmJhCzScLW76LOp+hSt2p0i1tWSB7W
+	 QYbtsITDux3Nw==
+From: Niklas Cassel <cassel@kernel.org>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Niklas Cassel <cassel@kernel.org>,
+	Krishna chaitanya chundru <quic_krichai@quicinc.com>
+Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Hans Zhang <18255117159@163.com>,
+	Laszlo Fiat <laszlo.fiat@proton.me>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: (subset) [PATCH v4 0/7] Convert inno hdmi to drm bridge
-Date: Mon,  5 May 2025 10:26:15 +0200
-Message-ID: <174643357077.1204535.10688043941921762631.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250422070455.432666-1-andyshrk@163.com>
-References: <20250422070455.432666-1-andyshrk@163.com>
+	linux-arm-msm@vger.kernel.org
+Subject: [PATCH 0/4] PCI: dwc: Link Up IRQ fixes
+Date: Mon,  5 May 2025 11:26:04 +0200
+Message-ID: <20250505092603.286623-6-cassel@kernel.org>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1002; i=cassel@kernel.org; h=from:subject; bh=DN3ERg8zsCk+ghA8/wCrbbGaeNolgYO/AVElrgswuPE=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDIkWrRZjAVWLDy3O2UL1886j6ZLzj/Z04VClRySY/yqN 8U0BJp0lLIwiHExyIopsvj+cNlf3O0+5bjiHRuYOaxMIEMYuDgFYCJO0gz/Y74oSLR29a45kpQ/ re58xCPP95lhS2esK4vZcspS/mFEF8P/qqaA0p92906vXHWUzbF4y//g6bPfhlmsnHbY8fO9Fau mMQMA
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_012642_825461_227340C3 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20250505_022621_689917_1C136023 
+X-CRM114-Status: UNSURE (   8.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,29 +86,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hello there,
 
-On Tue, 22 Apr 2025 15:04:39 +0800, Andy Yan wrote:
-> When preparing to convert the current inno hdmi driver into a
-> bridge driver, I found that there are several issues currently
-> existing with it:
-> 
-> 1. When the system starts up, the first time it reads the EDID, it
->    will fail. This is because RK3036 HDMI DDC bus requires it's PHY's
->    reference clock to be enabled first before normal DDC communication
->    can be carried out.
-> 
-> [...]
+Commit 8d3bf19f1b58 ("PCI: dwc: Don't wait for link up if driver can detect
+Link Up event") added support for DWC to not wait for link up before
+enumerating the bus. However, we cannot simply enumerate the bus after
+receiving a Link Up IRQ, we still need to wait PCIE_T_RRS_READY_MS time
+to allow a device to become ready after deasserting PERST. To avoid
+bringing back an conditional delay during probe, perform the wait in the
+threaded IRQ handler instead.
 
-Applied, thanks!
+Please review.
 
-[5/7] ARM: dts: rockchip: Add ref clk for hdmi
-      commit: cdc602ad064009470b1c40af51d4a8cd804eaaf9
-[6/7] Revert "ARM: dts: rockchip: drop grf reference from rk3036 hdmi"
-      commit: dd6c77864aa69ba1079998c590b552e35649d51b
 
-Best regards,
+Kind regards,
+Niklas
+
+
+Niklas Cassel (4):
+  PCI: dw-rockchip: Do not enumerate bus before endpoint devices are
+    ready
+  PCI: qcom: Do not enumerate bus before endpoint devices are ready
+  PCI: dw-rockchip: Replace PERST sleep time with proper macro
+  PCI: qcom: Replace PERST sleep time with proper macro
+
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 3 ++-
+ drivers/pci/controller/dwc/pcie-qcom.c        | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.49.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
