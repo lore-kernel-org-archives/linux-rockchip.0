@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85C1BC3ABB9
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 21:55:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6744CC3ABB9
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 22:19:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yIQE6euPne3ZlJvx0n5vqJ1Uf2zN6gYDLjsbJq9nOK4=; b=sY06zzWLrWpzMD
-	zoP9rb1nZqLvdI7hWMUS3SYFwDsuPi1ep8trvdILHZypWlQN4mxvZ1lDPCYowUmJxh2YFzadffBae
-	tHMhdAwcmyB9fLAyFgAt5/73+MaAoPAEFPJAnyO6F5P0zCmDMlgvIKDwS/neSot9Ur8M3IhFzX3b3
-	E/OtQHyEpar8pWcf3ckYnHLbWBXSZ2Kp+4OiKqlY3gbUbCk6c+3+qXJPMqdK2yNybYyNFcIa0VZat
-	0T+kKjl8HQSTmI5EI5fsqLDwZJZYBl6ffEa4yJX9e2/BGWndXDBPU1SuhOaFZwmR8o9KKgr0YyBZU
-	Q84XJwwJKAIf+alK715w==;
+	List-Owner; bh=lf7Ppw85aKwS9fOu31VXhKN1YAP86r1MWjzEHK7Rvaw=; b=ZLm/6Cjt/HlZER
+	KTzSeJZ3kvTyj/chW2D0NGJMGDKKQ5tm58Oco9EZ19ZRMUqzAK3maOQGjQ/omfEgMXEd3ayJld1js
+	Wh8UBjrXBT9P5UeVnR2zGvJqxQ2JvLAJKzPITstfhG8WPvkYDO91hYO7B9NfVe52BlB4r8Yql4gZR
+	t4DGRzAguS2YEfMfHdFHnDwe04eX+jESIa1C5tNKcnIXgdFG0dZWQgarXY8cC1548X9r4+a0y1s13
+	xsYTZzHv0tLPQyeaxL7R7g7Xr5DbTJBHDhgROWWOcTR5N4iT/5wSf7h5hdDypv/a8t/ltYrFxrjfU
+	DuozR4dIEUDfnNfB5+uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC3md-00000008fpj-0Ye8;
-	Mon, 05 May 2025 21:55:31 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uC49R-00000008iha-3kZ9;
+	Mon, 05 May 2025 22:19:06 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC3kd-00000008fet-0bTh;
-	Mon, 05 May 2025 21:53:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=ky2FY8wQi0hoWGwOjDyfpng6BVXAqJP2zLIjZqhEWZA=; b=DdC3AwJ7cAtgun0b6u5kgbdY5+
-	MYldwYok5u4hquFQNeMD6gHgOoDzmnS6HmEoYWikdz5TTtdpWkxyuxqbnf0+974VNsQkyPyRI3MHC
-	mgmpcwVl9gL2hAM8qKL3nGifuLykHuNPDmKRhDbgKPfR+PCYAh65SMOPqk7KxYDM/Aba3XLKVo3K/
-	2thz9Nm6ua3t++DMLO5DdMOiJxUxU4sWfysIHA57NwHEdJLfn6/olIf0jGes5ZOnnXz4jh/qGsa5q
-	LQoJsKmRVOCf68Bk+Uymma2vKbF40Rgr4zKXwb5QGx7nshJkyBC464hQySo9EiSxpuLXKMK1g/+7B
-	av8er3RA==;
-Received: from i53875a1d.versanet.de ([83.135.90.29] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uC3kW-0000QT-94; Mon, 05 May 2025 23:53:20 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Andi Shyti <andi.shyti@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Chukun Pan <amadeus@jmu.edu.cn>,
-	Yao Zi <ziyao@disroot.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
+	id 1uC45v-00000008hjz-3viV;
+	Mon, 05 May 2025 22:15:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 89767629C5;
+	Mon,  5 May 2025 22:14:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F82DC4CEED;
+	Mon,  5 May 2025 22:15:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746483327;
+	bh=lnta+hZMPY5VaUkaDF8fXZF2WkKJfxgBtucIMgpK6Sw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=kiQ0ATgxjroPDOnvO9zV771Z0Dw6rlgLXCGaZt7DbeGPHL4tDDjcJhOmYdl6pBRds
+	 m68vJGJi1C4AJleqG0Q9albUmimGK4VXKUsTVgh6IddLztdY+btV7znaSySOsZ1OOj
+	 32WVqhhi3wTiEyazzq71cpZfJ9pAjuWE0/dXRuqHv6mvpdD26vekLamaIrShjAzHtl
+	 oxpTAtgI7tkqd+/Xm8L3m13BAEVTOu3E9+jYgbutOx7tLUw8WmecF2r2aZ+YnA8Qnp
+	 C/qz2N1UARtrlZmskA4DuotM0cFASw5aoqVWnMCjdyixXMgqF/WGC6ZKU8WULbyYY8
+	 KQWgstagRsSpA==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Luis de Arquer <luis.dearquer@inertim.com>,
+	Mark Brown <broonie@kernel.org>,
+	Sasha Levin <sashal@kernel.org>,
+	heiko@sntech.de,
+	linux-spi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-i2c@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: (subset) [PATCH v2 0/3] Support I2C controllers in RK3528
-Date: Mon,  5 May 2025 23:53:09 +0200
-Message-ID: <174648198304.1334687.5769287856260852986.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250417120118.17610-3-ziyao@disroot.org>
-References: <20250417120118.17610-3-ziyao@disroot.org>
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.14 035/642] spi-rockchip: Fix register out of bounds access
+Date: Mon,  5 May 2025 18:04:11 -0400
+Message-Id: <20250505221419.2672473-35-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250505221419.2672473-1-sashal@kernel.org>
+References: <20250505221419.2672473-1-sashal@kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_145327_203976_FB30F189 
-X-CRM114-Status: GOOD (  13.68  )
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.14.5
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,34 +77,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Luis de Arquer <luis.dearquer@inertim.com>
 
-On Thu, 17 Apr 2025 12:01:16 +0000, Yao Zi wrote:
-> RK3528 integrates eight I2C controllers which are compatible with the
-> RK3399 variant of i2c-rk3x. This series documents the controllers in
-> dt-bindings, describe them in SoC devicetree and enable the onboard
-> EEPROM of Radxa E20C which is connected to I2C-2.
-> 
-> Changed from v1
-> - rebase on top of linux-rockchip/for-next
-> - dt-binding: collect review tags
-> - SoC devicetree
->   - sort i2c and gpio in /aliases
->   - provide default pinctrl for controllers with only one set of
->     possible pins
-> - Radxa E20C devicetree: mark eeprom as read-only
-> 
-> [...]
+[ Upstream commit 7a874e8b54ea21094f7fd2d428b164394c6cb316 ]
 
-Applied, thanks!
+Do not write native chip select stuff for GPIO chip selects.
+GPIOs can be numbered much higher than native CS.
+Also, it makes no sense.
 
-[2/3] arm64: dts: rockchip: Add I2C controllers for RK3528
-      commit: d3a05f490d048808968df1e0d3240ab01fe82211
-[3/3] arm64: dts: rockchip: Add onboard EEPROM for Radxa E20C
-      commit: 101fe8b5627c68b3f2f941266e26ac355131e2fe
+Signed-off-by: Luis de Arquer <luis.dearquer@inertim.com>
+Link: https://patch.msgid.link/365ccddfba110549202b3520f4401a6a936e82a8.camel@gmail.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/spi/spi-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Best regards,
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 1bc012fce7cb8..1a6381de6f33d 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -547,7 +547,7 @@ static int rockchip_spi_config(struct rockchip_spi *rs,
+ 	cr0 |= (spi->mode & 0x3U) << CR0_SCPH_OFFSET;
+ 	if (spi->mode & SPI_LSB_FIRST)
+ 		cr0 |= CR0_FBM_LSB << CR0_FBM_OFFSET;
+-	if (spi->mode & SPI_CS_HIGH)
++	if ((spi->mode & SPI_CS_HIGH) && !(spi_get_csgpiod(spi, 0)))
+ 		cr0 |= BIT(spi_get_chipselect(spi, 0)) << CR0_SOI_OFFSET;
+ 
+ 	if (xfer->rx_buf && xfer->tx_buf)
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.39.5
+
 
 _______________________________________________
 Linux-rockchip mailing list
