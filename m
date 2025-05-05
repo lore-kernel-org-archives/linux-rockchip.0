@@ -4,65 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C38AC3ABB0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 14:11:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BB17C3ABAA
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 14:50:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Adz5ZHJsIL18Ryq3fH+Z0+XFF3Wzt22fVcT36VkSHg4=; b=imPm5xICOBUHVg
-	1OinuHVsxBMn9jq9YMcPMt4I9G/JJdQTRvStLR89YkJOjPzl36wpC4TjIRyOT4X9smiyT90DoJmkE
-	7y+3dI8nFL6x1qa23aeh2Y7gfdyNIhCdt6DzhU0T/zCrAOHRAake8UEfm6xCY0vEfIQ096OiPzhZ5
-	Idw4sFYwPyA5Sr1TnAD/rm2KnyOs+uudCJOYbA1oR+DKRXi1GgYOVOIKI+Wwtmk7vKWztOohlSqFg
-	Ca32KapGdKkUfRmY2Xh+yA6f5mEmuSSoMBYOxwmWoyOf7MkF9Av1E966ozfZte4/tCI5hIkJ7YNG6
-	gxMHwficplGGXLb9f1aA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1tIK8Sj60HBR2bHXWLDh3nDb6vXv5sLEW4zZDPvcRrY=; b=MNfKLBgFoWOvHg
+	DH5futwN70G5cDRRcmi1xuhAs9/69pS50zDeAiv7YBxatbHIIrfrTbrHbZNrJJ8amJcqHHAT1aXoD
+	dULWXd/IBBGmly0SEpul5odZ+Z+JppYOoAW3MaErXx8z8nRrGF0XIMVs8pSI3zuTctR3WiA3yLeXz
+	GRr2zvo1DIUW3n1Uce7INl/DWwyPbKq5u9ozet//kBo6fMM+vy5pl/Nowa2nkbn8clRReuk5NXXPl
+	BFJ98LNsQ6szE5ehJnNYmkwuGo1T5mwrP44yFYgd1UyIEGl2pI2NQp9P5t/Kk9w85eQLHIpD2UvpI
+	9uVH0t8B63S6EnxbbsvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBwXI-00000007ZwT-3sGq;
-	Mon, 05 May 2025 14:11:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uBx90-00000007gnh-0SEa;
+	Mon, 05 May 2025 14:50:10 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBwVK-00000007ZnF-0MP1;
-	Mon, 05 May 2025 14:09:10 +0000
+	id 1uBx3B-00000007fOr-1KeM;
+	Mon, 05 May 2025 14:44:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id ADF3C61135;
-	Mon,  5 May 2025 14:08:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13493C4CEE4;
-	Mon,  5 May 2025 14:09:05 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4F4784A84F;
+	Mon,  5 May 2025 14:44:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9EE95C4CEE4;
+	Mon,  5 May 2025 14:44:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746454148;
-	bh=YRqrqVzFrmTsTKtBwgPOzHahPm+oOSbLg9my9ROL07Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ck58iJmJrtnaf30+tBuDoR3naDrSQu+nMQiA1XTUGaFs7cGWxy8L7IsOyru0sQIXM
-	 5HtkX3HKqm/omXrQ1PKtJcwz0mW6ZqNPM78l5VMQ5vIqfubolwoParG4qQ4I5DeDk4
-	 jTgmlU9v/afSPLRLpyp78X3xKDdvgUB3K+Dm6AaMnAek99av7jFxhK1J0jcJP814B+
-	 /HCsph8wDGk//DT1o+mze2+FTtQPeIKqYd/mSh07oM+Kj8HQp0AU/u7pG3ccMpmtpz
-	 ZkiwUEBe7sIjVc9YOFGCNtCuFLrJhklam+oSJ4O/OaPPZlFhVQCoj5oOnlwnC8SpgW
-	 VOYRp7CAbXUdg==
-Date: Mon, 5 May 2025 16:09:03 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Hans Zhang <18255117159@163.com>,
-	Laszlo Fiat <laszlo.fiat@proton.me>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/4] PCI: dw-rockchip: Do not enumerate bus before
- endpoint devices are ready
-Message-ID: <aBjGf8-mDrqOrm5-@ryzen>
-References: <20250505092603.286623-6-cassel@kernel.org>
- <20250505092603.286623-7-cassel@kernel.org>
+	s=k20201202; t=1746456248;
+	bh=UzAMomFyuhI5xvI4clydLab7kwq4ZLQzU3pP+AbldBQ=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=cSu8Mt8por9ww8yacAcqvoxu8hG0uHsJGl//PCcFDGVwml06a5bylHtsq5TgsLu1j
+	 7rEPWAoSPRrht30xbBwv5+l2tQT/C8cT5rHfdY9lAl+7sdVmmz/9agz/eIq3JpPZKa
+	 H6FWHzmLpm8+OgL8JnRVmKbuIbzsmWMQp1YaFO5k/YwY0cpkVDcEKvYFBIY4di53NY
+	 eb/28aR4TYZNww+iDHcMdn12KdLpI0tL2P2mdvmyH0QvjoHdvcuaGAdB53kUXw/WHH
+	 zUyqAybpkSUNklLbNfbFT4BFbf3eQ0Y5/mcZAQpd4Mt8DICY37OL64C0+cUCoV37Jo
+	 +ggtVD89jEgew==
+Date: Mon, 05 May 2025 09:44:07 -0500
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250505092603.286623-7-cassel@kernel.org>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: John Clark <inindev@gmail.com>
+In-Reply-To: <20250504102447.153551-1-inindev@gmail.com>
+References: <20250502205533.51744-1-inindev@gmail.com>
+ <20250504102447.153551-1-inindev@gmail.com>
+Message-Id: <174645594199.1246544.16804266826655176867.robh@kernel.org>
+Subject: Re: [PATCH v2 0/3] Add Luckfox Omni3576 Carrier Board support for
+ RK3576
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250505_074409_397576_FFD5327B 
+X-CRM114-Status: GOOD (  21.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,40 +65,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, heiko@sntech.de, detlev.casanova@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 05, 2025 at 11:26:05AM +0200, Niklas Cassel wrote:
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 7a6a95dc877a..ed8e3dfe80e0 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -471,6 +471,7 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
->  	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
->  		if (rockchip_pcie_link_up(pci)) {
->  			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
-> +			msleep(PCIE_T_RRS_READY_MS);
->  			/* Rescan the bus to enumerate endpoint devices */
->  			pci_lock_rescan_remove();
->  			pci_rescan_bus(pp->bridge->bus);
-> -- 
-> 2.49.0
+
+On Sun, 04 May 2025 06:24:44 -0400, John Clark wrote:
+> This series adds device tree support for the Luckfox Omni3576 Carrier Board
+> with Core3576 Module, based on the Rockchip RK3576 SoC, enabling essential
+> functionality for booting Linux and basic connectivity. v1 was posted at:
+> https://lore.kernel.org/linux-rockchip/20250502205533.51744-1-inindev@gmail.com
+> 
+> Tested features (on Linux 6.15-rc4):
+>  - UART: Serial console operational
+>  - SD card: Mounts and reads/writes successfully
+>  - PCIe: NVMe SSD detected, mounted, and fully functional
+>  - Ethernet 0: Functional with RGMII PHY
+>  - USB 2.0: Host ports
+>  - RTC: Timekeeping and wake-up tested
+>  - LED: Heartbeat trigger works
+>  - eMMC: Enabled, not populated on tested board
+> 
+> The series includes the following patches:
+>  1. dt-bindings: vendor-prefixes: Add Luckfox vendor prefix
+>  2. dt-bindings: arm: rockchip: Add luckfox,omni3576 binding
+>  3. arm64: dts: rockchip: Add Luckfox Omni3576 Board support
+> 
+> The new DTS is covered by the existing ROCKCHIP ARCHITECTURE entry in MAINTAINERS.
+> 
+> I am aware of ongoing RK3576 upstreaming efforts (e.g., by Collabora) and
+> welcome feedback or collaboration to align with mainline driver development.
+> 
+> Changes in v2:
+>  - Enabled HDMI node per feedback from Heiko and Nicolas; untested due to
+>    upstream driver issues
+>  - Enabled Ethernet 1 node per Heiko's DT philosophy; untested due to
+>    suspected PHY driver or configuration issues
+>  - Clarified eMMC remains enabled but unpopulated on tested board, per Heiko
+> 
+> Signed-off-by: John Clark <inindev@gmail.com>
+> ---
+> John Clark (3):
+>   dt-bindings: vendor-prefixes: Add luckfox prefix
+>   dt-bindings: arm: rockchip: Add Luckfox Omni3576 board
+>   arm64: dts: rockchip: Add Luckfox Omni3576 Board support
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+>  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../dts/rockchip/rk3576-luckfox-omni3576.dts  | 779 ++++++++++++++++++
+>  4 files changed, 787 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dts
+> 
+> --
+> 2.39.5
+> 
+> 
 > 
 
-Bah.. this patch is missing
-+#include "../../pci.h"
 
-missed during rebase.
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-(pcie-qcom.c already includes this.)
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
-Will send a V2.
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
 
 
-Kind regards,
-Niklas
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: tags/v6.15-rc1-32-g2acfe31a8ce5 (exact match)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250504102447.153551-1-inindev@gmail.com:
+
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: vop@27d00000 (rockchip,rk3576-vop): 'vop-supply' does not match any of the regexes: '^pinctrl-[0-9]+$'
+	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop2.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a200000 (rockchip,rk3576-pcie): interrupt-names:5: 'dma0' was expected
+	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a200000 (rockchip,rk3576-pcie): compatible: 'oneOf' conditional failed, one must be fixed:
+	['rockchip,rk3576-pcie', 'rockchip,rk3568-pcie'] is too long
+	'rockchip,rk3568-pcie' was expected
+	'rockchip,rk3576-pcie' is not one of ['rockchip,rk3588-pcie']
+	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a200000 (rockchip,rk3576-pcie): 'msi-map' is a required property
+	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a200000 (rockchip,rk3576-pcie): Unevaluated properties are not allowed ('compatible', 'power-domains' were unexpected)
+	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: /soc/pcie@2a200000: failed to match any schema with compatible: ['rockchip,rk3576-pcie', 'rockchip,rk3568-pcie']
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a210000 (rockchip,rk3576-pcie): interrupt-names:5: 'dma0' was expected
+	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a210000 (rockchip,rk3576-pcie): compatible: 'oneOf' conditional failed, one must be fixed:
+	['rockchip,rk3576-pcie', 'rockchip,rk3568-pcie'] is too long
+	'rockchip,rk3568-pcie' was expected
+	'rockchip,rk3576-pcie' is not one of ['rockchip,rk3588-pcie']
+	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: /soc/pcie@2a210000: failed to match any schema with compatible: ['rockchip,rk3576-pcie', 'rockchip,rk3568-pcie']
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: /soc/otp@2a580000: failed to match any schema with compatible: ['rockchip,rk3576-otp']
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pmic@23 (rockchip,rk806): Unevaluated properties are not allowed ('pwrkey' was unexpected)
+	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: hdmiphy@2b000000 (rockchip,rk3576-hdptx-phy): 'phy-supply' does not match any of the regexes: '^pinctrl-[0-9]+$'
+	from schema $id: http://devicetree.org/schemas/phy/rockchip,rk3588-hdptx-phy.yaml#
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
