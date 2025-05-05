@@ -4,63 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 900B2C3ABBF
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 23:26:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 889ECC3ABC0
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 00:19:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DnRNvgOfKb6q9Z30ooe8xLy5xNolkA1nvbXc5F7Ttjc=; b=Mf2Ncgr5EnBgys
-	32qY/U8g2zpnyBHwHug4r5Lm2yiL4ub+6ShgUwQFZdlYNHFskAxxU06L9Cz+KAuUjZgXMBK2qf3l+
-	pcBM79d52r2HDmCtrvvzMySUhAqALYuZmx6ZiNzzW41xlN9ZZy8QZj2hQS2lAf3ls0Q4klB28Ml6P
-	Lthmh942fiAypuqlDq6/7j/2Or/5Dm2PpTlZ48mGwLxGtZv8ISMqZTfmqWAEjCi1QIGZmhtgsXsqJ
-	OoCKw0nQnNDcbgkoagwTKCZUo5YVG2vdzdOM6mrE703+N5YSoeSIJ5343v6XhURZDngR6vp+BqWnk
-	YtQsKT3L2H0pIHMIkVEg==;
+	List-Owner; bh=17T84SRf0AVHaBtSjEnbGqNogHQ2aYcFhkrWso9p5Lw=; b=Z5bkg3V/fGEzyj
+	28MUpEGveCc0UOczukM5Yg9OxYE34HYyEFmsPIMertjTBvWta4CL/KeRdeYbz8DOH/2jCzw8QmU5I
+	Q61gQksJBDxh8z62Gx8bQ7Sex7GKX4f6ei5xdid/0klK0CZxkvmBe/myhC6EOEZxRT3AkinV4j85s
+	p7TTQe5voxJk6dm+tfM6iwXYBBkIT97QLGiHy3Pw7M3MYSb9JCiXm/W5B3p8P4cX5oC/NIp+/w+wW
+	2rc8tOyh1jSQKgPkyrMixBmT7G0A82n0IsGDDkAcBmM4Wz1A0L50FnJX3OeqLLg0MzVrYC9rvlJ9w
+	2IDhgdIauonJZ0jBcIgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC5Ct-0000000939E-2eEj;
-	Mon, 05 May 2025 23:26:43 +0000
+	id 1uC61u-00000009Fh0-02py;
+	Tue, 06 May 2025 00:19:26 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC4Fg-00000008kde-1hYf;
-	Mon, 05 May 2025 22:25:33 +0000
+	id 1uC4Lt-00000008mqE-2s3r;
+	Mon, 05 May 2025 22:31:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id ADA1E5C5AC5;
-	Mon,  5 May 2025 22:23:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B94DC4CEEE;
-	Mon,  5 May 2025 22:25:29 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 02F9B5C5523;
+	Mon,  5 May 2025 22:29:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC534C4CEEF;
+	Mon,  5 May 2025 22:31:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746483931;
-	bh=J/ZfUGAWSxYgnt+Ej+Rch9WEZL26/ShHVQWe9Nd3TWw=;
+	s=k20201202; t=1746484316;
+	bh=RJzjm2jlMUB/SBLIUQp0a59U9HrB8VfoOl2O1qsQVxw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=avGwnBK1tfDUrRSMlomB03YEQTQ2GHzNpztGWXPjsNGV3WNUroBxyZgL2LjEF9bCI
-	 lvaDKFDo1ucBIICpe1KFNK6x14gKmEmxgfSuBzLTJ1J0O/J5bZLr0WQRnKwpV57SV5
-	 9nWWS0eZ5hE+UOzJworEAGX/LmvZIhy7MghmHsa+qhZZ1k+XZWgSg3bTvUAl1uwjjx
-	 HieVsqRasjDb6V/zN4rtIQGUDlLykVBEmtKlhxEb4HTM7MlZ+FKRHDMCOvH6W57QFp
-	 C45C0d9ZAXlI9duPyFP1y6GEvQX/S41rZgJxZUeTk199cQcX+UVjfV1Fsgt/5s3Km6
-	 ulaMWbVirctJQ==
+	b=YegHN7jeXMIZqecNqCrivsJDs/1cIdvz88SUTdgrXCDqmfL3mHLzlqLp35CnVc8Fb
+	 /fzvAC1rIl89Fd7YAdxmOFvICkIOx3/134ZX8VF0WopIN9Kt82/RKrljtc3w+Cu2xB
+	 vRUII7hnltIM2BDDwRFEFhaVBO7T3MZh05uGQT7gBXSzRiirXj5iIv/wx77+eDhaG9
+	 pss6RocPnwOPaP5ecQkRcBNxjBRbD0hgZm6r14psga34JFcpgtUoiwyjpvLrw962iK
+	 OgR5p4CeyMCDU4t3nagkpNK2ky/gG57aet+ZpDQHqe5h2nwKx9YqQARPAKI5SXSkSr
+	 WfCgFg96cXiTg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Andy Yan <andy.yan@rock-chips.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
+Cc: Damon Ding <damon.ding@rock-chips.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Vinod Koul <vkoul@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	hjc@rock-chips.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	dri-devel@lists.freedesktop.org,
+	kishon@kernel.org,
+	heiko@sntech.de,
+	linux-phy@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.14 275/642] drm/rockchip: vop2: Add uv swap for cluster window
-Date: Mon,  5 May 2025 18:08:11 -0400
-Message-Id: <20250505221419.2672473-275-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.14 450/642] phy: phy-rockchip-samsung-hdptx: Swap the definitions of LCPLL_REF and ROPLL_REF
+Date: Mon,  5 May 2025 18:11:06 -0400
+Message-Id: <20250505221419.2672473-450-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250505221419.2672473-1-sashal@kernel.org>
 References: <20250505221419.2672473-1-sashal@kernel.org>
@@ -69,8 +64,9 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.14.5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_152532_493127_8E1778DC 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20250505_153157_765926_E5B150D7 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,44 +83,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+From: Damon Ding <damon.ding@rock-chips.com>
 
-[ Upstream commit e7aae9f6d762139f8d2b86db03793ae0ab3dd802 ]
+[ Upstream commit 2947c8065e9efdd3b6434d2817dc8896234a3fc0 ]
 
-The Cluster windows of upcoming VOP on rk3576 also support
-linear YUV support, we need to set uv swap bit for it.
+According to the datasheet, setting the dig_clk_sel bit of CMN_REG(0097)
+to 1'b1 selects LCPLL as the reference clock, while setting it to 1'b0
+selects the ROPLL.
 
-As the VOP2_WIN_UV_SWA register defined on rk3568/rk3588 is
-0xffffffff, so this register will not be touched on these
-two platforms.
-
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
-Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Link: https://patchwork.freedesktop.org/patch/msgid/20250303034436.192400-4-andyshrk@163.com
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Link: https://lore.kernel.org/r/20250205105157.580060-2-damon.ding@rock-chips.com
+Signed-off-by: Vinod Koul <vkoul@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 17a98845fd31b..64029237358d8 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1547,10 +1547,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 
- 	rb_swap = vop2_win_rb_swap(fb->format->format);
- 	vop2_win_write(win, VOP2_WIN_RB_SWAP, rb_swap);
--	if (!vop2_cluster_window(win)) {
--		uv_swap = vop2_win_uv_swap(fb->format->format);
--		vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
--	}
-+	uv_swap = vop2_win_uv_swap(fb->format->format);
-+	vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
- 
- 	if (fb->format->is_yuv) {
- 		vop2_win_write(win, VOP2_WIN_UV_VIR, DIV_ROUND_UP(fb->pitches[1], 4));
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index 2fb4f297fda3d..920abf6fa9bdd 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -94,8 +94,8 @@
+ #define LCPLL_ALONE_MODE		BIT(1)
+ /* CMN_REG(0097) */
+ #define DIG_CLK_SEL			BIT(1)
+-#define ROPLL_REF			BIT(1)
+-#define LCPLL_REF			0
++#define LCPLL_REF			BIT(1)
++#define ROPLL_REF			0
+ /* CMN_REG(0099) */
+ #define CMN_ROPLL_ALONE_MODE		BIT(2)
+ #define ROPLL_ALONE_MODE		BIT(2)
 -- 
 2.39.5
 
