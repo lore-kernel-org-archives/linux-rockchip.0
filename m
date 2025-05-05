@@ -4,56 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BB17C3ABAA
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 14:50:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72E1AC3ABBB
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 16:02:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1tIK8Sj60HBR2bHXWLDh3nDb6vXv5sLEW4zZDPvcRrY=; b=MNfKLBgFoWOvHg
-	DH5futwN70G5cDRRcmi1xuhAs9/69pS50zDeAiv7YBxatbHIIrfrTbrHbZNrJJ8amJcqHHAT1aXoD
-	dULWXd/IBBGmly0SEpul5odZ+Z+JppYOoAW3MaErXx8z8nRrGF0XIMVs8pSI3zuTctR3WiA3yLeXz
-	GRr2zvo1DIUW3n1Uce7INl/DWwyPbKq5u9ozet//kBo6fMM+vy5pl/Nowa2nkbn8clRReuk5NXXPl
-	BFJ98LNsQ6szE5ehJnNYmkwuGo1T5mwrP44yFYgd1UyIEGl2pI2NQp9P5t/Kk9w85eQLHIpD2UvpI
-	9uVH0t8B63S6EnxbbsvQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=r9KsjUrIJZ3Xmwrqjjp1a4C3BgZbIKzpXycOScftFps=; b=FB9P6cQSatcke+
+	QcupoUSUcXcPf6vzBodNw8MfbqxLOjHRyYPeHOPWnRIKkjqL6ogSrqBGhIWWeV2VoP7B7wfKyrPoq
+	aSLbvfqbAFKTcy1hW3zLBmQEAArgys+/4BRy+Jp2Ugy5ordaecpaogon33qb9fJjyFIZ/2OnTfX4P
+	svQgNOO9SxDf//kr3xcVQSFvgFQkjTI1zpXolcCvLgBowAHXJLJZGytq54N8dHvMhgt6sTBx6OVth
+	c2E0rTiqgFIwKfckFzt3A2ipCLw9OpDz3qTpmBJBMha4vZbayz9vnNsnuNZv2t/15s367Ui6FHs9U
+	ev01FEahCPF30E8NZKcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBx90-00000007gnh-0SEa;
-	Mon, 05 May 2025 14:50:10 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uByGW-00000007uUi-07ip;
+	Mon, 05 May 2025 16:02:00 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBx3B-00000007fOr-1KeM;
-	Mon, 05 May 2025 14:44:10 +0000
+	id 1uBy82-00000007tBm-1tRC;
+	Mon, 05 May 2025 15:53:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4F4784A84F;
-	Mon,  5 May 2025 14:44:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9EE95C4CEE4;
-	Mon,  5 May 2025 14:44:08 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 473955C28D8;
+	Mon,  5 May 2025 15:50:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07089C4CEE4;
+	Mon,  5 May 2025 15:53:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746456248;
-	bh=UzAMomFyuhI5xvI4clydLab7kwq4ZLQzU3pP+AbldBQ=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=cSu8Mt8por9ww8yacAcqvoxu8hG0uHsJGl//PCcFDGVwml06a5bylHtsq5TgsLu1j
-	 7rEPWAoSPRrht30xbBwv5+l2tQT/C8cT5rHfdY9lAl+7sdVmmz/9agz/eIq3JpPZKa
-	 H6FWHzmLpm8+OgL8JnRVmKbuIbzsmWMQp1YaFO5k/YwY0cpkVDcEKvYFBIY4di53NY
-	 eb/28aR4TYZNww+iDHcMdn12KdLpI0tL2P2mdvmyH0QvjoHdvcuaGAdB53kUXw/WHH
-	 zUyqAybpkSUNklLbNfbFT4BFbf3eQ0Y5/mcZAQpd4Mt8DICY37OL64C0+cUCoV37Jo
-	 +ggtVD89jEgew==
-Date: Mon, 05 May 2025 09:44:07 -0500
+	s=k20201202; t=1746460393;
+	bh=OuzGpT0oKOvoEQ+Ry+KiXcMfRilwXnlfW13N7w/2E20=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=rIyDE5pTCRMWKq4dq3ozIFoUKl8n7pkzKK/h92pKynmDDKXc3SVdOCzfl9ez9MyaZ
+	 /4hOSGsSq/1b4N7d/eAhUlab8dz3ITQjSpuz3aw8C4NdgQLePaufHvzv9jURQBbsdZ
+	 vzdqaLElyzO+m7zd8VHnq2LUSVmLUZbTuKZ+ob3c6EkwPRptNiRn9lfit+PNVQeBMl
+	 zkKcvrONMC7acMkrdJLtwZ642wb4fg0TZcDhnyvuYQPO9DOL2IBTV5Hb7048VU6oeA
+	 bu0bPxHvhH/Xcshm2kIj37BO86qYGEs5QLajU11AJwLKJqKt5x6+T0I2V81jA+5Mn7
+	 wANRNavSkxz/A==
+Message-ID: <2fd10aed-a103-4c65-9193-17a9bc9fd41e@kernel.org>
+Date: Mon, 5 May 2025 17:53:06 +0200
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: John Clark <inindev@gmail.com>
-In-Reply-To: <20250504102447.153551-1-inindev@gmail.com>
-References: <20250502205533.51744-1-inindev@gmail.com>
- <20250504102447.153551-1-inindev@gmail.com>
-Message-Id: <174645594199.1246544.16804266826655176867.robh@kernel.org>
-Subject: Re: [PATCH v2 0/3] Add Luckfox Omni3576 Carrier Board support for
- RK3576
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 10/10] arm64: defconfig: enable ES8328 and ES8328_I2C
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org
+References: <20250502-rk3576-sai-v3-0-376cef19dd7c@collabora.com>
+ <20250502-rk3576-sai-v3-10-376cef19dd7c@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250502-rk3576-sai-v3-10-376cef19dd7c@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_074409_397576_FFD5327B 
-X-CRM114-Status: GOOD (  21.70  )
+X-CRM114-CacheID: sfid-20250505_085314_577531_C7BE9E4A 
+X-CRM114-Status: UNSURE (   7.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,122 +124,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, heiko@sntech.de, detlev.casanova@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Sun, 04 May 2025 06:24:44 -0400, John Clark wrote:
-> This series adds device tree support for the Luckfox Omni3576 Carrier Board
-> with Core3576 Module, based on the Rockchip RK3576 SoC, enabling essential
-> functionality for booting Linux and basic connectivity. v1 was posted at:
-> https://lore.kernel.org/linux-rockchip/20250502205533.51744-1-inindev@gmail.com
+On 02/05/2025 13:03, Nicolas Frattaroli wrote:
+> The ArmSoM Sige5 board, which is supported in mainline, uses the ES8328
+> audio driver for audio output on its ES8388 codec controlled through I2C.
 > 
-> Tested features (on Linux 6.15-rc4):
->  - UART: Serial console operational
->  - SD card: Mounts and reads/writes successfully
->  - PCIe: NVMe SSD detected, mounted, and fully functional
->  - Ethernet 0: Functional with RGMII PHY
->  - USB 2.0: Host ports
->  - RTC: Timekeeping and wake-up tested
->  - LED: Heartbeat trigger works
->  - eMMC: Enabled, not populated on tested board
-> 
-> The series includes the following patches:
->  1. dt-bindings: vendor-prefixes: Add Luckfox vendor prefix
->  2. dt-bindings: arm: rockchip: Add luckfox,omni3576 binding
->  3. arm64: dts: rockchip: Add Luckfox Omni3576 Board support
-> 
-> The new DTS is covered by the existing ROCKCHIP ARCHITECTURE entry in MAINTAINERS.
-> 
-> I am aware of ongoing RK3576 upstreaming efforts (e.g., by Collabora) and
-> welcome feedback or collaboration to align with mainline driver development.
-> 
-> Changes in v2:
->  - Enabled HDMI node per feedback from Heiko and Nicolas; untested due to
->    upstream driver issues
->  - Enabled Ethernet 1 node per Heiko's DT philosophy; untested due to
->    suspected PHY driver or configuration issues
->  - Clarified eMMC remains enabled but unpopulated on tested board, per Heiko
-> 
-> Signed-off-by: John Clark <inindev@gmail.com>
-> ---
-> John Clark (3):
->   dt-bindings: vendor-prefixes: Add luckfox prefix
->   dt-bindings: arm: rockchip: Add Luckfox Omni3576 board
->   arm64: dts: rockchip: Add Luckfox Omni3576 Board support
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
->  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../dts/rockchip/rk3576-luckfox-omni3576.dts  | 779 ++++++++++++++++++
->  4 files changed, 787 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dts
-> 
-> --
-> 2.39.5
-> 
-> 
-> 
+> Enable them as a module.
+Squash these patches. It is one defconfig update, not one commit per one
+symbol.
 
-
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/v6.15-rc1-32-g2acfe31a8ce5 (exact match)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250504102447.153551-1-inindev@gmail.com:
-
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: vop@27d00000 (rockchip,rk3576-vop): 'vop-supply' does not match any of the regexes: '^pinctrl-[0-9]+$'
-	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip-vop2.yaml#
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a200000 (rockchip,rk3576-pcie): interrupt-names:5: 'dma0' was expected
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a200000 (rockchip,rk3576-pcie): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3576-pcie', 'rockchip,rk3568-pcie'] is too long
-	'rockchip,rk3568-pcie' was expected
-	'rockchip,rk3576-pcie' is not one of ['rockchip,rk3588-pcie']
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a200000 (rockchip,rk3576-pcie): 'msi-map' is a required property
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a200000 (rockchip,rk3576-pcie): Unevaluated properties are not allowed ('compatible', 'power-domains' were unexpected)
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: /soc/pcie@2a200000: failed to match any schema with compatible: ['rockchip,rk3576-pcie', 'rockchip,rk3568-pcie']
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a210000 (rockchip,rk3576-pcie): interrupt-names:5: 'dma0' was expected
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pcie@2a210000 (rockchip,rk3576-pcie): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3576-pcie', 'rockchip,rk3568-pcie'] is too long
-	'rockchip,rk3568-pcie' was expected
-	'rockchip,rk3576-pcie' is not one of ['rockchip,rk3588-pcie']
-	from schema $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: /soc/pcie@2a210000: failed to match any schema with compatible: ['rockchip,rk3576-pcie', 'rockchip,rk3568-pcie']
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: /soc/otp@2a580000: failed to match any schema with compatible: ['rockchip,rk3576-otp']
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: pmic@23 (rockchip,rk806): Unevaluated properties are not allowed ('pwrkey' was unexpected)
-	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: hdmiphy@2b000000 (rockchip,rk3576-hdptx-phy): 'phy-supply' does not match any of the regexes: '^pinctrl-[0-9]+$'
-	from schema $id: http://devicetree.org/schemas/phy/rockchip,rk3588-hdptx-phy.yaml#
-
-
-
-
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
