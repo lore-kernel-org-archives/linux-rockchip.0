@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57502C3ABB0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 12:15:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07A20C3ABB0
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 12:33:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gzCfLg3RnQJ2rAykoZtc2qDD7jKKzxbFRPOkqvq44aU=; b=xuKHUmYQzpg9EC
-	BQyXsnPZ6qxw/tufzl9xsryexp9yngAsVYl/L1Y0it+tGIiNllQkzD5EYgzvfI1g0iTfP5si/gyjt
-	DFkl+C4otmaHtgvHT8zFQa47cplngj7gme2UaZJ0eyUgJmACzCyKzuZqIfpAHVfcm8Oo9VlHYqt8X
-	URruVfTzaetyL/ImiOiOgTDkLK2kXkKO4mVq0CFgUxCjFKEb2/rxnnMdqczr4urdnl5HZzp8As/2S
-	CGwVNKwWMibcZeao6bZ4uV0Szp4YNLcjPsrzpa/PvvHqEvWbBc0Wwr7UX5d7uNbIvcfIoDA4C0lFp
-	lSfOoTgjqwNUeaF+bbIg==;
+	List-Owner; bh=hTubs6GQUjr3eor7P92B6aThqBB7Fmn7IiD2YsVxLGA=; b=Ch8uo+BmGDkxeK
+	YD3NbyMZbEsSDMexln9UwXjjr7ZeM/RZtH7LrYkhG4lfLk8vXMjKUofouiqxIg5aFPSxnHwp8GHa7
+	JSVo0dHKRG0vhb0BaViJjYbr8X4FbNRvu7TGJruSizUmMtMz4LE8SiQ8w/MsIx7on5VgOPPjw6Pql
+	W3Wu1JeYqxSQEOFdco10wCDSbJJSobKFfoPUnM135iFswdEusNkVFs0iiBgLUJJQvzRAmGWTjybk3
+	2FvXgkLBEmG9irx4hZeqrWIM2tCxFNVn9cqTb/APFtPlXS2Hbgp0r34yDL3nlTs7SKIpG4a21KF2y
+	dnm4/D5otJmGMtMb0R8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBuiw-00000007HIN-3xJR;
-	Mon, 05 May 2025 12:15:06 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1uBv16-00000007KSy-0A8Z;
+	Mon, 05 May 2025 12:33:52 +0000
+Received: from abb.hmeau.com ([144.6.53.87])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBuiu-00000007HHN-27J8
-	for linux-rockchip@lists.infradead.org;
-	Mon, 05 May 2025 12:15:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1746447302;
- bh=2e/MuYHAA+jWnpekvvoY+BPMl0OhYcezCPyB7/Johv8=;
- b=tXttRvQxYFb7f8RZZfTqsnjxniLYsCrXbg1VR45k7yZdMYQIU4y2YzES5wc6rtBs8WmiuhLN4
- JwNy1EUTBYkRawHeVnRLfqDtRlMczxYSxty1hvSx9Q+vjDGk2Gb4PGrL5b8mOMvO/67fZhTU7Dp
- iPF2wpiDRSPySNff3HObxoPrj8Mv9bt/TnDDbXDCooY1rtDrv+fzkTPQLTvXtFmbD4Klo886qj5
- H81y8+UQJaZFf8j8MF0wfgAqD3RQ6QWdx0TK6BOomw/66x+d8bQYb0ECPZu3fhhhfBigk+/5/ge
- VPkMx10O1Q0h90mAdfZVNBwSr47TmtThsu/YAsr93zAQ==
-X-Forward-Email-ID: 6818abba07f380a11152deca
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.0.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <4dc3a05d-34eb-44d1-9855-7b8e626e1942@kwiboo.se>
-Date: Mon, 5 May 2025 14:14:46 +0200
+	id 1uBuvZ-00000007JRV-0TAT;
+	Mon, 05 May 2025 12:28:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hmeau.com;
+	s=formenos; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=QThOCW+spE4F0Srm+t3y3bO2Fskva0qz0HPI3WJ3OuI=; b=b5O+J/UMfheJprS0FNIu39QNrM
+	62+1pNEYJ1B82BoYcJ+BUzBGUN1UtoFblR5Uf/YOCTQX1Zd4Tb8drZNnD+ZN9RgJtZJJHqPgnix3g
+	6ttmCpDmKNBmTYsOy3XaD3cCHiUESN0dOhtcVk3msOvK3wwFMQXsAotObNwy68uV5qub6zCZ1jkvE
+	pJ1Go73Kk3j7nmi1LXwcyd67gRdst31E8KSUPLR4O+Ls8eJHtotmlYWaPGPItxgFRzySRi1pFeICa
+	rQOAmc07b2nnRhn6dKL3ZTGOKomtfl3xoO0ecu+K/misbBAy5+7VXhT0uq0fRzKW/DD73CxINB1qM
+	L87UyfGA==;
+Received: from loth.rohan.me.apana.org.au ([192.168.167.2])
+	by formenos.hmeau.com with smtp (Exim 4.96 #2 (Debian))
+	id 1uBuv2-003YHw-2t;
+	Mon, 05 May 2025 20:27:37 +0800
+Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Mon, 05 May 2025 20:27:36 +0800
+Date: Mon, 5 May 2025 20:27:36 +0800
+From: Herbert Xu <herbert@gondor.apana.org.au>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Daniel Golle <daniel@makrotopia.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Olivia Mackall <olivia@selenic.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com, linux-crypto@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/3] RK3576 Hardware RNG
+Message-ID: <aBiuuOAcq1rCM0Ob@gondor.apana.org.au>
+References: <20250430-rk3576-hwrng-v1-0-480c15b5843e@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: Add Luckfox Omni3576 Board
- support
-To: John Clark <inindev@gmail.com>
-Cc: heiko@sntech.de, robh@kernel.org, conor+dt@kernel.org,
- detlev.casanova@collabora.com, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20250502205533.51744-1-inindev@gmail.com>
- <20250504102447.153551-1-inindev@gmail.com>
- <20250504102447.153551-4-inindev@gmail.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250504102447.153551-4-inindev@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20250430-rk3576-hwrng-v1-0-480c15b5843e@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_051504_892699_9CE3E956 
-X-CRM114-Status: GOOD (  19.28  )
+X-CRM114-CacheID: sfid-20250505_052809_147772_723E8A4C 
+X-CRM114-Status: GOOD (  21.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,86 +81,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi John,
-
-On 2025-05-04 12:24, John Clark wrote:
-> Add device tree for the Luckfox Omni3576 Carrier Board with Core3576
-> Module, powered by the Rockchip RK3576 SoC with four Cortex-A72 cores,
-> four Cortex-A53 cores, and a Mali-G52 MC3 GPU. This initial
-> implementation enables essential functionality for booting Linux and
-> basic connectivity.
+On Wed, Apr 30, 2025 at 06:16:33PM +0200, Nicolas Frattaroli wrote:
+> Gee Nicolas, how come your mom lets you write two Rockchip HWRNG drivers
+> in a year?
 > 
-> Supported and tested features:
->  - UART for serial console
->  - SD card for storage
->  - PCIe with NVMe SSD (detected, mounted, and fully functional)
->  - Gigabit Ethernet 0 with RGMII PHY
->  - USB 2.0 host ports
->  - RK806 PMIC for power management
->  - RTC with timekeeping and wake-up
->  - GPIO-controlled LED with heartbeat trigger
->  - eMMC (enabled, not populated on tested board)
+> In short, RK3576 (and RK3562 and RK3528) introduce another HWRNG IP. It
+> actually has quite a few cool features, but I ignored the cool bits and
+> went straight for the true entropy. Some of the cool bits someone else
+> may wish to add in the future: AES-CTR PRNG that's regularly reseeded
+> from the entropy, adjustments for oscillator and oscillator ring lengths
+> to maximise entropy generation, automatic continuous quality checking of
+> the produced entropy by the hardware itself, etc.
 > 
-> The device tree provides a foundation for further peripheral support, such
-> as WiFi, MIPI-DSI, HDMI, and Ethernet 1, in future updates.
+> In testing, it seems to produce about 2 mbit/s of high quality entropy
+> on the RK3576 with its default settings when we read the TRNG entropy
+> output directly. That's less than we'd get if we had the hardware use
+> the PRNG to stretch it, but I've decided to leave that up to Linux's
+> entropy pool implementation for now.
 > 
-> Tested on Linux 6.15-rc4
+> RK3562 and RK3528 probably just need a compatible and a DTS node to
+> enable it as well, but I don't have any RK3562/RK3528 boards to test
+> this with, so it's not done in this series.
 > 
-> Signed-off-by: John Clark <inindev@gmail.com>
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../dts/rockchip/rk3576-luckfox-omni3576.dts  | 779 ++++++++++++++++++
->  2 files changed, 780 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dts
+> Nicolas Frattaroli (3):
+>       dt-bindings: rng: rockchip,rk3588-rng: add rk3576-rng compatible
+>       hwrng: rockchip - add support for RK3576's RNG
+>       arm64: dts: rockchip: add RK3576 RNG node
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 7948522cb225..22d74367b7e6 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -136,6 +136,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-luckfox-omni3576.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-roc-pc.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-rock-4d.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3582-radxa-e52c.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dts b/arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dts
-> new file mode 100644
-> index 000000000000..73351ba7830c
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dts
-> @@ -0,0 +1,779 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2024 Rockchip Electronics Co., Ltd.
-> + *
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/leds/common.h>
-> +#include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/soc/rockchip,vop2.h>
-> +#include "rk3576.dtsi"
-> +
-> +/ {
-> +	model = "Luckfox Omni3576";
-> +	compatible = "luckfox,omni3576", "rockchip,rk3576";
+>  .../bindings/rng/rockchip,rk3588-rng.yaml          |  5 +-
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi           |  8 +++
+>  drivers/char/hw_random/rockchip-rng.c              | 73 ++++++++++++++++++++++
+>  3 files changed, 84 insertions(+), 2 deletions(-)
+> ---
+> base-commit: 4e0a9c660788594b5b49ac07f0fbdccd2218431e
+> change-id: 20250429-rk3576-hwrng-8c308b5711ae
+> 
+> Best regards,
+> -- 
+> Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Because this is a carrier board this should probably be something like:
-
-  compatible = "luckfox,omni3576", "luckfox,core3576", "rockchip,rk3576";
-
-And this .dts-file should be split up into something like:
-- rk3576-luckfox-core3576.dtsi for parts related to the Core3576 SoM
-- rk3576-luckfox-omni3576.dts for parts only related to the carrier board
-
-Regards,
-Jonas
-
-[snip]
+Patches 1-2 applied.  Thanks.
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
 
 _______________________________________________
 Linux-rockchip mailing list
