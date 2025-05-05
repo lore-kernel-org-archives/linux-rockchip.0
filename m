@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B593C3ABAA
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 20:55:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE0B5C3ABB6
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 21:02:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=54Uv8m7RXAyUYJLIgiRClExba0umF0UWO76l+LMa59Y=; b=cbKCX2kV0wJaFi
-	+qoVOBES0AHOFwY43BhUcXb1UQngO99K8jSYnNBqeM1tqfoXihzDxUR5qnTyJOg+qBnr5qS0zCJfn
-	9SCR2WSP1bj9JszuW1lx0U/qNtsCq5luUCjrQKUMrWdsAJgG/JOB44Ta6g7fkHiAVrPQ8chlx4cYA
-	Z4nEKnQuD8NO7hYsJ0G5cOYUpIP/dDIN6XoGyPOI9t6HncgSZQ+wceqCZZpu6Lc4SYBJc6QpZRdP6
-	eKJ2mjJenrvZF89oFgbg728VDU62LVDD6N1y36l4zLkvkrjeSkxf5SalAiNfmzm8gXlhJ4IL8t24x
-	x9a9gEthvVEuaqPOFYEg==;
+	List-Owner; bh=3cYaG9pLKNVpeaBgW07ngKOSJNUmxR8nZ6jHeR1AizM=; b=A5fksk4AIwPGud
+	piL4dxH6QlgUZ3ivV6CwCM0TEG6Cltkvy5mrxKn0oHr1SpvqHXHbiOYAMIWiwU15Is9wyeUtt+Map
+	v/NqwPENwKPBm6k6NqpNFfvszqZUg6N/VYke34MertdEnEs2Gv/6vcti/ft9AMN6R6Kke68fSDw52
+	OHT9bRW8f/vbwfZtc9nUF1FicXo70Bm+NxHuqZdo4EnduGZz7VxaiCM+enJwTC8InsTPsVVT0GLWs
+	yjmiwfWf6hiG91R4/fx68Tnb3mTe7SCsTVRICUHN+PDMaSFqTecjLD/l6dXUgIfiiRqlG+a3q74I+
+	0OkVNV247+okr4LXnciA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC2qZ-00000008YIs-2szD;
-	Mon, 05 May 2025 20:55:31 +0000
+	id 1uC2xA-00000008Yxb-1nBb;
+	Mon, 05 May 2025 21:02:20 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC2qX-00000008YIC-1lFZ
+	id 1uC2vC-00000008Yhh-10zh
 	for linux-rockchip@lists.infradead.org;
-	Mon, 05 May 2025 20:55:30 +0000
+	Mon, 05 May 2025 21:00:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
  Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1746478528;
- bh=qQneQiujTp667QxrLtu0L+PuxYk5iu271S89xRTqn6s=;
- b=p0Jh0R4lTDvscv+zlDaL3Tx0VmaXwdr93LfW4u/up3ROBHdOTQpJVEG7jaFBFxlAdbjyn5grS
- iOHlTrmwbK57cUlxfKGJGPtVyaWFY2VZPZxMBNQo7sVxUw4vuXHIroKS/dgZjaCZW50WENbduRC
- Op6dCS0pbm4ZQN0JJ7WapT6yTMVR4L2tWaKGpyBnMYMoNbfcMe2nF4mL9r02TYViryJfSfY5IvD
- /GRUGfC/5d+bvl/ygTbshjamcaC58RwjaIA7EMtgp3MAzu8pJtlGF9KLWVHKhZlGfpGe1+ayUCm
- LkQnT1JIv5oP+nfx39uHlQ+EMShBq5BJLFD3D/OjTMIw==
-X-Forward-Email-ID: 681925af46c37f8647c20276
+ s=fe-e1b5cab7be; t=1746478818;
+ bh=D6mVc2F17QEJBHK1fhZDepaSGxODcDU0cKVXx0iYDDg=;
+ b=s6RzvIbsx0HfYMOHCD10Y+B+6waLiGu4zDUKhw/1Okn0giKJyNsA/oNFQYfBvIr0a/jJyjVSY
+ DdmFl//W4W5YuXclfIqL3/8WtolzdBCbNPAXdp8/H2SRE3dMoVGI2ipvO9hFrwfU63EiCkBhuK5
+ 5mmv5RTybUAAhPJH320hCMqJWdMfoEoBQArD3E1iuhRyBeovaBlizak9a79uYcXyyVFtTyYNpSh
+ y9GuLPWZTJtpEcGg0VlWyXhwwdgxwQh/t6jtviprTbwENjS80CZsHEXBp0PJ+HD7m1fuXnYmMX4
+ uSmTuSlGGU3LebHTw636WSkxtPbVh2RfdfiXUZTfn+xA==
+X-Forward-Email-ID: 681926d746c37f8647c203a8
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
 X-Forward-Email-Version: 1.0.2
@@ -45,21 +45,21 @@ X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <f0ef6679-7ddf-4deb-98a3-755ac2b61a57@kwiboo.se>
-Date: Mon, 5 May 2025 22:55:05 +0200
+Message-ID: <f19f11f7-c020-44a3-84fa-eb9ca48ed11f@kwiboo.se>
+Date: Mon, 5 May 2025 23:00:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 4/5] arm64: dts: rockchip: Add SDMMC/SDIO controllers
- for RK3528
+Subject: Re: [PATCH v4 5/5] arm64: dts: rockchip: Enable SD-card interface on
+ Radxa E20C
 To: Yao Zi <ziyao@disroot.org>, Heiko Stuebner <heiko@sntech.de>
 References: <20250417143647.43860-1-ziyao@disroot.org>
- <20250417143647.43860-5-ziyao@disroot.org>
+ <20250417144005.43927-1-ziyao@disroot.org>
 Content-Language: en-US
 From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250417143647.43860-5-ziyao@disroot.org>
+In-Reply-To: <20250417144005.43927-1-ziyao@disroot.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_135529_805142_DBFCE94F 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20250505_140018_312778_1F792325 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,120 +77,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2025-04-17 16:36, Yao Zi wrote:
-> RK3528 features two SDIO controllers and one SD/MMC controller, describe
-> them in devicetree. Since their sample and drive clocks are located in
-> the VO and VPU GRFs, corresponding syscons are added to make these
-> clocks available.
+On 2025-04-17 16:40, Yao Zi wrote:
+> SD-card is available on Radxa E20C board.
 > 
 > Signed-off-by: Yao Zi <ziyao@disroot.org>
 
-SD-cards and SDIO WiFi is detected on my RK3528 boards with help of this
-so this is:
+SD-card is detected and working on my E20C, and this also seem to match
+the schematics for E20C:
+
+  mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+  mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
+  dwmmc_rockchip ffc30000.mmc: Successfully tuned phase to 215
+  mmc1: new UHS-I speed SDR104 SDHC card at address 59b4
+  mmcblk1: mmc1:59b4 USD00 29.5 GiB
+   mmcblk1: p1
+
+  $ cat /sys/kernel/debug/mmc1/ios
+  lock:           150000000 Hz
+  actual clock:   148500000 Hz
+  vdd:            21 (3.3 ~ 3.4 V)
+  bus mode:       2 (push-pull)
+  chip select:    0 (don't care)
+  power mode:     2 (on)
+  bus width:      2 (4 bits)
+  timing spec:    6 (sd uhs SDR104)
+  signal voltage: 1 (1.80 V)
+  driver type:    0 (driver type B)
+
+So this is:
 
 Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
-
-> ---
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 69 ++++++++++++++++++++++++
->  1 file changed, 69 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> index 826f9be0be19..931d4ac004c5 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> @@ -321,6 +321,16 @@ qos_vpu: qos@ff280400 {
->  			reg = <0x0 0xff280400 0x0 0x20>;
->  		};
->  
-> +		vpu_grf: syscon@ff340000 {
-> +			compatible = "rockchip,rk3528-vpu-grf", "syscon";
-> +			reg = <0x0 0xff340000 0x0 0x8000>;
-> +		};
-> +
-> +		vo_grf: syscon@ff360000 {
-> +			compatible = "rockchip,rk3528-vo-grf", "syscon";
-> +			reg = <0x0 0xff360000 0x0 0x10000>;
-> +		};
-
-Adding these two syscons could possible be split out into a separate
-patch as they are also needed for adding support for the two Ethernet
-controllers [1], the GMAC driver already landed in v6.15-rc1.
-
-[1] https://lore.kernel.org/all/20250310001254.1516138-1-jonas@kwiboo.se/
 
 Regards,
 Jonas
 
-> +
->  		cru: clock-controller@ff4a0000 {
->  			compatible = "rockchip,rk3528-cru";
->  			reg = <0x0 0xff4a0000 0x0 0x30000>;
-> @@ -501,6 +511,65 @@ sdhci: mmc@ffbf0000 {
->  			status = "disabled";
->  		};
+> ---
+>  .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 30 +++++++++++++++++++
+>  1 file changed, 30 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+> index 57a446b5cbd6..09d917a0acc5 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+> @@ -17,6 +17,7 @@ / {
 >  
-> +		sdio0: mmc@ffc10000 {
-> +			compatible = "rockchip,rk3528-dw-mshc",
-> +				     "rockchip,rk3288-dw-mshc";
-> +			reg = <0x0 0xffc10000 0x0 0x4000>;
-> +			clocks = <&cru HCLK_SDIO0>,
-> +				 <&cru CCLK_SRC_SDIO0>,
-> +				 <&cru SCLK_SDIO0_DRV>,
-> +				 <&cru SCLK_SDIO0_SAMPLE>;
-> +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> +			fifo-depth = <0x100>;
-> +			interrupts = <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH>;
-> +			max-frequency = <200000000>;
-> +			pinctrl-names = "default";
-> +			pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>;
-> +			resets = <&cru SRST_H_SDIO0>;
-> +			reset-names = "reset";
-> +			status = "disabled";
-> +		};
+>  	aliases {
+>  		mmc0 = &sdhci;
+> +		mmc1 = &sdmmc;
+>  	};
+>  
+>  	chosen {
+> @@ -108,6 +109,18 @@ vcc5v0_sys: regulator-5v0-vcc-sys {
+>  		regulator-min-microvolt = <5000000>;
+>  		regulator-max-microvolt = <5000000>;
+>  	};
 > +
-> +		sdio1: mmc@ffc20000 {
-> +			compatible = "rockchip,rk3528-dw-mshc",
-> +				     "rockchip,rk3288-dw-mshc";
-> +			reg = <0x0 0xffc20000 0x0 0x4000>;
-> +			clocks = <&cru HCLK_SDIO1>,
-> +				 <&cru CCLK_SRC_SDIO1>,
-> +				 <&cru SCLK_SDIO1_DRV>,
-> +				 <&cru SCLK_SDIO1_SAMPLE>;
-> +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> +			fifo-depth = <0x100>;
-> +			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
-> +			max-frequency = <200000000>;
-> +			pinctrl-names = "default";
-> +			pinctrl-0 = <&sdio1_bus4>, <&sdio1_clk>, <&sdio1_cmd>;
-> +			resets = <&cru SRST_H_SDIO1>;
-> +			reset-names = "reset";
-> +			status = "disabled";
-> +		};
+> +	vccio_sd: regulator-vccio-sd {
+> +		compatible = "regulator-gpio";
+> +		gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&sdmmc_vol_ctrl_h>;
+> +		regulator-name = "vccio_sd";
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		states = <1800000 0x0>, <3300000 0x1>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+>  };
+>  
+>  &pinctrl {
+> @@ -130,6 +143,12 @@ wan_led_g: wan-led-g {
+>  			rockchip,pins = <4 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+>  	};
 > +
-> +		sdmmc: mmc@ffc30000 {
-> +			compatible = "rockchip,rk3528-dw-mshc",
-> +				     "rockchip,rk3288-dw-mshc";
-> +			reg = <0x0 0xffc30000 0x0 0x4000>;
-> +			clocks = <&cru HCLK_SDMMC0>,
-> +				 <&cru CCLK_SRC_SDMMC0>,
-> +				 <&cru SCLK_SDMMC_DRV>,
-> +				 <&cru SCLK_SDMMC_SAMPLE>;
-> +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> +			fifo-depth = <0x100>;
-> +			interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
-> +			max-frequency = <150000000>;
-> +			pinctrl-names = "default";
-> +			pinctrl-0 = <&sdmmc_bus4>, <&sdmmc_clk>, <&sdmmc_cmd>,
-> +				    <&sdmmc_det>;
-> +			resets = <&cru SRST_H_SDMMC0>;
-> +			reset-names = "reset";
-> +			rockchip,default-sample-phase = <90>;
-> +			status = "disabled";
+> +	sdmmc {
+> +		sdmmc_vol_ctrl_h: sdmmc-vol-ctrl-h {
+> +			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
 > +		};
+> +	};
+>  };
+>  
+>  &saradc {
+> @@ -148,6 +167,17 @@ &sdhci {
+>  	status = "okay";
+>  };
+>  
+> +&sdmmc {
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	cap-sd-highspeed;
+> +	disable-wp;
+> +	sd-uhs-sdr104;
+> +	vmmc-supply = <&vcc_3v3>;
+> +	vqmmc-supply = <&vccio_sd>;
+> +	status = "okay";
+> +};
 > +
->  		dmac: dma-controller@ffd60000 {
->  			compatible = "arm,pl330", "arm,primecell";
->  			reg = <0x0 0xffd60000 0x0 0x4000>;
+>  &uart0 {
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&uart0m0_xfer>;
 
 
 _______________________________________________
