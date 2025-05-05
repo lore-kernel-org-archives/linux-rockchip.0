@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D7BDC3ABB6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 02:47:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EC99C3ABBC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 03:42:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eun8F/TOWXoYmb4nfA2mQ80Y+2D0GTNMXLb1fOdL9aQ=; b=mgsYzbexWcjvic
-	LMgA2C6gge5m2LkqoLitW9SmQKq44BLk5ar00LR5cJtW3+0TYdw09QnRCEpddLx8ItoDOdGRgzo/8
-	lIKCtvPhNJHOVoOJHPKeYltLBkwF2BvVsDw9LyFVVqlMc0vBpC3zjy4neMUsntMjh0J75V5VIyQFI
-	uOxAlT/PhjlKOkkcWMNPkSW8wzf3bhdQjOUqO3pwjCyrew6p25iPvexkheZCQ98jqQDOTpJW0j9gY
-	OimXiqRCgGwr7ezYqyY4mfvFAmASNipRDNaCVoliGiUDz4nj/VOnHIrZMZVaMTeD3M/dNcM8ZrXE/
-	jCLG9QDwMWeQESXXqo3A==;
+	List-Owner; bh=3D0yNyLVes9S7HomxMUnnQ8wt2nghLBPuTVKe0Bu09Q=; b=rw5Tp5bB1K09Ou
+	GPpQ4zGfiIL8Eqw2KIM7KRztlaqo8rxlncRgy5MJInXKMFnUqHQLWe+IWrJMDyiUcIIiCwCm6dPAZ
+	BK3sdvEgymIqB+4J9GTLSqHhorz0zcjcn3DcrBXxhzANbq6qbQCN+QrbWG5ot3msq8GtKaQ+dIktC
+	NaHg1Fk+fiBOFSrd/VyIOBWqjdrf6ekb2TDYEGNswFosXIXyrVsevkyG5vxORUMWgPjMLknplBoTf
+	IE/u8yx+9IkMu3TdBgacfr7mjoBgYuEKKc7lCJgfIArkqD3HEwWeqZ2TTBPnzR98nnV1hemySpeQA
+	p0MTs7jgkvABCqV5Y1vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC8LV-00000009plN-0RxX;
-	Tue, 06 May 2025 02:47:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uC9CG-0000000A2wd-2AAK;
+	Tue, 06 May 2025 03:42:20 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC4nq-00000008vhj-2Izs;
-	Mon, 05 May 2025 23:00:51 +0000
+	id 1uC4wP-00000008yC6-2FiG;
+	Mon, 05 May 2025 23:09:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8D1D643B4B;
-	Mon,  5 May 2025 23:00:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7ABD7C4CEE4;
-	Mon,  5 May 2025 23:00:48 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C303E5C5ABD;
+	Mon,  5 May 2025 23:07:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF809C4CEE4;
+	Mon,  5 May 2025 23:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746486050;
-	bh=0jQE3KDVkQIcFhUWSPApUuwLmLih7gS9XsMWWitDT6c=;
+	s=k20201202; t=1746486580;
+	bh=5vqwOQMoxkHQre/5nMOtaa2tCID368xye4ecQUKhAzE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aED7ltklHeD7aszD/4LMKovW8oR4l3lBUgPaNVzgf6tCDVy955u2XZbzKSfupdbsg
-	 6Dyscbh5kaWDsCmqPl2J/nGOapk7J1CqrEZFxmLiLrQx0XQjJ4aiqNaJltKoQCWKhq
-	 BagLFPGsqfDbXln01I4onOMyETb7RYSFaoXPBHMqQXgu8YXa+BR1205MSlSgBpQ0yf
-	 4MewG4rE+c5I/reex6dkijMO24nTTk+rpmco7fjS+RmA09H8Z4cjkviS2NBZZ8oVRw
-	 POaqAEKAc5GeXs71G0xXvv5Dq+9vBjqWCZEtPD9wbb7TZAqo7apnkuOs5KtIThZgGG
-	 ZOIKZ9jQx1ALA==
+	b=IYcNVUUMDNmC+qB5lZuYkL8KUJaoHgXTwSWHwCrNjkrM9XLuKeCZJY9+7U/KmxUC6
+	 3dWuobqrKLl/yXlTxnU0wgVqcIFrsDfU9lyynHE6axP4CAeN/fuyY/pSR+cGKTl8tf
+	 Lpmn3qwmcWFrGD29Lukb3LAwN11xF81eSmr29p/zwscGspBEwbYG5B/vOnawrvmiUf
+	 q659jHimfwwiUIOtbTTsaUmUJIlvCZMxU4dE007O6uJESu9OWzl7fmkvjZ2EE9B+Eh
+	 VFSiDrX0yL6EIsX3WP+c0xNeVZ1kurw6q37dvYrclBCFs7I8SKeUl8fEh/TjDPbs5v
+	 hOWFgjxjNFhmg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -58,19 +58,19 @@ Cc: Andy Yan <andy.yan@rock-chips.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 127/294] drm/rockchip: vop2: Add uv swap for cluster window
-Date: Mon,  5 May 2025 18:53:47 -0400
-Message-Id: <20250505225634.2688578-127-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 100/212] drm/rockchip: vop2: Add uv swap for cluster window
+Date: Mon,  5 May 2025 19:04:32 -0400
+Message-Id: <20250505230624.2692522-100-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250505225634.2688578-1-sashal@kernel.org>
-References: <20250505225634.2688578-1-sashal@kernel.org>
+In-Reply-To: <20250505230624.2692522-1-sashal@kernel.org>
+References: <20250505230624.2692522-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.89
+X-stable-base: Linux 6.1.136
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_160050_613227_6D314F8C 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20250505_160941_618730_1DD68EED 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,10 +109,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index d8f8c37c326c4..0193d10867dd2 100644
+index 955ef2caac89f..6efa0a51b7d65 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1290,10 +1290,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+@@ -1289,10 +1289,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
  
  	rb_swap = vop2_win_rb_swap(fb->format->format);
  	vop2_win_write(win, VOP2_WIN_RB_SWAP, rb_swap);
