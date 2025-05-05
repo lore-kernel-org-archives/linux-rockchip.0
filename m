@@ -4,57 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47A39C3ABBF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 01:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CD1AC3ABB6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 01:31:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wARnj24StZmpGhiVUOVkZDxok2aj/thMaoRtpM6MRlg=; b=UCASjvuuAdYaM0
-	3Lj+gfM1uj//dkNmS/owNixtLh2M0XB8BteqMUmuqEB3T5sNWdNgUXejTQ94xwexC2qJ4ONclDjSE
-	u2XkkHOWHVieF470JgVZumT9NFNllDUEXEH9ECAh3QAKuVwuTHqKk4yIiWyYxkq6Fux5Qk16rWAVi
-	Il1Fpql0Qg8Ea4P9yy6shV3NpmE0gnYYM+I29KXiYvYGlu5XFqrEy2d++BQlDf7wa2v53qp2ok6/W
-	8YFNuaHyDsxeTgl79n7l3+IGZ00OJ/MSW1fHqs8SJ7oQ9cg0TSxlEJKD6iXikZiMCyGSQa31J7IuK
-	fOU4x5X6jRInd37B7K9A==;
+	List-Owner; bh=NqcjFRyhmh35iPyS9mHy8561KM2eU8a/4lgmRkizeIw=; b=0UVM2IkGfNGx3y
+	KHD67NTrsLhkay2WpnFmb4RORaRtkKI5onl3bfknJvNBf1IPOZshoxwayLQL58G90wdN0g17jnnfY
+	KpUBcHGPCdiwUHXauWwswrl1UXqyjG5i8cxE4Y1q9va3MiglV84azRCH+8YrN3aoOzL9Gp32xBXWN
+	AsbvUyLhV4gsKpDF+JUXFr9kDclZ/C1bkPcIX5J6jes8aNhz0AIPQlA0Et7vVdTRDq3Ip/dohfY8k
+	+XOhsggLoMImxERLdCqLiC+4VpCi9Ss1MGI2iX28i0d7nFYtYFIl/EIUbzr+pOVGxPqJaB1yp5h4O
+	bt4ADnpyExYGgeMYJtSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC6n6-00000009RcL-2DAW;
-	Tue, 06 May 2025 01:08:12 +0000
+	id 1uC797-00000009Wnq-0k7P;
+	Tue, 06 May 2025 01:30:57 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC4XZ-00000008qQc-45Nx;
-	Mon, 05 May 2025 22:44:03 +0000
+	id 1uC4aS-00000008rP7-2kVz;
+	Mon, 05 May 2025 22:47:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2BDD05C0687;
-	Mon,  5 May 2025 22:41:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7242C4CEE4;
-	Mon,  5 May 2025 22:43:59 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E5F405C0687;
+	Mon,  5 May 2025 22:44:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20A59C4CEEF;
+	Mon,  5 May 2025 22:46:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746485041;
-	bh=vuGAH76yVNoA6UsmNpp/0fHm5dZYlv92C+/rbmGG6oA=;
+	s=k20201202; t=1746485219;
+	bh=xUeYcQ19WA4YDx8LAq/eonv8hTGDCBs6kyGHFjgYn2w=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=G3yK4O11ZrGQ18ta+igIvQa2aBdqEKe0F0btHHNr+89IxpwUCmnWJDhcTy+mpQWKA
-	 uqdftIM6yVBqsfspF5hZaiUrnvkwndVpM+fqPfXArrXw5qv8aYp0NUeTAvuZIh8WHS
-	 crvIg9vr9WUwahNdLdBBjAFrioRN0KrDJya19o4ovevpb4/m2Hxls4IzVH4NYP87C2
-	 QeYJtcwNf2D2ZxJeoIPWD5sdJ7ERybFArozRzP8g4D6BbEjQXD7gbjw5Xx7MK22uWq
-	 HcZaBT8P3NhDyCb61mzzqEuvpzNQSUhYArCM5JIwT3bJoBFUR5l452TLO591dJOont
-	 5jtPiIZiqKzJA==
+	b=SVC1focnSfOqZWvnrLY1O0YZC8D4IY1SU8ksD8H684bbhCRyy5IPBMpeg2C38QAAh
+	 IZLjkYtagQ0ocTV0ALnJCy15ic8tw+BMmN4ScNYrHRmXngoZvCg4vZtQduOxf3+fmK
+	 JAE8cM5/pxAH5HyPs4MP1ChzKOPxL0/utJwucl0OaBzv+XAAx71v9yKqGCCWvmR++l
+	 hH4COtgQDvclWYJBLFSgnQlcwFlZ7Mn1Q4zIQtiLFtoZJgOFDi5F4rr0RL/a+dLOcX
+	 6iRlAOUaQ0nxrVFH939r1iEv0DwRXfbi/vZYDcZ3Ln01RNiNW1Qgd1pfITBCqwB8vr
+	 EiIUF794Belyg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
 Cc: Andy Yan <andy.yan@rock-chips.com>,
-	Vinod Koul <vkoul@kernel.org>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>,
 	Sasha Levin <sashal@kernel.org>,
-	kishon@kernel.org,
-	heiko@sntech.de,
-	linux-phy@lists.infradead.org,
+	hjc@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.12 137/486] phy: rockchip: usbdp: Only verify link rates/lanes/voltage when the corresponding set flags are set
-Date: Mon,  5 May 2025 18:33:33 -0400
-Message-Id: <20250505223922.2682012-137-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.12 217/486] drm/rockchip: vop2: Add uv swap for cluster window
+Date: Mon,  5 May 2025 18:34:53 -0400
+Message-Id: <20250505223922.2682012-217-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250505223922.2682012-1-sashal@kernel.org>
 References: <20250505223922.2682012-1-sashal@kernel.org>
@@ -63,8 +69,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.12.26
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_154402_105992_E2C2F2A1 
-X-CRM114-Status: GOOD (  15.53  )
+X-CRM114-CacheID: sfid-20250505_154700_736658_4ACC16DD 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,170 +89,42 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-[ Upstream commit 969a38be437b68dc9e12e3c3f08911c9f9c8be73 ]
+[ Upstream commit e7aae9f6d762139f8d2b86db03793ae0ab3dd802 ]
 
-According documentation of phy_configure_opts_dp, at the configure
-stage, link rates should only be verify/configure when set_rate
-flag is set, the same applies to lanes and voltage.
+The Cluster windows of upcoming VOP on rk3576 also support
+linear YUV support, we need to set uv swap bit for it.
 
-So do it as the documentation says.
-Because voltage setting depends on the lanes, link rates set
-previously, so record the link rates and lanes at it's verify stage.
+As the VOP2_WIN_UV_SWA register defined on rk3568/rk3588 is
+0xffffffff, so this register will not be touched on these
+two platforms.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Link: https://lore.kernel.org/r/20250312080041.524546-1-andyshrk@163.com
-Signed-off-by: Vinod Koul <vkoul@kernel.org>
+Tested-by: Michael Riesch <michael.riesch@wolfvision.net> # on RK3568
+Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Link: https://patchwork.freedesktop.org/patch/msgid/20250303034436.192400-4-andyshrk@163.com
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 87 ++++++++++++++---------
- 1 file changed, 53 insertions(+), 34 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index f5c6d264d89ed..d2021f7941e3e 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -187,6 +187,8 @@ struct rk_udphy {
- 	u32 dp_aux_din_sel;
- 	bool dp_sink_hpd_sel;
- 	bool dp_sink_hpd_cfg;
-+	unsigned int link_rate;
-+	unsigned int lanes;
- 	u8 bw;
- 	int id;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 5880d87fe6b3a..2aab2a0956788 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1432,10 +1432,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
  
-@@ -1102,15 +1104,19 @@ static int rk_udphy_dp_phy_power_off(struct phy *phy)
- 	return 0;
- }
+ 	rb_swap = vop2_win_rb_swap(fb->format->format);
+ 	vop2_win_write(win, VOP2_WIN_RB_SWAP, rb_swap);
+-	if (!vop2_cluster_window(win)) {
+-		uv_swap = vop2_win_uv_swap(fb->format->format);
+-		vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
+-	}
++	uv_swap = vop2_win_uv_swap(fb->format->format);
++	vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
  
--static int rk_udphy_dp_phy_verify_link_rate(unsigned int link_rate)
-+/*
-+ * Verify link rate
-+ */
-+static int rk_udphy_dp_phy_verify_link_rate(struct rk_udphy *udphy,
-+					    struct phy_configure_opts_dp *dp)
- {
--	switch (link_rate) {
-+	switch (dp->link_rate) {
- 	case 1620:
- 	case 2700:
- 	case 5400:
- 	case 8100:
-+		udphy->link_rate = dp->link_rate;
- 		break;
--
- 	default:
- 		return -EINVAL;
- 	}
-@@ -1118,45 +1124,44 @@ static int rk_udphy_dp_phy_verify_link_rate(unsigned int link_rate)
- 	return 0;
- }
- 
--static int rk_udphy_dp_phy_verify_config(struct rk_udphy *udphy,
--					 struct phy_configure_opts_dp *dp)
-+static int rk_udphy_dp_phy_verify_lanes(struct rk_udphy *udphy,
-+					struct phy_configure_opts_dp *dp)
- {
--	int i, ret;
--
--	/* If changing link rate was required, verify it's supported. */
--	ret = rk_udphy_dp_phy_verify_link_rate(dp->link_rate);
--	if (ret)
--		return ret;
--
--	/* Verify lane count. */
- 	switch (dp->lanes) {
- 	case 1:
- 	case 2:
- 	case 4:
- 		/* valid lane count. */
-+		udphy->lanes = dp->lanes;
- 		break;
- 
- 	default:
- 		return -EINVAL;
- 	}
- 
--	/*
--	 * If changing voltages is required, check swing and pre-emphasis
--	 * levels, per-lane.
--	 */
--	if (dp->set_voltages) {
--		/* Lane count verified previously. */
--		for (i = 0; i < dp->lanes; i++) {
--			if (dp->voltage[i] > 3 || dp->pre[i] > 3)
--				return -EINVAL;
-+	return 0;
-+}
- 
--			/*
--			 * Sum of voltage swing and pre-emphasis levels cannot
--			 * exceed 3.
--			 */
--			if (dp->voltage[i] + dp->pre[i] > 3)
--				return -EINVAL;
--		}
-+/*
-+ * If changing voltages is required, check swing and pre-emphasis
-+ * levels, per-lane.
-+ */
-+static int rk_udphy_dp_phy_verify_voltages(struct rk_udphy *udphy,
-+					   struct phy_configure_opts_dp *dp)
-+{
-+	int i;
-+
-+	/* Lane count verified previously. */
-+	for (i = 0; i < udphy->lanes; i++) {
-+		if (dp->voltage[i] > 3 || dp->pre[i] > 3)
-+			return -EINVAL;
-+
-+		/*
-+		 * Sum of voltage swing and pre-emphasis levels cannot
-+		 * exceed 3.
-+		 */
-+		if (dp->voltage[i] + dp->pre[i] > 3)
-+			return -EINVAL;
- 	}
- 
- 	return 0;
-@@ -1196,9 +1201,23 @@ static int rk_udphy_dp_phy_configure(struct phy *phy,
- 	u32 i, val, lane;
- 	int ret;
- 
--	ret = rk_udphy_dp_phy_verify_config(udphy, dp);
--	if (ret)
--		return ret;
-+	if (dp->set_rate) {
-+		ret = rk_udphy_dp_phy_verify_link_rate(udphy, dp);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	if (dp->set_lanes) {
-+		ret = rk_udphy_dp_phy_verify_lanes(udphy, dp);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	if (dp->set_voltages) {
-+		ret = rk_udphy_dp_phy_verify_voltages(udphy, dp);
-+		if (ret)
-+			return ret;
-+	}
- 
- 	if (dp->set_rate) {
- 		regmap_update_bits(udphy->pma_regmap, CMN_DP_RSTN_OFFSET,
-@@ -1243,9 +1262,9 @@ static int rk_udphy_dp_phy_configure(struct phy *phy,
- 	}
- 
- 	if (dp->set_voltages) {
--		for (i = 0; i < dp->lanes; i++) {
-+		for (i = 0; i < udphy->lanes; i++) {
- 			lane = udphy->dp_lane_sel[i];
--			switch (dp->link_rate) {
-+			switch (udphy->link_rate) {
- 			case 1620:
- 			case 2700:
- 				regmap_update_bits(udphy->pma_regmap,
+ 	if (fb->format->is_yuv) {
+ 		vop2_win_write(win, VOP2_WIN_UV_VIR, DIV_ROUND_UP(fb->pitches[1], 4));
 -- 
 2.39.5
 
