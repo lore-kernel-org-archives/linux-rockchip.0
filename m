@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD22FC3ABB6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 08:42:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1110FC3ABB0
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 08:42:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FmgXg5faXx6h953MM33Ti5R1wmjwemmoAta0OycWHfI=; b=eRsojkzox1Dfnu
-	hTGDHJDAFEMv457zbK3DFIC55vkvpwCtku3dCz4hO1tflejQh9fpGVLWkz0yIuh6WgSYQQ4z6l5iM
-	oL23PZ6Vy7mN1M52eLQ8nbz1j2E86Fc+EHBt362VIpx5ocN4ysuOBLFwX1LFe/PCZQ4MFm68wwdz5
-	j68q/FP+TNnUE2ZGrMejYPRZRzvvM5EvSdXnFoiDNhD0xPPIksdVugzfadcixp9R1fdznOdFR7FhJ
-	Mk2RTswBq5i6WVIOE6sw35+W+ImosU8A2kXX7zA+A26c7zx+tmLwTObOpk4iNHCSYp+PmnBGgTF69
-	J2nOIjPzKpwQgU8U4pcw==;
+	List-Owner; bh=z2sJ49q2PyrHJKAzu2IzNQX9UJHxqbVC7ghLhoVen/Q=; b=JyS3nNrB08MwcN
+	SbQqLKN9FaCAZUDkHP8ZKo0wFVMqGm6QWOh9Igp+ibcfE5nUvcji8p6+EK8vmqaFh3oJcZYGPk2xf
+	P2xDxRgG39KLol0nQDzmClV3ybGBO13YnvUopXiMUHZr+1a8xB9SCeU4I2idrOAXCGKCd0vqWnRhX
+	+GQ3R+d8T0NeSkIj8mS1w6fOkkOFGEof8Gj43qLQaYF8WFpZejQOmNJFq4/WFsL3qQiuQXh1hcPHL
+	K4oEGWZP7JXnH47oZLjM0wL8imp5oeYRzpYDLBmkiZtYMGdhng78xX8OKBin9O7+UI6LcCxwuEXyF
+	TXiRbihhTmVGeY1sSp1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBrPJ-00000006oEO-2xY6;
-	Mon, 05 May 2025 08:42:37 +0000
+	id 1uBrPL-00000006oEw-1pmr;
+	Mon, 05 May 2025 08:42:39 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBr9i-00000006mR3-3f7v;
-	Mon, 05 May 2025 08:26:31 +0000
+	id 1uBr9w-00000006mSx-0YAL;
+	Mon, 05 May 2025 08:26:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=/6DfAkqmatLxmLg8isSu9YmNjsXnPdrip922h5yy7h8=; b=ZTcaDYH9sTVvm45ziriha1k+rA
-	wBsEWPTsPuSJimgaphgfhwWZqpmue5vWy54/gqZySe7j0wcvjWQ199ke48Yq7SRp1DuUDDKM2pQto
-	3N1gHXPG8su6J4j0dGis0+fbiexqw0kG5RVljdgMwR6vuAHd0FiN9iADTgUAPitoZCPWbIkCmj2rL
-	tA3yR6B0YgmtzDEJpO66yQ2t682R+xl8zhMTU17lYtS8mhr2zOjNxjOts2dyJ4+ocdbr1lreshSov
-	qBUS5tMOZsp/HygryeStXw0XbrI6yBZiDjnoPefBDKlf26DUgNmyZdjqpigPjOVbrt4AmJPMXwKMf
-	8Cd3NR7Q==;
+	bh=CaqP67BMNYN7LC3R6Za31vMQCwrdPvTZaPLg+kYHYg0=; b=CDZVROZnK5s3N3ZD5m2+gPI0rb
+	IpJO40oDZQTV2yVohzoCyzs/A8zlfHNuDX3F/virOmlQIWRaApvQOO8eZ0dr7SS59z9NCkKqKGB7l
+	9RMGf1sLQ/aXCJZnoVQrqcJxPDrO01NzpTHEWSOPbGiL1w2eVJchzFyuWYlynNL32YC4cKdm+R9cO
+	2BXFP2ZEmUrm2Jkqj9hLXN+mP3Hy8Z4iJUpCXxmAdLxZiX3lnN9trAGM3pnLFTlkRIdfkoCmUSlKH
+	I/HYZZ9obtnBf6L9CzqrxgRYc4CFd0iCBaeKnCdtCrmQi7dBqd/srhcgIE0NKa7OXar84TI8OHLCL
+	T/WnCB/w==;
 Received: from i53875a1d.versanet.de ([83.135.90.29] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uBr9h-0001Ho-Gt; Mon, 05 May 2025 10:26:29 +0200
+	id 1uBr9g-0001Ho-Rb; Mon, 05 May 2025 10:26:28 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
+	Diederik de Haas <didi.debian@cknow.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH RESEND] arm64: dts: rockchip: Switch to undeprecated qcom,calibration-variant on RK3399
-Date: Mon,  5 May 2025 10:26:18 +0200
-Message-ID: <174643357079.1204535.2566293021923163121.b4-ty@sntech.de>
+	Dragan Simic <dsimic@manjaro.org>,
+	Vasily Khoruzhick <anarsoul@gmail.com>,
+	Tianling Shen <cnsztl@gmail.com>
+Subject: Re: [PATCH 0/2] Add phy+vcc supply to NanoPi R5S and Q64-B
+Date: Mon,  5 May 2025 10:26:16 +0200
+Message-ID: <174643357079.1204535.15682445178976713220.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250501160208.96451-2-krzysztof.kozlowski@linaro.org>
-References: <20250501160208.96451-2-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20250503152917.138648-1-didi.debian@cknow.org>
+References: <20250503152917.138648-1-didi.debian@cknow.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_012630_907070_E3D8C78E 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250505_012644_166750_43F90562 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,20 +82,22 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 01 May 2025 18:02:09 +0200, Krzysztof Kozlowski wrote:
-> The property qcom,ath10k-calibration-variant was deprecated in favor of
-> recently introduced generic qcom,calibration-variant, common to all
-> Qualcomm Atheros WiFi bindings.
+On Sat, 03 May 2025 17:22:17 +0200, Diederik de Haas wrote:
+> Testing on my NanoPi R5S and Quartz64 Model B brought some more issues
+> with power supplies to light, so fix them as well.
 > 
-> Change will affect out of tree users, like other projects, of this DTS.
-> 
+> Diederik de Haas (2):
+>   arm64: dts: rockchip: Add phy-supply to gmac0 on NanoPi R5S
+>   arm64: dts: rockchip: Add vcc-supply to SPI flash on rk3566-quartz64-b
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Switch to undeprecated qcom,calibration-variant on RK3399
-      commit: ec169727bf7365f7475f335116e1bb5896dd3603
+[1/2] arm64: dts: rockchip: Add phy-supply to gmac0 on NanoPi R5S
+      commit: fdc68be8a8acbea9630c3bca560b7a1cf3a952e2
+[2/2] arm64: dts: rockchip: Add vcc-supply to SPI flash on rk3566-quartz64-b
+      commit: ec79aee752c6b5c7695cd82a57a8a9249d09316d
 
 Best regards,
 -- 
