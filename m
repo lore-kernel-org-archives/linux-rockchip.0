@@ -4,68 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3D12C369C2
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 07:08:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2D4FC369C2
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 May 2025 07:31:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WnKtqRODuC6SomsYw9cjIDDt7RFi/8FKKEQKE/6ngiw=; b=ATImoQfL/8ltek
-	YHwCGVTlX7tL035zNY5Safm1vhIdKcrM3P/2SUV6UcYvmDH0eR41cx2xBFGUOoKfUkzPjIbWx5COq
-	RxEeg/iVd0K3CXhNSgDj6V+8HiMU5mcSm5NT6JrfrOFhrKgEUuNlcgikujd7fAaqqSrB4ClM7FH/W
-	lQTPdhF2MJW4nAl1BpoGdU6F8DGg5z61kUNSPvM6+Tc39dGypDVTSkyr9i/DjmoqlHnTiA+Sglufn
-	d9YlnJnQcz9/i81SZNywa4OF2klJxjfPgx/JqsPriLsvNDSPsDNRV26ayc5Bwr88CWXq2z+5hTHAY
-	VkGjZmpIZitLTPBIhQdQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=trO6z9a4w5CXBeBLz/BCjzfi8Lt+SlI3y+WY60VCv9I=; b=LGK1liycz2ncpG
+	7By209T4/q76iK9BfeQjKO9OS5aN/w6IdaLom7j6wdHrBG+3otDOgXZXF7Q512Ob12zlSAINX3lDv
+	RqXc3UISDc+OmPUvdM2abn4f8o5vn7xr1u47Afb5eEMxL9oyUQeA1enYBqZHGAUJW46OyL/oPmLSF
+	4snEhHVGd5fg/56ImnnWV8ObiwOrEnJowEwF3VpQFtpB0cTF3SUAfwML9rCd9zuwii1XEkMyH/5b9
+	TMIEtFVMK5kdKSuLINB402BgTrp3cB9hVdVHdsyRv9xPNIxJodZC1SMJLqerI2qc3RPUpkzN/C979
+	Ds+b3x9logH3+nEoMmAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBpwE-00000006bXV-3pSD;
-	Mon, 05 May 2025 07:08:30 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1uBqIk-00000006ep1-0mxf;
+	Mon, 05 May 2025 07:31:46 +0000
+Received: from mail.commetro.pl ([217.61.16.142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBpuK-00000006bGB-2Pzs
+	id 1uBqIg-00000006en8-2c0o
 	for linux-rockchip@lists.infradead.org;
-	Mon, 05 May 2025 07:06:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1746428790;
- bh=gIXg7np9usec25+u5f5CPg2C+dLhyz1Hb6Nl/ECOjP4=;
- b=CQ7Wwaulma4QRhTixZ0UHxzavdchAaPfJHOE7fHk5QhMwgA0XOApJMfHPUkC4MGJ3IuY2txcX
- F5NUGMDNQUAk0J4gJ2Ql55tAXxTq4/ud/O9DZuoO6YbAvwUiuobC3dhdYc1l4uEqQk0hUHYnkJr
- UfYi3ZUBYN9zFVGzSjcB08qpO8CW5xgmtJ0Y0sQFBWJ8iWuZmR8JnknSp5FW7L4IoPl46eGKh1S
- 1ICS8z31Xs5So17Y6yGs2K037r+e02HczAfNbLnqw9Yc6lBIros1HZspef45noSKvoDfsQwH23K
- CQvjkLPBNpFVimpYxhrfYT3V8eREBYYpqXCAF+Xo/a4w==
-X-Forward-Email-ID: 68186375baed44ffca19f440
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 1.0.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <9b804428-1c36-437b-9d48-4bce2a79ce63@kwiboo.se>
-Date: Mon, 5 May 2025 09:06:25 +0200
+	Mon, 05 May 2025 07:31:44 +0000
+Received: by mail.commetro.pl (Postfix, from userid 1002)
+	id 8499382ABE; Mon,  5 May 2025 09:31:02 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=commetro.pl; s=mail;
+	t=1746430296; bh=COht1CALZmZz8MRkow5xVDQUyVzx29Nu6ozA/Y0jgb4=;
+	h=Date:From:To:Subject:From;
+	b=bDHJtRXojwT4Wet0ndN/G2Z6PZQEmXfBitEs/zv2Jdy48LlEcs4zGv6D6O6KnDUU1
+	 hcvnhz6TVmRUTmsXpIdEXw0CSY4cP0CF814g0Ne0RtJyasewNHoDPTvB7kponlvxFV
+	 IxN20UUWuMqggJa6ijjDegBmoyDOyD6+kFPh6Y0jjB4N7N3AW/FWy2xnAdZG9PIBsV
+	 GZgpOtzlvj4PFer61sEhWX1Hr7Ou8M0viCnpFSISo++dl441wPrjAAW5jhlaQ8xxz+
+	 K4VexxgJ9TuJZy1jjzRNp5e9JpX2EPUr3R218ng5LpUpzfOMjFnJzb4BiR/mqupaQ+
+	 kJFfc23m7Yb+Q==
+Received: by mail.commetro.pl for <linux-rockchip@lists.infradead.org>; Mon,  5 May 2025 07:30:42 GMT
+Message-ID: <20250505084500-0.1.2b.qk6r.0.kog8m6rqdv@commetro.pl>
+Date: Mon,  5 May 2025 07:30:42 GMT
+From: =?UTF-8?Q?"Jaros=C5=82aw_Kownacki"?= <jaroslaw.kownacki@commetro.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: =?UTF-8?Q?Pytanie_o_ofert=C4=99?=
+X-Mailer: mail.commetro.pl
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: Add onboard EEPROM for Radxa
- E20C
-To: Yao Zi <ziyao@disroot.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20250417120118.17610-3-ziyao@disroot.org>
- <20250417120118.17610-6-ziyao@disroot.org>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250417120118.17610-6-ziyao@disroot.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_000632_718127_0441FE69 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20250505_003143_330866_D0BCDA28 
+X-CRM114-Status: UNSURE (   0.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,74 +61,16 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2025-04-17 14:01, Yao Zi wrote:
-> Radxa E20C ships an onboard I2C EEPROM for storing production
-> information. Enable it in devicetree.
-> 
-> Signed-off-by: Yao Zi <ziyao@disroot.org>
-
-Reading from the EEPROM on my E20C works:
-
-  $ hexdump -C /sys/devices/platform/soc/ffa58000.i2c/i2c-1/1-0050/1-00500/nvmem
-  00000000  52 41 44 58 01 00 03 00  00 01 00 00 01 00 01 00  |RADX............|
-  00000010  58 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |X...............|
-  00000020  00 00 00 00 00 00 00 00  20 20 52 61 64 78 61 20  |........  Radxa |
-  00000030  54 65 63 68 6e 6f 6c 6f  67 79 20 43 6f 2e 2c 20  |Technology Co., |
-  00000040  4c 74 64 2e 00 00 00 00  00 00 44 31 45 38 31 30  |Ltd.......D1E810|
-  00000050  4f 32 52 32 39 58 34 59  36 00 00 00 00 00 00 00  |O2R29X4Y6.......|
-  00000060  00 00 00 00 00 00 00 00  00 00 9e 69 04 00 02 00  |...........i....|
-  00000070  0c 00 00 00 01 00 56 31  2e 31 30 32 00 00 ed 09  |......V1.102....|
-  00000080  05 00 03 00 78 00 00 00  01 00 30 00 00 00 00 00  |....x.....0.....|
-  00000090  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 e0  |................|
-  000000a0  4c 0d 0a 5c 00 e0 4c 0d  0a 5b 00 00 00 00 00 00  |L..\..L..[......|
-  000000b0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
-  *
-  000000f0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 cf 50  |...............P|
-
-So this is:
-
-Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
-
-Regards,
-Jonas
-
-> ---
->  arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-> index 57a446b5cbd6..6e77f7753ff7 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-> @@ -110,6 +110,20 @@ vcc5v0_sys: regulator-5v0-vcc-sys {
->  	};
->  };
->  
-> +&i2c1 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&i2c1m0_xfer>;
-> +	status = "okay";
-> +
-> +	eeprom@50 {
-> +		compatible = "belling,bl24c16a", "atmel,24c16";
-> +		reg = <0x50>;
-> +		pagesize = <16>;
-> +		read-only;
-> +		vcc-supply = <&vcc_3v3>;
-> +	};
-> +};
-> +
->  &pinctrl {
->  	gpio-keys {
->  		user_key: user-key {
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAoKQ3p5IHBvdHJ6ZWJ1asSFIFBhxYRzdHdvIGFrdHVhbG5pZSBub3d5Y2gg
+a2xpZW50w7N3ID8KClNrdXRlY3puaWUgcG9tYWdhbXkgcm96cG9jenluYcSHIHJvem1vd3kgaGFu
+ZGxvd2UgeiBrbGllbnRhbWkgemFpbnRlcmVzb3dhbnltaSBQYcWEc3R3YSBvZmVydMSFLgoKWmFw
+cmFzemFtIGRvIGtvbnRha3R1IHp3cm90bmVnby4KCgpQb3pkcmF3aWFtIHNlcmRlY3puaWUKSmFy
+b3PFgmF3IEtvd25hY2tpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
