@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEC55C3ABAC
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 15:10:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 386AEC3ABBE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 18:34:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eqYvEcgcPtTZa6J4rs5RlevE20lD6oMwz9rrajUUjLg=; b=VjxP0sZQfrlZEX
-	JTYVI89JbiqQzHY6VwqoVVZ4ycjnxOd3YlsPxCoyWmHas0wAlW783n1QxvMSzMejaUiGnoMDGgcOh
-	0vmqF4yHeFYewx582qBtLfKDJ40d7uTG1TyB/LfBIzUTdWpThXPjB2LUSc+9p8phoEhpxgNpLeQbB
-	kFktmcHRAar7XqwCwTK+W/HMwYZDDDl1YcudPF4KNvU+Fepo72b3Qz+VhWeMp3twnnZOlCWuL5/Bv
-	BWDYXZupeBzT3KUZ1oejKhgfhXa7RbOylUPFTUvU91HiKoPZ+sNBSIc69ssH9siecvDguisX/EMge
-	PAo0xEZM2L8c4fPya+Wg==;
+	List-Owner; bh=/PFJcDZcKfGH+DDgnr6mOyqT+FC5tf82aIYV4FnNV14=; b=HxqxVISGxZ73U/
+	c77AidmO0hPmar+utOzwwLRBx1c5Q5gLNBh7P7ipa64/PjC9usPHfakqeBv3LgYj+kJS34A6i/Uor
+	R7K6f4hjdhE+TmBjdDUeQ9WjyfrlxqUaD1sCS6upQXhchJBKkBzC6/pIQ1TzwA/pczTNFKF+/fJgO
+	SJ5thb4D9vLzk1aUjGq9SyesT4l7qWscehaW1hp8WK+FvzB14AQKgQcJANfzTJfqEZ0FjFcTgHlV3
+	ln8lYuPwJhsKIo2jaEfl3L9+RpWmXAHQs2ZKI4u9V8mQsDKKOJTvGISLb+bJVBrxPessnZftfidFH
+	sO+K08iST/Wc0qHD8XnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCJwX-0000000CRkK-0DWD;
-	Tue, 06 May 2025 15:10:49 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1uCN71-0000000D7Js-3Oim;
+	Tue, 06 May 2025 18:33:51 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCH7D-0000000Br1p-1rKi;
-	Tue, 06 May 2025 12:09:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1746533379; x=1778069379;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=C1cNc1T1EZTLsEqWLlQZ4HP/ZrBdzYD7Gj1Q5X2lVgk=;
-  b=LxCXDU9nvZUIIEkIba5hhP/VBcVFFGU47vCWbPlamV5gfBrgvNcGR5Y0
-   e6boY7OoLJKpbmWH6t70wQj0eDyYjXc1eYF6ECcqqxzgUfi3QdWnUiXTc
-   /mbnUXHwGWOLGg7CIhGJnlq0MHZHbnOC49soALAKoeag0pp74VB4/0R9k
-   wkApKMFs97EZXUrha9DaGpjfPHLYkLvwPVKqzxgtVKm0G/sKzLCr89Zpa
-   yNb0ReYe4w0P6ZxevvUOPSob+27/1+kku6PtUAVXPCvky7bxMjnk7T0Rm
-   P1D0MB+Qs8WopUJKg5Cxq895015f+jOqcXJhj/7KWKiJfOaOBBYcKsX4Q
-   Q==;
-X-CSE-ConnectionGUID: h/ukJe2xQ1G8CE6DekP05A==
-X-CSE-MsgGUID: rUx9n7gpQLWsGzvkswmeAA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11425"; a="52007852"
-X-IronPort-AV: E=Sophos;i="6.15,266,1739865600"; 
-   d="scan'208";a="52007852"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 May 2025 05:09:38 -0700
-X-CSE-ConnectionGUID: 2HCngJfPS4OtN3NFDHOPUQ==
-X-CSE-MsgGUID: AkdwN2B/RO2PGMjkHhJ6nA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,266,1739865600"; 
-   d="scan'208";a="136595874"
-Received: from ijarvine-mobl1.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.245.251])
-  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 May 2025 05:09:33 -0700
-Date: Tue, 6 May 2025 14:09:24 +0200
-From: Mehdi Djait <mehdi.djait@linux.intel.com>
-To: michael.riesch@collabora.com
-Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>, 
-	=?utf-8?B?VGjDqW8=?= Lebrun <theo.lebrun@bootlin.com>, Gerald Loacker <gerald.loacker@wolfvision.net>, 
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
-	Collabora Kernel Team <kernel@collabora.com>, Paul Kocialkowski <paulk@sys-base.io>, 
-	Alexander Shiyan <eagle.alexander923@gmail.com>, Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: Re: [PATCH v6 05/13] media: dt-bindings: add rockchip rk3568 mipi
- csi receiver
-Message-ID: <wxwzca4i36hdhdx5ehjqvq5ljpsb7lcvzermkhqyvufsr47au4@3qcth2vawwju>
-References: <20240220-rk3568-vicap-v6-0-d2f5fbee1551@collabora.com>
- <20240220-rk3568-vicap-v6-5-d2f5fbee1551@collabora.com>
+	id 1uCJMf-0000000CKuj-1TSB;
+	Tue, 06 May 2025 14:33:45 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 75459629CE;
+	Tue,  6 May 2025 14:33:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F36DFC4CEE4;
+	Tue,  6 May 2025 14:33:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746542024;
+	bh=Ae+qgp3ezP7Fi0sm8hyAz2/8J0K1eY7HWQaSgwOxXYI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kAb/q3omJ8TdawZx7/zBfo/iFU8nrgajSiRkRAKoLGyhNoFexuVua01KYeTsUVwRs
+	 LbmSujNuq8FtyoXVCTb0o1eOjzEc3MKmiH3vpqBlOAHh/mn0EKFCiUWFbno528dK+u
+	 VRTEsZw79XSDR5S9YUyyatjxNZ3iC3YP9i7rGspz6DgW8QHXhK+wOdsVOkW0sqxE/O
+	 RgLy/dwohXLWNt0fuB1QFUCgSuHr17xsMlK04MPfM6OxuMnPTtSOyqU32nsrf3mndo
+	 6O+eQXI7AD3sIWLJrxlmsUbzwndhxhDKeEYfAGQy8EoPD73drEWJf27aPVY6pdLxpg
+	 cs/TKa8PSCgLQ==
+Date: Tue, 6 May 2025 16:33:38 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krishna chaitanya chundru <quic_krichai@quicinc.com>
+Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Hans Zhang <18255117159@163.com>,
+	Laszlo Fiat <laszlo.fiat@proton.me>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH v2 0/4] PCI: dwc: Link Up IRQ fixes
+Message-ID: <aBodwvmG6ENM7haH@ryzen>
+References: <20250506073934.433176-6-cassel@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240220-rk3568-vicap-v6-5-d2f5fbee1551@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_050939_494207_65DCAD2F 
-X-CRM114-Status: GOOD (  19.23  )
+In-Reply-To: <20250506073934.433176-6-cassel@kernel.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,164 +78,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
-
-thank you for the patch!
-
-On Wed, Apr 30, 2025 at 11:15:54AM +0200, Michael Riesch via B4 Relay wrote:
-> From: Michael Riesch <michael.riesch@wolfvision.net>
+On Tue, May 06, 2025 at 09:39:35AM +0200, Niklas Cassel wrote:
+> Hello there,
 > 
-> Add documentation for the Rockchip RK3568 MIPI CSI-2 Receiver.
+> Commit 8d3bf19f1b58 ("PCI: dwc: Don't wait for link up if driver can detect
+> Link Up event") added support for DWC to not wait for link up before
+> enumerating the bus. However, we cannot simply enumerate the bus after
+> receiving a Link Up IRQ, we still need to wait PCIE_T_RRS_READY_MS time
+> to allow a device to become ready after deasserting PERST. To avoid
+> bringing back an conditional delay during probe, perform the wait in the
+> threaded IRQ handler instead.
 > 
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
-> ---
->  .../bindings/media/rockchip,rk3568-mipi-csi.yaml   | 113 +++++++++++++++++++++
->  MAINTAINERS                                        |   1 +
->  2 files changed, 114 insertions(+)
+> Please review.
 > 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml
-> new file mode 100644
-> index 000000000000..d5004cb288dd
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml
-> @@ -0,0 +1,113 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/rockchip,rk3568-mipi-csi.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip RK3568 MIPI CSI-2 Receiver
-> +
-> +maintainers:
-> +  - Michael Riesch <michael.riesch@collabora.com>
-> +
-> +description:
-> +  The Rockchip RK3568 MIPI CSI-2 Receiver is a CSI-2 bridge with one input port
-> +  and one output port. It receives the data with the help of an external
-> +  MIPI PHY (C-PHY or D-PHY) and passes it to the Rockchip RK3568 Video Capture
-> +  (VICAP) block.
-> +
-> +properties:
-> +  compatible:
-> +    const: rockchip,rk3568-mipi-csi
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  phys:
-> +    maxItems: 1
-> +    description: MIPI C-PHY or D-PHY.
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  resets:
-> +    maxItems: 1
-> +
-> +  ports:
-> +    $ref: /schemas/graph.yaml#/properties/ports
-> +
-> +    properties:
-> +      port@0:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: Input port node. Connect to e.g., a MIPI CSI-2 image sensor.
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              bus-type:
-> +                enum: [1, 4]
+> 
+> Kind regards,
+> Niklas
 
-shouldn't you add data-lanes property here ?
+Hello Laszlo,
 
-                 data-lanes:
-                   minItems: 1
-                   maxItems: 4
-> +
-> +            required:
-> +              - bus-type
+Since you have a RK3588 based board, sending a Tested-by
+tag on testing patches 1-2 makes sense.
 
-and add it to required:
-                 - data-lanes
+However, patches 3-4 are for Qualcomm based boards.
+I'm not sure if you also have a Qualcomm board at your disposal.
 
-you are actually checking for data-lanes when you enable the stream in:
+If you don't, Manivannan can probably drop your Tested-by tags
+on patches 3-4, but it might be good to know until next time.
 
-rkcif-mipi-csi-receiver.c +226
+Thank you for testing!
 
-	u32 lanes = csi_dev->vep.bus.mipi_csi2.num_data_lanes;
 
-	if (lanes < 1 || lanes > 4)
-		return -EINVAL;
-
-> +
-> +      port@1:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: Output port connected to a RK3568 VICAP port.
-> +
-> +    required:
-> +      - port@0
-> +      - port@1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - phys
-> +  - phy-names
-> +  - ports
-> +  - power-domains
-> +  - resets
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/rk3568-cru.h>
-> +    #include <dt-bindings/power/rk3568-power.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        csi: csi@fdfb0000 {
-> +            compatible = "rockchip,rk3568-mipi-csi";
-> +            reg = <0x0 0xfdfb0000 0x0 0x10000>;
-> +            clocks = <&cru PCLK_CSI2HOST1>;
-> +            phys = <&csi_dphy>;
-> +            power-domains = <&power RK3568_PD_VI>;
-> +            resets = <&cru SRST_P_CSI2HOST1>;
-> +
-> +            ports {
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +
-> +                csi_in: port@0 {
-> +                    reg = <0>;
-> +                };
-> +
-> +                csi_out: port@1 {
-> +                    reg = <1>;
-> +
-> +                    csi_output: endpoint {
-> +                        remote-endpoint = <&vicap_mipi_input>;
-> +                    };
-> +                };
-> +            };
-> +        };
-> +    };
-
---
-Kind Regards
-Mehdi Djait
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
