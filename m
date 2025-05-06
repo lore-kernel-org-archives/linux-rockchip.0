@@ -4,87 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 686BEC3ABBF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 22:27:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAFE8C3ABBE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 22:37:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NpKKIWBg5n4dUcFgJEVk6rEQXesWg2jzGX3iNjFkeR0=; b=QenGhMTEtWOAds
-	N7QhDI7zSKDXgGAhRVMAZEQ7qtvMF3Hw77RQtYnpJm6vAVE08K9VxBuezHpVemyWNR9hNbaUhtWfs
-	6fsAgMQq1D5Ozph9bMFaYtdFV7niXcvt7KfikW8+HazY9cU2OyjtbA2z1jZqsDueKInPveMOECo0j
-	C7fUTLWSzNU4qa9wqAnqemVmlSliMgwtlWMq8jpYin9A1S7ZseIYgaJ+qT2GmOgxBC75xVMmSYFrD
-	1NW7t9jtnrGji2FZKzfzEAHXT03sILc1jMK349Wl7RIjUsIgRKXrImnHksEpl1QP2/BRqQlGQ8NcI
-	+/ymh4/roT/TAGnnWMUg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rdOcNg2xQrPlZv5aeNJY81WuzO3PYv6Li/zb9Y62LRs=; b=34p+O0/mkCffeu
+	Fr71g9n7w3+jYK60oR7SUTYR5QkP8ORFvHpXHDJIJQGvXnS9Mu7vPohILJqZegESqNoMM4ZEOKKb+
+	7L+eoP5OGSI9dReEnnPbm8zSmavLybT3/Eu5OtKe/rRLujcyJwaqteUW0h8G8wCNYklcX8iqtXLRU
+	+cc209PRV3DUzHtsY8EM+YeMK4K7av7llI3FUBwWdJRBV4vJjZjzCSfBvuCkHempNA5DKlfa7jg1r
+	w8zgPXPR51bXGbCOrFRrQRfSrr3mhvcugljC9rVRwJG51REq58dXvuNP8SmHN8ejwx8CEH6ciEtJB
+	nvattmEkSnYY1HUrVBqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCQkl-0000000DarN-3Fmm;
-	Tue, 06 May 2025 22:27:07 +0000
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+	id 1uCQuS-0000000Dbn5-2pFt;
+	Tue, 06 May 2025 22:37:08 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCLrs-0000000CoxG-0CRG;
-	Tue, 06 May 2025 17:14:09 +0000
-Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-7081165a238so42733877b3.1;
-        Tue, 06 May 2025 10:14:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1746551647; x=1747156447; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=tRedBdvWHewdGHc+8H5jFzCl3OWzRCEmeyqHhByRR8w=;
-        b=Yqv95DKQTLrJqly4Km1ayLqQZp9z0384yGMpnWaitaevV2+rg2KYrjQzTU01tcsrEU
-         /cGRW+VGZtqSCG7qSytg6NKN00zJcQB6dEt+n0HBQp81maBtoCqKV6eJkbh8Qy+sgZmy
-         kJwINwao5tTdBe6iv1EYiei/LvkT3tmSgAQYDYtzxfKnPsJori6swOxgAJ5sspYPXaWB
-         W2H3428Nt8co5WYCQT4eFpIdhO3HSDa7X9Y7lvrsm/sd2+f0nP1zs6XKXpVIcIQwst0i
-         NlT6zw5pZ+DvTt4WllozK7WPw/jWGO4qpNpxlyGN5fEYvw6o2Qj4pHMrh5sKMAAk4p6Z
-         qzAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746551647; x=1747156447;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tRedBdvWHewdGHc+8H5jFzCl3OWzRCEmeyqHhByRR8w=;
-        b=KwkVjAgW3GqaZx/H6mRFEAakZrurZivOpwDD2sbVyVUSk1Hpu3TfnywNCS03NPSc8r
-         1zjdGr5psyMF5h4TQV8OrBLTI2y1y4bCOI4HpcST+gxDQxNRPe9aDaKBSOULyY3pcg33
-         aZ1/7ThBTf3hvMClj6nyeRuzQmbUnYKX/usiGo0CY+mD1KqXmYohMRSlfTloIWWI0UtD
-         aRuoRsRx7mqpS7zwaozZb+05dwh9UC6m2gfuK6DMqDbQnkeBBLFm70FIBAl7hY+F5UIB
-         YSVDMfTjvI3S54w4U9dJCXj3AeQNYvVG4Px6VL2AvrV5+Es8JqqHahfj5JwtjfrcX/9d
-         6iLQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWXWgap0bbgn4IZ3x1qMHnYZF7r3XebtNgm4MKTBhsJceMYZN+Pmkk5orDsK0VGhJWQl3nWrlCh7Ut/z6ioqQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxZ8eCQZRLdRk4j7zrnpu1gVUTOLyRwvEfJEwVWbKTbeFTDYup1
-	kdgqgdhLLAU9gEYfby5zKlJqXh3lkebYQfPkAA1d/nzRPtyeltEV
-X-Gm-Gg: ASbGnct4Kqqpr8N1dSWn6mhRWkOZdLX8UZ5t9aFGqBC9dasMo5YUdAPqf2qFKgHCB+z
-	fUFQ3cnma/KsT/StjD0399CX2QFjn4BS06bitVVfkLwXSyC3cVSYwMg8fHQxgqBM+i+G5+5HFeE
-	Kud+jEWiSqI0Gt0K4QLElzCq61mpnzrcApjjxz+QUM0Tp8OQYol76ojLg/wsrnyY8KuEh2SBrdC
-	OO3tvq0WBk1VB0jaGY+Qri0i4BSR/rhX1V5UwsECZvBXkhGiBrxD5C5UgLyC+vSx6UlJxM9ttim
-	PgepQn8347MkI7aPdwdABunLAgh1iSUybKMwiA==
-X-Google-Smtp-Source: AGHT+IGbekAdUjGPTcZlU040LQUgD3tEix530NlthS43YkNGTWjhWN4j1EIfWmF30Nba4JZ16EQ9mQ==
-X-Received: by 2002:a05:690c:6482:b0:708:c18d:e6ac with SMTP id 00721157ae682-70a1da36dedmr3095007b3.18.1746551647021;
-        Tue, 06 May 2025 10:14:07 -0700 (PDT)
-Received: from [100.96.0.9] ([104.28.237.13])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-708c4154d13sm27994527b3.58.2025.05.06.10.14.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 May 2025 10:14:06 -0700 (PDT)
-Message-ID: <043117e7-9fd7-4ddc-8fd9-433c5b8c5dc6@gmail.com>
-Date: Tue, 6 May 2025 13:14:05 -0400
+	id 1uCMCc-0000000Cre8-3tNb;
+	Tue, 06 May 2025 17:35:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=ZmNA4
+	c+Oojm6jH43yAx2JRj1VUwsumuexFyexRksMZ4=; b=oj27vMXlyT9pECI6x5V31
+	AKjSaNUSrju8+cNTVQbDMN+Qyu/8bVhpETmylPLoWEQptAOYOf5kMqKKIqxR94E+
+	WlKKd2ptt51BxanXvH9m/TBX5pm3oidaq/N4TmxYAYOgLehmXJgLsQ6Dma5iqD6e
+	eYpEf2f+1eSkZFdGa02kgM=
+Received: from localhost.localdomain (unknown [])
+	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wAX_U4ySBpoVmZeEw--.15363S2;
+	Wed, 07 May 2025 01:34:43 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: lpieralisi@kernel.org,
+	kw@linux.com,
+	bhelgaas@google.com,
+	heiko@sntech.de,
+	manivannan.sadhasivam@linaro.org,
+	yue.wang@Amlogic.com
+Cc: pali@kernel.org,
+	neil.armstrong@linaro.org,
+	robh@kernel.org,
+	jingoohan1@gmail.com,
+	khilman@baylibre.com,
+	jbrunet@baylibre.com,
+	martin.blumenstingl@googlemail.com,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Hans Zhang <18255117159@163.com>
+Subject: [PATCH v3 0/3] Configure root port MPS during host probing
+Date: Wed,  7 May 2025 01:34:36 +0800
+Message-Id: <20250506173439.292460-1-18255117159@163.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/3] Add Luckfox Omni3576 Carrier Board support for
- RK3576
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, heiko@sntech.de
-Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, robh@kernel.org, conor+dt@kernel.org,
- jonas@kwiboo.se, frattaroli.nicolas@gmail.com, andrew@lunn.ch
-References: <20250506114115.613616-1-inindev@gmail.com>
- <bb857b7d-97f8-4505-9d2a-1ba9d6319710@linaro.org>
-Content-Language: en-US
-From: John Clark <inindev@gmail.com>
-In-Reply-To: <bb857b7d-97f8-4505-9d2a-1ba9d6319710@linaro.org>
+X-CM-TRANSID: _____wAX_U4ySBpoVmZeEw--.15363S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Jw1fZw43GryUtrWfJryxXwb_yoWfCFb_uF
+	WfuFWDJw47JFyvyFyFgF4Iyry5Zan3uryjq3WvqFWYyF9xXr13Xws3WFW2gF1UWFWSyFsx
+	Cr1kZr4rAr1xZjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xRMeOJUUUUUU==
+X-Originating-IP: [124.79.128.52]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOghFo2gaREltXgAAsY
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_101408_090888_960DCEBC 
-X-CRM114-Status: GOOD (  16.65  )
+X-CRM114-CacheID: sfid-20250506_103535_288704_73CCC739 
+X-CRM114-Status: UNSURE (   5.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,47 +82,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 5/6/25 1:05 PM, Krzysztof Kozlowski wrote:
-> On 06/05/2025 13:41, John Clark wrote:
->> This series adds device tree support for the Luckfox Omni3576
->> Carrier Board with the Core3576 Module, powered by the Rockchip
->> RK3576 SoC (four Cortex-A72 cores, four Cortex-A53 cores, Mali-G52
->> MC3 GPU). It enables essential functionality for booting Linux and
->> basic connectivity, with plans for future support of peripherals
->> like WiFi, MIPI-DSI, HDMI, and Ethernet.
->>
->> The series was first posted as v1 at:
->> https://lore.kernel.org/linux-rockchip/20250502205533.51744-1-inindev@gmail.com
->> v2 at:
->> https://lore.kernel.org/linux-rockchip/20250504102447.153551-1-inindev@gmail.com
-> You got extensive guideline what to do in my reply to avoid exactly the
-> mistake you did ... yet you ignored the guideline.
+1. PCI: Configure root port MPS during host probing
+2. PCI: dwc: Remove redundant MPS configuration
+3. PCI: aardvark: Remove redundant MPS configuration
 
-I did not ignore it, I took this to mean:
+---
+Changes for v3:
+- The new split is patch 2/3 and 3/3.
+- Modify the patch 1/3 according to Niklas' suggestion.
 
- > Do not attach (thread) your patchsets to some other threads (unrelated
- > or older versions). This buries them deep in the mailbox and might
- > interfere with applying entire sets."
+Changes for v2:
+- According to the Maintainer's suggestion, limit the setting of MPS
+  changes to platforms with controller drivers.
+- Delete the MPS code set by the SOC manufacturer.
+---
 
-that I should not use the "--in-reply-to" on my git submission which 
-caused the emails to be nested. I see now that you were referring to 
-adding the urls to my submission.
-I realize this is probably painful to go through over and over again 
-with new contributors as they try to carefully follow all of the linux 
-submission guidelines and I apologize for my ignorance.
+Hans Zhang (3):
+  PCI: Configure root port MPS during host probing
+  PCI: dwc: Remove redundant MPS configuration
+  PCI: aardvark: Remove redundant MPS configuration
 
-> 
-> I don't understand.
-> 
-> Are you going to ignore also Conor's tags?
-> 
-> Best regards,
-> Krzysztof
+ drivers/pci/controller/dwc/pci-meson.c | 17 -------
+ drivers/pci/controller/pci-aardvark.c  |  2 -
+ drivers/pci/probe.c                    | 66 ++++++++++++++------------
+ 3 files changed, 35 insertions(+), 50 deletions(-)
+
+
+base-commit: 01f95500a162fca88cefab9ed64ceded5afabc12
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
