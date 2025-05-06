@@ -4,55 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D318C3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 18:41:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00FD1C3ABBC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 19:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/2qY/XlUPQV+W5nv8VIh/ZUP3oVsHYR3orqdrAdS9lg=; b=DOJaI1uB89RI1x
-	nrrmkn/HimxlttIuITgSzrpiJ+mjA1lhm10T12l5gc7sCN62Vw4FGAoHfk4356o9tyfwAG+dx8lBi
-	e+0PPdUmal5VwRoTuBIXfByyNka5Ys0XbdvHNwnIdSQ+Fs7+uDFdPGr3dROjR+WV1jPDbmEnGz3hh
-	IK6UQyu46LbLhfcxlhVYtJ24itkup70brW2P43fRLZ/0+GQC1CjxEMJyQv1g7bo8MPaC2i15Q6xlK
-	bEdfNue/CFH3KAUjbx+Ju2mZXKaClC4Y9yMNPM79Zo4DKyCYXQ5/hhNnvnc3h3EYv56x0TcoY+/6x
-	H8DXTLuLtCWYkSe1Mwmg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=32UzOj77Y7AYdz6dC7hNhLecWwkI8Mi62XmYh7e3LbE=; b=Tk2bddLKY7UzE7SEvySw48WGyK
+	+LYOD0YvYI8iEh6x01p0WFQ9GRFOooIdwE2yL4lNXAuKgHqsrf5w5sdKWJT6CTNjxB/va83XWmJWg
+	ZIMaeQ7N/UFGcBd4poXpubhNCcJyjL2GsmRp9IP7fOuZdsgLYnIJ4s4FA3inQLdbtukncMXpKA/jS
+	QqCetXW5zIXfn+E3OSQb6j6i08B69HRMLgRCN5ZME2loHn80nvsfW49ilRrjO6FWqbWEsDEL1Ab5E
+	RTFouLy+k3DVx5CLYUPYHASxN9Zm4v0N7Lvetnkz/DLS9YX0V/kaLzgWTfiHEmDG72iccA2slA5US
+	lDHxY6TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCNEo-0000000D8qN-32hQ;
-	Tue, 06 May 2025 18:41:54 +0000
-Received: from mail-43167.protonmail.ch ([185.70.43.167])
+	id 1uCOQg-0000000DINB-1QlI;
+	Tue, 06 May 2025 19:58:14 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCJe4-0000000COOq-2i41
-	for linux-rockchip@lists.infradead.org;
-	Tue, 06 May 2025 14:51:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1746543102; x=1746802302;
-	bh=LLO17FglWgYSVBW2cYDBU2hPFlvOAFb4nPLQLayDh9U=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
-	b=ccm8KxW9LC7iFnHe38StTvImk0UJjsJhNM/yP14IzScKDGNntYNqyapZijEE0K2/6
-	 9mU/IZHZRZ1ViPMHaNWTgk6SiV8KyKinklKvCTqqLFp/lrZasWyBTqgV3tK/a0oBqw
-	 aP5TzCcZvfF8jhcHDxzPfJNmS9osqwI3aIoPWaMJjMlLdsMMj5/yKgZAFnUK6oJNnX
-	 xciJ1qkjdgjFCcaPXw6ro2dhLJ2ARZOlXlwYGzJXYSaS+/fKMnmKED3f42dMxAdo32
-	 1Q7TPNzCuKuhNgXTxsfPF4ctIAnHjSeQcFrsf5h5NkgRDS2AMeofnFeHl3dqWiDar5
-	 NnJa5CL86Tq9Q==
-Date: Tue, 06 May 2025 14:51:39 +0000
-To: Niklas Cassel <cassel@kernel.org>
-From: Laszlo Fiat <laszlo.fiat@proton.me>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, =?utf-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Krishna chaitanya chundru <quic_krichai@quicinc.com>, Wilfred Mallawa <wilfred.mallawa@wdc.com>, Damien Le Moal <dlemoal@kernel.org>, Hans Zhang <18255117159@163.com>, =?utf-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>
-Subject: Re: [PATCH v2 0/4] PCI: dwc: Link Up IRQ fixes
-Message-ID: <-6f4j_eknGQJZqqLhxH5YFUXv6uIumEfiFbaPQXGPoQYpWZUrt2y8gx6gqw_mM0leAv7U3znZbcHtlmKKdt1xZVt0ASVpH0pBIoMChf0Iwk=@proton.me>
-In-Reply-To: <aBodwvmG6ENM7haH@ryzen>
-References: <20250506073934.433176-6-cassel@kernel.org> <aBodwvmG6ENM7haH@ryzen>
-Feedback-ID: 130963441:user:proton
-X-Pm-Message-ID: 5ad6aa2b5e02d5ecce87cb33b4d947670322600f
+	id 1uCKTX-0000000CXFN-1vgK;
+	Tue, 06 May 2025 15:44:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7C38BA4D60E;
+	Tue,  6 May 2025 15:44:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03B9FC4CEE4;
+	Tue,  6 May 2025 15:44:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746546294;
+	bh=WdalwAYyOdFnT6F6/VtNfBFmY7xcp4A2sZZoLMVgcmU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KQcq/68nTJwaMizQN0l8vr8X+LHw7GXqh0r0awClUcrhNistvP4OydRyEgk3l0InK
+	 zw6ALhTQbWNipebmdzpQmps8C3Rs5P8jyx11Hr82Ab248hdjXnHwOxVHdJpH8QYwMq
+	 UmJiHBVJ+s5fdxLnNj2Ut0QRAUVjB5EZykfsN+fGn4JweZ+niAvzahpoYBvCV9Wwkk
+	 l6JfawGA5ye7zy9x5eKU5RdFfTngTJG56Mqhd6jm4hOmgOx+44OIl/xGQvLRtj54Zf
+	 J8BgghwlVtG7pYsRlCtuiviaUbiw8zIc1puKmKW59Yqe9iuDP72sVtynBLwRjoKDv2
+	 RIAIutCYU7GAA==
+Date: Tue, 6 May 2025 16:44:49 +0100
+From: Conor Dooley <conor@kernel.org>
+To: John Clark <inindev@gmail.com>
+Cc: heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	robh@kernel.org, krzysztof.kozlowski@linaro.org,
+	conor+dt@kernel.org, jonas@kwiboo.se, frattaroli.nicolas@gmail.com,
+	andrew@lunn.ch
+Subject: Re: [PATCH v3 2/3] dt-bindings: arm: rockchip: Add Luckfox Omni3576
+ and Core3576 bindings
+Message-ID: <20250506-almighty-uncork-f7a0bc42d763@spud>
+References: <20250506114115.613616-1-inindev@gmail.com>
+ <20250506114115.613616-3-inindev@gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <20250506114115.613616-3-inindev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_075145_275182_0E5595ED 
-X-CRM114-Status: GOOD (  15.61  )
+X-CRM114-CacheID: sfid-20250506_084455_561281_68C51CF5 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,59 +70,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7380291663740684715=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
--------- Original Message --------
-On 06/05/2025 16:33, Niklas Cassel <cassel@kernel.org> wrote:
+--===============7380291663740684715==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="9x2/RhAmDqLYb1/P"
+Content-Disposition: inline
 
->  On Tue, May 06, 2025 at 09:39:35AM +0200, Niklas Cassel wrote:
->  > Hello there,
->  >
->  > Commit 8d3bf19f1b58 ("PCI: dwc: Don't wait for link up if driver can detect
->  > Link Up event") added support for DWC to not wait for link up before
->  > enumerating the bus. However, we cannot simply enumerate the bus after
->  > receiving a Link Up IRQ, we still need to wait PCIE_T_RRS_READY_MS time
->  > to allow a device to become ready after deasserting PERST. To avoid
->  > bringing back an conditional delay during probe, perform the wait in the
->  > threaded IRQ handler instead.
->  >
->  > Please review.
->  >
->  >
->  > Kind regards,
->  > Niklas
->  
->  Hello Laszlo,
->  
->  Since you have a RK3588 based board, sending a Tested-by
->  tag on testing patches 1-2 makes sense.
->  
->  However, patches 3-4 are for Qualcomm based boards.
->  I'm not sure if you also have a Qualcomm board at your disposal.
->  
->  If you don't, Manivannan can probably drop your Tested-by tags
->  on patches 3-4, but it might be good to know until next time.
 
-Hello Niklas,
+--9x2/RhAmDqLYb1/P
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-You are right, I only have a Rockchip based board, which I have tested on. 
-Mannivan should drop my Tested-by tags on the qcom patches. My mistake, I am sorry.
+On Tue, May 06, 2025 at 07:41:14AM -0400, John Clark wrote:
+> Add device tree binding for the Luckfox Omni3576 Carrier Board with
+> Core3576 Module, based on the Rockchip RK3576 SoC.
+>=20
+> Signed-off-by: John Clark <inindev@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Docume=
+ntation/devicetree/bindings/arm/rockchip.yaml
+> index 455fbb290b77..826dede32145 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -715,6 +715,16 @@ properties:
+>            - const: lckfb,tspi-rk3566
+>            - const: rockchip,rk3566
+> =20
+> +      - description: Luckfox Core3576 Module
+> +        items:
+> +          - const: luckfox,core3576
+> +          - const: rockchip,rk3576
+> +
+> +      - description: Luckfox Omni3576 Carrier Board
+> +        items:
+> +          - const: luckfox,omni3576
+> +          - const: rockchip,rk3576
 
->  
->  Thank you for testing!
->
-You are welcome! Thank you for making my board work again.
+Not sure this is correct, does the module not have to be attached to
+this particular carrier to be used?
 
-Bye,
+> +
+>        - description: Lunzn FastRhino R66S / R68S
+>          items:
+>            - enum:
+> --=20
+> 2.39.5
+>=20
 
-Laszlo
+--9x2/RhAmDqLYb1/P
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaBoucQAKCRB4tDGHoIJi
+0iJcAP0aeskjOu/xrVMFMflVV16ukhNjSpo2tYNFY/pRnnzgvQEAqkb3TqJYOZR4
+nrsDlRLQcH7Qtjo21/qxLcmF7Z0OEwE=
+=pT+F
+-----END PGP SIGNATURE-----
+
+--9x2/RhAmDqLYb1/P--
+
+
+--===============7380291663740684715==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7380291663740684715==--
+
