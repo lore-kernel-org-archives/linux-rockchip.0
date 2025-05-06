@@ -4,60 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 954D1C3ABC0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 23:36:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D7D9C3ABBE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 23:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=4Y1va+QfoWMpk+pL9xyGmaBb49jfuOx/bH5DR6HYFYs=; b=GQZY+aPEPJJeUJ0ZYHQZpHSO9D
-	adcLO2D4nQ/fTkgTz94Dd1BnXWMjiDEXXs7D5pvEPkplzSX7xVQQjxd1+zRe5eX3DSHe0uszNB0Gr
-	y3fPXtAevg9NwtDZbVybfF2qQ+HtbfXN7W8agYFToaWVNbzWJzqz12l8RsqLH/Xcai2cqAxuEpsPt
-	Dsl11HDVecbKZfRg79ofKsgXHcv8g8/tn1c+W+HgeEmnTe7iwWEXroO5geueoF+knaqQnr18/Kzd4
-	e3yfWbgueiH75eLgdRnvGBm6DgEmIL5K9UxtCumNCRhKjFX8IIxJxfpaQay4oJ22z3smpMhHDao+W
-	JfKyhlIg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tEYukVqDenNRcEc5d3lJ1Zp9+MQiZ1gKCs9kDKQoQL8=; b=TvSQFOv6ZjY15d
+	jDNs8/9Tt9CetiN17P28ANCiQ93RSIq8bbieXl5W8clEwdd1UHjjZ4c7rP9na5aj5ICkcG8UGdcxq
+	aWQd3UEkWDHhU6crs8pdy7h5dH2eqvpyJyH73eVT8AL0UR8GQcVNEykGf9T+d8kKlFTAKV2L9Jm/g
+	Tsn0bwckLUJU/DUorzbwxEXfCjroXvBHLO/dbnyo1OyXhgJoHwKQCoH6Eu0XhXUbbHecR7PxN/dqS
+	o58dfTxI7g3IcGjoawD6p+62dcUh979VEoPyN+/eQQcrlS0qe6y0EHRo7rp/ZGKDWn/clguRneunJ
+	LRb/DElu/vI1n4l++4Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCRpe-0000000DgRP-3klh;
-	Tue, 06 May 2025 23:36:14 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uCRq9-0000000DhFa-1Ufl;
+	Tue, 06 May 2025 23:36:45 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCMxS-0000000D5rT-1gIE;
-	Tue, 06 May 2025 18:23:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5BA0E4A8F7;
-	Tue,  6 May 2025 18:23:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20B55C4CEF1;
-	Tue,  6 May 2025 18:23:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746555837;
-	bh=Uqf8kJePtfsVZgbr7I/p/tyXitesai0FA9qB6jM2d68=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=mTq9wd72DU/eVRRzweoLa9Us5dM41/K5sQmA3weNWILL47X8Wcx8FB2YmSXawNFxO
-	 00r/kZZsupjVQsqvsSFMenCqsj6dw5/lZzRr33ggkVVN1CX9MwbnuXdgDWtRQQ70Va
-	 kAi8VI68bih+bJwU8cdzG20jhtCrvgU5EctFEFcRNUGCYrAHgUCLc6gdt4Fk1nbugj
-	 Ob2lQ/9Yn7FqnI1SqmLFra+kY/9HdeVfV8o2uWgrtYnJAicll9s351T5D9Nx4ctgEG
-	 B0tw6Nr70flZ8CW1OhUgMC9S6tU4+0t7jmAivWARLNod01I8KSHLQtMske++7cXItA
-	 OW2ACImsJ31pw==
-Date: Tue, 06 May 2025 13:23:55 -0500
+	id 1uCNCa-0000000D8Mv-46ZV;
+	Tue, 06 May 2025 18:39:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1746556773;
+	bh=PquaUV1gqO9bTDELz3+nRCGbdy7Z53bWETRvLS+hXVE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=qPRSeY6eu0Sqrojl9nVRIRrWrVf5RzWvhKcUwnTvAgQYmoxHApM317A0lO48uR+Nt
+	 NIttxv1olmDL1NBymYfT6Ptc3Q4qjYtEVrq8ZRN2CjXEExt4FBK9d5UPYhkovAzZSR
+	 BItXucXCkpeB/RU9yN8YyPOv3Gb67sUujnhYz+znoRfzMtk4g5NdiEOVW8nijlR+0t
+	 l7l2ngKMGwBadxsCQ46jox0txlnSXT+QoLyZT/IORNpfsKoLN9ymx0bg/GWdT1Lara
+	 KSqqN45t8MVzW3PP+fcfcgmKHwPru4urkhRtQanPXosc5GAwfYimK1Qf9DF9opYte0
+	 BMi98waBafNkQ==
+Received: from [IPV6:2a05:1141:1cc:8600:1cd7:9a7e:17d7:cd2c] (unknown [IPv6:2a05:1141:1cc:8600:1cd7:9a7e:17d7:cd2c])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5694017E10D3;
+	Tue,  6 May 2025 20:39:32 +0200 (CEST)
+Message-ID: <3aab9697-30fe-4697-a5ac-7fb8ebb61213@collabora.com>
+Date: Tue, 6 May 2025 20:39:31 +0200
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: krzysztof.kozlowski@linaro.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, frattaroli.nicolas@gmail.com, 
- devicetree@vger.kernel.org, heiko@sntech.de, jonas@kwiboo.se, 
- conor+dt@kernel.org, andrew@lunn.ch
-To: John Clark <inindev@gmail.com>
-In-Reply-To: <20250506114115.613616-1-inindev@gmail.com>
-References: <20250506114115.613616-1-inindev@gmail.com>
-Message-Id: <174655575268.2171082.7949828475697497257.robh@kernel.org>
-Subject: Re: [PATCH v3 0/3] Add Luckfox Omni3576 Carrier Board support for
- RK3576
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 07/13] media: rockchip: rkcif: add driver for mipi
+ csi-2 receiver
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+ Maxime Chevallier <maxime.chevallier@bootlin.com>,
+ =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
+ Gerald Loacker <gerald.loacker@wolfvision.net>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Paul Kocialkowski <paulk@sys-base.io>,
+ Alexander Shiyan <eagle.alexander923@gmail.com>,
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Michael Riesch <michael.riesch@wolfvision.net>
+References: <20240220-rk3568-vicap-v6-0-d2f5fbee1551@collabora.com>
+ <20240220-rk3568-vicap-v6-7-d2f5fbee1551@collabora.com>
+ <20250502133129.GA15945@pendragon.ideasonboard.com>
+ <0c9199be-5519-4523-9055-528673678d3b@collabora.com>
+ <20250502143510.GA11226@pendragon.ideasonboard.com>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20250502143510.GA11226@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_112358_488039_C6754A7E 
-X-CRM114-Status: GOOD (  28.37  )
+X-CRM114-CacheID: sfid-20250506_113937_381518_E4E3F919 
+X-CRM114-Status: GOOD (  38.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,131 +97,842 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Laurent,
 
-On Tue, 06 May 2025 07:41:12 -0400, John Clark wrote:
-> This series adds device tree support for the Luckfox Omni3576
-> Carrier Board with the Core3576 Module, powered by the Rockchip
-> RK3576 SoC (four Cortex-A72 cores, four Cortex-A53 cores, Mali-G52
-> MC3 GPU). It enables essential functionality for booting Linux and
-> basic connectivity, with plans for future support of peripherals
-> like WiFi, MIPI-DSI, HDMI, and Ethernet.
+On 5/2/25 16:35, Laurent Pinchart wrote:
+> On Fri, May 02, 2025 at 04:19:59PM +0200, Michael Riesch wrote:
+>> On 5/2/25 15:31, Laurent Pinchart wrote:
+>>> On Wed, Apr 30, 2025 at 11:15:56AM +0200, Michael Riesch via B4 Relay wrote:
+>>>> From: Michael Riesch <michael.riesch@wolfvision.net>
+>>>>
+>>>> The Rockchip RK3568 MIPI CSI-2 Receiver is a CSI-2 bridge with one
+>>>> input port and one output port. It receives the data with the help
+>>>> of an external MIPI PHY (C-PHY or D-PHY) and passes it to the
+>>>> Rockchip RK3568 Video Capture (VICAP) block.
+>>>>
+>>>> Add a V4L2 subdevice driver for this unit.
+>>>>
+>>>> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+>>>> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+>>>> ---
+>>>>  drivers/media/platform/rockchip/rkcif/Makefile     |   3 +
+>>>>  .../rockchip/rkcif/rkcif-mipi-csi-receiver.c       | 731 +++++++++++++++++++++
+>>>>  2 files changed, 734 insertions(+)
+>>>>
+>>>> diff --git a/drivers/media/platform/rockchip/rkcif/Makefile b/drivers/media/platform/rockchip/rkcif/Makefile
+>>>> index 818424972c7b..a5c18a45c213 100644
+>>>> --- a/drivers/media/platform/rockchip/rkcif/Makefile
+>>>> +++ b/drivers/media/platform/rockchip/rkcif/Makefile
+>>>> @@ -5,3 +5,6 @@ rockchip-cif-objs += rkcif-dev.o \
+>>>>  	rkcif-capture-mipi.o \
+>>>>  	rkcif-interface.o \
+>>>>  	rkcif-stream.o
+>>>> +
+>>>> +obj-$(CONFIG_VIDEO_ROCKCHIP_CIF) += rockchip-mipi-csi.o
+>>>> +rockchip-mipi-csi-objs += rkcif-mipi-csi-receiver.o
+>>>> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-mipi-csi-receiver.c b/drivers/media/platform/rockchip/rkcif/rkcif-mipi-csi-receiver.c
+>>>> new file mode 100644
+>>>> index 000000000000..81489f70490f
+>>>> --- /dev/null
+>>>> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-mipi-csi-receiver.c
+>>>> @@ -0,0 +1,731 @@
+>>>> +// SPDX-License-Identifier: GPL-2.0
+>>>> +/*
+>>>> + * Rockchip MIPI CSI-2 Receiver Driver
+>>>> + *
+>>>> + * Copyright (C) 2019 Rockchip Electronics Co., Ltd.
+>>>> + * Copyright (C) 2025 Michael Riesch <michael.riesch@wolfvision.net>
+>>>> + */
+>>>> +
+>>>> +#include <linux/clk.h>
+>>>> +#include <linux/delay.h>
+>>>> +#include <linux/io.h>
+>>>> +#include <linux/module.h>
+>>>> +#include <linux/of.h>
+>>>> +#include <linux/of_graph.h>
+>>>> +#include <linux/of_platform.h>
+>>>> +#include <linux/phy/phy.h>
+>>>> +#include <linux/platform_device.h>
+>>>> +#include <linux/pm_runtime.h>
+>>>> +#include <linux/reset.h>
+>>>> +
+>>>> +#include <media/mipi-csi2.h>
+>>>> +#include <media/v4l2-ctrls.h>
+>>>> +#include <media/v4l2-fwnode.h>
+>>>> +#include <media/v4l2-subdev.h>
+>>>> +
+>>>> +#define CSI2HOST_N_LANES     0x04
+>>>> +#define CSI2HOST_CSI2_RESETN 0x10
+>>>> +#define CSI2HOST_PHY_STATE   0x14
+>>>> +#define CSI2HOST_ERR1	     0x20
+>>>> +#define CSI2HOST_ERR2	     0x24
+>>>> +#define CSI2HOST_MSK1	     0x28
+>>>> +#define CSI2HOST_MSK2	     0x2c
+>>>> +#define CSI2HOST_CONTROL     0x40
+>>>
+>>> I'm trying to get to the bottom of the CSI-2 RX integration questions
+>>> for the RK3568. Some of the registers here seem to the CSI2RX_1C00 block
+>>> as documented starting on page 1059 of the RK3568 TRM (revision 1.1),
+>>> but they're not an exact match. The control register, in particular,
+>>> doesn't match at all. Where is this CSI-2 receiver documented in the TRM
+>>> ?
+>>
+>> That would be in Chapter 27 of the RK3568 TRM: "MIPI CSI HOST"
+>>
+>> The registers are at 0xfdfb0000 "CSI_RX_CTRL1", cf. Chapter 1 "System
+>> Overview".
+>>
+>> Naturally, this is quite confusing, as there is a "CSI2RX" whose
+>> registers are embedded in the ISP register map.
+>>
+>> "MIPI CSI HOST" and "CSI2RX" seem to be different IP cores but perform
+>> the same job in principle. CSI2RX seems to have additional features
+>> related to writing raw data into memory and to HDR, though.
+>>
+>> Hope that helps!
 > 
-> The series was first posted as v1 at:
-> https://lore.kernel.org/linux-rockchip/20250502205533.51744-1-inindev@gmail.com
-> v2 at:
-> https://lore.kernel.org/linux-rockchip/20250504102447.153551-1-inindev@gmail.com
+> It does, thank you. I wonder how I missed that.
 > 
-> Tested features (on Linux 6.15-rc4):
->  - UART: Serial console operational
->  - SD card: Mounts and reads/writes successfully
->  - PCIe: NVMe SSD detected, mounted, and fully functional
->  - USB 2.0: Host ports operational
->  - RTC: Timekeeping and wake-up tested
->  - LED: Heartbeat trigger functional
->  - eMMC: Enabled in device tree, not populated on tested hardware
+> The IP seems very similar to other CSI-2 receivers already supported
+> upstream, see drivers/media/platform/raspberrypi/rp1-cfe/dphy.c,
+> drivers/media/platform/renesas/rcar-csi2.c and
+> drivers/staging/media/imx/imx6-mipi-csi2.c. Those drivers combine
+> support for the CSI-2 RX and D-PHY, explaining some of the differences
+> (and in the case of the rcar-csi2 driver, I think it also combines
+> support for different CSI-2 RX in a single driver).
+
+Before I started writing the driver under discussion, I did scan the
+existing drivers, but could not see any similarities to rcar-csi2 and
+rp1-cfe/dphy.c (and I still don't see them), respectively (but maybe
+those two are the same).
+Unfortunately, I forgot to look into staging. Hm. Indeed it resembles
+the imx6-mipi-csi2.c driver, at least judging by the register layout.
+
+According to Kever, while a Synopsys IP core was used in older SoCs, the
+newer SoCs feature an IP core developed by Rockchip. Probably the
+register map was recycled but slightly modified.
+
+> Is there something we could do to avoid adding a 4th driver for the same
+> IP core family (from Synopsys or Cadence I assume) ? It could possibly
+> be done on top of this series to avoid delaying VICAP support, but I'd
+> really like to get this sorted out.
+
+Based on my current level of knowledge I wouldn't be comfortable with
+placing this driver in media/platform/synopsys/something. If you all
+advise me to do so, I will comply, though.
+
+I am not too keen on digging out a quite dated staging driver and basing
+the current efforts on that one.
+
+We could, however, move this driver to
+media/platform/rockchip/mipi-csi-receiver/ (name to be bikeshedded, open
+to suggestions). It is a separate kernel module already anyway, and
+maybe this way it is more visible to the next person developing a driver
+for a similar IP core. Sound reasonable?
+
+Best regards,
+Michael
+
 > 
-> The series includes three patches:
->  1. dt-bindings: vendor-prefixes: Add Luckfox vendor prefix
->  2. dt-bindings: arm: rockchip: Add Luckfox Omni3576 and Core3576 bindings
->  3. arm64: dts: rockchip: Add Luckfox Omni3576 board support
+>>>> +
+>>>> +#define SW_CPHY_EN(x)	     ((x) << 0)
+>>>> +#define SW_DSI_EN(x)	     ((x) << 4)
+>>>> +#define SW_DATATYPE_FS(x)    ((x) << 8)
+>>>> +#define SW_DATATYPE_FE(x)    ((x) << 14)
+>>>> +#define SW_DATATYPE_LS(x)    ((x) << 20)
+>>>> +#define SW_DATATYPE_LE(x)    ((x) << 26)
+>>>> +
+>>>> +#define RKCIF_CSI_CLKS_MAX   1
+>>>> +
+>>>> +enum {
+>>>> +	RKCIF_CSI_PAD_SINK,
+>>>> +	RKCIF_CSI_PAD_SRC,
+>>>> +	RKCIF_CSI_PAD_MAX,
+>>>> +};
+>>>> +
+>>>> +struct rkcif_csi_format {
+>>>> +	u32 code;
+>>>> +	u8 depth;
+>>>> +	u8 csi_dt;
+>>>> +};
+>>>> +
+>>>> +struct rkcif_csi_device {
+>>>> +	struct device *dev;
+>>>> +
+>>>> +	void __iomem *base_addr;
+>>>> +	struct clk_bulk_data *clks;
+>>>> +	unsigned int clks_num;
+>>>> +	struct phy *phy;
+>>>> +	struct reset_control *reset;
+>>>> +
+>>>> +	const struct rkcif_csi_format *formats;
+>>>> +	unsigned int formats_num;
+>>>> +
+>>>> +	struct media_pad pads[RKCIF_CSI_PAD_MAX];
+>>>> +	struct v4l2_async_notifier notifier;
+>>>> +	struct v4l2_fwnode_endpoint vep;
+>>>> +	struct v4l2_subdev sd;
+>>>> +
+>>>> +	struct v4l2_subdev *source_sd;
+>>>> +	u32 source_pad;
+>>>> +};
+>>>> +
+>>>> +static const struct v4l2_mbus_framefmt default_format = {
+>>>> +	.width = 3840,
+>>>> +	.height = 2160,
+>>>> +	.code = MEDIA_BUS_FMT_SRGGB10_1X10,
+>>>> +	.field = V4L2_FIELD_NONE,
+>>>> +	.colorspace = V4L2_COLORSPACE_RAW,
+>>>> +	.ycbcr_enc = V4L2_YCBCR_ENC_601,
+>>>> +	.quantization = V4L2_QUANTIZATION_FULL_RANGE,
+>>>> +	.xfer_func = V4L2_XFER_FUNC_NONE,
+>>>> +};
+>>>> +
+>>>> +static const struct rkcif_csi_format formats[] = {
+>>>> +	/* YUV formats */
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_YUYV8_1X16,
+>>>> +		.depth = 16,
+>>>> +		.csi_dt = MIPI_CSI2_DT_YUV422_8B,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_UYVY8_1X16,
+>>>> +		.depth = 16,
+>>>> +		.csi_dt = MIPI_CSI2_DT_YUV422_8B,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_YVYU8_1X16,
+>>>> +		.depth = 16,
+>>>> +		.csi_dt = MIPI_CSI2_DT_YUV422_8B,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_VYUY8_1X16,
+>>>> +		.depth = 16,
+>>>> +		.csi_dt = MIPI_CSI2_DT_YUV422_8B,
+>>>> +	},
+>>>> +	/* RGB formats */
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_RGB888_1X24,
+>>>> +		.depth = 24,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RGB888,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_BGR888_1X24,
+>>>> +		.depth = 24,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RGB888,
+>>>> +	},
+>>>> +	/* Bayer formats */
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SBGGR8_1X8,
+>>>> +		.depth = 8,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW8,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SGBRG8_1X8,
+>>>> +		.depth = 8,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW8,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SGRBG8_1X8,
+>>>> +		.depth = 8,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW8,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SRGGB8_1X8,
+>>>> +		.depth = 8,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW8,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SBGGR10_1X10,
+>>>> +		.depth = 10,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW10,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SGBRG10_1X10,
+>>>> +		.depth = 10,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW10,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SGRBG10_1X10,
+>>>> +		.depth = 10,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW10,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SRGGB10_1X10,
+>>>> +		.depth = 10,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW10,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SBGGR12_1X12,
+>>>> +		.depth = 12,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW12,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SGBRG12_1X12,
+>>>> +		.depth = 12,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW12,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SGRBG12_1X12,
+>>>> +		.depth = 12,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW12,
+>>>> +	},
+>>>> +	{
+>>>> +		.code = MEDIA_BUS_FMT_SRGGB12_1X12,
+>>>> +		.depth = 12,
+>>>> +		.csi_dt = MIPI_CSI2_DT_RAW12,
+>>>> +	},
+>>>> +};
+>>>> +
+>>>> +static inline struct rkcif_csi_device *to_rkcif_csi(struct v4l2_subdev *sd)
+>>>> +{
+>>>> +	return container_of(sd, struct rkcif_csi_device, sd);
+>>>> +}
+>>>> +
+>>>> +static inline __maybe_unused void
+>>>> +rkcif_csi_write(struct rkcif_csi_device *csi_dev, unsigned int addr, u32 val)
+>>>> +{
+>>>> +	writel(val, csi_dev->base_addr + addr);
+>>>> +}
+>>>> +
+>>>> +static inline __maybe_unused u32
+>>>> +rkcif_csi_read(struct rkcif_csi_device *csi_dev, unsigned int addr)
+>>>> +{
+>>>> +	return readl(csi_dev->base_addr + addr);
+>>>> +}
+>>>> +
+>>>> +static const struct rkcif_csi_format *
+>>>> +rkcif_csi_find_format(struct rkcif_csi_device *csi_dev, u32 mbus_code)
+>>>> +{
+>>>> +	const struct rkcif_csi_format *format;
+>>>> +
+>>>> +	WARN_ON(csi_dev->formats_num == 0);
+>>>> +
+>>>> +	for (int i = 0; i < csi_dev->formats_num; i++) {
+>>>> +		format = &csi_dev->formats[i];
+>>>> +		if (format->code == mbus_code)
+>>>> +			return format;
+>>>> +	}
+>>>> +
+>>>> +	return NULL;
+>>>> +}
+>>>> +
+>>>> +static int rkcif_csi_start(struct rkcif_csi_device *csi_dev)
+>>>> +{
+>>>> +	enum v4l2_mbus_type bus_type = csi_dev->vep.bus_type;
+>>>> +	union phy_configure_opts opts;
+>>>> +	s64 link_freq;
+>>>> +	u32 lanes = csi_dev->vep.bus.mipi_csi2.num_data_lanes;
+>>>> +	u32 control = 0;
+>>>> +
+>>>> +	if (lanes < 1 || lanes > 4)
+>>>> +		return -EINVAL;
+>>>> +
+>>>> +	/* set mult and div to 0, thus completely rely on V4L2_CID_LINK_FREQ */
+>>>> +	link_freq = v4l2_get_link_freq(csi_dev->source_sd->ctrl_handler, 0, 0);
+>>>> +	if (link_freq <= 0)
+>>>> +		return -EINVAL;
+>>>> +
+>>>> +	if (bus_type == V4L2_MBUS_CSI2_DPHY) {
+>>>> +		struct phy_configure_opts_mipi_dphy *cfg = &opts.mipi_dphy;
+>>>> +
+>>>> +		phy_mipi_dphy_get_default_config_for_hsclk(link_freq * 2, lanes,
+>>>> +							   cfg);
+>>>> +		phy_set_mode(csi_dev->phy, PHY_MODE_MIPI_DPHY);
+>>>> +		phy_configure(csi_dev->phy, &opts);
+>>>> +
+>>>> +		control |= SW_CPHY_EN(0);
+>>>> +
+>>>> +	} else if (bus_type == V4L2_MBUS_CSI2_CPHY) {
+>>>> +		control |= SW_CPHY_EN(1);
+>>>> +
+>>>> +		/* TODO: implement CPHY configuration */
+>>>> +	} else {
+>>>> +		return -EINVAL;
+>>>> +	}
+>>>> +
+>>>> +	control |= SW_DATATYPE_FS(0x00) | SW_DATATYPE_FE(0x01) |
+>>>> +		   SW_DATATYPE_LS(0x02) | SW_DATATYPE_LE(0x03);
+>>>> +
+>>>> +	rkcif_csi_write(csi_dev, CSI2HOST_N_LANES, lanes - 1);
+>>>> +	rkcif_csi_write(csi_dev, CSI2HOST_CONTROL, control);
+>>>> +	rkcif_csi_write(csi_dev, CSI2HOST_CSI2_RESETN, 1);
+>>>> +
+>>>> +	phy_power_on(csi_dev->phy);
+>>>> +
+>>>> +	return 0;
+>>>> +}
+>>>> +
+>>>> +static void rkcif_csi_stop(struct rkcif_csi_device *csi_dev)
+>>>> +{
+>>>> +	phy_power_off(csi_dev->phy);
+>>>> +
+>>>> +	rkcif_csi_write(csi_dev, CSI2HOST_CSI2_RESETN, 0);
+>>>> +	rkcif_csi_write(csi_dev, CSI2HOST_MSK1, ~0);
+>>>> +	rkcif_csi_write(csi_dev, CSI2HOST_MSK2, ~0);
+>>>> +}
+>>>> +
+>>>> +static const struct media_entity_operations rkcif_csi_media_ops = {
+>>>> +	.link_validate = v4l2_subdev_link_validate,
+>>>> +};
+>>>> +
+>>>> +static int rkcif_csi_enum_mbus_code(struct v4l2_subdev *sd,
+>>>> +				    struct v4l2_subdev_state *sd_state,
+>>>> +				    struct v4l2_subdev_mbus_code_enum *code)
+>>>> +{
+>>>> +	struct rkcif_csi_device *csi_dev = to_rkcif_csi(sd);
+>>>> +
+>>>> +	if (code->pad == RKCIF_CSI_PAD_SRC) {
+>>>> +		const struct v4l2_mbus_framefmt *sink_fmt;
+>>>> +
+>>>> +		if (code->index)
+>>>> +			return -EINVAL;
+>>>> +
+>>>> +		sink_fmt = v4l2_subdev_state_get_format(sd_state,
+>>>> +							RKCIF_CSI_PAD_SINK);
+>>>> +		code->code = sink_fmt->code;
+>>>> +
+>>>> +		return 0;
+>>>> +	} else if (code->pad == RKCIF_CSI_PAD_SINK) {
+>>>> +		if (code->index > csi_dev->formats_num)
+>>>> +			return -EINVAL;
+>>>> +
+>>>> +		code->code = csi_dev->formats[code->index].code;
+>>>> +		return 0;
+>>>> +	}
+>>>> +
+>>>> +	return -EINVAL;
+>>>> +}
+>>>> +
+>>>> +static int rkcif_csi_set_fmt(struct v4l2_subdev *sd,
+>>>> +			     struct v4l2_subdev_state *state,
+>>>> +			     struct v4l2_subdev_format *format)
+>>>> +{
+>>>> +	struct rkcif_csi_device *csi_dev = to_rkcif_csi(sd);
+>>>> +	const struct rkcif_csi_format *fmt;
+>>>> +	struct v4l2_mbus_framefmt *sink, *src;
+>>>> +
+>>>> +	/* the format on the source pad always matches the sink pad */
+>>>> +	if (format->pad == RKCIF_CSI_PAD_SRC)
+>>>> +		return v4l2_subdev_get_fmt(sd, state, format);
+>>>> +
+>>>> +	sink = v4l2_subdev_state_get_format(state, format->pad, format->stream);
+>>>> +	if (!sink)
+>>>> +		return -EINVAL;
+>>>> +
+>>>> +	fmt = rkcif_csi_find_format(csi_dev, format->format.code);
+>>>> +	if (fmt)
+>>>> +		*sink = format->format;
+>>>> +	else
+>>>> +		*sink = default_format;
+>>>> +
+>>>> +	/* propagate the format to the source pad */
+>>>> +	src = v4l2_subdev_state_get_opposite_stream_format(state, format->pad,
+>>>> +							   format->stream);
+>>>> +	if (!src)
+>>>> +		return -EINVAL;
+>>>> +
+>>>> +	*src = *sink;
+>>>> +
+>>>> +	return 0;
+>>>> +}
+>>>> +
+>>>> +static int rkcif_csi_set_routing(struct v4l2_subdev *sd,
+>>>> +				 struct v4l2_subdev_state *state,
+>>>> +				 enum v4l2_subdev_format_whence which,
+>>>> +				 struct v4l2_subdev_krouting *routing)
+>>>> +{
+>>>> +	int ret;
+>>>> +
+>>>> +	ret = v4l2_subdev_routing_validate(sd, routing,
+>>>> +					   V4L2_SUBDEV_ROUTING_ONLY_1_TO_1);
+>>>> +	if (ret)
+>>>> +		return ret;
+>>>> +
+>>>> +	ret = v4l2_subdev_set_routing_with_fmt(sd, state, routing,
+>>>> +					       &default_format);
+>>>> +	if (ret)
+>>>> +		return ret;
+>>>> +
+>>>> +	return 0;
+>>>> +}
+>>>> +
+>>>> +static int rkcif_csi_enable_streams(struct v4l2_subdev *sd,
+>>>> +				    struct v4l2_subdev_state *state, u32 pad,
+>>>> +				    u64 streams_mask)
+>>>> +{
+>>>> +	struct rkcif_csi_device *csi_dev = to_rkcif_csi(sd);
+>>>> +	struct v4l2_subdev *remote_sd;
+>>>> +	struct media_pad *sink_pad, *remote_pad;
+>>>> +	struct device *dev = csi_dev->dev;
+>>>> +	u64 mask;
+>>>> +	int ret;
+>>>> +
+>>>> +	sink_pad = &sd->entity.pads[RKCIF_CSI_PAD_SINK];
+>>>> +	remote_pad = media_pad_remote_pad_first(sink_pad);
+>>>> +	remote_sd = media_entity_to_v4l2_subdev(remote_pad->entity);
+>>>> +
+>>>> +	mask = v4l2_subdev_state_xlate_streams(state, RKCIF_CSI_PAD_SINK,
+>>>> +					       RKCIF_CSI_PAD_SRC,
+>>>> +					       &streams_mask);
+>>>> +
+>>>> +	ret = pm_runtime_resume_and_get(dev);
+>>>> +	if (ret)
+>>>> +		goto err;
+>>>> +
+>>>> +	ret = rkcif_csi_start(csi_dev);
+>>>> +	if (ret) {
+>>>> +		dev_err(dev, "failed to enable CSI hardware\n");
+>>>> +		goto err_pm_runtime_put;
+>>>> +	}
+>>>> +
+>>>> +	ret = v4l2_subdev_enable_streams(remote_sd, remote_pad->index, mask);
+>>>> +	if (ret)
+>>>> +		goto err_csi_stop;
+>>>> +
+>>>> +	return 0;
+>>>> +
+>>>> +err_csi_stop:
+>>>> +	rkcif_csi_stop(csi_dev);
+>>>> +err_pm_runtime_put:
+>>>> +	pm_runtime_put_sync(dev);
+>>>> +err:
+>>>> +	return ret;
+>>>> +}
+>>>> +
+>>>> +static int rkcif_csi_disable_streams(struct v4l2_subdev *sd,
+>>>> +				     struct v4l2_subdev_state *state, u32 pad,
+>>>> +				     u64 streams_mask)
+>>>> +{
+>>>> +	struct rkcif_csi_device *csi_dev = to_rkcif_csi(sd);
+>>>> +	struct v4l2_subdev *remote_sd;
+>>>> +	struct media_pad *sink_pad, *remote_pad;
+>>>> +	struct device *dev = csi_dev->dev;
+>>>> +	u64 mask;
+>>>> +	int ret;
+>>>> +
+>>>> +	sink_pad = &sd->entity.pads[RKCIF_CSI_PAD_SINK];
+>>>> +	remote_pad = media_pad_remote_pad_first(sink_pad);
+>>>> +	remote_sd = media_entity_to_v4l2_subdev(remote_pad->entity);
+>>>> +
+>>>> +	mask = v4l2_subdev_state_xlate_streams(state, RKCIF_CSI_PAD_SINK,
+>>>> +					       RKCIF_CSI_PAD_SRC,
+>>>> +					       &streams_mask);
+>>>> +
+>>>> +	ret = v4l2_subdev_disable_streams(remote_sd, remote_pad->index, mask);
+>>>> +
+>>>> +	rkcif_csi_stop(csi_dev);
+>>>> +
+>>>> +	pm_runtime_mark_last_busy(dev);
+>>>> +	pm_runtime_put_autosuspend(dev);
+>>>> +
+>>>> +	return ret;
+>>>> +}
+>>>> +
+>>>> +static const struct v4l2_subdev_pad_ops rkcif_csi_pad_ops = {
+>>>> +	.enum_mbus_code = rkcif_csi_enum_mbus_code,
+>>>> +	.get_fmt = v4l2_subdev_get_fmt,
+>>>> +	.set_fmt = rkcif_csi_set_fmt,
+>>>> +	.set_routing = rkcif_csi_set_routing,
+>>>> +	.enable_streams = rkcif_csi_enable_streams,
+>>>> +	.disable_streams = rkcif_csi_disable_streams,
+>>>> +};
+>>>> +
+>>>> +static const struct v4l2_subdev_ops rkcif_csi_ops = {
+>>>> +	.pad = &rkcif_csi_pad_ops,
+>>>> +};
+>>>> +
+>>>> +static int rkcif_csi_init_state(struct v4l2_subdev *sd,
+>>>> +				struct v4l2_subdev_state *state)
+>>>> +{
+>>>> +	struct v4l2_subdev_route routes[] = {
+>>>> +		{
+>>>> +			.sink_pad = RKCIF_CSI_PAD_SINK,
+>>>> +			.sink_stream = 0,
+>>>> +			.source_pad = RKCIF_CSI_PAD_SRC,
+>>>> +			.source_stream = 0,
+>>>> +			.flags = V4L2_SUBDEV_ROUTE_FL_ACTIVE,
+>>>> +		},
+>>>> +	};
+>>>> +	struct v4l2_subdev_krouting routing = {
+>>>> +		.len_routes = ARRAY_SIZE(routes),
+>>>> +		.num_routes = ARRAY_SIZE(routes),
+>>>> +		.routes = routes,
+>>>> +	};
+>>>> +	int ret;
+>>>> +
+>>>> +	ret = v4l2_subdev_set_routing_with_fmt(sd, state, &routing,
+>>>> +					       &default_format);
+>>>> +
+>>>> +	return ret;
+>>>> +}
+>>>> +
+>>>> +static const struct v4l2_subdev_internal_ops rkcif_csi_internal_ops = {
+>>>> +	.init_state = rkcif_csi_init_state,
+>>>> +};
+>>>> +
+>>>> +static int rkcif_csi_notifier_bound(struct v4l2_async_notifier *notifier,
+>>>> +				    struct v4l2_subdev *sd,
+>>>> +				    struct v4l2_async_connection *asd)
+>>>> +{
+>>>> +	struct rkcif_csi_device *csi_dev =
+>>>> +		container_of(notifier, struct rkcif_csi_device, notifier);
+>>>> +	int source_pad;
+>>>> +
+>>>> +	source_pad = media_entity_get_fwnode_pad(&sd->entity, sd->fwnode,
+>>>> +						 MEDIA_PAD_FL_SOURCE);
+>>>> +	if (source_pad < 0) {
+>>>> +		dev_err(csi_dev->dev, "failed to find source pad for %s\n",
+>>>> +			sd->name);
+>>>> +		return source_pad;
+>>>> +	}
+>>>> +
+>>>> +	csi_dev->source_sd = sd;
+>>>> +	csi_dev->source_pad = source_pad;
+>>>> +
+>>>> +	return media_create_pad_link(&sd->entity, source_pad,
+>>>> +				     &csi_dev->sd.entity, RKCIF_CSI_PAD_SINK,
+>>>> +				     MEDIA_LNK_FL_ENABLED);
+>>>> +}
+>>>> +
+>>>> +static const struct v4l2_async_notifier_operations rkcif_csi_notifier_ops = {
+>>>> +	.bound = rkcif_csi_notifier_bound,
+>>>> +};
+>>>> +
+>>>> +static int rkcif_csi_register_notifier(struct rkcif_csi_device *csi_dev)
+>>>> +{
+>>>> +	struct v4l2_async_connection *asd;
+>>>> +	struct v4l2_async_notifier *ntf = &csi_dev->notifier;
+>>>> +	struct v4l2_fwnode_endpoint *vep = &csi_dev->vep;
+>>>> +	struct v4l2_subdev *sd = &csi_dev->sd;
+>>>> +	struct device *dev = csi_dev->dev;
+>>>> +	struct fwnode_handle *ep;
+>>>> +	int ret = 0;
+>>>> +
+>>>> +	ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 0, 0, 0);
+>>>> +	if (!ep)
+>>>> +		return dev_err_probe(dev, -ENODEV, "failed to get endpoint\n");
+>>>> +
+>>>> +	vep->bus_type = V4L2_MBUS_UNKNOWN;
+>>>> +	ret = v4l2_fwnode_endpoint_parse(ep, vep);
+>>>> +	if (ret) {
+>>>> +		ret = dev_err_probe(dev, ret, "failed to parse endpoint\n");
+>>>> +		goto out;
+>>>> +	}
+>>>> +
+>>>> +	if (vep->bus_type != V4L2_MBUS_CSI2_DPHY &&
+>>>> +	    vep->bus_type != V4L2_MBUS_CSI2_CPHY) {
+>>>> +		ret = dev_err_probe(dev, -EINVAL,
+>>>> +				    "invalid bus type of endpoint\n");
+>>>> +		goto out;
+>>>> +	}
+>>>> +
+>>>> +	v4l2_async_subdev_nf_init(ntf, sd);
+>>>> +	ntf->ops = &rkcif_csi_notifier_ops;
+>>>> +
+>>>> +	asd = v4l2_async_nf_add_fwnode_remote(ntf, ep,
+>>>> +					      struct v4l2_async_connection);
+>>>> +	if (IS_ERR(asd)) {
+>>>> +		ret = PTR_ERR(asd);
+>>>> +		goto err_nf_cleanup;
+>>>> +	}
+>>>> +
+>>>> +	ret = v4l2_async_nf_register(ntf);
+>>>> +	if (ret) {
+>>>> +		ret = dev_err_probe(dev, ret, "failed to register notifier\n");
+>>>> +		goto err_nf_cleanup;
+>>>> +	}
+>>>> +
+>>>> +	goto out;
+>>>> +
+>>>> +err_nf_cleanup:
+>>>> +	v4l2_async_nf_cleanup(ntf);
+>>>> +out:
+>>>> +	fwnode_handle_put(ep);
+>>>> +	return ret;
+>>>> +}
+>>>> +
+>>>> +static int rkcif_csi_register(struct rkcif_csi_device *csi_dev)
+>>>> +{
+>>>> +	struct media_pad *pads = csi_dev->pads;
+>>>> +	struct v4l2_subdev *sd = &csi_dev->sd;
+>>>> +	int ret;
+>>>> +
+>>>> +	ret = rkcif_csi_register_notifier(csi_dev);
+>>>> +	if (ret)
+>>>> +		goto err;
+>>>> +
+>>>> +	v4l2_subdev_init(sd, &rkcif_csi_ops);
+>>>> +	sd->dev = csi_dev->dev;
+>>>> +	sd->entity.ops = &rkcif_csi_media_ops;
+>>>> +	sd->entity.function = MEDIA_ENT_F_VID_IF_BRIDGE;
+>>>> +	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE | V4L2_SUBDEV_FL_STREAMS;
+>>>> +	sd->internal_ops = &rkcif_csi_internal_ops;
+>>>> +	sd->owner = THIS_MODULE;
+>>>> +	snprintf(sd->name, sizeof(sd->name), "rockchip-mipi-csi %s",
+>>>> +		 dev_name(csi_dev->dev));
+>>>> +
+>>>> +	pads[RKCIF_CSI_PAD_SINK].flags = MEDIA_PAD_FL_SINK |
+>>>> +					 MEDIA_PAD_FL_MUST_CONNECT;
+>>>> +	pads[RKCIF_CSI_PAD_SRC].flags = MEDIA_PAD_FL_SOURCE;
+>>>> +	ret = media_entity_pads_init(&sd->entity, RKCIF_CSI_PAD_MAX, pads);
+>>>> +	if (ret)
+>>>> +		goto err_notifier_unregister;
+>>>> +
+>>>> +	ret = v4l2_subdev_init_finalize(sd);
+>>>> +	if (ret)
+>>>> +		goto err_entity_cleanup;
+>>>> +
+>>>> +	ret = v4l2_async_register_subdev(sd);
+>>>> +	if (ret) {
+>>>> +		dev_err(sd->dev, "failed to register CSI subdev\n");
+>>>> +		goto err_subdev_cleanup;
+>>>> +	}
+>>>> +
+>>>> +	return 0;
+>>>> +
+>>>> +err_subdev_cleanup:
+>>>> +	v4l2_subdev_cleanup(sd);
+>>>> +err_entity_cleanup:
+>>>> +	media_entity_cleanup(&sd->entity);
+>>>> +err_notifier_unregister:
+>>>> +	v4l2_async_nf_unregister(&csi_dev->notifier);
+>>>> +	v4l2_async_nf_cleanup(&csi_dev->notifier);
+>>>> +err:
+>>>> +	return ret;
+>>>> +}
+>>>> +
+>>>> +static void rkcif_csi_unregister(struct rkcif_csi_device *csi_dev)
+>>>> +{
+>>>> +	struct v4l2_subdev *sd = &csi_dev->sd;
+>>>> +
+>>>> +	v4l2_async_unregister_subdev(sd);
+>>>> +	v4l2_subdev_cleanup(sd);
+>>>> +	media_entity_cleanup(&sd->entity);
+>>>> +	v4l2_async_nf_unregister(&csi_dev->notifier);
+>>>> +	v4l2_async_nf_cleanup(&csi_dev->notifier);
+>>>> +}
+>>>> +
+>>>> +static const struct of_device_id rkcif_csi_of_match[] = {
+>>>> +	{
+>>>> +		.compatible = "rockchip,rk3568-mipi-csi",
+>>>> +	},
+>>>> +	{}
+>>>> +};
+>>>> +MODULE_DEVICE_TABLE(of, rkcif_csi_of_match);
+>>>> +
+>>>> +static int rkcif_csi_probe(struct platform_device *pdev)
+>>>> +{
+>>>> +	struct device *dev = &pdev->dev;
+>>>> +	struct rkcif_csi_device *csi_dev;
+>>>> +	int ret;
+>>>> +
+>>>> +	csi_dev = devm_kzalloc(dev, sizeof(*csi_dev), GFP_KERNEL);
+>>>> +	if (!csi_dev)
+>>>> +		return -ENOMEM;
+>>>> +	csi_dev->dev = dev;
+>>>> +	dev_set_drvdata(dev, csi_dev);
+>>>> +
+>>>> +	csi_dev->base_addr = devm_platform_ioremap_resource(pdev, 0);
+>>>> +	if (IS_ERR(csi_dev->base_addr))
+>>>> +		return PTR_ERR(csi_dev->base_addr);
+>>>> +
+>>>> +	ret = devm_clk_bulk_get_all(dev, &csi_dev->clks);
+>>>> +	if (ret != RKCIF_CSI_CLKS_MAX)
+>>>> +		return dev_err_probe(dev, -ENODEV, "failed to get clocks\n");
+>>>> +	csi_dev->clks_num = ret;
+>>>> +
+>>>> +	csi_dev->phy = devm_phy_get(dev, NULL);
+>>>> +	if (IS_ERR(csi_dev->phy))
+>>>> +		return dev_err_probe(dev, PTR_ERR(csi_dev->phy),
+>>>> +				     "failed to get MIPI CSI PHY\n");
+>>>> +
+>>>> +	csi_dev->reset = devm_reset_control_array_get_exclusive(dev);
+>>>> +	if (IS_ERR(csi_dev->reset))
+>>>> +		return dev_err_probe(dev, PTR_ERR(csi_dev->reset),
+>>>> +				     "failed to get reset\n");
+>>>> +
+>>>> +	csi_dev->formats = formats;
+>>>> +	csi_dev->formats_num = ARRAY_SIZE(formats);
+>>>> +
+>>>> +	pm_runtime_enable(dev);
+>>>> +
+>>>> +	ret = phy_init(csi_dev->phy);
+>>>> +	if (ret) {
+>>>> +		ret = dev_err_probe(dev, ret,
+>>>> +				    "failed to initialize MIPI CSI PHY\n");
+>>>> +		goto err_pm_runtime_disable;
+>>>> +	}
+>>>> +
+>>>> +	ret = rkcif_csi_register(csi_dev);
+>>>> +	if (ret)
+>>>> +		goto err_phy_exit;
+>>>> +
+>>>> +	return 0;
+>>>> +
+>>>> +err_phy_exit:
+>>>> +	phy_exit(csi_dev->phy);
+>>>> +err_pm_runtime_disable:
+>>>> +	pm_runtime_disable(dev);
+>>>> +	return ret;
+>>>> +}
+>>>> +
+>>>> +static void rkcif_csi_remove(struct platform_device *pdev)
+>>>> +{
+>>>> +	struct rkcif_csi_device *csi_dev = platform_get_drvdata(pdev);
+>>>> +	struct device *dev = &pdev->dev;
+>>>> +
+>>>> +	rkcif_csi_unregister(csi_dev);
+>>>> +	phy_exit(csi_dev->phy);
+>>>> +	pm_runtime_disable(dev);
+>>>> +}
+>>>> +
+>>>> +static int rkcif_csi_runtime_suspend(struct device *dev)
+>>>> +{
+>>>> +	struct rkcif_csi_device *csi_dev = dev_get_drvdata(dev);
+>>>> +
+>>>> +	clk_bulk_disable_unprepare(csi_dev->clks_num, csi_dev->clks);
+>>>> +
+>>>> +	return 0;
+>>>> +}
+>>>> +
+>>>> +static int rkcif_csi_runtime_resume(struct device *dev)
+>>>> +{
+>>>> +	struct rkcif_csi_device *csi_dev = dev_get_drvdata(dev);
+>>>> +	int ret;
+>>>> +
+>>>> +	reset_control_assert(csi_dev->reset);
+>>>> +	udelay(5);
+>>>> +	reset_control_deassert(csi_dev->reset);
+>>>> +
+>>>> +	ret = clk_bulk_prepare_enable(csi_dev->clks_num, csi_dev->clks);
+>>>> +	if (ret) {
+>>>> +		dev_err(dev, "failed to enable clocks\n");
+>>>> +		return ret;
+>>>> +	}
+>>>> +
+>>>> +	return 0;
+>>>> +}
+>>>> +
+>>>> +static const struct dev_pm_ops rkcif_csi_pm_ops = {
+>>>> +	.runtime_suspend = rkcif_csi_runtime_suspend,
+>>>> +	.runtime_resume = rkcif_csi_runtime_resume,
+>>>> +};
+>>>> +
+>>>> +static struct platform_driver rkcif_csi_drv = {
+>>>> +	.driver = {
+>>>> +		   .name = "rockchip-mipi-csi",
+>>>> +		   .of_match_table = rkcif_csi_of_match,
+>>>> +		   .pm = &rkcif_csi_pm_ops,
+>>>> +	},
+>>>> +	.probe = rkcif_csi_probe,
+>>>> +	.remove = rkcif_csi_remove,
+>>>> +};
+>>>> +module_platform_driver(rkcif_csi_drv);
+>>>> +
+>>>> +MODULE_DESCRIPTION("Rockchip MIPI CSI-2 Receiver platform driver");
+>>>> +MODULE_LICENSE("GPL");
 > 
-> The device tree is covered by the existing ROCKCHIP ARCHITECTURE
-> entry in MAINTAINERS. I am aware of ongoing RK3576 upstreaming
-> efforts (e.g., by Collabora) and welcome feedback or collaboration
-> to align with mainline driver development.
-> 
-> Changes in v3:
->  - Addressed Jonas Karlman's feedback on patch 3/3
->    (Luckfox Omni3576 device tree):
->    - Added pinctrl for green LED GPIO (gpio1 RK_PD5) for proper
->      pin setup.
->    - Reordered regulator node properties for consistent sequence
->      (e.g., regulator-name, regulator-min-microvolt,
->      regulator-max-microvolt, etc.).
->    - Updated regulator nodes (vcc_3v3_pcie, vbus_5v0_typec,
->      vcc_5v0_host, vcc_5v0_hdmi) to use 'gpios' property instead
->      of deprecated 'gpio'.
->    - Removed pmic-power-off pinctrl state and pinctrl-1 from RK806
->      PMIC node, as they are vendor-specific and undocumented in
->      bindings.
->    - Removed pwrkey node from PMIC, as it lacks binding
->      documentation.
->    - Added blank line between properties and child nodes in i2c2
->      node for DT style compliance.
->    - Removed no-mmc property from sdmmc node to enable MMC
->      support, aligning with RK3576 SD v3.0 and MMC v4.51
->      capabilities, allowing TF card slot to support MMC devices
->      or eMMC via adapter.
->  - Removed Ethernet support (gmac0/gmac1 nodes) per Andrew Lunn's
->    feedback, as it relied on the generic PHY driver with incorrect
->    RGMII delay settings, which would break with the upcoming
->    MAE0621A driver.
->  - Addressed Rob Herring's DTB check warnings, other warnings
->    (e.g., VOP, PCIe, OTP, HDMI PHY) originate from rk3576.dtsi and
->    are outside this patchset scope.
->  - Added RNG node to pick up Nicolas Frattaroli's "add RK3576 RNG
->    node" patch
-> 
-> Changes in v2:
->  - Enabled HDMI node per feedback from Heiko Stuebner and Nicolas
->    Frattaroli; untested due to upstream driver issues.
->  - Enabled Ethernet 1 node per Heiko's device tree philosophy;
->    untested due to suspected PHY driver or configuration issues
->    (removed in v3 per Andrew Lunn).
->  - Clarified eMMC remains enabled but unpopulated on tested
->    board, per Heiko.
-> 
-> Signed-off-by: John Clark <inindev@gmail.com>
-> ---
-> John Clark (3):
->   dt-bindings: vendor-prefixes: Add luckfox prefix
->   dt-bindings: arm: rockchip: Add Luckfox Omni3576 and Core3576 bindings
->   arm64: dts: rockchip: Add Luckfox Omni3576 Board support
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |  10 +
->  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../dts/rockchip/rk3576-luckfox-core3576.dtsi | 683 ++++++++++++++++++
->  .../dts/rockchip/rk3576-luckfox-omni3576.dts  |  53 ++
->  5 files changed, 749 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-luckfox-core3576.dtsi
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dts
-> 
-> --
-> 2.39.5
-> 
-> 
-> 
-
-
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/next-20250506 (best guess, 2/3 blobs matched)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250506114115.613616-1-inindev@gmail.com:
-
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: /soc/rng@2a410000: failed to match any schema with compatible: ['rockchip,rk3576-rng']
-
-
-
-
 
 
 _______________________________________________
