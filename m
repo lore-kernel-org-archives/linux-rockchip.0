@@ -4,66 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADEE4C3ABC0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 13:43:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF383C3ABAC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 14:05:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zTLgQk61anANf8KOHqxWHi3XxOTOKVTfz/NS3SSnjBQ=; b=0zmrgXRZ9KmBqm
-	Oz0lB44TZTWKv1AbdL5SwAPkztmbYPOvaYyG66YBIxYWCRkpGTobjnZZ11X4BjQkvnC/rA4E57eKZ
-	MxbZwBLv77vHLSy8ZQJjIl/ZbxY5yxmIlHSrG7p+/9GPGtGnPFXNL3RsSpG8YBBstdCXwGV5hmLrt
-	Vai8aqjCRP8guhhHaUViPfMxYDA4Ohgq9GXLxdIr0FW/Lvvt6bG70afaEz/osLazwxRn4yGh846Tr
-	4nh8TuTKx6q7BfLYsSQiD6dL91Oi4pq+n4Gdid19+5qj/BhQZ/pCOHxXzoDoGmCsOdFqtsj8C/1+6
-	CRf2mphDdgn+YVXvWw4w==;
+	List-Owner; bh=iOMq/i9k2pcLJ3T++m7Oo0KqdShLRfQnh2z7Ww6krPc=; b=t5AgFa9Iz/ocGR
+	W/7tj1KmKpxHRk7S8FwKE0o0mmwOR9Jtz16kp/f60b3HPJulXWCMPNLxvZTguKJNXj+eeQ7d8pGNS
+	P1ZfAE3lEMe53UUcwpwtnbmQguufnWrACnS3rJpXc5O8G42Nop/h2cugBIvpgOQJZOby/JxGrLh2m
+	Tw8iCYphEnrJPHLn5kXBnvcPSPDLHLF0Zvz9JQHSdYizJbfntZY8IVXvlIvV0CkUy8tYRqeNz+Vi6
+	qamagRy30cIWy1Ual+HDgiEvMoR+/vKANaZanFdsSMMdqRUE8j6B42DuJz9JVqlxEMM68A1vT3tRJ
+	KrQn7zusKmfe+lhllUog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCIa8-0000000CBI8-4A57;
-	Tue, 06 May 2025 13:43:36 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uCIvB-0000000CFQm-3NPU;
+	Tue, 06 May 2025 14:05:21 +0000
+Received: from mail-4319.protonmail.ch ([185.70.43.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCGH5-0000000BhL0-2uIL;
-	Tue, 06 May 2025 11:15:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=PjX4pdz/ggEMRHtgaXyYi2dUz9COuWm0CR9rLf0Od6Y=; b=Q9cFFKzdh5LtgPMqryJ59PeE6N
-	ZyMwlTsx+/VInOIa/Hj69E4lw8UYYnCAuMQGvtqBvKF27NBAEkvCArJ3kkKIQPFQmXGTwHZfk+Ogw
-	i95rf6acUDLueruRWXuwk+SQR4qguPXyBqsUUH8CLjYO1isDaUxxvctC3tQ1vE6WrD3Qa+4WlLfg8
-	x91vMpNPs9VLo6H8H1H5S3YTdy19z16SMW9vgNOqqWlwH9Xxy0I/pLVblkaHx9N7mTLFfjxJDrRFQ
-	8t9bzdUEERxN8ZGd4lNVK9fV5vtjVS6YW0vR7/6dzucLXtE8aXwNHRGlxr78yaoycIWlLkhTWWrih
-	473gwvJA==;
-Received: from i53875a1d.versanet.de ([83.135.90.29] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uCGGv-0003Vx-Mq; Tue, 06 May 2025 13:15:37 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Yao Zi <ziyao@disroot.org>,
-	Rob Herring <robh@kernel.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v3 0/2] arm64: dts: rockchip: Add pwm nodes for RK3528
-Date: Tue,  6 May 2025 13:15:28 +0200
-Message-ID: <174653011959.1371608.16023824654446843423.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250401120020.976343-1-amadeus@jmu.edu.cn>
-References: <20250401120020.976343-1-amadeus@jmu.edu.cn>
+	id 1uCGXp-0000000Bky8-448c;
+	Tue, 06 May 2025 11:33:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1746531181; x=1746790381;
+	bh=x7zG6gGQLY5b1I/ipuZi6m2HxyJ1+lEEa8n8tBP6azs=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
+	b=bopRE1omtcDaNh9yvphI/+KKkQ3NQObllNAsaGWTXZ4qr8+Emo9PXWsZKfU/zDKkr
+	 phtyxeNeijrMv21RvFoPntlZqt3cMAxbopbA8UvtfpZKGjicroo8kzrXJobJAr/kOP
+	 FDX6BtF+DZUsynXIhaFIE3XlQX6hQ2DUnSmqpUgCRNxbJAg1aaYYLr5ACv2jaFGZ72
+	 XZSeCaiEv9lHVGVBkY1j9z54IzWjHHLPNVns5Giy4v++3bL0GA1gtuzZ1n7DpH6kYv
+	 6v8hevWaqZa4Dif4P4xiPFVHMnKUo93aFMMmW3B+C9Sr1yqh0bN9Kyn8jJRikUXGOs
+	 KYWyxivZdJ0uQ==
+Date: Tue, 06 May 2025 11:32:57 +0000
+To: Niklas Cassel <cassel@kernel.org>
+From: Laszlo Fiat <laszlo.fiat@proton.me>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, =?utf-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Wilfred Mallawa <wilfred.mallawa@wdc.com>, Damien Le Moal <dlemoal@kernel.org>, Hans Zhang <18255117159@163.com>, =?utf-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/4] PCI: dw-rockchip: Do not enumerate bus before endpoint devices are ready
+Message-ID: <sjCYTWsKGvCGBbOkCLKDjxQci2L3hMnKoXghzK-HzwO3ZFUGpOadN_Ro4Lbnq50p8CRvbNJy_WU1vDE831mbumbWcZzB8GAYh28IVmSx-ys=@proton.me>
+In-Reply-To: <20250506073934.433176-7-cassel@kernel.org>
+References: <20250506073934.433176-6-cassel@kernel.org> <20250506073934.433176-7-cassel@kernel.org>
+Feedback-ID: 130963441:user:proton
+X-Pm-Message-ID: 857b95d6fa8b1fd5a4f91774bd01c8466e60661c
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_041547_755034_A25BF83C 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20250506_043306_143961_1B7D6F0C 
+X-CRM114-Status: GOOD (  21.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,29 +69,76 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 01 Apr 2025 20:00:18 +0800, Chukun Pan wrote:
-> Add pwm nodes for RK3528. Most rk3528 boards use pwm-regulator to
-> supply to CPU, add node to enable them. The PWM core on RK3528 is
-> the same as RK3328, but the driver doesn't support interrupts yet.
+On Tuesday, May 6th, 2025 at 9:39 AM, Niklas Cassel <cassel@kernel.org> wrote:
+
+> Commit ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can
+> detect Link Up") changed so that we no longer call dw_pcie_wait_for_link(),
+> and instead enumerate the bus when receiving a Link Up IRQ.
 > 
-> Note that pwm regulator needs to be initialized in U-Boot:
-> ```
-> &vdd_arm {
-> 	regulator-init-microvolt = <953000>;
-> };
+> Laszlo Fiat reported (off-list) that his PLEXTOR PX-256M8PeGN NVMe SSD is
+> no longer functional, and simply reverting commit ec9fd499b9c6 ("PCI:
+> dw-rockchip: Don't wait for link since we can detect Link Up") makes his
+> SSD functional again.
 > 
-> [...]
+> It seems that we are enumerating the bus before the endpoint is ready.
+> Adding a msleep(PCIE_T_RRS_READY_MS) before enumerating the bus in the
+> threaded IRQ handler makes the SSD functional once again.
+> 
+> What appears to happen is that before ec9fd499b9c6, we called
+> dw_pcie_wait_for_link(), and in the first iteration of the loop, the link
+> will never be up (because the link was just started),
+> dw_pcie_wait_for_link() will then sleep for LINK_WAIT_SLEEP_MS (90 ms),
+> before trying again.
+> 
+> This means that even if a driver was missing a msleep(PCIE_T_RRS_READY_MS)
+> (100 ms), because of the call to dw_pcie_wait_for_link(), enumerating the
+> bus would essentially be delayed by that time anyway (because of the sleep
+> LINK_WAIT_SLEEP_MS (90 ms)).
+> 
+> While we could add the msleep(PCIE_T_RRS_READY_MS) after deasserting PERST,
+> that would essentially bring back an unconditional delay during synchronous
+> probe (the whole reason to use a Link Up IRQ was to avoid an unconditional
+> delay during probe).
+> 
+> Thus, add the msleep(PCIE_T_RRS_READY_MS) before enumerating the bus in the
+> IRQ handler. This way, we will not have an unconditional delay during boot
+> for unpopulated PCIe slots.
+> 
+> Cc: Laszlo Fiat laszlo.fiat@proton.me
+> 
+> Fixes: ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can detect Link Up")
+> Signed-off-by: Niklas Cassel cassel@kernel.org
+> 
+> ---
+> drivers/pci/controller/dwc/pcie-dw-rockchip.c | 2 ++
+> 1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 3c6ab71c996e..6a7ec3545a7f 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -23,6 +23,7 @@
+> #include <linux/reset.h>
+> 
+> 
+> #include "pcie-designware.h"
+> +#include "../../pci.h"
+> 
+> /*
+> * The upper 16 bits of PCIE_CLIENT_CONFIG are a write
+> @@ -458,6 +459,7 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void arg)
+> if (reg & PCIE_RDLH_LINK_UP_CHGED) {
+> if (rockchip_pcie_link_up(pci)) {
+> dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
+> + msleep(PCIE_T_RRS_READY_MS);
+> / Rescan the bus to enumerate endpoint devices */
+> pci_lock_rescan_remove();
+> pci_rescan_bus(pp->bridge->bus);
+> 
+> --
+> 2.49.0
 
-Applied, thanks!
-
-[1/2] arm64: dts: rockchip: Add pwm nodes for RK3528
-      commit: 9e701ad7c3551b3ab87ed5fa439569696ddf42e4
-[2/2] arm64: dts: rockchip: Enable regulators for Radxa E20C
-      commit: c6599944af5a09029259ff8c533d22754f2b1ba4
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Tested-by: Laszlo Fiat <laszlo.fiat@proton.me>
 
 _______________________________________________
 Linux-rockchip mailing list
