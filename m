@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF383C3ABAC
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 14:05:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEF62C3ABAC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 14:07:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iOMq/i9k2pcLJ3T++m7Oo0KqdShLRfQnh2z7Ww6krPc=; b=t5AgFa9Iz/ocGR
-	W/7tj1KmKpxHRk7S8FwKE0o0mmwOR9Jtz16kp/f60b3HPJulXWCMPNLxvZTguKJNXj+eeQ7d8pGNS
-	P1ZfAE3lEMe53UUcwpwtnbmQguufnWrACnS3rJpXc5O8G42Nop/h2cugBIvpgOQJZOby/JxGrLh2m
-	Tw8iCYphEnrJPHLn5kXBnvcPSPDLHLF0Zvz9JQHSdYizJbfntZY8IVXvlIvV0CkUy8tYRqeNz+Vi6
-	qamagRy30cIWy1Ual+HDgiEvMoR+/vKANaZanFdsSMMdqRUE8j6B42DuJz9JVqlxEMM68A1vT3tRJ
-	KrQn7zusKmfe+lhllUog==;
+	List-Owner; bh=Xlj1kOjllg9iKd2BlS17vQxwkpwYqWo5yTkVGPdbHBg=; b=OYq6shD/zko3dr
+	Fip6BnY0TI2LOBwRWT4mbGbE3ODhHJ4G4V/Ss1KvzHYeg0tL6gKzpTneyrIxuqVAeA6iCLjyripfk
+	QrfRnLv2uqO6EUy8Xcbhu6tLkteIjtlDcQwa3qJSj+UYEECG/63R5OFazwOR5vb0+5eHvxfotegle
+	6ijOT6D2qSz89EggFBVHGFLzUIRCPbXEUr/4cKPQv4fe1xWksFR85vmtvj6ui87ed/CO80nhxpmoB
+	GrkZfcxl9mH6gowVpgFNd56oCgnWrRHeYEbzGhFbbZTUizAAMQgzoq8ZZoreIfJztL42tWOeHl+vH
+	SeG4zWS84H3YkdokiPsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCIvB-0000000CFQm-3NPU;
-	Tue, 06 May 2025 14:05:21 +0000
-Received: from mail-4319.protonmail.ch ([185.70.43.19])
+	id 1uCIx5-0000000CFpb-0YEV;
+	Tue, 06 May 2025 14:07:19 +0000
+Received: from mail-24427.protonmail.ch ([109.224.244.27])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCGXp-0000000Bky8-448c;
-	Tue, 06 May 2025 11:33:07 +0000
+	id 1uCGas-0000000BlW9-3DmG
+	for linux-rockchip@lists.infradead.org;
+	Tue, 06 May 2025 11:36:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1746531181; x=1746790381;
-	bh=x7zG6gGQLY5b1I/ipuZi6m2HxyJ1+lEEa8n8tBP6azs=;
+	s=protonmail; t=1746531371; x=1746790571;
+	bh=n1y15ggPmlTmYTk4lxrzQIM3LojUkZqNoouqh7PA76Q=;
 	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
 	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
 	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
-	b=bopRE1omtcDaNh9yvphI/+KKkQ3NQObllNAsaGWTXZ4qr8+Emo9PXWsZKfU/zDKkr
-	 phtyxeNeijrMv21RvFoPntlZqt3cMAxbopbA8UvtfpZKGjicroo8kzrXJobJAr/kOP
-	 FDX6BtF+DZUsynXIhaFIE3XlQX6hQ2DUnSmqpUgCRNxbJAg1aaYYLr5ACv2jaFGZ72
-	 XZSeCaiEv9lHVGVBkY1j9z54IzWjHHLPNVns5Giy4v++3bL0GA1gtuzZ1n7DpH6kYv
-	 6v8hevWaqZa4Dif4P4xiPFVHMnKUo93aFMMmW3B+C9Sr1yqh0bN9Kyn8jJRikUXGOs
-	 KYWyxivZdJ0uQ==
-Date: Tue, 06 May 2025 11:32:57 +0000
+	b=K3vCZy14k5jbFdGrLIREvPiswYrJrBnEHX8fn/aYLHBKObUzVtGecYIujWl0h9zbW
+	 oNmSe4HmWO2TVucjFEeP5a/h5aujbtLvRIy1JSG8V3UCNmQd0Z50+rP6tXYQYdWc9Y
+	 Ej+W3F3SylUmnLEkAOAJgxGHl8doy/fVJDIGLMax79XnSiGOrYT3udLiPaVJ8XSYpL
+	 iyqmddgcFm5y7zuRhI3XGNp43vx7R61/L7W/xKbv8SNUtrxtpsBMeLpvUKtY7Got9V
+	 HpPza4rZcl4j361eGtKVf0ZJLR0AUo0XDHBAxOIzBY8M809lUxpIiAS5HV4wIdtsfj
+	 IH4AS4Fh6hlNA==
+Date: Tue, 06 May 2025 11:36:04 +0000
 To: Niklas Cassel <cassel@kernel.org>
 From: Laszlo Fiat <laszlo.fiat@proton.me>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, =?utf-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Wilfred Mallawa <wilfred.mallawa@wdc.com>, Damien Le Moal <dlemoal@kernel.org>, Hans Zhang <18255117159@163.com>, =?utf-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 1/4] PCI: dw-rockchip: Do not enumerate bus before endpoint devices are ready
-Message-ID: <sjCYTWsKGvCGBbOkCLKDjxQci2L3hMnKoXghzK-HzwO3ZFUGpOadN_Ro4Lbnq50p8CRvbNJy_WU1vDE831mbumbWcZzB8GAYh28IVmSx-ys=@proton.me>
-In-Reply-To: <20250506073934.433176-7-cassel@kernel.org>
-References: <20250506073934.433176-6-cassel@kernel.org> <20250506073934.433176-7-cassel@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, =?utf-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Wilfred Mallawa <wilfred.mallawa@wdc.com>, Damien Le Moal <dlemoal@kernel.org>, Hans Zhang <18255117159@163.com>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 3/4] PCI: dw-rockchip: Replace PERST sleep time with proper macro
+Message-ID: <1reFy5Nwl2unAMz8eiJ8N2AJFavSwlPAjjrp8lv7ySl52ZYWZxTnpOfcTyejxHGfWDKFZdp0sKdIrs2v6QQqeEo0xm2hMPSFO_7j2WMOjo0=@proton.me>
+In-Reply-To: <20250506073934.433176-9-cassel@kernel.org>
+References: <20250506073934.433176-6-cassel@kernel.org> <20250506073934.433176-9-cassel@kernel.org>
 Feedback-ID: 130963441:user:proton
-X-Pm-Message-ID: 857b95d6fa8b1fd5a4f91774bd01c8466e60661c
+X-Pm-Message-ID: 6be6925127c1ae6a773b742a8e5f443190ea74d1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_043306_143961_1B7D6F0C 
-X-CRM114-Status: GOOD (  21.06  )
+X-CRM114-CacheID: sfid-20250506_043614_941276_536B1BFC 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,70 +72,29 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 On Tuesday, May 6th, 2025 at 9:39 AM, Niklas Cassel <cassel@kernel.org> wrote:
 
-> Commit ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can
-> detect Link Up") changed so that we no longer call dw_pcie_wait_for_link(),
-> and instead enumerate the bus when receiving a Link Up IRQ.
+> Replace the PERST sleep time with the proper macro (PCIE_T_PVPERL_MS).
+> No functional change.
 > 
-> Laszlo Fiat reported (off-list) that his PLEXTOR PX-256M8PeGN NVMe SSD is
-> no longer functional, and simply reverting commit ec9fd499b9c6 ("PCI:
-> dw-rockchip: Don't wait for link since we can detect Link Up") makes his
-> SSD functional again.
-> 
-> It seems that we are enumerating the bus before the endpoint is ready.
-> Adding a msleep(PCIE_T_RRS_READY_MS) before enumerating the bus in the
-> threaded IRQ handler makes the SSD functional once again.
-> 
-> What appears to happen is that before ec9fd499b9c6, we called
-> dw_pcie_wait_for_link(), and in the first iteration of the loop, the link
-> will never be up (because the link was just started),
-> dw_pcie_wait_for_link() will then sleep for LINK_WAIT_SLEEP_MS (90 ms),
-> before trying again.
-> 
-> This means that even if a driver was missing a msleep(PCIE_T_RRS_READY_MS)
-> (100 ms), because of the call to dw_pcie_wait_for_link(), enumerating the
-> bus would essentially be delayed by that time anyway (because of the sleep
-> LINK_WAIT_SLEEP_MS (90 ms)).
-> 
-> While we could add the msleep(PCIE_T_RRS_READY_MS) after deasserting PERST,
-> that would essentially bring back an unconditional delay during synchronous
-> probe (the whole reason to use a Link Up IRQ was to avoid an unconditional
-> delay during probe).
-> 
-> Thus, add the msleep(PCIE_T_RRS_READY_MS) before enumerating the bus in the
-> IRQ handler. This way, we will not have an unconditional delay during boot
-> for unpopulated PCIe slots.
-> 
-> Cc: Laszlo Fiat laszlo.fiat@proton.me
-> 
-> Fixes: ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can detect Link Up")
 > Signed-off-by: Niklas Cassel cassel@kernel.org
 > 
 > ---
-> drivers/pci/controller/dwc/pcie-dw-rockchip.c | 2 ++
-> 1 file changed, 2 insertions(+)
+> drivers/pci/controller/dwc/pcie-dw-rockchip.c | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 > diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 3c6ab71c996e..6a7ec3545a7f 100644
+> index 6a7ec3545a7f..0baf9da3ac1c 100644
 > --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
 > +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -23,6 +23,7 @@
-> #include <linux/reset.h>
+> @@ -225,7 +225,7 @@ static int rockchip_pcie_start_link(struct dw_pcie *pci)
+> * We need more extra time as before, rather than setting just
+> * 100us as we don't know how long should the device need to reset.
+> */
+> - msleep(100);
+> + msleep(PCIE_T_PVPERL_MS);
+> gpiod_set_value_cansleep(rockchip->rst_gpio, 1);
 > 
 > 
-> #include "pcie-designware.h"
-> +#include "../../pci.h"
-> 
-> /*
-> * The upper 16 bits of PCIE_CLIENT_CONFIG are a write
-> @@ -458,6 +459,7 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void arg)
-> if (reg & PCIE_RDLH_LINK_UP_CHGED) {
-> if (rockchip_pcie_link_up(pci)) {
-> dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
-> + msleep(PCIE_T_RRS_READY_MS);
-> / Rescan the bus to enumerate endpoint devices */
-> pci_lock_rescan_remove();
-> pci_rescan_bus(pp->bridge->bus);
-> 
+> return 0;
 > --
 > 2.49.0
 
