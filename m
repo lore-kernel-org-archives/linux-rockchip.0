@@ -4,58 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3DFEC3ABBC
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 May 2025 02:35:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD99C3ABC0
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 May 2025 03:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vZwlVcef2NsReSGy/VtcavXsj65bwuU/Ea833GHAgOU=; b=cOrBlCNqF02FpwJss48O5niNso
-	9aonrR1PuL27U1xjppfcruAd8ecYMscHD/4GPvUNRo3xcPjaE1F/bWyMRmwFj91KY9mKHLFhFevpL
-	gkLbRgk0WOnh2gqHiw+kDl0u8G+r7shPPcZHKKVxocSYmtpgRcDpf/uY2NHQj19vu5IajjW+cGuRr
-	zM+ROUPNd0CCiSjmpAjw7f2fStpva1FQBTYz0uVQVQzJtMcLb1ZMPC0Mqa52vKnAtwWt21BYOXQmp
-	YSH40Ue7zZYc5JcJd8GF0cfyWibfnKpP+JByAZvSBVdiiYF+GnFG1AgMo8KDJetfOp6LGo1aM1l5W
-	s/oRztvg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RD3vRqrmVGpHXbTBUFeFXHaamwSXL3HzR/rIXFB3NSY=; b=UvUkcRcQvf2HUg
+	QN7q+BWa9bRvLVOnfmMgeKttMv+SMwKySA8L9HesKgu+5LKOAmAVY707qYzgsfwz2PHVEq5kNYIVE
+	vbJ6tO9WX3QWClkA61h1O0CsLO23172PDxOfjhxRe2Hqw3jb3nq0GeZpFA6vR6JatQgYOeNQTV1Er
+	XhvW2wNVGjzUFfNR1kQpcosUE2rUqf+zVpgWCtLXoPBo92ReyQN/gwq1eqJGj4jA+JzEJFRk0pFzk
+	Ecd18Gak6S3+YfaiHddRpQkYd5siuX2U1oLa78kHjbDd1j9RdVd+NWCOKdUMm2G3EnkQECISzBQGZ
+	yS7hzXs1VEtUSIrCmG8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCUdU-0000000Dzdz-2c3Y;
-	Wed, 07 May 2025 02:35:52 +0000
-Received: from mail-m3291.qiye.163.com ([220.197.32.91])
+	id 1uCVk0-0000000E7Fj-17xV;
+	Wed, 07 May 2025 03:46:40 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCU75-0000000DscH-2O8U;
-	Wed, 07 May 2025 02:02:26 +0000
-Received: from [192.168.60.65] (unknown [103.29.142.67])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 142d62da9;
-	Wed, 7 May 2025 10:02:14 +0800 (GMT+08:00)
-Message-ID: <a5da2a81-6944-4d4e-a582-a24f8340efc5@rock-chips.com>
-Date: Wed, 7 May 2025 10:02:12 +0800
+	id 1uCQjH-0000000DaX7-44zL;
+	Tue, 06 May 2025 22:25:37 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-43cfdc2c8c9so27958675e9.2;
+        Tue, 06 May 2025 15:25:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1746570334; x=1747175134; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=gT+hqvYnvFoiGUuape8lhiuYp0FjZhhNlHilKAoqjy0=;
+        b=chNd7Y8ZR7Mm9vY7MsUTwIgc5ldNim92Nb/9JCEEJkUh8pMCAn2MviQY5fbAldfj65
+         EfXP6gPjcJy1GN4Fi3mGNP1BskNsMHIpTb9MYixHFYcYm4mN4gw8+sgsLcsoh1672aJP
+         ffEo7eQjfYsqzJOQAvRfXAfZZdIaDm7HgosekAviq4IGw15KS7fNL+DificIVhFZTqXR
+         PtxiNBDSHcl5t9q8kYtmRYBfh8ZYAD7VS7VCV8F+YOZWjKFdRQ2N3vmY9kqPOPdICuTP
+         sDFQ6QXmUALS1v3nzYRSG+249iqKvfYkC41dX6lsyN9SWSCs97C4DKxq/4kJNRK5ULCi
+         4Cxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746570334; x=1747175134;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=gT+hqvYnvFoiGUuape8lhiuYp0FjZhhNlHilKAoqjy0=;
+        b=KqlsFpIj7lM1J3SFcSYIc5B0eoiH0srZxyBH6jVB+sn4U4TuqXCDCZZAVIZcEaQFbH
+         zXaaELRRw6YvVuMDjaioQP8IR1Bs2vlbUSn2o5EamWgz9FSFhQFWwMhzV0iDDqwAOMW+
+         fY+LafuSqtFKxKuoRhdDQPOIgZ2l0sIaSHlMTaOzhhpeHk61ws/UwuInPTooi5S0lMCU
+         L8gjIaioMEdH0VjC2t40TMQxN0RtcWY9Ll/sC6BQa0g8nAuqrAcG4y6FRwBVdNXeja91
+         oV7vdyeb9jB1i/kHjC8iCffqFDA4/aQ3H/QpxEirhf+vHSNtzlLgfFxh+JLODNI2nMqy
+         UDAw==
+X-Forwarded-Encrypted: i=1; AJvYcCVYdSgvHdHWWnSRPIxtnpIwiyiyTByMHYSckrw+dXjxWFJRYjRmR4thuURcupbobsrwvQwnKihH8RqpiekvoBZU@lists.infradead.org, AJvYcCWXa4/RRBI4oi4nb2f64WCasbwP2TWUOhY4Y5vCQy6NKSpgcVQUO9l+kEcAK0+V3W9luJVDQiJ+fLXsFGEtCAY=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxFj7k+LDxC0Wv8Fnq/DUf4i9nHbZZLB3652dyvZtMiZKobcINN
+	FtTKiSD/Iol+xmL8X08ISyCJImjb8DxS4yAo1s3GNhwS88F6J2zW
+X-Gm-Gg: ASbGncuw1dgsu6x7YKwFzM7Re1nIu5DEVRl3JB17TPGkhvm5tgbJyuR/m3DGBqSvy3F
+	y9Au58lvrcFQ5P3R+Oc8jLZfyoTDvOVW+QnfGz1MMwqmMxKc6WVHyBMDCWGuSeTaqfFYW51/E1b
+	c5srrYtxF4mwS5UkQcS4IAXaDQvlbj/HuHtn+uJ014Sb7YfhnT5NSNulkd9WwseK5j6pMq9Y8Fw
+	t/tzNV+JWRClFVq2N3jRbRCLw7GaPAaOwQkktoNKdKaKwFYSEei9POYy/bTlCmX3vI80HnQ446o
+	U5cYAspVZX7eGaFQKWSDdQKPv0We5razj8erC4HnXpZ4rgQLSWTuzAE/Fw7WtamUxdN7v9e7DsW
+	as+dPqpl084vwPiwx/gXwSmQetPlczH/aiByBwFuwfdcQNfKl2ufVI/i5b+GvQ9BMzZsTb1euic
+	w=
+X-Google-Smtp-Source: AGHT+IGGW2UR02UyKr5m7oSO8uNudVCq7G0oipkdATajemKEbGILj6K3P8WqusgC9FWz3WuR33yVkQ==
+X-Received: by 2002:a05:600c:c10:b0:43c:e70d:4504 with SMTP id 5b1f17b1804b1-441d44c7c36mr4619785e9.19.1746570334058;
+        Tue, 06 May 2025 15:25:34 -0700 (PDT)
+Received: from cypher.home.roving-it.com (2.c.4.1.7.3.6.4.2.a.a.3.0.f.c.2.1.8.6.2.1.1.b.f.0.b.8.0.1.0.0.2.ip6.arpa. [2001:8b0:fb11:2681:2cf0:3aa2:4637:14c2])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-441d43cb59bsm8202305e9.2.2025.05.06.15.25.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 May 2025 15:25:33 -0700 (PDT)
+From: Peter Robinson <pbrobinson@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Vasily Khoruzhick <anarsoul@gmail.com>,
+	Tianling Shen <cnsztl@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Cc: Peter Robinson <pbrobinson@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Update eMMC for NanoPi R5 series
+Date: Tue,  6 May 2025 23:25:28 +0100
+Message-ID: <20250506222531.625157-1-pbrobinson@gmail.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 0/6] rockchip: Add rk3562 SoC and evb support
-To: "Rob Herring (Arm)" <robh@kernel.org>
-References: <20250506025715.33595-1-kever.yang@rock-chips.com>
- <174655575165.2171034.16453137338500014976.robh@kernel.org>
-Content-Language: en-US
-From: Kever Yang <kever.yang@rock-chips.com>
-In-Reply-To: <174655575165.2171034.16453137338500014976.robh@kernel.org>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDHxhJVkhLTE5PS0IdSBlJTlYVFAkWGhdVEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlKS0hVSUJVSk9JVU1MWVdZFhoPEhUdFFlBWU9LSFVKS0lIQktDVUpLS1
-	VKQlkG
-X-HM-Tid: 0a96a87aadb103afkunm142d62da9
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Ogg6Sxw*DjJLThVONSMKMjhL
-	CzMaFDJVSlVKTE9NTkNISEhMT09OVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlKS0hVSUJVSk9JVU1MWVdZCAFZQU5DSkw3Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=OtzecflpZnKWD8Lhk8YvqQFaFozPhpcL1pqbDiGpgC9A0ZDXFmuvh+VcYpV8dUal9T4xeNviwwGdxZ1idVC02A3wz5eHeYeDzO+YJ0vE5KOvgIsr+GLtwQRxbsc8LujSNLYBAJ2FeVNUIvCo8GcLng88Kqx8G+yVuzEPSt8FDv4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=1zFclqcGuYPNryGvnI+na4Nb66ye8cJcL9CEUWPikAg=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_190224_112774_5B190779 
-X-CRM114-Status: GOOD (  25.29  )
+X-CRM114-CacheID: sfid-20250506_152536_011910_CEF5C6CD 
+X-CRM114-Status: GOOD (  13.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,132 +98,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, Jimmy Hon <honyuenkwun@gmail.com>, Finley Xiao <finley.xiao@rock-chips.com>, Shresth Prasad <shresthprasad7@gmail.com>, Jamie Iles <jamie@jamieiles.com>, Dragan Simic <dsimic@manjaro.org>, Yao Zi <ziyao@disroot.org>, Detlev Casanova <detlev.casanova@collabora.com>, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, linux-rockchip@lists.infradead.org, Quentin Schulz <quentin.schulz@cherry.de>, Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-watchdog@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, Frank Wang <frank.wang@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, linux-arm-kernel@lists.infradead.org, Junhao Xie <bigfoot@classfun.cn>, linux-kernel@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Diederik de Haas <didi.debian@cknow.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Add the 3.3v and 1.8v regulators that are connected to
+the eMMC on the R5 series devices, as well as adding the
+eMMC data strobe, and enable eMMC HS200 mode as the
+Foresee FEMDNN0xxG-A3A55 modules support it.
 
-On 2025/5/7 02:23, Rob Herring (Arm) wrote:
-> On Tue, 06 May 2025 10:57:09 +0800, Kever Yang wrote:
->> Patch series V5 remove [v4 1/7] which had taken by Manivannan, and move
->> scmi-shmem from soc node to reserved memory.
->>
->> Patch series V4 remove patches already landed, and remove dts nodes for
->> modules still under review.
->>
->> This patch set adds rk3562 SoC and its evb support.
->>
->> I have split out patches need driver change for different subsystem.
->> And all the modules with dt-binding document update in this patch set
->> do not need any driver change. I put them together to make it clear we
->> have a new SoC and board to use the new compatible. Please pick up the
->> patch for your subsystem, or please let me know if the patch has to
->> send separate.
->>
->> Test with USB, PCIe, EMMC, SD Card.
->>
->> This patch set is base on the patch set for rk3576 evb1 support.
->>
->> V3:
->> https://lore.kernel.org/linux-rockchip/20250227111913.2344207-1-kever.yang@rock-chips.com/
->> V2:
->> https://lore.kernel.org/linux-rockchip/b4df8a73-58a2-4765-a9e4-3513cb2bc720@rock-chips.com/T/
->>
->>
->> Changes in v5:
->> - Collect review tag
->> - Update scmi-shmem from soc to reserved memory
->>
->> Changes in v4:
->> - Collect ack tag
->> - Collect ack tag
->> - Collect ack tag
->> - remove gmac and otp nodes
->> - remove gmac nodes
->>
->> Changes in v3:
->> - Collect reveiw tag
->> - Collect the Acked-by tag
->> - remove i2c/serial/spi alias
->> - add soc node
->>
->> Changes in v2:
->> - Update in sort order
->> - remove grf in cru
->> - Update some properties order
->>
->> Finley Xiao (2):
->>    arm64: dts: rockchip: add core dtsi for RK3562 Soc
->>    arm64: dts: rockchip: Add RK3562 evb2 devicetree
->>
->> Kever Yang (4):
->>    dt-bindings: watchdog: Add rk3562 compatible
->>    dt-bindings: rockchip: pmu: Add rk3562 compatible
->>    dt-bindings: soc: rockchip: Add rk3562 syscon compatibles
->>    dt-bindings: arm: rockchip: Add rk3562 evb2 board
->>
->>   .../devicetree/bindings/arm/rockchip.yaml     |    5 +
->>   .../devicetree/bindings/arm/rockchip/pmu.yaml |    2 +
->>   .../devicetree/bindings/soc/rockchip/grf.yaml |    7 +
->>   .../bindings/watchdog/snps,dw-wdt.yaml        |    1 +
->>   arch/arm64/boot/dts/rockchip/Makefile         |    1 +
->>   .../boot/dts/rockchip/rk3562-evb2-v10.dts     |  488 ++++
->>   .../boot/dts/rockchip/rk3562-pinctrl.dtsi     | 2352 +++++++++++++++++
->>   arch/arm64/boot/dts/rockchip/rk3562.dtsi      | 1270 +++++++++
->>   8 files changed, 4126 insertions(+)
->>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3562-evb2-v10.dts
->>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3562-pinctrl.dtsi
->>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3562.dtsi
->>
->> --
->> 2.25.1
->>
->>
->>
->
-> My bot found new DTB warnings on the .dts files added or changed in this
-> series.
->
-> Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-> are fixed by another series. Ultimately, it is up to the platform
-> maintainer whether these warnings are acceptable or not. No need to reply
-> unless the platform maintainer has comments.
->
-> If you already ran DT checks and didn't see these error(s), then
-> make sure dt-schema is up to date:
->
->    pip3 install dtschema --upgrade
->
->
-> This patch series was applied (using b4) to base:
->   Base: attempting to guess base-commit...
->   Base: tags/next-20250506 (exact match)
->
-> If this is not the correct base, please add 'base-commit' tag
-> (or use b4 which does this automatically)
->
-> New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250506025715.33595-1-kever.yang@rock-chips.com:
->
-> arch/arm64/boot/dts/rockchip/rk3562-evb2-v10.dtb: /soc/usb2-phy@ff740000: failed to match any schema with compatible: ['rockchip,rk3562-usb2phy']
+Fixes: c8ec73b05a95d ("arm64: dts: rockchip: create common dtsi for NanoPi R5 series")
+Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+---
 
-The usb2-phy patch set[1] has send and got reviewed tag from Heiko for a 
-long time, what should I do for that patch?
+I had reports from some Fedora users that their eMMC didn't work
+on the R5C and this fixes it, the schematic of the eMMC is the
+same across all of the R5 series of devices.
 
+ arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-Thanks,
-- Kever
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi
+index 00c479aa18711..a28b4af10d13a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi
+@@ -486,9 +486,12 @@ &saradc {
+ &sdhci {
+ 	bus-width = <8>;
+ 	max-frequency = <200000000>;
++	mmc-hs200-1_8v;
+ 	non-removable;
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd>;
++	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
++	vmmc-supply = <&vcc_3v3>;
++	vqmmc-supply = <&vcc_1v8>;
+ 	status = "okay";
+ };
+ 
+-- 
+2.49.0
 
-[1] 
-https://patchwork.kernel.org/project/linux-phy/patch/20250415050005.52773-2-kever.yang@rock-chips.com/
-
->
->
->
->
->
->
 
 _______________________________________________
 Linux-rockchip mailing list
