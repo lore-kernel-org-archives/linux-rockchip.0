@@ -4,69 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77EC6C3ABBF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 13:09:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADEE4C3ABC0
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 13:43:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qw6pgR6i66/nCEq+O7eSXgJgzMYjhHB3wMSdxiOkoKs=; b=XogAS/OJxva7m6
-	Z+EhRF3uHqRbHpM0P8v3phJQvIf0yyCRuhAFh6TocxCtm5/GoTLme6fVsRO0jFFqLofn7J2rChnIy
-	gkwfhhH3O7ePh6k8uzsjj6Q0q29bA++ZQtAdJKJgn4lFWSRUoYoCg7a42DxKjn89ou+AsZZH2OPs3
-	Hu7s0Mhggx02VFrtWuJj3+rXUgQg/wAa7qKFzn7zLPRfkPCKyR/o3+zvj9Eooyci/4AqeCSLnMUwU
-	nBG6z/XweY5FEiDUy3dGplxIk44GsbP9RsWTxGLxl45V7/JgXfJC9lA9nV9sfcU7cA+3EvIiOIl6B
-	TWKm8d6qz/TVAbszX+og==;
+	List-Owner; bh=zTLgQk61anANf8KOHqxWHi3XxOTOKVTfz/NS3SSnjBQ=; b=0zmrgXRZ9KmBqm
+	Oz0lB44TZTWKv1AbdL5SwAPkztmbYPOvaYyG66YBIxYWCRkpGTobjnZZ11X4BjQkvnC/rA4E57eKZ
+	MxbZwBLv77vHLSy8ZQJjIl/ZbxY5yxmIlHSrG7p+/9GPGtGnPFXNL3RsSpG8YBBstdCXwGV5hmLrt
+	Vai8aqjCRP8guhhHaUViPfMxYDA4Ohgq9GXLxdIr0FW/Lvvt6bG70afaEz/osLazwxRn4yGh846Tr
+	4nh8TuTKx6q7BfLYsSQiD6dL91Oi4pq+n4Gdid19+5qj/BhQZ/pCOHxXzoDoGmCsOdFqtsj8C/1+6
+	CRf2mphDdgn+YVXvWw4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCI3X-0000000C2OQ-1QXA;
-	Tue, 06 May 2025 13:09:55 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uCIa8-0000000CBI8-4A57;
+	Tue, 06 May 2025 13:43:36 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCFlx-0000000BbiF-2WdK;
-	Tue, 06 May 2025 10:43:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1746528204; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=iKuUcYPrIt4A3j4GRckvn6OuopOvq0w0w7TvCCZhvHcECt8sLgrmsZQd3NSpVuDrgJNNHAE/5OTLrKHj2U5uu5tOAGoUbI98DQZnMBA4ci+aD1KSYhxPDWoJP+SxdcqvA05//HhVDmKSI+8ZowFbarnJGrgdpZ7T/Bz122TmJLE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1746528204; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=UgAJkWKMCMZiD27pHL8mQDuaU7z5D7GDSVmanYuhkI0=; 
-	b=FVZXOzR2kRcKcWeC7uSn3YYNXV2Gi26WyotRYhI8R8FMGz/Ht8sQVn4LSoDfEml47m4bGOPpWoJwNXTiQ9yvK4Ytlt12ctOM1F000s8p/mjZ/WjPsP4zrc0K3+VD9VxvcuZMG7HtaVrwn5LuzI3NUxM3Db9tsQsXwKp7POaMCz4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1746528204;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=UgAJkWKMCMZiD27pHL8mQDuaU7z5D7GDSVmanYuhkI0=;
-	b=e0K9hppJwiSY7g/ApKXHRTv/TYLOJ3FRJpAqdGpnKcFSFaMhg0XyaXPQ4qApECan
-	lMJWZck0shNnvE4hAhsO9BhKsfnpBNiftHgYGMEzPNqrtAQoMiHECztbGmObc+hpReK
-	vEdjosWz2CyV2qjRDyQeeDBZa2ZK7zlIj9wbarno=
-Received: by mx.zohomail.com with SMTPS id 1746528203603146.97246046476903;
-	Tue, 6 May 2025 03:43:23 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 06 May 2025 12:42:44 +0200
-Subject: [PATCH v4 5/5] arm64: defconfig: Enable Rockchip SAI and ES8328
+	id 1uCGH5-0000000BhL0-2uIL;
+	Tue, 06 May 2025 11:15:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=PjX4pdz/ggEMRHtgaXyYi2dUz9COuWm0CR9rLf0Od6Y=; b=Q9cFFKzdh5LtgPMqryJ59PeE6N
+	ZyMwlTsx+/VInOIa/Hj69E4lw8UYYnCAuMQGvtqBvKF27NBAEkvCArJ3kkKIQPFQmXGTwHZfk+Ogw
+	i95rf6acUDLueruRWXuwk+SQR4qguPXyBqsUUH8CLjYO1isDaUxxvctC3tQ1vE6WrD3Qa+4WlLfg8
+	x91vMpNPs9VLo6H8H1H5S3YTdy19z16SMW9vgNOqqWlwH9Xxy0I/pLVblkaHx9N7mTLFfjxJDrRFQ
+	8t9bzdUEERxN8ZGd4lNVK9fV5vtjVS6YW0vR7/6dzucLXtE8aXwNHRGlxr78yaoycIWlLkhTWWrih
+	473gwvJA==;
+Received: from i53875a1d.versanet.de ([83.135.90.29] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uCGGv-0003Vx-Mq; Tue, 06 May 2025 13:15:37 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Yao Zi <ziyao@disroot.org>,
+	Rob Herring <robh@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v3 0/2] arm64: dts: rockchip: Add pwm nodes for RK3528
+Date: Tue,  6 May 2025 13:15:28 +0200
+Message-ID: <174653011959.1371608.16023824654446843423.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250401120020.976343-1-amadeus@jmu.edu.cn>
+References: <20250401120020.976343-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-Message-Id: <20250506-rk3576-sai-v4-5-a8b5f5733ceb@collabora.com>
-References: <20250506-rk3576-sai-v4-0-a8b5f5733ceb@collabora.com>
-In-Reply-To: <20250506-rk3576-sai-v4-0-a8b5f5733ceb@collabora.com>
-To: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
- Sugar Zhang <sugar.zhang@rock-chips.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_034337_704271_9DF97738 
-X-CRM114-Status: UNSURE (   9.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250506_041547_755034_A25BF83C 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,49 +75,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, Luca Ceresoli <luca.ceresoli@bootlin.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3576 uses Rockchip SAI for audio output. Meanwhile, the Sige5
-board, which uses the RK3576 and is supported by mainline, uses an
-ES8388 codec over I2C with the ES8328 driver implementing support for
-this codec.
 
-Enable both in the defconfig.
+On Tue, 01 Apr 2025 20:00:18 +0800, Chukun Pan wrote:
+> Add pwm nodes for RK3528. Most rk3528 boards use pwm-regulator to
+> supply to CPU, add node to enable them. The PWM core on RK3528 is
+> the same as RK3328, but the driver doesn't support interrupts yet.
+> 
+> Note that pwm regulator needs to be initialized in U-Boot:
+> ```
+> &vdd_arm {
+> 	regulator-init-microvolt = <953000>;
+> };
+> 
+> [...]
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- arch/arm64/configs/defconfig | 3 +++
- 1 file changed, 3 insertions(+)
+Applied, thanks!
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 98ad22833282596abbe47acb467464680c2dbb80..c960271e47c1370e5a5c947a40835e5be4184c25 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -1010,6 +1010,7 @@ CONFIG_SND_SOC_SC7280=m
- CONFIG_SND_SOC_X1E80100=m
- CONFIG_SND_SOC_ROCKCHIP=m
- CONFIG_SND_SOC_ROCKCHIP_I2S_TDM=m
-+CONFIG_SND_SOC_ROCKCHIP_SAI=m
- CONFIG_SND_SOC_ROCKCHIP_SPDIF=m
- CONFIG_SND_SOC_ROCKCHIP_RT5645=m
- CONFIG_SND_SOC_RK3399_GRU_SOUND=m
-@@ -1049,6 +1050,8 @@ CONFIG_SND_SOC_DA7213=m
- CONFIG_SND_SOC_ES7134=m
- CONFIG_SND_SOC_ES7241=m
- CONFIG_SND_SOC_ES8316=m
-+CONFIG_SND_SOC_ES8328=m
-+CONFIG_SND_SOC_ES8328_I2C=m
- CONFIG_SND_SOC_GTM601=m
- CONFIG_SND_SOC_MSM8916_WCD_ANALOG=m
- CONFIG_SND_SOC_MSM8916_WCD_DIGITAL=m
+[1/2] arm64: dts: rockchip: Add pwm nodes for RK3528
+      commit: 9e701ad7c3551b3ab87ed5fa439569696ddf42e4
+[2/2] arm64: dts: rockchip: Enable regulators for Radxa E20C
+      commit: c6599944af5a09029259ff8c533d22754f2b1ba4
 
+Best regards,
 -- 
-2.49.0
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
