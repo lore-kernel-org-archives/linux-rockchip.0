@@ -4,54 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD4CCC3ABC7
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 23:36:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 954D1C3ABC0
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 23:36:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oKbnH/XbFeDhaxqyAS0Sw4LoJRwD2hEpIRxz49iErBo=; b=krJBV/PbHXSj8K
-	zTNH2k8QbPom4Clzk9MbR82Nwa0RrjVUYVKHznuPfeZo09XsKJXYRX9syCSa5326sbxCNLeL9K5Fg
-	ZT51cwIhMLhBJ8+x+hEHAspHMXAcj0do4kGy79ARISA1bHhiqwRTepxXlRLdOrA+txmcy9/7JCPmW
-	YjsOBtzARudyUO76l9EDUxPF9gwni825qTvufuQA4dhrcPd6Sm/s93ljn/HJuBUe6UWaKxZHVXVgS
-	Fx53ljoyIxq7uAqNrsA5zFrnS0Lqluo78nomYWv7bg3uTrn8SEK3IZ8xzPhGN8YLFzJwyj1eEZ3/9
-	dyhRkwGcbaa55TYsbiLw==;
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=4Y1va+QfoWMpk+pL9xyGmaBb49jfuOx/bH5DR6HYFYs=; b=GQZY+aPEPJJeUJ0ZYHQZpHSO9D
+	adcLO2D4nQ/fTkgTz94Dd1BnXWMjiDEXXs7D5pvEPkplzSX7xVQQjxd1+zRe5eX3DSHe0uszNB0Gr
+	y3fPXtAevg9NwtDZbVybfF2qQ+HtbfXN7W8agYFToaWVNbzWJzqz12l8RsqLH/Xcai2cqAxuEpsPt
+	Dsl11HDVecbKZfRg79ofKsgXHcv8g8/tn1c+W+HgeEmnTe7iwWEXroO5geueoF+knaqQnr18/Kzd4
+	e3yfWbgueiH75eLgdRnvGBm6DgEmIL5K9UxtCumNCRhKjFX8IIxJxfpaQay4oJ22z3smpMhHDao+W
+	JfKyhlIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCRpa-0000000DgIK-1i9P;
-	Tue, 06 May 2025 23:36:10 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uCRpe-0000000DgRP-3klh;
+	Tue, 06 May 2025 23:36:14 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCMxP-0000000D5q9-29LN;
-	Tue, 06 May 2025 18:23:56 +0000
+	id 1uCMxS-0000000D5rT-1gIE;
+	Tue, 06 May 2025 18:23:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E4D5E5C4605;
-	Tue,  6 May 2025 18:21:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8FB20C4CEE4;
-	Tue,  6 May 2025 18:23:53 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5BA0E4A8F7;
+	Tue,  6 May 2025 18:23:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20B55C4CEF1;
+	Tue,  6 May 2025 18:23:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746555833;
-	bh=ZEAGjwIFjybc/HGuQRpeGkvdPGM1CPmJpu83eTHjeHY=;
+	s=k20201202; t=1746555837;
+	bh=Uqf8kJePtfsVZgbr7I/p/tyXitesai0FA9qB6jM2d68=;
 	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=J2Axxfi7zb9TfRjQzYpz4uELBa1yRNXuJU2ZPxuI+nYb26O0ECUNZSZS6C5YYlBZo
-	 IMVZgxTBOuHoYLXXKxrxqfTFCLQCAXOvI45dc/Q3IQaUQdl6deseQnjljgop1uvTo/
-	 A/+9EnnfP9+WPeNv4aX98MskcNF/yhIGWJDIl7XdyDmN1LdMQXZ6nQVt4GBCEImAbv
-	 UXq5igTpjIrBkTGvu36607jrTnccYqTpiRXLpvJxu874m2HlocpzEVD73+GR9WZWBf
-	 9MmX4teM14pxvLlQp0PztgVQHt9SDAhS7qD0X1pnlcoQ0Oedcj4HUjx4O33ziLmPJl
-	 0Hh0zIv4dsoqw==
-Date: Tue, 06 May 2025 13:23:51 -0500
+	b=mTq9wd72DU/eVRRzweoLa9Us5dM41/K5sQmA3weNWILL47X8Wcx8FB2YmSXawNFxO
+	 00r/kZZsupjVQsqvsSFMenCqsj6dw5/lZzRr33ggkVVN1CX9MwbnuXdgDWtRQQ70Va
+	 kAi8VI68bih+bJwU8cdzG20jhtCrvgU5EctFEFcRNUGCYrAHgUCLc6gdt4Fk1nbugj
+	 Ob2lQ/9Yn7FqnI1SqmLFra+kY/9HdeVfV8o2uWgrtYnJAicll9s351T5D9Nx4ctgEG
+	 B0tw6Nr70flZ8CW1OhUgMC9S6tU4+0t7jmAivWARLNod01I8KSHLQtMske++7cXItA
+	 OW2ACImsJ31pw==
+Date: Tue, 06 May 2025 13:23:55 -0500
 MIME-Version: 1.0
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Kever Yang <kever.yang@rock-chips.com>
-In-Reply-To: <20250506025715.33595-1-kever.yang@rock-chips.com>
-References: <20250506025715.33595-1-kever.yang@rock-chips.com>
-Message-Id: <174655575165.2171034.16453137338500014976.robh@kernel.org>
-Subject: Re: [PATCH v5 0/6] rockchip: Add rk3562 SoC and evb support
+Cc: krzysztof.kozlowski@linaro.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, frattaroli.nicolas@gmail.com, 
+ devicetree@vger.kernel.org, heiko@sntech.de, jonas@kwiboo.se, 
+ conor+dt@kernel.org, andrew@lunn.ch
+To: John Clark <inindev@gmail.com>
+In-Reply-To: <20250506114115.613616-1-inindev@gmail.com>
+References: <20250506114115.613616-1-inindev@gmail.com>
+Message-Id: <174655575268.2171082.7949828475697497257.robh@kernel.org>
+Subject: Re: [PATCH v3 0/3] Add Luckfox Omni3576 Carrier Board support for
+ RK3576
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_112355_643044_069442DF 
-X-CRM114-Status: GOOD (  25.27  )
+X-CRM114-CacheID: sfid-20250506_112358_488039_C6754A7E 
+X-CRM114-Status: GOOD (  28.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,87 +69,103 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, Jimmy Hon <honyuenkwun@gmail.com>, Finley Xiao <finley.xiao@rock-chips.com>, Shresth Prasad <shresthprasad7@gmail.com>, Jamie Iles <jamie@jamieiles.com>, Dragan Simic <dsimic@manjaro.org>, Yao Zi <ziyao@disroot.org>, Detlev Casanova <detlev.casanova@collabora.com>, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, linux-rockchip@lists.infradead.org, Quentin Schulz <quentin.schulz@cherry.de>, Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-watchdog@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, Frank Wang <frank.wang@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, linux-arm-kernel@lists.infradead.org, Junhao Xie <bigfoot@classfun.cn>, linux-kernel@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Diederik de Haas <didi.debian@cknow.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 06 May 2025 10:57:09 +0800, Kever Yang wrote:
+On Tue, 06 May 2025 07:41:12 -0400, John Clark wrote:
+> This series adds device tree support for the Luckfox Omni3576
+> Carrier Board with the Core3576 Module, powered by the Rockchip
+> RK3576 SoC (four Cortex-A72 cores, four Cortex-A53 cores, Mali-G52
+> MC3 GPU). It enables essential functionality for booting Linux and
+> basic connectivity, with plans for future support of peripherals
+> like WiFi, MIPI-DSI, HDMI, and Ethernet.
 > 
-> Patch series V5 remove [v4 1/7] which had taken by Manivannan, and move
-> scmi-shmem from soc node to reserved memory.
+> The series was first posted as v1 at:
+> https://lore.kernel.org/linux-rockchip/20250502205533.51744-1-inindev@gmail.com
+> v2 at:
+> https://lore.kernel.org/linux-rockchip/20250504102447.153551-1-inindev@gmail.com
 > 
-> Patch series V4 remove patches already landed, and remove dts nodes for
-> modules still under review.
+> Tested features (on Linux 6.15-rc4):
+>  - UART: Serial console operational
+>  - SD card: Mounts and reads/writes successfully
+>  - PCIe: NVMe SSD detected, mounted, and fully functional
+>  - USB 2.0: Host ports operational
+>  - RTC: Timekeeping and wake-up tested
+>  - LED: Heartbeat trigger functional
+>  - eMMC: Enabled in device tree, not populated on tested hardware
 > 
-> This patch set adds rk3562 SoC and its evb support.
+> The series includes three patches:
+>  1. dt-bindings: vendor-prefixes: Add Luckfox vendor prefix
+>  2. dt-bindings: arm: rockchip: Add Luckfox Omni3576 and Core3576 bindings
+>  3. arm64: dts: rockchip: Add Luckfox Omni3576 board support
 > 
-> I have split out patches need driver change for different subsystem.
-> And all the modules with dt-binding document update in this patch set
-> do not need any driver change. I put them together to make it clear we
-> have a new SoC and board to use the new compatible. Please pick up the
-> patch for your subsystem, or please let me know if the patch has to
-> send separate.
-> 
-> Test with USB, PCIe, EMMC, SD Card.
-> 
-> This patch set is base on the patch set for rk3576 evb1 support.
-> 
-> V3:
-> https://lore.kernel.org/linux-rockchip/20250227111913.2344207-1-kever.yang@rock-chips.com/
-> V2:
-> https://lore.kernel.org/linux-rockchip/b4df8a73-58a2-4765-a9e4-3513cb2bc720@rock-chips.com/T/
-> 
-> 
-> Changes in v5:
-> - Collect review tag
-> - Update scmi-shmem from soc to reserved memory
-> 
-> Changes in v4:
-> - Collect ack tag
-> - Collect ack tag
-> - Collect ack tag
-> - remove gmac and otp nodes
-> - remove gmac nodes
+> The device tree is covered by the existing ROCKCHIP ARCHITECTURE
+> entry in MAINTAINERS. I am aware of ongoing RK3576 upstreaming
+> efforts (e.g., by Collabora) and welcome feedback or collaboration
+> to align with mainline driver development.
 > 
 > Changes in v3:
-> - Collect reveiw tag
-> - Collect the Acked-by tag
-> - remove i2c/serial/spi alias
-> - add soc node
+>  - Addressed Jonas Karlman's feedback on patch 3/3
+>    (Luckfox Omni3576 device tree):
+>    - Added pinctrl for green LED GPIO (gpio1 RK_PD5) for proper
+>      pin setup.
+>    - Reordered regulator node properties for consistent sequence
+>      (e.g., regulator-name, regulator-min-microvolt,
+>      regulator-max-microvolt, etc.).
+>    - Updated regulator nodes (vcc_3v3_pcie, vbus_5v0_typec,
+>      vcc_5v0_host, vcc_5v0_hdmi) to use 'gpios' property instead
+>      of deprecated 'gpio'.
+>    - Removed pmic-power-off pinctrl state and pinctrl-1 from RK806
+>      PMIC node, as they are vendor-specific and undocumented in
+>      bindings.
+>    - Removed pwrkey node from PMIC, as it lacks binding
+>      documentation.
+>    - Added blank line between properties and child nodes in i2c2
+>      node for DT style compliance.
+>    - Removed no-mmc property from sdmmc node to enable MMC
+>      support, aligning with RK3576 SD v3.0 and MMC v4.51
+>      capabilities, allowing TF card slot to support MMC devices
+>      or eMMC via adapter.
+>  - Removed Ethernet support (gmac0/gmac1 nodes) per Andrew Lunn's
+>    feedback, as it relied on the generic PHY driver with incorrect
+>    RGMII delay settings, which would break with the upcoming
+>    MAE0621A driver.
+>  - Addressed Rob Herring's DTB check warnings, other warnings
+>    (e.g., VOP, PCIe, OTP, HDMI PHY) originate from rk3576.dtsi and
+>    are outside this patchset scope.
+>  - Added RNG node to pick up Nicolas Frattaroli's "add RK3576 RNG
+>    node" patch
 > 
 > Changes in v2:
-> - Update in sort order
-> - remove grf in cru
-> - Update some properties order
+>  - Enabled HDMI node per feedback from Heiko Stuebner and Nicolas
+>    Frattaroli; untested due to upstream driver issues.
+>  - Enabled Ethernet 1 node per Heiko's device tree philosophy;
+>    untested due to suspected PHY driver or configuration issues
+>    (removed in v3 per Andrew Lunn).
+>  - Clarified eMMC remains enabled but unpopulated on tested
+>    board, per Heiko.
 > 
-> Finley Xiao (2):
->   arm64: dts: rockchip: add core dtsi for RK3562 Soc
->   arm64: dts: rockchip: Add RK3562 evb2 devicetree
+> Signed-off-by: John Clark <inindev@gmail.com>
+> ---
+> John Clark (3):
+>   dt-bindings: vendor-prefixes: Add luckfox prefix
+>   dt-bindings: arm: rockchip: Add Luckfox Omni3576 and Core3576 bindings
+>   arm64: dts: rockchip: Add Luckfox Omni3576 Board support
 > 
-> Kever Yang (4):
->   dt-bindings: watchdog: Add rk3562 compatible
->   dt-bindings: rockchip: pmu: Add rk3562 compatible
->   dt-bindings: soc: rockchip: Add rk3562 syscon compatibles
->   dt-bindings: arm: rockchip: Add rk3562 evb2 board
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |    5 +
->  .../devicetree/bindings/arm/rockchip/pmu.yaml |    2 +
->  .../devicetree/bindings/soc/rockchip/grf.yaml |    7 +
->  .../bindings/watchdog/snps,dw-wdt.yaml        |    1 +
->  arch/arm64/boot/dts/rockchip/Makefile         |    1 +
->  .../boot/dts/rockchip/rk3562-evb2-v10.dts     |  488 ++++
->  .../boot/dts/rockchip/rk3562-pinctrl.dtsi     | 2352 +++++++++++++++++
->  arch/arm64/boot/dts/rockchip/rk3562.dtsi      | 1270 +++++++++
->  8 files changed, 4126 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3562-evb2-v10.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3562-pinctrl.dtsi
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3562.dtsi
+>  .../devicetree/bindings/arm/rockchip.yaml     |  10 +
+>  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../dts/rockchip/rk3576-luckfox-core3576.dtsi | 683 ++++++++++++++++++
+>  .../dts/rockchip/rk3576-luckfox-omni3576.dts  |  53 ++
+>  5 files changed, 749 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-luckfox-core3576.dtsi
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dts
 > 
 > --
-> 2.25.1
+> 2.39.5
 > 
 > 
 > 
@@ -165,14 +187,14 @@ make sure dt-schema is up to date:
 
 This patch series was applied (using b4) to base:
  Base: attempting to guess base-commit...
- Base: tags/next-20250506 (exact match)
+ Base: tags/next-20250506 (best guess, 2/3 blobs matched)
 
 If this is not the correct base, please add 'base-commit' tag
 (or use b4 which does this automatically)
 
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250506025715.33595-1-kever.yang@rock-chips.com:
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250506114115.613616-1-inindev@gmail.com:
 
-arch/arm64/boot/dts/rockchip/rk3562-evb2-v10.dtb: /soc/usb2-phy@ff740000: failed to match any schema with compatible: ['rockchip,rk3562-usb2phy']
+arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: /soc/rng@2a410000: failed to match any schema with compatible: ['rockchip,rk3576-rng']
 
 
 
