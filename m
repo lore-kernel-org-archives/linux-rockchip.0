@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B798C3ABBC
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 22:24:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 026B0C3ABBC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 22:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DlhixXZeV3qHsWiT42+jDG+nGEn3OZA2WONLTFZj1+U=; b=QHsribN365QlsE
-	D5W+J7PfhzrgwzMIQjhhj2q0/6Cr4kDkjxOWAt6dTqdWTputSsZWICrBH5vzQvRqad8pA/DUgy96W
-	TnQB0fzVdUP8j7VorceqfXO0YwyFneHWlm475htbnMKcSkDJDAoOUBFKrnlGy6INwiyALOqT45epe
-	ZVN0XvDg0cst8knkYKyuolRWhFSmnR5N2k6svRoTndYIXENnrfIrCKpQ6vsfMd8o1LXODpST1FZIv
-	WiAuhHQOFtGER0wqWO9avWOdiwQI92MN/8cJesrJUiYkH8dctqeU0NFzVcieW6EcDEdkBSUXg1EY6
-	eQ4D1Ine71lIpQvtd8WQ==;
+	List-Owner; bh=ZkikZYS6a3W8lbNifbFIIr97JNdpiyyPv+YOPQQ8gTc=; b=XenF7HXIMquQUV
+	XFpaV+/0j8hN2LDTJr3Y46yma9nzwUW/nQvMr0MOjynFkC01WBgA5+Cc5+L4mn3UCv6PFJyQw9sw4
+	P5w4fb5eSg6RgVq8b8FCdHRxDDSlRKcCc/87w2AL333qHcMrm2FfKHc7T8U+RGTiAQ5yq1QzntMwW
+	tK/VXJy63qszlhsUeMGe5mW/DLkTYvn2OVvZjEf7OcMV5Ps7bKy6KSIs5nJIaYDJxZ3bdVBU/jakW
+	5iHPOTjQAoYpiXYclXaMUVrgAQoQLmRzt/rM0ui44YWpn+TahMZ3pss450jUabM7mbyxD6HtxaFE8
+	Yh4PRYdNRNI+gaGmm+GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCQiT-0000000DZgd-2RVi;
-	Tue, 06 May 2025 22:24:45 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1uCQkm-0000000Darb-0SuP;
+	Tue, 06 May 2025 22:27:08 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCLk3-0000000CnXX-3KUO
+	id 1uCLuD-0000000CpGH-30E7
 	for linux-rockchip@lists.infradead.org;
-	Tue, 06 May 2025 17:06:08 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-43d4ff56136so7092055e9.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 06 May 2025 10:06:03 -0700 (PDT)
+	Tue, 06 May 2025 17:16:35 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-44069f5f3aaso7105245e9.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 06 May 2025 10:16:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746551162; x=1747155962; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1746551792; x=1747156592; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZKxUmPHgtJ1auRntYQ3zJdbwoBcjW9ng47toHLgvQyQ=;
-        b=E8wcjj6aNFG4SJ5Y9EWFTrQHVGSt4XqE2cDzdNQ14Wk4AK30K+By3ku7SDSpuMm82I
-         Vg9JJROXvkudWQQtVMbjlB+uMQjZ1lZvqLWtxcCTC4013oalRMhdMEC0WYlcuoOfpZx+
-         UquNT9nVZ17XAN6vaO+qiXRuaS6kPfg3/3NEishVs96yM9D5WYI8IDtHGuv1t2xK5I12
-         lQJ8yeBpKMk+2zNVJKxtAo9wPiUHmp+OQH25ezLi2Jp8EmtxjdUFQT2ewyp4ivlpEVm1
-         SRbUcNnIDMGW8LbXjVcYavkKZmId7MV8E23v/cEAYfVzwM497UFkDN1ugBuxpXayvqXC
-         8L0w==
+        bh=U+kTJ8sYQK4Dh3qh9Awi2Mx2WpsP+UuKqHDQv5gmiio=;
+        b=R55Ec667QQZOwu+iI9BlZwjd8e6ja8o32Knx4L2TFzLIquiljljFsH3xk1pxjKlCc+
+         Ayqch13N6Ftc/En0rXpFxRMOvsegWolpQjQsMF4hQFum7dOk6nmv5Ggpx2lpN12ZQNkj
+         rnE91ZNRQgdzGfTwWxETS/o/K7sA+N9nDt9JTqsTMgjZ7Xz2Pm/tXTtIrhlUwNRLDyNV
+         nFmR9c3SQJnaGR0G2GSyA07QdnNEX2rWGFa6YuuH9+ngHfWUeSXDzQOjKRcQbwiMiXHh
+         zL5csdlCZnUwV/FNAJ9jg4XAiqnvuTRz3P9oUQBo+xZg8Ho36/E9VQieuE3IxSrYj0br
+         9Exg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746551162; x=1747155962;
+        d=1e100.net; s=20230601; t=1746551792; x=1747156592;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=ZKxUmPHgtJ1auRntYQ3zJdbwoBcjW9ng47toHLgvQyQ=;
-        b=iKp3w32UpWxvAD4bNa/kEXQAe+5H7gfJGeKbxqQU7pr769EA5xXUYjq0hO/LUFb3+7
-         VochbVqVMzsXS4HAeCKO3SubGh5baJ1GKkklkAi9r8m2OPTHW9cf1Xp8cR8wqWhW8h5g
-         p1+4v2PljGKA+8/2UmYNOOfZYrX8aR1KSNd5ZLdxtLrb8+9GSz+kt16txLU4WCCLPAmP
-         6InTNs8qXhvW60ryVheWKLim7q1gggH51Qhh3A96WSncwBPZyTAEdxEJX0wWInul1YPw
-         RosapW34sE4ni+R3THR2KsT951IrzWLKZSXFgjNhvJucBXfFPtsPC+cJ6bHWZfU8bjHO
-         Nbgg==
-X-Forwarded-Encrypted: i=1; AJvYcCVVrifDU3xtMvIlispPKgBgRM0DjHkEubzxsHLNMf/R8qZoGGAcer7Xh0ARtBkVs+JshaY8ONivyubAF5hw7Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxipdnqweSullKxz/83eSO1m66/Q0ApSl5AELaRG2Mm87HXiM91
-	I1GGX/NHvqR9ejsOXRUTqJEY2+3OY815mdGmmsKyh79k2LLzu8HXV12JIdFyguo=
-X-Gm-Gg: ASbGncuQjmE0aPcEWspIaBBc+6/IjS6vkhWW8sdn8vlB3UbL5P+Qok9DtWvTH8y7IbX
-	FoqB0NkY2q2GLHvursiWCdlXlnqrmHwh36LXBJY+aonvEeMqODnOuNJTbLpH/vaJplJvKGQDH1E
-	qzuV09MK1VFO2hGCDqPui7m2SQ7SzusIxG3TDt27Lk1r58LrkEJ18+PnGTPbpS3UsSV65tKT2t6
-	7dTQBApebTJH3QDjOr+TZHdzZlcw8LNiB8GiXisTWRwTyEO2gv6jXT19cijmM5kM6XbOECA/LGZ
-	L7w2nc3PRTwXQP8AFIfECt/uRqZF/M1MD3um7/cKh3dplUuLV1XF5wj3q/1b8c1y5siwNA==
-X-Google-Smtp-Source: AGHT+IGHoQYv3yKC01U0PdcyTniOLz3Ljk+3J/XMWm4y8VZKBtbq5GjI8V30r+/hbEY1whEUZmU54A==
-X-Received: by 2002:a05:600c:3b11:b0:43b:c0fa:f9bf with SMTP id 5b1f17b1804b1-441bbec0daemr57107415e9.3.1746551162115;
-        Tue, 06 May 2025 10:06:02 -0700 (PDT)
+        bh=U+kTJ8sYQK4Dh3qh9Awi2Mx2WpsP+UuKqHDQv5gmiio=;
+        b=EUpz88AOobLTr8+qqzAseDOLJ+oH8h0qUdMpFUGgRc8ioOek/xgqrg0pt4Dydax38d
+         R5r7nDJHEeURnz/gTIA/YtLU1YSfj7y2QnSmYhBO+CzpfQahtA4c3hgT7R77n3JCmDhX
+         kn7KvbZZ/1yaGjFFOAYi+zO/dLV3LhvYIcMSnbZSe6xxOz2GJkoDxck1qVc7GOcO7f9a
+         hKuWDf0Z3OQmu9k5eN6iQ/qXvRqPeVEtnuQxsyTt4cEpANvo83IbLrvLsS4tV0SlITUC
+         NaO8GsWPOrxvzTjBXeb3CnY61D6gThpAVZIngBC9dwFAd2UeGslyyx0B4/36CJeWckeT
+         1Mjg==
+X-Forwarded-Encrypted: i=1; AJvYcCUR3jjNQOTMhK0hH+zBw3yZK4tOhFISKHzHsqOzEAMO7JjmP6AbON/6qT0w5kH/YFjV/Po+gwpHKxfCYAnKKw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzaOWjZB6EiyodvHMVxBCCP1yBrWId2tgvW6wNwXQLZcfEZBe2U
+	eZfZz9lPcSQ9cgk0M/MNcYA52zem2y+lJNW86uNKpK5E5wm2LxOZT/kyoSBZ3cA=
+X-Gm-Gg: ASbGncvgpo2utPXxdy9YbCsYLzlRvW9mV4ybjJ2rUJ+tMWCvvO8nzz7A51Om8LTQj4r
+	uKBq2b2jpzHFlf73smOSqdSK686Xrhyq5+EUQIiEEPzp4IYWTZaP1xRSbuDYQPjvJEEDTRTQ8H7
+	3uu4j7jxFL496+ElkTl8wTapWrxthIjba0zs5NhdTV/U2df/C+oTqKR3nLcyPdImP4wW1yjEbsL
+	MbMaMokppr3XVfeq0rHfPNZVEIeJafMI0+l3Yz9eHz8hSW6TPiYGLX43Q9oOf+MoqOrP8bynGhA
+	4nDWsItd+W27rno99i0ENZYXn7eq5gtzkQbLwUhrZtGQ+NRaXqeON+FvK/U=
+X-Google-Smtp-Source: AGHT+IHLLTCdTzEr9la7CfSHtomODY0vn2YywNB3z9+jUpgq7KkKxtsQomE46L6MF0dSvXZMD1jdXA==
+X-Received: by 2002:a05:600c:3543:b0:43b:c938:1d0e with SMTP id 5b1f17b1804b1-441bbea0b06mr60690335e9.2.1746551792007;
+        Tue, 06 May 2025 10:16:32 -0700 (PDT)
 Received: from [192.168.1.29] ([178.197.207.88])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-441b2b44474sm223802455e9.29.2025.05.06.10.06.00
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-441d43466bfsm319495e9.16.2025.05.06.10.16.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 May 2025 10:06:01 -0700 (PDT)
-Message-ID: <bb857b7d-97f8-4505-9d2a-1ba9d6319710@linaro.org>
-Date: Tue, 6 May 2025 19:05:59 +0200
+        Tue, 06 May 2025 10:16:31 -0700 (PDT)
+Message-ID: <8155920b-60bd-4dc7-aa2f-46064adb93e0@linaro.org>
+Date: Tue, 6 May 2025 19:16:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 0/3] Add Luckfox Omni3576 Carrier Board support for
@@ -80,6 +80,8 @@ Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org, robh@kernel.org, conor+dt@kernel.org,
  jonas@kwiboo.se, frattaroli.nicolas@gmail.com, andrew@lunn.ch
 References: <20250506114115.613616-1-inindev@gmail.com>
+ <bb857b7d-97f8-4505-9d2a-1ba9d6319710@linaro.org>
+ <043117e7-9fd7-4ddc-8fd9-433c5b8c5dc6@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Content-Language: en-US
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -126,10 +128,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  h0At/TN/618e/QVlZPbMeNSp3S3ieMP9Q6y4gw5CfgiDRJ2K9g99m6Rvlx1qwom6QbU06ltb
  vJE2K9oKd9nPp1NrBfBdEhX8oOwdCLJXEq83vdtOEqE42RxfYta4P3by0BHpcwzYbmi/Et7T
  2+47PN9NZAOyb771QoVr8A==
-In-Reply-To: <20250506114115.613616-1-inindev@gmail.com>
+In-Reply-To: <043117e7-9fd7-4ddc-8fd9-433c5b8c5dc6@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_100603_850031_3748127F 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20250506_101633_780913_B9A2B646 
+X-CRM114-Status: GOOD (  16.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,24 +148,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06/05/2025 13:41, John Clark wrote:
-> This series adds device tree support for the Luckfox Omni3576
-> Carrier Board with the Core3576 Module, powered by the Rockchip
-> RK3576 SoC (four Cortex-A72 cores, four Cortex-A53 cores, Mali-G52
-> MC3 GPU). It enables essential functionality for booting Linux and
-> basic connectivity, with plans for future support of peripherals
-> like WiFi, MIPI-DSI, HDMI, and Ethernet.
+On 06/05/2025 19:14, John Clark wrote:
+> On 5/6/25 1:05 PM, Krzysztof Kozlowski wrote:
+>> On 06/05/2025 13:41, John Clark wrote:
+>>> This series adds device tree support for the Luckfox Omni3576
+>>> Carrier Board with the Core3576 Module, powered by the Rockchip
+>>> RK3576 SoC (four Cortex-A72 cores, four Cortex-A53 cores, Mali-G52
+>>> MC3 GPU). It enables essential functionality for booting Linux and
+>>> basic connectivity, with plans for future support of peripherals
+>>> like WiFi, MIPI-DSI, HDMI, and Ethernet.
+>>>
+>>> The series was first posted as v1 at:
+>>> https://lore.kernel.org/linux-rockchip/20250502205533.51744-1-inindev@gmail.com
+>>> v2 at:
+>>> https://lore.kernel.org/linux-rockchip/20250504102447.153551-1-inindev@gmail.com
+>> You got extensive guideline what to do in my reply to avoid exactly the
+>> mistake you did ... yet you ignored the guideline.
 > 
-> The series was first posted as v1 at:
-> https://lore.kernel.org/linux-rockchip/20250502205533.51744-1-inindev@gmail.com
-> v2 at:
-> https://lore.kernel.org/linux-rockchip/20250504102447.153551-1-inindev@gmail.com
-You got extensive guideline what to do in my reply to avoid exactly the
-mistake you did ... yet you ignored the guideline.
+> I did not ignore it, I took this to mean:
+> 
+>  > Do not attach (thread) your patchsets to some other threads (unrelated
+>  > or older versions). This buries them deep in the mailbox and might
+>  > interfere with applying entire sets."
+> 
+> that I should not use the "--in-reply-to" on my git submission which 
+> caused the emails to be nested. I see now that you were referring to 
+> adding the urls to my submission.
+> I realize this is probably painful to go through over and over again 
+> with new contributors as they try to carefully follow all of the linux 
+> submission guidelines and I apologize for my ignorance.
 
-I don't understand.
+The next instruction, not that one. The instruction saying:
 
-Are you going to ignore also Conor's tags?
+"...because many review tags are being ignored."
+
+with much bigger explanation what is expected now and what should you do.
 
 Best regards,
 Krzysztof
