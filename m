@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 307A3C3ABBE
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 22:43:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F83CC3ABBE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 May 2025 23:36:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tpmG54R49aNew9HklIpnUVg5Ozb/JClZKsre3ncv3PI=; b=zEXkX3GlKVd3Cz
-	HdXckn2KqyQMGPMxZVjnqPYPXGdzImsYId924VnwLarKQetY144hpHOAN4EPM4BYarfrgT6fRu8C6
-	DMIl226NgCn/NeCqpNQ5a6LE4dD+VRyVTVRf3y2cTiy/wYKxZK4teTTp/UcQQnkjIEuWxz42ICDpF
-	5iDwX+zRvuJPAqx24Hmb6bi2kypPufiPFRLIIPDZdYEtlCyYFg/t7j1IGCwMwq7mK8FFNWWiVzBL+
-	PeV02ZPu/ffutw+QCLIuICFnIVfUIj1+yYUgH1aC+cCB5bbEFwOukojSVjOIvhxjIOYzlFnm0TXZX
-	pApi2mnTBa7roCgGiLLw==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=xjOcMHeomu3/8GgSoEMVRcKgxoHCp4SBnIaa4VBCSHw=; b=O+/aywx6mfv31naiNWRu1f4aZ0
+	8I4BmiJ4i1VqVBKsOHY4sQNpi5Yuh+SApucutMaEp2JoE3Ni5KnJ4RNz0aZUYgKbcfjGvYRMDNrH4
+	F4djrsh7Va62QfvYK4Rz8pODky7U7GcR2HdWmIfmTBHr3wVMr5B+ijuascOk3xB1jLwFdom9wGIuD
+	uzpDZCrED0rdxdVvrilUQIFnSUIPGAh5F87oPrudoNcD3PghI/6ZI29q8vgkEp7IUiw8JWfAa0IKo
+	CiM69D/IjcrDrJmwi5BMLVnEVGGoe5BbRXqq9J9qIZB6K4n/kM/HaHRWQ/cybgoFGnRdJJfBbc/Ec
+	CTqOh0Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCR0F-0000000DcUo-0xr7;
-	Tue, 06 May 2025 22:43:07 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uCRpY-0000000DgDm-0H5R;
+	Tue, 06 May 2025 23:36:08 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCMI7-0000000CsQz-1qIK;
-	Tue, 06 May 2025 17:41:16 +0000
+	id 1uCMxM-0000000D5pN-3SSi;
+	Tue, 06 May 2025 18:23:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 31E27A4D75C;
-	Tue,  6 May 2025 17:41:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D5E3C4CEEB;
-	Tue,  6 May 2025 17:41:13 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2A64E61165;
+	Tue,  6 May 2025 18:23:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 952E3C4CEE4;
+	Tue,  6 May 2025 18:23:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746553273;
-	bh=addtd2tD+DOVZOCpE3AbYsDQUYIQPT10US31SZtt2d8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qQ13y8A2z2q3OM1MObsbWCM3zla4VJlDmuJTvyfkO9aLQ99ypDNhNEN5oIxX8/CF2
-	 L7PE7DWzOZPp8ZoJDpDZlpxNWTk5Ih4sWfsD84tNapMnA3Y2KOw5B9Y4QZvvndl1mh
-	 OaqinBL3jRrAXKDx1+2yyGAihpf5tY7CMaH3ajYjdYUoCrccekKFDzi+RY471N+O6g
-	 DLNKlwl5z4KVODs9zh9AM0Y9QIoVY2JiKb7Wvkg8siHRf9KFynN7ZtDScFTVNASztZ
-	 HHcK779OBDwABXOTxQ233HRRs0qXWSGtkHiFvT9ZytMwZVGnlGYVjBiQXW/Wq4izM5
-	 uuVjbbjUkI0dw==
-Received: by pali.im (Postfix)
-	id B53EE67E; Tue,  6 May 2025 19:41:10 +0200 (CEST)
-Date: Tue, 6 May 2025 19:41:10 +0200
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
-	heiko@sntech.de, manivannan.sadhasivam@linaro.org,
-	yue.wang@Amlogic.com, neil.armstrong@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 3/3] PCI: aardvark: Remove redundant MPS configuration
-Message-ID: <20250506174110.63ayeqc4scmwjj6e@pali>
-References: <20250506173439.292460-1-18255117159@163.com>
- <20250506173439.292460-4-18255117159@163.com>
+	s=k20201202; t=1746555831;
+	bh=k+mZaSBaKRCfObPQ+dsbeXUoUesj23G8rm5vuy4hQkg=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=WnILdT6026fJnLUCFRq2f39GIiWLmWFFlFKbCS1RkTbkN1Ro5NPLL00xt3IuzgWa6
+	 mVc4xqnnYIFJDIAcOP3UxzS0YhjdDeYW68pmBElrVVDgaTteoCRTxc1s0XmCbRX5J9
+	 kxX7arPEwlkC34yRC7p6xlfAPoRCbAYb9i/8T57lXtEg3BBYaPY1jmRUgJQtu/y7ei
+	 RjSUgSfNbg/ml2CZ8970EimefJA7q0+ja3kweOaNzMZUnTYV+5KoekMzB8cw8RAuAT
+	 EYX7tq1TuxxLTQNJGOjq0hwvd9ooa6auTWge7Qxfi/EjEJKbN244Oh/Rs7mPm8m8XW
+	 FbCPOJN0Jf+6g==
+Date: Tue, 06 May 2025 13:23:49 -0500
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250506173439.292460-4-18255117159@163.com>
-User-Agent: NeoMutt/20180716
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_104115_547359_BAAB7190 
-X-CRM114-Status: GOOD (  15.11  )
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: devicetree@vger.kernel.org, kernel@collabora.com, 
+ linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Frank Wang <frank.wang@rock-chips.com>, Vinod Koul <vkoul@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-phy@lists.infradead.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ linux-rockchip@lists.infradead.org
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+In-Reply-To: <20250505-rk3576-sige5-usb-v2-0-d5ba4305f3be@collabora.com>
+References: <20250505-rk3576-sige5-usb-v2-0-d5ba4305f3be@collabora.com>
+Message-Id: <174655575105.2171003.12510940387691309807.robh@kernel.org>
+Subject: Re: [PATCH v2 0/5] RK3576 USB Enablement
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,50 +75,124 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wednesday 07 May 2025 01:34:39 Hans Zhang wrote:
-> The Aardvark PCIe controller enforces a fixed 512B payload size via
-> PCI_EXP_DEVCTL_PAYLOAD_512B, overriding hardware capabilities and PCIe
-> core negotiations.
+
+On Mon, 05 May 2025 19:26:35 +0200, Nicolas Frattaroli wrote:
+> This series is the result of what I thought would be a quick 10 minute
+> job, but turned out to be more like 3 days of pain, suffering, and
+> confusion. This should be expected with USB Type C though.
 > 
-> Remove explicit MPS overrides (PCI_EXP_DEVCTL_PAYLOAD and
-> PCI_EXP_DEVCTL_PAYLOAD_512B). MPS is now determined by the PCI core
-> during device initialization, leveraging root port configurations and
-> device-specific capabilities.
+> The first patch in the series extends the inno usb2 PHY driver to fiddle
+> with some GRF flags in that driver when the PHY is connected to a USB
+> Type C port. Without this change, devices on USB-C simply don't
+> enumerate at all, as the state machine gets stuck waiting for vbus to go
+> low or something along those lines.
 > 
-> Aligning Aardvark with the unified MPS framework ensures consistency,
-> avoids artificial constraints, and allows the hardware to operate at
-> its maximum supported payload size while adhering to PCIe specifications.
+> An alternate way to implement this would've been a vendor property in
+> the PHY binding which is then checked for in the driver and needs to be
+> present in all rockchip inno u2phy instances that happen to be connected
+> to a USB Type C connector. This is what downstream does, for example.
 > 
-> Signed-off-by: Hans Zhang <18255117159@163.com>
+> Patch 2 and 3 allow Super Speed in reverse orientation on USB Type-C
+> connectors to work, but I am not entirely confident in the solution I
+> arrived at.
+> 
+> Patch 4 is what I think may have been the culprit of what originally
+> made me add the USB2 PHY suspension quirk, but I'm somehow unable to
+> reproduce that particular SError fest anymore.
+> 
+> Patch 5 adds the USB related nodes, including associated regulators and
+> Type C controllers, to the Sige5 tree.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > ---
->  drivers/pci/controller/pci-aardvark.c | 2 --
->  1 file changed, 2 deletions(-)
+> Changes in v2:
+> - Rebased onto next-20250505
+> - Drop the u2susphy quirk, as I can no longer reproduce the original
+>   problem with various amounts of ripping up the DT and changing the
+>   config. Yeah I'm not super hyped about this now being a heisenbug
+>   either.
+> - Drop the bindings patch, as Rob showed me there's a way to do this
+>   without extending the bindings
+> - Rewrite the usb 2 phy driver patch to no longer walk an OF graph from
+>   PHY to connector, but instead first find the USB controller that uses
+>   this PHY, and then use the USB controller's existing graph connection
+>   to the usb connector.
+> - Adjust the Sige5 DTS patch to now have two port connections from the
+>   USB connector to the drd0 USB controller, one for high-speed aka
+>   USB2, one for super-speed aka USB3, ordered as per its binding.
+> - Add a patch for rk3576.dtsi to reference u2phy1 as a clock in the drd1
+>   controller.
+> - Add two patches to fix USB Type-C super speed in reverse orientation.
+> - Link to v1: https://lore.kernel.org/r/20250407-rk3576-sige5-usb-v1-0-67eec166f82f@collabora.com
 > 
-> diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
-> index a29796cce420..d8852892994a 100644
-> --- a/drivers/pci/controller/pci-aardvark.c
-> +++ b/drivers/pci/controller/pci-aardvark.c
-> @@ -549,9 +549,7 @@ static void advk_pcie_setup_hw(struct advk_pcie *pcie)
->  	reg = advk_readl(pcie, PCIE_CORE_PCIEXP_CAP + PCI_EXP_DEVCTL);
->  	reg &= ~PCI_EXP_DEVCTL_RELAX_EN;
->  	reg &= ~PCI_EXP_DEVCTL_NOSNOOP_EN;
-> -	reg &= ~PCI_EXP_DEVCTL_PAYLOAD;
->  	reg &= ~PCI_EXP_DEVCTL_READRQ;
-> -	reg |= PCI_EXP_DEVCTL_PAYLOAD_512B;
->  	reg |= PCI_EXP_DEVCTL_READRQ_512B;
->  	advk_writel(pcie, reg, PCIE_CORE_PCIEXP_CAP + PCI_EXP_DEVCTL);
->  
-> -- 
-> 2.25.1
+> ---
+> Nicolas Frattaroli (5):
+>       phy: rockchip: inno-usb2: add soft vbusvalid control
+>       phy: rockchip: usbdp: move orientation handling further down
+>       phy: rockchip: usbdp: reset USB3 and reinit on orientation switch
+>       arm64: dts: rockchip: reference u2phy1 as clock on RK3576
+>       arm64: dts: rockchip: enable USB on Sige5
+> 
+>  .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 160 +++++++++++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi           |   5 +-
+>  drivers/phy/rockchip/phy-rockchip-inno-usb2.c      | 113 ++++++++++++++-
+>  drivers/phy/rockchip/phy-rockchip-usbdp.c          | 154 +++++++++++++-------
+>  4 files changed, 376 insertions(+), 56 deletions(-)
+> ---
+> base-commit: 214464d4c3491d4eb2c0e9d1310d7f60c408b94b
+> change-id: 20250328-rk3576-sige5-usb-230102aeeaca
+> 
+> Best regards,
+> --
+> Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> 
+> 
 > 
 
-Please do not remove this code. It is required part of the
-initialization of the aardvark PCI controller at the specific phase,
-as defined in the Armada 3700 Functional Specification.
 
-There were reported more issues with those Armada PCIe controllers for
-which were already sent patches to mailing list in last 5 years. But
-unfortunately not all fixes were taken / applied yet.
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: using specified base-commit 214464d4c3491d4eb2c0e9d1310d7f60c408b94b
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250505-rk3576-sige5-usb-v2-0-d5ba4305f3be@collabora.com:
+
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: usb@23400000 (rockchip,rk3576-dwc3): clock-names: ['ref_clk', 'suspend_clk', 'bus_clk', 'utmi'] is too long
+	from schema $id: http://devicetree.org/schemas/usb/rockchip,dwc3.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: usb@23400000 (rockchip,rk3576-dwc3): clocks: [[18, 262], [18, 263], [18, 261], [22]] is too long
+	from schema $id: http://devicetree.org/schemas/usb/rockchip,dwc3.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dtb: usb@23400000 (rockchip,rk3576-dwc3): clock-names: ['ref_clk', 'suspend_clk', 'bus_clk', 'utmi'] is too long
+	from schema $id: http://devicetree.org/schemas/usb/rockchip,dwc3.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dtb: usb@23400000 (rockchip,rk3576-dwc3): clocks: [[17, 262], [17, 263], [17, 261], [23]] is too long
+	from schema $id: http://devicetree.org/schemas/usb/rockchip,dwc3.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dtb: usb@23400000 (rockchip,rk3576-dwc3): clock-names: ['ref_clk', 'suspend_clk', 'bus_clk', 'utmi'] is too long
+	from schema $id: http://devicetree.org/schemas/usb/rockchip,dwc3.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dtb: usb@23400000 (rockchip,rk3576-dwc3): clocks: [[18, 262], [18, 263], [18, 261], [22]] is too long
+	from schema $id: http://devicetree.org/schemas/usb/rockchip,dwc3.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dtb: usb@23400000 (rockchip,rk3576-dwc3): clock-names: ['ref_clk', 'suspend_clk', 'bus_clk', 'utmi'] is too long
+	from schema $id: http://devicetree.org/schemas/usb/rockchip,dwc3.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dtb: usb@23400000 (rockchip,rk3576-dwc3): clocks: [[18, 262], [18, 263], [18, 261], [22]] is too long
+	from schema $id: http://devicetree.org/schemas/usb/rockchip,dwc3.yaml#
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
