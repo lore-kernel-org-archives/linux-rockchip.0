@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70D2DC369DC
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 May 2025 06:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13676C3ABC5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 May 2025 08:35:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=as8G6ErkoPD2ISgiKwEFHeKFhY4BDLc3JinwlQ1kAxY=; b=s7IJ/IcRGlkzFE
-	ccfBj0hBd/cKVZG38LVG+C5sr4mJ81vlmj+pLmZ7E/Hg6tHMMypdInL/jWpD13lVSzaTyOzc/Vria
-	UTJzC28jd6ETYT5x8mXq49Az4hUKcEKuW7cDW3IskAvzoatM7sAFS0KzSm1osQq3RzLbwkM4hmRyG
-	R9ICNz+Q5zGNKZI0ujvmzNurM0s0hbKdviVFz2l6j/dORnz0TXtjNnnMSCqkYuhDrt3KQ8nLjj/gE
-	Qgem2v4twOqiHuMZ3TlIrAVaWRRD1Cb9XGCyj7oh0llK5IUn3YZfbpnyZ+1iu4FGI+Dlxm/ycpjBE
-	FTL4XyTv4r9xftAYaf6Q==;
+	List-Owner; bh=oGVOEIQnecTABnUdK0oNB+Ao57Oy4orr2ol+r1u0Xw0=; b=wMJf3N/Lw+4DJI
+	seaYKT8S4HQpMivmbWn8gdfa2IaEcyGd0elDQwuVyYaj++6b+UAVeARZ3/3uYiI+JtZ7hV56lHQxX
+	bMzXWKqRkufwU/2qxjyiZTCef2Cpn8la9XyPf1EPNrcMv2vKOWb35AWQ10K4V/0dDVZT2wyqZnwp0
+	miYiugAQWNdj39k65otAWqi+NHx4rrDVlMvsMQLduJcLnAcxslY2oXCqggvxTFXdBt4rz6xB6Fwbv
+	6xDfIy77J1WiD4+ZOCLf2IDjh8x8R2F+HNL9yiEgHQeaRwz2P9i55G1UqB58dEOFoOD1Vm5IM+fNK
+	6UuJLPFs4wH1IS2aSEGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCYMM-0000000ENpo-3GLW;
-	Wed, 07 May 2025 06:34:26 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uCaF2-0000000ElRm-2i3U;
+	Wed, 07 May 2025 08:35:00 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCYKO-0000000ENWW-1dBt;
-	Wed, 07 May 2025 06:32:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=chmXwA64MAAzTh+Y3uuSjRyk0/eZPBPU5XbIWQeCSMw=; b=V6f3LQ9R9uxfhZ2w/mBMAE8m/w
-	FlCr6+I3xzE6kTeN6IG2RmPb1Ibcc/7n0puf7RYyWeO1xQVuaaEtNu4mqWNG8S/pBRNs6KKMLvkjj
-	3ZtbnI3nXhmxGCnAl2mu0baSDoz96hEPd3VGg64O0Q5slKYdYeiG9v9/cEsc5c8k43fwrx8g4rM0B
-	MNaWkk4CYgxVxUfU3tDU5BkzYr1wZk3xoqelQvF4cCzZvcE1sO7pB+m3Dtqjzm2vgH33lMT0zkSpT
-	yrouMwx6oJC0s7sbGYUawdbcf+5E4828BFVQZbpo3nfMBrrnic0D+I68a/Thb8MHiuIrQzVChP0xq
-	tRramUNg==;
-Received: from i53875a1d.versanet.de ([83.135.90.29] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uCYKB-0008As-Bd; Wed, 07 May 2025 08:32:11 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Chukun Pan <amadeus@jmu.edu.cn>,
-	devicetree@vger.kernel.org,
+	id 1uCZM2-0000000EYuw-2CTB;
+	Wed, 07 May 2025 07:38:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 57B9D4A670;
+	Wed,  7 May 2025 07:38:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB7A2C4CEE7;
+	Wed,  7 May 2025 07:38:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746603489;
+	bh=u+94YTkIK1yodzp++T2HMB+oePCPOpIrqtliTXH6QBg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jyVJurjeBVyWd0G4t6kNsd8et1PSYUrBGqs3MV3TTtICVDqAPr1gZrx094VjLWDPk
+	 S1RHk810ExOMe3Plnpi/9lAoeGTwFcSOqjzcfHXAJmJ7VvllQ4kRLt6V5lDIhirnCG
+	 ayPbPG5iFPwEFPD/0sbOGcniB0tkc3uJURu1rXFsnN0jYdEooMQHvgIdL/BPdNCJzS
+	 zUCCV72YUsIzuaSVGk1+1RGJ2M85dEfzB/HVz72Hm0RC4pYgQtYszjDkqRI9TL5usf
+	 qYo0Gdh/ulmD9cwhOOIvH1+8pwt6FhazSFU6pwVosm3T1ltDep5tY6IRvhxDDiaP1I
+	 W5upt/sdhcU9g==
+Date: Wed, 7 May 2025 09:38:03 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+	heiko@sntech.de, manivannan.sadhasivam@linaro.org,
+	yue.wang@amlogic.com, pali@kernel.org, neil.armstrong@linaro.org,
+	robh@kernel.org, jingoohan1@gmail.com, khilman@baylibre.com,
+	jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Peter Robinson <pbrobinson@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add vcc-supply to SPI flash on rk3566-rock3c
-Date: Wed,  7 May 2025 08:32:01 +0200
-Message-ID: <174659951055.1528016.5792676162591810152.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250506195702.593044-1-pbrobinson@gmail.com>
-References: <20250506195702.593044-1-pbrobinson@gmail.com>
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 1/3] PCI: Configure root port MPS during host probing
+Message-ID: <aBsN2_YG0RsH4RPA@ryzen>
+References: <20250506173439.292460-1-18255117159@163.com>
+ <20250506173439.292460-2-18255117159@163.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250506173439.292460-2-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_233224_445388_09AE5245 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20250507_003810_579839_E9B836AB 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,26 +80,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed, May 07, 2025 at 01:34:37AM +0800, Hans Zhang wrote:
 
-On Tue, 06 May 2025 20:56:55 +0100, Peter Robinson wrote:
-> As described in the radxa_rock_3c_v1400_schematic.pdf, the SPI Flash's
-> VCC connector is connected to VCCIO_FLASH and according to the
-> that same schematic, that belongs to the VCC_1V8 power source.
-> 
-> This fixes the following warning:
-> 
->   spi-nor spi4.0: supply vcc not found, using dummy regulator
-> 
-> [...]
+(snip)
 
-Applied, thanks!
+>  static void pci_configure_mps(struct pci_dev *dev)
+>  {
+>  	struct pci_dev *bridge = pci_upstream_bridge(dev);
+> @@ -2178,6 +2209,10 @@ static void pci_configure_mps(struct pci_dev *dev)
+>  		return;
+>  	}
 
-[1/1] arm64: dts: rockchip: Add vcc-supply to SPI flash on rk3566-rock3c
-      commit: a706a593cb19796f31d3a888423ef1a71885ae72
+We should probably add a comment explaining why we are doing this here.
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Perhaps something like:
+
+/*
+ * Unless MPS strategy is PCIE_BUS_TUNE_OFF (don't touch MPS at all),
+ * start off by setting root ports' MPS to MPSS. Depending on the MPS
+ * strategy, and the MPSS of the devices below the root port, the MPS
+ * of the root port might get overriden later.
+ */
+
+
+> +	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
+> +	    pcie_bus_config != PCIE_BUS_TUNE_OFF)
+> +		pcie_write_mps(dev, 128 << dev->pcie_mpss);
+> +
+>  	if (!bridge || !pci_is_pcie(bridge))
+>  		return;
+>  
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
