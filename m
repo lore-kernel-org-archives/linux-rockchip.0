@@ -4,85 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8378FC3ABBF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 May 2025 09:54:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D4D2C3ABC0
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 May 2025 13:11:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gRXsOP0wLCUWAAT+dN1t2xR8DLX0ZBMHKT50KWmrrds=; b=tQm/FmyOvu8eLv
-	xk1apwIZt1zIXBgQzez3SbccOMB4ZMBgpUvdEMh/wn0cbHAjVcyco8b6TJx26VK8DpjmRIiJhDykC
-	ZZjXUdt65Ih0mPLnSyTS3apkQ4Iw3a3RwCXU73/DPUkMUUy6HWMOZqYfcrD0vd1Tf8wKo679dgCxC
-	FYQNraYzoi2S0JTaqnzbSiWM8u4uJ0shBAj/OTNv8SbxasiaOsLkYkB0GNBtVq5z03OqlwONPLl2k
-	aaEcA8gttuoyVMPAtple1p7RuVJ9IuO8Qrt35XuM7DHmu5PNsg/G4n0cvVfUtqoWfKQVtoEn6bX6v
-	E2byosjj5klJjNKxEqvg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:MIME-Version:Message-Id:Date:Subject
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/d/nXyvV0HlYpJ4t+AN3MYnytGjTTgOpHmv6DLw8X48=; b=gMZjCnRozAn3+N
+	75zfIB0XvzWyIUEjYyt0UE4PMa5BimaIuVSzqm1xRfd7drb2wgRxT1IvBuDQ3GFThhtol3CEXuDzT
+	V/OeTxyTaV1nSWP7vv8Iu8b8ZVnTyBcncP9/cor4od+wQyyFRXB9JP++KNnqdd93Qj2nfDxobms3w
+	m/nl+PimUXP0StTM4jkTg1XtepkpRiPDnnCtKiwqDo/36rAmKyI7bz4UloExylIg+UYCST88R59rC
+	B7gGDNNeEx4Bs97mLD+CnvL+O3MsO/FaR7rBveE+kauHXG+YRncgqrMr4f4eyUb8ueY+79GK9Eb67
+	aCvEJmyAeOqSpVNSRzVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCbUD-0000000F1g6-3B11;
-	Wed, 07 May 2025 09:54:45 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1uCeYg-0000000FWa1-2ZGd;
+	Wed, 07 May 2025 13:11:34 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCbCh-0000000EzHF-1ILS;
-	Wed, 07 May 2025 09:36:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1746610600; x=1778146600;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=V0bp+e0dFB81Wgp9gmw0QbHjjX607NfUw9UgONQ6nM4=;
-  b=dBCuaS6BFoN6WGZ5qUJJwDXS+eUnzDLgtis9y+1ip5pT06f008F/asoq
-   QNycs9fhshLDsL9XzHXMaCCSS8xWcTMk48hG9D4wNEwHFp747PRfOineq
-   tmC8B3ACbiuz5ujKWkbU6JpZ1mRx8bCaOAiJjT4hdzKvPINqZ+/bHWkwy
-   /lrL1Bv/x/mlr8F/X3Ot6uCxIaZcUr0Lhlms1yS1oxBLJq4DJALYp7mFm
-   cB59YFkakvRFv/kTjjezJHndLXRSBtIV9WcrxnF5ZR9mEDdTCrFUBjukU
-   +W0D+UiCZLnujurG8Vi2/oSretocA18Osr/ILw8vXLEiBDKk6a20bUfSn
-   Q==;
-X-CSE-ConnectionGUID: n8CF1bdfQ7itcFy7OLMHIg==
-X-CSE-MsgGUID: c+3jANH/TUOWjiig6uW33A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11425"; a="48340503"
-X-IronPort-AV: E=Sophos;i="6.15,268,1739865600"; 
-   d="scan'208";a="48340503"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 May 2025 02:36:38 -0700
-X-CSE-ConnectionGUID: OAI137YdQHOyDFY5g5Bu8g==
-X-CSE-MsgGUID: ZXk7I5/MS6KwVLth5IVmMA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,268,1739865600"; 
-   d="scan'208";a="136423681"
-Received: from pgcooper-mobl3.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.244.211])
-  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 May 2025 02:36:32 -0700
-Date: Wed, 7 May 2025 11:36:24 +0200
-From: Mehdi Djait <mehdi.djait@linux.intel.com>
-To: Michael Riesch <michael.riesch@collabora.com>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Hans Verkuil <hans@jjverkuil.nl>
-Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>, 
-	=?utf-8?B?VGjDqW8=?= Lebrun <theo.lebrun@bootlin.com>, Gerald Loacker <gerald.loacker@wolfvision.net>, 
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
-	Collabora Kernel Team <kernel@collabora.com>, Paul Kocialkowski <paulk@sys-base.io>, 
-	Alexander Shiyan <eagle.alexander923@gmail.com>, Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	Michael Riesch <michael.riesch@wolfvision.net>, Mehdi Djait <mehdi.djait@bootlin.com>
-Subject: Re: [PATCH v6 06/13] media: rockchip: add a driver for the rockchip
- camera interface
-Message-ID: <pmjd65zzypo7kyi3mkpqd4pf6dqz5ssxxhwnicav57trzxt3ni@ph665okjfo2s>
-References: <20240220-rk3568-vicap-v6-0-d2f5fbee1551@collabora.com>
- <20240220-rk3568-vicap-v6-6-d2f5fbee1551@collabora.com>
- <fx5zweayuzo2vcov7i5d6itlizw4bwmr3wwbd4m6mdjsiou5zb@osl3u2ijv3uj>
- <90192c74-f5ca-404b-8b95-3df0819e4bc9@collabora.com>
+	id 1uCeV2-0000000FVj8-27JT;
+	Wed, 07 May 2025 13:07:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1746623256; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=IwY3ykgOwrUBvSTJwZdmILe5IqO4URVw9dkB2xU4v+4rhcPRqmT84NtSPjrmXEtztJHAJHIK46UGPui1ogE/3kuN0MnU7aBL7UoDqsmA3h+FLSw+ayFbGJ8H+K6A0FIGr8rxGs/XRe21JrhIOL+vhoC2RfGxdCZJfHo6ugPyFds=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1746623256; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Ois1Fd82wI7ofzgzDY4Ae0abXH2Pnyq9b6BQ8TCglMI=; 
+	b=KrstOi4qwmaZZ+K5Te0WYXuHPNWUQGLl4/C+7ss3YK1RC2eCBQ95SZOMy/uTSRenZIF2q+MuxExNhPsqjrwsTsFYyfLss0Gd+A5TnKZr2XPtxwbt/nDCYhT7dCXQwnEttPK6Hc5FRel4YOZLrXRa9uLrBNXtefLh61hy1cCxW5o=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1746623256;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=Ois1Fd82wI7ofzgzDY4Ae0abXH2Pnyq9b6BQ8TCglMI=;
+	b=VdbAlsUqLQqJPN55PYHT1PEtZLlOQHPl8IsmrUTn1mfbqfqtMTpX2pkD807EPQDn
+	gLawO6JVWXjV9Bxo+BaWuKAFhDh7sb2rwIU+3LsnqswpkcyPIpIwCB2UNhTfMANZAgy
+	4peyfXdApkdX7wpO4UVHKQGqQH3VtuO+DRQljd0Y=
+Received: by mx.zohomail.com with SMTPS id 1746623254340277.28883250107697;
+	Wed, 7 May 2025 06:07:34 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: [PATCH v3 0/4] RK3576 USB Enablement
+Date: Wed, 07 May 2025 15:07:20 +0200
+Message-Id: <20250507-rk3576-sige5-usb-v3-0-89bf5a614ccf@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <90192c74-f5ca-404b-8b95-3df0819e4bc9@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAhbG2gC/23OQQ6CMBAF0KuQrh1TWgrElfcwLtoyQCNQbYFgC
+ He3loWJmln9Nv/NrMSjM+jJKVmJw9l4Y4cQ+CEhupVDg2CqkAmjTFDOSnA3LoocvGlQwOQVME5
+ TyiSi1JKE2t1hbZZIXq57dviYgjzuj0RJj6Bt35vxlAy4jBD1MORdaI0frXvGk+Y0NuJ/Rovf7
+ XMKFPICUad5XpesPmvbdVJZJ49hRQRn9kHC/EFYQCqhZMapqLnCb2TbtheP66iFKgEAAA==
+X-Change-ID: 20250328-rk3576-sige5-usb-230102aeeaca
+To: Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Frank Wang <frank.wang@rock-chips.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250507_023639_420978_D442D097 
-X-CRM114-Status: GOOD (  54.68  )
+X-CRM114-CacheID: sfid-20250507_060748_587942_4AAB6183 
+X-CRM114-Status: GOOD (  18.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,398 +77,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
+This series is the result of what I thought would be a quick 10 minute
+job, but turned out to be more like 3 days of pain, suffering, and
+confusion. This should be expected with USB Type C though.
 
-On Tue, May 06, 2025 at 10:32:59PM +0200, Michael Riesch wrote:
-> Hi Mehdi,
-> 
-> Thanks for your review!
-> 
-> On 5/6/25 12:37, Mehdi Djait wrote:
-> > Hi Michael,
-> > 
-> > Thank you for the patch!
-> > 
-> > Is it possible to sent the v4l2-compliance output in the next version ?
-> > 
-> > On Wed, Apr 30, 2025 at 11:15:55AM +0200, Michael Riesch via B4 Relay wrote:
-> >> From: Michael Riesch <michael.riesch@wolfvision.net>
-> >>
-> > 
-> > SNIP
-> > 
-> >> +irqreturn_t rkcif_dvp_isr(int irq, void *ctx)
-> >> +{
-> >> +	struct device *dev = ctx;
-> >> +	struct rkcif_device *rkcif = dev_get_drvdata(dev);
-> >> +	struct rkcif_stream *stream;
-> >> +	u32 intstat, lastline, lastpix, cif_frmst;
-> >> +	irqreturn_t ret = IRQ_NONE;
-> >> +
-> >> +	if (!rkcif->match_data->dvp)
-> >> +		return ret;
-> >> +
-> >> +	intstat = cif_dvp_read(rkcif, RKCIF_DVP_INTSTAT);
-> >> +	cif_frmst = cif_dvp_read(rkcif, RKCIF_DVP_FRAME_STATUS);
-> >> +	lastline = RKCIF_FETCH_Y(cif_dvp_read(rkcif, RKCIF_DVP_LAST_LINE));
-> >> +	lastpix = RKCIF_FETCH_Y(cif_dvp_read(rkcif, RKCIF_DVP_LAST_PIX));
-> >> +
-> >> +	if (intstat & RKCIF_INTSTAT_FRAME_END) {
-> >> +		cif_dvp_write(rkcif, RKCIF_DVP_INTSTAT,
-> >> +			      RKCIF_INTSTAT_FRAME_END_CLR |
-> >> +				      RKCIF_INTSTAT_LINE_END_CLR);
-> >> +
-> >> +		stream = &rkcif->interfaces[RKCIF_DVP].streams[RKCIF_ID0];
-> >> +
-> >> +		if (stream->stopping) {
-> >> +			cif_dvp_stop_streaming(stream);
-> >> +			wake_up(&stream->wq_stopped);
-> >> +			return IRQ_HANDLED;
-> >> +		}
-> >> +
-> >> +		if (lastline != stream->pix.height) {
-> >> +			v4l2_err(&rkcif->v4l2_dev,
-> >> +				 "bad frame, irq:%#x frmst:%#x size:%dx%d\n",
-> >> +				 intstat, cif_frmst, lastpix, lastline);
-> >> +
-> >> +			cif_dvp_reset_stream(rkcif);
-> >> +		}
-> >> +
-> >> +		rkcif_stream_pingpong(stream);
-> >> +
-> >> +		ret = IRQ_HANDLED;
-> > 
-> > just return IRQ_HANDLED like above ?
-> 
-> I think I'll go along Bryan's suggestion to make it more consistent.
-> 
-> > 
-> >> +	}
-> >> +
-> >> +	return ret;
-> >> +}
-> >> +
-> >> +int rkcif_dvp_register(struct rkcif_device *rkcif)
-> >> +{
-> >> +	struct rkcif_interface *interface;
-> >> +	int ret, i;
-> >> +
-> >> +	if (!rkcif->match_data->dvp)
-> >> +		return 0;
-> >> +
-> >> +	interface = &rkcif->interfaces[RKCIF_DVP];
-> >> +	interface->index = RKCIF_DVP;
-> >> +	interface->type = RKCIF_IF_DVP;
-> >> +	interface->in_fmts = rkcif->match_data->dvp->in_fmts;
-> >> +	interface->in_fmts_num = rkcif->match_data->dvp->in_fmts_num;
-> >> +	interface->set_crop = rkcif_dvp_set_crop;
-> >> +	ret = rkcif_interface_register(rkcif, interface);
-> >> +	if (ret)
-> >> +		return 0;
-> > 		|
-> > 		+-> Copy-paste error ?
-> 
-> Hm. It's not a mistake. But maybe it is a bit misleading.
-> 
-> The point here is that if something fails with registering the DVP, the
-> driver may continue to register other entities, such as the MIPI capture
-> thing.
+The first patch in the series extends the inno usb2 PHY driver to fiddle
+with some GRF flags in that driver when the PHY is connected to a USB
+Type C port. Without this change, devices on USB-C simply don't
+enumerate at all, as the state machine gets stuck waiting for vbus to go
+low or something along those lines.
 
-what if you want to register the DVP interface and it fails ? Maybe two
-separate function for rkcif_{dvp,mipi}_interface_register(), call one of
-them based on match_data and verify the ret code --> fail if non-zero ?
+An alternate way to implement this would've been a vendor property in
+the PHY binding which is then checked for in the driver and needs to be
+present in all rockchip inno u2phy instances that happen to be connected
+to a USB Type C connector. This is what downstream does, for example.
 
-> 
-> I'll have another look over this mechanism and will try to make it more
-> comprehensible.
-> 
-> > 
-> >> +
-> >> +	if (rkcif->match_data->dvp->setup)
-> >> +		rkcif->match_data->dvp->setup(rkcif);
-> >> +
-> >> +	interface->streams_num = rkcif->match_data->dvp->has_ids ? 4 : 1;
-> >> +	for (i = 0; i < interface->streams_num; i++) {
-> >> +		struct rkcif_stream *stream = &interface->streams[i];
-> >> +
-> >> +		stream->id = i;
-> >> +		stream->interface = interface;
-> >> +		stream->out_fmts = rkcif->match_data->dvp->out_fmts;
-> >> +		stream->out_fmts_num = rkcif->match_data->dvp->out_fmts_num;
-> >> +		stream->queue_buffer = cif_dvp_queue_buffer;
-> >> +		stream->start_streaming = cif_dvp_start_streaming;
-> >> +		stream->stop_streaming = cif_dvp_stop_streaming;
-> >> +
-> >> +		ret = rkcif_stream_register(rkcif, stream);
-> >> +		if (ret)
-> >> +			goto err_streams_unregister;
-> >> +	}
-> >> +	return 0;
-> >> +
-> >> +err_streams_unregister:
-> >> +	for (; i >= 0; i--)
-> >> +		rkcif_stream_unregister(&interface->streams[i]);
-> >> +	rkcif_interface_unregister(interface);
-> >> +
-> >> +	return ret;
-> >> +}
-> >> +
-> > 
-> > SNIP
-> > 
-> >> +static inline struct rkcif_buffer *to_rkcif_buffer(struct vb2_v4l2_buffer *vb)
-> >> +{
-> >> +	return container_of(vb, struct rkcif_buffer, vb);
-> >> +}
-> >> +
-> >> +static inline struct rkcif_stream *to_rkcif_stream(struct video_device *vdev)
-> >> +{
-> >> +	return container_of(vdev, struct rkcif_stream, vdev);
-> >> +}
-> >> +
-> >> +static struct rkcif_buffer *rkcif_stream_pop_buffer(struct rkcif_stream *stream)
-> >> +{
-> >> +	struct rkcif_buffer *buffer = NULL;
-> >> +	unsigned long lock_flags;
-> >> +
-> >> +	spin_lock_irqsave(&stream->driver_queue_lock, lock_flags);
-> > 
-> > guard(spinlock_irqsave)(&stream->driver_queue_lock) will simplify this function.
-> 
-> I'll guard up these methods in v7.
-> 
-> > 
-> >> +
-> >> +	if (list_empty(&stream->driver_queue))
-> >> +		goto err_empty;
-> >> +
-> >> +	buffer = list_first_entry(&stream->driver_queue, struct rkcif_buffer,
-> >> +				  queue);
-> >> +	list_del(&buffer->queue);
-> >> +
-> >> +err_empty:
-> >> +	spin_unlock_irqrestore(&stream->driver_queue_lock, lock_flags);
-> >> +	return buffer;
-> >> +}
-> >> +
-> >> +static void rkcif_stream_push_buffer(struct rkcif_stream *stream,
-> >> +				     struct rkcif_buffer *buffer)
-> >> +{
-> >> +	unsigned long lock_flags;
-> >> +
-> >> +	spin_lock_irqsave(&stream->driver_queue_lock, lock_flags);
-> >> +	list_add_tail(&buffer->queue, &stream->driver_queue);
-> >> +	spin_unlock_irqrestore(&stream->driver_queue_lock, lock_flags);
-> >> +}
-> >> +
-> >> +static inline void rkcif_stream_return_buffer(struct rkcif_buffer *buffer,
-> >> +					      enum vb2_buffer_state state)
-> >> +{
-> >> +	struct vb2_v4l2_buffer *vb = &buffer->vb;
-> >> +
-> >> +	vb2_buffer_done(&vb->vb2_buf, state);
-> >> +}
-> >> +
-> >> +static void rkcif_stream_complete_buffer(struct rkcif_stream *stream,
-> >> +					 struct rkcif_buffer *buffer)
-> >> +{
-> >> +	struct vb2_v4l2_buffer *vb = &buffer->vb;
-> >> +
-> >> +	vb->vb2_buf.timestamp = ktime_get_ns();
-> >> +	vb->sequence = stream->frame_idx;
-> >> +	vb2_buffer_done(&vb->vb2_buf, VB2_BUF_STATE_DONE);
-> >> +	stream->frame_idx++;
-> >> +}
-> >> +
-> >> +void rkcif_stream_pingpong(struct rkcif_stream *stream)
-> >> +{
-> >> +	struct rkcif_buffer *buffer;
-> >> +
-> >> +	buffer = stream->buffers[stream->frame_phase];
-> >> +	if (!buffer->is_dummy)
-> >> +		rkcif_stream_complete_buffer(stream, buffer);
-> > 
-> > You can actually keep this frame dropping mechanism without using the
-> > dummy buffer.
-> > 
-> > You can set a drop flag to TRUE: keep overwriting the buffer you already have
-> > without returning it to user-space until you can get another buffer, set
-> > the flag again to FALSE and resume returning the buffers to user-space.
-> 
-> The approach you describe is what the downstream driver does and I am
-> not really happy with it. A perfectly fine frame is sacrificed in a
-> buffer starvation situation.
+Patch 2 and 3 allow Super Speed in reverse orientation on USB Type-C
+connectors to work, but I am not entirely confident in the solution I
+arrived at.
 
-Oh I thought the downstream driver does it with the dummy buffer.
+Patch 4 adds the USB related nodes, including associated regulators and
+Type C controllers, to the Sige5 tree.
 
-> 
-> The approach in the patch series at hand follows the example in the
-> rkisp1 driver, which should be a good reference.
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+Changes in v3:
+- Drop the utmi clock patch. This was always a speculative fix for a
+  problem I could no longer reproduce, and it doesn't conform to the
+  binding, as Robo-rob correctly caught.
+- Link to v2: https://lore.kernel.org/r/20250505-rk3576-sige5-usb-v2-0-d5ba4305f3be@collabora.com
 
-Ack.
+Changes in v2:
+- Rebased onto next-20250505
+- Drop the u2susphy quirk, as I can no longer reproduce the original
+  problem with various amounts of ripping up the DT and changing the
+  config. Yeah I'm not super hyped about this now being a heisenbug
+  either.
+- Drop the bindings patch, as Rob showed me there's a way to do this
+  without extending the bindings
+- Rewrite the usb 2 phy driver patch to no longer walk an OF graph from
+  PHY to connector, but instead first find the USB controller that uses
+  this PHY, and then use the USB controller's existing graph connection
+  to the usb connector.
+- Adjust the Sige5 DTS patch to now have two port connections from the
+  USB connector to the drd0 USB controller, one for high-speed aka
+  USB2, one for super-speed aka USB3, ordered as per its binding.
+- Add a patch for rk3576.dtsi to reference u2phy1 as a clock in the drd1
+  controller.
+- Add two patches to fix USB Type-C super speed in reverse orientation.
+- Link to v1: https://lore.kernel.org/r/20250407-rk3576-sige5-usb-v1-0-67eec166f82f@collabora.com
 
-> 
-> >> +
-> >> +	buffer = rkcif_stream_pop_buffer(stream);
-> >> +	if (buffer) {
-> >> +		stream->buffers[stream->frame_phase] = buffer;
-> >> +		stream->buffers[stream->frame_phase]->is_dummy = false;
-> >> +	} else {
-> >> +		stream->buffers[stream->frame_phase] = &stream->dummy.buffer;
-> >> +		stream->buffers[stream->frame_phase]->is_dummy = true;
-> >> +		dev_warn(stream->rkcif->dev,
-> >> +			 "no buffer available, frame will be dropped\n");
-> > 
-> > This warning can quickly flood the kernel logs if the user-space is too slow in
-> > enqueuing the buffers.
-> 
-> True. dev_warn_ratelimited(...)?
-> 
+---
+Nicolas Frattaroli (4):
+      phy: rockchip: inno-usb2: add soft vbusvalid control
+      phy: rockchip: usbdp: move orientation handling further down
+      phy: rockchip: usbdp: reset USB3 and reinit on orientation switch
+      arm64: dts: rockchip: enable USB on Sige5
 
-Does frame dropping deserve a warning ? If you don't think so, maybe a
-debug or info ?
+ .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 160 +++++++++++++++++++++
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c      | 113 ++++++++++++++-
+ drivers/phy/rockchip/phy-rockchip-usbdp.c          | 154 +++++++++++++-------
+ 3 files changed, 373 insertions(+), 54 deletions(-)
+---
+base-commit: 214464d4c3491d4eb2c0e9d1310d7f60c408b94b
+change-id: 20250328-rk3576-sige5-usb-230102aeeaca
 
-> > 
-> >> +	}
-> >> +
-> >> +	if (stream->queue_buffer)
-> >> +		stream->queue_buffer(stream, stream->frame_phase);
-> > 
-> > is this if statement really needed ?
-> 
-> I find it good practice to check the callbacks before calling them. But
-> this is a matter of taste, of course.
-> 
-> > 
-> >> +
-> >> +	stream->frame_phase = 1 - stream->frame_phase;
-> >> +}
-> >> +
-> >> +static int rkcif_stream_init_buffers(struct rkcif_stream *stream)
-> >> +{
-> >> +	struct v4l2_pix_format_mplane *pix = &stream->pix;
-> >> +	int i;
-> >> +
-> >> +	stream->buffers[0] = rkcif_stream_pop_buffer(stream);
-> >> +	if (!stream->buffers[0])
-> >> +		goto err_buff_0;
-> >> +
-> >> +	stream->buffers[1] = rkcif_stream_pop_buffer(stream);
-> >> +	if (!stream->buffers[1])
-> >> +		goto err_buff_1;
-> >> +
-> >> +	if (stream->queue_buffer) {
-> >> +		stream->queue_buffer(stream, 0);
-> >> +		stream->queue_buffer(stream, 1);
-> >> +	}
-> >> +
-> >> +	stream->dummy.size = pix->num_planes * pix->plane_fmt[0].sizeimage;
-> >> +	stream->dummy.vaddr =
-> >> +		dma_alloc_attrs(stream->rkcif->dev, stream->dummy.size,
-> >> +				&stream->dummy.buffer.buff_addr[0], GFP_KERNEL,
-> >> +				DMA_ATTR_NO_KERNEL_MAPPING);
-> >> +	if (!stream->dummy.vaddr)
-> >> +		goto err_dummy;
-> >> +
-> >> +	for (i = 1; i < pix->num_planes; i++)
-> >> +		stream->dummy.buffer.buff_addr[i] =
-> >> +			stream->dummy.buffer.buff_addr[i - 1] +
-> >> +			pix->plane_fmt[i - 1].bytesperline * pix->height;
-> >> +
-> >> +	return 0;
-> >> +
-> >> +err_dummy:
-> >> +	rkcif_stream_return_buffer(stream->buffers[1], VB2_BUF_STATE_QUEUED);
-> >> +	stream->buffers[1] = NULL;
-> >> +
-> >> +err_buff_1:
-> >> +	rkcif_stream_return_buffer(stream->buffers[0], VB2_BUF_STATE_QUEUED);
-> >> +	stream->buffers[0] = NULL;
-> >> +err_buff_0:
-> >> +	return -EINVAL;
-> >> +}
-> >> +
-> > 
-> > SNIP
-> > 
-> >> +static int rkcif_stream_init_vb2_queue(struct vb2_queue *q,
-> >> +				       struct rkcif_stream *stream)
-> >> +{
-> >> +	q->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
-> >> +	q->io_modes = VB2_MMAP | VB2_DMABUF;
-> >> +	q->drv_priv = stream;
-> >> +	q->ops = &rkcif_stream_vb2_ops;
-> >> +	q->mem_ops = &vb2_dma_contig_memops;
-> >> +	q->buf_struct_size = sizeof(struct rkcif_buffer);
-> >> +	q->min_queued_buffers = CIF_REQ_BUFS_MIN;
-> > 
-> > If I recall correctly min_queued_buffers should be the strict minimum
-> > number of buffers you need to start streaming. So in this case it should
-> > be 3 = 2 pingpong buffers + 1 dummy buffer.
-> 
-> The dummy buffer is allocated separately and does not need to be
-> accounted for.
-> 
-> Two pingpong buffers is what the hardware can queue, but in practice, to
-> start (and, above all, keep on) streaming you'll need more.
-> 
-> > VIDIOC_REQBUFS will allocate min_queued_buffers + 1 and user-space will
-> > probably allocate even more anyway.
-> 
-> Is that so? I found that user space relies too much on this minimum
-> buffer count and experienced several buffer starvation situations
-> because kernel AND user space were to cheap in terms of buffer count.
-> Maybe 8 is too many, but in practice four buffers are required at least
-> for a decent 2160p stream (one ready for DMA write, one ongoing DMA
-> write, one stable for processing (maybe DRM scanout or whatever the
-> application is), one spare).
-> 
-> I am open to suggestions but please keep real life situations in mind
-> and move away from theoretical stand-alone-capture-hw setups.
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-so the documentation says:
---------------------------------------------------------------------------
-min_queued_buffers is used when a DMA engine cannot be started unless at
-least this number of buffers have been queued into the driver.
---------------------------------------------------------------------------
-
-and:
---------------------------------------------------------------------------
-VIDIOC_REQBUFS will ensure at least @min_queued_buffers + 1
-buffers will be allocated.
---------------------------------------------------------------------------
-
-I also found theses patches:
-https://lore.kernel.org/linux-media/20231211133251.150999-1-benjamin.gaignard@collabora.com/
-https://lore.kernel.org/all/20241007124225.63463-1-jacopo.mondi@ideasonboard.com/
-
-If I understood correctly there is a difference between:
-
-- the minimal number of buffers to be allocated with VIDIOC_REQBUFS
-- the minimal number of buffers to make it possible to start streaming
-
-what you are setting is the latter, which means you need 8 buffers to
-even start streaming which should not be the case for rkcif, which
-should only need two (of course when using pingpong)
-
-what you mentioned with the minimum number of buffers for a decent stream seems
-to point more towards @min_reqbufs_allocation:
---------------------------------------------------------------------------
-Drivers can set this if there has to be a certain number of
-buffers available for the hardware to work effectively.
---------------------------------------------------------------------------
-
-of course this being said I am not the expert here so feel free to ask
-@Laurent @Hans
-
---
-Kind Regards
-Mehdi Djait
 
 _______________________________________________
 Linux-rockchip mailing list
