@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A569EC3ABBF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 May 2025 13:19:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A638C3ABBF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 May 2025 15:33:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jH8raC79Cb5fERKa3dVkO3EAEKnFQy8UMkNnOL286jw=; b=TQQoQ6eZ5KZT3s
-	DiQl2c3fI2iqm3+PQ/wiPkEKcwcSB8n3fwFZgvaIVbS4GV1aR5UcQynUqiiHDrXcZMoWXUv3yDSxJ
-	1YPtcSWl9xbMl5DAATUNZCCKJal3Qwrp6gQsHim1KcFXEa5PvmtwDGQwiM6cuk8s+xQPg+hFZmwEM
-	W9t/+c6vTrVh0Z8W3Tibx2AyHUzm2MVOQx9MiFby4QQkmAHYv2da7hNsA6rXJVyUIcMVuZEhpl/Kr
-	7rksCQdMuLU00gNXRhUQ4/Y8G1lXI4cT0IePRQeFcXQHJN7/LnZWhLSkX+dB0Rwlev4+Fdeh2n3/R
-	jJbammd7YyQ2ckTIUqyA==;
+	List-Owner; bh=XoDL3xTEpgsPC7KeSHuM8AQ0IIzIMrb0k2C5hHNKRyM=; b=phA+1ViGMyl7+y
+	xLsDGwGpfXX9ZV2qOn7teZ7luynb2EZO8yO8fivOnBwWQpAd69AKRcJMDIY88cFoaAH56L1nMHM7I
+	ZbG0cWe2uThCeusnxsNu+ud2+aDv9Ay0XsnPXsdJhj9vCTmp4JWqqjmRHc3+WdNapjSdqizHy76a6
+	WKzQ05hj3l+7OqsgYWb9fP3tLm6TURBMC0ntorHTqpPQrf5vDSuy3HIGz7zjXuqcU5QN9nUqWYl1D
+	1nrBCsESJobyO0BFwAeEvAwnxGvzndzsxCgAieW+Q2cyZAknsgiP3F7vRa3+5zGrqK5BqHOktFv32
+	LThWW3dnuWglbfolnF9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCegO-0000000FYG1-3Po4;
-	Wed, 07 May 2025 13:19:32 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uCglX-0000000FzJw-1Mry;
+	Wed, 07 May 2025 15:32:59 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCeVG-0000000FVoN-1pAk;
-	Wed, 07 May 2025 13:08:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1746623270; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=lrg3mL/fl3g21qBIr7JHsU9AgJdDTBwJgUwEmF2MWRPDxs82b0mMndWXxpGn5SqhqXbwC9LY0E+pbtRtVb3pnvAEar/lJY9kcV7SBE3Ou3dZ+Rl1c5Y0egHUQwRdM4prxRn0WGBISC8YnISxgvaEkYaQZIGIhOa8N7wpb0shnE0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1746623270; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=n/b63KH5NJPUOPZ1g1cKRKHd1zEwEqpry3HADn6QvTM=; 
-	b=X4XIXLTqBJUKStQo2Q6NXfd5PrDMik2UqVgXPsUU0AYBPG0CUpxx7Ch6IDPgZaJeQSuUICweSqeJ2tttyZ7WXSEvX7/pfulNyzov8MW/41ufDiKlDvaWtbhUGVLJPhJVhN5hrwg7OvrcfPOaiszN82oT59y8Zda/j79jLYpE9Ig=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1746623270;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=n/b63KH5NJPUOPZ1g1cKRKHd1zEwEqpry3HADn6QvTM=;
-	b=UgSIQJXpt40JoQWQx9NJh3nI/TmbfDvztlOBqxNfBs9vkcxjaESiACyVYMYtZFRo
-	BhXMI1s3LDC+ZZX7qsKyOYMy2T62FK+kGmqIrv5LD2a+jG2sImjma9kDVzfqZA7q40I
-	gCvHjWbEbkFHYtzGCfd9YzkZBldYeJbvEXwqSnJ8=
-Received: by mx.zohomail.com with SMTPS id 1746623268314716.9665012016193;
-	Wed, 7 May 2025 06:07:48 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Wed, 07 May 2025 15:07:24 +0200
-Subject: [PATCH v3 4/4] arm64: dts: rockchip: enable USB on Sige5
+	id 1uCgCH-0000000Frxd-4AAJ;
+	Wed, 07 May 2025 14:56:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
+	Content-Type; bh=tNmFFnlLRbbea3bahp28nTfyzV1Xhe+xKP45jX8AMAY=;
+	b=DW2le85cvHbAy9SNvaybMrSBPDunRSVb5CcYqqAywCjz8Z/8jafn3bTFOlIyEi
+	BM2AtqF7+Ib74XnedGReayUxz/MTVTfZwXHuLvT4FlMeyDnn0O0MFoN+zFNl12Ec
+	ieqn4hQYr23XcKusyjn0FzupqJ0MeMXNLtPVhmVVv99rg=
+Received: from [192.168.71.93] (unknown [])
+	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wAXG1lgdBtou6IsFA--.12424S2;
+	Wed, 07 May 2025 22:55:29 +0800 (CST)
+Message-ID: <2ae86e9f-2a91-476a-b017-e0e20489d8da@163.com>
+Date: Wed, 7 May 2025 22:55:28 +0800
 MIME-Version: 1.0
-Message-Id: <20250507-rk3576-sige5-usb-v3-4-89bf5a614ccf@collabora.com>
-References: <20250507-rk3576-sige5-usb-v3-0-89bf5a614ccf@collabora.com>
-In-Reply-To: <20250507-rk3576-sige5-usb-v3-0-89bf5a614ccf@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Frank Wang <frank.wang@rock-chips.com>
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/3] PCI: Configure root port MPS during host probing
+To: Niklas Cassel <cassel@kernel.org>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+ heiko@sntech.de, manivannan.sadhasivam@linaro.org, yue.wang@amlogic.com,
+ pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
+ jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20250506173439.292460-1-18255117159@163.com>
+ <20250506173439.292460-2-18255117159@163.com> <aBsN2_YG0RsH4RPA@ryzen>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <aBsN2_YG0RsH4RPA@ryzen>
+X-CM-TRANSID: _____wAXG1lgdBtou6IsFA--.12424S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7XFy3Xr1UJw1DJrWfAFyDGFg_yoWDuFcEv3
+	4Y9r47C3y8Xr90kw43ArZ8JrZxGanxZ3yjg348XrZay3s3Ar48A3s7K3WktF4Uu3WFvr17
+	Cw1UZF1xA39xujkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU1eT5PUUUUU==
+X-Originating-IP: [124.79.128.52]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiWxBGo2gbb-2P7AAAss
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250507_060802_537748_67B6DA23 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20250507_075634_467227_8E5E06EC 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,227 +74,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The ArmSoM Sige5 has several USB ports: a Type-A USB 3 port (USB2 lines
-going through a hub), a Type-A USB 2.0 port (also going through a hub),
-a Type-C DC input port that has absolutely no USB data connection and a
-Type-C port with USB3.2 Gen1x1 that's also the maskrom programming port.
 
-Enable these ports, and set the device role to be host for the host
-ports.
 
-The data capable Type-C USB port uses a fusb302 for data role switching.
+On 2025/5/7 15:38, Niklas Cassel wrote:
+> On Wed, May 07, 2025 at 01:34:37AM +0800, Hans Zhang wrote:
+> 
+> (snip)
+> 
+>>   static void pci_configure_mps(struct pci_dev *dev)
+>>   {
+>>   	struct pci_dev *bridge = pci_upstream_bridge(dev);
+>> @@ -2178,6 +2209,10 @@ static void pci_configure_mps(struct pci_dev *dev)
+>>   		return;
+>>   	}
+> 
+> We should probably add a comment explaining why we are doing this here.
+> 
+> Perhaps something like:
+> 
+> /*
+>   * Unless MPS strategy is PCIE_BUS_TUNE_OFF (don't touch MPS at all),
+>   * start off by setting root ports' MPS to MPSS. Depending on the MPS
+>   * strategy, and the MPSS of the devices below the root port, the MPS
+>   * of the root port might get overriden later.
+>   */
+> 
+> 
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 160 +++++++++++++++++++++
- 1 file changed, 160 insertions(+)
+Dear Niklas,
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-index 570252c4c0bfe56a3c269e47d81fca7676e61787..74de0fc77fefeffb8a90dd6dd9327ddb0083a146 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-@@ -177,6 +177,33 @@ vcc_3v3_ufs_s0: regulator-vcc-ufs-s0 {
- 		regulator-max-microvolt = <3300000>;
- 		vin-supply = <&vcc_5v0_sys>;
- 	};
-+
-+	vcc_5v0_typec0: regulator-vcc-5v0-typec0 {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb_otg0_pwren>;
-+		regulator-name = "vcc_5v0_typec0";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc_5v0_device>;
-+	};
-+	vcc_5v0_usbhost: regulator-vcc-5v0-usbhost {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio4 RK_PA4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb_host_pwren>;
-+		regulator-name = "vcc_5v0_usbhost";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc_5v0_device>;
-+	};
-+};
-+
-+&combphy1_psu {
-+	status = "okay";
- };
- 
- &combphy0_ps {
-@@ -611,6 +638,58 @@ regulator-state-mem {
- &i2c2 {
- 	status = "okay";
- 
-+	usbc0: typec-portc@22 {
-+		compatible = "fcs,fusb302";
-+		reg = <0x22>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA5 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usbc0_interrupt>;
-+		vbus-supply = <&vcc_5v0_typec0>;
-+
-+		connector {
-+			compatible = "usb-c-connector";
-+			label = "USB-C";
-+			data-role = "dual";
-+			/* fusb302 supports PD Rev 2.0 Ver 1.2 */
-+			pd-revision = /bits/ 8 <0x2 0x0 0x1 0x2>;
-+			power-role = "source";
-+			source-pdos = <PDO_FIXED(5000, 2000,
-+						 PDO_FIXED_USB_COMM | PDO_FIXED_DATA_SWAP)>;
-+
-+			altmodes {
-+				displayport {
-+					svid = /bits/ 16 <0xff01>;
-+					vdo = <0xffffffff>;
-+				};
-+			};
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+					usbc0_hs_ep: endpoint {
-+						remote-endpoint = <&usb_drd0_hs_ep>;
-+					};
-+				};
-+				port@1 {
-+					reg = <1>;
-+					usbc0_ss_ep: endpoint {
-+						remote-endpoint = <&usb_drd0_ss_ep>;
-+					};
-+				};
-+				port@2 {
-+					reg = <2>;
-+					usbc0_dp_ep: endpoint {
-+						remote-endpoint = <&usbdp_phy_ep>;
-+					};
-+				};
-+			};
-+		};
-+	};
-+
- 	hym8563: rtc@51 {
- 		compatible = "haoyu,hym8563";
- 		reg = <0x51>;
-@@ -678,6 +757,24 @@ pcie_reset: pcie-reset {
- 			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
-+
-+	usb {
-+		usb_host_pwren: usb-host-pwren {
-+			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+		usb_otg0_pwren: usb-otg0-pwren {
-+			rockchip,pins = <4 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+		usbc0_interrupt: usbc0-interrupt {
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+		usbc0_sbu1: usbc0-sbu1 {
-+			rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+		usbc0_sbu2: usbc0-sbu2 {
-+			rockchip,pins = <2 RK_PA7 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
- };
- 
- &sdhci {
-@@ -706,11 +803,74 @@ &sdmmc {
- 	status = "okay";
- };
- 
-+&u2phy0 {
-+	status = "okay";
-+};
-+
-+&u2phy0_otg {
-+	status = "okay";
-+};
-+
-+&u2phy1 {
-+	status = "okay";
-+};
-+
-+&u2phy1_otg {
-+	phy-supply = <&vcc_5v0_usbhost>;
-+	status = "okay";
-+};
-+
- &uart0 {
- 	pinctrl-0 = <&uart0m0_xfer>;
- 	status = "okay";
- };
- 
-+&usb_drd0_dwc3 {
-+	usb-role-switch;
-+	dr_mode = "otg";
-+	status = "okay";
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+			usb_drd0_hs_ep: endpoint {
-+				remote-endpoint = <&usbc0_hs_ep>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+			usb_drd0_ss_ep: endpoint {
-+				remote-endpoint = <&usbc0_ss_ep>;
-+			};
-+		};
-+	};
-+};
-+
-+&usb_drd1_dwc3 {
-+	dr_mode = "host";
-+	status = "okay";
-+};
-+
-+&usbdp_phy {
-+	mode-switch;
-+	orientation-switch;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&usbc0_sbu1 &usbc0_sbu2>;
-+	sbu1-dc-gpios = <&gpio2 RK_PA6 GPIO_ACTIVE_HIGH>;
-+	sbu2-dc-gpios = <&gpio2 RK_PA7 GPIO_ACTIVE_HIGH>;
-+	status = "okay";
-+
-+	port {
-+		usbdp_phy_ep: endpoint {
-+			remote-endpoint = <&usbc0_dp_ep>;
-+		};
-+	};
-+};
-+
- &vop {
- 	status = "okay";
- };
+Thank you very much for your reply and suggestions.
+It will be added in the next version.
 
--- 
-2.49.0
+Best regards,
+Hans
+
+>> +	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
+>> +	    pcie_bus_config != PCIE_BUS_TUNE_OFF)
+>> +		pcie_write_mps(dev, 128 << dev->pcie_mpss);
+>> +
+>>   	if (!bridge || !pci_is_pcie(bridge))
+>>   		return;
+>>   
+> 
+> 
+> Kind regards,
+> Niklas
 
 
 _______________________________________________
