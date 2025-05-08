@@ -4,111 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6473C3ABC0
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 07:32:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72E3DC3ABBE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 08:04:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b41YqgIXPp0PdDIjwY/LpVbPkLUbZ1fQF3szsTYzHUE=; b=lnvrsO7dj8W0Ls
-	QHpCwZje1Z/2d4eGX7mXDQETNjP4+g7YPNBR7eNvKRsHTJgUqly3ZTdTzcYsYi6eyAttiLIiSAtfE
-	Z5j9/ucHC+gVet7aNXXFbN/3XfS7+OBYNAuz29ggYp8Be2MU1T+RKiBcqizxFxoYmtxVNWbd8o5TN
-	/eVQqLvGG6kjyeeXn9mBgwYuq/Lw2YQHyQOq1oEi0bIMsOgoxN5IyZtIoiIuM11bhkoPFKFZmYGtC
-	gHXQlLiy+tP0XASGnmnSk9cozoP9m/c9/P9OTDEu26MjUOcm4wb8A3fW1AUdVda4CqjnmBmQv08CF
-	EAvwPxnzHXjHjyUxksGg==;
+	List-Owner; bh=32COjp/SwPMeJUCulrmbtEBULFOD3tD+n62N//TdxFM=; b=YdDFihsqBhSdp3
+	sXfL0LNYO3CrcDqvxwDWYVrr29hBToj9WAYstKgpTtspB3t8LSrF71V8DvOQp5VR0Bd4ZrdQXeqC0
+	uNxv++7JOe122sZ8TKs/Vn2iIKLUVCMoJkHmI8EWkfgP/oGQ/ha/Ez9moT6uz9+CwEbay25pVFs4i
+	tmBXw/vzSbA4Y6F6A3z1j6185LMfyg5W6xnQDDCQkTB0fMt1MGrbgsFAp3Gfm4IMeBvmzbn7ukKXa
+	h68Q/ujiJoNRKqpUaA4sQwlJPu4eHkoZ2aTUIX5ZeMV0ObB6/YyeuZPEnZcenSnfakgjMtUIKyUxj
+	YeqwYSy63M3AwdFFPJSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCvkS-000000000Xq-2gh1;
-	Thu, 08 May 2025 07:32:52 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uCwEn-000000003m1-24gw;
+	Thu, 08 May 2025 08:04:13 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCvUf-0000000HZEZ-0zBO;
-	Thu, 08 May 2025 07:16:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6D793A4D9F5;
-	Thu,  8 May 2025 07:16:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2EF9C4CEEB;
-	Thu,  8 May 2025 07:16:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746688592;
-	bh=qetcnJ/bVlm8Wp3j6cJtVSuUtHSiJ8n35hJdXby+9Cw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=C2iKUczBk55G28etcgq9KHU9b7FV5UUeEnM1OUAwpbZSaB6fxjGx25S0imvc69ugs
-	 P/j+/1zMpDKkoiuGDwm1x25T7QwP/T2almaEsRxsGkbwHJz8gGkk61eNjjEyCl7+qw
-	 AiZw0qAKOMV2Gf8u4atylY/STShTt8X3oyUNR62Z/DW9ylA8LJXnvqLC+FLTukiHoH
-	 cGh91qDKTtwgxiuuhDHTKM4w26TUsjWdyL4pz+rxlLgjB7MS2RRvNr+9EtXGXE7BaB
-	 I3of5s8rTOnR0v6WeBGegV+72JmQyuRtnWt9eZ1Cl71I1/DMCco6fvKkx8MDdNtv8T
-	 rH78ZYfXE0Esw==
-Message-ID: <a3ef7af4-3c6a-4bc6-912b-5819393dcd6a@kernel.org>
-Date: Thu, 8 May 2025 09:16:25 +0200
+	id 1uCwDr-000000003i1-2J5b;
+	Thu, 08 May 2025 08:03:17 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [119.122.215.106])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 145c271ec;
+	Thu, 8 May 2025 16:03:07 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: lkp@intel.com
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	dsimic@manjaro.org,
+	heiko@sntech.de,
+	krzk@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/1] arm64: dts: rockchip: rk3568: Move PCIe3 MSI to use GIC ITS
+Date: Thu,  8 May 2025 16:02:00 +0800
+Message-Id: <20250508080200.13940-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <202503221203.7E0Oa0zG-lkp@intel.com>
+References: <202503221203.7E0Oa0zG-lkp@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] dt-bindings: display: rockchip: Convert
- cdn-dp-rockchip.txt to yaml
-To: Chaoyi Chen <kernel@airkyi.com>, Sandy Huang <hjc@rock-chips.com>,
- Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
- Dragan Simic <dsimic@manjaro.org>, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20250508064304.670-1-kernel@airkyi.com>
- <20250508064304.670-3-kernel@airkyi.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250508064304.670-3-kernel@airkyi.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaHh8eVk8ZH0lCQx1NSh1JH1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVKS01ZV1kWGg8SFR0UWUFZT0tIVUpLSEpMTElVSktLVU
+	pCS0tZBg++
+X-HM-Tid: 0a96aeeb71cc03a2kunm145c271ec
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ORg6IRw5GTIDAQ9ONBRIASIQ
+	A04KCypVSlVKTE9NTUJKSENDTE9JVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpOVUpLTVlXWQgBWUFKSUNJNwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_001633_423478_362B2DEB 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20250508_010315_743468_06CA73E7 
+X-CRM114-Status: UNSURE (   6.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,194 +76,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 08/05/2025 08:43, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> Convert cdn-dp-rockchip.txt to yaml.
-> 
-> Tested with:
-> 
-> 1. make ARCH=arm64 dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip,cdn-dp.yaml
-> 
-> 2. make ARCH=arm64 dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip,cdn-dp.yaml
+Hi,
 
-Drop. You do not have to embed in commit msg standard makefile targets.
-We all know how to use it. You do not do it for C files, do you?
+> kernel test robot noticed the following build errors:
+>
+> [auto build test ERROR on rockchip/for-next]
+> [also build test ERROR on linus/master v6.14-rc7]
+> [If your patch is applied to the wrong git tree, kindly drop us a note.
+> And when submitting patch, we suggest to use '--base' as documented in
+> https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-> 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> ---
+commit f15be3d4a0a5 ("arm64: dts: rockchip: rk356x: Add MSI controller node")
+is already included in rockchip/for-next. Do I need to resend this patch?
 
-...
+Thanks,
+Chukun
 
-> -	};
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,cdn-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,cdn-dp.yaml
-> new file mode 100644
-> index 000000000000..ed68b48a6743
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,cdn-dp.yaml
+--
+2.25.1
 
-Filename matching compatible.
-
-> @@ -0,0 +1,148 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/rockchip/rockchip,cdn-dp.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip RK3399 specific extensions to the CDN Display Port
-> +
-> +maintainers:
-> +  - Andy Yan <andy.yan@rock-chip.com>
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +  - Sandy Huang <hjc@rock-chips.com>
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: rockchip,rk3399-cdn-dp
-> +
-> +  reg:
-> +    description:
-> +      CDN DP core register
-
-Missing constraints. Drop description.
-
-Just look at other bindings.
-
-> +
-> +  assigned-clock-rates: true
-> +  assigned-clocks: true
-
-Drop these two
-
-> +
-> +  clocks:
-> +    minItems: 4
-
-No, look at other bindings.
-
-> +
-> +  clock-names:
-> +    items:
-> +      - const: core-clk
-> +      - const: pclk
-> +      - const: spdif
-> +      - const: grf
-> +
-> +  extcon:
-> +    description:
-> +      Phandle to the extcon device providing the cable state for the DP phy.
-
-Missing type, unless you could not add a type because of conflicts? This
-should be really fixed...
-
-
-> +
-> +  interrupts:
-> +    maxItems: 1
-
-and here is maxItems. Why in other places you put minItems?
-
-> +
-> +  phys:
-> +    minItems: 1
-> +    maxItems: 2
-
-Why is this flexible? It wasn't in original binding and you must
-document all the changes done to the binding in commit msg.
-
-> +
-> +  ports:
-> +    $ref: /schemas/graph.yaml#/properties/ports
-> +
-> +    properties:
-> +      port@0:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: Input of the CDN DP
-> +        properties:
-> +          endpoint@0:
-> +            description: Connection to the VOPB
-> +          endpoint@1:
-> +            description: Connection to the VOPL
-> +      port@1:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: Output of the CDN DP
-> +
-> +    required:
-> +      - port@0
-> +      - port@1
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  resets:
-> +    minItems: 4
-
-No, look at other bindings.
-
-> +
-> +  reset-names:
-> +    items:
-> +      - const: spdif
-> +      - const: dptx
-> +      - const: apb
-> +      - const: core
-> +
-> +  rockchip,grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      This SoC makes use of GRF regs.
-
-For what? You did not say anything useful above, so instead explain the
-purpose.
-
-> +
-> +  "#sound-dai-cells":
-> +    const: 1
-
-Missing dai-common ref, unless this is not a DAI?
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - clock-names
-> +  - interrupts
-> +  - phys
-> +  - ports
-> +  - resets
-> +  - reset-names
-> +  - rockchip,grf
-> +
-> +unevaluatedProperties: false
-
-Where is any $ref? additionalProperties instead or add proper ref
-
-
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/rk3399-cru.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/power/rk3399-power.h>
-> +    cdn_dp: dp@fec00000 {
-
-Drop unused label
-
-> +        compatible = "rockchip,rk3399-cdn-dp";
-> +        reg = <0x0 0xfec00000 0x0 0x100000>;
-> +        assigned-clocks = <&cru SCLK_DP_CORE>;
-> +        assigned-clock-rates = <100000000>;
-> +        interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +        clocks = <&cru SCLK_DP_CORE>, <&cru PCLK_DP_CTRL>, <&cru SCLK_SPDIF_REC_DPTX>,
-> +                <&cru PCLK_VIO_GRF>;
-
-
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
