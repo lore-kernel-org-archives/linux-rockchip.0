@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38950C3ABC0
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 18:40:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD5D7C3ABC0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 18:42:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tyLzg900/FiROENcLuxgMhzzMvmM9ZKCV4vwiMEuC3M=; b=jLXBx7qk3pux+c
-	vA7fKvLWI3I0Md/RbyE9TQfdz7TGE5xqLnB8RH18Qd8W97IS1WIVY1IJAqYSqDficEkuWqI2At8O+
-	D/R4e1VqZtdM8q+vLQux5OqnbBKvYlf73eVrTT7V6SmT0NBDgJmL37VwBOm9hHBWF7hQN6o7l58ab
-	aZTKoCUhBJ49NteqVrusqgDuj6FACT0UGRzgLW4aJ29ah7aWVCYU5DdmRJN3zBCFA8bcUEpEnVHM0
-	XRIJJi3uvdIsgO6FYY8EGStvikOt1iwcQPmInbEqGbC+bypKeuqkyEq7b68AuuMARYnbpdamojISE
-	mFqZq6mXhpLxpi7fyR4A==;
+	List-Owner; bh=BUkoAcQVwt8buSYZIROs3B9o4FNRPZnm4uoeMXlj0Z8=; b=R5OSoHAFqZez1J
+	tu+xp2Xx+kdelSk1N6a2/u/QcuSebe0yNidMzxzzSiYYCQEDd8Uus58yG/riSXWiqUGcQZc9I9gJV
+	b/kX/SK/mks/9IfbVFFAM5VzJW72R4T+QtlwshfJcWEAtniKm8/0F67gEX1fdplmxrUoZ7+zH+6Jk
+	3L9FjNnNhgMX0TIC89O19CrXF0YjwqT95C+vDWcYnH21FNPgEuiaIEikc/RVPsha1O9PHp5gowsTB
+	fD0aQAjHs+JWJ5QnrR50A5GTEdr66sS1XY5V3pRer0YxIevIXkq9Z9pWpWlTpxBr42YkQuErTqHM5
+	cKDvm52noOoAdRz3K/Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD6AI-00000001ZPZ-2vX6;
-	Thu, 08 May 2025 18:40:14 +0000
+	id 1uD6CF-00000001ZeA-0DOa;
+	Thu, 08 May 2025 18:42:15 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD61S-00000001Y3C-2E9S;
+	id 1uD61S-00000001Y3D-3EgC;
 	Thu, 08 May 2025 18:31:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=T7KUB66ex20KKbW6a9zIjBnH56YYjFLFeSIV7Lf5sII=; b=OaPDzJii2050EtK1qhFtB8+nCi
-	X8I6PNRJgiMH3Ia5j9jJPVVCXT8ETlBAiKH/V47JhXbMmI61aeY6X19BfeQ4YV+cxZHGNzo5jQ59E
-	ynD3GdidrsNiGXoEvD/zs2lOAhMSWrtHb5yeeyK45PGFvMr04hPtt+onaCPXPXSX4QTGzCXBAQpew
-	0K2NpV0XDD9VWn1pnXzqG1g3V0IBVLrZDj6b1giKCan5m4dNQodoiH2MplrWjy97fcZEOmeDgzkJl
-	bBAn/qXRrdutShJN5xFCw+qB8nBMls1P9zu0f63sluAgoQsAjLww2ZSClqy5RCs5gZednLNC0n4IY
-	sOdScCyw==;
+	bh=mZvOWQHwZVwyJf6BVvOEiNtKPaJ2rgizuAGd5TEgutw=; b=y7dGOpSaTguEXKJjJT2GCbwAz1
+	RF10UCNO6oVUQkWcapDMzWaIp3xCxC/6ApPzPPXZEqtjTgK4hiShc0zDrHGbzYazGixvUr/xmxTV2
+	YrksQtRrKsCRkzJruR+BOuwyuo6xkDyaUVU6cWXRyI3Ol36uv7V8YtaAoTMMRaZTmR46gL2Q/cl8i
+	GkenBKWdoMfABDY3drgeAAZ6ubvfMRkA30bMqiEw59PKenfkzeZxVjhn1INTEyYUsBnORgsaQNQbm
+	87A+Wxe5hj1BlWVZcWh1uhmAIGI7uebz385DD1vSWPXmXZIJ+yxg87ZGftezCdNm2Ll1UB0XJGK4g
+	ApFqhayw==;
 Received: from [61.8.144.177] (helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uD61J-0000vi-Qa; Thu, 08 May 2025 20:30:57 +0200
+	id 1uD61M-0000vi-RN; Thu, 08 May 2025 20:31:00 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>,
+To: Ulf Hansson <ulf.hansson@linaro.org>,
 	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Shresth Prasad <shresthprasad7@gmail.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Yao Zi <ziyao@disroot.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-mmc@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: rk3568: Move PCIe3 MSI to use GIC ITS
-Date: Thu,  8 May 2025 20:30:44 +0200
-Message-ID: <174672902820.1927548.18239697985612657696.b4-ty@sntech.de>
+	linux-clk@vger.kernel.org
+Subject: Re: (subset) [PATCH v5 0/5] Support SD/SDIO controllers on RK3528
+Date: Thu,  8 May 2025 20:30:47 +0200
+Message-ID: <174672902826.1927548.11499970123396406769.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250308093008.568437-2-amadeus@jmu.edu.cn>
-References: <20250308093008.568437-1-amadeus@jmu.edu.cn> <20250308093008.568437-2-amadeus@jmu.edu.cn>
+In-Reply-To: <20250506092206.46143-1-ziyao@disroot.org>
+References: <20250506092206.46143-1-ziyao@disroot.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_113106_633830_9F95DFA9 
-X-CRM114-Status: UNSURE (   9.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250508_113106_805972_07432030 
+X-CRM114-Status: GOOD (  17.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,17 +89,63 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 08 Mar 2025 17:30:08 +0800, Chukun Pan wrote:
-> Following commit b956c9de9175 ("arm64: dts: rockchip: rk356x: Move
-> PCIe MSI to use GIC ITS instead of MBI"), change the PCIe3 controller's
-> MSI on rk3568 to use ITS, so that all MSI-X can work properly.
+On Tue, 06 May 2025 09:22:01 +0000, Yao Zi wrote:
+> RK3528 features two SDIO controllers and one SD/MMC controller. This
+> series adds essential support for their tuning clocks and brings the
+> SD/MMC one up on Radxa E20C board. Both HS and SDR104 mode are verified.
 > 
+> - Changed from v4
+>   - rk3528 clock driver
+>     - Switch to auxiliary GRF
+>     - drop rockchip_clk_register_grf_branches
+>     - Rename branch_mmc_grf to branch_grf_mmc to make style consistent
+>       (with branch_grf_gate)
+>   - Link to v4: https://lore.kernel.org/all/20250417143647.43860-1-ziyao@disroot.org/
+> - Changed from v3
+>   - Drop applied binding patch of MMC controller
+>   - Rebase on top of linux-rockchip/for-next
+>   - Link to v3: https://lore.kernel.org/all/20250309055348.9299-1-ziyao@disroot.org/
+> - Changed from v2
+>   - Apply review tags
+>   - Rebase on top of linux-rockchip/for-next and drop applied patches
+>   - RK3528 devicetree
+>     - Fix accidentally dropped status property of saradc node
+>     - drop det and pwren pinctrls for SDIO{0,1} according to the
+>       reference design
+>     - Correct max-frequency for SDIO{0,1}
+>   - rk3528-radxa-e20c devicetree
+>     - Don't disable sdio for sdmmc as claimed in the hw design guide
+>   - Link to v2: https://lore.kernel.org/all/20250305194217.47052-1-ziyao@disroot.org/
+> - Changed from v1
+>   - Apply review tags
+>   - Rebase on top of linux-rockchip/for-next and saradc v2 series
+>   - rk3528 clock driver:
+>     - explicitly include minmax.h, replace MAX() with more robust max()
+>     - readability improvements
+>     - fix error checks: ERR_PTR(-ENODEV), instead of ERR_PTR(ENODEV), is
+>       returned when syscon_regmap_lookup_by_compatible() fails for missing
+>       such syscon
+>   - RK3528 devicetree
+>     - Add default pinctrl
+>     - Move the per-SoC property, rockchip,default-sample-phase, into the
+>       SoC devicetree
+>   - rk3528-radxa-e20c devicetree
+>     - Assign sdcard to mmc1
+>     - Add missing regulators
+>     - Apply no-sdio for the sdmmc controller
+>     - Sort nodes
+>   - Link to v1: https://lore.kernel.org/all/20250301104250.36295-1-ziyao@disroot.org/
 > 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: rk3568: Move PCIe3 MSI to use GIC ITS
-      commit: fbea35a661ed100cee2f3bab8015fb0155508106
+[1/5] dt-bindings: clock: Add GRF clock definition for RK3528
+      commit: 8a023e86f3d999007f2687952afe78ef34a6aa91
+[2/5] clk: rockchip: Support MMC clocks in GRF region
+      commit: 621ba4d9f6db560a7406fd732af1b495ff5aa103
+[3/5] clk: rockchip: rk3528: Add SD/SDIO tuning clocks in GRF region
+      commit: 306d2f5ddaa765f04ffb54fc9437a6318f904b53
 
 Best regards,
 -- 
