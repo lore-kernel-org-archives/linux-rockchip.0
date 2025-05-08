@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02DB8C3ABBE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 23:16:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80761C3ABBE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 23:51:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QFMStFCl8DZUgi6q26bJB9qaNobkyuomeshqkHL2fAI=; b=khX+VrFSToXo7b
-	zpzTrLO6uuPBGcuJ8Vb4ZP6o+UdO0G3Kwl4LmVs6rzd5H5hJ7BtCkRzex5K1N9Ksvysho9OfHJU5N
-	x6q9Oo8j7Nhw4vWV2ZvKuohC5QlzfmFzo84HcmP4vAEq2ZLeV/T/S/wLaWpYBo4pP579IoH1+OYO6
-	gMXg72vf06XAiO7j7g5ecD+rMz+lUKOpLfRtITk3Y4D7qOHd+2WaF4LJ8oQp9L0iLuN7BvUKSviuh
-	VsXO1C0pKkvGF+UMtYVm0WHuo+Gci8WQpbzTty3aBGnObXqyFoiK4PTsxgKO80/dmKMjypk6EC1Yw
-	lx7guLCSVXCJALDC+mYQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gBh4zI1swt6CDUKwZ4sOm4D7Gx+bQSIzj+E1Q+ucEmg=; b=IiSskP1PAH6f/8
+	HyjsdZgMkRUEBHhr+0QKmAwVjYO9X08FYLvC0yqFfDAoevHa9OfX+Gd2+MyNxKxDUu8wbzLoc0lSK
+	zDpd9dLMiiJRpmqrsbUtb5TtNdbdcDO5tdXt2fs2NQ5+HFKYb0HFUGJgdPw07GeqhCDei7750elEP
+	G4cA3knlIrqZvdiajeNCRibD3VzQleGWNnMEid9OQhtkA2lY5vbWHhJpTebWOvX0+Maswf4MC2Oiq
+	mpmHAQYE1KVd53VePp9xkkPDQ+t6Ifh5P172AyKov4S0HpzHBwgFTezxrNm57tZ3RWBx4oCZ6jrYU
+	HNP5d9n+4IzeKdAm8P6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDAT1-00000001xzF-1ff8;
-	Thu, 08 May 2025 23:15:51 +0000
+	id 1uDB1m-000000022BK-1G5s;
+	Thu, 08 May 2025 23:51:46 +0000
 Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDAR1-00000001xjQ-20HA;
-	Thu, 08 May 2025 23:13:49 +0000
+	id 1uDAzn-000000021v9-3W5z;
+	Thu, 08 May 2025 23:49:45 +0000
 Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 5FCE826161;
-	Fri,  9 May 2025 01:13:42 +0200 (CEST)
+	by disroot.org (Postfix) with ESMTP id 64BA326050;
+	Fri,  9 May 2025 01:49:42 +0200 (CEST)
 X-Virus-Scanned: SPAM Filter at disroot.org
 Received: from layka.disroot.org ([127.0.0.1])
  by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HQQXvO6tkiyE; Fri,  9 May 2025 01:13:41 +0200 (CEST)
+ id wtwmwACksPdI; Fri,  9 May 2025 01:49:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1746746021; bh=bB3j8fb6z811VpRpryPJkvawI3jg6GwtmMHB9Bn3MXQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ZWSyrQuDh5IumxGz2OmiGWHrjY9wXY9i2F/vkQhU93LaOxvGebq9SifRwzhWk1e+a
-	 /BCMa9uycuIDQiRlie6FoiyqeYGEwyz9K5Qb/etHmQJ8F0BBbTEd9B1eu/0GPen1Je
-	 40bE/cwhkhAWP3IM91TNH0Py/q1Bqxcda/4stYi3S9RoI3C5WgLXHOfzMmdfTetG1N
-	 Wthk5CuMo78/PHYXtNtaO9hu/BLtEphcec5uWxKm06pAJbgSqKT3jCSnFom9XsFgTK
-	 nyMKN+AGLKfcErTnNtuBj61JeG8QwuQcjvayOpIn+mhVaj9U9RHCj48njfqS8jCbwq
-	 BXHAC7VmzKmuA==
-Date: Thu, 8 May 2025 23:13:25 +0000
+	t=1746748180; bh=PHkzmazZbYNFsZ8Z3dXZDpcjBGKxVGnG8Eabx+LYYTM=;
+	h=From:To:Cc:Subject:Date;
+	b=OzDZXw2KUUb2OxfCLHMDc5LhJyFyLcLncTZRGagZbFbXZSib+MDfa5fLDsyrrXbcz
+	 KnayWORxO1F2EXRhsYGZJnUf5tScLUP5a37+bfc2+opyr170FfD3de9ADU3pzOJKWv
+	 vbEleZo7153Nl0V5yF/dKmmE4KQIKQ6lWxeM4VQiz2+crq21WAeHrHA3KefodU1zKL
+	 Ts/cfYztat8qUHpHbPgQ8zVlXYAmyd4WLZl37732a6chki9c3y6CHDxDRAuSi1mkVH
+	 xRj1HMe5oW2GlkRy+l+c//NZkecCq0bzHNn1XBceyilB0ZmbHKfG+J048cfZx0QYmo
+	 PHUWdayt7oLrA==
 From: Yao Zi <ziyao@disroot.org>
-To: Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Rob Herring <robh@kernel.org>,
+To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Shresth Prasad <shresthprasad7@gmail.com>,
-	Chukun Pan <amadeus@jmu.edu.cn>, Jonas Karlman <jonas@kwiboo.se>
-Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Yao Zi <ziyao@disroot.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 4/5] phy: rockchip: naneng-combphy: Add RK3528 support
-Message-ID: <aB06lQs9d0q8pMU_@pie.lan>
-References: <20250508134332.14668-2-ziyao@disroot.org>
- <20250508135307.14726-1-ziyao@disroot.org>
- <5349721.GXAFRqVoOG@phil>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v6 0/2] Support SD/SDIO controllers on RK3528
+Date: Thu,  8 May 2025 23:48:28 +0000
+Message-ID: <20250508234829.27111-2-ziyao@disroot.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5349721.GXAFRqVoOG@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_161347_928401_E198EAC7 
-X-CRM114-Status: GOOD (  17.99  )
+X-CRM114-CacheID: sfid-20250508_164944_012498_DD7436D7 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,109 +73,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 08, 2025 at 07:26:13PM +0200, Heiko Stuebner wrote:
-> Am Donnerstag, 8. Mai 2025, 15:53:06 Mitteleurop=E4ische Sommerzeit schri=
-eb Yao Zi:
-> > Rockchip RK3528 integrates one naneng-combphy that is able to operate in
-> > PCIe and USB3 mode. The control logic is similar to previous variants of
-> > naneng-combphy but the register layout is apperantly different from the
-> > RK3568 one.
-> > =
+RK3528 features two SDIO controllers and one SD/MMC controller. This
+series brings the SD/MMC one up on Radxa E20C board. Both HS and SDR104
+modes are verified.
 
-> > Signed-off-by: Yao Zi <ziyao@disroot.org>
-> > ---
-> >  .../rockchip/phy-rockchip-naneng-combphy.c    | 180 +++++++++++++++++-
-> >  1 file changed, 179 insertions(+), 1 deletion(-)
-> > =
+- Changed from v5
+  - Drop applied clock patches
+  - Rebase on top of linux-rockchip/for-next
+  - Link to v5: https://lore.kernel.org/all/20250506092206.46143-1-ziyao@disroot.org/
+- Changed from v4
+  - rk3528 clock driver
+    - Switch to auxiliary GRF
+    - drop rockchip_clk_register_grf_branches
+    - Rename branch_mmc_grf to branch_grf_mmc to make style consistent
+      (with branch_grf_gate)
+  - Link to v4: https://lore.kernel.org/all/20250417143647.43860-1-ziyao@disroot.org/
+- Changed from v3
+  - Drop applied binding patch of MMC controller
+  - Rebase on top of linux-rockchip/for-next
+  - Link to v3: https://lore.kernel.org/all/20250309055348.9299-1-ziyao@disroot.org/
+- Changed from v2
+  - Apply review tags
+  - Rebase on top of linux-rockchip/for-next and drop applied patches
+  - RK3528 devicetree
+    - Fix accidentally dropped status property of saradc node
+    - drop det and pwren pinctrls for SDIO{0,1} according to the
+      reference design
+    - Correct max-frequency for SDIO{0,1}
+  - rk3528-radxa-e20c devicetree
+    - Don't disable sdio for sdmmc as claimed in the hw design guide
+  - Link to v2: https://lore.kernel.org/all/20250305194217.47052-1-ziyao@disroot.org/
+- Changed from v1
+  - Apply review tags
+  - Rebase on top of linux-rockchip/for-next and saradc v2 series
+  - rk3528 clock driver:
+    - explicitly include minmax.h, replace MAX() with more robust max()
+    - readability improvements
+    - fix error checks: ERR_PTR(-ENODEV), instead of ERR_PTR(ENODEV), is
+      returned when syscon_regmap_lookup_by_compatible() fails for missing
+      such syscon
+  - RK3528 devicetree
+    - Add default pinctrl
+    - Move the per-SoC property, rockchip,default-sample-phase, into the
+      SoC devicetree
+  - rk3528-radxa-e20c devicetree
+    - Assign sdcard to mmc1
+    - Add missing regulators
+    - Apply no-sdio for the sdmmc controller
+    - Sort nodes
+  - Link to v1: https://lore.kernel.org/all/20250301104250.36295-1-ziyao@disroot.org/
 
-> > diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drive=
-rs/phy/rockchip/phy-rockchip-naneng-combphy.c
-> > index 1d1c7723584b..7c92f7ac3c7f 100644
-> > --- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> > +++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> > @@ -20,7 +20,40 @@
-> >  #define REF_CLOCK_25MHz			(25 * HZ_PER_MHZ)
-> >  #define REF_CLOCK_100MHz		(100 * HZ_PER_MHZ)
-> >  =
+Thanks for your time and review.
 
-> > -/* COMBO PHY REG */
-> > +/* RK3528 COMBO PHY REG */
-> > +#define RK3528_PHYREG6				0x18
-> > +#define  RK3528_PHYREG6_PLL_KVCO		GENMASK(12, 10)
-> > +#define   RK3528_PHYREG6_PLL_KVCO_VALUE		0x2
-> > +#define  RK3528_PHYREG6_SSC_DIR			GENMASK(5, 4)
-> > +#define   RK3528_PHYREG6_SSC_UPWARD		0
-> > +#define   RK3528_PHYREG6_SSC_DOWNWARD		1
-> > +#define RK3528_PHYREG40				0x100
-> > +#define  RK3528_PHYREG40_SSC_EN			BIT(20)
-> > +#define  RK3528_PHYREG40_SSC_CNT		GENMASK(10, 0)
-> > +#define   RK3528_PHYREG40_SSC_CNT_VALUE		0x17d
-> > +#define RK3528_PHYREG42				0x108
-> > +#define  RK3528_PHYREG42_CKDRV_CLK_SEL		BIT(29)
-> > +#define   RK3528_PHYREG42_CKDRV_CLK_PLL		0
-> > +#define   RK3528_PHYREG42_CKDRV_CLK_CKRCV	1
-> > +#define  RK3528_PHYREG42_PLL_LPF_R1_ADJ		GENMASK(10, 7)
-> > +#define   RK3528_PHYREG42_PLL_LPF_R1_ADJ_VALUE	0x9
-> > +#define  RK3528_PHYREG42_PLL_CHGPUMP_CUR_ADJ	GENMASK(6, 4)
-> > +#define   RK3528_PHYREG42_PLL_CHGPUMP_CUR_ADJ_VALUE 0x7
-> > +#define  RK3528_PHYREG42_PLL_KVCO_ADJ		GENMASK(2, 0)
-> > +#define   RK3528_PHYREG42_PLL_KVCO_ADJ_VALUE	0x0
-> > +#define RK3528_PHYREG80				0x200
-> > +#define  RK3528_PHYREG80_CTLE_EN		BIT(17)
-> > +#define RK3528_PHYREG81				0x204
-> > +#define  RK3528_PHYREG81_CDR_PHASE_PATH_GAIN_2X	BIT(5)
-> > +#define  RK3528_PHYREG81_SLEW_RATE_CTRL		GENMASK(2, 0)
-> > +#define   RK3528_PHYREG81_SLEW_RATE_CTRL_SLOW	0x7
-> > +#define RK3528_PHYREG83				0x20c
-> > +#define  RK3528_PHYREG83_RX_SQUELCH		GENMASK(2, 0)
-> > +#define   RK3528_PHYREG83_RX_SQUELCH_VALUE	0x6
-> > +#define RK3528_PHYREG86				0x218
-> > +#define  RK3528_PHYREG86_RTERM_DET_CLK_EN	BIT(14)
-> =
+Yao Zi (2):
+  arm64: dts: rockchip: Add SDMMC/SDIO controllers for RK3528
+  arm64: dts: rockchip: Enable SD-card interface on Radxa E20C
 
-> I'd think staying with one layout would be best, so not doing this
-> indentation here. Instead maybe follow the other ones like
+ .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 30 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 69 +++++++++++++++++++
+ 2 files changed, 99 insertions(+)
 
-Though seems more clear, it's reasonable to keep the style consistent.
+-- 
+2.49.0
 
-Will change it in v2, thanks.
-
-> #define RK3528_PHYREG6				0x18
-> #define RK3528_PHYREG6_PLL_KVCO		GENMASK(12, 10)
-> #define RK3528_PHYREG6_PLL_KVCO_VALUE		0x2
-> #define RK3528_PHYREG6_SSC_DIR			GENMASK(5, 4)
-> #define RK3528_PHYREG6_SSC_UPWARD		0
-> #define RK3528_PHYREG6_SSC_DOWNWARD		1
-> =
-
-> #define RK3528_PHYREG40				0x100
-> #define RK3528_PHYREG40_SSC_EN			BIT(20)
-> #define RK3528_PHYREG40_SSC_CNT		GENMASK(10, 0)
-> #define RK3528_PHYREG40_SSC_CNT_VALUE		0x17d
-> =
-
-> ...
-> =
-
-> i.e. register + bits + blank line
-> =
-
-> other than that
-> =
-
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> =
-
-> =
-
-
-Best regards,
-Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
