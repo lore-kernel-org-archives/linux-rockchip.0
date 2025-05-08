@@ -4,66 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 932B8C3ABBE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 21:00:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02DB8C3ABBE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 23:16:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6Ep3q+RnBqOH4uIl+280s0tklMoT1M/Jn1PS268uyHI=; b=nSoeWxMNPnwGNb
-	ued9J3iyg9zpWD4xaTQOLWnbtRyeTDArdZeBHkL2tZ4QLc/cA7AEyFjNsj+2CtT2o1U53U14OQSbR
-	sbxyHBU8HD7IL5xmEd1F63oRcyA7+E+2oLWzEw8z8HHTaIXXJCnoN9uW6EV0HAuNIn6uKgLHfhmdt
-	6DeZRERi0afizQ8fCYQAYNvWnmnHNoMrMtONmLTLP1fSzzr2wCDZy9dsbrQTnPbzOjeWmYMxO2o7V
-	3J6NGyaMhAC8/K6QLjvHgrnvJTfiN+rX+wvW4M0JAi3bHa91v0WnMeHnaVrVXKKjjfGm9//5avZJU
-	kx+oIf8/NOEVf8Pb48zg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QFMStFCl8DZUgi6q26bJB9qaNobkyuomeshqkHL2fAI=; b=khX+VrFSToXo7b
+	zpzTrLO6uuPBGcuJ8Vb4ZP6o+UdO0G3Kwl4LmVs6rzd5H5hJ7BtCkRzex5K1N9Ksvysho9OfHJU5N
+	x6q9Oo8j7Nhw4vWV2ZvKuohC5QlzfmFzo84HcmP4vAEq2ZLeV/T/S/wLaWpYBo4pP579IoH1+OYO6
+	gMXg72vf06XAiO7j7g5ecD+rMz+lUKOpLfRtITk3Y4D7qOHd+2WaF4LJ8oQp9L0iLuN7BvUKSviuh
+	VsXO1C0pKkvGF+UMtYVm0WHuo+Gci8WQpbzTty3aBGnObXqyFoiK4PTsxgKO80/dmKMjypk6EC1Yw
+	lx7guLCSVXCJALDC+mYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD8MA-00000001o8U-3oir;
-	Thu, 08 May 2025 21:00:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uDAT1-00000001xzF-1ff8;
+	Thu, 08 May 2025 23:15:51 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD8M8-00000001o7C-1IlJ
-	for linux-rockchip@lists.infradead.org;
-	Thu, 08 May 2025 21:00:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746738033;
-	bh=fRvyqkKKyg7hRmshz5UB6TzRvXuXYDOyDjxC4PJ64uI=;
-	h=From:Date:Subject:To:Cc:From;
-	b=L0UFw/an9E94NuPivotcoiUTQlTk6wFHqpOEp/9p9buT9MPxM0ytB9sLGUR9uLGdK
-	 BsFOfKnFPzYx8J6ZE4abM9nlENISb70VeAmJCk1QseFkyUGlJ28LM3ItYloDplZZOR
-	 QkLjjPwOZIvL3hTwRHD54WE7Q+/IHUWthCEFvBtdw3yJeb3cTlRyf54iB9TtX6TTIR
-	 lfdXlyNt2q0ewXYjiarsIecUfu584cgahtqf+SKBfVTAAljj+iaZF4NISm254pykW7
-	 FVFroxFMJAtU5P1hKoPxPA0IpmI+d7q7ZPoW3cDQwYqIyCbt3FR0BIkrbq1Gbo3tJL
-	 serpr6HJ/9JRw==
-Received: from [192.168.13.3] (unknown [IPv6:2606:6d00:15:ec4::c73])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 207F417E078A;
-	Thu,  8 May 2025 23:00:32 +0200 (CEST)
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Date: Thu, 08 May 2025 17:00:15 -0400
-Subject: [PATCH] media: rkvdec: Restore iommu addresses on errors
+	id 1uDAR1-00000001xjQ-20HA;
+	Thu, 08 May 2025 23:13:49 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 5FCE826161;
+	Fri,  9 May 2025 01:13:42 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HQQXvO6tkiyE; Fri,  9 May 2025 01:13:41 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1746746021; bh=bB3j8fb6z811VpRpryPJkvawI3jg6GwtmMHB9Bn3MXQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=ZWSyrQuDh5IumxGz2OmiGWHrjY9wXY9i2F/vkQhU93LaOxvGebq9SifRwzhWk1e+a
+	 /BCMa9uycuIDQiRlie6FoiyqeYGEwyz9K5Qb/etHmQJ8F0BBbTEd9B1eu/0GPen1Je
+	 40bE/cwhkhAWP3IM91TNH0Py/q1Bqxcda/4stYi3S9RoI3C5WgLXHOfzMmdfTetG1N
+	 Wthk5CuMo78/PHYXtNtaO9hu/BLtEphcec5uWxKm06pAJbgSqKT3jCSnFom9XsFgTK
+	 nyMKN+AGLKfcErTnNtuBj61JeG8QwuQcjvayOpIn+mhVaj9U9RHCj48njfqS8jCbwq
+	 BXHAC7VmzKmuA==
+Date: Thu, 8 May 2025 23:13:25 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Shresth Prasad <shresthprasad7@gmail.com>,
+	Chukun Pan <amadeus@jmu.edu.cn>, Jonas Karlman <jonas@kwiboo.se>
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 4/5] phy: rockchip: naneng-combphy: Add RK3528 support
+Message-ID: <aB06lQs9d0q8pMU_@pie.lan>
+References: <20250508134332.14668-2-ziyao@disroot.org>
+ <20250508135307.14726-1-ziyao@disroot.org>
+ <5349721.GXAFRqVoOG@phil>
 MIME-Version: 1.0
-Message-Id: <20250508-rkvdec-iommu-reset-v1-1-c46b6efa6e9b@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAF8bHWgC/x3MSQqAMAxA0atI1gbqVKpXERfaRg3iQKoiFO9uc
- fkW/wfwJEwemiSA0M2e9y0iSxOwc79NhOyiIVd5pSplUJbbkUXe1/VCIU8nOtPXejBloa2CGB5
- CIz//tO3e9wOpzlkwZAAAAA==
-X-Change-ID: 20250508-rkvdec-iommu-reset-d8a96b8436c0
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
- kernel@collabora.com, Detlev Casanova <detlev.casanova@collabora.com>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-X-Mailer: b4 0.14.2
+Content-Disposition: inline
+In-Reply-To: <5349721.GXAFRqVoOG@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_140036_512528_55495B53 
-X-CRM114-Status: GOOD (  18.25  )
+X-CRM114-CacheID: sfid-20250508_161347_928401_E198EAC7 
+X-CRM114-Status: GOOD (  17.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,134 +80,109 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On errors, the rkvdec chip self resets. This can clear the addresses
-programmed in the iommu. This case is signaled by the
-RKVDEC_SOFTRESET_RDY status bit.
+On Thu, May 08, 2025 at 07:26:13PM +0200, Heiko Stuebner wrote:
+> Am Donnerstag, 8. Mai 2025, 15:53:06 Mitteleurop=E4ische Sommerzeit schri=
+eb Yao Zi:
+> > Rockchip RK3528 integrates one naneng-combphy that is able to operate in
+> > PCIe and USB3 mode. The control logic is similar to previous variants of
+> > naneng-combphy but the register layout is apperantly different from the
+> > RK3568 one.
+> > =
 
-Since the iommu framework does not have a restore functionality, and
-as recommended by the iommu subsystem maintainers, this patch
-restores the iommu programming by attaching and detaching an empty
-domain, which will clear and restore the default domain.
+> > Signed-off-by: Yao Zi <ziyao@disroot.org>
+> > ---
+> >  .../rockchip/phy-rockchip-naneng-combphy.c    | 180 +++++++++++++++++-
+> >  1 file changed, 179 insertions(+), 1 deletion(-)
+> > =
 
-Suggested-by: Detlev Casanova <detlev.casanova@collabora.com>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
- drivers/staging/media/rkvdec/rkvdec.c | 43 +++++++++++++++++++++++++++++------
- drivers/staging/media/rkvdec/rkvdec.h |  1 +
- 2 files changed, 37 insertions(+), 7 deletions(-)
+> > diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drive=
+rs/phy/rockchip/phy-rockchip-naneng-combphy.c
+> > index 1d1c7723584b..7c92f7ac3c7f 100644
+> > --- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> > +++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> > @@ -20,7 +20,40 @@
+> >  #define REF_CLOCK_25MHz			(25 * HZ_PER_MHZ)
+> >  #define REF_CLOCK_100MHz		(100 * HZ_PER_MHZ)
+> >  =
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index dd7e57a902640d363d26be887cb535c2668d5b15..38043b1877e221db58f5834ba51e085cf9127e73 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -11,6 +11,7 @@
- 
- #include <linux/clk.h>
- #include <linux/interrupt.h>
-+#include <linux/iommu.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
-@@ -1000,24 +1001,42 @@ static void rkvdec_v4l2_cleanup(struct rkvdec_dev *rkvdec)
- 	v4l2_device_unregister(&rkvdec->v4l2_dev);
- }
- 
-+static void rkvdec_iommu_restore(struct rkvdec_dev *rkvdec)
-+{
-+	if (rkvdec->empty_domain) {
-+		/*
-+		 * To rewrite mapping into the attached IOMMU core, attach a new empty domain that
-+		 * will program an empty table, then detach it to restore the default domain and
-+		 * all cached mappings.
-+		 * This is safely done in this interrupt handler to make sure no memory get mapped
-+		 * through the IOMMU while the empty domain is attached.
-+		 */
-+		iommu_attach_device(rkvdec->empty_domain, rkvdec->dev);
-+		iommu_detach_device(rkvdec->empty_domain, rkvdec->dev);
-+	}
-+}
-+
- static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
- {
- 	struct rkvdec_dev *rkvdec = priv;
-+	struct rkvdec_ctx *ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
- 	enum vb2_buffer_state state;
- 	u32 status;
- 
- 	status = readl(rkvdec->regs + RKVDEC_REG_INTERRUPT);
--	state = (status & RKVDEC_RDY_STA) ?
--		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
--
- 	writel(0, rkvdec->regs + RKVDEC_REG_INTERRUPT);
--	if (cancel_delayed_work(&rkvdec->watchdog_work)) {
--		struct rkvdec_ctx *ctx;
- 
--		ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
--		rkvdec_job_finish(ctx, state);
-+	if (status & RKVDEC_RDY_STA) {
-+		state = VB2_BUF_STATE_DONE;
-+	} else {
-+		state = VB2_BUF_STATE_ERROR;
-+		if (status & RKVDEC_SOFTRESET_RDY)
-+			rkvdec_iommu_restore(rkvdec);
- 	}
- 
-+	if (cancel_delayed_work(&rkvdec->watchdog_work))
-+		rkvdec_job_finish(ctx, state);
-+
- 	return IRQ_HANDLED;
- }
- 
-@@ -1085,6 +1104,13 @@ static int rkvdec_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
-+	if (iommu_get_domain_for_dev(&pdev->dev)) {
-+		rkvdec->empty_domain = iommu_paging_domain_alloc(rkvdec->dev);
-+
-+		if (!rkvdec->empty_domain)
-+			dev_warn(rkvdec->dev, "cannot alloc new empty domain\n");
-+	}
-+
- 	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
- 
- 	irq = platform_get_irq(pdev, 0);
-@@ -1124,6 +1150,9 @@ static void rkvdec_remove(struct platform_device *pdev)
- 	rkvdec_v4l2_cleanup(rkvdec);
- 	pm_runtime_disable(&pdev->dev);
- 	pm_runtime_dont_use_autosuspend(&pdev->dev);
-+
-+	if (rkvdec->empty_domain)
-+		iommu_domain_free(rkvdec->empty_domain);
- }
- 
- #ifdef CONFIG_PM
-diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
-index 6f8cf50c5d99aad2f52e321f54f3ca17166ddf98..0eb3fd598664bc5af19de120ff6efac13417541f 100644
---- a/drivers/staging/media/rkvdec/rkvdec.h
-+++ b/drivers/staging/media/rkvdec/rkvdec.h
-@@ -105,6 +105,7 @@ struct rkvdec_dev {
- 	void __iomem *regs;
- 	struct mutex vdev_lock; /* serializes ioctls */
- 	struct delayed_work watchdog_work;
-+	struct iommu_domain *empty_domain;
- };
- 
- struct rkvdec_ctx {
+> > -/* COMBO PHY REG */
+> > +/* RK3528 COMBO PHY REG */
+> > +#define RK3528_PHYREG6				0x18
+> > +#define  RK3528_PHYREG6_PLL_KVCO		GENMASK(12, 10)
+> > +#define   RK3528_PHYREG6_PLL_KVCO_VALUE		0x2
+> > +#define  RK3528_PHYREG6_SSC_DIR			GENMASK(5, 4)
+> > +#define   RK3528_PHYREG6_SSC_UPWARD		0
+> > +#define   RK3528_PHYREG6_SSC_DOWNWARD		1
+> > +#define RK3528_PHYREG40				0x100
+> > +#define  RK3528_PHYREG40_SSC_EN			BIT(20)
+> > +#define  RK3528_PHYREG40_SSC_CNT		GENMASK(10, 0)
+> > +#define   RK3528_PHYREG40_SSC_CNT_VALUE		0x17d
+> > +#define RK3528_PHYREG42				0x108
+> > +#define  RK3528_PHYREG42_CKDRV_CLK_SEL		BIT(29)
+> > +#define   RK3528_PHYREG42_CKDRV_CLK_PLL		0
+> > +#define   RK3528_PHYREG42_CKDRV_CLK_CKRCV	1
+> > +#define  RK3528_PHYREG42_PLL_LPF_R1_ADJ		GENMASK(10, 7)
+> > +#define   RK3528_PHYREG42_PLL_LPF_R1_ADJ_VALUE	0x9
+> > +#define  RK3528_PHYREG42_PLL_CHGPUMP_CUR_ADJ	GENMASK(6, 4)
+> > +#define   RK3528_PHYREG42_PLL_CHGPUMP_CUR_ADJ_VALUE 0x7
+> > +#define  RK3528_PHYREG42_PLL_KVCO_ADJ		GENMASK(2, 0)
+> > +#define   RK3528_PHYREG42_PLL_KVCO_ADJ_VALUE	0x0
+> > +#define RK3528_PHYREG80				0x200
+> > +#define  RK3528_PHYREG80_CTLE_EN		BIT(17)
+> > +#define RK3528_PHYREG81				0x204
+> > +#define  RK3528_PHYREG81_CDR_PHASE_PATH_GAIN_2X	BIT(5)
+> > +#define  RK3528_PHYREG81_SLEW_RATE_CTRL		GENMASK(2, 0)
+> > +#define   RK3528_PHYREG81_SLEW_RATE_CTRL_SLOW	0x7
+> > +#define RK3528_PHYREG83				0x20c
+> > +#define  RK3528_PHYREG83_RX_SQUELCH		GENMASK(2, 0)
+> > +#define   RK3528_PHYREG83_RX_SQUELCH_VALUE	0x6
+> > +#define RK3528_PHYREG86				0x218
+> > +#define  RK3528_PHYREG86_RTERM_DET_CLK_EN	BIT(14)
+> =
 
----
-base-commit: 48dbb76cef65fabaa3ac97461eda90495e954ecd
-change-id: 20250508-rkvdec-iommu-reset-d8a96b8436c0
+> I'd think staying with one layout would be best, so not doing this
+> indentation here. Instead maybe follow the other ones like
+
+Though seems more clear, it's reasonable to keep the style consistent.
+
+Will change it in v2, thanks.
+
+> #define RK3528_PHYREG6				0x18
+> #define RK3528_PHYREG6_PLL_KVCO		GENMASK(12, 10)
+> #define RK3528_PHYREG6_PLL_KVCO_VALUE		0x2
+> #define RK3528_PHYREG6_SSC_DIR			GENMASK(5, 4)
+> #define RK3528_PHYREG6_SSC_UPWARD		0
+> #define RK3528_PHYREG6_SSC_DOWNWARD		1
+> =
+
+> #define RK3528_PHYREG40				0x100
+> #define RK3528_PHYREG40_SSC_EN			BIT(20)
+> #define RK3528_PHYREG40_SSC_CNT		GENMASK(10, 0)
+> #define RK3528_PHYREG40_SSC_CNT_VALUE		0x17d
+> =
+
+> ...
+> =
+
+> i.e. register + bits + blank line
+> =
+
+> other than that
+> =
+
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> =
+
+> =
+
 
 Best regards,
--- 
-Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
+Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
