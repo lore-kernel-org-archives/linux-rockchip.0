@@ -4,80 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91FCCC3ABC0
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 17:53:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70611C3ABC0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 17:57:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vy9n9f2CTR0X693I+Q3klPITkRkDPOAmTOci3aAEpgs=; b=osiITZpb4wMR5M
-	a5XBaSvbkgTXxsQDUYj7M+chGZMVL2YxO4XhsYbCF9d9Jd75uUZI39+UgZb5Z8k0q/1zsX0nQ6ecc
-	gtB9tSJvromULxFYfdRE3aM+IK6ikf8JuMgTJ7gytMnm84plGijkGSbSuv/O5CqkSy1aZGLeNLJPB
-	vMzvS+mb5MwlijSuLEKtstCI4V/VApuNBO/x+z5LxSR0UB/jPq2sP6chO8KLPV8jTbMaLVBCer3yT
-	tbflJuRsTpHTtyHAK0RFtaz5jmpNV451NiHsBL3iu/C+az60qQZr8mGiXvrMYQt96GTvgQ+fv721S
-	RI+fp7yImjMOPapILo1g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MX5aCt+BklfBcG79MkEB7JvysvzTeghEkhrqceI6JpI=; b=FWg9tOWOoBiHjI
+	VhBE7KP9g0T98YkTwx4/VTgQSi0TuEzJVtNUqnbffgbe0gIVKpFGdDFPcj5/TDvIjQLRl/diDhiWn
+	1lXsh1iQXOTC8GuOd51Pqv3RZbemiwKpOLLTWrk/btVzit6re3WlVuGCxXryLWo5gzRkIAz7gm47g
+	vp3qp4FwPvx+rAMv0mU6b1amfUqGRIDDkxwjgVDsC4VPORHjD0i/mY8TYjDAfzAsUm9+VZtYGqFCa
+	j6wj1z0cQRbt9UrT8M5AnSC2SwzYldEyBnVpmGraaO5UdLO9WTuy+gyeRj2TP9zib5O/lerFvmtsV
+	pku4tbwAR6H1Y0ou1c6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD5Qm-00000001TNk-16H2;
-	Thu, 08 May 2025 17:53:12 +0000
+	id 1uD5Ue-00000001U0B-0mrS;
+	Thu, 08 May 2025 17:57:12 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD5Mr-00000001SlM-44JM;
-	Thu, 08 May 2025 17:49:11 +0000
+	id 1uD5Ms-00000001SlP-0YfF;
+	Thu, 08 May 2025 17:49:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1746726547;
-	bh=/RSzOpkRHYZYYRmKtWvfee+PuCVMjJhWFvyt+KFRdsg=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=BHI0Dz1CNp33+w1hrp5zftw/l/K9qp5/Mr83wcnDBk4zRHJjfmniGvxFGpRbslv+k
-	 1hZXEtyjd6/lqQFeYGPsYHsU7yPok408T/Pxb4+F6a2tfLZT3ajFR4bdregq8/w/zs
-	 eLFn9zG08HBYmAuhF5UAaujy/n00iXEmjthI4CnNWMwx6QvphbhwM0cXlcxEhZHQmc
-	 fgfag1eQFn6CM5yoDag4a9U4ULomcg6dFTP1trHcmjvPtiYBXsGlZfZZvLvoY7FIHH
-	 G0Izc1UIPJSoaZUYuW1f/2K2dB0SteJT8vEqwOy6kO73mA94Z5gCb6reNqaEXaloei
-	 d51+ygyLkbTqA==
+	bh=NAfI4J5LptvSmMZm3C5+baXygHpHYNG+mAVX5QfCyZg=;
+	h=From:Subject:Date:To:Cc:From;
+	b=g7HvV+0bL/+rYrmQeg8+mr+fYR0QVGhyS3lrX8dgdgV5qke/DE47+z2nASEU26q60
+	 wd67GQCLu5zIXsqXZpzQ1B6GwTGtMNcrSRUE/yydkv0nQt5F7FKnNSB0NyULVB7ByT
+	 42iM1uLL5lnPRp95IwNQDHWQj2B1qTIPwFiDKszivgJnFJSP7uefYVdT3VJwPS+ITp
+	 UNePn9/Mwe5irQA/rObiOcM2/uRCXuN/obQ2AVWX8jHfa0/6yyuNVAoVCUc9zsg6LI
+	 dw50P3qTuAe6sqGpwcu67e11Zgf3TJlorc+ot7FEyils7AcaQAhJgfQBA7rKlpqfXh
+	 V0gLTK+7fHuOw==
 Received: from jupiter.universe (dyndsl-091-248-213-080.ewe-ip-backbone.de [91.248.213.80])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C346417E07E4;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C03DF17E0630;
 	Thu,  8 May 2025 19:49:07 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 734E8480044; Thu, 08 May 2025 19:49:07 +0200 (CEST)
+	id 6ED26480038; Thu, 08 May 2025 19:49:07 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 08 May 2025 19:48:53 +0200
-Subject: [PATCH v2 4/5] arm64: dts: rockchip: add Rock 5B+
+Subject: [PATCH v2 0/5] arm64: dts: rockchip: add ROCK 5B+ support
+Date: Thu, 08 May 2025 19:48:49 +0200
+Message-Id: <20250508-rock5bp-for-upstream-v2-0-677033cc1ac2@kernel.org>
 MIME-Version: 1.0
-Message-Id: <20250508-rock5bp-for-upstream-v2-4-677033cc1ac2@kernel.org>
-References: <20250508-rock5bp-for-upstream-v2-0-677033cc1ac2@kernel.org>
-In-Reply-To: <20250508-rock5bp-for-upstream-v2-0-677033cc1ac2@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAIHuHGgC/4WNQQ6CMBBFr0Jm7Zi2WBVW3sOwoHQKDUrJFImG9
+ O5WLuDyveS/v0Ek9hShLjZgWn30YcqgDgV0Qzv1hN5mBiWUFqU6IYdu1GZGFxhfc1yY2ic6e9V
+ GCKOr0kCezkzOv/fsvck8+LgE/uwvq/zZP8FVosCzkheyTmojq9tIPNHjGLiHJqX0BQTCuTi5A
+ AAA
+X-Change-ID: 20250324-rock5bp-for-upstream-fd85b00b593b
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ FUKAUMI Naoki <naoki@radxa.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4437; i=sre@kernel.org;
- h=from:subject:message-id; bh=/RSzOpkRHYZYYRmKtWvfee+PuCVMjJhWFvyt+KFRdsg=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGgc7pPmFw9DAZz3CgUVoMPVMcOZ9Rv6j92CW
- ID9Vkj83bZYnIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJoHO6TAAoJENju1/PI
- O/qaQyEP/38TeLSm+D0HLXMIXQ8Zcr04VABhMGa0s3xSRO0FR+qUwZ+wjJCIVEhqMZ9fXazW5AF
- 6jvWvYS8uOToCTsZDb+VdEWPN9uQ2JdPflpK+xflBgsHlr+MxrV3nkZH6qLYF8wbi2oPsXmQltD
- 8sgH8dbFv4Mh4uGyZFqNbQ7JKxVa7C5vHxm5/3QIPA7upJ3k/H3d9o4IVlp9wFzqaCCXy5QrSj+
- Kj6SZWmoKKqgCkLDJ0ubOS/eUwIKYdaqbo0eXMjtM0lB1VK40+oo21QtFQmLei5wzDMClLolr58
- PPfu3Cd0vccD6wubNsTQbS1XujvZGa7JvE+SbGNUOaTfIZwLihDIXJPazkkCHX3XfqtCLKVZFhP
- +rLaWP7plKDgquWIFiTzIgpuf+nTzmrnlJz+jXOUunB6Y9MCijX5gTKlfcqXiLvTTSHlHwRWedp
- nqKUH49sVd3Hc247fY5Xe/Ts5NqPx2Af1p2Q6okbtLbney+ZjK201pHZU2jHUfHmYv4P3kOLazn
- qKE3LD+TsjPDbdnkrE7ekept+hlLR2e5GH6JOMD+ZDMos4hpVEW9TTmeiSq3q2NuKQi4+4RI+7I
- 0O45MRgE00PEMPMYc6WgnkcH79gYX2DonTOD3BSz+9kk8S3MBzYb+55qEqOO2t6M3pufizH9J/V
- 3Rluqq6awZKprTZbeZRk7nA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1633; i=sre@kernel.org;
+ h=from:subject:message-id; bh=NAfI4J5LptvSmMZm3C5+baXygHpHYNG+mAVX5QfCyZg=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGgc7pNYkSuDchJEatNd0kHih4w1E1FNCi8z8
+ J+oZc53rkitRYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJoHO6TAAoJENju1/PI
+ O/qaTG4P/AlMrxTqbu1Tjv6uZNdRO9KwvrMXSdO7m4r8hbdXMAkFgzBGfF3hH3S7ByBrmpRyKCC
+ 028JlVG31cMO6LXLn7GASt1VX6kJbg/G0e/DA0FzaIiRiZrs3AgDm9buHNetyFDOdnDnn2Skry2
+ 2vCY/YORkR+mqQMJk995wVKYhNcP4sPTTK8QhjpawOTcVaNkQwuSZJSW5YfY2/xyniF1Z10W/Ah
+ R1DRLsIBVY67mZfUJkVB32tR/vgbTtYPk0RbA+H4liHCM34pDhdB0Ktwj7zY2s4Cg+d/MFZWyrZ
+ FGOshr312YAJZO8wUGVvWpIChXX04BPhH4P7fHi8on29YXFiHwwtac7mqxNEauCkUOa8Fru3kHx
+ bfD+B3YTYgqP4FqIQwdPkL6KTS0PC5oDjAJRRScvZHZpDCgPU1DLu4bo+Yk+iAzluXvQiIC8r9i
+ CUu5KJjc88RLWOpme7eBtJTWOApr5L++MGFYh/w7kI1XXLO9TqTaifj4a+OYa7NRcmW9Gov+lXa
+ l1duk50ZautlA3Ht+dFgkrDaYHW2admPvp93mzadJbTnDSg+04OxBIiv//YtZECzr53CdbvJrx8
+ UEvjECeUNP4OoTNpeMdCveSprCqLthW4cln9XlXF9iVKGQv8ADzVi558mZjZD7S53MOUy6LVY64
+ B3GZgKXHEj8LBw6wmh1Irbw==
 X-Developer-Key: i=sre@kernel.org; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_104910_164948_EFF00D9C 
-X-CRM114-Status: GOOD (  15.40  )
+X-CRM114-CacheID: sfid-20250508_104910_355672_CA030512 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,160 +99,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add ROCK 5B+, which is an improved version of the ROCK 5B with the
-following changes:
+This series adds support for the ROCK 5B+, which (as the name suggests)
+is an improved version of the ROCK 5B. It also adds initial USB-C
+support for both the ROCK 5B and the 5B+.
 
- * Memory LPDDR4X -> LPDDR5
- * HDMI input connector size
- * eMMC socket -> onboard
- * M.2 E-Key is replaced by onboard RTL8852BE WLAN/BT
- * M.2 M-Key 1x4 lanes is replaced by 2x2 lanes
- * Added M.2 B-Key for USB connected WWAN modules (untested)
- * Add second camera port (not yet supported in upstream Linux)
- * Add dedicated USB-C port for device power (no impact in DT;
-   the existing port has not been changed and the new port is
-   handled by CH224D standalone chip)
+Changes in PATCHv2:
+ - Link to v1: https://lore.kernel.org/r/20250324-rock5bp-for-upstream-v1-0-6217edf15b19@kernel.org
+ - Replaced DT binding patch with the version from NAOKI
+ - Dropped unused pinctrl for vcc5v0_host_en from the shared DT
+ - Moved USB-C SBU DC pins to board specific files, since they differ
+   between Rock 5B and Rock 5B+
+ - Added pinmux for SBU DC pins
+ - Rebased to latest version of Heiko's for-next branch
+ - Disable USB-C on Rock 5B for now
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/Makefile              |   1 +
- .../boot/dts/rockchip/rk3588-rock-5b-plus.dts      | 113 +++++++++++++++++++++
- 2 files changed, 114 insertions(+)
+FUKAUMI Naoki (1):
+      dt-bindings: arm: rockchip: Add Radxa ROCK 5B+
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 7948522cb225cbbe54099fb7537fc70357164f13..7a05bd885d5ecb96c3decbd3f483a6c58b81e0ab 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -165,6 +165,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5-itx.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-video-demo.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
-new file mode 100644
-index 0000000000000000000000000000000000000000..74c7b6502e4dda4b774f43c704ebaee350703c0d
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
-@@ -0,0 +1,113 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+
-+#include "rk3588-rock-5b.dtsi"
-+
-+/ {
-+	model = "Radxa ROCK 5B+";
-+	compatible = "radxa,rock-5b-plus", "rockchip,rk3588";
-+
-+	rfkill-wwan {
-+		compatible = "rfkill-gpio";
-+		label = "rfkill-m2-wwan";
-+		radio-type = "wwan";
-+		shutdown-gpios = <&gpio3 RK_PA6 GPIO_ACTIVE_HIGH>;
-+	};
-+
-+	vcc3v3_4g: regulator-vcc3v3-4g {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio1 RK_PD2 GPIO_ACTIVE_HIGH>;
-+		/* pinctrl for the GPIO is requested by vcc3v3_pcie2x1l0 */
-+		regulator-name = "vcc3v3_4g";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		startup-delay-us = <50000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc3v3_wwan_pwr: regulator-vcc3v3-wwan {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio2 RK_PB1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wwan_power_en>;
-+		regulator-name = "vcc3v3_wwan_pwr";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc3v3_4g>;
-+	};
-+};
-+
-+&gpio0 {
-+	wwan-disable2-n-hog {
-+		gpios = <RK_PB2 GPIO_ACTIVE_LOW>;
-+		output-low;
-+		line-name = "M.2 B-key W_DISABLE2#";
-+		gpio-hog;
-+	};
-+};
-+
-+&gpio2 {
-+	wwan-reset-n-hog {
-+		gpios = <RK_PB3 GPIO_ACTIVE_LOW>;
-+		output-low;
-+		line-name = "M.2 B-key RESET#";
-+		gpio-hog;
-+	};
-+
-+	wwan-wake-n-hog {
-+		gpios = <RK_PB2 GPIO_ACTIVE_LOW>;
-+		input;
-+		line-name = "M.2 B-key WoWWAN#";
-+		gpio-hog;
-+	};
-+};
-+
-+&pcie30phy {
-+	data-lanes = <1 1 2 2>;
-+};
-+
-+&pcie3x2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie3x2_rst>;
-+	reset-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_pcie30>;
-+	status = "okay";
-+};
-+
-+&pcie3x4 {
-+	num-lanes = <2>;
-+};
-+
-+&pinctrl {
-+	wwan {
-+		wwan_power_en: wwan-pwr-en {
-+			rockchip,pins = <2 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pcie3 {
-+		pcie3x2_rst: pcie3x2-rst {
-+			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb {
-+		vcc5v0_host_en: vcc5v0-host-en {
-+			rockchip,pins = <1 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&vcc5v0_host {
-+	enable-active-high;
-+	gpio = <&gpio1 RK_PA1 GPIO_ACTIVE_HIGH>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&vcc5v0_host_en>;
-+};
+Sebastian Reichel (4):
+      arm64: dts: rockchip: move rock 5b to include file
+      arm64: dts: rockchip: move rock 5b to include file
+      arm64: dts: rockchip: add Rock 5B+
+      arm64: dts: rockchip: add USB-C support for ROCK 5B+
 
+ .../devicetree/bindings/arm/rockchip.yaml          |    5 +
+ arch/arm64/boot/dts/rockchip/Makefile              |    1 +
+ .../boot/dts/rockchip/rk3588-rock-5b-plus.dts      |  129 +++
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |  970 +-----------------
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi   | 1082 ++++++++++++++++++++
+ 5 files changed, 1247 insertions(+), 940 deletions(-)
+---
+base-commit: b7caeb9545db25649eda36ce593b70cc2aa804ab
+change-id: 20250324-rock5bp-for-upstream-fd85b00b593b
+
+Best regards,
 -- 
-2.47.2
+Sebastian Reichel <sre@kernel.org>
 
 
 _______________________________________________
