@@ -4,55 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5415BC3ABBF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 May 2025 22:07:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CC11C3ABC0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 06:48:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vtFF8RXDBuGI3t7dbNydgDTxK66MccZHUVPRQ+mSa6c=; b=DBm0s/2a8ac5+1
-	ePd4MzBC6gP1RjczSvxYTc3fzxzZZMJuZCO9KOCY3iDBuX1zGH7aH7ln6Lyz5E7B+F0R31Ewlxs0g
-	N4k1jZtjl0mkfQS6M57BECGTkWZ25TbANw68e/570i0kKFySCfusIat4RB9dUi3jJorj+RRbFTbZ6
-	f6eLggZ3Stn60wHKzwCXE8lCgKK6r3LkMI19WFGWYu9XJIXN1F8PoAY7nsBFXi+DR4OlLNFU4Dx+4
-	GquL1REZoziZzkY1YrPb0LSUGFLHpiLN8SeZRN5yGfDg6pY3h88dkK4CA88HZkitOhyZQL4ZHp1Oo
-	gEM7KWWuKMbk7R3lDzYw==;
+	List-Owner; bh=/P7GXs8hgm+CebfrGvD+ayKkQbbQIAf/L7mVhkDcB0Y=; b=sIYImMGSWJqvq+
+	inZ4FzfCK/yiOH7JXEIQmGTcDF3nGdC44m3pSm/d1ruu9u1rGI6eUl0N4DIoKYor2Ys/i1zoHCp6V
+	DYKJWGLlquRp6v3kQOzPclh2ZQf4xQJOM8rBRltNvpnov4T2yzzjr3SequmTP5w4TL1aN96pyaaq0
+	/TJFBLauQXyiep9SXYYcsIblCzg++ksnVzTC/nrkBWhu91vwEXHPjBds0pLDEEwBL9UhtyW+rz9g2
+	pwGqdzeEuPC6b04s9hiauUF/5rstB4BsoHLDwsi+MDvT08CjohVY+AkPbjp+6KfriISMcwQA6LV4K
+	+ydTr1H+qsQ4qpYFG4Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCmur-0000000Gqqn-3Q9a;
-	Wed, 07 May 2025 22:07:01 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uCv3e-0000000HVZf-3fS6;
+	Thu, 08 May 2025 06:48:38 +0000
+Received: from smtpbguseast1.qq.com ([54.204.34.129])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCmtR-0000000Gqmx-1EPw;
-	Wed, 07 May 2025 22:05:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References;
-	bh=XOOW2EUAAkzOiMNrI7nZRykfkfumE4ulNre1oUwjw0k=; b=srsu48tEVyFTb/Ww1u/Fsaqklb
-	FiffOd40xuLFHK5taN+NUczbm4B/RorVqeYpyXa6uFBK2Dvn+jg9kkOcoK+F3IBoAv1+dBQCqcgAl
-	YUfrtEtrZuzff27EfxNBN1sWBQR6J3hZPzGUmrMxOmZHbSLDcyUlU0KIThbvKwdfU0hyW2pHPpUcI
-	ffI5TmqUg6YjyZYks97r1+myjNybzl0rTd2oPZLv/uttWL2WpJQ2qreLXJMqF0thrE9XGZTn1QVeA
-	JTMWlzCC2Tm358GfqL1X/ZArmyPYvskK9evEFe7uR1Z+g9WSIucQ55MD7ph+9FkjWY6VskTt1yh7u
-	LA1qkblA==;
-Received: from i53875a1d.versanet.de ([83.135.90.29] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uCmtQ-0001z2-33; Thu, 08 May 2025 00:05:32 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts32 changes for 6.16 #1
-Date: Thu, 08 May 2025 00:05:31 +0200
-Message-ID: <22686731.EfDdHjke4D@diego>
-MIME-Version: 1.0
+	id 1uCuzj-0000000HV10-2Z3k;
+	Thu, 08 May 2025 06:44:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1746686610;
+	bh=0pI2iREWW5cC2LwJLtCoMOYZhwY83h/z7B9+8q2WvaM=;
+	h=From:To:Subject:Date:Message-Id;
+	b=fxXpi/Y5mrjF84OdY3lEuMy2DsWSyvmGZ9xajslWgM+oAfiuAtOb9/FaVyPRZXU3i
+	 B4awaS/VoRGgwCWFohqwr8Ez6DmG6Ctjml33QCmeoLknRvaPJPl4DUQD5NhWLR2y9G
+	 y0LNDZr3mT0bxpl1gmh6gXHYCIBwXOPz/Ij0Jh3k=
+X-QQ-mid: esmtpsz18t1746686608t123d24cd
+X-QQ-Originating-IP: Lb7KIkQyY8JilwbOns5Cl43BA/5Z8/J56hf/m1H92DY=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Thu, 08 May 2025 14:43:26 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 4859509138922957751
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/2] Convert Rockchip CDN DP binding to yaml
+Date: Thu,  8 May 2025 14:43:02 +0800
+Message-Id: <20250508064304.670-1-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+X-QQ-SENDSIZE: 520
+Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrsz:qybglogicsvrsz4a-0
+X-QQ-XMAILINFO: N3IC8um5pMyYiUTB++F8KmGWAz7BbvjjiJvjkp/Emlsn4bb47X4/ZJQi
+	3s93gkfxyyqyBFPaHO95ETcR+vn67It2LfIX0jXKOXkXWHipQnUY61PNk7v42XfLt2bUInW
+	b1CJIGt+gHy+SoabkJiwrra6tQkkj42SpsbbS03vIQR40QiBW1GVfYGJAosQekfFzr+CwRg
+	YwMqWTEMVM4z3suCQIV+m4DDk3oSPaviOUbZJ1dFHZFydMyGXoh3+7d5aTHitLvAonE8QgF
+	jeIEGebHMXzzEwvZ2qy3xzcsPYmyCbRBaWUDR/wovsrryAiK1OwxaGgyEjmpSNJL9dxQPQA
+	XIulur70ImXupPMIfD4g/cvF6SxuWkZPkIQkIn9rynumJIkXcJc6mHYGoz/qOuQHDdQ7SbN
+	F+CPCIanHXerXlwJOJhajxzhhBnPhbKASftNDzq9ZD4JfIfYape0q0ezZ8Ar9nrYrucZ/4a
+	3FwGKtAOVO01z2DpkBTgYShC8gJm4yzBkVDzRRnIlqQwpjht0zILw6So2G0RqS8mSz7aYIK
+	0ZXduco+VDbsd63wAHnLfiO659D6971lm00O1i7vpHIvVZ0rFXSEA76N/gJCjGUBk66yU16
+	h0hKvIeFpl7ilnJ24FNO8J7buPsBUNIPooKHKJmAWWLOAxB/iUPGGVcchiLR0YPtt1a2tG6
+	bUMR4pcsQhe+Pw4KCVpde0oz4eccAOhnEQg2MDPF6m4Q7lW0mcXPAJSpr/gfICE0bHHRA7R
+	BnaKLEyJ+IWakDzca2dX0+tz15yetBk95GlTAx58Emd25MrQ9rda/6yHJQrE3wS22Sy6+ZI
+	SRWByavJ1v1Z/xKQNObNDN5Oht3I7KmAwqiz0IhA9mpdPExOZZ4rzZe1BAYvukfHNXUxz7F
+	e2tfrMTeBn6x31JRJjWXREaL5MK6BBQqdCtwtXoCzkeA7QsaqWvgFrbT/Vh4XCcYyRgX8cW
+	VoHl3OzAjNz5v0Q==
+X-QQ-XMRINFO: MPJ6Tf5t3I/ycC2BItcBVIA=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250507_150533_334625_EA277CC2 
-X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-CacheID: sfid-20250507_234436_153964_1379A00F 
+X-CRM114-Status: UNSURE (   8.78  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -65,52 +98,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 0af2f6be1b4281385b618cb86ad946eded089ac8:
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-  Linux 6.15-rc1 (2025-04-06 13:11:33 -0700)
+This series convert cdn-dp-rockchip.txt to yaml.
 
-are available in the Git repository at:
+PATCH 1 try to improve coding style on the existing rk3399 cdn-dp
+node.
+PATCH 2 try to convert cdn-dp-rockchip.txt to yaml.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.16-rockchip-dts32-1
+Tested with:
 
-for you to fetch changes up to c895c32bf1ce90839fc525c5d23cbf867ebe519a:
+1. make ARCH=arm64 dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip,cdn-dp.yaml
 
-  ARM: dts: rockchip: enable Mali gpu on rk3066 marsboard (2025-05-05 10:20:11 +0200)
-
-----------------------------------------------------------------
-Graphics support for the old rk3066-marsboard (hdmi + Mali400 gpu),
-rk3036 improvements (mmc asliases, hdmi refclk), dropping of
-redundant clock-latency props.
-
-----------------------------------------------------------------
-Andy Yan (3):
-      ARM: dts: rockchip: Add aliases for rk3036-kylin MMC devices
-      ARM: dts: rockchip: Add ref clk for hdmi
-      Revert "ARM: dts: rockchip: drop grf reference from rk3036 hdmi"
-
-Heiko Stuebner (2):
-      ARM: dts: rockchip: enable hdmi on rk3066 marsboard
-      ARM: dts: rockchip: enable Mali gpu on rk3066 marsboard
-
-Rob Herring (Arm) (1):
-      ARM: dts: rockchip: Drop redundant CPU "clock-latency"
-
- arch/arm/boot/dts/rockchip/rk3036-kylin.dts      |  6 ++++
- arch/arm/boot/dts/rockchip/rk3036.dtsi           |  5 ++--
- arch/arm/boot/dts/rockchip/rk3066a-marsboard.dts | 37 ++++++++++++++++++++++++
- arch/arm/boot/dts/rockchip/rk3128.dtsi           |  8 ++++-
- arch/arm/boot/dts/rockchip/rk3188.dtsi           |  1 -
- arch/arm/boot/dts/rockchip/rk322x.dtsi           |  1 -
- arch/arm/boot/dts/rockchip/rk3288.dtsi           |  5 +---
- arch/arm/boot/dts/rockchip/rv1108.dtsi           |  1 -
- 8 files changed, 54 insertions(+), 10 deletions(-)
+2. make ARCH=arm64 dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip,cdn-dp.yaml
 
 
+Chaoyi Chen (2):
+  arm64: dts: rockchip: Improve coding style for rk3399 cdn_dp
+  dt-bindings: display: rockchip: Convert cdn-dp-rockchip.txt to yaml
+
+ .../display/rockchip/cdn-dp-rockchip.txt      |  74 ---------
+ .../display/rockchip/rockchip,cdn-dp.yaml     | 148 ++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-base.dtsi |  10 +-
+ 3 files changed, 157 insertions(+), 75 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,cdn-dp.yaml
+
+--
+2.49.0
 
 
 _______________________________________________
