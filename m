@@ -4,53 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30ED0C3ABBE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 15:20:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCC16C3ABBE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 May 2025 15:22:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UC834Mr9GS1cWrdqvu17jPbwjPjnbC6QKVFuA0JgPH0=; b=BUiNzKvvaKgdQpwr7KYpTXjzJl
-	qdxzbWPHGuuU1VEG6cv8Unp+cl866tBp7XIdEXafxTMfBIohRflaYHFs8Gn+g3OY3FIlH8ol23L3G
-	2GLNtKFc7UF3xWX7UiR0QlqXNnqO0XpX3u8nMYgGLSkCpBXM7IFbNAlmnWRUky+1osDt1WsUu32CW
-	8ulWviTauC8UoK2ayZ42i5n5u//RELpSUYeOloqpTdzLAgaV2fLY7k8j6TNcv6Q3BLA9gmFeAyNhe
-	nZctq674B5V3OzT9QtHaX+MlUrEAbACYK5fbyHBDK+sFaWjUF8oGLWmWTD8wL4oVPS//pryNcd78Q
-	8vMBwGuQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=b95Ny73UPqKZIG8y6Fvp6nONPe7BSoamew3EL1s+s0U=; b=Gu4WGXIlaxMafl
+	Xep8vnKnnp3pWOnsJsozFZb9udVr4Hab5JKWnU56Qf4SzYwxY9xF5JMhz7AFsUUV+uOBXJaZCjvIw
+	1+1F25MhaXXduI2CNlHjnlh3Zb3U6Sp5o+jt2ujh552VzcK+33BM1gu43gXlidmFGZPVD3A6wthbB
+	ThotoMekyDxiJY9+W723fsqzF23C645MGwt9n6VJT2U95WWe9a7bEmgVC4XHQRnLKI/Ibo0JEIeic
+	fZieghmeS4Xjio4E4123MrbkBU4GqmAprh/XXIVM/eGoQ0fBzK5NeOEs5FPE8FWxyJzyAgbcVSnNM
+	SjmirMrKxqtM+g1EH/0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD32t-000000016ym-2yTd;
-	Thu, 08 May 2025 15:20:23 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uD34o-000000017Nc-45XR;
+	Thu, 08 May 2025 15:22:22 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD2QV-00000000xlZ-2zrt;
-	Thu, 08 May 2025 14:40:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 401E6629DF;
-	Thu,  8 May 2025 14:40:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A725C4CEE7;
-	Thu,  8 May 2025 14:40:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746715241;
-	bh=OPLdpdXnFg1EEql9UQ1QOjqCfF/Fv3byRUuUihhireI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VNSG6AiPbVqEvOBkAdqaTDFy/d5EH5LlicjtO/KDj261y3ToJZKm17q5e5lERjZXk
-	 YGCUwkxNWd/gq7INc0K7lX22GJb6OYtvEFXKkAzdmqzsdIlqxvsY3PMyz5yeHYIO0m
-	 gGuwgbnHeiXXRozzwgTlMG/dEij4LRQeKDZ58tSXy855l/CL1RjxhZ6cYxc8pgFrOV
-	 +xn68RQ/13ESXfksbJdGI7oK2pXIggKOXnQT52qivcJtw7DzCk/Nea7jqEEawreEz6
-	 XVaAfde867eL/MsR2+xRdMKmppjsrizdax57r15uTtiCCupIsmqmPEphw0EhJDwvew
-	 Qy9NqFXSn68Sg==
-Date: Thu, 8 May 2025 15:40:36 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Yao Zi <ziyao@disroot.org>
-Subject: Re: [PATCH 1/5] dt-bindings: soc: rockchip: Add RK3528 pipe-phy GRF
- syscon
-Message-ID: <20250508-battering-uncured-476f83a5acce@spud>
-References: <20250508134332.14668-2-ziyao@disroot.org>
- <20250508134332.14668-3-ziyao@disroot.org>
+	id 1uD2WR-00000000yy6-1Ofa;
+	Thu, 08 May 2025 14:46:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1746715602; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=gOgETbXPdjD9sLzY1UiXI2wgJt/e+pCrZbIV/+4fJ4Pbeq93eSIbG3OUNJOoya5QVFUsk8W53l+waxHm7mpRl0XXaHW0nah29+7/laHfwJH1BHewn/K842SMT1PNqZj+zSblKwGw5O8qxJ6sD8K337SEtoxIXRk5COMNfeWpfT8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1746715602; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=DVeaMIyud27ACIV2eA06gPP2ZeLSokpK9pE1Ha/4hoc=; 
+	b=NGgGe93I/YCs12ddBhPrGOykk3RHe7X9GYml9NzbfJUH6wGROI63Pz84OQ7dzBp1L4XUSzKKIIbyaYIOTiVtdZMBVVLRyw5XjxZwNp/44sBjfwxG00DCM5kmONTDcaUHkOV09kODtnP24cz+1Lr2oBumwSZcB4dHY0U4nBtKDa8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1746715602;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=DVeaMIyud27ACIV2eA06gPP2ZeLSokpK9pE1Ha/4hoc=;
+	b=BVdZ4iOzDUQ6QlTqroB0R1STrdfAESXp0+JIzuZoeVq/xJG+LlAYW1v0o/2dyE19
+	8EnZaxnyxpRaRnXSOjMj6kpYTk66Z4T9bUXjABzB0PG22sxLilrqWo2QJVekS5Su8KI
+	+k6AxV1YVD4KRckZdYrYKcXKYwY0sDUvonKbFVk8=
+Received: by mx.zohomail.com with SMTPS id 1746715600309765.3309141837468;
+	Thu, 8 May 2025 07:46:40 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH 2/5] arm64: dts: rockchip: move rock 5b to include file
+Date: Thu, 08 May 2025 16:46:35 +0200
+Message-ID: <4719179.LvFx2qVVIh@workhorse>
+In-Reply-To: <20250324-rock5bp-for-upstream-v1-2-6217edf15b19@kernel.org>
+References: <20250324-rock5bp-for-upstream-v1-0-6217edf15b19@kernel.org>
+ <20250324-rock5bp-for-upstream-v1-2-6217edf15b19@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20250508134332.14668-3-ziyao@disroot.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250508_074651_445083_D427EF8C 
+X-CRM114-Status: GOOD (  16.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,76 +75,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Frank Wang <frank.wang@rock-chips.com>, linux-rockchip@lists.infradead.org, Jonas Karlman <jonas@kwiboo.se>, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Shresth Prasad <shresthprasad7@gmail.com>, Vinod Koul <vkoul@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>, linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============4440327921224924952=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============4440327921224924952==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="aDgo01QbuFP+4Uz9"
-Content-Disposition: inline
-
-
---aDgo01QbuFP+4Uz9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, May 08, 2025 at 01:43:29PM +0000, Yao Zi wrote:
-> Add compatible string for pipe-phy GRF found on RK3528 SoC, which
-> controls misc settings for the integrated naneng-combphy.
->=20
-> Signed-off-by: Yao Zi <ziyao@disroot.org>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
+On Monday, 24 March 2025 18:04:23 Central European Summer Time Sebastian Reichel wrote:
+> Radxa released some more boards, which are based on the original
+> Rock 5B. Move its board description into an include file to avoid
+> unnecessary duplication.
+> 
+> NOTE: this should be merged with the previous commit to ensure
+> bisectability. The rename happens in a separete commit during
+> development because git does not properly detect the rename when
+> the original filename is reused in the same commit. This means
+> 
+> 1. it's a lot harder to review the changes
+> 2. it's a lot harder to rebase the patch series
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
->  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Do=
-cumentation/devicetree/bindings/soc/rockchip/grf.yaml
-> index 2f61c1b95fea..7e9321999435 100644
-> --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> @@ -16,6 +16,7 @@ properties:
->            - enum:
->                - rockchip,rk3288-sgrf
->                - rockchip,rk3528-ioc-grf
-> +              - rockchip,rk3528-pipe-phy-grf
->                - rockchip,rk3528-vo-grf
->                - rockchip,rk3528-vpu-grf
->                - rockchip,rk3566-pipe-grf
-> --=20
-> 2.49.0
->=20
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts  | 52 ++++++++++++++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi | 34 ----------------
+>  2 files changed, 52 insertions(+), 34 deletions(-)
+> 
 
---aDgo01QbuFP+4Uz9
-Content-Type: application/pgp-signature; name="signature.asc"
+Hello,
 
------BEGIN PGP SIGNATURE-----
+this isn't evident from the diff, but the move + these changes keep
+vcc5v0_host_en in pinctrl in the shared .dtsi as far as I can tell. The
+follow-up 5b-plus patch has the correct pinctrl as an override, and so
+does the regular 5b for its respective vcc5v0_host_en, so it can just be
+dropped from the shared .dtsi pinctrl.
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaBzCZAAKCRB4tDGHoIJi
-0hUzAP9/lnZJfUnl5iV9let8e9oK6Y6itm+MEsM7dfEwvDCRAAD6Amozg0CiO/vr
-K6wE/F+QimWIw4q3EHCAHrhp3YSxVAU=
-=axYG
------END PGP SIGNATURE-----
+Additionally, sbu1-dc-gpios and sbu2-dc-gpios need to be moved from the
+shared .dtsi into rk3588-rock-5b.dts. The rest of the usbdp_phy0 node
+is fine to stay in your shared dtsi, but in the follow-up rock-5b-plus.dts
+patch, the rock-5b-plus.dts needs the sbu1 GPIO set to GPIO0 C4 and the
+sbu2 GPIO set to GPIO0 C5.
 
---aDgo01QbuFP+4Uz9--
+Regards,
+Nicolas Frattaroli
 
 
---===============4440327921224924952==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4440327921224924952==--
-
