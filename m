@@ -4,71 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DE1FC3ABCC
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 17:19:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF118C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 17:38:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=y4T3h0zW2CcmKqX6H97nlArYvWQ0ORk87d9ruiAivQA=; b=MEYE4iJQreePf2
-	T0QbEodACCf0XBGHOELl7M8tnwJmJebTkM+F6c33qTY5OPg0RWQFk7LYppf2mHuiGV9CxP9WLEeJk
-	rQYODspZp+S8VSa/bOYE087sJFovSDbR5UEwVljDUoO7Il+8OnqpMFZNng3TFTG17gUiLks/cHALI
-	HaBvx5Tdy8U1sz9xdFizPul2CWo8cUnR5pT98UmIewyxAKrvrN5k8Xc+I0BOXZh77o3n5mT2a+DyQ
-	FhbMVv9gWQQgxCu31lWAy8N89voeub3c/EXlGxNj7P7W2Q11UB+UZYWsB66746HoJPx8E1ykWFkqW
-	qDr7gVv22y0KQ6YhO9TA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zuDgelzjP48lrDeFRg8Ruozi86ZU9HruzaPBDMT7WNI=; b=XdmEjnU5zHg3MFMwhm481peIm0
+	mzr+skUTVUYIeAuh4VQ6Ovjfnk4G+DvdUM3oLKVCzd+xWIbRUtmQl0Cg2pHibgjJ/uikCnl2vCP5F
+	JYnURKeap8TDmx5uiVhKnCwIUVfXSo2q91HRk2gohGePlqvLZP9d5zekJCTgRCR/j67Rn3+NYLs33
+	nmtBdldQ1XEhZO+aYR48mHZHsRGnZgaHC73et1X2MwIouNyLmLZhbgumxB4Duky8k2QlZi/Xi7ITE
+	KG6a8TnynFyf4dRcIkKKN9bgC5z1/AMsYnrHOfrslcqV5HxcwDinInAdwze+oVvIvDy8KG60vIaWA
+	MRM+Kqqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDRO3-00000004QL2-0mC7;
-	Fri, 09 May 2025 17:19:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uDRfb-00000004SVp-2rbA;
+	Fri, 09 May 2025 17:37:59 +0000
+Received: from out-173.mta1.migadu.com ([95.215.58.173])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDPZj-000000044Wa-1DmG;
-	Fri, 09 May 2025 15:23:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=VRcNlZIROkbG0sCWrxKhEWE7NClVs/KiomSYUNRRAb0=; b=neDzpjzXIQfLpAIf3TsVabbdFW
-	bQgxgVZt5j7XnkvVC2LBFmEmjc7P7hQPj28gdKFjTFVO19P+CwGgoOJvKVSHbaGqOF8mR7ug5ZOiU
-	kqmF7qjjoMotvxHsRAbdHPd8PlIyknyprW+0PPcEGhYHzXDjPfh8bZ9ID9/3appf4mbUEPy30VNxy
-	SU+/1UB+huawEEekAUu+6tDC3XxSh4fFcic0vs/zx8mhb/YwvjkSNV1UDKMirwzIoVEkV8G36FKly
-	3qgv4OA+F+26Is4PR/7LHpUmj6FFER7NcrZmdicAAThtVzNzzFskdTVtDhEV2EHqOveR+SrPBgskx
-	gKAhJwGw==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1uDPZg-0000000GIrY-0gWG;
-	Fri, 09 May 2025 15:23:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References;
-	bh=VRcNlZIROkbG0sCWrxKhEWE7NClVs/KiomSYUNRRAb0=; b=SN5O5y33zakZ19sb4IaG/Y8vdy
-	tqV/b9FihN9G8n5yVs6/5n4mIsj5z1cBM5hPU8uCGzwV6mE3YKlSwAeoBXkJlITg7E2fFjObBZJ1+
-	UoS9LoOs+j0QpYnOcjDcyQCDLiCfCv9iqDsDC8zK6to7GUkWP9CDMAxrZsPCbtLPf8UhZmP7dqxBU
-	rN4jYixde5chFIxAZLu3tWFeoQngUIGUPuh4w4VmKfrW10hAUytalukjDsL4TQl8TM0Ufluh+RyNo
-	FiEo6tgQLzGM+AmIBggPT1vbzBJb73Ki4MZ9GWg8ZitNSsxR6U/lhwfz/AX1YgdSEt9HElK4LhEmD
-	lLzGwNoA==;
-Received: from i53875a1d.versanet.de ([83.135.90.29] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uDPZc-0007v0-VF; Fri, 09 May 2025 17:23:41 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: drop wrong spdif clock from edp1 on rk3588
-Date: Fri,  9 May 2025 17:23:29 +0200
-Message-ID: <20250509152329.2004073-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
-MIME-Version: 1.0
+	id 1uDPkN-000000046Uk-0xTE
+	for linux-rockchip@lists.infradead.org;
+	Fri, 09 May 2025 15:34:49 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1746804875;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=K1E2b0XxNtqEsAhxKbHa26ec+Iv+4B3ST0nSXvkyMcE=;
+	b=txjLPg+2r2oCcSAmqMhRMoJ6ogAGxsVdesD30F5X6afQ/G6keHvb8TuZG8TPtcuMozvGZe
+	mSnluLjZf32SfIaFxu2kDCMJdwF5NkV7iI1pmMdBjCKWl8GvSPe9gB7DIrMEQiY4/xw76s
+	vZd3sx72Z/HPVrdL1gWryYxjPr2HZvDyhr/krmQsylu9GGhoaG2khy8Zk+sfCR+wlHEB1E
+	wZmiIhnXtDKkuuqp+YLzVcGVLLjLQ4oZiWjOI8bZQKJAMfsO21Nczv6cRcQA94Bg5XCucw
+	/7q1wq12+OQ3wF4FoP8vshSdux+lhiBfUi5nN/c1XxJYWGUJcEnBKwprc0dCHw==
+Date: Fri, 09 May 2025 17:34:21 +0200
+Message-Id: <D9RQN76VZXO8.T3I0046FNVG3@cknow.org>
+Cc: "Conor Dooley" <conor+dt@kernel.org>, "Krzysztof Kozlowski"
+ <krzk+dt@kernel.org>, "Dragan Simic" <dsimic@manjaro.org>, "Rob Herring"
+ <robh@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>
+Subject: Re: [PATCH 0/1] arm64: dts: rockchip: rk3568: Move PCIe3 MSI to use
+ GIC ITS
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Chukun Pan" <amadeus@jmu.edu.cn>, "Heiko Stuebner" <heiko@sntech.de>
+References: <20250308093008.568437-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20250308093008.568437-1-amadeus@jmu.edu.cn>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_162344_443125_ADBE80D9 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20250509_083447_410776_4528849A 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,46 +68,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5568404222237035724=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As described, the analogix-dp controller on rk3588 only supports 2 clocks
-and the edp0 node handles that correctly.
+--===============5568404222237035724==
+Content-Type: multipart/signed;
+ boundary=7a05250e7073856251351d2d7eed564a7ba885e16373e9e67c2c1e611f0e;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-The edp1 node on the other hand seems to have a dangling 3rd clock called
-spdif, that probably only exists in the vendor-tree.
+--7a05250e7073856251351d2d7eed564a7ba885e16373e9e67c2c1e611f0e
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-As that is not handled at all, remove it for now so that we adhere to the
-binding.
+Hi,
 
-Fixes: a481bb0b1ad9 ("arm64: dts: rockchip: Add eDP1 dt node for rk3588")
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Sat Mar 8, 2025 at 10:30 AM CET, Chukun Pan wrote:
+> For a long time, rk3568's MSI-X had bugs and could only work on one node.
+> e.g. [    7.250882] r8125 0002:01:00.0: no MSI/MSI-X. Back to INTx.
+>
+> Now the ITS of GICv3 on rk3568 has been fixed by commit b08e2f42e86b
+> ("irqchip/gic-v3-its: Share ITS tables with a non-trusted hypervisor")
+> and commit 2d81e1bb6252 ("irqchip/gic-v3: Add Rockchip 3568002 erratum
+> workaround").
+>
+> Following commit b956c9de9175 ("arm64: dts: rockchip: rk356x: Move
+> PCIe MSI to use GIC ITS instead of MBI"), change the PCIe3 controller's
+> MSI on rk3568 to use ITS, so that all MSI-X can work properly.
+>
+> ~# dmesg | grep -E 'GIC|ITS'
+> <snip>
+>
+> ~# lspci -v | grep MSI-X
+>         Capabilities: [b0] MSI-X: Enable- Count=3D1 Masked-
+>         Capabilities: [b0] MSI-X: Enable- Count=3D128 Masked-
+>         Capabilities: [b0] MSI-X: Enable+ Count=3D32 Masked-
+>         Capabilities: [b0] MSI-X: Enable- Count=3D128 Masked-
+>         Capabilities: [b0] MSI-X: Enable+ Count=3D32 Masked-
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-index 9d81d3b9444e..90414486e466 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-@@ -255,8 +255,8 @@ hdmi1_out: port@1 {
- 	edp1: edp@fded0000 {
- 		compatible = "rockchip,rk3588-edp";
- 		reg = <0x0 0xfded0000 0x0 0x1000>;
--		clocks = <&cru CLK_EDP1_24M>, <&cru PCLK_EDP1>, <&cru CLK_EDP1_200M>;
--		clock-names = "dp", "pclk", "spdif";
-+		clocks = <&cru CLK_EDP1_24M>, <&cru PCLK_EDP1>;
-+		clock-names = "dp", "pclk";
- 		interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH 0>;
- 		phys = <&hdptxphy1>;
- 		phy-names = "dp";
--- 
-2.47.2
+I tested this patch on my NanoPi R5S with a 6.15-rc3 kernel + a number
+of [vcc|phy]-supply patches that have been accepted for 6.16 (and a
+small WIP LED patch).
 
+With this patch I get the following kernel warnings:
+
+pci 0001:10:00.0: Primary bus is hard wired to 0
+pci 0002:20:00.0: Primary bus is hard wired to 0
+
+If I 'unapply' this patch, I don't see those warnings.
+The output of the above mentioned ``dmesg`` and ``lspci`` commands is
+exactly the same in both cases.
+
+The PCI IDs refer to:
+PCI bridge: Rockchip Electronics Co., Ltd RK3568 Remote Signal Processor (r=
+ev 01)
+
+It's possible that this patch only brought a(nother) problem to light,
+but was I supposed to see an improvement and if so where/how?
+
+Cheers,
+  Diederik
+
+> Chukun Pan (1):
+>   arm64: dts: rockchip: rk3568: Move PCIe3 MSI to use GIC ITS
+>
+>  arch/arm64/boot/dts/rockchip/rk3568.dtsi | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+
+
+--7a05250e7073856251351d2d7eed564a7ba885e16373e9e67c2c1e611f0e
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaB4ghAAKCRDXblvOeH7b
+bl/EAQD+K7c6vUljn1EBtoIGabanVcKojXgvdX70yKiRNSvqPQEAvapmOAWC5jab
+K8JwHx8knw5EZOulmU6azbvFEkAZqAk=
+=bpa6
+-----END PGP SIGNATURE-----
+
+--7a05250e7073856251351d2d7eed564a7ba885e16373e9e67c2c1e611f0e--
+
+
+--===============5568404222237035724==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5568404222237035724==--
+
