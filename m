@@ -4,199 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07410C3ABBE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 02:37:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6AC1C3ABC3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 03:58:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hjcr6xQpy5z7nX2xmbZCgslVensAVRdXhbaXRccmGY8=; b=ZE9SbcTt5chgEE
-	NSlCbWeBw0FjIbHhyTS/Nzk/bL4t9k2qMUqCFyPL7YQo885x2Tu1E3DG7+5j45rla40POrn5d1f6J
-	bc0D3w2s/tpgkqhKhN/TAH33lvNjVt4KFqudC9tAmF3jk0ORD9vbJIGerguVvK7v6zYNLqwHVuGAm
-	P9Oa3Ly5tRhXTuLYeFfThAyAMq6H30o6xc/0pWx9WP5zm9LOi91mz8SIRyaunDQzXUdUZAc/U9rF2
-	4BBBIIprmIM0LW/pBT7lTu/fx0gNKXjGnOEqeDhdDUEQzQ1rI/xErezS9ZNXa/GYnxO9IwqXFpyG8
-	GIIyt50vgPKHIATaqAsg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VXRLtJSxGP6zSuVnk6cMG9zRnn/czKVd4Mr/XPEzwfc=; b=CicFWeSuNwPQvQ
+	zCNRnww2Gz5lwD6zuWsCo1GQMNQBZ4L5bG88SsfT4nb/0s9DNCQm3J8UAAPtE3rNoSgxiRW+9osXi
+	1oayTmDZOiQ/z7tkTPNMKXu2saGvjR+UtYZXZRAnF+/LNB3L7F4iso5FAozNgTyU6Lcp0cE7qgEmT
+	bPymeYr3ob0bZx2qTT77huNyiDaZdccBjUaKEf6pGCJaWR/+KD56+o8DIGlo50i+Up3eGPP7mZzKa
+	qpoxS+J6pSFQE7fe4qc2VEIA45ZKeqt2d4+9dKjiMjURomKLDYf0tnfxvR59w13e3KPnRnV8BzFbl
+	pKdxrccOwUYmun8tizWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDDcH-00000002GFe-1Szt;
-	Fri, 09 May 2025 02:37:37 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDDaI-00000002G5U-2LBo;
-	Fri, 09 May 2025 02:35:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-  t=1746758134; x=1778294134;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-id:content-transfer-encoding:
-   mime-version;
-  bh=rjctwD3mrB4rawCpUFLggSboOjsOHq64Z8MjCFoKKT8=;
-  b=NutyhUIMJ6iiJ5mRtJLrODSPGm2LxxtB1kryBCOJnkRVSVzQCFINrc8l
-   6GbZ+D2yjmRjvnIVeLvnduIfNck8fXS/hSsfNAFpKTAQQpw12xgOHEQ4y
-   QHqtM1CGUc+qbaYQvm/zBTe6xuCFNjUVbn9CbY6CzEh48aanm+Xj1OTFJ
-   rIVH8h87dBEYGvD46t5pp7to2rWGpah473DekUXZl++vAHoOV6pmyZyzB
-   ZsnMDXlhZEk22uRrYc2T4oXL4PyWk69H1vEWMG8rIUQItTyBcYNCD+X6J
-   e97UvlT0bOewnoln3e6C4nehEbeHUQgdxaSgK8rgd+e5cePjGQc/s6OI0
-   g==;
-X-CSE-ConnectionGUID: 3xepgtk9TkmUCEcSrq+FtA==
-X-CSE-MsgGUID: 4xAfSEaVSOKyXwlEPpBlVA==
-X-IronPort-AV: E=Sophos;i="6.15,274,1739808000"; 
-   d="scan'208";a="81666689"
-Received: from mail-dm6nam11lp2172.outbound.protection.outlook.com (HELO NAM11-DM6-obe.outbound.protection.outlook.com) ([104.47.57.172])
-  by ob1.hgst.iphmx.com with ESMTP; 09 May 2025 10:35:20 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tiJP8nlPWjkMo7xK9ZOVfjzS4xwvZ6JWddA9zc0PEh45mCjcXifVebH+S5qRg3K1jGFMsh1pyMlRtm0Ipbfhvu2vJhsNRe54KCJ9bJAXaUvghJkQwOO1SDp2vE2kU9gu5mycuDobwVLZ0jgY29HlTSm3vlghWY0z7PQKRF2kvc+S+TStr0v1F5lB4HsxK7ztb39LiLBP8GapJ5aEl3wi8K5IJPhjWKTKzskN3+QiXW9oyUD49mq93OIwjrNiVBBnoq390QoRsikyhFT23rUOFqxFGU4i/MoCqRjOSNAkSxZP0FCwCxyOcZzm3SuVGR0LF1TeWpmqQq1ju6oC3loVJg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rjctwD3mrB4rawCpUFLggSboOjsOHq64Z8MjCFoKKT8=;
- b=TiBzYm1v8IxWJmFBQUjt5wdFfaOsaaJha3h6WjC/PNVjP1pSqJaV0ukLw/VaFtkUlIZgwSTCRmtC9E+QIzS19pMcjxJpUlL2Ph6T+sB+1YyQZmMm4n9jsFWErympSgnrp66uK/vOLbRkWMG1ROLAFVVqdoChbi9E22kWML9O4+bevgUAkzRMDrhFnoFOJrGLPRuWLgYUNPUg9iHsf7+Gx2mVm2Gmdk9TKZLyYT4EIds9IMx5nQlbg2ubLOehbgnaHWTAp5hXOVhHHhQvNXuYTbiDodpU3p5QABZYO1l9lhgWvdA3jYGEvkJAvnR2rloLEELujE0DJ2ASlQ9UXi46Zw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rjctwD3mrB4rawCpUFLggSboOjsOHq64Z8MjCFoKKT8=;
- b=eHpmzXkP8BEChHXnOqFK2AM2b2jHiwcjI3ykFGyeXwsCl8ic1r17Uc9McGtaNwl7ibuEFdpP6ifUfUcezZ1yw0mFL2OB2ZnG9qMqVdhuHzXHThjxLZivLazH2K3KP8G+cms6VyJXY9IUfeINuq8Q7lRh3VJZjx4SHMeC8IQMtfw=
-Received: from PH0PR04MB8549.namprd04.prod.outlook.com (2603:10b6:510:294::20)
- by SA0PR04MB7404.namprd04.prod.outlook.com (2603:10b6:806:e9::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8699.21; Fri, 9 May
- 2025 02:35:13 +0000
-Received: from PH0PR04MB8549.namprd04.prod.outlook.com
- ([fe80::5b38:4ce0:937:6d5e]) by PH0PR04MB8549.namprd04.prod.outlook.com
- ([fe80::5b38:4ce0:937:6d5e%4]) with mapi id 15.20.8722.021; Fri, 9 May 2025
- 02:35:12 +0000
-From: Wilfred Mallawa <wilfred.mallawa@wdc.com>
-To: "cassel@kernel.org" <cassel@kernel.org>
-CC: "dlemoal@kernel.org" <dlemoal@kernel.org>, "kw@linux.com" <kw@linux.com>,
-	"alistair@alistair23.me" <alistair@alistair23.me>, "robh@kernel.org"
-	<robh@kernel.org>, "manivannan.sadhasivam@linaro.org"
-	<manivannan.sadhasivam@linaro.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "lpieralisi@kernel.org"
-	<lpieralisi@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"heiko@sntech.de" <heiko@sntech.de>, "bhelgaas@google.com"
-	<bhelgaas@google.com>, "linux-pci@vger.kernel.org"
-	<linux-pci@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH v2] PCI: dwc: Add support for slot reset on link down
- event
-Thread-Topic: [PATCH v2] PCI: dwc: Add support for slot reset on link down
- event
-Thread-Index: AQHbujx7ZfQsEfaRY0W1BCUFZRTTCrO+6uMAgASpmYCABg0DgA==
-Date: Fri, 9 May 2025 02:35:12 +0000
-Message-ID: <2cf165f6e7f3fbb28624d89ffbd775ee7d253e39.camel@wdc.com>
-References: <20250501-b4-pci_dwc_reset_support-v2-1-d6912ab174c4@wdc.com>
-	 <aBRtNOLQ6R-5iOB4@ryzen> <aBhWdySIH7jlIZMA@x1-carbon>
-In-Reply-To: <aBhWdySIH7jlIZMA@x1-carbon>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wdc.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PH0PR04MB8549:EE_|SA0PR04MB7404:EE_
-x-ms-office365-filtering-correlation-id: 04edd3d2-874e-4b1b-cb00-08dd8ea21f93
-wdcipoutbound: EOP-TRUE
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|366016|1800799024|7416014|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?Y29xVjdnSDJCR2x3akcvbU54WWpMYjFTYzN4ZHF1aTZhaEc4SENaSyt0cmgy?=
- =?utf-8?B?bElkL0FhUldYVjE3Q0VMSm4zUVF5bi92dVNRZURFZU1XQ3VONFgxZGhQL1Fp?=
- =?utf-8?B?QUpyQWJ2RnpLbG00SDAwdlVjWStXeVdzdWVhK0R1ZUV5Qks1bXllQjY2bG43?=
- =?utf-8?B?UFNwbXB6TWwzZTcvWHMzTm9Bd2V1UVg0SzJWL2M1dXlHM016VmxodFNYb1Zs?=
- =?utf-8?B?aUw4VnBTNE44YmgvU3RwT2FHeVpLWVVIdjBJOWZSaE1Ob3hlRSt2alhONzRU?=
- =?utf-8?B?WGtLVzZLbjN5OGlNcG11c0R1RlpjeFpMZmw3bVFZY2l5VHN5a2NHZ2ZnQXBn?=
- =?utf-8?B?cUxwYmQxMUpLMzhDME1QektNaW5LVnliUitTekdlUm1ZajFVN3lBTHFSVFRM?=
- =?utf-8?B?aTE0ZW8rbW1wUEZCV1F1M2pUN2xDcnJsVFJvTXhvVitLNGs4d0ZmV0pHK05Z?=
- =?utf-8?B?Q2VXMi9lVnI1T3l1Y3dMRjFEcjRzc3FsNG8zZldkcUJEem1BMmV2R3VJdHNz?=
- =?utf-8?B?L2szc2lBUW8zRUQ3eWtoZWhCWGNqRmcwRk1lbnl1b2VTQ3lSb0JTQ0J3V1Z0?=
- =?utf-8?B?Yk5ZemhuYVZPV3M1bFhHYXUybHR4OXFnTEgrVE53OEZuVGYzK0NmakxRTmdR?=
- =?utf-8?B?QkQ5R0RhTWpMd2xyYzhoL1hJdlF6dkdXVk9lWWJOZENralFheXlkVjRJNVcw?=
- =?utf-8?B?L1VrV3doYXlvTmFuQlpsQXB0U1Q5TFRaUElUQ3pNRUUrZjZEaWhyaWtBbjJ3?=
- =?utf-8?B?S0lYVDl5WEpFSFdra1doRkhRN0pPaW1SdkM2YUtzNWExZDdiNWp4UCtzUVBj?=
- =?utf-8?B?NTUxeStrTlJyQ3VPbDhoREw1MHY3S2czWUZVb0YxT0dSbU9IcXdrSmlTYVJN?=
- =?utf-8?B?ckFKQnlLWHdTNWlmL2hDRk9oTWpFdnRtTzROdDB4bi9wbEZFV3RrU3FPQy9s?=
- =?utf-8?B?dzRyNkh1ZkwrVzZaSXZBV2U3SFA5NWc5aVF0bWU0QUZmc0RmYm1BQ3hSMTdS?=
- =?utf-8?B?VmxNUFRpU1RSb0JDVnJiSnBXalZualordS84UG5vRTlIbnlEYTVDUEpsbUNY?=
- =?utf-8?B?S2JSSVpUWnJVQTN1ZU91L0ZhVjRHM1BDTC9Eem5URmpLL1ZEY21qNXMyVGlE?=
- =?utf-8?B?ZGdwWWI0SkpTWmdtUHJsRTBZM1RaN0kvSWhMamsvT2hQMzZKQ2xPbGt0a2hw?=
- =?utf-8?B?bk56YjFkMnVuQjBJSGZpZDRhdFBIdUk1c3BOUkJEYzl6R3ZmaDRpSlNXN0Iw?=
- =?utf-8?B?K0xrRzNOUXJzUEloM3ZnWHl3STBUbE1iMEtuY3FCMldTemx3Y0RhWUxlV0dF?=
- =?utf-8?B?U0dzSEFDU3o0SDJsRFhneWlSZnNMTUdLNUdyd0VEeEZxZ1NRWWJsMG00YTNL?=
- =?utf-8?B?dndHdk5wZHlId1JsaW9VMldaNU1QK1FoVkNQNHh5bGRYdStXLzRIV0lDald3?=
- =?utf-8?B?KzdXT0g2eUdNUUpvdWU0YjB0Yjhjc0JmbVhwQkRCT2JjYkl4VDduMDEwS2I0?=
- =?utf-8?B?a0RoWnNiOHowaTRVWDFOaWVJSHRURVlxajJVSktHYytsYzF6dG1mZE51ZEhU?=
- =?utf-8?B?SDBTWWNKTFFyS2dPblBlSitKTDd0UzBSRTAzUzZBZURMd0k5Z0owLzJxK3hI?=
- =?utf-8?B?alIrQVgzODNhOU93MnVzdFdteE1KYVdybjdEbk44cDQ0YlNGTkhqSW1LWVZ2?=
- =?utf-8?B?WDN4UWJ5VUtmR2NnNUt1VnBtV1RsaktvKytMSW9qeS9CQWNtbmRjaFg5QWhx?=
- =?utf-8?B?K1NsZFhCdmtYMzluTXhMcFlKU1llL3ZGRktDci8wUCt6K2VVd3pmeS9aUmc3?=
- =?utf-8?B?Ymcyb2twR1NSU1Zna3VCdVVCNjViOHpraDVIS1NKR0p3TGFaWTRiS2IxcU44?=
- =?utf-8?B?SXV5T2EzTFZUcEZsR1JxczVtKzBhOGVxSUZxRDZNMGk5b1Z6bjRjWXVUK25I?=
- =?utf-8?B?ajRjenpHOUdCVzRmd3lsUTE0SFRuSkhCZXN2TXF6VGdJUUk0Q1BHaEhQaVdV?=
- =?utf-8?B?TGkrdzRxejVBPT0=?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR04MB8549.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024)(7416014)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SDZRcnFrd1F0RldobzhPTWpGYlI0UTZxUVl3b2xhQmtzOGcrNENobHQxN2R6?=
- =?utf-8?B?TlIxSG1OVkYva0ZTZVBueUhnQy9SSzBXSU1JdC9rajZsRGZpV2RQZjhqL1NC?=
- =?utf-8?B?WWFjWWFYcUV3L2p0Ni9sNlBiTzlJT29PeEtlYno2ZVN1UGpsNUV3NndPaGh6?=
- =?utf-8?B?WmpXU21lVU9IS05KSWp6WlJpTUExcno3d0lmVFdtRHgxbms3OXJCc01TVnNH?=
- =?utf-8?B?LzZVMWQvMEJvUjZQZEJSSUJrODBEZDdVVVJucXNkNE1oQkJnWFUwWFR4dXpq?=
- =?utf-8?B?eDhmN3QyM3V4b0EwdFBydnEzTHZlVTRiQTdhYXhBdlhpL3dBZGk3bncxejMx?=
- =?utf-8?B?U1dmNndKVUkrTHlEZ1VsSkc4SVRYOGdDNzBQQlhHTUorQWgxaExJQTU2anB4?=
- =?utf-8?B?bm1tNmtBeWJldWxZZDF2NDFHVUwyRXRWaEU2K1BjU2haOGVtNTR6SFRlazRP?=
- =?utf-8?B?V1gvb1lzcEt5K0xjS3NSNmYvZ3I1M2ZVeFEyaHdpSlBYaDhubUQrNXN3L2Yx?=
- =?utf-8?B?RDFKRUFjeG9zeVhpTjVidzVQWWUxdG4vYUpKMitpR3c2bUhMN0ZrQ3pUM3pt?=
- =?utf-8?B?NzY1NU85djhBaVY5eFRFTnV1blo5c2tSWlRiTXh0YmVJd2hHMkI0bEN5bVFw?=
- =?utf-8?B?NmZqK0xScmFoRitSeDArRHlQblVPUVdKNnBZVy9DaW9BaktmRTcwSGh1NWt1?=
- =?utf-8?B?UWdOc2tnY3pBeThaQ013Rnp0WXlQR0JmSGl0VjJWSWpRcTJDTXNHeFZGTmdM?=
- =?utf-8?B?bkF0Vk1BS0ZWZE43S2QwcjFxNEdjUW5qbzRXeWNjcC9hTVRGcGJlcjVhelBW?=
- =?utf-8?B?NU1FOFd5TWc5QURhSitMV3dsUlN6Z3VSejR5WmlGM1JEL0Z3bFRaUFM4b2lr?=
- =?utf-8?B?WUZBU1Fmd1lKeHQ1NG5rMjBRcnRaNVBCS21uY1dJN2VCaDdMSDJxbFpnNlJR?=
- =?utf-8?B?a0VVTktueXR0VDhrVjAyaVBsZkJ6K1hwQVpKaDlYSTRnRzBMelV1Rng4UUxD?=
- =?utf-8?B?eExjRW9JS0JtYVQrVDgxSDBRQ3dkUG00Wjd1V2FiaFU2dkFoclhHallTSjNl?=
- =?utf-8?B?ZjdPd0RTK1kwWURxalFycEdDUU5JQ2ZDckJ5ZnpIMHpsZHZNUWEvVkxrUWJZ?=
- =?utf-8?B?K3Y3djhyYkZBNlZKWklPdlpzdjhCRUZtTnVPWkVMdHBQRG8wK1hCandPTzNJ?=
- =?utf-8?B?OVBybG9LdHBiK3ZjTThWdGFpRjNsdkVJQTZxQmFjeXUyamtSeHpqajg1UUhi?=
- =?utf-8?B?Z2NiMmIybGtDRkgwRDdLYlJ6TlpPNzNKTkwyTVJCdEJ5UXhwODVxTnlDY2U0?=
- =?utf-8?B?anFVK3ZhQ0JpNDllaVAvaloyeWVPTC9XS1FUekdKUFBMZFB0djM3cjFqV0tz?=
- =?utf-8?B?Q3hJeUkrVGlxQk1yVGcyZXNaVmNKeXZlOVlFaTJSc2ZwNFYzWjNpZWM1Nnk2?=
- =?utf-8?B?VW5TemRVVE9xZERDUmRHTHVnVWdKQUtkaXE2WjJSTkNkTFk5dG1YTno3eVR4?=
- =?utf-8?B?UDE3VE9aQ2NGQmMvS1RKeU1saVE2SFpMSC9wcHIwbkx2aGdETkFpdGJuUVZL?=
- =?utf-8?B?Vko2UjJsMWQwK3FxakE3YU1sbmhSeTkrR2tFTTNObU5XVk55UG1qYkpocG5O?=
- =?utf-8?B?R0lqcGk5SFNNbVNXam40R2F4eldyK21nanQ1Z3RVeHg4N21zNU5ETWsyaEg2?=
- =?utf-8?B?WkZrY0JNY3hHMjhyYTkzNFVmL3VMMmttekdaRng0dUdQK29IYXpVaFFEVy9i?=
- =?utf-8?B?WXZJWVFRY3lJKzk3dVV3R1NRUEJqa1FNNkpkaHNoWkFZREl3b0Q4cUFiMFJt?=
- =?utf-8?B?aWNJSTdaaE9IZTkxRjQrckMycWxTMjgxTXM0QXZYRWxibmZZaG8xK1U1UW5I?=
- =?utf-8?B?R3FoLy9zUndFM2MzbEl2OGhBeUcrRm02YlZDNmo1anIzU3BZRHU5WVc1c2hz?=
- =?utf-8?B?M3Y4K1pnZEhHc0JmWldxS1JiK2IwWHZ3VWZWMFI5b2pkb2sxRmViUmRUT1pU?=
- =?utf-8?B?cStGMkRQL0JXeWJEWkRvbHp5MzAxUTZQNmg5L3I2UVAwQkNhUS9rcEtKakNE?=
- =?utf-8?B?R25IM2pYTWFyTDRGcnNnQlkvSC84ektuelRrbFRZRkVuV2ozNXhkZW9nZ05C?=
- =?utf-8?B?RDJBNXIzOFgvQldiY1pkTnRacitlckI5VHd5cVJtVFJGaDhTK1MzK0dveXBa?=
- =?utf-8?B?MEE9PQ==?=
-Content-ID: <94E5DA3B2D1CB04CA1BBE17CE77FEB98@namprd04.prod.outlook.com>
+	id 1uDEsR-00000002Pg3-0bjG;
+	Fri, 09 May 2025 03:58:23 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uDEDw-00000002L9k-3LdK;
+	Fri, 09 May 2025 03:16:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=sM
+	l4uDULJ4d2VplsLBXiseBBzW7TX6oyV9iz007EHaY=; b=fdgTY9ZS0keqXsXBT8
+	XV8j88E6S93/AzsYGphFUeOMZZRmpPiRIUe5LOvcxDy7YBiB1zuJ8Tufm3RCdLDj
+	Qif0RBptSLAxFJ+obO4D5QpPO+5+1yE82rmGGxfS6S8bZ6JTMBs/jebUPpGHoO/T
+	L6JamKk6eBoJhfaBp0KQ3l/4c=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wD3v26Bcx1ombx0AA--.1362S2;
+	Fri, 09 May 2025 11:16:21 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: andrzej.p@collabora.com,
+	hjc@rock-chips.com,
+	dri-devel@lists.freedesktop.org,
+	tzimmermann@suse.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH] drm/rockchip: cleanup fb when drm_gem_fb_afbc_init failed
+Date: Fri,  9 May 2025 11:15:59 +0800
+Message-ID: <20250509031607.2542187-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: dlc6TseXt9DbZOyMSDUY64vZUb0qKsbLE9de0UW7RjayW0AM/JwJbykhWcZ2qbSmb1vbn2bwq3XGdqKC7hDSZPRyjtWqDoH1C3vKoTTWws2x0/LmlCgiwbMcFZj8i8K8IFlw1se7jniy/wUxn0d2lo2rz/e8SscdM+DmAX2k11WulkS7QrcXoq4NyJJha+g4Vi483Gu0mmOAHpT1jeFUi6fABizVMV0Q114PIvxGDIOnHLCTBK4MbjuTIgQKwJwqwuHbTLUgX1T6btHxpOz6SU6D1sVnElh3AqlBeZg3M4arOi4EwBGhjh/wkazfNaYJVtGcujKO8waxBaGwcvLkTJv0IgY8pr3MxpGkUILDE0iLfnvU3ovUgeQQr5fTZ71GoNfATB0UPESkswfPIeLnvhromxsaiCQWHV44zIT9atYyVDYM9E01kARr0BiY3FKC2ZRo/7j3eljqAetmIWnBVvsVZ+nRgRef3Bp3rsJVlbNYvCXltmma4G7LQswnZ4QuSrVzvv/LKuIT/0gnEJAm4m3AiLz1anDugKXudD/200YeNVeYz85VUiaQPi8phb0UzgO/QOaftU5heJ7VxeToLzcbNB0+5QIMDkwY0nQnksplt6r0ma/ZtwMXooXJnbjy
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR04MB8549.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 04edd3d2-874e-4b1b-cb00-08dd8ea21f93
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 May 2025 02:35:12.1545
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 7OnioqudD21y+bdAAZDBKXZyoulWCTJdIYwC6XlcILi410XSxzJowJNZevqOijy8w8xPdutUr8655TvSQ1YPtA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR04MB7404
+X-CM-TRANSID: _____wD3v26Bcx1ombx0AA--.1362S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxJr4DZr47WrWkJrWkZw1xGrg_yoW8Gw1rpa
+	9xtFWjvrWxGw40grnFkFs5ZFyrK3ZFgayxKr4xGa1fZr12kFyqgw1fCF95ZrW3Jr17ZryY
+	vrZ3J348AFZruFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j5AwxUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0h1IXmgdbavmLAAAsg
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_193534_693246_4A2742B2 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20250508_201633_204003_C3CF3F11 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -213,24 +77,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2025-05-05 at 08:11 +0200, Niklas Cassel wrote:
-> Hello Wilfred,
-> 
-> When submitting V3, please change the subject prefix to:
-> "PCI: dw-rockchip:", as the prefix: "PCI: dwc:" is only for patches
-> that are generic (and not glue driver specific).
-> 
-> Kind regards,
-> Niklas
-Hey Niklas,
+From: Andy Yan <andy.yan@rock-chips.com>
 
-I just sent out a V3 that is based on the latest series (V4) from
-Manivannan and with your comments addressed. Ran the same tests on a
-Rock5B host and everything seems to be working. Let me know if there's
-anything else.
+In the function drm_gem_fb_init_with_funcs, the framebuffer (fb)
+and its corresponding object ID have already been registered.
 
-Cheers,
-Wilfred
+So we need to cleanup the drm framebuffer if the subsequent
+execution of drm_gem_fb_afbc_init fails.
+
+Directly call drm_framebuffer_put to ensure that all fb related
+resources are cleanup.
+
+Fixes: 7707f7227f09 ("drm/rockchip: Add support for afbc")
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+---
+
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index dcc1f07632c3a..5829ee061c61b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -52,16 +52,9 @@ rockchip_fb_create(struct drm_device *dev, struct drm_file *file,
+ 	}
+ 
+ 	if (drm_is_afbc(mode_cmd->modifier[0])) {
+-		int ret, i;
+-
+ 		ret = drm_gem_fb_afbc_init(dev, mode_cmd, afbc_fb);
+ 		if (ret) {
+-			struct drm_gem_object **obj = afbc_fb->base.obj;
+-
+-			for (i = 0; i < info->num_planes; ++i)
+-				drm_gem_object_put(obj[i]);
+-
+-			kfree(afbc_fb);
++			drm_framebuffer_put(&afbc_fb->base);
+ 			return ERR_PTR(ret);
+ 		}
+ 	}
+-- 
+2.43.0
+
+base-commit: 98f498ca33ac03f4d9514e66cdfec9ee58808f82
+branch: rk3036_hdmi_bridge_v5
+
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
