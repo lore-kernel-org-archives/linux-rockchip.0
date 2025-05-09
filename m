@@ -4,78 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C480CC3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 14:22:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52368C3ABBC
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 14:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	In-Reply-To:References:Cc:To:From:Subject:Message-Id:Date:Mime-Version:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z9123sDSMRghCWSK8nEdZrDCYl94DmP97JK7vkT/a4Y=; b=O7dE3hIf5jFkecIrnuI0Rhdwuv
-	Ou9D1qd0fN9kFBJdR4IEVSjiLYg+/1Bizk+wDvhD9aSxoBWAkydxUplokBg4SCyMGMAoZWPacPF8h
-	HgC8WIcoMs4eHqwlxBfdXqBivNUNE9w13OR5xFQRUIDmoM4cn3ofKphEdMsBOgE4jJQzdoA/e1+kW
-	PvadTVUBCyCOXwAKKNCTx0rQo+Kalzi7Ev0LFF0SojIyAfg76gFfSMYD0SCWEc7TMURfowyfLwNee
-	DzmStUxzoR3GXMzm6CKYcBk5JVkC106r1/mKGMXpDFax+Y+ARb4cpd++llvORcjDwpO4cyj00s2nW
-	jbH3/kyA==;
+	bh=7QwRf4FLztpECbU1nfVUPPQN3YJt/WG5lTt0hqPLg+g=; b=Bb3LkTjFcMtuw9nev3OZiciuG0
+	Ds30ImUTBsj8a4c+MCAaJo1oEx2LHQ14Z+Hf8115bEgMnVPI65s54yhqb2mlzRSNRdH7IsCO1j4TO
+	/KRbX2vFPIPed3/oZmEk8ljNZ7TcF2BeRHvXZREJjiO3GQz04MMelZAa3tijs4ZLWu2+iZdhPywi/
+	Jr6uTcLzePte1qLIjpPaDUauFcUkFfffvmxY5lSre6UHQn+CanjhgGdfP/I0iCY2vI4brBGatc+OY
+	Ycz2tuDGmdGIfAgKmAV+smy4DvaHoxRAi2gAa31oO6M3E76yCKHdm+YEIZVbZyi+djQ/F4kYpkM6L
+	gGEfVrAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDObr-00000003vxh-1kPM;
-	Fri, 09 May 2025 14:21:55 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uDP13-00000003zHy-2ryB;
+	Fri, 09 May 2025 14:47:57 +0000
+Received: from out-174.mta0.migadu.com ([91.218.175.174])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDNZJ-00000003iZq-2Se4
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 09 May 2025 13:15:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:References:To:From:Subject
-	:Cc:Message-Id:Date:Content-Type:Mime-Version:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=5axwq5ukixnZASkqSTZMmJAzeb3lPrAspoP9HlhWjSw=; b=Qrcq3YcsZ8qgLPhCVqr0GlI6T7
-	0XVUnJNcEwec5bWdryoXAXOV8S0aUzFE7w6c4U9kD2WzP+NHlgJGuxl/PRK/mSz461UNi+icvAZew
-	kdyMh4XuFn5MVBdg7DVtemX28rG5WFMYIuB1EVrbHkIWYEqnvVh2U+iB1SouC8cEwhoyKLovIv7FP
-	eCwYMS1Zi3G/ADzGF7b2BMTftUwJTuUYHg40Ex0FqjDMwq9U1xmi90GXcSvbrN5PgdV1NdSoiRZW+
-	fUYQ8bk87MczWXKxXNh0uHLuS20hADqGJ4Dboz82f9GXAL7Hr4aLSBGaBhrVUTlbHCngiOVUZXQ+a
-	FU75GIUQ==;
-Received: from out-173.mta1.migadu.com ([95.215.58.173])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1uDNZG-0000000GHXv-19Iu
+	id 1uDNcB-00000003jG8-0xSf
 	for linux-rockchip@lists.infradead.org;
-	Fri, 09 May 2025 13:15:12 +0000
+	Fri, 09 May 2025 13:18:13 +0000
 Mime-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1746796490;
+	t=1746796686;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=5axwq5ukixnZASkqSTZMmJAzeb3lPrAspoP9HlhWjSw=;
-	b=mDeG47eJZKpstpn0HYUuRIY91JnYd5NZlJsQdZU8dfctwKLiqcdr1UBqGKUi/8MKZ6TH6i
-	HC7cPnMlBRYNcejsm5W7v6RQAjDnPvVGdMg8rzgAYIL9s0evaEgaySXv2reXFhdgv7AjBB
-	odwBm9ZrQ+OQBwOnCtRgXKjZydn2zFW7HbT2G/f7pfyQtLc/Qik2J6QeXpRSdMU1vyk6Gw
-	qJHQ/2dvYh2SSrEZXRmJG3mhf/ypiDAHfB6aRsrbf/KvS0129LJMqhXMbWO3doGZ5CzJvf
-	csT4PkppY88Y6LhsP5xz0mij8XoGukg4vAK3JL86bQEwf1pIIukusDDAtukryA==
-Date: Fri, 09 May 2025 15:14:31 +0200
-Message-Id: <D9RNO4O3YN4X.1G09DC9I8JGJF@cknow.org>
+	bh=nVdoRmzHdJIDzHX5mXnwcwEn0rBmpBpiL6BVXHOZ+ps=;
+	b=Evi6SeZGpNRULGqJy6DsClZaUaVxL+vZt/e/PDbDKVn3OV5tm3qwkxMpY5ZOVL6S04fICi
+	XVauFECRsbn3Jiy1FYHzyur1/SWCc4XNgvBZAH8s5/lpGPmJmASFBZ3rcOvQ/8PgUDncfa
+	uQnV3mXFbn2XijbZmq5IXjipzQ/8ObVcBfdgwHHkGvrGjOl9BaYJBMkt0MHrtEr8aIDjqU
+	jFv3e7xsRKmPuYP55cJAsfcO7J9a+QmkfuK07n72QOuaaPy/oE1pg0X+gXGjj6Le3yjLad
+	sifi7XLlwBhfxS+cRHPHNmZU94m2xGYU6aq6uplgFiNdQYFHuf+MGIQVId081Q==
+Date: Fri, 09 May 2025 15:18:04 +0200
+Message-Id: <D9RNQUO6IKFU.9BYJLSAQV9WT@cknow.org>
+Subject: Re: [PATCH v2 5/5] arm64: dts: rockchip: add USB-C support for ROCK
+ 5B+
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Sebastian Reichel" <sebastian.reichel@collabora.com>, "Heiko Stuebner"
+ <heiko@sntech.de>
 Cc: "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
  <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <kernel@collabora.com>
-Subject: Re: [PATCH v2 2/5] arm64: dts: rockchip: move rock 5b to include
- file
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Sebastian Reichel" <sebastian.reichel@collabora.com>,
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
 References: <20250508-rock5bp-for-upstream-v2-0-677033cc1ac2@kernel.org>
- <20250508-rock5bp-for-upstream-v2-2-677033cc1ac2@kernel.org>
- <D9RN1HZAXH1M.3H228KWQJ9CR0@cknow.org> <2653568.Lt9SDvczpP@diego>
- <dbwzgqfzc4ax6skthp4bkyhhixcm4fohzbcr4px3ugbx7ntmwx@ipncpit75fau>
-In-Reply-To: <dbwzgqfzc4ax6skthp4bkyhhixcm4fohzbcr4px3ugbx7ntmwx@ipncpit75fau>
+ <20250508-rock5bp-for-upstream-v2-5-677033cc1ac2@kernel.org>
+In-Reply-To: <20250508-rock5bp-for-upstream-v2-5-677033cc1ac2@kernel.org>
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_141510_402225_5F26801A 
-X-CRM114-Status: GOOD (  33.28  )
+X-CRM114-CacheID: sfid-20250509_061811_404617_BD2CE18D 
+X-CRM114-Status: GOOD (  22.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,239 +70,349 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1793171661575825185=="
+Content-Type: multipart/mixed; boundary="===============2172869945325970636=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============1793171661575825185==
+--===============2172869945325970636==
 Content-Type: multipart/signed;
- boundary=6655860ab50d87daa0204e489dd2504ca4fc9154ff9510bb077e41da56ae;
+ boundary=33bca27b73304a4270d6ea8fbc04c0d790682b0e0c2dc71e4f7c11e0ec14;
  micalg=pgp-sha512; protocol="application/pgp-signature"
 
---6655860ab50d87daa0204e489dd2504ca4fc9154ff9510bb077e41da56ae
+--33bca27b73304a4270d6ea8fbc04c0d790682b0e0c2dc71e4f7c11e0ec14
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset=UTF-8
 
 Hi,
 
-On Fri May 9, 2025 at 3:08 PM CEST, Sebastian Reichel wrote:
-> On Fri, May 09, 2025 at 02:54:00PM +0200, Heiko St=C3=BCbner wrote:
->> Am Freitag, 9. Mai 2025, 14:44:57 Mitteleurop=C3=A4ische Sommerzeit schr=
-ieb Diederik de Haas:
->> > On Thu May 8, 2025 at 7:48 PM CEST, Sebastian Reichel wrote:
->> > > Radxa released some more boards, which are based on the original
->> > > Rock 5B. Move its board description into an include file to avoid
->> > > unnecessary duplication.
->> >=20
->> > Aren't you moving it *out of* an/the include file?
->> > If so, the patch Subject and the above line should be updated so that
->> > they correctly reflect what is changed in this patch.
->> >=20
->> > The above text is correct (and the same ...) as patch 1, but in this
->> > patch you move things out of the dtsi which are unique per board.
->> >=20
->> > > NOTE: this should be merged with the previous commit to ensure
->> > > bisectability. The rename happens in a separete commit during
->> > > development because git does not properly detect the rename when
->> > > the original filename is reused in the same commit. This means
->> > >
->> > > 1. it's a lot harder to review the changes
->> > > 2. it's a lot harder to rebase the patch series
->> >=20
->> > Or did I fall prey to the exact thing you described here?
->>=20
->> I think Sebastian's idea  is, that I squash both patches when applying.
->> This split makes it easy(er) to review because patch1 is just a rename.
->>=20
->> And merging them when applying then makes it again not break bisectabili=
-ty.
+On Thu May 8, 2025 at 7:48 PM CEST, Sebastian Reichel wrote:
+> Add hardware description for the USB-C port in the Radxa ROCK 5 Model B+
+> This describes the OHCI, EHCI and XHCI USB parts, but not yet the Display=
+Port
+> AltMode, since the bindings for that are not yet upstream.
 >
-> Correct. This is a lot easier to review than what git generates when
-> having these two patches squashed together, which is a huge diff of
-> all 1000+ lines in the file (I tried really hard to convince it that
-> this is mostly a rename with --find-renames and --find-copies). You
-> can see this kind of mess in patch 2 of the ROCK 5T series that
-> Nicolas just send (I will comment on that and suggest to do the same
-> thing I did to ease review. In his case it should even be possible
-> to do it in a bisectable way without needing a squash :)).
+> Support for the ROCK 5B is prepared, but not exposed at the moment,
+> since it results in unreliable boot behavior due to hard resets killing
+> the supply voltage. Some further investigation and fixes in the kernel's
+> Type-C Port Manager (TCPM) state machine is needed before exposing the
+> port. The ROCK 5B+ has a dedicated port for powering the board and thus
+> is not affected.
+>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../boot/dts/rockchip/rk3588-rock-5b-plus.dts      |  16 +++
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |  23 ++++
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi   | 137 +++++++++++++++=
+++++++
+>  3 files changed, 176 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts b/arch/=
+arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
+> index 74c7b6502e4dda4b774f43c704ebaee350703c0d..4096cd853f9a909e4233d2c61=
+a1fe5ee83904c4c 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
+> @@ -99,12 +99,28 @@ pcie3x2_rst: pcie3x2-rst {
+>  	};
+> =20
+>  	usb {
+> +		usbc_sbu_dc: usbc-sbu-dc {
+> +			rockchip,pins =3D <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>,
+> +					<0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +
+>  		vcc5v0_host_en: vcc5v0-host-en {
+>  			rockchip,pins =3D <1 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+>  	};
+>  };
+> =20
+> +&usbc0 {
+> +	status =3D "okay";
+> +};
+> +
+> +&usbdp_phy0 {
+> +	pinctrl-names =3D "default";
+> +	pinctrl-0 =3D <&usbc_sbu_dc>;
+> +	sbu1-dc-gpios =3D <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>;
+> +	sbu2-dc-gpios =3D <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
+> +};
+> +
+>  &vcc5v0_host {
+>  	enable-active-high;
+>  	gpio =3D <&gpio1 RK_PA1 GPIO_ACTIVE_HIGH>;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64=
+/boot/dts/rockchip/rk3588-rock-5b.dts
+> index 9407a7c9910ada1f6c803d2e15785a9cbd9bd655..ab0c572ea9234f373af4a47db=
+93fc1786f0e6fbf 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> @@ -36,8 +36,20 @@ &uart6 {
+>  	status =3D "okay";
+>  };
+> =20
+> +&usbdp_phy0 {
+> +	pinctrl-names =3D "default";
+> +	pinctrl-0 =3D <&usbc_sbu_dc>;
+> +	sbu1-dc-gpios =3D <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
+> +	sbu2-dc-gpios =3D <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
+> +};
+> +
+>  &pinctrl {
+>  	usb {
+> +		usbc_sbu_dc: usbc-sbu-dc {
+> +			rockchip,pins =3D <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>,
+> +					<0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
 
-Thank you both for the clarification :-)
+Shouldn't these be <4 RK_PA6 ...> and <4 RK_PA7 ...> ?
+
+In the rock5bp_v1.2 schematic they're (IIUC) GPIO0_C4 and _C5, but in
+rock_5b_v1450 schematic TYPEC0_SBU1_DC and TYPEC0_SBU2_DC are on
+GPIO4_A6 and GPIO4_A7.
+
+And in rock_5b_v1450 GPIO0_C4 and _C5 are connected to WIFI_REG_ON_H and
+BT_W AKE_HOST_H respectively.
 
 Cheers,
   Diederik
 
->> > > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
->> > > ---
->> > >  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts  | 52 +++++++++++++=
-+++++++++++
->> > >  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi | 40 -------------=
------
->> > >  2 files changed, 52 insertions(+), 40 deletions(-)
->> > >
->> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/=
-arm64/boot/dts/rockchip/rk3588-rock-5b.dts
->> > > new file mode 100644
->> > > index 0000000000000000000000000000000000000000..9407a7c9910ada1f6c80=
-3d2e15785a9cbd9bd655
->> > > --- /dev/null
->> > > +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
->> > > @@ -0,0 +1,52 @@
->> > > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
->> > > +
->> > > +/dts-v1/;
->> > > +
->> > > +#include "rk3588-rock-5b.dtsi"
->> > > +
->> > > +/ {
->> > > +	model =3D "Radxa ROCK 5B";
->> > > +	compatible =3D "radxa,rock-5b", "rockchip,rk3588";
->> > > +};
->> > > +
->> > > +&sdio {
->> > > +	max-frequency =3D <200000000>;
->> > > +	no-sd;
->> > > +	no-mmc;
->> > > +	non-removable;
->> > > +	bus-width =3D <4>;
->> > > +	cap-sdio-irq;
->> > > +	disable-wp;
->> > > +	keep-power-in-suspend;
->> > > +	wakeup-source;
->> > > +	sd-uhs-sdr12;
->> > > +	sd-uhs-sdr25;
->> > > +	sd-uhs-sdr50;
->> > > +	sd-uhs-sdr104;
->> > > +	vmmc-supply =3D <&vcc3v3_pcie2x1l0>;
->> > > +	vqmmc-supply =3D <&vcc_1v8_s3>;
->> > > +	pinctrl-names =3D "default";
->> > > +	pinctrl-0 =3D <&sdiom0_pins>;
->> > > +	status =3D "okay";
->> > > +};
->> > > +
->> > > +&uart6 {
->> > > +	pinctrl-names =3D "default";
->> > > +	pinctrl-0 =3D <&uart6m1_xfer &uart6m1_ctsn &uart6m1_rtsn>;
->> > > +	status =3D "okay";
->> > > +};
->> > > +
->> > > +&pinctrl {
->> > > +	usb {
->> > > +		vcc5v0_host_en: vcc5v0-host-en {
->> > > +			rockchip,pins =3D <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
->> > > +		};
->> > > +	};
->> > > +};
->> > > +
->> > > +&vcc5v0_host {
->> > > +	enable-active-high;
->> > > +	gpio =3D <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
->> > > +	pinctrl-names =3D "default";
->> > > +	pinctrl-0 =3D <&vcc5v0_host_en>;
->> > > +};
->> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi b/arch=
-/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
->> > > index 17f4fd054cd3d1c4e23ccfe014a9c4b9d7ad1a06..6052787d2560978d2bae=
-6cfbeea5fc1d419d583a 100644
->> > > --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
->> > > +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
->> > > @@ -8,9 +8,6 @@
->> > >  #include "rk3588.dtsi"
->> > > =20
->> > >  / {
->> > > -	model =3D "Radxa ROCK 5B";
->> > > -	compatible =3D "radxa,rock-5b", "rockchip,rk3588";
->> > > -
->> > >  	aliases {
->> > >  		mmc0 =3D &sdhci;
->> > >  		mmc1 =3D &sdmmc;
->> > > @@ -139,10 +136,6 @@ vcc5v0_host: regulator-vcc5v0-host {
->> > >  		regulator-always-on;
->> > >  		regulator-min-microvolt =3D <5000000>;
->> > >  		regulator-max-microvolt =3D <5000000>;
->> > > -		enable-active-high;
->> > > -		gpio =3D <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
->> > > -		pinctrl-names =3D "default";
->> > > -		pinctrl-0 =3D <&vcc5v0_host_en>;
->> > >  		vin-supply =3D <&vcc5v0_sys>;
->> > >  	};
->> > > =20
->> > > @@ -488,12 +481,6 @@ pcie3_vcc3v3_en: pcie3-vcc3v3-en {
->> > >  			rockchip,pins =3D <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
->> > >  		};
->> > >  	};
->> > > -
->> > > -	usb {
->> > > -		vcc5v0_host_en: vcc5v0-host-en {
->> > > -			rockchip,pins =3D <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
->> > > -		};
->> > > -	};
->> > >  };
->> > > =20
->> > >  &pwm1 {
->> > > @@ -530,27 +517,6 @@ &sdmmc {
->> > >  	status =3D "okay";
->> > >  };
->> > > =20
->> > > -&sdio {
->> > > -	max-frequency =3D <200000000>;
->> > > -	no-sd;
->> > > -	no-mmc;
->> > > -	non-removable;
->> > > -	bus-width =3D <4>;
->> > > -	cap-sdio-irq;
->> > > -	disable-wp;
->> > > -	keep-power-in-suspend;
->> > > -	wakeup-source;
->> > > -	sd-uhs-sdr12;
->> > > -	sd-uhs-sdr25;
->> > > -	sd-uhs-sdr50;
->> > > -	sd-uhs-sdr104;
->> > > -	vmmc-supply =3D <&vcc3v3_pcie2x1l0>;
->> > > -	vqmmc-supply =3D <&vcc_1v8_s3>;
->> > > -	pinctrl-names =3D "default";
->> > > -	pinctrl-0 =3D <&sdiom0_pins>;
->> > > -	status =3D "okay";
->> > > -};
->> > > -
->> > >  &sfc {
->> > >  	pinctrl-names =3D "default";
->> > >  	pinctrl-0 =3D <&fspim2_pins>;
->> > > @@ -566,12 +532,6 @@ flash@0 {
->> > >  	};
->> > >  };
->> > > =20
->> > > -&uart6 {
->> > > -	pinctrl-names =3D "default";
->> > > -	pinctrl-0 =3D <&uart6m1_xfer &uart6m1_ctsn &uart6m1_rtsn>;
->> > > -	status =3D "okay";
->> > > -};
->> > > -
->> > >  &spi2 {
->> > >  	status =3D "okay";
->> > >  	assigned-clocks =3D <&cru CLK_SPI2>;
->> >=20
->> >=20
->>=20
->>=20
->>=20
->>=20
+> +		};
+> +
+>  		vcc5v0_host_en: vcc5v0-host-en {
+>  			rockchip,pins =3D <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+> @@ -50,3 +62,14 @@ &vcc5v0_host {
+>  	pinctrl-names =3D "default";
+>  	pinctrl-0 =3D <&vcc5v0_host_en>;
+>  };
+> +
+> +/*
+> + * Do not yet offer USB-C support on the Rock 5B. The current U-Boot
+> + * Linux setup is quite unstable and for many power-supplies needs multi=
+ple
+> + * hard resets to boot to userspace. Let's enable this once the issues
+> + * in the TCPM kernel code have been solved. Without this any automated
+> + * boot tests will run into problems.
+> + */
+> +/delete-node/ &usbc0;
+> +/delete-node/ &usb_host0_xhci;
+> +/delete-node/ &usbdp_phy0;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi b/arch/arm6=
+4/boot/dts/rockchip/rk3588-rock-5b.dtsi
+> index 6052787d2560978d2bae6cfbeea5fc1d419d583a..314fdc0c1c20b25b0fdc5254f=
+3b090586c169a00 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
+> @@ -5,6 +5,7 @@
+>  #include <dt-bindings/gpio/gpio.h>
+>  #include <dt-bindings/leds/common.h>
+>  #include <dt-bindings/soc/rockchip,vop2.h>
+> +#include <dt-bindings/usb/pd.h>
+>  #include "rk3588.dtsi"
+> =20
+>  / {
+> @@ -92,6 +93,15 @@ rfkill-bt {
+>  		shutdown-gpios =3D <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
+>  	};
+> =20
+> +	vcc12v_dcin: regulator-vcc12v-dcin {
+> +		compatible =3D "regulator-fixed";
+> +		regulator-name =3D "vcc12v_dcin";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt =3D <12000000>;
+> +		regulator-max-microvolt =3D <12000000>;
+> +	};
+> +
+>  	vcc3v3_pcie2x1l0: regulator-vcc3v3-pcie2x1l0 {
+>  		compatible =3D "regulator-fixed";
+>  		enable-active-high;
+> @@ -146,6 +156,19 @@ vcc5v0_sys: regulator-vcc5v0-sys {
+>  		regulator-boot-on;
+>  		regulator-min-microvolt =3D <5000000>;
+>  		regulator-max-microvolt =3D <5000000>;
+> +		vin-supply =3D <&vcc12v_dcin>;
+> +	};
+> +
+> +	vbus5v0_typec: vbus5v0-typec {
+> +		compatible =3D "regulator-fixed";
+> +		enable-active-high;
+> +		gpio =3D <&gpio2 RK_PB6 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&vbus5v0_typec_en>;
+> +		regulator-name =3D "vbus5v0_typec";
+> +		regulator-min-microvolt =3D <5000000>;
+> +		regulator-max-microvolt =3D <5000000>;
+> +		vin-supply =3D <&vcc5v0_sys>;
+>  	};
+> =20
+>  	vcc_1v1_nldo_s3: regulator-vcc-1v1-nldo-s3 {
+> @@ -309,6 +332,67 @@ regulator-state-mem {
+>  	};
+>  };
+> =20
+> +&i2c4 {
+> +	pinctrl-names =3D "default";
+> +	pinctrl-0 =3D <&i2c4m1_xfer>;
+> +	status =3D "okay";
+> +
+> +	usbc0: usb-typec@22 {
+> +		compatible =3D "fcs,fusb302";
+> +		reg =3D <0x22>;
+> +		interrupt-parent =3D <&gpio3>;
+> +		interrupts =3D <RK_PB4 IRQ_TYPE_LEVEL_LOW>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&usbc0_int>;
+> +		vbus-supply =3D <&vbus5v0_typec>;
+> +		/*
+> +		 * When the board is starting to send power-delivery messages
+> +		 * too late (5 seconds according to the specification), the
+> +		 * power-supply reacts with a hard-reset. That removes the
+> +		 * power from VBUS for some time, which resets te whole board.
+> +		 */
+> +		status =3D "fail";
+> +
+> +		usb_con: connector {
+> +			compatible =3D "usb-c-connector";
+> +			label =3D "USB-C";
+> +			data-role =3D "dual";
+> +			power-role =3D "sink";
+> +			try-power-role =3D "sink";
+> +			op-sink-microwatt =3D <1000000>;
+> +			sink-pdos =3D
+> +				<PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>,
+> +				<PDO_VAR(5000, 20000, 5000)>;
+> +
+> +			ports {
+> +				#address-cells =3D <1>;
+> +				#size-cells =3D <0>;
+> +
+> +				port@0 {
+> +					reg =3D <0>;
+> +					usbc0_role_sw: endpoint {
+> +						remote-endpoint =3D <&dwc3_0_role_switch>;
+> +					};
+> +				};
+> +
+> +				port@1 {
+> +					reg =3D <1>;
+> +					usbc0_orien_sw: endpoint {
+> +						remote-endpoint =3D <&usbdp_phy0_orientation_switch>;
+> +					};
+> +				};
+> +
+> +				port@2 {
+> +					reg =3D <2>;
+> +					dp_altmode_mux: endpoint {
+> +						remote-endpoint =3D <&usbdp_phy0_dp_altmode_mux>;
+> +					};
+> +				};
+> +			};
+> +		};
+> +	};
+> +};
+> +
+>  &i2c6 {
+>  	status =3D "okay";
+> =20
+> @@ -481,6 +565,16 @@ pcie3_vcc3v3_en: pcie3-vcc3v3-en {
+>  			rockchip,pins =3D <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+>  	};
+> +
+> +	usb {
+> +		usbc0_int: usbc0-int {
+> +			rockchip,pins =3D <3 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +
+> +		vbus5v0_typec_en: vbus5v0-typec-en {
+> +			rockchip,pins =3D <2 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+>  };
+> =20
+>  &pwm1 {
+> @@ -866,6 +960,14 @@ &uart2 {
+>  	status =3D "okay";
+>  };
+> =20
+> +&u2phy0 {
+> +	status =3D "okay";
+> +};
+> +
+> +&u2phy0_otg {
+> +	status =3D "okay";
+> +};
+> +
+>  &u2phy1 {
+>  	status =3D "okay";
+>  };
+> @@ -893,6 +995,27 @@ &u2phy3_host {
+>  	status =3D "okay";
+>  };
+> =20
+> +&usbdp_phy0 {
+> +	mode-switch;
+> +	orientation-switch;
+> +	status =3D "okay";
+> +
+> +	port {
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +
+> +		usbdp_phy0_orientation_switch: endpoint@0 {
+> +			reg =3D <0>;
+> +			remote-endpoint =3D <&usbc0_orien_sw>;
+> +		};
+> +
+> +		usbdp_phy0_dp_altmode_mux: endpoint@1 {
+> +			reg =3D <1>;
+> +			remote-endpoint =3D <&dp_altmode_mux>;
+> +		};
+> +	};
+> +};
+> +
+>  &usbdp_phy1 {
+>  	status =3D "okay";
+>  };
+> @@ -905,6 +1028,20 @@ &usb_host0_ohci {
+>  	status =3D "okay";
+>  };
+> =20
+> +&usb_host0_xhci {
+> +	usb-role-switch;
+> +	status =3D "okay";
+> +
+> +	port {
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +
+> +		dwc3_0_role_switch: endpoint {
+> +			remote-endpoint =3D <&usbc0_role_sw>;
+> +		};
+> +	};
+> +};
+> +
+>  &usb_host1_ehci {
+>  	status =3D "okay";
+>  };
 
 
---6655860ab50d87daa0204e489dd2504ca4fc9154ff9510bb077e41da56ae
+--33bca27b73304a4270d6ea8fbc04c0d790682b0e0c2dc71e4f7c11e0ec14
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaB3/wwAKCRDXblvOeH7b
-biJWAPwP5+nFvMYlxo+Uf4SxONp4EbIR9ujXYtqplfzzKyENUAD/R5g1zPNEXBx4
-wQAeV1eNLGfh/kvi5dsnxCAolMKa5Qs=
-=Gk0H
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaB4AjgAKCRDXblvOeH7b
+bt6iAP4kthtjrbYmyarcnjN/1gVMWFkZhBOQ9q75f2+QZUWYKQD/WnNV8qywAzPX
+7WOOlBtd2T/Qhse1vAlbhjcj/yu05Qo=
+=RLtz
 -----END PGP SIGNATURE-----
 
---6655860ab50d87daa0204e489dd2504ca4fc9154ff9510bb077e41da56ae--
+--33bca27b73304a4270d6ea8fbc04c0d790682b0e0c2dc71e4f7c11e0ec14--
 
 
---===============1793171661575825185==
+--===============2172869945325970636==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -330,5 +423,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============1793171661575825185==--
+--===============2172869945325970636==--
 
