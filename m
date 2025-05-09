@@ -4,61 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9C7BC3ABCC
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 20:25:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DEF6C3ABBC
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 20:26:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QZoIHHbdmEX+SfkbiPE/ElTl5UWagD2m1yXlEAR+o+U=; b=VSf483XRtAMbsmhFgsAb0HxE+A
-	L8roFzkiuqSfuUshGL6eK9RBrRvQNsSThjXsLOUUfFChIfph4dKtn/Z06CfFc2kAvNwNmzcl422d2
-	8zfndUUd59Gs/VaWXpd0GK0jOxr6bRZykTshq0mxw4Lztu6L6Vl0Yray5p3RCmh/+sAehdVwTgPY0
-	TALRmU7fKJtZ0qt9902iugsI3CfHoNYxeHia6zPATS2vb3N+SE3L9i/MA6+C0uDsUyq3SSpdtlkp8
-	mKC+ixdnlshiOrJHs5Fawo6FBZFJOk6/UHmXL0xu3inqIuTI18XvoTix+GKDC4920As3OKzQMXN6b
-	BFhTVX4A==;
+	bh=24tjVtgUKZIO6BZpoNnNBZ099R0YGK+qlzmgPFV+Dqo=; b=KdBBmoYiV7XkWHrjeREOkzJJYJ
+	WUBNL2V+Lca+3sno7TiTrqCbtXgvWijJj8lk2ufrP2A6zs8ujQK2e3U0zoXdYTSZbjRUFoM1ni+Dv
+	7AIEP9P73VjsYmPoyx40uLdo9JDwIYrwQpbS26TV6CLGpWNsEJ/1l35099uAsuJZ6eFERYHCOAxcu
+	jpPumV3gecpucEcHUCJdVn72+r/T86kml3k7SR5xGq2NSN6nHEwgkeaxQoCnBzHCc9YiOBVS8vR+Y
+	7pifEQwU4bFSEZCaIgNvTh5Wn97kSDZn8d1kMY2nphaX1djSYlOFvP7iJyxkexSCOrM132H3jqCbh
+	bnWccwcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDUHw-00000004mq2-0f8X;
-	Fri, 09 May 2025 20:25:44 +0000
-Received: from out-186.mta1.migadu.com ([2001:41d0:203:375::ba])
+	id 1uDUIF-00000004nPG-3Ye5;
+	Fri, 09 May 2025 20:26:03 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDQx7-00000004M5C-3DsD
-	for linux-rockchip@lists.infradead.org;
-	Fri, 09 May 2025 16:52:03 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1746809509;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Ckl3vux5StOjvP2+47jrXU3fLRpLeSvxiApo1TU/VDQ=;
-	b=P/NX0RgHit5EEJXk2v6IpDcc0CmX9jjuKGJ8J8O5RFsGJ+rX/Zfmu63/p9HRzmJ0SEju20
-	pN/gP6SdukESlLnnl2aOcQMGBMKpLbRL94g/juVXzwRKDpD05cfRZQ8VUzJA29MnSUgMZo
-	ZY4jHyKEEzcKFwwvHSoce0HjegXD/XQoC3oHYQxUqnMJtD5Job1emTRTCTV1VNsFpYqyB4
-	jx8bXA/Cqycgs8BL93wm4v4emqKSe08tJV905bRCSeEdKjQlyHIPr69944V7VG5RAvu1H0
-	GyRVpehpmWhks+9m0/OocqJs2C+FWFdssWbUkQJHyPXeEUX0eMh99gpsf78PVA==
-Date: Fri, 09 May 2025 18:51:21 +0200
-Message-Id: <D9RSA5K547DD.1LYPIZZM4XALS@cknow.org>
-Cc: "Conor Dooley" <conor+dt@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Dragan Simic" <dsimic@manjaro.org>, "Rob Herring"
- <robh@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>
-Subject: Re: [PATCH 0/1] arm64: dts: rockchip: rk3568: Move PCIe3 MSI to use
- GIC ITS
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Diederik de Haas" <didi.debian@cknow.org>, "Chukun Pan"
- <amadeus@jmu.edu.cn>, "Heiko Stuebner" <heiko@sntech.de>
-References: <20250308093008.568437-1-amadeus@jmu.edu.cn>
- <D9RQN76VZXO8.T3I0046FNVG3@cknow.org>
-In-Reply-To: <D9RQN76VZXO8.T3I0046FNVG3@cknow.org>
-X-Migadu-Flow: FLOW_OUT
+	id 1uDRs9-00000004UZa-0Cmd;
+	Fri, 09 May 2025 17:50:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1746813039; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=WD1GJHv265qHrwYpctoxZaOYaa/ZsV4LUQwylYV9H7R2rdemwnvYEMBIIzSWomua3qoAZ0W+lFIQC+++32an101/qGZftK0Vc5ViftIxtBXj6Y6MoCMS9R7MhauhsJ3Knywg3LH3bN8VThrgj0wWdl42/IY1abRizqkHSOPSFQ0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1746813039; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Xb3FAM9DukSaaQnWJ0ny0WfqjW4tD0jQW7N74zDuk9s=; 
+	b=g6V5tiV9ZrpcTJm4fi8a7nWvkD7mfwAIZG+FGk/R4g6SbnlFfNWhYYmt0zF8F2Yj/LNKE8HblrZWjxIGEGKIaWZTZRUlzH88+wQu0gGzIGC60Hy/KbSQrHQ1FuP7LPJlzMkubDW8z+oUR7f2yIgESuJ9WoMgDaeTxlNknpiSL3I=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1746813039;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=Xb3FAM9DukSaaQnWJ0ny0WfqjW4tD0jQW7N74zDuk9s=;
+	b=j9GzPjuQKtxd5MFrYPJU81cGLRQ8Sdf3UrUJ2q+/gwX+qT1c108DGuwFcoopLIgI
+	mUtAnqZkVR06BZbaizKjx1qlebwFuWhXjrKA4mVmaRd9Z/5lUstqmWD1MlwQH1n20ZX
+	4xhoS9nJiuyxG8utUgc5uQzkXDwDK0BzTt0cqs/g=
+Received: by mx.zohomail.com with SMTPS id 1746813037295349.70202147402665;
+	Fri, 9 May 2025 10:50:37 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 395A518074B; Fri, 09 May 2025 19:50:33 +0200 (CEST)
+Date: Fri, 9 May 2025 19:50:33 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Cc: "Rob Herring (Arm)" <robh@kernel.org>, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, 
+	FUKAUMI Naoki <naoki@radxa.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>
+Subject: Re: [PATCH v2 0/5] arm64: dts: rockchip: add ROCK 5B+ support
+Message-ID: <peq364nrf7x2zy6ou3tkxpilvs34dbcf3x2oxscf6z5aorq5eb@twxasrypjpl7>
+References: <20250508-rock5bp-for-upstream-v2-0-677033cc1ac2@kernel.org>
+ <174679985287.3369051.14227124355079340433.robh@kernel.org>
+ <1893373.atdPhlSkOF@diego>
+MIME-Version: 1.0
+In-Reply-To: <1893373.atdPhlSkOF@diego>
+X-Zoho-Virus-Status: 1
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.4.2/246.795.57
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_095201_938285_71FA1557 
-X-CRM114-Status: GOOD (  15.62  )
+X-CRM114-CacheID: sfid-20250509_105057_152275_BA1A2F84 
+X-CRM114-Status: GOOD (  38.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,74 +81,152 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4847179678175237855=="
+Content-Type: multipart/mixed; boundary="===============7336907096499031707=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============4847179678175237855==
-Content-Type: multipart/signed;
- boundary=3e23f8a3f7dd23a047277bc59f050a2e77210dee6735ec02b945a8d601bd;
- micalg=pgp-sha512; protocol="application/pgp-signature"
 
---3e23f8a3f7dd23a047277bc59f050a2e77210dee6735ec02b945a8d601bd
+--===============7336907096499031707==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="6qqwt57436zwj5dk"
+Content-Disposition: inline
+
+
+--6qqwt57436zwj5dk
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [PATCH v2 0/5] arm64: dts: rockchip: add ROCK 5B+ support
+MIME-Version: 1.0
 
-Hi again,
+Hi,
 
-On Fri May 9, 2025 at 5:34 PM CEST, Diederik de Haas wrote:
-> On Sat Mar 8, 2025 at 10:30 AM CET, Chukun Pan wrote:
->> For a long time, rk3568's MSI-X had bugs and could only work on one node=
-.
->> e.g. [    7.250882] r8125 0002:01:00.0: no MSI/MSI-X. Back to INTx.
->>
->> Following commit b956c9de9175 ("arm64: dts: rockchip: rk356x: Move
->> PCIe MSI to use GIC ITS instead of MBI"), change the PCIe3 controller's
->> MSI on rk3568 to use ITS, so that all MSI-X can work properly.
->>
-> I tested this patch on my NanoPi R5S with a 6.15-rc3 kernel + a number
-> of [vcc|phy]-supply patches that have been accepted for 6.16 (and a
-> small WIP LED patch).
->
-> With this patch I get the following kernel warnings:
->
-> pci 0001:10:00.0: Primary bus is hard wired to 0
-> pci 0002:20:00.0: Primary bus is hard wired to 0
->
-> If I 'unapply' this patch, I don't see those warnings.
+On Fri, May 09, 2025 at 05:12:22PM +0200, Heiko St=FCbner wrote:
+> Am Freitag, 9. Mai 2025, 16:17:02 Mitteleurop=E4ische Sommerzeit schrieb =
+Rob Herring (Arm):
+> >=20
+> > On Thu, 08 May 2025 19:48:49 +0200, Sebastian Reichel wrote:
+> > > This series adds support for the ROCK 5B+, which (as the name suggest=
+s)
+> > > is an improved version of the ROCK 5B. It also adds initial USB-C
+> > > support for both the ROCK 5B and the 5B+.
+> > >=20
+> > > Changes in PATCHv2:
+> > >  - Link to v1: https://lore.kernel.org/r/20250324-rock5bp-for-upstrea=
+m-v1-0-6217edf15b19@kernel.org
+> > >  - Replaced DT binding patch with the version from NAOKI
+> > >  - Dropped unused pinctrl for vcc5v0_host_en from the shared DT
+> > >  - Moved USB-C SBU DC pins to board specific files, since they differ
+> > >    between Rock 5B and Rock 5B+
+> > >  - Added pinmux for SBU DC pins
+> > >  - Rebased to latest version of Heiko's for-next branch
+> > >  - Disable USB-C on Rock 5B for now
+> > >=20
+> > > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > > ---
+> > > FUKAUMI Naoki (1):
+> > >       dt-bindings: arm: rockchip: Add Radxa ROCK 5B+
+> > >=20
+> > > Sebastian Reichel (4):
+> > >       arm64: dts: rockchip: move rock 5b to include file
+> > >       arm64: dts: rockchip: move rock 5b to include file
+> > >       arm64: dts: rockchip: add Rock 5B+
+> > >       arm64: dts: rockchip: add USB-C support for ROCK 5B+
+> > >=20
+> > >  .../devicetree/bindings/arm/rockchip.yaml          |    5 +
+> > >  arch/arm64/boot/dts/rockchip/Makefile              |    1 +
+> > >  .../boot/dts/rockchip/rk3588-rock-5b-plus.dts      |  129 +++
+> > >  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |  970 +---------=
+--------
+> > >  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi   | 1082 ++++++++++=
+++++++++++
+> > >  5 files changed, 1247 insertions(+), 940 deletions(-)
+> > > ---
+> > > base-commit: b7caeb9545db25649eda36ce593b70cc2aa804ab
+> > > change-id: 20250324-rock5bp-for-upstream-fd85b00b593b
+> > >=20
+> > > Best regards,
+> > > --
+> > > Sebastian Reichel <sre@kernel.org>
+> > >=20
+> > >=20
+> > >=20
+> >=20
+> >=20
+> > My bot found new DTB warnings on the .dts files added or changed in this
+> > series.
+> >=20
+> > Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+> > are fixed by another series. Ultimately, it is up to the platform
+> > maintainer whether these warnings are acceptable or not. No need to rep=
+ly
+> > unless the platform maintainer has comments.
+> >=20
+> > If you already ran DT checks and didn't see these error(s), then
+> > make sure dt-schema is up to date:
+> >=20
+> >   pip3 install dtschema --upgrade
+> >=20
+> >=20
+> > This patch series was applied (using b4) to base:
+> >  Base: base-commit b7caeb9545db25649eda36ce593b70cc2aa804ab not known, =
+ignoring
+> >  Base: attempting to guess base-commit...
+> >  Base: tags/v6.15-rc1-40-g425af91c5802 (best guess, 2/3 blobs matched)
+> >
+> > If this is not the correct base, please add 'base-commit' tag
+> > (or use b4 which does this automatically)
 
-I was pretty sure I had seen those messages before, but couldn't find
-them before. But now I have: on my rk3588-rock-5b.
+Looks like I missed that the rebase to your latest for-next
+branch kept one patch, which you dropped ("Revert "dt-bindings: mfd:
+syscon: Add rk3528 QoS register compatible") resulting in the
+unknown base commit being specified by b4. FWIW the real base commit
+would have been e8adbfc19627.
 
-> It's possible that this patch only brought a(nother) problem to light,
+> > New warnings running 'make CHECK_DTBS=3Dy for arch/arm64/boot/dts/rockc=
+hip/' for 20250508-rock5bp-for-upstream-v2-0-677033cc1ac2@kernel.org:
+> >=20
+> > arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: /edp@fdec0000: fa=
+iled to match any schema with compatible: ['rockchip,rk3588-edp']
+> > arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dtb: /edp@fded0000: fa=
+iled to match any schema with compatible: ['rockchip,rk3588-edp']
+>=20
+> This should be already fixed by the rk3588-edp addition in linux-next:
+> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commi=
+t/?id=3Df855146263b14abadd8d5bd0e280e54fbab3bd18
 
-So it looks indeed to be this.
+In any case it's unrelated to this series, since neither the ROCK
+5B, nor the 5B+ use or reference the edp node at all.
 
-Cheers,
-  Diederik
+Makes me wonder, if it would also have triggered with the correct
+base (since the eDP DT binding is not in that branch).
 
->> Chukun Pan (1):
->>   arm64: dts: rockchip: rk3568: Move PCIe3 MSI to use GIC ITS
->>
->>  arch/arm64/boot/dts/rockchip/rk3568.dtsi | 8 ++++----
->>  1 file changed, 4 insertions(+), 4 deletions(-)
+-- Sebastian
 
-
---3e23f8a3f7dd23a047277bc59f050a2e77210dee6735ec02b945a8d601bd
+--6qqwt57436zwj5dk
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaB4yngAKCRDXblvOeH7b
-btTxAP9xcOOm/DKb1fMqBqNcR6qUMiNnWv1MKSyU06BFXAH6LQEAocEqmFyRa4iT
-xDj91oyTLTpAr8k0/xJZDB//WWhFPgs=
-=V4q7
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmgeQF0ACgkQ2O7X88g7
++poitw/+MHq79V24l1hjQHIuzvUXGjLZaEZfilPxIIKKwqfRXgozYO/1qo1Qr08y
+rgipI7lJEkwU+6LyXCkV85gip4HtjABRIvJT5U8QOmxHdCWaj/L/QoB3fehF+pFM
+OZ4bJf3uBaLhY7Icf5wEPRGLfiGvbCkiAxRGtAyyqF5PSMsQF1wpmsYE8cuf3LDz
+ZGwMUC/RSatYCdbPSnfQUAyUElyqppj/DDAKEu3ASN4dsNtDqENHZWhkIkWjhbM/
+RqSRXUqossAKXNVLngyJ8lOzI2g/hO7/KNDRC656BLcZO1tdo3TtGZgCFT7E/8bC
+k3fQ6h3GySO4rBH2ksheBF7CaxBc6b/YfNZv4Oc/rE0tKFsKqV/BCYRkqBmAUBSM
+v5dcUKf90u7m3SO0C8bWBJtZDbbjTwViVVJzVdSvCchkOFJuw591s12IfconMp9R
+jR35TA5n7RCuSrPbzwTpGwI646B9u9GWhYpbDmdPO0OmLWSoZ1ApIODNIYbaMMqk
+5CJBOgOYbWbLErGZyH8aNoJyaJpQHMuBeZulAWbBlS3xNQnjD8IXzu7bw/WtquDR
+1IM96K7AEs+bu+PZC8VslfUkMCIdzM1y+VEP7ibHNtn1I4ujZwjLMz5GxcwZza3G
+r0gAl6x8plUQNVMFYGVARO5zbvJXVtgram6hkRAbTY1+zHikEKg=
+=k755
 -----END PGP SIGNATURE-----
 
---3e23f8a3f7dd23a047277bc59f050a2e77210dee6735ec02b945a8d601bd--
+--6qqwt57436zwj5dk--
 
 
---===============4847179678175237855==
+--===============7336907096499031707==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -148,5 +237,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============4847179678175237855==--
+--===============7336907096499031707==--
 
