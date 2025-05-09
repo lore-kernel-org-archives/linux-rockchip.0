@@ -4,68 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78E01C3ABBC
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 21:09:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8397C3ABD2
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 21:09:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A4gKG/yrZdZGNmxk4dJqWW2YiEOSNLwMs+4HJtbxLkA=; b=Sk+NwstehNauA5
-	wdFNtTKdXgIKP+LdFfizbR/FwXeuSwUzYenVrlwzEGi3jrXOn6LU8olIOP8G1zlkpFH7/DeTxmcBK
-	46NoEEted3lVZYVUXBd/WepCcGSVrfUo1uAl7Z87gkuJyrXEQYXmD88t/0d+fQ7QRewRuEqogEJdz
-	TFPy0TRH8/94P75gSRQHL+UvkuRJwIX07AemupSuTKmX+zKq4jPx9kePEHnG450PZxwqFfY3nDelX
-	Gxac6OaF9nsTladHbd7gIThuSSafkRCQJ9WgQ0mEpVWWyPzOJ7sBbRbZmY558Rx3STKf5w30Ce3Bn
-	3QIOW/rpRIyka9e3OuMA==;
+	List-Owner; bh=LVVnleOjmbXaIHB4m17UVlwTkzvYRJ2exaXM9FLibl4=; b=uO4UcU4JFb9F8r
+	k4QSVfZnJBpaehSOud93x0jUTMIPVpGwQ/419XRiJCYoMrS0DLjPnEPNvOC3PoPr94sOFW+cEM9u5
+	4jyseElRD6VpLj3CB06cogE0Ylr3sim1WCmOx48YIHvUTgj7JXMC5tWETOzR7TcfKB2PTTSNQNWnG
+	g5td+Igp3jJRMzTkgXbmKlEZVEGGLGnaRN6vbKQxSL6jb/uqtmrD+xtbgGg6BWyItEjcdHmeClA2w
+	Yn/G/lWdbE/QUe/48a/S6mOMCmxe8nYPVoVy4+MkJQq7uAE37bbkizcKX8OQf9eDfOTa38zeyqBkU
+	pzvAM6CPFNveb2uBDMHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDUxq-00000004ukG-1UDM;
-	Fri, 09 May 2025 21:09:02 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1uDUxp-00000004uiI-0gBV;
+	Fri, 09 May 2025 21:09:01 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDUGW-00000004mDB-3MX2
-	for linux-rockchip@lists.infradead.org;
-	Fri, 09 May 2025 20:24:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1746822255; bh=P7gThKkrMd1a1lQEc13hoEpYQxfaSplFlrYwQwnShkc=;
- b=xbwddUkKV7NmBe8h4fy0WmF2iClgrq7KUYh4IhQLGlRgX24hFFjrxFLF53GKuDYYrTEQ7Q1Yx
- 4bwSTHwGnUhChmlpQadJsnD9Tb27EiAFDhzX/KtFrXVEyIMFOxi43tbu3+z6Bm+byn9dKR4QJSL
- TN2L77BuFOsOoHHkWvJymW8FawSqztTPo2mK8vBjrDU+yds/yWU7IvFhqO/lLr/00f+mmcqdIHn
- Ht+oTI7Ks1fqgg2BACewQ4vSHg+q1i/sD6aZIlxZEL4K/II01IwdKqutoz2FeLcrMfjs1zpTiRs
- kZB55tP5O60+WOANag/ZPXW+ucHmVZEUcFnb312AWeFg==
-X-Forward-Email-ID: 681e646cb323f1ffafd05d85
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 1.0.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Yao Zi <ziyao@disroot.org>,
-	Chukun Pan <amadeus@jmu.edu.cn>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 1/2] arm64: dts: rockchip: Add GMAC nodes for RK3528
-Date: Fri,  9 May 2025 20:23:57 +0000
-Message-ID: <20250509202402.260038-2-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250509202402.260038-1-jonas@kwiboo.se>
-References: <20250509202402.260038-1-jonas@kwiboo.se>
+	id 1uDTtt-00000004i9O-1OaL;
+	Fri, 09 May 2025 20:00:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=9Tr4avpC+MzvgrSxOKKwZnty7WT+VJA3Ia5CbcZG9eE=; b=upIHKf688KyjcXYyPtW85pwgAt
+	C3OPu7vGZALzoW+7SD/d5roc59G9tisVuiDh5oUDHm7g0SVCfNADoOYVeSZlffaBDy5H5B4A5U/6u
+	7ky80Mb8PyHLhepkFO1a+b/o8r2W6Wl4SS98QIacNpO/T+JREjHIibuCqqcw4UzHkm0S+C+l2ehTP
+	lWjy6VEoP/0xSK8vfIObJ55cdhNIFkNezFMFrEdBCMtcn5eJACSd9CU5bteWUxPLrzYcrSHDPCOHE
+	09ul8USQrhUCLJg5jv3RdAzLO+yQ/mSOj4Pc5kLdsKby7uup2BspuBZgwcvsWszYBW1HS8dUYKKSz
+	ElCunnmQ==;
+Received: from i53875a1d.versanet.de ([83.135.90.29] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uDTtZ-0004Jo-R4; Fri, 09 May 2025 22:00:33 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Chaoyi Chen <kernel@airkyi.com>
+Subject: Re: [PATCH v3 0/2] Add support for rk3399 industry evaluation board
+Date: Fri,  9 May 2025 22:00:20 +0200
+Message-ID: <174682074869.2029046.5714989650782845441.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250506034347.57-1-kernel@airkyi.com>
+References: <20250506034347.57-1-kernel@airkyi.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_132417_182899_2F523783 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20250509_130053_378171_E3B39357 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,151 +65,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Conor Dooley <conor+dt@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Jonas Karlman <jonas@kwiboo.se>, Jimmy Hon <honyuenkwun@gmail.com>, linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Quentin Schulz <quentin.schulz@cherry.de>, Alexey Charkov <alchark@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org, Jianfeng Liu <liujianfeng1994@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RK3528 has two Ethernet controllers based on Synopsys DWC
-Ethernet QoS IP.
 
-Add device tree nodes for the two Ethernet controllers in RK3528.
+On Tue, 06 May 2025 11:43:45 +0800, Chaoyi Chen wrote:
+> General feature for rk3399 industry evaluation board:
+> - Rockchip RK3399
+> - 4GB LPDDR4
+> - emmc5.1
+> - SDIO3.0 compatible TF card
+> - 1x HDMI2.0a TX
+> - 1x HDMI1.4b RX with TC358749XBG HDMI to MIPI CSI2 bridge chip
+> - 1x type-c DisplayPort
+> - 3x USB3.0 Host
+> - 1x USB2.0 Host
+> - 1x Ethernet / USB3.0 to Ethernet
+> 
+> [...]
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
-Changes in v3:
-- No change
+Applied, thanks!
 
-Changes in v2:
-- Add ethernet-phy@2 for the integrated PHY
+[1/2] dt-bindings: arm: rockchip: Add rk3399 industry evaluation board
+      commit: ff7c417e54a8cca74db147ba0417ecdfcb99f89c
+[2/2] arm64: dts: rockchip: Add rk3399-evb-ind board
+      commit: 2435fca0580ca9b58a8c5a71e5bd61b9707bc313
 
-I have no board that expose an Ethernet port for the gmac0 and the
-integrated PHY. However, the PHY can be identified on addr 0x2 as
-0044.1400 and in vendor kernel this relate to the Rockchip RK630 PHY.
-A proper PHY driver will be needed to support real use of gmac0.
----
- arch/arm64/boot/dts/rockchip/rk3528.dtsi | 105 +++++++++++++++++++++++
- 1 file changed, 105 insertions(+)
+Dropped the regulator-compatible and reordered some minor things.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-index 193b84b5e912..cd8ef389ccf3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-@@ -677,6 +677,111 @@ saradc: adc@ffae0000 {
- 			status = "disabled";
- 		};
- 
-+		gmac0: ethernet@ffbd0000 {
-+			compatible = "rockchip,rk3528-gmac", "snps,dwmac-4.20a";
-+			reg = <0x0 0xffbd0000 0x0 0x10000>;
-+			clocks = <&cru CLK_GMAC0_SRC>, <&cru CLK_GMAC0_RMII_50M>,
-+				 <&cru CLK_GMAC0_RX>, <&cru CLK_GMAC0_TX>,
-+				 <&cru PCLK_MAC_VO>, <&cru ACLK_MAC_VO>;
-+			clock-names = "stmmaceth", "clk_mac_ref",
-+				      "mac_clk_rx", "mac_clk_tx",
-+				      "pclk_mac", "aclk_mac";
-+			interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "macirq", "eth_wake_irq";
-+			phy-handle = <&rmii0_phy>;
-+			phy-mode = "rmii";
-+			resets = <&cru SRST_A_MAC_VO>;
-+			reset-names = "stmmaceth";
-+			rockchip,grf = <&vo_grf>;
-+			snps,axi-config = <&gmac0_stmmac_axi_setup>;
-+			snps,mixed-burst;
-+			snps,mtl-rx-config = <&gmac0_mtl_rx_setup>;
-+			snps,mtl-tx-config = <&gmac0_mtl_tx_setup>;
-+			snps,tso;
-+			status = "disabled";
-+
-+			mdio0: mdio {
-+				compatible = "snps,dwmac-mdio";
-+				#address-cells = <0x1>;
-+				#size-cells = <0x0>;
-+
-+				rmii0_phy: ethernet-phy@2 {
-+					compatible = "ethernet-phy-ieee802.3-c22";
-+					reg = <0x2>;
-+					clocks = <&cru CLK_MACPHY>;
-+					phy-is-integrated;
-+					pinctrl-names = "default";
-+					pinctrl-0 = <&fephym0_led_link>,
-+						    <&fephym0_led_spd>;
-+					resets = <&cru SRST_MACPHY>;
-+				};
-+			};
-+
-+			gmac0_stmmac_axi_setup: stmmac-axi-config {
-+				snps,blen = <0 0 0 0 16 8 4>;
-+				snps,rd_osr_lmt = <8>;
-+				snps,wr_osr_lmt = <4>;
-+			};
-+
-+			gmac0_mtl_rx_setup: rx-queues-config {
-+				snps,rx-queues-to-use = <1>;
-+				queue0 {};
-+			};
-+
-+			gmac0_mtl_tx_setup: tx-queues-config {
-+				snps,tx-queues-to-use = <1>;
-+				queue0 {};
-+			};
-+		};
-+
-+		gmac1: ethernet@ffbe0000 {
-+			compatible = "rockchip,rk3528-gmac", "snps,dwmac-4.20a";
-+			reg = <0x0 0xffbe0000 0x0 0x10000>;
-+			clocks = <&cru CLK_GMAC1_SRC_VPU>,
-+				 <&cru CLK_GMAC1_RMII_VPU>,
-+				 <&cru PCLK_MAC_VPU>,
-+				 <&cru ACLK_MAC_VPU>;
-+			clock-names = "stmmaceth",
-+				      "clk_mac_ref",
-+				      "pclk_mac",
-+				      "aclk_mac";
-+			interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "macirq", "eth_wake_irq";
-+			resets = <&cru SRST_A_MAC>;
-+			reset-names = "stmmaceth";
-+			rockchip,grf = <&vpu_grf>;
-+			snps,axi-config = <&gmac1_stmmac_axi_setup>;
-+			snps,mixed-burst;
-+			snps,mtl-rx-config = <&gmac1_mtl_rx_setup>;
-+			snps,mtl-tx-config = <&gmac1_mtl_tx_setup>;
-+			snps,tso;
-+			status = "disabled";
-+
-+			mdio1: mdio {
-+				compatible = "snps,dwmac-mdio";
-+				#address-cells = <0x1>;
-+				#size-cells = <0x0>;
-+			};
-+
-+			gmac1_stmmac_axi_setup: stmmac-axi-config {
-+				snps,blen = <0 0 0 0 16 8 4>;
-+				snps,rd_osr_lmt = <8>;
-+				snps,wr_osr_lmt = <4>;
-+			};
-+
-+			gmac1_mtl_rx_setup: rx-queues-config {
-+				snps,rx-queues-to-use = <1>;
-+				queue0 {};
-+			};
-+
-+			gmac1_mtl_tx_setup: tx-queues-config {
-+				snps,tx-queues-to-use = <1>;
-+				queue0 {};
-+			};
-+		};
-+
- 		sdhci: mmc@ffbf0000 {
- 			compatible = "rockchip,rk3528-dwcmshc",
- 				     "rockchip,rk3588-dwcmshc";
+Best regards,
 -- 
-2.49.0
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
