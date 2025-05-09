@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8FA2C3ABC9
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 21:54:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3035AC3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 21:56:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JtUM0e37llhISxkmTkIMZA0Z/WS4/sNqupQjyPJbT8Y=; b=l2DFejuVd2yzTV
-	9EAqlN2QLI0LWr5EUGFwpqqzLO7VXCBmF/rj05qAdP2MB5pIQRpdgC4D5X241/cq/gUl2XS4121Hc
-	azTI72Ma1K6kwdtG47rkyFk7Ymo6heHCtLmygLqhHKhYqlCn3ekMZPoFMlgRaT9ZApPsL2BWpz7ya
-	UV409Np4CYC0ehhpnYO9PvIlCb+kr4jmt7nsQ7VL9bR0ES+UQBLBhJlD1Qom5t8tVGE7oZmj28mvf
-	QAopnRdgPSxmku17rgTCRT+iB7lqF4O6s6jpA4pMKDRy0U05O5iHo90n9x8A2htGGXocnZrHRalvH
-	LTVGWex2PQKkPOytKMEg==;
+	List-Owner; bh=jp1/TEn7Xg5QyjoXojnmCDDr3LNvUX1j7/QUrCuqUnA=; b=arsJGfwLNcG2q4
+	co6mgdWOYo9jg5lIedSWntGs+ZcIh0D132ADUDJHQy7RiBi4peIo8oGxtDNGdyhDK9KVfIaKWlqEK
+	P2RkK0+2I6I3+OqwgRWsI8UB2ujOlsheSu7QqoA2WPSxIPdXtZH3cHpf7IIF5/jOEZwpvaothgTNZ
+	mvTmeMnK2deaX+xTKhIpmYghKY65xYhPvsPaBGhOXcmj9BfiBLHhLL2TF/yPaBNc2j5ORqkJ3Y6/S
+	i58JWa7hjixbRX6lRinW4amFVzteGFD+iOkujiFbVzWVDMD0E1J9M3QT4IvA0sDDe+iiIHJplN76n
+	ODiLgkyBf9te069zOH6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDVg0-0000000511M-415g;
-	Fri, 09 May 2025 21:54:40 +0000
-Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
+	id 1uDVi2-000000051CZ-0HoK;
+	Fri, 09 May 2025 21:56:46 +0000
+Received: from relay3-d.mail.gandi.net ([217.70.183.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDVdI-000000050d8-1kWd;
-	Fri, 09 May 2025 21:51:53 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 3C5501FCEC;
-	Fri,  9 May 2025 21:51:48 +0000 (UTC)
+	id 1uDVdH-000000050d5-3ytp;
+	Fri, 09 May 2025 21:51:54 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 3FA711FCEB;
+	Fri,  9 May 2025 21:51:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1746827509;
+	t=1746827508;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=TgOlPoeE2bCg/r65qwHrpLL4u7jVgF7jAVdhkajvXBU=;
-	b=d8+ZtLn1vlV9tU2lu4OXkpu8pzvPKywU7Tm79gDNVp4laBE3jiSQzajLCGN945iXv7x6YB
-	Efs4s5Q9aguNrnNjGgNyl7FtKyeuiylLnkc3ASc8gSolMZN9R0Ie9n9RAEBNv8NtYfHBfA
-	qros7bxfOVWXlxt+LxrUJKwYPgjpvw2VzMoblWqz57AeWW9hjA3p8qQ4PVQKqpwiTp2nl5
-	yq3Es0VZy7OqjGrhOudQGv3IJiqqDywfG+ZMFMK40stUrebni/n0EPaGNLrtjTaqtTuvhX
-	OnsWcfQOMWmMkoVpMdccPvbALOaqtfP3Rh/rWywjkw91Jvs5l0zt/dEqn1AiZg==
+	bh=PLGPh2FOP5gBSogplBe5Hi56djbiBKOKubmlNQeIoYo=;
+	b=DuAvBW2avA9oLpCRX/ei5YvsWsVt2aowNBGfR8oOyJv7oSim+SjO4usuuoYiEfDH328Whl
+	5m/N+eMfGbCg3Kwf4PKkBf9g84kWhMsMiQPznvaGVSadI9BlfCNHb0LDLvU+nrF/P4FfCG
+	EHdgX/L4OW5wxuCIuDUkmZsy5yQuBTnlkw67j3+UujPVTCzbTMGFLTA42GNjVPIqMdKbVA
+	9fMUS+1D1iLMosWOZAhb+Bk8zpoSsK+klX+5W0sP1p6+gpbi0in0CbTlJrGzj8Z7OtQa/T
+	J1zf90J7tI+VgRtX+g+ndJo6+dDfCRM9oSjDQiTln1N9973tXF04vCXldhOW4w==
 From: Olivier Benjamin <olivier.benjamin@bootlin.com>
-Date: Fri, 09 May 2025 23:51:38 +0200
-Subject: [PATCH v3 2/4] dt-bindings: media: imx258: inherit
+Date: Fri, 09 May 2025 23:51:37 +0200
+Subject: [PATCH v3 1/4] dt-bindings: media: ov8858: inherit
  video-interface-devices properties
 MIME-Version: 1.0
-Message-Id: <20250509-camera-v3-2-dab2772d229a@bootlin.com>
+Message-Id: <20250509-camera-v3-1-dab2772d229a@bootlin.com>
 References: <20250509-camera-v3-0-dab2772d229a@bootlin.com>
 In-Reply-To: <20250509-camera-v3-0-dab2772d229a@bootlin.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -69,8 +69,8 @@ X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvleefjeegucetufdoteggode
  ghpthhtohepshdrhhgruhgvrhesphgvnhhguhhtrhhonhhigidruggvpdhrtghpthhtohepfhgvshhtvghvrghmsehgmhgrihhlrdgtohhmpdhrtghpthhtohepkhhriihksehkvghrnhgvlhdrohhrghdprhgtphhtthhopehkrhiikhdoughtsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigqdhrohgtkhgthhhipheslhhishhtshdrihhnfhhrrgguvggrugdrohhrgh
 X-GND-Sasl: olivier.benjamin@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_145152_609578_E3CBC7BF 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20250509_145152_593095_232F2915 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,29 +87,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Update the IMX258 binding to inherit properties defined in the
+Update the OV8858 binding to inherit properties defined in the
 video-interface-devices binding.
 
 Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
 ---
- Documentation/devicetree/bindings/media/i2c/sony,imx258.yaml | 4 +++-
+ Documentation/devicetree/bindings/media/i2c/ovti,ov8858.yaml | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/media/i2c/sony,imx258.yaml b/Documentation/devicetree/bindings/media/i2c/sony,imx258.yaml
-index 975c1d77c8e5d24179e9cb8d92fe7b6798c4d2ec..421b935b52bcaafbee0aff5b5cebc6332409bd8b 100644
---- a/Documentation/devicetree/bindings/media/i2c/sony,imx258.yaml
-+++ b/Documentation/devicetree/bindings/media/i2c/sony,imx258.yaml
-@@ -18,6 +18,8 @@ description: |-
-   The camera module does not expose the model through registers, so the
-   exact model needs to be specified.
+diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov8858.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov8858.yaml
+index a65f921ec0fd24e449331772e39a16cadd73a868..491f2931e6bcdf5a1ad2cd4f9eb187055c3a7a2d 100644
+--- a/Documentation/devicetree/bindings/media/i2c/ovti,ov8858.yaml
++++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov8858.yaml
+@@ -15,6 +15,8 @@ description: |
+   controlled through an I2C-compatible SCCB bus. The sensor transmits images
+   on a MIPI CSI-2 output interface with up to 4 data lanes.
  
 +$ref: /schemas/media/video-interface-devices.yaml#
 +
  properties:
    compatible:
-     enum:
-@@ -81,7 +83,7 @@ required:
-   - reg
+     const: ovti,ov8858
+@@ -69,7 +71,7 @@ required:
+   - clocks
    - port
  
 -additionalProperties: false
