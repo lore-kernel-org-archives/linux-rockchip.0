@@ -4,60 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 759BAC3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 12:23:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC28C3ABC3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 12:55:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:Cc:To:From:Subject:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N2Bc5o308KMaF4t+8ZoBBAZ4Q0moae+w2TGBNNhvrjI=; b=fMp3oHH9pKKQn1uC9Qpuo+/KLQ
-	y+/e0Mhy9CWLsokWoounllMMouWSxlNjuwSTLHW+eSpNkmMI/wIMb2EXYfgWCs8f28pXlDKJBrHXp
-	gTiqjeqCFK3Y6q7ElprIzAj/ET//F2OxrwV08ORW0D5yJLvqPeA/IREaLS3I2m0I7FJIHmkGoScCb
-	nJTY7IE/sc0NPWqKdso4jvsk8S+Ytp2JbzvOetBH7LOV9XTaddcUytOLg+Ii8p2U0yiAnT01EI1VZ
-	0riESnI6d4rEiUvw7SM3EgWlaBQVUuXinMfP+jh7Dwzx7ct3bs1OGJkLRhM1lOYJ9Ljkt1/VMGOiR
-	ohvXWFFg==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=U98JJp6ElwOhrpvYmAu2CvMDimRgf9NbptXSZMeg73E=; b=3cB4ngrMNUbCio
+	yauTN4ZZTYYMtt1cfyObdAzhk0LFgEcA96W9idLL3KeLJ703WVjPRg1kpHm7gGN5uf+BkE8rS377m
+	UC/I5vlyKs6ucE2+fjS+quqISms9bBNOh1QR9MpFeZ11rhhUsxZscLdqBiMjGkT1Vha0edXpxMp25
+	bGEqoCNW1IuKFNLwOlaTYE5nY6au3cibvKJWHq3D6WQK0Po/FeuIn1g06kok45iW5ZHT5Qn6pVIx/
+	WzQhF14J4z5DbLFuRVFNzmiW1hmocn3SYWE0lQXuBauJDBaEQcFkAx+6twfE15YYLP0NjZNfI2EfI
+	j4VeyBxQC9yGnkg6WtrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDMlQ-00000003ZUt-0z3T;
-	Fri, 09 May 2025 12:23:40 +0000
-Received: from out-188.mta1.migadu.com ([2001:41d0:203:375::bc])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDLnN-00000003Q3I-4418
-	for linux-rockchip@lists.infradead.org;
-	Fri, 09 May 2025 11:21:40 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1746789694;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jycqaezhCsooEMLFOB7YGlzrs+SpJfWD5uERxhFzT9w=;
-	b=IjQNX/lCGNU+MTonjMcjwKjBj2i18UbXyRd4mzgOuD/8Pqbj9xH9w3nv1Jyd3tn8PbXrNm
-	fWIVwOKQvpZL9hye+plpkgCiCxABFpmJTxA2+0d1dRqSPldbB3vfYOsOvXuh90Tv96cMh3
-	PD19WdITDHgwDKYJ+RTkRhJ6jjeefPePV/1rQ25feH+F/SutEirtNuULbUjvPoSFmzRGPE
-	ZwT4xnEWsKyBvn9XiNcxCSH1b6K+0qthvDHlraL9f4JkqDXsJ9YUmuEfGD3HyM2FxsU8qX
-	SC62p0PIMKt7DxkT0TJrUYrzdijQJKX/B3C7Morf6mUPHhDTdc25NlYasMqdIA==
-Date: Fri, 09 May 2025 13:21:13 +0200
-Message-Id: <D9RL9DZN7PXS.PGSNWKK9J548@cknow.org>
-Subject: Re: [PATCH 4/6] arm64: dts: rockchip: add px30-cobra base dtsi and
- board variants
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Heiko Stuebner" <heiko@sntech.de>
-Cc: <quentin.schulz@cherry.de>, <robh@kernel.org>, <krzk+dt@kernel.org>,
- <conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- "Heiko Stuebner" <heiko.stuebner@cherry.de>
-References: <20250508150955.1897702-1-heiko@sntech.de>
- <20250508150955.1897702-5-heiko@sntech.de>
-In-Reply-To: <20250508150955.1897702-5-heiko@sntech.de>
-X-Migadu-Flow: FLOW_OUT
+	id 1uDNGK-00000003f6D-3TkA;
+	Fri, 09 May 2025 12:55:36 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uDMTS-00000003X1B-26OO;
+	Fri, 09 May 2025 12:05:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=9Szx3j0XFQEI/UBZs807hBKYHQ3bAc/qN60fFOlHrtI=;
+	b=WE6X6Oe68i2pgvx5xNscRvtTNl3LlOetrwoJA5hDiunh5b9eEwaidFRfleV8n5
+	v+bysff+v0rPSbJOT1Hby7e3FKVCp67ea45gyvg7e2SS/6cmVlmS44czvB2v+aia
+	fsKZBlcG59+ToQhiA3BZFRmj7Ad0b8FgffcspENpFqbac=
+Received: from [192.168.142.52] (unknown [])
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wD3_5EM7x1oPsfZAA--.35294S2;
+	Fri, 09 May 2025 20:03:27 +0800 (CST)
+Message-ID: <78abe899-e529-49e8-9a16-a2657db666e4@163.com>
+Date: Fri, 9 May 2025 20:03:24 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 3/3] PCI: aardvark: Remove redundant MPS configuration
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+ heiko@sntech.de, yue.wang@amlogic.com, neil.armstrong@linaro.org,
+ robh@kernel.org, jingoohan1@gmail.com, khilman@baylibre.com,
+ jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20250506173439.292460-1-18255117159@163.com>
+ <20250506173439.292460-4-18255117159@163.com>
+ <20250506174110.63ayeqc4scmwjj6e@pali>
+ <8a6adc24-5f40-4f22-9842-b211e1ef5008@163.com>
+ <ff6abbf6-e464-4929-96e6-16e43c62db06@163.com>
+ <20250507163620.53v5djmhj3ywrge2@pali>
+ <oy5wlkvp7nrg65hmbn6cwjcavkeq7emu65tsh4435gxllyb437@7ai23qsmpesy>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <oy5wlkvp7nrg65hmbn6cwjcavkeq7emu65tsh4435gxllyb437@7ai23qsmpesy>
+X-CM-TRANSID: _____wD3_5EM7x1oPsfZAA--.35294S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxCrW8WFWktr1rAF45Kw13twb_yoWrWFykpF
+	y3XF1FyFs8Jr13CFnFqa1kKry3tasrKryrXrn8Gry3AF9IqryUGFy2yr4rua47Xr1xCF1j
+	yr1YqrWSvF1Yy3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07URc_hUUUUU=
+X-Originating-IP: [222.71.101.198]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiWwdIo2gd5xbcqQAAsG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_042138_775728_5EBFB52B 
-X-CRM114-Status: GOOD (  19.10  )
+X-CRM114-CacheID: sfid-20250509_050506_913454_BB18AC11 
+X-CRM114-Status: GOOD (  24.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,245 +80,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6213437440915711916=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============6213437440915711916==
-Content-Type: multipart/signed;
- boundary=76ae7b15ebcac961fb29afb3c1039cc390728cd5d52cfd66bb9894187db4;
- micalg=pgp-sha512; protocol="application/pgp-signature"
-
---76ae7b15ebcac961fb29afb3c1039cc390728cd5d52cfd66bb9894187db4
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-
-Hi,
-
-On Thu May 8, 2025 at 5:09 PM CEST, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
->
-> Cobra are Touchscreen devices built around the PX30 SoC using
-> a variety of display options.
->
-> The devices feature an EMMC, network port, usb host + OTG ports and
-> a 720x1280 display with a touchscreen.
->
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   4 +
->  .../rockchip/px30-cobra-ltk050h3146w-a2.dts   |  39 ++
->  .../dts/rockchip/px30-cobra-ltk050h3146w.dts  |  39 ++
->  .../dts/rockchip/px30-cobra-ltk050h3148w.dts  |  39 ++
->  .../dts/rockchip/px30-cobra-ltk500hd1829.dts  |  58 ++
->  arch/arm64/boot/dts/rockchip/px30-cobra.dtsi  | 570 ++++++++++++++++++
->  6 files changed, 749 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w-=
-a2.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w.=
-dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3148w.=
-dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk500hd1829.=
-dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra.dtsi
->
-> <snip>
->
-> diff --git a/arch/arm64/boot/dts/rockchip/px30-cobra.dtsi b/arch/arm64/bo=
-ot/dts/rockchip/px30-cobra.dtsi
-> new file mode 100644
-> index 000000000000..92066cbc1a70
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/px30-cobra.dtsi
-> @@ -0,0 +1,570 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2025 Cherry Embedded Solutions GmbH
-> + */
-> +
-> +/dts-v1/;
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/input/input.h>
-> +#include <dt-bindings/leds/common.h>
-> +#include <dt-bindings/pinctrl/rockchip.h>
-> +#include "px30.dtsi"
-> +
-> +/ {
-> +	aliases {
-> +		mmc0 =3D &emmc;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path =3D "serial5:115200n8";
-> +	};
-> +
-> +	backlight: backlight {
-> +		compatible =3D "pwm-backlight";
-> +		power-supply =3D <&vcc5v0_sys>;
-> +		pwms =3D <&pwm0 0 25000 0>;
-> +	};
-> +
-> +	beeper {
-> +		compatible =3D "pwm-beeper";
-> +		pwms =3D <&pwm1 0 1000 0>;
-> +	};
-> +
-> +	emmc_pwrseq: emmc-pwrseq {
-> +		compatible =3D "mmc-pwrseq-emmc";
-> +		pinctrl-0 =3D <&emmc_reset>;
-> +		pinctrl-names =3D "default";
-> +		reset-gpios =3D <&gpio1 RK_PB3 GPIO_ACTIVE_HIGH>;
-> +	};
-> +
-> +	gpio-leds {
-> +		compatible =3D "gpio-leds";
-> +
-> +		led-0 {
-> +			color =3D <LED_COLOR_ID_BLUE>;
-> +			gpios =3D <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
-> +			label =3D "heartbeat";
-> +			linux,default-trigger =3D "heartbeat";
-> +		};
-> +	};
-> +
-> +	pwm-leds {
-> +		compatible =3D "pwm-leds";
-> +
-> +		ring_red: led-0 {
-> +			color =3D <LED_COLOR_ID_RED>;
-> +			default-state =3D "off";
-> +			label =3D "ring_red";
-> +			pwms =3D <&pwm5 0 1000000 0>;
-> +			max-brightness =3D <255>;
-> +		};
-> +
-> +		ring_green: led-1 {
-> +			color =3D <LED_COLOR_ID_GREEN>;
-> +			default-state =3D "off";
-> +			label =3D "ring_green";
-> +			pwms =3D <&pwm6 0 1000000 0>;
-> +			max-brightness =3D <255>;
-> +		};
-> +
-> +		ring_blue: led-2 {
-> +			color =3D <LED_COLOR_ID_BLUE>;
-> +			default-state =3D "off";
-> +			label =3D "ring_blue";
-> +			pwms =3D <&pwm7 0 1000000 0>;
-> +			max-brightness =3D <255>;
-> +		};
-> +	};
-> +
-> +	/* also named 5V_Q7 in schematics */
-> +	vcc5v0_sys: regulator-vccsys {
-> +		compatible =3D "regulator-fixed";
-> +		regulator-name =3D "vcc5v0_sys";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt =3D <5000000>;
-> +		regulator-max-microvolt =3D <5000000>;
-> +	};
-> +};
-> +
-> +&cpu0 {
-> +	cpu-supply =3D <&vdd_arm>;
-> +};
-> +
-> +&cpu1 {
-> +	cpu-supply =3D <&vdd_arm>;
-> +};
-> +
-> +&cpu2 {
-> +	cpu-supply =3D <&vdd_arm>;
-> +};
-> +
-> +&cpu3 {
-> +	cpu-supply =3D <&vdd_arm>;
-> +};
-> +
-> +&display_subsystem {
-> +	status =3D "okay";
-> +};
-> +
-> +&dsi_dphy {
-> +	status =3D "okay";
-> +};
-> +
-> +&emmc {
-> +	bus-width =3D <8>;
-> +	cap-mmc-highspeed;
-> +	/*
-> +	 * For hs200 support, U-Boot would have to set the RK809 DCDC4
-> +	 * rail to 1.8V from the default of 3.0V. It doesn't do that on
-> +	 * devices out in the field, so disable hs200.
-> +	 * mmc-hs200-1_8v;
-> +	 */
-> +	mmc-pwrseq =3D <&emmc_pwrseq>;
-> +	non-removable;
-> +	vmmc-supply =3D <&vcc_3v3>;
-> +	vqmmc-supply =3D <&vcc_emmc>;
-> +	status =3D "okay";
-> +};
-> +
-> +&gmac {
-> +	clock_in_out =3D "output";
-> +	phy-handle =3D <&dp83825>;
-> +	phy-supply =3D <&vcc_3v3>;
-> +	status =3D "okay";
-> +};
-> +
-> +&gpu {
-> +	mali-supply =3D <&vdd_log>;
-> +	status =3D "okay";
-> +};
-> +
-> +/* I2C0 =3D PMIC, STUSB4500, RTC */
-> +&i2c0 {
-> +	status =3D "okay";
-> +
-> +	rk809: pmic@20 {
-> +		compatible =3D "rockchip,rk809";
-> +		reg =3D <0x20>;
-> +		#clock-cells =3D <0>;
-> +		clock-output-names =3D "xin32k";
-> +		interrupt-parent =3D <&gpio0>;
-> +		interrupts =3D <7 IRQ_TYPE_LEVEL_LOW>;
-> +		pinctrl-names =3D "default";
-> +		pinctrl-0 =3D <&pmic_int>;
-> +		wakeup-source;
-> +		rockchip,system-power-controller;
-
-The "rockchip," prefix is not needed and deprecated, so you can drop it.
-Same issue is present in patch 6 of this series.
-
-Cheers,
-  Diederik
-
---76ae7b15ebcac961fb29afb3c1039cc390728cd5d52cfd66bb9894187db4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaB3lNwAKCRDXblvOeH7b
-bo/FAQC5JFHh6hf/TaSCesVRR7H5eRQlxvlw731y6nMua5aEMAEAhPjTcmcQNuWH
-SVe21rvMza2bRe8N/MCmB9XPapWzzgU=
-=Hk2D
------END PGP SIGNATURE-----
-
---76ae7b15ebcac961fb29afb3c1039cc390728cd5d52cfd66bb9894187db4--
-
-
---===============6213437440915711916==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6213437440915711916==--
-
+CgpPbiAyMDI1LzUvOSAxNTowOCwgTWFuaXZhbm5hbiBTYWRoYXNpdmFtIHdyb3RlOgo+IE9uIFdl
+ZCwgTWF5IDA3LCAyMDI1IGF0IDA2OjM2OjIwUE0gKzAyMDAsIFBhbGkgUm9ow6FyIHdyb3RlOgo+
+PiBPbiBXZWRuZXNkYXkgMDcgTWF5IDIwMjUgMjM6MDY6NTEgSGFucyBaaGFuZyB3cm90ZToKPj4+
+IE9uIDIwMjUvNS83IDIzOjAzLCBIYW5zIFpoYW5nIHdyb3RlOgo+Pj4+IE9uIDIwMjUvNS83IDAx
+OjQxLCBQYWxpIFJvaMOhciB3cm90ZToKPj4+Pj4gT24gV2VkbmVzZGF5IDA3IE1heSAyMDI1IDAx
+OjM0OjM5IEhhbnMgWmhhbmcgd3JvdGU6Cj4+Pj4+PiBUaGUgQWFyZHZhcmsgUENJZSBjb250cm9s
+bGVyIGVuZm9yY2VzIGEgZml4ZWQgNTEyQiBwYXlsb2FkIHNpemUgdmlhCj4+Pj4+PiBQQ0lfRVhQ
+X0RFVkNUTF9QQVlMT0FEXzUxMkIsIG92ZXJyaWRpbmcgaGFyZHdhcmUgY2FwYWJpbGl0aWVzIGFu
+ZCBQQ0llCj4+Pj4+PiBjb3JlIG5lZ290aWF0aW9ucy4KPj4+Pj4+Cj4+Pj4+PiBSZW1vdmUgZXhw
+bGljaXQgTVBTIG92ZXJyaWRlcyAoUENJX0VYUF9ERVZDVExfUEFZTE9BRCBhbmQKPj4+Pj4+IFBD
+SV9FWFBfREVWQ1RMX1BBWUxPQURfNTEyQikuIE1QUyBpcyBub3cgZGV0ZXJtaW5lZCBieSB0aGUg
+UENJIGNvcmUKPj4+Pj4+IGR1cmluZyBkZXZpY2UgaW5pdGlhbGl6YXRpb24sIGxldmVyYWdpbmcg
+cm9vdCBwb3J0IGNvbmZpZ3VyYXRpb25zIGFuZAo+Pj4+Pj4gZGV2aWNlLXNwZWNpZmljIGNhcGFi
+aWxpdGllcy4KPj4+Pj4+Cj4+Pj4+PiBBbGlnbmluZyBBYXJkdmFyayB3aXRoIHRoZSB1bmlmaWVk
+IE1QUyBmcmFtZXdvcmsgZW5zdXJlcyBjb25zaXN0ZW5jeSwKPj4+Pj4+IGF2b2lkcyBhcnRpZmlj
+aWFsIGNvbnN0cmFpbnRzLCBhbmQgYWxsb3dzIHRoZSBoYXJkd2FyZSB0byBvcGVyYXRlIGF0Cj4+
+Pj4+PiBpdHMgbWF4aW11bSBzdXBwb3J0ZWQgcGF5bG9hZCBzaXplIHdoaWxlIGFkaGVyaW5nIHRv
+IFBDSWUKPj4+Pj4+IHNwZWNpZmljYXRpb25zLgo+Pj4+Pj4KPj4+Pj4+IFNpZ25lZC1vZmYtYnk6
+IEhhbnMgWmhhbmcgPDE4MjU1MTE3MTU5QDE2My5jb20+Cj4+Pj4+PiAtLS0KPj4+Pj4+ICDCoCBk
+cml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1hYXJkdmFyay5jIHwgMiAtLQo+Pj4+Pj4gIMKgIDEg
+ZmlsZSBjaGFuZ2VkLCAyIGRlbGV0aW9ucygtKQo+Pj4+Pj4KPj4+Pj4+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1hYXJkdmFyay5jCj4+Pj4+PiBiL2RyaXZlcnMvcGNp
+L2NvbnRyb2xsZXIvcGNpLWFhcmR2YXJrLmMKPj4+Pj4+IGluZGV4IGEyOTc5NmNjZTQyMC4uZDg4
+NTI4OTI5OTRhIDEwMDY0NAo+Pj4+Pj4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2kt
+YWFyZHZhcmsuYwo+Pj4+Pj4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ktYWFyZHZh
+cmsuYwo+Pj4+Pj4gQEAgLTU0OSw5ICs1NDksNyBAQCBzdGF0aWMgdm9pZCBhZHZrX3BjaWVfc2V0
+dXBfaHcoc3RydWN0Cj4+Pj4+PiBhZHZrX3BjaWUgKnBjaWUpCj4+Pj4+PiAgwqDCoMKgwqDCoCBy
+ZWcgPSBhZHZrX3JlYWRsKHBjaWUsIFBDSUVfQ09SRV9QQ0lFWFBfQ0FQICsgUENJX0VYUF9ERVZD
+VEwpOwo+Pj4+Pj4gIMKgwqDCoMKgwqAgcmVnICY9IH5QQ0lfRVhQX0RFVkNUTF9SRUxBWF9FTjsK
+Pj4+Pj4+ICDCoMKgwqDCoMKgIHJlZyAmPSB+UENJX0VYUF9ERVZDVExfTk9TTk9PUF9FTjsKPj4+
+Pj4+IC3CoMKgwqAgcmVnICY9IH5QQ0lfRVhQX0RFVkNUTF9QQVlMT0FEOwo+Pj4+Pj4gIMKgwqDC
+oMKgwqAgcmVnICY9IH5QQ0lfRVhQX0RFVkNUTF9SRUFEUlE7Cj4+Pj4+PiAtwqDCoMKgIHJlZyB8
+PSBQQ0lfRVhQX0RFVkNUTF9QQVlMT0FEXzUxMkI7Cj4+Pj4+PiAgwqDCoMKgwqDCoCByZWcgfD0g
+UENJX0VYUF9ERVZDVExfUkVBRFJRXzUxMkI7Cj4+Pj4+PiAgwqDCoMKgwqDCoCBhZHZrX3dyaXRl
+bChwY2llLCByZWcsIFBDSUVfQ09SRV9QQ0lFWFBfQ0FQICsgUENJX0VYUF9ERVZDVEwpOwo+Pj4+
+Pj4gLS0gCj4+Pj4+PiAyLjI1LjEKPj4+Pj4+Cj4+Pj4+Cj4+Pj4+IFBsZWFzZSBkbyBub3QgcmVt
+b3ZlIHRoaXMgY29kZS4gSXQgaXMgcmVxdWlyZWQgcGFydCBvZiB0aGUKPj4+Pj4gaW5pdGlhbGl6
+YXRpb24gb2YgdGhlIGFhcmR2YXJrIFBDSSBjb250cm9sbGVyIGF0IHRoZSBzcGVjaWZpYyBwaGFz
+ZSwKPj4+Pj4gYXMgZGVmaW5lZCBpbiB0aGUgQXJtYWRhIDM3MDAgRnVuY3Rpb25hbCBTcGVjaWZp
+Y2F0aW9uLgo+Pj4+Pgo+Pj4+PiBUaGVyZSB3ZXJlIHJlcG9ydGVkIG1vcmUgaXNzdWVzIHdpdGgg
+dGhvc2UgQXJtYWRhIFBDSWUgY29udHJvbGxlcnMgZm9yCj4+Pj4+IHdoaWNoIHdlcmUgYWxyZWFk
+eSBzZW50IHBhdGNoZXMgdG8gbWFpbGluZyBsaXN0IGluIGxhc3QgNSB5ZWFycy4gQnV0Cj4+Pj4+
+IHVuZm9ydHVuYXRlbHkgbm90IGFsbCBmaXhlcyB3ZXJlIHRha2VuIC8gYXBwbGllZCB5ZXQuCj4+
+Pj4KPj4+PiBIaSBQYWxpLAo+Pj4+Cj4+Pj4gSSByZXBsaWVkIHRvIHlvdSBpbiB2ZXJzaW9uIHYy
+Lgo+Pj4+Cj4+Pj4gSXMgdGhlIG1heGltdW0gTVBTIHN1cHBvcnRlZCBieSBBcm1hZGEgMzcwMCA1
+MTIgYnl0ZXM/Cj4+Cj4+IElJUkMgeWVzLCA1MTItYnl0ZSBtb2RlIGlzIHN1cHBvcnRlZC4gQW5k
+IEkgdGhpbmsgaW4gcGFzdCBJIHdhcyB0ZXN0aW5nCj4+IHNvbWUgUENJZSBlbmRwb2ludCBjYXJk
+IHdoaWNoIHJlcXVpcmVkIDUxMi1ieXRlIGxvbmcgcGF5bG9hZCBhbmQgZGlkIG5vdAo+PiB3b3Jr
+ZWQgaW4gMjU2LWJ5dGUgbG9uZyBtb2RlIChub3Qgc3VyZSBpZiB0aGUgY2FyZCB3YXMgbm90IGFi
+bGUgdG8gc3BsaXQKPj4gdHJhbnNhY3Rpb24gb3Igc29tZXRoaW5nIG90aGVyIHdhcyBicm9rZW4s
+IGl0IGlzIHF1aXRlIGxvbmdlciB0aW1lKS4KPj4KPj4+PiBXaGF0IGFyZSB0aGUgZGVmYXVsdCB2
+YWx1ZXMgb2YgRGV2Q2FwLk1QUyBhbmQgRGV2Q3RsLk1QUz8KPj4KPj4gRG8geW91IG1lYW4gdmFs
+dWVzIGluIHRoZSBQQ0ktdG8tUENJIGJyaWRnZSBkZXZpY2Ugb2YgUENJZSBSb290IFBvcnQKPj4g
+dHlwZT8KPj4KPj4gQWFyZHZhcmsgY29udHJvbGxlciBkb2VzIG5vdCBoYXZlIHRoZSByZWFsIEhX
+IFBDSS10by1QQ0kgYnJpZGdlIGRldmljZS4KPj4gVGhlcmUgaXMgb25seSBpbi1rZXJuZWwgZW11
+bGF0aW9uIGRyaXZlcnMvcGNpL3BjaS1icmlkZ2UtZW11bC5jIHdoaWNoCj4+IGNyZWF0ZSBmYWtl
+IGtlcm5lbCBQQ0kgZGV2aWNlIGluIHRoZSBoaWVyYXJjaHkgdG8gbWFrZSBrZXJuZWwgYW5kCj4+
+IHVzZXJzcGFjZSBoYXBweS4gWWVzLCB0aGlzIGlzIGRldmlhdGlvbiBmcm9tIHRoZSBQQ0llIHN0
+YW5kYXJkIGJ1dCB3ZWxsLAo+PiBidWdneSBIVyBpcyBhbHNvIEhXLgo+Pgo+PiBBbmQgc2FtZSBh
+cHBsaWVzIGZvciB0aGUgcGNpLW12ZWJ1LmMgZHJpdmVyIGZvciBvbGRlciBNYXJ2ZWxsIFBDSWUg
+SFcuCj4+Cj4gCj4gT2guIFRoZW4gdGhpcyBwYXRjaCBpcyBub3QgZ29pbmcgdG8gY2hhbmdlIHRo
+ZSBNUFMgc2V0dGluZyBvZiB0aGUgcm9vdCBidXMuIEJ1dAo+IHRoYXQgYWxzbyBtZWFucyB0aGF0
+IHRoZXJlIGlzIGEgZGV2aWF0aW9uIGluIHdoYXQgdGhlIFBDSSBjb3JlIGV4cGVjdHMgZm9yIGEK
+PiByb290IHBvcnQgYW5kIHdoYXQgaXMgYWN0dWFsbHkgcHJvZ3JhbW1lZCBpbiB0aGUgaHcuCj4g
+Cj4gRXZlbiBpbiB0aGlzIE1QUyBjYXNlLCBpZiB0aGUgUENJIGNvcmUgZGVjaWRlcyB0byBzY2Fs
+ZSBkb3duIHRoZSBNUFMgdmFsdWUgb2YKPiB0aGUgcm9vdCBwb3J0LCB0aGVuIGl0IHdvbid0IGJl
+IGNoYW5nZWQgaW4gdGhlIGh3IGFuZCB0aGUgaHcgd2lsbCBjb250aW51ZSB0bwo+IHdvcmsgd2l0
+aCA1MTJCPyBTaG91bGRuJ3QgdGhlIGNvbnRyb2xsZXIgZHJpdmVyIGNoYW5nZSB0aGUgaHcgdmFs
+dWVzIGJhc2VkIG9uCj4gdGhlIHZhbHVlcyBwcm9ncmFtbWVkIGJ5IFBDSSBjb3JlIG9mIHRoZSBl
+bXVsIGJyaWRnZT8KPiAKPiBCdXQgdW50aWwgdGhhdCBpcyBmaXhlZCwgdGhpcyBwYXRjaCBzaG91
+bGQgYmUgZHJvcHBlZC4KPiAKCkRlYXIgTWFuaSwKCkkgd2lsbCBkcm9wIHRoaXMgcGF0Y2ggaW4g
+dGhlIG5leHQgdmVyc2lvbi4KCkJlc3QgcmVnYXJkcywKSGFucwoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
