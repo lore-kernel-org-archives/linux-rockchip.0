@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 488F9C3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 09:24:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47E05C3ABBC
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 09:26:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fRFXabltX4oSFu6/almXokW32nMfgQ1K7q4d47tsEfo=; b=n0HRrxdnyqjufD
-	GeoTVQHU6tsmrxPb8JKhWxnCqircT3qFAmG8BbEa+C7H+1k95zs5P9inYU58AWpvsnV6Z3ep24sVT
-	2OKSoihbAQB+ZDFksthg4PjGzI/MwAldEm46p8IP3RgAC20jDxQJECdmymUAFavjANhZIvQwjJ4zo
-	iAZSAjtKWsSgEVCtZXyRyGdTxVRsVHOKPyHNPw+Am0a4VnxfXOF0f/Mrtjap578kiA/xuIA2fpMV6
-	0A1oHOSIKac/qPHIWw4Zd/5HHIacjQj4kFbqVYHHWXdVrza3gd7FRSPewcB+j4hsrsheQDE1TLYg4
-	Fv/HfO6IbzT0Vsr3F07A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QWZIDCoWWUdJxja8GN/h/5gCjjLjTurJvYIITUYI0KE=; b=qxAqCym7pUMgJM
+	21p+S9tS3JP0p3/T1PgBaNBJa0bEJEihwrLMnzzNBymHJei8ZXomtWDS6m8rx10Uxt5Mbv8k1fwJ2
+	eN1lr+elOxo1IDb8ZPjigeb2ow7mtSfZDap7A683uqCf5WNkb4aTXlzTYYPCFazBZg/UorCgMLDrr
+	MeY0BkbNWQbCJ7yeIetI6qdugiQ+SDSnQDhq+vophHbtUzSKQt5OS4vZaL2rfapxfBsmoh5SxuElW
+	396ToO62fddrRqUWZs534kGQE+DcxEBBxPT/nkO9B37k6DUVIsxWR89L1NXo7lhG3JWInV7cg4/rf
+	P2bFdhTtOK+mizVXCMyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDJyG-000000036Ao-0tDc;
-	Fri, 09 May 2025 09:24:44 +0000
-Received: from out28-53.mail.aliyun.com ([115.124.28.53])
+	id 1uDK0D-000000036eb-1yhw;
+	Fri, 09 May 2025 09:26:45 +0000
+Received: from out28-100.mail.aliyun.com ([115.124.28.100])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDJXe-000000030QP-1cPY;
+	id 1uDJXe-000000030Qk-1KCX;
 	Fri, 09 May 2025 08:57:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=coolkit.cn; s=default;
-	t=1746781027; h=From:To:Subject:Date:Message-Id:MIME-Version;
-	bh=fRMaFKajs8FT8Uo1U+GjWMJn+xnPPEQN51BpCVmEi2s=;
-	b=UAcrXYpy+siHP/sOM+lWHdujLM5X6dLEx9SmbNkwDYwnEYN2NoJZWerXuY/VID6ApG/WdWr2sywV5Yj4f2Lu0kz3zqA7GLygMORAb+686+7UllZJIKKcHi/Q3vVKH+Qh/JP9KlXhm9YrxOCWhUz9C79QePaYF75SG/XCWhXlx7Y=
-Received: from ubuntu-z.lan(mailfrom:hao.zhang@coolkit.cn fp:SMTPD_---.cjnlkfS_1746781022 cluster:ay29)
+	t=1746781029; h=From:To:Subject:Date:Message-Id:MIME-Version;
+	bh=ciWbwyTmOlnq2cLpie/tgwrHFKelOt2C5BCRX15iCf4=;
+	b=fG0f5jYP/FCs2HjoJVpDVrgNI8H25a+dI9v6mCRwgBmnqQhlOSzW82FTKDiBI/3h617wCySqnOpJEvULBuDek3C5rlsBqbOjV7xXmx0qpcnLSwm6pLYGvAR2pMH0F+PRau3cUgi8B+/OOgPJahBsLKlVmlWdLAPQk1QFprugAfQ=
+Received: from ubuntu-z.lan(mailfrom:hao.zhang@coolkit.cn fp:SMTPD_---.cjnlki._1746781023 cluster:ay29)
           by smtp.aliyun-inc.com;
-          Fri, 09 May 2025 16:57:02 +0800
+          Fri, 09 May 2025 16:57:05 +0800
 From: Hao Zhang <hao.zhang@coolkit.cn>
 To: heiko@sntech.de
 Cc: robh@kernel.org,
@@ -45,14 +45,16 @@ Cc: robh@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	"hao.zhang" <hao.zhang@coolkit.cn>
-Subject: [PATCH 0/2] arm: dts: rockchip: Adapt to IO domain and SDIO for Sonoff iHost
-Date: Fri,  9 May 2025 16:56:55 +0800
-Message-Id: <20250509085657.309934-1-hao.zhang@coolkit.cn>
+Subject: [PATCH 1/2] ARM: dts: rockchip: Sonoff-iHost: adjust SDIO for stability
+Date: Fri,  9 May 2025 16:56:56 +0800
+Message-Id: <20250509085657.309934-2-hao.zhang@coolkit.cn>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250509085657.309934-1-hao.zhang@coolkit.cn>
+References: <20250509085657.309934-1-hao.zhang@coolkit.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_015714_774059_4F403032 
-X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-CacheID: sfid-20250509_015714_772105_EF265F29 
+X-CRM114-Status: UNSURE (   8.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,28 +74,37 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: "hao.zhang" <hao.zhang@coolkit.cn>
 
-This patch series makes two corrections for the RV1126-based 
-Sonoff iHost board:
+Reduce max-frequency from 50MHz to 25MHz to improve WiFi module stability
+on some Sonoff iHost units. Remove unsupported or redundant properties,
+and keep only minimal, validated configuration.
 
-- Patch 1 adjusts the SDIO max-frequency to improve WiFi stability.
-- Patch 2 updates the IO domain voltages to match the board schematics.
+Signed-off-by: hao.zhang <hao.zhang@coolkit.cn>
+---
+ arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-The voltage fix is based on verified schematics and helps avoid potential
-hardware instability due to mismatched IO levels. 
-
-Tested on multiple units with improved long-term WiFi operation.
-
-Tim Lunn is Cc'd as the original board support contributor.
-
-*** BLURB HERE ***
-
-hao.zhang (2):
-  ARM: dts: rockchip: Sonoff-iHost: adjust SDIO for stability
-  ARM: dts: rockchip: Sonoff-iHost: correct IO domain voltages
-
- .../arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi | 14 ++++++--------
- 1 file changed, 6 insertions(+), 8 deletions(-)
-
+diff --git a/arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi b/arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi
+index 9a87dc0d5f66..088a069bb1a8 100644
+--- a/arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi
++++ b/arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi
+@@ -342,16 +342,14 @@ &saradc {
+ 
+ &sdio {
+ 	bus-width = <4>;
+-	cap-sd-highspeed;
+ 	cap-sdio-irq;
+ 	keep-power-in-suspend;
+-	max-frequency = <50000000>;
++	max-frequency = <25000000>;
+ 	mmc-pwrseq = <&sdio_pwrseq>;
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdmmc1_clk &sdmmc1_cmd &sdmmc1_bus4>;
+ 	rockchip,default-sample-phase = <90>;
+-	sd-uhs-sdr50;
+ 	vmmc-supply = <&vcc3v3_sd>;
+ 	vqmmc-supply = <&vcc_1v8>;
+ 	status = "okay";
 -- 
 2.34.1
 
