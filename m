@@ -4,66 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54667C3ABBC
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 21:09:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E1A0C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 21:09:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=K+Vvz/PoT3rMYSzQkl1Z6T0dCALtMwj6VnXGQ7LdeFU=; b=Hz+ucqdRb4eu9+
-	hBhXsU5e/26dt7PhhTkdhBqJ9Tn30U8YRxEjPeM7v3BybaMhM1DmEyYBaZUovdTDiUahd9vGRuZ1o
-	MUYtxVzgcd8a4v79cMz+rZDGq5ySfMI4AY8Ajwo7kdDNEkuNS30kEM5vkAwfng5EGlBwyYs144c1i
-	x3N9h0Ku1OTPlgYJpT4fNaiJgvWvs7BbqqkmBgSQpZd+vfgGoMvrmQYwl8uUElOrd6f4E4JUZhrjj
-	3QL3JlkYUq0xWOvyg+0Wn/Yilog4kcqYxu5vPHAfnpvBBbtk8any3mFxVd327jQfza2WOxDm3JEkp
-	z1uV7pc29aTi2582N+dw==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:References:In-Reply-To:
+	Message-Id:Cc:To:From:Date:MIME-Version:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=iuHl0B9VuiP/IbKI680ApXhShBjqRM02m9bB1NCokqc=; b=sw8BpPHc8solInlX620P0T7tlU
+	Z/uatBoHlg9qyQ0c6Ekcvfgx0F9qBdzkv9vjSDQkfY8InRKBekJHM7MG9bhGfPq12mtoNRjr4hLYz
+	cXk3YOEuXaAu36yxpXQaUdeUXVeYgwjm43rmJdBB1Z8nM1Xo1nlbB8lUrGJk9Xluv9WtdGGcTmC/u
+	HY3wjp4xIOnw69IwzidBmODlu5fov5/bT0tCOO2KcehGbWN7H29ByeAWKJY8CKQTi54budvIK4oVf
+	NHV+WUsBH9k/49Hc1X1aZZf5ezJvnlq+BcJ9HsRurHwyQy+i06RI9gPkQcydP1mLS7xQu9H/vLdkO
+	8kwdisBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDUxs-00000004unz-2ZWv;
-	Fri, 09 May 2025 21:09:04 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1uDUy9-00000004vKV-2niA;
+	Fri, 09 May 2025 21:09:22 +0000
+Received: from fhigh-a5-smtp.messagingengine.com ([103.168.172.156])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDUGW-00000004mDA-32dH
-	for linux-rockchip@lists.infradead.org;
-	Fri, 09 May 2025 20:24:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1746822253;
- bh=ox/S3wEHdX6LK40h/zbAQGRFc9coOf0nkAtFa2lcQHo=;
- b=jdEgIrP8zJXhCI5GPgU+oH3ReZGfn2B/IudytCqRxCYbE2B/Zx+7ekrj+MGnzyk4xssu6rM9g
- wLUnk4Gg1KriYU7YvyHfoOYRkZqf4r4b7bSBouX4Jj9qwvs0jI5F8gaLtbp5nf7qoL5RgHFZU/j
- +iEdHNMlWWgVp9ggdIosUKUj2xbYZuDb2BouJPcuEGjFftscIebUjSMjkghr3k6EydIT1DhDPV5
- qEDV205qUR1K2sYfsaPuelnWsgcsi9Wsn0uNM7JkugXV5fAVUy1f/Nof/WNJgySzUi4JyLYCGED
- a5wUJLIziqD2tAGNwniA+K6+9k7E+OdeV2UtkR7ib93w==
-X-Forward-Email-ID: 681e6468b323f1ffafd05d60
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 1.0.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Yao Zi <ziyao@disroot.org>,
-	Chukun Pan <amadeus@jmu.edu.cn>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 0/2] rockchip: Enable Ethernet controller on Radxa E20C
-Date: Fri,  9 May 2025 20:23:56 +0000
-Message-ID: <20250509202402.260038-1-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.49.0
+	id 1uDUtF-00000004uDt-3GUb;
+	Fri, 09 May 2025 21:04:18 +0000
+Received: from phl-compute-05.internal (phl-compute-05.phl.internal [10.202.2.45])
+	by mailfhigh.phl.internal (Postfix) with ESMTP id DE44B11400A9;
+	Fri,  9 May 2025 17:04:16 -0400 (EDT)
+Received: from phl-imap-12 ([10.202.2.86])
+  by phl-compute-05.internal (MEProxy); Fri, 09 May 2025 17:04:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm2; t=1746824656;
+	 x=1746911056; bh=A1ZumDxuGmpXUjlvvZI3hOnnT1685l9jUF3247k5dyA=; b=
+	sWha1hs6PFJJi6uC/F6rQ/iAJeevO8Y4siw7Z7Lt0B9SDv9KlH4AbfQ1cMBX/g+m
+	eyqkxkmGzStRub4lIdqfJUfoAI5AlfkGugr1avdqdtdwVAnoY5y7KNCMPKJ+G2Xi
+	xjLUBqXCNpMtIlLZZbCmpzc6+7c2KN7l9wX3PYk36sTcXsw1anhoVYCTmQfBKBUb
+	QK9Sc7VfbZMeR30PwdgptUqI0l9DfYizdUmaGm9ob2gIArWeQNl/sDrQZfIy0Wn8
+	QiQaqqViRu67pbcM7YgYE5RJ5LdrDbSbJD/UlqpccocyCRODe3pv2qOkY+ndQY/8
+	aDYg97/RxnOjFQIed9wEKw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1746824656; x=
+	1746911056; bh=A1ZumDxuGmpXUjlvvZI3hOnnT1685l9jUF3247k5dyA=; b=q
+	0c9tA685PpwzRYFdGuv3DSQ8cH1X5KpXAntPbnFItACP+T31hmnG3r/3hdjQohx6
+	590uPW8hKirfHT262feIB2y5IBWtru1gj+b7XxVkOoUP79XOtRG/n5siovL7DQUj
+	3AksghhXakhDgoWkQ6cODu1EL5ejXFql3XikwVTlYX6tEpxXn2xtm3dOxMYU3m7a
+	mWUfUjKangduSJ2VJOruFsVH57PahCJjRbofWYYQfEQrkasW+S2953E45sd8PFNX
+	7PS9q/2e3VM3VFrXGVOsixOj70arprWzI0/XRYcjNXYrq7yyvjHLXLSwTdHt9130
+	9y5y+E3eWAudo3YSCpMwQ==
+X-ME-Sender: <xms:0G0eaFAIEC69H_JVLhTXpNtNmmtFvJsdce2Dd8iTSo64ngbIFv9-Mg>
+    <xme:0G0eaDiGAVadl-YyJr-MDND9SP3ByBCIJza8tN9LVdH3OXht-NpMsgfekZ-8ccC21
+    2UnfZW4MIEHj89j8ms>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvleefieehucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
+    pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
+    gvnhhtshculddquddttddmnecujfgurhepofggfffhvfevkfgjfhfutgfgsehtjeertder
+    tddtnecuhfhrohhmpedftehrnhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnug
+    gsrdguvgeqnecuggftrfgrthhtvghrnhephfdthfdvtdefhedukeetgefggffhjeeggeet
+    fefggfevudegudevledvkefhvdeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrg
+    hmpehmrghilhhfrhhomheprghrnhgusegrrhhnuggsrdguvgdpnhgspghrtghpthhtohep
+    iedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepiihihigrohesughishhrohhoth
+    drohhrghdprhgtphhtthhopegrrhhmsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehs
+    ohgtsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigqdgrrhhmqdhkvghrnh
+    gvlheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehlihhnuhig
+    qdhrohgtkhgthhhipheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtth
+    hopehhvghikhhosehsnhhtvggthhdruggv
+X-ME-Proxy: <xmx:0G0eaAnOPEDxNA0b1DUJk0rVAe_pkDNfMBL7-PtvqA4PexsC3MkM4g>
+    <xmx:0G0eaPw7L_75BzAVUbqaWuGH8LvmeTDPT0hnonqyG8AEhv36TkBryg>
+    <xmx:0G0eaKS2lLr5pnIMlkySGxa9CHdeZR2magNJs4xzEO9p2J4hRvo91A>
+    <xmx:0G0eaCa4fyWDPWQGX0TPEYvi7nQq1Ns6zCJyfwTukHKOIbRH430gBA>
+    <xmx:0G0eaOfgl2h4WI-uDqQLd4VFjdyAe9yjuHfKgWMRya_xSRCuc5MCz81R>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id 275BE1C20068; Fri,  9 May 2025 17:04:16 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
+X-ThreadId: T8d120477412db8f8
+Date: Fri, 09 May 2025 23:03:54 +0200
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, arm <arm@kernel.org>
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, "Yao Zi" <ziyao@disroot.org>
+Message-Id: <c142bdf4-3910-48bb-ba5e-8accbdb32a00@app.fastmail.com>
+In-Reply-To: <2307187.iZASKD2KPV@diego>
+References: <2307187.iZASKD2KPV@diego>
+Subject: Re: [GIT PULL] Rockchip dts64 changes for 6.16 #1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_132417_169323_4004AF70 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20250509_140417_893605_90BFE2A3 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +112,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip RK3528 has two Ethernet controllers, one 100/10 MAC to be
-used with the integrated PHY and a second 1000/100/10 MAC to be used
-with an external Ethernet PHY.
+On Thu, May 8, 2025, at 00:04, Heiko Stuebner wrote:
+> Hi soc maintainers,
+>
+> please find below and in a subsequent pull-requests
+> Rockchip changes for for 6.16 .
+>
+> Even some arm32 boards got some love (in the next PR)
 
-This series add device tree nodes for the Ethernet controllers found in
-RK3528 and enable the LAN interface on Radxa E20C.
+One small issue stuck out here:
 
-This include a gmac0 node for the 100/10 MAC and its related integrated
-PHY node that only have recived limited testing. I have no board that
-expose an Ethernet port for the gmac0 and the integrated PHY. However,
-the PHY can be identified on addr 0x2 as 0044.1400 and in vendor kernel
-this relate to the Rockchip RK630 PHY. A proper PHY driver will be
-needed to support any real use of gmac0.
 
-Changes in v3:
-- Rebase on top of latest mmind/for-next
+> Yao Zi (2):
+>       arm64: dts: rockchip: Add I2C controllers for RK3528
 
-Changes in v2:
-- Split from the "Add GMAC support for RK3528" driver series [1]
-- Add ethernet-phy@2 for the integrated PHY
-- Rebase on top of the "Support I2C controllers in RK3528" series [2]
+This creates a lot of new aliases in the dtsi file:
 
-[1] https://lore.kernel.org/r/20250309232622.1498084-1-jonas@kwiboo.se
-[2] https://lore.kernel.org/r/20250309070603.35254-1-ziyao@disroot.org
+index 826f9be0be19..2c9780069af9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+@@ -24,6 +24,14 @@ aliases {
+                gpio2 = &gpio2;
+                gpio3 = &gpio3;
+                gpio4 = &gpio4;
++               i2c0 = &i2c0;
++               i2c1 = &i2c1;
++               i2c2 = &i2c2;
++               i2c3 = &i2c3;
++               i2c4 = &i2c4;
++               i2c5 = &i2c5;
++               i2c6 = &i2c6;
++               i2c7 = &i2c7;
+                serial0 = &uart0;
+                serial1 = &uart1;
 
-Jonas Karlman (2):
-  arm64: dts: rockchip: Add GMAC nodes for RK3528
-  arm64: dts: rockchip: Enable Ethernet controller on Radxa E20C
+but the corresponding nodes are left at disabled. I see
+that the same mistake is present in the uart nodes.
 
- .../boot/dts/rockchip/rk3528-radxa-e20c.dts   |  30 +++++
- arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 105 ++++++++++++++++++
- 2 files changed, 135 insertions(+)
+Please send a fixup to remove these from the .dtsi file
+here and the similar chips, unless you are sure that every
+board will have them enabled (like e.g. the gpio nodes).
 
--- 
-2.49.0
+The aliases are not meant to refer to soc-internal names,
+but the identifiers on board.
 
+      Arnd
 
 _______________________________________________
 Linux-rockchip mailing list
