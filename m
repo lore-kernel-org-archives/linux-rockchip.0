@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9881BC3ABCF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 20:27:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14C74C3ABCB
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 21:09:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ortCC458/fzH/H1Yby9IBGlNeUJaTVuM/Tg8HwwPFAg=; b=gSiqLOeDobsi6D
-	si8A5emupNxvWMzeCaJYaACaeqAd80k0ewJpSRwuvyxVKIw9DNLmWEXxmvhs5iI9tdnR6AIH16UXB
-	/pYz6Let919bcRFJlzx32KgHe1CQ1CFdzB/hhQ9h0D+Ohmw03eadTy2mqUBbFV1GO0PbRAbTv0drX
-	PtY9kQGng496cAj75icVZOn/2LPjvt8iJkMsIyTkcH9SBZvTil/XVvcb5dZs46BUVWl8qZ/K0sOib
-	TdJOVhqeEpFrLFN94R/wxpKiQkZxJSNchyShxuQXxnNTiw8KNg5tkbyUjWyzNtOQtGFLOJoeGvAO8
-	cG/J2e+Ya505wdQALx0A==;
+	List-Owner; bh=kHJwT0aeS/FC9nLYr1LFyh/3B0rVZzWMAe8l3brU48g=; b=i37xK1u5EZCkLV
+	2ddDsgYJMAx9ZfkgrjMa6tH7Zb56YfyhJS6LEi10GSN+eh4WPH2116XoOMj4iDCfv1aV/MeCQ+NDX
+	DFuVJ2se8bWq7pgbUV6y4nnEjUd8wMW1cMA8PE2sz+TRDvSHax3JETDnEhRA517NuV0tOwLQ0TbTM
+	0UJo5vNooygtQOuCC5nlljYwQ0cSCNUs08IxYGqbiH9xWq9+CHgHsRiIGCou835WUSiZ5T2S6yttk
+	P5iOslQIb21Qu+VVU8zJRXxj0HQoAx8QRY7ZNn3o0RUhuIsn4KaabLJcC6lCUAtpSxjEqwgSZzWt0
+	YOoILZj5MKFuw91E4R9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDUK0-00000004p6q-2kMW;
-	Fri, 09 May 2025 20:27:52 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uDUxn-00000004ugU-3dqu;
+	Fri, 09 May 2025 21:08:59 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDScg-00000004akL-0nae;
-	Fri, 09 May 2025 18:39:03 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 77257439FB;
-	Fri,  9 May 2025 18:39:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C5AFC4CEE4;
-	Fri,  9 May 2025 18:39:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746815941;
-	bh=CNzigu9OBmuWrlsbb6lkAHKQvEmV0rXReJcmd4lUIG0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QOR3T+Uea/m9D1NaeSWXmmevBwXXe1rwMHM9tj20bdo5M/Q1Uz6xZw+S9DICifwPw
-	 mq+MEqH0ToOrWY8bUhm2sARgZvXf4NJp+4wzxRfO0ygybgggqztpqAMvpqm7kehrlw
-	 hELbnaCIrgfTjteCssiBoQPaMu0o0oO9jSFmt17Ugt91b0YEVY0KyRByE5AWVL3Egw
-	 iMIpJ6ihhnprEpw8MmmEwfOE4nghtEPK5HSt4MtTLU8qi+T0u5ZphiQdat+TJvlTtU
-	 /H5ahjFWOcwroMtB7aNubyLP5eN/MdKW6LyuF70OlcPx1kMmYPRMavi03kh3Edwb/M
-	 OO+/gygR1OmMg==
-Date: Fri, 9 May 2025 13:38:59 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Lukasz Czechowski <lukasz.czechowski@thaumatec.com>
-Cc: Benjamin Bara <benjamin.bara@skidata.com>,
-	linux-rockchip@lists.infradead.org, stable@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1uDTtn-00000004i8T-3dUC;
+	Fri, 09 May 2025 20:00:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=i0QTL6OGoLDoSHo02DwPWhUp/ii7lcgusrtzJi+Dd24=; b=QcULRaeWBG0HypA38YARbZ+MZa
+	G6dGDhQkzY7/zF+XtNGvIp/ww5yqiwJLRB0FK+PINYJ02h3JUqHF83wiqKovAiKWqnArwx6HLlJPh
+	BI+llkEE50dJACP4dsvkvpG8e2LOSj1FxghJyq988noOvadB+tOWDChqo48ty/S7iDExNzaSG+Hmw
+	/ajS7q8HPClfKXcmASay4oV35JwGIVo69BgeX7ErikyYIjWFL5WR7XrDnlBr/w+c96Vxfho6SN3Zw
+	i4FI0SgUKa4B2BLKoMi7F8oOPqMUcyRRIG4qIg3MAimo4NrUvRvfIVmHpQhuszVZU7bUdKDsC/3m3
+	e3PRuT2w==;
+Received: from i53875a1d.versanet.de ([83.135.90.29] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uDTta-0004Jo-N8; Fri, 09 May 2025 22:00:34 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Klaus Goger <klaus.goger@theobroma-systems.com>,
-	Matthias Kaehlcke <mka@chromium.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/5] dt-bindings: usb: cypress,hx3: Add support for
- all variants
-Message-ID: <174681593868.3912440.12960505435883876267.robh@kernel.org>
-References: <20250425-onboard_usb_dev-v2-0-4a76a474a010@thaumatec.com>
- <20250425-onboard_usb_dev-v2-2-4a76a474a010@thaumatec.com>
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Sugar Zhang <sugar.zhang@rock-chips.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com,
+	linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-sound@vger.kernel.org
+Subject: Re: [PATCH v4 0/5] Add RK3576 SAI Audio Controller Support
+Date: Fri,  9 May 2025 22:00:21 +0200
+Message-ID: <174682074864.2029046.1413189234015489546.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250506-rk3576-sai-v4-0-a8b5f5733ceb@collabora.com>
+References: <20250506-rk3576-sai-v4-0-a8b5f5733ceb@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250425-onboard_usb_dev-v2-2-4a76a474a010@thaumatec.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_113902_245479_7C0DCEEF 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20250509_130047_902702_5D78F486 
+X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,25 +94,32 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 25 Apr 2025 17:18:07 +0200, Lukasz Czechowski wrote:
-> The Cypress HX3 hubs use different default PID value depending
-> on the variant. Update compatibles list.
-> Becasuse all hub variants use the same driver data, allow the
-> dt node to have two compatibles: leftmost which matches the HW
-> exactly, and the second one as fallback.
+On Tue, 06 May 2025 12:42:39 +0200, Nicolas Frattaroli wrote:
+> This series adds support for Rockchip's Serial Audio Interface (SAI)
+> controller, found on SoCs such as the RK3576. The SAI is a flexible
+> controller IP that allows both transmitting and receiving digital audio
+> in the I2S, TDM and PCM formats. Instances of this controller are used
+> both for externally exposed audio interfaces, as well as for audio on
+> video interfaces such as HDMI.
 > 
-> Fixes: 1eca51f58a10 ("dt-bindings: usb: Add binding for Cypress HX3 USB 3.0 family")
-> Cc: stable@vger.kernel.org # 6.6
-> Cc: stable@vger.kernel.org # Backport of the patch ("dt-bindings: usb: usb-device: relax compatible pattern to a contains") from list: https://lore.kernel.org/linux-usb/20250418-dt-binding-usb-device-compatibles-v2-1-b3029f14e800@cherry.de/
-> Cc: stable@vger.kernel.org # Backport of the patch in this series fixing product ID in onboard_dev_id_table in drivers/usb/misc/onboard_usb_dev.c driver
-> Signed-off-by: Lukasz Czechowski <lukasz.czechowski@thaumatec.com>
-> ---
->  .../devicetree/bindings/usb/cypress,hx3.yaml          | 19 ++++++++++++++++---
->  1 file changed, 16 insertions(+), 3 deletions(-)
-> 
+> [...]
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Applied, thanks!
 
+[1/5] arm64: dts: rockchip: Add RK3576 SAI nodes
+      commit: 3dfeccdd3cc88792e631539792a1ecc37a9581dc
+[2/5] arm64: dts: rockchip: Add RK3576 HDMI audio
+      commit: 7f1561d82e3d3589038782f75faa50c65d9cdd42
+[3/5] arm64: dts: rockchip: Add analog audio on RK3576 Sige5
+      commit: f4a9c9fbf02c8948029846aba63c65c0425cb275
+[4/5] arm64: dts: rockchip: Enable HDMI audio on Sige5
+      commit: fcdeb39bb5615c4bb36f69d2ec11f25b54168304
+[5/5] arm64: defconfig: Enable Rockchip SAI and ES8328
+      commit: bd088836a10e418aaf7dbda4a1db9da864f09fb8
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
