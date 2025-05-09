@@ -4,65 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 847D1C3ABBE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 02:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1C1EC3ABC5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 02:32:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cBvsRangyhsD41hfPIqvzwEMRCelwGsE1u/WBq2X4Io=; b=Zv5pnl1U6KufWv
-	eFbbeRYxD9IQ8X4OaSGW2CBGIo3bvf3XdkPk39EepgtfT0qdE705QAFR6/4Cp4dP+tIt0vB5IYqRJ
-	3KbthF0w1Fn5C5mEWHti0kj9snWPAk2CjQ8fjTvpDisUUx3gmNEcqP6BarF0UATAtOFSN7NtA8z7K
-	g8h3jSPlrUdBX1eOxh/U0dhNYXL+X597zImtwlCsxai2Kgg8jWrTixgTGTe1PR6NcsQgssjLzmA/R
-	3dPtSxbEBiRBhNO5PWWl9YoVdDznPDTtUcCRrAcSrEcBJeTl8hMUiGA5ApuQTqpSPoAKO20rGZn4m
-	/kaZ3mmixcRnV1FwUnlw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bnUtK5BsOq//r8wgKkwCITlf0jUG6hcEXhhuMhlMWTQ=; b=hCPYkREjvaHpAN
+	E0JLVBRelgf+Jz6fkocRl4rUuQ8jRF8ajNd0cI2vrSMakwyMvIfo47PyT2qAIxUs9hK3Cdqnyi1SR
+	RdJFWX9MuW+wQR7c0bVE/7lZU5yfkIoco4s/JPlWLcBI7OCcDd0gOteJ5aUunqYLiMXD69jJGQPr5
+	Rl+VNzRhEIwnvE/sUjXRlP7ZpoWiSF3I5Re7sZvrPacdG5PqgtvVh1smwWV1V58zFAdhFqC3iplXW
+	V60E8JXun1HtVVPvcEJ5wcyT8k1fuh5Lbh1lLK3bhppvrNuOJ+SjKnYKZTBjJ1T0ngZqVAHn5KXV9
+	SZLZWyorSpI9iP3IzBww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDD2c-00000002DNw-279G;
-	Fri, 09 May 2025 02:00:46 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDD0d-00000002DG3-2MKq;
-	Fri, 09 May 2025 01:58:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=55PNgOcKj2H7fTf4hRgwZb8Ew5SPSaRTUmV47X0Ho0A=; b=l
-	UKDgkep97B/9Unz+gncswaNSIeZ+Lh0gamZ2w9JJlrUfo70hmw63fXntBNO4gb3W
-	/eFGKOx5QBt2tR8fy3czCtzSLOqcr8TzOfxpcqKpn5afVpsqhBbMSXboBReZ2ld7
-	QjqW+a+m3Dng7rbhT7CVZI2eELaTKFpaPmbnlb0s4g=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-104 (Coremail) ; Fri, 9 May 2025 09:58:09 +0800 (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Fri, 9 May 2025 09:58:09 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org, hjc@rock-chips.com,
-	mripard@kernel.org, neil.armstrong@linaro.org, knaerzche@gmail.com,
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: [PATCH v4 0/7] Convert inno hdmi to drm bridge
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <nco27hnwykffzgirhocskltrkcds32tefkix23nfknf3e5m3zd@mkrrbw6kogsi>
-References: <20250422070455.432666-1-andyshrk@163.com>
- <9503607.rMLUfLXkoz@diego>
- <nco27hnwykffzgirhocskltrkcds32tefkix23nfknf3e5m3zd@mkrrbw6kogsi>
-X-NTES-SC: AL_Qu2fBPueukAj7yafYOkfmkcVgOw9UcO5v/Qk3oZXOJF8jC7pxyUYZFlTGWvs7PCDJim1nQiHezZt88JTXIVAZqUNMere4kRSvPWFUR2XLkygWQ==
+	id 1uDDXJ-00000002FwQ-0ALQ;
+	Fri, 09 May 2025 02:32:29 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uDDVK-00000002Fn0-2jaQ;
+	Fri, 09 May 2025 02:30:28 +0000
+Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-b12b984e791so1291983a12.2;
+        Thu, 08 May 2025 19:30:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1746757825; x=1747362625; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ayNz8xbJGSHoOUDc3h0sfGxA9EOkAoi9Fqia99FoZh8=;
+        b=W0QYJiebyQqfWeoEL9DrT5wpiuNyzVO1UEqMuncsopz7ZHuFkoQdNfKcMNUt82U9Gq
+         rMWWsgNm/UbHVhFl0iFceSE3MsTzSmwY4thqLbu3fAczTzukRKvwTwyfpEYJDWNrW7Jv
+         jnlX075Ia7749u6y/gPl7ytIcHbpBF9nf8aq9RxqEJDp7QfNUIAat2xJTVVJvLKPgtOQ
+         dbxWFL+GgWgLYluvNbhefTQ5vxXj05/YW2fgv5t1a3R5k2laXk4w91uH54zMmDIMMkaH
+         LtBNslYPSwAwN042Q7znN8BOe/c4RpcRMpnZAg8K4YuehqZGVAW229cxHwW7rPuB6E0k
+         zIyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746757825; x=1747362625;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ayNz8xbJGSHoOUDc3h0sfGxA9EOkAoi9Fqia99FoZh8=;
+        b=rqQXavFluicfukLQzLUgfDlhJH/jyXuVrhuC4EE7cT58TFoCiE758Z3XxEkVbVu5h5
+         j6Ex2wfjNtpbyuvWmcRdh+eeiqSePU5JjtnSMBwJLjDiDF/1eBagukpqyE3ylmtF4xRA
+         J9LXQGVZtwf9Q9m0J/luzWsNBWf3MHSbmUR6rcCWHZ7heLXXIwqTB68ao1wJYNMc1BKo
+         1lFPOnNKIMsbzMUMoqHEigL/wJyylwoxJ9+H53qDw3VwSNbC9/AZ7eCkW8tSPPecBQFG
+         7txRAd1pygkLtJLOXGo2lB/L8kxNKUphYMOyPrpv3OkCj/Xhu5nGySt8BwHdPkF0tvC3
+         0fhA==
+X-Forwarded-Encrypted: i=1; AJvYcCWxGjWA7XS/EtyrO5m4SHJdMY1Iin2TW2y5O5T+1BiwJ+BiY7xTZPxOXEK3V6fPDE2YEc0nOb2qWc2xi6HqdC0=@lists.infradead.org, AJvYcCXW5KJbFjkWUeuGwXcCEht0O1VrLGErml6A7pbABkp1JXENp0uHktjjqVsZMMjMJfTdz/8UHxwEWl6gziW9IpJB@lists.infradead.org
+X-Gm-Message-State: AOJu0YwBdbRoW25OKyjcTTfcqZ3tm9N+HbRf4oR1v5vFASbUs65kNzdt
+	cFbMVL5LEUF7/ENv9BT01XUL5eN29M5/8+GRSLIF1AkwrbiLeyo43SjZXg==
+X-Gm-Gg: ASbGncsyqWwVKuD3PBJ4yMpRyuv1iq54cpjzLo3eezYj3CgQOIXQMQjvhEPtwnCwtIO
+	j0AfjHnj2VIlqMupZtZ8Hyx+xfcv3VhC5lrKt7iSHxdre6aAfCX+bBwPP0Fo/R1/7nEdZ4B3Xsc
+	YFGpsGv/fOt+IojHvh9/QREK6T74Ei5rm9Chinmy1Y8+SSz3A27oONIllmbZw2II0KzfyBXk8aA
+	DLsAmoyOl/trI0AeJbynb/GZLS6QgBHZLe8eOotw3QZbMWl50gZ1tR14fGxi3wJ5AojHQwucaNn
+	rz/J01KuG1y9j8ayde31SMi5N09Pa8XXn/EAIvCipbaW0r8BelpGJjg=
+X-Google-Smtp-Source: AGHT+IHUihWhsBv2QvUM6cAvRwFIrobhLw88ajBtO87cz3YL19YzISXaSRhyFjxbTS9vW/T7d+TUdQ==
+X-Received: by 2002:a17:902:ecc7:b0:22e:7c8b:7e66 with SMTP id d9443c01a7336-22fc8c7b4c1mr22897415ad.26.1746757825141;
+        Thu, 08 May 2025 19:30:25 -0700 (PDT)
+Received: from [192.168.0.69] ([159.196.5.243])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22fc7540ca4sm7097145ad.52.2025.05.08.19.30.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 May 2025 19:30:24 -0700 (PDT)
+From: Wilfred Mallawa <wilfred.opensource@gmail.com>
+Date: Fri, 09 May 2025 12:30:12 +1000
+Subject: [PATCH v3] PCI: dw-rockchip: Add support for slot reset on link
+ down event
 MIME-Version: 1.0
-Message-ID: <1a07d69.1e47.196b2c3aa12.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: aCgvCgD335UxYR1opDYAAA--.2599W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkBdIXmgdXGlOSwAEsQ
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Message-Id: <20250509-b4-pci_dwc_reset_support-v3-1-37e96b4692e7@wdc.com>
+X-B4-Tracking: v=1; b=H4sIALRoHWgC/4WPy07DMBBFfyXyGqPxK06y4j8QivwYU0u0Cbabg
+ qr8O667KCtY3tHMmXOvJGOKmMnUXUnCLea4nGoQTx1xB3N6Rxp9zYQDVyAFUCvp6uLsL25OmLH
+ M+byuSyrUaw7emmA1GlLP14QhfjX069s9J/w81w/lPiTWZKRuOR5jmToYtBAwDFb1vVUDH0SAw
+ HjFiaC87c1oRo8CyG+zqbt7QZNC2oxo/lgK1QJsMJqZujFtktwUDjGXJX23shtrDv/32hhlNPR
+ Kmhtv5Orl4t1z1W7IjT8wCtgfGF4xvh8ZN5Zp6eQDs+/7D8+bqLqIAQAA
+X-Change-ID: 20250430-b4-pci_dwc_reset_support-d720dbafb7ea
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+ Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Niklas Cassel <cassel@kernel.org>, Damien Le Moal <dlemoal@kernel.org>, 
+ Alistair Francis <alistair@alistair23.me>, linux-pci@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Wilfred Mallawa <wilfred.mallawa@wdc.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1746757819; l=8117;
+ i=wilfred.mallawa@wdc.com; s=20250430; h=from:subject:message-id;
+ bh=+V/tDzibuaj38Gy6kM40dIFHAZUrMXDXAper3/mIQWo=;
+ b=jV1M3gxcKKLam0lXxXfe4PHOLCsaW5UvrjFbfWb+aqkJ6ApwzZUs4Nhz+lDUtm/tmULGxDAJk
+ Ht4v5t2vUOqCV17oWp+gMCBKE2xyPP//253xA36Zhw/X0k8AHAb6y18
+X-Developer-Key: i=wilfred.mallawa@wdc.com; a=ed25519;
+ pk=DpjNSsEpzUYRunwCxBmAJ/fv9YKUmAPOIoBDL0qeAQU=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_185843_957783_B322DB9F 
-X-CRM114-Status: GOOD (  22.27  )
+X-CRM114-CacheID: sfid-20250508_193026_721906_4791F6D2 
+X-CRM114-Status: GOOD (  27.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,57 +110,232 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhpIERtaXRyeSwKCiBUaGFua3MgZm9yIHlvdSByZXZpZXcuCgrlnKggMjAyNS0wNS0wNSAwMDox
-NjozNe+8jCJEbWl0cnkgQmFyeXNoa292IiA8ZG1pdHJ5LmJhcnlzaGtvdkBvc3MucXVhbGNvbW0u
-Y29tPiDlhpnpgZPvvJoKPk9uIFNhdCwgTWF5IDAzLCAyMDI1IGF0IDA0OjQyOjA0UE0gKzAyMDAs
-IEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+PiBBbSBEaWVuc3RhZywgMjIuIEFwcmlsIDIwMjUsIDA5
-OjA0OjM5IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgQW5keSBZYW46Cj4+
-ID4gRnJvbTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgo+PiA+IAo+PiA+IFdo
-ZW4gcHJlcGFyaW5nIHRvIGNvbnZlcnQgdGhlIGN1cnJlbnQgaW5ubyBoZG1pIGRyaXZlciBpbnRv
-IGEKPj4gPiBicmlkZ2UgZHJpdmVyLCBJIGZvdW5kIHRoYXQgdGhlcmUgYXJlIHNldmVyYWwgaXNz
-dWVzIGN1cnJlbnRseQo+PiA+IGV4aXN0aW5nIHdpdGggaXQ6Cj4+ID4gCj4+ID4gMS4gV2hlbiB0
-aGUgc3lzdGVtIHN0YXJ0cyB1cCwgdGhlIGZpcnN0IHRpbWUgaXQgcmVhZHMgdGhlIEVESUQsIGl0
-Cj4+ID4gICAgd2lsbCBmYWlsLiBUaGlzIGlzIGJlY2F1c2UgUkszMDM2IEhETUkgRERDIGJ1cyBy
-ZXF1aXJlcyBpdCdzIFBIWSdzCj4+ID4gICAgcmVmZXJlbmNlIGNsb2NrIHRvIGJlIGVuYWJsZWQg
-Zmlyc3QgYmVmb3JlIG5vcm1hbCBEREMgY29tbXVuaWNhdGlvbgo+PiA+ICAgIGNhbiBiZSBjYXJy
-aWVkIG91dC4KPj4gPiAKPj4gPiAyLiBUaGUgc2lnbmFsIGlzIHVuc3RhYmxlLiBXaGVuIHJ1bm5p
-bmcgdGhlIGdsbWFyazIgdGVzdCBvbiB0aGUgc2NyZWVuLAo+PiA+ICAgIHRoZXJlIGlzIGEgc21h
-bGwgcHJvYmFiaWxpdHkgb2Ygc2VlaW5nIHNvbWUgc2NyZWVuIGZsaWNrZXJpbmcuCj4+ID4gICAg
-VGhpcyBpcyBiZWNhdXNlIFRoZSBIU1lOQy9WU1lOQyBwb2xhcml0eSBvZiByazMwMzYgSERNSSBh
-cmUgY29udHJvbGxlZAo+PiA+ICAgIGJ5IEdSRi4gVGhpcyBwYXJ0IGlzIG1pc3NpbmcgaW4gdGhl
-IGN1cnJlbnQgZHJpdmVyLgo+PiA+IAo+PiA+IFBBVENIIDF+NiBhcmUgdHJ5IHRvIEZpeCBEb2N1
-bWVudCBpbiB0aGUgZHQtYmluZGluZywgdGhlbiBhZGQgdGhlCj4+ID4gbWlzc2luZyBwYXJ0IGlu
-IGRyaXZlciBhbmQgZHRzLgo+PiA+IFBBVENIIDcgY29udmVydHMgdGhlIGN1cnJlbiBkcml2ZXIg
-dG8gZHJtIGJyaWRnZSBtb2RlLgo+PiAKPj4gQWZ0ZXIgcmVzdXJyZWN0aW5nIG15IHJrMzAzNi1r
-eWxpbiB3aGljaCBoYXNuJ3Qgc3VjZXNzZnVsbHkgYm9vdGVkIGluIGEKPj4gd2hpbGUsIEkgY291
-bGQgdmVyeWlmeSB0aGlzIHNlcmllcywgc28gb24gYSByazMwMzYta3lsaW4KPj4gCj4+IFRlc3Rl
-ZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPj4gCj4+IAo+PiBJJ2xsIHBy
-b2JhYmx5IGFwcGx5IHBhdGNoZXMgMS00IHRvIGRybS1taXNjIGxhdGVyIHRvZGF5LCBhcyB0aGF0
-IHNvbGVseQo+PiB0b3VjaGVzIHRoZSBSb2NrY2hpcCAoYW5kIG9ubHkgcmszMDM2LSlzaWRlIGFu
-ZCBwYXRjaGVzIDUrNiB0byB0aGUKPj4gcm9ja2NoaXAgdHJlZS4KPj4gCj4+IFBhdGNoIDcgc2hv
-dWxkIHByb2JhYmx5IGdldCBzb21lIGF0dGVudGlvbiBieSBwZW9wbGUgbW9yZSBmYW1pbGlhciB3
-aXRoCj4+IGRybS1icmlkZ2VzLCBzbyBJJ2xsIGxldCB0aGF0IHNpdCBmb3IgYSBiaXQgbG9uZ2Vy
-Lgo+Cj5JIHdpbGwgdGFrZSBhIGxvb2sgbGF0ZXIsIGJ1dCBvbiB0aGUgZmlyc3QgZ2xhbmNlIGl0
-IGxvb2tzIGxpa2UgdGhlcmUKPmFyZSB0b28gbWFueSB0aGluZ3MgZ29pbmcgb24gaW4gdGhhdCBw
-YXRjaCwgaW5jbHVkaW5nIHNvbWUgdW5uZWNlc3NhcnkKPmZuY3Rpb24gbW92ZW1lbnRzIGFuZCBk
-ZWZpbmUgbW92ZW1lbnRzLCBldGMuIEkgd291bGQga2luZGx5IGFzayB0byBzcGxpdAoKVGhlc2Ug
-cmVnaXN0ZXJzIHdlcmUgaW5pdGlhbGx5IGRlZmluZWQgaW4gYSBzZXBhcmF0ZSBoZWFkZXIgZmls
-ZShpbm5vX2hkbWkuaCksIApidXQgdGhleSB3ZXJlIG9ubHkgdXNlZCBieSBhIHNpbmdsZSBDIGZp
-bGUsIHNvIEkgdGhpbmsgaXQncyBub3QgbmVjZXNzYXJ5IHRvIHB1dAp0aGVtIGluIGEgc2VwYXJh
-dGUgaGVhZGVyIGZpbGUuIEkgZGVjaWRlZCB0byBzaW1wbHkgbWVyZ2UgdGhlbSBpbnRvIHRoZSBp
-bm5vX2hkbWkuYyBmaWxlLiAKSWYgSSBmaXJzdCBjcmVhdGUgYSBwYXRjaCBhbmQgc2VwYXJhdGVs
-eSBjYXJyeSBvdXQgdGhlIG1lcmdpbmcgb2YgdGhpcyByZWdpc3RlciBkZWZpbml0aW9uLCB3b3Vs
-ZCB0aGF0IGJlIHBvc3NpYmxlPwoKQW5kIEkgd2lsbCB0cnkgdG8gYXZvaWQgZnVuY3Rpb24gbW92
-ZW1lbnRzIGluIG5leHQgdmVyc2lvbi4KCgo+dGhlIG5vbi1mdW5jdGlvbmFsIHJlZmFjdG9yaW5n
-cyBhbmQgdGhlIGZ1bmN0aW9uYWwgb25lcyAoc3BsaXR0aW5nIHRvIGEKPmxpYnJhcnksIGV0Yyku
-CgpXaWxsIGRvIGluIG5leHQgdmVyc2lvbi4KCj4KPj4gCj4+IAo+PiBUaGFua3MgYSBsb3QgZm9y
-IHdvcmtpbmcgb24gYWxsIHRoaXMKPj4gSGVpa28KPj4gCj4+IAo+Cj4tLSAKPldpdGggYmVzdCB3
-aXNoZXMKPkRtaXRyeQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+From: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+
+The PCIe link may go down in cases like firmware crashes or unstable
+connections. When this occurs, the PCIe slot must be reset to restore
+functionality. However, the current driver lacks link down handling,
+forcing users to reboot the system to recover.
+
+This patch implements the `reset_slot` callback for link down handling
+for DWC PCIe host controller. In which, the RC is reset, reconfigured
+and link training initiated to recover from the link down event.
+
+This patch by extension fixes issues with sysfs initiated bus resets.
+In that, currently, when a sysfs initiated bus reset is issued, the
+endpoint device is non-functional after (may link up with downgraded link
+status). With this patch adding support for link down recovery, a sysfs
+initiated bus reset works as intended. Testing conducted on a ROCK5B board
+with an M.2 NVMe drive.
+
+Signed-off-by: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+---
+Hey all,
+
+This patch builds ontop of [1] to extend the reset slot support for the
+DWC PCIe host controller. Which implements link down recovery support
+for the DesignWare PCIe host controller by adding a `reset_slot` callback.
+This allows the system to recover from PCIe link failures without requiring a reboot.
+
+This patch by extension improves the behavior of sysfs-initiated bus resets.
+Previously, a `reset` issued via sysfs could leave the endpoint in a
+non-functional state or with downgraded link parameters. With the added
+link down recovery logic, sysfs resets now result in a properly reinitialized
+and fully functional endpoint device. This issue was discovered on a
+Rock5B board, and thus testing was also conducted on the same platform
+with a known good M.2 NVMe drive.
+
+Thanks!
+
+[1] https://lore.kernel.org/linux-pci/20250508-pcie-reset-slot-v4-0-7050093e2b50@linaro.org/T/#t
+---
+Changes in v3:
+- Update the rockchip_pcie_rc_reset_slot() initial deinit sequence such
+  that it is the reverse of the subsequent init sequence.
+- Rebased and tested on the latest V4 from Manivannan Sadhasivam [1].
+- Link to v2: https://lore.kernel.org/r/20250501-b4-pci_dwc_reset_support-v2-1-d6912ab174c4@wdc.com
+
+Changes in v2:
+- In the reset_slot callback, use clk_bulk_disable_unprepare() to
+  disable clks.
+- If dw_pcie_start_link() fails, goto deinit procedure
+- Skip error checking for dw_pcie_wait_for_link(), as the link may come
+  up later.
+- Fixup alignment.
+- Link to v1: https://lore.kernel.org/r/20250430-b4-pci_dwc_reset_support-v1-1-f654abfa7925@wdc.com
+---
+ drivers/pci/controller/dwc/Kconfig            |  1 +
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 88 ++++++++++++++++++++++++++-
+ 2 files changed, 87 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/Kconfig b/drivers/pci/controller/dwc/Kconfig
+index d9f0386396edf66ad0e514a0f545ed24d89fcb6c..878c52de0842e32ca50dfcc4b66231a73ef436c4 100644
+--- a/drivers/pci/controller/dwc/Kconfig
++++ b/drivers/pci/controller/dwc/Kconfig
+@@ -347,6 +347,7 @@ config PCIE_ROCKCHIP_DW_HOST
+ 	depends on OF
+ 	select PCIE_DW_HOST
+ 	select PCIE_ROCKCHIP_DW
++	select PCI_HOST_COMMON
+ 	help
+ 	  Enables support for the DesignWare PCIe controller in the
+ 	  Rockchip SoC (except RK3399) to work in host mode.
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 3c6ab71c996ec1246954f52a9454c8ae67956a54..714cad40657afe5a6025a8c9ff0e0ab79f1dc1dd 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -23,6 +23,8 @@
+ #include <linux/reset.h>
+ 
+ #include "pcie-designware.h"
++#include "../../pci.h"
++#include "../pci-host-common.h"
+ 
+ /*
+  * The upper 16 bits of PCIE_CLIENT_CONFIG are a write
+@@ -83,6 +85,9 @@ struct rockchip_pcie_of_data {
+ 	const struct pci_epc_features *epc_features;
+ };
+ 
++static int rockchip_pcie_rc_reset_slot(struct pci_host_bridge *bridge,
++				       struct pci_dev *pdev);
++
+ static int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip, u32 reg)
+ {
+ 	return readl_relaxed(rockchip->apb_base + reg);
+@@ -256,6 +261,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
+ 					 rockchip);
+ 
+ 	rockchip_pcie_enable_l0s(pci);
++	pp->bridge->reset_slot = rockchip_pcie_rc_reset_slot;
+ 
+ 	return 0;
+ }
+@@ -455,6 +461,11 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
+ 	dev_dbg(dev, "PCIE_CLIENT_INTR_STATUS_MISC: %#x\n", reg);
+ 	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm(rockchip));
+ 
++	if (reg & PCIE_LINK_REQ_RST_NOT_INT) {
++		dev_dbg(dev, "hot reset or link-down reset\n");
++		pci_host_handle_link_down(pp->bridge);
++	}
++
+ 	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
+ 		if (rockchip_pcie_link_up(pci)) {
+ 			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
+@@ -536,8 +547,8 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 		return ret;
+ 	}
+ 
+-	/* unmask DLL up/down indicator */
+-	val = HIWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED, 0);
++	/* unmask DLL up/down indicator and hot reset/link-down reset irq */
++	val = HIWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED | PCIE_LINK_REQ_RST_NOT_INT, 0);
+ 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
+ 
+ 	return ret;
+@@ -688,6 +699,79 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
++static int rockchip_pcie_rc_reset_slot(struct pci_host_bridge *bridge,
++				       struct pci_dev *pdev)
++{
++	struct pci_bus *bus = bridge->bus;
++	struct dw_pcie_rp *pp = bus->sysdata;
++	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
++	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
++	struct device *dev = rockchip->pci.dev;
++	u32 val;
++	int ret;
++
++	dw_pcie_stop_link(pci);
++	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
++	rockchip_pcie_phy_deinit(rockchip);
++
++	ret = reset_control_assert(rockchip->rst);
++	if (ret)
++		return ret;
++
++	ret = rockchip_pcie_phy_init(rockchip);
++	if (ret)
++		goto disable_regulator;
++
++	ret = reset_control_deassert(rockchip->rst);
++	if (ret)
++		goto deinit_phy;
++
++	ret = rockchip_pcie_clk_init(rockchip);
++	if (ret)
++		goto deinit_phy;
++
++	ret = pp->ops->init(pp);
++	if (ret) {
++		dev_err(dev, "Host init failed: %d\n", ret);
++		goto deinit_clk;
++	}
++
++	/* LTSSM enable control mode */
++	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
++
++	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_RC_MODE, PCIE_CLIENT_GENERAL_CON);
++
++	ret = dw_pcie_setup_rc(pp);
++	if (ret) {
++		dev_err(dev, "Failed to setup RC: %d\n", ret);
++		goto deinit_clk;
++	}
++
++	/* unmask DLL up/down indicator and hot reset/link-down reset irq */
++	val = HIWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED | PCIE_LINK_REQ_RST_NOT_INT, 0);
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
++
++	ret = dw_pcie_start_link(pci);
++	if (ret)
++		goto deinit_clk;
++
++	/* Ignore errors, the link may come up later */
++	dw_pcie_wait_for_link(pci);
++	dev_dbg(dev, "Slot reset completed\n");
++	return ret;
++
++deinit_clk:
++	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
++deinit_phy:
++	rockchip_pcie_phy_deinit(rockchip);
++disable_regulator:
++	if (rockchip->vpcie3v3)
++		regulator_disable(rockchip->vpcie3v3);
++
++	return ret;
++}
++
+ static const struct rockchip_pcie_of_data rockchip_pcie_rc_of_data_rk3568 = {
+ 	.mode = DW_PCIE_RC_TYPE,
+ };
+
+---
+base-commit: 08733088b566b58283f0f12fb73f5db6a9a9de30
+change-id: 20250430-b4-pci_dwc_reset_support-d720dbafb7ea
+prerequisite-change-id: 20250404-pcie-reset-slot-730bfa71a202:v4
+prerequisite-patch-id: 2dad85eb26838d89569b12c19d70f392fa592667
+prerequisite-patch-id: 6238a682bd8e9476e5911b7a59263c3fc618d63e
+prerequisite-patch-id: 37cab00bc255a62b1e8396a48a3afba5e1751abd
+prerequisite-patch-id: ff711f65cf9926374646b76cd38bdd823d576764
+prerequisite-patch-id: 1654cca919d024b9a9190b28e90f722975c797e8
+
+Best regards,
+-- 
+Wilfred Mallawa <wilfred.mallawa@wdc.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
