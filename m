@@ -4,66 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 461DCC3ABC9
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 21:50:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8FA2C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 May 2025 21:54:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UUT2uba6zVs3XwraSkS/uYid2jVOfphYP5g4wtfu1kQ=; b=LTvHjRGjLSFKmV
-	8sycbtIO+GopBUowcnakUngLanPmj8ehGlCi2tY9ledXyoDAXRCXggn+dfqCgmv1E+s5R2Ut+C0Nb
-	f+oFmKw1JijhItWzJyb2VjudqJClOjLibmH7kwSXm+AXe7wkHBf2xskExwj7jZvFdmOZpPRnk2uXj
-	Zdnv23PTlNxLWJ4ZQwTSMXS3AJQmocHfF0f47DAX8Y5O08b0VDtjrNtQ3eruNcbJCBlaY2l9SDdml
-	pFY7vkG/+5Rh4YW7sZcRSxUCxarj2SEfTLIyTx7hx26JD91amvHxAV4agDH6R3Rc5NKK5OtGyWFKI
-	/EC/YeAjMoPqj+bLtE9w==;
+	List-Owner; bh=JtUM0e37llhISxkmTkIMZA0Z/WS4/sNqupQjyPJbT8Y=; b=l2DFejuVd2yzTV
+	9EAqlN2QLI0LWr5EUGFwpqqzLO7VXCBmF/rj05qAdP2MB5pIQRpdgC4D5X241/cq/gUl2XS4121Hc
+	azTI72Ma1K6kwdtG47rkyFk7Ymo6heHCtLmygLqhHKhYqlCn3ekMZPoFMlgRaT9ZApPsL2BWpz7ya
+	UV409Np4CYC0ehhpnYO9PvIlCb+kr4jmt7nsQ7VL9bR0ES+UQBLBhJlD1Qom5t8tVGE7oZmj28mvf
+	QAopnRdgPSxmku17rgTCRT+iB7lqF4O6s6jpA4pMKDRy0U05O5iHo90n9x8A2htGGXocnZrHRalvH
+	LTVGWex2PQKkPOytKMEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDVc0-000000050Vg-1wDB;
-	Fri, 09 May 2025 21:50:32 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1uDVg0-0000000511M-415g;
+	Fri, 09 May 2025 21:54:40 +0000
+Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDVbw-000000050Uv-3E2D
-	for linux-rockchip@lists.infradead.org;
-	Fri, 09 May 2025 21:50:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1746827425;
- bh=Q/4hTUTysjyHMdWQYAFUoh8JWnAIFyUM8sIjXoykTqA=;
- b=TTGsgQ1VI2XKJHsyiJzv5yQj2rMDDBAJMnJl4RwJ534eySxwCaTWa2Swm4PkjWdyQTS49CDpx
- ue3w5jEbdtfL8Sl4b/TiMUjcxZNnrI2+Q8yLopfXLm+dLfJ0+/DVs7cWgATlCtDLlX02fbl8NKB
- vy4ESLUS4zVuh+KJQMjknDb78/cLU1Yi2TBEhsot70j81C7ArrYf/CiSiqxqUdD3trpakaTE8+k
- zQRhZBlVKfqH1VyiCgoBaI2R1BTu8Jzl4MSOtmdLqU/ywvnCILODeHrbEFtKuIqdVsXqw0qgOlk
- 9JOUD9PZwG5+4N93mxG/CU/lWE6Jgp6o0FCiV1oLQWBg==
-X-Forward-Email-ID: 681e789856028bab66256880
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.0.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <36fb3b11-9a1d-4849-9333-5ef26a217106@kwiboo.se>
-Date: Fri, 9 May 2025 23:50:11 +0200
+	id 1uDVdI-000000050d8-1kWd;
+	Fri, 09 May 2025 21:51:53 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 3C5501FCEC;
+	Fri,  9 May 2025 21:51:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1746827509;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TgOlPoeE2bCg/r65qwHrpLL4u7jVgF7jAVdhkajvXBU=;
+	b=d8+ZtLn1vlV9tU2lu4OXkpu8pzvPKywU7Tm79gDNVp4laBE3jiSQzajLCGN945iXv7x6YB
+	Efs4s5Q9aguNrnNjGgNyl7FtKyeuiylLnkc3ASc8gSolMZN9R0Ie9n9RAEBNv8NtYfHBfA
+	qros7bxfOVWXlxt+LxrUJKwYPgjpvw2VzMoblWqz57AeWW9hjA3p8qQ4PVQKqpwiTp2nl5
+	yq3Es0VZy7OqjGrhOudQGv3IJiqqDywfG+ZMFMK40stUrebni/n0EPaGNLrtjTaqtTuvhX
+	OnsWcfQOMWmMkoVpMdccPvbALOaqtfP3Rh/rWywjkw91Jvs5l0zt/dEqn1AiZg==
+From: Olivier Benjamin <olivier.benjamin@bootlin.com>
+Date: Fri, 09 May 2025 23:51:38 +0200
+Subject: [PATCH v3 2/4] dt-bindings: media: imx258: inherit
+ video-interface-devices properties
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/2] rockchip: Enable Ethernet controller on Radxa E20C
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>,
- Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250509202402.260038-1-jonas@kwiboo.se>
- <2728051.BddDVKsqQX@diego>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <2728051.BddDVKsqQX@diego>
+Message-Id: <20250509-camera-v3-2-dab2772d229a@bootlin.com>
+References: <20250509-camera-v3-0-dab2772d229a@bootlin.com>
+In-Reply-To: <20250509-camera-v3-0-dab2772d229a@bootlin.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+ Nicholas Roth <nicholas@rothemail.net>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-media@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, 
+ imx@lists.linux.dev, Olivier Benjamin <olivier.benjamin@bootlin.com>
+X-Mailer: b4 0.14.2
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvleefjeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthejredtredtjeenucfhrhhomhepqfhlihhvihgvrhcuuegvnhhjrghmihhnuceoohhlihhvihgvrhdrsggvnhhjrghmihhnsegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeegueegiedvvdevveevvddufeejvefftdeugfffkeeileehheefieehgfelfeeileenucfkphepvdgrtddumegvfeegmegvtgefkeemvdegvgdtmehfhegtvgemfhefgedvmeeiheekjeemfheiheeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegvfeegmegvtgefkeemvdegvgdtmehfhegtvgemfhefgedvmeeiheekjeemfheiheeipdhhvghloheplgduledvrdduieekrddurddvtdgnpdhmrghilhhfrhhomhepohhlihhvihgvrhdrsggvnhhjrghmihhnsegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopedvuddprhgtphhtthhopehkvghrnhgvlhesphgvnhhguhhtrhhonhhigidruggvpdhrtghpthhtohepihhmgieslhhishhtshdrlhhinhhugidruggvvhdprhgtphhtthhopegtohhnohhrodgutheskhgvrhhnvghlrdhorhhgpdhrt
+ ghpthhtohepshdrhhgruhgvrhesphgvnhhguhhtrhhonhhigidruggvpdhrtghpthhtohepfhgvshhtvghvrghmsehgmhgrihhlrdgtohhmpdhrtghpthhtohepkhhriihksehkvghrnhgvlhdrohhrghdprhgtphhtthhopehkrhiikhdoughtsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigqdhrohgtkhgthhhipheslhhishhtshdrihhnfhhrrgguvggrugdrohhrgh
+X-GND-Sasl: olivier.benjamin@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_145029_476242_C2F7FB64 
-X-CRM114-Status: GOOD (  15.87  )
+X-CRM114-CacheID: sfid-20250509_145152_609578_E3CBC7BF 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,47 +82,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpPbiAyMDI1LTA1LTA5IDIzOjQwLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBB
-bSBGcmVpdGFnLCA5LiBNYWkgMjAyNSwgMjI6MjM6NTYgTWl0dGVsZXVyb3DDpGlzY2hlIFNvbW1l
-cnplaXQgc2NocmllYiBKb25hcyBLYXJsbWFuOgo+PiBUaGUgUm9ja2NoaXAgUkszNTI4IGhhcyB0
-d28gRXRoZXJuZXQgY29udHJvbGxlcnMsIG9uZSAxMDAvMTAgTUFDIHRvIGJlCj4+IHVzZWQgd2l0
-aCB0aGUgaW50ZWdyYXRlZCBQSFkgYW5kIGEgc2Vjb25kIDEwMDAvMTAwLzEwIE1BQyB0byBiZSB1
-c2VkCj4+IHdpdGggYW4gZXh0ZXJuYWwgRXRoZXJuZXQgUEhZLgo+Pgo+PiBUaGlzIHNlcmllcyBh
-ZGQgZGV2aWNlIHRyZWUgbm9kZXMgZm9yIHRoZSBFdGhlcm5ldCBjb250cm9sbGVycyBmb3VuZCBp
-bgo+PiBSSzM1MjggYW5kIGVuYWJsZSB0aGUgTEFOIGludGVyZmFjZSBvbiBSYWR4YSBFMjBDLgo+
-Pgo+PiBUaGlzIGluY2x1ZGUgYSBnbWFjMCBub2RlIGZvciB0aGUgMTAwLzEwIE1BQyBhbmQgaXRz
-IHJlbGF0ZWQgaW50ZWdyYXRlZAo+PiBQSFkgbm9kZSB0aGF0IG9ubHkgaGF2ZSByZWNpdmVkIGxp
-bWl0ZWQgdGVzdGluZy4gSSBoYXZlIG5vIGJvYXJkIHRoYXQKPj4gZXhwb3NlIGFuIEV0aGVybmV0
-IHBvcnQgZm9yIHRoZSBnbWFjMCBhbmQgdGhlIGludGVncmF0ZWQgUEhZLiBIb3dldmVyLAo+PiB0
-aGUgUEhZIGNhbiBiZSBpZGVudGlmaWVkIG9uIGFkZHIgMHgyIGFzIDAwNDQuMTQwMCBhbmQgaW4g
-dmVuZG9yIGtlcm5lbAo+PiB0aGlzIHJlbGF0ZSB0byB0aGUgUm9ja2NoaXAgUks2MzAgUEhZLiBB
-IHByb3BlciBQSFkgZHJpdmVyIHdpbGwgYmUKPj4gbmVlZGVkIHRvIHN1cHBvcnQgYW55IHJlYWwg
-dXNlIG9mIGdtYWMwLgo+Pgo+PiBDaGFuZ2VzIGluIHYzOgo+PiAtIFJlYmFzZSBvbiB0b3Agb2Yg
-bGF0ZXN0IG1taW5kL2Zvci1uZXh0Cj4+Cj4+IENoYW5nZXMgaW4gdjI6Cj4+IC0gU3BsaXQgZnJv
-bSB0aGUgIkFkZCBHTUFDIHN1cHBvcnQgZm9yIFJLMzUyOCIgZHJpdmVyIHNlcmllcyBbMV0KPiAK
-PiBzcGxpdCBmcm9tIC4uLiB3YXMgdGhhdCBzZXJpZXMgbWVyZ2VkIGFscmVhZHk/CgpZZXMsIHNv
-cnJ5IGZvciBub3QgYmVpbmcgbW9yZSBjbGVhciwgdGhlIGR0LWJpbmRpbmdzIGFuZCBkcml2ZXIg
-aGFzIGJlZW4KbWVyZ2VkIGFuZCBpcyBhbHJlYWR5IGluY2x1ZGVkIGluIHY2LjE1LXJjMS4KCmh0
-dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvMTc0MjkxNTQ0MDc2LjYwOTY0OC44NTk0NzgyOTQzNDcy
-MTkwNjk0LmdpdC1wYXRjaHdvcmstbm90aWZ5QGtlcm5lbC5vcmcKClJlZ2FyZHMsCkpvbmFzCgo+
-IAo+IFRoZSBsaW5rZWQgbG9yZS10aHJlYWQgb25seSB0YWxrcyBhYm91dCB0aGUgc2VyaWVzIG5l
-ZWRpbmcgdG8gYmUgcmVwb3N0ZWQuCj4gCj4gCj4gSGVpa28KPiAKPj4gLSBBZGQgZXRoZXJuZXQt
-cGh5QDIgZm9yIHRoZSBpbnRlZ3JhdGVkIFBIWQo+PiAtIFJlYmFzZSBvbiB0b3Agb2YgdGhlICJT
-dXBwb3J0IEkyQyBjb250cm9sbGVycyBpbiBSSzM1MjgiIHNlcmllcyBbMl0KPj4KPj4gWzFdIGh0
-dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvMjAyNTAzMDkyMzI2MjIuMTQ5ODA4NC0xLWpvbmFzQGt3
-aWJvby5zZQo+PiBbMl0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDI1MDMwOTA3MDYwMy4z
-NTI1NC0xLXppeWFvQGRpc3Jvb3Qub3JnCj4+Cj4+IEpvbmFzIEthcmxtYW4gKDIpOgo+PiAgIGFy
-bTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgR01BQyBub2RlcyBmb3IgUkszNTI4Cj4+ICAgYXJtNjQ6
-IGR0czogcm9ja2NoaXA6IEVuYWJsZSBFdGhlcm5ldCBjb250cm9sbGVyIG9uIFJhZHhhIEUyMEMK
-Pj4KPj4gIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1MjgtcmFkeGEtZTIwYy5kdHMgICB8ICAz
-MCArKysrKwo+PiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1MjguZHRzaSAgICAg
-IHwgMTA1ICsrKysrKysrKysrKysrKysrKwo+PiAgMiBmaWxlcyBjaGFuZ2VkLCAxMzUgaW5zZXJ0
-aW9ucygrKQoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+Update the IMX258 binding to inherit properties defined in the
+video-interface-devices binding.
+
+Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
+---
+ Documentation/devicetree/bindings/media/i2c/sony,imx258.yaml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/media/i2c/sony,imx258.yaml b/Documentation/devicetree/bindings/media/i2c/sony,imx258.yaml
+index 975c1d77c8e5d24179e9cb8d92fe7b6798c4d2ec..421b935b52bcaafbee0aff5b5cebc6332409bd8b 100644
+--- a/Documentation/devicetree/bindings/media/i2c/sony,imx258.yaml
++++ b/Documentation/devicetree/bindings/media/i2c/sony,imx258.yaml
+@@ -18,6 +18,8 @@ description: |-
+   The camera module does not expose the model through registers, so the
+   exact model needs to be specified.
+ 
++$ref: /schemas/media/video-interface-devices.yaml#
++
+ properties:
+   compatible:
+     enum:
+@@ -81,7 +83,7 @@ required:
+   - reg
+   - port
+ 
+-additionalProperties: false
++unevaluatedProperties: false
+ 
+ examples:
+   - |
+
+-- 
+2.48.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
