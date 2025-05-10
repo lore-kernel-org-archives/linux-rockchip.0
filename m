@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6261AC3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 May 2025 16:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5D51C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 May 2025 16:18:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bW7Gz5JKNAsOcIDIy0d3jgSacFpFERndJw0d6eUy+fU=; b=12SOF6lGel3CQq
-	SggyKAa1hO/ivYE6XdkTtvAk69kaWjUXtJMuI1w6SyahE8ewhxzHF27bw9/gt2zidd1aZJCzqd8fO
-	PcutZamFTluKB9sEhg/blfK90cEzs3xGaOZlbPg4pkxeD0eDoUaMtZP520shgD7ejo3RJT8Ro52ol
-	7RqrvmE2D2TE6WNcdA5L8jPdRQMpyxXito4KAXT7AdsdFaeny8EwWdpAkZ2poMD+yqEQqq92jmQg1
-	v7gZTd0sls6Mo4iRwv4VsJ8+zMjjxLyF7W0P27UNl9OxELPzWYf5GzjZNUXPUY8WoRT8l0Fc/9Xej
-	BtjlRr+oBz00876h4lMg==;
+	List-Owner; bh=v5KL03SInLhbS7sh4bjff7RT6Np8mUBDxCSD+KWeVII=; b=j/mztp/tKeTMXW
+	auN4MIuI5B4UPKmcOe8YZGrPvY8BrDOSrbPm5bqx2LWCdwWKZn4+UgWoSKv132Os82S4WqEHynTZ8
+	784Iz7LCCmkI3C442zFrCNrV1xm4xchP3c0+7vkSLULcVPqD1F03+fa0RiJAW128LrUmkUPr0NXxl
+	JSfV6teoHne0Hn3nNX3whZLq3gPLuri/uDjBxhcnbY/XSEf1BJnP63N4A2+LalncjUwgCsB0tWShL
+	Za2ZLYD6pfe5LIdz7VXzXFp35uhot0e9FFRZR/5m8BK+IN16HxWhttU2y/GlUYYZg46REFfgfM8FX
+	neoZgNwueXc1JaIm5o2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDmri-000000069eE-0FkY;
-	Sat, 10 May 2025 16:15:54 +0000
+	id 1uDmtm-000000069sl-1UwU;
+	Sat, 10 May 2025 16:18:02 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDmpb-000000069Qe-3D3Z;
-	Sat, 10 May 2025 16:13:44 +0000
+	id 1uDmpd-000000069Qz-2sCb;
+	Sat, 10 May 2025 16:13:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=4LiBJgpx1JPuJVPFYxmFK8cSpH55Fx19FbdJD4Cvi6U=; b=PIDa3Whz9bpYOxtN2U+zVEa9Dn
-	KI7xDNCGrd7kxy3ZlYu1wsD+nWHG43N1h1Gvhcvo8mmZTD77Up4mFpEypxhBtqpNMhiGiRBTuVmAI
-	y4TW/2UzL62Ya/m7rf9AD33dyELNnP7LyQ6mg9QMMWJ03KbQNTDtVhpzVl9HpuYoZEx2WiyQMT6mL
-	P28Mb1f5Z6ShQhcPozcXndAptvzLAWTrE2piKZ9O/MVr2j8NlmEgf85V12WnzSbuuPImMr8R+LsY8
-	nmLazI+xVhFVpnFRey4K6JoqAVwEBRgWl/xAmcVswNRID/OM1QyA1VWABHfcFnK0o9pE1j5o0dLhw
-	N34NOISQ==;
+	bh=gzvMMd1RbP+1PMa1EVSreCjzq6bOjb6pj1xLI8TnSdM=; b=iK9LgXZvQtCdnK5F2KPqCb/3bz
+	1n3Vmo8ayXMmflM+cKP28NIWloG4eV6x1muqq6jWFZwYQVjO73QoEkJd1F2c2c4zJJHDdlH5YW04K
+	DrkJRMsD/3YMG7sYMvs9wC8LUCvGWFUdqhIYlY3eWHV2UZy70AVKQy4AipTVHMf+b3jNL+ThZCunD
+	0+lIUNuzPz/XFdm0+GkGOwDnDHpYEv0cqMB+cxW0Mz1AWLIB1XBOt8mA9KNVZGsIXviw8hmuxmbl/
+	NOf1ln1pVoeXCkUfmvyDKviPL2penh7JhFhv3uoIO/lr3eHRc+90KbZ2Byxx0j/eY45i9ddpGuA8f
+	FB2Dvexw==;
 Received: from i53875a1d.versanet.de ([83.135.90.29] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uDmpY-0000dK-33; Sat, 10 May 2025 18:13:40 +0200
+	id 1uDmpa-0000dK-0G; Sat, 10 May 2025 18:13:42 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org,
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Yao Zi <ziyao@disroot.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: drop wrong spdif clock from edp1 on rk3588
-Date: Sat, 10 May 2025 18:13:27 +0200
-Message-ID: <174689356074.2086280.14230309672508886390.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	kernel test robot <lkp@intel.com>
+Subject: Re: [PATCH] clk: rockchip: Pass NULL as reg pointer when registering GRF MMC clocks
+Date: Sat, 10 May 2025 18:13:30 +0200
+Message-ID: <174689356067.2086280.9979554984882379307.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250509152329.2004073-1-heiko@sntech.de>
-References: <20250509152329.2004073-1-heiko@sntech.de>
+In-Reply-To: <20250510075248.34006-2-ziyao@disroot.org>
+References: <20250510075248.34006-2-ziyao@disroot.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250510_091343_828565_E9648356 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20250510_091345_723169_C3B88092 
+X-CRM114-Status: UNSURE (   7.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,22 +80,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 09 May 2025 17:23:29 +0200, Heiko Stuebner wrote:
-> As described, the analogix-dp controller on rk3588 only supports 2 clocks
-> and the edp0 node handles that correctly.
+On Sat, 10 May 2025 07:52:49 +0000, Yao Zi wrote:
+> This corrects the type and suppresses sparse warnings about passing
+> plain integers as NULL pointer.
 > 
-> The edp1 node on the other hand seems to have a dangling 3rd clock called
-> spdif, that probably only exists in the vendor-tree.
 > 
-> As that is not handled at all, remove it for now so that we adhere to the
-> binding.
-> 
-> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: drop wrong spdif clock from edp1 on rk3588
-      commit: 30f98e934a094b4a2de79ffdb877360c4289b8d6
+[1/1] clk: rockchip: Pass NULL as reg pointer when registering GRF MMC clocks
+      commit: 61bf658a4d95e8f982b6e66dea763bff57996349
 
 Best regards,
 -- 
