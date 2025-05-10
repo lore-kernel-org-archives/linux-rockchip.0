@@ -4,100 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA288C3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 May 2025 10:52:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FDE7C3ABC3
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 May 2025 16:02:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:References:In-Reply-To:
-	Message-Id:Cc:To:From:Date:MIME-Version:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=mLZVUv7UIlctkFePjNeVYSE8bTBM+CstF5Z7bdwo1MU=; b=YcmSOSv+XQ5usFUfIgtr1BYK5i
-	6CJBJ6MxqKxxDxYoKuk3J99xkcEk0l1FhHiBVox6ztTT4AtMIPgEQOWzHlapDAreX+wukUzYJNQ4J
-	X0/qxLwYN1+MOmvmBMqeNwZlGusicCE6eRZG/JZYtjIyY8k2MiwNmwK2z5X3469RnCXmIf5zFSWaG
-	yMAgMp6hbHh+jfq97svCNHCWOcMeTZ6ODc+Q6lv0Deb2i2kwSP4Yg0dv/edLKfc/3vC9c3bTlGgzC
-	/FCcj66Q6O9dZi5gaL7woeeTqMoNE8pzbdnDr8OAhu37blUoxpavQaDCKxv3fWlIeUaFWW9iozod3
-	JkRrXrmQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=86IIlxtSRkaW6j7zYaJu44MQMUD80C3GKsWYBPjXOqg=; b=oFiLL1Tkf8jUrC
+	hIuxnfWAtwHN8KQN43cZJ2da/NTLIlL/3FnzLAYYGcm/PDY/8PEVoq21NP9Cn3t5YK/f5t8uuxdrE
+	FSMqYRL4UtmSZ9wWLRCsuL3GLDS+22V+IzuJsnqOUvG39jn1Li7st0SU918fHPGM+Xr58rzsw8P78
+	RmHWUeLG6ucSuDZNFz9TBOKatdfH1JTxN7Sgb1LvcEcZZaeOvpCKOxIUInKiJPxwrChEDQM8xkYsW
+	PdcNSs5sGIWS2fEjw2V1VUoMw8RAsU5TRGaBJ1AtDpBOiIvD7kzXpkAiD0M4j+w3mSLzJF325M7XK
+	nBsT5Lgo6WHSxvfttvqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDhoC-00000005qha-0hQz;
-	Sat, 10 May 2025 10:51:56 +0000
-Received: from fhigh-a5-smtp.messagingengine.com ([103.168.172.156])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDhRH-00000005oVF-209J;
-	Sat, 10 May 2025 10:28:17 +0000
-Received: from phl-compute-05.internal (phl-compute-05.phl.internal [10.202.2.45])
-	by mailfhigh.phl.internal (Postfix) with ESMTP id 761F6114010F;
-	Sat, 10 May 2025 06:28:13 -0400 (EDT)
-Received: from phl-imap-12 ([10.202.2.86])
-  by phl-compute-05.internal (MEProxy); Sat, 10 May 2025 06:28:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm2; t=1746872893;
-	 x=1746959293; bh=X2T/oegJiDpCtk+u192Wpv5GLasrylGVwYnEKe857cQ=; b=
-	e5Dg9tslb70FSgFH7y58OQ4B4u9YYjxW8d+CW63SIcHaxlNPLUd3R3LcB5bfh3GM
-	pL3JJ3th1U9iXp+fFum/4igCVLoDDd/RoVvpGiEgCeG1HUbe3JNxMFnjUK6lpikY
-	hwnkWVSAtCpo9G1YBktSv6R7E3HppDX7MRKyeDutDRPqsXg+fVeoDsuxsrd/nvbP
-	cocF/T+ibNPPCUthF+Gfl4//Ra79cjcIQMxge8FQlrl5JqP6w9gsN6iVLbskIoaU
-	PTrLJdjBwKzYQk0P0cG5zZySCaWTyetGd9XpFMdKoXwUrJJDv7pFQeHYZVcxaAAK
-	1VpXru0JBtlI4iadoMJXgQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1746872893; x=
-	1746959293; bh=X2T/oegJiDpCtk+u192Wpv5GLasrylGVwYnEKe857cQ=; b=m
-	ajWOhSCnTYOyf0j7pWaTcBcFZJGV0oQL4zcFVPGDybm6YQnbbUPCSSw5YJWBq4ac
-	K0inKcGWx41MUXkdyPBTNST9O22kjz5XN2y+/+ag7p1bsTeeaByGtnmUpw8zJuHT
-	FJGx1gtm7AXF+7EOt1ECvzgP1QCRPOkVOdOLmGEYB0oV8/brHO9DspGK9xpCgLY0
-	i4XU51zabQGAIh9F2hZqVii6qgwSyfNLx3AZfA6xSLQGX/uQEIbH/5YnMm9+BOWm
-	UiITCZme9F+WfEjBa1/22SEB4OSY2FPgcLeZdBk/DBtUR7MgnLYATXnLCyiZTXjH
-	A7NIW6QKpuNLR+MfsmWYg==
-X-ME-Sender: <xms:PCofaN1p5fLVuQcydEQBsrKko1uzy4Fu30szH70TMNhjRwVaPP_p8Q>
-    <xme:PCofaEG9fA6Rt8XGjudjSKHk56NZHQv2qc36PjJN139DE9wkbH4rXqcXl41q6AxHn
-    L_b0jUCzUmIQp9inK0>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvleehvdehucetufdoteggodetrf
-    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
-    pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
-    gvnhhtshculddquddttddmnecujfgurhepofggfffhvfevkfgjfhfutgfgsehtqhertder
-    tdejnecuhfhrohhmpedftehrnhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnug
-    gsrdguvgeqnecuggftrfgrthhtvghrnhepvdfhvdekueduveffffetgfdvveefvdelhedv
-    vdegjedvfeehtdeggeevheefleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrg
-    hmpehmrghilhhfrhhomheprghrnhgusegrrhhnuggsrdguvgdpnhgspghrtghpthhtohep
-    iedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepiihihigrohesughishhrohhoth
-    drohhrghdprhgtphhtthhopegrrhhmsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehs
-    ohgtsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigqdgrrhhmqdhkvghrnh
-    gvlheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehlihhnuhig
-    qdhrohgtkhgthhhipheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtth
-    hopehhvghikhhosehsnhhtvggthhdruggv
-X-ME-Proxy: <xmx:PCofaN5ScQrh0BVH8rBShpCvy78tDbcnjCl7_Sf4r7pJrBe8aOGCNA>
-    <xmx:PCofaK0oP3BuKsEyg3ApgaZYF2fctU0gnX4HaSNnHtMhwaqEmo8tnQ>
-    <xmx:PCofaAGEL0v5WIzhq5QuNysH3MTKQNN9HLG1eTwPTAb75ZbabcTmFA>
-    <xmx:PCofaL-2psMyUrmyxpVhm6x8o9oknUd8TrN3D5brGw9uSmWvOGsnGw>
-    <xmx:PSofaGBKzYe3jvv7FDQtrCKYrb1YcHP91RT0FnRfmVtn1uwKhb50Cfnq>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id 896B41C20067; Sat, 10 May 2025 06:28:12 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
+	id 1uDmeg-000000068Ua-0rB4;
+	Sat, 10 May 2025 16:02:26 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uDmZP-00000006825-0fGF;
+	Sat, 10 May 2025 15:57:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=rt
+	Q9WMCTmJv+q//MSyeDx5RtHg7RmBudAr1AhWxe120=; b=GgdHW93tUx77vORi6x
+	qW3SWpBZzIQzA640G4HC/eJr+guTwrSZ56s/WKUQJ4dFtd25xbmMjYQJ8ySP9LTh
+	VIZDtAi6xtj9o13MDLozc2EkxpXhOt0YipS+diVVKeKB6pHv368tH+34QX35nWXX
+	LadrG+oUr7BxwmPcT4JV2lwCc=
+Received: from localhost.localdomain (unknown [])
+	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wDXjxsYdx9ormDlAQ--.43845S3;
+	Sat, 10 May 2025 23:56:10 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: lpieralisi@kernel.org,
+	kw@linux.com,
+	bhelgaas@google.com,
+	heiko@sntech.de,
+	manivannan.sadhasivam@linaro.org,
+	yue.wang@Amlogic.com
+Cc: pali@kernel.org,
+	neil.armstrong@linaro.org,
+	robh@kernel.org,
+	jingoohan1@gmail.com,
+	khilman@baylibre.com,
+	jbrunet@baylibre.com,
+	martin.blumenstingl@googlemail.com,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Hans Zhang <18255117159@163.com>,
+	Niklas Cassel <cassel@kernel.org>
+Subject: [PATCH v4 1/2] PCI: Configure root port MPS during host probing
+Date: Sat, 10 May 2025 23:56:06 +0800
+Message-Id: <20250510155607.390687-2-18255117159@163.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250510155607.390687-1-18255117159@163.com>
+References: <20250510155607.390687-1-18255117159@163.com>
 MIME-Version: 1.0
-X-ThreadId: T8d120477412db8f8
-Date: Sat, 10 May 2025 12:27:52 +0200
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, arm <arm@kernel.org>
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, "Yao Zi" <ziyao@disroot.org>
-Message-Id: <df6003e3-7fc3-4e50-a702-f0aa8d663dff@app.fastmail.com>
-In-Reply-To: <2857184.BEx9A2HvPv@diego>
-References: <2307187.iZASKD2KPV@diego>
- <c142bdf4-3910-48bb-ba5e-8accbdb32a00@app.fastmail.com>
- <2857184.BEx9A2HvPv@diego>
-Subject: Re: [GIT PULL] Rockchip dts64 changes for 6.16 #1
+X-CM-TRANSID: _____wDXjxsYdx9ormDlAQ--.43845S3
+X-Coremail-Antispam: 1Uf129KBjvJXoWxWw4xWw4rWF4kKr48uFW5GFg_yoWruw1rpa
+	y3XFWSyrZ7GF1fWan3Ja109r15trsav343trZxGw1ruw15AFy8KrWaya1rJas7GrZ7ZFyY
+	vr90qry8uan5ZFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pEwZ25UUUUU=
+X-Originating-IP: [124.79.128.52]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOhNJo2gfbZ-YXQABsC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250510_032816_314926_D1BAD567 
-X-CRM114-Status: GOOD (  17.45  )
+X-CRM114-CacheID: sfid-20250510_085659_551765_929F32B8 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,42 +84,143 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBNYXkgOSwgMjAyNSwgYXQgMjM6MzcsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEFt
-IEZyZWl0YWcsIDkuIE1haSAyMDI1LCAyMzowMzo1NCBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVy
-emVpdCBzY2hyaWViIAo+PiAKPj4gYnV0IHRoZSBjb3JyZXNwb25kaW5nIG5vZGVzIGFyZSBsZWZ0
-IGF0IGRpc2FibGVkLiBJIHNlZQo+PiB0aGF0IHRoZSBzYW1lIG1pc3Rha2UgaXMgcHJlc2VudCBp
-biB0aGUgdWFydCBub2Rlcy4KPj4gCj4+IFBsZWFzZSBzZW5kIGEgZml4dXAgdG8gcmVtb3ZlIHRo
-ZXNlIGZyb20gdGhlIC5kdHNpIGZpbGUKPj4gaGVyZSBhbmQgdGhlIHNpbWlsYXIgY2hpcHMsIHVu
-bGVzcyB5b3UgYXJlIHN1cmUgdGhhdCBldmVyeQo+PiBib2FyZCB3aWxsIGhhdmUgdGhlbSBlbmFi
-bGVkIChsaWtlIGUuZy4gdGhlIGdwaW8gbm9kZXMpLgo+PiAKPj4gVGhlIGFsaWFzZXMgYXJlIG5v
-dCBtZWFudCB0byByZWZlciB0byBzb2MtaW50ZXJuYWwgbmFtZXMsCj4+IGJ1dCB0aGUgaWRlbnRp
-ZmllcnMgb24gYm9hcmQuCj4KPiBGb3IgdGhlIHVhcnRzIGFuZCBpMmMgKGFuZCBzcGkpLCBhbGwg
-dGhlIGlkZW50aWZpZXJzIGFyZSBhbHdheXMgbnVtZXJpY2FsCj4gYm90aCBpbiB0aGUgU29DIGRv
-Y3VtZW50YXRpb24gYXMgd2VsbCBhcyBvbiB0aGUgYm9hcmRzIGFuZCBib2FyZAo+IHNjaGVtYXRp
-Y3MuCj4KPiBJZiB5b3UgbG9vayBpbiBhIHJhbmRvbSBSb2NrY2hpcCBzY2hlbWF0aWMgZmlsZSwg
-dGhlIGxpbmVzIGZvciB0aGUgaTJjMAo+IGNvbnRyb2xsZXIgd2lsbCBiZSBjYWxsZWQgaTJjMF9z
-Y2xfZm9vLCBpMmMwX3NkYV9mb28sIGV0Yy4KPiBTaW1pbGFyIHVhcnQwX3R4LCB1YXJ0MF9yeCwg
-ZXRjLgo+Cj4gU28gd2hpbGUgSSBmdWxseSB1bmRlcnN0YW5kIHRoYXQgbW1jMCAtPiBlbW1jLCBt
-bWMxIC0+IHNkLWNhcmQgYXJlIHZlcnkKPiBtdWNoIGJvYXJkIHNwZWNpZmljLCBzb21laG93IHJl
-cGVhdGluZyB0aGUgdmVyeSBzYW1lIGkyYyBhbGlhc2VzIGZvciBldmVyeQo+IGJvYXJkIGZlZWxz
-IHN0cmFuZ2UuIFRoZSA3dGggaTJjIGNvbnRyb2xsZXIgb24gdGhlIHNvYywgd2lsbCBuZXZlciBi
-ZQo+IGNhbGxlZCBhbnl0aGluZyBlbHNlIHRoYW4gaTJjNyBhZnRlcmFsbC4KCkl0J3MgdXN1YWxs
-eSBtb3N0IGltcG9ydGFudCBmb3IgdGhlIHVhcnQsIHNpbmNlIHRoYXQgdGVuZHMgdG8gZ28KdG8g
-YW4gZXh0ZXJuYWwgY29ubmVjdG9yIG9uIHRoZSBib2FyZCB0aGF0IG1heSB1c2UgYSBkaWZmZXJl
-bnQKbnVtYmVyaW5nLCBvciBtYXkgbm90IGV2ZW4gdXNlIHRoZSBvbmUgeW91IG5hbWVkIHNlcmlh
-bDAsIHNvIHRoZXNlIGFyZQpyZW51bWJlcmVkIG1vc3Qgb2YgdGhlIHRpbWUuCgpGb3IgaTJjLCBJ
-IGNhbiBzZWUgYSByZWFzb24gZm9yIGtlZXBpbmcgdGhlIG51bWJlcmluZyB0aGUgc2FtZQphcyB0
-aGUgb24tY2hpcCBwaW5zLCBidXQgb25seSBoYXZlIGFuIGFsaWFzIGZvciB0aG9zZSB0aGF0IGFy
-ZQphY3R1YWxseSBlbmFibGVkLiBXZSBzaG91bGQgcHJvYmFibHkgaGF2ZSBkdGMgY2hlY2sgdGhh
-dCB0aGVyZQphcmUgbm8gYWxpYXNlcyB0byBkaXNhYmxlZCBkZXZpY2VzLCBidXQgdGhhdCByZXF1
-aXJlcyBjbGVhbmluZwp1cCBhIGxvYWQgb2YgYm9hcmQgZmlsZXMgZmlyc3QuCgo+IEJ1dCBvaywg
-aWYgeW91IGZlZWwgc3Ryb25nbHkgYWJvdXQgdGhhdCwgSSdsbCBtb3ZlIHRoZSBpMmMgYW5kIHVh
-cnQgYWxpYXNlcy4KClllcywgcGxlYXNlIGRvLgoKICAgICAgQXJuZAoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Current PCIe initialization logic may leave root ports operating with
+non-optimal Maximum Payload Size (MPS) settings. While downstream device
+configuration is handled during bus enumeration, root port MPS values
+inherited from firmware or hardware defaults might not utilize the full
+capabilities supported by the controller hardware. This can result is
+uboptimal data transfer efficiency across the PCIe hierarchy.
+
+During host controller probing phase, when PCIe bus tuning is enabled,
+the implementation now configures root port MPS settings to their
+hardware-supported maximum values. By iterating through bridge devices
+under the root bus and identifying PCIe root ports, each port's MPS is
+set to 128 << pcie_mpss to match the device's maximum supported payload
+size. The Max Read Request Size (MRRS) is subsequently adjusted through
+existing companion logic to maintain compatibility with PCIe
+specifications.
+
+Explicit initialization at host probing stage ensures consistent PCIe
+topology configuration before downstream devices perform their own MPS
+negotiations. This proactive approach addresses platform-specific
+requirements where controller drivers depend on properly initialized
+root port settings, while maintaining backward compatibility through
+PCIE_BUS_TUNE_OFF conditional checks. Hardware capabilities are fully
+utilized without altering existing device negotiation behaviors.
+
+Suggested-by: Niklas Cassel <cassel@kernel.org>
+Signed-off-by: Hans Zhang <18255117159@163.com>
+---
+ drivers/pci/probe.c | 72 ++++++++++++++++++++++++++-------------------
+ 1 file changed, 41 insertions(+), 31 deletions(-)
+
+diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+index 364fa2a514f8..1f67c03d170a 100644
+--- a/drivers/pci/probe.c
++++ b/drivers/pci/probe.c
+@@ -2149,6 +2149,37 @@ int pci_setup_device(struct pci_dev *dev)
+ 	return 0;
+ }
+ 
++static void pcie_write_mps(struct pci_dev *dev, int mps)
++{
++	int rc;
++
++	if (pcie_bus_config == PCIE_BUS_PERFORMANCE) {
++		mps = 128 << dev->pcie_mpss;
++
++		if (pci_pcie_type(dev) != PCI_EXP_TYPE_ROOT_PORT &&
++		    dev->bus->self)
++
++			/*
++			 * For "Performance", the assumption is made that
++			 * downstream communication will never be larger than
++			 * the MRRS.  So, the MPS only needs to be configured
++			 * for the upstream communication.  This being the case,
++			 * walk from the top down and set the MPS of the child
++			 * to that of the parent bus.
++			 *
++			 * Configure the device MPS with the smaller of the
++			 * device MPSS or the bridge MPS (which is assumed to be
++			 * properly configured at this point to the largest
++			 * allowable MPS based on its parent bus).
++			 */
++			mps = min(mps, pcie_get_mps(dev->bus->self));
++	}
++
++	rc = pcie_set_mps(dev, mps);
++	if (rc)
++		pci_err(dev, "Failed attempting to set the MPS\n");
++}
++
+ static void pci_configure_mps(struct pci_dev *dev)
+ {
+ 	struct pci_dev *bridge = pci_upstream_bridge(dev);
+@@ -2178,6 +2209,16 @@ static void pci_configure_mps(struct pci_dev *dev)
+ 		return;
+ 	}
+ 
++	/*
++	 * Unless MPS strategy is PCIE_BUS_TUNE_OFF (don't touch MPS at all),
++	 * start off by setting root ports' MPS to MPSS. Depending on the MPS
++	 * strategy, and the MPSS of the devices below the root port, the MPS
++	 * of the root port might get overridden later.
++	 */
++	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
++	    pcie_bus_config != PCIE_BUS_TUNE_OFF)
++		pcie_write_mps(dev, 128 << dev->pcie_mpss);
++
+ 	if (!bridge || !pci_is_pcie(bridge))
+ 		return;
+ 
+@@ -2875,37 +2916,6 @@ static int pcie_find_smpss(struct pci_dev *dev, void *data)
+ 	return 0;
+ }
+ 
+-static void pcie_write_mps(struct pci_dev *dev, int mps)
+-{
+-	int rc;
+-
+-	if (pcie_bus_config == PCIE_BUS_PERFORMANCE) {
+-		mps = 128 << dev->pcie_mpss;
+-
+-		if (pci_pcie_type(dev) != PCI_EXP_TYPE_ROOT_PORT &&
+-		    dev->bus->self)
+-
+-			/*
+-			 * For "Performance", the assumption is made that
+-			 * downstream communication will never be larger than
+-			 * the MRRS.  So, the MPS only needs to be configured
+-			 * for the upstream communication.  This being the case,
+-			 * walk from the top down and set the MPS of the child
+-			 * to that of the parent bus.
+-			 *
+-			 * Configure the device MPS with the smaller of the
+-			 * device MPSS or the bridge MPS (which is assumed to be
+-			 * properly configured at this point to the largest
+-			 * allowable MPS based on its parent bus).
+-			 */
+-			mps = min(mps, pcie_get_mps(dev->bus->self));
+-	}
+-
+-	rc = pcie_set_mps(dev, mps);
+-	if (rc)
+-		pci_err(dev, "Failed attempting to set the MPS\n");
+-}
+-
+ static void pcie_write_mrrs(struct pci_dev *dev)
+ {
+ 	int rc, mrrs;
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
