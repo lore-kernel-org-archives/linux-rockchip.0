@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D6E7C3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 May 2025 16:22:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D424CC3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 May 2025 22:01:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xr6zNeaxuEMmX60c/2+Bqcm1C+G67DAi8+YogVTbGPE=; b=TaP0eNfkfAMtzn
-	to3ktUTKkT4SP2xLUebl2RJCj1xvvvguDFC4Sn8TN5WA8zJYyKf+VLM0QV4223+a/dqWUo8L9d20Z
-	Eb3GUHaWfZ0Mrtpz+lEtSqKx20r846m1+NsB+DwBJA2El8WYhk9vbe8UGy12tWVJICrhQ7CX7Ksn+
-	lc3vgPPHgFBiR28k/C3OQZxKaiv/JDkukUhjyLK9fxb4a8afrEOVcvYnqRmW8BKKVHeuGaHiP8SeK
-	e098RurRCbZSdgvZXONqWAOwLDfoMu4SKQE4CIAoo8qtCxaBhSm4dAzrmrrxFPN+gze0A/IeFSHU0
-	GfqBGpdb0fsrEXyg/YfQ==;
+	List-Owner; bh=Fyd9h6Zb46Jo1eQkkpxmneQAGRg0gu7RJJ/fBL0fvn0=; b=ISlulnd5mre5PU
+	ZGAyCeJCjsb6YfodqZsC2NGGHgX2kI6/S6YTD9BAPivbvBErfrARWV7WHmQpmu6gKTvZRoEPQqnYF
+	rRZtuEmYNmUH1Ir0Qk5Juag06q2+moxX8ZQR+5EvWfcfRrA3W6su3uL6u1G+MvyTUk5R8CD9krin2
+	KUEXpggu0PBucAsEZj89EaP9l23sGaqI0ABtuAvbAMfqckfZ5JsVNUfmeH6Omm8R4Q2L897uMyTvT
+	mjeINb2tYblBhkJFmfKLrkF38a571pz9ARz/kWDCjvylDXaQvsoMMPM46pA7G/R80N4j1PlESoDaY
+	tlv1WVq45dyvDXumyi1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDmxt-00000006AA5-03J1;
-	Sat, 10 May 2025 16:22:17 +0000
+	id 1uDsG4-00000006Pwk-1Mdu;
+	Sat, 10 May 2025 22:01:24 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDmrV-000000069d9-3Rog;
-	Sat, 10 May 2025 16:15:42 +0000
+	id 1uDsG1-00000006PwC-2kGr;
+	Sat, 10 May 2025 22:01:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
 	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:In-Reply-To:References;
-	bh=0GKSka8sGAEVtIjgnkv+3cC9f+hK5UlvpIaCwa+sWU4=; b=HwGIKoxRapWnJikLnDBLSqW7KD
-	EFFcCdddUtvPqFJWG6JHMfL1tzYz4SPBlCFuAqFrIfAjAvG+NXZ5hf0mKhkstK1SBSlKdo0hA9Pwh
-	KzsB5A3Ey9PrW2mcWwQBBSGTvuwWHrYoXwTEl75811/u0gLTvdR9C1mp58aJoOu1PCe4FWNm5VLMo
-	xWxrt9qE7JSGLm60tWt3+y5eD136ZPLQkyYNclMnjAKlGNbVzkuy3N9i1PhAUWaL1wY6SW4oGrTlC
-	zHrJMsN8XmTMtLXe1i1HyByugK2qtwh/2uHueMzmjS1XIE+4gKVFsr2HG6xVXpULuESkb0oZGN4NE
-	ZgDKZMFA==;
+	bh=KjN1nBhdxQaGDQyrmYVR1VzvPD+o09XYSFx1g7uAoQo=; b=R83QxQIdH8NYNnrP3EEGoBvw2f
+	noLkPoo2eSYooZLrPxk4w5mKdQ0z0ZQC8DpHBpKTgMlkR9RrSjajNU6KKhP8u7fsIOffvtNyCUWJU
+	QjaZOPSetUm3vUwJJXRAvKGDuJx5A3debRjRr8ni7b9ECglvtbaJUvBnZNr/4fkVLeFsUa9hxxehR
+	1Y2VdjhnuhKQJIK6nQpwXoxdxgW1n2C/pM+k8YC0Uv9XZ8NTm3t1OySTYg3Vo+lN0u9KIB1NG0FP/
+	QhOIyBByNTnPIjL7KxkzLazejhqUXXKla+0C6OzDML3TXrn4gQ6ok83pqYHXWcvfDfpbTUthXfpw5
+	3ITXQ/hQ==;
 Received: from i53875a1d.versanet.de ([83.135.90.29] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uDmrU-0000ha-Hn; Sat, 10 May 2025 18:15:40 +0200
+	id 1uDsFy-0007Ay-M3; Sun, 11 May 2025 00:01:18 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
-Cc: kever.yang@rock-chips.com,
-	linux-rockchip@lists.infradead.org,
+Cc: linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: convert rk3562 to their dt-binding constants
-Date: Sat, 10 May 2025 18:15:31 +0200
-Message-ID: <20250510161531.2086706-1-heiko@sntech.de>
+	linux-kernel@vger.kernel.org,
+	Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] arm64: dts: rockchip: move rk3528 i2c+uart aliases to board files
+Date: Sun, 11 May 2025 00:01:06 +0200
+Message-ID: <20250510220106.2108414-1-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250510_091541_864196_C53ABBEE 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20250510_150121_725100_451B5E60 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,118 +72,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Now that the binding head has been merged, convert the power-domain ids
-back to these constants for easier handling.
+Even though they will be the same for all boards, i2c and uart aliases
+are supposed to live in the individual board files, to not create
+aliases for disabled nodes.
 
+So move the newly added aliases for rk3528 over to the Radxa E20C board,
+which is the only rk3528 board right now.
+
+Fixes: d3a05f490d04 ("arm64: dts: rockchip: Add I2C controllers for RK3528")
+Suggested-by: Arnd Bergmann <arnd@arndb.de>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3562.dtsi | 37 ++++++++++++------------
- 1 file changed, 19 insertions(+), 18 deletions(-)
+ .../boot/dts/rockchip/rk3528-radxa-e20c.dts      |  2 ++
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi         | 16 ----------------
+ 2 files changed, 2 insertions(+), 16 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3562.dtsi b/arch/arm64/boot/dts/rockchip/rk3562.dtsi
-index 0156f969c4bc..412ecad79b0d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3562.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3562.dtsi
-@@ -7,6 +7,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/phy/phy.h>
-+#include <dt-bindings/power/rockchip,rk3562-power.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- #include <dt-bindings/reset/rockchip,rk3562-cru.h>
- #include <dt-bindings/soc/rockchip,boot-mode.h>
-@@ -546,48 +547,48 @@ power: power-controller {
- 				#size-cells = <0>;
- 				status = "okay";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+index 506d54337ece..9f6ccd9dd1f7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+@@ -18,8 +18,10 @@ / {
  
--				power-domain@8 {
--					reg = <8>;
-+				power-domain@RK3562_PD_GPU {
-+					reg = <RK3562_PD_GPU>;
- 					pm_qos = <&qos_gpu>;
- 					#power-domain-cells = <0>;
- 				};
+ 	aliases {
+ 		ethernet0 = &gmac1;
++		i2c1 = &i2c1;
+ 		mmc0 = &sdhci;
+ 		mmc1 = &sdmmc;
++		serial0 = &uart0;
+ 	};
  
--				power-domain@7 {
--					reg = <7>;
-+				power-domain@RK3562_PD_NPU {
-+					reg = <RK3562_PD_NPU>;
- 					pm_qos = <&qos_npu>;
- 					#power-domain-cells = <0>;
- 				};
+ 	chosen {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+index cd8ef389ccf3..b2724c969a76 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+@@ -24,22 +24,6 @@ aliases {
+ 		gpio2 = &gpio2;
+ 		gpio3 = &gpio3;
+ 		gpio4 = &gpio4;
+-		i2c0 = &i2c0;
+-		i2c1 = &i2c1;
+-		i2c2 = &i2c2;
+-		i2c3 = &i2c3;
+-		i2c4 = &i2c4;
+-		i2c5 = &i2c5;
+-		i2c6 = &i2c6;
+-		i2c7 = &i2c7;
+-		serial0 = &uart0;
+-		serial1 = &uart1;
+-		serial2 = &uart2;
+-		serial3 = &uart3;
+-		serial4 = &uart4;
+-		serial5 = &uart5;
+-		serial6 = &uart6;
+-		serial7 = &uart7;
+ 	};
  
--				power-domain@11 {
--					reg = <11>;
-+				power-domain@RK3562_PD_VDPU {
-+					reg = <RK3562_PD_VDPU>;
- 					pm_qos = <&qos_rkvdec>;
- 					#power-domain-cells = <0>;
- 				};
- 
--				power-domain@12 {
--					reg = <12>;
-+				power-domain@RK3562_PD_VI {
-+					reg = <RK3562_PD_VI>;
- 					#power-domain-cells = <1>;
- 					#address-cells = <1>;
- 					#size-cells = <0>;
- 					pm_qos = <&qos_isp>,
- 						 <&qos_vicap>;
- 
--					power-domain@10 {
--						reg = <10>;
-+					power-domain@RK3562_PD_VEPU {
-+						reg = <RK3562_PD_VEPU>;
- 						pm_qos = <&qos_vepu>;
- 					#power-domain-cells = <0>;
- 					};
- 				};
- 
--				power-domain@13 {
--					reg = <13>;
-+				power-domain@RK3562_PD_VO {
-+					reg = <RK3562_PD_VO>;
- 					#power-domain-cells = <1>;
- 					#address-cells = <1>;
- 					#size-cells = <0>;
- 					pm_qos = <&qos_vop>;
- 
--					power-domain@14 {
--						reg = <14>;
-+					power-domain@RK3562_PD_RGA {
-+						reg = <RK3562_PD_RGA>;
- 						pm_qos = <&qos_rga_rd>,
- 							 <&qos_rga_wr>,
- 							 <&qos_jpeg>;
-@@ -595,8 +596,8 @@ power-domain@14 {
- 					};
- 				};
- 
--				power-domain@15 {
--					reg = <15>;
-+				power-domain@RK3562_PD_PHP {
-+					reg = <RK3562_PD_PHP>;
- 					pm_qos = <&qos_pcie>,
- 						 <&qos_usb3>;
- 					#power-domain-cells = <0>;
-@@ -616,7 +617,7 @@ gpu: gpu@ff320000 {
- 				     <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>;
- 			interrupt-names = "job", "mmu", "gpu";
- 			operating-points-v2 = <&gpu_opp_table>;
--			power-domains = <&power 8>;
-+			power-domains = <&power RK3562_PD_GPU>;
- 			#cooling-cells = <2>;
- 			status = "disabled";
- 		};
-@@ -653,7 +654,7 @@ pcie2x1: pcie@ff500000 {
- 			num-lanes = <1>;
- 			phys = <&combphy_pu PHY_TYPE_PCIE>;
- 			phy-names = "pcie-phy";
--			power-domains = <&power 15>;
-+			power-domains = <&power RK3562_PD_PHP>;
- 			ranges = <0x01000000 0x0 0xfc100000 0x0 0xfc100000 0x0 0x100000
- 				  0x02000000 0x0 0xfc200000 0x0 0xfc200000 0x0 0x1e00000
- 				  0x03000000 0x3 0x00000000 0x3 0x00000000 0x0 0x40000000>;
+ 	cpus {
 -- 
 2.47.2
 
