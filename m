@@ -4,62 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9CD6C3ABCB
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 May 2025 08:41:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA288C3ABC3
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 May 2025 10:52:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Tb/xdujPkxBzM285AF0jvXjFJrbfgRW29eiNQdivhds=; b=Vg9Oz/7PG9Yw0p
-	ny0NxPebhzGxIHOIPIRwd8TgoyReCy5/b2eMmg0Db5rzFHzqsZfq4NsKYKbyl3wYLozMpiDhK87Lr
-	+1kwwH5f0RDWeDkYySRazXRqcyxLfPoYHwXz/x4XKGOe948MxavH3vSsn9XY49id+tg+MeR0MDJZ5
-	eNE1n1C3EF9RNsjwF0GQ2XtdSVeHsylHQs3NPS0/xj230zJNZHyupJ6UK8cKpzEOXwoPzfihf8Xnh
-	Vxr0Sa6kxaPXXA+g//reac4byb5iE3TVgAVnauOKVjF32N8Mt6SJL9hOVJmK/mYcv11OaNbkxQ0Fa
-	XJkPMEvDSXIgs/QoDlug==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:References:In-Reply-To:
+	Message-Id:Cc:To:From:Date:MIME-Version:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=mLZVUv7UIlctkFePjNeVYSE8bTBM+CstF5Z7bdwo1MU=; b=YcmSOSv+XQ5usFUfIgtr1BYK5i
+	6CJBJ6MxqKxxDxYoKuk3J99xkcEk0l1FhHiBVox6ztTT4AtMIPgEQOWzHlapDAreX+wukUzYJNQ4J
+	X0/qxLwYN1+MOmvmBMqeNwZlGusicCE6eRZG/JZYtjIyY8k2MiwNmwK2z5X3469RnCXmIf5zFSWaG
+	yMAgMp6hbHh+jfq97svCNHCWOcMeTZ6ODc+Q6lv0Deb2i2kwSP4Yg0dv/edLKfc/3vC9c3bTlGgzC
+	/FCcj66Q6O9dZi5gaL7woeeTqMoNE8pzbdnDr8OAhu37blUoxpavQaDCKxv3fWlIeUaFWW9iozod3
+	JkRrXrmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDfly-00000005eub-0YBP;
-	Sat, 10 May 2025 08:41:30 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1uDhoC-00000005qha-0hQz;
+	Sat, 10 May 2025 10:51:56 +0000
+Received: from fhigh-a5-smtp.messagingengine.com ([103.168.172.156])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDfAc-00000005bl3-0bv3;
-	Sat, 10 May 2025 08:02:55 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 9416225F87;
-	Sat, 10 May 2025 10:02:52 +0200 (CEST)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EgI7a7q_e3sx; Sat, 10 May 2025 10:02:51 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1746864163; bh=TgGotephKsM3CZvFEOAbmICkRQqBI40OGkRN9uP0W/s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Cp+2ur12X9YGgScUvhME4HTmlhADbBWK3Mc1HfKlC0WDvtn8pMHmpH0iY3wshCc3b
-	 J+OfKmC0aZ82LgU9l4Sbi8PtgAh5icWcVRLWeVJ65H4xG9m26/59YWP0/ExK4gVhZ0
-	 SPXYlEniuB953XVt92CAXcvVdLa8esWewf+AudhTRQSHu8liVU53tb6+BEoSypY3dF
-	 k5waeYzDnbt7oSOtZ3PVgY/xjOxksCHx6KlVaH90hSsib3EDh7mG5V0cBz/lwzn891
-	 3dfbggHa9kwQynBCS+3B9Y2MT3VoxNzVFc2KtR7CHBFMFYWSaLHnNd4DAt7m/tdk3b
-	 LdqART5uD+xcw==
-Date: Sat, 10 May 2025 08:02:29 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/2] rockchip: Enable Ethernet controller on Radxa E20C
-Message-ID: <aB8IFYq2uPPXm0HX@pie.lan>
-References: <20250509202402.260038-1-jonas@kwiboo.se>
+	id 1uDhRH-00000005oVF-209J;
+	Sat, 10 May 2025 10:28:17 +0000
+Received: from phl-compute-05.internal (phl-compute-05.phl.internal [10.202.2.45])
+	by mailfhigh.phl.internal (Postfix) with ESMTP id 761F6114010F;
+	Sat, 10 May 2025 06:28:13 -0400 (EDT)
+Received: from phl-imap-12 ([10.202.2.86])
+  by phl-compute-05.internal (MEProxy); Sat, 10 May 2025 06:28:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm2; t=1746872893;
+	 x=1746959293; bh=X2T/oegJiDpCtk+u192Wpv5GLasrylGVwYnEKe857cQ=; b=
+	e5Dg9tslb70FSgFH7y58OQ4B4u9YYjxW8d+CW63SIcHaxlNPLUd3R3LcB5bfh3GM
+	pL3JJ3th1U9iXp+fFum/4igCVLoDDd/RoVvpGiEgCeG1HUbe3JNxMFnjUK6lpikY
+	hwnkWVSAtCpo9G1YBktSv6R7E3HppDX7MRKyeDutDRPqsXg+fVeoDsuxsrd/nvbP
+	cocF/T+ibNPPCUthF+Gfl4//Ra79cjcIQMxge8FQlrl5JqP6w9gsN6iVLbskIoaU
+	PTrLJdjBwKzYQk0P0cG5zZySCaWTyetGd9XpFMdKoXwUrJJDv7pFQeHYZVcxaAAK
+	1VpXru0JBtlI4iadoMJXgQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1746872893; x=
+	1746959293; bh=X2T/oegJiDpCtk+u192Wpv5GLasrylGVwYnEKe857cQ=; b=m
+	ajWOhSCnTYOyf0j7pWaTcBcFZJGV0oQL4zcFVPGDybm6YQnbbUPCSSw5YJWBq4ac
+	K0inKcGWx41MUXkdyPBTNST9O22kjz5XN2y+/+ag7p1bsTeeaByGtnmUpw8zJuHT
+	FJGx1gtm7AXF+7EOt1ECvzgP1QCRPOkVOdOLmGEYB0oV8/brHO9DspGK9xpCgLY0
+	i4XU51zabQGAIh9F2hZqVii6qgwSyfNLx3AZfA6xSLQGX/uQEIbH/5YnMm9+BOWm
+	UiITCZme9F+WfEjBa1/22SEB4OSY2FPgcLeZdBk/DBtUR7MgnLYATXnLCyiZTXjH
+	A7NIW6QKpuNLR+MfsmWYg==
+X-ME-Sender: <xms:PCofaN1p5fLVuQcydEQBsrKko1uzy4Fu30szH70TMNhjRwVaPP_p8Q>
+    <xme:PCofaEG9fA6Rt8XGjudjSKHk56NZHQv2qc36PjJN139DE9wkbH4rXqcXl41q6AxHn
+    L_b0jUCzUmIQp9inK0>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvleehvdehucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
+    pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
+    gvnhhtshculddquddttddmnecujfgurhepofggfffhvfevkfgjfhfutgfgsehtqhertder
+    tdejnecuhfhrohhmpedftehrnhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnug
+    gsrdguvgeqnecuggftrfgrthhtvghrnhepvdfhvdekueduveffffetgfdvveefvdelhedv
+    vdegjedvfeehtdeggeevheefleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrg
+    hmpehmrghilhhfrhhomheprghrnhgusegrrhhnuggsrdguvgdpnhgspghrtghpthhtohep
+    iedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepiihihigrohesughishhrohhoth
+    drohhrghdprhgtphhtthhopegrrhhmsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehs
+    ohgtsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigqdgrrhhmqdhkvghrnh
+    gvlheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehlihhnuhig
+    qdhrohgtkhgthhhipheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtth
+    hopehhvghikhhosehsnhhtvggthhdruggv
+X-ME-Proxy: <xmx:PCofaN5ScQrh0BVH8rBShpCvy78tDbcnjCl7_Sf4r7pJrBe8aOGCNA>
+    <xmx:PCofaK0oP3BuKsEyg3ApgaZYF2fctU0gnX4HaSNnHtMhwaqEmo8tnQ>
+    <xmx:PCofaAGEL0v5WIzhq5QuNysH3MTKQNN9HLG1eTwPTAb75ZbabcTmFA>
+    <xmx:PCofaL-2psMyUrmyxpVhm6x8o9oknUd8TrN3D5brGw9uSmWvOGsnGw>
+    <xmx:PSofaGBKzYe3jvv7FDQtrCKYrb1YcHP91RT0FnRfmVtn1uwKhb50Cfnq>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id 896B41C20067; Sat, 10 May 2025 06:28:12 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250509202402.260038-1-jonas@kwiboo.se>
+X-ThreadId: T8d120477412db8f8
+Date: Sat, 10 May 2025 12:27:52 +0200
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, arm <arm@kernel.org>
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, "Yao Zi" <ziyao@disroot.org>
+Message-Id: <df6003e3-7fc3-4e50-a702-f0aa8d663dff@app.fastmail.com>
+In-Reply-To: <2857184.BEx9A2HvPv@diego>
+References: <2307187.iZASKD2KPV@diego>
+ <c142bdf4-3910-48bb-ba5e-8accbdb32a00@app.fastmail.com>
+ <2857184.BEx9A2HvPv@diego>
+Subject: Re: [GIT PULL] Rockchip dts64 changes for 6.16 #1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250510_010254_314238_DEFDEF41 
-X-CRM114-Status: GOOD (  20.46  )
+X-CRM114-CacheID: sfid-20250510_032816_314926_D1BAD567 
+X-CRM114-Status: GOOD (  17.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,78 +109,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 09, 2025 at 08:23:56PM +0000, Jonas Karlman wrote:
-> The Rockchip RK3528 has two Ethernet controllers, one 100/10 MAC to be
-> used with the integrated PHY and a second 1000/100/10 MAC to be used
-> with an external Ethernet PHY.
-> 
-> This series add device tree nodes for the Ethernet controllers found in
-> RK3528 and enable the LAN interface on Radxa E20C.
-> 
-> This include a gmac0 node for the 100/10 MAC and its related integrated
-> PHY node that only have recived limited testing. I have no board that
-> expose an Ethernet port for the gmac0 and the integrated PHY. However,
-> the PHY can be identified on addr 0x2 as 0044.1400 and in vendor kernel
-> this relate to the Rockchip RK630 PHY. A proper PHY driver will be
-> needed to support any real use of gmac0.
-> 
-> Changes in v3:
-> - Rebase on top of latest mmind/for-next
-> 
-> Changes in v2:
-> - Split from the "Add GMAC support for RK3528" driver series [1]
-> - Add ethernet-phy@2 for the integrated PHY
-> - Rebase on top of the "Support I2C controllers in RK3528" series [2]
-> 
-> [1] https://lore.kernel.org/r/20250309232622.1498084-1-jonas@kwiboo.se
-> [2] https://lore.kernel.org/r/20250309070603.35254-1-ziyao@disroot.org
-> 
-> Jonas Karlman (2):
->   arm64: dts: rockchip: Add GMAC nodes for RK3528
->   arm64: dts: rockchip: Enable Ethernet controller on Radxa E20C
-> 
->  .../boot/dts/rockchip/rk3528-radxa-e20c.dts   |  30 +++++
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 105 ++++++++++++++++++
->  2 files changed, 135 insertions(+)
-
-On my Radxa E20C board, iperf3 shows the interface could run at roughly
-1Gbps with this series,
-
-# iperf3 -c 192.168.114.51
-Connecting to host 192.168.114.51, port 5201
-[  5] local 192.168.114.50 port 41894 connected to 192.168.114.51 port 5201
-[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
-[  5]   0.00-1.00   sec   113 MBytes   948 Mbits/sec    0    380 KByes
-[  5]   1.00-2.00   sec   112 MBytes   944 Mbits/sec    0    399 KBytes
-[  5]   2.00-3.00   sec   112 MBytes   940 Mbits/sec    0    399 KBytes
-[  5]   3.00-4.00   sec   112 MBytes   942 Mbits/sec    0    399 KBytes
-[  5]   4.00-5.00   sec   112 MBytes   944 Mbits/sec    0    399 KBytes
-[  5]   5.00-6.00   sec   112 MBytes   940 Mbits/sec    0    399 KBytes
-[  5]   6.00-7.00   sec   112 MBytes   940 Mbits/sec    0    399 KBytes
-[  5]   7.00-8.00   sec   112 MBytes   944 Mbits/sec    0    399 KBytes
-[  5]   8.00-9.00   sec   112 MBytes   941 Mbits/sec    0    399 KBytes
-[  5]   9.00-10.00  sec   112 MBytes   941 Mbits/sec    0    399 KBytes
-- - - - - - - - - - - - - - - - - - - - - - - - -
-[ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.00  sec  1.10 GBytes   942 Mbits/sec    0            sender
-[  5]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec                  receiver
-
-iperf Done.
-
-Tested-by: Yao Zi <ziyao@disroot.org>
-
-Thanks for your work!
-
-> -- 
-> 2.49.0
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBNYXkgOSwgMjAyNSwgYXQgMjM6MzcsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEFt
+IEZyZWl0YWcsIDkuIE1haSAyMDI1LCAyMzowMzo1NCBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVy
+emVpdCBzY2hyaWViIAo+PiAKPj4gYnV0IHRoZSBjb3JyZXNwb25kaW5nIG5vZGVzIGFyZSBsZWZ0
+IGF0IGRpc2FibGVkLiBJIHNlZQo+PiB0aGF0IHRoZSBzYW1lIG1pc3Rha2UgaXMgcHJlc2VudCBp
+biB0aGUgdWFydCBub2Rlcy4KPj4gCj4+IFBsZWFzZSBzZW5kIGEgZml4dXAgdG8gcmVtb3ZlIHRo
+ZXNlIGZyb20gdGhlIC5kdHNpIGZpbGUKPj4gaGVyZSBhbmQgdGhlIHNpbWlsYXIgY2hpcHMsIHVu
+bGVzcyB5b3UgYXJlIHN1cmUgdGhhdCBldmVyeQo+PiBib2FyZCB3aWxsIGhhdmUgdGhlbSBlbmFi
+bGVkIChsaWtlIGUuZy4gdGhlIGdwaW8gbm9kZXMpLgo+PiAKPj4gVGhlIGFsaWFzZXMgYXJlIG5v
+dCBtZWFudCB0byByZWZlciB0byBzb2MtaW50ZXJuYWwgbmFtZXMsCj4+IGJ1dCB0aGUgaWRlbnRp
+ZmllcnMgb24gYm9hcmQuCj4KPiBGb3IgdGhlIHVhcnRzIGFuZCBpMmMgKGFuZCBzcGkpLCBhbGwg
+dGhlIGlkZW50aWZpZXJzIGFyZSBhbHdheXMgbnVtZXJpY2FsCj4gYm90aCBpbiB0aGUgU29DIGRv
+Y3VtZW50YXRpb24gYXMgd2VsbCBhcyBvbiB0aGUgYm9hcmRzIGFuZCBib2FyZAo+IHNjaGVtYXRp
+Y3MuCj4KPiBJZiB5b3UgbG9vayBpbiBhIHJhbmRvbSBSb2NrY2hpcCBzY2hlbWF0aWMgZmlsZSwg
+dGhlIGxpbmVzIGZvciB0aGUgaTJjMAo+IGNvbnRyb2xsZXIgd2lsbCBiZSBjYWxsZWQgaTJjMF9z
+Y2xfZm9vLCBpMmMwX3NkYV9mb28sIGV0Yy4KPiBTaW1pbGFyIHVhcnQwX3R4LCB1YXJ0MF9yeCwg
+ZXRjLgo+Cj4gU28gd2hpbGUgSSBmdWxseSB1bmRlcnN0YW5kIHRoYXQgbW1jMCAtPiBlbW1jLCBt
+bWMxIC0+IHNkLWNhcmQgYXJlIHZlcnkKPiBtdWNoIGJvYXJkIHNwZWNpZmljLCBzb21laG93IHJl
+cGVhdGluZyB0aGUgdmVyeSBzYW1lIGkyYyBhbGlhc2VzIGZvciBldmVyeQo+IGJvYXJkIGZlZWxz
+IHN0cmFuZ2UuIFRoZSA3dGggaTJjIGNvbnRyb2xsZXIgb24gdGhlIHNvYywgd2lsbCBuZXZlciBi
+ZQo+IGNhbGxlZCBhbnl0aGluZyBlbHNlIHRoYW4gaTJjNyBhZnRlcmFsbC4KCkl0J3MgdXN1YWxs
+eSBtb3N0IGltcG9ydGFudCBmb3IgdGhlIHVhcnQsIHNpbmNlIHRoYXQgdGVuZHMgdG8gZ28KdG8g
+YW4gZXh0ZXJuYWwgY29ubmVjdG9yIG9uIHRoZSBib2FyZCB0aGF0IG1heSB1c2UgYSBkaWZmZXJl
+bnQKbnVtYmVyaW5nLCBvciBtYXkgbm90IGV2ZW4gdXNlIHRoZSBvbmUgeW91IG5hbWVkIHNlcmlh
+bDAsIHNvIHRoZXNlIGFyZQpyZW51bWJlcmVkIG1vc3Qgb2YgdGhlIHRpbWUuCgpGb3IgaTJjLCBJ
+IGNhbiBzZWUgYSByZWFzb24gZm9yIGtlZXBpbmcgdGhlIG51bWJlcmluZyB0aGUgc2FtZQphcyB0
+aGUgb24tY2hpcCBwaW5zLCBidXQgb25seSBoYXZlIGFuIGFsaWFzIGZvciB0aG9zZSB0aGF0IGFy
+ZQphY3R1YWxseSBlbmFibGVkLiBXZSBzaG91bGQgcHJvYmFibHkgaGF2ZSBkdGMgY2hlY2sgdGhh
+dCB0aGVyZQphcmUgbm8gYWxpYXNlcyB0byBkaXNhYmxlZCBkZXZpY2VzLCBidXQgdGhhdCByZXF1
+aXJlcyBjbGVhbmluZwp1cCBhIGxvYWQgb2YgYm9hcmQgZmlsZXMgZmlyc3QuCgo+IEJ1dCBvaywg
+aWYgeW91IGZlZWwgc3Ryb25nbHkgYWJvdXQgdGhhdCwgSSdsbCBtb3ZlIHRoZSBpMmMgYW5kIHVh
+cnQgYWxpYXNlcy4KClllcywgcGxlYXNlIGRvLgoKICAgICAgQXJuZAoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
