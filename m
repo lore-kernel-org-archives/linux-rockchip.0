@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E60FC3ABC5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 May 2025 11:10:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B00D7C3ABC3
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 May 2025 12:00:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B4N6OP0lEFLz3T8VgyQvTMDR5bYoC1fHhddyYHp/d5I=; b=XXd1OhXAfwqF2c
-	u28bAtzvI46QIbGiTzfsWEwjAMzMBMpSoSkSXpvJ0shrSf6fFJ00IXhx0ddGY6tFDi5z58aOkvXmP
-	2xLkbLz7XMrOWcj1ZIvGtM6RMFN6uP/Wc3sk0SykahbPcAYc5qsnrM7qPJJYRRQg1rfXYb8UB5Caz
-	FomEVR9W7swY9juaEdVvJfn8q+rWqcpn7edDvcmSvPzTheQRr9TO645nrnntBOXqTGAJoIXHQ1yo+
-	pwL+mzB6Nb0Ig/8GGziZ21gt1Y/Hz1C7xZ9TiEEiAj7f0I3PUxczZ45HXmjpkFHnX/ikerMfvCPGY
-	01FoCHY95NOaSywyKymQ==;
+	List-Owner; bh=qL+i9uVa9Mgu8xjtPQsh/lRojdOABCVLN/4q8slOg8c=; b=e4+3HJjeqENC6d
+	14Z7D8lN3GPVMuQp8RJELwTJdVC2dbqGJlubFoX9U6VW+B+GG0lGYerSdyYdu0BgCIF45zUs0co31
+	4ZVdXVy3N+jlr7w0s9pywAaDUahxxnQdCBIwFh1atRT5T+o1aMZx11Ah54pGasEqfAak6hdyWY8en
+	pps+o4IF1Oo7C1MuAvGhGF/UtejKWDLvbMrdLK5sdAB1lnfG0QLwHe/Egz0gyUSs26IHVNSQpmN4K
+	fjpWOcGs60mfwTgcLK3WJcnigNac5v29tG6mFLauNhSJP7+XSiRJz7+g/JNZ82+/n69cNukoe1h8+
+	vZzMF7YOscazctbkMaZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uE4ZI-000000078Uw-2cFB;
-	Sun, 11 May 2025 11:10:04 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1uE5M1-00000007BY9-184E;
+	Sun, 11 May 2025 12:00:25 +0000
+Received: from mail-m83153.xmail.ntesmail.com ([156.224.83.153])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uE4Uj-000000078Al-23g0
-	for linux-rockchip@lists.infradead.org;
-	Sun, 11 May 2025 11:05:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1746961518;
- bh=ek6GBAYJeDRPIZjH28p/Q9SJdCsotpdSU7d2WoGn9tU=;
- b=wbkbLUpo1GidN1k282ZHOzF6GA1vqrv1YDsw9QPz62rKR3bQnk1bJUzUoj8DDmycT/2b2cPtk
- 1NeSBDMg5Nr+nYbndJdwfcRzRVdsmCgV86SdAVQM1o+kwwIS67lVo0jqoseO/DT/AfTE0Iewoum
- Ju2UEip316A17uK1GJucX3NIK5Ea526z4fa0sYjseaomAzaCI/6ZP78ZkcXNTMySnC/VkKHh6e8
- R8PP8gm41bIuyXHQVfkGsSPMtfKFK84kNZxHHFQ6N9UAMQCEDhijMMW5Rz9sBINgURtGOHmxuLv
- yzNZ/DS9gvB2Nf5ajVpyXPdYqrDzcXrBivmsk1TIAyBQ==
-X-Forward-Email-ID: 682084688a98caeef2469b46
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.0.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <4a4c0295-d8f1-4d8a-92e4-34a69b42c728@kwiboo.se>
-Date: Sun, 11 May 2025 13:05:08 +0200
+	id 1uE5Lx-00000007BXM-3R1a;
+	Sun, 11 May 2025 12:00:24 +0000
+Received: from localhost.localdomain (unknown [119.122.215.106])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 14a1b6e3c;
+	Sun, 11 May 2025 20:00:13 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: heiko@sntech.de
+Cc: amadeus@jmu.edu.cn,
+	andyshrk@163.com,
+	conor+dt@kernel.org,
+	damon.ding@rock-chips.com,
+	devicetree@vger.kernel.org,
+	didi.debian@cknow.org,
+	dsimic@manjaro.org,
+	jbx6244@gmail.com,
+	jing@jing.rocks,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	sebastian.reichel@collabora.com,
+	ziyao@disroot.org
+Subject: Re: [PATCH v7 4/5] arm64: dts: rockchip: add core dtsi for RK3562 SoC
+Date: Sun, 11 May 2025 20:00:09 +0800
+Message-Id: <20250511120009.37031-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <13758471.dW097sEU6C@diego>
+References: <13758471.dW097sEU6C@diego>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: move rk3528 i2c+uart aliases to
- board files
-To: Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250510220106.2108414-1-heiko@sntech.de>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250510220106.2108414-1-heiko@sntech.de>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZH0hKVkweGh4eQx5PHx0ZGVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVKS01ZV1kWGg8SFR0UWUFZT0tIVUpLSUhCSEJVSktLVU
+	pCS0tZBg++
+X-HM-Tid: 0a96bf3797cf03a2kunm14a1b6e3c
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODo6TDo4AzJDI0pCLDIwOUwO
+	KAlPCU1VSlVKTE9NQk1PQ0pPQ0tDVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpOVUpLTVlXWQgBWUFNT09PNwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250511_040521_788427_8FCE170E 
-X-CRM114-Status: GOOD (  17.58  )
+X-CRM114-CacheID: sfid-20250511_050022_141595_0E8056B3 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,84 +81,196 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+Hi,
 
-On 2025-05-11 00:01, Heiko Stuebner wrote:
-> Even though they will be the same for all boards, i2c and uart aliases
-> are supposed to live in the individual board files, to not create
-> aliases for disabled nodes.
+Sorry I just posted to the wrong thread.
 
-This sounds like something tooling should be able to handle, e.g. U-Boot
-use fdtgrep to filter out nodes (and aliases) for the FDT used by early
-boot phases.
+> First of all, thanks for noticing all the bits and pieces to improve.
+> I di think I have now fixed up all the "regular" pieces you mentioned
+> and amended the commit accordingly:
+>
+> https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=1d2f65fa98ddcafdfd1ebcdb87105141861b584a
 
-Maybe DTC just need a feature to remove aliases to disabled nodes?
+Thanks a lot for the quick fix! It seems there is still a little problem:
 
-Also how should overlays handle aliases? Are all overlays suppose to add
-aliases for the add-on devices they may enable?
+> <snip>
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3562.dtsi
+> <snip>
++	gpu_opp_table: opp-table-gpu {
++		compatible = "operating-points-v2";
++
++		opp-300000000 {
++			opp-hz = /bits/ 64 <300000000>;
++			opp-microvolt = <825000 825000 1000000>;
++		};
++		opp-400000000 {
++		opp-hz = /bits/ 64 <400000000>;
 
-And how should we handle boards with e.g. a 40-pin header where pins
-could be muxed to multiple functions. Is it the overlays responsibility
-to remove and replace aliases? E.g. if pins can mux between i2c1 and
-uart3, and i2c1 was enabled by default.
+This line is missing a tab.
 
-Regards,
-Jonas
++			opp-microvolt = <825000 825000 1000000>;
++		};
+> <snip>
++		spi0: spi@ff220000 {
++			compatible = "rockchip,rk3562-spi", "rockchip,rk3066-spi";
++			reg = <0x0 0xff220000 0x0 0x1000>;
++			interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH>;
++			#address-cells = <1>;
++			#size-cells = <0>;
 
-> 
-> So move the newly added aliases for rk3528 over to the Radxa E20C board,
-> which is the only rk3528 board right now.
-> 
-> Fixes: d3a05f490d04 ("arm64: dts: rockchip: Add I2C controllers for RK3528")
-> Suggested-by: Arnd Bergmann <arnd@arndb.de>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  .../boot/dts/rockchip/rk3528-radxa-e20c.dts      |  2 ++
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi         | 16 ----------------
->  2 files changed, 2 insertions(+), 16 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-> index 506d54337ece..9f6ccd9dd1f7 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-> @@ -18,8 +18,10 @@ / {
->  
->  	aliases {
->  		ethernet0 = &gmac1;
-> +		i2c1 = &i2c1;
->  		mmc0 = &sdhci;
->  		mmc1 = &sdmmc;
-> +		serial0 = &uart0;
->  	};
->  
->  	chosen {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> index cd8ef389ccf3..b2724c969a76 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> @@ -24,22 +24,6 @@ aliases {
->  		gpio2 = &gpio2;
->  		gpio3 = &gpio3;
->  		gpio4 = &gpio4;
-> -		i2c0 = &i2c0;
-> -		i2c1 = &i2c1;
-> -		i2c2 = &i2c2;
-> -		i2c3 = &i2c3;
-> -		i2c4 = &i2c4;
-> -		i2c5 = &i2c5;
-> -		i2c6 = &i2c6;
-> -		i2c7 = &i2c7;
-> -		serial0 = &uart0;
-> -		serial1 = &uart1;
-> -		serial2 = &uart2;
-> -		serial3 = &uart3;
-> -		serial4 = &uart4;
-> -		serial5 = &uart5;
-> -		serial6 = &uart6;
-> -		serial7 = &uart7;
->  	};
->  
->  	cpus {
+Also needed here.
+
+> <snip>
+> +		pwm3: pwm@ff230030 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff230030 0x0 0x10>;
+> +			#pwm-cells = <3>;
+
+Missed here.
+
+> <snip>
+> +				power-domain@12 {
+> +					reg = <12>;
+> +					#power-domain-cells = <1>;
+> +					#address-cells = <1>;
+> +					#size-cells = <0>;
+> ...
+> +				power-domain@13 {
+> +					reg = <13>;
+> +					#power-domain-cells = <1>;
+
+Does #power/#address/#size need to be put under pm_qos?
+
+> <snip>
+> +		spi1: spi@ff640000 {
+> +			compatible = "rockchip,rk3066-spi";
+> +			reg = <0x0 0xff640000 0x0 0x1000>;
+> +			interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> ...
+> +		spi2: spi@ff650000 {
+> +			compatible = "rockchip,rk3066-spi";
+> +			reg = <0x0 0xff650000 0x0 0x1000>;
+> +			interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_HIGH>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+
+Same here.
+
+> <snip>
+> +		pwm4: pwm@ff700000 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff700000 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+> ...
+> +		pwm5: pwm@ff700010 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff700010 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+> ...
+> +		pwm6: pwm@ff700020 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff700020 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+> ...
+> +		pwm7: pwm@ff700030 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff700030 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+> ...
+> +		pwm8: pwm@ff710000 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff710000 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+> ...
+> +		pwm9: pwm@ff710010 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff710010 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+> ...
+> +		pwm10: pwm@ff710020 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff710020 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+> ...
+> +		pwm11: pwm@ff710030 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff710030 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+> ...
+> +		pwm12: pwm@ff720000 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff720000 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+> ...
+> +		pwm13: pwm@ff720010 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff720010 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+> ...
+> +		pwm14: pwm@ff720020 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff720020 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+> ...
+> +		pwm15: pwm@ff720030 {
+> +			compatible = "rockchip,rk3562-pwm", "rockchip,rk3328-pwm";
+> +			reg = <0x0 0xff720030 0x0 0x10>;
+> +			#pwm-cells = <3>;
+> +			pinctrl-names = "active";
+
+pinctrl and #pwm-cells forgot to change.
+
+> <snip>
+> +		sdmmc0: mmc@ff880000 {
+> +			compatible = "rockchip,rk3562-dw-mshc",
+> +				     "rockchip,rk3288-dw-mshc";
+> +			reg = <0x0 0xff880000 0x0 0x10000>;
+> +			interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
+> +			max-frequency = <200000000>;
+> ...
+> +		sdmmc1: mmc@ff890000 {
+> +			compatible = "rockchip,rk3562-dw-mshc",
+> +				     "rockchip,rk3288-dw-mshc";
+> +			reg = <0x0 0xff890000 0x0 0x10000>;
+> +			interrupts = <GIC_SPI 57 IRQ_TYPE_LEVEL_HIGH>;
+> +			max-frequency = <200000000>;
+
+max-frequency should be placed below clock
+
+> <snip>
+> +		saradc0: adc@ff730000 {
+> +			compatible = "rockchip,rk3562-saradc";
+> +			reg = <0x0 0xff730000 0x0 0x100>;
+> +			interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
+> +			#io-channel-cells = <1>;
+> ...
+> +		saradc1: adc@ffaa0000 {
+> +			compatible = "rockchip,rk3562-saradc";
+> +			reg = <0x0 0xffaa0000 0x0 0x100>;
+> +			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
+> +			#io-channel-cells = <1>;
+
+`#io-channel-cells` should be put above `status = "disabled";`
+
+Thanks,
+Chukun
+
+--
+2.25.1
 
 
 _______________________________________________
