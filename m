@@ -4,165 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 388A0C3ABBC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 May 2025 10:27:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2875C3ABC3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 May 2025 11:17:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GrfJNO+q4gDzd5ySO6lMPt+Xd8BMwARBEqETC+8EJC0=; b=MQ+V3huHxAANBLAZ3FV6uH4I3R
-	ziVZERlCiPmZHWwWWK+QTp7pYkBq88GE1Kkgo3gMpFjCzBJLwRUe/JRKL6rABJf++MTHQXLWuZGuS
-	0D9pKrsiu5eLZLW/hwXUsKf1stpmjX9kExU2WWz8kPVdNRHfIKXuuUQ93UsnPBwLHrRnCyU0fX+tZ
-	E2zAsbkr65BM8vhcqwaoVfpenIrW90+un6FixXufwkpzTXals6r27BAKWfSNDqZ0qYAO1v8PMsqu9
-	WG5Dq98HyljbF5vkduUyqzKaGwzPbbAJ+fFRSIaCLDZCa+K1PCpajhadNUM4Dz8nGw0DFAVHe9BCp
-	lgJ7cUcQ==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:Cc:To:From:Subject:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EB+WmG3BhXGFKbXTxQAZL1FEdrgpfuzhzuwoA6t57l0=; b=rLH/S3BBWd0wo7uvWRsdniaoP7
+	+xLQ07BMwiaHCVU+72LiYmM4GbbWHM+NYVcFn6JFsN8LP+9ma4kp2rHa5NIN6BYdsB9rjkh9R/5ar
+	MNddphKeX/rwhuNzrOxGAPj1ASu045w3zlpuTWSoDrC7XHe/dWmXovWyntRp/d91iyIzIsGo6uRZT
+	xglOFYGhkamTNRSuBDyFnbojacPqtf2cHYNAVgF9cpL/pKLGUS4J7fLKX462zP3bolJo7YMcbB/EO
+	8srdNF86X2tHkgBcoqcKqPPk3J9inlVwyjh5oL0j8xzHPXKsMeR5Ub6TN+QAtZ3r335IV3thxuNrz
+	cTKNGHjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEQNc-0000000962g-02Dw;
-	Mon, 12 May 2025 10:27:28 +0000
-Received: from mail-am6eur05on20606.outbound.protection.outlook.com ([2a01:111:f403:2612::606] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
+	id 1uER9g-00000009EAV-2fM0;
+	Mon, 12 May 2025 11:17:08 +0000
+Received: from out-179.mta0.migadu.com ([91.218.175.179])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEQ1b-000000093OO-1rVB;
-	Mon, 12 May 2025 10:04:44 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=DOmZcxTnLOyloMyorxoikytywIohw0DvS+NrfWmMDbKiBIbrhrcJvt1e/c/RRug8n3i+eGEMv6v6YIWVd/yXIHGqaDTjfpLqY90CzAgwd2DTPS3KJIgxPivj71wMAlOoHeA2K5NNbCWcxkwD6nfdyk+WZofmYWL+tUtMxWVgrNQOsMVscg0MhSYSdTWHmbyO6R3QSS4DNR6zygfK1o9DtA3roYV2pVELBSXdb2zBXfGXsLCkS/XJ2y0fMISogVs3iLv4KZZelRkgoxywfK3RCzy1N7UbxC1G1Vp2NX2kjhno00PuNXU3YHqqPEFS5vkYEUuwdNVxuCryIMWxK5FrdQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=SsfpdBAiNoTFGN9JNkREh5YE5CVOUpqyAIbwFoCZFCg=;
- b=n0Vr5c/mEe37K4cGLtgJBtNTZEgBlDzk/H1kFoeUrQA3DQzhG101EhfiqMVNz2FpXFwDN3ctj7lLwvfd9fKQQhozENsWN358cD/AXV03NMTYFm8HlB5DFM/WMLDOa0LR3NFtmRzaWf2MF6iC3QERjAsGvY9nXgR1PG+8gvjg7mD2f8XW71h+XQgV4XAgITt+1tFrpXj6IAI5NNioBEBBZvF3pZwG1NS4fyeoUlPp/omjJLx9HpPsuIQV1JMJ+6RzL+rVICSCce+gqq3gToMcmf16jhM+w0N6DVnfspyTvxX8G82UYptB+xkF++WjuxSajEUmnjJh9VsFFPqOXnImMA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SsfpdBAiNoTFGN9JNkREh5YE5CVOUpqyAIbwFoCZFCg=;
- b=ZSCYumxhnnjeUWCtALFLFsfXB1ggyYJsvVdSPJ+hgKN0hzyAgY3blCYfiT0a/FUlodUMCCLrFO2Y0wS0poz5m0O4UCfehiLrYJ9C4BvNCwtBnXDdzfeB0TMoO6kkReeQStZ8ZZQfviDUmcOu8MOv5HD9QitFL02TmmXVM8bwe18=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by DB9PR04MB8377.eurprd04.prod.outlook.com (2603:10a6:10:25c::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8722.28; Mon, 12 May
- 2025 10:04:39 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a%4]) with mapi id 15.20.8722.027; Mon, 12 May 2025
- 10:04:39 +0000
-Message-ID: <c2118ab6-a7be-4158-bb51-9b2cdd1838b2@cherry.de>
-Date: Mon, 12 May 2025 12:04:37 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/6] arm64: dts: rockchip: add basic mdio node to px30
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20250508150955.1897702-1-heiko@sntech.de>
- <20250508150955.1897702-2-heiko@sntech.de>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20250508150955.1897702-2-heiko@sntech.de>
-X-ClientProxiedBy: FR0P281CA0104.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a9::15) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|DB9PR04MB8377:EE_
-X-MS-Office365-Filtering-Correlation-Id: e851bcf1-cb1c-4ef5-3521-08dd913c6817
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?ODdhSmVYNmNHR0ZKWFFieUZWWi9nVWQzU2YrZkhGYzlZbWRnUnQwS1d3YXVq?=
- =?utf-8?B?dU4vSlZuYjJCR1J5QXNoQ3dKV3B2dEhIalJDemhKVjNiWDJQZGtuZ2poK2Jm?=
- =?utf-8?B?bXdBalNxYzlZcnRlUnk0VnhsdkFJSVM3cmlweG0xdHhxcG1kSlB5anBtUzd2?=
- =?utf-8?B?UmlrS3pESzg5OWdYejltVDdTT1dseUQyWXFNdXY1Y2o0ZitleWhOSFhpRzFy?=
- =?utf-8?B?djJ2aWZGWmJ3cC8vZTFCckN6Ym1RaitNai9UWUN6TmdJV2RicDZnMlc1dWVu?=
- =?utf-8?B?YXNRaDRuYWpFcnZqYS9PSnovdUxYbldqRks4SGx6ODdrd2s1M0FrUUw4dWF2?=
- =?utf-8?B?bkcvYXBldzdBZW9jQWRWQUZiSHZFY0FzOTAxcTI5VTRsdUV0eHBEbTZ6azFw?=
- =?utf-8?B?UEJOclBBbExqQnREOFdQQUpWV2N5SWQreXV3V0RFV0NFeE12aUdnMEQvS1lz?=
- =?utf-8?B?WVd2a3N6czBWR2NQamVza3haLyttTmprdU4yOVJTdm5qd0Q1QjVLRS9QOHBS?=
- =?utf-8?B?Sk1CUUVBME9SeXRTZnVaUlpGK3FrN2RPR2FIUzhlWklKaW9HYTZMSmVrRy9q?=
- =?utf-8?B?dUJuMWVkcEVRcEVONllQdW9lVWxDMHMvQmkrQkpyZU93OWFkUzRjUVZsV3J4?=
- =?utf-8?B?M1pVZ1ZnT0pocURNdHRleExLbmQ5NXFuSG5lTWpaaEVCUEhVOTZHNnZ2TU40?=
- =?utf-8?B?UkZFakdXNkRWNDhPaUVMQUlVdG5ZZmNaNnRDQ0pJNTNhWWZYMzcvTkpIODgy?=
- =?utf-8?B?THVXQjYxRGoxZlJPZXd0UUpuNDFvdi9IWmYwVXBtcFMwaUlET3MrLyswaVIr?=
- =?utf-8?B?ajNRcUlKVTNIWHRUWWxXU2xVR3pPM3NaNldkbW0vcWJJWFFZOHNaOTNtMHg2?=
- =?utf-8?B?T281MkRpbzMvcUFhaUNvV3k1b3VJdVVKaVYyL0F3QmI5TzJtdlNkaFc2Wjhp?=
- =?utf-8?B?VVc0eEtOT2w3TUYxbUVWRzh5bUMweEM2S1hTQnpxc0ZLbzBuaW05WGR5d1kx?=
- =?utf-8?B?Z0ZYeFo0dGd5REpvM1g4QUk4MU9VVGJpTmUxYitKYW80UVRLTmFwSlpDUlRp?=
- =?utf-8?B?eWpIMTFFK2lId0o5RlZWMytVZEFSbzRFTnVqQzJ5VlpCcmVZQVZVa2JCcDBE?=
- =?utf-8?B?b0JnMnNHVk5qdVMxSzRTbFJ0N2lreHo5bUV3VTBCRnc3ZXpLdnhDVEYvczJh?=
- =?utf-8?B?SUROZTlyc1NKdVc5YkEydFplTUhGc09sVkVwUjI1cXNhME5xK0NlY1FEaitV?=
- =?utf-8?B?RG01S2VpRU9UOHRiNVRLdGdYRlB4bG1mMWNxZEdHOUZ0TVR6R2xEU2l4SmYx?=
- =?utf-8?B?RE9aOXF4YVhmMm9JeXU1clA4NW5laEg4SDFCdjA5dlNmU0tPU2FUelBYYndY?=
- =?utf-8?B?b05QTE9FK0Y0M1Axb0luWnNtbmxiMUo3TXRGOUJxTytmdUtDQVZvZUlwb3gy?=
- =?utf-8?B?Wk5OYWF2cTFjRkEvNi9GUFBkbzhnSjdNSk1LTWRVMjNwblNGd1VUMjJuTlNJ?=
- =?utf-8?B?YS92TUxWSUwrWVBvNUxkMnRjaUFJVkxjNGxRNmQ5SGpzSlkvL3dmbTNBWS9V?=
- =?utf-8?B?M0FYaVA3TGgvak1lTDFWVkxhY1dmUzZFNGUvNWZVazRhQi9UUERvcGRKekx3?=
- =?utf-8?B?ODR2ZCtESmNMNVBnMmhJRTJhN1pyenNTUTk5Qk93MmpIVWpWdzg5UytUYmVv?=
- =?utf-8?B?cEx2TWdrQS9ZcDRCaVcrcXM3VFk2YUlDUE9RcXJlRDJyZTlZUGYrVFdTVG85?=
- =?utf-8?B?R2dLaDg3Vmxqanh1QlNzZFRtS3dJc2cvMDZKQW83RStrcEZQR1VLN0FYUEMr?=
- =?utf-8?B?QmtNcm1lS3I0eFN2b1pEZ1VKUStDUm5XeWZIT0p0WldLTXJ6djRBem8wY3k0?=
- =?utf-8?B?Y3dGQ3VVcEZ6Z2RLb0Y2bGZSekFEVUsrb254dk1FYnFFa3lYbzhzRFZlSW9z?=
- =?utf-8?Q?3usmzvvT6Og=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YVA4VURSR0FYMThvVytWQzlsN0d0ZkswYlhIemEwdnUxYXpvVFdGd2RjcTYx?=
- =?utf-8?B?a0ZPdll5bmVQOGRxZURGQ0tEWENiZTNXbW1OMHk5b1U3REpSUXprTlYydjVB?=
- =?utf-8?B?cDRaUTdkUlJsWGJNY0diRnRKMnNBVEVMekR4d0FwK1BuK0svVTBObFV3d2RC?=
- =?utf-8?B?VVV6ZHVTNXN5VFRvVWlVamdHUUR2Wm5xeENHZmVZRWVEY2RyQW5tNEpkbzR4?=
- =?utf-8?B?bmFhd0JaenBUMWdWWEF2c2gyeDNiaXl6enhrQ0tjbTRLRTk0YUptZERIcDhJ?=
- =?utf-8?B?czBMbHpMTnFocTFuTGhJOXNFcjN6dHh1R1ZDeTR5M2xOSE04WjBGb0Q3aHpJ?=
- =?utf-8?B?OWxjMzhPRFQvSitISkdGVmpGUjU5d1NSc2FHbkllazVRVzJZM2pDUmp6SFVS?=
- =?utf-8?B?RzE3NTE5dHNKSGxMU0NMcGdBWTU0MS81Nm83ODVjR1M3RVVCcTZ2dXZQTWRK?=
- =?utf-8?B?dGhYK3h1eTcrRkFFNk91YzdWSmwvY2dwSmpvNHZuT0pBOCs4bVcvaUZSMGNX?=
- =?utf-8?B?eUp2b3hGd1IyaHhGWk1xRzNKNStXODlrWWVMZm1RalpVZVRBcDNPMmxYcWhD?=
- =?utf-8?B?N05pTnhjUzRJbVgvNDdKNnMzQlBGaTJmK1RIU3hTNjh3WDd2QUpsOE5Tb2JU?=
- =?utf-8?B?R3hRS2g1eUhnZ2xXcnFBWkNnTUFEZ3RMa2VnZWxWSzVCcFlaT3ZDMGUxWElI?=
- =?utf-8?B?a2trWE1JNTJGWmg3N0ZabHI2TkpHUjB0OURFL1NFcjMvSU9TNXBlcGVwWnhj?=
- =?utf-8?B?UWJrbTRudVFvTXNYQ0FIaVpybGtaTFdwOU1sNm5vak9VTk96VDBRcFhvbEJS?=
- =?utf-8?B?elJpTjk5dFQwdzc1RWNZQ09ucktDNkNWRFhLbk5QM0t3Q08xTTBQWm40ZUww?=
- =?utf-8?B?NGtNQkZUc3gwaWNrOFFsaU9PT1FjZmd5WURwTS85RERnNVE4c1kvaitxeUNP?=
- =?utf-8?B?ZDVGenduUWRRa1dpeEwwZTZqODBXQ1lNZ1FtOXMwU0lzTVR2VlRrUGdhOElQ?=
- =?utf-8?B?SFQ1enBtYXo1U0VDVnRVTzhwWXRzTHMxd29pZ294QXNKMlAwcFhtRHlRczNR?=
- =?utf-8?B?S09lQ0JVYTdsSXRNMlRPbUxqVjYrOWJXdDh1SVJ5VEljeHNPeXJjZnZtSllS?=
- =?utf-8?B?a3lTVVhmTkRhWGFtSCtUa0Vlcm5wZHZwbmdGRFNzL2lWSS9Rd1YzL3QxWkI0?=
- =?utf-8?B?dm9xNjZaNGR0akl6NnJUU0NTNW1Ed0tsV00wTVVDaWVSODd3cGM5U1ZMcmlI?=
- =?utf-8?B?OXBld0g1WDRDM2NjRitiT1hqcjY3T2MxWjZGQnpPM2NGWlVaaVE1Z1NxbUhx?=
- =?utf-8?B?Ymp1UHpFQ2Zaak5sbzhiUXBoeHdsQnV3VnY3dURUZVllUWNUaUkzUmI1YVhk?=
- =?utf-8?B?N1hZcko1eU10OEFSOGkxd21qcnJqWlI2ay9yUU5YOTVPS3llVGpab1R1ZFRl?=
- =?utf-8?B?TTZVc2pwZDhuNS9aWDl2dGZUKy9VaWV1RVgySXVtK1RpU2pOSCs0SThjU29Y?=
- =?utf-8?B?azh5VnU1VkM4Tyt5VDIvUWlGdndGUjE0RUdJSUpPaGdhUHIvTUVzQUFVYjlw?=
- =?utf-8?B?bUhPSFFHQUhIdEFkZkw2bTJvNWNSME5WMHVHSXRFQTIzR1AzbEphTEhwbE9H?=
- =?utf-8?B?SUc5aWdySTRmdHRYTkFmbTY0MmpFYUJZTGx2emtrSkpPVTVnWkQ5VDZHYnRJ?=
- =?utf-8?B?My9saWhiZXhWWng2V1lxL2hZSHFvUWdBSktBVkUyUGxVQTgxZ2kwVG03cmJO?=
- =?utf-8?B?UXNrbzBKMDlXbmFPYm5nejVYMjNORVVSc1hmbG9DbWFieGJ6bElNbkw2OTlP?=
- =?utf-8?B?QzROYzkrMmhNcTduUDg1ZTlxRktQeU4vRVBwU0pwUWt3b1VRZnNrYUJHbTZm?=
- =?utf-8?B?L2hEMHlnU2RvRks2bjEzZkZkZVMrK2ppZE5NTVZON3Vpckk4aVhOOElUbnIv?=
- =?utf-8?B?WDJMOU52U0EvcG92SkpiRWlqYTlndkV2MkRvRC82ZzhCdGJNa1psTWdYdjJu?=
- =?utf-8?B?MGUzOFhBc3BPbzdodFkvZUZPWmRXNm5SVzE4aHpPemNSUEFQR3FoaTFCZ1NM?=
- =?utf-8?B?YVN4TEZDbHgyZW43OGFHelZlU2dSanYyL0JuNmtOdHhNblpjWDkrYy9SdXZo?=
- =?utf-8?B?ZVFjWjY3RjF5L1dCS2RrdUY2ck1tZys0UlBUWGQySVU0N1A1R0xlaFdLWmJt?=
- =?utf-8?B?U3c9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: e851bcf1-cb1c-4ef5-3521-08dd913c6817
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 May 2025 10:04:39.1603
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ZbrC70eEwxhkzCbsf0M0JYti2KsHqSUhzPREeUuWK1eCuymOdYgwAHzI57ZSMgRCTSN3pVsUwoFmjFfQ8C+PwP/lZuhU9gmcshNO0N4REf8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR04MB8377
+	id 1uEQsN-00000009BQy-1yjR
+	for linux-rockchip@lists.infradead.org;
+	Mon, 12 May 2025 10:59:18 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1747047550;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=T8/Ht4vLH47yQgnyA3aHoKEjFyY3IKH+TxDUhnG4Pis=;
+	b=ShP2Q1lh0QUy9ERDnw/XyUESNdFmosr43cn7zNMQgNobgnz3j/jedkv9j5CKVBYNm+8vDn
+	N0gyToplqVDXrQrVDcUo6cyt5E4+/YT8KJ5L9dFRdOWn2PZXu6NEvup8tYnORw9ZAUZpov
+	VBU9NUrFQ69gEAFU4nxCCclW/gFw4YVNjlPQD19mamiA/0ygoD4YmyVflSybIMuGtxGRbb
+	Gc17pDEGSpSW9spEv7cHsnlo+Uy1UYeDbt4WgEBK4KiHyKOTaeX1RbQkohfqK/VXiiRBOx
+	vhvHoPWtq25Yuek/wANmqPZYLaLtTNlXPQF/SbXXdC9/fLBBJNlNr1jTIdOMhA==
+Date: Mon, 12 May 2025 12:58:51 +0200
+Message-Id: <D9U4NW0TLBIE.2WTOIETA78EVQ@cknow.org>
+Subject: Re: [PATCH 0/1] arm64: dts: rockchip: rk3568: Move PCIe3 MSI to use
+ GIC ITS
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Chukun Pan" <amadeus@jmu.edu.cn>, <linux-pci@vger.kernel.org>
+Cc: <conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
+ <dsimic@manjaro.org>, <heiko@sntech.de>, <krzk+dt@kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-rockchip@lists.infradead.org>
+References: <D9RSA5K547DD.1LYPIZZM4XALS@cknow.org>
+ <20250512070009.336989-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20250512070009.336989-1-amadeus@jmu.edu.cn>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250512_030443_487152_35CD7DD5 
-X-CRM114-Status: UNSURE (   8.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250512_035916_126502_D4312243 
+X-CRM114-Status: GOOD (  18.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,31 +68,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============1492594890660746993=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+--===============1492594890660746993==
+Content-Type: multipart/signed;
+ boundary=f5128d620a41dad2d3ab473cb7c3567b2921ffecd91198bee2646459e69b;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-On 5/8/25 5:09 PM, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> 
-> Using snps,reset-* properties for handling the phy-reset is deprecated
-> and instead a real phy node should be defined that then contains the
-> reset-gpios handling.
-> 
-> To facilitate this, add the core mdio node under the px30's gmac, similar
-> to how the other Rockchip socs already do this.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+--f5128d620a41dad2d3ab473cb7c3567b2921ffecd91198bee2646459e69b
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+Hi,
 
-Thanks!
-Quentin
+Added linux-pci ML to "To".
+
+On Mon May 12, 2025 at 9:00 AM CEST, Chukun Pan wrote:
+>> > With this patch I get the following kernel warnings:
+>> >
+>> > pci 0001:10:00.0: Primary bus is hard wired to 0
+>> > pci 0002:20:00.0: Primary bus is hard wired to 0
+>> >
+>> > If I 'unapply' this patch, I don't see those warnings.
+>
+>> I was pretty sure I had seen those messages before, but couldn't find
+>> them before. But now I have: on my rk3588-rock-5b.
+>
+> Thanks for the reminder, I didn't notice this before.
+> The BSP kernel also has this warning.
+>
+> Before this patch:
+> [    2.997725] pci_bus 0001:01: busn_res: can not insert [bus 01-ff] unde=
+r [bus 00-0f] (conflicts with (null) [bus 00-0f])
+> [    3.009990] pci 0001:00:00.0: BAR 6: assigned [mem 0xf2200000-0xf220ff=
+ff pref]
+> [    3.018100] pci 0001:00:00.0: PCI bridge to [bus 01-ff]
+> ...
+> [    3.401416] pci_bus 0002:01: busn_res: can not insert [bus 01-ff] unde=
+r [bus 00-0f] (conflicts with (null) [bus 00-0f])
+> ...
+> [    3.545459] pci 0002:00:00.0: PCI bridge to [bus 01-ff]
+>
+> After this patch:
+> [    3.037779] pci 0001:10:00.0: Primary bus is hard wired to 0
+> [    3.044120] pci 0001:10:00.0: bridge configuration invalid ([bus 01-ff=
+]), reconfiguring
+> [    3.053362] pci_bus 0001:11: busn_res: [bus 11-1f] end is updated to 1=
+1
+> [    3.068920] pci 0001:10:00.0: PCI bridge to [bus 11]
+> ...
+> [    3.451429] pci 0002:20:00.0: Primary bus is hard wired to 0
+> [    3.457793] pci 0002:20:00.0: bridge configuration invalid ([bus 01-ff=
+]), reconfiguring
+> ...
+> [    3.535794] pci_bus 0002:21: busn_res: [bus 21-2f] end is updated to 2=
+1
+> ...
+> [    3.612893] pci 0002:20:00.0: PCI bridge to [bus 21]
+>
+> Looks like a harmless warning.
+
+I see various messages which look odd or suboptimal to me:
+- (conflicts with (null) [bus 00-0f])
+- bridge configuration invalid ([bus 01-ff]), reconfiguring
+
+But those are informational messages, so I guess that is considered
+normal. Looking a bit further and it does look that the severities in
+``drivers/pci/probe.c`` are chosen deliberately. So even though my NVMe
+drives seem to work, I'm not ready yet to ignore a WARNING.
+
+In my view, a warning is something that should be fixed or if it's
+indeed harmless, then its severity should be downgraded.
+
+So I looked where that warning came from and found commit
+71f6bd4a2313 ("PCI: workaround hard-wired bus number V2")
+
+And its commit message does not make it clear to *me* if it's valid:
+
+    Fixes PCI device detection on IBM xSeries IBM 3850 M2 / x3950 M2
+    when using ACPI resources (_CRS).
+    This is default, a manual workaround (without this patch)
+    would be pci=3Dnocrs boot param.
+
+    V2: Add dev_warn if the workaround is hit. This should reveal
+    how common such setups are (via google) and point to possible
+    problems if things are still not working as expected.
+
+This could be interpreted as "let's make it a warning so people will put
+it in a search engine (and not just ignore it) and then we can find out
+via that, if it's a common issue".
+
+It would be helpful if the people (way) more familiar with the PCI
+subsystem then me to tell me/us whether the severity is appropriate (and
+thus should be fixed?) or if this should be an info or dbg level message
+instead.
+
+Cheers,
+  Diederik
+
+--f5128d620a41dad2d3ab473cb7c3567b2921ffecd91198bee2646459e69b
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaCHUdwAKCRDXblvOeH7b
+brPcAQDFLvLOr4MVv6bPcn//tl4F4G7GpE+qkYliDw8IQiSYpAEAmxHUXv878qId
+zZdpqj/69uyB2oVZDR5clQaoGkkD7wU=
+=2NDu
+-----END PGP SIGNATURE-----
+
+--f5128d620a41dad2d3ab473cb7c3567b2921ffecd91198bee2646459e69b--
+
+
+--===============1492594890660746993==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1492594890660746993==--
+
