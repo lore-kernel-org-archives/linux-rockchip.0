@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D1E3C3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 May 2025 13:19:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BDE8C3ABCB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 May 2025 14:07:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=QGMGKV/DHWJZTGFkVqRJVK6ye3BwLZhi6Uuv/hHNips=; b=Xd8p/B7mU39POa2dvVYwEdhVBh
-	MQmk0EYO7no3LNANhrTyOzMXsG2Ip+JqTUGvuJhGJGfQFrIN4yQqZebEG0xwptc1J3TBhb8Z1+EOz
-	dE8QzUlqrWqKAKDyJAbiQAf4A16BjZh4mFdGdHFbdMHpgQz0dr+01nF5aPDWxk2eyxiBdJDGWoICn
-	sqfWx/47QXXPZgo52nGIx4ENQNl/tjl40NAHE8E8Bq9xBvAeeJB5rRsNXTeOB0KQy9WiQeSHvl2Zr
-	Z11+0q4ybFhNL0zpf7HhSdck62xalAbn3uLFqYgxM1ar/cTM3ta76xgIm3UWilGfZIscsuJBIDoig
-	tfSAt7nA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gZFfSKKd0rSCmGpMH0FGghqXD1roA/T9PG0OnK9cFkg=; b=z5nmvC60t1K6wD
+	m34LPZUkFGp4BUyaA8lSANBCdsk2/dq0GB3IY2V1WmBl+gN/YjOXarhMYSNzeUK2EQiNqJPTSC1qv
+	LEi2zV/OQcGo9xoWNcnduCQQg34cR+yqKa6DqXyfaVyDLDbDzNO0k9/aEw4GZUJnosn4INQYc7d8D
+	UwmMUh98LOzW/Bqz0MzxGpc60nFISuMWqptnUeVS7tkZmmKXzNgE2iFUkPvxZnMfEfEMLKsh4kM15
+	EMFLAH1QEGhk8gu6MQTZxuaV/54uwknJrqwKkUOSa9pfGV/+CXicMVrL2uoC70hTWbWUxq8Iya1mM
+	5YH+fGr5V39kgsaXNGzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uET3p-00000009W4X-1x0l;
-	Mon, 12 May 2025 13:19:13 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uETnz-00000009fW7-0wyN;
+	Mon, 12 May 2025 14:06:55 +0000
+Received: from out203-205-221-209.mail.qq.com ([203.205.221.209])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uESb9-00000009R9r-1ZEr;
-	Mon, 12 May 2025 12:49:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7B3D35C6499;
-	Mon, 12 May 2025 12:47:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DBA6C4CEEF;
-	Mon, 12 May 2025 12:49:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747054174;
-	bh=4sCnrLt5+b/Nr3tQwYV/v/pzsN34z6tW/1DRdvCDkkA=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=SpbNPEA5z2pRB9FzsA6AnqW+zN1ldKwwTpP1A7QSf77pwNFLFkdRLIJLeRXYFNa29
-	 lNBVHW6g4Nw3RXEtLg41fUKZgxCD3lCXQlNGeRA4joxIhxtMDEo5jQu8c53P52Q4B8
-	 QWIHV/bg2JS7mI+PbHNrELnmcsV+9ddogQ3IbL1xhDjcRliNubkvTTNde2rR6aZhha
-	 fc3ZLcpvyxc3ldWXcMos1NNdgBml3Kj/OHj+Qw+emSAFv/+sRGu3uxtQmOUy7g0oBd
-	 6flbpqUUip/84Hnz2wF8kb4c467bWnODW1+T+O8//ZA6Mx3e2QH0aAd8zZLp6BX2qT
-	 iFdd88Oqrb+iw==
-Date: Mon, 12 May 2025 07:49:33 -0500
+	id 1uET5n-00000009Weq-3G6v;
+	Mon, 12 May 2025 13:21:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foxmail.com;
+	s=s201512; t=1747056072;
+	bh=XiZXeriwtNmD0C5rumTsjv/pcxn0w65lxRr71QDYu34=;
+	h=From:To:Cc:Subject:Date;
+	b=siE2ir6+/v11bGLYi0QrugKFp419zItyD6rE4YWj4rOyhxRSpkr5NWbNsHXtg8xHa
+	 38eEXFFEaikcs8+aB6VWWdoyCcPP6QVVlrtAyjpUgIp96PneriQyk6wWQc+sfo40UP
+	 QCota9OPNHF0GEgroLQeAZRk3ghsEijerUH4qW1M=
+Received: from localhost.localdomain ([182.245.65.132])
+	by newxmesmtplogicsvrszgpuc5-0.qq.com (NewEsmtp) with SMTP
+	id 531AAC00; Mon, 12 May 2025 21:20:49 +0800
+X-QQ-mid: xmsmtpt1747056049th6ukru0a
+Message-ID: <tencent_D5C17F39C684CD6491505763B23BACCE5106@qq.com>
+X-QQ-XMAILINFO: OAkMgjsCL21CLWoSijloNZ8D3K/VcR2BT8UYQcTgS3cymMCmEi2kyqjEkcmjST
+	 JFCA1Y75FOEsVBqYs2d1+9hsWzPfSU5S7izWMysBdY4aD+JKY6KJMkw3o9nOmKh9UjiYC8Nm+Qv5
+	 xwSll3Qhj3cihal+Y0T14XFVYc8vGmHg/YZsqA3ERRzPx2hP0GSKxtUp/HpHQF6fh8IfLgK5lDhg
+	 IdSFha+jrlZT7BBUaOycXevaiukcxrGqAkoqyqPRGyyDiZBgidUQQsp/GD0AlkfWLDIiqLH9r1Cs
+	 URGtD8YoG3RmCdBkS39q8zV2sBqG4HTl+Jw3jK9KNd7ucq2WlCdFqFeN/I8ktIx/9x7xaD8FM/6w
+	 wwCw+8ZmEIdQXo+Cs2mSU6hymk2rSZz9qNZRF6hA0VgoE8thW2ZoGUdmpmooEVucNxM92pIsDx4v
+	 aThk+IPYX4kz1Ba97zU3elCSRVCFAwZtvnU36izN7a9XyN2f8JJSZYKUbMaBnp1we6in1iC8bGnh
+	 tfYBfA7ImSEEIgWNDc8hnUFpQLDDMqcFvToUIropz7GrjmMkKEViVGf4NGNjihjG+J1JX8p2rZUv
+	 D+DuVKI/v6XTiJEKwozTlr6RzFw+6mPqgGUTCWiOZSJbmsPVra5GgmfVgO2s059NYgFdSjZv2Tj4
+	 wyR9e15gfxgjylpHeYJ3svRrfMs2HVzhIIPYn0p95yvtav93UUxbnqWO3fv8iC7oq6Ue/dLXFDSp
+	 L/DGurahKuGVHokwDtbQq0QLVDFK1x5tUXnc6Q7DjZ9vtJ1V58A6bZsnkpZfv8hR/2ezjPTmrOYb
+	 2nZ6SCtk+8BEvJD2ycLtUoYlWNAoS0YDAmFbDg7/WnIxfumbxXTqE5bR2U7hE6zG3StUZ8n2tHXT
+	 fS/pkADXaj+sgwZtIp+cC1EPexEWQeYhrq+gaXX3iFt44CyuCHLexwuz/SyvsM+ILrNJv2XEzVpW
+	 rgiSDy3gzF1AvXxL/+hzV38lEJn7f7njRAEzKGim8UxuzECD0d74BoYMQN0wD/nVYebWY36ZJEVa
+	 k+FENO5HDNArgOIdaNUqQ9yHnLxx+i/wcJzwLSeuHdZUlLZFy/rl/Bg1ag/8LLR9VM8fKpBw==
+X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
+From: chainsx@foxmail.com
+To: robh@kernel.org
+Cc: chainsx@foxmail.com,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	sfr@canb.auug.org.au,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v1 0/2] Add support for Firefly Station-M3/ROC-RK3588S-PC
+Date: Mon, 12 May 2025 21:20:48 +0800
+X-OQ-MSGID: <20250512132048.312772-1-chainsx@foxmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Sakari Ailus <sakari.ailus@linux.intel.com>, 
- linux-media@vger.kernel.org, Nicholas Roth <nicholas@rothemail.net>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, imx@lists.linux.dev, 
- linux-rockchip@lists.infradead.org, Shawn Guo <shawnguo@kernel.org>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Ondrej Jirman <megi@xff.cz>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Krzysztof Kozlowski <krzk@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Fabio Estevam <festevam@gmail.com>, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
- Dragan Simic <dsimic@manjaro.org>, Conor Dooley <conor+dt@kernel.org>
-To: Olivier Benjamin <olivier.benjamin@bootlin.com>
-In-Reply-To: <20250509-camera-v3-0-dab2772d229a@bootlin.com>
-References: <20250509-camera-v3-0-dab2772d229a@bootlin.com>
-Message-Id: <174705404383.2941320.1978376350297662131.robh@kernel.org>
-Subject: Re: [PATCH v3 0/4] Describe the cameras in the PinePhone Pro dts
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250512_054935_501346_AD26E805 
-X-CRM114-Status: GOOD (  21.98  )
+X-CRM114-CacheID: sfid-20250512_062116_181749_E18F962B 
+X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,78 +90,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Hsun Lai <chainsx@foxmail.com>
 
-On Fri, 09 May 2025 23:51:36 +0200, Olivier Benjamin wrote:
-> This series adds support for the Pine64 PinePhone Pro's rear and front
-> cameras in Device Tree.
-> This is based on some of Ondrej Jirman's patches hosted in his tree at
-> https://codeberg.org/megi/linux, but I have also fully reviewed and
-> re-written the code from the RK3399 datasheet, the PinePhone Pro
-> schematic, and the IMX258-0AQH5 software reference manual.
-> 
-> I have tested these changes on my PinePhone Pro and am able to take
-> photos from both cameras using libcamera's cam.
-> 
-> Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
-> ---
-> Changes in v3:
-> - Fixed new DTB warnings reported by Rob Herring's bot
-> - Link to v2: https://lore.kernel.org/r/20250302-camera-v2-0-312b44b4a89c@bootlin.com
-> 
-> Changes in v2:
-> - Rebase on mainline
-> - Change patch subject to arm64: dts: rockchip
-> - Rename new regulators to fit preferred form for fixed regulators
-> - Link to v1: https://lore.kernel.org/r/20250228-camera-v1-0-c51869f94e97@bootlin.com
-> 
-> ---
-> Olivier Benjamin (4):
->       dt-bindings: media: ov8858: inherit video-interface-devices properties
->       dt-bindings: media: imx258: inherit video-interface-devices properties
->       arm64: dts: rockchip: describe I2c Bus 1 and IMX258 world camera on PinePhone Pro
->       arm64: dts: rockchip: describe the OV8858 user camera on PinePhone Pro
-> 
->  .../devicetree/bindings/media/i2c/ovti,ov8858.yaml |   4 +-
->  .../devicetree/bindings/media/i2c/sony,imx258.yaml |   4 +-
->  .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 139 +++++++++++++++++++++
->  3 files changed, 145 insertions(+), 2 deletions(-)
-> ---
-> --
-> Olivier Benjamin <olivier.benjamin@bootlin.com>
-> 
-> 
-> 
+This series add support for Firefly Station-M3/ROC-RK3588S-PC.
 
+Info of device can be found at:
+https://wiki.t-firefly.com/en/Station-M3/index.html
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+Changes in v1:
+- Add support for Firefly ROC-RK3588S-PC
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+Hsun Lai (2):
+  dt-bindings: arm: rockchip: Add Firefly ROC-RK3588S-PC
+  arm64: dts: rockchip: add DTs for Firefly ROC-RK3588S-PC
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3588s-roc-pc.dts      | 911 ++++++++++++++++++
+ 3 files changed, 917 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
 
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/v6.15-rc1-102-g2332d042e9b2 (exact match)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250509-camera-v3-0-dab2772d229a@bootlin.com:
-
-arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dtb: camera@1a (sony,imx258): Unevaluated properties are not allowed ('clock-names' was unexpected)
-	from schema $id: http://devicetree.org/schemas/media/i2c/sony,imx258.yaml#
-
-
-
-
+-- 
+2.34.1
 
 
 _______________________________________________
