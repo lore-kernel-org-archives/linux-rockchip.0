@@ -4,59 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2875C3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 May 2025 11:17:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3CACC3ABC3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 May 2025 12:08:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:Cc:To:From:Subject:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EB+WmG3BhXGFKbXTxQAZL1FEdrgpfuzhzuwoA6t57l0=; b=rLH/S3BBWd0wo7uvWRsdniaoP7
-	+xLQ07BMwiaHCVU+72LiYmM4GbbWHM+NYVcFn6JFsN8LP+9ma4kp2rHa5NIN6BYdsB9rjkh9R/5ar
-	MNddphKeX/rwhuNzrOxGAPj1ASu045w3zlpuTWSoDrC7XHe/dWmXovWyntRp/d91iyIzIsGo6uRZT
-	xglOFYGhkamTNRSuBDyFnbojacPqtf2cHYNAVgF9cpL/pKLGUS4J7fLKX462zP3bolJo7YMcbB/EO
-	8srdNF86X2tHkgBcoqcKqPPk3J9inlVwyjh5oL0j8xzHPXKsMeR5Ub6TN+QAtZ3r335IV3thxuNrz
-	cTKNGHjg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gZFfSKKd0rSCmGpMH0FGghqXD1roA/T9PG0OnK9cFkg=; b=oislS5r+ebDeSv
+	cPzaoSp4wkKu9jZTiUOMw1Z7a9izB7lE1yZ0rsB6GyXwZPVFm6/SB48nNyRp+Fhy7Rg3ihX+iJzIS
+	jK2EaQ/Phdmgn4WZKnFuuLWfFPUdpUuauZ8Myv/E+uyOZvZ6wHixbseNHvCTj5Zel5gi7v+Z8t4BL
+	p/FiwJaSzXgof7uJLH+qvsp8ZUHwQlBGec5dPOLBZszkrdMpm6Lv2eu9vZTUag9z2/KSQFHal6Bsp
+	vPCseBErVN4O0dYDl7J1H27SeSf2d5C7bNwRCJyHOx1rYClr2cihbUJZj1owxZJ9EclUH6DYkosf/
+	Fh6iQAUrOkTQbG/q5Q1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uER9g-00000009EAV-2fM0;
-	Mon, 12 May 2025 11:17:08 +0000
-Received: from out-179.mta0.migadu.com ([91.218.175.179])
+	id 1uERwt-00000009LMc-1zRW;
+	Mon, 12 May 2025 12:07:59 +0000
+Received: from xmbghk7.mail.qq.com ([43.163.128.50])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEQsN-00000009BQy-1yjR
-	for linux-rockchip@lists.infradead.org;
-	Mon, 12 May 2025 10:59:18 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1747047550;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=T8/Ht4vLH47yQgnyA3aHoKEjFyY3IKH+TxDUhnG4Pis=;
-	b=ShP2Q1lh0QUy9ERDnw/XyUESNdFmosr43cn7zNMQgNobgnz3j/jedkv9j5CKVBYNm+8vDn
-	N0gyToplqVDXrQrVDcUo6cyt5E4+/YT8KJ5L9dFRdOWn2PZXu6NEvup8tYnORw9ZAUZpov
-	VBU9NUrFQ69gEAFU4nxCCclW/gFw4YVNjlPQD19mamiA/0ygoD4YmyVflSybIMuGtxGRbb
-	Gc17pDEGSpSW9spEv7cHsnlo+Uy1UYeDbt4WgEBK4KiHyKOTaeX1RbQkohfqK/VXiiRBOx
-	vhvHoPWtq25Yuek/wANmqPZYLaLtTNlXPQF/SbXXdC9/fLBBJNlNr1jTIdOMhA==
-Date: Mon, 12 May 2025 12:58:51 +0200
-Message-Id: <D9U4NW0TLBIE.2WTOIETA78EVQ@cknow.org>
-Subject: Re: [PATCH 0/1] arm64: dts: rockchip: rk3568: Move PCIe3 MSI to use
- GIC ITS
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Chukun Pan" <amadeus@jmu.edu.cn>, <linux-pci@vger.kernel.org>
-Cc: <conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
- <dsimic@manjaro.org>, <heiko@sntech.de>, <krzk+dt@kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>
-References: <D9RSA5K547DD.1LYPIZZM4XALS@cknow.org>
- <20250512070009.336989-1-amadeus@jmu.edu.cn>
-In-Reply-To: <20250512070009.336989-1-amadeus@jmu.edu.cn>
-X-Migadu-Flow: FLOW_OUT
+	id 1uERtN-00000009Kce-0Gg4;
+	Mon, 12 May 2025 12:04:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foxmail.com;
+	s=s201512; t=1747051449;
+	bh=XiZXeriwtNmD0C5rumTsjv/pcxn0w65lxRr71QDYu34=;
+	h=From:To:Cc:Subject:Date;
+	b=iOjMF7pthxChJdSW3O5nLo0A6fE6ejodJD00jYsDVuXM8A/T/x0PUZ7zqLqkzZQ9A
+	 3+Z9oHs1el+fGV3ZHsFC6UJijxxy3ypCfXTD14nZKUmgp01fJE1AHdZYg5q/NkLzFx
+	 88y35CFUUfik0u1VsEjKbDcqI51QQk2PBmBbXHMI=
+Received: from localhost.localdomain ([116.249.112.84])
+	by newxmesmtplogicsvrsza36-0.qq.com (NewEsmtp) with SMTP
+	id EEBE0F2; Mon, 12 May 2025 20:03:46 +0800
+X-QQ-mid: xmsmtpt1747051426tikm1o32c
+Message-ID: <tencent_198C6C928AA0BA4E932560238E0CFE073109@qq.com>
+X-QQ-XMAILINFO: NEW4AM7T0EBsyYRwy7F7xKNKE1tnYRdimiWvJz02wiuzbc88/Xz92wEqnUEoHa
+	 nIY6Ml9xgBjxjzxhhUdxFN7WCcXupbz+XRQpb7ndOCxVymXXJCIbRxj327K6hdVmFgzhRVCdDAkU
+	 0QI0Np7STwTCSSgwveSGyq2MlOn9IC2omOFI6yk4CiqMBdUCHTMdaSV1S65Qk7X1J61MVrqFzqs3
+	 Z7rnB0RDahifL9Az9ffD0ss79ar04QQoE70VWKT5CerDeVBxZhUqv6jTRs1gZZMwejXOWcLWx6sg
+	 k+n1v0fWNwXwnW/2zXUK6UIQQpzwMipLYRelYDwBikFm+UfaePgwAmSbmRf5HEqYVxhUTQXCwksZ
+	 CXN8b7OuDU92wMJl0lIHvq69FLSS6+2Q4MGqp/N14YW2dTv5rXDVLrY0u7Bn674VyCUy7XN4Nslj
+	 3pEVQpyunv5+MvtPSwN/YhU3cFRSXVf6rczJ08UMrxqkpVvsmj9CkL1Uf9sQSQybzKOc+1b6gp3B
+	 gDpjLTZ9GhMT8A4zLO2OaUcB4PNH2IFmOcrNNgdVYaLZkVDhDP8PNUGDF7bpelQ/B5eojg/Qw22S
+	 0J3j1PkUPzSk+Az6qz/Q1+iAwGooXy57mK4NiLof+20NxiROMu4pCs2Q59afTtQbU+/gmjLperVu
+	 l1JQIzPb0hZarYDCJOgJbrdyqmNO8xH879VkygZJb2jpEqSTnpodwuAm4tgLAL9/8CE3BV0eEHx2
+	 ta/V+7qBJ/DezSLCCf49r/LAs+bAYKgP1RYN4T+V6bLHzpWzXE51ZLsp/WTK23MNpbVmaMZAhu1W
+	 1Y56yqzzeGlCoz5yQ4UP7P1JjZqzeaBtwn885tHjdukuz9TVYdygd5SD+r+IAS78chJbnD0TeToJ
+	 dFNsJ5f9KKg1dOhZRFiLWiS47P4+cACDrzX5fzSR02VdFmeQH6AIwROJlXJ5qZ66oj8fkdrZj4me
+	 gVz+KgFVgOIe1ZGfCT+TSgttlYgxvZfNTOo9nbO/x2/Qh3aH5bt8DPf0d3pHsVKNE7X0ynjvPvQu
+	 2zDwWqxAUMlU6aUrmJ3ebUEP3Mz1l7y4OfE1CyP4QXm/1A79utCHUwFpyXSCzIn+Ir1FU3YvKlBQ
+	 n3T9cR
+X-QQ-XMRINFO: MPJ6Tf5t3I/ycC2BItcBVIA=
+From: chainsx@foxmail.com
+To: Fred Bloggs <f.blogs@napier.co.nz>
+Cc: Hsun Lai <chainsx@foxmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Stephen Rothwell <sfr@canb.auug.org.au>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v1 0/2] Add support for Firefly Station-M3/ROC-RK3588S-PC
+Date: Mon, 12 May 2025 20:03:36 +0800
+X-OQ-MSGID: <20250512120338.312496-1-chainsx@foxmail.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250512_035916_126502_D4312243 
-X-CRM114-Status: GOOD (  18.14  )
+X-CRM114-CacheID: sfid-20250512_050421_462384_EBBFE8BD 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,130 +86,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1492594890660746993=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============1492594890660746993==
-Content-Type: multipart/signed;
- boundary=f5128d620a41dad2d3ab473cb7c3567b2921ffecd91198bee2646459e69b;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+From: Hsun Lai <chainsx@foxmail.com>
 
---f5128d620a41dad2d3ab473cb7c3567b2921ffecd91198bee2646459e69b
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+This series add support for Firefly Station-M3/ROC-RK3588S-PC.
 
-Hi,
+Info of device can be found at:
+https://wiki.t-firefly.com/en/Station-M3/index.html
 
-Added linux-pci ML to "To".
+Changes in v1:
+- Add support for Firefly ROC-RK3588S-PC
 
-On Mon May 12, 2025 at 9:00 AM CEST, Chukun Pan wrote:
->> > With this patch I get the following kernel warnings:
->> >
->> > pci 0001:10:00.0: Primary bus is hard wired to 0
->> > pci 0002:20:00.0: Primary bus is hard wired to 0
->> >
->> > If I 'unapply' this patch, I don't see those warnings.
->
->> I was pretty sure I had seen those messages before, but couldn't find
->> them before. But now I have: on my rk3588-rock-5b.
->
-> Thanks for the reminder, I didn't notice this before.
-> The BSP kernel also has this warning.
->
-> Before this patch:
-> [    2.997725] pci_bus 0001:01: busn_res: can not insert [bus 01-ff] unde=
-r [bus 00-0f] (conflicts with (null) [bus 00-0f])
-> [    3.009990] pci 0001:00:00.0: BAR 6: assigned [mem 0xf2200000-0xf220ff=
-ff pref]
-> [    3.018100] pci 0001:00:00.0: PCI bridge to [bus 01-ff]
-> ...
-> [    3.401416] pci_bus 0002:01: busn_res: can not insert [bus 01-ff] unde=
-r [bus 00-0f] (conflicts with (null) [bus 00-0f])
-> ...
-> [    3.545459] pci 0002:00:00.0: PCI bridge to [bus 01-ff]
->
-> After this patch:
-> [    3.037779] pci 0001:10:00.0: Primary bus is hard wired to 0
-> [    3.044120] pci 0001:10:00.0: bridge configuration invalid ([bus 01-ff=
-]), reconfiguring
-> [    3.053362] pci_bus 0001:11: busn_res: [bus 11-1f] end is updated to 1=
-1
-> [    3.068920] pci 0001:10:00.0: PCI bridge to [bus 11]
-> ...
-> [    3.451429] pci 0002:20:00.0: Primary bus is hard wired to 0
-> [    3.457793] pci 0002:20:00.0: bridge configuration invalid ([bus 01-ff=
-]), reconfiguring
-> ...
-> [    3.535794] pci_bus 0002:21: busn_res: [bus 21-2f] end is updated to 2=
-1
-> ...
-> [    3.612893] pci 0002:20:00.0: PCI bridge to [bus 21]
->
-> Looks like a harmless warning.
+Hsun Lai (2):
+  dt-bindings: arm: rockchip: Add Firefly ROC-RK3588S-PC
+  arm64: dts: rockchip: add DTs for Firefly ROC-RK3588S-PC
 
-I see various messages which look odd or suboptimal to me:
-- (conflicts with (null) [bus 00-0f])
-- bridge configuration invalid ([bus 01-ff]), reconfiguring
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3588s-roc-pc.dts      | 911 ++++++++++++++++++
+ 3 files changed, 917 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
 
-But those are informational messages, so I guess that is considered
-normal. Looking a bit further and it does look that the severities in
-``drivers/pci/probe.c`` are chosen deliberately. So even though my NVMe
-drives seem to work, I'm not ready yet to ignore a WARNING.
+-- 
+2.34.1
 
-In my view, a warning is something that should be fixed or if it's
-indeed harmless, then its severity should be downgraded.
-
-So I looked where that warning came from and found commit
-71f6bd4a2313 ("PCI: workaround hard-wired bus number V2")
-
-And its commit message does not make it clear to *me* if it's valid:
-
-    Fixes PCI device detection on IBM xSeries IBM 3850 M2 / x3950 M2
-    when using ACPI resources (_CRS).
-    This is default, a manual workaround (without this patch)
-    would be pci=3Dnocrs boot param.
-
-    V2: Add dev_warn if the workaround is hit. This should reveal
-    how common such setups are (via google) and point to possible
-    problems if things are still not working as expected.
-
-This could be interpreted as "let's make it a warning so people will put
-it in a search engine (and not just ignore it) and then we can find out
-via that, if it's a common issue".
-
-It would be helpful if the people (way) more familiar with the PCI
-subsystem then me to tell me/us whether the severity is appropriate (and
-thus should be fixed?) or if this should be an info or dbg level message
-instead.
-
-Cheers,
-  Diederik
-
---f5128d620a41dad2d3ab473cb7c3567b2921ffecd91198bee2646459e69b
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaCHUdwAKCRDXblvOeH7b
-brPcAQDFLvLOr4MVv6bPcn//tl4F4G7GpE+qkYliDw8IQiSYpAEAmxHUXv878qId
-zZdpqj/69uyB2oVZDR5clQaoGkkD7wU=
-=2NDu
------END PGP SIGNATURE-----
-
---f5128d620a41dad2d3ab473cb7c3567b2921ffecd91198bee2646459e69b--
-
-
---===============1492594890660746993==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1492594890660746993==--
-
