@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 277FAC3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 May 2025 13:18:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D1E3C3ABC3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 May 2025 13:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cldnXgiT5jeCF4Nmocy800HAofnPuAxHAIUwE9B6moI=; b=QlBUZ0J1NgQ7be
-	ogUZA1lydjZFq1LBGb4l1MUTtAPqrj8uOrOz4spLrHLDs8M856Vmel/62F3CcxNNbuDbZ94mifVcm
-	0KSVbvaIIcrWA3+k0Exw1h0HW1KQN2pgtkxYzIyIYy9a9FSNL0umwRwEZLCIewq6tWu/IOy1GH1P9
-	oqroy/f82xQ+JbG3A+kdLculnFJcrc0koWTgrQtupXwJgi8B9cCwsTwRFadYKleD69BJ9wvj97Sri
-	WVriLM10YNq3SCDArU90IE3MrnV4Ey8PZiLV/hXuJ5VZEa39uQB7i8jQpvSs2H3tk9IubymHuCOpm
-	0MXDB43X2vQ4oAP3AyVQ==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=QGMGKV/DHWJZTGFkVqRJVK6ye3BwLZhi6Uuv/hHNips=; b=Xd8p/B7mU39POa2dvVYwEdhVBh
+	MQmk0EYO7no3LNANhrTyOzMXsG2Ip+JqTUGvuJhGJGfQFrIN4yQqZebEG0xwptc1J3TBhb8Z1+EOz
+	dE8QzUlqrWqKAKDyJAbiQAf4A16BjZh4mFdGdHFbdMHpgQz0dr+01nF5aPDWxk2eyxiBdJDGWoICn
+	sqfWx/47QXXPZgo52nGIx4ENQNl/tjl40NAHE8E8Bq9xBvAeeJB5rRsNXTeOB0KQy9WiQeSHvl2Zr
+	Z11+0q4ybFhNL0zpf7HhSdck62xalAbn3uLFqYgxM1ar/cTM3ta76xgIm3UWilGfZIscsuJBIDoig
+	tfSAt7nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uET3T-00000009VzF-0NAl;
-	Mon, 12 May 2025 13:18:51 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uESZE-00000009Ql7-0PEu;
-	Mon, 12 May 2025 12:47:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=dB
-	S7SAsAp5FhUlU/3iHX21eFkYpu2uCNBgSKCpFIXoc=; b=dYEgk0mr8SQrs9C3Yb
-	mU0uQ95jeLLh/2SUuUKGtv75BEX7AbJnbBkDRE/oPkQv7kzOro8QdBRuEwi7ZRDV
-	MK0WAaFt3v94mYzWD9cHkgMgEyNW7ozuZYXnvGuevseJkpE5jSS+VO7kZ1i9PIxV
-	R0OE50jCrxiXCI7EeDADEoQvA=
-Received: from ProDesk.. (unknown [])
-	by gzsmtp3 (Coremail) with SMTP id PigvCgC3chWY7SFoQ+_OAQ--.62400S10;
-	Mon, 12 May 2025 20:46:29 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: dmitry.baryshkov@oss.qualcomm.com,
-	heiko@sntech.de
-Cc: jonas@kwiboo.se,
-	Laurent.pinchart@ideasonboard.com,
-	mripard@kernel.org,
-	neil.armstrong@linaro.org,
-	hjc@rock-chips.com,
-	tzimmermann@suse.de,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v5 08/10] drm/rockchip: inno_hdmi: Simpify clk get/enable by devm_clk_get_enabled api
-Date: Mon, 12 May 2025 20:46:09 +0800
-Message-ID: <20250512124615.2848731-9-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250512124615.2848731-1-andyshrk@163.com>
-References: <20250512124615.2848731-1-andyshrk@163.com>
+	id 1uET3p-00000009W4X-1x0l;
+	Mon, 12 May 2025 13:19:13 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uESb9-00000009R9r-1ZEr;
+	Mon, 12 May 2025 12:49:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7B3D35C6499;
+	Mon, 12 May 2025 12:47:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DBA6C4CEEF;
+	Mon, 12 May 2025 12:49:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747054174;
+	bh=4sCnrLt5+b/Nr3tQwYV/v/pzsN34z6tW/1DRdvCDkkA=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=SpbNPEA5z2pRB9FzsA6AnqW+zN1ldKwwTpP1A7QSf77pwNFLFkdRLIJLeRXYFNa29
+	 lNBVHW6g4Nw3RXEtLg41fUKZgxCD3lCXQlNGeRA4joxIhxtMDEo5jQu8c53P52Q4B8
+	 QWIHV/bg2JS7mI+PbHNrELnmcsV+9ddogQ3IbL1xhDjcRliNubkvTTNde2rR6aZhha
+	 fc3ZLcpvyxc3ldWXcMos1NNdgBml3Kj/OHj+Qw+emSAFv/+sRGu3uxtQmOUy7g0oBd
+	 6flbpqUUip/84Hnz2wF8kb4c467bWnODW1+T+O8//ZA6Mx3e2QH0aAd8zZLp6BX2qT
+	 iFdd88Oqrb+iw==
+Date: Mon, 12 May 2025 07:49:33 -0500
 MIME-Version: 1.0
-X-CM-TRANSID: PigvCgC3chWY7SFoQ+_OAQ--.62400S10
-X-Coremail-Antispam: 1Uf129KBjvJXoWxXF1fJr1UGF4fWr43Cry3Jwb_yoW5uw4kpr
-	y7AFWYqryxJF4jg34UZF4UJr1FyF4UGa47GrWxWan3AwnxXr15KFW0vryS9FWFyr95Za13
-	trWkXFy5Z3WUWF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j8nYwUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0g9LXmgh5MDHDwAAst
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ linux-media@vger.kernel.org, Nicholas Roth <nicholas@rothemail.net>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, imx@lists.linux.dev, 
+ linux-rockchip@lists.infradead.org, Shawn Guo <shawnguo@kernel.org>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Ondrej Jirman <megi@xff.cz>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Fabio Estevam <festevam@gmail.com>, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+ Dragan Simic <dsimic@manjaro.org>, Conor Dooley <conor+dt@kernel.org>
+To: Olivier Benjamin <olivier.benjamin@bootlin.com>
+In-Reply-To: <20250509-camera-v3-0-dab2772d229a@bootlin.com>
+References: <20250509-camera-v3-0-dab2772d229a@bootlin.com>
+Message-Id: <174705404383.2941320.1978376350297662131.robh@kernel.org>
+Subject: Re: [PATCH v3 0/4] Describe the cameras in the PinePhone Pro dts
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250512_054736_502301_031B929E 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20250512_054935_501346_AD26E805 
+X-CRM114-Status: GOOD (  21.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,114 +82,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
 
-Make use of devm_clk_get_enabled() to replace devm_clk_get() and
-clk_prepare_enable(), which will make the cleanup of clk code simpler.
+On Fri, 09 May 2025 23:51:36 +0200, Olivier Benjamin wrote:
+> This series adds support for the Pine64 PinePhone Pro's rear and front
+> cameras in Device Tree.
+> This is based on some of Ondrej Jirman's patches hosted in his tree at
+> https://codeberg.org/megi/linux, but I have also fully reviewed and
+> re-written the code from the RK3399 datasheet, the PinePhone Pro
+> schematic, and the IMX258-0AQH5 software reference manual.
+> 
+> I have tested these changes on my PinePhone Pro and am able to take
+> photos from both cameras using libcamera's cam.
+> 
+> Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
+> ---
+> Changes in v3:
+> - Fixed new DTB warnings reported by Rob Herring's bot
+> - Link to v2: https://lore.kernel.org/r/20250302-camera-v2-0-312b44b4a89c@bootlin.com
+> 
+> Changes in v2:
+> - Rebase on mainline
+> - Change patch subject to arm64: dts: rockchip
+> - Rename new regulators to fit preferred form for fixed regulators
+> - Link to v1: https://lore.kernel.org/r/20250228-camera-v1-0-c51869f94e97@bootlin.com
+> 
+> ---
+> Olivier Benjamin (4):
+>       dt-bindings: media: ov8858: inherit video-interface-devices properties
+>       dt-bindings: media: imx258: inherit video-interface-devices properties
+>       arm64: dts: rockchip: describe I2c Bus 1 and IMX258 world camera on PinePhone Pro
+>       arm64: dts: rockchip: describe the OV8858 user camera on PinePhone Pro
+> 
+>  .../devicetree/bindings/media/i2c/ovti,ov8858.yaml |   4 +-
+>  .../devicetree/bindings/media/i2c/sony,imx258.yaml |   4 +-
+>  .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 139 +++++++++++++++++++++
+>  3 files changed, 145 insertions(+), 2 deletions(-)
+> ---
+> --
+> Olivier Benjamin <olivier.benjamin@bootlin.com>
+> 
+> 
+> 
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 
----
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-Changes in v5:
-- Split from PATCH 9/10
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
- drivers/gpu/drm/rockchip/inno_hdmi.c | 50 +++++++---------------------
- 1 file changed, 12 insertions(+), 38 deletions(-)
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
 
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index 776a2aa74e49c..1ab3ad4bde9ea 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -1269,53 +1269,34 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
- 	if (IS_ERR(hdmi->regs))
- 		return PTR_ERR(hdmi->regs);
- 
--	hdmi->pclk = devm_clk_get(hdmi->dev, "pclk");
-+	hdmi->pclk = devm_clk_get_enabled(hdmi->dev, "pclk");
- 	if (IS_ERR(hdmi->pclk))
- 		return dev_err_probe(dev, PTR_ERR(hdmi->pclk), "Unable to get HDMI pclk\n");
- 
--	ret = clk_prepare_enable(hdmi->pclk);
--	if (ret)
--		return dev_err_probe(dev, ret, "Cannot enable HDMI pclk: %d\n", ret);
--
--	hdmi->refclk = devm_clk_get_optional(hdmi->dev, "ref");
--	if (IS_ERR(hdmi->refclk)) {
--		ret = dev_err_probe(dev, PTR_ERR(hdmi->refclk), "Unable to get HDMI refclk\n");
--		goto err_disable_pclk;
--	}
--
--	ret = clk_prepare_enable(hdmi->refclk);
--	if (ret) {
--		ret = dev_err_probe(dev, ret, "Cannot enable HDMI refclk: %d\n", ret);
--		goto err_disable_pclk;
--	}
-+	hdmi->refclk = devm_clk_get_optional_enabled(hdmi->dev, "ref");
-+	if (IS_ERR(hdmi->refclk))
-+		return dev_err_probe(dev, PTR_ERR(hdmi->refclk), "Unable to get HDMI refclk\n");
- 
- 	if (hdmi->variant->dev_type == RK3036_HDMI) {
- 		hdmi->grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
--		if (IS_ERR(hdmi->grf)) {
--			ret = dev_err_probe(dev, PTR_ERR(hdmi->grf),
--					    "Unable to get rockchip,grf\n");
--			goto err_disable_clk;
--		}
-+		if (IS_ERR(hdmi->grf))
-+			return dev_err_probe(dev,
-+					     PTR_ERR(hdmi->grf), "Unable to get rockchip,grf\n");
- 	}
- 
- 	irq = platform_get_irq(pdev, 0);
--	if (irq < 0) {
--		ret = irq;
--		goto err_disable_clk;
--	}
-+	if (irq < 0)
-+		return irq;
- 
- 	inno_hdmi_init_hw(hdmi);
- 
- 	hdmi->ddc = inno_hdmi_i2c_adapter(hdmi);
--	if (IS_ERR(hdmi->ddc)) {
--		ret = PTR_ERR(hdmi->ddc);
--		hdmi->ddc = NULL;
--		goto err_disable_clk;
--	}
-+	if (IS_ERR(hdmi->ddc))
-+		return PTR_ERR(hdmi->ddc);
- 
- 	ret = inno_hdmi_register(drm, hdmi);
- 	if (ret)
--		goto err_disable_clk;
-+		return ret;
- 
- 	dev_set_drvdata(dev, hdmi);
- 
-@@ -1329,10 +1310,6 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
- err_cleanup_hdmi:
- 	hdmi->connector.funcs->destroy(&hdmi->connector);
- 	hdmi->encoder.encoder.funcs->destroy(&hdmi->encoder.encoder);
--err_disable_clk:
--	clk_disable_unprepare(hdmi->refclk);
--err_disable_pclk:
--	clk_disable_unprepare(hdmi->pclk);
- 	return ret;
- }
- 
-@@ -1343,9 +1320,6 @@ static void inno_hdmi_unbind(struct device *dev, struct device *master,
- 
- 	hdmi->connector.funcs->destroy(&hdmi->connector);
- 	hdmi->encoder.encoder.funcs->destroy(&hdmi->encoder.encoder);
--
--	clk_disable_unprepare(hdmi->refclk);
--	clk_disable_unprepare(hdmi->pclk);
- }
- 
- static const struct component_ops inno_hdmi_ops = {
--- 
-2.43.0
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: tags/v6.15-rc1-102-g2332d042e9b2 (exact match)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250509-camera-v3-0-dab2772d229a@bootlin.com:
+
+arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dtb: camera@1a (sony,imx258): Unevaluated properties are not allowed ('clock-names' was unexpected)
+	from schema $id: http://devicetree.org/schemas/media/i2c/sony,imx258.yaml#
+
+
+
+
 
 
 _______________________________________________
