@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED60CC3ABD7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 14:34:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96677C3ABC3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 14:57:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QAEGpBCUUlQLGZagV7VVjU3tIPhUx4q2KnV17AuWTbE=; b=Tv1eV3H+OkQyQo
-	OVde6sjaN4Hd72g6N6gRIgs4ckq1Q0fgAVqnU5P/7DZiQYthHjPNHoOMAZJ9SqJgv0gTv/LttGbrj
-	3Jdf8oNsXWE3KJLdb39Gvm+X2cirQp1mtUEuG8TcW68jq5SUCrTi4oT58sKf86OhI7FsBg3FGG3ZC
-	IWzeC4GC6e/keBlz1fu4xRKzsAdJBMDYBNF/Mslogg2BeY7YtVS/vsU9/r9iasa4hQ+qrovIlenOG
-	Zo1blbx+LDT2GwTYR+dHwYDXjyqO1bCb5aWbhhVNDuAYDe3RZtZ239Yk8vNdEKBWCLI/Bql/FrW3d
-	6E5XITrkCI0Ubdbmz9UQ==;
+	List-Owner; bh=Un2T/ceYFs9vyBe+MHolNpLdYTmpt1l7fHNfgm09/fs=; b=YV/ptt1Q3Z/eOn
+	90r4AN/6ozxqipclpOVQQL+A8yTV2OtlFUUVwW3/xcPxzZxs0uOpMg13F3GQcwdrAOVOlFkDn1BU9
+	ZGGoTQAI8e1NUhSbULhh+dnEl/0IKwrep+ZKNOWSJXgALK1bSv743nRzhgCkQps7wIs0ZBrXjEe11
+	QYsWHGNURYcuIJwaM2Tu/QBDkmLmsUiH23ry5l9cIn2CtaIEHj/FwZUMvNT9VHP1deUgX9W3x5zlP
+	YNOosPt8CVpbKuXdLjI5ZV9A4o68WuALgJyaN0YTucUMa/JvsckEJGe7sOzRh1vCZF+NcLzDxeKmU
+	gHVn9mHpJTYKGPuDRYQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEqi6-0000000Cckf-3ro9;
-	Tue, 13 May 2025 14:34:22 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEqbR-0000000Cbme-3LLe;
-	Tue, 13 May 2025 14:27:32 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1747146434; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ANqNFwZEb+ZFYow3aFAQoyO/1Ud2AXpFUIBSle0bCo8FVYBcNiP+i1HJVeS9GxYppl7HJpmC+qZl37HtRPkZXcPEOXkDBCQ/zrr8dgKo5uei6H47cW+QVV7ZXJHw8+jUnBeKS3gYXF9OXPTulAsAQCmtDNFdp0Tbw/DhN5W4wsg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1747146434; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=S8HvFU+C7sIo5Yzd4dl6ojrhAT/ghV8MpikwHZzYzPM=; 
-	b=juo7qhHanaIrojtSIzpy4DRVsL0LxCZof/Ml9fpsJ0EWTj5tH9ljTvKL658u060IhnGxO0kOeBj1jr4KDs4a0RM2Ff4rELQ6Xo0dB7Amhs30S12gFTnGp+viG8MZG4T5h0EJuFWABukZ5OjIvp4EG54KMCC1prBrdmXWOVtR1t0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1747146434;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=S8HvFU+C7sIo5Yzd4dl6ojrhAT/ghV8MpikwHZzYzPM=;
-	b=TL9bA5j1wnQEzElGt0exkEIhE0Vo7i6xr6vp0qX6xbOLsv8oU234w/eH/ZX6PJJ4
-	goH3Vq90j1+kAQio1s0ScSTAfdctQvB99CVnqDrQkokNPU2LuRPEm7T3kvOY7xyhf0T
-	oVg9Lwl4xwFaLP7+KQ2QJZqRJPmFWFuGHhXf4uT8=
-Received: by mx.zohomail.com with SMTPS id 1747146427338952.0201359300785;
-	Tue, 13 May 2025 07:27:07 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- Finley Xiao <finley.xiao@rock-chips.com>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Detlev Casanova <detlev.casanova@collabora.com>, kernel@collabora.com,
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mmc@vger.kernel.org
-Subject: Re: [PATCH v3] mmc: sdhci-of-dwcmshc: add PD workaround on RK3576
-Date: Tue, 13 May 2025 16:27:02 +0200
-Message-ID: <6154950.lOV4Wx5bFT@workhorse>
-In-Reply-To: <CAPDyKFp5N23KCZwOTba6vGyk9eaS1-SjSqY52FfPDng-bahn6g@mail.gmail.com>
-References: <20250423-rk3576-emmc-fix-v3-1-0bf80e29967f@collabora.com>
- <CAPDyKFp5N23KCZwOTba6vGyk9eaS1-SjSqY52FfPDng-bahn6g@mail.gmail.com>
+	id 1uEr43-0000000CgY3-21Y2;
+	Tue, 13 May 2025 14:57:03 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uEr1K-0000000Cg25-3RZR;
+	Tue, 13 May 2025 14:54:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=nXQDzb+tFFVU+4SLdENHkW/1SY6XdLMilSABvcCoeBU=;
+	b=M4t9yiWS6jQq9lz15VN6CVAutd+twdoSe9/gfmvn4tn9O3peNgeaTMQ/EcejzC
+	KEFcIIZ6IYe7GW1kjoyKFkMSD8kwDZqSOPo4tO5tOF4QO+EsyfmPBlZD8DhhkCr9
+	/4j2/u98y0120iF+3FSwZbK/zCM1HUC867PBfoJZz+UA8=
+Received: from [192.168.71.93] (unknown [])
+	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wDXt+XpXCNoldCmBA--.8342S2;
+	Tue, 13 May 2025 22:53:30 +0800 (CST)
+Message-ID: <ade4c14a-ff20-4001-8eda-75fef15df62c@163.com>
+Date: Tue, 13 May 2025 22:53:29 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/2] PCI: Configure root port MPS during host probing
+To: Niklas Cassel <cassel@kernel.org>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+ heiko@sntech.de, manivannan.sadhasivam@linaro.org, yue.wang@amlogic.com,
+ pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
+ jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20250510155607.390687-1-18255117159@163.com>
+ <20250510155607.390687-2-18255117159@163.com> <aCL9CStLrGEY2MEH@ryzen>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <aCL9CStLrGEY2MEH@ryzen>
+X-CM-TRANSID: _____wDXt+XpXCNoldCmBA--.8342S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxJF1rtrW7uFW3uw4rAFWkZwb_yoW8ur1Dpa
+	y8Xw4vyFZ7WryfG3WDAa109rWjqas5CF43JrZ8JryqqFn8C3WqqrWYka1Fqas7Grnayw1j
+	vw1jqry8uws0yFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UpKZXUUUUU=
+X-Originating-IP: [124.79.128.52]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOhxMo2gjWD+jDQAAsL
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250513_072729_903604_75BF40CC 
-X-CRM114-Status: GOOD (  26.21  )
+X-CRM114-CacheID: sfid-20250513_075415_276946_1EDE6C7E 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,68 +74,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 29 April 2025 12:06:16 Central European Summer Time Ulf Hansson wrote:
-> On Wed, 23 Apr 2025 at 09:54, Nicolas Frattaroli
-> <nicolas.frattaroli@collabora.com> wrote:
-> >
-> > RK3576's power domains have a peculiar design where the PD_NVM power
-> > domain, of which the sdhci controller is a part, seemingly does not have
-> > idempotent runtime disable/enable. The end effect is that if PD_NVM gets
-> > turned off by the generic power domain logic because all the devices
-> > depending on it are suspended, then the next time the sdhci device is
-> > unsuspended, it'll hang the SoC as soon as it tries accessing the CQHCI
-> > registers.
-> >
-> > RK3576's UFS support needed a new dev_pm_genpd_rpm_always_on function
-> > added to the generic power domains API to handle what appears to be a
-> > similar hardware design.
-> >
-> > Use this new function to ask for the same treatment in the sdhci
-> > controller by giving rk3576 its own platform data with its own postinit
-> > function. The benefit of doing this instead of marking the power domains
-> > always on in the power domain core is that we only do this if we know
-> > the platform we're running on actually uses the sdhci controller. For
-> > others, keeping PD_NVM always on would be a waste, as they won't run
-> > into this specific issue. The only other IP in PD_NVM that could be
-> > affected is FSPI0. If it gets a mainline driver, it will probably want
-> > to do the same thing.
-> >
-> > Acked-by: Adrian Hunter <adrian.hunter@intel.com>
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+
+On 2025/5/13 16:04, Niklas Cassel wrote:
+> On Sat, May 10, 2025 at 11:56:06PM +0800, Hans Zhang wrote:
+>> Current PCIe initialization logic may leave root ports operating with
+>> non-optimal Maximum Payload Size (MPS) settings. While downstream device
+>> configuration is handled during bus enumeration, root port MPS values
+>> inherited from firmware or hardware defaults might not utilize the full
+>> capabilities supported by the controller hardware. This can result is
+>> uboptimal data transfer efficiency across the PCIe hierarchy.
+>>
+>> During host controller probing phase, when PCIe bus tuning is enabled,
+>> the implementation now configures root port MPS settings to their
+>> hardware-supported maximum values. By iterating through bridge devices
+>> under the root bus and identifying PCIe root ports, each port's MPS is
+>> set to 128 << pcie_mpss to match the device's maximum supported payload
+>> size. The Max Read Request Size (MRRS) is subsequently adjusted through
+>> existing companion logic to maintain compatibility with PCIe
+>> specifications.
+>>
+>> Explicit initialization at host probing stage ensures consistent PCIe
+>> topology configuration before downstream devices perform their own MPS
+>> negotiations. This proactive approach addresses platform-specific
+>> requirements where controller drivers depend on properly initialized
+>> root port settings, while maintaining backward compatibility through
+>> PCIE_BUS_TUNE_OFF conditional checks. Hardware capabilities are fully
+>> utilized without altering existing device negotiation behaviors.
+>>
+>> Suggested-by: Niklas Cassel <cassel@kernel.org>
+>> Signed-off-by: Hans Zhang <18255117159@163.com>
+>> ---
 > 
-> Applied for next, thanks!
+> Looks good to me, but since this I'm the one who suggested this specific
+> implementation, it would be good if someone else could review it as well.
 > 
-> Kind regards
-> Uffe
-> 
+> Reviewed-by: Niklas Cassel <cassel@kernel.org>
 
-Hi Uffe,
+Dear Niklas,
 
-I was wondering whether we can get this into 6.15 as a fix as well, as 6.15
-should already have the genpd API additions this requires AFAIU.
+Thank you very much for your review and suggestions. Let's wait for 
+others' opinions.
 
-Fixes tag could be something like:
-
-  Fixes: cfee1b507758 ("pmdomain: rockchip: Add support for RK3576 SoC")
-
-but may need some more flavorings to keep the stable robot overlords from
-trying to apply it to 6.14 and earlier and then starting the robot uprising
-in your inbox when they notice the API is missing.
-
-I originally left out the Fixes tag on the rewrite of this using the new
-API because I wanted to avoid those awkward backport scenarios for a fairly
-freshly supported SoC, but it'd be great to have this in 6.15 because that
-will be with us for a full release cycle to come.
-
-Kind regards,
-Nicolas Frattaroli
-
-
+Best regards,
+Hans
 
 
 _______________________________________________
