@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84B38C3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 17:06:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67A43C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 17:21:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gU3dX/371cNbtgFrJyUaU4k0RrLMS0DXGWS/r1OvIC0=; b=KK/T/E/w52sZfq
-	LvS2mrYYKZ5Du2jEqdU9AYnzBM0Geh2aEoSoTZe+s+eCxcE0dUMF85jCSPDm9kYg2zTZMIDb2SwUc
-	tIiLxGpjk6c8iMtOckE/iqqIZrDWHoQtKPn684UmUcte5BZY/Uk4fbxCEnBUTRkLLyE9DTbk/4JeZ
-	uKROe7HgiVZXbz5lr+gBB4W+dW7OhL5QdvOxGQsjPWzlLQqGNElqUt7wgd0LC+ikdnHKg/UG/DmlB
-	mhZyLc9ozdxpV5mQhZsLFNdzstAJAL+MT+/eW1Gr6Y0myvKkQjM/aHeO/PIsQ6pNLmq38Yqq7ELt/
-	bXzvHmj6JptlLATuMBsA==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=0cr0Pn7Vi73B3FTcDKtMBwXwLDehUx3nBBcl8P7Oxtw=; b=NDbYb/zBDCT1RtPNFRtKlF5YeC
+	+WaXIbauD5/kMTPMZs8V54lsZ6UFhBh+YtiROSkAvK91qpYgDikWMp0PqJZStY1Q1H25e8KM3sRjq
+	YKRB5sxSkWjmV6i6H45Q/utdvQLKdkup7Nhr4PRU75K9tpY/hpj/S1K1AzGA4MiaFbtFdBsplI2lP
+	x2tR+pA0HQ5Mj2931155bc7wHzVfx6lGEaqL2+xEoyvrKHgzGWR3Wijphif6fH4n0xUFdZBwA8SoU
+	sfpH+iy7uvCjS/d/GhkT3TivVsThiSbqMM7HfzHWe0DE9KrS8NBJ5xlRbClLQhy+c60SaHp8W5Rvj
+	FF15VVRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEt4u-0000000D1hj-2E8F;
-	Tue, 13 May 2025 17:06:04 +0000
-Received: from out-181.mta0.migadu.com ([91.218.175.181])
+	id 1uEtJS-0000000D4QW-2IGg;
+	Tue, 13 May 2025 17:21:06 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEt0J-0000000D15q-1pBO
-	for linux-rockchip@lists.infradead.org;
-	Tue, 13 May 2025 17:01:21 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1747155674;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=zxp5saJ00M0V4HD55ygHhJp7ySrhrAQhBKVNcX+nZcA=;
-	b=Otc68QU84N5ZqYJGbMPb31Z9ICWeBRz9p/HX0/+qKkt37fDhjWsr9FQCOwbDW/cyICpCMU
-	vYdzQ7SzmLwNmd5/MSwXmAZmaS9J0AZ6q435rWS7Zq6lLuX3XL+0tx3GRj850YH8QxG3Sv
-	+ZnjrzgbEprC5Hf+82AMa4JaAZkHkaECyd4adpcMrLJnzRl0qXN3eeNB1cfQSxXmaeZvBV
-	15xh8kPFVeq36oS+lOsPgT9DrD4a3Wt+/aCPiFQ7sprgNrJeSlQaGIurXD38flngsr4LEs
-	UdgT0fSwAfKanyXq9LA47m56u42KjID6Ag8p/QV0sNkWnK/5neWrwBdxiQoiqg==
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Dragan Simic <dsimic@manjaro.org>,
-	Vasily Khoruzhick <anarsoul@gmail.com>,
-	Tianling Shen <cnsztl@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH] arm64: dts: rockchip: Improve LED config for NanoPi R5S
-Date: Tue, 13 May 2025 18:57:27 +0200
-Message-ID: <20250513170056.96259-1-didi.debian@cknow.org>
+	id 1uEt5c-0000000D1sV-2bae;
+	Tue, 13 May 2025 17:06:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id C8822A4DA6C;
+	Tue, 13 May 2025 17:06:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46810C4CEED;
+	Tue, 13 May 2025 17:06:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747156007;
+	bh=GuuUrOBDBLtQJTivMZS9Eor4DSDf3u+U86Nys8bePDI=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=l4N9AqEqFmYpOf1eS+C/6LqddeqrbI3zLDv3XxYt8GepWQNyzq2TZrDHdS9Vj0kco
+	 uMQJJ0x1caJRkZ5lNsoRDCEbkf7zTsvl9ZtuB/iuQTul9YL/13kxdThbVD39+bN5pt
+	 5+YwJzOZTRuRoJKQGKCBuF1hTgZ3mZeKTn4GqB3rlnj9AlVGSGtluuY5uWRHtVxtQ/
+	 Q1M4O2N0Xgu9wIM8v8OUf2hf1jlVWgzjlFIiteU38xzXlnSI4khQPbEcCxP5ORDZbs
+	 f99OaUvivtcpWILQiw9uAfUiRTOvwTY2ngZQdnGV81GQMs9MzUhUNYrrzksTd0s2pZ
+	 JXjyX+ATuKN/A==
+Date: Tue, 13 May 2025 12:06:45 -0500
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, Stephen Rothwell <sfr@canb.auug.org.au>, 
+ Conor Dooley <conor+dt@kernel.org>, Fred Bloggs <f.blogs@napier.co.nz>
+To: Hsun Lai <i@chainsx.cn>
+In-Reply-To: <20250513153044.167187-1-i@chainsx.cn>
+References: <20250513153044.167187-1-i@chainsx.cn>
+Message-Id: <174715590563.2918523.6781766383894838049.robh@kernel.org>
+Subject: Re: [PATCH v2 0/2] Add support for Firefly
+ Station-M3/ROC-RK3588S-PC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250513_100120_255979_BFDA57B9 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20250513_100648_737292_D18AC694 
+X-CRM114-Status: GOOD (  16.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,89 +75,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The NanoPi R5S has 4 GPIO LEDs, a RED one for SYStem power and 3 green
-LEDs meant to indicate that a cable is connected to either of the
-2.5GbE LAN ports or the 1GbE WAN port.
 
-In the NanoPi R5S schematic (2204; page 19) as well as on the PCB and on
-the case, SYS is used and not POWER. So replace 'power' with 'sys'.
-But keep the 'power_led' label/phandle even though the kernel doesn't
-use it, but it may be used outside of it.
+On Tue, 13 May 2025 23:30:42 +0800, Hsun Lai wrote:
+> This series add support for Firefly Station-M3/ROC-RK3588S-PC.
+> 
+> Info of device can be found at:
+> https://wiki.t-firefly.com/en/Station-M3/index.html
+> 
+> Changes in v2:
+> - Add support for Firefly ROC-RK3588S-PC
+> - Fix rgmii delays
+> 
+> Hsun Lai (2):
+>   dt-bindings: arm: rockchip: Add Firefly ROC-RK3588S-PC
+>   arm64: dts: rockchip: add DTs for Firefly ROC-RK3588S-PC
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3588s-roc-pc.dts      | 910 ++++++++++++++++++
+>  3 files changed, 916 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
+> 
+> --
+> 2.34.1
+> 
+> 
+> 
 
-The SYStem LED already had "heartbeat" as its default-trigger.
-Set the default-trigger to "netdev" for the NICs so they will show when
-LAN1/LAN2/WAN is connected and set their default-state to "off".
 
-Also assign labels as close as possible to the labels on the case, while
-still being descriptive enough in their own right.
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
----
- .../boot/dts/rockchip/rk3568-nanopi-r5s.dts    | 18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
-index 4cb8df1129c0..3b31f0dd8f3b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
-@@ -20,33 +20,43 @@ aliases {
- 	gpio-leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&lan1_led_pin>, <&lan2_led_pin>, <&power_led_pin>, <&wan_led_pin>;
-+		pinctrl-0 = <&lan1_led_pin>, <&lan2_led_pin>, <&sys_led_pin>, <&wan_led_pin>;
- 
- 		led-lan1 {
- 			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "off";
- 			function = LED_FUNCTION_LAN;
- 			function-enumerator = <1>;
- 			gpios = <&gpio3 RK_PD6 GPIO_ACTIVE_HIGH>;
-+			label = "LAN-1";
-+			linux,default-trigger = "netdev";
- 		};
- 
- 		led-lan2 {
- 			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "off";
- 			function = LED_FUNCTION_LAN;
- 			function-enumerator = <2>;
- 			gpios = <&gpio3 RK_PD7 GPIO_ACTIVE_HIGH>;
-+			label = "LAN-2";
-+			linux,default-trigger = "netdev";
- 		};
- 
--		power_led: led-power {
-+		power_led: led-sys {
- 			color = <LED_COLOR_ID_RED>;
- 			function = LED_FUNCTION_POWER;
--			linux,default-trigger = "heartbeat";
- 			gpios = <&gpio4 RK_PD2 GPIO_ACTIVE_HIGH>;
-+			label = "SYS";
-+			linux,default-trigger = "heartbeat";
- 		};
- 
- 		led-wan {
- 			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "off";
- 			function = LED_FUNCTION_WAN;
- 			gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
-+			label = "WAN";
-+			linux,default-trigger = "netdev";
- 		};
- 	};
- };
-@@ -126,7 +136,7 @@ lan2_led_pin: lan2-led-pin {
- 			rockchip,pins = <3 RK_PD7 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
--		power_led_pin: power-led-pin {
-+		sys_led_pin: sys-led-pin {
- 			rockchip,pins = <4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
--- 
-2.49.0
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: tags/next-20250513 (exact match)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250513153044.167187-1-i@chainsx.cn:
+
+arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dtb: leds: leds-gpio: {'rockchip,pins': [[3, 10, 0, 259], [1, 29, 0, 259], [3, 16, 0, 259]], 'phandle': 273} is not of type 'array'
+	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
+arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dtb: leds (gpio-leds): 'power', 'user', 'user1' do not match any of the regexes: '(^led-[0-9a-f]$|led)', '^pinctrl-[0-9]+$'
+	from schema $id: http://devicetree.org/schemas/leds/leds-gpio.yaml#
+
+
+
+
 
 
 _______________________________________________
