@@ -4,67 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8833CC3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 19:04:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA777C3ABC3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 19:05:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xb+pfD81zkq4QGHn9lH8/fJIF/lZ1xY+4YNfr2sdbAA=; b=l5V5zvSJ0lAjLF
-	4v6RZcVIfrZh9gPuuh46S+N6u5GA8c0B1SHboTYKu54O7c0/ZYtZPOOwVRTdAkluCDRWb8cXifKH2
-	FvmpLjNnc3iUhn5+dSkl0eS76z57hpFjFr838m05Hb9BVsYtTstLyfJTDKAQWRKKN0MzB2UzLRLD9
-	dNc9aURssrSeAMVgvnICbJqAKuw/1J2sMN8erIh3E23PWUe2w5MiaUbv5utOCKC19sY6MElrjVQaY
-	AybEcjhyHCKpoxmxrwVDon8ddqnwqNLwFpi5WhjRfgpXcrvAer7UUCEu/W3J4xDjtF6CIOCaktxd4
-	X9M+H9ep5TEXnj4X2Gow==;
+	List-Owner; bh=THA/ANd9YcpCbc86MU4LUaxGNAg3YHyFCJ3S1DrCl8E=; b=hHakpbYNV8SCHG
+	mfLYtmgdXgZZD2rYNq/2PO3Ekt0CRe9o39tKGvEqloKMx0SM/cqEGlDGSk457bnUhxiZ8UFxzUnX1
+	RASqMV9eMDkbP0n9FxKz0COEve4LQTWfozygP9/y9zTcYh9Mx/ZYjMJjeYn7zTcyM5Eqpc7msXbYh
+	OI/m2zllTan75LxOxo2K+o9mZsBzF/yOpDd3kqfH1MEIExfbsxXv5TfWgtER5qf948U0O34vlePF3
+	tnAe3IdcfSH5n9/GlnM64hnN9gCMBkKCCr5gbKSkJHn9N4aCtL3CEd61ppJ3A0WkZUWTic76RMZBP
+	KzK8DTY8AobaUamvUCSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEuvL-0000000DJzY-1lsz;
-	Tue, 13 May 2025 19:04:19 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uEuwC-0000000DKGS-1eyd;
+	Tue, 13 May 2025 19:05:12 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEuLF-0000000DEmJ-3ECN
-	for linux-rockchip@lists.infradead.org;
-	Tue, 13 May 2025 18:27:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1747160806; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=BDN2uLpmb50QwQwa/P9J15Qxa/kcCUN0fkH5pPVUyWnmOGJLtv6yVIYWC3/B6n/5ma1/KKObI8PN5j/BQQNci5W8p1CoazkWNlB0NbCbtl065gJIKIfhOZx+KaxhVQebHz0BsI9S7DyLG+rFA66N71hjfwmYI9XUJivfmtxzNJM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1747160806; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=WDJ1pkoSIf5LYVV5V3cWH1euKlozzC9b22/qCMaxKas=; 
-	b=m9sQo/9XK0EqfVX2Y79Ld+LdnGNGgI3ShAM95Is62vFeQsDCtnVK0Br77lXqbbHWtS0F1GvTHJ8ksRZaubhoIvQK5Ob49HjpUli1aWRQXmk7O6UTlALu2NyW+EgED1f7sc7schrJ/aAR434buc8sHmNZWSG3aiOiQBoYoTr00F0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1747160806;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=WDJ1pkoSIf5LYVV5V3cWH1euKlozzC9b22/qCMaxKas=;
-	b=R5ebRiJvkrVzmthIehK3yjSnSQK/4djfu8/nL5LrJ1snc9W15P3lC+FWIGQKo7X5
-	dy2Wx/hPJ5MiXh5lrd5LQ5Q65IrhVO5qfmBFBv/7YWsTTDqzDbyHy0d21+YxG3MxtPx
-	Y8QIKMPNeA1ob9oAK7Fc9/Erjc4Qj4hi7TVMZqkM=
-Received: by mx.zohomail.com with SMTPS id 1747160803944695.383741776804;
-	Tue, 13 May 2025 11:26:43 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: Re: [PATCH] media: rkvdec: Restore iommu addresses on errors
-Date: Tue, 13 May 2025 14:26:42 -0400
-Message-ID: <6185929.lOV4Wx5bFT@earth>
-In-Reply-To: <20250508-rkvdec-iommu-reset-v1-1-c46b6efa6e9b@collabora.com>
-References: <20250508-rkvdec-iommu-reset-v1-1-c46b6efa6e9b@collabora.com>
+	id 1uEubv-0000000DHEm-41SM;
+	Tue, 13 May 2025 18:44:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=/OBINtI0SAZP2fUdQnW19FOxjYjmq02Jp24p47V1i4U=; b=N1MArj0DxnQLp1gnjOJp7tC7Yi
+	9upVlge54nLsV6IlChGDVcNBfiltmQWCdo7msRylE6vERsX8YOWC566zrpDtt2BRdQJ80VBhwAbMC
+	6vGnv2yUYRLGHo+ciUKU8b9Y56fziOS5LCBa2HqAoJird5xIlQMbVpv7HI265ICDT+T9EAGRmYpAt
+	9mNmOGzJcm1Aq8tKeWhG855fyQaEL38UBnXHMVn21/sFIb2PM15uvPvyvQiJwaE84w8Dql9BLUzyP
+	cfn9ngGz78gBZrHxUpOAJMJfnFLIDH0M87ajaIYlaBKH772g9+3eJyGhk8N7nG9vHMxM+MzxbZ4X3
+	y6Bj3Xnw==;
+Received: from [61.8.147.169] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uEubM-0003sw-Um; Tue, 13 May 2025 20:43:41 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Fred Bloggs <f.blogs@napier.co.nz>, Hsun Lai <i@chainsx.cn>
+Cc: Hsun Lai <i@chainsx.cn>, Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ Stephen Rothwell <sfr@canb.auug.org.au>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v1 3/3] arm64: dts: rockchip: add DTs for Sakura Pi RK3308B
+Date: Tue, 13 May 2025 20:43:39 +0200
+Message-ID: <2678259.iZASKD2KPV@phil>
+In-Reply-To: <20250513163515.177472-4-i@chainsx.cn>
+References: <20250513163515.177472-1-i@chainsx.cn> <20250513163515.177472-4-i@chainsx.cn>
 MIME-Version: 1.0
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250513_112701_890626_264CC914 
-X-CRM114-Status: GOOD (  26.39  )
+X-CRM114-CacheID: sfid-20250513_114416_022604_FE6B911B 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,159 +69,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 8 May 2025 17:00:15 EDT Nicolas Dufresne wrote:
-> On errors, the rkvdec chip self resets. This can clear the addresses
-> programmed in the iommu. This case is signaled by the
-> RKVDEC_SOFTRESET_RDY status bit.
-> 
-> Since the iommu framework does not have a restore functionality, and
-> as recommended by the iommu subsystem maintainers, this patch
-> restores the iommu programming by attaching and detaching an empty
-> domain, which will clear and restore the default domain.
-> 
-> Suggested-by: Detlev Casanova <detlev.casanova@collabora.com>
-> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> ---
-
-I tested it on the Radxa Rock pi 4B (rk3399) and Radxa Rock 5B (rk3588), so
-
-Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
-
-And the patch looks good to me, so
-
-Reviewed-by: Detlev Casanova <detlev.casanova@collabora.com>
-
-Regards,
-Detlev.
-
->  drivers/staging/media/rkvdec/rkvdec.c | 43
-> +++++++++++++++++++++++++++++------ drivers/staging/media/rkvdec/rkvdec.h |
->  1 +
->  2 files changed, 37 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkvdec/rkvdec.c
-> b/drivers/staging/media/rkvdec/rkvdec.c index
-> dd7e57a902640d363d26be887cb535c2668d5b15..38043b1877e221db58f5834ba51e085cf
-> 9127e73 100644 --- a/drivers/staging/media/rkvdec/rkvdec.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec.c
-> @@ -11,6 +11,7 @@
-> 
->  #include <linux/clk.h>
->  #include <linux/interrupt.h>
-> +#include <linux/iommu.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
->  #include <linux/platform_device.h>
-> @@ -1000,24 +1001,42 @@ static void rkvdec_v4l2_cleanup(struct rkvdec_dev
-> *rkvdec) v4l2_device_unregister(&rkvdec->v4l2_dev);
->  }
-> 
-> +static void rkvdec_iommu_restore(struct rkvdec_dev *rkvdec)
-> +{
-> +	if (rkvdec->empty_domain) {
-> +		/*
-> +		 * To rewrite mapping into the attached IOMMU core, attach 
-a new empty
-> domain that +		 * will program an empty table, then detach it 
-to restore
-> the default domain and +		 * all cached mappings.
-> +		 * This is safely done in this interrupt handler to make 
-sure no memory
-> get mapped +		 * through the IOMMU while the empty domain is 
-attached.
-> +		 */
-> +		iommu_attach_device(rkvdec->empty_domain, rkvdec->dev);
-> +		iommu_detach_device(rkvdec->empty_domain, rkvdec->dev);
-> +	}
-> +}
-> +
->  static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
->  {
->  	struct rkvdec_dev *rkvdec = priv;
-> +	struct rkvdec_ctx *ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
->  	enum vb2_buffer_state state;
->  	u32 status;
-> 
->  	status = readl(rkvdec->regs + RKVDEC_REG_INTERRUPT);
-> -	state = (status & RKVDEC_RDY_STA) ?
-> -		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
-> -
->  	writel(0, rkvdec->regs + RKVDEC_REG_INTERRUPT);
-> -	if (cancel_delayed_work(&rkvdec->watchdog_work)) {
-> -		struct rkvdec_ctx *ctx;
-> 
-> -		ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
-> -		rkvdec_job_finish(ctx, state);
-> +	if (status & RKVDEC_RDY_STA) {
-> +		state = VB2_BUF_STATE_DONE;
-> +	} else {
-> +		state = VB2_BUF_STATE_ERROR;
-> +		if (status & RKVDEC_SOFTRESET_RDY)
-> +			rkvdec_iommu_restore(rkvdec);
->  	}
-> 
-> +	if (cancel_delayed_work(&rkvdec->watchdog_work))
-> +		rkvdec_job_finish(ctx, state);
-> +
->  	return IRQ_HANDLED;
->  }
-> 
-> @@ -1085,6 +1104,13 @@ static int rkvdec_probe(struct platform_device *pdev)
-> return ret;
->  	}
-> 
-> +	if (iommu_get_domain_for_dev(&pdev->dev)) {
-> +		rkvdec->empty_domain = iommu_paging_domain_alloc(rkvdec-
->dev);
-> +
-> +		if (!rkvdec->empty_domain)
-> +			dev_warn(rkvdec->dev, "cannot alloc new empty 
-domain\n");
-> +	}
-> +
->  	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
-> 
->  	irq = platform_get_irq(pdev, 0);
-> @@ -1124,6 +1150,9 @@ static void rkvdec_remove(struct platform_device
-> *pdev) rkvdec_v4l2_cleanup(rkvdec);
->  	pm_runtime_disable(&pdev->dev);
->  	pm_runtime_dont_use_autosuspend(&pdev->dev);
-> +
-> +	if (rkvdec->empty_domain)
-> +		iommu_domain_free(rkvdec->empty_domain);
->  }
-> 
->  #ifdef CONFIG_PM
-> diff --git a/drivers/staging/media/rkvdec/rkvdec.h
-> b/drivers/staging/media/rkvdec/rkvdec.h index
-> 6f8cf50c5d99aad2f52e321f54f3ca17166ddf98..0eb3fd598664bc5af19de120ff6efac13
-> 417541f 100644 --- a/drivers/staging/media/rkvdec/rkvdec.h
-> +++ b/drivers/staging/media/rkvdec/rkvdec.h
-> @@ -105,6 +105,7 @@ struct rkvdec_dev {
->  	void __iomem *regs;
->  	struct mutex vdev_lock; /* serializes ioctls */
->  	struct delayed_work watchdog_work;
-> +	struct iommu_domain *empty_domain;
->  };
-> 
->  struct rkvdec_ctx {
-> 
-> ---
-> base-commit: 48dbb76cef65fabaa3ac97461eda90495e954ecd
-> change-id: 20250508-rkvdec-iommu-reset-d8a96b8436c0
-> 
-> Best regards,
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpBbSBEaWVuc3RhZywgMTMuIE1haSAyMDI1LCAxODozNToxNCBNaXR0ZWxldXJvcMOkaXNj
+aGUgU29tbWVyemVpdCBzY2hyaWViIEhzdW4gTGFpOgoKPiArCXZjYzV2MF9zeXM6IHZjYzV2MC1z
+eXMgewoKcHJlZmVycmVkIG5vZGUtbmFtZXMgZm9yIHJlZ3VsYXRvcnMgaXMgcmVndWxhdG9yLWZv
+bywgc28gaGVyZSBwbGVhc2UKcmVndWxhdG9yLXZjYzV2MC1zeXMgKHBoYW5kbGUgY2FuIHN0YXkg
+YXMgaXQgaXMpLgoKU2FtZSBmb3IgYWxsIHRoZSBvdGhlciBmaXhlZC0vcHdtLSByZWd1bGF0b3Jz
+IGJlbG93LgoKPiArCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4gKwkJcmVndWxh
+dG9yLW5hbWUgPSAidmNjNXYwX3N5cyI7Cj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPiArCQly
+ZWd1bGF0b3ItYm9vdC1vbjsKPiArCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw1MDAwMDAw
+PjsKPiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw1MDAwMDAwPjsKPiArCX07Cj4gKwo+
+ICsJdmRkX2NvcmU6IHZkZC1jb3JlIHsKPiArCQljb21wYXRpYmxlID0gInB3bS1yZWd1bGF0b3Ii
+Owo+ICsJCXB3bXMgPSA8JnB3bTAgMCA1MDAwIDE+Owo+ICsJCXJlZ3VsYXRvci1uYW1lID0gInZk
+ZF9jb3JlIjsKPiArCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw4MjcwMDA+Owo+ICsJCXJl
+Z3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDEzNDAwMDA+Owo+ICsJCXJlZ3VsYXRvci1pbml0LW1p
+Y3Jvdm9sdCA9IDwxMDE1MDAwPjsKPiArCQlyZWd1bGF0b3Itc2V0dGxpbmctdGltZS11cC11cyA9
+IDwyNTA+Owo+ICsJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4gKwkJcmVndWxhdG9yLWJvb3Qtb247
+Cj4gKwkJcHdtLXN1cHBseSA9IDwmdmNjNXYwX3N5cz47Cj4gKwl9Owo+ICsKPiArCXZkZF9sb2c6
+IHZkZC1sb2cgewo+ICsJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPiArCQlyZWd1
+bGF0b3ItbmFtZSA9ICJ2ZGRfbG9nIjsKPiArCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+ICsJCXJl
+Z3VsYXRvci1ib290LW9uOwo+ICsJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDEwNTAwMDA+
+Owo+ICsJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDEwNTAwMDA+Owo+ICsJCXZpbi1zdXBw
+bHkgPSA8JnZjYzV2MF9zeXM+Owo+ICsJfTsKPiArCj4gKwl2Y2NfZGRyOiB2Y2MtZGRyIHsKPiAr
+CQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4gKwkJcmVndWxhdG9yLW5hbWUgPSAi
+dmNjX2RkciI7Cj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPiArCQlyZWd1bGF0b3ItYm9vdC1v
+bjsKPiArCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwxNTAwMDAwPjsKPiArCQlyZWd1bGF0
+b3ItbWF4LW1pY3Jvdm9sdCA9IDwxNTAwMDAwPjsKPiArCQl2aW4tc3VwcGx5ID0gPCZ2Y2M1djBf
+c3lzPjsKPiArCX07Cj4gKwo+ICsJdmNjXzF2ODogdmNjLTF2OCB7Cj4gKwkJY29tcGF0aWJsZSA9
+ICJyZWd1bGF0b3ItZml4ZWQiOwo+ICsJCXJlZ3VsYXRvci1uYW1lID0gInZjY18xdjgiOwo+ICsJ
+CXJlZ3VsYXRvci1hbHdheXMtb247Cj4gKwkJcmVndWxhdG9yLWJvb3Qtb247Cj4gKwkJcmVndWxh
+dG9yLW1pbi1taWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3Zv
+bHQgPSA8MTgwMDAwMD47Cj4gKwkJdmluLXN1cHBseSA9IDwmdmNjX2lvPjsKPiArCX07Cj4gKwo+
+ICsJdmNjX2lvOiB2Y2MtaW8gewo+ICsJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsK
+PiArCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2NfaW8iOwo+ICsJCXJlZ3VsYXRvci1hbHdheXMtb247
+Cj4gKwkJcmVndWxhdG9yLWJvb3Qtb247Cj4gKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8
+MzMwMDAwMD47Cj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MzMwMDAwMD47Cj4gKwkJ
+dmluLXN1cHBseSA9IDwmdmNjNXYwX3N5cz47Cj4gKwl9Owo+ICsKPiArCXZjY19waHk6IHZjYy1w
+aHktcmVndWxhdG9yIHsKPiArCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4gKwkJ
+cmVndWxhdG9yLW5hbWUgPSAidmNjX3BoeSI7Cj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPiAr
+CQlyZWd1bGF0b3ItYm9vdC1vbjsKPiArCX07Cj4gKwo+ICsJdmNjNXYwX290ZzogdmNjNXYwLW90
+ZyB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+ICsJCXJlZ3VsYXRvci1u
+YW1lID0gInZjYzV2MF9vdGciOwo+ICsJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4gKwkJZ3BpbyA9
+IDwmZ3BpbzAgUktfUEM1IEdQSU9fQUNUSVZFX0hJR0g+Owo+ICsJCWVuYWJsZS1hY3RpdmUtaGln
+aDsKPiArCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ICsJCXBpbmN0cmwtMCA9IDwmb3Rn
+X3ZidXNfZHJ2PjsKPiArCQl2aW4tc3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKPiArCX07Cj4gKwo+
+ICt9OwoKCj4gKyZpMmMxIHsKCmVtcHR5IGkyYyBjb250cm9sbGVyPyBJIGd1ZXNzIGl0IGlzIHJv
+dXRlZCB0byB0aGUgZXh0ZXJuYWwgcGlucz8KSWYgc28sIGNvdWxkIHVzZSBhIGNvbW1lbnQgZXhw
+bGFpbmluZyB0aGF0LgoKCj4gKy8qIFNQSTAgZm9yIGV4dGVybmFsIGdwaW8gcGluICovCj4gKyZz
+cGkwIHsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArCj4gKwlzcGlfZGV2QDAgewo+ICsJCWNvbXBh
+dGlibGUgPSAic3BpZGV2IjsKCmhhdmluZyBhIGdlbmVyaWMgc3BpZGV2IGlzIG5vdCBhbGxvd2Vk
+LiBJZiB0aGVyZSBpcyBhbiBhY3R1YWwKZGV2aWNlIGNvbm5lY3RlZCB0aGVyZSwgaXQgc2hvdWxk
+IGhhdmUgYSByZWFsIGNvbXBhdGlibGUuCklmIHRoYXQgaXNuJ3QgYSByZWFsIGRldmljZSwgdGhp
+cyBjb3VsZCBiZSBoYW5kbGVkIGluIGFuIG92ZXJsYXkuCgoKPiArCQlyZWcgPSA8MD47Cj4gKwkJ
+c3BpLW1heC1mcmVxdWVuY3kgPSA8MHgyZmFmMDgwPjsKPiArCX07Cj4gK307Cj4gKwo+ICsvKiBT
+UEkxIGZvciB3czI4MTIqLwo+ICsmc3BpMSB7Cj4gKwlzdGF0dXMgPSAib2theSI7Cj4gKwo+ICsJ
+c3BpX2RldkAwIHsKPiArCQljb21wYXRpYmxlID0gInNwaWRldiI7CgpzYW1lIGFzIGFib3ZlLCBw
+bGVhc2Ugbm8gZ2VuZXJpYyBzcGlkZXYKCj4gKwkJcmVnID0gPDA+Owo+ICsJCXNwaS1tYXgtZnJl
+cXVlbmN5ID0gPDB4MmZhZjA4MD47Cj4gKwl9Owo+ICt9Owo+ICsKPiArJnBpbmN0cmwgewo+ICsJ
+cGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiArCXBpbmN0cmwtMCA9IDwmcnRjXzMyaz47Cj4g
+Kwo+ICsJdXNiIHsKCnBsZWFzZSBzb3J0IHRoZXNlIG5vZGVzIGFscGhhYmV0aWNhbGx5Cgo+ICsJ
+CW90Z192YnVzX2Rydjogb3RnLXZidXMtZHJ2IHsKPiArCQkJcm9ja2NoaXAscGlucyA9IDwwIFJL
+X1BDNSBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPiArCQl9Owo+ICsJfTsKPiArCj4g
+KwlzZGlvLXB3cnNlcSB7Cj4gKwkJd2lmaV9lbmFibGVfaDogd2lmaS1lbmFibGUtaCB7Cj4gKwkJ
+CXJvY2tjaGlwLHBpbnMgPSA8MCBSS19QQTIgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfbm9uZT47
+Cj4gKwkJfTsKPiArCX07Cj4gKwo+ICsJd2lmaSB7Cj4gKwkJd2lmaV9ob3N0X3dha2U6IHdpZmkt
+aG9zdC13YWtlIHsKPiArCQkJcm9ja2NoaXAscGlucyA9IDwwIFJLX1BBMCBSS19GVU5DX0dQSU8g
+JnBjZmdfcHVsbF9kb3duPjsKPiArCQl9Owo+ICsJfTsKPiArCj4gKwlibHVldG9vdGggewo+ICsJ
+CWJ0X3JlZ19vbjogYnQtcmVnLW9uIHsKPiArCQkJcm9ja2NoaXAscGlucyA9IDw0IFJLX1BCMyBS
+S19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPiArCQl9Owo+ICsKPiArCQlidF93YWtlX2hv
+c3Q6IGJ0LXdha2UtaG9zdCB7Cj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8NCBSS19QQjQgUktfRlVO
+Q19HUElPICZwY2ZnX3B1bGxfbm9uZT47Cj4gKwkJfTsKPiArCj4gKwkJaG9zdF93YWtlX2J0OiBo
+b3N0LXdha2UtYnQgewo+ICsJCQlyb2NrY2hpcCxwaW5zID0gPDQgUktfUEIyIFJLX0ZVTkNfR1BJ
+TyAmcGNmZ19wdWxsX25vbmU+Owo+ICsJCX07Cj4gKwl9Owo+ICt9Owo+ICsKPiArJnB3bTAgewo+
+ICsJc3RhdHVzID0gIm9rYXkiOwoKc3RhdHVzIGFzIGxhc3QgcHJvcGVydHkKCj4gKwlwaW5jdHJs
+LTAgPSA8JnB3bTBfcGluX3B1bGxfZG93bj47Cj4gK307Cj4gKwo+ICsmc2FyYWRjIHsKPiArCXZy
+ZWYtc3VwcGx5ID0gPCZ2Y2NfMXY4PjsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArfTsKPiArCj4g
+KyZwd20zIHsKCnBsZWFzZSBzb3J0IHBoYW5kbGVzIGFscGhhYmV0aWNhbGx5Cgo+ICsJc3RhdHVz
+ID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJmkyYzEgewoKc2FtZQoKPiArCXN0YXR1cyA9ICJva2F5
+IjsKPiArfTsKCgpUaGFua3MKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
