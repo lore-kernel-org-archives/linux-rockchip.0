@@ -4,90 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94117C3ABC3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 01:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 248ABC3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 07:33:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XpbbGRw7OumlvLib25RrvcUziq2PzkF1VvsY8CoSzI8=; b=tw8feIdku/YLEO
-	JUUevchTL63jbl/zb54mbsqgMH+I7E1flRninY3HKwEHr9q6zXyTvekuwXTfLrq6nNUKDytsZwq9l
-	Xvd7IwycmuttydVG2corhneh5ajoVVxmTw0vv8uYdv+DBFTj1CV3q1Ujx7G1XZGI3RhmrnZ2xF0ov
-	FwUNN2YH2P5eXVhxc9mnbsQvqXd+KKYb5YIciudmzb/9MJyeCrPXUN4BvIrBAC11ZNYBPYReVwwJs
-	rNFGvkkZyANYWIkDIEmHYuzmVdITA+gqJrfj1Ev0XdiG/lLHn7GZJkHlSivHCrxYX6lrA38n9hynm
-	tSirHQD6wo6jkFZHtPyQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=z6jw7hnfWPcY55sTT/UgdEZJYULU5PsS2XEb3iPd0jM=; b=usUAQHcmqo0FkC
+	FU/6darVlvwiudn1Q64pnSfk5lPMRl/KWnSMVlN5NnGQdr4g63ffOEaZHKJJGy0pJf/Rs6HYaWUpG
+	6xd4oWFB31l8vRysaWGXP5anOjA8iTRmCbwhshuESZjToaKI+vKWxEOvbwXIMJ5nuO8/pC+BiSlCD
+	Lv17bLLQTyIZUUH/BFvYjBQVtF56/c/ITBRUnfElGsD0DHy2a+tVQQK1UF2+UO9HNuaqRKG7oMnVm
+	4VuGK71g/ANkwesnukcOnmsRt/Zj2bj1mk0nYkZaJG92+LoAlnwbco8a1H+WYsxSxp/aV8CAC0ECd
+	PF72D2R/Z35kyFBXa3fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEeRp-0000000B3or-2GL1;
-	Tue, 13 May 2025 01:28:45 +0000
-Received: from smtpbg154.qq.com ([15.184.224.54])
+	id 1uEk8a-0000000Bcwb-1Try;
+	Tue, 13 May 2025 07:33:16 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEeKf-0000000B379-1c7g;
-	Tue, 13 May 2025 01:21:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1747099222;
-	bh=2qDMGvwqOKF26JszbDrGaiZp0PfNzMy8pt7RjXzvFy8=;
-	h=From:To:Subject:Date:Message-Id;
-	b=KWo3MpZynaWTM6r6Gk6nJgIgR71njuUnM3R5OPlqeHnxsfDRDV8blbhz0yjj6MKAW
-	 DHqjI9iPmS0yXqDji5KEopdoc6Qv/asiVaz5wJ5PcLD9bd0mJmIvXsPVCWskeR9U/f
-	 R8Hwq5LtjNjOOVYmlNagcXWvZh0ASzwFIqrblaDM=
-X-QQ-mid: zesmtpgz8t1747099219t219559e6
-X-QQ-Originating-IP: dyFx1sjN77jqkaicYdfiYEH7SEpZk75pP/V9gvuz6J8=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 13 May 2025 09:20:17 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 1201715425475302784
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Sandy Huang <hjc@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
+	id 1uEk6a-0000000Bcbq-3Uau;
+	Tue, 13 May 2025 07:31:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 2D928A4C739;
+	Tue, 13 May 2025 07:31:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A6A0C4CEE4;
+	Tue, 13 May 2025 07:31:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747121470;
+	bh=mhXaZrEiTTFXiKUS/evmkAlm33VGdO8jQP529dU/TcY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=X4u91AU2J6XsZ6JBGzmgxBbFV7gICrDqeuWvPYXUE8msg68HR6wlrPE47xgh8Af+n
+	 mDESEXxZw98PYFNgN6FAJ11HWzjjro+gRvnaBKaxeUTiZ9DehzGKWPMPUrqztvjf6E
+	 8Kh8FyvKV8VKb6RkAZPnzI9BJ8kwwDAVB08vGAdYZggjt8/cl0xUdgrZ5+aUsBIqA9
+	 2SB8XyLch8rQMxbL/c1A5zX+c/SaZiqrbO0KMobQtdYujSomr61+zwoqsC/Ss4CFVt
+	 B9wJ6OfZgAUwnhhTmnGedRW2i0Aemuv2mmZRspX61EK0qhYzw0bUO2B8cR+4x+AFq2
+	 2CJdAi10sxaNA==
+From: Niklas Cassel <cassel@kernel.org>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Alan Douglas <adouglas@cadence.com>
+Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 2/2] dt-bindings: display: rockchip: Convert cdn-dp-rockchip.txt to yaml
-Date: Tue, 13 May 2025 09:19:04 +0800
-Message-Id: <20250513011904.102-3-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20250513011904.102-1-kernel@airkyi.com>
-References: <20250513011904.102-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpgz:airkyi.com:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: MvW0gkkpO9Je9yv/aTNaCkxj6zjU+S5JjcuNa7z5pUxv97VxChjj+VF/
-	pR/yp7CpiYbGFgTZ7Tyv0rdisLrgwxN8Q5C57+MgNzCNVANGT/QCM2iSneRO//NrPz/VZ/n
-	5sHSCljBDUXGcinDSZC8x/6SIVeQjFlnkvP5zTcs0JHq4TJTEd8LoUjXJClXQ3Qzqa8MDyi
-	bxflTWST3QkFR+wQWa3I8C8CI9ngNoYhHEJte7DVlaMGPxg/Z3YBaNeUyUOpB72DIgj491M
-	S7Cy+cbpkThuwEhRrXnbPPy7KDNQx65hSc61uhAczcF/b0yUzXZaH52a3Ny5+77OVmJHtIR
-	5naZur474q7/dMzcUAjy4/dHx5/+rOEfDDcFqhznsoK6aeua/U4YokZ9jwUIUbQB1Dg+G4M
-	v4AcQyBZgf6BDcwIuDccw5/3mDlHRhSbrWweaXcir354J+/vrI2VFmq2Vt29Y83K5GhFmAL
-	vCmHHTtd+g8Tk43tdNu0gAoblnONlnv3QG6Ury370yHQnYVSDzl1mkqhRda/DzcDprW0syN
-	FSFZDqPqcUobcAcBL8JQYoK0C6S+9o2h8t/nkCFiH2WWa1IKuBiZYM5aUE8bHDoUOmXrYZP
-	uPkgPusv+kWzSHwci5Q8EcgxGVhEYt7VUDYvtRTxgI61m86TsINnQX+Nl/3qMbmCx9YJCua
-	GESGqFIQzrE6Arfqzv4RFT4MW+t6THg7+brpjKmmbk4Vea/4xSp4E8vPZ7h19wsbb7wWl7H
-	ClWW3V1r04kJVu5bjhBVqIznwfq5hExtdpUt1nA0C8rwJFQche1snsRXK3+zzDfWsIkPL+x
-	W2vWqo6b5ffm5oJDXiuCuR1GIzH6jjBkhTIfGsGbFc8oi5u+Jakg4ETesWslEzonLnhPp4n
-	Avv4FK3VGRHqaR8HvUnFqxUyxvbFtM80W3bEitz/IhMGkg9W2d9HwNGGKn3skA/+Jf8hHEg
-	Jbz8X7bhHzuYCDf0BkXNU4Fv34x9dT9+ua6qX10B9rDUoiT2Dr2oql6d4Y1US5qFUcKk=
-X-QQ-XMRINFO: NI4Ajvh11aEj8Xl/2s1/T8w=
-X-QQ-RECHKSPAM: 0
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v2 0/6] PCI: endpoint: IRQ callback fixes and cleanups
+Date: Tue, 13 May 2025 09:30:55 +0200
+Message-ID: <20250513073055.169486-8-cassel@kernel.org>
+X-Mailer: git-send-email 2.49.0
+MIME-Version: 1.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1128; i=cassel@kernel.org; h=from:subject; bh=mhXaZrEiTTFXiKUS/evmkAlm33VGdO8jQP529dU/TcY=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDKUvupfD9gqv7h4wy6jTLsv2isvS16bNP1o34J39dsff zhxK79tY0cpC4MYF4OsmCKL7w+X/cXd7lOOK96xgZnDygQyhIGLUwAmYi7A8N/pZq/8ok1uW8/7 pbmaaj3otZ0z7eLNnRIxK52so3dxiuow/I+2lWFyv/Zfxd2aWauR/fWK1XVp4Y/jd4UXf/gkyLA /iREA
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250512_182122_053095_612D5C31 
-X-CRM114-Status: GOOD (  19.74  )
+X-CRM114-CacheID: sfid-20250513_003112_938334_368A394F 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,287 +83,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Hello all,
 
-Convert cdn-dp-rockchip.txt to yaml.
+The first two patches in this series are IRQ callback fixes that should
+get backported.
 
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
-
-Changes in v3:
-- Add more description about phy/extcon
-- Fix some coding style
-
-Changes in v2:
-- Rename binding file name to match compatible
-- Add more description about grf/phy/extcon
-- Fix coding style
+The reason why the bugs existed in the first place is because the APIs
+are very confusing. The rest of the patches are cleanups of the APIs.
+These cleanups should not get backported.
 
 
- .../display/rockchip/cdn-dp-rockchip.txt      |  74 --------
- .../rockchip/rockchip,rk3399-cdn-dp.yaml      | 165 ++++++++++++++++++
- 2 files changed, 165 insertions(+), 74 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml
+Changes since v1:
+-Improved commit message of the fix patches.
+-Picked up tags on the fix patches.
+-Added cleanups patches.
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
-deleted file mode 100644
-index 8df7d2e393d6..000000000000
---- a/Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
-+++ /dev/null
-@@ -1,74 +0,0 @@
--Rockchip RK3399 specific extensions to the cdn Display Port
--================================
--
--Required properties:
--- compatible: must be "rockchip,rk3399-cdn-dp"
--
--- reg: physical base address of the controller and length
--
--- clocks: from common clock binding: handle to dp clock.
--
--- clock-names: from common clock binding:
--	       Required elements: "core-clk" "pclk" "spdif" "grf"
--
--- resets : a list of phandle + reset specifier pairs
--- reset-names : string of reset names
--		Required elements: "apb", "core", "dptx", "spdif"
--- power-domains : power-domain property defined with a phandle
--		  to respective power domain.
--- assigned-clocks: main clock, should be <&cru SCLK_DP_CORE>
--- assigned-clock-rates : the DP core clk frequency, shall be: 100000000
--
--- rockchip,grf: this soc should set GRF regs, so need get grf here.
--
--- ports: contain a port nodes with endpoint definitions as defined in
--	 Documentation/devicetree/bindings/media/video-interfaces.txt.
--	 contained 2 endpoints, connecting to the output of vop.
--
--- phys: from general PHY binding: the phandle for the PHY device.
--
--- extcon: extcon specifier for the Power Delivery
--
--- #sound-dai-cells = it must be 1 if your system is using 2 DAIs: I2S, SPDIF
--
---------------------------------------------------------------------------------
--
--Example:
--	cdn_dp: dp@fec00000 {
--		compatible = "rockchip,rk3399-cdn-dp";
--		reg = <0x0 0xfec00000 0x0 0x100000>;
--		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
--		clocks = <&cru SCLK_DP_CORE>, <&cru PCLK_DP_CTRL>,
--			 <&cru SCLK_SPDIF_REC_DPTX>, <&cru PCLK_VIO_GRF>;
--		clock-names = "core-clk", "pclk", "spdif", "grf";
--		assigned-clocks = <&cru SCLK_DP_CORE>;
--		assigned-clock-rates = <100000000>;
--		power-domains = <&power RK3399_PD_HDCP>;
--		phys = <&tcphy0_dp>, <&tcphy1_dp>;
--		resets = <&cru SRST_DPTX_SPDIF_REC>;
--		reset-names = "spdif";
--		extcon = <&fusb0>, <&fusb1>;
--		rockchip,grf = <&grf>;
--		#address-cells = <1>;
--		#size-cells = <0>;
--		#sound-dai-cells = <1>;
--
--		ports {
--			#address-cells = <1>;
--			#size-cells = <0>;
--
--			dp_in: port {
--				#address-cells = <1>;
--				#size-cells = <0>;
--				dp_in_vopb: endpoint@0 {
--					reg = <0>;
--					remote-endpoint = <&vopb_out_dp>;
--				};
--
--				dp_in_vopl: endpoint@1 {
--					reg = <1>;
--					remote-endpoint = <&vopl_out_dp>;
--				};
--			};
--		};
--	};
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml
-new file mode 100644
-index 000000000000..7c2225204de2
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml
-@@ -0,0 +1,165 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/rockchip/rockchip,rk3399-cdn-dp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip RK3399 specific extensions to the CDN Display Port
-+
-+maintainers:
-+  - Andy Yan <andy.yan@rock-chip.com>
-+  - Heiko Stuebner <heiko@sntech.de>
-+  - Sandy Huang <hjc@rock-chips.com>
-+
-+allOf:
-+  - $ref: /schemas/sound/dai-common.yaml#
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: rockchip,rk3399-cdn-dp
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: DP core work clock
-+      - description: APB clock
-+      - description: SPDIF interface clock
-+      - description: GRF clock
-+
-+  clock-names:
-+    items:
-+      - const: core-clk
-+      - const: pclk
-+      - const: spdif
-+      - const: grf
-+
-+  extcon:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      maxItems: 1
-+    maxItems: 2
-+    description:
-+      List of phandle to the extcon device providing the cable state for the DP PHY.
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  phys:
-+    items:
-+      maxItems: 1
-+    maxItems: 2
-+    description: |
-+      List of phandle to the PHY device for DP output.
-+      RK3399 have two DP-TPYEC PHY, specifying one PHY which want to use,
-+      or specify two PHYs here to let the driver determine which PHY to use.
-+
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Input of the CDN DP
-+        properties:
-+          endpoint@0:
-+            description: Connection to the VOPB
-+          endpoint@1:
-+            description: Connection to the VOPL
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Output of the CDN DP
-+
-+    required:
-+      - port@0
-+      - port@1
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  resets:
-+    maxItems: 4
-+
-+  reset-names:
-+    items:
-+      - const: spdif
-+      - const: dptx
-+      - const: apb
-+      - const: core
-+
-+  rockchip,grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to GRF register to control HPD.
-+
-+  "#sound-dai-cells":
-+    const: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - interrupts
-+  - phys
-+  - ports
-+  - resets
-+  - reset-names
-+  - rockchip,grf
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rk3399-cru.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/power/rk3399-power.h>
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        dp@fec00000 {
-+            compatible = "rockchip,rk3399-cdn-dp";
-+            reg = <0x0 0xfec00000 0x0 0x100000>;
-+            assigned-clocks = <&cru SCLK_DP_CORE>;
-+            assigned-clock-rates = <100000000>;
-+            interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
-+            clocks = <&cru SCLK_DP_CORE>, <&cru PCLK_DP_CTRL>, <&cru SCLK_SPDIF_REC_DPTX>,
-+                    <&cru PCLK_VIO_GRF>;
-+            clock-names = "core-clk", "pclk", "spdif", "grf";
-+            power-domains = <&power RK3399_PD_HDCP>;
-+            phys = <&tcphy0_dp>, <&tcphy1_dp>;
-+            resets = <&cru SRST_DPTX_SPDIF_REC>, <&cru SRST_P_UPHY0_DPTX>,
-+                    <&cru SRST_P_UPHY0_APB>, <&cru SRST_DP_CORE>;
-+            reset-names = "spdif", "dptx", "apb", "core";
-+            rockchip,grf = <&grf>;
-+            #sound-dai-cells = <1>;
-+
-+            ports {
-+                #address-cells = <1>;
-+                #size-cells = <0>;
-+
-+                dp_in: port@0 {
-+                    reg = <0>;
-+                    #address-cells = <1>;
-+                    #size-cells = <0>;
-+
-+                    dp_in_vopb: endpoint@0 {
-+                        reg = <0>;
-+                        remote-endpoint = <&vopb_out_dp>;
-+                    };
-+
-+                    dp_in_vopl: endpoint@1 {
-+                        reg = <1>;
-+                        remote-endpoint = <&vopl_out_dp>;
-+                    };
-+                };
-+
-+                dp_out: port@1 {
-+                    reg = <1>;
-+                };
-+            };
-+        };
-+    };
---
+
+Niklas Cassel (6):
+  PCI: dwc: ep: Fix broken set_msix() callback
+  PCI: cadence-ep: Fix broken set_msix() callback
+  PCI: endpoint: cleanup get_msi() callback
+  PCI: endpoint: cleanup set_msi() callback
+  PCI: endpoint: cleanup get_msix() callback
+  PCI: endpoint: cleanup set_msix() callback
+
+ drivers/pci/controller/cadence/pcie-cadence-ep.c | 10 ++++++----
+ drivers/pci/controller/dwc/pcie-designware-ep.c  |  9 +++++----
+ drivers/pci/controller/pcie-rcar-ep.c            |  5 +++--
+ drivers/pci/controller/pcie-rockchip-ep.c        |  9 +++++----
+ drivers/pci/endpoint/pci-epc-core.c              | 11 +++--------
+ 5 files changed, 22 insertions(+), 22 deletions(-)
+
+-- 
 2.49.0
 
 
