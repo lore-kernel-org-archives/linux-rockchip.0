@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5194BC3ABCC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 14:09:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED60CC3ABD7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 14:34:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+xlvAlwNszDIdvnEHFpMr+f97tqLGWofRdA/l+IiBR4=; b=jWwHodUwiNctrd
-	D/7eRPfKXpebXRYKvjfNQzqUP26kzmBf/1o/cHJ3XM+QZcoIvLl6VSWOiIu5q3ab76h3I4afj/iBC
-	k0Ga+n70wr58Ha8Yu18qOzjFLnrGxTjX0zrxY7yQ13h78Iyd/wGZKp114MJb2hPMSmHUkXUOicjW0
-	tCVkn3ScEomIq1KV+TpD0cXG6urKqzQIDmujVZfv/zCo9l+DpIL7R9KM0DlAY+2FfAtDOFrAC7yD2
-	fGzo/zJo7ikB/plr+ircS+Xcz1j0md5jz7HST5YoycVx2ANw08pHLS0OOC1I8GJocc0y4ammdQfcY
-	8ocWruDIy2ETIEgb/4oA==;
+	List-Owner; bh=QAEGpBCUUlQLGZagV7VVjU3tIPhUx4q2KnV17AuWTbE=; b=Tv1eV3H+OkQyQo
+	OVde6sjaN4Hd72g6N6gRIgs4ckq1Q0fgAVqnU5P/7DZiQYthHjPNHoOMAZJ9SqJgv0gTv/LttGbrj
+	3Jdf8oNsXWE3KJLdb39Gvm+X2cirQp1mtUEuG8TcW68jq5SUCrTi4oT58sKf86OhI7FsBg3FGG3ZC
+	IWzeC4GC6e/keBlz1fu4xRKzsAdJBMDYBNF/Mslogg2BeY7YtVS/vsU9/r9iasa4hQ+qrovIlenOG
+	Zo1blbx+LDT2GwTYR+dHwYDXjyqO1bCb5aWbhhVNDuAYDe3RZtZ239Yk8vNdEKBWCLI/Bql/FrW3d
+	6E5XITrkCI0Ubdbmz9UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEqJs-0000000CZnf-0WQJ;
-	Tue, 13 May 2025 14:09:20 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uEqi6-0000000Cckf-3ro9;
+	Tue, 13 May 2025 14:34:22 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEqHk-0000000CZZX-2b5U;
-	Tue, 13 May 2025 14:07:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 39DFC44E6B;
-	Tue, 13 May 2025 14:07:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8CFAC4CEE4;
-	Tue, 13 May 2025 14:07:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747145228;
-	bh=14NlYj/WRG8Q0M9cGAjhUlbL7est4+1nXlxlO/Sw13M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jfyJWelTw2cvqNxTtFvNddGoQgPxSGnXDfgHyD7S1pRovdUiRF/RrEDtGkMMA9DqR
-	 0pE2hIGsEcSog39LlatonEh8jFUsdkLIxu4cn3qQWN8jdpdH+481B3gyvxHJ2M/Xf6
-	 XY2cAVg4GaVUqm6IJ9V7w+Sg0ZtJLI/1ftHViBLYDwssJ/39DCw04qoWn3jykvHra8
-	 MzaSWCbobCvW2ZSYrVFLa53JUcsFuME2YlaZnGxvVNNYGY4EI2eounHeNcqtryUUOG
-	 UniSDHJRyX0NXHUCd4pd5M56pd+FakfGKY+FviDSDrJAR4WiPWyMFcLqT+CBTYYkww
-	 JzhK9J0WfRCPA==
-Date: Tue, 13 May 2025 16:07:02 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krishna chaitanya chundru <quic_krichai@quicinc.com>,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Hans Zhang <18255117159@163.com>,
-	Laszlo Fiat <laszlo.fiat@proton.me>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH v2 0/4] PCI: dwc: Link Up IRQ fixes
-Message-ID: <aCNSBqWM-HM2vX7K@ryzen>
-References: <20250506073934.433176-6-cassel@kernel.org>
- <7zcrjlv5aobb22q5tyexca236gnly6aqhmidx6yri6j7wowteh@mylkqbwehak7>
+	id 1uEqbR-0000000Cbme-3LLe;
+	Tue, 13 May 2025 14:27:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1747146434; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=ANqNFwZEb+ZFYow3aFAQoyO/1Ud2AXpFUIBSle0bCo8FVYBcNiP+i1HJVeS9GxYppl7HJpmC+qZl37HtRPkZXcPEOXkDBCQ/zrr8dgKo5uei6H47cW+QVV7ZXJHw8+jUnBeKS3gYXF9OXPTulAsAQCmtDNFdp0Tbw/DhN5W4wsg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1747146434; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=S8HvFU+C7sIo5Yzd4dl6ojrhAT/ghV8MpikwHZzYzPM=; 
+	b=juo7qhHanaIrojtSIzpy4DRVsL0LxCZof/Ml9fpsJ0EWTj5tH9ljTvKL658u060IhnGxO0kOeBj1jr4KDs4a0RM2Ff4rELQ6Xo0dB7Amhs30S12gFTnGp+viG8MZG4T5h0EJuFWABukZ5OjIvp4EG54KMCC1prBrdmXWOVtR1t0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1747146434;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=S8HvFU+C7sIo5Yzd4dl6ojrhAT/ghV8MpikwHZzYzPM=;
+	b=TL9bA5j1wnQEzElGt0exkEIhE0Vo7i6xr6vp0qX6xbOLsv8oU234w/eH/ZX6PJJ4
+	goH3Vq90j1+kAQio1s0ScSTAfdctQvB99CVnqDrQkokNPU2LuRPEm7T3kvOY7xyhf0T
+	oVg9Lwl4xwFaLP7+KQ2QJZqRJPmFWFuGHhXf4uT8=
+Received: by mx.zohomail.com with SMTPS id 1747146427338952.0201359300785;
+	Tue, 13 May 2025 07:27:07 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ Finley Xiao <finley.xiao@rock-chips.com>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Detlev Casanova <detlev.casanova@collabora.com>, kernel@collabora.com,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mmc@vger.kernel.org
+Subject: Re: [PATCH v3] mmc: sdhci-of-dwcmshc: add PD workaround on RK3576
+Date: Tue, 13 May 2025 16:27:02 +0200
+Message-ID: <6154950.lOV4Wx5bFT@workhorse>
+In-Reply-To: <CAPDyKFp5N23KCZwOTba6vGyk9eaS1-SjSqY52FfPDng-bahn6g@mail.gmail.com>
+References: <20250423-rk3576-emmc-fix-v3-1-0bf80e29967f@collabora.com>
+ <CAPDyKFp5N23KCZwOTba6vGyk9eaS1-SjSqY52FfPDng-bahn6g@mail.gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <7zcrjlv5aobb22q5tyexca236gnly6aqhmidx6yri6j7wowteh@mylkqbwehak7>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250513_070708_715635_89A17DA5 
-X-CRM114-Status: GOOD (  23.46  )
+X-CRM114-CacheID: sfid-20250513_072729_903604_75BF40CC 
+X-CRM114-Status: GOOD (  26.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,51 +78,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gTWFuaSwKCk9uIFR1ZSwgTWF5IDEzLCAyMDI1IGF0IDExOjUzOjI5QU0gKzAxMDAsIE1h
-bml2YW5uYW4gU2FkaGFzaXZhbSB3cm90ZToKPiAKPiBUaGlzIHdhaXQgdGltZSBpcyBhIGdyZXkg
-YXJlYSBpbiB0aGUgc3BlYyB0YmguIElmIHRoZSBSZWFkaW5lc3MgTm90aWZpY2F0aW9uCj4gKFJO
-KSBpcyBub3Qgc3VwcG9ydGVkLCB0aGVuIHRoZSBzcGVjIHN1Z2dlc3RzIHdhaXRpbmcgMXMgZm9y
-IHRoZSBkZXZpY2UgdG8KPiBiZWNvbWUgJ2NvbmZpZ3VyYXRpb24gcmVhZHknLiBUaGF0J3Mgd2h5
-IHdlIGhhdmUgdGhlIDFzIGRlbGF5IGluIGR3YyBkcml2ZXIuCj4gCj4gQWxzbywgaXQgaGFzIHRo
-ZSBiZWxvdyBpbiByNi4wLCBzZWMgNi42LjE6Cj4gCj4gYGBgCj4gKiBPbiB0aGUgY29tcGxldGlv
-biBvZiBMaW5rIFRyYWluaW5nIChlbnRlcmluZyB0aGUgRExfQWN0aXZlIHN0YXRlLCBzZWUgwqcK
-PiBTZWN0aW9uIDMuMiApLCBhIGNvbXBvbmVudCBtdXN0IGJlIGFibGUgdG8gcmVjZWl2ZSBhbmQg
-cHJvY2VzcyBUTFBzIGFuZCBETExQcy4KPiAqIEZvbGxvd2luZyBleGl0IGZyb20gYSBDb252ZW50
-aW9uYWwgUmVzZXQgb2YgYSBkZXZpY2UsIHdpdGhpbiAxLjAgcyB0aGUgZGV2aWNlCj4gbXVzdCBi
-ZSBhYmxlIHRvIHJlY2VpdmUgYSBDb25maWd1cmF0aW9uIFJlcXVlc3QgYW5kIHJldHVybiBhIFN1
-Y2Nlc3NmdWwKPiBDb21wbGV0aW9uIGlmIHRoZSBSZXF1ZXN0IGlzIHZhbGlkLiBUaGlzIHBlcmlv
-ZCBpcyBpbmRlcGVuZGVudCBvZiBob3cgcXVpY2tseQo+IExpbmsgdHJhaW5pbmcgY29tcGxldGVz
-LiBJZiBSZWFkaW5lc3MgTm90aWZpY2F0aW9ucyBtZWNoYW5pc21zIGFyZSB1c2VkIChzZWUKPiDC
-pyBTZWN0aW9uIDYuMjIgLiksIHRoaXMgcGVyaW9kIG1heSBiZSBzaG9ydGVyLgo+IGBgYAo+IAo+
-IEFzIHBlciB0aGUgZmlyc3Qgbm90ZSwgb25jZSBsaW5rIHRyYWluaW5nIGlzIGNvbXBsZXRlZCwg
-dGhlIGRldmljZSBzaG91bGQgYmUKPiByZWFkeSB0byBhY2NlcHQgY29uZmlndXJhdGlvbiByZXF1
-ZXN0cyBmcm9tIHRoZSBob3N0LiBTbyBubyBkZWxheSBzaG91bGQgYmUKPiByZXF1aXJlZC4KPiAK
-PiBCdXQgdGhlIHNlY29uZCBub3RlIHNheXMgdGhhdCB0aGUgMXMgZGVsYXkgaXMgaW5kZXBlbmRl
-bnQgb2YgaG93IHF1aWNrbHkgdGhlCj4gbGluayB0cmFpbmluZyBjb21wbGV0ZXMuIFRoaXMgZXNz
-ZW50aWFsbHkgY29udHJhZGljdHMgd2l0aCB0aGUgYWJvdmUgcG9pbnQuCj4gCj4gU28gSSB0aGlu
-ayBpdCBpcyBub3QgcmVxdWlyZWQgdG8gYWRkIGRlbGF5IGFmdGVyIGNvbXBsZXRpbmcgdGhlIExU
-U1NNLCB1bmxlc3MKPiBzb21lb25lIHNlZXMgYW55IGlzc3VlLgoKSWYgeW91IGxvb2sgYXQgdGhl
-IGNvbW1pdCBtZXNzYWdlIGluIHBhdGNoIDEvMiwgdGhlIHdob2xlIHJlYXNvbiBmb3IgdGhpcwpz
-ZXJpZXMgaXMgdGhhdCBzb21lb25lIGhhcyBzZWVuIGFuIGlzc3VlIDopCgpXaGlsZSBJIHBlcnNv
-bmFsbHkgaGF2ZW4ndCBzZWVuIGFueSBpc3N1ZSwgdGhlIHVzZXIgcmVwb3J0aW5nIHRoYXQgY29t
-bWl0CmVjOWZkNDk5YjljNiAoIlBDSTogZHctcm9ja2NoaXA6IERvbid0IHdhaXQgZm9yIGxpbmsg
-c2luY2Ugd2UgY2FuIGRldGVjdApMaW5rIFVwIikgcmVncmVzc2VkIGhpcyBzeXN0ZW0gc28gdGhh
-dCBpdCBjYW4gbm8gbG9uZ2VyIG1vdW50IHJvb3Rmcwood2hpY2ggaXMgb24gYSBQTEVYVE9SIFBY
-LTI1Nk04UGVHTiBOVk1lIFNTRCkgY2xlYXJseSBoYXMgc2VlbiBhbiBpc3N1ZS4KCkl0IGlzIHBv
-c3NpYmxlIHRoYXQgaGlzIGRldmljZSBpcyBub3QgZm9sbG93aW5nIHRoZSBzcGVjLgpJIHNpbXBs
-eSBjb21wYXJlZCB0aGUgY29kZSBiZWZvcmUgYW5kIGFmdGVyIGVjOWZkNDk5YjljNiwgdG8gdHJ5
-IHRvCmZpZ3VyZSBvdXQgd2h5IGl0IHdhcyBhY3R1YWxseSB3b3JraW5nIGJlZm9yZSwgYW5kIGNh
-bWUgdXAgd2l0aCB0aGlzLAp3aGljaCBtYWRlIGhpcyBkZXZpY2UgZnVuY3Rpb25hbCBhZ2Fpbi4K
-ClBlcmhhcHMgd2Ugc2hvdWxkIGFkZCBhIGNvbW1lbnQgYWJvdmUgdGhlIHNsZWVwIHRoYXQgc2F5
-cyB0aGF0IHRoaXMKc2hvdWxkIHN0cmljdGx5IG5vdCBiZSBuZWVkZWQgYXMgcGVyIHRoZSBzcGVj
-PwooQW5kIGFsc28gYWRkIHRoZSBzYW1lIGNvbW1lbnQgaW4gdGhlIChzaW5nbGUpIGNvbnRyb2xs
-ZXIgZHJpdmVyIGluCm1haW5saW5lIHdoaWNoIGFscmVhZHkgZG9lcyBhbiBtc2xlZXAoUENJRV9U
-X1JSU19SRUFEWV9NUykuKQoKCktpbmQgcmVnYXJkcywKTmlrbGFzCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Tuesday, 29 April 2025 12:06:16 Central European Summer Time Ulf Hansson wrote:
+> On Wed, 23 Apr 2025 at 09:54, Nicolas Frattaroli
+> <nicolas.frattaroli@collabora.com> wrote:
+> >
+> > RK3576's power domains have a peculiar design where the PD_NVM power
+> > domain, of which the sdhci controller is a part, seemingly does not have
+> > idempotent runtime disable/enable. The end effect is that if PD_NVM gets
+> > turned off by the generic power domain logic because all the devices
+> > depending on it are suspended, then the next time the sdhci device is
+> > unsuspended, it'll hang the SoC as soon as it tries accessing the CQHCI
+> > registers.
+> >
+> > RK3576's UFS support needed a new dev_pm_genpd_rpm_always_on function
+> > added to the generic power domains API to handle what appears to be a
+> > similar hardware design.
+> >
+> > Use this new function to ask for the same treatment in the sdhci
+> > controller by giving rk3576 its own platform data with its own postinit
+> > function. The benefit of doing this instead of marking the power domains
+> > always on in the power domain core is that we only do this if we know
+> > the platform we're running on actually uses the sdhci controller. For
+> > others, keeping PD_NVM always on would be a waste, as they won't run
+> > into this specific issue. The only other IP in PD_NVM that could be
+> > affected is FSPI0. If it gets a mainline driver, it will probably want
+> > to do the same thing.
+> >
+> > Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> 
+> Applied for next, thanks!
+> 
+> Kind regards
+> Uffe
+> 
+
+Hi Uffe,
+
+I was wondering whether we can get this into 6.15 as a fix as well, as 6.15
+should already have the genpd API additions this requires AFAIU.
+
+Fixes tag could be something like:
+
+  Fixes: cfee1b507758 ("pmdomain: rockchip: Add support for RK3576 SoC")
+
+but may need some more flavorings to keep the stable robot overlords from
+trying to apply it to 6.14 and earlier and then starting the robot uprising
+in your inbox when they notice the API is missing.
+
+I originally left out the Fixes tag on the rewrite of this using the new
+API because I wanted to avoid those awkward backport scenarios for a fairly
+freshly supported SoC, but it'd be great to have this in 6.15 because that
+will be with us for a full release cycle to come.
+
+Kind regards,
+Nicolas Frattaroli
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
