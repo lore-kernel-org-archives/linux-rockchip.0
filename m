@@ -4,60 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCD05C3ABC9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 17:32:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2826FC3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 19:02:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HQBthOXs/naqv8jVIO9qrWWXA2LrazMksA5fPiTa0Rc=; b=IslVsNEKLh425eneIN2YBt9yDy
-	/DxeZ2YucNWpZKuKZ8ZrdGcxxg+kXIpmkLIllQAuAFtoyez4HVaed+7Q2NVI+ngsM0LcbJxTFYPiY
-	VgwwmzlvConCLIm8zF9m6j9gYDF4HTvzlMU6BH8M3hOyREmNOWg5dOE31xqIi27qR2ET910BKVm4a
-	0hMxysU8IiRNNX5NcKe/7C2jY8sNB5FyM4M55a3hYBnA41G4TBhtpGzUfsDGZxQHbUznzdOuH6Gvn
-	rn8jY57zqkUuJBM7pcIdKnECs/aO/k9BYo++3hzKVgnHu77Tg9oRvNYlyaYTTN6pPtkDsGsJZDgeC
-	pg7iWkQw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=28qNwZJtf8jCNTSHXtBBjZhCBOSDS6Efa0vP5jNDEuQ=; b=ehsiFnLC4zG4vx
+	SAErQP8kzPFiNS+qX9ImGEQGv5+2W9qeaKxSc5Agq1iv5SGJ0b7MGCDI+QbboKpShX//asGrrVZWx
+	s0TkKlfl7HDSmeNmwP5liK3K0OgyqJn/BgXZZmPK2cPpa/RXin6PSI8Uto7uksMdvqKYQcbiPMhoR
+	5z8c6NdvDPlfo2Qr/cvoxCiyCOIWReyu/uZnb5MlnLf/T405R8q+OJ+YE3b8syueJylWK/EdvumUy
+	fA+XBmWwPTN2v8mUKm9txIXPL39VEef6kk8i0dl7lpifao9MoHTgoff2cO3ucN78um+kRzhS7qrEy
+	2smZTwbvMJTJMbZ/ccBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEtU4-0000000D6UJ-2F5F;
-	Tue, 13 May 2025 17:32:04 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uEutG-0000000DJkR-3vjV;
+	Tue, 13 May 2025 19:02:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEtOl-0000000D5K9-3uDe;
-	Tue, 13 May 2025 17:26:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C1ED9629FB;
-	Tue, 13 May 2025 17:26:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5D66C4CEE4;
-	Tue, 13 May 2025 17:26:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747157194;
-	bh=XZgV1QhYSzMi+mWphJqQXwlDvh4uyqmyqWtHN4e9RH4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hG94Lgo80sRFtjwwMGBmTwEXXng+JnM53gX3BWiYYC3Gzm/ECanYocLNIWj8k1rGA
-	 rWLThq9KpGk7mRcYwxDTWEuG1psrUaos0d+WGZx5VFbenjoXA+JvMbFBqIp3IJDFHa
-	 mc0cyQkiLmoagHYGJ8Lt6jg8i5l9zZ3m5O++34j1N3tIH9ILHtebDSdPmjwhMBmzoJ
-	 1HegOkvcWgbix37heFeUwvOef3P9SqQMOwrM/h+VMNKSBx6Pk12pzPpv9FnYfDiJHN
-	 1ZFkvV1cZ5AUPo4Yv2vrhW1Zwwvd0tqkwdrZXLGwHMBU+Z3LssQXxOkLDk2crfM2/8
-	 feF/bizRpq0EA==
-Date: Tue, 13 May 2025 19:26:31 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	William Breathitt Gray <wbg@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
-	Kever Yang <kever.yang@rock-chips.com>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-pwm@vger.kernel.org, linux-iio@vger.kernel.org, kernel@collabora.com, 
-	Jonas Karlman <jonas@kwiboo.se>, Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH 5/7] pwm: Add rockchip PWMv4 driver
-Message-ID: <zg47we7oopvuayi7wyosq6j7uuzz4numystbmluezsim2pxg4g@zvtm3pwzkice>
-References: <20250408-rk3576-pwm-v1-0-a49286c2ca8e@collabora.com>
- <20250408-rk3576-pwm-v1-5-a49286c2ca8e@collabora.com>
+	id 1uEuI8-0000000DEOL-1rLb;
+	Tue, 13 May 2025 18:23:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=Iwn/kA0O8CAD/ThWddzWQf+59NgObuDjwWI8/h+K/jQ=; b=mfGTVucpq7HrMiOG310MZExm24
+	a2PHQpc2cZYjgQ9T/uFPXjtCeE/cxbVtmxzBJmrWoniJ1DBsk548oBUZG3MAPnhdUydoji7XVwbBv
+	ejnYHcgOhXUnhzTmfifID7w8e0r5/pYGqsiEuFKtlBFYAqe1S5PdUhgzhliR8xEiY92KCVy33Odut
+	EVQX/bcUZlGG4ld1scWlBGQ+0fQn4xV7JYULNWrechX53cTznos72AXSEbqm2ROewq2LVA0rSEvfx
+	2BIoFQMainpHwQlLFThQu0QNkufNqqt8weIqnHm2vhM/WkL/lJ5stSp81xIjnfx0yzjJktrme6EuS
+	nJy7QN5A==;
+Received: from [61.8.147.169] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uEuI2-0003RT-CU; Tue, 13 May 2025 20:23:42 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+ Nicholas Roth <nicholas@rothemail.net>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>,
+ Olivier Benjamin <olivier.benjamin@bootlin.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
+ imx@lists.linux.dev, Olivier Benjamin <olivier.benjamin@bootlin.com>,
+ Dragan Simic <dsimic@manjaro.org>, Ondrej Jirman <megi@xff.cz>
+Subject: Re: [PATCH v3 3/4] arm64: dts: rockchip: describe I2c Bus 1 and IMX258 world
+ camera on PinePhone Pro
+Date: Tue, 13 May 2025 20:23:40 +0200
+Message-ID: <3359896.e9J7NaK4W3@phil>
+In-Reply-To: <20250509-camera-v3-3-dab2772d229a@bootlin.com>
+References: <20250509-camera-v3-0-dab2772d229a@bootlin.com>
+ <20250509-camera-v3-3-dab2772d229a@bootlin.com>
 MIME-Version: 1.0
-In-Reply-To: <20250408-rk3576-pwm-v1-5-a49286c2ca8e@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250513_112348_626716_F2C989B9 
+X-CRM114-Status: GOOD (  24.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,537 +81,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5845272187753867863=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============5845272187753867863==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bywnufiblausx7ms"
-Content-Disposition: inline
-
-
---bywnufiblausx7ms
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 5/7] pwm: Add rockchip PWMv4 driver
-MIME-Version: 1.0
-
-Hello Nicolas,
-
-On Tue, Apr 08, 2025 at 02:32:17PM +0200, Nicolas Frattaroli wrote:
-> The Rockchip RK3576 brings with it a new PWM IP, in downstream code
-> referred to as "v4". This new IP is different enough from the previous
-> Rockchip IP that I felt it necessary to add a new driver for it, instead
-> of shoehorning it in the old one.
->=20
-> Add this new driver, based on the PWM core's waveform APIs. Its platform
-> device is registered by the parent mfpwm driver, from which it also
-> receives a little platform data struct, so that mfpwm can guarantee that
-> all the platform device drivers spread across different subsystems for
-> this specific hardware IP do not interfere with each other.
->=20
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  MAINTAINERS                   |   1 +
->  drivers/pwm/Kconfig           |  13 ++
->  drivers/pwm/Makefile          |   1 +
->  drivers/pwm/pwm-rockchip-v4.c | 336 ++++++++++++++++++++++++++++++++++++=
-++++++
->  4 files changed, 351 insertions(+)
->=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index e6a9347be1e7889089e1d9e655cb23c2d8399b40..3ddd245fd4ad8d9ed2e762910=
-a7a1f6436f93e34 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -20891,6 +20891,7 @@ L:	linux-rockchip@lists.infradead.org
->  L:	linux-pwm@vger.kernel.org
->  S:	Maintained
->  F:	Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml
-> +F:	drivers/pwm/pwm-rockchip-v4.c
->  F:	drivers/soc/rockchip/mfpwm.c
->  F:	include/soc/rockchip/mfpwm.h
-> =20
-> diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
-> index 4731d5b90d7edcc61138e4a5bf7e98906953ece4..242039f62ab091cea337bf27e=
-f310bcf696b6ed0 100644
-> --- a/drivers/pwm/Kconfig
-> +++ b/drivers/pwm/Kconfig
-> @@ -540,6 +540,19 @@ config PWM_ROCKCHIP
->  	  Generic PWM framework driver for the PWM controller found on
->  	  Rockchip SoCs.
-> =20
-> +config PWM_ROCKCHIP_V4
-> +	tristate "Rockchip PWM v4 support"
-> +	depends on ARCH_ROCKCHIP || COMPILE_TEST
-> +	depends on ROCKCHIP_MFPWM
-> +	depends on HAS_IOMEM
-> +	help
-> +	  Generic PWM framework driver for the PWM controller found on
-> +	  later Rockchip SoCs such as the RK3576.
-> +
-> +	  Uses the Rockchip Multi-function PWM controller driver infrastructure
-> +	  to guarantee fearlessly concurrent operation with other functions of
-> +	  the same device implemented by drivers in other subsystems.
-> +
->  config PWM_RZ_MTU3
->  	tristate "Renesas RZ/G2L MTU3a PWM Timer support"
->  	depends on RZ_MTU3
-> diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
-> index 539e0def3f82fcb866ab83a0346a15f7efdd7127..b5aca7ff58ac83f844581df52=
-6624617025291de 100644
-> --- a/drivers/pwm/Makefile
-> +++ b/drivers/pwm/Makefile
-> @@ -49,6 +49,7 @@ obj-$(CONFIG_PWM_RASPBERRYPI_POE)	+=3D pwm-raspberrypi-=
-poe.o
->  obj-$(CONFIG_PWM_RCAR)		+=3D pwm-rcar.o
->  obj-$(CONFIG_PWM_RENESAS_TPU)	+=3D pwm-renesas-tpu.o
->  obj-$(CONFIG_PWM_ROCKCHIP)	+=3D pwm-rockchip.o
-> +obj-$(CONFIG_PWM_ROCKCHIP_V4)	+=3D pwm-rockchip-v4.o
->  obj-$(CONFIG_PWM_RZ_MTU3)	+=3D pwm-rz-mtu3.o
->  obj-$(CONFIG_PWM_SAMSUNG)	+=3D pwm-samsung.o
->  obj-$(CONFIG_PWM_SIFIVE)	+=3D pwm-sifive.o
-> diff --git a/drivers/pwm/pwm-rockchip-v4.c b/drivers/pwm/pwm-rockchip-v4.c
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..980b27454ef9b930bef0496ca=
-528533cf419fa0e
-> --- /dev/null
-> +++ b/drivers/pwm/pwm-rockchip-v4.c
-> @@ -0,0 +1,336 @@
-> +// SPDX-License-Identifier: GPL-2.0-or-later
-> +/*
-> + * Copyright (c) 2025 Collabora Ltd.
-> + *
-> + * A Pulse-Width-Modulation (PWM) generator driver for the generators fo=
-und in
-> + * Rockchip SoCs such as the RK3576, internally referred to as "PWM v4".=
- Uses
-> + * the MFPWM infrastructure to guarantee exclusive use over the device w=
-ithout
-> + * other functions of the device from different drivers interfering with=
- its
-> + * operation while it's active.
-
-Can you please add a "Limitations" paragraph here similar to the other
-newer drivers that explains how the hardware behave on disable
-(inactive? High-Z? freeze?), if there are glitches possible when
-settings are changed or if the currently running period is completed on
-reconfiguration.
-
-> + *
-> + * Authors:
-> + *     Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> + */
-> +
-> +#include <linux/platform_device.h>
-> +#include <linux/pwm.h>
-> +#include <soc/rockchip/mfpwm.h>
-> +
-> +struct rockchip_pwm_v4 {
-> +	struct rockchip_mfpwm_func *pwmf;
-> +	struct pwm_chip chip;
-> +};
-> +
-> +struct rockchip_pwm_v4_wf {
-> +	u32 period;
-> +	u32 duty;
-> +	u32 offset;
-> +	u8 enable;
-> +};
-> +
-> +static inline struct rockchip_pwm_v4 *to_rockchip_pwm_v4(struct pwm_chip=
- *chip)
-> +{
-> +	return pwmchip_get_drvdata(chip);
-> +}
-> +
-> +/**
-> + * rockchip_pwm_v4_round_single - convert a PWM parameter to hardware
-> + * @rate: clock rate of the PWM clock, as per clk_get_rate
-> + * @in_val: parameter in nanoseconds to convert
-> + * @out_val: pointer to location where converted result should be stored.
-> + *
-> + * If @out_val is %NULL, no calculation is performed.
-> + *
-> + * Return:
-> + * * %0          - Success
-> + * * %-EOVERFLOW - Result too large for target type
-> + */
-> +static int rockchip_pwm_v4_round_single(unsigned long rate, u64 in_val,
-> +					u32 *out_val)
-> +{
-> +	u64 tmp;
-> +
-> +	if (!out_val)
-> +		return 0;
-
-This is never hit, so better drop it.
-
-> +	tmp =3D mult_frac(rate, in_val, NSEC_PER_SEC);
-> +	if (tmp > U32_MAX)
-> +		return -EOVERFLOW;
-
-Is it clear that this cannot overflow the u64?
-
-> +	*out_val =3D tmp;
-> +
-> +	return 0;
-> +}
-> +
-> +/**
-> + * rockchip_pwm_v4_round_params - convert PWM parameters to hardware
-> + * @rate: PWM clock rate to do the calculations at
-> + * @duty: PWM duty cycle in nanoseconds
-> + * @period: PWM period in nanoseconds
-> + * @offset: PWM offset in nanoseconds
-> + * @out_duty: pointer to where the rounded duty value should be stored
-> + *            if NULL, don't calculate or store it
-> + * @out_period: pointer to where the rounded period value should be stor=
-ed
-> + *              if NULL, don't calculate or store it
-> + * @out_offset: pointer to where the rounded offset value should be stor=
-ed
-> + *              if NULL, don't calculate or store it
-> + *
-> + * Convert nanosecond-based duty/period/offset parameters to the PWM har=
-dware's
-> + * native rounded representation in number of cycles at clock rate @rate=
-=2E If an
-> + * out_ parameter is a NULL pointer, the corresponding parameter will no=
-t be
-> + * calculated or stored. Should an overflow error occur for any of the
-> + * parameters, assume the data at all the out_ locations is invalid and =
-may not
-> + * even have been touched at all.
-> + *
-> + * Return:
-> + * * %0          - Success
-> + * * %-EOVERFLOW - One of the results is too large for the PWM hardware
-> + */
-> +static int rockchip_pwm_v4_round_params(unsigned long rate, u64 duty,
-> +					u64 period, u64 offset, u32 *out_duty,
-> +					u32 *out_period, u32 *out_offset)
-> +{
-> +	int ret;
-> +
-> +	ret =3D rockchip_pwm_v4_round_single(rate, duty, out_duty);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret =3D rockchip_pwm_v4_round_single(rate, period, out_period);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret =3D rockchip_pwm_v4_round_single(rate, offset, out_offset);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_pwm_v4_round_wf_tohw(struct pwm_chip *chip,
-> +					 struct pwm_device *pwm,
-> +					 const struct pwm_waveform *wf,
-> +					 void *_wfhw)
-> +{
-> +	struct rockchip_pwm_v4 *pc =3D to_rockchip_pwm_v4(chip);
-> +	struct rockchip_pwm_v4_wf *wfhw =3D _wfhw;
-> +	unsigned long rate;
-> +	int ret =3D 0;
-> +
-> +	/* We do not want chosen_clk to change out from under us here */
-> +	ret =3D mfpwm_acquire(pc->pwmf);
-> +	if (ret)
-> +		return ret;
-> +
-> +	rate =3D mfpwm_clk_get_rate(pc->pwmf->parent);
-> +
-> +	ret =3D rockchip_pwm_v4_round_params(rate, wf->duty_length_ns,
-> +					   wf->period_length_ns,
-> +					   wf->duty_offset_ns, &wfhw->duty,
-> +					   &wfhw->period, &wfhw->offset);
-> +
-> +	if (wf->period_length_ns > 0)
-> +		wfhw->enable =3D PWMV4_EN_BOTH_MASK;
-> +	else
-> +		wfhw->enable =3D 0;
-> +
-> +	dev_dbg(&chip->dev, "tohw: duty =3D %u, period =3D %u, offset =3D %u, r=
-ate %lu\n",
-> +		wfhw->duty, wfhw->period, wfhw->offset, rate);
-> +
-> +	mfpwm_release(pc->pwmf);
-> +	return ret;
-
-This is wrong. If a too high value for (say) period_length_ns is
-requested, you're supposed to configure the maximal possible
-period_length and not return a failure.
-
-> +}
-> +
-> +static int rockchip_pwm_v4_round_wf_fromhw(struct pwm_chip *chip,
-> +					   struct pwm_device *pwm,
-> +					   const void *_wfhw,
-> +					   struct pwm_waveform *wf)
-> +{
-> +	struct rockchip_pwm_v4 *pc =3D to_rockchip_pwm_v4(chip);
-> +	const struct rockchip_pwm_v4_wf *wfhw =3D _wfhw;
-> +	unsigned long rate;
-> +	int ret =3D 0;
-> +
-> +	/* We do not want chosen_clk to change out from under us here */
-
-This is also true while the PWM is enabled.=20
-
-> +	ret =3D mfpwm_acquire(pc->pwmf);
-> +	if (ret)
-> +		return ret;
-> +
-> +	rate =3D mfpwm_clk_get_rate(pc->pwmf->parent);
-
-Why isn't that a proper clock that you can call clk_get_rate() (and
-clk_rate_exclusive_get()) for?
-
-> +	/* Let's avoid a cool division-by-zero if the clock's busted. */
-> +	if (!rate) {
-> +		ret =3D -EINVAL;
-> +		goto out_mfpwm_release;
-> +	}
-> +
-> +	wf->duty_length_ns =3D mult_frac(wfhw->duty, NSEC_PER_SEC, rate);
-> +
-> +	if (pwmv4_is_enabled(wfhw->enable))
-> +		wf->period_length_ns =3D mult_frac(wfhw->period, NSEC_PER_SEC,
-> +						 rate);
-> +	else
-> +		wf->period_length_ns =3D 0;
-> +
-> +	wf->duty_offset_ns =3D mult_frac(wfhw->offset, NSEC_PER_SEC, rate);
-> +
-> +	dev_dbg(&chip->dev, "fromhw: duty =3D %llu, period =3D %llu, offset =3D=
- %llu\n",
-> +		wf->duty_length_ns, wf->period_length_ns, wf->duty_offset_ns);
-
-In my experience it't helpful to include rate in the output here.
-
-> +out_mfpwm_release:
-> +	mfpwm_release(pc->pwmf);
-> +	return ret;
-> +}
-> +
-> +static int rockchip_pwm_v4_read_wf(struct pwm_chip *chip, struct pwm_dev=
-ice *pwm,
-> +				   void *_wfhw)
-> +{
-> +	struct rockchip_pwm_v4 *pc =3D to_rockchip_pwm_v4(chip);
-> +	struct rockchip_pwm_v4_wf *wfhw =3D _wfhw;
-> +	int ret =3D 0;
-> +
-> +
-> +	ret =3D mfpwm_acquire(pc->pwmf);
-> +	if (ret)
-> +		return ret;
-> +
-> +	wfhw->period =3D mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_PERIOD);
-> +	wfhw->duty =3D mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_DUTY);
-> +	wfhw->offset =3D mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_OFFSET);
-> +	wfhw->enable =3D mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_ENABLE) & PWM=
-V4_EN_BOTH_MASK;
-> +
-> +	mfpwm_release(pc->pwmf);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_pwm_v4_write_wf(struct pwm_chip *chip, struct pwm_de=
-vice *pwm,
-> +				    const void *_wfhw)
-> +{
-> +	struct rockchip_pwm_v4 *pc =3D to_rockchip_pwm_v4(chip);
-> +	const struct rockchip_pwm_v4_wf *wfhw =3D _wfhw;
-> +	bool was_enabled =3D false;
-> +	int ret =3D 0;
-> +
-> +	ret =3D mfpwm_acquire(pc->pwmf);
-> +	if (ret)
-> +		return ret;
-> +
-> +	was_enabled =3D pwmv4_is_enabled(mfpwm_reg_read(pc->pwmf->base,
-> +						      PWMV4_REG_ENABLE));
-> +
-> +	/*
-> +	 * "But Nicolas", you ask with valid concerns, "why would you enable the
-> +	 * PWM before setting all the parameter registers?"
-
-Funny, I had this thought alread for mfpwm_acquire() above. Do you also
-need that if wfhw->enable =3D=3D 0?
-
-> +	 * Excellent question, Mr. Reader M. Strawman! The RK3576 TRM Part 1
-> +	 * Section 34.6.3 specifies that this is the intended order of writes.
-> +	 * Doing the PWM_EN and PWM_CLK_EN writes after the params but before
-> +	 * the CTRL_UPDATE_EN, or even after the CTRL_UPDATE_EN, results in
-> +	 * erratic behaviour where repeated turning on and off of the PWM may
-> +	 * not turn it off under all circumstances. This is also why we don't
-> +	 * use relaxed writes; it's not worth the footgun.
-> +	 */
-> +	mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_ENABLE,
-> +			REG_UPDATE_WE(wfhw->enable, 0, 1));
-> +
-> +	mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_PERIOD, wfhw->period);
-> +	mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_DUTY, wfhw->duty);
-> +	mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_OFFSET, wfhw->offset);
-> +
-> +	mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_CTRL, PWMV4_CTRL_CONT_FLAGS);
-> +
-> +	/* Commit new configuration to hardware output. */
-> +	mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_ENABLE,
-> +			PWMV4_CTRL_UPDATE_EN(1));
-
-PWMV4_CTRL_UPDATE_EN is always only used with 1 as parameter, so maybe
-simplify the definition to BIT(2)?
-
-> +	if (pwmv4_is_enabled(wfhw->enable)) {
-> +		if (!was_enabled) {
-> +			dev_dbg(&chip->dev, "enabling PWM output\n");
-> +			ret =3D mfpwm_pwmclk_enable(pc->pwmf);
-> +			if (ret)
-> +				goto err_mfpwm_release;
-> +
-> +			/*
-> +			 * Output should be on now, acquire device to guarantee
-> +			 * exclusion with other device functions while it's on.
-> +			 */
-> +			ret =3D mfpwm_acquire(pc->pwmf);
-> +			if (ret)
-> +				goto err_mfpwm_release;
-
-Alternatively to calling mfpwm_acquire once more, you could also skip
-the mfpwm_release() below. That makes the code a bit more complicated,
-but also reduces the number of possible failing points.
-
-> +		}
-> +	} else if (was_enabled) {
-> +		dev_dbg(&chip->dev, "disabling PWM output\n");
-> +		mfpwm_pwmclk_disable(pc->pwmf);
-> +		/* Output is off now, extra release to balance extra acquire */
-> +		mfpwm_release(pc->pwmf);
-> +	}
-> +
-> +err_mfpwm_release:
-> +	mfpwm_release(pc->pwmf);
-> +
-> +	return ret;
-> +}
-> +
-> +/* We state the PWM chip is atomic, so none of these functions should sl=
-eep. */
-> +static const struct pwm_ops rockchip_pwm_v4_ops =3D {
-> +	.sizeof_wfhw =3D sizeof(struct rockchip_pwm_v4_wf),
-> +	.round_waveform_tohw =3D rockchip_pwm_v4_round_wf_tohw,
-> +	.round_waveform_fromhw =3D rockchip_pwm_v4_round_wf_fromhw,
-> +	.read_waveform =3D rockchip_pwm_v4_read_wf,
-> +	.write_waveform =3D rockchip_pwm_v4_write_wf,
-> +};
-> +
-> +static int rockchip_pwm_v4_probe(struct platform_device *pdev)
-> +{
-> +	struct rockchip_mfpwm_func *pwmf =3D dev_get_platdata(&pdev->dev);
-> +	struct rockchip_pwm_v4 *pc;
-> +	struct pwm_chip *chip;
-> +	int ret;
-> +
-> +	chip =3D devm_pwmchip_alloc(&pdev->dev, 1, sizeof(*pc));
-> +	if (IS_ERR(chip))
-> +		return PTR_ERR(chip);
-> +
-> +	pc =3D to_rockchip_pwm_v4(chip);
-> +	pc->pwmf =3D pwmf;
-> +
-> +	platform_set_drvdata(pdev, pc);
-> +
-> +	chip->ops =3D &rockchip_pwm_v4_ops;
-> +	chip->atomic =3D true;
-> +
-
-If the PWM is already enabled you better call mfpwm_acquire() here?
-
-> +	ret =3D pwmchip_add(chip);
-> +	if (ret)
-> +		return dev_err_probe(&pdev->dev, ret, "failed to add PWM chip\n");
-> +
-> +	return 0;
-> +}
-> +
-> +static void rockchip_pwm_v4_remove(struct platform_device *pdev)
-> +{
-> +	struct rockchip_pwm_v4 *pc =3D platform_get_drvdata(pdev);
-
-	pwmchip_remove()?
-
-> +	mfpwm_remove_func(pc->pwmf);
-
-Maybe make this a devm function?
-
-> +}
-> +
-> +static const struct platform_device_id rockchip_pwm_v4_ids[] =3D {
-> +	{ .name =3D "pwm-rockchip-v4", },
-> +	{ /* sentinel */ }
-> +};
-> +MODULE_DEVICE_TABLE(platform, rockchip_pwm_v4_ids);
-> +
-> +static struct platform_driver rockchip_pwm_v4_driver =3D {
-> +	.probe =3D rockchip_pwm_v4_probe,
-> +	.remove =3D rockchip_pwm_v4_remove,
-> +	.driver =3D {
-> +		.name =3D "pwm-rockchip-v4",
-> +	},
-> +	.id_table =3D rockchip_pwm_v4_ids,
-> +};
-> +module_platform_driver(rockchip_pwm_v4_driver);
-> +
-> +MODULE_AUTHOR("Nicolas Frattaroli <nicolas.frattaroli@collabora.com>");
-> +MODULE_DESCRIPTION("Rockchip PWMv4 Driver");
-> +MODULE_LICENSE("GPL");
-> +MODULE_IMPORT_NS("ROCKCHIP_MFPWM");
-
-There are different tastes, but if you ask me that MODULE_IMPORT_NS can
-go into the header declaring the functions from that namespace.
-
-Best regards
-Uwe
-
---bywnufiblausx7ms
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmgjgMQACgkQj4D7WH0S
-/k7Qlgf+O/l7HDymMM5t36I+KPbPhBTm3xQiphlueFh5o/aHfTcHa7UVk4s9hfXn
-CvXm/O5Qb3axq4iXTrCfcycMC8OKtK7DrtUyDxE49Vs3tRt4iGLerK2mOw4t2AEw
-Gm54pelJMAZPgyj1fwkklLA5C5aIWTYStQBOPErOUBAzF6OWNyOqkc3DjBkrO0Sd
-M2gbxSC2zHScBZVXGDimSQILTHxImSrUtISjqt/BTPMxL+SjlB3k1e4yHdGaRcJA
-Gh7TIwGSKlQ8I7URIcVqFL6bGU8XRwdoqlhzg4Qu1CP9Az3a6kkNGCA4+yMbvBSf
-7dVgTLnngGri45ELhcCJWdYw/znhHQ==
-=ibLa
------END PGP SIGNATURE-----
-
---bywnufiblausx7ms--
-
-
---===============5845272187753867863==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5845272187753867863==--
-
+SGkgT2xpdmllciwKCkFtIEZyZWl0YWcsIDkuIE1haSAyMDI1LCAyMzo1MTozOSBNaXR0ZWxldXJv
+cMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIE9saXZpZXIgQmVuamFtaW46Cj4gQWRkIHRoZSBk
+ZXNjcmlwdGlvbiBvZiB0aGUgcmVhci93b3JsZCBjYW1lcmEgKElNWDI1OCkgb24gdGhlIFBpbmVQ
+aG9uZSBQcm8KPiB0byB0aGUgZGV2aWNlIGR0cyBmaWxlLgo+IEl0IHJlY2VpdmVzIGNvbW1hbmRz
+IG9uIHRoZSBJMkMgQnVzIDEgYXQgYWRkcmVzcyAweDFhIGFuZCB0cmFuc21pdHMgZGF0YQo+IG92
+ZXIgQ1NJLU1JUEkuCj4gCj4gVGhlIEkyQyBhZGRyZXNzIGZvciBJTVgyNTggY2FuIGJlIGZvdW5k
+IGluIHRoZSBJTVgyNTgtMEFRSDUgU29mdHdhcmUKPiBSZWZlcmVuY2UgTWFudWFsLCBwYWdlIDI0
+LCBzZWN0aW9uIDIuMy4xOiAwYjAwMTEwMTAgPSAweDFhLgo+IFNlY3Rpb24gMyBpbmRpY2F0ZXMg
+dGhlIG1vZHVsZSBoYXMgNCBwYWlycyBvZiBkYXRhIGxpbmVzLiBXaGlsZSA0LWxhbmUKPiBtb2Rl
+IGlzIG5vbWluYWwsIDItbGFuZSBtb2RlIHNob3VsZCBhbHNvIGJlIHN1cHBvcnRlZC4KPiAKPiBU
+aGUgcGluIG11eGluZyBpbmZvIHdhcyBleHRyYWN0ZWQgZnJvbSB0aGUgUGluZVBob25lIFBybyBz
+Y2hlbWF0aWMgdjEuMAo+IGFzIHdlbGwgYXMgdGhlIFJLMzM5OSBkYXRhc2hlZXQgcmV2aXNpb24g
+MS44Lgo+IAo+IFRhYmxlIDItMyBpbiBzZWN0aW9uIDIuOCBvZiB0aGUgUkszMzk5IGRhdGFzaGVl
+dCBjb250YWlucyB0aGUgbWFwcGluZwo+IG9mIElPIGZ1bmN0aW9ucyBmb3IgdGhlIFNvQyBwaW5z
+LiBQYWdlIDUyIHNob3dzIEdQSU8xX0EwLCBwYWdlIDU0IHNob3dzCj4gR1BJTzJfRDQuCj4gCj4g
+Rm9yIEkyQyBwb3dlciwgdGhlIFBpbmVQaG9uZSBQcm8gc2NoZW1hdGljIHBhZ2UgMTEgcXVhZHJh
+bnRzIEE0IGFuZCBBNToKPiBSSzMzOTlfSi5BQTggYW5kIFJLMzM5OV9KLlk4IGdldCBwb3dlciBm
+cm9tIHZjYWExdjhfY29kZWMsIHNvIHR1cm4gaXQgb24KPiAKPiBUaGUgSU1YMjU4IGFsc28gdXNl
+cyB0aGUgZm9sbG93aW5nIHJlZ3VsYXRvcnMsIGV4cGVjdGVkIGJ5IGl0cyBkcml2ZXI6Cj4gIC0g
+dmFuYSAoMi44ViBhbmFsb2cpLCBjYWxsZWQgQVZERDJWOF9EVlAgb24gUC4xOCBxLkMxIGFuZCBk
+ZXJpdmVkIGZyb20KPiAgICBWQ0MxVjhfUzMgb24gUC4xMyBxLkIyCj4gIC0gdmRpZyAoMS4yViBk
+aWdpdGFsIGNvcmUpLCBjYWxsZWQgRFZERF9EVlAgb24gUC4xOCBxLkMxIGFuZCBzaG93biBvbgo+
+ICAgIFAuMTggcS5EMyB0byBiZSBlcXVpdmFsZW50IHRvIFZDQzFWMl9EVlAgZGVyaXZlZCBmcm9t
+IFZDQzNWM19TWVMgb24KPiAgICBQLjEzIHEuQjMuIE5vdGUgdGhhdCB0aGlzIHJlZ3VsYXRvcidz
+IHZvbHRhZ2UgaXMgaW5jb25zaXN0ZW50bHkKPiAgICBsYWJlbGVkIGVpdGhlciAxLjJWIG9yIDEu
+NVYKPiAKPiBSSzMzOTlfSi5BRzEgaXMgR1BJTzRfQTEvSTJDMV9TREEsIFJLMzM5OV9KLlk2IGlz
+IEdQSU80X0EyL0kyQzFfU0NMCj4gVGhpcyBpcyB0aGUgZGVmYXVsdCBwaW5jdHJsICJpMmMxX3hm
+ZXIiIGZvciBpMmMxIGZyb20gcmszMzk5LWJhc2UuCj4gCj4gRm9yIHRoZSByZXNldCAoUkVTRVQp
+IHNpZ25hbDoKPiBwYWdlIDExIHF1YWRyYW50IEQyICAgICAgICAgICAgIHwgcC4xOCBxLkMzLTQg
+fCBwLjE4IHEuQzIKPiBSSzMzOTlfRS5SMjUgLT4gR1BJTzFfQTAgLT4gQ2FtZXJhX1JTVCAtPiBN
+SVBJX1JTVDAgLT4gSU1YMjU4LjEyCj4gCj4gRm9yIHRoZSBwb3dlcmRvd24gKFBXRE4pIHNpZ25h
+bDoKPiBwYWdlIDExIHF1YWRyYW50cyBCNC01ICAgICAgICAgIHwgcC4xOCBxLkMyCj4gUkszMzk5
+X0cuQUY4IC0+IEdQSU8yX0Q0IC0+IERWUF9QRE4xX0ggLT4gSU1YMjU4LjE0Cj4gCj4gSGVscGVk
+LWJ5OiBEcmFnYW4gU2ltaWMgPGRzaW1pY0BtYW5qYXJvLm9yZz4KPiBDby1kZXZlbG9wZWQtYnk6
+IE9uZHJlaiBKaXJtYW4gPG1lZ2lAeGZmLmN6Pgo+IFNpZ25lZC1vZmYtYnk6IE9uZHJlaiBKaXJt
+YW4gPG1lZ2lAeGZmLmN6Pgo+IFNpZ25lZC1vZmYtYnk6IE9saXZpZXIgQmVuamFtaW4gPG9saXZp
+ZXIuYmVuamFtaW5AYm9vdGxpbi5jb20+Cgpob3cgaW5kZXBlbmRlbnQgYXJlIHRoZSBkZXZpY2V0
+cmVlIGNoYW5nZXMgZnJvbSB0aGUgYmluZGluZyBjaGFuZ2VzPwpBcyB0aGUgYmluZGluZyBjaGFu
+Z2UgIm9ubHkiIGluY2x1ZGVzIG90aGVyIHByb3BlcnRpZXMuCgpIZWlrbwoKCj4gLS0tCj4gIC4u
+Li9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcGluZXBob25lLXByby5kdHMgICAgIHwgOTQgKysr
+KysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgOTQgaW5zZXJ0aW9ucygrKQo+
+IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1waW5l
+cGhvbmUtcHJvLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXBpbmVw
+aG9uZS1wcm8uZHRzCj4gaW5kZXggMDRiYTRjNDU2NWQwYTIwNWUyZTQ2ZDc1MzVjNmEzMTkwOTkz
+NjIxZC4uNTg4ZTJkOGEwNDljYzY0OWFhMjI3YzdhODg1YmQ0OTRmMjNmYmRmOCAxMDA2NDQKPiAt
+LS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1waW5lcGhvbmUtcHJvLmR0
+cwo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXBpbmVwaG9uZS1w
+cm8uZHRzCj4gQEAgLTExNCw2ICsxMTQsMTYgQEAgdmNjM3YzX3N5czogcmVndWxhdG9yLXZjYzN2
+My1zeXMgewo+ICAJCXZpbi1zdXBwbHkgPSA8JnZjY19zeXM+Owo+ICAJfTsKPiAgCj4gKwlhdmRk
+MnY4X2R2cDogcmVndWxhdG9yLWF2ZGQydjgtZHZwIHsKPiArCQljb21wYXRpYmxlID0gInJlZ3Vs
+YXRvci1maXhlZCI7Cj4gKwkJcmVndWxhdG9yLW5hbWUgPSAiYXZkZDJ2OF9kdnAiOwo+ICsJCXJl
+Z3VsYXRvci1hbHdheXMtb247Cj4gKwkJcmVndWxhdG9yLWJvb3Qtb247Cj4gKwkJcmVndWxhdG9y
+LW1pbi1taWNyb3ZvbHQgPSA8MjgwMDAwMD47Cj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQg
+PSA8MjgwMDAwMD47Cj4gKwkJdmluLXN1cHBseSA9IDwmdmNjM3YzX3N5cz47Cj4gKwl9Owo+ICsK
+PiAgCXZjY2ExdjhfczM6IHJlZ3VsYXRvci12Y2MxdjgtczMgewo+ICAJCWNvbXBhdGlibGUgPSAi
+cmVndWxhdG9yLWZpeGVkIjsKPiAgCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2NhMXY4X3MzIjsKPiBA
+QCAtMTM2LDYgKzE0NiwxNiBAQCB2Y2MxdjhfY29kZWM6IHJlZ3VsYXRvci12Y2MxdjgtY29kZWMg
+ewo+ICAJCXZpbi1zdXBwbHkgPSA8JnZjYzN2M19zeXM+Owo+ICAJfTsKPiAgCj4gKwl2Y2MxdjJf
+ZHZwOiByZWd1bGF0b3ItdmNjMXYyLWR2cCB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3It
+Zml4ZWQiOwo+ICsJCXJlZ3VsYXRvci1uYW1lID0gInZjYzF2Ml9kdnAiOwo+ICsJCXJlZ3VsYXRv
+ci1hbHdheXMtb247Cj4gKwkJcmVndWxhdG9yLWJvb3Qtb247Cj4gKwkJcmVndWxhdG9yLW1pbi1t
+aWNyb3ZvbHQgPSA8MTIwMDAwMD47Cj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTIw
+MDAwMD47Cj4gKwkJdmluLXN1cHBseSA9IDwmdmNjYTF2OF9zMz47Cj4gKwl9Owo+ICsKPiAgCXdp
+ZmlfcHdyc2VxOiBzZGlvLXdpZmktcHdyc2VxIHsKPiAgCQljb21wYXRpYmxlID0gIm1tYy1wd3Jz
+ZXEtc2ltcGxlIjsKPiAgCQljbG9ja3MgPSA8JnJrODE4IDE+Owo+IEBAIC0zMTIsNiArMzMyLDgg
+QEAgdmNjM3YwX3RvdWNoOiBMRE9fUkVHMiB7Cj4gIAo+ICAJCQl2Y2NhMXY4X2NvZGVjOiBMRE9f
+UkVHMyB7Cj4gIAkJCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2NhMXY4X2NvZGVjIjsKPiArCQkJCXJl
+Z3VsYXRvci1hbHdheXMtb247Cj4gKwkJCQlyZWd1bGF0b3ItYm9vdC1vbjsKPiAgCQkJCXJlZ3Vs
+YXRvci1taW4tbWljcm92b2x0ID0gPDE4MDAwMDA+Owo+ICAJCQkJcmVndWxhdG9yLW1heC1taWNy
+b3ZvbHQgPSA8MTgwMDAwMD47Cj4gIAkJCX07Cj4gQEAgLTQyMCw2ICs0NDIsNDYgQEAgcmVndWxh
+dG9yLXN0YXRlLW1lbSB7Cj4gIAl9Owo+ICB9Owo+ICAKPiArJmkyYzEgewo+ICsJY2xvY2stZnJl
+cXVlbmN5ID0gPDQwMDAwMD47Cj4gKwlwaW5jdHJsLTAgPSA8JmkyYzFfeGZlciAmY2lmX2Nsa291
+dGE+Owo+ICsJYXNzaWduZWQtY2xvY2tzID0gPCZjcnUgU0NMS19DSUZfT1VUPjsKPiArCWFzc2ln
+bmVkLWNsb2NrLXJhdGVzID0gPDI0MDAwMDAwPjsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArCj4g
+Kwl3Y2FtOiBjYW1lcmFAMWEgewo+ICsJCWNvbXBhdGlibGUgPSAic29ueSxpbXgyNTgiOwo+ICsJ
+CXJlZyA9IDwweDFhPjsKPiArCQljbG9ja3MgPSA8JmNydSBTQ0xLX0NJRl9PVVQ+OyAvKiBNSVBJ
+X01DTEswLCBkZXJpdmVkIGZyb20gQ0lGX0NMS08gKi8KPiArCQljbG9jay1uYW1lcyA9ICJ4dmNs
+ayI7Cj4gKwkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiArCQlwaW5jdHJsLTAgPSA8Jndj
+YW1fcnN0PjsKPiArCQkvKiBOb3RlOiBib3RoIGNhbWVyYXMgYWxzbyBkZXBlbmQgb24gdmNjYTF2
+OF9jb2RlYyB0byBwb3dlciB0aGUgSTJDIGJ1cy4gKi8KPiArCQl2aWYtc3VwcGx5ID0gPCZ2Y2Mx
+djhfZHZwPjsKPiArCQl2YW5hLXN1cHBseSA9IDwmYXZkZDJ2OF9kdnA+Owo+ICsJCXZkaWctc3Vw
+cGx5ID0gPCZ2Y2MxdjJfZHZwPjsgLyogRFZERF9EVlAgaXMgdGhlIHNhbWUgYXMgVkNDMVYyX0RW
+UCAqLwo+ICsJCXJlc2V0LWdwaW9zID0gPCZncGlvMSBSS19QQTAgR1BJT19BQ1RJVkVfTE9XPjsK
+PiArCQlvcmllbnRhdGlvbiA9IDwxPjsgLyogVjRMMl9DQU1FUkFfT1JJRU5UQVRJT05fQkFDSyAq
+Lwo+ICsJCXJvdGF0aW9uID0gPDI3MD47Cj4gKwkJbGVucy1mb2N1cyA9IDwmd2NhbV9sZW5zPjsK
+PiArCj4gKwkJcG9ydCB7Cj4gKwkJCXdjYW1fb3V0OiBlbmRwb2ludCB7Cj4gKwkJCQlyZW1vdGUt
+ZW5kcG9pbnQgPSA8Jm1pcGlfaW5fd2NhbT47Cj4gKwkJCQlkYXRhLWxhbmVzID0gPDEgMiAzIDQ+
+Owo+ICsJCQkJbGluay1mcmVxdWVuY2llcyA9IC9iaXRzLyA2NCA8NjM2MDAwMDAwPjsKPiArCQkJ
+fTsKPiArCQl9Owo+ICsJfTsKPiArCj4gKwl3Y2FtX2xlbnM6IGNhbWVyYS1sZW5zQGMgewo+ICsJ
+CWNvbXBhdGlibGUgPSAiZG9uZ3dvb24sZHc5NzE0IjsKPiArCQlyZWcgPSA8MHgwYz47Cj4gKwkJ
+LyogU2FtZSBJMmMgYnVzIGFzIGJvdGggY2FtZXJhcywgZGVwZW5kcyBvbiB2Y2NhMXY4X2NvZGVj
+IGZvciBwb3dlci4gKi8KPiArCQl2Y2Mtc3VwcGx5ID0gPCZ2Y2MxdjhfZHZwPjsKPiArCX07Cj4g
+K307Cj4gKwo+ICAmaTJjMyB7Cj4gIAlpMmMtc2NsLXJpc2luZy10aW1lLW5zID0gPDQ1MD47Cj4g
+IAlpMmMtc2NsLWZhbGxpbmctdGltZS1ucyA9IDwxNT47Cj4gQEAgLTQ2Miw2ICs1MjQsMjggQEAg
+JmlvX2RvbWFpbnMgewo+ICAJc3RhdHVzID0gIm9rYXkiOwo+ICB9Owo+ICAKPiArJmlzcDEgewo+
+ICsJc3RhdHVzID0gIm9rYXkiOwo+ICsKPiArCXBvcnRzIHsKPiArCQlwb3J0QDAgewo+ICsJCQlt
+aXBpX2luX3djYW06IGVuZHBvaW50QDAgewo+ICsJCQkJcmVnID0gPDA+Owo+ICsJCQkJcmVtb3Rl
+LWVuZHBvaW50ID0gPCZ3Y2FtX291dD47Cj4gKwkJCQlkYXRhLWxhbmVzID0gPDEgMiAzIDQ+Owo+
+ICsJCQl9Owo+ICsJCX07Cj4gKwl9Owo+ICt9Owo+ICsKPiArJm1pcGlfZHBoeV9yeDAgewo+ICsJ
+c3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJmlzcDFfbW11IHsKPiArCXN0YXR1cyA9ICJv
+a2F5IjsKPiArfTsKPiArCj4gICZtaXBpX2RzaSB7Cj4gIAlzdGF0dXMgPSAib2theSI7Cj4gIAlj
+bG9jay1tYXN0ZXI7Cj4gQEAgLTQ5NSw2ICs1NzksMTAgQEAgbWlwaV9pbl9wYW5lbDogZW5kcG9p
+bnQgewo+ICAJfTsKPiAgfTsKPiAgCj4gKyZtaXBpX2RzaTEgewo+ICsJc3RhdHVzID0gIm9rYXki
+Owo+ICt9Owo+ICsKPiAgJnBtdV9pb19kb21haW5zIHsKPiAgCXBtdTE4MzAtc3VwcGx5ID0gPCZ2
+Y2NfMXY4PjsKPiAgCXN0YXR1cyA9ICJva2F5IjsKPiBAQCAtNTA3LDYgKzU5NSwxMiBAQCBwd3Ji
+dG5fcGluOiBwd3JidG4tcGluIHsKPiAgCQl9Owo+ICAJfTsKPiAgCj4gKwljYW1lcmEgewo+ICsJ
+CXdjYW1fcnN0OiB3Y2FtLXJzdCB7Cj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8MSBSS19QQTAgUktf
+RlVOQ19HUElPICZwY2ZnX3B1bGxfbm9uZT47Cj4gKwkJfTsKPiArCX07Cj4gKwo+ICAJbGVkcyB7
+Cj4gIAkJcmVkX2xlZF9waW46IHJlZC1sZWQtcGluIHsKPiAgCQkJcm9ja2NoaXAscGlucyA9IDw0
+IFJLX1BEMiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPiAKPiAKCgoKCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
