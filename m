@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2826FC3ABC9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 19:02:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8833CC3ABC3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 May 2025 19:04:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=28qNwZJtf8jCNTSHXtBBjZhCBOSDS6Efa0vP5jNDEuQ=; b=ehsiFnLC4zG4vx
-	SAErQP8kzPFiNS+qX9ImGEQGv5+2W9qeaKxSc5Agq1iv5SGJ0b7MGCDI+QbboKpShX//asGrrVZWx
-	s0TkKlfl7HDSmeNmwP5liK3K0OgyqJn/BgXZZmPK2cPpa/RXin6PSI8Uto7uksMdvqKYQcbiPMhoR
-	5z8c6NdvDPlfo2Qr/cvoxCiyCOIWReyu/uZnb5MlnLf/T405R8q+OJ+YE3b8syueJylWK/EdvumUy
-	fA+XBmWwPTN2v8mUKm9txIXPL39VEef6kk8i0dl7lpifao9MoHTgoff2cO3ucN78um+kRzhS7qrEy
-	2smZTwbvMJTJMbZ/ccBA==;
+	List-Owner; bh=xb+pfD81zkq4QGHn9lH8/fJIF/lZ1xY+4YNfr2sdbAA=; b=l5V5zvSJ0lAjLF
+	4v6RZcVIfrZh9gPuuh46S+N6u5GA8c0B1SHboTYKu54O7c0/ZYtZPOOwVRTdAkluCDRWb8cXifKH2
+	FvmpLjNnc3iUhn5+dSkl0eS76z57hpFjFr838m05Hb9BVsYtTstLyfJTDKAQWRKKN0MzB2UzLRLD9
+	dNc9aURssrSeAMVgvnICbJqAKuw/1J2sMN8erIh3E23PWUe2w5MiaUbv5utOCKC19sY6MElrjVQaY
+	AybEcjhyHCKpoxmxrwVDon8ddqnwqNLwFpi5WhjRfgpXcrvAer7UUCEu/W3J4xDjtF6CIOCaktxd4
+	X9M+H9ep5TEXnj4X2Gow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEutG-0000000DJkR-3vjV;
-	Tue, 13 May 2025 19:02:10 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uEuvL-0000000DJzY-1lsz;
+	Tue, 13 May 2025 19:04:19 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEuI8-0000000DEOL-1rLb;
-	Tue, 13 May 2025 18:23:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=Iwn/kA0O8CAD/ThWddzWQf+59NgObuDjwWI8/h+K/jQ=; b=mfGTVucpq7HrMiOG310MZExm24
-	a2PHQpc2cZYjgQ9T/uFPXjtCeE/cxbVtmxzBJmrWoniJ1DBsk548oBUZG3MAPnhdUydoji7XVwbBv
-	ejnYHcgOhXUnhzTmfifID7w8e0r5/pYGqsiEuFKtlBFYAqe1S5PdUhgzhliR8xEiY92KCVy33Odut
-	EVQX/bcUZlGG4ld1scWlBGQ+0fQn4xV7JYULNWrechX53cTznos72AXSEbqm2ROewq2LVA0rSEvfx
-	2BIoFQMainpHwQlLFThQu0QNkufNqqt8weIqnHm2vhM/WkL/lJ5stSp81xIjnfx0yzjJktrme6EuS
-	nJy7QN5A==;
-Received: from [61.8.147.169] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uEuI2-0003RT-CU; Tue, 13 May 2025 20:23:42 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
- Nicholas Roth <nicholas@rothemail.net>,
+	id 1uEuLF-0000000DEmJ-3ECN
+	for linux-rockchip@lists.infradead.org;
+	Tue, 13 May 2025 18:27:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1747160806; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=BDN2uLpmb50QwQwa/P9J15Qxa/kcCUN0fkH5pPVUyWnmOGJLtv6yVIYWC3/B6n/5ma1/KKObI8PN5j/BQQNci5W8p1CoazkWNlB0NbCbtl065gJIKIfhOZx+KaxhVQebHz0BsI9S7DyLG+rFA66N71hjfwmYI9XUJivfmtxzNJM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1747160806; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=WDJ1pkoSIf5LYVV5V3cWH1euKlozzC9b22/qCMaxKas=; 
+	b=m9sQo/9XK0EqfVX2Y79Ld+LdnGNGgI3ShAM95Is62vFeQsDCtnVK0Br77lXqbbHWtS0F1GvTHJ8ksRZaubhoIvQK5Ob49HjpUli1aWRQXmk7O6UTlALu2NyW+EgED1f7sc7schrJ/aAR434buc8sHmNZWSG3aiOiQBoYoTr00F0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1747160806;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=WDJ1pkoSIf5LYVV5V3cWH1euKlozzC9b22/qCMaxKas=;
+	b=R5ebRiJvkrVzmthIehK3yjSnSQK/4djfu8/nL5LrJ1snc9W15P3lC+FWIGQKo7X5
+	dy2Wx/hPJ5MiXh5lrd5LQ5Q65IrhVO5qfmBFBv/7YWsTTDqzDbyHy0d21+YxG3MxtPx
+	Y8QIKMPNeA1ob9oAK7Fc9/Erjc4Qj4hi7TVMZqkM=
+Received: by mx.zohomail.com with SMTPS id 1747160803944695.383741776804;
+	Tue, 13 May 2025 11:26:43 -0700 (PDT)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>,
- Olivier Benjamin <olivier.benjamin@bootlin.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
- imx@lists.linux.dev, Olivier Benjamin <olivier.benjamin@bootlin.com>,
- Dragan Simic <dsimic@manjaro.org>, Ondrej Jirman <megi@xff.cz>
-Subject: Re: [PATCH v3 3/4] arm64: dts: rockchip: describe I2c Bus 1 and IMX258 world
- camera on PinePhone Pro
-Date: Tue, 13 May 2025 20:23:40 +0200
-Message-ID: <3359896.e9J7NaK4W3@phil>
-In-Reply-To: <20250509-camera-v3-3-dab2772d229a@bootlin.com>
-References: <20250509-camera-v3-0-dab2772d229a@bootlin.com>
- <20250509-camera-v3-3-dab2772d229a@bootlin.com>
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Subject: Re: [PATCH] media: rkvdec: Restore iommu addresses on errors
+Date: Tue, 13 May 2025 14:26:42 -0400
+Message-ID: <6185929.lOV4Wx5bFT@earth>
+In-Reply-To: <20250508-rkvdec-iommu-reset-v1-1-c46b6efa6e9b@collabora.com>
+References: <20250508-rkvdec-iommu-reset-v1-1-c46b6efa6e9b@collabora.com>
 MIME-Version: 1.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250513_112348_626716_F2C989B9 
-X-CRM114-Status: GOOD (  24.09  )
+X-CRM114-CacheID: sfid-20250513_112701_890626_264CC914 
+X-CRM114-Status: GOOD (  26.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,121 +76,159 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgT2xpdmllciwKCkFtIEZyZWl0YWcsIDkuIE1haSAyMDI1LCAyMzo1MTozOSBNaXR0ZWxldXJv
-cMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIE9saXZpZXIgQmVuamFtaW46Cj4gQWRkIHRoZSBk
-ZXNjcmlwdGlvbiBvZiB0aGUgcmVhci93b3JsZCBjYW1lcmEgKElNWDI1OCkgb24gdGhlIFBpbmVQ
-aG9uZSBQcm8KPiB0byB0aGUgZGV2aWNlIGR0cyBmaWxlLgo+IEl0IHJlY2VpdmVzIGNvbW1hbmRz
-IG9uIHRoZSBJMkMgQnVzIDEgYXQgYWRkcmVzcyAweDFhIGFuZCB0cmFuc21pdHMgZGF0YQo+IG92
-ZXIgQ1NJLU1JUEkuCj4gCj4gVGhlIEkyQyBhZGRyZXNzIGZvciBJTVgyNTggY2FuIGJlIGZvdW5k
-IGluIHRoZSBJTVgyNTgtMEFRSDUgU29mdHdhcmUKPiBSZWZlcmVuY2UgTWFudWFsLCBwYWdlIDI0
-LCBzZWN0aW9uIDIuMy4xOiAwYjAwMTEwMTAgPSAweDFhLgo+IFNlY3Rpb24gMyBpbmRpY2F0ZXMg
-dGhlIG1vZHVsZSBoYXMgNCBwYWlycyBvZiBkYXRhIGxpbmVzLiBXaGlsZSA0LWxhbmUKPiBtb2Rl
-IGlzIG5vbWluYWwsIDItbGFuZSBtb2RlIHNob3VsZCBhbHNvIGJlIHN1cHBvcnRlZC4KPiAKPiBU
-aGUgcGluIG11eGluZyBpbmZvIHdhcyBleHRyYWN0ZWQgZnJvbSB0aGUgUGluZVBob25lIFBybyBz
-Y2hlbWF0aWMgdjEuMAo+IGFzIHdlbGwgYXMgdGhlIFJLMzM5OSBkYXRhc2hlZXQgcmV2aXNpb24g
-MS44Lgo+IAo+IFRhYmxlIDItMyBpbiBzZWN0aW9uIDIuOCBvZiB0aGUgUkszMzk5IGRhdGFzaGVl
-dCBjb250YWlucyB0aGUgbWFwcGluZwo+IG9mIElPIGZ1bmN0aW9ucyBmb3IgdGhlIFNvQyBwaW5z
-LiBQYWdlIDUyIHNob3dzIEdQSU8xX0EwLCBwYWdlIDU0IHNob3dzCj4gR1BJTzJfRDQuCj4gCj4g
-Rm9yIEkyQyBwb3dlciwgdGhlIFBpbmVQaG9uZSBQcm8gc2NoZW1hdGljIHBhZ2UgMTEgcXVhZHJh
-bnRzIEE0IGFuZCBBNToKPiBSSzMzOTlfSi5BQTggYW5kIFJLMzM5OV9KLlk4IGdldCBwb3dlciBm
-cm9tIHZjYWExdjhfY29kZWMsIHNvIHR1cm4gaXQgb24KPiAKPiBUaGUgSU1YMjU4IGFsc28gdXNl
-cyB0aGUgZm9sbG93aW5nIHJlZ3VsYXRvcnMsIGV4cGVjdGVkIGJ5IGl0cyBkcml2ZXI6Cj4gIC0g
-dmFuYSAoMi44ViBhbmFsb2cpLCBjYWxsZWQgQVZERDJWOF9EVlAgb24gUC4xOCBxLkMxIGFuZCBk
-ZXJpdmVkIGZyb20KPiAgICBWQ0MxVjhfUzMgb24gUC4xMyBxLkIyCj4gIC0gdmRpZyAoMS4yViBk
-aWdpdGFsIGNvcmUpLCBjYWxsZWQgRFZERF9EVlAgb24gUC4xOCBxLkMxIGFuZCBzaG93biBvbgo+
-ICAgIFAuMTggcS5EMyB0byBiZSBlcXVpdmFsZW50IHRvIFZDQzFWMl9EVlAgZGVyaXZlZCBmcm9t
-IFZDQzNWM19TWVMgb24KPiAgICBQLjEzIHEuQjMuIE5vdGUgdGhhdCB0aGlzIHJlZ3VsYXRvcidz
-IHZvbHRhZ2UgaXMgaW5jb25zaXN0ZW50bHkKPiAgICBsYWJlbGVkIGVpdGhlciAxLjJWIG9yIDEu
-NVYKPiAKPiBSSzMzOTlfSi5BRzEgaXMgR1BJTzRfQTEvSTJDMV9TREEsIFJLMzM5OV9KLlk2IGlz
-IEdQSU80X0EyL0kyQzFfU0NMCj4gVGhpcyBpcyB0aGUgZGVmYXVsdCBwaW5jdHJsICJpMmMxX3hm
-ZXIiIGZvciBpMmMxIGZyb20gcmszMzk5LWJhc2UuCj4gCj4gRm9yIHRoZSByZXNldCAoUkVTRVQp
-IHNpZ25hbDoKPiBwYWdlIDExIHF1YWRyYW50IEQyICAgICAgICAgICAgIHwgcC4xOCBxLkMzLTQg
-fCBwLjE4IHEuQzIKPiBSSzMzOTlfRS5SMjUgLT4gR1BJTzFfQTAgLT4gQ2FtZXJhX1JTVCAtPiBN
-SVBJX1JTVDAgLT4gSU1YMjU4LjEyCj4gCj4gRm9yIHRoZSBwb3dlcmRvd24gKFBXRE4pIHNpZ25h
-bDoKPiBwYWdlIDExIHF1YWRyYW50cyBCNC01ICAgICAgICAgIHwgcC4xOCBxLkMyCj4gUkszMzk5
-X0cuQUY4IC0+IEdQSU8yX0Q0IC0+IERWUF9QRE4xX0ggLT4gSU1YMjU4LjE0Cj4gCj4gSGVscGVk
-LWJ5OiBEcmFnYW4gU2ltaWMgPGRzaW1pY0BtYW5qYXJvLm9yZz4KPiBDby1kZXZlbG9wZWQtYnk6
-IE9uZHJlaiBKaXJtYW4gPG1lZ2lAeGZmLmN6Pgo+IFNpZ25lZC1vZmYtYnk6IE9uZHJlaiBKaXJt
-YW4gPG1lZ2lAeGZmLmN6Pgo+IFNpZ25lZC1vZmYtYnk6IE9saXZpZXIgQmVuamFtaW4gPG9saXZp
-ZXIuYmVuamFtaW5AYm9vdGxpbi5jb20+Cgpob3cgaW5kZXBlbmRlbnQgYXJlIHRoZSBkZXZpY2V0
-cmVlIGNoYW5nZXMgZnJvbSB0aGUgYmluZGluZyBjaGFuZ2VzPwpBcyB0aGUgYmluZGluZyBjaGFu
-Z2UgIm9ubHkiIGluY2x1ZGVzIG90aGVyIHByb3BlcnRpZXMuCgpIZWlrbwoKCj4gLS0tCj4gIC4u
-Li9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcGluZXBob25lLXByby5kdHMgICAgIHwgOTQgKysr
-KysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgOTQgaW5zZXJ0aW9ucygrKQo+
-IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1waW5l
-cGhvbmUtcHJvLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXBpbmVw
-aG9uZS1wcm8uZHRzCj4gaW5kZXggMDRiYTRjNDU2NWQwYTIwNWUyZTQ2ZDc1MzVjNmEzMTkwOTkz
-NjIxZC4uNTg4ZTJkOGEwNDljYzY0OWFhMjI3YzdhODg1YmQ0OTRmMjNmYmRmOCAxMDA2NDQKPiAt
-LS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1waW5lcGhvbmUtcHJvLmR0
-cwo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXBpbmVwaG9uZS1w
-cm8uZHRzCj4gQEAgLTExNCw2ICsxMTQsMTYgQEAgdmNjM3YzX3N5czogcmVndWxhdG9yLXZjYzN2
-My1zeXMgewo+ICAJCXZpbi1zdXBwbHkgPSA8JnZjY19zeXM+Owo+ICAJfTsKPiAgCj4gKwlhdmRk
-MnY4X2R2cDogcmVndWxhdG9yLWF2ZGQydjgtZHZwIHsKPiArCQljb21wYXRpYmxlID0gInJlZ3Vs
-YXRvci1maXhlZCI7Cj4gKwkJcmVndWxhdG9yLW5hbWUgPSAiYXZkZDJ2OF9kdnAiOwo+ICsJCXJl
-Z3VsYXRvci1hbHdheXMtb247Cj4gKwkJcmVndWxhdG9yLWJvb3Qtb247Cj4gKwkJcmVndWxhdG9y
-LW1pbi1taWNyb3ZvbHQgPSA8MjgwMDAwMD47Cj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQg
-PSA8MjgwMDAwMD47Cj4gKwkJdmluLXN1cHBseSA9IDwmdmNjM3YzX3N5cz47Cj4gKwl9Owo+ICsK
-PiAgCXZjY2ExdjhfczM6IHJlZ3VsYXRvci12Y2MxdjgtczMgewo+ICAJCWNvbXBhdGlibGUgPSAi
-cmVndWxhdG9yLWZpeGVkIjsKPiAgCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2NhMXY4X3MzIjsKPiBA
-QCAtMTM2LDYgKzE0NiwxNiBAQCB2Y2MxdjhfY29kZWM6IHJlZ3VsYXRvci12Y2MxdjgtY29kZWMg
-ewo+ICAJCXZpbi1zdXBwbHkgPSA8JnZjYzN2M19zeXM+Owo+ICAJfTsKPiAgCj4gKwl2Y2MxdjJf
-ZHZwOiByZWd1bGF0b3ItdmNjMXYyLWR2cCB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3It
-Zml4ZWQiOwo+ICsJCXJlZ3VsYXRvci1uYW1lID0gInZjYzF2Ml9kdnAiOwo+ICsJCXJlZ3VsYXRv
-ci1hbHdheXMtb247Cj4gKwkJcmVndWxhdG9yLWJvb3Qtb247Cj4gKwkJcmVndWxhdG9yLW1pbi1t
-aWNyb3ZvbHQgPSA8MTIwMDAwMD47Cj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTIw
-MDAwMD47Cj4gKwkJdmluLXN1cHBseSA9IDwmdmNjYTF2OF9zMz47Cj4gKwl9Owo+ICsKPiAgCXdp
-ZmlfcHdyc2VxOiBzZGlvLXdpZmktcHdyc2VxIHsKPiAgCQljb21wYXRpYmxlID0gIm1tYy1wd3Jz
-ZXEtc2ltcGxlIjsKPiAgCQljbG9ja3MgPSA8JnJrODE4IDE+Owo+IEBAIC0zMTIsNiArMzMyLDgg
-QEAgdmNjM3YwX3RvdWNoOiBMRE9fUkVHMiB7Cj4gIAo+ICAJCQl2Y2NhMXY4X2NvZGVjOiBMRE9f
-UkVHMyB7Cj4gIAkJCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2NhMXY4X2NvZGVjIjsKPiArCQkJCXJl
-Z3VsYXRvci1hbHdheXMtb247Cj4gKwkJCQlyZWd1bGF0b3ItYm9vdC1vbjsKPiAgCQkJCXJlZ3Vs
-YXRvci1taW4tbWljcm92b2x0ID0gPDE4MDAwMDA+Owo+ICAJCQkJcmVndWxhdG9yLW1heC1taWNy
-b3ZvbHQgPSA8MTgwMDAwMD47Cj4gIAkJCX07Cj4gQEAgLTQyMCw2ICs0NDIsNDYgQEAgcmVndWxh
-dG9yLXN0YXRlLW1lbSB7Cj4gIAl9Owo+ICB9Owo+ICAKPiArJmkyYzEgewo+ICsJY2xvY2stZnJl
-cXVlbmN5ID0gPDQwMDAwMD47Cj4gKwlwaW5jdHJsLTAgPSA8JmkyYzFfeGZlciAmY2lmX2Nsa291
-dGE+Owo+ICsJYXNzaWduZWQtY2xvY2tzID0gPCZjcnUgU0NMS19DSUZfT1VUPjsKPiArCWFzc2ln
-bmVkLWNsb2NrLXJhdGVzID0gPDI0MDAwMDAwPjsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArCj4g
-Kwl3Y2FtOiBjYW1lcmFAMWEgewo+ICsJCWNvbXBhdGlibGUgPSAic29ueSxpbXgyNTgiOwo+ICsJ
-CXJlZyA9IDwweDFhPjsKPiArCQljbG9ja3MgPSA8JmNydSBTQ0xLX0NJRl9PVVQ+OyAvKiBNSVBJ
-X01DTEswLCBkZXJpdmVkIGZyb20gQ0lGX0NMS08gKi8KPiArCQljbG9jay1uYW1lcyA9ICJ4dmNs
-ayI7Cj4gKwkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiArCQlwaW5jdHJsLTAgPSA8Jndj
-YW1fcnN0PjsKPiArCQkvKiBOb3RlOiBib3RoIGNhbWVyYXMgYWxzbyBkZXBlbmQgb24gdmNjYTF2
-OF9jb2RlYyB0byBwb3dlciB0aGUgSTJDIGJ1cy4gKi8KPiArCQl2aWYtc3VwcGx5ID0gPCZ2Y2Mx
-djhfZHZwPjsKPiArCQl2YW5hLXN1cHBseSA9IDwmYXZkZDJ2OF9kdnA+Owo+ICsJCXZkaWctc3Vw
-cGx5ID0gPCZ2Y2MxdjJfZHZwPjsgLyogRFZERF9EVlAgaXMgdGhlIHNhbWUgYXMgVkNDMVYyX0RW
-UCAqLwo+ICsJCXJlc2V0LWdwaW9zID0gPCZncGlvMSBSS19QQTAgR1BJT19BQ1RJVkVfTE9XPjsK
-PiArCQlvcmllbnRhdGlvbiA9IDwxPjsgLyogVjRMMl9DQU1FUkFfT1JJRU5UQVRJT05fQkFDSyAq
-Lwo+ICsJCXJvdGF0aW9uID0gPDI3MD47Cj4gKwkJbGVucy1mb2N1cyA9IDwmd2NhbV9sZW5zPjsK
-PiArCj4gKwkJcG9ydCB7Cj4gKwkJCXdjYW1fb3V0OiBlbmRwb2ludCB7Cj4gKwkJCQlyZW1vdGUt
-ZW5kcG9pbnQgPSA8Jm1pcGlfaW5fd2NhbT47Cj4gKwkJCQlkYXRhLWxhbmVzID0gPDEgMiAzIDQ+
-Owo+ICsJCQkJbGluay1mcmVxdWVuY2llcyA9IC9iaXRzLyA2NCA8NjM2MDAwMDAwPjsKPiArCQkJ
-fTsKPiArCQl9Owo+ICsJfTsKPiArCj4gKwl3Y2FtX2xlbnM6IGNhbWVyYS1sZW5zQGMgewo+ICsJ
-CWNvbXBhdGlibGUgPSAiZG9uZ3dvb24sZHc5NzE0IjsKPiArCQlyZWcgPSA8MHgwYz47Cj4gKwkJ
-LyogU2FtZSBJMmMgYnVzIGFzIGJvdGggY2FtZXJhcywgZGVwZW5kcyBvbiB2Y2NhMXY4X2NvZGVj
-IGZvciBwb3dlci4gKi8KPiArCQl2Y2Mtc3VwcGx5ID0gPCZ2Y2MxdjhfZHZwPjsKPiArCX07Cj4g
-K307Cj4gKwo+ICAmaTJjMyB7Cj4gIAlpMmMtc2NsLXJpc2luZy10aW1lLW5zID0gPDQ1MD47Cj4g
-IAlpMmMtc2NsLWZhbGxpbmctdGltZS1ucyA9IDwxNT47Cj4gQEAgLTQ2Miw2ICs1MjQsMjggQEAg
-JmlvX2RvbWFpbnMgewo+ICAJc3RhdHVzID0gIm9rYXkiOwo+ICB9Owo+ICAKPiArJmlzcDEgewo+
-ICsJc3RhdHVzID0gIm9rYXkiOwo+ICsKPiArCXBvcnRzIHsKPiArCQlwb3J0QDAgewo+ICsJCQlt
-aXBpX2luX3djYW06IGVuZHBvaW50QDAgewo+ICsJCQkJcmVnID0gPDA+Owo+ICsJCQkJcmVtb3Rl
-LWVuZHBvaW50ID0gPCZ3Y2FtX291dD47Cj4gKwkJCQlkYXRhLWxhbmVzID0gPDEgMiAzIDQ+Owo+
-ICsJCQl9Owo+ICsJCX07Cj4gKwl9Owo+ICt9Owo+ICsKPiArJm1pcGlfZHBoeV9yeDAgewo+ICsJ
-c3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJmlzcDFfbW11IHsKPiArCXN0YXR1cyA9ICJv
-a2F5IjsKPiArfTsKPiArCj4gICZtaXBpX2RzaSB7Cj4gIAlzdGF0dXMgPSAib2theSI7Cj4gIAlj
-bG9jay1tYXN0ZXI7Cj4gQEAgLTQ5NSw2ICs1NzksMTAgQEAgbWlwaV9pbl9wYW5lbDogZW5kcG9p
-bnQgewo+ICAJfTsKPiAgfTsKPiAgCj4gKyZtaXBpX2RzaTEgewo+ICsJc3RhdHVzID0gIm9rYXki
-Owo+ICt9Owo+ICsKPiAgJnBtdV9pb19kb21haW5zIHsKPiAgCXBtdTE4MzAtc3VwcGx5ID0gPCZ2
-Y2NfMXY4PjsKPiAgCXN0YXR1cyA9ICJva2F5IjsKPiBAQCAtNTA3LDYgKzU5NSwxMiBAQCBwd3Ji
-dG5fcGluOiBwd3JidG4tcGluIHsKPiAgCQl9Owo+ICAJfTsKPiAgCj4gKwljYW1lcmEgewo+ICsJ
-CXdjYW1fcnN0OiB3Y2FtLXJzdCB7Cj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8MSBSS19QQTAgUktf
-RlVOQ19HUElPICZwY2ZnX3B1bGxfbm9uZT47Cj4gKwkJfTsKPiArCX07Cj4gKwo+ICAJbGVkcyB7
-Cj4gIAkJcmVkX2xlZF9waW46IHJlZC1sZWQtcGluIHsKPiAgCQkJcm9ja2NoaXAscGlucyA9IDw0
-IFJLX1BEMiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPiAKPiAKCgoKCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Thursday, 8 May 2025 17:00:15 EDT Nicolas Dufresne wrote:
+> On errors, the rkvdec chip self resets. This can clear the addresses
+> programmed in the iommu. This case is signaled by the
+> RKVDEC_SOFTRESET_RDY status bit.
+> 
+> Since the iommu framework does not have a restore functionality, and
+> as recommended by the iommu subsystem maintainers, this patch
+> restores the iommu programming by attaching and detaching an empty
+> domain, which will clear and restore the default domain.
+> 
+> Suggested-by: Detlev Casanova <detlev.casanova@collabora.com>
+> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> ---
+
+I tested it on the Radxa Rock pi 4B (rk3399) and Radxa Rock 5B (rk3588), so
+
+Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+
+And the patch looks good to me, so
+
+Reviewed-by: Detlev Casanova <detlev.casanova@collabora.com>
+
+Regards,
+Detlev.
+
+>  drivers/staging/media/rkvdec/rkvdec.c | 43
+> +++++++++++++++++++++++++++++------ drivers/staging/media/rkvdec/rkvdec.h |
+>  1 +
+>  2 files changed, 37 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkvdec/rkvdec.c
+> b/drivers/staging/media/rkvdec/rkvdec.c index
+> dd7e57a902640d363d26be887cb535c2668d5b15..38043b1877e221db58f5834ba51e085cf
+> 9127e73 100644 --- a/drivers/staging/media/rkvdec/rkvdec.c
+> +++ b/drivers/staging/media/rkvdec/rkvdec.c
+> @@ -11,6 +11,7 @@
+> 
+>  #include <linux/clk.h>
+>  #include <linux/interrupt.h>
+> +#include <linux/iommu.h>
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+>  #include <linux/platform_device.h>
+> @@ -1000,24 +1001,42 @@ static void rkvdec_v4l2_cleanup(struct rkvdec_dev
+> *rkvdec) v4l2_device_unregister(&rkvdec->v4l2_dev);
+>  }
+> 
+> +static void rkvdec_iommu_restore(struct rkvdec_dev *rkvdec)
+> +{
+> +	if (rkvdec->empty_domain) {
+> +		/*
+> +		 * To rewrite mapping into the attached IOMMU core, attach 
+a new empty
+> domain that +		 * will program an empty table, then detach it 
+to restore
+> the default domain and +		 * all cached mappings.
+> +		 * This is safely done in this interrupt handler to make 
+sure no memory
+> get mapped +		 * through the IOMMU while the empty domain is 
+attached.
+> +		 */
+> +		iommu_attach_device(rkvdec->empty_domain, rkvdec->dev);
+> +		iommu_detach_device(rkvdec->empty_domain, rkvdec->dev);
+> +	}
+> +}
+> +
+>  static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
+>  {
+>  	struct rkvdec_dev *rkvdec = priv;
+> +	struct rkvdec_ctx *ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
+>  	enum vb2_buffer_state state;
+>  	u32 status;
+> 
+>  	status = readl(rkvdec->regs + RKVDEC_REG_INTERRUPT);
+> -	state = (status & RKVDEC_RDY_STA) ?
+> -		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
+> -
+>  	writel(0, rkvdec->regs + RKVDEC_REG_INTERRUPT);
+> -	if (cancel_delayed_work(&rkvdec->watchdog_work)) {
+> -		struct rkvdec_ctx *ctx;
+> 
+> -		ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
+> -		rkvdec_job_finish(ctx, state);
+> +	if (status & RKVDEC_RDY_STA) {
+> +		state = VB2_BUF_STATE_DONE;
+> +	} else {
+> +		state = VB2_BUF_STATE_ERROR;
+> +		if (status & RKVDEC_SOFTRESET_RDY)
+> +			rkvdec_iommu_restore(rkvdec);
+>  	}
+> 
+> +	if (cancel_delayed_work(&rkvdec->watchdog_work))
+> +		rkvdec_job_finish(ctx, state);
+> +
+>  	return IRQ_HANDLED;
+>  }
+> 
+> @@ -1085,6 +1104,13 @@ static int rkvdec_probe(struct platform_device *pdev)
+> return ret;
+>  	}
+> 
+> +	if (iommu_get_domain_for_dev(&pdev->dev)) {
+> +		rkvdec->empty_domain = iommu_paging_domain_alloc(rkvdec-
+>dev);
+> +
+> +		if (!rkvdec->empty_domain)
+> +			dev_warn(rkvdec->dev, "cannot alloc new empty 
+domain\n");
+> +	}
+> +
+>  	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+> 
+>  	irq = platform_get_irq(pdev, 0);
+> @@ -1124,6 +1150,9 @@ static void rkvdec_remove(struct platform_device
+> *pdev) rkvdec_v4l2_cleanup(rkvdec);
+>  	pm_runtime_disable(&pdev->dev);
+>  	pm_runtime_dont_use_autosuspend(&pdev->dev);
+> +
+> +	if (rkvdec->empty_domain)
+> +		iommu_domain_free(rkvdec->empty_domain);
+>  }
+> 
+>  #ifdef CONFIG_PM
+> diff --git a/drivers/staging/media/rkvdec/rkvdec.h
+> b/drivers/staging/media/rkvdec/rkvdec.h index
+> 6f8cf50c5d99aad2f52e321f54f3ca17166ddf98..0eb3fd598664bc5af19de120ff6efac13
+> 417541f 100644 --- a/drivers/staging/media/rkvdec/rkvdec.h
+> +++ b/drivers/staging/media/rkvdec/rkvdec.h
+> @@ -105,6 +105,7 @@ struct rkvdec_dev {
+>  	void __iomem *regs;
+>  	struct mutex vdev_lock; /* serializes ioctls */
+>  	struct delayed_work watchdog_work;
+> +	struct iommu_domain *empty_domain;
+>  };
+> 
+>  struct rkvdec_ctx {
+> 
+> ---
+> base-commit: 48dbb76cef65fabaa3ac97461eda90495e954ecd
+> change-id: 20250508-rkvdec-iommu-reset-d8a96b8436c0
+> 
+> Best regards,
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
