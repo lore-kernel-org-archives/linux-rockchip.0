@@ -4,60 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0E8AC3ABCC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 13:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 018DDC3ABCC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 13:54:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hY9P/SOZXPVREGSSlSoA+POXOnei/KJnbqa1CTliKR4=; b=IDS0jQ4LOXHOc6
-	9zEs1Xbkqhcd7Bqf1oAYhG1Z5CrydGhztmz/lSm8zFOVNyyLLD89gWryZdqOzq2KEF9KgX79ZsYyi
-	rzkXYnJSKDoVeXTArPURTRXyY3L5Tg6h+nNwcQA9ZGBGpgiYUNPqGzbu9mChmwcMvXUYd0KnE3fN/
-	kaoMJRaEDM+BDyiVg9EELmD7nL7XkE13WlocFICXRAWfywaUAAfJmyPcayX1pPNSpT7tjTYGeoLAm
-	BORUVJUzQJWErIM6p8Guks2lBp804Ao6Ymmoc6CVrDgp7pGxKrdF1prsyN6o10TmxQD6dBZ8DOh2b
-	L2p9oqHtWnSarQe9yq2Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:Subject:Cc:To:From:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yNZbPEEznIG/FyOaJhqrVY6xpqjVHB/KPW+mrDQ2QGM=; b=Zec/4MDrcQrVchwlYcaG5QmRGs
+	fCU1t73IE3jVKpcX/u0R3vgjS5kX9Nigyb2RgX3gUTPQn/01iNhHpUHcXQjnBbcbc1y9qyzhGpQUl
+	bgGyLPAXfL+KpdiT63pBjoHL6jAB4qHGzkpGiqeGIyt1D1DQtMJMeiqOfpK3/o6feXGLQokTgEWev
+	mMQqfeFID8+r+jh7c96H99wmVc499PIOdZMCV1V+h8SNlxGndIkCICit7aqhrnusnHrQ2YgTn12er
+	afq/JW+MJuWY0t/jQc+DyVmqsWY/XZaw7j4rvc/3MaEYpqWVaTLhtTx/6y3WolSlQgECSAHFNrpNt
+	iJ0MzJlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFCYo-0000000FIoO-0ANK;
-	Wed, 14 May 2025 13:54:14 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uFCZ3-0000000FJGt-1lzm;
+	Wed, 14 May 2025 13:54:29 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFAQw-0000000Euao-3gf3;
-	Wed, 14 May 2025 11:37:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9DAB744678;
-	Wed, 14 May 2025 11:37:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 767A9C4CEF0;
-	Wed, 14 May 2025 11:37:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747222678;
-	bh=5OwOl0Bj2Q2twGH0ZMeTDbcw2QPkZjXjJHWmhXAwipc=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=r0bNqbqlC5JKePKXJVnTj53Jae5ZjZmPeBrZacpIxwF0CYDc8vf0SpIBavb9mdh/u
-	 35gySRlT0LCrghInfjVP+VQeD0dk54kkYaa37CWtAU9KZETXpNelWjbS4eiHwC7/Lv
-	 GfR7TePORiH8Npk+FpmKuwWP+kXvwvWH3CZresGMquBfYdI71XImcigraaIfQROS8g
-	 nzbT6g+zDosTSwr4LfXYBMARRt69PmRRyUlVgN0k62diJ92aNpvaJfReXYsfB1KRmr
-	 ny8LDEp8TOogjo+hLa9UjgCHtb84Ix7e3wkXsVNkpMiUuBVJs0Ztpv+l2OxDM8Hq5A
-	 f0RB++qjCNDug==
-From: Vinod Koul <vkoul@kernel.org>
-To: kishon@kernel.org, Heiko Stuebner <heiko@sntech.de>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20250503201512.991277-1-heiko@sntech.de>
-References: <20250503201512.991277-1-heiko@sntech.de>
-Subject: Re: (subset) [PATCH 0/3] usb-phy support for the old rk3036 soc
-Message-Id: <174722267614.85510.13471013929246898806.b4-ty@kernel.org>
-Date: Wed, 14 May 2025 12:37:56 +0100
-MIME-Version: 1.0
-X-Mailer: b4 0.14.2
+	id 1uFBXj-0000000F80U-0VrB
+	for linux-rockchip@bombadil.infradead.org;
+	Wed, 14 May 2025 12:49:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:References:Subject:Cc:To:
+	From:Message-Id:Date:Content-Type:Mime-Version:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=CKe2WWPOKKxeDx60prV62ph0i3MCDDmxV+WKHZW1a6o=; b=RlQhyjSSzJifBYTHGiUaROJnAx
+	auiqJPZSTPRrjruxB7se3ArNS//TSSZnzPBIGicwAoMNlSFxVr9wyl7XIW14y7cDe5aaYK2XUEIxX
+	febGjuLZtz7rJP71eqhzufb/Ax7DGBA9crg5CxA4DL75QO9PYqyZEf7tfSWzfzzAvbU5UVomssTDS
+	SD3mkWH+J+274svQ6DT44OYmSN1NTlTBdflCa+jHMudiixiBQCceWcRDQMKqnuQ3Fkej3idt2ki1f
+	gBj2/LDUgjwdFc3pHbnfywspXCn3qPBsQVeTPQHJRY9UZhIUY9NHYeYwKo10Kva84ssSxVY8TaTRi
+	vN0mZ3/Q==;
+Received: from out-186.mta0.migadu.com ([2001:41d0:1004:224b::ba])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1uFBXg-0000000H9kc-0MmD
+	for linux-rockchip@lists.infradead.org;
+	Wed, 14 May 2025 12:49:02 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1747226929;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=CKe2WWPOKKxeDx60prV62ph0i3MCDDmxV+WKHZW1a6o=;
+	b=nGCwv7ftx5gDbPRP9hrpiNVqIdEhj5QYFo07xZIEqKL7qb8zP9/roXpLgqKGUltRNJ6ZfL
+	GqpLBy3wKx25JBJzpx0xbk2xxsv0bLNaQpNiv33nhr15TsDLiaMkilLiE+NywlMqS1kM93
+	ZueOAInbWADeab/M4tNkeZiAuIBMW6aaNc1pBroUX/enc0y03XSM3N334pXWHv60RjeVAJ
+	aKqI+QkbS44HOoRiJiq+OELw4JGszUIHSHGS9/etZW4g0a7CM0vwMjyGIfTw9eBKPYacTj
+	U7O7kwKubTQiApMlLUaX5EemTSucTbaw7YAzLkNj39dhWV0JsLRQ5IozTaCZNA==
+Date: Wed, 14 May 2025 14:48:46 +0200
+Message-Id: <D9VW95BJVUZM.2KDNW7JLCKKF0@cknow.org>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Shawn Lin" <shawn.lin@rock-chips.com>, "Heiko Stuebner"
+ <heiko@sntech.de>
+Cc: <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, "Krzysztof Kozlowski"
+ <krzk+dt@kernel.org>
+Subject: Re: [PATCH v2] arm64: defconfig: Enable Rockchip UFS host driver
+References: <1741161252-138526-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1741161252-138526-1-git-send-email-shawn.lin@rock-chips.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_043758_938869_C9E5CE9C 
-X-CRM114-Status: UNSURE (   6.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250514_134900_452025_A8A187A7 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,36 +81,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2387313785029403366=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+--===============2387313785029403366==
+Content-Type: multipart/signed;
+ boundary=43495df6b18c95ed892a9855e6992edb45d3997bcce22c3b66455a6a817a;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-On Sat, 03 May 2025 22:15:09 +0200, Heiko Stuebner wrote:
-> While trying to resurrect the rk3036 board in my boardfarm, I also
-> implemented the up to now missing usb2phy support.
-> 
-> The implementation is quite similar to the rk3128, except the not-
-> supported charger-detection, so its addition was quite simple.
-> 
-> 
-> [...]
+--43495df6b18c95ed892a9855e6992edb45d3997bcce22c3b66455a6a817a
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Applied, thanks!
+Hi,
 
-[1/3] dt-bindings: phy: rockchip,inno-usb2phy: add rk3036 compatible
-      commit: d78b565371314e48242cb9383d0f9d331119ab2e
-[2/3] phy: rockchip: inno-usb2: add phy definition for rk3036
-      commit: 3ca48b955bb34a3b07dd915318d73a23740de282
+I'm updating my own kernel config and have a question about this change.
 
-Best regards,
--- 
-~Vinod
+On Wed Mar 5, 2025 at 8:54 AM CET, Shawn Lin wrote:
+> Enable Rockchip UFS host driver.
+>
+> This driver is first introduced on Rockchip RK3576 SoC, and will
+> be used for more SoCs in near future, so add it to defconfig
+> will make these platforms work better.
+>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+>
+>  arch/arm64/configs/defconfig | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+> index 3a3706d..907e92d 100644
+> --- a/arch/arm64/configs/defconfig
+> +++ b/arch/arm64/configs/defconfig
+> @@ -1191,6 +1191,7 @@ CONFIG_SCSI_UFS_HISI=3Dy
+>  CONFIG_SCSI_UFS_RENESAS=3Dm
+>  CONFIG_SCSI_UFS_TI_J721E=3Dm
+>  CONFIG_SCSI_UFS_EXYNOS=3Dy
+> +CONFIG_SCSI_UFS_ROCKCHIP=3Dy
+
+Is there a particular reason why this is `=3Dy` and not `=3Dm`?
+
+For SCSI_UFS_EXYNOS there is an explicit reason for `=3Dy` in
+5be91fe8d91b ("arm64: defconfig: Enable Exynos UFS driver")
+(it won't detect (some?) UFS devices otherwise)
+
+But this patch/commit doesn't say if/why it must be built-in.
+Is there such a reason or is `=3Dm` fine as well?
+
+Cheers,
+  Diederik
+
+>  CONFIG_NEW_LEDS=3Dy
+>  CONFIG_LEDS_CLASS=3Dy
+>  CONFIG_LEDS_CLASS_MULTICOLOR=3Dm
 
 
+--43495df6b18c95ed892a9855e6992edb45d3997bcce22c3b66455a6a817a
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaCSRMAAKCRDXblvOeH7b
+bundAP484maMdKYcsjQhffsxspOH3uTIZmD2k3J7gd1bn64CjgEA897iMCmAQ1KG
+hvAs9elAO9T1nrBwCa9XpNB8Vkk2AQo=
+=I425
+-----END PGP SIGNATURE-----
+
+--43495df6b18c95ed892a9855e6992edb45d3997bcce22c3b66455a6a817a--
+
+
+--===============2387313785029403366==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2387313785029403366==--
+
