@@ -4,59 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 424B2C3ABD8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 16:36:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8A17C54756
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 17:46:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TnudDn9vFj7B4dFEmRNP3Wzkqw1AygqqBbdwo/o3tdc=; b=KeyYRbZAJiFhu1i8rehYdp9Gv0
-	Ynk20dwjvD4XHHSQCNt7gHSr1HlqJbQdOisVq3Uq3bbaIEm7y6kvH8DAnpJinLSz1mBgzKav0c+Kx
-	bY0D8JTaklr78Aap9sAsRlWPshF6Z5JBiNxWedaXLLq5+o1bjB4qzH20IyqkIEWZnPWqA301zDgbY
-	o7IL7bK0Vll78LKHK5U+5Rjz3sGZkzfHzqTtxOik5/eOQB+BoAl67MWD4omkTqHAkRCMh9wY+FM9A
-	5UJB3Le6xGC0LM77534jCYGp3ukKSUp7Jq1DRd9PCbtPXHryAIbH8M2cqKU6zgP5E6bBxjl1Rvcp6
-	L0iMhK2A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SAqOPdoDajlk/XAMglkj52wDvWIadHojG8j/XnPJe2Q=; b=XNOIYB5eVMsSk+
+	Ik4Y7zO3Hs4gOhFRfMaw5cct0m6KUMlduqAG21sTBTD2u456L7ic18bzU/kRjN3MzsAy8iNnJtEkZ
+	EmPMqKd+fwuSp6gSuneDCtyfWTsxLWCGxPmzFgNIeilfldSTfvFuHa7N7/3CrV3I2shWjnOCcAKJr
+	Grv9iTkI/QPUzp5sX/OBqCfute+RUbeP182CUr/9EzHfNZX7wXSnv4VZyxToKLTOYufhon+TN4ib8
+	XFZn+CH6Kjw+yr+p79wpUZ3TO++GU8eMFYGXZbRP/dDMnGSQvyjn1XWiaF2KFE6IwoRFBJHs0KwaD
+	AWhfVXjzFzZuOsUVUBXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFF5a-0000000Fm2H-2oWv;
-	Wed, 14 May 2025 16:36:14 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uFGBd-0000000Fu20-0srt;
+	Wed, 14 May 2025 17:46:33 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFEWG-0000000FfMp-0vTo;
-	Wed, 14 May 2025 15:59:44 +0000
+	id 1uFEQ0-0000000FeR1-10dp;
+	Wed, 14 May 2025 15:53:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Reply-To:Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Content-ID:Content-Description;
+	bh=Jymu2XT6oGWIZ0IY0uZ36gmaUBVWn0Ji0RH7UGb2xvY=; b=W/0B4Z7WV8wVc+/sB9NMVBcvck
+	f93O+9oN4Xs52DBxaJ0yjiJttM/eHKZxZvZe2UwSwhLZycMLIi1H8XwYK1iU8Ci8N9grzMSleaOUE
+	7e4LPFcdIJ2ggs0FgOicYdQegNc+K82+4bW04PogT3meDD8JTUCx43AYY6P1Es7dolai/NXiDqsgu
+	RJbtq/E20ol6Fcvj61FRViqa2tRZQEmcdtmVzP70yRih0oa//p1vIbs4iARaFRc0QE0LixUbif530
+	iBFZ66Cy/xQKUN4HJtWaR1BE5ra/ksGwN0yG9Arw620rS0vFxLqB1RPBEao9UpCWsYzqMTvV0dSj3
+	Xgf04Oow==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1uFEPs-0000000HF3Q-1Pk5;
+	Wed, 14 May 2025 15:53:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4F576629C6;
-	Wed, 14 May 2025 15:59:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D71BAC4CEF2;
-	Wed, 14 May 2025 15:59:38 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id DCFE34A8A5;
+	Wed, 14 May 2025 15:53:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 5DAA5C19425;
+	Wed, 14 May 2025 15:53:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747238381;
-	bh=y7lI/EUSb1UnQsHiI7dhsmMP7inV1Q2tEA9azOkLIHo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OqRXpvtM+aCchvhVgaI8UPqSbyWxbqOeyJxTrq+aZZRQIZBMoOo8tdKEuTIo95M/s
-	 Pn40frK80HCGWRFgwNWfsQ1mJTucCSOlpmlHb654blx/t70VWNyls9hUxPjhTjDtBf
-	 dyRaaUxX/gwGwORRA04plJL1qFaWJdEbijEcEjIsw6ligpJS+mJGj8aZQbiO0mZH8q
-	 KTA274Fj0EO3iWdhSNCjlJRQING53jUy5AGAsDRBu2buOu5/g1QCH9ZSEKWf8L86v7
-	 xNTmqZ57D5t9gx2MibL7ccuQRoNDt0jq0T+mh+3QwP6zHSf3R7me7/S+R2UWwfQSV4
-	 M0BofCvxDEERA==
-Date: Wed, 14 May 2025 16:59:36 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Hsun Lai <i@chainsx.cn>
-Cc: Fred Bloggs <f.blogs@napier.co.nz>, Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Stephen Rothwell <sfr@canb.auug.org.au>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v1 2/3] dt-bindings: arm: rockchip: Add Sakura Pi RK3308B
-Message-ID: <20250514-affair-reentry-8e444e692da7@spud>
-References: <20250513163515.177472-1-i@chainsx.cn>
- <20250513163515.177472-3-i@chainsx.cn>
+	s=k20201202; t=1747237983;
+	bh=hvc8YjD+3Czi8oyUKN3U+pIlgdxqaGnu32O+P0Ce/cI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=gIDGCzVylzShc2o/8DPM3YUvCyn3HgHya42+/QGISK6OarnIuIUvOhZkwuJxYymmi
+	 RJV5tj9V7NgoTGwi6aMizTb7mR3fZ+JhjCP9lEbrLTmhVXNUbqCcr3MCckg+LO93Mx
+	 cQuo2pHjgo+rozsL5xEJziLObpws4QJtCiQN+EBrIZ/U252e5IZlL98w3zHFZL1crn
+	 seJnoRU0dsFVWtL2yzye0V/fWWzyI2igHrBJxsFVo1zohd3+Tavv5snEPN6in438G8
+	 CHkHZfYXZPwdBmFweVw5OJmcEU939nHmhrFbTgJSFHA5yzjk/uNSaz4TH1kLPmtQkI
+	 YBAQUIdyBjacQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52EE0C54756;
+	Wed, 14 May 2025 15:53:03 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Date: Wed, 14 May 2025 17:41:11 +0200
+Subject: [PATCH v7 10/14] arm64: defconfig: enable rockchip mipi csi-2
+ receiver
 MIME-Version: 1.0
-In-Reply-To: <20250513163515.177472-3-i@chainsx.cn>
+Message-Id: <20240220-rk3568-vicap-v7-10-7581fd96a33a@collabora.com>
+References: <20240220-rk3568-vicap-v7-0-7581fd96a33a@collabora.com>
+In-Reply-To: <20240220-rk3568-vicap-v7-0-7581fd96a33a@collabora.com>
+To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+ =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Gerald Loacker <gerald.loacker@wolfvision.net>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Markus Elfring <Markus.Elfring@web.de>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Collabora Kernel Team <kernel@collabora.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, 
+ Alexander Shiyan <eagle.alexander923@gmail.com>, 
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Michael Riesch <michael.riesch@wolfvision.net>, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1747237265; l=782;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=L/KlLC17WtwsxJrk0tU9EzILCecoj5a5gEXcaOiLEks=;
+ b=2jMCAGG/ajS58qyDx/LvTprPIbWWJsUpKmqgF8kQAv3bXqgShW4ygUwoZ76GWphXaAI1ECUed
+ rD0DkZUYvz6CvMArfhsj1HZeTHkz+RftPRZYrvbMi7W7nHGp3/J4/iK
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250514_165308_743470_13FBF3A6 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,57 +117,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6347612897274945944=="
+Reply-To: michael.riesch@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Michael Riesch <michael.riesch@collabora.com>
 
---===============6347612897274945944==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ACMaEZG5UXjrJyTL"
-Content-Disposition: inline
+The Rockchip MIPI CSI-2 Receiver is featured in several recent
+Rockchip SoCs, such as the RK3568 or the RK3588. Enable the
+driver for it in the default configuration.
 
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
---ACMaEZG5UXjrJyTL
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 110ff52195a6..ffef4cd024a1 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -859,6 +859,7 @@ CONFIG_VIDEO_RENESAS_FDP1=m
+ CONFIG_VIDEO_RENESAS_VSP1=m
+ CONFIG_VIDEO_RCAR_DRIF=m
+ CONFIG_VIDEO_ROCKCHIP_CIF=m
++CONFIG_VIDEO_ROCKCHIP_CSI=m
+ CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
+ CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
+ CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
 
-On Wed, May 14, 2025 at 12:35:13AM +0800, Hsun Lai wrote:
-> This patch adds device tree binding support for
-> Sakura Pi RK3308B, with compatibility for the
-> Rockchip RK3308 SoC.
->=20
-> Link: https://docs.sakurapi.org/article/sakurapi-rk3308b/introduce
->=20
-> Signed-off-by: Hsun Lai <i@chainsx.cn>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
---ACMaEZG5UXjrJyTL
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaCS96AAKCRB4tDGHoIJi
-0rvrAP9oquino9oJcGaDDnOhQt80+WydCtQhZ8xc6BuMGbI1RgD9Fo88RXe8PJsi
-2YQ6plMxSYt78zIfs/wnXeFYBl0wegw=
-=QJPp
------END PGP SIGNATURE-----
-
---ACMaEZG5UXjrJyTL--
+-- 
+2.39.5
 
 
---===============6347612897274945944==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6347612897274945944==--
-
