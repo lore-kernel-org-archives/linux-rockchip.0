@@ -4,59 +4,180 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08388C3ABD9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 13:59:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F106AC3ABCC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 14:09:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=RJNlwJNvRBrowXZtvkBqLpOua4QzPXYfJk5jNm7Dm6o=; b=0qgKkpC9eya5JOayqSPfCe09xU
-	qNNypHboasx4hmnitJzFV9YFF6KStQK12/ggsGGT1OWPzHLd7rmYf/UUV+zu1DkDg9ceNngs8QgBL
-	pOiwJRp5kJ63t43gTLXOkpuH/GlyLREFOcy5WDSog3DV/pB3OBgkIZy7+DHHUXS4qSzHsVhAcdf3Y
-	YT5DN7nzWvEbBIyKB5hZrg/dS457+5uzsD1PqqtHdXdP7naTCjJSvls891SVjGkH97lDOnEN1SahU
-	uvacuA6r2IPWuKUT1To0FBErwKsTJ5U6XAEkblgAFa0cG9T9jI5Kt2u8bJoHliE6Z8peU7fSeDB3l
-	UMreWrHg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TI7EmtEtM6tKE9cSFSG92csvcr44phyKaEhNj2awVdY=; b=PsZE9rhs2dazx73bwl9jiSSiwF
+	4+v+7OgdIDnyHVfEOHgi5nlp2LvIy9oSMOGCPWspIxLgIzFg19tgO2BOccr0v09iDVa8bR5t1puKx
+	ix8S3YW62m1JyNVuRXx3yZ7I78eeRZgxMxnmMJuvtVMtilAJSZm7XuuezXgsYrIUKx4h7mRa55mlP
+	YfUsNbbF2UT8gJB54x7LJI3fMQS8ZwU5xWP89b1VVumobW2UnI+juKMsac9MLAA68CA1+qQNOn8Zz
+	b2KKw2++9wwd2NAnRr0DDSexlRiKibkqry2hIN912mk1VI3ogvOc+l7tipECZn0YaZvI335mzlXdp
+	31J/x0Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFCds-0000000FLbk-2UWX;
-	Wed, 14 May 2025 13:59:28 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uFCnt-0000000FN8q-2mMc;
+	Wed, 14 May 2025 14:09:49 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFBtB-0000000FAZj-0F3k;
-	Wed, 14 May 2025 13:11:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 801AA4A743;
-	Wed, 14 May 2025 13:11:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 325D3C4CEED;
-	Wed, 14 May 2025 13:11:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747228272;
-	bh=Mch9zsCTZ++9Xv+WL31mykbtqROtgLIoRLVQlMeLD5Q=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=GRzly4qLCx1tfyhCjxc4up1k0KPUIbRuXLk/NtEj+b52QZe4iBWJdSMSDaKWne57f
-	 gxnhMmOjMb2CXMnHVyNvFdwQHtxwIt+8kUuBfoP/yJ7UfMrT2h/ObiGqByu8ZwGs4u
-	 zmPyv1/z/7+rj8gNLYCnMh0nGaU/FEUuhKmRCZAevh4CKy7JkuD9EIJ7XiwWJCXHhf
-	 qhl62L65ervTDgGYQ9k2NUrrNdr4uZcp/wAIHsc30W/9vixiBRSirmGRfmIdg1WZqX
-	 D0puIWD3XNEyzKiLDnXt2iv2g1AEatvFhytB7Qt5eqzjqIirsNcNgfxbYMNwj1bC41
-	 x0KlQJySqSrOA==
-Date: Wed, 14 May 2025 08:11:10 -0500
-MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, conor+dt@kernel.org, 
- devicetree@vger.kernel.org, quentin.schulz@cherry.de, 
- linux-kernel@vger.kernel.org, krzk+dt@kernel.org, 
- linux-rockchip@lists.infradead.org
+	id 1uFC5w-0000000FByO-1GES;
+	Wed, 14 May 2025 13:24:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:In-Reply-To:From:References:Cc:To:Subject:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=+sEbEAOZ0xUbUqEVNkH9nUz7C1wYUl37S4aVO34aB8Q=; b=Gp7rIT9jkFx0ty7YmZiF4/CynT
+	HfoUxzqTmi5ZOsGCwd1XQzsv+A43mtq4b+01JC1x7QGlDfc6KjCqquCuWctPH4PWFGqaLGGvrUkz3
+	gjNt2znbQ3BtsCRTQVaZk03RMMiJiTLux7ev2YhCGpbr2IH84xFBcHbVrqq0vjTgRiViXxSU6yDb8
+	KVcxWdBoWzf3ZReEpi0EI5faS5Tpk6+/8bISFvEhbiS5kaF2Cg7mpY4TwRys+2wsT27GdJ4BBqkoX
+	AzaBrX3NkNyCDmiaAcu2vBsuhNDZYszZmTDEvXcJCV7Q1SKIppU8F47S0IVKRF9K6bs99ahS5xh6Y
+	6weZBoHg==;
+Received: from mail-db8eur05on20604.outbound.protection.outlook.com ([2a01:111:f403:2614::604] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1uFC5s-0000000HB3x-44tU;
+	Wed, 14 May 2025 13:24:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=lhyuIhj38MH/kI7jprbck8C4Sz/40/+iLPEChOidFytz2Qfh6fMDI8QKzAcobOqnC7IxdEbmdMZXgpREr8kjDvYR8BB97N1MDUdIcdzEdZaVbZdv6Vf2L26raFfKKEvp1pJRHjX9kOLz/6NqFXiT3i+/Dx9jHwqSASZxihMwEY143SjrPvZSJmFPJc434/aXFfLlv9gI9MxD/wPFcQSUiDx3h2cgoAjnBkSbp3VhCfqnLiZQ97lGulVLn4IYD9kqNYX+21GwslfIv6N2j5HzTLFzFIdKg4o3jU2HrxYeFBGC/gqRmz70tnjDa1SVcjccZRivg6n36fS7/72AKf6/ug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=+sEbEAOZ0xUbUqEVNkH9nUz7C1wYUl37S4aVO34aB8Q=;
+ b=XqdWciz34vEwxBFBRoxDKbo+WeJB8CAg0uhPx83dwTYTDPCqe5OLerupwEgHVhuMCWl7/gBUutzvIgplE6PsCDVCS2Ntf31rsZ1B1cpGlzL3dxbdqb1zJ70ZhhvfnaRndw6FwAnLrYQ1ws3ZSz/ANHH4/RD+EyE8cc/PXFN363EFpF38YMQ3+1SJz5+CVcNf0nEZIMlTE7Q3CajdYuOoFEl5x0AyYKIqG/3AWB4NWbjNe3NAVzCblZkK9LzuCKmBJvSfRT4iZBUpJCCT0E8rc77nidA0qCyT1faAnuzlV7DYJ5XaaAVj2LxL4HVODAFOcz4yQOYYXb9WFYGV4xkXwg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+sEbEAOZ0xUbUqEVNkH9nUz7C1wYUl37S4aVO34aB8Q=;
+ b=jMeQLF/DWBTXi3HuUSpIro/LoqnhWMPljUaIJYM8nx5DlPQ0UkN49fHSp3NsGSj32vCt53fnKORjTl6Pi9qWgr4WqNU2m3etTrCL6cgfGn/As7PM/Ld96mubTs2WXbC4SUBQ8sWnb9q/gLguq1AiimkVJCgTFNBc5H6+dzBVGY4=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
+ by GVXPR04MB9926.eurprd04.prod.outlook.com (2603:10a6:150:11a::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8722.29; Wed, 14 May
+ 2025 13:24:12 +0000
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a%4]) with mapi id 15.20.8722.027; Wed, 14 May 2025
+ 13:24:12 +0000
+Message-ID: <a5aa7ee4-1200-4b9d-8929-0f200e1737c9@cherry.de>
+Date: Wed, 14 May 2025 15:24:10 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 4/6] arm64: dts: rockchip: add px30-cobra base dtsi and
+ board variants
 To: Heiko Stuebner <heiko@sntech.de>
-In-Reply-To: <20250514120906.2412588-1-heiko@sntech.de>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Heiko Stuebner <heiko.stuebner@cherry.de>
 References: <20250514120906.2412588-1-heiko@sntech.de>
-Message-Id: <174722778701.1826414.17251063329059512671.robh@kernel.org>
-Subject: Re: [PATCH v3 0/6] Add two board-families from Theobroma-Systems
+ <20250514120906.2412588-5-heiko@sntech.de>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <20250514120906.2412588-5-heiko@sntech.de>
+X-ClientProxiedBy: WA1P291CA0015.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:19::13) To AS8PR04MB8897.eurprd04.prod.outlook.com
+ (2603:10a6:20b:42c::20)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|GVXPR04MB9926:EE_
+X-MS-Office365-Filtering-Correlation-Id: ff437a24-8392-48c0-e360-08dd92ea9d7e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?by81V0ZGc0o4Um8wL0dJTnMrWURLNFBzVnl1bWV1OEhUbzY5WDF1d3RJQVVU?=
+ =?utf-8?B?WnViVWVMNTl6Lyt2aVJKZVZac3Q5WnBJRHhFYWdNMDdQVDVBWFVEL3B5YkJz?=
+ =?utf-8?B?dE40OVluSzVMS2lJcmZ6SkhQQVQwcFF5d3ZzSXZHMHZXdEJIRTRDZEMrZ2pY?=
+ =?utf-8?B?Ri9kTDJibStldXg3K1c1aDRLU01zVHNVMngvYTQwN29ZSk50cS9xbEo5c08w?=
+ =?utf-8?B?ZXpNeFROYVdLTjJpdzlJWTMyenloSU5maUxiaHBkMWJkb1JJTVEzUW42RGE3?=
+ =?utf-8?B?T2k4WFhMYm5rcVBvc29LWkgyUVJHL2VTempMU1FmNUJMMFhmTGlsN1l5REZZ?=
+ =?utf-8?B?RVlIakxTZldla2M4MzRPVDVxSzkxMXNndE5JbE55alJFYmIrcEZEZ0hOdDd2?=
+ =?utf-8?B?bWhwZUJ1ajk4L1VZM0xuRW1IS1dabnppYysxczJMcnpXcmtkVG1SclVuMjRT?=
+ =?utf-8?B?YUoyTTZzZEFURjhVUlVubkpWWGlWMkVRMGtsRFk1RXd4KytoSGQwZVNldnBO?=
+ =?utf-8?B?bzEwQ1drOFF4OVZhY0wwUmRrUkJhQTB2bHBPQ2ZnQ3M2QVFJMzNMODJqdXdp?=
+ =?utf-8?B?cm1Xb0dSRndCU1FiT1B1ZGZCd2xvRTdPakFEb2YvZUZlT3c5cC9OTzNIWG9j?=
+ =?utf-8?B?cWREZ1pSdzYrWjB6OTcwd1hpQW4zZTJIRHBnR2owS1BoT2NacDNBSEFIYUZT?=
+ =?utf-8?B?QXltNVJBdFFmY3U5VTM4N0MwK2JLa1QvSXVFZVhqLzVRZjhYUmZ0TmlaSEh2?=
+ =?utf-8?B?d1ZFQnVTZ2JqNHpqc01yZGpEWTYrNVV1cG9iakdlU3QwM2t0ckFlaUg3cmVi?=
+ =?utf-8?B?SkZxM3M1WU9pMG8zTkVSTU9ZZnJHY2tOUDlMVzFjV255UUh2SlZiendGV1Fi?=
+ =?utf-8?B?K1IzK3grUHU5eGs0YTdpMDMxQWlvVEx2YkJOMk1vY2QxOHBCVzlRczc3d2Ja?=
+ =?utf-8?B?Q2dMWUk4ZnhVRFNzL3hXY25PNkc4cHErZXhFdkpOUUd4eXY1cEdtZ3VNRUxY?=
+ =?utf-8?B?eitwZnY2YUtmMjRwZDRlMENBVjVNR1NaSURxTGJ5KzV6YktaaHQ2cUxwbVdx?=
+ =?utf-8?B?eFlDdkNMdGV5TXlMMDBSZDZUZjRHaVlQaXo1enUvQWdsbFFSVDIzV2M4cDZq?=
+ =?utf-8?B?Y0NyemJIQWNIckcwbjJlMS9PdUsweUc4U2tjL0xBS0QvZjdkS3RyMnZENGpq?=
+ =?utf-8?B?STg4eEkvb2VYWnR6ODZyc1dvY1RDUExTUlk5SitzQWFsY1BqUnhTR2ZrNC8v?=
+ =?utf-8?B?ZEtaT1VQWWpDcmNyaTF0MUhvaWNIOGVQQUFhamF1a1JnbzdYcUdMSWpkRkpi?=
+ =?utf-8?B?M2JUamFOY0Z3czcxTW95QnpkL1AyMkZ1Z3lGTXIyYkJDQWFEOUp1OG1la1pP?=
+ =?utf-8?B?eWQyb3hxUnhPdHVseGhUZitkUXBXcnU4a1ROMWFXdG03SmQ2cnFmNTZhN0xS?=
+ =?utf-8?B?cUlrZzF6RTJYKytUZld0bFlUYnNCV25KRGFIN2IzdStRZ0wzTFVLN0xHb2pY?=
+ =?utf-8?B?VkNuV0JocUxLbDlhK3YxZWlNRTdRUDV1VFJJcGRxZFdSVkRaazB3aVVYSllN?=
+ =?utf-8?B?YWpPS0dCcDNiM0tDL2FVSmVOd1kxTzdoNjNaVFVtVkRuMERlOWJ2NFFkWXFw?=
+ =?utf-8?B?Zk8yaTJFdmNHSmMzMU5Ub1VCeDdmb0ZCRXNJQkgyYkd0VXlaNk56WHBhYjdY?=
+ =?utf-8?B?UXk1QllQYjNmbmM5SkhCLzZ0bWVJMlJYdThCeVpZUUtDdStxa2Y4WGR4bzhY?=
+ =?utf-8?B?bSszazJlOFFCcnh0dHk2enU5WFY0UWFDNFpGVmNMN0E3cHhGVEpuck5FdUJl?=
+ =?utf-8?B?M0tscmUzaGt1QkNXMDhmUjhHMkRneElXeGxwQVZpbFZteVBIbDdjMU1KYlVQ?=
+ =?utf-8?B?azBLRXRpREU5a1B5RHZFdHBnbU9yYXQ2QmxPaWxUd1NKQXgxRGdsdTZPbUdo?=
+ =?utf-8?Q?i72wJ9Ex90c=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?T0VDN1MwNVcyNTZmZjZmMkx0Z0tNMEJTUi8yQnBQWVJ3SWs0bFlLY0RUNnRj?=
+ =?utf-8?B?cGJhbld4Nk5YZUk1Q3VRWWtzU0hvQ1Q0TDVQWTdyaUxQU0tEMXlSR3ZHeFBp?=
+ =?utf-8?B?RzZEaVNkMk5nUGlQZGs3VGtoVmNyYlVBenZVTHBxZlRGS1A5U0QwbCt0MnFM?=
+ =?utf-8?B?TFJQajdvTEF6VVdoTzN6Yi8vVllyMnpXOGxIQUJReGRzMmRZa1NLWjIyRHdo?=
+ =?utf-8?B?ckZOL0JjRmN1bUVYUlZpVC9MQUtub0J5UjRNRWxzTlhSdUNkWkRhQlZXaHFJ?=
+ =?utf-8?B?RXBmZWFSVVI5RVdYUE4yZFdMWGxHb2dVU3k5QThNTzkzSEw0YzlRSzdULzJk?=
+ =?utf-8?B?WGM5L1RqY3pyYlBxUHJxSy9iMHR6YnF5WS94YnNTVnpabnhZcUlSb0lJSVpl?=
+ =?utf-8?B?M0pIQjRpdUhFR1F6YlFoQWNJaXYvNEVYaE1aS01FbTRQcjlQWFVWUlF0dDJr?=
+ =?utf-8?B?KzJHVVBZYUxreWZJTExtc0x2QkdMQ3lmOHRYOGloMjRTZ0J0bEcrL0xFZzNm?=
+ =?utf-8?B?T2NVaFNZdnVhMXJTazB0TitNNUoyWWNOZXB2Skt3UGhkR05wY241dkVrdWpw?=
+ =?utf-8?B?dlRGTUJDRHhiOHhJTitmcEMrUkZ0TFBpeW8vR2M1ZnFYdGE2Yy95V0dHbGxa?=
+ =?utf-8?B?UUUxQmFPdXJWMnBBSFhNaEFpc01LakNZbW04NW9MK2ttZEo0UGFraHFqdGtN?=
+ =?utf-8?B?eFgwZzFQeXZOOUluVHRaZGtJQkVibXdRNUxzak9hOGhjTXJZL2l2WWdlU0xu?=
+ =?utf-8?B?SEVNb2lZRmMvU1VZWnRMdGRtMVJrSE5OT0lWeWt4eWZUM1FHaG8yOEpOTWlx?=
+ =?utf-8?B?ZTltaU1JcU1VUVEwWUc1M2dlY21wVktPMnNWTFlINHlDU0VBMnFtbXVOblBT?=
+ =?utf-8?B?SW5heHJ6TUU0YzF2QmkvRklvWUQ2TUxaNEsrL002ZjJjQk1EL1dudlFFK0NS?=
+ =?utf-8?B?QVh2Mjg4S0pLa1RjUHR5SW1PeitkdlpHdStpaWk4ZkQ1WjJBdVdSakNTTC9k?=
+ =?utf-8?B?OXV3MWthYldmclZjcy9KalJuYzZMLzJObVpqMGFYTUlNNWxYenBJOWo3RW5k?=
+ =?utf-8?B?RmU0MjdxWDhvZ3JhcHBiT2pKVFBtRG1nZFF5NlU3RElWUDA2dG1OZkpmRVo2?=
+ =?utf-8?B?ZGN3NDZDeVIwSjVQT1pDcm9vQWdUL1N5djk3b2dDekFlS3FLRGFTZ0Jnblcx?=
+ =?utf-8?B?cmtiZldPQnRKckhVcWh1dEhxczZ1b0ZTQWVqVE04N1NkeUdjVHBJcTJveUU0?=
+ =?utf-8?B?TmpEaEIvTUh2UHQ4OUNPeWhxT1ZUNkRTZ0J6L3Z3cEw2TjU2SkQzWENiQlBz?=
+ =?utf-8?B?TWNzTmgyN0Z1dFZWVEZmSnUvNWpyZUxGYklXSHBLZG44YlJUT2lETjB1My82?=
+ =?utf-8?B?eFpHKzUrejRoUHJJN29DTUtLMy9tejBXa3Y1R3ZYbk9ZQzFnZVYrMy8xQ01L?=
+ =?utf-8?B?RjBtOE9WdmkxdlQ3czd6eUpORUw0YWlHQWZPNm5PaFBaQVhBZTVTZjlxMzZw?=
+ =?utf-8?B?ZFpOS0Vod0h4Qmo2Rno1eDcyUEJNQ3N6c1V1TmFvMS8yTzBEb3Y1OEhCb2NT?=
+ =?utf-8?B?empUdTgzZTl1SDdjNFh2STJaeXJpdHN4RXZ2b21SWjFvQ2Izc1NQODFJeEZD?=
+ =?utf-8?B?c3JncmNDMmhFdW9GQyszZTk0VHhWVG9YWnR5UzlVNUg5YXJsKytrYUVDME5a?=
+ =?utf-8?B?Vm9aY1RlWXJkc3dnM05YS3Y5NW12NVhzRmZHd2x1UDBGSG5LeUlBRFovZExB?=
+ =?utf-8?B?WVo5TDlsU0tlNmg3MzVuaWNja05Kc2JhYmM0QmRCd2dSWnBmK1R0SVBxUjk2?=
+ =?utf-8?B?NktqLzhqYTc2SGtCQ0E3TEFSQ0ZsNkd5djNQd0VaUEpCY1hhazF1Z1ViTFNM?=
+ =?utf-8?B?dDNISEhoU0VTQzFVdDQvLytOMzg0d2JZaGt0SjBZUHI4UFdFR1NjYW1VWkc1?=
+ =?utf-8?B?WEsxQVptcnZnL08vdzV1VjZTRmZ3cEUyN2RkV1pQbENFbTJJNHRHMks2NGps?=
+ =?utf-8?B?SlhPQlBHcktIZFVJSkZTZURMaEtGYWlPZFBVNGx3MS9rU3VtRGxubDRvVEs2?=
+ =?utf-8?B?TmFZR0pOL01GSUw0aVA3VUI0L1c3ZW5GbkpxWWJ1ak5NQ09OcUp1K1RWS3pw?=
+ =?utf-8?B?aWxCdHkrV3dIK1k2dEVLS2U5UHN0bE1xUmNoeUVTZzd3UVpYLzRCSHR4bkhT?=
+ =?utf-8?B?VHc9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: ff437a24-8392-48c0-e360-08dd92ea9d7e
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 May 2025 13:24:12.4154
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: t7bw4kK7ZLfq0/jEfhcFUFkwtEONe9CAIEOe5u+KKyOeTiT5vkGZkllkqQeuwfdwXMNxFD3l0ZDsVCFbkAXrEabmZe82G6VOS+Jfdtoj6SQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR04MB9926
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_061113_141733_A9FFE11D 
-X-CRM114-Status: GOOD (  22.13  )
+X-CRM114-CacheID: sfid-20250514_142421_256763_86D2A278 
+X-CRM114-Status: UNSURE (   8.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,317 +189,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Heiko,
 
-On Wed, 14 May 2025 14:09:00 +0200, Heiko Stuebner wrote:
-> Both the Cobra and PP1516 boards are based around the PX30 SoC and can be
-> found with a variety of display options.
-> 
-> As new boards should not use the deprecated snps,reset-* properties
-> in the gmac node, I also added a core mdio-node for the gmac and
-> converted the Theobroma Ringneck board over.
-> 
-> Testing with the new node both before and after converting Ringneck
-> showed the board finding its network both when booting locally and
-> from the tftp/nfs.
-> 
-> changes in v3:
-> - more sorting
-> - more Reviewed-bys
-> - pull-down for dsp-rst
-> - pp1516 accel pinctrl group
-> 
-> changes in v2:
-> - add received Acks/Reviews
-> - drop "rockchip" prefix from system-power-controller (Diederik)
-> - split out prototype-pins to prototype variant
-> - address Quentin's review comments
->   - ethernet0 alias for Cobra
->   - a number more pinctrl entries for gpios
->   - drop unused slp pinctrl entries
->   - additional comments
->   - use gpio-constants for pmic int
->   - ordering (nodes + properties)
->   - clarify vccio_sd more
->   - interrupt line for pp1516 accelerometer
-> 
-> Heiko Stuebner (6):
->   arm64: dts: rockchip: add basic mdio node to px30
->   arm64: dts: rockchip: move reset to dedicated eth-phy node on ringneck
->   dt-bindings: arm: rockchip: add PX30-Cobra boards from Theobroma
->     Systems
->   arm64: dts: rockchip: add px30-cobra base dtsi and board variants
->   dt-bindings: arm: rockchip: add PX30-PP1516 boards from Theobroma
->     Systems
->   arm64: dts: rockchip: add px30-pp1516 base dtsi and board variants
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |  18 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   6 +
->  .../rockchip/px30-cobra-ltk050h3146w-a2.dts   |  39 ++
->  .../dts/rockchip/px30-cobra-ltk050h3146w.dts  |  39 ++
->  .../dts/rockchip/px30-cobra-ltk050h3148w.dts  |  39 ++
->  .../dts/rockchip/px30-cobra-ltk500hd1829.dts  |  73 +++
->  arch/arm64/boot/dts/rockchip/px30-cobra.dtsi  | 566 ++++++++++++++++
->  .../rockchip/px30-pp1516-ltk050h3146w-a2.dts  |  39 ++
->  .../dts/rockchip/px30-pp1516-ltk050h3148w.dts |  39 ++
->  arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi | 602 ++++++++++++++++++
->  .../boot/dts/rockchip/px30-ringneck.dtsi      |  22 +-
->  arch/arm64/boot/dts/rockchip/px30.dtsi        |   6 +
->  12 files changed, 1485 insertions(+), 3 deletions(-)
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w-a2.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3148w.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk500hd1829.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra.dtsi
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3146w-a2.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3148w.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
-> 
-> --
-> 2.47.2
-> 
-> 
-> 
+On 5/14/25 2:09 PM, Heiko Stuebner wrote:
+[...]
+> +&pinctrl {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&cobra_pin_hog>;
+> +
+> +	hog {
+> +		cobra_pin_hog: cobra-pin-hog {
+> +			rockchip,pins =
+> +				/* USB_HUB2_RESET */
+> +				<0 RK_PA5 RK_FUNC_GPIO &pcfg_output_high>,
+> +				/* USB_HUB1_RESET */
+> +				<0 RK_PB4 RK_FUNC_GPIO &pcfg_output_high>,
+> +				/* The default pull-down can keep the IC in reset. */
+> +				<3 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
 
+Small oopsie there, should end with a comma.
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+> +				/* USB-A 5V enable */
+> +				<3 RK_PC0 RK_FUNC_GPIO &pcfg_output_high>,
+> +				/* USB-A data enable */
+> +				<3 RK_PD3 RK_FUNC_GPIO &pcfg_output_high>,
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+Small oopsie there, should end with a semi-colon.
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+Thanks Rob for the bot :)
 
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/v6.15-rc1-23-g0d0947766d87 (exact match)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250514120906.2412588-1-heiko@sntech.de:
-
-Error: arch/arm64/boot/dts/rockchip/px30-cobra.dtsi:424.5-6 syntax error
-FATAL ERROR: Unable to parse input tree
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/rockchip/px30-cobra-ltk500hd1829.dtb] Error 1
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/rockchip] Error 2
-make[2]: Target 'arch/arm64/boot/dts/rockchip/px30-cobra-ltk500hd1829.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: rockchip/px30-cobra-ltk500hd1829.dtb] Error 2
-Error: arch/arm64/boot/dts/rockchip/px30-cobra.dtsi:424.5-6 syntax error
-FATAL ERROR: Unable to parse input tree
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3148w.dtb] Error 1
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/rockchip] Error 2
-make[2]: Target 'arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3148w.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: rockchip/px30-cobra-ltk050h3148w.dtb] Error 2
-arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3148w.dtb: panel@0 (leadtek,ltk050h3148w): 'port' does not match any of the regexes: '^pinctrl-[0-9]+$'
-	from schema $id: http://devicetree.org/schemas/display/panel/leadtek,ltk050h3146w.yaml#
-Error: arch/arm64/boot/dts/rockchip/px30-cobra.dtsi:424.5-6 syntax error
-FATAL ERROR: Unable to parse input tree
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w.dtb] Error 1
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/rockchip] Error 2
-make[2]: Target 'arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: rockchip/px30-cobra-ltk050h3146w.dtb] Error 2
-arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3146w-a2.dtb: panel@0 (leadtek,ltk050h3146w-a2): 'port' does not match any of the regexes: '^pinctrl-[0-9]+$'
-	from schema $id: http://devicetree.org/schemas/display/panel/leadtek,ltk050h3146w.yaml#
-Error: arch/arm64/boot/dts/rockchip/px30-cobra.dtsi:424.5-6 syntax error
-FATAL ERROR: Unable to parse input tree
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w-a2.dtb] Error 1
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/rockchip] Error 2
-make[2]: Target 'arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w-a2.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: rockchip/px30-cobra-ltk050h3146w-a2.dtb] Error 2
-make: *** [Makefile:248: __sub-make] Error 2
-make: Target 'rockchip/rk3399-ficus.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-odroid-m2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3368-r88.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-rockpro64.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-gru-scarlet-dumo.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-pinetab2-v2.0.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-coolpi-cm5-genbook.dtb' not remade because of errors.
-make: Target 'rockchip/rk3368-geekbox.dtb' not remade because of errors.
-make: Target 'rockchip/rk3326-odroid-go3.dtb' not remade because of errors.
-make: Target 'rockchip/rk3528-radxa-e20c.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-gru-scarlet-inx.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-gru-bob.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-orangepi-5b.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-h96-max-v58.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-soquartz-cm4.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-bigtreetech-pi2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-armsom-w3.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-orangepi-3b-v2.1.dtb' not remade because of errors.
-make: Target 'rockchip/rk3318-a95x-z2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-orangepi-r1-plus.dtb' not remade because of errors.
-make: Target 'rockchip/rk3576-roc-pc.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-orangepi-5-ultra.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-rock-pi-4a-plus.dtb' not remade because of errors.
-make: Target 'rockchip/rk3326-anbernic-rg351v.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-rock64.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-jaguar.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-edgeble-neu6b-io.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-ok3588-c.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-rock-pi-4b.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-powkiddy-rgb10max3.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-khadas-edge-v.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-radxa-e25.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-gameforce-ace.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-rock-4se.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-bpi-r2-pro.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-orangepi-5.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-tiger-haikou.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-nanopi-r2s.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-photonicat.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-hugsun-x99.dtb' not remade because of errors.
-make: Target 'rockchip/rk3582-radxa-e52c.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-anbernic-rg-arc-s.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-rock-4c-plus.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-rockpro64-v2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3368-px5-evb.dtb' not remade because of errors.
-make: Target 'rockchip/rk3308-rock-s0.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-puma-haikou.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-qnap-ts433.dtb' not remade because of errors.
-make: Target 'rockchip/px30-engicam-px30-core-ctouch2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-coolpi-4b.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-toybrick-x0.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-rock-pi-4c.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-khadas-edge.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-pinebook-pro.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-nanopi-r5c.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-khadas-edge2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-nanopi-m4.dtb' not remade because of errors.
-make: Target 'rockchip/rk3326-odroid-go2-v11.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-nanopi-r4s.dtb' not remade because of errors.
-make: Target 'rockchip/rk3368-lion-haikou.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-friendlyelec-cm3588-nas.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-lckfb-tspi.dtb' not remade because of errors.
-make: Target 'rockchip/px30-cobra-ltk500hd1829.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-sapphire.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-fastrhino-r68s.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-edgeble-neu6a-io.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-anbernic-rg353ps.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-rock-5a.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-fastrhino-r66s.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-rock-5-itx.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-kobol-helios64.dtb' not remade because of errors.
-make: Target 'rockchip/rk3576-armsom-sige5.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-leez-p710.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-wolfvision-pf5.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-gru-kevin.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-nanopi-r5s.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-evb1-v10.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-anbernic-rg353vs.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-rock-3b.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-powkiddy-rgb30.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-powkiddy-x55.dtb' not remade because of errors.
-make: Target 'rockchip/px30-pp1516-ltk050h3148w.dtb' not remade because of errors.
-make: Target 'rockchip/rk3326-anbernic-rg351m.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-nanopi-m4b.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-rock960.dtb' not remade because of errors.
-make: Target 'rockchip/px30-cobra-ltk050h3148w.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-orangepi.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-rock-5b.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-soquartz-model-a.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-nanopi-r2c.dtb' not remade because of errors.
-make: Target 'rockchip/px30-ringneck-haikou.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-sapphire-excavator.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-roc-pc-mezzanine.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-odroid-m1.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-evb1-v10.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-roc-pc-plus.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-powkiddy-rgb20sx.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-gru-scarlet-kd.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-roc-pc.dtb' not remade because of errors.
-make: Target 'rockchip/rk3368-evb-act8846.dtb' not remade because of errors.
-make: Target 'rockchip/rk3308-bpi-p2-pro.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-quartzpro64.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-turing-rk1.dtb' not remade because of errors.
-make: Target 'rockchip/px30-engicam-px30-core-edimm2.2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-radxa-cm3-io.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-radxa-zero-3e.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-roc-pc.dtb' not remade because of errors.
-make: Target 'rockchip/px30-cobra-ltk050h3146w.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-roc-pc.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-nanopi-r2c-plus.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-mnt-reform2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-nanopc-t6-lts.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-odroid-m1s.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-armsom-sige7.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-rock-pi-e.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-mecsbc.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-nanopi-r6c.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399pro-rock-pi-n10.dtb' not remade because of errors.
-make: Target 'rockchip/px30-firefly-jd4-core-mb.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-radxa-zero-3w.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-firefly.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-orangepi-5-plus.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-pinephone-pro.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-evb.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-quartz64-b.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-roc-cc.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-nanopc-t6.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-eaidk-610.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-orangepi-5-max.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-nanopi-r6s.dtb' not remade because of errors.
-make: Target 'rockchip/rk3326-odroid-go2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-rock-pi-4a.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-rock-5c.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-anbernic-rg353v.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-firefly-itx-3588j.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-orangepi-r1-plus-lts.dtb' not remade because of errors.
-make: Target 'rockchip/rk3576-evb1-v10.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-orangepi-3b-v1.1.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-lubancat-2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-box-demo.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-powkiddy-rk2023.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-rock-3c.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-bigtreetech-cb2-manta.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-evb1-v10.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-rock-pi-4b-plus.dtb' not remade because of errors.
-make: Target 'rockchip/rk3308-roc-cc.dtb' not remade because of errors.
-make: Target 'rockchip/rk3326-gameforce-chi.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-a1.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-pinenote-v1.1.dtb' not remade because of errors.
-make: Target 'rockchip/px30-pp1516-ltk050h3146w-a2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-anbernic-rg503.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-soquartz-blade.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-pinenote-v1.2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-nanopi-r3s.dtb' not remade because of errors.
-make: Target 'rockchip/rk3308-evb.dtb' not remade because of errors.
-make: Target 'rockchip/px30-evb.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588-coolpi-cm5-evb.dtb' not remade because of errors.
-make: Target 'rockchip/rk3588s-indiedroid-nova.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-lubancat-1.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-nanopi-r4s-enterprise.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-nanopi-neo4.dtb' not remade because of errors.
-make: Target 'rockchip/px30-engicam-px30-core-ctouch2-of10.dtb' not remade because of errors.
-make: Target 'rockchip/rk3328-nanopi-r2s-plus.dtb' not remade because of errors.
-make: Target 'rockchip/rk3308-rock-pi-s.dtb' not remade because of errors.
-make: Target 'rockchip/rk3568-rock-3a.dtb' not remade because of errors.
-make: Target 'rockchip/rk3368-orion-r68-meta.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-anbernic-rg353p.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-quartz64-a.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-roc-pc.dtb' not remade because of errors.
-make: Target 'rockchip/rk3576-rock-4d.dtb' not remade because of errors.
-make: Target 'rockchip/px30-cobra-ltk050h3146w-a2.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-evb.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-anbernic-rg-arc-d.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-nanopc-t4.dtb' not remade because of errors.
-make: Target 'rockchip/rk3399-khadas-edge-captain.dtb' not remade because of errors.
-make: Target 'rockchip/rk3566-pinetab2-v0.1.dtb' not remade because of errors.
-make: Target 'rockchip/rk3368-lba3368.dtb' not remade because of errors.
-
-
-
-
-
+Cheers,
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
