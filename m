@@ -4,78 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E50D8C3ABDA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 08:11:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36C23C3ABD8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 12:18:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I9BNmxBiAqUJvEi9isl0v1pEHgTf338ZBtrq1/gomSs=; b=PD3lcWNgMHzkuK
-	Kq4Gb+pzLUWt06RVoiyw6XX7bWfGlQ6WwQc1TkeRM7b888mJtxotxd042QIJptJLzEegBhhWsbb6V
-	dpPJ/wxAzltHjLN+AMNspk211jeASBk7/Wxp8X50i2paPrfUGRYSyskF6fd0kRLihPFOQSg2phfGB
-	MKkfOS8DlSD+TNZF7duUuszMq+RDlc9VUYJ7Vg/5jj8eRCZAo776yDswCzjXk7bGaDAA2v7MdrsjW
-	7tFp4nHRjXZGz+HWitfXIFafCV+Ko9Q2lBCa5MRcdrX6MXKS5WLjOBVQ9FHwCRAH58P6kyoVzk8oQ
-	JA236dySZXvg8WlWVWRQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bERcON1AreEuG6DwmY+Oc6qiD4WmryriEoSlEAL1c+4=; b=OFLM0kBRS/tTj/4JFLhw+WyRKB
+	aFbFCIFgi+f6bGjfruEizyrwSIJuzGf+kRNL0oaVRNaSMGQ/MWCcomc7RkvGtGPmek9QUzPT+RMhg
+	mJBg0vqaY4JGyCsAH1fVmddb6eSaMpU/wD61gDAtmey7Bbn+FSNe2jeyWBEkf1e2AVDdvaM641OY4
+	hmE/AyfxUnxR3yFroUbh+EXwEA0phdDqqEJs7D5t6LyDHLqnUoiS0jiTRAJJrB8n+6ZPobw3eDX9G
+	oeamLkjBS6F7pifFjtylJV8QuAQFXeqDpuXhAzwjVUoYtlQZBnOOj46C5NMcv2x10t+34+MAfdanz
+	cXZ7KoOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF7Ct-0000000ERse-3g3f;
-	Wed, 14 May 2025 08:11:15 +0000
-Received: from smtpbgau2.qq.com ([54.206.34.216])
+	id 1uFB3k-0000000F06J-3Ivc;
+	Wed, 14 May 2025 12:18:04 +0000
+Received: from mail-db8eur05on2062b.outbound.protection.outlook.com ([2a01:111:f403:2614::62b] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF72K-0000000EPre-1f1h;
-	Wed, 14 May 2025 08:00:21 +0000
-X-QQ-mid: esmtpgz12t1747209569t5d572571
-X-QQ-Originating-IP: VpLWjnwyPWgh81/0vj3hwBo3kvAInt1kmoE1Ua2iaNw=
-Received: from chainsx-ubuntu-server.lan ( [182.242.225.107])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 14 May 2025 15:59:27 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 3638814323767141484
-EX-QQ-RecipientCnt: 10
-From: Hsun Lai <i@chainsx.cn>
-To: robh@kernel.org
-Cc: i@chainsx.cn,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	sfr@canb.auug.org.au,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 3/3] arm64: dts: rockchip: add DTs for Sakura Pi RK3308B
-Date: Wed, 14 May 2025 15:59:14 +0800
-Message-Id: <20250514075914.194651-4-i@chainsx.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250514075914.194651-1-i@chainsx.cn>
-References: <20250514075914.194651-1-i@chainsx.cn>
+	id 1uF8HN-0000000Edma-0w1p;
+	Wed, 14 May 2025 09:19:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=UuGFAy3KduRJhWRuSRnnJf2TPhr/fz50xYEjvGVbJB8lp0BOc4gxPgSHXriXMLf1hyqoP2h9BtHw650qU1X4fDXeU5VRRFp7FmXynHsD4qpUCPtM/jsGspWCu01leCfwEzO8BBYTNwWQpqBbj3S76MVd6jO1rdi7A6iDg7kWciDB2KTg66Nuaukgvr/60ry1wjmg0WF1+pWzrdGR596oeeIkbRrC0ZcM8PY38JmWGb/lfVtud1d4n5iT86IVv7VctWlHD4aBSWTS5RORNfB3AW/kFlMwe9y+iv2+653LuZH2qXZ9zYGcbSWozQVAoiamw2l9eACrD+FA5Ol/EQwGjA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DHdAyc7T37crNON7aP7QYhLqQwfhCBf0oqkYLA2PY6c=;
+ b=JWPWR8OhqtacCsgViih5lfhDa1fiicnyZwm6Gsx1jNbqplabfMUxL91OyqQE5YK5SHFvz1hnfZogTcHjDtiCED1SK5AArnY1XwBrRdSWSogZn8v6N9ibAtvS9WfkaraFoh5ScXAyOVxokKv7/sDf6Q0RWYmTA+U61BR8EQCivfvzdiaMAWyTNe3210B42INC3ZbP4mQTLL/HjIiOEodkBDP+ZtjqNZQDDzmuDMKP0eOTENDnxSKeBy3Yg5mYP4AxidSO5/YU2IAa3jnfO0Zrg9MkOmjyizpuDjnDDyEJgfC+d2xVEDkCnHnBnhwazHT5Z7xvmqp6xQHHzHMaMGvwtQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DHdAyc7T37crNON7aP7QYhLqQwfhCBf0oqkYLA2PY6c=;
+ b=N2Bi08Gs4frfuOz9kdP0xNxNo4D3PZrCToynCWI583AG+170w0o0WvYccwXcfxXlGCoMB7emSvrbI2Ic8x0mWrhT7UxBHmrTE+f3woaMiqw1PIitZ6KKYgFQl5OwU1kDE0vKiFujNiEcdCm/nMYIxDsv8/cn6UYPMXH8W1qi80U=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
+ by DB9PR04MB10010.eurprd04.prod.outlook.com (2603:10a6:10:4ee::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8722.29; Wed, 14 May
+ 2025 09:19:49 +0000
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a%4]) with mapi id 15.20.8722.027; Wed, 14 May 2025
+ 09:19:49 +0000
+Message-ID: <72f7ad52-a6b4-446b-8c2a-50f030307e31@cherry.de>
+Date: Wed, 14 May 2025 11:19:48 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: add px30-cobra base dtsi and
+ board variants
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Heiko Stuebner <heiko.stuebner@cherry.de>
+References: <20250513150234.2331221-1-heiko@sntech.de>
+ <20250513150234.2331221-5-heiko@sntech.de>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <20250513150234.2331221-5-heiko@sntech.de>
+X-ClientProxiedBy: FR3P281CA0006.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:1d::16) To AS8PR04MB8897.eurprd04.prod.outlook.com
+ (2603:10a6:20b:42c::20)
 MIME-Version: 1.0
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpgz:chainsx.cn:qybglogicsvrsz:qybglogicsvrsz3a-0
-X-QQ-XMAILINFO: OKKHiI6c9SH3WIpAmk548qKD7W0AZrxUELTzBSAiPMRvWMw7xmFh39B3
-	rL1GwGKZnZpYN16i0MOlHEhO1VTfzGMBE3SQzjbHSRZx9XkvyCQi1X/LoTKIW/NVivpstBV
-	2GIeEMnKLgUykLoNrNpQdeD43Uv6tbsNGyFNVF7dQYakiwotxIqTZCosiBe10Tnjo8tOC1l
-	h6Ywsx8R8JDqMUTSDLR4lINwLDSwPmMrGb2UjD6uUWXyCpgOC4BNVQC/ZJem2/5n1cWbKJz
-	BQhTSRHACWGBI6jBoMxwBWX51v2J/4USINoN1Ww8RVhLkWgG51HUWKxszZPjZTHLJ2Z1YOG
-	R8gKlyQI03EATIsk3qx95FuXAjAGOe6xdJQ2h/sRjSaIEvLa6GzqgJBXSbtR8q+7XhQaRWv
-	AwOLsDteKUUtlfMfqD72n8kIQwS0pxyi8VB1IyQFjzPx38JUnAWwSIIbWN9XkyFt+ADZBIS
-	UnkzZb4DmVZ6fCVc+2lMHDcC0qYKyxkLWdNKYLO8s8P5SpKUML+3KIfks/iL/gb7GmBEfJn
-	pQgIGwekubdDzIahCJb0yJVmQI6drsFG0ZGY7FP9yY75AvsgFeyMd05yTJC/DadvzeGqOMo
-	+HeCqjb46E2HR7Th3uqogTBmSjqZj7OmQmvzucXZaayDPrZufWHiwt7yU/80Ff3bUgIkzNy
-	xoatoB1NzmJzRN6G1AD973Hd7586ukGNrHu+c9h57Raw0hzfSlySAtlMWouCDh0nhfoRqgh
-	OnPlzAsPTLw8RE8qRojhr6J0w1CP5IJtiaXb31UfKzyanKlAzdz/4psYchOWDpOwhl8Sphn
-	eGT6Ci6F4nhuy1JqdiRIwIuqiNEUHEcTbY3fH7YqhS7La6BvinG/bzbsyVa6NO6vYFQszJy
-	M1itwNVlZQFQEvOEXyuYBh0CucGpkcD4iN/+0tbfDDFBwDd0DpIliRITpc26CfaYqzhdFp9
-	5PDNFnMpLApJo2Dh4pvDS7xZb/bnKJKcM8+Z+DVNbrKKFhrOeK9i4xaxWsJxjzFFs7chNBE
-	0UqUOdnQ==
-X-QQ-XMRINFO: OD9hHCdaPRBwq3WW+NvGbIU=
-X-QQ-RECHKSPAM: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|DB9PR04MB10010:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7ea6d70f-f317-4151-2118-08dd92c879c0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?NGhUSTZ3WEV3QjQ4cjdVMVNXUXVWODNtbFFoYW9pd05mbVM3WWFSb1JxdER6?=
+ =?utf-8?B?bFZQSjM5Q2xINzNybUxQUkZYcUgwZGVJQTFsNFBNdXpJTy91OEFOYmRCRjVw?=
+ =?utf-8?B?bk1CcTF6VFo3VG90TWR2ZTZJQktVVGU5blhBMmZYMkhySFowWnU5V29xc2VB?=
+ =?utf-8?B?WHByalJzZ0svSk5UUm51dmVneFY3WERuai8rUHVIR1pxaW1BU3c1dW4rdHZD?=
+ =?utf-8?B?Y2VsbFlObnhaa0U2SzdiSkZPelJaMXVUWkVPYWFGakROOXhZT0RYM3NZblk2?=
+ =?utf-8?B?NTI4Yk42Nkcwd2JaOVlRcFNJZWN1aERleC9mWmVHa2h3MUl3RUhKRGw0QzNx?=
+ =?utf-8?B?UldxQjlienU3S2phODlDVFJ5S1czT0hpUkxxdWV0SlRoNk1nKy9Bb2FuMVJi?=
+ =?utf-8?B?c1U1MWNXaENxQmJqaXBqaU9kTktOZWlDMlRwSWVqdzVvNUlyN0xzV202T2xw?=
+ =?utf-8?B?QXJTd2FGQ2VjcVhSdllYR2JjNm1zeEJOVzAvajF4dkREZkE1aUp3Q21zaUg0?=
+ =?utf-8?B?bFRxVHE5WTNweFNyaEZMNy9kU0NnWnhGSFRZajNVME93dHZoYzljNE1ycWZu?=
+ =?utf-8?B?OU01aWQ5Q2c5aXVlc0FNQ3QrYUdDVE94b2xxYlk3aUkxaWtxNC8vQkVoNUwx?=
+ =?utf-8?B?QzltKzZOUjV1RThuSklNWUtwRDc4d1Zod0JhK2RBbWdnbG96ck9wbmNabmR6?=
+ =?utf-8?B?ekxwZUtQejZyWHZzTGkvVmdEdzZGN3NaV0s2ZDJyUkdLN2gwOEdweG4wZjJ0?=
+ =?utf-8?B?aG8rcTBOWmJVaVZEY0doZEFhdWdzbFVFemRjWGU4eDhHL3FVU3FSQjZIRnUr?=
+ =?utf-8?B?NlhmbDhVNnFvYTRrV0hKanZoUFlObzAxMHRUOE9hakdrVVorT3JmUU9odW5j?=
+ =?utf-8?B?cEozaUt0SnIydk8xRUdNZHZJKy9zUnM3VUl2MXFVSXZSdlgrdHpBc1VkcHlK?=
+ =?utf-8?B?QVBDVTBIODFpSmdOMWozaXZOV2ZBWkZsSVBQS1B1NU1oNlVPc3lTTFI2Z3ov?=
+ =?utf-8?B?ZmtQUFBKZ1Z5UjE0QlVTTE4rNEFDRFFFbU1VdmNhZGJxeWtObVNnM0FvelRM?=
+ =?utf-8?B?UEt0MmpsMXFyUG5BdGxvbFNINHJRNit5K0FRWjVFQXF4Tkl3NlRoRjBUWi9P?=
+ =?utf-8?B?elZtbGFSWUpNbW9kbXJxR3lteXVVSEJMWllvWDBEN285Y0FwMndiQ0s4a0VV?=
+ =?utf-8?B?T0U2c0dBNS9RWUV0Q1lxQ09XbzNLMU9DNFB5UzFEdEhOb1dqQUhRbldnUDB1?=
+ =?utf-8?B?UUord0hHbnkxNmdOclhJZk5hK2wwNDdVTnVkTUhDMGVDTlFBVnR0YTNRS0Yr?=
+ =?utf-8?B?QkFrUFQ4ZFR2clRUblVabmdlVXBBSFlUVUY1MnI0OSszaWZGM3BFV2JWczdU?=
+ =?utf-8?B?RmpuTDk4VXptaEVXSGxvY0J3VVlFSDA2ZENVNnVSbmNqTFNZK2lOclFGU05J?=
+ =?utf-8?B?UnVzcERyZWVJL1VaVy9Bc2doc1ZkaVZmQVNIS1Z2VWx1cExLL2JQcHp5eTk0?=
+ =?utf-8?B?L1FYMkNrU2FGT21YWnhoK3FSMVN4SG0zR2QwdU5KUk55b2NjOVphVGhOMUpl?=
+ =?utf-8?B?aFRZTEtZaW5tTEdtZEVBbHpVeVJvMGkrUitycm1TVFBZaVY3K1V2UGFCT3Ax?=
+ =?utf-8?B?aTIrb0lmYkRnbkJTUlNuQjExTGtTbkRjOGc0Y2Q3WWMxME9mTzd4NWMwc3kw?=
+ =?utf-8?B?bnNmbVJBWW5ZSWdHUzYzd1JlY0dyZ3phU3hxK0ZFQytCL2VWZXFkc2VBUXkv?=
+ =?utf-8?B?Y0NOT1hjRWNodDQ0M0N3T1pKeDYzZStZNFkzS29zSHpvQ2YxUDVsVXpGdVZE?=
+ =?utf-8?B?NVV2bEdpQldibUcrVHhOMnY3M2FuTEt3Sk1maHJvaHVreXRVZTVZc2F5akNO?=
+ =?utf-8?B?RmE5SUVnZHltQ2NQcjh4YXY2UmQxcjBlc2NtVVVvdWptVEM5ZzN6dmlFUUxm?=
+ =?utf-8?Q?ob8b0KuSkmU=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ckVyMXdzL0lGVWJMWE9OeW9nSG9LOHNjazJPd0prbUZpTG1LTGY5VDRzNk1v?=
+ =?utf-8?B?NENxakxpcnBxS1ZCb3VhNXpPMVlVWTRqKy9xVCtlREZmVFcvNWxwVmFnNGh4?=
+ =?utf-8?B?bElzbUJxTXdYTjNhMVVlMTFBNnRrVmU2Sk5weDRmdUg2YkdkUW9kYi9pL2Rp?=
+ =?utf-8?B?VGZVMWsyUTQ1SUNiWEZNT1NWaXRvOTVMZ2JWZG9VK2ZMR29tNlR2MmhNVHcy?=
+ =?utf-8?B?NlV0RCtBWVhZeDF4aTNaRGxtTEhQb0hKUEwrQWsrbi8zUFF3QkhxemMvUHhW?=
+ =?utf-8?B?OTdLVkplUXNTMWppSWFSeThVWStEUzlaeHRtLytpd2FGMGNtaG8xem1vMEgr?=
+ =?utf-8?B?bGpuTzBQNnU3ak1YUzE5bmloZko1VjJJMHpmdmNhZVcveFZtVFJDemFmRXhu?=
+ =?utf-8?B?TFZiOWlnZWRsOS9TV3BYS0xTSVVlQXp6NUx2dFR5QVRjY3pwTnh4d2lKYW9z?=
+ =?utf-8?B?dEYxTzlWRjliL3hDTFBIa2hMM1NDdVd1RWdxNUk5ejVnd2daL1RndnIrUXpF?=
+ =?utf-8?B?ZHhxR3dCOTlzeVpOanAxdFh4SGx1UjVYSHpFdnhOdjg0ai94cUUxUS9qdE5B?=
+ =?utf-8?B?Y1RiNHlIZ3FyN2RpK2pWOEFIeDJQSkg1dTNIaUJtd1FlN3Q4VmRYNWJCdjln?=
+ =?utf-8?B?dUVYR2NxN1ltSWlicmZtWTZqOXhDeTVlK0k5Ukx1UWZvU0xvU2lrT1Z3VXM0?=
+ =?utf-8?B?MnBuMnhucklhVDgvSldVQTB5dHQyN09ZblpnN3FVeVJ5Q3pTVWo4bk11dXUr?=
+ =?utf-8?B?Uk01WU1NNFdTMzlGT243djNMZnpDY1FlM2lhMEZZOGJTbGRRZmJ3T28yN3g4?=
+ =?utf-8?B?RUQ5SmN5N2Fpbm52ZUsrVnE0Z0thcG9yell4Q1lZUXFIaGdJSGp6V0J1Y2tK?=
+ =?utf-8?B?c24rMi8zWEZFOGVUZlN0R2IxTXNSZ0JUQkhFOGxPcmpwTWgvOHBrektNN2tw?=
+ =?utf-8?B?TTcrOFBQWlh2MHVtd2hmVHBkS1ZpdFhIdWdvMC9xUmg4N0RXMUxKREluZnd2?=
+ =?utf-8?B?MFJXTjMxdUNJTnNMSUJzbHE0aEVCNFVvU3BLOVN5Ty9DSDYyRWxvWlkvdTZw?=
+ =?utf-8?B?V3dJNS9sQzFxaDNVeXo5RW0xS08rRytzcW90ZSt4VktsM2ZrMEEvVG1QWXFz?=
+ =?utf-8?B?SHl3VVlvR0tzOGFKbmxHQjdETm50QlRRNWlUK2ttUE5KeTFYSG00U3U5SHFv?=
+ =?utf-8?B?OTdpNHM5ODVrOXV5d2hodVNLdDEzVXpJak94TXI0b2hzR1JJQ05yNXNramc2?=
+ =?utf-8?B?VE9DNEdGOWtYc1Byc3hTZW0xOXIyKy9QOFVDTlhiTEhsNWJjTG85RldJN0ZX?=
+ =?utf-8?B?NGt1WmVtTExCSStYdU5GQlFtQlBHdnlYMzNtQ08zSU9zRk42YzhSMGZXeEZ1?=
+ =?utf-8?B?dGl1d082OTVaWDhGd2pXMEYxZ1kzZmJTMmlMbENOb3dTeHNvZW02ODRWczUx?=
+ =?utf-8?B?ZzNLSm1WMks5emdxT0Q0OXYrNHc1WGYwZzltMXZjcFV3REx1dHRZaXNTaEdp?=
+ =?utf-8?B?M2xtcGFMSXhBTjFlOXBOd1krNmRuVitVb0xhMWpTV0F2THBKT3pRRHk1b0Y0?=
+ =?utf-8?B?MGFFNW1aMVRTT1VEbGhuSytIWlprakNtS1lETE9rMHZ3YWxHdU9KN1hQWm5U?=
+ =?utf-8?B?ZU9JcXFNL1pIMUhhTGpGZ0FBTDBUSEpRYnk5TmdFSDZTcC9hb3pFc1BkVlRE?=
+ =?utf-8?B?QXR0K3RBNHdFN3RicFFiU2pNd2xBdGpySlJ1amRmM2RZaEZ4VFp2OXIzeE9B?=
+ =?utf-8?B?K0NUS1I5T1NjaWkxbHh5YjMydnJIemZiSmJQT3lzN1V0alRzeStjQThPL2cr?=
+ =?utf-8?B?UWRkMzZhMjFpTytmM3JsblBudFRoamlEeFR4R2krUXJNNSt2V2dYTVVUajd6?=
+ =?utf-8?B?QTdEV0ZmZ0VDOTNoQ285ZWxYNVJZenpndzdHTW5CR1Z5MStqOEFZYjEzeUc2?=
+ =?utf-8?B?MlJwMkthNjNpTk54bERaV05NejRsRGg5T1VBT0tRU1lQYjEvdmxYSEZpRjFC?=
+ =?utf-8?B?N29oTzQxTExiZldVQkxxWWxoc2RoaG0zcHFpbk9XTWV6RkdBd3RZOXd4cE15?=
+ =?utf-8?B?M3lzVktiRHgvSDAyMENPWHF4d04vR3pKcUxYU0FxNW5UbnU1ZHdxbC92dTFF?=
+ =?utf-8?B?d1BKYkRmYkpsT2JYZkhQY0VtZ0EzSFlNVVhjOWJsTGJleUhZVFNUWnVVNE9h?=
+ =?utf-8?B?dFE9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7ea6d70f-f317-4151-2118-08dd92c879c0
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 May 2025 09:19:49.1799
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: mB5/k+YgAcOoYB8HiB5Xjnr04//+VtUI02Sd/plXmlq8StzUQ3DX5v7LUXzppLwW8LwUhnFUh5cH+YWxiSNvmQITNCfHXRmCabdgrIrAVxc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR04MB10010
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_010020_667022_77D26430 
-X-CRM114-Status: GOOD (  15.34  )
+X-CRM114-CacheID: sfid-20250514_021957_448567_7CE21231 
+X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,334 +175,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Sakura Pi RK3308B is a SBC based on the Rockchip RK3308 SoC.
+Hi Heiko,
 
-Link: https://github.com/Sakura-Pi
-Link: https://docs.sakurapi.org/article/sakurapi-rk3308b/introduce
+On 5/13/25 5:02 PM, Heiko Stuebner wrote:
 
-The device contains the following hardware that is tested/working:
- - 4 or 8GB eMMC
- - SDMMC card slot
- - Realtek SDIO WiFi 5/BT
- - 256 or 512MB of RAM
- - USB 2.0 port
- - OTG port
+[...]
 
-Signed-off-by: Hsun Lai <i@chainsx.cn>
+> +	rk809: pmic@20 {
+> +		compatible = "rockchip,rk809";
+> +		reg = <0x20>;
+> +		#clock-cells = <0>;
+> +		clock-output-names = "xin32k";
+> +		interrupt-parent = <&gpio0>;
+> +		interrupts = <RK_PA7 IRQ_TYPE_LEVEL_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pmic_int>;
+> +		wakeup-source;
+> +		system-power-controller;
 
----
+Please order the properties alphabetically, system-power-controller is 
+not where it should be.
 
-Changes in v2:
-- Update regulator names
+[...]
 
-Changes in v1:
-- Add support for Sakura Pi RK3308B
+> +	panel {
+> +		dsp_rst: dsp-rst {
+> +			rockchip,pins =
+> +				<0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
+> +		};
+> +
 
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3308-sakurapi-rk3308b.dts  | 274 ++++++++++++++++++
- 2 files changed, 275 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
+I would actually have a pull down here to hold the display in reset 
+until the driver is probed and goes through the reset procedure?
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index e63c3f5eb..c9017bdc3 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -12,6 +12,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-pi-s.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-s0.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-sakurapi-rk3308b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-anbernic-rg351m.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-anbernic-rg351v.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts b/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
-new file mode 100644
-index 000000000..b9032d4e7
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
-@@ -0,0 +1,274 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Akash Gajjar <akash@openedev.com>
-+ * Copyright (c) 2019 Jagan Teki <jagan@openedev.com>
-+ * Copyright (C) 2024 TheSnowfield <thesnowfield@sakurapi.org>
-+ * Copyright (C) 2025 Hsun Lai <i@chainsx.cn>
-+ */
-+
-+/dts-v1/;
-+#include "rk3308.dtsi"
-+#include <dt-bindings/leds/common.h>
-+
-+/ {
-+	model = "Sakura Pi RK3308B";
-+	compatible = "sakurapi,rk3308-sakurapi-rk3308b", "rockchip,rk3308";
-+
-+	aliases {
-+		mmc0 = &emmc;
-+		mmc1 = &sdmmc;
-+		mmc2 = &sdio;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		pinctrl-0 = <&wifi_enable_h>;
-+		pinctrl-names = "default";
-+		/*
-+		 * On the module itself this is one of these (depending
-+		 * on the actual card populated):
-+		 * - SDIO_RESET_L_WL_REG_ON
-+		 * - PDN (power down when low)
-+		 */
-+		reset-gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
-+	};
-+
-+	vcc5v0_sys: regulator-vcc5v0-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+
-+	vdd_core: regulator-vdd-core {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm0 0 5000 1>;
-+		regulator-name = "vdd_core";
-+		regulator-min-microvolt = <827000>;
-+		regulator-max-microvolt = <1340000>;
-+		regulator-settling-time-up-us = <250>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		pwm-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vdd_log: regulator-vdd-log {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_log";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1050000>;
-+		regulator-max-microvolt = <1050000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_ddr: regulator-vcc-ddr {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_ddr";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1500000>;
-+		regulator-max-microvolt = <1500000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_1v8: regulator-vcc-1v8 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc_io>;
-+	};
-+
-+	vcc_io: regulator-vcc-io {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_io";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_phy: regulator-vcc-phy-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_phy";
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+
-+	vcc5v0_otg: regulator-vcc5v0-otg {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_otg";
-+		regulator-always-on;
-+		gpio = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
-+		enable-active-high;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&otg_vbus_drv>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_core>;
-+};
-+
-+&emmc {
-+	bus-width = <8>;
-+	cap-mmc-highspeed;
-+	non-removable;
-+	status = "okay";
-+};
-+
-+&i2c1 {
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_det &sdmmc_bus4>;
-+	card-detect-delay = <800>;
-+	status = "okay";
-+};
-+
-+&sdio {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	no-mmc;
-+	no-sd;
-+	status = "okay";
-+
-+	brcmf: wifi@1 {
-+		compatible = "brcm,bcm43455-fmac", "brcm,bcm4329-fmac";
-+		reg = <1>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
-+		interrupt-names = "host-wake";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_host_wake>;
-+	};
-+};
-+
-+&dmac0 {
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rtc_32k>;
-+
-+	usb {
-+		otg_vbus_drv: otg-vbus-drv {
-+			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	sdio-pwrseq {
-+		wifi_enable_h: wifi-enable-h {
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	wifi {
-+		wifi_host_wake: wifi-host-wake {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+
-+	bluetooth {
-+		bt_reg_on: bt-reg-on {
-+			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_wake_host: bt-wake-host {
-+			rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		host_wake_bt: host-wake-bt {
-+			rockchip,pins = <4 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&pwm0 {
-+	status = "okay";
-+	pinctrl-0 = <&pwm0_pin_pull_down>;
-+};
-+
-+&saradc {
-+	vref-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
-+&pwm3 {
-+	status = "okay";
-+};
-+
-+&i2c1 {
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart2m0_xfer>;
-+	status = "okay";
-+};
-+
-+&uart4 {
-+	pinctrl-names = "default";
-+	uart-has-rtscts;
-+	status = "okay";
-+
-+	bluetooth {
-+		compatible = "brcm,bcm4345c5";
-+		clocks = <&cru SCLK_RTC32K>;
-+		clock-names = "lpo";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&host_wake_bt &bt_wake_host &bt_reg_on>;
-+		device-wakeup-gpios = <&gpio4 RK_PB4 GPIO_ACTIVE_HIGH>;
-+		host-wakeup-gpios = <&gpio4 RK_PB2 GPIO_ACTIVE_HIGH>;
-+		shutdown-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
-+		max-speed = <1500000>;
-+	};
-+};
-+
-+&usb20_otg {
-+	dr_mode = "peripheral";
-+	status = "okay";
-+};
-+
-+&u2phy {
-+	status = "okay";
-+};
-+
-+&u2phy_otg {
-+	status = "okay";
-+};
-+
-+&u2phy_host {
-+	status = "okay";
-+};
-+
-+&usb_host_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host_ohci{
-+	status = "okay";
-+};
--- 
-2.34.1
+With the two above done:
 
+Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+
+Thanks!
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
