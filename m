@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CCE5C3ABCC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 12:32:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5F33C3ABCC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 13:07:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FA5n0vMecGJHbDkCX4ONGzwrd42yiTx+KvZKf/DVHrI=; b=bTsks/6HyZJONQ
-	ti/VpNNydwuDKBu0vlPKuT0IGd3aBZtXFecSO8nBaqAlJL7UBHIq/9GoaX5fvm41fF/h5YjzYkdYE
-	CDeWVUOw8OV0SX/FfKYExH7EgXiRtmh8FxkAfcUlUAwhGcPqNl9TVEsvRdGjtstdNX3bbKWb3d6JS
-	VEh8OjL0n/M6OP/T6AXaVmFvwRT0eGFLmVl0f+wwUw8Yee8QuWT68iTAgM0u5XGm/sbAvoim3OOoE
-	jWpJWH0EBhmMqbEnqZiVep7x/OSN4PZ4msxs+8IeXjovdbPjUCpFuJzNDkqIxCcdA92s0AYdTIzA8
-	dnQVN6mHDkmbWCyeNOLA==;
+	List-Owner; bh=WqTHMRRmK2CF8Mp/xcZMpEbjAYHfKzYBZL5VaTvnuYA=; b=lcojMSYZ7OPLuv
+	m62oc48Ryf+SjeasPQKMxgQbnH9i9B2ow2w8wMsjmvkkOiVND2TA1HKIOEjdAM4u6OSFeHyWLY5c5
+	1IJYTzgGfre0B0OE2rr+OzFmMP/Fh7J6tPzN40r2jL2rNp27os2QWZkyODvbJCn/JnvO2Q97fb0ez
+	Q7QKBja2RoitI/lFOnGyG3hUrDIHUT1rXvZPaipHFhjgxd16euDZSoXGbYBBlFZK15BfR9H6s5jfc
+	DOfU7XZrF6qYC/sIFR8TcMhqMukb6fXjOmtPNddB78hVzMbj7qki2a9l6vWJhjVltnDinMKgb1zXg
+	Vnf3AqrhOBnyHHLqghGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFBHq-0000000F6QY-28pi;
-	Wed, 14 May 2025 12:32:38 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uFBph-0000000FA3F-0COo;
+	Wed, 14 May 2025 13:07:37 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFAR0-0000000EubO-0EbN;
-	Wed, 14 May 2025 11:38:03 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 371065C0529;
-	Wed, 14 May 2025 11:35:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF8EFC4CEF1;
-	Wed, 14 May 2025 11:37:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747222681;
-	bh=VTTFlFqKbZj0R8bXBdiVnWfhHcHtgwA35tKgTuWcnVU=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=hYEdMW7LCyn/VajqjaK57h7r8AIr9wN+sZU6do3nH9g10ZAapJSRlZ7IyL2jTwJJT
-	 E0lHBkvqO5apGHk6vnvxGBjrEoF2CraczeBykW5lB/gRMGzgUFSMkxCefMcxj6X55z
-	 I7mzAJqyT/H5Pyu6J5uo6NPluCkc4lphFKhQ45JHGeajXxZksrdY8NJveHmAt16luC
-	 aidw2Z558EqKwupkCgSK4Xp4BY1nx6hK/zPRInmK0wxuqeEJk+gORwD/pBWKEPnjt6
-	 fyU33tAJdUv3u0X4g0yD2l2uUS89g1EMqnbrj+6oKcy2XxK54rRyRtrGk3EmGQMQZn
-	 h4p/WzsjKf5Sw==
-From: Vinod Koul <vkoul@kernel.org>
-To: heiko@sntech.de, Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
- Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>, 
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-phy@lists.infradead.org, Kishon Vijay Abraham I <kishon@kernel.org>, 
- linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20250415050005.52773-1-kever.yang@rock-chips.com>
-References: <20250415050005.52773-1-kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: phy: rockchip,inno-usb2phy: add
- rk3562
-Message-Id: <174722267864.85510.12860114066219144808.b4-ty@kernel.org>
-Date: Wed, 14 May 2025 12:37:58 +0100
+	id 1uFAvK-0000000Eyzl-1x7m;
+	Wed, 14 May 2025 12:09:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=bup6NhA6evSSr2vJWZ/rxyhkcFN8+wVdFF6iyZzNxv0=; b=Kn5WA/IgtVwya2trKCfDWwBt4L
+	Ax8KEO0MFmCad8uHSBjVGREVqgK9JppRgf9qN1yx/iR/dc1UXV8hUvFsBqM5N+kuN3KRdlGZtNxA+
+	kEMLBspjNg/2GcRjfKUaIhWRd/jwUJCTYSwv1bHXcrXwdIugoWIA8OIxa6E9wHfkuVmonl5g1Bt7E
+	axhbBtp0o7sbKJC/yFfy2KS83rCPhbQo6JiuVDLG6EFbk/Kjww14En+c5PI4s5PQA2RRrHpOPyhDU
+	sj0X6rFjHZ/VRRlZ7zUJL7e4wLzZ3fEnCwCFd1p4Ed7SVbpBnrbxFvL2EJUmpCR97PexiFdpjRiYK
+	A3xCtekg==;
+Received: from i53875a50.versanet.de ([83.135.90.80] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uFAvI-0005f9-VP; Wed, 14 May 2025 14:09:21 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: quentin.schulz@cherry.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH v3 2/6] arm64: dts: rockchip: move reset to dedicated eth-phy node on ringneck
+Date: Wed, 14 May 2025 14:09:02 +0200
+Message-ID: <20250514120906.2412588-3-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250514120906.2412588-1-heiko@sntech.de>
+References: <20250514120906.2412588-1-heiko@sntech.de>
 MIME-Version: 1.0
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_043802_139708_81D8CDD9 
-X-CRM114-Status: UNSURE (   4.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250514_050922_518313_6D07105A 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,23 +79,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-On Tue, 15 Apr 2025 13:00:04 +0800, Kever Yang wrote:
-> Add compatible for the USB2 phy in the Rockchip RK3562 SoC.
-> 
-> 
+Using snps,reset-* properties to handle the ethernet-phy resets is
+deprecated and instead a real phy node should be used.
 
-Applied, thanks!
+Move the Ringneck phy-reset properties to such a node
 
-[1/2] dt-bindings: phy: rockchip,inno-usb2phy: add rk3562
-      commit: abf55cdf9c5e58bac1feaff2e21bec43b898746c
-[2/2] phy: rockchip: inno-usb2: Add usb2 phy support for rk3562
-      commit: 80edd21db00c0829c276baafa8871ae02c6e9d91
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
+---
+ .../boot/dts/rockchip/px30-ringneck.dtsi      | 22 ++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
 
-Best regards,
+diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+index 142244d52706..ab232e5c7ad6 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+@@ -83,9 +83,7 @@ &emmc {
+ 
+ /* On-module TI DP83825I PHY but no connector, enable in carrierboard */
+ &gmac {
+-	snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
+-	snps,reset-active-low;
+-	snps,reset-delays-us = <0 50000 50000>;
++	phy-handle = <&dp83825>;
+ 	phy-supply = <&vcc_3v3>;
+ 	clock_in_out = "output";
+ };
+@@ -344,6 +342,18 @@ &io_domains {
+ 	status = "okay";
+ };
+ 
++&mdio {
++	dp83825: ethernet-phy@0 {
++		compatible = "ethernet-phy-ieee802.3-c22";
++		reg = <0x0>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&phy_rst>;
++		reset-assert-us = <50000>;
++		reset-deassert-us = <50000>;
++		reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
++	};
++};
++
+ &pinctrl {
+ 	emmc {
+ 		emmc_reset: emmc-reset {
+@@ -351,6 +361,12 @@ emmc_reset: emmc-reset {
+ 		};
+ 	};
+ 
++	ethernet {
++		phy_rst: phy-rst {
++			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	leds {
+ 		module_led_pin: module-led-pin {
+ 			rockchip,pins = <1 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
 -- 
-~Vinod
-
+2.47.2
 
 
 _______________________________________________
