@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D8AC3ABD9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 06:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF52CC3ABD9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 07:46:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2MWlDfrlX6Jm0UC1BcSr8H3mqE1lHnu+nGlm2gwWoM4=; b=ttoZlRW4k6f6QR
-	EOy58i+thqznCp/sMya+GKqFSAPqjI+KGWPCurcSO5NOxdF7rje6jZvtMnZQDIE7jUw+y4QswxmaW
-	4qle9rwNGGfmdZTKsKY7HUoaO1B04Wn5qr7JkhnnN1jEFVcGlD/L+mIAALPEvP/hTHmaBT9YAvAly
-	eLHKQbWfg4Pv+AW/Kx77xDYnTJddsZY8DDqq7ux+sRT6Y+2W5L26auFo7pcvtTRdlBzk4LxVupF5U
-	XMUO48taJD8SSJdxZP3+JSYcWRaYV8wVM6Ib5CItCCNs+we5FasB8w1foqcNH+fk+ox+pFu5t6jvY
-	7SGOAD4o+91bJb004EBA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=uM2Hf2qav01m2BVwkFhYB6PKdLFzz7gHW1hH6fS+JdA=; b=qCwjWY7nL7BcpN
+	7bcZXXDo18G0P8pcXjwM2WYSvyTi9on2gNc6zKIJH8d/eKGhPCTjfF+M/7jClQTKwwLbZ2yjJ389A
+	vlthaISG2M3JnjrfvUKD2QObpLPWpg6rJwNz7Pb8DFSr9K1jPMmndMvF3uaLrCjqlfmfmEIm+O/Rk
+	k3/LVqzij2Kz07maVq+Xk0KyyUkHOQY8Z4/DAO7gH1NA3QTsDuL+7JDK2ZHOT5p3kDi9I2Y2nU/S8
+	vmubTCzjZTy1D4U8oS09GqAwHKBn5RrikpYk2Smu3d4+qdvzhycNon1bh0HkBsJq8d6IhEUJm8aAJ
+	wexl+USfnJGjSuGCWLhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF5oK-0000000ECNz-34Rz;
-	Wed, 14 May 2025 06:41:48 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uF6oO-0000000EO6q-0maL;
+	Wed, 14 May 2025 07:45:56 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF5mH-0000000EC9N-42KM;
-	Wed, 14 May 2025 06:39:43 +0000
+	id 1uF6ly-0000000ENXS-2j91;
+	Wed, 14 May 2025 07:43:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 001EDA4D948;
-	Wed, 14 May 2025 06:39:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8D9AC4CEE9;
-	Wed, 14 May 2025 06:39:33 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B214B43A01;
+	Wed, 14 May 2025 07:43:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5892CC4CEF0;
+	Wed, 14 May 2025 07:43:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747204780;
-	bh=dLPnyVUsbA+rtCJMIW6m9OfctifOEzbCmjQWykaELdY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ApOhuhEuDmYEwqlYD7YTcY7XBW03QADe1CXb2AIDTCM5K6qqNkLQHPl+K6EStB7Nu
-	 LSVAz1lF7tmMH3CXj8T+tnxp344EKktRPOP6T6OqNML3TRHf/ak2iytL0NpM4t8y4c
-	 vDASdz+Ds6U/ikxD1tls9K8UoyxgAtdMMls7bgFvWSDqq2C35gYSLLmFh7/L6vuyTT
-	 sks9k9MhdTV0nx5MtSH5wk35Rcm63PaNFk8AhIaLwiqbNoCW4DCfdOU8Hbm2CeRhZU
-	 /mGclfsrNqaVuF7zr7ULuQtpwZM3fCma/5dj9rGvoz6bOR4Z2NVAG8FiqBdHpEhYVC
-	 KnRF2lU7SbqYQ==
-Message-ID: <a5c3efbc-89a4-45c5-a14c-d0c0fd2e232c@kernel.org>
-Date: Wed, 14 May 2025 15:39:31 +0900
+	s=k20201202; t=1747208605;
+	bh=IlNY+N9xZbP25gW4EGqg6yQNRWjc9oFtjCsewb4Lipc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ZTzZu+lLM2/EY5NaqE4555dxzcvf9L5+n1Q/AqvAOPJ4l5CNK3mFqBHEdRjHx8QHF
+	 Pr700C7l1M2TO+k1PNW8D5/VoiYK6l5SRDWP6dvmPcI/PmDmquobLex6zmBbgU64Hn
+	 w8et4LvHFqbZV0//7yP2mp2YROFqdzLUD6CwH2JEQwZeElBnZuOz/7QQwPQMCY2qjC
+	 x6POWwDGHOaa0CHcAvZBe19ZB197JnDPwH2d4zNuV+OKH798iWeBngrzQztZpJrM5k
+	 iGs2pMt5+CcS2N10zCIhv5NSTOfreZCNGaex9g1Z2Y1E7mcvMFN9n8Ux775y1Q5hpI
+	 BREF6ztaRl+Bw==
+From: Niklas Cassel <cassel@kernel.org>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Alan Douglas <adouglas@cadence.com>
+Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v3 0/6] PCI: endpoint: IRQ callback fixes and cleanups
+Date: Wed, 14 May 2025 09:43:13 +0200
+Message-ID: <20250514074313.283156-8-cassel@kernel.org>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/6] PCI: endpoint: cleanup set_msi() callback
-To: Niklas Cassel <cassel@kernel.org>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Jingoo Han <jingoohan1@gmail.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Kishon Vijay Abraham I <kishon@kernel.org>
-Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>, stable+noautosel@kernel.org,
- linux-pci@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20250513073055.169486-8-cassel@kernel.org>
- <20250513073055.169486-12-cassel@kernel.org>
-From: Damien Le Moal <dlemoal@kernel.org>
-Content-Language: en-US
-Organization: Western Digital Research
-In-Reply-To: <20250513073055.169486-12-cassel@kernel.org>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1360; i=cassel@kernel.org; h=from:subject; bh=IlNY+N9xZbP25gW4EGqg6yQNRWjc9oFtjCsewb4Lipc=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDJUPCf+XWco1erKs6pN+l7Gp1NrNKoq10le+N4UuLKjS 9W7+d/jjlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAExkxleG/xWmYoVW9l+5t1e+ 3fr01zXeOov4BWwtH2LFJ/f0xX56asDwvzx2gufxZNGYp+vMX81gFu4sTOyJs7L0j/B8I7OJ+5g 7BwA=
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250513_233942_141025_C77FB8B1 
-X-CRM114-Status: GOOD (  20.11  )
+X-CRM114-CacheID: sfid-20250514_004326_710961_DEDA79DE 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,75 +88,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 5/13/25 16:30, Niklas Cassel wrote:
-> The kdoc for pci_epc_set_msi() says:
-> "Invoke to set the required number of MSI interrupts."
-> the kdoc for the callback pci_epc_ops->set_msi() says:
-> "ops to set the requested number of MSI interrupts in the MSI capability
-> register"
-> 
-> pci_epc_ops->set_msi() does however expect the parameter 'interrupts' to
-> be in the encoding as defined by the MMC Multiple Message Capable field.
-> 
-> Nowhere in the kdoc does it say that the number of interrupts should be
-> in MMC encoding.
-> 
-> Thus, it is very confusing that the wrapper function (pci_epc_set_msi())
-> and the callback function (pci_epc_ops->set_msi()) both take a parameter
-> named interrupts, but they both expect completely different encodings.
-> 
-> Cleanup the API so that the wrapper function and the callback function
-> will have the same semantics.
+Hello all,
 
-Same comment as patch 3. Mention the semantic the patch implements.
+The first two patches in this series are IRQ callback fixes that should
+get backported.
 
-> 
-> Cc: <stable+noautosel@kernel.org> # this is simply a cleanup
-> Signed-off-by: Niklas Cassel <cassel@kernel.org>
+The reason why the bugs existed in the first place is because the APIs
+are very confusing. The rest of the patches are cleanups of the APIs.
+These cleanups should not get backported.
 
-A few nits below, but other than that, looks good to me.
 
-Reviewed-by: Damien Le Moal <dlemoal@kernel.org>
+Changes since v2:
+-Reorder patches to have more logical ordering
+-Capitalize first letter after prefix (Krzysztof)
+-Improved commit message of the cleanup patches (Damien)
+-Renamed parameter interrupts to nr_irqs (Damien)
+-Picked up tags. Did not pick up tags on patches that changed significantly
 
-> ---
->  drivers/pci/controller/cadence/pcie-cadence-ep.c | 4 +++-
->  drivers/pci/controller/dwc/pcie-designware-ep.c  | 3 ++-
->  drivers/pci/controller/pcie-rcar-ep.c            | 3 ++-
->  drivers/pci/controller/pcie-rockchip-ep.c        | 5 +++--
->  drivers/pci/endpoint/pci-epc-core.c              | 5 +----
->  5 files changed, 11 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/cadence/pcie-cadence-ep.c b/drivers/pci/controller/cadence/pcie-cadence-ep.c
-> index 78b4d009cd04..f307256826e6 100644
-> --- a/drivers/pci/controller/cadence/pcie-cadence-ep.c
-> +++ b/drivers/pci/controller/cadence/pcie-cadence-ep.c
-> @@ -220,10 +220,12 @@ static void cdns_pcie_ep_unmap_addr(struct pci_epc *epc, u8 fn, u8 vfn,
->  	clear_bit(r, &ep->ob_region_map);
->  }
->  
-> -static int cdns_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn, u8 mmc)
-> +static int cdns_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn,
-> +				u8 interrupts)
 
-To be extra clear, I would rename this num_interrupts or nr_interrupts. No
-confusion possible with such name.
+Niklas Cassel (6):
+  PCI: dwc: ep: Fix broken set_msix() callback
+  PCI: cadence-ep: Fix broken set_msix() callback
+  PCI: endpoint: Cleanup get_msi() callback
+  PCI: endpoint: Cleanup get_msix() callback
+  PCI: endpoint: Cleanup set_msi() callback
+  PCI: endpoint: Cleanup set_msix() callback
 
-> diff --git a/drivers/pci/controller/pcie-rcar-ep.c b/drivers/pci/controller/pcie-rcar-ep.c
-> index 9da39a4617b6..b25ad23bedb7 100644
-> --- a/drivers/pci/controller/pcie-rcar-ep.c
-> +++ b/drivers/pci/controller/pcie-rcar-ep.c
-> @@ -261,10 +261,11 @@ static int rcar_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn,
->  {
->  	struct rcar_pcie_endpoint *ep = epc_get_drvdata(epc);
->  	struct rcar_pcie *pcie = &ep->pcie;
-> +	u8 mmc = order_base_2(interrupts);
-
-Same rename suggested here and for the other drivers.
-
+ .../pci/controller/cadence/pcie-cadence-ep.c  | 14 +++++-----
+ .../pci/controller/dwc/pcie-designware-ep.c   | 15 ++++++-----
+ drivers/pci/controller/pcie-rcar-ep.c         |  8 +++---
+ drivers/pci/controller/pcie-rockchip-ep.c     |  9 ++++---
+ drivers/pci/endpoint/pci-epc-core.c           | 26 +++++++------------
+ include/linux/pci-epc.h                       | 11 ++++----
+ 6 files changed, 39 insertions(+), 44 deletions(-)
 
 -- 
-Damien Le Moal
-Western Digital Research
+2.49.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
