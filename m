@@ -4,56 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 609FAC54756
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 13:53:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E361C3ABDE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 13:54:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KF3GrzMPhfJMIavt1AkB4cChAIw7ykazOOC91qcE4Ig=; b=FBW/l0SS6qS3Gl
-	1iIzGJbwilpCgakPD6yQptd4NlJB0Csq/W8BX7/kD8haTrRPq04Et2rS6XzG1vIgtLwoYD++GS+Mo
-	JLpRu4qNgeqXBMsiBL6OZlsA+E/blU1sbbSn6P99fAK+glH/ZlrX/0XBuOo9sM1ncMx9EJIWziSY9
-	84cdeyA2L9Fcc2O/MMNCRIVCs5glwlX0ADuxSedOEA1/7PDFMHOp8rm6j12IzlRWP5Uj16QOAiMD7
-	CxFBfSqunYEQgWoidUwi+XNcVlbi046rJHlPpRHaamFev+sN4hV72usFvSzb/uqQpn9gVWC0m7reO
-	jTbd0NY97NzCA62dJWxw==;
+	List-Owner; bh=ep84qq6esUFLQnWTXH0OLe7RCS5akbJHqVA/0K97uDg=; b=Yzq5R1NJOk4ne4
+	+KDqJWnm3uGe/ENkN9JM9WCmcywgXABXNoPsiuQhB/Jmwo7AAFiD8SeV+uqBdijcnkZjYhkLsgJey
+	XM7TThL76Wa34of+cjZViqwXAi89z5Fe2HnQB4RY94/lf3RsA+CC0OWa2yTCmxrQM7NKHRivctXuR
+	B+4dtB1/ITXJri0OSTMSUFKTWL+EEQonLV4qFmw3IR+SXdBHK+FUUPu2jDdMbVwvc3IlNFRqZXYez
+	jNBL4Rx4tDeEOw5LbZ/q3GSAQaK2RaobnxWxYgHoJ9BlGCpGvKzo0hmqo0XMzmiJsdECLuJP3V6oN
+	NTa+XGcQhLIR1Zd0YdOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFCYQ-0000000FI5O-2kt5;
-	Wed, 14 May 2025 13:53:50 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uFCYZ-0000000FILf-1Jvz;
+	Wed, 14 May 2025 13:53:59 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFAKz-0000000Etzf-09MC;
-	Wed, 14 May 2025 11:31:49 +0000
+	id 1uFAQM-0000000EuPv-2Lpp;
+	Wed, 14 May 2025 11:37:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 60DC161155;
-	Wed, 14 May 2025 11:31:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C81CC4CEE9;
-	Wed, 14 May 2025 11:31:46 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1F91344DA2;
+	Wed, 14 May 2025 11:37:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3511AC4CEEB;
+	Wed, 14 May 2025 11:37:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747222308;
-	bh=6Y5lH/WN0GXq+set7ttl4tqIU0/kQ62gjvDykjHOqzE=;
+	s=k20201202; t=1747222641;
+	bh=i533NMeV5GO7/xUYiXrfMLveCBR6FPalyI6+47rPinA=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=sLcy25pS7iL/rQ9QW6thOkXNhocSovucg+Eoa69c+SKgcsR7i/6khpAhCx3CmHHET
-	 RMgf6+yVpOtHzY/LIXjq0JVkQ80rVW4vdF7bXKvulUh1sPz6I+H7lCHfA6gnP5v6j0
-	 bMJTk79HQaa3x2/L8jBZX63VPTvbnh2z67tP+9XPuaTZ/x/m2yrwoUBneGuxNAELxH
-	 cOCabt81A3kS13yfg72CA28bKh1nng0dGBdQtXSy+945S5rXZqNEnuzEzDIK+1MZ/Q
-	 dMvbH49Kp36wfIQ4anz0Xpbx3zjTdif8qQrMs6V1TH4aa/jZXUP4aB5Bupkllp44eS
-	 OYSott8KMl/0A==
+	b=B5DCbJdDVntyYKsinJJZkSasBRsJRoIJbKDNq0evLfR5lBVlzCo3GjKAMoL5xXgI8
+	 6RrU/kNHwaLRNUh/Kc1Va43x0qX8rJCbT5pgsVAHKLNukv8kPSUNWc9Cpjv3Kjm4Hf
+	 CFXTEkOaiVAMsS+DmJaMCILJBIa97FDqWmA2xaQ+J+ucod3JSEI6wP9Hs95WL+ITbp
+	 6FJRJZdJs72MtXP0gIrsnLKkCKUj+KHQBilQdjtXp4Ok/XMTAqPUNNhA+xVKysVTb7
+	 CvO+e1DQYEC3SUoKaAV3ykq3pdevrjaOnrH4qmxuQkvSCEUyGoL+zDg9K03UmNAKri
+	 rDsC51GYixY1A==
 From: Vinod Koul <vkoul@kernel.org>
-To: kishon@kernel.org, heiko@sntech.de, cristian.ciocaltea@collabora.com, 
- andy.yan@rock-chips.com, Algea Cao <algea.cao@rock-chips.com>
+To: kishon@kernel.org, heiko@sntech.de, Chen Ni <nichen@iscas.ac.cn>
 Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20250427095124.3354439-1-algea.cao@rock-chips.com>
-References: <20250427095124.3354439-1-algea.cao@rock-chips.com>
-Subject: Re: [PATCH v2] phy: phy-rockchip-samsung-hdptx: Fix PHY PLL output
- 50.25MHz error
-Message-Id: <174722230604.74407.7449753819890518835.b4-ty@kernel.org>
-Date: Wed, 14 May 2025 12:31:46 +0100
+In-Reply-To: <20250415081200.349939-1-nichen@iscas.ac.cn>
+References: <20250415081200.349939-1-nichen@iscas.ac.cn>
+Subject: Re: [PATCH] phy: rockchip: samsung-hdptx: Remove unneeded
+ semicolon
+Message-Id: <174722263987.85510.17860995825685488845.b4-ty@kernel.org>
+Date: Wed, 14 May 2025 12:37:19 +0100
 MIME-Version: 1.0
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250514_043722_621218_5A9890BC 
+X-CRM114-Status: UNSURE (   4.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,23 +74,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 27 Apr 2025 17:51:24 +0800, Algea Cao wrote:
-> When using HDMI PLL frequency division coefficient at 50.25MHz
-> that is calculated by rk_hdptx_phy_clk_pll_calc(), it fails to
-> get PHY LANE lock. Although the calculated values are within the
-> allowable range of PHY PLL configuration.
+On Tue, 15 Apr 2025 16:12:00 +0800, Chen Ni wrote:
+> Remove unnecessary semicolons reported by Coccinelle/coccicheck and the
+> semantic patch at scripts/coccinelle/misc/semicolon.cocci.
 > 
-> In order to fix the PHY LANE lock error and provide the expected
-> 50.25MHz output, manually compute the required PHY PLL frequency
-> division coefficient and add it to ropll_tmds_cfg configuration
-> table.
 > 
-> [...]
 
 Applied, thanks!
 
-[1/1] phy: phy-rockchip-samsung-hdptx: Fix PHY PLL output 50.25MHz error
-      commit: f9475055b11c0c70979bd1667a76b2ebae638eb7
+[1/1] phy: rockchip: samsung-hdptx: Remove unneeded semicolon
+      commit: 3b2b414927dcbd866c99ec92e3a214a69fc51c90
 
 Best regards,
 -- 
