@@ -4,79 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BA3DC3ABD8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 15:24:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E47DDC3ABD8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 15:50:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rKS8pMbUHIb+jgbPwZf1VkH7GZ5bslOAWhxg6ssIf3I=; b=utKYA9YdIbRm3x
-	ZCjBgPagbT3zsjg+Ru8utrpYwHnncNk3qLzSL+jRUdYIo1ICzO/s02Njc7SiY9izNuWggvyU3EZLn
-	r/uF3xIMRbWfzBddsuisW2Pc6LQ5bLLXowJZHOIilChqPxis8Fcjk70tD2x42wBZPmjLQj5mufL5d
-	q3K9KqyDzfYMPJYLHsfll8GlfJH2cvVcCS1xy1XIkyOEMpnH87RhoHrIQYn0ntlUMWnNKCtFFZofB
-	Hw7NcwOx7NX+WC9uMsMbtWbNLhl37RaGY4oVSv9MQadnr9cqwDo97NjxR5wRX3o0BoS5gylQ01mrk
-	LuuI++gMOb8GrcxUrGFw==;
+	List-Owner; bh=t6TDnGGUbc+bIM1rH+ehZaDskmDPp7LwL4XV7j9xkJo=; b=EQWWZb6Mr9wmq4
+	UTut7g+Cl5fAj83ecgWtiHTyi9pxAhOklMWqv3R6Ovds2JSrTRsqzc0WMK7lo3J1s8+on8RV8u5zo
+	8PDmmlVEhUHag+RtzaoZ2U+qNLc/jeDgC005FapZus9L1Iq/CFS8Wg74B4C0HbOkslmJMG6GcPXEk
+	wqhdwtCUeH6rS2LyxkmByFEgbDjXzfIWT12Swt0t8GA+FxWOLn1FAt0rToCpB/5UrhMuZwLYgeEco
+	vtpy/GJgdfle9xMj3IXbaOsqbHVyByeryzi2hm28XUU0jXsIP1vYzFxZoAaO/TjTk1IIIsVjnzO8O
+	uwGASQIHEsrgzUmtA2cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFDy7-0000000FaMM-47us;
-	Wed, 14 May 2025 15:24:27 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uFENQ-0000000Fe67-3NNF;
+	Wed, 14 May 2025 15:50:36 +0000
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFDiF-0000000FWV2-2WJ8;
-	Wed, 14 May 2025 15:08:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=Drf+NVrVuz8HdLieCwaETCrvT5VW/a6sghwm+qTJzWg=; b=Vp4s0nf7c57B/APqtdkLKzfDq3
-	UMLGJ7q0EkpA/yrKLutzEpjoFQ11SFSsa2R0laWqNAbJiTsqJsHyAyg4MManzLoB6cySi2ZEoOCan
-	fZ6ST69PyE4Z+OVww2bOY7MpqnVWu3ygFvYV84+BQoc1qqLvp0bi5bU5T2YA4tsOR4jWCwnYbsn3l
-	XvqmzTAZrM5pvLRx6/MG9TfnnuEp4VvKRdlDazNRSYQ6bgp4Gds/ejYbThBAGXoebsAey0rqi11x5
-	myT8XVNwQShb8KtAQP3ye1y41z5zvPf4khFQcyIoye4YBGz9PdJoGmFi3gce6UmfK1VFRAGdvzXhg
-	4/XZJSgA==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1uFDiA-0000000HE47-3siE;
-	Wed, 14 May 2025 15:08:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=Drf+NVrVuz8HdLieCwaETCrvT5VW/a6sghwm+qTJzWg=; b=cbreNX6iIiLWQZ+zDS8RTJYuS7
-	krv7lSwz5rhhB2FAUxleRZgwGQGBnn/K++9g4EF3fE/GK4EFGIZuHsnzUE/QGK0p0dOyUHF50O4KW
-	BN7ZNIl8ny/iclMCRllL0Fn/6bSUG1cAa6MutXCAuovX1OB7TcXJ2t+EwP7IOd/22zq/2lRudboKj
-	BX/0bMG3uoCiWCrKnVOl0sfkQJ5lU3mcyYjMzMki1tlU8EktyDCtPAm9B8JGxS0/93ayEP1dvpMdQ
-	nXkRhKSYHFwTcZ/0G+zEr4GZnoAhTgtKCTLCkuRuwaOOH3Y3YaKURDzKPlnge95vnvv4yvR/hd8ml
-	kTluc3Ig==;
-Received: from i53875a50.versanet.de ([83.135.90.80] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uFDiA-0006vE-CB; Wed, 14 May 2025 17:07:58 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: quentin.schulz@cherry.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH v4 6/6] arm64: dts: rockchip: add px30-pp1516 base dtsi and board variants
-Date: Wed, 14 May 2025 17:07:45 +0200
-Message-ID: <20250514150745.2437804-7-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250514150745.2437804-1-heiko@sntech.de>
-References: <20250514150745.2437804-1-heiko@sntech.de>
+	id 1uFDnN-0000000FXff-3D8T
+	for linux-rockchip@lists.infradead.org;
+	Wed, 14 May 2025 15:13:23 +0000
+Received: by mail-yb1-xb35.google.com with SMTP id 3f1490d57ef6-e72a786b1b8so1058615276.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 14 May 2025 08:13:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1747235600; x=1747840400; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=J8jj6jRyHpEahWPL1bxwBIDklu0Ui7Dm+eEH5GeKLrc=;
+        b=EBPKuSDE2dIn9wEsDTI0NBMcNQAtC3PLS4enmUi15dTuIrLS5lPBaKOfWNK2oegR2M
+         pf9auUegpr/1JQnwrje7o5qN8ArjXMccKnpuRCrX0BYBUwrb+sYrAflkg0M4FYwoZDLp
+         00KAUlag3HpC+yrfvjq7sqGeEeh1KTqhDF09GZ2xirQ1oTlv/TQ2a9TW5EVg44eTcDce
+         bhZf8qeKdLyyQWSJqBS5fe33AdxVp6cOahRQVvMnJ9gpoU1JtLuEnE/l+1THZLWCXija
+         0/TXYOLjRcRCYOrat6W2kCzhDgyMHvouukBjyqU4I0kVu4DhAgSXk4IBbmaXQpYaVm1R
+         cP+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747235600; x=1747840400;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=J8jj6jRyHpEahWPL1bxwBIDklu0Ui7Dm+eEH5GeKLrc=;
+        b=Qgoj13Grlb1escOSxAE7qzFGqTqXfeifsXB2LDeXRphgYlB7sDEDgQrhZJh+SL2PJ+
+         sYyLuI5sNyTHzBa+TNxMvFDytlre4AHPYK3gdTIppguGsp10s2wKOdWGbJyE4dZ40Sfz
+         CVhlbFWw30Il02HAKl7WQT2a7vdCRGQtEcfUh4v7YqwvNBneBtiQuq27Y9o7UJ5p8zTq
+         ZNfyZVCwp+LYZE02U6B/VzELkUBHJQlZfgB3hgbFbhv61QjB4wKTHzJGYmvQBn7y44N9
+         gV/6fGujo5F1s0v5xlRzw+/2RoMNlb4E1nw2q93ZvGjd19+sSJsY4IsmlKFncTUbknhp
+         b7GA==
+X-Forwarded-Encrypted: i=1; AJvYcCX2ApU18wSTew2LB4NDiG8GrMBINtTTEVZ05TdLwlgEDFj9qKIxiG3yeUrOhx8PemMBKTApM9UcQwrQ1O9sQA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxNHTKPYPzTRqiLyJGSgtnNUREKm1ABWKNPbJ7Iu8PvGJgRQyoP
+	Mj0/9NTW4yg9xCu+Kj08naRpgRLBAw+I+KmFDfsRFCANGOHH5E0dTneVK92vezbEiUV9prG2MA0
+	xEwGpOuqKxrIVuFR38rM7V/kGRdnn+zBFTds+AA==
+X-Gm-Gg: ASbGncuJ5eSEL6WWAWdLluOZworDIY35H9tBLekNJE4W+gBcAN+bMFWCuC+jT+3cA/i
+	KLyEKkZU+BKwYMHFZrj2OJjzSAinPewNfP+m6nk/HDEfR7nvUvo433hea+IfVSYIeNDszPdS633
+	ek3oxkfX1rv9QKUTVt9Qh0AOH/my78Veo=
+X-Google-Smtp-Source: AGHT+IHfG4IdFhrynlohLcjINUvWUYxudJNltoIen2Onw6R0djfVvCV0/FdSfcdQNubeHC89QVS5keitmH669vIpZ7M=
+X-Received: by 2002:a05:6902:2389:b0:e78:f538:1c54 with SMTP id
+ 3f1490d57ef6-e7b2bde5e59mr11105285276.4.1747235600229; Wed, 14 May 2025
+ 08:13:20 -0700 (PDT)
 MIME-Version: 1.0
+References: <20250423-rk3576-emmc-fix-v3-1-0bf80e29967f@collabora.com>
+ <CAPDyKFp5N23KCZwOTba6vGyk9eaS1-SjSqY52FfPDng-bahn6g@mail.gmail.com> <6154950.lOV4Wx5bFT@workhorse>
+In-Reply-To: <6154950.lOV4Wx5bFT@workhorse>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 14 May 2025 17:12:44 +0200
+X-Gm-Features: AX0GCFtDU_yTZnx-ehoHmNHeQ7h0DL35V2e2RHKt0pgXDptXnpjYmnfRRnWBnck
+Message-ID: <CAPDyKFpohUibXp_ReVquAxYHY7vZ28P1XmOCTU5GPQdLKYEaNg@mail.gmail.com>
+Subject: Re: [PATCH v3] mmc: sdhci-of-dwcmshc: add PD workaround on RK3576
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Elaine Zhang <zhangqing@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, 
+	Adrian Hunter <adrian.hunter@intel.com>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	Detlev Casanova <detlev.casanova@collabora.com>, kernel@collabora.com, 
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mmc@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_160759_101408_68F8D6C7 
-X-CRM114-Status: GOOD (  18.21  )
+X-CRM114-CacheID: sfid-20250514_081321_824224_821F3188 
+X-CRM114-Status: GOOD (  32.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,740 +100,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+On Tue, 13 May 2025 at 16:27, Nicolas Frattaroli
+<nicolas.frattaroli@collabora.com> wrote:
+>
+> On Tuesday, 29 April 2025 12:06:16 Central European Summer Time Ulf Hansson wrote:
+> > On Wed, 23 Apr 2025 at 09:54, Nicolas Frattaroli
+> > <nicolas.frattaroli@collabora.com> wrote:
+> > >
+> > > RK3576's power domains have a peculiar design where the PD_NVM power
+> > > domain, of which the sdhci controller is a part, seemingly does not have
+> > > idempotent runtime disable/enable. The end effect is that if PD_NVM gets
+> > > turned off by the generic power domain logic because all the devices
+> > > depending on it are suspended, then the next time the sdhci device is
+> > > unsuspended, it'll hang the SoC as soon as it tries accessing the CQHCI
+> > > registers.
+> > >
+> > > RK3576's UFS support needed a new dev_pm_genpd_rpm_always_on function
+> > > added to the generic power domains API to handle what appears to be a
+> > > similar hardware design.
+> > >
+> > > Use this new function to ask for the same treatment in the sdhci
+> > > controller by giving rk3576 its own platform data with its own postinit
+> > > function. The benefit of doing this instead of marking the power domains
+> > > always on in the power domain core is that we only do this if we know
+> > > the platform we're running on actually uses the sdhci controller. For
+> > > others, keeping PD_NVM always on would be a waste, as they won't run
+> > > into this specific issue. The only other IP in PD_NVM that could be
+> > > affected is FSPI0. If it gets a mainline driver, it will probably want
+> > > to do the same thing.
+> > >
+> > > Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+> > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> >
+> > Applied for next, thanks!
+> >
+> > Kind regards
+> > Uffe
+> >
+>
+> Hi Uffe,
+>
+> I was wondering whether we can get this into 6.15 as a fix as well, as 6.15
+> should already have the genpd API additions this requires AFAIU.
 
-PP1516 are Touchscreen devices built around the PX30 SoC and companion
-devices to PX30-Cobra, again with multiple display options.
+Sure, it makes perfect sense!
 
-The devices feature an EMMC, OTG port and a 720x1280 display with a
-touchscreen and camera
+>
+> Fixes tag could be something like:
+>
+>   Fixes: cfee1b507758 ("pmdomain: rockchip: Add support for RK3576 SoC")
+>
+> but may need some more flavorings to keep the stable robot overlords from
+> trying to apply it to 6.14 and earlier and then starting the robot uprising
+> in your inbox when they notice the API is missing.
+>
+> I originally left out the Fixes tag on the rewrite of this using the new
+> API because I wanted to avoid those awkward backport scenarios for a fairly
+> freshly supported SoC, but it'd be great to have this in 6.15 because that
+> will be with us for a full release cycle to come.
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
----
- arch/arm64/boot/dts/rockchip/Makefile         |   2 +
- .../rockchip/px30-pp1516-ltk050h3146w-a2.dts  |  39 ++
- .../dts/rockchip/px30-pp1516-ltk050h3148w.dts |  39 ++
- arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi | 602 ++++++++++++++++++
- 4 files changed, 682 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3146w-a2.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3148w.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
+I added the fixes tag and a stable tag to point out that it should be
+applied only for v6.15+.
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 8151e8bb1cd3..899113f88a29 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -8,6 +8,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-ctouch2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-ctouch2-of10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-edimm2.2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-firefly-jd4-core-mb.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-pp1516-ltk050h3146w-a2.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-pp1516-ltk050h3148w.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-ringneck-haikou.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-ringneck-haikou-lvds-9904379.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-ringneck-haikou-video-demo.dtbo
-diff --git a/arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3146w-a2.dts b/arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3146w-a2.dts
-new file mode 100644
-index 000000000000..b71929bcb33e
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3146w-a2.dts
-@@ -0,0 +1,39 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2025 Cherry Embedded Solutions GmbH
-+ */
-+
-+/dts-v1/;
-+#include "px30-pp1516.dtsi"
-+
-+/ {
-+	model = "Theobroma Systems PP-1516 with LTK050H3146W-A2 Display";
-+	compatible = "tsd,px30-pp1516-ltk050h3146w-a2", "tsd,px30-pp1516", "rockchip,px30";
-+};
-+
-+&dsi {
-+	status = "okay";
-+
-+	panel@0 {
-+		compatible = "leadtek,ltk050h3146w-a2";
-+		reg = <0>;
-+		backlight = <&backlight>;
-+		iovcc-supply = <&vcc_1v8>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&dsp_rst>;
-+		reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
-+		vci-supply = <&vcc_2v8>;
-+
-+		port {
-+			mipi_in_panel: endpoint {
-+				remote-endpoint = <&mipi_out_panel>;
-+			};
-+		};
-+	};
-+};
-+
-+&dsi_out {
-+	mipi_out_panel: endpoint {
-+		remote-endpoint = <&mipi_in_panel>;
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3148w.dts b/arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3148w.dts
-new file mode 100644
-index 000000000000..a9bd5936c701
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3148w.dts
-@@ -0,0 +1,39 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2025 Cherry Embedded Solutions GmbH
-+ */
-+
-+/dts-v1/;
-+#include "px30-pp1516.dtsi"
-+
-+/ {
-+	model = "Theobroma Systems PP-1516 with LTK050H3148W Display";
-+	compatible = "tsd,px30-pp1516-ltk050h3148w", "tsd,px30-pp1516", "rockchip,px30";
-+};
-+
-+&dsi {
-+	status = "okay";
-+
-+	panel@0 {
-+		compatible = "leadtek,ltk050h3148w";
-+		reg = <0>;
-+		backlight = <&backlight>;
-+		iovcc-supply = <&vcc_1v8>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&dsp_rst>;
-+		reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
-+		vci-supply = <&vcc_2v8>;
-+
-+		port {
-+			mipi_in_panel: endpoint {
-+				remote-endpoint = <&mipi_out_panel>;
-+			};
-+		};
-+	};
-+};
-+
-+&dsi_out {
-+	mipi_out_panel: endpoint {
-+		remote-endpoint = <&mipi_in_panel>;
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi b/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
-new file mode 100644
-index 000000000000..3f9a133d7373
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
-@@ -0,0 +1,602 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2025 Cherry Embedded Solutions GmbH
-+ */
-+
-+/dts-v1/;
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include "px30.dtsi"
-+
-+/ {
-+	aliases {
-+		mmc0 = &emmc;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial5:115200n8";
-+	};
-+
-+	backlight: backlight {
-+		compatible = "pwm-backlight";
-+		power-supply = <&vcc5v0_sys>;
-+		pwms = <&pwm0 0 25000 0>;
-+	};
-+
-+	beeper {
-+		compatible = "pwm-beeper";
-+		pwms = <&pwm1 0 1000 0>;
-+	};
-+
-+	emmc_pwrseq: emmc-pwrseq {
-+		compatible = "mmc-pwrseq-emmc";
-+		pinctrl-0 = <&emmc_reset>;
-+		pinctrl-names = "default";
-+		reset-gpios = <&gpio1 RK_PB3 GPIO_ACTIVE_HIGH>;
-+	};
-+
-+	gpio-leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&debug_led_pin>, <&heartbeat_led_pin>;
-+
-+		/*
-+		 * LED2 on the PCB, left of the USB-C connector.
-+		 * Typically NOT populated.
-+		 */
-+		debug: led-0 {
-+			label = "debug";
-+			gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "none";
-+		};
-+
-+		/*
-+		 * LED14 on the PCB, left of the PX30 SoC.
-+		 * Typically NOT populated.
-+		 */
-+		heartbeat: led-1 {
-+			label = "heartbeat";
-+			gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "heartbeat";
-+		};
-+	};
-+
-+	vcc5v0_sys: regulator-vccsys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+
-+	vcc_cam_avdd: regulator-vcc-cam-avdd {
-+		compatible  = "regulator-fixed";
-+		regulator-name = "vcc_cam_avdd";
-+		gpio = <&gpio3 RK_PC0 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cam_avdd_en>;
-+		regulator-min-microvolt = <2800000>;
-+		regulator-max-microvolt = <2800000>;
-+		vin-supply = <&vcc_2v8>;
-+	};
-+
-+	vcc_cam_dovdd: regulator-vcc-cam-dovdd {
-+		compatible  = "regulator-fixed";
-+		regulator-name = "vcc_cam_dovdd";
-+		gpio = <&gpio3 RK_PC1 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cam_dovdd_en>;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc_1v8>;
-+	};
-+
-+	vcc_cam_dvdd: regulator-vcc-cam-dvdd {
-+		compatible  = "regulator-fixed";
-+		regulator-name = "vcc_cam_dvdd";
-+		gpio = <&gpio3 RK_PC5 GPIO_ACTIVE_HIGH>;
-+		enable-active-high;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cam_dvdd_en>;
-+		regulator-min-microvolt = <1200000>;
-+		regulator-max-microvolt = <1200000>;
-+		vin-supply = <&vcc_3v3>;
-+	};
-+
-+	vcc_lens_afvdd: regulator-vcc-lens-afvdd {
-+		compatible  = "regulator-fixed";
-+		regulator-name = "vcc_lens_afvdd";
-+		gpio = <&gpio3 RK_PB2 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cam_afvdd_en>;
-+		regulator-min-microvolt = <2800000>;
-+		regulator-max-microvolt = <2800000>;
-+		vin-supply = <&vcc_2v8>;
-+	};
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&csi_dphy {
-+	status = "okay";
-+};
-+
-+&display_subsystem {
-+	status = "okay";
-+};
-+
-+&dsi_dphy {
-+	status = "okay";
-+};
-+
-+&emmc {
-+	bus-width = <8>;
-+	cap-mmc-highspeed;
-+	/*
-+	 * For hs200 support, U-Boot would have to set the RK809 DCDC4
-+	 * rail to 1.8V from the default of 3.0V. It doesn't do that on
-+	 * devices out in the field, so disable hs200.
-+	 * mmc-hs200-1_8v;
-+	 */
-+	mmc-pwrseq = <&emmc_pwrseq>;
-+	non-removable;
-+	vmmc-supply = <&vcc_3v3>;
-+	vqmmc-supply = <&vcc_emmc>;
-+	status = "okay";
-+};
-+
-+&gpu {
-+	mali-supply = <&vdd_log>;
-+	status = "okay";
-+};
-+
-+/* I2C0 = PMIC, Touchscreen */
-+&i2c0 {
-+	status = "okay";
-+
-+	touchscreen@14 {
-+		compatible = "goodix,gt911";
-+		reg = <0x14>;
-+		AVDD28-supply = <&vcc_2v8>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA1 IRQ_TYPE_LEVEL_LOW>;
-+		irq-gpios = <&gpio0 RK_PA1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&tch_int &tch_rst>;
-+		reset-gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
-+		VDDIO-supply = <&vcc_3v3>;
-+	};
-+
-+	rk809: pmic@20 {
-+		compatible = "rockchip,rk809";
-+		reg = <0x20>;
-+		#clock-cells = <0>;
-+		clock-output-names = "xin32k";
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA7 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int>;
-+		system-power-controller;
-+		wakeup-source;
-+
-+		vcc1-supply = <&vcc5v0_sys>;
-+		vcc2-supply = <&vcc5v0_sys>;
-+		vcc3-supply = <&vcc5v0_sys>;
-+		vcc4-supply = <&vcc5v0_sys>;
-+		vcc5-supply = <&vcc_3v3>;
-+		vcc6-supply = <&vcc_3v3>;
-+		vcc7-supply = <&vcc_3v3>;
-+		vcc9-supply = <&vcc5v0_sys>;
-+
-+		regulators {
-+			vdd_log: DCDC_REG1 {
-+				regulator-name = "vdd_log";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <950000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <950000>;
-+				};
-+			};
-+
-+			vdd_arm: DCDC_REG2 {
-+				regulator-name = "vdd_arm";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <950000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <950000>;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcc_3v0_1v8: vcc_emmc: DCDC_REG4 {
-+				regulator-name = "vcc_3v0_1v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3000000>;
-+				};
-+			};
-+
-+			vcc_3v3: DCDC_REG5 {
-+				regulator-name = "vcc_3v3";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcc_1v8: LDO_REG2 {
-+				regulator-name = "vcc_1v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcc_1v0: LDO_REG3 {
-+				regulator-name = "vcc_1v0";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1000000>;
-+				regulator-max-microvolt = <1000000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+
-+			vcc_2v8: LDO_REG4 {
-+				regulator-name = "vcc_2v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <2800000>;
-+				regulator-max-microvolt = <2800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <2800000>;
-+				};
-+			};
-+
-+			vccio_sd: LDO_REG5 {
-+				regulator-name = "vccio_sd";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3000000>;
-+				};
-+			};
-+
-+			vcc_sdio: LDO_REG6 {
-+				regulator-name = "vcc_sdio";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcc_lcd: LDO_REG7 {
-+				regulator-name = "vcc_lcd";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1000000>;
-+				regulator-max-microvolt = <1000000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+
-+			vcc_1v8_lcd: LDO_REG8 {
-+				regulator-name = "vcc_1v8_lcd";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcca_1v8: LDO_REG9 {
-+				regulator-name = "vcca_1v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&i2c1 {
-+	clock-frequency = <100000>;
-+	status = "okay";
-+};
-+
-+/* I2C2 = Accelerometer + Camera */
-+&i2c2 {
-+	/* MEMSIC MXC4005 accelerometer is rated for I2C Fast Mode (<=400KHz) */
-+	/* OmniVision OV5675 camera is rated for I2C Fast Mode (<=400KHz) */
-+	clock-frequency = <400000>;
-+	status = "okay";
-+
-+	focus: focus@c {
-+		compatible = "dongwoon,dw9714";
-+		reg = <0xc>;
-+		vcc-supply = <&vcc_lens_afvdd>;
-+	};
-+
-+	accel@15 {
-+		compatible = "memsic,mxc4005";
-+		reg = <0x15>;
-+		interrupt-parent = <&gpio2>;
-+		interrupts = <RK_PB4 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&accel_int>;
-+	};
-+
-+	camera@36 {
-+		compatible = "ovti,ov5675";
-+		reg = <0x36>;
-+		clocks = <&cru SCLK_CIF_OUT>;
-+		assigned-clocks = <&cru SCLK_CIF_OUT>;
-+		assigned-clock-rates = <19200000>;
-+		avdd-supply = <&vcc_cam_avdd>;
-+		dvdd-supply = <&vcc_cam_dvdd>;
-+		dovdd-supply = <&vcc_cam_dovdd>;
-+		lens-focus = <&focus>;
-+		orientation = <0>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cif_clkout_m0 &cam_pwdn>;
-+		reset-gpios = <&gpio2 RK_PB0 GPIO_ACTIVE_LOW>;
-+		rotation = <0>;
-+
-+		port {
-+			ucam_out: endpoint {
-+				remote-endpoint = <&mipi_in_ucam>;
-+				data-lanes = <1 2>;
-+				link-frequencies = /bits/ 64 <450000000>;
-+			};
-+		};
-+	};
-+};
-+
-+&io_domains {
-+	vccio1-supply = <&vcc_sdio>;
-+	vccio2-supply = <&vccio_sd>;
-+	vccio3-supply = <&vcc_1v8>;
-+	vccio4-supply = <&vcc_3v3>;
-+	vccio5-supply = <&vcc_3v3>;
-+	vccio6-supply = <&vcc_emmc>;
-+	status = "okay";
-+};
-+
-+&isp {
-+	status = "okay";
-+
-+	ports {
-+		port@0 {
-+			mipi_in_ucam: endpoint@0 {
-+				reg = <0>;
-+				data-lanes = <1 2>;
-+				remote-endpoint = <&ucam_out>;
-+			};
-+		};
-+	};
-+};
-+
-+&isp_mmu {
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	accel {
-+		accel_int: accel-int {
-+			rockchip,pins =
-+				<2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	camera {
-+		cam_afvdd_en: cam-afvdd-en {
-+			rockchip,pins =
-+				<3 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		cam_avdd_en: cam-avdd-en {
-+			rockchip,pins =
-+				<3 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		cam_dovdd_en: cam-dovdd-en {
-+			rockchip,pins =
-+				<3 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		cam_dvdd_en: cam-dvdd-en {
-+			rockchip,pins =
-+				<3 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		cam_pwdn: cam-pwdn {
-+			rockchip,pins =
-+				<2 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	emmc {
-+		emmc_reset: emmc-reset {
-+			rockchip,pins =
-+				<1 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	leds {
-+		debug_led_pin: debug-led-pin {
-+			rockchip,pins =
-+				<3 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		heartbeat_led_pin: heartbeat-led-pin {
-+			rockchip,pins =
-+				<0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	panel {
-+		dsp_rst: dsp-rst {
-+			rockchip,pins =
-+				<0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		tch_int: tch-int {
-+			rockchip,pins =
-+				<0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		tch_rst: tch-rst {
-+			rockchip,pins =
-+				<0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pmic {
-+		pmic_int: pmic-int {
-+			rockchip,pins =
-+				<0 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&pmu_io_domains {
-+	pmuio1-supply = <&vcc_3v3>;
-+	pmuio2-supply = <&vcc_3v3>;
-+	status = "okay";
-+};
-+
-+&pwm0 {
-+	status = "okay";
-+};
-+
-+&pwm1 {
-+	status = "okay";
-+};
-+
-+&saradc {
-+	vref-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
-+&tsadc {
-+	status = "okay";
-+};
-+
-+&u2phy {
-+	status = "okay";
-+};
-+
-+&u2phy_host {
-+	status = "okay";
-+};
-+
-+&u2phy_otg {
-+	status = "okay";
-+};
-+
-+&uart5 {
-+	pinctrl-0 = <&uart5_xfer>;
-+	status = "okay";
-+};
-+
-+&usb20_otg {
-+	dr_mode = "peripheral";
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&vopb {
-+	status = "okay";
-+};
-+
-+&vopb_mmu {
-+	status = "okay";
-+};
-+
-+&wdt {
-+	status = "okay";
-+};
--- 
-2.47.2
+>
+> Kind regards,
+> Nicolas Frattaroli
+>
+>
+>
 
+Kind regards
+Uffe
 
 _______________________________________________
 Linux-rockchip mailing list
