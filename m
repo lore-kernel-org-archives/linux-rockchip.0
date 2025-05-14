@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BAEBC3ABD9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 07:50:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B498C3ABDA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 08:05:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I6Kl59lf1kMF6AH+g/iXZ4aPb3+kL8XahEaQ3b+6MYU=; b=EtAIrwrTK9Mbxf
-	DR6uK/QwqR4wnCtLZIztnIshBgltWHDCZJoZDPA6c+7UU1w5K0pX0N9ikuwMHZInz5Jksp6lj3k/s
-	ojUsxWNE9FMaYu2zIXQio5XWdGlfGz7DYhZy/StbqNftoj4IKFlfLJl4NP3xo3/GDGcorEBfdE1gh
-	pUGs3ZgeeBO2O9SOw9Hd+nSkQ9DVdS7Xy6cJtyQUm8gVfIZvhBxI464W6lkL2pAC/dJl+W0IgE8Br
-	JMlJ60oRA3Lic+xzzDwspC0re3RcE3xI9vl3ahxVYwreQ88qUI1uaOe9iN9Y7YmNAbtvyy4VTZK1v
-	7aZiTvJY6KqhBXrrTHRA==;
+	List-Owner; bh=rREWmuJik49bzpc6HiYCbdGccgO2/Ezss0j88hgxL88=; b=NJpFYmIZVFMaT4
+	xVyw3PEuYvsMwow7lbf7fM9qd5/FlG0M1Lt+XKmgHqVydYyGRnlMYPh9MpL5CMXkD5HRaQU+2f4vI
+	6PsNcivDL4ucwRu7wrroC/i1wqXkS78ODV1+6tHXrUt2Fy0UzPnNPE8VWYvYDIJnMDadJAEzkXfdJ
+	HPyqG7iZkTd1lelpNrrvimTkh+BMAeVcvj/e0w8NSiKvtIMcRHo9jKI/KvXnfoWxt9qTBJlw4O8dn
+	pIlWYPnXH6DGNm5FwSD01KgGDITXqbxXY2D/4H/YiqJJXjUqWrxVbBOpZPsSg9nO7KK0+zfgXbeEc
+	PwmyBlV0FkKc4IQdXBhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF6sM-0000000EOYB-2QCy;
-	Wed, 14 May 2025 07:50:02 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uF76u-0000000EQpG-1Mw3;
+	Wed, 14 May 2025 08:05:04 +0000
+Received: from smtpbgeu2.qq.com ([18.194.254.142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF6mJ-0000000ENcA-2Bd1;
-	Wed, 14 May 2025 07:43:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 9D7E3A400FD;
-	Wed, 14 May 2025 07:43:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43C57C4CEF3;
-	Wed, 14 May 2025 07:43:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747208626;
-	bh=aA8oXqSx8pMm/jG1knFZKUSb8eq19i4/3ip8tFNLR1Q=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cXGPGGgo8CoB1f4qnhxIbmcsFxJcRmX+kuo5tCLJj7dpfVG9M2R7sUzjtQVXAQkIe
-	 O88+uWM6OWhRUV3NNHd5FpEH2SqiIDbPHnpZuS2i2z0RqR8xFlqo+Clz68zpW6oE2h
-	 EEq+W1odXW1O9p0bzTb6L1sDwESNfymLQ/iDp7IGiw4vAlcdR4MHGuh2MFEJ/rGJlp
-	 WcEl1RM9z3MljxDvPUMNnpwpRUXjFA64xtoc0BtFMqClpZl0s26iWf3zUEMMJylKut
-	 TjINl3xKMYtxiqhUKMGIby4jY9LZMlGubNsQCT44VLsxAUjGb1ketLBF97QJFcCqeR
-	 cJXphq8B48MVA==
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kishon Vijay Abraham I <kishon@kernel.org>
-Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Niklas Cassel <cassel@kernel.org>,
-	stable+noautosel@kernel.org,
-	linux-pci@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3 5/6] PCI: endpoint: Cleanup set_msi() callback
-Date: Wed, 14 May 2025 09:43:18 +0200
-Message-ID: <20250514074313.283156-13-cassel@kernel.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250514074313.283156-8-cassel@kernel.org>
-References: <20250514074313.283156-8-cassel@kernel.org>
+	id 1uF72A-0000000EPpV-3OTM;
+	Wed, 14 May 2025 08:00:15 +0000
+X-QQ-mid: esmtpgz12t1747209563t3de3214b
+X-QQ-Originating-IP: qDZHVQiDsVrnVL88kG5FeaFrEm3p5WZn7MIIute6HfE=
+Received: from chainsx-ubuntu-server.lan ( [182.242.225.107])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Wed, 14 May 2025 15:59:22 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 10427985286960112042
+EX-QQ-RecipientCnt: 10
+From: Hsun Lai <i@chainsx.cn>
+To: robh@kernel.org
+Cc: i@chainsx.cn,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	sfr@canb.auug.org.au,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v2 1/3] dt-bindings: vendor-prefixes: Add SakuraPi prefix
+Date: Wed, 14 May 2025 15:59:12 +0800
+Message-Id: <20250514075914.194651-2-i@chainsx.cn>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250514075914.194651-1-i@chainsx.cn>
+References: <20250514075914.194651-1-i@chainsx.cn>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8144; i=cassel@kernel.org; h=from:subject; bh=aA8oXqSx8pMm/jG1knFZKUSb8eq19i4/3ip8tFNLR1Q=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDJUPCefYf1xvHaTSzJbRJX8wpIKpqfxtstvpmw+/zzuk u6S1z3LOkpZGMS4GGTFFFl8f7jsL+52n3Jc8Y4NzBxWJpAhDFycAjCRTz6MDHs+zok9kfPv8kOn xccky9TqpN7lnfwzMzxPVjI1OW36pVMM/1O0rxU+WxgvbrLowvSp01Kc/IIfXUm/k9s0+d63eyn x+XwA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+X-QQ-SENDSIZE: 520
+Feedback-ID: esmtpgz:chainsx.cn:qybglogicsvrsz:qybglogicsvrsz3a-0
+X-QQ-XMAILINFO: MMNR99wQqbHFNe7d4uPLaztF3S0tz/a+KFbwmdEdnQflYRADemmzPW+G
+	YDuEBcYDok9kaDW23bTIEvaweLbaEfzK+vx5CQOizSwzv3Qj6AcmH3/k19cGs9yi+LSvkrs
+	8SBL82K3BhHpIgu0WC8oDf2mChjK3IuBEv94NViUSkcFPLAQnu5UBaR4byp0Aj8DPKpGAKE
+	vU0IvzIi6x6NU7FW494T5rhTxWHw3KIPm+iv57G2cXNb6a1LXFzV/IJSfI1anw5nXZpOume
+	FLvFgJRKoxdgsIZNlTn70DJUnhqBdlZ0hkPwPd1uJ54LQz/bwPp1NzsKnAzsfla8+H1t4vo
+	4T8JdWi+WVYetkIiS0RPdjXICS6wyv6IGOVZRrPOs4YwuCrtEPyjyq4WxDtsgSYhJaIHEtp
+	dERsvj7u3xkNuUPot/NVlnUOEkOcQU+YeIzgtOyWA5RkUIx1VuQ9hwjWeYHtXpOGVYBB/UC
+	qByP5KdCZZTb2VytgIHw2PrFRBRfwMhC2D4BwqB9xtk0HRSzpJIJEUE1doEewU17auNDr/M
+	dUF82iJf6yI9+D9qDidcSRt3Db7XDZQe5PJUTFjoPm40s7WicNzO+LZFGHuh1seG3yfRMQz
+	JyzfkJKYh0cChRteq4vCtwOUMp7YthYCImYimF8vwV80pjziArg0elagqQGOOt0Hhkl8k8g
+	uQ7OJZoAJva0lJCTVtFl4N5eugXPCxjy9HMlg+a+iuwwS4uaFsk47unEkeRydfd3q516jg4
+	r6bc1Xta5Vxd8hMzDz2VYZg+2TqAkafsSv1dLoPIJxZt0NakHBQRfVvs4WlrXkn9vpOmfdA
+	eviwIi5vlOuXzapN3lZijqP2KopCsh3dlm53ix3kK8ujurKbIrxKX7mvAqeWMVXm48zV98d
+	l++dhJuuQ8uveVft+NjEh7JngG3tLqMQnqGmRXzJb5b4AfEQUZjzg1XfBGdy/8pf6XvyCGb
+	xCoE/4Z8kefJXfwlkToAgxBz+P99zUR2qFw5rqV5x0fjABki3pCAoHalU6oKHylNgFQM=
+X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_004347_697631_02F88CA6 
-X-CRM114-Status: GOOD (  17.29  )
+X-CRM114-CacheID: sfid-20250514_010011_442644_0DFD2B80 
+X-CRM114-Status: UNSURE (   7.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,203 +87,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The kdoc for pci_epc_set_msi() says:
-"Invoke to set the required number of MSI interrupts."
-the kdoc for the callback pci_epc_ops->set_msi() says:
-"ops to set the requested number of MSI interrupts in the MSI capability
-register"
-
-pci_epc_ops->set_msi() does however expect the parameter 'interrupts' to
-be in the encoding as defined by the MMC Multiple Message Capable field.
-
-Nowhere in the kdoc does it say that the number of interrupts should be
-in MMC encoding.
-
-Thus, it is very confusing that the wrapper function (pci_epc_set_msi())
-and the callback function (pci_epc_ops->set_msi()) both take a parameter
-named interrupts, but they both expect completely different encodings.
-
-Cleanup the API so that the wrapper function and the callback function
-will have the same semantics, i.e. the parameter represents the number
-of interrupts, regardless of the internal encoding of that value.
-
-Also rename the parameter 'interrupts' to 'nr_irqs', in both the wrapper
-function and the callback function, such that the name is unambiguous.
-
-Cc: <stable+noautosel@kernel.org> # this is simply a cleanup
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- drivers/pci/controller/cadence/pcie-cadence-ep.c |  3 ++-
- drivers/pci/controller/dwc/pcie-designware-ep.c  |  5 +++--
- drivers/pci/controller/pcie-rcar-ep.c            |  6 +++---
- drivers/pci/controller/pcie-rockchip-ep.c        |  5 +++--
- drivers/pci/endpoint/pci-epc-core.c              | 11 ++++-------
- include/linux/pci-epc.h                          |  5 ++---
- 6 files changed, 17 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/pci/controller/cadence/pcie-cadence-ep.c b/drivers/pci/controller/cadence/pcie-cadence-ep.c
-index 569cb7481d45..f09f29ed27ed 100644
---- a/drivers/pci/controller/cadence/pcie-cadence-ep.c
-+++ b/drivers/pci/controller/cadence/pcie-cadence-ep.c
-@@ -220,10 +220,11 @@ static void cdns_pcie_ep_unmap_addr(struct pci_epc *epc, u8 fn, u8 vfn,
- 	clear_bit(r, &ep->ob_region_map);
- }
- 
--static int cdns_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn, u8 mmc)
-+static int cdns_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn, u8 nr_irqs)
- {
- 	struct cdns_pcie_ep *ep = epc_get_drvdata(epc);
- 	struct cdns_pcie *pcie = &ep->pcie;
-+	u8 mmc = order_base_2(nr_irqs);
- 	u32 cap = CDNS_PCIE_EP_FUNC_MSI_CAP_OFFSET;
- 	u16 flags;
- 
-diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
-index 307c862588a4..230e82674591 100644
---- a/drivers/pci/controller/dwc/pcie-designware-ep.c
-+++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
-@@ -536,11 +536,12 @@ static int dw_pcie_ep_get_msi(struct pci_epc *epc, u8 func_no, u8 vfunc_no)
- }
- 
- static int dw_pcie_ep_set_msi(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
--			      u8 interrupts)
-+			      u8 nr_irqs)
- {
- 	struct dw_pcie_ep *ep = epc_get_drvdata(epc);
- 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
- 	struct dw_pcie_ep_func *ep_func;
-+	u8 mmc = order_base_2(nr_irqs);
- 	u32 val, reg;
- 
- 	ep_func = dw_pcie_ep_get_func_from_ep(ep, func_no);
-@@ -550,7 +551,7 @@ static int dw_pcie_ep_set_msi(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
- 	reg = ep_func->msi_cap + PCI_MSI_FLAGS;
- 	val = dw_pcie_ep_readw_dbi(ep, func_no, reg);
- 	val &= ~PCI_MSI_FLAGS_QMASK;
--	val |= FIELD_PREP(PCI_MSI_FLAGS_QMASK, interrupts);
-+	val |= FIELD_PREP(PCI_MSI_FLAGS_QMASK, mmc);
- 	dw_pcie_dbi_ro_wr_en(pci);
- 	dw_pcie_ep_writew_dbi(ep, func_no, reg, val);
- 	dw_pcie_dbi_ro_wr_dis(pci);
-diff --git a/drivers/pci/controller/pcie-rcar-ep.c b/drivers/pci/controller/pcie-rcar-ep.c
-index 9da39a4617b6..a8a966844cf3 100644
---- a/drivers/pci/controller/pcie-rcar-ep.c
-+++ b/drivers/pci/controller/pcie-rcar-ep.c
-@@ -256,15 +256,15 @@ static void rcar_pcie_ep_clear_bar(struct pci_epc *epc, u8 fn, u8 vfn,
- 	clear_bit(atu_index + 1, ep->ib_window_map);
- }
- 
--static int rcar_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn,
--				u8 interrupts)
-+static int rcar_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn, u8 nr_irqs)
- {
- 	struct rcar_pcie_endpoint *ep = epc_get_drvdata(epc);
- 	struct rcar_pcie *pcie = &ep->pcie;
-+	u8 mmc = order_base_2(nr_irqs);
- 	u32 flags;
- 
- 	flags = rcar_pci_read_reg(pcie, MSICAP(fn));
--	flags |= interrupts << MSICAP0_MMESCAP_OFFSET;
-+	flags |= mmc << MSICAP0_MMESCAP_OFFSET;
- 	rcar_pci_write_reg(pcie, flags, MSICAP(fn));
- 
- 	return 0;
-diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index 85ca7d9b4c77..a0a85080c31d 100644
---- a/drivers/pci/controller/pcie-rockchip-ep.c
-+++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -308,10 +308,11 @@ static void rockchip_pcie_ep_unmap_addr(struct pci_epc *epc, u8 fn, u8 vfn,
- }
- 
- static int rockchip_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn,
--				    u8 multi_msg_cap)
-+				    u8 nr_irqs)
- {
- 	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
- 	struct rockchip_pcie *rockchip = &ep->rockchip;
-+	u8 mmc = order_base_2(nr_irqs);
- 	u32 flags;
- 
- 	flags = rockchip_pcie_read(rockchip,
-@@ -319,7 +320,7 @@ static int rockchip_pcie_ep_set_msi(struct pci_epc *epc, u8 fn, u8 vfn,
- 				   ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
- 	flags &= ~ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_MASK;
- 	flags |=
--	   (multi_msg_cap << ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_OFFSET) |
-+	   (mmc << ROCKCHIP_PCIE_EP_MSI_CTRL_MMC_OFFSET) |
- 	   (PCI_MSI_FLAGS_64BIT << ROCKCHIP_PCIE_EP_MSI_FLAGS_OFFSET);
- 	flags &= ~ROCKCHIP_PCIE_EP_MSI_CTRL_MASK_MSI_CAP;
- 	rockchip_pcie_write(rockchip, flags,
-diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
-index 092b14918b46..ea698551f9d8 100644
---- a/drivers/pci/endpoint/pci-epc-core.c
-+++ b/drivers/pci/endpoint/pci-epc-core.c
-@@ -302,28 +302,25 @@ EXPORT_SYMBOL_GPL(pci_epc_get_msi);
-  * @epc: the EPC device on which MSI has to be configured
-  * @func_no: the physical endpoint function number in the EPC device
-  * @vfunc_no: the virtual endpoint function number in the physical function
-- * @interrupts: number of MSI interrupts required by the EPF
-+ * @nr_irqs: number of MSI interrupts required by the EPF
-  *
-  * Invoke to set the required number of MSI interrupts.
-  */
--int pci_epc_set_msi(struct pci_epc *epc, u8 func_no, u8 vfunc_no, u8 interrupts)
-+int pci_epc_set_msi(struct pci_epc *epc, u8 func_no, u8 vfunc_no, u8 nr_irqs)
- {
- 	int ret;
--	u8 encode_int;
- 
- 	if (!pci_epc_function_is_valid(epc, func_no, vfunc_no))
- 		return -EINVAL;
- 
--	if (interrupts < 1 || interrupts > 32)
-+	if (nr_irqs < 1 || nr_irqs > 32)
- 		return -EINVAL;
- 
- 	if (!epc->ops->set_msi)
- 		return 0;
- 
--	encode_int = order_base_2(interrupts);
--
- 	mutex_lock(&epc->lock);
--	ret = epc->ops->set_msi(epc, func_no, vfunc_no, encode_int);
-+	ret = epc->ops->set_msi(epc, func_no, vfunc_no, nr_irqs);
- 	mutex_unlock(&epc->lock);
- 
- 	return ret;
-diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
-index 82837008b56f..15d10c07c9f1 100644
---- a/include/linux/pci-epc.h
-+++ b/include/linux/pci-epc.h
-@@ -100,7 +100,7 @@ struct pci_epc_ops {
- 	void	(*unmap_addr)(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
- 			      phys_addr_t addr);
- 	int	(*set_msi)(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
--			   u8 interrupts);
-+			   u8 nr_irqs);
- 	int	(*get_msi)(struct pci_epc *epc, u8 func_no, u8 vfunc_no);
- 	int	(*set_msix)(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
- 			    u16 interrupts, enum pci_barno, u32 offset);
-@@ -286,8 +286,7 @@ int pci_epc_map_addr(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
- 		     u64 pci_addr, size_t size);
- void pci_epc_unmap_addr(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
- 			phys_addr_t phys_addr);
--int pci_epc_set_msi(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
--		    u8 interrupts);
-+int pci_epc_set_msi(struct pci_epc *epc, u8 func_no, u8 vfunc_no, u8 nr_irqs);
- int pci_epc_get_msi(struct pci_epc *epc, u8 func_no, u8 vfunc_no);
- int pci_epc_set_msix(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
- 		     u16 interrupts, enum pci_barno, u32 offset);
--- 
-2.49.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QWRkIHZlbmRvciBwcmVmaXggZm9yIFNha3VyYVBpLm9yZywgd2hpY2ggcHJvZHVjZXMKZGV2ZWxv
+cG1lbnQgYm9hcmRzIGxpa2UgdGhlIFNha3VyYVBpLVJLMzMwOEIuCgpTaWduZWQtb2ZmLWJ5OiBI
+c3VuIExhaSA8aUBjaGFpbnN4LmNuPgotLS0KCihubyBjaGFuZ2VzIHNpbmNlIHYxKQoKIERvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy92ZW5kb3ItcHJlZml4ZXMueWFtbCB8IDIgKysK
+IDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwgYi9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwKaW5kZXggM2U3NDUw
+YzNmLi43NDRkMDFhNzYgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
+aW5ncy92ZW5kb3ItcHJlZml4ZXMueWFtbAorKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwKQEAgLTEyOTksNiArMTI5OSw4IEBAIHBhdHRl
+cm5Qcm9wZXJ0aWVzOgogICAiXnJ2ZSwuKiI6CiAgICAgZGVzY3JpcHRpb246IFJlY2hhcmdlIFbD
+qWhpY3VsZSDDiWxlY3RyaXF1ZSAoUlZFKSBpbmMuCiAgICJec2FlZiwuKiI6CisgICAgZGVzY3Jp
+cHRpb246IFNha3VyYVBpLm9yZworICAiXnNha3VyYXBpLC4qIjoKICAgICBkZXNjcmlwdGlvbjog
+U2FlZiBUZWNobm9sb2d5IExpbWl0ZWQKICAgIl5zYW1zdW5nLC4qIjoKICAgICBkZXNjcmlwdGlv
+bjogU2Ftc3VuZyBTZW1pY29uZHVjdG9yCi0tIAoyLjM0LjEKCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
