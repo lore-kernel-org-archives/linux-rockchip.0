@@ -4,72 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 018DDC3ABCC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 13:54:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08388C3ABD9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 13:59:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:Subject:Cc:To:From:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yNZbPEEznIG/FyOaJhqrVY6xpqjVHB/KPW+mrDQ2QGM=; b=Zec/4MDrcQrVchwlYcaG5QmRGs
-	fCU1t73IE3jVKpcX/u0R3vgjS5kX9Nigyb2RgX3gUTPQn/01iNhHpUHcXQjnBbcbc1y9qyzhGpQUl
-	bgGyLPAXfL+KpdiT63pBjoHL6jAB4qHGzkpGiqeGIyt1D1DQtMJMeiqOfpK3/o6feXGLQokTgEWev
-	mMQqfeFID8+r+jh7c96H99wmVc499PIOdZMCV1V+h8SNlxGndIkCICit7aqhrnusnHrQ2YgTn12er
-	afq/JW+MJuWY0t/jQc+DyVmqsWY/XZaw7j4rvc/3MaEYpqWVaTLhtTx/6y3WolSlQgECSAHFNrpNt
-	iJ0MzJlA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=RJNlwJNvRBrowXZtvkBqLpOua4QzPXYfJk5jNm7Dm6o=; b=0qgKkpC9eya5JOayqSPfCe09xU
+	qNNypHboasx4hmnitJzFV9YFF6KStQK12/ggsGGT1OWPzHLd7rmYf/UUV+zu1DkDg9ceNngs8QgBL
+	pOiwJRp5kJ63t43gTLXOkpuH/GlyLREFOcy5WDSog3DV/pB3OBgkIZy7+DHHUXS4qSzHsVhAcdf3Y
+	YT5DN7nzWvEbBIyKB5hZrg/dS457+5uzsD1PqqtHdXdP7naTCjJSvls891SVjGkH97lDOnEN1SahU
+	uvacuA6r2IPWuKUT1To0FBErwKsTJ5U6XAEkblgAFa0cG9T9jI5Kt2u8bJoHliE6Z8peU7fSeDB3l
+	UMreWrHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFCZ3-0000000FJGt-1lzm;
-	Wed, 14 May 2025 13:54:29 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uFCds-0000000FLbk-2UWX;
+	Wed, 14 May 2025 13:59:28 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFBXj-0000000F80U-0VrB
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 14 May 2025 12:49:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:References:Subject:Cc:To:
-	From:Message-Id:Date:Content-Type:Mime-Version:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=CKe2WWPOKKxeDx60prV62ph0i3MCDDmxV+WKHZW1a6o=; b=RlQhyjSSzJifBYTHGiUaROJnAx
-	auiqJPZSTPRrjruxB7se3ArNS//TSSZnzPBIGicwAoMNlSFxVr9wyl7XIW14y7cDe5aaYK2XUEIxX
-	febGjuLZtz7rJP71eqhzufb/Ax7DGBA9crg5CxA4DL75QO9PYqyZEf7tfSWzfzzAvbU5UVomssTDS
-	SD3mkWH+J+274svQ6DT44OYmSN1NTlTBdflCa+jHMudiixiBQCceWcRDQMKqnuQ3Fkej3idt2ki1f
-	gBj2/LDUgjwdFc3pHbnfywspXCn3qPBsQVeTPQHJRY9UZhIUY9NHYeYwKo10Kva84ssSxVY8TaTRi
-	vN0mZ3/Q==;
-Received: from out-186.mta0.migadu.com ([2001:41d0:1004:224b::ba])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1uFBXg-0000000H9kc-0MmD
-	for linux-rockchip@lists.infradead.org;
-	Wed, 14 May 2025 12:49:02 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1747226929;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CKe2WWPOKKxeDx60prV62ph0i3MCDDmxV+WKHZW1a6o=;
-	b=nGCwv7ftx5gDbPRP9hrpiNVqIdEhj5QYFo07xZIEqKL7qb8zP9/roXpLgqKGUltRNJ6ZfL
-	GqpLBy3wKx25JBJzpx0xbk2xxsv0bLNaQpNiv33nhr15TsDLiaMkilLiE+NywlMqS1kM93
-	ZueOAInbWADeab/M4tNkeZiAuIBMW6aaNc1pBroUX/enc0y03XSM3N334pXWHv60RjeVAJ
-	aKqI+QkbS44HOoRiJiq+OELw4JGszUIHSHGS9/etZW4g0a7CM0vwMjyGIfTw9eBKPYacTj
-	U7O7kwKubTQiApMlLUaX5EemTSucTbaw7YAzLkNj39dhWV0JsLRQ5IozTaCZNA==
-Date: Wed, 14 May 2025 14:48:46 +0200
-Message-Id: <D9VW95BJVUZM.2KDNW7JLCKKF0@cknow.org>
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Shawn Lin" <shawn.lin@rock-chips.com>, "Heiko Stuebner"
- <heiko@sntech.de>
-Cc: <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>
-Subject: Re: [PATCH v2] arm64: defconfig: Enable Rockchip UFS host driver
-References: <1741161252-138526-1-git-send-email-shawn.lin@rock-chips.com>
-In-Reply-To: <1741161252-138526-1-git-send-email-shawn.lin@rock-chips.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1uFBtB-0000000FAZj-0F3k;
+	Wed, 14 May 2025 13:11:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 801AA4A743;
+	Wed, 14 May 2025 13:11:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 325D3C4CEED;
+	Wed, 14 May 2025 13:11:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747228272;
+	bh=Mch9zsCTZ++9Xv+WL31mykbtqROtgLIoRLVQlMeLD5Q=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=GRzly4qLCx1tfyhCjxc4up1k0KPUIbRuXLk/NtEj+b52QZe4iBWJdSMSDaKWne57f
+	 gxnhMmOjMb2CXMnHVyNvFdwQHtxwIt+8kUuBfoP/yJ7UfMrT2h/ObiGqByu8ZwGs4u
+	 zmPyv1/z/7+rj8gNLYCnMh0nGaU/FEUuhKmRCZAevh4CKy7JkuD9EIJ7XiwWJCXHhf
+	 qhl62L65ervTDgGYQ9k2NUrrNdr4uZcp/wAIHsc30W/9vixiBRSirmGRfmIdg1WZqX
+	 D0puIWD3XNEyzKiLDnXt2iv2g1AEatvFhytB7Qt5eqzjqIirsNcNgfxbYMNwj1bC41
+	 x0KlQJySqSrOA==
+Date: Wed, 14 May 2025 08:11:10 -0500
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, conor+dt@kernel.org, 
+ devicetree@vger.kernel.org, quentin.schulz@cherry.de, 
+ linux-kernel@vger.kernel.org, krzk+dt@kernel.org, 
+ linux-rockchip@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+In-Reply-To: <20250514120906.2412588-1-heiko@sntech.de>
+References: <20250514120906.2412588-1-heiko@sntech.de>
+Message-Id: <174722778701.1826414.17251063329059512671.robh@kernel.org>
+Subject: Re: [PATCH v3 0/6] Add two board-families from Theobroma-Systems
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_134900_452025_A8A187A7 
-X-CRM114-Status: GOOD (  15.41  )
+X-CRM114-CacheID: sfid-20250514_061113_141733_A9FFE11D 
+X-CRM114-Status: GOOD (  22.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,88 +68,319 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2387313785029403366=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2387313785029403366==
-Content-Type: multipart/signed;
- boundary=43495df6b18c95ed892a9855e6992edb45d3997bcce22c3b66455a6a817a;
- micalg=pgp-sha512; protocol="application/pgp-signature"
 
---43495df6b18c95ed892a9855e6992edb45d3997bcce22c3b66455a6a817a
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+On Wed, 14 May 2025 14:09:00 +0200, Heiko Stuebner wrote:
+> Both the Cobra and PP1516 boards are based around the PX30 SoC and can be
+> found with a variety of display options.
+> 
+> As new boards should not use the deprecated snps,reset-* properties
+> in the gmac node, I also added a core mdio-node for the gmac and
+> converted the Theobroma Ringneck board over.
+> 
+> Testing with the new node both before and after converting Ringneck
+> showed the board finding its network both when booting locally and
+> from the tftp/nfs.
+> 
+> changes in v3:
+> - more sorting
+> - more Reviewed-bys
+> - pull-down for dsp-rst
+> - pp1516 accel pinctrl group
+> 
+> changes in v2:
+> - add received Acks/Reviews
+> - drop "rockchip" prefix from system-power-controller (Diederik)
+> - split out prototype-pins to prototype variant
+> - address Quentin's review comments
+>   - ethernet0 alias for Cobra
+>   - a number more pinctrl entries for gpios
+>   - drop unused slp pinctrl entries
+>   - additional comments
+>   - use gpio-constants for pmic int
+>   - ordering (nodes + properties)
+>   - clarify vccio_sd more
+>   - interrupt line for pp1516 accelerometer
+> 
+> Heiko Stuebner (6):
+>   arm64: dts: rockchip: add basic mdio node to px30
+>   arm64: dts: rockchip: move reset to dedicated eth-phy node on ringneck
+>   dt-bindings: arm: rockchip: add PX30-Cobra boards from Theobroma
+>     Systems
+>   arm64: dts: rockchip: add px30-cobra base dtsi and board variants
+>   dt-bindings: arm: rockchip: add PX30-PP1516 boards from Theobroma
+>     Systems
+>   arm64: dts: rockchip: add px30-pp1516 base dtsi and board variants
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |  18 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   6 +
+>  .../rockchip/px30-cobra-ltk050h3146w-a2.dts   |  39 ++
+>  .../dts/rockchip/px30-cobra-ltk050h3146w.dts  |  39 ++
+>  .../dts/rockchip/px30-cobra-ltk050h3148w.dts  |  39 ++
+>  .../dts/rockchip/px30-cobra-ltk500hd1829.dts  |  73 +++
+>  arch/arm64/boot/dts/rockchip/px30-cobra.dtsi  | 566 ++++++++++++++++
+>  .../rockchip/px30-pp1516-ltk050h3146w-a2.dts  |  39 ++
+>  .../dts/rockchip/px30-pp1516-ltk050h3148w.dts |  39 ++
+>  arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi | 602 ++++++++++++++++++
+>  .../boot/dts/rockchip/px30-ringneck.dtsi      |  22 +-
+>  arch/arm64/boot/dts/rockchip/px30.dtsi        |   6 +
+>  12 files changed, 1485 insertions(+), 3 deletions(-)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w-a2.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3148w.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra-ltk500hd1829.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/px30-cobra.dtsi
+>  create mode 100644 arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3146w-a2.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3148w.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
+> 
+> --
+> 2.47.2
+> 
+> 
+> 
 
-Hi,
 
-I'm updating my own kernel config and have a question about this change.
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-On Wed Mar 5, 2025 at 8:54 AM CET, Shawn Lin wrote:
-> Enable Rockchip UFS host driver.
->
-> This driver is first introduced on Rockchip RK3576 SoC, and will
-> be used for more SoCs in near future, so add it to defconfig
-> will make these platforms work better.
->
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
->
->  arch/arm64/configs/defconfig | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-> index 3a3706d..907e92d 100644
-> --- a/arch/arm64/configs/defconfig
-> +++ b/arch/arm64/configs/defconfig
-> @@ -1191,6 +1191,7 @@ CONFIG_SCSI_UFS_HISI=3Dy
->  CONFIG_SCSI_UFS_RENESAS=3Dm
->  CONFIG_SCSI_UFS_TI_J721E=3Dm
->  CONFIG_SCSI_UFS_EXYNOS=3Dy
-> +CONFIG_SCSI_UFS_ROCKCHIP=3Dy
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
-Is there a particular reason why this is `=3Dy` and not `=3Dm`?
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
 
-For SCSI_UFS_EXYNOS there is an explicit reason for `=3Dy` in
-5be91fe8d91b ("arm64: defconfig: Enable Exynos UFS driver")
-(it won't detect (some?) UFS devices otherwise)
-
-But this patch/commit doesn't say if/why it must be built-in.
-Is there such a reason or is `=3Dm` fine as well?
-
-Cheers,
-  Diederik
-
->  CONFIG_NEW_LEDS=3Dy
->  CONFIG_LEDS_CLASS=3Dy
->  CONFIG_LEDS_CLASS_MULTICOLOR=3Dm
+  pip3 install dtschema --upgrade
 
 
---43495df6b18c95ed892a9855e6992edb45d3997bcce22c3b66455a6a817a
-Content-Type: application/pgp-signature; name="signature.asc"
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: tags/v6.15-rc1-23-g0d0947766d87 (exact match)
 
------BEGIN PGP SIGNATURE-----
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
 
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaCSRMAAKCRDXblvOeH7b
-bundAP484maMdKYcsjQhffsxspOH3uTIZmD2k3J7gd1bn64CjgEA897iMCmAQ1KG
-hvAs9elAO9T1nrBwCa9XpNB8Vkk2AQo=
-=I425
------END PGP SIGNATURE-----
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250514120906.2412588-1-heiko@sntech.de:
 
---43495df6b18c95ed892a9855e6992edb45d3997bcce22c3b66455a6a817a--
+Error: arch/arm64/boot/dts/rockchip/px30-cobra.dtsi:424.5-6 syntax error
+FATAL ERROR: Unable to parse input tree
+make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/rockchip/px30-cobra-ltk500hd1829.dtb] Error 1
+make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/rockchip] Error 2
+make[2]: Target 'arch/arm64/boot/dts/rockchip/px30-cobra-ltk500hd1829.dtb' not remade because of errors.
+make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: rockchip/px30-cobra-ltk500hd1829.dtb] Error 2
+Error: arch/arm64/boot/dts/rockchip/px30-cobra.dtsi:424.5-6 syntax error
+FATAL ERROR: Unable to parse input tree
+make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3148w.dtb] Error 1
+make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/rockchip] Error 2
+make[2]: Target 'arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3148w.dtb' not remade because of errors.
+make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: rockchip/px30-cobra-ltk050h3148w.dtb] Error 2
+arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3148w.dtb: panel@0 (leadtek,ltk050h3148w): 'port' does not match any of the regexes: '^pinctrl-[0-9]+$'
+	from schema $id: http://devicetree.org/schemas/display/panel/leadtek,ltk050h3146w.yaml#
+Error: arch/arm64/boot/dts/rockchip/px30-cobra.dtsi:424.5-6 syntax error
+FATAL ERROR: Unable to parse input tree
+make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w.dtb] Error 1
+make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/rockchip] Error 2
+make[2]: Target 'arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w.dtb' not remade because of errors.
+make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: rockchip/px30-cobra-ltk050h3146w.dtb] Error 2
+arch/arm64/boot/dts/rockchip/px30-pp1516-ltk050h3146w-a2.dtb: panel@0 (leadtek,ltk050h3146w-a2): 'port' does not match any of the regexes: '^pinctrl-[0-9]+$'
+	from schema $id: http://devicetree.org/schemas/display/panel/leadtek,ltk050h3146w.yaml#
+Error: arch/arm64/boot/dts/rockchip/px30-cobra.dtsi:424.5-6 syntax error
+FATAL ERROR: Unable to parse input tree
+make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w-a2.dtb] Error 1
+make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/rockchip] Error 2
+make[2]: Target 'arch/arm64/boot/dts/rockchip/px30-cobra-ltk050h3146w-a2.dtb' not remade because of errors.
+make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: rockchip/px30-cobra-ltk050h3146w-a2.dtb] Error 2
+make: *** [Makefile:248: __sub-make] Error 2
+make: Target 'rockchip/rk3399-ficus.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-odroid-m2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3368-r88.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-rockpro64.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-gru-scarlet-dumo.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-pinetab2-v2.0.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-coolpi-cm5-genbook.dtb' not remade because of errors.
+make: Target 'rockchip/rk3368-geekbox.dtb' not remade because of errors.
+make: Target 'rockchip/rk3326-odroid-go3.dtb' not remade because of errors.
+make: Target 'rockchip/rk3528-radxa-e20c.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-gru-scarlet-inx.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-gru-bob.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-orangepi-5b.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-h96-max-v58.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-soquartz-cm4.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-bigtreetech-pi2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-armsom-w3.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-orangepi-3b-v2.1.dtb' not remade because of errors.
+make: Target 'rockchip/rk3318-a95x-z2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-orangepi-r1-plus.dtb' not remade because of errors.
+make: Target 'rockchip/rk3576-roc-pc.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-orangepi-5-ultra.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-rock-pi-4a-plus.dtb' not remade because of errors.
+make: Target 'rockchip/rk3326-anbernic-rg351v.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-rock64.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-jaguar.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-edgeble-neu6b-io.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-ok3588-c.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-rock-pi-4b.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-powkiddy-rgb10max3.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-khadas-edge-v.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-radxa-e25.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-gameforce-ace.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-rock-4se.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-bpi-r2-pro.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-orangepi-5.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-tiger-haikou.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-nanopi-r2s.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-photonicat.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-hugsun-x99.dtb' not remade because of errors.
+make: Target 'rockchip/rk3582-radxa-e52c.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-anbernic-rg-arc-s.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-rock-4c-plus.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-rockpro64-v2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3368-px5-evb.dtb' not remade because of errors.
+make: Target 'rockchip/rk3308-rock-s0.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-puma-haikou.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-qnap-ts433.dtb' not remade because of errors.
+make: Target 'rockchip/px30-engicam-px30-core-ctouch2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-coolpi-4b.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-toybrick-x0.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-rock-pi-4c.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-khadas-edge.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-pinebook-pro.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-nanopi-r5c.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-khadas-edge2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-nanopi-m4.dtb' not remade because of errors.
+make: Target 'rockchip/rk3326-odroid-go2-v11.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-nanopi-r4s.dtb' not remade because of errors.
+make: Target 'rockchip/rk3368-lion-haikou.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-friendlyelec-cm3588-nas.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-lckfb-tspi.dtb' not remade because of errors.
+make: Target 'rockchip/px30-cobra-ltk500hd1829.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-sapphire.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-fastrhino-r68s.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-edgeble-neu6a-io.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-anbernic-rg353ps.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-rock-5a.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-fastrhino-r66s.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-rock-5-itx.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-kobol-helios64.dtb' not remade because of errors.
+make: Target 'rockchip/rk3576-armsom-sige5.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-leez-p710.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-wolfvision-pf5.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-gru-kevin.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-nanopi-r5s.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-evb1-v10.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-anbernic-rg353vs.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-rock-3b.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-powkiddy-rgb30.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-powkiddy-x55.dtb' not remade because of errors.
+make: Target 'rockchip/px30-pp1516-ltk050h3148w.dtb' not remade because of errors.
+make: Target 'rockchip/rk3326-anbernic-rg351m.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-nanopi-m4b.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-rock960.dtb' not remade because of errors.
+make: Target 'rockchip/px30-cobra-ltk050h3148w.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-orangepi.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-rock-5b.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-soquartz-model-a.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-nanopi-r2c.dtb' not remade because of errors.
+make: Target 'rockchip/px30-ringneck-haikou.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-sapphire-excavator.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-roc-pc-mezzanine.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-odroid-m1.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-evb1-v10.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-roc-pc-plus.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-powkiddy-rgb20sx.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-gru-scarlet-kd.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-roc-pc.dtb' not remade because of errors.
+make: Target 'rockchip/rk3368-evb-act8846.dtb' not remade because of errors.
+make: Target 'rockchip/rk3308-bpi-p2-pro.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-quartzpro64.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-turing-rk1.dtb' not remade because of errors.
+make: Target 'rockchip/px30-engicam-px30-core-edimm2.2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-radxa-cm3-io.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-radxa-zero-3e.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-roc-pc.dtb' not remade because of errors.
+make: Target 'rockchip/px30-cobra-ltk050h3146w.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-roc-pc.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-nanopi-r2c-plus.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-mnt-reform2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-nanopc-t6-lts.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-odroid-m1s.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-armsom-sige7.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-rock-pi-e.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-mecsbc.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-nanopi-r6c.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399pro-rock-pi-n10.dtb' not remade because of errors.
+make: Target 'rockchip/px30-firefly-jd4-core-mb.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-radxa-zero-3w.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-firefly.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-orangepi-5-plus.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-pinephone-pro.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-evb.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-quartz64-b.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-roc-cc.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-nanopc-t6.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-eaidk-610.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-orangepi-5-max.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-nanopi-r6s.dtb' not remade because of errors.
+make: Target 'rockchip/rk3326-odroid-go2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-rock-pi-4a.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-rock-5c.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-anbernic-rg353v.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-firefly-itx-3588j.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-orangepi-r1-plus-lts.dtb' not remade because of errors.
+make: Target 'rockchip/rk3576-evb1-v10.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-orangepi-3b-v1.1.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-lubancat-2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-box-demo.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-powkiddy-rk2023.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-rock-3c.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-bigtreetech-cb2-manta.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-evb1-v10.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-rock-pi-4b-plus.dtb' not remade because of errors.
+make: Target 'rockchip/rk3308-roc-cc.dtb' not remade because of errors.
+make: Target 'rockchip/rk3326-gameforce-chi.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-a1.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-pinenote-v1.1.dtb' not remade because of errors.
+make: Target 'rockchip/px30-pp1516-ltk050h3146w-a2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-anbernic-rg503.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-soquartz-blade.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-pinenote-v1.2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-nanopi-r3s.dtb' not remade because of errors.
+make: Target 'rockchip/rk3308-evb.dtb' not remade because of errors.
+make: Target 'rockchip/px30-evb.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588-coolpi-cm5-evb.dtb' not remade because of errors.
+make: Target 'rockchip/rk3588s-indiedroid-nova.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-lubancat-1.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-nanopi-r4s-enterprise.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-nanopi-neo4.dtb' not remade because of errors.
+make: Target 'rockchip/px30-engicam-px30-core-ctouch2-of10.dtb' not remade because of errors.
+make: Target 'rockchip/rk3328-nanopi-r2s-plus.dtb' not remade because of errors.
+make: Target 'rockchip/rk3308-rock-pi-s.dtb' not remade because of errors.
+make: Target 'rockchip/rk3568-rock-3a.dtb' not remade because of errors.
+make: Target 'rockchip/rk3368-orion-r68-meta.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-anbernic-rg353p.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-quartz64-a.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-roc-pc.dtb' not remade because of errors.
+make: Target 'rockchip/rk3576-rock-4d.dtb' not remade because of errors.
+make: Target 'rockchip/px30-cobra-ltk050h3146w-a2.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-evb.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-anbernic-rg-arc-d.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-nanopc-t4.dtb' not remade because of errors.
+make: Target 'rockchip/rk3399-khadas-edge-captain.dtb' not remade because of errors.
+make: Target 'rockchip/rk3566-pinetab2-v0.1.dtb' not remade because of errors.
+make: Target 'rockchip/rk3368-lba3368.dtb' not remade because of errors.
 
 
---===============2387313785029403366==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2387313785029403366==--
-
