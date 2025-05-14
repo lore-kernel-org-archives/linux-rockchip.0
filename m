@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6D14C3ABD8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 15:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0D8DC3ABCC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 15:23:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OzPqJ6oFU1sNJvHeYFniIAVPu5f6YvqgMC/6YhiFRmo=; b=t6wfh8YeYG0riU
-	Vte9wl5XRmMWU04p8QOx1X2ANVcDyOgeZCS9a3/61fwMFhMGJD7HfEd8trUjOwd/vFgTrmuzHSMUr
-	Trx0VfELezR/2GLZO+zgTok5sku0RcPtKOjDAMoZNn4AkD7U3GdwziVdN6Bto4FJortNr47CYbEtv
-	gYB44g2y8mt0WPQYhgZRSlTkEz/zgaDo1N22BQnvoYX5vdq5uPbF86wS0wWfLZn/BUIDjyugAi5dY
-	Y2pb8HGlRFAn+YwSKcRNSQrXW082bhhc1l5UzBVlQVNcImz+PMWiT/DgoMP1UxzOFRQG0KlvwrVRW
-	FiREK0Uddy75Qckau2TA==;
+	List-Owner; bh=WqTHMRRmK2CF8Mp/xcZMpEbjAYHfKzYBZL5VaTvnuYA=; b=HU9INOw3o6/oAY
+	uhwIwwmRpNw06rB2Ttc/47w9vOk5TdhbUfXkvR+uylLKdbqSX70xxJu2ypntsGb7Dkjh6/u7cYALO
+	yYsnuw+ii5v/vmgj0A5tGgfaQntPngCkrjhusuOfOzMW6OV5j0/+9bbGnilfTj4NHZXF0uj2Ffh+Y
+	7J5xfPU5gFjqQIxJta7aqXckOWYnO8HL7oTLS5ojxoPX3BFXxsiKlF9M7U9aTdqj/8lCc0ZlUjPfU
+	9fvRIbRQ3ZGFW0pdIvzhuCL3s2Aa9idd0DTn1Au28FePbOa7v34b4Dbpnc4fVyI0EnlPuiIAGyV7Q
+	1KRg61kpiSVHVTWQy52g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFDx6-0000000Fa4C-2bKl;
-	Wed, 14 May 2025 15:23:24 +0000
+	id 1uFDxI-0000000Fa8n-03RH;
+	Wed, 14 May 2025 15:23:36 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFDiC-0000000FWTK-2FoD;
-	Wed, 14 May 2025 15:08:00 +0000
+	id 1uFDiD-0000000FWUB-49DC;
+	Wed, 14 May 2025 15:08:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=RV3QvTlWfQTkDjPmndYOu91G7Myw8NKGakZkfON1fQE=; b=T4T7ZD4XZpkFO3OTZEVDpVyfdq
-	6zstRzorNbhtOXb+YQdUdwsOf6W2apZGyQmrenNvDrbQL9Uf2t5Pz8uD8FDEjrjWqioF70u6CC31d
-	jV5MZQAyfLPYTg27Wt6WuZHp4aI9lZ4U4aWm/oANnmnDoeeAotdxmD+KnPe7mTc5pyxlhiRQUVt7Y
-	3i4brT1vxjTGXbVf/DraRqBxaJa33L48JRTqkVe7SQ8SqhNHZqw2CKv3CQQt8FcuA3YtM5R5xgv3U
-	Wz3LmukYOud+EogMll1tRRkZTyg6IgZzt/+BpaX6ObE5C13MKJ4Y2eOCUKT5zY4y5JryZ84VVBS30
-	e836DqCA==;
+	bh=bup6NhA6evSSr2vJWZ/rxyhkcFN8+wVdFF6iyZzNxv0=; b=YGh8f3LbIG3IrGGVGOR927ZSBS
+	KpE82HUMbS6aOTF7POn3ll++pkKu5mqq+yIbTPy8zDY3ZYRjGbltJoGAy5n1FarFee2hoaMB389kb
+	Yxo6ncmfUcfLzki58qyhRWmNJs9mJyJvxPGdJqdYKTq0I16c1Q7iA+CxgRIIu5F2PsawYVDgFC1pf
+	OvF+lDIPLKUx47JN3wAtiARx5O4ZRJxXUaOsT80Bp9lIIIBTolNL4ujV/8aWDvHJgORLRLUdXK8c8
+	lxU1LA0BB0Q73DWZ4OyL3khBFSaY4xxKlDuan9ICVIP6GVR+wUelg7ctCpfMhdIcCZi+4nmaYtWsc
+	jqfiyBwg==;
 Received: from gloria.sntech.de ([185.11.138.130])
 	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1uFDi9-0000000HE2h-2mfQ;
-	Wed, 14 May 2025 15:07:59 +0000
+	id 1uFDi9-0000000HE2i-2m3q;
+	Wed, 14 May 2025 15:08:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=RV3QvTlWfQTkDjPmndYOu91G7Myw8NKGakZkfON1fQE=; b=U/5UTl7kW20dUxg3as4vjPS5Hm
-	MoFDma9yUdEFw3cV6sSdF+lfu6QWthYj+l6rwQ2DaExqVA0ecSq+EOuoHCtCEKCcbEVusodO6Iaie
-	DWJaWssg0K9QRJG3jZQLZdwQYpbVFEjaEH+QXh79P/dKODWx8jHtN0o3gL7ve1FWtaHqk9pAALaYf
-	/ZtEMjZiNtO1gtZjntKoS29tV4L1loKXlwsEXSjpnmvocwQvkc/dnhN1m91jrFr0M8XUI//Xgihnt
-	R+VEQh+gnxibHZKXW6M+IUFb5LIiOfk8KyKltOZSanQiM5LkWL4D6JqiZ0Ggg6k8POdt5shFsz+Dc
-	VMhHi8Sw==;
+	bh=bup6NhA6evSSr2vJWZ/rxyhkcFN8+wVdFF6iyZzNxv0=; b=00xdPBV5LYUhsKRl0GPLmUYjwN
+	MlKlXssVXXHpKTVBWLO7vYS3B5E0puV5YwwmnYbPxrTzmePbxtPjsvUPxmIhUPmMrWLHhWY1dLBnd
+	65kynvoqfcnLVH3zda3mHp3NsF18gDQ7djvUJjPTCrC+qMYQkITkU6V6a+JGo+69RO5o9roByzLgZ
+	Dx7/nwxLu61OuoNqRo6bLIEoYgUzowC4eCvt2ap5+/3Thsm10owOHuxz+R000k3TbDTWaTW44qzde
+	ibQIxMYX05W+4z/UnXUdaDn6MkXnEr2DQ++1zcwaahwDH7yM/RwbRJRnH9bhqpf85t/TnVB8DrR74
+	39JLSKPw==;
 Received: from i53875a50.versanet.de ([83.135.90.80] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uFDi8-0006vE-5C; Wed, 14 May 2025 17:07:56 +0200
+	id 1uFDi8-0006vE-JA; Wed, 14 May 2025 17:07:56 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: quentin.schulz@cherry.de,
@@ -67,16 +67,16 @@ Cc: quentin.schulz@cherry.de,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH v4 1/6] arm64: dts: rockchip: add basic mdio node to px30
-Date: Wed, 14 May 2025 17:07:40 +0200
-Message-ID: <20250514150745.2437804-2-heiko@sntech.de>
+Subject: [PATCH v4 2/6] arm64: dts: rockchip: move reset to dedicated eth-phy node on ringneck
+Date: Wed, 14 May 2025 17:07:41 +0200
+Message-ID: <20250514150745.2437804-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250514150745.2437804-1-heiko@sntech.de>
 References: <20250514150745.2437804-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_160757_936450_CDAF89EA 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20250514_160757_950347_A7D0AF6E 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,36 +95,65 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-Using snps,reset-* properties for handling the phy-reset is deprecated
-and instead a real phy node should be defined that then contains the
-reset-gpios handling.
+Using snps,reset-* properties to handle the ethernet-phy resets is
+deprecated and instead a real phy node should be used.
 
-To facilitate this, add the core mdio node under the px30's gmac, similar
-to how the other Rockchip socs already do this.
+Move the Ringneck phy-reset properties to such a node
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/px30.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ .../boot/dts/rockchip/px30-ringneck.dtsi      | 22 ++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 9137dd76e72c..feabdadfa440 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -985,6 +985,12 @@ gmac: ethernet@ff360000 {
- 		resets = <&cru SRST_GMAC_A>;
- 		reset-names = "stmmaceth";
- 		status = "disabled";
+diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+index 142244d52706..ab232e5c7ad6 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+@@ -83,9 +83,7 @@ &emmc {
+ 
+ /* On-module TI DP83825I PHY but no connector, enable in carrierboard */
+ &gmac {
+-	snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
+-	snps,reset-active-low;
+-	snps,reset-delays-us = <0 50000 50000>;
++	phy-handle = <&dp83825>;
+ 	phy-supply = <&vcc_3v3>;
+ 	clock_in_out = "output";
+ };
+@@ -344,6 +342,18 @@ &io_domains {
+ 	status = "okay";
+ };
+ 
++&mdio {
++	dp83825: ethernet-phy@0 {
++		compatible = "ethernet-phy-ieee802.3-c22";
++		reg = <0x0>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&phy_rst>;
++		reset-assert-us = <50000>;
++		reset-deassert-us = <50000>;
++		reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
++	};
++};
 +
-+		mdio: mdio {
-+			compatible = "snps,dwmac-mdio";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+		};
+ &pinctrl {
+ 	emmc {
+ 		emmc_reset: emmc-reset {
+@@ -351,6 +361,12 @@ emmc_reset: emmc-reset {
+ 		};
  	};
  
- 	sdmmc: mmc@ff370000 {
++	ethernet {
++		phy_rst: phy-rst {
++			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	leds {
+ 		module_led_pin: module-led-pin {
+ 			rockchip,pins = <1 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
 -- 
 2.47.2
 
