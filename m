@@ -4,89 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B7A2C2D0CD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 May 2025 16:35:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DFC7C2D0CD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 May 2025 17:37:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yO0Gr6/kkuHkNT/EPcmRiOs0qZ/saCKUaUUO6w5uLK4=; b=OYH6zqBftu5g+L
-	k4IRHTf5xsN4HvPq7s3+vdgVUwbEc2+HOX5WejXnBk4ZQWYLChwGCxKhgxB0R9p4cCCOBoHlraRwK
-	7pS5q/efZNxR/gO3rzHxJPK4nJ7vmAnIboBix52Riqy35C8IYiI4+C0b7GypVCoRv94EmvnO4eDZ3
-	doR+5Ft4CTNarWCsYgMnm/qJh8nzH5ngFazJaW49khPaN2uWIuQdN0dMCaFhfM0taHd8RJE+3hHSS
-	9ZDkh52EHdcRYZgmLtQV23l7yQB/7yQDMJeDfYMYMdtoMpdOgQFdtGd8Cg3afzmpHQUA6F8gg4BV7
-	lSSdzFWjYyq0rJpQJYWQ==;
+	List-Owner; bh=L39QcEs3X6YJTLDpArRTTZlVAjkisZvA4NmC5o298jc=; b=BNC83CmDczWp+9
+	dbwW27Skk7NQtju3BPE7/xWkJyNe9su8mLTEa/9LQUyT+CxhAM+YL8dFxU48653jFUO4ubuBDxfuG
+	ZzPGZbgdlskCW9nZViNE0RLIckRoJ/niS2hNs4HODGSc5+/38ROsJ0s2Kzrq1+vWyHlMFJRoZJ9Qc
+	a8oAJFRIUhlsjTeMD6/CPZGxDBi4kL3ZA3jJI7037FrTvJr9Y7c3U7QSea0rKpa/7JLaAWhvQ/dhn
+	LhJMcb5SorsmSVwB2NT1NFvSidfErOIrDkcXVTp5tVN4FVuJMFVoiCyBhUMEbf8/auX8P+um0t7xz
+	+Zi/N8dWieq3ZRvgzrvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFbYM-00000001HMP-3XHC;
-	Thu, 15 May 2025 16:35:26 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uFcWA-00000001Ro3-2C4Y;
+	Thu, 15 May 2025 17:37:14 +0000
+Received: from mail-24424.protonmail.ch ([109.224.244.24])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFbWK-00000001H1f-14IR;
-	Thu, 15 May 2025 16:33:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 41760614BD;
-	Thu, 15 May 2025 16:33:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AD5EC4CEE7;
-	Thu, 15 May 2025 16:33:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747326799;
-	bh=kKPojMJd9kqH6u8NArAZ+Lui+uo9ndwDNquYyy93G0k=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ESjhprCJouXAhjQr0dZG6SyTXibttfDkEXUZ8Ep+z+gy7A2IEg74Pih3DzIhR92mQ
-	 Wg1fRLZ7AahHltL5KOdUISnA+OaOb/NOKa//4TXRGsVv+rtItX6BET9OvhMNCVjW8U
-	 De/WmZChNK1Me4d3LxDTawHPD0qDmGXiVYicOpf6dOYdfucJiAUxulmuYxUjdIzoNg
-	 rv5OilXcNBVStDgu4CYEBWfv8QrLAI7K0VbMfOL+gk/FQ5MrHdl540MrndCpVvuVnX
-	 7099wIC/Jq/PwBwkwpUYCjiluxA04ZhHxA2VwN2NdOyoYvtGtPBJorxsEY9l/w9orN
-	 6Z7TkSd+Kro/w==
-Date: Thu, 15 May 2025 17:33:07 +0100
-From: Will Deacon <will@kernel.org>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Janne Grunau <j@jannau.net>,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Rob Clark <robdclark@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Niklas Schnelle <schnelle@linux.ibm.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Tomasz Jeznach <tjeznach@rivosinc.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, virtualization@lists.linux.dev,
-	Chen-Yu Tsai <wens@csie.org>, Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>, patches@lists.linux.dev
-Subject: Re: [PATCH 0/7] Remove ops.pgsize_bitmap
-Message-ID: <20250515163307.GA12396@willie-the-truck>
-References: <0-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
+	id 1uFcSs-00000001RFQ-1Jse
+	for linux-rockchip@lists.infradead.org;
+	Thu, 15 May 2025 17:33:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1747330426; x=1747589626;
+	bh=eMncJgSExIrvYrm15fzLzbqOrXbXjQptW5tx6rKcD4I=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
+	b=lwSUTHmW6N+zQ/NW38uEV4P2MhL9KZS6+XrPKUKG8pmscbGxrmYDdsy2E0QY8a8Ad
+	 zloyMRqwi+ZGpgGamuodFCt08pt3kP283lyMkowlmMRZ9P+VvrktpmXv0RH+uLvAsU
+	 wUvljNwbqcP63kKVn37ILqzR0+CvoqA15NtAL8e02fFMSa6s+ktCv+p2X1RWDmtEVD
+	 XB20eYvxdMpxkjw9aRr01z+UBrcIkciJ58GM0EyF7smzzjw82G9nckk4VOH641apED
+	 WAuY/jVLa6qONkh1L0hjvaks7bvTrPkltGZfvRbG43IN7w/DOY69vaUo0vXaY+dYzA
+	 emqthYKG/HHQQ==
+Date: Thu, 15 May 2025 17:33:41 +0000
+To: Niklas Cassel <cassel@kernel.org>
+From: Laszlo Fiat <laszlo.fiat@proton.me>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Lorenzo Pieralisi <lpieralisi@kernel.org>, =?utf-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Krishna chaitanya chundru <quic_krichai@quicinc.com>, Wilfred Mallawa <wilfred.mallawa@wdc.com>, Damien Le Moal <dlemoal@kernel.org>, Hans Zhang <18255117159@163.com>, =?utf-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH v2 0/4] PCI: dwc: Link Up IRQ fixes
+Message-ID: <fCMPjWu_crgW5GkH4DJd17WBjnCAsb363N9N_h6ld1i8NqNNGR9PTpQWAO9-kwv4DUL6um48dwP0GJ8GmdL4uQf-WniBepwuxTEhjmbBnug=@proton.me>
+In-Reply-To: <aCNSBqWM-HM2vX7K@ryzen>
+References: <20250506073934.433176-6-cassel@kernel.org> <7zcrjlv5aobb22q5tyexca236gnly6aqhmidx6yri6j7wowteh@mylkqbwehak7> <aCNSBqWM-HM2vX7K@ryzen>
+Feedback-ID: 130963441:user:proton
+X-Pm-Message-ID: 83d36aa26181c4d7b2012c55407c6d5d0302af1c
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <0-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250515_103350_966459_81887C9D 
+X-CRM114-Status: GOOD (  29.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,53 +64,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 29, 2025 at 11:34:10AM -0300, Jason Gunthorpe wrote:
-> Now that all drivers are using domain_alloc_paging() and dev is never
-> NULL, we can have all drivers correctly set domain.pgsize_bitmap during
-> their allocation function.
-> 
-> There are a few oddities that have accumulated here over past changes:
-> 
->  - Some drivers always set domain.pgsize_bitmap during their
->    domain_alloc_paging() call but still provide a value in ops. This is dead
->    code, delete it.
-> 
->  - Some drivers calculate a system global pgsize_bitmap in the ops, but
->    it is now trivial to use the per-instance value instead. In several
->    cases this is dead code, delete it. This also allows
->    constifying the ops in these drivers as a hardening measure
-> 
->  - Some drivers have a fixed pgsize_bitmap, put it next to setting up the
->    geometry in their domain_alloc_paging() functions.
-> 
->  - Finally a few drivers still use ops because they have a delayed
->    finalize operation. Set the constant pgsize_bitmap in the
->    domain_alloc_paging().
-> 
-> Then remove ops.pgsize_bitmap.
-> 
-> This is based on iommu next, and must go after the virtio
-> domain_alloc_paging() conversion.
-> 
-> Jason Gunthorpe (7):
->   iommu/arm-smmu-v3: Remove iommu_ops pgsize_bitmap
->   iommu/arm-smmu: Remove iommu_ops pgsize_bitmap
-
-These two SMMU changes look correct to me:
-
-Acked-by: Will Deacon <will@kernel.org>
-
-Please yell if you'd like me to pick them up separately from the rest
-of the series.
-
-Will
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkhlbGxvLAoKT24gVHVlc2RheSwgTWF5IDEzdGgsIDIwMjUgYXQgNDowNyBQTSwgTmlrbGFzIENh
+c3NlbCA8Y2Fzc2VsQGtlcm5lbC5vcmc+IHdyb3RlOgoKPiBIZWxsbyBNYW5pLAo+IAo+IE9uIFR1
+ZSwgTWF5IDEzLCAyMDI1IGF0IDExOjUzOjI5QU0gKzAxMDAsIE1hbml2YW5uYW4gU2FkaGFzaXZh
+bSB3cm90ZToKPiAKPiA+IFRoaXMgd2FpdCB0aW1lIGlzIGEgZ3JleSBhcmVhIGluIHRoZSBzcGVj
+IHRiaC4gSWYgdGhlIFJlYWRpbmVzcyBOb3RpZmljYXRpb24KPiA+IChSTikgaXMgbm90IHN1cHBv
+cnRlZCwgdGhlbiB0aGUgc3BlYyBzdWdnZXN0cyB3YWl0aW5nIDFzIGZvciB0aGUgZGV2aWNlIHRv
+Cj4gPiBiZWNvbWUgJ2NvbmZpZ3VyYXRpb24gcmVhZHknLiBUaGF0J3Mgd2h5IHdlIGhhdmUgdGhl
+IDFzIGRlbGF5IGluIGR3YyBkcml2ZXIuCj4gPiAKPiA+IEFsc28sIGl0IGhhcyB0aGUgYmVsb3cg
+aW4gcjYuMCwgc2VjIDYuNi4xOgo+ID4gCj4gPiBgKiBPbiB0aGUgY29tcGxldGlvbiBvZiBMaW5r
+IFRyYWluaW5nIChlbnRlcmluZyB0aGUgRExfQWN0aXZlIHN0YXRlLCBzZWUgwqcgU2VjdGlvbiAz
+LjIgKSwgYSBjb21wb25lbnQgbXVzdCBiZSBhYmxlIHRvIHJlY2VpdmUgYW5kIHByb2Nlc3MgVExQ
+cyBhbmQgRExMUHMuICogRm9sbG93aW5nIGV4aXQgZnJvbSBhIENvbnZlbnRpb25hbCBSZXNldCBv
+ZiBhIGRldmljZSwgd2l0aGluIDEuMCBzIHRoZSBkZXZpY2UgbXVzdCBiZSBhYmxlIHRvIHJlY2Vp
+dmUgYSBDb25maWd1cmF0aW9uIFJlcXVlc3QgYW5kIHJldHVybiBhIFN1Y2Nlc3NmdWwgQ29tcGxl
+dGlvbiBpZiB0aGUgUmVxdWVzdCBpcyB2YWxpZC4gVGhpcyBwZXJpb2QgaXMgaW5kZXBlbmRlbnQg
+b2YgaG93IHF1aWNrbHkgTGluayB0cmFpbmluZyBjb21wbGV0ZXMuIElmIFJlYWRpbmVzcyBOb3Rp
+ZmljYXRpb25zIG1lY2hhbmlzbXMgYXJlIHVzZWQgKHNlZSDCpyBTZWN0aW9uIDYuMjIgLiksIHRo
+aXMgcGVyaW9kIG1heSBiZSBzaG9ydGVyLmAKPiA+IAo+ID4gQXMgcGVyIHRoZSBmaXJzdCBub3Rl
+LCBvbmNlIGxpbmsgdHJhaW5pbmcgaXMgY29tcGxldGVkLCB0aGUgZGV2aWNlIHNob3VsZCBiZQo+
+ID4gcmVhZHkgdG8gYWNjZXB0IGNvbmZpZ3VyYXRpb24gcmVxdWVzdHMgZnJvbSB0aGUgaG9zdC4g
+U28gbm8gZGVsYXkgc2hvdWxkIGJlCj4gPiByZXF1aXJlZC4KPiA+IAo+ID4gQnV0IHRoZSBzZWNv
+bmQgbm90ZSBzYXlzIHRoYXQgdGhlIDFzIGRlbGF5IGlzIGluZGVwZW5kZW50IG9mIGhvdyBxdWlj
+a2x5IHRoZQo+ID4gbGluayB0cmFpbmluZyBjb21wbGV0ZXMuIFRoaXMgZXNzZW50aWFsbHkgY29u
+dHJhZGljdHMgd2l0aCB0aGUgYWJvdmUgcG9pbnQuCj4gPiAKPiA+IFNvIEkgdGhpbmsgaXQgaXMg
+bm90IHJlcXVpcmVkIHRvIGFkZCBkZWxheSBhZnRlciBjb21wbGV0aW5nIHRoZSBMVFNTTSwgdW5s
+ZXNzCj4gPiBzb21lb25lIHNlZXMgYW55IGlzc3VlLgo+IAo+IAo+IElmIHlvdSBsb29rIGF0IHRo
+ZSBjb21taXQgbWVzc2FnZSBpbiBwYXRjaCAxLzIsIHRoZSB3aG9sZSByZWFzb24gZm9yIHRoaXMK
+PiBzZXJpZXMgaXMgdGhhdCBzb21lb25lIGhhcyBzZWVuIGFuIGlzc3VlIDopCj4gCj4gV2hpbGUg
+SSBwZXJzb25hbGx5IGhhdmVuJ3Qgc2VlbiBhbnkgaXNzdWUsIHRoZSB1c2VyIHJlcG9ydGluZyB0
+aGF0IGNvbW1pdAo+IGVjOWZkNDk5YjljNiAoIlBDSTogZHctcm9ja2NoaXA6IERvbid0IHdhaXQg
+Zm9yIGxpbmsgc2luY2Ugd2UgY2FuIGRldGVjdAo+IExpbmsgVXAiKSByZWdyZXNzZWQgaGlzIHN5
+c3RlbSBzbyB0aGF0IGl0IGNhbiBubyBsb25nZXIgbW91bnQgcm9vdGZzCj4gKHdoaWNoIGlzIG9u
+IGEgUExFWFRPUiBQWC0yNTZNOFBlR04gTlZNZSBTU0QpIGNsZWFybHkgaGFzIHNlZW4gYW4gaXNz
+dWUuCj4gCj4gSXQgaXMgcG9zc2libGUgdGhhdCBoaXMgZGV2aWNlIGlzIG5vdCBmb2xsb3dpbmcg
+dGhlIHNwZWMuCj4gSSBzaW1wbHkgY29tcGFyZWQgdGhlIGNvZGUgYmVmb3JlIGFuZCBhZnRlciBl
+YzlmZDQ5OWI5YzYsIHRvIHRyeSB0bwo+IGZpZ3VyZSBvdXQgd2h5IGl0IHdhcyBhY3R1YWxseSB3
+b3JraW5nIGJlZm9yZSwgYW5kIGNhbWUgdXAgd2l0aCB0aGlzLAo+IHdoaWNoIG1hZGUgaGlzIGRl
+dmljZSBmdW5jdGlvbmFsIGFnYWluLgo+IAo+IFBlcmhhcHMgd2Ugc2hvdWxkIGFkZCBhIGNvbW1l
+bnQgYWJvdmUgdGhlIHNsZWVwIHRoYXQgc2F5cyB0aGF0IHRoaXMKPiBzaG91bGQgc3RyaWN0bHkg
+bm90IGJlIG5lZWRlZCBhcyBwZXIgdGhlIHNwZWM/Cj4gKEFuZCBhbHNvIGFkZCB0aGUgc2FtZSBj
+b21tZW50IGluIHRoZSAoc2luZ2xlKSBjb250cm9sbGVyIGRyaXZlciBpbgo+IG1haW5saW5lIHdo
+aWNoIGFscmVhZHkgZG9lcyBhbiBtc2xlZXAoUENJRV9UX1JSU19SRUFEWV9NUykuKQoKSSBhbSB0
+aGUgb25lIGV4cGVyaWVuY2luZyB0aGUgaXNzdWUgd2l0aCBteSBPcmFuZ2UgUEkgM0IgKFJLMzU2
+NiwgOCBHQiBSQU0pIGFuZCBhIFBMRVhUT1IgUFgtMjU2TThQZUdOIE5WTWUgU1NELiAKCkkgZmly
+c3QgZGV0ZWN0ZWQgdGhlIHByb2JsZW0gd2hpbGUgdXBncmFkaW5nIGZyb20gNi4xMy44IHRvIDYu
+MTQuMywgdGhhdCBteSBzeXN0ZW0gY2Fubm90IGZpbmQgdGhlIE5WTUUgU1NEIHdoaWNoIGNvbnRh
+aW5zIHRoZSByb290ZnMuIEFmdGVyIHJldmVydGluZyB0aGUgdHdvIHBhdGNoZXM6CgotIGVjOWZk
+NDk5YjljNiAoIlBDSTogZHctcm9ja2NoaXA6IERvbid0IHdhaXQgZm9yIGxpbmsgc2luY2Ugd2Ug
+Y2FuIGRldGVjdCBMaW5rIFVwIikKLSAwZTBiNDVhYjVkNzcgKCJQQ0k6IGR3LXJvY2tjaGlwOiBF
+bnVtZXJhdGUgZW5kcG9pbnRzIGJhc2VkIG9uIGRsbF9saW5rX3VwIElSUSIpCgpteSBzeXN0ZW0g
+Ym9vdGVkIGZpbmUgYWdhaW4uIApBZnRlciB0aGF0IEkgdGVzdGVkIHRoZSBwYXRjaGVzIHNlbnQg
+YnkgTmlrbGFzIGluIHRoaXMgdGhyZWFkLCB3aGljaCBmaXhlZCB0aGUgaXNzdWUsIHNvIEkgc2Vu
+dCBUZXN0ZWQtYnkuCgpJIGRpZCBhbm90aGVyIHRlc3QgVG9kYXkgd2l0aCA2LjE1LjAtcmM2LCB3
+aGljaCBpbiBpdHNlbGYgZG9lcyBub3QgZmluZCBteSBTU0QuIE5pa2xhcyBhc2tlZCBtZSB0byB0
+ZXN0IHdpdGggdGhlc2UgCgotIHJldmVydCBlYzlmZDQ5OWI5YzYgKCJQQ0k6IGR3LXJvY2tjaGlw
+OiBEb24ndCB3YWl0IGZvciBsaW5rIHNpbmNlIHdlIGNhbiBkZXRlY3QgTGluayBVcCIpCi0gcmV2
+ZXJ0IDBlMGI0NWFiNWQ3NyAoIlBDSTogZHctcm9ja2NoaXA6IEVudW1lcmF0ZSBlbmRwb2ludHMg
+YmFzZWQgb24gZGxsX2xpbmtfdXAgSVJRIikKLSBhcHBseSB0aGUgZm9sbG93aW5nIHBhdGNoOgoK
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdud2FyZS5j
+IGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLmMKaW5kZXggYjM2
+MTVkMTI1OTQyLi41ZGVlNjg5ZWNkOTUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xs
+ZXIvZHdjL3BjaWUtZGVzaWdud2FyZS5jCisrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdj
+L3BjaWUtZGVzaWdud2FyZS5jCkBAIC02OTIsNyArNjkyLDcgQEAgaW50IGR3X3BjaWVfd2FpdF9m
+b3JfbGluayhzdHJ1Y3QgZHdfcGNpZSAqcGNpKQogICAgICAgICAgICAgICAgaWYgKGR3X3BjaWVf
+bGlua191cChwY2kpKQogICAgICAgICAgICAgICAgICAgICAgICBicmVhazsKCi0gICAgICAgICAg
+ICAgICBtc2xlZXAoTElOS19XQUlUX1NMRUVQX01TKTsKKyAgICAgICAgICAgICAgIHVzbGVlcF9y
+YW5nZSgxMDAsIDIwMCk7CiAgICAgICAgfQoKICAgICAgICBpZiAocmV0cmllcyA+PSBMSU5LX1dB
+SVRfTUFYX1JFVFJJRVMpIHsKCgp3aGljaCByZXN0b3JlcyB0aGUgb3JpZ2luYWwgYmVoYXZpb3Vy
+IHRvIHdhaXQgZm9yIGxpbmstdXAsIHRoZW4gc2hvcnRlbiB0aGUgdGltZS4gVGhpcyByZXN1bHRl
+ZCBhZ2FpbiBhIG5vbiBib290aW5nIHN5c3RlbSwgdGhpcyB0aW1lIHdpdGggIlBoeSBsaW5rIG5l
+dmVyIGNhbWUgdXAiIGVycm9yIG1lc3NhZ2UuClNvIHBsZWFzZSBhbGxvdyB0byBmaXggdGhlIHJl
+Z3Jlc3Npb24gdGhhdCBpcyBhbHJlYWR5IGluIDYuMTQueC4gSSBub3cgc28gZmFyIG9ubHkgSSBo
+YXZlIHJlcG9ydGVkIHRoaXMsIGJ1dCB3ZSBjYW5ub3QgYmUgc3VyZSBob3cgbWFueSBTU0RzIGhh
+dmUgdGhpcyB0aW1pbmcgaXNzdWUuIE1vc3QgdXNlcnMgdXNlIG9sZGVyLCBkaXN0cmlidXRpb24g
+cGFja2FnZWQga2VybmVscywgc28gb3RoZXJzIHdpbGwgZmFjZSB0aGlzIGxhdGVyLgoKQnllLAoK
+TGFzemxvIEZpYXQKCj4gCj4gCj4gS2luZCByZWdhcmRzLAo+IE5pa2xhcwoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
+ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
