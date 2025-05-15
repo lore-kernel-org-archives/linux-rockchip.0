@@ -4,102 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFC13C2D0CD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 May 2025 15:56:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B7A2C2D0CD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 May 2025 16:35:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OOtIPwl7P9JhUPo0FmM3UJoi7ZUlZAnZ/zxrXTvUo9E=; b=Hao9ekMc17LHno
-	br3TeNtTsvMZAiICusui/XeGXIP4uWIwLp/M5d2xQaG839h90q9K1rjLQGcht7HDrt4H0UhN+p5I+
-	pbEllIRw+7QHdlBN8OnCdilCZlX6MHfkRfBrXW8NpfX2KsmOPzEB+lGsCs49hnVLTVZxw/J0DJI9Q
-	DuzrwhnV1TZVg5Xuivh4z8gheYBrKyLpDDaQdzCqPmlXypYGxmJxrJ96ZN2NxTc65fj3vC7AH3my7
-	Yip2qXR/JH2zanrygJJZZX2J505/UOhqTccn/YXjO1FvWj6hWpqoBbUglY6mNLse6Qa447duvGvo9
-	+KnLS++BbcX4onCcE9LA==;
+	List-Owner; bh=yO0Gr6/kkuHkNT/EPcmRiOs0qZ/saCKUaUUO6w5uLK4=; b=OYH6zqBftu5g+L
+	k4IRHTf5xsN4HvPq7s3+vdgVUwbEc2+HOX5WejXnBk4ZQWYLChwGCxKhgxB0R9p4cCCOBoHlraRwK
+	7pS5q/efZNxR/gO3rzHxJPK4nJ7vmAnIboBix52Riqy35C8IYiI4+C0b7GypVCoRv94EmvnO4eDZ3
+	doR+5Ft4CTNarWCsYgMnm/qJh8nzH5ngFazJaW49khPaN2uWIuQdN0dMCaFhfM0taHd8RJE+3hHSS
+	9ZDkh52EHdcRYZgmLtQV23l7yQB/7yQDMJeDfYMYMdtoMpdOgQFdtGd8Cg3afzmpHQUA6F8gg4BV7
+	lSSdzFWjYyq0rJpQJYWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFawk-000000019fB-2buN;
-	Thu, 15 May 2025 15:56:34 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uFbYM-00000001HMP-3XHC;
+	Thu, 15 May 2025 16:35:26 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFauh-0000000194X-2CWK;
-	Thu, 15 May 2025 15:54:27 +0000
+	id 1uFbWK-00000001H1f-14IR;
+	Thu, 15 May 2025 16:33:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E1D2B614BD;
-	Thu, 15 May 2025 15:54:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB0F0C4CEF1;
-	Thu, 15 May 2025 15:54:22 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 41760614BD;
+	Thu, 15 May 2025 16:33:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AD5EC4CEE7;
+	Thu, 15 May 2025 16:33:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747324466;
-	bh=bZ1mpdRMl97ugOlvZvcRlHoXNJ2fHIFzNKokgRFQ3eA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PcEOF7B6dhc/9Rt5gqzwOH0YuAPzB7J0a2O5RFFX2xXG56eNs/LCeFACXBWy5+wfN
-	 aTsiPeWROd8ekxs70Ew6Hq6HoLCw1o/CnoJD+PXOuj4mM2B/T9Yhe2ap2mrmiwAPMe
-	 /KZUGqT4ghW52XiCPsFnglK+JV/vRi5trCbdcbFV/eGZarVF4zmpwP+q6WgI8oe++K
-	 flIfsjG/8MnNHAqUPad6Y7ewVQ889NcbgDxA+KHfEcU8gqpLkHgNie6cAQfHs0ZDru
-	 /b1k4deb9bXX52sFr5BT8mX28rRHKuMtJbXQceYhxYwCYwK6YYGvCOh5mGs9NKr12w
-	 gf9xtqNGOwcLQ==
-Message-ID: <94e0951b-46e1-439b-9dbc-c2009a78b04b@kernel.org>
-Date: Thu, 15 May 2025 17:54:20 +0200
+	s=k20201202; t=1747326799;
+	bh=kKPojMJd9kqH6u8NArAZ+Lui+uo9ndwDNquYyy93G0k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ESjhprCJouXAhjQr0dZG6SyTXibttfDkEXUZ8Ep+z+gy7A2IEg74Pih3DzIhR92mQ
+	 Wg1fRLZ7AahHltL5KOdUISnA+OaOb/NOKa//4TXRGsVv+rtItX6BET9OvhMNCVjW8U
+	 De/WmZChNK1Me4d3LxDTawHPD0qDmGXiVYicOpf6dOYdfucJiAUxulmuYxUjdIzoNg
+	 rv5OilXcNBVStDgu4CYEBWfv8QrLAI7K0VbMfOL+gk/FQ5MrHdl540MrndCpVvuVnX
+	 7099wIC/Jq/PwBwkwpUYCjiluxA04ZhHxA2VwN2NdOyoYvtGtPBJorxsEY9l/w9orN
+	 6Z7TkSd+Kro/w==
+Date: Thu, 15 May 2025 17:33:07 +0100
+From: Will Deacon <will@kernel.org>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Janne Grunau <j@jannau.net>,
+	Jean-Philippe Brucker <jean-philippe@linaro.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Sven Peter <sven@svenpeter.dev>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Tomasz Jeznach <tjeznach@rivosinc.com>,
+	Krishna Reddy <vdumpa@nvidia.com>, virtualization@lists.linux.dev,
+	Chen-Yu Tsai <wens@csie.org>, Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>, patches@lists.linux.dev
+Subject: Re: [PATCH 0/7] Remove ops.pgsize_bitmap
+Message-ID: <20250515163307.GA12396@willie-the-truck>
+References: <0-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/rockchip: Use dev_err_probe() to simplify code
-To: long.yunjian@zte.com.cn, hjc@rock-chips.com
-Cc: heiko@sntech.de, andy.yan@rock-chips.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, fang.yumeng@zte.com.cn, mou.yi@zte.com.cn,
- xu.lifeng1@zte.com.cn, ouyang.maochun@zte.com.cn
-References: <20250515203554564-j1jBXUXR6bdiN6zARicC@zte.com.cn>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250515203554564-j1jBXUXR6bdiN6zARicC@zte.com.cn>
+Content-Disposition: inline
+In-Reply-To: <0-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,25 +103,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 15/05/2025 14:35, long.yunjian@zte.com.cn wrote:
-> From: Yumeng Fang <fang.yumeng@zte.com.cn>
+On Tue, Apr 29, 2025 at 11:34:10AM -0300, Jason Gunthorpe wrote:
+> Now that all drivers are using domain_alloc_paging() and dev is never
+> NULL, we can have all drivers correctly set domain.pgsize_bitmap during
+> their allocation function.
 > 
-> In the probe path, dev_err() can be replaced with dev_err_probe()
-
-That's not probe path. I am not sure if you really understand this code.
-
-> which will check if error code is -EPROBE_DEFER and prints the
-> error name. It also sets the defer probe reason which can be
-> checked later through debugfs.
+> There are a few oddities that have accumulated here over past changes:
 > 
-> Signed-off-by: Yumeng Fang <fang.yumeng@zte.com.cn>
+>  - Some drivers always set domain.pgsize_bitmap during their
+>    domain_alloc_paging() call but still provide a value in ops. This is dead
+>    code, delete it.
+> 
+>  - Some drivers calculate a system global pgsize_bitmap in the ops, but
+>    it is now trivial to use the per-instance value instead. In several
+>    cases this is dead code, delete it. This also allows
+>    constifying the ops in these drivers as a hardening measure
+> 
+>  - Some drivers have a fixed pgsize_bitmap, put it next to setting up the
+>    geometry in their domain_alloc_paging() functions.
+> 
+>  - Finally a few drivers still use ops because they have a delayed
+>    finalize operation. Set the constant pgsize_bitmap in the
+>    domain_alloc_paging().
+> 
+> Then remove ops.pgsize_bitmap.
+> 
+> This is based on iommu next, and must go after the virtio
+> domain_alloc_paging() conversion.
+> 
+> Jason Gunthorpe (7):
+>   iommu/arm-smmu-v3: Remove iommu_ops pgsize_bitmap
+>   iommu/arm-smmu: Remove iommu_ops pgsize_bitmap
 
-Incomplete chain.
+These two SMMU changes look correct to me:
 
+Acked-by: Will Deacon <will@kernel.org>
 
+Please yell if you'd like me to pick them up separately from the rest
+of the series.
 
-Best regards,
-Krzysztof
+Will
 
 _______________________________________________
 Linux-rockchip mailing list
