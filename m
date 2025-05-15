@@ -4,55 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DFC7C2D0CD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 May 2025 17:37:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D07DC3ABDD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 May 2025 21:51:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L39QcEs3X6YJTLDpArRTTZlVAjkisZvA4NmC5o298jc=; b=BNC83CmDczWp+9
-	dbwW27Skk7NQtju3BPE7/xWkJyNe9su8mLTEa/9LQUyT+CxhAM+YL8dFxU48653jFUO4ubuBDxfuG
-	ZzPGZbgdlskCW9nZViNE0RLIckRoJ/niS2hNs4HODGSc5+/38ROsJ0s2Kzrq1+vWyHlMFJRoZJ9Qc
-	a8oAJFRIUhlsjTeMD6/CPZGxDBi4kL3ZA3jJI7037FrTvJr9Y7c3U7QSea0rKpa/7JLaAWhvQ/dhn
-	LhJMcb5SorsmSVwB2NT1NFvSidfErOIrDkcXVTp5tVN4FVuJMFVoiCyBhUMEbf8/auX8P+um0t7xz
-	+Zi/N8dWieq3ZRvgzrvQ==;
+	List-Owner; bh=D8sGPHm6CJTi3Py1O6Mrh9nP2Ls+K5G7B0bberFDv1g=; b=IdK9DyOfO0XAV/
+	xyCVNV1PtmN//m5V0GY567Beg2rP9wXv7K11NUXDwlFrSeZrXKMelDJ+xUnfmUKv6AUTix6KmLGHI
+	ARwVRTbK8f5Xxwkj+bKTFE03BMslZ5fMxSblWguk1yZ6g6GFIhbs0gbGMjULX1jBADD9mM1alVv59
+	rwWyaLrzv1a5h3ZLj78+dPaRNppQ815k/Te/G0XDdEReMf33ZPDqLviwS+kDSjWP92CMbgjFSyP7J
+	+4yAfxsMP+YXwcG8yW+S0D3MD3IGFARYho0iht4Z+OXUYWpWk6/fKr8Pe3x0VMmaMO5etLM8jFD8Q
+	TybFcEj7cDVfjhEwDjKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFcWA-00000001Ro3-2C4Y;
-	Thu, 15 May 2025 17:37:14 +0000
-Received: from mail-24424.protonmail.ch ([109.224.244.24])
+	id 1uFgUS-00000001vtb-2Bco;
+	Thu, 15 May 2025 21:51:44 +0000
+Received: from mgamail.intel.com ([192.198.163.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFcSs-00000001RFQ-1Jse
-	for linux-rockchip@lists.infradead.org;
-	Thu, 15 May 2025 17:33:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1747330426; x=1747589626;
-	bh=eMncJgSExIrvYrm15fzLzbqOrXbXjQptW5tx6rKcD4I=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
-	b=lwSUTHmW6N+zQ/NW38uEV4P2MhL9KZS6+XrPKUKG8pmscbGxrmYDdsy2E0QY8a8Ad
-	 zloyMRqwi+ZGpgGamuodFCt08pt3kP283lyMkowlmMRZ9P+VvrktpmXv0RH+uLvAsU
-	 wUvljNwbqcP63kKVn37ILqzR0+CvoqA15NtAL8e02fFMSa6s+ktCv+p2X1RWDmtEVD
-	 XB20eYvxdMpxkjw9aRr01z+UBrcIkciJ58GM0EyF7smzzjw82G9nckk4VOH641apED
-	 WAuY/jVLa6qONkh1L0hjvaks7bvTrPkltGZfvRbG43IN7w/DOY69vaUo0vXaY+dYzA
-	 emqthYKG/HHQQ==
-Date: Thu, 15 May 2025 17:33:41 +0000
-To: Niklas Cassel <cassel@kernel.org>
-From: Laszlo Fiat <laszlo.fiat@proton.me>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Lorenzo Pieralisi <lpieralisi@kernel.org>, =?utf-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Krishna chaitanya chundru <quic_krichai@quicinc.com>, Wilfred Mallawa <wilfred.mallawa@wdc.com>, Damien Le Moal <dlemoal@kernel.org>, Hans Zhang <18255117159@163.com>, =?utf-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH v2 0/4] PCI: dwc: Link Up IRQ fixes
-Message-ID: <fCMPjWu_crgW5GkH4DJd17WBjnCAsb363N9N_h6ld1i8NqNNGR9PTpQWAO9-kwv4DUL6um48dwP0GJ8GmdL4uQf-WniBepwuxTEhjmbBnug=@proton.me>
-In-Reply-To: <aCNSBqWM-HM2vX7K@ryzen>
-References: <20250506073934.433176-6-cassel@kernel.org> <7zcrjlv5aobb22q5tyexca236gnly6aqhmidx6yri6j7wowteh@mylkqbwehak7> <aCNSBqWM-HM2vX7K@ryzen>
-Feedback-ID: 130963441:user:proton
-X-Pm-Message-ID: 83d36aa26181c4d7b2012c55407c6d5d0302af1c
+	id 1uFgSP-00000001vjS-1PlV;
+	Thu, 15 May 2025 21:49:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1747345777; x=1778881777;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=RoCc345vfJVENvuSRJcrRZFcN774itnQr3aMxr0Fyfw=;
+  b=kdo6o/yhOVlDVUvxceLUJylE98iwENvx1LskZAI4coxu/X3oT7fJ5NY4
+   yOBj0xl3TLbwgMaFo4G2P1BmdmXH0HAZGsjuXWoADfuHJNqPOS4xkftdO
+   Xm1ckHldvOS6ZktGaUxgjXEO5Am4DHqYLvOyijyvB+ScZRVW+1KI7bWWd
+   XW+YpochDqJ1zc7IcHzADG+pV9hc68OlKxwrIxEWyNQCClOzORjGmnwDP
+   4iGXbFAQOm64NCJSWxpMNlJ3f0ww8QIAWpLlshb7nY+wYJ5uVg8IUA7NU
+   aJrAu6b8r3kI32zthVDvdeoLw1WnUjqxqFBtNyHDYpLNzXIi1OvVTLo+X
+   A==;
+X-CSE-ConnectionGUID: ejlHZeKrT9+xpYMaBCmfuA==
+X-CSE-MsgGUID: jCYEgzgqTiyHrxOJVExYxg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11434"; a="74706562"
+X-IronPort-AV: E=Sophos;i="6.15,292,1739865600"; 
+   d="scan'208";a="74706562"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 May 2025 14:49:33 -0700
+X-CSE-ConnectionGUID: gPxS+KsDQICu4S9djjz6WA==
+X-CSE-MsgGUID: lV50IQaLQZ+PFDXaZT8Gcg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,292,1739865600"; 
+   d="scan'208";a="138895866"
+Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
+  by fmviesa008.fm.intel.com with ESMTP; 15 May 2025 14:49:27 -0700
+Received: from kbuild by 1992f890471c with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uFgSD-000Ilz-07;
+	Thu, 15 May 2025 21:49:25 +0000
+Date: Fri, 16 May 2025 05:48:39 +0800
+From: kernel test robot <lkp@intel.com>
+To: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>,
+	Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	=?iso-8859-1?Q?Th=E9o?= Lebrun <theo.lebrun@bootlin.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Gerald Loacker <gerald.loacker@wolfvision.net>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Markus Elfring <Markus.Elfring@web.de>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Collabora Kernel Team <kernel@collabora.com>,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Alexander Shiyan <eagle.alexander923@gmail.com>,
+	Val Packett <val@packett.cool>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: Paul Gazzillo <paul@pgazz.com>,
+	Necip Fazil Yildiran <fazilyildiran@gmail.com>,
+	oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: Re: [PATCH v7 07/14] media: rockchip: add driver for mipi csi-2
+ receiver
+Message-ID: <202505160513.MZRCAdXI-lkp@intel.com>
+References: <20240220-rk3568-vicap-v7-7-7581fd96a33a@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240220-rk3568-vicap-v7-7-7581fd96a33a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250515_103350_966459_81887C9D 
-X-CRM114-Status: GOOD (  29.34  )
+X-CRM114-CacheID: sfid-20250515_144937_418313_F99871A2 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,87 +110,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhlbGxvLAoKT24gVHVlc2RheSwgTWF5IDEzdGgsIDIwMjUgYXQgNDowNyBQTSwgTmlrbGFzIENh
-c3NlbCA8Y2Fzc2VsQGtlcm5lbC5vcmc+IHdyb3RlOgoKPiBIZWxsbyBNYW5pLAo+IAo+IE9uIFR1
-ZSwgTWF5IDEzLCAyMDI1IGF0IDExOjUzOjI5QU0gKzAxMDAsIE1hbml2YW5uYW4gU2FkaGFzaXZh
-bSB3cm90ZToKPiAKPiA+IFRoaXMgd2FpdCB0aW1lIGlzIGEgZ3JleSBhcmVhIGluIHRoZSBzcGVj
-IHRiaC4gSWYgdGhlIFJlYWRpbmVzcyBOb3RpZmljYXRpb24KPiA+IChSTikgaXMgbm90IHN1cHBv
-cnRlZCwgdGhlbiB0aGUgc3BlYyBzdWdnZXN0cyB3YWl0aW5nIDFzIGZvciB0aGUgZGV2aWNlIHRv
-Cj4gPiBiZWNvbWUgJ2NvbmZpZ3VyYXRpb24gcmVhZHknLiBUaGF0J3Mgd2h5IHdlIGhhdmUgdGhl
-IDFzIGRlbGF5IGluIGR3YyBkcml2ZXIuCj4gPiAKPiA+IEFsc28sIGl0IGhhcyB0aGUgYmVsb3cg
-aW4gcjYuMCwgc2VjIDYuNi4xOgo+ID4gCj4gPiBgKiBPbiB0aGUgY29tcGxldGlvbiBvZiBMaW5r
-IFRyYWluaW5nIChlbnRlcmluZyB0aGUgRExfQWN0aXZlIHN0YXRlLCBzZWUgwqcgU2VjdGlvbiAz
-LjIgKSwgYSBjb21wb25lbnQgbXVzdCBiZSBhYmxlIHRvIHJlY2VpdmUgYW5kIHByb2Nlc3MgVExQ
-cyBhbmQgRExMUHMuICogRm9sbG93aW5nIGV4aXQgZnJvbSBhIENvbnZlbnRpb25hbCBSZXNldCBv
-ZiBhIGRldmljZSwgd2l0aGluIDEuMCBzIHRoZSBkZXZpY2UgbXVzdCBiZSBhYmxlIHRvIHJlY2Vp
-dmUgYSBDb25maWd1cmF0aW9uIFJlcXVlc3QgYW5kIHJldHVybiBhIFN1Y2Nlc3NmdWwgQ29tcGxl
-dGlvbiBpZiB0aGUgUmVxdWVzdCBpcyB2YWxpZC4gVGhpcyBwZXJpb2QgaXMgaW5kZXBlbmRlbnQg
-b2YgaG93IHF1aWNrbHkgTGluayB0cmFpbmluZyBjb21wbGV0ZXMuIElmIFJlYWRpbmVzcyBOb3Rp
-ZmljYXRpb25zIG1lY2hhbmlzbXMgYXJlIHVzZWQgKHNlZSDCpyBTZWN0aW9uIDYuMjIgLiksIHRo
-aXMgcGVyaW9kIG1heSBiZSBzaG9ydGVyLmAKPiA+IAo+ID4gQXMgcGVyIHRoZSBmaXJzdCBub3Rl
-LCBvbmNlIGxpbmsgdHJhaW5pbmcgaXMgY29tcGxldGVkLCB0aGUgZGV2aWNlIHNob3VsZCBiZQo+
-ID4gcmVhZHkgdG8gYWNjZXB0IGNvbmZpZ3VyYXRpb24gcmVxdWVzdHMgZnJvbSB0aGUgaG9zdC4g
-U28gbm8gZGVsYXkgc2hvdWxkIGJlCj4gPiByZXF1aXJlZC4KPiA+IAo+ID4gQnV0IHRoZSBzZWNv
-bmQgbm90ZSBzYXlzIHRoYXQgdGhlIDFzIGRlbGF5IGlzIGluZGVwZW5kZW50IG9mIGhvdyBxdWlj
-a2x5IHRoZQo+ID4gbGluayB0cmFpbmluZyBjb21wbGV0ZXMuIFRoaXMgZXNzZW50aWFsbHkgY29u
-dHJhZGljdHMgd2l0aCB0aGUgYWJvdmUgcG9pbnQuCj4gPiAKPiA+IFNvIEkgdGhpbmsgaXQgaXMg
-bm90IHJlcXVpcmVkIHRvIGFkZCBkZWxheSBhZnRlciBjb21wbGV0aW5nIHRoZSBMVFNTTSwgdW5s
-ZXNzCj4gPiBzb21lb25lIHNlZXMgYW55IGlzc3VlLgo+IAo+IAo+IElmIHlvdSBsb29rIGF0IHRo
-ZSBjb21taXQgbWVzc2FnZSBpbiBwYXRjaCAxLzIsIHRoZSB3aG9sZSByZWFzb24gZm9yIHRoaXMK
-PiBzZXJpZXMgaXMgdGhhdCBzb21lb25lIGhhcyBzZWVuIGFuIGlzc3VlIDopCj4gCj4gV2hpbGUg
-SSBwZXJzb25hbGx5IGhhdmVuJ3Qgc2VlbiBhbnkgaXNzdWUsIHRoZSB1c2VyIHJlcG9ydGluZyB0
-aGF0IGNvbW1pdAo+IGVjOWZkNDk5YjljNiAoIlBDSTogZHctcm9ja2NoaXA6IERvbid0IHdhaXQg
-Zm9yIGxpbmsgc2luY2Ugd2UgY2FuIGRldGVjdAo+IExpbmsgVXAiKSByZWdyZXNzZWQgaGlzIHN5
-c3RlbSBzbyB0aGF0IGl0IGNhbiBubyBsb25nZXIgbW91bnQgcm9vdGZzCj4gKHdoaWNoIGlzIG9u
-IGEgUExFWFRPUiBQWC0yNTZNOFBlR04gTlZNZSBTU0QpIGNsZWFybHkgaGFzIHNlZW4gYW4gaXNz
-dWUuCj4gCj4gSXQgaXMgcG9zc2libGUgdGhhdCBoaXMgZGV2aWNlIGlzIG5vdCBmb2xsb3dpbmcg
-dGhlIHNwZWMuCj4gSSBzaW1wbHkgY29tcGFyZWQgdGhlIGNvZGUgYmVmb3JlIGFuZCBhZnRlciBl
-YzlmZDQ5OWI5YzYsIHRvIHRyeSB0bwo+IGZpZ3VyZSBvdXQgd2h5IGl0IHdhcyBhY3R1YWxseSB3
-b3JraW5nIGJlZm9yZSwgYW5kIGNhbWUgdXAgd2l0aCB0aGlzLAo+IHdoaWNoIG1hZGUgaGlzIGRl
-dmljZSBmdW5jdGlvbmFsIGFnYWluLgo+IAo+IFBlcmhhcHMgd2Ugc2hvdWxkIGFkZCBhIGNvbW1l
-bnQgYWJvdmUgdGhlIHNsZWVwIHRoYXQgc2F5cyB0aGF0IHRoaXMKPiBzaG91bGQgc3RyaWN0bHkg
-bm90IGJlIG5lZWRlZCBhcyBwZXIgdGhlIHNwZWM/Cj4gKEFuZCBhbHNvIGFkZCB0aGUgc2FtZSBj
-b21tZW50IGluIHRoZSAoc2luZ2xlKSBjb250cm9sbGVyIGRyaXZlciBpbgo+IG1haW5saW5lIHdo
-aWNoIGFscmVhZHkgZG9lcyBhbiBtc2xlZXAoUENJRV9UX1JSU19SRUFEWV9NUykuKQoKSSBhbSB0
-aGUgb25lIGV4cGVyaWVuY2luZyB0aGUgaXNzdWUgd2l0aCBteSBPcmFuZ2UgUEkgM0IgKFJLMzU2
-NiwgOCBHQiBSQU0pIGFuZCBhIFBMRVhUT1IgUFgtMjU2TThQZUdOIE5WTWUgU1NELiAKCkkgZmly
-c3QgZGV0ZWN0ZWQgdGhlIHByb2JsZW0gd2hpbGUgdXBncmFkaW5nIGZyb20gNi4xMy44IHRvIDYu
-MTQuMywgdGhhdCBteSBzeXN0ZW0gY2Fubm90IGZpbmQgdGhlIE5WTUUgU1NEIHdoaWNoIGNvbnRh
-aW5zIHRoZSByb290ZnMuIEFmdGVyIHJldmVydGluZyB0aGUgdHdvIHBhdGNoZXM6CgotIGVjOWZk
-NDk5YjljNiAoIlBDSTogZHctcm9ja2NoaXA6IERvbid0IHdhaXQgZm9yIGxpbmsgc2luY2Ugd2Ug
-Y2FuIGRldGVjdCBMaW5rIFVwIikKLSAwZTBiNDVhYjVkNzcgKCJQQ0k6IGR3LXJvY2tjaGlwOiBF
-bnVtZXJhdGUgZW5kcG9pbnRzIGJhc2VkIG9uIGRsbF9saW5rX3VwIElSUSIpCgpteSBzeXN0ZW0g
-Ym9vdGVkIGZpbmUgYWdhaW4uIApBZnRlciB0aGF0IEkgdGVzdGVkIHRoZSBwYXRjaGVzIHNlbnQg
-YnkgTmlrbGFzIGluIHRoaXMgdGhyZWFkLCB3aGljaCBmaXhlZCB0aGUgaXNzdWUsIHNvIEkgc2Vu
-dCBUZXN0ZWQtYnkuCgpJIGRpZCBhbm90aGVyIHRlc3QgVG9kYXkgd2l0aCA2LjE1LjAtcmM2LCB3
-aGljaCBpbiBpdHNlbGYgZG9lcyBub3QgZmluZCBteSBTU0QuIE5pa2xhcyBhc2tlZCBtZSB0byB0
-ZXN0IHdpdGggdGhlc2UgCgotIHJldmVydCBlYzlmZDQ5OWI5YzYgKCJQQ0k6IGR3LXJvY2tjaGlw
-OiBEb24ndCB3YWl0IGZvciBsaW5rIHNpbmNlIHdlIGNhbiBkZXRlY3QgTGluayBVcCIpCi0gcmV2
-ZXJ0IDBlMGI0NWFiNWQ3NyAoIlBDSTogZHctcm9ja2NoaXA6IEVudW1lcmF0ZSBlbmRwb2ludHMg
-YmFzZWQgb24gZGxsX2xpbmtfdXAgSVJRIikKLSBhcHBseSB0aGUgZm9sbG93aW5nIHBhdGNoOgoK
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdud2FyZS5j
-IGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLmMKaW5kZXggYjM2
-MTVkMTI1OTQyLi41ZGVlNjg5ZWNkOTUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xs
-ZXIvZHdjL3BjaWUtZGVzaWdud2FyZS5jCisrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdj
-L3BjaWUtZGVzaWdud2FyZS5jCkBAIC02OTIsNyArNjkyLDcgQEAgaW50IGR3X3BjaWVfd2FpdF9m
-b3JfbGluayhzdHJ1Y3QgZHdfcGNpZSAqcGNpKQogICAgICAgICAgICAgICAgaWYgKGR3X3BjaWVf
-bGlua191cChwY2kpKQogICAgICAgICAgICAgICAgICAgICAgICBicmVhazsKCi0gICAgICAgICAg
-ICAgICBtc2xlZXAoTElOS19XQUlUX1NMRUVQX01TKTsKKyAgICAgICAgICAgICAgIHVzbGVlcF9y
-YW5nZSgxMDAsIDIwMCk7CiAgICAgICAgfQoKICAgICAgICBpZiAocmV0cmllcyA+PSBMSU5LX1dB
-SVRfTUFYX1JFVFJJRVMpIHsKCgp3aGljaCByZXN0b3JlcyB0aGUgb3JpZ2luYWwgYmVoYXZpb3Vy
-IHRvIHdhaXQgZm9yIGxpbmstdXAsIHRoZW4gc2hvcnRlbiB0aGUgdGltZS4gVGhpcyByZXN1bHRl
-ZCBhZ2FpbiBhIG5vbiBib290aW5nIHN5c3RlbSwgdGhpcyB0aW1lIHdpdGggIlBoeSBsaW5rIG5l
-dmVyIGNhbWUgdXAiIGVycm9yIG1lc3NhZ2UuClNvIHBsZWFzZSBhbGxvdyB0byBmaXggdGhlIHJl
-Z3Jlc3Npb24gdGhhdCBpcyBhbHJlYWR5IGluIDYuMTQueC4gSSBub3cgc28gZmFyIG9ubHkgSSBo
-YXZlIHJlcG9ydGVkIHRoaXMsIGJ1dCB3ZSBjYW5ub3QgYmUgc3VyZSBob3cgbWFueSBTU0RzIGhh
-dmUgdGhpcyB0aW1pbmcgaXNzdWUuIE1vc3QgdXNlcnMgdXNlIG9sZGVyLCBkaXN0cmlidXRpb24g
-cGFja2FnZWQga2VybmVscywgc28gb3RoZXJzIHdpbGwgZmFjZSB0aGlzIGxhdGVyLgoKQnllLAoK
-TGFzemxvIEZpYXQKCj4gCj4gCj4gS2luZCByZWdhcmRzLAo+IE5pa2xhcwoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Michael,
+
+kernel test robot noticed the following build warnings:
+
+[auto build test WARNING on 82f2b0b97b36ee3fcddf0f0780a9a0825d52fec3]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Michael-Riesch-via-B4-Relay/Documentation-admin-guide-media-add-rockchip-camera-interface/20250514-235450
+base:   82f2b0b97b36ee3fcddf0f0780a9a0825d52fec3
+patch link:    https://lore.kernel.org/r/20240220-rk3568-vicap-v7-7-7581fd96a33a%40collabora.com
+patch subject: [PATCH v7 07/14] media: rockchip: add driver for mipi csi-2 receiver
+config: i386-kismet-CONFIG_VIDEO_V4L2_SUBDEV_API-CONFIG_VIDEO_ROCKCHIP_CSI-0-0 (https://download.01.org/0day-ci/archive/20250516/202505160513.MZRCAdXI-lkp@intel.com/config)
+reproduce: (https://download.01.org/0day-ci/archive/20250516/202505160513.MZRCAdXI-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202505160513.MZRCAdXI-lkp@intel.com/
+
+kismet warnings: (new ones prefixed by >>)
+>> kismet: WARNING: unmet direct dependencies detected for VIDEO_V4L2_SUBDEV_API when selected by VIDEO_ROCKCHIP_CSI
+   WARNING: unmet direct dependencies detected for VIDEO_V4L2_SUBDEV_API
+     Depends on [n]: MEDIA_SUPPORT [=y] && VIDEO_DEV [=n] && MEDIA_CONTROLLER [=y]
+     Selected by [y]:
+     - VIDEO_ROCKCHIP_CSI [=y] && MEDIA_SUPPORT [=y] && MEDIA_PLATFORM_SUPPORT [=y] && MEDIA_PLATFORM_DRIVERS [=y] && (ARCH_ROCKCHIP || COMPILE_TEST [=y]) && V4L_PLATFORM_DRIVERS [=y] && PM [=y] && COMMON_CLK [=y]
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
