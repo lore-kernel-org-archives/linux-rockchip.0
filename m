@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B1EC3ABDA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 May 2025 20:16:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3872C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 May 2025 07:52:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2KEFA5oH6QMAQKI5VS0LR/vAve1+6pY8VR1uXAa/kG4=; b=q/SrBm6viSwWrH
-	X9D1m+JOkSzEWp2rYl+Q9HviJWTXhC0z4qnMvyzZlWu/khc8M7Mai+pA695Szn1JblikT9481tK6Z
-	OMbL1BlN28lieM3ixjcnCZVguzwC+LWUE5FtE9WbWH981ybNJ/OAxY9RwMRShn0leB8Hhe1AReT6U
-	AYqOl6pggOwA9Ar5api1Xbn1x1Rwviu/DYwZd4Wm1fGItKmDb3okudxd/GeUImBn8H/CTfqHD8VFe
-	5eWqAmQMRgEIZS7s2aOCai1aR/AnKincGA4GQuHk4Fz5B+NYGM9UlzIgBW3BdTU1pXoBgdBnFe/+s
-	M7SkAwv7dKs5iNRnHb9w==;
+	List-Owner; bh=e+KYNkM933TGMF83M+UtSk/jvg1rUr287Sazf0Ml2j0=; b=42lTRTGkOwMp6z
+	m1P4ZySRkPiMCGGw/rMAwSWrbXGskXEhl8M3YtJ/eLTDP4/zEaFc5ocbP8o2wUhPA23RiUiry51XX
+	ZMx1njO96hW4IArzLD4e5Kyqx+dJqYWWdXRNalwuuMYazYx3joV5UqqNiwNatr5xT9WBZzYW+mAqr
+	SpEX8FVUDZDdV85jx85Slp5kLiQOvigDLyEX8xmRfEc/AceKaFcg8LpSEJwPvaDr+7LDK/2tigU+w
+	R/yW97X6PNmixl9HmWEBpxr/R2Mxr/ykUAOx7BNidGYfcrhvG5JaRViCuB1Ax+szqYEpGQz9Og5rm
+	lg8pVp9XwH4ExTzFDAJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFIX3-0000000GG7x-0U17;
-	Wed, 14 May 2025 20:16:49 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uFTO8-0000000HPV1-0sXv;
+	Thu, 15 May 2025 07:52:20 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFIT5-0000000GFbC-2xpK;
-	Wed, 14 May 2025 20:12:43 +0000
+	id 1uFTM5-0000000HP7a-1SDR;
+	Thu, 15 May 2025 07:50:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 28E4C61155;
-	Wed, 14 May 2025 20:12:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CB4FC4CEE3;
-	Wed, 14 May 2025 20:12:42 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 154EEA4CB1D;
+	Thu, 15 May 2025 07:50:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ACC89C4CEE7;
+	Thu, 15 May 2025 07:50:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747253562;
-	bh=OzKdPvbRk8hZ5qrmc01ogW5Qt/80h78/YBJYjWWOc4I=;
+	s=k20201202; t=1747295411;
+	bh=okgZ71SlRI1OxrfenXbRvEK2OBzl9XmUUegqvv09zLo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YjrD7uF3s4MzpmCi5++bmuEF1uYLGz2YMBnsiMqoFW7YDj5mc8aOQESHbZu88v1DH
-	 /d18hc+b+qCiFIU8wjE+VT3AUBn0WHkoTjMtfQSxakcobRGXhUIUhXcjPqfE+3ENm4
-	 50iYiKTv8Q57RXy9OlgNnwEWWkUcdDj30VbH5Lu0yYNjQhv5K538xqA5La1qGLzQyq
-	 J+Y37RDoc0V7KiNuD3QEUxsqrff7ZF0EBInFFBUijITqyrdwWAepJiQqqBBdPcRYzZ
-	 baQkY+Gry6SJbiMS9tY+h8YfTzXl7CVbMG3lItpymdu1EpEzqXNWmzOfa9fyCEN98Z
-	 xI4qL7dgk4dgw==
-Date: Wed, 14 May 2025 15:12:41 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Olivier Benjamin <olivier.benjamin@bootlin.com>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>, linux-media@vger.kernel.org,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	linux-kernel@vger.kernel.org,
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Nicholas Roth <nicholas@rothemail.net>,
+	b=beyqb5CK1kmn8uzdSGNFRMhole3qboOUioWcddIYpIVpMkPSCd8EO5j1L8+MpL7Pp
+	 +Uxo/BtuRu1DSchP0I71oAf1NaAeChogZTdHmYDUsBAO8f3fOMoYWEf3YDQ1We6cpl
+	 9PReyas9Ctyhj0HeQdyMX5ZQQZJKg4EKs8c3CDk4o9fNsJL9rmOndQW4EETTAQQ4il
+	 oIpdtgilsh/OkjLx/9tQ5fjMMdz5K+oTpWlzG7wEZnZQycyoA0rjQ/LPHsMRS8MNsX
+	 OCD8JsxlFnuPXRXzCz2lazIS5Zt+TiB2OdsoXjV5q1dpwIHekKD0BzK+DCbpB43a4y
+	 HAU9Fob+RO6RA==
+Date: Thu, 15 May 2025 09:50:05 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Wilfred Mallawa <wilfred.opensource@gmail.com>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Heiko Stuebner <heiko@sntech.de>, imx@lists.linux.dev,
-	Shawn Guo <shawnguo@kernel.org>
-Subject: Re: [PATCH v3 2/4] dt-bindings: media: imx258: inherit
- video-interface-devices properties
-Message-ID: <174725356050.2958291.9709026924364137236.robh@kernel.org>
-References: <20250509-camera-v3-0-dab2772d229a@bootlin.com>
- <20250509-camera-v3-2-dab2772d229a@bootlin.com>
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Add support for slot reset on link
+ down event
+Message-ID: <aCWcrf4V3p7cxcpi@ryzen>
+References: <20250509-b4-pci_dwc_reset_support-v3-1-37e96b4692e7@wdc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250509-camera-v3-2-dab2772d229a@bootlin.com>
+In-Reply-To: <20250509-b4-pci_dwc_reset_support-v3-1-37e96b4692e7@wdc.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250515_005013_455199_579EC3D9 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,19 +82,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 09 May 2025 23:51:38 +0200, Olivier Benjamin wrote:
-> Update the IMX258 binding to inherit properties defined in the
-> video-interface-devices binding.
+On Fri, May 09, 2025 at 12:30:12PM +1000, Wilfred Mallawa wrote:
+> From: Wilfred Mallawa <wilfred.mallawa@wdc.com>
 > 
-> Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
+> The PCIe link may go down in cases like firmware crashes or unstable
+> connections. When this occurs, the PCIe slot must be reset to restore
+> functionality. However, the current driver lacks link down handling,
+> forcing users to reboot the system to recover.
+> 
+> This patch implements the `reset_slot` callback for link down handling
+> for DWC PCIe host controller. In which, the RC is reset, reconfigured
+> and link training initiated to recover from the link down event.
+> 
+> This patch by extension fixes issues with sysfs initiated bus resets.
+> In that, currently, when a sysfs initiated bus reset is issued, the
+> endpoint device is non-functional after (may link up with downgraded link
+> status). With this patch adding support for link down recovery, a sysfs
+> initiated bus reset works as intended. Testing conducted on a ROCK5B board
+> with an M.2 NVMe drive.
+> 
+> Signed-off-by: Wilfred Mallawa <wilfred.mallawa@wdc.com>
 > ---
->  Documentation/devicetree/bindings/media/i2c/sony,imx258.yaml | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
+> base-commit: 08733088b566b58283f0f12fb73f5db6a9a9de30
+> change-id: 20250430-b4-pci_dwc_reset_support-d720dbafb7ea
+> prerequisite-change-id: 20250404-pcie-reset-slot-730bfa71a202:v4
+> prerequisite-patch-id: 2dad85eb26838d89569b12c19d70f392fa592667
+> prerequisite-patch-id: 6238a682bd8e9476e5911b7a59263c3fc618d63e
+> prerequisite-patch-id: 37cab00bc255a62b1e8396a48a3afba5e1751abd
+> prerequisite-patch-id: ff711f65cf9926374646b76cd38bdd823d576764
+> prerequisite-patch-id: 1654cca919d024b9a9190b28e90f722975c797e8
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Now when all the prerequisite-patches have been merged to the
+pci/slot-reset branch, any chance of getting this patch queued
+up on pci/slot-reset branch as well?
 
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
