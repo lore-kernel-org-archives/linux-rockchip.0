@@ -4,64 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94519C3ABC9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 16:23:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38243C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 16:50:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6G6fVThENQ4WalYxktkUtAANyIbnm+GQxU8INhOtMWg=; b=QtHneazAtnQ/0o
-	7aPwm8XWp4vBjgbjnbtad57T7GjeohawbAheachp9Ed9BJDXk5fyO/waD0PMMXnFreYL87X3aZKj/
-	4bhxWLEtbvRPv/Tj99DANwfs9PyMmXTSDwhGC89I2ROrx9LoN+PWhv5kEvmziIFPDD1gowro4iN8R
-	hm3BEwFi1gT3Yq0nWkeJsXWulGjyg2aYTkLNCKcTAmuV8gDisW8FMgSj+mKLXdHGqEnb/M8x3yuF9
-	hav/SlqXfH6n7i7Ac4lMrUlsSo9scLOD+AzIl9iyR7eXYspRxPsEYmzLLm8zQF3aef61c9ViIt3A+
-	b10S5+yW72ytBuijsoHA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=X6OU37LPE33/X+43yf3ZGSjbQ+lvtsPZEc9fcqlF94s=; b=iuGD7y8jdGMhhTPM6gAq+g4MFa
+	cmqYc6AJDUOXBNKYzZa97xzB4efrrZ4/J1e+Ucqr5LpyGA6wU+JkjKI6V2So8KP5iFZGCDetzTa01
+	79FE/T/75bqT706TDT1JhJ3ARTR0ALOZB63rdq1qjLs9hC/Me7GRb2D1qJPXpr9PhFXFUHiw++EBG
+	UnvMts0npdu5+FM/f/CjopxiTWV/1FN0iBKRW0xB+kNLslHvVWdBRTpeH4eNVnQrkclbB5aiQIMIA
+	9kGhI/BvI11CeWVub0pHQ6UVhtpUzKKVtOU0xlKoqP38WSK/1REFTDD69K0mV9A7sTJZ8SM8H+hRd
+	5ihuF6Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFxqA-000000040aq-3yqC;
-	Fri, 16 May 2025 16:23:18 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uFyGI-000000043rC-2On6;
+	Fri, 16 May 2025 16:50:18 +0000
+Received: from out-178.mta0.migadu.com ([91.218.175.178])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFxWQ-00000003xYT-2PVF;
-	Fri, 16 May 2025 16:02:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747411372;
-	bh=2sRpjTjXUI2i074c5+izzfCmO5OrPoSU+VPMCR9Tems=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JvFL2HNWYLPg3wIq9VGjlr8j7PGoNnrPsL7NLMjEbTcnr+A9T5w2t1xfLVdStnWFe
-	 xPcKE9VEX3T/qyg7PsLJpZcn5vf+SWJFp3y3d9BoqQaVHbgoA7Fbd2vt8zqz2JQD1a
-	 SO+IvTLLUsxs6ljvQ2BGVDYt1OGHvJ0bo6ITkl/fkVs99atWXVT0uTmBMDL8zluUyB
-	 8MGFvFVH2nXLI5J37vxShVzoAMNfeCa8HrCUV3Dsd5ymg+KZDU/CoJbM++bLUxjBKy
-	 B9HALIY/CnPzin2CvKocUrKPwNwRAMEuszvAc+Zz4zR0iHHZ4meZPvZHo5lPASNUMG
-	 WHiR8SeMKSNNw==
-Received: from [192.168.1.90] (unknown [82.76.59.134])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4B63817E07C9;
-	Fri, 16 May 2025 18:02:52 +0200 (CEST)
-Message-ID: <9e29ef0e-c373-4f48-8f37-7111987d2dd0@collabora.com>
-Date: Fri, 16 May 2025 19:02:51 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1uFxva-0000000419l-1KnI
+	for linux-rockchip@lists.infradead.org;
+	Fri, 16 May 2025 16:28:55 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1747412921;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=si+6so3E4lQIUUBkcJ18BhMSwUXfb7BiWBnbg3/5fd0=;
+	b=yHS+a95qmmToOInVPx43MXnz71HkBxazS2EVN3QCqAB0iN4/QnfGlNV+yPE5CUQ3Z5KfM3
+	0vacidYJGsvGiH8WMJWpiXP7RIrU7sknI8OMomAHDWeh7ZBHAzxOxI32gD7Uq6cizqImFq
+	J9qwOCJK3UOXvCZtLQqLTcWCxd2u/hpa0G9sRYsUWlSbvEikc7zIAq0d4QTURwb8HPQWTv
+	kk8q6/BfvPjgk+PjIza3pDNGwyY+58i8zzypQRgxo25qkmkVWYJqW9pUh6KZwsBJ6QyrF5
+	bqdlnuRnGvobNk8N9weVsZWTsvfTuJI8ydpAMCRhw71j0v7ydoorCwC85VWY8w==
+Date: Fri, 16 May 2025 18:28:27 +0200
+Message-Id: <D9XQ6FEVLTFF.6FEVFO840FYQ@cknow.org>
+Cc: <linux-phy@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
 Subject: Re: [PATCH v2] phy: phy-rockchip-samsung-hdptx: Fix PHY PLL output
  50.25MHz error
-To: Diederik de Haas <didi.debian@cknow.org>,
- Algea Cao <algea.cao@rock-chips.com>, vkoul@kernel.org, kishon@kernel.org,
- heiko@sntech.de, andy.yan@rock-chips.com
-Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Algea Cao"
+ <algea.cao@rock-chips.com>, <vkoul@kernel.org>, <kishon@kernel.org>,
+ <heiko@sntech.de>, <andy.yan@rock-chips.com>
 References: <20250427095124.3354439-1-algea.cao@rock-chips.com>
  <D9XP2BH2CU02.1R9E1GSXQD9JB@cknow.org>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <D9XP2BH2CU02.1R9E1GSXQD9JB@cknow.org>
+ <9e29ef0e-c373-4f48-8f37-7111987d2dd0@collabora.com>
+In-Reply-To: <9e29ef0e-c373-4f48-8f37-7111987d2dd0@collabora.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_090254_766707_5889102D 
-X-CRM114-Status: GOOD (  18.45  )
+X-CRM114-CacheID: sfid-20250516_092854_496184_27BD15D7 
+X-CRM114-Status: GOOD (  17.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,72 +69,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5770403792398909347=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Diederik,
+--===============5770403792398909347==
+Content-Type: multipart/signed;
+ boundary=2a1f0776b31dfb19db50a4c0755eae34fad21a6c0baa4ca8dc5831fba976;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-On 5/16/25 6:36 PM, Diederik de Haas wrote:
-> Hi,
-> 
-> On Sun Apr 27, 2025 at 11:51 AM CEST, Algea Cao wrote:
->> When using HDMI PLL frequency division coefficient at 50.25MHz
->> that is calculated by rk_hdptx_phy_clk_pll_calc(), it fails to
->> get PHY LANE lock. Although the calculated values are within the
->> allowable range of PHY PLL configuration.
->>
->> In order to fix the PHY LANE lock error and provide the expected
->> 50.25MHz output, manually compute the required PHY PLL frequency
->> division coefficient and add it to ropll_tmds_cfg configuration
->> table.
->>
->> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
->> Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->>
->> ---
->>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 2 ++
->>  1 file changed, 2 insertions(+)
->>
->> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->> index fe7c05748356..77236f012a1f 100644
->> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->> @@ -476,6 +476,8 @@ static const struct ropll_config ropll_tmds_cfg[] = {
->>  	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
->>  	{ 650000, 162, 162, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 54, 0, 16, 4, 1,
->>  	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
->> +	{ 502500, 84, 84, 1, 1, 7, 1, 1, 1, 1, 1, 1, 1, 11, 1, 4, 5,
->> +	  4, 11, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
->>  	{ 337500, 0x70, 0x70, 1, 1, 0xf, 1, 1, 1, 1, 1, 1, 1, 0x2, 0, 0x01, 5,
->>  	  1, 1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
->>  	{ 400000, 100, 100, 1, 1, 11, 1, 1, 0, 1, 0, 1, 1, 0x9, 0, 0x05, 0,
-> 
-> I found this patch in the 'fixes' branch in linux-phy:
-> https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/commit/?h=fixes&id=f9475055b11c0c70979bd1667a76b2ebae638eb7
-> 
-> In the 'next' branch in linux-phy, I found this commit:
-> 0edf9d2bb9b4 ("phy: rockchip: samsung-hdptx: Avoid Hz<->hHz unit conversion overhead")
-> https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/commit/?h=next&id=0edf9d2bb9b4ba7566dfdc7605883e04575129d9
-> 
-> Where the values in ropll_tmds_cfg are converted from hHz to Hz and the
-> data type changes from u32 to unsigned long long.
-> But AFAICT it does NOT convert this '502500' value, which IIUC means
-> most values are in Hz, while this one is in hHz.
-> 
-> Am I missing something or should this new value also be converted?
+--2a1f0776b31dfb19db50a4c0755eae34fad21a6c0baa4ca8dc5831fba976
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Yeah, the conversion is necessary. FWIW, this has been already fixed by
-Stephen Rothwell in linux-next, while Vinod will handle it before
-sending the PR:
+Hi Cristian,=20
 
-https://lore.kernel.org/all/aCXEOGUDcnaoGKWW@vaman/
+On Fri May 16, 2025 at 6:02 PM CEST, Cristian Ciocaltea wrote:
+> On 5/16/25 6:36 PM, Diederik de Haas wrote:
+>> On Sun Apr 27, 2025 at 11:51 AM CEST, Algea Cao wrote:
+>>> When using HDMI PLL frequency division coefficient at 50.25MHz
+>>> that is calculated by rk_hdptx_phy_clk_pll_calc(), it fails to
+>>> get PHY LANE lock. Although the calculated values are within the
+>>> allowable range of PHY PLL configuration.
+>>>
+>>> In order to fix the PHY LANE lock error and provide the expected
+>>> 50.25MHz output, manually compute the required PHY PLL frequency
+>>> division coefficient and add it to ropll_tmds_cfg configuration
+>>> table.
+>>>
+>>> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
+>>> Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>>
+>>> ---
+>>>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 2 ++
+>>>  1 file changed, 2 insertions(+)
+>>>
+>>> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/driver=
+s/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>>> index fe7c05748356..77236f012a1f 100644
+>>> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>>> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>>> @@ -476,6 +476,8 @@ static const struct ropll_config ropll_tmds_cfg[] =
+=3D {
+>>>  	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
+>>>  	{ 650000, 162, 162, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 54, 0, 16, 4, 1,
+>>>  	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
+>>> +	{ 502500, 84, 84, 1, 1, 7, 1, 1, 1, 1, 1, 1, 1, 11, 1, 4, 5,
+>>> +	  4, 11, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
+>>>  	{ 337500, 0x70, 0x70, 1, 1, 0xf, 1, 1, 1, 1, 1, 1, 1, 0x2, 0, 0x01, 5=
+,
+>>>  	  1, 1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
+>>>  	{ 400000, 100, 100, 1, 1, 11, 1, 1, 0, 1, 0, 1, 1, 0x9, 0, 0x05, 0,
+>>=20
+>> I found this patch in the 'fixes' branch in linux-phy:
+>> https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/commit=
+/?h=3Dfixes&id=3Df9475055b11c0c70979bd1667a76b2ebae638eb7
+>>=20
+>> In the 'next' branch in linux-phy, I found this commit:
+>> 0edf9d2bb9b4 ("phy: rockchip: samsung-hdptx: Avoid Hz<->hHz unit convers=
+ion overhead")
+>> https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/commit=
+/?h=3Dnext&id=3D0edf9d2bb9b4ba7566dfdc7605883e04575129d9
+>>=20
+>> Where the values in ropll_tmds_cfg are converted from hHz to Hz and the
+>> data type changes from u32 to unsigned long long.
+>> But AFAICT it does NOT convert this '502500' value, which IIUC means
+>> most values are in Hz, while this one is in hHz.
+>>=20
+>> Am I missing something or should this new value also be converted?
+>
+> Yeah, the conversion is necessary. FWIW, this has been already fixed by
+> Stephen Rothwell in linux-next, while Vinod will handle it before
+> sending the PR:
+>
+> https://lore.kernel.org/all/aCXEOGUDcnaoGKWW@vaman/
 
-Regards,
-Cristian
+Excellent. Thanks for the explanation :-)
+
+Cheers,
+  Diederik
+
+--2a1f0776b31dfb19db50a4c0755eae34fad21a6c0baa4ca8dc5831fba976
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaCdnsgAKCRDXblvOeH7b
+bvW7AQDSfcraP5FPLqmJrWKe64CLK6ifVw5O8f7Yi2FT8tSXhgEAw6hnZJ9JTDyD
+/GjaqlgnqB5uiJH+H0E1H+TWSuLztQU=
+=hAWm
+-----END PGP SIGNATURE-----
+
+--2a1f0776b31dfb19db50a4c0755eae34fad21a6c0baa4ca8dc5831fba976--
+
+
+--===============5770403792398909347==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5770403792398909347==--
+
