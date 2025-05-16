@@ -4,68 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6986C3ABD8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 15:16:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F712C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 16:15:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+otay+NgS0nPjXCEzhzGPkKRz9fH40AXGuVqh+eLWRc=; b=I0P5LLoZpHbWuc
-	uJZV+e8TCX2T/ejZ3seC9sIqxzBo6QTQrgFdHR3UrpFfUjNr8o1aC3Y4JVsYQVBN2ZlUyx/y5onso
-	7ur2KkGIrjeQopNYwenMrJtOc01tATD30tRrLfHv5qFYRSaWA/4RKohmphhmA7/q9uW13X/KDSVzY
-	nO61bm0+ogeQJpF4xjX4sOB0+3PXITBLGOONsgL3qBL8OinSv66POhYHTfsGlUNsPOcyxJvA21O2m
-	VbVxtH/nXjdDOWazOHMoH77dhYSvb0QKAEOkbFbcb2zkKv4Q/WfJzOcHgSCvT51O6ePnzo1fXZP6Q
-	CojO2WB2gAMVnrC1j+Xw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MvLu5p4fl/Hldc1Je8y4YytKMIoWyhSYCqZwO1Oi6RU=; b=IRlrMNFjHwfLcnei+VcGdtzFDx
+	phEojN2YghSp7+LBRZtdhzxFyfn5BB/O78MtfxOqfAvmqMhI+yRYZAFZ2vomCxwoh+aeHtC5JQfb6
+	4Vo+HdPrHAsbd3Vd0D2PUFXOsAWw1kqk4rbwq5ddTjK7WKV/rFMyp1sEtuzWBKidq4O77/Jsr1X7M
+	VDJKCtzUE+CNgLRdAW4bER09MsTSakPGFDcohfVirWtPJvHvOo5TDdVLKcQA8U32X0+oVwJyYdbOc
+	IrAAl8lw/4eik4/58lOMuGjTnUHWKkwaJ8hsss45pTvTU8Rehx4jmVe9RGoqJF2LE0vGpmjXTP8SC
+	hv4Rzzmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFwng-00000003p0A-0NH5;
-	Fri, 16 May 2025 15:16:40 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFwTy-00000003kFM-3U1H;
-	Fri, 16 May 2025 14:56:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=0j
-	oqUCbd9YvfR3Cm4Fm+cClE5ZXyYtYajQTs8EUIyUc=; b=Qpn9pmf/PmS+YDPrMB
-	1doX8fxFQg+0WijijSwAlEhPPvP2t3sxj+9Ben1ViyNmx1bnK+HU7t/lXiQknnpC
-	MJWUwFBuwdaG0Dqm3Ez3r8/MwukETUXNrbPie7KmvQY7lKsXaapU1NaUpixCjN/h
-	j9iqXCP1f08WTNUwD+P3dD61E=
-Received: from localhost.localdomain (unknown [])
-	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wCXtfDyUSdoaTNOBw--.62835S5;
-	Fri, 16 May 2025 22:55:49 +0800 (CST)
-From: Hans Zhang <18255117159@163.com>
-To: shawn.lin@rock-chips.com,
-	lpieralisi@kernel.org,
-	kw@linux.com,
-	bhelgaas@google.com,
-	heiko@sntech.de,
-	manivannan.sadhasivam@linaro.org
-Cc: robh@kernel.org,
-	linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v2 3/3] PCI: rockchip-host: Remove unused header includes
-Date: Fri, 16 May 2025 22:55:44 +0800
-Message-Id: <20250516145544.110516-4-18255117159@163.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250516145544.110516-1-18255117159@163.com>
-References: <20250516145544.110516-1-18255117159@163.com>
-MIME-Version: 1.0
-X-CM-TRANSID: _____wCXtfDyUSdoaTNOBw--.62835S5
-X-Coremail-Antispam: 1Uf129KBjvJXoW7ZF1fWw17JryxuF1DuryUZFb_yoW8GF1UpF
-	WqkFWxJrZ5AF1UCFnruF1qkrn0va1DZr47J342ga47Z342yr1vq395Crnxtr1kAFW2gF1U
-	Cay3trs5CrW5XrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U1pBhUUUUU=
-X-Originating-IP: [124.79.128.52]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOgdPo2gnTU2UZQAAsv
+	id 1uFxi7-00000003zA4-1GZc;
+	Fri, 16 May 2025 16:14:59 +0000
+Received: from out-181.mta1.migadu.com ([2001:41d0:203:375::b5])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uFxIo-00000003uO8-0AKq
+	for linux-rockchip@lists.infradead.org;
+	Fri, 16 May 2025 15:48:52 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1747409781;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/xLpzXLDxZFznf7ZK/2dQevdcoaxfl4Bbl5Mnla1OJ8=;
+	b=Ugkppw6RmCnoJd2DKDWZzPVEZEjDn/9hCK4qnI0TpOLPLUuvfQNCHHUdOvuh6kFs4vv+t9
+	Ves3EJ0SVqZLKsCS6kMDn1YDUZN7zQKNUk1wDbh6tHYmAwsZfdfUNXG3Hr48coYp3Vghq2
+	GvbVYhA6VrZb88xTK9AMA8hygyIXfgu7SCZn7JgrQTHISZ4CztzgUEBZEfv5MXLAoik5yG
+	OYYkvMfl/avknVDq7qSom2skyBUSW64yMxYmANF54aZsX99Kl4KDcKzz7i7oTzyY1wfhdT
+	BKdP3RqlXn77sPVIeukYM9dKk+Oh3Tf4LbsjHfogqvf38DcbjZs1PIxn3o5Lvw==
+Date: Fri, 16 May 2025 17:36:03 +0200
+Message-Id: <D9XP2BH2CU02.1R9E1GSXQD9JB@cknow.org>
+Cc: <linux-phy@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v2] phy: phy-rockchip-samsung-hdptx: Fix PHY PLL output
+ 50.25MHz error
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Algea Cao" <algea.cao@rock-chips.com>, <vkoul@kernel.org>,
+ <kishon@kernel.org>, <heiko@sntech.de>, <cristian.ciocaltea@collabora.com>,
+ <andy.yan@rock-chips.com>
+References: <20250427095124.3354439-1-algea.cao@rock-chips.com>
+In-Reply-To: <20250427095124.3354439-1-algea.cao@rock-chips.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_075619_197827_D8F5C92A 
-X-CRM114-Status: UNSURE (   7.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250516_084850_438506_2A2BC892 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,56 +67,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1895025607309107847=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Clean up the driver by removing unnecessary header includes
-(e.g., <linux/clk.h>, <linux/reset.h>) that are no longer referenced
-after refactoring. This improves code readability and build efficiency.
+--===============1895025607309107847==
+Content-Type: multipart/signed;
+ boundary=e3f6915d507f3921306840e72f19538d4bf9137df94a047009cab4a1be07;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-Signed-off-by: Hans Zhang <18255117159@163.com>
----
- drivers/pci/controller/pcie-rockchip-host.c | 9 ---------
- 1 file changed, 9 deletions(-)
+--e3f6915d507f3921306840e72f19538d4bf9137df94a047009cab4a1be07
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index 209eb94ece1b..ba360ed62afa 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -12,26 +12,17 @@
-  */
- 
- #include <linux/bitrev.h>
--#include <linux/clk.h>
--#include <linux/delay.h>
- #include <linux/gpio/consumer.h>
--#include <linux/init.h>
- #include <linux/interrupt.h>
- #include <linux/iopoll.h>
- #include <linux/irq.h>
- #include <linux/irqchip/chained_irq.h>
- #include <linux/irqdomain.h>
--#include <linux/kernel.h>
--#include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_pci.h>
--#include <linux/pci.h>
--#include <linux/pci_ids.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
--#include <linux/reset.h>
--#include <linux/regmap.h>
- 
- #include "../pci.h"
- #include "pcie-rockchip.h"
--- 
-2.25.1
+Hi,
 
+On Sun Apr 27, 2025 at 11:51 AM CEST, Algea Cao wrote:
+> When using HDMI PLL frequency division coefficient at 50.25MHz
+> that is calculated by rk_hdptx_phy_clk_pll_calc(), it fails to
+> get PHY LANE lock. Although the calculated values are within the
+> allowable range of PHY PLL configuration.
+>
+> In order to fix the PHY LANE lock error and provide the expected
+> 50.25MHz output, manually compute the required PHY PLL frequency
+> division coefficient and add it to ropll_tmds_cfg configuration
+> table.
+>
+> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
+> Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>
+> ---
+>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/=
+phy/rockchip/phy-rockchip-samsung-hdptx.c
+> index fe7c05748356..77236f012a1f 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> @@ -476,6 +476,8 @@ static const struct ropll_config ropll_tmds_cfg[] =3D=
+ {
+>  	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
+>  	{ 650000, 162, 162, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 54, 0, 16, 4, 1,
+>  	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
+> +	{ 502500, 84, 84, 1, 1, 7, 1, 1, 1, 1, 1, 1, 1, 11, 1, 4, 5,
+> +	  4, 11, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
+>  	{ 337500, 0x70, 0x70, 1, 1, 0xf, 1, 1, 1, 1, 1, 1, 1, 0x2, 0, 0x01, 5,
+>  	  1, 1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
+>  	{ 400000, 100, 100, 1, 1, 11, 1, 1, 0, 1, 0, 1, 1, 0x9, 0, 0x05, 0,
+
+I found this patch in the 'fixes' branch in linux-phy:
+https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/commit/?h=
+=3Dfixes&id=3Df9475055b11c0c70979bd1667a76b2ebae638eb7
+
+In the 'next' branch in linux-phy, I found this commit:
+0edf9d2bb9b4 ("phy: rockchip: samsung-hdptx: Avoid Hz<->hHz unit conversion=
+ overhead")
+https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/commit/?h=
+=3Dnext&id=3D0edf9d2bb9b4ba7566dfdc7605883e04575129d9
+
+Where the values in ropll_tmds_cfg are converted from hHz to Hz and the
+data type changes from u32 to unsigned long long.
+But AFAICT it does NOT convert this '502500' value, which IIUC means
+most values are in Hz, while this one is in hHz.
+
+Am I missing something or should this new value also be converted?
+
+Cheers,
+  Diederik
+
+--e3f6915d507f3921306840e72f19538d4bf9137df94a047009cab4a1be07
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaCdbbgAKCRDXblvOeH7b
+bpKdAP9nbGhd2ZklAuFhWkPyfq1E751VrBYpaG2s6vej3MuJ/AEA+2ctn4xQ8Sql
+3eLb23byWcZ+57mBEnn1lCzKXoFTrAg=
+=A/lr
+-----END PGP SIGNATURE-----
+
+--e3f6915d507f3921306840e72f19538d4bf9137df94a047009cab4a1be07--
+
+
+--===============1895025607309107847==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1895025607309107847==--
+
