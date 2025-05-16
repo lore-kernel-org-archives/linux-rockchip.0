@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5C78C3ABD8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 10:00:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97042C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 10:03:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MY1ysGI/gUWdNVitE1hHpD3eoSJdCIwR8O3y890O2gs=; b=C1K4Frzvjs9B4F
-	GX5fFY5b6/sCW+M7ggVS3rSImWIjMNiL4FKRJmoZjv2Q/nMoRDEm87M2KdxZpZM2s2ggeaVmH71yL
-	vDVPqBoYx4Sp5kUUeYs8koWpQLr08WJv7DTQOUaueBGTttEfi1oJkDPafcDbL3x22HTy1bi/jPVUm
-	4FYSW6xLgR8j0fwIJNQOIkPiM7zGvACordwaS9JHe+m9xs4jPYepmeE7ubt76g1qt8tX0xnAtN90v
-	SJGtTr+1VfCbJar/GhxOI4KXpgZvblhI0Hukq8oUyRNVqwxct45U6q2Iz1+qe4rw8moE1wIZ4JQsu
-	8eM09Wd8VtA1XyVo2iYw==;
+	List-Owner; bh=M3oN+2joh9LwVQ8Jmp03aZ/hrqdyedQ00lmb3f9L8pk=; b=vKvtj89W/ja9S1
+	UJEYY/xB/Bk0m02Z/Xay2laaU/kbK3zpB+5A/PTLeG06DbyNhzcSEubCHJtU+dXb6/RBkVJl2ZUeW
+	bQru46ocZ53iWKut0VAeVN11uR0XsX2Cqm3B6lhdtn8x68VdOZeDMWTNLjQyjbkJ3Ne5jJ3q2V/Oh
+	W4/n+AehDkoc9W+CpzH4T87RDtpsNMewub8qonMPv2SVhvvaZ28KNSLU8/mHgPy/vRQDdVRev+Onk
+	fJC06m6SrtuTJhsmxVkqbLPA7fQXWKvnqBNal6YqOHaTZljc+Yt92neRC8itDf5lQDQXZm9qrP1Np
+	pNQDtHTytPRaFedceU+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFrs6-000000034bg-0vML;
-	Fri, 16 May 2025 10:00:54 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uFru6-000000034rR-10d3;
+	Fri, 16 May 2025 10:02:58 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFrq2-000000034Jg-2W80;
-	Fri, 16 May 2025 09:58:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=QVfxvrCQXv1stWTNGX4NXG+vcy75UugbfRcy9FAUof4=; b=KyESI/2J9ezWNblBEXm8WCY5Vx
-	N0U6K8cowUXXXmvRS21Yz3CFNQF01H2tUlXEnlpnSymSWijOPM4wuA18OBysE8g3XQMj4yFYRJTBs
-	VJ6WcqCkCQK2BXggU71M67bIiMNvzg//sKECW9IUOuIFZUkbzkZWfB3XyM4iG4H+RPlX0Yw12AXFi
-	VAZkVGylkbqpe+685ZOX7YOaL+MSIrvGMk95uxNPsNxtRG18D3YZ+a5Z/HFWL1yQI+BDxJmln1pl/
-	Mtk/ViNcfB4w0c47ve5aE54sxZ+w9iBxM0roTDImQ4HzIYBlmWBVfBcx1S7RreM67pjt4/poXXeBG
-	ZqDNxL9w==;
-Received: from i53875a50.versanet.de ([83.135.90.80] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uFrpU-00016q-Dg; Fri, 16 May 2025 11:58:12 +0200
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: long.yunjian@zte.com.cn, hjc@rock-chips.com,
- Krzysztof Kozlowski <krzk@kernel.org>
-Cc: andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- fang.yumeng@zte.com.cn, mou.yi@zte.com.cn, xu.lifeng1@zte.com.cn,
- ouyang.maochun@zte.com.cn
-Subject: Re: [PATCH] drm/rockchip: Use dev_err_probe() to simplify code
-Date: Fri, 16 May 2025 11:58:11 +0200
-Message-ID: <2022996.jZfb76A358@diego>
-In-Reply-To: <94e0951b-46e1-439b-9dbc-c2009a78b04b@kernel.org>
-References: <20250515203554564-j1jBXUXR6bdiN6zARicC@zte.com.cn>
- <94e0951b-46e1-439b-9dbc-c2009a78b04b@kernel.org>
+	id 1uFrrZ-000000034Wy-2tYW;
+	Fri, 16 May 2025 10:00:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id B72C662A07;
+	Fri, 16 May 2025 10:00:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 557A3C4CEEB;
+	Fri, 16 May 2025 10:00:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747389620;
+	bh=EvnTkEQU2Ier/kGZtfB/eROe2plClajpDZdWnckjWIE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=in/3OQzwUowA5XfCHtWTaQ94tKRGLIvRnkbqr+XW6f0ZLzJfaGmU92+G3GmtrXxgN
+	 go+panze8ZYd9tN/Nqwtc/yI78psZtJp0MTApzk03livO6YNUH/pkl6nEzf+Io7v0S
+	 I3eWlA49pCRRk/XHS8sgZlP2isNDquCWIxk6H7ndNeAR84tKJHBE1VEJ7z2ws2wtbN
+	 Jss04WWNRlxX2YP3zG9tfdjIUhq/t8Nak/UGLJOSDjkE3iqJjTlT6X8QisjKM1UClN
+	 ed0jCaWAHl1tp3DOYny4Nip4oztzQ29CZFrL77CaUxPOSxwp9T7T2Zb9b5RFpukNS8
+	 BX5BbzxS+ta+Q==
+Date: Fri, 16 May 2025 12:00:14 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Laszlo Fiat <laszlo.fiat@proton.me>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krishna chaitanya chundru <quic_krichai@quicinc.com>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Hans Zhang <18255117159@163.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH v2 0/4] PCI: dwc: Link Up IRQ fixes
+Message-ID: <aCcMrtTus-QTNNiu@ryzen>
+References: <20250506073934.433176-6-cassel@kernel.org>
+ <7zcrjlv5aobb22q5tyexca236gnly6aqhmidx6yri6j7wowteh@mylkqbwehak7>
+ <aCNSBqWM-HM2vX7K@ryzen>
+ <fCMPjWu_crgW5GkH4DJd17WBjnCAsb363N9N_h6ld1i8NqNNGR9PTpQWAO9-kwv4DUL6um48dwP0GJ8GmdL4uQf-WniBepwuxTEhjmbBnug=@proton.me>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_025846_656670_87A2C028 
-X-CRM114-Status: GOOD (  14.08  )
+Content-Disposition: inline
+In-Reply-To: <fCMPjWu_crgW5GkH4DJd17WBjnCAsb363N9N_h6ld1i8NqNNGR9PTpQWAO9-kwv4DUL6um48dwP0GJ8GmdL4uQf-WniBepwuxTEhjmbBnug=@proton.me>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,32 +76,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRG9ubmVyc3RhZywgMTUuIE1haSAyMDI1LCAxNzo1NDoyMCBNaXR0ZWxldXJvcMOkaXNjaGUg
-U29tbWVyemVpdCBzY2hyaWViIEtyenlzenRvZiBLb3psb3dza2k6Cj4gT24gMTUvMDUvMjAyNSAx
-NDozNSwgbG9uZy55dW5qaWFuQHp0ZS5jb20uY24gd3JvdGU6Cj4gPiBGcm9tOiBZdW1lbmcgRmFu
-ZyA8ZmFuZy55dW1lbmdAenRlLmNvbS5jbj4KPiA+IAo+ID4gSW4gdGhlIHByb2JlIHBhdGgsIGRl
-dl9lcnIoKSBjYW4gYmUgcmVwbGFjZWQgd2l0aCBkZXZfZXJyX3Byb2JlKCkKPiAKPiBUaGF0J3Mg
-bm90IHByb2JlIHBhdGguIEkgYW0gbm90IHN1cmUgaWYgeW91IHJlYWxseSB1bmRlcnN0YW5kIHRo
-aXMgY29kZS4KCkkgdGhpbmsgdGhhdCBpcyBzb21ld2hhdCBkZWJhdGVhYmxlLgoKZHdfaGRtaV9y
-b2NrY2hpcF9iaW5kKCkgaXMgcGFydCBvZiB0aGUgcm9ja2NoaXAtZHJtIGNvbXBvbmVudCBkZXZp
-Y2UsCnNvIHBhcnQgb2YgaXRzIHByb2JlLXBhdGguIEFsc28gSSB0aGluayBqdXN0IHRoZSBwcmVz
-ZW5jZSBvZiBFUFJPQkVfREVGRVIKd2hpY2ggY2F1c2VzIHRoZSBkZXZpY2UgdG8gcmUtdHJ5IHBy
-b2JpbmcgbGF0ZXIgaXMgYSBuaWNlIGluZGljYXRvciB0aGF0IHRoZQpjb2RlIGluIHF1ZXN0aW9u
-IGlzIF9hXyBwcm9iZSBwYXRoLiAoYW5kIHVzYWdlIG9mIEVQUk9CRV9ERUZFUiBpcyBhbgplc3Rh
-Ymxpc2hlZCBwYXR0ZXJuIHRvIG1ha2UgdGhhdCBjb21wb25lbnQgZGV2aWNlIHJlLXRyeSBwcm9i
-aW5nIGxhdGVyKQoKQW5kIHRoZSBwYXJzZV9kdCBmdW5jdGlvbiBpdHNlbGYgaXMgcGFydCBvZiB0
-aGF0IHBhdGggdG9vLgoKCj4gPiB3aGljaCB3aWxsIGNoZWNrIGlmIGVycm9yIGNvZGUgaXMgLUVQ
-Uk9CRV9ERUZFUiBhbmQgcHJpbnRzIHRoZQo+ID4gZXJyb3IgbmFtZS4gSXQgYWxzbyBzZXRzIHRo
-ZSBkZWZlciBwcm9iZSByZWFzb24gd2hpY2ggY2FuIGJlCj4gPiBjaGVja2VkIGxhdGVyIHRocm91
-Z2ggZGVidWdmcy4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogWXVtZW5nIEZhbmcgPGZhbmcueXVt
-ZW5nQHp0ZS5jb20uY24+Cj4gCj4gSW5jb21wbGV0ZSBjaGFpbi4KClllcCwgdGhlIHBhdGNoIG5l
-ZWRzIGEgMm5kIFNpZ25lZC1vZmYtYnkgbGluZSBmcm9tCmxvbmcueXVuamlhbkB6dGUuY29tLmNu
-IHBsZWFzZS4KCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Thu, May 15, 2025 at 05:33:41PM +0000, Laszlo Fiat wrote:
+> I am the one experiencing the issue with my Orange PI 3B (RK3566, 8 GB RAM) and a PLEXTOR PX-256M8PeGN NVMe SSD. 
+> 
+> I first detected the problem while upgrading from 6.13.8 to 6.14.3, that my system cannot find the NVME SSD which contains the rootfs. After reverting the two patches:
+> 
+> - ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can detect Link Up")
+> - 0e0b45ab5d77 ("PCI: dw-rockchip: Enumerate endpoints based on dll_link_up IRQ")
+> 
+> my system booted fine again. 
+> After that I tested the patches sent by Niklas in this thread, which fixed the issue, so I sent Tested-by.
+> 
+> I did another test Today with 6.15.0-rc6, which in itself does not find my SSD. Niklas asked me to test with these 
+> 
+> - revert ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can detect Link Up")
+> - revert 0e0b45ab5d77 ("PCI: dw-rockchip: Enumerate endpoints based on dll_link_up IRQ")
+> - apply the following patch:
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-designware.c b/drivers/pci/controller/dwc/pcie-designware.c
+> index b3615d125942..5dee689ecd95 100644
+> --- a/drivers/pci/controller/dwc/pcie-designware.c
+> +++ b/drivers/pci/controller/dwc/pcie-designware.c
+> @@ -692,7 +692,7 @@ int dw_pcie_wait_for_link(struct dw_pcie *pci)
+>                 if (dw_pcie_link_up(pci))
+>                         break;
+> 
+> -               msleep(LINK_WAIT_SLEEP_MS);
+> +               usleep_range(100, 200);
+>         }
+> 
+>         if (retries >= LINK_WAIT_MAX_RETRIES) {
+> 
+> 
+> which restores the original behaviour to wait for link-up, then shorten the time. This resulted again a non booting system, this time with "Phy link never came up" error message.
+
+That message was unexpected.
+
+What I expected to happen was that the link would come up, but by reducing
+delay between "link is up" and device is accessed (from 90 ms -> 100 us),
+I was that you would see the same problem on "older" kernels as you do with
+the "link up IRQ" patches (which originally had no delay, but this series
+basically re-added the same delay (PCIE_T_RRS_READY_MS, 100 ms) as we had
+before (LINK_WAIT_SLEEP_MS, 90 ms).
+
+But I see the problem with the test code that I asked you to test to verify
+that this problem also existed before (if you had a shorter delay).
+(By reducing the delay, the LINK_WAIT_MAX_RETRIES also need to be bumped.)
+
+Could you please test:
+diff --git a/drivers/pci/controller/dwc/pcie-designware.c b/drivers/pci/controller/dwc/pcie-designware.c
+index b3615d125942..5dee689ecd95 100644
+--- a/drivers/pci/controller/dwc/pcie-designware.c
++++ b/drivers/pci/controller/dwc/pcie-designware.c
+@@ -692,7 +692,7 @@ int dw_pcie_wait_for_link(struct dw_pcie *pci)
+                if (dw_pcie_link_up(pci))
+                        break;
+ 
+-               msleep(LINK_WAIT_SLEEP_MS);
++               usleep_range(100, 200);
+        }
+ 
+        if (retries >= LINK_WAIT_MAX_RETRIES) {
+diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
+index 4dd16aa4b39e..8422661b79d5 100644
+--- a/drivers/pci/controller/dwc/pcie-designware.h
++++ b/drivers/pci/controller/dwc/pcie-designware.h
+@@ -61,7 +61,7 @@
+        set_bit(DW_PCIE_CAP_ ## _cap, &(_pci)->caps)
+ 
+ /* Parameters for the waiting for link up routine */
+-#define LINK_WAIT_MAX_RETRIES          10
++#define LINK_WAIT_MAX_RETRIES          10000
+ #define LINK_WAIT_SLEEP_MS             90
+ 
+ /* Parameters for the waiting for iATU enabled routine */
+
+
+On top of an old kernel instead?
+
+We expect the link to come up, but that you will not be able to mount rootfs.
+
+If that is the case, we are certain that the this patch series is 100% needed
+for your device to have the same functional behavior as before.
+
+
+Kind regards,
+Niklas
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
