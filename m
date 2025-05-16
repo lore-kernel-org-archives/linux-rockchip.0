@@ -4,85 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC6A7C3ABC9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 17:18:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E85C2C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 17:29:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D2lOBo4CSi2KBXPlU/bF0LiHWa0YGJsiL2xEP1rU+og=; b=WCmLUNSwmpi56j
-	bYaB6QFudvx5VOTmFu/ZRN3FenjEKfWaMB3UyF+ZF5VAVN+truP0KuO8jbIQ77IPaG0q32O3X5hWt
-	MyrescZ83EmqAuOMXh0qYDn7vnaBDvT7Mrgn/+vGldakM2j/ZB14nUjLHB4CYxBSIlq4cHLBOM+ou
-	rTpPTnt9UGDS3La0MM86gteAjGXbxJmy8NHW8xdgMLFo2BA5CxPPUf7b9cyqmz687mW2zNsHrGMb/
-	B8fGxQMtvH2G82eoQjUeLyHdJ4odRzpX+zYX6Dp7vpHpN5WPjsKylF/skasoziB+F9+RJty6ikoya
-	ULe7+t4sFMf6Km5dRbGg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/eo4U7NcdylFJYjBKZ7GAGAZUNA/MWY+Arvo2oBBYWc=; b=ooQBh6m/C/Y62J
+	z9pvlAjaISCfXhxcITwZJ6/jSQ0hrA9W+evQ7nBz8sfycknMTALLvPnlVITaY0xhlrpmmJoXHnnSt
+	rir2eE6p7qbSX4JaDHq4HIBlLwA59nRJ7H8AH9twfhfI3HhHMIcVyUFoC1/sw0f+kKfuXXchxks2h
+	AdSa+bKbKiKvQdu4FJpq2JgCaIRLSeFhRJCga/hTVXirHHWZyRVkwOnZ3Pj99pCMYVI5DBW3UN5L6
+	x48lbH16BEaEoYBB00MGETzfiDR3gs1Rhfr5r+v3t6UzL0TNiLIx86v2rkF0zqKwXtLDRa3U5tEWr
+	4GmNDqlglKZZHro2FcQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFyhr-000000049Kg-0ea8;
-	Fri, 16 May 2025 17:18:47 +0000
-Received: from mail-wm1-f47.google.com ([209.85.128.47])
+	id 1uFyrl-00000004Ai3-1t8v;
+	Fri, 16 May 2025 17:29:01 +0000
+Received: from smtp-8fad.mail.infomaniak.ch ([83.166.143.173])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFyJh-000000044gA-3uhC;
-	Fri, 16 May 2025 16:53:51 +0000
-Received: by mail-wm1-f47.google.com with SMTP id 5b1f17b1804b1-43cf680d351so20264805e9.0;
-        Fri, 16 May 2025 09:53:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747414428; x=1748019228;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=anhtEfC+aYWJeJvUly60jdWH8rm+sVcW8pcF9vb2eMk=;
-        b=Q3ezBDJYjuRpM1qAHGlc7joNOli30qORIbT4y7uNUtjeGem/54OSuwB7RASOmYn9ws
-         m37WR3QOUbqox00+Kk/rbH592Q8bw01BUWo6vmwbwXe90ZN9XobGQyI+QVTLg+DIRf+q
-         YMAqAATYIl8wZHybYDoy7j3iWvOA/0fZ2IX7M1aKVY1cT8uCMdnWVKzbdVG1mkuCNWrT
-         qeTv0YzKii8fcdOcXMqo3Z65ATauXXr43VMLUBWwZIzFnwqyiJKJo6YvLLvk0SSzHJ58
-         UvBB19Ufl98q9Cs26noliGQ6ouNafcZKaeU0ZoH0G00pz03m7TXtP5YmVckHFohpTqIO
-         X+dQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVOH6sKRh9zdcHdCtuPMiAcsJ9WaBXZh1tll7LSoRoC0BtvzJ+QK9dlb4dn62wT/fmLACsaPdYsQ9cRHk9ziYg=@lists.infradead.org, AJvYcCXIS97i8WqKh4iCdFExdHy5DZp8p6kTutYjb5lu3IGCM73zhnhYxpP4RZfPB/GSFRTF784UZAuTIxcZihqARsyh@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywf8eMFBAn9ha+xEzwQjGGlZpQa1hL0zaXIHrY87s/+WTUU1mAE
-	YyJt+EHmvQmH3HzpwW7fFok9h5GGsLY+sHqMXlQvK5+KfbuIcYHKwRB9
-X-Gm-Gg: ASbGnctKHAUlaDwlP/vQ49Zj7KjBcRQtD4iJfVcX66vBYCM4c3vPfJz+MvvhMcR/Moh
-	xAulT81W4b5K9edp9OLABVkwsWzjebRaEvZFP+VTKvzei8IUnQX8d8XxKh0CWDVNHv6Rb1RvTOn
-	XRzCUwVXx92uHQBaTNqwe+JwKacJXT6Y0zXh50dwFGFgOW3REJhDvxy75t1FubfHtCY9s5mUxMo
-	JuAYDKTVI6s/L+l11MxYUN+Tfv/LcKpi8MmE0QcKsxtlX6fUNgSUopZGqDppnGy770AUPRgr3ZJ
-	GCod8vATb9uA8obRL+xqSM6k+KwjFeiVXx0uxMka03d8n9rTXb86wTajpU1ben98Uocfh01cD+y
-	68uFGlKLM0A==
-X-Google-Smtp-Source: AGHT+IEYfDmifEa0iTxLazrxFoXXzBf3KmDVOnp4+FnO5DW5ap6WM75YN8wmhjMrbGLA/7/G7xIfqw==
-X-Received: by 2002:a05:600c:5012:b0:440:69f5:f179 with SMTP id 5b1f17b1804b1-442f84d5511mr89042655e9.7.1747414428190;
-        Fri, 16 May 2025 09:53:48 -0700 (PDT)
-Received: from [10.42.0.1] (cst-prg-46-162.cust.vodafone.cz. [46.135.46.162])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442f3380498sm116511755e9.11.2025.05.16.09.53.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 May 2025 09:53:46 -0700 (PDT)
-From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Date: Fri, 16 May 2025 18:53:24 +0200
-Subject: [PATCH v3 10/10] arm64: dts: rockchip: enable NPU on ROCK 5B
+	id 1uFypc-00000004AWB-1KEP
+	for linux-rockchip@lists.infradead.org;
+	Fri, 16 May 2025 17:26:50 +0000
+Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4ZzYsb3nGKzK1R;
+	Fri, 16 May 2025 19:26:43 +0200 (CEST)
+Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4ZzYsZ1yphzSdm;
+	Fri, 16 May 2025 19:26:42 +0200 (CEST)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Date: Fri, 16 May 2025 19:26:10 +0200
+Subject: [PATCH] arm64: dts: rockchip: support camera module on Haikou
+ Video Demo on PX30 Ringneck
 MIME-Version: 1.0
-Message-Id: <20250516-6-10-rocket-v3-10-7051ac9225db@tomeuvizoso.net>
-References: <20250516-6-10-rocket-v3-0-7051ac9225db@tomeuvizoso.net>
-In-Reply-To: <20250516-6-10-rocket-v3-0-7051ac9225db@tomeuvizoso.net>
+Message-Id: <20250516-ringneck-haikou-video-demo-cam-v1-1-fff23160395f@cherry.de>
+X-B4-Tracking: v=1; b=H4sIADF1J2gC/x3NTQqAIBBA4avErBswyf6uEi1MxxoiDaUIorsnL
+ b/New8kikwJhuKBSBcnDj6jKgswq/YLIdtskEIqoaoGI/vFk9lw1byFEy+2FNDSHtDoHWspmk6
+ 5uXW9gxw5Ijm+/8E4ve8HLcFN+HAAAAA=
+X-Change-ID: 20250516-ringneck-haikou-video-demo-cam-420685fb7f9f
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Oded Gabbay <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Sumit Semwal <sumit.semwal@linaro.org>, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Jeff Hugo <jeff.hugo@oss.qualcomm.com>
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
- Tomeu Vizoso <tomeu@tomeuvizoso.net>
+ Quentin Schulz <quentin.schulz@cherry.de>
 X-Mailer: b4 0.14.2
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_095349_984774_462D33E8 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20250516_102648_500061_435CF967 
+X-CRM114-Status: GOOD (  18.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,102 +68,153 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
-The NPU on the ROCK5B uses the same regulator for both the sram-supply
-and the npu's supply. Add this regulator, and enable all the NPU bits.
-Also add the regulator as a domain-supply to the pd_npu power domain.
+The Haikou Video Demo adapter has a proprietary connector for a camera
+module which has an OV5675 camera sensor and a companion DW9714 focus
+lens driver.
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+This adds support for the camera module on PX30 Ringneck module fitted
+on a Haikou devkit with the Haikou Video Demo adapter.
+
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 56 +++++++++++++++++++++++++
+This adapter is also used with RK3588 Tiger, but there's currently no
+camera stack at all on RK3588, and RK3399 Puma, but:
+ - 19.2MHz is not achievable exactly, so need to patch the driver to
+   support 24MHz for example, this will come later,
+ - The camera clk is on an IO domain at 1.8V but configured at boot at
+   3.3V, and until the IO domain is properly configured, the camera
+   won't receive a clock. Based on the probe order, it is possible (and
+   empirically very likely) that the camera won't be detected at all.
+   A Linux kernel solution was attempted multiple times in the past,
+   c.f.
+   https://lore.kernel.org/linux-gpio/20230904115816.1237684-1-s.hauer@pengutronix.de/
+   https://lore.kernel.org/lkml/20220802095252.2486591-1-foss+kernel@0leil.net/
+   We'll need to figure something out this time as I won't be able to
+   upstream camera support without it :)
+
+To test, install libcamera on Debian Bookworm (or more recent I guess)
+add a file at /usr/share/libcamera/ipa/rkisp1/ov5675.yaml whose content
+is (remove one leading whitespace):
+
+ # SPDX-License-Identifier: CC0-1.0
+ %YAML 1.1
+ ---
+ version: 1
+ algorithms:
+   - Agc:
+   - Awb:
+   - BlackLevelCorrection:
+   - ColorProcessing:
+ ...
+
+then call
+
+qcam -platform eglfs -c /base/i2c@ff190000/camera@36
+
+While this is running, control the focus lens driver with:
+
+v4l2-ctl -d /dev/v4l-subdev5 -c focus_absolute=150
+
+and change the focus_absolute value to see the lens moving and the focus
+change.
+
+I'll try to have a look at libcamera's config file so I can send a
+proper one to the project instead of this dummy one.
+---
+ .../rockchip/px30-ringneck-haikou-video-demo.dtso  | 56 ++++++++++++++++++++++
  1 file changed, 56 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index d22068475c5dc6cb885f878f3f527a66edf1ba70..49500f7cbcb14af4919a6c1997e9e53a01d84973 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -316,6 +316,28 @@ regulator-state-mem {
+diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
+index 7d9ea5aa598486680191d52e4c87af59f7b0e579..1e3f43bbe1734e5c88d1f76f8f7a545d881df88d 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
++++ b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
+@@ -94,6 +94,15 @@ video-adapter-led {
  	};
  };
  
-+&i2c1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c1m2_xfer>;
++&cif_clkout_m0 {
++	rockchip,pins =
++		<2 RK_PB3 1 &pcfg_pull_none_12ma>;
++};
++
++&csi_dphy {
 +	status = "okay";
++};
 +
-+	vdd_npu_s0: regulator@42 {
-+		compatible = "rockchip,rk8602";
-+		reg = <0x42>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_npu_s0";
-+		regulator-boot-on;
-+		regulator-min-microvolt = <550000>;
-+		regulator-max-microvolt = <950000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
+ &display_subsystem {
+ 	status = "okay";
+ };
+@@ -135,6 +144,12 @@ &i2c1 {
+ 	/* OV5675, GT911, DW9714 are limited to 400KHz */
+ 	clock-frequency = <400000>;
+ 
++	focus: focus@c {
++		compatible = "dongwoon,dw9714";
++		reg = <0xc>;
++		vcc-supply = <&cam_afvdd_2v8>;
++	};
 +
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
+ 	touchscreen@14 {
+ 		compatible = "goodix,gt911";
+ 		reg = <0x14>;
+@@ -157,6 +172,47 @@ pca9670: gpio@27 {
+ 		pinctrl-names = "default";
+ 		reset-gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
+ 	};
++
++	camera@36 {
++		compatible = "ovti,ov5675";
++		reg = <0x36>;
++		clocks = <&cru SCLK_CIF_OUT>;
++		assigned-clocks = <&cru SCLK_CIF_OUT>;
++		/* Only parent to get exactly 19.2MHz */
++		assigned-clock-parents = <&cru USB480M>;
++		assigned-clock-rates = <19200000>;
++		avdd-supply = <&cam_avdd_2v8>;
++		dvdd-supply = <&cam_dvdd_1v2>;
++		dovdd-supply = <&cam_dovdd_1v8>;
++		lens-focus = <&focus>;
++		orientation = <0>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&cif_clkout_m0>;
++		reset-gpios = <&pca9670 6 GPIO_ACTIVE_LOW>;
++		rotation = <180>;
++
++		port {
++			cam_out: endpoint {
++				data-lanes = <1 2>;
++				link-frequencies = /bits/ 64 <450000000>;
++				remote-endpoint = <&mipi_in_cam>;
++			};
 +		};
 +	};
 +};
 +
- &i2c6 {
- 	status = "okay";
- 
-@@ -440,6 +462,10 @@ &pd_gpu {
- 	domain-supply = <&vdd_gpu_s0>;
++&isp {
++	status = "okay";
++
++	ports {
++		port@0 {
++			mipi_in_cam: endpoint@0 {
++				reg = <0>;
++				data-lanes = <1 2>;
++				remote-endpoint = <&cam_out>;
++			};
++		};
++	};
  };
  
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
  &pinctrl {
- 	hdmirx {
- 		hdmirx_hpd: hdmirx-5v-detection {
-@@ -500,6 +526,36 @@ &pwm1 {
- 	status = "okay";
- };
- 
-+&rknn_core_top {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_1 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_2 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_top {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_1 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_2 {
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&avcc_1v8_s0>;
- 	status = "okay";
 
+---
+base-commit: fee3e843b309444f48157e2188efa6818bae85cf
+change-id: 20250516-ringneck-haikou-video-demo-cam-420685fb7f9f
+
+Best regards,
 -- 
-2.49.0
+Quentin Schulz <quentin.schulz@cherry.de>
 
 
 _______________________________________________
