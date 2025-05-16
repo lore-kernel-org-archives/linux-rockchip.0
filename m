@@ -4,60 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38243C3ABC9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 16:50:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1B00C3ABD8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 16:54:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X6OU37LPE33/X+43yf3ZGSjbQ+lvtsPZEc9fcqlF94s=; b=iuGD7y8jdGMhhTPM6gAq+g4MFa
-	cmqYc6AJDUOXBNKYzZa97xzB4efrrZ4/J1e+Ucqr5LpyGA6wU+JkjKI6V2So8KP5iFZGCDetzTa01
-	79FE/T/75bqT706TDT1JhJ3ARTR0ALOZB63rdq1qjLs9hC/Me7GRb2D1qJPXpr9PhFXFUHiw++EBG
-	UnvMts0npdu5+FM/f/CjopxiTWV/1FN0iBKRW0xB+kNLslHvVWdBRTpeH4eNVnQrkclbB5aiQIMIA
-	9kGhI/BvI11CeWVub0pHQ6UVhtpUzKKVtOU0xlKoqP38WSK/1REFTDD69K0mV9A7sTJZ8SM8H+hRd
-	5ihuF6Wg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ek22PickzEnEQGUomkFGQz/a71ytruNZpmRnvITuEic=; b=eJpsPaalkLRX9o
+	I20hOENPL3G5J+nY0tBpdttodLuIp6qRSwWAkBv5q2LRR3gdjLBztFqVFwEXb9W1py0GZnjisRQFy
+	UGy5FciSTrwpyKt25IliulJrTu4MgeYNJwlvAkwmq8uVgPhwRdwCiIpAt69KMSHEHXmljnsMzXbYk
+	04Nk0hkEOXoBAL9wHPPQct/Q97ICb0vCp081390/KycQ+euAWxm6lGmUgoxeoCUA0xTXbRJ27Hf+C
+	yQDcBABKzV0a8PECQPQI9Vmp6NdiF5gZXLI+wLkmUgJH435VTuz/Vi+Ih+hlPSmBrvV4OkGFBkru5
+	nBDwUO4ByJ1nFqRh1qNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFyGI-000000043rC-2On6;
-	Fri, 16 May 2025 16:50:18 +0000
-Received: from out-178.mta0.migadu.com ([91.218.175.178])
+	id 1uFyJr-000000044m7-3Cun;
+	Fri, 16 May 2025 16:53:59 +0000
+Received: from mail-wm1-f44.google.com ([209.85.128.44])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFxva-0000000419l-1KnI
-	for linux-rockchip@lists.infradead.org;
-	Fri, 16 May 2025 16:28:55 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1747412921;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=si+6so3E4lQIUUBkcJ18BhMSwUXfb7BiWBnbg3/5fd0=;
-	b=yHS+a95qmmToOInVPx43MXnz71HkBxazS2EVN3QCqAB0iN4/QnfGlNV+yPE5CUQ3Z5KfM3
-	0vacidYJGsvGiH8WMJWpiXP7RIrU7sknI8OMomAHDWeh7ZBHAzxOxI32gD7Uq6cizqImFq
-	J9qwOCJK3UOXvCZtLQqLTcWCxd2u/hpa0G9sRYsUWlSbvEikc7zIAq0d4QTURwb8HPQWTv
-	kk8q6/BfvPjgk+PjIza3pDNGwyY+58i8zzypQRgxo25qkmkVWYJqW9pUh6KZwsBJ6QyrF5
-	bqdlnuRnGvobNk8N9weVsZWTsvfTuJI8ydpAMCRhw71j0v7ydoorCwC85VWY8w==
-Date: Fri, 16 May 2025 18:28:27 +0200
-Message-Id: <D9XQ6FEVLTFF.6FEVFO840FYQ@cknow.org>
-Cc: <linux-phy@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2] phy: phy-rockchip-samsung-hdptx: Fix PHY PLL output
- 50.25MHz error
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Algea Cao"
- <algea.cao@rock-chips.com>, <vkoul@kernel.org>, <kishon@kernel.org>,
- <heiko@sntech.de>, <andy.yan@rock-chips.com>
-References: <20250427095124.3354439-1-algea.cao@rock-chips.com>
- <D9XP2BH2CU02.1R9E1GSXQD9JB@cknow.org>
- <9e29ef0e-c373-4f48-8f37-7111987d2dd0@collabora.com>
-In-Reply-To: <9e29ef0e-c373-4f48-8f37-7111987d2dd0@collabora.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1uFyJN-000000044Tf-1obG;
+	Fri, 16 May 2025 16:53:31 +0000
+Received: by mail-wm1-f44.google.com with SMTP id 5b1f17b1804b1-442f4a3a4d6so14928765e9.0;
+        Fri, 16 May 2025 09:53:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747414407; x=1748019207;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=WjWgWtoIZo8y/TKpOs5rk2BDTL4bgGyGDJJ1PVIbYcw=;
+        b=WE6qSjwYzDElpLMBwztyc5XnKDG/0UKo5NbwecagSj3E0J6W5M48FnA9+k7XMZulpx
+         G6KUzdjOyNuSpV3PP9OSHZjajRbuuqC0kCnlSogpklVZLP0iO6Y7NvE/1Ek/dLbf5+/h
+         UL2sEEAfINqf6V2Zp/hMGr4HSKq2SR+PbmLrNGShE5b6JBk5XixONgvPVq9/7sODRV0Z
+         Wa9UuBmCEVO4nsM/vu0pRa3gM0ky2QutZBvbzjXDlVxcIj2RqIVrSKzQRUatoxhOJiTP
+         YpW+Mfdb7PyxYfUHOc4gyq45v7zsxqNc+QGFiyR/XLsxfmILO96qP4pa/ord0sLFJ8Co
+         mNQQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUGrS2no4ZArD6fDMe/Um5gTn9sIut+JlRuKhuBUYSzxczEvrJ3At76K5I3bhLT++olY0JjhVsw/vmxPFwXaAU=@lists.infradead.org, AJvYcCUS7YIa157wWw6o+6xRnA9oYOACF4lYHEiM/NydZg2fNazN4GHBtVhy7ZZ7rqZsS0aXvqO0+FQL9MA7oqBX0gdX@lists.infradead.org
+X-Gm-Message-State: AOJu0YwfszRiLY8uwmRypNOx41m4JLpTw9xHRjtEeqKpPASfFMaAH1lB
+	/dG5BAViKlZ/haxh7OplMhla1Jmp3aXcNvubxuqj0LKkBVju7uTzl7rWnIVO3Q==
+X-Gm-Gg: ASbGnctqdSGOJwgiE/7+CYEzk7NGU8Fg5YKVWg+faYgyFDSr9kPvgceGCOY5SAmH7vW
+	plbq25dmfbrhOtMEgH+/9dRyyskonKaepMUo/YjcmEEsm+UitH6YKzQNGSutEMLJBdVljMlXl44
+	kSNKYbo06KbhaEwa3L2GiVQaxVecvmwL4x69wa7TKRQx6YIHLaA7CGPOkeX9lGUHAhk2Sh40cXa
+	4NqrLFGLBftXomlHRYqv+tYJoEg0nMYWegNa752taqN6GFRsjw+x3G465dSgMcJbUZ8AAAQrvmQ
+	Xeb8MUrQKNvJLKER3yjtkib/McrVXy9Hfjfot49IwFSKSWIdnlq2zqSR2GSE0ukWHfzL4i4ef13
+	7wpfMXFhiykJnETfaAsM1
+X-Google-Smtp-Source: AGHT+IFKbF9gN1yX2abHe3gEHPJVfqjkBh9yk3mcerUyAXMO/v4S+hII+M7JTfdRqYHVCzhKlPw+sw==
+X-Received: by 2002:a05:600c:870c:b0:439:8490:d1e5 with SMTP id 5b1f17b1804b1-442fd268c7cmr48300955e9.4.1747414406901;
+        Fri, 16 May 2025 09:53:26 -0700 (PDT)
+Received: from [10.42.0.1] (cst-prg-46-162.cust.vodafone.cz. [46.135.46.162])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442f3380498sm116511755e9.11.2025.05.16.09.53.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 16 May 2025 09:53:25 -0700 (PDT)
+From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: [PATCH v3 00/10] New DRM accel driver for Rockchip's RKNN NPU
+Date: Fri, 16 May 2025 18:53:14 +0200
+Message-Id: <20250516-6-10-rocket-v3-0-7051ac9225db@tomeuvizoso.net>
+MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAHptJ2gC/23OTQrCMBCG4avIrI1Mpmn8WXkPcVGTqQ1iI0kMa
+ undTQsuRJfvB/MwA0QOjiPsFgMEzi4635eolgswXdOfWThbGghJoZYktJAogjcXTmJbSW25NVK
+ ZNZSLW+DWPWbtcCzduZh8eM54ltP638lSoECNrDbMDdW4T/7K9+xePvpVzwkmLdNHqJGo/haoC
+ FbZk2mb6R/5K4zj+AY3RKj87gAAAA==
+X-Change-ID: 20240612-6-10-rocket-9316defc14c7
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Oded Gabbay <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Sumit Semwal <sumit.semwal@linaro.org>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Jeff Hugo <jeff.hugo@oss.qualcomm.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
+ Tomeu Vizoso <tomeu@tomeuvizoso.net>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_092854_496184_27BD15D7 
-X-CRM114-Status: GOOD (  17.09  )
+X-CRM114-CacheID: sfid-20250516_095329_505859_E85E16E2 
+X-CRM114-Status: GOOD (  15.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,110 +97,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5770403792398909347=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5770403792398909347==
-Content-Type: multipart/signed;
- boundary=2a1f0776b31dfb19db50a4c0755eae34fad21a6c0baa4ca8dc5831fba976;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+This series adds a new driver for the NPU that Rockchip includes in its
+newer SoCs, developed by them on the NVDLA base.
 
---2a1f0776b31dfb19db50a4c0755eae34fad21a6c0baa4ca8dc5831fba976
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+In its current form, it supports the specific NPU in the RK3588 SoC.
 
-Hi Cristian,=20
+The userspace driver is part of Mesa and an initial draft can be found at:
 
-On Fri May 16, 2025 at 6:02 PM CEST, Cristian Ciocaltea wrote:
-> On 5/16/25 6:36 PM, Diederik de Haas wrote:
->> On Sun Apr 27, 2025 at 11:51 AM CEST, Algea Cao wrote:
->>> When using HDMI PLL frequency division coefficient at 50.25MHz
->>> that is calculated by rk_hdptx_phy_clk_pll_calc(), it fails to
->>> get PHY LANE lock. Although the calculated values are within the
->>> allowable range of PHY PLL configuration.
->>>
->>> In order to fix the PHY LANE lock error and provide the expected
->>> 50.25MHz output, manually compute the required PHY PLL frequency
->>> division coefficient and add it to ropll_tmds_cfg configuration
->>> table.
->>>
->>> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
->>> Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->>>
->>> ---
->>>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 2 ++
->>>  1 file changed, 2 insertions(+)
->>>
->>> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/driver=
-s/phy/rockchip/phy-rockchip-samsung-hdptx.c
->>> index fe7c05748356..77236f012a1f 100644
->>> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->>> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
->>> @@ -476,6 +476,8 @@ static const struct ropll_config ropll_tmds_cfg[] =
-=3D {
->>>  	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
->>>  	{ 650000, 162, 162, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 54, 0, 16, 4, 1,
->>>  	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
->>> +	{ 502500, 84, 84, 1, 1, 7, 1, 1, 1, 1, 1, 1, 1, 11, 1, 4, 5,
->>> +	  4, 11, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
->>>  	{ 337500, 0x70, 0x70, 1, 1, 0xf, 1, 1, 1, 1, 1, 1, 1, 0x2, 0, 0x01, 5=
-,
->>>  	  1, 1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
->>>  	{ 400000, 100, 100, 1, 1, 11, 1, 1, 0, 1, 0, 1, 1, 0x9, 0, 0x05, 0,
->>=20
->> I found this patch in the 'fixes' branch in linux-phy:
->> https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/commit=
-/?h=3Dfixes&id=3Df9475055b11c0c70979bd1667a76b2ebae638eb7
->>=20
->> In the 'next' branch in linux-phy, I found this commit:
->> 0edf9d2bb9b4 ("phy: rockchip: samsung-hdptx: Avoid Hz<->hHz unit convers=
-ion overhead")
->> https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/commit=
-/?h=3Dnext&id=3D0edf9d2bb9b4ba7566dfdc7605883e04575129d9
->>=20
->> Where the values in ropll_tmds_cfg are converted from hHz to Hz and the
->> data type changes from u32 to unsigned long long.
->> But AFAICT it does NOT convert this '502500' value, which IIUC means
->> most values are in Hz, while this one is in hHz.
->>=20
->> Am I missing something or should this new value also be converted?
->
-> Yeah, the conversion is necessary. FWIW, this has been already fixed by
-> Stephen Rothwell in linux-next, while Vinod will handle it before
-> sending the PR:
->
-> https://lore.kernel.org/all/aCXEOGUDcnaoGKWW@vaman/
+https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/29698
 
-Excellent. Thanks for the explanation :-)
+Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+---
+Changes in v3:
+- Reference in the device tree only the register blocks that are
+  actually used.
+- Several style and robustness fixes suggested in the mailing list.
+- Added patches from Nicolas Frattaroli that add support to the NPU for
+  the Rock 5B board.
+- Link to v2: https://lore.kernel.org/r/20250225-6-10-rocket-v2-0-d4dbcfafc141@tomeuvizoso.net
 
-Cheers,
-  Diederik
+Changes in v2:
+- Drop patch adding the rk3588 compatible to rockchip-iommu (Sebastian Reichel)
+- Drop patch adding support for multiple power domains to rockchip-iommu (Sebastian Reichel)
+- Link to v1: https://lore.kernel.org/r/20240612-6-10-rocket-v1-0-060e48eea250@tomeuvizoso.net
 
---2a1f0776b31dfb19db50a4c0755eae34fad21a6c0baa4ca8dc5831fba976
-Content-Type: application/pgp-signature; name="signature.asc"
+---
+Nicolas Frattaroli (2):
+      arm64: dts: rockchip: add pd_npu label for RK3588 power domains
+      arm64: dts: rockchip: enable NPU on ROCK 5B
 
------BEGIN PGP SIGNATURE-----
+Tomeu Vizoso (8):
+      dt-bindings: npu: rockchip,rknn: Add bindings
+      arm64: dts: rockchip: Add nodes for NPU and its MMU to rk3588s
+      arm64: dts: rockchip: Enable the NPU on quartzpro64
+      accel/rocket: Add registers header
+      accel/rocket: Add a new driver for Rockchip's NPU
+      accel/rocket: Add IOCTL for BO creation
+      accel/rocket: Add job submission IOCTL
+      accel/rocket: Add IOCTLs for synchronizing memory accesses
 
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaCdnsgAKCRDXblvOeH7b
-bvW7AQDSfcraP5FPLqmJrWKe64CLK6ifVw5O8f7Yi2FT8tSXhgEAw6hnZJ9JTDyD
-/GjaqlgnqB5uiJH+H0E1H+TWSuLztQU=
-=hAWm
------END PGP SIGNATURE-----
+ Documentation/accel/index.rst                      |    1 +
+ Documentation/accel/rocket/index.rst               |   25 +
+ .../bindings/npu/rockchip,rknn-core.yaml           |  162 +
+ MAINTAINERS                                        |   10 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   87 +-
+ .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |   30 +
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |   56 +
+ drivers/accel/Kconfig                              |    1 +
+ drivers/accel/Makefile                             |    1 +
+ drivers/accel/rocket/Kconfig                       |   25 +
+ drivers/accel/rocket/Makefile                      |   10 +
+ drivers/accel/rocket/rocket_core.c                 |  103 +
+ drivers/accel/rocket/rocket_core.h                 |   59 +
+ drivers/accel/rocket/rocket_device.c               |   45 +
+ drivers/accel/rocket/rocket_device.h               |   31 +
+ drivers/accel/rocket/rocket_drv.c                  |  337 ++
+ drivers/accel/rocket/rocket_drv.h                  |   17 +
+ drivers/accel/rocket/rocket_gem.c                  |  211 +
+ drivers/accel/rocket/rocket_gem.h                  |   31 +
+ drivers/accel/rocket/rocket_job.c                  |  723 ++++
+ drivers/accel/rocket/rocket_job.h                  |   50 +
+ drivers/accel/rocket/rocket_registers.h            | 4425 ++++++++++++++++++++
+ include/uapi/drm/rocket_accel.h                    |  145 +
+ 23 files changed, 6584 insertions(+), 1 deletion(-)
+---
+base-commit: 46bfbcd135a6df00c49cf043bf2c9c9387bc882d
+change-id: 20240612-6-10-rocket-9316defc14c7
 
---2a1f0776b31dfb19db50a4c0755eae34fad21a6c0baa4ca8dc5831fba976--
+Best regards,
+-- 
+Tomeu Vizoso <tomeu@tomeuvizoso.net>
 
-
---===============5770403792398909347==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5770403792398909347==--
-
