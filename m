@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4945C3ABD8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 21:44:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF5F9C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 21:44:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zwZhePHJF/sjVWpt8keWTGeJPbfGHVYiGdqZ77Gm2fQ=; b=J8uhnmUJI+sDtR
-	07/4JCRyJYpWqX4goU4tD95dvbitTS9j5xb8gz/3+r9Fg4OfvFoO5EH4wAMHe1GO2qGwftgPmUm1L
-	3JcPLEb359qgqp/PwJyTl1p9j/rqfKhTOKDKyEjzKqmKbiPRRnnoFOVdN5UK9O/a/55CK3GQqQJTP
-	Q64vVQigoXEBh15GUIZEElt77zYfgAmCcCPrCHDT6jYcM0wk/WNxBKUddd5AoBGA55JN/UpX2hLo6
-	rTsb/XS9zMtW4I4sLJE/jT0vBt/ezTctZSJIT3b4hlaDrnZmfIrg+mgWbaZ/B7rp8LnmxqQK7RK+Q
-	5WV1+rgvY+sSV+qr0JrA==;
+	List-Owner; bh=Bgd9lsOyRH4v561Ab6arJytswqazTZ57YBnV/yL8CxM=; b=w2HCSkMzV5QqZv
+	877Y8kpBpmdcgHchrz59EkrmR9njHqhBXAn9ELiEl+tjD+L2tlkGbGP43UDWK2uE/50CQ09N0ru1z
+	WfWjwyLaB58xdW3EaU7wqg4KHv1a6PkU06946yGSodrxi1TK3I2kksXP3kbS2alVsvng3rvjtHBuX
+	nY63pWNMEa6d/XZQE8OeVZxmkbWJhPIu1IOapHFRn6IX+SMzUSXI24e3EJQw5/ppHmFxAEOFaxeI+
+	QY6EezXD7a2FRgAigYDI78HR0m0FHrNZMW8A6UtNaFkoLvaFL2DfaoA9Z0QYaibXbNGJUcI+xXEIw
+	M8EuT+sxBwLxRTTRS3Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uG2qf-00000004gMG-3m0o;
-	Fri, 16 May 2025 21:44:09 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uG2qp-00000004gPP-104O;
+	Fri, 16 May 2025 21:44:19 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uG2ip-00000004exK-2HdB;
-	Fri, 16 May 2025 21:36:03 +0000
+	id 1uG2it-00000004eyY-2xiO;
+	Fri, 16 May 2025 21:36:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BAACF61129;
-	Fri, 16 May 2025 21:36:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90816C4CEE4;
-	Fri, 16 May 2025 21:35:59 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 09D46A4E333;
+	Fri, 16 May 2025 21:36:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25692C4CEE4;
+	Fri, 16 May 2025 21:36:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747431362;
-	bh=RPD/bLLACqb+T6X64CUsRDGl+msceaKHRJ1aENDoN+k=;
+	s=k20201202; t=1747431366;
+	bh=9YGGE1TGeazcVqzIHxmvNTlfgSH6mcicVrtP9HboPiE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZGzaQp+CjKtPqwdWtNZ8G3KAiXE2pCgPYWd8Bzx0MIus7bmgjhnYwaAdyVddSARso
-	 Q2m5uGniT1DNjCZpMlv8CNC9+3V8EdURoIDuZvBrguU1v7e6d0Trzrm3P7TCmRb8V9
-	 5p3LU3oQd74HDJrj+UxtXxJHONcqJ+yYs8T707BUZpBMw2eGNiqY1DSoCTy5pUCa9l
-	 db4DvmsPypHn1CqXKEx9bCF3NSLzAp1nwmVUqURm6mqXvdEl56gnwnszgNrBqdFFZi
-	 B9RibjquHzvQzrVq1M9cnzKkJyIXnCLA7bpAGaWO6HE9dFhf4NTY/Na5+qEySLTHoC
-	 K5FJMUb3nVfwg==
-Message-ID: <c4eb1999-66f8-4249-b5e8-f9cbd1aa9531@kernel.org>
-Date: Fri, 16 May 2025 21:48:43 +0200
+	b=OqExve53AUId7CcYAYsq3yvOShvbSRMnWurpBIqDQ9be8HuLhEhq72gZNMsbkVvXf
+	 Hz2seqzq5p6okMtoXWw/oAkxH1yJ26ou+r+3MF+xzEkv1GkxK/FKdfTEvm1nIb5Whp
+	 Lk/epm6eCpoE6NK++0eogoFO0Cui0u7gECK160Af7SKOKTxkI5AMYrZclRU3of70nt
+	 MRiQlSvY/y183DbFxHHO+iUrkhSmOlE9y61hRjcxXrrN719y+EoZHDB/QaYb/bKXlV
+	 jp/7kcZ1V+lqSTXz/XGGAQnHYQAkKTc5C11x2GZ7GHQJzpgPumSNR3AtFr13Yj42j1
+	 XoM4lZM3uCmJQ==
+Message-ID: <4a55adff-7d68-47fe-9995-afa30b9857a6@kernel.org>
+Date: Fri, 16 May 2025 21:49:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: vendor-prefixes: Add SakuraPi prefix
+Subject: Re: [PATCH v2 2/3] dt-bindings: arm: rockchip: Add Sakura Pi RK3308B
 To: Hsun Lai <i@chainsx.cn>, robh@kernel.org
 Cc: conor+dt@kernel.org, heiko@sntech.de, krzk+dt@kernel.org,
  sfr@canb.auug.org.au, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 References: <20250514075914.194651-1-i@chainsx.cn>
- <20250514075914.194651-2-i@chainsx.cn>
+ <20250514075914.194651-3-i@chainsx.cn>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -98,7 +98,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20250514075914.194651-2-i@chainsx.cn>
+In-Reply-To: <20250514075914.194651-3-i@chainsx.cn>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250516_143607_878270_AEB85186 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,28 +113,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTQvMDUvMjAyNSAwOTo1OSwgSHN1biBMYWkgd3JvdGU6Cj4gQWRkIHZlbmRvciBwcmVmaXgg
-Zm9yIFNha3VyYVBpLm9yZywgd2hpY2ggcHJvZHVjZXMKPiBkZXZlbG9wbWVudCBib2FyZHMgbGlr
-ZSB0aGUgU2FrdXJhUGktUkszMzA4Qi4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBIc3VuIExhaSA8aUBj
-aGFpbnN4LmNuPgo+IC0tLQo+IAo+IChubyBjaGFuZ2VzIHNpbmNlIHYxKQo+IAo+ICBEb2N1bWVu
-dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwgfCAyICsrCj4g
-IDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3ZlbmRvci1wcmVmaXhlcy55YW1sIGIvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3ZlbmRvci1wcmVmaXhlcy55YW1sCj4gaW5kZXgg
-M2U3NDUwYzNmLi43NDRkMDFhNzYgMTAwNjQ0Cj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL3ZlbmRvci1wcmVmaXhlcy55YW1sCj4gKysrIGIvRG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL3ZlbmRvci1wcmVmaXhlcy55YW1sCj4gQEAgLTEyOTksNiArMTI5
-OSw4IEBAIHBhdHRlcm5Qcm9wZXJ0aWVzOgo+ICAgICJecnZlLC4qIjoKPiAgICAgIGRlc2NyaXB0
-aW9uOiBSZWNoYXJnZSBWw6loaWN1bGUgw4lsZWN0cmlxdWUgKFJWRSkgaW5jLgo+ICAgICJec2Fl
-ZiwuKiI6Cj4gKyAgICBkZXNjcmlwdGlvbjogU2FrdXJhUGkub3JnCj4gKyAgIl5zYWt1cmFwaSwu
-KiI6Cj4gICAgICBkZXNjcmlwdGlvbjogU2FlZiBUZWNobm9sb2d5IExpbWl0ZWQKClN0aWxsIGJy
-b2tlbiAvIG5vdGhpbmcgaW1wcm92ZWQuCgo+ICAgICJec2Ftc3VuZywuKiI6Cj4gICAgICBkZXNj
-cmlwdGlvbjogU2Ftc3VuZyBTZW1pY29uZHVjdG9yCgoKQmVzdCByZWdhcmRzLApLcnp5c3p0b2YK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On 14/05/2025 09:59, Hsun Lai wrote:
+> This patch adds device tree binding support for
+> Sakura Pi RK3308B, with compatibility for the
+> Rockchip RK3308 SoC.
+> 
+> Link: https://docs.sakurapi.org/article/sakurapi-rk3308b/introduce
+> 
+> Signed-off-by: Hsun Lai <i@chainsx.cn>
+> ---
+> 
+> (no changes since v1)
+Really? And the tag?
+
+<form letter>
+This is a friendly reminder during the review process.
+
+It looks like you received a tag and forgot to add it.
+
+If you do not know the process, here is a short explanation:
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new versions
+of patchset, under or above your Signed-off-by tag, unless patch changed
+significantly (e.g. new properties added to the DT bindings). Tag is
+"received", when provided in a message replied to you on the mailing
+list. Tools like b4 can help here. However, there's no need to repost
+patches *only* to add the tags. The upstream maintainer will do that for
+tags received on the version they apply.
+
+Please read:
+https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
+
+If a tag was not added on purpose, please state why and what changed.
+</form letter>
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
