@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E85C2C3ABC9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 17:29:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 603ACC3ABDD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 18:41:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/eo4U7NcdylFJYjBKZ7GAGAZUNA/MWY+Arvo2oBBYWc=; b=ooQBh6m/C/Y62J
-	z9pvlAjaISCfXhxcITwZJ6/jSQ0hrA9W+evQ7nBz8sfycknMTALLvPnlVITaY0xhlrpmmJoXHnnSt
-	rir2eE6p7qbSX4JaDHq4HIBlLwA59nRJ7H8AH9twfhfI3HhHMIcVyUFoC1/sw0f+kKfuXXchxks2h
-	AdSa+bKbKiKvQdu4FJpq2JgCaIRLSeFhRJCga/hTVXirHHWZyRVkwOnZ3Pj99pCMYVI5DBW3UN5L6
-	x48lbH16BEaEoYBB00MGETzfiDR3gs1Rhfr5r+v3t6UzL0TNiLIx86v2rkF0zqKwXtLDRa3U5tEWr
-	4GmNDqlglKZZHro2FcQw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wb7MJ0irAJdDq2ZvnQXwgtNolilBnA3yMpP1ufnXb6Y=; b=SBvRg4+Ehv+gKf
+	ZcPCwP1rlNLuOJM7UpHqXbVtgmlJvnbhtNV/Kj5Sceuzhcos/qwJmt6N9X5Zwg4ATkrlZVl3lWrLW
+	YYkMKOPYYrgdhlP5z//pAzWNmkMZaSur53ywIeoGXoSZczooKp6rvMJjcugnOVQLg7rN7D8s/IcEK
+	Lu4i6WEBvxmH7JIZly0zpTybj4ebWKx7VRS6n3sgHNju0gTPhIUJ/WiWAM/TKeThh8nuqZM7AbPIo
+	uyX2+f2Qo6NYwzX+7rOd1HZfUclnwTSHZuxViJowSg8Hof0VWeKmb1DUygVq7RLwWNRc4Cjb4gIFx
+	MwLaZJFB+qeYBEaqLCsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFyrl-00000004Ai3-1t8v;
-	Fri, 16 May 2025 17:29:01 +0000
-Received: from smtp-8fad.mail.infomaniak.ch ([83.166.143.173])
+	id 1uFzzs-00000004M5q-2b9V;
+	Fri, 16 May 2025 18:41:28 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFypc-00000004AWB-1KEP
-	for linux-rockchip@lists.infradead.org;
-	Fri, 16 May 2025 17:26:50 +0000
-Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4ZzYsb3nGKzK1R;
-	Fri, 16 May 2025 19:26:43 +0200 (CEST)
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4ZzYsZ1yphzSdm;
-	Fri, 16 May 2025 19:26:42 +0200 (CEST)
-From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Fri, 16 May 2025 19:26:10 +0200
-Subject: [PATCH] arm64: dts: rockchip: support camera module on Haikou
- Video Demo on PX30 Ringneck
+	id 1uFzpe-00000004K5O-1TcR;
+	Fri, 16 May 2025 18:30:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 0D7A8A4E800;
+	Fri, 16 May 2025 18:30:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F32DC4CEE4;
+	Fri, 16 May 2025 18:30:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747420252;
+	bh=AWPQKMivdFQ6QmrVDoYacp12BqW2VCLe3IzFWlx64xM=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=NpfJnmbWyUqyMYoLy35vtxm0N29rgijba7ENUDqS7YmsKZUjUSF9tmwKOrEJMV3sh
+	 BOJ+AttBuVq8cSt48iOr9mkb3Lh54y/rA743ERhn9bavTxA66G9K4nY+vqUMYyvrUq
+	 pMuoisg9g1acwcd2Ohpqspyw4DZ3Bs72y9MVjchH2UnMlcG7PCQmnOvi7ptszJrLzd
+	 6loH1rBQKNyR4iKiDuf1m96yLUTX/I7GK7ZCZF7FTeW+XK5ihU9YtAH7p8jresWjGY
+	 FFvdQ3mTfy2XP+gLjQR2Cvrb6Xai9RjaFlkRc6wAgftsA5qwcTnVWIpNoT5D17ix6a
+	 YQGHmGwBWpsNw==
+Date: Fri, 16 May 2025 13:30:50 -0500
 MIME-Version: 1.0
-Message-Id: <20250516-ringneck-haikou-video-demo-cam-v1-1-fff23160395f@cherry.de>
-X-B4-Tracking: v=1; b=H4sIADF1J2gC/x3NTQqAIBBA4avErBswyf6uEi1MxxoiDaUIorsnL
- b/New8kikwJhuKBSBcnDj6jKgswq/YLIdtskEIqoaoGI/vFk9lw1byFEy+2FNDSHtDoHWspmk6
- 5uXW9gxw5Ijm+/8E4ve8HLcFN+HAAAAA=
-X-Change-ID: 20250516-ringneck-haikou-video-demo-cam-420685fb7f9f
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>
-X-Mailer: b4 0.14.2
-X-Infomaniak-Routing: alpha
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+In-Reply-To: <20250516-6-10-rocket-v3-1-7051ac9225db@tomeuvizoso.net>
+References: <20250516-6-10-rocket-v3-0-7051ac9225db@tomeuvizoso.net>
+ <20250516-6-10-rocket-v3-1-7051ac9225db@tomeuvizoso.net>
+Message-Id: <174742024812.3649303.12389396177218408388.robh@kernel.org>
+Subject: Re: [PATCH v3 01/10] dt-bindings: npu: rockchip,rknn: Add bindings
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_102648_500061_435CF967 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20250516_113054_522172_8571C18F 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,158 +64,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@gmail.com>, Sumit Semwal <sumit.semwal@linaro.org>, Simona Vetter <simona@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jeff Hugo <jeff.hugo@oss.qualcomm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, Oded Gabbay <ogabbay@kernel.org>, linux-kernel@vger.kernel.org, =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Quentin Schulz <quentin.schulz@cherry.de>
 
-The Haikou Video Demo adapter has a proprietary connector for a camera
-module which has an OV5675 camera sensor and a companion DW9714 focus
-lens driver.
+On Fri, 16 May 2025 18:53:15 +0200, Tomeu Vizoso wrote:
+> Add the bindings for the Neural Processing Unit IP from Rockchip.
+> 
+> v2:
+> - Adapt to new node structure (one node per core, each with its own
+>   IOMMU)
+> - Several misc. fixes from Sebastian Reichel
+> 
+> v3:
+> - Split register block in its constituent subblocks, and only require
+>   the ones that the kernel would ever use (Nicolas Frattaroli)
+> - Group supplies (Rob Herring)
+> - Explain the way in which the top core is special (Rob Herring)
+> 
+> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../bindings/npu/rockchip,rknn-core.yaml           | 162 +++++++++++++++++++++
+>  1 file changed, 162 insertions(+)
+> 
 
-This adds support for the camera module on PX30 Ringneck module fitted
-on a Haikou devkit with the Haikou Video Demo adapter.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
----
-This adapter is also used with RK3588 Tiger, but there's currently no
-camera stack at all on RK3588, and RK3399 Puma, but:
- - 19.2MHz is not achievable exactly, so need to patch the driver to
-   support 24MHz for example, this will come later,
- - The camera clk is on an IO domain at 1.8V but configured at boot at
-   3.3V, and until the IO domain is properly configured, the camera
-   won't receive a clock. Based on the probe order, it is possible (and
-   empirically very likely) that the camera won't be detected at all.
-   A Linux kernel solution was attempted multiple times in the past,
-   c.f.
-   https://lore.kernel.org/linux-gpio/20230904115816.1237684-1-s.hauer@pengutronix.de/
-   https://lore.kernel.org/lkml/20220802095252.2486591-1-foss+kernel@0leil.net/
-   We'll need to figure something out this time as I won't be able to
-   upstream camera support without it :)
+yamllint warnings/errors:
 
-To test, install libcamera on Debian Bookworm (or more recent I guess)
-add a file at /usr/share/libcamera/ipa/rkisp1/ov5675.yaml whose content
-is (remove one leading whitespace):
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml: properties:reg-names: 'oneOf' conditional failed, one must be fixed:
+	[{'const': 'pc'}, {'const': 'cna'}, {'const': 'core'}] is too long
+	[{'const': 'pc'}, {'const': 'cna'}, {'const': 'core'}] is too short
+	False schema does not allow 3
+	1 was expected
+	3 is greater than the maximum of 2
+	hint: "minItems" is only needed if less than the "items" list length
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdab0000 (rockchip,rk3588-rknn-core-top): compatible: 'oneOf' conditional failed, one must be fixed:
+	['rockchip,rk3588-rknn-core-top', 'rockchip,rknn-core-top'] is too long
+	'rockchip,rk3588-rknn-core-top' is not one of ['rockchip,rk3588-rknn-core']
+	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdab0000 (rockchip,rk3588-rknn-core-top): reg: [[0, 4255842304, 0, 36864]] is too short
+	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdac0000 (rockchip,rk3588-rknn-core): compatible: 'oneOf' conditional failed, one must be fixed:
+	['rockchip,rk3588-rknn-core', 'rockchip,rknn-core'] is too long
+	'rockchip,rk3588-rknn-core' is not one of ['rockchip,rk3588-rknn-core-top']
+	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdac0000 (rockchip,rk3588-rknn-core): reg: [[0, 4255907840, 0, 36864]] is too short
+	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
 
- # SPDX-License-Identifier: CC0-1.0
- %YAML 1.1
- ---
- version: 1
- algorithms:
-   - Agc:
-   - Awb:
-   - BlackLevelCorrection:
-   - ColorProcessing:
- ...
+doc reference errors (make refcheckdocs):
 
-then call
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250516-6-10-rocket-v3-1-7051ac9225db@tomeuvizoso.net
 
-qcam -platform eglfs -c /base/i2c@ff190000/camera@36
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
 
-While this is running, control the focus lens driver with:
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-v4l2-ctl -d /dev/v4l-subdev5 -c focus_absolute=150
+pip3 install dtschema --upgrade
 
-and change the focus_absolute value to see the lens moving and the focus
-change.
-
-I'll try to have a look at libcamera's config file so I can send a
-proper one to the project instead of this dummy one.
----
- .../rockchip/px30-ringneck-haikou-video-demo.dtso  | 56 ++++++++++++++++++++++
- 1 file changed, 56 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
-index 7d9ea5aa598486680191d52e4c87af59f7b0e579..1e3f43bbe1734e5c88d1f76f8f7a545d881df88d 100644
---- a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
-+++ b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
-@@ -94,6 +94,15 @@ video-adapter-led {
- 	};
- };
- 
-+&cif_clkout_m0 {
-+	rockchip,pins =
-+		<2 RK_PB3 1 &pcfg_pull_none_12ma>;
-+};
-+
-+&csi_dphy {
-+	status = "okay";
-+};
-+
- &display_subsystem {
- 	status = "okay";
- };
-@@ -135,6 +144,12 @@ &i2c1 {
- 	/* OV5675, GT911, DW9714 are limited to 400KHz */
- 	clock-frequency = <400000>;
- 
-+	focus: focus@c {
-+		compatible = "dongwoon,dw9714";
-+		reg = <0xc>;
-+		vcc-supply = <&cam_afvdd_2v8>;
-+	};
-+
- 	touchscreen@14 {
- 		compatible = "goodix,gt911";
- 		reg = <0x14>;
-@@ -157,6 +172,47 @@ pca9670: gpio@27 {
- 		pinctrl-names = "default";
- 		reset-gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
- 	};
-+
-+	camera@36 {
-+		compatible = "ovti,ov5675";
-+		reg = <0x36>;
-+		clocks = <&cru SCLK_CIF_OUT>;
-+		assigned-clocks = <&cru SCLK_CIF_OUT>;
-+		/* Only parent to get exactly 19.2MHz */
-+		assigned-clock-parents = <&cru USB480M>;
-+		assigned-clock-rates = <19200000>;
-+		avdd-supply = <&cam_avdd_2v8>;
-+		dvdd-supply = <&cam_dvdd_1v2>;
-+		dovdd-supply = <&cam_dovdd_1v8>;
-+		lens-focus = <&focus>;
-+		orientation = <0>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cif_clkout_m0>;
-+		reset-gpios = <&pca9670 6 GPIO_ACTIVE_LOW>;
-+		rotation = <180>;
-+
-+		port {
-+			cam_out: endpoint {
-+				data-lanes = <1 2>;
-+				link-frequencies = /bits/ 64 <450000000>;
-+				remote-endpoint = <&mipi_in_cam>;
-+			};
-+		};
-+	};
-+};
-+
-+&isp {
-+	status = "okay";
-+
-+	ports {
-+		port@0 {
-+			mipi_in_cam: endpoint@0 {
-+				reg = <0>;
-+				data-lanes = <1 2>;
-+				remote-endpoint = <&cam_out>;
-+			};
-+		};
-+	};
- };
- 
- &pinctrl {
-
----
-base-commit: fee3e843b309444f48157e2188efa6818bae85cf
-change-id: 20250516-ringneck-haikou-video-demo-cam-420685fb7f9f
-
-Best regards,
--- 
-Quentin Schulz <quentin.schulz@cherry.de>
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
