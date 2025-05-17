@@ -4,104 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF5F9C3ABC9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 May 2025 21:44:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E071C3ABD8
+	for <linux-rockchip@archiver.kernel.org>; Sat, 17 May 2025 02:06:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bgd9lsOyRH4v561Ab6arJytswqazTZ57YBnV/yL8CxM=; b=w2HCSkMzV5QqZv
-	877Y8kpBpmdcgHchrz59EkrmR9njHqhBXAn9ELiEl+tjD+L2tlkGbGP43UDWK2uE/50CQ09N0ru1z
-	WfWjwyLaB58xdW3EaU7wqg4KHv1a6PkU06946yGSodrxi1TK3I2kksXP3kbS2alVsvng3rvjtHBuX
-	nY63pWNMEa6d/XZQE8OeVZxmkbWJhPIu1IOapHFRn6IX+SMzUSXI24e3EJQw5/ppHmFxAEOFaxeI+
-	QY6EezXD7a2FRgAigYDI78HR0m0FHrNZMW8A6UtNaFkoLvaFL2DfaoA9Z0QYaibXbNGJUcI+xXEIw
-	M8EuT+sxBwLxRTTRS3Yg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QWNhvt98Yi0iZvV3SoxQ7xcx/XKS/ZV9ttp3sKscC8g=; b=upUvhGLnOT0DYN
+	CTT87iCOGBoc79IgkKMjuLaDvbfABKEmINolhsX6kWj3RC4iVLa+mvMli6vOIrrvLdSwBjVAxTom+
+	SIe0am8CycKhVaP6nx1SSf1uy/i2q6AU6Z5rFfmIAY0FygwYDUzzghPtXVFAHADnShfmtCmN694ot
+	IovbxgQL2NFROQ4lgxIhKloX2dQ3EAlHo97ocFOPuHs2cVsPtyzfR0EZGnVNoCuU2KPaY0EEiYqGj
+	K7J6NSCnpRkxBHbKUd83wS3r8iAModtGhRcto1CmKRxUagTpRi9oK1Gw1iV4sJcAlExYBMBg5Xdyb
+	JSnFBUglaCMryaM0q7ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uG2qp-00000004gPP-104O;
-	Fri, 16 May 2025 21:44:19 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uG6wS-0000000521M-0Czf;
+	Sat, 17 May 2025 02:06:24 +0000
+Received: from mail-qv1-xf34.google.com ([2607:f8b0:4864:20::f34])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uG2it-00000004eyY-2xiO;
-	Fri, 16 May 2025 21:36:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 09D46A4E333;
-	Fri, 16 May 2025 21:36:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25692C4CEE4;
-	Fri, 16 May 2025 21:36:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747431366;
-	bh=9YGGE1TGeazcVqzIHxmvNTlfgSH6mcicVrtP9HboPiE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OqExve53AUId7CcYAYsq3yvOShvbSRMnWurpBIqDQ9be8HuLhEhq72gZNMsbkVvXf
-	 Hz2seqzq5p6okMtoXWw/oAkxH1yJ26ou+r+3MF+xzEkv1GkxK/FKdfTEvm1nIb5Whp
-	 Lk/epm6eCpoE6NK++0eogoFO0Cui0u7gECK160Af7SKOKTxkI5AMYrZclRU3of70nt
-	 MRiQlSvY/y183DbFxHHO+iUrkhSmOlE9y61hRjcxXrrN719y+EoZHDB/QaYb/bKXlV
-	 jp/7kcZ1V+lqSTXz/XGGAQnHYQAkKTc5C11x2GZ7GHQJzpgPumSNR3AtFr13Yj42j1
-	 XoM4lZM3uCmJQ==
-Message-ID: <4a55adff-7d68-47fe-9995-afa30b9857a6@kernel.org>
-Date: Fri, 16 May 2025 21:49:55 +0200
+	id 1uG6wP-0000000520Z-2GLI
+	for linux-rockchip@lists.infradead.org;
+	Sat, 17 May 2025 02:06:22 +0000
+Received: by mail-qv1-xf34.google.com with SMTP id 6a1803df08f44-6f8c53aeedbso5841846d6.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 16 May 2025 19:06:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1747447580; x=1748052380; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=BKXLeL3ukBspnW2IUVVrIXJnVabhkRXsrkb89rHps2U=;
+        b=Bb+MrVaX0q050EBH6xCOb7GaE003Je0DcWokewAYj1os4uYFK+y1cCijf1UBWAs1uB
+         3ibE/64JzjxsR5GJpNI12lS1zVw/7lz1LQJa2X5o3YayYBCJxPKeFJvkPeWm4HhuLIOt
+         uFN83GsvVzTpqPAdYyQqRO25sDXVxXl4itMV8RMUj6qEYE84oa/Vyhe+zCH5csIn/SoL
+         lv4jZNBSjsuZEyftUT6Ql4q+8r8a/Lrjy/jfK7rhXUeRYegVgu7yswhVoOXdc8RAuRSI
+         27+vJt8jHRuw2RzegsgvICjVJdDsoHxs8Ou+jmr7jDLVUDNIpcdLCx0HcQV1qeGP9WJS
+         FPWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747447580; x=1748052380;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=BKXLeL3ukBspnW2IUVVrIXJnVabhkRXsrkb89rHps2U=;
+        b=p+EGFi/8ALqr6+2oDGe3XTSOyKgDQk/qiGRq1xx+FNbcCNWh4tRSCDN/BMjdY+lgUM
+         1fk0urBr0Mdxyp1F3jEQLZX2dgYB2ysp6S1NQcN48dkp6HCiW/lyNeUL6ZTmoMJHHED0
+         OkOysogM2PcHrWrX6fYlB+TInC0BqlGgX14QD92cmMqSS3IyDu/00D+cXvetbT/ZPew8
+         9kuEwF9Hj4LyUTml77m555vyWO2TBkwB13Bd6i4Ki9vRuVFebkmArfpABZS3DFL8e8gN
+         39S4icbqX6ZoFijwaVJfp/jzx+wrvhGpQOhrbRM5OrKTbbsuSAfAbgGKC1UTOZE+VbEs
+         xfaQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXv2ozdM1n7Ymvq4fZPpMbMhcXPBsPMeSxYeSWdlx/wO5CaWcll8EBxAehvNJG4rWNyrDFYszmb86n/KKpt2w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyhEYdODGD+h2vjavwqEZEOdPpbqlPi3DJNlD0+RgxMnFLloyzP
+	dHpQ1cb/eiHmw0uFCSIozQv3lRYT0Dq4V9155d/KQFK9gycumFVQB58=
+X-Gm-Gg: ASbGncvIIuLOMicvLGeLqBOhHjiwadNog4zl/iscFQUd5A8ilCTsnDMlqhptbu/TU1N
+	OWdgEf1PLL6gTa3nthiS0iS9tSooJDVj8mzt2CrmssPJ7oKonL4uPF3B993+/p9/hbx4wfN/chN
+	SRCvILiwhdhYSJpysQESYmRffn7/O5w8llh1kNxFVOdmCTCDGpW5PgNXhEH4GZpCyxn6dfwYjbd
+	L6SHbPKStdcmi8zRE4a8dDPWZNYAQRLasShXpKKMAicbyzQ5gsU8uYX0dxUIviJoHVMVAgDVAzF
+	NUdvAbgaPT6QlLInv7ogMoW4TKPEtRo+g63Ajci6Yu7Xy9T7G71v6+EoqYwJuXQtFOkYHjudojh
+	a
+X-Google-Smtp-Source: AGHT+IGpr4M6tPFJTIRklSzJoum9VgP6uUrsrUv4SQX78ySuBkpTAW8J4v1g4DGVFtzUXC4O5TsENg==
+X-Received: by 2002:a05:6214:2681:b0:6e8:9021:9090 with SMTP id 6a1803df08f44-6f8b2c9d22fmr78053266d6.26.1747447579646;
+        Fri, 16 May 2025 19:06:19 -0700 (PDT)
+Received: from localhost.localdomain ([2a0d:e487:224f:4011:50ae:ea20:4b60:8f04])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6f8b0979851sm19250876d6.97.2025.05.16.19.06.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 16 May 2025 19:06:19 -0700 (PDT)
+From: Jihed Chaibi <jihed.chaibi.dev@gmail.com>
+To: heiko@sntech.de,
+	briannorris@chromium.org
+Cc: devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel-mentees@lists.linux.dev,
+	skhan@linuxfoundation.org,
+	linux-kernel@vger.kernel.org,
+	jihed.chaibi.dev@gmail.com
+Subject: [PATCH 1/1] Fixing a minor typo in YAML document
+Date: Sat, 17 May 2025 04:05:52 +0200
+Message-Id: <20250517020552.737932-1-jihed.chaibi.dev@gmail.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] dt-bindings: arm: rockchip: Add Sakura Pi RK3308B
-To: Hsun Lai <i@chainsx.cn>, robh@kernel.org
-Cc: conor+dt@kernel.org, heiko@sntech.de, krzk+dt@kernel.org,
- sfr@canb.auug.org.au, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20250514075914.194651-1-i@chainsx.cn>
- <20250514075914.194651-3-i@chainsx.cn>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250514075914.194651-3-i@chainsx.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_143607_878270_AEB85186 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20250516_190621_589139_F178C381 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,41 +102,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 14/05/2025 09:59, Hsun Lai wrote:
-> This patch adds device tree binding support for
-> Sakura Pi RK3308B, with compatibility for the
-> Rockchip RK3308 SoC.
-> 
-> Link: https://docs.sakurapi.org/article/sakurapi-rk3308b/introduce
-> 
-> Signed-off-by: Hsun Lai <i@chainsx.cn>
-> ---
-> 
-> (no changes since v1)
-Really? And the tag?
+A small typo in the rockchip,rk3399 YAML document ;
+"less then" should become: "less than"
 
-<form letter>
-This is a friendly reminder during the review process.
+Signed-off-by: Jihed Chaibi <jihed.chaibi.dev@gmail.com>
+---
+ .../bindings/memory-controllers/rockchip,rk3399-dmc.yaml    | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-It looks like you received a tag and forgot to add it.
+diff --git a/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml b/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
+index 1f58ee99b..1a96c743e 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
+@@ -128,7 +128,7 @@ properties:
+     minimum: 1000000  # In case anyone thought this was MHz.
+     description:
+       When the DRAM type is DDR3, this parameter defines the ODT disable
+-      frequency in Hz. When the DDR frequency is less then ddr3_odt_dis_freq,
++      frequency in Hz. When the DDR frequency is less than ddr3_odt_dis_freq,
+       the ODT on the DRAM side and controller side are both disabled.
+ 
+   rockchip,ddr3_drv:
+@@ -176,7 +176,7 @@ properties:
+     minimum: 1000000  # In case anyone thought this was MHz.
+     description:
+       When the DRAM type is LPDDR3, this parameter defines then ODT disable
+-      frequency in Hz. When DDR frequency is less then ddr3_odt_dis_freq, the
++      frequency in Hz. When DDR frequency is less than ddr3_odt_dis_freq, the
+       ODT on the DRAM side and controller side are both disabled.
+ 
+   rockchip,lpddr3_drv:
+@@ -223,7 +223,7 @@ properties:
+     minimum: 1000000  # In case anyone thought this was MHz.
+     description:
+       When the DRAM type is LPDDR4, this parameter defines the ODT disable
+-      frequency in Hz. When the DDR frequency is less then ddr3_odt_dis_freq,
++      frequency in Hz. When the DDR frequency is less than ddr3_odt_dis_freq,
+       the ODT on the DRAM side and controller side are both disabled.
+ 
+   rockchip,lpddr4_drv:
+-- 
+2.39.5
 
-If you do not know the process, here is a short explanation:
-Please add Acked-by/Reviewed-by/Tested-by tags when posting new versions
-of patchset, under or above your Signed-off-by tag, unless patch changed
-significantly (e.g. new properties added to the DT bindings). Tag is
-"received", when provided in a message replied to you on the mailing
-list. Tools like b4 can help here. However, there's no need to repost
-patches *only* to add the tags. The upstream maintainer will do that for
-tags received on the version they apply.
-
-Please read:
-https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
-
-If a tag was not added on purpose, please state why and what changed.
-</form letter>
-
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
