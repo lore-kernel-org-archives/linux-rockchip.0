@@ -4,55 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32031C3ABD8
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 May 2025 19:31:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AFBFC3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 May 2025 22:02:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wb7MJ0irAJdDq2ZvnQXwgtNolilBnA3yMpP1ufnXb6Y=; b=z/qHVWleh846O7
-	XsM6QixSbQ1e1kgpdq+H4T5pHC0BzpF0GWGT1+UgOemhivTQz1w6MUmbs3BUMli/jsvvPJqUamqZD
-	6NkJNcYtkp3jdSqiGzr38zxPGexx1DCBTEIuV2HbZ/Q/jo9NumrvpOA3pJz/hXt9hZiUABMAlEK9u
-	LQzq0wrylBdlUCBUSUNi4jfzNHQ1AJjatSWIg6GNUdnc5/7UknfXDLlwY/U2XEpK0nXM9Y0uSpybI
-	sDY8RKSKho3WVQPNkX+JCvxXKaaPYHezIjQbuRPh75/HnlpnRGpkoKxXPjYduiP39womjRX7sg6lh
-	2diwoRGfivrEmeQ+25aA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=934htJ4mjS4hm1N61YWs3ni4/B3S0MzfUQUd6yJFiVU=; b=t6BC7rHTU0sXMJ
+	Larkh+dZTunNmVpJy++Aij0vtzB+1MPBdYXPlh4PhLOqnPyP/m+xoI5/H/MeIVV6MDqa+Oca/u/3S
+	41e+Bqjvaykfcf3sxUNkEzjSWHSQX+Tc5Rn+XsKTLPQFAVtZOUpGmZ9QIpt/2Kyr6O3k+A414KjCb
+	AKrXg4kmBVTLN3OVu79xgvoolUfQGPDzhCaI7NhgPXzN+8u4EB0m6xH9eafqwri6AhVlTlnIocImt
+	NaHVNyuMviNkR6F6RswaPbE3oriGPCu2+ol6502KiFA5rcJE5KISmTLqqxqhke9Uuc8CT3BYVe6lQ
+	beBp+19lk6HfxT+oqwcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGjjQ-00000007TFM-1kTU;
-	Sun, 18 May 2025 19:31:32 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uGm4w-00000007Zvw-2Ook;
+	Sun, 18 May 2025 22:01:54 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGjhO-00000007T4W-2akp;
-	Sun, 18 May 2025 19:29:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 54CD75C48EC;
-	Sun, 18 May 2025 19:27:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C744FC4CEE7;
-	Sun, 18 May 2025 19:29:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747596563;
-	bh=AWPQKMivdFQ6QmrVDoYacp12BqW2VCLe3IzFWlx64xM=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=mwIXsBdJUS75jSc5SodfPs2ipBqrSFIWLFMNwnw8jdLcZpf4ZCd8bKQnqurqgaoes
-	 CERHKDv5xmVZMyjIMfoE1fnaSgzK0yCV1ahLX0LYVbAPLVgCbLS/b70XQSNJJK781m
-	 wse8vLIkhLk+A0CN1gHAvnWBpm33++1WmC3DcaXXQC1yW7mdJhSQDvatstrX3aVQaK
-	 d+LADVqDOgsyejmxp/IYREQxF/uF2NbtjsiZPg0mEJNVMNRWmyLybvdWH+6MaR/8/H
-	 X9sctXWuxcndV61ao83YbFbZUw9/AVJXExzlMw7CBID+qZ0NfdXvsd/AmK77ZJXRfF
-	 TOG3utoCNQZ7w==
-Date: Sun, 18 May 2025 14:29:21 -0500
+	id 1uGm2v-00000007Zpj-3URO;
+	Sun, 18 May 2025 21:59:50 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-43cfebc343dso27045165e9.2;
+        Sun, 18 May 2025 14:59:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1747605588; x=1748210388; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=1jcWHYj2Bjj7Gqb8nwWrV3vO98Qb0ffMBHjyALl6BfM=;
+        b=Jrt2ZU9eNWYQzKAGb7bjzf8c3ynk1dTz2/gkPQ+T/Q+mRT7AX1zfXZlk7kk9iXdDDV
+         8bbqy19CrUESLhZ+O1V8/ceiOTsWRqQJ6tvk5sCOkSDT+c0YsA5l1IY6V2zyVRQxb4S+
+         pGieEdSWvjtUX+xe7fVhQjQH15Aeq/TnRsAhJPfLRmSg1glyQIYMUiJ5mouOKaisowGP
+         Y08MgtEqSNOYL185DMGP8TBJODUjNtaZVRZA2s/gIqWa1i57xH7z9CDcgOrsZIE1WqKj
+         Z9WeSloTrEE6tZelteFrP4kn1i93OKY63dkKIn7VjH6X9l4/zqE048eA1Av8KkXVxNXq
+         wmkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747605588; x=1748210388;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=1jcWHYj2Bjj7Gqb8nwWrV3vO98Qb0ffMBHjyALl6BfM=;
+        b=Rdre6P7mWxUac/oCe50gKqshnf7JFeqtxlXUIv5Y5GIeyDjbXH0rZLm2vOKrc+QhLW
+         PlZFSILtlcAmlm9g0ayIJ8lWQpDLZVqTm6OWTSlnI1nbKJAABtlETk3lr51aFVQ/cR+F
+         9Aj65/vJhSM1CA4PSGeD4YiN1f6Lm4TauPJb94keMk6fp9TnjjesP8kDy6LbSqR4mFfD
+         uJDVs9JE8YFDlgYX3LDyPzaIkGGl6bksUIsVfad/Tr10jSaaCeLWCZRQ58ay59BlcVIw
+         Tio/x1U7dhvNwnmCZEKer5sgkLZLo/020Li3CrXbGNmTG7sIQ+t+jzinGmsesLE7Bhw1
+         Fmwg==
+X-Forwarded-Encrypted: i=1; AJvYcCU2EcQ2V4ztIzRb/jovYJRPukwsCYPzacxf0MaSnYC6ZsWsf3GyMAEXue4DrT0QmOysubBeRQEpaiYx9HpZ8JH+@lists.infradead.org, AJvYcCWRLmv/UtTP8paGHs2W2v+V4uVWJSAuLISy/Kcl6GiT1XuS5IAqDdIISjP9aq7wnQ3g5zNugakyNpIyEGow4jY=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwP9hFmMc5vWPj1yBPTpWItxZWUlqOuf7wPeE3t5b0a0pdtBEZV
+	6pqxj8BZRn/XIBuYlhnwpU2RgFkAtH7hw/IpjoJmkdGd4qOlkdFDUSjM
+X-Gm-Gg: ASbGnctYsiX8ru0LCVnhLLGUxfiZVtBC8Yhw3DGIrHjlP49GNVPlpejeHxZGzXjdtSe
+	Kg2cE/J4H7ghalDj3JZHFx9aVo2EKpl2QBUDMNIAbF8Vj0t2MjGzi4SaQ2ZZBT/FHmD1//xM47v
+	tv/rTtAyZZpDepXfwtMij9dv8n/6VVbSDoy89yeWKnHqwzCtPPGN4f8d2BsZPZNqw1PRMyxm7xt
+	MrYGs1bL4aPAd2/abrFDDQhtOhH80IicnIqoW9seUSpzIb1vbb7RTSV1PL4uaZRITu9r4wNHl/i
+	sjnIF65FvJ+5B5IBUB1NAfxgy1ZMkiLz7RqPMdpEF/uiIGcIexSsWFwBQi9kdhjk6bML9CguiEy
+	mIBq6dmaAnfbDfKDLGcbJLglAJ4ffHQSvuMM8+ThRnu+n9oZcsNJtdVWHqyp7do83t8ADXz2nar
+	S0Kzo7YovoEA==
+X-Google-Smtp-Source: AGHT+IHEoNHpgy/GHjNzWJO4qHfmQbt3TtQ05k1RPPmbrZqKlkbHKvDWBWg0LpEWKjRbnreSuLjTHg==
+X-Received: by 2002:a05:600c:1d96:b0:43c:fe90:1282 with SMTP id 5b1f17b1804b1-442fd60b8ccmr94872805e9.7.1747605587518;
+        Sun, 18 May 2025 14:59:47 -0700 (PDT)
+Received: from cypher.home.roving-it.com (2.c.4.1.7.3.6.4.2.a.a.3.0.f.c.2.1.8.6.2.1.1.b.f.0.b.8.0.1.0.0.2.ip6.arpa. [2001:8b0:fb11:2681:2cf0:3aa2:4637:14c2])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-442f39ef81csm185711995e9.34.2025.05.18.14.59.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 18 May 2025 14:59:47 -0700 (PDT)
+From: Peter Robinson <pbrobinson@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Peter Geis <pgwipeout@gmail.com>
+Cc: Peter Robinson <pbrobinson@gmail.com>
+Subject: [PATCH 1/2] arm64: dts: rockchip: drop touch panel display from rockpro64
+Date: Sun, 18 May 2025 22:59:33 +0100
+Message-ID: <20250518215944.178582-1-pbrobinson@gmail.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-In-Reply-To: <20250516-6-10-rocket-v3-1-7051ac9225db@tomeuvizoso.net>
-References: <20250516-6-10-rocket-v3-0-7051ac9225db@tomeuvizoso.net>
- <20250516-6-10-rocket-v3-1-7051ac9225db@tomeuvizoso.net>
-Message-ID: <174742024812.3649303.12389396177218408388.robh@kernel.org>
-Subject: Re: [PATCH v3 01/10] dt-bindings: npu: rockchip,rknn: Add bindings
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250518_122926_735115_61450619 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20250518_145949_873161_D9D7173A 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,77 +97,128 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@gmail.com>, Sumit Semwal <sumit.semwal@linaro.org>, Simona Vetter <simona@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jeff Hugo <jeff.hugo@oss.qualcomm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, Oded Gabbay <ogabbay@kernel.org>, linux-kernel@vger.kernel.org, =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
-Message-ID: <20250518192921.avD8ZAvUSWPMtA2JIIaErDPkwX6BrZekohbXfcvFGH8@z>
 
+The touch panel display is an optional add on for the RockPro64
+so this should be an DT overlay, drop the panel options in
+preparation to add this as an overlay.
 
-On Fri, 16 May 2025 18:53:15 +0200, Tomeu Vizoso wrote:
-> Add the bindings for the Neural Processing Unit IP from Rockchip.
-> 
-> v2:
-> - Adapt to new node structure (one node per core, each with its own
->   IOMMU)
-> - Several misc. fixes from Sebastian Reichel
-> 
-> v3:
-> - Split register block in its constituent subblocks, and only require
->   the ones that the kernel would ever use (Nicolas Frattaroli)
-> - Group supplies (Rob Herring)
-> - Explain the way in which the top core is special (Rob Herring)
-> 
-> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  .../bindings/npu/rockchip,rknn-core.yaml           | 162 +++++++++++++++++++++
->  1 file changed, 162 insertions(+)
-> 
+This effectively reverts commit b65155c786c4 so as to add an
+overlay for it.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+---
+ .../boot/dts/rockchip/rk3399-rockpro64.dtsi   | 64 -------------------
+ 1 file changed, 64 deletions(-)
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml: properties:reg-names: 'oneOf' conditional failed, one must be fixed:
-	[{'const': 'pc'}, {'const': 'cna'}, {'const': 'core'}] is too long
-	[{'const': 'pc'}, {'const': 'cna'}, {'const': 'core'}] is too short
-	False schema does not allow 3
-	1 was expected
-	3 is greater than the maximum of 2
-	hint: "minItems" is only needed if less than the "items" list length
-	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdab0000 (rockchip,rk3588-rknn-core-top): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3588-rknn-core-top', 'rockchip,rknn-core-top'] is too long
-	'rockchip,rk3588-rknn-core-top' is not one of ['rockchip,rk3588-rknn-core']
-	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdab0000 (rockchip,rk3588-rknn-core-top): reg: [[0, 4255842304, 0, 36864]] is too short
-	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdac0000 (rockchip,rk3588-rknn-core): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3588-rknn-core', 'rockchip,rknn-core'] is too long
-	'rockchip,rk3588-rknn-core' is not one of ['rockchip,rk3588-rknn-core-top']
-	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdac0000 (rockchip,rk3588-rknn-core): reg: [[0, 4255907840, 0, 36864]] is too short
-	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250516-6-10-rocket-v3-1-7051ac9225db@tomeuvizoso.net
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+index 51c6aa26d8285..e848ea6efac3f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+@@ -20,15 +20,6 @@ chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
+ 
+-	/* enable for panel backlight support */
+-	backlight: backlight {
+-		compatible = "pwm-backlight";
+-		brightness-levels = <0 4 8 16 32 64 128 255>;
+-		default-brightness-level = <5>;
+-		pwms = <&pwm0 0 1000000 0>;
+-		status = "disabled";
+-	};
+-
+ 	clkin_gmac: external-gmac-clock {
+ 		compatible = "fixed-clock";
+ 		clock-frequency = <125000000>;
+@@ -116,14 +107,6 @@ dit_p0_0: endpoint {
+ 		};
+ 	};
+ 
+-	avdd: regulator-avdd {
+-		compatible = "regulator-fixed";
+-		regulator-name = "avdd";
+-		regulator-min-microvolt = <11000000>;
+-		regulator-max-microvolt = <11000000>;
+-		vin-supply = <&vcc3v3_s0>;
+-	};
+-
+ 	vcc12v_dcin: regulator-vcc12v-dcin {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc12v_dcin";
+@@ -590,19 +573,6 @@ fusb0: typec-portc@22 {
+ 		vbus-supply = <&vcc5v0_typec>;
+ 		status = "okay";
+ 	};
+-
+-	/* enable for pine64 touch screen support */
+-	touch: touchscreen@5d {
+-		compatible = "goodix,gt911";
+-		reg = <0x5d>;
+-		interrupt-parent = <&gpio4>;
+-		interrupts = <RK_PD5 IRQ_TYPE_EDGE_FALLING>;
+-		AVDD28-supply = <&vcc3v0_touch>;
+-		VDDIO-supply = <&vcc3v0_touch>;
+-		irq-gpios = <&gpio4 RK_PD5 GPIO_ACTIVE_HIGH>;
+-		reset-gpios = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
+-		status = "disabled";
+-	};
+ };
+ 
+ &i2s0 {
+@@ -638,36 +608,6 @@ &io_domains {
+ 	gpio1830-supply = <&vcc_3v0>;
+ };
+ 
+-/* enable for pine64 panel display support */
+-&mipi_dsi {
+-	clock-master;
+-	status = "disabled";
+-
+-	ports {
+-		mipi_out: port@1 {
+-			reg = <1>;
+-
+-			mipi_out_panel: endpoint {
+-				remote-endpoint = <&mipi_in_panel>;
+-			};
+-		};
+-	};
+-
+-	mipi_panel: panel@0 {
+-		compatible = "feiyang,fy07024di26a30d";
+-		reg = <0>;
+-		avdd-supply = <&avdd>;
+-		backlight = <&backlight>;
+-		dvdd-supply = <&vcc3v3_s0>;
+-
+-		port {
+-			mipi_in_panel: endpoint {
+-				remote-endpoint = <&mipi_out_panel>;
+-			};
+-		};
+-	};
+-};
+-
+ &pcie0 {
+ 	ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
+ 	num-lanes = <4>;
+@@ -782,10 +722,6 @@ vcc5v0_host_en: vcc5v0-host-en {
+ 	};
+ };
+ 
+-&pwm0 {
+-	status = "okay";
+-};
+-
+ &pwm1 {
+ 	status = "okay";
+ };
+-- 
+2.49.0
 
 
 _______________________________________________
