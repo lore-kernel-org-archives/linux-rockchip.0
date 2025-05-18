@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E786C3ABC9
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 May 2025 22:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76CC1C3ABC9
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 May 2025 22:31:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f3wwSNHty7nTBQ40+UBBB+7BMxOANfdMEeKTPNXndw4=; b=OVDAoqu601Pz9g
-	RfLVPzfdIajh7iQrqGf+FTnWRJtEM9PDjZHpFHbuPQPkjpdiZDbpXbPNyWwLIkcITxofC1C3kD5Cy
-	d8f2jtPgUjW3GF+kR8amkfq9OD67NXqfneeciUiMcxR9up76xVEEj9Ph5KhC7WkHbi0kuxlVAjhvd
-	gOkSbVwe0pN3famw1TzXP6UrLxEBLesPX/AZCWNpNr5dHUlERoyh5/ZOGa6xuXl+OBIdJbBE2I18h
-	PkoRpBif9xldTJ0gL/DSmxbSqOsVglHJqxT9m36VXvPKVh6vdmXCOJby0mVzkt0SxJeaYMVG5e73w
-	2h8xVz6aCUY9ryV3XR1w==;
+	List-Owner; bh=Na1mS53KWNUeiQbg3zhJwbnRInpH8gk4LwPoI1J6Tek=; b=OKl6GHkHsbEm01
+	Lg7AFDV8cRi4DOTL2iFeYlMnFN2l5jK9WwqU70cgeDt2XVv/QrdSBOmQPoXV04suHNu/P8QOjHZ1I
+	Q72NaXMfeWu5mAXLobqbTsUVZYgihApRezegBOSfo1zHixzURHGF98EV0ChM+5Efhsq3TqBSFvt1C
+	obn7qqlTGLB+GooRbR4Sstgw1eKULEXUO9dYcJ65wF/JQIIWudR6lzra1Yh7cmGsO/Xoj1nRQo6U5
+	U/DtTF1E/VKak9Je09f92Uptxwpslyr+2s1lmcn/dG1asY5wUXw+AsLZkHzxRAPHx7S0gegWycrXN
+	Biy5GCUcQnnvNcVtnBfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGmTq-00000007cp0-27KP;
-	Sun, 18 May 2025 22:27:38 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1uGmXm-00000007dBe-2K2r;
+	Sun, 18 May 2025 22:31:42 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGmAO-00000007agW-22AE
+	id 1uGmAX-00000007ajA-436d
 	for linux-rockchip@lists.infradead.org;
-	Sun, 18 May 2025 22:07:34 +0000
+	Sun, 18 May 2025 22:07:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1747606051; bh=UQqh8Zhf7I76+d8T83dbrs5i1DOHAaiBJnl55pIm1tw=;
- b=Z2Qsg1lc4QZdNSm5v57/VA7kylVpwja+Saf4VqagRKwTDzKm+w4Jj0AnjvRO71XxMy4Wb8aC8
- loTjDk1BK+Okq/PdwzUnAUx2qjAlP914QmQqZ+COq0q+WccS5NskFcBnuVzB1TgA/f1siCCZyOQ
- 0YnMy2s0bgXzfbYUvjiXmMOd3GEIZf2EwqCmnCDwCEEl7nJPH/yV6NcxEhri7gCz8ZZ9TdgLM2C
- hlBjR1WKMVuNNB/nN+odo+H2m0JqdRGgyq41cBTr53mqqThq01vxOt6g8+FAT+D1mzZtDCh6uMX
- cwz6JpDzq3NRDjV8hlW/NTSL3FZWl4lP4OGmw9ex+IhA==
-X-Forward-Email-ID: 682a5a2278cae75fbd8d46c5
+ t=1747606061; bh=JlFCAc4M4tsY005AhENFwugyMYaX2j/qB+dCiJDYFXQ=;
+ b=ZA1iJqMGpKXbw+puZd5bHGkTflKS3Pz49U+HE1A62OJH60VLdkZzwRN681rpj1uHVRQmy5iAb
+ y/M8X+bb6czcGA4a37if/60ytRp7xiDDq4s44DARyn+ceZL+CvwFHBjL5rXnWErpkipOVeLddGT
+ iCgIDFPBHrojv1wJoQXuGJ7Oqn23XYZKqkSbKpwav/cpY8luIRODiWbooMh29lblfRRbQXTenFb
+ Q0+usZt6gFPWzZKdqVR071vsdajQoOpXuunMXfDcB/d7aStjAPOOM3oWcTOLTptxG6uQSOfFbYo
+ snwBv9/f+yyqTDIjdM0GL7ycv/wztfS+sKyMXKA61iWg==
+X-Forward-Email-ID: 682a5a2a78cae75fbd8d46ef
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
+ 149.28.215.223
 X-Forward-Email-Version: 1.0.3
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -47,6 +47,8 @@ X-Report-Abuse-To: abuse@forwardemail.net
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Ulf Hansson <ulf.hansson@linaro.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>
@@ -57,17 +59,19 @@ Cc: Yao Zi <ziyao@disroot.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	Jonas Karlman <jonas@kwiboo.se>,
+	linux-gpio@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 4/9] arm64: dts: rockchip: Add power controller for RK3528
-Date: Sun, 18 May 2025 22:06:51 +0000
-Message-ID: <20250518220707.669515-5-jonas@kwiboo.se>
+Subject: [PATCH 6/9] dt-bindings: gpio: rockchip: Allow use of a power-domain
+Date: Sun, 18 May 2025 22:06:53 +0000
+Message-ID: <20250518220707.669515-7-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250518220707.669515-1-jonas@kwiboo.se>
 References: <20250518220707.669515-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250518_150732_609208_63536600 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20250518_150742_038136_F94BCA00 
+X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,102 +88,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add power-domain nodes for the power controller on RK3528.
+The GPIO controllers in most Rockchip SoCs are part or power domains
+that are always powered on, i.e. PD_BUS or PD_PMU.
 
-Only PD_GPU can fully be powered down. PD_RKVDEC, PD_RKVENC, PD_VO and
-PD_VPU are idle only power domains used by miscellaneous devices.
+On RK3528 the GPIO controllers are spread out among the PD_RKVENC, PD_VO
+and PD_VPU power domains.
+
+Add support to describe power-domains for the GPIO controllers.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
-Because multiple of the miscellaneous device types currently complain
-about the use of a power-domains prop, only PD_GPU is enabled.
----
- arch/arm64/boot/dts/rockchip/rk3528.dtsi | 65 ++++++++++++++++++++++++
- 1 file changed, 65 insertions(+)
+ Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-index b2724c969a76..c13a6a566164 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-@@ -9,6 +9,7 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- #include <dt-bindings/clock/rockchip,rk3528-cru.h>
-+#include <dt-bindings/power/rockchip,rk3528-power.h>
- #include <dt-bindings/reset/rockchip,rk3528-cru.h>
+diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+index d76987ce8e50..bdd83f42615c 100644
+--- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
++++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+@@ -41,6 +41,9 @@ properties:
+   "#interrupt-cells":
+     const: 2
  
- / {
-@@ -371,6 +372,70 @@ ioc_grf: syscon@ff540000 {
- 			reg = <0x0 0xff540000 0x0 0x40000>;
- 		};
- 
-+		pmu: power-management@ff600000 {
-+			compatible = "rockchip,rk3528-pmu", "syscon", "simple-mfd";
-+			reg = <0x0 0xff600000 0x0 0x2000>;
++  power-domains:
++    maxItems: 1
 +
-+			power: power-controller {
-+				compatible = "rockchip,rk3528-power-controller";
-+				#power-domain-cells = <1>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				/* These power domains are grouped by VD_GPU */
-+				power-domain@RK3528_PD_GPU {
-+					reg = <RK3528_PD_GPU>;
-+					clocks = <&cru ACLK_GPU_MALI>,
-+						 <&cru PCLK_GPU_ROOT>;
-+					pm_qos = <&qos_gpu_m0>,
-+						 <&qos_gpu_m1>;
-+					#power-domain-cells = <0>;
-+				};
-+
-+				/* These power domains are grouped by VD_LOGIC */
-+				power-domain@RK3528_PD_RKVDEC {
-+					reg = <RK3528_PD_RKVDEC>;
-+					pm_qos = <&qos_rkvdec>;
-+					#power-domain-cells = <0>;
-+					status = "disabled";
-+				};
-+				power-domain@RK3528_PD_RKVENC {
-+					reg = <RK3528_PD_RKVENC>;
-+					pm_qos = <&qos_rkvenc>;
-+					#power-domain-cells = <0>;
-+					status = "disabled";
-+				};
-+				power-domain@RK3528_PD_VO {
-+					reg = <RK3528_PD_VO>;
-+					pm_qos = <&qos_gmac0>,
-+						 <&qos_hdcp>,
-+						 <&qos_jpegdec>,
-+						 <&qos_rga2_m0ro>,
-+						 <&qos_rga2_m0wo>,
-+						 <&qos_sdmmc0>,
-+						 <&qos_usb2host>,
-+						 <&qos_vdpp>,
-+						 <&qos_vop>;
-+					#power-domain-cells = <0>;
-+					status = "disabled";
-+				};
-+				power-domain@RK3528_PD_VPU {
-+					reg = <RK3528_PD_VPU>;
-+					pm_qos = <&qos_emmc>,
-+						 <&qos_fspi>,
-+						 <&qos_gmac1>,
-+						 <&qos_pcie>,
-+						 <&qos_sdio0>,
-+						 <&qos_sdio1>,
-+						 <&qos_tsp>,
-+						 <&qos_usb3otg>,
-+						 <&qos_vpu>;
-+					#power-domain-cells = <0>;
-+					status = "disabled";
-+				};
-+			};
-+		};
-+
- 		uart0: serial@ff9f0000 {
- 			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
- 			reg = <0x0 0xff9f0000 0x0 0x100>;
+ patternProperties:
+   "^.+-hog(-[0-9]+)?$":
+     type: object
 -- 
 2.49.0
 
