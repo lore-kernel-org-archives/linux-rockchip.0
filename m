@@ -4,52 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 325CDC2D0CD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 08:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5FDFC3DA6D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 08:13:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CRgAYM6OyBnMS/ZFbw0s0eM7ndjMHF0ncQuF1ko+tqw=; b=aG3yELxN2R2f1B
-	qhnU6QthsmmAn++zC35zoZ9qFhswK8pq0SZbs+P78byW3a0FGafVw4eYErE5vldh0iZKCirCsOL+I
-	YzMeeK6Eek6DNlbWnZnkvZ0ZGY0uhCWdFLazjGfIqYdqRPN8ql41Ho1MTj+fsjKF/0MdlI27R2Qj+
-	7VuTRG1b0i7LJtzMo8sKjtS7CzYRJn0XZtpPqgaUIwybmQY3XCTAKbQ9PWHttPjZ43W/PxfaajhRU
-	qhr7YZnoZ6kv5/UR3027y3dj/Hfleb0mxyb3jNcKz9oUfvJOjp9km2GJWWG/OkxHkfoebWE3qAGSD
-	4y93WlJ7gQeXIk5A+rRQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bWFxrKUhkJ3+f9qJkJlhQORog7FrEk3i+XaK7R4Qhic=; b=NSkmhFOrzT+Bra
+	wxxqFrEv84lOjsBnDsSb0NBgI4wpdjAcBNDaHhJNKS7Ds+RF3p5axlYtdQLZVAsukBvJzgczZoptk
+	20Q5fV0rZ8wEya4PSodfkEjP51L9Id0xRHWfmSYBqxRjU9PeNIoLvA1H0Ea1i7Lj98sRpqAGNpa3i
+	9HaFJJBaQ9uWnsBQ8uYJTZSPlVY+CKC1UZUJG9cBfK1aMzGFfc/uHF3H0ladp2WiKi1F+JhiUmeAO
+	reMYdHIZiQnuAvSBXM1v43wQ/3yWdsAgDKED05a58VqzwrNrf++hP6CwPHsPtjD+KdebjRw9cvQsF
+	eZPOnFB3Nyi0A+yj6ZOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGvax-00000008JQq-3iaM;
-	Mon, 19 May 2025 08:11:35 +0000
-Received: from mail.novaplan.pl ([51.195.118.1])
+	id 1uGvcx-00000008JcU-3r7v;
+	Mon, 19 May 2025 08:13:39 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGvTI-00000008IL3-3778
-	for linux-rockchip@lists.infradead.org;
-	Mon, 19 May 2025 08:03:42 +0000
-Received: by mail.novaplan.pl (Postfix, from userid 1002)
-	id F1916A46C2; Mon, 19 May 2025 10:01:33 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=novaplan.pl; s=mail;
-	t=1747641711; bh=jxb0oDMobd7GaIcoqojTSF8ZoNcoVg4kM8ohJkoHKb8=;
-	h=Date:From:To:Subject:From;
-	b=K1PsLvn3DicGp+XwxEO9qVdSk0dCzROmFwwaLLXdTRDqAL++TjSVGInXYugOXWERy
-	 TAa9JNgB9l+z3xKrSn/iH0CBz6QV4zVhqoZZQN/rnACVjMZ7tuipTAIivfSByRpwEA
-	 7X3Yb5hZZ/bYG1MMWmhvdHPfjS/9ZFQQkmkV2YQvdGVyrhuaFiy6+RbLqu5g9SFGrG
-	 3JeEr0VtcaJXw7oxAwQW7E2hy0yzX1boJoAJXlkSQGg9yQMVG/5oJzMGvlUbxlKAVr
-	 3+SzIaIij2mPJzW8NhxQ5ea56+io4Eu9f8J/IS6L3SXcpd2TL8vapUl5kzmmUgrL0d
-	 +KywUFV/aWCow==
-Received: by mail.novaplan.pl for <linux-rockchip@lists.infradead.org>; Mon, 19 May 2025 08:01:10 GMT
-Message-ID: <20250519084500-0.1.lm.1y6bq.0.oyqdv8efho@novaplan.pl>
-Date: Mon, 19 May 2025 08:01:10 GMT
-From: "Adrian Liszka" <adrian.liszka@novaplan.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
-X-Mailer: mail.novaplan.pl
+	id 1uGva2-00000008JLU-0Q6f;
+	Mon, 19 May 2025 08:10:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 319046112E;
+	Mon, 19 May 2025 08:10:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D1DBC4CEE4;
+	Mon, 19 May 2025 08:10:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747642236;
+	bh=YhHucTbG2eUBFPlS1a/JrdQuTRlGHANsway1CBoAGII=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PXVvLU8wR9xtpCsyqffYZGBHL9P576ldjFHHsYkB02iuRcuU1wIau6WK6tAKc1Jbc
+	 dwW6ONMRvBnSV1Y6nA6DgNmmdqkjaEsH7MUAMRe4kHq/Y/l6cARbALXmEvwE+621cc
+	 DWYtVQFAV/CWs+cw2vSP9guVsYrJHOhl1K61RNRGN3N873oqpxEadh1XEdy/8Ve2yl
+	 W70sQ60FEtdheEqROrzfiJoyhoFpo3+h9lHZ8q34f+ciKd3+oLgdjvkWEv+38V82j6
+	 KOQ1uTyoOtKSxOOLDkMb6YWsypgx2dhYc7D5FH+ElDH5V96ckzwukukkDNW2gYSalR
+	 2rHi5N9/nR/0Q==
+Date: Mon, 19 May 2025 10:10:34 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>, 
+	Maxime Chevallier <maxime.chevallier@bootlin.com>, =?utf-8?B?VGjDqW8=?= Lebrun <theo.lebrun@bootlin.com>, 
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Gerald Loacker <gerald.loacker@wolfvision.net>, 
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Markus Elfring <Markus.Elfring@web.de>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Kever Yang <kever.yang@rock-chips.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Collabora Kernel Team <kernel@collabora.com>, 
+	Paul Kocialkowski <paulk@sys-base.io>, Alexander Shiyan <eagle.alexander923@gmail.com>, 
+	Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	Michael Riesch <michael.riesch@wolfvision.net>
+Subject: Re: [PATCH v7 05/14] media: dt-bindings: add rockchip rk3568 mipi
+ csi-2 receiver
+Message-ID: <20250519-amazing-loutish-kudu-af8f47@kuoka>
+References: <20240220-rk3568-vicap-v7-0-7581fd96a33a@collabora.com>
+ <20240220-rk3568-vicap-v7-5-7581fd96a33a@collabora.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250519_010341_465589_DDE97010 
-X-CRM114-Status: UNSURE (   0.54  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20240220-rk3568-vicap-v7-5-7581fd96a33a@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,16 +78,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKQ3p5IGplc3QgbW/FvGxpd2/Fm8SHIG5hd2nEhXphbmlhIHdzcMOzxYJw
-cmFjeSB6IFBhxYRzdHdlbT8KClogY2jEmWNpxIUgcG9yb3ptYXdpYW0geiBvc29ixIUgemFqbXVq
-xIVjxIUgc2nEmSBkemlhxYJhbmlhbWkgendpxIV6YW55bWkgemUgc3ByemVkYcW8xIUuCgpQb21h
-Z2FteSBza3V0ZWN6bmllIHBvenlza2l3YcSHIG5vd3ljaCBrbGllbnTDs3cuCgpaYXByYXN6YW0g
-ZG8ga29udGFrdHUuCgoKWiBwb3pkcm93aWVuaWFtaQpBZHJpYW4gTGlzemthCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Wed, May 14, 2025 at 05:41:06PM GMT, Michael Riesch wrote:
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> +        unevaluatedProperties: false
+> +        description: Input port node. Connect to e.g., a MIPI CSI-2 image sensor.
+> +
+> +        properties:
+> +          endpoint:
+> +            $ref: video-interfaces.yaml#
+> +            unevaluatedProperties: false
+> +
+> +            properties:
+> +              bus-type:
+> +                enum: [1, 4]
+> +
+> +              data-lanes:
+> +                minItems: 1
+> +                maxItems: 4
+> +
+> +            required:
+> +              - bus-type
+> +              - data-lanes
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: Output port connected to a RK3568 VICAP port.
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - phys
+> +  - ports
+> +  - power-domains
+> +  - resets
+
+If there is going to be a new version, please order this the same as in
+properties. Or rather order properties, because this looks alphabetical
+and properties do not.
+
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rk3568-cru.h>
+> +    #include <dt-bindings/power/rk3568-power.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        csi: csi@fdfb0000 {
+> +            compatible = "rockchip,rk3568-mipi-csi";
+> +            reg = <0x0 0xfdfb0000 0x0 0x10000>;
+> +            clocks = <&cru PCLK_CSI2HOST1>;
+> +            phys = <&csi_dphy>;
+> +            power-domains = <&power RK3568_PD_VI>;
+> +            resets = <&cru SRST_P_CSI2HOST1>;
+> +
+> +            ports {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                csi_in: port@0 {
+> +                    reg = <0>;
+
+Make it complete. Missing endpoint with bus-type and data lanes.
+
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
