@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FFF5C3ABDD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 18:10:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88CA6C3ABDD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 19:57:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	In-Reply-To:References:From:Subject:Cc:To:Message-Id:Date:Mime-Version:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WLOGeCYTha/eA17uf3VyHHUQYiWIMtSj60wRfLwSErU=; b=l8wvA7oeHIIe1VD5ExBSr5qtKq
-	sER0Nv3BkzLZ8wdz8K6s02uBE44os/C0FPdOMoMkB+IAykpPz8Z/EDo7aiwvUOdibWP40KTc+wFkl
-	vMn+yjBYwSYVNatJ+Mf0c4Fzs+HnjksWIvkYfAF8lXE+MFmCgNYnpXbVKKIo27e4rOAa3Uo0inRBU
-	0RfY/ScTqe7QUxc1fOmPrtK6K2SNwrFjwGJdslfBBtNvaVJU2kH3dMJzJif9LQjxwz3ppoxpYM2Eu
-	p4JoFpqRFAkCXa9VeJDpEZVD2ucqWwLyHtlWPei0wCkxHuP1jXfEUrTI6vsv0xaLHqBBVqqetovno
-	wuxeJTcg==;
+	bh=MaGGraCGA+cuuBrUpUoUl6FJTSBmw1LcSTPxGP/IDyY=; b=xlj/jaX2A92v69mbpaNOZgyPZ6
+	Ta5JrMI29kgEk5dpjkede6Zhr/SUYatLQij+oYl/McWw8rAMgtzPzVUcfvfQknEmPK+9Bdw5bRx4r
+	QsaHJJaHLxWZyMVKvgAsuYGu2jvzA4pgf8y0K4bH4tr4+5HimF1SzUFKYpzShKzakn0Zu11tiheUb
+	KcjcHoid3y/p+AvRNdRn4oW6ViQIHnkMh6n58muXiV8R9b68TroS2w3dvkNkNSwsoG6zLuSlIRU2q
+	0PXWiJQ59Trk388oviH2BiymgaGingP2ycy3GohtHJ+q3+W7EwKhlGzKJiRaRsyE9ZPb6mPmmaEmV
+	B7wdIr8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH4wS-0000000A66q-29Xj;
-	Mon, 19 May 2025 18:10:24 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uH6bR-0000000AK7f-3LOU;
+	Mon, 19 May 2025 19:56:49 +0000
+Received: from out-177.mta1.migadu.com ([95.215.58.177])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH4G3-00000009xYg-2ehj;
-	Mon, 19 May 2025 17:26:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id AB418A4E564;
-	Mon, 19 May 2025 17:26:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81046C4CEE4;
-	Mon, 19 May 2025 17:26:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747675594;
-	bh=jeQ35J0E940DlPVRh1WHrINnYfAkrW8qW3LdtS5PWcI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pcrmr7k70KAL3T4uH6ZyAZJ6oMoNgXW9g13UAjU1SHsImlYAQomtDSTwuzQ67BDTU
-	 KrNWkNeWmUcRGTDochkJsDhRRnM6VZ9qyOyedUdQ4x5/9mVzJi7VUsP3jit0TD21Kj
-	 UeJzXxaUwOAtaCkZJ0CxxenOTNmzUisva3IlT53mUWkTyGnprt49rx1yXvLJ0Sa3au
-	 IF0HEsTGwCmi0WAVS9O0D4LJFuDtIPtLXKPVHpYTjbONY9SPxLMNpbIhfy9gINHWOJ
-	 w1um3/gCC+99QzgE0r4lWKcUN54thUxBcv7b697Y550p0mF31mmCDS5BPIoMpD5jL0
-	 54iLxHZ/CTkpg==
-Date: Mon, 19 May 2025 18:26:29 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jisheng Zhang <jszhang@kernel.org>, Yao Zi <ziyao@disroot.org>,
-	Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org,
-	linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-mmc@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 5/9] dt-bindings: mmc: sdhci-of-dwcmhsc: Allow use of a
- power-domain
-Message-ID: <20250519-vision-mummify-dce8d0c6b5f9@spud>
-References: <20250518220707.669515-1-jonas@kwiboo.se>
- <20250518220707.669515-6-jonas@kwiboo.se>
- <20250519-caress-traps-f61f0c6067b4@spud>
- <2d0524a9-50ff-4b49-bee9-8158c4c5b88b@kwiboo.se>
-MIME-Version: 1.0
-In-Reply-To: <2d0524a9-50ff-4b49-bee9-8158c4c5b88b@kwiboo.se>
+	id 1uH684-0000000AEMt-2KOx
+	for linux-rockchip@lists.infradead.org;
+	Mon, 19 May 2025 19:26:30 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1747682776;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vuUlAmDRBSytvhFm2XclkPaQ94NRtAHmwr3/FFfPJoQ=;
+	b=XrELmC+UJ8mUJBgVn0/L59hyEE6WUEIdLlJxAukaMJa36AQvXRVSfJQ7tyTFe++Iht1kL2
+	KOuGzDSmObVEt+rA+0upu16kzyZRNyJN1O4KDKHCmtuv87o3Bngik7yxnLg92wzFTqMLoC
+	pZEOnQwapEzKE9JxWoDbgWcjnZsgsajxo0dJzQ3yacnHrmtyJuY0o2dTRNZMZw8tD7edZ5
+	KWM160jF+B1MClkc/2Ez3hxEOSAJ8EqJVwfJamyId1B+69gYH+NiVKPLredqA3WZepO/Z6
+	D5upKgSejAa6cnobzl2VE08ZgKpF6IMmjemySaZ409OTNiXJ/psP8ppZUbWkQw==
+Date: Mon, 19 May 2025 21:26:05 +0200
+Message-Id: <DA0DU2P8UWSV.3U07EFFLKBPXQ@cknow.org>
+To: "Yao Zi" <ziyao@disroot.org>, "Vinod Koul" <vkoul@kernel.org>, "Kishon
+ Vijay Abraham I" <kishon@kernel.org>, "Rob Herring" <robh@kernel.org>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
+ <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Frank Wang"
+ <frank.wang@rock-chips.com>, "Andy Yan" <andy.yan@rock-chips.com>,
+ "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Detlev Casanova"
+ <detlev.casanova@collabora.com>, "Shresth Prasad"
+ <shresthprasad7@gmail.com>, "Chukun Pan" <amadeus@jmu.edu.cn>, "Jonas
+ Karlman" <jonas@kwiboo.se>
+Cc: <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v3 3/5] phy: rockchip: naneng-combphy: Add SoC prefix to
+ register definitions
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+References: <20250519161612.14261-1-ziyao@disroot.org>
+ <20250519161612.14261-4-ziyao@disroot.org>
+In-Reply-To: <20250519161612.14261-4-ziyao@disroot.org>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250519_102635_743364_EB2B51C3 
-X-CRM114-Status: GOOD (  17.96  )
+X-CRM114-CacheID: sfid-20250519_122628_880082_9A10102D 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,59 +75,145 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0850463725498922479=="
+Content-Type: multipart/mixed; boundary="===============2675782730366901956=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+--===============2675782730366901956==
+Content-Type: multipart/signed;
+ boundary=8dd83334b58b8d38d65870f3433f5a85df4823174746e18d7e6cf5265eed;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
---===============0850463725498922479==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="VhHNrynzgDnqDNY7"
-Content-Disposition: inline
-
-
---VhHNrynzgDnqDNY7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--8dd83334b58b8d38d65870f3433f5a85df4823174746e18d7e6cf5265eed
 Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-On Mon, May 19, 2025 at 07:03:37PM +0200, Jonas Karlman wrote:
-> Hi Conor,
->=20
-> On 2025-05-19 18:12, Conor Dooley wrote:
-> > On Sun, May 18, 2025 at 10:06:52PM +0000, Jonas Karlman wrote:
-> >> The commit 7e856617a1f3 ("dt-bindings: mmc: Add support for rk3576
-> >> eMMC") limited use of power-domains to Rockchip RK3576.
-> >>
-> >> Remove the power-domains: false to allow use of power-domains with more
-> >> controllers, e.g. with SDHCI on Rockchip RK3528.
-> >=20
-> > Meanwhile, you're allowing it for all devices, even ones where it is not
-> > valid. I'm not keen on that.
->=20
-> All Rockchip variants technically belong to a power-domain, not just the
-> RK3576. E.g. for RK3588 a PD_NVM0 domain (not described in DT), for
-> RK3568 a VD_LOGIC ALIVE / BIU_SECURE_FLASH idle-only domain, and as
-> shown in this series for the RK3528 the PD_VPU idle-only domain.
+On Mon May 19, 2025 at 6:16 PM CEST, Yao Zi wrote:
+> All supported variants of naneng-combphy follow a register layout
+> similar to the RK3568 variant with some exceptions of SoC-specific
+> registers.
+>
+> Add RK3568 prefix for the common set of registers and the corresponding
+> SoC prefix for SoC-specific registers, making usage of definitions clear
+> and preparing for future COMBPHY variants with a different register
+> layout.
+>
+> Signed-off-by: Yao Zi <ziyao@disroot.org>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  .../rockchip/phy-rockchip-naneng-combphy.c    | 560 +++++++++---------
+>  1 file changed, 288 insertions(+), 272 deletions(-)
+>
+> diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers=
+/phy/rockchip/phy-rockchip-naneng-combphy.c
+> index ce91fb1d5167..1d1c7723584b 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> @@ -21,78 +21,80 @@
+>  #define REF_CLOCK_100MHz		(100 * HZ_PER_MHZ)
+> =20
+>  /* COMBO PHY REG */
+> <snip>
+> -#define PHYREG33_PLL_KVCO_VALUE_RK3576	4
+> +#define RK3568_PHYREG6				0x14
+> +#define RK3568_PHYREG6_PLL_DIV_MASK		GENMASK(7, 6)
+> +#define RK3568_PHYREG6_PLL_DIV_SHIFT		6
+> +#define RK3568_PHYREG6_PLL_DIV_2		1
+> +
+> +#define RK3568_PHYREG7				0x18
+> +#define RK3568_PHYREG7_TX_RTERM_MASK		GENMASK(7, 4)
+> +#define RK3568_PHYREG7_TX_RTERM_SHIFT		4
+> +#define RK3568_PHYREG7_TX_RTERM_50OHM		8
+> +#define RK3568_PHYREG7_RX_RTERM_MASK		GENMASK(3, 0)
+> +#define RK3568_PHYREG7_RX_RTERM_SHIFT		0
+> +#define RK3568_PHYREG7_RX_RTERM_44OHM		15
+> +
+> +#define RK3568_PHYREG8				0x1C
+> +#define RK3568_PHYREG8_SSC_EN			BIT(4)
+> +
+> +#define RK3568_PHYREG11				0x28
+> +#define RK3568_PHYREG11_SU_TRIM_0_7		0xF0
+> +
+> +#define RK3568_PHYREG12				0x2C
+> +#define RK3568_PHYREG12_PLL_LPF_ADJ_VALUE	4
+> +
+> +#define RK3568_PHYREG13				0x30
+> +#define RK3568_PHYREG13_RESISTER_MASK		GENMASK(5, 4)
+> +#define RK3568_PHYREG13_RESISTER_SHIFT		0x4
+> +#define RK3568_PHYREG13_RESISTER_HIGH_Z		3
+> +#define RK3568_PHYREG13_CKRCV_AMP0		BIT(7)
+> +
+> +#define RK3568_PHYREG14				0x34
+> +#define RK3568_PHYREG14_CKRCV_AMP1		BIT(0)
+> +
+> +#define RK3568_PHYREG15				0x38
+> +#define RK3568_PHYREG15_CTLE_EN			BIT(0)
+> +#define RK3568_PHYREG15_SSC_CNT_MASK		GENMASK(7, 6)
+> +#define RK3568_PHYREG15_SSC_CNT_SHIFT		6
+> +#define RK3568_PHYREG15_SSC_CNT_VALUE		1
+> +
+> +#define RK3568_PHYREG16				0x3C
+> +#define RK3568_PHYREG16_SSC_CNT_VALUE		0x5f
+> +
+> +#define RK3568_PHYREG18				0x44
+> +#define RK3568_PHYREG18_PLL_LOOP		0x32
+> +
+> +#define RK3568_PHYREG32				0x7C
+> +#define RK3568_PHYREG32_SSC_MASK		GENMASK(7, 4)
+> +#define RK3568_PHYREG32_SSC_DIR_MASK		GENMASK(5, 4)
+> +#define RK3568_PHYREG32_SSC_DIR_SHIFT		4
+> +#define RK3568_PHYREG32_SSC_UPWARD		0
+> +#define RK3568_PHYREG32_SSC_DOWNWARD		1
+> +#define RK3568_PHYREG32_SSC_OFFSET_MASK	GENMASK(7, 6)
+> +#define RK3568_PHYREG32_SSC_OFFSET_SHIFT	6
+> +#define RK3568_PHYREG32_SSC_OFFSET_500PPM	1
+> +
+> +#define RK3568_PHYREG33				0x80
+> +#define RK3568_PHYREG33_PLL_KVCO_MASK		GENMASK(4, 2)
+> +#define RK3568_PHYREG33_PLL_KVCO_SHIFT		2
+> +#define RK3568_PHYREG33_PLL_KVCO_VALUE		2
+> +#define RK3576_PHYREG33_PLL_KVCO_VALUE		4
+> +
+> +/* RK3588 COMBO PHY registers */
+> +#define RK3588_PHYREG27				0x6C
+> +#define RK3588_PHYREG27_RX_TRIM			0x4C
 
-If they all do, that's fine.
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Would it be better if RK3588_PHYREG* comes after RK3576_PHYREG*?
 
---VhHNrynzgDnqDNY7
+Cheers,
+  Diederik
+
+> +
+> +/* RK3576 COMBO PHY registers */
+> +#define RK3576_PHYREG10				0x24
+> +#define RK3576_PHYREG10_SSC_PCM_MASK		GENMASK(3, 0)
+> +#define RK3576_PHYREG10_SSC_PCM_3500PPM		7
+> +
+> +#define RK3576_PHYREG17				0x40
+> +
+> +#define RK3576_PHYREG21				0x50
+> +#define RK3576_PHYREG21_RX_SQUELCH_VAL		0x0D
+> +
+> +#define RK3576_PHYREG30				0x74
+> =20
+>  struct rockchip_combphy_priv;
+> <snip>
+
+--8dd83334b58b8d38d65870f3433f5a85df4823174746e18d7e6cf5265eed
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaCtpxQAKCRB4tDGHoIJi
-0jpXAQCRjtc6HCVpjbNcGyMo5iiN8END3RXIkfZFHa8UJr5ObAD/WZJ8cGC0JbbN
-IUx+X17xxuwKeFti8XtARnZ15p+IywA=
-=oUeH
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaCuF0QAKCRDXblvOeH7b
+bj5XAP4jFaF15+nLInr2xXsIkAJvJHReF7T6Z5VecsqAGvvQnAEAj3LoVwch8QJx
+Nav7s88qF+lAQivzYzh8QtxQeo+kKA0=
+=HcuL
 -----END PGP SIGNATURE-----
 
---VhHNrynzgDnqDNY7--
+--8dd83334b58b8d38d65870f3433f5a85df4823174746e18d7e6cf5265eed--
 
 
---===============0850463725498922479==
+--===============2675782730366901956==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -139,5 +224,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0850463725498922479==--
+--===============2675782730366901956==--
 
