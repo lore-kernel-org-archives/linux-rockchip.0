@@ -4,99 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B880EC3ABDD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 14:03:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C66AC2D0CD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 16:51:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D2lOBo4CSi2KBXPlU/bF0LiHWa0YGJsiL2xEP1rU+og=; b=B65mwFQb+JdRLn
-	5ZEPpby9ZbcBt0WcRWkBpcWcQl6Rsfp1YbEXksh98cVZr7Gqtnr+XEUHOG6B5hFcZBfSoTPIbHcmf
-	vUT658MY7n2JqHG3iEnXI5kjX0uSPnwAs/eQpX9DFUM39MuR5QwJssVaSg/Ikd3svPaLyxR/f4fZl
-	MAbF6Zc07eCDsA9r+CEWiEHAsJKOXWirY2OdFHvwCpixCKww4H9zSNkZrZo6P1aDTBN5aVcmVOmsz
-	nNRyVCsEP40JBr9oQinIWTuKkIgg8C8vCWp/38TJo9miXEHCOMwl78OZT1eKDInFEkLfGwtM6/Fap
-	JrKODzppPveKvb6ZH6NA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PGe5y2OFAKt02gbxanwCHU1W1RQviFyC2KuLwR1htPo=; b=SDGnkSE9n+slaO1hTWOybF/VjN
+	rK7znlZUWKrUSEBLgIwrli5qi/+GAicos1paMjX5uLmLPRG2k/PcUHpC0C+E5jFOxH7VQQ4fZjfCf
+	97EPuwC8DA1MvaWADZBIYF7tqUqkPnKi5sZb7r2yihuQT0/8e0nNDVzyn2Aw9ASxWrMYHIRqptYBk
+	hkAVI5dk/c4VeT/cMKBCiJ8JKKzc4SH4XMsJKEDR5T8MumhQrTTmD6mZEC5U1nsLzybRXu9GTiWwf
+	EqsVob+eGwg9qcj5KUQIdHzCGmySl4RLeFgQQ4zzJ4jM5DTWPXzDDZu1+SIraIwOQ/xQO5n1s1yBw
+	jDyaXU5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH151-00000009Nq6-27Q6;
-	Mon, 19 May 2025 14:02:59 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uH3hq-00000009sEd-3Fsd;
+	Mon, 19 May 2025 16:51:14 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH0mx-00000009Jr2-4BH9;
-	Mon, 19 May 2025 13:44:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=anhtEfC+aYWJeJvUly60jdWH8rm+sVcW8pcF9vb2eMk=; b=brghd4IJBB86FQK4rduTxNZp0B
-	oEtkE5GL/D6eHQmVcQsQlFUoZpM9R/0a2J2z6zTA4VPHHyi4oxE8SRlI/rbcv4CcWa3v7ytM/prdC
-	dF90OXMEMFViAzJf/f9ldfgPbioiz/jTxf/P1PytKaRA1Fgr8iX9cQtmutwpr4TGpxJc9Ptw08QfB
-	ey8e3PeBWQjSaOxNqXeOmVa0o986E/mczKXGCdTs/akuQoUXodseg4YjngWHBQROsTprHJEmLIMfZ
-	qi/Vuky4+LAFI8OQ8kF2l1BW0rQKyXU1G7Cns1Y3LCnCc9q9Yzxj1fHuNhDoNd14MCVYJ6U+Yhk+z
-	/tY6BdhA==;
-Received: from mail-wm1-f49.google.com ([209.85.128.49])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1uH0mu-00000000dlQ-3UUd;
-	Mon, 19 May 2025 13:44:18 +0000
-Received: by mail-wm1-f49.google.com with SMTP id 5b1f17b1804b1-43cec5cd73bso29562665e9.3;
-        Mon, 19 May 2025 06:44:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747662255; x=1748267055;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=anhtEfC+aYWJeJvUly60jdWH8rm+sVcW8pcF9vb2eMk=;
-        b=j1HSsPUaaq+/BV9a+2PTwoG+9rQ3kTxPPBRw0DmdtLzPk5rzf75TVVOQt/iVHyREUL
-         EkCMS8mDU8wpYV+Op2fadVMUjnhLZezsz68c0uNiCE7YTSZKCWlX+2h0jqmP3MtfnX8l
-         PP0BYsWAixcWRsDJXiZrLCttY+t6zq56u6XwXd9xQO2jgs1N5wORv3PpztoF6c0zmMwS
-         kBeAc3grhNRYZEXyg+BOhELp7ZKBNmvQhyfScYxxl4zMw1sPB8dcULqtlrL2WgSEdOdO
-         rO18m4Anv/Y9mxJ7qovjczkVN2thchu5fgxXPsnAIU9X004opte2iGF4KOjRExH9FPfm
-         /UkA==
-X-Forwarded-Encrypted: i=1; AJvYcCVl6r4HGF1g7GSMUKPyFU0MMk90XOOACV8hGNr84ksXB6bdFfcn41Pxu+eWjAZbxq4MH7caP0lzBVsuTDkROEA/@lists.infradead.org, AJvYcCXh4+Hm7h39uIKGFj8av6L8+bo3CFka5dtyULYTkCaq8KrkZ6eSBS6eQaSUMvB7+GJVWESY21zhXmXlUiDV2FM=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwK2t1/Vc5ZbPi8suGiIm94kwKHmcj1pKv7PkARJzJWtOPhPzl/
-	ujpk3brZZqglMv+shuKnKnHOfvTv5pHa3b0BOf4xcQvDs273i9cA42Cq
-X-Gm-Gg: ASbGncuFuwjdFCrGhUoZ74i/GF2zzUSmy+U7cP/W1oc8Rqo+zpdtri2+fz3sRpT8ls6
-	p7He5P0AdeTL8As6ewl4Ji2FoKriJC6JoonapMoMv4A7DM/0o4OZMY0c5oyJvtO1PrWLNTaRzYT
-	Gnbs+a+7ezcPo5ZneX/nuqUlqKk4KQ4PgZPOYY4Ldts6VCOYE9egFjlchhmo6qeLFNNktNZbQ2U
-	VwI62myRkMh8zNkTQ4Ob+sRiWlO5J0NU+fMjXDZOnjK7iquisCDlGK6l3MAFuTQsQqP0d1ERGCA
-	esoC/TXk+MKH86P6X0oVvl3fktKDTuUnCNEpqVbfTvWhofdqzF0svZhO8jzQF6uDCHCDpTgSkqN
-	DRJJKJXtw3g==
-X-Google-Smtp-Source: AGHT+IEWSM8pwbQ+eewtaNC0pityD3poeCoFUie9piHQXV3RLcUMbKhDhTRCudb5lKuMqUm4AA1Amw==
-X-Received: by 2002:a05:600c:529b:b0:43c:e7ae:4bcf with SMTP id 5b1f17b1804b1-442fd5a347emr129006045e9.0.1747662255196;
-        Mon, 19 May 2025 06:44:15 -0700 (PDT)
-Received: from [10.42.0.1] (cst-prg-46-162.cust.vodafone.cz. [46.135.46.162])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442f8ab839esm171263005e9.17.2025.05.19.06.44.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 May 2025 06:44:14 -0700 (PDT)
-From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Date: Mon, 19 May 2025 15:43:42 +0200
-Subject: [PATCH v4 10/10] arm64: dts: rockchip: enable NPU on ROCK 5B
+	id 1uH34Y-00000009kWK-0JZO;
+	Mon, 19 May 2025 16:10:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9F7724A304;
+	Mon, 19 May 2025 16:10:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57595C4CEE4;
+	Mon, 19 May 2025 16:10:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747671037;
+	bh=8Gfs1ppaN2jlWBdNlgUpnLmCuisZo8JpB/m7e1EOfY4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ux0OAwzsDhwEUzAgkYnF1PBlXBNY6/IoCrn18FzOxHABKpbXVPdqB/F05wVxnJi/L
+	 MlZfa298W9L0UwoSlLPSOqLLs3UmFc3YwUt2v1OKWKNMZNg5Iou6qkVl8aQxWb+zBw
+	 MXuhC6BIghUZOGzqYiW3cVf9Pio9XGDImV+ZL9u665zImRAbTKd/GTrHVtp7O7q/fd
+	 4DkuDjCcYityBt6kZfId6BQhugdI/032oTdCFCPMHpNCzVr0iVYiJCrOssmCc19hIH
+	 m97TkiLH9BUIaPwlKrxlhh7swkUzHiIonUfghBOq63e070hZ5Ige8DSZf+ONWROGT0
+	 KdS9NfvBn+dJA==
+Date: Mon, 19 May 2025 17:10:32 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Yao Zi <ziyao@disroot.org>, Chukun Pan <amadeus@jmu.edu.cn>,
+	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/3] dt-bindings: gpu: mali-utgard: Add Rockchip RK3528
+ compatible
+Message-ID: <20250519-tweak-showplace-264a15576e76@spud>
+References: <20250518225418.682182-1-jonas@kwiboo.se>
+ <20250518225418.682182-2-jonas@kwiboo.se>
 MIME-Version: 1.0
-Message-Id: <20250519-6-10-rocket-v4-10-d6dff6b4c0ae@tomeuvizoso.net>
-References: <20250519-6-10-rocket-v4-0-d6dff6b4c0ae@tomeuvizoso.net>
-In-Reply-To: <20250519-6-10-rocket-v4-0-d6dff6b4c0ae@tomeuvizoso.net>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Oded Gabbay <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Sumit Semwal <sumit.semwal@linaro.org>, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Jeff Hugo <jeff.hugo@oss.qualcomm.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
- Tomeu Vizoso <tomeu@tomeuvizoso.net>
-X-Mailer: b4 0.14.2
+In-Reply-To: <20250518225418.682182-2-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250519_144417_441063_804A0049 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20250519_091038_132541_1CD6674D 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,110 +76,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2182242446507226814=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-The NPU on the ROCK5B uses the same regulator for both the sram-supply
-and the npu's supply. Add this regulator, and enable all the NPU bits.
-Also add the regulator as a domain-supply to the pd_npu power domain.
+--===============2182242446507226814==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="zE6C03YwwDfltbjP"
+Content-Disposition: inline
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
----
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 56 +++++++++++++++++++++++++
- 1 file changed, 56 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index d22068475c5dc6cb885f878f3f527a66edf1ba70..49500f7cbcb14af4919a6c1997e9e53a01d84973 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -316,6 +316,28 @@ regulator-state-mem {
- 	};
- };
- 
-+&i2c1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c1m2_xfer>;
-+	status = "okay";
-+
-+	vdd_npu_s0: regulator@42 {
-+		compatible = "rockchip,rk8602";
-+		reg = <0x42>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_npu_s0";
-+		regulator-boot-on;
-+		regulator-min-microvolt = <550000>;
-+		regulator-max-microvolt = <950000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+};
-+
- &i2c6 {
- 	status = "okay";
- 
-@@ -440,6 +462,10 @@ &pd_gpu {
- 	domain-supply = <&vdd_gpu_s0>;
- };
- 
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	hdmirx {
- 		hdmirx_hpd: hdmirx-5v-detection {
-@@ -500,6 +526,36 @@ &pwm1 {
- 	status = "okay";
- };
- 
-+&rknn_core_top {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_1 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_2 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_top {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_1 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_2 {
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&avcc_1v8_s0>;
- 	status = "okay";
+--zE6C03YwwDfltbjP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
--- 
-2.49.0
+On Sun, May 18, 2025 at 10:54:11PM +0000, Jonas Karlman wrote:
+> Rockchip RK3528 SoC has a Mali-450 MP2. Add a compatible for it.
+>=20
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+
+--zE6C03YwwDfltbjP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaCtX+AAKCRB4tDGHoIJi
+0no8AQDkDSkDoPmDYFg2jj31yNSF71G37/q7Z+IxLIzuuuABUQD+IxyTT4p/MLMI
+izTE/i5XxqvB776nHAIckmO8hCXKmgI=
+=b3XN
+-----END PGP SIGNATURE-----
+
+--zE6C03YwwDfltbjP--
+
+
+--===============2182242446507226814==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2182242446507226814==--
+
