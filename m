@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90628C54754
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC6FC2D0CD
 	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 08:03:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KQSaCddinYp6+nvfThO1/d/6pVn2RzJTAG8b21R4hyQ=; b=PEk8jUouuQzNDP
-	iOngsuUGd/pYpySFbk6vRmOM6Zpp8C1LyJw3/94AS4YRHwElwbWID8FMBB6D7fNegwjzK3S6mDqOD
-	u0DI3HlbiPVkut4Vf/r0NH5QkrBgPdQJ/G/zT1wTvOzPljyYJu3cck08GCvM6yDzE/u1hq8Lqc4wT
-	LtcbZ/eE9l5A7p4Uk0Dw/5sXvS62BUk5KEmn5r635edSaP9iNOIxtJScqpqGDatDU+P2ElNx2k9AM
-	SfppFprPNhor7BE7lN45ntAsBj0CvbssVjm1OaM2jIX9C72oxNAe8LLiglIHLNfnvweYX7oHAk9nN
-	mRBrtHvR9q+FS1PnFvyg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=c+vMsTx/NPgml8e73R87awt+m9sCZvfOIDB02+1DCOM=; b=SmATc7H52XhNac
+	xwksPnAiKV+gIrv5IrYexi095ievnWgAQ3LcTyd3vuU6/Y/jcVguLOxMdTPqoRG6e84nWqmksrpCG
+	DyhaD7VFeJRAlowP5+hcFuzRDl6I6KQRksChjVxlypZ9VXUKzs7v3OwtsraLJCc4yyOh4cT7GcgqY
+	7V4vsenoUzZPY+hLQ4q+LtottHY315u83zv5vDNAFISncEVuAZXUdCBUhoeI2y17xuhSiYxdHJ/kJ
+	zPXy+bTVK9dRk12ban0RvFWnKGuemj+Z+ggntmbKfMFAmcLvivGirdK+clNen+GyiDADxNGgJbw6n
+	7YWM7eDtG/WBjI0PHGsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGvSw-00000008IE6-0IJF;
-	Mon, 19 May 2025 08:03:18 +0000
-Received: from smtpbguseast1.qq.com ([54.204.34.129])
+	id 1uGvSv-00000008IE0-32C4;
+	Mon, 19 May 2025 08:03:17 +0000
+Received: from smtpbg154.qq.com ([15.184.224.54])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGvLE-00000008HCq-1S5F
+	id 1uGvLE-00000008HCE-0jWJ
 	for linux-rockchip@lists.infradead.org;
 	Mon, 19 May 2025 07:55:23 +0000
-X-QQ-mid: esmtpsz16t1747641306te62f64f6
-X-QQ-Originating-IP: KUSRsfj2034q0KpgVunyHgpIxpYlaY5rKNO7LaI+oTw=
+X-QQ-mid: esmtpsz16t1747641302t978062b3
+X-QQ-Originating-IP: Y5+0uhBMb6O+WTaaSJz5+Fz6iYdOQsJ1GOUrFSOcmmk=
 Received: from localhost.localdomain ( [182.245.65.132])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 19 May 2025 15:55:04 +0800 (CST)
+	id ; Mon, 19 May 2025 15:54:59 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 7114426328788078209
+X-BIZMAIL-ID: 12531447371105096942
 EX-QQ-RecipientCnt: 16
 From: Hsun Lai <i@chainsx.cn>
 To: robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org
-Subject: [PATCH v4 1/2] dt-bindings: arm: rockchip: Add Firefly ROC-RK3588S-PC
-Date: Mon, 19 May 2025 15:54:31 +0800
-Message-Id: <20250519075432.2239713-2-i@chainsx.cn>
+Subject: [PATCH v4 0/2] Add support for Firefly Station-M3/ROC-RK3588S-PC
+Date: Mon, 19 May 2025 15:54:30 +0800
+Message-Id: <20250519075432.2239713-1-i@chainsx.cn>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250519075432.2239713-1-i@chainsx.cn>
-References: <20250519075432.2239713-1-i@chainsx.cn>
 MIME-Version: 1.0
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpsz:chainsx.cn:qybglogicsvrsz:qybglogicsvrsz3a-0
-X-QQ-XMAILINFO: NkHKfw09D6j8EPyvTXWfHCJ17T4RuvGSQB6XV42nnTaXO2/1MLd+6+1O
-	emkHoILwa4rMHByVq5cB1N5kE/AFcpCgkimO0u68obBr0q/nW5D71bOX9Gs5J7rHckcXiQH
-	nY22W0GHgDcBPXHlnOforDghwmRGf54uwEODcrCk7mWvZldseBbOr8hQNOwafkrLCSmw7Ml
-	vKU/KzdMEaHI+OiqVQFbBhqNLMULTOXMnKL3HLgYZ+y3dW2N0jRfNNLVbo/8nL/Ub/tduxj
-	JLeHYxkojXIGKtZA7OzP0WqXKyE3RrhxAzAUcstkq6XPuqoTW7bE2PFUIpNm8tdXZJ9mbby
-	GLROwtF3XE8krHHKgZUun4V2Oc5etxGxCaXy1+LPIn5nYxN8JOw9ymx4tKHOAPsyX2TogHu
-	ZO6u2/wisW5Efs3tas9dY8i2mnRJZTF9XnKuR8+Zb+dT8M/SjDMepa4KTHZyh2oJaTwsvPN
-	4yFQRwCPoccE9ONSgJ0ExWRTwcypJ2nL9xYN6z/dnjE1veSTsYqZz3ns6Z9zzgZwix0XFkS
-	PlCCg5X8o4QdCAvX4WJTt1Cc/NRQmlM7x76E4P8mUhB8zzuIt9QJaw7ZWsUivoxI38S7QC+
-	OKP+mO3k6nFDt6tT9T7teo6NoJHax3mdeMwgNfRML44z2qbejg7EGEPIEcJLBa5Sv4xamRy
-	vByrxPf/44+FyC12kR42Phxv/MAZ7tHDE91ffUZvQDb3KMxosF4tvxnaCQ7lh/MuJVHsy9Y
-	43uG9HlX3Toa4uBOKiNLaCb0TyonC6iozoZAbKAXd62LvD1j9X5FZ9nlEJFtt5j7MJHX9tH
-	WpMjmgDTpzC6G5FnWOCNN3WZOAe97p+9a+QBy+dZh+LGVYg3a75/FMe+j/kIKkrQCOpOQ65
-	Ah5D+Uj+mlnW3oluZ2ATSvCNwq40+/AJqXFxTtEQgV9X04RSzCFhBBE9EgZOJAkC5QNd/7M
-	6tvsIUoxSsEnV90aUaXfq+7phdVgO2FfhXZb9OQFoJZCam6thRvm9cAb9l2Iq3Ey4wzsULJ
-	vC/lBSBCjmjhk7BnwK
-X-QQ-XMRINFO: OWPUhxQsoeAVDbp3OJHYyFg=
+X-QQ-XMAILINFO: MjA5tsjrlPcvo1VRqp4hQ176Hre5v7/hVw1eD48NjQvkcT0lbMMbBG1t
+	LI/aOJNENlHwd9iPl/SxuPcRYZPxYRcoMk/NBCs3BcPLFfAgs3rBk3TgSQ6hNGhD3KUyzhJ
+	IxPNW1KdgA6jkVdxIYyJhwZgipus2GO6m3q/LHKW/t4rJXxZrUY6ZzvnJ1Xtz+Mjl94hxcB
+	MmwkSp0+rbnKOiX1JmdFMZqz5j7EHrQa1NrTKIc9UrCRG2uMGNsYcSUS5KybBykkojmZnF3
+	wq0tBhCUErM8FzDmYO7N1S/lK78qerfI/0J8sUEWiwcL0e5yEUc/UpCvNvpXZsSWPHILGgE
+	lFNH6dUQ2zlCCsAOh+TKlwLxsVv+HqvZtZeZQb5Pk5G6KI8g9R6LyKfwYQa91m7HELY+PtW
+	HCu5yGJOf9XGETT0k8zY7fhh2cgnqW8oJLCXIFJ0AvL6+EOKDbRYLAcRWqlz2RVkiqojzIf
+	gw2TOL3qyADFmhWKJpkWBJ9sUiuo90vIs1fuNqrWfJn8FF9eQExXL4vjx3C8G5d3Dw/auSV
+	pF1PdP8wjKAQs7K9IO86dr//7Fb3ngSfSi4JLzc51RWbl0odiz4VZ+UmmQsE489NgPQT1Om
+	5PXcc3r4y38RU35Vf7bv9zA07JuueZcQLCJNTeRbWqyG1T/RpuRl7RndY9WCbGYloem5dhd
+	gKrwMi5hit3b8k6U0umBgTGDihe3GD49lgFYDLQD9mlG4ya+ol7cVgKp7mnlzR6E866b67F
+	/pB4wFfrd/Usek0LGKPU5hXnOs9M2IdW8ao2159XmUIA6Exz3j7x3DpRashzT0P2wSzqtlx
+	4ClQL/3wF6dHqMERJN5SCm3N9P6/rgwPUZEj2pwkfDcMnAMlI+/sxjN1T4X2iM9cGgmnhi+
+	4FIs6vzGoZ9DV5K+6/8+IWZ4zxQGapRRiylZPXiTq759srrP/zcFn7SIWwQG3158jGsLgxS
+	a4k9Vaw21IjgbiOB1vxvMO+cW73nB1qgk61jeflMyHoPH4A==
+X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250519_005520_878409_25915393 
-X-CRM114-Status: UNSURE (   7.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250519_005520_843857_3448AE2A 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,34 +84,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This documents Firefly ROC-RK3588S-PC which is a SBC based on RK3588S SoC.
+This series add support for Firefly Station-M3/ROC-RK3588S-PC.
 
-Link: https://wiki.t-firefly.com/en/Station-M3/index.html
+Info of device can be found at:
+https://wiki.t-firefly.com/en/Station-M3/index.html
 
-Signed-off-by: Hsun Lai <i@chainsx.cn>
----
+Changes in v4:
+- Update the name of the regulator
+- Remove the i2s5_8ch node
 
-(no changes since v1)
+Changes in v3:
+- Update the name of leds
+- Add more cpu nodes
+- Update mdio compatible
+- Fix the order in the node
+- Add the default serial port(uart2)
 
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+Changes in v2:
+- Fix rgmii delays
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 115c3ca43..701d68aca 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -258,6 +258,11 @@ properties:
-           - const: firefly,rk3566-roc-pc
-           - const: rockchip,rk3566
- 
-+      - description: Firefly Station M3
-+        items:
-+          - const: firefly,rk3588s-roc-pc
-+          - const: rockchip,rk3588s
-+
-       - description: Firefly Station P2
-         items:
-           - const: firefly,rk3568-roc-pc
+Changes in v1:
+- Add support for Firefly ROC-RK3588S-PC
+
+Hsun Lai (2):
+  dt-bindings: arm: rockchip: Add Firefly ROC-RK3588S-PC
+  arm64: dts: rockchip: add DTs for Firefly ROC-RK3588S-PC
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3588s-roc-pc.dts      | 922 ++++++++++++++++++
+ 3 files changed, 928 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
+
 -- 
 2.34.1
 
