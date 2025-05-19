@@ -4,55 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB1C0C2D0CD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 06:35:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D47C7C2D0CD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 06:57:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wb7MJ0irAJdDq2ZvnQXwgtNolilBnA3yMpP1ufnXb6Y=; b=C5neXHbsf/nGw1
-	/otSYcZPm7jwqBwP4WYc26QbUauiYEy9l25c0gipfZpTHmCVX3jsW7trtWzaygCSbNemIRf0V3EMo
-	0ReWNMIqWbT9zQbhAKjBiMp559LocfVaEN2dABsUsC6Oi9fI9/Km+PIXs9cyyyL/wleZUdNqfo8Vd
-	pEfxM6qNJMB9ZAV5TIb9/YR1hG+/8l4ZvKK4hG6U5wjUvTs5rt3NwAaAwB/CS4tSlaH8nSwpvEQiT
-	qiLvROFOnlGVmyYDKr9QVCiILPnPNyyVt24WWrafc0q+eeWGFbpl7Y7tdtRc+ahpfq6e6MkA+d/s9
-	04GzNz0TtDatHHJhiAnA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=piNx9J942zituv3BnsJJ6M+dEWsQVPXJeQAqkWY958Q=; b=IFWN15ezpuA6yf
+	D5SL3s7yNvRGK7cnkIysb5WU9N+Rs/ihe7K3+0M4UHYdB60ykIvrbR0Q0QC5KlCDV+0PHZ1SC+Xnq
+	YnL3MT/l9pULFlC2G2OfhpX/YH+S50GAp4UseVKZBqxziPNLqEA/5DDxQUzJpiXhOXB7S+0kNIdWP
+	jv6dKVl6w3S/qL0NYueOSEuil08/noMjTU1xn06yVLFAfL1+buaXr9wN9UUBT5X1L752UG4zXvAvU
+	x3Q5dyL4Eoq6uGMcFyvE2nhA8i6KjtcVLZqNfQ+iry5HioyVArzK1mqS/DsDbBCq7YOMcVvHe1ai0
+	cdbjCaxjTeASb8AcA8bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGu5X-000000087ao-3VGA;
-	Mon, 19 May 2025 06:35:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uGuQf-000000089hR-2Vi9;
+	Mon, 19 May 2025 06:56:53 +0000
+Received: from mail-m3270.qiye.163.com ([220.197.32.70])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGu3U-000000087Fv-0exO;
-	Mon, 19 May 2025 06:32:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3F9B35C0767;
-	Mon, 19 May 2025 06:30:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8470C4CEE4;
-	Mon, 19 May 2025 06:32:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747636375;
-	bh=AWPQKMivdFQ6QmrVDoYacp12BqW2VCLe3IzFWlx64xM=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=ZhMR1wU/X0Ftyf6ohXFPrJXQwhkWzueNT8/spvuGLMldbiR4tGeBv435mgPBDj2fh
-	 h25+ZLh+a/oVqqUA5g0Ccm5c9J0tXEjJbDzOuHGcX5mBwdxO8AhQpofalAsMrAtDuI
-	 BvQN/BzF702ipIzpZ5PzL79fM7+EJ84LPtubD4wh4tD8ilYMNr5f3dWQJEDjpyzcBY
-	 m1aFqPnt6pLdPNgeIhHQD+2RALGu6wORmSWzaoT8REybCVfUD8Tb+snf3J9uDFIM3Z
-	 xyh3qQx4S/YK7PS+R2D1lczDI7cXCS5I1PU6CR1Ve2TSAfIiSA1ftZ1WaugAZ9Mt6H
-	 VqjHQ+lP7NuqA==
-Date: Mon, 19 May 2025 01:32:53 -0500
+	id 1uGuQb-000000089fs-2mzO;
+	Mon, 19 May 2025 06:56:51 +0000
+Received: from [127.0.0.1] (gy-adaptive-ssl-proxy-2-entmail-virt205.gy.ntes [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1587f7efd;
+	Mon, 19 May 2025 14:56:29 +0800 (GMT+08:00)
+Message-ID: <632f9f4d-ec0f-4512-a153-d2abfd9f6841@rock-chips.com>
+Date: Mon, 19 May 2025 14:56:03 +0800
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-In-Reply-To: <20250516-6-10-rocket-v3-1-7051ac9225db@tomeuvizoso.net>
-References: <20250516-6-10-rocket-v3-0-7051ac9225db@tomeuvizoso.net>
- <20250516-6-10-rocket-v3-1-7051ac9225db@tomeuvizoso.net>
-Message-ID: <174742024812.3649303.12389396177218408388.robh@kernel.org>
-Subject: Re: [PATCH v3 01/10] dt-bindings: npu: rockchip,rknn: Add bindings
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/2] dt-bindings: display: rockchip: Convert
+ cdn-dp-rockchip.txt to yaml
+To: Krzysztof Kozlowski <krzk@kernel.org>, Chaoyi Chen <kernel@airkyi.com>,
+ Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Dragan Simic <dsimic@manjaro.org>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250519012632.94-1-kernel@airkyi.com>
+ <20250519012632.94-3-kernel@airkyi.com>
+ <20a565da-296c-4920-b962-e9de9af464d9@kernel.org>
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20a565da-296c-4920-b962-e9de9af464d9@kernel.org>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUoaHlZOQk1KQxlMSktIH0lWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a96e754661603aekunm1587f7efd
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PAg6LBw5FzE0Ii4jMSsLPxlL
+	MxAKCzpVSlVKTE9MTUhMTEJNQk1JVTMWGhIXVRgTGhQCElUYEx4VOwkUGBBWGBMSCwhVGBQWRVlX
+	WRILWUFZTkNVSUlVTFVKSk9ZV1kIAVlBT01NSTcG
+DKIM-Signature: a=rsa-sha256;
+	b=Ka8twIlywrsVRoj8joZuMcW3eNbHX7gY7ch+iU1OHqX+6+7zslvXArine9mFteoTl/apcyN/gJRi0rs4lA8aCiHKEcxuT/dJ7AIfildpe4TLr1kzqyGoOPdKAdnX7qs7DB+0IGfmX/oWgPABuzmw66/CvdowapfJaSyrpYJzR+0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=eU+WAthWlgyCACOPm0qsanWlkKCLEJIXdLnn+HPfHms=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250518_233256_278549_7C5D7DFA 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20250518_235650_228386_5EDEA9A5 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,77 +78,139 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@gmail.com>, Sumit Semwal <sumit.semwal@linaro.org>, Simona Vetter <simona@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jeff Hugo <jeff.hugo@oss.qualcomm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, Oded Gabbay <ogabbay@kernel.org>, linux-kernel@vger.kernel.org, =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
-Message-ID: <20250519063253.Yto69QF-RgqfiWjMZB4xy7k_an1RzX7X-kjxZaFbcv8@z>
+
+Hi Krzysztof,
+
+On 2025/5/19 14:16, Krzysztof Kozlowski wrote:
+> On 19/05/2025 03:26, Chaoyi Chen wrote:
+>> +maintainers:
+>> +  - Andy Yan <andy.yan@rock-chip.com>
+>> +  - Heiko Stuebner <heiko@sntech.de>
+>> +  - Sandy Huang <hjc@rock-chips.com>
+>> +
+>> +allOf:
+>> +  - $ref: /schemas/sound/dai-common.yaml#
+>> +
+>> +properties:
+>> +  compatible:
+>> +    items:
+>> +      - const: rockchip,rk3399-cdn-dp
+>> +
+>> +  reg:
+>> +    maxItems: 1
+>> +
+>> +  clocks:
+>> +    items:
+>> +      - description: DP core work clock
+>> +      - description: APB clock
+>> +      - description: SPDIF interface clock
+>> +      - description: GRF clock
+>> +
+>> +  clock-names:
+>> +    items:
+>> +      - const: core-clk
+>> +      - const: pclk
+>> +      - const: spdif
+>> +      - const: grf
+>> +
+>> +  extcon:
+>> +    $ref: /schemas/types.yaml#/definitions/phandle-array
+>> +    items:
+>> +      maxItems: 1
+>> +    maxItems: 2
+> Instead of this, list the items. Old binding said only "specifier", so
+> this is technically a change, which should be explained in commit msg.
+
+Will fix in v5.
 
 
-On Fri, 16 May 2025 18:53:15 +0200, Tomeu Vizoso wrote:
-> Add the bindings for the Neural Processing Unit IP from Rockchip.
-> 
-> v2:
-> - Adapt to new node structure (one node per core, each with its own
->   IOMMU)
-> - Several misc. fixes from Sebastian Reichel
-> 
-> v3:
-> - Split register block in its constituent subblocks, and only require
->   the ones that the kernel would ever use (Nicolas Frattaroli)
-> - Group supplies (Rob Herring)
-> - Explain the way in which the top core is special (Rob Herring)
-> 
-> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  .../bindings/npu/rockchip,rknn-core.yaml           | 162 +++++++++++++++++++++
->  1 file changed, 162 insertions(+)
-> 
+>
+>> +    description:
+>> +      List of phandle to the extcon device providing the cable state for the DP PHY.
+>> +
+>> +  interrupts:
+>> +    maxItems: 1
+>> +
+>> +  phys:
+>> +    items:
+>> +      maxItems: 1
+>> +    maxItems: 2
+>> +    description: |
+>> +      List of phandle to the PHY device for DP output.
+>> +      RK3399 have two DP-TPYEC PHY, specifying one PHY which want to use,
+>> +      or specify two PHYs here to let the driver determine which PHY to use.
+>
+> You do not allow one phy, so your description is not accurate. OTOH,
+> original binding did not allow two phandles, so that's another change in
+> the binding. You need to document all changes done to the binding in the
+> commit msg.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Oh, the original binding example use two phandles. I think only one PHY 
+can also pass the dtb check here, or maybe I'm missing something else?
 
-yamllint warnings/errors:
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml: properties:reg-names: 'oneOf' conditional failed, one must be fixed:
-	[{'const': 'pc'}, {'const': 'cna'}, {'const': 'core'}] is too long
-	[{'const': 'pc'}, {'const': 'cna'}, {'const': 'core'}] is too short
-	False schema does not allow 3
-	1 was expected
-	3 is greater than the maximum of 2
-	hint: "minItems" is only needed if less than the "items" list length
-	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdab0000 (rockchip,rk3588-rknn-core-top): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3588-rknn-core-top', 'rockchip,rknn-core-top'] is too long
-	'rockchip,rk3588-rknn-core-top' is not one of ['rockchip,rk3588-rknn-core']
-	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdab0000 (rockchip,rk3588-rknn-core-top): reg: [[0, 4255842304, 0, 36864]] is too short
-	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdac0000 (rockchip,rk3588-rknn-core): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3588-rknn-core', 'rockchip,rknn-core'] is too long
-	'rockchip,rk3588-rknn-core' is not one of ['rockchip,rk3588-rknn-core-top']
-	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/npu/rockchip,rknn-core.example.dtb: npu-core@fdac0000 (rockchip,rk3588-rknn-core): reg: [[0, 4255907840, 0, 36864]] is too short
-	from schema $id: http://devicetree.org/schemas/npu/rockchip,rknn-core.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250516-6-10-rocket-v3-1-7051ac9225db@tomeuvizoso.net
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+>
+>> +
+>> +  ports:
+>> +    $ref: /schemas/graph.yaml#/properties/ports
+>> +
+>> +    properties:
+>> +      port@0:
+>> +        $ref: /schemas/graph.yaml#/properties/port
+>> +        description: Input of the CDN DP
+>> +        properties:
+>> +          endpoint@0:
+>> +            description: Connection to the VOPB
+>> +          endpoint@1:
+>> +            description: Connection to the VOPL
+>> +      port@1:
+>> +        $ref: /schemas/graph.yaml#/properties/port
+>> +        description: Output of the CDN DP
+>> +
+>> +    required:
+>> +      - port@0
+>> +      - port@1
+>> +
+>> +  power-domains:
+>> +    maxItems: 1
+>> +
+>> +  resets:
+>> +    maxItems: 4
+>> +
+>> +  reset-names:
+>> +    items:
+>> +      - const: spdif
+>> +      - const: dptx
+>> +      - const: apb
+>> +      - const: core
+>> +
+>> +  rockchip,grf:
+>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>> +    description:
+>> +      Phandle to GRF register to control HPD.
+>> +
+>> +  "#sound-dai-cells":
+>> +    const: 1
+>> +
+>> +required:
+>> +  - compatible
+>> +  - reg
+>> +  - clocks
+>> +  - clock-names
+>> +  - interrupts
+>> +  - phys
+>> +  - ports
+>> +  - resets
+>> +  - reset-names
+>> +  - rockchip,grf
+>
+> sound-dai-cells was a required property.
+>
+Okay, will add in v5.
 
 
 _______________________________________________
