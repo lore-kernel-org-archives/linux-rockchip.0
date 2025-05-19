@@ -4,63 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7007FC2D0CD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 13:54:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 389C4C2D0CD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 13:56:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VWvvJP5UkS87D7ODHfsDsaxglgIfD30r+eQ+n3opxnY=; b=hulWJ3bLuxX1QD
-	5nZ2No8ZZpy5whkAo42KWUrqkVTMeWVlmJShMCIzB8vP8RN/L+dNGxDvUSOMrrmbZXYaTtq19vj7S
-	0ab/ViFNfHazZPeOOfGPm5nt/lTC5v8PhN767I5BOxRIrXz7VKU/nXpLx/D3BtjrIQoss86bCmUF2
-	sh2Vb9ddFNSEQvmor2BuD+ZDWwL/wQyYLHvQkPmCItgn0McwH7s9DHEPkafEXDsOX/9zpbdAjHymz
-	OWjGVumub0VMdnzlWzNHqsvsMIIVRlpypCTGYPfMry03RnfK+3pUWKjK2qK36EWVu6RBvNmu0KNrF
-	33N/nJ5DgSZs1hMiqSkg==;
+	List-Owner; bh=oOuQZ6Vo3dCzBjixtPeEw3OZM1dfPdGAhjSeT2dYOqk=; b=5ANTEo+V2vqBXx
+	m+g96UwZ8zjzFsEniFUuSUcF3VSJG82MfdSZ4GATKfCLnYCjSkhqrIGFuEceanV/mjBpGSwdmyyIY
+	MMVhcYZWYvhiOx8WPnpOChRQIO02fqxvM0OUeCIDKMmSCHLr6whbUIC0WgXfJx2C2IQdYe8eEGG76
+	5ec+oul1Ejm2pwNm6/g83FtTeyHA6bsRoXYcnloPsIaTUFKm8JqjIu4P3X6pYIR2oGD3LgmMsxLf1
+	OaOO2qqDdKFeQRJH3pzExh8kNZ41SREgGX2k2nLfPKIJJMJgGDIkfInEpLVrm8kYpUUEREzMLE6W+
+	d2DVEDokRDK/hvRDaAHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH0wi-00000009MU5-0qXK;
-	Mon, 19 May 2025 13:54:24 +0000
-Received: from mail-wm1-f47.google.com ([209.85.128.47])
+	id 1uH0yj-00000009MvE-16Ag;
+	Mon, 19 May 2025 13:56:29 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH0mo-00000009Jmd-1KKH;
+	id 1uH0mq-00000009JnS-1iM7;
+	Mon, 19 May 2025 13:44:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=M4gj/PvnxaWazjt2eO/kLGc0m1NiQ8nncooFAPNMCEI=; b=ZeM4zTCRdmKQQl+l3hvXDaGUv/
+	okTrc+qQntl4iXDYbtDivEph2R8Mni2sB83McCHZvCTFY15A2PSsXwuN/0IqfWg+tAMlfOu7h3XTb
+	AYidEzTMW5BP91vPwPPHqNSSMmyAzjm4p7URkEQUm3ttebcuTWNBKi7+nMFSYY076RUE7uirAXKj7
+	eLtD3OEAoJppK4mfVABWqc/gyOWpO/oS1wuQj/DVz96eCwgkYqdRxgEmVwzN2cKWflSQ/mK9IFZAa
+	DA/TUJU0dZSwSTfgPYvgHJQP4Jb5oAzhaAp+tnCGFZjjOixasRC4tbZwNBb8ir0NPxvCU7PA+AtUE
+	2eGz6Drg==;
+Received: from mail-wm1-f45.google.com ([209.85.128.45])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1uH0mm-00000000djV-34o2;
 	Mon, 19 May 2025 13:44:11 +0000
-Received: by mail-wm1-f47.google.com with SMTP id 5b1f17b1804b1-43cfba466b2so48053175e9.3;
-        Mon, 19 May 2025 06:44:10 -0700 (PDT)
+Received: by mail-wm1-f45.google.com with SMTP id 5b1f17b1804b1-442ed8a275fso55558665e9.2;
+        Mon, 19 May 2025 06:44:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747662249; x=1748267049;
+        d=1e100.net; s=20230601; t=1747662246; x=1748267046;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=KqFp+5l5a6yetpMAp12Y0zlKsa5LaUPkAqZpxuuNymI=;
-        b=L+4KhtG8+X7/dvNtS6n1/vS9egnAEF+IN+YQ0VvVPAeWATnKKFilHi7YyWGAtpg+fM
-         49XBGWN7FTlob9nhVkTWf3/tgYaiSUmrFdNEzcrjU677t3mJz962liAWuYLWjf7+LNEG
-         zLjS/QZexA4sUl2fabxBxSHkx8JNwicWctMjf2HlX2qGJkBF1P6tL2x2M7w5tRrIsf2M
-         /knGQfaUn3dKaImEyQgZyCv2SySzsJz3sWK5KZLgf9gXNHrPIlWdRzXhihiLwr3Y6Nko
-         hfZvvpFZLW9MLD5Aocqp3i/Xu9bLVMID40KDKGlH3Ol23hE43Q9qSr817ru9i21HkLC/
-         iBqw==
-X-Forwarded-Encrypted: i=1; AJvYcCUjnajVkSubsxwF7gToIYtP4Tx5nkE94sBricrqQDTxqfnegO1PUM6na7OlcWnJcYssHKlgflT+WZKYi0/cot6t@lists.infradead.org, AJvYcCW8KcII7gYMUS7Tie8zSUGkMhKjOG2TY6+yna1OOQkJzzPGb+dBFP9U2iwvL8QztWQQ8x420u/c4GJTVMEta/c=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwcUkYXCYGULjFy2N7Uj3+B0Q8JRKO1t/KzaEQAGvWiQyQVbK4s
-	rX6IuDbDeZvzUmEsbwkEoVlK1C4C+bA/Ir5HztoXN1FYZL6ybg537BvPbIBXt2oK
-X-Gm-Gg: ASbGncvIecd8w6UXzsi3JY5+jZP3PADORGvt4/G0PbTb+fg2G5QDP8AvSOCed+NPpu2
-	Qt28KdMDq90C5OqMCadOPhj8+2BhiyPswaQumgm3veuDW7EJnRt+PbiVS/E3pzmofBmkRRs+vbY
-	GCbIpsOhLYNf4hokcBRyD9ku8t4Ghf6vpgojEtYCZ8vRQAnW/ZbzyqUKfnu8fC1dFZ0DhZsxiq+
-	l/Q6lomCkyjHi4WAG59cmptHvZjKmqiwzOfdpW92oRdcdg52Lngo0qtks+eD3OZMlepKJNA1EY9
-	CXUY5FWuq6WaOUiZQ+n6LRJoZh3GLOS1fhXg/nNFnvp+7k9oRapZJGBnWi50vEZmsqmeH7e/f0u
-	KZ6VOfHyc1g==
-X-Google-Smtp-Source: AGHT+IHQmC+Ay1zv8tZrqEKjUhZpUslJQWcBjfxKCcOKTf/VrA1jjvwQurnZhpExDKNlOcoLWXENYQ==
-X-Received: by 2002:a05:600c:4e4b:b0:43d:45a:8fc1 with SMTP id 5b1f17b1804b1-442fefd77f8mr113411725e9.4.1747662248684;
-        Mon, 19 May 2025 06:44:08 -0700 (PDT)
+        bh=M4gj/PvnxaWazjt2eO/kLGc0m1NiQ8nncooFAPNMCEI=;
+        b=P9n7ZgWywEU+4nEWZTSMZBRNbdE3lahKRybCIdNzeyT87PjppwTi77EB3VVsCMcre2
+         bRM3NpLqbJ6CSesFyiOTNelSU/ngzk5/4GwlXiH8aP4cPO3u9qh4PNa4s04A2s6JcKXr
+         OQYp3HPcE3oT9Xy07vpZyRYJF4GjUO0ZBeNG9t6weKzWZYJQyNV+E4y5MfWrOdi3X7R6
+         2hBocj5izHLXiPg+NMc7e58i4ZH5liZOEeLJAOAg6QwSICTucf/p+BE/vGYR8wBwd5w/
+         QV7mYlL0t6+hP1etCZc+446/W4eHvap/sdTI+YZWuLWhF/3NFGGmLpEiSatkoi8HdJlD
+         HCuQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWFms3H+iiAaqQQMEeYRyp+TDWPDrCs+H1AqdzX/mtvQKzYTzAcwqYOSPfTI6HOWlj1UtK9wKdDyPzh+2J0K7VK@lists.infradead.org, AJvYcCWeeufBr7Yy/5oxctAR4IhUYUdn7eksEvsQ2SBp+RYUbhHhv9kCLkYN+0zeOLf9DW0edwq8qJL7J287t8yqmOQ=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz//OCCeg8Cqif1oZWYKUmZpoWj8fTWz+nmxVV40jTGSKH81lUw
+	6pW0YgCJ4oBrYnVL0DHPhj+NyzLQa3+6wpMOFBFiE04MIwuT0uykpF/6
+X-Gm-Gg: ASbGncvx1tABsp5RFYWeYneZS9fNDQjLfAy/fR8TsOziaJjH9mmkJdd1ISPuBOA4YL0
+	sudE/T9bWAazcqD5O+sYs2lUddBW+11YikwzZjuyK5RTr3tZMOkqOVRE9nR9Wen5Q6QWMUups/5
+	urgIZRR/Jx6MazQd/8ckWGUdWjWGuh1YeYXAs1DXZUSAtACygF40apul8BXbBR6bbWpi1w3rdOy
+	auTsPhLs+gx3Swn/UU8CvxlwiTBmIpy1sGQeqDVk23QCMKteBmF7yhbnd101+ax2oGqH/D9A0RU
+	9rUS7ud9NobL7uEGiq47x6V4xB1M4gdy6Y+m+d+gpapdJUf8tYN6/Bt1OX07o8SOX2DrLKIlPAt
+	Q+tfqX30+OQ==
+X-Google-Smtp-Source: AGHT+IHUoQ861ZJyphR9qPxYKBaRTMT7xuHaLMEbXPx7rlRBMxZuqcGNoKbNzmp5b+R6EWoISvCv9Q==
+X-Received: by 2002:a05:600c:5493:b0:43d:878c:7c40 with SMTP id 5b1f17b1804b1-442fd618f0dmr145965955e9.10.1747662245229;
+        Mon, 19 May 2025 06:44:05 -0700 (PDT)
 Received: from [10.42.0.1] (cst-prg-46-162.cust.vodafone.cz. [46.135.46.162])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442f8ab839esm171263005e9.17.2025.05.19.06.44.07
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442f8ab839esm171263005e9.17.2025.05.19.06.44.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 May 2025 06:44:08 -0700 (PDT)
+        Mon, 19 May 2025 06:44:04 -0700 (PDT)
 From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Date: Mon, 19 May 2025 15:43:38 +0200
-Subject: [PATCH v4 06/10] accel/rocket: Add IOCTL for BO creation
+Date: Mon, 19 May 2025 15:43:36 +0200
+Subject: [PATCH v4 04/10] accel/rocket: Add registers header
 MIME-Version: 1.0
-Message-Id: <20250519-6-10-rocket-v4-6-d6dff6b4c0ae@tomeuvizoso.net>
+Message-Id: <20250519-6-10-rocket-v4-4-d6dff6b4c0ae@tomeuvizoso.net>
 References: <20250519-6-10-rocket-v4-0-d6dff6b4c0ae@tomeuvizoso.net>
 In-Reply-To: <20250519-6-10-rocket-v4-0-d6dff6b4c0ae@tomeuvizoso.net>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -80,9 +94,6 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
  Tomeu Vizoso <tomeu@tomeuvizoso.net>
 X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250519_064410_473526_E1C5E88D 
-X-CRM114-Status: GOOD (  28.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,186 +105,4461 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhpcyB1c2VzIHRoZSBTSE1FTSBEUk0gaGVscGVycyBhbmQgd2UgbWFwIHJpZ2h0IGF3YXkgdG8g
-dGhlIENQVSBhbmQgTlBVCnNpZGVzLCBhcyBhbGwgYnVmZmVycyBhcmUgZXhwZWN0ZWQgdG8gYmUg
-YWNjZXNzZWQgZnJvbSBib3RoLgoKdjI6Ci0gU3luYyB0aGUgSU9NTVVzIGZvciB0aGUgb3RoZXIg
-Y29yZXMgd2hlbiBtYXBwaW5nIGFuZCB1bm1hcHBpbmcuCgp2MzoKLSBNYWtlIHVzZSBvZiBHUEwt
-Mi4wLW9ubHkgZm9yIHRoZSBjb3B5cmlnaHQgbm90aWNlIChKZWZmIEh1Z28pCgpTaWduZWQtb2Zm
-LWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1QHRvbWV1dml6b3NvLm5ldD4KLS0tCiBkcml2ZXJzL2Fj
-Y2VsL3JvY2tldC9NYWtlZmlsZSAgICAgICAgfCAgIDMgKy0KIGRyaXZlcnMvYWNjZWwvcm9ja2V0
-L3JvY2tldF9kZXZpY2UuYyB8ICAgNCArKwogZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2Rl
-dmljZS5oIHwgICAyICsKIGRyaXZlcnMvYWNjZWwvcm9ja2V0L3JvY2tldF9kcnYuYyAgICB8ICAg
-NyArLQogZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2dlbS5jICAgIHwgMTMxICsrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2FjY2VsL3JvY2tldC9yb2NrZXRf
-Z2VtLmggICAgfCAgMjYgKysrKysrKwogaW5jbHVkZS91YXBpL2RybS9yb2NrZXRfYWNjZWwuaCAg
-ICAgIHwgIDQ0ICsrKysrKysrKysrKwogNyBmaWxlcyBjaGFuZ2VkLCAyMTUgaW5zZXJ0aW9ucygr
-KSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2FjY2VsL3JvY2tldC9NYWtl
-ZmlsZSBiL2RyaXZlcnMvYWNjZWwvcm9ja2V0L01ha2VmaWxlCmluZGV4IGFiZGQ3NWYyNDkyZWFl
-Y2Y4YmY1ZTc4YTJhYzE1MGVhMTlhYzNlOTYuLjRkZWVmMjY3ZjllMTIzOGM0ZDhiZDEwOGRjYzhh
-ZmQ5ZGM4YjJiOGYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvYWNjZWwvcm9ja2V0L01ha2VmaWxlCisr
-KyBiL2RyaXZlcnMvYWNjZWwvcm9ja2V0L01ha2VmaWxlCkBAIC01LDQgKzUsNSBAQCBvYmotJChD
-T05GSUdfRFJNX0FDQ0VMX1JPQ0tFVCkgOj0gcm9ja2V0Lm8KIHJvY2tldC15IDo9IFwKIAlyb2Nr
-ZXRfY29yZS5vIFwKIAlyb2NrZXRfZGV2aWNlLm8gXAotCXJvY2tldF9kcnYubworCXJvY2tldF9k
-cnYubyBcCisJcm9ja2V0X2dlbS5vCmRpZmYgLS1naXQgYS9kcml2ZXJzL2FjY2VsL3JvY2tldC9y
-b2NrZXRfZGV2aWNlLmMgYi9kcml2ZXJzL2FjY2VsL3JvY2tldC9yb2NrZXRfZGV2aWNlLmMKaW5k
-ZXggYmI0NjlhYzg3ZDM2MjQ5MTU3ZjRiYTlkOWY3MTA2YWQ1NTgzMDllNC4uZWIxMGJkYTEzZTY5
-NWZiMGM4OWMxZTM0NjQxNDVjZGM2Mzc0OGRlMSAxMDA2NDQKLS0tIGEvZHJpdmVycy9hY2NlbC9y
-b2NrZXQvcm9ja2V0X2RldmljZS5jCisrKyBiL2RyaXZlcnMvYWNjZWwvcm9ja2V0L3JvY2tldF9k
-ZXZpY2UuYwpAQCAtMyw2ICszLDcgQEAKIAogI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgogI2luY2x1
-ZGUgPGxpbnV4L2Rldl9wcmludGsuaD4KKyNpbmNsdWRlIDxsaW51eC9tdXRleC5oPgogCiAjaW5j
-bHVkZSAicm9ja2V0X2RldmljZS5oIgogCkBAIC0zMCwxMCArMzEsMTMgQEAgaW50IHJvY2tldF9k
-ZXZpY2VfaW5pdChzdHJ1Y3Qgcm9ja2V0X2RldmljZSAqcmRldikKIAlpZiAoZXJyKQogCQlyZXR1
-cm4gZXJyOwogCisJbXV0ZXhfaW5pdCgmcmRldi0+aW9tbXVfbG9jayk7CisKIAlyZXR1cm4gMDsK
-IH0KIAogdm9pZCByb2NrZXRfZGV2aWNlX2Zpbmkoc3RydWN0IHJvY2tldF9kZXZpY2UgKnJkZXYp
-CiB7CisJbXV0ZXhfZGVzdHJveSgmcmRldi0+aW9tbXVfbG9jayk7CiAJcm9ja2V0X2NvcmVfZmlu
-aSgmcmRldi0+Y29yZXNbMF0pOwogfQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9hY2NlbC9yb2NrZXQv
-cm9ja2V0X2RldmljZS5oIGIvZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2RldmljZS5oCmlu
-ZGV4IGJhMjMwMWU5MzAyMTIwYWUzMzhjMDdiYWE3ZDEyZGQ5OWNiOTI1YTkuLjczODFhNTE0OGYy
-OTFlZjIxN2MzYjI1NmYwM2Q1YWIzNTcyOTE2ODggMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvYWNjZWwv
-cm9ja2V0L3JvY2tldF9kZXZpY2UuaAorKysgYi9kcml2ZXJzL2FjY2VsL3JvY2tldC9yb2NrZXRf
-ZGV2aWNlLmgKQEAgLTE0LDYgKzE0LDggQEAgc3RydWN0IHJvY2tldF9kZXZpY2UgewogCXN0cnVj
-dCBjbGsgKmNsa19ucHU7CiAJc3RydWN0IGNsayAqcGNsazsKIAorCXN0cnVjdCBtdXRleCBpb21t
-dV9sb2NrOworCiAJc3RydWN0IHJvY2tldF9jb3JlICpjb3JlczsKIAl1bnNpZ25lZCBpbnQgbnVt
-X2NvcmVzOwogfTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvYWNjZWwvcm9ja2V0L3JvY2tldF9kcnYu
-YyBiL2RyaXZlcnMvYWNjZWwvcm9ja2V0L3JvY2tldF9kcnYuYwppbmRleCA4MmY0Y2MzNzRiZmFh
-OTI2NzhkYTc5MTg0OTUzN2Q1MWJiNGMwYmE4Li40ZjM0NmRmMDZiY2RlNWEyNDAyMmJkYjY1MWM0
-MzRkMGM2ZTNjNDY4IDEwMDY0NAotLS0gYS9kcml2ZXJzL2FjY2VsL3JvY2tldC9yb2NrZXRfZHJ2
-LmMKKysrIGIvZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2Rydi5jCkBAIC02LDYgKzYsNyBA
-QAogI2luY2x1ZGUgPGRybS9kcm1fZ2VtLmg+CiAjaW5jbHVkZSA8ZHJtL2RybV9pb2N0bC5oPgog
-I2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KKyNpbmNsdWRlIDxkcm0vcm9ja2V0X2FjY2VsLmg+CiAj
-aW5jbHVkZSA8bGludXgvY2xrLmg+CiAjaW5jbHVkZSA8bGludXgvY29tcG9uZW50Lmg+CiAjaW5j
-bHVkZSA8bGludXgvZG1hLW1hcHBpbmcuaD4KQEAgLTE0LDYgKzE1LDcgQEAKICNpbmNsdWRlIDxs
-aW51eC9wbV9ydW50aW1lLmg+CiAKICNpbmNsdWRlICJyb2NrZXRfZHJ2LmgiCisjaW5jbHVkZSAi
-cm9ja2V0X2dlbS5oIgogCiBzdGF0aWMgaW50CiByb2NrZXRfb3BlbihzdHJ1Y3QgZHJtX2Rldmlj
-ZSAqZGV2LCBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGUpCkBAIC00Miw2ICs0NCw4IEBAIHJvY2tldF9w
-b3N0Y2xvc2Uoc3RydWN0IGRybV9kZXZpY2UgKmRldiwgc3RydWN0IGRybV9maWxlICpmaWxlKQog
-c3RhdGljIGNvbnN0IHN0cnVjdCBkcm1faW9jdGxfZGVzYyByb2NrZXRfZHJtX2RyaXZlcl9pb2N0
-bHNbXSA9IHsKICNkZWZpbmUgUk9DS0VUX0lPQ1RMKG4sIGZ1bmMpIFwKIAlEUk1fSU9DVExfREVG
-X0RSVihST0NLRVRfIyNuLCByb2NrZXRfaW9jdGxfIyNmdW5jLCAwKQorCisJUk9DS0VUX0lPQ1RM
-KENSRUFURV9CTywgY3JlYXRlX2JvKSwKIH07CiAKIERFRklORV9EUk1fQUNDRUxfRk9QUyhyb2Nr
-ZXRfYWNjZWxfZHJpdmVyX2ZvcHMpOwpAQCAtNTEsOSArNTUsMTAgQEAgREVGSU5FX0RSTV9BQ0NF
-TF9GT1BTKHJvY2tldF9hY2NlbF9kcml2ZXJfZm9wcyk7CiAgKiAtIDEuMCAtIGluaXRpYWwgaW50
-ZXJmYWNlCiAgKi8KIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2RyaXZlciByb2NrZXRfZHJtX2Ry
-aXZlciA9IHsKLQkuZHJpdmVyX2ZlYXR1cmVzCT0gRFJJVkVSX0NPTVBVVEVfQUNDRUwsCisJLmRy
-aXZlcl9mZWF0dXJlcwk9IERSSVZFUl9DT01QVVRFX0FDQ0VMIHwgRFJJVkVSX0dFTSwKIAkub3Bl
-bgkJCT0gcm9ja2V0X29wZW4sCiAJLnBvc3RjbG9zZQkJPSByb2NrZXRfcG9zdGNsb3NlLAorCS5n
-ZW1fY3JlYXRlX29iamVjdAk9IHJvY2tldF9nZW1fY3JlYXRlX29iamVjdCwKIAkuaW9jdGxzCQkJ
-PSByb2NrZXRfZHJtX2RyaXZlcl9pb2N0bHMsCiAJLm51bV9pb2N0bHMJCT0gQVJSQVlfU0laRShy
-b2NrZXRfZHJtX2RyaXZlcl9pb2N0bHMpLAogCS5mb3BzCQkJPSAmcm9ja2V0X2FjY2VsX2RyaXZl
-cl9mb3BzLApkaWZmIC0tZ2l0IGEvZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2dlbS5jIGIv
-ZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2dlbS5jCm5ldyBmaWxlIG1vZGUgMTAwNjQ0Cmlu
-ZGV4IDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAuLjhhOGE3MTg1ZGFh
-YzQ3NDAwODEyOTNhYWU2OTQ1YzliMmJiZWIyZGQKLS0tIC9kZXYvbnVsbAorKysgYi9kcml2ZXJz
-L2FjY2VsL3JvY2tldC9yb2NrZXRfZ2VtLmMKQEAgLTAsMCArMSwxMzEgQEAKKy8vIFNQRFgtTGlj
-ZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9ubHkKKy8qIENvcHlyaWdodCAyMDI0LTIwMjUgVG9t
-ZXUgVml6b3NvIDx0b21ldUB0b21ldXZpem9zby5uZXQ+ICovCisKKyNpbmNsdWRlIDxkcm0vZHJt
-X2RldmljZS5oPgorI2luY2x1ZGUgPGRybS9kcm1fdXRpbHMuaD4KKyNpbmNsdWRlIDxkcm0vcm9j
-a2V0X2FjY2VsLmg+CisjaW5jbHVkZSA8bGludXgvZG1hLW1hcHBpbmcuaD4KKyNpbmNsdWRlIDxs
-aW51eC9pb21tdS5oPgorCisjaW5jbHVkZSAicm9ja2V0X2RldmljZS5oIgorI2luY2x1ZGUgInJv
-Y2tldF9nZW0uaCIKKworc3RhdGljIHZvaWQgcm9ja2V0X2dlbV9ib19mcmVlKHN0cnVjdCBkcm1f
-Z2VtX29iamVjdCAqb2JqKQoreworCXN0cnVjdCByb2NrZXRfZGV2aWNlICpyZGV2ID0gdG9fcm9j
-a2V0X2RldmljZShvYmotPmRldik7CisJc3RydWN0IHJvY2tldF9nZW1fb2JqZWN0ICpibyA9IHRv
-X3JvY2tldF9ibyhvYmopOworCXN0cnVjdCBzZ190YWJsZSAqc2d0OworCisJZHJtX1dBUk5fT04o
-b2JqLT5kZXYsIGJvLT5iYXNlLnBhZ2VzX3VzZV9jb3VudCA+IDEpOworCisJbXV0ZXhfbG9jaygm
-cmRldi0+aW9tbXVfbG9jayk7CisKKwlzZ3QgPSBkcm1fZ2VtX3NobWVtX2dldF9wYWdlc19zZ3Qo
-JmJvLT5iYXNlKTsKKworCS8qIFVubWFwIHRoaXMgb2JqZWN0IGZyb20gdGhlIElPTU1VcyBmb3Ig
-Y29yZXMgPiAwICovCisJZm9yICh1bnNpZ25lZCBpbnQgY29yZSA9IDE7IGNvcmUgPCByZGV2LT5u
-dW1fY29yZXM7IGNvcmUrKykgeworCQlzdHJ1Y3QgaW9tbXVfZG9tYWluICpkb21haW4gPSBpb21t
-dV9nZXRfZG9tYWluX2Zvcl9kZXYocmRldi0+Y29yZXNbY29yZV0uZGV2KTsKKwkJc2l6ZV90IHVu
-bWFwcGVkID0gaW9tbXVfdW5tYXAoZG9tYWluLCBzZ3QtPnNnbC0+ZG1hX2FkZHJlc3MsIGJvLT5z
-aXplKTsKKworCQlkcm1fV0FSTl9PTihvYmotPmRldiwgdW5tYXBwZWQgIT0gYm8tPnNpemUpOwor
-CX0KKworCS8qIFRoaXMgd2lsbCB1bm1hcCB0aGUgcGFnZXMgZnJvbSB0aGUgSU9NTVUgbGlua2Vk
-IHRvIGNvcmUgMCAqLworCWRybV9nZW1fc2htZW1fZnJlZSgmYm8tPmJhc2UpOworCisJbXV0ZXhf
-dW5sb2NrKCZyZGV2LT5pb21tdV9sb2NrKTsKK30KKworc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1f
-Z2VtX29iamVjdF9mdW5jcyByb2NrZXRfZ2VtX2Z1bmNzID0geworCS5mcmVlID0gcm9ja2V0X2dl
-bV9ib19mcmVlLAorCS5wcmludF9pbmZvID0gZHJtX2dlbV9zaG1lbV9vYmplY3RfcHJpbnRfaW5m
-bywKKwkucGluID0gZHJtX2dlbV9zaG1lbV9vYmplY3RfcGluLAorCS51bnBpbiA9IGRybV9nZW1f
-c2htZW1fb2JqZWN0X3VucGluLAorCS5nZXRfc2dfdGFibGUgPSBkcm1fZ2VtX3NobWVtX29iamVj
-dF9nZXRfc2dfdGFibGUsCisJLnZtYXAgPSBkcm1fZ2VtX3NobWVtX29iamVjdF92bWFwLAorCS52
-dW5tYXAgPSBkcm1fZ2VtX3NobWVtX29iamVjdF92dW5tYXAsCisJLm1tYXAgPSBkcm1fZ2VtX3No
-bWVtX29iamVjdF9tbWFwLAorCS52bV9vcHMgPSAmZHJtX2dlbV9zaG1lbV92bV9vcHMsCit9Owor
-CitzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKnJvY2tldF9nZW1fY3JlYXRlX29iamVjdChzdHJ1Y3Qg
-ZHJtX2RldmljZSAqZGV2LCBzaXplX3Qgc2l6ZSkKK3sKKwlzdHJ1Y3Qgcm9ja2V0X2dlbV9vYmpl
-Y3QgKm9iajsKKworCW9iaiA9IGt6YWxsb2Moc2l6ZW9mKCpvYmopLCBHRlBfS0VSTkVMKTsKKwlp
-ZiAoIW9iaikKKwkJcmV0dXJuIEVSUl9QVFIoLUVOT01FTSk7CisKKwlvYmotPmJhc2UuYmFzZS5m
-dW5jcyA9ICZyb2NrZXRfZ2VtX2Z1bmNzOworCisJcmV0dXJuICZvYmotPmJhc2UuYmFzZTsKK30K
-KworaW50IHJvY2tldF9pb2N0bF9jcmVhdGVfYm8oc3RydWN0IGRybV9kZXZpY2UgKmRldiwgdm9p
-ZCAqZGF0YSwgc3RydWN0IGRybV9maWxlICpmaWxlKQoreworCXN0cnVjdCBkcm1fcm9ja2V0X2Ny
-ZWF0ZV9ibyAqYXJncyA9IGRhdGE7CisJc3RydWN0IHJvY2tldF9kZXZpY2UgKnJkZXYgPSB0b19y
-b2NrZXRfZGV2aWNlKGRldik7CisJc3RydWN0IGRybV9nZW1fc2htZW1fb2JqZWN0ICpzaG1lbV9v
-Ymo7CisJc3RydWN0IHJvY2tldF9nZW1fb2JqZWN0ICpya3Rfb2JqOworCXN0cnVjdCBkcm1fZ2Vt
-X29iamVjdCAqZ2VtX29iajsKKwlzdHJ1Y3Qgc2dfdGFibGUgKnNndDsKKwlpbnQgcmV0OworCisJ
-c2htZW1fb2JqID0gZHJtX2dlbV9zaG1lbV9jcmVhdGUoZGV2LCBhcmdzLT5zaXplKTsKKwlpZiAo
-SVNfRVJSKHNobWVtX29iaikpCisJCXJldHVybiBQVFJfRVJSKHNobWVtX29iaik7CisKKwlnZW1f
-b2JqID0gJnNobWVtX29iai0+YmFzZTsKKwlya3Rfb2JqID0gdG9fcm9ja2V0X2JvKGdlbV9vYmop
-OworCisJcmt0X29iai0+c2l6ZSA9IGFyZ3MtPnNpemU7CisJcmt0X29iai0+b2Zmc2V0ID0gMDsK
-KworCXJldCA9IGRybV9nZW1faGFuZGxlX2NyZWF0ZShmaWxlLCBnZW1fb2JqLCAmYXJncy0+aGFu
-ZGxlKTsKKwlkcm1fZ2VtX29iamVjdF9wdXQoZ2VtX29iaik7CisJaWYgKHJldCkKKwkJZ290byBl
-cnI7CisKKwltdXRleF9sb2NrKCZyZGV2LT5pb21tdV9sb2NrKTsKKworCS8qIFRoaXMgd2lsbCBt
-YXAgdGhlIHBhZ2VzIHRvIHRoZSBJT01NVSBsaW5rZWQgdG8gY29yZSAwICovCisJc2d0ID0gZHJt
-X2dlbV9zaG1lbV9nZXRfcGFnZXNfc2d0KHNobWVtX29iaik7CisJaWYgKElTX0VSUihzZ3QpKSB7
-CisJCXJldCA9IFBUUl9FUlIoc2d0KTsKKwkJZ290byBlcnJfdW5sb2NrOworCX0KKworCS8qIE1h
-cCB0aGUgcGFnZXMgdG8gdGhlIElPTU1VcyBsaW5rZWQgdG8gdGhlIG90aGVyIGNvcmVzLCBzbyBh
-bGwgY29yZXMgY2FuIGFjY2VzcyB0aGlzIEJPICovCisJZm9yICh1bnNpZ25lZCBpbnQgY29yZSA9
-IDE7IGNvcmUgPCByZGV2LT5udW1fY29yZXM7IGNvcmUrKykgeworCQlyZXQgPSBpb21tdV9tYXBf
-c2d0YWJsZShpb21tdV9nZXRfZG9tYWluX2Zvcl9kZXYocmRldi0+Y29yZXNbY29yZV0uZGV2KSwK
-KwkJCQkJc2d0LT5zZ2wtPmRtYV9hZGRyZXNzLAorCQkJCQlzZ3QsCisJCQkJCUlPTU1VX1JFQUQg
-fCBJT01NVV9XUklURSk7CisJCWlmIChyZXQgPCAwIHx8IHJldCA8IGFyZ3MtPnNpemUpIHsKKwkJ
-CWRybV9lcnIoZGV2LCAiZmFpbGVkIHRvIG1hcCBidWZmZXI6IHNpemU9JWQgcmVxdWVzdF9zaXpl
-PSV1XG4iLAorCQkJCXJldCwgYXJncy0+c2l6ZSk7CisJCQlyZXQgPSAtRU5PTUVNOworCQkJZ290
-byBlcnJfdW5sb2NrOworCQl9CisKKwkJLyogaW9tbXVfbWFwX3NndGFibGUgbWlnaHQgaGF2ZSBh
-bGlnbmVkIHRoZSBzaXplICovCisJCXJrdF9vYmotPnNpemUgPSByZXQ7CisKKwkJZG1hX3N5bmNf
-c2d0YWJsZV9mb3JfZGV2aWNlKHJkZXYtPmNvcmVzW2NvcmVdLmRldiwgc2htZW1fb2JqLT5zZ3Qs
-CisJCQkJCSAgICBETUFfQklESVJFQ1RJT05BTCk7CisJfQorCisJbXV0ZXhfdW5sb2NrKCZyZGV2
-LT5pb21tdV9sb2NrKTsKKworCWFyZ3MtPm9mZnNldCA9IGRybV92bWFfbm9kZV9vZmZzZXRfYWRk
-cigmZ2VtX29iai0+dm1hX25vZGUpOworCWFyZ3MtPmRtYV9hZGRyZXNzID0gc2dfZG1hX2FkZHJl
-c3Moc2htZW1fb2JqLT5zZ3QtPnNnbCk7CisKKwlyZXR1cm4gMDsKKworZXJyX3VubG9jazoKKwlt
-dXRleF91bmxvY2soJnJkZXYtPmlvbW11X2xvY2spOworZXJyOgorCWRybV9nZW1fc2htZW1fb2Jq
-ZWN0X2ZyZWUoZ2VtX29iaik7CisKKwlyZXR1cm4gcmV0OworfQpkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9hY2NlbC9yb2NrZXQvcm9ja2V0X2dlbS5oIGIvZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0
-X2dlbS5oCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw
-MDAwMDAwMDAwMDAwMDAwMDAuLjQxNDk3NTU0MzY2OTYxY2ZlMThjZjZjN2U5M2FiMWU0ZTVkYzE4
-ODYKLS0tIC9kZXYvbnVsbAorKysgYi9kcml2ZXJzL2FjY2VsL3JvY2tldC9yb2NrZXRfZ2VtLmgK
-QEAgLTAsMCArMSwyNiBAQAorLyogU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb25s
-eSAqLworLyogQ29weXJpZ2h0IDIwMjQtMjAyNSBUb21ldSBWaXpvc28gPHRvbWV1QHRvbWV1dml6
-b3NvLm5ldD4gKi8KKworI2lmbmRlZiBfX1JPQ0tFVF9HRU1fSF9fCisjZGVmaW5lIF9fUk9DS0VU
-X0dFTV9IX18KKworI2luY2x1ZGUgPGRybS9kcm1fZ2VtX3NobWVtX2hlbHBlci5oPgorCitzdHJ1
-Y3Qgcm9ja2V0X2dlbV9vYmplY3QgeworCXN0cnVjdCBkcm1fZ2VtX3NobWVtX29iamVjdCBiYXNl
-OworCisJc2l6ZV90IHNpemU7CisJdTMyIG9mZnNldDsKK307CisKK3N0cnVjdCBkcm1fZ2VtX29i
-amVjdCAqcm9ja2V0X2dlbV9jcmVhdGVfb2JqZWN0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsIHNp
-emVfdCBzaXplKTsKKworaW50IHJvY2tldF9pb2N0bF9jcmVhdGVfYm8oc3RydWN0IGRybV9kZXZp
-Y2UgKmRldiwgdm9pZCAqZGF0YSwgc3RydWN0IGRybV9maWxlICpmaWxlKTsKKworc3RhdGljIGlu
-bGluZQorc3RydWN0ICByb2NrZXRfZ2VtX29iamVjdCAqdG9fcm9ja2V0X2JvKHN0cnVjdCBkcm1f
-Z2VtX29iamVjdCAqb2JqKQoreworCXJldHVybiBjb250YWluZXJfb2YodG9fZHJtX2dlbV9zaG1l
-bV9vYmoob2JqKSwgc3RydWN0IHJvY2tldF9nZW1fb2JqZWN0LCBiYXNlKTsKK30KKworI2VuZGlm
-CmRpZmYgLS1naXQgYS9pbmNsdWRlL3VhcGkvZHJtL3JvY2tldF9hY2NlbC5oIGIvaW5jbHVkZS91
-YXBpL2RybS9yb2NrZXRfYWNjZWwuaApuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAw
-MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwLi45NTcyMDcwMmI3YzQ0MTNkNzJiODlj
-MWYwZjU5YWJiMjJkYzhjNmIzCi0tLSAvZGV2L251bGwKKysrIGIvaW5jbHVkZS91YXBpL2RybS9y
-b2NrZXRfYWNjZWwuaApAQCAtMCwwICsxLDQ0IEBACisvKiBTUERYLUxpY2Vuc2UtSWRlbnRpZmll
-cjogTUlUICovCisvKgorICogQ29weXJpZ2h0IMKpIDIwMjQgVG9tZXUgVml6b3NvCisgKi8KKyNp
-Zm5kZWYgX19EUk1fVUFQSV9ST0NLRVRfQUNDRUxfSF9fCisjZGVmaW5lIF9fRFJNX1VBUElfUk9D
-S0VUX0FDQ0VMX0hfXworCisjaW5jbHVkZSAiZHJtLmgiCisKKyNpZiBkZWZpbmVkKF9fY3BsdXNw
-bHVzKQorZXh0ZXJuICJDIiB7CisjZW5kaWYKKworI2RlZmluZSBEUk1fUk9DS0VUX0NSRUFURV9C
-TwkJCTB4MDAKKworI2RlZmluZSBEUk1fSU9DVExfUk9DS0VUX0NSRUFURV9CTwkJRFJNX0lPV1Io
-RFJNX0NPTU1BTkRfQkFTRSArIERSTV9ST0NLRVRfQ1JFQVRFX0JPLCBzdHJ1Y3QgZHJtX3JvY2tl
-dF9jcmVhdGVfYm8pCisKKy8qKgorICogc3RydWN0IGRybV9yb2NrZXRfY3JlYXRlX2JvIC0gaW9j
-dGwgYXJndW1lbnQgZm9yIGNyZWF0aW5nIFJvY2tldCBCT3MuCisgKgorICovCitzdHJ1Y3QgZHJt
-X3JvY2tldF9jcmVhdGVfYm8geworCS8qKiBJbnB1dDogU2l6ZSBvZiB0aGUgcmVxdWVzdGVkIEJP
-LiAqLworCV9fdTMyIHNpemU7CisKKwkvKiogT3V0cHV0OiBHRU0gaGFuZGxlIGZvciB0aGUgQk8u
-ICovCisJX191MzIgaGFuZGxlOworCisJLyoqCisJICogT3V0cHV0OiBETUEgYWRkcmVzcyBmb3Ig
-dGhlIEJPIGluIHRoZSBOUFUgYWRkcmVzcyBzcGFjZS4gIFRoaXMgYWRkcmVzcworCSAqIGlzIHBy
-aXZhdGUgdG8gdGhlIERSTSBmZCBhbmQgaXMgdmFsaWQgZm9yIHRoZSBsaWZldGltZSBvZiB0aGUg
-R0VNCisJICogaGFuZGxlLgorCSAqLworCV9fdTY0IGRtYV9hZGRyZXNzOworCisJLyoqIE91dHB1
-dDogT2Zmc2V0IGludG8gdGhlIGRybSBub2RlIHRvIHVzZSBmb3Igc3Vic2VxdWVudCBtbWFwIGNh
-bGwuICovCisJX191NjQgb2Zmc2V0OworfTsKKworI2lmIGRlZmluZWQoX19jcGx1c3BsdXMpCit9
-CisjZW5kaWYKKworI2VuZGlmIC8qIF9fRFJNX1VBUElfUk9DS0VUX0FDQ0VMX0hfXyAqLwoKLS0g
-CjIuNDkuMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+A XML file was generated with the data from the TRM, and then this
+header was generated from it.
+
+The canonical location for the XML file is the Mesa3D repository.
+
+v3:
+- Make use of GPL-2.0-only for the copyright notice (Jeff Hugo)
+
+Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+---
+ drivers/accel/rocket/rocket_registers.h | 4425 +++++++++++++++++++++++++++++++
+ 1 file changed, 4425 insertions(+)
+
+diff --git a/drivers/accel/rocket/rocket_registers.h b/drivers/accel/rocket/rocket_registers.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..c50f7f96930ebb5ce1d996551acb40d5b913556c
+--- /dev/null
++++ b/drivers/accel/rocket/rocket_registers.h
+@@ -0,0 +1,4425 @@
++/* SPDX-License-Identifier: GPL-2.0-only OR MIT */
++
++#ifndef __ROCKET_REGISTERS_XML__
++#define __ROCKET_REGISTERS_XML__
++
++/* Autogenerated file, DO NOT EDIT manually!
++
++This file was generated by the rules-ng-ng gen_header.py tool in this git repository:
++http://gitlab.freedesktop.org/mesa/mesa/
++git clone https://gitlab.freedesktop.org/mesa/mesa.git
++
++The rules-ng-ng source files this header was generated from are:
++
++- /home/tomeu/src/mesa/src/gallium/drivers/rocket/registers.xml (  60076 bytes, from Wed Jun 12 10:02:25 2024)
++
++Copyright (C) 2024-2025 by the following authors:
++- Tomeu Vizoso <tomeu@tomeuvizoso.net> Tomeu Vizoso
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++"Software"), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice (including the
++next paragraph) shall be included in all copies or substantial
++portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
++IN NO EVENT SHALL THE COPYRIGHT OWNER(S) AND/OR ITS SUPPLIERS BE
++LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++
++*/
++
++#define REG_PC_VERSION						0x00000000
++#define PC_VERSION_VERSION__MASK				0xffffffff
++#define PC_VERSION_VERSION__SHIFT				0
++static inline uint32_t PC_VERSION_VERSION(uint32_t val)
++{
++	return ((val) << PC_VERSION_VERSION__SHIFT) & PC_VERSION_VERSION__MASK;
++}
++
++#define REG_PC_VERSION_NUM					0x00000004
++#define PC_VERSION_NUM_VERSION_NUM__MASK			0xffffffff
++#define PC_VERSION_NUM_VERSION_NUM__SHIFT			0
++static inline uint32_t PC_VERSION_NUM_VERSION_NUM(uint32_t val)
++{
++	return ((val) << PC_VERSION_NUM_VERSION_NUM__SHIFT) & PC_VERSION_NUM_VERSION_NUM__MASK;
++}
++
++#define REG_PC_OPERATION_ENABLE					0x00000008
++#define PC_OPERATION_ENABLE_RESERVED_0__MASK			0xfffffffe
++#define PC_OPERATION_ENABLE_RESERVED_0__SHIFT			1
++static inline uint32_t PC_OPERATION_ENABLE_RESERVED_0(uint32_t val)
++{
++	return ((val) << PC_OPERATION_ENABLE_RESERVED_0__SHIFT) & PC_OPERATION_ENABLE_RESERVED_0__MASK;
++}
++#define PC_OPERATION_ENABLE_OP_EN__MASK				0x00000001
++#define PC_OPERATION_ENABLE_OP_EN__SHIFT			0
++static inline uint32_t PC_OPERATION_ENABLE_OP_EN(uint32_t val)
++{
++	return ((val) << PC_OPERATION_ENABLE_OP_EN__SHIFT) & PC_OPERATION_ENABLE_OP_EN__MASK;
++}
++
++#define REG_PC_BASE_ADDRESS					0x00000010
++#define PC_BASE_ADDRESS_PC_SOURCE_ADDR__MASK			0xfffffff0
++#define PC_BASE_ADDRESS_PC_SOURCE_ADDR__SHIFT			4
++static inline uint32_t PC_BASE_ADDRESS_PC_SOURCE_ADDR(uint32_t val)
++{
++	return ((val) << PC_BASE_ADDRESS_PC_SOURCE_ADDR__SHIFT) & PC_BASE_ADDRESS_PC_SOURCE_ADDR__MASK;
++}
++#define PC_BASE_ADDRESS_RESERVED_0__MASK			0x0000000e
++#define PC_BASE_ADDRESS_RESERVED_0__SHIFT			1
++static inline uint32_t PC_BASE_ADDRESS_RESERVED_0(uint32_t val)
++{
++	return ((val) << PC_BASE_ADDRESS_RESERVED_0__SHIFT) & PC_BASE_ADDRESS_RESERVED_0__MASK;
++}
++#define PC_BASE_ADDRESS_PC_SEL__MASK				0x00000001
++#define PC_BASE_ADDRESS_PC_SEL__SHIFT				0
++static inline uint32_t PC_BASE_ADDRESS_PC_SEL(uint32_t val)
++{
++	return ((val) << PC_BASE_ADDRESS_PC_SEL__SHIFT) & PC_BASE_ADDRESS_PC_SEL__MASK;
++}
++
++#define REG_PC_REGISTER_AMOUNTS					0x00000014
++#define PC_REGISTER_AMOUNTS_RESERVED_0__MASK			0xffff0000
++#define PC_REGISTER_AMOUNTS_RESERVED_0__SHIFT			16
++static inline uint32_t PC_REGISTER_AMOUNTS_RESERVED_0(uint32_t val)
++{
++	return ((val) << PC_REGISTER_AMOUNTS_RESERVED_0__SHIFT) & PC_REGISTER_AMOUNTS_RESERVED_0__MASK;
++}
++#define PC_REGISTER_AMOUNTS_PC_DATA_AMOUNT__MASK		0x0000ffff
++#define PC_REGISTER_AMOUNTS_PC_DATA_AMOUNT__SHIFT		0
++static inline uint32_t PC_REGISTER_AMOUNTS_PC_DATA_AMOUNT(uint32_t val)
++{
++	return ((val) << PC_REGISTER_AMOUNTS_PC_DATA_AMOUNT__SHIFT) & PC_REGISTER_AMOUNTS_PC_DATA_AMOUNT__MASK;
++}
++
++#define REG_PC_INTERRUPT_MASK					0x00000020
++#define PC_INTERRUPT_MASK_RESERVED_0__MASK			0xffffc000
++#define PC_INTERRUPT_MASK_RESERVED_0__SHIFT			14
++static inline uint32_t PC_INTERRUPT_MASK_RESERVED_0(uint32_t val)
++{
++	return ((val) << PC_INTERRUPT_MASK_RESERVED_0__SHIFT) & PC_INTERRUPT_MASK_RESERVED_0__MASK;
++}
++#define PC_INTERRUPT_MASK_DMA_WRITE_ERROR			0x00002000
++#define PC_INTERRUPT_MASK_DMA_READ_ERROR			0x00001000
++#define PC_INTERRUPT_MASK_PPU_1					0x00000800
++#define PC_INTERRUPT_MASK_PPU_0					0x00000400
++#define PC_INTERRUPT_MASK_DPU_1					0x00000200
++#define PC_INTERRUPT_MASK_DPU_0					0x00000100
++#define PC_INTERRUPT_MASK_CORE_1				0x00000080
++#define PC_INTERRUPT_MASK_CORE_0				0x00000040
++#define PC_INTERRUPT_MASK_CNA_CSC_1				0x00000020
++#define PC_INTERRUPT_MASK_CNA_CSC_0				0x00000010
++#define PC_INTERRUPT_MASK_CNA_WEIGHT_1				0x00000008
++#define PC_INTERRUPT_MASK_CNA_WEIGHT_0				0x00000004
++#define PC_INTERRUPT_MASK_CNA_FEATURE_1				0x00000002
++#define PC_INTERRUPT_MASK_CNA_FEATURE_0				0x00000001
++
++#define REG_PC_INTERRUPT_CLEAR					0x00000024
++#define PC_INTERRUPT_CLEAR_RESERVED_0__MASK			0xffffc000
++#define PC_INTERRUPT_CLEAR_RESERVED_0__SHIFT			14
++static inline uint32_t PC_INTERRUPT_CLEAR_RESERVED_0(uint32_t val)
++{
++	return ((val) << PC_INTERRUPT_CLEAR_RESERVED_0__SHIFT) & PC_INTERRUPT_CLEAR_RESERVED_0__MASK;
++}
++#define PC_INTERRUPT_CLEAR_DMA_WRITE_ERROR			0x00002000
++#define PC_INTERRUPT_CLEAR_DMA_READ_ERROR			0x00001000
++#define PC_INTERRUPT_CLEAR_PPU_1				0x00000800
++#define PC_INTERRUPT_CLEAR_PPU_0				0x00000400
++#define PC_INTERRUPT_CLEAR_DPU_1				0x00000200
++#define PC_INTERRUPT_CLEAR_DPU_0				0x00000100
++#define PC_INTERRUPT_CLEAR_CORE_1				0x00000080
++#define PC_INTERRUPT_CLEAR_CORE_0				0x00000040
++#define PC_INTERRUPT_CLEAR_CNA_CSC_1				0x00000020
++#define PC_INTERRUPT_CLEAR_CNA_CSC_0				0x00000010
++#define PC_INTERRUPT_CLEAR_CNA_WEIGHT_1				0x00000008
++#define PC_INTERRUPT_CLEAR_CNA_WEIGHT_0				0x00000004
++#define PC_INTERRUPT_CLEAR_CNA_FEATURE_1			0x00000002
++#define PC_INTERRUPT_CLEAR_CNA_FEATURE_0			0x00000001
++
++#define REG_PC_INTERRUPT_STATUS					0x00000028
++#define PC_INTERRUPT_STATUS_RESERVED_0__MASK			0xffffc000
++#define PC_INTERRUPT_STATUS_RESERVED_0__SHIFT			14
++static inline uint32_t PC_INTERRUPT_STATUS_RESERVED_0(uint32_t val)
++{
++	return ((val) << PC_INTERRUPT_STATUS_RESERVED_0__SHIFT) & PC_INTERRUPT_STATUS_RESERVED_0__MASK;
++}
++#define PC_INTERRUPT_STATUS_DMA_WRITE_ERROR			0x00002000
++#define PC_INTERRUPT_STATUS_DMA_READ_ERROR			0x00001000
++#define PC_INTERRUPT_STATUS_PPU_1				0x00000800
++#define PC_INTERRUPT_STATUS_PPU_0				0x00000400
++#define PC_INTERRUPT_STATUS_DPU_1				0x00000200
++#define PC_INTERRUPT_STATUS_DPU_0				0x00000100
++#define PC_INTERRUPT_STATUS_CORE_1				0x00000080
++#define PC_INTERRUPT_STATUS_CORE_0				0x00000040
++#define PC_INTERRUPT_STATUS_CNA_CSC_1				0x00000020
++#define PC_INTERRUPT_STATUS_CNA_CSC_0				0x00000010
++#define PC_INTERRUPT_STATUS_CNA_WEIGHT_1			0x00000008
++#define PC_INTERRUPT_STATUS_CNA_WEIGHT_0			0x00000004
++#define PC_INTERRUPT_STATUS_CNA_FEATURE_1			0x00000002
++#define PC_INTERRUPT_STATUS_CNA_FEATURE_0			0x00000001
++
++#define REG_PC_INTERRUPT_RAW_STATUS				0x0000002c
++#define PC_INTERRUPT_RAW_STATUS_RESERVED_0__MASK		0xffffc000
++#define PC_INTERRUPT_RAW_STATUS_RESERVED_0__SHIFT		14
++static inline uint32_t PC_INTERRUPT_RAW_STATUS_RESERVED_0(uint32_t val)
++{
++	return ((val) << PC_INTERRUPT_RAW_STATUS_RESERVED_0__SHIFT) & PC_INTERRUPT_RAW_STATUS_RESERVED_0__MASK;
++}
++#define PC_INTERRUPT_RAW_STATUS_DMA_WRITE_ERROR			0x00002000
++#define PC_INTERRUPT_RAW_STATUS_DMA_READ_ERROR			0x00001000
++#define PC_INTERRUPT_RAW_STATUS_PPU_1				0x00000800
++#define PC_INTERRUPT_RAW_STATUS_PPU_0				0x00000400
++#define PC_INTERRUPT_RAW_STATUS_DPU_1				0x00000200
++#define PC_INTERRUPT_RAW_STATUS_DPU_0				0x00000100
++#define PC_INTERRUPT_RAW_STATUS_CORE_1				0x00000080
++#define PC_INTERRUPT_RAW_STATUS_CORE_0				0x00000040
++#define PC_INTERRUPT_RAW_STATUS_CNA_CSC_1			0x00000020
++#define PC_INTERRUPT_RAW_STATUS_CNA_CSC_0			0x00000010
++#define PC_INTERRUPT_RAW_STATUS_CNA_WEIGHT_1			0x00000008
++#define PC_INTERRUPT_RAW_STATUS_CNA_WEIGHT_0			0x00000004
++#define PC_INTERRUPT_RAW_STATUS_CNA_FEATURE_1			0x00000002
++#define PC_INTERRUPT_RAW_STATUS_CNA_FEATURE_0			0x00000001
++
++#define REG_PC_TASK_CON						0x00000030
++#define PC_TASK_CON_RESERVED_0__MASK				0xffffc000
++#define PC_TASK_CON_RESERVED_0__SHIFT				14
++static inline uint32_t PC_TASK_CON_RESERVED_0(uint32_t val)
++{
++	return ((val) << PC_TASK_CON_RESERVED_0__SHIFT) & PC_TASK_CON_RESERVED_0__MASK;
++}
++#define PC_TASK_CON_TASK_COUNT_CLEAR__MASK			0x00002000
++#define PC_TASK_CON_TASK_COUNT_CLEAR__SHIFT			13
++static inline uint32_t PC_TASK_CON_TASK_COUNT_CLEAR(uint32_t val)
++{
++	return ((val) << PC_TASK_CON_TASK_COUNT_CLEAR__SHIFT) & PC_TASK_CON_TASK_COUNT_CLEAR__MASK;
++}
++#define PC_TASK_CON_TASK_PP_EN__MASK				0x00001000
++#define PC_TASK_CON_TASK_PP_EN__SHIFT				12
++static inline uint32_t PC_TASK_CON_TASK_PP_EN(uint32_t val)
++{
++	return ((val) << PC_TASK_CON_TASK_PP_EN__SHIFT) & PC_TASK_CON_TASK_PP_EN__MASK;
++}
++#define PC_TASK_CON_TASK_NUMBER__MASK				0x00000fff
++#define PC_TASK_CON_TASK_NUMBER__SHIFT				0
++static inline uint32_t PC_TASK_CON_TASK_NUMBER(uint32_t val)
++{
++	return ((val) << PC_TASK_CON_TASK_NUMBER__SHIFT) & PC_TASK_CON_TASK_NUMBER__MASK;
++}
++
++#define REG_PC_TASK_DMA_BASE_ADDR				0x00000034
++#define PC_TASK_DMA_BASE_ADDR_DMA_BASE_ADDR__MASK		0xfffffff0
++#define PC_TASK_DMA_BASE_ADDR_DMA_BASE_ADDR__SHIFT		4
++static inline uint32_t PC_TASK_DMA_BASE_ADDR_DMA_BASE_ADDR(uint32_t val)
++{
++	return ((val) << PC_TASK_DMA_BASE_ADDR_DMA_BASE_ADDR__SHIFT) & PC_TASK_DMA_BASE_ADDR_DMA_BASE_ADDR__MASK;
++}
++#define PC_TASK_DMA_BASE_ADDR_RESERVED_0__MASK			0x0000000f
++#define PC_TASK_DMA_BASE_ADDR_RESERVED_0__SHIFT			0
++static inline uint32_t PC_TASK_DMA_BASE_ADDR_RESERVED_0(uint32_t val)
++{
++	return ((val) << PC_TASK_DMA_BASE_ADDR_RESERVED_0__SHIFT) & PC_TASK_DMA_BASE_ADDR_RESERVED_0__MASK;
++}
++
++#define REG_PC_TASK_STATUS					0x0000003c
++#define PC_TASK_STATUS_RESERVED_0__MASK				0xf0000000
++#define PC_TASK_STATUS_RESERVED_0__SHIFT			28
++static inline uint32_t PC_TASK_STATUS_RESERVED_0(uint32_t val)
++{
++	return ((val) << PC_TASK_STATUS_RESERVED_0__SHIFT) & PC_TASK_STATUS_RESERVED_0__MASK;
++}
++#define PC_TASK_STATUS_TASK_STATUS__MASK			0x0fffffff
++#define PC_TASK_STATUS_TASK_STATUS__SHIFT			0
++static inline uint32_t PC_TASK_STATUS_TASK_STATUS(uint32_t val)
++{
++	return ((val) << PC_TASK_STATUS_TASK_STATUS__SHIFT) & PC_TASK_STATUS_TASK_STATUS__MASK;
++}
++
++#define REG_CNA_S_STATUS					0x00001000
++#define CNA_S_STATUS_RESERVED_0__MASK				0xfffc0000
++#define CNA_S_STATUS_RESERVED_0__SHIFT				18
++static inline uint32_t CNA_S_STATUS_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_S_STATUS_RESERVED_0__SHIFT) & CNA_S_STATUS_RESERVED_0__MASK;
++}
++#define CNA_S_STATUS_STATUS_1__MASK				0x00030000
++#define CNA_S_STATUS_STATUS_1__SHIFT				16
++static inline uint32_t CNA_S_STATUS_STATUS_1(uint32_t val)
++{
++	return ((val) << CNA_S_STATUS_STATUS_1__SHIFT) & CNA_S_STATUS_STATUS_1__MASK;
++}
++#define CNA_S_STATUS_RESERVED_1__MASK				0x0000fffc
++#define CNA_S_STATUS_RESERVED_1__SHIFT				2
++static inline uint32_t CNA_S_STATUS_RESERVED_1(uint32_t val)
++{
++	return ((val) << CNA_S_STATUS_RESERVED_1__SHIFT) & CNA_S_STATUS_RESERVED_1__MASK;
++}
++#define CNA_S_STATUS_STATUS_0__MASK				0x00000003
++#define CNA_S_STATUS_STATUS_0__SHIFT				0
++static inline uint32_t CNA_S_STATUS_STATUS_0(uint32_t val)
++{
++	return ((val) << CNA_S_STATUS_STATUS_0__SHIFT) & CNA_S_STATUS_STATUS_0__MASK;
++}
++
++#define REG_CNA_S_POINTER					0x00001004
++#define CNA_S_POINTER_RESERVED_0__MASK				0xfffe0000
++#define CNA_S_POINTER_RESERVED_0__SHIFT				17
++static inline uint32_t CNA_S_POINTER_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_S_POINTER_RESERVED_0__SHIFT) & CNA_S_POINTER_RESERVED_0__MASK;
++}
++#define CNA_S_POINTER_EXECUTER__MASK				0x00010000
++#define CNA_S_POINTER_EXECUTER__SHIFT				16
++static inline uint32_t CNA_S_POINTER_EXECUTER(uint32_t val)
++{
++	return ((val) << CNA_S_POINTER_EXECUTER__SHIFT) & CNA_S_POINTER_EXECUTER__MASK;
++}
++#define CNA_S_POINTER_RESERVED_1__MASK				0x0000ffc0
++#define CNA_S_POINTER_RESERVED_1__SHIFT				6
++static inline uint32_t CNA_S_POINTER_RESERVED_1(uint32_t val)
++{
++	return ((val) << CNA_S_POINTER_RESERVED_1__SHIFT) & CNA_S_POINTER_RESERVED_1__MASK;
++}
++#define CNA_S_POINTER_EXECUTER_PP_CLEAR__MASK			0x00000020
++#define CNA_S_POINTER_EXECUTER_PP_CLEAR__SHIFT			5
++static inline uint32_t CNA_S_POINTER_EXECUTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << CNA_S_POINTER_EXECUTER_PP_CLEAR__SHIFT) & CNA_S_POINTER_EXECUTER_PP_CLEAR__MASK;
++}
++#define CNA_S_POINTER_POINTER_PP_CLEAR__MASK			0x00000010
++#define CNA_S_POINTER_POINTER_PP_CLEAR__SHIFT			4
++static inline uint32_t CNA_S_POINTER_POINTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << CNA_S_POINTER_POINTER_PP_CLEAR__SHIFT) & CNA_S_POINTER_POINTER_PP_CLEAR__MASK;
++}
++#define CNA_S_POINTER_POINTER_PP_MODE__MASK			0x00000008
++#define CNA_S_POINTER_POINTER_PP_MODE__SHIFT			3
++static inline uint32_t CNA_S_POINTER_POINTER_PP_MODE(uint32_t val)
++{
++	return ((val) << CNA_S_POINTER_POINTER_PP_MODE__SHIFT) & CNA_S_POINTER_POINTER_PP_MODE__MASK;
++}
++#define CNA_S_POINTER_EXECUTER_PP_EN__MASK			0x00000004
++#define CNA_S_POINTER_EXECUTER_PP_EN__SHIFT			2
++static inline uint32_t CNA_S_POINTER_EXECUTER_PP_EN(uint32_t val)
++{
++	return ((val) << CNA_S_POINTER_EXECUTER_PP_EN__SHIFT) & CNA_S_POINTER_EXECUTER_PP_EN__MASK;
++}
++#define CNA_S_POINTER_POINTER_PP_EN__MASK			0x00000002
++#define CNA_S_POINTER_POINTER_PP_EN__SHIFT			1
++static inline uint32_t CNA_S_POINTER_POINTER_PP_EN(uint32_t val)
++{
++	return ((val) << CNA_S_POINTER_POINTER_PP_EN__SHIFT) & CNA_S_POINTER_POINTER_PP_EN__MASK;
++}
++#define CNA_S_POINTER_POINTER__MASK				0x00000001
++#define CNA_S_POINTER_POINTER__SHIFT				0
++static inline uint32_t CNA_S_POINTER_POINTER(uint32_t val)
++{
++	return ((val) << CNA_S_POINTER_POINTER__SHIFT) & CNA_S_POINTER_POINTER__MASK;
++}
++
++#define REG_CNA_OPERATION_ENABLE				0x00001008
++#define CNA_OPERATION_ENABLE_RESERVED_0__MASK			0xfffffffe
++#define CNA_OPERATION_ENABLE_RESERVED_0__SHIFT			1
++static inline uint32_t CNA_OPERATION_ENABLE_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_OPERATION_ENABLE_RESERVED_0__SHIFT) & CNA_OPERATION_ENABLE_RESERVED_0__MASK;
++}
++#define CNA_OPERATION_ENABLE_OP_EN__MASK			0x00000001
++#define CNA_OPERATION_ENABLE_OP_EN__SHIFT			0
++static inline uint32_t CNA_OPERATION_ENABLE_OP_EN(uint32_t val)
++{
++	return ((val) << CNA_OPERATION_ENABLE_OP_EN__SHIFT) & CNA_OPERATION_ENABLE_OP_EN__MASK;
++}
++
++#define REG_CNA_CONV_CON1					0x0000100c
++#define CNA_CONV_CON1_RESERVED_0__MASK				0x80000000
++#define CNA_CONV_CON1_RESERVED_0__SHIFT				31
++static inline uint32_t CNA_CONV_CON1_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON1_RESERVED_0__SHIFT) & CNA_CONV_CON1_RESERVED_0__MASK;
++}
++#define CNA_CONV_CON1_NONALIGN_DMA__MASK			0x40000000
++#define CNA_CONV_CON1_NONALIGN_DMA__SHIFT			30
++static inline uint32_t CNA_CONV_CON1_NONALIGN_DMA(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON1_NONALIGN_DMA__SHIFT) & CNA_CONV_CON1_NONALIGN_DMA__MASK;
++}
++#define CNA_CONV_CON1_GROUP_LINE_OFF__MASK			0x20000000
++#define CNA_CONV_CON1_GROUP_LINE_OFF__SHIFT			29
++static inline uint32_t CNA_CONV_CON1_GROUP_LINE_OFF(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON1_GROUP_LINE_OFF__SHIFT) & CNA_CONV_CON1_GROUP_LINE_OFF__MASK;
++}
++#define CNA_CONV_CON1_RESERVED_1__MASK				0x1ffe0000
++#define CNA_CONV_CON1_RESERVED_1__SHIFT				17
++static inline uint32_t CNA_CONV_CON1_RESERVED_1(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON1_RESERVED_1__SHIFT) & CNA_CONV_CON1_RESERVED_1__MASK;
++}
++#define CNA_CONV_CON1_DECONV__MASK				0x00010000
++#define CNA_CONV_CON1_DECONV__SHIFT				16
++static inline uint32_t CNA_CONV_CON1_DECONV(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON1_DECONV__SHIFT) & CNA_CONV_CON1_DECONV__MASK;
++}
++#define CNA_CONV_CON1_ARGB_IN__MASK				0x0000f000
++#define CNA_CONV_CON1_ARGB_IN__SHIFT				12
++static inline uint32_t CNA_CONV_CON1_ARGB_IN(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON1_ARGB_IN__SHIFT) & CNA_CONV_CON1_ARGB_IN__MASK;
++}
++#define CNA_CONV_CON1_RESERVED_2__MASK				0x00000c00
++#define CNA_CONV_CON1_RESERVED_2__SHIFT				10
++static inline uint32_t CNA_CONV_CON1_RESERVED_2(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON1_RESERVED_2__SHIFT) & CNA_CONV_CON1_RESERVED_2__MASK;
++}
++#define CNA_CONV_CON1_PROC_PRECISION__MASK			0x00000380
++#define CNA_CONV_CON1_PROC_PRECISION__SHIFT			7
++static inline uint32_t CNA_CONV_CON1_PROC_PRECISION(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON1_PROC_PRECISION__SHIFT) & CNA_CONV_CON1_PROC_PRECISION__MASK;
++}
++#define CNA_CONV_CON1_IN_PRECISION__MASK			0x00000070
++#define CNA_CONV_CON1_IN_PRECISION__SHIFT			4
++static inline uint32_t CNA_CONV_CON1_IN_PRECISION(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON1_IN_PRECISION__SHIFT) & CNA_CONV_CON1_IN_PRECISION__MASK;
++}
++#define CNA_CONV_CON1_CONV_MODE__MASK				0x0000000f
++#define CNA_CONV_CON1_CONV_MODE__SHIFT				0
++static inline uint32_t CNA_CONV_CON1_CONV_MODE(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON1_CONV_MODE__SHIFT) & CNA_CONV_CON1_CONV_MODE__MASK;
++}
++
++#define REG_CNA_CONV_CON2					0x00001010
++#define CNA_CONV_CON2_RESERVED_0__MASK				0xff000000
++#define CNA_CONV_CON2_RESERVED_0__SHIFT				24
++static inline uint32_t CNA_CONV_CON2_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON2_RESERVED_0__SHIFT) & CNA_CONV_CON2_RESERVED_0__MASK;
++}
++#define CNA_CONV_CON2_KERNEL_GROUP__MASK			0x00ff0000
++#define CNA_CONV_CON2_KERNEL_GROUP__SHIFT			16
++static inline uint32_t CNA_CONV_CON2_KERNEL_GROUP(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON2_KERNEL_GROUP__SHIFT) & CNA_CONV_CON2_KERNEL_GROUP__MASK;
++}
++#define CNA_CONV_CON2_RESERVED_1__MASK				0x0000c000
++#define CNA_CONV_CON2_RESERVED_1__SHIFT				14
++static inline uint32_t CNA_CONV_CON2_RESERVED_1(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON2_RESERVED_1__SHIFT) & CNA_CONV_CON2_RESERVED_1__MASK;
++}
++#define CNA_CONV_CON2_FEATURE_GRAINS__MASK			0x00003ff0
++#define CNA_CONV_CON2_FEATURE_GRAINS__SHIFT			4
++static inline uint32_t CNA_CONV_CON2_FEATURE_GRAINS(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON2_FEATURE_GRAINS__SHIFT) & CNA_CONV_CON2_FEATURE_GRAINS__MASK;
++}
++#define CNA_CONV_CON2_RESERVED_2__MASK				0x00000008
++#define CNA_CONV_CON2_RESERVED_2__SHIFT				3
++static inline uint32_t CNA_CONV_CON2_RESERVED_2(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON2_RESERVED_2__SHIFT) & CNA_CONV_CON2_RESERVED_2__MASK;
++}
++#define CNA_CONV_CON2_CSC_WO_EN__MASK				0x00000004
++#define CNA_CONV_CON2_CSC_WO_EN__SHIFT				2
++static inline uint32_t CNA_CONV_CON2_CSC_WO_EN(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON2_CSC_WO_EN__SHIFT) & CNA_CONV_CON2_CSC_WO_EN__MASK;
++}
++#define CNA_CONV_CON2_CSC_DO_EN__MASK				0x00000002
++#define CNA_CONV_CON2_CSC_DO_EN__SHIFT				1
++static inline uint32_t CNA_CONV_CON2_CSC_DO_EN(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON2_CSC_DO_EN__SHIFT) & CNA_CONV_CON2_CSC_DO_EN__MASK;
++}
++#define CNA_CONV_CON2_CMD_FIFO_SRST__MASK			0x00000001
++#define CNA_CONV_CON2_CMD_FIFO_SRST__SHIFT			0
++static inline uint32_t CNA_CONV_CON2_CMD_FIFO_SRST(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON2_CMD_FIFO_SRST__SHIFT) & CNA_CONV_CON2_CMD_FIFO_SRST__MASK;
++}
++
++#define REG_CNA_CONV_CON3					0x00001014
++#define CNA_CONV_CON3_RESERVED_0__MASK				0x80000000
++#define CNA_CONV_CON3_RESERVED_0__SHIFT				31
++static inline uint32_t CNA_CONV_CON3_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON3_RESERVED_0__SHIFT) & CNA_CONV_CON3_RESERVED_0__MASK;
++}
++#define CNA_CONV_CON3_NN_MODE__MASK				0x70000000
++#define CNA_CONV_CON3_NN_MODE__SHIFT				28
++static inline uint32_t CNA_CONV_CON3_NN_MODE(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON3_NN_MODE__SHIFT) & CNA_CONV_CON3_NN_MODE__MASK;
++}
++#define CNA_CONV_CON3_RESERVED_1__MASK				0x0c000000
++#define CNA_CONV_CON3_RESERVED_1__SHIFT				26
++static inline uint32_t CNA_CONV_CON3_RESERVED_1(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON3_RESERVED_1__SHIFT) & CNA_CONV_CON3_RESERVED_1__MASK;
++}
++#define CNA_CONV_CON3_ATROUS_Y_DILATION__MASK			0x03e00000
++#define CNA_CONV_CON3_ATROUS_Y_DILATION__SHIFT			21
++static inline uint32_t CNA_CONV_CON3_ATROUS_Y_DILATION(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON3_ATROUS_Y_DILATION__SHIFT) & CNA_CONV_CON3_ATROUS_Y_DILATION__MASK;
++}
++#define CNA_CONV_CON3_ATROUS_X_DILATION__MASK			0x001f0000
++#define CNA_CONV_CON3_ATROUS_X_DILATION__SHIFT			16
++static inline uint32_t CNA_CONV_CON3_ATROUS_X_DILATION(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON3_ATROUS_X_DILATION__SHIFT) & CNA_CONV_CON3_ATROUS_X_DILATION__MASK;
++}
++#define CNA_CONV_CON3_RESERVED_2__MASK				0x0000c000
++#define CNA_CONV_CON3_RESERVED_2__SHIFT				14
++static inline uint32_t CNA_CONV_CON3_RESERVED_2(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON3_RESERVED_2__SHIFT) & CNA_CONV_CON3_RESERVED_2__MASK;
++}
++#define CNA_CONV_CON3_DECONV_Y_STRIDE__MASK			0x00003800
++#define CNA_CONV_CON3_DECONV_Y_STRIDE__SHIFT			11
++static inline uint32_t CNA_CONV_CON3_DECONV_Y_STRIDE(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON3_DECONV_Y_STRIDE__SHIFT) & CNA_CONV_CON3_DECONV_Y_STRIDE__MASK;
++}
++#define CNA_CONV_CON3_DECONV_X_STRIDE__MASK			0x00000700
++#define CNA_CONV_CON3_DECONV_X_STRIDE__SHIFT			8
++static inline uint32_t CNA_CONV_CON3_DECONV_X_STRIDE(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON3_DECONV_X_STRIDE__SHIFT) & CNA_CONV_CON3_DECONV_X_STRIDE__MASK;
++}
++#define CNA_CONV_CON3_RESERVED_3__MASK				0x000000c0
++#define CNA_CONV_CON3_RESERVED_3__SHIFT				6
++static inline uint32_t CNA_CONV_CON3_RESERVED_3(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON3_RESERVED_3__SHIFT) & CNA_CONV_CON3_RESERVED_3__MASK;
++}
++#define CNA_CONV_CON3_CONV_Y_STRIDE__MASK			0x00000038
++#define CNA_CONV_CON3_CONV_Y_STRIDE__SHIFT			3
++static inline uint32_t CNA_CONV_CON3_CONV_Y_STRIDE(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON3_CONV_Y_STRIDE__SHIFT) & CNA_CONV_CON3_CONV_Y_STRIDE__MASK;
++}
++#define CNA_CONV_CON3_CONV_X_STRIDE__MASK			0x00000007
++#define CNA_CONV_CON3_CONV_X_STRIDE__SHIFT			0
++static inline uint32_t CNA_CONV_CON3_CONV_X_STRIDE(uint32_t val)
++{
++	return ((val) << CNA_CONV_CON3_CONV_X_STRIDE__SHIFT) & CNA_CONV_CON3_CONV_X_STRIDE__MASK;
++}
++
++#define REG_CNA_DATA_SIZE0					0x00001020
++#define CNA_DATA_SIZE0_RESERVED_0__MASK				0xf8000000
++#define CNA_DATA_SIZE0_RESERVED_0__SHIFT			27
++static inline uint32_t CNA_DATA_SIZE0_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE0_RESERVED_0__SHIFT) & CNA_DATA_SIZE0_RESERVED_0__MASK;
++}
++#define CNA_DATA_SIZE0_DATAIN_WIDTH__MASK			0x07ff0000
++#define CNA_DATA_SIZE0_DATAIN_WIDTH__SHIFT			16
++static inline uint32_t CNA_DATA_SIZE0_DATAIN_WIDTH(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE0_DATAIN_WIDTH__SHIFT) & CNA_DATA_SIZE0_DATAIN_WIDTH__MASK;
++}
++#define CNA_DATA_SIZE0_RESERVED_1__MASK				0x0000f800
++#define CNA_DATA_SIZE0_RESERVED_1__SHIFT			11
++static inline uint32_t CNA_DATA_SIZE0_RESERVED_1(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE0_RESERVED_1__SHIFT) & CNA_DATA_SIZE0_RESERVED_1__MASK;
++}
++#define CNA_DATA_SIZE0_DATAIN_HEIGHT__MASK			0x000007ff
++#define CNA_DATA_SIZE0_DATAIN_HEIGHT__SHIFT			0
++static inline uint32_t CNA_DATA_SIZE0_DATAIN_HEIGHT(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE0_DATAIN_HEIGHT__SHIFT) & CNA_DATA_SIZE0_DATAIN_HEIGHT__MASK;
++}
++
++#define REG_CNA_DATA_SIZE1					0x00001024
++#define CNA_DATA_SIZE1_RESERVED_0__MASK				0xc0000000
++#define CNA_DATA_SIZE1_RESERVED_0__SHIFT			30
++static inline uint32_t CNA_DATA_SIZE1_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE1_RESERVED_0__SHIFT) & CNA_DATA_SIZE1_RESERVED_0__MASK;
++}
++#define CNA_DATA_SIZE1_DATAIN_CHANNEL_REAL__MASK		0x3fff0000
++#define CNA_DATA_SIZE1_DATAIN_CHANNEL_REAL__SHIFT		16
++static inline uint32_t CNA_DATA_SIZE1_DATAIN_CHANNEL_REAL(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE1_DATAIN_CHANNEL_REAL__SHIFT) & CNA_DATA_SIZE1_DATAIN_CHANNEL_REAL__MASK;
++}
++#define CNA_DATA_SIZE1_DATAIN_CHANNEL__MASK			0x0000ffff
++#define CNA_DATA_SIZE1_DATAIN_CHANNEL__SHIFT			0
++static inline uint32_t CNA_DATA_SIZE1_DATAIN_CHANNEL(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE1_DATAIN_CHANNEL__SHIFT) & CNA_DATA_SIZE1_DATAIN_CHANNEL__MASK;
++}
++
++#define REG_CNA_DATA_SIZE2					0x00001028
++#define CNA_DATA_SIZE2_RESERVED_0__MASK				0xfffff800
++#define CNA_DATA_SIZE2_RESERVED_0__SHIFT			11
++static inline uint32_t CNA_DATA_SIZE2_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE2_RESERVED_0__SHIFT) & CNA_DATA_SIZE2_RESERVED_0__MASK;
++}
++#define CNA_DATA_SIZE2_DATAOUT_WIDTH__MASK			0x000007ff
++#define CNA_DATA_SIZE2_DATAOUT_WIDTH__SHIFT			0
++static inline uint32_t CNA_DATA_SIZE2_DATAOUT_WIDTH(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE2_DATAOUT_WIDTH__SHIFT) & CNA_DATA_SIZE2_DATAOUT_WIDTH__MASK;
++}
++
++#define REG_CNA_DATA_SIZE3					0x0000102c
++#define CNA_DATA_SIZE3_RESERVED_0__MASK				0xff000000
++#define CNA_DATA_SIZE3_RESERVED_0__SHIFT			24
++static inline uint32_t CNA_DATA_SIZE3_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE3_RESERVED_0__SHIFT) & CNA_DATA_SIZE3_RESERVED_0__MASK;
++}
++#define CNA_DATA_SIZE3_SURF_MODE__MASK				0x00c00000
++#define CNA_DATA_SIZE3_SURF_MODE__SHIFT				22
++static inline uint32_t CNA_DATA_SIZE3_SURF_MODE(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE3_SURF_MODE__SHIFT) & CNA_DATA_SIZE3_SURF_MODE__MASK;
++}
++#define CNA_DATA_SIZE3_DATAOUT_ATOMICS__MASK			0x003fffff
++#define CNA_DATA_SIZE3_DATAOUT_ATOMICS__SHIFT			0
++static inline uint32_t CNA_DATA_SIZE3_DATAOUT_ATOMICS(uint32_t val)
++{
++	return ((val) << CNA_DATA_SIZE3_DATAOUT_ATOMICS__SHIFT) & CNA_DATA_SIZE3_DATAOUT_ATOMICS__MASK;
++}
++
++#define REG_CNA_WEIGHT_SIZE0					0x00001030
++#define CNA_WEIGHT_SIZE0_WEIGHT_BYTES__MASK			0xffffffff
++#define CNA_WEIGHT_SIZE0_WEIGHT_BYTES__SHIFT			0
++static inline uint32_t CNA_WEIGHT_SIZE0_WEIGHT_BYTES(uint32_t val)
++{
++	return ((val) << CNA_WEIGHT_SIZE0_WEIGHT_BYTES__SHIFT) & CNA_WEIGHT_SIZE0_WEIGHT_BYTES__MASK;
++}
++
++#define REG_CNA_WEIGHT_SIZE1					0x00001034
++#define CNA_WEIGHT_SIZE1_RESERVED_0__MASK			0xfff80000
++#define CNA_WEIGHT_SIZE1_RESERVED_0__SHIFT			19
++static inline uint32_t CNA_WEIGHT_SIZE1_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_WEIGHT_SIZE1_RESERVED_0__SHIFT) & CNA_WEIGHT_SIZE1_RESERVED_0__MASK;
++}
++#define CNA_WEIGHT_SIZE1_WEIGHT_BYTES_PER_KERNEL__MASK		0x0007ffff
++#define CNA_WEIGHT_SIZE1_WEIGHT_BYTES_PER_KERNEL__SHIFT		0
++static inline uint32_t CNA_WEIGHT_SIZE1_WEIGHT_BYTES_PER_KERNEL(uint32_t val)
++{
++	return ((val) << CNA_WEIGHT_SIZE1_WEIGHT_BYTES_PER_KERNEL__SHIFT) & CNA_WEIGHT_SIZE1_WEIGHT_BYTES_PER_KERNEL__MASK;
++}
++
++#define REG_CNA_WEIGHT_SIZE2					0x00001038
++#define CNA_WEIGHT_SIZE2_RESERVED_0__MASK			0xe0000000
++#define CNA_WEIGHT_SIZE2_RESERVED_0__SHIFT			29
++static inline uint32_t CNA_WEIGHT_SIZE2_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_WEIGHT_SIZE2_RESERVED_0__SHIFT) & CNA_WEIGHT_SIZE2_RESERVED_0__MASK;
++}
++#define CNA_WEIGHT_SIZE2_WEIGHT_WIDTH__MASK			0x1f000000
++#define CNA_WEIGHT_SIZE2_WEIGHT_WIDTH__SHIFT			24
++static inline uint32_t CNA_WEIGHT_SIZE2_WEIGHT_WIDTH(uint32_t val)
++{
++	return ((val) << CNA_WEIGHT_SIZE2_WEIGHT_WIDTH__SHIFT) & CNA_WEIGHT_SIZE2_WEIGHT_WIDTH__MASK;
++}
++#define CNA_WEIGHT_SIZE2_RESERVED_1__MASK			0x00e00000
++#define CNA_WEIGHT_SIZE2_RESERVED_1__SHIFT			21
++static inline uint32_t CNA_WEIGHT_SIZE2_RESERVED_1(uint32_t val)
++{
++	return ((val) << CNA_WEIGHT_SIZE2_RESERVED_1__SHIFT) & CNA_WEIGHT_SIZE2_RESERVED_1__MASK;
++}
++#define CNA_WEIGHT_SIZE2_WEIGHT_HEIGHT__MASK			0x001f0000
++#define CNA_WEIGHT_SIZE2_WEIGHT_HEIGHT__SHIFT			16
++static inline uint32_t CNA_WEIGHT_SIZE2_WEIGHT_HEIGHT(uint32_t val)
++{
++	return ((val) << CNA_WEIGHT_SIZE2_WEIGHT_HEIGHT__SHIFT) & CNA_WEIGHT_SIZE2_WEIGHT_HEIGHT__MASK;
++}
++#define CNA_WEIGHT_SIZE2_RESERVED_2__MASK			0x0000c000
++#define CNA_WEIGHT_SIZE2_RESERVED_2__SHIFT			14
++static inline uint32_t CNA_WEIGHT_SIZE2_RESERVED_2(uint32_t val)
++{
++	return ((val) << CNA_WEIGHT_SIZE2_RESERVED_2__SHIFT) & CNA_WEIGHT_SIZE2_RESERVED_2__MASK;
++}
++#define CNA_WEIGHT_SIZE2_WEIGHT_KERNELS__MASK			0x00003fff
++#define CNA_WEIGHT_SIZE2_WEIGHT_KERNELS__SHIFT			0
++static inline uint32_t CNA_WEIGHT_SIZE2_WEIGHT_KERNELS(uint32_t val)
++{
++	return ((val) << CNA_WEIGHT_SIZE2_WEIGHT_KERNELS__SHIFT) & CNA_WEIGHT_SIZE2_WEIGHT_KERNELS__MASK;
++}
++
++#define REG_CNA_CBUF_CON0					0x00001040
++#define CNA_CBUF_CON0_RESERVED_0__MASK				0xffffc000
++#define CNA_CBUF_CON0_RESERVED_0__SHIFT				14
++static inline uint32_t CNA_CBUF_CON0_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_CBUF_CON0_RESERVED_0__SHIFT) & CNA_CBUF_CON0_RESERVED_0__MASK;
++}
++#define CNA_CBUF_CON0_WEIGHT_REUSE__MASK			0x00002000
++#define CNA_CBUF_CON0_WEIGHT_REUSE__SHIFT			13
++static inline uint32_t CNA_CBUF_CON0_WEIGHT_REUSE(uint32_t val)
++{
++	return ((val) << CNA_CBUF_CON0_WEIGHT_REUSE__SHIFT) & CNA_CBUF_CON0_WEIGHT_REUSE__MASK;
++}
++#define CNA_CBUF_CON0_DATA_REUSE__MASK				0x00001000
++#define CNA_CBUF_CON0_DATA_REUSE__SHIFT				12
++static inline uint32_t CNA_CBUF_CON0_DATA_REUSE(uint32_t val)
++{
++	return ((val) << CNA_CBUF_CON0_DATA_REUSE__SHIFT) & CNA_CBUF_CON0_DATA_REUSE__MASK;
++}
++#define CNA_CBUF_CON0_RESERVED_1__MASK				0x00000800
++#define CNA_CBUF_CON0_RESERVED_1__SHIFT				11
++static inline uint32_t CNA_CBUF_CON0_RESERVED_1(uint32_t val)
++{
++	return ((val) << CNA_CBUF_CON0_RESERVED_1__SHIFT) & CNA_CBUF_CON0_RESERVED_1__MASK;
++}
++#define CNA_CBUF_CON0_FC_DATA_BANK__MASK			0x00000700
++#define CNA_CBUF_CON0_FC_DATA_BANK__SHIFT			8
++static inline uint32_t CNA_CBUF_CON0_FC_DATA_BANK(uint32_t val)
++{
++	return ((val) << CNA_CBUF_CON0_FC_DATA_BANK__SHIFT) & CNA_CBUF_CON0_FC_DATA_BANK__MASK;
++}
++#define CNA_CBUF_CON0_WEIGHT_BANK__MASK				0x000000f0
++#define CNA_CBUF_CON0_WEIGHT_BANK__SHIFT			4
++static inline uint32_t CNA_CBUF_CON0_WEIGHT_BANK(uint32_t val)
++{
++	return ((val) << CNA_CBUF_CON0_WEIGHT_BANK__SHIFT) & CNA_CBUF_CON0_WEIGHT_BANK__MASK;
++}
++#define CNA_CBUF_CON0_DATA_BANK__MASK				0x0000000f
++#define CNA_CBUF_CON0_DATA_BANK__SHIFT				0
++static inline uint32_t CNA_CBUF_CON0_DATA_BANK(uint32_t val)
++{
++	return ((val) << CNA_CBUF_CON0_DATA_BANK__SHIFT) & CNA_CBUF_CON0_DATA_BANK__MASK;
++}
++
++#define REG_CNA_CBUF_CON1					0x00001044
++#define CNA_CBUF_CON1_RESERVED_0__MASK				0xffffc000
++#define CNA_CBUF_CON1_RESERVED_0__SHIFT				14
++static inline uint32_t CNA_CBUF_CON1_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_CBUF_CON1_RESERVED_0__SHIFT) & CNA_CBUF_CON1_RESERVED_0__MASK;
++}
++#define CNA_CBUF_CON1_DATA_ENTRIES__MASK			0x00003fff
++#define CNA_CBUF_CON1_DATA_ENTRIES__SHIFT			0
++static inline uint32_t CNA_CBUF_CON1_DATA_ENTRIES(uint32_t val)
++{
++	return ((val) << CNA_CBUF_CON1_DATA_ENTRIES__SHIFT) & CNA_CBUF_CON1_DATA_ENTRIES__MASK;
++}
++
++#define REG_CNA_CVT_CON0					0x0000104c
++#define CNA_CVT_CON0_RESERVED_0__MASK				0xf0000000
++#define CNA_CVT_CON0_RESERVED_0__SHIFT				28
++static inline uint32_t CNA_CVT_CON0_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON0_RESERVED_0__SHIFT) & CNA_CVT_CON0_RESERVED_0__MASK;
++}
++#define CNA_CVT_CON0_CVT_TRUNCATE_3__MASK			0x0fc00000
++#define CNA_CVT_CON0_CVT_TRUNCATE_3__SHIFT			22
++static inline uint32_t CNA_CVT_CON0_CVT_TRUNCATE_3(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON0_CVT_TRUNCATE_3__SHIFT) & CNA_CVT_CON0_CVT_TRUNCATE_3__MASK;
++}
++#define CNA_CVT_CON0_CVT_TRUNCATE_2__MASK			0x003f0000
++#define CNA_CVT_CON0_CVT_TRUNCATE_2__SHIFT			16
++static inline uint32_t CNA_CVT_CON0_CVT_TRUNCATE_2(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON0_CVT_TRUNCATE_2__SHIFT) & CNA_CVT_CON0_CVT_TRUNCATE_2__MASK;
++}
++#define CNA_CVT_CON0_CVT_TRUNCATE_1__MASK			0x0000fc00
++#define CNA_CVT_CON0_CVT_TRUNCATE_1__SHIFT			10
++static inline uint32_t CNA_CVT_CON0_CVT_TRUNCATE_1(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON0_CVT_TRUNCATE_1__SHIFT) & CNA_CVT_CON0_CVT_TRUNCATE_1__MASK;
++}
++#define CNA_CVT_CON0_CVT_TRUNCATE_0__MASK			0x000003f0
++#define CNA_CVT_CON0_CVT_TRUNCATE_0__SHIFT			4
++static inline uint32_t CNA_CVT_CON0_CVT_TRUNCATE_0(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON0_CVT_TRUNCATE_0__SHIFT) & CNA_CVT_CON0_CVT_TRUNCATE_0__MASK;
++}
++#define CNA_CVT_CON0_DATA_SIGN__MASK				0x00000008
++#define CNA_CVT_CON0_DATA_SIGN__SHIFT				3
++static inline uint32_t CNA_CVT_CON0_DATA_SIGN(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON0_DATA_SIGN__SHIFT) & CNA_CVT_CON0_DATA_SIGN__MASK;
++}
++#define CNA_CVT_CON0_ROUND_TYPE__MASK				0x00000004
++#define CNA_CVT_CON0_ROUND_TYPE__SHIFT				2
++static inline uint32_t CNA_CVT_CON0_ROUND_TYPE(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON0_ROUND_TYPE__SHIFT) & CNA_CVT_CON0_ROUND_TYPE__MASK;
++}
++#define CNA_CVT_CON0_CVT_TYPE__MASK				0x00000002
++#define CNA_CVT_CON0_CVT_TYPE__SHIFT				1
++static inline uint32_t CNA_CVT_CON0_CVT_TYPE(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON0_CVT_TYPE__SHIFT) & CNA_CVT_CON0_CVT_TYPE__MASK;
++}
++#define CNA_CVT_CON0_CVT_BYPASS__MASK				0x00000001
++#define CNA_CVT_CON0_CVT_BYPASS__SHIFT				0
++static inline uint32_t CNA_CVT_CON0_CVT_BYPASS(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON0_CVT_BYPASS__SHIFT) & CNA_CVT_CON0_CVT_BYPASS__MASK;
++}
++
++#define REG_CNA_CVT_CON1					0x00001050
++#define CNA_CVT_CON1_CVT_SCALE0__MASK				0xffff0000
++#define CNA_CVT_CON1_CVT_SCALE0__SHIFT				16
++static inline uint32_t CNA_CVT_CON1_CVT_SCALE0(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON1_CVT_SCALE0__SHIFT) & CNA_CVT_CON1_CVT_SCALE0__MASK;
++}
++#define CNA_CVT_CON1_CVT_OFFSET0__MASK				0x0000ffff
++#define CNA_CVT_CON1_CVT_OFFSET0__SHIFT				0
++static inline uint32_t CNA_CVT_CON1_CVT_OFFSET0(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON1_CVT_OFFSET0__SHIFT) & CNA_CVT_CON1_CVT_OFFSET0__MASK;
++}
++
++#define REG_CNA_CVT_CON2					0x00001054
++#define CNA_CVT_CON2_CVT_SCALE1__MASK				0xffff0000
++#define CNA_CVT_CON2_CVT_SCALE1__SHIFT				16
++static inline uint32_t CNA_CVT_CON2_CVT_SCALE1(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON2_CVT_SCALE1__SHIFT) & CNA_CVT_CON2_CVT_SCALE1__MASK;
++}
++#define CNA_CVT_CON2_CVT_OFFSET1__MASK				0x0000ffff
++#define CNA_CVT_CON2_CVT_OFFSET1__SHIFT				0
++static inline uint32_t CNA_CVT_CON2_CVT_OFFSET1(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON2_CVT_OFFSET1__SHIFT) & CNA_CVT_CON2_CVT_OFFSET1__MASK;
++}
++
++#define REG_CNA_CVT_CON3					0x00001058
++#define CNA_CVT_CON3_CVT_SCALE2__MASK				0xffff0000
++#define CNA_CVT_CON3_CVT_SCALE2__SHIFT				16
++static inline uint32_t CNA_CVT_CON3_CVT_SCALE2(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON3_CVT_SCALE2__SHIFT) & CNA_CVT_CON3_CVT_SCALE2__MASK;
++}
++#define CNA_CVT_CON3_CVT_OFFSET2__MASK				0x0000ffff
++#define CNA_CVT_CON3_CVT_OFFSET2__SHIFT				0
++static inline uint32_t CNA_CVT_CON3_CVT_OFFSET2(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON3_CVT_OFFSET2__SHIFT) & CNA_CVT_CON3_CVT_OFFSET2__MASK;
++}
++
++#define REG_CNA_CVT_CON4					0x0000105c
++#define CNA_CVT_CON4_CVT_SCALE3__MASK				0xffff0000
++#define CNA_CVT_CON4_CVT_SCALE3__SHIFT				16
++static inline uint32_t CNA_CVT_CON4_CVT_SCALE3(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON4_CVT_SCALE3__SHIFT) & CNA_CVT_CON4_CVT_SCALE3__MASK;
++}
++#define CNA_CVT_CON4_CVT_OFFSET3__MASK				0x0000ffff
++#define CNA_CVT_CON4_CVT_OFFSET3__SHIFT				0
++static inline uint32_t CNA_CVT_CON4_CVT_OFFSET3(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON4_CVT_OFFSET3__SHIFT) & CNA_CVT_CON4_CVT_OFFSET3__MASK;
++}
++
++#define REG_CNA_FC_CON0						0x00001060
++#define CNA_FC_CON0_FC_SKIP_DATA__MASK				0xffff0000
++#define CNA_FC_CON0_FC_SKIP_DATA__SHIFT				16
++static inline uint32_t CNA_FC_CON0_FC_SKIP_DATA(uint32_t val)
++{
++	return ((val) << CNA_FC_CON0_FC_SKIP_DATA__SHIFT) & CNA_FC_CON0_FC_SKIP_DATA__MASK;
++}
++#define CNA_FC_CON0_RESERVED_0__MASK				0x0000fffe
++#define CNA_FC_CON0_RESERVED_0__SHIFT				1
++static inline uint32_t CNA_FC_CON0_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_FC_CON0_RESERVED_0__SHIFT) & CNA_FC_CON0_RESERVED_0__MASK;
++}
++#define CNA_FC_CON0_FC_SKIP_EN__MASK				0x00000001
++#define CNA_FC_CON0_FC_SKIP_EN__SHIFT				0
++static inline uint32_t CNA_FC_CON0_FC_SKIP_EN(uint32_t val)
++{
++	return ((val) << CNA_FC_CON0_FC_SKIP_EN__SHIFT) & CNA_FC_CON0_FC_SKIP_EN__MASK;
++}
++
++#define REG_CNA_FC_CON1						0x00001064
++#define CNA_FC_CON1_RESERVED_0__MASK				0xfffe0000
++#define CNA_FC_CON1_RESERVED_0__SHIFT				17
++static inline uint32_t CNA_FC_CON1_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_FC_CON1_RESERVED_0__SHIFT) & CNA_FC_CON1_RESERVED_0__MASK;
++}
++#define CNA_FC_CON1_DATA_OFFSET__MASK				0x0001ffff
++#define CNA_FC_CON1_DATA_OFFSET__SHIFT				0
++static inline uint32_t CNA_FC_CON1_DATA_OFFSET(uint32_t val)
++{
++	return ((val) << CNA_FC_CON1_DATA_OFFSET__SHIFT) & CNA_FC_CON1_DATA_OFFSET__MASK;
++}
++
++#define REG_CNA_PAD_CON0					0x00001068
++#define CNA_PAD_CON0_RESERVED_0__MASK				0xffffff00
++#define CNA_PAD_CON0_RESERVED_0__SHIFT				8
++static inline uint32_t CNA_PAD_CON0_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_PAD_CON0_RESERVED_0__SHIFT) & CNA_PAD_CON0_RESERVED_0__MASK;
++}
++#define CNA_PAD_CON0_PAD_LEFT__MASK				0x000000f0
++#define CNA_PAD_CON0_PAD_LEFT__SHIFT				4
++static inline uint32_t CNA_PAD_CON0_PAD_LEFT(uint32_t val)
++{
++	return ((val) << CNA_PAD_CON0_PAD_LEFT__SHIFT) & CNA_PAD_CON0_PAD_LEFT__MASK;
++}
++#define CNA_PAD_CON0_PAD_TOP__MASK				0x0000000f
++#define CNA_PAD_CON0_PAD_TOP__SHIFT				0
++static inline uint32_t CNA_PAD_CON0_PAD_TOP(uint32_t val)
++{
++	return ((val) << CNA_PAD_CON0_PAD_TOP__SHIFT) & CNA_PAD_CON0_PAD_TOP__MASK;
++}
++
++#define REG_CNA_FEATURE_DATA_ADDR				0x00001070
++#define CNA_FEATURE_DATA_ADDR_FEATURE_BASE_ADDR__MASK		0xffffffff
++#define CNA_FEATURE_DATA_ADDR_FEATURE_BASE_ADDR__SHIFT		0
++static inline uint32_t CNA_FEATURE_DATA_ADDR_FEATURE_BASE_ADDR(uint32_t val)
++{
++	return ((val) << CNA_FEATURE_DATA_ADDR_FEATURE_BASE_ADDR__SHIFT) & CNA_FEATURE_DATA_ADDR_FEATURE_BASE_ADDR__MASK;
++}
++
++#define REG_CNA_FC_CON2						0x00001074
++#define CNA_FC_CON2_RESERVED_0__MASK				0xfffe0000
++#define CNA_FC_CON2_RESERVED_0__SHIFT				17
++static inline uint32_t CNA_FC_CON2_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_FC_CON2_RESERVED_0__SHIFT) & CNA_FC_CON2_RESERVED_0__MASK;
++}
++#define CNA_FC_CON2_WEIGHT_OFFSET__MASK				0x0001ffff
++#define CNA_FC_CON2_WEIGHT_OFFSET__SHIFT			0
++static inline uint32_t CNA_FC_CON2_WEIGHT_OFFSET(uint32_t val)
++{
++	return ((val) << CNA_FC_CON2_WEIGHT_OFFSET__SHIFT) & CNA_FC_CON2_WEIGHT_OFFSET__MASK;
++}
++
++#define REG_CNA_DMA_CON0					0x00001078
++#define CNA_DMA_CON0_OV4K_BYPASS__MASK				0x80000000
++#define CNA_DMA_CON0_OV4K_BYPASS__SHIFT				31
++static inline uint32_t CNA_DMA_CON0_OV4K_BYPASS(uint32_t val)
++{
++	return ((val) << CNA_DMA_CON0_OV4K_BYPASS__SHIFT) & CNA_DMA_CON0_OV4K_BYPASS__MASK;
++}
++#define CNA_DMA_CON0_RESERVED_0__MASK				0x7ff00000
++#define CNA_DMA_CON0_RESERVED_0__SHIFT				20
++static inline uint32_t CNA_DMA_CON0_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_DMA_CON0_RESERVED_0__SHIFT) & CNA_DMA_CON0_RESERVED_0__MASK;
++}
++#define CNA_DMA_CON0_WEIGHT_BURST_LEN__MASK			0x000f0000
++#define CNA_DMA_CON0_WEIGHT_BURST_LEN__SHIFT			16
++static inline uint32_t CNA_DMA_CON0_WEIGHT_BURST_LEN(uint32_t val)
++{
++	return ((val) << CNA_DMA_CON0_WEIGHT_BURST_LEN__SHIFT) & CNA_DMA_CON0_WEIGHT_BURST_LEN__MASK;
++}
++#define CNA_DMA_CON0_RESERVED_1__MASK				0x0000fff0
++#define CNA_DMA_CON0_RESERVED_1__SHIFT				4
++static inline uint32_t CNA_DMA_CON0_RESERVED_1(uint32_t val)
++{
++	return ((val) << CNA_DMA_CON0_RESERVED_1__SHIFT) & CNA_DMA_CON0_RESERVED_1__MASK;
++}
++#define CNA_DMA_CON0_DATA_BURST_LEN__MASK			0x0000000f
++#define CNA_DMA_CON0_DATA_BURST_LEN__SHIFT			0
++static inline uint32_t CNA_DMA_CON0_DATA_BURST_LEN(uint32_t val)
++{
++	return ((val) << CNA_DMA_CON0_DATA_BURST_LEN__SHIFT) & CNA_DMA_CON0_DATA_BURST_LEN__MASK;
++}
++
++#define REG_CNA_DMA_CON1					0x0000107c
++#define CNA_DMA_CON1_RESERVED_0__MASK				0xf0000000
++#define CNA_DMA_CON1_RESERVED_0__SHIFT				28
++static inline uint32_t CNA_DMA_CON1_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_DMA_CON1_RESERVED_0__SHIFT) & CNA_DMA_CON1_RESERVED_0__MASK;
++}
++#define CNA_DMA_CON1_LINE_STRIDE__MASK				0x0fffffff
++#define CNA_DMA_CON1_LINE_STRIDE__SHIFT				0
++static inline uint32_t CNA_DMA_CON1_LINE_STRIDE(uint32_t val)
++{
++	return ((val) << CNA_DMA_CON1_LINE_STRIDE__SHIFT) & CNA_DMA_CON1_LINE_STRIDE__MASK;
++}
++
++#define REG_CNA_DMA_CON2					0x00001080
++#define CNA_DMA_CON2_RESERVED_0__MASK				0xf0000000
++#define CNA_DMA_CON2_RESERVED_0__SHIFT				28
++static inline uint32_t CNA_DMA_CON2_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_DMA_CON2_RESERVED_0__SHIFT) & CNA_DMA_CON2_RESERVED_0__MASK;
++}
++#define CNA_DMA_CON2_SURF_STRIDE__MASK				0x0fffffff
++#define CNA_DMA_CON2_SURF_STRIDE__SHIFT				0
++static inline uint32_t CNA_DMA_CON2_SURF_STRIDE(uint32_t val)
++{
++	return ((val) << CNA_DMA_CON2_SURF_STRIDE__SHIFT) & CNA_DMA_CON2_SURF_STRIDE__MASK;
++}
++
++#define REG_CNA_FC_DATA_SIZE0					0x00001084
++#define CNA_FC_DATA_SIZE0_RESERVED_0__MASK			0xc0000000
++#define CNA_FC_DATA_SIZE0_RESERVED_0__SHIFT			30
++static inline uint32_t CNA_FC_DATA_SIZE0_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_FC_DATA_SIZE0_RESERVED_0__SHIFT) & CNA_FC_DATA_SIZE0_RESERVED_0__MASK;
++}
++#define CNA_FC_DATA_SIZE0_DMA_WIDTH__MASK			0x3fff0000
++#define CNA_FC_DATA_SIZE0_DMA_WIDTH__SHIFT			16
++static inline uint32_t CNA_FC_DATA_SIZE0_DMA_WIDTH(uint32_t val)
++{
++	return ((val) << CNA_FC_DATA_SIZE0_DMA_WIDTH__SHIFT) & CNA_FC_DATA_SIZE0_DMA_WIDTH__MASK;
++}
++#define CNA_FC_DATA_SIZE0_RESERVED_1__MASK			0x0000f800
++#define CNA_FC_DATA_SIZE0_RESERVED_1__SHIFT			11
++static inline uint32_t CNA_FC_DATA_SIZE0_RESERVED_1(uint32_t val)
++{
++	return ((val) << CNA_FC_DATA_SIZE0_RESERVED_1__SHIFT) & CNA_FC_DATA_SIZE0_RESERVED_1__MASK;
++}
++#define CNA_FC_DATA_SIZE0_DMA_HEIGHT__MASK			0x000007ff
++#define CNA_FC_DATA_SIZE0_DMA_HEIGHT__SHIFT			0
++static inline uint32_t CNA_FC_DATA_SIZE0_DMA_HEIGHT(uint32_t val)
++{
++	return ((val) << CNA_FC_DATA_SIZE0_DMA_HEIGHT__SHIFT) & CNA_FC_DATA_SIZE0_DMA_HEIGHT__MASK;
++}
++
++#define REG_CNA_FC_DATA_SIZE1					0x00001088
++#define CNA_FC_DATA_SIZE1_RESERVED_0__MASK			0xffff0000
++#define CNA_FC_DATA_SIZE1_RESERVED_0__SHIFT			16
++static inline uint32_t CNA_FC_DATA_SIZE1_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_FC_DATA_SIZE1_RESERVED_0__SHIFT) & CNA_FC_DATA_SIZE1_RESERVED_0__MASK;
++}
++#define CNA_FC_DATA_SIZE1_DMA_CHANNEL__MASK			0x0000ffff
++#define CNA_FC_DATA_SIZE1_DMA_CHANNEL__SHIFT			0
++static inline uint32_t CNA_FC_DATA_SIZE1_DMA_CHANNEL(uint32_t val)
++{
++	return ((val) << CNA_FC_DATA_SIZE1_DMA_CHANNEL__SHIFT) & CNA_FC_DATA_SIZE1_DMA_CHANNEL__MASK;
++}
++
++#define REG_CNA_CLK_GATE					0x00001090
++#define CNA_CLK_GATE_RESERVED_0__MASK				0xffffffe0
++#define CNA_CLK_GATE_RESERVED_0__SHIFT				5
++static inline uint32_t CNA_CLK_GATE_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_CLK_GATE_RESERVED_0__SHIFT) & CNA_CLK_GATE_RESERVED_0__MASK;
++}
++#define CNA_CLK_GATE_CBUF_CS_DISABLE_CLKGATE__MASK		0x00000010
++#define CNA_CLK_GATE_CBUF_CS_DISABLE_CLKGATE__SHIFT		4
++static inline uint32_t CNA_CLK_GATE_CBUF_CS_DISABLE_CLKGATE(uint32_t val)
++{
++	return ((val) << CNA_CLK_GATE_CBUF_CS_DISABLE_CLKGATE__SHIFT) & CNA_CLK_GATE_CBUF_CS_DISABLE_CLKGATE__MASK;
++}
++#define CNA_CLK_GATE_RESERVED_1__MASK				0x00000008
++#define CNA_CLK_GATE_RESERVED_1__SHIFT				3
++static inline uint32_t CNA_CLK_GATE_RESERVED_1(uint32_t val)
++{
++	return ((val) << CNA_CLK_GATE_RESERVED_1__SHIFT) & CNA_CLK_GATE_RESERVED_1__MASK;
++}
++#define CNA_CLK_GATE_CSC_DISABLE_CLKGATE__MASK			0x00000004
++#define CNA_CLK_GATE_CSC_DISABLE_CLKGATE__SHIFT			2
++static inline uint32_t CNA_CLK_GATE_CSC_DISABLE_CLKGATE(uint32_t val)
++{
++	return ((val) << CNA_CLK_GATE_CSC_DISABLE_CLKGATE__SHIFT) & CNA_CLK_GATE_CSC_DISABLE_CLKGATE__MASK;
++}
++#define CNA_CLK_GATE_CNA_WEIGHT_DISABLE_CLKGATE__MASK		0x00000002
++#define CNA_CLK_GATE_CNA_WEIGHT_DISABLE_CLKGATE__SHIFT		1
++static inline uint32_t CNA_CLK_GATE_CNA_WEIGHT_DISABLE_CLKGATE(uint32_t val)
++{
++	return ((val) << CNA_CLK_GATE_CNA_WEIGHT_DISABLE_CLKGATE__SHIFT) & CNA_CLK_GATE_CNA_WEIGHT_DISABLE_CLKGATE__MASK;
++}
++#define CNA_CLK_GATE_CNA_FEATURE_DISABLE_CLKGATE__MASK		0x00000001
++#define CNA_CLK_GATE_CNA_FEATURE_DISABLE_CLKGATE__SHIFT		0
++static inline uint32_t CNA_CLK_GATE_CNA_FEATURE_DISABLE_CLKGATE(uint32_t val)
++{
++	return ((val) << CNA_CLK_GATE_CNA_FEATURE_DISABLE_CLKGATE__SHIFT) & CNA_CLK_GATE_CNA_FEATURE_DISABLE_CLKGATE__MASK;
++}
++
++#define REG_CNA_DCOMP_CTRL					0x00001100
++#define CNA_DCOMP_CTRL_RESERVED_0__MASK				0xfffffff0
++#define CNA_DCOMP_CTRL_RESERVED_0__SHIFT			4
++static inline uint32_t CNA_DCOMP_CTRL_RESERVED_0(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_CTRL_RESERVED_0__SHIFT) & CNA_DCOMP_CTRL_RESERVED_0__MASK;
++}
++#define CNA_DCOMP_CTRL_WT_DEC_BYPASS__MASK			0x00000008
++#define CNA_DCOMP_CTRL_WT_DEC_BYPASS__SHIFT			3
++static inline uint32_t CNA_DCOMP_CTRL_WT_DEC_BYPASS(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_CTRL_WT_DEC_BYPASS__SHIFT) & CNA_DCOMP_CTRL_WT_DEC_BYPASS__MASK;
++}
++#define CNA_DCOMP_CTRL_DECOMP_CONTROL__MASK			0x00000007
++#define CNA_DCOMP_CTRL_DECOMP_CONTROL__SHIFT			0
++static inline uint32_t CNA_DCOMP_CTRL_DECOMP_CONTROL(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_CTRL_DECOMP_CONTROL__SHIFT) & CNA_DCOMP_CTRL_DECOMP_CONTROL__MASK;
++}
++
++#define REG_CNA_DCOMP_REGNUM					0x00001104
++#define CNA_DCOMP_REGNUM_DCOMP_REGNUM__MASK			0xffffffff
++#define CNA_DCOMP_REGNUM_DCOMP_REGNUM__SHIFT			0
++static inline uint32_t CNA_DCOMP_REGNUM_DCOMP_REGNUM(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_REGNUM_DCOMP_REGNUM__SHIFT) & CNA_DCOMP_REGNUM_DCOMP_REGNUM__MASK;
++}
++
++#define REG_CNA_DCOMP_ADDR0					0x00001110
++#define CNA_DCOMP_ADDR0_DECOMPRESS_ADDR0__MASK			0xffffffff
++#define CNA_DCOMP_ADDR0_DECOMPRESS_ADDR0__SHIFT			0
++static inline uint32_t CNA_DCOMP_ADDR0_DECOMPRESS_ADDR0(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_ADDR0_DECOMPRESS_ADDR0__SHIFT) & CNA_DCOMP_ADDR0_DECOMPRESS_ADDR0__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT0					0x00001140
++#define CNA_DCOMP_AMOUNT0_DCOMP_AMOUNT0__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT0_DCOMP_AMOUNT0__SHIFT			0
++static inline uint32_t CNA_DCOMP_AMOUNT0_DCOMP_AMOUNT0(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT0_DCOMP_AMOUNT0__SHIFT) & CNA_DCOMP_AMOUNT0_DCOMP_AMOUNT0__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT1					0x00001144
++#define CNA_DCOMP_AMOUNT1_DCOMP_AMOUNT1__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT1_DCOMP_AMOUNT1__SHIFT			0
++static inline uint32_t CNA_DCOMP_AMOUNT1_DCOMP_AMOUNT1(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT1_DCOMP_AMOUNT1__SHIFT) & CNA_DCOMP_AMOUNT1_DCOMP_AMOUNT1__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT2					0x00001148
++#define CNA_DCOMP_AMOUNT2_DCOMP_AMOUNT2__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT2_DCOMP_AMOUNT2__SHIFT			0
++static inline uint32_t CNA_DCOMP_AMOUNT2_DCOMP_AMOUNT2(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT2_DCOMP_AMOUNT2__SHIFT) & CNA_DCOMP_AMOUNT2_DCOMP_AMOUNT2__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT3					0x0000114c
++#define CNA_DCOMP_AMOUNT3_DCOMP_AMOUNT3__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT3_DCOMP_AMOUNT3__SHIFT			0
++static inline uint32_t CNA_DCOMP_AMOUNT3_DCOMP_AMOUNT3(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT3_DCOMP_AMOUNT3__SHIFT) & CNA_DCOMP_AMOUNT3_DCOMP_AMOUNT3__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT4					0x00001150
++#define CNA_DCOMP_AMOUNT4_DCOMP_AMOUNT4__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT4_DCOMP_AMOUNT4__SHIFT			0
++static inline uint32_t CNA_DCOMP_AMOUNT4_DCOMP_AMOUNT4(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT4_DCOMP_AMOUNT4__SHIFT) & CNA_DCOMP_AMOUNT4_DCOMP_AMOUNT4__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT5					0x00001154
++#define CNA_DCOMP_AMOUNT5_DCOMP_AMOUNT5__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT5_DCOMP_AMOUNT5__SHIFT			0
++static inline uint32_t CNA_DCOMP_AMOUNT5_DCOMP_AMOUNT5(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT5_DCOMP_AMOUNT5__SHIFT) & CNA_DCOMP_AMOUNT5_DCOMP_AMOUNT5__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT6					0x00001158
++#define CNA_DCOMP_AMOUNT6_DCOMP_AMOUNT6__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT6_DCOMP_AMOUNT6__SHIFT			0
++static inline uint32_t CNA_DCOMP_AMOUNT6_DCOMP_AMOUNT6(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT6_DCOMP_AMOUNT6__SHIFT) & CNA_DCOMP_AMOUNT6_DCOMP_AMOUNT6__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT7					0x0000115c
++#define CNA_DCOMP_AMOUNT7_DCOMP_AMOUNT7__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT7_DCOMP_AMOUNT7__SHIFT			0
++static inline uint32_t CNA_DCOMP_AMOUNT7_DCOMP_AMOUNT7(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT7_DCOMP_AMOUNT7__SHIFT) & CNA_DCOMP_AMOUNT7_DCOMP_AMOUNT7__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT8					0x00001160
++#define CNA_DCOMP_AMOUNT8_DCOMP_AMOUNT8__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT8_DCOMP_AMOUNT8__SHIFT			0
++static inline uint32_t CNA_DCOMP_AMOUNT8_DCOMP_AMOUNT8(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT8_DCOMP_AMOUNT8__SHIFT) & CNA_DCOMP_AMOUNT8_DCOMP_AMOUNT8__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT9					0x00001164
++#define CNA_DCOMP_AMOUNT9_DCOMP_AMOUNT9__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT9_DCOMP_AMOUNT9__SHIFT			0
++static inline uint32_t CNA_DCOMP_AMOUNT9_DCOMP_AMOUNT9(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT9_DCOMP_AMOUNT9__SHIFT) & CNA_DCOMP_AMOUNT9_DCOMP_AMOUNT9__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT10					0x00001168
++#define CNA_DCOMP_AMOUNT10_DCOMP_AMOUNT10__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT10_DCOMP_AMOUNT10__SHIFT		0
++static inline uint32_t CNA_DCOMP_AMOUNT10_DCOMP_AMOUNT10(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT10_DCOMP_AMOUNT10__SHIFT) & CNA_DCOMP_AMOUNT10_DCOMP_AMOUNT10__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT11					0x0000116c
++#define CNA_DCOMP_AMOUNT11_DCOMP_AMOUNT11__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT11_DCOMP_AMOUNT11__SHIFT		0
++static inline uint32_t CNA_DCOMP_AMOUNT11_DCOMP_AMOUNT11(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT11_DCOMP_AMOUNT11__SHIFT) & CNA_DCOMP_AMOUNT11_DCOMP_AMOUNT11__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT12					0x00001170
++#define CNA_DCOMP_AMOUNT12_DCOMP_AMOUNT12__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT12_DCOMP_AMOUNT12__SHIFT		0
++static inline uint32_t CNA_DCOMP_AMOUNT12_DCOMP_AMOUNT12(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT12_DCOMP_AMOUNT12__SHIFT) & CNA_DCOMP_AMOUNT12_DCOMP_AMOUNT12__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT13					0x00001174
++#define CNA_DCOMP_AMOUNT13_DCOMP_AMOUNT13__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT13_DCOMP_AMOUNT13__SHIFT		0
++static inline uint32_t CNA_DCOMP_AMOUNT13_DCOMP_AMOUNT13(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT13_DCOMP_AMOUNT13__SHIFT) & CNA_DCOMP_AMOUNT13_DCOMP_AMOUNT13__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT14					0x00001178
++#define CNA_DCOMP_AMOUNT14_DCOMP_AMOUNT14__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT14_DCOMP_AMOUNT14__SHIFT		0
++static inline uint32_t CNA_DCOMP_AMOUNT14_DCOMP_AMOUNT14(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT14_DCOMP_AMOUNT14__SHIFT) & CNA_DCOMP_AMOUNT14_DCOMP_AMOUNT14__MASK;
++}
++
++#define REG_CNA_DCOMP_AMOUNT15					0x0000117c
++#define CNA_DCOMP_AMOUNT15_DCOMP_AMOUNT15__MASK			0xffffffff
++#define CNA_DCOMP_AMOUNT15_DCOMP_AMOUNT15__SHIFT		0
++static inline uint32_t CNA_DCOMP_AMOUNT15_DCOMP_AMOUNT15(uint32_t val)
++{
++	return ((val) << CNA_DCOMP_AMOUNT15_DCOMP_AMOUNT15__SHIFT) & CNA_DCOMP_AMOUNT15_DCOMP_AMOUNT15__MASK;
++}
++
++#define REG_CNA_CVT_CON5					0x00001180
++#define CNA_CVT_CON5_PER_CHANNEL_CVT_EN__MASK			0xffffffff
++#define CNA_CVT_CON5_PER_CHANNEL_CVT_EN__SHIFT			0
++static inline uint32_t CNA_CVT_CON5_PER_CHANNEL_CVT_EN(uint32_t val)
++{
++	return ((val) << CNA_CVT_CON5_PER_CHANNEL_CVT_EN__SHIFT) & CNA_CVT_CON5_PER_CHANNEL_CVT_EN__MASK;
++}
++
++#define REG_CNA_PAD_CON1					0x00001184
++#define CNA_PAD_CON1_PAD_VALUE__MASK				0xffffffff
++#define CNA_PAD_CON1_PAD_VALUE__SHIFT				0
++static inline uint32_t CNA_PAD_CON1_PAD_VALUE(uint32_t val)
++{
++	return ((val) << CNA_PAD_CON1_PAD_VALUE__SHIFT) & CNA_PAD_CON1_PAD_VALUE__MASK;
++}
++
++#define REG_CORE_S_STATUS					0x00003000
++#define CORE_S_STATUS_RESERVED_0__MASK				0xfffc0000
++#define CORE_S_STATUS_RESERVED_0__SHIFT				18
++static inline uint32_t CORE_S_STATUS_RESERVED_0(uint32_t val)
++{
++	return ((val) << CORE_S_STATUS_RESERVED_0__SHIFT) & CORE_S_STATUS_RESERVED_0__MASK;
++}
++#define CORE_S_STATUS_STATUS_1__MASK				0x00030000
++#define CORE_S_STATUS_STATUS_1__SHIFT				16
++static inline uint32_t CORE_S_STATUS_STATUS_1(uint32_t val)
++{
++	return ((val) << CORE_S_STATUS_STATUS_1__SHIFT) & CORE_S_STATUS_STATUS_1__MASK;
++}
++#define CORE_S_STATUS_RESERVED_1__MASK				0x0000fffc
++#define CORE_S_STATUS_RESERVED_1__SHIFT				2
++static inline uint32_t CORE_S_STATUS_RESERVED_1(uint32_t val)
++{
++	return ((val) << CORE_S_STATUS_RESERVED_1__SHIFT) & CORE_S_STATUS_RESERVED_1__MASK;
++}
++#define CORE_S_STATUS_STATUS_0__MASK				0x00000003
++#define CORE_S_STATUS_STATUS_0__SHIFT				0
++static inline uint32_t CORE_S_STATUS_STATUS_0(uint32_t val)
++{
++	return ((val) << CORE_S_STATUS_STATUS_0__SHIFT) & CORE_S_STATUS_STATUS_0__MASK;
++}
++
++#define REG_CORE_S_POINTER					0x00003004
++#define CORE_S_POINTER_RESERVED_0__MASK				0xfffe0000
++#define CORE_S_POINTER_RESERVED_0__SHIFT			17
++static inline uint32_t CORE_S_POINTER_RESERVED_0(uint32_t val)
++{
++	return ((val) << CORE_S_POINTER_RESERVED_0__SHIFT) & CORE_S_POINTER_RESERVED_0__MASK;
++}
++#define CORE_S_POINTER_EXECUTER__MASK				0x00010000
++#define CORE_S_POINTER_EXECUTER__SHIFT				16
++static inline uint32_t CORE_S_POINTER_EXECUTER(uint32_t val)
++{
++	return ((val) << CORE_S_POINTER_EXECUTER__SHIFT) & CORE_S_POINTER_EXECUTER__MASK;
++}
++#define CORE_S_POINTER_RESERVED_1__MASK				0x0000ffc0
++#define CORE_S_POINTER_RESERVED_1__SHIFT			6
++static inline uint32_t CORE_S_POINTER_RESERVED_1(uint32_t val)
++{
++	return ((val) << CORE_S_POINTER_RESERVED_1__SHIFT) & CORE_S_POINTER_RESERVED_1__MASK;
++}
++#define CORE_S_POINTER_EXECUTER_PP_CLEAR__MASK			0x00000020
++#define CORE_S_POINTER_EXECUTER_PP_CLEAR__SHIFT			5
++static inline uint32_t CORE_S_POINTER_EXECUTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << CORE_S_POINTER_EXECUTER_PP_CLEAR__SHIFT) & CORE_S_POINTER_EXECUTER_PP_CLEAR__MASK;
++}
++#define CORE_S_POINTER_POINTER_PP_CLEAR__MASK			0x00000010
++#define CORE_S_POINTER_POINTER_PP_CLEAR__SHIFT			4
++static inline uint32_t CORE_S_POINTER_POINTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << CORE_S_POINTER_POINTER_PP_CLEAR__SHIFT) & CORE_S_POINTER_POINTER_PP_CLEAR__MASK;
++}
++#define CORE_S_POINTER_POINTER_PP_MODE__MASK			0x00000008
++#define CORE_S_POINTER_POINTER_PP_MODE__SHIFT			3
++static inline uint32_t CORE_S_POINTER_POINTER_PP_MODE(uint32_t val)
++{
++	return ((val) << CORE_S_POINTER_POINTER_PP_MODE__SHIFT) & CORE_S_POINTER_POINTER_PP_MODE__MASK;
++}
++#define CORE_S_POINTER_EXECUTER_PP_EN__MASK			0x00000004
++#define CORE_S_POINTER_EXECUTER_PP_EN__SHIFT			2
++static inline uint32_t CORE_S_POINTER_EXECUTER_PP_EN(uint32_t val)
++{
++	return ((val) << CORE_S_POINTER_EXECUTER_PP_EN__SHIFT) & CORE_S_POINTER_EXECUTER_PP_EN__MASK;
++}
++#define CORE_S_POINTER_POINTER_PP_EN__MASK			0x00000002
++#define CORE_S_POINTER_POINTER_PP_EN__SHIFT			1
++static inline uint32_t CORE_S_POINTER_POINTER_PP_EN(uint32_t val)
++{
++	return ((val) << CORE_S_POINTER_POINTER_PP_EN__SHIFT) & CORE_S_POINTER_POINTER_PP_EN__MASK;
++}
++#define CORE_S_POINTER_POINTER__MASK				0x00000001
++#define CORE_S_POINTER_POINTER__SHIFT				0
++static inline uint32_t CORE_S_POINTER_POINTER(uint32_t val)
++{
++	return ((val) << CORE_S_POINTER_POINTER__SHIFT) & CORE_S_POINTER_POINTER__MASK;
++}
++
++#define REG_CORE_OPERATION_ENABLE				0x00003008
++#define CORE_OPERATION_ENABLE_RESERVED_0__MASK			0xfffffffe
++#define CORE_OPERATION_ENABLE_RESERVED_0__SHIFT			1
++static inline uint32_t CORE_OPERATION_ENABLE_RESERVED_0(uint32_t val)
++{
++	return ((val) << CORE_OPERATION_ENABLE_RESERVED_0__SHIFT) & CORE_OPERATION_ENABLE_RESERVED_0__MASK;
++}
++#define CORE_OPERATION_ENABLE_OP_EN__MASK			0x00000001
++#define CORE_OPERATION_ENABLE_OP_EN__SHIFT			0
++static inline uint32_t CORE_OPERATION_ENABLE_OP_EN(uint32_t val)
++{
++	return ((val) << CORE_OPERATION_ENABLE_OP_EN__SHIFT) & CORE_OPERATION_ENABLE_OP_EN__MASK;
++}
++
++#define REG_CORE_MAC_GATING					0x0000300c
++#define CORE_MAC_GATING_RESERVED_0__MASK			0xf8000000
++#define CORE_MAC_GATING_RESERVED_0__SHIFT			27
++static inline uint32_t CORE_MAC_GATING_RESERVED_0(uint32_t val)
++{
++	return ((val) << CORE_MAC_GATING_RESERVED_0__SHIFT) & CORE_MAC_GATING_RESERVED_0__MASK;
++}
++#define CORE_MAC_GATING_SLCG_OP_EN__MASK			0x07ffffff
++#define CORE_MAC_GATING_SLCG_OP_EN__SHIFT			0
++static inline uint32_t CORE_MAC_GATING_SLCG_OP_EN(uint32_t val)
++{
++	return ((val) << CORE_MAC_GATING_SLCG_OP_EN__SHIFT) & CORE_MAC_GATING_SLCG_OP_EN__MASK;
++}
++
++#define REG_CORE_MISC_CFG					0x00003010
++#define CORE_MISC_CFG_RESERVED_0__MASK				0xfff00000
++#define CORE_MISC_CFG_RESERVED_0__SHIFT				20
++static inline uint32_t CORE_MISC_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << CORE_MISC_CFG_RESERVED_0__SHIFT) & CORE_MISC_CFG_RESERVED_0__MASK;
++}
++#define CORE_MISC_CFG_SOFT_GATING__MASK				0x000fc000
++#define CORE_MISC_CFG_SOFT_GATING__SHIFT			14
++static inline uint32_t CORE_MISC_CFG_SOFT_GATING(uint32_t val)
++{
++	return ((val) << CORE_MISC_CFG_SOFT_GATING__SHIFT) & CORE_MISC_CFG_SOFT_GATING__MASK;
++}
++#define CORE_MISC_CFG_RESERVED_1__MASK				0x00003800
++#define CORE_MISC_CFG_RESERVED_1__SHIFT				11
++static inline uint32_t CORE_MISC_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << CORE_MISC_CFG_RESERVED_1__SHIFT) & CORE_MISC_CFG_RESERVED_1__MASK;
++}
++#define CORE_MISC_CFG_PROC_PRECISION__MASK			0x00000700
++#define CORE_MISC_CFG_PROC_PRECISION__SHIFT			8
++static inline uint32_t CORE_MISC_CFG_PROC_PRECISION(uint32_t val)
++{
++	return ((val) << CORE_MISC_CFG_PROC_PRECISION__SHIFT) & CORE_MISC_CFG_PROC_PRECISION__MASK;
++}
++#define CORE_MISC_CFG_RESERVED_2__MASK				0x000000fc
++#define CORE_MISC_CFG_RESERVED_2__SHIFT				2
++static inline uint32_t CORE_MISC_CFG_RESERVED_2(uint32_t val)
++{
++	return ((val) << CORE_MISC_CFG_RESERVED_2__SHIFT) & CORE_MISC_CFG_RESERVED_2__MASK;
++}
++#define CORE_MISC_CFG_DW_EN__MASK				0x00000002
++#define CORE_MISC_CFG_DW_EN__SHIFT				1
++static inline uint32_t CORE_MISC_CFG_DW_EN(uint32_t val)
++{
++	return ((val) << CORE_MISC_CFG_DW_EN__SHIFT) & CORE_MISC_CFG_DW_EN__MASK;
++}
++#define CORE_MISC_CFG_QD_EN__MASK				0x00000001
++#define CORE_MISC_CFG_QD_EN__SHIFT				0
++static inline uint32_t CORE_MISC_CFG_QD_EN(uint32_t val)
++{
++	return ((val) << CORE_MISC_CFG_QD_EN__SHIFT) & CORE_MISC_CFG_QD_EN__MASK;
++}
++
++#define REG_CORE_DATAOUT_SIZE_0					0x00003014
++#define CORE_DATAOUT_SIZE_0_DATAOUT_HEIGHT__MASK		0xffff0000
++#define CORE_DATAOUT_SIZE_0_DATAOUT_HEIGHT__SHIFT		16
++static inline uint32_t CORE_DATAOUT_SIZE_0_DATAOUT_HEIGHT(uint32_t val)
++{
++	return ((val) << CORE_DATAOUT_SIZE_0_DATAOUT_HEIGHT__SHIFT) & CORE_DATAOUT_SIZE_0_DATAOUT_HEIGHT__MASK;
++}
++#define CORE_DATAOUT_SIZE_0_DATAOUT_WIDTH__MASK			0x0000ffff
++#define CORE_DATAOUT_SIZE_0_DATAOUT_WIDTH__SHIFT		0
++static inline uint32_t CORE_DATAOUT_SIZE_0_DATAOUT_WIDTH(uint32_t val)
++{
++	return ((val) << CORE_DATAOUT_SIZE_0_DATAOUT_WIDTH__SHIFT) & CORE_DATAOUT_SIZE_0_DATAOUT_WIDTH__MASK;
++}
++
++#define REG_CORE_DATAOUT_SIZE_1					0x00003018
++#define CORE_DATAOUT_SIZE_1_RESERVED_0__MASK			0xffff0000
++#define CORE_DATAOUT_SIZE_1_RESERVED_0__SHIFT			16
++static inline uint32_t CORE_DATAOUT_SIZE_1_RESERVED_0(uint32_t val)
++{
++	return ((val) << CORE_DATAOUT_SIZE_1_RESERVED_0__SHIFT) & CORE_DATAOUT_SIZE_1_RESERVED_0__MASK;
++}
++#define CORE_DATAOUT_SIZE_1_DATAOUT_CHANNEL__MASK		0x0000ffff
++#define CORE_DATAOUT_SIZE_1_DATAOUT_CHANNEL__SHIFT		0
++static inline uint32_t CORE_DATAOUT_SIZE_1_DATAOUT_CHANNEL(uint32_t val)
++{
++	return ((val) << CORE_DATAOUT_SIZE_1_DATAOUT_CHANNEL__SHIFT) & CORE_DATAOUT_SIZE_1_DATAOUT_CHANNEL__MASK;
++}
++
++#define REG_CORE_CLIP_TRUNCATE					0x0000301c
++#define CORE_CLIP_TRUNCATE_RESERVED_0__MASK			0xffffff80
++#define CORE_CLIP_TRUNCATE_RESERVED_0__SHIFT			7
++static inline uint32_t CORE_CLIP_TRUNCATE_RESERVED_0(uint32_t val)
++{
++	return ((val) << CORE_CLIP_TRUNCATE_RESERVED_0__SHIFT) & CORE_CLIP_TRUNCATE_RESERVED_0__MASK;
++}
++#define CORE_CLIP_TRUNCATE_ROUND_TYPE__MASK			0x00000040
++#define CORE_CLIP_TRUNCATE_ROUND_TYPE__SHIFT			6
++static inline uint32_t CORE_CLIP_TRUNCATE_ROUND_TYPE(uint32_t val)
++{
++	return ((val) << CORE_CLIP_TRUNCATE_ROUND_TYPE__SHIFT) & CORE_CLIP_TRUNCATE_ROUND_TYPE__MASK;
++}
++#define CORE_CLIP_TRUNCATE_RESERVED_1__MASK			0x00000020
++#define CORE_CLIP_TRUNCATE_RESERVED_1__SHIFT			5
++static inline uint32_t CORE_CLIP_TRUNCATE_RESERVED_1(uint32_t val)
++{
++	return ((val) << CORE_CLIP_TRUNCATE_RESERVED_1__SHIFT) & CORE_CLIP_TRUNCATE_RESERVED_1__MASK;
++}
++#define CORE_CLIP_TRUNCATE_CLIP_TRUNCATE__MASK			0x0000001f
++#define CORE_CLIP_TRUNCATE_CLIP_TRUNCATE__SHIFT			0
++static inline uint32_t CORE_CLIP_TRUNCATE_CLIP_TRUNCATE(uint32_t val)
++{
++	return ((val) << CORE_CLIP_TRUNCATE_CLIP_TRUNCATE__SHIFT) & CORE_CLIP_TRUNCATE_CLIP_TRUNCATE__MASK;
++}
++
++#define REG_DPU_S_STATUS					0x00004000
++#define DPU_S_STATUS_RESERVED_0__MASK				0xfffc0000
++#define DPU_S_STATUS_RESERVED_0__SHIFT				18
++static inline uint32_t DPU_S_STATUS_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_S_STATUS_RESERVED_0__SHIFT) & DPU_S_STATUS_RESERVED_0__MASK;
++}
++#define DPU_S_STATUS_STATUS_1__MASK				0x00030000
++#define DPU_S_STATUS_STATUS_1__SHIFT				16
++static inline uint32_t DPU_S_STATUS_STATUS_1(uint32_t val)
++{
++	return ((val) << DPU_S_STATUS_STATUS_1__SHIFT) & DPU_S_STATUS_STATUS_1__MASK;
++}
++#define DPU_S_STATUS_RESERVED_1__MASK				0x0000fffc
++#define DPU_S_STATUS_RESERVED_1__SHIFT				2
++static inline uint32_t DPU_S_STATUS_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_S_STATUS_RESERVED_1__SHIFT) & DPU_S_STATUS_RESERVED_1__MASK;
++}
++#define DPU_S_STATUS_STATUS_0__MASK				0x00000003
++#define DPU_S_STATUS_STATUS_0__SHIFT				0
++static inline uint32_t DPU_S_STATUS_STATUS_0(uint32_t val)
++{
++	return ((val) << DPU_S_STATUS_STATUS_0__SHIFT) & DPU_S_STATUS_STATUS_0__MASK;
++}
++
++#define REG_DPU_S_POINTER					0x00004004
++#define DPU_S_POINTER_RESERVED_0__MASK				0xfffe0000
++#define DPU_S_POINTER_RESERVED_0__SHIFT				17
++static inline uint32_t DPU_S_POINTER_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_S_POINTER_RESERVED_0__SHIFT) & DPU_S_POINTER_RESERVED_0__MASK;
++}
++#define DPU_S_POINTER_EXECUTER__MASK				0x00010000
++#define DPU_S_POINTER_EXECUTER__SHIFT				16
++static inline uint32_t DPU_S_POINTER_EXECUTER(uint32_t val)
++{
++	return ((val) << DPU_S_POINTER_EXECUTER__SHIFT) & DPU_S_POINTER_EXECUTER__MASK;
++}
++#define DPU_S_POINTER_RESERVED_1__MASK				0x0000ffc0
++#define DPU_S_POINTER_RESERVED_1__SHIFT				6
++static inline uint32_t DPU_S_POINTER_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_S_POINTER_RESERVED_1__SHIFT) & DPU_S_POINTER_RESERVED_1__MASK;
++}
++#define DPU_S_POINTER_EXECUTER_PP_CLEAR__MASK			0x00000020
++#define DPU_S_POINTER_EXECUTER_PP_CLEAR__SHIFT			5
++static inline uint32_t DPU_S_POINTER_EXECUTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << DPU_S_POINTER_EXECUTER_PP_CLEAR__SHIFT) & DPU_S_POINTER_EXECUTER_PP_CLEAR__MASK;
++}
++#define DPU_S_POINTER_POINTER_PP_CLEAR__MASK			0x00000010
++#define DPU_S_POINTER_POINTER_PP_CLEAR__SHIFT			4
++static inline uint32_t DPU_S_POINTER_POINTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << DPU_S_POINTER_POINTER_PP_CLEAR__SHIFT) & DPU_S_POINTER_POINTER_PP_CLEAR__MASK;
++}
++#define DPU_S_POINTER_POINTER_PP_MODE__MASK			0x00000008
++#define DPU_S_POINTER_POINTER_PP_MODE__SHIFT			3
++static inline uint32_t DPU_S_POINTER_POINTER_PP_MODE(uint32_t val)
++{
++	return ((val) << DPU_S_POINTER_POINTER_PP_MODE__SHIFT) & DPU_S_POINTER_POINTER_PP_MODE__MASK;
++}
++#define DPU_S_POINTER_EXECUTER_PP_EN__MASK			0x00000004
++#define DPU_S_POINTER_EXECUTER_PP_EN__SHIFT			2
++static inline uint32_t DPU_S_POINTER_EXECUTER_PP_EN(uint32_t val)
++{
++	return ((val) << DPU_S_POINTER_EXECUTER_PP_EN__SHIFT) & DPU_S_POINTER_EXECUTER_PP_EN__MASK;
++}
++#define DPU_S_POINTER_POINTER_PP_EN__MASK			0x00000002
++#define DPU_S_POINTER_POINTER_PP_EN__SHIFT			1
++static inline uint32_t DPU_S_POINTER_POINTER_PP_EN(uint32_t val)
++{
++	return ((val) << DPU_S_POINTER_POINTER_PP_EN__SHIFT) & DPU_S_POINTER_POINTER_PP_EN__MASK;
++}
++#define DPU_S_POINTER_POINTER__MASK				0x00000001
++#define DPU_S_POINTER_POINTER__SHIFT				0
++static inline uint32_t DPU_S_POINTER_POINTER(uint32_t val)
++{
++	return ((val) << DPU_S_POINTER_POINTER__SHIFT) & DPU_S_POINTER_POINTER__MASK;
++}
++
++#define REG_DPU_OPERATION_ENABLE				0x00004008
++#define DPU_OPERATION_ENABLE_RESERVED_0__MASK			0xfffffffe
++#define DPU_OPERATION_ENABLE_RESERVED_0__SHIFT			1
++static inline uint32_t DPU_OPERATION_ENABLE_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_OPERATION_ENABLE_RESERVED_0__SHIFT) & DPU_OPERATION_ENABLE_RESERVED_0__MASK;
++}
++#define DPU_OPERATION_ENABLE_OP_EN__MASK			0x00000001
++#define DPU_OPERATION_ENABLE_OP_EN__SHIFT			0
++static inline uint32_t DPU_OPERATION_ENABLE_OP_EN(uint32_t val)
++{
++	return ((val) << DPU_OPERATION_ENABLE_OP_EN__SHIFT) & DPU_OPERATION_ENABLE_OP_EN__MASK;
++}
++
++#define REG_DPU_FEATURE_MODE_CFG				0x0000400c
++#define DPU_FEATURE_MODE_CFG_COMB_USE__MASK			0x80000000
++#define DPU_FEATURE_MODE_CFG_COMB_USE__SHIFT			31
++static inline uint32_t DPU_FEATURE_MODE_CFG_COMB_USE(uint32_t val)
++{
++	return ((val) << DPU_FEATURE_MODE_CFG_COMB_USE__SHIFT) & DPU_FEATURE_MODE_CFG_COMB_USE__MASK;
++}
++#define DPU_FEATURE_MODE_CFG_TP_EN__MASK			0x40000000
++#define DPU_FEATURE_MODE_CFG_TP_EN__SHIFT			30
++static inline uint32_t DPU_FEATURE_MODE_CFG_TP_EN(uint32_t val)
++{
++	return ((val) << DPU_FEATURE_MODE_CFG_TP_EN__SHIFT) & DPU_FEATURE_MODE_CFG_TP_EN__MASK;
++}
++#define DPU_FEATURE_MODE_CFG_RGP_TYPE__MASK			0x3c000000
++#define DPU_FEATURE_MODE_CFG_RGP_TYPE__SHIFT			26
++static inline uint32_t DPU_FEATURE_MODE_CFG_RGP_TYPE(uint32_t val)
++{
++	return ((val) << DPU_FEATURE_MODE_CFG_RGP_TYPE__SHIFT) & DPU_FEATURE_MODE_CFG_RGP_TYPE__MASK;
++}
++#define DPU_FEATURE_MODE_CFG_NONALIGN__MASK			0x02000000
++#define DPU_FEATURE_MODE_CFG_NONALIGN__SHIFT			25
++static inline uint32_t DPU_FEATURE_MODE_CFG_NONALIGN(uint32_t val)
++{
++	return ((val) << DPU_FEATURE_MODE_CFG_NONALIGN__SHIFT) & DPU_FEATURE_MODE_CFG_NONALIGN__MASK;
++}
++#define DPU_FEATURE_MODE_CFG_SURF_LEN__MASK			0x01fffe00
++#define DPU_FEATURE_MODE_CFG_SURF_LEN__SHIFT			9
++static inline uint32_t DPU_FEATURE_MODE_CFG_SURF_LEN(uint32_t val)
++{
++	return ((val) << DPU_FEATURE_MODE_CFG_SURF_LEN__SHIFT) & DPU_FEATURE_MODE_CFG_SURF_LEN__MASK;
++}
++#define DPU_FEATURE_MODE_CFG_BURST_LEN__MASK			0x000001e0
++#define DPU_FEATURE_MODE_CFG_BURST_LEN__SHIFT			5
++static inline uint32_t DPU_FEATURE_MODE_CFG_BURST_LEN(uint32_t val)
++{
++	return ((val) << DPU_FEATURE_MODE_CFG_BURST_LEN__SHIFT) & DPU_FEATURE_MODE_CFG_BURST_LEN__MASK;
++}
++#define DPU_FEATURE_MODE_CFG_CONV_MODE__MASK			0x00000018
++#define DPU_FEATURE_MODE_CFG_CONV_MODE__SHIFT			3
++static inline uint32_t DPU_FEATURE_MODE_CFG_CONV_MODE(uint32_t val)
++{
++	return ((val) << DPU_FEATURE_MODE_CFG_CONV_MODE__SHIFT) & DPU_FEATURE_MODE_CFG_CONV_MODE__MASK;
++}
++#define DPU_FEATURE_MODE_CFG_OUTPUT_MODE__MASK			0x00000006
++#define DPU_FEATURE_MODE_CFG_OUTPUT_MODE__SHIFT			1
++static inline uint32_t DPU_FEATURE_MODE_CFG_OUTPUT_MODE(uint32_t val)
++{
++	return ((val) << DPU_FEATURE_MODE_CFG_OUTPUT_MODE__SHIFT) & DPU_FEATURE_MODE_CFG_OUTPUT_MODE__MASK;
++}
++#define DPU_FEATURE_MODE_CFG_FLYING_MODE__MASK			0x00000001
++#define DPU_FEATURE_MODE_CFG_FLYING_MODE__SHIFT			0
++static inline uint32_t DPU_FEATURE_MODE_CFG_FLYING_MODE(uint32_t val)
++{
++	return ((val) << DPU_FEATURE_MODE_CFG_FLYING_MODE__SHIFT) & DPU_FEATURE_MODE_CFG_FLYING_MODE__MASK;
++}
++
++#define REG_DPU_DATA_FORMAT					0x00004010
++#define DPU_DATA_FORMAT_OUT_PRECISION__MASK			0xe0000000
++#define DPU_DATA_FORMAT_OUT_PRECISION__SHIFT			29
++static inline uint32_t DPU_DATA_FORMAT_OUT_PRECISION(uint32_t val)
++{
++	return ((val) << DPU_DATA_FORMAT_OUT_PRECISION__SHIFT) & DPU_DATA_FORMAT_OUT_PRECISION__MASK;
++}
++#define DPU_DATA_FORMAT_IN_PRECISION__MASK			0x1c000000
++#define DPU_DATA_FORMAT_IN_PRECISION__SHIFT			26
++static inline uint32_t DPU_DATA_FORMAT_IN_PRECISION(uint32_t val)
++{
++	return ((val) << DPU_DATA_FORMAT_IN_PRECISION__SHIFT) & DPU_DATA_FORMAT_IN_PRECISION__MASK;
++}
++#define DPU_DATA_FORMAT_EW_TRUNCATE_NEG__MASK			0x03ff0000
++#define DPU_DATA_FORMAT_EW_TRUNCATE_NEG__SHIFT			16
++static inline uint32_t DPU_DATA_FORMAT_EW_TRUNCATE_NEG(uint32_t val)
++{
++	return ((val) << DPU_DATA_FORMAT_EW_TRUNCATE_NEG__SHIFT) & DPU_DATA_FORMAT_EW_TRUNCATE_NEG__MASK;
++}
++#define DPU_DATA_FORMAT_BN_MUL_SHIFT_VALUE_NEG__MASK		0x0000fc00
++#define DPU_DATA_FORMAT_BN_MUL_SHIFT_VALUE_NEG__SHIFT		10
++static inline uint32_t DPU_DATA_FORMAT_BN_MUL_SHIFT_VALUE_NEG(uint32_t val)
++{
++	return ((val) << DPU_DATA_FORMAT_BN_MUL_SHIFT_VALUE_NEG__SHIFT) & DPU_DATA_FORMAT_BN_MUL_SHIFT_VALUE_NEG__MASK;
++}
++#define DPU_DATA_FORMAT_BS_MUL_SHIFT_VALUE_NEG__MASK		0x000003f0
++#define DPU_DATA_FORMAT_BS_MUL_SHIFT_VALUE_NEG__SHIFT		4
++static inline uint32_t DPU_DATA_FORMAT_BS_MUL_SHIFT_VALUE_NEG(uint32_t val)
++{
++	return ((val) << DPU_DATA_FORMAT_BS_MUL_SHIFT_VALUE_NEG__SHIFT) & DPU_DATA_FORMAT_BS_MUL_SHIFT_VALUE_NEG__MASK;
++}
++#define DPU_DATA_FORMAT_MC_SURF_OUT__MASK			0x00000008
++#define DPU_DATA_FORMAT_MC_SURF_OUT__SHIFT			3
++static inline uint32_t DPU_DATA_FORMAT_MC_SURF_OUT(uint32_t val)
++{
++	return ((val) << DPU_DATA_FORMAT_MC_SURF_OUT__SHIFT) & DPU_DATA_FORMAT_MC_SURF_OUT__MASK;
++}
++#define DPU_DATA_FORMAT_PROC_PRECISION__MASK			0x00000007
++#define DPU_DATA_FORMAT_PROC_PRECISION__SHIFT			0
++static inline uint32_t DPU_DATA_FORMAT_PROC_PRECISION(uint32_t val)
++{
++	return ((val) << DPU_DATA_FORMAT_PROC_PRECISION__SHIFT) & DPU_DATA_FORMAT_PROC_PRECISION__MASK;
++}
++
++#define REG_DPU_OFFSET_PEND					0x00004014
++#define DPU_OFFSET_PEND_RESERVED_0__MASK			0xffff0000
++#define DPU_OFFSET_PEND_RESERVED_0__SHIFT			16
++static inline uint32_t DPU_OFFSET_PEND_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_OFFSET_PEND_RESERVED_0__SHIFT) & DPU_OFFSET_PEND_RESERVED_0__MASK;
++}
++#define DPU_OFFSET_PEND_OFFSET_PEND__MASK			0x0000ffff
++#define DPU_OFFSET_PEND_OFFSET_PEND__SHIFT			0
++static inline uint32_t DPU_OFFSET_PEND_OFFSET_PEND(uint32_t val)
++{
++	return ((val) << DPU_OFFSET_PEND_OFFSET_PEND__SHIFT) & DPU_OFFSET_PEND_OFFSET_PEND__MASK;
++}
++
++#define REG_DPU_DST_BASE_ADDR					0x00004020
++#define DPU_DST_BASE_ADDR_DST_BASE_ADDR__MASK			0xffffffff
++#define DPU_DST_BASE_ADDR_DST_BASE_ADDR__SHIFT			0
++static inline uint32_t DPU_DST_BASE_ADDR_DST_BASE_ADDR(uint32_t val)
++{
++	return ((val) << DPU_DST_BASE_ADDR_DST_BASE_ADDR__SHIFT) & DPU_DST_BASE_ADDR_DST_BASE_ADDR__MASK;
++}
++
++#define REG_DPU_DST_SURF_STRIDE					0x00004024
++#define DPU_DST_SURF_STRIDE_DST_SURF_STRIDE__MASK		0xfffffff0
++#define DPU_DST_SURF_STRIDE_DST_SURF_STRIDE__SHIFT		4
++static inline uint32_t DPU_DST_SURF_STRIDE_DST_SURF_STRIDE(uint32_t val)
++{
++	return ((val) << DPU_DST_SURF_STRIDE_DST_SURF_STRIDE__SHIFT) & DPU_DST_SURF_STRIDE_DST_SURF_STRIDE__MASK;
++}
++#define DPU_DST_SURF_STRIDE_RESERVED_0__MASK			0x0000000f
++#define DPU_DST_SURF_STRIDE_RESERVED_0__SHIFT			0
++static inline uint32_t DPU_DST_SURF_STRIDE_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_DST_SURF_STRIDE_RESERVED_0__SHIFT) & DPU_DST_SURF_STRIDE_RESERVED_0__MASK;
++}
++
++#define REG_DPU_DATA_CUBE_WIDTH					0x00004030
++#define DPU_DATA_CUBE_WIDTH_RESERVED_0__MASK			0xffffe000
++#define DPU_DATA_CUBE_WIDTH_RESERVED_0__SHIFT			13
++static inline uint32_t DPU_DATA_CUBE_WIDTH_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_WIDTH_RESERVED_0__SHIFT) & DPU_DATA_CUBE_WIDTH_RESERVED_0__MASK;
++}
++#define DPU_DATA_CUBE_WIDTH_WIDTH__MASK				0x00001fff
++#define DPU_DATA_CUBE_WIDTH_WIDTH__SHIFT			0
++static inline uint32_t DPU_DATA_CUBE_WIDTH_WIDTH(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_WIDTH_WIDTH__SHIFT) & DPU_DATA_CUBE_WIDTH_WIDTH__MASK;
++}
++
++#define REG_DPU_DATA_CUBE_HEIGHT				0x00004034
++#define DPU_DATA_CUBE_HEIGHT_RESERVED_0__MASK			0xfe000000
++#define DPU_DATA_CUBE_HEIGHT_RESERVED_0__SHIFT			25
++static inline uint32_t DPU_DATA_CUBE_HEIGHT_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_HEIGHT_RESERVED_0__SHIFT) & DPU_DATA_CUBE_HEIGHT_RESERVED_0__MASK;
++}
++#define DPU_DATA_CUBE_HEIGHT_MINMAX_CTL__MASK			0x01c00000
++#define DPU_DATA_CUBE_HEIGHT_MINMAX_CTL__SHIFT			22
++static inline uint32_t DPU_DATA_CUBE_HEIGHT_MINMAX_CTL(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_HEIGHT_MINMAX_CTL__SHIFT) & DPU_DATA_CUBE_HEIGHT_MINMAX_CTL__MASK;
++}
++#define DPU_DATA_CUBE_HEIGHT_RESERVED_1__MASK			0x003fe000
++#define DPU_DATA_CUBE_HEIGHT_RESERVED_1__SHIFT			13
++static inline uint32_t DPU_DATA_CUBE_HEIGHT_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_HEIGHT_RESERVED_1__SHIFT) & DPU_DATA_CUBE_HEIGHT_RESERVED_1__MASK;
++}
++#define DPU_DATA_CUBE_HEIGHT_HEIGHT__MASK			0x00001fff
++#define DPU_DATA_CUBE_HEIGHT_HEIGHT__SHIFT			0
++static inline uint32_t DPU_DATA_CUBE_HEIGHT_HEIGHT(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_HEIGHT_HEIGHT__SHIFT) & DPU_DATA_CUBE_HEIGHT_HEIGHT__MASK;
++}
++
++#define REG_DPU_DATA_CUBE_NOTCH_ADDR				0x00004038
++#define DPU_DATA_CUBE_NOTCH_ADDR_RESERVED_0__MASK		0xe0000000
++#define DPU_DATA_CUBE_NOTCH_ADDR_RESERVED_0__SHIFT		29
++static inline uint32_t DPU_DATA_CUBE_NOTCH_ADDR_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_NOTCH_ADDR_RESERVED_0__SHIFT) & DPU_DATA_CUBE_NOTCH_ADDR_RESERVED_0__MASK;
++}
++#define DPU_DATA_CUBE_NOTCH_ADDR_NOTCH_ADDR_1__MASK		0x1fff0000
++#define DPU_DATA_CUBE_NOTCH_ADDR_NOTCH_ADDR_1__SHIFT		16
++static inline uint32_t DPU_DATA_CUBE_NOTCH_ADDR_NOTCH_ADDR_1(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_NOTCH_ADDR_NOTCH_ADDR_1__SHIFT) & DPU_DATA_CUBE_NOTCH_ADDR_NOTCH_ADDR_1__MASK;
++}
++#define DPU_DATA_CUBE_NOTCH_ADDR_RESERVED_1__MASK		0x0000e000
++#define DPU_DATA_CUBE_NOTCH_ADDR_RESERVED_1__SHIFT		13
++static inline uint32_t DPU_DATA_CUBE_NOTCH_ADDR_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_NOTCH_ADDR_RESERVED_1__SHIFT) & DPU_DATA_CUBE_NOTCH_ADDR_RESERVED_1__MASK;
++}
++#define DPU_DATA_CUBE_NOTCH_ADDR_NOTCH_ADDR_0__MASK		0x00001fff
++#define DPU_DATA_CUBE_NOTCH_ADDR_NOTCH_ADDR_0__SHIFT		0
++static inline uint32_t DPU_DATA_CUBE_NOTCH_ADDR_NOTCH_ADDR_0(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_NOTCH_ADDR_NOTCH_ADDR_0__SHIFT) & DPU_DATA_CUBE_NOTCH_ADDR_NOTCH_ADDR_0__MASK;
++}
++
++#define REG_DPU_DATA_CUBE_CHANNEL				0x0000403c
++#define DPU_DATA_CUBE_CHANNEL_RESERVED_0__MASK			0xe0000000
++#define DPU_DATA_CUBE_CHANNEL_RESERVED_0__SHIFT			29
++static inline uint32_t DPU_DATA_CUBE_CHANNEL_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_CHANNEL_RESERVED_0__SHIFT) & DPU_DATA_CUBE_CHANNEL_RESERVED_0__MASK;
++}
++#define DPU_DATA_CUBE_CHANNEL_ORIG_CHANNEL__MASK		0x1fff0000
++#define DPU_DATA_CUBE_CHANNEL_ORIG_CHANNEL__SHIFT		16
++static inline uint32_t DPU_DATA_CUBE_CHANNEL_ORIG_CHANNEL(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_CHANNEL_ORIG_CHANNEL__SHIFT) & DPU_DATA_CUBE_CHANNEL_ORIG_CHANNEL__MASK;
++}
++#define DPU_DATA_CUBE_CHANNEL_RESERVED_1__MASK			0x0000e000
++#define DPU_DATA_CUBE_CHANNEL_RESERVED_1__SHIFT			13
++static inline uint32_t DPU_DATA_CUBE_CHANNEL_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_CHANNEL_RESERVED_1__SHIFT) & DPU_DATA_CUBE_CHANNEL_RESERVED_1__MASK;
++}
++#define DPU_DATA_CUBE_CHANNEL_CHANNEL__MASK			0x00001fff
++#define DPU_DATA_CUBE_CHANNEL_CHANNEL__SHIFT			0
++static inline uint32_t DPU_DATA_CUBE_CHANNEL_CHANNEL(uint32_t val)
++{
++	return ((val) << DPU_DATA_CUBE_CHANNEL_CHANNEL__SHIFT) & DPU_DATA_CUBE_CHANNEL_CHANNEL__MASK;
++}
++
++#define REG_DPU_BS_CFG						0x00004040
++#define DPU_BS_CFG_RESERVED_0__MASK				0xfff00000
++#define DPU_BS_CFG_RESERVED_0__SHIFT				20
++static inline uint32_t DPU_BS_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_BS_CFG_RESERVED_0__SHIFT) & DPU_BS_CFG_RESERVED_0__MASK;
++}
++#define DPU_BS_CFG_BS_ALU_ALGO__MASK				0x000f0000
++#define DPU_BS_CFG_BS_ALU_ALGO__SHIFT				16
++static inline uint32_t DPU_BS_CFG_BS_ALU_ALGO(uint32_t val)
++{
++	return ((val) << DPU_BS_CFG_BS_ALU_ALGO__SHIFT) & DPU_BS_CFG_BS_ALU_ALGO__MASK;
++}
++#define DPU_BS_CFG_RESERVED_1__MASK				0x0000fe00
++#define DPU_BS_CFG_RESERVED_1__SHIFT				9
++static inline uint32_t DPU_BS_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_BS_CFG_RESERVED_1__SHIFT) & DPU_BS_CFG_RESERVED_1__MASK;
++}
++#define DPU_BS_CFG_BS_ALU_SRC__MASK				0x00000100
++#define DPU_BS_CFG_BS_ALU_SRC__SHIFT				8
++static inline uint32_t DPU_BS_CFG_BS_ALU_SRC(uint32_t val)
++{
++	return ((val) << DPU_BS_CFG_BS_ALU_SRC__SHIFT) & DPU_BS_CFG_BS_ALU_SRC__MASK;
++}
++#define DPU_BS_CFG_BS_RELUX_EN__MASK				0x00000080
++#define DPU_BS_CFG_BS_RELUX_EN__SHIFT				7
++static inline uint32_t DPU_BS_CFG_BS_RELUX_EN(uint32_t val)
++{
++	return ((val) << DPU_BS_CFG_BS_RELUX_EN__SHIFT) & DPU_BS_CFG_BS_RELUX_EN__MASK;
++}
++#define DPU_BS_CFG_BS_RELU_BYPASS__MASK				0x00000040
++#define DPU_BS_CFG_BS_RELU_BYPASS__SHIFT			6
++static inline uint32_t DPU_BS_CFG_BS_RELU_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_BS_CFG_BS_RELU_BYPASS__SHIFT) & DPU_BS_CFG_BS_RELU_BYPASS__MASK;
++}
++#define DPU_BS_CFG_BS_MUL_PRELU__MASK				0x00000020
++#define DPU_BS_CFG_BS_MUL_PRELU__SHIFT				5
++static inline uint32_t DPU_BS_CFG_BS_MUL_PRELU(uint32_t val)
++{
++	return ((val) << DPU_BS_CFG_BS_MUL_PRELU__SHIFT) & DPU_BS_CFG_BS_MUL_PRELU__MASK;
++}
++#define DPU_BS_CFG_BS_MUL_BYPASS__MASK				0x00000010
++#define DPU_BS_CFG_BS_MUL_BYPASS__SHIFT				4
++static inline uint32_t DPU_BS_CFG_BS_MUL_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_BS_CFG_BS_MUL_BYPASS__SHIFT) & DPU_BS_CFG_BS_MUL_BYPASS__MASK;
++}
++#define DPU_BS_CFG_RESERVED_2__MASK				0x0000000c
++#define DPU_BS_CFG_RESERVED_2__SHIFT				2
++static inline uint32_t DPU_BS_CFG_RESERVED_2(uint32_t val)
++{
++	return ((val) << DPU_BS_CFG_RESERVED_2__SHIFT) & DPU_BS_CFG_RESERVED_2__MASK;
++}
++#define DPU_BS_CFG_BS_ALU_BYPASS__MASK				0x00000002
++#define DPU_BS_CFG_BS_ALU_BYPASS__SHIFT				1
++static inline uint32_t DPU_BS_CFG_BS_ALU_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_BS_CFG_BS_ALU_BYPASS__SHIFT) & DPU_BS_CFG_BS_ALU_BYPASS__MASK;
++}
++#define DPU_BS_CFG_BS_BYPASS__MASK				0x00000001
++#define DPU_BS_CFG_BS_BYPASS__SHIFT				0
++static inline uint32_t DPU_BS_CFG_BS_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_BS_CFG_BS_BYPASS__SHIFT) & DPU_BS_CFG_BS_BYPASS__MASK;
++}
++
++#define REG_DPU_BS_ALU_CFG					0x00004044
++#define DPU_BS_ALU_CFG_BS_ALU_OPERAND__MASK			0xffffffff
++#define DPU_BS_ALU_CFG_BS_ALU_OPERAND__SHIFT			0
++static inline uint32_t DPU_BS_ALU_CFG_BS_ALU_OPERAND(uint32_t val)
++{
++	return ((val) << DPU_BS_ALU_CFG_BS_ALU_OPERAND__SHIFT) & DPU_BS_ALU_CFG_BS_ALU_OPERAND__MASK;
++}
++
++#define REG_DPU_BS_MUL_CFG					0x00004048
++#define DPU_BS_MUL_CFG_BS_MUL_OPERAND__MASK			0xffff0000
++#define DPU_BS_MUL_CFG_BS_MUL_OPERAND__SHIFT			16
++static inline uint32_t DPU_BS_MUL_CFG_BS_MUL_OPERAND(uint32_t val)
++{
++	return ((val) << DPU_BS_MUL_CFG_BS_MUL_OPERAND__SHIFT) & DPU_BS_MUL_CFG_BS_MUL_OPERAND__MASK;
++}
++#define DPU_BS_MUL_CFG_RESERVED_0__MASK				0x0000c000
++#define DPU_BS_MUL_CFG_RESERVED_0__SHIFT			14
++static inline uint32_t DPU_BS_MUL_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_BS_MUL_CFG_RESERVED_0__SHIFT) & DPU_BS_MUL_CFG_RESERVED_0__MASK;
++}
++#define DPU_BS_MUL_CFG_BS_MUL_SHIFT_VALUE__MASK			0x00003f00
++#define DPU_BS_MUL_CFG_BS_MUL_SHIFT_VALUE__SHIFT		8
++static inline uint32_t DPU_BS_MUL_CFG_BS_MUL_SHIFT_VALUE(uint32_t val)
++{
++	return ((val) << DPU_BS_MUL_CFG_BS_MUL_SHIFT_VALUE__SHIFT) & DPU_BS_MUL_CFG_BS_MUL_SHIFT_VALUE__MASK;
++}
++#define DPU_BS_MUL_CFG_RESERVED_1__MASK				0x000000fc
++#define DPU_BS_MUL_CFG_RESERVED_1__SHIFT			2
++static inline uint32_t DPU_BS_MUL_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_BS_MUL_CFG_RESERVED_1__SHIFT) & DPU_BS_MUL_CFG_RESERVED_1__MASK;
++}
++#define DPU_BS_MUL_CFG_BS_TRUNCATE_SRC__MASK			0x00000002
++#define DPU_BS_MUL_CFG_BS_TRUNCATE_SRC__SHIFT			1
++static inline uint32_t DPU_BS_MUL_CFG_BS_TRUNCATE_SRC(uint32_t val)
++{
++	return ((val) << DPU_BS_MUL_CFG_BS_TRUNCATE_SRC__SHIFT) & DPU_BS_MUL_CFG_BS_TRUNCATE_SRC__MASK;
++}
++#define DPU_BS_MUL_CFG_BS_MUL_SRC__MASK				0x00000001
++#define DPU_BS_MUL_CFG_BS_MUL_SRC__SHIFT			0
++static inline uint32_t DPU_BS_MUL_CFG_BS_MUL_SRC(uint32_t val)
++{
++	return ((val) << DPU_BS_MUL_CFG_BS_MUL_SRC__SHIFT) & DPU_BS_MUL_CFG_BS_MUL_SRC__MASK;
++}
++
++#define REG_DPU_BS_RELUX_CMP_VALUE				0x0000404c
++#define DPU_BS_RELUX_CMP_VALUE_BS_RELUX_CMP_DAT__MASK		0xffffffff
++#define DPU_BS_RELUX_CMP_VALUE_BS_RELUX_CMP_DAT__SHIFT		0
++static inline uint32_t DPU_BS_RELUX_CMP_VALUE_BS_RELUX_CMP_DAT(uint32_t val)
++{
++	return ((val) << DPU_BS_RELUX_CMP_VALUE_BS_RELUX_CMP_DAT__SHIFT) & DPU_BS_RELUX_CMP_VALUE_BS_RELUX_CMP_DAT__MASK;
++}
++
++#define REG_DPU_BS_OW_CFG					0x00004050
++#define DPU_BS_OW_CFG_RGP_CNTER__MASK				0xf0000000
++#define DPU_BS_OW_CFG_RGP_CNTER__SHIFT				28
++static inline uint32_t DPU_BS_OW_CFG_RGP_CNTER(uint32_t val)
++{
++	return ((val) << DPU_BS_OW_CFG_RGP_CNTER__SHIFT) & DPU_BS_OW_CFG_RGP_CNTER__MASK;
++}
++#define DPU_BS_OW_CFG_TP_ORG_EN__MASK				0x08000000
++#define DPU_BS_OW_CFG_TP_ORG_EN__SHIFT				27
++static inline uint32_t DPU_BS_OW_CFG_TP_ORG_EN(uint32_t val)
++{
++	return ((val) << DPU_BS_OW_CFG_TP_ORG_EN__SHIFT) & DPU_BS_OW_CFG_TP_ORG_EN__MASK;
++}
++#define DPU_BS_OW_CFG_RESERVED_0__MASK				0x07fff800
++#define DPU_BS_OW_CFG_RESERVED_0__SHIFT				11
++static inline uint32_t DPU_BS_OW_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_BS_OW_CFG_RESERVED_0__SHIFT) & DPU_BS_OW_CFG_RESERVED_0__MASK;
++}
++#define DPU_BS_OW_CFG_SIZE_E_2__MASK				0x00000700
++#define DPU_BS_OW_CFG_SIZE_E_2__SHIFT				8
++static inline uint32_t DPU_BS_OW_CFG_SIZE_E_2(uint32_t val)
++{
++	return ((val) << DPU_BS_OW_CFG_SIZE_E_2__SHIFT) & DPU_BS_OW_CFG_SIZE_E_2__MASK;
++}
++#define DPU_BS_OW_CFG_SIZE_E_1__MASK				0x000000e0
++#define DPU_BS_OW_CFG_SIZE_E_1__SHIFT				5
++static inline uint32_t DPU_BS_OW_CFG_SIZE_E_1(uint32_t val)
++{
++	return ((val) << DPU_BS_OW_CFG_SIZE_E_1__SHIFT) & DPU_BS_OW_CFG_SIZE_E_1__MASK;
++}
++#define DPU_BS_OW_CFG_SIZE_E_0__MASK				0x0000001c
++#define DPU_BS_OW_CFG_SIZE_E_0__SHIFT				2
++static inline uint32_t DPU_BS_OW_CFG_SIZE_E_0(uint32_t val)
++{
++	return ((val) << DPU_BS_OW_CFG_SIZE_E_0__SHIFT) & DPU_BS_OW_CFG_SIZE_E_0__MASK;
++}
++#define DPU_BS_OW_CFG_OD_BYPASS__MASK				0x00000002
++#define DPU_BS_OW_CFG_OD_BYPASS__SHIFT				1
++static inline uint32_t DPU_BS_OW_CFG_OD_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_BS_OW_CFG_OD_BYPASS__SHIFT) & DPU_BS_OW_CFG_OD_BYPASS__MASK;
++}
++#define DPU_BS_OW_CFG_OW_SRC__MASK				0x00000001
++#define DPU_BS_OW_CFG_OW_SRC__SHIFT				0
++static inline uint32_t DPU_BS_OW_CFG_OW_SRC(uint32_t val)
++{
++	return ((val) << DPU_BS_OW_CFG_OW_SRC__SHIFT) & DPU_BS_OW_CFG_OW_SRC__MASK;
++}
++
++#define REG_DPU_BS_OW_OP					0x00004054
++#define DPU_BS_OW_OP_RESERVED_0__MASK				0xffff0000
++#define DPU_BS_OW_OP_RESERVED_0__SHIFT				16
++static inline uint32_t DPU_BS_OW_OP_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_BS_OW_OP_RESERVED_0__SHIFT) & DPU_BS_OW_OP_RESERVED_0__MASK;
++}
++#define DPU_BS_OW_OP_OW_OP__MASK				0x0000ffff
++#define DPU_BS_OW_OP_OW_OP__SHIFT				0
++static inline uint32_t DPU_BS_OW_OP_OW_OP(uint32_t val)
++{
++	return ((val) << DPU_BS_OW_OP_OW_OP__SHIFT) & DPU_BS_OW_OP_OW_OP__MASK;
++}
++
++#define REG_DPU_WDMA_SIZE_0					0x00004058
++#define DPU_WDMA_SIZE_0_RESERVED_0__MASK			0xf0000000
++#define DPU_WDMA_SIZE_0_RESERVED_0__SHIFT			28
++static inline uint32_t DPU_WDMA_SIZE_0_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_WDMA_SIZE_0_RESERVED_0__SHIFT) & DPU_WDMA_SIZE_0_RESERVED_0__MASK;
++}
++#define DPU_WDMA_SIZE_0_TP_PRECISION__MASK			0x08000000
++#define DPU_WDMA_SIZE_0_TP_PRECISION__SHIFT			27
++static inline uint32_t DPU_WDMA_SIZE_0_TP_PRECISION(uint32_t val)
++{
++	return ((val) << DPU_WDMA_SIZE_0_TP_PRECISION__SHIFT) & DPU_WDMA_SIZE_0_TP_PRECISION__MASK;
++}
++#define DPU_WDMA_SIZE_0_SIZE_C_WDMA__MASK			0x07ff0000
++#define DPU_WDMA_SIZE_0_SIZE_C_WDMA__SHIFT			16
++static inline uint32_t DPU_WDMA_SIZE_0_SIZE_C_WDMA(uint32_t val)
++{
++	return ((val) << DPU_WDMA_SIZE_0_SIZE_C_WDMA__SHIFT) & DPU_WDMA_SIZE_0_SIZE_C_WDMA__MASK;
++}
++#define DPU_WDMA_SIZE_0_RESERVED_1__MASK			0x0000e000
++#define DPU_WDMA_SIZE_0_RESERVED_1__SHIFT			13
++static inline uint32_t DPU_WDMA_SIZE_0_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_WDMA_SIZE_0_RESERVED_1__SHIFT) & DPU_WDMA_SIZE_0_RESERVED_1__MASK;
++}
++#define DPU_WDMA_SIZE_0_CHANNEL_WDMA__MASK			0x00001fff
++#define DPU_WDMA_SIZE_0_CHANNEL_WDMA__SHIFT			0
++static inline uint32_t DPU_WDMA_SIZE_0_CHANNEL_WDMA(uint32_t val)
++{
++	return ((val) << DPU_WDMA_SIZE_0_CHANNEL_WDMA__SHIFT) & DPU_WDMA_SIZE_0_CHANNEL_WDMA__MASK;
++}
++
++#define REG_DPU_WDMA_SIZE_1					0x0000405c
++#define DPU_WDMA_SIZE_1_RESERVED_0__MASK			0xe0000000
++#define DPU_WDMA_SIZE_1_RESERVED_0__SHIFT			29
++static inline uint32_t DPU_WDMA_SIZE_1_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_WDMA_SIZE_1_RESERVED_0__SHIFT) & DPU_WDMA_SIZE_1_RESERVED_0__MASK;
++}
++#define DPU_WDMA_SIZE_1_HEIGHT_WDMA__MASK			0x1fff0000
++#define DPU_WDMA_SIZE_1_HEIGHT_WDMA__SHIFT			16
++static inline uint32_t DPU_WDMA_SIZE_1_HEIGHT_WDMA(uint32_t val)
++{
++	return ((val) << DPU_WDMA_SIZE_1_HEIGHT_WDMA__SHIFT) & DPU_WDMA_SIZE_1_HEIGHT_WDMA__MASK;
++}
++#define DPU_WDMA_SIZE_1_RESERVED_1__MASK			0x0000e000
++#define DPU_WDMA_SIZE_1_RESERVED_1__SHIFT			13
++static inline uint32_t DPU_WDMA_SIZE_1_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_WDMA_SIZE_1_RESERVED_1__SHIFT) & DPU_WDMA_SIZE_1_RESERVED_1__MASK;
++}
++#define DPU_WDMA_SIZE_1_WIDTH_WDMA__MASK			0x00001fff
++#define DPU_WDMA_SIZE_1_WIDTH_WDMA__SHIFT			0
++static inline uint32_t DPU_WDMA_SIZE_1_WIDTH_WDMA(uint32_t val)
++{
++	return ((val) << DPU_WDMA_SIZE_1_WIDTH_WDMA__SHIFT) & DPU_WDMA_SIZE_1_WIDTH_WDMA__MASK;
++}
++
++#define REG_DPU_BN_CFG						0x00004060
++#define DPU_BN_CFG_RESERVED_0__MASK				0xfff00000
++#define DPU_BN_CFG_RESERVED_0__SHIFT				20
++static inline uint32_t DPU_BN_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_BN_CFG_RESERVED_0__SHIFT) & DPU_BN_CFG_RESERVED_0__MASK;
++}
++#define DPU_BN_CFG_BN_ALU_ALGO__MASK				0x000f0000
++#define DPU_BN_CFG_BN_ALU_ALGO__SHIFT				16
++static inline uint32_t DPU_BN_CFG_BN_ALU_ALGO(uint32_t val)
++{
++	return ((val) << DPU_BN_CFG_BN_ALU_ALGO__SHIFT) & DPU_BN_CFG_BN_ALU_ALGO__MASK;
++}
++#define DPU_BN_CFG_RESERVED_1__MASK				0x0000fe00
++#define DPU_BN_CFG_RESERVED_1__SHIFT				9
++static inline uint32_t DPU_BN_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_BN_CFG_RESERVED_1__SHIFT) & DPU_BN_CFG_RESERVED_1__MASK;
++}
++#define DPU_BN_CFG_BN_ALU_SRC__MASK				0x00000100
++#define DPU_BN_CFG_BN_ALU_SRC__SHIFT				8
++static inline uint32_t DPU_BN_CFG_BN_ALU_SRC(uint32_t val)
++{
++	return ((val) << DPU_BN_CFG_BN_ALU_SRC__SHIFT) & DPU_BN_CFG_BN_ALU_SRC__MASK;
++}
++#define DPU_BN_CFG_BN_RELUX_EN__MASK				0x00000080
++#define DPU_BN_CFG_BN_RELUX_EN__SHIFT				7
++static inline uint32_t DPU_BN_CFG_BN_RELUX_EN(uint32_t val)
++{
++	return ((val) << DPU_BN_CFG_BN_RELUX_EN__SHIFT) & DPU_BN_CFG_BN_RELUX_EN__MASK;
++}
++#define DPU_BN_CFG_BN_RELU_BYPASS__MASK				0x00000040
++#define DPU_BN_CFG_BN_RELU_BYPASS__SHIFT			6
++static inline uint32_t DPU_BN_CFG_BN_RELU_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_BN_CFG_BN_RELU_BYPASS__SHIFT) & DPU_BN_CFG_BN_RELU_BYPASS__MASK;
++}
++#define DPU_BN_CFG_BN_MUL_PRELU__MASK				0x00000020
++#define DPU_BN_CFG_BN_MUL_PRELU__SHIFT				5
++static inline uint32_t DPU_BN_CFG_BN_MUL_PRELU(uint32_t val)
++{
++	return ((val) << DPU_BN_CFG_BN_MUL_PRELU__SHIFT) & DPU_BN_CFG_BN_MUL_PRELU__MASK;
++}
++#define DPU_BN_CFG_BN_MUL_BYPASS__MASK				0x00000010
++#define DPU_BN_CFG_BN_MUL_BYPASS__SHIFT				4
++static inline uint32_t DPU_BN_CFG_BN_MUL_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_BN_CFG_BN_MUL_BYPASS__SHIFT) & DPU_BN_CFG_BN_MUL_BYPASS__MASK;
++}
++#define DPU_BN_CFG_RESERVED_2__MASK				0x0000000c
++#define DPU_BN_CFG_RESERVED_2__SHIFT				2
++static inline uint32_t DPU_BN_CFG_RESERVED_2(uint32_t val)
++{
++	return ((val) << DPU_BN_CFG_RESERVED_2__SHIFT) & DPU_BN_CFG_RESERVED_2__MASK;
++}
++#define DPU_BN_CFG_BN_ALU_BYPASS__MASK				0x00000002
++#define DPU_BN_CFG_BN_ALU_BYPASS__SHIFT				1
++static inline uint32_t DPU_BN_CFG_BN_ALU_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_BN_CFG_BN_ALU_BYPASS__SHIFT) & DPU_BN_CFG_BN_ALU_BYPASS__MASK;
++}
++#define DPU_BN_CFG_BN_BYPASS__MASK				0x00000001
++#define DPU_BN_CFG_BN_BYPASS__SHIFT				0
++static inline uint32_t DPU_BN_CFG_BN_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_BN_CFG_BN_BYPASS__SHIFT) & DPU_BN_CFG_BN_BYPASS__MASK;
++}
++
++#define REG_DPU_BN_ALU_CFG					0x00004064
++#define DPU_BN_ALU_CFG_BN_ALU_OPERAND__MASK			0xffffffff
++#define DPU_BN_ALU_CFG_BN_ALU_OPERAND__SHIFT			0
++static inline uint32_t DPU_BN_ALU_CFG_BN_ALU_OPERAND(uint32_t val)
++{
++	return ((val) << DPU_BN_ALU_CFG_BN_ALU_OPERAND__SHIFT) & DPU_BN_ALU_CFG_BN_ALU_OPERAND__MASK;
++}
++
++#define REG_DPU_BN_MUL_CFG					0x00004068
++#define DPU_BN_MUL_CFG_BN_MUL_OPERAND__MASK			0xffff0000
++#define DPU_BN_MUL_CFG_BN_MUL_OPERAND__SHIFT			16
++static inline uint32_t DPU_BN_MUL_CFG_BN_MUL_OPERAND(uint32_t val)
++{
++	return ((val) << DPU_BN_MUL_CFG_BN_MUL_OPERAND__SHIFT) & DPU_BN_MUL_CFG_BN_MUL_OPERAND__MASK;
++}
++#define DPU_BN_MUL_CFG_RESERVED_0__MASK				0x0000c000
++#define DPU_BN_MUL_CFG_RESERVED_0__SHIFT			14
++static inline uint32_t DPU_BN_MUL_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_BN_MUL_CFG_RESERVED_0__SHIFT) & DPU_BN_MUL_CFG_RESERVED_0__MASK;
++}
++#define DPU_BN_MUL_CFG_BN_MUL_SHIFT_VALUE__MASK			0x00003f00
++#define DPU_BN_MUL_CFG_BN_MUL_SHIFT_VALUE__SHIFT		8
++static inline uint32_t DPU_BN_MUL_CFG_BN_MUL_SHIFT_VALUE(uint32_t val)
++{
++	return ((val) << DPU_BN_MUL_CFG_BN_MUL_SHIFT_VALUE__SHIFT) & DPU_BN_MUL_CFG_BN_MUL_SHIFT_VALUE__MASK;
++}
++#define DPU_BN_MUL_CFG_RESERVED_1__MASK				0x000000fc
++#define DPU_BN_MUL_CFG_RESERVED_1__SHIFT			2
++static inline uint32_t DPU_BN_MUL_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_BN_MUL_CFG_RESERVED_1__SHIFT) & DPU_BN_MUL_CFG_RESERVED_1__MASK;
++}
++#define DPU_BN_MUL_CFG_BN_TRUNCATE_SRC__MASK			0x00000002
++#define DPU_BN_MUL_CFG_BN_TRUNCATE_SRC__SHIFT			1
++static inline uint32_t DPU_BN_MUL_CFG_BN_TRUNCATE_SRC(uint32_t val)
++{
++	return ((val) << DPU_BN_MUL_CFG_BN_TRUNCATE_SRC__SHIFT) & DPU_BN_MUL_CFG_BN_TRUNCATE_SRC__MASK;
++}
++#define DPU_BN_MUL_CFG_BN_MUL_SRC__MASK				0x00000001
++#define DPU_BN_MUL_CFG_BN_MUL_SRC__SHIFT			0
++static inline uint32_t DPU_BN_MUL_CFG_BN_MUL_SRC(uint32_t val)
++{
++	return ((val) << DPU_BN_MUL_CFG_BN_MUL_SRC__SHIFT) & DPU_BN_MUL_CFG_BN_MUL_SRC__MASK;
++}
++
++#define REG_DPU_BN_RELUX_CMP_VALUE				0x0000406c
++#define DPU_BN_RELUX_CMP_VALUE_BN_RELUX_CMP_DAT__MASK		0xffffffff
++#define DPU_BN_RELUX_CMP_VALUE_BN_RELUX_CMP_DAT__SHIFT		0
++static inline uint32_t DPU_BN_RELUX_CMP_VALUE_BN_RELUX_CMP_DAT(uint32_t val)
++{
++	return ((val) << DPU_BN_RELUX_CMP_VALUE_BN_RELUX_CMP_DAT__SHIFT) & DPU_BN_RELUX_CMP_VALUE_BN_RELUX_CMP_DAT__MASK;
++}
++
++#define REG_DPU_EW_CFG						0x00004070
++#define DPU_EW_CFG_EW_CVT_TYPE__MASK				0x80000000
++#define DPU_EW_CFG_EW_CVT_TYPE__SHIFT				31
++static inline uint32_t DPU_EW_CFG_EW_CVT_TYPE(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_CVT_TYPE__SHIFT) & DPU_EW_CFG_EW_CVT_TYPE__MASK;
++}
++#define DPU_EW_CFG_EW_CVT_ROUND__MASK				0x40000000
++#define DPU_EW_CFG_EW_CVT_ROUND__SHIFT				30
++static inline uint32_t DPU_EW_CFG_EW_CVT_ROUND(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_CVT_ROUND__SHIFT) & DPU_EW_CFG_EW_CVT_ROUND__MASK;
++}
++#define DPU_EW_CFG_EW_DATA_MODE__MASK				0x30000000
++#define DPU_EW_CFG_EW_DATA_MODE__SHIFT				28
++static inline uint32_t DPU_EW_CFG_EW_DATA_MODE(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_DATA_MODE__SHIFT) & DPU_EW_CFG_EW_DATA_MODE__MASK;
++}
++#define DPU_EW_CFG_RESERVED_0__MASK				0x0f000000
++#define DPU_EW_CFG_RESERVED_0__SHIFT				24
++static inline uint32_t DPU_EW_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_RESERVED_0__SHIFT) & DPU_EW_CFG_RESERVED_0__MASK;
++}
++#define DPU_EW_CFG_EDATA_SIZE__MASK				0x00c00000
++#define DPU_EW_CFG_EDATA_SIZE__SHIFT				22
++static inline uint32_t DPU_EW_CFG_EDATA_SIZE(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EDATA_SIZE__SHIFT) & DPU_EW_CFG_EDATA_SIZE__MASK;
++}
++#define DPU_EW_CFG_EW_EQUAL_EN__MASK				0x00200000
++#define DPU_EW_CFG_EW_EQUAL_EN__SHIFT				21
++static inline uint32_t DPU_EW_CFG_EW_EQUAL_EN(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_EQUAL_EN__SHIFT) & DPU_EW_CFG_EW_EQUAL_EN__MASK;
++}
++#define DPU_EW_CFG_EW_BINARY_EN__MASK				0x00100000
++#define DPU_EW_CFG_EW_BINARY_EN__SHIFT				20
++static inline uint32_t DPU_EW_CFG_EW_BINARY_EN(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_BINARY_EN__SHIFT) & DPU_EW_CFG_EW_BINARY_EN__MASK;
++}
++#define DPU_EW_CFG_EW_ALU_ALGO__MASK				0x000f0000
++#define DPU_EW_CFG_EW_ALU_ALGO__SHIFT				16
++static inline uint32_t DPU_EW_CFG_EW_ALU_ALGO(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_ALU_ALGO__SHIFT) & DPU_EW_CFG_EW_ALU_ALGO__MASK;
++}
++#define DPU_EW_CFG_RESERVED_1__MASK				0x0000f800
++#define DPU_EW_CFG_RESERVED_1__SHIFT				11
++static inline uint32_t DPU_EW_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_RESERVED_1__SHIFT) & DPU_EW_CFG_RESERVED_1__MASK;
++}
++#define DPU_EW_CFG_EW_RELUX_EN__MASK				0x00000400
++#define DPU_EW_CFG_EW_RELUX_EN__SHIFT				10
++static inline uint32_t DPU_EW_CFG_EW_RELUX_EN(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_RELUX_EN__SHIFT) & DPU_EW_CFG_EW_RELUX_EN__MASK;
++}
++#define DPU_EW_CFG_EW_RELU_BYPASS__MASK				0x00000200
++#define DPU_EW_CFG_EW_RELU_BYPASS__SHIFT			9
++static inline uint32_t DPU_EW_CFG_EW_RELU_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_RELU_BYPASS__SHIFT) & DPU_EW_CFG_EW_RELU_BYPASS__MASK;
++}
++#define DPU_EW_CFG_EW_OP_CVT_BYPASS__MASK			0x00000100
++#define DPU_EW_CFG_EW_OP_CVT_BYPASS__SHIFT			8
++static inline uint32_t DPU_EW_CFG_EW_OP_CVT_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_OP_CVT_BYPASS__SHIFT) & DPU_EW_CFG_EW_OP_CVT_BYPASS__MASK;
++}
++#define DPU_EW_CFG_EW_LUT_BYPASS__MASK				0x00000080
++#define DPU_EW_CFG_EW_LUT_BYPASS__SHIFT				7
++static inline uint32_t DPU_EW_CFG_EW_LUT_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_LUT_BYPASS__SHIFT) & DPU_EW_CFG_EW_LUT_BYPASS__MASK;
++}
++#define DPU_EW_CFG_EW_OP_SRC__MASK				0x00000040
++#define DPU_EW_CFG_EW_OP_SRC__SHIFT				6
++static inline uint32_t DPU_EW_CFG_EW_OP_SRC(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_OP_SRC__SHIFT) & DPU_EW_CFG_EW_OP_SRC__MASK;
++}
++#define DPU_EW_CFG_EW_MUL_PRELU__MASK				0x00000020
++#define DPU_EW_CFG_EW_MUL_PRELU__SHIFT				5
++static inline uint32_t DPU_EW_CFG_EW_MUL_PRELU(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_MUL_PRELU__SHIFT) & DPU_EW_CFG_EW_MUL_PRELU__MASK;
++}
++#define DPU_EW_CFG_RESERVED_2__MASK				0x00000018
++#define DPU_EW_CFG_RESERVED_2__SHIFT				3
++static inline uint32_t DPU_EW_CFG_RESERVED_2(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_RESERVED_2__SHIFT) & DPU_EW_CFG_RESERVED_2__MASK;
++}
++#define DPU_EW_CFG_EW_OP_TYPE__MASK				0x00000004
++#define DPU_EW_CFG_EW_OP_TYPE__SHIFT				2
++static inline uint32_t DPU_EW_CFG_EW_OP_TYPE(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_OP_TYPE__SHIFT) & DPU_EW_CFG_EW_OP_TYPE__MASK;
++}
++#define DPU_EW_CFG_EW_OP_BYPASS__MASK				0x00000002
++#define DPU_EW_CFG_EW_OP_BYPASS__SHIFT				1
++static inline uint32_t DPU_EW_CFG_EW_OP_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_OP_BYPASS__SHIFT) & DPU_EW_CFG_EW_OP_BYPASS__MASK;
++}
++#define DPU_EW_CFG_EW_BYPASS__MASK				0x00000001
++#define DPU_EW_CFG_EW_BYPASS__SHIFT				0
++static inline uint32_t DPU_EW_CFG_EW_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_EW_CFG_EW_BYPASS__SHIFT) & DPU_EW_CFG_EW_BYPASS__MASK;
++}
++
++#define REG_DPU_EW_CVT_OFFSET_VALUE				0x00004074
++#define DPU_EW_CVT_OFFSET_VALUE_EW_OP_CVT_OFFSET__MASK		0xffffffff
++#define DPU_EW_CVT_OFFSET_VALUE_EW_OP_CVT_OFFSET__SHIFT		0
++static inline uint32_t DPU_EW_CVT_OFFSET_VALUE_EW_OP_CVT_OFFSET(uint32_t val)
++{
++	return ((val) << DPU_EW_CVT_OFFSET_VALUE_EW_OP_CVT_OFFSET__SHIFT) & DPU_EW_CVT_OFFSET_VALUE_EW_OP_CVT_OFFSET__MASK;
++}
++
++#define REG_DPU_EW_CVT_SCALE_VALUE				0x00004078
++#define DPU_EW_CVT_SCALE_VALUE_EW_TRUNCATE__MASK		0xffc00000
++#define DPU_EW_CVT_SCALE_VALUE_EW_TRUNCATE__SHIFT		22
++static inline uint32_t DPU_EW_CVT_SCALE_VALUE_EW_TRUNCATE(uint32_t val)
++{
++	return ((val) << DPU_EW_CVT_SCALE_VALUE_EW_TRUNCATE__SHIFT) & DPU_EW_CVT_SCALE_VALUE_EW_TRUNCATE__MASK;
++}
++#define DPU_EW_CVT_SCALE_VALUE_EW_OP_CVT_SHIFT__MASK		0x003f0000
++#define DPU_EW_CVT_SCALE_VALUE_EW_OP_CVT_SHIFT__SHIFT		16
++static inline uint32_t DPU_EW_CVT_SCALE_VALUE_EW_OP_CVT_SHIFT(uint32_t val)
++{
++	return ((val) << DPU_EW_CVT_SCALE_VALUE_EW_OP_CVT_SHIFT__SHIFT) & DPU_EW_CVT_SCALE_VALUE_EW_OP_CVT_SHIFT__MASK;
++}
++#define DPU_EW_CVT_SCALE_VALUE_EW_OP_CVT_SCALE__MASK		0x0000ffff
++#define DPU_EW_CVT_SCALE_VALUE_EW_OP_CVT_SCALE__SHIFT		0
++static inline uint32_t DPU_EW_CVT_SCALE_VALUE_EW_OP_CVT_SCALE(uint32_t val)
++{
++	return ((val) << DPU_EW_CVT_SCALE_VALUE_EW_OP_CVT_SCALE__SHIFT) & DPU_EW_CVT_SCALE_VALUE_EW_OP_CVT_SCALE__MASK;
++}
++
++#define REG_DPU_EW_RELUX_CMP_VALUE				0x0000407c
++#define DPU_EW_RELUX_CMP_VALUE_EW_RELUX_CMP_DAT__MASK		0xffffffff
++#define DPU_EW_RELUX_CMP_VALUE_EW_RELUX_CMP_DAT__SHIFT		0
++static inline uint32_t DPU_EW_RELUX_CMP_VALUE_EW_RELUX_CMP_DAT(uint32_t val)
++{
++	return ((val) << DPU_EW_RELUX_CMP_VALUE_EW_RELUX_CMP_DAT__SHIFT) & DPU_EW_RELUX_CMP_VALUE_EW_RELUX_CMP_DAT__MASK;
++}
++
++#define REG_DPU_OUT_CVT_OFFSET					0x00004080
++#define DPU_OUT_CVT_OFFSET_OUT_CVT_OFFSET__MASK			0xffffffff
++#define DPU_OUT_CVT_OFFSET_OUT_CVT_OFFSET__SHIFT		0
++static inline uint32_t DPU_OUT_CVT_OFFSET_OUT_CVT_OFFSET(uint32_t val)
++{
++	return ((val) << DPU_OUT_CVT_OFFSET_OUT_CVT_OFFSET__SHIFT) & DPU_OUT_CVT_OFFSET_OUT_CVT_OFFSET__MASK;
++}
++
++#define REG_DPU_OUT_CVT_SCALE					0x00004084
++#define DPU_OUT_CVT_SCALE_RESERVED_0__MASK			0xfffe0000
++#define DPU_OUT_CVT_SCALE_RESERVED_0__SHIFT			17
++static inline uint32_t DPU_OUT_CVT_SCALE_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_OUT_CVT_SCALE_RESERVED_0__SHIFT) & DPU_OUT_CVT_SCALE_RESERVED_0__MASK;
++}
++#define DPU_OUT_CVT_SCALE_FP32TOFP16_EN__MASK			0x00010000
++#define DPU_OUT_CVT_SCALE_FP32TOFP16_EN__SHIFT			16
++static inline uint32_t DPU_OUT_CVT_SCALE_FP32TOFP16_EN(uint32_t val)
++{
++	return ((val) << DPU_OUT_CVT_SCALE_FP32TOFP16_EN__SHIFT) & DPU_OUT_CVT_SCALE_FP32TOFP16_EN__MASK;
++}
++#define DPU_OUT_CVT_SCALE_OUT_CVT_SCALE__MASK			0x0000ffff
++#define DPU_OUT_CVT_SCALE_OUT_CVT_SCALE__SHIFT			0
++static inline uint32_t DPU_OUT_CVT_SCALE_OUT_CVT_SCALE(uint32_t val)
++{
++	return ((val) << DPU_OUT_CVT_SCALE_OUT_CVT_SCALE__SHIFT) & DPU_OUT_CVT_SCALE_OUT_CVT_SCALE__MASK;
++}
++
++#define REG_DPU_OUT_CVT_SHIFT					0x00004088
++#define DPU_OUT_CVT_SHIFT_CVT_TYPE__MASK			0x80000000
++#define DPU_OUT_CVT_SHIFT_CVT_TYPE__SHIFT			31
++static inline uint32_t DPU_OUT_CVT_SHIFT_CVT_TYPE(uint32_t val)
++{
++	return ((val) << DPU_OUT_CVT_SHIFT_CVT_TYPE__SHIFT) & DPU_OUT_CVT_SHIFT_CVT_TYPE__MASK;
++}
++#define DPU_OUT_CVT_SHIFT_CVT_ROUND__MASK			0x40000000
++#define DPU_OUT_CVT_SHIFT_CVT_ROUND__SHIFT			30
++static inline uint32_t DPU_OUT_CVT_SHIFT_CVT_ROUND(uint32_t val)
++{
++	return ((val) << DPU_OUT_CVT_SHIFT_CVT_ROUND__SHIFT) & DPU_OUT_CVT_SHIFT_CVT_ROUND__MASK;
++}
++#define DPU_OUT_CVT_SHIFT_RESERVED_0__MASK			0x3ff00000
++#define DPU_OUT_CVT_SHIFT_RESERVED_0__SHIFT			20
++static inline uint32_t DPU_OUT_CVT_SHIFT_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_OUT_CVT_SHIFT_RESERVED_0__SHIFT) & DPU_OUT_CVT_SHIFT_RESERVED_0__MASK;
++}
++#define DPU_OUT_CVT_SHIFT_MINUS_EXP__MASK			0x000ff000
++#define DPU_OUT_CVT_SHIFT_MINUS_EXP__SHIFT			12
++static inline uint32_t DPU_OUT_CVT_SHIFT_MINUS_EXP(uint32_t val)
++{
++	return ((val) << DPU_OUT_CVT_SHIFT_MINUS_EXP__SHIFT) & DPU_OUT_CVT_SHIFT_MINUS_EXP__MASK;
++}
++#define DPU_OUT_CVT_SHIFT_OUT_CVT_SHIFT__MASK			0x00000fff
++#define DPU_OUT_CVT_SHIFT_OUT_CVT_SHIFT__SHIFT			0
++static inline uint32_t DPU_OUT_CVT_SHIFT_OUT_CVT_SHIFT(uint32_t val)
++{
++	return ((val) << DPU_OUT_CVT_SHIFT_OUT_CVT_SHIFT__SHIFT) & DPU_OUT_CVT_SHIFT_OUT_CVT_SHIFT__MASK;
++}
++
++#define REG_DPU_EW_OP_VALUE_0					0x00004090
++#define DPU_EW_OP_VALUE_0_EW_OPERAND_0__MASK			0xffffffff
++#define DPU_EW_OP_VALUE_0_EW_OPERAND_0__SHIFT			0
++static inline uint32_t DPU_EW_OP_VALUE_0_EW_OPERAND_0(uint32_t val)
++{
++	return ((val) << DPU_EW_OP_VALUE_0_EW_OPERAND_0__SHIFT) & DPU_EW_OP_VALUE_0_EW_OPERAND_0__MASK;
++}
++
++#define REG_DPU_EW_OP_VALUE_1					0x00004094
++#define DPU_EW_OP_VALUE_1_EW_OPERAND_1__MASK			0xffffffff
++#define DPU_EW_OP_VALUE_1_EW_OPERAND_1__SHIFT			0
++static inline uint32_t DPU_EW_OP_VALUE_1_EW_OPERAND_1(uint32_t val)
++{
++	return ((val) << DPU_EW_OP_VALUE_1_EW_OPERAND_1__SHIFT) & DPU_EW_OP_VALUE_1_EW_OPERAND_1__MASK;
++}
++
++#define REG_DPU_EW_OP_VALUE_2					0x00004098
++#define DPU_EW_OP_VALUE_2_EW_OPERAND_2__MASK			0xffffffff
++#define DPU_EW_OP_VALUE_2_EW_OPERAND_2__SHIFT			0
++static inline uint32_t DPU_EW_OP_VALUE_2_EW_OPERAND_2(uint32_t val)
++{
++	return ((val) << DPU_EW_OP_VALUE_2_EW_OPERAND_2__SHIFT) & DPU_EW_OP_VALUE_2_EW_OPERAND_2__MASK;
++}
++
++#define REG_DPU_EW_OP_VALUE_3					0x0000409c
++#define DPU_EW_OP_VALUE_3_EW_OPERAND_3__MASK			0xffffffff
++#define DPU_EW_OP_VALUE_3_EW_OPERAND_3__SHIFT			0
++static inline uint32_t DPU_EW_OP_VALUE_3_EW_OPERAND_3(uint32_t val)
++{
++	return ((val) << DPU_EW_OP_VALUE_3_EW_OPERAND_3__SHIFT) & DPU_EW_OP_VALUE_3_EW_OPERAND_3__MASK;
++}
++
++#define REG_DPU_EW_OP_VALUE_4					0x000040a0
++#define DPU_EW_OP_VALUE_4_EW_OPERAND_4__MASK			0xffffffff
++#define DPU_EW_OP_VALUE_4_EW_OPERAND_4__SHIFT			0
++static inline uint32_t DPU_EW_OP_VALUE_4_EW_OPERAND_4(uint32_t val)
++{
++	return ((val) << DPU_EW_OP_VALUE_4_EW_OPERAND_4__SHIFT) & DPU_EW_OP_VALUE_4_EW_OPERAND_4__MASK;
++}
++
++#define REG_DPU_EW_OP_VALUE_5					0x000040a4
++#define DPU_EW_OP_VALUE_5_EW_OPERAND_5__MASK			0xffffffff
++#define DPU_EW_OP_VALUE_5_EW_OPERAND_5__SHIFT			0
++static inline uint32_t DPU_EW_OP_VALUE_5_EW_OPERAND_5(uint32_t val)
++{
++	return ((val) << DPU_EW_OP_VALUE_5_EW_OPERAND_5__SHIFT) & DPU_EW_OP_VALUE_5_EW_OPERAND_5__MASK;
++}
++
++#define REG_DPU_EW_OP_VALUE_6					0x000040a8
++#define DPU_EW_OP_VALUE_6_EW_OPERAND_6__MASK			0xffffffff
++#define DPU_EW_OP_VALUE_6_EW_OPERAND_6__SHIFT			0
++static inline uint32_t DPU_EW_OP_VALUE_6_EW_OPERAND_6(uint32_t val)
++{
++	return ((val) << DPU_EW_OP_VALUE_6_EW_OPERAND_6__SHIFT) & DPU_EW_OP_VALUE_6_EW_OPERAND_6__MASK;
++}
++
++#define REG_DPU_EW_OP_VALUE_7					0x000040ac
++#define DPU_EW_OP_VALUE_7_EW_OPERAND_7__MASK			0xffffffff
++#define DPU_EW_OP_VALUE_7_EW_OPERAND_7__SHIFT			0
++static inline uint32_t DPU_EW_OP_VALUE_7_EW_OPERAND_7(uint32_t val)
++{
++	return ((val) << DPU_EW_OP_VALUE_7_EW_OPERAND_7__SHIFT) & DPU_EW_OP_VALUE_7_EW_OPERAND_7__MASK;
++}
++
++#define REG_DPU_SURFACE_ADD					0x000040c0
++#define DPU_SURFACE_ADD_SURF_ADD__MASK				0xfffffff0
++#define DPU_SURFACE_ADD_SURF_ADD__SHIFT				4
++static inline uint32_t DPU_SURFACE_ADD_SURF_ADD(uint32_t val)
++{
++	return ((val) << DPU_SURFACE_ADD_SURF_ADD__SHIFT) & DPU_SURFACE_ADD_SURF_ADD__MASK;
++}
++#define DPU_SURFACE_ADD_RESERVED_0__MASK			0x0000000f
++#define DPU_SURFACE_ADD_RESERVED_0__SHIFT			0
++static inline uint32_t DPU_SURFACE_ADD_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_SURFACE_ADD_RESERVED_0__SHIFT) & DPU_SURFACE_ADD_RESERVED_0__MASK;
++}
++
++#define REG_DPU_LUT_ACCESS_CFG					0x00004100
++#define DPU_LUT_ACCESS_CFG_RESERVED_0__MASK			0xfffc0000
++#define DPU_LUT_ACCESS_CFG_RESERVED_0__SHIFT			18
++static inline uint32_t DPU_LUT_ACCESS_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_LUT_ACCESS_CFG_RESERVED_0__SHIFT) & DPU_LUT_ACCESS_CFG_RESERVED_0__MASK;
++}
++#define DPU_LUT_ACCESS_CFG_LUT_ACCESS_TYPE__MASK		0x00020000
++#define DPU_LUT_ACCESS_CFG_LUT_ACCESS_TYPE__SHIFT		17
++static inline uint32_t DPU_LUT_ACCESS_CFG_LUT_ACCESS_TYPE(uint32_t val)
++{
++	return ((val) << DPU_LUT_ACCESS_CFG_LUT_ACCESS_TYPE__SHIFT) & DPU_LUT_ACCESS_CFG_LUT_ACCESS_TYPE__MASK;
++}
++#define DPU_LUT_ACCESS_CFG_LUT_TABLE_ID__MASK			0x00010000
++#define DPU_LUT_ACCESS_CFG_LUT_TABLE_ID__SHIFT			16
++static inline uint32_t DPU_LUT_ACCESS_CFG_LUT_TABLE_ID(uint32_t val)
++{
++	return ((val) << DPU_LUT_ACCESS_CFG_LUT_TABLE_ID__SHIFT) & DPU_LUT_ACCESS_CFG_LUT_TABLE_ID__MASK;
++}
++#define DPU_LUT_ACCESS_CFG_RESERVED_1__MASK			0x0000fc00
++#define DPU_LUT_ACCESS_CFG_RESERVED_1__SHIFT			10
++static inline uint32_t DPU_LUT_ACCESS_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_LUT_ACCESS_CFG_RESERVED_1__SHIFT) & DPU_LUT_ACCESS_CFG_RESERVED_1__MASK;
++}
++#define DPU_LUT_ACCESS_CFG_LUT_ADDR__MASK			0x000003ff
++#define DPU_LUT_ACCESS_CFG_LUT_ADDR__SHIFT			0
++static inline uint32_t DPU_LUT_ACCESS_CFG_LUT_ADDR(uint32_t val)
++{
++	return ((val) << DPU_LUT_ACCESS_CFG_LUT_ADDR__SHIFT) & DPU_LUT_ACCESS_CFG_LUT_ADDR__MASK;
++}
++
++#define REG_DPU_LUT_ACCESS_DATA					0x00004104
++#define DPU_LUT_ACCESS_DATA_RESERVED_0__MASK			0xffff0000
++#define DPU_LUT_ACCESS_DATA_RESERVED_0__SHIFT			16
++static inline uint32_t DPU_LUT_ACCESS_DATA_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_LUT_ACCESS_DATA_RESERVED_0__SHIFT) & DPU_LUT_ACCESS_DATA_RESERVED_0__MASK;
++}
++#define DPU_LUT_ACCESS_DATA_LUT_ACCESS_DATA__MASK		0x0000ffff
++#define DPU_LUT_ACCESS_DATA_LUT_ACCESS_DATA__SHIFT		0
++static inline uint32_t DPU_LUT_ACCESS_DATA_LUT_ACCESS_DATA(uint32_t val)
++{
++	return ((val) << DPU_LUT_ACCESS_DATA_LUT_ACCESS_DATA__SHIFT) & DPU_LUT_ACCESS_DATA_LUT_ACCESS_DATA__MASK;
++}
++
++#define REG_DPU_LUT_CFG						0x00004108
++#define DPU_LUT_CFG_RESERVED_0__MASK				0xffffff00
++#define DPU_LUT_CFG_RESERVED_0__SHIFT				8
++static inline uint32_t DPU_LUT_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_LUT_CFG_RESERVED_0__SHIFT) & DPU_LUT_CFG_RESERVED_0__MASK;
++}
++#define DPU_LUT_CFG_LUT_CAL_SEL__MASK				0x00000080
++#define DPU_LUT_CFG_LUT_CAL_SEL__SHIFT				7
++static inline uint32_t DPU_LUT_CFG_LUT_CAL_SEL(uint32_t val)
++{
++	return ((val) << DPU_LUT_CFG_LUT_CAL_SEL__SHIFT) & DPU_LUT_CFG_LUT_CAL_SEL__MASK;
++}
++#define DPU_LUT_CFG_LUT_HYBRID_PRIORITY__MASK			0x00000040
++#define DPU_LUT_CFG_LUT_HYBRID_PRIORITY__SHIFT			6
++static inline uint32_t DPU_LUT_CFG_LUT_HYBRID_PRIORITY(uint32_t val)
++{
++	return ((val) << DPU_LUT_CFG_LUT_HYBRID_PRIORITY__SHIFT) & DPU_LUT_CFG_LUT_HYBRID_PRIORITY__MASK;
++}
++#define DPU_LUT_CFG_LUT_OFLOW_PRIORITY__MASK			0x00000020
++#define DPU_LUT_CFG_LUT_OFLOW_PRIORITY__SHIFT			5
++static inline uint32_t DPU_LUT_CFG_LUT_OFLOW_PRIORITY(uint32_t val)
++{
++	return ((val) << DPU_LUT_CFG_LUT_OFLOW_PRIORITY__SHIFT) & DPU_LUT_CFG_LUT_OFLOW_PRIORITY__MASK;
++}
++#define DPU_LUT_CFG_LUT_UFLOW_PRIORITY__MASK			0x00000010
++#define DPU_LUT_CFG_LUT_UFLOW_PRIORITY__SHIFT			4
++static inline uint32_t DPU_LUT_CFG_LUT_UFLOW_PRIORITY(uint32_t val)
++{
++	return ((val) << DPU_LUT_CFG_LUT_UFLOW_PRIORITY__SHIFT) & DPU_LUT_CFG_LUT_UFLOW_PRIORITY__MASK;
++}
++#define DPU_LUT_CFG_LUT_LO_LE_MUX__MASK				0x0000000c
++#define DPU_LUT_CFG_LUT_LO_LE_MUX__SHIFT			2
++static inline uint32_t DPU_LUT_CFG_LUT_LO_LE_MUX(uint32_t val)
++{
++	return ((val) << DPU_LUT_CFG_LUT_LO_LE_MUX__SHIFT) & DPU_LUT_CFG_LUT_LO_LE_MUX__MASK;
++}
++#define DPU_LUT_CFG_LUT_EXPAND_EN__MASK				0x00000002
++#define DPU_LUT_CFG_LUT_EXPAND_EN__SHIFT			1
++static inline uint32_t DPU_LUT_CFG_LUT_EXPAND_EN(uint32_t val)
++{
++	return ((val) << DPU_LUT_CFG_LUT_EXPAND_EN__SHIFT) & DPU_LUT_CFG_LUT_EXPAND_EN__MASK;
++}
++#define DPU_LUT_CFG_LUT_ROAD_SEL__MASK				0x00000001
++#define DPU_LUT_CFG_LUT_ROAD_SEL__SHIFT				0
++static inline uint32_t DPU_LUT_CFG_LUT_ROAD_SEL(uint32_t val)
++{
++	return ((val) << DPU_LUT_CFG_LUT_ROAD_SEL__SHIFT) & DPU_LUT_CFG_LUT_ROAD_SEL__MASK;
++}
++
++#define REG_DPU_LUT_INFO					0x0000410c
++#define DPU_LUT_INFO_RESERVED_0__MASK				0xff000000
++#define DPU_LUT_INFO_RESERVED_0__SHIFT				24
++static inline uint32_t DPU_LUT_INFO_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_LUT_INFO_RESERVED_0__SHIFT) & DPU_LUT_INFO_RESERVED_0__MASK;
++}
++#define DPU_LUT_INFO_LUT_LO_INDEX_SELECT__MASK			0x00ff0000
++#define DPU_LUT_INFO_LUT_LO_INDEX_SELECT__SHIFT			16
++static inline uint32_t DPU_LUT_INFO_LUT_LO_INDEX_SELECT(uint32_t val)
++{
++	return ((val) << DPU_LUT_INFO_LUT_LO_INDEX_SELECT__SHIFT) & DPU_LUT_INFO_LUT_LO_INDEX_SELECT__MASK;
++}
++#define DPU_LUT_INFO_LUT_LE_INDEX_SELECT__MASK			0x0000ff00
++#define DPU_LUT_INFO_LUT_LE_INDEX_SELECT__SHIFT			8
++static inline uint32_t DPU_LUT_INFO_LUT_LE_INDEX_SELECT(uint32_t val)
++{
++	return ((val) << DPU_LUT_INFO_LUT_LE_INDEX_SELECT__SHIFT) & DPU_LUT_INFO_LUT_LE_INDEX_SELECT__MASK;
++}
++#define DPU_LUT_INFO_RESERVED_1__MASK				0x000000ff
++#define DPU_LUT_INFO_RESERVED_1__SHIFT				0
++static inline uint32_t DPU_LUT_INFO_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_LUT_INFO_RESERVED_1__SHIFT) & DPU_LUT_INFO_RESERVED_1__MASK;
++}
++
++#define REG_DPU_LUT_LE_START					0x00004110
++#define DPU_LUT_LE_START_LUT_LE_START__MASK			0xffffffff
++#define DPU_LUT_LE_START_LUT_LE_START__SHIFT			0
++static inline uint32_t DPU_LUT_LE_START_LUT_LE_START(uint32_t val)
++{
++	return ((val) << DPU_LUT_LE_START_LUT_LE_START__SHIFT) & DPU_LUT_LE_START_LUT_LE_START__MASK;
++}
++
++#define REG_DPU_LUT_LE_END					0x00004114
++#define DPU_LUT_LE_END_LUT_LE_END__MASK				0xffffffff
++#define DPU_LUT_LE_END_LUT_LE_END__SHIFT			0
++static inline uint32_t DPU_LUT_LE_END_LUT_LE_END(uint32_t val)
++{
++	return ((val) << DPU_LUT_LE_END_LUT_LE_END__SHIFT) & DPU_LUT_LE_END_LUT_LE_END__MASK;
++}
++
++#define REG_DPU_LUT_LO_START					0x00004118
++#define DPU_LUT_LO_START_LUT_LO_START__MASK			0xffffffff
++#define DPU_LUT_LO_START_LUT_LO_START__SHIFT			0
++static inline uint32_t DPU_LUT_LO_START_LUT_LO_START(uint32_t val)
++{
++	return ((val) << DPU_LUT_LO_START_LUT_LO_START__SHIFT) & DPU_LUT_LO_START_LUT_LO_START__MASK;
++}
++
++#define REG_DPU_LUT_LO_END					0x0000411c
++#define DPU_LUT_LO_END_LUT_LO_END__MASK				0xffffffff
++#define DPU_LUT_LO_END_LUT_LO_END__SHIFT			0
++static inline uint32_t DPU_LUT_LO_END_LUT_LO_END(uint32_t val)
++{
++	return ((val) << DPU_LUT_LO_END_LUT_LO_END__SHIFT) & DPU_LUT_LO_END_LUT_LO_END__MASK;
++}
++
++#define REG_DPU_LUT_LE_SLOPE_SCALE				0x00004120
++#define DPU_LUT_LE_SLOPE_SCALE_LUT_LE_SLOPE_OFLOW_SCALE__MASK	0xffff0000
++#define DPU_LUT_LE_SLOPE_SCALE_LUT_LE_SLOPE_OFLOW_SCALE__SHIFT	16
++static inline uint32_t DPU_LUT_LE_SLOPE_SCALE_LUT_LE_SLOPE_OFLOW_SCALE(uint32_t val)
++{
++	return ((val) << DPU_LUT_LE_SLOPE_SCALE_LUT_LE_SLOPE_OFLOW_SCALE__SHIFT) & DPU_LUT_LE_SLOPE_SCALE_LUT_LE_SLOPE_OFLOW_SCALE__MASK;
++}
++#define DPU_LUT_LE_SLOPE_SCALE_LUT_LE_SLOPE_UFLOW_SCALE__MASK	0x0000ffff
++#define DPU_LUT_LE_SLOPE_SCALE_LUT_LE_SLOPE_UFLOW_SCALE__SHIFT	0
++static inline uint32_t DPU_LUT_LE_SLOPE_SCALE_LUT_LE_SLOPE_UFLOW_SCALE(uint32_t val)
++{
++	return ((val) << DPU_LUT_LE_SLOPE_SCALE_LUT_LE_SLOPE_UFLOW_SCALE__SHIFT) & DPU_LUT_LE_SLOPE_SCALE_LUT_LE_SLOPE_UFLOW_SCALE__MASK;
++}
++
++#define REG_DPU_LUT_LE_SLOPE_SHIFT				0x00004124
++#define DPU_LUT_LE_SLOPE_SHIFT_RESERVED_0__MASK			0xfffffc00
++#define DPU_LUT_LE_SLOPE_SHIFT_RESERVED_0__SHIFT		10
++static inline uint32_t DPU_LUT_LE_SLOPE_SHIFT_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_LUT_LE_SLOPE_SHIFT_RESERVED_0__SHIFT) & DPU_LUT_LE_SLOPE_SHIFT_RESERVED_0__MASK;
++}
++#define DPU_LUT_LE_SLOPE_SHIFT_LUT_LE_SLOPE_OFLOW_SHIFT__MASK	0x000003e0
++#define DPU_LUT_LE_SLOPE_SHIFT_LUT_LE_SLOPE_OFLOW_SHIFT__SHIFT	5
++static inline uint32_t DPU_LUT_LE_SLOPE_SHIFT_LUT_LE_SLOPE_OFLOW_SHIFT(uint32_t val)
++{
++	return ((val) << DPU_LUT_LE_SLOPE_SHIFT_LUT_LE_SLOPE_OFLOW_SHIFT__SHIFT) & DPU_LUT_LE_SLOPE_SHIFT_LUT_LE_SLOPE_OFLOW_SHIFT__MASK;
++}
++#define DPU_LUT_LE_SLOPE_SHIFT_LUT_LE_SLOPE_UFLOW_SHIFT__MASK	0x0000001f
++#define DPU_LUT_LE_SLOPE_SHIFT_LUT_LE_SLOPE_UFLOW_SHIFT__SHIFT	0
++static inline uint32_t DPU_LUT_LE_SLOPE_SHIFT_LUT_LE_SLOPE_UFLOW_SHIFT(uint32_t val)
++{
++	return ((val) << DPU_LUT_LE_SLOPE_SHIFT_LUT_LE_SLOPE_UFLOW_SHIFT__SHIFT) & DPU_LUT_LE_SLOPE_SHIFT_LUT_LE_SLOPE_UFLOW_SHIFT__MASK;
++}
++
++#define REG_DPU_LUT_LO_SLOPE_SCALE				0x00004128
++#define DPU_LUT_LO_SLOPE_SCALE_LUT_LO_SLOPE_OFLOW_SCALE__MASK	0xffff0000
++#define DPU_LUT_LO_SLOPE_SCALE_LUT_LO_SLOPE_OFLOW_SCALE__SHIFT	16
++static inline uint32_t DPU_LUT_LO_SLOPE_SCALE_LUT_LO_SLOPE_OFLOW_SCALE(uint32_t val)
++{
++	return ((val) << DPU_LUT_LO_SLOPE_SCALE_LUT_LO_SLOPE_OFLOW_SCALE__SHIFT) & DPU_LUT_LO_SLOPE_SCALE_LUT_LO_SLOPE_OFLOW_SCALE__MASK;
++}
++#define DPU_LUT_LO_SLOPE_SCALE_LUT_LO_SLOPE_UFLOW_SCALE__MASK	0x0000ffff
++#define DPU_LUT_LO_SLOPE_SCALE_LUT_LO_SLOPE_UFLOW_SCALE__SHIFT	0
++static inline uint32_t DPU_LUT_LO_SLOPE_SCALE_LUT_LO_SLOPE_UFLOW_SCALE(uint32_t val)
++{
++	return ((val) << DPU_LUT_LO_SLOPE_SCALE_LUT_LO_SLOPE_UFLOW_SCALE__SHIFT) & DPU_LUT_LO_SLOPE_SCALE_LUT_LO_SLOPE_UFLOW_SCALE__MASK;
++}
++
++#define REG_DPU_LUT_LO_SLOPE_SHIFT				0x0000412c
++#define DPU_LUT_LO_SLOPE_SHIFT_RESERVED_0__MASK			0xfffffc00
++#define DPU_LUT_LO_SLOPE_SHIFT_RESERVED_0__SHIFT		10
++static inline uint32_t DPU_LUT_LO_SLOPE_SHIFT_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_LUT_LO_SLOPE_SHIFT_RESERVED_0__SHIFT) & DPU_LUT_LO_SLOPE_SHIFT_RESERVED_0__MASK;
++}
++#define DPU_LUT_LO_SLOPE_SHIFT_LUT_LO_SLOPE_OFLOW_SHIFT__MASK	0x000003e0
++#define DPU_LUT_LO_SLOPE_SHIFT_LUT_LO_SLOPE_OFLOW_SHIFT__SHIFT	5
++static inline uint32_t DPU_LUT_LO_SLOPE_SHIFT_LUT_LO_SLOPE_OFLOW_SHIFT(uint32_t val)
++{
++	return ((val) << DPU_LUT_LO_SLOPE_SHIFT_LUT_LO_SLOPE_OFLOW_SHIFT__SHIFT) & DPU_LUT_LO_SLOPE_SHIFT_LUT_LO_SLOPE_OFLOW_SHIFT__MASK;
++}
++#define DPU_LUT_LO_SLOPE_SHIFT_LUT_LO_SLOPE_UFLOW_SHIFT__MASK	0x0000001f
++#define DPU_LUT_LO_SLOPE_SHIFT_LUT_LO_SLOPE_UFLOW_SHIFT__SHIFT	0
++static inline uint32_t DPU_LUT_LO_SLOPE_SHIFT_LUT_LO_SLOPE_UFLOW_SHIFT(uint32_t val)
++{
++	return ((val) << DPU_LUT_LO_SLOPE_SHIFT_LUT_LO_SLOPE_UFLOW_SHIFT__SHIFT) & DPU_LUT_LO_SLOPE_SHIFT_LUT_LO_SLOPE_UFLOW_SHIFT__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_S_STATUS				0x00005000
++#define DPU_RDMA_RDMA_S_STATUS_RESERVED_0__MASK			0xfffc0000
++#define DPU_RDMA_RDMA_S_STATUS_RESERVED_0__SHIFT		18
++static inline uint32_t DPU_RDMA_RDMA_S_STATUS_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_STATUS_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_S_STATUS_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_S_STATUS_STATUS_1__MASK			0x00030000
++#define DPU_RDMA_RDMA_S_STATUS_STATUS_1__SHIFT			16
++static inline uint32_t DPU_RDMA_RDMA_S_STATUS_STATUS_1(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_STATUS_STATUS_1__SHIFT) & DPU_RDMA_RDMA_S_STATUS_STATUS_1__MASK;
++}
++#define DPU_RDMA_RDMA_S_STATUS_RESERVED_1__MASK			0x0000fffc
++#define DPU_RDMA_RDMA_S_STATUS_RESERVED_1__SHIFT		2
++static inline uint32_t DPU_RDMA_RDMA_S_STATUS_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_STATUS_RESERVED_1__SHIFT) & DPU_RDMA_RDMA_S_STATUS_RESERVED_1__MASK;
++}
++#define DPU_RDMA_RDMA_S_STATUS_STATUS_0__MASK			0x00000003
++#define DPU_RDMA_RDMA_S_STATUS_STATUS_0__SHIFT			0
++static inline uint32_t DPU_RDMA_RDMA_S_STATUS_STATUS_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_STATUS_STATUS_0__SHIFT) & DPU_RDMA_RDMA_S_STATUS_STATUS_0__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_S_POINTER				0x00005004
++#define DPU_RDMA_RDMA_S_POINTER_RESERVED_0__MASK		0xfffe0000
++#define DPU_RDMA_RDMA_S_POINTER_RESERVED_0__SHIFT		17
++static inline uint32_t DPU_RDMA_RDMA_S_POINTER_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_POINTER_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_S_POINTER_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_S_POINTER_EXECUTER__MASK			0x00010000
++#define DPU_RDMA_RDMA_S_POINTER_EXECUTER__SHIFT			16
++static inline uint32_t DPU_RDMA_RDMA_S_POINTER_EXECUTER(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_POINTER_EXECUTER__SHIFT) & DPU_RDMA_RDMA_S_POINTER_EXECUTER__MASK;
++}
++#define DPU_RDMA_RDMA_S_POINTER_RESERVED_1__MASK		0x0000ffc0
++#define DPU_RDMA_RDMA_S_POINTER_RESERVED_1__SHIFT		6
++static inline uint32_t DPU_RDMA_RDMA_S_POINTER_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_POINTER_RESERVED_1__SHIFT) & DPU_RDMA_RDMA_S_POINTER_RESERVED_1__MASK;
++}
++#define DPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_CLEAR__MASK		0x00000020
++#define DPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_CLEAR__SHIFT	5
++static inline uint32_t DPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_CLEAR__SHIFT) & DPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_CLEAR__MASK;
++}
++#define DPU_RDMA_RDMA_S_POINTER_POINTER_PP_CLEAR__MASK		0x00000010
++#define DPU_RDMA_RDMA_S_POINTER_POINTER_PP_CLEAR__SHIFT		4
++static inline uint32_t DPU_RDMA_RDMA_S_POINTER_POINTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_POINTER_POINTER_PP_CLEAR__SHIFT) & DPU_RDMA_RDMA_S_POINTER_POINTER_PP_CLEAR__MASK;
++}
++#define DPU_RDMA_RDMA_S_POINTER_POINTER_PP_MODE__MASK		0x00000008
++#define DPU_RDMA_RDMA_S_POINTER_POINTER_PP_MODE__SHIFT		3
++static inline uint32_t DPU_RDMA_RDMA_S_POINTER_POINTER_PP_MODE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_POINTER_POINTER_PP_MODE__SHIFT) & DPU_RDMA_RDMA_S_POINTER_POINTER_PP_MODE__MASK;
++}
++#define DPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_EN__MASK		0x00000004
++#define DPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_EN__SHIFT		2
++static inline uint32_t DPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_EN(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_EN__SHIFT) & DPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_EN__MASK;
++}
++#define DPU_RDMA_RDMA_S_POINTER_POINTER_PP_EN__MASK		0x00000002
++#define DPU_RDMA_RDMA_S_POINTER_POINTER_PP_EN__SHIFT		1
++static inline uint32_t DPU_RDMA_RDMA_S_POINTER_POINTER_PP_EN(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_POINTER_POINTER_PP_EN__SHIFT) & DPU_RDMA_RDMA_S_POINTER_POINTER_PP_EN__MASK;
++}
++#define DPU_RDMA_RDMA_S_POINTER_POINTER__MASK			0x00000001
++#define DPU_RDMA_RDMA_S_POINTER_POINTER__SHIFT			0
++static inline uint32_t DPU_RDMA_RDMA_S_POINTER_POINTER(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_S_POINTER_POINTER__SHIFT) & DPU_RDMA_RDMA_S_POINTER_POINTER__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_OPERATION_ENABLE			0x00005008
++#define DPU_RDMA_RDMA_OPERATION_ENABLE_RESERVED_0__MASK		0xfffffffe
++#define DPU_RDMA_RDMA_OPERATION_ENABLE_RESERVED_0__SHIFT	1
++static inline uint32_t DPU_RDMA_RDMA_OPERATION_ENABLE_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_OPERATION_ENABLE_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_OPERATION_ENABLE_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_OPERATION_ENABLE_OP_EN__MASK		0x00000001
++#define DPU_RDMA_RDMA_OPERATION_ENABLE_OP_EN__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_OPERATION_ENABLE_OP_EN(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_OPERATION_ENABLE_OP_EN__SHIFT) & DPU_RDMA_RDMA_OPERATION_ENABLE_OP_EN__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_DATA_CUBE_WIDTH			0x0000500c
++#define DPU_RDMA_RDMA_DATA_CUBE_WIDTH_RESERVED_0__MASK		0xffffe000
++#define DPU_RDMA_RDMA_DATA_CUBE_WIDTH_RESERVED_0__SHIFT		13
++static inline uint32_t DPU_RDMA_RDMA_DATA_CUBE_WIDTH_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_DATA_CUBE_WIDTH_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_DATA_CUBE_WIDTH_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_DATA_CUBE_WIDTH_WIDTH__MASK		0x00001fff
++#define DPU_RDMA_RDMA_DATA_CUBE_WIDTH_WIDTH__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_DATA_CUBE_WIDTH_WIDTH(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_DATA_CUBE_WIDTH_WIDTH__SHIFT) & DPU_RDMA_RDMA_DATA_CUBE_WIDTH_WIDTH__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_DATA_CUBE_HEIGHT			0x00005010
++#define DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_RESERVED_0__MASK		0xe0000000
++#define DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_RESERVED_0__SHIFT	29
++static inline uint32_t DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_EW_LINE_NOTCH_ADDR__MASK	0x1fff0000
++#define DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_EW_LINE_NOTCH_ADDR__SHIFT	16
++static inline uint32_t DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_EW_LINE_NOTCH_ADDR(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_EW_LINE_NOTCH_ADDR__SHIFT) & DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_EW_LINE_NOTCH_ADDR__MASK;
++}
++#define DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_RESERVED_1__MASK		0x0000e000
++#define DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_RESERVED_1__SHIFT	13
++static inline uint32_t DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_RESERVED_1__SHIFT) & DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_RESERVED_1__MASK;
++}
++#define DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_HEIGHT__MASK		0x00001fff
++#define DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_HEIGHT__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_HEIGHT(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_HEIGHT__SHIFT) & DPU_RDMA_RDMA_DATA_CUBE_HEIGHT_HEIGHT__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_DATA_CUBE_CHANNEL			0x00005014
++#define DPU_RDMA_RDMA_DATA_CUBE_CHANNEL_RESERVED_0__MASK	0xffffe000
++#define DPU_RDMA_RDMA_DATA_CUBE_CHANNEL_RESERVED_0__SHIFT	13
++static inline uint32_t DPU_RDMA_RDMA_DATA_CUBE_CHANNEL_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_DATA_CUBE_CHANNEL_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_DATA_CUBE_CHANNEL_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_DATA_CUBE_CHANNEL_CHANNEL__MASK		0x00001fff
++#define DPU_RDMA_RDMA_DATA_CUBE_CHANNEL_CHANNEL__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_DATA_CUBE_CHANNEL_CHANNEL(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_DATA_CUBE_CHANNEL_CHANNEL__SHIFT) & DPU_RDMA_RDMA_DATA_CUBE_CHANNEL_CHANNEL__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_SRC_BASE_ADDR				0x00005018
++#define DPU_RDMA_RDMA_SRC_BASE_ADDR_SRC_BASE_ADDR__MASK		0xffffffff
++#define DPU_RDMA_RDMA_SRC_BASE_ADDR_SRC_BASE_ADDR__SHIFT	0
++static inline uint32_t DPU_RDMA_RDMA_SRC_BASE_ADDR_SRC_BASE_ADDR(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_SRC_BASE_ADDR_SRC_BASE_ADDR__SHIFT) & DPU_RDMA_RDMA_SRC_BASE_ADDR_SRC_BASE_ADDR__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_BRDMA_CFG				0x0000501c
++#define DPU_RDMA_RDMA_BRDMA_CFG_RESERVED_0__MASK		0xffffffe0
++#define DPU_RDMA_RDMA_BRDMA_CFG_RESERVED_0__SHIFT		5
++static inline uint32_t DPU_RDMA_RDMA_BRDMA_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_BRDMA_CFG_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_BRDMA_CFG_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_BRDMA_CFG_BRDMA_DATA_USE__MASK		0x0000001e
++#define DPU_RDMA_RDMA_BRDMA_CFG_BRDMA_DATA_USE__SHIFT		1
++static inline uint32_t DPU_RDMA_RDMA_BRDMA_CFG_BRDMA_DATA_USE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_BRDMA_CFG_BRDMA_DATA_USE__SHIFT) & DPU_RDMA_RDMA_BRDMA_CFG_BRDMA_DATA_USE__MASK;
++}
++#define DPU_RDMA_RDMA_BRDMA_CFG_RESERVED_1__MASK		0x00000001
++#define DPU_RDMA_RDMA_BRDMA_CFG_RESERVED_1__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_BRDMA_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_BRDMA_CFG_RESERVED_1__SHIFT) & DPU_RDMA_RDMA_BRDMA_CFG_RESERVED_1__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_BS_BASE_ADDR				0x00005020
++#define DPU_RDMA_RDMA_BS_BASE_ADDR_BS_BASE_ADDR__MASK		0xffffffff
++#define DPU_RDMA_RDMA_BS_BASE_ADDR_BS_BASE_ADDR__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_BS_BASE_ADDR_BS_BASE_ADDR(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_BS_BASE_ADDR_BS_BASE_ADDR__SHIFT) & DPU_RDMA_RDMA_BS_BASE_ADDR_BS_BASE_ADDR__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_NRDMA_CFG				0x00005028
++#define DPU_RDMA_RDMA_NRDMA_CFG_RESERVED_0__MASK		0xffffffe0
++#define DPU_RDMA_RDMA_NRDMA_CFG_RESERVED_0__SHIFT		5
++static inline uint32_t DPU_RDMA_RDMA_NRDMA_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_NRDMA_CFG_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_NRDMA_CFG_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_NRDMA_CFG_NRDMA_DATA_USE__MASK		0x0000001e
++#define DPU_RDMA_RDMA_NRDMA_CFG_NRDMA_DATA_USE__SHIFT		1
++static inline uint32_t DPU_RDMA_RDMA_NRDMA_CFG_NRDMA_DATA_USE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_NRDMA_CFG_NRDMA_DATA_USE__SHIFT) & DPU_RDMA_RDMA_NRDMA_CFG_NRDMA_DATA_USE__MASK;
++}
++#define DPU_RDMA_RDMA_NRDMA_CFG_RESERVED_1__MASK		0x00000001
++#define DPU_RDMA_RDMA_NRDMA_CFG_RESERVED_1__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_NRDMA_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_NRDMA_CFG_RESERVED_1__SHIFT) & DPU_RDMA_RDMA_NRDMA_CFG_RESERVED_1__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_BN_BASE_ADDR				0x0000502c
++#define DPU_RDMA_RDMA_BN_BASE_ADDR_BN_BASE_ADDR__MASK		0xffffffff
++#define DPU_RDMA_RDMA_BN_BASE_ADDR_BN_BASE_ADDR__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_BN_BASE_ADDR_BN_BASE_ADDR(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_BN_BASE_ADDR_BN_BASE_ADDR__SHIFT) & DPU_RDMA_RDMA_BN_BASE_ADDR_BN_BASE_ADDR__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_ERDMA_CFG				0x00005034
++#define DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DATA_MODE__MASK		0xc0000000
++#define DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DATA_MODE__SHIFT		30
++static inline uint32_t DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DATA_MODE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DATA_MODE__SHIFT) & DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DATA_MODE__MASK;
++}
++#define DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_SURF_MODE__MASK		0x20000000
++#define DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_SURF_MODE__SHIFT		29
++static inline uint32_t DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_SURF_MODE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_SURF_MODE__SHIFT) & DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_SURF_MODE__MASK;
++}
++#define DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_NONALIGN__MASK		0x10000000
++#define DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_NONALIGN__SHIFT		28
++static inline uint32_t DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_NONALIGN(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_NONALIGN__SHIFT) & DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_NONALIGN__MASK;
++}
++#define DPU_RDMA_RDMA_ERDMA_CFG_RESERVED_0__MASK		0x0ffffff0
++#define DPU_RDMA_RDMA_ERDMA_CFG_RESERVED_0__SHIFT		4
++static inline uint32_t DPU_RDMA_RDMA_ERDMA_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_ERDMA_CFG_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_ERDMA_CFG_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DATA_SIZE__MASK		0x0000000c
++#define DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DATA_SIZE__SHIFT		2
++static inline uint32_t DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DATA_SIZE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DATA_SIZE__SHIFT) & DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DATA_SIZE__MASK;
++}
++#define DPU_RDMA_RDMA_ERDMA_CFG_OV4K_BYPASS__MASK		0x00000002
++#define DPU_RDMA_RDMA_ERDMA_CFG_OV4K_BYPASS__SHIFT		1
++static inline uint32_t DPU_RDMA_RDMA_ERDMA_CFG_OV4K_BYPASS(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_ERDMA_CFG_OV4K_BYPASS__SHIFT) & DPU_RDMA_RDMA_ERDMA_CFG_OV4K_BYPASS__MASK;
++}
++#define DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DISABLE__MASK		0x00000001
++#define DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DISABLE__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DISABLE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DISABLE__SHIFT) & DPU_RDMA_RDMA_ERDMA_CFG_ERDMA_DISABLE__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_EW_BASE_ADDR				0x00005038
++#define DPU_RDMA_RDMA_EW_BASE_ADDR_EW_BASE_ADDR__MASK		0xffffffff
++#define DPU_RDMA_RDMA_EW_BASE_ADDR_EW_BASE_ADDR__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_EW_BASE_ADDR_EW_BASE_ADDR(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_EW_BASE_ADDR_EW_BASE_ADDR__SHIFT) & DPU_RDMA_RDMA_EW_BASE_ADDR_EW_BASE_ADDR__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_EW_SURF_STRIDE			0x00005040
++#define DPU_RDMA_RDMA_EW_SURF_STRIDE_EW_SURF_STRIDE__MASK	0xfffffff0
++#define DPU_RDMA_RDMA_EW_SURF_STRIDE_EW_SURF_STRIDE__SHIFT	4
++static inline uint32_t DPU_RDMA_RDMA_EW_SURF_STRIDE_EW_SURF_STRIDE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_EW_SURF_STRIDE_EW_SURF_STRIDE__SHIFT) & DPU_RDMA_RDMA_EW_SURF_STRIDE_EW_SURF_STRIDE__MASK;
++}
++#define DPU_RDMA_RDMA_EW_SURF_STRIDE_RESERVED_0__MASK		0x0000000f
++#define DPU_RDMA_RDMA_EW_SURF_STRIDE_RESERVED_0__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_EW_SURF_STRIDE_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_EW_SURF_STRIDE_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_EW_SURF_STRIDE_RESERVED_0__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_FEATURE_MODE_CFG			0x00005044
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_RESERVED_0__MASK		0xfffc0000
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_RESERVED_0__SHIFT	18
++static inline uint32_t DPU_RDMA_RDMA_FEATURE_MODE_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_FEATURE_MODE_CFG_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_FEATURE_MODE_CFG_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_IN_PRECISION__MASK	0x00038000
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_IN_PRECISION__SHIFT	15
++static inline uint32_t DPU_RDMA_RDMA_FEATURE_MODE_CFG_IN_PRECISION(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_FEATURE_MODE_CFG_IN_PRECISION__SHIFT) & DPU_RDMA_RDMA_FEATURE_MODE_CFG_IN_PRECISION__MASK;
++}
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_BURST_LEN__MASK		0x00007800
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_BURST_LEN__SHIFT		11
++static inline uint32_t DPU_RDMA_RDMA_FEATURE_MODE_CFG_BURST_LEN(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_FEATURE_MODE_CFG_BURST_LEN__SHIFT) & DPU_RDMA_RDMA_FEATURE_MODE_CFG_BURST_LEN__MASK;
++}
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_COMB_USE__MASK		0x00000700
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_COMB_USE__SHIFT		8
++static inline uint32_t DPU_RDMA_RDMA_FEATURE_MODE_CFG_COMB_USE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_FEATURE_MODE_CFG_COMB_USE__SHIFT) & DPU_RDMA_RDMA_FEATURE_MODE_CFG_COMB_USE__MASK;
++}
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_PROC_PRECISION__MASK	0x000000e0
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_PROC_PRECISION__SHIFT	5
++static inline uint32_t DPU_RDMA_RDMA_FEATURE_MODE_CFG_PROC_PRECISION(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_FEATURE_MODE_CFG_PROC_PRECISION__SHIFT) & DPU_RDMA_RDMA_FEATURE_MODE_CFG_PROC_PRECISION__MASK;
++}
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_MRDMA_DISABLE__MASK	0x00000010
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_MRDMA_DISABLE__SHIFT	4
++static inline uint32_t DPU_RDMA_RDMA_FEATURE_MODE_CFG_MRDMA_DISABLE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_FEATURE_MODE_CFG_MRDMA_DISABLE__SHIFT) & DPU_RDMA_RDMA_FEATURE_MODE_CFG_MRDMA_DISABLE__MASK;
++}
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_MRDMA_FP16TOFP32_EN__MASK	0x00000008
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_MRDMA_FP16TOFP32_EN__SHIFT	3
++static inline uint32_t DPU_RDMA_RDMA_FEATURE_MODE_CFG_MRDMA_FP16TOFP32_EN(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_FEATURE_MODE_CFG_MRDMA_FP16TOFP32_EN__SHIFT) & DPU_RDMA_RDMA_FEATURE_MODE_CFG_MRDMA_FP16TOFP32_EN__MASK;
++}
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_CONV_MODE__MASK		0x00000006
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_CONV_MODE__SHIFT		1
++static inline uint32_t DPU_RDMA_RDMA_FEATURE_MODE_CFG_CONV_MODE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_FEATURE_MODE_CFG_CONV_MODE__SHIFT) & DPU_RDMA_RDMA_FEATURE_MODE_CFG_CONV_MODE__MASK;
++}
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_FLYING_MODE__MASK	0x00000001
++#define DPU_RDMA_RDMA_FEATURE_MODE_CFG_FLYING_MODE__SHIFT	0
++static inline uint32_t DPU_RDMA_RDMA_FEATURE_MODE_CFG_FLYING_MODE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_FEATURE_MODE_CFG_FLYING_MODE__SHIFT) & DPU_RDMA_RDMA_FEATURE_MODE_CFG_FLYING_MODE__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_SRC_DMA_CFG				0x00005048
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_LINE_NOTCH_ADDR__MASK		0xfff80000
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_LINE_NOTCH_ADDR__SHIFT	19
++static inline uint32_t DPU_RDMA_RDMA_SRC_DMA_CFG_LINE_NOTCH_ADDR(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_SRC_DMA_CFG_LINE_NOTCH_ADDR__SHIFT) & DPU_RDMA_RDMA_SRC_DMA_CFG_LINE_NOTCH_ADDR__MASK;
++}
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_RESERVED_0__MASK		0x0007c000
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_RESERVED_0__SHIFT		14
++static inline uint32_t DPU_RDMA_RDMA_SRC_DMA_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_SRC_DMA_CFG_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_SRC_DMA_CFG_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_POOLING_METHOD__MASK		0x00002000
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_POOLING_METHOD__SHIFT		13
++static inline uint32_t DPU_RDMA_RDMA_SRC_DMA_CFG_POOLING_METHOD(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_SRC_DMA_CFG_POOLING_METHOD__SHIFT) & DPU_RDMA_RDMA_SRC_DMA_CFG_POOLING_METHOD__MASK;
++}
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_UNPOOLING_EN__MASK		0x00001000
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_UNPOOLING_EN__SHIFT		12
++static inline uint32_t DPU_RDMA_RDMA_SRC_DMA_CFG_UNPOOLING_EN(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_SRC_DMA_CFG_UNPOOLING_EN__SHIFT) & DPU_RDMA_RDMA_SRC_DMA_CFG_UNPOOLING_EN__MASK;
++}
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_STRIDE_HEIGHT__MASK	0x00000e00
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_STRIDE_HEIGHT__SHIFT	9
++static inline uint32_t DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_STRIDE_HEIGHT(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_STRIDE_HEIGHT__SHIFT) & DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_STRIDE_HEIGHT__MASK;
++}
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_STRIDE_WIDTH__MASK	0x000001c0
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_STRIDE_WIDTH__SHIFT	6
++static inline uint32_t DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_STRIDE_WIDTH(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_STRIDE_WIDTH__SHIFT) & DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_STRIDE_WIDTH__MASK;
++}
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_HEIGHT__MASK		0x00000038
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_HEIGHT__SHIFT		3
++static inline uint32_t DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_HEIGHT(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_HEIGHT__SHIFT) & DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_HEIGHT__MASK;
++}
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_WIDTH__MASK		0x00000007
++#define DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_WIDTH__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_WIDTH(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_WIDTH__SHIFT) & DPU_RDMA_RDMA_SRC_DMA_CFG_KERNEL_WIDTH__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_SURF_NOTCH				0x0000504c
++#define DPU_RDMA_RDMA_SURF_NOTCH_SURF_NOTCH_ADDR__MASK		0xfffffff0
++#define DPU_RDMA_RDMA_SURF_NOTCH_SURF_NOTCH_ADDR__SHIFT		4
++static inline uint32_t DPU_RDMA_RDMA_SURF_NOTCH_SURF_NOTCH_ADDR(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_SURF_NOTCH_SURF_NOTCH_ADDR__SHIFT) & DPU_RDMA_RDMA_SURF_NOTCH_SURF_NOTCH_ADDR__MASK;
++}
++#define DPU_RDMA_RDMA_SURF_NOTCH_RESERVED_0__MASK		0x0000000f
++#define DPU_RDMA_RDMA_SURF_NOTCH_RESERVED_0__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_SURF_NOTCH_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_SURF_NOTCH_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_SURF_NOTCH_RESERVED_0__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_PAD_CFG				0x00005064
++#define DPU_RDMA_RDMA_PAD_CFG_PAD_VALUE__MASK			0xffff0000
++#define DPU_RDMA_RDMA_PAD_CFG_PAD_VALUE__SHIFT			16
++static inline uint32_t DPU_RDMA_RDMA_PAD_CFG_PAD_VALUE(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_PAD_CFG_PAD_VALUE__SHIFT) & DPU_RDMA_RDMA_PAD_CFG_PAD_VALUE__MASK;
++}
++#define DPU_RDMA_RDMA_PAD_CFG_RESERVED_0__MASK			0x0000ff80
++#define DPU_RDMA_RDMA_PAD_CFG_RESERVED_0__SHIFT			7
++static inline uint32_t DPU_RDMA_RDMA_PAD_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_PAD_CFG_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_PAD_CFG_RESERVED_0__MASK;
++}
++#define DPU_RDMA_RDMA_PAD_CFG_PAD_TOP__MASK			0x00000070
++#define DPU_RDMA_RDMA_PAD_CFG_PAD_TOP__SHIFT			4
++static inline uint32_t DPU_RDMA_RDMA_PAD_CFG_PAD_TOP(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_PAD_CFG_PAD_TOP__SHIFT) & DPU_RDMA_RDMA_PAD_CFG_PAD_TOP__MASK;
++}
++#define DPU_RDMA_RDMA_PAD_CFG_RESERVED_1__MASK			0x00000008
++#define DPU_RDMA_RDMA_PAD_CFG_RESERVED_1__SHIFT			3
++static inline uint32_t DPU_RDMA_RDMA_PAD_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_PAD_CFG_RESERVED_1__SHIFT) & DPU_RDMA_RDMA_PAD_CFG_RESERVED_1__MASK;
++}
++#define DPU_RDMA_RDMA_PAD_CFG_PAD_LEFT__MASK			0x00000007
++#define DPU_RDMA_RDMA_PAD_CFG_PAD_LEFT__SHIFT			0
++static inline uint32_t DPU_RDMA_RDMA_PAD_CFG_PAD_LEFT(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_PAD_CFG_PAD_LEFT__SHIFT) & DPU_RDMA_RDMA_PAD_CFG_PAD_LEFT__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_WEIGHT				0x00005068
++#define DPU_RDMA_RDMA_WEIGHT_E_WEIGHT__MASK			0xff000000
++#define DPU_RDMA_RDMA_WEIGHT_E_WEIGHT__SHIFT			24
++static inline uint32_t DPU_RDMA_RDMA_WEIGHT_E_WEIGHT(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_WEIGHT_E_WEIGHT__SHIFT) & DPU_RDMA_RDMA_WEIGHT_E_WEIGHT__MASK;
++}
++#define DPU_RDMA_RDMA_WEIGHT_N_WEIGHT__MASK			0x00ff0000
++#define DPU_RDMA_RDMA_WEIGHT_N_WEIGHT__SHIFT			16
++static inline uint32_t DPU_RDMA_RDMA_WEIGHT_N_WEIGHT(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_WEIGHT_N_WEIGHT__SHIFT) & DPU_RDMA_RDMA_WEIGHT_N_WEIGHT__MASK;
++}
++#define DPU_RDMA_RDMA_WEIGHT_B_WEIGHT__MASK			0x0000ff00
++#define DPU_RDMA_RDMA_WEIGHT_B_WEIGHT__SHIFT			8
++static inline uint32_t DPU_RDMA_RDMA_WEIGHT_B_WEIGHT(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_WEIGHT_B_WEIGHT__SHIFT) & DPU_RDMA_RDMA_WEIGHT_B_WEIGHT__MASK;
++}
++#define DPU_RDMA_RDMA_WEIGHT_M_WEIGHT__MASK			0x000000ff
++#define DPU_RDMA_RDMA_WEIGHT_M_WEIGHT__SHIFT			0
++static inline uint32_t DPU_RDMA_RDMA_WEIGHT_M_WEIGHT(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_WEIGHT_M_WEIGHT__SHIFT) & DPU_RDMA_RDMA_WEIGHT_M_WEIGHT__MASK;
++}
++
++#define REG_DPU_RDMA_RDMA_EW_SURF_NOTCH				0x0000506c
++#define DPU_RDMA_RDMA_EW_SURF_NOTCH_EW_SURF_NOTCH__MASK		0xfffffff0
++#define DPU_RDMA_RDMA_EW_SURF_NOTCH_EW_SURF_NOTCH__SHIFT	4
++static inline uint32_t DPU_RDMA_RDMA_EW_SURF_NOTCH_EW_SURF_NOTCH(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_EW_SURF_NOTCH_EW_SURF_NOTCH__SHIFT) & DPU_RDMA_RDMA_EW_SURF_NOTCH_EW_SURF_NOTCH__MASK;
++}
++#define DPU_RDMA_RDMA_EW_SURF_NOTCH_RESERVED_0__MASK		0x0000000f
++#define DPU_RDMA_RDMA_EW_SURF_NOTCH_RESERVED_0__SHIFT		0
++static inline uint32_t DPU_RDMA_RDMA_EW_SURF_NOTCH_RESERVED_0(uint32_t val)
++{
++	return ((val) << DPU_RDMA_RDMA_EW_SURF_NOTCH_RESERVED_0__SHIFT) & DPU_RDMA_RDMA_EW_SURF_NOTCH_RESERVED_0__MASK;
++}
++
++#define REG_PPU_S_STATUS					0x00006000
++#define PPU_S_STATUS_RESERVED_0__MASK				0xfffc0000
++#define PPU_S_STATUS_RESERVED_0__SHIFT				18
++static inline uint32_t PPU_S_STATUS_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_S_STATUS_RESERVED_0__SHIFT) & PPU_S_STATUS_RESERVED_0__MASK;
++}
++#define PPU_S_STATUS_STATUS_1__MASK				0x00030000
++#define PPU_S_STATUS_STATUS_1__SHIFT				16
++static inline uint32_t PPU_S_STATUS_STATUS_1(uint32_t val)
++{
++	return ((val) << PPU_S_STATUS_STATUS_1__SHIFT) & PPU_S_STATUS_STATUS_1__MASK;
++}
++#define PPU_S_STATUS_RESERVED_1__MASK				0x0000fffc
++#define PPU_S_STATUS_RESERVED_1__SHIFT				2
++static inline uint32_t PPU_S_STATUS_RESERVED_1(uint32_t val)
++{
++	return ((val) << PPU_S_STATUS_RESERVED_1__SHIFT) & PPU_S_STATUS_RESERVED_1__MASK;
++}
++#define PPU_S_STATUS_STATUS_0__MASK				0x00000003
++#define PPU_S_STATUS_STATUS_0__SHIFT				0
++static inline uint32_t PPU_S_STATUS_STATUS_0(uint32_t val)
++{
++	return ((val) << PPU_S_STATUS_STATUS_0__SHIFT) & PPU_S_STATUS_STATUS_0__MASK;
++}
++
++#define REG_PPU_S_POINTER					0x00006004
++#define PPU_S_POINTER_RESERVED_0__MASK				0xfffe0000
++#define PPU_S_POINTER_RESERVED_0__SHIFT				17
++static inline uint32_t PPU_S_POINTER_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_S_POINTER_RESERVED_0__SHIFT) & PPU_S_POINTER_RESERVED_0__MASK;
++}
++#define PPU_S_POINTER_EXECUTER__MASK				0x00010000
++#define PPU_S_POINTER_EXECUTER__SHIFT				16
++static inline uint32_t PPU_S_POINTER_EXECUTER(uint32_t val)
++{
++	return ((val) << PPU_S_POINTER_EXECUTER__SHIFT) & PPU_S_POINTER_EXECUTER__MASK;
++}
++#define PPU_S_POINTER_RESERVED_1__MASK				0x0000ffc0
++#define PPU_S_POINTER_RESERVED_1__SHIFT				6
++static inline uint32_t PPU_S_POINTER_RESERVED_1(uint32_t val)
++{
++	return ((val) << PPU_S_POINTER_RESERVED_1__SHIFT) & PPU_S_POINTER_RESERVED_1__MASK;
++}
++#define PPU_S_POINTER_EXECUTER_PP_CLEAR__MASK			0x00000020
++#define PPU_S_POINTER_EXECUTER_PP_CLEAR__SHIFT			5
++static inline uint32_t PPU_S_POINTER_EXECUTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << PPU_S_POINTER_EXECUTER_PP_CLEAR__SHIFT) & PPU_S_POINTER_EXECUTER_PP_CLEAR__MASK;
++}
++#define PPU_S_POINTER_POINTER_PP_CLEAR__MASK			0x00000010
++#define PPU_S_POINTER_POINTER_PP_CLEAR__SHIFT			4
++static inline uint32_t PPU_S_POINTER_POINTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << PPU_S_POINTER_POINTER_PP_CLEAR__SHIFT) & PPU_S_POINTER_POINTER_PP_CLEAR__MASK;
++}
++#define PPU_S_POINTER_POINTER_PP_MODE__MASK			0x00000008
++#define PPU_S_POINTER_POINTER_PP_MODE__SHIFT			3
++static inline uint32_t PPU_S_POINTER_POINTER_PP_MODE(uint32_t val)
++{
++	return ((val) << PPU_S_POINTER_POINTER_PP_MODE__SHIFT) & PPU_S_POINTER_POINTER_PP_MODE__MASK;
++}
++#define PPU_S_POINTER_EXECUTER_PP_EN__MASK			0x00000004
++#define PPU_S_POINTER_EXECUTER_PP_EN__SHIFT			2
++static inline uint32_t PPU_S_POINTER_EXECUTER_PP_EN(uint32_t val)
++{
++	return ((val) << PPU_S_POINTER_EXECUTER_PP_EN__SHIFT) & PPU_S_POINTER_EXECUTER_PP_EN__MASK;
++}
++#define PPU_S_POINTER_POINTER_PP_EN__MASK			0x00000002
++#define PPU_S_POINTER_POINTER_PP_EN__SHIFT			1
++static inline uint32_t PPU_S_POINTER_POINTER_PP_EN(uint32_t val)
++{
++	return ((val) << PPU_S_POINTER_POINTER_PP_EN__SHIFT) & PPU_S_POINTER_POINTER_PP_EN__MASK;
++}
++#define PPU_S_POINTER_POINTER__MASK				0x00000001
++#define PPU_S_POINTER_POINTER__SHIFT				0
++static inline uint32_t PPU_S_POINTER_POINTER(uint32_t val)
++{
++	return ((val) << PPU_S_POINTER_POINTER__SHIFT) & PPU_S_POINTER_POINTER__MASK;
++}
++
++#define REG_PPU_OPERATION_ENABLE				0x00006008
++#define PPU_OPERATION_ENABLE_RESERVED_0__MASK			0xfffffffe
++#define PPU_OPERATION_ENABLE_RESERVED_0__SHIFT			1
++static inline uint32_t PPU_OPERATION_ENABLE_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_OPERATION_ENABLE_RESERVED_0__SHIFT) & PPU_OPERATION_ENABLE_RESERVED_0__MASK;
++}
++#define PPU_OPERATION_ENABLE_OP_EN__MASK			0x00000001
++#define PPU_OPERATION_ENABLE_OP_EN__SHIFT			0
++static inline uint32_t PPU_OPERATION_ENABLE_OP_EN(uint32_t val)
++{
++	return ((val) << PPU_OPERATION_ENABLE_OP_EN__SHIFT) & PPU_OPERATION_ENABLE_OP_EN__MASK;
++}
++
++#define REG_PPU_DATA_CUBE_IN_WIDTH				0x0000600c
++#define PPU_DATA_CUBE_IN_WIDTH_RESERVED_0__MASK			0xffffe000
++#define PPU_DATA_CUBE_IN_WIDTH_RESERVED_0__SHIFT		13
++static inline uint32_t PPU_DATA_CUBE_IN_WIDTH_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_IN_WIDTH_RESERVED_0__SHIFT) & PPU_DATA_CUBE_IN_WIDTH_RESERVED_0__MASK;
++}
++#define PPU_DATA_CUBE_IN_WIDTH_CUBE_IN_WIDTH__MASK		0x00001fff
++#define PPU_DATA_CUBE_IN_WIDTH_CUBE_IN_WIDTH__SHIFT		0
++static inline uint32_t PPU_DATA_CUBE_IN_WIDTH_CUBE_IN_WIDTH(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_IN_WIDTH_CUBE_IN_WIDTH__SHIFT) & PPU_DATA_CUBE_IN_WIDTH_CUBE_IN_WIDTH__MASK;
++}
++
++#define REG_PPU_DATA_CUBE_IN_HEIGHT				0x00006010
++#define PPU_DATA_CUBE_IN_HEIGHT_RESERVED_0__MASK		0xffffe000
++#define PPU_DATA_CUBE_IN_HEIGHT_RESERVED_0__SHIFT		13
++static inline uint32_t PPU_DATA_CUBE_IN_HEIGHT_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_IN_HEIGHT_RESERVED_0__SHIFT) & PPU_DATA_CUBE_IN_HEIGHT_RESERVED_0__MASK;
++}
++#define PPU_DATA_CUBE_IN_HEIGHT_CUBE_IN_HEIGHT__MASK		0x00001fff
++#define PPU_DATA_CUBE_IN_HEIGHT_CUBE_IN_HEIGHT__SHIFT		0
++static inline uint32_t PPU_DATA_CUBE_IN_HEIGHT_CUBE_IN_HEIGHT(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_IN_HEIGHT_CUBE_IN_HEIGHT__SHIFT) & PPU_DATA_CUBE_IN_HEIGHT_CUBE_IN_HEIGHT__MASK;
++}
++
++#define REG_PPU_DATA_CUBE_IN_CHANNEL				0x00006014
++#define PPU_DATA_CUBE_IN_CHANNEL_RESERVED_0__MASK		0xffffe000
++#define PPU_DATA_CUBE_IN_CHANNEL_RESERVED_0__SHIFT		13
++static inline uint32_t PPU_DATA_CUBE_IN_CHANNEL_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_IN_CHANNEL_RESERVED_0__SHIFT) & PPU_DATA_CUBE_IN_CHANNEL_RESERVED_0__MASK;
++}
++#define PPU_DATA_CUBE_IN_CHANNEL_CUBE_IN_CHANNEL__MASK		0x00001fff
++#define PPU_DATA_CUBE_IN_CHANNEL_CUBE_IN_CHANNEL__SHIFT		0
++static inline uint32_t PPU_DATA_CUBE_IN_CHANNEL_CUBE_IN_CHANNEL(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_IN_CHANNEL_CUBE_IN_CHANNEL__SHIFT) & PPU_DATA_CUBE_IN_CHANNEL_CUBE_IN_CHANNEL__MASK;
++}
++
++#define REG_PPU_DATA_CUBE_OUT_WIDTH				0x00006018
++#define PPU_DATA_CUBE_OUT_WIDTH_RESERVED_0__MASK		0xffffe000
++#define PPU_DATA_CUBE_OUT_WIDTH_RESERVED_0__SHIFT		13
++static inline uint32_t PPU_DATA_CUBE_OUT_WIDTH_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_OUT_WIDTH_RESERVED_0__SHIFT) & PPU_DATA_CUBE_OUT_WIDTH_RESERVED_0__MASK;
++}
++#define PPU_DATA_CUBE_OUT_WIDTH_CUBE_OUT_WIDTH__MASK		0x00001fff
++#define PPU_DATA_CUBE_OUT_WIDTH_CUBE_OUT_WIDTH__SHIFT		0
++static inline uint32_t PPU_DATA_CUBE_OUT_WIDTH_CUBE_OUT_WIDTH(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_OUT_WIDTH_CUBE_OUT_WIDTH__SHIFT) & PPU_DATA_CUBE_OUT_WIDTH_CUBE_OUT_WIDTH__MASK;
++}
++
++#define REG_PPU_DATA_CUBE_OUT_HEIGHT				0x0000601c
++#define PPU_DATA_CUBE_OUT_HEIGHT_RESERVED_0__MASK		0xffffe000
++#define PPU_DATA_CUBE_OUT_HEIGHT_RESERVED_0__SHIFT		13
++static inline uint32_t PPU_DATA_CUBE_OUT_HEIGHT_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_OUT_HEIGHT_RESERVED_0__SHIFT) & PPU_DATA_CUBE_OUT_HEIGHT_RESERVED_0__MASK;
++}
++#define PPU_DATA_CUBE_OUT_HEIGHT_CUBE_OUT_HEIGHT__MASK		0x00001fff
++#define PPU_DATA_CUBE_OUT_HEIGHT_CUBE_OUT_HEIGHT__SHIFT		0
++static inline uint32_t PPU_DATA_CUBE_OUT_HEIGHT_CUBE_OUT_HEIGHT(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_OUT_HEIGHT_CUBE_OUT_HEIGHT__SHIFT) & PPU_DATA_CUBE_OUT_HEIGHT_CUBE_OUT_HEIGHT__MASK;
++}
++
++#define REG_PPU_DATA_CUBE_OUT_CHANNEL				0x00006020
++#define PPU_DATA_CUBE_OUT_CHANNEL_RESERVED_0__MASK		0xffffe000
++#define PPU_DATA_CUBE_OUT_CHANNEL_RESERVED_0__SHIFT		13
++static inline uint32_t PPU_DATA_CUBE_OUT_CHANNEL_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_OUT_CHANNEL_RESERVED_0__SHIFT) & PPU_DATA_CUBE_OUT_CHANNEL_RESERVED_0__MASK;
++}
++#define PPU_DATA_CUBE_OUT_CHANNEL_CUBE_OUT_CHANNEL__MASK	0x00001fff
++#define PPU_DATA_CUBE_OUT_CHANNEL_CUBE_OUT_CHANNEL__SHIFT	0
++static inline uint32_t PPU_DATA_CUBE_OUT_CHANNEL_CUBE_OUT_CHANNEL(uint32_t val)
++{
++	return ((val) << PPU_DATA_CUBE_OUT_CHANNEL_CUBE_OUT_CHANNEL__SHIFT) & PPU_DATA_CUBE_OUT_CHANNEL_CUBE_OUT_CHANNEL__MASK;
++}
++
++#define REG_PPU_OPERATION_MODE_CFG				0x00006024
++#define PPU_OPERATION_MODE_CFG_RESERVED_0__MASK			0x80000000
++#define PPU_OPERATION_MODE_CFG_RESERVED_0__SHIFT		31
++static inline uint32_t PPU_OPERATION_MODE_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_OPERATION_MODE_CFG_RESERVED_0__SHIFT) & PPU_OPERATION_MODE_CFG_RESERVED_0__MASK;
++}
++#define PPU_OPERATION_MODE_CFG_INDEX_EN__MASK			0x40000000
++#define PPU_OPERATION_MODE_CFG_INDEX_EN__SHIFT			30
++static inline uint32_t PPU_OPERATION_MODE_CFG_INDEX_EN(uint32_t val)
++{
++	return ((val) << PPU_OPERATION_MODE_CFG_INDEX_EN__SHIFT) & PPU_OPERATION_MODE_CFG_INDEX_EN__MASK;
++}
++#define PPU_OPERATION_MODE_CFG_RESERVED_1__MASK			0x20000000
++#define PPU_OPERATION_MODE_CFG_RESERVED_1__SHIFT		29
++static inline uint32_t PPU_OPERATION_MODE_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << PPU_OPERATION_MODE_CFG_RESERVED_1__SHIFT) & PPU_OPERATION_MODE_CFG_RESERVED_1__MASK;
++}
++#define PPU_OPERATION_MODE_CFG_NOTCH_ADDR__MASK			0x1fff0000
++#define PPU_OPERATION_MODE_CFG_NOTCH_ADDR__SHIFT		16
++static inline uint32_t PPU_OPERATION_MODE_CFG_NOTCH_ADDR(uint32_t val)
++{
++	return ((val) << PPU_OPERATION_MODE_CFG_NOTCH_ADDR__SHIFT) & PPU_OPERATION_MODE_CFG_NOTCH_ADDR__MASK;
++}
++#define PPU_OPERATION_MODE_CFG_RESERVED_2__MASK			0x0000ff00
++#define PPU_OPERATION_MODE_CFG_RESERVED_2__SHIFT		8
++static inline uint32_t PPU_OPERATION_MODE_CFG_RESERVED_2(uint32_t val)
++{
++	return ((val) << PPU_OPERATION_MODE_CFG_RESERVED_2__SHIFT) & PPU_OPERATION_MODE_CFG_RESERVED_2__MASK;
++}
++#define PPU_OPERATION_MODE_CFG_USE_CNT__MASK			0x000000e0
++#define PPU_OPERATION_MODE_CFG_USE_CNT__SHIFT			5
++static inline uint32_t PPU_OPERATION_MODE_CFG_USE_CNT(uint32_t val)
++{
++	return ((val) << PPU_OPERATION_MODE_CFG_USE_CNT__SHIFT) & PPU_OPERATION_MODE_CFG_USE_CNT__MASK;
++}
++#define PPU_OPERATION_MODE_CFG_FLYING_MODE__MASK		0x00000010
++#define PPU_OPERATION_MODE_CFG_FLYING_MODE__SHIFT		4
++static inline uint32_t PPU_OPERATION_MODE_CFG_FLYING_MODE(uint32_t val)
++{
++	return ((val) << PPU_OPERATION_MODE_CFG_FLYING_MODE__SHIFT) & PPU_OPERATION_MODE_CFG_FLYING_MODE__MASK;
++}
++#define PPU_OPERATION_MODE_CFG_RESERVED_3__MASK			0x0000000c
++#define PPU_OPERATION_MODE_CFG_RESERVED_3__SHIFT		2
++static inline uint32_t PPU_OPERATION_MODE_CFG_RESERVED_3(uint32_t val)
++{
++	return ((val) << PPU_OPERATION_MODE_CFG_RESERVED_3__SHIFT) & PPU_OPERATION_MODE_CFG_RESERVED_3__MASK;
++}
++#define PPU_OPERATION_MODE_CFG_POOLING_METHOD__MASK		0x00000003
++#define PPU_OPERATION_MODE_CFG_POOLING_METHOD__SHIFT		0
++static inline uint32_t PPU_OPERATION_MODE_CFG_POOLING_METHOD(uint32_t val)
++{
++	return ((val) << PPU_OPERATION_MODE_CFG_POOLING_METHOD__SHIFT) & PPU_OPERATION_MODE_CFG_POOLING_METHOD__MASK;
++}
++
++#define REG_PPU_POOLING_KERNEL_CFG				0x00006034
++#define PPU_POOLING_KERNEL_CFG_RESERVED_0__MASK			0xff000000
++#define PPU_POOLING_KERNEL_CFG_RESERVED_0__SHIFT		24
++static inline uint32_t PPU_POOLING_KERNEL_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_POOLING_KERNEL_CFG_RESERVED_0__SHIFT) & PPU_POOLING_KERNEL_CFG_RESERVED_0__MASK;
++}
++#define PPU_POOLING_KERNEL_CFG_KERNEL_STRIDE_HEIGHT__MASK	0x00f00000
++#define PPU_POOLING_KERNEL_CFG_KERNEL_STRIDE_HEIGHT__SHIFT	20
++static inline uint32_t PPU_POOLING_KERNEL_CFG_KERNEL_STRIDE_HEIGHT(uint32_t val)
++{
++	return ((val) << PPU_POOLING_KERNEL_CFG_KERNEL_STRIDE_HEIGHT__SHIFT) & PPU_POOLING_KERNEL_CFG_KERNEL_STRIDE_HEIGHT__MASK;
++}
++#define PPU_POOLING_KERNEL_CFG_KERNEL_STRIDE_WIDTH__MASK	0x000f0000
++#define PPU_POOLING_KERNEL_CFG_KERNEL_STRIDE_WIDTH__SHIFT	16
++static inline uint32_t PPU_POOLING_KERNEL_CFG_KERNEL_STRIDE_WIDTH(uint32_t val)
++{
++	return ((val) << PPU_POOLING_KERNEL_CFG_KERNEL_STRIDE_WIDTH__SHIFT) & PPU_POOLING_KERNEL_CFG_KERNEL_STRIDE_WIDTH__MASK;
++}
++#define PPU_POOLING_KERNEL_CFG_RESERVED_1__MASK			0x0000f000
++#define PPU_POOLING_KERNEL_CFG_RESERVED_1__SHIFT		12
++static inline uint32_t PPU_POOLING_KERNEL_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << PPU_POOLING_KERNEL_CFG_RESERVED_1__SHIFT) & PPU_POOLING_KERNEL_CFG_RESERVED_1__MASK;
++}
++#define PPU_POOLING_KERNEL_CFG_KERNEL_HEIGHT__MASK		0x00000f00
++#define PPU_POOLING_KERNEL_CFG_KERNEL_HEIGHT__SHIFT		8
++static inline uint32_t PPU_POOLING_KERNEL_CFG_KERNEL_HEIGHT(uint32_t val)
++{
++	return ((val) << PPU_POOLING_KERNEL_CFG_KERNEL_HEIGHT__SHIFT) & PPU_POOLING_KERNEL_CFG_KERNEL_HEIGHT__MASK;
++}
++#define PPU_POOLING_KERNEL_CFG_RESERVED_2__MASK			0x000000f0
++#define PPU_POOLING_KERNEL_CFG_RESERVED_2__SHIFT		4
++static inline uint32_t PPU_POOLING_KERNEL_CFG_RESERVED_2(uint32_t val)
++{
++	return ((val) << PPU_POOLING_KERNEL_CFG_RESERVED_2__SHIFT) & PPU_POOLING_KERNEL_CFG_RESERVED_2__MASK;
++}
++#define PPU_POOLING_KERNEL_CFG_KERNEL_WIDTH__MASK		0x0000000f
++#define PPU_POOLING_KERNEL_CFG_KERNEL_WIDTH__SHIFT		0
++static inline uint32_t PPU_POOLING_KERNEL_CFG_KERNEL_WIDTH(uint32_t val)
++{
++	return ((val) << PPU_POOLING_KERNEL_CFG_KERNEL_WIDTH__SHIFT) & PPU_POOLING_KERNEL_CFG_KERNEL_WIDTH__MASK;
++}
++
++#define REG_PPU_RECIP_KERNEL_WIDTH				0x00006038
++#define PPU_RECIP_KERNEL_WIDTH_RESERVED_0__MASK			0xfffe0000
++#define PPU_RECIP_KERNEL_WIDTH_RESERVED_0__SHIFT		17
++static inline uint32_t PPU_RECIP_KERNEL_WIDTH_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_RECIP_KERNEL_WIDTH_RESERVED_0__SHIFT) & PPU_RECIP_KERNEL_WIDTH_RESERVED_0__MASK;
++}
++#define PPU_RECIP_KERNEL_WIDTH_RECIP_KERNEL_WIDTH__MASK		0x0001ffff
++#define PPU_RECIP_KERNEL_WIDTH_RECIP_KERNEL_WIDTH__SHIFT	0
++static inline uint32_t PPU_RECIP_KERNEL_WIDTH_RECIP_KERNEL_WIDTH(uint32_t val)
++{
++	return ((val) << PPU_RECIP_KERNEL_WIDTH_RECIP_KERNEL_WIDTH__SHIFT) & PPU_RECIP_KERNEL_WIDTH_RECIP_KERNEL_WIDTH__MASK;
++}
++
++#define REG_PPU_RECIP_KERNEL_HEIGHT				0x0000603c
++#define PPU_RECIP_KERNEL_HEIGHT_RESERVED_0__MASK		0xfffe0000
++#define PPU_RECIP_KERNEL_HEIGHT_RESERVED_0__SHIFT		17
++static inline uint32_t PPU_RECIP_KERNEL_HEIGHT_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_RECIP_KERNEL_HEIGHT_RESERVED_0__SHIFT) & PPU_RECIP_KERNEL_HEIGHT_RESERVED_0__MASK;
++}
++#define PPU_RECIP_KERNEL_HEIGHT_RECIP_KERNEL_HEIGHT__MASK	0x0001ffff
++#define PPU_RECIP_KERNEL_HEIGHT_RECIP_KERNEL_HEIGHT__SHIFT	0
++static inline uint32_t PPU_RECIP_KERNEL_HEIGHT_RECIP_KERNEL_HEIGHT(uint32_t val)
++{
++	return ((val) << PPU_RECIP_KERNEL_HEIGHT_RECIP_KERNEL_HEIGHT__SHIFT) & PPU_RECIP_KERNEL_HEIGHT_RECIP_KERNEL_HEIGHT__MASK;
++}
++
++#define REG_PPU_POOLING_PADDING_CFG				0x00006040
++#define PPU_POOLING_PADDING_CFG_RESERVED_0__MASK		0xffff8000
++#define PPU_POOLING_PADDING_CFG_RESERVED_0__SHIFT		15
++static inline uint32_t PPU_POOLING_PADDING_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_POOLING_PADDING_CFG_RESERVED_0__SHIFT) & PPU_POOLING_PADDING_CFG_RESERVED_0__MASK;
++}
++#define PPU_POOLING_PADDING_CFG_PAD_BOTTOM__MASK		0x00007000
++#define PPU_POOLING_PADDING_CFG_PAD_BOTTOM__SHIFT		12
++static inline uint32_t PPU_POOLING_PADDING_CFG_PAD_BOTTOM(uint32_t val)
++{
++	return ((val) << PPU_POOLING_PADDING_CFG_PAD_BOTTOM__SHIFT) & PPU_POOLING_PADDING_CFG_PAD_BOTTOM__MASK;
++}
++#define PPU_POOLING_PADDING_CFG_RESERVED_1__MASK		0x00000800
++#define PPU_POOLING_PADDING_CFG_RESERVED_1__SHIFT		11
++static inline uint32_t PPU_POOLING_PADDING_CFG_RESERVED_1(uint32_t val)
++{
++	return ((val) << PPU_POOLING_PADDING_CFG_RESERVED_1__SHIFT) & PPU_POOLING_PADDING_CFG_RESERVED_1__MASK;
++}
++#define PPU_POOLING_PADDING_CFG_PAD_RIGHT__MASK			0x00000700
++#define PPU_POOLING_PADDING_CFG_PAD_RIGHT__SHIFT		8
++static inline uint32_t PPU_POOLING_PADDING_CFG_PAD_RIGHT(uint32_t val)
++{
++	return ((val) << PPU_POOLING_PADDING_CFG_PAD_RIGHT__SHIFT) & PPU_POOLING_PADDING_CFG_PAD_RIGHT__MASK;
++}
++#define PPU_POOLING_PADDING_CFG_RESERVED_2__MASK		0x00000080
++#define PPU_POOLING_PADDING_CFG_RESERVED_2__SHIFT		7
++static inline uint32_t PPU_POOLING_PADDING_CFG_RESERVED_2(uint32_t val)
++{
++	return ((val) << PPU_POOLING_PADDING_CFG_RESERVED_2__SHIFT) & PPU_POOLING_PADDING_CFG_RESERVED_2__MASK;
++}
++#define PPU_POOLING_PADDING_CFG_PAD_TOP__MASK			0x00000070
++#define PPU_POOLING_PADDING_CFG_PAD_TOP__SHIFT			4
++static inline uint32_t PPU_POOLING_PADDING_CFG_PAD_TOP(uint32_t val)
++{
++	return ((val) << PPU_POOLING_PADDING_CFG_PAD_TOP__SHIFT) & PPU_POOLING_PADDING_CFG_PAD_TOP__MASK;
++}
++#define PPU_POOLING_PADDING_CFG_RESERVED_3__MASK		0x00000008
++#define PPU_POOLING_PADDING_CFG_RESERVED_3__SHIFT		3
++static inline uint32_t PPU_POOLING_PADDING_CFG_RESERVED_3(uint32_t val)
++{
++	return ((val) << PPU_POOLING_PADDING_CFG_RESERVED_3__SHIFT) & PPU_POOLING_PADDING_CFG_RESERVED_3__MASK;
++}
++#define PPU_POOLING_PADDING_CFG_PAD_LEFT__MASK			0x00000007
++#define PPU_POOLING_PADDING_CFG_PAD_LEFT__SHIFT			0
++static inline uint32_t PPU_POOLING_PADDING_CFG_PAD_LEFT(uint32_t val)
++{
++	return ((val) << PPU_POOLING_PADDING_CFG_PAD_LEFT__SHIFT) & PPU_POOLING_PADDING_CFG_PAD_LEFT__MASK;
++}
++
++#define REG_PPU_PADDING_VALUE_1_CFG				0x00006044
++#define PPU_PADDING_VALUE_1_CFG_PAD_VALUE_0__MASK		0xffffffff
++#define PPU_PADDING_VALUE_1_CFG_PAD_VALUE_0__SHIFT		0
++static inline uint32_t PPU_PADDING_VALUE_1_CFG_PAD_VALUE_0(uint32_t val)
++{
++	return ((val) << PPU_PADDING_VALUE_1_CFG_PAD_VALUE_0__SHIFT) & PPU_PADDING_VALUE_1_CFG_PAD_VALUE_0__MASK;
++}
++
++#define REG_PPU_PADDING_VALUE_2_CFG				0x00006048
++#define PPU_PADDING_VALUE_2_CFG_RESERVED_0__MASK		0xfffffff8
++#define PPU_PADDING_VALUE_2_CFG_RESERVED_0__SHIFT		3
++static inline uint32_t PPU_PADDING_VALUE_2_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_PADDING_VALUE_2_CFG_RESERVED_0__SHIFT) & PPU_PADDING_VALUE_2_CFG_RESERVED_0__MASK;
++}
++#define PPU_PADDING_VALUE_2_CFG_PAD_VALUE_1__MASK		0x00000007
++#define PPU_PADDING_VALUE_2_CFG_PAD_VALUE_1__SHIFT		0
++static inline uint32_t PPU_PADDING_VALUE_2_CFG_PAD_VALUE_1(uint32_t val)
++{
++	return ((val) << PPU_PADDING_VALUE_2_CFG_PAD_VALUE_1__SHIFT) & PPU_PADDING_VALUE_2_CFG_PAD_VALUE_1__MASK;
++}
++
++#define REG_PPU_DST_BASE_ADDR					0x00006070
++#define PPU_DST_BASE_ADDR_DST_BASE_ADDR__MASK			0xfffffff0
++#define PPU_DST_BASE_ADDR_DST_BASE_ADDR__SHIFT			4
++static inline uint32_t PPU_DST_BASE_ADDR_DST_BASE_ADDR(uint32_t val)
++{
++	return ((val) << PPU_DST_BASE_ADDR_DST_BASE_ADDR__SHIFT) & PPU_DST_BASE_ADDR_DST_BASE_ADDR__MASK;
++}
++#define PPU_DST_BASE_ADDR_RESERVED_0__MASK			0x0000000f
++#define PPU_DST_BASE_ADDR_RESERVED_0__SHIFT			0
++static inline uint32_t PPU_DST_BASE_ADDR_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_DST_BASE_ADDR_RESERVED_0__SHIFT) & PPU_DST_BASE_ADDR_RESERVED_0__MASK;
++}
++
++#define REG_PPU_DST_SURF_STRIDE					0x0000607c
++#define PPU_DST_SURF_STRIDE_DST_SURF_STRIDE__MASK		0xfffffff0
++#define PPU_DST_SURF_STRIDE_DST_SURF_STRIDE__SHIFT		4
++static inline uint32_t PPU_DST_SURF_STRIDE_DST_SURF_STRIDE(uint32_t val)
++{
++	return ((val) << PPU_DST_SURF_STRIDE_DST_SURF_STRIDE__SHIFT) & PPU_DST_SURF_STRIDE_DST_SURF_STRIDE__MASK;
++}
++#define PPU_DST_SURF_STRIDE_RESERVED_0__MASK			0x0000000f
++#define PPU_DST_SURF_STRIDE_RESERVED_0__SHIFT			0
++static inline uint32_t PPU_DST_SURF_STRIDE_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_DST_SURF_STRIDE_RESERVED_0__SHIFT) & PPU_DST_SURF_STRIDE_RESERVED_0__MASK;
++}
++
++#define REG_PPU_DATA_FORMAT					0x00006084
++#define PPU_DATA_FORMAT_INDEX_ADD__MASK				0xfffffff0
++#define PPU_DATA_FORMAT_INDEX_ADD__SHIFT			4
++static inline uint32_t PPU_DATA_FORMAT_INDEX_ADD(uint32_t val)
++{
++	return ((val) << PPU_DATA_FORMAT_INDEX_ADD__SHIFT) & PPU_DATA_FORMAT_INDEX_ADD__MASK;
++}
++#define PPU_DATA_FORMAT_DPU_FLYIN__MASK				0x00000008
++#define PPU_DATA_FORMAT_DPU_FLYIN__SHIFT			3
++static inline uint32_t PPU_DATA_FORMAT_DPU_FLYIN(uint32_t val)
++{
++	return ((val) << PPU_DATA_FORMAT_DPU_FLYIN__SHIFT) & PPU_DATA_FORMAT_DPU_FLYIN__MASK;
++}
++#define PPU_DATA_FORMAT_PROC_PRECISION__MASK			0x00000007
++#define PPU_DATA_FORMAT_PROC_PRECISION__SHIFT			0
++static inline uint32_t PPU_DATA_FORMAT_PROC_PRECISION(uint32_t val)
++{
++	return ((val) << PPU_DATA_FORMAT_PROC_PRECISION__SHIFT) & PPU_DATA_FORMAT_PROC_PRECISION__MASK;
++}
++
++#define REG_PPU_MISC_CTRL					0x000060dc
++#define PPU_MISC_CTRL_SURF_LEN__MASK				0xffff0000
++#define PPU_MISC_CTRL_SURF_LEN__SHIFT				16
++static inline uint32_t PPU_MISC_CTRL_SURF_LEN(uint32_t val)
++{
++	return ((val) << PPU_MISC_CTRL_SURF_LEN__SHIFT) & PPU_MISC_CTRL_SURF_LEN__MASK;
++}
++#define PPU_MISC_CTRL_RESERVED_0__MASK				0x0000fe00
++#define PPU_MISC_CTRL_RESERVED_0__SHIFT				9
++static inline uint32_t PPU_MISC_CTRL_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_MISC_CTRL_RESERVED_0__SHIFT) & PPU_MISC_CTRL_RESERVED_0__MASK;
++}
++#define PPU_MISC_CTRL_MC_SURF_OUT__MASK				0x00000100
++#define PPU_MISC_CTRL_MC_SURF_OUT__SHIFT			8
++static inline uint32_t PPU_MISC_CTRL_MC_SURF_OUT(uint32_t val)
++{
++	return ((val) << PPU_MISC_CTRL_MC_SURF_OUT__SHIFT) & PPU_MISC_CTRL_MC_SURF_OUT__MASK;
++}
++#define PPU_MISC_CTRL_NONALIGN__MASK				0x00000080
++#define PPU_MISC_CTRL_NONALIGN__SHIFT				7
++static inline uint32_t PPU_MISC_CTRL_NONALIGN(uint32_t val)
++{
++	return ((val) << PPU_MISC_CTRL_NONALIGN__SHIFT) & PPU_MISC_CTRL_NONALIGN__MASK;
++}
++#define PPU_MISC_CTRL_RESERVED_1__MASK				0x00000070
++#define PPU_MISC_CTRL_RESERVED_1__SHIFT				4
++static inline uint32_t PPU_MISC_CTRL_RESERVED_1(uint32_t val)
++{
++	return ((val) << PPU_MISC_CTRL_RESERVED_1__SHIFT) & PPU_MISC_CTRL_RESERVED_1__MASK;
++}
++#define PPU_MISC_CTRL_BURST_LEN__MASK				0x0000000f
++#define PPU_MISC_CTRL_BURST_LEN__SHIFT				0
++static inline uint32_t PPU_MISC_CTRL_BURST_LEN(uint32_t val)
++{
++	return ((val) << PPU_MISC_CTRL_BURST_LEN__SHIFT) & PPU_MISC_CTRL_BURST_LEN__MASK;
++}
++
++#define REG_PPU_RDMA_RDMA_S_STATUS				0x00007000
++#define PPU_RDMA_RDMA_S_STATUS_RESERVED_0__MASK			0xfffc0000
++#define PPU_RDMA_RDMA_S_STATUS_RESERVED_0__SHIFT		18
++static inline uint32_t PPU_RDMA_RDMA_S_STATUS_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_STATUS_RESERVED_0__SHIFT) & PPU_RDMA_RDMA_S_STATUS_RESERVED_0__MASK;
++}
++#define PPU_RDMA_RDMA_S_STATUS_STATUS_1__MASK			0x00030000
++#define PPU_RDMA_RDMA_S_STATUS_STATUS_1__SHIFT			16
++static inline uint32_t PPU_RDMA_RDMA_S_STATUS_STATUS_1(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_STATUS_STATUS_1__SHIFT) & PPU_RDMA_RDMA_S_STATUS_STATUS_1__MASK;
++}
++#define PPU_RDMA_RDMA_S_STATUS_RESERVED_1__MASK			0x0000fffc
++#define PPU_RDMA_RDMA_S_STATUS_RESERVED_1__SHIFT		2
++static inline uint32_t PPU_RDMA_RDMA_S_STATUS_RESERVED_1(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_STATUS_RESERVED_1__SHIFT) & PPU_RDMA_RDMA_S_STATUS_RESERVED_1__MASK;
++}
++#define PPU_RDMA_RDMA_S_STATUS_STATUS_0__MASK			0x00000003
++#define PPU_RDMA_RDMA_S_STATUS_STATUS_0__SHIFT			0
++static inline uint32_t PPU_RDMA_RDMA_S_STATUS_STATUS_0(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_STATUS_STATUS_0__SHIFT) & PPU_RDMA_RDMA_S_STATUS_STATUS_0__MASK;
++}
++
++#define REG_PPU_RDMA_RDMA_S_POINTER				0x00007004
++#define PPU_RDMA_RDMA_S_POINTER_RESERVED_0__MASK		0xfffe0000
++#define PPU_RDMA_RDMA_S_POINTER_RESERVED_0__SHIFT		17
++static inline uint32_t PPU_RDMA_RDMA_S_POINTER_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_POINTER_RESERVED_0__SHIFT) & PPU_RDMA_RDMA_S_POINTER_RESERVED_0__MASK;
++}
++#define PPU_RDMA_RDMA_S_POINTER_EXECUTER__MASK			0x00010000
++#define PPU_RDMA_RDMA_S_POINTER_EXECUTER__SHIFT			16
++static inline uint32_t PPU_RDMA_RDMA_S_POINTER_EXECUTER(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_POINTER_EXECUTER__SHIFT) & PPU_RDMA_RDMA_S_POINTER_EXECUTER__MASK;
++}
++#define PPU_RDMA_RDMA_S_POINTER_RESERVED_1__MASK		0x0000ffc0
++#define PPU_RDMA_RDMA_S_POINTER_RESERVED_1__SHIFT		6
++static inline uint32_t PPU_RDMA_RDMA_S_POINTER_RESERVED_1(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_POINTER_RESERVED_1__SHIFT) & PPU_RDMA_RDMA_S_POINTER_RESERVED_1__MASK;
++}
++#define PPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_CLEAR__MASK		0x00000020
++#define PPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_CLEAR__SHIFT	5
++static inline uint32_t PPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_CLEAR__SHIFT) & PPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_CLEAR__MASK;
++}
++#define PPU_RDMA_RDMA_S_POINTER_POINTER_PP_CLEAR__MASK		0x00000010
++#define PPU_RDMA_RDMA_S_POINTER_POINTER_PP_CLEAR__SHIFT		4
++static inline uint32_t PPU_RDMA_RDMA_S_POINTER_POINTER_PP_CLEAR(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_POINTER_POINTER_PP_CLEAR__SHIFT) & PPU_RDMA_RDMA_S_POINTER_POINTER_PP_CLEAR__MASK;
++}
++#define PPU_RDMA_RDMA_S_POINTER_POINTER_PP_MODE__MASK		0x00000008
++#define PPU_RDMA_RDMA_S_POINTER_POINTER_PP_MODE__SHIFT		3
++static inline uint32_t PPU_RDMA_RDMA_S_POINTER_POINTER_PP_MODE(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_POINTER_POINTER_PP_MODE__SHIFT) & PPU_RDMA_RDMA_S_POINTER_POINTER_PP_MODE__MASK;
++}
++#define PPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_EN__MASK		0x00000004
++#define PPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_EN__SHIFT		2
++static inline uint32_t PPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_EN(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_EN__SHIFT) & PPU_RDMA_RDMA_S_POINTER_EXECUTER_PP_EN__MASK;
++}
++#define PPU_RDMA_RDMA_S_POINTER_POINTER_PP_EN__MASK		0x00000002
++#define PPU_RDMA_RDMA_S_POINTER_POINTER_PP_EN__SHIFT		1
++static inline uint32_t PPU_RDMA_RDMA_S_POINTER_POINTER_PP_EN(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_POINTER_POINTER_PP_EN__SHIFT) & PPU_RDMA_RDMA_S_POINTER_POINTER_PP_EN__MASK;
++}
++#define PPU_RDMA_RDMA_S_POINTER_POINTER__MASK			0x00000001
++#define PPU_RDMA_RDMA_S_POINTER_POINTER__SHIFT			0
++static inline uint32_t PPU_RDMA_RDMA_S_POINTER_POINTER(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_S_POINTER_POINTER__SHIFT) & PPU_RDMA_RDMA_S_POINTER_POINTER__MASK;
++}
++
++#define REG_PPU_RDMA_RDMA_OPERATION_ENABLE			0x00007008
++#define PPU_RDMA_RDMA_OPERATION_ENABLE_RESERVED_0__MASK		0xfffffffe
++#define PPU_RDMA_RDMA_OPERATION_ENABLE_RESERVED_0__SHIFT	1
++static inline uint32_t PPU_RDMA_RDMA_OPERATION_ENABLE_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_OPERATION_ENABLE_RESERVED_0__SHIFT) & PPU_RDMA_RDMA_OPERATION_ENABLE_RESERVED_0__MASK;
++}
++#define PPU_RDMA_RDMA_OPERATION_ENABLE_OP_EN__MASK		0x00000001
++#define PPU_RDMA_RDMA_OPERATION_ENABLE_OP_EN__SHIFT		0
++static inline uint32_t PPU_RDMA_RDMA_OPERATION_ENABLE_OP_EN(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_OPERATION_ENABLE_OP_EN__SHIFT) & PPU_RDMA_RDMA_OPERATION_ENABLE_OP_EN__MASK;
++}
++
++#define REG_PPU_RDMA_RDMA_CUBE_IN_WIDTH				0x0000700c
++#define PPU_RDMA_RDMA_CUBE_IN_WIDTH_RESERVED_0__MASK		0xffffe000
++#define PPU_RDMA_RDMA_CUBE_IN_WIDTH_RESERVED_0__SHIFT		13
++static inline uint32_t PPU_RDMA_RDMA_CUBE_IN_WIDTH_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_CUBE_IN_WIDTH_RESERVED_0__SHIFT) & PPU_RDMA_RDMA_CUBE_IN_WIDTH_RESERVED_0__MASK;
++}
++#define PPU_RDMA_RDMA_CUBE_IN_WIDTH_CUBE_IN_WIDTH__MASK		0x00001fff
++#define PPU_RDMA_RDMA_CUBE_IN_WIDTH_CUBE_IN_WIDTH__SHIFT	0
++static inline uint32_t PPU_RDMA_RDMA_CUBE_IN_WIDTH_CUBE_IN_WIDTH(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_CUBE_IN_WIDTH_CUBE_IN_WIDTH__SHIFT) & PPU_RDMA_RDMA_CUBE_IN_WIDTH_CUBE_IN_WIDTH__MASK;
++}
++
++#define REG_PPU_RDMA_RDMA_CUBE_IN_HEIGHT			0x00007010
++#define PPU_RDMA_RDMA_CUBE_IN_HEIGHT_RESERVED_0__MASK		0xffffe000
++#define PPU_RDMA_RDMA_CUBE_IN_HEIGHT_RESERVED_0__SHIFT		13
++static inline uint32_t PPU_RDMA_RDMA_CUBE_IN_HEIGHT_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_CUBE_IN_HEIGHT_RESERVED_0__SHIFT) & PPU_RDMA_RDMA_CUBE_IN_HEIGHT_RESERVED_0__MASK;
++}
++#define PPU_RDMA_RDMA_CUBE_IN_HEIGHT_CUBE_IN_HEIGHT__MASK	0x00001fff
++#define PPU_RDMA_RDMA_CUBE_IN_HEIGHT_CUBE_IN_HEIGHT__SHIFT	0
++static inline uint32_t PPU_RDMA_RDMA_CUBE_IN_HEIGHT_CUBE_IN_HEIGHT(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_CUBE_IN_HEIGHT_CUBE_IN_HEIGHT__SHIFT) & PPU_RDMA_RDMA_CUBE_IN_HEIGHT_CUBE_IN_HEIGHT__MASK;
++}
++
++#define REG_PPU_RDMA_RDMA_CUBE_IN_CHANNEL			0x00007014
++#define PPU_RDMA_RDMA_CUBE_IN_CHANNEL_RESERVED_0__MASK		0xffffe000
++#define PPU_RDMA_RDMA_CUBE_IN_CHANNEL_RESERVED_0__SHIFT		13
++static inline uint32_t PPU_RDMA_RDMA_CUBE_IN_CHANNEL_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_CUBE_IN_CHANNEL_RESERVED_0__SHIFT) & PPU_RDMA_RDMA_CUBE_IN_CHANNEL_RESERVED_0__MASK;
++}
++#define PPU_RDMA_RDMA_CUBE_IN_CHANNEL_CUBE_IN_CHANNEL__MASK	0x00001fff
++#define PPU_RDMA_RDMA_CUBE_IN_CHANNEL_CUBE_IN_CHANNEL__SHIFT	0
++static inline uint32_t PPU_RDMA_RDMA_CUBE_IN_CHANNEL_CUBE_IN_CHANNEL(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_CUBE_IN_CHANNEL_CUBE_IN_CHANNEL__SHIFT) & PPU_RDMA_RDMA_CUBE_IN_CHANNEL_CUBE_IN_CHANNEL__MASK;
++}
++
++#define REG_PPU_RDMA_RDMA_SRC_BASE_ADDR				0x0000701c
++#define PPU_RDMA_RDMA_SRC_BASE_ADDR_SRC_BASE_ADDR__MASK		0xffffffff
++#define PPU_RDMA_RDMA_SRC_BASE_ADDR_SRC_BASE_ADDR__SHIFT	0
++static inline uint32_t PPU_RDMA_RDMA_SRC_BASE_ADDR_SRC_BASE_ADDR(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_SRC_BASE_ADDR_SRC_BASE_ADDR__SHIFT) & PPU_RDMA_RDMA_SRC_BASE_ADDR_SRC_BASE_ADDR__MASK;
++}
++
++#define REG_PPU_RDMA_RDMA_SRC_LINE_STRIDE			0x00007024
++#define PPU_RDMA_RDMA_SRC_LINE_STRIDE_SRC_LINE_STRIDE__MASK	0xfffffff0
++#define PPU_RDMA_RDMA_SRC_LINE_STRIDE_SRC_LINE_STRIDE__SHIFT	4
++static inline uint32_t PPU_RDMA_RDMA_SRC_LINE_STRIDE_SRC_LINE_STRIDE(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_SRC_LINE_STRIDE_SRC_LINE_STRIDE__SHIFT) & PPU_RDMA_RDMA_SRC_LINE_STRIDE_SRC_LINE_STRIDE__MASK;
++}
++#define PPU_RDMA_RDMA_SRC_LINE_STRIDE_RESERVED_0__MASK		0x0000000f
++#define PPU_RDMA_RDMA_SRC_LINE_STRIDE_RESERVED_0__SHIFT		0
++static inline uint32_t PPU_RDMA_RDMA_SRC_LINE_STRIDE_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_SRC_LINE_STRIDE_RESERVED_0__SHIFT) & PPU_RDMA_RDMA_SRC_LINE_STRIDE_RESERVED_0__MASK;
++}
++
++#define REG_PPU_RDMA_RDMA_SRC_SURF_STRIDE			0x00007028
++#define PPU_RDMA_RDMA_SRC_SURF_STRIDE_SRC_SURF_STRIDE__MASK	0xfffffff0
++#define PPU_RDMA_RDMA_SRC_SURF_STRIDE_SRC_SURF_STRIDE__SHIFT	4
++static inline uint32_t PPU_RDMA_RDMA_SRC_SURF_STRIDE_SRC_SURF_STRIDE(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_SRC_SURF_STRIDE_SRC_SURF_STRIDE__SHIFT) & PPU_RDMA_RDMA_SRC_SURF_STRIDE_SRC_SURF_STRIDE__MASK;
++}
++#define PPU_RDMA_RDMA_SRC_SURF_STRIDE_RESERVED_0__MASK		0x0000000f
++#define PPU_RDMA_RDMA_SRC_SURF_STRIDE_RESERVED_0__SHIFT		0
++static inline uint32_t PPU_RDMA_RDMA_SRC_SURF_STRIDE_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_SRC_SURF_STRIDE_RESERVED_0__SHIFT) & PPU_RDMA_RDMA_SRC_SURF_STRIDE_RESERVED_0__MASK;
++}
++
++#define REG_PPU_RDMA_RDMA_DATA_FORMAT				0x00007030
++#define PPU_RDMA_RDMA_DATA_FORMAT_RESERVED_0__MASK		0xfffffffc
++#define PPU_RDMA_RDMA_DATA_FORMAT_RESERVED_0__SHIFT		2
++static inline uint32_t PPU_RDMA_RDMA_DATA_FORMAT_RESERVED_0(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_DATA_FORMAT_RESERVED_0__SHIFT) & PPU_RDMA_RDMA_DATA_FORMAT_RESERVED_0__MASK;
++}
++#define PPU_RDMA_RDMA_DATA_FORMAT_IN_PRECISION__MASK		0x00000003
++#define PPU_RDMA_RDMA_DATA_FORMAT_IN_PRECISION__SHIFT		0
++static inline uint32_t PPU_RDMA_RDMA_DATA_FORMAT_IN_PRECISION(uint32_t val)
++{
++	return ((val) << PPU_RDMA_RDMA_DATA_FORMAT_IN_PRECISION__SHIFT) & PPU_RDMA_RDMA_DATA_FORMAT_IN_PRECISION__MASK;
++}
++
++#define REG_DDMA_CFG_OUTSTANDING				0x00008000
++#define DDMA_CFG_OUTSTANDING_RESERVED_0__MASK			0xffff0000
++#define DDMA_CFG_OUTSTANDING_RESERVED_0__SHIFT			16
++static inline uint32_t DDMA_CFG_OUTSTANDING_RESERVED_0(uint32_t val)
++{
++	return ((val) << DDMA_CFG_OUTSTANDING_RESERVED_0__SHIFT) & DDMA_CFG_OUTSTANDING_RESERVED_0__MASK;
++}
++#define DDMA_CFG_OUTSTANDING_WR_OS_CNT__MASK			0x0000ff00
++#define DDMA_CFG_OUTSTANDING_WR_OS_CNT__SHIFT			8
++static inline uint32_t DDMA_CFG_OUTSTANDING_WR_OS_CNT(uint32_t val)
++{
++	return ((val) << DDMA_CFG_OUTSTANDING_WR_OS_CNT__SHIFT) & DDMA_CFG_OUTSTANDING_WR_OS_CNT__MASK;
++}
++#define DDMA_CFG_OUTSTANDING_RD_OS_CNT__MASK			0x000000ff
++#define DDMA_CFG_OUTSTANDING_RD_OS_CNT__SHIFT			0
++static inline uint32_t DDMA_CFG_OUTSTANDING_RD_OS_CNT(uint32_t val)
++{
++	return ((val) << DDMA_CFG_OUTSTANDING_RD_OS_CNT__SHIFT) & DDMA_CFG_OUTSTANDING_RD_OS_CNT__MASK;
++}
++
++#define REG_DDMA_RD_WEIGHT_0					0x00008004
++#define DDMA_RD_WEIGHT_0_RD_WEIGHT_PDP__MASK			0xff000000
++#define DDMA_RD_WEIGHT_0_RD_WEIGHT_PDP__SHIFT			24
++static inline uint32_t DDMA_RD_WEIGHT_0_RD_WEIGHT_PDP(uint32_t val)
++{
++	return ((val) << DDMA_RD_WEIGHT_0_RD_WEIGHT_PDP__SHIFT) & DDMA_RD_WEIGHT_0_RD_WEIGHT_PDP__MASK;
++}
++#define DDMA_RD_WEIGHT_0_RD_WEIGHT_DPU__MASK			0x00ff0000
++#define DDMA_RD_WEIGHT_0_RD_WEIGHT_DPU__SHIFT			16
++static inline uint32_t DDMA_RD_WEIGHT_0_RD_WEIGHT_DPU(uint32_t val)
++{
++	return ((val) << DDMA_RD_WEIGHT_0_RD_WEIGHT_DPU__SHIFT) & DDMA_RD_WEIGHT_0_RD_WEIGHT_DPU__MASK;
++}
++#define DDMA_RD_WEIGHT_0_RD_WEIGHT_KERNEL__MASK			0x0000ff00
++#define DDMA_RD_WEIGHT_0_RD_WEIGHT_KERNEL__SHIFT		8
++static inline uint32_t DDMA_RD_WEIGHT_0_RD_WEIGHT_KERNEL(uint32_t val)
++{
++	return ((val) << DDMA_RD_WEIGHT_0_RD_WEIGHT_KERNEL__SHIFT) & DDMA_RD_WEIGHT_0_RD_WEIGHT_KERNEL__MASK;
++}
++#define DDMA_RD_WEIGHT_0_RD_WEIGHT_FEATURE__MASK		0x000000ff
++#define DDMA_RD_WEIGHT_0_RD_WEIGHT_FEATURE__SHIFT		0
++static inline uint32_t DDMA_RD_WEIGHT_0_RD_WEIGHT_FEATURE(uint32_t val)
++{
++	return ((val) << DDMA_RD_WEIGHT_0_RD_WEIGHT_FEATURE__SHIFT) & DDMA_RD_WEIGHT_0_RD_WEIGHT_FEATURE__MASK;
++}
++
++#define REG_DDMA_WR_WEIGHT_0					0x00008008
++#define DDMA_WR_WEIGHT_0_RESERVED_0__MASK			0xffff0000
++#define DDMA_WR_WEIGHT_0_RESERVED_0__SHIFT			16
++static inline uint32_t DDMA_WR_WEIGHT_0_RESERVED_0(uint32_t val)
++{
++	return ((val) << DDMA_WR_WEIGHT_0_RESERVED_0__SHIFT) & DDMA_WR_WEIGHT_0_RESERVED_0__MASK;
++}
++#define DDMA_WR_WEIGHT_0_WR_WEIGHT_PDP__MASK			0x0000ff00
++#define DDMA_WR_WEIGHT_0_WR_WEIGHT_PDP__SHIFT			8
++static inline uint32_t DDMA_WR_WEIGHT_0_WR_WEIGHT_PDP(uint32_t val)
++{
++	return ((val) << DDMA_WR_WEIGHT_0_WR_WEIGHT_PDP__SHIFT) & DDMA_WR_WEIGHT_0_WR_WEIGHT_PDP__MASK;
++}
++#define DDMA_WR_WEIGHT_0_WR_WEIGHT_DPU__MASK			0x000000ff
++#define DDMA_WR_WEIGHT_0_WR_WEIGHT_DPU__SHIFT			0
++static inline uint32_t DDMA_WR_WEIGHT_0_WR_WEIGHT_DPU(uint32_t val)
++{
++	return ((val) << DDMA_WR_WEIGHT_0_WR_WEIGHT_DPU__SHIFT) & DDMA_WR_WEIGHT_0_WR_WEIGHT_DPU__MASK;
++}
++
++#define REG_DDMA_CFG_ID_ERROR					0x0000800c
++#define DDMA_CFG_ID_ERROR_RESERVED_0__MASK			0xfffffc00
++#define DDMA_CFG_ID_ERROR_RESERVED_0__SHIFT			10
++static inline uint32_t DDMA_CFG_ID_ERROR_RESERVED_0(uint32_t val)
++{
++	return ((val) << DDMA_CFG_ID_ERROR_RESERVED_0__SHIFT) & DDMA_CFG_ID_ERROR_RESERVED_0__MASK;
++}
++#define DDMA_CFG_ID_ERROR_WR_RESP_ID__MASK			0x000003c0
++#define DDMA_CFG_ID_ERROR_WR_RESP_ID__SHIFT			6
++static inline uint32_t DDMA_CFG_ID_ERROR_WR_RESP_ID(uint32_t val)
++{
++	return ((val) << DDMA_CFG_ID_ERROR_WR_RESP_ID__SHIFT) & DDMA_CFG_ID_ERROR_WR_RESP_ID__MASK;
++}
++#define DDMA_CFG_ID_ERROR_RESERVED_1__MASK			0x00000020
++#define DDMA_CFG_ID_ERROR_RESERVED_1__SHIFT			5
++static inline uint32_t DDMA_CFG_ID_ERROR_RESERVED_1(uint32_t val)
++{
++	return ((val) << DDMA_CFG_ID_ERROR_RESERVED_1__SHIFT) & DDMA_CFG_ID_ERROR_RESERVED_1__MASK;
++}
++#define DDMA_CFG_ID_ERROR_RD_RESP_ID__MASK			0x0000001f
++#define DDMA_CFG_ID_ERROR_RD_RESP_ID__SHIFT			0
++static inline uint32_t DDMA_CFG_ID_ERROR_RD_RESP_ID(uint32_t val)
++{
++	return ((val) << DDMA_CFG_ID_ERROR_RD_RESP_ID__SHIFT) & DDMA_CFG_ID_ERROR_RD_RESP_ID__MASK;
++}
++
++#define REG_DDMA_RD_WEIGHT_1					0x00008010
++#define DDMA_RD_WEIGHT_1_RESERVED_0__MASK			0xffffff00
++#define DDMA_RD_WEIGHT_1_RESERVED_0__SHIFT			8
++static inline uint32_t DDMA_RD_WEIGHT_1_RESERVED_0(uint32_t val)
++{
++	return ((val) << DDMA_RD_WEIGHT_1_RESERVED_0__SHIFT) & DDMA_RD_WEIGHT_1_RESERVED_0__MASK;
++}
++#define DDMA_RD_WEIGHT_1_RD_WEIGHT_PC__MASK			0x000000ff
++#define DDMA_RD_WEIGHT_1_RD_WEIGHT_PC__SHIFT			0
++static inline uint32_t DDMA_RD_WEIGHT_1_RD_WEIGHT_PC(uint32_t val)
++{
++	return ((val) << DDMA_RD_WEIGHT_1_RD_WEIGHT_PC__SHIFT) & DDMA_RD_WEIGHT_1_RD_WEIGHT_PC__MASK;
++}
++
++#define REG_DDMA_CFG_DMA_FIFO_CLR				0x00008014
++#define DDMA_CFG_DMA_FIFO_CLR_RESERVED_0__MASK			0xfffffffe
++#define DDMA_CFG_DMA_FIFO_CLR_RESERVED_0__SHIFT			1
++static inline uint32_t DDMA_CFG_DMA_FIFO_CLR_RESERVED_0(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_FIFO_CLR_RESERVED_0__SHIFT) & DDMA_CFG_DMA_FIFO_CLR_RESERVED_0__MASK;
++}
++#define DDMA_CFG_DMA_FIFO_CLR_DMA_FIFO_CLR__MASK		0x00000001
++#define DDMA_CFG_DMA_FIFO_CLR_DMA_FIFO_CLR__SHIFT		0
++static inline uint32_t DDMA_CFG_DMA_FIFO_CLR_DMA_FIFO_CLR(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_FIFO_CLR_DMA_FIFO_CLR__SHIFT) & DDMA_CFG_DMA_FIFO_CLR_DMA_FIFO_CLR__MASK;
++}
++
++#define REG_DDMA_CFG_DMA_ARB					0x00008018
++#define DDMA_CFG_DMA_ARB_RESERVED_0__MASK			0xfffffc00
++#define DDMA_CFG_DMA_ARB_RESERVED_0__SHIFT			10
++static inline uint32_t DDMA_CFG_DMA_ARB_RESERVED_0(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_ARB_RESERVED_0__SHIFT) & DDMA_CFG_DMA_ARB_RESERVED_0__MASK;
++}
++#define DDMA_CFG_DMA_ARB_WR_ARBIT_MODEL__MASK			0x00000200
++#define DDMA_CFG_DMA_ARB_WR_ARBIT_MODEL__SHIFT			9
++static inline uint32_t DDMA_CFG_DMA_ARB_WR_ARBIT_MODEL(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_ARB_WR_ARBIT_MODEL__SHIFT) & DDMA_CFG_DMA_ARB_WR_ARBIT_MODEL__MASK;
++}
++#define DDMA_CFG_DMA_ARB_RD_ARBIT_MODEL__MASK			0x00000100
++#define DDMA_CFG_DMA_ARB_RD_ARBIT_MODEL__SHIFT			8
++static inline uint32_t DDMA_CFG_DMA_ARB_RD_ARBIT_MODEL(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_ARB_RD_ARBIT_MODEL__SHIFT) & DDMA_CFG_DMA_ARB_RD_ARBIT_MODEL__MASK;
++}
++#define DDMA_CFG_DMA_ARB_RESERVED_1__MASK			0x00000080
++#define DDMA_CFG_DMA_ARB_RESERVED_1__SHIFT			7
++static inline uint32_t DDMA_CFG_DMA_ARB_RESERVED_1(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_ARB_RESERVED_1__SHIFT) & DDMA_CFG_DMA_ARB_RESERVED_1__MASK;
++}
++#define DDMA_CFG_DMA_ARB_WR_FIX_ARB__MASK			0x00000070
++#define DDMA_CFG_DMA_ARB_WR_FIX_ARB__SHIFT			4
++static inline uint32_t DDMA_CFG_DMA_ARB_WR_FIX_ARB(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_ARB_WR_FIX_ARB__SHIFT) & DDMA_CFG_DMA_ARB_WR_FIX_ARB__MASK;
++}
++#define DDMA_CFG_DMA_ARB_RESERVED_2__MASK			0x00000008
++#define DDMA_CFG_DMA_ARB_RESERVED_2__SHIFT			3
++static inline uint32_t DDMA_CFG_DMA_ARB_RESERVED_2(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_ARB_RESERVED_2__SHIFT) & DDMA_CFG_DMA_ARB_RESERVED_2__MASK;
++}
++#define DDMA_CFG_DMA_ARB_RD_FIX_ARB__MASK			0x00000007
++#define DDMA_CFG_DMA_ARB_RD_FIX_ARB__SHIFT			0
++static inline uint32_t DDMA_CFG_DMA_ARB_RD_FIX_ARB(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_ARB_RD_FIX_ARB__SHIFT) & DDMA_CFG_DMA_ARB_RD_FIX_ARB__MASK;
++}
++
++#define REG_DDMA_CFG_DMA_RD_QOS					0x00008020
++#define DDMA_CFG_DMA_RD_QOS_RESERVED_0__MASK			0xfffffc00
++#define DDMA_CFG_DMA_RD_QOS_RESERVED_0__SHIFT			10
++static inline uint32_t DDMA_CFG_DMA_RD_QOS_RESERVED_0(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_QOS_RESERVED_0__SHIFT) & DDMA_CFG_DMA_RD_QOS_RESERVED_0__MASK;
++}
++#define DDMA_CFG_DMA_RD_QOS_RD_PC_QOS__MASK			0x00000300
++#define DDMA_CFG_DMA_RD_QOS_RD_PC_QOS__SHIFT			8
++static inline uint32_t DDMA_CFG_DMA_RD_QOS_RD_PC_QOS(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_QOS_RD_PC_QOS__SHIFT) & DDMA_CFG_DMA_RD_QOS_RD_PC_QOS__MASK;
++}
++#define DDMA_CFG_DMA_RD_QOS_RD_PPU_QOS__MASK			0x000000c0
++#define DDMA_CFG_DMA_RD_QOS_RD_PPU_QOS__SHIFT			6
++static inline uint32_t DDMA_CFG_DMA_RD_QOS_RD_PPU_QOS(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_QOS_RD_PPU_QOS__SHIFT) & DDMA_CFG_DMA_RD_QOS_RD_PPU_QOS__MASK;
++}
++#define DDMA_CFG_DMA_RD_QOS_RD_DPU_QOS__MASK			0x00000030
++#define DDMA_CFG_DMA_RD_QOS_RD_DPU_QOS__SHIFT			4
++static inline uint32_t DDMA_CFG_DMA_RD_QOS_RD_DPU_QOS(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_QOS_RD_DPU_QOS__SHIFT) & DDMA_CFG_DMA_RD_QOS_RD_DPU_QOS__MASK;
++}
++#define DDMA_CFG_DMA_RD_QOS_RD_KERNEL_QOS__MASK			0x0000000c
++#define DDMA_CFG_DMA_RD_QOS_RD_KERNEL_QOS__SHIFT		2
++static inline uint32_t DDMA_CFG_DMA_RD_QOS_RD_KERNEL_QOS(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_QOS_RD_KERNEL_QOS__SHIFT) & DDMA_CFG_DMA_RD_QOS_RD_KERNEL_QOS__MASK;
++}
++#define DDMA_CFG_DMA_RD_QOS_RD_FEATURE_QOS__MASK		0x00000003
++#define DDMA_CFG_DMA_RD_QOS_RD_FEATURE_QOS__SHIFT		0
++static inline uint32_t DDMA_CFG_DMA_RD_QOS_RD_FEATURE_QOS(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_QOS_RD_FEATURE_QOS__SHIFT) & DDMA_CFG_DMA_RD_QOS_RD_FEATURE_QOS__MASK;
++}
++
++#define REG_DDMA_CFG_DMA_RD_CFG					0x00008024
++#define DDMA_CFG_DMA_RD_CFG_RESERVED_0__MASK			0xffffe000
++#define DDMA_CFG_DMA_RD_CFG_RESERVED_0__SHIFT			13
++static inline uint32_t DDMA_CFG_DMA_RD_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_CFG_RESERVED_0__SHIFT) & DDMA_CFG_DMA_RD_CFG_RESERVED_0__MASK;
++}
++#define DDMA_CFG_DMA_RD_CFG_RD_ARLOCK__MASK			0x00001000
++#define DDMA_CFG_DMA_RD_CFG_RD_ARLOCK__SHIFT			12
++static inline uint32_t DDMA_CFG_DMA_RD_CFG_RD_ARLOCK(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_CFG_RD_ARLOCK__SHIFT) & DDMA_CFG_DMA_RD_CFG_RD_ARLOCK__MASK;
++}
++#define DDMA_CFG_DMA_RD_CFG_RD_ARCACHE__MASK			0x00000f00
++#define DDMA_CFG_DMA_RD_CFG_RD_ARCACHE__SHIFT			8
++static inline uint32_t DDMA_CFG_DMA_RD_CFG_RD_ARCACHE(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_CFG_RD_ARCACHE__SHIFT) & DDMA_CFG_DMA_RD_CFG_RD_ARCACHE__MASK;
++}
++#define DDMA_CFG_DMA_RD_CFG_RD_ARPROT__MASK			0x000000e0
++#define DDMA_CFG_DMA_RD_CFG_RD_ARPROT__SHIFT			5
++static inline uint32_t DDMA_CFG_DMA_RD_CFG_RD_ARPROT(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_CFG_RD_ARPROT__SHIFT) & DDMA_CFG_DMA_RD_CFG_RD_ARPROT__MASK;
++}
++#define DDMA_CFG_DMA_RD_CFG_RD_ARBURST__MASK			0x00000018
++#define DDMA_CFG_DMA_RD_CFG_RD_ARBURST__SHIFT			3
++static inline uint32_t DDMA_CFG_DMA_RD_CFG_RD_ARBURST(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_CFG_RD_ARBURST__SHIFT) & DDMA_CFG_DMA_RD_CFG_RD_ARBURST__MASK;
++}
++#define DDMA_CFG_DMA_RD_CFG_RD_ARSIZE__MASK			0x00000007
++#define DDMA_CFG_DMA_RD_CFG_RD_ARSIZE__SHIFT			0
++static inline uint32_t DDMA_CFG_DMA_RD_CFG_RD_ARSIZE(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_RD_CFG_RD_ARSIZE__SHIFT) & DDMA_CFG_DMA_RD_CFG_RD_ARSIZE__MASK;
++}
++
++#define REG_DDMA_CFG_DMA_WR_CFG					0x00008028
++#define DDMA_CFG_DMA_WR_CFG_RESERVED_0__MASK			0xffffe000
++#define DDMA_CFG_DMA_WR_CFG_RESERVED_0__SHIFT			13
++static inline uint32_t DDMA_CFG_DMA_WR_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_WR_CFG_RESERVED_0__SHIFT) & DDMA_CFG_DMA_WR_CFG_RESERVED_0__MASK;
++}
++#define DDMA_CFG_DMA_WR_CFG_WR_AWLOCK__MASK			0x00001000
++#define DDMA_CFG_DMA_WR_CFG_WR_AWLOCK__SHIFT			12
++static inline uint32_t DDMA_CFG_DMA_WR_CFG_WR_AWLOCK(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_WR_CFG_WR_AWLOCK__SHIFT) & DDMA_CFG_DMA_WR_CFG_WR_AWLOCK__MASK;
++}
++#define DDMA_CFG_DMA_WR_CFG_WR_AWCACHE__MASK			0x00000f00
++#define DDMA_CFG_DMA_WR_CFG_WR_AWCACHE__SHIFT			8
++static inline uint32_t DDMA_CFG_DMA_WR_CFG_WR_AWCACHE(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_WR_CFG_WR_AWCACHE__SHIFT) & DDMA_CFG_DMA_WR_CFG_WR_AWCACHE__MASK;
++}
++#define DDMA_CFG_DMA_WR_CFG_WR_AWPROT__MASK			0x000000e0
++#define DDMA_CFG_DMA_WR_CFG_WR_AWPROT__SHIFT			5
++static inline uint32_t DDMA_CFG_DMA_WR_CFG_WR_AWPROT(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_WR_CFG_WR_AWPROT__SHIFT) & DDMA_CFG_DMA_WR_CFG_WR_AWPROT__MASK;
++}
++#define DDMA_CFG_DMA_WR_CFG_WR_AWBURST__MASK			0x00000018
++#define DDMA_CFG_DMA_WR_CFG_WR_AWBURST__SHIFT			3
++static inline uint32_t DDMA_CFG_DMA_WR_CFG_WR_AWBURST(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_WR_CFG_WR_AWBURST__SHIFT) & DDMA_CFG_DMA_WR_CFG_WR_AWBURST__MASK;
++}
++#define DDMA_CFG_DMA_WR_CFG_WR_AWSIZE__MASK			0x00000007
++#define DDMA_CFG_DMA_WR_CFG_WR_AWSIZE__SHIFT			0
++static inline uint32_t DDMA_CFG_DMA_WR_CFG_WR_AWSIZE(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_WR_CFG_WR_AWSIZE__SHIFT) & DDMA_CFG_DMA_WR_CFG_WR_AWSIZE__MASK;
++}
++
++#define REG_DDMA_CFG_DMA_WSTRB					0x0000802c
++#define DDMA_CFG_DMA_WSTRB_WR_WSTRB__MASK			0xffffffff
++#define DDMA_CFG_DMA_WSTRB_WR_WSTRB__SHIFT			0
++static inline uint32_t DDMA_CFG_DMA_WSTRB_WR_WSTRB(uint32_t val)
++{
++	return ((val) << DDMA_CFG_DMA_WSTRB_WR_WSTRB__SHIFT) & DDMA_CFG_DMA_WSTRB_WR_WSTRB__MASK;
++}
++
++#define REG_DDMA_CFG_STATUS					0x00008030
++#define DDMA_CFG_STATUS_RESERVED_0__MASK			0xfffffe00
++#define DDMA_CFG_STATUS_RESERVED_0__SHIFT			9
++static inline uint32_t DDMA_CFG_STATUS_RESERVED_0(uint32_t val)
++{
++	return ((val) << DDMA_CFG_STATUS_RESERVED_0__SHIFT) & DDMA_CFG_STATUS_RESERVED_0__MASK;
++}
++#define DDMA_CFG_STATUS_IDEL__MASK				0x00000100
++#define DDMA_CFG_STATUS_IDEL__SHIFT				8
++static inline uint32_t DDMA_CFG_STATUS_IDEL(uint32_t val)
++{
++	return ((val) << DDMA_CFG_STATUS_IDEL__SHIFT) & DDMA_CFG_STATUS_IDEL__MASK;
++}
++#define DDMA_CFG_STATUS_RESERVED_1__MASK			0x000000ff
++#define DDMA_CFG_STATUS_RESERVED_1__SHIFT			0
++static inline uint32_t DDMA_CFG_STATUS_RESERVED_1(uint32_t val)
++{
++	return ((val) << DDMA_CFG_STATUS_RESERVED_1__SHIFT) & DDMA_CFG_STATUS_RESERVED_1__MASK;
++}
++
++#define REG_SDMA_CFG_OUTSTANDING				0x00009000
++#define SDMA_CFG_OUTSTANDING_RESERVED_0__MASK			0xffff0000
++#define SDMA_CFG_OUTSTANDING_RESERVED_0__SHIFT			16
++static inline uint32_t SDMA_CFG_OUTSTANDING_RESERVED_0(uint32_t val)
++{
++	return ((val) << SDMA_CFG_OUTSTANDING_RESERVED_0__SHIFT) & SDMA_CFG_OUTSTANDING_RESERVED_0__MASK;
++}
++#define SDMA_CFG_OUTSTANDING_WR_OS_CNT__MASK			0x0000ff00
++#define SDMA_CFG_OUTSTANDING_WR_OS_CNT__SHIFT			8
++static inline uint32_t SDMA_CFG_OUTSTANDING_WR_OS_CNT(uint32_t val)
++{
++	return ((val) << SDMA_CFG_OUTSTANDING_WR_OS_CNT__SHIFT) & SDMA_CFG_OUTSTANDING_WR_OS_CNT__MASK;
++}
++#define SDMA_CFG_OUTSTANDING_RD_OS_CNT__MASK			0x000000ff
++#define SDMA_CFG_OUTSTANDING_RD_OS_CNT__SHIFT			0
++static inline uint32_t SDMA_CFG_OUTSTANDING_RD_OS_CNT(uint32_t val)
++{
++	return ((val) << SDMA_CFG_OUTSTANDING_RD_OS_CNT__SHIFT) & SDMA_CFG_OUTSTANDING_RD_OS_CNT__MASK;
++}
++
++#define REG_SDMA_RD_WEIGHT_0					0x00009004
++#define SDMA_RD_WEIGHT_0_RD_WEIGHT_PDP__MASK			0xff000000
++#define SDMA_RD_WEIGHT_0_RD_WEIGHT_PDP__SHIFT			24
++static inline uint32_t SDMA_RD_WEIGHT_0_RD_WEIGHT_PDP(uint32_t val)
++{
++	return ((val) << SDMA_RD_WEIGHT_0_RD_WEIGHT_PDP__SHIFT) & SDMA_RD_WEIGHT_0_RD_WEIGHT_PDP__MASK;
++}
++#define SDMA_RD_WEIGHT_0_RD_WEIGHT_DPU__MASK			0x00ff0000
++#define SDMA_RD_WEIGHT_0_RD_WEIGHT_DPU__SHIFT			16
++static inline uint32_t SDMA_RD_WEIGHT_0_RD_WEIGHT_DPU(uint32_t val)
++{
++	return ((val) << SDMA_RD_WEIGHT_0_RD_WEIGHT_DPU__SHIFT) & SDMA_RD_WEIGHT_0_RD_WEIGHT_DPU__MASK;
++}
++#define SDMA_RD_WEIGHT_0_RD_WEIGHT_KERNEL__MASK			0x0000ff00
++#define SDMA_RD_WEIGHT_0_RD_WEIGHT_KERNEL__SHIFT		8
++static inline uint32_t SDMA_RD_WEIGHT_0_RD_WEIGHT_KERNEL(uint32_t val)
++{
++	return ((val) << SDMA_RD_WEIGHT_0_RD_WEIGHT_KERNEL__SHIFT) & SDMA_RD_WEIGHT_0_RD_WEIGHT_KERNEL__MASK;
++}
++#define SDMA_RD_WEIGHT_0_RD_WEIGHT_FEATURE__MASK		0x000000ff
++#define SDMA_RD_WEIGHT_0_RD_WEIGHT_FEATURE__SHIFT		0
++static inline uint32_t SDMA_RD_WEIGHT_0_RD_WEIGHT_FEATURE(uint32_t val)
++{
++	return ((val) << SDMA_RD_WEIGHT_0_RD_WEIGHT_FEATURE__SHIFT) & SDMA_RD_WEIGHT_0_RD_WEIGHT_FEATURE__MASK;
++}
++
++#define REG_SDMA_WR_WEIGHT_0					0x00009008
++#define SDMA_WR_WEIGHT_0_RESERVED_0__MASK			0xffff0000
++#define SDMA_WR_WEIGHT_0_RESERVED_0__SHIFT			16
++static inline uint32_t SDMA_WR_WEIGHT_0_RESERVED_0(uint32_t val)
++{
++	return ((val) << SDMA_WR_WEIGHT_0_RESERVED_0__SHIFT) & SDMA_WR_WEIGHT_0_RESERVED_0__MASK;
++}
++#define SDMA_WR_WEIGHT_0_WR_WEIGHT_PDP__MASK			0x0000ff00
++#define SDMA_WR_WEIGHT_0_WR_WEIGHT_PDP__SHIFT			8
++static inline uint32_t SDMA_WR_WEIGHT_0_WR_WEIGHT_PDP(uint32_t val)
++{
++	return ((val) << SDMA_WR_WEIGHT_0_WR_WEIGHT_PDP__SHIFT) & SDMA_WR_WEIGHT_0_WR_WEIGHT_PDP__MASK;
++}
++#define SDMA_WR_WEIGHT_0_WR_WEIGHT_DPU__MASK			0x000000ff
++#define SDMA_WR_WEIGHT_0_WR_WEIGHT_DPU__SHIFT			0
++static inline uint32_t SDMA_WR_WEIGHT_0_WR_WEIGHT_DPU(uint32_t val)
++{
++	return ((val) << SDMA_WR_WEIGHT_0_WR_WEIGHT_DPU__SHIFT) & SDMA_WR_WEIGHT_0_WR_WEIGHT_DPU__MASK;
++}
++
++#define REG_SDMA_CFG_ID_ERROR					0x0000900c
++#define SDMA_CFG_ID_ERROR_RESERVED_0__MASK			0xfffffc00
++#define SDMA_CFG_ID_ERROR_RESERVED_0__SHIFT			10
++static inline uint32_t SDMA_CFG_ID_ERROR_RESERVED_0(uint32_t val)
++{
++	return ((val) << SDMA_CFG_ID_ERROR_RESERVED_0__SHIFT) & SDMA_CFG_ID_ERROR_RESERVED_0__MASK;
++}
++#define SDMA_CFG_ID_ERROR_WR_RESP_ID__MASK			0x000003c0
++#define SDMA_CFG_ID_ERROR_WR_RESP_ID__SHIFT			6
++static inline uint32_t SDMA_CFG_ID_ERROR_WR_RESP_ID(uint32_t val)
++{
++	return ((val) << SDMA_CFG_ID_ERROR_WR_RESP_ID__SHIFT) & SDMA_CFG_ID_ERROR_WR_RESP_ID__MASK;
++}
++#define SDMA_CFG_ID_ERROR_RESERVED_1__MASK			0x00000020
++#define SDMA_CFG_ID_ERROR_RESERVED_1__SHIFT			5
++static inline uint32_t SDMA_CFG_ID_ERROR_RESERVED_1(uint32_t val)
++{
++	return ((val) << SDMA_CFG_ID_ERROR_RESERVED_1__SHIFT) & SDMA_CFG_ID_ERROR_RESERVED_1__MASK;
++}
++#define SDMA_CFG_ID_ERROR_RD_RESP_ID__MASK			0x0000001f
++#define SDMA_CFG_ID_ERROR_RD_RESP_ID__SHIFT			0
++static inline uint32_t SDMA_CFG_ID_ERROR_RD_RESP_ID(uint32_t val)
++{
++	return ((val) << SDMA_CFG_ID_ERROR_RD_RESP_ID__SHIFT) & SDMA_CFG_ID_ERROR_RD_RESP_ID__MASK;
++}
++
++#define REG_SDMA_RD_WEIGHT_1					0x00009010
++#define SDMA_RD_WEIGHT_1_RESERVED_0__MASK			0xffffff00
++#define SDMA_RD_WEIGHT_1_RESERVED_0__SHIFT			8
++static inline uint32_t SDMA_RD_WEIGHT_1_RESERVED_0(uint32_t val)
++{
++	return ((val) << SDMA_RD_WEIGHT_1_RESERVED_0__SHIFT) & SDMA_RD_WEIGHT_1_RESERVED_0__MASK;
++}
++#define SDMA_RD_WEIGHT_1_RD_WEIGHT_PC__MASK			0x000000ff
++#define SDMA_RD_WEIGHT_1_RD_WEIGHT_PC__SHIFT			0
++static inline uint32_t SDMA_RD_WEIGHT_1_RD_WEIGHT_PC(uint32_t val)
++{
++	return ((val) << SDMA_RD_WEIGHT_1_RD_WEIGHT_PC__SHIFT) & SDMA_RD_WEIGHT_1_RD_WEIGHT_PC__MASK;
++}
++
++#define REG_SDMA_CFG_DMA_FIFO_CLR				0x00009014
++#define SDMA_CFG_DMA_FIFO_CLR_RESERVED_0__MASK			0xfffffffe
++#define SDMA_CFG_DMA_FIFO_CLR_RESERVED_0__SHIFT			1
++static inline uint32_t SDMA_CFG_DMA_FIFO_CLR_RESERVED_0(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_FIFO_CLR_RESERVED_0__SHIFT) & SDMA_CFG_DMA_FIFO_CLR_RESERVED_0__MASK;
++}
++#define SDMA_CFG_DMA_FIFO_CLR_DMA_FIFO_CLR__MASK		0x00000001
++#define SDMA_CFG_DMA_FIFO_CLR_DMA_FIFO_CLR__SHIFT		0
++static inline uint32_t SDMA_CFG_DMA_FIFO_CLR_DMA_FIFO_CLR(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_FIFO_CLR_DMA_FIFO_CLR__SHIFT) & SDMA_CFG_DMA_FIFO_CLR_DMA_FIFO_CLR__MASK;
++}
++
++#define REG_SDMA_CFG_DMA_ARB					0x00009018
++#define SDMA_CFG_DMA_ARB_RESERVED_0__MASK			0xfffffc00
++#define SDMA_CFG_DMA_ARB_RESERVED_0__SHIFT			10
++static inline uint32_t SDMA_CFG_DMA_ARB_RESERVED_0(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_ARB_RESERVED_0__SHIFT) & SDMA_CFG_DMA_ARB_RESERVED_0__MASK;
++}
++#define SDMA_CFG_DMA_ARB_WR_ARBIT_MODEL__MASK			0x00000200
++#define SDMA_CFG_DMA_ARB_WR_ARBIT_MODEL__SHIFT			9
++static inline uint32_t SDMA_CFG_DMA_ARB_WR_ARBIT_MODEL(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_ARB_WR_ARBIT_MODEL__SHIFT) & SDMA_CFG_DMA_ARB_WR_ARBIT_MODEL__MASK;
++}
++#define SDMA_CFG_DMA_ARB_RD_ARBIT_MODEL__MASK			0x00000100
++#define SDMA_CFG_DMA_ARB_RD_ARBIT_MODEL__SHIFT			8
++static inline uint32_t SDMA_CFG_DMA_ARB_RD_ARBIT_MODEL(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_ARB_RD_ARBIT_MODEL__SHIFT) & SDMA_CFG_DMA_ARB_RD_ARBIT_MODEL__MASK;
++}
++#define SDMA_CFG_DMA_ARB_RESERVED_1__MASK			0x00000080
++#define SDMA_CFG_DMA_ARB_RESERVED_1__SHIFT			7
++static inline uint32_t SDMA_CFG_DMA_ARB_RESERVED_1(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_ARB_RESERVED_1__SHIFT) & SDMA_CFG_DMA_ARB_RESERVED_1__MASK;
++}
++#define SDMA_CFG_DMA_ARB_WR_FIX_ARB__MASK			0x00000070
++#define SDMA_CFG_DMA_ARB_WR_FIX_ARB__SHIFT			4
++static inline uint32_t SDMA_CFG_DMA_ARB_WR_FIX_ARB(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_ARB_WR_FIX_ARB__SHIFT) & SDMA_CFG_DMA_ARB_WR_FIX_ARB__MASK;
++}
++#define SDMA_CFG_DMA_ARB_RESERVED_2__MASK			0x00000008
++#define SDMA_CFG_DMA_ARB_RESERVED_2__SHIFT			3
++static inline uint32_t SDMA_CFG_DMA_ARB_RESERVED_2(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_ARB_RESERVED_2__SHIFT) & SDMA_CFG_DMA_ARB_RESERVED_2__MASK;
++}
++#define SDMA_CFG_DMA_ARB_RD_FIX_ARB__MASK			0x00000007
++#define SDMA_CFG_DMA_ARB_RD_FIX_ARB__SHIFT			0
++static inline uint32_t SDMA_CFG_DMA_ARB_RD_FIX_ARB(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_ARB_RD_FIX_ARB__SHIFT) & SDMA_CFG_DMA_ARB_RD_FIX_ARB__MASK;
++}
++
++#define REG_SDMA_CFG_DMA_RD_QOS					0x00009020
++#define SDMA_CFG_DMA_RD_QOS_RESERVED_0__MASK			0xfffffc00
++#define SDMA_CFG_DMA_RD_QOS_RESERVED_0__SHIFT			10
++static inline uint32_t SDMA_CFG_DMA_RD_QOS_RESERVED_0(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_QOS_RESERVED_0__SHIFT) & SDMA_CFG_DMA_RD_QOS_RESERVED_0__MASK;
++}
++#define SDMA_CFG_DMA_RD_QOS_RD_PC_QOS__MASK			0x00000300
++#define SDMA_CFG_DMA_RD_QOS_RD_PC_QOS__SHIFT			8
++static inline uint32_t SDMA_CFG_DMA_RD_QOS_RD_PC_QOS(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_QOS_RD_PC_QOS__SHIFT) & SDMA_CFG_DMA_RD_QOS_RD_PC_QOS__MASK;
++}
++#define SDMA_CFG_DMA_RD_QOS_RD_PPU_QOS__MASK			0x000000c0
++#define SDMA_CFG_DMA_RD_QOS_RD_PPU_QOS__SHIFT			6
++static inline uint32_t SDMA_CFG_DMA_RD_QOS_RD_PPU_QOS(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_QOS_RD_PPU_QOS__SHIFT) & SDMA_CFG_DMA_RD_QOS_RD_PPU_QOS__MASK;
++}
++#define SDMA_CFG_DMA_RD_QOS_RD_DPU_QOS__MASK			0x00000030
++#define SDMA_CFG_DMA_RD_QOS_RD_DPU_QOS__SHIFT			4
++static inline uint32_t SDMA_CFG_DMA_RD_QOS_RD_DPU_QOS(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_QOS_RD_DPU_QOS__SHIFT) & SDMA_CFG_DMA_RD_QOS_RD_DPU_QOS__MASK;
++}
++#define SDMA_CFG_DMA_RD_QOS_RD_KERNEL_QOS__MASK			0x0000000c
++#define SDMA_CFG_DMA_RD_QOS_RD_KERNEL_QOS__SHIFT		2
++static inline uint32_t SDMA_CFG_DMA_RD_QOS_RD_KERNEL_QOS(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_QOS_RD_KERNEL_QOS__SHIFT) & SDMA_CFG_DMA_RD_QOS_RD_KERNEL_QOS__MASK;
++}
++#define SDMA_CFG_DMA_RD_QOS_RD_FEATURE_QOS__MASK		0x00000003
++#define SDMA_CFG_DMA_RD_QOS_RD_FEATURE_QOS__SHIFT		0
++static inline uint32_t SDMA_CFG_DMA_RD_QOS_RD_FEATURE_QOS(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_QOS_RD_FEATURE_QOS__SHIFT) & SDMA_CFG_DMA_RD_QOS_RD_FEATURE_QOS__MASK;
++}
++
++#define REG_SDMA_CFG_DMA_RD_CFG					0x00009024
++#define SDMA_CFG_DMA_RD_CFG_RESERVED_0__MASK			0xffffe000
++#define SDMA_CFG_DMA_RD_CFG_RESERVED_0__SHIFT			13
++static inline uint32_t SDMA_CFG_DMA_RD_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_CFG_RESERVED_0__SHIFT) & SDMA_CFG_DMA_RD_CFG_RESERVED_0__MASK;
++}
++#define SDMA_CFG_DMA_RD_CFG_RD_ARLOCK__MASK			0x00001000
++#define SDMA_CFG_DMA_RD_CFG_RD_ARLOCK__SHIFT			12
++static inline uint32_t SDMA_CFG_DMA_RD_CFG_RD_ARLOCK(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_CFG_RD_ARLOCK__SHIFT) & SDMA_CFG_DMA_RD_CFG_RD_ARLOCK__MASK;
++}
++#define SDMA_CFG_DMA_RD_CFG_RD_ARCACHE__MASK			0x00000f00
++#define SDMA_CFG_DMA_RD_CFG_RD_ARCACHE__SHIFT			8
++static inline uint32_t SDMA_CFG_DMA_RD_CFG_RD_ARCACHE(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_CFG_RD_ARCACHE__SHIFT) & SDMA_CFG_DMA_RD_CFG_RD_ARCACHE__MASK;
++}
++#define SDMA_CFG_DMA_RD_CFG_RD_ARPROT__MASK			0x000000e0
++#define SDMA_CFG_DMA_RD_CFG_RD_ARPROT__SHIFT			5
++static inline uint32_t SDMA_CFG_DMA_RD_CFG_RD_ARPROT(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_CFG_RD_ARPROT__SHIFT) & SDMA_CFG_DMA_RD_CFG_RD_ARPROT__MASK;
++}
++#define SDMA_CFG_DMA_RD_CFG_RD_ARBURST__MASK			0x00000018
++#define SDMA_CFG_DMA_RD_CFG_RD_ARBURST__SHIFT			3
++static inline uint32_t SDMA_CFG_DMA_RD_CFG_RD_ARBURST(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_CFG_RD_ARBURST__SHIFT) & SDMA_CFG_DMA_RD_CFG_RD_ARBURST__MASK;
++}
++#define SDMA_CFG_DMA_RD_CFG_RD_ARSIZE__MASK			0x00000007
++#define SDMA_CFG_DMA_RD_CFG_RD_ARSIZE__SHIFT			0
++static inline uint32_t SDMA_CFG_DMA_RD_CFG_RD_ARSIZE(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_RD_CFG_RD_ARSIZE__SHIFT) & SDMA_CFG_DMA_RD_CFG_RD_ARSIZE__MASK;
++}
++
++#define REG_SDMA_CFG_DMA_WR_CFG					0x00009028
++#define SDMA_CFG_DMA_WR_CFG_RESERVED_0__MASK			0xffffe000
++#define SDMA_CFG_DMA_WR_CFG_RESERVED_0__SHIFT			13
++static inline uint32_t SDMA_CFG_DMA_WR_CFG_RESERVED_0(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_WR_CFG_RESERVED_0__SHIFT) & SDMA_CFG_DMA_WR_CFG_RESERVED_0__MASK;
++}
++#define SDMA_CFG_DMA_WR_CFG_WR_AWLOCK__MASK			0x00001000
++#define SDMA_CFG_DMA_WR_CFG_WR_AWLOCK__SHIFT			12
++static inline uint32_t SDMA_CFG_DMA_WR_CFG_WR_AWLOCK(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_WR_CFG_WR_AWLOCK__SHIFT) & SDMA_CFG_DMA_WR_CFG_WR_AWLOCK__MASK;
++}
++#define SDMA_CFG_DMA_WR_CFG_WR_AWCACHE__MASK			0x00000f00
++#define SDMA_CFG_DMA_WR_CFG_WR_AWCACHE__SHIFT			8
++static inline uint32_t SDMA_CFG_DMA_WR_CFG_WR_AWCACHE(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_WR_CFG_WR_AWCACHE__SHIFT) & SDMA_CFG_DMA_WR_CFG_WR_AWCACHE__MASK;
++}
++#define SDMA_CFG_DMA_WR_CFG_WR_AWPROT__MASK			0x000000e0
++#define SDMA_CFG_DMA_WR_CFG_WR_AWPROT__SHIFT			5
++static inline uint32_t SDMA_CFG_DMA_WR_CFG_WR_AWPROT(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_WR_CFG_WR_AWPROT__SHIFT) & SDMA_CFG_DMA_WR_CFG_WR_AWPROT__MASK;
++}
++#define SDMA_CFG_DMA_WR_CFG_WR_AWBURST__MASK			0x00000018
++#define SDMA_CFG_DMA_WR_CFG_WR_AWBURST__SHIFT			3
++static inline uint32_t SDMA_CFG_DMA_WR_CFG_WR_AWBURST(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_WR_CFG_WR_AWBURST__SHIFT) & SDMA_CFG_DMA_WR_CFG_WR_AWBURST__MASK;
++}
++#define SDMA_CFG_DMA_WR_CFG_WR_AWSIZE__MASK			0x00000007
++#define SDMA_CFG_DMA_WR_CFG_WR_AWSIZE__SHIFT			0
++static inline uint32_t SDMA_CFG_DMA_WR_CFG_WR_AWSIZE(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_WR_CFG_WR_AWSIZE__SHIFT) & SDMA_CFG_DMA_WR_CFG_WR_AWSIZE__MASK;
++}
++
++#define REG_SDMA_CFG_DMA_WSTRB					0x0000902c
++#define SDMA_CFG_DMA_WSTRB_WR_WSTRB__MASK			0xffffffff
++#define SDMA_CFG_DMA_WSTRB_WR_WSTRB__SHIFT			0
++static inline uint32_t SDMA_CFG_DMA_WSTRB_WR_WSTRB(uint32_t val)
++{
++	return ((val) << SDMA_CFG_DMA_WSTRB_WR_WSTRB__SHIFT) & SDMA_CFG_DMA_WSTRB_WR_WSTRB__MASK;
++}
++
++#define REG_SDMA_CFG_STATUS					0x00009030
++#define SDMA_CFG_STATUS_RESERVED_0__MASK			0xfffffe00
++#define SDMA_CFG_STATUS_RESERVED_0__SHIFT			9
++static inline uint32_t SDMA_CFG_STATUS_RESERVED_0(uint32_t val)
++{
++	return ((val) << SDMA_CFG_STATUS_RESERVED_0__SHIFT) & SDMA_CFG_STATUS_RESERVED_0__MASK;
++}
++#define SDMA_CFG_STATUS_IDEL__MASK				0x00000100
++#define SDMA_CFG_STATUS_IDEL__SHIFT				8
++static inline uint32_t SDMA_CFG_STATUS_IDEL(uint32_t val)
++{
++	return ((val) << SDMA_CFG_STATUS_IDEL__SHIFT) & SDMA_CFG_STATUS_IDEL__MASK;
++}
++#define SDMA_CFG_STATUS_RESERVED_1__MASK			0x000000ff
++#define SDMA_CFG_STATUS_RESERVED_1__SHIFT			0
++static inline uint32_t SDMA_CFG_STATUS_RESERVED_1(uint32_t val)
++{
++	return ((val) << SDMA_CFG_STATUS_RESERVED_1__SHIFT) & SDMA_CFG_STATUS_RESERVED_1__MASK;
++}
++
++#define REG_GLOBAL_OPERATION_ENABLE				0x0000f008
++#define GLOBAL_OPERATION_ENABLE_RESERVED_0__MASK		0xffffff80
++#define GLOBAL_OPERATION_ENABLE_RESERVED_0__SHIFT		7
++static inline uint32_t GLOBAL_OPERATION_ENABLE_RESERVED_0(uint32_t val)
++{
++	return ((val) << GLOBAL_OPERATION_ENABLE_RESERVED_0__SHIFT) & GLOBAL_OPERATION_ENABLE_RESERVED_0__MASK;
++}
++#define GLOBAL_OPERATION_ENABLE_PPU_RDMA_OP_EN__MASK		0x00000040
++#define GLOBAL_OPERATION_ENABLE_PPU_RDMA_OP_EN__SHIFT		6
++static inline uint32_t GLOBAL_OPERATION_ENABLE_PPU_RDMA_OP_EN(uint32_t val)
++{
++	return ((val) << GLOBAL_OPERATION_ENABLE_PPU_RDMA_OP_EN__SHIFT) & GLOBAL_OPERATION_ENABLE_PPU_RDMA_OP_EN__MASK;
++}
++#define GLOBAL_OPERATION_ENABLE_PPU_OP_EN__MASK			0x00000020
++#define GLOBAL_OPERATION_ENABLE_PPU_OP_EN__SHIFT		5
++static inline uint32_t GLOBAL_OPERATION_ENABLE_PPU_OP_EN(uint32_t val)
++{
++	return ((val) << GLOBAL_OPERATION_ENABLE_PPU_OP_EN__SHIFT) & GLOBAL_OPERATION_ENABLE_PPU_OP_EN__MASK;
++}
++#define GLOBAL_OPERATION_ENABLE_DPU_RDMA_OP_EN__MASK		0x00000010
++#define GLOBAL_OPERATION_ENABLE_DPU_RDMA_OP_EN__SHIFT		4
++static inline uint32_t GLOBAL_OPERATION_ENABLE_DPU_RDMA_OP_EN(uint32_t val)
++{
++	return ((val) << GLOBAL_OPERATION_ENABLE_DPU_RDMA_OP_EN__SHIFT) & GLOBAL_OPERATION_ENABLE_DPU_RDMA_OP_EN__MASK;
++}
++#define GLOBAL_OPERATION_ENABLE_DPU_OP_EN__MASK			0x00000008
++#define GLOBAL_OPERATION_ENABLE_DPU_OP_EN__SHIFT		3
++static inline uint32_t GLOBAL_OPERATION_ENABLE_DPU_OP_EN(uint32_t val)
++{
++	return ((val) << GLOBAL_OPERATION_ENABLE_DPU_OP_EN__SHIFT) & GLOBAL_OPERATION_ENABLE_DPU_OP_EN__MASK;
++}
++#define GLOBAL_OPERATION_ENABLE_CORE_OP_EN__MASK		0x00000004
++#define GLOBAL_OPERATION_ENABLE_CORE_OP_EN__SHIFT		2
++static inline uint32_t GLOBAL_OPERATION_ENABLE_CORE_OP_EN(uint32_t val)
++{
++	return ((val) << GLOBAL_OPERATION_ENABLE_CORE_OP_EN__SHIFT) & GLOBAL_OPERATION_ENABLE_CORE_OP_EN__MASK;
++}
++#define GLOBAL_OPERATION_ENABLE_RESERVED_1__MASK		0x00000002
++#define GLOBAL_OPERATION_ENABLE_RESERVED_1__SHIFT		1
++static inline uint32_t GLOBAL_OPERATION_ENABLE_RESERVED_1(uint32_t val)
++{
++	return ((val) << GLOBAL_OPERATION_ENABLE_RESERVED_1__SHIFT) & GLOBAL_OPERATION_ENABLE_RESERVED_1__MASK;
++}
++#define GLOBAL_OPERATION_ENABLE_CNA_OP_EN__MASK			0x00000001
++#define GLOBAL_OPERATION_ENABLE_CNA_OP_EN__SHIFT		0
++static inline uint32_t GLOBAL_OPERATION_ENABLE_CNA_OP_EN(uint32_t val)
++{
++	return ((val) << GLOBAL_OPERATION_ENABLE_CNA_OP_EN__SHIFT) & GLOBAL_OPERATION_ENABLE_CNA_OP_EN__MASK;
++}
++
++#endif /* __ROCKET_REGISTERS_XML__ */
+
+-- 
+2.49.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
