@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3000DC3ABDD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 17:35:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 484BBC2D0CD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 May 2025 17:43:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ooakSqWx202ezaA0Choz3vaEqqxLDXoHsVHZF9OETwE=; b=3AJlFBHYy8K+y6
-	FmKeDonv1yWcl6LKo+RHANVFCUMSTCvzrQtukrnNrxR8VdPNBRTRGiGCN0Qr/mNtOWASRTo/MVkNQ
-	p8vdOCV60be8DiyVZRMS9qN8YsQxNp6tDL0uys5VfZPgAF5WGOpeHVwupxXWsowsHUY6I8Pdoed9G
-	szo6EwmDxF7LaT8yCEgmr1plNT/DSNFvAxSWvqQgllozn8j/sKOcC6a6fXRJ1D/ezl7wQD+jvnDmK
-	4N08S3+fvVtZlHDPfh7zk88GLPEDA0Gzbi74HoK9CKPcNXVD+/EzJnP7XEShnkn6SzCqF7YKDmrHk
-	a0tB+OOt2l1DKeol6CXg==;
+	List-Owner; bh=dCdD7IDufpDfxaDb26ZLb8KkEAoXw8oCr9ATUwc1Quw=; b=JYd+XZ1Wfw0hWj
+	/HCPg0+qwZ71IL5Xp7RqrEmrU1Wz1cOtouJbnu4Oin6C7HiLfsl7p7CuYVfX1wQAnEdAGnT8CaZsX
+	+hVBCxcWUBB03sA2HVS8+7DlR1EOFgHOwMb7E+EDUJt+uA2PMU7v8XC/xVpPyues7JHQ7emBBCzo0
+	cbhY+ELHJtwlx0ByrWeaBWX11wH6SE3vZUV42HDs7lXNWZuiFp63j6e2taiA9/pcDdevRKM81zyQR
+	l5idd+AKjXnASMtl3xlW8sV3N+6hzH2D8R4e9Gp45eCq5R/Knbxp6MILxZ1RK1inTmzSPt4DbJMeE
+	ppfTe/ZWSaVEZwKR9Xlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH4OA-00000009yrc-1W44;
-	Mon, 19 May 2025 17:34:58 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1uH4WC-00000009zpE-1PCq;
+	Mon, 19 May 2025 17:43:16 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH3iv-00000009sNP-3jGV;
-	Mon, 19 May 2025 16:52:23 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 79D1525A49;
-	Mon, 19 May 2025 18:52:20 +0200 (CEST)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HHDEt46mHG2L; Mon, 19 May 2025 18:52:19 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1747673539; bh=U9x2vCHwSzL90x0YSqb3lSIFOLdNatA4ryM/Wrtr0Mw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=V63S+DKiXH03Rzuz9caUPXeIvfVuut9gQuvpswWqDgO9HhFjDrqGkM5+KVju/FZl2
-	 GMMfizcMFEJLYbZzhXyiHLggXd4MTY1ELM4zabtHP5Y/dUGdEncQyDtXPd81HeSNg+
-	 2NhJCrS+34I1S+D8kwUmsQOgzjyvlc92v6SS4JZtukbBTm8toU8UlvtckQ4s8HAZj9
-	 QtO3HZ1dk+WBIuxjV4ToKEega2HSPPJfElrXgB8Hm/MtUHEno/w1sZ8F3WTnO+nG4U
-	 +xcrNnwIvVZHsdyhbui/rlG/yOAKzqrU5fPW4/luHVFKRzqVVTQ2YwRNxQEglOSsYQ
-	 J+fmXkY42S7ZQ==
-Date: Mon, 19 May 2025 16:52:04 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
-	Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>,
-	linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/9] pmdomain: rockchip: Add support for RK3528
-Message-ID: <aCthtDxm25RU_fd3@pie.lan>
-References: <20250518220707.669515-1-jonas@kwiboo.se>
- <20250518220707.669515-3-jonas@kwiboo.se>
+	id 1uH3u6-00000009u8e-1aX4
+	for linux-rockchip@lists.infradead.org;
+	Mon, 19 May 2025 17:03:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1747674231;
+ bh=clyOHWY2IVfI9AZJ05BeTXpQUTL0uNha47hEQW+o2gA=;
+ b=Jkc8ts8lvV1XK1Xh4hUb3aGyNSvSyVoPFpRHHIxiMr7S+kPha/9nfKuIoC1MV7gNZIyREVP24
+ tqKZPFzXICOCcfSWGWa6zwMYlb31gzEpwCeN4Bp14EJTt2l8oZ/4XKPT+nG8EBKdsiP17HLqMct
+ OwJtzbo9WhSzLU58++MEieR7aVFJMR/DYTfJ/PizLBrBBntPp6PPGbaEi7jzlYYEP4BXXY71bOg
+ b1hhl/9OFalSNvILUS390LxwAsnC1H22PPW6Ev2TlDjoLNKoxP4boo7lT+GqjHP11gfrTheT2BH
+ ZogFACbF2I8GLtXBocIgFYqlGgWDzFZTj95mi3bZoTxQ==
+X-Forward-Email-ID: 682b646ef094abf9f55cc97f
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 1.0.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <2d0524a9-50ff-4b49-bee9-8158c4c5b88b@kwiboo.se>
+Date: Mon, 19 May 2025 19:03:37 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250518220707.669515-3-jonas@kwiboo.se>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 5/9] dt-bindings: mmc: sdhci-of-dwcmhsc: Allow use of a
+ power-domain
+To: Conor Dooley <conor@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Jisheng Zhang <jszhang@kernel.org>,
+ Yao Zi <ziyao@disroot.org>, Chukun Pan <amadeus@jmu.edu.cn>,
+ linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20250518220707.669515-1-jonas@kwiboo.se>
+ <20250518220707.669515-6-jonas@kwiboo.se>
+ <20250519-caress-traps-f61f0c6067b4@spud>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250519-caress-traps-f61f0c6067b4@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250519_095222_056942_D4E7D1C0 
-X-CRM114-Status: GOOD (  20.40  )
+X-CRM114-CacheID: sfid-20250519_100354_577891_BF39241E 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,99 +84,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, May 18, 2025 at 10:06:49PM +0000, Jonas Karlman wrote:
-> Add configuration and power domains for RK3528 SoC.
+Hi Conor,
+
+On 2025-05-19 18:12, Conor Dooley wrote:
+> On Sun, May 18, 2025 at 10:06:52PM +0000, Jonas Karlman wrote:
+>> The commit 7e856617a1f3 ("dt-bindings: mmc: Add support for rk3576
+>> eMMC") limited use of power-domains to Rockchip RK3576.
+>>
+>> Remove the power-domains: false to allow use of power-domains with more
+>> controllers, e.g. with SDHCI on Rockchip RK3528.
 > 
-> Only PD_GPU can fully be powered down. PD_RKVDEC, PD_RKVENC, PD_VO and
-> PD_VPU are used by miscellaneous devices in RK3528.
+> Meanwhile, you're allowing it for all devices, even ones where it is not
+> valid. I'm not keen on that.
 
-Thanks for your work!
+All Rockchip variants technically belong to a power-domain, not just the
+RK3576. E.g. for RK3588 a PD_NVM0 domain (not described in DT), for
+RK3568 a VD_LOGIC ALIVE / BIU_SECURE_FLASH idle-only domain, and as
+shown in this series for the RK3528 the PD_VPU idle-only domain.
 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
->  drivers/pmdomain/rockchip/pm-domains.c | 27 ++++++++++++++++++++++++++
->  1 file changed, 27 insertions(+)
+Any suggestion on how to best allow describing these links?
+
+Regards,
+Jonas
+
 > 
-> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-> index 4cce407bb1eb..242570c505fb 100644
-> --- a/drivers/pmdomain/rockchip/pm-domains.c
-> +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> @@ -35,6 +35,7 @@
->  #include <dt-bindings/power/rk3366-power.h>
->  #include <dt-bindings/power/rk3368-power.h>
->  #include <dt-bindings/power/rk3399-power.h>
-> +#include <dt-bindings/power/rockchip,rk3528-power.h>
->  #include <dt-bindings/power/rockchip,rk3562-power.h>
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> ---
+>>  Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml | 4 ----
+>>  1 file changed, 4 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+>> index 5fb347167004..f882219a0a26 100644
+>> --- a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+>> +++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+>> @@ -120,10 +120,6 @@ allOf:
+>>        required:
+>>          - power-domains
+>>  
+>> -    else:
+>> -      properties:
+>> -        power-domains: false
+>> -
+>>  unevaluatedProperties: false
+>>  
+>>  examples:
+>> -- 
+>> 2.49.0
+>>
 
-But I had some trouble applying this patch on either Rockchip SoC tree
-or linux-pm. Looking through the context, seems the patch depends on
-some RK3562 PMU driver changes, which I couldn't find with some brief
-searching among the list.
-
-Which branch is the series based on?
-
->  #include <dt-bindings/power/rk3568-power.h>
->  #include <dt-bindings/power/rockchip,rk3576-power.h>
-> @@ -216,6 +217,9 @@ struct rockchip_pmu {
->  #define DOMAIN_RK3399(name, pwr, status, req, wakeup)		\
->  	DOMAIN(name, pwr, status, req, req, req, wakeup)
->  
-> +#define DOMAIN_RK3528(name, pwr, req)		\
-> +	DOMAIN_M(name, pwr, pwr, req, req, req, false)
-> +
->  #define DOMAIN_RK3562(name, pwr, req, g_mask, mem, wakeup)		\
->  	DOMAIN_M_G_SD(name, pwr, pwr, req, req, req, g_mask, mem, wakeup, false)
->  
-> @@ -1215,6 +1219,14 @@ static const struct rockchip_domain_info rk3399_pm_domains[] = {
->  	[RK3399_PD_SDIOAUDIO]	= DOMAIN_RK3399("sdioaudio", BIT(31), BIT(31), BIT(29), true),
->  };
->  
-> +static const struct rockchip_domain_info rk3528_pm_domains[] = {
-> +	[RK3528_PD_GPU]		= DOMAIN_RK3528("gpu",  BIT(0), BIT(4)),
-> +	[RK3528_PD_RKVDEC]	= DOMAIN_RK3528("vdec",      0, BIT(5)),
-> +	[RK3528_PD_RKVENC]	= DOMAIN_RK3528("venc",      0, BIT(6)),
-> +	[RK3528_PD_VO]		= DOMAIN_RK3528("vo",        0, BIT(7)),
-> +	[RK3528_PD_VPU]		= DOMAIN_RK3528("vpu",       0, BIT(8)),
-> +};
-> +
->  static const struct rockchip_domain_info rk3562_pm_domains[] = {
->  					     /* name           pwr     req     g_mask  mem wakeup */
->  	[RK3562_PD_GPU]		= DOMAIN_RK3562("gpu",         BIT(0), BIT(1), BIT(1), 0, false),
-> @@ -1428,6 +1440,17 @@ static const struct rockchip_pmu_info rk3399_pmu = {
->  	.domain_info = rk3399_pm_domains,
->  };
->  
-> +static const struct rockchip_pmu_info rk3528_pmu = {
-> +	.pwr_offset = 0x1210,
-> +	.status_offset = 0x1230,
-> +	.req_offset = 0x1110,
-> +	.idle_offset = 0x1128,
-> +	.ack_offset = 0x1120,
-> +
-> +	.num_domains = ARRAY_SIZE(rk3528_pm_domains),
-> +	.domain_info = rk3528_pm_domains,
-> +};
-> +
->  static const struct rockchip_pmu_info rk3562_pmu = {
->  	.pwr_offset = 0x210,
->  	.status_offset = 0x230,
-> @@ -1538,6 +1561,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
->  		.compatible = "rockchip,rk3399-power-controller",
->  		.data = (void *)&rk3399_pmu,
->  	},
-> +	{
-> +		.compatible = "rockchip,rk3528-power-controller",
-> +		.data = (void *)&rk3528_pmu,
-> +	},
->  	{
->  		.compatible = "rockchip,rk3562-power-controller",
->  		.data = (void *)&rk3562_pmu,
-> -- 
-> 2.49.0
-> 
-
-Thanks for your effort,
-Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
