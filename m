@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2A16C54E71
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 May 2025 18:41:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75927C3DA6D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 May 2025 18:52:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GgQ/XwpKGghhV/D4OI6A5Elzmi7aR2OKXyswP3GNjMc=; b=5BgMLstKIpjxls
-	FFiBpHHHZdEy8ZXQEX1NDzF72omvj1VEVAano3z+8tBN3HiGohWunVOCXvigQsEAck+W6KNrxxjpT
-	+Lzub2Li/uvf7YZJ7S+aP1eGZpvsbaXhzAmIMtPmyxHPiHEGy2n+OU0zF9TbLe7nLYrursD+nRZ+l
-	oVTvgWXVZBwTCk+IiIl1+ot1MqH1LD4V5mxiN2pB3Fjl7qK6IBiNsHv5Ii0MobcyHetJuKsHqcmLc
-	KJ8I1cIC9Yx/7gGwWOOeKsg0u4TZRLSHNAlTb6LPGI25GxpiLvvnutYH33c4flSqY3sc/GkUNOb0Q
-	sPBCP8upOqEtLhqZPGeQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:MIME-Version:Message-Id:Date:Subject
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/bCwnUgkeYshDnrPH7Jny+tn6LyIkc3tGIE8WBsp/og=; b=FwUQZhuj+97NXS
+	qggy/iUqx1EDFOpJca13jISLL7TWyjMzEpr4xj5VMVFo3+jTp42Dm37/c5BDvjPIh1ZavvolSgb0N
+	UgeSseG1iCd+I0oRWUxuAYL+1Y+Vc7X3YIVbP7vzWGUQr4OveyyMgl6m8ABSSOKaLAMe96+gVBriO
+	jRuMYDN86zsUmELPkLmyd7bZRZ8HlNBQhI4NDxgaTjVH6trTsyk1VKuM+KeSA2IN0pGZ3ZQBYKaSm
+	QczZ8jFVCWw0b8rX1oEfKbbAzvVsirhNmra2ySaOuYhH93WQmYeckvOH0Xarl1FMQEPRbey+jziP4
+	fUbAc4UyqoSehfsH9vDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHRtv-0000000Dp59-2ZTn;
-	Tue, 20 May 2025 18:41:19 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uHS53-0000000DrTD-39Ef;
+	Tue, 20 May 2025 18:52:49 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHRrR-0000000DoZ5-108G;
-	Tue, 20 May 2025 18:38:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=u3v+sVXn3QS5HAZR6rlTvCjsDNvFK3/tVpaq1eLWVu0=; b=TnlDoJMght2Uzy7gaxZQpE1Dr9
-	FusfAMBSB6rYCB2jSSC2ocaG3pmnnC4ac1wuEfYHlSIWE//NkQMgDiSNIZBHdGGoNVIQf/sYrAhqG
-	dGCCrZbu6H8GDMuGifH6qjt+7lRyybeemwOSPelvQg/A+kZfDzwOtwuL34RG66DgyKh3uw4RaAEBk
-	poOhLxpuPu/Biw69o9blr5h40q1O9+pbNAgjjysf+DpidOyYQfHxJ266061ZSTRZrvEeI+NPv/zMw
-	QIe7wsj6hRfUThpCKD8m2PTrPcOkSR5CfY3ChPnCz3zoRItFVsnX+Ha7e9T65SpWH1PgqgKBFhh+I
-	pRpNb4HQ==;
-Received: from [61.8.146.112] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uHRrM-0004Av-9K; Tue, 20 May 2025 20:38:40 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: ulf.hansson@linaro.org, mark.rutland@arm.com, lpieralisi@kernel.org,
- sudeep.holla@arm.com, Robin Murphy <robin.murphy@arm.com>
-Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 2/2] pmdomain: rockchip: Relax SMCCC dependency
-Date: Tue, 20 May 2025 20:38:39 +0200
-Message-ID: <2393836.usQuhbGJ8B@phil>
-In-Reply-To: <6f0a38e596c0727d0de13a29c9224f71bc7d30f1.1747760015.git.robin.murphy@arm.com>
-References: <ab0476382e3342161beda94a45ddadb49b026dcd.1747760015.git.robin.murphy@arm.com>
- <6f0a38e596c0727d0de13a29c9224f71bc7d30f1.1747760015.git.robin.murphy@arm.com>
+	id 1uHS2s-0000000Dr8C-3UsE;
+	Tue, 20 May 2025 18:50:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1747767026; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=eHu2J4PaPD2w25JBiwNwKEsKhYsJ45o9UOB4EqCKIpibP7MjyFSMpL7rb9LZnkyEubGWTt9Yx2XLEanBgMiUQFPuAMCpxyiYzsqAvkLlO8hhvrVGWfeokPvFuMCVMsxno6fHem+OFuyansOaZMmEoI2TpU3vDH7hRoubERTEJLg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1747767026; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Xt+rrywOZe1K7faJK05oG26s0MPfO6rH8IpO8iFtn9g=; 
+	b=cfsYRfGkYGoHMKQ5HIjBIElExks1RplnPi++uiZv1r/k88Gr5G4NmhA6erXkUzCCuODCE6W2MjWC99BAzptY4sSVnQBiLz+oF0Fh7I+UKF20gBYzymz73MoeUFeY2AiFKPVQ3cMqTSTAyZqLM2xu0rIje4F842cOc8h832PhRrU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1747767026;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=Xt+rrywOZe1K7faJK05oG26s0MPfO6rH8IpO8iFtn9g=;
+	b=Whd973AcSD5HhW7fN2N1pe54wwBxWwpNoNezVwaMoIUUI8OWW7xfzZLboiykFygN
+	R0WNhzXtr+cj2v3zbhSE4Yijk7MnLn5YSr5vpjz2LfYWjdQ+3mRqkhbM7KtSzSW4bF+
+	4ZfMlvIVwRrNrK0hg4m+xz/VFojsRGqllF2AgQXI=
+Received: by mx.zohomail.com with SMTPS id 1747767025843367.77627410500713;
+	Tue, 20 May 2025 11:50:25 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: [PATCH v2 0/4] Add RADXA ROCK 5T support
+Date: Tue, 20 May 2025 20:50:07 +0200
+Message-Id: <20250520-add-rock5t-v2-0-1f1971850a20@collabora.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAN/OLGgC/22OQQ6CMBBFr0Jm7Zi2WgiuvIdhUdqpNALVthIM4
+ e5W2Lp8k7z3Z4FIwVGES7FAoMlF58cM4lCA7tR4J3QmMwgmJJOsRmUMBq8fMqE1JGtRGTqVLWT
+ hGci6eYvdmp0Dvd65mfYjtCoSaj8MLl2KkeaEe5eX8BM6F5MPn+2ZiW/Gv92JI0NtLTdUnUmTu
+ Wrf96r1QR1zHJp1Xb8HWI6M2QAAAA==
+X-Change-ID: 20250509-add-rock5t-fde5927de36b
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_113845_275003_75CDEADE 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20250520_115034_948168_8BD558B5 
+X-CRM114-Status: GOOD (  10.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,32 +74,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRGllbnN0YWcsIDIwLiBNYWkgMjAyNSwgMTk6MTA6MTcgTWl0dGVsZXVyb3DDpGlzY2hlIFNv
-bW1lcnplaXQgc2NocmllYiBSb2JpbiBNdXJwaHk6Cj4gTW9zdCAzMi1iaXQgUm9ja2NoaXAgcGxh
-dGZvcm1zIGRvIG5vdCB1c2UgUFNDSSwgc28gaGF2aW5nIHRvIHNlbGVjdAo+IEFSTV9QU0NJIHRv
-IHNhdGlzZnkgYSBkZXBlbmRlbmN5IGNoYWluIHRvIHJldGFpbiB3b3JraW5nIHBvd2VyIGRvbWFp
-bgo+IHN1cHBvcnQgaXMgYSBiaXQgd2VpcmQgYW5kIG5vbi1vYnZpb3VzLiBOb3cgdGhhdCB0aGUg
-b2ZmZW5kaW5nIFNNQ0NDIEFQSQo+IGlzIHByb3Blcmx5IHN0dWJiZWQgb3V0IGZvciBvcHRpb25h
-bCB1c2FnZSwgd2UgY2FuIHJlbGF4IHRoaXMgYWdhaW4uCj4gCj4gU2lnbmVkLW9mZi1ieTogUm9i
-aW4gTXVycGh5IDxyb2Jpbi5tdXJwaHlAYXJtLmNvbT4KCgpSZXZpZXdlZC1ieTogSGVpa28gU3R1
-ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KCk9mIGNvdXJzZSB0aGlzIG5lZWRzIHBhdGNoMSBvZiB0
-aGlzIHNlcmllcyB0byBnZXQgYXBwbGllZApmaXJzdC4KCkkgdGhpbmsgZm9yIGJpc2VjdGFiaWxp
-dHksIGRvaW5nIHRoaXMgZGlyZWN0bHkgaW4gcGF0Y2gxIG1pZ2h0CmJlIGxlc3MgZGFuZ2Vyb3Vz
-IHRob3VnaD8KCgpIZWlrbwoKPiAtLS0KPiAgZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9LY29u
-ZmlnIHwgMSAtCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGRlbGV0aW9uKC0pCj4gCj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvcG1kb21haW4vcm9ja2NoaXAvS2NvbmZpZyBiL2RyaXZlcnMvcG1kb21haW4v
-cm9ja2NoaXAvS2NvbmZpZwo+IGluZGV4IDIxOGQ0MzE4NmU1Yi4uZmZlNWU3Yjc4NDk0IDEwMDY0
-NAo+IC0tLSBhL2RyaXZlcnMvcG1kb21haW4vcm9ja2NoaXAvS2NvbmZpZwo+ICsrKyBiL2RyaXZl
-cnMvcG1kb21haW4vcm9ja2NoaXAvS2NvbmZpZwo+IEBAIC00LDcgKzQsNiBAQCBpZiBBUkNIX1JP
-Q0tDSElQIHx8IENPTVBJTEVfVEVTVAo+ICBjb25maWcgUk9DS0NISVBfUE1fRE9NQUlOUwo+ICAJ
-Ym9vbCAiUm9ja2NoaXAgZ2VuZXJpYyBwb3dlciBkb21haW4iCj4gIAlkZXBlbmRzIG9uIFBNCj4g
-LQlkZXBlbmRzIG9uIEhBVkVfQVJNX1NNQ0NDX0RJU0NPVkVSWQo+ICAJZGVwZW5kcyBvbiBSRUdV
-TEFUT1IKPiAgCXNlbGVjdCBQTV9HRU5FUklDX0RPTUFJTlMKPiAgCWhlbHAKPiAKCgoKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+The ROCK 5T is quite similar to the ROCK 5B+ and the ROCK 5B, so to
+share as much DT boilerplate between them as we can, this series
+reorganises things a bit and then adds the ROCK 5T .dts.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+Changes in v2:
+- Split up "reorganise common rock5* nodes" into two patches, where the
+  first simply renamed the file and changes the includes, and the second
+  moves B/+ nodes out of the shared include into a common B/+ include,
+  to address Sebastian Reichel's review.
+- Rebase onto next-20250516
+- Drop anything relating to the USB-C patch that wasn't picked
+- Link to v1: https://lore.kernel.org/r/20250509-add-rock5t-v1-0-cff1de74eced@collabora.com
+
+---
+Nicolas Frattaroli (4):
+      dt-bindings: arm: rockchip: add RADXA ROCK 5T
+      arm64: dts: rockchip: rename rk3588-rock-5b.dtsi
+      arm64: dts: rockchip: move common ROCK 5B/+ nodes into own tree
+      arm64: dts: rockchip: add ROCK 5T device tree
+
+ .../devicetree/bindings/arm/rockchip.yaml          |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+ .../boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi   | 878 +++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi   | 875 +-------------------
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts    | 105 +++
+ 5 files changed, 997 insertions(+), 867 deletions(-)
+---
+base-commit: 8e7386987569f6c99e6dc86d939476350049b9fd
+change-id: 20250509-add-rock5t-fde5927de36b
+
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
