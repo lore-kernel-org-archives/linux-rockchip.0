@@ -4,54 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55BD8C3ABDD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 May 2025 07:40:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29140C3ABDD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 May 2025 08:40:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P+acbQU7Iw6rTVlmUtCear1bBahzU/lmZTVj0zpmKDI=; b=mPocqIBmssAT+n
-	C7g5ZRkDBGoKYtwgZUktfhUdZwNvwtON7GaPn/FzSMkz+q0VSiADWsXc+xkbICWVTjWZdUc4UYid7
-	I5H9Sftl+E9xYR+XTkPxHXEdyVdUZJZ3SFfeilr1Ys7DLt689yViFT5xN1IhFyizRTKhlhmG+IE0t
-	D5WQ713mYZFGd2vHXjqtfRZfH1IjH+CEQsLpEXhUCroEF7KVQlsnvBBxrvCax5kDruxPTNqYMWtr+
-	hD6edOF4B5PVt1iDbbY4IpGK99QqPb2QgHZteW7XMjNR21glhx1yOUjd3sdCox9pfTiIYI63UH7BY
-	xrOGGluwuS0nzWwy5JHQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4+LBYsW65ZEJl6CQ8jOQdF2id/pfiIku1u+Sc7UI2gw=; b=i6KyatfaXcYyGt6kpjctQH21u1
+	SMB33/bNi9STrIJAcol8+XRs+oD6zd34414/I33x6sn34pcJrIWpvYTHRaPEoMxkRr6E+ouOQV9DQ
+	i89p0f5WP8MtP4hLBE6cLZyHOAyKgcMb422yT7Iv79N0uEiZl+/FwlxdHgC3XhM7zF7E3ybObSeli
+	BHbKtdocgNHvW8FhxnhMMEgP0SFoE00OHeqOjsmqoU/NSLEt0FCFjo9Yr28dZqDlzTrzkbaTER9nM
+	8q7yYXaSr5sXZ9noZxFaygwbA//6T53FSbk56s/CMa3Riivoh3cz/512Kc4DGqzwAoXlJPCgF1EKm
+	PfyB6FPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHHaO-0000000Bsdf-11NB;
-	Tue, 20 May 2025 07:40:28 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uHIWJ-0000000C3Bh-1VUb;
+	Tue, 20 May 2025 08:40:19 +0000
+Received: from out-170.mta1.migadu.com ([2001:41d0:203:375::aa])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHHXj-0000000BsFT-3SPL;
-	Tue, 20 May 2025 07:37:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2CF8961155;
-	Tue, 20 May 2025 07:37:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48570C4CEE9;
-	Tue, 20 May 2025 07:37:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747726662;
-	bh=fVyiR8D7qQA0+vUTgX2LRrLxivKrGYmC1L9B3HBhIp4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dBCD7X/Ibe+2sYG6xP8sVpZb/vvzfhqkfWycoZsODdRu0VlV9AzpwEbDry/P8F/Ki
-	 160DahL5vOyYPwKvMHogsbRJjloc+9RW95QTgbAOYkHGrvyU6pZOIzBMpLDSRvv58+
-	 BUnXAyXUkB275DFTYj37RQ48hOiD4G6tZPHThU8pDoh7Q96nKggGXnvCvaWTssLPXy
-	 D4Lxnato7ApFWIGCt02TmsNFsgVWDS05ddVMquc+IEx925tVwN1KoOstszxYB9LJSg
-	 931bNAa+VGLwHHpB9NalKtr0s4Ta9DlL0WsQCce7tNWGaAiywZjHqBSPLO//shlkOy
-	 Xncs2LCkxJUOg==
-Date: Tue, 20 May 2025 09:37:40 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Subject: Re: [PATCH v4 05/10] accel/rocket: Add a new driver for Rockchip's
- NPU
-Message-ID: <20250520-silent-prophetic-cricket-fa0fa9@kuoka>
-References: <20250519-6-10-rocket-v4-0-d6dff6b4c0ae@tomeuvizoso.net>
- <20250519-6-10-rocket-v4-5-d6dff6b4c0ae@tomeuvizoso.net>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250519-6-10-rocket-v4-5-d6dff6b4c0ae@tomeuvizoso.net>
+	id 1uHIUJ-0000000C2uW-3kwc
+	for linux-rockchip@lists.infradead.org;
+	Tue, 20 May 2025 08:38:17 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1747730283;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Xc5l2VvmMIPW9ABFDgM9NqgcmqQKSbvHQtPi+59terM=;
+	b=JmuUJ8y9vURKx87iMyEdKsjJXePbVbMMOAfU+oMzchxCPpTbTITlMDnWyH8FRjNaHmW//B
+	CRMwMWqbix8UCvufAaKEWRei7bODiHr7k9PW/FXoDVp04tkbf0COSXyC9zytB4p5sXYlZR
+	TJ9T8RxOpKaPUoPKNO4goIav5Z5xZnTi9y+AU1gCC1XnflktTpsW5f/U5ypNzakbqVqfVT
+	kpVsIxSg7lz3s/FGACch7PDm5t/WxHU1N0OVQiVpxNoNVCW6QYELLb+PXQDM/Xn19Y4uKn
+	B+NXxxQi3ReFnYllv2+8qwUQRYlwCPrHwa/vQAHoMrl4FKHajgKQQcKAppS3+g==
+Date: Tue, 20 May 2025 10:37:38 +0200
+Message-Id: <DA0UO4TYFWAU.DOE3O1UBNN6U@cknow.org>
+Cc: <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v3 3/5] phy: rockchip: naneng-combphy: Add SoC prefix to
+ register definitions
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Yao Zi" <ziyao@disroot.org>, "Vinod Koul" <vkoul@kernel.org>, "Kishon
+ Vijay Abraham I" <kishon@kernel.org>, "Rob Herring" <robh@kernel.org>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
+ <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Frank Wang"
+ <frank.wang@rock-chips.com>, "Andy Yan" <andy.yan@rock-chips.com>,
+ "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Detlev Casanova"
+ <detlev.casanova@collabora.com>, "Shresth Prasad"
+ <shresthprasad7@gmail.com>, "Chukun Pan" <amadeus@jmu.edu.cn>, "Jonas
+ Karlman" <jonas@kwiboo.se>
+References: <20250519161612.14261-1-ziyao@disroot.org>
+ <20250519161612.14261-4-ziyao@disroot.org>
+ <DA0DU2P8UWSV.3U07EFFLKBPXQ@cknow.org> <aCv8vRu8gjrvK8wr@pie.lan>
+In-Reply-To: <aCv8vRu8gjrvK8wr@pie.lan>
+X-Migadu-Flow: FLOW_OUT
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250520_013816_073106_AB8C3F5A 
+X-CRM114-Status: GOOD (  21.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,127 +76,175 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@gmail.com>, Sumit Semwal <sumit.semwal@linaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jeff Hugo <jeff.hugo@oss.qualcomm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, Oded Gabbay <ogabbay@kernel.org>, linux-kernel@vger.kernel.org, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4355981309507837506=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 19, 2025 at 03:43:37PM GMT, Tomeu Vizoso wrote:
-> +#endif
-> diff --git a/drivers/accel/rocket/rocket_device.c b/drivers/accel/rocket/rocket_device.c
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..bb469ac87d36249157f4ba9d9f7106ad558309e4
-> --- /dev/null
-> +++ b/drivers/accel/rocket/rocket_device.c
-> @@ -0,0 +1,39 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/* Copyright 2024-2025 Tomeu Vizoso <tomeu@tomeuvizoso.net> */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/dev_printk.h>
-> +
-> +#include "rocket_device.h"
-> +
-> +int rocket_device_init(struct rocket_device *rdev)
-> +{
-> +	struct device *dev = rdev->cores[0].dev;
-> +	int err;
-> +
-> +	rdev->clk_npu = devm_clk_get(dev, "npu");
-> +	if (IS_ERR(rdev->clk_npu)) {
-> +		err = PTR_ERR(rdev->clk_npu);
-> +		dev_err(dev, "devm_clk_get failed %d for clock npu\n", err);
-> +		return err;
-> +	}
+--===============4355981309507837506==
+Content-Type: multipart/signed;
+ boundary=2f6aa86954b8eb8c99f3919d1846860d91999fb6d12d29116c5daae2c76b;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-That's probe path? so use standard syntax:
+--2f6aa86954b8eb8c99f3919d1846860d91999fb6d12d29116c5daae2c76b
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-return dev_err_probe(). One line instead of four.
+On Tue May 20, 2025 at 5:53 AM CEST, Yao Zi wrote:
+> On Mon, May 19, 2025 at 09:26:05PM +0200, Diederik de Haas wrote:
+>> On Mon May 19, 2025 at 6:16 PM CEST, Yao Zi wrote:
+>> > All supported variants of naneng-combphy follow a register layout
+>> > similar to the RK3568 variant with some exceptions of SoC-specific
+>> > registers.
+>> >
+>> > Add RK3568 prefix for the common set of registers and the correspondin=
+g
+>> > SoC prefix for SoC-specific registers, making usage of definitions cle=
+ar
+>> > and preparing for future COMBPHY variants with a different register
+>> > layout.
+>> >
+>> > Signed-off-by: Yao Zi <ziyao@disroot.org>
+>> > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+>> > ---
+>> >  .../rockchip/phy-rockchip-naneng-combphy.c    | 560 +++++++++--------=
+-
+>> >  1 file changed, 288 insertions(+), 272 deletions(-)
+>> >
+>> > diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/driv=
+ers/phy/rockchip/phy-rockchip-naneng-combphy.c
+>> > index ce91fb1d5167..1d1c7723584b 100644
+>> > --- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+>> > +++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+>> > @@ -21,78 +21,80 @@
+>> >  #define REF_CLOCK_100MHz		(100 * HZ_PER_MHZ)
+>> > =20
+>> >  /* COMBO PHY REG */
+>> > <snip>
+>> > -#define PHYREG33_PLL_KVCO_VALUE_RK3576	4
+>> > +#define RK3568_PHYREG6				0x14
+>> > +#define RK3568_PHYREG6_PLL_DIV_MASK		GENMASK(7, 6)
+>> > +#define RK3568_PHYREG6_PLL_DIV_SHIFT		6
+>> > +#define RK3568_PHYREG6_PLL_DIV_2		1
+>> > +
+>> > +#define RK3568_PHYREG7				0x18
+>> > +#define RK3568_PHYREG7_TX_RTERM_MASK		GENMASK(7, 4)
+>> > +#define RK3568_PHYREG7_TX_RTERM_SHIFT		4
+>> > +#define RK3568_PHYREG7_TX_RTERM_50OHM		8
+>> > +#define RK3568_PHYREG7_RX_RTERM_MASK		GENMASK(3, 0)
+>> > +#define RK3568_PHYREG7_RX_RTERM_SHIFT		0
+>> > +#define RK3568_PHYREG7_RX_RTERM_44OHM		15
+>> > +
+>> > +#define RK3568_PHYREG8				0x1C
+>> > +#define RK3568_PHYREG8_SSC_EN			BIT(4)
+>> > +
+>> > +#define RK3568_PHYREG11				0x28
+>> > +#define RK3568_PHYREG11_SU_TRIM_0_7		0xF0
+>> > +
+>> > +#define RK3568_PHYREG12				0x2C
+>> > +#define RK3568_PHYREG12_PLL_LPF_ADJ_VALUE	4
+>> > +
+>> > +#define RK3568_PHYREG13				0x30
+>> > +#define RK3568_PHYREG13_RESISTER_MASK		GENMASK(5, 4)
+>> > +#define RK3568_PHYREG13_RESISTER_SHIFT		0x4
+>> > +#define RK3568_PHYREG13_RESISTER_HIGH_Z		3
+>> > +#define RK3568_PHYREG13_CKRCV_AMP0		BIT(7)
+>> > +
+>> > +#define RK3568_PHYREG14				0x34
+>> > +#define RK3568_PHYREG14_CKRCV_AMP1		BIT(0)
+>> > +
+>> > +#define RK3568_PHYREG15				0x38
+>> > +#define RK3568_PHYREG15_CTLE_EN			BIT(0)
+>> > +#define RK3568_PHYREG15_SSC_CNT_MASK		GENMASK(7, 6)
+>> > +#define RK3568_PHYREG15_SSC_CNT_SHIFT		6
+>> > +#define RK3568_PHYREG15_SSC_CNT_VALUE		1
+>> > +
+>> > +#define RK3568_PHYREG16				0x3C
+>> > +#define RK3568_PHYREG16_SSC_CNT_VALUE		0x5f
+>> > +
+>> > +#define RK3568_PHYREG18				0x44
+>> > +#define RK3568_PHYREG18_PLL_LOOP		0x32
+>> > +
+>> > +#define RK3568_PHYREG32				0x7C
+>> > +#define RK3568_PHYREG32_SSC_MASK		GENMASK(7, 4)
+>> > +#define RK3568_PHYREG32_SSC_DIR_MASK		GENMASK(5, 4)
+>> > +#define RK3568_PHYREG32_SSC_DIR_SHIFT		4
+>> > +#define RK3568_PHYREG32_SSC_UPWARD		0
+>> > +#define RK3568_PHYREG32_SSC_DOWNWARD		1
+>> > +#define RK3568_PHYREG32_SSC_OFFSET_MASK	GENMASK(7, 6)
+>> > +#define RK3568_PHYREG32_SSC_OFFSET_SHIFT	6
+>> > +#define RK3568_PHYREG32_SSC_OFFSET_500PPM	1
+>> > +
+>> > +#define RK3568_PHYREG33				0x80
+>> > +#define RK3568_PHYREG33_PLL_KVCO_MASK		GENMASK(4, 2)
+>> > +#define RK3568_PHYREG33_PLL_KVCO_SHIFT		2
+>> > +#define RK3568_PHYREG33_PLL_KVCO_VALUE		2
+>> > +#define RK3576_PHYREG33_PLL_KVCO_VALUE		4
+>> > +
+>> > +/* RK3588 COMBO PHY registers */
+>> > +#define RK3588_PHYREG27				0x6C
+>> > +#define RK3588_PHYREG27_RX_TRIM			0x4C
+>>=20
+>> Would it be better if RK3588_PHYREG* comes after RK3576_PHYREG*?
+>>=20
+>
+> It's intended to keep RK3576 definitions below RK3588 ones. The RK3576
+> driver makes use of a register introduced for RK3588 variant
+> (RK3588_PHYREG27). Since similar reusing doesn't happen reversely, I
+> consider the design of RK3576 a superset of the RK3588 one, and put
+> RK3576 definitions later in the file.
 
-> +
-> +	rdev->pclk = devm_clk_get(dev, "pclk");
-> +	if (IS_ERR(rdev->pclk)) {
-> +		err = PTR_ERR(rdev->pclk);
-> +		dev_err(dev, "devm_clk_get failed %d for clock pclk\n", err);
-> +		return err;
+I understand that logic, but OTOH in patch 4 you put the defines for
+RK3528 before RK3568. And RK3568 is not a superset of RK3528 AFAIK.
+It's just different? That's why I think/thought sorting them (all)
+alphabetically would make more sense.
 
-Same here... except that this should be blk API and entire function gets
-smaller.
+My 0.02
 
-> +	}
-> +
-> +	/* Initialize core 0 (top) */
-> +	err = rocket_core_init(&rdev->cores[0]);
-> +	if (err)
-> +		return err;
-> +
-> +	return 0;
-> +}
+>> > +
+>> > +/* RK3576 COMBO PHY registers */
+>> > +#define RK3576_PHYREG10				0x24
+>> > +#define RK3576_PHYREG10_SSC_PCM_MASK		GENMASK(3, 0)
+>> > +#define RK3576_PHYREG10_SSC_PCM_3500PPM		7
+>> > +
+>> > +#define RK3576_PHYREG17				0x40
+>> > +
+>> > +#define RK3576_PHYREG21				0x50
+>> > +#define RK3576_PHYREG21_RX_SQUELCH_VAL		0x0D
+>> > +
+>> > +#define RK3576_PHYREG30				0x74
+>> > =20
+>> >  struct rockchip_combphy_priv;
+>> > <snip>
+>
+>
+> Thanks,
+> Yao Zi
 
-...
 
-> +static int rocket_device_runtime_resume(struct device *dev)
-> +{
-> +	struct rocket_device *rdev = dev_get_drvdata(dev);
-> +	int core = find_core_for_dev(dev);
-> +	int err = 0;
-> +
-> +	if (core < 0)
-> +		return -ENODEV;
-> +
-> +	if (core == 0) {
-> +		err = clk_prepare_enable(rdev->clk_npu);
-> +		if (err) {
-> +			dev_err(dev, "clk_prepare_enable failed %d for clock npu\n", err);
-> +			return err;
-> +		}
-> +
-> +		err = clk_prepare_enable(rdev->pclk);
-> +		if (err) {
-> +			dev_err(dev, "clk_prepare_enable failed %d for clock pclk\n", err);
-> +			goto error_clk_npu;
-> +		}
-> +	}
-> +
-> +	err = clk_prepare_enable(rdev->cores[core].a_clk);
-> +	if (err) {
-> +		dev_err(dev, "clk_prepare_enable failed %d for a_clk in core %d\n", err, core);
-> +		goto error_pclk;
-> +	}
-> +
-> +	err = clk_prepare_enable(rdev->cores[core].h_clk);
-> +	if (err) {
-> +		dev_err(dev, "clk_prepare_enable failed %d for h_clk in core %d\n", err, core);
-> +		goto error_a_clk;
-> +	}
+--2f6aa86954b8eb8c99f3919d1846860d91999fb6d12d29116c5daae2c76b
+Content-Type: application/pgp-signature; name="signature.asc"
 
-All four above calls could be just one call with bulk API.
+-----BEGIN PGP SIGNATURE-----
 
-> +
-> +	return 0;
-> +
-> +error_a_clk:
-> +	clk_disable_unprepare(rdev->cores[core].a_clk);
-> +
-> +error_pclk:
-> +	if (core == 0)
-> +		clk_disable_unprepare(rdev->pclk);
-> +
-> +error_clk_npu:
-> +	if (core == 0)
-> +		clk_disable_unprepare(rdev->clk_npu);
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaCw/YgAKCRDXblvOeH7b
+btjKAP9j4L97yDM5TuPnM79GFXom5tqq+k4QLX4sjJJaNaHyGgD/W1GQwoE0qrXy
+fn0SRC1sVChHn22biqVDwNqUinN+rw0=
+=yOD8
+-----END PGP SIGNATURE-----
 
-And all this would be gone...
+--2f6aa86954b8eb8c99f3919d1846860d91999fb6d12d29116c5daae2c76b--
 
-> +
-> +	return err;
 
-Best regards,
-Krzysztof
-
+--===============4355981309507837506==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4355981309507837506==--
+
