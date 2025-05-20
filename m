@@ -4,62 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84949C3DA6D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 May 2025 18:04:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53B3EC3ABDD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 May 2025 18:37:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/V0ZfeV5ftbqYtnEMgLNq42v9sCSgQkfGjoyJHaxly0=; b=JKpqrJ3F2cs/2j
-	H/YR94ch38pPWpSveas31CA6lM8nBS9WdlF9lIqYFdW0s+Ju7ViwCBtmXUilG6JWMQBYbAu8a485I
-	cdXzUCTDHAxb+cSP4SAbMq4zd9sqQ29ruVmsGqRcEFi0PTVVhiyWmLjViaQEZsGCBVZTpqb2xJEp/
-	1/jJzcvK+LkWe3bmMSynRaFtURLrPaAynPys+N0Cj2Dy6QoxX0NdpTDf9Xge/cmpHHxjR9R9Mp1xD
-	qF7hookcwtdunT6lvfB7ufuPmaxpKYpaHyaDsVKn2iBT/zQIFPjKdrnqSGmr3VhPNUStAT/ka5jay
-	PIhcgoWhp88dtZif6Sgw==;
+	List-Owner; bh=WC0Os54+jf7Pg2cEJlgLZ6ItbwwPnTnxnztORwgLI9c=; b=VvVN8oIzKYpSSn
+	QWK2XVGrQTzEIk1ogXbEUJSg50DPJBTyGNEe2qHjruN0aRVLDkr4N5EdntyjH/1eOdxF7LVkOMNZi
+	5Jm1GOqgarM/NCneDy8uAz9dbQzjXhi7jiA7sKAaADl95I0IwWTBG/6omBA2D7dVN5+8P3d1BE0F5
+	D7/40DSSdn7n5OgE5iJFyeIb+zjUg9gUIIRKL13ERBdOI5Zw/3nyMlnU40RQGsUa5X9MUBagCibRU
+	sdnZrKwvTqSMx75nd2slG8kHyxFdkBW10f/14RyDVj/jpsgbKYqmnCBplZqQn71Piy6OOW4TYqPcK
+	LQEVWX0G00kYpvWjOoCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHRKV-0000000Dkan-20EU;
-	Tue, 20 May 2025 18:04:43 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1uHRpe-0000000DoJ3-333s;
+	Tue, 20 May 2025 18:36:54 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHR8Y-0000000DjUt-3w6p
-	for linux-rockchip@lists.infradead.org;
-	Tue, 20 May 2025 17:52:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1747763542;
- bh=uKHEwnYvk3DoQnbDm76DtOrSSIM/yuksJQK3RjrtSzY=;
- b=O9hLSaHsY1/3i9keUjq6d9wcRnagqNzaTIlzdkxn/OmBmqPc1/EZtUblLjFTKMMPZrr7HLIAV
- mhT7FfnQAuNySMMHLpqLjo/7FuFOSAKq4/4v1HRSdtpptZw9g66lVf/NnjRaYTfx3sS+qG3fmWu
- hk+FSMca5bqhQQF749ujDNbsNsQv78eDbprdJUkUm0hlyNrXRMYEqblcCdfHrCfzQx11NmriPAX
- Ay02kpvf4am148C55JnaKJw3A561MQKsrn5jWBnlcrb30jEOCIC6oDKf1g5yknhdRlQcyD5SotR
- UCzfMorxizx62wyzB6T/Xp2UTM1XDgRe+Jx2m+4De4vQ==
-X-Forward-Email-ID: 682cc1437730016263d49d6d
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.0.3
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <079c08bc-e8cc-4ed6-a71e-7ef103f635c0@kwiboo.se>
-Date: Tue, 20 May 2025 19:51:57 +0200
+	id 1uHRpc-0000000DoIV-1ZHs;
+	Tue, 20 May 2025 18:36:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=dQZzSpw38okBWKsZXnPL9bfHWKnBcYjDpFLGg/aiMoo=; b=HMouFCEzqAfmrdwzBosxpq8Ob7
+	kXuWO5h3ZwIfKoSWNU/C+KZtSD2ieMlvRN/nO5XwLfDR9XtZuo24ObGryH16edj7eAuzsY2M+mebl
+	JKkhoZEbgQu+90bWRRfXEo42vPl7EQwgfXkSCKgPHF+EBQrMaaR3KPVMRZsB6r1bWXZynCul+//t6
+	6B3nDgMsQM/jc12a9l2zWppqLmeNI9jnF9reWAeB5E08hqfISdglgB7BQDvaIGe0rGhdnFIznPY70
+	kd+xLzQ6Tk2KrceUssdV0FgBIMVn5DpPX/X8PvSeScZxKHNQp6j9DKZ4BfUoIoJTKO1tZrcYKF7gO
+	kWs20Rug==;
+Received: from [61.8.146.112] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uHRpP-000495-Ib; Tue, 20 May 2025 20:36:39 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: ulf.hansson@linaro.org, mark.rutland@arm.com, lpieralisi@kernel.org,
+ sudeep.holla@arm.com, Robin Murphy <robin.murphy@arm.com>
+Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 1/2] firmware: smccc: Stub out get_conduit()
+Date: Tue, 20 May 2025 20:36:38 +0200
+Message-ID: <2195785.VLH7GnMWUR@phil>
+In-Reply-To: <ab0476382e3342161beda94a45ddadb49b026dcd.1747760015.git.robin.murphy@arm.com>
+References: <ab0476382e3342161beda94a45ddadb49b026dcd.1747760015.git.robin.murphy@arm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 5/5] arm64: dts: rockchip: Add naneng-combphy for
- RK3528
-To: Yao Zi <ziyao@disroot.org>
-References: <20250519161612.14261-1-ziyao@disroot.org>
- <20250519161612.14261-6-ziyao@disroot.org>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250519161612.14261-6-ziyao@disroot.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_105223_014154_F2C19408 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20250520_113652_432047_B7B1C271 
+X-CRM114-Status: GOOD (  15.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,87 +67,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Frank Wang <frank.wang@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Shresth Prasad <shresthprasad7@gmail.com>, Vinod Koul <vkoul@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>, linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2025-05-19 18:16, Yao Zi wrote:
-> Rockchip RK3528 ships a naneng-combphy that is shared by PCIe and USB
-> 3.0 controllers. Describe it and the pipe-phy grf which it depends on.
-> 
-> Signed-off-by: Yao Zi <ziyao@disroot.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 22 ++++++++++++++++++++++
->  1 file changed, 22 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> index b2724c969a76..314afb94e19b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> @@ -318,6 +318,11 @@ vpu_grf: syscon@ff340000 {
->  			reg = <0x0 0xff340000 0x0 0x8000>;
->  		};
->  
-> +		pipe_phy_grf: syscon@ff348000 {
-> +			compatible = "rockchip,rk3528-pipe-phy-grf", "syscon";
-> +			reg = <0x0 0xff348000 0x0 0x8000>;
-> +		};
-> +
->  		vo_grf: syscon@ff360000 {
->  			compatible = "rockchip,rk3528-vo-grf", "syscon";
->  			reg = <0x0 0xff360000 0x0 0x10000>;
-> @@ -867,6 +872,23 @@ dmac: dma-controller@ffd60000 {
->  			arm,pl330-periph-burst;
->  		};
->  
-> +		combphy: phy@ffdc0000 {
-> +			compatible = "rockchip,rk3528-naneng-combphy";
-> +			reg = <0x0 0xffdc0000 0x0 0x10000>;
-> +			#phy-cells = <1>;
-
-Should probably be sorted at end or before resets prop.
-
-> +			clocks = <&cru CLK_REF_PCIE_INNER_PHY>, <&cru PCLK_PCIE_PHY>,
-
-This break the ~80 line length limit mostly kept in this file.
-
-> +				 <&cru PCLK_PIPE_GRF>;
-> +			clock-names = "ref", "apb",
-> +				      "pipe";
-
-Could be kept on a single line.
-
-> +			assigned-clocks = <&cru CLK_REF_PCIE_INNER_PHY>;
-> +			assigned-clock-rates = <100000000>;
-
-Other assigned-clock props are sorted before clocks props in this file.
-
-This is also missing power-domains information (also missing from
-dt-bindings patch):
-
-	power-domains = <&power RK3528_PD_VPU>;
-
-> +			resets = <&cru SRST_PCIE_PIPE_PHY>, <&cru SRST_P_PCIE_PHY>;
-
-This also break the ~80 line length limit mostly kept in this file.
-
-Regards,
-Jonas
-
-> +			reset-names = "phy", "apb";
-> +			rockchip,pipe-grf = <&vpu_grf>;
-> +			rockchip,pipe-phy-grf = <&pipe_phy_grf>;
-> +			status = "disabled";
-> +		};
-> +
->  		pinctrl: pinctrl {
->  			compatible = "rockchip,rk3528-pinctrl";
->  			rockchip,grf = <&ioc_grf>;
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRGllbnN0YWcsIDIwLiBNYWkgMjAyNSwgMTk6MTA6MTYgTWl0dGVsZXVyb3DDpGlzY2hlIFNv
+bW1lcnplaXQgc2NocmllYiBSb2JpbiBNdXJwaHk6Cj4gVmFyaW91cyBjYWxsZXJzIHVzZSBhcm1f
+c21jY2NfMV8xX2dldF9jb25kdWl0KCkgdG8gZ3VhcmQgdGhlaXIKPiBhcm1fc21jY2Nfc21jKCkg
+Y2FsbHMgLSBzaW5jZSB0aGUgbGF0dGVyIGlzIGFscmVhZHkgc3R1YmJlZCBvdXQgdG8KPiBzdXBw
+b3J0IG9wdGlvbmFsIHVzYWdlIGluICFIQVZFX0FSTV9TTUNDQyBjb25maWdzLCBkbyB0aGUgZXF1
+aXZhbGVudAo+IGZvciB0aGUgZm9ybWVyIGFzIHdlbGwgdG8gbWFrZSBsaWZlIGVhc2llci4KPiAK
+PiBTaWduZWQtb2ZmLWJ5OiBSb2JpbiBNdXJwaHkgPHJvYmluLm11cnBoeUBhcm0uY29tPgoKUmV2
+aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgpXYXkgbmljZXIgdGhh
+biB0byByZXF1aXJlIGFybTMyIHJvY2tjaGlwIHBsYXRmb3JtcyB0bwplbmFibGUgc21jYyBzdHVm
+ZiwgZXZlbiBpZiBub3QgaW4gdXNlLgoKPiAtLS0KPiAgaW5jbHVkZS9saW51eC9hcm0tc21jY2Mu
+aCB8IDcgKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspCj4gCj4gZGlm
+ZiAtLWdpdCBhL2luY2x1ZGUvbGludXgvYXJtLXNtY2NjLmggYi9pbmNsdWRlL2xpbnV4L2FybS1z
+bWNjYy5oCj4gaW5kZXggYTM4NjNkYTE1MTBlLi45N2RjNGQ0N2M2NjQgMTAwNjQ0Cj4gLS0tIGEv
+aW5jbHVkZS9saW51eC9hcm0tc21jY2MuaAo+ICsrKyBiL2luY2x1ZGUvbGludXgvYXJtLXNtY2Nj
+LmgKPiBAQCAtMzE1LDcgKzMxNSwxNCBAQCBlbnVtIGFybV9zbWNjY19jb25kdWl0IHsKPiAgICoK
+PiAgICogV2hlbiBTTUNDQ3YxLjEgaXMgbm90IHByZXNlbnQsIHJldHVybnMgU01DQ0NfQ09ORFVJ
+VF9OT05FLgo+ICAgKi8KPiArI2lmZGVmIENPTkZJR19IQVZFX0FSTV9TTUNDQ19ESVNDT1ZFUlkK
+PiAgZW51bSBhcm1fc21jY2NfY29uZHVpdCBhcm1fc21jY2NfMV8xX2dldF9jb25kdWl0KHZvaWQp
+Owo+ICsjZWxzZQo+ICtzdGF0aWMgaW5saW5lIGVudW0gYXJtX3NtY2NjX2NvbmR1aXQgYXJtX3Nt
+Y2NjXzFfMV9nZXRfY29uZHVpdCh2b2lkKQo+ICt7Cj4gKwlyZXR1cm4gU01DQ0NfQ09ORFVJVF9O
+T05FOwo+ICt9Cj4gKyNlbmRpZgo+ICAKPiAgLyoqCj4gICAqIGFybV9zbWNjY19nZXRfdmVyc2lv
+bigpCj4gCgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
