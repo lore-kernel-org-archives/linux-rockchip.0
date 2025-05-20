@@ -4,64 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33792C3DA6D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 May 2025 12:01:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD47BC3DA6D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 May 2025 12:43:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2qhtO22AaCPAnMAM4LojAT7J+miDY3OipYGHQjVFCV0=; b=hsISdXrZRGQiZo
-	xvJz3G+gAqxOF6Ki/fgTUHI1NCx2BkMHblraPcTUGF+dI0jwlm72HQYlMJOlfeBBcxRNmOxeC1DpD
-	atfhAozHyTqirDbzzXWpabKzSzE8Z+vof9OiCAl9JYAtngKA78gZvD73wQP7zJ25uFL896XF6S/N7
-	kfglJthFSdllWxIMPjld4nPTu3DXtCwa5Z6vQpv+fqTztqtOwb0+bf4gm7xbFd3mA4LMqQinvrzoz
-	3JxMqg4W8g7GzXBum/EzQGRGnYUaUTmG6A3NuCrywXK+hysPE1VVAiiE5eJYn2aptLlhvYm7+l5aD
-	ar0adYQnMZoj8pRpdr5w==;
+	List-Owner; bh=GeMNIjFLq05teG0lCGSqg09GuXuLPnVwp9q8y0lO87M=; b=vFynYh1ipD/qbn
+	kDYQCXKj8JXyUvj8I+GcPZCY2jApwh1UTpJ3RHV/iRKMHUwHQzs0EQ+YPOZHdUiHUHd6Xoxfck7y5
+	FkslZSCPlq0I3czA6FLDhxmzbbStPNz4UcdcN63FTvm85OEMCVGzxS5f5Vx/Cinsb9M502jvUuGKt
+	b9sBf629AyWboUeMrHDc7t1fwI2RBQrMAMzZHy+BZiVl6STyZTlP9730jFFN66eLp5rZLOPjK1svR
+	h3HQWcDLlSc+Av6OUBxd2WZsDNV/fZ6vIRW3PaCfdFFKtlXIRHyS6K9Ydy/foyKDk1fmmooWsuRSD
+	BiuBKDCVAz6gEmpGWMvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHLf6-0000000CmTj-25bj;
-	Tue, 20 May 2025 12:01:36 +0000
-Received: from mail-m81189.xmail.ntesmail.com ([156.224.81.189])
+	id 1uHMJB-0000000Ctw2-3BBa;
+	Tue, 20 May 2025 12:43:01 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHLf2-0000000CmL7-0dHW;
-	Tue, 20 May 2025 12:01:34 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c04:7a30:290:8105:3706:5628])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 15bc46b45;
-	Tue, 20 May 2025 20:01:26 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: jonas@kwiboo.se
-Cc: amadeus@jmu.edu.cn,
-	broonie@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	ziyao@disroot.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-spi@vger.kernel.org
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add spi nodes for RK3528
-Date: Tue, 20 May 2025 20:01:18 +0800
-Message-Id: <20250520120118.1246479-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <28b03818-0290-412a-8d1e-9b88a163d387@kwiboo.se>
-References: <28b03818-0290-412a-8d1e-9b88a163d387@kwiboo.se>
+	id 1uHMJ9-0000000Ctux-1npL
+	for linux-rockchip@lists.infradead.org;
+	Tue, 20 May 2025 12:43:00 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id 3f1490d57ef6-e694601f624so4083372276.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 20 May 2025 05:42:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1747744978; x=1748349778; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=88lOLN3//BdORRDyk/6LjlOBy9fkXDogVmGs1sgPhyI=;
+        b=uJGVsVu5beKG+6hSJ5wwykWfPXyDr3sQ/ZGUNqw4LdiehiRWJM1i05aZ4SgnpphSAo
+         i63ry3CuKjnNGAlsElf3MYLLZvIdLxl3Bb3gQTYkKShZ6vdGE+VXGDepEVyIy2Na47W/
+         c9u8iXZVuBXJxnO4Iw3Lr/A9bRlkNeuQA4toS42+PEfztAV3Hh4lmsKx/P0PaS/jVKv9
+         GM93UTSCZfp4HXD+DDFbEKxR05/RrBByyu3YabHIjCdI/gwDrSu/umbw8+QLRSfIaSGY
+         ck7hZkGCVwW+Mhr86xVGW9Ou4JeI+M3oM3DrciNUOGPkiPkkZc5AimSPAc5w7H4CdK17
+         fXhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747744978; x=1748349778;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=88lOLN3//BdORRDyk/6LjlOBy9fkXDogVmGs1sgPhyI=;
+        b=EN/ZV4S9IPmb+TyWjorjy/Ko6dvZ7o9KAkleZyI3hnc4B0CqOidXNVr4ixHdHShc8Z
+         Vc+tXz82qlqT6uI8c9UXReWxOiDwHedC8mD8QAsN72SO1wQ4gmMtUPcAFk3eRbRPE1nb
+         mSyVSNDz1QHMfiQ6P/2uzyhKhIAGuSyS2S6BR+N2J3HeNI2nu7kVgAaeVwqYmM1Qkhq5
+         ss8AT3lEJNaYi2GzmlSg+xNpFE0ekEvp3tZ4QxOhGOslhIkGsgNFdVkECAEBEGvRcvzG
+         oisLvxWDKI2H71Hx5r4DjvHd9Elsuzd0mP7F1Ie64EGbTpTDaeh6/H7z7DvFVWG1vrZt
+         jaBA==
+X-Forwarded-Encrypted: i=1; AJvYcCWCArSO1NfCpCUc9vJdxxnXGeAzXllHf8fCswUOvUbEmw6y1py7hHn/nSWJxgO03y+9VfrMmINJ47sHHmbatg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwC9xye4CAiKsVrnZem4y4gAAtwaWoDj4UEtFaj45bWpUyLR98L
+	oMlBfCzKSenIgXZUaJhIKfsxrrJXZWkTi0VQfR/87hYLhaW1c5/cBoIua+5trjhrIpbMYVCO1rd
+	u1EAfkgL31uLV+YMzrFMzpfmdqVRqTbyp09fi+FVqlQ==
+X-Gm-Gg: ASbGncuxSCsEajUbirPADBL75ob2UBs63TPEpXKlHWCvFsWEHAvPs6CtelUBenoi2AU
+	Cis4r5muo4QFh79XQwP1riIXYDP0NkbjriqOfAOVus5O3N2eRKcQLswnsUuhrGVW8p9qkW0Xo3T
+	4h44wV4SUvPk125+rSG5eycXQCVpfbmevLQg==
+X-Google-Smtp-Source: AGHT+IGhT+v8r+0GZsiYhs7CHph95cb2P8MRGP6RGC8fZ7dFYUwqCE9+mfUsNw7SyUvETHMbFtvpOAcTqK/Ng1hl+qE=
+X-Received: by 2002:a05:6902:1201:b0:e79:774:866f with SMTP id
+ 3f1490d57ef6-e7b69e80915mr20083103276.17.1747744978059; Tue, 20 May 2025
+ 05:42:58 -0700 (PDT)
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaQ0lOVk8aS09CHksYQxgYSlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtPQUwaSEtBSUJLQUNKS05BSExLTUFOTUlDWVdZFhoPEh
-	UdFFlBWU9LSFVKS0hKTkxOVUpLS1VKQktLWQY+
-X-HM-Tid: 0a96ed91f06c03a2kunmccf6e257ad0b5
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Ngw6MAw4HTE6HBpCCkNMDz4i
-	MVEaCSpVSlVKTE9MTE9JT0NMTUtOVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
-	Sx5BSBlIQUkYS09BTBpIS0FJQktBQ0pLTkFITEtNQU5NSUNZV1kIAVlBSklCTDcG
+References: <20250518220707.669515-1-jonas@kwiboo.se> <20250518220707.669515-6-jonas@kwiboo.se>
+In-Reply-To: <20250518220707.669515-6-jonas@kwiboo.se>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 20 May 2025 14:42:20 +0200
+X-Gm-Features: AX0GCFs3Un2EF18YwTSrDKI84LtGeBLBa79SYyXbjLKaJiwIZzX41KzumIQh4bM
+Message-ID: <CAPDyKFqu-ox90dEnK8L0C8CqXJDsvgGwH00__nfQcOYu8hNM9Q@mail.gmail.com>
+Subject: Re: [PATCH 5/9] dt-bindings: mmc: sdhci-of-dwcmhsc: Allow use of a power-domain
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Jisheng Zhang <jszhang@kernel.org>, Yao Zi <ziyao@disroot.org>, Chukun Pan <amadeus@jmu.edu.cn>, 
+	linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_050132_457514_EDF0A3D4 
-X-CRM114-Status: UNSURE (   5.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250520_054259_471402_C9C5C1B0 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,28 +97,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-> This is missing power-domains after "rockchip: Add power controller
-> support for RK3528" [1], spi0 depend on pclk_rkvenc_root:
+On Mon, 19 May 2025 at 00:07, Jonas Karlman <jonas@kwiboo.se> wrote:
 >
-> 	power-domains = <&power RK3528_PD_RKVENC>;
-
-> Same here, spi1 depend on pclk_vpu_root:
+> The commit 7e856617a1f3 ("dt-bindings: mmc: Add support for rk3576
+> eMMC") limited use of power-domains to Rockchip RK3576.
 >
-> 	power-domains = <&power RK3528_PD_VPU>;
+> Remove the power-domains: false to allow use of power-domains with more
+> controllers, e.g. with SDHCI on Rockchip RK3528.
 >
-> [1] https://lore.kernel.org/r/20250518220707.669515-1-jonas@kwiboo.se
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 
-Thanks for the reminder, I didn't notice this.
-If the power-domains patches gets merged I'll add it.
+Applied for next, thanks!
 
-Thanks,
-Chukun
+Kind regards
+Uffe
 
---
-2.25.1
 
+> ---
+>  Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml | 4 ----
+>  1 file changed, 4 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> index 5fb347167004..f882219a0a26 100644
+> --- a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> @@ -120,10 +120,6 @@ allOf:
+>        required:
+>          - power-domains
+>
+> -    else:
+> -      properties:
+> -        power-domains: false
+> -
+>  unevaluatedProperties: false
+>
+>  examples:
+> --
+> 2.49.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
