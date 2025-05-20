@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B0C0C3DA6D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 May 2025 11:12:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FEA2C3ABDD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 May 2025 11:14:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i5iGg1Ia/iCV+9rq+LCEikeFHUQ+tJF/N8jSKf6D7lg=; b=b9Co03VKhPUfNq
-	YxY2TYhKp9cVyLL815hJ8ZguG/QkqW269JXyhEvxKi1xQchjxXy88lTpnQS8pCkQHTHxUN8FSoURo
-	UGAo0epWOm75vvKhW+dku2t5mA1ru8cbly0VRMVdSdwbH2DGIWocG4YZa1WsRLh87FXzUHrsUnPGp
-	8Xv8nc8YdtLE+Qq/jTJxx9i4WgLvw4Vl2uVGe22ERSSlixnAv9x/s5r/YnWUTF9bo5kTOJvOK9k6M
-	tjb9qpnrNA4ETTsw071CgthBX20GaUl8eMhp964y8ffWqgGVcP3E0KrYYBvtr4Ia/WUzEri8phmtU
-	TUJDW+Au+dDj4gQ9Ao7w==;
+	List-Owner; bh=6MRbo96ZBxs41gJECT3Mh2rPCrdkxV9RXVgy6/WMVfU=; b=POFFcvyQLLaeIq
+	Plsg0NH0DO18JckB4+fxMnGMe22qbTfRwcYUfO43Ho5i0nmjc8+qJF3oYCooJRNm46Ce5UoZo1cAf
+	t97EZuCEBCDMLLHNGKvWQ2L2X4cLtb3ooiCx71xypoDPettgNXZb8uKf8rxBQA7CGr0FWvOvZW5PS
+	yPJbMTxZcdmN5a4/V5JjkGBAPWxvg8IAhGI/YB4wHgP3HlyYbEj5GLEzqRHpaiPEuE7IUf4qR5rKu
+	uhJYq+D5LdaYnNY03ugHEcypwMugSvPM5SXmh6p0vWdrtgHae9ehMwycXjBzsLmQPrHbguUhIPAgM
+	wHn7RJ8V5VgAEIfJSwQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHKtU-0000000CYtR-3c57;
-	Tue, 20 May 2025 11:12:24 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1uHKvZ-0000000CZxv-3mWq;
+	Tue, 20 May 2025 11:14:33 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHKQR-0000000CPbD-3k8R
+	id 1uHKZ1-0000000CSKK-3VZk
 	for linux-rockchip@lists.infradead.org;
-	Tue, 20 May 2025 10:42:24 +0000
-Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77] helo=[IPv6:::1])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <l.stach@pengutronix.de>)
-	id 1uHKPz-0001aN-MM; Tue, 20 May 2025 12:41:55 +0200
-Message-ID: <e7c08305612e7323ca9d9ff6c44f3e2b63f171ff.camel@pengutronix.de>
-Subject: Re: [PATCH v5 08/10] accel/rocket: Add IOCTLs for synchronizing
- memory accesses
-From: Lucas Stach <l.stach@pengutronix.de>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Oded Gabbay
- <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>,  Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Sumit Semwal <sumit.semwal@linaro.org>,
- Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, Sebastian
- Reichel <sebastian.reichel@collabora.com>,  Nicolas Frattaroli
- <nicolas.frattaroli@collabora.com>, Jeff Hugo <jeff.hugo@oss.qualcomm.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
-	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org
-Date: Tue, 20 May 2025 12:41:47 +0200
-In-Reply-To: <20250520-6-10-rocket-v5-8-18c9ca0fcb3c@tomeuvizoso.net>
-References: <20250520-6-10-rocket-v5-0-18c9ca0fcb3c@tomeuvizoso.net>
-	 <20250520-6-10-rocket-v5-8-18c9ca0fcb3c@tomeuvizoso.net>
-User-Agent: Evolution 3.52.4 (3.52.4-2.fc40) 
+	Tue, 20 May 2025 10:51:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1747738274;
+ bh=IjZMD2eULGDwifJ6Eg5o2azP2kaC3eB2jYmU3yHnbXU=;
+ b=lwMF1BHhGUaiZGNdahHOMDXdD/YEeEIUfzLu8ar2HT91SU2wGpYhJxZNAGcqMk5GNKKtHOz2F
+ AVc8XGobUPFGvUoM5+sH92vEaOemxcrQj6m/t4rmHJuW7crfvDXURg8VtBBGmiftaj2C9S8mVek
+ 02Cr5XdHjO2EvbDqeMRVO+xJtaoBXHq4HBJNyPjOFp0xZlg+Q7H7IbLaDX/C3pkEzTmUMOdUDzL
+ SyjV2h26yth3oj5naqE8rFxKQJpjpBAslSU/vqAWYAti+k8+RaX0hCruWBtfDaNHEm97+TUAJI4
+ zewbjeUG4XN+Fe96yqaUB4N0YlmPwhzq4vws5Ns5ORfg==
+X-Forward-Email-ID: 682c5e9c356c24cb84e6ffc4
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 1.0.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <28b03818-0290-412a-8d1e-9b88a163d387@kwiboo.se>
+Date: Tue, 20 May 2025 12:51:03 +0200
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:900:1d::77
-X-SA-Exim-Mail-From: l.stach@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add spi nodes for RK3528
+To: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>
+Cc: Yao Zi <ziyao@disroot.org>, Rob Herring <robh@kernel.org>,
+ Mark Brown <broonie@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>
+References: <20250520100102.1226725-1-amadeus@jmu.edu.cn>
+ <20250520100102.1226725-3-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250520100102.1226725-3-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_034223_922627_63BA79E4 
-X-CRM114-Status: GOOD (  18.43  )
+X-CRM114-CacheID: sfid-20250520_035116_275362_2948D469 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,69 +84,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Tomeu,
-
-Am Dienstag, dem 20.05.2025 um 12:27 +0200 schrieb Tomeu Vizoso:
-> The NPU cores have their own access to the memory bus, and this isn't
-> cache coherent with the CPUs.
+On 2025-05-20 12:01, Chukun Pan wrote:
+> There are 2 SPI controllers on the RK3528 SoC, describe it.
 > 
-> Add IOCTLs so userspace can mark when the caches need to be flushed, and
-> also when a writer job needs to be waited for before the buffer can be
-> accessed from the CPU.
-> 
-> Initially based on the same IOCTLs from the Etnaviv driver.
-> 
-> v2:
-> - Don't break UABI by reordering the IOCTL IDs (Jeff Hugo)
-> 
-> v3:
-> - Check that padding fields in IOCTLs are zero (Jeff Hugo)
-> 
-> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 > ---
->  drivers/accel/rocket/rocket_drv.c |  2 +
->  drivers/accel/rocket/rocket_gem.c | 80 +++++++++++++++++++++++++++++++++++++++
->  drivers/accel/rocket/rocket_gem.h |  5 +++
->  include/uapi/drm/rocket_accel.h   | 37 ++++++++++++++++++
->  4 files changed, 124 insertions(+)
+>  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 28 ++++++++++++++++++++++++
+>  1 file changed, 28 insertions(+)
 > 
-> diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
-> index fef9b93372d3f65c41c1ac35a9bfa0c01ee721a5..c06e66939e6c39909fe08bef3c4f301b07bf8fbf 100644
-> --- a/drivers/accel/rocket/rocket_drv.c
-> +++ b/drivers/accel/rocket/rocket_drv.c
-> @@ -59,6 +59,8 @@ static const struct drm_ioctl_desc rocket_drm_driver_ioctls[] = {
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> index b2724c969a76..4d60c09219f9 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> @@ -371,6 +371,34 @@ ioc_grf: syscon@ff540000 {
+>  			reg = <0x0 0xff540000 0x0 0x40000>;
+>  		};
 >  
->  	ROCKET_IOCTL(CREATE_BO, create_bo),
->  	ROCKET_IOCTL(SUBMIT, submit),
-> +	ROCKET_IOCTL(PREP_BO, prep_bo),
-> +	ROCKET_IOCTL(FINI_BO, fini_bo),
->  };
->  
->  DEFINE_DRM_ACCEL_FOPS(rocket_accel_driver_fops);
-> diff --git a/drivers/accel/rocket/rocket_gem.c b/drivers/accel/rocket/rocket_gem.c
-> index 8a8a7185daac4740081293aae6945c9b2bbeb2dd..cdc5238a93fa5978129dc1ac8ec8de955160dc18 100644
-> --- a/drivers/accel/rocket/rocket_gem.c
-> +++ b/drivers/accel/rocket/rocket_gem.c
-> @@ -129,3 +129,83 @@ int rocket_ioctl_create_bo(struct drm_device *dev, void *data, struct drm_file *
->  
->  	return ret;
->  }
-> +
-> +static inline enum dma_data_direction rocket_op_to_dma_dir(u32 op)
-> +{
-> +	if (op & ROCKET_PREP_READ)
-> +		return DMA_FROM_DEVICE;
-> +	else if (op & ROCKET_PREP_WRITE)
-> +		return DMA_TO_DEVICE;
-> +	else
-> +		return DMA_BIDIRECTIONAL;
-> +}
+> +		spi0: spi@ff9c0000 {
+> +			compatible = "rockchip,rk3528-spi",
+> +				     "rockchip,rk3066-spi";
+> +			reg = <0x0 0xff9c0000 0x0 0x1000>;
+> +			clocks = <&cru CLK_SPI0>, <&cru PCLK_SPI0>;
+> +			clock-names = "spiclk", "apb_pclk";
+> +			interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH>;
+> +			dmas = <&dmac 25>, <&dmac 24>;
+> +			dma-names = "tx", "rx";
 
-This has copied over the bug fixed in etnaviv commit 58979ad6330a
-("drm/etnaviv: fix DMA direction handling for cached RW buffers")
+This is missing power-domains after "rockchip: Add power controller
+support for RK3528" [1], spi0 depend on pclk_rkvenc_root:
+
+	power-domains = <&power RK3528_PD_RKVENC>;
+
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+> +		spi1: spi@ff9d0000 {
+> +			compatible = "rockchip,rk3528-spi",
+> +				     "rockchip,rk3066-spi";
+> +			reg = <0x0 0xff9d0000 0x0 0x1000>;
+> +			clocks = <&cru CLK_SPI1>, <&cru PCLK_SPI1>;
+> +			clock-names = "spiclk", "apb_pclk";
+> +			interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_HIGH>;
+> +			dmas = <&dmac 31>, <&dmac 30>;
+> +			dma-names = "tx", "rx";
+
+Same here, spi1 depend on pclk_vpu_root:
+
+	power-domains = <&power RK3528_PD_VPU>;
+
+[1] https://lore.kernel.org/r/20250518220707.669515-1-jonas@kwiboo.se
 
 Regards,
-Lucas
+Jonas
+
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+>  		uart0: serial@ff9f0000 {
+>  			compatible = "rockchip,rk3528-uart", "snps,dw-apb-uart";
+>  			reg = <0x0 0xff9f0000 0x0 0x100>;
+
 
 _______________________________________________
 Linux-rockchip mailing list
