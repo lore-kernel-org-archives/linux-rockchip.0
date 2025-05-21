@@ -4,53 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C82E9C54E71
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 May 2025 15:49:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FD2FC2D0CD
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 May 2025 16:06:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O65DRCnrDg0acnwsUxYmmxyFUbfstJTQO3iscJlys8Y=; b=peM+slis2F14bw
-	rv8I4/sPpU0LJmIy18MYlXymWdO4purYYRuwHClXZeIQ7oo70lQE34ueoNBG/wj3QyMVPSbXKjcn+
-	ItRGM/IBEbfXfP6rRuWxA56P+bTooTTTfJ6BZf9Bc8syHp2zCncQSoVgEiNOQuLywUcUzY73maW7G
-	NtetL4N4ELuXfJhmQNLpURMdymnBjVglewuLAsFcQwl4C2Ah4KFScQpodpvRLe5YQyafkN5MH712I
-	Gh5jvZkBzpWWqrIiboQYQS7XmdaP/xKecnk1utx0U7RwDnDJ28PKz3G5yyYwmI9ba3gfaDl9YhRJV
-	R/JWLtuXwnkpHNJPyWAg==;
+	List-Owner; bh=IwYstzPn/fCdEMbU65k0g6BKfghmA+mTwQjPFdi2NmQ=; b=nygMfZA0VmrhA6
+	flmmjyxj9i20PQJuD1SHccyG9rAfFW1cn7z4r0bfZSIAJULkFjTE0gC7kGeDxq0I50DY1/yD/sTBr
+	eEXDl8YTeEn4FrGLWOnhzuBdJbG7mwOBrMdyw8WHYEm2Qtn/R8ZdbYERv3MJbhl83MOopQIzNvl5r
+	jKHhI5O0yzdhbSB5H7pZdqRKh+y9LQU/dpc1clvmqZZJLNszmlFe6RUapQ3KAnPu9rDoZTRRn1s5G
+	K/1N5GEUSswOC8ImYPNjqHWPH3uBPv5a5f0FQFVdW0CPDoz5lzt3nu3ucZJCSOrEJBoj6VJsnK0jH
+	YC1ClKHIQod3Kb21EdyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHlgm-0000000GLMt-1Cl7;
-	Wed, 21 May 2025 15:49:04 +0000
-Received: from smtp-190b.mail.infomaniak.ch ([185.125.25.11])
+	id 1uHlxe-0000000GPaw-0CWO;
+	Wed, 21 May 2025 16:06:30 +0000
+Received: from p-west2-cluster6-host9-snip4-1.eps.apple.com ([57.103.70.84] helo=outbound.mr.icloud.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHlcP-0000000GKGW-2mIb
+	id 1uHlxa-0000000GPXM-3rCC
 	for linux-rockchip@lists.infradead.org;
-	Wed, 21 May 2025 15:44:35 +0000
-Received: from smtp-4-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6b])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4b2bMM2m0Lz13xf;
-	Wed, 21 May 2025 17:44:31 +0200 (CEST)
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4b2bML5VjLzMhT;
-	Wed, 21 May 2025 17:44:30 +0200 (CEST)
-From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Wed, 21 May 2025 17:44:20 +0200
-Subject: [PATCH 2/2] arm64: dts: rockchip: support Ethernet Switch adapter
- for RK3588 Jaguar
+	Wed, 21 May 2025 16:06:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=etehtsea.me; s=sig1;
+	bh=ViGRzst8PRFAp1WtMCQF+6FUrUPaBvnWi6sBdgUbNg0=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+	b=bygdaMO+llfLATI70XIiXllBBYfBr0gwymLEN2Ze8kLXsTOG84gZf5/4GfglECd5u
+	 zF6tv1rxmXBJYv1In6/WmXaG4fpvHQL+n/MBNb35qg/g4Ko84CzL+txhgDSd5q/Yxy
+	 EN1S3k/vxDOuO9tEIDN/pXE86nbwp3ImpgWBXAsjz/U1ShUW1QGxiuV+SkAI1fVL9J
+	 J8d73/f0EKdeN1s4OM4hIBNQ69Ind+RQdDi7L5FwVXcQY09meKfURyJYxLxtqIWbDk
+	 IxwCGOAUdDGiY7k3nb95MIYb6En6nypwNSiMtni2fx9J8CHZgU50rzuf2LGg6Jj3F/
+	 Ce74x93ua327Q==
+Received: from outbound.mr.icloud.com (localhost [127.0.0.1])
+	by outbound.mr.icloud.com (Postfix) with ESMTPS id 81E09180048F;
+	Wed, 21 May 2025 16:06:11 +0000 (UTC)
+Received: from localhost (unknown [17.57.152.38])
+	by outbound.mr.icloud.com (Postfix) with ESMTPSA id 3A4A1180084D;
+	Wed, 21 May 2025 16:06:09 +0000 (UTC)
+From: Konstantin Shabanov <mail@etehtsea.me>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>
+Cc: Konstantin Shabanov <mail@etehtsea.me>,
+	Daniel Stone <daniel@fooishbar.org>,
+	Andy Yan <andyshrk@163.com>,
+	Dan Callaghan <djc@djc.id.au>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v5] drm/rockchip: Reject AFBC for res >2560 on rk3399
+Date: Wed, 21 May 2025 16:05:55 +0000
+Message-ID: <20250521160556.14346-2-mail@etehtsea.me>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250417065759.5948-1-mail@etehtsea.me>
+References: <20250417065759.5948-1-mail@etehtsea.me>
 MIME-Version: 1.0
-Message-Id: <20250521-jaguar-mezz-eth-switch-v1-2-9b5c48ebb867@cherry.de>
-References: <20250521-jaguar-mezz-eth-switch-v1-0-9b5c48ebb867@cherry.de>
-In-Reply-To: <20250521-jaguar-mezz-eth-switch-v1-0-9b5c48ebb867@cherry.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>
-X-Mailer: b4 0.14.2
-X-Infomaniak-Routing: alpha
+X-Proofpoint-GUID: SM59gz_tD3cOB4yA3XtYIu0OZTPHHxxY
+X-Proofpoint-ORIG-GUID: SM59gz_tD3cOB4yA3XtYIu0OZTPHHxxY
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
+ definitions=2025-05-21_05,2025-05-20_03,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ clxscore=1030 spamscore=0 mlxlogscore=999 phishscore=0 mlxscore=0 bulkscore=0
+ suspectscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.22.0-2503310001 definitions=main-2505210158
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250521_084433_848395_E666E026 
-X-CRM114-Status: GOOD (  14.17  )
+X-CRM114-CacheID: sfid-20250521_090626_984976_B109E7CC 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,245 +94,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Quentin Schulz <quentin.schulz@cherry.de>
+As it isn't supported by rk3399. From the datasheet[1]
+("1.2.10 Video IN/OUT", "Display Interface", p. 17):
 
-This adds support for the Ethernet Switch adapter connected through the
-mezzanine connector on RK3588 Jaguar.
+  Support AFBC function co-operation with GPU
+    * support 2560x1600 UI
 
-This adapter has a KSZ9896 Ethernet Switch with 4 1GbE Ethernet
-connectors, two user controllable LEDs, and an M12 12-pin connector
-which exposes the following signals:
- - RS232/RS485 (max 250Kbps/500Kbps, RX pin1, TX pin2)
- - two digital inputs (pin4 routed to GPIO3_C5 on SoC, pin5 to GPIO4_B4)
- - two digital outputs (pin7 routed to GPIO3_D3 on SoC, pin8 to
-   GPIO3_D1)
- - two analog inputs (pin10 to channel1 of ADS1015, pin11 to channel2)
+Signed-off-by: Konstantin Shabanov <mail@etehtsea.me>
+Cc: Daniel Stone <daniel@fooishbar.org>
+Cc: Andy Yan <andyshrk@163.com>
+Reported-by: Dan Callaghan <djc@djc.id.au>
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7968
 
-Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+[1]: https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
 ---
- arch/arm64/boot/dts/rockchip/Makefile              |   5 +
- .../rockchip/rk3588-jaguar-ethernet-switch.dtso    | 189 +++++++++++++++++++++
- 2 files changed, 194 insertions(+)
+ V4 -> V5: Extract AFBC support check into drv
+ V3 -> V4: Correct redundant header inclusion
+ V2 -> V3: Run check only on rk3399
+ V1 -> V2: Move the check to the fb_create callback
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 3e8771ef69ba1c1428117cc2ae29b84e13523e21..6d5ad354b77de1c3f995b119f97541f9c2cc9dbd 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -151,6 +151,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-firefly-itx-3588j.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-friendlyelec-cm3588-nas.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-h96-max-v58.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-ethernet-switch.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-pre-ict-tester.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-mnt-reform2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6.dtb
-@@ -222,6 +223,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-wifi.dtb
- rk3588-edgeble-neu6b-wifi-dtbs := rk3588-edgeble-neu6b-io.dtb \
- 	rk3588-edgeble-neu6a-wifi.dtbo
+ AFBC check is implemented in a similar manner as in the malidp driver.
  
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-ethernet-switch.dtb
-+rk3588-jaguar-ethernet-switch-dtbs := rk3588-jaguar.dtb \
-+	rk3588-jaguar-ethernet-switch.dtbo
-+
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-pre-ict-tester.dtb
- rk3588-jaguar-pre-ict-tester-dtbs := rk3588-jaguar.dtb \
- 	rk3588-jaguar-pre-ict-tester.dtbo
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar-ethernet-switch.dtso b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-ethernet-switch.dtso
-new file mode 100644
-index 0000000000000000000000000000000000000000..cff7655a21007a934019590f3836344b9851e537
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-ethernet-switch.dtso
-@@ -0,0 +1,189 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2025 Cherry Embedded Solutions GmbH
-+ *
-+ * Device Tree Overlay for the Ethernet Switch adapter for the Mezzanine
-+ * connector on RK3588 Jaguar.
-+ *
-+ * This adapter has a KSZ9896 Ethernet Switch with 4 1GbE Ethernet connectors,
-+ * two user controllable LEDs, and an M12 12-pin connector which exposes the
-+ * following signals:
-+ *  - RS232/RS485 (max 250Kbps/500Kbps, RX pin1, TX pin2)
-+ *  - two digital inputs (pin4 routed to GPIO3_C5 on SoC, pin5 to GPIO4_B4)
-+ *  - two digital outputs (pin7 routed to GPIO3_D3 on SoC, pin8 to GPIO3_D1)
-+ *  - two analog inputs (pin10 to channel1 of ADS1015, pin11 to channel2)
-+ *
-+ * RK3588 Jaguar can be powered entirely through the adapter via the M8 3-pin
-+ * connector (12-24V).
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+#include <dt-bindings/clock/rockchip,rk3588-cru.h>
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+
-+&{/} {
-+	mezzanine-leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&led_usr1_pin &led_usr2_pin>;
-+
-+		led-1 {
-+			gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
-+			label = "USR1";
-+		};
-+
-+		led-2 {
-+			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
-+			label = "USR2";
-+		};
-+	};
-+};
-+
-+&gmac1 {
-+	clock_in_out = "output";
-+	phy-mode = "rgmii";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&gmac1_rx_bus2
-+		     &gmac1_tx_bus2
-+		     &gmac1_rgmii_clk
-+		     &gmac1_rgmii_bus
-+		     &eth1_pins>;
-+	rx_delay = <0x30>;
-+	tx_delay = <0x30>;
-+	status = "okay";
-+
-+	fixed-link {
-+		speed = <1000>;
-+		full-duplex;
-+	};
-+};
-+
-+&i2c1 {
-+	#address-cells = <1>;
-+	/* ADS1015 can handle high-speed (HS) mode (up to 3.4MHz) on I2C bus,
-+	   but SOC can handle only up to 400kHz. */
-+	clock-frequency = <400000>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	adc@48 {
-+		compatible = "ti,ads1015";
-+		reg = <0x48>;
-+		#address-cells = <1>;
-+		interrupt-parent = <&gpio3>;
-+		interrupts = <RK_PC7 IRQ_TYPE_EDGE_FALLING>;
-+		pinctrl-0 = <&adc_alert>;
-+		pinctrl-names = "default";
-+		#io-channel-cells = <1>;
-+		#size-cells = <0>;
-+
-+		channel@1 {
-+			reg = <5>; /* Single-ended between AIN1 and GND */
-+			ti,datarate = <0>;
-+			ti,gain = <5>;
-+		};
-+
-+		channel@2 {
-+			reg = <6>; /* Single-ended between AIN2 and GND */
-+			ti,datarate = <0>;
-+			ti,gain = <5>;
-+		};
-+	};
-+
-+	switch@5f {
-+		compatible = "microchip,ksz9896";
-+		reg = <0x5f>;
-+		interrupt-parent = <&gpio3>;
-+		interrupts = <RK_PB7 IRQ_TYPE_EDGE_FALLING>; /* ETH_INTRP_N */
-+		pinctrl-0 = <&eth_reset_n &eth_intrp_n>;
-+		pinctrl-names = "default";
-+		reset-gpios = <&gpio3 RK_PB6 GPIO_ACTIVE_LOW>; /* ETH_RESET */
-+		microchip,synclko-disable; /* CLKO_25_125 only routed to TP1 */
-+
-+		ethernet-ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			lan1: port@0 {
-+				reg = <0>;
-+				label = "ETH1";
-+			};
-+
-+			lan2: port@1 {
-+				reg = <1>;
-+				label = "ETH2";
-+			};
-+
-+			lan3: port@2 {
-+				reg = <2>;
-+				label = "ETH3";
-+			};
-+
-+			lan4: port@3 {
-+				reg = <3>;
-+				label = "ETH4";
-+			};
-+
-+			port@5 {
-+				reg = <5>;
-+				ethernet = <&gmac1>;
-+				label = "CPU";
-+				phy-mode = "rgmii";
-+				/* Delay done by the MAC via rx_delay/tx_delay */
-+				rx-internal-delay-ps = <0>;
-+				tx-internal-delay-ps = <0>;
-+
-+				fixed-link {
-+					speed = <1000>;
-+					full-duplex;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&pinctrl {
-+	adc {
-+		adc_alert: adc-alert-irq {
-+			rockchip,pins =
-+				<3 RK_PC7 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	ethernet {
-+		eth_intrp_n: eth-intrp-n {
-+			rockchip,pins =
-+				<3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		eth_reset_n: eth-reset-n {
-+			rockchip,pins =
-+				<3 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	leds {
-+		led_usr1_pin: led-usr1-pin {
-+			rockchip,pins =
-+				<1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		led_usr2_pin: led-usr2-pin {
-+			rockchip,pins =
-+				<3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+};
-+
-+&uart9 {
-+	/* GPIO3_D0/EN_RS485_MODE for switching between RS232 and RS485 */
-+	pinctrl-0 = <&uart9m2_xfer &uart9m2_rtsn>;
-+	pinctrl-names = "default";
-+	linux,rs485-enabled-at-boot-time;
-+	status = "okay";
-+};
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 16 ++++++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h |  2 ++
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |  3 +++
+ 3 files changed, 21 insertions(+)
 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 180fad5d49ad..9fb04022b2f3 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -42,6 +42,8 @@
+ #define DRIVER_MAJOR	1
+ #define DRIVER_MINOR	0
+ 
++#define RK3399_AFBC_MAX_WIDTH		2560
++
+ static const struct drm_driver rockchip_drm_driver;
+ 
+ /*
+@@ -350,6 +352,20 @@ int rockchip_drm_endpoint_is_subdriver(struct device_node *ep)
+ 	return false;
+ }
+ 
++bool rockchip_verify_afbc_framebuffer_size(struct drm_device *dev,
++					   const struct drm_mode_fb_cmd2 *mode_cmd)
++{
++	if (of_machine_is_compatible("rockchip,rk3399") &&
++	    mode_cmd->width > RK3399_AFBC_MAX_WIDTH) {
++		DRM_DEBUG_KMS("AFBC is not supported for the width %d (max %d)\n",
++			      mode_cmd->width,
++			      RK3399_AFBC_MAX_WIDTH);
++		return false;
++	}
++
++	return true;
++}
++
+ static void rockchip_drm_match_remove(struct device *dev)
+ {
+ 	struct device_link *link;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+index c183e82a42a5..5dabceaa4fd6 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+@@ -86,6 +86,8 @@ int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout);
+ int rockchip_drm_encoder_set_crtc_endpoint_id(struct rockchip_encoder *rencoder,
+ 					      struct device_node *np, int port, int reg);
+ int rockchip_drm_endpoint_is_subdriver(struct device_node *ep);
++bool rockchip_verify_afbc_framebuffer_size(struct drm_device *dev,
++					   const struct drm_mode_fb_cmd2 *mode_cmd);
+ extern struct platform_driver cdn_dp_driver;
+ extern struct platform_driver dw_hdmi_rockchip_pltfm_driver;
+ extern struct platform_driver dw_hdmi_qp_rockchip_pltfm_driver;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index 5829ee061c61..f0527f12f568 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -52,6 +52,9 @@ rockchip_fb_create(struct drm_device *dev, struct drm_file *file,
+ 	}
+ 
+ 	if (drm_is_afbc(mode_cmd->modifier[0])) {
++		if (!rockchip_verify_afbc_framebuffer_size(dev, mode_cmd))
++			return ERR_PTR(-EINVAL);
++
+ 		ret = drm_gem_fb_afbc_init(dev, mode_cmd, afbc_fb);
+ 		if (ret) {
+ 			drm_framebuffer_put(&afbc_fb->base);
+
+base-commit: 6ad88bf9e74dae83c992d8a16683360117b7e2d8
 -- 
 2.49.0
 
