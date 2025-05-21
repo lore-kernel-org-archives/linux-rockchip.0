@@ -4,66 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32E42C3DA6D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 May 2025 01:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B56C7C54756
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 May 2025 02:56:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pdAuc6QTgkow1uO70KFrT9rtpkKqKfghaT+9pKF+bFk=; b=29ZxFsoF2CaD7f
-	DO+PwVYoYeo7ccW55dDRkqFjhgAepuqExaI5ETkgTunZNroyNW7lnbQXOxsDw18i4rFM61AQ0nSMI
-	eCRLhGVHfYyoJ7RiviDJkzIH+mgK2xnarDnRBVRowm+wcPQsZYvpxoTcxDvxNUod3nrecEZVqJBdD
-	R3GFMltaZHTHRqoL7ZOjNeTmx+I6pCEMcNSOMQqxAMwmsGInQG1Qwn4HyP2ba+B9sZ9Curw4Ak30r
-	5G1UsVN6eZkfm5nIYLyVPHI6JSjbgqJXgyGs/HjbRkQa1T29zCMbZKGAyQe0aEkey0S0E20Os8b/w
-	uk2uGJiSS4w+3EQMdEVA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0vLodZxJmpIa4b8nDyQ1epkHgABdAKJEBulNYsyR7zQ=; b=pWzYarmOHkMKp6
+	fPiX0/4MgxkYuBV1grN/GdNWZJJ1+vbBbeXf4cSWA72V1gnoP8LvgwH1PUQ7lV/DA/4Y6lxUlkc//
+	0KJYUfPreGWKGrnro1NsKnhvmG7Bw9F/dm5KFED1dfoMo0Y9AhzclPOf5fshZmh5ahMM0KWD+c9Bd
+	Frmp9dBLpHBQEoDKzWbsShciLgLTaA7U/nlbAHSIk6lTboSqbjXLzUVw2zz8afeQP5AuaLQ/7+rma
+	P4BwZ/LEmfd9AdILckj3Rj+/EnXtKfz7gVIvXSdo2/+260rb20oqLmFMcDcWJbIqWMMDpSvj98It5
+	xgbamjaydfpJpor+Ta1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHYWk-0000000EWjh-1Qfx;
-	Wed, 21 May 2025 01:45:50 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHYUa-0000000EWOf-0jxc;
-	Wed, 21 May 2025 01:43:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=3E
-	LFN8kL245OtVxCBdunWRAe3jyL1tYakSHbCt3c2/M=; b=dqtLOTdaxgCo3ZexIZ
-	1nRk2tsp0nh5aoeZ351xyIXgVa3tTPOA4A9GlpDQe7WEFewgd6kYmCjZV9AWlpVi
-	nFrhv5fMtpGZGENNnLb1M3Wb2oFSAMTut387RiiZm3K6wsMq/547b/Vk3PST+0DY
-	4elh68Z1HYGhTdtM2z21n/csE=
-Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wDn9zanLy1obOZ_Cw--.18266S2;
-	Wed, 21 May 2025 09:43:10 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: simic@manjaro.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	devicetree@vger.kernel.org,
-	conor+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	algea.cao@rock-chips.com,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH] arm64: dts: rockchip: Adjust the HDMI DDC IO driver strength for rk3588
-Date: Wed, 21 May 2025 09:42:58 +0800
-Message-ID: <20250521014300.1773333-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
+	id 1uHZct-0000000EdVH-1w5V;
+	Wed, 21 May 2025 02:56:15 +0000
+Received: from layka.disroot.org ([178.21.23.139])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uHZAx-0000000Earo-138r;
+	Wed, 21 May 2025 02:27:24 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 9139525F81;
+	Wed, 21 May 2025 04:27:16 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id okZ1Ld-0Nx5j; Wed, 21 May 2025 04:27:16 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1747794435; bh=uynU6P2rot4uafnvWQDI8RKCr3IPZZ3LS41NhE+S4sE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=iex3AFRz+Gx1/hMg4ww6RLlp29PSfbIx3tRA+ixkIiY1d83Jx8R1JsThAYZRcPTUQ
+	 /1huVKBGcpZtVrhw19IJV0gITW9pU5C9oCFypexaAUPIfTuihShUzH8p2+WZO4SguT
+	 VeTi922bclzO2bGu6XhrZZdX6uSVog+eeUjmASuSJvCArHfPoHqx2jNwNT5c9nIXwL
+	 1Rno4kVaoFa5nhIoUhPeFcBnnUDk+mw79fMSv6o20dURjRtOjsJa4HVPtRdeh7YY26
+	 Q8TFna9BnpmZqUc6Lj14Ua/HQ3qzscAeCHS70i8/2yI8rn9kGMNGNZ6Mkb01Rvk5c0
+	 iEftsaQ/fO52A==
+Date: Wed, 21 May 2025 02:27:00 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH v3 5/5] arm64: dts: rockchip: Add naneng-combphy for
+ RK3528
+Message-ID: <aC059MLlfeUT2a18@pie>
+References: <20250519161612.14261-1-ziyao@disroot.org>
+ <20250519161612.14261-6-ziyao@disroot.org>
+ <079c08bc-e8cc-4ed6-a71e-7ef103f635c0@kwiboo.se>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDn9zanLy1obOZ_Cw--.18266S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxuFWkuw1xtw45WFyDCry5XFb_yoW7Aw4kpa
-	4xurZI9rykWr1qgFWkArn5JF43t39rWwsF93s3J34xJw12qF12ga4xCrsagFyDur48JrWS
-	9rs0qFy09r4YqFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pEfOzDUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkAlUXmgtKaDVJgABst
+Content-Disposition: inline
+In-Reply-To: <079c08bc-e8cc-4ed6-a71e-7ef103f635c0@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_184336_582746_CF386260 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250520_192723_698885_09438172 
+X-CRM114-Status: GOOD (  22.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,193 +68,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Frank Wang <frank.wang@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Shresth Prasad <shresthprasad7@gmail.com>, Vinod Koul <vkoul@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>, linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+On Tue, May 20, 2025 at 07:51:57PM +0200, Jonas Karlman wrote:
+> On 2025-05-19 18:16, Yao Zi wrote:
+> > Rockchip RK3528 ships a naneng-combphy that is shared by PCIe and USB
+> > 3.0 controllers. Describe it and the pipe-phy grf which it depends on.
+> > 
+> > Signed-off-by: Yao Zi <ziyao@disroot.org>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 22 ++++++++++++++++++++++
+> >  1 file changed, 22 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> > index b2724c969a76..314afb94e19b 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+> > @@ -318,6 +318,11 @@ vpu_grf: syscon@ff340000 {
+> >  			reg = <0x0 0xff340000 0x0 0x8000>;
+> >  		};
+> >  
+> > +		pipe_phy_grf: syscon@ff348000 {
+> > +			compatible = "rockchip,rk3528-pipe-phy-grf", "syscon";
+> > +			reg = <0x0 0xff348000 0x0 0x8000>;
+> > +		};
+> > +
+> >  		vo_grf: syscon@ff360000 {
+> >  			compatible = "rockchip,rk3528-vo-grf", "syscon";
+> >  			reg = <0x0 0xff360000 0x0 0x10000>;
+> > @@ -867,6 +872,23 @@ dmac: dma-controller@ffd60000 {
+> >  			arm,pl330-periph-burst;
+> >  		};
+> >  
+> > +		combphy: phy@ffdc0000 {
+> > +			compatible = "rockchip,rk3528-naneng-combphy";
+> > +			reg = <0x0 0xffdc0000 0x0 0x10000>;
+> > +			#phy-cells = <1>;
+> 
+> Should probably be sorted at end or before resets prop.
 
-For the RK3588 HDMI controller, the falling edge of DDC SDA and SCL
-almost coincide and cannot be adjusted by HDMI registrer, resulting
-in poor compatibility of DDC communication.
+Will sort the properties.
 
-An improvement of the compatibility of DDC can be done by increasing
-the driver strength of SCL and decreasing the driver strength of SDA
-to increase the slope of the falling edge.
+> 
+> > +			clocks = <&cru CLK_REF_PCIE_INNER_PHY>, <&cru PCLK_PCIE_PHY>,
+> This break the ~80 line length limit mostly kept in this file.
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Signed-off-by: Andy Yan <andyshrk@163.com>
----
+Oops, I didn't notice it. Will split them into lines.
 
- .../dts/rockchip/rk3588-base-pinctrl.dtsi     | 20 +++++------
- .../dts/rockchip/rk3588-extra-pinctrl.dtsi    |  5 +--
- .../boot/dts/rockchip/rockchip-pinconf.dtsi   | 35 +++++++++++++++++++
- 3 files changed, 48 insertions(+), 12 deletions(-)
+> > +				 <&cru PCLK_PIPE_GRF>;
+> > +			clock-names = "ref", "apb",
+> > +				      "pipe";
+> 
+> Could be kept on a single line.
+> 
+> > +			assigned-clocks = <&cru CLK_REF_PCIE_INNER_PHY>;
+> > +			assigned-clock-rates = <100000000>;
+> 
+> Other assigned-clock props are sorted before clocks props in this file.
+> 
+> This is also missing power-domains information (also missing from
+> dt-bindings patch):
+> 
+> 	power-domains = <&power RK3528_PD_VPU>;
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
-index 7f874c77410c..6584d73660f6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
-@@ -578,14 +578,14 @@ hdmim0_tx0_hpd: hdmim0-tx0-hpd {
- 		hdmim0_tx0_scl: hdmim0-tx0-scl {
- 			rockchip,pins =
- 				/* hdmim0_tx0_scl */
--				<4 RK_PB7 5 &pcfg_pull_none>;
-+				<4 RK_PB7 5 &pcfg_pull_none_drv_level_5_smt>;
- 		};
- 
- 		/omit-if-no-ref/
- 		hdmim0_tx0_sda: hdmim0-tx0-sda {
- 			rockchip,pins =
- 				/* hdmim0_tx0_sda */
--				<4 RK_PC0 5 &pcfg_pull_none>;
-+				<4 RK_PC0 5 &pcfg_pull_none_drv_level_1_smt>;
- 		};
- 
- 		/omit-if-no-ref/
-@@ -640,14 +640,14 @@ hdmim1_tx0_hpd: hdmim1-tx0-hpd {
- 		hdmim1_tx0_scl: hdmim1-tx0-scl {
- 			rockchip,pins =
- 				/* hdmim1_tx0_scl */
--				<0 RK_PD5 11 &pcfg_pull_none>;
-+				<0 RK_PD5 11 &pcfg_pull_none_drv_level_5_smt>;
- 		};
- 
- 		/omit-if-no-ref/
- 		hdmim1_tx0_sda: hdmim1-tx0-sda {
- 			rockchip,pins =
- 				/* hdmim1_tx0_sda */
--				<0 RK_PD4 11 &pcfg_pull_none>;
-+				<0 RK_PD4 11 &pcfg_pull_none_drv_level_1_smt>;
- 		};
- 
- 		/omit-if-no-ref/
-@@ -668,14 +668,14 @@ hdmim1_tx1_hpd: hdmim1-tx1-hpd {
- 		hdmim1_tx1_scl: hdmim1-tx1-scl {
- 			rockchip,pins =
- 				/* hdmim1_tx1_scl */
--				<3 RK_PC6 5 &pcfg_pull_none>;
-+				<3 RK_PC6 5 &pcfg_pull_none_drv_level_5_smt>;
- 		};
- 
- 		/omit-if-no-ref/
- 		hdmim1_tx1_sda: hdmim1-tx1-sda {
- 			rockchip,pins =
- 				/* hdmim1_tx1_sda */
--				<3 RK_PC5 5 &pcfg_pull_none>;
-+				<3 RK_PC5 5 &pcfg_pull_none_drv_level_1_smt>;
- 		};
- 		/omit-if-no-ref/
- 		hdmim2_rx_cec: hdmim2-rx-cec {
-@@ -709,14 +709,14 @@ hdmim2_rx_sda: hdmim2-rx-sda {
- 		hdmim2_tx0_scl: hdmim2-tx0-scl {
- 			rockchip,pins =
- 				/* hdmim2_tx0_scl */
--				<3 RK_PC7 5 &pcfg_pull_none>;
-+				<3 RK_PC7 5 &pcfg_pull_none_drv_level_5_smt>;
- 		};
- 
- 		/omit-if-no-ref/
- 		hdmim2_tx0_sda: hdmim2-tx0-sda {
- 			rockchip,pins =
- 				/* hdmim2_tx0_sda */
--				<3 RK_PD0 5 &pcfg_pull_none>;
-+				<3 RK_PD0 5 &pcfg_pull_none_drv_level_1_smt>;
- 		};
- 
- 		/omit-if-no-ref/
-@@ -730,14 +730,14 @@ hdmim2_tx1_cec: hdmim2-tx1-cec {
- 		hdmim2_tx1_scl: hdmim2-tx1-scl {
- 			rockchip,pins =
- 				/* hdmim2_tx1_scl */
--				<1 RK_PA4 5 &pcfg_pull_none>;
-+				<1 RK_PA4 5 &pcfg_pull_none_drv_level_5_smt>;
- 		};
- 
- 		/omit-if-no-ref/
- 		hdmim2_tx1_sda: hdmim2-tx1-sda {
- 			rockchip,pins =
- 				/* hdmim2_tx1_sda */
--				<1 RK_PA3 5 &pcfg_pull_none>;
-+				<1 RK_PA3 5 &pcfg_pull_none_drv_level_1_smt>;
- 		};
- 
- 		/omit-if-no-ref/
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra-pinctrl.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra-pinctrl.dtsi
-index 244c66faa161..cade2b430814 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-extra-pinctrl.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-extra-pinctrl.dtsi
-@@ -160,14 +160,15 @@ hdmim0_tx1_cec: hdmim0-tx1-cec {
- 		hdmim0_tx1_scl: hdmim0-tx1-scl {
- 			rockchip,pins =
- 				/* hdmim0_tx1_scl */
--				<2 RK_PB5 4 &pcfg_pull_none>;
-+				<2 RK_PB5 4 &pcfg_pull_none_drv_level_5_smt>;
- 		};
- 
- 		/omit-if-no-ref/
- 		hdmim0_tx1_sda: hdmim0-tx1-sda {
- 			rockchip,pins =
- 				/* hdmim0_tx1_sda */
--				<2 RK_PB4 4 &pcfg_pull_none>;
-+				<2 RK_PB4 4 &pcfg_pull_none_drv_level_1_smt>;
-+
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rockchip-pinconf.dtsi b/arch/arm64/boot/dts/rockchip/rockchip-pinconf.dtsi
-index 5c645437b507..b0475b7c655a 100644
---- a/arch/arm64/boot/dts/rockchip/rockchip-pinconf.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rockchip-pinconf.dtsi
-@@ -332,6 +332,41 @@ pcfg_pull_none_drv_level_0_smt: pcfg-pull-none-drv-level-0-smt {
- 		input-schmitt-enable;
- 	};
- 
-+	/omit-if-no-ref/
-+	pcfg_pull_none_drv_level_1_smt: pcfg-pull-none-drv-level-1-smt {
-+		bias-disable;
-+		drive-strength = <1>;
-+		input-schmitt-enable;
-+	};
-+
-+	/omit-if-no-ref/
-+	pcfg_pull_none_drv_level_2_smt: pcfg-pull-none-drv-level-2-smt {
-+		bias-disable;
-+		drive-strength = <2>;
-+		input-schmitt-enable;
-+	};
-+
-+	/omit-if-no-ref/
-+	pcfg_pull_none_drv_level_3_smt: pcfg-pull-none-drv-level-3-smt {
-+		bias-disable;
-+		drive-strength = <3>;
-+		input-schmitt-enable;
-+	};
-+
-+	/omit-if-no-ref/
-+	pcfg_pull_none_drv_level_4_smt: pcfg-pull-none-drv-level-4-smt {
-+		bias-disable;
-+		drive-strength = <4>;
-+		input-schmitt-enable;
-+	};
-+
-+	/omit-if-no-ref/
-+	pcfg_pull_none_drv_level_5_smt: pcfg-pull-none-drv-level-5-smt {
-+		bias-disable;
-+		drive-strength = <5>;
-+		input-schmitt-enable;
-+	};
-+
- 	/omit-if-no-ref/
- 	pcfg_output_high: pcfg-output-high {
- 		output-high;
--- 
-2.43.0
+I didn't expect your power-domain series when writing v1, thanks for the
+reminder.
 
-base-commit: 897af18e5d75e7ebf137044d57fed6522c46ae74
-branch: linux-rockchip-next
+As the power-domain series just came out, I'd like to wait until it
+merges and then work further on RK3528 support for naneng-combphy.
 
+I'm not sure whether it's possible to get the combphy cleanup patch (3th
+in this series) merged first. It should be ready for merging and I think
+this may avoid possible conflicts in the future, Any suggestions will be
+appreciated.
+
+> > +			resets = <&cru SRST_PCIE_PIPE_PHY>, <&cru SRST_P_PCIE_PHY>;
+> 
+> This also break the ~80 line length limit mostly kept in this file.
+
+I'm willing to keep the ~80 limit and will split the line.
+
+> Regards,
+> Jonas
+> 
+> > +			reset-names = "phy", "apb";
+> > +			rockchip,pipe-grf = <&vpu_grf>;
+> > +			rockchip,pipe-phy-grf = <&pipe_phy_grf>;
+> > +			status = "disabled";
+> > +		};
+> > +
+> >  		pinctrl: pinctrl {
+> >  			compatible = "rockchip,rk3528-pinctrl";
+> >  			rockchip,grf = <&ioc_grf>;
+> 
+
+Best regards,
+Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
