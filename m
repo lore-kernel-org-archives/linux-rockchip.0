@@ -4,64 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55B47C54E90
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 May 2025 19:05:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9ED3C54E65
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 May 2025 23:16:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lrpznwLeH6moyklCQZ4NGCmSsZXm+jD4Ju+x15NJjuI=; b=pVC+e9/LNrY5vq
-	jOr3J6LKXzeFFEiJlcC9xdnpP3+mEoKLPE2F/2PrROW05vE1TYFKbUv2mbjUHDsjYsHIj77BwHTf5
-	EM2QDpCMqtSdF1M5yRnLJ8yRkDrXQHbGPZJOe7wW4rWLOyC3SvwvbS/Muto7cGsrvVMqG1bH4gTt6
-	tmgXw541hU8EjEFrJjSRvpzLf4z7w4N+X75G6UkSoQGsTubE7hqTqtJQWeOd4ELfxHZG9vwAZsgIi
-	IQM9WHkCo2Et0SevvhYV5h2pR2Xhx8CVCFIrv5Krrk91mhkdHTVlnOWoYdT9Zp6+kbj6bipCkIceI
-	NSJk08WbQ+jypxiYjtNA==;
+	List-Owner; bh=4QPTNThZHpVkjUChYF2g3PvdlEMiBpsFKXTHzXwUoX0=; b=UX/P/JipotIGC2
+	gma15OiLPSCkQcSwrjNnzaJ56sDxCtJT3azuRPSonGz9LiKesU8gL+Qq6SoDiFgxz2FNdPgYbj24h
+	5EXVjrjwyz8uz9WPxCVd4IUpJDRSqXlXMKYbiq5mOuIge9mmm7M+53SLqwn+E4riIycuGWRFrECYw
+	B4H58Ov3SxEUKsCPNSnUXVSenx45O3fEff3c2Qa0V+SB5JmQ/6lYUIC1aulcQER+oMT+D5CytPVHL
+	4STDKOGLbJbj7mKVme1kbq/PdrKSd9tFeRR2erGzBTyp1T4algFlU3eatbQPYkThqsr8bkoJ9VnY0
+	cQTQy12MbY9nJubIgndQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHokv-0000000GhaN-1TvT;
-	Wed, 21 May 2025 19:05:33 +0000
+	id 1uHsfV-0000000H1Yn-3fZL;
+	Wed, 21 May 2025 23:16:13 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHoij-0000000GhPC-1MWF;
-	Wed, 21 May 2025 19:03:18 +0000
+	id 1uHsdQ-0000000H1Hg-3O0G;
+	Wed, 21 May 2025 23:14:06 +0000
 Received: from pendragon.ideasonboard.com (179.218-130-109.adsl-dyn.isp.belgacom.be [109.130.218.179])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 01FD36AF;
-	Wed, 21 May 2025 21:02:52 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5B1954A4;
+	Thu, 22 May 2025 01:13:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1747854173;
-	bh=vPvuwM/u6pIaMk4JleeZDQfpq6e7V/QhYzjGPzUWzvU=;
+	s=mail; t=1747869220;
+	bh=9eaxAJuUxGXDxNw4OxA3sjZfNym6JEMTE9wQdEwBS9I=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=b2z2+Tyww+BF+od3NVjTp2B0clH/Tgpur5Oa7hsMZDItXAFI7fJ7LGL4PZr9IZrXk
-	 spTxfIW7+zUmBa3KN3286SE5SoeKNG1AzVLCfiAVx8wfgAXRaqAJABKFIwuViNMDGw
-	 kbahZi1oSnS+ziSLw/Qks9hTKeTtMqYOQD2bXpHU=
-Date: Wed, 21 May 2025 21:03:08 +0200
+	b=pKQ6uJLTt1hjRyCbgspDjz7A9F/kcl0WJ49DFNq1bV1IFGj2nPOoiVq/ZTw0FyAr7
+	 9+tmqSnMgXBiMNuAqFKsdpvyyVetpO0rFGRxeCi8VMenVa0p36ds6WaCVrf2DYBOr8
+	 eHZHBNODkbm+YiAJhU0KC04rrBvr2eoS1tMM505s=
+Date: Thu, 22 May 2025 01:13:55 +0200
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Paul Elder <paul.elder@ideasonboard.com>
-Cc: Krzysztof =?utf-8?Q?Ha=C5=82asa?= <khalasa@piap.pl>,
+To: Stefan Klug <stefan.klug@ideasonboard.com>
+Cc: Jai Luthra <jai.luthra@ideasonboard.com>,
 	Dafna Hirschfeld <dafna@fastmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	Ondrej Jirman <megi@xff.cz>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	stefan.klug@ideasonboard.com
-Subject: Re: [PATCH] RKISP1: correct histogram window size
-Message-ID: <20250521190308.GB6792@pendragon.ideasonboard.com>
-References: <m3tt5u9q7h.fsf@t19.piap.pl>
- <aB31Eg6oRpcHHEsb@pyrite.rasen.tech>
- <m3jz6b8lb1.fsf@t19.piap.pl>
- <20250521101042.GC12514@pendragon.ideasonboard.com>
- <174784811736.14042.11404187248848039485@calcite>
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 1/2] media: rockchip: rkisp1: Add support for Wide
+ Dynamic Range
+Message-ID: <20250521231355.GN12514@pendragon.ideasonboard.com>
+References: <20250429-awb64-v5-0-2dc3163a8cfc@ideasonboard.com>
+ <20250429-awb64-v5-1-2dc3163a8cfc@ideasonboard.com>
+ <xhcfkskuprbzeuek7xstlhpjiz7ks6qplehmrcrpuldnqdrwvf@lc5agieq22g4>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <174784811736.14042.11404187248848039485@calcite>
+In-Reply-To: <xhcfkskuprbzeuek7xstlhpjiz7ks6qplehmrcrpuldnqdrwvf@lc5agieq22g4>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250521_120317_830439_DC1984E3 
-X-CRM114-Status: GOOD (  49.77  )
+X-CRM114-CacheID: sfid-20250521_161405_320077_53EBC770 
+X-CRM114-Status: GOOD (  32.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,132 +68,437 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBNYXkgMjEsIDIwMjUgYXQgMDc6MjE6NTdQTSArMDIwMCwgUGF1bCBFbGRlciB3cm90
-ZToKPiBRdW90aW5nIExhdXJlbnQgUGluY2hhcnQgKDIwMjUtMDUtMjEgMTI6MTA6NDIpCj4gPiBP
-biBUdWUsIE1heSAyMCwgMjAyNSBhdCAwMzoyNjo1OFBNICswMjAwLCBLcnp5c3p0b2YgSGHFgmFz
-YSB3cm90ZToKPiA+ID4gUGF1bCBFbGRlciA8cGF1bC5lbGRlckBpZGVhc29uYm9hcmQuY29tPiB3
-cml0ZXM6Cj4gPiA+IAo+ID4gPiA+PiBXaXRob3V0IHRoZSBwYXRjaCAoaS5NWDhNUCwgYWxsLXdo
-aXRlIFJHR0ItMTIgZnVsbCBIRCBpbnB1dCBmcm9tCj4gPiA+ID4+IHRoZSBzZW5zb3IsIFlVViBO
-VjEyIG91dHB1dCBmcm9tIElTUCwgZnVsbCByYW5nZSwgaGlzdG9ncmFtIFkgbW9kZSkuCj4gPiA+
-ID4+IEhJU1RfU1RFUFNJWkUgPSAzIChsb3dlc3QgcGVybWl0dGVkKToKPiA+ID4gPgo+ID4gPiA+
-IEFjY29yZGluZyB0byB0aGUgZGF0YXNoZWV0LCB0aGUgaGlzdG9ncmFtIGJpbnMgYXJlIDE2LWJp
-dCBpbnRlZ2VyIHdpdGggYQo+ID4gPiA+IDQtYml0IGZyYWN0aW9uYWwgcGFydC4gVG8gcHJldmVu
-dCBvdmVyZmxvd2luZyB0aGUgMTYtYml0IGludGVnZXIKPiA+ID4gPiBjb3VudGVyLCB0aGUgc3Rl
-cCBzaXplIHNob3VsZCBiZSAxMC4KPiA+IAo+ID4gVGhhdCB3b3VsZCBiZSBmb3IgY29tYmluZWQg
-UkdCIG1vZGUsIGFzIGV2ZXJ5IHBpeGVsIGlzIGFjY291bnRlZCBmb3IKPiA+IHRocmVlIHRpbWVz
-IGluIHRoYXQgbW9kZS4gSW4gb3RoZXIgbW9kZXMsIGEgc3RlcCBzaXplIG9mIDggc2hvdWxkIGJl
-Cj4gPiBmaW5lLgo+IAo+IEFoLCByaWdodC4KPiAKPiA+ID4gPgo+ID4gPiA+IERvIHlvdSBoYXZl
-IGFueSBvdGhlciBpbmZvcm1hdGlvbiBvbiB0aGlzPyBJcyBpdCBrbm93biB0aGF0IGl0J3Mgc3Rh
-YmxlCj4gPiA+ID4gYW5kIGNvbnNpc3RlbnQgdG8gdXNlIGFsbCAyMCBiaXRzIGFueXdheT8KPiA+
-IAo+ID4gVGhlIGRvY3VtZW50YXRpb24gc3RhdGVzIHRoYXQgdGhlIHdpZHRoIG9mIHRoZSBiaW4g
-Y291bnRlciByZWdpc3RlcnMgaXMKPiA+IDIwIGJpdHMgd2lkZSBpbmNsdWRpbmcgYSA0LWJpdCBm
-cmFjdGlvbmFsIHBhcnQsIGFuZCB0aGF0IHRoZSBzb2Z0d2FyZQo+ID4gc2hvdWxkIHVzZSBvbmx5
-IHRoZSB1cHBlciAxNiBiaXRzIG9mIHRoZSBiaW4gY291bnRlcnMuIFRoZSBmcmFjdGlvbmFsCj4g
-PiBwYXJ0IGlzIGNhdXNlZCBieSB0aGUgd2VpZ2h0cy4gVGhlcmUncyBhIGNvcnJlc3BvbmRpbmcg
-dG9kbyBjb21tZW50IGluCj4gPiBsaWJjYW1lcmE6Cj4gPiAKPiA+ICAgICAgICAgLi4uCj4gPiAg
-ICAgICAgICAqCj4gPiAgICAgICAgICAqIFx0b2RvIFRha2UgaW50byBhY2NvdW50IHdlaWdodHMu
-IFRoYXQgaXMsIGlmIHRoZSB3ZWlnaHRzIGFyZSBsb3cKPiA+ICAgICAgICAgICogZW5vdWdoIHdl
-IGNhbiBwb3RlbnRpYWxseSByZWR1Y2UgdGhlIHByZWRpdmlkZXIgdG8gaW5jcmVhc2UKPiA+ICAg
-ICAgICAgICogcHJlY2lzaW9uLiBUaGlzIG5lZWRzIHNvbWUgaW52ZXN0aWdhdGlvbiBob3dldmVy
-LCBhcyB0aGlzIGhhcmR3YXJlCj4gPiAgICAgICAgICAqIGJlaGF2aW9yIGlzIHVuZG9jdW1lbnRl
-ZCBhbmQgaXMgb25seSBhbiBlZHVjYXRlZCBndWVzcy4KPiA+ICAgICAgICAgICovCj4gPiAgICAg
-ICAgIGludCBjb3VudCA9IG1vZGUgPT0gUktJU1AxX0NJRl9JU1BfSElTVE9HUkFNX01PREVfUkdC
-X0NPTUJJTkVEID8gMyA6IDE7Cj4gPiAgICAgICAgIGRvdWJsZSBmYWN0b3IgPSBzaXplLndpZHRo
-ICogc2l6ZS5oZWlnaHQgKiBjb3VudCAvIDY1NTM2LjA7Cj4gPiAgICAgICAgIGRvdWJsZSByb290
-ID0gc3RkOjpzcXJ0KGZhY3Rvcik7Cj4gPiAgICAgICAgIHVpbnQ4X3QgcHJlZGl2aWRlciA9IHN0
-YXRpY19jYXN0PHVpbnQ4X3Q+KHN0ZDo6Y2VpbChyb290KSk7Cj4gPiAKPiA+ICAgICAgICAgcmV0
-dXJuIHN0ZDo6Y2xhbXA8dWludDhfdD4ocHJlZGl2aWRlciwgMywgMTI3KTsKPiA+IAo+ID4gbGli
-Y2FtZXJhIHNldHMgdGhlIGRlZmF1bHQgd2VpZ2h0cyB0byAxLCBhbmQgZGlzY2FyZHMgdGhlIDQg
-ZnJhY3Rpb25hbAo+ID4gYml0cy4gSXQgc2VlbXMgdGhhdCB0aGUgCj4gCj4gKHdoYXQgZGlkIHlv
-dSBtZWFuIHRvIGZpbmlzaCBzYXlpbmcuLi4/KQoKT29wcy4gSWdub3JlIHRoYXQsIEkgc3BsaXQg
-bXkgcmVhc29uaW5nIHRvIHR3byBwYXJhZ3JhcGhzIGFuZCBmb3Jnb3QgdG8KZGVsZXRlIHRoYXQg
-aGFsZiBsaW5lLgoKPiA+IEkgZXhwZWN0IHRoYXQgZWFjaCBwaXhlbCBjb250cmlidXRlcyB0byBp
-dHMgYmluIGJ5IGFkZGluZyB0aGUgd2VpZ2h0Cj4gPiB2YWx1ZSBjb3JyZXNwb25kaW5nIHRvIGl0
-cyB6b25lLiBTZXR0aW5nIGFsbCB3ZWlnaHRzIHRvIDEsIEkgd291bGQKPiA+IGV4cGVjdCB0aGF0
-IHRoZSA0IGZyYWN0aW9uYWwgYml0cyBjb3VsZCBiZSB1c2VkIHRvIGluY3JlYXNlIHRoZSBiaW4g
-c2l6ZQo+ID4gdG8gMTA0ODU3NSBwaXhlbHMgKDIwIGJpdHMpLCBhbmQgdGhlcmVmb3JlIGRlY3Jl
-YXNlIHRoZSBwcmVkaXZpZGVyIGZyb20KPiA+IDEwIHRvIDMuCj4gCj4gVHJ1ZS4gSSBzdXBwb3Nl
-IGlmIGFsbCB0aGUgd2VpZ2h0cyBhcmUgMSB0aGVuIHdlIGNhbiBzcXVlZXplIG91dCBtb3JlIGJp
-dAo+IHByZWNpc2lvbiB0aGVuLiBCdXQgdGhhdCdzIGEgdG9kbyBmb3IgbGliY2FtZXJhLgo+IAo+
-ID4gPiBJbnRlcmVzdGluZy4gSSBvbmx5IGhhdmUgdGhvc2UgbXJ2XyouaCBmaWxlcyB3aGljaCBj
-b21lIHdpdGgKPiA+ID4gaXNwLWlteC00LjIuMi4qIHBhY2thZ2UocykuIEhlcmUgd2UgaGF2ZSAo
-YW1vbmcgb3RoZXJzKToKPiA+ID4gCj4gPiA+IC8qISBSZWdpc3RlcjogaXNwX2hpc3RfcHJvcDog
-SGlzdG9ncmFtIHByb3BlcnRpZXMgKDB4MDAwMDAwMDApKi8KPiA+ID4gLyohIFNsaWNlOiBzdGVw
-c2l6ZToqLwo+ID4gPiAvKiEgaGlzdG9ncmFtIHByZWRpdmlkZXIsIHByb2Nlc3MgZXZlcnkgKHN0
-ZXBzaXplKXRoIHBpeGVsLCBhbGwgb3RoZXIgcGl4ZWxzIGFyZSBza2lwcGVkICovCj4gPiA+IC8q
-IDAsMSwyOiBub3QgYWxsb3dlZCAqLwo+ID4gPiAvKiAzOiBwcm9jZXNzIGV2ZXJ5IHRoaXJkIGlu
-cHV0IHBpeGVsICovCj4gPiA+IC8qIDQ6IHByb2Nlc3MgZXZlcnkgZm91cnRoIGlucHV0IHBpeGVs
-ICovCj4gPiA+IC8qIC4uLiovCj4gPiA+IC8qIDdGSDogcHJvY2VzcyBldmVyeSAxMjd0aCBwaXhl
-bCAqLwo+ID4gPiAjZGVmaW5lIE1SVl9ISVNUX1NURVBTSVpFX01BU0sgMHgwMDAwMDNGOAo+ID4g
-PiAjZGVmaW5lIE1SVl9ISVNUX1NURVBTSVpFX1NISUZUIDMKPiA+ID4gCj4gPiA+IEluIGNhc2Ug
-b2YgbXkgSU1YMjkwIDE5MjB4MTA4MCBzZW5zb3IsIDEgZG9lc24ndCB3b3JrIHdlbGwgKGl0IHN0
-b3BzCj4gPiA+IGNvdW50aW5nIGJlZm9yZSByZWFjaGluZyAkKCgxOTIweDEwODApKSBpbiBlYWNo
-IGJpbiwgYW5kIGV2ZW4gaWYgbm8gYmluCj4gPiA+IHJlYWNoZXMgdGhpcyBtYWdpYyB2YWx1ZSwg
-dGhlIHRvdGFsIGNvdW50IG1heSBiZSBpbnZhbGlkIChub3QgZXF1YWwgdG8KPiA+ID4gdGhlIG51
-bWJlciBvZiBwaXhlbHMpLiBJSVJDLCAyIHdvcmtlZCB3ZWxsLiBNYXliZSB3aXRoIGhpZ2hlcgo+
-ID4gPiByZXNvbHV0aW9ucywgSSBkb24ndCBrbm93Lgo+ID4gPiAKPiA+ID4gSSdtIGN1cnJlbnRs
-eSB1c2luZyAiMyIgcGVyIHRoZSAuaCBmaWxlOgo+ID4gPiBpc3BfaGlzdF9wcm9wOgo+ID4gPiAz
-MkUxMjQwMDogMURoCj4gPiA+IGhpc3RvZ3JhbV9tZWFzdXJlbWVudF9yZXN1bHQ6Cj4gPiA+IDMy
-RTEyNDE0OiAwIDAgMSAxMDA0IDU2OSA0NzYgNjMzIDExOTcgMjM3MyAyMjEyIDE5MjMgMjk0NSAz
-NjMyIDMwMjUgNTgyMSAyMDQ1ODkKPiA+ID4gd2hpY2ggc3VtcyB0byA1MTg0MDAgPSAxOTIwKjEw
-ODAvOS4KPiA+ID4gCj4gPiA+IFNldHRpbmcgIjIiLCB0aGUgc2FtZSBpbnB1dCBzY2VuZToKPiA+
-ID4gMzJFMTI0MDA6IDE1aAo+ID4gPiAzMkUxMjQxNDogMCAwIDAgMjE5NCAxMjYzIDEwOTYgMTQw
-NiAyNTI4IDUyMjggNTA1MiA0MjkxIDYzNTQgODMyMiA2OTQzIDEzMjAxIDQ2MDUyMgo+ID4gPiB3
-aGljaCBzdW1zIHRvIDUxODQwMCA9IDE5MjAqMTA4MC80Lgo+IAo+IFllcywgdGhlc2UgbG9vayBn
-b29kIChhbHRob3VnaCBJIHRoaW5rIHlvdSBtaWdodCd2ZSBjb3B5JnBhc3RlZCB0aGUgd3JvbmcK
-PiBudW1iZXIgZm9yIHRoZSBzdW0pCj4gCj4gPiA+IFNldHRpbmcgIjEiLCB0aGUgc2FtZSBpbnB1
-dCBzY2VuZToKPiA+ID4gMzJFMTI0MDA6IERoCj4gPiA+IDMyRTEyNDE0OiAwIDAgMjUgOTA0NiA0
-OTI0IDQzMTcgNTQzNSAxMDY1NSAyMDc4MSAxODk2NSAxNjA1MSAyNDcxNiAzMjY4MSAyODM2OCA1
-NDMwMSAxMDQ4NTU5Cj4gPiA+IHdoaWNoIHN1bXMgdG8gMTI3ODgyNCB3aGljaCBpcyByYXRoZXIg
-bGVzcyB0aGFuIDIwNzM2MDAuCj4gPiA+IFRoZSBsYXN0IG51bWJlciAoMTA0ODU1OSkgaXMgdGhl
-IG1hZ2ljIG9uZSwgbm8gYmluIGNhbiBnbyBoaWdoZXIuIExlc3MgbGlnaHRzIGFuZDoKPiAKPiBP
-aD8gSSB3b3VsZCd2ZSBleHBlY3RlZCAyXjIwLTEgPSAxMDQ4NTc1IHRvIGJlIHRoZSBtYWdpYyBu
-dW1iZXIsIGJ1dCBvayBJCj4gc3VwcG9zZSB0aGUgaGFyZHdhcmUgY2FwcyBhdCAxMDQ4NTU5IGlu
-c3RlYWQuIEl0IHByb2JhYmx5IG92ZXJmbG93ZWQgYW5kIHRoYXQncwo+IHdoeSB0aGUgc3VtIGlz
-IHNvIGxvdy4KPiAKPiA+ID4gMzJFMTI0MDA6IERoCj4gPiA+IDMyRTEyNDE0OiAwIDAgMCAwIDAg
-MCAxODQgMzA1OSAxMTk3MCA3NTI5OCAxMTQ4OTggMjExNDQ0IDQyOTc3MiA0Mzk5MjIgNDAwMzU4
-IDM4NjY5NQo+ID4gPiB0b3RhbCA9IDIwNzM2MDAuIEJ1dCBkb24ndCByZWx5IG9uIGl0IHRvbyBt
-dWNoLCB0aGUgIjEiIGhhcyBwcm9ibGVtcy4KPiAKPiBUaGF0J3MgaW50ZXJlc3RpbmcuIE15IGd1
-ZXNzIHdvdWxkIGJlIHRoYXQgaW4gcHJhY3RpY2UgYSBkaXZpZGVyIG9mIDEgd291bGQKPiBzdGls
-bCB3b3JrIGFzIGxvbmcgYXMgeW91IG1ha2Ugc3VyZSB0aGF0IGl0IGRvZXNuJ3Qgb3ZlcmZsb3cu
-IE1heWJlIHRoZSB1c2FnZQo+IGRvY3VtZW50YXRpb24gd2FzIGJhc2VkIG9uIGEgcnVsZS1vZi10
-aHVtYi4KPiAKPiA+ID4gSW4gc2hvcnQsIHRob3NlIGFyZSBpbnRlZ2VyIHZhbHVlcy4gT25lIG1h
-eSB1c2UgdGhlbSBhcyBmcmFjdGlvbmFscyB3aXRoCj4gPiA+IHNvbWUgY2xldmVyIHN0ZXAgc2l6
-ZSwgSSBndWVzcy4KPiA+ID4gCj4gPiA+ID4+IGlzcF9oaXN0X2hfc2l6ZTogMzgzICg9IDE5MjAg
-LyA1IC0gMSkKPiA+ID4gPj4gaXNwX2hpc3Rfdl9zaXplOiAyMTUgKD0gMTA4MCAvIDUgLSAxKQo+
-ID4gPiA+PiBoaXN0b2dyYW1fbWVhc3VyZW1lbnRfcmVzdWx0WzE2XTogMCAwIDAgMCAgMCAwIDAg
-MCAgMCAwIDAgMCAgMCAwIDAgMjI5NDAxCj4gPiA+ID4+Cj4gPiA+ID4+IEFwcGFyZW50bHkgdGhl
-IGhpc3RvZ3JhbSBpcyBtaXNzaW5nIHRoZSBsYXN0IGNvbHVtbiAoMy1waXhlbCB3aWRlLAo+ID4g
-PiA+PiB0aG91Z2ggb25seSBzaW5nbGUgcGl4ZWxzIGNvdW50KSBhbmQgdGhlIGxhc3QgKHNhbWUg
-aWRlYSkgcm93Cj4gPiA+ID4+IG9mIHRoZSBpbnB1dCBpbWFnZTogMTkxNyAqIDEwNzcgLyAzIC8g
-MyA9IDIyOTQwMQo+ID4gPiA+Cj4gPiA+ID4gSSBkb24ndCBxdWl0ZSB1bmRlcnN0YW5kIHRoaXMu
-IFdpdGggYSBzdWItd2luZG93IHdpZHRoIG9mCj4gPiA+ID4gMTkyMCAvIDUgLSAxID0gMzgzLCBz
-aG91bGRuJ3QgdGhlIHJlc3VsdGluZyB0b3RhbCB3aW5kb3cgd2lkdGggYmUKPiA+ID4gPiAzODMg
-KiA1ID0gMTkxNT8gU2FtZSBpZGVhIGZvciB0aGUgaGVpZ2h0Lgo+ID4gPiAKPiA+ID4gSXQgd291
-bGQsIGJ1dCB0aGUgc3RlcHNpemUgPSAzIG1ha2VzIGl0IGlnbm9yZSBvbmx5IHRoZSBsYXN0IG9u
-ZQo+ID4gPiAtIGkuZS4sIG5vcm1hbGx5IHRoZSBjb3VudGVkIG9uZXMgYXJlIDAsIDMsIC4uLiAx
-OTE0LCAxOTE3ICh3aGljaCBtYWtlcwo+ID4gPiAxOTIwLzMpIGFuZCB3aXRoIDM4MywgaXQgZW5k
-cyBhdCAxOTE0LCB0aHVzIG9ubHkgMyBwaXhlbHMgKDEgcmVhbGx5LAo+ID4gPiBpbnN0ZWFkIG9m
-IDIpIGFyZSBtaXNzaW5nIGZyb20gY2FsY3VsYXRpb25zIChub3QgNSkuIEkgZ3Vlc3MgdGhlIHNh
-bWUKPiA+ID4gdmVydGljYWxseSwgMTA4MCBkaXZpZGVzIC8gMyBhbmQgMTA3NSBkb2Vzbid0Lgo+
-IAo+IEFoIG9rLCBJIHNlZS4gVGhhbmtzIGZvciB0aGUgY2xhcmlmaWNhdGlvbi4KPiAKPiA+ID4g
-Cj4gPiA+ID4gVGhlIGZpeCBsb29rcyBmaW5lIHRob3VnaC4gQWx0aG91Z2gsIEknbSB3b25kZXJp
-bmcgaWYgdGhlcmUncyBhIHJlYXNvbgo+ID4gPiA+IHdoeSB0aGVyZSB3YXMgYSAtMSBpbiB0aGUg
-Zmlyc3QgcGxhY2UuIERvZXMgYW55Ym9keSBrbm93Pwo+ID4gPiAKPiA+ID4gVGhlcmUgaXMgc2xp
-Z2h0IGNoYW5jZSBpdCdzIGRpZmZlcmVudCBvbiBzb21lIG90aGVyIFNvQywgYnV0IEkgd291bGQg
-YmUKPiA+ID4gc3VycHJpc2VkLgo+ID4gCj4gPiBUaGUgZG9jdW1lbnRlZCBjb25zdHJhaW50IGlz
-Cj4gPiAKPiA+ICAgICBoaXN0X2hfb2Zmc2V0ICsgaGlzdF9oX3NpemUgeCA1IHNob3VsZCBiZSBs
-ZXNzIHRoYW4gb3IgZXF1YWwgdG8gdGhlCj4gPiAgICAgaG9yaXpvbnRhbCBzaXplIG9mIHRoZSBw
-aWN0dXJlLgo+ID4gCj4gPiAoYW5kIHNpbWlsYXIgZm9yIHRoZSB2ZXJ0aWNhbCBkaXJlY3Rpb24p
-LiBUaGUgaW5pdGlhbCAtMSBzZWVtcyB0byBiZSBhCj4gPiBidWcuCj4gCj4gT2suCj4gCj4gTG9v
-a3MgZ28gdG8gbWUuCj4gCj4gUmV2aWV3ZWQtYnk6IFBhdWwgRUxkZXIgPHBhdWwuZWxkZXJAaWRl
-YXNvbmJvYXJkLmNvbT4KClNob3VsZCB3ZSB1cGRhdGUgdGhlIGNvbW1pdCBtZXNzYWdlIGFzIHlv
-dSBpbml0aWFsbHkgcHJvcG9zZWQgPwoKLS0gClJlZ2FyZHMsCgpMYXVyZW50IFBpbmNoYXJ0Cgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Thu, May 01, 2025 at 09:53:21AM +0200, Stefan Klug wrote:
+> On Tue, Apr 29, 2025 at 05:11:53PM +0530, Jai Luthra wrote:
+> > RKISP supports a basic Wide Dynamic Range (WDR) module since the first
+> > iteration (v1.0) of the ISP. Add support for enabling and configuring it
+> > using extensible parameters.
+> > 
+> > Also, to ease programming, switch to using macro variables for defining
+> > the tonemapping curve register addresses.
+> > 
+> > Signed-off-by: Jai Luthra <jai.luthra@ideasonboard.com>
+> 
+> I couldn't spot anything missing. I retested the v5 sucessfully on a
+> Debix i.MX 8 M Plus Som.
+> 
+> So:
+> Reviewed-by: Stefan Klug <stefan.klug@ideasonboard.com> 
+> Tested-by: Stefan Klug <stefan.klug@ideasonboard.com>
+
+This patch seems ready, but I'd like to merge it with Stefan's new
+rkisp1 control to report the blocks supported by the driver. As -rc7 is
+out, with v6.15 expected on Sunday, we can't merged anything for two
+weeks and a half anyway, so it shouldn't cause any significant delay.
+
+Stefan, when you post a series with the new control, could you please
+include this patch as the last patch of the series ?
+
+> > ---
+> > Changes in v5:
+> > - Ensure WDR_USE_IREF is unset before reading params from user
+> > - Fix alignment issues in WDR patch
+> > - Drop reset value information from doxygen comments for WDR tone curve
+> > ---
+> >  .../media/platform/rockchip/rkisp1/rkisp1-params.c | 93 ++++++++++++++++++++
+> >  .../media/platform/rockchip/rkisp1/rkisp1-regs.h   | 99 ++++++----------------
+> >  include/uapi/linux/rkisp1-config.h                 | 92 ++++++++++++++++++++
+> >  3 files changed, 210 insertions(+), 74 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > index b28f4140c8a309a3231d44d825c6461e3ecb2a44..dc8e827e9464117877afe679611c528b4126172f 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > @@ -5,6 +5,7 @@
+> >   * Copyright (C) 2017 Rockchip Electronics Co., Ltd.
+> >   */
+> >  
+> > +#include <linux/bitfield.h>
+> >  #include <linux/math.h>
+> >  #include <linux/string.h>
+> >  
+> > @@ -60,6 +61,7 @@ union rkisp1_ext_params_config {
+> >  	struct rkisp1_ext_params_afc_config afc;
+> >  	struct rkisp1_ext_params_compand_bls_config compand_bls;
+> >  	struct rkisp1_ext_params_compand_curve_config compand_curve;
+> > +	struct rkisp1_ext_params_wdr_config wdr;
+> >  };
+> >  
+> >  enum rkisp1_params_formats {
+> > @@ -1348,6 +1350,73 @@ rkisp1_compand_compress_config(struct rkisp1_params *params,
+> >  				       arg->x);
+> >  }
+> >  
+> > +static void rkisp1_wdr_config(struct rkisp1_params *params,
+> > +			      const struct rkisp1_cif_isp_wdr_config *arg)
+> > +{
+> > +	unsigned int i;
+> > +	u32 value;
+> > +
+> > +	value = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_WDR_CTRL)
+> > +	      & ~(RKISP1_CIF_ISP_WDR_USE_IREF |
+> > +		  RKISP1_CIF_ISP_WDR_COLOR_SPACE_SELECT |
+> > +		  RKISP1_CIF_ISP_WDR_CR_MAPPING_DISABLE |
+> > +		  RKISP1_CIF_ISP_WDR_USE_Y9_8 |
+> > +		  RKISP1_CIF_ISP_WDR_USE_RGB7_8 |
+> > +		  RKISP1_CIF_ISP_WDR_DISABLE_TRANSIENT |
+> > +		  RKISP1_CIF_ISP_WDR_RGB_FACTOR_MASK);
+> > +
+> > +	/* Colorspace and chrominance mapping */
+> > +	if (arg->use_rgb_colorspace)
+> > +		value |= RKISP1_CIF_ISP_WDR_COLOR_SPACE_SELECT;
+> > +
+> > +	if (!arg->use_rgb_colorspace && arg->bypass_chroma_mapping)
+> > +		value |= RKISP1_CIF_ISP_WDR_CR_MAPPING_DISABLE;
+> > +
+> > +	/* Illumination reference */
+> > +	if (arg->use_iref) {
+> > +		value |= RKISP1_CIF_ISP_WDR_USE_IREF;
+> > +
+> > +		if (arg->iref_config.use_y9_8)
+> > +			value |= RKISP1_CIF_ISP_WDR_USE_Y9_8;
+> > +
+> > +		if (arg->iref_config.use_rgb7_8)
+> > +			value |= RKISP1_CIF_ISP_WDR_USE_RGB7_8;
+> > +
+> > +		if (arg->iref_config.disable_transient)
+> > +			value |= RKISP1_CIF_ISP_WDR_DISABLE_TRANSIENT;
+> > +
+> > +		value |= FIELD_PREP(RKISP1_CIF_ISP_WDR_RGB_FACTOR_MASK,
+> > +				    min(arg->iref_config.rgb_factor,
+> > +					RKISP1_CIF_ISP_WDR_RGB_FACTOR_MAX));
+> > +	}
+> > +
+> > +	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_WDR_CTRL, value);
+> > +
+> > +	/* RGB and Luminance offsets */
+> > +	value = FIELD_PREP(RKISP1_CIF_ISP_WDR_RGB_OFFSET_MASK,
+> > +			   arg->rgb_offset)
+> > +	      | FIELD_PREP(RKISP1_CIF_ISP_WDR_LUM_OFFSET_MASK,
+> > +			   arg->luma_offset);
+> > +	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_WDR_OFFSET, value);
+> > +
+> > +	/* DeltaMin */
+> > +	value = FIELD_PREP(RKISP1_CIF_ISP_WDR_DMIN_THRESH_MASK,
+> > +			   arg->dmin_thresh)
+> > +	      | FIELD_PREP(RKISP1_CIF_ISP_WDR_DMIN_STRENGTH_MASK,
+> > +			   min(arg->dmin_strength,
+> > +			       RKISP1_CIF_ISP_WDR_DMIN_STRENGTH_MAX));
+> > +	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_WDR_DELTAMIN, value);
+> > +
+> > +	/* Tone curve */
+> > +	for (i = 0; i < RKISP1_CIF_ISP_WDR_CURVE_NUM_DY_REGS; i++)
+> > +		rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_WDR_TONECURVE(i),
+> > +			     arg->tone_curve.dY[i]);
+> > +	for (i = 0; i < RKISP1_CIF_ISP_WDR_CURVE_NUM_COEFF; i++)
+> > +		rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_WDR_TONECURVE_YM(i),
+> > +			     arg->tone_curve.ym[i] &
+> > +				     RKISP1_CIF_ISP_WDR_TONE_CURVE_YM_MASK);
+> > +}
+> > +
+> >  static void
+> >  rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+> >  			    const struct rkisp1_params_cfg *new_params)
+> > @@ -2005,6 +2074,25 @@ static void rkisp1_ext_params_compand_compress(struct rkisp1_params *params,
+> >  				      RKISP1_CIF_ISP_COMPAND_CTRL_COMPRESS_ENABLE);
+> >  }
+> >  
+> > +static void rkisp1_ext_params_wdr(struct rkisp1_params *params,
+> > +				  const union rkisp1_ext_params_config *block)
+> > +{
+> > +	const struct rkisp1_ext_params_wdr_config *wdr = &block->wdr;
+> > +
+> > +	if (wdr->header.flags & RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE) {
+> > +		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_WDR_CTRL,
+> > +					RKISP1_CIF_ISP_WDR_CTRL_ENABLE);
+> > +		return;
+> > +	}
+> > +
+> > +	rkisp1_wdr_config(params, &wdr->config);
+> > +
+> > +	if ((wdr->header.flags & RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE) &&
+> > +	    !(params->enabled_blocks & BIT(wdr->header.type)))
+> > +		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_WDR_CTRL,
+> > +				      RKISP1_CIF_ISP_WDR_CTRL_ENABLE);
+> > +}
+> > +
+> >  typedef void (*rkisp1_block_handler)(struct rkisp1_params *params,
+> >  			     const union rkisp1_ext_params_config *config);
+> >  
+> > @@ -2118,6 +2206,11 @@ static const struct rkisp1_ext_params_handler {
+> >  		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
+> >  		.features	= RKISP1_FEATURE_COMPAND,
+> >  	},
+> > +	[RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR] = {
+> > +		.size		= sizeof(struct rkisp1_ext_params_wdr_config),
+> > +		.handler	= rkisp1_ext_params_wdr,
+> > +		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
+> > +	},
+> >  };
+> >  
+> >  static void rkisp1_ext_params_config(struct rkisp1_params *params,
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+> > index bf0260600a1923eebde6b5fe233daf7d427362dd..5b9de1a2c624f4ecaf451fa806bb4b1c24a2cb55 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+> > @@ -710,6 +710,27 @@
+> >  #define RKISP1_CIF_ISP_COMPAND_CTRL_SOFT_RESET_FLAG	BIT(2)
+> >  #define RKISP1_CIF_ISP_COMPAND_CTRL_BLS_ENABLE		BIT(3)
+> >  
+> > +/* WDR */
+> > +/* ISP_WDR_CTRL */
+> > +#define RKISP1_CIF_ISP_WDR_CTRL_ENABLE			BIT(0)
+> > +#define RKISP1_CIF_ISP_WDR_COLOR_SPACE_SELECT		BIT(1)
+> > +#define RKISP1_CIF_ISP_WDR_CR_MAPPING_DISABLE		BIT(2)
+> > +#define RKISP1_CIF_ISP_WDR_USE_IREF			BIT(3)
+> > +#define RKISP1_CIF_ISP_WDR_USE_Y9_8			BIT(4)
+> > +#define RKISP1_CIF_ISP_WDR_USE_RGB7_8			BIT(5)
+> > +#define RKISP1_CIF_ISP_WDR_DISABLE_TRANSIENT		BIT(6)
+> > +#define RKISP1_CIF_ISP_WDR_RGB_FACTOR_MASK		GENMASK(11, 8)
+> > +#define RKISP1_CIF_ISP_WDR_RGB_FACTOR_MAX		8U
+> > +/* ISP_WDR_TONE_CURVE_YM */
+> > +#define RKISP1_CIF_ISP_WDR_TONE_CURVE_YM_MASK		GENMASK(12, 0)
+> > +/* ISP_WDR_OFFSET */
+> > +#define RKISP1_CIF_ISP_WDR_RGB_OFFSET_MASK		GENMASK(11, 0)
+> > +#define RKISP1_CIF_ISP_WDR_LUM_OFFSET_MASK		GENMASK(27, 16)
+> > +/* ISP_WDR_DELTAMIN */
+> > +#define RKISP1_CIF_ISP_WDR_DMIN_THRESH_MASK		GENMASK(11, 0)
+> > +#define RKISP1_CIF_ISP_WDR_DMIN_STRENGTH_MASK		GENMASK(20, 16)
+> > +#define RKISP1_CIF_ISP_WDR_DMIN_STRENGTH_MAX		16U
+> > +
+> >  /* =================================================================== */
+> >  /*                            CIF Registers                            */
+> >  /* =================================================================== */
+> > @@ -1302,82 +1323,12 @@
+> >  
+> >  #define RKISP1_CIF_ISP_WDR_BASE			0x00002a00
+> >  #define RKISP1_CIF_ISP_WDR_CTRL			(RKISP1_CIF_ISP_WDR_BASE + 0x00000000)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_1		(RKISP1_CIF_ISP_WDR_BASE + 0x00000004)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_2		(RKISP1_CIF_ISP_WDR_BASE + 0x00000008)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_3		(RKISP1_CIF_ISP_WDR_BASE + 0x0000000c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_4		(RKISP1_CIF_ISP_WDR_BASE + 0x00000010)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_0	(RKISP1_CIF_ISP_WDR_BASE + 0x00000014)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_1	(RKISP1_CIF_ISP_WDR_BASE + 0x00000018)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_2	(RKISP1_CIF_ISP_WDR_BASE + 0x0000001c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_3	(RKISP1_CIF_ISP_WDR_BASE + 0x00000020)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_4	(RKISP1_CIF_ISP_WDR_BASE + 0x00000024)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_5	(RKISP1_CIF_ISP_WDR_BASE + 0x00000028)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_6	(RKISP1_CIF_ISP_WDR_BASE + 0x0000002c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_7	(RKISP1_CIF_ISP_WDR_BASE + 0x00000030)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_8	(RKISP1_CIF_ISP_WDR_BASE + 0x00000034)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_9	(RKISP1_CIF_ISP_WDR_BASE + 0x00000038)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_10	(RKISP1_CIF_ISP_WDR_BASE + 0x0000003c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_11	(RKISP1_CIF_ISP_WDR_BASE + 0x00000040)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_12	(RKISP1_CIF_ISP_WDR_BASE + 0x00000044)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_13	(RKISP1_CIF_ISP_WDR_BASE + 0x00000048)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_14	(RKISP1_CIF_ISP_WDR_BASE + 0x0000004c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_15	(RKISP1_CIF_ISP_WDR_BASE + 0x00000050)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_16	(RKISP1_CIF_ISP_WDR_BASE + 0x00000054)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_17	(RKISP1_CIF_ISP_WDR_BASE + 0x00000058)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_18	(RKISP1_CIF_ISP_WDR_BASE + 0x0000005c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_19	(RKISP1_CIF_ISP_WDR_BASE + 0x00000060)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_20	(RKISP1_CIF_ISP_WDR_BASE + 0x00000064)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_21	(RKISP1_CIF_ISP_WDR_BASE + 0x00000068)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_22	(RKISP1_CIF_ISP_WDR_BASE + 0x0000006c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_23	(RKISP1_CIF_ISP_WDR_BASE + 0x00000070)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_24	(RKISP1_CIF_ISP_WDR_BASE + 0x00000074)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_25	(RKISP1_CIF_ISP_WDR_BASE + 0x00000078)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_26	(RKISP1_CIF_ISP_WDR_BASE + 0x0000007c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_27	(RKISP1_CIF_ISP_WDR_BASE + 0x00000080)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_28	(RKISP1_CIF_ISP_WDR_BASE + 0x00000084)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_29	(RKISP1_CIF_ISP_WDR_BASE + 0x00000088)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_30	(RKISP1_CIF_ISP_WDR_BASE + 0x0000008c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_31	(RKISP1_CIF_ISP_WDR_BASE + 0x00000090)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_32	(RKISP1_CIF_ISP_WDR_BASE + 0x00000094)
+> > +#define RKISP1_CIF_ISP_WDR_TONECURVE(n)		(RKISP1_CIF_ISP_WDR_BASE + 0x00000004 + (n) * 4)
+> > +#define RKISP1_CIF_ISP_WDR_TONECURVE_YM(n)	(RKISP1_CIF_ISP_WDR_BASE + 0x00000014 + (n) * 4)
+> >  #define RKISP1_CIF_ISP_WDR_OFFSET		(RKISP1_CIF_ISP_WDR_BASE + 0x00000098)
+> >  #define RKISP1_CIF_ISP_WDR_DELTAMIN		(RKISP1_CIF_ISP_WDR_BASE + 0x0000009c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_1_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000a0)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_2_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000a4)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_3_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000a8)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_4_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000ac)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_0_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000b0)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_1_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000b4)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_2_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000b8)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_3_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000bc)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_4_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000c0)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_5_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000c4)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_6_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000c8)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_7_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000cc)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_8_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000d0)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_9_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000d4)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_10_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000d8)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_11_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000dc)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_12_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000e0)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_13_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000e4)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_14_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000e8)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_15_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000ec)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_16_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000f0)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_17_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000f4)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_18_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000f8)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_19_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000fc)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_20_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000100)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_21_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000104)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_22_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000108)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_23_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x0000010c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_24_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000110)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_25_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000114)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_26_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000118)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_27_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x0000011c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_28_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000120)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_29_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000124)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_30_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000128)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_31_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x0000012c)
+> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_32_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000130)
+> > +#define RKISP1_CIF_ISP_WDR_TONECURVE_SHD(n)	(RKISP1_CIF_ISP_WDR_BASE + 0x000000a0 + (n) * 4)
+> > +#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_SHD(n)	(RKISP1_CIF_ISP_WDR_BASE + 0x000000b0 + (n) * 4)
+> >  
+> >  #define RKISP1_CIF_ISP_HIST_BASE_V12		0x00002c00
+> >  #define RKISP1_CIF_ISP_HIST_CTRL_V12		(RKISP1_CIF_ISP_HIST_BASE_V12 + 0x00000000)
+> > diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
+> > index 2d995f3c1ca37820a381f1917a10bf08a304d992..59335097c01372252b296d960b39336dfb5ec197 100644
+> > --- a/include/uapi/linux/rkisp1-config.h
+> > +++ b/include/uapi/linux/rkisp1-config.h
+> > @@ -169,6 +169,13 @@
+> >   */
+> >  #define RKISP1_CIF_ISP_COMPAND_NUM_POINTS	64
+> >  
+> > +/*
+> > + * Wide Dynamic Range
+> > + */
+> > +#define RKISP1_CIF_ISP_WDR_CURVE_NUM_INTERV	32
+> > +#define RKISP1_CIF_ISP_WDR_CURVE_NUM_COEFF	(RKISP1_CIF_ISP_WDR_CURVE_NUM_INTERV + 1)
+> > +#define RKISP1_CIF_ISP_WDR_CURVE_NUM_DY_REGS	4
+> > +
+> >  /*
+> >   * Measurement types
+> >   */
+> > @@ -889,6 +896,72 @@ struct rkisp1_cif_isp_compand_curve_config {
+> >  	__u32 y[RKISP1_CIF_ISP_COMPAND_NUM_POINTS];
+> >  };
+> >  
+> > +/**
+> > + * struct rkisp1_cif_isp_wdr_tone_curve - Tone mapping curve definition for WDR.
+> > + *
+> > + * @dY: the dYn increments for horizontal (input) axis of the tone curve.
+> > + *      each 3-bit dY value represents an increment of 2**(value+3).
+> > + *      dY[0] bits 0:2 is increment dY1, bit 3 unused
+> > + *      dY[0] bits 4:6 is increment dY2, bit 7 unused
+> > + *      ...
+> > + *      dY[0] bits 28:30 is increment dY8, bit 31 unused
+> > + *      ... and so on till dY[3] bits 28:30 is increment dY32, bit 31 unused.
+> > + * @ym: the Ym values for the vertical (output) axis of the tone curve.
+> > + *      each value is 13 bit.
+> > + */
+> > +struct rkisp1_cif_isp_wdr_tone_curve {
+> > +	__u32 dY[RKISP1_CIF_ISP_WDR_CURVE_NUM_DY_REGS];
+> > +	__u16 ym[RKISP1_CIF_ISP_WDR_CURVE_NUM_COEFF];
+> > +};
+> > +
+> > +/**
+> > + * struct rkisp1_cif_isp_wdr_iref_config - Illumination reference config for WDR.
+> > + *
+> > + * Use illumination reference value as described below, instead of only the
+> > + * luminance (Y) value for tone mapping and gain calculations:
+> > + * IRef = (rgb_factor * RGBMax_tr + (8 - rgb_factor) * Y)/8
+> > + *
+> > + * @rgb_factor: defines how much influence the RGBmax approach has in
+> > + *              comparison to Y (valid values are 0..8).
+> > + * @use_y9_8: use Y*9/8 for maximum value calculation along with the
+> > + *            default of R, G, B for noise reduction.
+> > + * @use_rgb7_8: decrease RGBMax by 7/8 for noise reduction.
+> > + * @disable_transient: disable transient calculation between Y and RGBY_max.
+> > + */
+> > +struct rkisp1_cif_isp_wdr_iref_config {
+> > +	__u8 rgb_factor;
+> > +	__u8 use_y9_8;
+> > +	__u8 use_rgb7_8;
+> > +	__u8 disable_transient;
+> > +};
+> > +
+> > +/**
+> > + * struct rkisp1_cif_isp_wdr_config - Configuration for wide dynamic range.
+> > + *
+> > + * @tone_curve: tone mapping curve.
+> > + * @iref_config: illumination reference configuration. (when use_iref is true)
+> > + * @rgb_offset: RGB offset value for RGB operation mode. (12 bits)
+> > + * @luma_offset: luminance offset value for RGB operation mode. (12 bits)
+> > + * @dmin_thresh: lower threshold for deltaMin value. (12 bits)
+> > + * @dmin_strength: strength factor for deltaMin. (valid range is 0x00..0x10)
+> > + * @use_rgb_colorspace: use RGB instead of luminance/chrominance colorspace.
+> > + * @bypass_chroma_mapping: disable chrominance mapping (only valid if
+> > + *                         use_rgb_colorspace = 0)
+> > + * @use_iref: use illumination reference instead of Y for tone mapping
+> > + *            and gain calculations.
+> > + */
+> > +struct rkisp1_cif_isp_wdr_config {
+> > +	struct rkisp1_cif_isp_wdr_tone_curve tone_curve;
+> > +	struct rkisp1_cif_isp_wdr_iref_config iref_config;
+> > +	__u16 rgb_offset;
+> > +	__u16 luma_offset;
+> > +	__u16 dmin_thresh;
+> > +	__u8 dmin_strength;
+> > +	__u8 use_rgb_colorspace;
+> > +	__u8 bypass_chroma_mapping;
+> > +	__u8 use_iref;
+> > +};
+> > +
+> >  /*---------- PART2: Measurement Statistics ------------*/
+> >  
+> >  /**
+> > @@ -1059,6 +1132,7 @@ struct rkisp1_stat_buffer {
+> >   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS: BLS in the compand block
+> >   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND: Companding expand curve
+> >   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS: Companding compress curve
+> > + * @RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR: Wide dynamic range
+> >   */
+> >  enum rkisp1_ext_params_block_type {
+> >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_BLS,
+> > @@ -1081,6 +1155,7 @@ enum rkisp1_ext_params_block_type {
+> >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS,
+> >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND,
+> >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS,
+> > +	RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR,
+> >  };
+> >  
+> >  #define RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE	(1U << 0)
+> > @@ -1460,6 +1535,23 @@ struct rkisp1_ext_params_compand_curve_config {
+> >  	struct rkisp1_cif_isp_compand_curve_config config;
+> >  } __attribute__((aligned(8)));
+> >  
+> > +/**
+> > + * struct rkisp1_ext_params_wdr_config - RkISP1 extensible params
+> > + *                                       Wide dynamic range config
+> > + *
+> > + * RkISP1 extensible parameters WDR block.
+> > + * Identified by :c:type:`RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR`
+> > + *
+> > + * @header: The RkISP1 extensible parameters header, see
+> > + *	    :c:type:`rkisp1_ext_params_block_header`
+> > + * @config: WDR configuration, see
+> > + *	    :c:type:`rkisp1_cif_isp_wdr_config`
+> > + */
+> > +struct rkisp1_ext_params_wdr_config {
+> > +	struct rkisp1_ext_params_block_header header;
+> > +	struct rkisp1_cif_isp_wdr_config config;
+> > +} __attribute__((aligned(8)));
+> > +
+> >  /*
+> >   * The rkisp1_ext_params_compand_curve_config structure is counted twice as it
+> >   * is used for both the COMPAND_EXPAND and COMPAND_COMPRESS block types.
+
+-- 
+Regards,
+
+Laurent Pinchart
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
