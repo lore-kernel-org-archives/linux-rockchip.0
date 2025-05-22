@@ -4,102 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6B35C54E65
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 08:34:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 377D2C54E65
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 08:36:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OIBL42Yex6zON4rN0mcslJtCKJL+78NyvxO1+XCbLv4=; b=Hmi7Ifjr+nU5cw
-	rAn7gM9v2yeNAT9U4RJWyR70IkxV00YFQqs3vSsOQFSkq+48a9WxaFuYJJgJDjUik5rf7HSkd6Gc3
-	/vwDkxVaNtPvuc4vCZS++lXJJhVDRxU9osj8JFVtlY8MyMs+mgrl/JjRp/AjjY/CBnHoCLgTGy3X6
-	5AC4yXIOtVCvpJ0dj4XqElpoWYZL69z4t7YWHeFIVZyzw6soqnry4trx5XPLt/k059wFmF4r/HQN0
-	wHbCDA+tRa5kIAFZrk3+x8HUnooGS2l/HiWgts7rA+5bsM+SRkyCUV6I1HZTqQ0BYzIlzCXW777ou
-	kzEEAHtoxt6+aEkuWWUQ==;
+	List-Owner; bh=vqqptMvGjrimazKWdiCTOvbZLchwnvtbeiw/svbBBZE=; b=LYZE4gfsj1pe9g
+	NLDz5fz+5Wd2i9e3R3ILFVCuDmfWsjDo/HMlZoQ2bJ3AA1/UCLz2AHQVvu0LEoYnXR7ldChWcXHoC
+	okIy8/QzaAACjs3/7lVBYuo31OLUc79QiDTfAZRauCVXYujW6VAgMeu9u2Iz8znn5IBHUDR2i/s/S
+	da6KnM0x2gcUUXb0eUZ+796fOzUMyqVRgC7n/XA33Ea6dWuFEkoAbqwhRWx3MLwhuqOHrz4eDm8iF
+	u0rcWqsroFZ5p6hXWLYYSHx0vaqHa+WUdtwPFWw92XIBRaJkIfsmYE7bxnmfyC9f6CunOX/wUcSdL
+	DQpcfFGU68DpBfFX+OTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI1NV-00000000IVB-1l4C;
-	Thu, 22 May 2025 08:34:13 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uI1PX-00000000IsI-0MJn;
+	Thu, 22 May 2025 08:36:19 +0000
+Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI10B-00000000F3O-1Del;
-	Thu, 22 May 2025 08:10:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 67BB162A10;
-	Thu, 22 May 2025 08:10:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B345BC4CEE4;
-	Thu, 22 May 2025 08:10:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747901406;
-	bh=RL3cLjFlvN1opxaFD8lpe+sXPI7x6U6z5Rb29QuEmsU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=uZtxo20wS2hd1b/l7BKpcmC8RDg9pfjZGeIj3mJIS5ozl0UIa4Yf2gpOaKyYr/Jua
-	 p8gKKX14rZbAmVwS02NR7KdxDr4nDrHhqMmeWLblsM+ZYDNuaNQh5pC5nAD5t8l2Ab
-	 oCbsAZd+PAovv3egqZGkW6CccB2bWyvBfTmwz5+tdga6y8xqe290Nxv00tRKI+Mhv6
-	 lYxCvCgHlB/ln6cowNNB3x6ztrcZVM8euZpL2cQIIVHwYZ9bJz+WczHzx9PX6LqiiY
-	 DkVJdIHjgalf23YU/Cfp0ttI128+lDOmp1RJa4VgPqCCe2K1UwS3yqlOgKsBpPrFXf
-	 2C171yvCXH4vg==
-Message-ID: <0b473034-3d6b-4c37-aace-e34241ae19fa@kernel.org>
-Date: Thu, 22 May 2025 10:10:00 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/3] rockchip: add can for RK3576 Soc
-To: Elaine Zhang <zhangqing@rock-chips.com>, mkl@pengutronix.de,
- kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, cl@rock-chips.com,
- kever.yang@rock-chips.com
-Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20250522074616.3115348-1-zhangqing@rock-chips.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250522074616.3115348-1-zhangqing@rock-chips.com>
+	id 1uI13v-00000000FUV-08O1
+	for linux-rockchip@lists.infradead.org;
+	Thu, 22 May 2025 08:14:00 +0000
+Received: by mail-io1-xd32.google.com with SMTP id ca18e2360f4ac-86135af1045so914101839f.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 22 May 2025 01:13:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=brighamcampbell.com; s=google; t=1747901637; x=1748506437; darn=lists.infradead.org;
+        h=in-reply-to:references:cc:to:from:subject:message-id:date
+         :content-transfer-encoding:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=c8fveunfssaG8fltpv/kYgW4QFBaP5Z1Q9jmR2Ucz+w=;
+        b=NvxXZblG3Ie8PvQ4QDKHzMbGE85bs0m8Ilozo9XSADAAWE5uxKmFYDxi6RaGhBnWD4
+         HtlbO/sIMVR3xrloRBc0MUlOdHeHK9FiSVLnGmvyUJTr+zqSsAQqwQ05ql2y1hoU/Uda
+         pkqsjHxlmqiGMrd4/Eo1bSC/ezUWH0+Oa9FGyEk3fPQRMbS48TrCbQ8RWQAqwDR1z7GW
+         8qNOqxEEIF1CedMlMLCRHcIdOG3kyR8fV8nEs3haTjmPhXbOE/4Z5f8dAnAPSMKng/+v
+         JDq3Tg5PNAW43pvksl3K2pDqEbmTkflUz2R5f6maCUePfHvJAqehSUKLncbNf5P6sjac
+         +CMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747901637; x=1748506437;
+        h=in-reply-to:references:cc:to:from:subject:message-id:date
+         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=c8fveunfssaG8fltpv/kYgW4QFBaP5Z1Q9jmR2Ucz+w=;
+        b=jpMgD7IZjGuoaeuQSCodQDyIDxMkgPUgfT6GjmyvJZTlxRddM27lDUL4VrBDtCekdk
+         4QCSufMfgsL0GN3uF6Az9HHDZpFYc/HR7SdNzdB3C4y8FRd5CAxYlHm9hojefFRE0BUd
+         BAQpg4hU6/paJFWohmeOxAwWPX+Hst+DVLU2YwhUjjbD7ZK4pJE/erOV5v1U6Li+fDAz
+         Tam7jMq5PeCmrGWzSPUsntoVvPdO5fa2W8Dq6mZVIW75md50OuCsylhoI7bhQ2zbexgO
+         KoLQDdFb8b6unO8DYbZLY/T7QpylCTZDywSSGuiADzjdutAjcAMrZWsqYoyMWsK1/UnT
+         GbVw==
+X-Forwarded-Encrypted: i=1; AJvYcCWnWhHYdMH/8/mFhVLLOdsCyezMdPLpgXEPHKo+0/zQmZ3dQBDGxPex8+AakilBaoadtDePtPyRMilErb+e5g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxvsIG3q0lk7u89hSqxYgNN6xiZQY/nP3QTMeV0uNppgMeqi7os
+	FYzNSyVhcHk2pK9A1n9udqNKMv00RtMzu1kEK4heYrqSJmKhIsHZIbeYbzzLm3i7QAE=
+X-Gm-Gg: ASbGncvKWLTVdUavnvJboOKnqg9T1siNUsM6iSlNsHH+IB17qsvUAoPMG0YlceN+mL3
+	OFeeyLl28ZQgvbsVoPytGypqcBgaiMmJzoWLFyL9sJ+OFo9IgftIsaE8nuyCcBht41k6CFtcGH9
+	r9Z/+mRJHOabaj3YXUSeJFze41ATTBr3QO5EEh7YhZGaDXGdQ7wIqya6JAo+DQS16JfZyA4W1rj
+	1j2q7yOEmk0igWcUEJV/WfhEYGT3bh1jMWLR3RB8lWKECuYGOVNpUTU6UOe8waTQTN0+kVZmaDi
+	XEgHrJSRWunOkOcY9Qw5SsKk0tFPxiS68ARdz7rKK88Ww65E
+X-Google-Smtp-Source: AGHT+IGjlgR+V6jDNuVgn2VgB5uR3ziTvMUlyMDL1h3fTHRWO4bCzJmoSqf3GPL+uFJjXhgZZKrRUw==
+X-Received: by 2002:a05:6602:4808:b0:867:6680:8191 with SMTP id ca18e2360f4ac-86a2306ee1cmr3484870639f.0.1747901637427;
+        Thu, 22 May 2025 01:13:57 -0700 (PDT)
+Received: from localhost ([64.71.154.6])
+        by smtp.gmail.com with ESMTPSA id 8926c6da1cb9f-4fbcc4ea5d9sm3017587173.141.2025.05.22.01.13.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 22 May 2025 01:13:56 -0700 (PDT)
+Mime-Version: 1.0
+Date: Thu, 22 May 2025 02:13:55 -0600
+Message-Id: <DA2JF2BN2EX1.221D1WL4QHH8B@brighamcampbell.com>
+Subject: Re: [PATCH 1/1] Fixing a minor typo in YAML document
+From: "Brigham Campbell" <me@brighamcampbell.com>
+To: "Krzysztof Kozlowski" <krzk@kernel.org>, "Jihed Chaibi"
+ <jihed.chaibi.dev@gmail.com>
+Cc: <heiko@sntech.de>, <briannorris@chromium.org>,
+ <devicetree@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-kernel-mentees@lists.linux.dev>, <skhan@linuxfoundation.org>,
+ <linux-kernel@vger.kernel.org>
+X-Mailer: aerc 0.20.1-0-g2ecb8770224a
+References: <20250517020552.737932-1-jihed.chaibi.dev@gmail.com>
+ <62bd6757-c4d0-42c1-a76d-abea18a8a55e@kernel.org>
+ <CANBuOYpRQNx+n6BjpAF0LufpUqRA3wU-GzSNygeWurohXYNF6A@mail.gmail.com>
+ <5f7f8cbc-6501-459f-906a-250be5443d0e@kernel.org>
+In-Reply-To: <5f7f8cbc-6501-459f-906a-250be5443d0e@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250522_011359_082716_FF988E3E 
+X-CRM114-Status: UNSURE (   7.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,24 +105,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 22/05/2025 09:46, Elaine Zhang wrote:
-> rk3576 can is a new controller:
-> Support CAN and CANFD protocol.
-> Support Dma.
-> 
-> There are major differences from the previous rk3568. All errata on the
-> rk3568 have been fixed and redesigned.
-> 
-> Change in V4:
-> [PATCH v4 1/3]: Correct the format and add explanations.
-> [PATCH v4 2/3]: No change.
-> [PATCH v4 3/3]: No change.
-> 
-Allow people to actually review your entire patchset - one patchset per
-24h or 48h.
+On Sun May 18, 2025 at 4:34 AM MDT, Krzysztof Kozlowski wrote:
+>                        If you do not Cc maintainers, how is it supposed
+> to be picked up by these maintainers?
 
-Best regards,
-Krzysztof
+While I understand that Jihed made an egregious error in not Cc'ing
+everyone listed by get_maintainers.pl, I also appreciate the irony in
+the subsystem maintainer complaining that this change isn't going to be
+picked up by the subsystem maintainer.
+
+How _did_ you catch this patch without being Cc'ed? Care to explain to
+the uninitiated?
+
+Thanks,
+Brigham
 
 _______________________________________________
 Linux-rockchip mailing list
