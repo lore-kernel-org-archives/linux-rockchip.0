@@ -4,60 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC06C54E65
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 16:44:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0469C54E90
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 17:04:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y29JEUDqWAfnnMw8FUyZQdElIWX4qSnXdv7YyFrkM70=; b=ZPcSjtXBcElw+K
-	w4hxYnhnugOUkRDN3ooptjWmPpwT8fo39C86ZBA5t14uSPsfkQZbv/Mp3+y7cczZkzJTizBZX7lgo
-	7GhiqxGDyEMTgnzusT/JCg0kvT5La7TqefT7QcEqEdvDWIDNLAX2/tOj2OgK2V9Bd8hAE5/OT/mhS
-	BYF2xdsyudCBQ0JAhyJYSOqddkIuHZPpk7ITGCwY3/P1ua4cyOHe3d//dC7zN6slXsPFqGk/RiqWR
-	wjtGsM/k3GEGa2ZdqjKvsQiIVcjitwLc3KbXcT8bYhfopqVDs4GUTZP3pFtkCXmNpDcSsrMBKtXzI
-	L8V4JqcedI3EquiuaWQA==;
+	List-Owner; bh=+b2+Ob5ebuj1gGwBdNOuuM80qI2n061VKted5FBgln4=; b=XxTkU8u66yEv1j
+	O04ofFp7mBDHUgo7IaOAi57J59qEPYkUhNXKsDbpZU/bUAffTeQFUAlawHh5wCT/jmz8EB7IwjtGA
+	4DeTzDpBf7SdUuHEmZ9kRFkvNaH80b6sBTuJVRoxcXJeuJfnfK7ObzWBD+3j3XEp3/r2HMRZ8GzMZ
+	mROPsfkKcAA6MhYfrhy/UsuAAHjOqKDcFnvvOBTv2tZ2wLfa8IYJ8LZUZK3pCCjoaACbvhjXdd8uk
+	YsZcSI2EvEWZ/abjBCEsmXAJYVlyWyU5T8UoBcThrfyhCt/E9nL7sK7y+ccbJDP1An7E8nRsdQHrA
+	7ta7yLY6xpkIFcK2mnzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI91c-00000001eGY-26T9;
-	Thu, 22 May 2025 16:44:08 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uI9L5-00000001hC2-2ewG;
+	Thu, 22 May 2025 17:04:15 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI8zU-00000001e21-0Kqn;
-	Thu, 22 May 2025 16:41:57 +0000
-Received: from pendragon.ideasonboard.com (179.218-130-109.adsl-dyn.isp.belgacom.be [109.130.218.179])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 984D7605;
-	Thu, 22 May 2025 18:41:32 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1747932092;
-	bh=SpacbBiVU2Pqfd4vTeSA9VS+2Q412z1EYkTywjIUPIk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=i59d+CEOAGVcQEkILZCTGVG8HgC4GGDp38wDv3SyLG6MrXwemerYL0q9SJQLFNImI
-	 ifEBKqt5t1wuw5FD/maDZl90RNN/vaadS2qhq/eA0D0tmXmNFue5nBFyIPEQmv1aFY
-	 +2ySTC4TBO3ntFS8scy5KyVCRst1VitxjNLuEmO0=
-Date: Thu, 22 May 2025 18:41:47 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Stefan Klug <stefan.klug@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	id 1uI9GA-00000001gZg-1ebJ;
+	Thu, 22 May 2025 16:59:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=TaG62Y1MCE7ilMflSqxxCXFz3aYtcoI1Q8Lugoaj0b8=; b=DBlih913dJegDNXmkankRDbaFG
+	E9QMg6z2ZoBhqOOLnBoq+wOLmCep+oVpoFseDTgTPhechqiaL0wmFgH5e1hC8WV1gLcX2JwuU8DVT
+	80iDWoSwYUzOQx1qhZSmmWeUg9XpwSivM2EbSzEI1wH1+T6kdSrn2qfIrBTP582k+26g=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uI9G0-00DWGS-2k; Thu, 22 May 2025 18:59:00 +0200
+Date: Thu, 22 May 2025 18:59:00 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Quentin Schulz <quentin.schulz@cherry.de>
+Cc: Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Hans Verkuil <hans@jjverkuil.nl>
-Subject: Re: [PATCH 2/3] media: rkisp1: Add
- RKISP1_CID_SUPPORTED_PARAMS_BLOCKS control
-Message-ID: <20250522164147.GV12514@pendragon.ideasonboard.com>
-References: <20250522150944.400046-2-stefan.klug@ideasonboard.com>
- <20250522150944.400046-4-stefan.klug@ideasonboard.com>
- <20250522155641.GU12514@pendragon.ideasonboard.com>
- <174793176608.244022.1396416000017796106@localhost>
+	Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: support Ethernet Switch
+ adapter for RK3588 Jaguar
+Message-ID: <b322970d-8d56-46fc-b537-22f73a66dc8b@lunn.ch>
+References: <20250521-jaguar-mezz-eth-switch-v1-0-9b5c48ebb867@cherry.de>
+ <20250521-jaguar-mezz-eth-switch-v1-2-9b5c48ebb867@cherry.de>
+ <657a085c-4214-4096-8a68-047d57a40d60@lunn.ch>
+ <19574942-d06b-44b0-8b6c-d3ddd94db89f@cherry.de>
+ <9c99aba9-87f5-41fe-8b11-7ef27525750c@lunn.ch>
+ <9e8f659d-9116-46a6-b7e7-3d4705f57ac6@cherry.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <174793176608.244022.1396416000017796106@localhost>
+In-Reply-To: <9e8f659d-9116-46a6-b7e7-3d4705f57ac6@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_094156_259244_85783EEB 
-X-CRM114-Status: GOOD (  43.85  )
+X-CRM114-CacheID: sfid-20250522_095910_432798_10E00A5F 
+X-CRM114-Status: GOOD (  45.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,220 +79,147 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 22, 2025 at 06:36:06PM +0200, Stefan Klug wrote:
-> Hi Laurent,
+> Would the suggested change in the previous answer be acceptable to you?
 > 
-> Thank you for the review.
-> 
-> Quoting Laurent Pinchart (2025-05-22 17:56:41)
-> > Hi Stefan,
-> > 
-> > Thank you for the patch.
-> > 
-> > On Thu, May 22, 2025 at 05:08:39PM +0200, Stefan Klug wrote:
-> > > Add a RKISP1_CID_SUPPORTED_PARAMS_BLOCKS V4L2 control to be able to
-> > > query the parameters blocks supported by the current kernel on the
-> > > current hardware from user space.
+> @Kever, is there any way to know what the register values for
+> rx_delay/tx_delay actually mean in terms of picoseconds delay added by the
+> MAC maybe?
+
+The problem is, what exactly do these values mean? Is it documented
+somewhere?
+
+> > > > Since this has a switch on the other end, its a bit more complicated
+> > > > with RGMII delays. Normally, the MAC does nothing and passed rgmii-id
+> > > > to the PHY, and the PHY then does the delays. However, here you don't
+> > > > have a PHY. So you have the MAC add the delays. This looks O.K. I
 > > > 
-> > > Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
-> > > ---
-> > >  .../platform/rockchip/rkisp1/rkisp1-common.h  |  2 +
-> > >  .../platform/rockchip/rkisp1/rkisp1-params.c  | 50 ++++++++++++++++++-
-> > >  include/uapi/linux/rkisp1-config.h            | 10 ++++
-> > >  include/uapi/linux/v4l2-controls.h            |  6 +++
-> > >  4 files changed, 67 insertions(+), 1 deletion(-)
+> > > The switch actually supports adding delays on the port used for DSA conduit.
+> > 
+> > That actually looks to be the simplest and correct solution. Set the
+> > MAC to 'rgmii-id', rx_delay and tx_delay to 0, even if they are
+> > ignored. And in the switch, also 'rgmii-id' and let it insert the 2ns
+> > delay. You can use rx-internal-delay-ps and tx-internal-delay-ps if
+> > you want, but it seems to default to sensible values.
+> > 
+> 
+> I don't have control on how much is inserted by the PHY as opposed to the
+> MAC, so I'm wary of using a much less precise (on paper) delay.
+
+Experience i've had with this is that you don't need to be too
+accurate. Devices generally work with 2ns.
+
+> I have no
+> clue if doing this in the PHY is going to put us in the center of the eye or
+> not. Thanks to Rockchip's kernel tool, we are expecting to be in the center
+> of the eye right now.
+
+What exactly does the tool do? Can you run it when the 'PHY' is adding
+the delay and see how good the eye alignment is?
+
+arch$ grep -hr "tx_delay =" | sort | uniq -c
+      1 	tx_delay = <0x0>;
+      4 	tx_delay = <0x10>;
+      1 	tx_delay = <0x1a>;
+      1 	tx_delay = <0x20>;
+      3 	tx_delay = <0x21>;
+      2 	tx_delay = <0x22>;
+      5 	tx_delay = <0x24>;
+      2 	tx_delay = <0x26>;
+     15 	tx_delay = <0x28>;
+      2 	tx_delay = <0x2a>;
+     17 	tx_delay = <0x30>;
+      1 	tx_delay = <0x3a>;
+      3 	tx_delay = <0x3c>;
+      3 	tx_delay = <0x42>;
+      5 	tx_delay = <0x43>;
+      2 	tx_delay = <0x44>;
+      1 	tx_delay = <0x45>;
+      1 	tx_delay = <0x46>;
+      6 	tx_delay = <0x4f>;
+
+So 0x30 is the most popular, and i expect it maps to 2ns. The 0x28
+value is interesting, given that 0x2a is not used much. That makes me
+think there might be a common PHY used with these boards which has a
+small built in delay when it should not.
+ 
+> > > I'm a bit confused by the following sentence:
 > > > 
-> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > > index ca952fd0829b..5f187f9efc7b 100644
-> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > > @@ -415,6 +415,8 @@ struct rkisp1_params {
-> > >       spinlock_t config_lock; /* locks the buffers list 'params' */
-> > >       struct list_head params;
-> > >  
-> > > +     struct v4l2_ctrl_handler ctrls;
-> > > +
-> > >       const struct v4l2_meta_format *metafmt;
-> > >  
-> > >       enum v4l2_quantization quantization;
-> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > > index 918eb06c7465..60c9b3c46593 100644
-> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > > @@ -2736,6 +2736,45 @@ static int rkisp1_params_init_vb2_queue(struct vb2_queue *q,
-> > >       return vb2_queue_init(q);
-> > >  }
-> > >  
-> > > +static int rkisp1_ctrl_init(struct rkisp1_params *params)
-> > > +{
-> > > +     int ret;
-> > > +
-> > > +     v4l2_ctrl_handler_init(&params->ctrls, 1);
-> > > +
-> > > +     struct v4l2_ctrl_config ctrl_config = {
-> > > +             .id = RKISP1_CID_SUPPORTED_PARAMS_BLOCKS,
-> > > +             .name = "Supported Params Blocks",
-> > > +             .type = V4L2_CTRL_TYPE_BITMASK,
-> > > +             .flags = V4L2_CTRL_FLAG_READ_ONLY,
-> > > +     };
+> > > """
+> > > Normally, the MAC does nothing and passed rgmii-id
+> > > """
+> > > 
+> > > is this something that the MAC driver is supposed to do or is the subsystem
+> > > handling that somehow? How do I know how/when to rewrite the phy-mode passed
+> > > to the PHY?
 > > 
-> >         struct v4l2_ctrl_config ctrl_config = {
-> >                 .id = RKISP1_CID_SUPPORTED_PARAMS_BLOCKS,
-> >                 .name = "Supported Params Blocks",
-> >                 .type = V4L2_CTRL_TYPE_BITMASK,
-> >                 .flags = V4L2_CTRL_FLAG_READ_ONLY,
-> >         };
-> >         int ret;
+> > A small number of MACs have hard coded delays. You cannot turn the
+> > delay off. So the MAC has no choice but to do the delay. 'rgmii' is
+> > simply not possible, so -EINVAL. For 'rgmii-id', if you pass that to
+> > the PHY, it will also add a delay, and 4ns in total does not work. So
+> > when the MAC is adding delays, it needs to mask out the delays it is
+> > adding before calling phy_attach() passing an rgmii mode.
 > > 
-> >         v4l2_ctrl_handler_init(&params->ctrls, 1);
-> > 
-> > Mixing code and variable declarations is still usually frown upon in the
-> > kernel.
 > 
-> I thought frown upon is not a no. And as this structure is not yet
-> complete and is modified afterwards it feels natural to me to put it
-> close to that place. But I can move it above the function. You decide.
+> If I understand correctly, if phy-mode is rgmii-id in DT and the MAC is
+> adding the delay, I need to force PHY_INTERFACE_MODE_RGMII phy-mode when
+> attaching the PHY in the MAC device.
 
-It obviously take someone to make the first move for things to change
-:-) I however tend to favour consistency in coding style within a
-driver.
+Correct. DT phy-mode describes the PCB. Does the PCB add the 2ns
+delay.
 
-> > > +
-> > > +     for (unsigned int i = 0; i < ARRAY_SIZE(rkisp1_ext_params_handlers); i++) {
-> > > +             const struct rkisp1_ext_params_handler *block_handler;
-> > > +
-> > > +             block_handler = &rkisp1_ext_params_handlers[i];
-> > > +             ctrl_config.max |= BIT(i);
-> > > +
-> > > +             if ((params->rkisp1->info->features & block_handler->features) !=
-> > > +                 block_handler->features)
-> > > +                     continue;
-> > > +
-> > > +             ctrl_config.def |= BIT(i);
-> > > +     }
-> > > +
-> > > +     v4l2_ctrl_new_custom(&params->ctrls, &ctrl_config, NULL);
-> > > +
-> > > +     params->vnode.vdev.ctrl_handler = &params->ctrls;
-> > > +
-> > > +     if (params->ctrls.error) {
-> > > +             ret = params->ctrls.error;
-> > > +             v4l2_ctrl_handler_free(&params->ctrls);
-> > > +             return ret;
-> > > +     }
-> > > +
-> > > +     return 0;
-> > > +}
-> > > +
-> > >  int rkisp1_params_register(struct rkisp1_device *rkisp1)
-> > >  {
-> > >       struct rkisp1_params *params = &rkisp1->params;
-> > > @@ -2776,10 +2815,16 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
-> > >  
-> > >       video_set_drvdata(vdev, params);
-> > >  
-> > > +     ret = rkisp1_ctrl_init(params);
-> > > +     if (ret) {
-> > > +             dev_err(rkisp1->dev, "Control initialization error %d\n", ret);
-> > > +             goto err_mutex;
-> > > +     }
-> > > +
-> > >       node->pad.flags = MEDIA_PAD_FL_SOURCE;
-> > >       ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
-> > >       if (ret)
-> > > -             goto err_mutex;
-> > > +             goto err_ctrl;
-> > >  
-> > >       ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
-> > >       if (ret) {
-> > > @@ -2792,6 +2837,8 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
-> > >  
-> > >  err_media:
-> > >       media_entity_cleanup(&vdev->entity);
-> > > +err_ctrl:
-> > > +     v4l2_ctrl_handler_free(&params->ctrls);
-> > >  err_mutex:
-> > >       mutex_destroy(&node->vlock);
-> > >       return ret;
-> > > @@ -2808,5 +2855,6 @@ void rkisp1_params_unregister(struct rkisp1_device *rkisp1)
-> > >  
-> > >       vb2_video_unregister_device(vdev);
-> > >       media_entity_cleanup(&vdev->entity);
-> > > +     v4l2_ctrl_handler_free(&params->ctrls);
-> > >       mutex_destroy(&node->vlock);
-> > >  }
-> > > diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-> > > index 2d995f3c1ca3..4fc8f221d0c4 100644
-> > > --- a/include/uapi/linux/rkisp1-config.h
-> > > +++ b/include/uapi/linux/rkisp1-config.h
-> > > @@ -1086,6 +1086,9 @@ enum rkisp1_ext_params_block_type {
-> > >  #define RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE   (1U << 0)
-> > >  #define RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE    (1U << 1)
-> > >  
-> > > +/* A bitmask of parameters blocks supported on the current hardware. */
-> > > +#define RKISP1_CID_SUPPORTED_PARAMS_BLOCKS   (V4L2_CID_USER_RKISP1_BASE + 0x01)
-> > > +
-> > >  /**
-> > >   * struct rkisp1_ext_params_block_header - RkISP1 extensible parameters block
-> > >   *                                      header
-> > > @@ -1520,6 +1523,13 @@ enum rksip1_ext_param_buffer_version {
-> > >   * V4L2 control. If such control is not available, userspace should assume only
-> > >   * RKISP1_EXT_PARAM_BUFFER_V1 is supported by the driver.
-> > >   *
-> > > + * The read-only V4L2 control ``RKISP1_CID_SUPPORTED_PARAMS_BLOCKS`` can be used
-> > > + * to query the blocks supported by the current hardware. It contains a bitmask
-> > 
-> > s/current hardware/device/
-> > 
-> > > + * where each bit represents the availability of the corresponding entry
-> > > + * from the :c:type:`rkisp1_ext_params_block_type` enum. The max value of the
-> > > + * control represents the blocks supported by the current kernel (independent of
-> > > + * the current hardware).
-> > 
-> >  * from the :c:type:`rkisp1_ext_params_block_type` enum. The current and default
-> >  * values of the control represents the blocks supported by the device instance,
-> >  * while the maximum value represents the blocks supported by the kernel driver,
-> >  * independently of the device instance.
-> > 
-> > I was going to say that the control should be documented in
-> > Documentation/userspace-api/drivers/rkisp1.rst, but rkisp1-config.h is
-> > pulled in the documentation tree by
-> > Documentation/userspace-api/media/v4l/metafmt-rkisp1.rst, so I'm OK with
-> > this. Hans, Mauro, are you fine as well with documenting the control
-> > here ?
+Once you get to the MAC/PHY pair, what the MAC passes to the PHY is
+about what remaining delays need adding. It could be nothing, because
+the PCB adds the delay. It could be all of it, because neither the PCB
+nor the MAC add the delays. It can also be nothing because the MAC has
+already added the delays.
+
+For linux, we have the policy that the PHY adds the delay, in an
+attempt to try to make all systems the same. And most boards follow
+this. And then we have a few systems that totally mess up delays, have
+odd configuration knobs nobody knows what the do exactly, and put the
+delays in the MAC.
+
+> Does this also mean you cannot have mixed addition of delay? E.g. having 1ns
+> from MAC and 1ns from PHY? It has to be only on one of the IC?
+
+It is not recommended, because of the policy that the PHY does the
+delay... You can, if you make use of the rx-internal-delay-ps
+properties, assuming both the MAC and PHY support them.
+
+> In the comment at the bottom of the dt binding there's this following
+> sentence:
 > 
-> Looking at the docs, I realized that most people will read the already
-> existing docs. So creating a completely new file just for the single
-> control didn't feel good. As you like.
+> # When the PCB does not implement the delays, the MAC or PHY must.  As
+> # such, this is software configuration, and so not described in Device
+> # Tree.
 > 
-> > Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > 
-> > > + *
-> > >   * For each ISP block that userspace wants to configure, a block-specific
-> > >   * structure is appended to the @data buffer, one after the other without gaps
-> > >   * in between nor overlaps. Userspace shall populate the @data_size field with
-> > > diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-> > > index 72e32814ea83..f836512e9deb 100644
-> > > --- a/include/uapi/linux/v4l2-controls.h
-> > > +++ b/include/uapi/linux/v4l2-controls.h
-> > > @@ -222,6 +222,12 @@ enum v4l2_colorfx {
-> > >   */
-> > >  #define V4L2_CID_USER_UVC_BASE                       (V4L2_CID_USER_BASE + 0x11e0)
-> > >  
-> > > +/*
-> > > + * The base for Rockchip ISP1 driver controls.
-> > > + * We reserve 16 controls for this driver.
-> > > + */
-> > > +#define V4L2_CID_USER_RKISP1_BASE            (V4L2_CID_USER_BASE + 0x1220)
-> > > +
-> > >  /* MPEG-class control IDs */
-> > >  /* The MPEG controls are applicable to all codec controls
-> > >   * and the 'MPEG' part of the define is historical */
+> Why do we have two possible locations for rx-internal-delay-ps: PHY and MAC?
 
--- 
-Regards,
+Sometimes both can add variable delays. Sometimes it is fixed 2ns.
 
-Laurent Pinchart
+I would actually prefer that these properties were not used, because
+they indicate somebody messed up. If you read the RGMII standard, it
+says a 2ns delay is required between the clock and the data. It is as
+simple as that. If you need to fine tune it, it means one of:
+
+The PCB is badly designed, care was not taken to ensure the PCB tracks
+are the same length.
+
+The MAC is badly designed, it does not add 0ns/2ns, but some other
+delay.
+
+The PHY is badly designed, it does not add 0ns/2ns, but some other
+delay.
+
+I don't have empirical data, but i get the feeling designs are getting
+worse, there is more need to use fine tuning. So these
+{rx|tx}-internal-delay-ps properties are needed. Maybe the board you
+are using is as a whole badly designed and needs fine tuning. If it
+does, you have to decide where to put the fine tuning. But i would
+prefer the 'PHY' adds the basic 2ns delay, and if need be, the MAC can
+add/remove some picoseconds.
+
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
