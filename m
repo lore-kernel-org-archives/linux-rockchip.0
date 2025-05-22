@@ -4,59 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9ED3C54E65
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 May 2025 23:16:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B233C54ED0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 01:32:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4QPTNThZHpVkjUChYF2g3PvdlEMiBpsFKXTHzXwUoX0=; b=UX/P/JipotIGC2
-	gma15OiLPSCkQcSwrjNnzaJ56sDxCtJT3azuRPSonGz9LiKesU8gL+Qq6SoDiFgxz2FNdPgYbj24h
-	5EXVjrjwyz8uz9WPxCVd4IUpJDRSqXlXMKYbiq5mOuIge9mmm7M+53SLqwn+E4riIycuGWRFrECYw
-	B4H58Ov3SxEUKsCPNSnUXVSenx45O3fEff3c2Qa0V+SB5JmQ/6lYUIC1aulcQER+oMT+D5CytPVHL
-	4STDKOGLbJbj7mKVme1kbq/PdrKSd9tFeRR2erGzBTyp1T4algFlU3eatbQPYkThqsr8bkoJ9VnY0
-	cQTQy12MbY9nJubIgndQ==;
+	List-Owner; bh=7HcxzdsKtOuWYH5zy/fh537IvbgpFVu8Iihe+86xCk8=; b=dECNnNc2uHh2kp
+	8HP7/O11ouy6Kde1K97i2nBfoVqpLImPlf9qEcTnjqhoL71zNgourvOlaROnbev0vQUCfCYugIYMc
+	iKIpDivldgMI9FRugGiRKVenrNv9ZQB4HrkzJ5lEH4anyxSoYhR2H1SKzZTfTedjRqQYWDrdfmUdT
+	ql/8CiZOaS4p6FZJ3DGalhNRLDoS8YCLvP7OaSs52H8t8fPpagtikl0m/JE7XGtf5k+DIJjqEefKJ
+	LuwQKvr73O1L0/QyuzjYtYId5x6erMia6uyeVjGdTdzgKQDjqsyVvc/Cclkkr0ZfNS6hQERQhEUoB
+	+Hq0co5+u7TVm19RUeHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHsfV-0000000H1Yn-3fZL;
-	Wed, 21 May 2025 23:16:13 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uHuml-0000000HBWY-2p67;
+	Thu, 22 May 2025 01:31:51 +0000
+Received: from mail-m15573.qiye.163.com ([101.71.155.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHsdQ-0000000H1Hg-3O0G;
-	Wed, 21 May 2025 23:14:06 +0000
-Received: from pendragon.ideasonboard.com (179.218-130-109.adsl-dyn.isp.belgacom.be [109.130.218.179])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5B1954A4;
-	Thu, 22 May 2025 01:13:40 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1747869220;
-	bh=9eaxAJuUxGXDxNw4OxA3sjZfNym6JEMTE9wQdEwBS9I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pKQ6uJLTt1hjRyCbgspDjz7A9F/kcl0WJ49DFNq1bV1IFGj2nPOoiVq/ZTw0FyAr7
-	 9+tmqSnMgXBiMNuAqFKsdpvyyVetpO0rFGRxeCi8VMenVa0p36ds6WaCVrf2DYBOr8
-	 eHZHBNODkbm+YiAJhU0KC04rrBvr2eoS1tMM505s=
-Date: Thu, 22 May 2025 01:13:55 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Stefan Klug <stefan.klug@ideasonboard.com>
-Cc: Jai Luthra <jai.luthra@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 1/2] media: rockchip: rkisp1: Add support for Wide
- Dynamic Range
-Message-ID: <20250521231355.GN12514@pendragon.ideasonboard.com>
-References: <20250429-awb64-v5-0-2dc3163a8cfc@ideasonboard.com>
- <20250429-awb64-v5-1-2dc3163a8cfc@ideasonboard.com>
- <xhcfkskuprbzeuek7xstlhpjiz7ks6qplehmrcrpuldnqdrwvf@lc5agieq22g4>
+	id 1uHumi-0000000HBVT-0jyE;
+	Thu, 22 May 2025 01:31:50 +0000
+Received: from [127.0.0.1] (gy-adaptive-ssl-proxy-4-entmail-virt151.gy.ntes [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 15f79d846;
+	Thu, 22 May 2025 09:31:31 +0800 (GMT+08:00)
+Message-ID: <155d4ef8-6cd1-43d7-b2b3-57facf3b946a@rock-chips.com>
+Date: Thu, 22 May 2025 09:31:02 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <xhcfkskuprbzeuek7xstlhpjiz7ks6qplehmrcrpuldnqdrwvf@lc5agieq22g4>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/rockchip: cdn-dp: Convert to drm bridge
+To: Andy Yan <andyshrk@163.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250507035148.415-1-kernel@airkyi.com>
+ <110d136.9fc9.196f2bf47dd.Coremail.andyshrk@163.com>
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <110d136.9fc9.196f2bf47dd.Coremail.andyshrk@163.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQx9NSFZJGk5DHU0fTB9DTBlWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a96f59df2c903abkunm2575b90dc4d006
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NSI6SBw6FTE2LhwxIgERCBY0
+	PwhPCxxVSlVKTE9MQ0xMT0JMSUpKVTMWGhIXVRgTGhQCElUYEx4VOwkUGBBWGBMSCwhVGBQWRVlX
+	WRILWUFZTkNVSUlVTFVKSk9ZV1kIAVlBSk1LS083Bg++
+DKIM-Signature: a=rsa-sha256;
+	b=eQHZt4xRyPZKaV5RtNu8XlgNHrEW4UAKyChfquvAQcRpx7BhJ+S1RzSWLyjINvqHQtr8aRsGGGv1W8uV3GZRpigb3OPwFRDH0BxKEXz+Ss8gjnbYOZ3eiaIHSxPLWpx/c6nkILFTOJxGozkEcgjbixUQvqdwj7siUdMM+saqJvc=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=X8H+jzQCc7Q5Ny+wJGB6p4R/NWcX4dRa0ydfWpYbt0M=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250521_161405_320077_53EBC770 
-X-CRM114-Status: GOOD (  32.10  )
+X-CRM114-CacheID: sfid-20250521_183148_734468_5FB53129 
+X-CRM114-Status: GOOD (  26.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,437 +73,266 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 01, 2025 at 09:53:21AM +0200, Stefan Klug wrote:
-> On Tue, Apr 29, 2025 at 05:11:53PM +0530, Jai Luthra wrote:
-> > RKISP supports a basic Wide Dynamic Range (WDR) module since the first
-> > iteration (v1.0) of the ISP. Add support for enabling and configuring it
-> > using extensible parameters.
-> > 
-> > Also, to ease programming, switch to using macro variables for defining
-> > the tonemapping curve register addresses.
-> > 
-> > Signed-off-by: Jai Luthra <jai.luthra@ideasonboard.com>
-> 
-> I couldn't spot anything missing. I retested the v5 sucessfully on a
-> Debix i.MX 8 M Plus Som.
-> 
-> So:
-> Reviewed-by: Stefan Klug <stefan.klug@ideasonboard.com> 
-> Tested-by: Stefan Klug <stefan.klug@ideasonboard.com>
-
-This patch seems ready, but I'd like to merge it with Stefan's new
-rkisp1 control to report the blocks supported by the driver. As -rc7 is
-out, with v6.15 expected on Sunday, we can't merged anything for two
-weeks and a half anyway, so it shouldn't cause any significant delay.
-
-Stefan, when you post a series with the new control, could you please
-include this patch as the last patch of the series ?
-
-> > ---
-> > Changes in v5:
-> > - Ensure WDR_USE_IREF is unset before reading params from user
-> > - Fix alignment issues in WDR patch
-> > - Drop reset value information from doxygen comments for WDR tone curve
-> > ---
-> >  .../media/platform/rockchip/rkisp1/rkisp1-params.c | 93 ++++++++++++++++++++
-> >  .../media/platform/rockchip/rkisp1/rkisp1-regs.h   | 99 ++++++----------------
-> >  include/uapi/linux/rkisp1-config.h                 | 92 ++++++++++++++++++++
-> >  3 files changed, 210 insertions(+), 74 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > index b28f4140c8a309a3231d44d825c6461e3ecb2a44..dc8e827e9464117877afe679611c528b4126172f 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > @@ -5,6 +5,7 @@
-> >   * Copyright (C) 2017 Rockchip Electronics Co., Ltd.
-> >   */
-> >  
-> > +#include <linux/bitfield.h>
-> >  #include <linux/math.h>
-> >  #include <linux/string.h>
-> >  
-> > @@ -60,6 +61,7 @@ union rkisp1_ext_params_config {
-> >  	struct rkisp1_ext_params_afc_config afc;
-> >  	struct rkisp1_ext_params_compand_bls_config compand_bls;
-> >  	struct rkisp1_ext_params_compand_curve_config compand_curve;
-> > +	struct rkisp1_ext_params_wdr_config wdr;
-> >  };
-> >  
-> >  enum rkisp1_params_formats {
-> > @@ -1348,6 +1350,73 @@ rkisp1_compand_compress_config(struct rkisp1_params *params,
-> >  				       arg->x);
-> >  }
-> >  
-> > +static void rkisp1_wdr_config(struct rkisp1_params *params,
-> > +			      const struct rkisp1_cif_isp_wdr_config *arg)
-> > +{
-> > +	unsigned int i;
-> > +	u32 value;
-> > +
-> > +	value = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_WDR_CTRL)
-> > +	      & ~(RKISP1_CIF_ISP_WDR_USE_IREF |
-> > +		  RKISP1_CIF_ISP_WDR_COLOR_SPACE_SELECT |
-> > +		  RKISP1_CIF_ISP_WDR_CR_MAPPING_DISABLE |
-> > +		  RKISP1_CIF_ISP_WDR_USE_Y9_8 |
-> > +		  RKISP1_CIF_ISP_WDR_USE_RGB7_8 |
-> > +		  RKISP1_CIF_ISP_WDR_DISABLE_TRANSIENT |
-> > +		  RKISP1_CIF_ISP_WDR_RGB_FACTOR_MASK);
-> > +
-> > +	/* Colorspace and chrominance mapping */
-> > +	if (arg->use_rgb_colorspace)
-> > +		value |= RKISP1_CIF_ISP_WDR_COLOR_SPACE_SELECT;
-> > +
-> > +	if (!arg->use_rgb_colorspace && arg->bypass_chroma_mapping)
-> > +		value |= RKISP1_CIF_ISP_WDR_CR_MAPPING_DISABLE;
-> > +
-> > +	/* Illumination reference */
-> > +	if (arg->use_iref) {
-> > +		value |= RKISP1_CIF_ISP_WDR_USE_IREF;
-> > +
-> > +		if (arg->iref_config.use_y9_8)
-> > +			value |= RKISP1_CIF_ISP_WDR_USE_Y9_8;
-> > +
-> > +		if (arg->iref_config.use_rgb7_8)
-> > +			value |= RKISP1_CIF_ISP_WDR_USE_RGB7_8;
-> > +
-> > +		if (arg->iref_config.disable_transient)
-> > +			value |= RKISP1_CIF_ISP_WDR_DISABLE_TRANSIENT;
-> > +
-> > +		value |= FIELD_PREP(RKISP1_CIF_ISP_WDR_RGB_FACTOR_MASK,
-> > +				    min(arg->iref_config.rgb_factor,
-> > +					RKISP1_CIF_ISP_WDR_RGB_FACTOR_MAX));
-> > +	}
-> > +
-> > +	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_WDR_CTRL, value);
-> > +
-> > +	/* RGB and Luminance offsets */
-> > +	value = FIELD_PREP(RKISP1_CIF_ISP_WDR_RGB_OFFSET_MASK,
-> > +			   arg->rgb_offset)
-> > +	      | FIELD_PREP(RKISP1_CIF_ISP_WDR_LUM_OFFSET_MASK,
-> > +			   arg->luma_offset);
-> > +	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_WDR_OFFSET, value);
-> > +
-> > +	/* DeltaMin */
-> > +	value = FIELD_PREP(RKISP1_CIF_ISP_WDR_DMIN_THRESH_MASK,
-> > +			   arg->dmin_thresh)
-> > +	      | FIELD_PREP(RKISP1_CIF_ISP_WDR_DMIN_STRENGTH_MASK,
-> > +			   min(arg->dmin_strength,
-> > +			       RKISP1_CIF_ISP_WDR_DMIN_STRENGTH_MAX));
-> > +	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_WDR_DELTAMIN, value);
-> > +
-> > +	/* Tone curve */
-> > +	for (i = 0; i < RKISP1_CIF_ISP_WDR_CURVE_NUM_DY_REGS; i++)
-> > +		rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_WDR_TONECURVE(i),
-> > +			     arg->tone_curve.dY[i]);
-> > +	for (i = 0; i < RKISP1_CIF_ISP_WDR_CURVE_NUM_COEFF; i++)
-> > +		rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_WDR_TONECURVE_YM(i),
-> > +			     arg->tone_curve.ym[i] &
-> > +				     RKISP1_CIF_ISP_WDR_TONE_CURVE_YM_MASK);
-> > +}
-> > +
-> >  static void
-> >  rkisp1_isp_isr_other_config(struct rkisp1_params *params,
-> >  			    const struct rkisp1_params_cfg *new_params)
-> > @@ -2005,6 +2074,25 @@ static void rkisp1_ext_params_compand_compress(struct rkisp1_params *params,
-> >  				      RKISP1_CIF_ISP_COMPAND_CTRL_COMPRESS_ENABLE);
-> >  }
-> >  
-> > +static void rkisp1_ext_params_wdr(struct rkisp1_params *params,
-> > +				  const union rkisp1_ext_params_config *block)
-> > +{
-> > +	const struct rkisp1_ext_params_wdr_config *wdr = &block->wdr;
-> > +
-> > +	if (wdr->header.flags & RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE) {
-> > +		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_WDR_CTRL,
-> > +					RKISP1_CIF_ISP_WDR_CTRL_ENABLE);
-> > +		return;
-> > +	}
-> > +
-> > +	rkisp1_wdr_config(params, &wdr->config);
-> > +
-> > +	if ((wdr->header.flags & RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE) &&
-> > +	    !(params->enabled_blocks & BIT(wdr->header.type)))
-> > +		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_WDR_CTRL,
-> > +				      RKISP1_CIF_ISP_WDR_CTRL_ENABLE);
-> > +}
-> > +
-> >  typedef void (*rkisp1_block_handler)(struct rkisp1_params *params,
-> >  			     const union rkisp1_ext_params_config *config);
-> >  
-> > @@ -2118,6 +2206,11 @@ static const struct rkisp1_ext_params_handler {
-> >  		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
-> >  		.features	= RKISP1_FEATURE_COMPAND,
-> >  	},
-> > +	[RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR] = {
-> > +		.size		= sizeof(struct rkisp1_ext_params_wdr_config),
-> > +		.handler	= rkisp1_ext_params_wdr,
-> > +		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
-> > +	},
-> >  };
-> >  
-> >  static void rkisp1_ext_params_config(struct rkisp1_params *params,
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > index bf0260600a1923eebde6b5fe233daf7d427362dd..5b9de1a2c624f4ecaf451fa806bb4b1c24a2cb55 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > @@ -710,6 +710,27 @@
-> >  #define RKISP1_CIF_ISP_COMPAND_CTRL_SOFT_RESET_FLAG	BIT(2)
-> >  #define RKISP1_CIF_ISP_COMPAND_CTRL_BLS_ENABLE		BIT(3)
-> >  
-> > +/* WDR */
-> > +/* ISP_WDR_CTRL */
-> > +#define RKISP1_CIF_ISP_WDR_CTRL_ENABLE			BIT(0)
-> > +#define RKISP1_CIF_ISP_WDR_COLOR_SPACE_SELECT		BIT(1)
-> > +#define RKISP1_CIF_ISP_WDR_CR_MAPPING_DISABLE		BIT(2)
-> > +#define RKISP1_CIF_ISP_WDR_USE_IREF			BIT(3)
-> > +#define RKISP1_CIF_ISP_WDR_USE_Y9_8			BIT(4)
-> > +#define RKISP1_CIF_ISP_WDR_USE_RGB7_8			BIT(5)
-> > +#define RKISP1_CIF_ISP_WDR_DISABLE_TRANSIENT		BIT(6)
-> > +#define RKISP1_CIF_ISP_WDR_RGB_FACTOR_MASK		GENMASK(11, 8)
-> > +#define RKISP1_CIF_ISP_WDR_RGB_FACTOR_MAX		8U
-> > +/* ISP_WDR_TONE_CURVE_YM */
-> > +#define RKISP1_CIF_ISP_WDR_TONE_CURVE_YM_MASK		GENMASK(12, 0)
-> > +/* ISP_WDR_OFFSET */
-> > +#define RKISP1_CIF_ISP_WDR_RGB_OFFSET_MASK		GENMASK(11, 0)
-> > +#define RKISP1_CIF_ISP_WDR_LUM_OFFSET_MASK		GENMASK(27, 16)
-> > +/* ISP_WDR_DELTAMIN */
-> > +#define RKISP1_CIF_ISP_WDR_DMIN_THRESH_MASK		GENMASK(11, 0)
-> > +#define RKISP1_CIF_ISP_WDR_DMIN_STRENGTH_MASK		GENMASK(20, 16)
-> > +#define RKISP1_CIF_ISP_WDR_DMIN_STRENGTH_MAX		16U
-> > +
-> >  /* =================================================================== */
-> >  /*                            CIF Registers                            */
-> >  /* =================================================================== */
-> > @@ -1302,82 +1323,12 @@
-> >  
-> >  #define RKISP1_CIF_ISP_WDR_BASE			0x00002a00
-> >  #define RKISP1_CIF_ISP_WDR_CTRL			(RKISP1_CIF_ISP_WDR_BASE + 0x00000000)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_1		(RKISP1_CIF_ISP_WDR_BASE + 0x00000004)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_2		(RKISP1_CIF_ISP_WDR_BASE + 0x00000008)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_3		(RKISP1_CIF_ISP_WDR_BASE + 0x0000000c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_4		(RKISP1_CIF_ISP_WDR_BASE + 0x00000010)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_0	(RKISP1_CIF_ISP_WDR_BASE + 0x00000014)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_1	(RKISP1_CIF_ISP_WDR_BASE + 0x00000018)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_2	(RKISP1_CIF_ISP_WDR_BASE + 0x0000001c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_3	(RKISP1_CIF_ISP_WDR_BASE + 0x00000020)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_4	(RKISP1_CIF_ISP_WDR_BASE + 0x00000024)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_5	(RKISP1_CIF_ISP_WDR_BASE + 0x00000028)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_6	(RKISP1_CIF_ISP_WDR_BASE + 0x0000002c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_7	(RKISP1_CIF_ISP_WDR_BASE + 0x00000030)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_8	(RKISP1_CIF_ISP_WDR_BASE + 0x00000034)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_9	(RKISP1_CIF_ISP_WDR_BASE + 0x00000038)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_10	(RKISP1_CIF_ISP_WDR_BASE + 0x0000003c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_11	(RKISP1_CIF_ISP_WDR_BASE + 0x00000040)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_12	(RKISP1_CIF_ISP_WDR_BASE + 0x00000044)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_13	(RKISP1_CIF_ISP_WDR_BASE + 0x00000048)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_14	(RKISP1_CIF_ISP_WDR_BASE + 0x0000004c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_15	(RKISP1_CIF_ISP_WDR_BASE + 0x00000050)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_16	(RKISP1_CIF_ISP_WDR_BASE + 0x00000054)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_17	(RKISP1_CIF_ISP_WDR_BASE + 0x00000058)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_18	(RKISP1_CIF_ISP_WDR_BASE + 0x0000005c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_19	(RKISP1_CIF_ISP_WDR_BASE + 0x00000060)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_20	(RKISP1_CIF_ISP_WDR_BASE + 0x00000064)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_21	(RKISP1_CIF_ISP_WDR_BASE + 0x00000068)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_22	(RKISP1_CIF_ISP_WDR_BASE + 0x0000006c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_23	(RKISP1_CIF_ISP_WDR_BASE + 0x00000070)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_24	(RKISP1_CIF_ISP_WDR_BASE + 0x00000074)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_25	(RKISP1_CIF_ISP_WDR_BASE + 0x00000078)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_26	(RKISP1_CIF_ISP_WDR_BASE + 0x0000007c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_27	(RKISP1_CIF_ISP_WDR_BASE + 0x00000080)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_28	(RKISP1_CIF_ISP_WDR_BASE + 0x00000084)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_29	(RKISP1_CIF_ISP_WDR_BASE + 0x00000088)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_30	(RKISP1_CIF_ISP_WDR_BASE + 0x0000008c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_31	(RKISP1_CIF_ISP_WDR_BASE + 0x00000090)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_32	(RKISP1_CIF_ISP_WDR_BASE + 0x00000094)
-> > +#define RKISP1_CIF_ISP_WDR_TONECURVE(n)		(RKISP1_CIF_ISP_WDR_BASE + 0x00000004 + (n) * 4)
-> > +#define RKISP1_CIF_ISP_WDR_TONECURVE_YM(n)	(RKISP1_CIF_ISP_WDR_BASE + 0x00000014 + (n) * 4)
-> >  #define RKISP1_CIF_ISP_WDR_OFFSET		(RKISP1_CIF_ISP_WDR_BASE + 0x00000098)
-> >  #define RKISP1_CIF_ISP_WDR_DELTAMIN		(RKISP1_CIF_ISP_WDR_BASE + 0x0000009c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_1_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000a0)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_2_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000a4)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_3_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000a8)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_4_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000ac)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_0_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000b0)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_1_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000b4)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_2_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000b8)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_3_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000bc)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_4_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000c0)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_5_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000c4)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_6_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000c8)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_7_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000cc)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_8_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000d0)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_9_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000d4)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_10_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000d8)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_11_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000dc)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_12_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000e0)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_13_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000e4)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_14_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000e8)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_15_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000ec)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_16_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000f0)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_17_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000f4)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_18_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000f8)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_19_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x000000fc)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_20_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000100)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_21_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000104)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_22_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000108)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_23_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x0000010c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_24_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000110)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_25_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000114)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_26_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000118)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_27_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x0000011c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_28_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000120)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_29_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000124)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_30_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000128)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_31_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x0000012c)
-> > -#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_32_SHD	(RKISP1_CIF_ISP_WDR_BASE + 0x00000130)
-> > +#define RKISP1_CIF_ISP_WDR_TONECURVE_SHD(n)	(RKISP1_CIF_ISP_WDR_BASE + 0x000000a0 + (n) * 4)
-> > +#define RKISP1_CIF_ISP_WDR_TONECURVE_YM_SHD(n)	(RKISP1_CIF_ISP_WDR_BASE + 0x000000b0 + (n) * 4)
-> >  
-> >  #define RKISP1_CIF_ISP_HIST_BASE_V12		0x00002c00
-> >  #define RKISP1_CIF_ISP_HIST_CTRL_V12		(RKISP1_CIF_ISP_HIST_BASE_V12 + 0x00000000)
-> > diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-> > index 2d995f3c1ca37820a381f1917a10bf08a304d992..59335097c01372252b296d960b39336dfb5ec197 100644
-> > --- a/include/uapi/linux/rkisp1-config.h
-> > +++ b/include/uapi/linux/rkisp1-config.h
-> > @@ -169,6 +169,13 @@
-> >   */
-> >  #define RKISP1_CIF_ISP_COMPAND_NUM_POINTS	64
-> >  
-> > +/*
-> > + * Wide Dynamic Range
-> > + */
-> > +#define RKISP1_CIF_ISP_WDR_CURVE_NUM_INTERV	32
-> > +#define RKISP1_CIF_ISP_WDR_CURVE_NUM_COEFF	(RKISP1_CIF_ISP_WDR_CURVE_NUM_INTERV + 1)
-> > +#define RKISP1_CIF_ISP_WDR_CURVE_NUM_DY_REGS	4
-> > +
-> >  /*
-> >   * Measurement types
-> >   */
-> > @@ -889,6 +896,72 @@ struct rkisp1_cif_isp_compand_curve_config {
-> >  	__u32 y[RKISP1_CIF_ISP_COMPAND_NUM_POINTS];
-> >  };
-> >  
-> > +/**
-> > + * struct rkisp1_cif_isp_wdr_tone_curve - Tone mapping curve definition for WDR.
-> > + *
-> > + * @dY: the dYn increments for horizontal (input) axis of the tone curve.
-> > + *      each 3-bit dY value represents an increment of 2**(value+3).
-> > + *      dY[0] bits 0:2 is increment dY1, bit 3 unused
-> > + *      dY[0] bits 4:6 is increment dY2, bit 7 unused
-> > + *      ...
-> > + *      dY[0] bits 28:30 is increment dY8, bit 31 unused
-> > + *      ... and so on till dY[3] bits 28:30 is increment dY32, bit 31 unused.
-> > + * @ym: the Ym values for the vertical (output) axis of the tone curve.
-> > + *      each value is 13 bit.
-> > + */
-> > +struct rkisp1_cif_isp_wdr_tone_curve {
-> > +	__u32 dY[RKISP1_CIF_ISP_WDR_CURVE_NUM_DY_REGS];
-> > +	__u16 ym[RKISP1_CIF_ISP_WDR_CURVE_NUM_COEFF];
-> > +};
-> > +
-> > +/**
-> > + * struct rkisp1_cif_isp_wdr_iref_config - Illumination reference config for WDR.
-> > + *
-> > + * Use illumination reference value as described below, instead of only the
-> > + * luminance (Y) value for tone mapping and gain calculations:
-> > + * IRef = (rgb_factor * RGBMax_tr + (8 - rgb_factor) * Y)/8
-> > + *
-> > + * @rgb_factor: defines how much influence the RGBmax approach has in
-> > + *              comparison to Y (valid values are 0..8).
-> > + * @use_y9_8: use Y*9/8 for maximum value calculation along with the
-> > + *            default of R, G, B for noise reduction.
-> > + * @use_rgb7_8: decrease RGBMax by 7/8 for noise reduction.
-> > + * @disable_transient: disable transient calculation between Y and RGBY_max.
-> > + */
-> > +struct rkisp1_cif_isp_wdr_iref_config {
-> > +	__u8 rgb_factor;
-> > +	__u8 use_y9_8;
-> > +	__u8 use_rgb7_8;
-> > +	__u8 disable_transient;
-> > +};
-> > +
-> > +/**
-> > + * struct rkisp1_cif_isp_wdr_config - Configuration for wide dynamic range.
-> > + *
-> > + * @tone_curve: tone mapping curve.
-> > + * @iref_config: illumination reference configuration. (when use_iref is true)
-> > + * @rgb_offset: RGB offset value for RGB operation mode. (12 bits)
-> > + * @luma_offset: luminance offset value for RGB operation mode. (12 bits)
-> > + * @dmin_thresh: lower threshold for deltaMin value. (12 bits)
-> > + * @dmin_strength: strength factor for deltaMin. (valid range is 0x00..0x10)
-> > + * @use_rgb_colorspace: use RGB instead of luminance/chrominance colorspace.
-> > + * @bypass_chroma_mapping: disable chrominance mapping (only valid if
-> > + *                         use_rgb_colorspace = 0)
-> > + * @use_iref: use illumination reference instead of Y for tone mapping
-> > + *            and gain calculations.
-> > + */
-> > +struct rkisp1_cif_isp_wdr_config {
-> > +	struct rkisp1_cif_isp_wdr_tone_curve tone_curve;
-> > +	struct rkisp1_cif_isp_wdr_iref_config iref_config;
-> > +	__u16 rgb_offset;
-> > +	__u16 luma_offset;
-> > +	__u16 dmin_thresh;
-> > +	__u8 dmin_strength;
-> > +	__u8 use_rgb_colorspace;
-> > +	__u8 bypass_chroma_mapping;
-> > +	__u8 use_iref;
-> > +};
-> > +
-> >  /*---------- PART2: Measurement Statistics ------------*/
-> >  
-> >  /**
-> > @@ -1059,6 +1132,7 @@ struct rkisp1_stat_buffer {
-> >   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS: BLS in the compand block
-> >   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND: Companding expand curve
-> >   * @RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS: Companding compress curve
-> > + * @RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR: Wide dynamic range
-> >   */
-> >  enum rkisp1_ext_params_block_type {
-> >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_BLS,
-> > @@ -1081,6 +1155,7 @@ enum rkisp1_ext_params_block_type {
-> >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS,
-> >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND,
-> >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS,
-> > +	RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR,
-> >  };
-> >  
-> >  #define RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE	(1U << 0)
-> > @@ -1460,6 +1535,23 @@ struct rkisp1_ext_params_compand_curve_config {
-> >  	struct rkisp1_cif_isp_compand_curve_config config;
-> >  } __attribute__((aligned(8)));
-> >  
-> > +/**
-> > + * struct rkisp1_ext_params_wdr_config - RkISP1 extensible params
-> > + *                                       Wide dynamic range config
-> > + *
-> > + * RkISP1 extensible parameters WDR block.
-> > + * Identified by :c:type:`RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR`
-> > + *
-> > + * @header: The RkISP1 extensible parameters header, see
-> > + *	    :c:type:`rkisp1_ext_params_block_header`
-> > + * @config: WDR configuration, see
-> > + *	    :c:type:`rkisp1_cif_isp_wdr_config`
-> > + */
-> > +struct rkisp1_ext_params_wdr_config {
-> > +	struct rkisp1_ext_params_block_header header;
-> > +	struct rkisp1_cif_isp_wdr_config config;
-> > +} __attribute__((aligned(8)));
-> > +
-> >  /*
-> >   * The rkisp1_ext_params_compand_curve_config structure is counted twice as it
-> >   * is used for both the COMPAND_EXPAND and COMPAND_COMPRESS block types.
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQW5keSwKCk9uIDIwMjUvNS8yMSAyMDowOSwgQW5keSBZYW4gd3JvdGU6Cj4gSGkgQ2hhb3lp
+77yMCj4KPiBBdCAyMDI1LTA1LTA3IDExOjUxOjQ4LCAiQ2hhb3lpIENoZW4iIDxrZXJuZWxAYWly
+a3lpLmNvbT4gd3JvdGU6Cj4+IEZyb206IENoYW95aSBDaGVuIDxjaGFveWkuY2hlbkByb2NrLWNo
+aXBzLmNvbT4KPj4KPj4gQ29udmVydCBpdCB0byBkcm0gYnJpZGdlIGRyaXZlciwgaXQgd2lsbCBi
+ZSBjb252ZW5pZW50IGZvciB1cyB0bwo+PiBtaWdyYXRlIHRoZSBjb25uZWN0b3IgcGFydCB0byB0
+aGUgZGlzcGxheSBkcml2ZXIgbGF0ZXIuCj4+Cj4+IFRlc3RlZCB3aXRoIFJLMzM5OSBFVkIgSU5E
+IGJvYXJkLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBDaGFveWkgQ2hlbiA8Y2hhb3lpLmNoZW5Acm9j
+ay1jaGlwcy5jb20+Cj4+IC0tLQo+PiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNv
+cmUuYyB8IDE2MyArKysrKysrKysrKysrLS0tLS0tLS0tLS0tCj4+IGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9jZG4tZHAtY29yZS5oIHwgICA1ICstCj4+IDIgZmlsZXMgY2hhbmdlZCwgODYgaW5z
+ZXJ0aW9ucygrKSwgODIgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9j
+ZG4tZHAtY29yZS5jCj4+IGluZGV4IDI5MmMzMWRlMThmMS4uYmM3MGRhZThmZjcyIDEwMDY0NAo+
+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwo+PiArKysgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYwo+PiBAQCAtMjUsOSArMjUsOSBA
+QAo+PiAjaW5jbHVkZSAiY2RuLWRwLWNvcmUuaCIKPj4gI2luY2x1ZGUgImNkbi1kcC1yZWcuaCIK
+Pj4KPj4gLXN0YXRpYyBpbmxpbmUgc3RydWN0IGNkbl9kcF9kZXZpY2UgKmNvbm5lY3Rvcl90b19k
+cChzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+PiArc3RhdGljIGlubGluZSBzdHJ1
+Y3QgY2RuX2RwX2RldmljZSAqYnJpZGdlX3RvX2RwKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2Up
+Cj4+IHsKPj4gLQlyZXR1cm4gY29udGFpbmVyX29mKGNvbm5lY3Rvciwgc3RydWN0IGNkbl9kcF9k
+ZXZpY2UsIGNvbm5lY3Rvcik7Cj4+ICsJcmV0dXJuIGNvbnRhaW5lcl9vZihicmlkZ2UsIHN0cnVj
+dCBjZG5fZHBfZGV2aWNlLCBicmlkZ2UpOwo+PiB9Cj4+Cj4+IHN0YXRpYyBpbmxpbmUgc3RydWN0
+IGNkbl9kcF9kZXZpY2UgKmVuY29kZXJfdG9fZHAoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVy
+KQo+PiBAQCAtMjMxLDkgKzIzMSw5IEBAIHN0YXRpYyBib29sIGNkbl9kcF9jaGVja19zaW5rX2Nv
+bm5lY3Rpb24oc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwKQo+PiB9Cj4+Cj4+IHN0YXRpYyBlbnVt
+IGRybV9jb25uZWN0b3Jfc3RhdHVzCj4+IC1jZG5fZHBfY29ubmVjdG9yX2RldGVjdChzdHJ1Y3Qg
+ZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yLCBib29sIGZvcmNlKQo+PiArY2RuX2RwX2JyaWRnZV9k
+ZXRlY3Qoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKPj4gewo+PiAtCXN0cnVjdCBjZG5fZHBf
+ZGV2aWNlICpkcCA9IGNvbm5lY3Rvcl90b19kcChjb25uZWN0b3IpOwo+PiArCXN0cnVjdCBjZG5f
+ZHBfZGV2aWNlICpkcCA9IGJyaWRnZV90b19kcChicmlkZ2UpOwo+PiAJZW51bSBkcm1fY29ubmVj
+dG9yX3N0YXR1cyBzdGF0dXMgPSBjb25uZWN0b3Jfc3RhdHVzX2Rpc2Nvbm5lY3RlZDsKPj4KPj4g
+CW11dGV4X2xvY2soJmRwLT5sb2NrKTsKPj4gQEAgLTI0NCw0MSArMjQ0LDI2IEBAIGNkbl9kcF9j
+b25uZWN0b3JfZGV0ZWN0KHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IsIGJvb2wgZm9y
+Y2UpCj4+IAlyZXR1cm4gc3RhdHVzOwo+PiB9Cj4+Cj4+IC1zdGF0aWMgdm9pZCBjZG5fZHBfY29u
+bmVjdG9yX2Rlc3Ryb3koc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcikKPj4gK3N0YXRp
+YyBjb25zdCBzdHJ1Y3QgZHJtX2VkaWQgKgo+PiArY2RuX2RwX2Nvbm5lY3Rvcl9lZGlkX3JlYWQo
+c3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSwgc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3Rv
+cikKPiBUaGlzIHNob3VsZCBiZSBjZG5fZHBfYnJpZGdlX2VkaWRfcmVhZAoKV2lsbCBmaXggaW4g
+djIuCgoKPgo+PiB7Cj4+IC0JZHJtX2Nvbm5lY3Rvcl91bnJlZ2lzdGVyKGNvbm5lY3Rvcik7Cj4+
+IC0JZHJtX2Nvbm5lY3Rvcl9jbGVhbnVwKGNvbm5lY3Rvcik7Cj4+IC19Cj4+IC0KPj4gLXN0YXRp
+YyBjb25zdCBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9mdW5jcyBjZG5fZHBfYXRvbWljX2Nvbm5lY3Rv
+cl9mdW5jcyA9IHsKPj4gLQkuZGV0ZWN0ID0gY2RuX2RwX2Nvbm5lY3Rvcl9kZXRlY3QsCj4+IC0J
+LmRlc3Ryb3kgPSBjZG5fZHBfY29ubmVjdG9yX2Rlc3Ryb3ksCj4+IC0JLmZpbGxfbW9kZXMgPSBk
+cm1faGVscGVyX3Byb2JlX3NpbmdsZV9jb25uZWN0b3JfbW9kZXMsCj4+IC0JLnJlc2V0ID0gZHJt
+X2F0b21pY19oZWxwZXJfY29ubmVjdG9yX3Jlc2V0LAo+PiAtCS5hdG9taWNfZHVwbGljYXRlX3N0
+YXRlID0gZHJtX2F0b21pY19oZWxwZXJfY29ubmVjdG9yX2R1cGxpY2F0ZV9zdGF0ZSwKPj4gLQku
+YXRvbWljX2Rlc3Ryb3lfc3RhdGUgPSBkcm1fYXRvbWljX2hlbHBlcl9jb25uZWN0b3JfZGVzdHJv
+eV9zdGF0ZSwKPj4gLX07Cj4+IC0KPj4gLXN0YXRpYyBpbnQgY2RuX2RwX2Nvbm5lY3Rvcl9nZXRf
+bW9kZXMoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcikKPj4gLXsKPj4gLQlzdHJ1Y3Qg
+Y2RuX2RwX2RldmljZSAqZHAgPSBjb25uZWN0b3JfdG9fZHAoY29ubmVjdG9yKTsKPj4gLQlpbnQg
+cmV0ID0gMDsKPj4gKwlzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAgPSBicmlkZ2VfdG9fZHAoYnJp
+ZGdlKTsKPj4gKwljb25zdCBzdHJ1Y3QgZHJtX2VkaWQgKmRybV9lZGlkOwo+Pgo+PiAJbXV0ZXhf
+bG9jaygmZHAtPmxvY2spOwo+PiAtCj4+IC0JcmV0ID0gZHJtX2VkaWRfY29ubmVjdG9yX2FkZF9t
+b2Rlcyhjb25uZWN0b3IpOwo+PiAtCj4+ICsJZHJtX2VkaWQgPSBkcm1fZWRpZF9yZWFkX2N1c3Rv
+bShkcC0+Y29ubmVjdG9yLAo+PiArCQkJCQljZG5fZHBfZ2V0X2VkaWRfYmxvY2ssIGRwKTsKPiBV
+c2UgZHJtX2VkaWRfcmVhZF9kZGMKCmRybV9lZGlkX3JlYWRfZGRjKCkgbmVlZCBhIGkyY19hZGFw
+dGVyLCBidXQgY2RuLWRwIGRvZXNuJ3QgaGF2ZSBpdC4KCgo+Cj4+IAltdXRleF91bmxvY2soJmRw
+LT5sb2NrKTsKPj4KPj4gLQlyZXR1cm4gcmV0Owo+PiArCXJldHVybiBkcm1fZWRpZDsKPj4gfQo+
+Pgo+PiBzdGF0aWMgZW51bSBkcm1fbW9kZV9zdGF0dXMKPj4gLWNkbl9kcF9jb25uZWN0b3JfbW9k
+ZV92YWxpZChzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yLAo+PiAtCQkJICAgIGNvbnN0
+IHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlKQo+PiArY2RuX2RwX2JyaWRnZV9tb2RlX3Zh
+bGlkKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCj4+ICsJCQkgY29uc3Qgc3RydWN0IGRybV9k
+aXNwbGF5X2luZm8gKmRpc3BsYXlfaW5mbywKPj4gKwkJCSBjb25zdCBzdHJ1Y3QgZHJtX2Rpc3Bs
+YXlfbW9kZSAqbW9kZSkKPj4gewo+PiAtCXN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCA9IGNvbm5l
+Y3Rvcl90b19kcChjb25uZWN0b3IpOwo+PiAtCXN0cnVjdCBkcm1fZGlzcGxheV9pbmZvICpkaXNw
+bGF5X2luZm8gPSAmZHAtPmNvbm5lY3Rvci5kaXNwbGF5X2luZm87Cj4+ICsJc3RydWN0IGNkbl9k
+cF9kZXZpY2UgKmRwID0gYnJpZGdlX3RvX2RwKGJyaWRnZSk7Cj4+IAl1MzIgcmVxdWVzdGVkLCBh
+Y3R1YWwsIHJhdGUsIHNpbmtfbWF4LCBzb3VyY2VfbWF4ID0gMDsKPj4gCXU4IGxhbmVzLCBicGM7
+Cj4+Cj4+IEBAIC0zMjMsMTEgKzMwOCw2IEBAIGNkbl9kcF9jb25uZWN0b3JfbW9kZV92YWxpZChz
+dHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yLAo+PiAJcmV0dXJuIE1PREVfT0s7Cj4+IH0K
+Pj4KPj4gLXN0YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3MgY2RuX2RwX2Nv
+bm5lY3Rvcl9oZWxwZXJfZnVuY3MgPSB7Cj4+IC0JLmdldF9tb2RlcyA9IGNkbl9kcF9jb25uZWN0
+b3JfZ2V0X21vZGVzLAo+PiAtCS5tb2RlX3ZhbGlkID0gY2RuX2RwX2Nvbm5lY3Rvcl9tb2RlX3Zh
+bGlkLAo+PiAtfTsKPj4gLQo+PiBzdGF0aWMgaW50IGNkbl9kcF9maXJtd2FyZV9pbml0KHN0cnVj
+dCBjZG5fZHBfZGV2aWNlICpkcCkKPj4gewo+PiAJaW50IHJldDsKPj4gQEAgLTM2MCw3ICszNDAs
+NyBAQCBzdGF0aWMgaW50IGNkbl9kcF9maXJtd2FyZV9pbml0KHN0cnVjdCBjZG5fZHBfZGV2aWNl
+ICpkcCkKPj4KPj4gc3RhdGljIGludCBjZG5fZHBfZ2V0X3NpbmtfY2FwYWJpbGl0eShzdHJ1Y3Qg
+Y2RuX2RwX2RldmljZSAqZHApCj4+IHsKPj4gLQljb25zdCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfaW5m
+byAqaW5mbyA9ICZkcC0+Y29ubmVjdG9yLmRpc3BsYXlfaW5mbzsKPj4gKwljb25zdCBzdHJ1Y3Qg
+ZHJtX2Rpc3BsYXlfaW5mbyAqaW5mbyA9ICZkcC0+Y29ubmVjdG9yLT5kaXNwbGF5X2luZm87Cj4+
+IAlpbnQgcmV0Owo+Pgo+PiAJaWYgKCFjZG5fZHBfY2hlY2tfc2lua19jb25uZWN0aW9uKGRwKSkK
+Pj4gQEAgLTM3NCw5ICszNTQsOSBAQCBzdGF0aWMgaW50IGNkbl9kcF9nZXRfc2lua19jYXBhYmls
+aXR5KHN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCkKPj4gCX0KPj4KPj4gCWRybV9lZGlkX2ZyZWUo
+ZHAtPmRybV9lZGlkKTsKPj4gLQlkcC0+ZHJtX2VkaWQgPSBkcm1fZWRpZF9yZWFkX2N1c3RvbSgm
+ZHAtPmNvbm5lY3RvciwKPj4gKwlkcC0+ZHJtX2VkaWQgPSBkcm1fZWRpZF9yZWFkX2N1c3RvbShk
+cC0+Y29ubmVjdG9yLAo+PiAJCQkJCSAgICBjZG5fZHBfZ2V0X2VkaWRfYmxvY2ssIGRwKTsKPj4g
+LQlkcm1fZWRpZF9jb25uZWN0b3JfdXBkYXRlKCZkcC0+Y29ubmVjdG9yLCBkcC0+ZHJtX2VkaWQp
+Owo+PiArCWRybV9lZGlkX2Nvbm5lY3Rvcl91cGRhdGUoZHAtPmNvbm5lY3RvciwgZHAtPmRybV9l
+ZGlkKTsKPj4KPj4gCWRwLT5zaW5rX2hhc19hdWRpbyA9IGluZm8tPmhhc19hdWRpbzsKPj4KPj4g
+QEAgLTQxNiwxMSArMzk2LDExIEBAIHN0YXRpYyBpbnQgY2RuX2RwX2VuYWJsZV9waHkoc3RydWN0
+IGNkbl9kcF9kZXZpY2UgKmRwLCBzdHJ1Y3QgY2RuX2RwX3BvcnQgKnBvcnQpCj4+IAkJZ290byBl
+cnJfcG93ZXJfb247Cj4+IAl9Cj4+Cj4+IC0JcmV0ID0gZXh0Y29uX2dldF9wcm9wZXJ0eShwb3J0
+LT5leHRjb24sIEVYVENPTl9ESVNQX0RQLAo+PiAtCQkJCSAgRVhUQ09OX1BST1BfVVNCX1RZUEVD
+X1BPTEFSSVRZLCAmcHJvcGVydHkpOwo+PiAtCWlmIChyZXQpIHsKPj4gLQkJRFJNX0RFVl9FUlJP
+UihkcC0+ZGV2LCAiZ2V0IHByb3BlcnR5IGZhaWxlZFxuIik7Cj4+IC0JCWdvdG8gZXJyX3Bvd2Vy
+X29uOwo+PiArCQlyZXQgPSBleHRjb25fZ2V0X3Byb3BlcnR5KHBvcnQtPmV4dGNvbiwgRVhUQ09O
+X0RJU1BfRFAsCj4+ICsJCQkJCUVYVENPTl9QUk9QX1VTQl9UWVBFQ19QT0xBUklUWSwgJnByb3Bl
+cnR5KTsKPj4gKwkJaWYgKHJldCkgewo+PiArCQkJRFJNX0RFVl9FUlJPUihkcC0+ZGV2LCAiZ2V0
+IHByb3BlcnR5IGZhaWxlZFxuIik7Cj4+ICsJCQlnb3RvIGVycl9wb3dlcl9vbjsKPj4gCX0KPj4K
+Pj4gCXBvcnQtPmxhbmVzID0gY2RuX2RwX2dldF9wb3J0X2xhbmVzKHBvcnQpOwo+PiBAQCAtNTUx
+LDcgKzUzMSw3IEBAIHN0YXRpYyB2b2lkIGNkbl9kcF9lbmNvZGVyX21vZGVfc2V0KHN0cnVjdCBk
+cm1fZW5jb2RlciAqZW5jb2RlciwKPj4gCQkJCSAgICBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAq
+YWRqdXN0ZWQpCj4+IHsKPj4gCXN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCA9IGVuY29kZXJfdG9f
+ZHAoZW5jb2Rlcik7Cj4+IC0Jc3RydWN0IGRybV9kaXNwbGF5X2luZm8gKmRpc3BsYXlfaW5mbyA9
+ICZkcC0+Y29ubmVjdG9yLmRpc3BsYXlfaW5mbzsKPj4gKwlzdHJ1Y3QgZHJtX2Rpc3BsYXlfaW5m
+byAqZGlzcGxheV9pbmZvID0gJmRwLT5jb25uZWN0b3ItPmRpc3BsYXlfaW5mbzsKPj4gCXN0cnVj
+dCB2aWRlb19pbmZvICp2aWRlbyA9ICZkcC0+dmlkZW9faW5mbzsKPj4KPj4gCXN3aXRjaCAoZGlz
+cGxheV9pbmZvLT5icGMpIHsKPj4gQEAgLTU5OSwxMiArNTc5LDEyIEBAIHN0YXRpYyB2b2lkIGNk
+bl9kcF9hdWRpb19oYW5kbGVfcGx1Z2dlZF9jaGFuZ2Uoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRw
+LAo+PiAJCWRwLT5wbHVnZ2VkX2NiKGRwLT5jb2RlY19kZXYsIHBsdWdnZWQpOwo+PiB9Cj4+Cj4+
+IC1zdGF0aWMgdm9pZCBjZG5fZHBfZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNvZGVyICpl
+bmNvZGVyKQo+PiArc3RhdGljIHZvaWQgY2RuX2RwX2JyaWRnZV9hdG9taWNfZW5hYmxlKHN0cnVj
+dCBkcm1fYnJpZGdlICpicmlkZ2UsIHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSkKPj4g
+ewo+PiAtCXN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCA9IGVuY29kZXJfdG9fZHAoZW5jb2Rlcik7
+Cj4+ICsJc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwID0gYnJpZGdlX3RvX2RwKGJyaWRnZSk7Cj4+
+IAlpbnQgcmV0LCB2YWw7Cj4+Cj4+IC0JcmV0ID0gZHJtX29mX2VuY29kZXJfYWN0aXZlX2VuZHBv
+aW50X2lkKGRwLT5kZXYtPm9mX25vZGUsIGVuY29kZXIpOwo+PiArCXJldCA9IGRybV9vZl9lbmNv
+ZGVyX2FjdGl2ZV9lbmRwb2ludF9pZChkcC0+ZGV2LT5vZl9ub2RlLCAmZHAtPmVuY29kZXIuZW5j
+b2Rlcik7Cj4+IAlpZiAocmV0IDwgMCkgewo+PiAJCURSTV9ERVZfRVJST1IoZHAtPmRldiwgIkNv
+dWxkIG5vdCBnZXQgdm9wIGlkLCAlZCIsIHJldCk7Cj4+IAkJcmV0dXJuOwo+PiBAQCAtNjI1LDcg
+KzYwNSw3IEBAIHN0YXRpYyB2b2lkIGNkbl9kcF9lbmNvZGVyX2VuYWJsZShzdHJ1Y3QgZHJtX2Vu
+Y29kZXIgKmVuY29kZXIpCj4+Cj4+IAlyZXQgPSBjZG5fZHBfZW5hYmxlKGRwKTsKPj4gCWlmIChy
+ZXQpIHsKPj4gLQkJRFJNX0RFVl9FUlJPUihkcC0+ZGV2LCAiRmFpbGVkIHRvIGVuYWJsZSBlbmNv
+ZGVyICVkXG4iLAo+PiArCQlEUk1fREVWX0VSUk9SKGRwLT5kZXYsICJGYWlsZWQgdG8gZW5hYmxl
+IGJyaWRnZSAlZFxuIiwKPj4gCQkJICAgICAgcmV0KTsKPj4gCQlnb3RvIG91dDsKPj4gCX0KPj4g
+QEAgLTY2MSw5ICs2NDEsOSBAQCBzdGF0aWMgdm9pZCBjZG5fZHBfZW5jb2Rlcl9lbmFibGUoc3Ry
+dWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQo+PiAJbXV0ZXhfdW5sb2NrKCZkcC0+bG9jayk7Cj4+
+IH0KPj4KPj4gLXN0YXRpYyB2b2lkIGNkbl9kcF9lbmNvZGVyX2Rpc2FibGUoc3RydWN0IGRybV9l
+bmNvZGVyICplbmNvZGVyKQo+PiArc3RhdGljIHZvaWQgY2RuX2RwX2JyaWRnZV9hdG9taWNfZGlz
+YWJsZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLCBzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAq
+c3RhdGUpCj4+IHsKPj4gLQlzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAgPSBlbmNvZGVyX3RvX2Rw
+KGVuY29kZXIpOwo+PiArCXN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCA9IGJyaWRnZV90b19kcChi
+cmlkZ2UpOwo+PiAJaW50IHJldDsKPj4KPj4gCW11dGV4X2xvY2soJmRwLT5sb2NrKTsKPj4gQEAg
+LTY3Miw3ICs2NTIsNyBAQCBzdGF0aWMgdm9pZCBjZG5fZHBfZW5jb2Rlcl9kaXNhYmxlKHN0cnVj
+dCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPj4gCWlmIChkcC0+YWN0aXZlKSB7Cj4+IAkJcmV0ID0g
+Y2RuX2RwX2Rpc2FibGUoZHApOwo+PiAJCWlmIChyZXQpIHsKPj4gLQkJCURSTV9ERVZfRVJST1Io
+ZHAtPmRldiwgIkZhaWxlZCB0byBkaXNhYmxlIGVuY29kZXIgJWRcbiIsCj4+ICsJCQlEUk1fREVW
+X0VSUk9SKGRwLT5kZXYsICJGYWlsZWQgdG8gZGlzYWJsZSBicmlkZ2UgJWRcbiIsCj4+IAkJCQkg
+ICAgICByZXQpOwo+PiAJCX0KPj4gCX0KPj4gQEAgLTcwMywxMyArNjgzLDMxIEBAIHN0YXRpYyBp
+bnQgY2RuX2RwX2VuY29kZXJfYXRvbWljX2NoZWNrKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2Rl
+ciwKPj4gCXJldHVybiAwOwo+PiB9Cj4+Cj4+ICtzdGF0aWMgdm9pZCBjZG5fZHBfaHBkX25vdGlm
+eShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAo+PiArCQkJICAgZW51bSBkcm1fY29ubmVjdG9y
+X3N0YXR1cyBzdGF0dXMpCj4+ICt7Cj4+ICsJc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwID0gYnJp
+ZGdlX3RvX2RwKGJyaWRnZSk7Cj4+ICsKPj4gKwlzY2hlZHVsZV93b3JrKCZkcC0+ZXZlbnRfd29y
+ayk7Cj4+ICt9Cj4+ICsKPj4gc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fZW5jb2Rlcl9oZWxwZXJf
+ZnVuY3MgY2RuX2RwX2VuY29kZXJfaGVscGVyX2Z1bmNzID0gewo+PiAJLm1vZGVfc2V0ID0gY2Ru
+X2RwX2VuY29kZXJfbW9kZV9zZXQsCj4+IC0JLmVuYWJsZSA9IGNkbl9kcF9lbmNvZGVyX2VuYWJs
+ZSwKPj4gLQkuZGlzYWJsZSA9IGNkbl9kcF9lbmNvZGVyX2Rpc2FibGUsCj4+IAkuYXRvbWljX2No
+ZWNrID0gY2RuX2RwX2VuY29kZXJfYXRvbWljX2NoZWNrLAo+PiB9Owo+Pgo+PiArc3RhdGljIGNv
+bnN0IHN0cnVjdCBkcm1fYnJpZGdlX2Z1bmNzIGNkbl9kcF9icmlkZ2VfZnVuY3MgPSB7Cj4+ICsJ
+LmF0b21pY19kdXBsaWNhdGVfc3RhdGUgPSBkcm1fYXRvbWljX2hlbHBlcl9icmlkZ2VfZHVwbGlj
+YXRlX3N0YXRlLAo+PiArCS5hdG9taWNfZGVzdHJveV9zdGF0ZSA9IGRybV9hdG9taWNfaGVscGVy
+X2JyaWRnZV9kZXN0cm95X3N0YXRlLAo+PiArCS5hdG9taWNfcmVzZXQgPSBkcm1fYXRvbWljX2hl
+bHBlcl9icmlkZ2VfcmVzZXQsCj4+ICsJLmRldGVjdCA9IGNkbl9kcF9icmlkZ2VfZGV0ZWN0LAo+
+PiArCS5lZGlkX3JlYWQgPSBjZG5fZHBfY29ubmVjdG9yX2VkaWRfcmVhZCwKPj4gKwkuYXRvbWlj
+X2VuYWJsZSA9IGNkbl9kcF9icmlkZ2VfYXRvbWljX2VuYWJsZSwKPj4gKwkuYXRvbWljX2Rpc2Fi
+bGUgPSBjZG5fZHBfYnJpZGdlX2F0b21pY19kaXNhYmxlLAo+PiArCS5tb2RlX3ZhbGlkID0gY2Ru
+X2RwX2JyaWRnZV9tb2RlX3ZhbGlkLAo+PiArCS5ocGRfbm90aWZ5ID0gY2RuX2RwX2hwZF9ub3Rp
+ZnksCj4+ICt9Owo+PiArCj4+IHN0YXRpYyBpbnQgY2RuX2RwX3BhcnNlX2R0KHN0cnVjdCBjZG5f
+ZHBfZGV2aWNlICpkcCkKPj4gewo+PiAJc3RydWN0IGRldmljZSAqZGV2ID0gZHAtPmRldjsKPj4g
+QEAgLTg1OSw3ICs4NTcsNyBAQCBzdGF0aWMgaW50IGNkbl9kcF9hdWRpb19nZXRfZWxkKHN0cnVj
+dCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSwKPj4gewo+PiAJc3RydWN0IGNkbl9kcF9kZXZpY2Ug
+KmRwID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4+Cj4+IC0JbWVtY3B5KGJ1ZiwgZHAtPmNvbm5l
+Y3Rvci5lbGQsIG1pbihzaXplb2YoZHAtPmNvbm5lY3Rvci5lbGQpLCBsZW4pKTsKPj4gKwltZW1j
+cHkoYnVmLCBkcC0+Y29ubmVjdG9yLT5lbGQsIG1pbihzaXplb2YoZHAtPmNvbm5lY3Rvci0+ZWxk
+KSwgbGVuKSk7Cj4+Cj4+IAlyZXR1cm4gMDsKPj4gfQo+PiBAQCAtMTAwNiw3ICsxMDA0LDYgQEAg
+c3RhdGljIHZvaWQgY2RuX2RwX3BkX2V2ZW50X3dvcmsoc3RydWN0IHdvcmtfc3RydWN0ICp3b3Jr
+KQo+Pgo+PiBvdXQ6Cj4+IAltdXRleF91bmxvY2soJmRwLT5sb2NrKTsKPj4gLQlkcm1fY29ubmVj
+dG9yX2hlbHBlcl9ocGRfaXJxX2V2ZW50KCZkcC0+Y29ubmVjdG9yKTsKPj4gfQo+Pgo+PiBzdGF0
+aWMgaW50IGNkbl9kcF9wZF9ldmVudChzdHJ1Y3Qgbm90aWZpZXJfYmxvY2sgKm5iLAo+PiBAQCAt
+MTAzMCw3ICsxMDI3LDYgQEAgc3RhdGljIGludCBjZG5fZHBfYmluZChzdHJ1Y3QgZGV2aWNlICpk
+ZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rlciwgdm9pZCAqZGF0YSkKPj4gewo+PiAJc3RydWN0IGNk
+bl9kcF9kZXZpY2UgKmRwID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4+IAlzdHJ1Y3QgZHJtX2Vu
+Y29kZXIgKmVuY29kZXI7Cj4+IC0Jc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcjsKPj4g
+CXN0cnVjdCBjZG5fZHBfcG9ydCAqcG9ydDsKPj4gCXN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2
+ID0gZGF0YTsKPj4gCWludCByZXQsIGk7Cj4+IEBAIC0xMDUzLDYgKzEwNDksMTUgQEAgc3RhdGlj
+IGludCBjZG5fZHBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rl
+ciwgdm9pZCAqZGF0YSkKPj4gCQkJCQkJCSAgICAgZGV2LT5vZl9ub2RlKTsKPj4gCURSTV9ERUJV
+R19LTVMoInBvc3NpYmxlX2NydGNzID0gMHgleFxuIiwgZW5jb2Rlci0+cG9zc2libGVfY3J0Y3Mp
+Owo+Pgo+PiArCS8qCj4+ICsJICogSWYgd2UgZmFpbGVkIHRvIGZpbmQgdGhlIENSVEMocykgd2hp
+Y2ggdGhpcyBlbmNvZGVyIGlzCj4+ICsJICogc3VwcG9zZWQgdG8gYmUgY29ubmVjdGVkIHRvLCBp
+dCdzIGJlY2F1c2UgdGhlIENSVEMgaGFzCj4+ICsJICogbm90IGJlZW4gcmVnaXN0ZXJlZCB5ZXQu
+IERlZmVyIHByb2JpbmcsIGFuZCBob3BlIHRoYXQKPj4gKwkgKiB0aGUgcmVxdWlyZWQgQ1JUQyBp
+cyBhZGRlZCBsYXRlci4KPj4gKwkgKi8KPj4gKwlpZiAoZW5jb2Rlci0+cG9zc2libGVfY3J0Y3Mg
+PT0gMCkKPj4gKwkJcmV0dXJuIC1FUFJPQkVfREVGRVI7Cj4+ICsKPj4gCXJldCA9IGRybV9zaW1w
+bGVfZW5jb2Rlcl9pbml0KGRybV9kZXYsIGVuY29kZXIsCj4+IAkJCQkgICAgICBEUk1fTU9ERV9F
+TkNPREVSX1RNRFMpOwo+PiAJaWYgKHJldCkgewo+PiBAQCAtMTA2MiwyNiArMTA2NywzMSBAQCBz
+dGF0aWMgaW50IGNkbl9kcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAq
+bWFzdGVyLCB2b2lkICpkYXRhKQo+Pgo+PiAJZHJtX2VuY29kZXJfaGVscGVyX2FkZChlbmNvZGVy
+LCAmY2RuX2RwX2VuY29kZXJfaGVscGVyX2Z1bmNzKTsKPj4KPj4gLQljb25uZWN0b3IgPSAmZHAt
+PmNvbm5lY3RvcjsKPj4gLQljb25uZWN0b3ItPnBvbGxlZCA9IERSTV9DT05ORUNUT1JfUE9MTF9I
+UEQ7Cj4+IC0JY29ubmVjdG9yLT5kcG1zID0gRFJNX01PREVfRFBNU19PRkY7Cj4+ICsJZHAtPmJy
+aWRnZS5kcml2ZXJfcHJpdmF0ZSA9IGRwOwo+PiArCWRwLT5icmlkZ2UuZnVuY3MgPSAmY2RuX2Rw
+X2JyaWRnZV9mdW5jczsKPiBUcnkgdXNlIGRldm1fZHJtX2JyaWRnZV9hbGxvYwoKT2theSwgSSB3
+aWxsIHRyeSB0byB1c2UgdGhpcyBpbiB2Mi4KCgo+Cj4+ICsJZHAtPmJyaWRnZS5vcHMgPSBEUk1f
+QlJJREdFX09QX0RFVEVDVCB8Cj4+ICsJCQkgICBEUk1fQlJJREdFX09QX0VESUQgfAo+PiArCQkJ
+ICAgRFJNX0JSSURHRV9PUF9IUEQ7Cj4+ICsJZHAtPmJyaWRnZS5vZl9ub2RlID0gZHAtPmRldi0+
+b2Zfbm9kZTsKPj4gKwlkcC0+YnJpZGdlLnR5cGUgPSBEUk1fTU9ERV9DT05ORUNUT1JfRGlzcGxh
+eVBvcnQ7Cj4+Cj4+IC0JcmV0ID0gZHJtX2Nvbm5lY3Rvcl9pbml0KGRybV9kZXYsIGNvbm5lY3Rv
+ciwKPj4gLQkJCQkgJmNkbl9kcF9hdG9taWNfY29ubmVjdG9yX2Z1bmNzLAo+PiAtCQkJCSBEUk1f
+TU9ERV9DT05ORUNUT1JfRGlzcGxheVBvcnQpOwo+PiAtCWlmIChyZXQpIHsKPj4gLQkJRFJNX0VS
+Uk9SKCJmYWlsZWQgdG8gaW5pdGlhbGl6ZSBjb25uZWN0b3Igd2l0aCBkcm1cbiIpOwo+PiAtCQln
+b3RvIGVycl9mcmVlX2VuY29kZXI7Cj4+IC0JfQo+PiArCXJldCA9IGRldm1fZHJtX2JyaWRnZV9h
+ZGQoZGV2LCAmZHAtPmJyaWRnZSk7Cj4+ICsJaWYgKHJldCkKPj4gKwkJcmV0dXJuIHJldDsKPj4K
+Pj4gLQlkcm1fY29ubmVjdG9yX2hlbHBlcl9hZGQoY29ubmVjdG9yLCAmY2RuX2RwX2Nvbm5lY3Rv
+cl9oZWxwZXJfZnVuY3MpOwo+PiArCXJldCA9IGRybV9icmlkZ2VfYXR0YWNoKGVuY29kZXIsICZk
+cC0+YnJpZGdlLCBOVUxMLCBEUk1fQlJJREdFX0FUVEFDSF9OT19DT05ORUNUT1IpOwo+PiArCWlm
+IChyZXQpCj4+ICsJCXJldHVybiByZXQ7Cj4+Cj4+IC0JcmV0ID0gZHJtX2Nvbm5lY3Rvcl9hdHRh
+Y2hfZW5jb2Rlcihjb25uZWN0b3IsIGVuY29kZXIpOwo+PiAtCWlmIChyZXQpIHsKPj4gLQkJRFJN
+X0VSUk9SKCJmYWlsZWQgdG8gYXR0YWNoIGNvbm5lY3RvciBhbmQgZW5jb2RlclxuIik7Cj4+IC0J
+CWdvdG8gZXJyX2ZyZWVfY29ubmVjdG9yOwo+PiArCWRwLT5jb25uZWN0b3IgPSBkcm1fYnJpZGdl
+X2Nvbm5lY3Rvcl9pbml0KGRybV9kZXYsIGVuY29kZXIpOwo+PiArCWlmIChJU19FUlIoZHAtPmNv
+bm5lY3RvcikpIHsKPj4gKwkJcmV0ID0gUFRSX0VSUihkcC0+Y29ubmVjdG9yKTsKPj4gKwkJZGV2
+X2VycihkcC0+ZGV2LCAiZmFpbGVkIHRvIGluaXQgYnJpZGdlIGNvbm5lY3RvcjogJWRcbiIsIHJl
+dCk7Cj4+ICsJCXJldHVybiByZXQ7Cj4+IAl9Cj4gICAgICAgICBEb24ndCBzdG9yZSBjb25uZWN0
+b3IgaGVyZSwgd2Ugd2lsbCBtb3ZlIGNvbm5lY3RvciBpbml0IHRvIGRpc3BsYXkgY29udHJvbGxl
+ciBzaWRlIGluIHRoZSBmdXR1cmUuCj4KPiAgICAgICAgWW91IGNhbiBnZXQgY29ubmVjdG9yIGJ5
+OiBjb25uZWN0b3IgPSBkcm1fYXRvbWljX2dldF9uZXdfY29ubmVjdG9yX2Zvcl9lbmNvZGVyKHN0
+YXRlLCBicmlkZ2UtPmVuY29kZXIpOwo+ICAgICAgICBhdCBhdG9taWMgZW5hYmxlLgoKV2lsbCBm
+aXggaW4gdjIuCgoKPgo+PiArCWRybV9jb25uZWN0b3JfYXR0YWNoX2VuY29kZXIoZHAtPmNvbm5l
+Y3RvciwgZW5jb2Rlcik7Cj4+ICsKPj4gCWZvciAoaSA9IDA7IGkgPCBkcC0+cG9ydHM7IGkrKykg
+ewo+PiAJCXBvcnQgPSBkcC0+cG9ydFtpXTsKPj4KPj4gQEAgLTEwOTIsNyArMTEwMiw3IEBAIHN0
+YXRpYyBpbnQgY2RuX2RwX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICpt
+YXN0ZXIsIHZvaWQgKmRhdGEpCj4+IAkJaWYgKHJldCkgewo+PiAJCQlEUk1fREVWX0VSUk9SKGRl
+diwKPj4gCQkJCSAgICAgICJyZWdpc3RlciBFWFRDT05fRElTUF9EUCBub3RpZmllciBlcnJcbiIp
+Owo+PiAtCQkJZ290byBlcnJfZnJlZV9jb25uZWN0b3I7Cj4+ICsJCQlyZXR1cm4gcmV0Owo+PiAJ
+CX0KPj4gCX0KPj4KPj4gQEAgLTExMDEsMjQgKzExMTEsMTUgQEAgc3RhdGljIGludCBjZG5fZHBf
+YmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rlciwgdm9pZCAqZGF0
+YSkKPj4gCXNjaGVkdWxlX3dvcmsoJmRwLT5ldmVudF93b3JrKTsKPj4KPj4gCXJldHVybiAwOwo+
+PiAtCj4+IC1lcnJfZnJlZV9jb25uZWN0b3I6Cj4+IC0JZHJtX2Nvbm5lY3Rvcl9jbGVhbnVwKGNv
+bm5lY3Rvcik7Cj4+IC1lcnJfZnJlZV9lbmNvZGVyOgo+PiAtCWRybV9lbmNvZGVyX2NsZWFudXAo
+ZW5jb2Rlcik7Cj4+IC0JcmV0dXJuIHJldDsKPj4gfQo+Pgo+PiBzdGF0aWMgdm9pZCBjZG5fZHBf
+dW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLCB2b2lkICpk
+YXRhKQo+PiB7Cj4+IAlzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAgPSBkZXZfZ2V0X2RydmRhdGEo
+ZGV2KTsKPj4gCXN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciA9ICZkcC0+ZW5jb2Rlci5lbmNv
+ZGVyOwo+PiAtCXN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IgPSAmZHAtPmNvbm5lY3Rv
+cjsKPj4KPj4gCWNhbmNlbF93b3JrX3N5bmMoJmRwLT5ldmVudF93b3JrKTsKPj4gLQljZG5fZHBf
+ZW5jb2Rlcl9kaXNhYmxlKGVuY29kZXIpOwo+PiAJZW5jb2Rlci0+ZnVuY3MtPmRlc3Ryb3koZW5j
+b2Rlcik7Cj4+IC0JY29ubmVjdG9yLT5mdW5jcy0+ZGVzdHJveShjb25uZWN0b3IpOwo+Pgo+PiAJ
+cG1fcnVudGltZV9kaXNhYmxlKGRldik7Cj4+IAlpZiAoZHAtPmZ3X2xvYWRlZCkKPj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5oIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmgKPj4gaW5kZXggMTc0OThmNTc2Y2U3Li5kMjc3
+OGY3YTViMzEgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAt
+Y29yZS5oCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5oCj4+
+IEBAIC04LDYgKzgsOCBAQAo+PiAjZGVmaW5lIF9DRE5fRFBfQ09SRV9ICj4+Cj4+ICNpbmNsdWRl
+IDxkcm0vZGlzcGxheS9kcm1fZHBfaGVscGVyLmg+Cj4+ICsjaW5jbHVkZSA8ZHJtL2RybV9icmlk
+Z2UuaD4KPj4gKyNpbmNsdWRlIDxkcm0vZHJtX2JyaWRnZV9jb25uZWN0b3IuaD4KPj4gI2luY2x1
+ZGUgPGRybS9kcm1fcGFuZWwuaD4KPj4gI2luY2x1ZGUgPGRybS9kcm1fcHJvYmVfaGVscGVyLmg+
+Cj4+ICNpbmNsdWRlIDxzb3VuZC9oZG1pLWNvZGVjLmg+Cj4+IEBAIC02NSw3ICs2Nyw4IEBAIHN0
+cnVjdCBjZG5fZHBfcG9ydCB7Cj4+IHN0cnVjdCBjZG5fZHBfZGV2aWNlIHsKPj4gCXN0cnVjdCBk
+ZXZpY2UgKmRldjsKPj4gCXN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2Owo+PiAtCXN0cnVjdCBk
+cm1fY29ubmVjdG9yIGNvbm5lY3RvcjsKPj4gKwlzdHJ1Y3QgZHJtX2JyaWRnZSBicmlkZ2U7Cj4+
+ICsJc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcjsKPj4gCXN0cnVjdCByb2NrY2hpcF9l
+bmNvZGVyIGVuY29kZXI7Cj4+IAlzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSBtb2RlOwo+PiAJc3Ry
+dWN0IHBsYXRmb3JtX2RldmljZSAqYXVkaW9fcGRldjsKPj4gLS0gCj4+IDIuNDkuMAoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
