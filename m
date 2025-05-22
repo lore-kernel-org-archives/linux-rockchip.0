@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 310DDC54756
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 08:00:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC91C54756
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 08:06:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5qXDl4aXiDMhfplJ9GZ+YygEIEErF6XMPJA3pnk/kZE=; b=hTTC4Kd7B7mv4j
-	5EW8kmyS/nDyCizruIzNB/UyWxSYLj1XBKSrkPNtLwiiXfDL1OhchqbRn/luhKDIpQan+p60R43gl
-	qrsegBP+jk3AO5Hx4LdUoMHTWf7cHZLiTNuZ1WAAIzAJiIgSsMn1h67niVCGa1QisAPh7HMG1G6dv
-	QEn+0csrB4X1tzjKjNxbJG1ek+c64h3Dj5mEkJO1y7YKcQT1aBBUjImUqWJjTEeBOT3RFFDhuY3Op
-	MCTgvU38Er2LVlQEDEFbOertFdvAujOaWAp/lvCN3fmrPLWiJoFSBU+Fg9vWv3i0JNlrmmRqnJmps
-	p0mYlZ6e7ipoBcF3ukbw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GQWTHXxR23k6wCMrMbUfnZE2OjFeRX6cIjyfslFmw3g=; b=4zTDEyPYPyWlc1Eh8KK+8GSfJy
+	fAdiL3N1eLJxp62bVt+JPdiC8/tPHlknNxEVOxtv6e8/V4BYLVaWcIjeY6wtyfGZ2UXhqm4Aily3d
+	Sh/hzyJ/aqN42qF5iMbwi3XoBTaIPDbLJiH2VOPyUJFkR6LIv0EBszOz4WHmALpqAK3MR4cgfqvTz
+	yMNZqixdPpao47JzK0mX2l6ygwfOsf6Dj0y+VnncIiEv52CiSdZCtZqlLTp7Lv6UBnj9MK69p7O6U
+	a8mWxlxw6FvYAuJHwwyVPWG6Qo//Y0CCnWrpGsJJn33hGCMPJLEYxqdufp4mL/DRywvS7PPU0HWY0
+	xJ8YXtDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI0qx-00000000DNU-1jwo;
-	Thu, 22 May 2025 08:00:35 +0000
-Received: from out-14.smtpout.orange.fr ([193.252.22.14] helo=out.smtpout.orange.fr)
+	id 1uI0x4-00000000EM5-0taL;
+	Thu, 22 May 2025 08:06:54 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI0ie-00000000Bdk-1v6Q;
-	Thu, 22 May 2025 07:52:02 +0000
-Received: from mail-ed1-f47.google.com ([209.85.208.47])
-	by smtp.orange.fr with ESMTPA
-	id I0iWug1mepEs6I0iWuNbkA; Thu, 22 May 2025 09:51:53 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1747900313;
-	bh=K1Ju9ChBoPJtQqkm13X9ek0t/vFqTZS0ihzaKbzH1mE=;
-	h=MIME-Version:From:Date:Message-ID:Subject:To;
-	b=sTGilTwv7vGdfmPIkqPqsGmqnJeil395nO7Z+kHwbhmTzsF7qyFjO4znK5A8URi3u
-	 yb3zkm7EdkgIV5+C23Dww8jdH1ST8/innWl5VRlOQzzX0Ki62vO1YSQXfq87Gb5Adb
-	 hOApvPCWNEQcuTOMjmg8xJfvEm55YsUh3VYFsvKo3g6tVGUpJTJoqmpeBcRdHVTl+1
-	 trufRx+Pi1ZszjiCmcBaSFq+MnznMdwO4hqeRdiRNBgVLvnabxquc/tq5nByDCZMzs
-	 7s5y7sZaN3xiONXZwWsVTQYTeOFsFpdtxW8UdkgKi0OpYogS/QFZKcWcd4hc71A091
-	 MzAXW16/HSKcg==
-X-ME-Helo: mail-ed1-f47.google.com
-X-ME-Auth: bWFpbGhvbC52aW5jZW50QHdhbmFkb28uZnI=
-X-ME-Date: Thu, 22 May 2025 09:51:53 +0200
-X-ME-IP: 209.85.208.47
-Received: by mail-ed1-f47.google.com with SMTP id 4fb4d7f45d1cf-601dd3dfc1fso8984711a12.0;
-        Thu, 22 May 2025 00:51:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVQ3XMrsbjyJqmlhaQpENiSPVNONWuv83ciCdTQlhKgDgmm1emztplbeX4gzNfrqw6vgbAa+lWhf/HRcyQxZ2zy@lists.infradead.org, AJvYcCW6Jc0PRZEyMphV9K9zWoZ2b0j78BYUn+5/fPA1T61xuopaK4pt/amv4gQ+vegF/dd4eQXATmAHbuHRYTZmN1w=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzyHbDnVL5KzlOw34rT0IbLf00lQp8ZZnJhPBi+u99yEoVc66CA
-	CsGV3L58c/1Jm6B4uDp1Nr/xF4JSO9dJO4tZIIOVKW/m5D15FMtbVDrczpf5Bt+UiO79+LZiTfl
-	lzFOIbMwf8vQ8DHMXIPPB2JRl8SWLIEE=
-X-Google-Smtp-Source: AGHT+IH+G1RV6f4XSiIEPdRrb6TPdOE7pGKLKdSwxOPEVBL4YFwSKpBYuEYJEJFRYIUgbOU8zKhMjLiGuFzdQ8+OFcE=
-X-Received: by 2002:a17:907:7252:b0:ad2:39f2:3aa8 with SMTP id
- a640c23a62f3a-ad536f9d574mr2255053666b.38.1747900312547; Thu, 22 May 2025
- 00:51:52 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250522063232.2197432-1-zhangqing@rock-chips.com> <20250522063232.2197432-3-zhangqing@rock-chips.com>
-In-Reply-To: <20250522063232.2197432-3-zhangqing@rock-chips.com>
-From: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
-Date: Thu, 22 May 2025 16:51:40 +0900
-X-Gmail-Original-Message-ID: <CAMZ6RqJzR6ucRnCHFq8ZFRnznRsFYq6BMQY24aaROJMLWigU4A@mail.gmail.com>
-X-Gm-Features: AX0GCFswcIk3OPc4Qw6f7CtNFw58HMRmuvPUjxlDYToAYSRWrO6-0BPCSk3B_vg
-Message-ID: <CAMZ6RqJzR6ucRnCHFq8ZFRnznRsFYq6BMQY24aaROJMLWigU4A@mail.gmail.com>
-Subject: Re: [PATCH v3 2/3] net: can: rockchip: add can for RK3576 Soc
+	id 1uI0kq-00000000C6I-31jy
+	for linux-rockchip@lists.infradead.org;
+	Thu, 22 May 2025 07:54:17 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1uI0kj-00037i-NU; Thu, 22 May 2025 09:54:09 +0200
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1uI0kj-000hFH-1A;
+	Thu, 22 May 2025 09:54:09 +0200
+Received: from pengutronix.de (unknown [IPv6:2a03:2260:2009:2000::])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 6662941714B;
+	Thu, 22 May 2025 07:54:08 +0000 (UTC)
+Date: Thu, 22 May 2025 09:54:06 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
 To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: mkl@pengutronix.de, kernel@pengutronix.de, robh@kernel.org, 
+Cc: kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, robh@kernel.org, 
 	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, cl@rock-chips.com, 
-	kever.yang@rock-chips.com, linux-can@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+	kever.yang@rock-chips.com, linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH v4 1/3] dt-bindings: can: rockchip_canfd: add rk3576
+ CAN-FD controller
+Message-ID: <20250522-ultra-anaconda-of-engineering-b70332-mkl@pengutronix.de>
+References: <20250522074616.3115348-1-zhangqing@rock-chips.com>
+ <20250522074616.3115348-2-zhangqing@rock-chips.com>
+MIME-Version: 1.0
+In-Reply-To: <20250522074616.3115348-2-zhangqing@rock-chips.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_005200_915077_EDB5AF43 
-X-CRM114-Status: UNSURE (   6.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250522_005416_754397_51970B5E 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,34 +77,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4267614819024791126=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu. 22 May 2025 at 15:38, Elaine Zhang <zhangqing@rock-chips.com> wrote:
->
-> Is new controller:
-> Support CAN and CANFD protocol.
-> Support Dma.
 
-Please write a more verbose description with proper sentences.
-
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-
-You need to break this into several patches and several files.
-
-You can not put everything in rockchip_canfd-core.c. Create a
-rockchip_rk3568.c in which you will move all the already existing
-rk3568 specific functions. Then, in another patch, create a
-rockchip_rk3576.c that will contain all the new code. Also adjust the
-headers accordingly.
+--===============4267614819024791126==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="el3mxqe2wkjylcyv"
+Content-Disposition: inline
 
 
-Yours sincerely,
-Vincent Mailhol
+--el3mxqe2wkjylcyv
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 1/3] dt-bindings: can: rockchip_canfd: add rk3576
+ CAN-FD controller
+MIME-Version: 1.0
+
+On 22.05.2025 15:46:14, Elaine Zhang wrote:
+> Add documentation for the rockchip rk3576 CAN-FD controller.
+
+This should go into the existing rockchip,rk3568v2-canfd.yaml.
+
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--el3mxqe2wkjylcyv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmgu2BoACgkQDHRl3/mQ
+kZxoWggArVZQebS0V1C2TAYZ7DUzq/S/iKGXct7O+HQ5EPqqVj4F+UFWZCg2iipl
+kAjfp2wQwHDEjyKhF4nHiyAvdNzhszSPSsSJ1mNyOQlVdD2qoAbmo77mWLQ2t5Pr
+ItlW3UvSpa0r9aBLznVabAjLarhTCFUoRbF4VJJcm2hCb7s/ZTfUC2UyOLJ+55vO
+byQdkco3aGzexYU7DYwbFmYPcmz588qdUR2TsoDlJChJLZrghSZKZICY/IhJ+Ii+
+3lq2nJCR1MPExVq2Qf49FjVXYlybt9qxilf9EUYhBWhDWJJVLiRU3MEDjuTdus5T
+ktILX+FYsjoDFsss95L55yEwKAvJZQ==
+=jbb9
+-----END PGP SIGNATURE-----
+
+--el3mxqe2wkjylcyv--
+
+
+--===============4267614819024791126==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4267614819024791126==--
+
