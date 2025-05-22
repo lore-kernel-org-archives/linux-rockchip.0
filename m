@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A6B4C54E90
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 19:31:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2463C54E65
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 21:33:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Li8Srmx9Qh3r+RklRb96EKDbq1f2FiTbBQt0jmwaWWg=; b=g+0AIor471JUki
-	uiVMQCh4iJBxMIStYMo0OTGzHy9ef3ahlQ3oCNWyTtzgc26FX1iTZG3/fHHwBPixCZYV3TdhpYDFZ
-	RcsOExJLM0ZA3whYbCcrISflj3e4vsL6xtgi6kViyYNybAq1KlvyIj25cxF01yYS58hysvOBNbQIg
-	4tqKvUDEv4NV0YhmswCoL9Fanj9V5qaB4HaeHB1VsFZUQWAeLAZVoX3hmMV2Exd3yNOuoQBEA90NX
-	IesoWegiDWwbtoGXuwmIvIlclNcTLwWZ6JCGY0rDe6aEParYcapKwHJPXHTzs+eIzSTrcsKLkZmfY
-	ZwpoWYElpgBJrR4Lp17Q==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=U7g6+qNxLbl3iVzpucBrFVNGgx0dRCcW/1psp2e1Cik=; b=xsHKxmHQ2iMQSt
+	xKRKvOggvE0PvpAhbdILDkhbdvYxphXxEXAfEa71YGpF/qkN6rfALlu9XsasxfpGL7En7TdHdrAsQ
+	oraa9f9kl7kPOjr0H1HwYfm1seQRgLRKQejaYIUq4roDgT+YTFd4WmZn9WBL2+u7vRabCsHSXiW8v
+	z4LuqmvNa6wG1/WyfHCSip/FYvCVjgmEiomXIA5wu7vRPP0MLEG+B18qsQdcwULwTEaSQocPJMQxP
+	bjcGqfuIzxZdsEIGxETVYOoUDYEw1uPBLXRNEJWE8atfg0ylwUC2H1PqrpSpAgEz5aYreBZ4yq7bV
+	fxeBe/xlZ6ytRHOXWD9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIBdJ-0000000222Y-0aOA;
-	Thu, 22 May 2025 19:31:13 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uIDXI-00000002D1k-3y85;
+	Thu, 22 May 2025 21:33:08 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIBZS-000000021Zo-20tt;
-	Thu, 22 May 2025 19:27:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1747942021; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=l4Gg25EeLEA1PB0GOBF6OIyIQVjdmVFp92feHIxrVdW7lbgBKQzvzjxRTAvneGeZegExkv94EiRdssvKiZdSiaphcdTLf6ekcKhvW6wHiOKpYiLNum4TqhbnnOc39zhfs1weTC6+MzO1VRoU1W1l6ua5tPai6DsypM7NqfOI8WQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1747942021; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=AJzBv5LvwO9EFRe8OVUlb9OM9yAWwvged+nVh5RBniI=; 
-	b=FvEiYz+Zk3Zx8Wjzj2Wj30/OkSKlahTbUJxZa7YzPE5u1YUvZiMCZXOc4Jc36LFnDLX/C8J1SwYBX9f9FrkmnAHgiMQ823Ot/b/OKoCTdH7fTi5leQIeyhBLFgMTLqEOXUDrUHUOEFDVm9uRBZxH0G4xo64R+noNyFkEnKDvgA0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1747942021;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=AJzBv5LvwO9EFRe8OVUlb9OM9yAWwvged+nVh5RBniI=;
-	b=gkUZUsht3DMKagUvyLNTwgLMsMMFHBh/eQHXKLF4AUveD1CrnwbuiGvyWIVw+4C/
-	8zHMhEY9HMsCU49eeIjTjCDxF/aQ/7+68Q5Hr5+Y7Zk9gKi0T3gjcecgswUmQBM0kNQ
-	EG2yk6IUwci2sucS8fKh6Bh/1cmhNpnjwzJAxxNk=
-Received: by mx.zohomail.com with SMTPS id 1747942019407306.2477470606051;
-	Thu, 22 May 2025 12:26:59 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 22 May 2025 21:26:44 +0200
-Subject: [PATCH] pwm: rockchip: round period/duty down on apply, up on get
+	id 1uIDVF-00000002Crg-0gi1;
+	Thu, 22 May 2025 21:31:02 +0000
+Received: from pendragon.ideasonboard.com (179.218-130-109.adsl-dyn.isp.belgacom.be [109.130.218.179])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2921D605;
+	Thu, 22 May 2025 23:30:35 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1747949435;
+	bh=KugpDzRoAvY4WZBqml977Rl1f6eI5c0/HaSaeb+pPhA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qemR8d2HFVNFg0Qba7eXJqiQ+T+pbqLk9Gmg9EUEDcX1T6FrOfVxfbN+MGAprvZoQ
+	 vVArRQYCbZqLncLYz0v8D/EHM1WfrZi07i2tXoaqmcWe0fVw1ScBAKjH4F7jWxDyHd
+	 sTRhAQENv01jr29wreghMWQ0nruTduoB8s1HOXT0=
+Date: Thu, 22 May 2025 23:30:50 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Stefan Klug <stefan.klug@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Hans Verkuil <hans@jjverkuil.nl>
+Subject: Re: [PATCH 2/3] media: rkisp1: Add
+ RKISP1_CID_SUPPORTED_PARAMS_BLOCKS control
+Message-ID: <20250522213050.GX12514@pendragon.ideasonboard.com>
+References: <20250522150944.400046-2-stefan.klug@ideasonboard.com>
+ <20250522150944.400046-4-stefan.klug@ideasonboard.com>
+ <20250522155641.GU12514@pendragon.ideasonboard.com>
+ <174793176608.244022.1396416000017796106@localhost>
+ <20250522164147.GV12514@pendragon.ideasonboard.com>
+ <174793383823.244022.8319148306028952702@localhost>
 MIME-Version: 1.0
-Message-Id: <20250522-rockchip-pwm-rounding-fix-v1-1-b516ad76a25a@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAHN6L2gC/zWNywqDMBBFf0Vm3YGYYlF/pbhI41SHkkeTaAXx3
- ztUujwH7j07ZEpMGfpqh0QrZw5eoL5UYGfjJ0IehUEr3ahGa0zBvuzMEePHCSx+ZD/hkzfsWnO
- 9KdspamuQfUwk+vd9H05O9F4kUU4JD5MJbXCOS1952gr+MzAcxxejJ93onAAAAA==
-X-Change-ID: 20250522-rockchip-pwm-rounding-fix-98a360c90e81
-To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, 
- Boris Brezillon <bbrezillon@kernel.org>, 
- Thierry Reding <thierry.reding@gmail.com>
-X-Mailer: b4 0.14.2
+Content-Disposition: inline
+In-Reply-To: <174793383823.244022.8319148306028952702@localhost>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_122714_586437_DAE39FF1 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20250522_143101_525697_38741E32 
+X-CRM114-Status: GOOD (  47.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,127 +71,247 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With CONFIG_PWM_DEBUG=y, the rockchip PWM driver produces warnings like
-this:
+On Thu, May 22, 2025 at 07:10:38PM +0200, Stefan Klug wrote:
+> Quoting Laurent Pinchart (2025-05-22 18:41:47)
+> > On Thu, May 22, 2025 at 06:36:06PM +0200, Stefan Klug wrote:
+> > > Hi Laurent,
+> > > 
+> > > Thank you for the review.
+> > > 
+> > > Quoting Laurent Pinchart (2025-05-22 17:56:41)
+> > > > Hi Stefan,
+> > > > 
+> > > > Thank you for the patch.
+> > > > 
+> > > > On Thu, May 22, 2025 at 05:08:39PM +0200, Stefan Klug wrote:
+> > > > > Add a RKISP1_CID_SUPPORTED_PARAMS_BLOCKS V4L2 control to be able to
+> > > > > query the parameters blocks supported by the current kernel on the
+> > > > > current hardware from user space.
+> > > > > 
+> > > > > Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
+> > > > > ---
+> > > > >  .../platform/rockchip/rkisp1/rkisp1-common.h  |  2 +
+> > > > >  .../platform/rockchip/rkisp1/rkisp1-params.c  | 50 ++++++++++++++++++-
+> > > > >  include/uapi/linux/rkisp1-config.h            | 10 ++++
+> > > > >  include/uapi/linux/v4l2-controls.h            |  6 +++
+> > > > >  4 files changed, 67 insertions(+), 1 deletion(-)
+> > > > > 
+> > > > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > > > > index ca952fd0829b..5f187f9efc7b 100644
+> > > > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > > > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > > > > @@ -415,6 +415,8 @@ struct rkisp1_params {
+> > > > >       spinlock_t config_lock; /* locks the buffers list 'params' */
+> > > > >       struct list_head params;
+> > > > >  
+> > > > > +     struct v4l2_ctrl_handler ctrls;
+> > > > > +
+> > > > >       const struct v4l2_meta_format *metafmt;
+> > > > >  
+> > > > >       enum v4l2_quantization quantization;
+> > > > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > > > > index 918eb06c7465..60c9b3c46593 100644
+> > > > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > > > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > > > > @@ -2736,6 +2736,45 @@ static int rkisp1_params_init_vb2_queue(struct vb2_queue *q,
+> > > > >       return vb2_queue_init(q);
+> > > > >  }
+> > > > >  
+> > > > > +static int rkisp1_ctrl_init(struct rkisp1_params *params)
+> > > > > +{
+> > > > > +     int ret;
+> > > > > +
+> > > > > +     v4l2_ctrl_handler_init(&params->ctrls, 1);
+> > > > > +
+> > > > > +     struct v4l2_ctrl_config ctrl_config = {
+> > > > > +             .id = RKISP1_CID_SUPPORTED_PARAMS_BLOCKS,
+> > > > > +             .name = "Supported Params Blocks",
+> > > > > +             .type = V4L2_CTRL_TYPE_BITMASK,
+> > > > > +             .flags = V4L2_CTRL_FLAG_READ_ONLY,
+> > > > > +     };
+> > > > 
+> > > >         struct v4l2_ctrl_config ctrl_config = {
+> > > >                 .id = RKISP1_CID_SUPPORTED_PARAMS_BLOCKS,
+> > > >                 .name = "Supported Params Blocks",
+> > > >                 .type = V4L2_CTRL_TYPE_BITMASK,
+> > > >                 .flags = V4L2_CTRL_FLAG_READ_ONLY,
+> > > >         };
+> > > >         int ret;
+> > > > 
+> > > >         v4l2_ctrl_handler_init(&params->ctrls, 1);
+> > > > 
+> > > > Mixing code and variable declarations is still usually frown upon in the
+> > > > kernel.
+> > > 
+> > > I thought frown upon is not a no. And as this structure is not yet
+> > > complete and is modified afterwards it feels natural to me to put it
+> > > close to that place. But I can move it above the function. You decide.
+> > 
+> > It obviously take someone to make the first move for things to change
+> > :-) I however tend to favour consistency in coding style within a
+> > driver.
+> 
+> Ahh, maybe I misread the comment. You meant to move it above ret. Not
+> outside the function. Right? That is easy to do. And I saw that pattern
+> in vivid-ctrls.c
 
-  rockchip-pwm fd8b0010.pwm: .apply is supposed to round down
-  duty_cycle (requested: 23529/50000, applied: 23542/50000)
+Yes, just above the ret.
 
-This is because the driver chooses ROUND_CLOSEST for idempotency
-reasons. However, it's possible to keep idempotency while always
-rounding down in .apply.
-
-Do this by making get_state always round up, and making apply always
-round down. This is done with u64 maths, and setting both period and
-duty to U32_MAX (the biggest the hardware can support) if they would
-exceed their 32 bits confines.
-
-Fixes: 12f9ce4a5198 ("pwm: rockchip: Fix period and duty cycle approximation")
-Fixes: 1ebb74cf3537 ("pwm: rockchip: Add support for hardware readout")
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
-This fix may need some careful testing from others before definitely
-being applied and backported. While I did test it myself of course,
-making sure to try a combination of periods and duty cycles, I really
-don't want to accidentally undo someone else's fix.
-
-Some of the u64 math is a bit overkill, but I don't want to assume
-prescalers will never get larger than 4, which is where we start needing
-the 64-bit prescaled NSECS_PER_SEC value. clk_rate could also
-comfortably fit within u32 for any expected clock rate, but unsigned
-long can fit more depending on architecture, even if nobody is running
-the PWM hardware at 4.294967296 GHz.
----
- drivers/pwm/pwm-rockchip.c | 31 +++++++++++++++++++------------
- 1 file changed, 19 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-index c5f50e5eaf41ac7539f59fa03f427eee6263ca90..983c7354becddd1d322a0b9c2947e0a4603c52dd 100644
---- a/drivers/pwm/pwm-rockchip.c
-+++ b/drivers/pwm/pwm-rockchip.c
-@@ -8,6 +8,8 @@
+static int rkisp1_ctrl_init(struct rkisp1_params *params)
+{
+	struct v4l2_ctrl_config ctrl_config = {
+		.id = RKISP1_CID_SUPPORTED_PARAMS_BLOCKS,
+		.name = "Supported Params Blocks",
+		.type = V4L2_CTRL_TYPE_BITMASK,
+		.flags = V4L2_CTRL_FLAG_READ_ONLY,
+	};
+	int ret;
  
- #include <linux/clk.h>
- #include <linux/io.h>
-+#include <linux/limits.h>
-+#include <linux/math64.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
-@@ -61,6 +63,7 @@ static int rockchip_pwm_get_state(struct pwm_chip *chip,
- 				  struct pwm_state *state)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
-+	u64 prescaled_ns = (u64)pc->data->prescaler * NSEC_PER_SEC;
- 	u32 enable_conf = pc->data->enable_conf;
- 	unsigned long clk_rate;
- 	u64 tmp;
-@@ -78,12 +81,12 @@ static int rockchip_pwm_get_state(struct pwm_chip *chip,
- 	clk_rate = clk_get_rate(pc->clk);
- 
- 	tmp = readl_relaxed(pc->base + pc->data->regs.period);
--	tmp *= pc->data->prescaler * NSEC_PER_SEC;
--	state->period = DIV_ROUND_CLOSEST_ULL(tmp, clk_rate);
-+	tmp *= prescaled_ns;
-+	state->period = DIV_U64_ROUND_UP(tmp, clk_rate);
- 
- 	tmp = readl_relaxed(pc->base + pc->data->regs.duty);
--	tmp *= pc->data->prescaler * NSEC_PER_SEC;
--	state->duty_cycle =  DIV_ROUND_CLOSEST_ULL(tmp, clk_rate);
-+	tmp *= prescaled_ns;
-+	state->duty_cycle =  DIV_U64_ROUND_UP(tmp, clk_rate);
- 
- 	val = readl_relaxed(pc->base + pc->data->regs.ctrl);
- 	state->enabled = (val & enable_conf) == enable_conf;
-@@ -103,8 +106,9 @@ static void rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 			       const struct pwm_state *state)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
--	unsigned long period, duty;
--	u64 clk_rate, div;
-+	u64 prescaled_ns = (u64)pc->data->prescaler * NSEC_PER_SEC;
-+	u64 clk_rate, tmp;
-+	u32 period, duty;
- 	u32 ctrl;
- 
- 	clk_rate = clk_get_rate(pc->clk);
-@@ -114,12 +118,15 @@ static void rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	 * bits, every possible input period can be obtained using the
- 	 * default prescaler value for all practical clock rate values.
- 	 */
--	div = clk_rate * state->period;
--	period = DIV_ROUND_CLOSEST_ULL(div,
--				       pc->data->prescaler * NSEC_PER_SEC);
--
--	div = clk_rate * state->duty_cycle;
--	duty = DIV_ROUND_CLOSEST_ULL(div, pc->data->prescaler * NSEC_PER_SEC);
-+	tmp = mul_u64_u64_div_u64(clk_rate, state->period, prescaled_ns);
-+	if (tmp > U32_MAX)
-+		tmp = U32_MAX;
-+	period = tmp;
-+
-+	tmp = mul_u64_u64_div_u64(clk_rate, state->duty_cycle, prescaled_ns);
-+	if (tmp > U32_MAX)
-+		tmp = U32_MAX;
-+	duty = tmp;
- 
- 	/*
- 	 * Lock the period and duty of previous configuration, then
+	v4l2_ctrl_handler_init(&params->ctrls, 1);
 
----
-base-commit: 6add743d2854d744c3037235b87c1c9d164fd132
-change-id: 20250522-rockchip-pwm-rounding-fix-98a360c90e81
+	...
 
-Best regards,
+> > > > > +
+> > > > > +     for (unsigned int i = 0; i < ARRAY_SIZE(rkisp1_ext_params_handlers); i++) {
+> > > > > +             const struct rkisp1_ext_params_handler *block_handler;
+> > > > > +
+> > > > > +             block_handler = &rkisp1_ext_params_handlers[i];
+> > > > > +             ctrl_config.max |= BIT(i);
+> > > > > +
+> > > > > +             if ((params->rkisp1->info->features & block_handler->features) !=
+> > > > > +                 block_handler->features)
+> > > > > +                     continue;
+> > > > > +
+> > > > > +             ctrl_config.def |= BIT(i);
+> > > > > +     }
+> > > > > +
+> > > > > +     v4l2_ctrl_new_custom(&params->ctrls, &ctrl_config, NULL);
+> > > > > +
+> > > > > +     params->vnode.vdev.ctrl_handler = &params->ctrls;
+> > > > > +
+> > > > > +     if (params->ctrls.error) {
+> > > > > +             ret = params->ctrls.error;
+> > > > > +             v4l2_ctrl_handler_free(&params->ctrls);
+> > > > > +             return ret;
+> > > > > +     }
+> > > > > +
+> > > > > +     return 0;
+> > > > > +}
+> > > > > +
+> > > > >  int rkisp1_params_register(struct rkisp1_device *rkisp1)
+> > > > >  {
+> > > > >       struct rkisp1_params *params = &rkisp1->params;
+> > > > > @@ -2776,10 +2815,16 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
+> > > > >  
+> > > > >       video_set_drvdata(vdev, params);
+> > > > >  
+> > > > > +     ret = rkisp1_ctrl_init(params);
+> > > > > +     if (ret) {
+> > > > > +             dev_err(rkisp1->dev, "Control initialization error %d\n", ret);
+> > > > > +             goto err_mutex;
+> > > > > +     }
+> > > > > +
+> > > > >       node->pad.flags = MEDIA_PAD_FL_SOURCE;
+> > > > >       ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
+> > > > >       if (ret)
+> > > > > -             goto err_mutex;
+> > > > > +             goto err_ctrl;
+> > > > >  
+> > > > >       ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
+> > > > >       if (ret) {
+> > > > > @@ -2792,6 +2837,8 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
+> > > > >  
+> > > > >  err_media:
+> > > > >       media_entity_cleanup(&vdev->entity);
+> > > > > +err_ctrl:
+> > > > > +     v4l2_ctrl_handler_free(&params->ctrls);
+> > > > >  err_mutex:
+> > > > >       mutex_destroy(&node->vlock);
+> > > > >       return ret;
+> > > > > @@ -2808,5 +2855,6 @@ void rkisp1_params_unregister(struct rkisp1_device *rkisp1)
+> > > > >  
+> > > > >       vb2_video_unregister_device(vdev);
+> > > > >       media_entity_cleanup(&vdev->entity);
+> > > > > +     v4l2_ctrl_handler_free(&params->ctrls);
+> > > > >       mutex_destroy(&node->vlock);
+> > > > >  }
+> > > > > diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
+> > > > > index 2d995f3c1ca3..4fc8f221d0c4 100644
+> > > > > --- a/include/uapi/linux/rkisp1-config.h
+> > > > > +++ b/include/uapi/linux/rkisp1-config.h
+> > > > > @@ -1086,6 +1086,9 @@ enum rkisp1_ext_params_block_type {
+> > > > >  #define RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE   (1U << 0)
+> > > > >  #define RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE    (1U << 1)
+> > > > >  
+> > > > > +/* A bitmask of parameters blocks supported on the current hardware. */
+> > > > > +#define RKISP1_CID_SUPPORTED_PARAMS_BLOCKS   (V4L2_CID_USER_RKISP1_BASE + 0x01)
+> > > > > +
+> > > > >  /**
+> > > > >   * struct rkisp1_ext_params_block_header - RkISP1 extensible parameters block
+> > > > >   *                                      header
+> > > > > @@ -1520,6 +1523,13 @@ enum rksip1_ext_param_buffer_version {
+> > > > >   * V4L2 control. If such control is not available, userspace should assume only
+> > > > >   * RKISP1_EXT_PARAM_BUFFER_V1 is supported by the driver.
+> > > > >   *
+> > > > > + * The read-only V4L2 control ``RKISP1_CID_SUPPORTED_PARAMS_BLOCKS`` can be used
+> > > > > + * to query the blocks supported by the current hardware. It contains a bitmask
+> > > > 
+> > > > s/current hardware/device/
+> > > > 
+> > > > > + * where each bit represents the availability of the corresponding entry
+> > > > > + * from the :c:type:`rkisp1_ext_params_block_type` enum. The max value of the
+> > > > > + * control represents the blocks supported by the current kernel (independent of
+> > > > > + * the current hardware).
+> > > > 
+> > > >  * from the :c:type:`rkisp1_ext_params_block_type` enum. The current and default
+> > > >  * values of the control represents the blocks supported by the device instance,
+> > > >  * while the maximum value represents the blocks supported by the kernel driver,
+> > > >  * independently of the device instance.
+> > > > 
+> > > > I was going to say that the control should be documented in
+> > > > Documentation/userspace-api/drivers/rkisp1.rst, but rkisp1-config.h is
+> > > > pulled in the documentation tree by
+> > > > Documentation/userspace-api/media/v4l/metafmt-rkisp1.rst, so I'm OK with
+> > > > this. Hans, Mauro, are you fine as well with documenting the control
+> > > > here ?
+> > > 
+> > > Looking at the docs, I realized that most people will read the already
+> > > existing docs. So creating a completely new file just for the single
+> > > control didn't feel good. As you like.
+> > > 
+> > > > Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > > > 
+> > > > > + *
+> > > > >   * For each ISP block that userspace wants to configure, a block-specific
+> > > > >   * structure is appended to the @data buffer, one after the other without gaps
+> > > > >   * in between nor overlaps. Userspace shall populate the @data_size field with
+> > > > > diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+> > > > > index 72e32814ea83..f836512e9deb 100644
+> > > > > --- a/include/uapi/linux/v4l2-controls.h
+> > > > > +++ b/include/uapi/linux/v4l2-controls.h
+> > > > > @@ -222,6 +222,12 @@ enum v4l2_colorfx {
+> > > > >   */
+> > > > >  #define V4L2_CID_USER_UVC_BASE                       (V4L2_CID_USER_BASE + 0x11e0)
+> > > > >  
+> > > > > +/*
+> > > > > + * The base for Rockchip ISP1 driver controls.
+> > > > > + * We reserve 16 controls for this driver.
+> > > > > + */
+> > > > > +#define V4L2_CID_USER_RKISP1_BASE            (V4L2_CID_USER_BASE + 0x1220)
+> > > > > +
+> > > > >  /* MPEG-class control IDs */
+> > > > >  /* The MPEG controls are applicable to all codec controls
+> > > > >   * and the 'MPEG' part of the define is historical */
+
 -- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Regards,
 
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
