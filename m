@@ -4,67 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 551E6C54756
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 09:24:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B97DFC54756
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 09:27:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Th9x0ko9Fv1ziICoGwOzYpHn0V7RoGsFFGkaIMW0exk=; b=04W25rwRgxoUzfLBbefVeenBB5
-	BduzqvVcfkJhs1y99ulTAWIiubTbQaiNdBW8FRoKNX6oMifd2kYKwhUruHnhqnJDoUw4+ccRHsEwQ
-	g/mb5p/pjnbuLfOGDUkeQS1r3edq1No9JcWCEwgnDX14xA8OW2oVHq0zml24UwP5+2eeaTmIsoSc8
-	NKK54yunDuadbXjfPT0pj7cUDvpNWR+0owT26wkR5i9KLeq060hOS9ETkirJAF2dTpYmvC2CiThKe
-	QEv1CEcJyGngnappJkpOr4qtT+HHPXWKZQpoLhRYqhJ1DXt6U3V3+FuBaVfwSFWcVHPbFLD18IMHU
-	ykyngOMw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=JevEgWSV3kdl44CfEPoq35tw2eJoOKBt9Iaq3meUbIU=; b=Rsc/czgsrJ9Yj8r8bKM8Uq0005
+	a21CkYCc4RBfNV/HGZ5eRPuCtjtM1mzqn3T0QO4tjUbL8IDOQyVLUonmzqUNQwW3fAX/eIVL2BdkP
+	KHpEuSwm77s1DjNmTDSg5pW1HMlsosA87G6R+PoWzIhtCu9KDuD7EJbDIwFuyUOhezIx6NF87YwLp
+	OTiSXTJZkzcACiAemYxRre9iC14kJLkSF+3RefPNBHTPgMvKXpfd4sErb/KjEcmIhMl96EKhSpbCm
+	xgOV5aTt6SrdwX15EH+Lpl/fj/+Ha7e9BksJz7wabUNAtjn0g+bNiLqGrNxXruH8X+kSYjPyKdAYi
+	Dd8hpNNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI29q-00000000U9J-0txE;
-	Thu, 22 May 2025 09:24:10 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1uI2DR-00000000UuZ-1jeo;
+	Thu, 22 May 2025 09:27:53 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI27m-00000000TbD-372t
-	for linux-rockchip@lists.infradead.org;
-	Thu, 22 May 2025 09:22:04 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1uI27g-0007W4-HV; Thu, 22 May 2025 11:21:56 +0200
-Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1uI27g-000iBx-0j;
-	Thu, 22 May 2025 11:21:56 +0200
-Received: from pengutronix.de (unknown [IPv6:2a03:2260:2009:2000::])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id 4132941760F;
-	Thu, 22 May 2025 09:21:55 +0000 (UTC)
-Date: Thu, 22 May 2025 11:21:54 +0200
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, cl@rock-chips.com, 
-	kever.yang@rock-chips.com, linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v4 2/3] net: can: rockchip: add can for RK3576 Soc
-Message-ID: <20250522-arrogant-delicate-jaguar-ca53b6-mkl@pengutronix.de>
-References: <20250522074616.3115348-1-zhangqing@rock-chips.com>
- <20250522074616.3115348-3-zhangqing@rock-chips.com>
+	id 1uI2BL-00000000UZx-2oUj;
+	Thu, 22 May 2025 09:25:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9A4E45C57A5;
+	Thu, 22 May 2025 09:23:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34187C4CEE4;
+	Thu, 22 May 2025 09:25:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747905942;
+	bh=p53SfCe7muDgtvQFHMIVqvkowaeuQ3Tx7It7jszYKD4=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=CO9mh0dYYJ6S4syWXHaQCopevlhaqGAYO5iqcLaWHMlY00lVp9y+W4/oG4MnnBP4/
+	 tr+s3pHewoNQEBg1NNcnx3voyBJHMTfpOzB+48AgrF4gMYvM/+/dkDnqj9oUDN6D4+
+	 Cd1x7EZ8bzOpZvmQVk0+QhRzIyf2h+4mYCnu/ILvzt4ucD1XT6EMrpItDesYc8MZrK
+	 3xeM2zdbF2zBeiW6drS2KAe8uMiwbLrK55SzE6/qzNQeC23AFvjE3Vd1i1wV0BdXHA
+	 yiO+mEI+J3ejMfzo58Vj+tJb1V7ynQZO1dCjTIzeK1T7CB6Hp/OQcJAxodLqFZjjkn
+	 P35doFcmKnAvw==
+Date: Thu, 22 May 2025 04:25:40 -0500
 MIME-Version: 1.0
-In-Reply-To: <20250522074616.3115348-3-zhangqing@rock-chips.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: mkl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-kernel@vger.kernel.org, krzk+dt@kernel.org, cl@rock-chips.com, 
+ mkl@pengutronix.de, conor+dt@kernel.org, linux-can@vger.kernel.org, 
+ mailhol.vincent@wanadoo.fr, kever.yang@rock-chips.com, 
+ kernel@pengutronix.de, linux-rockchip@lists.infradead.org, heiko@sntech.de, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+In-Reply-To: <20250522074616.3115348-2-zhangqing@rock-chips.com>
+References: <20250522074616.3115348-1-zhangqing@rock-chips.com>
+ <20250522074616.3115348-2-zhangqing@rock-chips.com>
+Message-Id: <174790594029.1733292.2362448733539179713.robh@kernel.org>
+Subject: Re: [PATCH v4 1/3] dt-bindings: can: rockchip_canfd: add rk3576
+ CAN-FD controller
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_022202_773591_8484526A 
-X-CRM114-Status: GOOD (  19.92  )
+X-CRM114-CacheID: sfid-20250522_022543_793112_C2A66EDA 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,148 +71,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3563999253017290181=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============3563999253017290181==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ksituhnp66k25iih"
-Content-Disposition: inline
-
-
---ksituhnp66k25iih
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v4 2/3] net: can: rockchip: add can for RK3576 Soc
-MIME-Version: 1.0
-
-On 22.05.2025 15:46:15, Elaine Zhang wrote:
-> Is new controller:
-> Support CAN and CANFD protocol.
-> Support Dma.
->=20
+On Thu, 22 May 2025 15:46:14 +0800, Elaine Zhang wrote:
+> Add documentation for the rockchip rk3576 CAN-FD controller.
+> 
 > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 > ---
+>  .../net/can/rockchip,rk3576-canfd.yaml        | 86 +++++++++++++++++++
+>  1 file changed, 86 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.yaml
+> 
 
-Looking at the rkcanfd_probe() only for now.
+My bot found errors running 'make dt_binding_check' on your patch:
 
->  static int rkcanfd_probe(struct platform_device *pdev)
->  {
->  	struct rkcanfd_priv *priv;
->  	struct net_device *ndev;
-> +	struct resource *res;
->  	const void *match;
-> -	int err;
-> +	int err, val;
-> =20
->  	ndev =3D alloc_candev(sizeof(struct rkcanfd_priv), RKCANFD_TXFIFO_DEPTH=
-);
->  	if (!ndev)
-> @@ -883,6 +1396,7 @@ static int rkcanfd_probe(struct platform_device *pde=
-v)
->  		goto out_free_candev;
->  	}
-> =20
-> +	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
->  	priv->regs =3D devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(priv->regs)) {
->  		err =3D PTR_ERR(priv->regs);
-> @@ -912,13 +1426,46 @@ static int rkcanfd_probe(struct platform_device *p=
-dev)
->  	priv->can.do_set_mode =3D rkcanfd_set_mode;
->  	priv->can.do_get_berr_counter =3D rkcanfd_get_berr_counter;
->  	priv->ndev =3D ndev;
-> +	priv->dev =3D &pdev->dev;
-> =20
->  	match =3D device_get_match_data(&pdev->dev);
->  	if (match)
->  		priv->devtype_data =3D *(struct rkcanfd_devtype_data *)match;
-> =20
-> +	if (device_property_read_u32(&pdev->dev, "rockchip,auto-retx-cnt", &val=
-))
-> +		priv->auto_retx_cnt =3D 0;
-> +	else
-> +		priv->auto_retx_cnt =3D val;
+yamllint warnings/errors:
+./Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.yaml:51:111: [warning] line too long (153 > 110 characters) (line-length)
+./Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.yaml:55:111: [warning] line too long (159 > 110 characters) (line-length)
 
-What does "rockchip,auto-retx-cnt" do?
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.yaml: properties:compatible:oneOf: [{'const': 'rockchip,rk3576-canfd'}] should not be valid under {'items': {'propertyNames': {'const': 'const'}, 'required': ['const']}}
+	hint: Use 'enum' rather than 'oneOf' + 'const' entries
+	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+Error: Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.example.dts:36.44-45 syntax error
+FATAL ERROR: Unable to parse input tree
+make[2]: *** [scripts/Makefile.dtbs:131: Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.example.dtb] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1524: dt_binding_check] Error 2
+make: *** [Makefile:248: __sub-make] Error 2
 
-> +	if (priv->auto_retx_cnt > RK3576CANFD_RETX_TIME_LIMIT_CNT_MAX)
-> +		priv->auto_retx_cnt =3D RK3576CANFD_RETX_TIME_LIMIT_CNT_MAX;
-> +
-> +	/* rx-max-data only 4 Words or 18 words are supported */
-> +	if (device_property_read_u32_array(&pdev->dev, "rockchip,rx-max-data", =
-&val, 1))
-> +		priv->rx_max_data =3D 18;
-> +	else
-> +		priv->rx_max_data =3D val;
+doc reference errors (make refcheckdocs):
 
-What does "rockchip,rx-max-data" do?
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250522074616.3115348-2-zhangqing@rock-chips.com
 
-> +	if (priv->rx_max_data !=3D 4 && priv->rx_max_data !=3D 18) {
-> +		priv->rx_max_data =3D 18;
-> +		dev_warn(&pdev->dev, "rx_max_data is invalid, set to 18 words!\n");
-> +	}
-> +	priv->rx_fifo_depth =3D RK3576CANFD_SRAM_MAX_DEPTH / priv->rx_max_data;
-> +
-> +	priv->rxchan =3D dma_request_chan(&pdev->dev, "rx");
-> +	if (IS_ERR(priv->rxchan)) {
-> +		dev_warn(&pdev->dev, "Failed to request rxchan\n");
-> +		priv->rxchan =3D NULL;
-> +		priv->use_dma =3D 0;
-> +	} else {
-> +		priv->rx_dma_src_addr =3D res->start + RK3576CANFD_REG_RXFRD;
-> +		priv->dma_size =3D priv->rx_max_data * 4;
-> +		priv->use_dma =3D 1;
-> +	}
-> +	if (priv->use_dma)
-> +		rk3576_canfd_dma_init(priv);
-> +
->  	err =3D can_rx_offload_add_manual(ndev, &priv->offload,
-> -					RKCANFD_NAPI_WEIGHT);
-> +					MAX(RKCANFD_NAPI_WEIGHT, priv->rx_fifo_depth));
->  	if (err)
->  		goto out_free_candev;
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
 
-regards,
-Marc
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
---=20
-Pengutronix e.K.                 | Marc Kleine-Budde          |
-Embedded Linux                   | https://www.pengutronix.de |
-Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
-Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+pip3 install dtschema --upgrade
 
---ksituhnp66k25iih
-Content-Type: application/pgp-signature; name="signature.asc"
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmgu7K8ACgkQDHRl3/mQ
-kZymsQgAjLdCzEB6HwCQxzQplmo4URWaMO82cOhALJZYjZD8yb1YNxk7EJGDXBnB
-xA1aJ1HxA1R9ipDEpv9c0Yo+jgZ3eFwqSPis5raagKrOyXwJvrJjAi6ViVH7jAa6
-txrTn/wkwoyhwMka8txzrHZXRLeWOXcKDXClGDG0eZSLIMlulkX5LqPSnvP13kzY
-HtdA/QSiZKs96hGjSqfSSYZuRkEIVyNy6GntUsf6JHTmKBjCuTCG1QQKAhwedzs3
-zkp762svGYVAhVeGzuc70F0Bx6Dk4Ec9A25VQ3n6Ekrs2Q7dOOHomHMhL05bf+Ri
-gl2L7dJrBkqGsKgG/JYo/VUa8DjXNg==
-=BNBH
------END PGP SIGNATURE-----
-
---ksituhnp66k25iih--
-
-
---===============3563999253017290181==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3563999253017290181==--
-
