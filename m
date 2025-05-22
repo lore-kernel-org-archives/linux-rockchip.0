@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A6C0C54E90
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 12:43:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ECE8C54E65
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 12:53:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GsyYrfdwDXMeBNdF3s16ZOaod2hxYaZ9RCEtCaCKJ+E=; b=xX6fnHY4eW5dTR
-	tx/1/67zs7mIwsYu3J7Za50GrhsRZEWj3lQzL0tW17WPXHGmE4HmGeUdWaBjoA2me5Q+FWX6PAvLh
-	BpFy2T7HsxwJ9YTjMs3SX3/uQWNvPJINtgfPjUGG7NG8u+XKZKizli1soEFhH1PpNOXu2yt4aX9Z1
-	XVLqumKl8hguNVOB64FrKmsAapGSiViM7ShddPJ6OTa9FPTOgsKY2mfa0GRJ61TJF2nNQVw7/ccdy
-	/dTT3GCTSRGQ2Qjju4qOz9XFyG5CVZNwO3eddyq/6srjIeuyFtGoZU83o5x5w7/rFZQAE7sWt7nFq
-	UDwvls2UOJU4hQAmZUbw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QuMJoq8hVBeqB3yQA5ZGHZwqn/dH3yk0YcrlEEwVCpg=; b=raBKcbB1NilyfY
+	62cxrrSmH6OkaE1c8f0JYB4QQTonMkWRqwZVc2u5pILFD7+ozfOdjXqh21LorEFFx5FPsw2Oa2Tti
+	LPyUpgPYNi+IHofSZkI4YjTpzMHgsnchOGMl/Trqrq4NZxFFtPD0lzPDnE5GNbHJPC8LsHJQ1hvb9
+	HgCc8RMtiDdm7Og+xIRarqjSWub6igCb7ANpEjs/leMK/+6tEFZRgn08aMNBXXlW7cmz3h2MjNkKw
+	pRRJjcn11gw+4U9utGwdO0DkbzZh5FxGIGo/vZsC6aUwoWaBrf9NPVyhQUfoC+c/2QAF1x5z4asmj
+	A9rwbfSq3EDFR7ptp4YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI5GN-000000011Fd-3iSD;
-	Thu, 22 May 2025 12:43:07 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uI5Px-000000012dD-1CuK;
+	Thu, 22 May 2025 12:53:01 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI5DU-000000010pP-3unN
-	for linux-rockchip@lists.infradead.org;
-	Thu, 22 May 2025 12:40:10 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id CCA9EA4E4C7;
-	Thu, 22 May 2025 12:40:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8FF2C4CEE4;
-	Thu, 22 May 2025 12:40:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747917607;
-	bh=dIFmpsAhMvCplcUfGCTOY0heRVtKxZ1RNz40PxK8rOk=;
-	h=From:To:Cc:Subject:Date:From;
-	b=nxFyp0PwZTmRg83D1Vmmh/ZmyrjdXltyLFpuIVGyrQkxQO6Km0FRL4NpEGGEVHKIP
-	 w1tLszf6o3IpPne4hxLm49xKOCbP4pWWs+C+kXBgg4kU/7O2Pr8plog5//wbd4MnrS
-	 nX+SgixA8xLvDOUfCO4D67Rb2cQ6GeeNGEg3+0OXwUaLLnov/zY0LVtKfsds843w8/
-	 KfthzZFTuAIIEYQ6uwJs7zMGLoHsq+ZIXH4bY+1wMzvJ4uiVr6iA4z07qvZj2uRJGo
-	 VQ7sjEqPx/xIsVHkTtfCd9hGAWdrWbVYRecaRvjlGXYQQ1vqEgvjebkKhs1LdvWZ8V
-	 l3cPr3nqTJBmw==
-From: Niklas Cassel <cassel@kernel.org>
-To: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Niklas Cassel <cassel@kernel.org>
-Subject: [PATCH] PCI: dw-rockchip: Delay link training after hot reset in EP mode
-Date: Thu, 22 May 2025 14:39:59 +0200
-Message-ID: <20250522123958.1518205-2-cassel@kernel.org>
-X-Mailer: git-send-email 2.49.0
+	id 1uI5Nv-000000012Ox-3bZM;
+	Thu, 22 May 2025 12:50:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=ziV+qFWQFPGemtwtFuQ2yto/+aZFcx7ZXSBvpy3WpXs=; b=Fe+uMmjtdt4LUngmv3HG9SnhGa
+	ae1zfCnl9CkSjiudDhV24Xr3nhTqPUAd0fp+PeA8Dm7cZTkUmNC0BCN9fsFkZdNc+VRHiRJ6Ru+gL
+	WKMEE9yXPOyV1bECHpNIcwT59ilUoK+dAMpkgpZoRtjOimeLgLMNSZDASTdZoGWju0Rw=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uI5No-00DUjP-Ee; Thu, 22 May 2025 14:50:48 +0200
+Date: Thu, 22 May 2025 14:50:48 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Quentin Schulz <quentin.schulz@cherry.de>
+Cc: Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: support Ethernet Switch
+ adapter for RK3588 Jaguar
+Message-ID: <9c99aba9-87f5-41fe-8b11-7ef27525750c@lunn.ch>
+References: <20250521-jaguar-mezz-eth-switch-v1-0-9b5c48ebb867@cherry.de>
+ <20250521-jaguar-mezz-eth-switch-v1-2-9b5c48ebb867@cherry.de>
+ <657a085c-4214-4096-8a68-047d57a40d60@lunn.ch>
+ <19574942-d06b-44b0-8b6c-d3ddd94db89f@cherry.de>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3121; i=cassel@kernel.org; h=from:subject; bh=ZYXfFcQXDiFwjrTUi2n35UtRuclFuX1gTrMksp86lBY=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDL0peVOfwo++dH/xZEkw9+pYrfqzyZMiD+ikTfHNGeXU fMZ8aL6jlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAExEh5nhv7dRmMyUWUYZtZu+ r3XzevN+8+I/yj0NunNVZbwn7pk1y5aRoSt4a/AK72KtVYFBSSKSkwS+r/0l3MtyYvWL/owK/o1 KzAA=
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+Content-Disposition: inline
+In-Reply-To: <19574942-d06b-44b0-8b6c-d3ddd94db89f@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_054009_100119_F25D246F 
-X-CRM114-Status: GOOD (  12.36  )
+X-CRM114-CacheID: sfid-20250522_055055_896711_3B6FEEEB 
+X-CRM114-Status: GOOD (  26.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,86 +77,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+On Thu, May 22, 2025 at 10:18:12AM +0200, Quentin Schulz wrote:
+> Hi Andrew,
+> 
+> On 5/21/25 6:25 PM, Andrew Lunn wrote:
+> > > +&gmac1 {
+> > > +	clock_in_out = "output";
+> > > +	phy-mode = "rgmii";
+> > 
+> > Does the PCB have extra long clock lines to implement the 2ns delays?
+> > 
+> 
+> Not that I am aware no.
 
-RK3588 TRM, section "11.6.1.3.3 Hot Reset and Link-Down Reset" states that:
-"""
-If you want to delay link re-establishment (after reset) so that you can
-reprogram some registers through DBI, you must set app_ltssm_enable =0
-immediately after core_rst_n as shown in above. This can be achieved by
-enable the app_dly2_en, and end-up the delay by assert app_dly2_done.
-"""
+So 'rgmii-id' describes the hardware.
 
-I.e. setting app_dly2_en will automatically deassert app_ltssm_enable on
-a hot reset, and setting app_dly2_done will re-assert app_ltssm_enable,
-re-enabling link training.
+> 
+> The issue here is that I believe the Linux driver actually got the whole
+> phy-mode thing wrong?
 
-When receiving a hot reset/link-down IRQ when running in EP mode, we will
-call dw_pcie_ep_linkdown(), which will call the .link_down() callback in
-the currently bound endpoint function (EPF) drivers.
+Quite possible, a few drivers do.
 
-The callback in an EPF driver can theoretically take a long time to
-complete, so make sure that the link is not re-established until after
-dw_pcie_ep_linkdown() (which calls the .link_down() callback(s)
-synchronously).
+> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> 
+> First, tx_delay defaults to 0x30 if absent, rx_delay to 0x10 if absent,
+> which seems a bit odd but why not.
+> 
+> Then you have rk_gmac_powerup() handling the delays.
+> 
+> If RGMII, then use rx_delay and tx_delay. If RGMII-ID, use neither. If
+> RGMII-RXID use tx_delay. If RGMII-TXID use rx_delay.
+> 
+> This is the complete opposite of what I was expecting?
 
-Signed-off-by: Wilfred Mallawa <wilfred.mallawa@wdc.com>
-Co-developed-by: Niklas Cassel <cassel@kernel.org>
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+This driver, and the aspeed driver cause a lot of problems....
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index c4bd7e0abdf0..05b8e4cbd30b 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -61,6 +61,8 @@
- 
- /* Hot Reset Control Register */
- #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
-+#define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
-+#define  PCIE_LTSSM_APP_DLY2_DONE	BIT(3)
- #define  PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
- 
- /* LTSSM Status Register */
-@@ -487,7 +489,7 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- 	struct rockchip_pcie *rockchip = arg;
- 	struct dw_pcie *pci = &rockchip->pci;
- 	struct device *dev = pci->dev;
--	u32 reg;
-+	u32 reg, val;
- 
- 	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
- 	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
-@@ -498,6 +500,10 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- 	if (reg & PCIE_LINK_REQ_RST_NOT_INT) {
- 		dev_dbg(dev, "hot reset or link-down reset\n");
- 		dw_pcie_ep_linkdown(&pci->ep);
-+		/* Stop delaying link training. */
-+		val = HIWORD_UPDATE_BIT(PCIE_LTSSM_APP_DLY2_DONE);
-+		rockchip_pcie_writel_apb(rockchip, val,
-+					 PCIE_CLIENT_HOT_RESET_CTRL);
- 	}
- 
- 	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
-@@ -585,8 +591,11 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
- 		return ret;
- 	}
- 
--	/* LTSSM enable control mode */
--	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
-+	/*
-+	 * LTSSM enable control mode, and automatically delay link training on
-+	 * hot reset/link-down reset.
-+	 */
-+	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE | PCIE_LTSSM_APP_DLY2_EN);
- 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
- 
- 	/*
--- 
-2.49.0
+> > Since this has a switch on the other end, its a bit more complicated
+> > with RGMII delays. Normally, the MAC does nothing and passed rgmii-id
+> > to the PHY, and the PHY then does the delays. However, here you don't
+> > have a PHY. So you have the MAC add the delays. This looks O.K. I
+> 
+> The switch actually supports adding delays on the port used for DSA conduit.
 
+That actually looks to be the simplest and correct solution. Set the
+MAC to 'rgmii-id', rx_delay and tx_delay to 0, even if they are
+ignored. And in the switch, also 'rgmii-id' and let it insert the 2ns
+delay. You can use rx-internal-delay-ps and tx-internal-delay-ps if
+you want, but it seems to default to sensible values.
+
+> I'm a bit confused by the following sentence:
+> 
+> """
+> Normally, the MAC does nothing and passed rgmii-id
+> """
+> 
+> is this something that the MAC driver is supposed to do or is the subsystem
+> handling that somehow? How do I know how/when to rewrite the phy-mode passed
+> to the PHY?
+
+A small number of MACs have hard coded delays. You cannot turn the
+delay off. So the MAC has no choice but to do the delay. 'rgmii' is
+simply not possible, so -EINVAL. For 'rgmii-id', if you pass that to
+the PHY, it will also add a delay, and 4ns in total does not work. So
+when the MAC is adding delays, it needs to mask out the delays it is
+adding before calling phy_attach() passing an rgmii mode.
+
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
