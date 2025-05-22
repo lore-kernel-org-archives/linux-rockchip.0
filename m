@@ -4,85 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39E24C54ED0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 18:30:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A6B4C54E90
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 19:31:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lrhzG7kNXp7EGqI7NU+JExyVMK21A9joT52HaQZO7YI=; b=LHuM3b1w5301lU
-	cN6JcUtFO786xoiK13QWH3GkWMJr1HIgj2biUV2G1eU87pyV8oLWYV/S9kY9QbfkEochu52c3s59Y
-	yPvnCJtSv+N9dDMThTcjEao5i9S/9nI5bYrbbNJsLKar5xFRlwQ5S6srni/8PEuQTg8v/rbDdTZjM
-	tBF5LUzjMIpWhOBtfB7QBQw7RRhNUUkYyHG1T51wo/U/GNK+jSKbxYWcQYz/5Yo30AN4dHBrsTcSC
-	X9E6lNqgVwxks1eOZpaoHStSXETY46poAWI3AYZpSKMGqYGtR9BmHgNalvRtLsZyfFTV4NG/aNIKC
-	HLOQlxJYoxur8lxAd2JA==;
+	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Li8Srmx9Qh3r+RklRb96EKDbq1f2FiTbBQt0jmwaWWg=; b=g+0AIor471JUki
+	uiVMQCh4iJBxMIStYMo0OTGzHy9ef3ahlQ3oCNWyTtzgc26FX1iTZG3/fHHwBPixCZYV3TdhpYDFZ
+	RcsOExJLM0ZA3whYbCcrISflj3e4vsL6xtgi6kViyYNybAq1KlvyIj25cxF01yYS58hysvOBNbQIg
+	4tqKvUDEv4NV0YhmswCoL9Fanj9V5qaB4HaeHB1VsFZUQWAeLAZVoX3hmMV2Exd3yNOuoQBEA90NX
+	IesoWegiDWwbtoGXuwmIvIlclNcTLwWZ6JCGY0rDe6aEParYcapKwHJPXHTzs+eIzSTrcsKLkZmfY
+	ZwpoWYElpgBJrR4Lp17Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIAgJ-00000001rny-0sO1;
-	Thu, 22 May 2025 18:30:15 +0000
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
+	id 1uIBdJ-0000000222Y-0aOA;
+	Thu, 22 May 2025 19:31:13 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIAFz-00000001ovO-32Ss
-	for linux-rockchip@lists.infradead.org;
-	Thu, 22 May 2025 18:03:05 +0000
-Received: by mail-qk1-x730.google.com with SMTP id af79cd13be357-7c9677cd6d7so850765085a.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 22 May 2025 11:03:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1747936982; x=1748541782; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=J/udtId/XxzUAgerzFd20anDTdLUkEu2nN7uwbduy4g=;
-        b=TqgGTHL3z24NSgbHjy+RRbZ2OzWCNOzMJSLa+9/iemlJRKdk5fJkVMc40hyUdGy7fI
-         1GubMYRk/IJlDmBM8+y64FdurexMh1/LiPLUiwqOTGliyYpPNHPRAhgcFes35VshhJ6Y
-         nxoYe8TddFTAICvCIF1VFcMmhh8EZDc1es9BFR2QXZgfEGHhPJ781EVsXUcFn9m+nSct
-         ebz52mTFFo068q4PVORUhK2iTuk5ZdVph3zsi7/vKVXXtHWNEl9RKQ1zidkXG1s5uq54
-         Z+9BtE9rj5gDxROGlTsDqM7pA069kTFJ3jZT9KznrYJKcgBJi2ufdRQJfXHWoXWnQX3j
-         OzqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747936982; x=1748541782;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=J/udtId/XxzUAgerzFd20anDTdLUkEu2nN7uwbduy4g=;
-        b=GbnZIlmBRAwuJ1BM1OvZFP7J6JWa/XJo3jU6EJXVp3vvReaMrHTlxW1I8Op0qv1BTN
-         w810eTJieCzPYVsh6cnfdWTx9QrXIkpHv1XzDan6jjqAzH+LCJskmLJNcI3ZH2r5C7dd
-         oEIa/fDfYASNZLw354KS4+yK0blUMvIuPaweDH0iiFTXZ0eUOThG4S4+6MzUiYovzH2K
-         aVpiccRyzDcqfDC0yitkxVea18Z9KLvVuaJPSsgRwhtWF2AWtzhf40y8bUfosncVBR5z
-         i1PamyUzK4KqPWS2al6T9fP93woWGMLA3IhVQpAhycc4vXJsUcenmpDLb61WWV+vcAle
-         IViw==
-X-Forwarded-Encrypted: i=1; AJvYcCX8fiKG8sFr/c/wlamMW3h4bUc3etrdDmqJGMBDCy4k9svnYSiOoKA5uGpSNdT6+GVqT5W83RwI8IJhXkr5bQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw9JrsMshDnbFCm+LsHjUa52I3QlcbBK6QUMwZpleFD8oOGbBlm
-	qjf92bI9KEqnA2igFWGrMVygDZiL1UgRTkrFiKTZKElNjPmnKe45szD2cwnkQK1YadY=
-X-Gm-Gg: ASbGncsqD8sG2yKI3XZ1VDb38h5zpezMr5QglzX/NBDhL+0F+R/dayT7IwbwUufdvB/
-	uuyLgFLahHR3Ne9bRsJeGC86tEjASMtSqAUhvie3i5o/Tm/CqkSPP9ORWwMEW1Ajsxn6f4URE4K
-	YiJJgrzGQrPmai11gt+zr6hsqb/8Ui6/ft9zE+aIrkOGUI2Av6XI9dN/kJpurclOLDIJWfpnFEG
-	JL9y0DEsoB4RTywNi7xKYjAQh40ifTaEzCpklCq0dEKsDBFRAVpA/F3JSS7IcKq0n5OWeFSNTgv
-	4rNv9gc4iFvccjFC13oyIvlsX3Ea+wSo1Fh1S8unoXwYHkL6WNrwD26OSAW4OyYsGr4=
-X-Google-Smtp-Source: AGHT+IHh4iw4dgUV3S3EY22uzVTY0YQII61ellrTPDPBr9fV911fwzk1oNA0AI/vndoigz6Eq9Za+A==
-X-Received: by 2002:a05:620a:d8d:b0:7c5:60c7:339 with SMTP id af79cd13be357-7cd46718a88mr4026950085a.9.1747936981809;
-        Thu, 22 May 2025 11:03:01 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:17:b2fc::5ac? ([2606:6d00:17:b2fc::5ac])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7cd468b62ecsm1052642185a.82.2025.05.22.11.03.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 May 2025 11:03:01 -0700 (PDT)
-Message-ID: <0c261c9aad759d791e0a576a47bbd064f28148e9.camel@ndufresne.ca>
-Subject: Re: [PATCH v3 01/10] dt-bindings: npu: rockchip,rknn: Add bindings
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: "Rob Herring (Arm)" <robh@kernel.org>, Tomeu Vizoso
- <tomeu@tomeuvizoso.net>
-Date: Thu, 22 May 2025 14:03:00 -0400
-In-Reply-To: <174742024812.3649303.12389396177218408388.robh@kernel.org>
-References: <20250516-6-10-rocket-v3-0-7051ac9225db@tomeuvizoso.net>
-	 <20250516-6-10-rocket-v3-1-7051ac9225db@tomeuvizoso.net>
-	 <174742024812.3649303.12389396177218408388.robh@kernel.org>
-User-Agent: Evolution 3.56.1 (3.56.1-1.fc42) 
+	id 1uIBZS-000000021Zo-20tt;
+	Thu, 22 May 2025 19:27:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1747942021; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=l4Gg25EeLEA1PB0GOBF6OIyIQVjdmVFp92feHIxrVdW7lbgBKQzvzjxRTAvneGeZegExkv94EiRdssvKiZdSiaphcdTLf6ekcKhvW6wHiOKpYiLNum4TqhbnnOc39zhfs1weTC6+MzO1VRoU1W1l6ua5tPai6DsypM7NqfOI8WQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1747942021; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=AJzBv5LvwO9EFRe8OVUlb9OM9yAWwvged+nVh5RBniI=; 
+	b=FvEiYz+Zk3Zx8Wjzj2Wj30/OkSKlahTbUJxZa7YzPE5u1YUvZiMCZXOc4Jc36LFnDLX/C8J1SwYBX9f9FrkmnAHgiMQ823Ot/b/OKoCTdH7fTi5leQIeyhBLFgMTLqEOXUDrUHUOEFDVm9uRBZxH0G4xo64R+noNyFkEnKDvgA0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1747942021;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=AJzBv5LvwO9EFRe8OVUlb9OM9yAWwvged+nVh5RBniI=;
+	b=gkUZUsht3DMKagUvyLNTwgLMsMMFHBh/eQHXKLF4AUveD1CrnwbuiGvyWIVw+4C/
+	8zHMhEY9HMsCU49eeIjTjCDxF/aQ/7+68Q5Hr5+Y7Zk9gKi0T3gjcecgswUmQBM0kNQ
+	EG2yk6IUwci2sucS8fKh6Bh/1cmhNpnjwzJAxxNk=
+Received: by mx.zohomail.com with SMTPS id 1747942019407306.2477470606051;
+	Thu, 22 May 2025 12:26:59 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Thu, 22 May 2025 21:26:44 +0200
+Subject: [PATCH] pwm: rockchip: round period/duty down on apply, up on get
 MIME-Version: 1.0
+Message-Id: <20250522-rockchip-pwm-rounding-fix-v1-1-b516ad76a25a@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAHN6L2gC/zWNywqDMBBFf0Vm3YGYYlF/pbhI41SHkkeTaAXx3
+ ztUujwH7j07ZEpMGfpqh0QrZw5eoL5UYGfjJ0IehUEr3ahGa0zBvuzMEePHCSx+ZD/hkzfsWnO
+ 9KdspamuQfUwk+vd9H05O9F4kUU4JD5MJbXCOS1952gr+MzAcxxejJ93onAAAAA==
+X-Change-ID: 20250522-rockchip-pwm-rounding-fix-98a360c90e81
+To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>, 
+ Boris Brezillon <bbrezillon@kernel.org>, 
+ Thierry Reding <thierry.reding@gmail.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_110303_948056_41EA2677 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20250522_122714_586437_DAE39FF1 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,80 +74,129 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@gmail.com>, Sumit Semwal <sumit.semwal@linaro.org>, Simona Vetter <simona@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jeff Hugo <jeff.hugo@oss.qualcomm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, Oded Gabbay <ogabbay@kernel.org>, linux-kernel@vger.kernel.org, Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUm9iLAoKCkxlIGx1bmRpIDE5IG1haSAyMDI1IMOgIDA2OjM1IC0wNTAwLCBSb2IgSGVycmlu
-ZyAoQXJtKSBhIMOpY3JpdMKgOgo+IAo+IE9uIEZyaSwgMTYgTWF5IDIwMjUgMTg6NTM6MTUgKzAy
-MDAsIFRvbWV1IFZpem9zbyB3cm90ZToKPiA+IEFkZCB0aGUgYmluZGluZ3MgZm9yIHRoZSBOZXVy
-YWwgUHJvY2Vzc2luZyBVbml0IElQIGZyb20gUm9ja2NoaXAuCj4gPiAKPiA+IHYyOgo+ID4gLSBB
-ZGFwdCB0byBuZXcgbm9kZSBzdHJ1Y3R1cmUgKG9uZSBub2RlIHBlciBjb3JlLCBlYWNoIHdpdGgg
-aXRzIG93bgo+ID4gwqAgSU9NTVUpCj4gPiAtIFNldmVyYWwgbWlzYy4gZml4ZXMgZnJvbSBTZWJh
-c3RpYW4gUmVpY2hlbAo+ID4gCj4gPiB2MzoKPiA+IC0gU3BsaXQgcmVnaXN0ZXIgYmxvY2sgaW4g
-aXRzIGNvbnN0aXR1ZW50IHN1YmJsb2NrcywgYW5kIG9ubHkgcmVxdWlyZQo+ID4gwqAgdGhlIG9u
-ZXMgdGhhdCB0aGUga2VybmVsIHdvdWxkIGV2ZXIgdXNlIChOaWNvbGFzIEZyYXR0YXJvbGkpCj4g
-PiAtIEdyb3VwIHN1cHBsaWVzIChSb2IgSGVycmluZykKPiA+IC0gRXhwbGFpbiB0aGUgd2F5IGlu
-IHdoaWNoIHRoZSB0b3AgY29yZSBpcyBzcGVjaWFsIChSb2IgSGVycmluZykKPiA+IAo+ID4gU2ln
-bmVkLW9mZi1ieTogVG9tZXUgVml6b3NvIDx0b21ldUB0b21ldXZpem9zby5uZXQ+Cj4gPiBTaWdu
-ZWQtb2ZmLWJ5OiBTZWJhc3RpYW4gUmVpY2hlbCA8c2ViYXN0aWFuLnJlaWNoZWxAY29sbGFib3Jh
-LmNvbT4KPiA+IC0tLQo+ID4gwqAuLi4vYmluZGluZ3MvbnB1L3JvY2tjaGlwLHJrbm4tY29yZS55
-YW1swqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAxNjIgKysrKysrKysrKysrKysrKysrKysrCj4gPiDC
-oDEgZmlsZSBjaGFuZ2VkLCAxNjIgaW5zZXJ0aW9ucygrKQo+ID4gCj4gCj4gTXkgYm90IGZvdW5k
-IGVycm9ycyBydW5uaW5nICdtYWtlIGR0X2JpbmRpbmdfY2hlY2snIG9uIHlvdXIgcGF0Y2g6CgpZ
-ZXMsIGFuZCBpdCBmb3VuZCBhbmQgcmVwb3J0ZWQgaXQgMjUgdGltZXMsIGNhbiB5b3UgZml4IGl0
-IHBsZWFzZSA/CgpOaWNvbGFzCgo+IAo+IHlhbWxsaW50IHdhcm5pbmdzL2Vycm9yczoKPiAKPiBk
-dHNjaGVtYS9kdGMgd2FybmluZ3MvZXJyb3JzOgo+IC9idWlsZHMvcm9iaGVycmluZy9kdC1yZXZp
-ZXctY2kvbGludXgvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25wdS9yb2NrY2hp
-cCxya25uLWNvcmUueWFtbDogcHJvcGVydGllczpyZWctCj4gbmFtZXM6ICdvbmVPZicgY29uZGl0
-aW9uYWwgZmFpbGVkLCBvbmUgbXVzdCBiZSBmaXhlZDoKPiAJW3snY29uc3QnOiAncGMnfSwgeydj
-b25zdCc6ICdjbmEnfSwgeydjb25zdCc6ICdjb3JlJ31dIGlzIHRvbyBsb25nCj4gCVt7J2NvbnN0
-JzogJ3BjJ30sIHsnY29uc3QnOiAnY25hJ30sIHsnY29uc3QnOiAnY29yZSd9XSBpcyB0b28gc2hv
-cnQKPiAJRmFsc2Ugc2NoZW1hIGRvZXMgbm90IGFsbG93IDMKPiAJMSB3YXMgZXhwZWN0ZWQKPiAJ
-MyBpcyBncmVhdGVyIHRoYW4gdGhlIG1heGltdW0gb2YgMgo+IAloaW50OiAibWluSXRlbXMiIGlz
-IG9ubHkgbmVlZGVkIGlmIGxlc3MgdGhhbiB0aGUgIml0ZW1zIiBsaXN0IGxlbmd0aAo+IAlmcm9t
-IHNjaGVtYSAkaWQ6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9tZXRhLXNjaGVtYXMvaXRlbXMueWFt
-bCMKPiAvYnVpbGRzL3JvYmhlcnJpbmcvZHQtcmV2aWV3LWNpL2xpbnV4L0RvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9ucHUvcm9ja2NoaXAscmtubi1jb3JlLmV4YW1wbGUuZHRiOgo+
-IG5wdS1jb3JlQGZkYWIwMDAwIChyb2NrY2hpcCxyazM1ODgtcmtubi1jb3JlLXRvcCk6IGNvbXBh
-dGlibGU6ICdvbmVPZicgY29uZGl0aW9uYWwgZmFpbGVkLCBvbmUgbXVzdCBiZSBmaXhlZDoKPiAJ
-Wydyb2NrY2hpcCxyazM1ODgtcmtubi1jb3JlLXRvcCcsICdyb2NrY2hpcCxya25uLWNvcmUtdG9w
-J10gaXMgdG9vIGxvbmcKPiAJJ3JvY2tjaGlwLHJrMzU4OC1ya25uLWNvcmUtdG9wJyBpcyBub3Qg
-b25lIG9mIFsncm9ja2NoaXAscmszNTg4LXJrbm4tY29yZSddCj4gCWZyb20gc2NoZW1hICRpZDog
-aHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvbnB1L3JvY2tjaGlwLHJrbm4tY29yZS55YW1s
-Iwo+IC9idWlsZHMvcm9iaGVycmluZy9kdC1yZXZpZXctY2kvbGludXgvRG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL25wdS9yb2NrY2hpcCxya25uLWNvcmUuZXhhbXBsZS5kdGI6Cj4g
-bnB1LWNvcmVAZmRhYjAwMDAgKHJvY2tjaGlwLHJrMzU4OC1ya25uLWNvcmUtdG9wKTogcmVnOiBb
-WzAsIDQyNTU4NDIzMDQsIDAsIDM2ODY0XV0gaXMgdG9vIHNob3J0Cj4gCWZyb20gc2NoZW1hICRp
-ZDogaHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvbnB1L3JvY2tjaGlwLHJrbm4tY29yZS55
-YW1sIwo+IC9idWlsZHMvcm9iaGVycmluZy9kdC1yZXZpZXctY2kvbGludXgvRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL25wdS9yb2NrY2hpcCxya25uLWNvcmUuZXhhbXBsZS5kdGI6
-Cj4gbnB1LWNvcmVAZmRhYzAwMDAgKHJvY2tjaGlwLHJrMzU4OC1ya25uLWNvcmUpOiBjb21wYXRp
-YmxlOiAnb25lT2YnIGNvbmRpdGlvbmFsIGZhaWxlZCwgb25lIG11c3QgYmUgZml4ZWQ6Cj4gCVsn
-cm9ja2NoaXAscmszNTg4LXJrbm4tY29yZScsICdyb2NrY2hpcCxya25uLWNvcmUnXSBpcyB0b28g
-bG9uZwo+IAkncm9ja2NoaXAscmszNTg4LXJrbm4tY29yZScgaXMgbm90IG9uZSBvZiBbJ3JvY2tj
-aGlwLHJrMzU4OC1ya25uLWNvcmUtdG9wJ10KPiAJZnJvbSBzY2hlbWEgJGlkOiBodHRwOi8vZGV2
-aWNldHJlZS5vcmcvc2NoZW1hcy9ucHUvcm9ja2NoaXAscmtubi1jb3JlLnlhbWwjCj4gL2J1aWxk
-cy9yb2JoZXJyaW5nL2R0LXJldmlldy1jaS9saW51eC9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvbnB1L3JvY2tjaGlwLHJrbm4tY29yZS5leGFtcGxlLmR0YjoKPiBucHUtY29yZUBm
-ZGFjMDAwMCAocm9ja2NoaXAscmszNTg4LXJrbm4tY29yZSk6IHJlZzogW1swLCA0MjU1OTA3ODQw
-LCAwLCAzNjg2NF1dIGlzIHRvbyBzaG9ydAo+IAlmcm9tIHNjaGVtYSAkaWQ6IGh0dHA6Ly9kZXZp
-Y2V0cmVlLm9yZy9zY2hlbWFzL25wdS9yb2NrY2hpcCxya25uLWNvcmUueWFtbCMKPiAKPiBkb2Mg
-cmVmZXJlbmNlIGVycm9ycyAobWFrZSByZWZjaGVja2RvY3MpOgo+IAo+IFNlZQo+IGh0dHBzOi8v
-cGF0Y2h3b3JrLm96bGFicy5vcmcvcHJvamVjdC9kZXZpY2V0cmVlLWJpbmRpbmdzL3BhdGNoLzIw
-MjUwNTE2LTYtMTAtcm9ja2V0LXYzLTEtNzA1MWFjOTIyNWRiQHRvbWV1dml6b3NvLm5ldAo+IAo+
-IFRoZSBiYXNlIGZvciB0aGUgc2VyaWVzIGlzIGdlbmVyYWxseSB0aGUgbGF0ZXN0IHJjMS4gQSBk
-aWZmZXJlbnQgZGVwZW5kZW5jeQo+IHNob3VsZCBiZSBub3RlZCBpbiAqdGhpcyogcGF0Y2guCj4g
-Cj4gSWYgeW91IGFscmVhZHkgcmFuICdtYWtlIGR0X2JpbmRpbmdfY2hlY2snIGFuZCBkaWRuJ3Qg
-c2VlIHRoZSBhYm92ZQo+IGVycm9yKHMpLCB0aGVuIG1ha2Ugc3VyZSAneWFtbGxpbnQnIGlzIGlu
-c3RhbGxlZCBhbmQgZHQtc2NoZW1hIGlzIHVwIHRvCj4gZGF0ZToKPiAKPiBwaXAzIGluc3RhbGwg
-ZHRzY2hlbWEgLS11cGdyYWRlCj4gCj4gUGxlYXNlIGNoZWNrIGFuZCByZS1zdWJtaXQgYWZ0ZXIg
-cnVubmluZyB0aGUgYWJvdmUgY29tbWFuZCB5b3Vyc2VsZi4gTm90ZQo+IHRoYXQgRFRfU0NIRU1B
-X0ZJTEVTIGNhbiBiZSBzZXQgdG8geW91ciBzY2hlbWEgZmlsZSB0byBzcGVlZCB1cCBjaGVja2lu
-Zwo+IHlvdXIgc2NoZW1hLiBIb3dldmVyLCBpdCBtdXN0IGJlIHVuc2V0IHRvIHRlc3QgYWxsIGV4
-YW1wbGVzIHdpdGggeW91ciBzY2hlbWEuCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+With CONFIG_PWM_DEBUG=y, the rockchip PWM driver produces warnings like
+this:
+
+  rockchip-pwm fd8b0010.pwm: .apply is supposed to round down
+  duty_cycle (requested: 23529/50000, applied: 23542/50000)
+
+This is because the driver chooses ROUND_CLOSEST for idempotency
+reasons. However, it's possible to keep idempotency while always
+rounding down in .apply.
+
+Do this by making get_state always round up, and making apply always
+round down. This is done with u64 maths, and setting both period and
+duty to U32_MAX (the biggest the hardware can support) if they would
+exceed their 32 bits confines.
+
+Fixes: 12f9ce4a5198 ("pwm: rockchip: Fix period and duty cycle approximation")
+Fixes: 1ebb74cf3537 ("pwm: rockchip: Add support for hardware readout")
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+This fix may need some careful testing from others before definitely
+being applied and backported. While I did test it myself of course,
+making sure to try a combination of periods and duty cycles, I really
+don't want to accidentally undo someone else's fix.
+
+Some of the u64 math is a bit overkill, but I don't want to assume
+prescalers will never get larger than 4, which is where we start needing
+the 64-bit prescaled NSECS_PER_SEC value. clk_rate could also
+comfortably fit within u32 for any expected clock rate, but unsigned
+long can fit more depending on architecture, even if nobody is running
+the PWM hardware at 4.294967296 GHz.
+---
+ drivers/pwm/pwm-rockchip.c | 31 +++++++++++++++++++------------
+ 1 file changed, 19 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+index c5f50e5eaf41ac7539f59fa03f427eee6263ca90..983c7354becddd1d322a0b9c2947e0a4603c52dd 100644
+--- a/drivers/pwm/pwm-rockchip.c
++++ b/drivers/pwm/pwm-rockchip.c
+@@ -8,6 +8,8 @@
+ 
+ #include <linux/clk.h>
+ #include <linux/io.h>
++#include <linux/limits.h>
++#include <linux/math64.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+@@ -61,6 +63,7 @@ static int rockchip_pwm_get_state(struct pwm_chip *chip,
+ 				  struct pwm_state *state)
+ {
+ 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
++	u64 prescaled_ns = (u64)pc->data->prescaler * NSEC_PER_SEC;
+ 	u32 enable_conf = pc->data->enable_conf;
+ 	unsigned long clk_rate;
+ 	u64 tmp;
+@@ -78,12 +81,12 @@ static int rockchip_pwm_get_state(struct pwm_chip *chip,
+ 	clk_rate = clk_get_rate(pc->clk);
+ 
+ 	tmp = readl_relaxed(pc->base + pc->data->regs.period);
+-	tmp *= pc->data->prescaler * NSEC_PER_SEC;
+-	state->period = DIV_ROUND_CLOSEST_ULL(tmp, clk_rate);
++	tmp *= prescaled_ns;
++	state->period = DIV_U64_ROUND_UP(tmp, clk_rate);
+ 
+ 	tmp = readl_relaxed(pc->base + pc->data->regs.duty);
+-	tmp *= pc->data->prescaler * NSEC_PER_SEC;
+-	state->duty_cycle =  DIV_ROUND_CLOSEST_ULL(tmp, clk_rate);
++	tmp *= prescaled_ns;
++	state->duty_cycle =  DIV_U64_ROUND_UP(tmp, clk_rate);
+ 
+ 	val = readl_relaxed(pc->base + pc->data->regs.ctrl);
+ 	state->enabled = (val & enable_conf) == enable_conf;
+@@ -103,8 +106,9 @@ static void rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 			       const struct pwm_state *state)
+ {
+ 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
+-	unsigned long period, duty;
+-	u64 clk_rate, div;
++	u64 prescaled_ns = (u64)pc->data->prescaler * NSEC_PER_SEC;
++	u64 clk_rate, tmp;
++	u32 period, duty;
+ 	u32 ctrl;
+ 
+ 	clk_rate = clk_get_rate(pc->clk);
+@@ -114,12 +118,15 @@ static void rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	 * bits, every possible input period can be obtained using the
+ 	 * default prescaler value for all practical clock rate values.
+ 	 */
+-	div = clk_rate * state->period;
+-	period = DIV_ROUND_CLOSEST_ULL(div,
+-				       pc->data->prescaler * NSEC_PER_SEC);
+-
+-	div = clk_rate * state->duty_cycle;
+-	duty = DIV_ROUND_CLOSEST_ULL(div, pc->data->prescaler * NSEC_PER_SEC);
++	tmp = mul_u64_u64_div_u64(clk_rate, state->period, prescaled_ns);
++	if (tmp > U32_MAX)
++		tmp = U32_MAX;
++	period = tmp;
++
++	tmp = mul_u64_u64_div_u64(clk_rate, state->duty_cycle, prescaled_ns);
++	if (tmp > U32_MAX)
++		tmp = U32_MAX;
++	duty = tmp;
+ 
+ 	/*
+ 	 * Lock the period and duty of previous configuration, then
+
+---
+base-commit: 6add743d2854d744c3037235b87c1c9d164fd132
+change-id: 20250522-rockchip-pwm-rounding-fix-98a360c90e81
+
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
