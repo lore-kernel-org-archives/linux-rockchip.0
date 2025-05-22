@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B97DFC54756
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 09:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C496BC54E65
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 12:19:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=JevEgWSV3kdl44CfEPoq35tw2eJoOKBt9Iaq3meUbIU=; b=Rsc/czgsrJ9Yj8r8bKM8Uq0005
-	a21CkYCc4RBfNV/HGZ5eRPuCtjtM1mzqn3T0QO4tjUbL8IDOQyVLUonmzqUNQwW3fAX/eIVL2BdkP
-	KHpEuSwm77s1DjNmTDSg5pW1HMlsosA87G6R+PoWzIhtCu9KDuD7EJbDIwFuyUOhezIx6NF87YwLp
-	OTiSXTJZkzcACiAemYxRre9iC14kJLkSF+3RefPNBHTPgMvKXpfd4sErb/KjEcmIhMl96EKhSpbCm
-	xgOV5aTt6SrdwX15EH+Lpl/fj/+Ha7e9BksJz7wabUNAtjn0g+bNiLqGrNxXruH8X+kSYjPyKdAYi
-	Dd8hpNNw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LvedUL0QfbwMjgSwkylnXE6nzAEQ3NOgSI4GNtVIqeg=; b=rZXUJC1WUgcn6T
+	sk4XB6CitaYiAjdt3UudkxJjEv7V8FEX1ZEckOQbc/JyPKnRO8pgWhvyhNxm3rhOVVvXtsC5XLS8T
+	JQ45UyEGZ6lmvu1kKQNasEyxqj7Wge6JWPXg91zLNxPdAGPrZB3wLVzsG018yR5oZ0jJauJeVZ33P
+	chy5ctlssZYTSR9Pd5q14RM4w0jkNfCG0phOhhTwFSpt5JRhyNcFSr4ZsSy9dMQelZLR3JJMFiFg0
+	KBxg8zHMKkJkbUBipmyx2g/70+tRtlr2V6mhIQwdEub+O0F60KWZAsGlXLY0lsZWa8ZlI5yrRoHRX
+	HO42sFZRQ/gbtguZZmLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI2DR-00000000UuZ-1jeo;
-	Thu, 22 May 2025 09:27:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uI4su-00000000yg7-3WA0;
+	Thu, 22 May 2025 12:18:52 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI2BL-00000000UZx-2oUj;
-	Thu, 22 May 2025 09:25:44 +0000
+	id 1uI4qp-00000000yOO-3qxf;
+	Thu, 22 May 2025 12:16:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9A4E45C57A5;
-	Thu, 22 May 2025 09:23:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34187C4CEE4;
-	Thu, 22 May 2025 09:25:42 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 183E1A4DFD3;
+	Thu, 22 May 2025 12:16:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 876FEC4CEE4;
+	Thu, 22 May 2025 12:16:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747905942;
-	bh=p53SfCe7muDgtvQFHMIVqvkowaeuQ3Tx7It7jszYKD4=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=CO9mh0dYYJ6S4syWXHaQCopevlhaqGAYO5iqcLaWHMlY00lVp9y+W4/oG4MnnBP4/
-	 tr+s3pHewoNQEBg1NNcnx3voyBJHMTfpOzB+48AgrF4gMYvM/+/dkDnqj9oUDN6D4+
-	 Cd1x7EZ8bzOpZvmQVk0+QhRzIyf2h+4mYCnu/ILvzt4ucD1XT6EMrpItDesYc8MZrK
-	 3xeM2zdbF2zBeiW6drS2KAe8uMiwbLrK55SzE6/qzNQeC23AFvjE3Vd1i1wV0BdXHA
-	 yiO+mEI+J3ejMfzo58Vj+tJb1V7ynQZO1dCjTIzeK1T7CB6Hp/OQcJAxodLqFZjjkn
-	 P35doFcmKnAvw==
-Date: Thu, 22 May 2025 04:25:40 -0500
+	s=k20201202; t=1747916202;
+	bh=janGegacipRDwPFRgry5bht/UiVsUU8rf1hprM7kBWA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JmU/gxR74WvXbSu+bOhy1qYNicRMEwtrvSuhMzYVKoRQnLi0Rozhh2dm9jiM1Yxzk
+	 QWdD/d6klPn+xdjglaqvz73pTLsoJ/EipbUbYwAG9kwZhpzYFkI5SSzuFuRazec1hA
+	 gIzZDHLb/yuxCB+wXFo8gUc3Pu8YGBu48jThkKMn1xfg1SMhmnhz5h9CvWB54OnVvy
+	 E3DDvskbZX40AA3rTnNT4Xe7b5YyC3VLpbfypvUhTQT/zngu8S/mWjfYHpZT+4hdo9
+	 PtMQ04s9OOHwcOUOD6sAVFxrEiDm6hPnqonbGPu97N5RiChSfYQlZ3bofxQ8+YSzTW
+	 SlPz9RdvPZBmQ==
+Date: Thu, 22 May 2025 07:16:40 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chaoyi Chen <kernel@airkyi.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Dragan Simic <dsimic@manjaro.org>, dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 2/2] dt-bindings: display: rockchip: Convert
+ cdn-dp-rockchip.txt to yaml
+Message-ID: <20250522121640.GA2192083-robh@kernel.org>
+References: <20250520024718.142-1-kernel@airkyi.com>
+ <20250520024718.142-3-kernel@airkyi.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, krzk+dt@kernel.org, cl@rock-chips.com, 
- mkl@pengutronix.de, conor+dt@kernel.org, linux-can@vger.kernel.org, 
- mailhol.vincent@wanadoo.fr, kever.yang@rock-chips.com, 
- kernel@pengutronix.de, linux-rockchip@lists.infradead.org, heiko@sntech.de, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-In-Reply-To: <20250522074616.3115348-2-zhangqing@rock-chips.com>
-References: <20250522074616.3115348-1-zhangqing@rock-chips.com>
- <20250522074616.3115348-2-zhangqing@rock-chips.com>
-Message-Id: <174790594029.1733292.2362448733539179713.robh@kernel.org>
-Subject: Re: [PATCH v4 1/3] dt-bindings: can: rockchip_canfd: add rk3576
- CAN-FD controller
+Content-Disposition: inline
+In-Reply-To: <20250520024718.142-3-kernel@airkyi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_022543_793112_C2A66EDA 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20250522_051644_020094_04E02971 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,51 +83,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 22 May 2025 15:46:14 +0800, Elaine Zhang wrote:
-> Add documentation for the rockchip rk3576 CAN-FD controller.
+On Tue, May 20, 2025 at 10:47:18AM +0800, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 > 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Convert cdn-dp-rockchip.txt to yaml.
+> 
+> Add new "port@1" property which represents the CDN DP output to keep
+> the same style as the other display interfaces.
+> 
+> This patch also changes the constraints for "phys" and "extcon". For
+> the original binding, only one phy and the corresponding extcon can
+> be specified. In the new binding, one or two phys can be specified.
+> Since the RK3399 has two DP-USB PHYs, specifying one allows output
+> via the corresponding PHY, while specifying two lets the driver
+> choose one PHY for output. This rule also applies to extcon, which
+> provides the cable state for the corresponding PHY.
+> 
+> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 > ---
->  .../net/can/rockchip,rk3576-canfd.yaml        | 86 +++++++++++++++++++
->  1 file changed, 86 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.yaml
-> 
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Fixed up the typos and applied, thanks.
 
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.yaml:51:111: [warning] line too long (153 > 110 characters) (line-length)
-./Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.yaml:55:111: [warning] line too long (159 > 110 characters) (line-length)
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.yaml: properties:compatible:oneOf: [{'const': 'rockchip,rk3576-canfd'}] should not be valid under {'items': {'propertyNames': {'const': 'const'}, 'required': ['const']}}
-	hint: Use 'enum' rather than 'oneOf' + 'const' entries
-	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
-Error: Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.example.dts:36.44-45 syntax error
-FATAL ERROR: Unable to parse input tree
-make[2]: *** [scripts/Makefile.dtbs:131: Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.example.dtb] Error 1
-make[2]: *** Waiting for unfinished jobs....
-make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1524: dt_binding_check] Error 2
-make: *** [Makefile:248: __sub-make] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250522074616.3115348-2-zhangqing@rock-chips.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
