@@ -4,106 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 774E5C54756
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 07:05:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECFD5C54E65
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 May 2025 07:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BtLcjitWFHPOqsU5ntj6trrJvEvvELfuj3qvGDoFzhw=; b=xGCyV3s6zjFqdq
-	0YFXre/TLzOEc20ouz3dCzKY9ZATlfIn6rtoW9SGmKHpISjKdh5Qjk2ljaR0S1V3AEv3YDg1e9GXI
-	1KagTm3asVjDtI/8H6Zj/wa0iJhX/BKyYcFmAVNG4qLvZzPAweIKcntg0iaWxDX4jl2nBu6wAI7/v
-	a1bh10GPEHdmCZBjYRhGFUqGX4xVjQppLyoSJRoxXtprfVr6EAVC7XSIgS1jC2IWFhJ8jVKwOi5bL
-	EhttFHP3lFGYjit2V4VcHVFkK0O2ECiQr9PWSOfdu0c547JXwmo0Ko1TJlxidgGW8zLjFZ/wFHAAH
-	M93Ds1k8QlrqFAkJE0sg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eczQKYYqzSL8YzTxD3qISHMcbfbNG2Jd7wZxTzP/Yos=; b=ofliVoeLcfdemX
+	LRl8JubwhU5AFTSxt/cR2/E4cPGJ2t1ccuMDOQ10+cYybr34zgn/Wp7ANLCCVzj6MIeASSVYqXAgP
+	ibETLCk69vaDpKg1WVZIzIol1c5Jqm03OwfvDfpurj0ITdCrNxoKezspdhM2j3g2MvwLZiPTIinRT
+	pmjpLHmy8vW1FR5N/rAv6z3ha2gnFuThR73lLUxrsmFFEMaoFoGYQTjoh/vbDofAMSUrt5ExrMd7x
+	GKp0sUPT55qOIKh2Fah/5nfAC/VJ0KsdLaKz5QPgXRFQcg1YcbrU/x+/39d+U6ZoMxPtXvivLgMha
+	1+Mn1Ao/+Kv1rtQ1bzBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHzzL-000000004eU-1yHU;
-	Thu, 22 May 2025 07:05:11 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uI0ei-00000000AxE-3qRc;
+	Thu, 22 May 2025 07:47:56 +0000
+Received: from mail-m21471.qiye.163.com ([117.135.214.71])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHzue-000000003qu-2FUy;
-	Thu, 22 May 2025 07:00:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id BBDC4A4D8A6;
-	Thu, 22 May 2025 07:00:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDB65C4CEE4;
-	Thu, 22 May 2025 07:00:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747897219;
-	bh=LZLkbGZ2PnVJ7iVxraNYnGaePANsUO1SvKxcHJG4w7M=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GFJl7FTUOvI+TOAcZZz9l9T+gQypgQGHqiU7YtStXMarDa9OMtDnwP1DTbACXCA3r
-	 9bI+DknzSYQr6k+vyP75tsPcz5pxYBDT9nlcMUZJA+TdbYJqMcTGXqcF7M+NpLgNAu
-	 C2iKjAw6RR1DL/W3svv1vio+ISIvS35a85kkSH1FqYQjvUxVyzKBXXp9+bbLAzjg1J
-	 Jd+55gKt6KSB4PjdTzMl0QWlxzMRQhST5QWuJAx5aRM+A0f/DPVRruJ8iIzgradJ2u
-	 DiPkUK/th9A3UsSyW7V5srF1SIle029wkms0fLl4mvwnMtoHiAjdmGOELuTN2KR3oj
-	 Y+hjr/B2ifxpQ==
-Message-ID: <2127437a-d231-44f0-9866-6a565185401a@kernel.org>
-Date: Thu, 22 May 2025 09:00:13 +0200
+	id 1uI0dE-00000000AkB-2Jrk;
+	Thu, 22 May 2025 07:46:26 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1605e660e;
+	Thu, 22 May 2025 15:46:17 +0800 (GMT+08:00)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: zhangqing@rock-chips.com,
+	mkl@pengutronix.de,
+	kernel@pengutronix.de,
+	mailhol.vincent@wanadoo.fr,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	cl@rock-chips.com,
+	kever.yang@rock-chips.com
+Cc: linux-can@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH v4 0/3] rockchip: add can for RK3576 Soc
+Date: Thu, 22 May 2025 15:46:13 +0800
+Message-Id: <20250522074616.3115348-1-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/3] net: can: rockchip: add can for RK3576 Soc
-To: Elaine Zhang <zhangqing@rock-chips.com>, mkl@pengutronix.de,
- kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, cl@rock-chips.com,
- kever.yang@rock-chips.com
-Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20250522063232.2197432-1-zhangqing@rock-chips.com>
- <20250522063232.2197432-3-zhangqing@rock-chips.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250522063232.2197432-3-zhangqing@rock-chips.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUseGlYaGBhKHUMYHx1KH0hWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a96f6f50f7903a3kunm9938470210de792
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NBg6Izo6ETE0LhIcSTgpDiov
+	GDRPCSlVSlVKTE9MQ0JCQkxCSk9NVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUlKSks3Bg++
+DKIM-Signature: a=rsa-sha256;
+	b=ZHgASNrqMdf+4b6cLuXsZ1XZEP5++2a9VJU5ozLQi+Y5vCkl5jmy/SzODsHuLCwVANNEto4TcXitwR/kMnZaLfcRXXrL06j2FbOeiZUL4FPlmQXDP0+M4Jwv3HPitH+wsKnczxWwDnUGUScTkRzpiC/fqmZbx5KWpuVH3R5BlE0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=sIsz51ve9WD6EIYt9+H904kIrnIh/0ETD/TqyTo6/IU=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_000020_737299_F2D681BE 
-X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-CacheID: sfid-20250522_004624_997575_4575E4CA 
+X-CRM114-Status: UNSURE (   8.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -121,41 +83,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 22/05/2025 08:32, Elaine Zhang wrote:
->  	}
->  
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->  	priv->regs = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(priv->regs)) {
->  		err = PTR_ERR(priv->regs);
-> @@ -912,13 +1426,46 @@ static int rkcanfd_probe(struct platform_device *pdev)
->  	priv->can.do_set_mode = rkcanfd_set_mode;
->  	priv->can.do_get_berr_counter = rkcanfd_get_berr_counter;
->  	priv->ndev = ndev;
-> +	priv->dev = &pdev->dev;
->  
->  	match = device_get_match_data(&pdev->dev);
->  	if (match)
->  		priv->devtype_data = *(struct rkcanfd_devtype_data *)match;
->  
-> +	if (device_property_read_u32(&pdev->dev, "rockchip,auto-retx-cnt", &val))
+rk3576 can is a new controller:
+Support CAN and CANFD protocol.
+Support Dma.
 
-No, undocumented ABI. You never tested this or DTS.
+There are major differences from the previous rk3568. All errata on the
+rk3568 have been fixed and redesigned.
 
+Change in V4:
+[PATCH v4 1/3]: Correct the format and add explanations.
+[PATCH v4 2/3]: No change.
+[PATCH v4 3/3]: No change.
 
-> +		priv->auto_retx_cnt = 0;
-> +	else
-> +		priv->auto_retx_cnt = val;
-> +	if (priv->auto_retx_cnt > RK3576CANFD_RETX_TIME_LIMIT_CNT_MAX)
-> +		priv->auto_retx_cnt = RK3576CANFD_RETX_TIME_LIMIT_CNT_MAX;
-> +
-> +	/* rx-max-data only 4 Words or 18 words are supported */
-> +	if (device_property_read_u32_array(&pdev->dev, "rockchip,rx-max-data", &val, 1))
+Change in V3:
+[PATCH v3 1/3]: Add documentation for the rk3576 CAN-FD.
+[PATCH v3 2/3]: Adjust the differentiated code section and add dma
+function.
+[PATCH v3 3/3]: Remove dma, no use dma by default.
 
-No, you cannot keep adding undocumented ABI.
+Change in V2:
+[PATCH v2 1/2]: remove rk3576_canfd.c, use the rockchip_canfd driver
+[PATCH v2 2/2]: code style.
 
-Best regards,
-Krzysztof
+Elaine Zhang (3):
+  dt-bindings: can: rockchip_canfd: add rk3576 CAN-FD controller
+  net: can: rockchip: add can for RK3576 Soc
+  arm64: dts: rockchip: rk3576: add can dts nodes
+
+ .../net/can/rockchip,rk3576-canfd.yaml        |  86 +++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      |  22 +
+ .../net/can/rockchip/rockchip_canfd-core.c    | 637 ++++++++++++++++--
+ drivers/net/can/rockchip/rockchip_canfd-rx.c  | 193 ++++++
+ drivers/net/can/rockchip/rockchip_canfd-tx.c  |  29 +
+ drivers/net/can/rockchip/rockchip_canfd.h     | 312 +++++++++
+ 6 files changed, 1234 insertions(+), 45 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/net/can/rockchip,rk3576-canfd.yaml
+
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
