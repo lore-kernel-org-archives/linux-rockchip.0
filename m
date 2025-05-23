@@ -4,51 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DA89C54ED0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 11:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26CE1C54F30
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 11:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lwQ0qDZTyCyiIiXDzAbUSRLVOu98n2fBlpKlIbJndRQ=; b=JQnzwC0yefxrS0
-	yDhGsJl03uJjhFznYK/nOlwoJLZWuglyquJ/b5mowGdP/jsBEqZ/7Ji4vvqpN//1nT/BHxRzlxQLl
-	wCHOsKlrpNE8FiXoVDgPd8Z42yknTh4sH8/nmtK+ffq32VPh1uDTncuydAGP+9B8N94/nXV2OR+YK
-	qRiqHoQK1hk4/sa2BfZ5TEDnqIb7XvPqytvPeMdxhSnErub+ej4Ro7ngZ6CtoEgJ8iXyS0++ZybMg
-	XDnnhcsgta8Lmb8/jv4fMwH5c2YQM5oO6qTt0BWR+ciYIGCPtW4w9qZCCUNAAVRneTIsWRegZ8jc9
-	iOrg8fiCXfRH/+wKV/tA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lcHCOGkhwRq31r75Ht53d+b6b333r+GyJkzty3ZP9Wo=; b=o4a3+oxRmUKwIOpxy6CTb4HyrB
+	1tva7MMDQrnPF4GxqfUWAHg0/qQMtoyM3TqieXSc1nvvVPrtqzPKR8IpAHFTpUHSE/wkhqUPm5xwu
+	aGqDa8NkI6zlEl9axi1r86HJsekHy7xw1wwLom4dZht1JjHdTibtGwXXa7b7KLYPxumXMUKzbG30u
+	AKbO6Y6Qvs8tH4db3pjh3lka6l9v2DjZL6SYru1EMHkf1OPmrzLaEfyW/Br+//cAME/m+cvM/BoMz
+	UkP7z9tWFcdwlBcDenYsW4W2j4YvsLxYtV24ehU8VPRWOYLbEO14XkYRtpTxrx+4Ha/mHcqloT/jx
+	H4lvVIxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIQG1-00000003flJ-3vUD;
-	Fri, 23 May 2025 11:08:09 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uIQUl-00000003hG0-0PdF;
+	Fri, 23 May 2025 11:23:23 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([185.203.201.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIQDc-00000003fYj-2PnZ;
-	Fri, 23 May 2025 11:05:41 +0000
-Received: from pyrite.rasen.tech (fp76f176b6.tkyc001.ap.nuro.jp [118.241.118.182])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E0A916B5;
-	Fri, 23 May 2025 13:05:15 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1747998316;
-	bh=Ye3uQC7xrBPg3aUxgsBw7tGbGkMZh87SKpNk54FKl/g=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=G/y3vF7YOUJLFITEcHDpZCtnC7qocDabh33hZac6L8UjnXI1jLccP/ZETvK3upVRV
-	 gQLqvFzXJXlGCU+zTkAwgehOnCQIgfX/xQCO34L6dNj7jlOkXtcvmsV5hEUvzqKmJ5
-	 2Cl9zbuhwDoSvmda14WqVX2ZaK3Lcs48tRgAlXng=
+	id 1uIOQX-00000003PEv-1MLE
+	for linux-rockchip@lists.infradead.org;
+	Fri, 23 May 2025 09:10:54 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1uIOQI-0005Zj-48; Fri, 23 May 2025 11:10:38 +0200
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1uIOQH-000sRD-1o;
+	Fri, 23 May 2025 11:10:37 +0200
+Received: from pengutronix.de (unknown [IPv6:2a03:2260:2009:2000::])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 840C141822A;
+	Fri, 23 May 2025 09:10:36 +0000 (UTC)
+Date: Fri, 23 May 2025 11:10:33 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, cl@rock-chips.com, 
+	kever.yang@rock-chips.com, linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH v5 4/4] net: can: rockchip: support dma for rk3576 rx
+Message-ID: <20250523-shrewd-berserk-sheep-315ac5-mkl@pengutronix.de>
+References: <20250523075422.4010083-1-zhangqing@rock-chips.com>
+ <20250523075422.4010083-5-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <m3tt5b7kvc.fsf@t19.piap.pl>
-References: <m3tt5b7kvc.fsf@t19.piap.pl>
-Subject: Re: [PATCH] media: rkisp1: correct histogram window size
-From: Paul Elder <paul.elder@ideasonboard.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Ondrej Jirman <megi@xff.cz>, Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>, Krzysztof =?utf-8?q?Ha=C5=82asa?= <khalasa@piap.pl>
-Date: Fri, 23 May 2025 20:05:32 +0900
-Message-ID: <174799833258.43941.7457628037394806572@pyrite.rasen.tech>
-User-Agent: alot/0.0.0
+In-Reply-To: <20250523075422.4010083-5-zhangqing@rock-chips.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250523_040540_756773_C6307261 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20250523_021053_355735_389FA5A8 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,63 +76,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1380732189204327004=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgS3J6eXN6dG9mLAoKVGhhbmtzIGZvciB0aGUgbmV3IHZlcnNpb24uCgpNeSBiYWQsIEkgc2hv
-dWxkJ3ZlIG1lbnRpb25lZCBpbiB0aGUgcmV2aWV3IG9mIHRoZSBwcmV2aW91cyB2ZXJzaW9uOyBJ
-IHRoaW5rCnlvdSBzaG91bGQgaGF2ZSBhIHBhcmFncmFwaCBpbiB0aGUgYmVnaW5uaW5nIGJyaWVm
-bHkgZXhwbGFpbmluZyB0aGUgcHJvYmxlbSBpbgplbmdsaXNoLgoKIlRoZSBoaXN0b2dyYW0gd2lu
-ZG93IGRpbWVuc2lvbnMgYXJlIHVubmVjZXNzYXJpbHkgZGVjcmVtZW50ZWQuIFRoaXMgY2FuIGJl
-CnNlZW4gaW4gdGhlIGZvbGxvd2luZyBleGFtcGxlLCB3aGVyZSB3aGVuIGFsbCBwaXhlbHMgYXJl
-IG9mIG1heGltdW0gaW50ZW5zaXR5CnRoZXJlIGFyZSBwaXhlbHMgdGhhdCB3ZSBleHBlY3QgdG8g
-YmUgY291bnRlZCBidXQgYXJlIG1pc3NpbmcgZnJvbSB0aGUgaGlnaGVzdApiaW4uIEZpeCB0aGlz
-IGJ5IHJlbW92aW5nIHRoZSB1bm5lY2Vzc2FyeSBkZWNyZW1lbnQuIgoKSSB0aGluayB3b3VsZCBi
-ZSBnb29kIGVub3VnaC4KClF1b3RpbmcgS3J6eXN6dG9mIEhhxYJhc2EgKDIwMjUtMDUtMjMgMTg6
-MTA6NDcpCj4gV2l0aG91dCB0aGUgcGF0Y2ggKGkuTVg4TVAsIGFsbC13aGl0ZSBSR0dCLTEyIGZ1
-bGwgSEQgaW5wdXQgZnJvbQo+IHRoZSBzZW5zb3IsIFlVViBOVjEyIG91dHB1dCBmcm9tIElTUCwg
-ZnVsbCByYW5nZSwgaGlzdG9ncmFtIFkgbW9kZSkuCj4gSElTVF9TVEVQU0laRSA9IDMgKGxvd2Vz
-dCBwZXJtaXR0ZWQpLCBhbGwgd2VpZ2h0cyBhcmUgc2V0IHRvIDE6Cj4gCj4gaXNwX2hpc3RfaF9z
-aXplOiAzODMgKD0gMTkyMCAvIDUgLSAxKQo+IGlzcF9oaXN0X3Zfc2l6ZTogMjE1ICg9IDEwODAg
-LyA1IC0gMSkKPiBoaXN0b2dyYW1fbWVhc3VyZW1lbnRfcmVzdWx0WzE2XTogMCAwIDAgMCAgMCAw
-IDAgMCAgMCAwIDAgMCAgMCAwIDAgMjI5NDAxCj4gCj4gQXBwYXJlbnRseSB0aGUgaGlzdG9ncmFt
-IGlzIG1pc3NpbmcgdGhlIGxhc3QgY29sdW1uICgzLXBpeGVsIHdpZGUsCj4gdGhvdWdoIG9ubHkg
-c2luZ2xlIHBpeGVscyBjb3VudCkgYW5kIHRoZSBsYXN0IChzYW1lIGlkZWEpIHJvdwo+IG9mIHRo
-ZSBpbnB1dCBpbWFnZTogMTkxNyAqIDEwNzcgLyAzIC8gMyA9IDIyOTQwMS4KPiAKPiBFLmcuIHdp
-dGhvdXQgdGhlIHBhdGNoLCB0aGUgcGl4ZWxzIGNvdW50ZWQgaW4gbGluZXMgYXJlOgo+IDAsIDMs
-IC4uLiAxOTE0ICh3aGljaCBtYWtlcyAxOTE3LzMpLCBhbmQgcGF0Y2hlZDoKPiAwLCAzLCAuLi4g
-MTkxNCwgMTkxNyAod2hpY2ggbWFrZXMgMTkyMC8zKS4KPiBUaGUgc2FtZSBpcyB0cnVlIGZvciBy
-b3dzLgoKSSBsaWtlIHRoaXMgY2xhcmlmaWNhdGlvbi4KCgpXaXRoIHRoZSBhYm92ZSBwYXJhZ3Jh
-cGggYWRkZWQsCgpSZXZpZXdlZC1ieTogUGF1bCBFbGRlciA8cGF1bC5lbGRlckBpZGVhc29uYm9h
-cmQuY29tPgoKKEkgc3VwcG9zZSBpZiB5b3UgYXBwcm92ZSBpdCB0aGVuIGl0IGNvdWxkIHNpbXBs
-eSBiZSBhZGRlZCB3aGVuIGl0J3MgYXBwbGllZAphbmQgeW91IHdvdWxkbid0IG5lZWQgdG8gc2Vu
-ZCBhIG5ldyB2ZXJzaW9uLCBidXQgSSBkb24ndCBoYXZlIHBlcm1pc3Npb25zIGZvcgp0aGF0IHNv
-IHVoLi4uKQoKPiAKPiBXaXRoIHRoZSBwYXRjaCBhcHBsaWVkOgo+IGlzcF9oaXN0X2hfc2l6ZTog
-Mzg0ICg9IDE5MjAgLyA1KQo+IGlzcF9oaXN0X3Zfc2l6ZTogMjE2ICg9IDEwODAgLyA1KQo+IGhp
-c3RvZ3JhbV9tZWFzdXJlbWVudF9yZXN1bHRbMTZdOiAwIDAgMCAwICAwIDAgMCAwICAwIDAgMCAw
-ICAwIDAgMCAyMzA0MDAKPiAKPiAxOTIwICogMTA4MCAvIDMgLyAzID0gMjMwNDAwCj4gCj4gU2ln
-bmVkLW9mZi1ieTogS3J6eXN6dG9mIEhhxYJhc2EgPGtoYWxhc2FAcGlhcC5wbD4KPiAKPiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXBh
-cmFtcy5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXBh
-cmFtcy5jCj4gaW5kZXggYjI4ZjQxNDBjOGEzLi5jYTliM2U3MTFlNWYgMTAwNjQ0Cj4gLS0tIGEv
-ZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXBhcmFtcy5jCj4g
-KysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXBhcmFt
-cy5jCj4gQEAgLTgxOSw4ICs4MTksOCBAQCBzdGF0aWMgdm9pZCBya2lzcDFfaHN0X2NvbmZpZ192
-MTAoc3RydWN0IHJraXNwMV9wYXJhbXMgKnBhcmFtcywKPiAgICAgICAgICAgICAgICAgICAgICBh
-cmctPm1lYXNfd2luZG93LnZfb2Zmcyk7Cj4gIAo+ICAgICAgICAgYmxvY2tfaHNpemUgPSBhcmct
-Pm1lYXNfd2luZG93Lmhfc2l6ZSAvCj4gLSAgICAgICAgICAgICAgICAgICAgIFJLSVNQMV9DSUZf
-SVNQX0hJU1RfQ09MVU1OX05VTV9WMTAgLSAxOwo+IC0gICAgICAgYmxvY2tfdnNpemUgPSBhcmct
-Pm1lYXNfd2luZG93LnZfc2l6ZSAvIFJLSVNQMV9DSUZfSVNQX0hJU1RfUk9XX05VTV9WMTAgLSAx
-Owo+ICsgICAgICAgICAgICAgICAgICAgICBSS0lTUDFfQ0lGX0lTUF9ISVNUX0NPTFVNTl9OVU1f
-VjEwOwo+ICsgICAgICAgYmxvY2tfdnNpemUgPSBhcmctPm1lYXNfd2luZG93LnZfc2l6ZSAvIFJL
-SVNQMV9DSUZfSVNQX0hJU1RfUk9XX05VTV9WMTA7Cj4gIAo+ICAgICAgICAgcmtpc3AxX3dyaXRl
-KHBhcmFtcy0+cmtpc3AxLCBSS0lTUDFfQ0lGX0lTUF9ISVNUX0hfU0laRV9WMTAsCj4gICAgICAg
-ICAgICAgICAgICAgICAgYmxvY2tfaHNpemUpOwo+IAo+IC0tIAo+IEtyenlzenRvZiAiQ2hyaXMi
-IEhhxYJhc2EKPiAKPiBTaWXEhyBCYWRhd2N6YSDFgXVrYXNpZXdpY3oKPiBQcnplbXlzxYJvd3kg
-SW5zdHl0dXQgQXV0b21hdHlraSBpIFBvbWlhcsOzdyBQSUFQCj4gQWwuIEplcm96b2xpbXNraWUg
-MjAyLCAwMi00ODYgV2Fyc3phd2EKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============1380732189204327004==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="el4f565f524arurf"
+Content-Disposition: inline
+
+
+--el4f565f524arurf
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v5 4/4] net: can: rockchip: support dma for rk3576 rx
+MIME-Version: 1.0
+
+On 23.05.2025 15:54:22, Elaine Zhang wrote:
+> The new can controller of rk3576 supports rx dma.
+
+| drivers/net/can/rockchip/rockchip_canfd-rx.c:297:47: warning: incorrect t=
+ype in argument 1 (different address spaces)
+| drivers/net/can/rockchip/rockchip_canfd-rx.c:297:47:    expected void con=
+st volatile [noderef] __iomem *addr
+| drivers/net/can/rockchip/rockchip_canfd-rx.c:297:47:    got unsigned int =
+[usertype] *
+| drivers/net/can/rockchip/rockchip_canfd-rx.c:299:44: warning: incorrect t=
+ype in argument 1 (different address spaces)
+| drivers/net/can/rockchip/rockchip_canfd-rx.c:299:44:    expected void con=
+st volatile [noderef] __iomem *addr
+| drivers/net/can/rockchip/rockchip_canfd-rx.c:299:44:    got unsigned int =
+[usertype] *
+| drivers/net/can/rockchip/rockchip_canfd-rx.c:302:58: warning: incorrect t=
+ype in argument 1 (different address spaces)
+| drivers/net/can/rockchip/rockchip_canfd-rx.c:302:58:    expected void con=
+st volatile [noderef] __iomem *addr
+| drivers/net/can/rockchip/rockchip_canfd-rx.c:302:58:    got unsigned int =
+[usertype] *
+
+Install "sparse" and compile with C=3D1.
+
+regards,
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--el4f565f524arurf
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmgwO4UACgkQDHRl3/mQ
+kZz30Af/SIdkXHiO0CuLJro2DVr7juoDO/LnF1KqldXc/haDI6pxWfU2dx8oBmQm
+x1wOLu5MWD0dvDB/R8ZBirZ87apAG+9QHJuaUHtiYAcwTzR4WWnRFPaqwonwNd7H
+x4b/Rs5FcRhd+zeisoHMz9siFjTtTI7I5n6w/1jW5u6Tr/6xxLOhbWbhaNM74G+n
+pSczJTP7HSSR/umMuVMEV53owHa3pK05izJCdENRzg2iLSrBR2/51jBW3IpRwq5f
+3VvSodv67x1rpip453K0NUU43qqoqa04E/XPH5WP4Lt5llHVNqbh/1f8F0TMMe2p
+KoEaxA4D3GmHFgFUM+0BIPa2aFFhGA==
+=e387
+-----END PGP SIGNATURE-----
+
+--el4f565f524arurf--
+
+
+--===============1380732189204327004==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1380732189204327004==--
+
