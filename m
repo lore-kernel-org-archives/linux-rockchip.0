@@ -4,57 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3937C54ED0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 15:19:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD38CC54ED0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 15:21:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bYMs4yUXtxn6EQcpOLg5z9xFa+pMtsL2aUXrZU0p17M=; b=BLAfKDH9qLxP3j
-	QX2rvn+eMTGBVv+bGlX9zI6DB35f2EVG1sG+2OB91PGh52tRV2kplj0sAGOB8R2LuenpzS8PI22Pe
-	nK+yUdDxl5rNasqdnBe4uKaBLjIjLXMr3ve9QKGc/TIjG01LjUJ+0jimFOELejsKTfalnVrVsuqix
-	mJgY7rycrmpzoSnA3WsIyhxyq5QE6p7VlKg9RJCxKVjzZY2nWP0rG+NuzG67Mhfjg8VVXnToe4MoY
-	cvYFKNUXv2ldd2YlwYqqrk4ZkXieBu0V49TE9ImemH7eoziRc5XNdZ4lNA2LSPFdNMJhy5Z55pC3i
-	nvs2suyqytCV8zetuXCw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wLGnp7gcMymbf5y0iqZM9FykWTsYr272cW8LxBQLdtk=; b=4JzHGeXX/xBrp8
+	17uJvXbxelZIfWc4vGurfB4GCEJMv/zr6GFjjHCZmuC2nrAUEkqXFbM/U6wkSkY0f4AE4ErVp7Nqc
+	psRwrXpIzscoJ69Wxe1ZASxr3fcuLv6M61kmXEyh2dZpttTkEdH97mS1ZYM9UAyKtpUSbZsPZ18Xv
+	VhDUdyqWlZVyfPkahinvKmM8mgUIztbiR1MEDGCmaNA/Gpqz2Ac0OitGk61DzadPhWHQu0O1orEqk
+	zFJp9iwyPf/IRkgDJDNECyxhfsyYGiHbK6EeqCqawL7Ih06bMCW6pk/Xw/w8ko3GNuRZBs8RPJHuZ
+	jZCrI9wsIXe6CbIL36KQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIUBQ-00000004EQ2-1C3D;
-	Fri, 23 May 2025 15:19:40 +0000
+	id 1uIUDT-00000004En2-2k7P;
+	Fri, 23 May 2025 15:21:47 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIU6Y-00000004DUv-3n3i;
-	Fri, 23 May 2025 15:14:40 +0000
+	id 1uIU6Z-00000004DTI-2jAu;
+	Fri, 23 May 2025 15:14:41 +0000
 Received: from ideasonboard.com (unknown [IPv6:2a00:6020:448c:6c00:a882:21a2:2327:ac4f])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 6C03A4A4;
-	Fri, 23 May 2025 17:14:13 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2A4BF346;
+	Fri, 23 May 2025 17:14:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1748013253;
-	bh=uPGmW5BZEjqSxL72Eg9qbe0NAJhFfcaFI1Vo//ykHrA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=QXEFZOpumio/6D6zu95bgODt1cAwPpdqxCwzA2yhHd2QBXDsVcvUbiJ9QVkqq680q
-	 DO/9ygJB0wUWmXY06ndtGnPbR5UqKbmzVR6vWgVI9TriA/HryDcaRHNuu6hrTZwklY
-	 6mBZKVI9Q0kpKPDg5FQ28gaEucrgscQkDVCn/nWs=
+	s=mail; t=1748013251;
+	bh=agOJvT2/i6EmhSZhAs95f9ecZVtjJRDEFx8kLbUoK5w=;
+	h=From:Subject:Date:To:Cc:From;
+	b=fXJ7NTFqAcFttwQE77Ek19k2Gg0g1T6AKnCdXJna7q06cNpUuN0fLt3d2hI4x7CJo
+	 tY6UEYwxM8pTKqcYwQImwBGI1lu+IwaaIugEEOPdlqz20h8pcJpw8vXwFEhABKUwlW
+	 YeiweFYKxxVio7H9lflBDttID1QmEUlMTbMSZYKw=
 From: Stefan Klug <stefan.klug@ideasonboard.com>
-Date: Fri, 23 May 2025 17:14:30 +0200
-Subject: [PATCH v3 1/3] media: rkisp1: Properly handle result of
- rkisp1_params_init_vb2_queue()
+Subject: [PATCH v3 0/3] media: rkisp1: Add
+ RKISP1_CID_SUPPORTED_PARAMS_BLOCKS ctrl and WDR support
+Date: Fri, 23 May 2025 17:14:29 +0200
+Message-Id: <20250523-supported-params-and-wdr-v3-0-7283b8536694@ideasonboard.com>
 MIME-Version: 1.0
-Message-Id: <20250523-supported-params-and-wdr-v3-1-7283b8536694@ideasonboard.com>
-References: <20250523-supported-params-and-wdr-v3-0-7283b8536694@ideasonboard.com>
-In-Reply-To: <20250523-supported-params-and-wdr-v3-0-7283b8536694@ideasonboard.com>
+X-B4-Tracking: v=1; b=H4sIANWQMGgC/43OQQ6CMBCF4auYrh1Sh9aoK+9hXIx0kEZpmymgh
+ nB3wZWJG5f/4n15o8osnrM6rEYlPPjsY5ijXK9U1VC4Mng3t0KNVlssIfcpRenYQSKhNgMFBw8
+ nsCltuTcXxq0zap4n4do/P/TpPHctsYWuEaZvEDdW740pjNbabAEhd1xTKG73/nr0jinHcIkkr
+ qhiu7CNz12U1+fwgAv+x7cBQYOl3c5VZGuD+pc+T9P0BsdqknMOAQAA
 To: Dafna Hirschfeld <dafna@fastmail.com>, 
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
  Mauro Carvalho Chehab <mchehab@kernel.org>, 
  Heiko Stuebner <heiko@sntech.de>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Stefan Klug <stefan.klug@ideasonboard.com>
+ Stefan Klug <stefan.klug@ideasonboard.com>, 
+ Paul Elder <paul.elder@ideasonboard.com>, 
+ Jai Luthra <jai.luthra@ideasonboard.com>
 X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250523_081439_083947_E2CA488E 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20250523_081439_819272_A986A2C7 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,63 +75,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Properly handle the return of rkisp1_params_init_vb2_queue(). It is very
-unlikely that this ever fails without code changes but should be handled
-anyways.
+Hi all,
 
-While at it rename the error label for easier extension in the upcoming
-patch.
+This series adds RKISP1_CID_SUPPORTED_PARAMS_BLOCKS control to query the
+parameters blocks that are supported by the current kernel on the
+current hardware. This is required to be able to enable/disable the
+corresponding algorithms in user space without relying solely on the
+kernel version.
 
-Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
+In addition to that it includes the WDR patch by Jai which is already in v5 and
+was reviewed here:
+https://lore.kernel.org/linux-media/20250521231355.GN12514@pendragon.ideasonboard.com/
+
+Version 2 of this series drops the unnecessary initial cleanup patch.
+Patch 1 was updated and has a local changelog. Patch 2 is unmodified.
+
+Version 3 splits off the first commit again as it was considered worth
+an own patch. Patch 2 was improved a bit based on review comments (see
+local changelog).
 
 ---
+Jai Luthra (1):
+      media: rockchip: rkisp1: Add support for Wide Dynamic Range
 
-Changes in v3:
-- Moved these changes into its own patch
+Stefan Klug (2):
+      media: rkisp1: Properly handle result of rkisp1_params_init_vb2_queue()
+      media: rkisp1: Add RKISP1_CID_SUPPORTED_PARAMS_BLOCKS control
+
+ .../media/platform/rockchip/rkisp1/rkisp1-common.h |   2 +
+ .../media/platform/rockchip/rkisp1/rkisp1-params.c | 150 ++++++++++++++++++++-
+ .../media/platform/rockchip/rkisp1/rkisp1-regs.h   |  99 ++++----------
+ include/uapi/linux/rkisp1-config.h                 | 103 ++++++++++++++
+ include/uapi/linux/v4l2-controls.h                 |   6 +
+ 5 files changed, 282 insertions(+), 78 deletions(-)
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+base-commit: a5806cd506af5a7c19bcd596e4708b5c464bfd21
+change-id: 20250523-supported-params-and-wdr-135394be26d4
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-index b28f4140c8a3..24a8de697f2b 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-@@ -2763,7 +2763,9 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
- 	vdev->queue = &node->buf_queue;
- 	vdev->device_caps = V4L2_CAP_STREAMING | V4L2_CAP_META_OUTPUT;
- 	vdev->vfl_dir = VFL_DIR_TX;
--	rkisp1_params_init_vb2_queue(vdev->queue, params);
-+	ret = rkisp1_params_init_vb2_queue(vdev->queue, params);
-+	if (ret)
-+		goto err_media;
- 
- 	params->metafmt = &rkisp1_params_formats[RKISP1_PARAMS_FIXED];
- 
-@@ -2777,18 +2779,18 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
- 	node->pad.flags = MEDIA_PAD_FL_SOURCE;
- 	ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
- 	if (ret)
--		goto error;
-+		goto err_media;
- 
- 	ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
- 	if (ret) {
- 		dev_err(rkisp1->dev,
- 			"failed to register %s, ret=%d\n", vdev->name, ret);
--		goto error;
-+		goto err_media;
- 	}
- 
- 	return 0;
- 
--error:
-+err_media:
- 	media_entity_cleanup(&vdev->entity);
- 	mutex_destroy(&node->vlock);
- 	return ret;
-
+Best regards,
 -- 
-2.43.0
+Stefan Klug <stefan.klug@ideasonboard.com>
 
 
 _______________________________________________
