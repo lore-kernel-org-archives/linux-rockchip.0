@@ -4,83 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE53C54E65
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 01:17:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613E7C54ED0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 02:22:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=L+LU7do3ygD8893VDz16AgIO7Gz4A6ic6v62Z559mdU=; b=wfmG+CimT9Q5vk
-	bz2IMYuKRTJGSN5LyF3ben3lOoRhkU/PCqWNeGDmkgUSuqbwoxQhNpBGw7qxbct2YDCpbVVbZG5fE
-	POd/5LYQGGum547azhta9f5T4+4oTuJvEcgMfnSGN2gPnf2VfdWEAHFjZbf8CwxGvSQ2rlenl0eDM
-	/axJES4ggdETwraFXzclE42I+TAjkE7No8Pp9kWtC7U/IyeMUUh8cL0zWc9zFJ09E8mgLtRU5UD/z
-	xLxFSR7vSLj2YI6nnEwhXFqSLmmWF57m5mEGWADtrrUBz+QjId5/5epa9uPAEYYX9hd8tGEgLWBlS
-	16k5OY4Hs/zp3bOFgJ2Q==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=w5WUtVXnlvBozcwodA+LI2YErPdZP3dIvatwpRhEtiM=; b=Z6OYrBdPdFMdlh
+	vC/R0/Xrs4k8qat/VKI6YJBHs6LtnFVAHW0COxg4wizM/cCQkgU46xUdQ75154w2Q6lZERo6Iq0E+
+	AGQ0lzwn5kn1dTTXMTFMbbSulR2+xaKgOFcS0GTIL1VYw5RiZcdCAFS6CT5QxofOrGwvh5gYNqNxM
+	R0BEuz/BMFueMUB+lSn3cxM5vl5xDUij5/DqLjx8zt8ZOwXKIpqWZDGoiX39gGc1AGEdmWORuVmpJ
+	f2zG9e2uzEHs7y9LFzOqfAqwfmSVYDAmE0S/8miEhCBs9TAz2gEli62fJVSIiaKudCfIlLidrNv4x
+	7SQtkelzIpmOnZIsmXlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIH2J-00000002gmr-43XF;
-	Fri, 23 May 2025 01:17:23 +0000
-Received: from smtpbg150.qq.com ([18.132.163.193])
+	id 1uII2h-00000002knx-0tHW;
+	Fri, 23 May 2025 02:21:51 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIH04-00000002gA9-1jwa;
-	Fri, 23 May 2025 01:15:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1747962826;
-	bh=gw+BTmSHhkiqw8fVOSeQUYcM2zc5ENlAHXxQB2rFVp4=;
-	h=From:To:Subject:Date:Message-Id;
-	b=S61/XcHoTIVZaYzr8z0CWDt1dphh7QCgKinoWfAc/lv0z3kforr9RS/UdZQcySkL7
-	 DS1QPsjOX8/0H8GZTrg1ZbNL/09RPKANTMwlcbroN87bPh8Ky4StN0/i7a6nbwz5Eh
-	 Df0BJuIFuINiURYmo96GjTHWRn1fnAuaILI8YpA8=
-X-QQ-mid: zesmtpsz8t1747962824t2502f3b0
-X-QQ-Originating-IP: az0DKIx4s7vi4nlfNsI6jGm0INLs5Mr6iXyto0rMZFk=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Fri, 23 May 2025 09:13:42 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 1097511651874681350
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Sandy Huang <hjc@rock-chips.com>,
-	"Heiko Stuebner" <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH v2] drm/rockchip: cdn-dp: Convert to drm bridge
-Date: Fri, 23 May 2025 09:13:10 +0800
-Message-Id: <20250523011310.120-1-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: NDtUtlvFer7vnEqA/tTmQzhvW8ZnmrHykHo/ECzVByqnMWZ9gvmVdYQp
-	CLRBsh+PfwI7ISSoWH07yWL+8nkUQvLB0Dt0cjRExiksyS5VBhSDHUBcsZC/0GkvhLtN0jq
-	nRDah+K5gfelOj95QrlVKC+RLRyFX0ppCYfBDCpdGOyOe6kd58uXBgoKjxeOG12TvfmCqAL
-	SnDkCpqBqDD3jqKgEgaBzceiQ11gpMG2iMxFxvW2RetaoLsBsiYZXjdwWroInE8rFTMU3o2
-	QR23yuN4pfQCXwJndZOLojvMG8yWekktOPvmZEHPcaH2eXN8/usa778wqCLyJb/JcdR2dfH
-	7qdW/lgY9s8aWvyOU2sYNePijAnSgPZw0xsQX5GYuBo8fQyvtLLAXcnilRIbSHazjMDDe09
-	ditGB1zKQboLVisCKffavyMeoX4F/f/odiMimVCTzTn7mw7xqkRWTx1YDce5OQb7TqjS9E5
-	hgtQHrEXvVhto2fKBeCWTQi3ngsG75+WfF0Wgr4i8K+Lj8TyBsRlw17h22iIiiKlHp5TDrm
-	jOiWDRgNItYT+3qH8ZJrXtxYeZH6EOSJ0hOYxzJIqBgRzm0DESjLU08TpWtyvR85n1S2k5G
-	VwIvUqlMzB9v6qT5t/wJF767ZjvDlSBOuUPjI/20D9cQ3/TqZSLyHhOQ9R/2Q+o9FtA8L+Y
-	xxxd7ACSmYJj6DN76Ln6fP5fw8lqE9UYHKhnRIk/ZMIxyVr/XmIxBOzPonjtscPyCJEjcpJ
-	17PpbmMHg3u3cBClE1+soXn/LiFZAF9FJUPYJHXBOqA39ip8cW4jOWhJA4jkSQaNuLbnLcw
-	HP7Sj58sclu094N2vM3A4PisnJFMBzQA6dyNQrF2ZbV/YViH+vtp4G2TkfKu2JIrieE2vGe
-	FTX2eLcvfDjwNeSx+dF2dvLvYPGGgK9JvYg8aXK4zHBkNsGCHq08mMKhQWyG8VrKKtMR7mI
-	T0pK/7otM1B0uz3bjl5Ft2HSvUffPgTElCfY=
-X-QQ-XMRINFO: OD9hHCdaPRBwq3WW+NvGbIU=
-X-QQ-RECHKSPAM: 0
+	id 1uII0W-00000002kfn-3Ujv;
+	Fri, 23 May 2025 02:19:38 +0000
+Received: from pyrite.rasen.tech (fp76f176b6.tkyc001.ap.nuro.jp [118.241.118.182])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 60AAC6BE;
+	Fri, 23 May 2025 04:19:08 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1747966749;
+	bh=PffKFFTE+nkp6ihzmn+9PvhOFWysDbcyP1NsDbiB/Co=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=IBVokDvDArDrnp6uBppUlHb4X3KQj98US4AlXPaNo5O+Mah2E0cN3KLQICl5klVr0
+	 2MepZPghObA0phLARerlDWgTHhI6ZfqjR5YkoIafffhEN2j/S2DlCj2Q6BudR9S5Ei
+	 UOAX5LHu5kBRfpD491AhkPeGHjV1TLaB6qjO4Sow=
+MIME-Version: 1.0
+In-Reply-To: <20250522150944.400046-4-stefan.klug@ideasonboard.com>
+References: <20250522150944.400046-2-stefan.klug@ideasonboard.com> <20250522150944.400046-4-stefan.klug@ideasonboard.com>
+Subject: Re: [PATCH 2/3] media: rkisp1: Add RKISP1_CID_SUPPORTED_PARAMS_BLOCKS control
+From: Paul Elder <paul.elder@ideasonboard.com>
+Cc: Stefan Klug <stefan.klug@ideasonboard.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Stefan Klug <stefan.klug@ideasonboard.com>, linux-media@vger.kernel.org
+Date: Fri, 23 May 2025 04:19:22 +0200
+Message-ID: <174796676223.109413.8872494365754700648@pyrite.rasen.tech>
+User-Agent: alot/0.0.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_181505_010180_DE8B7F0B 
-X-CRM114-Status: GOOD (  25.73  )
+X-CRM114-CacheID: sfid-20250522_191937_034998_B1403282 
+X-CRM114-Status: GOOD (  27.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,463 +60,173 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Quoting Stefan Klug (2025-05-22 17:08:39)
+> Add a RKISP1_CID_SUPPORTED_PARAMS_BLOCKS V4L2 control to be able to
+> query the parameters blocks supported by the current kernel on the
+> current hardware from user space.
+> 
+> Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
 
-Convert it to drm bridge driver, it will be convenient for us to
-migrate the connector part to the display driver later.
+Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
 
-Considering that some code depend on the connector, the following
-changes have been made:
-- Do not get edid in cdn_dp_get_sink_capability() when connector is
-not present.
-- Update bpc info in cdn_dp_bridge_atomic_enable() instead of
-cdn_dp_encoder_mode_set(). Actually, the bpc data will be used in
-cdn_dp_bridge_atomic_enable().
-
-This patch also convert to use devm_drm_bridge_alloc() API.
-
-Tested with RK3399 EVB IND board.
-
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
-
-Changes in v2:
-- Link to V1: https://lore.kernel.org/all/20250507035148.415-1-kernel@airkyi.com/
-- Use drm_atomic_get_new_connector_for_encoder() to get connector
-- Convert to use devm_drm_bridge_alloc() API
-- Fix typo: cdn_dp_connector_edid_read -> cdn_dp_bridge_edid_read
-
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 204 +++++++++++++------------
- drivers/gpu/drm/rockchip/cdn-dp-core.h |   5 +-
- 2 files changed, 112 insertions(+), 97 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index 292c31de18f1..848f47d41111 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -25,9 +25,9 @@
- #include "cdn-dp-core.h"
- #include "cdn-dp-reg.h"
- 
--static inline struct cdn_dp_device *connector_to_dp(struct drm_connector *connector)
-+static inline struct cdn_dp_device *bridge_to_dp(struct drm_bridge *bridge)
- {
--	return container_of(connector, struct cdn_dp_device, connector);
-+	return container_of(bridge, struct cdn_dp_device, bridge);
- }
- 
- static inline struct cdn_dp_device *encoder_to_dp(struct drm_encoder *encoder)
-@@ -231,9 +231,9 @@ static bool cdn_dp_check_sink_connection(struct cdn_dp_device *dp)
- }
- 
- static enum drm_connector_status
--cdn_dp_connector_detect(struct drm_connector *connector, bool force)
-+cdn_dp_bridge_detect(struct drm_bridge *bridge)
- {
--	struct cdn_dp_device *dp = connector_to_dp(connector);
-+	struct cdn_dp_device *dp = bridge_to_dp(bridge);
- 	enum drm_connector_status status = connector_status_disconnected;
- 
- 	mutex_lock(&dp->lock);
-@@ -244,41 +244,25 @@ cdn_dp_connector_detect(struct drm_connector *connector, bool force)
- 	return status;
- }
- 
--static void cdn_dp_connector_destroy(struct drm_connector *connector)
-+static const struct drm_edid *
-+cdn_dp_bridge_edid_read(struct drm_bridge *bridge, struct drm_connector *connector)
- {
--	drm_connector_unregister(connector);
--	drm_connector_cleanup(connector);
--}
--
--static const struct drm_connector_funcs cdn_dp_atomic_connector_funcs = {
--	.detect = cdn_dp_connector_detect,
--	.destroy = cdn_dp_connector_destroy,
--	.fill_modes = drm_helper_probe_single_connector_modes,
--	.reset = drm_atomic_helper_connector_reset,
--	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
--	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
--};
--
--static int cdn_dp_connector_get_modes(struct drm_connector *connector)
--{
--	struct cdn_dp_device *dp = connector_to_dp(connector);
--	int ret = 0;
-+	struct cdn_dp_device *dp = bridge_to_dp(bridge);
-+	const struct drm_edid *drm_edid;
- 
- 	mutex_lock(&dp->lock);
--
--	ret = drm_edid_connector_add_modes(connector);
--
-+	drm_edid = drm_edid_read_custom(connector, cdn_dp_get_edid_block, dp);
- 	mutex_unlock(&dp->lock);
- 
--	return ret;
-+	return drm_edid;
- }
- 
- static enum drm_mode_status
--cdn_dp_connector_mode_valid(struct drm_connector *connector,
--			    const struct drm_display_mode *mode)
-+cdn_dp_bridge_mode_valid(struct drm_bridge *bridge,
-+			 const struct drm_display_info *display_info,
-+			 const struct drm_display_mode *mode)
- {
--	struct cdn_dp_device *dp = connector_to_dp(connector);
--	struct drm_display_info *display_info = &dp->connector.display_info;
-+	struct cdn_dp_device *dp = bridge_to_dp(bridge);
- 	u32 requested, actual, rate, sink_max, source_max = 0;
- 	u8 lanes, bpc;
- 
-@@ -323,11 +307,6 @@ cdn_dp_connector_mode_valid(struct drm_connector *connector,
- 	return MODE_OK;
- }
- 
--static struct drm_connector_helper_funcs cdn_dp_connector_helper_funcs = {
--	.get_modes = cdn_dp_connector_get_modes,
--	.mode_valid = cdn_dp_connector_mode_valid,
--};
--
- static int cdn_dp_firmware_init(struct cdn_dp_device *dp)
- {
- 	int ret;
-@@ -360,7 +339,8 @@ static int cdn_dp_firmware_init(struct cdn_dp_device *dp)
- 
- static int cdn_dp_get_sink_capability(struct cdn_dp_device *dp)
- {
--	const struct drm_display_info *info = &dp->connector.display_info;
-+	struct drm_connector *connector = dp->connector;
-+	const struct drm_display_info *info;
- 	int ret;
- 
- 	if (!cdn_dp_check_sink_connection(dp))
-@@ -373,10 +353,15 @@ static int cdn_dp_get_sink_capability(struct cdn_dp_device *dp)
- 		return ret;
- 	}
- 
-+	if (!connector)
-+		return 0;
-+
-+	info = &connector->display_info;
-+
- 	drm_edid_free(dp->drm_edid);
--	dp->drm_edid = drm_edid_read_custom(&dp->connector,
-+	dp->drm_edid = drm_edid_read_custom(dp->connector,
- 					    cdn_dp_get_edid_block, dp);
--	drm_edid_connector_update(&dp->connector, dp->drm_edid);
-+	drm_edid_connector_update(dp->connector, dp->drm_edid);
- 
- 	dp->sink_has_audio = info->has_audio;
- 
-@@ -416,11 +401,11 @@ static int cdn_dp_enable_phy(struct cdn_dp_device *dp, struct cdn_dp_port *port)
- 		goto err_power_on;
- 	}
- 
--	ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
--				  EXTCON_PROP_USB_TYPEC_POLARITY, &property);
--	if (ret) {
--		DRM_DEV_ERROR(dp->dev, "get property failed\n");
--		goto err_power_on;
-+		ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
-+					EXTCON_PROP_USB_TYPEC_POLARITY, &property);
-+		if (ret) {
-+			DRM_DEV_ERROR(dp->dev, "get property failed\n");
-+			goto err_power_on;
- 	}
- 
- 	port->lanes = cdn_dp_get_port_lanes(port);
-@@ -551,21 +536,8 @@ static void cdn_dp_encoder_mode_set(struct drm_encoder *encoder,
- 				    struct drm_display_mode *adjusted)
- {
- 	struct cdn_dp_device *dp = encoder_to_dp(encoder);
--	struct drm_display_info *display_info = &dp->connector.display_info;
- 	struct video_info *video = &dp->video_info;
- 
--	switch (display_info->bpc) {
--	case 10:
--		video->color_depth = 10;
--		break;
--	case 6:
--		video->color_depth = 6;
--		break;
--	default:
--		video->color_depth = 8;
--		break;
--	}
--
- 	video->color_fmt = PXL_RGB;
- 	video->v_sync_polarity = !!(mode->flags & DRM_MODE_FLAG_NVSYNC);
- 	video->h_sync_polarity = !!(mode->flags & DRM_MODE_FLAG_NHSYNC);
-@@ -599,12 +571,31 @@ static void cdn_dp_audio_handle_plugged_change(struct cdn_dp_device *dp,
- 		dp->plugged_cb(dp->codec_dev, plugged);
- }
- 
--static void cdn_dp_encoder_enable(struct drm_encoder *encoder)
-+static void cdn_dp_bridge_atomic_enable(struct drm_bridge *bridge, struct drm_atomic_state *state)
- {
--	struct cdn_dp_device *dp = encoder_to_dp(encoder);
-+	struct cdn_dp_device *dp = bridge_to_dp(bridge);
-+	struct video_info *video = &dp->video_info;
-+	struct drm_display_info *display_info;
- 	int ret, val;
- 
--	ret = drm_of_encoder_active_endpoint_id(dp->dev->of_node, encoder);
-+	dp->connector = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
-+	if (!dp->connector)
-+		return;
-+
-+	display_info = &dp->connector->display_info;
-+	switch (display_info->bpc) {
-+	case 10:
-+		video->color_depth = 10;
-+		break;
-+	case 6:
-+		video->color_depth = 6;
-+		break;
-+	default:
-+		video->color_depth = 8;
-+		break;
-+	}
-+
-+	ret = drm_of_encoder_active_endpoint_id(dp->dev->of_node, &dp->encoder.encoder);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(dp->dev, "Could not get vop id, %d", ret);
- 		return;
-@@ -625,7 +616,7 @@ static void cdn_dp_encoder_enable(struct drm_encoder *encoder)
- 
- 	ret = cdn_dp_enable(dp);
- 	if (ret) {
--		DRM_DEV_ERROR(dp->dev, "Failed to enable encoder %d\n",
-+		DRM_DEV_ERROR(dp->dev, "Failed to enable bridge %d\n",
- 			      ret);
- 		goto out;
- 	}
-@@ -661,9 +652,9 @@ static void cdn_dp_encoder_enable(struct drm_encoder *encoder)
- 	mutex_unlock(&dp->lock);
- }
- 
--static void cdn_dp_encoder_disable(struct drm_encoder *encoder)
-+static void cdn_dp_bridge_atomic_disable(struct drm_bridge *bridge, struct drm_atomic_state *state)
- {
--	struct cdn_dp_device *dp = encoder_to_dp(encoder);
-+	struct cdn_dp_device *dp = bridge_to_dp(bridge);
- 	int ret;
- 
- 	mutex_lock(&dp->lock);
-@@ -672,7 +663,7 @@ static void cdn_dp_encoder_disable(struct drm_encoder *encoder)
- 	if (dp->active) {
- 		ret = cdn_dp_disable(dp);
- 		if (ret) {
--			DRM_DEV_ERROR(dp->dev, "Failed to disable encoder %d\n",
-+			DRM_DEV_ERROR(dp->dev, "Failed to disable bridge %d\n",
- 				      ret);
- 		}
- 	}
-@@ -703,13 +694,31 @@ static int cdn_dp_encoder_atomic_check(struct drm_encoder *encoder,
- 	return 0;
- }
- 
-+static void cdn_dp_hpd_notify(struct drm_bridge *bridge,
-+			   enum drm_connector_status status)
-+{
-+	struct cdn_dp_device *dp = bridge_to_dp(bridge);
-+
-+	schedule_work(&dp->event_work);
-+}
-+
- static const struct drm_encoder_helper_funcs cdn_dp_encoder_helper_funcs = {
- 	.mode_set = cdn_dp_encoder_mode_set,
--	.enable = cdn_dp_encoder_enable,
--	.disable = cdn_dp_encoder_disable,
- 	.atomic_check = cdn_dp_encoder_atomic_check,
- };
- 
-+static const struct drm_bridge_funcs cdn_dp_bridge_funcs = {
-+	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
-+	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-+	.atomic_reset = drm_atomic_helper_bridge_reset,
-+	.detect = cdn_dp_bridge_detect,
-+	.edid_read = cdn_dp_bridge_edid_read,
-+	.atomic_enable = cdn_dp_bridge_atomic_enable,
-+	.atomic_disable = cdn_dp_bridge_atomic_disable,
-+	.mode_valid = cdn_dp_bridge_mode_valid,
-+	.hpd_notify = cdn_dp_hpd_notify,
-+};
-+
- static int cdn_dp_parse_dt(struct cdn_dp_device *dp)
- {
- 	struct device *dev = dp->dev;
-@@ -859,7 +868,7 @@ static int cdn_dp_audio_get_eld(struct device *dev, void *data,
- {
- 	struct cdn_dp_device *dp = dev_get_drvdata(dev);
- 
--	memcpy(buf, dp->connector.eld, min(sizeof(dp->connector.eld), len));
-+	memcpy(buf, dp->connector->eld, min(sizeof(dp->connector->eld), len));
- 
- 	return 0;
- }
-@@ -1006,7 +1015,6 @@ static void cdn_dp_pd_event_work(struct work_struct *work)
- 
- out:
- 	mutex_unlock(&dp->lock);
--	drm_connector_helper_hpd_irq_event(&dp->connector);
- }
- 
- static int cdn_dp_pd_event(struct notifier_block *nb,
-@@ -1030,9 +1038,9 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
- {
- 	struct cdn_dp_device *dp = dev_get_drvdata(dev);
- 	struct drm_encoder *encoder;
--	struct drm_connector *connector;
- 	struct cdn_dp_port *port;
- 	struct drm_device *drm_dev = data;
-+	struct drm_connector *connector;
- 	int ret, i;
- 
- 	ret = cdn_dp_parse_dt(dp);
-@@ -1053,6 +1061,15 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
- 							     dev->of_node);
- 	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
- 
-+	/*
-+	 * If we failed to find the CRTC(s) which this encoder is
-+	 * supposed to be connected to, it's because the CRTC has
-+	 * not been registered yet. Defer probing, and hope that
-+	 * the required CRTC is added later.
-+	 */
-+	if (encoder->possible_crtcs == 0)
-+		return -EPROBE_DEFER;
-+
- 	ret = drm_simple_encoder_init(drm_dev, encoder,
- 				      DRM_MODE_ENCODER_TMDS);
- 	if (ret) {
-@@ -1062,26 +1079,29 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
- 
- 	drm_encoder_helper_add(encoder, &cdn_dp_encoder_helper_funcs);
- 
--	connector = &dp->connector;
--	connector->polled = DRM_CONNECTOR_POLL_HPD;
--	connector->dpms = DRM_MODE_DPMS_OFF;
-+	dp->bridge.ops = DRM_BRIDGE_OP_DETECT |
-+			   DRM_BRIDGE_OP_EDID |
-+			   DRM_BRIDGE_OP_HPD;
-+	dp->bridge.of_node = dp->dev->of_node;
-+	dp->bridge.type = DRM_MODE_CONNECTOR_DisplayPort;
- 
--	ret = drm_connector_init(drm_dev, connector,
--				 &cdn_dp_atomic_connector_funcs,
--				 DRM_MODE_CONNECTOR_DisplayPort);
--	if (ret) {
--		DRM_ERROR("failed to initialize connector with drm\n");
--		goto err_free_encoder;
--	}
-+	ret = devm_drm_bridge_add(dev, &dp->bridge);
-+	if (ret)
-+		return ret;
- 
--	drm_connector_helper_add(connector, &cdn_dp_connector_helper_funcs);
-+	ret = drm_bridge_attach(encoder, &dp->bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-+	if (ret)
-+		return ret;
- 
--	ret = drm_connector_attach_encoder(connector, encoder);
--	if (ret) {
--		DRM_ERROR("failed to attach connector and encoder\n");
--		goto err_free_connector;
-+	connector = drm_bridge_connector_init(drm_dev, encoder);
-+	if (IS_ERR(connector)) {
-+		ret = PTR_ERR(connector);
-+		dev_err(dp->dev, "failed to init bridge connector: %d\n", ret);
-+		return ret;
- 	}
- 
-+	drm_connector_attach_encoder(connector, encoder);
-+
- 	for (i = 0; i < dp->ports; i++) {
- 		port = dp->port[i];
- 
-@@ -1092,7 +1112,7 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
- 		if (ret) {
- 			DRM_DEV_ERROR(dev,
- 				      "register EXTCON_DISP_DP notifier err\n");
--			goto err_free_connector;
-+			return ret;
- 		}
- 	}
- 
-@@ -1101,24 +1121,15 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
- 	schedule_work(&dp->event_work);
- 
- 	return 0;
--
--err_free_connector:
--	drm_connector_cleanup(connector);
--err_free_encoder:
--	drm_encoder_cleanup(encoder);
--	return ret;
- }
- 
- static void cdn_dp_unbind(struct device *dev, struct device *master, void *data)
- {
- 	struct cdn_dp_device *dp = dev_get_drvdata(dev);
- 	struct drm_encoder *encoder = &dp->encoder.encoder;
--	struct drm_connector *connector = &dp->connector;
- 
- 	cancel_work_sync(&dp->event_work);
--	cdn_dp_encoder_disable(encoder);
- 	encoder->funcs->destroy(encoder);
--	connector->funcs->destroy(connector);
- 
- 	pm_runtime_disable(dev);
- 	if (dp->fw_loaded)
-@@ -1171,9 +1182,10 @@ static int cdn_dp_probe(struct platform_device *pdev)
- 	int ret;
- 	int i;
- 
--	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
--	if (!dp)
--		return -ENOMEM;
-+	dp = devm_drm_bridge_alloc(dev, struct cdn_dp_device, bridge,
-+				   &cdn_dp_bridge_funcs);
-+	if (IS_ERR(dp))
-+		return PTR_ERR(dp);
- 	dp->dev = dev;
- 
- 	match = of_match_node(cdn_dp_dt_ids, pdev->dev.of_node);
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.h b/drivers/gpu/drm/rockchip/cdn-dp-core.h
-index 17498f576ce7..d2778f7a5b31 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.h
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.h
-@@ -8,6 +8,8 @@
- #define _CDN_DP_CORE_H
- 
- #include <drm/display/drm_dp_helper.h>
-+#include <drm/drm_bridge.h>
-+#include <drm/drm_bridge_connector.h>
- #include <drm/drm_panel.h>
- #include <drm/drm_probe_helper.h>
- #include <sound/hdmi-codec.h>
-@@ -65,7 +67,8 @@ struct cdn_dp_port {
- struct cdn_dp_device {
- 	struct device *dev;
- 	struct drm_device *drm_dev;
--	struct drm_connector connector;
-+	struct drm_bridge bridge;
-+	struct drm_connector *connector;
- 	struct rockchip_encoder encoder;
- 	struct drm_display_mode mode;
- 	struct platform_device *audio_pdev;
--- 
-2.49.0
-
+> ---
+>  .../platform/rockchip/rkisp1/rkisp1-common.h  |  2 +
+>  .../platform/rockchip/rkisp1/rkisp1-params.c  | 50 ++++++++++++++++++-
+>  include/uapi/linux/rkisp1-config.h            | 10 ++++
+>  include/uapi/linux/v4l2-controls.h            |  6 +++
+>  4 files changed, 67 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> index ca952fd0829b..5f187f9efc7b 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> @@ -415,6 +415,8 @@ struct rkisp1_params {
+>         spinlock_t config_lock; /* locks the buffers list 'params' */
+>         struct list_head params;
+>  
+> +       struct v4l2_ctrl_handler ctrls;
+> +
+>         const struct v4l2_meta_format *metafmt;
+>  
+>         enum v4l2_quantization quantization;
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> index 918eb06c7465..60c9b3c46593 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> @@ -2736,6 +2736,45 @@ static int rkisp1_params_init_vb2_queue(struct vb2_queue *q,
+>         return vb2_queue_init(q);
+>  }
+>  
+> +static int rkisp1_ctrl_init(struct rkisp1_params *params)
+> +{
+> +       int ret;
+> +
+> +       v4l2_ctrl_handler_init(&params->ctrls, 1);
+> +
+> +       struct v4l2_ctrl_config ctrl_config = {
+> +               .id = RKISP1_CID_SUPPORTED_PARAMS_BLOCKS,
+> +               .name = "Supported Params Blocks",
+> +               .type = V4L2_CTRL_TYPE_BITMASK,
+> +               .flags = V4L2_CTRL_FLAG_READ_ONLY,
+> +       };
+> +
+> +       for (unsigned int i = 0; i < ARRAY_SIZE(rkisp1_ext_params_handlers); i++) {
+> +               const struct rkisp1_ext_params_handler *block_handler;
+> +
+> +               block_handler = &rkisp1_ext_params_handlers[i];
+> +               ctrl_config.max |= BIT(i);
+> +
+> +               if ((params->rkisp1->info->features & block_handler->features) !=
+> +                   block_handler->features)
+> +                       continue;
+> +
+> +               ctrl_config.def |= BIT(i);
+> +       }
+> +
+> +       v4l2_ctrl_new_custom(&params->ctrls, &ctrl_config, NULL);
+> +
+> +       params->vnode.vdev.ctrl_handler = &params->ctrls;
+> +
+> +       if (params->ctrls.error) {
+> +               ret = params->ctrls.error;
+> +               v4l2_ctrl_handler_free(&params->ctrls);
+> +               return ret;
+> +       }
+> +
+> +       return 0;
+> +}
+> +
+>  int rkisp1_params_register(struct rkisp1_device *rkisp1)
+>  {
+>         struct rkisp1_params *params = &rkisp1->params;
+> @@ -2776,10 +2815,16 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
+>  
+>         video_set_drvdata(vdev, params);
+>  
+> +       ret = rkisp1_ctrl_init(params);
+> +       if (ret) {
+> +               dev_err(rkisp1->dev, "Control initialization error %d\n", ret);
+> +               goto err_mutex;
+> +       }
+> +
+>         node->pad.flags = MEDIA_PAD_FL_SOURCE;
+>         ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
+>         if (ret)
+> -               goto err_mutex;
+> +               goto err_ctrl;
+>  
+>         ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
+>         if (ret) {
+> @@ -2792,6 +2837,8 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
+>  
+>  err_media:
+>         media_entity_cleanup(&vdev->entity);
+> +err_ctrl:
+> +       v4l2_ctrl_handler_free(&params->ctrls);
+>  err_mutex:
+>         mutex_destroy(&node->vlock);
+>         return ret;
+> @@ -2808,5 +2855,6 @@ void rkisp1_params_unregister(struct rkisp1_device *rkisp1)
+>  
+>         vb2_video_unregister_device(vdev);
+>         media_entity_cleanup(&vdev->entity);
+> +       v4l2_ctrl_handler_free(&params->ctrls);
+>         mutex_destroy(&node->vlock);
+>  }
+> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
+> index 2d995f3c1ca3..4fc8f221d0c4 100644
+> --- a/include/uapi/linux/rkisp1-config.h
+> +++ b/include/uapi/linux/rkisp1-config.h
+> @@ -1086,6 +1086,9 @@ enum rkisp1_ext_params_block_type {
+>  #define RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE     (1U << 0)
+>  #define RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE      (1U << 1)
+>  
+> +/* A bitmask of parameters blocks supported on the current hardware. */
+> +#define RKISP1_CID_SUPPORTED_PARAMS_BLOCKS     (V4L2_CID_USER_RKISP1_BASE + 0x01)
+> +
+>  /**
+>   * struct rkisp1_ext_params_block_header - RkISP1 extensible parameters block
+>   *                                        header
+> @@ -1520,6 +1523,13 @@ enum rksip1_ext_param_buffer_version {
+>   * V4L2 control. If such control is not available, userspace should assume only
+>   * RKISP1_EXT_PARAM_BUFFER_V1 is supported by the driver.
+>   *
+> + * The read-only V4L2 control ``RKISP1_CID_SUPPORTED_PARAMS_BLOCKS`` can be used
+> + * to query the blocks supported by the current hardware. It contains a bitmask
+> + * where each bit represents the availability of the corresponding entry
+> + * from the :c:type:`rkisp1_ext_params_block_type` enum. The max value of the
+> + * control represents the blocks supported by the current kernel (independent of
+> + * the current hardware).
+> + *
+>   * For each ISP block that userspace wants to configure, a block-specific
+>   * structure is appended to the @data buffer, one after the other without gaps
+>   * in between nor overlaps. Userspace shall populate the @data_size field with
+> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+> index 72e32814ea83..f836512e9deb 100644
+> --- a/include/uapi/linux/v4l2-controls.h
+> +++ b/include/uapi/linux/v4l2-controls.h
+> @@ -222,6 +222,12 @@ enum v4l2_colorfx {
+>   */
+>  #define V4L2_CID_USER_UVC_BASE                 (V4L2_CID_USER_BASE + 0x11e0)
+>  
+> +/*
+> + * The base for Rockchip ISP1 driver controls.
+> + * We reserve 16 controls for this driver.
+> + */
+> +#define V4L2_CID_USER_RKISP1_BASE              (V4L2_CID_USER_BASE + 0x1220)
+> +
+>  /* MPEG-class control IDs */
+>  /* The MPEG controls are applicable to all codec controls
+>   * and the 'MPEG' part of the define is historical */
+> -- 
+> 2.43.0
+> 
+>
 
 _______________________________________________
 Linux-rockchip mailing list
