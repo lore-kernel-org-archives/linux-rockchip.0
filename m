@@ -4,55 +4,171 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5550C54ED0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 17:23:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77121C54F47
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 17:23:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SaAAEGxb8DOWSi6/inANQKbmCDhiV3doEwfioZurU4M=; b=fRfkus9gF/fz9e
-	JbS58E8UjVJAF99ilsY4YGVqiu+3R/GDCPsFB+ydPrScXgWzpg4NUazoFIg2/Y5Roinzntyw0ef1k
-	tvUFPl8I35Mbfx7Tv87lSQzekd5eQpMMZWl/l14mzG1Rfl0cwK/siMZGQZp153w8GQfoRJUomn90Q
-	VQg86AgR1eisJtKVyHQW4nsy/CCD2/DXpcpsieYRzzcndoMRSCkxzHIUOHr4ihzA7wGmHCz4IqpYw
-	w/JyULDZtohUcUbZ7KMhTyDy/AFn1OgN7ZtgJrR9z/eKan2PIvw47R/i4ygtJanjdXIVwC/Df6HQD
-	K8jy1Te6KbKufU7MNw5w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4y2gtfyaPPMP7WknKXWU5In7KpI4P32X13ei2kmhGPA=; b=1Ju/nxP54tkHUfdKPqfIP0CPMo
+	Yd6rmNElSfoFZSdpBJJo9bs3vC12RvP42Y+PG3ncudzEoIVrxjE09x90uPKgAxGXiP1LPGIpIDvow
+	2HsdweTTHp5hM00/JSK7rjV+t+rczhh8q0Ci6zPHnQ0ZcDUb2U2oV9ZqftSmP10N2BLH5mGZSkwBQ
+	e1cSUDIVt1Aro42zQfrVo/8/9OsU8aYTf6C3r/PVxXMiIca7R5kIB7cDp2Y9LXyE9wfGr2fhLdGUZ
+	AeGGgcCu7D7HvKjL68vNnzQx4k2ocIUr90BhEO+JwJ0bLOMlGXktIo3J/nLvpQfuOxy33ayyf4auN
+	qzXVrltg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIW7M-00000004Wiu-1oLC;
-	Fri, 23 May 2025 17:23:36 +0000
-Received: from smtp-42ae.mail.infomaniak.ch ([2001:1600:4:17::42ae])
+	id 1uIW7L-00000004WiK-1unD;
+	Fri, 23 May 2025 17:23:35 +0000
+Received: from mail-db5eur02on2060e.outbound.protection.outlook.com ([2a01:111:f403:2608::60e] helo=EUR02-DB5-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIVZo-00000004Rv0-0Kfq;
-	Fri, 23 May 2025 16:48:58 +0000
-Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4b3rhf6hnMzckZ;
-	Fri, 23 May 2025 18:48:50 +0200 (CEST)
-Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4b3rhf1ytWz9hN;
-	Fri, 23 May 2025 18:48:50 +0200 (CEST)
-From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Fri, 23 May 2025 18:48:42 +0200
-Subject: [PATCH v2] arm64: dts: rockchip: support Ethernet Switch adapter
+	id 1uIVYu-00000004Rkg-03jx;
+	Fri, 23 May 2025 16:48:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=I+7wdkAOpxmZEeEm2sZXzphGvrlqQeAPx4cu0w+BRYm8o8LOMqDITQVhhVbqhMuJ5yRO3AnW2jZAOqlMSj7/ZGSMPFdRW2Jb+HxX7pPNvfp2C/WGrjv9PL5Ms0ANOsxm/esZXrAveaeKIgzQm/WAhR1bQwcRqAK13s8k1utaaATpOHh4yZpbW1HNgZXdx6BXdnle/iYilDdY+KTSp9OnZWOqDwW86iqunI5uZsXprak+BW3l13W9opAXqoCg0mrLkJrCCqARj4Q4KpN5DWyBQ69b7A1oONqTUm4fWy68ssmcr2/fPyNErU1BUTS2cZWCKsbA5f2QlMghIdVtmXQvGQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DK6oKfHXyQ6Gk0gkz9k4IPlSJKrMMEaNsKm43wn7N+w=;
+ b=kzaXtd+cSW09MmW9RW/cxY6ZLGO1/ACukS2AL4fssv2VszK819kheucihFx4gGwMmgQE+LAbz7m53xlZmlXFQDandbyBV5IhbbPH+hGPKjkgbjmEIR2Xd3QsiH7vet6chpmjrIHN/ksboaKnKA+0Um2/5t+Fg6kiFOyL5VPLGWHwB48Dvs3j1YOez0XVic+IJOoGOtJaEfpdqyGs3+PXO7L6XXZ9ffMH9ow1vzX23uIZLKD6qBGUA+1tR0U5L9oLFbBCwCb+kTFlFSA0Xh50AcuHqCR+gDXjt3SomqI1kPkUScuqwqvLx3xEwFqk0nzUjsOPGQSqD8mwThkn4rRx2g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DK6oKfHXyQ6Gk0gkz9k4IPlSJKrMMEaNsKm43wn7N+w=;
+ b=OQfUYrL/Tys5CetHwFBwIvoM5PlAENGzRs/7pQD6bglVSi8P7xmkKo4a7Ds2NEcN594M/NLYxMMRDrQXEUGblj6lua4kOWQfW1o3xDITUjdzWT7OqZRe7pHjrm/s49rR71e2x8Rff2chmxXSCvnT7tOBk/qYcl9IZTGCXySxyac=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
+ by VI2PR04MB10167.eurprd04.prod.outlook.com (2603:10a6:800:22c::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8769.22; Fri, 23 May
+ 2025 16:47:50 +0000
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::35f6:bc7d:633:369a%4]) with mapi id 15.20.8746.030; Fri, 23 May 2025
+ 16:47:50 +0000
+Message-ID: <eac73db9-5747-44a8-aa5e-f1e3edd25e8a@cherry.de>
+Date: Fri, 23 May 2025 18:47:48 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: support Ethernet Switch adapter
  for RK3588 Jaguar
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Kever Yang <kever.yang@rock-chips.com>
+References: <20250521-jaguar-mezz-eth-switch-v1-0-9b5c48ebb867@cherry.de>
+ <20250521-jaguar-mezz-eth-switch-v1-2-9b5c48ebb867@cherry.de>
+ <657a085c-4214-4096-8a68-047d57a40d60@lunn.ch>
+ <19574942-d06b-44b0-8b6c-d3ddd94db89f@cherry.de>
+ <9c99aba9-87f5-41fe-8b11-7ef27525750c@lunn.ch>
+ <9e8f659d-9116-46a6-b7e7-3d4705f57ac6@cherry.de>
+ <b322970d-8d56-46fc-b537-22f73a66dc8b@lunn.ch>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <b322970d-8d56-46fc-b537-22f73a66dc8b@lunn.ch>
+X-ClientProxiedBy: FR3P281CA0192.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:a4::16) To AS8PR04MB8897.eurprd04.prod.outlook.com
+ (2603:10a6:20b:42c::20)
 MIME-Version: 1.0
-Message-Id: <20250523-jaguar-mezz-eth-switch-v2-1-aced8bf6612d@cherry.de>
-X-B4-Tracking: v=1; b=H4sIAOmmMGgC/4WNQQ6CMBBFr0Jm7RjaUEFX3sOwKGWgYyKYKaJAe
- ncrF3D5XvLf3yCQMAW4ZBsIzRx4HBLoQwbO26En5DYx6Fyb3GiFd9u/rOCD1hVp8hjePDmPpSk
- K07XKldpAGj+FOv7s4Vud2HOYRln2n1n97N/krDDHc2NcUVHTVKfy6jyJLMeWoI4xfgHxG0Ugv
- AAAAA==
-X-Change-ID: 20250521-jaguar-mezz-eth-switch-75445fd1c725
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>
-X-Mailer: b4 0.14.2
-X-Infomaniak-Routing: alpha
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|VI2PR04MB10167:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6a2edce5-4971-42c8-efa7-08dd9a198d3e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?aEF6SzB6cGl6MFpyVk9hODV1bllFN3ZTeVpOZU9JVG12TG13UmFsMk1vZVVm?=
+ =?utf-8?B?ejUwZmpsbGlaN3VVdm5POGx5Zm1JRE9NY2dNU2dpWGlBd3ZJRStJN0xHM3E1?=
+ =?utf-8?B?WEI0RmxhbUN5T1hlM0xLdEJOMUVJUmtGdjVUdzNBakdzbnBMV0dJZUtYS2w1?=
+ =?utf-8?B?M05IaTdSSkNYenU0c2g1elByekkyNFRveWl2ZmdUbGg1NzBOTWx2cEFuVFRv?=
+ =?utf-8?B?U0xKQ1BNc1p2QjJKWVFxb1Ivb2VQWVV6YVlDbEVLY3c0YURwVDNHcHp1ZzE0?=
+ =?utf-8?B?cWpjR1BhTCtISWY2SlN6ekt6V2dJRWhDOUNuNSswQm1RWERpV0tOZGFtUDJM?=
+ =?utf-8?B?N1g5Q3FGVDloS0VzTUZkNGpTZmNmK1VWQjliUHVoS2tHWGlMajcrMW92SE5j?=
+ =?utf-8?B?amNublA4eFpwazhUcHN4MGFzelF6Y3RPdm9NM0wzRFZCbmZiOVRUSHp5RTgr?=
+ =?utf-8?B?Y0FWRmdDUjA0WFBOWEZ6bzBJeTRzb1dCZmFDVGY0YVZoYXdYcHBObzNqTGRJ?=
+ =?utf-8?B?cXlLRFBEVjV4L2ZCQllLaEhUaVAyTVRVSjUrWWJpOEptQld3RThJYmp3emhk?=
+ =?utf-8?B?aThkWXZDUUl0cnZZZEhOeVNDOHRBQlF6OXlhL0NlYysrbWtUSFZrL2Zqa2hK?=
+ =?utf-8?B?SUZFZmc1U3h3L1JPbU50cmlOeDFOdW8yZUFPYVNLVFUvU09QQ3IwT3JWUjBv?=
+ =?utf-8?B?cERBbEVDdTRFeEgyK2xvQ1JxeGk2M2pqVlFsamlMc0xNMHREdUl3VUQyckVT?=
+ =?utf-8?B?dnJaZlM5TVBod2RuSUd3MmZBZCtLbFQ1WVZPR3cyc01USVVnKzdSaVFXaXhy?=
+ =?utf-8?B?bTRobVluL0wrZm9IZDNrMm40WEdSUHlXcEE1aUhpOXJRcVEvZlZtZWtwL3pS?=
+ =?utf-8?B?NWcrank4T1NLQzE3R0RjYWtoanVpVkZMN2N3Q1FxQVhPZ2d6eU9tVno3UVBR?=
+ =?utf-8?B?am5YZVFpWjFseU1lODRtYzFTMmZuNi9JWFdRTVgvSEI1NzVQTmVOYm0zZjl1?=
+ =?utf-8?B?TmtlNDJoc3FkcktyNTFwa1psNmlzR2syNE92R1JNanZNc1JVYWN1WW1NRTNK?=
+ =?utf-8?B?eDVidVBvejFaZG9RMGt0bUhiTHB3K1RHd25KYUJDcGwwQjhXNG5ac1NXbWxR?=
+ =?utf-8?B?TU8xR3dqdTBmZUNYdElCSHF2Rms3NlpYM0Y5K2lWeHJqUnVNdU52c1JHSjlh?=
+ =?utf-8?B?WUNNczlGaElwNlNNVTRzTDVKMnN2c3dPSTNyT244L2ZTV29tU1VoNjIybWxo?=
+ =?utf-8?B?ck5Cek5uU2FXeGNGMVNpOUFRbkN1b1R2RUwrOEtteFhGc3lIWWcwL1FZYVF3?=
+ =?utf-8?B?YzFDVzFiU2JIcFJ5WFVDcWNlLzBId2l6VlAzcmcrS3lQcEJib24zYjRIN05w?=
+ =?utf-8?B?ZG1uVnZKajFib0FKdUE2aWdCQW43SmVucmViY2FaWXh3ZURUa3NEdFRvVHJN?=
+ =?utf-8?B?SDBWczQ4Qi9KNml3ODZKR1BrUjIrVUxjSzdnd0h1dW9DNUEzbEtTSGJqUXhW?=
+ =?utf-8?B?emY5bjhpL0U2UWZIa1p2bDFWVzJMNFdqOE42eDBlcW1KQ04rSVZEZisvUjZO?=
+ =?utf-8?B?SjV0ZDNMeGpRVDJZUmZIRHBkNEdVYThLWXYwd2ltbTFndWJ6WUlPSE05b0Rk?=
+ =?utf-8?B?SHo2b2VMSEdJQ1dBYVB4ZGlPSGk4LzV3MEd0L2Y5OXlCNUJVT0lEOC94ZE5D?=
+ =?utf-8?B?aFlETVM2N2R1NmNydFpoZzV2aVNoMDhzbGZUNVdvdVUzVnh0NHBIWXlOSVdS?=
+ =?utf-8?B?ek9UVTh4MmZOc2RvY2dQY2FvTlRnVnBQSnRQYUR0NlFZRVJnb2EzU0lEN3JU?=
+ =?utf-8?Q?vBzu3ksMGWpuIgtvvjMqWuZevkfsI8g58zFDs=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RjFCcFdhZkM2cURuNGdneVh6Z3UvcysxeE14eUVER3YzVTNzWTBsRkNEbTB6?=
+ =?utf-8?B?RGRmNXFKVTdSNklCTjEvSkZ3QVpDVmh6cFlQVTgyQzdWS1oyMTlyZE1yTjdp?=
+ =?utf-8?B?RXRheVhQZjN3eDc4bUphL2ZDRHQ0RHNDYVRhMkhMS3R2U096cVFJL1NtMHpL?=
+ =?utf-8?B?eXZYdVo4YVNPK24vRXpVdFI3RXN6TkJmMWQ3YWF3T2pIM3pJR0IvNkw4R296?=
+ =?utf-8?B?cXRocWFOUUIwTW5keFpxc2tFS2d6dkhzQkNXbno5bW0vRW4vVFczcTRWWDQ3?=
+ =?utf-8?B?UU02WUJ6Z0trcXdZWHNRRkE1S3VjOFJ2N0Vvc2lxMzlqYXlzVUN4TEp0ZC9v?=
+ =?utf-8?B?RFU3NHdaaHdERnowVk1FaWxLK1Ztbnd2UGU5ZVhJeGRUeWpEVUh0S1ViNGxw?=
+ =?utf-8?B?d3VmdGdYUkdrTEhQSjRDMHNhN2xwNlc1L1I5ZUVqUHZVdVlHRExYMEh1YnZC?=
+ =?utf-8?B?akF2RytvSmtxRHlTUm42TWRqZ096T3daZWI4SWNrb0lUSURzSElwLzNqbkk3?=
+ =?utf-8?B?azdNWEcxNTEzVFM4WElBY0dSVHJFczd6d2VzYWo4K0d6eTNuQ2R1MHRWODVZ?=
+ =?utf-8?B?VWlSVU02Yi9jR0RLRmV1VVM1UmtGam9TaEVCY0FOeCtlTFRHZEsrdUJ2dzBS?=
+ =?utf-8?B?MFpOanV4WlpRQmxVaUh5Qm94MHIzbStRbS90YUh0VHZFSUFXVTlXN3lNcWI2?=
+ =?utf-8?B?YU9xUFJQbHk5N2Y1Rks1VzQrYXZkZDQ1UERydVV3NURQS2R5U2Q4akFwblZW?=
+ =?utf-8?B?VFowTXIrOWM3STZBTk1Dc0l3SitwZmo0elUzejRjSDRDQTBNZGVKWUxjaWtu?=
+ =?utf-8?B?VlpqUzJudmUwdU5Vd3FuM3RVcklud1BFYk9FNWRhbjNIZnFaVVM4RG1KTkNE?=
+ =?utf-8?B?TGtjVWJQakFQdTNiZXNTdk9NMkVTS2s5R205RFdmSUFYSmFwcmQrZUxkYmM4?=
+ =?utf-8?B?ZURwRHcvR2dIQ01acDY0dHFOMWZiMUU3VDN4K211NHU1QkpTR0ljK0VqUHJp?=
+ =?utf-8?B?N3RlZ0Q2b0s2T2lmOFVyS3p5MGRyTkQxYlFWckF0NnRrcHh3Q25za3hwamJz?=
+ =?utf-8?B?Q01INTJRVHIwV0R2Q1FBWEdZWEVUTlRqcXFpbWpzTS95eTFPS015bFBnMzlW?=
+ =?utf-8?B?dU91WG1oN3hJZTBOZXFUVzB5S3psQzg3VVV2bEUvOHdlbGVxRThUUGZhT2FV?=
+ =?utf-8?B?amNPQ1JFWXJsaVdnTk9PUi9maTdURFJsLzcwQlBDR05ZbnNmYmh4QXRUYy9Y?=
+ =?utf-8?B?R1duOGNVbmxhNnltS29PZG5wY2lsbFc4VUN6TkFpbHh6OU5oUElaemRPK29D?=
+ =?utf-8?B?eHYxZ2JiNWZyNmpPMnpOVGUvdVhWRE1Yb1kvd3RlYkpMQWluL0RMN3UyZEs4?=
+ =?utf-8?B?L3BwMWRNQ3NMVVFJcnExY1hlT3hmQXpYdlA4YkIzamtWK2F3REZFbXNKV1ZY?=
+ =?utf-8?B?K1dUR1drNTBUaFpCd2VXWERWMzBBWHFZK0xmbWh6cmMvdFVYOUpFR3ZQT0pa?=
+ =?utf-8?B?aVl4a0lHYUZhNVVMd3BaYlo3S01rNGJScnpXL1BpcFUwZ05TZGtDd2RKNVhQ?=
+ =?utf-8?B?bHV3dHhTSHNnZHRFTVZmZUJIUUtxUWZLdzF2VDlZSGdwUWl5RTRFcjNVYU9T?=
+ =?utf-8?B?ZnRjczdnbTREUEo0RUZMSnZacTVhTExuaTVvaVMxNHZmQ05LdW0yWUhpeVd6?=
+ =?utf-8?B?N0dsWnNia1lRbGdOWnJPZUdXWW9wazhaR2RMcUxjaG1HaW8zYWxwcDlIQmRR?=
+ =?utf-8?B?ai9adjA2bkExZC9DdXVVTXJMaWpENDJqN2JqcnFycjY1ZFgydUpWSEUzQTcx?=
+ =?utf-8?B?c1RzbVlRUC9RYStYTEl4bkZBSzVaUlBDME1Ec1RXcUhuR1lEdDdpbU1FME5t?=
+ =?utf-8?B?a1pQalhoTVNGK2FKYUVsbEJ6UlAwU0NNVU43QWY0bTNUMm1LZlFITTBXM3Uw?=
+ =?utf-8?B?TVg3SS9uckxaZ1dvT1J3VldMKzdIMU9yZEx3aitVVElnUXh4TUxMaC9odGJL?=
+ =?utf-8?B?aFpMWGxSYitmM3Y3VGlaV2VuY2pFMmVSbkdqZ1hQbi9BN2pqYU5zTmFuSU1n?=
+ =?utf-8?B?NUFMa3ZqV0tXTGp5ZUtwdlgyTy9rMWJyYUlXMHMwVm1HdU84blJ5YTNzemVD?=
+ =?utf-8?B?aTJINHd3SzFXeWhFVnZxSDlKVG1tUzZJY2hiNDNRdkxSZ1ovTXN2dmt4NVBS?=
+ =?utf-8?B?dGc9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6a2edce5-4971-42c8-efa7-08dd9a198d3e
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 May 2025 16:47:49.3121
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: o0AMjpz3SCZbXzj7axwPw2WG3PvnvSXrN8i8zJu+8hoNnGW8QMj5IQNGH3ULpvVnW4M0Rs+kpF3f7OGM7zGnph+J/q9lB/YjE+SxyW2LXj8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI2PR04MB10167
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250523_094856_270065_E34A160E 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20250523_094800_378774_3CEBE03E 
+X-CRM114-Status: GOOD (  39.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,286 +180,205 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Quentin Schulz <quentin.schulz@cherry.de>
+Hi Andrew,
 
-This adds support for the Ethernet Switch adapter connected through the
-mezzanine connector on RK3588 Jaguar.
+On 5/22/25 6:59 PM, Andrew Lunn wrote:
+>> Would the suggested change in the previous answer be acceptable to you?
+>>
+>> @Kever, is there any way to know what the register values for
+>> rx_delay/tx_delay actually mean in terms of picoseconds delay added by the
+>> MAC maybe?
+> 
+> The problem is, what exactly do these values mean? Is it documented
+> somewhere?
+> 
 
-This adapter has a KSZ9896 Ethernet Switch with 4 1GbE Ethernet
-connectors, two user controllable LEDs, and an M12 12-pin connector
-which exposes the following signals:
- - RS232/RS485 (max 250Kbps/500Kbps, RX pin1, TX pin2)
- - two digital inputs (pin4 routed to GPIO3_C5 on SoC, pin5 to GPIO4_B4)
- - two digital outputs (pin7 routed to GPIO3_D3 on SoC, pin8 to
-   GPIO3_D1)
- - two analog inputs (pin10 to channel1 of ADS1015, pin11 to channel2)
+Those aren't documented in Rockchip's TRM (Technical Reference Manual) 
+as far as I could tell, hence why I asked for Kever's input on that. We 
+could empirically find direct correlation to a specific value but I 
+cannot do this for every version of the IP we have in all Rockchip SoCs 
+as I only have access to a handful :)
 
-Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
----
-Note that for this to work, you need this commit:
-https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net.git/commit/?id=ba54bce747fa9e07896c1abd9b48545f7b4b31d2
-otherwise most packets are ignored by the DSA switch driver.
+>>>>> Since this has a switch on the other end, its a bit more complicated
+>>>>> with RGMII delays. Normally, the MAC does nothing and passed rgmii-id
+>>>>> to the PHY, and the PHY then does the delays. However, here you don't
+>>>>> have a PHY. So you have the MAC add the delays. This looks O.K. I
+>>>>
+>>>> The switch actually supports adding delays on the port used for DSA conduit.
+>>>
+>>> That actually looks to be the simplest and correct solution. Set the
+>>> MAC to 'rgmii-id', rx_delay and tx_delay to 0, even if they are
+>>> ignored. And in the switch, also 'rgmii-id' and let it insert the 2ns
+>>> delay. You can use rx-internal-delay-ps and tx-internal-delay-ps if
+>>> you want, but it seems to default to sensible values.
+>>>
+>>
+>> I don't have control on how much is inserted by the PHY as opposed to the
+>> MAC, so I'm wary of using a much less precise (on paper) delay.
+> 
+> Experience i've had with this is that you don't need to be too
+> accurate. Devices generally work with 2ns.
+> 
 
-Note that looking into downstream kernel it seems like they handle the
-absence of rx_delay and tx_delay DT properties differently than us in
-the GMAC driver.
+I see, I think I took this 2ns too critically. I thought we really were 
+supposed to be close to it but thanks to the tip about the RGMII spec[1] 
+we can see that the delay at transmitter needs to be between 1.2 and 2ns 
+while at the receiver it needs to be between 1 and 2ns. So "at least 
+1.5ns" granularity in the PHY is good enough for us :) (and we verified 
+it works of course :) )
 
-rx_delay and tx_delay default to -1 instead of 0x10/0x30 for us. For
-rgmii-{,tx,rx}id phy-mode, -1 is passed instead of 0.
-If the value is negative for the delay, then the delay circuitry is
-disabled entirely. This differs from us simply putting 0 in there (but
-still have the circuitry enabled). If that results in the same thing, I
-do not know yet.
+[1] https://etherealwake.com/2025/03/ethernet-rgmii/rgmii_2_0.pdf
 
-@Jakob, is this something you could check? devmem2 0xfd58c31c w 0x3c0000
-should do the trick to disable the circuitry according to the TRM?
----
-Changes in v2:
-- removed patch 1 adding ethernet1 alias to jaguar base DTS,
-- added ethernet1 alias in the DTSO,
-- change rgmii phy-mode to rgmii-id and have the delay in the PHY
-  instead, as suggested by Andrew,
-- Link to v1: https://lore.kernel.org/r/20250521-jaguar-mezz-eth-switch-v1-0-9b5c48ebb867@cherry.de
----
- arch/arm64/boot/dts/rockchip/Makefile              |   5 +
- .../rockchip/rk3588-jaguar-ethernet-switch.dtso    | 192 +++++++++++++++++++++
- 2 files changed, 197 insertions(+)
+>> I have no
+>> clue if doing this in the PHY is going to put us in the center of the eye or
+>> not. Thanks to Rockchip's kernel tool, we are expecting to be in the center
+>> of the eye right now.
+> 
+> What exactly does the tool do? Can you run it when the 'PHY' is adding
+> the delay and see how good the eye alignment is?
+> 
+> arch$ grep -hr "tx_delay =" | sort | uniq -c
+>        1 	tx_delay = <0x0>;
+>        4 	tx_delay = <0x10>;
+>        1 	tx_delay = <0x1a>;
+>        1 	tx_delay = <0x20>;
+>        3 	tx_delay = <0x21>;
+>        2 	tx_delay = <0x22>;
+>        5 	tx_delay = <0x24>;
+>        2 	tx_delay = <0x26>;
+>       15 	tx_delay = <0x28>;
+>        2 	tx_delay = <0x2a>;
+>       17 	tx_delay = <0x30>;
+>        1 	tx_delay = <0x3a>;
+>        3 	tx_delay = <0x3c>;
+>        3 	tx_delay = <0x42>;
+>        5 	tx_delay = <0x43>;
+>        2 	tx_delay = <0x44>;
+>        1 	tx_delay = <0x45>;
+>        1 	tx_delay = <0x46>;
+>        6 	tx_delay = <0x4f>;
+> 
+> So 0x30 is the most popular, and i expect it maps to 2ns. The 0x28
+> value is interesting, given that 0x2a is not used much. That makes me
+> think there might be a common PHY used with these boards which has a
+> small built in delay when it should not.
+>   
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 3e8771ef69ba1c1428117cc2ae29b84e13523e21..6d5ad354b77de1c3f995b119f97541f9c2cc9dbd 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -151,6 +151,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-firefly-itx-3588j.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-friendlyelec-cm3588-nas.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-h96-max-v58.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-ethernet-switch.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-pre-ict-tester.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-mnt-reform2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6.dtb
-@@ -222,6 +223,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-wifi.dtb
- rk3588-edgeble-neu6b-wifi-dtbs := rk3588-edgeble-neu6b-io.dtb \
- 	rk3588-edgeble-neu6a-wifi.dtbo
- 
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-ethernet-switch.dtb
-+rk3588-jaguar-ethernet-switch-dtbs := rk3588-jaguar.dtb \
-+	rk3588-jaguar-ethernet-switch.dtbo
-+
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-pre-ict-tester.dtb
- rk3588-jaguar-pre-ict-tester-dtbs := rk3588-jaguar.dtb \
- 	rk3588-jaguar-pre-ict-tester.dtbo
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar-ethernet-switch.dtso b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-ethernet-switch.dtso
-new file mode 100644
-index 0000000000000000000000000000000000000000..4d5c3249121c0483d19dcc3d51dfd57d7ce2c8ee
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-ethernet-switch.dtso
-@@ -0,0 +1,192 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2025 Cherry Embedded Solutions GmbH
-+ *
-+ * Device Tree Overlay for the Ethernet Switch adapter for the Mezzanine
-+ * connector on RK3588 Jaguar.
-+ *
-+ * This adapter has a KSZ9896 Ethernet Switch with 4 1GbE Ethernet connectors,
-+ * two user controllable LEDs, and an M12 12-pin connector which exposes the
-+ * following signals:
-+ *  - RS232/RS485 (max 250Kbps/500Kbps, RX pin1, TX pin2)
-+ *  - two digital inputs (pin4 routed to GPIO3_C5 on SoC, pin5 to GPIO4_B4)
-+ *  - two digital outputs (pin7 routed to GPIO3_D3 on SoC, pin8 to GPIO3_D1)
-+ *  - two analog inputs (pin10 to channel1 of ADS1015, pin11 to channel2)
-+ *
-+ * RK3588 Jaguar can be powered entirely through the adapter via the M8 3-pin
-+ * connector (12-24V).
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+#include <dt-bindings/clock/rockchip,rk3588-cru.h>
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+
-+&{/} {
-+	aliases {
-+		ethernet1 = "/ethernet@fe1c0000";
-+	};
-+
-+	mezzanine-leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&led_usr1_pin &led_usr2_pin>;
-+
-+		led-1 {
-+			gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
-+			label = "USR1";
-+		};
-+
-+		led-2 {
-+			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
-+			label = "USR2";
-+		};
-+	};
-+};
-+
-+&gmac1 {
-+	clock_in_out = "output";
-+	phy-mode = "rgmii-id";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&gmac1_rx_bus2
-+		     &gmac1_tx_bus2
-+		     &gmac1_rgmii_clk
-+		     &gmac1_rgmii_bus
-+		     &eth1_pins>;
-+	rx_delay = <0x0>;
-+	tx_delay = <0x0>;
-+	status = "okay";
-+
-+	fixed-link {
-+		speed = <1000>;
-+		full-duplex;
-+	};
-+};
-+
-+&i2c1 {
-+	#address-cells = <1>;
-+	/* ADS1015 can handle high-speed (HS) mode (up to 3.4MHz) on I2C bus,
-+	   but SOC can handle only up to 400kHz. */
-+	clock-frequency = <400000>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	adc@48 {
-+		compatible = "ti,ads1015";
-+		reg = <0x48>;
-+		#address-cells = <1>;
-+		interrupt-parent = <&gpio3>;
-+		interrupts = <RK_PC7 IRQ_TYPE_EDGE_FALLING>;
-+		pinctrl-0 = <&adc_alert>;
-+		pinctrl-names = "default";
-+		#io-channel-cells = <1>;
-+		#size-cells = <0>;
-+
-+		channel@1 {
-+			reg = <5>; /* Single-ended between AIN1 and GND */
-+			ti,datarate = <0>;
-+			ti,gain = <5>;
-+		};
-+
-+		channel@2 {
-+			reg = <6>; /* Single-ended between AIN2 and GND */
-+			ti,datarate = <0>;
-+			ti,gain = <5>;
-+		};
-+	};
-+
-+	switch@5f {
-+		compatible = "microchip,ksz9896";
-+		reg = <0x5f>;
-+		interrupt-parent = <&gpio3>;
-+		interrupts = <RK_PB7 IRQ_TYPE_EDGE_FALLING>; /* ETH_INTRP_N */
-+		pinctrl-0 = <&eth_reset_n &eth_intrp_n>;
-+		pinctrl-names = "default";
-+		reset-gpios = <&gpio3 RK_PB6 GPIO_ACTIVE_LOW>; /* ETH_RESET */
-+		microchip,synclko-disable; /* CLKO_25_125 only routed to TP1 */
-+
-+		ethernet-ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			lan1: port@0 {
-+				reg = <0>;
-+				label = "ETH1";
-+			};
-+
-+			lan2: port@1 {
-+				reg = <1>;
-+				label = "ETH2";
-+			};
-+
-+			lan3: port@2 {
-+				reg = <2>;
-+				label = "ETH3";
-+			};
-+
-+			lan4: port@3 {
-+				reg = <3>;
-+				label = "ETH4";
-+			};
-+
-+			port@5 {
-+				reg = <5>;
-+				ethernet = <&gmac1>;
-+				label = "CPU";
-+				phy-mode = "rgmii-id";
-+				rx-internal-delay-ps = <2000>;
-+				tx-internal-delay-ps = <2000>;
-+
-+				fixed-link {
-+					speed = <1000>;
-+					full-duplex;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&pinctrl {
-+	adc {
-+		adc_alert: adc-alert-irq {
-+			rockchip,pins =
-+				<3 RK_PC7 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	ethernet {
-+		eth_intrp_n: eth-intrp-n {
-+			rockchip,pins =
-+				<3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		eth_reset_n: eth-reset-n {
-+			rockchip,pins =
-+				<3 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	leds {
-+		led_usr1_pin: led-usr1-pin {
-+			rockchip,pins =
-+				<1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		led_usr2_pin: led-usr2-pin {
-+			rockchip,pins =
-+				<3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+};
-+
-+&uart9 {
-+	/* GPIO3_D0/EN_RS485_MODE for switching between RS232 and RS485 */
-+	pinctrl-0 = <&uart9m2_xfer &uart9m2_rtsn>;
-+	pinctrl-names = "default";
-+	linux,rs485-enabled-at-boot-time;
-+	status = "okay";
-+};
+Note that Rockchip SoCs typically have integrated PHYs as well (which we 
+don't use at CHERRY but the option is there). The answer otherwise is 
+usually of the kind of "we followed the reference design, it works with 
+the DT from the evaluation board, this DT was accepted, we do the same". 
+For contributors, I don't think it's feasible to figure out whether the 
+PCB lane length matching is done properly or how much is actually 
+required except by modifying the delay by hand and find both extremes 
+where it stops working and empirically decide the eye is in the middle 
+of those (for your board, which may differ from another board of the 
+same kind).
 
----
-base-commit: 4a95bc121ccdaee04c4d72f84dbfa6b880a514b6
-change-id: 20250521-jaguar-mezz-eth-switch-75445fd1c725
+>>>> I'm a bit confused by the following sentence:
+>>>>
+>>>> """
+>>>> Normally, the MAC does nothing and passed rgmii-id
+>>>> """
+>>>>
+>>>> is this something that the MAC driver is supposed to do or is the subsystem
+>>>> handling that somehow? How do I know how/when to rewrite the phy-mode passed
+>>>> to the PHY?
+>>>
+>>> A small number of MACs have hard coded delays. You cannot turn the
+>>> delay off. So the MAC has no choice but to do the delay. 'rgmii' is
+>>> simply not possible, so -EINVAL. For 'rgmii-id', if you pass that to
+>>> the PHY, it will also add a delay, and 4ns in total does not work. So
+>>> when the MAC is adding delays, it needs to mask out the delays it is
+>>> adding before calling phy_attach() passing an rgmii mode.
+>>>
+>>
+>> If I understand correctly, if phy-mode is rgmii-id in DT and the MAC is
+>> adding the delay, I need to force PHY_INTERFACE_MODE_RGMII phy-mode when
+>> attaching the PHY in the MAC device.
+> 
+> Correct. DT phy-mode describes the PCB. Does the PCB add the 2ns
+> delay.
+> 
+> Once you get to the MAC/PHY pair, what the MAC passes to the PHY is
+> about what remaining delays need adding. It could be nothing, because
+> the PCB adds the delay. It could be all of it, because neither the PCB
+> nor the MAC add the delays. It can also be nothing because the MAC has
+> already added the delays.
+> 
 
-Best regards,
--- 
-Quentin Schulz <quentin.schulz@cherry.de>
+Clear thanks. I'm not sure whether Linux already has a way for the MAC 
+to provide which delay the PHY is supposed to do? I (now) know we can 
+override the phy_mode via one of phy_attach*/phy_connect* function which 
+take a phy_interface_t as argument. I see a phy_get_internal_delay but 
+not the setter part of it. Anyway, don't want to drag this too much as I 
+don't need this anymore since the delay will be added by the PHY.
 
+> For linux, we have the policy that the PHY adds the delay, in an
+> attempt to try to make all systems the same. And most boards follow
+> this. And then we have a few systems that totally mess up delays, have
+> odd configuration knobs nobody knows what the do exactly, and put the
+> delays in the MAC.
+> 
+>> Does this also mean you cannot have mixed addition of delay? E.g. having 1ns
+>> from MAC and 1ns from PHY? It has to be only on one of the IC?
+> 
+> It is not recommended, because of the policy that the PHY does the
+> delay... You can, if you make use of the rx-internal-delay-ps
+> properties, assuming both the MAC and PHY support them.
+> 
+
+Thanks to your and Jakob (in private)'s explanations, I now understand 
+that this is very likely not required as I would assume HW engineers for 
+the IC would essentially allow to add some delay between 1.2ns and 2ns 
+to satisfy the RGMII v2.0 spec but there's no need to be precise or have 
+granularity. So this scenario is theoretical and could very likely be 
+due to accumulated HW mistakes (either in ICs or routing)?
+
+>> In the comment at the bottom of the dt binding there's this following
+>> sentence:
+>>
+>> # When the PCB does not implement the delays, the MAC or PHY must.  As
+>> # such, this is software configuration, and so not described in Device
+>> # Tree.
+>>
+>> Why do we have two possible locations for rx-internal-delay-ps: PHY and MAC?
+> 
+> Sometimes both can add variable delays. Sometimes it is fixed 2ns.
+> 
+> I would actually prefer that these properties were not used, because
+
+I assume we would therefore need some kind of negotiation between the 
+PHY and the MAC at the subsystem level to figure out if the PHY can do 
+the requested delay or if it should be handled by the MAC instead?
+
+> they indicate somebody messed up. If you read the RGMII standard, it
+> says a 2ns delay is required between the clock and the data. It is as
+> simple as that. If you need to fine tune it, it means one of:
+> 
+> The PCB is badly designed, care was not taken to ensure the PCB tracks
+> are the same length.
+> 
+> The MAC is badly designed, it does not add 0ns/2ns, but some other
+> delay.
+> 
+> The PHY is badly designed, it does not add 0ns/2ns, but some other
+> delay.
+> 
+
+Just need to be in the 1-2ns but otherwise I fully agree, thanks for the 
+hint of the RGMII spec that helped!
+
+Thanks for taking the time to write this all down and your patience, 
+that was all very helpful!
+
+Cheers,
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
