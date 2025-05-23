@@ -4,171 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77121C54F47
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 17:23:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2C8AC54ED1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 22:20:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4y2gtfyaPPMP7WknKXWU5In7KpI4P32X13ei2kmhGPA=; b=1Ju/nxP54tkHUfdKPqfIP0CPMo
-	Yd6rmNElSfoFZSdpBJJo9bs3vC12RvP42Y+PG3ncudzEoIVrxjE09x90uPKgAxGXiP1LPGIpIDvow
-	2HsdweTTHp5hM00/JSK7rjV+t+rczhh8q0Ci6zPHnQ0ZcDUb2U2oV9ZqftSmP10N2BLH5mGZSkwBQ
-	e1cSUDIVt1Aro42zQfrVo/8/9OsU8aYTf6C3r/PVxXMiIca7R5kIB7cDp2Y9LXyE9wfGr2fhLdGUZ
-	AeGGgcCu7D7HvKjL68vNnzQx4k2ocIUr90BhEO+JwJ0bLOMlGXktIo3J/nLvpQfuOxy33ayyf4auN
-	qzXVrltg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ru8WCa7uTEFiqYyXXUvNqIbIhwwYqJfooI2RD3ghdQU=; b=Ge5ZMrEQQv8Hod
+	ZSGiuquv+llKKYXxD4sihrPBMgeptWIXUeUKlFpiUV0EZyu00WPraxJ1JgOfKrkXlvHzkwoUYqF6I
+	NliozQwhDtQVCd4ygqqJUz1o6xO99NtKIt6/c2sGQ7R7IQXf+e+Jb1f0duxkJRE7DHxqie014YfVD
+	yTVzNp/Qe8q768F8wTYAqDOs4Onb7TPl10Ykt9J5VjC7SCNA+EKx+i3iLYDsel7dKzI6Lh+c+A6xB
+	KPdhqB6LYmbKTeO+cvKrf+No5Y55fzCB5qN1qgVh8kL522IOSLO7xGpVhIrE+KuIMSqiiVWE35xZY
+	5ANM3jR2Hh/BChO8Pgfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIW7L-00000004WiK-1unD;
-	Fri, 23 May 2025 17:23:35 +0000
-Received: from mail-db5eur02on2060e.outbound.protection.outlook.com ([2a01:111:f403:2608::60e] helo=EUR02-DB5-obe.outbound.protection.outlook.com)
+	id 1uIajt-000000050Bu-3YOT;
+	Fri, 23 May 2025 22:19:41 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIVYu-00000004Rkg-03jx;
-	Fri, 23 May 2025 16:48:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=I+7wdkAOpxmZEeEm2sZXzphGvrlqQeAPx4cu0w+BRYm8o8LOMqDITQVhhVbqhMuJ5yRO3AnW2jZAOqlMSj7/ZGSMPFdRW2Jb+HxX7pPNvfp2C/WGrjv9PL5Ms0ANOsxm/esZXrAveaeKIgzQm/WAhR1bQwcRqAK13s8k1utaaATpOHh4yZpbW1HNgZXdx6BXdnle/iYilDdY+KTSp9OnZWOqDwW86iqunI5uZsXprak+BW3l13W9opAXqoCg0mrLkJrCCqARj4Q4KpN5DWyBQ69b7A1oONqTUm4fWy68ssmcr2/fPyNErU1BUTS2cZWCKsbA5f2QlMghIdVtmXQvGQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DK6oKfHXyQ6Gk0gkz9k4IPlSJKrMMEaNsKm43wn7N+w=;
- b=kzaXtd+cSW09MmW9RW/cxY6ZLGO1/ACukS2AL4fssv2VszK819kheucihFx4gGwMmgQE+LAbz7m53xlZmlXFQDandbyBV5IhbbPH+hGPKjkgbjmEIR2Xd3QsiH7vet6chpmjrIHN/ksboaKnKA+0Um2/5t+Fg6kiFOyL5VPLGWHwB48Dvs3j1YOez0XVic+IJOoGOtJaEfpdqyGs3+PXO7L6XXZ9ffMH9ow1vzX23uIZLKD6qBGUA+1tR0U5L9oLFbBCwCb+kTFlFSA0Xh50AcuHqCR+gDXjt3SomqI1kPkUScuqwqvLx3xEwFqk0nzUjsOPGQSqD8mwThkn4rRx2g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DK6oKfHXyQ6Gk0gkz9k4IPlSJKrMMEaNsKm43wn7N+w=;
- b=OQfUYrL/Tys5CetHwFBwIvoM5PlAENGzRs/7pQD6bglVSi8P7xmkKo4a7Ds2NEcN594M/NLYxMMRDrQXEUGblj6lua4kOWQfW1o3xDITUjdzWT7OqZRe7pHjrm/s49rR71e2x8Rff2chmxXSCvnT7tOBk/qYcl9IZTGCXySxyac=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by VI2PR04MB10167.eurprd04.prod.outlook.com (2603:10a6:800:22c::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8769.22; Fri, 23 May
- 2025 16:47:50 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a%4]) with mapi id 15.20.8746.030; Fri, 23 May 2025
- 16:47:50 +0000
-Message-ID: <eac73db9-5747-44a8-aa5e-f1e3edd25e8a@cherry.de>
-Date: Fri, 23 May 2025 18:47:48 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: support Ethernet Switch adapter
- for RK3588 Jaguar
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Kever Yang <kever.yang@rock-chips.com>
-References: <20250521-jaguar-mezz-eth-switch-v1-0-9b5c48ebb867@cherry.de>
- <20250521-jaguar-mezz-eth-switch-v1-2-9b5c48ebb867@cherry.de>
- <657a085c-4214-4096-8a68-047d57a40d60@lunn.ch>
- <19574942-d06b-44b0-8b6c-d3ddd94db89f@cherry.de>
- <9c99aba9-87f5-41fe-8b11-7ef27525750c@lunn.ch>
- <9e8f659d-9116-46a6-b7e7-3d4705f57ac6@cherry.de>
- <b322970d-8d56-46fc-b537-22f73a66dc8b@lunn.ch>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <b322970d-8d56-46fc-b537-22f73a66dc8b@lunn.ch>
-X-ClientProxiedBy: FR3P281CA0192.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a4::16) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
+	id 1uIahp-0000000505S-1kF0
+	for linux-rockchip@lists.infradead.org;
+	Fri, 23 May 2025 22:17:35 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 54NGOCno019528
+	for <linux-rockchip@lists.infradead.org>; Fri, 23 May 2025 22:17:31 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=WYoA/T0pbrAIwzVvOvAoPA0a
+	sWwy3PVbJjqY9vzmT/4=; b=bcbfcW7tckSFh/cPJ1kGGCW9UWU1SJw4zPdM+iFr
+	0yupfyhdi/19PNH4p45V/NKfGa/QZMgeRotCD9+AI9GZnVIDKZt3kNm7VkZqaQkZ
+	mVYrBbxumEW0IKGuWSwb4YAqKlQoFsuF5Ew6P1X+woA8ssSMOI9msjim+mNTBxaS
+	lu0XxT8elXJU0+Gl8qSxIHnQ3YuzDSqrGw04RUyIQNBzLmzP4bt5v9Fot/jY+bmo
+	gCqNfSpagU7THCU9eYA1Pd89LP0DsQ4WOc062W9GiW/WYZttXtrFke7nVtCSa/yd
+	PRspn2gqT8A0Hz6tsXgHLsB1dPOy6Crm+hFZLxY0YfdS3Q==
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com [209.85.219.72])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 46rwf537rf-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Fri, 23 May 2025 22:17:30 +0000 (GMT)
+Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-6f8ae0417b6so5204526d6.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 23 May 2025 15:17:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748038650; x=1748643450;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WYoA/T0pbrAIwzVvOvAoPA0asWwy3PVbJjqY9vzmT/4=;
+        b=Wv1s9SVitFZb3uWmkuCK7vapQ2V6X1IxYHyvs7T1KSNQIgskHmxmFXQ4MNIeaS6iKZ
+         +EYNSgUwZZYQPhoj1ET9yJQDN7ga0pG0CPnfZyoKJCvQmw1wq5DTzfsJH4bKspxP/i+L
+         QM89nCh/Hkmb4PGXlZzLydjOA7rsZFh4c9E1loKZ8g0/MZV4hI0wWhPypZ4gkUMtVvsZ
+         1bnA+5/bCBN4bCpc9WKtAwZQOPBm9IEWAMW+UI6dhC2ntH1A/QxcVIGCC90SIYW6v9Fg
+         oSHEYEssCcFd8v0ngrFWwjLfL/s1CM6Uj4Atju7QQ5RxTMhhacFr67I5YElgF870Ef+x
+         KV/Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVgRxXtq2F6bl/VZCjh3t7LoP2lnaeChHDY8/fCnnJwHbOwJYCWQiFkT/tMPZPsRkIySpjYeKXWsyOWuy6YRQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxegQdEwqbpHk4uIH2zSQRGK8yJ2Neg6l8VA+4S4I/MbhG1lA3z
+	943MCBDmN8EixVVKwwA/OAEffNS9nLrGIu4FORLEXQeo4lMWhf2nYVUXlHR8W4UcVMWgi0UNn0x
+	oiiiOLOf4B7M5LNSxTieGEtRU3S082xuUhZnwb+9HRA5Js8C7gdRmdWBRajgEfrFlmCcNQcDwj/
+	c=
+X-Gm-Gg: ASbGnct8DGpKit/8S+4eUJmUp6WZRvSo9q+VHlSG9Xzf4X4VximHpIgPj4khJfmGNxz
+	JfQzFKzAWwXMM3fBZtFq+XVyN74qyPWkI/QwKk1g+zZgmJ9nTgtApE+oKuo6iAQqTFUGUXrx4cz
+	e6j6D4956y/YeRNFZdQzulvB77ooBGp3iVgX3UnFV1WUJyENmagx/BqbW7xt0v43ZgLosT+NI3W
+	Z50BA34g+6jvc5P9p+Q2LAbJ21/d40KW6kJ3xUF+QKMmlru3Z2uKLWvlxUlSYOChHtBIktbiEKe
+	ZRcVGz2koB8bC3/wGS3ww5KDhMyVR2klYC7fdwcG+b9koYGXDNmmlHSFPiv56lYUv0UKiIpwqVw
+	=
+X-Received: by 2002:ad4:4ea2:0:b0:6f9:51af:ddf0 with SMTP id 6a1803df08f44-6fa9ce36d60mr21454576d6.0.1748038649712;
+        Fri, 23 May 2025 15:17:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGkLUpkA/yijw4XmCnZmCYO0gydNMmduAz3RCCS/KZd9uIkmTONQSGNBocQk6eLPNbgKF0hbA==
+X-Received: by 2002:ad4:4ea2:0:b0:6f9:51af:ddf0 with SMTP id 6a1803df08f44-6fa9ce36d60mr21454116d6.0.1748038649196;
+        Fri, 23 May 2025 15:17:29 -0700 (PDT)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-328084c8d24sm36847971fa.26.2025.05.23.15.17.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 23 May 2025 15:17:28 -0700 (PDT)
+Date: Sat, 24 May 2025 01:17:26 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Chaoyi Chen <kernel@airkyi.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+        Andy Yan <andy.yan@rock-chips.com>,
+        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Maxime Ripard <mripard@kernel.org>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+        Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Subject: Re: [PATCH v2] drm/rockchip: cdn-dp: Convert to drm bridge
+Message-ID: <ht7irlxoixjca5a6ljekgzqy7ztcgu3mahi5v45v5qjrluny75@nzbqei6pgenn>
+References: <20250523011310.120-1-kernel@airkyi.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|VI2PR04MB10167:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6a2edce5-4971-42c8-efa7-08dd9a198d3e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?aEF6SzB6cGl6MFpyVk9hODV1bllFN3ZTeVpOZU9JVG12TG13UmFsMk1vZVVm?=
- =?utf-8?B?ejUwZmpsbGlaN3VVdm5POGx5Zm1JRE9NY2dNU2dpWGlBd3ZJRStJN0xHM3E1?=
- =?utf-8?B?WEI0RmxhbUN5T1hlM0xLdEJOMUVJUmtGdjVUdzNBakdzbnBMV0dJZUtYS2w1?=
- =?utf-8?B?M05IaTdSSkNYenU0c2g1elByekkyNFRveWl2ZmdUbGg1NzBOTWx2cEFuVFRv?=
- =?utf-8?B?U0xKQ1BNc1p2QjJKWVFxb1Ivb2VQWVV6YVlDbEVLY3c0YURwVDNHcHp1ZzE0?=
- =?utf-8?B?cWpjR1BhTCtISWY2SlN6ekt6V2dJRWhDOUNuNSswQm1RWERpV0tOZGFtUDJM?=
- =?utf-8?B?N1g5Q3FGVDloS0VzTUZkNGpTZmNmK1VWQjliUHVoS2tHWGlMajcrMW92SE5j?=
- =?utf-8?B?amNublA4eFpwazhUcHN4MGFzelF6Y3RPdm9NM0wzRFZCbmZiOVRUSHp5RTgr?=
- =?utf-8?B?Y0FWRmdDUjA0WFBOWEZ6bzBJeTRzb1dCZmFDVGY0YVZoYXdYcHBObzNqTGRJ?=
- =?utf-8?B?cXlLRFBEVjV4L2ZCQllLaEhUaVAyTVRVSjUrWWJpOEptQld3RThJYmp3emhk?=
- =?utf-8?B?aThkWXZDUUl0cnZZZEhOeVNDOHRBQlF6OXlhL0NlYysrbWtUSFZrL2Zqa2hK?=
- =?utf-8?B?SUZFZmc1U3h3L1JPbU50cmlOeDFOdW8yZUFPYVNLVFUvU09QQ3IwT3JWUjBv?=
- =?utf-8?B?cERBbEVDdTRFeEgyK2xvQ1JxeGk2M2pqVlFsamlMc0xNMHREdUl3VUQyckVT?=
- =?utf-8?B?dnJaZlM5TVBod2RuSUd3MmZBZCtLbFQ1WVZPR3cyc01USVVnKzdSaVFXaXhy?=
- =?utf-8?B?bTRobVluL0wrZm9IZDNrMm40WEdSUHlXcEE1aUhpOXJRcVEvZlZtZWtwL3pS?=
- =?utf-8?B?NWcrank4T1NLQzE3R0RjYWtoanVpVkZMN2N3Q1FxQVhPZ2d6eU9tVno3UVBR?=
- =?utf-8?B?am5YZVFpWjFseU1lODRtYzFTMmZuNi9JWFdRTVgvSEI1NzVQTmVOYm0zZjl1?=
- =?utf-8?B?TmtlNDJoc3FkcktyNTFwa1psNmlzR2syNE92R1JNanZNc1JVYWN1WW1NRTNK?=
- =?utf-8?B?eDVidVBvejFaZG9RMGt0bUhiTHB3K1RHd25KYUJDcGwwQjhXNG5ac1NXbWxR?=
- =?utf-8?B?TU8xR3dqdTBmZUNYdElCSHF2Rms3NlpYM0Y5K2lWeHJqUnVNdU52c1JHSjlh?=
- =?utf-8?B?WUNNczlGaElwNlNNVTRzTDVKMnN2c3dPSTNyT244L2ZTV29tU1VoNjIybWxo?=
- =?utf-8?B?ck5Cek5uU2FXeGNGMVNpOUFRbkN1b1R2RUwrOEtteFhGc3lIWWcwL1FZYVF3?=
- =?utf-8?B?YzFDVzFiU2JIcFJ5WFVDcWNlLzBId2l6VlAzcmcrS3lQcEJib24zYjRIN05w?=
- =?utf-8?B?ZG1uVnZKajFib0FKdUE2aWdCQW43SmVucmViY2FaWXh3ZURUa3NEdFRvVHJN?=
- =?utf-8?B?SDBWczQ4Qi9KNml3ODZKR1BrUjIrVUxjSzdnd0h1dW9DNUEzbEtTSGJqUXhW?=
- =?utf-8?B?emY5bjhpL0U2UWZIa1p2bDFWVzJMNFdqOE42eDBlcW1KQ04rSVZEZisvUjZO?=
- =?utf-8?B?SjV0ZDNMeGpRVDJZUmZIRHBkNEdVYThLWXYwd2ltbTFndWJ6WUlPSE05b0Rk?=
- =?utf-8?B?SHo2b2VMSEdJQ1dBYVB4ZGlPSGk4LzV3MEd0L2Y5OXlCNUJVT0lEOC94ZE5D?=
- =?utf-8?B?aFlETVM2N2R1NmNydFpoZzV2aVNoMDhzbGZUNVdvdVUzVnh0NHBIWXlOSVdS?=
- =?utf-8?B?ek9UVTh4MmZOc2RvY2dQY2FvTlRnVnBQSnRQYUR0NlFZRVJnb2EzU0lEN3JU?=
- =?utf-8?Q?vBzu3ksMGWpuIgtvvjMqWuZevkfsI8g58zFDs=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RjFCcFdhZkM2cURuNGdneVh6Z3UvcysxeE14eUVER3YzVTNzWTBsRkNEbTB6?=
- =?utf-8?B?RGRmNXFKVTdSNklCTjEvSkZ3QVpDVmh6cFlQVTgyQzdWS1oyMTlyZE1yTjdp?=
- =?utf-8?B?RXRheVhQZjN3eDc4bUphL2ZDRHQ0RHNDYVRhMkhMS3R2U096cVFJL1NtMHpL?=
- =?utf-8?B?eXZYdVo4YVNPK24vRXpVdFI3RXN6TkJmMWQ3YWF3T2pIM3pJR0IvNkw4R296?=
- =?utf-8?B?cXRocWFOUUIwTW5keFpxc2tFS2d6dkhzQkNXbno5bW0vRW4vVFczcTRWWDQ3?=
- =?utf-8?B?UU02WUJ6Z0trcXdZWHNRRkE1S3VjOFJ2N0Vvc2lxMzlqYXlzVUN4TEp0ZC9v?=
- =?utf-8?B?RFU3NHdaaHdERnowVk1FaWxLK1Ztbnd2UGU5ZVhJeGRUeWpEVUh0S1ViNGxw?=
- =?utf-8?B?d3VmdGdYUkdrTEhQSjRDMHNhN2xwNlc1L1I5ZUVqUHZVdVlHRExYMEh1YnZC?=
- =?utf-8?B?akF2RytvSmtxRHlTUm42TWRqZ096T3daZWI4SWNrb0lUSURzSElwLzNqbkk3?=
- =?utf-8?B?azdNWEcxNTEzVFM4WElBY0dSVHJFczd6d2VzYWo4K0d6eTNuQ2R1MHRWODVZ?=
- =?utf-8?B?VWlSVU02Yi9jR0RLRmV1VVM1UmtGam9TaEVCY0FOeCtlTFRHZEsrdUJ2dzBS?=
- =?utf-8?B?MFpOanV4WlpRQmxVaUh5Qm94MHIzbStRbS90YUh0VHZFSUFXVTlXN3lNcWI2?=
- =?utf-8?B?YU9xUFJQbHk5N2Y1Rks1VzQrYXZkZDQ1UERydVV3NURQS2R5U2Q4akFwblZW?=
- =?utf-8?B?VFowTXIrOWM3STZBTk1Dc0l3SitwZmo0elUzejRjSDRDQTBNZGVKWUxjaWtu?=
- =?utf-8?B?VlpqUzJudmUwdU5Vd3FuM3RVcklud1BFYk9FNWRhbjNIZnFaVVM4RG1KTkNE?=
- =?utf-8?B?TGtjVWJQakFQdTNiZXNTdk9NMkVTS2s5R205RFdmSUFYSmFwcmQrZUxkYmM4?=
- =?utf-8?B?ZURwRHcvR2dIQ01acDY0dHFOMWZiMUU3VDN4K211NHU1QkpTR0ljK0VqUHJp?=
- =?utf-8?B?N3RlZ0Q2b0s2T2lmOFVyS3p5MGRyTkQxYlFWckF0NnRrcHh3Q25za3hwamJz?=
- =?utf-8?B?Q01INTJRVHIwV0R2Q1FBWEdZWEVUTlRqcXFpbWpzTS95eTFPS015bFBnMzlW?=
- =?utf-8?B?dU91WG1oN3hJZTBOZXFUVzB5S3psQzg3VVV2bEUvOHdlbGVxRThUUGZhT2FV?=
- =?utf-8?B?amNPQ1JFWXJsaVdnTk9PUi9maTdURFJsLzcwQlBDR05ZbnNmYmh4QXRUYy9Y?=
- =?utf-8?B?R1duOGNVbmxhNnltS29PZG5wY2lsbFc4VUN6TkFpbHh6OU5oUElaemRPK29D?=
- =?utf-8?B?eHYxZ2JiNWZyNmpPMnpOVGUvdVhWRE1Yb1kvd3RlYkpMQWluL0RMN3UyZEs4?=
- =?utf-8?B?L3BwMWRNQ3NMVVFJcnExY1hlT3hmQXpYdlA4YkIzamtWK2F3REZFbXNKV1ZY?=
- =?utf-8?B?K1dUR1drNTBUaFpCd2VXWERWMzBBWHFZK0xmbWh6cmMvdFVYOUpFR3ZQT0pa?=
- =?utf-8?B?aVl4a0lHYUZhNVVMd3BaYlo3S01rNGJScnpXL1BpcFUwZ05TZGtDd2RKNVhQ?=
- =?utf-8?B?bHV3dHhTSHNnZHRFTVZmZUJIUUtxUWZLdzF2VDlZSGdwUWl5RTRFcjNVYU9T?=
- =?utf-8?B?ZnRjczdnbTREUEo0RUZMSnZacTVhTExuaTVvaVMxNHZmQ05LdW0yWUhpeVd6?=
- =?utf-8?B?N0dsWnNia1lRbGdOWnJPZUdXWW9wazhaR2RMcUxjaG1HaW8zYWxwcDlIQmRR?=
- =?utf-8?B?ai9adjA2bkExZC9DdXVVTXJMaWpENDJqN2JqcnFycjY1ZFgydUpWSEUzQTcx?=
- =?utf-8?B?c1RzbVlRUC9RYStYTEl4bkZBSzVaUlBDME1Ec1RXcUhuR1lEdDdpbU1FME5t?=
- =?utf-8?B?a1pQalhoTVNGK2FKYUVsbEJ6UlAwU0NNVU43QWY0bTNUMm1LZlFITTBXM3Uw?=
- =?utf-8?B?TVg3SS9uckxaZ1dvT1J3VldMKzdIMU9yZEx3aitVVElnUXh4TUxMaC9odGJL?=
- =?utf-8?B?aFpMWGxSYitmM3Y3VGlaV2VuY2pFMmVSbkdqZ1hQbi9BN2pqYU5zTmFuSU1n?=
- =?utf-8?B?NUFMa3ZqV0tXTGp5ZUtwdlgyTy9rMWJyYUlXMHMwVm1HdU84blJ5YTNzemVD?=
- =?utf-8?B?aTJINHd3SzFXeWhFVnZxSDlKVG1tUzZJY2hiNDNRdkxSZ1ovTXN2dmt4NVBS?=
- =?utf-8?B?dGc9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6a2edce5-4971-42c8-efa7-08dd9a198d3e
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 May 2025 16:47:49.3121
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: o0AMjpz3SCZbXzj7axwPw2WG3PvnvSXrN8i8zJu+8hoNnGW8QMj5IQNGH3ULpvVnW4M0Rs+kpF3f7OGM7zGnph+J/q9lB/YjE+SxyW2LXj8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI2PR04MB10167
+Content-Disposition: inline
+In-Reply-To: <20250523011310.120-1-kernel@airkyi.com>
+X-Proofpoint-GUID: aWTgXtEY0uVjPAJScuXEjEK-_vewRFHo
+X-Proofpoint-ORIG-GUID: aWTgXtEY0uVjPAJScuXEjEK-_vewRFHo
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNTIzMDIwNCBTYWx0ZWRfXyIzmdW5o0Esc
+ toT86afg2rBJfX8W3xJp5i2Lox+hz6UNS0zuCJEvKmXTL3yhPZlCTA1I6gMrVz4vNR5EglZetZI
+ glzADcO9YIFoJRd+Vt2JCW63JJp2cpxIznxf42dJPewFdUDlPlurazntXbW0WqVo95RQY8kWvwZ
+ uWae5GuSite9zwHFh1g2thwP+QelAiXZPqUr8GkIXCaJAnv9mNGgqzzGcJTYNLAAJauq+5bBNwM
+ 94DCrVZ8jaBcGJ/77fGDeRowwLMSzX0a7q+FX8cnSeLv2BUYksnAMkVhTlyEC/MzPF8fn1ar0nA
+ Gshdu39tuo6M06J607SvRZ+Ogwll8j99l2fWA1BthlyMLyZpwV8oxN/J5oGb5KJlB1o4wsoQwK3
+ pe6IRHcBFJRBVXgdjr8jx0qPTL/wrvK6i25v50jpdpM2+2thOsdAK0S12V0M4edHMsYtFedO
+X-Authority-Analysis: v=2.4 cv=R7UDGcRX c=1 sm=1 tr=0 ts=6830f3fa cx=c_pps
+ a=7E5Bxpl4vBhpaufnMqZlrw==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=dt9VzEwgFbYA:10 a=VwQbUJbxAAAA:8 a=ePr-TV-LAAAA:8 a=s8YR1HE3AAAA:8
+ a=dJa1r4FWIukFBr4GutcA:9 a=CjuIK1q_8ugA:10 a=pJ04lnu7RYOZP9TFuWaZ:22
+ a=uGDpjx9DKq9E8W49yboe:22 a=jGH_LyMDp9YhSvY-UuyI:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
+ definitions=2025-05-23_07,2025-05-22_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 clxscore=1015 mlxlogscore=999 priorityscore=1501 spamscore=0
+ bulkscore=0 lowpriorityscore=0 malwarescore=0 suspectscore=0 mlxscore=0
+ impostorscore=0 adultscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505160000
+ definitions=main-2505230204
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250523_094800_378774_3CEBE03E 
-X-CRM114-Status: GOOD (  39.33  )
+X-CRM114-CacheID: sfid-20250523_151733_574770_1A4B0471 
+X-CRM114-Status: GOOD (  35.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -180,205 +132,501 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
+On Fri, May 23, 2025 at 09:13:10AM +0800, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> 
+> Convert it to drm bridge driver, it will be convenient for us to
+> migrate the connector part to the display driver later.
+> 
+> Considering that some code depend on the connector, the following
+> changes have been made:
+> - Do not get edid in cdn_dp_get_sink_capability() when connector is
+> not present.
+> - Update bpc info in cdn_dp_bridge_atomic_enable() instead of
+> cdn_dp_encoder_mode_set(). Actually, the bpc data will be used in
+> cdn_dp_bridge_atomic_enable().
+> 
+> This patch also convert to use devm_drm_bridge_alloc() API.
+> 
+> Tested with RK3399 EVB IND board.
+> 
+> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> ---
+> 
+> Changes in v2:
+> - Link to V1: https://lore.kernel.org/all/20250507035148.415-1-kernel@airkyi.com/
+> - Use drm_atomic_get_new_connector_for_encoder() to get connector
+> - Convert to use devm_drm_bridge_alloc() API
+> - Fix typo: cdn_dp_connector_edid_read -> cdn_dp_bridge_edid_read
+> 
+>  drivers/gpu/drm/rockchip/cdn-dp-core.c | 204 +++++++++++++------------
+>  drivers/gpu/drm/rockchip/cdn-dp-core.h |   5 +-
+>  2 files changed, 112 insertions(+), 97 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+> index 292c31de18f1..848f47d41111 100644
+> --- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
+> +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+> @@ -25,9 +25,9 @@
+>  #include "cdn-dp-core.h"
+>  #include "cdn-dp-reg.h"
+>  
+> -static inline struct cdn_dp_device *connector_to_dp(struct drm_connector *connector)
+> +static inline struct cdn_dp_device *bridge_to_dp(struct drm_bridge *bridge)
+>  {
+> -	return container_of(connector, struct cdn_dp_device, connector);
+> +	return container_of(bridge, struct cdn_dp_device, bridge);
+>  }
+>  
+>  static inline struct cdn_dp_device *encoder_to_dp(struct drm_encoder *encoder)
+> @@ -231,9 +231,9 @@ static bool cdn_dp_check_sink_connection(struct cdn_dp_device *dp)
+>  }
+>  
+>  static enum drm_connector_status
+> -cdn_dp_connector_detect(struct drm_connector *connector, bool force)
+> +cdn_dp_bridge_detect(struct drm_bridge *bridge)
+>  {
+> -	struct cdn_dp_device *dp = connector_to_dp(connector);
+> +	struct cdn_dp_device *dp = bridge_to_dp(bridge);
+>  	enum drm_connector_status status = connector_status_disconnected;
+>  
+>  	mutex_lock(&dp->lock);
+> @@ -244,41 +244,25 @@ cdn_dp_connector_detect(struct drm_connector *connector, bool force)
+>  	return status;
+>  }
+>  
+> -static void cdn_dp_connector_destroy(struct drm_connector *connector)
+> +static const struct drm_edid *
+> +cdn_dp_bridge_edid_read(struct drm_bridge *bridge, struct drm_connector *connector)
+>  {
+> -	drm_connector_unregister(connector);
+> -	drm_connector_cleanup(connector);
+> -}
+> -
+> -static const struct drm_connector_funcs cdn_dp_atomic_connector_funcs = {
+> -	.detect = cdn_dp_connector_detect,
+> -	.destroy = cdn_dp_connector_destroy,
+> -	.fill_modes = drm_helper_probe_single_connector_modes,
+> -	.reset = drm_atomic_helper_connector_reset,
+> -	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
+> -	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
+> -};
+> -
+> -static int cdn_dp_connector_get_modes(struct drm_connector *connector)
+> -{
+> -	struct cdn_dp_device *dp = connector_to_dp(connector);
+> -	int ret = 0;
+> +	struct cdn_dp_device *dp = bridge_to_dp(bridge);
+> +	const struct drm_edid *drm_edid;
+>  
+>  	mutex_lock(&dp->lock);
+> -
+> -	ret = drm_edid_connector_add_modes(connector);
+> -
+> +	drm_edid = drm_edid_read_custom(connector, cdn_dp_get_edid_block, dp);
+>  	mutex_unlock(&dp->lock);
 
-On 5/22/25 6:59 PM, Andrew Lunn wrote:
->> Would the suggested change in the previous answer be acceptable to you?
->>
->> @Kever, is there any way to know what the register values for
->> rx_delay/tx_delay actually mean in terms of picoseconds delay added by the
->> MAC maybe?
-> 
-> The problem is, what exactly do these values mean? Is it documented
-> somewhere?
+I know that the lock has been here. What does it protect here?
+
+>  
+> -	return ret;
+> +	return drm_edid;
+>  }
+>  
+>  static enum drm_mode_status
+> -cdn_dp_connector_mode_valid(struct drm_connector *connector,
+> -			    const struct drm_display_mode *mode)
+> +cdn_dp_bridge_mode_valid(struct drm_bridge *bridge,
+> +			 const struct drm_display_info *display_info,
+> +			 const struct drm_display_mode *mode)
+>  {
+> -	struct cdn_dp_device *dp = connector_to_dp(connector);
+> -	struct drm_display_info *display_info = &dp->connector.display_info;
+> +	struct cdn_dp_device *dp = bridge_to_dp(bridge);
+>  	u32 requested, actual, rate, sink_max, source_max = 0;
+>  	u8 lanes, bpc;
+>  
+> @@ -323,11 +307,6 @@ cdn_dp_connector_mode_valid(struct drm_connector *connector,
+>  	return MODE_OK;
+>  }
+>  
+> -static struct drm_connector_helper_funcs cdn_dp_connector_helper_funcs = {
+> -	.get_modes = cdn_dp_connector_get_modes,
+> -	.mode_valid = cdn_dp_connector_mode_valid,
+> -};
+> -
+>  static int cdn_dp_firmware_init(struct cdn_dp_device *dp)
+>  {
+>  	int ret;
+> @@ -360,7 +339,8 @@ static int cdn_dp_firmware_init(struct cdn_dp_device *dp)
+>  
+>  static int cdn_dp_get_sink_capability(struct cdn_dp_device *dp)
+>  {
+> -	const struct drm_display_info *info = &dp->connector.display_info;
+> +	struct drm_connector *connector = dp->connector;
+> +	const struct drm_display_info *info;
+>  	int ret;
+>  
+>  	if (!cdn_dp_check_sink_connection(dp))
+> @@ -373,10 +353,15 @@ static int cdn_dp_get_sink_capability(struct cdn_dp_device *dp)
+>  		return ret;
+>  	}
+>  
+> +	if (!connector)
+> +		return 0;
+
+Just pass connector directly as an argument.
+
+> +
+> +	info = &connector->display_info;
+> +
+>  	drm_edid_free(dp->drm_edid);
+> -	dp->drm_edid = drm_edid_read_custom(&dp->connector,
+> +	dp->drm_edid = drm_edid_read_custom(dp->connector,
+>  					    cdn_dp_get_edid_block, dp);
+> -	drm_edid_connector_update(&dp->connector, dp->drm_edid);
+> +	drm_edid_connector_update(dp->connector, dp->drm_edid);
+>  
+>  	dp->sink_has_audio = info->has_audio;
+>  
+> @@ -416,11 +401,11 @@ static int cdn_dp_enable_phy(struct cdn_dp_device *dp, struct cdn_dp_port *port)
+>  		goto err_power_on;
+>  	}
+>  
+> -	ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
+> -				  EXTCON_PROP_USB_TYPEC_POLARITY, &property);
+> -	if (ret) {
+> -		DRM_DEV_ERROR(dp->dev, "get property failed\n");
+> -		goto err_power_on;
+> +		ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
+> +					EXTCON_PROP_USB_TYPEC_POLARITY, &property);
+
+The indentation here is strange. Could you please doubltcheck it?
+
+> +		if (ret) {
+> +			DRM_DEV_ERROR(dp->dev, "get property failed\n");
+> +			goto err_power_on;
+>  	}
+>  
+>  	port->lanes = cdn_dp_get_port_lanes(port);
+> @@ -551,21 +536,8 @@ static void cdn_dp_encoder_mode_set(struct drm_encoder *encoder,
+>  				    struct drm_display_mode *adjusted)
+>  {
+>  	struct cdn_dp_device *dp = encoder_to_dp(encoder);
+> -	struct drm_display_info *display_info = &dp->connector.display_info;
+>  	struct video_info *video = &dp->video_info;
+>  
+> -	switch (display_info->bpc) {
+> -	case 10:
+> -		video->color_depth = 10;
+> -		break;
+> -	case 6:
+> -		video->color_depth = 6;
+> -		break;
+> -	default:
+> -		video->color_depth = 8;
+> -		break;
+> -	}
+> -
+
+I'd suggest to perform this part in additional step, especially if you
+keep an always-assigned dp->connector for a few commits.
+
+>  	video->color_fmt = PXL_RGB;
+>  	video->v_sync_polarity = !!(mode->flags & DRM_MODE_FLAG_NVSYNC);
+>  	video->h_sync_polarity = !!(mode->flags & DRM_MODE_FLAG_NHSYNC);
+> @@ -599,12 +571,31 @@ static void cdn_dp_audio_handle_plugged_change(struct cdn_dp_device *dp,
+>  		dp->plugged_cb(dp->codec_dev, plugged);
+>  }
+>  
+> -static void cdn_dp_encoder_enable(struct drm_encoder *encoder)
+> +static void cdn_dp_bridge_atomic_enable(struct drm_bridge *bridge, struct drm_atomic_state *state)
+>  {
+> -	struct cdn_dp_device *dp = encoder_to_dp(encoder);
+> +	struct cdn_dp_device *dp = bridge_to_dp(bridge);
+> +	struct video_info *video = &dp->video_info;
+> +	struct drm_display_info *display_info;
+>  	int ret, val;
+>  
+> -	ret = drm_of_encoder_active_endpoint_id(dp->dev->of_node, encoder);
+> +	dp->connector = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
+> +	if (!dp->connector)
+> +		return;
+> +
+> +	display_info = &dp->connector->display_info;
+> +	switch (display_info->bpc) {
+> +	case 10:
+> +		video->color_depth = 10;
+> +		break;
+> +	case 6:
+> +		video->color_depth = 6;
+> +		break;
+> +	default:
+> +		video->color_depth = 8;
+> +		break;
+> +	}
+> +
+> +	ret = drm_of_encoder_active_endpoint_id(dp->dev->of_node, &dp->encoder.encoder);
+>  	if (ret < 0) {
+>  		DRM_DEV_ERROR(dp->dev, "Could not get vop id, %d", ret);
+>  		return;
+> @@ -625,7 +616,7 @@ static void cdn_dp_encoder_enable(struct drm_encoder *encoder)
+>  
+>  	ret = cdn_dp_enable(dp);
+>  	if (ret) {
+> -		DRM_DEV_ERROR(dp->dev, "Failed to enable encoder %d\n",
+> +		DRM_DEV_ERROR(dp->dev, "Failed to enable bridge %d\n",
+>  			      ret);
+>  		goto out;
+>  	}
+> @@ -661,9 +652,9 @@ static void cdn_dp_encoder_enable(struct drm_encoder *encoder)
+>  	mutex_unlock(&dp->lock);
+>  }
+>  
+> -static void cdn_dp_encoder_disable(struct drm_encoder *encoder)
+> +static void cdn_dp_bridge_atomic_disable(struct drm_bridge *bridge, struct drm_atomic_state *state)
+>  {
+> -	struct cdn_dp_device *dp = encoder_to_dp(encoder);
+> +	struct cdn_dp_device *dp = bridge_to_dp(bridge);
+>  	int ret;
+>  
+>  	mutex_lock(&dp->lock);
+> @@ -672,7 +663,7 @@ static void cdn_dp_encoder_disable(struct drm_encoder *encoder)
+>  	if (dp->active) {
+>  		ret = cdn_dp_disable(dp);
+>  		if (ret) {
+> -			DRM_DEV_ERROR(dp->dev, "Failed to disable encoder %d\n",
+> +			DRM_DEV_ERROR(dp->dev, "Failed to disable bridge %d\n",
+>  				      ret);
+>  		}
+>  	}
+> @@ -703,13 +694,31 @@ static int cdn_dp_encoder_atomic_check(struct drm_encoder *encoder,
+>  	return 0;
+>  }
+>  
+> +static void cdn_dp_hpd_notify(struct drm_bridge *bridge,
+> +			   enum drm_connector_status status)
+> +{
+> +	struct cdn_dp_device *dp = bridge_to_dp(bridge);
+> +
+> +	schedule_work(&dp->event_work);
+> +}
+> +
+>  static const struct drm_encoder_helper_funcs cdn_dp_encoder_helper_funcs = {
+>  	.mode_set = cdn_dp_encoder_mode_set,
+> -	.enable = cdn_dp_encoder_enable,
+> -	.disable = cdn_dp_encoder_disable,
+>  	.atomic_check = cdn_dp_encoder_atomic_check,
+>  };
+>  
+> +static const struct drm_bridge_funcs cdn_dp_bridge_funcs = {
+> +	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
+> +	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+> +	.atomic_reset = drm_atomic_helper_bridge_reset,
+> +	.detect = cdn_dp_bridge_detect,
+> +	.edid_read = cdn_dp_bridge_edid_read,
+> +	.atomic_enable = cdn_dp_bridge_atomic_enable,
+> +	.atomic_disable = cdn_dp_bridge_atomic_disable,
+> +	.mode_valid = cdn_dp_bridge_mode_valid,
+> +	.hpd_notify = cdn_dp_hpd_notify,
+> +};
+> +
+>  static int cdn_dp_parse_dt(struct cdn_dp_device *dp)
+>  {
+>  	struct device *dev = dp->dev;
+> @@ -859,7 +868,7 @@ static int cdn_dp_audio_get_eld(struct device *dev, void *data,
+>  {
+>  	struct cdn_dp_device *dp = dev_get_drvdata(dev);
+>  
+> -	memcpy(buf, dp->connector.eld, min(sizeof(dp->connector.eld), len));
+> +	memcpy(buf, dp->connector->eld, min(sizeof(dp->connector->eld), len));
+
+get_eld() might be called before .atomic_enable(). I'd suggest to switch
+to DP_AUDIO helpers, which would remove a need to store dp->connector
+here. You can do converstion graciously: store connector in the probe
+path (as you create it anyway), switch to DRM_BRIDGE_OP_DP_AUDIO (should
+be relatively easy), then drop dp->connector completely.
+
+>  
+>  	return 0;
+>  }
+> @@ -1006,7 +1015,6 @@ static void cdn_dp_pd_event_work(struct work_struct *work)
+>  
+>  out:
+>  	mutex_unlock(&dp->lock);
+> -	drm_connector_helper_hpd_irq_event(&dp->connector);
+
+Don't you need to call drm_bridge_hpd_notify() here?
+
+>  }
+>  
+>  static int cdn_dp_pd_event(struct notifier_block *nb,
+> @@ -1030,9 +1038,9 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+>  {
+>  	struct cdn_dp_device *dp = dev_get_drvdata(dev);
+>  	struct drm_encoder *encoder;
+> -	struct drm_connector *connector;
+>  	struct cdn_dp_port *port;
+>  	struct drm_device *drm_dev = data;
+> +	struct drm_connector *connector;
+
+Kind of useless move. Please move it back.
+
+>  	int ret, i;
+>  
+>  	ret = cdn_dp_parse_dt(dp);
+> @@ -1053,6 +1061,15 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+>  							     dev->of_node);
+>  	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
+>  
+> +	/*
+> +	 * If we failed to find the CRTC(s) which this encoder is
+> +	 * supposed to be connected to, it's because the CRTC has
+> +	 * not been registered yet. Defer probing, and hope that
+> +	 * the required CRTC is added later.
+> +	 */
+> +	if (encoder->possible_crtcs == 0)
+> +		return -EPROBE_DEFER;
+
+I don't see this check beforehand. If this is a fix, please move it to a
+separate commit.
+
+> +
+>  	ret = drm_simple_encoder_init(drm_dev, encoder,
+>  				      DRM_MODE_ENCODER_TMDS);
+>  	if (ret) {
+> @@ -1062,26 +1079,29 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+>  
+>  	drm_encoder_helper_add(encoder, &cdn_dp_encoder_helper_funcs);
+>  
+> -	connector = &dp->connector;
+> -	connector->polled = DRM_CONNECTOR_POLL_HPD;
+> -	connector->dpms = DRM_MODE_DPMS_OFF;
+> +	dp->bridge.ops = DRM_BRIDGE_OP_DETECT |
+> +			   DRM_BRIDGE_OP_EDID |
+> +			   DRM_BRIDGE_OP_HPD;
+> +	dp->bridge.of_node = dp->dev->of_node;
+> +	dp->bridge.type = DRM_MODE_CONNECTOR_DisplayPort;
+>  
+> -	ret = drm_connector_init(drm_dev, connector,
+> -				 &cdn_dp_atomic_connector_funcs,
+> -				 DRM_MODE_CONNECTOR_DisplayPort);
+> -	if (ret) {
+> -		DRM_ERROR("failed to initialize connector with drm\n");
+> -		goto err_free_encoder;
+> -	}
+> +	ret = devm_drm_bridge_add(dev, &dp->bridge);
+> +	if (ret)
+> +		return ret;
+>  
+> -	drm_connector_helper_add(connector, &cdn_dp_connector_helper_funcs);
+> +	ret = drm_bridge_attach(encoder, &dp->bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+> +	if (ret)
+> +		return ret;
+>  
+> -	ret = drm_connector_attach_encoder(connector, encoder);
+> -	if (ret) {
+> -		DRM_ERROR("failed to attach connector and encoder\n");
+> -		goto err_free_connector;
+> +	connector = drm_bridge_connector_init(drm_dev, encoder);
+> +	if (IS_ERR(connector)) {
+> +		ret = PTR_ERR(connector);
+> +		dev_err(dp->dev, "failed to init bridge connector: %d\n", ret);
+> +		return ret;
+>  	}
+>  
+> +	drm_connector_attach_encoder(connector, encoder);
+> +
+>  	for (i = 0; i < dp->ports; i++) {
+>  		port = dp->port[i];
+>  
+> @@ -1092,7 +1112,7 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+>  		if (ret) {
+>  			DRM_DEV_ERROR(dev,
+>  				      "register EXTCON_DISP_DP notifier err\n");
+> -			goto err_free_connector;
+> +			return ret;
+>  		}
+>  	}
+>  
+> @@ -1101,24 +1121,15 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+>  	schedule_work(&dp->event_work);
+>  
+>  	return 0;
+> -
+> -err_free_connector:
+> -	drm_connector_cleanup(connector);
+> -err_free_encoder:
+> -	drm_encoder_cleanup(encoder);
+> -	return ret;
+>  }
+>  
+>  static void cdn_dp_unbind(struct device *dev, struct device *master, void *data)
+>  {
+>  	struct cdn_dp_device *dp = dev_get_drvdata(dev);
+>  	struct drm_encoder *encoder = &dp->encoder.encoder;
+> -	struct drm_connector *connector = &dp->connector;
+>  
+>  	cancel_work_sync(&dp->event_work);
+> -	cdn_dp_encoder_disable(encoder);
+>  	encoder->funcs->destroy(encoder);
+
+You've dropped drm_encoder_cleanup() from the bind path. Should it be
+dropped here too? DRM subsystem will do it for you, if I'm not mistaken.
+
+> -	connector->funcs->destroy(connector);
+>  
+>  	pm_runtime_disable(dev);
+>  	if (dp->fw_loaded)
+> @@ -1171,9 +1182,10 @@ static int cdn_dp_probe(struct platform_device *pdev)
+>  	int ret;
+>  	int i;
+>  
+> -	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
+> -	if (!dp)
+> -		return -ENOMEM;
+> +	dp = devm_drm_bridge_alloc(dev, struct cdn_dp_device, bridge,
+> +				   &cdn_dp_bridge_funcs);
+> +	if (IS_ERR(dp))
+> +		return PTR_ERR(dp);
+>  	dp->dev = dev;
+>  
+>  	match = of_match_node(cdn_dp_dt_ids, pdev->dev.of_node);
+> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.h b/drivers/gpu/drm/rockchip/cdn-dp-core.h
+> index 17498f576ce7..d2778f7a5b31 100644
+> --- a/drivers/gpu/drm/rockchip/cdn-dp-core.h
+> +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.h
+> @@ -8,6 +8,8 @@
+>  #define _CDN_DP_CORE_H
+>  
+>  #include <drm/display/drm_dp_helper.h>
+> +#include <drm/drm_bridge.h>
+> +#include <drm/drm_bridge_connector.h>
+>  #include <drm/drm_panel.h>
+>  #include <drm/drm_probe_helper.h>
+>  #include <sound/hdmi-codec.h>
+> @@ -65,7 +67,8 @@ struct cdn_dp_port {
+>  struct cdn_dp_device {
+>  	struct device *dev;
+>  	struct drm_device *drm_dev;
+> -	struct drm_connector connector;
+> +	struct drm_bridge bridge;
+> +	struct drm_connector *connector;
+>  	struct rockchip_encoder encoder;
+>  	struct drm_display_mode mode;
+>  	struct platform_device *audio_pdev;
+> -- 
+> 2.49.0
 > 
 
-Those aren't documented in Rockchip's TRM (Technical Reference Manual) 
-as far as I could tell, hence why I asked for Kever's input on that. We 
-could empirically find direct correlation to a specific value but I 
-cannot do this for every version of the IP we have in all Rockchip SoCs 
-as I only have access to a handful :)
-
->>>>> Since this has a switch on the other end, its a bit more complicated
->>>>> with RGMII delays. Normally, the MAC does nothing and passed rgmii-id
->>>>> to the PHY, and the PHY then does the delays. However, here you don't
->>>>> have a PHY. So you have the MAC add the delays. This looks O.K. I
->>>>
->>>> The switch actually supports adding delays on the port used for DSA conduit.
->>>
->>> That actually looks to be the simplest and correct solution. Set the
->>> MAC to 'rgmii-id', rx_delay and tx_delay to 0, even if they are
->>> ignored. And in the switch, also 'rgmii-id' and let it insert the 2ns
->>> delay. You can use rx-internal-delay-ps and tx-internal-delay-ps if
->>> you want, but it seems to default to sensible values.
->>>
->>
->> I don't have control on how much is inserted by the PHY as opposed to the
->> MAC, so I'm wary of using a much less precise (on paper) delay.
-> 
-> Experience i've had with this is that you don't need to be too
-> accurate. Devices generally work with 2ns.
-> 
-
-I see, I think I took this 2ns too critically. I thought we really were 
-supposed to be close to it but thanks to the tip about the RGMII spec[1] 
-we can see that the delay at transmitter needs to be between 1.2 and 2ns 
-while at the receiver it needs to be between 1 and 2ns. So "at least 
-1.5ns" granularity in the PHY is good enough for us :) (and we verified 
-it works of course :) )
-
-[1] https://etherealwake.com/2025/03/ethernet-rgmii/rgmii_2_0.pdf
-
->> I have no
->> clue if doing this in the PHY is going to put us in the center of the eye or
->> not. Thanks to Rockchip's kernel tool, we are expecting to be in the center
->> of the eye right now.
-> 
-> What exactly does the tool do? Can you run it when the 'PHY' is adding
-> the delay and see how good the eye alignment is?
-> 
-> arch$ grep -hr "tx_delay =" | sort | uniq -c
->        1 	tx_delay = <0x0>;
->        4 	tx_delay = <0x10>;
->        1 	tx_delay = <0x1a>;
->        1 	tx_delay = <0x20>;
->        3 	tx_delay = <0x21>;
->        2 	tx_delay = <0x22>;
->        5 	tx_delay = <0x24>;
->        2 	tx_delay = <0x26>;
->       15 	tx_delay = <0x28>;
->        2 	tx_delay = <0x2a>;
->       17 	tx_delay = <0x30>;
->        1 	tx_delay = <0x3a>;
->        3 	tx_delay = <0x3c>;
->        3 	tx_delay = <0x42>;
->        5 	tx_delay = <0x43>;
->        2 	tx_delay = <0x44>;
->        1 	tx_delay = <0x45>;
->        1 	tx_delay = <0x46>;
->        6 	tx_delay = <0x4f>;
-> 
-> So 0x30 is the most popular, and i expect it maps to 2ns. The 0x28
-> value is interesting, given that 0x2a is not used much. That makes me
-> think there might be a common PHY used with these boards which has a
-> small built in delay when it should not.
->   
-
-Note that Rockchip SoCs typically have integrated PHYs as well (which we 
-don't use at CHERRY but the option is there). The answer otherwise is 
-usually of the kind of "we followed the reference design, it works with 
-the DT from the evaluation board, this DT was accepted, we do the same". 
-For contributors, I don't think it's feasible to figure out whether the 
-PCB lane length matching is done properly or how much is actually 
-required except by modifying the delay by hand and find both extremes 
-where it stops working and empirically decide the eye is in the middle 
-of those (for your board, which may differ from another board of the 
-same kind).
-
->>>> I'm a bit confused by the following sentence:
->>>>
->>>> """
->>>> Normally, the MAC does nothing and passed rgmii-id
->>>> """
->>>>
->>>> is this something that the MAC driver is supposed to do or is the subsystem
->>>> handling that somehow? How do I know how/when to rewrite the phy-mode passed
->>>> to the PHY?
->>>
->>> A small number of MACs have hard coded delays. You cannot turn the
->>> delay off. So the MAC has no choice but to do the delay. 'rgmii' is
->>> simply not possible, so -EINVAL. For 'rgmii-id', if you pass that to
->>> the PHY, it will also add a delay, and 4ns in total does not work. So
->>> when the MAC is adding delays, it needs to mask out the delays it is
->>> adding before calling phy_attach() passing an rgmii mode.
->>>
->>
->> If I understand correctly, if phy-mode is rgmii-id in DT and the MAC is
->> adding the delay, I need to force PHY_INTERFACE_MODE_RGMII phy-mode when
->> attaching the PHY in the MAC device.
-> 
-> Correct. DT phy-mode describes the PCB. Does the PCB add the 2ns
-> delay.
-> 
-> Once you get to the MAC/PHY pair, what the MAC passes to the PHY is
-> about what remaining delays need adding. It could be nothing, because
-> the PCB adds the delay. It could be all of it, because neither the PCB
-> nor the MAC add the delays. It can also be nothing because the MAC has
-> already added the delays.
-> 
-
-Clear thanks. I'm not sure whether Linux already has a way for the MAC 
-to provide which delay the PHY is supposed to do? I (now) know we can 
-override the phy_mode via one of phy_attach*/phy_connect* function which 
-take a phy_interface_t as argument. I see a phy_get_internal_delay but 
-not the setter part of it. Anyway, don't want to drag this too much as I 
-don't need this anymore since the delay will be added by the PHY.
-
-> For linux, we have the policy that the PHY adds the delay, in an
-> attempt to try to make all systems the same. And most boards follow
-> this. And then we have a few systems that totally mess up delays, have
-> odd configuration knobs nobody knows what the do exactly, and put the
-> delays in the MAC.
-> 
->> Does this also mean you cannot have mixed addition of delay? E.g. having 1ns
->> from MAC and 1ns from PHY? It has to be only on one of the IC?
-> 
-> It is not recommended, because of the policy that the PHY does the
-> delay... You can, if you make use of the rx-internal-delay-ps
-> properties, assuming both the MAC and PHY support them.
-> 
-
-Thanks to your and Jakob (in private)'s explanations, I now understand 
-that this is very likely not required as I would assume HW engineers for 
-the IC would essentially allow to add some delay between 1.2ns and 2ns 
-to satisfy the RGMII v2.0 spec but there's no need to be precise or have 
-granularity. So this scenario is theoretical and could very likely be 
-due to accumulated HW mistakes (either in ICs or routing)?
-
->> In the comment at the bottom of the dt binding there's this following
->> sentence:
->>
->> # When the PCB does not implement the delays, the MAC or PHY must.  As
->> # such, this is software configuration, and so not described in Device
->> # Tree.
->>
->> Why do we have two possible locations for rx-internal-delay-ps: PHY and MAC?
-> 
-> Sometimes both can add variable delays. Sometimes it is fixed 2ns.
-> 
-> I would actually prefer that these properties were not used, because
-
-I assume we would therefore need some kind of negotiation between the 
-PHY and the MAC at the subsystem level to figure out if the PHY can do 
-the requested delay or if it should be handled by the MAC instead?
-
-> they indicate somebody messed up. If you read the RGMII standard, it
-> says a 2ns delay is required between the clock and the data. It is as
-> simple as that. If you need to fine tune it, it means one of:
-> 
-> The PCB is badly designed, care was not taken to ensure the PCB tracks
-> are the same length.
-> 
-> The MAC is badly designed, it does not add 0ns/2ns, but some other
-> delay.
-> 
-> The PHY is badly designed, it does not add 0ns/2ns, but some other
-> delay.
-> 
-
-Just need to be in the 1-2ns but otherwise I fully agree, thanks for the 
-hint of the RGMII spec that helped!
-
-Thanks for taking the time to write this all down and your patience, 
-that was all very helpful!
-
-Cheers,
-Quentin
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
