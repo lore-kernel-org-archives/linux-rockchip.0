@@ -4,51 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613E7C54ED0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 02:22:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3609C3DA6D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 07:00:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w5WUtVXnlvBozcwodA+LI2YErPdZP3dIvatwpRhEtiM=; b=Z6OYrBdPdFMdlh
-	vC/R0/Xrs4k8qat/VKI6YJBHs6LtnFVAHW0COxg4wizM/cCQkgU46xUdQ75154w2Q6lZERo6Iq0E+
-	AGQ0lzwn5kn1dTTXMTFMbbSulR2+xaKgOFcS0GTIL1VYw5RiZcdCAFS6CT5QxofOrGwvh5gYNqNxM
-	R0BEuz/BMFueMUB+lSn3cxM5vl5xDUij5/DqLjx8zt8ZOwXKIpqWZDGoiX39gGc1AGEdmWORuVmpJ
-	f2zG9e2uzEHs7y9LFzOqfAqwfmSVYDAmE0S/8miEhCBs9TAz2gEli62fJVSIiaKudCfIlLidrNv4x
-	7SQtkelzIpmOnZIsmXlw==;
+	List-Owner; bh=wYm51xCoblrt/3bQQ5mwDj3bZdmts/sf7rqC33trgGM=; b=YvzF7wKG2whhB1
+	0Czo5Of64SJs22ngfeRfw663ZZogKKR+nCDw/kSJlX249YxryFHvonCkuvZmHibWJeSKD2iRdP9f1
+	NRhdDxG4Ok9n5jBGmzH9skSt/o1FdklK/AlWnWWYLkg0lvwb7bqGQQntswUVtkKMtenw2bJHfJgjW
+	mqm5mlE68Q/lqrW7qZw4YJdnku4q+aUixKmHoNZTjgWjJMNYtavTNuskc7MMGzkpyhgwoTdshj2KJ
+	4is/UIkqIfQOA6bsur99w5r/7G273Pik1ANlX4gpOXHWJ72pMILpZFDAfn497vZWSEtGWxclx2MVU
+	j/vwW+WbYBo4po9nfsiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uII2h-00000002knx-0tHW;
-	Fri, 23 May 2025 02:21:51 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uIMOd-00000003ATF-05eq;
+	Fri, 23 May 2025 07:00:47 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uII0W-00000002kfn-3Ujv;
-	Fri, 23 May 2025 02:19:38 +0000
-Received: from pyrite.rasen.tech (fp76f176b6.tkyc001.ap.nuro.jp [118.241.118.182])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 60AAC6BE;
-	Fri, 23 May 2025 04:19:08 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1747966749;
-	bh=PffKFFTE+nkp6ihzmn+9PvhOFWysDbcyP1NsDbiB/Co=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=IBVokDvDArDrnp6uBppUlHb4X3KQj98US4AlXPaNo5O+Mah2E0cN3KLQICl5klVr0
-	 2MepZPghObA0phLARerlDWgTHhI6ZfqjR5YkoIafffhEN2j/S2DlCj2Q6BudR9S5Ei
-	 UOAX5LHu5kBRfpD491AhkPeGHjV1TLaB6qjO4Sow=
+	id 1uIMOZ-00000003ARv-2KIQ;
+	Fri, 23 May 2025 07:00:45 +0000
+Received: from localhost.localdomain (unknown [119.122.214.99])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1625f069b;
+	Fri, 23 May 2025 15:00:30 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: i@chainsx.cn
+Cc: devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	krzysztof.kozlowski@linaro.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v4 2/2] arm64: dts: rockchip: add DTs for Firefly ROC-RK3588S-PC
+Date: Fri, 23 May 2025 15:00:26 +0800
+Message-Id: <20250523070026.50263-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250519075432.2239713-3-i@chainsx.cn>
+References: <20250519075432.2239713-3-i@chainsx.cn>
 MIME-Version: 1.0
-In-Reply-To: <20250522150944.400046-4-stefan.klug@ideasonboard.com>
-References: <20250522150944.400046-2-stefan.klug@ideasonboard.com> <20250522150944.400046-4-stefan.klug@ideasonboard.com>
-Subject: Re: [PATCH 2/3] media: rkisp1: Add RKISP1_CID_SUPPORTED_PARAMS_BLOCKS control
-From: Paul Elder <paul.elder@ideasonboard.com>
-Cc: Stefan Klug <stefan.klug@ideasonboard.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-To: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Stefan Klug <stefan.klug@ideasonboard.com>, linux-media@vger.kernel.org
-Date: Fri, 23 May 2025 04:19:22 +0200
-Message-ID: <174796676223.109413.8872494365754700648@pyrite.rasen.tech>
-User-Agent: alot/0.0.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCSkpOVkMdSkxMTE9KHU1MQ1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VCQllXWRYaDxIVHRRZQVlPS0hVSktISk5MTlVKS0tVSk
+	JLS1kG
+X-HM-Tid: 0a96fbf181af03a2kunmfbc2900462617
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mz46Hjo5LzE1CBYCTgI3Vh9N
+	UR4aFA1VSlVKTE9MQkNITUhKTE1OVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpPVUJCWVdZCAFZQU9ITkM3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_191937_034998_B1403282 
-X-CRM114-Status: GOOD (  27.86  )
+X-CRM114-CacheID: sfid-20250523_000043_788953_83703EAE 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,168 +74,160 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Stefan Klug (2025-05-22 17:08:39)
-> Add a RKISP1_CID_SUPPORTED_PARAMS_BLOCKS V4L2 control to be able to
-> query the parameters blocks supported by the current kernel on the
-> current hardware from user space.
-> 
-> Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
+Hi,
 
-Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
+> <snip>
+> +		led-0 {
+> +			default-state = "on";
+> +			function = LED_FUNCTION_POWER;
+> +			gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_HIGH>;
+> +		};
+> +
+> +		led-1 {
+> +			function = LED_FUNCTION_HEARTBEAT;
+> +			gpios = <&gpio3 RK_PB2 GPIO_ACTIVE_HIGH>;
+> +			linux,default-trigger = "heartbeat";
+> +		};
 
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  2 +
->  .../platform/rockchip/rkisp1/rkisp1-params.c  | 50 ++++++++++++++++++-
->  include/uapi/linux/rkisp1-config.h            | 10 ++++
->  include/uapi/linux/v4l2-controls.h            |  6 +++
->  4 files changed, 67 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index ca952fd0829b..5f187f9efc7b 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -415,6 +415,8 @@ struct rkisp1_params {
->         spinlock_t config_lock; /* locks the buffers list 'params' */
->         struct list_head params;
->  
-> +       struct v4l2_ctrl_handler ctrls;
+From PATCH v1, led-1 is a user-led, so it would be better
+to make it off by default.
+
+Please also add `color = xxx` to these leds.
+
+> +	vcc5v0_usbdcin: regulator-vcc5v0-usbdcin {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc5v0_usbdcin";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&vcc12v_dcin>;
+> +	};
+
+The DC of this board is 12V, why is there 5V?
+
+> <snip>
+> +	vcc3v3_pcie20: regulator-vcc3v3-pcie20 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc3v3_pcie20";
+> +		enable-active-high;
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		startup-delay-us = <5000>;
+> +		gpio = <&gpio1 RK_PD7 GPIO_ACTIVE_HIGH>;
+
+Please put enable/gpio before regulator.
+
+> <snip>
+> +	vcc5v0_host: regulator-vcc5v0-host {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		gpio = <&gpio1 RK_PB6 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&vcc5v0_host_en>;
+> +		regulator-name = "vcc5v0_host";
+> +		regulator-boot-on;
+> +		regulator-always-on;
+
+Why does this regulator require always-on and boot-on?
+It will be enabled through the corresponding phy-supply.
+
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&vcc5v0_sys>;
+
+The vendor dts says it's from vcc5v0_usb?
+
+> +	vbus5v0_typec_pwr_en: vbus5v0-typec-pwr-en-regulator {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		gpio = <&gpio1 RK_PB1 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&typec5v_pwren>;
+> +		regulator-name = "vbus5v0_typec_pwr_en";
+
+Please use the regulator name from schematics.
+xxx_pwr_en is usually the name of the pinctrl.
+
+> +		regulator-boot-on;
+> +		regulator-always-on;
+
+Why does this regulator require always-on and boot-on?
+It will be enabled through the corresponding phy-supply.
+
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&vcc5v0_sys>;
+
+The vendor dts says it's from vcc5v0_usb?
+
+> +&gmac1 {
+> +	clock_in_out = "output";
+> +	phy-handle = <&rgmii_phy1>;
+> +	phy-mode = "rgmii-id";
+> +	pinctrl-0 = ...
+> +	pinctrl-names = "default";
+
+pinctrl-names should be placed before pinctrl-0
+
+> <snip>
+> +		usb_con: connector {
+> +			compatible = "usb-c-connector";
+> +			label = "USB-C";
+> +			data-role = "dual";
+> +			op-sink-microwatt = <1000000>;
+> +			power-role = "dual";
+> +			sink-pdos =
+> +				<PDO_FIXED(5000, 1000, PDO_FIXED_USB_COMM)>;
+> +			source-pdos =
+> +				<PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
+> +			try-power-role = "sink";
+
+The TYPE-C of this board does not seem to support pd power supply?
+
+> <snip>
+> +	};
+> +};
 > +
->         const struct v4l2_meta_format *metafmt;
->  
->         enum v4l2_quantization quantization;
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> index 918eb06c7465..60c9b3c46593 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> @@ -2736,6 +2736,45 @@ static int rkisp1_params_init_vb2_queue(struct vb2_queue *q,
->         return vb2_queue_init(q);
->  }
->  
-> +static int rkisp1_ctrl_init(struct rkisp1_params *params)
-> +{
-> +       int ret;
+
+Extra blank lines.
+
 > +
-> +       v4l2_ctrl_handler_init(&params->ctrls, 1);
+> +&i2c3 {
+> +	status = "okay";
+
+> <snip>
+> +		pinctrl-0 = <&pmic_pins>, <&rk806_dvs1_null>,
+> +				<&rk806_dvs2_null>, <&rk806_dvs3_null>;
+
+Align Indent.
+
+> <snip>
+> +	};
+> +};
 > +
-> +       struct v4l2_ctrl_config ctrl_config = {
-> +               .id = RKISP1_CID_SUPPORTED_PARAMS_BLOCKS,
-> +               .name = "Supported Params Blocks",
-> +               .type = V4L2_CTRL_TYPE_BITMASK,
-> +               .flags = V4L2_CTRL_FLAG_READ_ONLY,
-> +       };
+
+Extra blank lines.
+
 > +
-> +       for (unsigned int i = 0; i < ARRAY_SIZE(rkisp1_ext_params_handlers); i++) {
-> +               const struct rkisp1_ext_params_handler *block_handler;
-> +
-> +               block_handler = &rkisp1_ext_params_handlers[i];
-> +               ctrl_config.max |= BIT(i);
-> +
-> +               if ((params->rkisp1->info->features & block_handler->features) !=
-> +                   block_handler->features)
-> +                       continue;
-> +
-> +               ctrl_config.def |= BIT(i);
-> +       }
-> +
-> +       v4l2_ctrl_new_custom(&params->ctrls, &ctrl_config, NULL);
-> +
-> +       params->vnode.vdev.ctrl_handler = &params->ctrls;
-> +
-> +       if (params->ctrls.error) {
-> +               ret = params->ctrls.error;
-> +               v4l2_ctrl_handler_free(&params->ctrls);
-> +               return ret;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
->  int rkisp1_params_register(struct rkisp1_device *rkisp1)
->  {
->         struct rkisp1_params *params = &rkisp1->params;
-> @@ -2776,10 +2815,16 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
->  
->         video_set_drvdata(vdev, params);
->  
-> +       ret = rkisp1_ctrl_init(params);
-> +       if (ret) {
-> +               dev_err(rkisp1->dev, "Control initialization error %d\n", ret);
-> +               goto err_mutex;
-> +       }
-> +
->         node->pad.flags = MEDIA_PAD_FL_SOURCE;
->         ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
->         if (ret)
-> -               goto err_mutex;
-> +               goto err_ctrl;
->  
->         ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
->         if (ret) {
-> @@ -2792,6 +2837,8 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
->  
->  err_media:
->         media_entity_cleanup(&vdev->entity);
-> +err_ctrl:
-> +       v4l2_ctrl_handler_free(&params->ctrls);
->  err_mutex:
->         mutex_destroy(&node->vlock);
->         return ret;
-> @@ -2808,5 +2855,6 @@ void rkisp1_params_unregister(struct rkisp1_device *rkisp1)
->  
->         vb2_video_unregister_device(vdev);
->         media_entity_cleanup(&vdev->entity);
-> +       v4l2_ctrl_handler_free(&params->ctrls);
->         mutex_destroy(&node->vlock);
->  }
-> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-> index 2d995f3c1ca3..4fc8f221d0c4 100644
-> --- a/include/uapi/linux/rkisp1-config.h
-> +++ b/include/uapi/linux/rkisp1-config.h
-> @@ -1086,6 +1086,9 @@ enum rkisp1_ext_params_block_type {
->  #define RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE     (1U << 0)
->  #define RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE      (1U << 1)
->  
-> +/* A bitmask of parameters blocks supported on the current hardware. */
-> +#define RKISP1_CID_SUPPORTED_PARAMS_BLOCKS     (V4L2_CID_USER_RKISP1_BASE + 0x01)
-> +
->  /**
->   * struct rkisp1_ext_params_block_header - RkISP1 extensible parameters block
->   *                                        header
-> @@ -1520,6 +1523,13 @@ enum rksip1_ext_param_buffer_version {
->   * V4L2 control. If such control is not available, userspace should assume only
->   * RKISP1_EXT_PARAM_BUFFER_V1 is supported by the driver.
->   *
-> + * The read-only V4L2 control ``RKISP1_CID_SUPPORTED_PARAMS_BLOCKS`` can be used
-> + * to query the blocks supported by the current hardware. It contains a bitmask
-> + * where each bit represents the availability of the corresponding entry
-> + * from the :c:type:`rkisp1_ext_params_block_type` enum. The max value of the
-> + * control represents the blocks supported by the current kernel (independent of
-> + * the current hardware).
-> + *
->   * For each ISP block that userspace wants to configure, a block-specific
->   * structure is appended to the @data buffer, one after the other without gaps
->   * in between nor overlaps. Userspace shall populate the @data_size field with
-> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-> index 72e32814ea83..f836512e9deb 100644
-> --- a/include/uapi/linux/v4l2-controls.h
-> +++ b/include/uapi/linux/v4l2-controls.h
-> @@ -222,6 +222,12 @@ enum v4l2_colorfx {
->   */
->  #define V4L2_CID_USER_UVC_BASE                 (V4L2_CID_USER_BASE + 0x11e0)
->  
-> +/*
-> + * The base for Rockchip ISP1 driver controls.
-> + * We reserve 16 controls for this driver.
-> + */
-> +#define V4L2_CID_USER_RKISP1_BASE              (V4L2_CID_USER_BASE + 0x1220)
-> +
->  /* MPEG-class control IDs */
->  /* The MPEG controls are applicable to all codec controls
->   * and the 'MPEG' part of the define is historical */
-> -- 
-> 2.43.0
-> 
->
+> +&tsadc {
+> +	status = "okay";
+> +};
+
+> <snip>
+> +&u2phy0_otg {
+> +	status = "okay";
+> +};
+
+> +&u2phy3_host {
+> +	status = "okay";
+> +};
+
+Missing phy-supply?
+
+--
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
