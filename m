@@ -4,58 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C5CDC54ED1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 16:38:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5550C54ED0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 May 2025 17:23:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZeDc/MkwkLkB4Cb52tqkxqfDO80qsW+K4A+2mmfjr6I=; b=TNyPtllnNRPtcu
-	WdlZLXNGqRu+JlKMg1mIPuQZExSW8ptrH+cBd5z+PbCcrea1fF7IujcsEdoKy4/Z/AmLBqBWgUGzx
-	kGLApDTXq4wjjJIt/0Y+5LDjbp2405OCShH/qa1BQIqDl4wpH3R7o+JVe1XEzBSisZ2x2oyFKipCL
-	Fj53z3DvQKI/gZZIp/yNsKTYOlf9kEoV6TSk/Y/j+ocz9yqYBHEhjDL7JN6Dc1f5/BnYzVseBPkOW
-	FH1z29NvBQObkwweQa9XBEIyVfhupGOM5NdfRoyzM95toL9c5ApOqc8Nw8ZfLkWHDAF29/LyX1Xxk
-	ppw2fBxsS5cyEIwslxug==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SaAAEGxb8DOWSi6/inANQKbmCDhiV3doEwfioZurU4M=; b=fRfkus9gF/fz9e
+	JbS58E8UjVJAF99ilsY4YGVqiu+3R/GDCPsFB+ydPrScXgWzpg4NUazoFIg2/Y5Roinzntyw0ef1k
+	tvUFPl8I35Mbfx7Tv87lSQzekd5eQpMMZWl/l14mzG1Rfl0cwK/siMZGQZp153w8GQfoRJUomn90Q
+	VQg86AgR1eisJtKVyHQW4nsy/CCD2/DXpcpsieYRzzcndoMRSCkxzHIUOHr4ihzA7wGmHCz4IqpYw
+	w/JyULDZtohUcUbZ7KMhTyDy/AFn1OgN7ZtgJrR9z/eKan2PIvw47R/i4ygtJanjdXIVwC/Df6HQD
+	K8jy1Te6KbKufU7MNw5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIVPd-00000004QRC-3Wvo;
-	Fri, 23 May 2025 16:38:25 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uIW7M-00000004Wiu-1oLC;
+	Fri, 23 May 2025 17:23:36 +0000
+Received: from smtp-42ae.mail.infomaniak.ch ([2001:1600:4:17::42ae])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIU6a-00000004DWa-0Siy;
-	Fri, 23 May 2025 15:14:41 +0000
-Received: from ideasonboard.com (unknown [IPv6:2a00:6020:448c:6c00:a882:21a2:2327:ac4f])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 24EC86B5;
-	Fri, 23 May 2025 17:14:16 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1748013256;
-	bh=DmuApbSuTnNskmemCfpPj5qX6BIIZGxJXJxgJ4QzT1s=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=q6IIMDGvz7smcQ2J46gbCAl6EM+JGx1ZwDBpwEfK+7EDsaDSGEBYuBupCKuoWEsj9
-	 QxQNUnj5VW4/LPEbuHyuE6FSvh/IMWbnP3k2xM++R2Q9S8zPYoMfha38FS0zzMjZaB
-	 272Yc5YTCrVAU4hH9aXDxV3KeL/GPpaf2cjJylVA=
-From: Stefan Klug <stefan.klug@ideasonboard.com>
-Date: Fri, 23 May 2025 17:14:31 +0200
-Subject: [PATCH v3 2/3] media: rkisp1: Add
- RKISP1_CID_SUPPORTED_PARAMS_BLOCKS control
+	id 1uIVZo-00000004Rv0-0Kfq;
+	Fri, 23 May 2025 16:48:58 +0000
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4b3rhf6hnMzckZ;
+	Fri, 23 May 2025 18:48:50 +0200 (CEST)
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4b3rhf1ytWz9hN;
+	Fri, 23 May 2025 18:48:50 +0200 (CEST)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Date: Fri, 23 May 2025 18:48:42 +0200
+Subject: [PATCH v2] arm64: dts: rockchip: support Ethernet Switch adapter
+ for RK3588 Jaguar
 MIME-Version: 1.0
-Message-Id: <20250523-supported-params-and-wdr-v3-2-7283b8536694@ideasonboard.com>
-References: <20250523-supported-params-and-wdr-v3-0-7283b8536694@ideasonboard.com>
-In-Reply-To: <20250523-supported-params-and-wdr-v3-0-7283b8536694@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Stefan Klug <stefan.klug@ideasonboard.com>, 
- Paul Elder <paul.elder@ideasonboard.com>
-X-Mailer: b4 0.13.0
+Message-Id: <20250523-jaguar-mezz-eth-switch-v2-1-aced8bf6612d@cherry.de>
+X-B4-Tracking: v=1; b=H4sIAOmmMGgC/4WNQQ6CMBBFr0Jm7RjaUEFX3sOwKGWgYyKYKaJAe
+ ncrF3D5XvLf3yCQMAW4ZBsIzRx4HBLoQwbO26En5DYx6Fyb3GiFd9u/rOCD1hVp8hjePDmPpSk
+ K07XKldpAGj+FOv7s4Vud2HOYRln2n1n97N/krDDHc2NcUVHTVKfy6jyJLMeWoI4xfgHxG0Ugv
+ AAAAA==
+X-Change-ID: 20250521-jaguar-mezz-eth-switch-75445fd1c725
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>
+X-Mailer: b4 0.14.2
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250523_081440_294373_8888BAFD 
-X-CRM114-Status: GOOD (  23.39  )
+X-CRM114-CacheID: sfid-20250523_094856_270065_E34A160E 
+X-CRM114-Status: GOOD (  18.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,178 +69,280 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a RKISP1_CID_SUPPORTED_PARAMS_BLOCKS V4L2 control to be able to
-query the parameters blocks supported by the current kernel on the
-current hardware from user space.
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
-Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
-Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
+This adds support for the Ethernet Switch adapter connected through the
+mezzanine connector on RK3588 Jaguar.
 
+This adapter has a KSZ9896 Ethernet Switch with 4 1GbE Ethernet
+connectors, two user controllable LEDs, and an M12 12-pin connector
+which exposes the following signals:
+ - RS232/RS485 (max 250Kbps/500Kbps, RX pin1, TX pin2)
+ - two digital inputs (pin4 routed to GPIO3_C5 on SoC, pin5 to GPIO4_B4)
+ - two digital outputs (pin7 routed to GPIO3_D3 on SoC, pin8 to
+   GPIO3_D1)
+ - two analog inputs (pin10 to channel1 of ADS1015, pin11 to channel2)
+
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
-Changes in v3:
-- Moved the rkisp1_params_init_vb2_queue() return check back into
-  separate patch
-- Renamed rkisp1_ctrl_init to rkisp1_params_ctrl_init
-- Applied missed review comment in docs
+Note that for this to work, you need this commit:
+https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net.git/commit/?id=ba54bce747fa9e07896c1abd9b48545f7b4b31d2
+otherwise most packets are ignored by the DSA switch driver.
 
+Note that looking into downstream kernel it seems like they handle the
+absence of rx_delay and tx_delay DT properties differently than us in
+the GMAC driver.
+
+rx_delay and tx_delay default to -1 instead of 0x10/0x30 for us. For
+rgmii-{,tx,rx}id phy-mode, -1 is passed instead of 0.
+If the value is negative for the delay, then the delay circuitry is
+disabled entirely. This differs from us simply putting 0 in there (but
+still have the circuitry enabled). If that results in the same thing, I
+do not know yet.
+
+@Jakob, is this something you could check? devmem2 0xfd58c31c w 0x3c0000
+should do the trick to disable the circuitry according to the TRM?
+---
 Changes in v2:
-- Added docs improvements from review
-- Moved ctrl_config declaration to top
-- Moved rkisp1_params_init_vb2_queue() return check into this patch as
-  the previous patch got dropped
-- Call rkisp1_ctrl_init() after media_entity_pads_init() for easier
-  error handling
+- removed patch 1 adding ethernet1 alias to jaguar base DTS,
+- added ethernet1 alias in the DTSO,
+- change rgmii phy-mode to rgmii-id and have the delay in the PHY
+  instead, as suggested by Andrew,
+- Link to v1: https://lore.kernel.org/r/20250521-jaguar-mezz-eth-switch-v1-0-9b5c48ebb867@cherry.de
 ---
- .../media/platform/rockchip/rkisp1/rkisp1-common.h |  2 +
- .../media/platform/rockchip/rkisp1/rkisp1-params.c | 49 +++++++++++++++++++++-
- include/uapi/linux/rkisp1-config.h                 | 11 +++++
- include/uapi/linux/v4l2-controls.h                 |  6 +++
- 4 files changed, 67 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/Makefile              |   5 +
+ .../rockchip/rk3588-jaguar-ethernet-switch.dtso    | 192 +++++++++++++++++++++
+ 2 files changed, 197 insertions(+)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index ca952fd0829b..5f187f9efc7b 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -415,6 +415,8 @@ struct rkisp1_params {
- 	spinlock_t config_lock; /* locks the buffers list 'params' */
- 	struct list_head params;
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 3e8771ef69ba1c1428117cc2ae29b84e13523e21..6d5ad354b77de1c3f995b119f97541f9c2cc9dbd 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -151,6 +151,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-firefly-itx-3588j.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-friendlyelec-cm3588-nas.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-h96-max-v58.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-ethernet-switch.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-pre-ict-tester.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-mnt-reform2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6.dtb
+@@ -222,6 +223,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-wifi.dtb
+ rk3588-edgeble-neu6b-wifi-dtbs := rk3588-edgeble-neu6b-io.dtb \
+ 	rk3588-edgeble-neu6a-wifi.dtbo
  
-+	struct v4l2_ctrl_handler ctrls;
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-ethernet-switch.dtb
++rk3588-jaguar-ethernet-switch-dtbs := rk3588-jaguar.dtb \
++	rk3588-jaguar-ethernet-switch.dtbo
 +
- 	const struct v4l2_meta_format *metafmt;
- 
- 	enum v4l2_quantization quantization;
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-index 24a8de697f2b..4db0ca8d86db 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-@@ -2736,6 +2736,44 @@ static int rkisp1_params_init_vb2_queue(struct vb2_queue *q,
- 	return vb2_queue_init(q);
- }
- 
-+static int rkisp1_params_ctrl_init(struct rkisp1_params *params)
-+{
-+	struct v4l2_ctrl_config ctrl_config = {
-+		.id = RKISP1_CID_SUPPORTED_PARAMS_BLOCKS,
-+		.name = "Supported Params Blocks",
-+		.type = V4L2_CTRL_TYPE_BITMASK,
-+		.flags = V4L2_CTRL_FLAG_READ_ONLY,
-+	};
-+	int ret;
-+
-+	v4l2_ctrl_handler_init(&params->ctrls, 1);
-+
-+	for (unsigned int i = 0; i < ARRAY_SIZE(rkisp1_ext_params_handlers); i++) {
-+		const struct rkisp1_ext_params_handler *block_handler;
-+
-+		block_handler = &rkisp1_ext_params_handlers[i];
-+		ctrl_config.max |= BIT(i);
-+
-+		if ((params->rkisp1->info->features & block_handler->features) !=
-+		    block_handler->features)
-+			continue;
-+
-+		ctrl_config.def |= BIT(i);
-+	}
-+
-+	v4l2_ctrl_new_custom(&params->ctrls, &ctrl_config, NULL);
-+
-+	params->vnode.vdev.ctrl_handler = &params->ctrls;
-+
-+	if (params->ctrls.error) {
-+		ret = params->ctrls.error;
-+		v4l2_ctrl_handler_free(&params->ctrls);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
- int rkisp1_params_register(struct rkisp1_device *rkisp1)
- {
- 	struct rkisp1_params *params = &rkisp1->params;
-@@ -2781,15 +2819,23 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
- 	if (ret)
- 		goto err_media;
- 
-+	ret = rkisp1_params_ctrl_init(params);
-+	if (ret) {
-+		dev_err(rkisp1->dev, "Control initialization error %d\n", ret);
-+		goto err_media;
-+	}
-+
- 	ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
- 	if (ret) {
- 		dev_err(rkisp1->dev,
- 			"failed to register %s, ret=%d\n", vdev->name, ret);
--		goto err_media;
-+		goto err_ctrl;
- 	}
- 
- 	return 0;
- 
-+err_ctrl:
-+	v4l2_ctrl_handler_free(&params->ctrls);
- err_media:
- 	media_entity_cleanup(&vdev->entity);
- 	mutex_destroy(&node->vlock);
-@@ -2806,6 +2852,7 @@ void rkisp1_params_unregister(struct rkisp1_device *rkisp1)
- 		return;
- 
- 	vb2_video_unregister_device(vdev);
-+	v4l2_ctrl_handler_free(&params->ctrls);
- 	media_entity_cleanup(&vdev->entity);
- 	mutex_destroy(&node->vlock);
- }
-diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-index 2d995f3c1ca3..5ca4d5961c5b 100644
---- a/include/uapi/linux/rkisp1-config.h
-+++ b/include/uapi/linux/rkisp1-config.h
-@@ -1086,6 +1086,9 @@ enum rkisp1_ext_params_block_type {
- #define RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE	(1U << 0)
- #define RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE	(1U << 1)
- 
-+/* A bitmask of parameters blocks supported on the current hardware. */
-+#define RKISP1_CID_SUPPORTED_PARAMS_BLOCKS	(V4L2_CID_USER_RKISP1_BASE + 0x01)
-+
- /**
-  * struct rkisp1_ext_params_block_header - RkISP1 extensible parameters block
-  *					   header
-@@ -1520,6 +1523,14 @@ enum rksip1_ext_param_buffer_version {
-  * V4L2 control. If such control is not available, userspace should assume only
-  * RKISP1_EXT_PARAM_BUFFER_V1 is supported by the driver.
-  *
-+ * The read-only V4L2 control ``RKISP1_CID_SUPPORTED_PARAMS_BLOCKS`` can be used
-+ * to query the blocks supported by the device. It contains a bitmask where each
-+ * bit represents the availability of the corresponding entry from the
-+ * :c:type:`rkisp1_ext_params_block_type` enum. The current and default values
-+ * of the control represents the blocks supported by the device instance, while
-+ * the maximum value represents the blocks supported by the kernel driver,
-+ * independently of the device instance.
-+ *
-  * For each ISP block that userspace wants to configure, a block-specific
-  * structure is appended to the @data buffer, one after the other without gaps
-  * in between nor overlaps. Userspace shall populate the @data_size field with
-diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-index 72e32814ea83..f836512e9deb 100644
---- a/include/uapi/linux/v4l2-controls.h
-+++ b/include/uapi/linux/v4l2-controls.h
-@@ -222,6 +222,12 @@ enum v4l2_colorfx {
-  */
- #define V4L2_CID_USER_UVC_BASE			(V4L2_CID_USER_BASE + 0x11e0)
- 
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-pre-ict-tester.dtb
+ rk3588-jaguar-pre-ict-tester-dtbs := rk3588-jaguar.dtb \
+ 	rk3588-jaguar-pre-ict-tester.dtbo
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar-ethernet-switch.dtso b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-ethernet-switch.dtso
+new file mode 100644
+index 0000000000000000000000000000000000000000..4d5c3249121c0483d19dcc3d51dfd57d7ce2c8ee
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-ethernet-switch.dtso
+@@ -0,0 +1,192 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
-+ * The base for Rockchip ISP1 driver controls.
-+ * We reserve 16 controls for this driver.
++ * Copyright (c) 2025 Cherry Embedded Solutions GmbH
++ *
++ * Device Tree Overlay for the Ethernet Switch adapter for the Mezzanine
++ * connector on RK3588 Jaguar.
++ *
++ * This adapter has a KSZ9896 Ethernet Switch with 4 1GbE Ethernet connectors,
++ * two user controllable LEDs, and an M12 12-pin connector which exposes the
++ * following signals:
++ *  - RS232/RS485 (max 250Kbps/500Kbps, RX pin1, TX pin2)
++ *  - two digital inputs (pin4 routed to GPIO3_C5 on SoC, pin5 to GPIO4_B4)
++ *  - two digital outputs (pin7 routed to GPIO3_D3 on SoC, pin8 to GPIO3_D1)
++ *  - two analog inputs (pin10 to channel1 of ADS1015, pin11 to channel2)
++ *
++ * RK3588 Jaguar can be powered entirely through the adapter via the M8 3-pin
++ * connector (12-24V).
 + */
-+#define V4L2_CID_USER_RKISP1_BASE		(V4L2_CID_USER_BASE + 0x1220)
 +
- /* MPEG-class control IDs */
- /* The MPEG controls are applicable to all codec controls
-  * and the 'MPEG' part of the define is historical */
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/clock/rockchip,rk3588-cru.h>
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/leds/common.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++
++&{/} {
++	aliases {
++		ethernet1 = "/ethernet@fe1c0000";
++	};
++
++	mezzanine-leds {
++		compatible = "gpio-leds";
++		pinctrl-names = "default";
++		pinctrl-0 = <&led_usr1_pin &led_usr2_pin>;
++
++		led-1 {
++			gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
++			label = "USR1";
++		};
++
++		led-2 {
++			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
++			label = "USR2";
++		};
++	};
++};
++
++&gmac1 {
++	clock_in_out = "output";
++	phy-mode = "rgmii-id";
++	pinctrl-names = "default";
++	pinctrl-0 = <&gmac1_rx_bus2
++		     &gmac1_tx_bus2
++		     &gmac1_rgmii_clk
++		     &gmac1_rgmii_bus
++		     &eth1_pins>;
++	rx_delay = <0x0>;
++	tx_delay = <0x0>;
++	status = "okay";
++
++	fixed-link {
++		speed = <1000>;
++		full-duplex;
++	};
++};
++
++&i2c1 {
++	#address-cells = <1>;
++	/* ADS1015 can handle high-speed (HS) mode (up to 3.4MHz) on I2C bus,
++	   but SOC can handle only up to 400kHz. */
++	clock-frequency = <400000>;
++	#size-cells = <0>;
++	status = "okay";
++
++	adc@48 {
++		compatible = "ti,ads1015";
++		reg = <0x48>;
++		#address-cells = <1>;
++		interrupt-parent = <&gpio3>;
++		interrupts = <RK_PC7 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-0 = <&adc_alert>;
++		pinctrl-names = "default";
++		#io-channel-cells = <1>;
++		#size-cells = <0>;
++
++		channel@1 {
++			reg = <5>; /* Single-ended between AIN1 and GND */
++			ti,datarate = <0>;
++			ti,gain = <5>;
++		};
++
++		channel@2 {
++			reg = <6>; /* Single-ended between AIN2 and GND */
++			ti,datarate = <0>;
++			ti,gain = <5>;
++		};
++	};
++
++	switch@5f {
++		compatible = "microchip,ksz9896";
++		reg = <0x5f>;
++		interrupt-parent = <&gpio3>;
++		interrupts = <RK_PB7 IRQ_TYPE_EDGE_FALLING>; /* ETH_INTRP_N */
++		pinctrl-0 = <&eth_reset_n &eth_intrp_n>;
++		pinctrl-names = "default";
++		reset-gpios = <&gpio3 RK_PB6 GPIO_ACTIVE_LOW>; /* ETH_RESET */
++		microchip,synclko-disable; /* CLKO_25_125 only routed to TP1 */
++
++		ethernet-ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			lan1: port@0 {
++				reg = <0>;
++				label = "ETH1";
++			};
++
++			lan2: port@1 {
++				reg = <1>;
++				label = "ETH2";
++			};
++
++			lan3: port@2 {
++				reg = <2>;
++				label = "ETH3";
++			};
++
++			lan4: port@3 {
++				reg = <3>;
++				label = "ETH4";
++			};
++
++			port@5 {
++				reg = <5>;
++				ethernet = <&gmac1>;
++				label = "CPU";
++				phy-mode = "rgmii-id";
++				rx-internal-delay-ps = <2000>;
++				tx-internal-delay-ps = <2000>;
++
++				fixed-link {
++					speed = <1000>;
++					full-duplex;
++				};
++			};
++		};
++	};
++};
++
++&pinctrl {
++	adc {
++		adc_alert: adc-alert-irq {
++			rockchip,pins =
++				<3 RK_PC7 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++
++	ethernet {
++		eth_intrp_n: eth-intrp-n {
++			rockchip,pins =
++				<3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		eth_reset_n: eth-reset-n {
++			rockchip,pins =
++				<3 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	leds {
++		led_usr1_pin: led-usr1-pin {
++			rockchip,pins =
++				<1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
++		led_usr2_pin: led-usr2-pin {
++			rockchip,pins =
++				<3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
++};
++
++&uart9 {
++	/* GPIO3_D0/EN_RS485_MODE for switching between RS232 and RS485 */
++	pinctrl-0 = <&uart9m2_xfer &uart9m2_rtsn>;
++	pinctrl-names = "default";
++	linux,rs485-enabled-at-boot-time;
++	status = "okay";
++};
 
+---
+base-commit: 4a95bc121ccdaee04c4d72f84dbfa6b880a514b6
+change-id: 20250521-jaguar-mezz-eth-switch-75445fd1c725
+
+Best regards,
 -- 
-2.43.0
+Quentin Schulz <quentin.schulz@cherry.de>
 
 
 _______________________________________________
