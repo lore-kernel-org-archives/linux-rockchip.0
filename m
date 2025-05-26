@@ -4,43 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B06AC54FB3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 May 2025 17:07:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A175C5B542
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 May 2025 17:14:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RotPDlPQncOvpT03gsu8110SVHRiXmDmNtapKvayP6o=; b=M06K/xyAlpnrVD
-	48pErkPtUu0mWzY2dJyt9ti07uoSkX0gbDLcaU8MunVaJGdLlW29JBdh1Q2Qc5g8oHmgqjmztB1tY
-	46neFAxRQOm1FkLRGuTaiI+OVmSeL+OS7hH0ep8kEWq+ELEjYLNpz2O5JPvS5u4qesGQNa9Iix6VI
-	bWpRVyRmVOpMuLLvPsve4TRAXJpfTTKfFewpcgvorFJNzDGaHugEWOMjgowi96fPPQgAptZDeAj4R
-	kZop5/pGo+cmUOwocTYtzY15jG/4mc0+/5+roXJg+AOFVryDMoU34QNVJgkxqju5vobwPXU0pUS0r
-	5qmo6EBCMc3axQvcLUdQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YF/22emb++bQv7A+FZhGGoAygl/GCjirZIGPV0tqR7g=; b=1LF7Y8Lz8Jg/UD
+	E34stYRDBdo8RpqfEYbPVa0ULrmmzC2Y5jXiImKJpYBKQoCRQh0QoFBpxVNO8jdVK135jtTtM1f+Y
+	K+nESeyhQnpX6k+OsCJ6WaU5/SheAJtpCXS3LsHp18m/Zne5VICcaTztTu1+WkGrZJtT5tN1dc998
+	xLee/VEfcs/WHoMKUWF4MGu7MCUDh9CDlskm92ygJ4Jt7NGSkP53Q2TO5TCajTLDMlz8e6puZMcq6
+	wYr2hMTuUUgsK0osd4sC7ao1cycmbxHET47wtmybZVcspuAJPoj7aLklfK6ZCK3dGIyWqzlTs1GCF
+	to8/YYVvnCDnrSiLxbLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJbIi-00000009Hsg-0Ej0;
-	Mon, 26 May 2025 17:07:48 +0000
-Received: from smtp-8faa.mail.infomaniak.ch ([2001:1600:4:17::8faa])
+	id 1uJbP4-00000009Igv-0ls1;
+	Mon, 26 May 2025 17:14:22 +0000
+Received: from smtp-8fac.mail.infomaniak.ch ([83.166.143.172])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJbGY-00000009HXR-0d3x;
-	Mon, 26 May 2025 17:05:36 +0000
+	id 1uJbGZ-00000009HXZ-1AYx;
+	Mon, 26 May 2025 17:05:37 +0000
 Received: from smtp-3-0001.mail.infomaniak.ch (unknown [IPv6:2001:1600:4:17::246c])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4b5hwT0xxFzcBF;
-	Mon, 26 May 2025 19:05:29 +0200 (CEST)
-Received: from unknown by smtp-3-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4b5hwR6dDXzvWr;
-	Mon, 26 May 2025 19:05:27 +0200 (CEST)
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4b5hwW2rvszbGf;
+	Mon, 26 May 2025 19:05:31 +0200 (CEST)
+Received: from unknown by smtp-3-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4b5hwV2x1nz4kJ;
+	Mon, 26 May 2025 19:05:30 +0200 (CEST)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Subject: [PATCH 0/4] rockchip: rk8xx: allow to customize PMIC reset method
- on RK806
-Date: Mon, 26 May 2025 19:05:14 +0200
-Message-Id: <20250526-rk8xx-rst-fun-v1-0-ea894d9474e0@cherry.de>
+Date: Mon, 26 May 2025 19:05:16 +0200
+Subject: [PATCH 2/4] mfd: rk8xx-core: allow to customize RK806 reset method
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAEqfNGgC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI1MDUyMz3aJsi4oK3aLiEt200jzdNCMzw2QTgySzFINkJaCegqLUtMwKsHn
- RsbW1AKpXPrRfAAAA
-X-Change-ID: 20250526-rk8xx-rst-fun-f261c40b6d0c
+Message-Id: <20250526-rk8xx-rst-fun-v1-2-ea894d9474e0@cherry.de>
+References: <20250526-rk8xx-rst-fun-v1-0-ea894d9474e0@cherry.de>
+In-Reply-To: <20250526-rk8xx-rst-fun-v1-0-ea894d9474e0@cherry.de>
 To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
@@ -52,9 +49,8 @@ Cc: Lukasz Czechowski <lukasz.czechowski@thaumatec.com>,
 X-Mailer: b4 0.14.2
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250526_100534_343936_293A43AC 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250526_100535_461746_28629E9A 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,48 +67,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This allows to customize the PMIC reset method (also called RST_FUN) on
-RK806 PMIC from Rockchip, mainly found on RK3588 devices.
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
-Although RK809 and RK817 also have this feature, this isn't implementing
-the feature for them.
+The RK806 PMIC (and RK809, RK817; but those aren't handled here) has a
+bitfield for configuring the restart/reset behavior (which I assume
+Rockchip calls "function") whenever the PMIC is reset (at least by
+software; c.f. DEV_RST in the datasheet).
 
-Finally, this is required on the two RK3588 devices from Theobroma as
-U-Boot changes the silicon-default (which is suitable for us) to
-something that breaks our companion microcontroller's reboot detection
-which breaks a bunch of assumptions in the MCU FW code.
+For RK806, the following values are possible for RST_FUN:
 
-To validate this works on those devices do the following:
+0b00 means "restart PMU"
+0b01 means "Reset all the power off reset registers, forcing
+	the state to switch to ACTIVE mode"
+0b10 means "Reset all the power off reset registers, forcing
+	the state to switch to ACTIVE mode, and simultaneously
+	pull down the RESETB PIN for 5mS before releasing"
+0b11 means the same as for 0b10 just above.
 
-On Tiger:
-i2cset -y -f 6 0x6f 0x9 0x62
-On Jaguar:
-i2cset -y -f 0 0x6f 0x9 0x62
+This adds the appropriate logic in the driver to parse the new
+rockchip,rst-fun DT property to pass this information.
 
-You hear a nice (loud :) ) beep, then reboot and it should stop right
-before entering U-Boot TPL again.
+If it is missing, the register is left untouched and relies either on
+the silicon default or on whatever was set earlier in the boot stages
+(e.g. the bootloader).
 
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
-Quentin Schulz (4):
-      dt-bindings: mfd: rk806: allow to customize PMIC reset method
-      mfd: rk8xx-core: allow to customize RK806 reset method
-      arm64: dts: rockchip: force PMIC reset behavior to restart PMU on RK3588 Jaguar
-      arm64: dts: rockchip: force PMIC reset behavior to restart PMU on RK3588 Tiger
+ drivers/mfd/rk8xx-core.c  | 15 +++++++++++++++
+ include/linux/mfd/rk808.h |  2 ++
+ 2 files changed, 17 insertions(+)
 
- .../devicetree/bindings/mfd/rockchip,rk806.yaml    | 24 ++++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts     |  1 +
- arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi     |  1 +
- drivers/mfd/rk8xx-core.c                           | 15 ++++++++++++++
- include/linux/mfd/rk808.h                          |  2 ++
- 5 files changed, 43 insertions(+)
----
-base-commit: 0ff41df1cb268fc69e703a08a57ee14ae967d0ca
-change-id: 20250526-rk8xx-rst-fun-f261c40b6d0c
+diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
+index 71c2b80a4678d627e86cfbec8135f08e262559d3..c59cda7709c01d938870795c55bd1ea2b541b006 100644
+--- a/drivers/mfd/rk8xx-core.c
++++ b/drivers/mfd/rk8xx-core.c
+@@ -720,12 +720,27 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
+ 		nr_cells = ARRAY_SIZE(rk805s);
+ 		break;
+ 	case RK806_ID:
++		u32 rst_fun;
++
+ 		rk808->regmap_irq_chip = &rk806_irq_chip;
+ 		pre_init_reg = rk806_pre_init_reg;
+ 		nr_pre_init_regs = ARRAY_SIZE(rk806_pre_init_reg);
+ 		cells = rk806s;
+ 		nr_cells = ARRAY_SIZE(rk806s);
+ 		dual_support = IRQF_SHARED;
++
++		ret = device_property_read_u32(dev, "rockchip,rst-fun", &rst_fun);
++		if (ret) {
++			dev_dbg(dev,
++				"rockchip,rst-fun property missing, not setting RST_FUN\n");
++			break;
++		}
++
++		ret = regmap_update_bits(rk808->regmap, RK806_SYS_CFG3,
++					 RK806_RST_FUN_MSK,
++					 FIELD_PREP(RK806_RST_FUN_MSK, rst_fun));
++		if (ret)
++			return dev_err_probe(dev, ret, "RST_FUN write err\n");
+ 		break;
+ 	case RK808_ID:
+ 		rk808->regmap_irq_chip = &rk808_irq_chip;
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index 69cbea78b430b562a23d995263369d475daa6287..28170ee08898ca59c76a741a1d42763a42b72380 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -812,6 +812,8 @@ enum rk806_pin_dr_sel {
+ #define RK806_INT_POL_H			BIT(1)
+ #define RK806_INT_POL_L			0
+ 
++/* SYS_CFG3 */
++#define RK806_RST_FUN_MSK		GENMASK(7, 6)
+ #define RK806_SLAVE_RESTART_FUN_MSK	BIT(1)
+ #define RK806_SLAVE_RESTART_FUN_EN	BIT(1)
+ #define RK806_SLAVE_RESTART_FUN_OFF	0
 
-Best regards,
 -- 
-Quentin Schulz <quentin.schulz@cherry.de>
+2.49.0
 
 
 _______________________________________________
