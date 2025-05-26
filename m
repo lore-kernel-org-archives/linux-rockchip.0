@@ -4,83 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4400BC54F30
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 May 2025 02:02:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EA1EC5B542
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 May 2025 06:26:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=T+NzXedzAn+b2olqIl3mg9kjzWFMcGh858+wZJmokSk=; b=gd6pFgguJvbUQY
-	gxf+0dvwoDryqh48pGC4Zw+3HR8ZwunmY5bBsaoabDbfo2WcFBTpTLGfM7pOqOrOcpXf+5wQBWqvP
-	mAN+Fcp+ixh6MTZxUpohF2tNU3xr0oHDdyM1Qk8+w4VFM06A+wfzTJCNBehfceHuSE9uM9Det4+7s
-	DyM/b/xTtsH7Oe1bfA/WtbyAbCf+RAOthE6/6G9eIq2fK4TPZtCrKRN2/qUs5FYFaTIq16Q69ff/i
-	RNVVGr7zYhQ19FKIqlVGtiENf7U+MrQ/kGrqMWjOjV8R2f+7LURlejBoQOmA+4A9AfXi7tu8NxdAw
-	KhtZZLZW54/ATGGDF7xQ==;
+	List-Owner; bh=8bqClWbSEmo2jmH0CdPytCuzU1ov/rNiXNzWT2IoO5U=; b=nmlZLbHaJJmTZQ
+	zWvYhHIt/WMRYul/jT+pLpyqj1RcyNoa6rXpSkL51wOlCXUoGpgIqM/7LyN3X6X1+ItsndjDFnsPN
+	O/d13rD1Lwr8nbWnPZN/wgcZpqixmOBvuCaVJVtLnLje9UhgNumbLkah+ZVj+GS8XBIOkDAUkrK/d
+	1z4W2sZBCspRQlESaUfGy/HEJmm58dKZaAnJaTOUHxIfKMJTcqTPaa4hAfowGa49+s54jAh/idlA7
+	G8abxLy51jVB1f4nHczFUvY4plpGQrsKacMOIqLlHDOfy0kbj97wJ0Ur3gFtBZ4Id0P+6bC6Z7vBF
+	cx5NMt39AoTMBqMCxU4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJNAl-00000007wFl-0l1v;
-	Mon, 26 May 2025 02:02:39 +0000
-Received: from smtpbgsg2.qq.com ([54.254.200.128])
+	id 1uJRHq-00000008Bvp-44xZ;
+	Mon, 26 May 2025 06:26:14 +0000
+Received: from mail-m128225.netease.com ([103.209.128.225])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJN8c-00000007w8o-1wVn;
-	Mon, 26 May 2025 02:00:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1748224757;
-	bh=sChjnz3feZFvWyNyBBV/ChTfvU6U/f+UOVHotNV47zs=;
-	h=From:To:Subject:Date:Message-Id;
-	b=l8LPU9ohrxUzo8CKMWaIQgwopRxBybEcjvVcV+zysweakpU8F3DZpStRBRbi/Y/fq
-	 ugnD4NO/fvIJNDObPxWWz/m2ntSTzyA1Q7Xa5rex5S0SkzoM6/hplbV0Afw8D93NRz
-	 Mj4V2N2yT1Ihm8pIX4dM/6t54vq6l6PQjlD+BeR0=
-X-QQ-mid: esmtpgz11t1748224755t5a444bdf
-X-QQ-Originating-IP: YmnDtwGOyJXaeiI+4J0/OlWIfmc02uUidzVxFPmFi9k=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 26 May 2025 09:59:12 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 11916620477028258212
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Sandy Huang <hjc@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org,
+	id 1uJRHm-00000008Bq0-3Krc;
+	Mon, 26 May 2025 06:26:12 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1660c015a;
+	Mon, 26 May 2025 14:26:00 +0800 (GMT+08:00)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: zhangqing@rock-chips.com,
+	mkl@pengutronix.de,
+	kernel@pengutronix.de,
+	mailhol.vincent@wanadoo.fr,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	cl@rock-chips.com,
+	kever.yang@rock-chips.com
+Cc: linux-can@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH] drm/rockchip: lvds: Convert to drm bridge
-Date: Mon, 26 May 2025 09:58:34 +0800
-Message-Id: <20250526015834.102-1-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: Nec0PqG26E9wcPYeyCpdNquLWbVB0QBfauc3uPvmSzxI3H4iGsgp/ohz
-	TiSe+dCf6mo8kP0xCv5HY4me0+y9I79oBj1G5Xq6Dd4+YE0hHuHeMmRPhx0gVmcPJnR9qLt
-	9fEwSyd1dnY1hyZcynkTYUUTAwRcbnyBv2f5YsfW2p7ecJSlSa4KzMdQ71cY/4b3E9BLfSm
-	LoTJFw7xrxjzFImtsB+3Pvmydc+VL+jzTlw00I6Oa+L7fAdRj0nhir8lCbXMwXZEKUkVZ+x
-	LSwxoV6I5gPgCEfFQoj3mzAhjY7PlIg1lwkZpLNGD6Z7i2Gi+vgvaqd074clFTRHb4POOy7
-	SfzXHrLshDQq3t4vZjmvuXi4ZShGWCFUSj3pbOP2dM0hX3qYZC9y8jkPySPpi/gQFQWG3Wj
-	6Z21u6ZLd9z8Gd09/0pw5SDFJPNOOZu2qvo7He3hQRIStX1/A9I6yvWsjTqgQ2doUqpLJFC
-	g+zWjiEnSTHlzreLun0jxSZ68eL9SYk9tI/xZY7MCBMdKJufeGvMw16veVgX2C1OKRI/iyQ
-	+e07CzASwLx/c/6M2xHbF3pIpZ5D92Dl2xgSICrZmkVGPoqS2iWDVn4VDxqAo8fqfF4m5Ae
-	b+lLcHnybzloPMlqvBykpCZXzQ8uDZo/AzvnP9ohjvwctjtrb7tOOxhy4t/ce6IsPdfOSNo
-	OTVWm22aU7v3S+3voQH61UqcKsxE6jZkHbjtAoqRVo46xNUTbrjUW2PEO8Ed/zpXzttgBtX
-	cEiY+LqRp6c8IPVkJIcUm+vJmUTuF6WUgZ4VWIxCFMRcy36L7fg7Y6ZOWcXXQ/kcllX2A0v
-	D+XuM53BPd9xN4Pl4YUP0KxBgDqTAYLfV7ZuTzYcOkm9eVT+jh/PqCmpJf/f31CELDVGUeb
-	VOtPD2PXr8n0yAXEhiDd0/OPIk7FAM4w3fkj6W/qx0Yk11wTsU40NxGle0VG650CIqNdV8D
-	+r/FL7FR3rfEIzg==
-X-QQ-XMRINFO: MSVp+SPm3vtS1Vd6Y4Mggwc=
-X-QQ-RECHKSPAM: 0
+	devicetree@vger.kernel.org
+Subject: [PATCH v6 0/4] rockchip: add can for RK3576 Soc
+Date: Mon, 26 May 2025 14:25:55 +0800
+Message-Id: <20250526062559.2061311-1-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhlLSlYZHk1NTEtIGkhOHk9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+X-HM-Tid: 0a970b44ff8b03a3kunm902b49ed4a332d
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PFE6Hgw6MDE0Og40ViENKiMR
+	HigwFCtVSlVKTE9DSU9LTE1JSU5KVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUlDSU43Bg++
+DKIM-Signature: a=rsa-sha256;
+	b=Uwr3msEKJ8hrOXUNf0OS1lAQsZf/fqwM9a+9WoTz6+M6zGwCZalkAUXq1Xl2Uw+qvsxpHtSyiAJYL1svVhTiFf4k8u2aIruSbsZs+/KmS9U5GWP13z/3zzIL3oXar2sr3rw5eITYQ3C2h0m9R2IALsXO3ezqYTe+P3ZSaUfF8wE=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=PLZ0qwoosUUE5XwgBZkpDsN7ujf59+z2ZeMIful5s1Q=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250525_190026_877128_ABFBD5A7 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20250525_232611_188991_9D66A25A 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,158 +78,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+rk3576 can is a new controller,new register layout and Bit position
+definition:
+Support CAN and CANFD protocol.
+Support Dma.
 
-Convert it to drm bridge driver, it will be convenient for us to
-migrate the connector part to the display driver later.
+There are major differences from the previous rk3568.
+All errata on the rk3568 have been fixed and redesigned.
 
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
- drivers/gpu/drm/rockchip/rockchip_lvds.c | 68 ++++++++++--------------
- 1 file changed, 29 insertions(+), 39 deletions(-)
+Change in V6:
+[PATCH v6 1/4]: Fix dma is support only for rk3576.
+[PATCH v6 2/4]: Fix the compilation warning.
+[PATCH v6 3/4]: Fix the compilation warning.
+[PATCH v6 4/4]: Fix the compilation warning.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-index a673779de3d2..2411260db51d 100644
---- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-@@ -56,14 +56,13 @@ struct rockchip_lvds {
- 	struct drm_device *drm_dev;
- 	struct drm_panel *panel;
- 	struct drm_bridge *bridge;
--	struct drm_connector connector;
- 	struct rockchip_encoder encoder;
- 	struct dev_pin_info *pins;
- };
- 
--static inline struct rockchip_lvds *connector_to_lvds(struct drm_connector *connector)
-+static inline struct rockchip_lvds *brige_to_lvds(struct drm_bridge *bridge)
- {
--	return container_of(connector, struct rockchip_lvds, connector);
-+	return (struct rockchip_lvds *)bridge->driver_private;
- }
- 
- static inline struct rockchip_lvds *encoder_to_lvds(struct drm_encoder *encoder)
-@@ -106,25 +105,21 @@ static inline int rockchip_lvds_name_to_output(const char *s)
- 	return -EINVAL;
- }
- 
--static const struct drm_connector_funcs rockchip_lvds_connector_funcs = {
--	.fill_modes = drm_helper_probe_single_connector_modes,
--	.destroy = drm_connector_cleanup,
--	.reset = drm_atomic_helper_connector_reset,
--	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
--	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
--};
--
--static int rockchip_lvds_connector_get_modes(struct drm_connector *connector)
-+static int
-+rockchip_lvds_bridge_get_modes(struct drm_bridge *bridge, struct drm_connector *connector)
- {
--	struct rockchip_lvds *lvds = connector_to_lvds(connector);
-+	struct rockchip_lvds *lvds = brige_to_lvds(bridge);
- 	struct drm_panel *panel = lvds->panel;
- 
- 	return drm_panel_get_modes(panel, connector);
- }
- 
- static const
--struct drm_connector_helper_funcs rockchip_lvds_connector_helper_funcs = {
--	.get_modes = rockchip_lvds_connector_get_modes,
-+struct drm_bridge_funcs rockchip_lvds_bridge_funcs = {
-+	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
-+	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-+	.atomic_reset = drm_atomic_helper_bridge_reset,
-+	.get_modes = rockchip_lvds_bridge_get_modes,
- };
- 
- static int
-@@ -606,26 +601,23 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
- 	}
- 
- 	drm_encoder_helper_add(encoder, lvds->soc_data->helper_funcs);
--	connector = &lvds->connector;
- 
- 	if (lvds->panel) {
--		connector->dpms = DRM_MODE_DPMS_OFF;
--		ret = drm_connector_init(drm_dev, connector,
--					 &rockchip_lvds_connector_funcs,
--					 DRM_MODE_CONNECTOR_LVDS);
--		if (ret < 0) {
--			drm_err(drm_dev,
--				"failed to initialize connector: %d\n", ret);
-+		lvds->bridge = drm_panel_bridge_add_typed(lvds->panel, DRM_MODE_CONNECTOR_LVDS);
-+		if (IS_ERR(lvds->bridge)) {
-+			ret = PTR_ERR(lvds->bridge);
- 			goto err_free_encoder;
- 		}
-+	}
- 
--		drm_connector_helper_add(connector,
--					 &rockchip_lvds_connector_helper_funcs);
--	} else {
--		ret = drm_bridge_attach(encoder, lvds->bridge, NULL,
--					DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-+	if (lvds->bridge) {
-+		lvds->bridge->driver_private = lvds;
-+		lvds->bridge->ops = DRM_BRIDGE_OP_MODES;
-+		lvds->bridge->funcs = &rockchip_lvds_bridge_funcs;
-+
-+		ret = drm_bridge_attach(encoder, lvds->bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
- 		if (ret)
--			goto err_free_encoder;
-+			goto err_free_bridge;
- 
- 		connector = drm_bridge_connector_init(lvds->drm_dev, encoder);
- 		if (IS_ERR(connector)) {
-@@ -633,14 +625,14 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
- 				"failed to initialize bridge connector: %pe\n",
- 				connector);
- 			ret = PTR_ERR(connector);
--			goto err_free_encoder;
-+			goto err_free_bridge;
- 		}
--	}
- 
--	ret = drm_connector_attach_encoder(connector, encoder);
--	if (ret < 0) {
--		drm_err(drm_dev, "failed to attach encoder: %d\n", ret);
--		goto err_free_connector;
-+		ret = drm_connector_attach_encoder(connector, encoder);
-+		if (ret < 0) {
-+			drm_err(drm_dev, "failed to attach encoder: %d\n", ret);
-+			goto err_free_bridge;
-+		}
- 	}
- 
- 	pm_runtime_enable(dev);
-@@ -649,8 +641,8 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
- 
- 	return 0;
- 
--err_free_connector:
--	drm_connector_cleanup(connector);
-+err_free_bridge:
-+	drm_panel_bridge_remove(lvds->bridge);
- err_free_encoder:
- 	drm_encoder_cleanup(encoder);
- err_put_remote:
-@@ -670,8 +662,6 @@ static void rockchip_lvds_unbind(struct device *dev, struct device *master,
- 	encoder_funcs = lvds->soc_data->helper_funcs;
- 	encoder_funcs->disable(&lvds->encoder.encoder);
- 	pm_runtime_disable(dev);
--	drm_connector_cleanup(&lvds->connector);
--	drm_encoder_cleanup(&lvds->encoder.encoder);
- }
- 
- static const struct component_ops rockchip_lvds_component_ops = {
+Change in V5:
+[PATCH v5 1/4]: Add rk3576 canfd to rockchip,rk3568v2-canfd.yaml, remove
+                rockchip,rk3576-canfd.yaml
+[PATCH v5 2/4]: Encapsulate some hardware operation functions into
+                rkcanfd_devtype_data to provide differentiated
+                implementations for different models
+                (such as RK3568v2/v3)..
+[PATCH v5 3/4]: Add rk3576 canfd,fix the register naming rule,
+                Delete the variables used by rockchip itself.
+[PATCH v5 4/4]: Fix .h sorting.
+
+
+Change in V4:
+[PATCH v4 1/3]: Correct the format and add explanations.
+[PATCH v4 2/3]: No change.
+[PATCH v4 3/3]: No change.
+
+Change in V3:
+[PATCH v3 1/3]: Add documentation for the rk3576 CAN-FD.
+[PATCH v3 2/3]: Adjust the differentiated code section and
+                add dma function.
+[PATCH v3 3/3]: Remove dma, no use dma by default.
+
+Change in V2:
+[PATCH v2 1/2]: remove rk3576_canfd.c, use the rockchip_canfd driver
+[PATCH v2 2/2]: code style.
+
+Elaine Zhang (4):
+  dt-bindings: can: rockchip_canfd: add rk3576 CAN-FD controller
+  net: can: rockchip: Refactor the rkcanfd_devtype_data structure
+  net: can: rockchip: add can for RK3576 Soc
+  net: can: rockchip: support dma for rk3576 rx
+
+ .../net/can/rockchip,rk3568v2-canfd.yaml      |  41 ++
+ .../net/can/rockchip/rockchip_canfd-core.c    | 596 ++++++++++++++++--
+ drivers/net/can/rockchip/rockchip_canfd-rx.c  | 198 ++++++
+ drivers/net/can/rockchip/rockchip_canfd-tx.c  |  27 +
+ drivers/net/can/rockchip/rockchip_canfd.h     | 289 +++++++++
+ 5 files changed, 1108 insertions(+), 43 deletions(-)
+
 -- 
-2.49.0
+2.34.1
 
 
 _______________________________________________
