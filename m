@@ -4,61 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3F31C54ED1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 10:00:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA76EC54ED1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 11:00:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lyBEdM3zvM80wunOmQiYV1s+FMefgyn4Ga5mixBuPd0=; b=M0/8jIKCAt8+J6
-	fqJ18+1efLCAYO0UYBYpKDrMChd+qiTocO8tuRDdPu9T7YnCddCMEEtSVwWaBIoHr2a3KOzVGi5Vs
-	EtTckT6KHy4OMlQqYwKZ9OzCKdiTTRLLHVXiQDNM7pP0lpYMgZPAyC5alkLTAo1r//NIc1Y88HUfS
-	GLLZwJZuUbMqY1e+QKX4lkrww12ZBbKe4BakBd/eYI9BF5Bz0t3A79C8RckTvCwMELVFAGlvzcJLh
-	/hRIQilO1OY/bvJgzYNHnMGlOOuYPrNmJR9lZd+/ZhvBctNcyls6Zmfa69HwZSTWGOEg55DW9Tcs7
-	sj0uuzuWOs3OorlDfqQA==;
+	List-Owner; bh=JK4iwv7SpruqPdYXEtR3+caimNB70JmhzhXlpwsWHPw=; b=OGxya6y3Rt/kjZ
+	gHlHQLPjIXLBQNrrE9a9rU/mvUxIj4nFnzsb4rG0gkKjdwUj/ZrOsFjYk/4FxQU4bIWcr4NsFkhIb
+	+vZGWlBa8sVxkcxuI6pMFHJ7AaA4ngvEPRLVQsY25FeWxnO3HDhYR1XmXSnwjbwYcfnYJ9WbHxLxz
+	mpw6mEstGmWx4W7mgoBEtWrrgVIJcTNuhKU0MEySQZOJUMLY7hLDu0exQFkZTy08KIEnQQjyxGjpd
+	3DbUh0pOHA8ctIC7brLfZHlNowN6J0gEKepoEJr3Xn0/AA2IOhS4BsbJ/CLzml9qz11DaLSSoMGdX
+	JFam1ePPiHFgDZA2UJYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJr6y-0000000AQO5-1pqn;
-	Tue, 27 May 2025 10:00:44 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uJs2c-0000000AW9m-3o2Q;
+	Tue, 27 May 2025 11:00:18 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJr4n-0000000AQ69-1i0U;
-	Tue, 27 May 2025 09:58:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=CkhC4UgjPuQVaDzWVls8hkO6XTDFrLoAmVdIcxrQuac=; b=zdyPE/6FYF0B9hHYOcyAJQSQVb
-	v5p2PtNxurf+8p3BwNCAmbsiWZt75jOct2i6rviYg7cuSxRIJMtJLKN+NASU9Oo66Djpdjp4wjfEm
-	m0IwHZ8ZVzTGe770tvvY2YWklQCYcQBuQw38CgwAkZpu0e3lAIH4gUiUICPcvh03Q666yjHPzeCNu
-	e63o+lEPFgUfnMU19+gIuQSh+XsjmE3UK9ZYLFPVTC7Q4sj3pQzcYDP9Y/R3x5iT9hPP8Z6fVHuM+
-	PdZyny0o+QjDlJp124lzkh06v5yuaeiXkjwMVh0o3Jn15L7JVjC/0BDKhqrsJq8PmNGgFGa2J466h
-	gcnPF5dA==;
-Received: from i53875bdb.versanet.de ([83.135.91.219] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uJr4i-0007Bf-FG; Tue, 27 May 2025 11:58:24 +0200
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Quentin Schulz <foss+kernel@0leil.net>
-Cc: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Quentin Schulz <quentin.schulz@cherry.de>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: support Ethernet Switch adapter for
- RK3588 Jaguar
-Date: Tue, 27 May 2025 11:58:23 +0200
-Message-ID: <2600723.TLnPLrj5Ze@diego>
-In-Reply-To: <20250523-jaguar-mezz-eth-switch-v2-1-aced8bf6612d@cherry.de>
-References: <20250523-jaguar-mezz-eth-switch-v2-1-aced8bf6612d@cherry.de>
+	id 1uJs0U-0000000AVrP-00bN;
+	Tue, 27 May 2025 10:58:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id EF657A4F60F;
+	Tue, 27 May 2025 10:58:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7993C4CEE9;
+	Tue, 27 May 2025 10:58:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748343484;
+	bh=GC5C7zbKUnZcDna9TO8AoelSUAb7IBX5gcIqpNzeGXg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RVn6lR1w1gEpGotxwsdvtghHbGqxhHBsB5y8KdVfByJQcpmBAYpkvmbn0hGQ6c3eL
+	 ADAmmoETfpZftjAg9NvaEcCEzTKtKOx2HJ+OZxn+8yjl+imt+lsTZZ3tCBH8sFXe/A
+	 CEPEnRbY1yTbY1TpZmTEc1iWfGJ+7jv6/cFP/nsdn4zJYg6yS0d19gRxseJjm6+A+x
+	 TVHbLbZ+bHzehB2hqlTqTrYH7dsnDkkokBSk75whcTOKXA1kEb7HepAAUlgyFap4Vc
+	 Z799xBogZk5bX8VVwcaAIQstcb/7PC6zasYg/0yYnDUkZTbF04NGVuULAK8XsVSt6f
+	 z31igUilUWgkQ==
+Message-ID: <966635ca-ea10-4e19-a088-62e4b35bc697@kernel.org>
+Date: Tue, 27 May 2025 12:57:59 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] dt-bindings: mfd: rk806: allow to customize PMIC
+ reset method
+To: Quentin Schulz <quentin.schulz@cherry.de>,
+ Quentin Schulz <foss+kernel@0leil.net>, Lee Jones <lee@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Lukasz Czechowski <lukasz.czechowski@thaumatec.com>,
+ Daniel Semkowicz <dse@thaumatec.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20250526-rk8xx-rst-fun-v1-0-ea894d9474e0@cherry.de>
+ <20250526-rk8xx-rst-fun-v1-1-ea894d9474e0@cherry.de>
+ <79903ad6-0228-41a3-b733-415cc43ec786@kernel.org>
+ <d1fab35d-a4e7-449d-9666-0c651e44929a@cherry.de>
+ <8ca5a908-467f-4738-8bfa-185f3eecc399@kernel.org>
+ <1cf00dfe-c987-46ee-9cdf-a9ba243740ad@cherry.de>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <1cf00dfe-c987-46ee-9cdf-a9ba243740ad@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250527_025829_470646_8A499E40 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20250527_035806_183930_3EACF400 
+X-CRM114-Status: GOOD (  34.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,33 +122,149 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRnJlaXRhZywgMjMuIE1haSAyMDI1LCAxODo0ODo0MiBNaXR0ZWxldXJvcMOkaXNjaGUgU29t
-bWVyemVpdCBzY2hyaWViIFF1ZW50aW4gU2NodWx6Ogo+IEZyb206IFF1ZW50aW4gU2NodWx6IDxx
-dWVudGluLnNjaHVsekBjaGVycnkuZGU+Cj4gCj4gVGhpcyBhZGRzIHN1cHBvcnQgZm9yIHRoZSBF
-dGhlcm5ldCBTd2l0Y2ggYWRhcHRlciBjb25uZWN0ZWQgdGhyb3VnaCB0aGUKPiBtZXp6YW5pbmUg
-Y29ubmVjdG9yIG9uIFJLMzU4OCBKYWd1YXIuCj4gCj4gVGhpcyBhZGFwdGVyIGhhcyBhIEtTWjk4
-OTYgRXRoZXJuZXQgU3dpdGNoIHdpdGggNCAxR2JFIEV0aGVybmV0Cj4gY29ubmVjdG9ycywgdHdv
-IHVzZXIgY29udHJvbGxhYmxlIExFRHMsIGFuZCBhbiBNMTIgMTItcGluIGNvbm5lY3Rvcgo+IHdo
-aWNoIGV4cG9zZXMgdGhlIGZvbGxvd2luZyBzaWduYWxzOgo+ICAtIFJTMjMyL1JTNDg1IChtYXgg
-MjUwS2Jwcy81MDBLYnBzLCBSWCBwaW4xLCBUWCBwaW4yKQo+ICAtIHR3byBkaWdpdGFsIGlucHV0
-cyAocGluNCByb3V0ZWQgdG8gR1BJTzNfQzUgb24gU29DLCBwaW41IHRvIEdQSU80X0I0KQo+ICAt
-IHR3byBkaWdpdGFsIG91dHB1dHMgKHBpbjcgcm91dGVkIHRvIEdQSU8zX0QzIG9uIFNvQywgcGlu
-OCB0bwo+ICAgIEdQSU8zX0QxKQo+ICAtIHR3byBhbmFsb2cgaW5wdXRzIChwaW4xMCB0byBjaGFu
-bmVsMSBvZiBBRFMxMDE1LCBwaW4xMSB0byBjaGFubmVsMikKPiAKPiBTaWduZWQtb2ZmLWJ5OiBR
-dWVudGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpAY2hlcnJ5LmRlPgoKPiArJmkyYzEgewo+ICsJ
-I2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gKwkvKiBBRFMxMDE1IGNhbiBoYW5kbGUgaGlnaC1zcGVl
-ZCAoSFMpIG1vZGUgKHVwIHRvIDMuNE1Ieikgb24gSTJDIGJ1cywKPiArCSAgIGJ1dCBTT0MgY2Fu
-IGhhbmRsZSBvbmx5IHVwIHRvIDQwMGtIei4gKi8KCk11bHRpLWxpbmUgY29tbWVudCBzdHlsZSB3
-b3VsZCBiZQoJLyoKCSAqIEFEUzEwMTUgY2FuIGhhbmRsZSBoaWdoLXNwZWVkIChIUykgbW9kZSAo
-dXAgdG8gMy40TUh6KSBvbiBJMkMgYnVzLAoJICogYnV0IFNPQyBjYW4gaGFuZGxlIG9ubHkgdXAg
-dG8gNDAwa0h6CgkgKi8KCj4gKwljbG9jay1mcmVxdWVuY3kgPSA8NDAwMDAwPjsKPiArCSNzaXpl
-LWNlbGxzID0gPDA+Owo+ICsJc3RhdHVzID0gIm9rYXkiOwo+ICsKCm90aGVyIHRoYW4gdGhhdCwg
-bG9va3MgZmluZQoKCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+On 27/05/2025 11:26, Quentin Schulz wrote:
+> Hi Krzysztof,
+> 
+> On 5/27/25 11:08 AM, Krzysztof Kozlowski wrote:
+>> On 27/05/2025 10:48, Quentin Schulz wrote:
+>>> Hi Krzysztof,
+>>>
+>>> On 5/27/25 10:25 AM, Krzysztof Kozlowski wrote:
+>>>> On 26/05/2025 19:05, Quentin Schulz wrote:
+>>>>> From: Quentin Schulz <quentin.schulz@cherry.de>
+>>>>>
+>>>>> The RK806 PMIC (and RK809, RK817; but those aren't handled here) has a
+>>>>> bitfield for configuring the restart/reset behavior (which I assume
+>>>>> Rockchip calls "function") whenever the PMIC is reset (at least by
+>>>>> software; c.f. DEV_RST in the datasheet).
+>>>>>
+>>>>> For RK806, the following values are possible for RST_FUN:
+>>>>>
+>>>>> 0b00 means "restart PMU"
+>>>>> 0b01 means "Reset all the power off reset registers, forcing
+>>>>>               the state to switch to ACTIVE mode"
+>>>>> 0b10 means "Reset all the power off reset registers, forcing
+>>>>>               the state to switch to ACTIVE mode, and simultaneously
+>>>>>               pull down the RESETB PIN for 5mS before releasing"
+>>>>> 0b11 means the same as for 0b10 just above.
+>>>>>
+>>>>> I don't believe this is suitable for a subsystem-generic property hence
+>>>>> let's make it a vendor property called rockchip,rst-fun.
+>>>>>
+>>>>> The first few sentences in the description of the property are
+>>>>> voluntarily generic so they could be copied to the DT binding for
+>>>>> RK809/RK817 whenever someone wants to implement that for those PMIC.
+>>>>>
+>>>>> Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+>>>>> ---
+>>>>>    .../devicetree/bindings/mfd/rockchip,rk806.yaml    | 24 ++++++++++++++++++++++
+>>>>>    1 file changed, 24 insertions(+)
+>>>>>
+>>>>> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+>>>>> index 3c2b06629b75ea94f90712470bf14ed7fc16d68d..0f931a6da93f7596eac89c5f0deb8ee3bd934c31 100644
+>>>>> --- a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+>>>>> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+>>>>> @@ -31,6 +31,30 @@ properties:
+>>>>>    
+>>>>>      system-power-controller: true
+>>>>>    
+>>>>> +  rockchip,rst-fun:
+>>>>> +    $ref: /schemas/types.yaml#/definitions/uint32
+>>>>> +    enum: [0, 1, 2, 3]
+>>>>> +    description:
+>>>>> +      RST_FUN value to set for the PMIC.
+>>>>> +
+>>>>> +      This is the value in the RST_FUN bitfield according to the
+>>>>> +      datasheet. I.e. if RST_FUN is bits 6 and 7 and the desired value
+>>>>> +      of RST_FUN is 1, this property needs to be set to 1 (and not 64,
+>>>>> +      0x40, or BIT(6)).
+>>>>> +
+>>>>> +      The meaning of this value is specific to the PMIC and is
+>>>>> +      explained in the datasheet.
+>>>>
+>>>> And why would that be exactly board-level configuration? IOW, I expect
+>>>> all boards to be reset in the same - correct and optimal - way. Looks
+>>>> close to SW policy.
+>>>>
+>>>
+>>> All RK3588 boards except ours in downstream kernel have their RST_FUN
+>>> set to 1, we need 0 and I cannot talk for what's the actual expected
+>>> behavior for other vendors' boards. I do not feel confident
+>>> indiscriminately changing the PMIC reset behavior for all boards using
+>>> RK806 (which also includes RK3576 boards). Hence why I made that a property.
+>>>
+>>> Additionally, if all boards were "to be reset in the same - correct and
+>>
+>> I don't know if they have to, but that's what I would assume in general.
+>> Unless you say there is some specific hardware aspect of your boards,
+>> but so far you just described the register.
+>>
+> 
+> The cover letter
+
+We do not read cover letters, except when looking for changelogs.
+
+This patch must stand on its own.
+
+> 
+>>> optimal - way", why would Rockchip even have a register for that in the
+>>> PMIC? It's not an IP they bought (as far as I could tell), so there's
+>>
+>> To allow SW to make a choice. Just like 1000 other registers for every
+>> other device which we do not add to DT.
+>>
+>>> likely a purpose to it. Especially if they also change the
+>>> silicon-default in their own downstream fork AND provide you with a way
+>>> to change their new default from Device Tree.
+>>>
+>>> We can hardcode the change in the driver without using DT, but I wager
+>>> we're going to see a revert in a few releases because it broke some
+>>> devices. It may break in subtle ways as well, for example our boards
+>>> seem to be working just fine except that because the PMIC doesn't
+>>> entirely reset the power rails, our companion microcontroller doesn't
+>>> detect the reboot.
+>>>
+>>> If it's deemed a SW policy by the DT binding people, is there a way to
+>>> customize this without having it hardcoded to the same value for all
+>>> users of RK806 and without relying on module params?
+>>
+>> sysfs, reboot mode etc. I don't know what is the right here, because you
+>> did not explain the actual hardware issue being fixed here. You only
+>> described that bootloader does something, so you want to write something
+>> else there.
+>>
+> 
+> We have a companion microcontroller on the PCB of both products which 
+> needs to detect if the board was reset. When the board is reset, the MCU 
+> FW does a few things, like essentially resetting its internal logic such 
+> as the PWM controller (so the beeper stops beeping), watchdogs and 
+> reinit most user-exposed registers so that it's like "fresh" out of 
+> reset (even though it actually wasn't reset since it's continuously 
+> powered, not from the PMIC).
+
+So you miss some wiring to the MCU?
+
+> 
+> To detect a reboot, it senses one of the power rails (DCDC8; vcc_3v3_s3 
+> on our boards) from the PMIC. This power rail is only "restarted" when 
+> RST_FUN is set to 0 ("restart PMU" mode) according to our experiments.
+> 
+> I assume it is possible other boards do not want this (all?) power rail 
+> to be quickly interrupted when rebooting? But that I do not know.
+
+Maybe that's your hardware characteristic which you want to encode in
+DT. Don't focus on registers, focus on how the hardware or entire system
+is done or different.
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
