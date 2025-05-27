@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C55E4C54F30
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 17:52:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AFC6C54F30
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 19:40:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yLpStNAMEf7Mc3QoiVNQtejAELVZHi+4H0cQa4kCS4A=; b=vsQPXKisZ5VQni
-	JuWwKge/wnNHw7s59SFkjWYW57u7ecwJisTJUEdBkDtEx+dJlcmSFiYgrAT5pUIQ4GK/9pH9PXpBl
-	ddtx8XO4ff3/lACppfEedQyY8snOk3DWWBntC+k0amdkMw+1zWfbd1SlQF7T1GRj0ILuemvmZIOFN
-	KKpVJjkczRZUWGQjn3L+VXdQTPEQIPxeGwx8OOtQTwwy5J0d0nGWKDRpRWUOKVD+cCTRFu2p83h8F
-	CJTVDTE8muG4N0OdNPnwuqAPwKGcjPWCq3Py5KMVEoKIWjyKkLKcoV8441s5xHPfhP8Spug+O6WeI
-	Amz6B7nmBuGtDYwSNI9g==;
+	List-Owner; bh=iHvYm3/CzvyypE+ewZoEG3jf4xp7Rv6ObV6kFK0GC/U=; b=EUUsV3BIE54Vzh
+	z/pg7YVyghN5cceTgpYik87pqXyiQYHIA6e1DsSFmtDW/jtTwE76mkjP28ssx6uxJ8t3iekM4p7mE
+	LUfDua9Ng/HntkYPXTicGXt+atLdJEt4TfP93Mtfd2Bjzi0hltEaxESBrGdddYHASXCaY7vu5DGyR
+	V3R76qPlM+9IHt24H9kwiw+uA4lj9xLR20Rj3avVgjgEN5kJf3v6+qTkOZoQ1n8PmSdpqG/gvlalU
+	7H0iv2zvDhRTQehiNsCv5mwJrQW9KttKnSq8ZfjhN5BMGNUis9bW1CYmtXBvifCA6orAioIIvKXYJ
+	GznV0CTrjphDC65UhUvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJySv-0000000BI2b-3BtN;
-	Tue, 27 May 2025 17:51:53 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1uK09H-0000000BS81-3FiG;
+	Tue, 27 May 2025 19:39:43 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJySt-0000000BI29-14Rn
-	for linux-rockchip@lists.infradead.org;
-	Tue, 27 May 2025 17:51:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1748368307;
- bh=NxuLAslpzoOd596xivdPI/5y/Es3Nx0sBx/hh0IoOiQ=;
- b=NvpzLl+/uPxC00XSgJ+2y6jFOIuDxwD7CPpB+Rb9h7g8CrJroBgcSmwsy5IowEjJaTMhngOQT
- PEqcmPUHPcGVSJ8VZ5ATV56x5Qc8bpKjluUoV6HbNhdOr+djkrif4c3XBa5LJ46sL5jHns/ntkd
- kbscKI4JeCB9yeRvxp9oMIippkLUQ5iGdtWqGoQA2iFhs1qBqmeU3vKHmUoWMn3qMBFsmQH9Dj6
- 6HwAcT4VlmQXGmaC8nGbZKnd+FAHGe6XWUf7OX4mBQdIigsbWIOY8xnyM9U3pSh+5peAXFT/KyM
- YFNDFtzBL1sJVYSe7Pig62qhHJ9ZhDeIDVm+DyI94EoA==
-X-Forward-Email-ID: 6835fba8127b2e865ab3d1d9
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.0.3
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <a787e6e0-d4ce-45e3-8263-2489585d3ec0@kwiboo.se>
-Date: Tue, 27 May 2025 19:51:31 +0200
+	id 1uK04Q-0000000BRZt-3LtU;
+	Tue, 27 May 2025 19:34:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id F1CB9A4F2ED;
+	Tue, 27 May 2025 19:34:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68F4EC4CEE9;
+	Tue, 27 May 2025 19:34:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748374481;
+	bh=/h34jjkP8Tzegi+t/1woEurKobo1VjvZzZ4R9+gNIYc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PhPia81TIe3Dg79bgkliFloVIeCDISxZ9ufFJkL734ooVeE42cK1mFQALvIa9AbE4
+	 QI4jwwMZ9XrTAwd15ptjEXrUHPE/nISJ5rODk1d5EmiDpaBNKM9YBI5A+BwZDpy43H
+	 kr0AAkQcOPTwsKF05CuEUo82vtXjtc6a9H1B/d2eldgiRIsq8InCm6vnc/+cirvBzh
+	 2czuBVSw9jlEmNYRKFnzdjoeEGsDHSt29e+YbKnwNQqhvRfbmkOC6XvayihEQKhVAd
+	 OfmlM36ik/twqLUlPYRb3J1Ap0vCIcoEfYQwnZon2N7aPqrVRPkH35sMh5MfTvOl7Y
+	 akViLmW9olW5w==
+Date: Tue, 27 May 2025 14:34:39 -0500
+From: Rob Herring <robh@kernel.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org,
+	linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 6/9] dt-bindings: gpio: rockchip: Allow use of a
+ power-domain
+Message-ID: <20250527193439.GA1101149-robh@kernel.org>
+References: <20250518220707.669515-1-jonas@kwiboo.se>
+ <20250518220707.669515-7-jonas@kwiboo.se>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] media: rkvdec: Switch to using structs instead of writel
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-References: <20250527150043.174415-1-detlev.casanova@collabora.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250527150043.174415-1-detlev.casanova@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20250518220707.669515-7-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250527_105151_642209_B18ED846 
-X-CRM114-Status: GOOD (  19.34  )
+X-CRM114-CacheID: sfid-20250527_123442_897750_CBD10D8F 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,71 +80,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
+On Sun, May 18, 2025 at 10:06:53PM +0000, Jonas Karlman wrote:
+> The GPIO controllers in most Rockchip SoCs are part or power domains
+> that are always powered on, i.e. PD_BUS or PD_PMU.
 
-On 2025-05-27 17:00, Detlev Casanova wrote:
-> In an effort to merge the rkvdec2 driver [1] with this one, switch from
-> writel() calls to using structs to represent the register mappings.
+Are these described in DT, so this is valid to add for all SoCs?
 
-Please wait with this until HEVC support has landed, now that H264
-4:2:2/Hi10 finally have been merged I was hoping to be able to send a v2
-of the old HEVC series [3]. I was waiting on v6.16-rc1 before sending
-the series but can send it sooner if needed, [4] has current state of v2.
+> On RK3528 the GPIO controllers are spread out among the PD_RKVENC, PD_VO
+> and PD_VPU power domains.
 
-H264 4:2:2/Hi10 and HEVC have been in the works for a few years now,
-would be nice to have it fully land before refactoring starts ;-)
+So should be required for RK3528?
 
-[3] https://lore.kernel.org/linux-media/20231105233630.3927502-1-jonas@kwiboo.se
-[4] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-hevc-v2b/
-
-> This is done in order to have all supported decoders use the same format
-> in the future and ease reading of the code.
-
-Do you have any work-in-progress patches for this?
-
-> Using structs also improves stability as the hardware is tested and
-> validated downstream using a similar method.
-> It was noticed, on decoders, that:
->  - Some registers require to be writen in increasing order [2]
->  - Some registers, even if unrelated, need to be written to their reset
->    values (it was the case here for axi_ddr_[rw]data).
 > 
-> Using structs can also help improving performance later when, e.g.
-> multicore support is added on RK3588.
-
-Are your referring to the linked-list feature (also present in e.g.
-RK3328) or just for multi-core purpose?
-
-Regards,
-Jonas
-
-> Performance seems to be slightly improved, but at least, not made worse.
-> Running fluster's JVT-AVC_V1 test suite with GStreamer on the Radxa ROCK
-> PI 4 SE gives the following times:
+> Add support to describe power-domains for the GPIO controllers.
 > 
-> Before this patch:
-> 
-> - --jobs 1: Ran 129/135 tests successfully               in 77.167 secs
-> - --jobs 6: Ran 129/135 tests successfully               in 23.046 secs
-> 
-> With this patch:
-> - --jobs 1: Ran 129/135 tests successfully               in 70.698 secs
-> - --jobs 6: Ran 129/135 tests successfully               in 22.917 secs
-> 
-> This also shows that the fluster score hasn't changed.
-> 
-> [1]: https://lore.kernel.org/all/20250325213303.826925-1-detlev.casanova@collabora.com/
-> [2]: https://lore.kernel.org/all/20200127143009.15677-5-andrzej.p@collabora.com/
-> 
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
->  drivers/staging/media/rkvdec/rkvdec-h264.c | 168 +++---
->  drivers/staging/media/rkvdec/rkvdec-regs.h | 567 ++++++++++++++-------
->  drivers/staging/media/rkvdec/rkvdec-vp9.c  | 239 ++++-----
->  drivers/staging/media/rkvdec/rkvdec.c      |   1 -
->  4 files changed, 559 insertions(+), 416 deletions(-)
-
-[snip]
+>  Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> index d76987ce8e50..bdd83f42615c 100644
+> --- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> @@ -41,6 +41,9 @@ properties:
+>    "#interrupt-cells":
+>      const: 2
+>  
+> +  power-domains:
+> +    maxItems: 1
+> +
+>  patternProperties:
+>    "^.+-hog(-[0-9]+)?$":
+>      type: object
+> -- 
+> 2.49.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
