@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F1AEC54ED1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 11:39:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 086F6C54F30
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 11:54:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KD2jmb/WHyGR5wW8ux3CtZzlA6t2tMjN93g+s5pGhWY=; b=aScW8EIZUv4EBDPaGWzghJFqTG
-	ExcKHtBxx/YMjWM/vDGo7R9bDfMmkRxscUuDm7nv3xgU2MCJdVmQ0XbcjGCW6I/KpL3zaz1AAaFse
-	y71llnCYWVC73w90Y99vIzmGV/C/J0sJZ+TFG0jC3kIRzrDC+2cT/KpsUtoEP5PIm/bv1+2fp6yDi
-	4Z0ufyOQsldBlVbczw/v4IY9s7rxKLa68opIt/bXIqUa90M32o8bDsBDhserfUmfDqhpS889SE/Ww
-	0UevEFSdyjpHuLMRjCxYiOpNF4vhT8QLF25s5s8blTZHmUbNdi/mEUygwS7R131NpoBDlBhX3fLK0
-	U/VlHazQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NDhdVipGwOpbgszhNpEojVnb42FO5k1OAg1f+1upCQA=; b=ezDVgtRBbhp3Ho
+	MeFIRPUjL7x8IgfeTDHDmdDMY7m2VRay2O3TNs03AFM7udAR8oRpfrPaDUUANZigeFBBL1kHrmiPt
+	A+AAn92IplSGsYkvllpzXNXbW7ZMANEY2tMYEL5fvbnt3u4QSNAmt4poJH+JeWjqwLcPm1avDi0ID
+	gZubQlEJmPIaJxEJreQYm4ldXhYpYDqGrPhmzAbLXb8fHKK7wpWwkh10hUVbzi2sY6tId+L4ecTDA
+	YJLLyWfmScfzqo54epPCLb3uCjFmyuannfOvkMrR0OYkvTJXR/hz6fUp/76fmLj0MCkn5REXoWZCZ
+	he4AMIRaVL9IMQjhtqGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJsea-0000000AbLh-2ewX;
-	Tue, 27 May 2025 11:39:32 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1uJssz-0000000Aci5-2GEw;
+	Tue, 27 May 2025 11:54:25 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJscT-0000000Ab0o-04ou
-	for linux-rockchip@lists.infradead.org;
-	Tue, 27 May 2025 11:37:22 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1uJscK-0006US-6f; Tue, 27 May 2025 13:37:12 +0200
-Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1uJscI-000PZg-1p;
-	Tue, 27 May 2025 13:37:10 +0200
-Received: from pengutronix.de (p5b1645f7.dip0.t-ipconnect.de [91.22.69.247])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id 3364C41A77F;
-	Tue, 27 May 2025 11:37:10 +0000 (UTC)
-Date: Tue, 27 May 2025 13:37:09 +0200
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, cl@rock-chips.com, 
-	kever.yang@rock-chips.com, linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v6 3/4] net: can: rockchip: add can for RK3576 Soc
-Message-ID: <20250527-sage-python-of-variation-1c7759-mkl@pengutronix.de>
-References: <20250526062559.2061311-1-zhangqing@rock-chips.com>
- <20250526062559.2061311-4-zhangqing@rock-chips.com>
+	id 1uJssx-0000000Achg-2CFd;
+	Tue, 27 May 2025 11:54:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1748346843; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=XV4cwb62i9jbfKhN5YxgyKOpblJwfCS4esxG/Hl5r6XTpy40Ks+5/1Wxsd4w8d21C6Dp62xx6je0WdS5MTyeykTxg67JcVSGikhCIm/O6cl1ZZ6JGkoiFOXR0Ep/5XhGo05KKyDkggAUIA7oMl05BMaHL1Te9iI7/u/Jf65ZzvE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1748346843; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=9yF1OUbT1bqu1NB/QJlao6B5ghagW3BtXAYQCUIhaR8=; 
+	b=Gfkxm9jbtRrUfZKi7vd0MLCn17HN0fTuH0PE0T8to3nJrkG77bwnm6RboXX0cZzK6YF06ZMxxVs6n/I3rbrkvGBMFvQ3W8erU29SfjqnJnv4+MlS8+sF3NxBKox73Iaj213zsH2AOpiwN953faCyfT69hURKY81Qeyy/gjs3Om8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1748346843;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=9yF1OUbT1bqu1NB/QJlao6B5ghagW3BtXAYQCUIhaR8=;
+	b=VoZxWQ2IeFTd9cH4jQs4r4SzlZGf39Y8YHF1/y1CWVxa5UISmlLhsyWOZ28/0xhH
+	2WMDvv4/ZWr0FFF6+E0hJrKdnOiiKDwITtJrPR87WtwuFTgJ5c3h48Yz34khg77dbv8
+	dJTwToJj2bygZxc3nM1BD6O9SErZnnyiv/vmezUU=
+Received: by mx.zohomail.com with SMTPS id 1748346840882568.0136270447825;
+	Tue, 27 May 2025 04:54:00 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: heiko@sntech.de, linux-rockchip@lists.infradead.org,
+ Andy Yan <andyshrk@163.com>
+Cc: simic@manjaro.org, krzk+dt@kernel.org, robh@kernel.org,
+ devicetree@vger.kernel.org, conor+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, algea.cao@rock-chips.com,
+ Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Adjust the HDMI DDC IO driver strength
+ for rk3588
+Date: Tue, 27 May 2025 13:53:56 +0200
+Message-ID: <3704844.aeNJFYEL58@workhorse>
+In-Reply-To: <20250522020537.1884771-1-andyshrk@163.com>
+References: <20250522020537.1884771-1-andyshrk@163.com>
 MIME-Version: 1.0
-In-Reply-To: <20250526062559.2061311-4-zhangqing@rock-chips.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: mkl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250527_043721_204831_E8E979DE 
-X-CRM114-Status: GOOD (  31.40  )
+X-CRM114-CacheID: sfid-20250527_045423_659666_3A0359D6 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,349 +75,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3095514665565289334=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============3095514665565289334==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="wm5rma25slqeowsj"
-Content-Disposition: inline
-
-
---wm5rma25slqeowsj
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v6 3/4] net: can: rockchip: add can for RK3576 Soc
-MIME-Version: 1.0
-
-Hey,
-
-here's a partial review.
-
-On 26.05.2025 14:25:58, Elaine Zhang wrote:
-> Is new controller, new register layout and Bit position definition:
-> Support CAN and CANFD protocol, ISO 11898-1
-> Support transmit or receive error count
-> Support acceptance filter, more functional
-> Support interrupt and all interrupt can be masked
-> Support error code check
-> Support self test\silent\loop-back mode
-> Support auto retransmission mode
-> Support auto bus on after bus-off state
-> Support 2 transmit buffers
-> Support Internal Storage Mode
-> Support DMA
->=20
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+On Thursday, 22 May 2025 04:05:24 Central European Summer Time Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> For the RK3588 HDMI controller, the falling edge of DDC SDA and SCL
+> almost coincide and cannot be adjusted by HDMI registrer, resulting
+> in poor compatibility of DDC communication.
+> 
+> An improvement of the compatibility of DDC can be done by increasing
+> the driver strength of SCL and decreasing the driver strength of SDA
+> to increase the slope of the falling edge.
+> 
+> It should be noted that the maximum driving strength of hdmim0_tx1_scl
+> is only 3, which is different from that of the other IOs.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> 
 > ---
->  .../net/can/rockchip/rockchip_canfd-core.c    | 453 ++++++++++++++++++
->  drivers/net/can/rockchip/rockchip_canfd-rx.c  | 111 +++++
->  drivers/net/can/rockchip/rockchip_canfd-tx.c  |  27 ++
->  drivers/net/can/rockchip/rockchip_canfd.h     | 267 +++++++++++
->  4 files changed, 858 insertions(+)
->=20
-> diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net=
-/can/rockchip/rockchip_canfd-core.c
-> index c21ca4c1fb9a..92e260cb2527 100644
-> --- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-> +++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-> @@ -31,6 +31,8 @@ static const char *__rkcanfd_get_model_str(enum rkcanfd=
-_model model)
->  		return "rk3568v2";
->  	case RKCANFD_MODEL_RK3568V3:
->  		return "rk3568v3";
-> +	case RKCANFD_MODEL_RK3576:
-> +		return "rk3576";
->  	}
-> =20
->  	return "<unknown>";
-> @@ -176,6 +178,30 @@ static void rkcanfd_get_berr_counter_corrected(struc=
-t rkcanfd_priv *priv,
->  		    !!(reg_state & RKCANFD_REG_STATE_ERROR_WARNING_STATE));
->  }
-> =20
-> +static void rk3576canfd_get_berr_counter_corrected(struct rkcanfd_priv *=
-priv,
-> +						   struct can_berr_counter *bec)
-> +{
+> 
+> Changes in v2:
+> - Correct the max drive level of hdmim0_tx1_scl.
+> 
+>  .../dts/rockchip/rk3588-base-pinctrl.dtsi     | 20 +++++------
+>  .../dts/rockchip/rk3588-extra-pinctrl.dtsi    |  5 +--
+>  .../boot/dts/rockchip/rockchip-pinconf.dtsi   | 35 +++++++++++++++++++
+>  3 files changed, 48 insertions(+), 12 deletions(-)
+> 
 
-Is the rk3576 affected by this problem?
+Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-> +	struct can_berr_counter bec_raw;
-> +	u32 reg_state;
-> +
-> +	bec->rxerr =3D rkcanfd_read(priv, RK3576CANFD_REG_RXERRORCNT);
-> +	bec->txerr =3D rkcanfd_read(priv, RK3576CANFD_REG_TXERRORCNT);
-> +	bec_raw =3D *bec;
-> +
-> +	if (!bec->rxerr && !bec->txerr)
-> +		*bec =3D priv->bec;
-> +	else
-> +		priv->bec =3D *bec;
-> +
-> +	reg_state =3D rkcanfd_read(priv, RKCANFD_REG_STATE);
-> +	netdev_vdbg(priv->ndev,
-> +		    "%s: Raw/Cor: txerr=3D%3u/%3u rxerr=3D%3u/%3u Bus Off=3D%u Warning=
-=3D%u\n",
-> +		    __func__,
-> +		    bec_raw.txerr, bec->txerr, bec_raw.rxerr, bec->rxerr,
-> +		    !!(reg_state & RK3576CANFD_REG_STATE_BUS_OFF_STATE),
-> +		    !!(reg_state & RK3576CANFD_REG_STATE_ERROR_WARNING_STATE));
-> +}
-> +
->  static int rkcanfd_get_berr_counter(const struct net_device *ndev,
->  				    struct can_berr_counter *bec)
->  {
-> @@ -206,6 +232,11 @@ static void rkcanfd_chip_interrupts_disable(const st=
-ruct rkcanfd_priv *priv)
->  	rkcanfd_write(priv, RKCANFD_REG_INT_MASK, RKCANFD_REG_INT_ALL);
->  }
-> =20
-> +static void rk3576canfd_chip_interrupts_disable(const struct rkcanfd_pri=
-v *priv)
-> +{
-> +	rkcanfd_write(priv, RK3576CANFD_REG_INT_MASK, RK3576CANFD_REG_INT_ALL);
-> +}
-> +
->  static void rkcanfd_chip_fifo_setup(struct rkcanfd_priv *priv)
->  {
->  	u32 reg;
-> @@ -220,6 +251,72 @@ static void rkcanfd_chip_fifo_setup(struct rkcanfd_p=
-riv *priv)
->  	netdev_reset_queue(priv->ndev);
->  }
-> =20
-> +static void rk3576canfd_chip_fifo_setup(struct rkcanfd_priv *priv)
-> +{
-> +	u32 ism =3D 0, water =3D 0;
-
-no need to init as 0
-
-> +
-> +	ism =3D RK3576CANFD_REG_STR_CTL_ISM_SEL_CANFD_FIXED;
-> +	water =3D RK3576CANFD_ISM_WATERMASK_CANFD;
-> +
-> +	/* internal sram mode */
-
-personally I would prefer:
-
-reg_ism =3D FIELD_PREP(RK3576CANFD_REG_STR_CTL_ISM_SEL,
-                    RK3576CANFD_REG_STR_CTL_ISM_SEL_CANFD_FIXED) |
-          RK3576CANFD_REG_STR_CTL_STORAGE_TIMEOUT_MODE;
-
-> +	rkcanfd_write(priv, RK3576CANFD_REG_STR_CTL,
-> +		      (FIELD_PREP(RK3576CANFD_REG_STR_CTL_ISM_SEL, ism) |
-> +		      RK3576CANFD_REG_STR_CTL_STORAGE_TIMEOUT_MODE));
-
-reg_water =3D RK3576CANFD_ISM_WATERMASK_CANFD;
-
-> +	rkcanfd_write(priv, RK3576CANFD_REG_STR_WTM, water);
-> +	WRITE_ONCE(priv->tx_head, 0);
-> +	WRITE_ONCE(priv->tx_tail, 0);
-> +	netdev_reset_queue(priv->ndev);
-> +}
-> +
-> +static int rk3576canfd_atf_config(struct rkcanfd_priv *priv, int mode)
-
-With the proposed cleanup, this will become a void function.
-
-> +{
-> +	u32 id[10] =3D {0};
-
-What's the use of this array?
-
-> +	u32 dlc =3D 0, dlc_over =3D 0;
-> +
-> +	switch (mode) {
-
-It's called with RK3576CANFD_REG_ATFM_MASK_SEL_MASK_MODE only...
-
-> +	case RK3576CANFD_REG_ATFM_MASK_SEL_MASK_MODE:
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATF0, id[0]);
-
-why not call it with 0x0?
-
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATF1, id[1]);
-
-create:
-
-#define RK3576CANFD_REG_ATF(n) (0x700 + (n) << 2)
-
-and use a for loop
-
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATF2, id[2]);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATF3, id[3]);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATF4, id[4]);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATFM0, RK3576CANFD_REG_ATFM_ID);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATFM1, RK3576CANFD_REG_ATFM_ID);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATFM2, RK3576CANFD_REG_ATFM_ID);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATFM3, RK3576CANFD_REG_ATFM_ID);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATFM4, RK3576CANFD_REG_ATFM_ID);
-> +		break;
-> +	case RK3576CANFD_REG_ATFM_MASK_SEL_LIST_MODE:
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATF0, id[0]);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATF1, id[1]);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATF2, id[2]);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATF3, id[3]);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATF4, id[4]);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATFM0, id[5] | RK3576CANFD_REG_ATF=
-M_MASK_SEL);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATFM1, id[6] | RK3576CANFD_REG_ATF=
-M_MASK_SEL);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATFM2, id[7] | RK3576CANFD_REG_ATF=
-M_MASK_SEL);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATFM3, id[8] | RK3576CANFD_REG_ATF=
-M_MASK_SEL);
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATFM4, id[9] | RK3576CANFD_REG_ATF=
-M_MASK_SEL);
-> +		break;
-> +	default:
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ATF_CTL, RK3576CANFD_REG_ATF_CTL_A=
-TF_DIS_ALL);
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (dlc) {
-> +		if (dlc_over)
-
-both are 0, please remove the dead code
-
-> +			rkcanfd_write(priv, RK3576CANFD_REG_ATF_DLC,
-> +				      dlc | RK3576CANFD_REG_ATF_DLC_ATF_DLC_EN);
-> +		else
-> +			rkcanfd_write(priv, RK3576CANFD_REG_ATF_DLC,
-> +				      dlc | RK3576CANFD_REG_ATF_DLC_ATF_DLC_EN |
-> +				      RK3576CANFD_REG_ATF_DLC_ATF_DLC_MODE);
-> +	}
-> +	rkcanfd_write(priv, RK3576CANFD_REG_ATF_CTL, 0);
-> +
-> +	return 0;
-> +}
-> +
->  static void rkcanfd_chip_start(struct rkcanfd_priv *priv)
->  {
->  	u32 reg;
-> @@ -285,6 +382,68 @@ static void rkcanfd_chip_start(struct rkcanfd_priv *=
-priv)
->  		   rkcanfd_read(priv, RKCANFD_REG_MODE));
->  }
-> =20
-> +static void rk3576canfd_chip_start(struct rkcanfd_priv *priv)
-> +
-> +{
-> +	u32 reg;
-> +
-> +	rkcanfd_chip_set_reset_mode(priv);
-> +
-> +	/* Receiving Filter: accept all */
-> +	rk3576canfd_atf_config(priv, RK3576CANFD_REG_ATFM_MASK_SEL_MASK_MODE);
-> +
-> +	/* enable:
-> +	 * - CAN_FD: enable CAN-FD
-> +	 * - AUTO_RETX_MODE: auto retransmission on TX error
-> +	 * - COVER_MODE: RX-FIFO overwrite mode, do not send OVERLOAD frames
-> +	 * - RXSTX_MODE: Receive Self Transmit data mode
-> +	 * - WORK_MODE: transition from reset to working mode
-> +	 */
-
-please adjust the comments
-
-> +	reg =3D rkcanfd_read(priv, RKCANFD_REG_MODE);
-> +	priv->reg_mode_default =3D reg | RKCANFD_REG_MODE_WORK_MODE;
-> +
-> +	if (priv->can.ctrlmode & CAN_CTRLMODE_LOOPBACK) {
-> +		priv->reg_mode_default |=3D RKCANFD_REG_MODE_LBACK_MODE;
-> +		rkcanfd_write(priv, RK3576CANFD_REG_ERROR_MASK,
-> +			      RK3576CANFD_REG_ERROR_MASK_ACK_ERROR);
-> +	}
-> +
-> +	/* mask, i.e. ignore:
-> +	 * - TIMESTAMP_COUNTER_OVERFLOW_INT - timestamp counter overflow interr=
-upt
-> +	 * - TX_ARBIT_FAIL_INT - TX arbitration fail interrupt
-> +	 * - OVERLOAD_INT - CAN bus overload interrupt
-> +	 * - TX_FINISH_INT - Transmit finish interrupt
-> +	 */
-> +	priv->reg_int_mask_default =3D RK3576CANFD_REG_INT_RX_FINISH_INT;
-
-please adjust the comments
-
-> +
-> +	/* Do not mask the bus error interrupt if the bus error
-> +	 * reporting is requested.
-> +	 */
-> +	if (!(priv->can.ctrlmode & CAN_CTRLMODE_BERR_REPORTING))
-> +		priv->reg_int_mask_default |=3D RKCANFD_REG_INT_ERROR_INT;
-> +
-> +	memset(&priv->bec, 0x0, sizeof(priv->bec));
-> +
-> +	priv->devtype_data.fifo_setup(priv);
-
-Why do you need a callback here? You're already know you're a
-rk3576canfd, here.
-
-> +
-> +	rkcanfd_write(priv, RK3576CANFD_REG_AUTO_RETX_CFG,
-> +		      RK3576CANFD_REG_AUTO_RETX_CFG_AUTO_RETX_EN);
-> +
-> +	rkcanfd_write(priv, RK3576CANFD_REG_BRS_CFG,
-> +		      RK3576CANFD_REG_BRS_CFG_BRS_NEGSYNC_EN |
-> +		      RK3576CANFD_REG_BRS_CFG_BRS_POSSYNC_EN);
-> +
-> +	rkcanfd_set_bittiming(priv);
-> +
-> +	priv->devtype_data.interrupts_disable(priv);
-> +	rkcanfd_chip_set_work_mode(priv);
-> +
-> +	priv->can.state =3D CAN_STATE_ERROR_ACTIVE;
-> +
-> +	netdev_dbg(priv->ndev, "%s: reg_mode=3D0x%08x\n", __func__,
-> +		   rkcanfd_read(priv, RKCANFD_REG_MODE));
-> +}
-> +
-
-more later...
-
-regards,
-Marc
-
---=20
-Pengutronix e.K.                 | Marc Kleine-Budde          |
-Embedded Linux                   | https://www.pengutronix.de |
-Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
-Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
-
---wm5rma25slqeowsj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmg1o+IACgkQDHRl3/mQ
-kZwlcAgAp0JdNemXDYJQP2NtGDnnNFQoPnjeNpkF+YvkXizqgIxjzLfewpIZf3Be
-MA2WfFN/ewOwBAX7TrBfWAoCiRqc4mdHlupNO5VrKflNq4cQXRkbSoB9Q2xl3SQX
-VFTUeyJDd5i/N1kGYa8iXDVQ5I3T9eNjlCmKqP9PwrXkQHAyKlfu17u1nW7Uf4GS
-h8ebrFhb5FlTtanZY5+GL7Qlngg0lEaYdqcvOx0JyepgNugewSmTcWf1QSUnwx7h
-bQF4IoVm12zELwQRPalBgC2qX/nwXeZKOi1i4GTzVMZvqqPSba7JOMYgnCNZagK3
-AHtBIhG91hPtC0ykR3IYV3LbR3SWcg==
-=wAW9
------END PGP SIGNATURE-----
-
---wm5rma25slqeowsj--
+Quickly tested this on both HDMI ports of a ROCK 5T with an HDMI capture
+card on the other end. While I didn't originally have any issues to begin
+with, this patch does not introduce any new ones, so seems good to me.
 
 
---===============3095514665565289334==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3095514665565289334==--
-
