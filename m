@@ -4,66 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 086F6C54F30
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 11:54:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B84BC54F30
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 13:27:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NDhdVipGwOpbgszhNpEojVnb42FO5k1OAg1f+1upCQA=; b=ezDVgtRBbhp3Ho
-	MeFIRPUjL7x8IgfeTDHDmdDMY7m2VRay2O3TNs03AFM7udAR8oRpfrPaDUUANZigeFBBL1kHrmiPt
-	A+AAn92IplSGsYkvllpzXNXbW7ZMANEY2tMYEL5fvbnt3u4QSNAmt4poJH+JeWjqwLcPm1avDi0ID
-	gZubQlEJmPIaJxEJreQYm4ldXhYpYDqGrPhmzAbLXb8fHKK7wpWwkh10hUVbzi2sY6tId+L4ecTDA
-	YJLLyWfmScfzqo54epPCLb3uCjFmyuannfOvkMrR0OYkvTJXR/hz6fUp/76fmLj0MCkn5REXoWZCZ
-	he4AMIRaVL9IMQjhtqGA==;
+	List-Owner; bh=S03SIYDZpY+qMXY5pTSqiOarh4DL8v44VeiCC3WmYds=; b=vIbFepdSSYnjOq
+	/xY+M8PmezaPCUHPyDH+r8NlFukXLxYSQMSal/i5ESIgJSZdATOy6UTbzaXeWYuR4wszAcC484bds
+	r0Se6VnJyL5P4gWMym88PAosebzwjWNwfZzcskN9XWRC8TMKK9HQwXHFMoUmn2phsoRtfiALcNChL
+	BkNJ1IWhf0LmIC5dVps/PSdv+C/1Z5/inhUCmLw5N4za9z/Vqz//P+sqFhEA908xAr/nvcyAI0LLe
+	zTcIgjJmds9TkI3lPV4C4tK7I7829gYsw5jiAfF8htBde6pwfdAIeJDpdtmkEhOD0PR1DLSaTvF5A
+	xSUpRxdWClqVAPptsNCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJssz-0000000Aci5-2GEw;
-	Tue, 27 May 2025 11:54:25 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uJuKh-0000000Aoy3-3A4R;
+	Tue, 27 May 2025 13:27:07 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJssx-0000000Achg-2CFd;
-	Tue, 27 May 2025 11:54:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1748346843; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=XV4cwb62i9jbfKhN5YxgyKOpblJwfCS4esxG/Hl5r6XTpy40Ks+5/1Wxsd4w8d21C6Dp62xx6je0WdS5MTyeykTxg67JcVSGikhCIm/O6cl1ZZ6JGkoiFOXR0Ep/5XhGo05KKyDkggAUIA7oMl05BMaHL1Te9iI7/u/Jf65ZzvE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1748346843; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=9yF1OUbT1bqu1NB/QJlao6B5ghagW3BtXAYQCUIhaR8=; 
-	b=Gfkxm9jbtRrUfZKi7vd0MLCn17HN0fTuH0PE0T8to3nJrkG77bwnm6RboXX0cZzK6YF06ZMxxVs6n/I3rbrkvGBMFvQ3W8erU29SfjqnJnv4+MlS8+sF3NxBKox73Iaj213zsH2AOpiwN953faCyfT69hURKY81Qeyy/gjs3Om8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1748346843;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=9yF1OUbT1bqu1NB/QJlao6B5ghagW3BtXAYQCUIhaR8=;
-	b=VoZxWQ2IeFTd9cH4jQs4r4SzlZGf39Y8YHF1/y1CWVxa5UISmlLhsyWOZ28/0xhH
-	2WMDvv4/ZWr0FFF6+E0hJrKdnOiiKDwITtJrPR87WtwuFTgJ5c3h48Yz34khg77dbv8
-	dJTwToJj2bygZxc3nM1BD6O9SErZnnyiv/vmezUU=
-Received: by mx.zohomail.com with SMTPS id 1748346840882568.0136270447825;
-	Tue, 27 May 2025 04:54:00 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: heiko@sntech.de, linux-rockchip@lists.infradead.org,
- Andy Yan <andyshrk@163.com>
-Cc: simic@manjaro.org, krzk+dt@kernel.org, robh@kernel.org,
- devicetree@vger.kernel.org, conor+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, algea.cao@rock-chips.com,
- Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Adjust the HDMI DDC IO driver strength
- for rk3588
-Date: Tue, 27 May 2025 13:53:56 +0200
-Message-ID: <3704844.aeNJFYEL58@workhorse>
-In-Reply-To: <20250522020537.1884771-1-andyshrk@163.com>
-References: <20250522020537.1884771-1-andyshrk@163.com>
+	id 1uJu6B-0000000Amn6-1KyO;
+	Tue, 27 May 2025 13:12:08 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-ac2bb7ca40bso590850366b.3;
+        Tue, 27 May 2025 06:12:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1748351525; x=1748956325; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=g/ugmzgvO142CU4ox6G+tmUexbV2T5LSjf/umBdH9s8=;
+        b=WPuHiTv6t+ywl6rYUyv+tOx2GBcX/2lwfeVOzKBZScSygbCEKgwgSXJYnEoblyUmH0
+         4DWlMSnbhMd8//jAcO+Nv8Y4L2v3W3a6LECgTRLRvjqy/7iIOgmdfdFIcZBJoyEdOgGg
+         DCwA6PcxdfCjK83oxZt8e4vpCZnno3J+iKkteprnz1viOXBiDpXAGNYVjJzaied+Nrm2
+         fl28n/9U1uaw8Ks/ikXcRCYcitZQ3C7PpuYaD70LeWrsb0OlvR4rtaXFGgTVvqA6yPJG
+         6eNFYeolzQg5DzTSXuoUHPgjSvprGeQB3WRC7wV/Vc7ccEVTnSC0JpxsjvlmHLYYBxNR
+         q+SA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748351525; x=1748956325;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=g/ugmzgvO142CU4ox6G+tmUexbV2T5LSjf/umBdH9s8=;
+        b=GYOCnDeeiYfI0O5od4Sl7KfDSh1NyG+BuKNLtjXNrq0UTbJCllGruD9fU/TFkV6i8l
+         bQeJPh/sEao/MQywDqVZ+2XeqTKp2TYyvk1f93YHLXZaLOs6R+sGVC7ODAIVJShQKJHy
+         PRAIKEPKFYecCBnikn4OjeiOSk8VF3DYPZUUXOK2D9m683dEMH7hb6QoBpTPWcl2kSdt
+         nXrs9T0fK/1INQ5f+dTYMadfdUE2Dh6Wc595ePa/BxNqFvaoiT9hQFMyhG6gbNVEBpno
+         +rYe52q2xNl9MCoKik1UwhmbjLyzh7rooGnAcD6SzEWG2ssZh40gsBvPtLdxyUdIJGWe
+         VWTw==
+X-Forwarded-Encrypted: i=1; AJvYcCVGgZ20Xw1jsVYoOVfXorMsNLxIyR4D3btR8Ej7TWTG+CpsG5o9GUI3RAwulEPsY/G0b0i3f9BwB0EidNqhVlQN@lists.infradead.org, AJvYcCWJt6Vw2q7qrmXUauK6a90wI/fjNqyiFG75dlj208qCnK+cj+LrIpIspCc+jb5dJUZz/MQ5UfE7fYTYlIoONSc=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzbVd16+Zdxrbgijg8qsBHbf6wahl6kn4i1jQI60U5+8GdmsG6u
+	ze8rGGMgvgqANrbDDq4pPuOk/+3WUVprWNpBQjB2DsG9QQd0m8hGAI4k
+X-Gm-Gg: ASbGncslO9Cqu29XN8mzT6AQNYcdAs7Zef3BVJ/CbiRVfhvfa4yRZF1+AsxppfZtf67
+	B8V8TZDr1GRpxfCgC4XnNO/lY4DB42oZXQD99bPnJvuKtFTSiWCz9uxIgVuJaJ6FlSmzZgfyQkg
+	QvPZ1YFg71n52jWcnQSImJd9VYkWhaEa+XLna6A/mopInrPuImLwEBaYUpRGvyBQLquni8Bz9Rr
+	KUxfdC+jNuD7cmuSoXz1R0s5+nj21ThLC7iF9qi/ZHDuqlKb0GqZYo1qSyVTwiHEobKGmfyxeEW
+	hExpWvZPMuCzce9UF3irnA0q1/+Kshu9n6YJI5/6eGsWooVDaG7unoydLCM1YN5cSDi0XhQk70R
+	YkPtJEgEBT65SFSBMHNGAC9J0q+1YcA==
+X-Google-Smtp-Source: AGHT+IHB0ZXKkcg0gnpJjaiU1yTkVnD2JMx0qD+x4LssRGrwt4U5bwIxE9XFTakPQqpfUeS1dTan3w==
+X-Received: by 2002:a17:907:808:b0:ad2:46b2:78b2 with SMTP id a640c23a62f3a-ad85b0e0479mr1012816566b.18.1748351524889;
+        Tue, 27 May 2025 06:12:04 -0700 (PDT)
+Received: from localhost.localdomain (ip092042140082.rev.nessus.at. [92.42.140.82])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad5d2c6dbbbsm793002366b.117.2025.05.27.06.12.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 May 2025 06:12:04 -0700 (PDT)
+From: Jakob Unterwurzacher <jakobunt@gmail.com>
+X-Google-Original-From: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
+To: foss+kernel@0leil.net
+Cc: conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	jakob.unterwurzacher@cherry.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	quentin.schulz@cherry.de,
+	robh@kernel.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: support Ethernet Switch adapter for RK3588 Jaguar
+Date: Tue, 27 May 2025 15:11:42 +0200
+Message-Id: <20250527131142.1100673-1-jakob.unterwurzacher@cherry.de>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250523-jaguar-mezz-eth-switch-v2-1-aced8bf6612d@cherry.de>
+References: <20250523-jaguar-mezz-eth-switch-v2-1-aced8bf6612d@cherry.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250527_045423_659666_3A0359D6 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20250527_061207_354881_5FF3DDFE 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,40 +107,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 22 May 2025 04:05:24 Central European Summer Time Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> For the RK3588 HDMI controller, the falling edge of DDC SDA and SCL
-> almost coincide and cannot be adjusted by HDMI registrer, resulting
-> in poor compatibility of DDC communication.
-> 
-> An improvement of the compatibility of DDC can be done by increasing
-> the driver strength of SCL and decreasing the driver strength of SDA
-> to increase the slope of the falling edge.
-> 
-> It should be noted that the maximum driving strength of hdmim0_tx1_scl
-> is only 3, which is different from that of the other IOs.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> 
-> ---
-> 
-> Changes in v2:
-> - Correct the max drive level of hdmim0_tx1_scl.
-> 
->  .../dts/rockchip/rk3588-base-pinctrl.dtsi     | 20 +++++------
->  .../dts/rockchip/rk3588-extra-pinctrl.dtsi    |  5 +--
->  .../boot/dts/rockchip/rockchip-pinconf.dtsi   | 35 +++++++++++++++++++
->  3 files changed, 48 insertions(+), 12 deletions(-)
-> 
+> @Jakob, is this something you could check? devmem2 0xfd58c31c w 0x3c0000
+> should do the trick to disable the circuitry according to the TRM?
 
-Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+I measured TXCLK vs TXD3 on an oscilloscope on gmac1:
 
-Quickly tested this on both HDMI ports of a ROCK 5T with an HDMI capture
-card on the other end. While I didn't originally have any issues to begin
-with, this patch does not introduce any new ones, so seems good to me.
+	Setting	Decimal	Actual TXCLK delay (ps)
+	00	0	47
+	0a	10	283
+	10	16	440
+	20	32	893
+	30	48	1385
+	40	64	1913
+	50	80	2514
+	60	96	3077
+	70	112	3565
+	7f	127	4009
 
+	off	x	-315
 
+Setting = tx_delay (hex)
+Decimal = tx_delay (dec)
+Actual TXCLK delay (ps) = Measurement from oscilloscope
+
+Plotting this we can deduce that one tx_delay unit is about 31ps.
+
+We can also see that turning off the delay unit does not give us zero
+delay, but setting tx_delay to zero does (almost).
+
+I did this on the Rockchip 6.1 kernel because it allows to set the
+delays on runtime via sysfs
+( https://gitlab.com/firefly-linux/docs/-/blob/rk356x/firefly/Common/GMAC/Rockchip_Developer_Guide_Linux_GMAC_RGMII_Delayline_EN.pdf )
+but I don't expect it to make a difference.
+
+Regards,
+Jakob
 
 _______________________________________________
 Linux-rockchip mailing list
