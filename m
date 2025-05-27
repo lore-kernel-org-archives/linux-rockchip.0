@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AB76C5B543
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 01:14:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4D04C54FB3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 02:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LGX/L8oFAgmQTxmOg32cwfAutH/ogZ5TwR/OpUlLQyw=; b=xjTyOMypEunu5j
-	k9l0mylwhMHg/IgGJYxjUUbZPLajiJIBvIXfcANzY4+QHlfKij/a1KKMUnwmBYrgFAXKOt1sRiUHK
-	mIuSJggM+JIg6ygptNmZZ4YBEOBd43gBQsWROJXgOd628kUWblZPSXNAMkP5eFTYD6yVfxb+mrDPP
-	YJ5aEG/K+dFDgqj5MTarHnsNKcjnKbT+G5JVFuR+FOX5aF9v+hzveIErOVNwnEcSfLWrpaZNjveeV
-	/BLIRzGrUCMWQSrQXSuPRt5vKEhPiOMpxccsBlME7pIdJo1aktDDwE6Bitk9+l0d/uktEaxNenRJV
-	StnGbwBTOwfJ4RuhtRtA==;
+	List-Owner; bh=7RoY/eUKg3klP2MslsUG3b/dPPv8XV2uIE5h7Lla7hY=; b=ZRtH4nTAeMwBxE
+	AxgbxfgAT4SeP0mJLw0xeTY1gUuoHif5I3pHkdZAWSJ8JBKlRdjalzlW/StswmtPC+tEACo7iZD/M
+	jhIoL27q/sFGr6D1Jr64Ks2g/28Wk83Calt9819fF7TttveNKOKFNq4QJobMXaYR/LDQRJt4OMh7o
+	2mSPwXjzQaJBcdPpy5+iraWTtJfODyTNwO4qwckt9BVmx4fSwLPkFi3xEaos7UKz+VRaQfTGtuzcV
+	LjswCzFsM6VeFPwejqQK2fyR4mJDMwMRKqPE8wdqOm0xj3CBfmWZaOyZpAdu1QB8ToCJlHPNFfOMi
+	4zFCsoxC4HtXKmaYwwHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJitj-00000009hIX-44SX;
-	Tue, 27 May 2025 01:14:31 +0000
-Received: from mgamail.intel.com ([192.198.163.15])
+	id 1uJk2P-00000009l50-46UW;
+	Tue, 27 May 2025 02:27:33 +0000
+Received: from mgamail.intel.com ([198.175.65.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJirb-00000009hCz-3Zmj;
-	Tue, 27 May 2025 01:12:21 +0000
+	id 1uJk0H-00000009kyq-1doQ;
+	Tue, 27 May 2025 02:25:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1748308340; x=1779844340;
+  t=1748312722; x=1779848722;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=NaabEAXMenskDJ3R96u3GW/+2mPpv4nvngHgm8i51Lc=;
-  b=k4rm5vqojoGJPLFIxlswk+4Dyo6r++mqJvvcvDlX9loQSgv/uJLs2BWo
-   CTq3Ct77oF1s/kwA8+eagh/csUQ4AdttSp2X3VpQXgBsXs1c495tLSpYj
-   CcomcCDkUNYEhMg4gnbdCPF7YQ0jWd0LzhpQqj72R55sMsSVPgw8xqPWb
-   ZadaDuyyEKO9pDt09Stb6Vg7fQ8wSaRlIw7w8GXPvSlALYx6WRA7G46iJ
-   ouIiO3c1f1Ce4hqHN8FRYghzOOTN2PjhGS3zehwLm1TeZ4YK5V2PV3e69
-   +kdAzq2XGmy6DeQSMvG+W97Lw9r0m7K8TTTHIYMcoO0ZmQ/LHSIVR8EKR
-   A==;
-X-CSE-ConnectionGUID: SNN5qQ59QDuyZb60VPb9sQ==
-X-CSE-MsgGUID: QIL1UexrRAeESvgN9Sf7SQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11445"; a="50441042"
+  bh=uhdc5SE6c1+rkMJuVDliirxqkL0mRepvjYykzS8hZjw=;
+  b=iv3xtNlPUfvBIFCTkNpwjovHlmfZLI3kDoxiu7hn6ZLUG4SVfoeRTlgZ
+   bsouDaZq464kPidTCpu8Z9AGiJYtcPoCL7jw8Osn5y4iuQAEyzcp7qV+Z
+   R6XH0E3l8OKX7th+vI0Zwrf9v87VLUOKFMzWzMpzjXevjY98ITQFR83/i
+   ScviiMTIVTDZM3S2wKe5ll6KFGzKmw2abia4MTxpI6sjGbwNWiDRydSaP
+   Vh4UBNqa1+bCUWoBFa2vZRk+HmEB5VWC4aV2T9dWK1ykV/UUM3HpoGAgH
+   t7TlmcU8I2OIcOby5YiaIvEq6RA163+pD6DmpiiBe9S+CtnvjnkD4Y/4P
+   g==;
+X-CSE-ConnectionGUID: ouD05WHYTe2NFU89KmVsMg==
+X-CSE-MsgGUID: 9zcgKymlSHiU5UjPbkc/8A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11445"; a="53941466"
 X-IronPort-AV: E=Sophos;i="6.15,317,1739865600"; 
-   d="scan'208";a="50441042"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 May 2025 18:12:08 -0700
-X-CSE-ConnectionGUID: +Fgy8SvXTX6Hb8gi2pMf3A==
-X-CSE-MsgGUID: F+DAm4N9SnyoR6cqrBXwUQ==
+   d="scan'208";a="53941466"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 May 2025 19:25:17 -0700
+X-CSE-ConnectionGUID: h1Q1B6PpQpqJ0899byqsyw==
+X-CSE-MsgGUID: rr/zJefnR9C5NUaZyYgZxA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.15,317,1739865600"; 
-   d="scan'208";a="143026312"
+   d="scan'208";a="142515732"
 Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
-  by fmviesa010.fm.intel.com with ESMTP; 26 May 2025 18:12:04 -0700
+  by orviesa006.jf.intel.com with ESMTP; 26 May 2025 19:25:12 -0700
 Received: from kbuild by 1992f890471c with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1uJirK-000Sme-1i;
-	Tue, 27 May 2025 01:12:02 +0000
-Date: Tue, 27 May 2025 09:11:54 +0800
+	id 1uJk06-000Sou-0d;
+	Tue, 27 May 2025 02:25:10 +0000
+Date: Tue, 27 May 2025 10:24:43 +0800
 From: kernel test robot <lkp@intel.com>
 To: Quentin Schulz <foss+kernel@0leil.net>, Lee Jones <lee@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -73,14 +73,14 @@ Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
 	Quentin Schulz <quentin.schulz@cherry.de>
 Subject: Re: [PATCH 2/4] mfd: rk8xx-core: allow to customize RK806 reset
  method
-Message-ID: <202505270807.tc7zzrMf-lkp@intel.com>
+Message-ID: <202505271032.U9jloPe6-lkp@intel.com>
 References: <20250526-rk8xx-rst-fun-v1-2-ea894d9474e0@cherry.de>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20250526-rk8xx-rst-fun-v1-2-ea894d9474e0@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250526_181219_909210_665E60B0 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20250526_192521_475772_8936B5C6 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,29 +99,46 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Quentin,
 
-kernel test robot noticed the following build warnings:
+kernel test robot noticed the following build errors:
 
-[auto build test WARNING on 0ff41df1cb268fc69e703a08a57ee14ae967d0ca]
+[auto build test ERROR on 0ff41df1cb268fc69e703a08a57ee14ae967d0ca]
 
 url:    https://github.com/intel-lab-lkp/linux/commits/Quentin-Schulz/dt-bindings-mfd-rk806-allow-to-customize-PMIC-reset-method/20250527-011711
 base:   0ff41df1cb268fc69e703a08a57ee14ae967d0ca
 patch link:    https://lore.kernel.org/r/20250526-rk8xx-rst-fun-v1-2-ea894d9474e0%40cherry.de
 patch subject: [PATCH 2/4] mfd: rk8xx-core: allow to customize RK806 reset method
-config: arm-randconfig-001-20250527 (https://download.01.org/0day-ci/archive/20250527/202505270807.tc7zzrMf-lkp@intel.com/config)
-compiler: clang version 21.0.0git (https://github.com/llvm/llvm-project f819f46284f2a79790038e1f6649172789734ae8)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250527/202505270807.tc7zzrMf-lkp@intel.com/reproduce)
+config: arm64-randconfig-003-20250527 (https://download.01.org/0day-ci/archive/20250527/202505271032.U9jloPe6-lkp@intel.com/config)
+compiler: clang version 16.0.6 (https://github.com/llvm/llvm-project 7cbf1a2591520c2491aa35339f227775f4d3adf6)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250527/202505271032.U9jloPe6-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202505270807.tc7zzrMf-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202505271032.U9jloPe6-lkp@intel.com/
 
-All warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
->> drivers/mfd/rk8xx-core.c:723:3: warning: label followed by a declaration is a C23 extension [-Wc23-extensions]
-     723 |                 u32 rst_fun;
-         |                 ^
-   1 warning generated.
+>> drivers/mfd/rk8xx-core.c:723:3: error: expected expression
+                   u32 rst_fun;
+                   ^
+>> drivers/mfd/rk8xx-core.c:732:60: error: use of undeclared identifier 'rst_fun'
+                   ret = device_property_read_u32(dev, "rockchip,rst-fun", &rst_fun);
+                                                                            ^
+   drivers/mfd/rk8xx-core.c:741:37: error: use of undeclared identifier 'rst_fun'
+                                            FIELD_PREP(RK806_RST_FUN_MSK, rst_fun));
+                                                                          ^
+   drivers/mfd/rk8xx-core.c:741:37: error: use of undeclared identifier 'rst_fun'
+   drivers/mfd/rk8xx-core.c:741:37: error: use of undeclared identifier 'rst_fun'
+>> drivers/mfd/rk8xx-core.c:741:7: error: passing 'void' to parameter of incompatible type 'unsigned int'
+                                            FIELD_PREP(RK806_RST_FUN_MSK, rst_fun));
+                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/bitfield.h:114:2: note: expanded from macro 'FIELD_PREP'
+           ({                                                              \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/regmap.h:1312:42: note: passing argument to parameter 'val' here
+                                        unsigned int mask, unsigned int val)
+                                                                        ^
+   6 errors generated.
 
 
 vim +723 drivers/mfd/rk8xx-core.c
@@ -164,7 +181,7 @@ vim +723 drivers/mfd/rk8xx-core.c
    729			nr_cells = ARRAY_SIZE(rk806s);
    730			dual_support = IRQF_SHARED;
    731	
-   732			ret = device_property_read_u32(dev, "rockchip,rst-fun", &rst_fun);
+ > 732			ret = device_property_read_u32(dev, "rockchip,rst-fun", &rst_fun);
    733			if (ret) {
    734				dev_dbg(dev,
    735					"rockchip,rst-fun property missing, not setting RST_FUN\n");
@@ -173,7 +190,7 @@ vim +723 drivers/mfd/rk8xx-core.c
    738	
    739			ret = regmap_update_bits(rk808->regmap, RK806_SYS_CFG3,
    740						 RK806_RST_FUN_MSK,
-   741						 FIELD_PREP(RK806_RST_FUN_MSK, rst_fun));
+ > 741						 FIELD_PREP(RK806_RST_FUN_MSK, rst_fun));
    742			if (ret)
    743				return dev_err_probe(dev, ret, "RST_FUN write err\n");
    744			break;
