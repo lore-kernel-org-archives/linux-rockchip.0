@@ -4,83 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 501E8C5B549
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 16:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C55E4C54F30
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 17:52:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xOV+ha2lnsM50ywaq2mlFehHalD5yZNyi+8r4WYhD8E=; b=wqx4riuw6mLv+K
-	jFh4sMtCKksnAjgV7ioxRfzUi+Cq1QSF5JirRH3Ya547YOOnovlinXr9Bbxf2Fkv/u9CHTJNilyKt
-	imE17wSRYqno6/62JsXMeiZVGJt7ux6Uqn9j3z6a5/xw4CoTycOECyhX5TxiLtfEU0AvwiysiW6Pi
-	d1/Y4fRrqbWoYIFgnepexhI+0Af3WVvMEIGcDCx83AG8zSGqYezDtxlGAB679WsM+1Spb27Pe4M/a
-	1GxNCSUFag2FkDZuVW4c6CwM83LVOZhXlPk7blCJqU5B1/obw4knzoKwF3PREuy3RTnzfvJmyQi8g
-	NBaHFKwhRbkAPJcnkxbw==;
+	List-Owner; bh=yLpStNAMEf7Mc3QoiVNQtejAELVZHi+4H0cQa4kCS4A=; b=vsQPXKisZ5VQni
+	JuWwKge/wnNHw7s59SFkjWYW57u7ecwJisTJUEdBkDtEx+dJlcmSFiYgrAT5pUIQ4GK/9pH9PXpBl
+	ddtx8XO4ff3/lACppfEedQyY8snOk3DWWBntC+k0amdkMw+1zWfbd1SlQF7T1GRj0ILuemvmZIOFN
+	KKpVJjkczRZUWGQjn3L+VXdQTPEQIPxeGwx8OOtQTwwy5J0d0nGWKDRpRWUOKVD+cCTRFu2p83h8F
+	CJTVDTE8muG4N0OdNPnwuqAPwKGcjPWCq3Py5KMVEoKIWjyKkLKcoV8441s5xHPfhP8Spug+O6WeI
+	Amz6B7nmBuGtDYwSNI9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJxPA-0000000BBdP-0zD7;
-	Tue, 27 May 2025 16:43:56 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1uJySv-0000000BI2b-3BtN;
+	Tue, 27 May 2025 17:51:53 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJxN1-0000000BBNK-11Jj;
-	Tue, 27 May 2025 16:41:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1748364103; x=1779900103;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=ukJPA0XtU32Ecq35Tu9JsOdKWxywwRz0NHZNFe5yJx8=;
-  b=YLNRGUHsMdsaxoiRmYhlwPdKY1HoVJcX0vKdFFbwvyP8NbdGwQRjcfns
-   AKmx+2+/dTLhWPoVlbYRAeAWj5tBSGVODeKwsXZRKOVMoBky8VmxKS0zi
-   z1RLNq00qfl7J2sTXdUHol3lb5W6MNf7ZvCzJx5mi/5NViS9uSjDKQlR0
-   xJInb7Cd+Qwml8b4jiWn1pOv66zCC4nNoMN259i74lgWZmM80uhduBYtk
-   0x8DWX3Ifbdc4AbJruPZagviv9D8c+DvnY8v+gnKZJBKTupRzE+Ub1tMW
-   /FGog5DbQWiOR9+8IFaPIuK3CXPyv1CKxju5H2HlTse26ClGHw7FE4A87
-   Q==;
-X-CSE-ConnectionGUID: rb71bvJmTGmUWMkDdJb6HQ==
-X-CSE-MsgGUID: YPHnP+3aStCGRzDoSeDQgw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11446"; a="75753542"
-X-IronPort-AV: E=Sophos;i="6.15,318,1739865600"; 
-   d="scan'208";a="75753542"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 May 2025 09:41:40 -0700
-X-CSE-ConnectionGUID: DUtYUoYfTRmWnZZqVBzNsA==
-X-CSE-MsgGUID: J7RjXSH3Qi+n5+GKbPS0xw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,318,1739865600"; 
-   d="scan'208";a="148028416"
-Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
-  by fmviesa004.fm.intel.com with ESMTP; 27 May 2025 09:41:37 -0700
-Received: from kbuild by 1992f890471c with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uJxMs-000TLs-2K;
-	Tue, 27 May 2025 16:41:34 +0000
-Date: Wed, 28 May 2025 00:41:25 +0800
-From: kernel test robot <lkp@intel.com>
-To: Chaoyi Chen <kernel@airkyi.com>, Sandy Huang <hjc@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: Re: [PATCH v3] drm/rockchip: cdn-dp: Convert to drm bridge
-Message-ID: <202505280026.8VDl0TWN-lkp@intel.com>
-References: <20250527081447.304-1-kernel@airkyi.com>
+	id 1uJySt-0000000BI29-14Rn
+	for linux-rockchip@lists.infradead.org;
+	Tue, 27 May 2025 17:51:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1748368307;
+ bh=NxuLAslpzoOd596xivdPI/5y/Es3Nx0sBx/hh0IoOiQ=;
+ b=NvpzLl+/uPxC00XSgJ+2y6jFOIuDxwD7CPpB+Rb9h7g8CrJroBgcSmwsy5IowEjJaTMhngOQT
+ PEqcmPUHPcGVSJ8VZ5ATV56x5Qc8bpKjluUoV6HbNhdOr+djkrif4c3XBa5LJ46sL5jHns/ntkd
+ kbscKI4JeCB9yeRvxp9oMIippkLUQ5iGdtWqGoQA2iFhs1qBqmeU3vKHmUoWMn3qMBFsmQH9Dj6
+ 6HwAcT4VlmQXGmaC8nGbZKnd+FAHGe6XWUf7OX4mBQdIigsbWIOY8xnyM9U3pSh+5peAXFT/KyM
+ YFNDFtzBL1sJVYSe7Pig62qhHJ9ZhDeIDVm+DyI94EoA==
+X-Forward-Email-ID: 6835fba8127b2e865ab3d1d9
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 1.0.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <a787e6e0-d4ce-45e3-8263-2489585d3ec0@kwiboo.se>
+Date: Tue, 27 May 2025 19:51:31 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250527081447.304-1-kernel@airkyi.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] media: rkvdec: Switch to using structs instead of writel
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+References: <20250527150043.174415-1-detlev.casanova@collabora.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250527150043.174415-1-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250527_094143_329596_9DE03EB3 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20250527_105151_642209_B18ED846 
+X-CRM114-Status: GOOD (  19.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,183 +82,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chaoyi,
+Hi Detlev,
 
-kernel test robot noticed the following build errors:
+On 2025-05-27 17:00, Detlev Casanova wrote:
+> In an effort to merge the rkvdec2 driver [1] with this one, switch from
+> writel() calls to using structs to represent the register mappings.
 
-[auto build test ERROR on rockchip/for-next]
-[also build test ERROR on linus/master v6.15 next-20250527]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Please wait with this until HEVC support has landed, now that H264
+4:2:2/Hi10 finally have been merged I was hoping to be able to send a v2
+of the old HEVC series [3]. I was waiting on v6.16-rc1 before sending
+the series but can send it sooner if needed, [4] has current state of v2.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Chaoyi-Chen/drm-rockchip-cdn-dp-Convert-to-drm-bridge/20250527-161941
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20250527081447.304-1-kernel%40airkyi.com
-patch subject: [PATCH v3] drm/rockchip: cdn-dp: Convert to drm bridge
-config: i386-buildonly-randconfig-002-20250527 (https://download.01.org/0day-ci/archive/20250528/202505280026.8VDl0TWN-lkp@intel.com/config)
-compiler: clang version 20.1.2 (https://github.com/llvm/llvm-project 58df0ef89dd64126512e4ee27b4ac3fd8ddf6247)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250528/202505280026.8VDl0TWN-lkp@intel.com/reproduce)
+H264 4:2:2/Hi10 and HEVC have been in the works for a few years now,
+would be nice to have it fully land before refactoring starts ;-)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202505280026.8VDl0TWN-lkp@intel.com/
+[3] https://lore.kernel.org/linux-media/20231105233630.3927502-1-jonas@kwiboo.se
+[4] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-hevc-v2b/
 
-All errors (new ones prefixed by >>):
+> This is done in order to have all supported decoders use the same format
+> in the future and ease reading of the code.
 
->> drivers/gpu/drm/rockchip/cdn-dp-core.c:783:17: error: incompatible pointer types passing 'struct drm_device *' to parameter of type 'const struct device *' [-Werror,-Wincompatible-pointer-types]
-     783 |                 DRM_DEV_ERROR(bridge->dev, "Invalid format %d\n", daifmt->fmt);
-         |                               ^~~~~~~~~~~
-   include/drm/drm_print.h:504:17: note: expanded from macro 'DRM_DEV_ERROR'
-     504 |         drm_dev_printk(dev, KERN_ERR, "*ERROR* " fmt, ##__VA_ARGS__)
-         |                        ^~~
-   include/drm/drm_print.h:488:42: note: passing argument to parameter 'dev' here
-     488 | void drm_dev_printk(const struct device *dev, const char *level,
-         |                                          ^
->> drivers/gpu/drm/rockchip/cdn-dp-core.c:844:3: error: field designator 'dp_audio_prepare' does not refer to any field in type 'const struct drm_bridge_funcs'; did you mean 'hdmi_audio_prepare'?
-     844 |         .dp_audio_prepare = cdn_dp_audio_prepare,
-         |          ^~~~~~~~~~~~~~~~
-         |          hdmi_audio_prepare
-   include/drm/drm_bridge.h:702:8: note: 'hdmi_audio_prepare' declared here
-     702 |         int (*hdmi_audio_prepare)(struct drm_connector *connector,
-         |               ^
->> drivers/gpu/drm/rockchip/cdn-dp-core.c:845:3: error: field designator 'dp_audio_mute_stream' does not refer to any field in type 'const struct drm_bridge_funcs'; did you mean 'hdmi_audio_mute_stream'?
-     845 |         .dp_audio_mute_stream = cdn_dp_audio_mute_stream,
-         |          ^~~~~~~~~~~~~~~~~~~~
-         |          hdmi_audio_mute_stream
-   include/drm/drm_bridge.h:728:8: note: 'hdmi_audio_mute_stream' declared here
-     728 |         int (*hdmi_audio_mute_stream)(struct drm_connector *connector,
-         |               ^
->> drivers/gpu/drm/rockchip/cdn-dp-core.c:846:3: error: field designator 'dp_audio_shutdown' does not refer to any field in type 'const struct drm_bridge_funcs'; did you mean 'hdmi_audio_shutdown'?
-     846 |         .dp_audio_shutdown = cdn_dp_audio_shutdown,
-         |          ^~~~~~~~~~~~~~~~~
-         |          hdmi_audio_shutdown
-   include/drm/drm_bridge.h:716:9: note: 'hdmi_audio_shutdown' declared here
-     716 |         void (*hdmi_audio_shutdown)(struct drm_connector *connector,
-         |                ^
->> drivers/gpu/drm/rockchip/cdn-dp-core.c:1011:4: error: use of undeclared identifier 'DRM_BRIDGE_OP_DP_AUDIO'
-    1011 |                         DRM_BRIDGE_OP_DP_AUDIO;
-         |                         ^
->> drivers/gpu/drm/rockchip/cdn-dp-core.c:1046:9: error: use of undeclared label 'err_free_connector'
-    1046 |                         goto err_free_connector;
-         |                              ^
-   drivers/gpu/drm/rockchip/cdn-dp-core.c:1114:7: error: call to undeclared function 'devm_drm_bridge_alloc'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-    1114 |         dp = devm_drm_bridge_alloc(dev, struct cdn_dp_device, bridge,
-         |              ^
-   drivers/gpu/drm/rockchip/cdn-dp-core.c:1114:7: note: did you mean 'devm_drm_bridge_add'?
-   include/drm/drm_bridge.h:945:5: note: 'devm_drm_bridge_add' declared here
-     945 | int devm_drm_bridge_add(struct device *dev, struct drm_bridge *bridge);
-         |     ^
-   drivers/gpu/drm/rockchip/cdn-dp-core.c:1114:34: error: expected expression
-    1114 |         dp = devm_drm_bridge_alloc(dev, struct cdn_dp_device, bridge,
-         |                                         ^
-   drivers/gpu/drm/rockchip/cdn-dp-core.c:1114:56: error: use of undeclared identifier 'bridge'
-    1114 |         dp = devm_drm_bridge_alloc(dev, struct cdn_dp_device, bridge,
-         |                                                               ^
-   9 errors generated.
+Do you have any work-in-progress patches for this?
 
+> Using structs also improves stability as the hardware is tested and
+> validated downstream using a similar method.
+> It was noticed, on decoders, that:
+>  - Some registers require to be writen in increasing order [2]
+>  - Some registers, even if unrelated, need to be written to their reset
+>    values (it was the case here for axi_ddr_[rw]data).
+> 
+> Using structs can also help improving performance later when, e.g.
+> multicore support is added on RK3588.
 
-vim +783 drivers/gpu/drm/rockchip/cdn-dp-core.c
+Are your referring to the linked-list feature (also present in e.g.
+RK3328) or just for multi-core purpose?
 
-   755	
-   756	static int cdn_dp_audio_prepare(struct drm_connector *connector,
-   757					struct drm_bridge *bridge,
-   758					struct hdmi_codec_daifmt *daifmt,
-   759					struct hdmi_codec_params *params)
-   760	{
-   761		struct cdn_dp_device *dp = bridge_to_dp(bridge);
-   762		struct audio_info audio = {
-   763			.sample_width = params->sample_width,
-   764			.sample_rate = params->sample_rate,
-   765			.channels = params->channels,
-   766		};
-   767		int ret;
-   768	
-   769		mutex_lock(&dp->lock);
-   770		if (!dp->active) {
-   771			ret = -ENODEV;
-   772			goto out;
-   773		}
-   774	
-   775		switch (daifmt->fmt) {
-   776		case HDMI_I2S:
-   777			audio.format = AFMT_I2S;
-   778			break;
-   779		case HDMI_SPDIF:
-   780			audio.format = AFMT_SPDIF;
-   781			break;
-   782		default:
- > 783			DRM_DEV_ERROR(bridge->dev, "Invalid format %d\n", daifmt->fmt);
-   784			ret = -EINVAL;
-   785			goto out;
-   786		}
-   787	
-   788		ret = cdn_dp_audio_config(dp, &audio);
-   789		if (!ret)
-   790			dp->audio_info = audio;
-   791	
-   792	out:
-   793		mutex_unlock(&dp->lock);
-   794		return ret;
-   795	}
-   796	
-   797	static void cdn_dp_audio_shutdown(struct drm_connector *connector,
-   798					  struct drm_bridge *bridge)
-   799	{
-   800		struct cdn_dp_device *dp = bridge_to_dp(bridge);
-   801		int ret;
-   802	
-   803		mutex_lock(&dp->lock);
-   804		if (!dp->active)
-   805			goto out;
-   806	
-   807		ret = cdn_dp_audio_stop(dp, &dp->audio_info);
-   808		if (!ret)
-   809			dp->audio_info.format = AFMT_UNUSED;
-   810	out:
-   811		mutex_unlock(&dp->lock);
-   812	}
-   813	
-   814	static int cdn_dp_audio_mute_stream(struct drm_connector *connector,
-   815					    struct drm_bridge *bridge,
-   816					    bool enable, int direction)
-   817	{
-   818		struct cdn_dp_device *dp = bridge_to_dp(bridge);
-   819		int ret;
-   820	
-   821		mutex_lock(&dp->lock);
-   822		if (!dp->active) {
-   823			ret = -ENODEV;
-   824			goto out;
-   825		}
-   826	
-   827		ret = cdn_dp_audio_mute(dp, enable);
-   828	
-   829	out:
-   830		mutex_unlock(&dp->lock);
-   831		return ret;
-   832	}
-   833	
-   834	static const struct drm_bridge_funcs cdn_dp_bridge_funcs = {
-   835		.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
-   836		.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-   837		.atomic_reset = drm_atomic_helper_bridge_reset,
-   838		.detect = cdn_dp_bridge_detect,
-   839		.edid_read = cdn_dp_bridge_edid_read,
-   840		.atomic_enable = cdn_dp_bridge_atomic_enable,
-   841		.atomic_disable = cdn_dp_bridge_atomic_disable,
-   842		.mode_valid = cdn_dp_bridge_mode_valid,
-   843	
- > 844		.dp_audio_prepare = cdn_dp_audio_prepare,
- > 845		.dp_audio_mute_stream = cdn_dp_audio_mute_stream,
- > 846		.dp_audio_shutdown = cdn_dp_audio_shutdown,
-   847	};
-   848	
+Regards,
+Jonas
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> Performance seems to be slightly improved, but at least, not made worse.
+> Running fluster's JVT-AVC_V1 test suite with GStreamer on the Radxa ROCK
+> PI 4 SE gives the following times:
+> 
+> Before this patch:
+> 
+> - --jobs 1: Ran 129/135 tests successfully               in 77.167 secs
+> - --jobs 6: Ran 129/135 tests successfully               in 23.046 secs
+> 
+> With this patch:
+> - --jobs 1: Ran 129/135 tests successfully               in 70.698 secs
+> - --jobs 6: Ran 129/135 tests successfully               in 22.917 secs
+> 
+> This also shows that the fluster score hasn't changed.
+> 
+> [1]: https://lore.kernel.org/all/20250325213303.826925-1-detlev.casanova@collabora.com/
+> [2]: https://lore.kernel.org/all/20200127143009.15677-5-andrzej.p@collabora.com/
+> 
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  drivers/staging/media/rkvdec/rkvdec-h264.c | 168 +++---
+>  drivers/staging/media/rkvdec/rkvdec-regs.h | 567 ++++++++++++++-------
+>  drivers/staging/media/rkvdec/rkvdec-vp9.c  | 239 ++++-----
+>  drivers/staging/media/rkvdec/rkvdec.c      |   1 -
+>  4 files changed, 559 insertions(+), 416 deletions(-)
+
+[snip]
 
 _______________________________________________
 Linux-rockchip mailing list
