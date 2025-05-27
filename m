@@ -4,66 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AFC6C54F30
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 19:40:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C883C5B542
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 May 2025 20:26:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iHvYm3/CzvyypE+ewZoEG3jf4xp7Rv6ObV6kFK0GC/U=; b=EUUsV3BIE54Vzh
-	z/pg7YVyghN5cceTgpYik87pqXyiQYHIA6e1DsSFmtDW/jtTwE76mkjP28ssx6uxJ8t3iekM4p7mE
-	LUfDua9Ng/HntkYPXTicGXt+atLdJEt4TfP93Mtfd2Bjzi0hltEaxESBrGdddYHASXCaY7vu5DGyR
-	V3R76qPlM+9IHt24H9kwiw+uA4lj9xLR20Rj3avVgjgEN5kJf3v6+qTkOZoQ1n8PmSdpqG/gvlalU
-	7H0iv2zvDhRTQehiNsCv5mwJrQW9KttKnSq8ZfjhN5BMGNUis9bW1CYmtXBvifCA6orAioIIvKXYJ
-	GznV0CTrjphDC65UhUvQ==;
+	List-Owner; bh=9sB4WiBEmQm+oL6Rl2K0KFwPAuq+O5PoACaK7KTKaLk=; b=yKienptS0LzO3n
+	wK7Y4R5oQrakhISVMki5/YIFT6aaBSEBZ+d2r3dLXjh8n/82E4dQbn9GNVkaVtZS5Ue5oGswng1Uc
+	OE1kgzSbsjymRW4Hp0ihHBqdqs6MeBnEoyR+Kzm/Ii98OkbfezAw81Yaa07L+yMzplHxv89+8tini
+	hTK0037q+8e0DxM5EKCHVJgR52Tei98qTs5a0d3uhFd1Jf1yYB0GyH/GkTXdcj9DCnjLlOUgweYxZ
+	6JJYXHGD6pZh1+AEmb4c1pVq51ntsWeBqXElpsrzVl3DQ2D7OR32KZSaoawf3eQ1VU1ab8twLC4Xz
+	XhAQmjdYdEqvsnS+BVbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uK09H-0000000BS81-3FiG;
-	Tue, 27 May 2025 19:39:43 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uK0sM-0000000BVUd-0VRm;
+	Tue, 27 May 2025 20:26:18 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uK04Q-0000000BRZt-3LtU;
-	Tue, 27 May 2025 19:34:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id F1CB9A4F2ED;
-	Tue, 27 May 2025 19:34:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68F4EC4CEE9;
-	Tue, 27 May 2025 19:34:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748374481;
-	bh=/h34jjkP8Tzegi+t/1woEurKobo1VjvZzZ4R9+gNIYc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PhPia81TIe3Dg79bgkliFloVIeCDISxZ9ufFJkL734ooVeE42cK1mFQALvIa9AbE4
-	 QI4jwwMZ9XrTAwd15ptjEXrUHPE/nISJ5rODk1d5EmiDpaBNKM9YBI5A+BwZDpy43H
-	 kr0AAkQcOPTwsKF05CuEUo82vtXjtc6a9H1B/d2eldgiRIsq8InCm6vnc/+cirvBzh
-	 2czuBVSw9jlEmNYRKFnzdjoeEGsDHSt29e+YbKnwNQqhvRfbmkOC6XvayihEQKhVAd
-	 OfmlM36ik/twqLUlPYRb3J1Ap0vCIcoEfYQwnZon2N7aPqrVRPkH35sMh5MfTvOl7Y
-	 akViLmW9olW5w==
-Date: Tue, 27 May 2025 14:34:39 -0500
-From: Rob Herring <robh@kernel.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>,
-	Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org,
-	linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 6/9] dt-bindings: gpio: rockchip: Allow use of a
- power-domain
-Message-ID: <20250527193439.GA1101149-robh@kernel.org>
-References: <20250518220707.669515-1-jonas@kwiboo.se>
- <20250518220707.669515-7-jonas@kwiboo.se>
+	id 1uK0sJ-0000000BVTX-33O1
+	for linux-rockchip@lists.infradead.org;
+	Tue, 27 May 2025 20:26:17 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 54RJvJto014923
+	for <linux-rockchip@lists.infradead.org>; Tue, 27 May 2025 20:26:14 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=4xUN0y9tD66f1svU9Zz7etOE
+	XfYYso6YFCLNHspL5Wo=; b=d8Bm5WMwIc5IosRakZB5otsePFFFIlm+u5xuGdyk
+	G4HiSOd8wHfHCOMkjdid0I2CH4tvihInQvTbhBI2IL+jgR7ArXeu53hu1iGLfh5c
+	QKe5P+yARJbg4/ydA3hsWEAtzUTCvR+DCrbl1a2rVZ0IqdbNfuFT8vjc1XNgGeIB
+	lZN6d6tJhn2XsOU3hDes8Fk47oN6Q+KOUj7NcsJU00+GKSe/Rjt8hdvdTOvkatxH
+	1VqUlTK7UGLLGPQKb/wA9h46qckyW15Ms13fu8/G3YZk0ZAOPyZhTioDQi4DNbN4
+	vS8nGh8RdsEaQd+J7r5F4qCB/EZcAWl4ohP2WeLLpbu9Mw==
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com [209.85.219.71])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 46u66wgctr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Tue, 27 May 2025 20:26:13 +0000 (GMT)
+Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-6f8d0bdd023so106517956d6.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 27 May 2025 13:26:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748377573; x=1748982373;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4xUN0y9tD66f1svU9Zz7etOEXfYYso6YFCLNHspL5Wo=;
+        b=rEvOF6gA2mrFGJSp2DSOVXk6IQLA/jnALVSb9j2VbBmQoFvYfy69Mz+gM2MFt7wTju
+         fyUmp42tKkKm0IFB9SBqJmUsO/rtfsprS7bVTJsz9T9zEm+4oUQIsc7Xeh/leRTKWSyk
+         LCYL+8BcvTKbab6wmlsa7ntqV9GdeE2AW2uMDRfnj1jowaW9uYUaAKMn2tDxTvuy3TvS
+         krQWUD9o1nT/dv26eQfC7y82pct0r8uODmWflhg0dCpbWJLJWfEw2soprMvMfVPqzbBC
+         x5km6dfV+2lbcHjinfLBXtqMhSPIHlYrn6r5oZtQDEMb+T68rKWQBatusDnvIS7Hj+Ro
+         8/UA==
+X-Forwarded-Encrypted: i=1; AJvYcCXlSrxQq22ebcHNLsgE3AyqwKxVFPrq9E7XCDxZYqccvIJTyD6ZBEnDKSMXYq3/wdT+uzfa5LpCGocDw+eY9w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy7n/3rD0udWgVerf6Td2SQcd0Yna29Xb6CR3q2RsqPkyZKQ1Ah
+	iFCAPeWpKDjHm+IOXeWaYfrE97KxD42D0ihKYKAK2rHAn5DmXPGIe/wWkM8qIbCLHXqBxuWTsrb
+	siNeJMp+n9pjNVTpYQtcozEQG/+tNzcjHoMatxG9Crdi5KDwunYjmnMPA6jyMKjAI7n5mJUjtRE
+	Y=
+X-Gm-Gg: ASbGncuCj6yRoS4gCFQGw82r9qIprOt9DfWKNaWsfa2+LZz/tDebf/c15cttnZEQ0rO
+	avCjOIUHGkcrYbkDSIIH0suMyRrHmzoWV8BO3F28VVt8qWI11wep7O0Nbxv/fk2fWXz5z1aRXKN
+	wR+zykojwihiw5h3v+fc6G5xHCqNGSlu8z9o2yZk77bGMOqM5+yFst6UYSrZSQs0zVEMGJQRbDF
+	T3E8QExV4GPsV4p69JmaNnzM08xn38Ld0fsx+019+rd/aM4RMrEHKpakOKOqZezhPoHjPSLlmhM
+	NG4Eblip+CPfkd4oFFiRVNQ4KQQMQuUJ0Dlg+bQyAdzG+ETt2YjX12bGuVA4OcCae/pl3w2NtoA
+	=
+X-Received: by 2002:ad4:5b81:0:b0:6f2:c81f:9ef0 with SMTP id 6a1803df08f44-6fa9d3229a8mr267504406d6.28.1748377572800;
+        Tue, 27 May 2025 13:26:12 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFIMvKx83CAGoAKuZ6b+GRDnxaFhcYLgNEmLiEF7jLpdTEpjQ2RM1yZ/MdwH+P9+KF0Ikr5Yw==
+X-Received: by 2002:ad4:5b81:0:b0:6f2:c81f:9ef0 with SMTP id 6a1803df08f44-6fa9d3229a8mr267503896d6.28.1748377572385;
+        Tue, 27 May 2025 13:26:12 -0700 (PDT)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5532ee72cddsm13110e87.215.2025.05.27.13.25.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 May 2025 13:26:00 -0700 (PDT)
+Date: Tue, 27 May 2025 23:25:58 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Chaoyi Chen <kernel@airkyi.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+        Andy Yan <andy.yan@rock-chips.com>,
+        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Maxime Ripard <mripard@kernel.org>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+        Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Subject: Re: [PATCH v3] drm/rockchip: cdn-dp: Convert to drm bridge
+Message-ID: <e2dnvpbze4xuubggduqr3p5nnhg7huk3dnpdcb6tldxbrn2qtn@bfsewz5trfv3>
+References: <20250527081447.304-1-kernel@airkyi.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250518220707.669515-7-jonas@kwiboo.se>
+In-Reply-To: <20250527081447.304-1-kernel@airkyi.com>
+X-Authority-Analysis: v=2.4 cv=aYJhnQot c=1 sm=1 tr=0 ts=68361fe5 cx=c_pps
+ a=UgVkIMxJMSkC9lv97toC5g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=dt9VzEwgFbYA:10 a=VwQbUJbxAAAA:8 a=ePr-TV-LAAAA:8 a=s8YR1HE3AAAA:8
+ a=_UkGs5bstnNi4Q_uqmUA:9 a=CjuIK1q_8ugA:10 a=1HOtulTD9v-eNWfpl4qZ:22
+ a=uGDpjx9DKq9E8W49yboe:22 a=jGH_LyMDp9YhSvY-UuyI:22
+X-Proofpoint-ORIG-GUID: -2iWLcXHbyQOsSd0_wYvIzJgwWJRyvcB
+X-Proofpoint-GUID: -2iWLcXHbyQOsSd0_wYvIzJgwWJRyvcB
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNTI3MDE3MiBTYWx0ZWRfX/OuI1p+YWS2F
+ G8cJ44itoBaGPZv6SgVHjQ5JI7CMQU0+PsIXxjAwLyuP2OJxif5JiTR0OF3OV/d8M9SOIeZlezS
+ /KbpToZDXHms/DijNSYXLnvPh6GC+vJXoVEsU/5j7mlyylo3JtitC3OJvYa8yUCdN/uZ6B0iFAr
+ cENg4qmJ0QiT3O6gSE6CPdDenxNdSU1fVkmE2TgQldZiXGu5yVemv6pycM6WmG7TpJklPL301TP
+ eAnS7PE5y0r9xWpmlSdyAyeNCBa/QneEouy13y7JFLyX0iWWTtAnWyDegllfqcYMc6lM07hzfhl
+ sqxp8oImRM3RFbDoLXelTHinhIqnAShd4Kl/AikeDg8exH3VLWhNc6i+kqGAvLXr0lWRAOoXVs/
+ yIOJLAgMbogVlThv1xngfyI/67ChZunSwWKB4Cw5GyV1t3FcL9AJAMWD1LCkOQU+Bv+3V691
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
+ definitions=2025-05-27_10,2025-05-27_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 suspectscore=0 impostorscore=0 adultscore=0
+ mlxlogscore=999 lowpriorityscore=0 malwarescore=0 mlxscore=0 spamscore=0
+ clxscore=1015 bulkscore=0 phishscore=0 classifier=spam authscore=0 authtc=n/a
+ authcc= route=outbound adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2505160000 definitions=main-2505270172
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250527_123442_897750_CBD10D8F 
-X-CRM114-Status: GOOD (  17.05  )
+X-CRM114-CacheID: sfid-20250527_132615_891482_970EF473 
+X-CRM114-Status: GOOD (  40.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +137,259 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, May 18, 2025 at 10:06:53PM +0000, Jonas Karlman wrote:
-> The GPIO controllers in most Rockchip SoCs are part or power domains
-> that are always powered on, i.e. PD_BUS or PD_PMU.
-
-Are these described in DT, so this is valid to add for all SoCs?
-
-> On RK3528 the GPIO controllers are spread out among the PD_RKVENC, PD_VO
-> and PD_VPU power domains.
-
-So should be required for RK3528?
-
+On Tue, May 27, 2025 at 04:14:47PM +0800, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 > 
-> Add support to describe power-domains for the GPIO controllers.
+> Convert it to drm bridge driver, it will be convenient for us to
+> migrate the connector part to the display driver later.
+> Considering that some code depend on the connector, the following
+> changes have been made:
+> - Only process edid in &drm_bridge_funcs.edid_read(), so no need to
+> store additional edid info.
+> - Now cdn_dp_get_sink_capability() only focused on reading DPCD_REV.
+> - Update bpc info in cdn_dp_bridge_atomic_enable() instead of
+> cdn_dp_encoder_mode_set(). Actually, the bpc data will be used in
+> cdn_dp_bridge_atomic_enable().
+> - Switch to use DRM_BRIDGE_OP_DP_AUDIO helpers.
 > 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> This patch also convert to use devm_drm_bridge_alloc() API.
+> 
+> Tested with RK3399 EVB IND board.
+> 
+> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 > ---
->  Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 3 +++
->  1 file changed, 3 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-> index d76987ce8e50..bdd83f42615c 100644
-> --- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-> @@ -41,6 +41,9 @@ properties:
->    "#interrupt-cells":
->      const: 2
+> Changes in v3:
+> - Link to V2: https://lore.kernel.org/all/20250523011310.120-1-kernel@airkyi.com/
+> - Switch to use DRM_BRIDGE_OP_DP_AUDIO helpers
+> - Remove the dependency for connector
+> - Remove the extra stored edid
+> - Code cleanup
+> 
+> Changes in v2:
+> - Link to V1: https://lore.kernel.org/all/20250507035148.415-1-kernel@airkyi.com/
+> - Use drm_atomic_get_new_connector_for_encoder() to get connector
+> - Convert to use devm_drm_bridge_alloc() API
+> - Fix typo: cdn_dp_connector_edid_read -> cdn_dp_bridge_edid_read
+> 
+>  drivers/gpu/drm/rockchip/cdn-dp-core.c | 279 ++++++++++---------------
+>  drivers/gpu/drm/rockchip/cdn-dp-core.h |   9 +-
+>  2 files changed, 110 insertions(+), 178 deletions(-)
+> 
+
+
+> @@ -595,16 +546,41 @@ static bool cdn_dp_check_link_status(struct cdn_dp_device *dp)
+>  static void cdn_dp_audio_handle_plugged_change(struct cdn_dp_device *dp,
+>  					       bool plugged)
+>  {
+> -	if (dp->codec_dev)
+> -		dp->plugged_cb(dp->codec_dev, plugged);
+> +	if (dp->sink_has_audio)
+> +		drm_connector_hdmi_audio_plugged_notify(dp->connector, plugged);
+
+I'd say, notify always and let userspace figure it out via the ELD. Then
+you shouldn't need sink_has_audio. This would match the behaviour of
+HDMI drivers.
+
+>  }
 >  
-> +  power-domains:
-> +    maxItems: 1
+
+[...]
+
+> @@ -705,8 +681,6 @@ static int cdn_dp_encoder_atomic_check(struct drm_encoder *encoder,
+>  
+>  static const struct drm_encoder_helper_funcs cdn_dp_encoder_helper_funcs = {
+>  	.mode_set = cdn_dp_encoder_mode_set,
+> -	.enable = cdn_dp_encoder_enable,
+> -	.disable = cdn_dp_encoder_disable,
+>  	.atomic_check = cdn_dp_encoder_atomic_check,
+
+Nit: for the future cleanup, it should probably be possible to get rid
+of these encoder ops too by moving them to the bridge ops.
+
+>  };
+>  
+
+[...]
+
+> @@ -1006,7 +947,8 @@ static void cdn_dp_pd_event_work(struct work_struct *work)
+>  
+>  out:
+>  	mutex_unlock(&dp->lock);
+> -	drm_connector_helper_hpd_irq_event(&dp->connector);
+> +	if (dp->connector)
+> +		drm_connector_helper_hpd_irq_event(dp->connector);
+
+drm_bridge_hpd_notify(). I think then you don't need dp->connector.
+
+>  }
+>  
+>  static int cdn_dp_pd_event(struct notifier_block *nb,
+> @@ -1062,26 +1004,35 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+>  
+>  	drm_encoder_helper_add(encoder, &cdn_dp_encoder_helper_funcs);
+>  
+> -	connector = &dp->connector;
+> -	connector->polled = DRM_CONNECTOR_POLL_HPD;
+> -	connector->dpms = DRM_MODE_DPMS_OFF;
+> -
+> -	ret = drm_connector_init(drm_dev, connector,
+> -				 &cdn_dp_atomic_connector_funcs,
+> -				 DRM_MODE_CONNECTOR_DisplayPort);
+> -	if (ret) {
+> -		DRM_ERROR("failed to initialize connector with drm\n");
+> -		goto err_free_encoder;
+> -	}
+> +	dp->bridge.ops =
+> +			DRM_BRIDGE_OP_DETECT |
+> +			DRM_BRIDGE_OP_EDID |
+> +			DRM_BRIDGE_OP_HPD |
+> +			DRM_BRIDGE_OP_DP_AUDIO;
+> +	dp->bridge.of_node = dp->dev->of_node;
+> +	dp->bridge.type = DRM_MODE_CONNECTOR_DisplayPort;
+> +	dp->bridge.hdmi_audio_dev = dp->dev;
+> +	dp->bridge.hdmi_audio_max_i2s_playback_channels = 8;
+> +	dp->bridge.hdmi_audio_spdif_playback = 1;
+> +	dp->bridge.hdmi_audio_dai_port = -1;
 > +
->  patternProperties:
->    "^.+-hog(-[0-9]+)?$":
->      type: object
+> +	ret = devm_drm_bridge_add(dev, &dp->bridge);
+> +	if (ret)
+> +		return ret;
+>  
+> -	drm_connector_helper_add(connector, &cdn_dp_connector_helper_funcs);
+> +	ret = drm_bridge_attach(encoder, &dp->bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+> +	if (ret)
+> +		return ret;
+>  
+> -	ret = drm_connector_attach_encoder(connector, encoder);
+> -	if (ret) {
+> -		DRM_ERROR("failed to attach connector and encoder\n");
+> -		goto err_free_connector;
+> +	connector = drm_bridge_connector_init(drm_dev, encoder);
+> +	if (IS_ERR(connector)) {
+> +		ret = PTR_ERR(connector);
+> +		dev_err(dp->dev, "failed to init bridge connector: %d\n", ret);
+> +		return ret;
+>  	}
+>  
+> +	drm_connector_attach_encoder(connector, encoder);
+> +
+>  	for (i = 0; i < dp->ports; i++) {
+>  		port = dp->port[i];
+>  
+> @@ -1101,30 +1052,19 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+>  	schedule_work(&dp->event_work);
+>  
+>  	return 0;
+> -
+> -err_free_connector:
+> -	drm_connector_cleanup(connector);
+> -err_free_encoder:
+> -	drm_encoder_cleanup(encoder);
+> -	return ret;
+>  }
+>  
+>  static void cdn_dp_unbind(struct device *dev, struct device *master, void *data)
+>  {
+>  	struct cdn_dp_device *dp = dev_get_drvdata(dev);
+>  	struct drm_encoder *encoder = &dp->encoder.encoder;
+> -	struct drm_connector *connector = &dp->connector;
+>  
+>  	cancel_work_sync(&dp->event_work);
+> -	cdn_dp_encoder_disable(encoder);
+>  	encoder->funcs->destroy(encoder);
+> -	connector->funcs->destroy(connector);
+>  
+>  	pm_runtime_disable(dev);
+>  	if (dp->fw_loaded)
+>  		release_firmware(dp->fw);
+> -	drm_edid_free(dp->drm_edid);
+> -	dp->drm_edid = NULL;
+>  }
+>  
+>  static const struct component_ops cdn_dp_component_ops = {
+> @@ -1171,9 +1111,10 @@ static int cdn_dp_probe(struct platform_device *pdev)
+>  	int ret;
+>  	int i;
+>  
+> -	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
+> -	if (!dp)
+> -		return -ENOMEM;
+> +	dp = devm_drm_bridge_alloc(dev, struct cdn_dp_device, bridge,
+> +				   &cdn_dp_bridge_funcs);
+> +	if (IS_ERR(dp))
+> +		return PTR_ERR(dp);
+>  	dp->dev = dev;
+>  
+>  	match = of_match_node(cdn_dp_dt_ids, pdev->dev.of_node);
+> @@ -1209,19 +1150,11 @@ static int cdn_dp_probe(struct platform_device *pdev)
+>  	mutex_init(&dp->lock);
+>  	dev_set_drvdata(dev, dp);
+>  
+> -	ret = cdn_dp_audio_codec_init(dp, dev);
+> -	if (ret)
+> -		return ret;
+> -
+>  	ret = component_add(dev, &cdn_dp_component_ops);
+>  	if (ret)
+> -		goto err_audio_deinit;
+> +		return ret;
+>  
+>  	return 0;
+> -
+> -err_audio_deinit:
+> -	platform_device_unregister(dp->audio_pdev);
+> -	return ret;
+>  }
+>  
+>  static void cdn_dp_remove(struct platform_device *pdev)
+> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.h b/drivers/gpu/drm/rockchip/cdn-dp-core.h
+> index 17498f576ce7..6aa3ce489382 100644
+> --- a/drivers/gpu/drm/rockchip/cdn-dp-core.h
+> +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.h
+> @@ -8,6 +8,8 @@
+>  #define _CDN_DP_CORE_H
+>  
+>  #include <drm/display/drm_dp_helper.h>
+> +#include <drm/drm_bridge.h>
+> +#include <drm/drm_bridge_connector.h>
+
+This include can go to the C file instead of the header.
+
+>  #include <drm/drm_panel.h>
+>  #include <drm/drm_probe_helper.h>
+>  #include <sound/hdmi-codec.h>
+> @@ -65,12 +67,12 @@ struct cdn_dp_port {
+>  struct cdn_dp_device {
+>  	struct device *dev;
+>  	struct drm_device *drm_dev;
+> -	struct drm_connector connector;
+> +	struct drm_bridge bridge;
+> +	struct drm_connector *connector;
+>  	struct rockchip_encoder encoder;
+>  	struct drm_display_mode mode;
+>  	struct platform_device *audio_pdev;
+>  	struct work_struct event_work;
+> -	const struct drm_edid *drm_edid;
+>  
+>  	struct mutex lock;
+>  	bool connected;
+> @@ -102,8 +104,5 @@ struct cdn_dp_device {
+>  
+>  	u8 dpcd[DP_RECEIVER_CAP_SIZE];
+>  	bool sink_has_audio;
+> -
+> -	hdmi_codec_plugged_cb plugged_cb;
+> -	struct device *codec_dev;
+>  };
+>  #endif  /* _CDN_DP_CORE_H */
 > -- 
 > 2.49.0
 > 
+
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
