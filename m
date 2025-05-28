@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E3EBC5AD49
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 May 2025 13:16:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FBC2C5AD49
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 May 2025 14:04:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=igW/VO66oS9fk6qqX3d9ITBq8NhiXJx/OW0MI77Y1a0=; b=QJyuh3G6Vk013B
-	ELpr/oD6CPobryzVAKjFGXUvfk96+kXXOE6pWaeeEx+q6py1ox/tZ4AVnaGzdy8gKaOAJEwMHyFqb
-	MropjCOi1yyxVzfBP3ZYYwb60Vf/iKBGfzChUz4VKjXknHUtSWqtDeH/085wvRDy9fs2sqlIfpxSX
-	r3D+rcdH9eWS+D0OygT8oRYKVmFeatDyeei+fZ7Dhn4NkmafN3fMp6xNeOtZ3hrHH1dN33khCpJYV
-	3K0rv69WoBPJCjoGi8uWtojRnyRuyO1TVLoE0rwNnki8lKhXEpK+WnRYOQs7cuNAP/Fg8PwOJP+62
-	WNF9MuV8OI+2h5Lu+S3g==;
+	List-Owner; bh=PL6e2s8cV8nCDMMQqGzdF6N7QuBmfXoQTv15LT6FN0E=; b=2axiQRM26VdTtM
+	S/htcum+Ch240xTLqvgANfVENh1thVK9Y+k+Y38zvP8Vl+gJjlCZNkmMYI99Yqcl/Ez1YIzGw/jJD
+	uU3XYLbiEz0riihbKy65rxVhpoXBTc5oCs+Y68Ln8jzx5u9bmyVc6p6k6WgRf1W+nNSrKEhSmVK3p
+	vBeVQwY+eTQ66Lrp/g81E+cbM00jlMrgj4dTaCcffIAlPMHEinguf/yjfbwxnyNvKQF0lnteC9Wx+
+	brghIB1wh8XN12mksJSDCGio4ln6ML5gEdCIYx7s8susPuXMCym8LWRvtYiw/NpPGz409yASnr2w2
+	sPfzeXOY6fCzbAisIgYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKGdR-0000000DDDM-0fVz;
-	Wed, 28 May 2025 13:15:57 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1uKHNx-0000000DJP6-2VTO;
+	Wed, 28 May 2025 14:04:01 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKGX1-0000000DCZL-1lx6;
-	Wed, 28 May 2025 13:09:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=ZV21XWo54z3BlML2GgcnFBxYilTl6UY75ewquPky//0=; b=04EQCtkqm1WGgwmHxnkzaZVswO
-	YWaYfyUBEy3FlMgziPdZR/K/J827iN6UiI5z7CLCw/osQIXDF6Em8y0ApXmUIb3i4glqqbe2IxV4S
-	FekvfBg5UTXIa/wAbIJglu+DaVebiqoyYB1nYhIcw1UKe5xK65NuJYXfGtj6NrpyltAM=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1uKGWs-00EB2C-6J; Wed, 28 May 2025 15:09:10 +0200
-Date: Wed, 28 May 2025 15:09:10 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Quentin Schulz <quentin.schulz@cherry.de>
-Cc: Jakob Unterwurzacher <jakobunt@gmail.com>, foss+kernel@0leil.net,
-	conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
-	jakob.unterwurzacher@cherry.de, krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, robh@kernel.org,
-	Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: support Ethernet Switch adapter
- for RK3588 Jaguar
-Message-ID: <3303d8d4-ec5a-4cdc-8391-ab6e35d76b33@lunn.ch>
-References: <20250523-jaguar-mezz-eth-switch-v2-1-aced8bf6612d@cherry.de>
- <20250527131142.1100673-1-jakob.unterwurzacher@cherry.de>
- <35e0a925-4cba-41de-8fe4-4dd10e8816f1@lunn.ch>
- <380ba32b-bb9a-411e-8006-127461cac08a@cherry.de>
+	id 1uKH2k-0000000DGfe-11mS;
+	Wed, 28 May 2025 13:42:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id BC11D4AC08;
+	Wed, 28 May 2025 13:42:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EF02C4CEF6;
+	Wed, 28 May 2025 13:42:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748439725;
+	bh=V9S/2REy6SRPwlWHL+UjOecCAm58nBM9YBmNFi5Tywo=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=GNsjXw9M9L1DpZv3jViNj4XkRdb+mXI+2m/G47jUDBV7WxLPvUEubGj+1ixOIJqRZ
+	 e717/UmjcPxGcIwM1BREjJHjlHf7DQ6xXKLJDrFl1tj04VPf1Nl1KOdgCgSbhZFqe1
+	 fB4uuTK4326ar1JEQv1u6vI97cf23A7RHdJvMGc4fpP8miZY3I2LE258OtWM74XvuF
+	 uyjjxH7Jkv2eBczrYAMXiiQ4xzeMUCcmt8tKkGRjgdQl+plEZu+sAUbi3CzKXza/g/
+	 qkqGVbbTWmfb3tPdTBHScCSnX5dqhvmCdvqDtXY9/jBXm1ah6dywidLzlVPvpGBgkS
+	 H/v7sUXokTZ5Q==
+Received: by mail-ej1-f51.google.com with SMTP id a640c23a62f3a-ad1b94382b8so768994466b.0;
+        Wed, 28 May 2025 06:42:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUHHQeNl9SrOpRRUCiNNrP5nbdxueOnMxfw7H4E+0I/OG1c87TLGKY+3Rbz8MeS0esvMlC5E81jmXKDgro0BhY=@lists.infradead.org, AJvYcCWV4B1eZGiqN+b1ECyIs8BQCVylObm2WMWc4gfpmGAUwvpFmdFF7j8NCLPdzlAW2v2jzwFQfAcT3IjU6Ex+VCTd@lists.infradead.org
+X-Gm-Message-State: AOJu0YwEalSXv8GFMY8486LkMhBmfhi6yVVkfANgM8vkSTr7Fu6we7Ue
+	4jGBj9bNAw+mqN5z+BRoQ3Aazyx+GgaDmWEm7LkXmaP52d3+toVrxR8H9xai9b28EcJ2KJuCJJN
+	01WtokZjNZNMbcja7j6QkTAFE48w9nQ==
+X-Google-Smtp-Source: AGHT+IF33pDJOIkUnFeeemo7C8vEsrRKhSwUSbgBJjMPDXVeNtNZPzFqXBOHGol2WTjwYaKgOgXZo2D8V9wI8E6hrhc=
+X-Received: by 2002:a17:907:7f09:b0:ad5:23e3:48b6 with SMTP id
+ a640c23a62f3a-ad85b2b586fmr1522153166b.45.1748439724013; Wed, 28 May 2025
+ 06:42:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <380ba32b-bb9a-411e-8006-127461cac08a@cherry.de>
+References: <20250520-6-10-rocket-v5-0-18c9ca0fcb3c@tomeuvizoso.net> <20250520-6-10-rocket-v5-1-18c9ca0fcb3c@tomeuvizoso.net>
+In-Reply-To: <20250520-6-10-rocket-v5-1-18c9ca0fcb3c@tomeuvizoso.net>
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 28 May 2025 08:41:51 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+2mvUDWWvtPSryAiCNJP_=1vNRxARxWTS=-O-LTQO3Dg@mail.gmail.com>
+X-Gm-Features: AX0GCFtEoojAQ2L7InqgVIis2qLVvXMe-zX4FDkooFBAAdsDZZRxWtAdT4YSjTY
+Message-ID: <CAL_Jsq+2mvUDWWvtPSryAiCNJP_=1vNRxARxWTS=-O-LTQO3Dg@mail.gmail.com>
+Subject: Re: [PATCH v5 01/10] dt-bindings: npu: rockchip,rknn: Add bindings
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_060919_544225_607B02E6 
-X-CRM114-Status: GOOD (  30.80  )
+X-CRM114-CacheID: sfid-20250528_064206_333935_B7E02698 
+X-CRM114-Status: GOOD (  24.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,92 +75,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@gmail.com>, Sumit Semwal <sumit.semwal@linaro.org>, Simona Vetter <simona@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jeff Hugo <jeff.hugo@oss.qualcomm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, Oded Gabbay <ogabbay@kernel.org>, linux-kernel@vger.kernel.org, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 28, 2025 at 09:56:51AM +0200, Quentin Schulz wrote:
-> Hi Andrew,
-> 
-> On 5/27/25 6:18 PM, Andrew Lunn wrote:
-> > On Tue, May 27, 2025 at 03:11:42PM +0200, Jakob Unterwurzacher wrote:
-> > > > @Jakob, is this something you could check? devmem2 0xfd58c31c w 0x3c0000
-> > > > should do the trick to disable the circuitry according to the TRM?
-> > > 
-> > > I measured TXCLK vs TXD3 on an oscilloscope on gmac1:
-> > > 
-> > > 	Setting	Decimal	Actual TXCLK delay (ps)
-> > > 	00	0	47
-> > > 	0a	10	283
-> > > 	10	16	440
-> > > 	20	32	893
-> > > 	30	48	1385
-> > > 	40	64	1913
-> > > 	50	80	2514
-> > > 	60	96	3077
-> > > 	70	112	3565
-> > > 	7f	127	4009
-> > > 
-> > > 	off	x	-315
-> > > 
-> > > Setting = tx_delay (hex)
-> > > Decimal = tx_delay (dec)
-> > > Actual TXCLK delay (ps) = Measurement from oscilloscope
-> > > 
-> > > Plotting this we can deduce that one tx_delay unit is about 31ps.
-> > 
-> > Nice to see somebody actually do the measurements. Based on this, it
-> > would be good to implement:
-> > 
-> >          tx-internal-delay-ps:
-> >            description:
-> >              RGMII Transmit Clock Delay defined in pico seconds. This is used for
-> >              controllers that have configurable TX internal delays. If this
-> >              property is present then the MAC applies the TX delay.
-> > 
-> > For the moment, please limit it to just the device you measured it on.
-> > 
-> 
-> What exactly do you mean with "limit it to just the device you measured it
-> on"?
-
-Nobody seems to know if rx_delay & tx_delay operate the same across
-the whole range of SoCs. I don't particularly care if these properties
-are difference between SoC, they are vendor properties, with
-undocumented magic values. However 'tx-internal-delay-ps' is
-standardised, and has a very clear meaning. I don't want it used
-unless somebody has performed a measurement and we know that 2000
-produces a 2ns delay.
-
-> I'll need to implement reading the delay from the stmmac driver to use this
-> property, do I need to restrict reading this property to the SoC we tested
-> (RK3588)?
-
-Yes, please only allow it to be used on RK3588, and any other SoC you
-can test and verify its behaviour.
-
-> I assume you're then expecting tx-internal-delay-ps only on this new DTSO's
-> gmac1?
-
-I would like rx_delay and tx_delay to be marked deprecated, with the
-end goal they are no longer used, the standard properties take there
-place. But to get there, we need more measurements from real hardware,
-or some other way to be sure what we have the correct delay.
-
-> Would you still want rx_delay/tx_delay to be set to 0x00? Maybe only
-> rx_delay since we won't have a companion rx-internal-delay-ps for now (until
-> someone from Rockchip answers :); adding Kever back to the Cc for that)? Or
-> should I remove both of them?
-
-rx-internal-delay-ps and rx_delay should be mutually exclusive. If
-both are present -EINVAL. We have to keep supporting rx_delay for
-rk3588 otherwise we break backwards compatibility, but ideally no more
-instances of it should be added once rx-internal-delay-ps is added.
-
-	Andrew
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBNYXkgMjAsIDIwMjUgYXQgNToyN+KAr0FNIFRvbWV1IFZpem9zbyA8dG9tZXVAdG9t
+ZXV2aXpvc28ubmV0PiB3cm90ZToKPgo+IEFkZCB0aGUgYmluZGluZ3MgZm9yIHRoZSBOZXVyYWwg
+UHJvY2Vzc2luZyBVbml0IElQIGZyb20gUm9ja2NoaXAuCj4KPiB2MjoKPiAtIEFkYXB0IHRvIG5l
+dyBub2RlIHN0cnVjdHVyZSAob25lIG5vZGUgcGVyIGNvcmUsIGVhY2ggd2l0aCBpdHMgb3duCj4g
+ICBJT01NVSkKPiAtIFNldmVyYWwgbWlzYy4gZml4ZXMgZnJvbSBTZWJhc3RpYW4gUmVpY2hlbAo+
+Cj4gdjM6Cj4gLSBTcGxpdCByZWdpc3RlciBibG9jayBpbiBpdHMgY29uc3RpdHVlbnQgc3ViYmxv
+Y2tzLCBhbmQgb25seSByZXF1aXJlCj4gICB0aGUgb25lcyB0aGF0IHRoZSBrZXJuZWwgd291bGQg
+ZXZlciB1c2UgKE5pY29sYXMgRnJhdHRhcm9saSkKPiAtIEdyb3VwIHN1cHBsaWVzIChSb2IgSGVy
+cmluZykKPiAtIEV4cGxhaW4gdGhlIHdheSBpbiB3aGljaCB0aGUgdG9wIGNvcmUgaXMgc3BlY2lh
+bCAoUm9iIEhlcnJpbmcpCj4KPiB2NDoKPiAtIENoYW5nZSByZXF1aXJlZCBub2RlIG5hbWUgdG8g
+bnB1QCAoUm9iIEhlcnJpbmcgYW5kIEtyenlzenRvZiBLb3psb3dza2kpCj4gLSBSZW1vdmUgdW5u
+ZWVkZWQgaXRlbXM6IChLcnp5c3p0b2YgS296bG93c2tpKQo+IC0gRml4IHVzZSBvZiBtaW5JdGVt
+cy9tYXhJdGVtcyAoS3J6eXN6dG9mIEtvemxvd3NraSkKPiAtIEFkZCByZWctbmFtZXMgdG8gbGlz
+dCBvZiByZXF1aXJlZCBwcm9wZXJ0aWVzIChLcnp5c3p0b2YgS296bG93c2tpKQo+IC0gRml4IGV4
+YW1wbGUgKEtyenlzenRvZiBLb3psb3dza2kpCj4KPiB2NToKPiAtIFJlbmFtZSBmaWxlIHRvIHJv
+Y2tjaGlwLHJrMzU4OC1ya25uLWNvcmUueWFtbCAoS3J6eXN6dG9mIEtvemxvd3NraSkKPiAtIFN0
+cmVhbWxpbmUgY29tcGF0aWJsZSBwcm9wZXJ0eSAoS3J6eXN6dG9mIEtvemxvd3NraSkKPgo+IFNp
+Z25lZC1vZmYtYnk6IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBjb2xsYWJv
+cmEuY29tPgo+IFNpZ25lZC1vZmYtYnk6IFRvbWV1IFZpem9zbyA8dG9tZXVAdG9tZXV2aXpvc28u
+bmV0Pgo+IC0tLQo+ICAuLi4vYmluZGluZ3MvbnB1L3JvY2tjaGlwLHJrMzU4OC1ya25uLWNvcmUu
+eWFtbCAgICB8IDE0NyArKysrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDE0
+NyBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL25wdS9yb2NrY2hpcCxyazM1ODgtcmtubi1jb3JlLnlhbWwgYi9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbnB1L3JvY2tjaGlwLHJrMzU4OC1ya25uLWNvcmUueWFt
+bAo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw
+MDAwMDAwMDAwMDAwMDAwMC4uOWViNDI2MzY3YWZjYmMwM2MzODdkNDNjNGI4MjUwY2RkMWI5ZWU4
+Ngo+IC0tLSAvZGV2L251bGwKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvbnB1L3JvY2tjaGlwLHJrMzU4OC1ya25uLWNvcmUueWFtbAo+IEBAIC0wLDAgKzEsMTQ3IEBA
+Cj4gKyMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wLW9ubHkgT1IgQlNELTItQ2xh
+dXNlKQo+ICslWUFNTCAxLjIKPiArLS0tCj4gKyRpZDogaHR0cDovL2RldmljZXRyZWUub3JnL3Nj
+aGVtYXMvbnB1L3JvY2tjaGlwLHJrMzU4OC1ya25uLWNvcmUueWFtbCMKPiArJHNjaGVtYTogaHR0
+cDovL2RldmljZXRyZWUub3JnL21ldGEtc2NoZW1hcy9jb3JlLnlhbWwjCj4gKwo+ICt0aXRsZTog
+TmV1cmFsIFByb2Nlc3NpbmcgVW5pdCBJUCBmcm9tIFJvY2tjaGlwCj4gKwo+ICttYWludGFpbmVy
+czoKPiArICAtIFRvbWV1IFZpem9zbyA8dG9tZXVAdG9tZXV2aXpvc28ubmV0Pgo+ICsKPiArZGVz
+Y3JpcHRpb246Cj4gKyAgUm9ja2NoaXAgSVAgZm9yIGFjY2VsZXJhdGluZyBpbmZlcmVuY2Ugb2Yg
+bmV1cmFsIG5ldHdvcmtzLCBiYXNlZCBvbiBOVklESUEncwo+ICsgIG9wZW4gc291cmNlIE5WRExB
+IElQLgo+ICsKPiArICBUaGVyZSBpcyB0byBiZSBhIG5vZGUgcGVyIGVhY2ggY29yZSBpbiB0aGUg
+TlBVLiBJbiBSb2NrY2hpcCdzIGRlc2lnbiB0aGVyZQo+ICsgIHdpbGwgYmUgb25lIGNvcmUgdGhh
+dCBpcyBzcGVjaWFsIGFuZCBuZWVkcyB0byBiZSBwb3dlcmVkIG9uIGJlZm9yZSBhbnkgb2YgdGhl
+Cj4gKyAgb3RoZXIgY29yZXMgY2FuIGJlIHVzZWQuIFRoaXMgc3BlY2lhbCBjb3JlIGlzIGNhbGxl
+ZCB0aGUgdG9wIGNvcmUgYW5kIHNob3VsZAo+ICsgIGhhdmUgdGhlIGNvbXBhdGlibGUgc3RyaW5n
+IHRoYXQgY29ycmVzcG9uZHMgdG8gdG9wIGNvcmVzLgoKSXMgdGhpcyByZWFsbHkgYSBkaXN0aW5j
+dGlvbiBpbiB0aGUgaC93PyBJZiB5b3UgY2hhbmdlIHdoaWNoIGNvcmUgaXMKdGhlIHRvcCBvbmUg
+aW4gdGhlIERULCBkb2VzIGl0IHN0aWxsIHdvcms/Cgo+ICsKPiArcHJvcGVydGllczoKPiArICAk
+bm9kZW5hbWU6Cj4gKyAgICBwYXR0ZXJuOiAnXm5wdUBbYS1mMC05XSskJwo+ICsKPiArICBjb21w
+YXRpYmxlOgo+ICsgICAgZW51bToKPiArICAgICAgLSByb2NrY2hpcCxyazM1ODgtcmtubi1jb3Jl
+LXRvcAo+ICsgICAgICAtIHJvY2tjaGlwLHJrMzU4OC1ya25uLWNvcmUKPiArCj4gKyAgcmVnOgo+
+ICsgICAgbWF4SXRlbXM6IDMKPiArCj4gKyAgcmVnLW5hbWVzOgo+ICsgICAgaXRlbXM6Cj4gKyAg
+ICAgIC0gY29uc3Q6IHBjCj4gKyAgICAgIC0gY29uc3Q6IGNuYQo+ICsgICAgICAtIGNvbnN0OiBj
+b3JlCj4gKwo+ICsgIGNsb2NrczoKPiArICAgIG1pbkl0ZW1zOiAyCj4gKyAgICBtYXhJdGVtczog
+NAo+ICsKPiArICBjbG9jay1uYW1lczoKPiArICAgIGl0ZW1zOgo+ICsgICAgICAtIGNvbnN0OiBh
+Y2xrCj4gKyAgICAgIC0gY29uc3Q6IGhjbGsKPiArICAgICAgLSBjb25zdDogbnB1Cj4gKyAgICAg
+IC0gY29uc3Q6IHBjbGsKPiArICAgIG1pbkl0ZW1zOiAyCgpJdCBpcyBvZGQgdGhhdCB0aGUgbm9u
+LXRvcCBjb3JlcyBvbmx5IGhhdmUgYnVzIGNsb2NrcyBhbmQgbm8gbW9kdWxlCmNsb2NrLiBCdXQg
+YmFzZWQgb24gdGhlIGNsb2NrIG5hbWVzLCBJJ20gZ3Vlc3NpbmcgdGhlIGFjbGsvaGNsayBhcmUK
+bm90IHNoYXJlZCwgYnV0IHRoZSBucHUgYW5kIHBjbGsgYXJlIHNoYXJlZC4gU2luY2UgeW91IG1h
+a2UgdGhlIHRvcApjb3JlIHByb2JlIGZpcnN0LCB0aGVuIGl0IHdpbGwgZW5hYmxlIHRoZSBzaGFy
+ZWQgY2xvY2tzIGFuZCB0aGUKbm9uLXRvcCBjb3JlcyBkb24ndCBoYXZlIHRvIHdvcnJ5IGFib3V0
+IHRoZW0uIElmIHNvLCB0aGF0IGlzIHdyb25nIGFzCml0IGlzIGxldHRpbmcgdGhlIHNvZnR3YXJl
+IGRlc2lnbiBkZWZpbmUgdGhlIGJpbmRpbmdzLgoKUm9iCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
