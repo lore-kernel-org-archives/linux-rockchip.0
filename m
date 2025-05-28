@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E36BFC5AD49
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 May 2025 08:50:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E3EBC5AD49
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 May 2025 13:16:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g5gDePTxl9O0RTHfYg5nR22oZ0sSquUN7oHnl0fEvsU=; b=gn8wQAlB4fIGwL
-	hMKUsJt6Q4IpjCILeX/sQ5EGjiLnKIWbF5GGCXjNwEbNu5pNyK905Dr32XLWiUZygAsUrBom/hOPi
-	zmNaWvk7yhOZJA09iqtPRbE5vxPOO0YkU1YxUb0XalQz2BZFlIIX1jxXrre5IQMhrxlSXdaDAMHxA
-	WhvJ+Ud+3agayE56kEgMI8O5W7sZVmzVfngs+vTSDlqFOeHj996/4figK5k/BiFEuXlAmdvrE/qPX
-	7w+spzh3GZqLhvF4ZQB5rM5J3XbZnDA2Cd/5AEqCbVHBbN+zkwBhAdiiNsKyj365CiA0yFiAXQEDK
-	Rl5U43X+1lzadhUEHzuw==;
+	List-Owner; bh=igW/VO66oS9fk6qqX3d9ITBq8NhiXJx/OW0MI77Y1a0=; b=QJyuh3G6Vk013B
+	ELpr/oD6CPobryzVAKjFGXUvfk96+kXXOE6pWaeeEx+q6py1ox/tZ4AVnaGzdy8gKaOAJEwMHyFqb
+	MropjCOi1yyxVzfBP3ZYYwb60Vf/iKBGfzChUz4VKjXknHUtSWqtDeH/085wvRDy9fs2sqlIfpxSX
+	r3D+rcdH9eWS+D0OygT8oRYKVmFeatDyeei+fZ7Dhn4NkmafN3fMp6xNeOtZ3hrHH1dN33khCpJYV
+	3K0rv69WoBPJCjoGi8uWtojRnyRuyO1TVLoE0rwNnki8lKhXEpK+WnRYOQs7cuNAP/Fg8PwOJP+62
+	WNF9MuV8OI+2h5Lu+S3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKCUO-0000000CcqF-0MNZ;
-	Wed, 28 May 2025 08:50:22 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKCUK-0000000CcoR-1yFd;
-	Wed, 28 May 2025 08:50:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=Q/Kz/3SM6qMlxK4FSVI0nwRtn+UkFkCaBDdk8+T5tYc=; b=N
-	nWYVRPSt9m92/Gn7VY4ZUuEqbwwnAbRw5+pW4GB/CSIO17d6Vc552qtDu3a+gIhj
-	9P+v0CQDqArbn4Kfi3dtJWthUkg2hD9IQb/fp38ECY8pAivdDz3Ojw765MK4ktP1
-	PG5QLZ0pP+vc7b93D9xERUOsExTTf0UWuc/c87L+fU=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-128 (Coremail) ; Wed, 28 May 2025 16:49:53 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Wed, 28 May 2025 16:49:53 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, simic@manjaro.org,
-	krzk+dt@kernel.org, robh@kernel.org, devicetree@vger.kernel.org,
-	conor+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, algea.cao@rock-chips.com,
-	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: [PATCH v2] arm64: dts: rockchip: Adjust the HDMI DDC IO
- driver strength for rk3588
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <3704844.aeNJFYEL58@workhorse>
-References: <20250522020537.1884771-1-andyshrk@163.com>
- <3704844.aeNJFYEL58@workhorse>
-X-NTES-SC: AL_Qu2fCviZvUki5SKQZukfmkcVgOw9UcO5v/Qk3oZXOJF8jA7p4wscQHpOAWbq0cyIMRyRnBWaVRtWyPRTR6hlT6sb/yONQoqn4Ld8lYww2OFEbg==
+	id 1uKGdR-0000000DDDM-0fVz;
+	Wed, 28 May 2025 13:15:57 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uKGX1-0000000DCZL-1lx6;
+	Wed, 28 May 2025 13:09:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=ZV21XWo54z3BlML2GgcnFBxYilTl6UY75ewquPky//0=; b=04EQCtkqm1WGgwmHxnkzaZVswO
+	YWaYfyUBEy3FlMgziPdZR/K/J827iN6UiI5z7CLCw/osQIXDF6Em8y0ApXmUIb3i4glqqbe2IxV4S
+	FekvfBg5UTXIa/wAbIJglu+DaVebiqoyYB1nYhIcw1UKe5xK65NuJYXfGtj6NrpyltAM=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uKGWs-00EB2C-6J; Wed, 28 May 2025 15:09:10 +0200
+Date: Wed, 28 May 2025 15:09:10 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Quentin Schulz <quentin.schulz@cherry.de>
+Cc: Jakob Unterwurzacher <jakobunt@gmail.com>, foss+kernel@0leil.net,
+	conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
+	jakob.unterwurzacher@cherry.de, krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, robh@kernel.org,
+	Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: support Ethernet Switch adapter
+ for RK3588 Jaguar
+Message-ID: <3303d8d4-ec5a-4cdc-8391-ab6e35d76b33@lunn.ch>
+References: <20250523-jaguar-mezz-eth-switch-v2-1-aced8bf6612d@cherry.de>
+ <20250527131142.1100673-1-jakob.unterwurzacher@cherry.de>
+ <35e0a925-4cba-41de-8fe4-4dd10e8816f1@lunn.ch>
+ <380ba32b-bb9a-411e-8006-127461cac08a@cherry.de>
 MIME-Version: 1.0
-Message-ID: <9ffd480.852d.19716157087.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: gCgvCgD3X+UxzjZopHQPAA--.35457W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkAJbXmg2ya2jJQABsq
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Content-Disposition: inline
+In-Reply-To: <380ba32b-bb9a-411e-8006-127461cac08a@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_015016_845630_9D3E2AF4 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20250528_060919_544225_607B02E6 
+X-CRM114-Status: GOOD (  30.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,53 +75,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed, May 28, 2025 at 09:56:51AM +0200, Quentin Schulz wrote:
+> Hi Andrew,
+> 
+> On 5/27/25 6:18 PM, Andrew Lunn wrote:
+> > On Tue, May 27, 2025 at 03:11:42PM +0200, Jakob Unterwurzacher wrote:
+> > > > @Jakob, is this something you could check? devmem2 0xfd58c31c w 0x3c0000
+> > > > should do the trick to disable the circuitry according to the TRM?
+> > > 
+> > > I measured TXCLK vs TXD3 on an oscilloscope on gmac1:
+> > > 
+> > > 	Setting	Decimal	Actual TXCLK delay (ps)
+> > > 	00	0	47
+> > > 	0a	10	283
+> > > 	10	16	440
+> > > 	20	32	893
+> > > 	30	48	1385
+> > > 	40	64	1913
+> > > 	50	80	2514
+> > > 	60	96	3077
+> > > 	70	112	3565
+> > > 	7f	127	4009
+> > > 
+> > > 	off	x	-315
+> > > 
+> > > Setting = tx_delay (hex)
+> > > Decimal = tx_delay (dec)
+> > > Actual TXCLK delay (ps) = Measurement from oscilloscope
+> > > 
+> > > Plotting this we can deduce that one tx_delay unit is about 31ps.
+> > 
+> > Nice to see somebody actually do the measurements. Based on this, it
+> > would be good to implement:
+> > 
+> >          tx-internal-delay-ps:
+> >            description:
+> >              RGMII Transmit Clock Delay defined in pico seconds. This is used for
+> >              controllers that have configurable TX internal delays. If this
+> >              property is present then the MAC applies the TX delay.
+> > 
+> > For the moment, please limit it to just the device you measured it on.
+> > 
+> 
+> What exactly do you mean with "limit it to just the device you measured it
+> on"?
 
-Hello Nicolas,
+Nobody seems to know if rx_delay & tx_delay operate the same across
+the whole range of SoCs. I don't particularly care if these properties
+are difference between SoC, they are vendor properties, with
+undocumented magic values. However 'tx-internal-delay-ps' is
+standardised, and has a very clear meaning. I don't want it used
+unless somebody has performed a measurement and we know that 2000
+produces a 2ns delay.
 
-At 2025-05-27 19:53:56, "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com> wrote:
->On Thursday, 22 May 2025 04:05:24 Central European Summer Time Andy Yan wrote:
->> From: Andy Yan <andy.yan@rock-chips.com>
->> 
->> For the RK3588 HDMI controller, the falling edge of DDC SDA and SCL
->> almost coincide and cannot be adjusted by HDMI registrer, resulting
->> in poor compatibility of DDC communication.
->> 
->> An improvement of the compatibility of DDC can be done by increasing
->> the driver strength of SCL and decreasing the driver strength of SDA
->> to increase the slope of the falling edge.
->> 
->> It should be noted that the maximum driving strength of hdmim0_tx1_scl
->> is only 3, which is different from that of the other IOs.
->> 
->> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->> 
->> ---
->> 
->> Changes in v2:
->> - Correct the max drive level of hdmim0_tx1_scl.
->> 
->>  .../dts/rockchip/rk3588-base-pinctrl.dtsi     | 20 +++++------
->>  .../dts/rockchip/rk3588-extra-pinctrl.dtsi    |  5 +--
->>  .../boot/dts/rockchip/rockchip-pinconf.dtsi   | 35 +++++++++++++++++++
->>  3 files changed, 48 insertions(+), 12 deletions(-)
->> 
->
->Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
->
->Quickly tested this on both HDMI ports of a ROCK 5T with an HDMI capture
->card on the other end. While I didn't originally have any issues to begin
->with, this patch does not introduce any new ones, so seems good to me.
+> I'll need to implement reading the delay from the stmmac driver to use this
+> property, do I need to restrict reading this property to the SoC we tested
+> (RK3588)?
 
+Yes, please only allow it to be used on RK3588, and any other SoC you
+can test and verify its behaviour.
 
-Thanks for yout test.
+> I assume you're then expecting tx-internal-delay-ps only on this new DTSO's
+> gmac1?
 
-I sent this patch because someone from the community reported to me that his board
-couldn't successfully establish ddc communication when running the mainline kernel.
-After conducting extensive comparisons, it was discovered that there were differences
-in the IO drive strength configuration between mainline code and the downstream code. 
-Then, I recalled that during the chip bringup process and when conducting the SI test, 
-we had encountered this problem before, and we did the fix by adjusting DDC IO drive strength.
->
+I would like rx_delay and tx_delay to be marked deprecated, with the
+end goal they are no longer used, the standard properties take there
+place. But to get there, we need more measurements from real hardware,
+or some other way to be sure what we have the correct delay.
+
+> Would you still want rx_delay/tx_delay to be set to 0x00? Maybe only
+> rx_delay since we won't have a companion rx-internal-delay-ps for now (until
+> someone from Rockchip answers :); adding Kever back to the Cc for that)? Or
+> should I remove both of them?
+
+rx-internal-delay-ps and rx_delay should be mutually exclusive. If
+both are present -EINVAL. We have to keep supporting rx_delay for
+rk3588 otherwise we break backwards compatibility, but ideally no more
+instances of it should be added once rx-internal-delay-ps is added.
+
+	Andrew
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
