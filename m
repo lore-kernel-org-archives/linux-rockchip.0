@@ -4,152 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECBB0C5AE59
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 May 2025 08:27:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8B55C3ABB2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 May 2025 08:45:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u/DBGOJCRTwYEr7YFq4GrdfoN74R+iZCQTri5SYfeTY=; b=3MbMUxh4JZ8SL7
-	OssT8hDGFOMx2UzdnRqddS/wUhfo+EAvZhashNrli5s+ZT+3/WTh6HX/5DiF/so9Cy/N7klfzbh+U
-	lRqAP21U3RAswG3LqEAKcqmi7tpr69r9Q7wLBXwqrUSU0I4vaRK2vhTHX8tbYxkF9O0Qy17TF0cyG
-	lzww+vQH690xDloFKFl1sptfRj59eC420DPwDsmZJs0Cn7xGpQ55ltUznS9uhTEFhdG+rFXv5hkGu
-	lZUSBqLnjqIsM7pZuPmrdBi2XeHJO/JPkgqCwDjLUXhDIlqQRF5cVZfGEyZ+E9ebpg79/9IqY7ZrP
-	DoBg82guYt0SB15ld1tA==;
+	List-Owner; bh=Ixb120fUmVH5oGdSRYtgKLEtfBa44SDLY/KHQmhV2rw=; b=QNz557Q+sOBHTw
+	qMy8jZSlt3/EUQ4KPrmgsCi5QQch/e0vNCJwAYpqy3LdlHavkUbriV9Gx/pQU98gGjaltyNTxMKfG
+	j37nFaDzfJt9ainGyqCswjUcmcPUkUZq3S3tFpR/agvcf89/PnrNnkO0YTJe/1yUyDBmgiKYR5ztE
+	SQtyT1se6SBqYu3TXD7adxr5DsU4tPQ/+rD8XmJwfINVvGYfUA/5l0HIQUh6akVj/SDxW+XTqNoX5
+	UV3sRWf42gw88y6B4QhwRI8Zb1T0K0gHnp7ojYCnAAb1+biFHH/Xo7KaJxFGctkf2Ha7OvuDXEnZq
+	9rLZdUeIFHx+twBtepMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKC8T-0000000CaA5-2ySb;
-	Wed, 28 May 2025 08:27:41 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1uKCPl-0000000CcNx-3ag7;
+	Wed, 28 May 2025 08:45:33 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKC4f-0000000CZP8-0NSD
+	id 1uKCNT-0000000Cc4F-1VVI
 	for linux-rockchip@lists.infradead.org;
-	Wed, 28 May 2025 08:23:46 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 5358A21D18;
-	Wed, 28 May 2025 08:23:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1748420622; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
-	b=XQBmtfRd9f0BD+wpJmfsDg89bjVUFtWxyB8+k37xabISALbh+H9l1F8nnknU7GJur2Ir6r
-	Kmlkb+phPU6vHmBUvrOzKLyPdCDiqZ5OX7tAinz1caXlC0ZC8KfcFq7XHirFV3R3ifXNaY
-	lyqWj/ehrK8c6iCWlXr1VU2Q1LKJ/G4=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1748420622;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
-	b=dvJt6W9eqTR5Rd+KiuP01H+RwKo8jKPYSaFQcOmtWsSoyOZPFSM4P/6LbT/SZoQfSnPT4b
-	VftOkM9jdhB63YBw==
-Authentication-Results: smtp-out1.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1748420622; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
-	b=XQBmtfRd9f0BD+wpJmfsDg89bjVUFtWxyB8+k37xabISALbh+H9l1F8nnknU7GJur2Ir6r
-	Kmlkb+phPU6vHmBUvrOzKLyPdCDiqZ5OX7tAinz1caXlC0ZC8KfcFq7XHirFV3R3ifXNaY
-	lyqWj/ehrK8c6iCWlXr1VU2Q1LKJ/G4=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1748420622;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
-	b=dvJt6W9eqTR5Rd+KiuP01H+RwKo8jKPYSaFQcOmtWsSoyOZPFSM4P/6LbT/SZoQfSnPT4b
-	VftOkM9jdhB63YBw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id CC0DA136E0;
-	Wed, 28 May 2025 08:23:41 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id pmh/MA3INmgxVwAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Wed, 28 May 2025 08:23:41 +0000
-Message-ID: <1926848a-9334-4c15-a076-a93ef29c80d6@suse.de>
-Date: Wed, 28 May 2025 10:23:41 +0200
+	Wed, 28 May 2025 08:43:12 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mfe@pengutronix.de>)
+	id 1uKCN9-00033D-JK; Wed, 28 May 2025 10:42:51 +0200
+Received: from pty.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::c5])
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mfe@pengutronix.de>)
+	id 1uKCN8-000YbX-0F;
+	Wed, 28 May 2025 10:42:50 +0200
+Received: from mfe by pty.whiteo.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <mfe@pengutronix.de>)
+	id 1uKCN7-00ER89-34;
+	Wed, 28 May 2025 10:42:49 +0200
+Date: Wed, 28 May 2025 10:42:49 +0200
+From: Marco Felsch <m.felsch@pengutronix.de>
+To: Adam Ford <aford173@gmail.com>
+Cc: nicolas.dufresne@collabora.com, benjamin.gaignard@collabora.com,
+	p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
+	Sascha Hauer <s.hauer@pengutronix.de>, kernel@pengutronix.de,
+	festevam@gmail.com, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, paulk@sys-base.io, hverkuil@xs4all.nl,
+	laurent.pinchart@ideasonboard.com, sebastian.fricke@collabora.com,
+	ming.qian@nxp.com, linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org
+Subject: Re: [RFC PATCH 07/11] arm64: dts: imx8mp: fix VPU_BUS clock setting
+Message-ID: <20250528084249.6qn2mnu2rmrv7xhi@pengutronix.de>
+References: <20250502150513.4169098-1-m.felsch@pengutronix.de>
+ <20250502150513.4169098-8-m.felsch@pengutronix.de>
+ <CAHCN7x+Lu9momgX3Vwp+Yu+Tet5Q=k2vCL83SMLuad24SDchEg@mail.gmail.com>
+ <20250502165535.aeb2osq2vnxsudmq@pengutronix.de>
+ <CAHCN7xLecU12XtXFuwfNP+eee+9RLCSB9iErNmk7VFV+WrozJA@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 00/25] drm/dumb-buffers: Fix and improve buffer-size
- calculation
-To: simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
- maarten.lankhorst@linux.intel.com, geert@linux-m68k.org,
- tomi.valkeinen@ideasonboard.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
- nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org
-References: <20250311155120.442633-1-tzimmermann@suse.de>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <20250311155120.442633-1-tzimmermann@suse.de>
-X-Spamd-Result: default: False [-2.80 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	NEURAL_HAM_SHORT(-0.20)[-0.996];
-	MIME_GOOD(-0.10)[text/plain];
-	FREEMAIL_TO(0.00)[ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	ARC_NA(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	RCPT_COUNT_TWELVE(0.00)[20];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	RCVD_TLS_ALL(0.00)[];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	TO_DN_NONE(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,imap1.dmz-prg2.suse.org:helo]
+Content-Disposition: inline
+In-Reply-To: <CAHCN7xLecU12XtXFuwfNP+eee+9RLCSB9iErNmk7VFV+WrozJA@mail.gmail.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mfe@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_012345_426676_4020114B 
-X-CRM114-Status: GOOD (  15.57  )
+X-CRM114-CacheID: sfid-20250528_014311_390889_AFF7F7BA 
+X-CRM114-Status: GOOD (  29.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -161,119 +83,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-ping
-
-I'm still looking for more reviews; especially patches 1 and 2.
-
-Best regards
-Thomas
-
-Am 11.03.25 um 16:47 schrieb Thomas Zimmermann:
-> Dumb-buffer pitch and size is specified by width, height, bits-per-pixel
-> plus various hardware-specific alignments. The calculation of these
-> values is inconsistent and duplicated among drivers. The results for
-> formats with bpp < 8 are sometimes incorrect.
->
-> This series fixes this for most drivers. Default scanline pitch and
-> buffer size are now calculated with the existing 4CC helpers. There is
-> a new helper drm_mode_size_dumb() that calculates scanline pitch and
-> buffer size according to driver requirements.
->
-> The series fixes the common GEM implementations for DMA, SHMEM and
-> VRAM. It further changes most implementations of dumb_create to use
-> the new helper. A small number of drivers has more complicated
-> calculations and will be updated by a later patches.
->
-> v4:
-> - improve UAPI documentation
-> - document bpp special cases
-> - use drm_warn_once()
-> - add TODO lists
-> - armada: fix pitch alignment
-> v3:
-> - document UAPI semantics
-> - fall back to bpp-based allocation for unknown color modes
-> - cleanups
-> v2:
-> - rewrite series
-> - convert many individual drivers besides the shared GEM helpers
->
-> Thomas Zimmermann (25):
->    drm/dumb-buffers: Sanitize output on errors
->    drm/dumb-buffers: Provide helper to set pitch and size
->    drm/gem-dma: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/gem-shmem: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/gem-vram: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/armada: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/gma500: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/hibmc: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/imx/ipuv3: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/loongson: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/mediatek: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/msm: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/nouveau: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/omapdrm: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/qxl: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/renesas/rcar-du: Compute dumb-buffer sizes with
->      drm_mode_size_dumb()
->    drm/renesas/rz-du: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/rockchip: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/tegra: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/virtio: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/vmwgfx: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/xe: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/xen: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
->
->   Documentation/gpu/todo.rst                    |  28 +++
->   drivers/gpu/drm/armada/armada_gem.c           |  16 +-
->   drivers/gpu/drm/drm_dumb_buffers.c            | 172 ++++++++++++++++--
->   drivers/gpu/drm/drm_gem_dma_helper.c          |   7 +-
->   drivers/gpu/drm/drm_gem_shmem_helper.c        |  16 +-
->   drivers/gpu/drm/drm_gem_vram_helper.c         |  89 +++------
->   drivers/gpu/drm/exynos/exynos_drm_gem.c       |   8 +-
->   drivers/gpu/drm/gma500/gem.c                  |  21 +--
->   .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   |  25 ++-
->   drivers/gpu/drm/imx/ipuv3/imx-drm-core.c      |  29 ++-
->   drivers/gpu/drm/loongson/lsdc_gem.c           |  29 +--
->   drivers/gpu/drm/mediatek/mtk_gem.c            |  13 +-
->   drivers/gpu/drm/msm/msm_gem.c                 |  27 ++-
->   drivers/gpu/drm/nouveau/nouveau_display.c     |   7 +-
->   drivers/gpu/drm/omapdrm/omap_gem.c            |  15 +-
->   drivers/gpu/drm/qxl/qxl_dumb.c                |  17 +-
->   drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c |   7 +-
->   drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c  |   7 +-
->   drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |  12 +-
->   drivers/gpu/drm/tegra/gem.c                   |   8 +-
->   drivers/gpu/drm/virtio/virtgpu_gem.c          |  11 +-
->   drivers/gpu/drm/vmwgfx/vmwgfx_surface.c       |  21 +--
->   drivers/gpu/drm/xe/xe_bo.c                    |   8 +-
->   drivers/gpu/drm/xen/xen_drm_front.c           |   7 +-
->   drivers/gpu/drm/xlnx/zynqmp_kms.c             |   7 +-
->   include/drm/drm_dumb_buffers.h                |  14 ++
->   include/drm/drm_gem_vram_helper.h             |   6 -
->   include/uapi/drm/drm_mode.h                   |  50 ++++-
->   28 files changed, 449 insertions(+), 228 deletions(-)
->   create mode 100644 include/drm/drm_dumb_buffers.h
->
-
--- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQWRhbSwKCnRoYW5rcyBmb3IgdGVzdGluZy4KCk9uIDI1LTA1LTI3LCBBZGFtIEZvcmQgd3Jv
+dGU6Cj4gT24gRnJpLCBNYXkgMiwgMjAyNSBhdCAxMTo1NeKAr0FNIE1hcmNvIEZlbHNjaCA8bS5m
+ZWxzY2hAcGVuZ3V0cm9uaXguZGU+IHdyb3RlOgo+ID4KPiA+IE9uIDI1LTA1LTAyLCBBZGFtIEZv
+cmQgd3JvdGU6Cj4gPiA+IE9uIEZyaSwgTWF5IDIsIDIwMjUgYXQgMTA6MTDigK9BTSBNYXJjbyBG
+ZWxzY2ggPG0uZmVsc2NoQHBlbmd1dHJvbml4LmRlPiB3cm90ZToKPiA+ID4gPgo+ID4gPiA+IFRo
+ZSBWUFVfUExMIGNsb2NrIG11c3QgYmUgc2V0IGJlZm9yZSB0aGUgVlBVX0JVUyBjbG9jayB3aGlj
+aCBpcyBkZXJpdmVkCj4gPiA+ID4gZnJvbSB0aGUgVlBVX1BMTCBjbG9jayBlbHNlIHRoZSBWUFVf
+QlVTIGNsb2NrIGlzIDMwME1IeiBhbmQgbm90IDYwME1Iei4KPiAKPiBJIGRpZCB2ZXJpZnkgdGhl
+IGN1cnJlbnQgY2xvY2sgcmF0ZSBlbmRzIHVwIGF0IDMwME1IeiBpbnN0ZWFkIG9mIHRoZQo+IGRl
+c2lyZWQgNjAwIG9yIDgwME1Ieiwgc28gd2Ugc2hvdWxkIGRvIHNvbWV0aGluZy4KPiAKPiA+ID4g
+Pgo+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IE1hcmNvIEZlbHNjaCA8bS5mZWxzY2hAcGVuZ3V0cm9u
+aXguZGU+Cj4gPiA+ID4gLS0tCj4gPiA+ID4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvZnJlZXNjYWxl
+L2lteDhtcC5kdHNpIHwgNCArKy0tCj4gPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlv
+bnMoKyksIDIgZGVsZXRpb25zKC0pCj4gPiA+ID4KPiA+ID4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9h
+cm02NC9ib290L2R0cy9mcmVlc2NhbGUvaW14OG1wLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRz
+L2ZyZWVzY2FsZS9pbXg4bXAuZHRzaQo+ID4gPiA+IGluZGV4IDk3YjA5YjY0N2VjNy4uN2Y0YmRl
+ZmIzNDgwIDEwMDY0NAo+ID4gPiA+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvZnJlZXNjYWxl
+L2lteDhtcC5kdHNpCj4gPiA+ID4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2NhbGUv
+aW14OG1wLmR0c2kKPiA+ID4gPiBAQCAtMjI4OSw4ICsyMjg5LDggQEAgdnB1bWl4X2Jsa19jdHJs
+OiBibGstY3RybEAzODMzMDAwMCB7Cj4gPiA+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgPCZjbGsgSU1YOE1QX0NMS19WUFVfRzJfUk9PVD4sCj4gPiA+ID4gICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgPCZjbGsgSU1YOE1QX0NMS19WUFVfVkM4S0VfUk9PVD47Cj4g
+PiA+ID4gICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2stbmFtZXMgPSAiZzEiLCAiZzIiLCAi
+dmM4MDAwZSI7Cj4gPiA+ID4gLSAgICAgICAgICAgICAgICAgICAgICAgYXNzaWduZWQtY2xvY2tz
+ID0gPCZjbGsgSU1YOE1QX0NMS19WUFVfQlVTPiwgPCZjbGsgSU1YOE1QX1ZQVV9QTEw+Owo+ID4g
+PiA+IC0gICAgICAgICAgICAgICAgICAgICAgIGFzc2lnbmVkLWNsb2NrLXBhcmVudHMgPSA8JmNs
+ayBJTVg4TVBfVlBVX1BMTF9PVVQ+Owo+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGFz
+c2lnbmVkLWNsb2NrcyA9IDwmY2xrIElNWDhNUF9WUFVfUExMPiwgPCZjbGsgSU1YOE1QX0NMS19W
+UFVfQlVTPjsKPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAgICBhc3NpZ25lZC1jbG9jay1w
+YXJlbnRzID0gPDA+LCA8JmNsayBJTVg4TVBfVlBVX1BMTF9PVVQ+Owo+ID4gPiA+ICAgICAgICAg
+ICAgICAgICAgICAgICAgIGFzc2lnbmVkLWNsb2NrLXJhdGVzID0gPDYwMDAwMDAwMD4sIDw2MDAw
+MDAwMDA+Owo+ID4gPgo+ID4gPiBJIHRoaW5rIHRoZXJlIHdhcyBhIG1vdmUgdG8gbWFrZSB0aGUg
+ZGVmYXVsdCBiZSBvdmVyZHJpdmUgWzFdICBhbmQgWzJdCj4gPiA+IGFuZCB1c2UgYSAnbm9taW5h
+bCcgZGV2aWNlIHRyZWUgZm9yIHRob3NlIHdobyBhcmUgbm90IGluIG92ZXJkcml2ZQo+ID4gPiBt
+b2RlLiAgQWNjb3JkaW5nIHRvIHRoZSBUUk0sIHRoZSBWUFVfQlVTX0NMS19ST09ULCB0aGUgbm9t
+aW5hbCBpcwo+ID4gPiA2MDBNSHogYW5kIHRoZSBvdmVyZHJpdmUgaXMgODAwTUh6LiAgQmFzZWQg
+b24gdGhhdCwgSSB3b25kZXIgaWYgdGhlCj4gPiA+IHZhbHVlcyBoZXJlIHNob3VsZCBiZSA4MDBN
+SHogYW5kIGlmIHdlIHNob3VsZCBhZGQgdGhlIG5vbWluYWwgdmFsdWVzCj4gPiA+IG9mIDYwME1I
+eiB0byB0aGUgaW14OG0tbm9taW5hbC5kdHNpIGZpbGUuCj4gPgo+ID4gWW91J3JlIHJpZ2h0LCBB
+aGFtZCBhbmQgTHVjYXMgZGlkIGNoYW5nZSB0aGlzLiBJIHdpbGwgYWRhcHQgaXQgbGF0ZXIgb24u
+Cj4gCj4gSSB1cGRhdGVkIG15IGRldmljZSB0cmVlIHRvIHJ1biBpbiBvdmVyZHJpdmUgbW9kZSBh
+bmQgcmFuIGZsdXN0ZXIgYXQKPiB0aGUgaGlnaGVyIHJhdGVzOgo+IFZQVV9HMSAtIDgwME1IeiwK
+PiBWUFUtRzIgLSA3MDBNSHoKPiBWUFUtQnVzIC0gODAwTUh6Cj4gCj4gLi9mbHVzdGVyLnB5IHJ1
+biAtZCBHU3RyZWFtZXItVlA4LVY0TDJTTC1Hc3QxLjAKPiBSYW4gNTcvNjEgdGVzdHMgc3VjY2Vz
+c2Z1bGx5ICAgICAgICAgICAgICAgaW4gNS45MjIgc2Vjcwo+ICh2cyA3LjA1OSBzZWNzIGF0IG5v
+bWluYWwgc3BlZWQpCj4gCj4gLi9mbHVzdGVyLnB5IHJ1biAtZEdTdHJlYW1lci1ILjI2NC1WNEwy
+U0wtR3N0MS4wCj4gUmFuIDEyOS8xMzUgdGVzdHMgc3VjY2Vzc2Z1bGx5ICAgICAgICAgICAgICAg
+aW4gNDAuMTA3IHNlY3MKPiAodnMgNDUuNzQxIHNlY3MgYXQgbm9taW5hbCBzcGVlZCkKPiAKPiBJ
+ZiB5b3Ugd2FudCwgSSBjYW4gc3VibWl0IHRoZSBjbG9jayB1cGRhdGVzIEkgaGF2ZSBmb3Igb3Zl
+cmRyaXZlIG9yCj4gc2VuZCB0aGVtIHRvIHlvdSB0byBzYXZlIHlvdSBzb21lIHRpbWUuCgpTdXJl
+LCB5b3UgY2FuIHBpY2stdXAgbXkgcGF0Y2hlcyBvciBhZGQgbmV3IG9uZXMuIEVpdGhlciB3YXkg
+eW91J3JlCnJpZ2h0LCB0aGUgY2xvY2sgZml4ZXMgY2FuIGdvIGluIHNlcGFyYXRlbHkuCgpSZWdh
+cmRzLAogIE1hcmNvCgo+IAo+IGFkYW0KPiAKPiA+Cj4gPiBSZWdhcmRzLAo+ID4gICBNYXJjbwo+
+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
