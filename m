@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3729C3ABB2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 May 2025 01:58:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3D7C5B543
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 May 2025 02:20:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wAUmzvowTlEF5M+bSwbUkkmP2ZBN5r0EVr0FUrL97DQ=; b=ze0Gyat3y5EDrv
-	Kme5UxuVKp/thjXoVfCr0DIsq3cbjXFgr5rswqHywuB9wewP6O2DeMxMlztpg1QVwmPhCGec7fbPI
-	tSJWO5k5oy5uM7nLzH3DqXcoQ4JFuayphJurcCZkYYsGwTZZ6H80xJIRHj7Vr+Yq0GkL4EwG5V8Mv
-	iIpgqGBeeCmTiaooPHA+XU6ZCo0oOroU2GK0XhiV3om3FVdgV1DZwtReY6weXK7SQ+i5//DkdQMMP
-	chdK4e6UqmLoAP0Qss+NQzs8fTN+FCXDTi+WlOAaik+GhWRPxk5jskbssSmSk5JVw30tJ5RuB6jLK
-	c/ZFGz191EkBVNYfI8uA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Mime-Version:
+	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=h8pvU80cnP115JbuB3rVBQUu5Qox/N+i4+aPKS0lvjE=; b=kcR
+	VvD3E2z1pP2+idYbDfYX7aR5F/bpSyDcFqx7WH2XRuystoXL7RTdCyXpxE/V49NFWJKsdgLOEglFg
+	RAfywFK4Gwc5IIjgvd1cklYvQb9z/eOWNuf+DA2cetzVclwCAHJQnokkUmVZP3gVLZdjI4+3I2A+I
+	KXeIloH4qiegjBMBbjjiPqZExEr1swS/Rw3Ox9NIO4KDFrjCp/qPwrvDn+tg6/gK75ryaJCihPJlA
+	pt8MCcOpZ75L7Me8s/d8e/3wP8xqGeZycdoodVNJ9GX1CNm4Cp8o2xPlJu7TEgzXP5U+bjZi1qtKv
+	J/wedjXxKd5WZ3Qb0+9hQ2pGbrZbTNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKSX9-0000000Ei2g-0Lyj;
-	Thu, 29 May 2025 01:58:15 +0000
-Received: from mail-m49233.qiye.163.com ([45.254.49.233])
+	id 1uKSsh-0000000Ejmc-1Ced;
+	Thu, 29 May 2025 02:20:31 +0000
+Received: from mxhk.zte.com.cn ([63.216.63.40])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKSX5-0000000Ehzv-4BW6;
-	Thu, 29 May 2025 01:58:14 +0000
-Received: from [127.0.0.1] (gy-adaptive-ssl-proxy-3-entmail-virt135.gy.ntes [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 16c60e019;
-	Thu, 29 May 2025 09:57:54 +0800 (GMT+08:00)
-Message-ID: <91d19262-05a1-4127-a66b-e141add02c3f@rock-chips.com>
-Date: Thu, 29 May 2025 09:57:52 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] drm/rockchip: cdn-dp: Convert to drm bridge
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Chaoyi Chen <kernel@airkyi.com>, Sandy Huang <hjc@rock-chips.com>,
- Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20250527081447.304-1-kernel@airkyi.com>
- <e2dnvpbze4xuubggduqr3p5nnhg7huk3dnpdcb6tldxbrn2qtn@bfsewz5trfv3>
- <bc321a71-1934-4889-bd8e-3bb593c8feba@rock-chips.com>
- <CAO9ioeXLSQyBFuedtt4=_OjEWZW6T9HaaYr8_NiNy2eh4yw-qg@mail.gmail.com>
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <CAO9ioeXLSQyBFuedtt4=_OjEWZW6T9HaaYr8_NiNy2eh4yw-qg@mail.gmail.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0MZGlZIGElIGENNQ05CHRpWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9719c29dab03abkunmb6e35c2d3ed6f0
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OVE6Sxw5UTE#Ik5LTzoNAxop
-	SgEaFDJVSlVKTE9DT0NIQ0xCTE9PVTMWGhIXVRgTGhQCElUYEx4VOwkUGBBWGBMSCwhVGBQWRVlX
-	WRILWUFZTkNVSUlVTFVKSk9ZV1kIAVlBSElNSjcG
-DKIM-Signature: a=rsa-sha256;
-	b=hKr/jMDGb/QUNMUXmrYROwQsGX0fdWG6CFNzSLAsgz6yP2c9A4+03vNR/TDCHiDTBkbnoXzs5TNXL5C/DlnPCQ9evCjCr48FrSH+5RxP9DH9OR9yJSWaUE8Aphat5Cxd3HyEY9xd9pvI5d3sLOybjf+s9zBdjychWG4hKU3RcfQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=QH+9LbKgzSSxVg9sDNO4PK5Zcfbm6EKo7JyEYRq1ozI=;
-	h=date:mime-version:subject:message-id:from;
+	id 1uKSow-0000000EjRp-3kKb;
+	Thu, 29 May 2025 02:16:40 +0000
+Received: from mse-fl1.zte.com.cn (unknown [10.5.228.132])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mxhk.zte.com.cn (FangMail) with ESMTPS id 4b793G2LQgz8R044;
+	Thu, 29 May 2025 10:16:26 +0800 (CST)
+Received: from xaxapp02.zte.com.cn ([10.88.97.241])
+	by mse-fl1.zte.com.cn with SMTP id 54T2GG2H029125;
+	Thu, 29 May 2025 10:16:16 +0800 (+08)
+	(envelope-from shao.mingyin@zte.com.cn)
+Received: from mapi (xaxapp02[null])
+	by mapi (Zmail) with MAPI id mid32;
+	Thu, 29 May 2025 10:16:17 +0800 (CST)
+Date: Thu, 29 May 2025 10:16:17 +0800 (CST)
+X-Zmail-TransId: 2afa6837c3712a5-4a972
+X-Mailer: Zmail v1.0
+Message-ID: <20250529101617844lQtR4fOKHch_xIBWSgzgX@zte.com.cn>
+Mime-Version: 1.0
+From: <shao.mingyin@zte.com.cn>
+To: <ulf.hansson@linaro.org>
+Cc: <heiko@sntech.de>, <sebastian.reichel@collabora.com>,
+        <detlev.casanova@collabora.com>, <krzysztof.kozlowski@linaro.org>,
+        <finley.xiao@rock-chips.com>, <shawn.lin@rock-chips.com>,
+        <pgwipeout@gmail.com>, <linux-pm@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+        <yang.yang29@zte.com.cn>, <xu.xin16@zte.com.cn>,
+        <yang.tao172@zte.com.cn>, <ye.xingchen@zte.com.cn>
+Subject: =?UTF-8?B?cG1kb21haW46IHJvY2tjaGlwOiBVc2Ugc3RyX29uX29mZigpIGhlbHBlciBpbsKgcm9ja2NoaXBfZG9fcG11X3NldF9wb3dlcl9kb21haW4oKQ==?=
+X-MAIL: mse-fl1.zte.com.cn 54T2GG2H029125
+X-Fangmail-Anti-Spam-Filtered: true
+X-Fangmail-MID-QID: 6837C37A.000/4b793G2LQgz8R044
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_185812_506280_CB6FF3E0 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20250528_191639_084420_9ED24EFA 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,54 +72,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+From: Shao Mingyin <shao.mingyin@zte.com.cn>
 
-On 2025/5/29 0:09, Dmitry Baryshkov wrote:
->>>> @@ -595,16 +546,41 @@ static bool cdn_dp_check_link_status(struct cdn_dp_device *dp)
->>>>    static void cdn_dp_audio_handle_plugged_change(struct cdn_dp_device *dp,
->>>>                                              bool plugged)
->>>>    {
->>>> -    if (dp->codec_dev)
->>>> -            dp->plugged_cb(dp->codec_dev, plugged);
->>>> +    if (dp->sink_has_audio)
->>>> +            drm_connector_hdmi_audio_plugged_notify(dp->connector, plugged);
->>> I'd say, notify always and let userspace figure it out via the ELD. Then
->>> you shouldn't need sink_has_audio. This would match the behaviour of
->>> HDMI drivers.
->> Oh, I find that there are similar usages in qcom msm driver. Is there
->> any more progress?
-> For msm driver it is required as DSP requires HDMI to be plugged for
-> the audio path to work.
+Remove hard-coded strings by using the str_on_off() helper function.
 
-I see, will fix in v4.
+Signed-off-by: Shao Mingyin <shao.mingyin@zte.com.cn>
+---
+ drivers/pmdomain/rockchip/pm-domains.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
->>>> @@ -705,8 +681,6 @@ static int cdn_dp_encoder_atomic_check(struct drm_encoder *encoder,
->>>>
->>>>    static const struct drm_encoder_helper_funcs cdn_dp_encoder_helper_funcs = {
->>>>       .mode_set = cdn_dp_encoder_mode_set,
->>>> -    .enable = cdn_dp_encoder_enable,
->>>> -    .disable = cdn_dp_encoder_disable,
->>>>       .atomic_check = cdn_dp_encoder_atomic_check,
->>> Nit: for the future cleanup, it should probably be possible to get rid
->>> of these encoder ops too by moving them to the bridge ops.
->> Interesting, have these patches been submitted upstream yet?
-> Everything is already there, see drm_bridge_funcs::mode_set() and
-> drm_bridge_funcs::atomic_check().
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 4cce407bb1eb..0681c763f843 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -21,6 +21,7 @@
+ #include <linux/regmap.h>
+ #include <linux/regulator/consumer.h>
+ #include <linux/mfd/syscon.h>
++#include <linux/string_choices.h>
+ #include <soc/rockchip/pm_domains.h>
+ #include <soc/rockchip/rockchip_sip.h>
+ #include <dt-bindings/power/px30-power.h>
+@@ -595,7 +596,7 @@ static int rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+ 					is_on == on, 0, 10000);
+ 	if (ret) {
+ 		dev_err(pmu->dev, "failed to set domain '%s' %s, val=%d\n",
+-			genpd->name, on ? "on" : "off", is_on);
++			genpd->name, str_on_off(on), is_on);
+ 		return ret;
+ 	}
 
-Thanks for the clarification. I will move mode_set() to bridge ops.
-
-And for the drm_encoder_helper_funcs::atomic_check(), most Rockchip 
-drivers will set some Rockchip-specific properties here so that the VOP 
-driver can process them. In the future, we may integrate a new encoder 
-driver to process these private properties. So, I prefer to keep this as 
-it is.
-
-
+-- 
+2.25.1
 
 _______________________________________________
 Linux-rockchip mailing list
