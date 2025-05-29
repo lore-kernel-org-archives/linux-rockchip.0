@@ -4,62 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3D7C5B543
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 May 2025 02:20:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A62DC54FB3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 May 2025 07:05:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Mime-Version:
-	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=h8pvU80cnP115JbuB3rVBQUu5Qox/N+i4+aPKS0lvjE=; b=kcR
-	VvD3E2z1pP2+idYbDfYX7aR5F/bpSyDcFqx7WH2XRuystoXL7RTdCyXpxE/V49NFWJKsdgLOEglFg
-	RAfywFK4Gwc5IIjgvd1cklYvQb9z/eOWNuf+DA2cetzVclwCAHJQnokkUmVZP3gVLZdjI4+3I2A+I
-	KXeIloH4qiegjBMBbjjiPqZExEr1swS/Rw3Ox9NIO4KDFrjCp/qPwrvDn+tg6/gK75ryaJCihPJlA
-	pt8MCcOpZ75L7Me8s/d8e/3wP8xqGeZycdoodVNJ9GX1CNm4Cp8o2xPlJu7TEgzXP5U+bjZi1qtKv
-	J/wedjXxKd5WZ3Qb0+9hQ2pGbrZbTNg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DyxjXHUg7kPn48l5tU/SLMPs1N4XDfiz+jwvXlyXlys=; b=EiAsHNgR71ebbf
+	oNyhuFrdvUzsANs2smJk2S6kCBZlyre43MDxSr0KCvDJH1V3oadbOabpwce/d8zhpvNLPJDjOhrvU
+	s0LSzsb3ehnRz/LC6Js9HAXcDJyRyBe5Z2ll2Jy4jKnxvwun4/Ri5bd5P6L0TCXmzwRufF0dEiXK9
+	ZKZcttICH/ZjQEW/AczyV7cU2GOBKmLNvguRyiYg7jda9rNyFE4Ca166z0Yk6DMIUOWglv1aJp32D
+	biD7Mrad0oLF63fIOLnbbepBOSVbmx5LWRho/vxUbqUQ4pGJsDcXaWq49iEFjIznTDORIzhkoDSsV
+	/7nHlq7mY7RgxvnimIGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKSsh-0000000Ejmc-1Ced;
-	Thu, 29 May 2025 02:20:31 +0000
-Received: from mxhk.zte.com.cn ([63.216.63.40])
+	id 1uKXK5-0000000F9oq-1BLG;
+	Thu, 29 May 2025 07:05:05 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKSow-0000000EjRp-3kKb;
-	Thu, 29 May 2025 02:16:40 +0000
-Received: from mse-fl1.zte.com.cn (unknown [10.5.228.132])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mxhk.zte.com.cn (FangMail) with ESMTPS id 4b793G2LQgz8R044;
-	Thu, 29 May 2025 10:16:26 +0800 (CST)
-Received: from xaxapp02.zte.com.cn ([10.88.97.241])
-	by mse-fl1.zte.com.cn with SMTP id 54T2GG2H029125;
-	Thu, 29 May 2025 10:16:16 +0800 (+08)
-	(envelope-from shao.mingyin@zte.com.cn)
-Received: from mapi (xaxapp02[null])
-	by mapi (Zmail) with MAPI id mid32;
-	Thu, 29 May 2025 10:16:17 +0800 (CST)
-Date: Thu, 29 May 2025 10:16:17 +0800 (CST)
-X-Zmail-TransId: 2afa6837c3712a5-4a972
-X-Mailer: Zmail v1.0
-Message-ID: <20250529101617844lQtR4fOKHch_xIBWSgzgX@zte.com.cn>
-Mime-Version: 1.0
-From: <shao.mingyin@zte.com.cn>
-To: <ulf.hansson@linaro.org>
-Cc: <heiko@sntech.de>, <sebastian.reichel@collabora.com>,
-        <detlev.casanova@collabora.com>, <krzysztof.kozlowski@linaro.org>,
-        <finley.xiao@rock-chips.com>, <shawn.lin@rock-chips.com>,
-        <pgwipeout@gmail.com>, <linux-pm@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-        <yang.yang29@zte.com.cn>, <xu.xin16@zte.com.cn>,
-        <yang.tao172@zte.com.cn>, <ye.xingchen@zte.com.cn>
-Subject: =?UTF-8?B?cG1kb21haW46IHJvY2tjaGlwOiBVc2Ugc3RyX29uX29mZigpIGhlbHBlciBpbsKgcm9ja2NoaXBfZG9fcG11X3NldF9wb3dlcl9kb21haW4oKQ==?=
-X-MAIL: mse-fl1.zte.com.cn 54T2GG2H029125
-X-Fangmail-Anti-Spam-Filtered: true
-X-Fangmail-MID-QID: 6837C37A.000/4b793G2LQgz8R044
+	id 1uKWwy-0000000F6vh-0COx;
+	Thu, 29 May 2025 06:41:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5CC81A4F1DA;
+	Thu, 29 May 2025 06:41:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 269E0C4CEE7;
+	Thu, 29 May 2025 06:41:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748500871;
+	bh=si77hsCEwnK5PxlkuNh9tlkoElXbBQyR1JfvxIJfI3Y=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=XLX8RATuiXndPpD9GR/k05XqUZ+Y9uD9M0/GLAY262OVlP+snnDSwExTmlyRHoIry
+	 xyMVKY2UzMs0n32rMST+VwVyd0+xjT7RvYuzqMcd2zuHOwIM9/6ldm3Qb8FvII18Sk
+	 jitT5pKJOASW1elMAeXoRPX1B/i3yzJQo8tgtOm1GNpe+j4xSvB08yW1qbaeJLTMsj
+	 HgQIl4/fb9Y35FjH/79De+zCL0nhgASKmDIqhg3QOAkZEuthkjlxiw/3ep0Y3+8U6o
+	 VaZVOEYMONaN4N/x/2C9697+mNEVDjjjWSe8MADk/HonkP92bWU8VE/9Y/ng1sti0a
+	 HLUjLAgA4OeIQ==
+Message-ID: <41c0b226-9ff8-4c33-8d55-4990e11bffa1@kernel.org>
+Date: Thu, 29 May 2025 08:41:05 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: pmdomain: rockchip: Use str_on_off() helper in
+ rockchip_do_pmu_set_power_domain()
+To: shao.mingyin@zte.com.cn, ulf.hansson@linaro.org
+Cc: heiko@sntech.de, sebastian.reichel@collabora.com,
+ detlev.casanova@collabora.com, krzysztof.kozlowski@linaro.org,
+ finley.xiao@rock-chips.com, shawn.lin@rock-chips.com, pgwipeout@gmail.com,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ yang.yang29@zte.com.cn, xu.xin16@zte.com.cn, yang.tao172@zte.com.cn,
+ ye.xingchen@zte.com.cn
+References: <20250529101617844lQtR4fOKHch_xIBWSgzgX@zte.com.cn>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250529101617844lQtR4fOKHch_xIBWSgzgX@zte.com.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_191639_084420_9ED24EFA 
-X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-CacheID: sfid-20250528_234112_220289_365D3EB0 
+X-CRM114-Status: UNSURE (   4.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,38 +122,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Shao Mingyin <shao.mingyin@zte.com.cn>
+On 29/05/2025 04:16, shao.mingyin@zte.com.cn wrote:
+> From: Shao Mingyin <shao.mingyin@zte.com.cn>
+> 
+> Remove hard-coded strings by using the str_on_off() helper function.
+> 
+> Signed-off-by: Shao Mingyin <shao.mingyin@zte.com.cn>
+> ---
 
-Remove hard-coded strings by using the str_on_off() helper function.
+This was already sent:
 
-Signed-off-by: Shao Mingyin <shao.mingyin@zte.com.cn>
----
- drivers/pmdomain/rockchip/pm-domains.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+https://lore.kernel.org/all/20250114203547.1013010-1-krzysztof.kozlowski@linaro.org/
 
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 4cce407bb1eb..0681c763f843 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -21,6 +21,7 @@
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/string_choices.h>
- #include <soc/rockchip/pm_domains.h>
- #include <soc/rockchip/rockchip_sip.h>
- #include <dt-bindings/power/px30-power.h>
-@@ -595,7 +596,7 @@ static int rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
- 					is_on == on, 0, 10000);
- 	if (ret) {
- 		dev_err(pmu->dev, "failed to set domain '%s' %s, val=%d\n",
--			genpd->name, on ? "on" : "off", is_on);
-+			genpd->name, str_on_off(on), is_on);
- 		return ret;
- 	}
+Also read the feedback there.
 
--- 
-2.25.1
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
