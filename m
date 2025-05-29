@@ -4,85 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B28C5B553
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 May 2025 17:27:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 407EDC5AD49
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 May 2025 20:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S+5PAK1PctC0/MpQZCvQxcwWaIQPr4fe2ufajyfKXP0=; b=WWZnTnZWj4W/OA
-	JNWemSe1253k0TKG65BkQ8xe+adf/hCPQ0DJSGqlKmdiaUJ8h+c+aCWj0HvypCdHf+dBO2MdqJP29
-	PXpMMcmzCD49GiMQtA1o8YUrr420KwInCgU8wDtsA5fovjOqidIvYr64qJV3t3qD7xeHEQ+0AKogb
-	8bhDJYjWiPB4fhgAwq5mDS3wrQ/boc+ui8Iy0eLn+M6J3J+I/MzoGiqFWXNwbryjJMQVTx9MVXVGE
-	NJ3tVulaNfqMEzraTR03vaYeNi5FgmeGpCbpB0oKsIhXmjsIBpi9XcX7vV+uWElmNlFwqEZmS/SEb
-	DTcoDOroimZw0lrYNa9g==;
+	List-Owner; bh=Xa6LlxGMzUv+K1nBOns5C0/mx/JDwHwUFfJmCU7hpoY=; b=ojKlrwE7zstBd1
+	px1yYIIjafxyKBP2TsyME2qbi7SPhqfxZhdsR4tmdCso4K3c16lwcb3c4DQcFBEutweTDEuQ1uq6t
+	Pzft0AUgE3dllmhMFPqmuGhl3elPKjo30znKKNh5rp1uo7O4GsxfC3WyrTDNLVhqjcBOEBUTN6+BC
+	cEaR5KGeHLTK9dIfwB/7KMZH095um8hHYRFZ8pvNhUe6dG8VdNFYs7ouG4YRPgMiXlswgFnulPrtn
+	EP3ZPhJ8DP8i+NK6EM7o/m55UrppZzLCafTke09i0SKrIAAbs4GKL8G5InUbJTfGghCGju2v6isVd
+	1UgSvYhw48tYmcoGV4WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKh2Y-0000000GHcM-2WE5;
-	Thu, 29 May 2025 17:27:38 +0000
-Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30])
+	id 1uKkB2-0000000GWKL-49XI;
+	Thu, 29 May 2025 20:48:36 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKh2K-0000000GHYH-25q5
+	id 1uKk8s-0000000GW2L-32Dl
 	for linux-rockchip@lists.infradead.org;
-	Thu, 29 May 2025 17:27:25 +0000
-Received: by mail-io1-xd30.google.com with SMTP id ca18e2360f4ac-86a464849faso81544139f.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 29 May 2025 10:27:24 -0700 (PDT)
+	Thu, 29 May 2025 20:46:24 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-3123eda2a1dso247776a91.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 29 May 2025 13:46:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1748539643; x=1749144443; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ajQTKsp2k+COAp8eVCvXoYherc4TbcmqdYiY2XM3q3g=;
-        b=ICBP59y384G2nFdzfOERRh7n1D+htK9VBVo+NLw57+VW+lhsKrSuNjfINxfSd2VZJI
-         GOfN+HYKDzo1FCF2S5VbU5rUptUDSVkmj9P60TDidURA+t5XWYgF2chaYgjvmmsfY4pp
-         hY85ROOHooGH2uCn43AzFRLLZBgFWaP7r+/Eba9Ixcs/3/yG6gyCfXOrzvn+jggivQ5H
-         1Ozx8VYOzo3gmSKrQXJZD26lyeURWfS3Uxzf4TgpCsuzjtCBAke8086xMShjUBsIFxTC
-         gGxx9V8S2LiouHZ5bOkrOxBKc66k/geS/LzG4oIQ2HZ0WE7pAGJiB6E7f5RRb7qIcdkg
-         euJQ==
+        d=rivosinc-com.20230601.gappssmtp.com; s=20230601; t=1748551581; x=1749156381; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=6TtaMd1HywfsuyRcNH/42AXM3iz/qus8mLnXbozVUkA=;
+        b=dFjq2NiEPa1X5/bqSSOd6mWIbuLalfC2PpJYw2cED5pRguLkl7EjaX1LRnWE6aaNP/
+         AYo4CiK28/U5j1cP4al3TDlx+dm1KJCJ0+UyW3BLO+py1ergg28tAKE984fKpbzmeJyd
+         nTleKsnvpeHtHdWgPHUgE0sf6+hw9Y0f3TTWuK841ExFeX5FY5z46k3qSX197gSrGkJO
+         +dHYtz/Gn/pU7Wyf56zsh9mp4FKEGrMR6N4KenHSQ3JyotkUrVmI5HhbFSBCWiroj8Lj
+         4XRXiCjlZcflwv3Tk+OTZ8OTTZ27NKkAR1qJpRr4KL31uJ7QtUZbnkzXtcQKd6M+BNaL
+         bHsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748539643; x=1749144443;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ajQTKsp2k+COAp8eVCvXoYherc4TbcmqdYiY2XM3q3g=;
-        b=U6znSGjWrKuXLUTAEeU5AO0DKQkx/D5TaoZQP4uQDY4ExC7IBfOdfaN0bs284mdwJz
-         kd3JKsTZt9ZssZNS0Ayr7F7jMTlecCLNmNeUqnEV5V68I2A9ZxebDKT2NvsFQfsqkHVN
-         ywX3kaJHzF5sZMTFGkMHsjmdn2oV6Z0y1CP5JHuH3Azngkk8tZZ1IJqjt/KXkFUU4GVF
-         K1/ksCqsmwNWyoBzCqXubh1/yARIQS+rmnwFPmod57A9mXU5XyR7U7vbZYoQWuRD4vD1
-         D8GsFTF2bfg1mRX87EhYrBzDX3PbbYvptfGZ5RQfBEG75ErcdaiviJNEWeRAfgy3cMJi
-         RnXw==
-X-Forwarded-Encrypted: i=1; AJvYcCWJV28d9kif9ZtcILgTgz3hqAo83WTPpmRGBvhyLNOUc01OohXLvd76U34KNPjNotSzTkRDADcOPKDj1tPCKQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyPHr7YxUkDHR8yTTq3QIF3FTcIbl5siimN5QTyhpNDlPnxWku+
-	i+NxpUTCWWnmGX5UO0xfZVH3dwqR5Ze8WwiRd7a2hnkP1d0zscO3w6Nao6pWbf6h5AR3KiLj57C
-	OsE/jDqaRtwzrCUb+cUzu0KGjVo8iNDE=
-X-Gm-Gg: ASbGncsiQHShxICe79wjk597c1pWbzkXREPn4/Bzij0fi2bc6Pg9YO89PEMPsuateXH
-	8ap8m8QRm+fRcog/M9FBlOhBoUoiM9OwrKonW7isApXN1AXjf1CeMwfPmKmZkTB1hmmlmN/CciL
-	7mrHwhiUSTyrbteaixgZzOl7Xjww9lrzVF2ajXs/PLKQ==
-X-Google-Smtp-Source: AGHT+IGmfLftFKbDjPUrwhZwicuqQxLIwzoCfWWeirKpn1IUl46FhVaamkvogKo9NxIBYcyFiWPlwqFTeQ9zfcW19XI=
-X-Received: by 2002:a05:6e02:3c86:b0:3dc:857c:c61e with SMTP id
- e9e14a558f8ab-3dd99c289c0mr9051885ab.15.1748539643157; Thu, 29 May 2025
- 10:27:23 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1748551581; x=1749156381;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6TtaMd1HywfsuyRcNH/42AXM3iz/qus8mLnXbozVUkA=;
+        b=W43nNZW7Gb5AKDKpg6kB47g0/S4Ii9sRiAPjR8pilDLyzWiagre3sbEgvJZdEekk/6
+         y+8N2hAB6IJil0BRt7noLWSnhmp4LN2XUyDwmjCfifzMTKlM3ssuPonR037VoQez0fzq
+         oLC9gPZxbp5IHJWX/03s8GUzuYccHFCCiEuURQLr9i2HvcaIm5WWRjlnPcjHDEDnNV80
+         3OXIbtL/5ksgUp8WKL2w30FvZ7WdeUw/V/55JWSrCGdSQnlpzoGyixcEwmj9LwFJ6U97
+         bCMZP5bPunv94VC084SVUcrbHNMSe9DLbn4k4jizZd/1CFocGHOgdt7fAofcW4UDIOAN
+         Admg==
+X-Forwarded-Encrypted: i=1; AJvYcCVWy04BOgB8t+5Oy6brlWlBRtrDyPx5pkDg3pzFH8bf6hZQx2mbs7IjaQE1XJLmubVBXtWIkLm11YEihlejFA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YywMp9ViZPirRfkbvRocVmX2shG5oKd7v2E24a0DJmCyrnNmh8p
+	l8wxdb5/jvCE/5ZG5AsX5Zqj0ICJHid7klQ7P+iXmDtlRWv0GSnl1MBLCZETP8H4jKE=
+X-Gm-Gg: ASbGncvQUzK+Z4pLTHi6fOkRSnsmlqOjNurTzU539rOzZkzC9Fw7RH1q8LIqFIAiNzd
+	Td5XKNwBSeuXCWW4p/RlyfqYHoQ21y+ggo2++ZEr6xGCmxO77aHwVipHUDOfrrIcPOkvBQ2hk6d
+	y83Q/4a0r7DBXAMbl1T4DIm8jl2IosC690ONZUNngfcBPF5edXum00fX6DaYV7nitQs4j3OZaix
+	RoMbI+G+P1hEY4F97tL+GVj+/Rc5yx1M+4cim0a1aduqlOTUodXmYE9i4oaT1gVZ0TSwCdbgzJs
+	MQZ3IS+qZw1MjGh757fwY/Tm+Wu5IkLrvheD/LbsNxUhRdQw+EtRRKkhCn5oXUGaY3DS3A==
+X-Google-Smtp-Source: AGHT+IEO8HwssTrnrLL8DGNfi7UDT2JfkJIUURFRStahz0gCmflYidew8g3m8w3QvBPF+GZDsBP2sw==
+X-Received: by 2002:a17:90b:1d89:b0:311:f99e:7f51 with SMTP id 98e67ed59e1d1-312415329famr1432137a91.18.1748551581341;
+        Thu, 29 May 2025 13:46:21 -0700 (PDT)
+Received: from tjeznach.ba.rivosinc.com ([64.71.180.162])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23506bd9486sm16245345ad.67.2025.05.29.13.46.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 29 May 2025 13:46:20 -0700 (PDT)
+Date: Thu, 29 May 2025 13:46:17 -0700
+From: Tomasz Jeznach <tjeznach@rivosinc.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Janne Grunau <j@jannau.net>,
+	Jean-Philippe Brucker <jean-philippe@linaro.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Sven Peter <sven@svenpeter.dev>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>, virtualization@lists.linux.dev,
+	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>, patches@lists.linux.dev
+Subject: Re: [PATCH 3/7] iommu: Remove ops.pgsize_bitmap from drivers that
+ don't use it
+Message-ID: <aDjHmR7ZVTbsSITO@tjeznach.ba.rivosinc.com>
+References: <0-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
+ <3-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
 MIME-Version: 1.0
-References: <174735136138.1544989.11909422896170025756.robh@kernel.org>
- <20250528221823.2974653-1-joseph.kogut@gmail.com> <20250528221823.2974653-2-joseph.kogut@gmail.com>
- <20250529-impressive-real-monkey-a7818b@kuoka> <CAMWSM7i+eyV4t3xzSXdDyGrBr101V9rG1xMgsTbpjyqpu+hjYw@mail.gmail.com>
- <3a2b9bfb-81b0-473a-b58c-76a2dd7f434e@kernel.org>
-In-Reply-To: <3a2b9bfb-81b0-473a-b58c-76a2dd7f434e@kernel.org>
-From: Joseph Kogut <joseph.kogut@gmail.com>
-Date: Thu, 29 May 2025 10:26:47 -0700
-X-Gm-Features: AX0GCFvNxRjPdyr8yhbcLu1TfazWvzDwAFaQdGZbh1fnbTEWqCXXjJppI9Ifugk
-Message-ID: <CAMWSM7h-naYcgy7hrfNd0tDLTx21jFmvV4X8vU1V4py21PNVPw@mail.gmail.com>
-Subject: Re: [PATCH v3 1/3] dt-bindings: arm: rockchip: Add Radxa CM5 IO board
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Steve deRosier <derosier@cal-sierra.com>
+Content-Disposition: inline
+In-Reply-To: <3-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250529_102724_536440_CB3B40F2 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20250529_134623_008644_E32C8D13 
+X-CRM114-Status: GOOD (  17.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,27 +128,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBNYXkgMjksIDIwMjUgYXQgMTA6MDfigK9BTSBLcnp5c3p0b2YgS296bG93c2tpIDxr
-cnprQGtlcm5lbC5vcmc+IHdyb3RlOgo+Cj4gT24gMjkvMDUvMjAyNSAxOTowMCwgSm9zZXBoIEtv
-Z3V0IHdyb3RlOgo+ID4gSSd2ZSByZXZpZXdlZCB0aGUgbWFuIHBhZ2UgZm9yIGdpdC1zZW5kLWVt
-YWlsLiBJZiBJJ20gdW5kZXJzdGFuZGluZwo+ID4gY29ycmVjdGx5LCBJIHNob3VsZCBvbmx5IHRo
-cmVhZCB0aGUgKmNvdmVyIGxldHRlciogb2YgdGhlIHBhdGNoIHNlcmllcwo+ID4gd2hlbiBzdWJt
-aXR0aW5nIGEgbmV3IHZlcnNpb24uIFRoYXQgZGlkbid0IHdvcmsgZm9yIG1lIGhlcmUgYmVjYXVz
-ZSBJCj4gPiBkaWRuJ3QgaW5pdGlhbGx5IGluY2x1ZGUgYSBjb3ZlciBsZXR0ZXIsIHRoZW4gdHJp
-ZWQgdG8gdGhyZWFkIHRoZQo+ID4gZmlyc3QgcGF0Y2ggaW4gdGhlIHNlcmllcy4gSSBzZWUgbm93
-IGhvdyB0aGF0IHdvdWxkIGJlIGRpc3J1cHRpdmUuCj4gWW91IHNob3VsZCBub3QgdGhyZWFkIG1h
-bnVhbGx5IGFueXRoaW5nLiBiNCBkb2VzIGl0IGZvciB5b3UuIElmIHlvdSB3YW50Cj4gdG8gdXNl
-IGdpdC1zZW5kLWVtYWlsLCB0aGVuIHlvdSBhbHNvIGRvbid0IGNhcmU6Cj4KPiBnaXQgZm9ybWF0
-LXBhdGNoIC12MyAtMyBIRUFECj4gZ2l0IHNlbmQtZW1haWwgPHdoYXRldmVyLXRvLWFuZC1jYy1h
-cmd1bWVudHM+IHYzKgo+Cj4gVGhhdCdzIGl0LiBObyBtYW51YWwgdGhyZWFkaW5nLgo+CgpJIHdh
-c24ndCBhd2FyZSBvZiBiNCwgaXQgbG9va3MgbGlrZSBhIGdyZWF0IHRvb2wgZm9yIHRoaXMgd29y
-a2Zsb3cuClRoYW5rcyBhZ2FpbiBmb3IgeW91ciBoZWxwLCBJJ2xsIGdpdmUgaXQgYSB0cnkuCgpC
-ZXN0LApKb3NlcGgKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On Tue, Apr 29, 2025 at 11:34:13AM -0300, Jason Gunthorpe wrote:
+> These drivers all set the domain->pgsize_bitmap in their
+> domain_alloc_paging() functions, so the ops value is never used. Delete
+> it.
+> 
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  drivers/iommu/apple-dart.c       | 1 -
+>  drivers/iommu/intel/iommu.c      | 1 -
+>  drivers/iommu/iommufd/selftest.c | 1 -
+>  drivers/iommu/riscv/iommu.c      | 1 -
+>  drivers/iommu/virtio-iommu.c     | 6 ++----
+>  5 files changed, 2 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/iommu/riscv/iommu.c b/drivers/iommu/riscv/iommu.c
+> index bb57092ca90110..2d0d31ba28860a 100644
+> --- a/drivers/iommu/riscv/iommu.c
+> +++ b/drivers/iommu/riscv/iommu.c
+> @@ -1533,7 +1533,6 @@ static void riscv_iommu_release_device(struct device *dev)
+>  }
+>  
+>  static const struct iommu_ops riscv_iommu_ops = {
+> -	.pgsize_bitmap = SZ_4K,
+>  	.of_xlate = riscv_iommu_of_xlate,
+>  	.identity_domain = &riscv_iommu_identity_domain,
+>  	.blocked_domain = &riscv_iommu_blocking_domain,
+
+Reviewed-by: Tomasz Jeznach <tjeznach@rivosinc.com> # for RISC-V
+
+Sorry for the delayed response.
+- Tomasz
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
