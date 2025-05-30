@@ -4,52 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0750C3ABB2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 May 2025 07:41:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E3C0C5B552
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 May 2025 12:54:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=1OHvFNyaoz4BHqcH7hxv2leYpo3rIbVPlM09WtiuDWM=; b=jDZFzFlL4ykmPT
-	6VFOhu9dG3Je6KJ+CWbllJwTF98RyQ1mPDtFo89tkyhifHS5qdXE9ddvcIzDSHiKKXOppc5Ofh1iq
-	ir++E/tixmPfokYFQv14D4nDHpsgxx38eqYtGn5r4AFxp1uBv3JVZa9JQzdmyxUmh6aiMsFTCe39X
-	fQOKndbTd3wSv2+RPJUOU8YingEKL7CyU0hCp3jFb515Eiyn8n7Vi8MheEVQF2NcxK5wPqes9zyX7
-	aZOVm9m20xhF2oWZBmhm/7qCd4U2tWEGb7K5CnCjSW/bIWQHSRwk2cvYq7So0mlq6YXl++z/79KuO
-	tA5xyXl4Adht3PmnQUPw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Nut14vFJtlW+NXHNpCma3AZVtVCBcGm7o7Uhwk8sjX0=; b=V/+b4ZR1VwFdD5
+	xvs66GyhPc0qM/K2rhezZAxK+nuDoYFuN6a3SW/qUCAMURBe9Rf9hdaF5hGE9uGsSzJqNIsznny41
+	SoS2Ym1q0vXxBsnkitiL2V0te4O80fKbWeywderV4bPzbHelSsvaBHexnHsMlicE3WQPhDEOuZ+Hl
+	RbQ1oAqbpqYOr7oa7jzAnSoLqR8YF6jgng42XxBG4Mak3UXFVzRkx5t74zkfhVCspfyU70MnfxvnL
+	z4WA3ksfSZzgBh0a9NjnSGhyOjTKUWRj5ju/XkKaB0JuQCymG/zdah2NhzRnbqKPcN84JmUISqeSE
+	4+5f+1FvmgCh6Q8MeOgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKuMS-0000000HTnB-0lwk;
-	Fri, 30 May 2025 07:41:04 +0000
-Received: from mail.growven.pl ([51.68.70.36])
+	id 1uKzFg-00000000cOq-3RB8;
+	Fri, 30 May 2025 12:54:24 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKuMP-0000000HTmP-3h2v
-	for linux-rockchip@lists.infradead.org;
-	Fri, 30 May 2025 07:41:03 +0000
-Received: by mail.growven.pl (Postfix, from userid 1002)
-	id 7780E266B6; Fri, 30 May 2025 07:40:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=growven.pl; s=mail;
-	t=1748590860; bh=YxUJwSDYTiifz63s6cOCrXf5LN2PjYKK0bgKM+svvBw=;
-	h=Date:From:To:Subject:From;
-	b=qLiyeGKzSrFYuYijMLdi3StxvzY30T2lOHqQq9YMgDEDMiwXft3mAspEucw3qd+4E
-	 hgY0yBGMnaU+akYZVFLzSkIf03mXo1P6jZ30WqS474ZThmPz1kr1LngZ82qtKHdtUq
-	 PKHxp46lsOPXOGTh1FEfXBAuiG1Q0qxjo9UNJPuhs2/eZ9oZ8diV2WagqF4hYtqxAs
-	 Gfaml/sGCFK8iQWdY6kQAE8ZS1Etdc2VUHXNd4L5xQhnndVL1bw5OzCG18Mx9+0dYx
-	 Xf1JuDA3U9L+9e/mq2cFkacvwRi594pG1GnqSK8eeKzi1z5bDe3RT3pMLsoqWLsQeN
-	 bE6SBK9XaZyPg==
-Received: by mail.growven.pl for <linux-rockchip@lists.infradead.org>; Fri, 30 May 2025 07:40:43 GMT
-Message-ID: <20250530064500-0.1.2a.hcx9.0.hgd39fwkvi@growven.pl>
-Date: Fri, 30 May 2025 07:40:43 GMT
-From: "Robert Kozielski" <robert.kozielski@growven.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania?=
-X-Mailer: mail.growven.pl
+	id 1uKzDV-00000000bp9-17f1;
+	Fri, 30 May 2025 12:52:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 786144A706;
+	Fri, 30 May 2025 12:52:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 223FFC4CEE9;
+	Fri, 30 May 2025 12:52:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748609528;
+	bh=UQcVtwjs57NCo0a9YDF3wREUlaK90WOqq5g46sAvigg=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=Ra2olD78R+++u/Q1wQAKNFyK/4T9kaxrz3Srtkq9PeX6OmziR448c53Lcgghrathh
+	 OKRKbr6kJttLG1p8E9BJ68u4tH4LkbGZfsEtmhlFJXF+GofHpt99TiW+M+L50EmF/u
+	 kESczJ/S8aSLX0l4YWtHplRy9G/caV9ZSGB/MS0Z5/A7S2tejjbQkIrsQVnzeQPcYw
+	 1kforgKu/xq1IMD79Y7gbul6YEDjDlF8e3GOhuJUm9WupaLKV0NuPTcA6QfUZ1nmab
+	 OvN+iObUZHeEDfQ4Sx57XzGwksmiH3NFey4NfbgG1Xnc3gK4pIq+EeORaJcIzhDqkM
+	 hAVeT1v8tJCHA==
+Date: Fri, 30 May 2025 07:52:06 -0500
 MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Hsun Lai <i@chainsx.cn>
+In-Reply-To: <20250530031046.166202-1-i@chainsx.cn>
+References: <20250530031046.166202-1-i@chainsx.cn>
+Message-Id: <174860938675.1571999.8236778735226903385.robh@kernel.org>
+Subject: Re: [PATCH v5 0/2] Add support for Firefly
+ Station-M3/ROC-RK3588S-PC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250530_004102_059629_4722EFEE 
-X-CRM114-Status: UNSURE (   1.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250530_055209_347048_C42E8EC6 
+X-CRM114-Status: GOOD (  19.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,19 +64,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, inindev@gmail.com, heiko@sntech.de, sfr@canb.auug.org.au, quentin.schulz@cherry.de, jonas@kwiboo.se, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, krzysztof.kozlowski@linaro.org, andrew@lunn.ch, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKemFwb3puYcWCZW0gc2nEmSB6IFBhxYRzdHdhIHN0cm9uxIUgaSB6IHBy
-enlqZW1ub8WbY2nEhSBwcnp5em5hasSZLCDFvGUgcHJ6eWNpxIVnYSB1d2FnxJkgaSB6YWNoxJlj
-YSBkbyBkYWxzenljaCByb3ptw7N3LiAKClBvbXnFm2xhxYJlbSwgxbxlIG1vxbxlIG3Ds2fFgmJ5
-bSBtaWXEhyBzd8OzaiB3a8WCYWQgdyBQYcWEc3R3YSByb3p3w7NqIGkgcG9tw7NjIGRvdHJ6ZcSH
-IHogdMSFIG9mZXJ0xIUgZG8gd2nEmWtzemVnbyBncm9uYSBvZGJpb3Jjw7N3LiBQb3p5Y2pvbnVq
-xJkgc3Ryb255IHd3dywgZHppxJlraSBjemVtdSBnZW5lcnVqxIUgxZt3aWV0bnkgcnVjaCB3IHNp
-ZWNpLgoKTW/FvGVteSBwb3Jvem1hd2lhxIcgdyBuYWpibGnFvHN6eW0gY3phc2llPwoKClBvemRy
-YXdpYW0KUm9iZXJ0IEtvemllbHNraQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+On Fri, 30 May 2025 11:10:44 +0800, Hsun Lai wrote:
+> This series add support for Firefly Station-M3/ROC-RK3588S-PC.
+> 
+> Info of device can be found at:
+> https://wiki.t-firefly.com/en/Station-M3/index.html
+> 
+> Changes in v5:
+> - Make led-1 off by default (Chukun Pan, v4)
+> - Add color settings for led (Chukun Pan, v4)
+> - Remove vcc5v0_usbdcin
+> - Put enable/gpio before regulator (Chukun Pan, v4)
+> - Remove always-on and boot-on from vcc5v0_host (Chukun Pan, v4)
+> - Update the name of vbus_typec (Chukun Pan, v4)
+> - Remove always-on and boot-on from vbus5v0_typec (Chukun Pan, v4)
+> - Put pinctrl-names before pinctrl-0 (Chukun Pan, v4)
+> - Remove usb_con node
+> - Remove extra blank lines (Chukun Pan, v4)
+> - Add phy-supply for u2phy3_host (Chukun Pan, v4)
+> 
+> Changes in v4:
+> - Update the name of the regulator
+> - Remove the i2s5_8ch node
+> 
+> Changes in v3:
+> - Update the name of leds
+> - Add more cpu nodes
+> - Update mdio compatible
+> - Fix the order in the node
+> - Add the default serial port(uart2)
+> - Patch 1: Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+> 
+> Changes in v2:
+> - Fix rgmii delays
+> 
+> Changes in v1:
+> - Add support for Firefly ROC-RK3588S-PC
+> 
+> Hsun Lai (2):
+>   dt-bindings: arm: rockchip: Add Firefly ROC-RK3588S-PC
+>   arm64: dts: rockchip: add DTs for Firefly ROC-RK3588S-PC
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3588s-roc-pc.dts      | 838 ++++++++++++++++++
+>  3 files changed, 844 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
+> 
+> --
+> 2.34.1
+> 
+> 
+> 
+
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: remotes/arm-soc/rockchip/dt64-31-ge463625af7f9 (exact match)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250530031046.166202-1-i@chainsx.cn:
+
+arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dtb: /edp@fdec0000: failed to match any schema with compatible: ['rockchip,rk3588-edp']
+
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
