@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62EC8C5AD49
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 May 2025 13:45:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2A3BC5B543
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 May 2025 13:59:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q+F3iiySPBAji0ToqIHw+aeh73ywt2HbTXqMFCE35zY=; b=jgx+ta1JCdZN5u
-	EVUEr8T2pyhp22mR+6OaIbmAuu3XbY27OFdlc8EdNYzKmxV1uvDI9s/6wNUx2730QB1cDTlH1hRo7
-	7A8d2KEVuf4TZdeZuiZLnJQ4QlLVTLipdmU0gqip3vfxBZfIJxFd+HCNG8oeLdvkh0DpNFcFdZUsL
-	OGIQzLf1TQuVrfC9oEAgx75We8EXNdka+hXmA925EwEHpQhfJ1cJhVkk+zY1/HQseFo+cVawk4+2B
-	4zCYZqebY9jnCQnqgLGBhDi050w2NDN8BVZKhl2Wuv3RhnWq8jhMudBAxFUl13ytGCioG39FNCywU
-	v9vc6YVL85A9N1QhaLlg==;
+	List-Owner; bh=XbXnXDeEu5UcSv8BqSm7l1/fqenOVKnnZnBmCcH/O2c=; b=QFlQPtySv/p6x1
+	zuo6vMQDij6rX9bhLx3dLuIBFVt9bXV1fwYufKwb58bWPSjRcAv5aeBs3uvahjiejdnSVy6bs0hQD
+	adk+pwMWTw09DR+m4GP12xR/F/+dNk34ZvlMW+d2sJffW95JOmMbv2u5YVBnEpptjmTF0o5Wk7xys
+	urk80U1G/Y90w1P+jFko8YHF6afj8yLFFfJseopTWYhRMCA474tLns6KEujw6sHyrHAS20qMibRbL
+	lH7+WMJYXYKLvuqxTwIkhjwHtMAGucsMG+DSJKxiepjr1zK28PC34pEKSXL9lTlD0xtfCvePWmWns
+	0RjKFcW4fb+tasvo2fdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uL02u-00000000nbr-3Pc8;
-	Fri, 30 May 2025 13:45:16 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uL0Gl-00000000pmn-1jSp;
+	Fri, 30 May 2025 13:59:35 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKzwp-00000000me1-1JW7;
-	Fri, 30 May 2025 13:39:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1748612327; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ca2JV1NvoRKv5pME+qb9G/ZrKNrPhFrJv4PWVsA586GumZI7xFu0nY1/ZmG7c7/RMPLDPTEtwdgo9zbD9QOQ6QmIvRxzHx2osUOcaOao5389zazozFKOBocEIv8iXm2z3p/zpAFlbcGIFe/+4UHge9vxhInXLvoFO+yD8CnHk4Q=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1748612327; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=V3OqSA9b11oKNgkPDYr1xA9wl1ljVHhNL13TiqJ42tA=; 
-	b=CORaZ4hP1D6sx4LhiK+ihZQEJKwHBDfu0HlJqsUpqY8SQMjVwVM0L85w6sd4LKjhq+oUF3JUxtvnnupO+2rbUfYEhigUm4Ns9yZCCRn3b32PCxfNGIS1KJtHZpjqOrB8JWxSo8T9daAjFtO7gqVc+agGextqVv1k3xNMK6s2NPM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1748612327;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=V3OqSA9b11oKNgkPDYr1xA9wl1ljVHhNL13TiqJ42tA=;
-	b=TUtxtTDXOcsQVd3PeEEi5CSpXzuFLcz/yiAJPn/ts3eUJKscSAj6mfzBqm+fQzeM
-	IaR8BX7vh+Mps0TLUMBE7GFGIcMz+UY+64bVzExGGxt9NZ57lcVUKUG/o6tyOSg5Qs4
-	uD+NJ6b06t8L0xoovPIwj1TxWeqACSqnpLg2vQSo=
-Received: by mx.zohomail.com with SMTPS id 1748612325008737.6186102251434;
-	Fri, 30 May 2025 06:38:45 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Fri, 30 May 2025 15:38:09 +0200
-Subject: [PATCH 2/2] PM / devfreq: rockchip-dfi: add support for LPDDR5
+	id 1uL0Ec-00000000pTN-19pc;
+	Fri, 30 May 2025 13:57:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2877B4416B;
+	Fri, 30 May 2025 13:57:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 055F7C4CEE9;
+	Fri, 30 May 2025 13:57:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748613440;
+	bh=+zsqPWkubdWde6jUz5nwbNsl1reIqr5AbthKVOWyVIM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jwGcrnkwftu0mRb4vYazECZefxBEn32Ml69pqE3voqrBsZ2HudhGYiS3fmtSTSeba
+	 sbealA6C6En3If72ionzzfA1RrF0ZuX3FQSK19NQA9O0xe6ZdpinNY/GwISm9ImvUm
+	 roCTom/CvdGu5Vt5Qr7zFBH9nZOc2mTqGR1rgSc554fQC0AH2MQGMQHgb55QZG7nt7
+	 fR1XZR6Ikf26BiCsKQGCjbVMOTfdxmPC7DigpKLWMOiIQdYXPGeYiPOjG3+tnoQobr
+	 szn0cnby/s20t7pVDljl8GlggS4ImPdTdvrBELiCt4p+ZQdHrcaoOVtfbwz1U7zyQz
+	 LILL1Pvupb3jQ==
+Date: Fri, 30 May 2025 15:57:14 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Hans Zhang <18255117159@163.com>,
+	Laszlo Fiat <laszlo.fiat@proton.me>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/4] PCI: dw-rockchip: Do not enumerate bus before
+ endpoint devices are ready
+Message-ID: <aDm5Osv_k-yK6Lbh@ryzen>
+References: <20250506073934.433176-7-cassel@kernel.org>
+ <20250528224251.GA58400@bhelgaas>
 MIME-Version: 1.0
-Message-Id: <20250530-rk3588-dfi-improvements-v1-2-6e077c243a95@collabora.com>
-References: <20250530-rk3588-dfi-improvements-v1-0-6e077c243a95@collabora.com>
-In-Reply-To: <20250530-rk3588-dfi-improvements-v1-0-6e077c243a95@collabora.com>
-To: Chanwoo Choi <cw00.choi@samsung.com>, 
- MyungJoo Ham <myungjoo.ham@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, Heiko Stuebner <heiko@sntech.de>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.2
+Content-Disposition: inline
+In-Reply-To: <20250528224251.GA58400@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250530_063859_420145_9F1041B1 
-X-CRM114-Status: GOOD (  31.28  )
+X-CRM114-CacheID: sfid-20250530_065722_360053_E661E443 
+X-CRM114-Status: GOOD (  29.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,229 +78,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip RK3588 SoC can also support LPDDR5 memory. This type of
-memory needs some special case handling in the rockchip-dfi driver.
+On Wed, May 28, 2025 at 05:42:51PM -0500, Bjorn Helgaas wrote:
+> On Tue, May 06, 2025 at 09:39:36AM +0200, Niklas Cassel wrote:
+> > Commit ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can
+> > detect Link Up") changed so that we no longer call dw_pcie_wait_for_link(),
+> > and instead enumerate the bus when receiving a Link Up IRQ.
+> > 
+> > Laszlo Fiat reported (off-list) that his PLEXTOR PX-256M8PeGN NVMe SSD is
+> > no longer functional, and simply reverting commit ec9fd499b9c6 ("PCI:
+> > dw-rockchip: Don't wait for link since we can detect Link Up") makes his
+> > SSD functional again.
+> > 
+> > It seems that we are enumerating the bus before the endpoint is ready.
+> > Adding a msleep(PCIE_T_RRS_READY_MS) before enumerating the bus in the
+> > threaded IRQ handler makes the SSD functional once again.
+> 
+> This sounds like a problem that could happen with any controller, not
+> just dw-rockchip?
 
-Add support for it in rockchip-dfi, as well as the needed GRF register
-definitions.
+Correct.
 
-This has been tested as returning both the right cycle count and
-bandwidth on a LPDDR5 board where the CKR bit is 1. I couldn't test
-whether the values are correct on a system where CKR is 0, as I'm not
-savvy enough with the Rockchip tooling to know whether this can be set
-in the DDR init blob.
 
-Downstream has some special case handling for a hardware version where
-not just the control bits differ, but also the register. Since I don't
-know whether that hardware version is in any production silicon, it's
-left unimplemented for now, with an error message urging users to report
-if they have such a system.
+> Are we missing some required delay that should be
+> in generic code?  Or is this a PLEXTOR defect that everybody has to
+> pay the price for?
 
-There is a slight change of behaviour for non-LPDDR5 systems: instead of
-writing 0 as the control flags to the control register and pretending
-everything is alright if the memory type is unknown, we now explicitly
-return an error.
+So far, the Plextor drive is the only endpoint that we know of, which is
+not working without the delay.
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- drivers/devfreq/event/rockchip-dfi.c | 84 ++++++++++++++++++++++++++++--------
- include/soc/rockchip/rk3588_grf.h    |  8 +++-
- include/soc/rockchip/rockchip_grf.h  |  1 +
- 3 files changed, 73 insertions(+), 20 deletions(-)
+We have no idea if this Plextor drive is the only bad behaving endpoint or
+if there are many endpoints with similar issues, because before the
+use_linkup_irq() callback was introduced, we always had (the equivalent of)
+this delay.
 
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 54effb63519653d20b40eed88681330983399a77..5a2c9badcc64c552303c2f55c52e5420dec5ffc1 100644
---- a/drivers/devfreq/event/rockchip-dfi.c
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -34,15 +34,18 @@
- 
- /* DDRMON_CTRL */
- #define DDRMON_CTRL	0x04
-+#define DDRMON_CTRL_LPDDR5		BIT(6)
- #define DDRMON_CTRL_DDR4		BIT(5)
- #define DDRMON_CTRL_LPDDR4		BIT(4)
- #define DDRMON_CTRL_HARDWARE_EN		BIT(3)
- #define DDRMON_CTRL_LPDDR23		BIT(2)
- #define DDRMON_CTRL_SOFTWARE_EN		BIT(1)
- #define DDRMON_CTRL_TIMER_CNT_EN	BIT(0)
--#define DDRMON_CTRL_DDR_TYPE_MASK	(DDRMON_CTRL_DDR4 | \
-+#define DDRMON_CTRL_DDR_TYPE_MASK	(DDRMON_CTRL_LPDDR5 | \
-+					 DDRMON_CTRL_DDR4 | \
- 					 DDRMON_CTRL_LPDDR4 | \
- 					 DDRMON_CTRL_LPDDR23)
-+#define DDRMON_CTRL_LP5_BANK_MODE_MASK	GENMASK(8, 7)
- 
- #define DDRMON_CH0_WR_NUM		0x20
- #define DDRMON_CH0_RD_NUM		0x24
-@@ -116,13 +119,60 @@ struct rockchip_dfi {
- 	int buswidth[DMC_MAX_CHANNELS];
- 	int ddrmon_stride;
- 	bool ddrmon_ctrl_single;
-+	u32 lp5_bank_mode;
-+	bool lp5_ckr;	/* true if in 4:1 command-to-data clock ratio mode */
- 	unsigned int count_multiplier;	/* number of data clocks per count */
+Since this will only delay once the link up IRQ is triggered, it will not
+affect the boot time when there are no endpoint plugged in to the slot, so
+it seemed quite harmless to reintroduce this delay before enumeration.
+
+But other suggestions are of course welcome.
+
+
+Since it seems that we can read the PCI vendor and PCI device ID, it seems
+that at least some config space reads seem to work, so I guess that we could
+try to quirk the PCI vendor and PCI device ID in the nvme driver.
+
+The nvme driver does have a NVME_QUIRK_DELAY_BEFORE_CHK_RDY quirk for some
+Samsung drive, perhaps we could try something similar to the Plextor drive?
+
+I don't personally have this problematic NVMe drive, so I am not able to test
+such a patch. The user who reported the problem, Laszlo, has been doing all
+the testing.
+
+
+Perhaps Laszlo could try something like:
+
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 6b04473c0ab7..9c409af34548 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -2865,6 +2865,12 @@ static const struct nvme_core_quirk_entry core_quirks[] = {
+                .quirks = NVME_QUIRK_DELAY_BEFORE_CHK_RDY |
+                          NVME_QUIRK_NO_DEEPEST_PS |
+                          NVME_QUIRK_IGNORE_DEV_SUBNQN,
++       },
++       {
++
++               .vid = 0x144d,
++               .mn = "Samsung Portable SSD X5",
++               .quirks = NVME_QUIRK_DELAY_BEFORE_CHK_RDY,
+        }
  };
- 
-+static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl,
-+					u32 *mask)
-+{
-+	u32 ddrmon_ver;
-+
-+	*mask = DDRMON_CTRL_DDR_TYPE_MASK;
-+
-+	switch (dfi->ddr_type) {
-+	case ROCKCHIP_DDRTYPE_LPDDR2:
-+	case ROCKCHIP_DDRTYPE_LPDDR3:
-+		*ctrl = DDRMON_CTRL_LPDDR23;
-+		break;
-+	case ROCKCHIP_DDRTYPE_LPDDR4:
-+	case ROCKCHIP_DDRTYPE_LPDDR4X:
-+		*ctrl = DDRMON_CTRL_LPDDR4;
-+		break;
-+	case ROCKCHIP_DDRTYPE_LPDDR5:
-+		ddrmon_ver = readl_relaxed(dfi->regs);
-+		if (ddrmon_ver < 0x40) {
-+			*ctrl = DDRMON_CTRL_LPDDR5 | dfi->lp5_bank_mode;
-+			*mask |= DDRMON_CTRL_LP5_BANK_MODE_MASK;
-+			break;
-+		}
-+
-+		/*
-+		 * As it is unknown whether the unpleasant special case
-+		 * behaviour used by the vendor kernel is needed for any
-+		 * shipping hardware, ask users to report if they have
-+		 * some of that hardware.
-+		 */
-+		dev_err(&dfi->edev->dev,
-+			"unsupported DDRMON version 0x%04X, please let linux-rockchip know!\n",
-+			ddrmon_ver);
-+		return -EOPNOTSUPP;
-+	default:
-+		dev_err(&dfi->edev->dev, "unsupported memory type 0x%X\n",
-+			dfi->ddr_type);
-+		return -EOPNOTSUPP;
-+	}
-+
-+	return 0;
-+}
-+
- static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
- {
- 	void __iomem *dfi_regs = dfi->regs;
- 	int i, ret = 0;
-+	u32 ctrl;
-+	u32 ctrl_mask;
- 
- 	mutex_lock(&dfi->mutex);
- 
-@@ -136,8 +186,11 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
- 		goto out;
- 	}
- 
-+	ret = rockchip_dfi_ddrtype_to_ctrl(dfi, &ctrl, &ctrl_mask);
-+	if (ret)
-+		goto out;
-+
- 	for (i = 0; i < dfi->max_channels; i++) {
--		u32 ctrl = 0;
- 
- 		if (!(dfi->channel_mask & BIT(i)))
- 			continue;
-@@ -147,21 +200,7 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
- 			       DDRMON_CTRL_SOFTWARE_EN | DDRMON_CTRL_HARDWARE_EN),
- 			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
- 
--		/* set ddr type to dfi */
--		switch (dfi->ddr_type) {
--		case ROCKCHIP_DDRTYPE_LPDDR2:
--		case ROCKCHIP_DDRTYPE_LPDDR3:
--			ctrl = DDRMON_CTRL_LPDDR23;
--			break;
--		case ROCKCHIP_DDRTYPE_LPDDR4:
--		case ROCKCHIP_DDRTYPE_LPDDR4X:
--			ctrl = DDRMON_CTRL_LPDDR4;
--			break;
--		default:
--			break;
--		}
--
--		writel_relaxed(HIWORD_UPDATE(ctrl, DDRMON_CTRL_DDR_TYPE_MASK),
-+		writel_relaxed(HIWORD_UPDATE(ctrl, ctrl_mask),
- 			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
- 
- 		/* enable count, use software mode */
-@@ -652,6 +691,7 @@ static int rockchip_ddr_perf_init(struct rockchip_dfi *dfi)
- 		break;
- 	case ROCKCHIP_DDRTYPE_LPDDR4:
- 	case ROCKCHIP_DDRTYPE_LPDDR4X:
-+	case ROCKCHIP_DDRTYPE_LPDDR5:
- 		dfi->burst_len = 16;
- 		break;
- 	}
-@@ -730,7 +770,7 @@ static int rk3568_dfi_init(struct rockchip_dfi *dfi)
- static int rk3588_dfi_init(struct rockchip_dfi *dfi)
- {
- 	struct regmap *regmap_pmu = dfi->regmap_pmu;
--	u32 reg2, reg3, reg4;
-+	u32 reg2, reg3, reg4, reg6;
- 
- 	regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG2, &reg2);
- 	regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG3, &reg3);
-@@ -757,6 +797,14 @@ static int rk3588_dfi_init(struct rockchip_dfi *dfi)
- 	dfi->ddrmon_stride = 0x4000;
- 	dfi->count_multiplier = 2;
- 
-+	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR5) {
-+		regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG6, &reg6);
-+		dfi->lp5_bank_mode = FIELD_GET(RK3588_PMUGRF_OS_REG6_LP5_BANK_MODE, reg6) << 7;
-+		dfi->lp5_ckr = FIELD_GET(RK3588_PMUGRF_OS_REG6_LP5_CKR, reg6);
-+		if (dfi->lp5_ckr)
-+			dfi->count_multiplier *= 2;
-+	}
-+
- 	return 0;
- };
- 
-diff --git a/include/soc/rockchip/rk3588_grf.h b/include/soc/rockchip/rk3588_grf.h
-index 630b35a550640e57f1b5a50dfbe362653a7cbcc1..02a7b2432d9942e15a77424c44fefec189faaa33 100644
---- a/include/soc/rockchip/rk3588_grf.h
-+++ b/include/soc/rockchip/rk3588_grf.h
-@@ -12,7 +12,11 @@
- #define RK3588_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3		GENMASK(13, 12)
- #define RK3588_PMUGRF_OS_REG3_SYSREG_VERSION		GENMASK(31, 28)
- 
--#define RK3588_PMUGRF_OS_REG4           0x210
--#define RK3588_PMUGRF_OS_REG5           0x214
-+#define RK3588_PMUGRF_OS_REG4				0x210
-+#define RK3588_PMUGRF_OS_REG5				0x214
-+#define RK3588_PMUGRF_OS_REG6				0x218
-+#define RK3588_PMUGRF_OS_REG6_LP5_BANK_MODE		GENMASK(2, 1)
-+/* Whether the LPDDR5 is in 2:1 (= 0) or 4:1 (= 1) CKR a.k.a. DQS mode */
-+#define RK3588_PMUGRF_OS_REG6_LP5_CKR			BIT(0)
- 
- #endif /* __SOC_RK3588_GRF_H */
-diff --git a/include/soc/rockchip/rockchip_grf.h b/include/soc/rockchip/rockchip_grf.h
-index e46fd72aea8d1f649768a3269b85176dacceef0e..41c7bb26fd5387df85e5b58186b67bf74706f360 100644
---- a/include/soc/rockchip/rockchip_grf.h
-+++ b/include/soc/rockchip/rockchip_grf.h
-@@ -13,6 +13,7 @@ enum {
- 	ROCKCHIP_DDRTYPE_LPDDR3	= 6,
- 	ROCKCHIP_DDRTYPE_LPDDR4	= 7,
- 	ROCKCHIP_DDRTYPE_LPDDR4X = 8,
-+	ROCKCHIP_DDRTYPE_LPDDR5	= 9,
- };
- 
- #endif /* __SOC_ROCKCHIP_GRF_H */
 
--- 
-2.49.0
 
+.. with the .vid and .mn fields replacd with the correct ones for the Plextor
+drive. (Don't forget to revert patch in $subject when testing this alternate
+solution.)
+
+I don't have a preference for either solution.
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
