@@ -4,55 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E3C0C5B552
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 May 2025 12:54:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F47AC5AD49
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 May 2025 13:41:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nut14vFJtlW+NXHNpCma3AZVtVCBcGm7o7Uhwk8sjX0=; b=V/+b4ZR1VwFdD5
-	xvs66GyhPc0qM/K2rhezZAxK+nuDoYFuN6a3SW/qUCAMURBe9Rf9hdaF5hGE9uGsSzJqNIsznny41
-	SoS2Ym1q0vXxBsnkitiL2V0te4O80fKbWeywderV4bPzbHelSsvaBHexnHsMlicE3WQPhDEOuZ+Hl
-	RbQ1oAqbpqYOr7oa7jzAnSoLqR8YF6jgng42XxBG4Mak3UXFVzRkx5t74zkfhVCspfyU70MnfxvnL
-	z4WA3ksfSZzgBh0a9NjnSGhyOjTKUWRj5ju/XkKaB0JuQCymG/zdah2NhzRnbqKPcN84JmUISqeSE
-	4+5f+1FvmgCh6Q8MeOgA==;
+	List-Archive:List-Unsubscribe:List-Id:To:MIME-Version:Message-Id:Date:Subject
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aoFX8+yszGbDN8Mq8QNaJwh5o6VwQ+yrHltUi/KGJyk=; b=mX6XO4TT+mfVgM
+	+9cTedfbPH5cyOfbuSbumNq0IOXDs5m1zc26ht87iRPy6a947IiKekMZDCuem98efG47tJEC0cYre
+	g65Oon2RejLl9cd31a0WFM1hYCdVn2jrVTOXmKmFKFgASLMj3BgiC7JlrsTWTzY5ee/HA6JA8P/QL
+	b1P+wnmnACKEPe/J7/PkZYS2dfA8zb55OPbqZa5nqIgCzTIbqWBZvzSu69EM4MihyvH5BHB0G0YFl
+	WrGaDYZfwhhNk9wKdRn+DxhH9GdNkc9ER9pKwozln7k4dZCSQyffGJQg0BWR5M0dUMuTKQDNZpBZL
+	hoVAIZ+h/4zgR3eXgoig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKzFg-00000000cOq-3RB8;
-	Fri, 30 May 2025 12:54:24 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uKzyh-00000000mxz-45Yw;
+	Fri, 30 May 2025 13:40:55 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKzDV-00000000bp9-17f1;
-	Fri, 30 May 2025 12:52:10 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 786144A706;
-	Fri, 30 May 2025 12:52:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 223FFC4CEE9;
-	Fri, 30 May 2025 12:52:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748609528;
-	bh=UQcVtwjs57NCo0a9YDF3wREUlaK90WOqq5g46sAvigg=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=Ra2olD78R+++u/Q1wQAKNFyK/4T9kaxrz3Srtkq9PeX6OmziR448c53Lcgghrathh
-	 OKRKbr6kJttLG1p8E9BJ68u4tH4LkbGZfsEtmhlFJXF+GofHpt99TiW+M+L50EmF/u
-	 kESczJ/S8aSLX0l4YWtHplRy9G/caV9ZSGB/MS0Z5/A7S2tejjbQkIrsQVnzeQPcYw
-	 1kforgKu/xq1IMD79Y7gbul6YEDjDlF8e3GOhuJUm9WupaLKV0NuPTcA6QfUZ1nmab
-	 OvN+iObUZHeEDfQ4Sx57XzGwksmiH3NFey4NfbgG1Xnc3gK4pIq+EeORaJcIzhDqkM
-	 hAVeT1v8tJCHA==
-Date: Fri, 30 May 2025 07:52:06 -0500
+	id 1uKzwl-00000000mb9-3Qnx;
+	Fri, 30 May 2025 13:38:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1748612319; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=SZShYD1t7mTQ9DT2tggEIk7RVpQCf8D3/y2WWQq3xAp3QVq2TJNm8s2lhA5m3Bu7IX4+k3Azipd3wd5/YXEee8Nhg+WAmCgDktW+cPgRxy1nTbwb/ufZlgC6GS60Z0xf1vyoXRkR5neD91mJgPUZrQvyF1lH87/56WRqUC+jYPQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1748612319; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=y1IxS0jtrAS2T8sDTVWHloBSuBdZ/2pcZoSIPKDAGmE=; 
+	b=H3rILkaoiVKgWlNhEKjM6EZiyvUnapLf5g56V+3Bs9THP1+BOv0Z/La9coz7lHvXU7B/RDdf5jf6e/0jm8wQ2bkzPYKyCccXL7uaJlyMPby3SAY5DytJsTzDG/N51Mn9PiN+HltABB0RZAlnB5reYvXoawUyqXogI+Fwl+SmxH8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1748612319;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=y1IxS0jtrAS2T8sDTVWHloBSuBdZ/2pcZoSIPKDAGmE=;
+	b=W7EytWmsa4SYw9aRN+PY2FYG2NiUItqPeB4c07/PK1UR/4G5Jl6Yc/dXzga8aXn6
+	Pv/I+YN9TL/7dFgSsxf7naHrTNbGeWGerVZPEtxySVSOvA9VafN+FPS1QEVY+YlBGnX
+	G80zcibtcscMFFi97xEAkivPAzxujErT5+pGHHVw=
+Received: by mx.zohomail.com with SMTPS id 1748612317988810.2056390045541;
+	Fri, 30 May 2025 06:38:37 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: [PATCH 0/2] RK3588 rockchip-dfi enhancements
+Date: Fri, 30 May 2025 15:38:07 +0200
+Message-Id: <20250530-rk3588-dfi-improvements-v1-0-6e077c243a95@collabora.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Hsun Lai <i@chainsx.cn>
-In-Reply-To: <20250530031046.166202-1-i@chainsx.cn>
-References: <20250530031046.166202-1-i@chainsx.cn>
-Message-Id: <174860938675.1571999.8236778735226903385.robh@kernel.org>
-Subject: Re: [PATCH v5 0/2] Add support for Firefly
- Station-M3/ROC-RK3588S-PC
+X-B4-Tracking: v=1; b=H4sIAL+0OWgC/zWNQQqDMBBFrxJm3YEYEytepbiwZtIOJYlNUhHEu
+ zdUunwf/ns7ZEpMGQaxQ6KVM8dQobkImJ9TeBCyrQxKKiNNKzG9WtP3aB0j+yXFlTyFktF1utN
+ KXxtjFdT3ksjx9jPfxpMTvT81UM4R7lMmnKP3XAYRaCv4j8B4HF+xaBm9mgAAAA==
+X-Change-ID: 20250530-rk3588-dfi-improvements-f646424715d2
+To: Chanwoo Choi <cw00.choi@samsung.com>, 
+ MyungJoo Ham <myungjoo.ham@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250530_055209_347048_C42E8EC6 
-X-CRM114-Status: GOOD (  19.53  )
+X-CRM114-CacheID: sfid-20250530_063855_924425_00341484 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,95 +76,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, inindev@gmail.com, heiko@sntech.de, sfr@canb.auug.org.au, quentin.schulz@cherry.de, jonas@kwiboo.se, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, krzysztof.kozlowski@linaro.org, andrew@lunn.ch, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This series consists of two related patches. The first fixes the memory
+cycle counter on RK3588, which read half of what it should've been
+reading. You can easily verify this with
 
-On Fri, 30 May 2025 11:10:44 +0800, Hsun Lai wrote:
-> This series add support for Firefly Station-M3/ROC-RK3588S-PC.
-> 
-> Info of device can be found at:
-> https://wiki.t-firefly.com/en/Station-M3/index.html
-> 
-> Changes in v5:
-> - Make led-1 off by default (Chukun Pan, v4)
-> - Add color settings for led (Chukun Pan, v4)
-> - Remove vcc5v0_usbdcin
-> - Put enable/gpio before regulator (Chukun Pan, v4)
-> - Remove always-on and boot-on from vcc5v0_host (Chukun Pan, v4)
-> - Update the name of vbus_typec (Chukun Pan, v4)
-> - Remove always-on and boot-on from vbus5v0_typec (Chukun Pan, v4)
-> - Put pinctrl-names before pinctrl-0 (Chukun Pan, v4)
-> - Remove usb_con node
-> - Remove extra blank lines (Chukun Pan, v4)
-> - Add phy-supply for u2phy3_host (Chukun Pan, v4)
-> 
-> Changes in v4:
-> - Update the name of the regulator
-> - Remove the i2s5_8ch node
-> 
-> Changes in v3:
-> - Update the name of leds
-> - Add more cpu nodes
-> - Update mdio compatible
-> - Fix the order in the node
-> - Add the default serial port(uart2)
-> - Patch 1: Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
-> 
-> Changes in v2:
-> - Fix rgmii delays
-> 
-> Changes in v1:
-> - Add support for Firefly ROC-RK3588S-PC
-> 
-> Hsun Lai (2):
->   dt-bindings: arm: rockchip: Add Firefly ROC-RK3588S-PC
->   arm64: dts: rockchip: add DTs for Firefly ROC-RK3588S-PC
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3588s-roc-pc.dts      | 838 ++++++++++++++++++
->  3 files changed, 844 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
-> 
-> --
-> 2.34.1
-> 
-> 
-> 
+  perf stat -a -e rockchip_ddr/cycles/ sleep 1
 
+and then dividing the result by the number of Hertz the ddr init settles
+on, which for LPDDR4X on RK3588 appears to be 2112MHz.
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+The second adds support for measuring memory bandwidth with LPDDR5
+memory. Results have been validated by comparing its reported bandwidth
+with that reported by stress-ng --stream 8 --timeout 15, which line up
+almost perfectly.
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+Nicolas Frattaroli (2):
+      PM / devfreq: rockchip-dfi: double count on RK3588
+      PM / devfreq: rockchip-dfi: add support for LPDDR5
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+ drivers/devfreq/event/rockchip-dfi.c | 91 ++++++++++++++++++++++++++++--------
+ include/soc/rockchip/rk3588_grf.h    |  8 +++-
+ include/soc/rockchip/rockchip_grf.h  |  1 +
+ 3 files changed, 79 insertions(+), 21 deletions(-)
+---
+base-commit: ba2b2250bbaf005016ba85e345add6e19116a1ea
+change-id: 20250530-rk3588-dfi-improvements-f646424715d2
 
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: remotes/arm-soc/rockchip/dt64-31-ge463625af7f9 (exact match)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250530031046.166202-1-i@chainsx.cn:
-
-arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dtb: /edp@fdec0000: failed to match any schema with compatible: ['rockchip,rk3588-edp']
-
-
-
-
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
