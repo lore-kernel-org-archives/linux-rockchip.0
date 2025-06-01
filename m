@@ -4,59 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBECAC5B543
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 01:01:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CA92C54FB3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 01:07:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LqsxuTNuEIMRsu2NWlsLbL4RcMkh85BOmTDHFQ1obUA=; b=hW2FCoJcbnxRPP
-	HYENSfkly7tKfYOxux1HLhcv8raHnK/oCWf2Q3xLygERaYHrY/onRSeq6L0s8RR9u6K1On5r4uOeI
-	K7Dh1Shh2ut+I+aw28GToVAx8s4lmLGYZzjACSre6N3fU3pH1IBuqvlNEFz0xL6JUzvraIyG+Gqv7
-	1FQMLRHm2wQIk7417KaTf2WP7MHYQLASjDzt3F7uXxHwlqOP6YYNDjJc4HMAyFvcfmJzv2MknTdAL
-	0qvXtiTqqKAkEiu+CPCsYRVlssZfRRrOE4zG97W3AjoNs82iLGORgsJpV7mdASDufHgZM+mItIxo+
-	BVsVfbrK6gdvuvRJPPrA==;
+	List-Owner; bh=uykmTQSS+PXzJ12TmbjcCDHeO8BNMDpKoZe55Jtqv/E=; b=qIImp+Lg7BqhHr
+	xozUiUDbF88r3orAk3hqYxdn2kSDQD3DrplGq+PBmALu3JIeiwhR3VW2zf/J/5Tkc/M5aJ3rFvgzV
+	Xns+6thtcw/Lcs9KhMjopFyxbw3Ku7kX20ZGAmsqS8WkSYShSYNq2aeyH6zhbFJ8wks6xswxsSmOJ
+	flk8Iv3Q/0CxIrhPj9y1/3EeCaAJ5aQiymCZTj0hruS1udfP2AwVKvSPdEedAMqyzfUsqwv1hrhx8
+	n3jqrFPczbFrMwvFrQhXgGqNm3Czif2EOS7uwpdOTfZR4kkvLZvITJ+32/YFVL+ScEkWeWT5gihJM
+	wa7cFAQs8T/knGqOkFJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLtY1-00000006Pgm-2F7Z;
-	Mon, 02 Jun 2025 01:01:05 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uLteN-00000006Qxl-1oE5;
+	Mon, 02 Jun 2025 01:07:39 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLsIq-000000069P7-3ir3
-	for linux-rockchip@bombadil.infradead.org;
-	Sun, 01 Jun 2025 23:41:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=Ablul3z3Ji+kzCl2BgCHn2xSjaM1mWVmKvAaBXfijls=; b=hxeR3huCCDeWFLlnfOttU/DZ9Z
-	CCUGE8dbfyZV2npovwVat4EGAn3y7ZQbrI8Wetghr3fxLLty1RnGxGiZsmFGxrMV0WPKcb8DNYPIe
-	Pfl7Os7wWUuKts6qZSMrh8mE2OfEBf8ei4vRTVWPddud3mR/gVWLmXoItnPvDxyKp2BI1JrVjzXNt
-	3A+nZjHTXQiWTnH2ty8ysuBx7XjUk9w3MVruvdeRe6zz0lK77fQwiDJ20lPe2Q7wU8l2w2PVDJnQe
-	c7HfYR3ig1Um/E3efrw13QEGJQdBOTGYMdeFkCyyOpanQLbGBXXylP7+XICL8EMAQHIqk0VVp5022
-	Q7OR0ppg==;
-Received: from nyc.source.kernel.org ([147.75.193.91])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLsIn-00000000YYZ-3HwA
+	id 1uLsKg-000000069uF-0qdv
 	for linux-rockchip@lists.infradead.org;
-	Sun, 01 Jun 2025 23:41:19 +0000
+	Sun, 01 Jun 2025 23:43:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B07DDA4FB4F;
-	Sun,  1 Jun 2025 23:41:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13AB3C4CEEE;
-	Sun,  1 Jun 2025 23:41:14 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id ED28F44146;
+	Sun,  1 Jun 2025 23:43:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83D42C4CEF1;
+	Sun,  1 Jun 2025 23:43:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748821276;
-	bh=VF4j48O/cWgREqTqPQG4SIrIc94zW6XMSKcgN3iaLwM=;
+	s=k20201202; t=1748821393;
+	bh=h3Ft2t6Dkg/2cQWC41aMGuz3WU+mBUcmJ0V6DWOESUU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PhJgIFywAr55/Ea41uJX5ORIFqSnlz6FrNS6R/LcRen0VaSfyF0REH0co5TvjsvFo
-	 4aqoU+T5VJn7E+bYx7FmA5dAee8bMxtYVRSA56iWu/fwxXBCUbAJXQdFnDZCQCVmw8
-	 yeC/C9SdSBIAU/Y+9pEk3nk7/KTX1BSUgLfmq+QPrSP+j0WRPEzM461iKaYM330nMn
-	 PFlYz88ya0qy0kfhpY8aFrU44tx5usx2TH14wr6U8/XJwgV+cn3g1V3jA+VkUJqOjm
-	 QagIp4dYch3eHGJ66ng8kpawZ9RDxi7P6USa6+WhFtF8v8UWFTE34Og42ZIFovhgyg
-	 pWppsngRNRB0w==
+	b=qvG/WkCg+JgLCwJ28YvJYYJ86vY1csbLPgwFSMz5sUQVBfv9Mj7Sl6I8dNRee64oZ
+	 MTfoviltz/iRlMDoQMef8kITUgQgIhNtyP/czy/JguwBmpcPlTdynue8DrPVwYSzfM
+	 4eNT4T1ej1L5c5sIsUcBblC+fezLgiGOkbKkvrTpnjfd8pwa0XvrLiyg4SFNzqACDj
+	 dLP3oOeBGm1bRpPd16vv7zZYGqUqAvr+uMnwcXeCTzCQT5HZ/sSXK3KUjwoxJnyIAN
+	 rJJ5vyxuE0yavO0K9mpJE9biAToWjYzlEqm1TBSBx4EUf8rRN8ZUXWr+QhAjEWkylD
+	 +wDD+6+jLY9uQ==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
@@ -70,19 +55,19 @@ Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.1 26/58] media: rkvdec: Initialize the m2m context before the controls
-Date: Sun,  1 Jun 2025 19:39:39 -0400
-Message-Id: <20250601234012.3516352-26-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 21/43] media: rkvdec: Initialize the m2m context before the controls
+Date: Sun,  1 Jun 2025 19:42:01 -0400
+Message-Id: <20250601234224.3517599-21-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250601234012.3516352-1-sashal@kernel.org>
-References: <20250601234012.3516352-1-sashal@kernel.org>
+In-Reply-To: <20250601234224.3517599-1-sashal@kernel.org>
+References: <20250601234224.3517599-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.140
+X-stable-base: Linux 5.15.184
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250602_004118_235249_5E858A13 
-X-CRM114-Status: GOOD (  17.36  )
+X-CRM114-CacheID: sfid-20250601_164314_299601_FED33382 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,9 +144,9 @@ aXNrLAptYWtpbmcgaXQgYW4gaWRlYWwgYmFja3BvcnQgY2FuZGlkYXRlLgoKIGRyaXZlcnMvc3Rh
 Z2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMgfCAxNCArKysrKysrLS0tLS0tLQogMSBmaWxlIGNo
 YW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2
 ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlh
-L3JrdmRlYy9ya3ZkZWMuYwppbmRleCBkMTZjZjQxMTVkMDNhLi42Y2Y1NTFjYzg2MWE0IDEwMDY0
+L3JrdmRlYy9ya3ZkZWMuYwppbmRleCAyOWI2OGExMzY3NGVlLi4wYzc2M2I0YWYzMzIyIDEwMDY0
 NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jCisrKyBiL2RyaXZl
-cnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMKQEAgLTgyMSwyNCArODIxLDI0IEBAIHN0
+cnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMKQEAgLTc4OCwyNCArNzg4LDI0IEBAIHN0
 YXRpYyBpbnQgcmt2ZGVjX29wZW4oc3RydWN0IGZpbGUgKmZpbHApCiAJcmt2ZGVjX3Jlc2V0X2Rl
 Y29kZWRfZm10KGN0eCk7CiAJdjRsMl9maF9pbml0KCZjdHgtPmZoLCB2aWRlb19kZXZkYXRhKGZp
 bHApKTsKIAotCXJldCA9IHJrdmRlY19pbml0X2N0cmxzKGN0eCk7Ci0JaWYgKHJldCkKLQkJZ290
