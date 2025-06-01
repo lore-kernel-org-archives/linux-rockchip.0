@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67901C54FB3
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 00:45:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8CEDC5B543
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 00:48:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P3IoNakykq9mGuI//3aNpGa3k2ZnGOb3Tzp8Uuelv7g=; b=RG6hglc9P3g2OF
-	F+SVneYsVXT7cEkv1pvySeLtZp8fKNOO5G7IRrSo3IuLloMGrS0BlMw5PVb27fVaYpIiBqEhsMIZ4
-	AM8KWCj/puWH6FeS/MsK8hCUDzVMHr8yjoUEgr6ICw4I9D0Qb62zjBiTiYBAtaWDzfxWIpOZiNmyM
-	1JOrYLqTQn+lhS3EjzK7rUmv3n8CY3GX3OMk3WmNcNB9eOgDMgMEEqitnnv/fmiFTMJ5jm140XXJk
-	e3Ch8yRCnWwb1TUBs5NiXNg3gzI+lZcD/tVljA1E/V09M3+Dy9RTDDqX+ioUV0OqljkJtdXovk76a
-	ifT2eR98jIMidWu22Tsg==;
+	List-Owner; bh=FWzQFFX2gvXHc151s10bcYUFyXgrRSTl7Ycxhx6i9IM=; b=2rdKIb0LxVennf
+	b69RMMspGIVMmaPSGYfq2UoBptQznrF89M3WOnCkQteUVz0iMRB4euEcy5U4+vlea4sTPy3/9Ph1y
+	J0uHuvy8umvwnbjXxzUPGTs5p61/eOgvER+z6ZPU4qJRR0iIkn7wmcg3DFeFWPcN5rh2gyaCoK5m/
+	t1YEKbxezkU6nlm0WsFYmuVYEBdyGsX2qGNVHjWw/yTBtzaOApVwpfI7+I0ofg55Yq8PNqwglWNym
+	jBGFu3wYujIf0NN6Kchxpw2aeDudwgtTe290wg2Q4XS3hT6WUWRx93YVe7/z8GqwUyVeKSAtcJ0jp
+	ShjlgaUrKKj4ZX6LQckA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLtJB-00000006MWM-1shW;
-	Mon, 02 Jun 2025 00:45:45 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uLtLJ-00000006MwZ-20jZ;
+	Mon, 02 Jun 2025 00:47:57 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLsG3-000000068XW-3g4H;
-	Sun, 01 Jun 2025 23:38:27 +0000
+	id 1uLsGX-000000068h1-2n8U
+	for linux-rockchip@lists.infradead.org;
+	Sun, 01 Jun 2025 23:38:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5273961127;
-	Sun,  1 Jun 2025 23:38:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F339C4CEE7;
-	Sun,  1 Jun 2025 23:38:25 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 67B1A44F05;
+	Sun,  1 Jun 2025 23:38:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE4F3C4CEE7;
+	Sun,  1 Jun 2025 23:38:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748821107;
-	bh=IwlitChP2HWTlFY+cygsLnX8/HcAX8WuOt8p7N80ETU=;
+	s=k20201202; t=1748821137;
+	bh=IZ+z1lIb/H3UILfOjOUl48oOH9Bj8Y4IUC32rGWTLyA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BVcDuJC9Y1N7TX44MX0D6Rto95frbEceMQz83cSWFfEHaHHw2TNtfBTG5r/1eB34k
-	 BGF+a2jaOzOwCzUBe6p/DglVQ/kVlfPbobBceNzVJYy/ImxPIIGtepuFvayiN+UZR4
-	 zBD6uZiwqZ3uxScTG062rsYB4jIbi97xqsjt/nWO70pBWGFzYTk2FdwfPt2rng2oH/
-	 fZzo8KPKCeqmsEDUYe1WxF9+Q/4G7VLjeVOwHNiiTqBLUHGPESXj5adxT06hZXKx8l
-	 xhcKtcNaYATeH1Ym0uGmiIHkLpYPVOUoeeY+AOObeFgbTKvCRf5xZA706OKpYtfko6
-	 f0aBBpaA1EGWw==
+	b=jzqBpGwvyWGhV2LHGmVaL9slAnMY6Jc/vZMHpqoUSmROFTIv9749/1NmAnEbsAX7u
+	 4SKJURrHN1sRRYEgeMbFootSveUbb43YVIKBBV5etKEruWTk8Tvrc7QJKQXj7QudnF
+	 irc5Q+o7XJXO92zFA1pQEN6ZITM3NjeI0w+znAAtWJutpczzCh+QNNAfmudoLOuCKa
+	 CLK00BSs6gx83Q0ZC1WQYjfndhHnn2Xcy3zEq0DV/kqHoyZoHRe+IWO/Lp0R5wCvL4
+	 +fKfVhUDWbxgEcO+/eyqIgTJQ+HVm4TpHJVNlXgLGAZssVHIT5jVaRE1Izx26jO3BC
+	 pZO0pu1g3NmwA==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
 Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
 	Hans Verkuil <hverkuil@xs4all.nl>,
 	Sasha Levin <sashal@kernel.org>,
-	p.zabel@pengutronix.de,
+	ezequiel@vanguardiasur.com.ar,
 	mchehab@kernel.org,
-	heiko@sntech.de,
+	gregkh@linuxfoundation.org,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
+	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.6 16/66] media: verisilicon: Enable wide 4K in AV1 decoder
-Date: Sun,  1 Jun 2025 19:36:53 -0400
-Message-Id: <20250601233744.3514795-16-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 30/66] media: rkvdec: Initialize the m2m context before the controls
+Date: Sun,  1 Jun 2025 19:37:07 -0400
+Message-Id: <20250601233744.3514795-30-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250601233744.3514795-1-sashal@kernel.org>
 References: <20250601233744.3514795-1-sashal@kernel.org>
@@ -65,6 +65,9 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.6.92
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250601_163857_736738_273DF173 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,137 +79,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
-[ Upstream commit 311e40e877bd980bc665e6c8d3b15d96f0ec2aa8 ]
-
-Tested on RK3588, this decoder is capable of handling WUHD, so bump the
-maximum width and height accordingly.
-
-Reviewed-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil@xs4all.nl>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
-
-**YES** This commit should be backported to stable kernel trees. ##
-Analysis This is a **bug fix** that corrects an artificial limitation in
-the AV1 decoder driver, not a new feature addition. Here's my detailed
-analysis: ### Nature of the Change The commit changes format capability
-declarations from `FMT_UHD_WIDTH/HEIGHT` (3840x2160) to
-`FMT_4K_WIDTH/HEIGHT` (4096x2304) for the RK3588 AV1 decoder. Looking at
-the constants in the codebase: - `FMT_UHD_WIDTH` = 3840,
-`FMT_UHD_HEIGHT` = 2160 (standard UHD) - `FMT_4K_WIDTH` = 4096,
-`FMT_4K_HEIGHT` = 2304 (Cinema 4K) ### Why This is a Bug Fix 1.
-**Hardware Capability vs Driver Limitation**: The commit message states
-this was "Tested on RK3588" and confirms the decoder is "capable of
-handling WUHD", indicating the hardware already supports these
-resolutions but the driver was artificially limiting them. 2. **User-
-Visible Problem**: Users with Cinema 4K content (4096x2160 or wider)
-would experience decode failures despite having capable hardware. 3.
-**No New Hardware Features**: This doesn't enable new hardware
-functionality - it simply removes an incorrect software limitation. ###
-Risk Assessment - Very Low 1. **Minimal Code Changes**: Only changes
-constant values in format capability arrays - no algorithmic logic
-changes. 2. **Backward Compatibility**: Existing UHD content (3840x2160)
-continues to work exactly as before. 3. **Self-Contained**: Changes are
-isolated to the verisilicon media driver, affecting only format
-capability declarations. 4. **No API Changes**: No changes to userspace
-interfaces or kernel APIs. ### Comparison to Similar Backported Commit
-This change is very similar to commit #5 in the reference examples
-(marked "Backport Status: YES"): - Both increase maximum supported
-resolution after hardware testing - Both are minimal, low-risk changes
-to capability declarations - Both fix user-visible decode failures for
-content the hardware can actually handle ### Stable Tree Benefits 1.
-**Fixes decode failures** for users with Cinema 4K AV1 content 2.
-**Improves hardware utilization** by removing artificial limitations 3.
-**Very low regression risk** due to minimal, well-contained changes 4.
-**Meets all stable tree criteria**: important fix, minimal risk, no new
-features This commit clearly qualifies for stable backporting as it
-fixes a user-visible bug with minimal risk and no architectural changes.
-
- .../platform/verisilicon/rockchip_vpu_hw.c    | 20 +++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index f975276707835..94fedb34f87ff 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -86,10 +86,10 @@ static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
- 		.postprocessed = true,
- 		.frmsize = {
- 			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
--			.max_width = FMT_UHD_WIDTH,
-+			.max_width = FMT_4K_WIDTH,
- 			.step_width = MB_DIM,
- 			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
--			.max_height = FMT_UHD_HEIGHT,
-+			.max_height = FMT_4K_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -100,10 +100,10 @@ static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
- 		.postprocessed = true,
- 		.frmsize = {
- 			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
--			.max_width = FMT_UHD_WIDTH,
-+			.max_width = FMT_4K_WIDTH,
- 			.step_width = MB_DIM,
- 			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
--			.max_height = FMT_UHD_HEIGHT,
-+			.max_height = FMT_4K_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -319,10 +319,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
- 		.match_depth = true,
- 		.frmsize = {
- 			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
--			.max_width = FMT_UHD_WIDTH,
-+			.max_width = FMT_4K_WIDTH,
- 			.step_width = MB_DIM,
- 			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
--			.max_height = FMT_UHD_HEIGHT,
-+			.max_height = FMT_4K_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -332,10 +332,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
- 		.match_depth = true,
- 		.frmsize = {
- 			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
--			.max_width = FMT_UHD_WIDTH,
-+			.max_width = FMT_4K_WIDTH,
- 			.step_width = MB_DIM,
- 			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
--			.max_height = FMT_UHD_HEIGHT,
-+			.max_height = FMT_4K_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -345,10 +345,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
- 		.max_depth = 2,
- 		.frmsize = {
- 			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
--			.max_width = FMT_UHD_WIDTH,
-+			.max_width = FMT_4K_WIDTH,
- 			.step_width = MB_DIM,
- 			.min_height = ROCKCHIP_VPU981_MIN_SIZE,
--			.max_height = FMT_UHD_HEIGHT,
-+			.max_height = FMT_4K_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
--- 
-2.39.5
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPgoK
+WyBVcHN0cmVhbSBjb21taXQgZDQzZDdkYjNjOGExODY4ZGNiYzZjYjhkZTkwYTNjZGYzMDlkNmNi
+YiBdCgpTZXR0aW5nIHVwIHRoZSBjb250cm9sIGhhbmRsZXIgY2FsbHMgaW50byAuc19jdHJsIG9w
+cy4gV2hpbGUgdmFsaWRhdGluZwp0aGUgY29udHJvbHMgdGhlIG9wcyBtYXkgbmVlZCB0byBhY2Nl
+c3Mgc29tZSBvZiB0aGUgY29udGV4dCBzdGF0ZSwgd2hpY2gKY291bGQgbGVhZCB0byBhIGNyYXNo
+IGlmIG5vdCBwcm9wZXJseSBpbml0aWFsaXplZC4KClNpZ25lZC1vZmYtYnk6IE5pY29sYXMgRHVm
+cmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT4KU2lnbmVkLW9mZi1ieTogSGFu
+cyBWZXJrdWlsIDxodmVya3VpbEB4czRhbGwubmw+ClNpZ25lZC1vZmYtYnk6IFNhc2hhIExldmlu
+IDxzYXNoYWxAa2VybmVsLm9yZz4KLS0tCgpOb3cgbGV0IG1lIGFuYWx5emUgdGhlIHNwZWNpZmlj
+IGNoYW5nZXMgcHJvcG9zZWQgaW4gdGhlIGNvbW1pdDogIyMKQW5hbHlzaXMgKipZRVMqKiBUaGlz
+IGNvbW1pdCBzaG91bGQgYmUgYmFja3BvcnRlZCB0byBzdGFibGUga2VybmVsCnRyZWVzLiBIZXJl
+J3MgbXkgZXh0ZW5zaXZlIGFuYWx5c2lzOiAjIyMgQ29yZSBJc3N1ZSBBbmFseXNpcyBUaGUgY29t
+bWl0CmFkZHJlc3NlcyBhIGNyaXRpY2FsIGluaXRpYWxpemF0aW9uIG9yZGVyIGJ1ZyB0aGF0IGNh
+biBsZWFkIHRvIGNyYXNoZXMuClRoZSBwcm9ibGVtIG9jY3VycyBpbiB0aGUgYHJrdmRlY19vcGVu
+KClgIGZ1bmN0aW9uIGF0IGxpbmVzIDgyMi04MzAgaW4KdGhlIGN1cnJlbnQgY29kZTogMS4gKipD
+dXJyZW50IHByb2JsZW1hdGljIG9yZGVyOioqIC0gTGluZSA4MjI6CmBya3ZkZWNfaW5pdF9jdHJs
+cyhjdHgpYCBpcyBjYWxsZWQgZmlyc3QgLSBMaW5lIDgyNi04MzA6CmB2NGwyX20ybV9jdHhfaW5p
+dCgpYCBpcyBjYWxsZWQgc2Vjb25kIDIuICoqVGhlIHByb2JsZW06KiogQWNjb3JkaW5nIHRvCnRo
+ZSBjb21taXQgbWVzc2FnZSBhbmQgbXkgYW5hbHlzaXMgb2YgdGhlIGtlcm5lbCBkb2N1bWVudGF0
+aW9uLApgdjRsMl9jdHJsX2hhbmRsZXJfc2V0dXAoKWAgKGNhbGxlZCBpbnNpZGUgYHJrdmRlY19p
+bml0X2N0cmxzKClgKSBjYWxscwpgLnNfY3RybGAgZm9yIGFsbCBjb250cm9scyB1bmNvbmRpdGlv
+bmFsbHkgdG8gaW5pdGlhbGl6ZSBoYXJkd2FyZSB0bwpkZWZhdWx0IHZhbHVlcy4gVGhlIGAuc19j
+dHJsYCBoYW5kbGVycyBtYXkgbmVlZCB0byBhY2Nlc3MgdGhlIG0ybQpjb250ZXh0IHN0YXRlLCBi
+dXQgaWYgdGhlIG0ybSBjb250ZXh0IChgY3R4LT5maC5tMm1fY3R4YCkgaXNuJ3QKaW5pdGlhbGl6
+ZWQgeWV0LCB0aGlzIGNhbiBjYXVzZSBhIGNyYXNoIG9yIHVuZGVmaW5lZCBiZWhhdmlvci4gIyMj
+IENvZGUKQ2hhbmdlcyBBbmFseXNpcyBUaGUgZml4IGlzIG1pbmltYWwgYW5kIHN1cmdpY2FsOiAt
+ICoqTGluZXMgbW92ZWQ6KiogVGhlCmluaXRpYWxpemF0aW9uIG9yZGVyIGlzIHN3YXBwZWQgLSBt
+Mm0gY29udGV4dCBpbml0aWFsaXphdGlvbiBtb3ZlcwpiZWZvcmUgY29udHJvbCBoYW5kbGVyIHNl
+dHVwIC0gKipFcnJvciBoYW5kbGluZyB1cGRhdGVkOioqIFRoZSBlcnJvcgpoYW5kbGluZyBwYXRo
+cyBhcmUgY29ycmVjdGx5IHVwZGF0ZWQgdG8gbWF0Y2ggdGhlIG5ldyBpbml0aWFsaXphdGlvbgpv
+cmRlciAtICoqTm8gZnVuY3Rpb25hbCBjaGFuZ2VzOioqIFRoZSBmaXggZG9lc24ndCBjaGFuZ2Ug
+ZHJpdmVyCmZ1bmN0aW9uYWxpdHksIG9ubHkgaW5pdGlhbGl6YXRpb24gc2VxdWVuY2UgIyMjIFdo
+eSBUaGlzIFNob3VsZCBCZQpCYWNrcG9ydGVkIDEuICoqRml4ZXMgYSByZWFsIGNyYXNoIGJ1Zzoq
+KiBUaGlzIGFkZHJlc3NlcyBhIHBvdGVudGlhbApjcmFzaCBzY2VuYXJpbyB0aGF0IGFmZmVjdHMg
+dXNlcnMgMi4gKipTbWFsbCBhbmQgY29udGFpbmVkOioqIFRoZSBjaGFuZ2UKaXMgbWluaW1hbCAt
+IGp1c3QgcmVvcmRlcmluZyBpbml0aWFsaXphdGlvbiBhbmQgdXBkYXRpbmcgZXJyb3IgcGF0aHMg
+My4KKipMb3cgcmVncmVzc2lvbiByaXNrOioqIE1vdmluZyBtMm0gaW5pdCBiZWZvcmUgY29udHJv
+bCBpbml0IGlzIHNhZmVyCnNpbmNlIG0ybSBjb250ZXh0IGRvZXNuJ3QgZGVwZW5kIG9uIGNvbnRy
+b2xzLCBidXQgY29udHJvbHMgbWF5IGRlcGVuZCBvbgptMm0gY29udGV4dCA0LiAqKkZvbGxvd3Mg
+ZXN0YWJsaXNoZWQgcGF0dGVybnM6KiogU2ltaWxhciBjb21taXQgIzIgaW4KdGhlIGhpc3Rvcmlj
+YWwgZXhhbXBsZXMgc2hvd3MgYSAiWUVTIiBiYWNrcG9ydCBmb3IgcHJvcGVyIGluaXRpYWxpemF0
+aW9uCm9yZGVyIGluIFY0TDIgZHJpdmVycyA1LiAqKkNyaXRpY2FsIHN1YnN5c3RlbToqKiBNZWRp
+YSBkcml2ZXJzIGNyYXNoaW5nCmNhbiBhZmZlY3QgdXNlciBhcHBsaWNhdGlvbnMgIyMjIENvbXBh
+cmlzb24gd2l0aCBIaXN0b3JpY2FsIENvbW1pdHMgLQoqKlNpbWlsYXIgdG8gY29tbWl0ICMyIChZ
+RVMpOioqIEFsc28gZml4ZXMgaW5pdGlhbGl6YXRpb24gb3JkZXIgaW4gVjRMMgptZWRpYSBkcml2
+ZXIgdG8gcHJldmVudCBjcmFzaGVzIC0gKipTaW1pbGFyIHRvIGNvbW1pdCAjNCAoWUVTKToqKiBN
+ZWRpYQpkcml2ZXIgZml4IHRoYXQncyBsb3ctcmlzayBhbmQgY29udGFpbmVkIC0gKipVbmxpa2Ug
+Y29tbWl0cyAjMSwgIzMsICM1CihOTyk6KiogVGhpcyBhY3R1YWxseSBmaXhlcyBhIGJ1ZyByYXRo
+ZXIgdGhhbiBqdXN0IGNsZWFudXAvY29kZSBzdHlsZQppbXByb3ZlbWVudHMgIyMjIFN0YWJsZSBU
+cmVlIENyaXRlcmlhIE1ldCDinIUgKipJbXBvcnRhbnQgYnVnZml4OioqClByZXZlbnRzIGNyYXNo
+ZXMg4pyFICoqTWluaW1hbCByaXNrOioqIFNpbXBsZSByZW9yZGVyaW5nIHdpdGggbm8gc2lkZQpl
+ZmZlY3RzIOKchSAqKlNtYWxsIGNoYW5nZToqKiBPbmx5IGFmZmVjdHMgaW5pdGlhbGl6YXRpb24g
+c2VxdWVuY2Ug4pyFICoqTm8KYXJjaGl0ZWN0dXJhbCBjaGFuZ2VzOioqIFB1cmUgYnVnIGZpeCDi
+nIUgKipDb25maW5lZCB0byBzdWJzeXN0ZW06KiogT25seQphZmZlY3RzIHJrdmRlYyBkcml2ZXIg
+VGhlIGZpeCBmb2xsb3dzIHRoZSBzdGFibGUgdHJlZSBydWxlcyBwZXJmZWN0bHkgLQppdCdzIGFu
+IGltcG9ydGFudCBjcmFzaCBwcmV2ZW50aW9uIGZpeCB3aXRoIG1pbmltYWwgcmVncmVzc2lvbiBy
+aXNrLAptYWtpbmcgaXQgYW4gaWRlYWwgYmFja3BvcnQgY2FuZGlkYXRlLgoKIGRyaXZlcnMvc3Rh
+Z2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMgfCAxNCArKysrKysrLS0tLS0tLQogMSBmaWxlIGNo
+YW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2
+ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlh
+L3JrdmRlYy9ya3ZkZWMuYwppbmRleCBhYzM5OGI1YTk3MzYwLi44MzhmZjBlZTBiYmI0IDEwMDY0
+NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jCisrKyBiL2RyaXZl
+cnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMKQEAgLTgyMSwyNCArODIxLDI0IEBAIHN0
+YXRpYyBpbnQgcmt2ZGVjX29wZW4oc3RydWN0IGZpbGUgKmZpbHApCiAJcmt2ZGVjX3Jlc2V0X2Rl
+Y29kZWRfZm10KGN0eCk7CiAJdjRsMl9maF9pbml0KCZjdHgtPmZoLCB2aWRlb19kZXZkYXRhKGZp
+bHApKTsKIAotCXJldCA9IHJrdmRlY19pbml0X2N0cmxzKGN0eCk7Ci0JaWYgKHJldCkKLQkJZ290
+byBlcnJfZnJlZV9jdHg7Ci0KIAljdHgtPmZoLm0ybV9jdHggPSB2NGwyX20ybV9jdHhfaW5pdChy
+a3ZkZWMtPm0ybV9kZXYsIGN0eCwKIAkJCQkJICAgIHJrdmRlY19xdWV1ZV9pbml0KTsKIAlpZiAo
+SVNfRVJSKGN0eC0+ZmgubTJtX2N0eCkpIHsKIAkJcmV0ID0gUFRSX0VSUihjdHgtPmZoLm0ybV9j
+dHgpOwotCQlnb3RvIGVycl9jbGVhbnVwX2N0cmxzOworCQlnb3RvIGVycl9mcmVlX2N0eDsKIAl9
+CiAKKwlyZXQgPSBya3ZkZWNfaW5pdF9jdHJscyhjdHgpOworCWlmIChyZXQpCisJCWdvdG8gZXJy
+X2NsZWFudXBfbTJtX2N0eDsKKwogCWZpbHAtPnByaXZhdGVfZGF0YSA9ICZjdHgtPmZoOwogCXY0
+bDJfZmhfYWRkKCZjdHgtPmZoKTsKIAogCXJldHVybiAwOwogCi1lcnJfY2xlYW51cF9jdHJsczoK
+LQl2NGwyX2N0cmxfaGFuZGxlcl9mcmVlKCZjdHgtPmN0cmxfaGRsKTsKK2Vycl9jbGVhbnVwX20y
+bV9jdHg6CisJdjRsMl9tMm1fY3R4X3JlbGVhc2UoY3R4LT5maC5tMm1fY3R4KTsKIAogZXJyX2Zy
+ZWVfY3R4OgogCWtmcmVlKGN0eCk7Ci0tIAoyLjM5LjUKCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
