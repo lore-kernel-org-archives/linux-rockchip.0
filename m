@@ -4,75 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92286C54FB3
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 00:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0304C54FB3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 00:58:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w9kODPPfTptTuO4hBqdd/O7ZxAH1HWvdy/1w2dUU4Fc=; b=qSd9O/Jhj9sEzi
-	oCFoxukn1pT18CkBQ2WF/v85TiFgRtBWExuw8U5wqVLbVe17Em38Bjcii+cGwomACz7FRhXKRsUsf
-	BCKM/oNbGG86+A5RglAxdZCo0B26DW1sNfXfsqNDxXaEMMYWOi/Arz22rzWKlwNyItpiOufC7pLZj
-	BRo0kWGOPwkPoM87zLzg+1z/Cvvk5EUrnA+qDauUBX66OukZz2vriRtCwfa8fqFDoKHWli5Co0NFF
-	Mg7+EVIgOV3YTtSYMmZ2T543tyvskQ9zoN8J9Wjv0cShyt9vsrl/bryft52Vb5e286fj/3/jrkjFp
-	veAarzCCFhjoIeMvNA5g==;
+	List-Owner; bh=FFkRa+1RkOnpnA05mn6llQKiSZt8T1PU3KLYHwLUY7c=; b=wl2nDdUd4T1qg+
+	fRptlWW7iBg6ooeY82YgyB34Yn/PDwoQ2dZK1I0FVVC43w6xpd1FAPOS2q4bHcB76QrLnLjGRWOYX
+	pNW8qMCT3XHE1J1WKRQZm0nZ3Fw8rgmhYxn2ju1a9Wkr91I378fsT2/jgAkhdbVd3cXLpC69P7Yrv
+	XbopuTKIP0YaQxyryNSFNJkcn+8py91TjnLCu7wow2c2TQWmfWMVyfFy2sluCiyfWL1PareuvJpek
+	NHioZmDnnXEr6Ntj9f9kc9ww9qsPc9Y2pRrCfhG1zelgZgLyVrD5zqbJ5JJc3KUVAcDiY5BlrQ9I2
+	MducKkcF510NdpAfO1JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLtLJ-00000006Mw5-0TG2;
-	Mon, 02 Jun 2025 00:47:57 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uLtVK-00000006P4A-0Tlw;
+	Mon, 02 Jun 2025 00:58:18 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLsGV-000000068gC-3yDG;
-	Sun, 01 Jun 2025 23:38:57 +0000
+	id 1uLs6K-000000066Dh-1xIH;
+	Sun, 01 Jun 2025 23:28:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=DDUTFFRhJOLXlhRnwwo111uBs3ouWcATJJApthGgigY=; b=munCnwLS5m2hDXZfmfQCvw7rT1
+	7743aa+CvFZJEJx15DeGm5cykcfly2yTYTIFFB1yEyLdvCE1XoEnLP/RwCWU7Rj/81QFPhtexJGuw
+	H7OqzR2xFc02LDfbntyP2Lyp87mknUgks8XiF7p1L5G3OeRHC8OjvdlIDTZMN9AVOr9vhdlx8lue9
+	he40JN1cLu022xDukfMX09VlAyAMaxGcmM5XLWUSQXJb7rqi3N6nC+PNiVPh1FG31kWqZnmXJsGLZ
+	k3mQyHB6oGjliGMGrJ8nwYLDCtBecmjefIORsbCxrAKsDlzoBsK+8bxDz/2oywxyL5VaQZIgw0pGq
+	3x4qQKJw==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uLs6G-00000000XX6-3grH;
+	Sun, 01 Jun 2025 23:28:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A9013446DE;
-	Sun,  1 Jun 2025 23:38:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A6629C4CEEE;
-	Sun,  1 Jun 2025 23:38:53 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 897DF447C0;
+	Sun,  1 Jun 2025 23:28:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1B4EC4CEEE;
+	Sun,  1 Jun 2025 23:28:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748821135;
-	bh=dt8kPgWDpFu2sSg07IECaKF33MJ/jwpv24xF5OlDrII=;
+	s=k20201202; t=1748820499;
+	bh=BWNJhM0B0GwzMuWy0DnZNuBNkJMk5bCJMu8giMnnk8I=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FvUg2qKGC3r47pK+oWiehOBke1sJpb9N9D4jDGaIBLDZxTLLDdY7Or87YI7fE7z/j
-	 N8KB8Z4jUebfXPGt4z68XH8QXvBhs4XNH8p/hS65TaQhVs6lzUGsVDx9s1P1pvzy/L
-	 32H7gqNMtrnxyK2/RxNZlWuHCZ2mg0ziAeI9xy1WU7CWwXRhoBhsClOJP6y2NXKe5Z
-	 0qN2rCzl7HQRUghPFMXg2gZxYFuxNtzyuJSVMbo53Klz/0IyDvS1zlAwGYG6jTiech
-	 UvnnIuRlYPDF4KDKDbvlz0EUkQuqGq8onqKBkMEyjZlqQxQVyaVQ+qHXGQn5JqCTrf
-	 rtfJyblZyBm3g==
+	b=GXXO5zzJ0H0UZDe8chdiLCsP2Pq2H3qb0HJPiMo3tQPRM/4K6subAf5TBQSVoaZsx
+	 RCtCvbXjAPYTb1MN8Q3uUUz3LJs0dUlRq43MrZ+7OhpMhrIkGKM8w9bWF0mQFkPVE3
+	 052frskr4/KQdzAjIBdeLKbpgTHVAh6QpcyX8uwiRc962eBZWlRbHCL1mW9p/ybw46
+	 Hca8twEuFrQbBVz8L4BN76pSvY98NJ7tLWIhFR9SP4+MHWmG/oswDNyKLqMgjohbmg
+	 xSn6hhn/jYnlTfva06TY9+CW4FVIBPpaB0CM2pKK8cuuUhheXC850YIrKex61kqUqs
+	 m2+LFxH5QdpeA==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Jonas Karlman <jonas@kwiboo.se>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
+Cc: Andy Yan <andy.yan@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
 	Sasha Levin <sashal@kernel.org>,
-	ezequiel@vanguardiasur.com.ar,
-	mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
+	hjc@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 29/66] media: rkvdec: h264: Use bytesperline and buffer height as virstride
-Date: Sun,  1 Jun 2025 19:37:06 -0400
-Message-Id: <20250601233744.3514795-29-sashal@kernel.org>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH AUTOSEL 6.15 075/110] drm/rockchip: vop2: Make overlay layer select register configuration take effect by vsync
+Date: Sun,  1 Jun 2025 19:23:57 -0400
+Message-Id: <20250601232435.3507697-75-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250601233744.3514795-1-sashal@kernel.org>
-References: <20250601233744.3514795-1-sashal@kernel.org>
+In-Reply-To: <20250601232435.3507697-1-sashal@kernel.org>
+References: <20250601232435.3507697-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.92
+X-stable-base: Linux 6.15
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250601_163856_017586_C3E4AC97 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20250602_002821_296641_13E7B1FE 
+X-CRM114-Status: GOOD (  14.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,109 +100,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+From: Andy Yan <andy.yan@rock-chips.com>
 
-[ Upstream commit d5e0aa61470c48ddc04d433a00e79cef8716377a ]
+[ Upstream commit c5996e4ab109c8bb5541453b20647eaaf9350f41 ]
 
-Use bytesperline and buffer height to calculate the strides configured.
+Because the layer/window enable/disable is take effect by vsync, if the
+overlay configuration of these layers does not follow vsync and
+takes effect immediately instead, when multiple layers are dynamically
+enable/disable, inconsistent display contents may be seen on the screen.
 
-This does not really change anything other than ensuring the
-bytesperline that is signaled to userspace matches what is configured
-in HW.
-
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Christopher Obbard <chris.obbard@collabora.com>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil@xs4all.nl>
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Link: https://lore.kernel.org/r/20250318062024.4555-1-andyshrk@163.com
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
-### Key Reasons for NO Backport: 1. **Not a Bug Fix**: The commit
-message explicitly states "This does not really change anything other
-than ensuring the bytesperline that is signaled to userspace matches
-what is configured in HW." This is not fixing a functional bug but
-rather improving consistency between userspace and hardware
-configuration. 2. **Code Quality/Consistency Improvement**: The changes
-are primarily about code correctness and consistency rather than fixing
-a critical issue that affects users. This aligns with similar commits
-#1, #2, and #4 which were marked as NO for backporting. 3. **Staging
-Driver**: The rkvdec driver is in `drivers/staging/media/`, which
-indicates it's still under development and not considered stable.
-Staging drivers typically have more relaxed backporting requirements. 4.
-**Specific Code Changes Analysis**: - **Before**: `hor_virstride =
-(sps->bit_depth_luma_minus8 + 8) 0001-Fix-Clippy-warnings.patch
-0002-Enhance-inference-prompt-to-utilize-CVEKERNELDIR-whe.patch
-0003-Update-to-latest-version-of-clap.patch Cargo.lock Cargo.toml
-LICENSE README.md adreno_acd_support_analysis.md
-amd_display_ips_sequential_ono_backport_analysis.md
-analyze_merge_commit.sh dpp_rcg_backport_analysis.md
-drm_amd_display_vertical_interrupt_dcn32_dcn401_backport_analysis.md
-drm_bridge_analysis.txt drm_format_helper_24bit_analysis.md
-drm_imagination_register_update_analysis.md
-drm_mediatek_mtk_dpi_refactoring_analysis.md
-intel_ipu6_constify_analysis.md io_uring_analysis.txt ksmbd_analysis.txt
-merge_commit_analysis.txt model prompt src target test_gpio_cleanup.txt
-test_patch.txt verisilicon_av1_4k_analysis.md dst_fmt->width / 8;` -
-**After**: `hor_virstride = dst_fmt->plane_fmt[0].bytesperline;` -
-**Before**: `ver_virstride = round_up(dst_fmt->height, 16);` -
-**After**: `ver_virstride = dst_fmt->height;` 5. **No Risk Indication**:
-The changes don't indicate they're fixing crashes, data corruption,
-security issues, or other critical problems that would warrant stable
-backporting. 6. **Pattern Match with Similar Commits**: Looking at the
-provided examples: - Similar commits #1, #2, #4, and #5 that make
-stride/calculation improvements were marked as NO - Only commit #3 that
-increased max supported height (a clear functional limitation fix) was
-marked as YES 7. **No Stable Tree Mention**: The commit message contains
-no indication of stable tree inclusion via Fixes: tags or explicit
-stable tree requests. ### Conclusion: This commit improves code
-consistency by using the actual bytesperline values from userspace
-instead of calculating them from SPS parameters, but it doesn't fix a
-user-impacting bug. It's a code quality improvement that follows the
-pattern of other NO-backport commits in the provided examples.
+Based on my analysis of the commit and the kernel repository context,
+here is my assessment: **YES** This commit should be backported to
+stable kernel trees for the following extensive reasons: ## Code
+Analysis The commit addresses a critical timing synchronization issue in
+the Rockchip VOP2 display controller. The changes are: 1. **Register Bit
+Field Changes**: The commit modifies
+`RK3568_OVL_CTRL__LAYERSEL_REGDONE_IMD` and introduces
+`RK3568_OVL_CTRL__LAYERSEL_REGDONE_SEL` in the header file, indicating a
+switch from immediate register updates to vsync-synchronized updates. 2.
+**Timing Control Logic**: In `rk3568_vop2_setup_layer_mixer()`, the code
+changes from: ```c ovl_ctrl |= RK3568_OVL_CTRL__LAYERSEL_REGDONE_IMD; //
+Immediate mode ``` to: ```c ovl_ctrl &=
+~RK3568_OVL_CTRL__LAYERSEL_REGDONE_IMD; // Remove immediate mode
+ovl_ctrl |= FIELD_PREP(RK3568_OVL_CTRL__LAYERSEL_REGDONE_SEL, vp->id);
+// Per-VP vsync sync ``` ## Why This Should Be Backported ### 1. **Fixes
+User-Visible Display Corruption** The commit message explicitly states
+it fixes "inconsistent display contents" when multiple layers are
+dynamically enabled/disabled. This is a user-visible bug that affects
+display quality and stability. ### 2. **Critical Display Functionality**
+The overlay layer selection controls fundamental display pipeline
+routing in VOP2. From examining similar commits, I found this subsystem
+has had multiple recent layer-related fixes, indicating active issues in
+this area that affect real users. ### 3. **Low Risk, High Impact
+Change** - **Low Risk**: The change only modifies timing
+synchronization, not display logic - **High Impact**: Affects any
+Rockchip RK3568/RK3588 system using multiple display layers -
+**Contained Scope**: Limited to VOP2 overlay timing control ### 4.
+**Follows Stable Tree Criteria** - **Important bugfix**: Fixes visible
+display artifacts - **Small and contained**: Only changes register
+timing configuration - **No architectural changes**: Maintains existing
+display logic - **Clear side effects**: Improves display consistency
+during layer transitions ### 5. **Hardware Synchronization Issue** The
+commit addresses a fundamental hardware synchronization problem where
+layer enable/disable operations take effect at vsync, but overlay
+configuration was taking effect immediately. This mismatch creates race
+conditions causing display corruption during dynamic layer changes. ###
+6. **Broad User Impact** Systems commonly affected include: - Video
+players with overlay graphics - Compositing window managers - Embedded
+displays with multiple UI layers - Any application dynamically managing
+display layers The fix ensures that overlay layer selection changes are
+properly synchronized with display refresh cycles, eliminating
+intermediate corrupted states that users can see during layer
+transitions. This is exactly the type of important, low-risk display fix
+that stable trees should include.
 
- drivers/staging/media/rkvdec/rkvdec-h264.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 1 +
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 5 ++++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index 4fc167b42cf0c..7a1e76d423df5 100644
---- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -896,9 +896,9 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	dma_addr_t rlc_addr;
- 	dma_addr_t refer_addr;
- 	u32 rlc_len;
--	u32 hor_virstride = 0;
--	u32 ver_virstride = 0;
--	u32 y_virstride = 0;
-+	u32 hor_virstride;
-+	u32 ver_virstride;
-+	u32 y_virstride;
- 	u32 yuv_virstride = 0;
- 	u32 offset;
- 	dma_addr_t dst_addr;
-@@ -909,16 +909,16 @@ static void config_registers(struct rkvdec_ctx *ctx,
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index 680bedbb770e6..fc3ecb9fcd957 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -710,6 +710,7 @@ enum dst_factor_mode {
  
- 	f = &ctx->decoded_fmt;
- 	dst_fmt = &f->fmt.pix_mp;
--	hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
--	ver_virstride = round_up(dst_fmt->height, 16);
-+	hor_virstride = dst_fmt->plane_fmt[0].bytesperline;
-+	ver_virstride = dst_fmt->height;
- 	y_virstride = hor_virstride * ver_virstride;
+ #define VOP2_COLOR_KEY_MASK				BIT(31)
  
- 	if (sps->chroma_format_idc == 0)
- 		yuv_virstride = y_virstride;
- 	else if (sps->chroma_format_idc == 1)
--		yuv_virstride += y_virstride + y_virstride / 2;
-+		yuv_virstride = y_virstride + y_virstride / 2;
- 	else if (sps->chroma_format_idc == 2)
--		yuv_virstride += 2 * y_virstride;
-+		yuv_virstride = 2 * y_virstride;
++#define RK3568_OVL_CTRL__LAYERSEL_REGDONE_SEL		GENMASK(31, 30)
+ #define RK3568_OVL_CTRL__LAYERSEL_REGDONE_IMD		BIT(28)
+ #define RK3568_OVL_CTRL__YUV_MODE(vp)			BIT(vp)
  
- 	reg = RKVDEC_Y_HOR_VIRSTRIDE(hor_virstride / 16) |
- 	      RKVDEC_UV_HOR_VIRSTRIDE(hor_virstride / 16) |
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index 0a2840cbe8e22..32c4ed6857395 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -2070,7 +2070,10 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
+ 	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(vp->crtc.state);
+ 
+ 	ovl_ctrl = vop2_readl(vop2, RK3568_OVL_CTRL);
+-	ovl_ctrl |= RK3568_OVL_CTRL__LAYERSEL_REGDONE_IMD;
++	ovl_ctrl &= ~RK3568_OVL_CTRL__LAYERSEL_REGDONE_IMD;
++	ovl_ctrl &= ~RK3568_OVL_CTRL__LAYERSEL_REGDONE_SEL;
++	ovl_ctrl |= FIELD_PREP(RK3568_OVL_CTRL__LAYERSEL_REGDONE_SEL, vp->id);
++
+ 	if (vcstate->yuv_overlay)
+ 		ovl_ctrl |= RK3568_OVL_CTRL__YUV_MODE(vp->id);
+ 	else
 -- 
 2.39.5
 
