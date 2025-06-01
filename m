@@ -4,57 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 056F5C54FB3
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 00:43:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67901C54FB3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 00:45:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9nYNdfXpZknzmsohTGik2WEcG27L3JbzgLwKZaKYGbs=; b=llR06Is+mtUtwz
-	yEc2qknlodPPkJf+XpCDngcCFRucmREyMl8a6RHEMy8xQ5tVBLlHMoMI+lzSCSVDlVXI3m4an0km6
-	xu2uekk7R/+QarFShpQzTqwfDnjAjJOB750xIHq5vsyN8j5+aTEWEKXB1ojw8fjNpx8WHIMkkRrWA
-	iRxr3UK2/StA0ulu2LGeyzEtxc7zCS6LcYUCJwq17QozubqNRK5qvtSyU0H+VXLHqxyFbK9BrIaXD
-	y64a1S7nSeT3lSdCjECzoUYl95B3mB6cD9BZ7AyC84cAy80HoZ0URdwKikk6CE9V1eDCYDa+561sG
-	SzNDPYA4Oq+RCOIW9bdw==;
+	List-Owner; bh=P3IoNakykq9mGuI//3aNpGa3k2ZnGOb3Tzp8Uuelv7g=; b=RG6hglc9P3g2OF
+	F+SVneYsVXT7cEkv1pvySeLtZp8fKNOO5G7IRrSo3IuLloMGrS0BlMw5PVb27fVaYpIiBqEhsMIZ4
+	AM8KWCj/puWH6FeS/MsK8hCUDzVMHr8yjoUEgr6ICw4I9D0Qb62zjBiTiYBAtaWDzfxWIpOZiNmyM
+	1JOrYLqTQn+lhS3EjzK7rUmv3n8CY3GX3OMk3WmNcNB9eOgDMgMEEqitnnv/fmiFTMJ5jm140XXJk
+	e3Ch8yRCnWwb1TUBs5NiXNg3gzI+lZcD/tVljA1E/V09M3+Dy9RTDDqX+ioUV0OqljkJtdXovk76a
+	ifT2eR98jIMidWu22Tsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLtGp-00000006LqV-2wIX;
-	Mon, 02 Jun 2025 00:43:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uLtJB-00000006MWM-1shW;
+	Mon, 02 Jun 2025 00:45:45 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLs3z-000000065iz-40NS;
-	Sun, 01 Jun 2025 23:26:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=D2D1L58O+TEW8292vVqUUgqnJKYNKF0tdHRhotfyzg8=; b=JSlZQc4bdnyQSjUVg5rElvhOGf
-	rLL7zSdTo81/3pnQNVyr6fYliiLKCinjogd1eDkEzFTj4oCcbtprovxHYA3j3Vx3xT7rz484o+Yv0
-	yuJJC4IUQocqsFdk2W36tqOQksCbYSKgIJKgAesgAB6/yP7Ql7U8sPtDPw2ZRZZ8iBjmhEuSm5ied
-	JFW8xbfdqWcuarWcH9D4PyeIko0zbe219ckANNu0/tJnm99WjnzTXGQLWkjGvtmCyz38ZmsBv8R6l
-	7SpLJafdkElafRQzjQvcop/OwoAnrG1SflWJL60NaJE55mWlXqRVH7EaKLQLT8AD4KZu3ELracPbR
-	KMo5DGDA==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLs3w-00000000XBP-1inQ;
-	Sun, 01 Jun 2025 23:25:58 +0000
+	id 1uLsG3-000000068XW-3g4H;
+	Sun, 01 Jun 2025 23:38:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 140355C5564;
-	Sun,  1 Jun 2025 23:23:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FBA1C4CEE7;
-	Sun,  1 Jun 2025 23:25:53 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5273961127;
+	Sun,  1 Jun 2025 23:38:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F339C4CEE7;
+	Sun,  1 Jun 2025 23:38:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748820354;
-	bh=ttfOECRtD5PXtaIw69vMnoWuEDtkXJQhrGI743nHL1c=;
+	s=k20201202; t=1748821107;
+	bh=IwlitChP2HWTlFY+cygsLnX8/HcAX8WuOt8p7N80ETU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YY4gIte5xavpez9z94lrzznqqWKmtOVzsTqFa/RNyddDQ2wUMLPqulCEffn2uvwuV
-	 u5pe/0+v5wgT+79lTqVxQqhl/MvMC2vlLbUWPpNIwaTRU74biAD4i4V4JDw7HZh36r
-	 VRpoK5z9+fignF84ZOblnowrWFmmvWKufoeHFRhGuNW40hJ9+osBVBVp+juD6SCJEa
-	 3y7bOlszHBqlT75lkR8COuQ/bEn3QhLDGYwa3MBJ6QU9czZ1tkauH7jGh2xeUE4gRO
-	 2tUYDPYp6J68oBwiHdyjDtbkitBBiEG7ITE4aWSHy/jBebwR9WMjbzTI3aFdJnh+JK
-	 SPoAFQSgJ5eow==
+	b=BVcDuJC9Y1N7TX44MX0D6Rto95frbEceMQz83cSWFfEHaHHw2TNtfBTG5r/1eB34k
+	 BGF+a2jaOzOwCzUBe6p/DglVQ/kVlfPbobBceNzVJYy/ImxPIIGtepuFvayiN+UZR4
+	 zBD6uZiwqZ3uxScTG062rsYB4jIbi97xqsjt/nWO70pBWGFzYTk2FdwfPt2rng2oH/
+	 fZzo8KPKCeqmsEDUYe1WxF9+Q/4G7VLjeVOwHNiiTqBLUHGPESXj5adxT06hZXKx8l
+	 xhcKtcNaYATeH1Ym0uGmiIHkLpYPVOUoeeY+AOObeFgbTKvCRf5xZA706OKpYtfko6
+	 f0aBBpaA1EGWw==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
@@ -69,19 +55,16 @@ Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.15 030/110] media: verisilicon: Enable wide 4K in AV1 decoder
-Date: Sun,  1 Jun 2025 19:23:12 -0400
-Message-Id: <20250601232435.3507697-30-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 16/66] media: verisilicon: Enable wide 4K in AV1 decoder
+Date: Sun,  1 Jun 2025 19:36:53 -0400
+Message-Id: <20250601233744.3514795-16-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250601232435.3507697-1-sashal@kernel.org>
-References: <20250601232435.3507697-1-sashal@kernel.org>
+In-Reply-To: <20250601233744.3514795-1-sashal@kernel.org>
+References: <20250601233744.3514795-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.15
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250602_002556_714316_E8C8E36A 
-X-CRM114-Status: GOOD (  13.07  )
+X-stable-base: Linux 6.6.92
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,10 +134,10 @@ fixes a user-visible bug with minimal risk and no architectural changes.
  1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index 964122e7c3559..b64f0658f7f1e 100644
+index f975276707835..94fedb34f87ff 100644
 --- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
 +++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -85,10 +85,10 @@ static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
+@@ -86,10 +86,10 @@ static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
  		.postprocessed = true,
  		.frmsize = {
  			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
@@ -167,7 +150,7 @@ index 964122e7c3559..b64f0658f7f1e 100644
  			.step_height = MB_DIM,
  		},
  	},
-@@ -99,10 +99,10 @@ static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
+@@ -100,10 +100,10 @@ static const struct hantro_fmt rockchip_vpu981_postproc_fmts[] = {
  		.postprocessed = true,
  		.frmsize = {
  			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
@@ -180,7 +163,7 @@ index 964122e7c3559..b64f0658f7f1e 100644
  			.step_height = MB_DIM,
  		},
  	},
-@@ -318,10 +318,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
+@@ -319,10 +319,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
  		.match_depth = true,
  		.frmsize = {
  			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
@@ -193,7 +176,7 @@ index 964122e7c3559..b64f0658f7f1e 100644
  			.step_height = MB_DIM,
  		},
  	},
-@@ -331,10 +331,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
+@@ -332,10 +332,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
  		.match_depth = true,
  		.frmsize = {
  			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
@@ -206,7 +189,7 @@ index 964122e7c3559..b64f0658f7f1e 100644
  			.step_height = MB_DIM,
  		},
  	},
-@@ -344,10 +344,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
+@@ -345,10 +345,10 @@ static const struct hantro_fmt rockchip_vpu981_dec_fmts[] = {
  		.max_depth = 2,
  		.frmsize = {
  			.min_width = ROCKCHIP_VPU981_MIN_SIZE,
