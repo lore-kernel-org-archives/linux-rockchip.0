@@ -4,60 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 437EEC54FB3
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Jun 2025 21:52:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D892BC5B555
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Jun 2025 23:38:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gv6grje18clI23W2LvNCKFlhoqEcJezDh+V0G7zBnPU=; b=A6c/16AulN3yYc
-	VBdc7cpNXjS86dsA5bLdMXJZZaB8sXbrJ2L6z5l+mCLqF+ipZCtNGbcNxq2E0auD/wMDcr2lEzntm
-	K1dpENOwQsToNKYzSaA8RaqUWyQkeNhcQCxloTYbqxnPFRiiGN5TzO+L2GZOoeqDljyT0/S4GCQMM
-	g3rMr+LeOBXXzHNZGm67aN6J7NQuCVIHhmg8JRq+EK8slE6Y7N7/JhYjYeOZO8T048GyDFo96KZEr
-	Uy0eyVR/wwzBR4BoZH5KTTbvHTMHzDzBDIWj+zFOwKuTXSt2qYerJM+yky6QXdwap3OB5NrO30Rjd
-	EjPyf4s49+nTpVcgI93w==;
+	List-Owner; bh=w9kODPPfTptTuO4hBqdd/O7ZxAH1HWvdy/1w2dUU4Fc=; b=LMA2SyJnV305HQ
+	qXhzoF+UmGx857VRwS9zKeiLoEze9K2F4xeEbbuQtzusUpql1GEx3NgVKTtMWq6fYUZcTreiJtsl8
+	H5V5NfNEeGpWf9A8FVuo+5GZlMXPK9IgglQeFU+kMt00zxCVgOXMlDhuQQgYnOdrIZMCCe4t28rIF
+	6tTRIVNOBOX4ACjKIkuPsqz/x/QbV+MsHA12m1E49yVyKrzGBky3ioDtqTUzyEAH9S53Axvj77KYW
+	SKwMnRhDARwhpbw0m0Fu+ECn1k5yw4K5+ReHHKSKxqwufI13IzM0J5/ecy3MLazAO52yAuGFxmU8B
+	9w2owcWyr3KTKZaBMBSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLqbM-00000005zEq-2uBu;
-	Sun, 01 Jun 2025 21:52:20 +0000
-Received: from chumsalmon.baetis.net ([209.222.21.150])
+	id 1uLsFZ-000000068NA-2vOz;
+	Sun, 01 Jun 2025 23:37:57 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLqbK-00000005zEV-3J2w
-	for linux-rockchip@lists.infradead.org;
-	Sun, 01 Jun 2025 21:52:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tahomasoft.com;
-	s=default; t=1748814735;
-	bh=zicn/cfLN1CiVYF7A469ZH4CbLa6gpclMmVC9eNH0Hg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=oyNtXd2CheTFBuXwtTLBYwl1vfZ8KWgGFXifM/tMu0hpxGgZzDEqY3MAFormb+/jP
-	 4KQrWhhkL8FFR9skeKZdjmfln1mOGHNL53dFzrkNjmuAcJ5ieXs872rCnQzQgDZ/kx
-	 4gPVqoY7NsDeVMOpig9jzDC0nL1CUnakc9HMQ0WrHFQQCBsaakFtfSBYBLCw4Zq6j1
-	 c0JjXgf0m6k6VUVuhZqnCoVrVIAMppCzzVIqluuFV7WvQ8o7r7WpxJ2hoc4zFV7M1Z
-	 H53+jvg3gZTdDdv6BSaBr3JNSKJ0Om2Pa222hetixs56kdl30gDfPoGwSOq6SsH9iR
-	 FZ9fnoxY4LguA==
-Received: from WahpenayoPeak.tahoma.link (unknown [IPv6:2600:4040:50b4:ed04:a495:6a34:82e3:bc73])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by chumsalmon.baetis.net (Postfix) with ESMTPSA id DC64C27E48D;
-	Sun,  1 Jun 2025 21:52:15 +0000 (UTC)
-Date: Sun, 1 Jun 2025 17:52:14 -0400
-From: Erik Beck <xunil@tahomasoft.com>
-To: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org
-Subject: Re: Searching for forum for help on dts devel for RK3568 board
-Message-ID: <20250601175214.2b291457.xunil@tahomasoft.com>
-In-Reply-To: <3153832.CbtlEUcBR6@diego>
-References: <20250601163901.7e3ca4dc.xunil@tahomasoft.com>
-	<3153832.CbtlEUcBR6@diego>
-Organization: Tahoma Soft
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-pc-linux-gnu)
+	id 1uLs53-00000006604-2Su4;
+	Sun, 01 Jun 2025 23:27:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=MgLOsQuL7RTyNsvlAux5+WjTu3KSg9+JtB3RHLk3F38=; b=R25QoeMW7UPTd6MAauz9L0B3O5
+	KeX9e7Bo/mAx03a5KoSHiZEQVkA1X2IwDaYeOki5g1V5tPyMWt9ObxC5hz2FZhvDYUO7atmPVE47h
+	0qM9395PdCK2uc7db6KYdV6fKvMhQHcSVrdn6itGzBK484pXK4pCEQCZXtzFzLVuBvPIIx4HfrI34
+	jLrimSDqQ9m5EuTkjqQ/TIXeqrYExmedjsiFSZ1PloPeIgTyhARn9WNLWDfx+Spf5CoZ5uOqaNqL3
+	WENRCBT/KMCf3onMF5udmQ6kab2E7HV8sDS7ZEsee7iHPhqSqZNJroJB3l3SaYBqVR08eV0ImwlHI
+	jg3t+2QA==;
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uLs50-00000000XKI-2PUZ;
+	Sun, 01 Jun 2025 23:27:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7C41CA4F8E8;
+	Sun,  1 Jun 2025 23:27:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5424EC4CEF1;
+	Sun,  1 Jun 2025 23:26:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748820421;
+	bh=dt8kPgWDpFu2sSg07IECaKF33MJ/jwpv24xF5OlDrII=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=WdIqWb8r4kt6iAIp6YlsqR9MdecVFUAQ8eMwaUmdTyRQnMOsbObHG6QOmgYKL7rfS
+	 intzkTDS2nZ0cSYR3AAYU8CLIdj+CNNal4/nDMvvO8TzcW+LwTEtuES+9uYDNT74Bj
+	 UJvNe4ywNdjBtbsIhhZ9jdmEbFeuj1NVgpKTdeMYj7s46soV0F+mnG/7+BV+fOyIbE
+	 Zr8ZOPc4+plT7HZU1Mx3ZJV7/oFi23qUbLE7KhYU4CYXflRAhijNSQI8mCrWbTItLx
+	 eDZfmvQgno/Ty1N4pyYW+KbZLvWcr3+ZtLi/a+ybPS7Lj4ln/CAPVZZFYjAJavS30h
+	 OWgAKT+QjMPyw==
+From: Sasha Levin <sashal@kernel.org>
+To: patches@lists.linux.dev,
+	stable@vger.kernel.org
+Cc: Jonas Karlman <jonas@kwiboo.se>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Sasha Levin <sashal@kernel.org>,
+	ezequiel@vanguardiasur.com.ar,
+	mchehab@kernel.org,
+	gregkh@linuxfoundation.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.15 052/110] media: rkvdec: h264: Use bytesperline and buffer height as virstride
+Date: Sun,  1 Jun 2025 19:23:34 -0400
+Message-Id: <20250601232435.3507697-52-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250601232435.3507697-1-sashal@kernel.org>
+References: <20250601232435.3507697-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.15
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250601_145218_898004_B999DB0D 
-X-CRM114-Status: GOOD (  25.47  )
+X-CRM114-CacheID: sfid-20250602_002702_911657_ACEC4D59 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,63 +98,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpUaGFua3MgZm9yIHRoZSBmYXN0IHJlc3BvbnNlIQoKSSdsbCBnaXZlIGxpYmVy
-YS5jaGF0IGEgdHJ5LgoKSSd2ZSBiZWVuIGxvb2tpbmcgYXQgdGhlIHNjaGVtYXRpY3MsIGFuZCB0
-aGV5IGhhdmUgaGVscGVkIHNvbWV3aGF0LCBidXQKbm90IGdldHRpbmcgbWUgdW5zdHVjayBhdCB0
-aGUgbW9tZW50LiBUaGUgVjIgc2hvdWxkIGJlIHByZXR0eSBzaW1pbGFyCnRvIHRoZSBWMSwgYnV0
-IHRoZXJlIG1pZ2h0IGJlIGFuIGltcG9ydGFudCBkaWZmZXJlbmNlIEknbSBvdmVybG9va2luZy4K
-CkknbGwgZ2l2ZSBhIGxvb2sgYXQgdGhvc2UgYm9hcmRzIHlvdSBtZW50aW9uZWQuIEkndmUgYmVl
-biB1c2luZyB0aGUKQlBJLVIyLVBybyBmb3IgaW5zcGlyYXRpb24uIEl0IGhhcyBhbHNvIGhlbHBl
-ZCwgYnV0IHRoZXJlIG1pZ2h0IGJlCnNvbWV0aGluZyBpbiB0aGUgb3RoZXIgYm9hcmRzIHJlbGF0
-aW5nIHRvIHRoZSBQQ0llIGJ1cyB0aGF0IG1pZ2h0IGhlbHAuCgpJJ3ZlIGJlZW4gcHV0dGluZyB0
-aGUgd29yayB1cCBvbnRvIGdpdGh1YjsgY3VycmVudCBicmFuY2ggaXM6Cmh0dHBzOi8vZ2l0aHVi
-LmNvbS9UYWhvbWFTb2Z0L29wZW53cnQtb3BlbndydC90cmVlL0V4cERldi1XSVA3CgpEaXJlY3Qg
-bGluayB0byB0aGUgRFRTIGlzOgpodHRwczovL2dpdGh1Yi5jb20vVGFob21hU29mdC9vcGVud3J0
-LW9wZW53cnQvYmxvYi9FeHBEZXYtV0lQNy90YXJnZXQvbGludXgvcm9ja2NoaXAvcGF0Y2hlcy02
-LjYvMDM2LWFybTY0LWR0cy1yb2NrY2hpcC1saW5rc3Rhci1taW5pbWFsLnBhdGNoCgpUaGFuayB5
-b3UvRGFua2UsCgpFcmlrCn5+fgpPbiBTdW4sIDAxIEp1biAyMDI1IDIzOjExOjU2ICswMjAwCkhl
-aWtvIFN0w7xibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgoKPiBIaSBFcmlrLAo+IAo+IEFt
-IFNvbm50YWcsIDEuIEp1bmkgMjAyNSwgMjI6Mzk6MDEgTWl0dGVsZXVyb3DDpGlzY2hlIFNvbW1l
-cnplaXQKPiBzY2hyaWViIEVyaWsgQmVjazoKPiA+IEkgYW0gd29ya2luZyBvbiBpbml0aWFsIHN1
-cHBvcnQgZm9yIGFuIFJLMzU2OCBib2FyZCwgdGhlIExpbmtTdGFyCj4gPiBINjhLLTE0MjF2MS4g
-SSd2ZSBtYWRlIHNvbWUgcHJvZ3Jlc3MsIGJ1dCBjYW4ndCBnZXQgcGFzdCB0dXJuaW5nIG9uCj4g
-PiBvbmUgb2YgdGhlIHR3byBQQ0llMyBIb3N0IGJyaWRnZXMgKHBjaWUzeDEgcGNpZUBmZTI3MDAw
-MCkgd2l0aG91dAo+ID4gYnJlYWtpbmcgdGhlIGJvb3QuCj4gPiAKPiA+IElzIHRoaXMgdGhlIHJp
-Z2h0IGxvY2F0aW9uIHRvIGFzayBmb3IgaGVscD8gSWYgbm90LCB3aGVyZSBtaWdodCBiZT8KPiA+
-ICAKPiAKPiBUaGUgbWFpbGluZ2xpc3QgbW9zdGx5IGhhcyBwYXRjaGVzIG9uIGl0LCBzbyBJIGRv
-bid0IHJlYWxseSBrbm93IGlmCj4gcGVvcGxlIGFyZSBleHBlY3Rpbmcgbm9uLXBhdGNoIG1haWxz
-Lgo+IAo+IElmIGluIGRvdWJ0IHRoZSAjbGludXgtcm9ja2NoaXAgY2hhbm5lbCBvbiB0aGUgbGli
-ZXJhLmNoYXQgSVJDCj4gbmV0d29yayBbMF0gbWlnaHQgaGVscCBtb3JlLiAocGVvcGxlIGluIGRp
-ZmZlcmVudCB0aW1lem9uZXMsIHNvCj4gcHJvYmFibHkgbm8gaW1tZWRpYXRlIGFuc3dlcnMpCj4g
-Cj4gCj4gCj4gRm9yIHRoZSBtdWx0aS1wY2kgY2FzZSBJIGd1ZXNzIHlvdSBjb3VsZCBzdGFydCBi
-eSBsb29raW5nIGF0IG90aGVyCj4gcmszNTY4IGJvYXJkIGRvaW5nIHNpbWlsYXIgdGhpbmdzLCBs
-aWtlIHRoZSBRbmFwLVRTNDMzIFsxXSwgUmFkeGEgRTI1Cj4gWzJdIG9yIE5hbm9waS1SNVMgWzNd
-Lgo+IAo+IEdlbmVyYWxseSBib2FyZCBkZXNpZ25lcnMgb2Z0ZW4gZm9sbG93IHJlZmVyZW5jZSBk
-ZXNpZ25zLCBzbyB0aGluZ3MKPiBtaWdodCBiZSBzaW1pbGFyLgo+IAo+IFNpbWlsYXJseSwgeW91
-IG1pZ2h0IHdhbnQgdG8gcHVzaCB5b3VyIGN1cnJlbnQgaW4gcHJvZ3Jlc3Mgd29yayBvbgo+IHNv
-bWUgZ2l0aHViIHRoaW5nLCBzbyBwZW9wbGUgY2FuIHRha2UgYSBsb29rLgo+IAo+IAo+IEl0IGFs
-c28gbG9va3MgbGlrZSB0aGUgSDY4S1YyIHZhcmlhbnQgb2YgdGhlIGRldmljZSBoYXMgc2NoZW1h
-dGljcwo+IGF2YWlsYWJsZSBhcyBsaW5rZWQgZnJvbSB0aGUgYm90dG9tIG9mIFs0XSwgbm90IHN1
-cmUgaG93IHRoYXQgcmVsYXRlcwo+IHRvIHlvdXIgZGV2aWNlIHRob3VnaC4KPiAKPiAKPiBIZWlr
-bwo+IAo+IAo+IFswXSBodHRwczovL2xpYmVyYS5jaGF0Lwo+IFsxXQo+IGh0dHBzOi8vZ2l0Lmtl
-cm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC90cmVl
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXFuYXAtdHM0MzMuZHRzCj4gWzJd
-Cj4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFs
-ZHMvbGludXguZ2l0L3RyZWUvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjgtcmFk
-eGEtZTI1LmR0cwo+IFszXQo+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9r
-ZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC90cmVlL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
-a2NoaXAvcmszNTY4LW5hbm9waS1yNXMuZHRzCj4gWzRdCj4gaHR0cHM6Ly9naXRodWIuY29tL1Nl
-ZWVkLVN0dWRpby93aWtpLWRvY3VtZW50cy9ibG9iL2RvY3VzYXVydXMtdmVyc2lvbi9kb2NzL05l
-dHdvcmsvUktfRGV2aWNlcy9INjhLX1YyL0g2OEtWMl9pbnN0YWxsX3N5c3RlbS5tZAo+IAo+IAo+
-IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+From: Jonas Karlman <jonas@kwiboo.se>
+
+[ Upstream commit d5e0aa61470c48ddc04d433a00e79cef8716377a ]
+
+Use bytesperline and buffer height to calculate the strides configured.
+
+This does not really change anything other than ensuring the
+bytesperline that is signaled to userspace matches what is configured
+in HW.
+
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Tested-by: Christopher Obbard <chris.obbard@collabora.com>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil@xs4all.nl>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+
+### Key Reasons for NO Backport: 1. **Not a Bug Fix**: The commit
+message explicitly states "This does not really change anything other
+than ensuring the bytesperline that is signaled to userspace matches
+what is configured in HW." This is not fixing a functional bug but
+rather improving consistency between userspace and hardware
+configuration. 2. **Code Quality/Consistency Improvement**: The changes
+are primarily about code correctness and consistency rather than fixing
+a critical issue that affects users. This aligns with similar commits
+#1, #2, and #4 which were marked as NO for backporting. 3. **Staging
+Driver**: The rkvdec driver is in `drivers/staging/media/`, which
+indicates it's still under development and not considered stable.
+Staging drivers typically have more relaxed backporting requirements. 4.
+**Specific Code Changes Analysis**: - **Before**: `hor_virstride =
+(sps->bit_depth_luma_minus8 + 8) 0001-Fix-Clippy-warnings.patch
+0002-Enhance-inference-prompt-to-utilize-CVEKERNELDIR-whe.patch
+0003-Update-to-latest-version-of-clap.patch Cargo.lock Cargo.toml
+LICENSE README.md adreno_acd_support_analysis.md
+amd_display_ips_sequential_ono_backport_analysis.md
+analyze_merge_commit.sh dpp_rcg_backport_analysis.md
+drm_amd_display_vertical_interrupt_dcn32_dcn401_backport_analysis.md
+drm_bridge_analysis.txt drm_format_helper_24bit_analysis.md
+drm_imagination_register_update_analysis.md
+drm_mediatek_mtk_dpi_refactoring_analysis.md
+intel_ipu6_constify_analysis.md io_uring_analysis.txt ksmbd_analysis.txt
+merge_commit_analysis.txt model prompt src target test_gpio_cleanup.txt
+test_patch.txt verisilicon_av1_4k_analysis.md dst_fmt->width / 8;` -
+**After**: `hor_virstride = dst_fmt->plane_fmt[0].bytesperline;` -
+**Before**: `ver_virstride = round_up(dst_fmt->height, 16);` -
+**After**: `ver_virstride = dst_fmt->height;` 5. **No Risk Indication**:
+The changes don't indicate they're fixing crashes, data corruption,
+security issues, or other critical problems that would warrant stable
+backporting. 6. **Pattern Match with Similar Commits**: Looking at the
+provided examples: - Similar commits #1, #2, #4, and #5 that make
+stride/calculation improvements were marked as NO - Only commit #3 that
+increased max supported height (a clear functional limitation fix) was
+marked as YES 7. **No Stable Tree Mention**: The commit message contains
+no indication of stable tree inclusion via Fixes: tags or explicit
+stable tree requests. ### Conclusion: This commit improves code
+consistency by using the actual bytesperline values from userspace
+instead of calculating them from SPS parameters, but it doesn't fix a
+user-impacting bug. It's a code quality improvement that follows the
+pattern of other NO-backport commits in the provided examples.
+
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 4fc167b42cf0c..7a1e76d423df5 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -896,9 +896,9 @@ static void config_registers(struct rkvdec_ctx *ctx,
+ 	dma_addr_t rlc_addr;
+ 	dma_addr_t refer_addr;
+ 	u32 rlc_len;
+-	u32 hor_virstride = 0;
+-	u32 ver_virstride = 0;
+-	u32 y_virstride = 0;
++	u32 hor_virstride;
++	u32 ver_virstride;
++	u32 y_virstride;
+ 	u32 yuv_virstride = 0;
+ 	u32 offset;
+ 	dma_addr_t dst_addr;
+@@ -909,16 +909,16 @@ static void config_registers(struct rkvdec_ctx *ctx,
+ 
+ 	f = &ctx->decoded_fmt;
+ 	dst_fmt = &f->fmt.pix_mp;
+-	hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
+-	ver_virstride = round_up(dst_fmt->height, 16);
++	hor_virstride = dst_fmt->plane_fmt[0].bytesperline;
++	ver_virstride = dst_fmt->height;
+ 	y_virstride = hor_virstride * ver_virstride;
+ 
+ 	if (sps->chroma_format_idc == 0)
+ 		yuv_virstride = y_virstride;
+ 	else if (sps->chroma_format_idc == 1)
+-		yuv_virstride += y_virstride + y_virstride / 2;
++		yuv_virstride = y_virstride + y_virstride / 2;
+ 	else if (sps->chroma_format_idc == 2)
+-		yuv_virstride += 2 * y_virstride;
++		yuv_virstride = 2 * y_virstride;
+ 
+ 	reg = RKVDEC_Y_HOR_VIRSTRIDE(hor_virstride / 16) |
+ 	      RKVDEC_UV_HOR_VIRSTRIDE(hor_virstride / 16) |
+-- 
+2.39.5
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
