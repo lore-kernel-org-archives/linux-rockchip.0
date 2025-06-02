@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50DE3C5AD49
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 16:23:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 872E5C54FB3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 16:25:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qgomGQWvpD+IB/4sdCgwjnTFpAPwkZSbzxMW3qQEy2E=; b=zly5vPT1gKJQbr
-	Ld40HxL4lMWBoL/D8Eh+uRJX81gNIhBlaBOHwDWor28U996iGls/4LlVw0WGFmSNWgZwuE6mgJcre
-	I67a1fwHVbcqkMXR9tnKZPlSXGwjLZx85y2Py0hs9J+Q0dhsLn6vEE9JWbcW/zMktyRUQz45qXunB
-	1WAxf8AdLQ1UG0Z1vYLqxg64WIqhfAtvFfWMrfEZGpcduPdvYDYPK0ImfWs1T5y8Iw7zDcKbElxhD
-	+mmiOOHKvrKOMN5EKLwRxI56Angr2j5lFDxFW5URCCcHG+5Hh/4I6g0t9GgJV3ip4vVlfs3IdaBTD
-	PYYn8VYJaLz7g0CCKYBQ==;
+	List-Owner; bh=jKN9qqLzJ42SXzd+k+qYVxr3dg8S1yN7qL6aIE9yC+w=; b=Yf55tJn5qunAv3
+	E7CmyPDMMsgSQV5CqeOFSvZX8Bw+T7TrO+ZiMOgCpSjd74LTW1EYwOFa/4j5mY/1SdX8b16cxQiwb
+	oocGowQps1Tg7MJ9VD9p1krHkm+uMPBQtGDTDpJiV+amPAtT6RxBA5X1+R9kyytwsPN6m9PTnOdpw
+	xlepNMpFqtEHPZ7ejj5IyC9jLMICBFW6+ZvxvzoqNq6sDRc4g+6YkTU7Fjfi9QwEJIB+ttpgLsp1i
+	cB+w7+hfAPa7THW2SYo/Lxvw1PZhU4SeoF6ELDOE1BFsUEBfFxRPOgDMjjtUYasdxK9U1GuIGjLFQ
+	TN/QyGel3pWcuxEakP6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM7wJ-00000007t69-0aNj;
-	Mon, 02 Jun 2025 16:23:07 +0000
+	id 1uM7yT-00000007tNm-11yE;
+	Mon, 02 Jun 2025 16:25:21 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM7tG-00000007sUc-12U5;
-	Mon, 02 Jun 2025 16:19:59 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1748881184; cv=none; 
+	id 1uM7tP-00000007sWW-0lG7;
+	Mon, 02 Jun 2025 16:20:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1748881192; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=VMZ55qsQsQBzmLOFgLk6MfuXnL9mRZQxGWseKvh+XxASlmU1BeKNLMljTlmlC+TtJ3XDfZsYuyJODIKI8uk6auU4W2O/BzLk56STXgbMRLnODhiZYH9sXTUrp8wVhNZ9OJJfA5IUN2AFrypH9RBw9YaG/RZPItuxpQUNLyMN9Zg=
+	b=AkptTGEgE31egFhb+f/Uj95/Nt6wZrMBp+i7QgXWA8+AZEWtkMJB0W3uElJugAXzHVH6s2cW745b1NXRfwjaLfI52LojjEo2Qip3KFntk/ICfofL0XZsNu/NZ5FIXHdPpELXHle4p1ZHpei0XBh5lpOzF2XSKB4Oy0yWoCa/QI8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1748881184; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Oqhb0zTAPAAI3BV03PHDJVXV8qr8Hq9NvZb0bcbTck0=; 
-	b=HgzBJ94HMpYkMyImJ9+AHMnFhxEqrEQdswPomW6tTo8TSD/bbESMGWKdyssrsYHH7goKnaEqvESAyKmaXi4vWk3O1ZVfaSjYY4eQhAneW5BwGsgV4JN5lYCqWXYmGYG+DJqqmbTTZWvF1taj29PGf4Sh0mucoA7WbtHNPZOtW+s=
+	t=1748881192; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=thPWNUjDhq74INOVmaKiFAm4Ay3tl0e1gLSGBjUtuCA=; 
+	b=j2lKIaKtyEDUhTafuB1qmTqLvB279lG6bw88aUxQU93DdGeE5T9Bvvcu1J7GBRnbMdDhZYQaub+0Wu0zW0dTQnqczfXW1hBk5/SsM3/kxPPiJ3bfSzvQEbCD+nLXatZgeCOUaFHQd+VPApOmTSMval+IkNH5H/GRddXADfS/wKE=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1748881184;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1748881192;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=Oqhb0zTAPAAI3BV03PHDJVXV8qr8Hq9NvZb0bcbTck0=;
-	b=fbcyVaJSMsDX2AAZ2HspovdYhpUv4Pn4rGAqTOGvRZgK+lX54OK51HtB3MNzQK27
-	MBRfqehWJ/B3hjgYdfC+m6d41ivIC0GHNp31irI7afkbTTK3aMUxF1i+AapJduYnu7E
-	KjkyYsTtQAFUbEtfqvz0ENqW2O2qITMq1RbBMncI=
-Received: by mx.zohomail.com with SMTPS id 1748881183139995.513413165423;
-	Mon, 2 Jun 2025 09:19:43 -0700 (PDT)
+	bh=thPWNUjDhq74INOVmaKiFAm4Ay3tl0e1gLSGBjUtuCA=;
+	b=jluxEtLTEOZgDWrHx8tE7+HvcyzXF4jXsWSxPMHRRlZxiu56w9l4tXvhzqxN5jFV
+	iZrVh1Xwn0SJe6BwaCDWZUyeUJUC8iIj4Uw308rsu03Le1Q4ZHc0g7j2pd/E9DXMgIT
+	E3alHbGpkOUfmVYz8U/+Hvg9rsJ2nEPT4u5O8Gmw=
+Received: by mx.zohomail.com with SMTPS id 1748881189490850.5349919679828;
+	Mon, 2 Jun 2025 09:19:49 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 02 Jun 2025 18:19:12 +0200
-Subject: [PATCH v2 1/7] dt-bindings: pinctrl: rockchip: increase max amount
- of device functions
+Date: Mon, 02 Jun 2025 18:19:13 +0200
+Subject: [PATCH v2 2/7] dt-bindings: pwm: Add a new binding for
+ rockchip,rk3576-pwm
 MIME-Version: 1.0
-Message-Id: <20250602-rk3576-pwm-v2-1-a6434b0ce60c@collabora.com>
+Message-Id: <20250602-rk3576-pwm-v2-2-a6434b0ce60c@collabora.com>
 References: <20250602-rk3576-pwm-v2-0-a6434b0ce60c@collabora.com>
 In-Reply-To: <20250602-rk3576-pwm-v2-0-a6434b0ce60c@collabora.com>
 To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>, 
@@ -64,8 +64,8 @@ To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
  Rasmus Villemoes <linux@rasmusvillemoes.dk>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250602_091958_351520_C3B138A1 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20250602_092007_284091_DACDABB9 
+X-CRM114-Status: GOOD (  15.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,42 +77,133 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, Leon Romanovsky <leon@kernel.org>, linux-rockchip@lists.infradead.org, linux-iio@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Lee Jones <lee@kernel.org>, linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org, linux-gpio@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, Detlev Casanova <detlev.casanova@collabora.com>, Dave Ertman <david.m.ertman@intel.com>, kernel@collabora.com, Ira Weiny <ira.weiny@intel.com>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Leon Romanovsky <leon@kernel.org>, linux-rockchip@lists.infradead.org, linux-iio@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Lee Jones <lee@kernel.org>, linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org, linux-gpio@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, Detlev Casanova <detlev.casanova@collabora.com>, Dave Ertman <david.m.ertman@intel.com>, kernel@collabora.com, Ira Weiny <ira.weiny@intel.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With the introduction of the RK3576, the maximum device function ID used
-increased to 14, as anyone can easily verify for themselves with:
+The Rockchip RK3576 SoC has a newer PWM controller IP revision than
+previous Rockchip SoCs. This IP, called "PWMv4" by Rockchip, introduces
+several new features, and consequently differs in its bindings.
 
-  rg -g '*-pinctrl.dtsi' '<\d+\s+RK_P..\s+(?<func>\d+)\s.*>;$' --trim \
-  -NI -r '$func' arch/arm64/boot/dts/rockchip/ | sort -g | uniq
+Instead of expanding the ever-growing rockchip-pwm binding that already
+has an if-condition, add an entirely new binding to handle this.
 
-Unfortunately, this wasn't caught by dt-validate as those pins are
-omit-if-no-ref and we had no reference to them in any tree so far.
+There are two additional clocks, "osc" and "rc". These are available for
+every PWM instance, and the PWM hardware can switch between the "pwm",
+"osc" and "rc" clock at runtime.
 
-Once again kick the can down the road by increasing the limit to 14.
+The PWM controller also comes with an interrupt now. This interrupt is
+used to signal various conditions.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../bindings/pwm/rockchip,rk3576-pwm.yaml          | 77 ++++++++++++++++++++++
+ MAINTAINERS                                        |  7 ++
+ 2 files changed, 84 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-index 960758dc417f7405010fab067bfbf6f5c4704179..125af766b99297dc229db158846daea974dda28e 100644
---- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-@@ -135,7 +135,7 @@ additionalProperties:
-               description:
-                 Pin bank index.
-             - minimum: 0
--              maximum: 13
-+              maximum: 14
-               description:
-                 Mux 0 means GPIO and mux 1 to N means
-                 the specific device function.
+diff --git a/Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml b/Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml
+new file mode 100644
+index 0000000000000000000000000000000000000000..48d5055c8b069fff431c62e67bda11f2e086c9a0
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml
+@@ -0,0 +1,77 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pwm/rockchip,rk3576-pwm.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip PWMv4 controller
++
++maintainers:
++  - Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
++
++description: |
++  The Rockchip PWMv4 controller is a PWM controller found on several Rockchip
++  SoCs, such as the RK3576.
++
++  It supports both generating and capturing PWM signals.
++
++allOf:
++  - $ref: pwm.yaml#
++
++properties:
++  compatible:
++    items:
++      - const: rockchip,rk3576-pwm
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: Used to derive the PWM signal.
++      - description: Used as the APB bus clock.
++      - description: Used as an alternative to derive the PWM signal.
++      - description: Used as another alternative to derive the PWM signal.
++
++  clock-names:
++    items:
++      - const: pwm
++      - const: pclk
++      - const: osc
++      - const: rc
++
++  interrupts:
++    maxItems: 1
++
++  "#pwm-cells":
++    const: 3
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - interrupts
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rockchip,rk3576-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        pwm@2add0000 {
++            compatible = "rockchip,rk3576-pwm";
++            reg = <0x0 0x2add0000 0x0 0x1000>;
++            clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>, <&cru CLK_OSC_PWM1>,
++                     <&cru CLK_RC_PWM1>;
++            clock-names = "pwm", "pclk", "osc", "rc";
++            interrupts = <GIC_SPI 102 IRQ_TYPE_LEVEL_HIGH>;
++            #pwm-cells = <3>;
++        };
++    };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 2f13e1602ae68d808b2e8a4711d3c6d40bf5f752..ed5cf56b3ebf9e3153cb9171908a1d36c246197d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -21418,6 +21418,13 @@ F:	Documentation/userspace-api/media/v4l/metafmt-rkisp1.rst
+ F:	drivers/media/platform/rockchip/rkisp1
+ F:	include/uapi/linux/rkisp1-config.h
+ 
++ROCKCHIP MFPWM
++M:	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
++L:	linux-rockchip@lists.infradead.org
++L:	linux-pwm@vger.kernel.org
++S:	Maintained
++F:	Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml
++
+ ROCKCHIP RK3568 RANDOM NUMBER GENERATOR SUPPORT
+ M:	Daniel Golle <daniel@makrotopia.org>
+ M:	Aurelien Jarno <aurelien@aurel32.net>
 
 -- 
 2.49.0
