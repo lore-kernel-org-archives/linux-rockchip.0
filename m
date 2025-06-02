@@ -4,63 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 762D2C5AD49
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 19:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F13C5AD49
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Jun 2025 20:14:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KzKonYjTXTKEQpr7u4TVv3yjosr6VyeGvZ23nbVucUg=; b=nwjhgdnx+o1RFA
-	lxOKpNXtIzXDkiWykC19sbd/bUn1+srVKep8LTGc38ypx09go7ScLClcRtk0woc1RpOFNFT7gAgO3
-	ecsMT5Pws0L1SSnuICPV+DoFretP0Ga3GlkcVUs6SLl0+/nPpcKwPosUvI85k+Drh3rp6Zh/b1xh6
-	C6cRGxPadx7pfEjmcH39uMadMBGNhuao1G80T71yALq3wZJKlVuVAX4GMPiwqtOhb+pB9Cz1999z+
-	Tjxp4fzZwuAazRG7l/3UB801uFNYOy237sHfVocWdDcyMUmQgZ2uL/ZU/dmtcgH2RG0YuDsnSUNnQ
-	E5kJ+TKvdW8jSX/XsRVA==;
+	List-Owner; bh=qfeX5RYRtFXj5Nc/vK/15vmGhelXsEkA8yGMBSEiJsM=; b=gtDqe2RYWWHQjg
+	92qU4E10Q5R8/vJOaawH64nPGJHRhHiZ7rjJ6N+1xVaeJeGuenYAHRoYr6KPF1NgnDabLLw2ix2LS
+	B+XjBlBMp87P0clrVKu3/75IUZlXSGB/4ZMCjAWxkegD06SzIx4dbW1kskVptYBsVw2gcfpHi+mYP
+	qz+TDBQwy0M0eWzoQ8kjhP0+J4Ypo28Tx07GFyFvI6DMr6Re+4OhaEu4mfDS4SdChRltcBxmF9grR
+	d79yQWi0quMEcCbEp7+o/XqusWsMFpHSncwhUdO7X5b0eK88fB50U9jwa147eClqhAPZ8Dz/3ZY+v
+	8McgRknKB1PTlq8LbbZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMAQB-00000008OTy-406E;
-	Mon, 02 Jun 2025 19:02:07 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uMBY8-00000008hnl-2W0Q;
+	Mon, 02 Jun 2025 20:14:24 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMAPy-00000008OP2-1jbg;
-	Mon, 02 Jun 2025 19:01:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=SPw9tHv+YFqDOgHItgDh6WWYcZqPEA6GRstSGC7FvMw=; b=ZbiIOWWrqz4Xo+xhj4MkrCq550
-	Ab4dft5PIpkhNivF6xz0iT41AGSWYazCmEw52oUzY7yke177u5Jn17ClfKLKgG86ri9LUrUqJfOno
-	Pn8EjwT7yFIYPwULfA5k8jmbuEcqPmanrMBT6HWnehBEexpPbTctIyfSzqURX979tYqk8d8ZxaeAD
-	jl7R9E9YJwLs5A++pG9KovRDmiemI6nsgopOBXLBY6wp5Qz1gt6cS9JxgKLJ/+G7HdDvCllOuAHm5
-	DiccjOKDXbLRNQCJsqtSXDCl/3Kw+ALRxQJGiewJj2UNSwAU0dVdGWerCn7sT4gW0/MUXsK05vjRb
-	UIfpB2rw==;
-Received: from i53875a2b.versanet.de ([83.135.90.43] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uMAPg-0001RE-Cy; Mon, 02 Jun 2025 21:01:36 +0200
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <ukleinek@kernel.org>,
- William Breathitt Gray <wbg@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Kever Yang <kever.yang@rock-chips.com>, Yury Norov <yury.norov@gmail.com>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+	id 1uMBMW-00000008f13-0pRo;
+	Mon, 02 Jun 2025 20:02:25 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-72d3b48d2ffso3680740b3a.2;
+        Mon, 02 Jun 2025 13:02:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1748894542; x=1749499342; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=jU63ySDIkl618RCkVJvCdpB1ntaX6bwZnYArDPbZsgY=;
+        b=V7Mh4kCyFHFaJci2CYB4xQ+T24WbMD/Vz2lO7xvnIG99vvRIDKRpKdIZEeIeWojG4r
+         EqbKyysE/XTsOXCK1j7P07QnMCPTo13yaVS9h7QoXZYleqqrCJFoZqq0EyCXQ04WG2h8
+         utlswl+5tmZiNtsP5ckOt0tyRrFVdH04GAVRl3/cT3vNZli5NAPjY/Wmrgan7dcGHYhO
+         eLPbitTyxhNZz5puJ6X6IREPjxEVPTwYWjh/Mc5VOS5IRHdj5bYMTHBSR7cuSswXUCSm
+         +EJcAideRWwesMF9+amgnJmW3L12NpZ5qpFedyNyUr3HFKMWIuPowSirwNvB3GcbOEj5
+         OLxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748894542; x=1749499342;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jU63ySDIkl618RCkVJvCdpB1ntaX6bwZnYArDPbZsgY=;
+        b=jWAGWLF5p7ANjCUGTy5KhZcHlwsOa2JjJOjvr5IbeCX4J1ll9k2zbYsC6PLTVZQIMY
+         e+xbCY0ybX4+Q8wDSrzqXQf7SwL18n+Mqk1mEdl/XHaZW9eqqke5r5zrzpsYKyiIcJoI
+         aT5iL8vbir38g3BGF5qtfbhZHEMNPXtbMkgVls/rrGCpUhwtnY2y3gn7S2i46x5MU7de
+         uAzR6Xn+R2EV2kdS19mKu7ReUsncm12xyyOAlKDTII0Xnv85pbGXhl53JT1DQBPMA6YQ
+         pgx+X9DMHOKTubELj2a+q/58jjdI8Pv95CRUc1HmpBiJGDYvxuNwCOJ1kyuycHCVqAid
+         LcLg==
+X-Forwarded-Encrypted: i=1; AJvYcCU15/XJ3IZXui7PLAU0OrVU3Bo3EfQci0Admbi8j+X9G/f5beEAge5hWV0pAoPlPybsAeyaNYHYaTf8CrkncoOC@lists.infradead.org, AJvYcCVDWavyRUML9LXacRg2ABeNvczev/jr9mqTVXNMkNwb+6I9qZePoy0je/Wd8PqCZbqntqUTtwpltu3FAtimy9A=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwrP87uD9gTkCc1i+30CoAdv21WyW+bRHRqVtLgmmlxNWLOS8hH
+	nBHYLZJQhv4d9MMlTVdxqEaHSh6gUSGfDT1GnAICzsg3ayM12yUPRpBm
+X-Gm-Gg: ASbGncsyapTTr0hoZfJbirZH7GDjrMrXHQ8aWeDkOmY9iN6ORZmi6kZuZlGCzHzulAd
+	qjvrhGD/hxCrFuM+93gN/hG7GF/tvulvNAdI0yUPT3WjIQ9AD8AAf67kG/Mq+JvAtTBOPCGiHND
+	Oma1A1Hv7g5l5wDEsi8sYHCbWCnvA3q38beyOBBe5465PY0pILIH8rMJRZiYr4yu3jkTk0rf1TS
+	k5lZ/G2ez2kILoyQ4t365QIcJPI2UxqfvpwzD08xPLb2iuHoQ5sKqSJ4jQRkJUVBYxlyqk3dPvP
+	84T2gGHFjYqY94St5eRMPyNa+eCs1xosntKyEfgk0c+2tlavf0HSlE8IjKjHOw==
+X-Google-Smtp-Source: AGHT+IHiKEZikH+lsGl+d9vzWR5H5Ojhm2iixpRZnhUz2v7NVH3lkWkzU4DjA/Dyx6fG350q0SLnpA==
+X-Received: by 2002:a05:6300:189:b0:1f5:7710:fd18 with SMTP id adf61e73a8af0-21adff7da26mr17104549637.17.1748894542390;
+        Mon, 02 Jun 2025 13:02:22 -0700 (PDT)
+Received: from localhost ([216.228.127.129])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-747affafaebsm8042682b3a.87.2025.06.02.13.02.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Jun 2025 13:02:21 -0700 (PDT)
+Date: Mon, 2 Jun 2025 16:02:19 -0400
+From: Yury Norov <yury.norov@gmail.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	William Breathitt Gray <wbg@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Dave Ertman <david.m.ertman@intel.com>,
+	Ira Weiny <ira.weiny@intel.com>, Leon Romanovsky <leon@kernel.org>,
+	Lee Jones <lee@kernel.org>, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pwm@vger.kernel.org, linux-iio@vger.kernel.org,
+	kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
+	Detlev Casanova <detlev.casanova@collabora.com>
 Subject: Re: [PATCH v2 3/7] bitfield: introduce HI16_WE bitfield prep macros
-Date: Mon, 02 Jun 2025 21:01:35 +0200
-Message-ID: <6139278.alqRGMn8q6@diego>
-In-Reply-To: <20250602-rk3576-pwm-v2-3-a6434b0ce60c@collabora.com>
+Message-ID: <aD4DSz3vs41yMQSv@yury>
 References: <20250602-rk3576-pwm-v2-0-a6434b0ce60c@collabora.com>
  <20250602-rk3576-pwm-v2-3-a6434b0ce60c@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250602-rk3576-pwm-v2-3-a6434b0ce60c@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250602_120154_476632_C6221AFF 
-X-CRM114-Status: GOOD (  24.44  )
+X-CRM114-CacheID: sfid-20250602_130224_242947_77E14F80 
+X-CRM114-Status: GOOD (  37.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,80 +108,159 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Leon Romanovsky <leon@kernel.org>, linux-rockchip@lists.infradead.org, linux-iio@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Lee Jones <lee@kernel.org>, linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org, linux-gpio@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, Detlev Casanova <detlev.casanova@collabora.com>, Dave Ertman <david.m.ertman@intel.com>, kernel@collabora.com, Ira Weiny <ira.weiny@intel.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTW9udGFnLCAyLiBKdW5pIDIwMjUsIDE4OjE5OjE0IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21t
-ZXJ6ZWl0IHNjaHJpZWIgTmljb2xhcyBGcmF0dGFyb2xpOgo+IEhhcmR3YXJlIG9mIHZhcmlvdXMg
-dmVuZG9ycywgYnV0IHZlcnkgbm90YWJseSBSb2NrY2hpcCwgb2Z0ZW4gdXNlcwo+IDMyLWJpdCBy
-ZWdpc3RlcnMgd2hlcmUgdGhlIHVwcGVyIDE2LWJpdCBoYWxmIG9mIHRoZSByZWdpc3RlciBpcyBh
-Cj4gd3JpdGUtZW5hYmxlIG1hc2sgZm9yIHRoZSBsb3dlciBoYWxmLgo+IAo+IFRoaXMgdHlwZSBv
-ZiBoYXJkd2FyZSBzZXR1cCBhbGxvd3MgZm9yIG1vcmUgZ3JhbnVsYXIgY29uY3VycmVudCByZWdp
-c3Rlcgo+IHdyaXRlIGFjY2Vzcy4KPiAKPiBPdmVyIHRoZSB5ZWFycywgbWFueSBkcml2ZXJzIGhh
-dmUgaGFuZC1yb2xsZWQgdGhlaXIgb3duIHZlcnNpb24gb2YgdGhpcwo+IG1hY3JvLCB1c3VhbGx5
-IHdpdGhvdXQgYW55IGNoZWNrcywgb2Z0ZW4gY2FsbGVkIHNvbWV0aGluZyBsaWtlCj4gSElXT1JE
-X1VQREFURSBvciBGSUVMRF9QUkVQX0hJV09SRCwgY29tbW9ubHkgd2l0aCBzbGlnaHRseSBkaWZm
-ZXJlbnQKPiBzZW1hbnRpY3MgYmV0d2VlbiB0aGVtLgo+IAo+IENsZWFybHkgdGhlcmUgaXMgYSBk
-ZW1hbmQgZm9yIHN1Y2ggYSBtYWNybywgYW5kIHRodXMgdGhlIGRlbWFuZCBzaG91bGQKPiBiZSBz
-YXRpc2ZpZWQgaW4gYSBjb21tb24gaGVhZGVyIGZpbGUuCj4gCj4gQWRkIHR3byBtYWNyb3M6IEZJ
-RUxEX1BSRVBfSEkxNl9XRSwgYW5kIEZJRUxEX1BSRVBfSEkxNl9XRV9DT05TVC4gVGhlCj4gbGF0
-dGVyIGlzIGEgdmVyc2lvbiB0aGF0IGNhbiBiZSB1c2VkIGluIGluaXRpYWxpemVycywgbGlrZQo+
-IEZJRUxEX1BSRVBfQ09OU1QuIFRoZSBtYWNybyBuYW1lcyBhcmUgY2hvc2VuIHRvIGV4cGxpY2l0
-bHkgcmVmZXJlbmNlIHRoZQo+IGFzc3VtZWQgaGFsZi1yZWdpc3RlciB3aWR0aCwgYW5kIGl0cyBm
-dW5jdGlvbiwgd2hpbGUgbm90IGNsYXNoaW5nIHdpdGgKPiBhbnkgcG90ZW50aWFsIG90aGVyIG1h
-Y3JvcyB0aGF0IGRyaXZlcnMgbWF5IGFscmVhZHkgaGF2ZSBpbXBsZW1lbnRlZAo+IHRoZW1zZWx2
-ZXMuCj4gCj4gRnV0dXJlIGRyaXZlcnMgc2hvdWxkIHVzZSB0aGVzZSBtYWNyb3MgaW5zdGVhZCBv
-ZiBoYW5kcm9sbGluZyB0aGVpciBvd24sCj4gYW5kIG9sZCBkcml2ZXJzIGNhbiBiZSBwb3J0ZWQg
-dG8gdGhlIG5ldyBtYWNyb3MgYXMgdGltZSBhbmQgb3Bwb3J0dW5pdHkKPiBhbGxvd3MuCj4gCj4g
-U2lnbmVkLW9mZi1ieTogTmljb2xhcyBGcmF0dGFyb2xpIDxuaWNvbGFzLmZyYXR0YXJvbGlAY29s
-bGFib3JhLmNvbT4KPiAtLS0KPiAgaW5jbHVkZS9saW51eC9iaXRmaWVsZC5oIHwgNDcgKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5n
-ZWQsIDQ3IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9saW51eC9iaXRm
-aWVsZC5oIGIvaW5jbHVkZS9saW51eC9iaXRmaWVsZC5oCj4gaW5kZXggNmQ5YTUzZGI1NGI2NmMw
-ODMzOTczYzg4MDQ0NGJkMjg5ZDk2NjdiMS4uMmIzZTdjYjkwY2NiNWQ0OGY1MTAxMDRmNjE0NDNi
-MDY3NDhiYjdlYiAxMDA2NDQKPiAtLS0gYS9pbmNsdWRlL2xpbnV4L2JpdGZpZWxkLmgKPiArKysg
-Yi9pbmNsdWRlL2xpbnV4L2JpdGZpZWxkLmgKPiBAQCAtOCw2ICs4LDcgQEAKPiAgI2RlZmluZSBf
-TElOVVhfQklURklFTERfSAo+ICAKPiAgI2luY2x1ZGUgPGxpbnV4L2J1aWxkX2J1Zy5oPgo+ICsj
-aW5jbHVkZSA8bGludXgvbGltaXRzLmg+Cj4gICNpbmNsdWRlIDxsaW51eC90eXBlY2hlY2suaD4K
-PiAgI2luY2x1ZGUgPGFzbS9ieXRlb3JkZXIuaD4KPiAgCj4gQEAgLTE0Miw2ICsxNDMsNTIgQEAK
-PiAgCQkoKCh0eXBlb2YoX21hc2spKShfdmFsKSA8PCBfX2JmX3NoZihfbWFzaykpICYgKF9tYXNr
-KSkJXAo+ICAJKQo+ICAKPiArLyoqCj4gKyAqIEZJRUxEX1BSRVBfSEkxNl9XRSgpIC0gcHJlcGFy
-ZSBhIGJpdGZpZWxkIGVsZW1lbnQgd2l0aCBhIHdyaXRlLWVuYWJsZSBtYXNrCj4gKyAqIEBfbWFz
-azogc2hpZnRlZCBtYXNrIGRlZmluaW5nIHRoZSBmaWVsZCdzIGxlbmd0aCBhbmQgcG9zaXRpb24K
-PiArICogQF92YWw6ICB2YWx1ZSB0byBwdXQgaW4gdGhlIGZpZWxkCj4gKyAqCj4gKyAqIEZJRUxE
-X1BSRVBfSEkxNl9XRSgpIG1hc2tzIGFuZCBzaGlmdHMgdXAgdGhlIHZhbHVlLCBhcyB3ZWxsIGFz
-IGJpdHdpc2UgT1JzCj4gKyAqIHRoZSByZXN1bHQgd2l0aCB0aGUgbWFzayBzaGlmdGVkIHVwIGJ5
-IDE2Lgo+ICsgKgo+ICsgKiBUaGlzIGlzIHVzZWZ1bCBmb3IgYSBjb21tb24gZGVzaWduIG9mIGhh
-cmR3YXJlIHJlZ2lzdGVycyB3aGVyZSB0aGUgdXBwZXIKPiArICogMTYtYml0IGhhbGYgb2YgYSAz
-Mi1iaXQgcmVnaXN0ZXIgaXMgdXNlZCBhcyBhIHdyaXRlLWVuYWJsZSBtYXNrLiBJbiBzdWNoIGEK
-PiArICogcmVnaXN0ZXIsIGEgYml0IGluIHRoZSBsb3dlciBoYWxmIGlzIG9ubHkgdXBkYXRlZCBp
-ZiB0aGUgY29ycmVzcG9uZGluZyBiaXQKPiArICogaW4gdGhlIHVwcGVyIGhhbGYgaXMgaGlnaC4K
-PiArICovCj4gKyNkZWZpbmUgRklFTERfUFJFUF9ISTE2X1dFKF9tYXNrLCBfdmFsKQkJCQkJXAo+
-ICsJKHsJCQkJCQkJCVwKPiArCQlfX0JGX0ZJRUxEX0NIRUNLKF9tYXNrLCAoKHUxNikgMFUpLCBf
-dmFsLAkJXAo+ICsJCQkJICJGSUVMRF9QUkVQX0hJMTZfV0U6ICIpOwkJXAo+ICsJCSgodHlwZW9m
-KF9tYXNrKSkoX3ZhbCkgPDwgX19iZl9zaGYoX21hc2spKSAmIChfbWFzaykgfAlcCgpnY2MgaXMg
-cXVpdGUgYWRhbWFudCBhYm91dCBzdWdnZXN0aW5nIG1vcmUgcGFyZW50aGVzZXMgaGVyZToKCi4u
-L2luY2x1ZGUvbGludXgvYml0ZmllbGQuaDoxNjM6NzA6IHdhcm5pbmc6IHN1Z2dlc3QgcGFyZW50
-aGVzZXMgYXJvdW5kIGFyaXRobWV0aWMgaW4gb3BlcmFuZCBvZiDigJh84oCZIFstV3BhcmVudGhl
-c2VzXQogIDE2MyB8ICAgICAgICAgICAgICAgICAoKHR5cGVvZihfbWFzaykpKF92YWwpIDw8IF9f
-YmZfc2hmKF9tYXNrKSkgJiAoX21hc2spIHwgIFwKICAgICAgfCAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeCi4uL2lu
-Y2x1ZGUvc29jL3JvY2tjaGlwL21mcHdtLmg6MjI1OjQxOiBub3RlOiBpbiBleHBhbnNpb24gb2Yg
-bWFjcm8g4oCYRklFTERfUFJFUF9ISTE2X1dF4oCZCiAgMjI1IHwgI2RlZmluZSBQV01WNF9NT0RF
-KHYpICAgICAgICAgICAgICAgICAgIEZJRUxEX1BSRVBfSEkxNl9XRShQV01WNF9NT0RFX01BU0ss
-ICh2KSkKICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXn5+
-fn5+fn5+fn5+fn5+fn5+Ci4uL2luY2x1ZGUvc29jL3JvY2tjaGlwL21mcHdtLmg6MjMwOjM0OiBu
-b3RlOiBpbiBleHBhbnNpb24gb2YgbWFjcm8g4oCYUFdNVjRfTU9EReKAmQogIDIzMCB8ICNkZWZp
-bmUgUFdNVjRfQ1RSTF9DT05UX0ZMQUdTICAgKFBXTVY0X01PREUoUFdNVjRfTU9ERV9DT05UKSB8
-IFwKICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBefn5+fn5+fn5+Ci4u
-L2RyaXZlcnMvcHdtL3B3bS1yb2NrY2hpcC12NC5jOjIzNzo1Nzogbm90ZTogaW4gZXhwYW5zaW9u
-IG9mIG1hY3JvIOKAmFBXTVY0X0NUUkxfQ09OVF9GTEFHU+KAmQogIDIzNyB8ICAgICAgICAgbWZw
-d21fcmVnX3dyaXRlKHBjLT5wd21mLT5iYXNlLCBQV01WNF9SRUdfQ1RSTCwgUFdNVjRfQ1RSTF9D
-T05UX0ZMQUdTKTsKICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fgoKCkhlaWtvCgoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Mon, Jun 02, 2025 at 06:19:14PM +0200, Nicolas Frattaroli wrote:
+> Hardware of various vendors, but very notably Rockchip, often uses
+> 32-bit registers where the upper 16-bit half of the register is a
+> write-enable mask for the lower half.
+
+Can you list them all explicitly please? I grepped myself for the
+'HIGHWORD_UPDATE' and 'FIELD_PREP_HIGWORD', and found just 4 or 5 in
+addition to the rockchip.
+ 
+> This type of hardware setup allows for more granular concurrent register
+> write access.
+> 
+> Over the years, many drivers have hand-rolled their own version of this
+> macro, usually without any checks, often called something like
+> HIWORD_UPDATE or FIELD_PREP_HIWORD, commonly with slightly different
+> semantics between them.
+> 
+> Clearly there is a demand for such a macro, and thus the demand should
+> be satisfied in a common header file.
+
+I agree. Nice catch.
+
+> Add two macros: FIELD_PREP_HI16_WE, and FIELD_PREP_HI16_WE_CONST. The
+> latter is a version that can be used in initializers, like
+> FIELD_PREP_CONST.
+
+I'm not sure that the name you've chosen reflects the intention. If
+you just give me the name without any background, I'd bet it updates
+the HI16 part of presumably 32-bit field. The 'WE' part here is most
+likely excessive because at this level of abstraction you can't
+guarantee that 'write-enable mask' is the only purpose for the macro.
+
+> The macro names are chosen to explicitly reference the
+> assumed half-register width, and its function, while not clashing with
+> any potential other macros that drivers may already have implemented
+> themselves.
+>
+> Future drivers should use these macros instead of handrolling their own,
+> and old drivers can be ported to the new macros as time and opportunity
+> allows.
+
+This is a wrong way to go. Once you introduce a macro that replaces
+functionality of few other arch or driver macros, you should consolidate
+them all in the same series. Otherwise, it will be just another flavor
+of the same, but now living in a core header. 
+
+Can you please prepare a series that introduces the new macro and
+wires all arch duplications to it?
+ 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  include/linux/bitfield.h | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 47 insertions(+)
+> 
+> diff --git a/include/linux/bitfield.h b/include/linux/bitfield.h
+> index 6d9a53db54b66c0833973c880444bd289d9667b1..2b3e7cb90ccb5d48f510104f61443b06748bb7eb 100644
+> --- a/include/linux/bitfield.h
+> +++ b/include/linux/bitfield.h
+> @@ -8,6 +8,7 @@
+>  #define _LINUX_BITFIELD_H
+>  
+>  #include <linux/build_bug.h>
+> +#include <linux/limits.h>
+>  #include <linux/typecheck.h>
+>  #include <asm/byteorder.h>
+>  
+> @@ -142,6 +143,52 @@
+>  		(((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask))	\
+>  	)
+>  
+> +/**
+> + * FIELD_PREP_HI16_WE() - prepare a bitfield element with a write-enable mask
+> + * @_mask: shifted mask defining the field's length and position
+> + * @_val:  value to put in the field
+> + *
+> + * FIELD_PREP_HI16_WE() masks and shifts up the value, as well as bitwise ORs
+> + * the result with the mask shifted up by 16.
+> + *
+> + * This is useful for a common design of hardware registers where the upper
+> + * 16-bit half of a 32-bit register is used as a write-enable mask. In such a
+> + * register, a bit in the lower half is only updated if the corresponding bit
+> + * in the upper half is high.
+> + */
+> +#define FIELD_PREP_HI16_WE(_mask, _val)					\
+> +	({								\
+> +		__BF_FIELD_CHECK(_mask, ((u16) 0U), _val,		\
+> +				 "FIELD_PREP_HI16_WE: ");		\
+> +		((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask) |	\
+> +		((_mask) << 16);					\
+> +	})
+
+This pretty much is a duplication of the FIELD_PREP(), isn't? Why don't
+you borrow the approach from drivers/clk/clk-sp7021.c:
+
+	/* HIWORD_MASK FIELD_PREP */
+	#define HWM_FIELD_PREP(mask, value)             \
+	({                                              \
+	        u64 _m = mask;                          \
+	        (_m << 16) | FIELD_PREP(_m, value);     \
+	})
+
+If you do so, the existing FIELD_PREP() will do all the work without
+copy-pasting. The only questionI have  to the above macro is why '_m'
+is u64? Seemingly, it should be u32?
+
+Regarding the name... I can't invent a good one as well, so the best
+thing I can suggest is not to invent something that can mislead. The
+HWM_FIELD_PREP() is not bad because it tells almost nothing and
+encourages one to refer to the documentation. If you want something
+self-explaining, maybe MASK_HI_FIELD_LO_PREP_U16(), or something? 
+
+Thanks,
+Yury
+
+> +
+> +/**
+> + * FIELD_PREP_HI16_WE_CONST() - prepare a constant bitfield element with a
+> + *                              write-enable mask
+> + * @_mask: shifted mask defining the field's length and position
+> + * @_val:  value to put in the field
+> + *
+> + * FIELD_PREP_HI16_WE_CONST() masks and shifts up the value, as well as bitwise
+> + * ORs the result with the mask shifted up by 16.
+> + *
+> + * This is useful for a common design of hardware registers where the upper
+> + * 16-bit half of a 32-bit register is used as a write-enable mask. In such a
+> + * register, a bit in the lower half is only updated if the corresponding bit
+> + * in the upper half is high.
+> + *
+> + * Unlike FIELD_PREP_HI16_WE(), this is a constant expression and can therefore
+> + * be used in initializers. Error checking is less comfortable for this
+> + * version, and non-constant masks cannot be used.
+> + */
+> +#define FIELD_PREP_HI16_WE_CONST(_mask, _val)				 \
+> +	(								 \
+> +		FIELD_PREP_CONST(_mask, _val) |				 \
+> +		(BUILD_BUG_ON_ZERO(const_true((u64) (_mask) > U16_MAX)) + \
+> +		 ((_mask) << 16))					 \
+> +	)
+> +
+>  /**
+>   * FIELD_GET() - extract a bitfield element
+>   * @_mask: shifted mask defining the field's length and position
+> 
+> -- 
+> 2.49.0
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
