@@ -4,94 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC982C5AE59
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jun 2025 17:12:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9726BC5AD49
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jun 2025 17:51:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gcl3OLosB0KzsnbIxnrC3Ml+QjA4H4cCEsryJQqVbiE=; b=pZr1s7HmdlQU9e
-	rjbNmtV+s/5EfxBwGyTyn+TASoyficMpKzPdrOtuARhakUOe4WJmIi8ZdoQ/b5ikd5aR2jnLWRh4x
-	xrML8G/1SW4/ajK9J2z9gQltLl/qrRQ0qe2U6NDw8uAXf4py4eKDr9n79qvD5On1DAfZyi0JP4o49
-	vmCX7UWxF+HjJdD5zhYZGpFoFi6/eIjfGwxg9yXj65f/Fhy8oBzukmsvPP3GQ3+3v/Wx/XrQ5VZVx
-	wY60Pa4lm7tMTVRYfGOsbBf1PIJ/qxs7rRU9x/xWX3LiODiu8UVHiuW15JxjeJ/BtOBOOhDoVRL65
-	X/9K7GrwV7kvknzS+jFQ==;
+	List-Owner; bh=S2Vvk5rapxbSbOWy+7BoPbu0GOOxudb8NuPtTuwSnSw=; b=rgiq59yZIm/Jwd
+	a1NnRLjXbKzASH94kEB+noQitZGnnDmJtKkIRWcPfy70DSKVwc1SqQD5YUZnnHew01MZREbvaafYT
+	49FNZE53ipeVBM1pfY77uygY2VOfh7DinEVSHVlgjfIPtqcjxGW3oVNZQUHf3TNwqq5gHjn7xHtu1
+	3e7DG3icT7LbNuyEyDbUDuxoMxpbJNnR5mKOE4weo124Jl4P+6M/y0R6LkwEy9I6BlLCN9ZdPW1I3
+	0a3yUj9Y9U5WH3+wKXIb8xUG4/zkq28qpqgHXJyqpKFux8GVqA1tF1/0wPQHIIXfAgJs7ILMdNAPc
+	tWi1fXZQXQNin7HCYn5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMVBj-0000000BSTY-40bq;
-	Tue, 03 Jun 2025 17:12:35 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1uMVni-0000000BWq3-085F;
+	Tue, 03 Jun 2025 17:51:50 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMV11-0000000BR2Q-3xts;
-	Tue, 03 Jun 2025 17:01:33 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-3a50fc819f2so1466471f8f.2;
-        Tue, 03 Jun 2025 10:01:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1748970090; x=1749574890; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=L2WNeHWGKI9roALR2lWxhNA2hHvIsfJxDyoD0/1ONqw=;
-        b=HsM1Zquo8cSTcoJBu4F4AoTDfabY891YEzYKWXRRb3xn6mOUZTG74Bo6gIRkloDVYD
-         JP/bd0VGhPJLRlU+eGSivV1NzwytYSAJOj88oYh3vXzzhVRqL8T28jABFnDCOi+UuNnS
-         kH6VdElCVobI78Q1MBMQG05V/qG/1v/X7KmkDF3+gs4++Y7byKY3H8/oGdFFcGThmjDT
-         ksnT5YjB/le67J4N6tMol4DGcLGYp1VnlZYN1J3kz/Oq0vUG3n17xjI5wsNxomj7ZZI+
-         oH568zhOCOKj8gX5VjgjsXBBwMXtj6oiGcmh8UqQO+LXCk23KaRz0+6qS8CvO1vhUQBR
-         J1Pw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748970090; x=1749574890;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=L2WNeHWGKI9roALR2lWxhNA2hHvIsfJxDyoD0/1ONqw=;
-        b=VBLPbtla8RUk+WRF/l7h12t/loDdN3A8D5iHTkUQBtHnEmffrv1P0EO6YXvynFY3md
-         NRFAHuUFjJmWSi3zZXSPgQ0UsEX+22UWInj3CDIRccnTU65P725ykjxEg0oeYGvkCJ+E
-         q9tB2H5K/8FB8Es7l4Y59S9Qm7XU/8y4G1GVPxxulyf1KjG1zOGgpCPRj2pF171jICs/
-         mB2WtvwMTX4frCvWM907DmaVC7sdJRIPr9+gwQQHeuCR3E6xtCuVJBBh9LLNyn/lWqoV
-         lfHbkObskgevnD02ic2hxyPohgLGcgPMy5+nwLOTZI/VceXrLHySPhTfgIx+AaZQsjHg
-         TuWw==
-X-Forwarded-Encrypted: i=1; AJvYcCUpmxD9EVnAnLGlzIc0puFDQCFDcV59tX2+pa43IXbBYyArUmLTXE6cKE7/U+fLXiguFQlzIiGD07O9sopOTY4=@lists.infradead.org, AJvYcCXMHupZcaho/7BmB4qjH+UcRR0qXoJwkD9VWCsOyLhw8JUXNLCpln8CJRackeypSFGWfRcjiEXM2NpGLheLoKt5@lists.infradead.org
-X-Gm-Message-State: AOJu0YwBE4Y/ptkYVxpsXaxBtnLF6Zf/L4ws3F5rc7/s/EOT4B3k23on
-	LA3rPjzNcgqafxUDxUl4p5pLKbcdmDQ9ZrzOsXbxDtKtWlOJwn1D1qqZ
-X-Gm-Gg: ASbGnctdgX9GxDCSqqKEKjXfaWaRhb1VKBde9HBURj8s5sH2OtTdgWFtHxqutY1WMfq
-	b+1Iv0imwpbVxm2kP0AMBT3otU3MMbvjVQW8e7WNFw1/4d4a+Q/+0+JeoYRPgNHn4s8ntQtb53D
-	/JMjYAQoajxrY1fbFgwM0WgDdcqlCZj4sNdxiabgSwNrsnR94wNyp+VegpYjp2nximzYjIIbFX8
-	6JZr1R5Y9L1J6nGbrUkLBaH8y0dcW0T9K6IO8npPmyR37crSz+xlNoJQApYr74inxvQxxKJZ/Q0
-	emQ0oIrrXvaK3lEV5G2jJNZPGHeHtXFaAZgDJCUUHmOLrhH5P3AqvdlUCFvCT4mGTATqzgidm+u
-	0ihmAhUt+ndSIZYkC51R9TzjHHtpEKRIQkd+B
-X-Google-Smtp-Source: AGHT+IE6GEEXLj+uCTG7+WFHFtMo05gc7+06c+MEmNE8u8Ku+jPfH+KoYhCAkxPaUNl4r/V43bwYZg==
-X-Received: by 2002:a05:6000:4023:b0:3a4:edce:b2a6 with SMTP id ffacd0b85a97d-3a4f7aafdd0mr15910447f8f.53.1748970089947;
-        Tue, 03 Jun 2025 10:01:29 -0700 (PDT)
-Received: from alchark-surface.localdomain (bba-92-99-174-93.alshamil.net.ae. [92.99.174.93])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a4efe5b92bsm18574640f8f.9.2025.06.03.10.01.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Jun 2025 10:01:29 -0700 (PDT)
-From: Alexey Charkov <alchark@gmail.com>
-Date: Tue, 03 Jun 2025 21:01:16 +0400
-Subject: [PATCH 4/4] arm64: dts: rockchip: enable bluetooth on ArmSoM Sige5
-MIME-Version: 1.0
-Message-Id: <20250603-sige5-updates-v1-4-717e8ce4ab77@gmail.com>
-References: <20250603-sige5-updates-v1-0-717e8ce4ab77@gmail.com>
-In-Reply-To: <20250603-sige5-updates-v1-0-717e8ce4ab77@gmail.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	id 1uMVne-0000000BWp2-38nC;
+	Tue, 03 Jun 2025 17:51:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1748973101; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=cwppZ0xPjdeZLGuqauc+f+pjWK4k3RTNFCFmtM8ColWmVvEGdhCQQvUEB+L9q9pGYACt39z/7j6KirtpCROy7Gw87M9YMk0Sox3i3rxMScCng9BW8lvCdrjUTCytS3ZH7Dggp3WEbQ3UATGf+ozzL5WfaNdFp7S8GncFtWcHYXM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1748973101; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=MCO2JfgA6MZjGeikR+UYa6kqv35vCusCT+lHwuEV5jw=; 
+	b=UB1PaqFqtqLLdCbyptmnXfnKr7J5lesbIGpid7SsaiLOvRkUTFTQpvAcbIHZyQyHCiJkdf6Tjnn8EDWgNOyXS2ro4rk5/ascQUZrV5rJ7t523kGy4Ztdl5OT1pugR9Bw8F1X2h0qNM0z5nwfsQMbkLiqa8fAsw4XcwUG+hZownk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1748973101;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=MCO2JfgA6MZjGeikR+UYa6kqv35vCusCT+lHwuEV5jw=;
+	b=kCjJlCR/uH3QHQmfL0xEKGOiZYIf9B4JnUaQMlGMczeNLZ3us1+y8N8VQOtZGwGn
+	ukvU1orFjkKnd0Vl3ORTXUYfP5gAx0nfr66sqMrvcR9Fya465K6aA9ntPK/7erpq2H5
+	dyI1wvBL4O1cA7naGi3UBo+RxthfH52U+Da66KSU=
+Received: by mx.zohomail.com with SMTPS id 1748973100013134.58818864329407;
+	Tue, 3 Jun 2025 10:51:40 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ linux-rockchip@lists.infradead.org, Alexey Charkov <alchark@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  Alexey Charkov <alchark@gmail.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1748970076; l=1967;
- i=alchark@gmail.com; s=20250416; h=from:subject:message-id;
- bh=MRpcTnOmrGZKKzMf/zKdzcRdfMSKeKmyduo0AYU5qjI=;
- b=smst/OKPkZEHmFa2lIItgsGCj0ToD3bQtjChD6j/TxtKlzH7pmVS/qHpQJMmNH4dOT3XXqCu+
- GBz4ySF7afoAA32zIGNcWjDPMygusyjS9VBK4SMPL9H0LMXQyONjVPu
-X-Developer-Key: i=alchark@gmail.com; a=ed25519;
- pk=ltKbQzKLTJPiDgPtcHxdo+dzFthCCMtC3V9qf7+0rkc=
+Subject: Re: [PATCH 2/4] arm64: dts: rockchip: enable USB A ports on ArmSoM Sige5
+Date: Tue, 03 Jun 2025 19:51:35 +0200
+Message-ID: <5590100.Sb9uPGUboI@workhorse>
+In-Reply-To: <20250603-sige5-updates-v1-2-717e8ce4ab77@gmail.com>
+References: <20250603-sige5-updates-v1-0-717e8ce4ab77@gmail.com>
+ <20250603-sige5-updates-v1-2-717e8ce4ab77@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250603_100131_991048_C87C0540 
-X-CRM114-Status: UNSURE (   9.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250603_105146_861638_4084641C 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,71 +79,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-ArmSoM Sige5 uses a soldered-on UART connected Bluetooth controller.
-Namely, board v1.1 uses a Realtek based BL-M8852BS2, while v1.2 uses a
-Broadcom based BW3752-50B1.
+On Tuesday, 3 June 2025 19:01:14 Central European Summer Time Alexey Charkov wrote:
+> Enable the two USB type A ports (USB2 and USB3) present on the ArmSoM
+> Sige5 board.
+> 
+> Both ports use just one xHCI controller, with the USB 2.0 signals fed
+> off the same USB OTG PHY through an onboard hub. VBUS of both ports is
+> controlled by the same GPIO regulator (VCC_USBHOST in the schematics,
+> toggled by GPIO4 RK_PA6).
+> 
+> Signed-off-by: Alexey Charkov <alchark@gmail.com>
+> ---
+>  .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 38 ++++++++++++++++++++++
+>  1 file changed, 38 insertions(+)
+> 
 
-Add required device tree nodes to enable the Broadcom based module.
+This is already done here:
 
-Signed-off-by: Alexey Charkov <alchark@gmail.com>
----
- .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 33 ++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+https://lore.kernel.org/linux-rockchip/20250507-rk3576-sige5-usb-v3-4-89bf5a614ccf@collabora.com/
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-index dcd033859398312f7693bebb7f080ee4f2ecaa32..46e5d6e30898a0f937283e986f188947e10250ec 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-@@ -791,6 +791,20 @@ usb_host_pwren: usb-host-pwren {
- 		};
- 	};
- 
-+	wireless-bluetooth {
-+		bt_reg_on: bt-reg-on {
-+			rockchip,pins = <1 RK_PC7 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		host_wake_bt: host-wake-bt {
-+			rockchip,pins = <1 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		bt_wake_host: bt-wake-host {
-+			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+
- 	wireless-wlan {
- 		wifi_wake_host: wifi-wake-host {
- 			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_down>;
-@@ -872,6 +886,25 @@ &uart0 {
- 	status = "okay";
- };
- 
-+&uart4 {
-+	pinctrl-0 = <&uart4m1_xfer &uart4m1_ctsn &uart4m1_rtsn>;
-+	pinctrl-names = "default";
-+	uart-has-rtscts;
-+	status = "okay";
-+
-+	bluetooth {
-+		compatible = "brcm,bcm43438-bt";
-+		clocks = <&hym8563>;
-+		clock-names = "lpo";
-+		device-wakeup-gpios = <&gpio1 RK_PD7 GPIO_ACTIVE_HIGH>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PB1 IRQ_TYPE_EDGE_FALLING>;
-+		pinctrl-0 = <&bt_reg_on>, <&bt_wake_host>, <&host_wake_bt>;
-+		pinctrl-names = "default";
-+		shutdown-gpios = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-+	};
-+};
-+
- &usb_drd1_dwc3 {
- 	dr_mode = "host";
- 	status = "okay";
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+> index d9c129be55a0d997e04e6d677cdc98fb50353418..7ce1fb1380b0863c902fdd9cbc7454ee6011cf92 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+> @@ -205,6 +205,24 @@ vcc_3v3_ufs_s0: regulator-vcc-ufs-s0 {
+>  		regulator-max-microvolt = <3300000>;
+>  		vin-supply = <&vcc_5v0_sys>;
+>  	};
+> +
+> +	vcc_5v0_host: regulator-vcc-5v0-host {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_5v0_host";
+> +		regulator-boot-on;
+> +		regulator-always-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		enable-active-high;
+> +		gpio = <&gpio4 RK_PA4 GPIO_ACTIVE_HIGH>;
+> +		vin-supply = <&vcc_5v0_device>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&usb_host_pwren>;
+> +	};
+> +};
+> +
+> +&combphy1_psu {
+> +	status = "okay";
+>  };
+>  
+>  &cpu_b0 {
+> @@ -757,6 +775,12 @@ pcie_reset: pcie-reset {
+>  			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
+>  		};
+>  	};
+> +
+> +	usb {
+> +		usb_host_pwren: usb-host-pwren {
+> +			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+>  };
+>  
+>  &sai1 {
+> @@ -798,11 +822,25 @@ &sdmmc {
+>  	status = "okay";
+>  };
+>  
+> +&u2phy1 {
+> +	status = "okay";
+> +};
+> +
+> +&u2phy1_otg {
+> +	phy-supply = <&vcc_5v0_host>;
+> +	status = "okay";
+> +};
+> +
+>  &uart0 {
+>  	pinctrl-0 = <&uart0m0_xfer>;
+>  	status = "okay";
+>  };
+>  
+> +&usb_drd1_dwc3 {
+> +	dr_mode = "host";
+> +	status = "okay";
+> +};
+> +
+>  &vop {
+>  	status = "okay";
+>  };
+> 
+> 
 
--- 
-2.49.0
+
+
 
 
 _______________________________________________
