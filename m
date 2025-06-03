@@ -4,57 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41D2FC5AD49
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jun 2025 02:36:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C553C5AE59
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jun 2025 12:58:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=m6fw/b25ZQ9HjSblSUmG6Jk0KOGehywUVEDYK62NXac=; b=RK+htFSygUYd44
-	U4w/4Y2QuF+MDzAlhtJRdphX4C5rwIBA7id9kpIAxjujfsDSNb3J5qLki8Qcw6zwm6I8nvAhlasEj
-	cTvep4VmnlIUrcOme/fg29bJoUtS7t1AP4sNw0FBuXLeVukOXlMjT5EHajXUCxj9ajf2X2zkxj2xv
-	b2i9fHMR4Aic3gXDOFe1s2O2npFQ0TOIp/0phxYRR71o1iet27RB1kSU3bUfo1M8uA+bvWiwv96bJ
-	PxLu32ozKx2KKs2bOnc5WNXTS+i+RMYFl/Is/HI/kiQu/iUYxmdL/WfZocpEfKx7CpseIzSEuQCAO
-	fzG1ctEfaVwQVz9U1o2A==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=da8ZI+WRBBbRHPDI5yoBbFFzWfbIbh2gNySx5gqsf2A=; b=uukN9eFKelfeYT
+	RSdmMHz5PcoAPtH4JyZxgMyRUlpfo0LFIniB2TrsaGFNMIOljHjeuDRs8uTe2ybmF+XXflnj3gh1V
+	p5HTtihXxaJGFcDXy/W9TDPl/WwrzqdXqACrW9dxq7XisaJNnwPHdBebOY17XtTZHFPS+G+ZySa2S
+	G0fzL6lSKOUeaRBpwcseEUJL2FnQeVxb1wPirarG4VmAnYzUjXyvdCBfObBDSOc9Rp1WRauRV70BM
+	1x8REaXVYm7PdAhxqdLFB32F5hBTd3LDAB1S4wKLYNcQlmKWScven1hWEQjmup8Ny1E2aOEj/rLu8
+	dbQWyN4dJ0i5D0eIA2sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMHVe-00000009XUS-3VHn;
-	Tue, 03 Jun 2025 02:36:14 +0000
-Received: from mail-m1973187.qiye.163.com ([220.197.31.87])
+	id 1uMRDn-0000000AyJG-1n90;
+	Tue, 03 Jun 2025 12:58:27 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMHVb-00000009XTz-3hwB
-	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Jun 2025 02:36:13 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 174acead6;
-	Tue, 3 Jun 2025 10:35:55 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: fix rk3576 pcie1 linux,pci-domain
-Date: Tue,  3 Jun 2025 10:35:40 +0800
-Message-Id: <1748918140-212263-1-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0IZTlYeGEtJSUlISBlNSB9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a9733a5387109cckunm317c226d6e59fc
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NyI6EQw5CzEwPTAXDgI2Kg0f
-	TUswCTNVSlVKTE9DQkpDSk5MSUhNVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpOTk43Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=J7BS7qSmTtcYdFCNZAPDRWz2qJdPwnLO30fJU2WXhzv3y6LidnRvKoVv1XeeVBvcJhrs9NwxfZLwy+FmrImuX+ZRslBc/bt+BT1hchf+57s4xqQWRKOXxKRtuPAiEtRFhFnG8b37P3O8dpcK7LyELjV0f9RR1ih3THP4YlFYmfc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=PHmx6slCem1GwS3t8N+DGxSghkYZfo+obqna4TpnPCI=;
-	h=date:mime-version:subject:message-id:from;
+	id 1uMRBY-0000000Ay66-1m9C;
+	Tue, 03 Jun 2025 12:56:11 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1748955349; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=RXagZj1fGH6Nojxfk1Rz6J0iOD1MKY34Dj0aWtcpj3YuIqbdJTDuoajVO6MLRPo6aS3OO3Z7pGgpZrtuv5Dmnjfq0GZLVHAFMjWDyfTKrnWyuU52cMOMVVyMPzQTYSDpnxlH8Sv5fdL42vtOchRsMwiiPjnwZlrSrhRtSwshkfI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1748955349; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=OKOarRGHsL2ajSiin4VcPu5AlkGxReA7dzEybyUZJ50=; 
+	b=knWRds/IAEI0iYCI1k4z6jjKzQ6AAhToejvBwUkYsrO70K3vfTjqDgUkqQ9I8vdw+INa0viJssxhmJJ/xwTvGYKyQ3boPQ+yfxc/5mpzg+wIbYqKKjMczvFS+gsfb9J9dg/x06FYOKxQhojRvC82tmJ7tVKSJURvXzdrXk+hW6M=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1748955349;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=OKOarRGHsL2ajSiin4VcPu5AlkGxReA7dzEybyUZJ50=;
+	b=UMn3cCcI0tYg01nC1fITQksGt/2f+wTumyUR6A1pTxQ4ypnWz/CADTD32YOuXmk1
+	UjOmUbniXZ/AXnrN4WsuCwct2AsQ6qslqHwW9dW08++dxUgmXlWMmC2ECMC6DjeE4a3
+	FApldWwyKi0b18EYN+cUUBZkq/XZ2WpgrGhUSyV8=
+Received: by mx.zohomail.com with SMTPS id 1748955347750347.95572855171406;
+	Tue, 3 Jun 2025 05:55:47 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Yury Norov <yury.norov@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <ukleinek@kernel.org>,
+ William Breathitt Gray <wbg@kernel.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dave Ertman <david.m.ertman@intel.com>, Ira Weiny <ira.weiny@intel.com>,
+ Leon Romanovsky <leon@kernel.org>, Lee Jones <lee@kernel.org>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org,
+ linux-iio@vger.kernel.org, kernel@collabora.com,
+ Jonas Karlman <jonas@kwiboo.se>,
+ Detlev Casanova <detlev.casanova@collabora.com>
+Subject: Re: [PATCH v2 3/7] bitfield: introduce HI16_WE bitfield prep macros
+Date: Tue, 03 Jun 2025 14:55:40 +0200
+Message-ID: <2525788.jE0xQCEvom@workhorse>
+In-Reply-To: <aD4DSz3vs41yMQSv@yury>
+References: <20250602-rk3576-pwm-v2-0-a6434b0ce60c@collabora.com>
+ <20250602-rk3576-pwm-v2-3-a6434b0ce60c@collabora.com> <aD4DSz3vs41yMQSv@yury>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250602_193612_488874_7C882F37 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20250603_055608_543479_36180644 
+X-CRM114-Status: GOOD (  59.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,42 +86,221 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-pcie0 already used 0 as its pci-domain, so pcie1 will fail to
-allocate the same pci-domain if both of them are used.
+On Monday, 2 June 2025 22:02:19 Central European Summer Time Yury Norov wrote:
+> On Mon, Jun 02, 2025 at 06:19:14PM +0200, Nicolas Frattaroli wrote:
+> > Hardware of various vendors, but very notably Rockchip, often uses
+> > 32-bit registers where the upper 16-bit half of the register is a
+> > write-enable mask for the lower half.
+> 
+> Can you list them all explicitly please? I grepped myself for the
+> 'HIGHWORD_UPDATE' and 'FIELD_PREP_HIGWORD', and found just 4 or 5 in
+> addition to the rockchip.
 
-rk-pcie 2a210000.pcie: PCIe Link up, LTSSM is 0x130011
-rk-pcie 2a210000.pcie: PCIe Gen.2 x1 link up
-rk-pcie 2a210000.pcie: Scanning root bridge failed
-rk-pcie 2a210000.pcie: failed to initialize host
+Most of the ones Heiko brought up[1] just appear to be the clock stuff,
+I'm only aware of the drivers/mmc/host/sdhci-of-arasan.c one outside of
+Rockchip. For a complete listing I'd have to do a semantic search with
+e.g. Coccinelle, which I've never used before and would need to wrap
+my head around first. grep is a bad fit for catching them all as some
+macros are split across lines, or reverse the operators of the OR.
+Weggli[2] is another possibility but it's abandoned and undocumented, and
+I've ran into its limitations before fairly quickly.
 
-Fixes: d4b9fc2af45d ("arm64: dts: rockchip: Add rk3576 pcie nodes")
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+>  
+> > This type of hardware setup allows for more granular concurrent register
+> > write access.
+> > 
+> > Over the years, many drivers have hand-rolled their own version of this
+> > macro, usually without any checks, often called something like
+> > HIWORD_UPDATE or FIELD_PREP_HIWORD, commonly with slightly different
+> > semantics between them.
+> > 
+> > Clearly there is a demand for such a macro, and thus the demand should
+> > be satisfied in a common header file.
+> 
+> I agree. Nice catch.
+> 
+> > Add two macros: FIELD_PREP_HI16_WE, and FIELD_PREP_HI16_WE_CONST. The
+> > latter is a version that can be used in initializers, like
+> > FIELD_PREP_CONST.
+> 
+> I'm not sure that the name you've chosen reflects the intention. If
+> you just give me the name without any background, I'd bet it updates
+> the HI16 part of presumably 32-bit field. The 'WE' part here is most
+> likely excessive because at this level of abstraction you can't
+> guarantee that 'write-enable mask' is the only purpose for the macro.
+> 
+> > The macro names are chosen to explicitly reference the
+> > assumed half-register width, and its function, while not clashing with
+> > any potential other macros that drivers may already have implemented
+> > themselves.
+> >
+> > Future drivers should use these macros instead of handrolling their own,
+> > and old drivers can be ported to the new macros as time and opportunity
+> > allows.
+> 
+> This is a wrong way to go. Once you introduce a macro that replaces
+> functionality of few other arch or driver macros, you should consolidate
+> them all in the same series. Otherwise, it will be just another flavor
+> of the same, but now living in a core header. 
+> 
+> Can you please prepare a series that introduces the new macro and
+> wires all arch duplications to it?
 
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Okay, I will do that after I learn Coccinelle. Though I suspect the reason
+why I'm the first person to address this is because it's much easier to
+hide duplicated macros away in drivers than go the long route of fixing up
+every single other user. I'm not too miffed about it though, it's cleanup
+of technical debt that's long overdue.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 1086482..64812e3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -615,7 +615,7 @@
- 					<0 0 0 2 &pcie1_intc 1>,
- 					<0 0 0 3 &pcie1_intc 2>,
- 					<0 0 0 4 &pcie1_intc 3>;
--			linux,pci-domain = <0>;
-+			linux,pci-domain = <1>;
- 			max-link-speed = <2>;
- 			num-ib-windows = <8>;
- 			num-viewport = <8>;
--- 
-2.7.4
+>  
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  include/linux/bitfield.h | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 47 insertions(+)
+> > 
+> > diff --git a/include/linux/bitfield.h b/include/linux/bitfield.h
+> > index 6d9a53db54b66c0833973c880444bd289d9667b1..2b3e7cb90ccb5d48f510104f61443b06748bb7eb 100644
+> > --- a/include/linux/bitfield.h
+> > +++ b/include/linux/bitfield.h
+> > @@ -8,6 +8,7 @@
+> >  #define _LINUX_BITFIELD_H
+> >  
+> >  #include <linux/build_bug.h>
+> > +#include <linux/limits.h>
+> >  #include <linux/typecheck.h>
+> >  #include <asm/byteorder.h>
+> >  
+> > @@ -142,6 +143,52 @@
+> >  		(((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask))	\
+> >  	)
+> >  
+> > +/**
+> > + * FIELD_PREP_HI16_WE() - prepare a bitfield element with a write-enable mask
+> > + * @_mask: shifted mask defining the field's length and position
+> > + * @_val:  value to put in the field
+> > + *
+> > + * FIELD_PREP_HI16_WE() masks and shifts up the value, as well as bitwise ORs
+> > + * the result with the mask shifted up by 16.
+> > + *
+> > + * This is useful for a common design of hardware registers where the upper
+> > + * 16-bit half of a 32-bit register is used as a write-enable mask. In such a
+> > + * register, a bit in the lower half is only updated if the corresponding bit
+> > + * in the upper half is high.
+> > + */
+> > +#define FIELD_PREP_HI16_WE(_mask, _val)					\
+> > +	({								\
+> > +		__BF_FIELD_CHECK(_mask, ((u16) 0U), _val,		\
+> > +				 "FIELD_PREP_HI16_WE: ");		\
+> > +		((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask) |	\
+> > +		((_mask) << 16);					\
+> > +	})
+> 
+> This pretty much is a duplication of the FIELD_PREP(), isn't? Why don't
+> you borrow the approach from drivers/clk/clk-sp7021.c:
+> 
+> 	/* HIWORD_MASK FIELD_PREP */
+> 	#define HWM_FIELD_PREP(mask, value)             \
+> 	({                                              \
+> 	        u64 _m = mask;                          \
+> 	        (_m << 16) | FIELD_PREP(_m, value);     \
+> 	})
+> 
+> If you do so, the existing FIELD_PREP() will do all the work without
+> copy-pasting.
+
+Because then the __BF_FIELD_CHECK macro will be invoked twice, once without
+the proper prefix. Factoring the actual prep-no-check operation out into a
+separate macro is macro definition + 1-line invocation * 2, whereas copy-
+pasting the implementation that will never change is 1-line invocation*2.
+
+> The only questionI have  to the above macro is why '_m'
+> is u64? Seemingly, it should be u32?
+
+I didn't write the HWM_FIELD_PREP macro in clk-sp7021.c, nor am I familiar
+with the hardware. It's possible they were trying to prevent an overflow
+wraparound here though, but they're not checking if the result ends up
+greater than 32 bits so that seems suspect.
+
+> Regarding the name... I can't invent a good one as well, so the best
+> thing I can suggest is not to invent something that can mislead. The
+> HWM_FIELD_PREP() is not bad because it tells almost nothing and
+> encourages one to refer to the documentation. If you want something
+> self-explaining, maybe MASK_HI_FIELD_LO_PREP_U16(), or something?
+
+This seems a bit unwieldy, at 25 characters. "FIELD32_HIMASK_LOPREP"
+(or FIELD16, depending on which end of the cornet to eat) would be 21
+characters but I'm also not in love with it.
+
+I think the name should include the following parts:
+1. it's a field
+2. the field is halved into two halves of 16 bits
+3. the mask is copied into the upper 16 bits
+
+Since we're on the subject of bit widths, I have a somewhat sacrilegious
+point to raise: should this be a function-like macro at all, as opposed
+to a static __pure inline function? It's not generic with regards to the
+data types, as we're always assuming a u16 value and mask input and a
+u32 output. The __pure inline definition should let the compiler treat it
+essentially similar to what the pre-processor expanded macro does, which
+is as not a function call at all but a bunch of code to constant fold away
+if possible. What we get in return is type checking and less awful syntax.
+Then we could call it something like `himask_field_prep_u32`, which is
+also 21 characters but the ambiguity of whether the u32 refers to the mask
+or the whole register width is cleared up by the types of the function
+arguments.
+
+The const version of the macro may still need to remain though because I'm
+not sure C11 can do that for us. With C23 maybe there's a way with
+constexpr but I've never used it before.
+
+> 
+> Thanks,
+> Yury
+> 
+
+Kind Regards,
+Nicolas Frattaroli
+
+Link: https://lore.kernel.org/linux-rockchip/1895349.atdPhlSkOF@diego/ [1]
+Link: https://github.com/weggli-rs/weggli [2]
+
+> > +
+> > +/**
+> > + * FIELD_PREP_HI16_WE_CONST() - prepare a constant bitfield element with a
+> > + *                              write-enable mask
+> > + * @_mask: shifted mask defining the field's length and position
+> > + * @_val:  value to put in the field
+> > + *
+> > + * FIELD_PREP_HI16_WE_CONST() masks and shifts up the value, as well as bitwise
+> > + * ORs the result with the mask shifted up by 16.
+> > + *
+> > + * This is useful for a common design of hardware registers where the upper
+> > + * 16-bit half of a 32-bit register is used as a write-enable mask. In such a
+> > + * register, a bit in the lower half is only updated if the corresponding bit
+> > + * in the upper half is high.
+> > + *
+> > + * Unlike FIELD_PREP_HI16_WE(), this is a constant expression and can therefore
+> > + * be used in initializers. Error checking is less comfortable for this
+> > + * version, and non-constant masks cannot be used.
+> > + */
+> > +#define FIELD_PREP_HI16_WE_CONST(_mask, _val)				 \
+> > +	(								 \
+> > +		FIELD_PREP_CONST(_mask, _val) |				 \
+> > +		(BUILD_BUG_ON_ZERO(const_true((u64) (_mask) > U16_MAX)) + \
+> > +		 ((_mask) << 16))					 \
+> > +	)
+> > +
+> >  /**
+> >   * FIELD_GET() - extract a bitfield element
+> >   * @_mask: shifted mask defining the field's length and position
+> > 
+> 
+
 
 
 _______________________________________________
