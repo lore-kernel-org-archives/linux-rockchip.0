@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EAD3C61CE7
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jun 2025 19:42:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0748C5AD49
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jun 2025 19:42:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qb/EyzEbkExOLd0xj+3Nyr6YMkwVTqJZ7K3myMyW2gg=; b=EKuR4TiBVGh30q
-	SmyNxdbnIhPTcXWIHGlmVv1AO4qrwhKSOmJGPLKV9c+s/BFH7GBgYbu2+4ds5dwENUPf9842epJCx
-	ymSyCAGFWoKx2u67nzgfQF10+Wee82wLD+nETr1QhzpAgcgbkpk89vO5wBVGvuZ6CBeP4hIQBtTBT
-	uFj1saq7ccb8zQAc6HVkGplG5jzuASelzTqYkQr+OWNu9g8Fqi5/ZCNDNJR4mCfCgO+qb0ZMbDgqH
-	xPkRSWSbuoenDoQUXnVdrOultTuE7/4D/iA7ewFhiHLKAZCAriDfcoymps/E6eflxoEL7NqJIScO+
-	/mdg49QPtk03zC7Ktjng==;
+	List-Owner; bh=dANgNDc8CELIa11HFqZ6daFLVhi1dkhd7bXoy/jGPDs=; b=sjt7hZqwuWEFiN
+	0WHl5sJXDrAs/9y6lq5WDlWQYEYV05/4iz6CnQwAfXd5Eim03BQ8KHtgL+ew8Muf8vWCru5f7N4cf
+	okzeNAQqI6DIl1oxAx+VqrIg7WyFwjkdd8JcVEf/7RCJy4V9iAF0Oucxrql4WJ8Nu+CwqXf7nbiVM
+	qAedPATIXwj09aobavmy05Y75+MdYXktIS8Ww0oJw7O8zuvZLtWA6aojLMxJtaELUkvor6c5hhtxb
+	CRVd+iTr3Y4adRYxXb8gRdjbbfU2JO5Z6nDxT1ohbHaZWUtenqOEzhlbfEIBX3hGp17haHsL+rNQr
+	9xaJyZy1wSxyjqIiAjyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMXWN-0000000BjEG-1r0a;
+	id 1uMXWN-0000000BjEP-3HkH;
 	Tue, 03 Jun 2025 19:42:03 +0000
-Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
+Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMXWL-0000000BjCi-0FOp
+	id 1uMXWL-0000000BjCw-2fJX
 	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Jun 2025 19:42:02 +0000
-Received: by mail-oo1-xc36.google.com with SMTP id 006d021491bc7-60f0a92391bso57989eaf.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 03 Jun 2025 12:42:00 -0700 (PDT)
+	Tue, 03 Jun 2025 19:42:03 +0000
+Received: by mail-ot1-x32d.google.com with SMTP id 46e09a7af769-735a6faec9eso3520685a34.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Jun 2025 12:42:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20230601; t=1748979720; x=1749584520; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=/L4zSsY66uDYamOrq9+Mw2rOYYJ499EOM1f+pBYr+Z8=;
-        b=jyZO8/Y1p6K3IZ25XqIc5UJWLQppIZ6vm5HDkIH07ziBH6Gk/6zvOsin30QZsmHcsL
-         3O09x9Tgw9IRisR28kzebA6jVLpzZIKsCx9NWjY8PJIntnoK9kSpKa3H5IU50VaStBea
-         mNybf+Yx/kWZW2Zbg6p1sjDY4uA0Bh0HUt0XVq9MUfbTh5fBQlI9yxc+WvPstZ4AsUrv
-         WdB701GEgmb1Iatlg5hIvhxIJv/tLTtgSm8K2F+mjXUOX9eZJ6DOc+L5lfFIIbXTjOS2
-         iUkB6Pp7EneGrWTzm3UYj7Vd3q8AiSIPVjvF4d6pqhYVnv8374zESnDVNt9YysmMgad9
-         t0bg==
+        bh=XjzLPAsqasz0SsRAqSr7Vzo2ligN562NWSmZO1lw4nU=;
+        b=boXQnXyy5xib20IC6TRvveML3lA4/YINTYEjK3uz0mDGGYvYjpOwey3E7TDZbVYhqt
+         /xcASO4oyexcXocZN60xbrG4/9ab4QzAwbqS7otAynGjlzgq/hIfmNslqmPsj9TL1lXf
+         E4+sGyYvLF24FX0I8VoLFHldSJZdlChsdV//6lMDuupnfX6M9FYqcbzDfJ0IILIAiYbk
+         L/ttzALa3Q5iVfBOxrkVWhcUMsOeEBqvuZKvkTuGfoPIC1D4rOdKVTLqi237DBF/vrij
+         AoLpFEhPmxR1oCS+MgQXMXXSpfdl8Bw8xzyVB+9lVeMpsKPFiv0gRKgEbLrZxK8Rfp5N
+         jbyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1748979720; x=1749584520;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=/L4zSsY66uDYamOrq9+Mw2rOYYJ499EOM1f+pBYr+Z8=;
-        b=bpr/n4UyrO4Ipo1ygbCyAm5ycRyjc4fk4q/KS/k/hd9Z2TbjST23kKapxYVFDCCnT8
-         T4NmaRFm/qAIF+sOI7LhgwrMeLg5LIOeAgSmUBiHYfNf4XRaTEhcHPj5tKk2Ogt15Z1e
-         BgnfG/b075eKbVeZZVFeEHmD7zt05zZPg9LkDOH1KVmyL0orthch5i9jCv4owvkhMsIF
-         wtw/lxhLX9HBdZHXDj9cjLXK5w/AyWVjXNN60pcMiMN3WHi4pFS+aJ0sZ3FxjQJ++4rt
-         mIqsopblXWOWU5WDeYDEfAgi9ZeK125ojWTol80lYSGWw0UHMnjl3xQkzmaOPmv4YyV1
-         DsUA==
-X-Gm-Message-State: AOJu0Yx3iHLaZDEG8ZhqL/Hn2sFj/OLY0KXpyl6u8RUvkmbp+huQ+b+S
-	ma9zSqEepqTwo40dWcC0ZJbQDHXIMWyA1hiKJbJ03Q9I69JAVqgmgz+K
-X-Gm-Gg: ASbGncvDP17FOvpd4Iy/Y5QGoOhGSQNgg/tFg4jxGuwLqmWEDwJLqooAtQOQopLKEob
-	zlAnCvKZHETnwv4b2BYHbQtuUqh93RvfvAmoJrwZTDRZGAphAjhmDDwTNrYUINOjv+NhBfNOzCc
-	7NpdFhhcsIsg/14eS01ybSbrMbbagQx5asbCjCERtM+oaqQwX4Mxi8AKaOLKC0/0zTNaLTdG4pI
-	13QSVJa2TpM9S/fTadLXe2cBxXj4U0hrMfzzil9/Nb8/ID8sBBD4HTSzUP2zaoShNcZMGLmsx9a
-	Z+Br1iulQezwnPuX6PRUmd2OE6dT49cqru1vlWWoCfMSCUN8NW/FybpR2yUppR0gUmDqQwo=
-X-Google-Smtp-Source: AGHT+IG3+8X4rYmlVGqs/t382PwbAWeG5RNhDIJA/498vjwFKFaLf3Z5w5vaFUsKAWkzdqYLMZa4cw==
-X-Received: by 2002:a4a:ee83:0:b0:60b:b134:a1 with SMTP id 006d021491bc7-60d53c761b8mr10625534eaf.6.1748979719622;
-        Tue, 03 Jun 2025 12:41:59 -0700 (PDT)
+        bh=XjzLPAsqasz0SsRAqSr7Vzo2ligN562NWSmZO1lw4nU=;
+        b=ezpBtJSPUBd/Tf1dIfhl3a/VWmgABdR0nSUSqLcLDuvgAneMI4MakNSgSgj8F0Obsz
+         gLUBZJBVAbmwdgtYIfVJPqGj1lxbTuMysUvDXxupl56q4WiFErp6bg8eFjHYEeVunQrx
+         sfVAE1aqqeHQ7Qg1NniXQTKwoYctnQvak7x8x+CXEAhX5RxQSEZsMnteDnsxXBWrPYCx
+         nZgSfTvqIzdsSz/qKUnz94N+yoQe9h7OETG/cPKCn0WwlyXjl7EF++YAsTZAqo5sGK4o
+         Z9WuiyPY7sAiWMA5Zj4USZ4Wivk7G4OrAdFfJjK2VnHkOrMqzrAEL9P2Lx6kBNPGIJKR
+         j0cQ==
+X-Gm-Message-State: AOJu0YwlPDGngnLVuyTIMgwg6ZiNwIR2Z1h4EiInc6b6q9ttoVUjr7Nc
+	TiOCExJirGxerAdxeToe0zrhl7JB2HHVWm5uq9haWamZMLtHFp8iQdfP
+X-Gm-Gg: ASbGncvCcs3rZmKNKFlU2Tb3NRZKWiyA5q1lt6TshKLbauLIKNiH1aG1mP760Qu8X1E
+	GNPYV84X+YsAQOYIsOCOYPXgEkKQAIDL6DKo4dEhZCoaSJ+QyE534Olh4HvkG0SyhT2mLLDjpG5
+	iGCOrle2B6kU2a3VGCj5m+b51c0dldBwsPB3THjf6qMJMWlMxHZ7yl4Hyvykg8Gw6Z1i8EwYN9W
+	llTniebEvMsluf7a2WtPFMP1I6j0Otz07LvbT13zO1hkg8IPspNESxRlTPVMzW1OucxA+ysabeP
+	OQSomnuoVveoULr179yGzLEvnnORs+CYzcVlh9JUzxw/w5I4hVk6NAVKW1YthJ82EKu6WbkJHre
+	u2IlUzA==
+X-Google-Smtp-Source: AGHT+IGEdqI2TCTVkK8o7agajIP4kfms0UAr6s+D6iGNsRfQhvMcgU7dK7DNcXKDtlDRpdBJDSTayg==
+X-Received: by 2002:a05:6830:d13:b0:72b:9f17:1da0 with SMTP id 46e09a7af769-73869c39496mr299430a34.7.1748979720415;
+        Tue, 03 Jun 2025 12:42:00 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bcf:d19a:d10c:4358:1346])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-60c14c88f96sm1967615eaf.17.2025.06.03.12.41.58
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-60c14c88f96sm1967615eaf.17.2025.06.03.12.41.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Jun 2025 12:41:59 -0700 (PDT)
+        Tue, 03 Jun 2025 12:42:00 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -86,17 +87,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	javierm@redhat.com,
 	megi@xff.cz,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 1/4] dt-bindings: vendor-prefixes: Add prefix for Huiling
-Date: Tue,  3 Jun 2025 14:39:27 -0500
-Message-ID: <20250603193930.323607-2-macroalpha82@gmail.com>
+Subject: [PATCH 2/4] dt-bindings: display: himax-hx8394: Add Huiling hl055fhav028c
+Date: Tue,  3 Jun 2025 14:39:28 -0500
+Message-ID: <20250603193930.323607-3-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250603193930.323607-1-macroalpha82@gmail.com>
 References: <20250603193930.323607-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250603_124201_098765_747E0007 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250603_124201_675551_72E982D7 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,28 +115,44 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Shenzhen Huiling Information Technology Co. Ltd. specializes in the
-research and manufacturing of display and touch screens for industrial
-usage. https://en.szhuiling.com/
+Add compatible string for the Huiling hl055fhav028c. This panel is
+based on the Himax HX8399C display controller which is extremely
+similar to the existing HX8394. Add a new constant for
+himax,hx8399c for this new display controller as well.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ .../bindings/display/panel/himax,hx8394.yaml    | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-index c01adbaacbbb..d5fef99a3490 100644
---- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-+++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-@@ -672,6 +672,8 @@ patternProperties:
-     description: Huawei Technologies Co., Ltd.
-   "^hugsun,.*":
-     description: Shenzhen Hugsun Technology Co. Ltd.
-+  "^huiling,.*":
-+    description: Shenzhen Huiling Information Technology Co., Ltd.
-   "^hwacom,.*":
-     description: HwaCom Systems Inc.
-   "^hxt,.*":
+diff --git a/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml b/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml
+index 75ccabff308b..5725a587e35c 100644
+--- a/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml
++++ b/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml
+@@ -17,12 +17,17 @@ description:
+ 
+ properties:
+   compatible:
+-    items:
+-      - enum:
+-          - hannstar,hsd060bhw4
+-          - microchip,ac40t08a-mipi-panel
+-          - powkiddy,x55-panel
+-      - const: himax,hx8394
++    oneOf:
++      - items:
++          - enum:
++              - hannstar,hsd060bhw4
++              - microchip,ac40t08a-mipi-panel
++              - powkiddy,x55-panel
++          - const: himax,hx8394
++      - items:
++          - enum:
++              - huiling,hl055fhav028c
++          - const: himax,hx8399c
+ 
+   reg:
+     maxItems: 1
 -- 
 2.43.0
 
