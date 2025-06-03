@@ -4,64 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 964EAC5AD49
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jun 2025 18:15:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52306C5B552
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jun 2025 19:42:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=m54X3oFQ2LEM3R7AwLNh3hgMGJQ0mhCZkLq5qFIVI0I=; b=zeUMRTjev+tFeS
-	+BF00XxEAO94mrj0NT0YWG35OtupdrAHtsS/6l7fjPubNu3VIctGUonwTeaFkXQ+NpCPlclqqdkk4
-	zpSCGgHiaAJw9njCqmAowkMHboR1KxJu/xkLBWU0UtbhCdyI7vuZUgAsmNpa39fQt4459s9clrpbq
-	kMoIpVt1TK7Lntufl+6HV/gFviun8pmba9XnDfANzvgnZxfUWeDVpExL1SyPeKDBmwLsqaLxheH6t
-	JZu8oyHvNxG6tZ+boKqMlWrf5oYWT5fhMFRIZDwSTEGOH2YVvB//j0mVn0Tj091EB0H4o3ZHbwfjT
-	2BtHdh9Aooky2aI34gBg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hCmtDxrSWn+2yQ3NAtmrrj9vdW0secPSu78WImJiuGc=; b=Aka0KtmQI0P1BH
+	i1Yx7GZqX6K13KycN2KUIuIkK2S0YJ4xC1tlAh2qscpLmWvD82KwA/QjZIojcvbD+1tG8SPn2aIqL
+	sQk+bVUQgDQDBCShvsz5GujI//uLiMGjAM0Pba1yLWGNKPoJ826jNB3m4FqelH7LKxhKWoIXlWTRo
+	uwgzMpWxJlJZV3Q3axZcrsq5TDy7dPiynvEIV5PBQqjd7xAIXmiUTDgTwMeRPdAwLsvUWUy+HnZIa
+	ZpoHqo0utS2N3TCuTP7Tm9YAxlpHhA5E8rjN75uJ4sRprVFldcNuvly4ai86UqqbrwOwUu7BrsOnh
+	I1/BkppCL3iMVvl3gxxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMWAG-0000000BYzy-17MA;
-	Tue, 03 Jun 2025 18:15:08 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uMXWP-0000000BjF7-21Q9;
+	Tue, 03 Jun 2025 19:42:05 +0000
+Received: from mail-oo1-xc2e.google.com ([2607:f8b0:4864:20::c2e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMW85-0000000BYpm-0Vk4;
-	Tue, 03 Jun 2025 18:12:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3B72361127;
-	Tue,  3 Jun 2025 18:12:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7F5CC4CEED;
-	Tue,  3 Jun 2025 18:12:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748974371;
-	bh=l7hazKp9x8Xzw0tllu2vo2pbAlO+wqbtKbXlvyCvQbE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=lTRLQ9RAjg2032UQ3WcGEkJraC27pGea5D0O1+9saGh01CsKarRaOhO9GnaSzW7RP
-	 dBT90A1Stsb5fvRCythAVMy/raiTRdQYEYlTZJ7H+h/NaeO+R67lbnVxJ8JpWLz5dG
-	 /Mymjs1NOGHedhNSaGEWGa/C/gADuBZivMkFjPyts10XrpDw/q8Tvafx+xHWOpn9zQ
-	 PhAvcHi85CaYsiu8h2nt1/1VYHmf7f9AFoySdft6nwylSsvej1uO0WDsK9wtAqAIna
-	 Ve0W6oOVQLByKO22AfW6bq4bpJ9RkWkOQv/MGcWKQNTyhZVbV5iub6Md3L/Fw+HHx3
-	 H+nELnSQSBctQ==
-Date: Tue, 3 Jun 2025 13:12:50 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Hans Zhang <18255117159@163.com>,
-	Laszlo Fiat <laszlo.fiat@proton.me>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 1/4] PCI: dw-rockchip: Do not enumerate bus before
- endpoint devices are ready
-Message-ID: <20250603181250.GA473171@bhelgaas>
+	id 1uMXWN-0000000BjDq-0VrR
+	for linux-rockchip@lists.infradead.org;
+	Tue, 03 Jun 2025 19:42:04 +0000
+Received: by mail-oo1-xc2e.google.com with SMTP id 006d021491bc7-606668f8d51so143711eaf.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Jun 2025 12:42:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1748979722; x=1749584522; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FgLtrMgHhQ/oGFMvm8sSOBZ5dDdVEtN1pzHrZf4N+fU=;
+        b=JKPy7lpqE9aSkYBNDtip80ijXisoDBLp4oiQzMstokRl/J/FvGwX7XsYVzaQF+UqX8
+         gATPfDaXn/6jmmAa56uY2PZBTzEmDKkurM+2zeu0lUA7Az5HNKRCgM9+F3WEWKNI9ORq
+         m6esRXPv7knzVSCM9okFkzdKH4BMMA68ozL0WJrpVh/YkBzzfSElk2psywj96meklqtM
+         C9kUOG/hghNrJ9vT10lbNwBWiupCGwj/iH1byZEqVT27nmLjMKnN19+xHGSewRBNbzEg
+         Xc6e4swYBaBmVTqmEB6p74SgMyr5JxF6TRqky2pxG1i64OKnd+8BF/lFZ3fB/nTv/cET
+         ptqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748979722; x=1749584522;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=FgLtrMgHhQ/oGFMvm8sSOBZ5dDdVEtN1pzHrZf4N+fU=;
+        b=wh6cxAoDwVpaatNE0a9Tn/7VlYKeiZ3bcEBe2DKvyQg3krNfG5BES2VTLCi+GP6bMA
+         wiQage10/pjSHqls+XHs49pv+ESZtz0bnG6E+3NmfBGdeLOPkzwFtL9CxoVmraB9s33B
+         r6+NdFE6Q82PL7mhOFETnD9B5whx4wQ+vrhoi1og+Nep8si1pyFdin9zFrTCoLtTIZIV
+         RkCoxzuGwxWEPnNz7QQS6mqPcJouxIWdZnRDUZenKtsX3HB8IfpTPtgXaFh6Rfi9mf+e
+         qztxZz6O4gC6JR1bWaPN/5SEmUZG0t7NTjaRlBOHMijV5r1up1gF5/NySmfQFUzHZuQo
+         hMdQ==
+X-Gm-Message-State: AOJu0Yw+eXiVTEannUBWBEr4V6x0BSL8PJHZuQBQoCywCwhPK9h6Frmm
+	5CLwLW2lk1zu7F8bdG1GM6s59VKC0XxbsIqVlAdnvnEn0JD7j5Ylpq0x
+X-Gm-Gg: ASbGncvbB+O4ireBm/qPVHVtrT7/zUSR4iakzmQOwrSAOUoUI8uk1XYxlhXj2+HW6mn
+	IXybIWhjQyQ/m3Q86dDWQUX0TRpz4+jwhYH/ZYKY9SGyzYVH9OdKlJQ3CuL2buEFh0A3DHP5vt1
+	qK3Sw89yiHY7DywaRgjA+kYVqbrCLU+n/9+6sE/pjI5+YfFxJnYeNHpVwlSzYMPGDsqKY6w16wJ
+	ZlQquEPm2fQaXgFj5s509ZvS+YplE+sa5MyTgI7yD8qT6hhhnNaZnu7v78j5gA06uGAcLjs60jM
+	OmxL5NMtP4uS40iifsMxdSAGqLybeMRLJPtGKhfCR+6IwLKtWgJ+Ajh+IVboFedWWrXJ43I=
+X-Google-Smtp-Source: AGHT+IE9tiwKq/R/e3U5EawJb79KooQ4IxNgVCBv1cslv8xmu0yJpXxxMeDxU3qVBvLMhI+JZsrssA==
+X-Received: by 2002:a4a:dc48:0:b0:608:3493:b807 with SMTP id 006d021491bc7-60efdd1f98dmr1851832eaf.2.1748979722009;
+        Tue, 03 Jun 2025 12:42:02 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bcf:d19a:d10c:4358:1346])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-60c14c88f96sm1967615eaf.17.2025.06.03.12.42.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Jun 2025 12:42:01 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	sebastian.reichel@collabora.com,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	tzimmermann@suse.de,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	simona@ffwll.ch,
+	airlied@gmail.com,
+	quic_jesszhan@quicinc.com,
+	neil.armstrong@linaro.org,
+	javierm@redhat.com,
+	megi@xff.cz,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH 4/4] arm64: dts: rockchip: Add DSI panel support for gameforce-ace
+Date: Tue,  3 Jun 2025 14:39:30 -0500
+Message-ID: <20250603193930.323607-5-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250603193930.323607-1-macroalpha82@gmail.com>
+References: <20250603193930.323607-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aD8Bz4CkdnAd8Col@ryzen>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250603_124203_170645_B81FA0ED 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,81 +112,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 03, 2025 at 04:08:15PM +0200, Niklas Cassel wrote:
-> On Sat, May 31, 2025 at 12:17:43PM +0530, Manivannan Sadhasivam wrote:
-> > On Fri, May 30, 2025 at 02:43:47PM -0500, Bjorn Helgaas wrote:
-> > > On Fri, May 30, 2025 at 07:24:53PM +0200, Niklas Cassel wrote:
-> > > > On 30 May 2025 19:19:37 CEST, Bjorn Helgaas <helgaas@kernel.org> wrote:
-> > > > >
-> > > > >I think all drivers should wait PCIE_T_RRS_READY_MS (100ms) after exit
-> > > > >from Conventional Reset (if port only supports <= 5.0 GT/s) or after
-> > > > >link training completes (if port supports > 5.0 GT/s).
-> > > > >
-> > > > >> So I don't think this is a device specific issue but rather
-> > > > >> controller specific.  And this makes the Qcom patch that I dropped a
-> > > > >> valid one (ofc with change in description).
-> > > > >
-> > > > >URL?
-> > > > 
-> > > > PATCH 4/4 of this series.
-> > > 
-> > > If you mean
-> > > https://lore.kernel.org/r/20250506073934.433176-10-cassel@kernel.org,
-> > > that patch merely replaces "100" with PCIE_T_PVPERL_MS, which doesn't
-> > > fix anything and is valid regardless of this Plextor-related patch
-> > > ("PCI: dw-rockchip: Do not enumerate bus before endpoint devices are
-> > > ready").
-> > 
-> > It is patch 2/4:
-> > https://lore.kernel.org/all/20250506073934.433176-8-cassel@kernel.org
-> 
-> Hello all,
-> 
-> I'm getting some mixed messages here.
-> 
-> If I understand Bjorn correctly, he would prefer a NVMe quirk, and looking
-> at pci/next, PATCH 1/4 has been dropped.
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Hmmm, sorry, I misinterpreted both 1/4 and 2/4.  I read them as "add
-this delay so the PLEXTOR device works", but in fact, I think in both
-cases, the delay is actually to enforce the PCIe r6.0, sec 6.6.1,
-requirement for software to wait 100ms before issuing a config
-request, and the fact that it makes PLEXTOR work is a side effect of
-that.
+Enable the DSI controller, DSI DCPHY, and Huiling hl055fhav028c
+1080x1920 panel for the Gameforce Ace.
 
-The beginning of that 100ms delay is "exit from Conventional Reset"
-(ports that support <= 5.0 GT/s) or "link training completes" (ports
-that support > 5.0 GT/s).
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../dts/rockchip/rk3588s-gameforce-ace.dts    | 66 +++++++++++++++++++
+ 1 file changed, 66 insertions(+)
 
-I think we lack that 100ms delay in dwc drivers in general.  The only
-generic dwc delay is in dw_pcie_host_init() via the LINK_WAIT_SLEEP_MS
-in dw_pcie_wait_for_link(), but that doesn't count because it's
-*before* the link comes up.  We have to wait 100ms *after* exiting
-Conventional Reset or completing link training.  
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
+index 873a2bd6a6de..bb7c1b732cc2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
+@@ -7,6 +7,7 @@
+ #include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/pwm/pwm.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
+ #include <dt-bindings/thermal/thermal.h>
+ #include <dt-bindings/usb/pd.h>
+ #include "rk3588s.dtsi"
+@@ -456,6 +457,42 @@ &cpu_b3 {
+ 	cpu-supply = <&vdd_cpu_big1_s0>;
+ };
+ 
++&dsi0 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	panel@0 {
++		compatible = "huiling,hl055fhav028c", "himax,hx8399c";
++		reg = <0>;
++		backlight = <&backlight>;
++		iovcc-supply = <&vcc3v3_lcd0_n>;
++		pinctrl-0 = <&lcd_rst>;
++		pinctrl-names = "default";
++		reset-gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
++		rotation = <90>;
++		vcc-supply = <&vcc3v3_lcd0_n>;
++
++		port {
++			mipi_panel_in: endpoint {
++				remote-endpoint = <&dsi0_out_panel>;
++			};
++		};
++	};
++};
++
++&dsi0_in {
++	dsi0_in_vp3: endpoint {
++		remote-endpoint = <&vp3_out_dsi0>;
++	};
++};
++
++&dsi0_out {
++	dsi0_out_panel: endpoint {
++		remote-endpoint = <&mipi_panel_in>;
++	};
++};
++
+ &gpu {
+ 	mali-supply = <&vdd_gpu_s0>;
+ 	status = "okay";
+@@ -633,6 +670,10 @@ &i2s0_sdi0
+ 	status = "okay";
+ };
+ 
++&mipidcphy0 {
++	status = "okay";
++};
++
+ &package_thermal {
+ 	polling-delay = <1000>;
+ 
+@@ -769,6 +810,13 @@ lcd_bl_en: lcd-bl-en {
+ 		};
+ 	};
+ 
++	lcd_rst {
++		lcd_rst: lcd-rst {
++			rockchip,pins =
++				<1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	pcie-pins {
+ 		pcie_rst: pcie-rst {
+ 			rockchip,pins =
+@@ -1239,3 +1287,21 @@ bluetooth {
+ 		shutdown-gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_HIGH>;
+ 	};
+ };
++
++&vop {
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vp3 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	vp3_out_dsi0: endpoint@ROCKCHIP_VOP2_EP_MIPI0 {
++		reg = <ROCKCHIP_VOP2_EP_MIPI0>;
++		remote-endpoint = <&dsi0_in_vp3>;
++	};
++};
+-- 
+2.43.0
 
-We don't know when the exit from Conventional Reset was, but it was
-certainly before the link came up.  In the absence of a timestamp for
-exit from reset, starting the wait after link-up is probably the best
-we can do.  This could be either after dw_pcie_wait_for_link() finds
-the link up or when we handle the link-up interrupt.
-
-Patches 1 and 2 would fix the link-up interrupt case.  I think we need
-another patch for the dwc core for dw_pcie_wait_for_link().
-
-I wish I'd had time to spend on this and include patches 1 and 2, but
-we're up against the merge window wire and I'll be out the end of this
-week, so I think they'll have to wait.  It seems like something we can
-still justify for v6.16 though.
-
-This also means I don't think we should need an NVMe quirk.
-
-> If I understand Mani correctly, he thinks that we should queue up PATCH 1/4
-> and PATCH 2/4 (although with modified commit messages).
->
-> As you know, I do not have the (problematic) Plextor drive, so we go with
-> the quirk option, then we would need to ask Laszlo nicely to retest.
-> (And to provide the PCI device and PCI vendor ID of his NVMe device so we
-> can write a quirk.)
 
 _______________________________________________
 Linux-rockchip mailing list
