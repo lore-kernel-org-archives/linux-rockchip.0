@@ -4,86 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6C4CC61CE8
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 08:19:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 427BDC5B543
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 08:45:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D2lOBo4CSi2KBXPlU/bF0LiHWa0YGJsiL2xEP1rU+og=; b=L0ulEiYTQEc8tg
-	aJj/8sML15eCyVvb0g42+SIrEm0K6FaqF8WzqFuU2DHIxsnq6Bf8LUHATSmyIlTAX75y8w9X339ES
-	nQjmPde16LDsGA6FAMbJFJsV0C93u87AsFL151xd2r14bZJGUIWv1SFq05H/J1/uf8Yq87KQQ6pFE
-	zyIPkDc3UzsF3YTT8fJu6f+ObazkpMvsizMq9Wvl81QIx1BVQnH/+ozjQZZN285pMdUL8vs42KYhd
-	o5QgYbrLgXgJXZQnfCY03CyqNigmz3H+uAanjnl5nxeT78rp7I8GrsXVwdopK8uFW1tHSmiLmKv9P
-	aSEcXnLltyrlIGedM6Zw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:From:Subject:Cc:To:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oOjBZSBVpPIruAxP40UXdVVdx7Efjx+75TZ0AtPpfLo=; b=c1xFWEWVLX5bTA0UFPhztezkqJ
+	DEbtdT01bQBx97rPncdcsvXXqzOnNjv3PZPHQzTr6Q40SbaRt9XBPm3m9tbCuIsxtwyFkD/+CLtSS
+	o2eIen3JeQQ1Ja3q6bwZhFTQhd1VaLVSAJRAC9reqFXOBzSAaLaFw23dEK7BChbh5Sv2WQah1kHoF
+	WNOJj+4Y8pmwznjwXRQrm/WaGNv+Mx3QBdHzTeEK+BltAkbYrte//4V68XOznCedemDjBBBIrKSLa
+	iQs9Q4eeeaHVIVbvglo2M6dDqTiGqaXEzs3CQyfRCZZheqUKjtL7/v0eV8Df1rxEirJwtDB5D68Ay
+	SR/6CSbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMjKv-0000000CsEP-3iLS;
-	Wed, 04 Jun 2025 08:19:01 +0000
-Received: from mail-ed1-f47.google.com ([209.85.208.47])
+	id 1uMjk2-0000000Cvmo-1GS1;
+	Wed, 04 Jun 2025 08:44:58 +0000
+Received: from out-179.mta1.migadu.com ([2001:41d0:203:375::b3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMj0I-0000000Cod3-02Jo;
-	Wed, 04 Jun 2025 07:57:43 +0000
-Received: by mail-ed1-f47.google.com with SMTP id 4fb4d7f45d1cf-6049431b409so11472627a12.3;
-        Wed, 04 Jun 2025 00:57:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749023861; x=1749628661;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=anhtEfC+aYWJeJvUly60jdWH8rm+sVcW8pcF9vb2eMk=;
-        b=LHs+IiuVcutNva6v8N3zgwvWG4MDVsns5dAXyg3UBXVYbK7drqeAFwUgaEtz4yKTSH
-         MqVpMru1+xC6zkUWQe6wDiHvVoE3TdqWGJH+6dVwW52zfVGJXmY29DoXfGQaqzjR0HFa
-         hpqIEL9qHLde/YUF/IBmMqmFL6rQ0df67gaVJpt3rhYKsg2TSQXZiENbP+zlf7gF6c8q
-         r33wnB5PdqpXTayvOPJaGJB7x8YK266UBkRWHHzvidvsLng8aRmCg+WDpUJfQEmFp1wr
-         xjVyFKmENGiU7YEXJ8AANLKXChO65eANmSB9Zdq7OxHbIk4UQfhiEge+iDXA9U7ykRyl
-         5q0g==
-X-Forwarded-Encrypted: i=1; AJvYcCXcz404SHxteFzGFv8hnOT4Cvc8rzVsGlrVtjLIxfZUZEQymeblOOPvhNfKex31yzVlHme84B51WPfk4r81PSo=@lists.infradead.org, AJvYcCXlgbhsERYfFvV7r9ZLvGdqW3tiQucLWYp4+2xcrcPLFN4CnFyCRMSkjPX2O0pPQzk+VEhL7XEqVGuuILYcVEqO@lists.infradead.org
-X-Gm-Message-State: AOJu0YyItfBgVhiwlxJZyEELc/Bi88kuJJCzgVJqG9gS0kEXtBln94Bi
-	MorZKGT7pbv5GlWrt8n4Mp6pHQQBKBHa0YOCsk3VPOim04yHEntAHOaPQc/3xAzT
-X-Gm-Gg: ASbGncvU8NnTzS6+u/V+qU0JShv8kJ1kN6ORHvFnihVT3UsKNzJWQUw94Eywv8btvSi
-	KdQM8eqPiv1/tWaM+aXU0zCiBcPskPz1KJh7NivMlsLfIaAAEhC2VLKc8mfNcpA1OCQqab1PH0R
-	im15S2wgXpqZanIhCRon+sKC4RF1UI0FIEFRxx32nCvtJJlAcWSwn8RaLrdfRII2mGYLl2d2Arj
-	Mw7219f9xMnQLGxaciiepopdRPSBp5Hnndftt2rT8Q3ugtwMWC4CGtPNvSM0IVlApvAuVMj2Q89
-	xv9jobk/hvIysktJmCfQnUoihboR0jW8VqARKM0Li8HDOEHbw1m3k3HzjYakNI5XKUXV6pYkSwj
-	O4uChBo3vQQ==
-X-Google-Smtp-Source: AGHT+IEdWWoFUq/i9FS76C9R6P00UBxKykLRi5OkyXWDWifwVDn9o0aBT66QEk8p9MYrjo3JtwHUSA==
-X-Received: by 2002:a05:6402:234e:b0:602:c6a3:3f6 with SMTP id 4fb4d7f45d1cf-606e966e9b0mr2028441a12.13.1749023860547;
-        Wed, 04 Jun 2025 00:57:40 -0700 (PDT)
-Received: from [10.42.0.1] (cst-prg-46-162.cust.vodafone.cz. [46.135.46.162])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-606fb36a160sm348569a12.45.2025.06.04.00.57.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Jun 2025 00:57:40 -0700 (PDT)
-From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Date: Wed, 04 Jun 2025 09:57:23 +0200
-Subject: [PATCH v6 10/10] arm64: dts: rockchip: enable NPU on ROCK 5B
-MIME-Version: 1.0
-Message-Id: <20250604-6-10-rocket-v6-10-237ac75ddb5e@tomeuvizoso.net>
-References: <20250604-6-10-rocket-v6-0-237ac75ddb5e@tomeuvizoso.net>
-In-Reply-To: <20250604-6-10-rocket-v6-0-237ac75ddb5e@tomeuvizoso.net>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Oded Gabbay <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Sumit Semwal <sumit.semwal@linaro.org>, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Jeff Hugo <jeff.hugo@oss.qualcomm.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
- Tomeu Vizoso <tomeu@tomeuvizoso.net>
-X-Mailer: b4 0.14.2
+	id 1uMjQe-0000000CtII-3B2K
+	for linux-rockchip@lists.infradead.org;
+	Wed, 04 Jun 2025 08:24:58 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1749025484;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=kIUCb4+mj18vL7IVMw6tRgCs2/j5HRPHEfYTkdiaDeM=;
+	b=AwV4yb5tbzT5syvc27hSpLLoViY4TIGoZg4e8D2mJMfFv5YY5nTSd29CLmW3612NtL140i
+	EKKmgmYn7lJQj9bcUKyFbUeLHBuL2hSggdJ4FmqsbPz6RQtVJU8RU8p3CHVtfDBKOJg6di
+	HtZ+awSorAM5H6wSi/9l8p9Mx/KTacLaVME0keuXQfzFd6ZqoK6kmP+MLHIBtfOP0DOUXe
+	SOgr3RXz9LY3/oCGBNUva+/H/1rddijwVJMqyRxJcQ4S+VNjja1t27oNDqwPKcmF2NGdqf
+	ZVwVL9XVM3ZbHrK0Jwfk2rhVhy5x/LNlI8eP0NK9YphZnaTjlMjR9Qx5XCI7bg==
+Date: Wed, 04 Jun 2025 10:24:33 +0200
+Message-Id: <DADLSAEF1YPO.V0CQK084KFFO@cknow.org>
+To: "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com>, "Chanwoo Choi"
+ <cw00.choi@samsung.com>, "MyungJoo Ham" <myungjoo.ham@samsung.com>,
+ "Kyungmin Park" <kyungmin.park@samsung.com>, "Heiko Stuebner"
+ <heiko@sntech.de>, "Sascha Hauer" <s.hauer@pengutronix.de>, "Jonathan
+ Cameron" <Jonathan.Cameron@huawei.com>, "Sebastian Reichel"
+ <sebastian.reichel@collabora.com>
+Cc: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-rockchip@lists.infradead.org>, <kernel@collabora.com>,
+ <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH 2/2] PM / devfreq: rockchip-dfi: add support for LPDDR5
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+References: <20250530-rk3588-dfi-improvements-v1-0-6e077c243a95@collabora.com> <20250530-rk3588-dfi-improvements-v1-2-6e077c243a95@collabora.com>
+In-Reply-To: <20250530-rk3588-dfi-improvements-v1-2-6e077c243a95@collabora.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250604_005742_056660_B0CAE27A 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20250604_012457_075284_DF7D7844 
+X-CRM114-Status: GOOD (  29.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,110 +70,162 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1430021047661404133=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+--===============1430021047661404133==
+Content-Type: multipart/signed;
+ boundary=1972edf4972f0b592376148b0cb4a49b288a246b0dc77c2d96218fcc198e;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-The NPU on the ROCK5B uses the same regulator for both the sram-supply
-and the npu's supply. Add this regulator, and enable all the NPU bits.
-Also add the regulator as a domain-supply to the pd_npu power domain.
+--1972edf4972f0b592376148b0cb4a49b288a246b0dc77c2d96218fcc198e
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
----
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 56 +++++++++++++++++++++++++
- 1 file changed, 56 insertions(+)
+Hi Nicolas,
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index d22068475c5dc6cb885f878f3f527a66edf1ba70..49500f7cbcb14af4919a6c1997e9e53a01d84973 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -316,6 +316,28 @@ regulator-state-mem {
- 	};
- };
- 
-+&i2c1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c1m2_xfer>;
-+	status = "okay";
-+
-+	vdd_npu_s0: regulator@42 {
-+		compatible = "rockchip,rk8602";
-+		reg = <0x42>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_npu_s0";
-+		regulator-boot-on;
-+		regulator-min-microvolt = <550000>;
-+		regulator-max-microvolt = <950000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+};
-+
- &i2c6 {
- 	status = "okay";
- 
-@@ -440,6 +462,10 @@ &pd_gpu {
- 	domain-supply = <&vdd_gpu_s0>;
- };
- 
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	hdmirx {
- 		hdmirx_hpd: hdmirx-5v-detection {
-@@ -500,6 +526,36 @@ &pwm1 {
- 	status = "okay";
- };
- 
-+&rknn_core_top {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_1 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_2 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_top {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_1 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_2 {
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&avcc_1v8_s0>;
- 	status = "okay";
+On Fri May 30, 2025 at 3:38 PM CEST, Nicolas Frattaroli wrote:
+> <snip>
+> Downstream has some special case handling for a hardware version where
+> not just the control bits differ, but also the register. Since I don't
+> know whether that hardware version is in any production silicon, it's
+> left unimplemented for now, with an error message urging users to report
+> if they have such a system.
+> <snip>
+> ---
+>  drivers/devfreq/event/rockchip-dfi.c | 84 ++++++++++++++++++++++++++++--=
+------
+>  include/soc/rockchip/rk3588_grf.h    |  8 +++-
+>  include/soc/rockchip/rockchip_grf.h  |  1 +
+>  3 files changed, 73 insertions(+), 20 deletions(-)
+>
+> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event=
+/rockchip-dfi.c
+> index 54effb63519653d20b40eed88681330983399a77..5a2c9badcc64c552303c2f55c=
+52e5420dec5ffc1 100644
+> --- a/drivers/devfreq/event/rockchip-dfi.c
+> +++ b/drivers/devfreq/event/rockchip-dfi.c
+> @@ -34,15 +34,18 @@
+> =20
+>  /* DDRMON_CTRL */
+>  #define DDRMON_CTRL	0x04
+> +#define DDRMON_CTRL_LPDDR5		BIT(6)
+>  #define DDRMON_CTRL_DDR4		BIT(5)
+>  #define DDRMON_CTRL_LPDDR4		BIT(4)
+>  #define DDRMON_CTRL_HARDWARE_EN		BIT(3)
+>  #define DDRMON_CTRL_LPDDR23		BIT(2)
+>  #define DDRMON_CTRL_SOFTWARE_EN		BIT(1)
+>  #define DDRMON_CTRL_TIMER_CNT_EN	BIT(0)
+> -#define DDRMON_CTRL_DDR_TYPE_MASK	(DDRMON_CTRL_DDR4 | \
+> +#define DDRMON_CTRL_DDR_TYPE_MASK	(DDRMON_CTRL_LPDDR5 | \
+> +					 DDRMON_CTRL_DDR4 | \
+>  					 DDRMON_CTRL_LPDDR4 | \
+>  					 DDRMON_CTRL_LPDDR23)
+> +#define DDRMON_CTRL_LP5_BANK_MODE_MASK	GENMASK(8, 7)
+> =20
+>  #define DDRMON_CH0_WR_NUM		0x20
+>  #define DDRMON_CH0_RD_NUM		0x24
+> @@ -116,13 +119,60 @@ struct rockchip_dfi {
+>  	int buswidth[DMC_MAX_CHANNELS];
+>  	int ddrmon_stride;
+>  	bool ddrmon_ctrl_single;
+> +	u32 lp5_bank_mode;
+> +	bool lp5_ckr;	/* true if in 4:1 command-to-data clock ratio mode */
+>  	unsigned int count_multiplier;	/* number of data clocks per count */
+>  };
+> =20
+> +static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *c=
+trl,
+> +					u32 *mask)
+> +{
+> +	u32 ddrmon_ver;
+> +
+> +	*mask =3D DDRMON_CTRL_DDR_TYPE_MASK;
+> +
+> +	switch (dfi->ddr_type) {
+> +	case ROCKCHIP_DDRTYPE_LPDDR2:
+> +	case ROCKCHIP_DDRTYPE_LPDDR3:
+> +		*ctrl =3D DDRMON_CTRL_LPDDR23;
+> +		break;
+> +	case ROCKCHIP_DDRTYPE_LPDDR4:
+> +	case ROCKCHIP_DDRTYPE_LPDDR4X:
+> +		*ctrl =3D DDRMON_CTRL_LPDDR4;
+> +		break;
+> +	case ROCKCHIP_DDRTYPE_LPDDR5:
+> +		ddrmon_ver =3D readl_relaxed(dfi->regs);
+> +		if (ddrmon_ver < 0x40) {
+> +			*ctrl =3D DDRMON_CTRL_LPDDR5 | dfi->lp5_bank_mode;
+> +			*mask |=3D DDRMON_CTRL_LP5_BANK_MODE_MASK;
+> +			break;
+> +		}
+> +
+> +		/*
+> +		 * As it is unknown whether the unpleasant special case
+> +		 * behaviour used by the vendor kernel is needed for any
+> +		 * shipping hardware, ask users to report if they have
+> +		 * some of that hardware.
+> +		 */
+> +		dev_err(&dfi->edev->dev,
+> +			"unsupported DDRMON version 0x%04X, please let linux-rockchip know!\n=
+",
+> +			ddrmon_ver);
+> +		return -EOPNOTSUPP;
 
--- 
-2.49.0
+I'm guessing you mean the linux-rockchip mailing list here? If so, I
+think it's better to make that explicit as 'Joe User' who may run into
+this issue may not be aware of that mailing list. The 'linux' and
+'rockchip' name combo is used in quite a few places.
 
+Cheers,
+  Diederik
+
+> +	default:
+> +		dev_err(&dfi->edev->dev, "unsupported memory type 0x%X\n",
+> +			dfi->ddr_type);
+> +		return -EOPNOTSUPP;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>  static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+>  {
+>  	void __iomem *dfi_regs =3D dfi->regs;
+>  	int i, ret =3D 0;
+> +	u32 ctrl;
+> +	u32 ctrl_mask;
+> =20
+>  	mutex_lock(&dfi->mutex);
+> =20
+> @@ -136,8 +186,11 @@ static int rockchip_dfi_enable(struct rockchip_dfi *=
+dfi)
+> <snip>
+
+--1972edf4972f0b592376148b0cb4a49b288a246b0dc77c2d96218fcc198e
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaEACzAAKCRDXblvOeH7b
+bkQFAP9OdpwIz44YKR7NNVr+icHxXxEQIuDgPcumEG5WTaLrKwD+MC8hHdbqvimT
+4XQkVUDdf7DZ/YqAZuzo8OI31a6LOA0=
+=z1X1
+-----END PGP SIGNATURE-----
+
+--1972edf4972f0b592376148b0cb4a49b288a246b0dc77c2d96218fcc198e--
+
+
+--===============1430021047661404133==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1430021047661404133==--
+
