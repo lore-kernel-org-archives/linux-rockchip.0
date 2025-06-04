@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09184C61CE8
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 18:28:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90FB9C5B549
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 19:02:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BKQTX6QXuKgGpNyysr+bL6G1FAVCYbCpK83CuptNyGQ=; b=VTDoreijdmQ8xA
-	Bk+62zD7mLwKxaIP2zJpPVuCZL8Xv21u6MpCJas/fYPe00B29ymDS6oUIUc3SlMpqw/6TQQz2DAsd
-	jLgDl+0J5wG7DdsO3OUrCaaQfXm2Xz1KoLqUhNcpy3fkB+f97xrs7ZVZjt88gZGN26Z3eg10qle1j
-	5v0vclBRvDiG4GxI+TZBF4LdiVbQgQSV/q8LyMj9v2HRZot7CO3Mhsw36taQTC+vNV5DDTu+kke90
-	gzePBPTu4YsO8XyudmctPx2pq5Rk6buO2QiwMhTMJNtKUSt9jtNfoJtrAzwAjec1KOb/+T4Bxbua5
-	uahmJ5OmwSsUUMXTaM1A==;
+	List-Owner; bh=TCBPKq8C6R5Ze/HhFU42WjGM9eGjdTIQdjyd+jtzIeo=; b=ietaTA7twzEcd0
+	k6vzGjg8Z6z+lqaui5grXqjVZKs8Vjp3dLim/o55AaOYB2EmnzM0+mZ8g5+DqVFU1oXLB7OG7s75+
+	k2QKdG2pNhvP72Ce0gkiC7dTbG1pvfwoLtaI9UOiOyy2jnk58REvmjvZ88/czio3IzqV8ushKebjx
+	h0qdpuA4ooCuvgTxSsEkxNpUdrtAYsLT4TsAkl7qKnb7LFVdlBGDq7TLQ0NST77jOX11WYKg36goH
+	YbAfL27cJyHjcMwBHG8ANouesj+yPusUqN16nxiYZXxtO8QxeXBfC4+11H+2ERNmgvwJnSOEMOd+d
+	AoiAO59vEXNw8Of5D+oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMsqz-0000000E12r-070Z;
-	Wed, 04 Jun 2025 18:28:45 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1uMtN4-0000000E3oI-1IWr;
+	Wed, 04 Jun 2025 19:01:54 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMrps-0000000DvWM-3GDk;
-	Wed, 04 Jun 2025 17:23:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749057808; cv=none; 
+	id 1uMtMh-0000000E3kb-1gqe;
+	Wed, 04 Jun 2025 19:01:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749063687; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=A+QIc+00sYXg/SVQ9yqTCjNyzvtbNtG0sbZuNlLNxVdKscu83OYg35G5WEToCWPsyn6KEIdDIvjf4SKSN2GwiVCPGeDI5QfyhpPEKujoWbvSBYD+Jmdq10YTdGIJwv+qSPK153ATor163WCgU/s4iQIrSKX6D2HgHH/9u21Mjag=
+	b=hUZbeOaldCTjbNvHXnX0G72M5BW9GejfrJ9UZJmeBTi+Fknig7vKZnLgpp4395QZcHCksZOkjDGEFwV61C+iwUACY/kCOowEBMoMYJOyHcm/2Jrs4c+bKNrNeap01G34BCMqGyIvt4zaXP7UuVxyWBfNH2y6D5Htz62lvUKwOro=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749057808; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=CqhDunc2jVt4krlLrcz24GH9XTmIrYcELdMl5WuaLe4=; 
-	b=PyHENpGXf5aUix9EgRTWxA8tIpgqN7d9QFaOtAvAozmO1nqL8nodtTiRmdTefpnXg3Pia4hWBDa0Olkyze+J6aUULxFjRPyXJdHkAyuBZ+1Lg/8joBx0PbgX1HPxXYtn5UJsUICDV+Sxe5NbnQZ7+koiXvGako7SB4LJW1JMNiM=
+	t=1749063687; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=RR07ZJb8JV1Gn3LQ5leTmhQEEeyoSF6a+ry7Y8x0k4k=; 
+	b=b/4blPvALM0jm4+1EnZtq3tYPK77jJcnnFzvhTJgpZL4WnR1B49em+e1xPzwDpyVIGmkMof9S2VeJW4suNesUk8kipw0WBz20N4W1pCEcO51lPCijFS8nXH6EU1/YeQhw78HD/YU7HxsgIgKjM+KIfeQjNmMUcmWa9CldKg4dnE=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749057807;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749063687;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=CqhDunc2jVt4krlLrcz24GH9XTmIrYcELdMl5WuaLe4=;
-	b=KZiIMS1o1I4zUBAGBnR3QzRAmcnlBGK8YjgIS5uVCH4cd915hgUiauXRVVrQ6TAo
-	Mxv6S+HkTte7oshPEV7yy3rgW6bsKFAHITF+Ydq8cj2QPfris3JWEidtR3wdWc5hiwW
-	JGyiBTHnB5ED3kKRAjVtA+3uGvPs7AYUqkC8g5Ak=
-Received: by mx.zohomail.com with SMTPS id 1749057806578226.7029650221608;
-	Wed, 4 Jun 2025 10:23:26 -0700 (PDT)
+	bh=RR07ZJb8JV1Gn3LQ5leTmhQEEeyoSF6a+ry7Y8x0k4k=;
+	b=cPBbrC+jF6wKlqbdkGk/TQz0dU7RSQZTij2iqSiQNILpLtaUuczypAivoSr4+iUU
+	fzbSSSBlbI49220TxrtPcsA8Y3aRSrOxDY27yGgmc/qGGAFQpcnJuzMqiybCRi8KfkP
+	lo13DsX2Nb4P6mdVAmcpFOFfNcetvjmnamBeTXDQ=
+Received: by mx.zohomail.com with SMTPS id 1749063684919734.5257602364985;
+	Wed, 4 Jun 2025 12:01:24 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Pei Xiao <xiaopei01@kylinos.cn>
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: Re: [PATCH 1/2] ASOC: rochchip: Simplify the condition logic in
- rockchip_sai_xfer_stop
-Date: Wed, 04 Jun 2025 19:23:23 +0200
-Message-ID: <5104592.0VBMTVartN@workhorse>
-In-Reply-To: <81c7955216f5cc7565a396e50e5474ec8f6e3017.1749006565.git.xiaopei01@kylinos.cn>
-References: <cover.1749006565.git.xiaopei01@kylinos.cn>
- <81c7955216f5cc7565a396e50e5474ec8f6e3017.1749006565.git.xiaopei01@kylinos.cn>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Alexey Charkov <alchark@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Alexey Charkov <alchark@gmail.com>
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: enable wifi on ArmSoM Sige5
+Date: Wed, 04 Jun 2025 21:01:20 +0200
+Message-ID: <11432858.nUPlyArG6x@workhorse>
+In-Reply-To: <20250603-sige5-updates-v1-3-717e8ce4ab77@gmail.com>
+References: <20250603-sige5-updates-v1-0-717e8ce4ab77@gmail.com>
+ <20250603-sige5-updates-v1-3-717e8ce4ab77@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250604_102332_892924_F399A2D1 
-X-CRM114-Status: GOOD (  17.45  )
+X-CRM114-CacheID: sfid-20250604_120131_521959_AE806D0B 
+X-CRM114-Status: GOOD (  29.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,98 +79,169 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, 4 June 2025 05:13:29 Central European Summer Time Pei Xiao wrote:
-> cocci warning:
-> ./sound/soc/rockchip/rockchip_sai.c:387:8-10:
-> 	WARNING: possible condition with no effect (if == else)
+On Tuesday, 3 June 2025 19:01:15 Central European Summer Time Alexey Charkov wrote:
+> ArmSoM Sige5 uses a soldered-on SDIO connected WiFi module. Namely,
+> board v1.1 uses a Realtek based BL-M8852BS2, while v1.2 uses a Broadcom
+> based BW3752-50B1.
+
+Okay, so there's two board revisions, which makes this patch and the
+following that adds bluetooth a problem. This patch here doesn't
+seem to actually add the SDIO Wi-Fi module node where it'll differ,
+so skirts around the issue AFAIU. It might also be that it's not
+needed for you and I just don't notice because I have v1.1 where the
+SDIO driver for that module doesn't exist yet iirc.
+
+But what we should think about is first doing
+- probably add a new compatible for armsom,sige5-v1.2
+- git mv arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts \
+         arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dtsi
+- commit here like Sebastian Reichel had to do for [1]
+- create a new arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+  that includes the dtsi and moves the model and compatible property
+  there. Make sure the model includes v1.1 in the name, compatible
+  should remain the same
+- commit here that will be a squash commit like Sebastian Reichel
+  had to do in [2]
+- create a new arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5-v1.2.dts,
+  could be adding the Wi-Fi node here to cut down on how many patches we
+  do. I assume you only have the v1.2 board and can't test the older Wi-Fi,
+  which is fine.
+  compatible should probably be something like
+    compatible = "armsom,sige5-v1.2", "armsom,sige5", "rockchip,rk3576";
+  Don't forget to change the model property as well.
+
+I know this will be a royal PITA, especially considering they'll likely
+never produce v1.1 again and it now hogs the name, but keeping the
+current dts as 1.1 may be the best way forward, as it keeps compat (though
+the Wi-Fi changes won't affect anything already in there) and will stop
+people from accidentally picking the higher number better DTS like what
+happens with rockpro64 all the time where the non-numbered DTS is 2.1 and
+the numbered one is 2.0 and people keep picking 2.0.
+
 > 
-> Simplify the condition logic in rockchip_sai_xfer_stop() by removing the
-> redundant SNDRV_PCM_STREAM_PLAYBACK branch. The modified logic now:
-> 1. For stream < 0: handles both playback and capture
-> 2. For all other cases (both PLAYBACK and CAPTURE):
->    sets playback = true and capture = false
+> Add required device tree nodes in the SoC .dtsi for the SDIO controller
+> and pinctrl / clock wiring in the board .dts for the module itself.
 > 
-> Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
+> Signed-off-by: Alexey Charkov <alchark@gmail.com>
 > ---
->  sound/soc/rockchip/rockchip_sai.c | 3 ---
->  1 file changed, 3 deletions(-)
+>  .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 36 ++++++++++++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 16 ++++++++++
+>  2 files changed, 52 insertions(+)
 > 
-> diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
-> index 602f1ddfad00..79b04770da1c 100644
-> --- a/sound/soc/rockchip/rockchip_sai.c
-> +++ b/sound/soc/rockchip/rockchip_sai.c
-> @@ -384,9 +384,6 @@ static void rockchip_sai_xfer_stop(struct rk_sai_dev *sai, int stream)
->  	if (stream < 0) {
->  		playback = true;
->  		capture = true;
-> -	} else if (stream == SNDRV_PCM_STREAM_PLAYBACK) {
-> -		playback = true;
-> -		capture = false;
->  	} else {
->  		playback = true;
->  		capture = false;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+> index 7ce1fb1380b0863c902fdd9cbc7454ee6011cf92..dcd033859398312f7693bebb7f080ee4f2ecaa32 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+> @@ -219,6 +219,15 @@ vcc_5v0_host: regulator-vcc-5v0-host {
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&usb_host_pwren>;
+>  	};
+> +
+> +	sdio_pwrseq: sdio-pwrseq {
+> +		compatible = "mmc-pwrseq-simple";
+> +		clocks = <&hym8563>;
+> +		clock-names = "ext_clock";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&wifi_reg_on>;
+> +		reset-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_LOW>;
+> +	};
+>  };
+>  
+>  &combphy1_psu {
+> @@ -781,6 +790,16 @@ usb_host_pwren: usb-host-pwren {
+>  			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+>  	};
+> +
+> +	wireless-wlan {
+> +		wifi_wake_host: wifi-wake-host {
+> +			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_down>;
+> +		};
+> +
+> +		wifi_reg_on: wifi-reg-on {
+> +			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+>  };
+>  
+>  &sai1 {
+> @@ -808,6 +827,23 @@ &sdhci {
+>  	status = "okay";
+>  };
+>  
+> +&sdio {
+> +	bus-width = <4>;
+> +	cap-sdio-irq;
+> +	disable-wp;
+> +	keep-power-in-suspend;
+> +	mmc-pwrseq = <&sdio_pwrseq>;
+> +	no-sd;
+> +	no-mmc;
+> +	non-removable;
+> +	sd-uhs-sdr50;
+> +	sd-uhs-sdr104;
+> +	vmmc-supply = <&vcc_3v3_s3>;
+> +	vqmmc-supply = <&vcc_1v8_s3>;
+> +	wakeup-source;
+> +	status = "okay";
+> +};
+> +
+>  &sdmmc {
+>  	bus-width = <4>;
+>  	cap-mmc-highspeed;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+
+Okay, I think adding the sdio node to the SoC dtsi should be a separate
+patch before this one.
+
+> index 1086482f04792325dc4c22fb8ceeb27eef59afe4..a09582470bb7f654b711308da1e51fa8571ca1e8 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> @@ -1695,6 +1695,22 @@ sdmmc: mmc@2a310000 {
+>  			status = "disabled";
+>  		};
+>  
+> +		sdio: mmc@2a320000 {
+> +			compatible = "rockchip,rk3576-dw-mshc", "rockchip,rk3288-dw-mshc";
+> +			reg = <0x0 0x2a320000 0x0 0x4000>;
+> +			clocks = <&cru HCLK_SDIO>, <&cru CCLK_SRC_SDIO>;
+> +			clock-names = "biu", "ciu";
+> +			fifo-depth = <0x100>;
+> +			interrupts = <GIC_SPI 252 IRQ_TYPE_LEVEL_HIGH>;
+> +			max-frequency = <200000000>;
+> +			pinctrl-0 = <&sdmmc1m0_clk &sdmmc1m0_cmd &sdmmc1m0_bus4>;
+> +			pinctrl-names = "default";
+> +			power-domains = <&power RK3576_PD_SDGMAC>;
+> +			resets = <&cru SRST_H_SDIO>;
+> +			reset-names = "reset";
+> +			status = "disabled";
+> +		};
+> +
+>  		sdhci: mmc@2a330000 {
+>  			compatible = "rockchip,rk3576-dwcmshc", "rockchip,rk3588-dwcmshc";
+>  			reg = <0x0 0x2a330000 0x0 0x10000>;
 > 
+>
 
-You can probably get rid of the locals playback and capture altogether:
+So in conclusion:
+- bindings patch adding v1.2 compatible
+- SoC dtsi patch for the sdio node
+- git mv patch
+- rk3576-armsom-sige5.dts patch, ask maintainer to squash it into the
+  previous patch, make it obvious by giving it the same subject or something
+- rk3576-armsom-sige5-v1.2.dts patch
 
-    static void rockchip_sai_xfer_stop(struct rk_sai_dev *sai, int stream)
-    {
-        unsigned int msk, val, clr;
-
-        msk = SAI_XFER_TXS_MASK;
-        val = SAI_XFER_TXS_DIS;
-        clr = SAI_CLR_TXC;
-        
-        if (stream < 0) {
-            msk |= SAI_XFER_RXS_MASK;
-            val |= SAI_XFER_RXS_DIS;
-            clr |= SAI_CLR_RXC;
-        }
-
-        regmap_update_bits(sai->regmap, SAI_XFER, msk, val);
-        rockchip_sai_poll_stream_idle(sai, true, stream < 0);
-
-        rockchip_sai_clear(sai, clr);
-    }
-
-but this in general makes me suspicious of the intent of the code in
-the first place. Playback always being true and capture only being
-true if playback is also true seems odd. Checking the callsites of
-this function confirms my suspicions that while this fixes the cocci
-warning, it just means the code is now intentionally broken.
-
-This here may be closer to the original intent:
-
-    static void rockchip_sai_xfer_stop(struct rk_sai_dev *sai, int stream)
-    {
-            unsigned int msk = 0, val = 0, clr = 0;
-            bool capture = stream == SNDRV_PCM_STREAM_CAPTURE || stream < 0;
-            /* could be <= 0 but we don't want to depend on enum values */
-            bool playback = stream == SNDRV_PCM_STREAM_PLAYBACK || stream < 0;
-
-            if (playback) {
-                    msk |= SAI_XFER_TXS_MASK;
-                    val |= SAI_XFER_TXS_DIS;
-                    clr |= SAI_CLR_TXC;
-            }
-
-            if (capture) {
-                    msk |= SAI_XFER_RXS_MASK;
-                    val |= SAI_XFER_RXS_DIS;
-                    clr |= SAI_CLR_RXC;
-            }
-
-            regmap_update_bits(sai->regmap, SAI_XFER, msk, val);
-            rockchip_sai_poll_stream_idle(sai, playback, capture);
-
-            rockchip_sai_clear(sai, clr);
-    }
-
-
-Please let me know whether this looks right to you.
+Sorry to drop all this on you, it's a little unpleasant and in-the-woods
+with regards to preparing a patch series. Basically, the reason why I've
+held off on this for the moment is that I don't have a v1.2 board and my
+v1.1 board's Wi-Fi module doesn't seem to be supported (yet).
 
 Kind regards,
 Nicolas Frattaroli
+
+[1]: https://lore.kernel.org/linux-rockchip/20250508-rock5bp-for-upstream-v2-1-677033cc1ac2@kernel.org/
+[2]: https://lore.kernel.org/linux-rockchip/20250508-rock5bp-for-upstream-v2-2-677033cc1ac2@kernel.org/
+
 
 
 
