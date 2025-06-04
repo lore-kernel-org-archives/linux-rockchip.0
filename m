@@ -4,53 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4FA5C5AD49
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Jun 2025 20:19:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53E42C5AD49
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 01:26:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rpHiHXLz/llSRmGR8zPPvJUEYDtvw700SJWnIxuhHvk=; b=rqMciwBM6nQomI
-	4ctPVwwyhuaIsVOnUI/SKE4k0UdoSjM6oZnCPcbaqCVB/0gZEnqUp/3vb/0ZRoloL11g3ZEeYh5z0
-	/V19zEYwKIK3BoLjWuqXI1D+mVTH7lqce391b/hzB1J81vk2H9lms+A+x1L2iA6/XV7X+y4gq6O88
-	CKhZmu5rKgNQOTYeFn6qirjxqFu67rzBjPVx1LMX3ISpQksYPIPO8MHhkaLQvWfTRdc4o2tJ2e/ld
-	T7saaWmwTGG40lxs6ugU6+cGi4NPIakXs7phit2TXU1PEw4qFkzBQa8f0L6nuA6+7vTdHo9EfNdf5
-	BK4xh4hmu9xYxONS5H+A==;
+	List-Owner; bh=X4jDXNRSC77Xbef3ZCNeBjVATVBoRQH5r9JTGnJTfs4=; b=bHwjsJYOpsRNdi
+	V32FJKlm8Gp+HGxrXsZ+wjykpRAhaW4Ug6NfafMEjDECVCmOMfR2ehviNoF3OItOLqnrDxj1mZM1g
+	2bTMOipC8/lFp+yhCqLj976yxMo/cGXOMqQhNdGypnT1I/NnEiTaWPYVqOfRKOS7bW1sCd5/4pQeb
+	pgCdzwWeP6hm8Q8tksqqmduJEQyci7z1OFvhOp1qLhc2xlHXr29XYJykozWJr6rDBLuRTTog9zNa+
+	0GmDJbbQN6s4jF0QiuZMnmdyG5KU3Mk8VVWn9Vmp0kO/QrQAnRPiA4M1+EfeAn4t56lALUdwmKf5F
+	yTgNwzBBQ/DMGjZni99Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMY6k-0000000BmGz-2yss;
-	Tue, 03 Jun 2025 20:19:38 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uMctg-0000000CBxv-2spx;
+	Wed, 04 Jun 2025 01:26:28 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMY4a-0000000Bm17-2DPA;
-	Tue, 03 Jun 2025 20:17:24 +0000
+	id 1uMcNW-0000000C6fb-47I2;
+	Wed, 04 Jun 2025 00:53:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id DC02F60008;
-	Tue,  3 Jun 2025 20:17:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5E28C4CEED;
-	Tue,  3 Jun 2025 20:17:22 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id AF13949DA1;
+	Wed,  4 Jun 2025 00:53:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6683C4CEF2;
+	Wed,  4 Jun 2025 00:53:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748981843;
-	bh=yV4ekByytzguS9M+Qf6n8nfcrxTdF0tMI0CZ/FW+ZhI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=COHJ4WCl7wgYi/p077xcxhMr+c0ECulzW+gv4fS4wPm2p4q7u4MZnD98iq1rKD+em
-	 WFFr3W/IsOPLbgashjQK3TtL/CaAUWHvYgvItY+J0Nk/9UQOw1zIdDuasY65jYDvBD
-	 xuQG9QjyHYQ/fycBwT9/n72StDDKeNnuBpuLd6JA9lu4ibSfRyQ5STGHCdTVu5uoFp
-	 rLOnLO2zdlz9l//CCQTnruR35L602rP83EgxTdgpLBIh3La6ojwmvQ7VS1XmZr7Hdy
-	 vsjNh0XF/J/ZOxRGGONIIdFYW4QI2FYApB//Hvt+YHkuO3id79x08lA7lOBc/Qipct
-	 g+maGoP328NCg==
-Date: Tue, 3 Jun 2025 15:17:20 -0500
-From: Rob Herring <robh@kernel.org>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Subject: Re: [PATCH v5 07/10] accel/rocket: Add job submission IOCTL
-Message-ID: <20250603201720.GA2119676-robh@kernel.org>
-References: <20250520-6-10-rocket-v5-0-18c9ca0fcb3c@tomeuvizoso.net>
- <20250520-6-10-rocket-v5-7-18c9ca0fcb3c@tomeuvizoso.net>
+	s=k20201202; t=1748998394;
+	bh=06/5TxgtZvM86mGzgWzAncs8N5P1lWHeSCmjUPHc7FI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=oq18cfjXoQK8i6PCrwfP208GRduuCisosoTnKkXP1591m3MRP5oyKNMi8ga0Dml14
+	 bpIRYS5KxQENUNT0lEyvZiyvhNHk+lbZsw+DuY5mx1YiCvPquCW4fvrpse+5S3qSfM
+	 LK2Qi0yGvgnJ/Jd9tlSZSFFwExtaw1WJ3Cab7OnnhFugWpN79Nrqk3TB18AN+t4aom
+	 SukWzlGoR27AY5io+gO26nM/f/3lArmzow2h+SS2r/rjahYjP1s/VOafiaAeTJrFrK
+	 +HJO9zoJttgzqXGi9+OfVabYI1fLRTK/1zcxgncHFEZWeF4NVFrnjUW6JhpJ2mIsmz
+	 iauEU6SoQhruw==
+From: Sasha Levin <sashal@kernel.org>
+To: patches@lists.linux.dev,
+	stable@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Sasha Levin <sashal@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.15 061/118] clk: rockchip: rk3036: mark ddrphy as critical
+Date: Tue,  3 Jun 2025 20:49:52 -0400
+Message-Id: <20250604005049.4147522-61-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250604005049.4147522-1-sashal@kernel.org>
+References: <20250604005049.4147522-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250520-6-10-rocket-v5-7-18c9ca0fcb3c@tomeuvizoso.net>
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.15
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250603_175315_060760_20C74653 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,84 +72,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@gmail.com>, Sumit Semwal <sumit.semwal@linaro.org>, Simona Vetter <simona@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jeff Hugo <jeff.hugo@oss.qualcomm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, Oded Gabbay <ogabbay@kernel.org>, linux-kernel@vger.kernel.org, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 20, 2025 at 12:27:00PM +0200, Tomeu Vizoso wrote:
-> Using the DRM GPU scheduler infrastructure, with a scheduler for each
-> core.
-> 
-> Userspace can decide for a series of tasks to be executed sequentially
-> in the same core, so SRAM locality can be taken advantage of.
-> 
-> The job submission code was initially based on Panfrost.
-> 
-> v2:
-> - Remove hardcoded number of cores
-> - Misc. style fixes (Jeffrey Hugo)
-> - Repack IOCTL struct (Jeffrey Hugo)
-> 
-> v3:
-> - Adapt to a split of the register block in the DT bindings (Nicolas
->   Frattaroli)
-> - Make use of GPL-2.0-only for the copyright notice (Jeff Hugo)
-> - Use drm_* logging functions (Thomas Zimmermann)
-> - Rename reg i/o macros (Thomas Zimmermann)
-> - Add padding to ioctls and check for zero (Jeff Hugo)
-> - Improve error handling (Nicolas Frattaroli)
-> 
-> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-
-
-> diff --git a/drivers/accel/rocket/rocket_job.c b/drivers/accel/rocket/rocket_job.c
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..aee6ebdb2bd227439449fdfcab3ce7d1e39cd4c4
-> --- /dev/null
-> +++ b/drivers/accel/rocket/rocket_job.c
-> @@ -0,0 +1,723 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/* Copyright 2019 Linaro, Ltd, Rob Herring <robh@kernel.org> */
-> +/* Copyright 2019 Collabora ltd. */
-> +/* Copyright 2024-2025 Tomeu Vizoso <tomeu@tomeuvizoso.net> */
-> +
-> +#include <drm/drm_print.h>
-> +#include <drm/drm_file.h>
-> +#include <drm/drm_gem.h>
-> +#include <drm/rocket_accel.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/pm_runtime.h>
-> +
-> +#include "rocket_core.h"
-> +#include "rocket_device.h"
-> +#include "rocket_drv.h"
-> +#include "rocket_job.h"
-> +#include "rocket_registers.h"
-> +
-> +#define JOB_TIMEOUT_MS 500
-> +
-> +static struct rocket_job *
-> +to_rocket_job(struct drm_sched_job *sched_job)
-> +{
-> +	return container_of(sched_job, struct rocket_job, base);
-> +}
-> +
-> +struct rocket_fence {
-> +	struct dma_fence base;
-> +	struct drm_device *dev;
-> +	/* rocket seqno for signaled() test */
-> +	u64 seqno;
-> +	int queue;
-
-AFAICT, you are not using any of the elements here. So you can just drop 
-rocket_fence and use dma_fence.
-
-Rob
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KClsgVXBzdHJlYW0gY29tbWl0
+IDU5NmE5NzdiMzRhNzIyYzAwMjQ1ODAxYTU3NzRhYTc5Y2VjNGU4MWQgXQoKVGhlIGRkcnBoeSBp
+cyBzdXBwbGllZCBieSB0aGUgZHBsbCwgYnV0IGR1ZSB0byB0aGUgbGltaXRlZCBudW1iZXIgb2Yg
+UExMcwpvbiB0aGUgcmszMDM2LCB0aGUgZHBsbCBhbHNvIGlzIHVzZWQgZm9yIG90aGVyIHBlcmlw
+ZXJoYWxzLCBsaWtlIHRoZSBHUFUuCgpTbyBpdCBoYXBwZW5lZCwgd2hlbiB0aGUgTGltYSBkcml2
+ZXIgdHVybmVkIG9mZiB0aGUgZ3B1IGNsb2NrLCB0aGlzIGluCnR1cm4gYWxzbyBkaXNhYmxlZCB0
+aGUgZHBsbCBhbmQgdGh1cyB0aGUgcmFtLgoKU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIg
+PGhlaWtvQHNudGVjaC5kZT4KTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDI1MDUw
+MzIwMjUzMi45OTIwMzMtNC1oZWlrb0BzbnRlY2guZGUKU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2
+aW4gPHNhc2hhbEBrZXJuZWwub3JnPgotLS0KCioqWUVTKiogVGhpcyBjb21taXQgc2hvdWxkIGFi
+c29sdXRlbHkgYmUgYmFja3BvcnRlZCB0byBzdGFibGUga2VybmVsCnRyZWVzLiBIZXJlJ3MgbXkg
+ZGV0YWlsZWQgYW5hbHlzaXM6ICMjIENyaXRpY2FsIFN5c3RlbSBTdGFiaWxpdHkgSXNzdWUKVGhl
+IGNvbW1pdCBmaXhlcyBhICoqY3JpdGljYWwgc3lzdGVtIHN0YWJpbGl0eSBwcm9ibGVtKiogd2hl
+cmUgdGhlIEREUgpQSFkgY2xvY2sgY2FuIGJlIGRpc2FibGVkLCBjYXVzaW5nIHRoZSBzeXN0ZW0g
+dG8gbG9zZSBhY2Nlc3MgdG8gUkFNIGFuZApjcmFzaC4gVGhpcyBpcyBldmlkZW5jZWQgYnk6IDEu
+ICoqUm9vdCBDYXVzZSBBbmFseXNpcyoqOiBUaGUgY29tbWl0Cm1lc3NhZ2UgY2xlYXJseSBleHBs
+YWlucyB0aGF0ICJ3aGVuIHRoZSBMaW1hIGRyaXZlciB0dXJuZWQgb2ZmIHRoZSBncHUKY2xvY2ss
+IHRoaXMgaW4gdHVybiBhbHNvIGRpc2FibGVkIHRoZSBkcGxsIGFuZCB0aHVzIHRoZSByYW0iIC0g
+dGhpcyBpcyBhCnNoYXJlZCByZXNvdXJjZSBjb25mbGljdCB0aGF0IGNhbiBicmljayB0aGUgc3lz
+dGVtLiAyLiAqKkhhcmR3YXJlCkxpbWl0YXRpb24qKjogVGhlIFJLMzAzNiBoYXMgImxpbWl0ZWQg
+bnVtYmVyIG9mIFBMTHMiIHdoZXJlIHRoZSBEUExMIGlzCnNoYXJlZCBiZXR3ZWVuIHRoZSBERFIg
+UEhZIChtZW1vcnkgY29udHJvbGxlcikgYW5kIEdQVSwgY3JlYXRpbmcgYW4KaW5oZXJlbnQgY29u
+ZmxpY3Qgd2hlbiBHUFUgY2xvY2sgbWFuYWdlbWVudCBhZmZlY3RzIG1lbW9yeSBhY2Nlc3MuICMj
+CkNvZGUgQ2hhbmdlIEFuYWx5c2lzIFRoZSBmaXggaXMgKiptaW5pbWFsIGFuZCBzYWZlKio6IGBg
+YGMgc3RhdGljIGNvbnN0CmNoYXIgKmNvbnN0IHJrMzAzNl9jcml0aWNhbF9jbG9ja3NbXSBfX2lu
+aXRjb25zdCA9IHsgImFjbGtfY3B1IiwKImFjbGtfcGVyaSIsICJoY2xrX3BlcmkiLCAicGNsa19w
+ZXJpIiwgInBjbGtfZGRydXBjdGwiLCArICJkZHJwaHkiLCAvLwo8LS0gU2luZ2xlIGxpbmUgYWRk
+aXRpb24gfTsgYGBgIC0gKipTaW5nbGUgbGluZSBjaGFuZ2UqKjogQWRkaW5nCiJkZHJwaHkiIHRv
+IHRoZSBjcml0aWNhbCBjbG9ja3MgYXJyYXkgLSAqKk5vIGZ1bmN0aW9uYWwgY2hhbmdlcyoqOiBV
+c2VzCmV4aXN0aW5nIGNyaXRpY2FsIGNsb2NrIGluZnJhc3RydWN0dXJlIC0gKipObyBBUEkgbW9k
+aWZpY2F0aW9ucyoqOgpDb21wYXRpYmxlIHdpdGggYWxsIGtlcm5lbCB2ZXJzaW9ucyB0aGF0IHN1
+cHBvcnQgUm9ja2NoaXAgY2xvY2tzIC0gKipObwpkZXBlbmRlbmNpZXMqKjogU2VsZi1jb250YWlu
+ZWQgZml4IHdpdGhpbiB0aGUgY2xvY2sgZHJpdmVyICMjCkJhY2twb3J0aW5nIENyaXRlcmlhIEV2
+YWx1YXRpb24g4pyFICoqRml4ZXMgaW1wb3J0YW50IGJ1ZyoqOiBTeXN0ZW0KY3Jhc2hlcyB3aGVu
+IEdQVSBkcml2ZXIgZGlzYWJsZXMgY2xvY2tzIOKchSAqKlNtYWxsIGFuZCBjb250YWluZWQqKjog
+T25lCmxpbmUgYWRkaXRpb24gdG8gZXhpc3RpbmcgYXJyYXkg4pyFICoqTWluaW1hbCByZWdyZXNz
+aW9uIHJpc2sqKjogT25seQpwcmV2ZW50cyBjbG9jayBmcm9tIGJlaW5nIGRpc2FibGVkLCBubyBu
+ZXcgZnVuY3Rpb25hbGl0eSDinIUgKipDbGVhciBzaWRlCmVmZmVjdHMqKjogRXhwbGljaXRseSBp
+bnRlbmRlZCB0byBrZWVwIEREUiBQSFkgYWx3YXlzIGVuYWJsZWQg4pyFCioqQ3JpdGljYWwgc3Vi
+c3lzdGVtKio6IE1lbW9yeSBjb250cm9sbGVyIGF2YWlsYWJpbGl0eSBpcyBmdW5kYW1lbnRhbCB0
+bwpzeXN0ZW0gb3BlcmF0aW9uICMjIFNpbWlsYXIgQ29tbWl0IFBhdHRlcm4gQW5hbHlzaXMgTG9v
+a2luZyBhdCB0aGUKcHJvdmlkZWQgc2ltaWxhciBjb21taXRzLCB0aGlzIGZvbGxvd3MgdGhlICoq
+ZXhhY3Qgc2FtZSBwYXR0ZXJuKiogYXMKU2ltaWxhciBDb21taXQgIzMgKFN0YXR1czogWUVTKSB3
+aGljaCBmaXhlZCAidW5yZWNvdmVyYWJsZSBmcmVlemVzIGFuZApyY3Vfc2NoZWQgc3RhbGwgd2Fy
+bmluZ3MiIC0gYm90aCBhZGRyZXNzIGNyaXRpY2FsIHN5c3RlbSBzdGFiaWxpdHkKaXNzdWVzIHRo
+cm91Z2ggY2xvY2sgY29uZmlndXJhdGlvbiBmaXhlcy4gVW5saWtlIHRoZSBvdGhlciBjb21taXRz
+Cm1hcmtlZCAiTk8iIHdoaWNoIHdlcmUgZmVhdHVyZSBhZGRpdGlvbnMgb3IgZXhwb3J0cywgdGhp
+cyBpcyBhICoqcHVyZQpidWdmaXgqKiBhZGRyZXNzaW5nIGEgKipoYXJkd2FyZSBkZXNpZ24gbGlt
+aXRhdGlvbioqIHRoYXQgY2F1c2VzIHN5c3RlbQpjcmFzaGVzLiAjIyBDb25jbHVzaW9uIFRoaXMg
+Y29tbWl0IHByZXZlbnRzICoqY29tcGxldGUgc3lzdGVtIGZhaWx1cmUqKgp0aHJvdWdoIGEgKip0
+cml2aWFsLCBzYWZlIGNoYW5nZSoqIHRoYXQgaGFzICoqemVybyByaXNrIG9mIHJlZ3Jlc3Npb24q
+Ki4KVGhlIGZpeCBhZGRyZXNzZXMgYSBmdW5kYW1lbnRhbCBoYXJkd2FyZSBsaW1pdGF0aW9uIGlu
+IHRoZSBSSzMwMzYgd2hlcmUKc2hhcmVkIFBMTHMgY2FuIGNhdXNlIG1lbW9yeSBjb250cm9sbGVy
+IGNsb2NrIHN0YXJ2YXRpb24uIFRoaXMgaXMKZXhhY3RseSB0aGUgdHlwZSBvZiBjcml0aWNhbCBz
+dGFiaWxpdHkgZml4IHRoYXQgc3RhYmxlIHRyZWVzIGFyZQpkZXNpZ25lZCB0byBpbmNsdWRlLgoK
+IGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMwMzYuYyB8IDEgKwogMSBmaWxlIGNoYW5nZWQs
+IDEgaW5zZXJ0aW9uKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJr
+MzAzNi5jIGIvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzAzNi5jCmluZGV4IGQzNDFjZTA3
+MDhhYWMuLmU0YWYzYTkyODYzNzkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Ns
+ay1yazMwMzYuYworKysgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMDM2LmMKQEAgLTQz
+MSw2ICs0MzEsNyBAQCBzdGF0aWMgY29uc3QgY2hhciAqY29uc3QgcmszMDM2X2NyaXRpY2FsX2Ns
+b2Nrc1tdIF9faW5pdGNvbnN0ID0gewogCSJoY2xrX3BlcmkiLAogCSJwY2xrX3BlcmkiLAogCSJw
+Y2xrX2RkcnVwY3RsIiwKKwkiZGRycGh5IiwKIH07CiAKIHN0YXRpYyB2b2lkIF9faW5pdCByazMw
+MzZfY2xrX2luaXQoc3RydWN0IGRldmljZV9ub2RlICpucCkKLS0gCjIuMzkuNQoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
