@@ -4,91 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7577C5B543
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 10:25:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 363E6C5B543
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 11:29:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5iMPzkHlgDs8jm/Sf3I/xTZq2dCsssalmsHZEA7jkE0=; b=ekQVVdTiu0Tw0R
-	nW9z3FF6+bePC5WAvh6x3QZR0hoSj8nmql5cwvO2qNh1dFAQGJyMHQTMD6qWY7FccA4pcbz5Svpt1
-	DHS6BgRUVu4PgYJzGr+2vtwtnbiKvBU0SyeYhxNbBojD/Gt4H36bPW5NB46y/V5o1XhnJIWaV6o8v
-	2IJRPpIrImJiLKCmW4t+mr798pi3kdIH1eaOv+Sqi8Oxvm9/5211BEfpRnMghEB/BfsHWPJjQ4yOC
-	IcD0QNesUBZhZ1l1b04GSYzIc2QSQm7jZ12qfnPTlNxJv8TyXkVhV0hkfcdH+tHbVLKSkw8vmAVUE
-	WJGqIxfddN/4CSl1FLqg==;
+	List-Owner; bh=qK8S98zVl92wy+3IGIBSXnqDouSfDhzH2g61OtYql+4=; b=T09lXLgHAPL7Xb
+	kitqgYOmHMagMeEoSOOg+m9BI4VMV2a93QGdPJPzsVgblUhh0P+u12gi/C+vRCmvqpPLfPqetnvZZ
+	NEvy0cCpeTumWvOSl0dkS1QimZ6Zjz0bMgzYePJJSWNnyLrG0E1llPA6pthRclRVIpQvv+XVJVx+m
+	5la7PbDMb80PsbHjxYICFz2qaBch+1Jl5fJBEo2Io/0q0KaO6C24MWTLfc1QoDF+hd/k0oqTBeJPJ
+	5FVIggJic2SV06HvFsmVXy0HRK40lsYO3Zn3kuZnFrTim6hKkYVTM2RCVTEvDKkK9+T28SHhnTP1V
+	CHwSRzVu9jO8iQQ6OOFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMlJ8-0000000D89P-2QCS;
-	Wed, 04 Jun 2025 10:25:18 +0000
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+	id 1uMmIz-0000000DD5a-2uCW;
+	Wed, 04 Jun 2025 11:29:13 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMlJ6-0000000D88j-3Aia;
-	Wed, 04 Jun 2025 10:25:17 +0000
-Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-b2c49373c15so4222268a12.3;
-        Wed, 04 Jun 2025 03:25:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1749032716; x=1749637516; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=QBZorERfZGVAeB4b9MQwohizAQ7RVji7qJz8RExp9pY=;
-        b=BBT4U4RgFOoisWya4/xmaQ68YPbj8PctaV0C1ANOW0vxbV8SNjupXhEH+6gCPK1uUq
-         F6M494IBAHHH+4Un3aNigazQzGGRYZ9+Y1804MPHMS9w2k4Irh39GujAO3ugn6U1czJ7
-         7khilFMonLla1PeauhBGXJRpU/v6pRvpKzQiXCZlaC/hrudUPYSRMoIPWdOJcUcaKjM7
-         bU55LtXJzfBY7ilpuupmaSvVmb/cQ1uPGyE+YcfSkcRHQePdawP0XFQZX+74r7homSca
-         Tv5O5XWbIFn6E7qhS7vCjYQacP+n5XXlJm+Ny5tuhNm/3unbntue+kCNgdDKUr1N708I
-         NuZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749032716; x=1749637516;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=QBZorERfZGVAeB4b9MQwohizAQ7RVji7qJz8RExp9pY=;
-        b=uxOfCiLZ7Cpi7HYchIcWHRum/LLKjN+cBkyG2NwY6ZTvJ46eBNPJ/9o+fyPLcjKhzG
-         g2qJSuWxObqD0BpLcFJekgIofEfzrqh31oNS2FM3d8GiffG2RJcWvcFTdATC0NzeViPe
-         AfJTIxMJWZIGo9ZcxKKBMrS0xY/ohYbEQqF0A/cSM0EOm1yW1K2Bn0JLW4+hBs1OhXRd
-         ortlYx8+yum+e8EiWoxWQVIqzwxSj65SuOiRjdeYkipsL/AUx3Z38lj6n0IMXt1YYWj0
-         8DnlmsY8A6vFV0rPrF0h01VRO7Bi6OUfM0Nka94HFJIKhwKlLR9z9uUf1lUwQDobFgJn
-         VPjg==
-X-Forwarded-Encrypted: i=1; AJvYcCWY9oHiyhtms9IjNDWjvo+U9NGdvGQgRt9tnu6e1rdnxhTXnFL64KWFkL7SjxOTguBMmSI+08AOAQhG61wR5u0u@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzh96x2rkSIj0YfIxQ4W312U8KXfPsxL7AKEoA/I5nqwHwB6zpV
-	FiVZ4FPgf+103AT60u5KWtdZW7/YmQoxhMy7+RpJpxdI3p84NcGlvX/lthkJAZmB
-X-Gm-Gg: ASbGnctFzJSYqFdZAf59D8C6J8A20uE6KtPESTHakBHm2AmWVFmlBf+tU0BQGBPBRD3
-	ms3IcvDFU1hS4JxXtI4SxMNN/ph037vKaZt09wrGSDDLPuyLsxfK2DEC87j/0vFQwPeX1OG8ud4
-	x3ReJO40CsWsXAKVWPcUl+3ZGjb8tLMshdXlrz+6lCEUOvpMOXPg6CZMgd+QcmdRbQ+gsxeEVDM
-	yWZtKzWAhXOoTIA00q4u4apN6F2rGELGK2NtfOQr0zWnO3Zt1afh8GLaXTxsS7Yoex3sYxLpwpL
-	GITTRo0E/pLGyE5im2cTZHWwafVp8DNpnu13m0HaV9en1Uip
-X-Google-Smtp-Source: AGHT+IEKyQ32HiyWlJskTxRYL8AQnVG4qWWHt6Qqr3ywr5giPCq3wD9L9VKOqjgiM8Sod4EwUE2ZGQ==
-X-Received: by 2002:a17:90b:38c4:b0:312:959:dc45 with SMTP id 98e67ed59e1d1-3130cca4fdbmr3399852a91.3.1749032715722;
-        Wed, 04 Jun 2025 03:25:15 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:7b3::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3124e2c2fa3sm9473906a91.19.2025.06.04.03.25.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Jun 2025 03:25:15 -0700 (PDT)
-Date: Wed, 4 Jun 2025 07:25:09 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: Christian Hewitt <christianshewitt@gmail.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Hugh Cole-Baker <sigmaris@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH 1/2] PCI: rockchip-host: Retry link training on
- failure without PERST#
-Message-ID: <aEAfBc3gsVTmkCyE@geday>
-References: <aEAOiO_YIqWH9frQ@geday>
- <317943F7-8658-436D-9E3C-05CB6404F122@gmail.com>
+	id 1uMmIw-0000000DD5E-11ow
+	for linux-rockchip@lists.infradead.org;
+	Wed, 04 Jun 2025 11:29:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 02E3AA504A5;
+	Wed,  4 Jun 2025 11:29:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50C59C4CEEF;
+	Wed,  4 Jun 2025 11:29:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749036548;
+	bh=zJyMRFBEczTLqz8z8FYq4UOoOGUJIc8c6r7VF0d1i8U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=l0bi89OL8Exj695NP7nJFY4YitSjZMolAkXqFvpYBPq0JRcaRCzi++FFL/oj/Rnn0
+	 T3xn+jaYPQFMDMUQTKDPpxcRKjOW6lTInXTr8/RDSWAUepWhIOwML4SrcDQn8v1hoI
+	 FBPsiaabO0/9OSHKxqWbj6elSM6EcntC6qtD7aOoInVeRSis5qrAHJL7UDm3OwgMjW
+	 a0DVaDgOTb05lnnbyEKrnyWbXrT2EjhE0d3avn7iYCYMHWmxbHkXfkKFgJdhTlt7dT
+	 U6TEsTr+JI27Uj9M7KiCK/SBzOAqhvY7ssDJSScy2HUdNDa0jjjeq4ehtfcgZNG0rt
+	 BDmJXwaVo40YA==
+Date: Wed, 4 Jun 2025 13:29:01 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, sebastian.reichel@collabora.com, heiko@sntech.de, 
+	conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org, tzimmermann@suse.de, 
+	mripard@kernel.org, maarten.lankhorst@linux.intel.com, simona@ffwll.ch, 
+	airlied@gmail.com, quic_jesszhan@quicinc.com, neil.armstrong@linaro.org, 
+	javierm@redhat.com, megi@xff.cz, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH 1/4] dt-bindings: vendor-prefixes: Add prefix for Huiling
+Message-ID: <20250604-prudent-copperhead-of-finesse-e5b41c@kuoka>
+References: <20250603193930.323607-1-macroalpha82@gmail.com>
+ <20250603193930.323607-2-macroalpha82@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <317943F7-8658-436D-9E3C-05CB6404F122@gmail.com>
+In-Reply-To: <20250603193930.323607-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250604_032516_792700_9E7748ED 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20250604_042910_352082_B942AA70 
+X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,21 +78,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 04, 2025 at 02:20:20PM +0400, Christian Hewitt wrote:
-> I think you have me confused with another Christian (or auto-complete
-> scored a new victim). Sadly I have no clue about PCI and not a lot of
-> knowledge on RK3399 matters :)
+On Tue, Jun 03, 2025 at 02:39:27PM GMT, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> CH.
+> Shenzhen Huiling Information Technology Co. Ltd. specializes in the
+> research and manufacturing of display and touch screens for industrial
+> usage. https://en.szhuiling.com/
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 
-Hi Christian,
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-I did not confuse you. I thought your work with LibreElec partially
-involved getting the ol' hand dirty with RK3399 patches. But if it's not
-the case, I'll drop you from future Cc: on this subject.
+Best regards,
+Krzysztof
 
-Thanks!
-Geraldo Nascimento
 
 _______________________________________________
 Linux-rockchip mailing list
