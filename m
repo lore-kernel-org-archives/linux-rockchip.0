@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C36DDC5B555
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 08:08:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F553C5B552
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 08:10:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8jFx7YBboUeXw2ufGHjdZ2tzAsN4hJy+cXKcIBQokyY=; b=YA3+iJLKQ4Vogl
-	Wqj7zgJw1y9hH+ROcoMychCKZPKg2NKbOl1DJ9lCtv8SHleyW6pkil3P9Ork3EnmUs2rRcz/88xSy
-	PtjtFxPDqLmESAfquS0OXGs23Ef8z4WHsHbCgv4AvI+Cywx4C63k9UNaQtHujfQvX4V0C4sOvD1Ib
-	mPxTwd9oTAZHtSgUi1Ar0IljE6dfPR3TLVYIlPCULrMS0guH76Nopk8LBa/S9/XnRs4hvd5J+FYTY
-	UtDwsFfkDTynHCH3+qbNgrd/nIqZMMtgJEipwTmzNZ/sIk1ese+gKkwoocr/mGk05oh9uoLxdDLLz
-	WV/8K+AEB07aBRlQeV8w==;
+	List-Owner; bh=Iy8H1Y73XHz321H2Ox+KIw/ACJcunPkby7M9s7BKI4M=; b=jXvHfwnz3Nts04
+	PKx7z5t9sVt1Mzl7F6bLx1oMZta+REEqQIghfbmjwStZBOaZNallD7CAB3ZLfJLWks8GJmY15wbP1
+	EnP8hT2NWdFPn30vtYkkzSM2M5h2oSOfH6tY3zW4DJL+PI3cfFQHSTqpuI5lZsvYIucjXWfHV4FFA
+	eHqJQYduu3XVGxFJXJNPxcM8ZDNEOPOe/Qi0o39qi4rr88OGGPyEje7pah1QJ/bTrLr/O9ainFuqL
+	b+A5Kq25BQfmPfcwz2vuiczb7aKuEnIq9PS6JBhexr1uO3aeoBsN1Iov5X4peUBXIVpYFYiFyv+Cg
+	0VvHoWhn2dEmtF2/EyOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMjAW-0000000Cqip-3tc4;
-	Wed, 04 Jun 2025 08:08:16 +0000
+	id 1uMjCb-0000000Cr2W-472Y;
+	Wed, 04 Jun 2025 08:10:25 +0000
 Received: from mail-ed1-f52.google.com ([209.85.208.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMj09-0000000CoXc-2xav;
-	Wed, 04 Jun 2025 07:57:35 +0000
-Received: by mail-ed1-f52.google.com with SMTP id 4fb4d7f45d1cf-6020ff8d51dso11452980a12.2;
-        Wed, 04 Jun 2025 00:57:33 -0700 (PDT)
+	id 1uMj0B-0000000CoYY-0DPo;
+	Wed, 04 Jun 2025 07:57:36 +0000
+Received: by mail-ed1-f52.google.com with SMTP id 4fb4d7f45d1cf-60707b740a6so84176a12.0;
+        Wed, 04 Jun 2025 00:57:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749023852; x=1749628652;
+        d=1e100.net; s=20230601; t=1749023854; x=1749628654;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=XXnfNSFEQQZHfEmq+WbkvmMf5v5jwPgxJu5RLHdqklc=;
-        b=ZQ1qfmPFlR/Knf1GQqUVW4J0MRFMR7E1n4eBFapmtsVVsi/xtcsHibWcNrt38p+wNb
-         JR6AIkj9/KcxLnbZGS5Ik/YV17YmH4Um8HJq65o1pUQqCeJCceceBIysoYnKjIitf9JP
-         2FeW0kLqO52exoqhBiW4F9a/UYSeBitMD3cna9KyRrwvq1PCz011oBP76iARsJrqX/FY
-         Dy58ylIkG5w4gtQfsXv5Kj7ay8ZtnW66+8IXAK9NTF5kpE36/e8cuYPaMFJ22kpSbbZV
-         TYMN/p8zsORq4tKjC3PfWZudXNCMXMZYz0F1Hyv+/YVoig7wf80a3qfxpYKNnHlZzAQ+
-         AHyQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUBGA/yAWbelXhs+g6EkGgKQa+21lm544b+8710/YWAOy/Wo8zFn59U7QzGNdVqxvoJ7nuRo0bR/5JcNX8cBO6h@lists.infradead.org, AJvYcCXMLs1dWglQ4mnQSBaC2FDQl1L47aOaeOBGZoUZeZzqGc5myLRD+GdMiIxytVY/3Ty1OJtAE8ANTx6TBG9o5sw=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxXM8giFHzXlUhmFl3dLF+5N1D/fZAPknMafs0L4lXPs8D3IHmB
-	3ZTpiSADi0obD9Zqwa0VLx1o64qzf80MHJGPWbB+i0H/EAiyXVr3M+FtHL2P5FLZ
-X-Gm-Gg: ASbGnctkREfZpZSL93BlqSHdjlUtNLo3KxKKUVZjfy+aEtV4lwY4X84WikxbRXX32JS
-	EZhcq4oIjAq2+uZ3SOA80jrHa1jq1/Fpqwo2bvArVzcYbntWYhzaNN9+LhFxKrCxvwCVFtuLhT5
-	aQfFHxTamH+N9TrzuA5Q94mROuuj2ElCq2RdFw9LgpPn+MqJhgmNx38cI+xKuQvPy19xhuucb15
-	TWGnucz99JxHaGYTTAcgYx40ZEaWGpiOU02eMTQUs3siJxQBBRRD6TwyDFUgZ3tVqwyuAfpnxG5
-	amByQgH6hQ1xMwRWVhQngkHOgmientivYiomi+rK5YkIL0/oQDvUJUq6wM7CFTxqnJnUWkSqOtN
-	tdfk9y5o9XIn34oPII2X7
-X-Google-Smtp-Source: AGHT+IH7MaPldw8ETg49AyyXtnO1NIEBB7KhRQxEjuVPj8EaVSimQHYFPD2tgoKHc3MwZSDHcfD7MQ==
-X-Received: by 2002:a05:6402:1d4b:b0:606:22fb:71ec with SMTP id 4fb4d7f45d1cf-606ea3b00a5mr1962132a12.19.1749023851857;
-        Wed, 04 Jun 2025 00:57:31 -0700 (PDT)
+        bh=Hu7IpcUJbruDu+7ppPXdTLi77oC8RRtjq0/4QEYRwsI=;
+        b=LghCpODrwRp5nhvgfq3dWqT5Fmw0deoN2HMBSolmRN5zNRoQg5K+eE+4ztIVZVioJ5
+         /G133TmRpQltPIjUUHcfsM2JgMg1MX2f6R0xepMXwgCvsFOGQhDSfDsQiJq3yHb6JP9Q
+         2YqeUo+ZJRfilqJ7ZM11eJg7fYWHjac7vWNSRqK83iu33R6Kg+AaIVD0FxIHv5zNXC9m
+         KlrAYLQWQFmQI2xhuUF6VgrD/AX9MB2dSERReip1eIEOROFkfcnZoi466g0lCeZZ77I7
+         Y4Yy6Ffc5Y9vOeSVNauvIoBDp+/HwhRNkl49MYs99uXHrF//l6tlR3X4UC05nlh1vAOI
+         5ZCw==
+X-Forwarded-Encrypted: i=1; AJvYcCV36+uWur5MFCrkNcyrBXDBHVW4yxf5Nwf8SlFx8L4ORwpz/MTwqGgxfwwsFAEUFW3arEENnhNpzkSahz2QzPJY@lists.infradead.org, AJvYcCXtoY28lf2n4SoytbI5ZOgqk2QT+ELiHRMXBzp74ILLWtAM1eRddpPwNuEN5EkUybzLGphLFmNP/Rh7HKQLj5E=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwhVhAaQEuAXjB9WfTxQJHn8vTKAc5o7X+ZLEbFZQY/f2PGhChR
+	Y9vHaBmRnbLJBRx+lMsi0WYKomAEYvx/5ssWH+K2tN5IL8QKB0Ex2j1j7dI4RlLN
+X-Gm-Gg: ASbGncvzhtJGHUzXh8uFbtCtMis2l2cHndPccSbXlvGeMaRBPySR4sZV89d1Ae3ANSU
+	GOsARplT82JPC0P7TW4hT8H/euSVnDOIPwU+0ZIMi3FA7QtVFfjaGVq9ftxsCrUU+F83LvdhaEB
+	e/NLAhkDQq8FzFdYYGz+u9U26hM8aq3N+02gUVDSpR4BifH5Jx6n9Liz0Cm94Ds2yhNFQDGcdnr
+	HFXQg6hz4vkaSHTBeB47CrzZ4ab1Fb6Ts4Bd0iYlZS43KHlTwN3e1/s9O29kC/pF2hx9p2Ztp4B
+	AikPSj3ZIeyBUK91HKLOtJWK/rCe8L+7GG6cB0MgZ3VpfBm9gg2sJb+wSQWhPuME+RlCRzB7nCH
+	qPfx3oas2/9ta3DMBoFot
+X-Google-Smtp-Source: AGHT+IFJ6sXD6JythNyf+B3icwerayV1/z1w4Ywb7Hekwi5X6Ab8yekG4kX8cDB6lfIRcIwkDir+eA==
+X-Received: by 2002:a17:906:a2d5:b0:add:fe17:e970 with SMTP id a640c23a62f3a-addfe17ebe6mr52678366b.14.1749023853556;
+        Wed, 04 Jun 2025 00:57:33 -0700 (PDT)
 Received: from [10.42.0.1] (cst-prg-46-162.cust.vodafone.cz. [46.135.46.162])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-606fb36a160sm348569a12.45.2025.06.04.00.57.30
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-606fb36a160sm348569a12.45.2025.06.04.00.57.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Jun 2025 00:57:31 -0700 (PDT)
+        Wed, 04 Jun 2025 00:57:33 -0700 (PDT)
 From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Date: Wed, 04 Jun 2025 09:57:18 +0200
-Subject: [PATCH v6 05/10] accel/rocket: Add a new driver for Rockchip's NPU
+Date: Wed, 04 Jun 2025 09:57:19 +0200
+Subject: [PATCH v6 06/10] accel/rocket: Add IOCTL for BO creation
 MIME-Version: 1.0
-Message-Id: <20250604-6-10-rocket-v6-5-237ac75ddb5e@tomeuvizoso.net>
+Message-Id: <20250604-6-10-rocket-v6-6-237ac75ddb5e@tomeuvizoso.net>
 References: <20250604-6-10-rocket-v6-0-237ac75ddb5e@tomeuvizoso.net>
 In-Reply-To: <20250604-6-10-rocket-v6-0-237ac75ddb5e@tomeuvizoso.net>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -82,8 +82,8 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Tomeu Vizoso <tomeu@tomeuvizoso.net>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250604_005733_760515_50925D51 
-X-CRM114-Status: GOOD (  26.68  )
+X-CRM114-CacheID: sfid-20250604_005735_258075_BCE50EC9 
+X-CRM114-Status: GOOD (  28.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,689 +95,185 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This initial version supports the NPU as shipped in the RK3588 SoC and
-described in the first part of its TRM, in Chapter 36.
-
-This NPU contains 3 independent cores that the driver can submit jobs
-to.
-
-This commit adds just hardware initialization and power management.
-
-v2:
-- Split cores and IOMMUs as independent devices (Sebastian Reichel)
-- Add some documentation (Jeffrey Hugo)
-- Be more explicit in the Kconfig documentation (Jeffrey Hugo)
-- Remove resets, as these haven't been found useful so far (Zenghui Yu)
-- Repack structs (Jeffrey Hugo)
-- Use DEFINE_DRM_ACCEL_FOPS (Jeffrey Hugo)
-- Use devm_drm_dev_alloc (Jeffrey Hugo)
-- Use probe log helper (Jeffrey Hugo)
-- Introduce UABI header in a later patch (Jeffrey Hugo)
-
-v3:
-- Adapt to a split of the register block in the DT bindings (Nicolas
-  Frattaroli)
-- Move registers header to its own commit (Thomas Zimmermann)
-- Misc. cleanups (Thomas Zimmermann and Jeff Hugo)
-- Make use of GPL-2.0-only for the copyright notice (Jeff Hugo)
-- PM improvements (Nicolas Frattaroli)
-
-v4:
-- Use bulk clk API (Krzysztof Kozlowski)
-
-v6:
-- Remove mention to NVDLA, as the hardware is only incidentally related
-  (Kever Yang)
-- Use calloc instead of GFP_ZERO (Jeff Hugo)
-- Explicitly include linux/container_of.h (Jeff Hugo)
-- pclk and npu clocks are now needed by all cores (Rob Herring)
-
-Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
----
- Documentation/accel/index.rst        |   1 +
- Documentation/accel/rocket/index.rst |  19 +++
- MAINTAINERS                          |  10 ++
- drivers/accel/Kconfig                |   1 +
- drivers/accel/Makefile               |   1 +
- drivers/accel/rocket/Kconfig         |  25 ++++
- drivers/accel/rocket/Makefile        |   8 +
- drivers/accel/rocket/rocket_core.c   |  70 +++++++++
- drivers/accel/rocket/rocket_core.h   |  45 ++++++
- drivers/accel/rocket/rocket_device.c |  25 ++++
- drivers/accel/rocket/rocket_device.h |  26 ++++
- drivers/accel/rocket/rocket_drv.c    | 278 +++++++++++++++++++++++++++++++++++
- drivers/accel/rocket/rocket_drv.h    |  13 ++
- 13 files changed, 522 insertions(+)
-
-diff --git a/Documentation/accel/index.rst b/Documentation/accel/index.rst
-index bc85f26533d88891dde482f91e26c99991b22869..d8fa332d60a890dbb617454d2a26d9b6f9b196aa 100644
---- a/Documentation/accel/index.rst
-+++ b/Documentation/accel/index.rst
-@@ -10,6 +10,7 @@ Compute Accelerators
-    introduction
-    amdxdna/index
-    qaic/index
-+   rocket/index
- 
- .. only::  subproject and html
- 
-diff --git a/Documentation/accel/rocket/index.rst b/Documentation/accel/rocket/index.rst
-new file mode 100644
-index 0000000000000000000000000000000000000000..300eb3aeab1d8c6514c65af4d216b2d5a1669131
---- /dev/null
-+++ b/Documentation/accel/rocket/index.rst
-@@ -0,0 +1,19 @@
-+.. SPDX-License-Identifier: GPL-2.0-only
-+
-+=====================================
-+ accel/rocket Rockchip NPU driver
-+=====================================
-+
-+The accel/rocket driver supports the Neural Processing Units (NPUs) inside some
-+Rockchip SoCs such as the RK3588. Rockchip calls it RKNN and sometimes RKNPU.
-+
-+The hardware is described in chapter 36 in the RK3588 TRM.
-+
-+This driver just powers the hardware on and off, allocates and maps buffers to
-+the device and submits jobs to the frontend unit. Everything else is done in
-+userspace, as a Gallium driver (also called rocket) that is part of the Mesa3D
-+project.
-+
-+Hardware currently supported:
-+
-+* RK3588
-\ No newline at end of file
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 96b82704950184bd71623ff41fc4df31e4c7fe87..2d8833bf1f2db06ca624d703f19066adab2f9fde 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -7263,6 +7263,16 @@ T:	git https://gitlab.freedesktop.org/drm/misc/kernel.git
- F:	drivers/accel/ivpu/
- F:	include/uapi/drm/ivpu_accel.h
- 
-+DRM ACCEL DRIVER FOR ROCKCHIP NPU
-+M:	Tomeu Vizoso <tomeu@tomeuvizoso.net>
-+L:	dri-devel@lists.freedesktop.org
-+S:	Supported
-+T:	git https://gitlab.freedesktop.org/drm/misc/kernel.git
-+F:	Documentation/accel/rocket/
-+F:	Documentation/devicetree/bindings/npu/rockchip,rknn-core.yaml
-+F:	drivers/accel/rocket/
-+F:	include/uapi/drm/rocket_accel.h
-+
- DRM COMPUTE ACCELERATORS DRIVERS AND FRAMEWORK
- M:	Oded Gabbay <ogabbay@kernel.org>
- L:	dri-devel@lists.freedesktop.org
-diff --git a/drivers/accel/Kconfig b/drivers/accel/Kconfig
-index 5b9490367a39fd12d35a8d9021768aa186c09308..bb01cebc42bf16ebf02e938040f339ff94869e33 100644
---- a/drivers/accel/Kconfig
-+++ b/drivers/accel/Kconfig
-@@ -28,5 +28,6 @@ source "drivers/accel/amdxdna/Kconfig"
- source "drivers/accel/habanalabs/Kconfig"
- source "drivers/accel/ivpu/Kconfig"
- source "drivers/accel/qaic/Kconfig"
-+source "drivers/accel/rocket/Kconfig"
- 
- endif
-diff --git a/drivers/accel/Makefile b/drivers/accel/Makefile
-index a301fb6089d4c515430175c5e2ba9190f6dc9158..ffc3fa58866616d933184a7659573cd4d4780a8d 100644
---- a/drivers/accel/Makefile
-+++ b/drivers/accel/Makefile
-@@ -4,3 +4,4 @@ obj-$(CONFIG_DRM_ACCEL_AMDXDNA)		+= amdxdna/
- obj-$(CONFIG_DRM_ACCEL_HABANALABS)	+= habanalabs/
- obj-$(CONFIG_DRM_ACCEL_IVPU)		+= ivpu/
- obj-$(CONFIG_DRM_ACCEL_QAIC)		+= qaic/
-+obj-$(CONFIG_DRM_ACCEL_ROCKET)		+= rocket/
-\ No newline at end of file
-diff --git a/drivers/accel/rocket/Kconfig b/drivers/accel/rocket/Kconfig
-new file mode 100644
-index 0000000000000000000000000000000000000000..9a59c6c61bf4d6460d8008b16331f001c97de67d
---- /dev/null
-+++ b/drivers/accel/rocket/Kconfig
-@@ -0,0 +1,25 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+
-+config DRM_ACCEL_ROCKET
-+       tristate "Rocket (support for Rockchip NPUs)"
-+       depends on DRM
-+       depends on ARM64 || COMPILE_TEST
-+       depends on MMU
-+       select DRM_SCHED
-+       select IOMMU_SUPPORT
-+       select IOMMU_IO_PGTABLE_LPAE
-+       select DRM_GEM_SHMEM_HELPER
-+       help
-+	  Choose this option if you have a Rockchip SoC that contains a
-+	  compatible Neural Processing Unit (NPU), such as the RK3588. Called by
-+	  Rockchip either RKNN or RKNPU, it accelerates inference of neural
-+	  networks.
-+
-+	  The interface exposed to userspace is described in
-+	  include/uapi/drm/rocket_accel.h and is used by the Rocket userspace
-+	  driver in Mesa3D.
-+
-+	  If unsure, say N.
-+
-+	  To compile this driver as a module, choose M here: the
-+	  module will be called rocket.
-diff --git a/drivers/accel/rocket/Makefile b/drivers/accel/rocket/Makefile
-new file mode 100644
-index 0000000000000000000000000000000000000000..abdd75f2492eaecf8bf5e78a2ac150ea19ac3e96
---- /dev/null
-+++ b/drivers/accel/rocket/Makefile
-@@ -0,0 +1,8 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+
-+obj-$(CONFIG_DRM_ACCEL_ROCKET) := rocket.o
-+
-+rocket-y := \
-+	rocket_core.o \
-+	rocket_device.o \
-+	rocket_drv.o
-diff --git a/drivers/accel/rocket/rocket_core.c b/drivers/accel/rocket/rocket_core.c
-new file mode 100644
-index 0000000000000000000000000000000000000000..3a6f25f2b4103075102739588bcdad96510e2a4e
---- /dev/null
-+++ b/drivers/accel/rocket/rocket_core.c
-@@ -0,0 +1,70 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/* Copyright 2024-2025 Tomeu Vizoso <tomeu@tomeuvizoso.net> */
-+
-+#include <linux/clk.h>
-+#include <linux/dev_printk.h>
-+#include <linux/err.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
-+
-+#include "rocket_core.h"
-+
-+int rocket_core_init(struct rocket_core *core)
-+{
-+	struct device *dev = core->dev;
-+	struct platform_device *pdev = to_platform_device(dev);
-+	u32 version;
-+	int err = 0;
-+
-+	err = devm_clk_bulk_get(dev, ARRAY_SIZE(core->clks), core->clks);
-+	if (err)
-+		return dev_err_probe(dev, err, "failed to get clocks for core %d\n", core->index);
-+
-+	core->pc_iomem = devm_platform_ioremap_resource_byname(pdev, "pc");
-+	if (IS_ERR(core->pc_iomem)) {
-+		dev_err(dev, "couldn't find PC registers %ld\n", PTR_ERR(core->pc_iomem));
-+		return PTR_ERR(core->pc_iomem);
-+	}
-+
-+	core->cna_iomem = devm_platform_ioremap_resource_byname(pdev, "cna");
-+	if (IS_ERR(core->cna_iomem)) {
-+		dev_err(dev, "couldn't find CNA registers %ld\n", PTR_ERR(core->cna_iomem));
-+		return PTR_ERR(core->cna_iomem);
-+	}
-+
-+	core->core_iomem = devm_platform_ioremap_resource_byname(pdev, "core");
-+	if (IS_ERR(core->core_iomem)) {
-+		dev_err(dev, "couldn't find CORE registers %ld\n", PTR_ERR(core->core_iomem));
-+		return PTR_ERR(core->core_iomem);
-+	}
-+
-+	pm_runtime_use_autosuspend(dev);
-+
-+	/*
-+	 * As this NPU will be most often used as part of a media pipeline that
-+	 * ends presenting in a display, choose 50 ms (~3 frames at 60Hz) as an
-+	 * autosuspend delay as that will keep the device powered up while the
-+	 * pipeline is running.
-+	 */
-+	pm_runtime_set_autosuspend_delay(dev, 50);
-+
-+	pm_runtime_enable(dev);
-+
-+	err = pm_runtime_get_sync(dev);
-+
-+	version = rocket_pc_readl(core, VERSION);
-+	version += rocket_pc_readl(core, VERSION_NUM) & 0xffff;
-+
-+	pm_runtime_mark_last_busy(dev);
-+	pm_runtime_put_autosuspend(dev);
-+
-+	dev_info(dev, "Rockchip NPU core %d version: %d\n", core->index, version);
-+
-+	return 0;
-+}
-+
-+void rocket_core_fini(struct rocket_core *core)
-+{
-+	pm_runtime_dont_use_autosuspend(core->dev);
-+	pm_runtime_disable(core->dev);
-+}
-diff --git a/drivers/accel/rocket/rocket_core.h b/drivers/accel/rocket/rocket_core.h
-new file mode 100644
-index 0000000000000000000000000000000000000000..1b1beb9798f03ec2ca325496a4d894674d0b798d
---- /dev/null
-+++ b/drivers/accel/rocket/rocket_core.h
-@@ -0,0 +1,45 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/* Copyright 2024-2025 Tomeu Vizoso <tomeu@tomeuvizoso.net> */
-+
-+#ifndef __ROCKET_CORE_H__
-+#define __ROCKET_CORE_H__
-+
-+#include <drm/gpu_scheduler.h>
-+#include <linux/clk.h>
-+#include <linux/io.h>
-+#include <linux/mutex_types.h>
-+
-+#include "rocket_registers.h"
-+
-+#define rocket_pc_readl(core, reg) \
-+	readl((core)->pc_iomem + (REG_PC_##reg))
-+#define rocket_pc_writel(core, reg, value) \
-+	writel(value, (core)->pc_iomem + (REG_PC_##reg))
-+
-+#define rocket_cna_readl(core, reg) \
-+	readl((core)->cna_iomem + (REG_CNA_##reg) - REG_CNA_S_STATUS)
-+#define rocket_cna_writel(core, reg, value) \
-+	writel(value, (core)->cna_iomem + (REG_CNA_##reg) - REG_CNA_S_STATUS)
-+
-+#define rocket_core_readl(core, reg) \
-+	readl((core)->core_iomem + (REG_CORE_##reg) - REG_CORE_S_STATUS)
-+#define rocket_core_writel(core, reg, value) \
-+	writel(value, (core)->core_iomem + (REG_CORE_##reg) - REG_CORE_S_STATUS)
-+
-+struct rocket_core {
-+	struct device *dev;
-+	struct rocket_device *rdev;
-+	struct device_link *link;
-+	unsigned int index;
-+
-+	int irq;
-+	void __iomem *pc_iomem;
-+	void __iomem *cna_iomem;
-+	void __iomem *core_iomem;
-+	struct clk_bulk_data clks[4];
-+};
-+
-+int rocket_core_init(struct rocket_core *core);
-+void rocket_core_fini(struct rocket_core *core);
-+
-+#endif
-diff --git a/drivers/accel/rocket/rocket_device.c b/drivers/accel/rocket/rocket_device.c
-new file mode 100644
-index 0000000000000000000000000000000000000000..a05c103e117e3eaa6439884b7acb6e3483296edb
---- /dev/null
-+++ b/drivers/accel/rocket/rocket_device.c
-@@ -0,0 +1,25 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/* Copyright 2024-2025 Tomeu Vizoso <tomeu@tomeuvizoso.net> */
-+
-+#include <linux/array_size.h>
-+#include <linux/clk.h>
-+#include <linux/dev_printk.h>
-+
-+#include "rocket_device.h"
-+
-+int rocket_device_init(struct rocket_device *rdev)
-+{
-+	int err;
-+
-+	/* Initialize core 0 (top) */
-+	err = rocket_core_init(&rdev->cores[0]);
-+	if (err)
-+		return err;
-+
-+	return 0;
-+}
-+
-+void rocket_device_fini(struct rocket_device *rdev)
-+{
-+	rocket_core_fini(&rdev->cores[0]);
-+}
-diff --git a/drivers/accel/rocket/rocket_device.h b/drivers/accel/rocket/rocket_device.h
-new file mode 100644
-index 0000000000000000000000000000000000000000..b5d5f1479d56e2fde59bbcad9de2b58cef9a9a4d
---- /dev/null
-+++ b/drivers/accel/rocket/rocket_device.h
-@@ -0,0 +1,26 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/* Copyright 2024-2025 Tomeu Vizoso <tomeu@tomeuvizoso.net> */
-+
-+#ifndef __ROCKET_DEVICE_H__
-+#define __ROCKET_DEVICE_H__
-+
-+#include <drm/drm_device.h>
-+#include <linux/clk.h>
-+#include <linux/container_of.h>
-+
-+#include "rocket_core.h"
-+
-+struct rocket_device {
-+	struct drm_device ddev;
-+
-+	struct rocket_core *cores;
-+	unsigned int num_cores;
-+};
-+
-+int rocket_device_init(struct rocket_device *rdev);
-+void rocket_device_fini(struct rocket_device *rdev);
-+
-+#define to_rocket_device(drm_dev) \
-+	((struct rocket_device *)container_of(drm_dev, struct rocket_device, ddev))
-+
-+#endif
-diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
-new file mode 100644
-index 0000000000000000000000000000000000000000..f1996ef1ed3e9c99e968add7b4ee983a8139295d
---- /dev/null
-+++ b/drivers/accel/rocket/rocket_drv.c
-@@ -0,0 +1,278 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/* Copyright 2024-2025 Tomeu Vizoso <tomeu@tomeuvizoso.net> */
-+
-+#include "linux/device/devres.h"
-+#include "linux/gfp_types.h"
-+#include <drm/drm_accel.h>
-+#include <drm/drm_drv.h>
-+#include <drm/drm_gem.h>
-+#include <drm/drm_ioctl.h>
-+#include <drm/drm_of.h>
-+#include <linux/array_size.h>
-+#include <linux/clk.h>
-+#include <linux/component.h>
-+#include <linux/dma-mapping.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
-+
-+#include "rocket_drv.h"
-+
-+static int
-+rocket_open(struct drm_device *dev, struct drm_file *file)
-+{
-+	struct rocket_device *rdev = to_rocket_device(dev);
-+	struct rocket_file_priv *rocket_priv;
-+
-+	rocket_priv = kzalloc(sizeof(*rocket_priv), GFP_KERNEL);
-+	if (!rocket_priv)
-+		return -ENOMEM;
-+
-+	rocket_priv->rdev = rdev;
-+	file->driver_priv = rocket_priv;
-+
-+	return 0;
-+}
-+
-+static void
-+rocket_postclose(struct drm_device *dev, struct drm_file *file)
-+{
-+	struct rocket_file_priv *rocket_priv = file->driver_priv;
-+
-+	kfree(rocket_priv);
-+}
-+
-+static const struct drm_ioctl_desc rocket_drm_driver_ioctls[] = {
-+#define ROCKET_IOCTL(n, func) \
-+	DRM_IOCTL_DEF_DRV(ROCKET_##n, rocket_ioctl_##func, 0)
-+};
-+
-+DEFINE_DRM_ACCEL_FOPS(rocket_accel_driver_fops);
-+
-+/*
-+ * Rocket driver version:
-+ * - 1.0 - initial interface
-+ */
-+static const struct drm_driver rocket_drm_driver = {
-+	.driver_features	= DRIVER_COMPUTE_ACCEL,
-+	.open			= rocket_open,
-+	.postclose		= rocket_postclose,
-+	.ioctls			= rocket_drm_driver_ioctls,
-+	.num_ioctls		= ARRAY_SIZE(rocket_drm_driver_ioctls),
-+	.fops			= &rocket_accel_driver_fops,
-+	.name			= "rocket",
-+	.desc			= "rocket DRM",
-+};
-+
-+static int rocket_drm_bind(struct device *dev)
-+{
-+	struct device_node *core_node;
-+	struct rocket_device *rdev;
-+	struct drm_device *ddev;
-+	unsigned int num_cores = 1;
-+	int err;
-+
-+	rdev = devm_drm_dev_alloc(dev, &rocket_drm_driver, struct rocket_device, ddev);
-+	if (IS_ERR(rdev))
-+		return PTR_ERR(rdev);
-+
-+	ddev = &rdev->ddev;
-+	dev_set_drvdata(dev, rdev);
-+
-+	for_each_compatible_node(core_node, NULL, "rockchip,rk3588-rknn-core")
-+		if (of_device_is_available(core_node))
-+			num_cores++;
-+
-+	rdev->cores = devm_kcalloc(dev, num_cores, sizeof(*rdev->cores), GFP_KERNEL);
-+	if (IS_ERR(rdev->cores))
-+		return PTR_ERR(rdev->cores);
-+
-+	/* Add core 0, any other cores will be added later when they are bound */
-+	rdev->cores[0].rdev = rdev;
-+	rdev->cores[0].dev = dev;
-+	rdev->cores[0].index = 0;
-+	rdev->num_cores = 1;
-+
-+	err = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(40));
-+	if (err)
-+		return err;
-+
-+	err = rocket_device_init(rdev);
-+	if (err) {
-+		dev_err_probe(dev, err, "Fatal error during NPU init\n");
-+		goto err_device_fini;
-+	}
-+
-+	err = component_bind_all(dev, rdev);
-+	if (err)
-+		goto err_device_fini;
-+
-+	err = drm_dev_register(ddev, 0);
-+	if (err < 0)
-+		goto err_unbind;
-+
-+	return 0;
-+
-+err_unbind:
-+	component_unbind_all(dev, rdev);
-+err_device_fini:
-+	rocket_device_fini(rdev);
-+	return err;
-+}
-+
-+static void rocket_drm_unbind(struct device *dev)
-+{
-+	struct rocket_device *rdev = dev_get_drvdata(dev);
-+	struct drm_device *ddev = &rdev->ddev;
-+
-+	drm_dev_unregister(ddev);
-+
-+	component_unbind_all(dev, rdev);
-+
-+	rocket_device_fini(rdev);
-+}
-+
-+const struct component_master_ops rocket_drm_ops = {
-+	.bind = rocket_drm_bind,
-+	.unbind = rocket_drm_unbind,
-+};
-+
-+static int rocket_core_bind(struct device *dev, struct device *master, void *data)
-+{
-+	struct rocket_device *rdev = data;
-+	unsigned int core = rdev->num_cores;
-+	int err;
-+
-+	dev_set_drvdata(dev, rdev);
-+
-+	rdev->cores[core].rdev = rdev;
-+	rdev->cores[core].dev = dev;
-+	rdev->cores[core].index = core;
-+	rdev->cores[core].link = device_link_add(dev, rdev->cores[0].dev,
-+						 DL_FLAG_STATELESS | DL_FLAG_PM_RUNTIME);
-+
-+	rdev->num_cores++;
-+
-+	err = rocket_core_init(&rdev->cores[core]);
-+	if (err) {
-+		rocket_device_fini(rdev);
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
-+static void rocket_core_unbind(struct device *dev, struct device *master, void *data)
-+{
-+	struct rocket_device *rdev = data;
-+
-+	for (unsigned int core = 1; core < rdev->num_cores; core++) {
-+		if (rdev->cores[core].dev == dev) {
-+			rocket_core_fini(&rdev->cores[core]);
-+			device_link_del(rdev->cores[core].link);
-+			break;
-+		}
-+	}
-+}
-+
-+const struct component_ops rocket_core_ops = {
-+	.bind = rocket_core_bind,
-+	.unbind = rocket_core_unbind,
-+};
-+
-+static int rocket_probe(struct platform_device *pdev)
-+{
-+	struct component_match *match = NULL;
-+	struct device_node *core_node;
-+
-+	if (fwnode_device_is_compatible(pdev->dev.fwnode, "rockchip,rk3588-rknn-core"))
-+		return component_add(&pdev->dev, &rocket_core_ops);
-+
-+	for_each_compatible_node(core_node, NULL, "rockchip,rk3588-rknn-core") {
-+		if (!of_device_is_available(core_node))
-+			continue;
-+
-+		drm_of_component_match_add(&pdev->dev, &match,
-+					   component_compare_of, core_node);
-+	}
-+
-+	return component_master_add_with_match(&pdev->dev, &rocket_drm_ops, match);
-+}
-+
-+static void rocket_remove(struct platform_device *pdev)
-+{
-+	if (fwnode_device_is_compatible(pdev->dev.fwnode, "rockchip,rk3588-rknn-core-top"))
-+		component_master_del(&pdev->dev, &rocket_drm_ops);
-+	else if (fwnode_device_is_compatible(pdev->dev.fwnode, "rockchip,rk3588-rknn-core"))
-+		component_del(&pdev->dev, &rocket_core_ops);
-+}
-+
-+static const struct of_device_id dt_match[] = {
-+	{ .compatible = "rockchip,rk3588-rknn-core-top" },
-+	{ .compatible = "rockchip,rk3588-rknn-core" },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, dt_match);
-+
-+static int find_core_for_dev(struct device *dev)
-+{
-+	struct rocket_device *rdev = dev_get_drvdata(dev);
-+
-+	for (unsigned int core = 0; core < rdev->num_cores; core++) {
-+		if (dev == rdev->cores[core].dev)
-+			return core;
-+	}
-+
-+	return -1;
-+}
-+
-+static int rocket_device_runtime_resume(struct device *dev)
-+{
-+	struct rocket_device *rdev = dev_get_drvdata(dev);
-+	int core = find_core_for_dev(dev);
-+	int err = 0;
-+
-+	if (core < 0)
-+		return -ENODEV;
-+
-+	err = clk_bulk_prepare_enable(ARRAY_SIZE(rdev->cores[core].clks), rdev->cores[core].clks);
-+	if (err) {
-+		dev_err(dev, "failed to enable (%d) clocks for core %d\n", err, core);
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
-+static int rocket_device_runtime_suspend(struct device *dev)
-+{
-+	struct rocket_device *rdev = dev_get_drvdata(dev);
-+	int core = find_core_for_dev(dev);
-+
-+	if (core < 0)
-+		return -ENODEV;
-+
-+	clk_bulk_disable_unprepare(ARRAY_SIZE(rdev->cores[core].clks), rdev->cores[core].clks);
-+
-+	return 0;
-+}
-+
-+EXPORT_GPL_DEV_PM_OPS(rocket_pm_ops) = {
-+	RUNTIME_PM_OPS(rocket_device_runtime_suspend, rocket_device_runtime_resume, NULL)
-+	SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend, pm_runtime_force_resume)
-+};
-+
-+static struct platform_driver rocket_driver = {
-+	.probe = rocket_probe,
-+	.remove = rocket_remove,
-+	.driver	 = {
-+		.name = "rocket",
-+		.pm = pm_ptr(&rocket_pm_ops),
-+		.of_match_table = dt_match,
-+	},
-+};
-+module_platform_driver(rocket_driver);
-+
-+MODULE_LICENSE("GPL");
-+MODULE_DESCRIPTION("DRM driver for the Rockchip NPU IP");
-+MODULE_AUTHOR("Tomeu Vizoso");
-diff --git a/drivers/accel/rocket/rocket_drv.h b/drivers/accel/rocket/rocket_drv.h
-new file mode 100644
-index 0000000000000000000000000000000000000000..bd3a697ab7c8e378967ce638b04d7d86845b53c7
---- /dev/null
-+++ b/drivers/accel/rocket/rocket_drv.h
-@@ -0,0 +1,13 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/* Copyright 2024-2025 Tomeu Vizoso <tomeu@tomeuvizoso.net> */
-+
-+#ifndef __ROCKET_DRV_H__
-+#define __ROCKET_DRV_H__
-+
-+#include "rocket_device.h"
-+
-+struct rocket_file_priv {
-+	struct rocket_device *rdev;
-+};
-+
-+#endif
-
--- 
-2.49.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhpcyB1c2VzIHRoZSBTSE1FTSBEUk0gaGVscGVycyBhbmQgd2UgbWFwIHJpZ2h0IGF3YXkgdG8g
+dGhlIENQVSBhbmQgTlBVCnNpZGVzLCBhcyBhbGwgYnVmZmVycyBhcmUgZXhwZWN0ZWQgdG8gYmUg
+YWNjZXNzZWQgZnJvbSBib3RoLgoKdjI6Ci0gU3luYyB0aGUgSU9NTVVzIGZvciB0aGUgb3RoZXIg
+Y29yZXMgd2hlbiBtYXBwaW5nIGFuZCB1bm1hcHBpbmcuCgp2MzoKLSBNYWtlIHVzZSBvZiBHUEwt
+Mi4wLW9ubHkgZm9yIHRoZSBjb3B5cmlnaHQgbm90aWNlIChKZWZmIEh1Z28pCgp2NjoKLSBVc2Ug
+bXV0ZXhlcyBndWFyZCAoTWFya3VzIEVsZnJpbmcpCgpSZXZpZXdlZC1ieTogSmVmZnJleSBIdWdv
+IDxxdWljX2podWdvQHF1aWNpbmMuY29tPgpTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRv
+bWV1QHRvbWV1dml6b3NvLm5ldD4KLS0tCiBkcml2ZXJzL2FjY2VsL3JvY2tldC9NYWtlZmlsZSAg
+ICAgICAgfCAgIDMgKy0KIGRyaXZlcnMvYWNjZWwvcm9ja2V0L3JvY2tldF9kZXZpY2UuYyB8ICAg
+NCArKwogZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2RldmljZS5oIHwgICAyICsKIGRyaXZl
+cnMvYWNjZWwvcm9ja2V0L3JvY2tldF9kcnYuYyAgICB8ICAgNyArLQogZHJpdmVycy9hY2NlbC9y
+b2NrZXQvcm9ja2V0X2dlbS5jICAgIHwgMTI2ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrCiBkcml2ZXJzL2FjY2VsL3JvY2tldC9yb2NrZXRfZ2VtLmggICAgfCAgMjYgKysrKysr
+KysKIGluY2x1ZGUvdWFwaS9kcm0vcm9ja2V0X2FjY2VsLmggICAgICB8ICA0NCArKysrKysrKysr
+KysKIDcgZmlsZXMgY2hhbmdlZCwgMjEwIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9hY2NlbC9yb2NrZXQvTWFrZWZpbGUgYi9kcml2ZXJzL2FjY2Vs
+L3JvY2tldC9NYWtlZmlsZQppbmRleCBhYmRkNzVmMjQ5MmVhZWNmOGJmNWU3OGEyYWMxNTBlYTE5
+YWMzZTk2Li40ZGVlZjI2N2Y5ZTEyMzhjNGQ4YmQxMDhkY2M4YWZkOWRjOGIyYjhmIDEwMDY0NAot
+LS0gYS9kcml2ZXJzL2FjY2VsL3JvY2tldC9NYWtlZmlsZQorKysgYi9kcml2ZXJzL2FjY2VsL3Jv
+Y2tldC9NYWtlZmlsZQpAQCAtNSw0ICs1LDUgQEAgb2JqLSQoQ09ORklHX0RSTV9BQ0NFTF9ST0NL
+RVQpIDo9IHJvY2tldC5vCiByb2NrZXQteSA6PSBcCiAJcm9ja2V0X2NvcmUubyBcCiAJcm9ja2V0
+X2RldmljZS5vIFwKLQlyb2NrZXRfZHJ2Lm8KKwlyb2NrZXRfZHJ2Lm8gXAorCXJvY2tldF9nZW0u
+bwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2RldmljZS5jIGIvZHJp
+dmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2RldmljZS5jCmluZGV4IGEwNWMxMDNlMTE3ZTNlYWE2
+NDM5ODg0YjdhY2I2ZTM0ODMyOTZlZGIuLjVlNTU5MTA0NzQxYWYyMmM1Mjg5MTRjOTZlNDQ1NTgz
+MjNhYjZjODkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvYWNjZWwvcm9ja2V0L3JvY2tldF9kZXZpY2Uu
+YworKysgYi9kcml2ZXJzL2FjY2VsL3JvY2tldC9yb2NrZXRfZGV2aWNlLmMKQEAgLTQsNiArNCw3
+IEBACiAjaW5jbHVkZSA8bGludXgvYXJyYXlfc2l6ZS5oPgogI2luY2x1ZGUgPGxpbnV4L2Nsay5o
+PgogI2luY2x1ZGUgPGxpbnV4L2Rldl9wcmludGsuaD4KKyNpbmNsdWRlIDxsaW51eC9tdXRleC5o
+PgogCiAjaW5jbHVkZSAicm9ja2V0X2RldmljZS5oIgogCkBAIC0xNiwxMCArMTcsMTMgQEAgaW50
+IHJvY2tldF9kZXZpY2VfaW5pdChzdHJ1Y3Qgcm9ja2V0X2RldmljZSAqcmRldikKIAlpZiAoZXJy
+KQogCQlyZXR1cm4gZXJyOwogCisJbXV0ZXhfaW5pdCgmcmRldi0+aW9tbXVfbG9jayk7CisKIAly
+ZXR1cm4gMDsKIH0KIAogdm9pZCByb2NrZXRfZGV2aWNlX2Zpbmkoc3RydWN0IHJvY2tldF9kZXZp
+Y2UgKnJkZXYpCiB7CisJbXV0ZXhfZGVzdHJveSgmcmRldi0+aW9tbXVfbG9jayk7CiAJcm9ja2V0
+X2NvcmVfZmluaSgmcmRldi0+Y29yZXNbMF0pOwogfQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9hY2Nl
+bC9yb2NrZXQvcm9ja2V0X2RldmljZS5oIGIvZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2Rl
+dmljZS5oCmluZGV4IGI1ZDVmMTQ3OWQ1NmUyZmRlNTliYmNhZDlkZTJiNThjZWY5YTlhNGQuLjEw
+YWNmZTg1MzRmMDBhNzk4NWQ0MGE5M2Y0YjJmN2Y2OWQ0M2NhZWUgMTAwNjQ0Ci0tLSBhL2RyaXZl
+cnMvYWNjZWwvcm9ja2V0L3JvY2tldF9kZXZpY2UuaAorKysgYi9kcml2ZXJzL2FjY2VsL3JvY2tl
+dC9yb2NrZXRfZGV2aWNlLmgKQEAgLTEzLDYgKzEzLDggQEAKIHN0cnVjdCByb2NrZXRfZGV2aWNl
+IHsKIAlzdHJ1Y3QgZHJtX2RldmljZSBkZGV2OwogCisJc3RydWN0IG11dGV4IGlvbW11X2xvY2s7
+CisKIAlzdHJ1Y3Qgcm9ja2V0X2NvcmUgKmNvcmVzOwogCXVuc2lnbmVkIGludCBudW1fY29yZXM7
+CiB9OwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2Rydi5jIGIvZHJp
+dmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2Rydi5jCmluZGV4IGYxOTk2ZWYxZWQzZTljOTllOTY4
+YWRkN2I0ZWU5ODNhODEzOTI5NWQuLjIwOWVmMzQyYmZhNDk5M2RiNzkzYTI3NDVkY2QzNTNiNGVm
+ODRlYjEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvYWNjZWwvcm9ja2V0L3JvY2tldF9kcnYuYworKysg
+Yi9kcml2ZXJzL2FjY2VsL3JvY2tldC9yb2NrZXRfZHJ2LmMKQEAgLTgsNiArOCw3IEBACiAjaW5j
+bHVkZSA8ZHJtL2RybV9nZW0uaD4KICNpbmNsdWRlIDxkcm0vZHJtX2lvY3RsLmg+CiAjaW5jbHVk
+ZSA8ZHJtL2RybV9vZi5oPgorI2luY2x1ZGUgPGRybS9yb2NrZXRfYWNjZWwuaD4KICNpbmNsdWRl
+IDxsaW51eC9hcnJheV9zaXplLmg+CiAjaW5jbHVkZSA8bGludXgvY2xrLmg+CiAjaW5jbHVkZSA8
+bGludXgvY29tcG9uZW50Lmg+CkBAIC0xNyw2ICsxOCw3IEBACiAjaW5jbHVkZSA8bGludXgvcG1f
+cnVudGltZS5oPgogCiAjaW5jbHVkZSAicm9ja2V0X2Rydi5oIgorI2luY2x1ZGUgInJvY2tldF9n
+ZW0uaCIKIAogc3RhdGljIGludAogcm9ja2V0X29wZW4oc3RydWN0IGRybV9kZXZpY2UgKmRldiwg
+c3RydWN0IGRybV9maWxlICpmaWxlKQpAQCAtNDUsNiArNDcsOCBAQCByb2NrZXRfcG9zdGNsb3Nl
+KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsIHN0cnVjdCBkcm1fZmlsZSAqZmlsZSkKIHN0YXRpYyBj
+b25zdCBzdHJ1Y3QgZHJtX2lvY3RsX2Rlc2Mgcm9ja2V0X2RybV9kcml2ZXJfaW9jdGxzW10gPSB7
+CiAjZGVmaW5lIFJPQ0tFVF9JT0NUTChuLCBmdW5jKSBcCiAJRFJNX0lPQ1RMX0RFRl9EUlYoUk9D
+S0VUXyMjbiwgcm9ja2V0X2lvY3RsXyMjZnVuYywgMCkKKworCVJPQ0tFVF9JT0NUTChDUkVBVEVf
+Qk8sIGNyZWF0ZV9ibyksCiB9OwogCiBERUZJTkVfRFJNX0FDQ0VMX0ZPUFMocm9ja2V0X2FjY2Vs
+X2RyaXZlcl9mb3BzKTsKQEAgLTU0LDkgKzU4LDEwIEBAIERFRklORV9EUk1fQUNDRUxfRk9QUyhy
+b2NrZXRfYWNjZWxfZHJpdmVyX2ZvcHMpOwogICogLSAxLjAgLSBpbml0aWFsIGludGVyZmFjZQog
+ICovCiBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9kcml2ZXIgcm9ja2V0X2RybV9kcml2ZXIgPSB7
+Ci0JLmRyaXZlcl9mZWF0dXJlcwk9IERSSVZFUl9DT01QVVRFX0FDQ0VMLAorCS5kcml2ZXJfZmVh
+dHVyZXMJPSBEUklWRVJfQ09NUFVURV9BQ0NFTCB8IERSSVZFUl9HRU0sCiAJLm9wZW4JCQk9IHJv
+Y2tldF9vcGVuLAogCS5wb3N0Y2xvc2UJCT0gcm9ja2V0X3Bvc3RjbG9zZSwKKwkuZ2VtX2NyZWF0
+ZV9vYmplY3QJPSByb2NrZXRfZ2VtX2NyZWF0ZV9vYmplY3QsCiAJLmlvY3RscwkJCT0gcm9ja2V0
+X2RybV9kcml2ZXJfaW9jdGxzLAogCS5udW1faW9jdGxzCQk9IEFSUkFZX1NJWkUocm9ja2V0X2Ry
+bV9kcml2ZXJfaW9jdGxzKSwKIAkuZm9wcwkJCT0gJnJvY2tldF9hY2NlbF9kcml2ZXJfZm9wcywK
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvYWNjZWwvcm9ja2V0L3JvY2tldF9nZW0uYyBiL2RyaXZlcnMv
+YWNjZWwvcm9ja2V0L3JvY2tldF9nZW0uYwpuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAw
+MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwLi5mYTA3YzQ5NGZkODQ1Zjk4YWM3
+NTk0MDc2NzdhNjQ5ZWQyYzk3NzI3Ci0tLSAvZGV2L251bGwKKysrIGIvZHJpdmVycy9hY2NlbC9y
+b2NrZXQvcm9ja2V0X2dlbS5jCkBAIC0wLDAgKzEsMTI2IEBACisvLyBTUERYLUxpY2Vuc2UtSWRl
+bnRpZmllcjogR1BMLTIuMC1vbmx5CisvKiBDb3B5cmlnaHQgMjAyNC0yMDI1IFRvbWV1IFZpem9z
+byA8dG9tZXVAdG9tZXV2aXpvc28ubmV0PiAqLworCisjaW5jbHVkZSA8ZHJtL2RybV9kZXZpY2Uu
+aD4KKyNpbmNsdWRlIDxkcm0vZHJtX3V0aWxzLmg+CisjaW5jbHVkZSA8ZHJtL3JvY2tldF9hY2Nl
+bC5oPgorI2luY2x1ZGUgPGxpbnV4L2RtYS1tYXBwaW5nLmg+CisjaW5jbHVkZSA8bGludXgvaW9t
+bXUuaD4KKworI2luY2x1ZGUgInJvY2tldF9kZXZpY2UuaCIKKyNpbmNsdWRlICJyb2NrZXRfZ2Vt
+LmgiCisKK3N0YXRpYyB2b2lkIHJvY2tldF9nZW1fYm9fZnJlZShzdHJ1Y3QgZHJtX2dlbV9vYmpl
+Y3QgKm9iaikKK3sKKwlzdHJ1Y3Qgcm9ja2V0X2RldmljZSAqcmRldiA9IHRvX3JvY2tldF9kZXZp
+Y2Uob2JqLT5kZXYpOworCXN0cnVjdCByb2NrZXRfZ2VtX29iamVjdCAqYm8gPSB0b19yb2NrZXRf
+Ym8ob2JqKTsKKwlzdHJ1Y3Qgc2dfdGFibGUgKnNndDsKKworCWRybV9XQVJOX09OKG9iai0+ZGV2
+LCBiby0+YmFzZS5wYWdlc191c2VfY291bnQgPiAxKTsKKworCWd1YXJkKG11dGV4KSgmcmRldi0+
+aW9tbXVfbG9jayk7CisKKwlzZ3QgPSBkcm1fZ2VtX3NobWVtX2dldF9wYWdlc19zZ3QoJmJvLT5i
+YXNlKTsKKworCS8qIFVubWFwIHRoaXMgb2JqZWN0IGZyb20gdGhlIElPTU1VcyBmb3IgY29yZXMg
+PiAwICovCisJZm9yICh1bnNpZ25lZCBpbnQgY29yZSA9IDE7IGNvcmUgPCByZGV2LT5udW1fY29y
+ZXM7IGNvcmUrKykgeworCQlzdHJ1Y3QgaW9tbXVfZG9tYWluICpkb21haW4gPSBpb21tdV9nZXRf
+ZG9tYWluX2Zvcl9kZXYocmRldi0+Y29yZXNbY29yZV0uZGV2KTsKKwkJc2l6ZV90IHVubWFwcGVk
+ID0gaW9tbXVfdW5tYXAoZG9tYWluLCBzZ3QtPnNnbC0+ZG1hX2FkZHJlc3MsIGJvLT5zaXplKTsK
+KworCQlkcm1fV0FSTl9PTihvYmotPmRldiwgdW5tYXBwZWQgIT0gYm8tPnNpemUpOworCX0KKwor
+CS8qIFRoaXMgd2lsbCB1bm1hcCB0aGUgcGFnZXMgZnJvbSB0aGUgSU9NTVUgbGlua2VkIHRvIGNv
+cmUgMCAqLworCWRybV9nZW1fc2htZW1fZnJlZSgmYm8tPmJhc2UpOworfQorCitzdGF0aWMgY29u
+c3Qgc3RydWN0IGRybV9nZW1fb2JqZWN0X2Z1bmNzIHJvY2tldF9nZW1fZnVuY3MgPSB7CisJLmZy
+ZWUgPSByb2NrZXRfZ2VtX2JvX2ZyZWUsCisJLnByaW50X2luZm8gPSBkcm1fZ2VtX3NobWVtX29i
+amVjdF9wcmludF9pbmZvLAorCS5waW4gPSBkcm1fZ2VtX3NobWVtX29iamVjdF9waW4sCisJLnVu
+cGluID0gZHJtX2dlbV9zaG1lbV9vYmplY3RfdW5waW4sCisJLmdldF9zZ190YWJsZSA9IGRybV9n
+ZW1fc2htZW1fb2JqZWN0X2dldF9zZ190YWJsZSwKKwkudm1hcCA9IGRybV9nZW1fc2htZW1fb2Jq
+ZWN0X3ZtYXAsCisJLnZ1bm1hcCA9IGRybV9nZW1fc2htZW1fb2JqZWN0X3Z1bm1hcCwKKwkubW1h
+cCA9IGRybV9nZW1fc2htZW1fb2JqZWN0X21tYXAsCisJLnZtX29wcyA9ICZkcm1fZ2VtX3NobWVt
+X3ZtX29wcywKK307CisKK3N0cnVjdCBkcm1fZ2VtX29iamVjdCAqcm9ja2V0X2dlbV9jcmVhdGVf
+b2JqZWN0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsIHNpemVfdCBzaXplKQoreworCXN0cnVjdCBy
+b2NrZXRfZ2VtX29iamVjdCAqb2JqOworCisJb2JqID0ga3phbGxvYyhzaXplb2YoKm9iaiksIEdG
+UF9LRVJORUwpOworCWlmICghb2JqKQorCQlyZXR1cm4gRVJSX1BUUigtRU5PTUVNKTsKKworCW9i
+ai0+YmFzZS5iYXNlLmZ1bmNzID0gJnJvY2tldF9nZW1fZnVuY3M7CisKKwlyZXR1cm4gJm9iai0+
+YmFzZS5iYXNlOworfQorCitpbnQgcm9ja2V0X2lvY3RsX2NyZWF0ZV9ibyhzdHJ1Y3QgZHJtX2Rl
+dmljZSAqZGV2LCB2b2lkICpkYXRhLCBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGUpCit7CisJc3RydWN0
+IGRybV9yb2NrZXRfY3JlYXRlX2JvICphcmdzID0gZGF0YTsKKwlzdHJ1Y3Qgcm9ja2V0X2Rldmlj
+ZSAqcmRldiA9IHRvX3JvY2tldF9kZXZpY2UoZGV2KTsKKwlzdHJ1Y3QgZHJtX2dlbV9zaG1lbV9v
+YmplY3QgKnNobWVtX29iajsKKwlzdHJ1Y3Qgcm9ja2V0X2dlbV9vYmplY3QgKnJrdF9vYmo7CisJ
+c3RydWN0IGRybV9nZW1fb2JqZWN0ICpnZW1fb2JqOworCXN0cnVjdCBzZ190YWJsZSAqc2d0Owor
+CWludCByZXQ7CisKKwlzaG1lbV9vYmogPSBkcm1fZ2VtX3NobWVtX2NyZWF0ZShkZXYsIGFyZ3Mt
+PnNpemUpOworCWlmIChJU19FUlIoc2htZW1fb2JqKSkKKwkJcmV0dXJuIFBUUl9FUlIoc2htZW1f
+b2JqKTsKKworCWdlbV9vYmogPSAmc2htZW1fb2JqLT5iYXNlOworCXJrdF9vYmogPSB0b19yb2Nr
+ZXRfYm8oZ2VtX29iaik7CisKKwlya3Rfb2JqLT5zaXplID0gYXJncy0+c2l6ZTsKKwlya3Rfb2Jq
+LT5vZmZzZXQgPSAwOworCisJcmV0ID0gZHJtX2dlbV9oYW5kbGVfY3JlYXRlKGZpbGUsIGdlbV9v
+YmosICZhcmdzLT5oYW5kbGUpOworCWRybV9nZW1fb2JqZWN0X3B1dChnZW1fb2JqKTsKKworCWd1
+YXJkKG11dGV4KSgmcmRldi0+aW9tbXVfbG9jayk7CisKKwlpZiAocmV0KQorCQlnb3RvIGVycjsK
+KworCS8qIFRoaXMgd2lsbCBtYXAgdGhlIHBhZ2VzIHRvIHRoZSBJT01NVSBsaW5rZWQgdG8gY29y
+ZSAwICovCisJc2d0ID0gZHJtX2dlbV9zaG1lbV9nZXRfcGFnZXNfc2d0KHNobWVtX29iaik7CisJ
+aWYgKElTX0VSUihzZ3QpKSB7CisJCXJldCA9IFBUUl9FUlIoc2d0KTsKKwkJZ290byBlcnI7CisJ
+fQorCisJLyogTWFwIHRoZSBwYWdlcyB0byB0aGUgSU9NTVVzIGxpbmtlZCB0byB0aGUgb3RoZXIg
+Y29yZXMsIHNvIGFsbCBjb3JlcyBjYW4gYWNjZXNzIHRoaXMgQk8gKi8KKwlmb3IgKHVuc2lnbmVk
+IGludCBjb3JlID0gMTsgY29yZSA8IHJkZXYtPm51bV9jb3JlczsgY29yZSsrKSB7CisJCXJldCA9
+IGlvbW11X21hcF9zZ3RhYmxlKGlvbW11X2dldF9kb21haW5fZm9yX2RldihyZGV2LT5jb3Jlc1tj
+b3JlXS5kZXYpLAorCQkJCQlzZ3QtPnNnbC0+ZG1hX2FkZHJlc3MsCisJCQkJCXNndCwKKwkJCQkJ
+SU9NTVVfUkVBRCB8IElPTU1VX1dSSVRFKTsKKwkJaWYgKHJldCA8IDAgfHwgcmV0IDwgYXJncy0+
+c2l6ZSkgeworCQkJZHJtX2VycihkZXYsICJmYWlsZWQgdG8gbWFwIGJ1ZmZlcjogc2l6ZT0lZCBy
+ZXF1ZXN0X3NpemU9JXVcbiIsCisJCQkJcmV0LCBhcmdzLT5zaXplKTsKKwkJCXJldCA9IC1FTk9N
+RU07CisJCQlnb3RvIGVycjsKKwkJfQorCisJCS8qIGlvbW11X21hcF9zZ3RhYmxlIG1pZ2h0IGhh
+dmUgYWxpZ25lZCB0aGUgc2l6ZSAqLworCQlya3Rfb2JqLT5zaXplID0gcmV0OworCisJCWRtYV9z
+eW5jX3NndGFibGVfZm9yX2RldmljZShyZGV2LT5jb3Jlc1tjb3JlXS5kZXYsIHNobWVtX29iai0+
+c2d0LAorCQkJCQkgICAgRE1BX0JJRElSRUNUSU9OQUwpOworCX0KKworCWFyZ3MtPm9mZnNldCA9
+IGRybV92bWFfbm9kZV9vZmZzZXRfYWRkcigmZ2VtX29iai0+dm1hX25vZGUpOworCWFyZ3MtPmRt
+YV9hZGRyZXNzID0gc2dfZG1hX2FkZHJlc3Moc2htZW1fb2JqLT5zZ3QtPnNnbCk7CisKKwlyZXR1
+cm4gMDsKKworZXJyOgorCWRybV9nZW1fc2htZW1fb2JqZWN0X2ZyZWUoZ2VtX29iaik7CisKKwly
+ZXR1cm4gcmV0OworfQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2dl
+bS5oIGIvZHJpdmVycy9hY2NlbC9yb2NrZXQvcm9ja2V0X2dlbS5oCm5ldyBmaWxlIG1vZGUgMTAw
+NjQ0CmluZGV4IDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAuLjQxNDk3
+NTU0MzY2OTYxY2ZlMThjZjZjN2U5M2FiMWU0ZTVkYzE4ODYKLS0tIC9kZXYvbnVsbAorKysgYi9k
+cml2ZXJzL2FjY2VsL3JvY2tldC9yb2NrZXRfZ2VtLmgKQEAgLTAsMCArMSwyNiBAQAorLyogU1BE
+WC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb25seSAqLworLyogQ29weXJpZ2h0IDIwMjQt
+MjAyNSBUb21ldSBWaXpvc28gPHRvbWV1QHRvbWV1dml6b3NvLm5ldD4gKi8KKworI2lmbmRlZiBf
+X1JPQ0tFVF9HRU1fSF9fCisjZGVmaW5lIF9fUk9DS0VUX0dFTV9IX18KKworI2luY2x1ZGUgPGRy
+bS9kcm1fZ2VtX3NobWVtX2hlbHBlci5oPgorCitzdHJ1Y3Qgcm9ja2V0X2dlbV9vYmplY3Qgewor
+CXN0cnVjdCBkcm1fZ2VtX3NobWVtX29iamVjdCBiYXNlOworCisJc2l6ZV90IHNpemU7CisJdTMy
+IG9mZnNldDsKK307CisKK3N0cnVjdCBkcm1fZ2VtX29iamVjdCAqcm9ja2V0X2dlbV9jcmVhdGVf
+b2JqZWN0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsIHNpemVfdCBzaXplKTsKKworaW50IHJvY2tl
+dF9pb2N0bF9jcmVhdGVfYm8oc3RydWN0IGRybV9kZXZpY2UgKmRldiwgdm9pZCAqZGF0YSwgc3Ry
+dWN0IGRybV9maWxlICpmaWxlKTsKKworc3RhdGljIGlubGluZQorc3RydWN0ICByb2NrZXRfZ2Vt
+X29iamVjdCAqdG9fcm9ja2V0X2JvKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKQoreworCXJl
+dHVybiBjb250YWluZXJfb2YodG9fZHJtX2dlbV9zaG1lbV9vYmoob2JqKSwgc3RydWN0IHJvY2tl
+dF9nZW1fb2JqZWN0LCBiYXNlKTsKK30KKworI2VuZGlmCmRpZmYgLS1naXQgYS9pbmNsdWRlL3Vh
+cGkvZHJtL3JvY2tldF9hY2NlbC5oIGIvaW5jbHVkZS91YXBpL2RybS9yb2NrZXRfYWNjZWwuaApu
+ZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw
+MDAwMDAwMDAwLi45NTcyMDcwMmI3YzQ0MTNkNzJiODljMWYwZjU5YWJiMjJkYzhjNmIzCi0tLSAv
+ZGV2L251bGwKKysrIGIvaW5jbHVkZS91YXBpL2RybS9yb2NrZXRfYWNjZWwuaApAQCAtMCwwICsx
+LDQ0IEBACisvKiBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogTUlUICovCisvKgorICogQ29weXJp
+Z2h0IMKpIDIwMjQgVG9tZXUgVml6b3NvCisgKi8KKyNpZm5kZWYgX19EUk1fVUFQSV9ST0NLRVRf
+QUNDRUxfSF9fCisjZGVmaW5lIF9fRFJNX1VBUElfUk9DS0VUX0FDQ0VMX0hfXworCisjaW5jbHVk
+ZSAiZHJtLmgiCisKKyNpZiBkZWZpbmVkKF9fY3BsdXNwbHVzKQorZXh0ZXJuICJDIiB7CisjZW5k
+aWYKKworI2RlZmluZSBEUk1fUk9DS0VUX0NSRUFURV9CTwkJCTB4MDAKKworI2RlZmluZSBEUk1f
+SU9DVExfUk9DS0VUX0NSRUFURV9CTwkJRFJNX0lPV1IoRFJNX0NPTU1BTkRfQkFTRSArIERSTV9S
+T0NLRVRfQ1JFQVRFX0JPLCBzdHJ1Y3QgZHJtX3JvY2tldF9jcmVhdGVfYm8pCisKKy8qKgorICog
+c3RydWN0IGRybV9yb2NrZXRfY3JlYXRlX2JvIC0gaW9jdGwgYXJndW1lbnQgZm9yIGNyZWF0aW5n
+IFJvY2tldCBCT3MuCisgKgorICovCitzdHJ1Y3QgZHJtX3JvY2tldF9jcmVhdGVfYm8geworCS8q
+KiBJbnB1dDogU2l6ZSBvZiB0aGUgcmVxdWVzdGVkIEJPLiAqLworCV9fdTMyIHNpemU7CisKKwkv
+KiogT3V0cHV0OiBHRU0gaGFuZGxlIGZvciB0aGUgQk8uICovCisJX191MzIgaGFuZGxlOworCisJ
+LyoqCisJICogT3V0cHV0OiBETUEgYWRkcmVzcyBmb3IgdGhlIEJPIGluIHRoZSBOUFUgYWRkcmVz
+cyBzcGFjZS4gIFRoaXMgYWRkcmVzcworCSAqIGlzIHByaXZhdGUgdG8gdGhlIERSTSBmZCBhbmQg
+aXMgdmFsaWQgZm9yIHRoZSBsaWZldGltZSBvZiB0aGUgR0VNCisJICogaGFuZGxlLgorCSAqLwor
+CV9fdTY0IGRtYV9hZGRyZXNzOworCisJLyoqIE91dHB1dDogT2Zmc2V0IGludG8gdGhlIGRybSBu
+b2RlIHRvIHVzZSBmb3Igc3Vic2VxdWVudCBtbWFwIGNhbGwuICovCisJX191NjQgb2Zmc2V0Owor
+fTsKKworI2lmIGRlZmluZWQoX19jcGx1c3BsdXMpCit9CisjZW5kaWYKKworI2VuZGlmIC8qIF9f
+RFJNX1VBUElfUk9DS0VUX0FDQ0VMX0hfXyAqLwoKLS0gCjIuNDkuMAoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
