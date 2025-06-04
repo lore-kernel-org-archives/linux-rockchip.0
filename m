@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B0E1C5B543
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 09:16:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9F3AC5B552
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 09:22:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=R1J7AESB1AcgsDj0mKVIHsrFYDJoXGNZlnLlCalOeZk=; b=X6KXCgVVD0Ur3E
-	Y2eYDdWNcUmwstsHlYjgvsgL7l0VcDTzkTUBHCm92BifUIa8iWhdh7dtUlo+QF1MnngG4v6B4Hzn5
-	AtzdkSOdHrxQBx9Usr4uPnPxzfOZE82XsKdqXYUiw3B1co+shZIgUKm893DxCuWtMXpiyFE2/1IFB
-	F5xm+mnYIbX7vvjw4D9NrsDIMBApQ1vc6wylcSCZQkI85TKya78js0Saiv8QBbBnTpuB6NqVQYIfz
-	+r30ombD7ScVhBv/YUQXFDogIPVy6+B0zP2rtHDNGGoJHtNrmQAYI8LUJ03wXi/XG6WFXIf1MuIDf
-	kkLUnoL4N2S7rf+4QduQ==;
+	List-Owner; bh=GVqhj2rzt5AvwrZMNo49HfILUyrOY9oAKRsFOgahGZI=; b=mp5RdWGek3qQqz
+	90FGSexbiETWYn+b9Ow4PXjYNG6J75e3W2vxjRUl634jCas5V/LoQ8CIcRyDco1l8ajBM6w0Sps2O
+	AvIe/NZdur9/OMsoR3TTuYdo9UbMIj8gWuqOwXlwpVGOulpkkLY7ZVOfGvr+UoBNxNpAj+dm26klF
+	t19qnimG69MXPkvZdPBoiRc0YcMELKwxpDbGXFvOAwPwaHHer97Jbxo9kwCVi/rpXobkj3SerXWWu
+	I/ieZipFL8sggn7fr02JoexlYv1Tquthr7WR4KqeFQF7B/sX/PJGX87uIM+ww+M3EvF0ZbG/CzFyQ
+	HZV3j9yPFM6AgFzqOCfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMkEj-0000000D0Ca-2y3q;
-	Wed, 04 Jun 2025 09:16:41 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1uMkJu-0000000D1NK-2GJw;
+	Wed, 04 Jun 2025 09:22:02 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMkD8-0000000CzrP-00FR;
-	Wed, 04 Jun 2025 09:15:03 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-234b9dfb842so62137825ad.1;
-        Wed, 04 Jun 2025 02:15:01 -0700 (PDT)
+	id 1uMkJr-0000000D1MO-1Sk1;
+	Wed, 04 Jun 2025 09:22:00 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-74801bc6dc5so630860b3a.1;
+        Wed, 04 Jun 2025 02:21:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1749028500; x=1749633300; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1749028918; x=1749633718; darn=lists.infradead.org;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=wXKUp0jLGdtp7D5Cr5HTNVyQxHB2C0Ds7jpfGQp1h+c=;
-        b=fTUYt26+S/N7J37Yi52RC0LQZoXcDcW6jUxRzivHM6Bg0WltEExjPs4mc1wxvekI2O
-         W3zidjjh+wn2DOTNUNO0UPLp/zQvRSf4hBsi6NqtyKfDozx+qEHhlMc+gBEmNLu4o/qx
-         30fVCBpiQ3YCtxtzDNq7EM8eeONtZdwEBn8oOvi4f6jgDJA9s8a+RI9mFZHM3DwmIOwI
-         9n+bMSJujRT6mmGhx1E2gZTZlGwj65F5q9N9uGEAhwa+zskQmgKeq462i5kWYjU+Agkb
-         jDJvE3cWnYeGqgwD6KfQTJPnezad/JJ92Ck/dpNDFmBiCS72jYvjhbXMCXZEuFPf/hjk
-         muhw==
+        bh=7VDgfijz38wfqRmFtK4m0Gqr6eDYnbyCuwTRs5UPI5E=;
+        b=lF8LpklNYw8BdYRFsbC2495u1FHdo7arKrmaeSwvbeTiG2wjB4vAzvMR12R52HzfVE
+         MSfknDnGy7CPmS8cI+v0wR+haR7pT9bVqJBOGjv7235YN9O7iFYfwF/xIs6+4nUEhZYn
+         KGEfmkB5mNO3zd1X8yIstQOf64RNHfzYj9BHJGbdXBKD6b3e8QLwZuxq4BKtiRREZDo+
+         j0jLwoSttqJO052bHJ0v8SNPVy2M/2aqYpXXqk+kmP8e9G5GpGeW7YqhMBUY8b+8Di5Z
+         QMJ6u6rRfNhf4JEfqkgHG3fnycQ9WhESKowdIilvL4eXz0S/MwgmuMJ9QSn40jkE5+fy
+         TpQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749028501; x=1749633301;
+        d=1e100.net; s=20230601; t=1749028918; x=1749633718;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=wXKUp0jLGdtp7D5Cr5HTNVyQxHB2C0Ds7jpfGQp1h+c=;
-        b=PBkO0c+yJjvHuicaYobiNVFoZb3A9ngFUjObpsRiPvoju52ZKEeCyQdL7wX7+edbil
-         MJpIevZkdEvnRLcKQY5sjjIkSzruxYthA/P2Fw5/1G9Ki8igKPsxkN7fX8xixtSb9D2/
-         VcGNfCvnbiqmuyS7cuj+TIcuea+S8yQ6T1I3yb9pCBLocgjWjiHYXBZ/P7h8lnhmFqRr
-         z4uhOKeHKF8GEBtUCZ09B5yPHfANSzcmCyovoaseXX/vI+30k2DetFugSN+oCQIuPzxO
-         12OFqHOj+XEUJvnWC8gxx7dmm+QoEskdLdlvKsQqbMRLK7Q8YqHN8vzEIiApuIzCa/hq
-         +1LQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXCUjMOM5Ffrwrh4C2Y2Jcme5o8mI7qrt0Vgj4u3Z+n1JcBEhPot/EYIEdZtjn4pSqpRQgX66NSN36jbFs52786@lists.infradead.org
-X-Gm-Message-State: AOJu0YzplS8CmLIaA9r1LmQg0i4Jo9kcyaIKRtBl4J0xd53KIdnx8ce8
-	rpGu61zmfMY6yfdoMzqzuObsjAF7KHx9ezDDATx/SXwpUA2Ln5k5QXaqXLQPmENjyT5nl1O4qjg
+        bh=7VDgfijz38wfqRmFtK4m0Gqr6eDYnbyCuwTRs5UPI5E=;
+        b=QPc8GTj73W4xuVIZ28HszsqDRU10zbnOcuFAbBMleKj6JeaGrlZ+fQ+zmpCn8TdJLg
+         rz8rhZKyKJpmcXXzC6OrNqkKH/gJtH/iDAorAQcRJ4jEZ+FgSN3QQSKbbwXV9P54M4F1
+         jXZF2DZ6pGDZjExgDpdDhXw8vN2yPsAyhYipt5Obk/J8eLCQ327FEyIuTQPefD3dfivh
+         RayJLQS4EKVC08Sl8gYEfJBrpVwKWaYF2QadJuMBQqSO0b77LLzmFLBE0YcE6nC/pOc9
+         tYGeg+i6iGZPVeemAxyPgDO3gYqiiKh8c7REsyH9aowluFqTWMUCr9m3+erDh7c3W/8+
+         61rA==
+X-Forwarded-Encrypted: i=1; AJvYcCXfqN2SUUxos13p9RUgd8J100qwW2KH0grKuUjtl3DxNmLkAQRiaaSrVilUNzkEr8aTkEdwqB2gAn5AAXBEQmka@lists.infradead.org
+X-Gm-Message-State: AOJu0YzBHaBrlsjlk/Gp/ghyyMsCWj24tM/3IEz/0l2EUHmYXtrRnTm8
+	UYl2VcNhITweurCQyJqfgDnlxJx7cY5qPkOaAChT2vB21cc1slN672iSTHu8RpPtUo9QM80Jgk8
 	=
-X-Gm-Gg: ASbGncvgpNexnIhZDl6+Xzk1j1vpAegU3Iip8Q+J6wjwLCaEWMJtr/1oN64UoyiNOQ7
-	pKEFCvJaFnM1Exvz87sXHs6Fql/pt4Ix8SjtiIaQgR0bpHyaQ9k23G5rLlVIyyZJLfU04QyANP8
-	9VHPEiLZdYEHBrG4QikGYx00dKeGAlkpcd5UI5Fi0MeUSp0x4gOpeeWgGh8vAVnWGKDC9KqUzdc
-	irM5yO7kxPGh2A2439vOJNh5Fh/RWSvhTMbciYwBQoH+v8AjHWbYvU5j7UsATJDFbBS48PK3FjQ
-	ky87AEk4zesey20ZbB51/QNOKzdUZj45AVuOuw==
-X-Google-Smtp-Source: AGHT+IGrWh8jmJojKSu+BSXj2AcIBuAIpGQv28Yb3WscoCmm5H1KpgPvyci17orjrFIZ1IdDZFdaZA==
-X-Received: by 2002:a17:902:dad0:b0:234:e655:a618 with SMTP id d9443c01a7336-235e11cb8f1mr29637965ad.25.1749028500499;
-        Wed, 04 Jun 2025 02:15:00 -0700 (PDT)
+X-Gm-Gg: ASbGnctUa7YptwxgPMgZo4xQhRW51nfD+jLCi3WTCcZI/EI72W9F7sLwgYQSYliUpI/
+	j5uvinxzclKSNBFadR6i5bggOEDa8nidx3m2GUifoh6IoId9IaMpUq0Aa0k+GRS1PS8uOkIDWQz
+	Db3yx/G58t/oB95JTkrEHH8/myGEsmsmucwK7pezA6mrlLgZAaz6dZWAll80ra1Mey+44bsfsCF
+	2nVPit566Gz/bpM7BLuiBAePFvHcBC84O8BSWCCiR58baE+mjf3mnueJQevCa+hpQjCYzVB+u77
+	UW3FpJE3Mb2TFzjo7dppbIdNv/Ke9SowqdCYQg==
+X-Google-Smtp-Source: AGHT+IE9lIxZe52g46OWQp8Lw4qB+x9M66i/HCShonwVogndogjTY9y2HrMxF8CUQxE3BdFwz/9X5w==
+X-Received: by 2002:a05:6a00:318e:b0:746:1c67:f6cb with SMTP id d2e1a72fcca58-747fdfc9152mr6296211b3a.5.1749028918431;
+        Wed, 04 Jun 2025 02:21:58 -0700 (PDT)
 Received: from geday ([2804:7f2:800b:6be::dead:c001])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23506bdd0e9sm99762975ad.74.2025.06.04.02.14.56
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-747afed34fdsm10722510b3a.75.2025.06.04.02.21.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Jun 2025 02:14:59 -0700 (PDT)
-Date: Wed, 4 Jun 2025 06:14:48 -0300
+        Wed, 04 Jun 2025 02:21:57 -0700 (PDT)
+Date: Wed, 4 Jun 2025 06:21:52 -0300
 From: Geraldo Nascimento <geraldogabriel@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: Hugh Cole-Baker <sigmaris@gmail.com>,
@@ -78,14 +78,14 @@ Cc: Hugh Cole-Baker <sigmaris@gmail.com>,
 	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [RFC PATCH 1/2] PCI: rockchip-host: Retry link training on failure
- without PERST#
-Message-ID: <aEAOiO_YIqWH9frQ@geday>
+Subject: [RFC PATCH 2/2] arm64: dts: rockchip: drop PCIe 3v3 always-on and
+ boot-on
+Message-ID: <aEAQMHAQU3VgTghK@geday>
 MIME-Version: 1.0
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250604_021502_045696_0F2F5EB1 
-X-CRM114-Status: GOOD (  21.19  )
+X-CRM114-CacheID: sfid-20250604_022159_386715_B14FC73F 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,216 +102,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Example commit of needed dropping of regulator always-on/boot-on
+declarations to make sure quirky devices known to not be working
+on RK3399 are able to enumerate on second try without
+assertion/deassertion of PERST# in-band PCIe reset signal.
 
-After almost 30 days of battling with RK3399 buggy PCIe on my Rock Pi
-N10 through trial-and-error debugging, I finally got positive results
-with enumeration on the PCI bus for both a Realtek 8111E NIC and a
-Samsung PM981a SSD.
-
-The NIC was connected to a M.2->PCIe x4 riser card and it would get
-stuck on Polling.Compliance, without breaking electrical idle on the
-Host RX side. The Samsung PM981a SSD is directly connected to M.2
-connector and that SSD is known to be quirky (OEM... no support)
-and non-functional on the RK3399 platform.
-
-The Samsung SSD was even worse than the NIC - it would get stuck on
-Detect.Active like a bricked card, even though it was fully functional
-via USB adapter.
-
-It seems both devices benefit from retrying Link Training if - big if
-here - PERST# is not toggled during retry. This patch does exactly that.
-I find the patch to be ugly as hell but it works - every time.
-
-I added Hugh Cole-Baker and Christian Hewitt to Cc: as both are
-experienced on RK3399 and hopefully at least one of them has faced
-the non-working SSD experience on RK3399 and will be able to test this.
+One example only, to avoid patch-bomb.
 
 ---
- drivers/pci/controller/pcie-rockchip-host.c | 141 ++++++++++++--------
- 1 file changed, 87 insertions(+), 54 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index 6a46be17aa91..6a465f45a09c 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -284,6 +284,53 @@ static void rockchip_pcie_set_power_limit(struct rockchip_pcie *rockchip)
- 	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCR);
- }
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+index 8ce7cee92af0..d31fd3d34cda 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+@@ -25,8 +25,6 @@ vcc3v3_pcie: regulator-vcc-pcie {
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pcie_pwr>;
+ 		regulator-name = "vcc3v3_pcie";
+-		regulator-always-on;
+-		regulator-boot-on;
+ 		vin-supply = <&vcc5v0_sys>;
+ 	};
  
-+static int rockchip_pcie_set_vpcie(struct rockchip_pcie *rockchip)
-+{
-+	struct device *dev = rockchip->dev;
-+	int err;
-+
-+	if (!IS_ERR(rockchip->vpcie12v)) {
-+		err = regulator_enable(rockchip->vpcie12v);
-+		if (err) {
-+			dev_err(dev, "fail to enable vpcie12v regulator\n");
-+			goto err_out;
-+		}
-+	}
-+
-+	if (!IS_ERR(rockchip->vpcie3v3)) {
-+		err = regulator_enable(rockchip->vpcie3v3);
-+		if (err) {
-+			dev_err(dev, "fail to enable vpcie3v3 regulator\n");
-+			goto err_disable_12v;
-+		}
-+	}
-+
-+	err = regulator_enable(rockchip->vpcie1v8);
-+	if (err) {
-+		dev_err(dev, "fail to enable vpcie1v8 regulator\n");
-+		goto err_disable_3v3;
-+	}
-+
-+	err = regulator_enable(rockchip->vpcie0v9);
-+	if (err) {
-+		dev_err(dev, "fail to enable vpcie0v9 regulator\n");
-+		goto err_disable_1v8;
-+	}
-+
-+	return 0;
-+
-+err_disable_1v8:
-+	regulator_disable(rockchip->vpcie1v8);
-+err_disable_3v3:
-+	if (!IS_ERR(rockchip->vpcie3v3))
-+		regulator_disable(rockchip->vpcie3v3);
-+err_disable_12v:
-+	if (!IS_ERR(rockchip->vpcie12v))
-+		regulator_disable(rockchip->vpcie12v);
-+err_out:
-+	return err;
-+}
-+
- /**
-  * rockchip_pcie_host_init_port - Initialize hardware
-  * @rockchip: PCIe port information
-@@ -291,11 +338,14 @@ static void rockchip_pcie_set_power_limit(struct rockchip_pcie *rockchip)
- static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
- {
- 	struct device *dev = rockchip->dev;
--	int err, i = MAX_LANE_NUM;
-+	int err, i = MAX_LANE_NUM, is_reinit = 0;
- 	u32 status;
- 
--	gpiod_set_value_cansleep(rockchip->perst_gpio, 0);
-+	if (!is_reinit) {
-+		gpiod_set_value_cansleep(rockchip->perst_gpio, 0);
-+	}
- 
-+reinit:
- 	err = rockchip_pcie_init_port(rockchip);
- 	if (err)
- 		return err;
-@@ -322,16 +372,46 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
- 	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
- 			    PCIE_CLIENT_CONFIG);
- 
--	msleep(PCIE_T_PVPERL_MS);
--	gpiod_set_value_cansleep(rockchip->perst_gpio, 1);
--
--	msleep(PCIE_T_RRS_READY_MS);
-+	if (!is_reinit) {
-+		msleep(PCIE_T_PVPERL_MS);
-+		gpiod_set_value_cansleep(rockchip->perst_gpio, 1);
-+		msleep(PCIE_T_RRS_READY_MS);
-+	}
- 
- 	/* 500ms timeout value should be enough for Gen1/2 training */
- 	err = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_BASIC_STATUS1,
- 				 status, PCIE_LINK_UP(status), 20,
- 				 500 * USEC_PER_MSEC);
--	if (err) {
-+
-+	if (err && !is_reinit) {
-+		while (i--)
-+			phy_power_off(rockchip->phys[i]);
-+		i = MAX_LANE_NUM;
-+		while (i--)
-+			phy_exit(rockchip->phys[i]);
-+		i = MAX_LANE_NUM;
-+		is_reinit = 1;
-+		dev_dbg(dev, "Will reinit PCIe without toggling PERST#");
-+		if (!IS_ERR(rockchip->vpcie12v))
-+			regulator_disable(rockchip->vpcie12v);
-+		if (!IS_ERR(rockchip->vpcie3v3))
-+			regulator_disable(rockchip->vpcie3v3);
-+		regulator_disable(rockchip->vpcie1v8);
-+		regulator_disable(rockchip->vpcie0v9);
-+		rockchip_pcie_disable_clocks(rockchip);
-+		err = rockchip_pcie_enable_clocks(rockchip);
-+		if (err)
-+			return err;
-+		err = rockchip_pcie_set_vpcie(rockchip);
-+		if (err) {
-+			dev_err(dev, "failed to set vpcie regulator\n");
-+			rockchip_pcie_disable_clocks(rockchip);
-+			return err;
-+		}
-+		goto reinit;
-+	}
-+
-+	else if (err) {
- 		dev_err(dev, "PCIe link training gen1 timeout!\n");
- 		goto err_power_off_phy;
- 	}
-@@ -613,53 +693,6 @@ static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
- 	return 0;
- }
- 
--static int rockchip_pcie_set_vpcie(struct rockchip_pcie *rockchip)
--{
--	struct device *dev = rockchip->dev;
--	int err;
--
--	if (!IS_ERR(rockchip->vpcie12v)) {
--		err = regulator_enable(rockchip->vpcie12v);
--		if (err) {
--			dev_err(dev, "fail to enable vpcie12v regulator\n");
--			goto err_out;
--		}
--	}
--
--	if (!IS_ERR(rockchip->vpcie3v3)) {
--		err = regulator_enable(rockchip->vpcie3v3);
--		if (err) {
--			dev_err(dev, "fail to enable vpcie3v3 regulator\n");
--			goto err_disable_12v;
--		}
--	}
--
--	err = regulator_enable(rockchip->vpcie1v8);
--	if (err) {
--		dev_err(dev, "fail to enable vpcie1v8 regulator\n");
--		goto err_disable_3v3;
--	}
--
--	err = regulator_enable(rockchip->vpcie0v9);
--	if (err) {
--		dev_err(dev, "fail to enable vpcie0v9 regulator\n");
--		goto err_disable_1v8;
--	}
--
--	return 0;
--
--err_disable_1v8:
--	regulator_disable(rockchip->vpcie1v8);
--err_disable_3v3:
--	if (!IS_ERR(rockchip->vpcie3v3))
--		regulator_disable(rockchip->vpcie3v3);
--err_disable_12v:
--	if (!IS_ERR(rockchip->vpcie12v))
--		regulator_disable(rockchip->vpcie12v);
--err_out:
--	return err;
--}
--
- static void rockchip_pcie_enable_interrupts(struct rockchip_pcie *rockchip)
- {
- 	rockchip_pcie_write(rockchip, (PCIE_CLIENT_INT_CLI << 16) &
 -- 
 2.49.0
 
