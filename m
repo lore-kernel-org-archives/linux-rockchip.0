@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C3C5C5AD49
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 03:10:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE3FEC5B549
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 03:26:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aBxuMuzIA54S3Qhw+VHDwFwelL2lgbZ4bBCIsNVDOhk=; b=MypG3fH2+39rJb
-	owZErLsPaWhsma242U2NnZmWJKM6FLS43pSJQ6LUsmCiOk4ikf0RgXj/9en6S7kpEvCj2oH8mZMoG
-	79EBCZfjivCvbNQpnLXTqOLCORZ6idyVMWOLhagMvhE3CLmN/AeKMe084s0na9ZX2jVk1+ho+4bGl
-	r58rlnHg2hYUNgHtT2Po32OXoqhafBbmNzrUczrdZBr3SDa2VXSROTD4vsvNRJJFelTlHCKYlq8+o
-	L5UuliHiZFMT749E4adw9FeqGlTbrsXazIJJE5TGKHFwehUF1rWf5qpaIDuJPhyO7x17lNijy3Yb6
-	99y7HrYgj9GSv4VQMBdA==;
+	List-Owner; bh=aBxuMuzIA54S3Qhw+VHDwFwelL2lgbZ4bBCIsNVDOhk=; b=b4KR8yFlOX9EHD
+	SfExLtSfr5okPDEz2+Ymq22qM7ES+sMKj82pwPhkszaSfatWYJHXQhyAYAi2EK2HYeo7IVOBq/pip
+	qH3AqY6+luU5qcCgcb8Ch3WFu6BrnYRNQetvifkXzBB8n+RjGvmr3mM1ayuaxqbFz06X/JBA9Gjll
+	ebB0usm+/uPkVLk2dNMcuU6TvHP1rlCHH7xLr+DAzMLZZYLfJTytgbEmZhXNoFWbuM2aspDMA2fKH
+	mqHocKa2eZ9SXOWNqCid71RXKjt+UDxF+4JX1K4WVzjEyL4xDVlqLs4BJEFgozbGEh1Uq/29YP0MH
+	FNlwCaqg2xg3GnUCWR3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMeWI-0000000CPle-0azu;
-	Wed, 04 Jun 2025 03:10:26 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uMelV-0000000CROV-1Aku;
+	Wed, 04 Jun 2025 03:26:09 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMcYt-0000000C8pr-2rs4;
-	Wed, 04 Jun 2025 01:05:01 +0000
+	id 1uMcZt-0000000C8z7-2O8W;
+	Wed, 04 Jun 2025 01:06:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id F193EA4FE7B;
-	Wed,  4 Jun 2025 01:04:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4E87C4CEF1;
-	Wed,  4 Jun 2025 01:04:57 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id DCB81A4FE7B;
+	Wed,  4 Jun 2025 01:06:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDC3DC4CEF1;
+	Wed,  4 Jun 2025 01:05:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748999098;
+	s=k20201202; t=1748999160;
 	bh=7GqPQYInUriePbu52Umq2SHKyss5K8IBI1SLlGH9f9U=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KtNgZsVqUPhbDD8Oprfz6/2WFbaMP9ydBK5x1BJUfxTBEOfkrl2zYwBW7MDFF+Mhk
-	 6KjHz+RXnH5bKBx4hKgakpPlP33y109WZ6kREyODeYW/U+bH1B0aO4sEDcK9a3xgAU
-	 E8D1WMaJpkkvIZ2+H7WJk7GJTVJs+WHT9/Cq7VrzTV3nCkr9XWdpdQJhEcjj2f14ou
-	 jO1lQ+5sT3a4jPZ1eYwF4cikHBLnzw2q+1Pb1hJPMtrFf1wR7OwrqDASqYNLZRZtUx
-	 Ra4I+pRasfslHYzX1xvqzulE2nxUCZb51ryJDAicwG8GGh7OR3ZDK2dAx4aesjd9yx
-	 X6qocjaXBSkJw==
+	b=LgZ+TuHBOtbPjNDjS2sEXiCv5zrWpv6qriN23v2ZZgimAnMSlXRUKZ8wfo41ENM9w
+	 AOJA1NWcTkbJRg5OhB1FCtqAIAChrjb94yf0McPI1NLiWwsghT1ae9un/9zJghMd79
+	 rybhEOTNQnap33tYUVZ2OD07X7Wlg61s8yYPbbN4clObdDqFSTS2QDDXCn459DcMzb
+	 1AEh4f2OD8Q3QxBXBIno0x7/nbmeWygpSDxz+FviM60+B/9ovVc0VAqJGpp4TM6iNm
+	 rAjI/YHwANxdx+9QN/4fjvpMq+bLT3gzxY/w87/mhzH2oWg632OYHvzulSvuwJ/BQ+
+	 o/KiZqugWTUBQ==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
@@ -48,18 +48,18 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	Sasha Levin <sashal@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 30/46] clk: rockchip: rk3036: mark ddrphy as critical
-Date: Tue,  3 Jun 2025 21:03:48 -0400
-Message-Id: <20250604010404.5109-30-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 21/33] clk: rockchip: rk3036: mark ddrphy as critical
+Date: Tue,  3 Jun 2025 21:05:12 -0400
+Message-Id: <20250604010524.6091-21-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250604010404.5109-1-sashal@kernel.org>
-References: <20250604010404.5109-1-sashal@kernel.org>
+In-Reply-To: <20250604010524.6091-1-sashal@kernel.org>
+References: <20250604010524.6091-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.140
+X-stable-base: Linux 5.15.184
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250603_180459_851259_EE4EC98E 
+X-CRM114-CacheID: sfid-20250603_180601_744551_32FAFBBA 
 X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
