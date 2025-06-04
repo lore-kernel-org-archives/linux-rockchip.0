@@ -4,62 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5307DC5B543
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 19:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 601FCC5B552
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 19:58:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xpjO5IB1RHW17wKjUpdRvuZFjKkhNwfCK3Bt1lBxgwI=; b=gmdo8xJRlI5vC2
-	uTFtjbMMi5oeIyMYrqOHaHSnwmw9VO1BYN6jBo6sl8GHOS9tt4mjpuV/rcgsaV/1Jwzs3zGB9Tc/L
-	vR4RKtStwOl5TY6S8hEiLlNPF+jiY2kmqPkU5Xo+t9/OZPfA/H1paJFJ8to4kmdINhTFOlbm55l2D
-	KyWTGgm3N4dZHkQ+tC7wAPYipF9/rH6Ov68CrWsDrhuyDDL0U44PbGg0pEg0X6ZhWOpWqUbjmWNE8
-	xeDPXfJwmFj7UH+Z0kkj95Frhrgch7hsrP2FmYvBMIbq+K5y7z+0wWG5sHgIHeiPBuzV8ZO14NYCG
-	K7uvgOHWUg0sqZIHHMgg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=fthJpCY+wiYf8oaVhW+SqyRolIeOmKBi5C7w6iRWwBc=; b=QrrwEbEq1oE1f0
+	KTHuNktTYOiQiMFB47zRCO+NtEbdJEmnVmKZqOG06XCj3kTkRFTMdBdLQkYbYlU6nu+zYy5luRrLP
+	vsFYpsQkTXma37cqaAtPrsiTqITHqXTZpSjkdgw7z/D8meUd7a3jk3hvxGX/0XXlI6rdCffar1goW
+	CkvfTL6P8LZq6x9G1NLubwPm/ZdFUQYXz6I9kVhsuY22/roH+Su1d6D26p84aDW9w5Qrin2AkBo+O
+	m6AT92Fb5qXUM0OysSXShc8McHSi9PadRAjQqZTOS90m/K6JrGsTIvI5B0+qsXOLDxK5vpS/xVuir
+	i5YQci9MT7Vpy5XE2+1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMuG0-0000000E8eh-0a1B;
+	id 1uMuG0-0000000E8fH-4Aig;
 	Wed, 04 Jun 2025 19:58:40 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMsE8-0000000DyEH-08ab;
-	Wed, 04 Jun 2025 17:48:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749059313; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=hlqeOy8FbLIuiwIeAi3dRqxN20x8vQuLUu89fHdLag0HYFs+icUfSpYeqzIUC1xRI/k9y+gHWdCNxzJDnOeva/O30ZCZwkS+Kjf/dacrQV9eAaWbynPQDrfflfBC9MUYKqOtynA+aq3/oz5au9knmPd4m/A/Ng0v/UuZyThg/SM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749059313; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=IY2YvXvO6SpBozJIZln03+FM5s6N30mas6ebICNvM5o=; 
-	b=UjyGwmOvgYaG9eqtUlBbjJ3wdMZjP2a6Z5OBeUkHHdzaWxHxtR7n+VCjBqkbeWgJf+0TGv3G4GhfIowdQ5llJtV+Lcy4+kTFxTqWmkdCPSOGRjAYfl3RUODi+60ob7jZ7vzmSpHGYOLfkYs9zaRxLrUuxnPuIBAUPI6Bo1h7edU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749059313;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=IY2YvXvO6SpBozJIZln03+FM5s6N30mas6ebICNvM5o=;
-	b=Ydg3gfYKGZFsdTO27i5dKmUwwPPdmOjfwdFoXVIP26gKoy5V7Nh7DUy93R7TCh1M
-	ehTKUWRX0R93Ch+NjwKik0n4oLELLZlPG+dLZLKqsnBUNK4kUOmDlC4KBFbmMAJSv6i
-	IOn10Jcwmfvw4wAvv5Xc4/nlQJhBOfTotQiVAfeE=
-Received: by mx.zohomail.com with SMTPS id 174905931053884.90868394515064;
-	Wed, 4 Jun 2025 10:48:30 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Pei Xiao <xiaopei01@kylinos.cn>
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: Re: [PATCH 0/2] Cleanup in rockchip_sai.c
-Date: Wed, 04 Jun 2025 19:48:27 +0200
-Message-ID: <3339020.AJdgDx1Vlc@workhorse>
-In-Reply-To: <cover.1749006565.git.xiaopei01@kylinos.cn>
-References: <cover.1749006565.git.xiaopei01@kylinos.cn>
+	id 1uMt6W-0000000E2iB-24oe;
+	Wed, 04 Jun 2025 18:44:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9A6355C656E;
+	Wed,  4 Jun 2025 18:42:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFED0C4CEE4;
+	Wed,  4 Jun 2025 18:44:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749062687;
+	bh=EcqIEu76v+ExmEM3HZKzLHuCykcVPoooykubp6BZ/ZE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=AjzuDRyFDhGTPH+X9h2Ta/0pCqmctmhSUIprVyPMBEqgy2MQOwKw2j2ZEindiLvD+
+	 6uoQoM5wj74hm3gdfCVATatJnv9j0I9bgM2ukVJFU7csL83JjCmxfkI+ayLPjTPm8v
+	 qX+egtay6PWa1zCxMmpcHbCThv51rh9XGZhDm5g6nAkJA0/RVlVR71BoOvmTvDArec
+	 tYu58pfh+sVFLTjfT21fHfcTRwslgv6bnol52OOE93VhUpuFkc6pd6vGmICW6rRhhy
+	 jqN9X1GGhlCakLtpheFNDOlAIrtM8MS+O/e8Ntxl2yVPJMJi+3xxHJmGO5EOIrZ4Q6
+	 kz92/sUS4lnhg==
+Date: Wed, 4 Jun 2025 13:44:45 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Niklas Cassel <cassel@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Hans Zhang <18255117159@163.com>,
+	Laszlo Fiat <laszlo.fiat@proton.me>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/4] PCI: dw-rockchip: Do not enumerate bus before
+ endpoint devices are ready
+Message-ID: <20250604184445.GA567382@bhelgaas>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <rrtrcwajj4vjvbqzosskdnroqnijzaafncgckoh2dlk3c4njvs@twop3vyidmh7>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250604_104836_138180_CB1D306B 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20250604_114448_626432_3FA38373 
+X-CRM114-Status: GOOD (  28.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,42 +81,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, 4 June 2025 05:13:28 Central European Summer Time Pei Xiao wrote:
-> 1.Simplify the condition logic in
-> 2.Use helper function devm_clk_get_enabled()
+On Wed, Jun 04, 2025 at 10:40:09PM +0530, Manivannan Sadhasivam wrote:
+> On Wed, Jun 04, 2025 at 01:40:52PM +0200, Niklas Cassel wrote:
+> > On Tue, Jun 03, 2025 at 01:12:50PM -0500, Bjorn Helgaas wrote:
+> > > 
+> > > Hmmm, sorry, I misinterpreted both 1/4 and 2/4.  I read them as "add
+> > > this delay so the PLEXTOR device works", but in fact, I think in both
+> > > cases, the delay is actually to enforce the PCIe r6.0, sec 6.6.1,
+> > > requirement for software to wait 100ms before issuing a config
+> > > request, and the fact that it makes PLEXTOR work is a side effect of
+> > > that.
+> > 
+> > Well, the Plextor NVMe drive used to work with previous kernels,
+> > but regressed.
+> > 
+> > But yes, the delay was added to enforce "PCIe r6.0, sec 6.6.1"
+> > requirement for software to wait 100ms, which once again makes
+> > the Plextor NVMe drive work.
+> > 
+> > > The beginning of that 100ms delay is "exit from Conventional Reset"
+> > > (ports that support <= 5.0 GT/s) or "link training completes" (ports
+> > > that support > 5.0 GT/s).
+> > > 
+> > > I think we lack that 100ms delay in dwc drivers in general.  The only
+> > > generic dwc delay is in dw_pcie_host_init() via the LINK_WAIT_SLEEP_MS
+> > > in dw_pcie_wait_for_link(), but that doesn't count because it's
+> > > *before* the link comes up.  We have to wait 100ms *after* exiting
+> > > Conventional Reset or completing link training.
+> > 
+> > In dw_pcie_wait_for_link(), in the first iteration of the loop, the link
+> > will never be up (because the link was just started),
+> > dw_pcie_wait_for_link() will then sleep for LINK_WAIT_SLEEP_MS (90 ms),
+> > before trying again.
+> > 
+> > Most likely the link training took way less than 100 ms, so most of those
+> > 90 ms will probably be after link training has completed.
+> > 
+> > That is most likely why Plextor worked on older kernels (which does not
+> > use the link up IRQ).
+
+Definitely seems plausible.
+
+> > If we add a 100 ms sleep after wait_for_link(), then I suggest that we
+> > also reduce LINK_WAIT_SLEEP_MS to something shorter.
 > 
-> Pei Xiao (2):
->   ASOC: rochchip: Simplify the condition logic in rockchip_sai_xfer_stop
->   ASOC: rockchip: Use helper function devm_clk_get_enabled()
-> 
->  sound/soc/rockchip/rockchip_sai.c | 11 +----------
->  1 file changed, 1 insertion(+), 10 deletions(-)
-> 
-> 
+> No. The 900ms sleep is to make sure that we wait 1s before erroring out
+> assuming that the device is not present. This is mandated by the spec. So
+> irrespective of the delay we add *after* link up, we should try to detect the
+> link up for ~1s.
 
-Hi,
+I think it would be sensible for dw_pcie_wait_for_link() to check for
+link up more frequently, i.e., reduce LINK_WAIT_SLEEP_MS and increase
+LINK_WAIT_MAX_RETRIES.
 
-for the v2 of this series, please To/Cc the maintainer that will actually
-be merging the patches, not just me. You can get a full list of people to
-include as addresses for your series with the ./scripts/get_maintainer.pl
-script.
+If LINK_WAIT_SLEEP_MS * LINK_WAIT_MAX_RETRIES is for the 1.0s
+mentioned in sec 6.6.1, seems like maybe we should make a generic
+#define for it so we could include the spec reference and use it
+across all drivers.  And resolve the question of 900ms vs 1000ms.
 
-Ideally, you'll use a tool like b4[1] to make your life easier here and
-do this for you. That way, Mark Brown won't yell at you as much, and the
-responsible people have a higher chance of seeing the patches. The b4
-tool has the `b4 prep --auto-to-cc` option for this, and it'll warn you
-before `b4 send` if you haven't --auto-to-cc'd before sending. If you
-are using your own SMTP server to send and not a b4 relay, you'll
-probably want to `b4 send --no-sign`, but a dry run with
-`b4 send -o some-dir/` is advisible beforehand so you can look over the
-e-mails being generated.
-
-Link: https://b4.docs.kernel.org/en/latest/contributor/overview.html [1]
-
-Kind regards,
-Nicolas Frattaroli
-
-
+Bjorn
 
 _______________________________________________
 Linux-rockchip mailing list
