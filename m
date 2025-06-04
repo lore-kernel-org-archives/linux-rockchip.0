@@ -4,65 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90FB9C5B549
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 19:02:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA726C5B549
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Jun 2025 19:15:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TCBPKq8C6R5Ze/HhFU42WjGM9eGjdTIQdjyd+jtzIeo=; b=ietaTA7twzEcd0
-	k6vzGjg8Z6z+lqaui5grXqjVZKs8Vjp3dLim/o55AaOYB2EmnzM0+mZ8g5+DqVFU1oXLB7OG7s75+
-	k2QKdG2pNhvP72Ce0gkiC7dTbG1pvfwoLtaI9UOiOyy2jnk58REvmjvZ88/czio3IzqV8ushKebjx
-	h0qdpuA4ooCuvgTxSsEkxNpUdrtAYsLT4TsAkl7qKnb7LFVdlBGDq7TLQ0NST77jOX11WYKg36goH
-	YbAfL27cJyHjcMwBHG8ANouesj+yPusUqN16nxiYZXxtO8QxeXBfC4+11H+2ERNmgvwJnSOEMOd+d
-	AoiAO59vEXNw8Of5D+oA==;
+	List-Owner; bh=+uRAnU+H2w8j7mcQe5BbDSUPbRGWR+nSeUDXm8+h9/A=; b=LTyPEDABx3EFBp
+	geSzm3aoDK3p5z9b5gquhodcF5x2yGrvCrC/k1Se5qr0r209sAXdH90iuXt5iPdr0YhwGJAMoyLuE
+	2Wd56Sjp+qyCvGF4Lz6LDTbI1JwmVlaot74h2qGM7rAs0YrAcKjj82NknFxFcGeIHDIJnOZFQOkR6
+	F4Fk9YEAxDW+eQKT+RqC6sbafuMqxHQxsLXQQTsvuYSlDgqikdjLo6YJJHbLuDqrhokgJJJ5I7U3I
+	WZVlm/wICD/7x8BzvIoJOaGHDUEVfcJbt4QwnhL8+jRuToalLX2ycLEybWH7C/28nplubjpMCdZHv
+	A2VaRpWwIDrjb0QZaB6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMtN4-0000000E3oI-1IWr;
-	Wed, 04 Jun 2025 19:01:54 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uMtZi-0000000E4oZ-1UW5;
+	Wed, 04 Jun 2025 19:14:58 +0000
+Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMtMh-0000000E3kb-1gqe;
-	Wed, 04 Jun 2025 19:01:32 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749063687; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=hUZbeOaldCTjbNvHXnX0G72M5BW9GejfrJ9UZJmeBTi+Fknig7vKZnLgpp4395QZcHCksZOkjDGEFwV61C+iwUACY/kCOowEBMoMYJOyHcm/2Jrs4c+bKNrNeap01G34BCMqGyIvt4zaXP7UuVxyWBfNH2y6D5Htz62lvUKwOro=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749063687; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=RR07ZJb8JV1Gn3LQ5leTmhQEEeyoSF6a+ry7Y8x0k4k=; 
-	b=b/4blPvALM0jm4+1EnZtq3tYPK77jJcnnFzvhTJgpZL4WnR1B49em+e1xPzwDpyVIGmkMof9S2VeJW4suNesUk8kipw0WBz20N4W1pCEcO51lPCijFS8nXH6EU1/YeQhw78HD/YU7HxsgIgKjM+KIfeQjNmMUcmWa9CldKg4dnE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749063687;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=RR07ZJb8JV1Gn3LQ5leTmhQEEeyoSF6a+ry7Y8x0k4k=;
-	b=cPBbrC+jF6wKlqbdkGk/TQz0dU7RSQZTij2iqSiQNILpLtaUuczypAivoSr4+iUU
-	fzbSSSBlbI49220TxrtPcsA8Y3aRSrOxDY27yGgmc/qGGAFQpcnJuzMqiybCRi8KfkP
-	lo13DsX2Nb4P6mdVAmcpFOFfNcetvjmnamBeTXDQ=
-Received: by mx.zohomail.com with SMTPS id 1749063684919734.5257602364985;
-	Wed, 4 Jun 2025 12:01:24 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Alexey Charkov <alchark@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Alexey Charkov <alchark@gmail.com>
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: enable wifi on ArmSoM Sige5
-Date: Wed, 04 Jun 2025 21:01:20 +0200
-Message-ID: <11432858.nUPlyArG6x@workhorse>
-In-Reply-To: <20250603-sige5-updates-v1-3-717e8ce4ab77@gmail.com>
-References: <20250603-sige5-updates-v1-0-717e8ce4ab77@gmail.com>
- <20250603-sige5-updates-v1-3-717e8ce4ab77@gmail.com>
+	id 1uMtXa-0000000E4fc-3Uq9;
+	Wed, 04 Jun 2025 19:12:48 +0000
+Received: by mail-qt1-x82a.google.com with SMTP id d75a77b69052e-4a4bb155edeso1487181cf.2;
+        Wed, 04 Jun 2025 12:12:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749064365; x=1749669165; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=v68ILt8xt28THMlmyuKMfaQcpvhx4IXAkUL4p7ZYZOA=;
+        b=QcwJmAFIuWufOuwwGgfffsFIhR7uSTRh3y7o9MctWtrU1WWyVSYH2dzMWBl7B5tQl+
+         4JY1Y5f8RnwqxUTq7x+exyCxutRc4aaDHoASAP/U9LGaAbN4jQCZoSEI4JY+8CZmW2Fo
+         8o+1e9poO6mws0LXjCSnv6dGJh3q49JdrM2mLQET9eiJW22NsMTZf1ZYmYQGBAWjWTxx
+         8kcQKGCtfAlZxS7qDiX6hi0d/IOEznUgfvoC2WGuHeoe9kK92P8dmwjXY9kc/5V7jmRv
+         awJp5M93ioOrUwf3WD5TlpJPmu2ChFGRmM1bpMFg4RNUYpRDfllYKmPAKs16EOtDadaY
+         iECA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749064365; x=1749669165;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=v68ILt8xt28THMlmyuKMfaQcpvhx4IXAkUL4p7ZYZOA=;
+        b=Abiyrj8iZdzrMaUmanwXy5yG6BG3p93Gi8NkseVRwG3HRyF17HBpZIDcwzmsYifNql
+         MUvV70+Upb7LQN/8TJUIYJnUjciAmH/eSa8v1fyI5IyIFLP6j97+iWWxcpHCv75oCzFh
+         vVs2E9eRGd//WL1wByGP1mMhG0YECsMlaS87/3z4QnrA1gxw3axY1d9RKkp8oSvYQDAr
+         KCx/ymEhvfCWds4lcKsqprW2T4Rndm2Ysjhts/P2b215uGRvwBy0/ZsOKXEiyDqiRMZu
+         fwwLPoNUHOQZBkxGnFGQBaE57eLw1NHz8F2ea/9UC3d1Kjggn0kdtV1lFSwhJmkQnYxM
+         uoHA==
+X-Forwarded-Encrypted: i=1; AJvYcCVNurIIZb1+JFcPhzCItJg/EeqDE9Du0p9hWs3YMi6lk8hcI0wqgnYlB9zClNZ6CQMgIWRiMmFTIz1yeAfbsr8=@lists.infradead.org, AJvYcCXAnly5ohM/642lnOQFk20v6T1M1N9RrAKNq7FLIolI7NAMGqwxKqTQuv8KqpF/iXf7nmyQQ/WEWjmxyRO5vv5h@lists.infradead.org
+X-Gm-Message-State: AOJu0YwNv+aQwQlF7hcjkV0FaByMSBK8g/XMtl5o4G8AOvfb5ROFFOPc
+	0O7TUM+7JrsM/9TQSYQCGpBB/cQKjDOSaPMJg6xNSW0NyBr+GdMRviy4+tC9M7XkkSSCtH6ZSSL
+	AuJ4JF3MaytUpoyefX+loNtTY9Re5eJA=
+X-Gm-Gg: ASbGncude7E2u659EJMu8mBIPZdiRR1hc15fs2zblxT9GR3ZuEaHW/k5xX2fACRkQir
+	eNYJ0Hmkeb/3PvaLFr0F+gY8RDmHjDS0Lv8hL1DE4NwlTsNSnNn6OBecnXUwieZ+RZR6bJ8Xfru
+	NhDG2lzr+YqvPa+OAV7YEEZfMEXm/psp8CCGmR4GjssGdXkGPYIq5jNoMNsHSlD7eGVw==
+X-Google-Smtp-Source: AGHT+IHkGcI9KV0dFs+7Hj/zh+wdAmNhv6TFy7eW9sMjhV5X2zUe4MTyLbGWK9esEy06HGIELxjaKcjO6066Mlf9nY0=
+X-Received: by 2002:ac8:5cd5:0:b0:48c:c121:7e27 with SMTP id
+ d75a77b69052e-4a5a584733cmr74376181cf.50.1749064365064; Wed, 04 Jun 2025
+ 12:12:45 -0700 (PDT)
 MIME-Version: 1.0
+References: <20250603-sige5-updates-v1-0-717e8ce4ab77@gmail.com>
+ <20250603-sige5-updates-v1-1-717e8ce4ab77@gmail.com> <6656934.DvuYhMxLoT@workhorse>
+In-Reply-To: <6656934.DvuYhMxLoT@workhorse>
+From: Alexey Charkov <alchark@gmail.com>
+Date: Wed, 4 Jun 2025 23:12:35 +0400
+X-Gm-Features: AX0GCFspbBIHwcLfNzc6-jDHvamdNprrbgOXqKsRv_8yqqyAsKIYJM_cipXfo4o
+Message-ID: <CABjd4Yx05SCm+03jWbsEP-A5AuhL14wLj=+VdKyQgqMbnxi3xQ@mail.gmail.com>
+Subject: Re: [PATCH 1/4] arm64: dts: rockchip: list all CPU supplies on ArmSoM Sige5
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250604_120131_521959_AE806D0B 
-X-CRM114-Status: GOOD (  29.14  )
+X-CRM114-CacheID: sfid-20250604_121246_892953_613C75FA 
+X-CRM114-Status: GOOD (  22.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,178 +91,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 3 June 2025 19:01:15 Central European Summer Time Alexey Charkov wrote:
-> ArmSoM Sige5 uses a soldered-on SDIO connected WiFi module. Namely,
-> board v1.1 uses a Realtek based BL-M8852BS2, while v1.2 uses a Broadcom
-> based BW3752-50B1.
-
-Okay, so there's two board revisions, which makes this patch and the
-following that adds bluetooth a problem. This patch here doesn't
-seem to actually add the SDIO Wi-Fi module node where it'll differ,
-so skirts around the issue AFAIU. It might also be that it's not
-needed for you and I just don't notice because I have v1.1 where the
-SDIO driver for that module doesn't exist yet iirc.
-
-But what we should think about is first doing
-- probably add a new compatible for armsom,sige5-v1.2
-- git mv arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts \
-         arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dtsi
-- commit here like Sebastian Reichel had to do for [1]
-- create a new arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-  that includes the dtsi and moves the model and compatible property
-  there. Make sure the model includes v1.1 in the name, compatible
-  should remain the same
-- commit here that will be a squash commit like Sebastian Reichel
-  had to do in [2]
-- create a new arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5-v1.2.dts,
-  could be adding the Wi-Fi node here to cut down on how many patches we
-  do. I assume you only have the v1.2 board and can't test the older Wi-Fi,
-  which is fine.
-  compatible should probably be something like
-    compatible = "armsom,sige5-v1.2", "armsom,sige5", "rockchip,rk3576";
-  Don't forget to change the model property as well.
-
-I know this will be a royal PITA, especially considering they'll likely
-never produce v1.1 again and it now hogs the name, but keeping the
-current dts as 1.1 may be the best way forward, as it keeps compat (though
-the Wi-Fi changes won't affect anything already in there) and will stop
-people from accidentally picking the higher number better DTS like what
-happens with rockpro64 all the time where the non-numbered DTS is 2.1 and
-the numbered one is 2.0 and people keep picking 2.0.
-
-> 
-> Add required device tree nodes in the SoC .dtsi for the SDIO controller
-> and pinctrl / clock wiring in the board .dts for the module itself.
-> 
-> Signed-off-by: Alexey Charkov <alchark@gmail.com>
-> ---
->  .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 36 ++++++++++++++++++++++
->  arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 16 ++++++++++
->  2 files changed, 52 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-> index 7ce1fb1380b0863c902fdd9cbc7454ee6011cf92..dcd033859398312f7693bebb7f080ee4f2ecaa32 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-> @@ -219,6 +219,15 @@ vcc_5v0_host: regulator-vcc-5v0-host {
->  		pinctrl-names = "default";
->  		pinctrl-0 = <&usb_host_pwren>;
->  	};
-> +
-> +	sdio_pwrseq: sdio-pwrseq {
-> +		compatible = "mmc-pwrseq-simple";
-> +		clocks = <&hym8563>;
-> +		clock-names = "ext_clock";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wifi_reg_on>;
-> +		reset-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_LOW>;
-> +	};
->  };
->  
->  &combphy1_psu {
-> @@ -781,6 +790,16 @@ usb_host_pwren: usb-host-pwren {
->  			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
->  		};
->  	};
-> +
-> +	wireless-wlan {
-> +		wifi_wake_host: wifi-wake-host {
-> +			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_down>;
-> +		};
-> +
-> +		wifi_reg_on: wifi-reg-on {
-> +			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
->  };
->  
->  &sai1 {
-> @@ -808,6 +827,23 @@ &sdhci {
->  	status = "okay";
->  };
->  
-> +&sdio {
-> +	bus-width = <4>;
-> +	cap-sdio-irq;
-> +	disable-wp;
-> +	keep-power-in-suspend;
-> +	mmc-pwrseq = <&sdio_pwrseq>;
-> +	no-sd;
-> +	no-mmc;
-> +	non-removable;
-> +	sd-uhs-sdr50;
-> +	sd-uhs-sdr104;
-> +	vmmc-supply = <&vcc_3v3_s3>;
-> +	vqmmc-supply = <&vcc_1v8_s3>;
-> +	wakeup-source;
-> +	status = "okay";
-> +};
-> +
->  &sdmmc {
->  	bus-width = <4>;
->  	cap-mmc-highspeed;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-
-Okay, I think adding the sdio node to the SoC dtsi should be a separate
-patch before this one.
-
-> index 1086482f04792325dc4c22fb8ceeb27eef59afe4..a09582470bb7f654b711308da1e51fa8571ca1e8 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> @@ -1695,6 +1695,22 @@ sdmmc: mmc@2a310000 {
->  			status = "disabled";
->  		};
->  
-> +		sdio: mmc@2a320000 {
-> +			compatible = "rockchip,rk3576-dw-mshc", "rockchip,rk3288-dw-mshc";
-> +			reg = <0x0 0x2a320000 0x0 0x4000>;
-> +			clocks = <&cru HCLK_SDIO>, <&cru CCLK_SRC_SDIO>;
-> +			clock-names = "biu", "ciu";
-> +			fifo-depth = <0x100>;
-> +			interrupts = <GIC_SPI 252 IRQ_TYPE_LEVEL_HIGH>;
-> +			max-frequency = <200000000>;
-> +			pinctrl-0 = <&sdmmc1m0_clk &sdmmc1m0_cmd &sdmmc1m0_bus4>;
-> +			pinctrl-names = "default";
-> +			power-domains = <&power RK3576_PD_SDGMAC>;
-> +			resets = <&cru SRST_H_SDIO>;
-> +			reset-names = "reset";
-> +			status = "disabled";
-> +		};
-> +
->  		sdhci: mmc@2a330000 {
->  			compatible = "rockchip,rk3576-dwcmshc", "rockchip,rk3588-dwcmshc";
->  			reg = <0x0 0x2a330000 0x0 0x10000>;
-> 
->
-
-So in conclusion:
-- bindings patch adding v1.2 compatible
-- SoC dtsi patch for the sdio node
-- git mv patch
-- rk3576-armsom-sige5.dts patch, ask maintainer to squash it into the
-  previous patch, make it obvious by giving it the same subject or something
-- rk3576-armsom-sige5-v1.2.dts patch
-
-Sorry to drop all this on you, it's a little unpleasant and in-the-woods
-with regards to preparing a patch series. Basically, the reason why I've
-held off on this for the moment is that I don't have a v1.2 board and my
-v1.1 board's Wi-Fi module doesn't seem to be supported (yet).
-
-Kind regards,
-Nicolas Frattaroli
-
-[1]: https://lore.kernel.org/linux-rockchip/20250508-rock5bp-for-upstream-v2-1-677033cc1ac2@kernel.org/
-[2]: https://lore.kernel.org/linux-rockchip/20250508-rock5bp-for-upstream-v2-2-677033cc1ac2@kernel.org/
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBKdW4gNCwgMjAyNSBhdCAxMDozOOKAr1BNIE5pY29sYXMgRnJhdHRhcm9saQo8bmlj
+b2xhcy5mcmF0dGFyb2xpQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Cj4gT24gVHVlc2RheSwgMyBK
+dW5lIDIwMjUgMTk6MDE6MTMgQ2VudHJhbCBFdXJvcGVhbiBTdW1tZXIgVGltZSBBbGV4ZXkgQ2hh
+cmtvdiB3cm90ZToKPiA+IExpc3QgYm90aCBDUFUgc3VwcGx5IHJlZ3VsYXRvcnMgd2hpY2ggZHJp
+dmUgdGhlIGxpdHRsZSBhbmQgYmlnIENQVQo+ID4gY2x1c3RlcnMsIHJlc3BlY3RpdmVseSwgc28g
+dGhhdCBjcHVmcmVxIGNhbiBwaWNrIHRoZW0gdXAuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogQWxl
+eGV5IENoYXJrb3YgPGFsY2hhcmtAZ21haWwuY29tPgo+ID4gLS0tCj4gPiAgLi4uL2Jvb3QvZHRz
+L3JvY2tjaGlwL3JrMzU3Ni1hcm1zb20tc2lnZTUuZHRzICAgICAgfCAyOCArKysrKysrKysrKysr
+KysrKysrKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDI4IGluc2VydGlvbnMoKykKPiA+Cj4gPiBk
+aWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NzYtYXJtc29tLXNp
+Z2U1LmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTc2LWFybXNvbS1zaWdl
+NS5kdHMKPiA+IGluZGV4IGIwOWU3ODljNzVjNDdmZWM3Y2Y3ZTk4MTBhYjBkY2NhMzJkOTQwNGEu
+LmQ5YzEyOWJlNTVhMGQ5OTdlMDRlNmQ2NzdjZGM5OGZiNTAzNTM0MTggMTAwNjQ0Cj4gPiAtLS0g
+YS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU3Ni1hcm1zb20tc2lnZTUuZHRzCj4g
+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU3Ni1hcm1zb20tc2lnZTUu
+ZHRzCj4gPiBAQCAtMjA3LDYgKzIwNywyMiBAQCB2Y2NfM3YzX3Vmc19zMDogcmVndWxhdG9yLXZj
+Yy11ZnMtczAgewo+ID4gICAgICAgfTsKPiA+ICB9Owo+ID4KPiA+ICsmY3B1X2IwIHsKPiA+ICsg
+ICAgIGNwdS1zdXBwbHkgPSA8JnZkZF9jcHVfYmlnX3MwPjsKPiA+ICt9Owo+ID4gKwo+ID4gKyZj
+cHVfYjEgewo+ID4gKyAgICAgY3B1LXN1cHBseSA9IDwmdmRkX2NwdV9iaWdfczA+Owo+ID4gK307
+Cj4gPiArCj4gPiArJmNwdV9iMiB7Cj4gPiArICAgICBjcHUtc3VwcGx5ID0gPCZ2ZGRfY3B1X2Jp
+Z19zMD47Cj4gPiArfTsKPiA+ICsKPiA+ICsmY3B1X2IzIHsKPiA+ICsgICAgIGNwdS1zdXBwbHkg
+PSA8JnZkZF9jcHVfYmlnX3MwPjsKPiA+ICt9Owo+ID4gKwo+ID4gICZjb21icGh5MF9wcyB7Cj4g
+PiAgICAgICBzdGF0dXMgPSAib2theSI7Cj4gPiAgfTsKPiA+IEBAIC0yMTUsNiArMjMxLDE4IEBA
+ICZjcHVfbDAgewo+ID4gICAgICAgY3B1LXN1cHBseSA9IDwmdmRkX2NwdV9saXRfczA+Owo+ID4g
+IH07Cj4gPgo+ID4gKyZjcHVfbDEgewo+ID4gKyAgICAgY3B1LXN1cHBseSA9IDwmdmRkX2NwdV9s
+aXRfczA+Owo+ID4gK307Cj4gPiArCj4gPiArJmNwdV9sMiB7Cj4gPiArICAgICBjcHUtc3VwcGx5
+ID0gPCZ2ZGRfY3B1X2xpdF9zMD47Cj4gPiArfTsKPiA+ICsKPiA+ICsmY3B1X2wzIHsKPiA+ICsg
+ICAgIGNwdS1zdXBwbHkgPSA8JnZkZF9jcHVfbGl0X3MwPjsKPiA+ICt9Owo+ID4gKwo+ID4gICZn
+bWFjMCB7Cj4gPiAgICAgICBwaHktbW9kZSA9ICJyZ21paS1pZCI7Cj4gPiAgICAgICBjbG9ja19p
+bl9vdXQgPSAib3V0cHV0IjsKPiA+Cj4gPgo+Cj4gUmV2aWV3ZWQtYnk6IE5pY29sYXMgRnJhdHRh
+cm9saSA8bmljb2xhcy5mcmF0dGFyb2xpQGNvbGxhYm9yYS5jb20+Cj4gVGVzdGVkLWJ5OiBOaWNv
+bGFzIEZyYXR0YXJvbGkgPG5pY29sYXMuZnJhdHRhcm9saUBjb2xsYWJvcmEuY29tPgo+Cj4gPiBz
+byB0aGF0IGNwdWZyZXEgY2FuIHBpY2sgdGhlbSB1cC4KPgo+IEZ3aXcsIGV2ZW4gd2l0aG91dCB0
+aGlzIHBhdGNoIHRoZXkncmUgcGlja2VkIHVwIGJ5IGNwdWZyZXEtZHQgZm9yIG1lOgo+Cj4gICAg
+IHVzZXJAdHJpeGllOn4kIHN1ZG8gY3B1cG93ZXIgZnJlcXVlbmN5LWluZm8KPiAgICAgICBhbmFs
+eXppbmcgQ1BVIDU6Cj4gICAgICAgZHJpdmVyOiBjcHVmcmVxLWR0Cj4gICAgICAgQ1BVcyB3aGlj
+aCBydW4gYXQgdGhlIHNhbWUgaGFyZHdhcmUgZnJlcXVlbmN5OiA0IDUgNiA3Cj4gICAgICAgQ1BV
+cyB3aGljaCBuZWVkIHRvIGhhdmUgdGhlaXIgZnJlcXVlbmN5IGNvb3JkaW5hdGVkIGJ5IHNvZnR3
+YXJlOiA0IDUgNiA3Cj4gICAgICAgbWF4aW11bSB0cmFuc2l0aW9uIGxhdGVuY3k6IDQwLjAgdXMK
+PiAgICAgICBoYXJkd2FyZSBsaW1pdHM6IDQwOCBNSHogLSAyLjMwIEdIego+ICAgICAgIGF2YWls
+YWJsZSBmcmVxdWVuY3kgc3RlcHM6ICA0MDggTUh6LCA2MDAgTUh6LCA4MTYgTUh6LCAxLjAxIEdI
+eiwgMS4yMCBHSHosIDEuNDIgR0h6LCAxLjYxIEdIeiwgMS44MCBHSHosIDIuMDIgR0h6LCAyLjIx
+IEdIeiwgMi4zMCBHSHoKPiAgICAgICBhdmFpbGFibGUgY3B1ZnJlcSBnb3Zlcm5vcnM6IG9uZGVt
+YW5kIHVzZXJzcGFjZSBwZXJmb3JtYW5jZSBzY2hlZHV0aWwKPiAgICAgICBjdXJyZW50IHBvbGlj
+eTogZnJlcXVlbmN5IHNob3VsZCBiZSB3aXRoaW4gNDA4IE1IeiBhbmQgMi4zMCBHSHouCj4gICAg
+ICAgICAgICAgICAgICAgICAgIFRoZSBnb3Zlcm5vciAic2NoZWR1dGlsIiBtYXkgZGVjaWRlIHdo
+aWNoIHNwZWVkIHRvIHVzZQo+ICAgICAgICAgICAgICAgICAgICAgICB3aXRoaW4gdGhpcyByYW5n
+ZS4KPiAgICAgICBjdXJyZW50IENQVSBmcmVxdWVuY3k6IDEuNjEgR0h6IChhc3NlcnRlZCBieSBj
+YWxsIHRvIGhhcmR3YXJlKQo+ICAgICB1c2VyQHRyaXhpZTp+JCB1bmFtZSAtYQo+ICAgICBMaW51
+eCB0cml4aWUgNi4xNS4wLTExMTczLWc1NDZiMWM5ZTkzYzIgIzIgU01QIFBSRUVNUFQgV2VkIEp1
+biAgNCAyMDozMjo1MiBDRVNUIDIwMjUgYWFyY2g2NCBHTlUvTGludXgKCkZyZXF1ZW5jaWVzIGFy
+ZSBmaW5lLCBidXQgSSBkb24ndCB0aGluayB0aGUgbW9yZSBwb3dlciBodW5ncnkgYmlnIENQVQpj
+bHVzdGVyIGdldHMgYW55IHZvbHRhZ2Ugc2NhbGluZyB3aXRob3V0IGl0LiBPbmNlIEkgdHJ5IHRv
+IGxvYWQgdGhlCnN5c3RlbSBlbm91Z2ggdGhhdCB0aGUgZ292ZXJub3IgZGVjaWRlcyB0byBidW1w
+IHRoZSBiaWcgY2x1c3RlcgpmcmVxdWVuY3kgdXAsIHRoZSByZWd1bGF0b3Igc3RheXMgYXQgODUw
+MDAwIG1pY3Jvdm9sdHMsIGNhdXNpbmcgcmFuZG9tCnJlYm9vdHMgd2hlbiB0aGUgd2hvbGUgY2x1
+c3RlciBzdGFydHMgc3RhcnZpbmcuIFdpdGggdGhlIHBhdGNoLAp2b2x0YWdlIG9zY2lsbGF0ZXMg
+YmV0d2VlbiA3MDAwMDAtNzM3MDAwIG1pY3Jvdm9sdHMgaW4gaWRsZSBhbmQganVtcHMKdXAgdG8g
+OTUwMDAwIHVuZGVyIGxvYWQsIGFuZCB0aGUgc3lzdGVtIHNlZW1zIHN0YWJsZS4KCkhlcmUncyB3
+aGF0IEkgdXNlZCB0byBtb25pdG9yIHRoZSB2b2x0YWdlICh0aGVyZSBtdXN0IGJlIGEgYmV0dGVy
+IHdheQp0byBkbyBpdCwgYnV0IGl0IHdvcmtzKToKc2lnZTUgfiAjIHdhdGNoIGNhdCBgZ3JlcCAt
+ciAuIC9zeXMvY2xhc3MvcmVndWxhdG9yLyovbmFtZSB8IGdyZXAKdmRkX2NwdV9iaWdfczAgfCBz
+ZWQgLWUgJ3MvbmFtZS4qLy8nYC9taWNyb3ZvbHRzCgpBbmQgaW4gYW5vdGhlciB0ZXJtaW5hbDoK
+c2lnZTUgfiAjIHN0cmVzcy1uZyAtYzgKClRoaXMgbWlnaHQgd2FycmFudCBhIG5vdGUgaW4gdGhl
+IGNvbW1pdCBtZXNzYWdlIEkgZ3Vlc3MgOikKClRoYW5rcyBmb3IgeW91ciByZXZpZXcgYW5kIHRl
+c3RpbmchCgpCZXN0IHJlZ2FyZHMsCkFsZXhleQoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
