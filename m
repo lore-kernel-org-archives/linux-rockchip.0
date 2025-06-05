@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EB1FC5B543
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 19:50:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59806C5AE59
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 20:13:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	In-Reply-To:References:Cc:From:Subject:To:Message-Id:Date:Mime-Version:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XqSYTa7lG41n6ExVKjOFjhF0S0KDZfFnCp9JDDI9hqw=; b=rSZbKpZZKqMpsjRHWTQI3agayC
-	NCY3ZH9qOQAJxlS/FZCOHzfkvQHeBRlI2od+RbE9C3MxJAKEXJTD+uHVNagkIZylRuYUFvlkJntGP
-	DxOAI5AJokOWWFsw18kN8XunojlUnOZgtECDNyWTcjX+CpC9i2d1RT9ruKX+zyNKPY3x3j40M5gg/
-	12YH61J2kaWUwQtc0KOq095TpqmZiA+m9/VOqRK5aWCdPmVfw7oNK6q8uCZXDRTR3a2KUPCy1YlKX
-	X7udgtF2ODectuEtzi/928fLtCDQ8WvzjKJ2Z2CmaZ4o85FPWDKezQ4YL/O0uWxbqaUql9WQGOrLY
-	p9r2fNjA==;
+	bh=+yJhXMvv9puNMMhU2vwDE7NQDD+7Oi1zNnkNdZC0FUQ=; b=0mxnIjS7SkKOFIXe8ngnv0balQ
+	KmZL3MbZUqnuY4AGxcMH8C2uq6iQe1EjoHgXVspbiokLdVflL0CPh6jdImiQTu2EkFwzEO/YvvC7X
+	doIthW2Df5xTdmt2daqGXg1YqkZIS3g0L4ctk2jdayVbrFvgN6VwvINV2yi3wX6ObVvQeSpJS9AZr
+	jjzYehBtTVHOCxVHTfqnWhrxOfoxBAF7ybTOIRe+HDvEgNBgl0yefMKopbL8g6PN+eRpMY2LvniBV
+	b67GC9OywnsGn6BDRvcFHbQYadllli3tyfocKn+DMObnBrnYZa9s9n0n6736mALlXV/w2mZKSiBtm
+	LzhpN62Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNGb7-0000000GXFF-0vLo;
-	Thu, 05 Jun 2025 19:49:57 +0000
-Received: from out-173.mta0.migadu.com ([2001:41d0:1004:224b::ad])
+	id 1uNGxI-0000000GZUm-1cbb;
+	Thu, 05 Jun 2025 20:12:52 +0000
+Received: from out-170.mta0.migadu.com ([2001:41d0:1004:224b::aa])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNGb3-0000000GXDF-3ahj
+	id 1uNGtR-0000000GZAF-1uXh
 	for linux-rockchip@lists.infradead.org;
-	Thu, 05 Jun 2025 19:49:55 +0000
+	Thu, 05 Jun 2025 20:08:54 +0000
 Mime-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1749152990;
+	t=1749154121;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=EJqiZsO00UW1qzZCC8pTl4Bce7VgLFymF1yeTS4Wo1I=;
-	b=FXcqnj/ZkLVgqnSXA/9FCtL8/d/zbvT/uL/nRPY4ksTM7NoH+k7HOrLyiUHdrSN448BJEs
-	tzm80CoUd+7YJYNYcP8LDfYzXJxnSMktTXGW8Kwp7IkGVirCjElBjFaIWD3fy73G8ASCEz
-	bi0vCwHbcMFzgtcrYfkulfJnzWs97Ya8EuOeG6Ynh3tmJNSyiwTaxVCoyWVnZc6Ltkq/Ln
-	feYAgiGpA0nhzBqo0uSjz9JfldpzkKqhRG/grezN5hoBijkcaPwIcYAMd6yHiDXQRnXaF0
-	n8r1ngQ5EzjutOWkyYl5Y7qlhheNe2HsVJPVZo1oMz/kOAwit7pbWLMIJbCNsw==
-Date: Thu, 05 Jun 2025 21:49:40 +0200
-Message-Id: <DAEUZDXQ1QT8.1YMVDZVR29GJM@cknow.org>
-Cc: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>, <kernel@collabora.com>,
- <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH 2/2] PM / devfreq: rockchip-dfi: add support for LPDDR5
+	bh=OK3R5dXcTJj2wL9xZzZ3c6xb7EGe7PgQLjn11tnh4TQ=;
+	b=YQKEQUi2Pstu3EzNcko9YE4QP82nsguw95NIR1TrkXxSBPFfqHVmxSLC0aBunnrbJZ0UOF
+	QgA62cCzKRJeL9e9piPRVRaIs6WyksCdYgn/6Vzzzr4yEJ6Cbi9nfH0bbh5tMlVFyr6hZ0
+	ySCyOuaYO8IF/V+9O0NwXLCDJmyEAz8dfdCElwdALQ9zHGnCA45OG8Oi7Ny3O0rYPl1J+p
+	FDVtAIkvSSSnWpY/lr1YP8vZovPJW/6GTQVmR15gloQa4Kd0JmgVemDbq4y6OsuEfrUmVp
+	wTaDMu/oUc93GDsEUPHUZGJ3xmAHDbtguz5bV1fq7Wf4hbQaMA+I2RdG6/8wtw==
+Date: Thu, 05 Jun 2025 22:08:29 +0200
+Message-Id: <DAEVDSTMWI1E.J454VZN0R9MA@cknow.org>
+To: "Piotr Zalewski" <pZ010001011111@proton.me>, <hjc@rock-chips.com>,
+ <heiko@sntech.de>, <andy.yan@rock-chips.com>
+Subject: Re: [PATCH drm-misc-next] rockchip/drm: vop2: don't check
+ color_mgmt_changed in atomic_enable
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com>, "Chanwoo Choi"
- <cw00.choi@samsung.com>, "MyungJoo Ham" <myungjoo.ham@samsung.com>,
- "Kyungmin Park" <kyungmin.park@samsung.com>, "Heiko Stuebner"
- <heiko@sntech.de>, "Sascha Hauer" <s.hauer@pengutronix.de>, "Jonathan
- Cameron" <Jonathan.Cameron@huawei.com>, "Sebastian Reichel"
- <sebastian.reichel@collabora.com>
-References: <20250530-rk3588-dfi-improvements-v1-0-6e077c243a95@collabora.com> <20250530-rk3588-dfi-improvements-v1-2-6e077c243a95@collabora.com> <DADLSAEF1YPO.V0CQK084KFFO@cknow.org> <4244538.aeNJFYEL58@workhorse>
-In-Reply-To: <4244538.aeNJFYEL58@workhorse>
+Cc: <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
+ <tzimmermann@suse.de>, <airlied@gmail.com>, <simona@ffwll.ch>, "Dang Huynh"
+ <danct12@riseup.net>, <dri-devel@lists.freedesktop.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+References: <20241206192013.342692-3-pZ010001011111@proton.me>
+In-Reply-To: <20241206192013.342692-3-pZ010001011111@proton.me>
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250605_124954_376283_E719ACBA 
-X-CRM114-Status: GOOD (  26.99  )
+X-CRM114-CacheID: sfid-20250605_130853_632775_F690FA0B 
+X-CRM114-Status: GOOD (  22.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,107 +69,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3095993616337863929=="
+Content-Type: multipart/mixed; boundary="===============5694902731668184405=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============3095993616337863929==
+--===============5694902731668184405==
 Content-Type: multipart/signed;
- boundary=3cdd52bd73029a86b1db18a8ebe587a89be50fded87b2fd99a67d4267211;
+ boundary=57318c575cf0bc267bcbb636acd15cccce634ec5c21f129cbe5e981a9e70;
  micalg=pgp-sha512; protocol="application/pgp-signature"
 
---3cdd52bd73029a86b1db18a8ebe587a89be50fded87b2fd99a67d4267211
+--57318c575cf0bc267bcbb636acd15cccce634ec5c21f129cbe5e981a9e70
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset=UTF-8
 
-Hi,
+Hi Piotr,
 
-On Thu Jun 5, 2025 at 5:14 PM CEST, Nicolas Frattaroli wrote:
-> On Wednesday, 4 June 2025 10:24:33 Central European Summer Time Diederik =
-de Haas wrote:
->> On Fri May 30, 2025 at 3:38 PM CEST, Nicolas Frattaroli wrote:
->> > [...]
->> > +	case ROCKCHIP_DDRTYPE_LPDDR5:
->> > +		ddrmon_ver =3D readl_relaxed(dfi->regs);
->> > +		if (ddrmon_ver < 0x40) {
->> > +			*ctrl =3D DDRMON_CTRL_LPDDR5 | dfi->lp5_bank_mode;
->> > +			*mask |=3D DDRMON_CTRL_LP5_BANK_MODE_MASK;
->> > +			break;
->> > +		}
->> > +
->> > +		/*
->> > +		 * As it is unknown whether the unpleasant special case
->> > +		 * behaviour used by the vendor kernel is needed for any
->> > +		 * shipping hardware, ask users to report if they have
->> > +		 * some of that hardware.
->> > +		 */
->> > +		dev_err(&dfi->edev->dev,
->> > +			"unsupported DDRMON version 0x%04X, please let linux-rockchip know=
-!\n",
->> > +			ddrmon_ver);
->> > +		return -EOPNOTSUPP;
->>=20
->> I'm guessing you mean the linux-rockchip mailing list here? If so, I
->> think it's better to make that explicit as 'Joe User' who may run into
->> this issue may not be aware of that mailing list. The 'linux' and
->> 'rockchip' name combo is used in quite a few places.
->
-> I agree it's ambiguous, the message as it is right now is the way it is
-> because we're not allowed to linebreak user-facing messages for grep-
-> ability and I also don't want to exceed 100 lines of width (though this
-> is the one case where we're allowed to).
->
-> I suppose I should just replace it with the e-mail address of the list.
-> That should be clear enough and this error message also won't end up in
-> random boot logs strewn across the internet if it really is just some
-> engineering sample hardware or similar that's affected.
+Since kernel 6.14-rc1 I have the problem that visual output is no longer
+shown on my PineTab2 and a ``git bisect`` pointed to this patch/commit
+as the culprit. What is important to note is that ``CONFIG_DRM=3Dm`` seems
+to be required as the problem does not occur with ``CONFIG_DRM=3Dy``.
 
-I understand the issue. Maybe this discussion itself will help make it
-appear high enough in the search results to fix the ambiguity ;-)
-I'll leave it up to you if or how to change anything (or not).
+Near the end of my bisect session, something interesting occurred.
+I was booted into a 'bad' kernel (ie no visual output) and when I
+started to build my final kernel, I closed the lid of the PineTab2 which
+made it go into suspend. When my final kernel was built, I opened the
+lid again, which made it resume, to transfer my final kernel to it.
+And much to my surprise, I then did have visual output.
+When I read the (below) commit message of the 'offending' commit, it may
+not be such a surprise after all.
+
+When I build a (new) 6.14-rc1 kernel with a revert of this commit on
+top, then I did not have the above mentioned problem, confirming this
+commit was the 'bad' commit.
+
+I did try it on a Quartz64-B (also rk3566) and it did not have any issue
+(output via HDMI).
+I don't know what the cause for this issue is, hopefully you do.
 
 Cheers,
   Diederik
 
->> > +	default:
->> > +		dev_err(&dfi->edev->dev, "unsupported memory type 0x%X\n",
->> > +			dfi->ddr_type);
->> > +		return -EOPNOTSUPP;
->> > +	}
->> > +
->> > +	return 0;
->> > +}
->> > +
->> >  static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
->> >  {
->> >  	void __iomem *dfi_regs =3D dfi->regs;
->> >  	int i, ret =3D 0;
->> > +	u32 ctrl;
->> > +	u32 ctrl_mask;
->> > =20
->> >  	mutex_lock(&dfi->mutex);
->> > =20
->> > @@ -136,8 +186,11 @@ static int rockchip_dfi_enable(struct rockchip_df=
-i *dfi)
->> > <snip>
->>=20
+On Fri Dec 6, 2024 at 8:26 PM CET, Piotr Zalewski wrote:
+> Remove color_mgmt_changed check from vop2_crtc_atomic_try_set_gamma to
+> allow gamma LUT rewrite during modeset when coming out of suspend. Add
+> a check for color_mgmt_changed directly in vop2_crtc_atomic_flush.
+>
+> This patch fixes the patch adding gamma LUT support for vop2 [1].
+>
+> [1] https://lore.kernel.org/linux-rockchip/20241101185545.559090-3-pZ0100=
+01011111@proton.me/
+>
+> Suggested-by: Andy Yan <andy.yan@rock-chips.com>
+> Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/d=
+rm/rockchip/rockchip_drm_vop2.c
+> index 0c8ec7220fbe..d259f1c6571d 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -1601,7 +1601,7 @@ static void vop2_crtc_atomic_try_set_gamma(struct v=
+op2 *vop2,
+>  					   struct drm_crtc *crtc,
+>  					   struct drm_crtc_state *crtc_state)
+>  {
+> -	if (!vop2->lut_regs || !crtc_state->color_mgmt_changed)
+> +	if (!vop2->lut_regs)
+>  		return;
+> =20
+>  	if (!crtc_state->gamma_lut) {
+> @@ -2669,7 +2669,7 @@ static void vop2_crtc_atomic_flush(struct drm_crtc =
+*crtc,
+>  	struct vop2 *vop2 =3D vp->vop2;
+> =20
+>  	/* In case of modeset, gamma lut update already happened in atomic enab=
+le */
+> -	if (!drm_atomic_crtc_needs_modeset(crtc_state))
+> +	if (!drm_atomic_crtc_needs_modeset(crtc_state) && crtc_state->color_mgm=
+t_changed)
+>  		vop2_crtc_atomic_try_set_gamma_locked(vop2, vp, crtc, crtc_state);
+> =20
+>  	vop2_post_config(crtc);
 
 
---3cdd52bd73029a86b1db18a8ebe587a89be50fded87b2fd99a67d4267211
+--57318c575cf0bc267bcbb636acd15cccce634ec5c21f129cbe5e981a9e70
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaEH01wAKCRDXblvOeH7b
-bjekAQDt2eVvkNGS0Du340umiQKSvaFxizTMOEIkxgx5fjC8KwD+I8OVx9ygu1iV
-eOdkqV5mvuHIC90hcPFQOQTfuRHH9QU=
-=SP89
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaEH5QAAKCRDXblvOeH7b
+bo+zAQCF7eO0LKR0BrCxe85yPqZUywQSlor81IjdsdhLATzzDQD/ZlzKuhnWKhP4
+3U0JPH5a2g4+MJx3D3O3+nc6OyIN2gQ=
+=ZAVT
 -----END PGP SIGNATURE-----
 
---3cdd52bd73029a86b1db18a8ebe587a89be50fded87b2fd99a67d4267211--
+--57318c575cf0bc267bcbb636acd15cccce634ec5c21f129cbe5e981a9e70--
 
 
---===============3095993616337863929==
+--===============5694902731668184405==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -181,5 +179,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============3095993616337863929==--
+--===============5694902731668184405==--
 
