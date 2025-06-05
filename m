@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 041EDC5B543
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 15:50:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFFC6C5AE59
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 15:52:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l2KJ9sLNN1PhWXo35T6ULzno8FSrFf6MPUw5m9GlLLw=; b=zJxHuGQHn9k8B3
-	9vtjQ5T/lTexOR4GGeL33Sa8uISAB2kcVJHjVA8d/bwo8/Nxnnl0eqD+E6qZVililzujuzTHqWpoG
-	qcQ3arQIUWlueXusJ1mDrfbZvrNoW6jROMyFkMhUwT4bUmWa1hvM3KBn9znE9MDO0pflKDbXTKS5T
-	+wpq8K4CthHVTDAnS4mdaoTLsWZ/9ajnNhUrkuMCaVRi6L/krKzXEwME+verQKJ1R6X1nwzhGbBLz
-	s1QvYZFGn5D3jO1+a6JtyhycXcIGhVcCq860vR4CEbiNaTVdXOVT0Q8QimSGgnwMTlm6/nNifeZgk
-	S2CgyhiX+GodQ0khmVaw==;
+	List-Owner; bh=ELi1GHAO+ffIZGzr2bnzXrmgqUU4BD0HvbtKD2+DSdM=; b=Z6agUgr+2yWl/q
+	g6UBnsCYBMp7bNQKPTROBrMx9D89tvlaSCuHiiMkkzURz2z0fORiTsR7IX7ggQiidMIJQZQeWND4j
+	Y29V1Z8XC7vDnT0gvCtgcuQvQDEpo8RJdHEAZV/DDC+s2b/01Cgij8FRgdE5HrmF0e3b7JqVdDo2F
+	/k7YNELl/oqijgGRHrJwbYijuUBgMsGHFMEPZScObvi1HzAhNstZUElxuk9eigSntHMhxPX8MvNel
+	BOsKm+WJJ9hAJsDRjeljLSqbIcuO/ew4Ap4LHBHCki3+SuDokkDTvaWLmo8Clpl2nxC9rvS17lto3
+	Z3r6IdQ6RIFq4p5nWSlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNCrF-0000000FwjK-3kqC;
-	Thu, 05 Jun 2025 15:50:21 +0000
-Received: from smtp-8fa8.mail.infomaniak.ch ([2001:1600:4:17::8fa8])
+	id 1uNCtP-0000000FwyS-3tm4;
+	Thu, 05 Jun 2025 15:52:35 +0000
+Received: from smtp-8fac.mail.infomaniak.ch ([83.166.143.172])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNCiZ-0000000FvYq-3xM5
+	id 1uNCiZ-0000000FvYe-476F
 	for linux-rockchip@lists.infradead.org;
 	Thu, 05 Jun 2025 15:41:27 +0000
-Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4bCpZp2PGNzrRp;
-	Thu,  5 Jun 2025 17:41:22 +0200 (CEST)
-Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4bCpZn4Vc1zdCl;
+Received: from smtp-3-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:4:17::246b])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4bCpZn4ccZz3fw;
 	Thu,  5 Jun 2025 17:41:21 +0200 (CEST)
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4bCpZm4zsJznlL;
+	Thu,  5 Jun 2025 17:41:20 +0200 (CEST)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Thu, 05 Jun 2025 17:41:09 +0200
-Subject: [PATCH v2 4/4] arm64: dts: rockchip: force PMIC reset behavior to
- restart PMU on RK3588 Tiger
+Date: Thu, 05 Jun 2025 17:41:08 +0200
+Subject: [PATCH v2 3/4] arm64: dts: rockchip: force PMIC reset behavior to
+ restart PMU on RK3588 Jaguar
 MIME-Version: 1.0
-Message-Id: <20250605-rk8xx-rst-fun-v2-4-143d190596dd@cherry.de>
+Message-Id: <20250605-rk8xx-rst-fun-v2-3-143d190596dd@cherry.de>
 References: <20250605-rk8xx-rst-fun-v2-0-143d190596dd@cherry.de>
 In-Reply-To: <20250605-rk8xx-rst-fun-v2-0-143d190596dd@cherry.de>
 To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -47,7 +47,7 @@ To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 X-Mailer: b4 0.14.2
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250605_084124_132193_7F69BE98 
+X-CRM114-CacheID: sfid-20250605_084124_149094_28A30B44 
 X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,9 +68,9 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@cherry.de>
 
-The bootloader for RK3588 Tiger currently forces the PMIC reset behavior
-(stored in RST_FUN bitfield in register SYS_CFG3 of the PMIC) to 0b1X
-which is incorrect for our devices.
+The bootloader for RK3588 Jaguar currently forces the PMIC reset
+behavior (stored in RST_FUN bitfield in register SYS_CFG3 of the PMIC)
+to 0b1X which is incorrect for our devices.
 
 It is required to restart the PMU as otherwise the companion
 microcontroller cannot detect the PMIC (and by extension the full
@@ -82,22 +82,22 @@ reset behavior is the expected one.
 
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi | 2 ++
+ arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-index c4933a08dd1e3c92f3e0747135faf97c5eeca906..4c05603abed2e458e406ed45f1bc7cdb57b42478 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-@@ -5,6 +5,7 @@
- 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+index ebe77cdd24e803b00fb848dc81258909472290f1..def6af77efaccabe0dd08aaa7959602bfb143607 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+@@ -7,6 +7,7 @@
  #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/input/input.h>
  #include <dt-bindings/leds/common.h>
 +#include <dt-bindings/mfd/rockchip,rk8xx.h>
  #include <dt-bindings/pinctrl/rockchip.h>
- #include "rk3588.dtsi"
- 
-@@ -440,6 +441,7 @@ pmic@0 {
+ #include <dt-bindings/soc/rockchip,vop2.h>
+ #include <dt-bindings/usb/pd.h>
+@@ -693,6 +694,7 @@ pmic@0 {
  		vcc13-supply = <&vcc_1v1_nldo_s3>;
  		vcc14-supply = <&vcc_1v1_nldo_s3>;
  		vcca-supply = <&vcc5v0_sys>;
