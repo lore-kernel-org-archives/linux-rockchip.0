@@ -4,60 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59806C5AE59
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 20:13:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B605C5AE59
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 23:12:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:Cc:From:Subject:To:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+yJhXMvv9puNMMhU2vwDE7NQDD+7Oi1zNnkNdZC0FUQ=; b=0mxnIjS7SkKOFIXe8ngnv0balQ
-	KmZL3MbZUqnuY4AGxcMH8C2uq6iQe1EjoHgXVspbiokLdVflL0CPh6jdImiQTu2EkFwzEO/YvvC7X
-	doIthW2Df5xTdmt2daqGXg1YqkZIS3g0L4ctk2jdayVbrFvgN6VwvINV2yi3wX6ObVvQeSpJS9AZr
-	jjzYehBtTVHOCxVHTfqnWhrxOfoxBAF7ybTOIRe+HDvEgNBgl0yefMKopbL8g6PN+eRpMY2LvniBV
-	b67GC9OywnsGn6BDRvcFHbQYadllli3tyfocKn+DMObnBrnYZa9s9n0n6736mALlXV/w2mZKSiBtm
-	LzhpN62Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/6GUAjA5+vB69TUjpAMNAUlnnOzmQrWs/Ns/DUuSJdM=; b=nqsRiPP9G/++3s
+	tM+o8Kaz1uhIAZgdMMeH9ovws7LB4GpfCpH3acs3S7VJF2yUJpzov2DZwx0zrrrY3fakeyUM3b0Vt
+	xXKpony6XVrUJto1dF2IY1O2Q3w8Wx0ujjOTDa1121QWcPuUtffIOUR63eC4ziS1GMoYpD3guOkms
+	8H2ozk424YwiN/ZmjRZnq+/vVZNJySERjAStmEb593e90EPM59v5GL2bKSBadGAKEbVjWokgnjvLO
+	sO0DCqWm3yQdvwymvvmlFYaXC2yB6h7YsRLNjsN9edP1I47Tnc9pFn7okP4NL91WmCed0nDBcacIZ
+	8yjUORoJKgzTf1S1pkuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNGxI-0000000GZUm-1cbb;
-	Thu, 05 Jun 2025 20:12:52 +0000
-Received: from out-170.mta0.migadu.com ([2001:41d0:1004:224b::aa])
+	id 1uNJl9-0000000Gm2U-1NGe;
+	Thu, 05 Jun 2025 23:12:31 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNGtR-0000000GZAF-1uXh
+	id 1uNJl7-0000000Gm1I-01yt
 	for linux-rockchip@lists.infradead.org;
-	Thu, 05 Jun 2025 20:08:54 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1749154121;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=OK3R5dXcTJj2wL9xZzZ3c6xb7EGe7PgQLjn11tnh4TQ=;
-	b=YQKEQUi2Pstu3EzNcko9YE4QP82nsguw95NIR1TrkXxSBPFfqHVmxSLC0aBunnrbJZ0UOF
-	QgA62cCzKRJeL9e9piPRVRaIs6WyksCdYgn/6Vzzzr4yEJ6Cbi9nfH0bbh5tMlVFyr6hZ0
-	ySCyOuaYO8IF/V+9O0NwXLCDJmyEAz8dfdCElwdALQ9zHGnCA45OG8Oi7Ny3O0rYPl1J+p
-	FDVtAIkvSSSnWpY/lr1YP8vZovPJW/6GTQVmR15gloQa4Kd0JmgVemDbq4y6OsuEfrUmVp
-	wTaDMu/oUc93GDsEUPHUZGJ3xmAHDbtguz5bV1fq7Wf4hbQaMA+I2RdG6/8wtw==
-Date: Thu, 05 Jun 2025 22:08:29 +0200
-Message-Id: <DAEVDSTMWI1E.J454VZN0R9MA@cknow.org>
-To: "Piotr Zalewski" <pZ010001011111@proton.me>, <hjc@rock-chips.com>,
- <heiko@sntech.de>, <andy.yan@rock-chips.com>
-Subject: Re: [PATCH drm-misc-next] rockchip/drm: vop2: don't check
- color_mgmt_changed in atomic_enable
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-Cc: <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
- <tzimmermann@suse.de>, <airlied@gmail.com>, <simona@ffwll.ch>, "Dang Huynh"
- <danct12@riseup.net>, <dri-devel@lists.freedesktop.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-References: <20241206192013.342692-3-pZ010001011111@proton.me>
-In-Reply-To: <20241206192013.342692-3-pZ010001011111@proton.me>
-X-Migadu-Flow: FLOW_OUT
+	Thu, 05 Jun 2025 23:12:30 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-235f9e87f78so10302955ad.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 05 Jun 2025 16:12:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749165147; x=1749769947; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=gH9iE8xUuhmsM++nBGZb1sp3kMQiuQ+pxJGMgIYtR6c=;
+        b=k0BLC2YFipM2U9aRMR6Ci4gg3bVMVrt5FOjUMomqcVg+aC29N1Y2nr7uTyuXEELSA7
+         kVwttthbAX00a6qipoj+NkqKSa5v6yopZNFrvWr9nRQtNTugLyFy9UF7HD21mH5osWKp
+         0oTq3K+89uaBdBe7VQMeDiK0RzcoSkD7pAHGD56xdTxZ3cy7twnFqeBn9qOOH5fGNCpE
+         LTetCd+Dtzdpz4zPRZ3QBRGGb/Cs5KwLSxM2vX21wupM5KLG7adq9vR2wNhiLIw95auu
+         KXyZoGL9ZdJitP0hAPHdoRx7Zdc4XPAuxS2z6bhC3PPXrMDvLYOBK48+x1+/c/W/h9iU
+         8ejg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749165147; x=1749769947;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=gH9iE8xUuhmsM++nBGZb1sp3kMQiuQ+pxJGMgIYtR6c=;
+        b=OCg2jFYMLhKzYkla0/jHIB2eXALdB0AwZIcEz8rIq1rOymH+aXSQFCQoCZyYmxZvbL
+         gur6KsRxKw2X046eAISdr7raUvTq5zenNfnFzw2wwuX9C1tAc9uPcxtRlUPFJSZTIisx
+         LPDrO5t1XXtzF1Ui4Dr4qIViXvC9NRAyiVKGKZZobu5NtT6oJkjyq7ftMGQMNIyT6KFn
+         4md8RY3y+XFHGCMTOELVO64Rczmr30v/ZfIaXu7e5prFiieLj74xndv4IN3MwKfSOmpI
+         ku0VVQ9SEDCnFakMVWeGbJQQgwAOo5KU5foUFRCWk6ww6TuftENB+xIVqcNHDSXnvPWG
+         1IuQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVe3oOFni6Z+8xEyi1SSgqD2Tr/LEXUAkTZPa7VEeA4dF+f7d1QihYNlQJKjXmMwgahOHUoWUL0sWgjw00FGQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzs1SFkkMWgxpiZLxh0vbcVaxwxxWKKvkvEhTXEi9El5sgQDP/J
+	VTh4MoGIde0PvuUtBB+liSwv9asgZ0gwwaI0iuTufoPb++FJIOH50wMMNBeMtllR
+X-Gm-Gg: ASbGnctabdLei41V/cnEptPwMOd+8ER+HUT3dJP/RkwrRyEoJsXxOb2/iqIK4AeJ1Sw
+	dQSM+XV8OUmG3BWrZc6XinSWJXJu5ekGu35bexN1BFkDbCwSqeA5apyjJNXYVk9PJYnveTaTX8t
+	29pB2+DClMXEe/ONQUfKDAgTYiGTfZCohZHJNr1vEqr48cGRMqo/8YXAP0YzoC/bu5vCT7+r1P+
+	KXSFO5jmWuAMwXFEttUQscr4367/LRI4PUKwZHQJQr3dy64B62CRyD1LDwmJFNhe2CVkZc0feIh
+	ClWMPxoiB5ykfkz2LxGlECjJ14+8Uz9qWnQKTHxLPsm01Ebk3zF4C6aDS8yzXw==
+X-Google-Smtp-Source: AGHT+IEjxScSWalAxjVgNDznTRIAw0FLaD7GhhKVsHmV467GCZwy5/nzrKZqqBA5WDi5Nt+WQhlN5A==
+X-Received: by 2002:a17:902:ce05:b0:235:ef67:b595 with SMTP id d9443c01a7336-23601d710bamr18195975ad.35.1749165147195;
+        Thu, 05 Jun 2025 16:12:27 -0700 (PDT)
+Received: from wash.local ([50.46.184.91])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23603097091sm1346175ad.69.2025.06.05.16.12.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Jun 2025 16:12:26 -0700 (PDT)
+From: Joseph Kogut <joseph.kogut@gmail.com>
+Subject: [PATCH v4 0/3] Add Radxa CM5 module and IO board dts
+Date: Thu, 05 Jun 2025 16:11:50 -0700
+Message-Id: <20250605-rk3588s-cm5-io-dts-upstream-v4-0-8445db5ca6b0@gmail.com>
+MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIADYkQmgC/x3MSwqDQAwA0KtI1gbGT+roVcSFOJk2FD8ktggyd
+ +/Q5du8G4xV2GAoblD+ism+ZbRlActr3p6MErKhdjW5hyPUd0PeGy4roewYTsPPYafyvGJsQ8W
+ emr7rGPJwKEe5/vs4pfQDOf6pZG0AAAA=
+X-Change-ID: 20250605-rk3588s-cm5-io-dts-upstream-f4d1e853977e
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Joseph Kogut <joseph.kogut@gmail.com>, 
+ Steve deRosier <derosier@cal-sierra.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250605_130853_632775_F690FA0B 
-X-CRM114-Status: GOOD (  22.39  )
+X-CRM114-CacheID: sfid-20250605_161229_053700_22E29001 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,115 +97,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5694902731668184405=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5694902731668184405==
-Content-Type: multipart/signed;
- boundary=57318c575cf0bc267bcbb636acd15cccce634ec5c21f129cbe5e981a9e70;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+This patch series adds initial device tree support for the Radxa CM5 SoM
+and accompanying IO board.
 
---57318c575cf0bc267bcbb636acd15cccce634ec5c21f129cbe5e981a9e70
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+For the latest revision, we noticed that the USB-C port wasn't working
+properly on boot until an external power source was connected. This was
+tracked down to try-power-role being incorrectly set to source instead
+of sink. Setting it to sink also matches with the vendor kernel
+configuration, and fixes USB-C.
 
-Hi Piotr,
+V3 -> V4:
+  - Fixed XHCI initialization bug by changing try-power-role from source
+    to sink
 
-Since kernel 6.14-rc1 I have the problem that visual output is no longer
-shown on my PineTab2 and a ``git bisect`` pointed to this patch/commit
-as the culprit. What is important to note is that ``CONFIG_DRM=3Dm`` seems
-to be required as the problem does not occur with ``CONFIG_DRM=3Dy``.
+V2 -> V3:
+  - Addressed YAML syntax error in dt binding (per Rob)
+  - Fixed whitespace issue in dts reported by checkpatch.pl
+  - Split base SoM and carrier board into separate patches
+  - Added further details about the SoM and carrier to the commit
+    messages
 
-Near the end of my bisect session, something interesting occurred.
-I was booted into a 'bad' kernel (ie no visual output) and when I
-started to build my final kernel, I closed the lid of the PineTab2 which
-made it go into suspend. When my final kernel was built, I opened the
-lid again, which made it resume, to transfer my final kernel to it.
-And much to my surprise, I then did have visual output.
-When I read the (below) commit message of the 'offending' commit, it may
-not be such a surprise after all.
+V1 -> V2:
+  - Added copyright header and data sheet links
+  - Removed non-existent property
+  - Sorted alphabetically
+  - Removed errant whitespace
+  - Moved status to the end of each node
+  - Removed pinctrl-names property from leds (indicated by CHECK_DTBS)
+  - Removed delays from gmac with internal delay
 
-When I build a (new) 6.14-rc1 kernel with a revert of this commit on
-top, then I did not have the above mentioned problem, confirming this
-commit was the 'bad' commit.
+Signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+---
+Joseph Kogut (3):
+      dt-bindings: arm: rockchip: Add Radxa CM5 IO board
+      arm64: dts: rockchip: Add rk3588 based Radxa CM5
+      arm64: dts: rockchip: Add support for CM5 IO carrier
 
-I did try it on a Quartz64-B (also rk3566) and it did not have any issue
-(output via HDMI).
-I don't know what the cause for this issue is, hopefully you do.
+ .../devicetree/bindings/arm/rockchip.yaml          |   7 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+ .../boot/dts/rockchip/rk3588s-radxa-cm5-io.dts     | 454 +++++++++++++++++++++
+ .../arm64/boot/dts/rockchip/rk3588s-radxa-cm5.dtsi | 156 +++++++
+ 4 files changed, 618 insertions(+)
+---
+base-commit: 0af2f6be1b4281385b618cb86ad946eded089ac8
+change-id: 20250605-rk3588s-cm5-io-dts-upstream-f4d1e853977e
 
-Cheers,
-  Diederik
+Best regards,
+-- 
+Joseph Kogut <joseph.kogut@gmail.com>
 
-On Fri Dec 6, 2024 at 8:26 PM CET, Piotr Zalewski wrote:
-> Remove color_mgmt_changed check from vop2_crtc_atomic_try_set_gamma to
-> allow gamma LUT rewrite during modeset when coming out of suspend. Add
-> a check for color_mgmt_changed directly in vop2_crtc_atomic_flush.
->
-> This patch fixes the patch adding gamma LUT support for vop2 [1].
->
-> [1] https://lore.kernel.org/linux-rockchip/20241101185545.559090-3-pZ0100=
-01011111@proton.me/
->
-> Suggested-by: Andy Yan <andy.yan@rock-chips.com>
-> Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/d=
-rm/rockchip/rockchip_drm_vop2.c
-> index 0c8ec7220fbe..d259f1c6571d 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -1601,7 +1601,7 @@ static void vop2_crtc_atomic_try_set_gamma(struct v=
-op2 *vop2,
->  					   struct drm_crtc *crtc,
->  					   struct drm_crtc_state *crtc_state)
->  {
-> -	if (!vop2->lut_regs || !crtc_state->color_mgmt_changed)
-> +	if (!vop2->lut_regs)
->  		return;
-> =20
->  	if (!crtc_state->gamma_lut) {
-> @@ -2669,7 +2669,7 @@ static void vop2_crtc_atomic_flush(struct drm_crtc =
-*crtc,
->  	struct vop2 *vop2 =3D vp->vop2;
-> =20
->  	/* In case of modeset, gamma lut update already happened in atomic enab=
-le */
-> -	if (!drm_atomic_crtc_needs_modeset(crtc_state))
-> +	if (!drm_atomic_crtc_needs_modeset(crtc_state) && crtc_state->color_mgm=
-t_changed)
->  		vop2_crtc_atomic_try_set_gamma_locked(vop2, vp, crtc, crtc_state);
-> =20
->  	vop2_post_config(crtc);
-
-
---57318c575cf0bc267bcbb636acd15cccce634ec5c21f129cbe5e981a9e70
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaEH5QAAKCRDXblvOeH7b
-bo+zAQCF7eO0LKR0BrCxe85yPqZUywQSlor81IjdsdhLATzzDQD/ZlzKuhnWKhP4
-3U0JPH5a2g4+MJx3D3O3+nc6OyIN2gQ=
-=ZAVT
------END PGP SIGNATURE-----
-
---57318c575cf0bc267bcbb636acd15cccce634ec5c21f129cbe5e981a9e70--
-
-
---===============5694902731668184405==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5694902731668184405==--
-
