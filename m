@@ -4,60 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 092DBC5B543
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 18:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1919C5B543
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 19:22:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=eN591hUn9bOmU/9MBnpmGlAWr8YdbITks1hOvUNOGWk=; b=UaP/0pCIyjxrVd
-	99/ISbwZnciZudEgFAc5Qg4WnO0kZGsCbhrUmWlLujLpkgKIfmllogcIo4PaywtzXnGLJ1wfWAAK/
-	t008fcqrb89QQXjRtcNH1pezseEVxEHdnrgY2pYCwQqWaoRznMABkgb8+fOCJrcgYywFd4cb/9JGz
-	sgiPpQjFgz4SmaIYq6OqIMVtYRsGhkof+vX5ywZ5CYGjypYXUtOtF8ABr/JY4MB9ODlt+tfme5MSG
-	jJmybiyxoq9VLQi+YgEA/eKTjEJCnfdREKK1Tt4m5Kh3jnedAaqOO0jTnnrmvXT9XY4p0i1fpk8Ty
-	mCRgwzWMSCBrF+STTURQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hliYOp4u9IwlitJhMXg0kWxUQGNF9PAChwspn1ZdY/I=; b=0xPVRtvqisFXNh
+	N8pSHCuj/85qTfFFdjaZC2exaTN3TQFUGwp1ORsdXCv8gtgqzd49C6PGicDMnz5gtY/+PF1xxPnzH
+	hvXXf3p7l4m8jZ182Er9KhpbbWZjJvuC/9Chz/69T58PGHFRGq1DwG7JhRN+Bp5sJPWfidkDHXKIX
+	hAfbnd3egzel3wS2fN6KCaKEyCfI3WVSwaq6SpZwvaKdlVZvQ9pztHQ6EO0Ts4YKgSvbdYsq5vHs5
+	07QclFfL8xVT0C21t7wE9fsA97LXlidw+g6Mt482pCGsb1QymP5O+8YwvpItgBFgix57JpCPW/6Kd
+	V34bM0D+xkIn36v3c2SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNFmZ-0000000GQvD-32xA;
-	Thu, 05 Jun 2025 18:57:43 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uNGAA-0000000GT4O-3QXF;
+	Thu, 05 Jun 2025 19:22:06 +0000
+Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNFkS-0000000GQk2-0t8T;
-	Thu, 05 Jun 2025 18:55:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References;
-	bh=Jd+XYEA3pEbCUDkOI0L8oYUprN/tANZB2XqREwLARWk=; b=AzPGaupMWwjr+jdlEJnJjLmb1h
-	PpHNNNg3fl9L8FUUhISlhtsfe0fG0fgrspHJGFHQCX9BP7TvDPp6EUCIcvikuiR5Qk+i1zcJnoreA
-	9sNVld9KOWASwXCBWeplxGf12yrpFZ4TABV4COZ/SSUpEiNFNq9q+VEnlTcXA1hjotA0uJbyErGUk
-	TUizP+K0D3pZEsuB9CpN8gUxMjZUSFys5zLTHz3CxMu7o82BAB24QuaaozUO59ItNGn3Gasv+odGZ
-	nf9krPnmFiyDF+ikuBG5E/w+86acMCiaWRLNQ4aINBC92xikNgZSgTPRCSvL4AoFDcc1W8AGb47Q7
-	VvUHqc3w==;
-Received: from i53875ad6.versanet.de ([83.135.90.214] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uNFkM-0000s7-Gi; Thu, 05 Jun 2025 20:55:26 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: quentin.schulz@cherry.de,
-	jonas@kwiboo.se,
-	dsimic@manjaro.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: rockchip: add regulator-enable-ramp-delay to RK860-0/-2/-3 regulators
-Date: Thu,  5 Jun 2025 20:50:01 +0200
-Message-ID: <20250605185001.377055-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
+	id 1uNG81-0000000GSow-40c6;
+	Thu, 05 Jun 2025 19:19:55 +0000
+Received: by mail-qt1-x82c.google.com with SMTP id d75a77b69052e-4a44e3928a9so14936801cf.2;
+        Thu, 05 Jun 2025 12:19:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749151192; x=1749755992; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=07Pr/3RW2zLHEhFDRanXb6IABI33Ahx5XZcAGV/Afqg=;
+        b=Apf9RUT8I/qqPvHb23PBIURPiUEdEKCoEjHdAop35JKkgb+vUZGO9mzu5LPiUAi96m
+         i4E7AZk0B7+jwe+H9nxdrM0ybiadRmNJRk/o7JEi+zoqR0cddMoQAyBJWWs1j8KScL+H
+         SQxNSnNKguac+de7E7Q3V2Fo6dxpaHboLXX7CNdsvvTU7ERhuiT84LlvzPuv+mIH2V4+
+         13/A94btPrGPgjt6zwoWMz0q0acpm8ls9hjYE+dEuHb6dI9DYavaYnp5i3m5EyPAr6AX
+         PndU5qfi0FoRcNc9SfpYb1xwITFCXsK/KYU3x8qNPTpXeFLWEo09lzvXYK9hN+cvsxvd
+         ozbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749151192; x=1749755992;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=07Pr/3RW2zLHEhFDRanXb6IABI33Ahx5XZcAGV/Afqg=;
+        b=wbtGvMwV34CsTwA6udwau4WZ7NbtPLGrf4b3hzTtih47nFuXqvVIq8TOpFurEv0Dqp
+         sR1/07gE77AYnqsUnm11tA13EjZ20MTPLL1NRxc4M8OvSetvRW/2NP5jUtjOf/vfKm3x
+         fha/ckTQ3bzGERWyJjOlBcRvhGa8Tnb7UwGRJJetg1WqRo9QFwcpkcB0B9yb63oclxbw
+         vThXokrfh6BPP5JUKhMYjvENDkf7HAnWHdMP/Hu/p/8golN80sl1U3psRzGp6rfzifEQ
+         fFv/VkAhoSawA9vgGIBaYN2dZvfXwNwofOj047BDKBN+qTHrO5KHSXQWSgXMmFvTIOc4
+         JyFw==
+X-Forwarded-Encrypted: i=1; AJvYcCU2VvA7BsqO6B85VK0HTXORf9yG/YuZGE3Gau/UQRxx8Q85SCa0LxtXtDD5CC7aDkvF6Bl9BMH7YnhRGkIwRrg=@lists.infradead.org, AJvYcCX8d+sIesI2wdnwu8ewu1u1FedMHi54A3HDg7X5AjrBBBWPvLG35+GrQyujK4o3L/h8VH3mj5A0JIvVdP9LD1c9@lists.infradead.org
+X-Gm-Message-State: AOJu0YzDZNurMc60+iEEKmosDxRRLcaHsMcKIxcbb3P0lCBbaisxSyqw
+	G4LBah9WJB6TR9Hk5pgu4aetF0x18omgKED5EyMYlBjnZ3h5YrowTTfPHNck5lfEWR2/MOJ4Jcw
+	UMsghzTtuqdFaB1anMJzMT6JQWiHZQGk=
+X-Gm-Gg: ASbGnct1DvM3dfyjYFKH25PWPM/3HnxSY9d3xc5mw82ai4oOAix5kHaRZFOiX+PD5rl
+	W11CRXTvEWaahHvlX2a+3nAFnYh5grzL3Ae84cg6hwOGE+5y8HibYlLvj0++sp/H/jcR098z0gR
+	wKRMOSSiy+K0Q5ZCJaQ5fwU4V6xjq4/tWH5D7T3oCiBUgU
+X-Google-Smtp-Source: AGHT+IFCqGBmttXS2MNsvkjz2Oag4+7fLFaxxoaskycYOFPeR6iWx5WNapqSo9nz4/NLFcssJHKpXKF6je1fcsq0xWA=
+X-Received: by 2002:a05:622a:581b:b0:4a4:4206:b6f3 with SMTP id
+ d75a77b69052e-4a5b9e00ed4mr11050881cf.10.1749151192105; Thu, 05 Jun 2025
+ 12:19:52 -0700 (PDT)
 MIME-Version: 1.0
+References: <20250425-rk3576-tsadc-upstream-v5-0-0c840b99c30e@collabora.com> <20250425-rk3576-tsadc-upstream-v5-6-0c840b99c30e@collabora.com>
+In-Reply-To: <20250425-rk3576-tsadc-upstream-v5-6-0c840b99c30e@collabora.com>
+From: Alexey Charkov <alchark@gmail.com>
+Date: Thu, 5 Jun 2025 23:19:39 +0400
+X-Gm-Features: AX0GCFsHLRy0Dx5vZtQW6clXPjR-z7m8YaqdEawS_nTns43C_dVBSJ1PP5R5jWo
+Message-ID: <CABjd4YwrraMC587sn1afA+pHGA-P25xhEMh7AJJQbQ5RwYJPsg@mail.gmail.com>
+Subject: Re: [PATCH v5 6/7] arm64: dts: rockchip: Add thermal nodes to RK3576
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com, 
+	linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250605_115532_573540_1D4BA5B0 
-X-CRM114-Status: GOOD (  19.36  )
+X-CRM114-CacheID: sfid-20250605_121953_995162_99C3EDC6 
+X-CRM114-Status: GOOD (  23.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,793 +94,170 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK860-0/-1/-2/-3 regulators are used on rk3588 boards in addition to
-the main pmic, to supply components like the big cpu-clusters and npu.
-
-So far nobody had a use-case for turning these off. The supplies for the
-big cpu-clusters are on by default and those clusters normally are not
-completely turned off during runtime.
-
-This changed with the new Rocket driver for the NPU, which does use
-runtime-pm and thus does turn off and on the NPU's supply regulator as
-needed. This regulator is also needed to run to actually turn on the
-power-domain for the NPU.
-
-If the rocket driver now runtime-suspends while running a load and then
-runtime-resumes again, hangs can be observed with messages like
-
-  rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'nputop' on, val=0
-
-A way to "fix" that issue when it happens, is to set the regulator to
-always-on. This suggests that the power-domain is trying to get power
-from the regulator before it is ready to deliver power.
-
-And in fact the datasheet for the regulator defines an "Internal soft-start
-time" characteristic. For a target output voltage of 1.0V the _typical_
-time to reach at least 92% of the output, is given as 260uS.
-
-That means the time is dependent on the target voltage (up to 1.5V for
-the type) and also the rest of the board design.
-
-So add a regulator-enable-ramp-delay to all rk860-2/-3 nodes we have in
-mainline right now. I've chosen 500uS to be on the safe side, as
-260uS is the "typical" value for 1.0V and sadly no max value is given
-in the datasheet.
-
-This adds the property to all rk8600, rk8602 and rk8603 occurences that
-are in mainline as of 6.16-rc1. There is currently no rk8601 used in
-any in-kernel devicetree.
-
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
-changes in v2:
-- also adapt rk8600 in rk3566-radxa-zero-3 (Quentin)
-- reword commit description to be easier to understand (Quentin)
-
- arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi         | 1 +
- arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts            | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588-armsom-lm7.dtsi           | 2 ++
- arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts          | 2 ++
- arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi           | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi | 2 ++
- arch/arm64/boot/dts/rockchip/rk3588-fet3588-c.dtsi            | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588-firefly-core-3588j.dtsi   | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588-firefly-icore-3588q.dtsi  | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588.dtsi  | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts           | 2 ++
- arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts                | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi            | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi           | 2 ++
- arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts            | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi              | 2 ++
- arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi                | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dts           | 2 ++
- arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi           | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts            | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts        | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts      | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts         | 2 ++
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi           | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts            | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi          | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts              | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts              | 3 +++
- 28 files changed, 74 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-index 1ee5d96a46a1..6fa0b4b35d9c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-@@ -424,6 +424,7 @@ vdd_cpu: regulator@40 {
- 		regulator-name = "vdd_cpu";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <712500>;
- 		regulator-max-microvolt = <1390000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-index e04f21d8c831..a290360c3c49 100644
---- a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-@@ -219,6 +219,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -236,6 +237,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -264,6 +266,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-armsom-lm7.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-armsom-lm7.dtsi
-index e44125e9a8fb..d44685f7a8dc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-armsom-lm7.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-armsom-lm7.dtsi
-@@ -86,6 +86,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -103,6 +104,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts b/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-index ae9274365bed..0d0ff629127a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-@@ -212,6 +212,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -229,6 +230,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
-index cc37f082adea..9606d3378b95 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
-@@ -152,6 +152,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -169,6 +170,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -190,6 +192,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
-index 8a783dc64c0e..27f92fe334c4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
-@@ -98,6 +98,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -115,6 +116,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-fet3588-c.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-fet3588-c.dtsi
-index 4331cdc70f97..a7e4b0cf44b5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-fet3588-c.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-fet3588-c.dtsi
-@@ -154,6 +154,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -171,6 +172,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -194,6 +196,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-firefly-core-3588j.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-firefly-core-3588j.dtsi
-index 80e16ea4154c..610305dc8b78 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-firefly-core-3588j.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-firefly-core-3588j.dtsi
-@@ -56,6 +56,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		fcs,suspend-voltage-selector = <1>;
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-name = "vdd_cpu_big0_s0";
-@@ -74,6 +75,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -96,6 +98,7 @@ vdd_npu_s0: vdd_npu_mem_s0: regulator@42 {
- 		fcs,suspend-voltage-selector = <1>;
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-name = "vdd_npu_s0";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-firefly-icore-3588q.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-firefly-icore-3588q.dtsi
-index 6726eeb49255..50d3cda8956e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-firefly-icore-3588q.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-firefly-icore-3588q.dtsi
-@@ -56,6 +56,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		fcs,suspend-voltage-selector = <1>;
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-name = "vdd_cpu_big0_s0";
-@@ -73,6 +74,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		fcs,suspend-voltage-selector = <1>;
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-name = "vdd_cpu_big1_s0";
-@@ -96,6 +98,7 @@ vdd_npu_s0: vdd_npu_mem_s0: regulator@42 {
- 		fcs,suspend-voltage-selector = <1>;
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-name = "vdd_npu_s0";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588.dtsi
-index af431fdcbea7..070c9930dd30 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588.dtsi
-@@ -146,6 +146,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -163,6 +164,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -184,6 +186,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts b/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-index 73d8ce4fde2b..f871c99e5b9a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-@@ -241,6 +241,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -258,6 +259,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-index ebe77cdd24e8..f13ecd02dafa 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-@@ -394,6 +394,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-@@ -411,6 +412,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -505,6 +507,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-index 3d8b6f0c5541..4cb4fe409cd4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-@@ -411,6 +411,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -428,6 +429,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -449,6 +451,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi
-index 91d56c34a1e4..e8e66e72ea54 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi
-@@ -230,6 +230,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -247,6 +248,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-index 7de17117df7a..ee0e49643acc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-@@ -307,6 +307,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -324,6 +325,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -347,6 +349,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
-index 6052787d2560..2d91fa8185a8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
-@@ -281,6 +281,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -298,6 +299,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-index c4933a08dd1e..1546a81cca50 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-@@ -198,6 +198,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-@@ -270,6 +271,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -287,6 +289,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dts b/arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dts
-index 5a428e00ab93..29e6e730548b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-toybrick-x0.dts
-@@ -232,6 +232,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -249,6 +250,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-index 60ad272982ad..189bce24e656 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-@@ -133,6 +133,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -150,6 +151,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -173,6 +175,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-index 8b717c4017a4..c95a1386d61b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-@@ -251,6 +251,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -268,6 +269,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -289,6 +291,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
-index 873a2bd6a6de..009b6a0579e7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
-@@ -470,6 +470,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		compatible = "rockchip,rk8602";
- 		reg = <0x42>;
- 		fcs,suspend-voltage-selector = <1>;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-name = "vdd_cpu_big0_s0";
-@@ -485,6 +486,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		compatible = "rockchip,rk8603", "rockchip,rk8602";
- 		reg = <0x43>;
- 		fcs,suspend-voltage-selector = <1>;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-name = "vdd_cpu_big1_s0";
-@@ -504,6 +506,7 @@ vdd_npu_s0: regulator@42 {
- 		compatible = "rockchip,rk8602";
- 		reg = <0x42>;
- 		fcs,suspend-voltage-selector = <1>;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-name = "vdd_npu_s0";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-index 4ec7bc4a9e96..f9896bce86f7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-@@ -296,6 +296,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		reg = <0x42>;
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-name = "vdd_cpu_big0_s0";
-@@ -313,6 +314,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		reg = <0x43>;
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-name = "vdd_cpu_big1_s0";
-@@ -334,6 +336,7 @@ vdd_npu_s0: regulator@42 {
- 		reg = <0x42>;
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-name = "vdd_npu_s0";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-index 2c22abaf40a8..caafb142ae4f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-@@ -233,6 +233,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -250,6 +251,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-index fbf062ec3bf1..9d87d129f00c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-@@ -267,6 +267,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -284,6 +285,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -303,6 +305,7 @@ vdd_npu_s0: regulator@42 {
- 		reg = <0x42>;
- 		fcs,suspend-voltage-selector = <1>;
- 		regulator-name = "vdd_npu_s0";
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
-index a72063c55140..d081adaf7be4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
-@@ -280,6 +280,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -297,6 +298,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -318,6 +320,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-index 4fedc50cce8c..afbf69e23cb0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-@@ -217,6 +217,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -234,6 +235,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -255,6 +257,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index f894742b1ebe..b4a302c97a50 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -195,6 +195,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -212,6 +213,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -233,6 +235,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-index dd7317bab613..072dbf877fec 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-@@ -294,6 +294,7 @@ vdd_cpu_big0_s0: regulator@42 {
- 		regulator-name = "vdd_cpu_big0_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -311,6 +312,7 @@ vdd_cpu_big1_s0: regulator@43 {
- 		regulator-name = "vdd_cpu_big1_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <1050000>;
- 		regulator-ramp-delay = <2300>;
-@@ -339,6 +341,7 @@ vdd_npu_s0: regulator@42 {
- 		regulator-name = "vdd_npu_s0";
- 		regulator-always-on;
- 		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
--- 
-2.47.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTmljb2xhcywKCk9uIFRodSwgSnVuIDUsIDIwMjUgYXQgMTE6MDfigK9QTSBOaWNvbGFzIEZy
+YXR0YXJvbGkKPG5pY29sYXMuZnJhdHRhcm9saUBjb2xsYWJvcmEuY29tPiB3cm90ZToKPgo+IEFk
+ZCB0aGUgVFNBREMgbm9kZSB0byB0aGUgUkszNTc2LiBBZGRpdGlvbmFsbHksIGFkZCBldmVyeXRo
+aW5nIHRoZSBUU0FEQwo+IG5lZWRzIHRvIGZ1bmN0aW9uLCBpLmUuIHRoZXJtYWwgem9uZXMsIHRo
+ZWlyIHRyaXAgcG9pbnRzIGFuZCBtYXBzLCBhcwo+IHdlbGwgYXMgYWRqdXN0IHRoZSBDUFUgY29v
+bGluZy1jZWxscyBwcm9wZXJ0eS4KPgo+IFRoZSBwb2xsaW5nLWRlbGF5IHByb3BlcnRpZXMgYXJl
+IHNldCB0byAwIGFzIHdlIGRvIGhhdmUgaW50ZXJydXB0cyBmb3IKPiB0aGlzIFRTQURDIG9uIHRo
+aXMgcGFydGljdWxhciBTb0MuCj4KPiBTaWduZWQtb2ZmLWJ5OiBOaWNvbGFzIEZyYXR0YXJvbGkg
+PG5pY29sYXMuZnJhdHRhcm9saUBjb2xsYWJvcmEuY29tPgo+IC0tLQo+ICBhcmNoL2FybTY0L2Jv
+b3QvZHRzL3JvY2tjaGlwL3JrMzU3Ni5kdHNpIHwgMTY0ICsrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKy0KPiAgMSBmaWxlIGNoYW5nZWQsIDE2MiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9u
+cygtKQo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTc2
+LmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU3Ni5kdHNpCj4gaW5kZXgg
+YTZiZmVmODJkNTBiYzliMDIwM2EwNDMyNGQ2MWUwZjIzMmI2MWE2NS4uMWMwN2FkNzhjOTIzMGYx
+ZTQ2YjBlZjg4MTc4MzRmNThiMTllYjg2YiAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3Qv
+ZHRzL3JvY2tjaGlwL3JrMzU3Ni5kdHNpCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
+Y2hpcC9yazM1NzYuZHRzaQo+IEBAIC0xMSw2ICsxMSw3IEBACj4gICNpbmNsdWRlIDxkdC1iaW5k
+aW5ncy9wb3dlci9yb2NrY2hpcCxyazM1NzYtcG93ZXIuaD4KPiAgI2luY2x1ZGUgPGR0LWJpbmRp
+bmdzL3Jlc2V0L3JvY2tjaGlwLHJrMzU3Ni1jcnUuaD4KPiAgI2luY2x1ZGUgPGR0LWJpbmRpbmdz
+L3NvYy9yb2NrY2hpcCxib290LW1vZGUuaD4KPiArI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3RoZXJt
+YWwvdGhlcm1hbC5oPgo+Cj4gIC8gewo+ICAgICAgICAgY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxy
+azM1NzYiOwo+IEBAIC0xMTMsOSArMTE0LDkgQEAgY3B1X2wwOiBjcHVAMCB7Cj4gICAgICAgICAg
+ICAgICAgICAgICAgICAgY2FwYWNpdHktZG1pcHMtbWh6ID0gPDQ4NT47Cj4gICAgICAgICAgICAg
+ICAgICAgICAgICAgY2xvY2tzID0gPCZzY21pX2NsayBTQ01JX0FSTUNMS19MPjsKPiAgICAgICAg
+ICAgICAgICAgICAgICAgICBvcGVyYXRpbmctcG9pbnRzLXYyID0gPCZjbHVzdGVyMF9vcHBfdGFi
+bGU+Owo+IC0gICAgICAgICAgICAgICAgICAgICAgICNjb29saW5nLWNlbGxzID0gPDI+Owo+ICAg
+ICAgICAgICAgICAgICAgICAgICAgIGR5bmFtaWMtcG93ZXItY29lZmZpY2llbnQgPSA8MTIwPjsK
+PiAgICAgICAgICAgICAgICAgICAgICAgICBjcHUtaWRsZS1zdGF0ZXMgPSA8JkNQVV9TTEVFUD47
+Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgI2Nvb2xpbmctY2VsbHMgPSA8Mj47Cj4gICAgICAg
+ICAgICAgICAgIH07Cj4KPiAgICAgICAgICAgICAgICAgY3B1X2wxOiBjcHVAMSB7Cj4gQEAgLTEy
+Nyw2ICsxMjgsNyBAQCBjcHVfbDE6IGNwdUAxIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICBj
+bG9ja3MgPSA8JnNjbWlfY2xrIFNDTUlfQVJNQ0xLX0w+Owo+ICAgICAgICAgICAgICAgICAgICAg
+ICAgIG9wZXJhdGluZy1wb2ludHMtdjIgPSA8JmNsdXN0ZXIwX29wcF90YWJsZT47Cj4gICAgICAg
+ICAgICAgICAgICAgICAgICAgY3B1LWlkbGUtc3RhdGVzID0gPCZDUFVfU0xFRVA+Owo+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICNjb29saW5nLWNlbGxzID0gPDI+Owo+ICAgICAgICAgICAgICAg
+ICB9Owo+Cj4gICAgICAgICAgICAgICAgIGNwdV9sMjogY3B1QDIgewo+IEBAIC0xMzgsNiArMTQw
+LDcgQEAgY3B1X2wyOiBjcHVAMiB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0g
+PCZzY21pX2NsayBTQ01JX0FSTUNMS19MPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBvcGVy
+YXRpbmctcG9pbnRzLXYyID0gPCZjbHVzdGVyMF9vcHBfdGFibGU+Owo+ICAgICAgICAgICAgICAg
+ICAgICAgICAgIGNwdS1pZGxlLXN0YXRlcyA9IDwmQ1BVX1NMRUVQPjsKPiArICAgICAgICAgICAg
+ICAgICAgICAgICAjY29vbGluZy1jZWxscyA9IDwyPjsKPiAgICAgICAgICAgICAgICAgfTsKPgo+
+ICAgICAgICAgICAgICAgICBjcHVfbDM6IGNwdUAzIHsKPiBAQCAtMTQ5LDYgKzE1Miw3IEBAIGNw
+dV9sMzogY3B1QDMgewo+ICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmc2NtaV9j
+bGsgU0NNSV9BUk1DTEtfTD47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgb3BlcmF0aW5nLXBv
+aW50cy12MiA9IDwmY2x1c3RlcjBfb3BwX3RhYmxlPjsKPiAgICAgICAgICAgICAgICAgICAgICAg
+ICBjcHUtaWRsZS1zdGF0ZXMgPSA8JkNQVV9TTEVFUD47Cj4gKyAgICAgICAgICAgICAgICAgICAg
+ICAgI2Nvb2xpbmctY2VsbHMgPSA8Mj47Cj4gICAgICAgICAgICAgICAgIH07Cj4KPiAgICAgICAg
+ICAgICAgICAgY3B1X2IwOiBjcHVAMTAwIHsKPiBAQCAtMTU5LDkgKzE2Myw5IEBAIGNwdV9iMDog
+Y3B1QDEwMCB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgY2FwYWNpdHktZG1pcHMtbWh6ID0g
+PDEwMjQ+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmc2NtaV9jbGsgU0NN
+SV9BUk1DTEtfQj47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgb3BlcmF0aW5nLXBvaW50cy12
+MiA9IDwmY2x1c3RlcjFfb3BwX3RhYmxlPjsKPiAtICAgICAgICAgICAgICAgICAgICAgICAjY29v
+bGluZy1jZWxscyA9IDwyPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBkeW5hbWljLXBvd2Vy
+LWNvZWZmaWNpZW50ID0gPDMyMD47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgY3B1LWlkbGUt
+c3RhdGVzID0gPCZDUFVfU0xFRVA+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgICNjb29saW5n
+LWNlbGxzID0gPDI+Owo+ICAgICAgICAgICAgICAgICB9Owo+Cj4gICAgICAgICAgICAgICAgIGNw
+dV9iMTogY3B1QDEwMSB7Cj4gQEAgLTE3Myw2ICsxNzcsNyBAQCBjcHVfYjE6IGNwdUAxMDEgewo+
+ICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmc2NtaV9jbGsgU0NNSV9BUk1DTEtf
+Qj47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgb3BlcmF0aW5nLXBvaW50cy12MiA9IDwmY2x1
+c3RlcjFfb3BwX3RhYmxlPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBjcHUtaWRsZS1zdGF0
+ZXMgPSA8JkNQVV9TTEVFUD47Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgI2Nvb2xpbmctY2Vs
+bHMgPSA8Mj47Cj4gICAgICAgICAgICAgICAgIH07Cj4KPiAgICAgICAgICAgICAgICAgY3B1X2Iy
+OiBjcHVAMTAyIHsKPiBAQCAtMTg0LDYgKzE4OSw3IEBAIGNwdV9iMjogY3B1QDEwMiB7Cj4gICAg
+ICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZzY21pX2NsayBTQ01JX0FSTUNMS19CPjsK
+PiAgICAgICAgICAgICAgICAgICAgICAgICBvcGVyYXRpbmctcG9pbnRzLXYyID0gPCZjbHVzdGVy
+MV9vcHBfdGFibGU+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgIGNwdS1pZGxlLXN0YXRlcyA9
+IDwmQ1BVX1NMRUVQPjsKPiArICAgICAgICAgICAgICAgICAgICAgICAjY29vbGluZy1jZWxscyA9
+IDwyPjsKPiAgICAgICAgICAgICAgICAgfTsKPgo+ICAgICAgICAgICAgICAgICBjcHVfYjM6IGNw
+dUAxMDMgewo+IEBAIC0xOTUsNiArMjAxLDcgQEAgY3B1X2IzOiBjcHVAMTAzIHsKPiAgICAgICAg
+ICAgICAgICAgICAgICAgICBjbG9ja3MgPSA8JnNjbWlfY2xrIFNDTUlfQVJNQ0xLX0I+Owo+ICAg
+ICAgICAgICAgICAgICAgICAgICAgIG9wZXJhdGluZy1wb2ludHMtdjIgPSA8JmNsdXN0ZXIxX29w
+cF90YWJsZT47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgY3B1LWlkbGUtc3RhdGVzID0gPCZD
+UFVfU0xFRVA+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgICNjb29saW5nLWNlbGxzID0gPDI+
+Owo+ICAgICAgICAgICAgICAgICB9Owo+Cj4gICAgICAgICAgICAgICAgIGlkbGUtc3RhdGVzIHsK
+PiBAQCAtNDM2LDYgKzQ0MywxNDMgQEAgcHNjaSB7Cj4gICAgICAgICAgICAgICAgIG1ldGhvZCA9
+ICJzbWMiOwo+ICAgICAgICAgfTsKPgo+ICsgICAgICAgdGhlcm1hbF96b25lczogdGhlcm1hbC16
+b25lcyB7Cj4gKyAgICAgICAgICAgICAgIC8qIHNlbnNvciBuZWFyIHRoZSBjZW50ZXIgb2YgdGhl
+IFNvQyAqLwo+ICsgICAgICAgICAgICAgICBwYWNrYWdlX3RoZXJtYWw6IHBhY2thZ2UtdGhlcm1h
+bCB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgcG9sbGluZy1kZWxheS1wYXNzaXZlID0gPDA+
+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgIHBvbGxpbmctZGVsYXkgPSA8MD47Cj4gKyAgICAg
+ICAgICAgICAgICAgICAgICAgdGhlcm1hbC1zZW5zb3JzID0gPCZ0c2FkYyAwPjsKPiArCj4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgdHJpcHMgewo+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgcGFja2FnZV9jcml0OiBwYWNrYWdlLWNyaXQgewo+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICB0ZW1wZXJhdHVyZSA9IDwxMTUwMDA+Owo+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBoeXN0ZXJlc2lzID0gPDA+Owo+ICsgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlID0gImNyaXRpY2FsIjsKPiArICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIH07Cj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+fTsKPiArICAgICAgICAgICAgICAgfTsKPiArCj4gKyAgICAgICAgICAgICAgIC8qIHNlbnNvciBm
+b3IgY2x1c3RlcjEgKGJpZyBDb3J0ZXgtQTcyIGNvcmVzKSAqLwo+ICsgICAgICAgICAgICAgICBi
+aWdjb3JlX3RoZXJtYWw6IGJpZ2NvcmUtdGhlcm1hbCB7Cj4gKyAgICAgICAgICAgICAgICAgICAg
+ICAgcG9sbGluZy1kZWxheS1wYXNzaXZlID0gPDA+OwoKSSd2ZSB0cmllZCB0aGVzZSBvbiBteSBi
+b2FyZCwgYW5kIGl0IHNlZW1zIHRoYXQgd2l0aCBhIHplcm8gaGVyZSBpdApuZXZlciBzdG9wcyB0
+aHJvdHRsaW5nIHRoZSBDUFUgZXZlbiBhZnRlciBpdCBjb29scyBkb3duLiBJIGJlbGlldmUgeW91
+Cm5lZWQgc29tZXRoaW5nIGxpa2UgPDEwMD4gaGVyZSwgd2hpY2ggaXMgd2hhdCBJIHVzZWQgb24g
+UkszNTg4IGZvcgpzaW1pbGFyIHJlYXNvbnMuCgpJIHRoaW5rIGl0J3MgYmVjYXVzZSB0aGUgVFNB
+REMgb25seSBmaXJlcyBhbiBpbnRlcnJ1cHQgd2hlbiB0aGUKdGVtcGVyYXR1cmUgY3Jvc3NlcyB0
+aGUgdHJpcCBwb2ludCwgYnV0IHRoZSB0aGVybWFsIGdvdmVybm9yIGFsc28KbmVlZHMgdG8gb2Jz
+ZXJ2ZSB0ZW1wZXJhdHVyZSB0cmVuZHMgYW5kIHN0ZXAgdXAgLyBzdGVwIGRvd24gdGhlCmNvb2xp
+bmcgc3RhdGVzIGRlcGVuZGluZyBvbiB3aGV0aGVyIHRoZSBzeXN0ZW0gaXMgY29vbGluZyBzdWZm
+aWNpZW50bHkKb3Igbm90LiBTbyBpdCBuZWVkcyB0byBwb2xsIHRoZSB0ZW1wZXJhdHVyZSBvbmNl
+IHRoZSBjb29saW5nIGRldmljZSBpcwphY3RpdmF0ZWQgKHBhc3NpdmUgaW4gdGhpcyBjYXNlKS4K
+Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgcG9sbGluZy1kZWxheSA9IDwwPjsKPiArICAgICAg
+ICAgICAgICAgICAgICAgICB0aGVybWFsLXNlbnNvcnMgPSA8JnRzYWRjIDE+Owo+ICsKPiArICAg
+ICAgICAgICAgICAgICAgICAgICB0cmlwcyB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBiaWdjb3JlX2FsZXJ0OiBiaWdjb3JlLWFsZXJ0IHsKPiArICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgdGVtcGVyYXR1cmUgPSA8ODUwMDA+Owo+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBoeXN0ZXJlc2lzID0gPDIwMDA+Owo+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlID0gInBhc3NpdmUiOwo+ICsg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfTsKPiArCj4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBiaWdjb3JlX2NyaXQ6IGJpZ2NvcmUtY3JpdCB7Cj4gKyAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRlbXBlcmF0dXJlID0gPDExNTAwMD47Cj4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGh5c3RlcmVzaXMgPSA8MD47Cj4g
+KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGUgPSAiY3JpdGljYWwi
+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfTsKPiArICAgICAgICAgICAgICAg
+ICAgICAgICB9Owo+ICsKPiArICAgICAgICAgICAgICAgICAgICAgICBjb29saW5nLW1hcHMgewo+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWFwMCB7Cj4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHRyaXAgPSA8JmJpZ2NvcmVfYWxlcnQ+Owo+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb29saW5nLWRldmljZSA9Cj4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZjcHVfYjAgVEhF
+Uk1BTF9OT19MSU1JVCBUSEVSTUFMX05PX0xJTUlUPiwKPiArICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICA8JmNwdV9iMSBUSEVSTUFMX05PX0xJTUlUIFRIRVJN
+QUxfTk9fTElNSVQ+LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIDwmY3B1X2IyIFRIRVJNQUxfTk9fTElNSVQgVEhFUk1BTF9OT19MSU1JVD4sCj4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZjcHVfYjMgVEhF
+Uk1BTF9OT19MSU1JVCBUSEVSTUFMX05PX0xJTUlUPjsKPiArICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIH07Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgfTsKPiArICAgICAgICAgICAg
+ICAgfTsKPiArCj4gKyAgICAgICAgICAgICAgIC8qIHNlbnNvciBmb3IgY2x1c3RlcjAgKGxpdHRs
+ZSBDb3J0ZXgtQTUzIGNvcmVzKSAqLwo+ICsgICAgICAgICAgICAgICBsaXR0bGVjb3JlX3RoZXJt
+YWw6IGxpdHRsZWNvcmUtdGhlcm1hbCB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgcG9sbGlu
+Zy1kZWxheS1wYXNzaXZlID0gPDA+OwoKcG9sbGluZy1kZWxheS1wYXNzaXZlID0gPDEwMD47Cgo+
+ICsgICAgICAgICAgICAgICAgICAgICAgIHBvbGxpbmctZGVsYXkgPSA8MD47Cj4gKyAgICAgICAg
+ICAgICAgICAgICAgICAgdGhlcm1hbC1zZW5zb3JzID0gPCZ0c2FkYyAyPjsKPiArCj4gKyAgICAg
+ICAgICAgICAgICAgICAgICAgdHJpcHMgewo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgbGl0dGxlY29yZV9hbGVydDogbGl0dGxlY29yZS1hbGVydCB7Cj4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHRlbXBlcmF0dXJlID0gPDg1MDAwPjsKPiArICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaHlzdGVyZXNpcyA9IDwyMDAwPjsKPiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZSA9ICJwYXNzaXZlIjsK
+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH07Cj4gKwo+ICsgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgbGl0dGxlY29yZV9jcml0OiBsaXR0bGVjb3JlLWNyaXQgewo+ICsg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0ZW1wZXJhdHVyZSA9IDwxMTUw
+MDA+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBoeXN0ZXJlc2lz
+ID0gPDA+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlID0g
+ImNyaXRpY2FsIjsKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH07Cj4gKyAgICAg
+ICAgICAgICAgICAgICAgICAgfTsKPiArCj4gKyAgICAgICAgICAgICAgICAgICAgICAgY29vbGlu
+Zy1tYXBzIHsKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1hcDAgewo+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cmlwID0gPCZsaXR0bGVjb3JlX2Fs
+ZXJ0PjsKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29vbGluZy1k
+ZXZpY2UgPQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IDwmY3B1X2wwIFRIRVJNQUxfTk9fTElNSVQgVEhFUk1BTF9OT19MSU1JVD4sCj4gKyAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZjcHVfbDEgVEhFUk1BTF9O
+T19MSU1JVCBUSEVSTUFMX05PX0xJTUlUPiwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICA8JmNwdV9sMiBUSEVSTUFMX05PX0xJTUlUIFRIRVJNQUxfTk9f
+TElNSVQ+LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IDwmY3B1X2wzIFRIRVJNQUxfTk9fTElNSVQgVEhFUk1BTF9OT19MSU1JVD47Cj4gKyAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICB9Owo+ICsgICAgICAgICAgICAgICAgICAgICAgIH07Cj4g
+KyAgICAgICAgICAgICAgIH07Cj4gKwo+ICsgICAgICAgICAgICAgICBncHVfdGhlcm1hbDogZ3B1
+LXRoZXJtYWwgewo+ICsgICAgICAgICAgICAgICAgICAgICAgIHBvbGxpbmctZGVsYXktcGFzc2l2
+ZSA9IDwwPjsKCnBvbGxpbmctZGVsYXktcGFzc2l2ZSA9IDwxMDA+OwoKQmVzdCByZWdhcmRzLApB
+bGV4ZXkKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
