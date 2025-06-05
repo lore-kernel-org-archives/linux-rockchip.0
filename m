@@ -4,70 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F1D1C5AE59
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 15:16:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A6CEC5B543
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 15:45:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nc1JfR4mH0CJFNB2uGHsnv8Ii1M4BACar23Q/zuVpCg=; b=qec29+TFDm/qo0
-	ld2gLjtSbVhTw7Kj4rb1Je2ynktDl8JAs/bBu3rRp9YM9OllzM/1t+ptnaZ5viyy+WwL650ACAv9/
-	3tRT8L2qXWi6E77S8SFpC9Ah4F/Vi2d1RGnGylMxtRcRrlQWbZdwdRCgRbIys2GhY56imjyHFUp3a
-	I4E40XIh2chlhGbnkHOeU2PeGEvRMxyaTKzWdgw4X3IMNwl0JaRX95eURZ3UF09Rg/ElUTU7YyCi8
-	ahNcFf/JFkpRb7G+LCXKOi/yjYCRHBrEPklY3wvKuvnFiJVrvL9f8MJdsh5P+hbvk6J0mMNqgXK8I
-	E4LpFDXvyVdSbwHIa6Vw==;
+	List-Owner; bh=mOWU9o2S6Sj/vy4jEaEYUBn1Z5j/XMzmaMC6DMBT9Ko=; b=g0udfsmfY5635a
+	j7vOdJu5and0C3tJrGnUIyUd3yJLnpgNt9dC7UvlE/xcPfjpKae/TqTWr94nbOJP/PLDONqbMsObd
+	pIoPC++i/rZCILU2ESPlPPykG4b1gb4hJiiTmzSC5s47Nok+VOI0/LovLHFsCpi1AYplFVqhRNeiL
+	/RdEjCkYHogin1Dkfw7xqLVm4iM1vka8JfGK7i1sZvB8WHFz52zNbZWk0uqtMywiQHejCzwgyzQdu
+	y7K33H+WXWzm54luTjy/gkgxYA43Zpr4+/mBhXLeP5c5hv8rEkLr5KA0VPLP1p2NhkMNCa3FCAXPt
+	7OcE2TrHhM8a1n3TNNyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNCKm-0000000FsNA-1JjN;
-	Thu, 05 Jun 2025 15:16:48 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uNCmw-0000000FwG8-0FTT;
+	Thu, 05 Jun 2025 15:45:54 +0000
+Received: from smtp-42ac.mail.infomaniak.ch ([2001:1600:4:17::42ac])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNCJK-0000000Fs6A-1EMe;
-	Thu, 05 Jun 2025 15:15:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749136492; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ENI8hMjvEmJfVrQRZSFpDbyKHVOtvfZuTm5qF/vEk1X9P4OigUMMG7qLVI2qosebz8ddrxGGYzEZZiDtjkR/dCK0ZzXU3/xZFoNQI6xUCziEB0er4zPVxDzJaiJQt0t0dnHoGf0FOh/E7kyj9Lb841Ko3RteQbTAgBr7G0EjjoA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749136492; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=/GuYrfRIt3NP/tsfwxH5PFscLlX5erdLhDtZ3+v8kg0=; 
-	b=CiS2fKxauqWUQMP1ejrx8adcDEkkl3oZ9DnqHwWhoP2htA9pVuSul4sJER3KjYov9/oJHH+vXa3rrpAceqawTxO200NM8svS0Pbuz5sYizX1xmOcNiZIW3eUU/NUpsLul3u+Q05GGFSkV1fBADbU+vzKAf4pLubew6rSiEdAO4Q=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749136492;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=/GuYrfRIt3NP/tsfwxH5PFscLlX5erdLhDtZ3+v8kg0=;
-	b=e51u7eqbnLxwYY5yZzmLXXP5HnH4XLEy+59bYwU7yq79RAHad1ASKDdWUvA4NKtU
-	WuBzAfplXeyVY87JQsYejDcYPp1lcBqOWM5b+r0qfTjEoxE3JGEyEtz3kpv7NbmYyMh
-	S0FMhUYFU5gwxET6NfPaMpw+TuQSLF2t0mAg7jGE=
-Received: by mx.zohomail.com with SMTPS id 1749136491036595.9387295759052;
-	Thu, 5 Jun 2025 08:14:51 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Chanwoo Choi <cw00.choi@samsung.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>, Heiko Stuebner <heiko@sntech.de>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Diederik de Haas <didi.debian@cknow.org>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 2/2] PM / devfreq: rockchip-dfi: add support for LPDDR5
-Date: Thu, 05 Jun 2025 17:14:46 +0200
-Message-ID: <4244538.aeNJFYEL58@workhorse>
-In-Reply-To: <DADLSAEF1YPO.V0CQK084KFFO@cknow.org>
-References: <20250530-rk3588-dfi-improvements-v1-0-6e077c243a95@collabora.com>
- <20250530-rk3588-dfi-improvements-v1-2-6e077c243a95@collabora.com>
- <DADLSAEF1YPO.V0CQK084KFFO@cknow.org>
+	id 1uNCiY-0000000FvYY-1eAf
+	for linux-rockchip@lists.infradead.org;
+	Thu, 05 Jun 2025 15:41:25 +0000
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4bCpZl743dztGn;
+	Thu,  5 Jun 2025 17:41:19 +0200 (CEST)
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4bCpZl1zQJzpLP;
+	Thu,  5 Jun 2025 17:41:19 +0200 (CEST)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Date: Thu, 05 Jun 2025 17:41:06 +0200
+Subject: [PATCH v2 1/4] dt-bindings: mfd: rk806: allow to customize PMIC
+ reset mode
 MIME-Version: 1.0
+Message-Id: <20250605-rk8xx-rst-fun-v2-1-143d190596dd@cherry.de>
+References: <20250605-rk8xx-rst-fun-v2-0-143d190596dd@cherry.de>
+In-Reply-To: <20250605-rk8xx-rst-fun-v2-0-143d190596dd@cherry.de>
+To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.2
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250605_081518_405421_C41ACAA2 
-X-CRM114-Status: GOOD (  25.22  )
+X-CRM114-CacheID: sfid-20250605_084122_610039_3C96C787 
+X-CRM114-Status: GOOD (  17.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,83 +60,113 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Daniel Semkowicz <dse@thaumatec.com>, devicetree@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Lukasz Czechowski <lukasz.czechowski@thaumatec.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Diederik,
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
-On Wednesday, 4 June 2025 10:24:33 Central European Summer Time Diederik de Haas wrote:
-> Hi Nicolas,
-> 
-> On Fri May 30, 2025 at 3:38 PM CEST, Nicolas Frattaroli wrote:
-> > [...]
-> > +	case ROCKCHIP_DDRTYPE_LPDDR5:
-> > +		ddrmon_ver = readl_relaxed(dfi->regs);
-> > +		if (ddrmon_ver < 0x40) {
-> > +			*ctrl = DDRMON_CTRL_LPDDR5 | dfi->lp5_bank_mode;
-> > +			*mask |= DDRMON_CTRL_LP5_BANK_MODE_MASK;
-> > +			break;
-> > +		}
-> > +
-> > +		/*
-> > +		 * As it is unknown whether the unpleasant special case
-> > +		 * behaviour used by the vendor kernel is needed for any
-> > +		 * shipping hardware, ask users to report if they have
-> > +		 * some of that hardware.
-> > +		 */
-> > +		dev_err(&dfi->edev->dev,
-> > +			"unsupported DDRMON version 0x%04X, please let linux-rockchip know!\n",
-> > +			ddrmon_ver);
-> > +		return -EOPNOTSUPP;
-> 
-> I'm guessing you mean the linux-rockchip mailing list here? If so, I
-> think it's better to make that explicit as 'Joe User' who may run into
-> this issue may not be aware of that mailing list. The 'linux' and
-> 'rockchip' name combo is used in quite a few places.
+The RK806 PMIC allows to configure its reset/restart behavior whenever
+the PMIC is reset either programmatically or via some external pins
+(e.g. PWRCTRL or RESETB).
 
-I agree it's ambiguous, the message as it is right now is the way it is
-because we're not allowed to linebreak user-facing messages for grep-
-ability and I also don't want to exceed 100 lines of width (though this
-is the one case where we're allowed to).
+The following modes exist:
+ - 0 (RK806_RESTART) restart PMU,
+ - 1 (RK806_RESET) reset all power off reset registers and force
+   state to switch to ACTIVE mode,
+ - 2 (RK806_RESET_NOTIFY) same as RK806_RESET and also pull
+   RESETB pin down for 5ms,
 
-I suppose I should just replace it with the e-mail address of the list.
-That should be clear enough and this error message also won't end up in
-random boot logs strewn across the internet if it really is just some
-engineering sample hardware or similar that's affected.
+For example, some hardware may require a full restart
+(RK806_RESTART mode) in order to function properly as regulators
+are shortly interrupted in this mode.
 
-Kind regards,
-Nicolas Frattaroli
+This is the case for RK3588 Jaguar and RK3588 Tiger which have a
+companion microcontroller running on an independent power supply and
+monitoring the PMIC power rail to know the state of the main system.
+When it detects a restart, it resets its own IPs exposed to the main
+system as if to simulate its own reset. Failing to perform this fake
+reset of the microcontroller may break things (e.g. watchdog not
+automatically disabled, buzzer still running until manually disabled,
+leftover configuration from previous main system state, etc...).
 
-> 
-> Cheers,
->   Diederik
-> 
-> > +	default:
-> > +		dev_err(&dfi->edev->dev, "unsupported memory type 0x%X\n",
-> > +			dfi->ddr_type);
-> > +		return -EOPNOTSUPP;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> >  static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
-> >  {
-> >  	void __iomem *dfi_regs = dfi->regs;
-> >  	int i, ret = 0;
-> > +	u32 ctrl;
-> > +	u32 ctrl_mask;
-> >  
-> >  	mutex_lock(&dfi->mutex);
-> >  
-> > @@ -136,8 +186,11 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
-> > <snip>
-> 
+Some other systems may be depending on the power rails to not be
+interrupted even for a small amount of time[1].
 
+This allows to specify how the PMIC should perform on the hardware level
+and may differ between harwdare designs, so a DT property seems
+warranted. I unfortunately do not see how this could be made generic
+enough to make it a non-vendor property.
 
+[1] https://lore.kernel.org/linux-rockchip/2577051.irdbgypaU6@workhorse/
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+---
+ .../devicetree/bindings/mfd/rockchip,rk806.yaml    | 23 ++++++++++++++++++++++
+ include/dt-bindings/mfd/rockchip,rk8xx.h           | 17 ++++++++++++++++
+ 2 files changed, 40 insertions(+)
 
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+index 3c2b06629b75ea94f90712470bf14ed7fc16d68d..c555b5956cea9f594d80ebd3b27e8489e520d97d 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+@@ -31,6 +31,29 @@ properties:
+ 
+   system-power-controller: true
+ 
++  rockchip,reset-mode:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    enum: [0, 1, 2]
++    description:
++      Mode to use when a reset of the PMIC is triggered.
++
++      The reset can be triggered either programmatically, via one of
++      the PWRCTRL pins (provided additional configuration) or
++      asserting RESETB pin low.
++
++      The following modes are supported (see also
++      include/dt-bindings/mfd/rockchip,rk8xx.h)
++
++      - 0 (RK806_RESTART) restart PMU,
++      - 1 (RK806_RESET) reset all power off reset registers and force
++        state to switch to ACTIVE mode,
++      - 2 (RK806_RESET_NOTIFY) same as RK806_RESET and also pull
++        RESETB pin down for 5ms,
++
++      For example, some hardware may require a full restart
++      (RK806_RESTART mode) in order to function properly as regulators
++      are shortly interrupted in this mode.
++
+   vcc1-supply:
+     description:
+       The input supply for dcdc-reg1.
+diff --git a/include/dt-bindings/mfd/rockchip,rk8xx.h b/include/dt-bindings/mfd/rockchip,rk8xx.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..f058ed1ca661185f79738a358aa2d4f04539c590
+--- /dev/null
++++ b/include/dt-bindings/mfd/rockchip,rk8xx.h
+@@ -0,0 +1,17 @@
++/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
++/*
++ * Device Tree defines for Rockchip RK8xx PMICs
++ *
++ * Copyright 2025 Cherry Embedded Solutions GmbH
++ *
++ * Author: Quentin Schulz <quentin.schulz@cherry.de>
++ */
++
++#ifndef _DT_BINDINGS_MFD_ROCKCHIP_RK8XX_H
++#define _DT_BINDINGS_MFD_ROCKCHIP_RK8XX_H
++
++#define RK806_RESTART		0
++#define RK806_RESET		1
++#define RK806_RESET_NOTIFY	2
++
++#endif
+
+-- 
+2.49.0
 
 
 _______________________________________________
