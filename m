@@ -4,82 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A9C3C5B543
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 07:43:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83125C5B543
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Jun 2025 08:28:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1l7DvbLZ/HhMBBlp8Rk1jf5Nt2neLhmY0poGy+atdW8=; b=xytrnP7827Sigo
-	EZElcgJfWzbnFXEON/yrw/iKA07y9aVIILEQOpJMRzYnDpUb58Et6Vauatjc8XJ4VBI+QwuEuYP/7
-	MkGbilnJ28zrPYx+8fZrzveHLINXpsxxzKDCclz8+YNjv9gjI0FFk4Tm8oFtGcVAslyf4sgeFMYTc
-	ekunNtDyAvO7bfcpvyRY0aFs0aWggM6F0UjdS+aeYEVaD/pWZtMmP4zAo5Aq2/L8SMW54z32xFszT
-	jB6PjxzFdAGeKjcBIJgBImVBxrad2wPyuh/UF3pP6j7KlYyrA5ypcwB9mwPhYEApTzmCInYw4/svy
-	F9XD3z5e99k1XXEDhCIA==;
+	List-Owner; bh=8q9lcWEOLmNnV3BIyN2dsw/CNAqc3BBHx/kKxGaqgKU=; b=1QOU/Xa0j6seM3
+	yB2wZHZgioAsri+0U3JpS/5fCz3v0pCV5hJ341IEiul0L3qtlCgz1FNp4EqoRy9nybG/gFiIou9bs
+	NUrgA/iOn2DDkDgt4G/Ldqv5WYcZVRcmKnrvAxM245Me2RecNwtqqf3wzRxZ24R2qmCbONxtm+H/u
+	xtB3gufTXq91fyBbliKBDec7MxZASNwAP0GRM3FXBxHAX08Fhh2EPmvohmHMAfLNNjgBJ4JgD2Kwp
+	8KAR5VHBSgJYthanv4WZEqyGYRnGxPGcsW9TOt7yiJp/T/7dfux9q/clr/7gvSX+FO+44mqwxqQZQ
+	ZxG3VLnpVNd8778rSaPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uN5GK-0000000EyA4-1DKv;
-	Thu, 05 Jun 2025 07:43:44 +0000
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+	id 1uN5xF-0000000F3oe-0uVn;
+	Thu, 05 Jun 2025 08:28:05 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uN49L-0000000ErJc-2APY;
-	Thu, 05 Jun 2025 06:32:33 +0000
-Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-af6a315b491so482891a12.1;
-        Wed, 04 Jun 2025 23:32:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1749105146; x=1749709946; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xVNbV2XHvQT3/8z4B+RVq7tYXw6lKXe0E7JWahAFCMk=;
-        b=EeOxBeMlEsaS2bK06bmrfzed7qNMib+94A89ms7EN9ygQZXedKg/9OjeXqOvGzYpPL
-         1OkhMAtUI0Mgqm3nm4FH6q57BhDAKSyrKEqFTaaU8iRfpRRxPwmuaBsJP8M1Gbxy9RXN
-         +ZMRIT/Zr31SlyO70kcc3M81WWASmGGYz9Ll/Th31t29Z3459s+T6IiDQqZx1Cj/HY92
-         /aVj6Ntxl3XwIcbCaLq4AJ19gpjBkdfWBpvQJjERUxXBaIETlrwXwOf/5dXJYmgNxl8+
-         ugvjY+QmIaXi0hNQMhGHs0z9DKlMF7mIZXPQZKgxc4dXbBUuknPyPlrgPv5IgaEQbeVY
-         oy+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749105146; x=1749709946;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xVNbV2XHvQT3/8z4B+RVq7tYXw6lKXe0E7JWahAFCMk=;
-        b=U8TFYv/n3v7NdHFWj7HzHwM50iQ1THjV2jNd1QTN1AcGejxHCHFbW57CKdvno78Xu5
-         bDNqOL0YUfi3wmWn1qGLGf0e96+iJzOFph7JfMAgbF94EUOpSS0DR4ctwGN/dg//2GVx
-         cU8nyrNt72neCBlNpibC9ZI8fYJ+hFOdk4ESYmvht8EWHlDG17HyNV/aOVFDyzhrDolx
-         upWZR7g9VvTIqi9uLPCUT3EN2mw2PW0kMglah4PrYEqEnrVQAlQ+immCO18fXmvz9Jo/
-         gGWTOpw48LO7JhSIGKQGL/19jasFG1DsY5o8kowJ/XTTJx/QZwDALveI7myt6vUwnxmM
-         MdSQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUUs9sGu7JHYSiw2e8JaE8DR0Ke1p71uSfNKTGQAU0Nf7qhaYWcdX/OVwYMANBJ55dZhMtILQGO29Kb6f53y7OI@lists.infradead.org, AJvYcCWuxOda1bero9hT/XBlEINmXA9rs/+t5temmD4job9o2i8vl7DMpOMLgyiAmG+5s8DHkZhDNBG9Rk5Zqb4ipVM=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzXrcO1lr9KsrlZTm5TGD41QTNQNiEU1F+w52lvez3sr23ugvGX
-	hO0FFykKqmkevxFMoqKYwmKOmBmSE8HJ5zaSRAEQAvOtz6AAekNJcJ2BXfqpZ4KNOXWE9biygZ9
-	VJkCYi0RKSIkTSxaLZz+w/sXbJp7oKjNXZjg3zJy/iprM
-X-Gm-Gg: ASbGnctltw4pwa9ZHZhsD3naF5cRfZbSfdPmf62Z8NpiCE7WprksvryRawwetg4UJ/B
-	To0/5zhAC0abKowp/6+uvtuA+LEDzg2X1cfpcRpAjDAGB/yaT3VRFBV9DMa684EIrd6cVSO4HXx
-	SJhzbwGFATgdir+45C7CML43Si0mSEzdrT69y6iwMvufhV318iTINb1AgmJVKeAuT3Xw==
-X-Google-Smtp-Source: AGHT+IH4DMJVVSc23A8ySI5zWwdnqMPJwI4JcymO9uLuxpbdW2R54hTNG5gzhmW7FhrMsuuLb3uqrUpjAv6uXp6wyzs=
-X-Received: by 2002:a05:622a:578f:b0:4a4:3c3e:5754 with SMTP id
- d75a77b69052e-4a5a587c45emr97845681cf.32.1749105134671; Wed, 04 Jun 2025
- 23:32:14 -0700 (PDT)
+	id 1uN5v0-0000000F3gT-2EkI;
+	Thu, 05 Jun 2025 08:25:50 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id EFFC0593;
+	Thu,  5 Jun 2025 10:25:35 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1749111936;
+	bh=jZB5GUQNSLUZGeN1I47kzPPREnhFS78kamPsE8HrUzs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Lonhup31Z1S3y5FuC22Cm3h5rArwmYJu7MnAAx33eIbQHvdQYmdDjQ1wzP5kmtq6U
+	 2GsNC2Iuk1QtHC5CsCVMZvyKwPkRguP3zf8a0KS8kJg54+kGrwSeKwV+JC52DFw3Ux
+	 Qh4N58hl/fKgt9Ra00eOlpcp2qW8Qh9OlXkMWoic=
+Date: Thu, 5 Jun 2025 11:25:29 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Stefan Klug <stefan.klug@ideasonboard.com>
+Cc: Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 1/3] media: rkisp1: Properly handle result of
+ rkisp1_params_init_vb2_queue()
+Message-ID: <20250605082529.GH3755@pendragon.ideasonboard.com>
+References: <20250523-supported-params-and-wdr-v3-0-7283b8536694@ideasonboard.com>
+ <20250523-supported-params-and-wdr-v3-1-7283b8536694@ideasonboard.com>
 MIME-Version: 1.0
-References: <20250603-sige5-updates-v1-0-717e8ce4ab77@gmail.com>
- <20250603-sige5-updates-v1-3-717e8ce4ab77@gmail.com> <CALWfF7JOJSihtfqrFiZtTxnzvoU6FP3WXuWjYOVaAvjPJZWWgg@mail.gmail.com>
-In-Reply-To: <CALWfF7JOJSihtfqrFiZtTxnzvoU6FP3WXuWjYOVaAvjPJZWWgg@mail.gmail.com>
-From: Alexey Charkov <alchark@gmail.com>
-Date: Thu, 5 Jun 2025 10:32:06 +0400
-X-Gm-Features: AX0GCFuUQCw_ESq8wm50RxhnfDipXmHgsUt5otEO_3lzHNgvENZEo2Fw1AWJjAY
-Message-ID: <CABjd4Yyw5xStJYU5c5snUGpBjEYL8=qoj=bWYLnuzSWzr8shaA@mail.gmail.com>
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: enable wifi on ArmSoM Sige5
-To: Jimmy Hon <honyuenkwun@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+Content-Disposition: inline
+In-Reply-To: <20250523-supported-params-and-wdr-v3-1-7283b8536694@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250604_233227_558100_15149B4B 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20250605_012546_892334_9E9A7BBD 
+X-CRM114-Status: GOOD (  18.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,33 +66,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBKdW4gNSwgMjAyNSBhdCA2OjQz4oCvQU0gSmltbXkgSG9uIDxob255dWVua3d1bkBn
-bWFpbC5jb20+IHdyb3RlOgo+Cj4gPgo+ID4gKyZzZGlvIHsKPiA+ICsgICAgICAgYnVzLXdpZHRo
-ID0gPDQ+Owo+ID4gKyAgICAgICBjYXAtc2Rpby1pcnE7Cj4gPiArICAgICAgIGRpc2FibGUtd3A7
-Cj4gPiArICAgICAgIGtlZXAtcG93ZXItaW4tc3VzcGVuZDsKPiA+ICsgICAgICAgbW1jLXB3cnNl
-cSA9IDwmc2Rpb19wd3JzZXE+Owo+ID4gKyAgICAgICBuby1zZDsKPiA+ICsgICAgICAgbm8tbW1j
-Owo+ID4gKyAgICAgICBub24tcmVtb3ZhYmxlOwo+ID4gKyAgICAgICBzZC11aHMtc2RyNTA7Cj4g
-PiArICAgICAgIHNkLXVocy1zZHIxMDQ7Cj4gPiArICAgICAgIHZtbWMtc3VwcGx5ID0gPCZ2Y2Nf
-M3YzX3MzPjsKPiA+ICsgICAgICAgdnFtbWMtc3VwcGx5ID0gPCZ2Y2NfMXY4X3MzPjsKPiA+ICsg
-ICAgICAgd2FrZXVwLXNvdXJjZTsKPiA+ICsgICAgICAgc3RhdHVzID0gIm9rYXkiOwo+ID4gK307
-Cj4KPiBXaGVuIHlvdSBlbmFibGUgdGhlIHNkaW8gbm9kZSBvbiB5b3VyIHYxLjIgYm9hcmQgd2l0
-aCB0aGUgYnJvYWRjb20KPiBjaGlwICh1c2luZyBTWU40Mzc1MiksIGRvZXMgdGhlIGJ0c2Rpby5r
-byBiaW5kIHRvIHRoZSBkZXZpY2UgYW5kCj4gY3JlYXRlIGFuIGV4dHJhIHJma2lsbCBibHVldG9v
-dGggbm9kZT8KCkdvb2QgcXVlc3Rpb24sIEkgZGlkbid0IGhhdmUgaXQgZW5hYmxlZCBpbiBteSBi
-dWlsZDoKCiMgQ09ORklHX0JUX0hDSUJUU0RJTyBpcyBub3Qgc2V0CgpMZXQgbWUgYWRkIGl0IGFu
-ZCByZXBvcnQgYmFjay4KCj4gSWYgc28sIHlvdSdsbCB3YW50IHRvIGJsYWNrbGlzdCB0aGUgU1lO
-NDM3NTIgY2hpcCBpbiB0aGUgYnRzZGlvLmtvLgo+IFNpbWlsYXIgdG8gaHR0cHM6Ly9naXRodWIu
-Y29tL2ppbW15aG9uL2xpbnV4L2NvbW1pdC84MWMxNGRjMmRlYTJjZWFlYThkMzkwMTg4YjM1MmQz
-MmUyNzhhYmM4Cj4gVGhlIG9yaWdpbmFsIGxvZ2ljIHdhcyBpbnRyb2R1Y2VkIGluCj4gaHR0cHM6
-Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXgu
-Z2l0L2NvbW1pdC9kcml2ZXJzL2JsdWV0b290aC9idHNkaW8uYz9pZD1iNGNkYWJhMjc0MjQ3Yzlj
-ODQxYzZhNjgyYzA4ZmE5MWZiM2FhNTQ5CgpJIHdpbGwgY2hlY2ssIHRoYW5rIHlvdSBmb3IgdGhl
-IHBvaW50ZXJzIQoKQmVzdCByZWdhcmRzLApBbGV4ZXkKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Stefan,
+
+Thank you for the patch.
+
+On Fri, May 23, 2025 at 05:14:30PM +0200, Stefan Klug wrote:
+> Properly handle the return of rkisp1_params_init_vb2_queue(). It is very
+> unlikely that this ever fails without code changes but should be handled
+> anyways.
+> 
+> While at it rename the error label for easier extension in the upcoming
+> patch.
+
+I'd have kept that change for the next patch, as it's hard to review
+here without looking at upcoming changes. There's no need for a v4 just
+because of this.
+
+> Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+> ---
+> 
+> Changes in v3:
+> - Moved these changes into its own patch
+> ---
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> index b28f4140c8a3..24a8de697f2b 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> @@ -2763,7 +2763,9 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
+>  	vdev->queue = &node->buf_queue;
+>  	vdev->device_caps = V4L2_CAP_STREAMING | V4L2_CAP_META_OUTPUT;
+>  	vdev->vfl_dir = VFL_DIR_TX;
+> -	rkisp1_params_init_vb2_queue(vdev->queue, params);
+> +	ret = rkisp1_params_init_vb2_queue(vdev->queue, params);
+> +	if (ret)
+> +		goto err_media;
+>  
+>  	params->metafmt = &rkisp1_params_formats[RKISP1_PARAMS_FIXED];
+>  
+> @@ -2777,18 +2779,18 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
+>  	node->pad.flags = MEDIA_PAD_FL_SOURCE;
+>  	ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
+>  	if (ret)
+> -		goto error;
+> +		goto err_media;
+>  
+>  	ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
+>  	if (ret) {
+>  		dev_err(rkisp1->dev,
+>  			"failed to register %s, ret=%d\n", vdev->name, ret);
+> -		goto error;
+> +		goto err_media;
+>  	}
+>  
+>  	return 0;
+>  
+> -error:
+> +err_media:
+>  	media_entity_cleanup(&vdev->entity);
+>  	mutex_destroy(&node->vlock);
+>  	return ret;
+
+-- 
+Regards,
+
+Laurent Pinchart
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
