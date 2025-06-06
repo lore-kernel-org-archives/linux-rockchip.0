@@ -4,64 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A03FC5AD49
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Jun 2025 09:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85563C677C4
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Jun 2025 16:42:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cjVRTmr/cVnpuwJXLUdkABsg7zHP3AoNtIkSWxyktRY=; b=zGOqYEcfp4tejL
-	CslORtyictSthvJIWdCT7KnZ0+QQfmhEaZ+lrURjuGbeeN3K1vxwKOF3fAQKU0jpbRnltS/sWSDhA
-	4sD9DwyAK4tZCDb2BsgZp1Xe8wCmK2DcIFPaNzY26i3ngRN481vKtF9HX1sjIzdTtr5XqRt8TgEna
-	31P1S0cke3d48db3mRm9Rhv5qLeWUTBgLbNxppO1NuEaSazi7dwg6vOl+9ju47pWL09GwcPwvRkxx
-	W94oNibKcOztFFkB3lMcCnaZ5QZP+2RKgAxD/x2xjL2rAmSVoVBgS+DOzsUsMLu4Gkq4GTQ8aj7pW
-	jUwkT15XrO/aipQ776Dg==;
+	List-Owner; bh=4pQo6uSHcd60J4cP/sVDwNCl68RhMzqQIV5aSf2AkAc=; b=FA0KljgyEwfmzd
+	H8V/j/w7aZd+7f4P10wT7OcS0hfRUQ3MgwYAJzo1g1wNKdrMhxdychIRbl5Em6pVzF2DNeO0JoF9J
+	wfkBuBmzA8b268HXctQMnaWldIbSEjoT5N+aRXuQOcVgzjmKXEGPSUIqlQmgoNxYh7OKJaxD19Qg9
+	IrFP/Cd6WqhmsdwkgSyhhQh5UZGkEpOvhiyS+3xcFKs3QzSIoZCCNKXcetpWmWHYg+1q8WtRL5/hX
+	5A6/8HnX3P4SO88JDRJKjqTjRf9oKvqPb1rFvtLJm9Q8H99lHF/oqXjnOSou4PuTST2STou/Cs2WS
+	FdZa8Dmoc7pR4PgB2Q2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNTnJ-0000000Hacl-3PA8;
-	Fri, 06 Jun 2025 09:55:25 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1uNa9T-00000000ejM-1Fp6;
+	Fri, 06 Jun 2025 16:42:43 +0000
+Received: from mail-il1-x136.google.com ([2607:f8b0:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNTjS-0000000HaGH-1alA;
-	Fri, 06 Jun 2025 09:51:27 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749203482; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=OYTEc6yXPsIcRrHcRogHNuuYr2RSQbvW8h0bM+VDGsFW7I+pApg6ySm9RGKZc7RHwHUpCSQYHImtfJOimVIphDyxV0wOcV9FR5eQTKsAT/IB+AMXPUUjCoRZ7sQPIIgcnmgn41FI/ABk4zVLVetmv8eWb6ySp/cpoIjDzhO7Sik=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749203482; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=tfnGcQSUHbLimk8z8aZ3QSd/T6JAuGeb919MpsyxEvo=; 
-	b=QjTRmi6jQa2aQnzKRdkghqnj8WvmY3P25PwvVQs/Hzrl0rpgcWRJKqSmaDevvNS+1Avk3MR59AJlMTWZOG0edVwZtx1Hd8SSuI/5z97jdTZwEu/nA8ckAPSt1k4xFua5FNmdZUA+Y1Ww3+8/vRy/hFejNWUnEipPe9lAhlZmKPo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749203482;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=tfnGcQSUHbLimk8z8aZ3QSd/T6JAuGeb919MpsyxEvo=;
-	b=b4dEefdSzxzo0UixhUC9rGQqPy00a2fiwxiLzerpmJqIc1MixsZgnSaIWYd/8uOQ
-	om56GC0tC26vEt3ywPCxM/ZjNDIE2GvM+3Ahs5j0S/WZGIkaakUTE85sq2bHar2R78a
-	IYLrcqqZl0kUlJ5QnAl8q5f0LNbdLgqO8KGULl2g=
-Received: by mx.zohomail.com with SMTPS id 1749203480891403.2196795067804;
-	Fri, 6 Jun 2025 02:51:20 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com,
- heiko@sntech.de, linux-rockchip@lists.infradead.org,
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Pei Xiao <xiaopei01@kylinos.cn>
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: Re: [PATCH v2 2/2] ASOC: rockchip: Use helper function devm_clk_get_enabled()
-Date: Fri, 06 Jun 2025 11:51:17 +0200
-Message-ID: <2818018.CQOukoFCf9@workhorse>
-In-Reply-To: <84bc40641d05596f1edf4f01d1e6aea16bdbeeb5.1749201126.git.xiaopei01@kylinos.cn>
-References: <cover.1749201126.git.xiaopei01@kylinos.cn>
- <84bc40641d05596f1edf4f01d1e6aea16bdbeeb5.1749201126.git.xiaopei01@kylinos.cn>
+	id 1uNa9F-00000000egw-16eE
+	for linux-rockchip@lists.infradead.org;
+	Fri, 06 Jun 2025 16:42:30 +0000
+Received: by mail-il1-x136.google.com with SMTP id e9e14a558f8ab-3d6d6d82633so7130655ab.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 06 Jun 2025 09:42:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749228148; x=1749832948; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=uMeYsxUgjqxog+Ak4U2urOTlJ0rw3A1XKz5qXAyaQdo=;
+        b=UtZstHLpAdCpScRDfw9TCRsZPjGB6iZJgnNNTGFJ7p9sAVcaKPMv0YWGRBpzHbnEZ4
+         5QwsSsNFz2qhxEa2HLJEtaO/3B5FIbFq8WwhZALy8Q9de5pkhqxxBUBoXxdykMuXGtlf
+         7f1PeITUhMVOXrAChbJyneuTmhxcpU77Tvu7z4Nf2gm4voucef/i3hrIbt6TMt6ilfsd
+         MH/rw+neXRpqORGwA6lJd7VRp5kh3/T6WEfColBp5I5NDUC8A5S8m4wVsKHysgDsl3Al
+         RKOcD2e1aX71hEdaVr6rsEB4zQJfmXc5PxOq3FPuMV+KllMm8mRVAt7bbgJ3JzJolwDE
+         15/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749228148; x=1749832948;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=uMeYsxUgjqxog+Ak4U2urOTlJ0rw3A1XKz5qXAyaQdo=;
+        b=WG84cqhXpIGL502hkSRoA+aSUeUMhmmed4CiEona0M9KcJxrDa7Bs/uAOH5VpG5PWk
+         jwGznkSMBGG4587XQV+7ofLMV7wOO+AkkaYdGsY4PB+inoIpA3ywIWfR9YozWvSnCI3c
+         tUXLjyk/EhigeoNpzSiUcpYxHS176jB4EYtYvaqHRIXT48kH7g95Lo1Sg7P3gOkKct3T
+         fwMzosr2wnvKr+7mWE0EtoAxvnxGdJDUCTojXTiBjSEk/qFdEsfT4l54Ieclg8v98yTk
+         frkRBnIX9QtPyU0eVPBwivyUyTFFp8Yi6rbVAkcVgNEZFpRppQFHxB5zOXOBsxXguNA3
+         onqA==
+X-Forwarded-Encrypted: i=1; AJvYcCWS+5/AzEtaYlgSHc9tVFGSXyG58eRkdR61gdzH0U3zxuSfc7e64PGNGdIVQUSC2mJysfYY4d+zv+CUQESSMA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzOxIgwJ8rTWJSsXX6PS0w91sv2syRiSY7GyBUAQ1P3bb1boGi0
+	lnNl6AgqMJYMPo1ghK8Y/kbC5iGrrOmoYwDlG46TzVIl+Uy9cJ2EuukncLh6oB3d/eKEyw4CS6Z
+	WW9I2k6rHHzTUHrQ/9er+t6l1wqgHzz8=
+X-Gm-Gg: ASbGnctxL7grmua813C2mgGXChrCYw1cNmgvdRp0JPs/kdefwEIqxgBbj/f59VS4Eb2
+	08VwwTpaoZy1AT+vb1AFEzLS8sUUYry8TBLhi30ET0soQj9b/TYxWKbkXKCfHHCm/Gfz31hyV3i
+	lmXj5uUFffRT0drWeSm65aJs/M7Y784KKKs4o1ChC1+JMgTn6XiF59
+X-Google-Smtp-Source: AGHT+IFlV+kTTqKAlFNc6/Q8eaL8fHicj7OQNSk3pESNYyA27MAqC5cCScNwhcB8fj/OsGWlxBp0LvXax4FYxj83epQ=
+X-Received: by 2002:a05:6e02:4518:20b0:3dd:d189:8a6c with SMTP id
+ e9e14a558f8ab-3ddd1898dd9mr19809775ab.4.1749228148149; Fri, 06 Jun 2025
+ 09:42:28 -0700 (PDT)
 MIME-Version: 1.0
+References: <20250605-rk3588s-cm5-io-dts-upstream-v4-0-8445db5ca6b0@gmail.com>
+ <20250605-rk3588s-cm5-io-dts-upstream-v4-2-8445db5ca6b0@gmail.com> <CALWfF7J-Lygg+N3oH+p7XkPvH_6ZbvTRY6CaZzFqDixzSgDHBA@mail.gmail.com>
+In-Reply-To: <CALWfF7J-Lygg+N3oH+p7XkPvH_6ZbvTRY6CaZzFqDixzSgDHBA@mail.gmail.com>
+From: Joseph Kogut <joseph.kogut@gmail.com>
+Date: Fri, 6 Jun 2025 09:41:52 -0700
+X-Gm-Features: AX0GCFsGQAfqG6AckaE2dzN-sFHMIgG2nS5Dtrqvn7bKG-PkR87MSRPoQm07c1U
+Message-ID: <CAMWSM7gD0Tiu-JOUqyoASHQHrz79rnW3+kfQ4wnRSOx051GB4Q@mail.gmail.com>
+Subject: Re: [PATCH v4 2/3] arm64: dts: rockchip: Add rk3588 based Radxa CM5
+To: Jimmy Hon <honyuenkwun@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Steve deRosier <derosier@cal-sierra.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250606_025126_452766_532461BA 
-X-CRM114-Status: GOOD (  19.09  )
+X-CRM114-CacheID: sfid-20250606_094229_307226_5A44187D 
+X-CRM114-Status: GOOD (  21.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,112 +92,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Friday, 6 June 2025 11:18:22 Central European Summer Time Pei Xiao wrote:
-> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-> replaced by devm_clk_get_enabled() when driver enables the clocks for the
-> whole lifetime of the device. Moreover, it is no longer necessary to
-> unprepare and disable the clocks explicitly.
-> 
-> Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
-> ---
->  sound/soc/rockchip/rockchip_sai.c | 35 +++++++++----------------------
->  1 file changed, 10 insertions(+), 25 deletions(-)
-> 
-> diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
-> index 916af63f1c2c..0b9f54102d69 100644
-> --- a/sound/soc/rockchip/rockchip_sai.c
-> +++ b/sound/soc/rockchip/rockchip_sai.c
-> @@ -1427,43 +1427,32 @@ static int rockchip_sai_probe(struct platform_device *pdev)
->  	if (irq > 0) {
->  		ret = devm_request_irq(&pdev->dev, irq, rockchip_sai_isr,
->  				       IRQF_SHARED, node->name, sai);
-> -		if (ret) {
-> +		if (ret)
->  			return dev_err_probe(&pdev->dev, ret,
->  					     "Failed to request irq %d\n", irq);
-> -		}
->  	} else {
->  		dev_dbg(&pdev->dev, "Asked for an IRQ but got %d\n", irq);
->  	}
->  
->  	sai->mclk = devm_clk_get(&pdev->dev, "mclk");
-> -	if (IS_ERR(sai->mclk)) {
-> +	if (IS_ERR(sai->mclk))
->  		return dev_err_probe(&pdev->dev, PTR_ERR(sai->mclk),
->  				     "Failed to get mclk\n");
-> -	}
->  
-> -	sai->hclk = devm_clk_get(&pdev->dev, "hclk");
-> -	if (IS_ERR(sai->hclk)) {
-> +	sai->hclk = devm_clk_get_enabled(&pdev->dev, "hclk");
-> +	if (IS_ERR(sai->hclk))
->  		return dev_err_probe(&pdev->dev, PTR_ERR(sai->hclk),
->  				     "Failed to get hclk\n");
-> -	}
-> -
-> -	ret = clk_prepare_enable(sai->hclk);
-> -	if (ret)
-> -		return dev_err_probe(&pdev->dev, ret, "Failed to enable hclk\n");
->  
->  	regmap_read(sai->regmap, SAI_VERSION, &sai->version);
->  
->  	ret = rockchip_sai_init_dai(sai, res, &dai);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "Failed to initialize DAI: %d\n", ret);
-> -		goto err_disable_hclk;
-> -	}
-> +	if (ret)
-> +		return dev_err_probe(&pdev->dev, ret, "Failed to initialize DAI\n");
->  
->  	ret = rockchip_sai_parse_paths(sai, node);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "Failed to parse paths: %d\n", ret);
-> -		goto err_disable_hclk;
-> -	}
-> +	if (ret)
-> +		return dev_err_probe(&pdev->dev, ret, "Failed to parse paths\n");
->  
->  	/*
->  	 * From here on, all register accesses need to be wrapped in
-> @@ -1474,10 +1463,8 @@ static int rockchip_sai_probe(struct platform_device *pdev)
->  	devm_pm_runtime_enable(&pdev->dev);
->  	pm_runtime_get_noresume(&pdev->dev);
->  	ret = rockchip_sai_runtime_resume(&pdev->dev);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "Failed to resume device: %pe\n", ERR_PTR(ret));
-> -		goto err_disable_hclk;
-> -	}
-> +	if (ret)
-> +		return dev_err_probe(&pdev->dev, ret, "Failed to resume device\n");
->  
->  	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
->  	if (ret) {
-> @@ -1504,8 +1491,6 @@ static int rockchip_sai_probe(struct platform_device *pdev)
->  	/* If we're !CONFIG_PM, we get -ENOSYS and disable manually */
->  	if (pm_runtime_put(&pdev->dev))
->  		rockchip_sai_runtime_suspend(&pdev->dev);
-> -err_disable_hclk:
-> -	clk_disable_unprepare(sai->hclk);
->  
->  	return ret;
->  }
-> 
-
-Acked-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
-Thank you!
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBKdW4gNSwgMjAyNSBhdCA1OjUx4oCvUE0gSmltbXkgSG9uIDxob255dWVua3d1bkBn
+bWFpbC5jb20+IHdyb3RlOgo+Cj4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9y
+b2NrY2hpcC9yazM1ODhzLXJhZHhhLWNtNS5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
+Y2hpcC9yazM1ODhzLXJhZHhhLWNtNS5kdHNpCj4gPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+ID4g
+aW5kZXggMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMC4uZDc5NDZmZTJi
+YjRlNzIxNjg5ZTNlYjRkNjBkOGU5NzgzNDAyZjA1ZQo+ID4gLS0tIC9kZXYvbnVsbAo+ID4gKysr
+IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJhZHhhLWNtNS5kdHNpCj4g
+PiBAQCAtMCwwICsxLDE1NiBAQAo+ID4gKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiAoR1BM
+LTIuMCsgT1IgTUlUKQo+ID4gKy8qCj4gPiArICogQ29weXJpZ2h0IChjKSAyMDI1IEpvc2VwaCBL
+b2d1dCA8am9zZXBoLmtvZ3V0QGdtYWlsLmNvbT4KPiA+ICsgKi8KPiA+ICsKPiA+ICsvKgo+ID4g
+KyAqIENNNSBkYXRhIHNoZWV0Cj4gPiArICogaHR0cHM6Ly9kbC5yYWR4YS5jb20vY201L3YyMjEw
+L3JhZHhhX2NtNV92MjIxMF9zY2hlbWF0aWMucGRmCj4gPiArICovCj4gPiArCj4gPiArI2luY2x1
+ZGUgPGR0LWJpbmRpbmdzL2dwaW8vZ3Bpby5oPgo+ID4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9s
+ZWRzL2NvbW1vbi5oPgo+ID4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9zb2Mvcm9ja2NoaXAsdm9w
+Mi5oPgo+ID4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy91c2IvcGQuaD4KPiA+ICsKPiA+ICsvIHsK
+PiA+ICsgICAgICAgY29tcGF0aWJsZSA9ICJyYWR4YSxjbTUiLCAicm9ja2NoaXAscmszNTg4cyI7
+Cj4gPiArCj4gPiArICAgICAgIGFsaWFzZXMgewo+ID4gKyAgICAgICAgICAgICAgIG1tYzAgPSAm
+c2RtbWM7Cj4gU2luY2UgdGhlIG1pY3JvU0QgY2FyZCBpcyBvbiB0aGUgY2FycmllciBib2FyZCwg
+dGhpcyBhbGlhcyBzaG91bGQgYmUKPiBtb3ZlZCB0byB0aGUgYm9hcmQgRFRTLgo+CgpHb29kIHBv
+aW50LCBJJ2xsIG1vdmUgdGhpcyB0byB0aGUgYm9hcmQgRFRTLiBUaGlzIGlzIGEgcmVtbmFudCBm
+cm9tCmNvcHlpbmcgYXNwZWN0cyBvZiB0aGUgZG93bnN0cmVhbSBEVFMsIGFuZCBhZGFwdGluZyBp
+dCBmb3IgbWFpbmxpbmUKY29udmVudGlvbnMuCgo+ID4gKyAgICAgICAgICAgICAgIG1tYzEgPSAm
+c2RoY2k7Cj4gTW9zdCBvZiB0aGUgb3RoZXIgUmFkeGEgcmszNTg4IGJvYXJkcyBoYXZlIHRoZSBl
+TU1DIGFsaWFzIHRvIG1tYzAuIFdoeQo+IGRvZXMgdGhpcyB1c2UgYW5vdGhlciBjb252ZW50aW9u
+Pwo+Cj4gPiArICAgICAgICAgICAgICAgbW1jMiA9ICZzZGlvOwo+IFRoZSBzZGlvIGlzIG5vdCBl
+bmFibGVkLiBUaGlzIGFsaWFzIHdvbid0IGJlIHVzZWQuCj4KClRoZXNlIHdlcmUgY29waWVkIGZy
+b20gdGhlIGRvd25zdHJlYW0gRFRTLiBJJ2xsIGdvIGFoZWFkIGFuZCB1c2UgdGhlCm1haW5saW5l
+IGNvbnZlbnRpb24gaGVyZSBhcyB3ZWxsLgoKPiA+ICsgICAgICAgfTsKPiA+ICsKPiA+ICsgICAg
+ICAgbGVkcyB7Cj4gPiArICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJncGlvLWxlZHMiOwo+
+ID4gKwo+ID4gKyAgICAgICAgICAgICAgIGxlZF9zeXM6IGxlZC0wIHsKPiA+ICsgICAgICAgICAg
+ICAgICAgICAgICAgIGNvbG9yID0gPExFRF9DT0xPUl9JRF9CTFVFPjsKPiA+ICsgICAgICAgICAg
+ICAgICAgICAgICAgIGRlZmF1bHQtc3RhdGUgPSAib24iOwo+ID4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgZnVuY3Rpb24gPSBMRURfRlVOQ1RJT05fSEVBUlRCRUFUOwo+ID4gKyAgICAgICAgICAg
+ICAgICAgICAgICAgZ3Bpb3MgPSA8JmdwaW80IFJLX1BCNCBHUElPX0FDVElWRV9ISUdIPjsKPiA+
+ICsgICAgICAgICAgICAgICAgICAgICAgIGxpbnV4LGRlZmF1bHQtdHJpZ2dlciA9ICJoZWFydGJl
+YXQiOwo+ID4gKyAgICAgICAgICAgICAgIH07Cj4gPiArICAgICAgIH07Cj4gPiArfTsKPiA+ICsK
+PiA+ICsmY3B1X2IwIHsKPiA+ICsgICAgICAgY3B1LXN1cHBseSA9IDwmdmRkX2NwdV9iaWcwX3Mw
+PjsKPiA+ICt9Owo+ID4gKwo+ID4gKyZjcHVfYjEgewo+ID4gKyAgICAgICBjcHUtc3VwcGx5ID0g
+PCZ2ZGRfY3B1X2JpZzBfczA+Owo+ID4gK307Cj4gPiArCj4gPiArJmNwdV9iMiB7Cj4gPiArICAg
+ICAgIGNwdS1zdXBwbHkgPSA8JnZkZF9jcHVfYmlnMV9zMD47Cj4gPiArfTsKPiA+ICsKPiA+ICsm
+Y3B1X2IzIHsKPiA+ICsgICAgICAgY3B1LXN1cHBseSA9IDwmdmRkX2NwdV9iaWcxX3MwPjsKPiA+
+ICt9Owo+ID4gKwo+ID4gKyZjcHVfbDAgewo+ID4gKyAgICAgICBjcHUtc3VwcGx5ID0gPCZ2ZGRf
+Y3B1X2xpdF9zMD47Cj4gPiArfTsKPiA+ICsKPiA+ICsmY3B1X2wxIHsKPiA+ICsgICAgICAgY3B1
+LXN1cHBseSA9IDwmdmRkX2NwdV9saXRfczA+Owo+ID4gK307Cj4gPiArCj4gPiArJmNwdV9sMiB7
+Cj4gPiArICAgICAgIGNwdS1zdXBwbHkgPSA8JnZkZF9jcHVfbGl0X3MwPjsKPiA+ICt9Owo+ID4g
+Kwo+ID4gKyZjcHVfbDMgewo+ID4gKyAgICAgICBjcHUtc3VwcGx5ID0gPCZ2ZGRfY3B1X2xpdF9z
+MD47Cj4gPiArfTsKPiA+ICsKPiA+ICsmZ21hYzEgewo+ID4gKyAgICAgICBjbG9ja19pbl9vdXQg
+PSAib3V0cHV0IjsKPiA+ICsgICAgICAgcGh5LWhhbmRsZSA9IDwmcmdtaWlfcGh5MT47Cj4gPiAr
+ICAgICAgIHBoeS1tb2RlID0gInJnbWlpLWlkIjsKPiA+ICsgICAgICAgcGh5LXN1cHBseSA9IDwm
+dmNjXzN2M19zMD47Cj4gPiArICAgICAgIHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gPiAr
+ICAgICAgIHBpbmN0cmwtMCA9IDwmZ21hYzFfbWlpbQo+ID4gKyAgICAgICAgICAgICAgICAgICAg
+JmdtYWMxX3R4X2J1czIKPiA+ICsgICAgICAgICAgICAgICAgICAgICZnbWFjMV9yeF9idXMyCj4g
+PiArICAgICAgICAgICAgICAgICAgICAmZ21hYzFfcmdtaWlfY2xrCj4gPiArICAgICAgICAgICAg
+ICAgICAgICAmZ21hYzFfcmdtaWlfYnVzCj4gPiArICAgICAgICAgICAgICAgICAgICAmZ21hYzFf
+Y2xraW5vdXQ+Owo+ID4gKyAgICAgICBzdGF0dXMgPSAib2theSI7Cj4gPiArfTsKPiBTaG91bGQg
+dGhpcyBiZSBsZWZ0IGRpc2FibGVkIG9uIHRoZSBTb00gZHRzaT8gQW5kIG9ubHkgZW5hYmxlZCBv
+biB0aGUKPiBjYXJyaWVyIGJvYXJkLCBpZiB0aGUgY2FycmllciBib2FyZCBoYXMgdGhlIFJKNDUg
+amFjaz8KPiBpLmUuIGEgaGFuZGhlbGQgdXNpbmcgdGhlIENNNSBtYXkgbm90IGhhdmUgZXRoZXJu
+ZXQKPiBodHRwczovL2dpdGh1Yi5jb20vU3RvbmVkRWRnZS9SZXRyby1MaXRlLUNNNQo+CgpJIHRo
+aW5rIHRoYXQgbWFrZXMgc2Vuc2UsIG5vdCBldmVyeSBjYXJyaWVyIGlzIGd1YXJhbnRlZWQgdG8g
+aGF2ZSBldGhlcm5ldC4KCj4gPiArCj4gPiArJmdwdSB7Cj4gPiArICAgICAgIG1hbGktc3VwcGx5
+ID0gPCZ2ZGRfZ3B1X3MwPjsKPiA+ICsgICAgICAgc3RhdHVzID0gIm9rYXkiOwo+ID4gK307Cj4g
+PiArCj4gPiArJmhkbWkwIHsKPiA+ICsgICAgICAgc3RhdHVzID0gIm9rYXkiOwo+ID4gK307Cj4g
+VGhpcyBzaG91bGQgYmUgbW92ZWQgdG8gdGhlIGNhcnJpZXIgYm9hcmQgRFRTIHdoZXJlIGFsbCB0
+aGUgb3RoZXIKPiBIRE1JMCBub2RlcyBhcmUuCj4KClRoYXQgbWFrZXMgc2Vuc2UsIEknbGwgbWFr
+ZSB0aGlzIGNoYW5nZS4gVGhhbmtzIGZvciB0aGUgZmVlZGJhY2ssIEppbW15LgoKCkpvc2VwaAoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
