@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAB1CC5B549
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Jun 2025 09:25:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40682C5B559
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Jun 2025 09:36:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Kg57hrxDeygxg05UlXL0fJSKQvee8xwmJ5SHpyrICEc=; b=k1Uw2stErNQveh
-	WpM8U3dn/yHiyNBl24qmMQ5nE0ustrn+BIROTWA4okTffQDEALXeY+kk/bW3+BdH43qB8d3UFgIBb
-	VUQA24u6HISg23TH08X7bSs9hcZJ53lWza+xLAcm4lJ378iIBedVJxiiLl8Ac87jn5CTf8Mdx18Pp
-	TOTcYJu9wq4owIb0zsB6gEKr33BiTNz61IJerg8dxaNcxTXwMDv25dXs4TIVEblTkuwO5aW6adexn
-	bPcSOkWljMiyfQQ0/ewQdjtKWyjZ1hb8iVQBarDpFWjvwLwasFmODPbTYHVCE5WC/fv50CsHFBNHp
-	g/YE+xY4GhR6OctIqBlw==;
+	List-Owner; bh=pGnneEDt1Z0F4DrF0TaxcIsO32yaCzD98fDIYyJPar0=; b=DfkrbGljWPmhlA
+	W33HJBimre2J76dPwCBVa+6vfkQR1wHmMLSDuAI9+32r+EPunTL5DV7D+8igoL5S621rLotvR/N7Z
+	o5H/gbath89FFm2lLmXpKvb6v03njlrlIhUYsyCQBgdRdMTALywkEwifz4BKbSUkmV5eiurrlN++R
+	86d3hv42iMYSaArpw7UCqv8yWbCf9a+r4EgmcpGXRRwBDjXibB6NyChklTZPbtxrNXT4/SMA4Ftnt
+	1NMZ77KFfNTjIQhBbnPCrKz+aV5ErWQ9dvzdfZZxm8c+AC7VEKtTF+7gXjv51cUxe5Uu1ltQAPuDO
+	6Y9hlZFBLqWuTHvNWRVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNTK4-0000000HWbr-0KKY;
-	Fri, 06 Jun 2025 09:25:12 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1uNTUV-0000000HXtO-34mN;
+	Fri, 06 Jun 2025 09:35:59 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNTDj-0000000HVbF-1ZUG;
-	Fri, 06 Jun 2025 09:18:42 +0000
-X-UUID: 384fae7e42b711f0b29709d653e92f7d-20250606
-X-CTIC-Tags: HR_CC_AS_FROM, HR_CC_COUNT, HR_CC_DOMAIN_COUNT, HR_CC_NAME, HR_CTE_8B
-	HR_CTT_MISS, HR_DATE_H, HR_DATE_WKD, HR_DATE_ZONE, HR_FROM_DIGIT_LEN
-	HR_FROM_NAME, HR_SJ_DIGIT_LEN, HR_SJ_LANG, HR_SJ_LEN, HR_SJ_LETTER
-	HR_SJ_NOR_SYM, HR_SJ_PHRASE, HR_SJ_PHRASE_LEN, HR_SJ_WS, HR_TO_COUNT
-	HR_TO_DOMAIN_COUNT, HR_TO_NO_NAME, IP_TRUSTED, SRC_TRUSTED, DN_TRUSTED
-	SA_TRUSTED, SA_EXISTED, SN_TRUSTED, SN_EXISTED, SPF_NOPASS
-	DKIM_NOPASS, DMARC_NOPASS
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.45,REQID:07587476-8ac4-4c73-8c0b-f3e67721b9b3,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:-5,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-INFO: VERSION:1.1.45,REQID:07587476-8ac4-4c73-8c0b-f3e67721b9b3,IP:0,URL
-	:0,TC:0,Content:-25,EDM:25,RT:0,SF:-5,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-5
-X-CID-META: VersionHash:6493067,CLOUDID:9a30bf3b74591aedaf2c97aae7f9d25f,BulkI
-	D:250606171835ZJIVP55Y,BulkQuantity:0,Recheck:0,SF:17|19|38|66|78|81|82|10
-	2,TC:nil,Content:0|50,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,B
-	EC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_SNR
-X-UUID: 384fae7e42b711f0b29709d653e92f7d-20250606
-X-User: xiaopei01@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <xiaopei01@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 774779148; Fri, 06 Jun 2025 17:18:33 +0800
-From: Pei Xiao <xiaopei01@kylinos.cn>
-To: nicolas.frattaroli@collabora.com,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	perex@perex.cz,
-	tiwai@suse.com,
-	heiko@sntech.de,
-	linux-rockchip@lists.infradead.org,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH v2 2/2] ASOC: rockchip: Use helper function devm_clk_get_enabled()
-Date: Fri,  6 Jun 2025 17:18:22 +0800
-Message-Id: <84bc40641d05596f1edf4f01d1e6aea16bdbeeb5.1749201126.git.xiaopei01@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1749201126.git.xiaopei01@kylinos.cn>
-References: <cover.1749201126.git.xiaopei01@kylinos.cn>
+	id 1uNTGC-0000000HW7q-3cwi;
+	Fri, 06 Jun 2025 09:21:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749201641; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=nzyi95xiWzKt7OEWNMu5E1KNY8xSywTW3tCv/p2angM74H2VjK0l6cbeNJWJ298VXE7X8qYjpszF1k+9cLAUZnXcSPsylxdVB6jKDzxMFOi3rEANEhgfpXRivoGUGb2Bzq+8eirOQzcXeytyn2AA1mB0mmahTO0sGrvnbHaiu3E=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1749201641; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Eoma7VE8zBbmkSZqRjLMFcnJ8YljGbTiLj0UCYHlAT0=; 
+	b=PYsKU8X6p5fkEcHAFY8hlJOChD0WTG2oFUF6dsPpoAub/HSlPcMGhQdGYVX7EJwOtdBNLoZaoH9hzSqgzk3yywmYW8Sqm4sugBU/aOlny78itsBEeRdKUCyDY5D45cUGg7hoV0LlsQ60X7a8LINU/Ea8tCGFVrBv+2iVym6sExQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749201641;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=Eoma7VE8zBbmkSZqRjLMFcnJ8YljGbTiLj0UCYHlAT0=;
+	b=W8wJm07WNGiJ+m+LKUqIbkD+PnponFs4yfkz+c5LhNxgQTrGWgD7GObZMUFK2rHN
+	eAeAOERA46ia74rvkmi7fOdLbdUXrwC/DmHL2Phu0cOV4JgkxWyYRz0RvPiRqJ82eG+
+	WDOBXxat9J8zN2lJLvUoTx64SvX1iBC6QBVLgXV4=
+Received: by mx.zohomail.com with SMTPS id 1749201638651978.6010401659372;
+	Fri, 6 Jun 2025 02:20:38 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Oded Gabbay <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Kever Yang <kever.yang@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>,
+ Daniel Stone <daniel@fooishbar.org>, Da Xue <da@libre.computer>,
+ Jeff Hugo <jeff.hugo@oss.qualcomm.com>, Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org,
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
+ Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: Re: [PATCH v7 10/10] arm64: dts: rockchip: enable NPU on ROCK 5B
+Date: Fri, 06 Jun 2025 11:20:32 +0200
+Message-ID: <6946302.MhkbZ0Pkbq@workhorse>
+In-Reply-To: <20250606-6-10-rocket-v7-10-dc16cfe6fe4e@tomeuvizoso.net>
+References: <20250606-6-10-rocket-v7-0-dc16cfe6fe4e@tomeuvizoso.net>
+ <20250606-6-10-rocket-v7-10-dc16cfe6fe4e@tomeuvizoso.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250606_021839_703742_7A3A6450 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20250606_022112_927002_D7024F98 
+X-CRM114-Status: GOOD (  25.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,97 +90,222 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-replaced by devm_clk_get_enabled() when driver enables the clocks for the
-whole lifetime of the device. Moreover, it is no longer necessary to
-unprepare and disable the clocks explicitly.
+Hi Tomeu,
 
-Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
+On Friday, 6 June 2025 08:28:30 Central European Summer Time Tomeu Vizoso wrote:
+> From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> 
+> The NPU on the ROCK5B uses the same regulator for both the sram-supply
+> and the npu's supply. Add this regulator, and enable all the NPU bits.
+> Also add the regulator as a domain-supply to the pd_npu power domain.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 56 +++++++++++++++++++++++++
+>  1 file changed, 56 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> index d22068475c5dc6cb885f878f3f527a66edf1ba70..49500f7cbcb14af4919a6c1997e9e53a01d84973 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> @@ -316,6 +316,28 @@ regulator-state-mem {
+>  	};
+>  };
+>  
+> +&i2c1 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c1m2_xfer>;
+> +	status = "okay";
+> +
+> +	vdd_npu_s0: regulator@42 {
+> +		compatible = "rockchip,rk8602";
+> +		reg = <0x42>;
+> +		fcs,suspend-voltage-selector = <1>;
+> +		regulator-name = "vdd_npu_s0";
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <550000>;
+> +		regulator-max-microvolt = <950000>;
+> +		regulator-ramp-delay = <2300>;
+> +		vin-supply = <&vcc5v0_sys>;
+> +
+> +		regulator-state-mem {
+> +			regulator-off-in-suspend;
+> +		};
+> +	};
+> +};
+> +
+>  &i2c6 {
+>  	status = "okay";
+>  
+> @@ -440,6 +462,10 @@ &pd_gpu {
+>  	domain-supply = <&vdd_gpu_s0>;
+>  };
+>  
+> +&pd_npu {
+> +	domain-supply = <&vdd_npu_s0>;
+> +};
+> +
+>  &pinctrl {
+>  	hdmirx {
+>  		hdmirx_hpd: hdmirx-5v-detection {
+> @@ -500,6 +526,36 @@ &pwm1 {
+>  	status = "okay";
+>  };
+>  
+> +&rknn_core_top {
+> +	npu-supply = <&vdd_npu_s0>;
+> +	sram-supply = <&vdd_npu_s0>;
+> +	status = "okay";
+> +};
+> +
+> +&rknn_core_1 {
+> +	npu-supply = <&vdd_npu_s0>;
+> +	sram-supply = <&vdd_npu_s0>;
+> +	status = "okay";
+> +};
+> +
+> +&rknn_core_2 {
+> +	npu-supply = <&vdd_npu_s0>;
+> +	sram-supply = <&vdd_npu_s0>;
+> +	status = "okay";
+> +};
+> +
+> +&rknn_mmu_top {
+> +	status = "okay";
+> +};
+> +
+> +&rknn_mmu_1 {
+> +	status = "okay";
+> +};
+> +
+> +&rknn_mmu_2 {
+> +	status = "okay";
+> +};
+> +
+>  &saradc {
+>  	vref-supply = <&avcc_1v8_s0>;
+>  	status = "okay";
+> 
+> 
+
+Feel free to replace this patch with the following, if your series is
+based on linux-next or v6.16. It moves the enablement into the new
+shared ROCK 5B/5B+ dtsi, and I've added a regulator-enable-ramp-delay
+while I was at it because I've run into hard-to-reproduce problems
+relating to it before that Heiko quickly identified and fixed in his
+recent series[1] for basically all already present regulators. Remains
+to be seen if the final patch lands in that form but this should make
+it easier for people to try out as it means a bad luck roll for the
+day won't make them run into as many weird issues.
+
+[1]: https://lore.kernel.org/all/20250605185001.377055-1-heiko@sntech.de/
+
 ---
- sound/soc/rockchip/rockchip_sai.c | 35 +++++++++----------------------
- 1 file changed, 10 insertions(+), 25 deletions(-)
+From ff1c370a158f4340aa5dfa4ed5034e815e5371be Mon Sep 17 00:00:00 2001
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Tue, 3 Jun 2025 17:03:10 +0200
+Subject: [PATCH] arm64: dts: rockchip: enable NPU on ROCK 5B/+
 
-diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
-index 916af63f1c2c..0b9f54102d69 100644
---- a/sound/soc/rockchip/rockchip_sai.c
-+++ b/sound/soc/rockchip/rockchip_sai.c
-@@ -1427,43 +1427,32 @@ static int rockchip_sai_probe(struct platform_device *pdev)
- 	if (irq > 0) {
- 		ret = devm_request_irq(&pdev->dev, irq, rockchip_sai_isr,
- 				       IRQF_SHARED, node->name, sai);
--		if (ret) {
-+		if (ret)
- 			return dev_err_probe(&pdev->dev, ret,
- 					     "Failed to request irq %d\n", irq);
--		}
- 	} else {
- 		dev_dbg(&pdev->dev, "Asked for an IRQ but got %d\n", irq);
- 	}
+The NPU on the ROCK5B uses the same regulator for both the sram-supply
+and the npu's supply. Add this regulator, and enable all the NPU bits.
+Also add the regulator as a domain-supply to the pd_npu power domain.
+
+The 5B+'s regulator setup is identical to the 5B in this regard, so it
+goes in the shared .dtsi.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+ .../boot/dts/rockchip/rk3588-rock-5b.dtsi     | 57 +++++++++++++++++++
+ 1 file changed, 57 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
+index 51e83f0ed809..5a20cc2555fb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
+@@ -332,6 +332,29 @@ regulator-state-mem {
+ 	};
+ };
  
- 	sai->mclk = devm_clk_get(&pdev->dev, "mclk");
--	if (IS_ERR(sai->mclk)) {
-+	if (IS_ERR(sai->mclk))
- 		return dev_err_probe(&pdev->dev, PTR_ERR(sai->mclk),
- 				     "Failed to get mclk\n");
--	}
++&i2c1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c1m2_xfer>;
++	status = "okay";
++
++	vdd_npu_s0: regulator@42 {
++		compatible = "rockchip,rk8602";
++		reg = <0x42>;
++		fcs,suspend-voltage-selector = <1>;
++		regulator-name = "vdd_npu_s0";
++		regulator-boot-on;
++		regulator-enable-ramp-delay = <500>;
++		regulator-min-microvolt = <550000>;
++		regulator-max-microvolt = <950000>;
++		regulator-ramp-delay = <2300>;
++		vin-supply = <&vcc5v0_sys>;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
++};
++
+ &i2c3 {
+ 	status = "okay";
+ };
+@@ -521,6 +544,10 @@ &pd_gpu {
+ 	domain-supply = <&vdd_gpu_s0>;
+ };
  
--	sai->hclk = devm_clk_get(&pdev->dev, "hclk");
--	if (IS_ERR(sai->hclk)) {
-+	sai->hclk = devm_clk_get_enabled(&pdev->dev, "hclk");
-+	if (IS_ERR(sai->hclk))
- 		return dev_err_probe(&pdev->dev, PTR_ERR(sai->hclk),
- 				     "Failed to get hclk\n");
--	}
--
--	ret = clk_prepare_enable(sai->hclk);
--	if (ret)
--		return dev_err_probe(&pdev->dev, ret, "Failed to enable hclk\n");
++&pd_npu {
++	domain-supply = <&vdd_npu_s0>;
++};
++
+ &pinctrl {
+ 	hdmirx {
+ 		hdmirx_hpd: hdmirx-5v-detection {
+@@ -585,6 +612,36 @@ &pwm1 {
+ 	status = "okay";
+ };
  
- 	regmap_read(sai->regmap, SAI_VERSION, &sai->version);
- 
- 	ret = rockchip_sai_init_dai(sai, res, &dai);
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to initialize DAI: %d\n", ret);
--		goto err_disable_hclk;
--	}
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Failed to initialize DAI\n");
- 
- 	ret = rockchip_sai_parse_paths(sai, node);
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to parse paths: %d\n", ret);
--		goto err_disable_hclk;
--	}
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Failed to parse paths\n");
- 
- 	/*
- 	 * From here on, all register accesses need to be wrapped in
-@@ -1474,10 +1463,8 @@ static int rockchip_sai_probe(struct platform_device *pdev)
- 	devm_pm_runtime_enable(&pdev->dev);
- 	pm_runtime_get_noresume(&pdev->dev);
- 	ret = rockchip_sai_runtime_resume(&pdev->dev);
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to resume device: %pe\n", ERR_PTR(ret));
--		goto err_disable_hclk;
--	}
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Failed to resume device\n");
- 
- 	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
- 	if (ret) {
-@@ -1504,8 +1491,6 @@ static int rockchip_sai_probe(struct platform_device *pdev)
- 	/* If we're !CONFIG_PM, we get -ENOSYS and disable manually */
- 	if (pm_runtime_put(&pdev->dev))
- 		rockchip_sai_runtime_suspend(&pdev->dev);
--err_disable_hclk:
--	clk_disable_unprepare(sai->hclk);
- 
- 	return ret;
- }
++&rknn_core_top {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_core_1 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_core_2 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_mmu_top {
++	status = "okay";
++};
++
++&rknn_mmu_1 {
++	status = "okay";
++};
++
++&rknn_mmu_2 {
++	status = "okay";
++};
++
+ &saradc {
+ 	vref-supply = <&avcc_1v8_s0>;
+ 	status = "okay";
 -- 
-2.25.1
+2.49.0
+
+
+
 
 
 _______________________________________________
