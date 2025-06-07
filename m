@@ -4,84 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A242C61CE8
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Jun 2025 02:45:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62B2EC5B543
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Jun 2025 05:49:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9hvRxfnE2IvNmkRmfdRR9Fb1RCG8Hh9rn8PVYOCIayc=; b=pgDt8q2IVrJela
-	01YLu/wosRV/g3MqsZN9j7U5gxOcPDhiD5oq0RSBcamTH7HdxN7EDVE5K2W48DjtSFlKzqK49xk9Q
-	diDdeIxaTwRyLJBITLyIPDKH+YL6Azp/lBenbVcmITOttRwrpVmXhhiEN0RuzM1zqEkGz9slyGjCM
-	8GEZSSEtwIk5Prf27LhC60Ny0l8u6ILVRZNCAeUlrSNap5TCV1OynTPKHOk99LYIc1BjGoGYskpMo
-	i3PVftNm6EhEZKVuFmR76GyVIafyrLFFOOGXwe0o7M/34kr5jy+9HbQ5+AegHVrI9rsFUuYzIoniN
-	FW0ILf82Ngbw1XIAvgJQ==;
+	List-Owner; bh=d7uayG5E14TJgAnQ8FJzws92ESurvOm4VnwaDzOYEFU=; b=ZAxk7XkeqNEVMT
+	KTYpE/F32pOkY3PKSmP7XqaUwp7Hi2OhdiDWIc/zDT9qKdZo391fb5MPnXtkoI1zgBkKdIbIgOEvB
+	K6S7uvmaw6CvAFbqh+395EQBb0M+1czqHGOyafR/HA1HAwDGfbORn0guR3EnMjEQb+tRZk0aUyofz
+	czdsxUSyUCaq0uNZTO/2tK+a1oMo3CmzFM+G6EYbcfJXiO4M4af6ktJZ848UKq4lJ9VZ0tbBREgYs
+	+l+yL7/HKhwlgEN0yLOkineoq//uZwej2SppAsZpqUPXhEzWtoRH/jCGJqYjyyPE8GA/Ob7vIEvnX
+	u0i2S6xOAwYlvtnvsIWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNjYG-00000001GCF-1gSY;
-	Sat, 07 Jun 2025 02:44:56 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1uNmQy-00000001MBM-0FDM;
+	Sat, 07 Jun 2025 05:49:36 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNjW7-00000001FuM-3MbJ;
-	Sat, 07 Jun 2025 02:42:44 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-3a5096158dcso2303864f8f.1;
-        Fri, 06 Jun 2025 19:42:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1749264161; x=1749868961; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9CefWT92/pn4Htibx0ZcptASfFKnZ0vYyjmoTK16U7Y=;
-        b=e9cXOC/6kAUPdXZ9IMjcx3ttLTpL16V7OlCjLBkZZRuxQtS2yAajqVQjGtDP7GyhZ/
-         xzYA/JAzDq3LLpbARNKjJurshL9r1r+G0jJypGV56UYAxCCqNp9X2uaFFwv5q5L53SYz
-         qTdHHaSAoJjba4cfnhakmbvU1a4kpXyuKCF2frjUMqAOL6NW1o6Zbwxo2bjONPE9dHJu
-         kN9L89VSnFu+x/f58ShF8HxC30SRhbi/ZVG7IbJgmVyt6IUZ25fHHzyyPm5hzoDgwPnI
-         qySz7B57bMIBXWW1WSCgIT+lhkX+xg4rG2dQOe2tHUaNbWxQBb7qxz4oyXAeRvIuRJsv
-         bVeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749264161; x=1749868961;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9CefWT92/pn4Htibx0ZcptASfFKnZ0vYyjmoTK16U7Y=;
-        b=dbMTpna4FRKbTGpbWeasmcwYpx1wfu3+JYQaURBZNhx2N/5u7T2bxu/psAnXYFiiEp
-         oUZRMKZPNuez0nQso6RSMcPzXsBhziFRME6358sNzlx1RIYaeQC46sk/LJEo0j5OHPZc
-         gEfo4Ff4PehSg0vZ66uflU38KbN/uPwrE92lWcSLIkXhkEb9VA7+ynGapiNzuux80ZEY
-         YfgHZ1QcNEhjYoYXl0aBvy3eP/r1M1Wd1SoVXikceI2q2dD0YBmtgUPPYSiaNl2jHZYP
-         6W6TpIxveHKF2LZ2CUrF5hkV17YU++OZ9XVay9+IAS+LRPFyLwl6in9LxiJE6HtbPjM2
-         AeNQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUSa1T0kxz7NGcHwy5xRNwJcSX1rX35GUvaysp2kUX/M6ZIMUTpc8FDYIYNeTrWdiLlbr0rXFhmmiUXBKwKwBA=@lists.infradead.org, AJvYcCW8x31tCgkJeb8oQpLRDXnx6G0xeADOf2IaU726F6i5qRH42L4CcvKRzEup1ATLw1IJRXfBfUkmQEIHincjVtNy@lists.infradead.org
-X-Gm-Message-State: AOJu0YwtLmDvxBa1t2KxM/U4Jwpmu37u/PIXxbXFqD3dQvGEjdgsohIT
-	SXI2oOvgRzAOexzEwBNvWHrYPzP5stkTp9cx25hLRn/4ksuJzeM1UIvhqqQEPRdowYMqiaSX7SO
-	FonCjOy2Sh/JQZssuDuW/U5DcN4ZMop0=
-X-Gm-Gg: ASbGncv6m0qEa3YbSCMUASbVbZR7pPtcOtNt2QqLKyfLXlSAZmKBy+acuaF/cwfwl3k
-	AS2KQTav+oJs7q3G3nrNLTqNDUFgC6TrMeQbnOFMy38syIS+neCyNMJqTEkqBuGqaqugUBhRw/s
-	aR85B2ixJ7JQJ/22fLmFdlEnRSYvuwzh/FPTj4OstCVtCrb/URTMm0Ime1dlwzQBgQXJ9amf2Gp
-	g==
-X-Google-Smtp-Source: AGHT+IGcEKkjQjtCriThcqw8RLc0+PuS0lf/rMkncpVF4bkgmYsjA2mOt2fM8jKZfdbuxZZdA2tkH6bTKQQT9twpEKA=
-X-Received: by 2002:a05:6000:2dc9:b0:3a4:cfbf:519b with SMTP id
- ffacd0b85a97d-3a531ce09e4mr4689955f8f.44.1749264161453; Fri, 06 Jun 2025
- 19:42:41 -0700 (PDT)
+	id 1uNmOl-00000001M6j-3ViK;
+	Sat, 07 Jun 2025 05:47:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1749275239; x=1780811239;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=5C3lLj8+AbKhyCtUA5RyohQ8t2Ydl8exCq8AJb7blUs=;
+  b=jtMjxIUmqQuCjpHuzc/rDF2eqtPqRmnlWUKIOmZiXUzYC4Lh80GskO3D
+   MXdM0Wvpg+qxG5IAPerXzfBOHqt7l/Z8WRQKSr5FNNvT0KkaZvuv5GvKI
+   D8XyURO5x9xIvPGIBo7j0/0sFFgXijHktx79yvS/f7EbqSZaX37MMLp+5
+   vB0hrVPyEJ/fW6D3frfVSxm5dWEHZDGvPTviGZ6YoATHpEyhs2Nk+9tmr
+   sXur6e40xbhndandBscPSU8zi4OOgErjZ+jZFw37zlXtpeJ8p2kp75aKt
+   xhOAbCZSMtHDoPFqAavLWk6Ay2GH/5hKoRFQ9UrYFG0Khj7im4DSnZNr7
+   w==;
+X-CSE-ConnectionGUID: 32jsJnA1SX+pV52KMqvzMg==
+X-CSE-MsgGUID: B7lF9no4T3+AyNwxC+tKUA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11456"; a="51420674"
+X-IronPort-AV: E=Sophos;i="6.16,217,1744095600"; 
+   d="scan'208";a="51420674"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jun 2025 22:47:15 -0700
+X-CSE-ConnectionGUID: gRFQIGf+THm/L1f2j86avw==
+X-CSE-MsgGUID: 1n4MLOnHQoSB0ABW7+8A9Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,217,1744095600"; 
+   d="scan'208";a="146528813"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+  by fmviesa010.fm.intel.com with ESMTP; 06 Jun 2025 22:47:11 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uNmOb-0005UP-1w;
+	Sat, 07 Jun 2025 05:47:09 +0000
+Date: Sat, 7 Jun 2025 13:46:39 +0800
+From: kernel test robot <lkp@intel.com>
+To: Quentin Schulz <foss+kernel@0leil.net>, Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v2 2/4] mfd: rk8xx-core: allow to customize RK806 reset
+ mode
+Message-ID: <202506071321.Ze0gsxC0-lkp@intel.com>
+References: <20250605-rk8xx-rst-fun-v2-2-143d190596dd@cherry.de>
 MIME-Version: 1.0
-References: <20250603-sige5-updates-v1-0-717e8ce4ab77@gmail.com>
- <20250603-sige5-updates-v1-3-717e8ce4ab77@gmail.com> <CALWfF7JOJSihtfqrFiZtTxnzvoU6FP3WXuWjYOVaAvjPJZWWgg@mail.gmail.com>
- <CABjd4Yyw5xStJYU5c5snUGpBjEYL8=qoj=bWYLnuzSWzr8shaA@mail.gmail.com> <CABjd4YxfG3WZxRL3ihQLtdVdp_3Hq=TKKrZJktJ_C5i+xCM2Ag@mail.gmail.com>
-In-Reply-To: <CABjd4YxfG3WZxRL3ihQLtdVdp_3Hq=TKKrZJktJ_C5i+xCM2Ag@mail.gmail.com>
-From: Jimmy Hon <honyuenkwun@gmail.com>
-Date: Fri, 6 Jun 2025 21:42:29 -0500
-X-Gm-Features: AX0GCFsASrqjmeogHKGqU5uJIqowBQVTy5uoU6CN1I531lsTS5iFJUyKloDL55Q
-Message-ID: <CALWfF7KS_kGK-RQVfcPMkvo_2PD_w992Z9hka_3=b=Cgnto6Lw@mail.gmail.com>
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: enable wifi on ArmSoM Sige5
-To: Alexey Charkov <alchark@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+Content-Disposition: inline
+In-Reply-To: <20250605-rk8xx-rst-fun-v2-2-143d190596dd@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250606_194243_842346_32CBCD89 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20250606_224719_952262_72C3EEEA 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,40 +86,183 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Daniel Semkowicz <dse@thaumatec.com>, devicetree@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Lukasz Czechowski <lukasz.czechowski@thaumatec.com>, oe-kbuild-all@lists.linux.dev, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBKdW4gNSwgMjAyNSBhdCA5OjE04oCvQU0gQWxleGV5IENoYXJrb3YgPGFsY2hhcmtA
-Z21haWwuY29tPiB3cm90ZToKPgo+IE9uIFRodSwgSnVuIDUsIDIwMjUgYXQgMTA6MzLigK9BTSBB
-bGV4ZXkgQ2hhcmtvdiA8YWxjaGFya0BnbWFpbC5jb20+IHdyb3RlOgo+ID4KPiA+IE9uIFRodSwg
-SnVuIDUsIDIwMjUgYXQgNjo0M+KAr0FNIEppbW15IEhvbiA8aG9ueXVlbmt3dW5AZ21haWwuY29t
-PiB3cm90ZToKPiA+ID4KPiA+ID4gPgo+ID4gPiA+ICsmc2RpbyB7Cj4gPiA+ID4gKyAgICAgICBi
-dXMtd2lkdGggPSA8ND47Cj4gPiA+ID4gKyAgICAgICBjYXAtc2Rpby1pcnE7Cj4gPiA+ID4gKyAg
-ICAgICBkaXNhYmxlLXdwOwo+ID4gPiA+ICsgICAgICAga2VlcC1wb3dlci1pbi1zdXNwZW5kOwo+
-ID4gPiA+ICsgICAgICAgbW1jLXB3cnNlcSA9IDwmc2Rpb19wd3JzZXE+Owo+ID4gPiA+ICsgICAg
-ICAgbm8tc2Q7Cj4gPiA+ID4gKyAgICAgICBuby1tbWM7Cj4gPiA+ID4gKyAgICAgICBub24tcmVt
-b3ZhYmxlOwo+ID4gPiA+ICsgICAgICAgc2QtdWhzLXNkcjUwOwo+ID4gPiA+ICsgICAgICAgc2Qt
-dWhzLXNkcjEwNDsKPiA+ID4gPiArICAgICAgIHZtbWMtc3VwcGx5ID0gPCZ2Y2NfM3YzX3MzPjsK
-PiA+ID4gPiArICAgICAgIHZxbW1jLXN1cHBseSA9IDwmdmNjXzF2OF9zMz47Cj4gPiA+ID4gKyAg
-ICAgICB3YWtldXAtc291cmNlOwo+ID4gPiA+ICsgICAgICAgc3RhdHVzID0gIm9rYXkiOwo+ID4g
-PiA+ICt9Owo+ID4gPgo+ID4gPiBXaGVuIHlvdSBlbmFibGUgdGhlIHNkaW8gbm9kZSBvbiB5b3Vy
-IHYxLjIgYm9hcmQgd2l0aCB0aGUgYnJvYWRjb20KPiA+ID4gY2hpcCAodXNpbmcgU1lONDM3NTIp
-LCBkb2VzIHRoZSBidHNkaW8ua28gYmluZCB0byB0aGUgZGV2aWNlIGFuZAo+ID4gPiBjcmVhdGUg
-YW4gZXh0cmEgcmZraWxsIGJsdWV0b290aCBub2RlPwo+ID4KPiA+IEdvb2QgcXVlc3Rpb24sIEkg
-ZGlkbid0IGhhdmUgaXQgZW5hYmxlZCBpbiBteSBidWlsZDoKPiA+Cj4gPiAjIENPTkZJR19CVF9I
-Q0lCVFNESU8gaXMgbm90IHNldAo+ID4KPiA+IExldCBtZSBhZGQgaXQgYW5kIHJlcG9ydCBiYWNr
-Lgo+Cj4gU28gSSd2ZSByZWJ1aWx0IGl0IHdpdGggYnRzZGlvLmtvIG1vZHVsZSBlbmFibGVkLiBB
-cyBJIGJvb3QgdGhlCj4gc3lzdGVtLCBXaUZpICh2aWEgU0RJTykgYW5kIEJsdWV0b290aCAodmlh
-IFVBUlQpIGRyaXZlcnMgZ2V0IHByb2JlZAo+IGFuZCBsb2FkIHRoZWlyIHJlc3BlY3RpdmUgZmly
-bXdhcmVzLiBidHNkaW8ua28gZG9lc24ndCBnZXQKPiBhdXRvLWxvYWRlZC4gSWYgSSBsb2FkIGl0
-IG1hbnVhbGx5IGFmdGVyIGJvb3RpbmcsIGl0IGRvZXNuJ3QgYmluZCB0bwo+IGFueXRoaW5nIGFu
-ZCBkb2Vzbid0IGNyZWF0ZSBhbnkgZXh0cmEgcmZraWxsIG5vZGVzLgo+Cj4gSXMgdGhlcmUgYW55
-dGhpbmcgZWxzZSBJIG5lZWQgdG8gY2hlY2sgb3IgbG9vayBvdXQgZm9yPwo+Cj4gQmVzdCByZWdh
-cmRzLAo+IEFsZXhleQoKVGhhdCBzaG91bGQgYmUgYWxsIHlvdSBuZWVkIHRvIGNoZWNrLiBJIGd1
-ZXNzIHRoZXkgc3RvcHBlZCBpbmNvcnJlY3RseQphZHZlcnRpc2luZyBTRElPX0RFVklDRV9DTEFT
-UyBmb3IgYmx1ZXRvb3RoLgpKaW1teQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Quentin,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on ec7714e4947909190ffb3041a03311a975350fe0]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Quentin-Schulz/dt-bindings-mfd-rk806-allow-to-customize-PMIC-reset-mode/20250605-234243
+base:   ec7714e4947909190ffb3041a03311a975350fe0
+patch link:    https://lore.kernel.org/r/20250605-rk8xx-rst-fun-v2-2-143d190596dd%40cherry.de
+patch subject: [PATCH v2 2/4] mfd: rk8xx-core: allow to customize RK806 reset mode
+config: arc-randconfig-001-20250607 (https://download.01.org/0day-ci/archive/20250607/202506071321.Ze0gsxC0-lkp@intel.com/config)
+compiler: arc-linux-gcc (GCC) 15.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250607/202506071321.Ze0gsxC0-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202506071321.Ze0gsxC0-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/mfd/rk8xx-core.c: In function 'rk8xx_probe':
+>> drivers/mfd/rk8xx-core.c:740:42: error: implicit declaration of function 'FIELD_PREP' [-Wimplicit-function-declaration]
+     740 |                                          FIELD_PREP(RK806_RST_FUN_MSK, rst_fun));
+         |                                          ^~~~~~~~~~
+
+
+vim +/FIELD_PREP +740 drivers/mfd/rk8xx-core.c
+
+   694	
+   695	int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap *regmap)
+   696	{
+   697		struct rk808 *rk808;
+   698		const struct rk808_reg_data *pre_init_reg;
+   699		const struct mfd_cell *cells;
+   700		int dual_support = 0;
+   701		int nr_pre_init_regs;
+   702		u32 rst_fun = 0;
+   703		int nr_cells;
+   704		int ret;
+   705		int i;
+   706	
+   707		rk808 = devm_kzalloc(dev, sizeof(*rk808), GFP_KERNEL);
+   708		if (!rk808)
+   709			return -ENOMEM;
+   710		rk808->dev = dev;
+   711		rk808->variant = variant;
+   712		rk808->regmap = regmap;
+   713		dev_set_drvdata(dev, rk808);
+   714	
+   715		switch (rk808->variant) {
+   716		case RK805_ID:
+   717			rk808->regmap_irq_chip = &rk805_irq_chip;
+   718			pre_init_reg = rk805_pre_init_reg;
+   719			nr_pre_init_regs = ARRAY_SIZE(rk805_pre_init_reg);
+   720			cells = rk805s;
+   721			nr_cells = ARRAY_SIZE(rk805s);
+   722			break;
+   723		case RK806_ID:
+   724			rk808->regmap_irq_chip = &rk806_irq_chip;
+   725			pre_init_reg = rk806_pre_init_reg;
+   726			nr_pre_init_regs = ARRAY_SIZE(rk806_pre_init_reg);
+   727			cells = rk806s;
+   728			nr_cells = ARRAY_SIZE(rk806s);
+   729			dual_support = IRQF_SHARED;
+   730	
+   731			ret = device_property_read_u32(dev, "rockchip,reset-mode", &rst_fun);
+   732			if (ret) {
+   733				dev_dbg(dev,
+   734					"rockchip,reset-mode property missing, not setting RST_FUN\n");
+   735				break;
+   736			}
+   737	
+   738			ret = regmap_update_bits(rk808->regmap, RK806_SYS_CFG3,
+   739						 RK806_RST_FUN_MSK,
+ > 740						 FIELD_PREP(RK806_RST_FUN_MSK, rst_fun));
+   741			if (ret)
+   742				return dev_err_probe(dev, ret, "RST_FUN write err\n");
+   743			break;
+   744		case RK808_ID:
+   745			rk808->regmap_irq_chip = &rk808_irq_chip;
+   746			pre_init_reg = rk808_pre_init_reg;
+   747			nr_pre_init_regs = ARRAY_SIZE(rk808_pre_init_reg);
+   748			cells = rk808s;
+   749			nr_cells = ARRAY_SIZE(rk808s);
+   750			break;
+   751		case RK816_ID:
+   752			rk808->regmap_irq_chip = &rk816_irq_chip;
+   753			pre_init_reg = rk816_pre_init_reg;
+   754			nr_pre_init_regs = ARRAY_SIZE(rk816_pre_init_reg);
+   755			cells = rk816s;
+   756			nr_cells = ARRAY_SIZE(rk816s);
+   757			break;
+   758		case RK818_ID:
+   759			rk808->regmap_irq_chip = &rk818_irq_chip;
+   760			pre_init_reg = rk818_pre_init_reg;
+   761			nr_pre_init_regs = ARRAY_SIZE(rk818_pre_init_reg);
+   762			cells = rk818s;
+   763			nr_cells = ARRAY_SIZE(rk818s);
+   764			break;
+   765		case RK809_ID:
+   766		case RK817_ID:
+   767			rk808->regmap_irq_chip = &rk817_irq_chip;
+   768			pre_init_reg = rk817_pre_init_reg;
+   769			nr_pre_init_regs = ARRAY_SIZE(rk817_pre_init_reg);
+   770			cells = rk817s;
+   771			nr_cells = ARRAY_SIZE(rk817s);
+   772			break;
+   773		default:
+   774			dev_err(dev, "Unsupported RK8XX ID %lu\n", rk808->variant);
+   775			return -EINVAL;
+   776		}
+   777	
+   778		if (!irq)
+   779			return dev_err_probe(dev, -EINVAL, "No interrupt support, no core IRQ\n");
+   780	
+   781		ret = devm_regmap_add_irq_chip(dev, rk808->regmap, irq,
+   782					       IRQF_ONESHOT | dual_support, -1,
+   783					       rk808->regmap_irq_chip, &rk808->irq_data);
+   784		if (ret)
+   785			return dev_err_probe(dev, ret, "Failed to add irq_chip\n");
+   786	
+   787		for (i = 0; i < nr_pre_init_regs; i++) {
+   788			ret = regmap_update_bits(rk808->regmap,
+   789						pre_init_reg[i].addr,
+   790						pre_init_reg[i].mask,
+   791						pre_init_reg[i].value);
+   792			if (ret)
+   793				return dev_err_probe(dev, ret, "0x%x write err\n",
+   794						     pre_init_reg[i].addr);
+   795		}
+   796	
+   797		ret = devm_mfd_add_devices(dev, PLATFORM_DEVID_AUTO, cells, nr_cells, NULL, 0,
+   798				      regmap_irq_get_domain(rk808->irq_data));
+   799		if (ret)
+   800			return dev_err_probe(dev, ret, "failed to add MFD devices\n");
+   801	
+   802		if (device_property_read_bool(dev, "system-power-controller") ||
+   803		    device_property_read_bool(dev, "rockchip,system-power-controller")) {
+   804			ret = devm_register_sys_off_handler(dev,
+   805					    SYS_OFF_MODE_POWER_OFF_PREPARE, SYS_OFF_PRIO_HIGH,
+   806					    &rk808_power_off, rk808);
+   807			if (ret)
+   808				return dev_err_probe(dev, ret,
+   809						     "failed to register poweroff handler\n");
+   810	
+   811			switch (rk808->variant) {
+   812			case RK809_ID:
+   813			case RK817_ID:
+   814				ret = devm_register_sys_off_handler(dev,
+   815								    SYS_OFF_MODE_RESTART, SYS_OFF_PRIO_HIGH,
+   816								    &rk808_restart, rk808);
+   817				if (ret)
+   818					dev_warn(dev, "failed to register rst handler, %d\n", ret);
+   819				break;
+   820			default:
+   821				dev_dbg(dev, "pmic controlled board reset not supported\n");
+   822				break;
+   823			}
+   824		}
+   825	
+   826		return 0;
+   827	}
+   828	EXPORT_SYMBOL_GPL(rk8xx_probe);
+   829	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
