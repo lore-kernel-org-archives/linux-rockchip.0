@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01FA0C5B543
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Jun 2025 15:49:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCAE0C5B543
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Jun 2025 15:51:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZGe6IhrQAM6lQ2gxP1ghSCAoHfgzhBdVYm9mT8z6V8k=; b=xSkysMbXyYvaZO
-	IabMYKiIF6TZ2s2jwmRXwclPbaFYF90pHYUZbD95rA9wpbAtg3v7P961sKjPu12jrNCwc5hYYbQAu
-	71FgY7AsFBSMnfhsZGSrIx71lNUEDCEVbENbDZqZIQCW6P+wexwFJSc9zEEP/8IEkxadk0110dAUt
-	6l2V4QmG0e09Vvo9q/wZZp0MEidpvKC9kkdUpSG2I1vAci+2daKVpCFXdnpUHMtw53HlE3HSH/+jN
-	twCMGoe3TkSnHWj6uirmtaJFyhmD0kqjeYYVURKaRdoMg48niW6s7dH3d5cQGqFHSJ3T5pjH66zSc
-	gaiVG6C079PTLNdzMAyA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aeCkc6fvzck4b9xpKIxF8HZTLqtbbQ8Q2jODPC/n3eQ=; b=nmxNPuuBudxNPD
+	/iogzh2dRRWEIUDC4077reGKnaoKzHvKlbkezslxdYXSov1tH1ftGu1gZO/qkwiZOwlPwfzCFntTn
+	1m0VpXY6wWrZlgWTKDlJ60JjZwHLnIxJyIX7ut3lqOn+I+AZsNdOCTZfznnDqjY/++n8sqXHDQ9Bi
+	pRKGo9SrUhaN2QKpuJyAZKj6PJ26av1vuebGoIAXA02SL37Apw8AIoc7VN8GEOjkrA5xORj1T7J7U
+	eP7DYzj0tKNrSRusvx1eQeChGfL8KUMQfGUmyt+NOdJ2BlK8E3ur62pcf43s9gLwKm+JJrGT0XFWY
+	ByaVJnGYUCtzFIFiFTmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNvnh-00000001pFR-209a;
-	Sat, 07 Jun 2025 15:49:41 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
+	id 1uNvpq-00000001pPV-28Se;
+	Sat, 07 Jun 2025 15:51:54 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNvne-00000001pEV-2DLp;
+	id 1uNvnf-00000001pEY-0hxS;
 	Sat, 07 Jun 2025 15:49:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=Q5
-	Ms93Khz/oAEynWixPmT3I+2jyhZg/bPBQtyT4UV60=; b=Yoq6TCtqv3swQV5HpA
-	43HND+U/e1hn+2zn94r44R5j5TG2Qv6yWIWfdRI6ZOY8fxLlA/1oDhsGFKuMt2R3
-	n/7G6nM+ZoOsRGOpd4M7l0D38ctOBsiGsXOIAmHcxZhBsQxeVOsm9RLIbDpmgQSm
-	XFTUsjll2M+cMT8XDtrIZvHqM=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=k0
+	A/8eOa3/qxuN6ibHKqnIXti28+I3rQhaeeIBTeaok=; b=Bd7bhc4UH4kUYHYnrT
+	xuxQYoU8OouzKeeiwGx8rhHFRdD7g1HX+EW0UAnO6tWcDaTrk80HEEpOcv5jl8TC
+	WhhoX+arHMFZaav1G7KREzvM1WyFYzcNR3bPYWrHCremOblaqZmYTMdks8q4FwI6
+	jL2mQNq2ZPjrJRK65HRbJQ2qM=
 Received: from localhost.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wDnzz17X0RoTZo8Gw--.4221S4;
-	Sat, 07 Jun 2025 23:49:17 +0800 (CST)
+	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wDnzz17X0RoTZo8Gw--.4221S2;
+	Sat, 07 Jun 2025 23:49:15 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
 To: lpieralisi@kernel.org,
 	bhelgaas@google.com,
@@ -47,23 +47,21 @@ Cc: robh@kernel.org,
 	linux-pci@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Hans Zhang <18255117159@163.com>
-Subject: [PATCH 2/2] PCI: rockchip: Remove redundant PCIe message routing definitions
-Date: Sat,  7 Jun 2025 23:49:13 +0800
-Message-Id: <20250607154913.805027-3-18255117159@163.com>
+Subject: [PATCH 0/2] PCI: Consolidate PCIe message routing definitions and remove driver-specific duplicates
+Date: Sat,  7 Jun 2025 23:49:11 +0800
+Message-Id: <20250607154913.805027-1-18255117159@163.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250607154913.805027-1-18255117159@163.com>
-References: <20250607154913.805027-1-18255117159@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDnzz17X0RoTZo8Gw--.4221S4
-X-Coremail-Antispam: 1Uf129KBjvJXoWxJr48KFWxXr1xtFWfXFWDurg_yoW8Zry8pr
-	WUJ3y0yF4xKw43u3W3XF4fXa17Xa9rtF4qvrn29a13KF1fW34rGa4UZF43Grn8JrW8Xrn2
-	k390kayDtrZ8GrDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zEWrWrUUUUU=
+X-CM-TRANSID: _____wDnzz17X0RoTZo8Gw--.4221S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Jry7Wr1xuF4fWF1fCF4xtFb_yoWfArcE9F
+	y8Xa9FvF1UGryayr4YyrW3JF95Z3yUZrn8Gan5tF45AFyfArn5XF98CrW8XFyrWF4rtF13
+	Kr1DZw13CF4xAjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRZNVkUUUUUU==
 X-Originating-IP: [124.79.114.92]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiWxRlo2hEXgkg6gAAs4
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOhNlo2hEXNoO6QABsj
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250607_084938_943982_FDBBCE79 
-X-CRM114-Status: UNSURE (   6.58  )
+X-CRM114-CacheID: sfid-20250607_084939_571359_385E0E8D 
+X-CRM114-Status: UNSURE (   4.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,46 +79,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip driver contained duplicated message routing and INTx code
-definitions (e.g., ROCKCHIP_PCIE_MSG_ROUTING_TO_RC,
-ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTA). These are already provided by the
-PCI core in drivers/pci/pci.h as PCIE_MSG_TYPE_R_RC and
-PCIE_MSG_CODE_ASSERT_INTA, respectively.
+This series consolidates PCIe message routing definitions into the common
+PCI core header, eliminating redundant enums in the Cadence and Rockchip
+drivers. By using standardized macros (PCIE_MSG_TYPE_R_* and
+PCIE_MSG_CODE_*) from drivers/pci/pci.h, we ensure alignment with the PCIe
+r6.0 specification, reduce code duplication, and improve maintainability
+across the PCI subsystem.
 
-Remove the driver-specific definitions and use the common PCIe macros
-instead. This aligns the driver with the PCIe specification and reduces
-maintenance overhead.
+Hans Zhang (2):
+  PCI: cadence: Replace private message routing enums with PCI core
+    definitions
+  PCI: rockchip: Remove redundant PCIe message routing definitions
 
-Signed-off-by: Hans Zhang <18255117159@163.com>
----
- drivers/pci/controller/pcie-rockchip.h | 14 --------------
- 1 file changed, 14 deletions(-)
+ .../pci/controller/cadence/pcie-cadence-ep.c  |  2 +-
+ drivers/pci/controller/cadence/pcie-cadence.h | 20 -------------------
+ drivers/pci/controller/pcie-rockchip.h        | 14 -------------
+ 3 files changed, 1 insertion(+), 35 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 5864a20323f2..12bc8da59d73 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -215,20 +215,6 @@
- #define RC_REGION_0_TYPE_MASK			GENMASK(3, 0)
- #define MAX_AXI_WRAPPER_REGION_NUM		33
- 
--#define ROCKCHIP_PCIE_MSG_ROUTING_TO_RC		0x0
--#define ROCKCHIP_PCIE_MSG_ROUTING_VIA_ADDR		0x1
--#define ROCKCHIP_PCIE_MSG_ROUTING_VIA_ID		0x2
--#define ROCKCHIP_PCIE_MSG_ROUTING_BROADCAST		0x3
--#define ROCKCHIP_PCIE_MSG_ROUTING_LOCAL_INTX		0x4
--#define ROCKCHIP_PCIE_MSG_ROUTING_PME_ACK		0x5
--#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTA		0x20
--#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTB		0x21
--#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTC		0x22
--#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTD		0x23
--#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTA		0x24
--#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTB		0x25
--#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTC		0x26
--#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTD		0x27
- #define ROCKCHIP_PCIE_MSG_ROUTING_MASK			GENMASK(7, 5)
- #define ROCKCHIP_PCIE_MSG_ROUTING(route) \
- 	(((route) << 5) & ROCKCHIP_PCIE_MSG_ROUTING_MASK)
+
+base-commit: ec7714e4947909190ffb3041a03311a975350fe0
 -- 
 2.25.1
 
