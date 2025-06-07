@@ -4,55 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D578FC61CE8
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Jun 2025 15:32:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01FA0C5B543
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Jun 2025 15:49:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RyBPfWq+aerdxCro1kAEo08j5csB7RKZMNpZhJX6bsg=; b=rFfL4X8dX0SvHx
-	3CMGMlAoslp3bKT16NucLFdLlhG9QbaD3AqeQir+ymxNu+SmYV3W/QENaZhFmderkeDK2wDmM/T28
-	QQTA+/vKWvtqbyXPGZE8cHQAudnhTBDWMHdRdJFiQHrC4lqs23q81CBQtqeMeEX4MwNoXs850+9ZZ
-	a8W2vLdEKyZ1ULp8rhucTbvHbPkAyYxpJwA9blDOREz9uTbABMhJFxSrlBwJYINFamKWlmMfo9jgP
-	cO4zxtLwaDbhOoc7RC+MJ3+PGyXHg99Zo2LxmVux1MfC5L8trGyP+xHBgYdodaScGI8evU81YiIFC
-	sbJDwIXDyXSMz+wGKvDg==;
+	List-Owner; bh=ZGe6IhrQAM6lQ2gxP1ghSCAoHfgzhBdVYm9mT8z6V8k=; b=xSkysMbXyYvaZO
+	IabMYKiIF6TZ2s2jwmRXwclPbaFYF90pHYUZbD95rA9wpbAtg3v7P961sKjPu12jrNCwc5hYYbQAu
+	71FgY7AsFBSMnfhsZGSrIx71lNUEDCEVbENbDZqZIQCW6P+wexwFJSc9zEEP/8IEkxadk0110dAUt
+	6l2V4QmG0e09Vvo9q/wZZp0MEidpvKC9kkdUpSG2I1vAci+2daKVpCFXdnpUHMtw53HlE3HSH/+jN
+	twCMGoe3TkSnHWj6uirmtaJFyhmD0kqjeYYVURKaRdoMg48niW6s7dH3d5cQGqFHSJ3T5pjH66zSc
+	gaiVG6C079PTLNdzMAyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNvX4-00000001oJg-1Z71;
-	Sat, 07 Jun 2025 15:32:30 +0000
-Received: from mail-24417.protonmail.ch ([109.224.244.17])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNvWt-00000001oIn-1jdl
-	for linux-rockchip@lists.infradead.org;
-	Sat, 07 Jun 2025 15:32:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1749310333; x=1749569533;
-	bh=gvbxnUgRFBMWdeIANvRl8BGLckj66c+EtDmClvsMtfU=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
-	b=BdhtvZMVRJQEFBsaQIeeUMjlWEDt/rtSZs19jXDkD9EPgtm7gExe4UQHnESUmwq5B
-	 VjikVewQf+brgldPU7fHlppj/aotNxznUHAE6VqGGpVk0Oz2DM24Jws8W9eAi/gtnL
-	 3JPbO/xC30AAqiAQTN6tDtt8+cAxJBSbWKqFGxmAj96GlHKjY+f9onEQSZcdGvxaFt
-	 duTjYhRLqVFmlj/8MJHWBqq/uekhJH6jRke199b+RzbFiJJVXGw1bAfS42zAP20k7w
-	 NcQXN+hVVwPXqIngyrmeFoKBDCJW0Uzz3iVYHvN6e9YsYKAAMSRsamROauO0GM/t2Q
-	 na1NozBdCZXdA==
-Date: Sat, 07 Jun 2025 15:32:07 +0000
-To: Diederik de Haas <didi.debian@cknow.org>
-From: Piotr Zalewski <pZ010001011111@proton.me>
-Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, Dang Huynh <danct12@riseup.net>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH drm-misc-next] rockchip/drm: vop2: don't check color_mgmt_changed in atomic_enable
-Message-ID: <mArHDRo5bhIAjG8sDOR-kM7DsVdbXxxcC8hfuEEPfUWIdMwNnSUy8ZFoLis66DFSuIEq8TrnAxUGkyo5IUTGw3AG4k3vuVVz0fsoI27BAms=@proton.me>
-In-Reply-To: <DAEVDSTMWI1E.J454VZN0R9MA@cknow.org>
-References: <20241206192013.342692-3-pZ010001011111@proton.me> <DAEVDSTMWI1E.J454VZN0R9MA@cknow.org>
-Feedback-ID: 53478694:user:proton
-X-Pm-Message-ID: 352bfcde3cb3dc6da16c674e8ab61db239ac70f4
+	id 1uNvnh-00000001pFR-209a;
+	Sat, 07 Jun 2025 15:49:41 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uNvne-00000001pEV-2DLp;
+	Sat, 07 Jun 2025 15:49:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=Q5
+	Ms93Khz/oAEynWixPmT3I+2jyhZg/bPBQtyT4UV60=; b=Yoq6TCtqv3swQV5HpA
+	43HND+U/e1hn+2zn94r44R5j5TG2Qv6yWIWfdRI6ZOY8fxLlA/1oDhsGFKuMt2R3
+	n/7G6nM+ZoOsRGOpd4M7l0D38ctOBsiGsXOIAmHcxZhBsQxeVOsm9RLIbDpmgQSm
+	XFTUsjll2M+cMT8XDtrIZvHqM=
+Received: from localhost.localdomain (unknown [])
+	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wDnzz17X0RoTZo8Gw--.4221S4;
+	Sat, 07 Jun 2025 23:49:17 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: lpieralisi@kernel.org,
+	bhelgaas@google.com,
+	kwilczynski@kernel.org,
+	shawn.lin@rock-chips.com,
+	heiko@sntech.de
+Cc: robh@kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Hans Zhang <18255117159@163.com>
+Subject: [PATCH 2/2] PCI: rockchip: Remove redundant PCIe message routing definitions
+Date: Sat,  7 Jun 2025 23:49:13 +0800
+Message-Id: <20250607154913.805027-3-18255117159@163.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250607154913.805027-1-18255117159@163.com>
+References: <20250607154913.805027-1-18255117159@163.com>
 MIME-Version: 1.0
+X-CM-TRANSID: _____wDnzz17X0RoTZo8Gw--.4221S4
+X-Coremail-Antispam: 1Uf129KBjvJXoWxJr48KFWxXr1xtFWfXFWDurg_yoW8Zry8pr
+	WUJ3y0yF4xKw43u3W3XF4fXa17Xa9rtF4qvrn29a13KF1fW34rGa4UZF43Grn8JrW8Xrn2
+	k390kayDtrZ8GrDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zEWrWrUUUUU=
+X-Originating-IP: [124.79.114.92]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiWxRlo2hEXgkg6gAAs4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250607_083219_657667_EDD67CEF 
-X-CRM114-Status: GOOD (  18.26  )
+X-CRM114-CacheID: sfid-20250607_084938_943982_FDBBCE79 
+X-CRM114-Status: UNSURE (   6.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,63 +81,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thursday, June 5th, 2025 at 10:13 PM, Diederik de Haas <didi.debian@cknow.org> wrote:
+The Rockchip driver contained duplicated message routing and INTx code
+definitions (e.g., ROCKCHIP_PCIE_MSG_ROUTING_TO_RC,
+ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTA). These are already provided by the
+PCI core in drivers/pci/pci.h as PCIE_MSG_TYPE_R_RC and
+PCIE_MSG_CODE_ASSERT_INTA, respectively.
 
-> Hi Piotr,
-> 
-> Since kernel 6.14-rc1 I have the problem that visual output is no longer
-> shown on my PineTab2 and a `git bisect` pointed to this patch/commit
-> as the culprit. What is important to note is that `CONFIG_DRM=m` seems
-> to be required as the problem does not occur with `CONFIG_DRM=y`.
-> 
-> Near the end of my bisect session, something interesting occurred.
-> I was booted into a 'bad' kernel (ie no visual output) and when I
-> started to build my final kernel, I closed the lid of the PineTab2 which
-> made it go into suspend. When my final kernel was built, I opened the
-> lid again, which made it resume, to transfer my final kernel to it.
-> And much to my surprise, I then did have visual output.
-> When I read the (below) commit message of the 'offending' commit, it may
-> not be such a surprise after all.
-> 
-> When I build a (new) 6.14-rc1 kernel with a revert of this commit on
-> top, then I did not have the above mentioned problem, confirming this
-> commit was the 'bad' commit.
-> 
-> I did try it on a Quartz64-B (also rk3566) and it did not have any issue
-> (output via HDMI).
-> I don't know what the cause for this issue is, hopefully you do.
-> 
+Remove the driver-specific definitions and use the common PCIe macros
+instead. This aligns the driver with the PCIe specification and reduces
+maintenance overhead.
 
-Hi Diederik,
+Signed-off-by: Hans Zhang <18255117159@163.com>
+---
+ drivers/pci/controller/pcie-rockchip.h | 14 --------------
+ 1 file changed, 14 deletions(-)
 
-I tested and confirmed that this happens with drm=m but also in my case 
-it happened when drm=y. After some testing I found out that at boot modeset
-happened twice and at short interval and since this patch allows for gamma 
-LUT update regardless of color_mgmt_changed state this makes DSP CTRL GAMMA 
-LUT EN bit to be unset twice too. It seems that VOP does not like it. I 
-patched vop2_vp_dsp_lut_disable function so that dsp_ctrl is set only if 
-GAMMA LUT EN bit is set. I checked that this also does not break the gamma 
-lut functionality with emphasis on out-of/into suspend behavior.
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index d0f5fea15e21..7ddf311b38c6 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -897,6 +897,9 @@ static void vop2_vp_dsp_lut_disable(struct vop2_video_port *vp)
- {
- 	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index 5864a20323f2..12bc8da59d73 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -215,20 +215,6 @@
+ #define RC_REGION_0_TYPE_MASK			GENMASK(3, 0)
+ #define MAX_AXI_WRAPPER_REGION_NUM		33
  
-+	if ((dsp_ctrl & RK3568_VP_DSP_CTRL__DSP_LUT_EN) == 0)
-+		return;
-+
- 	dsp_ctrl &= ~RK3568_VP_DSP_CTRL__DSP_LUT_EN;
- 	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
- }
+-#define ROCKCHIP_PCIE_MSG_ROUTING_TO_RC		0x0
+-#define ROCKCHIP_PCIE_MSG_ROUTING_VIA_ADDR		0x1
+-#define ROCKCHIP_PCIE_MSG_ROUTING_VIA_ID		0x2
+-#define ROCKCHIP_PCIE_MSG_ROUTING_BROADCAST		0x3
+-#define ROCKCHIP_PCIE_MSG_ROUTING_LOCAL_INTX		0x4
+-#define ROCKCHIP_PCIE_MSG_ROUTING_PME_ACK		0x5
+-#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTA		0x20
+-#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTB		0x21
+-#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTC		0x22
+-#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTD		0x23
+-#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTA		0x24
+-#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTB		0x25
+-#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTC		0x26
+-#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTD		0x27
+ #define ROCKCHIP_PCIE_MSG_ROUTING_MASK			GENMASK(7, 5)
+ #define ROCKCHIP_PCIE_MSG_ROUTING(route) \
+ 	(((route) << 5) & ROCKCHIP_PCIE_MSG_ROUTING_MASK)
+-- 
+2.25.1
 
-I will wait with sending a patch because maybe Andy has something to add 
-to this.
-
-Best regards, Piotr Zalewski
 
 _______________________________________________
 Linux-rockchip mailing list
