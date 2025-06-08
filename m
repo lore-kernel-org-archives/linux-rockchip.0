@@ -4,63 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7331CC5AD49
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Jun 2025 12:56:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76CCDC5B552
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Jun 2025 18:51:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wtVabayPcIC546gZcmrtrogVsNEUM/F2AHvXpCw80o0=; b=zeyabWcFyaDgE42iQJt07nqELF
-	W2CmBOsq4ghwfZXqFBYdcwC+fSTHmCUj/pDCLQJaChSYf0nCaYxCsm3E0pwYf/VxQJ4OdA4UIVvNn
-	lF7gtacbn3/jLXxC+B9pdu+WnbKqBnmyabtoes/qtO21gCcF1wp/3H4lMvN6ayZrABDJo7/4ROeGR
-	/ApY/NYfGbFaMpbVd9BYdr2pMyEGnaXkus7ax3JjyFab8+7G1v0S0MmnK7iMTWktWZlWSgBFH3gsj
-	hXvx9b18LScIlo3tWrcc4LGfaB2FYYCo0U2uflRXL6ify9aQq3FA0pn3KzWaoMk8PJr+dD9rJfdKr
-	of0Jezrw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4OPrgHJ6N8n4jakrKh0MImzKw3IkQDAZhkcF6i7DvDQ=; b=OiNc6PfWszsdX/
+	6dGUJV+s4eU9Fh3L2ecGBRBfIG9eoLKQYwwqljG105BQa1VXwt7RU1C10ICTJOBgIT1SKEPE9A4wx
+	lMt8FgWIQGOwgk3KWaHU2zyjKYHosnAhWUSDFzzL5aehxPOpNRtPqz4ju2Q4XZeToEvxivYTpMctH
+	wJZ0kcUvn9z9Cp0nE8reJ4IiWYem+f/wNhLXzSSsXfkgs2wG4OrlBap1a1uTVUP8NtfrZlDngzw12
+	gMn6Lqog+X/6vubt0ZLCKMpTy3wTkSE+n2OWU+XLNT3Tt7hH4fzo2YdLlyLkJ8Ac1CzBfAtlx+l88
+	G2pAOa3w/SW2ADIry+hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOFZE-00000002cbo-2kDB;
-	Sun, 08 Jun 2025 12:56:04 +0000
-Received: from out-184.mta0.migadu.com ([91.218.175.184])
+	id 1uOL6i-00000002sEK-1F9F;
+	Sun, 08 Jun 2025 18:51:00 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOFXD-00000002cBM-1U0a
-	for linux-rockchip@lists.infradead.org;
-	Sun, 08 Jun 2025 12:54:00 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1749387226;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=UoAoTWaDhudNjz1U5V7+hAboAbqegZdb7n3FPRiJ6jE=;
-	b=Smldvf+dIob+0gqgKw8jY2ot8r+9vfSeqg7sf8KdvWn7yjT33epEVpXDwfF+8IiBaKqXSo
-	az8nsef6eVErRJrLAxG3nSTgXGlPXGRwF/STMDPTNK+XzDjpYNEnXWGgMCC8QAicS1GMQj
-	hi01PNEt/KriG7HE0OK+HKPDjCD9cw5YG31tn34sdLwa/CA3XaZ5tzN20RrzXeJfn33hDl
-	eU2gBVtllZ35s04rg9aZeTf0s4xFZtr//XWY3p27D6XeuTcscllloV2Vob1mS48npwz7pc
-	ipMchx37YYFf4TK2KpNfUHLJhYo1Lhndi/lxIcVL0YVl6alCDzx5I9Qnz+XyNA==
-Date: Sun, 08 Jun 2025 14:53:37 +0200
-Message-Id: <DAH60H3HYG7M.3NFXBJ7576RH1@cknow.org>
-Cc: "Piotr Zalewski" <pZ010001011111@proton.me>, <hjc@rock-chips.com>,
- <heiko@sntech.de>, <andy.yan@rock-chips.com>,
- <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
- <tzimmermann@suse.de>, <airlied@gmail.com>, <simona@ffwll.ch>, "Dang Huynh"
- <danct12@riseup.net>, <dri-devel@lists.freedesktop.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH drm-misc-next] rockchip/drm: vop2: don't check
- color_mgmt_changed in atomic_enable
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Andy Yan" <andyshrk@163.com>
-References: <20241206192013.342692-3-pZ010001011111@proton.me>
- <DAEVDSTMWI1E.J454VZN0R9MA@cknow.org>
- <mArHDRo5bhIAjG8sDOR-kM7DsVdbXxxcC8hfuEEPfUWIdMwNnSUy8ZFoLis66DFSuIEq8TrnAxUGkyo5IUTGw3AG4k3vuVVz0fsoI27BAms=@proton.me> <DAH3S8O66J47.3NT18EJCXWKL9@cknow.org> <47773829.1fce.1974f732545.Coremail.andyshrk@163.com>
-In-Reply-To: <47773829.1fce.1974f732545.Coremail.andyshrk@163.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1uOL6f-00000002sDw-0Wl8;
+	Sun, 08 Jun 2025 18:50:58 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-72d3b48d2ffso2772832b3a.2;
+        Sun, 08 Jun 2025 11:50:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749408656; x=1750013456; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=4FkQOjW0dEQldWqVQqpMRcOS3E+ncteqKD5m7Do0e/E=;
+        b=ngRSNVkzdhun7ICD7Bn0UHWtxzR0ba+TjQjJa56POQiQp8XjjYsKGkMKLYbdOiUt5+
+         2DwYhIYTiTuR9zJqBragQ6ukPTiEON0UT2VPVBo9ofRw36DkR2azvEyzcOqtvgh28OaT
+         np4oGDCtcMQWjoreKoQawZ2b6aLYWxWBbf19AqsZ9rUbDdtqTRriOWJs4bAZE0gy5Eg/
+         jpht0H73YjJFe1WRclstVPThkGkD6MZyc53R5B2WE1Kyd5YER/I+2irJiAuaqOZn7vy/
+         fOEOd5+35zC0arSlNAL+VL3qCwPeL9SSBbYXBIZzikFjife5Wa+9O2WXf/k1i1n19Uc5
+         +qiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749408656; x=1750013456;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4FkQOjW0dEQldWqVQqpMRcOS3E+ncteqKD5m7Do0e/E=;
+        b=QdfT8qv49oiHlUhwdE+JIYNeK8DUZidlH98WZqoHjQGyC3AxSuX6SzpRTJVfQXznqj
+         ixlxUcpJzPwy8zG5uUXsNj/n1aYrcfiAelp6/p51SIIt7wgfkkDb3lxPJ9PKTeBUNiUU
+         z6+1cVLIdLEQqH2icMJ0okub9x2L6N9ZuggQL04tCBjhN5Wlb1UB4AthqX/jfUdUTWn0
+         aKe+WfT2wyYHpaF6IRFojKofCfoQlUd2hjSGEFmqr4rdGO1f0YTMjBk93pp04Kp0mFs6
+         hpTXs3aMdNBadzXmYfDYLnM8c5xdaVHXN7nuBOyfWhSqCf0D+X6AgVOsq2CJDfOCyQMy
+         QVdQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUaMzHAY+lJHFySSfiLc9aRGIgDC7DxJL0/tz6UwF6CGnCM3jhlbo7j2Ft7agcRkVBdP91KjJ87pFyqKUaQQN9k@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw7sKQgYJmiadh++AZBvGxJeV2pVIif3FOVfSaTmxdT/Ku4778A
+	ibb5DuhMB2D0eeUNYD3EJlFidPAVfA7SuxYQQONy+8gNljhc4t6d9Abm
+X-Gm-Gg: ASbGncvHDxTZMiP47Ihr3z7Jhy+3V+EMU8hIJ9HSv4/oebMVhAfJIhUuvGs/jZeRN+p
+	Khju8c1fsoOEfGObEQxvU6EG9CakaPxPLBK0vg0B6cb0zkdDv8skQF+27Z5WxuKtU/4wU6yVknH
+	AyLOjbtp36yOyJ7Q9Yn7t0neIU57M53EY9fSxAn2+ka0XHTpO/HY/7hHPD2crnXeY8IwKSq13qZ
+	SstBvBK8mUBI3kdC5n8z88/O5jxwaitl2ei+CEUfr4+odUR3h+vDy3bgReAz96i856+wuoQodpe
+	kGWc+BTrStbTI3WazcJ8vv5I5DXsfqCaSwCH8VPdK0qJF647uDzI30VzdRutp38=
+X-Google-Smtp-Source: AGHT+IFmkmDN5HJMtOVAkQ+D2VV/D9Hx1lj1672INza519ZQEJaZQhN5dtNTS2zy37PO0ZFmNvX1dw==
+X-Received: by 2002:a05:6a00:22c7:b0:748:3485:b99d with SMTP id d2e1a72fcca58-7483485d9d4mr10823644b3a.18.1749408655711;
+        Sun, 08 Jun 2025 11:50:55 -0700 (PDT)
+Received: from celestia.turtle.lan ([2601:1c2:c184:dc00:21ba:8ec7:ee03:e8ae])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7482af3824fsm4493278b3a.19.2025.06.08.11.50.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Jun 2025 11:50:55 -0700 (PDT)
+From: Sam Edwards <cfsworks@gmail.com>
+X-Google-Original-From: Sam Edwards <CFSworks@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Mark Brown <broonie@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	=?UTF-8?q?Adri=C3=A1n=20Mart=C3=ADnez=20Larumbe?= <adrian.larumbe@collabora.com>,
+	Boris Brezillon <boris.brezillon@collabora.com>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
+	Vignesh Raman <vignesh.raman@collabora.com>,
+	=?UTF-8?q?Daniel=20Kukie=C5=82a?= <daniel@kukiela.pl>,
+	Sven Rademakers <sven.rademakers@gmail.com>,
+	Joshua Riek <jjriek@verizon.net>,
+	Sam Edwards <CFSworks@gmail.com>,
+	stable@vger.kernel.org
+Subject: [RESEND PATCH] arm64: dts: rockchip: Remove workaround that prevented Turing RK1 GPU power regulator control
+Date: Sun,  8 Jun 2025 11:48:55 -0700
+Message-ID: <20250608184855.130206-1-CFSworks@gmail.com>
+X-Mailer: git-send-email 2.49.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250608_055359_534531_5F185B79 
-X-CRM114-Status: GOOD (  26.09  )
+X-CRM114-CacheID: sfid-20250608_115057_168835_24F9AE73 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,160 +111,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2601574719352086010=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2601574719352086010==
-Content-Type: multipart/signed;
- boundary=dd3c07efb9d99c286c094c5faf160fb096648f1e935abee08db29ed3060d;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+The RK3588 GPU power domain cannot be activated unless the external
+power regulator is already on. When GPU support was added to this DT,
+we had no way to represent this requirement, so `regulator-always-on`
+was added to the `vdd_gpu_s0` regulator in order to ensure stability.
+A later patch series (see "Fixes:" commit) resolved this shortcoming,
+but that commit left the workaround -- and rendered the comment above
+it no longer correct.
 
---dd3c07efb9d99c286c094c5faf160fb096648f1e935abee08db29ed3060d
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+Remove the workaround to allow the GPU power regulator to power off, now
+that the DT includes the necessary information to power it back on
+correctly.
 
-Hi Andy,
+Fixes: f94500eb7328b ("arm64: dts: rockchip: Add GPU power domain regulator dependency for RK3588")
+Signed-off-by: Sam Edwards <CFSworks@gmail.com>
+Cc: <stable@vger.kernel.org>
+---
 
-On Sun Jun 8, 2025 at 2:10 PM CEST, Andy Yan wrote:
-> At 2025-06-08 19:08:50, "Diederik de Haas" <didi.debian@cknow.org> wrote:
->>On Sat Jun 7, 2025 at 5:32 PM CEST, Piotr Zalewski wrote:
->>> On Thursday, June 5th, 2025 at 10:13 PM, Diederik de Haas <didi.debian@=
-cknow.org> wrote:
->>>> Since kernel 6.14-rc1 I have the problem that visual output is no long=
-er
->>>> shown on my PineTab2 and a `git bisect` pointed to this patch/commit
->>>> as the culprit. What is important to note is that `CONFIG_DRM=3Dm` see=
-ms
->>>> to be required as the problem does not occur with `CONFIG_DRM=3Dy`.
->>>>=20
->>>> Near the end of my bisect session, something interesting occurred.
->>>> I was booted into a 'bad' kernel (ie no visual output) and when I
->>>> started to build my final kernel, I closed the lid of the PineTab2 whi=
-ch
->>>> made it go into suspend. When my final kernel was built, I opened the
->>>> lid again, which made it resume, to transfer my final kernel to it.
->>>> And much to my surprise, I then did have visual output.
->>>> When I read the (below) commit message of the 'offending' commit, it m=
-ay
->>>> not be such a surprise after all.
->>>>=20
->>>> I did try it on a Quartz64-B (also rk3566) and it did not have any iss=
-ue
->>>> (output via HDMI).
->>>> I don't know what the cause for this issue is, hopefully you do.
->>>
->>> I tested and confirmed that this happens with drm=3Dm but also in my ca=
-se=20
->>> it happened when drm=3Dy. After some testing I found out that at boot m=
-odeset
->>
->>Interesting that it also happened with drm=3Dy.
->>As you're more knowledgeable then I am with this, maybe look through
->>https://lists.sr.ht/~diederik/pine64-discuss/<D9AM2OOLREO0.2JMAI42J06TW0@=
-cknow.org>
->>
->>to see if you may spot something relevant?
->>
->>> happened twice and at short interval and since this patch allows for ga=
-mma=20
->>> LUT update regardless of color_mgmt_changed state this makes DSP CTRL G=
-AMMA=20
->>> LUT EN bit to be unset twice too. It seems that VOP does not like it. I=
-=20
->>
->>Happy to see you found the cause :-)
->>Do you happen to know why it was unset twice? That sounds suboptimal.
->>But (IIUC) setting a bit to a value it already has causing issues,
->>sounds surprising as well.
->
-> I have conducted tests on both rk3566-box-demo (with drm set to y) and rk=
-3568-lubancat-2 (with drm set to m),=20
-> but I was unable to reproduce this issue. Could you two please share your=
- kernel defconfig and the corresponding kernel startup logs?=20
-> Additionally, both of my two boards tested with HDMI output. What kind of=
- display interface does your board use for output?
+Hi friends,
 
-I wasn't able to reproduce this issue on my PINE64 Quartz-B (rk3566)=20
-with HDMI output either, but the problem is present on a PineTab2 [1]
-(also rk3566) which uses a MIPI DSI connection to the display panel.
+This is a patch from about two weeks ago that I failed to address to all
+relevant recipients, so I'm resending it with the recipients of the "Fixes:"
+commit included, as I should have done originally.
 
-Kernel config:
-https://paste.sr.ht/~diederik/aa747ed170aa01cc759fbe1ffd9cebe8c887b10b
+The original thread had no discussion.
 
-dmesg kernel 6.14-rc1:
-https://paste.sr.ht/~diederik/733fbf8bb7f6aee8b68cf5a652157d445462c24a
+Well wishes,
+Sam
 
-dmesg kernel 6.14-rc1 with Piotr's patch:
-https://paste.sr.ht/~diederik/db1af672cfb611acbfbdf35adb6f170e5c38febc
+---
+ arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi | 11 -----------
+ 1 file changed, 11 deletions(-)
 
-Both dmesg outputs contain a suspend-resume cycle.
-I'm using a USB Wi-Fi adapter for the wireless connection.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+index 60ad272982ad..6daea8961fdd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+@@ -398,17 +398,6 @@ rk806_dvs3_null: dvs3-null-pins {
+ 
+ 		regulators {
+ 			vdd_gpu_s0: vdd_gpu_mem_s0: dcdc-reg1 {
+-				/*
+-				 * RK3588's GPU power domain cannot be enabled
+-				 * without this regulator active, but it
+-				 * doesn't have to be on when the GPU PD is
+-				 * disabled.  Because the PD binding does not
+-				 * currently allow us to express this
+-				 * relationship, we have no choice but to do
+-				 * this instead:
+-				 */
+-				regulator-always-on;
+-
+ 				regulator-boot-on;
+ 				regulator-min-microvolt = <550000>;
+ 				regulator-max-microvolt = <950000>;
+-- 
+2.48.1
 
-[1] https://wiki.pine64.org/wiki/PineTab2
-
-Happy to provide more info and/or do some tests.
-
-Cheers,
-  Diederik
-
->>> patched vop2_vp_dsp_lut_disable function so that dsp_ctrl is set only i=
-f=20
->>> GAMMA LUT EN bit is set. I checked that this also does not break the ga=
-mma=20
->>> lut functionality with emphasis on out-of/into suspend behavior.
->>>
->>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu=
-/drm/rockchip/rockchip_drm_vop2.c
->>> index d0f5fea15e21..7ddf311b38c6 100644
->>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->>> @@ -897,6 +897,9 @@ static void vop2_vp_dsp_lut_disable(struct vop2_vid=
-eo_port *vp)
->>>  {
->>>  	u32 dsp_ctrl =3D vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->>> =20
->>> +	if ((dsp_ctrl & RK3568_VP_DSP_CTRL__DSP_LUT_EN) =3D=3D 0)
->>> +		return;
->>> +
->>>  	dsp_ctrl &=3D ~RK3568_VP_DSP_CTRL__DSP_LUT_EN;
->>>  	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->>>  }
->>
->>I built a kernel with 6.14-rc1 + this patch and can confirm the screen
->>has output again :-)
->>
->>> I will wait with sending a patch because maybe Andy has something to ad=
-d=20
->>> to this.
->>
->>Sounds like a plan. It could be that this issue surfaced an underlaying
->>issue and if so, fixing that would be even better.
-
---dd3c07efb9d99c286c094c5faf160fb096648f1e935abee08db29ed3060d
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaEWH1AAKCRDXblvOeH7b
-bhl7AQDIBrUguAnNscCeQXQtCZLqeiXP+l3DJm6F2Fj0mB1XQQD+OL05kGhhBoXv
-BdqaHKsLNeSC2+SVVWtKTeiyRT6t9As=
-=I/5o
------END PGP SIGNATURE-----
-
---dd3c07efb9d99c286c094c5faf160fb096648f1e935abee08db29ed3060d--
-
-
---===============2601574719352086010==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2601574719352086010==--
-
