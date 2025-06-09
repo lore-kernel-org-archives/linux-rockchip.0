@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BCB2C5B552
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jun 2025 11:08:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CE0CC61CE8
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jun 2025 11:10:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jJxCyuLFR8L/wGsr2I7oyic0dAibw/SmGtCAXVfhF/s=; b=NUKPhgrZGtyU43
-	9FRw16B7dk7R1t2PLmssa+TvZP9GsnlRLuINZPZUwkxj32LRoPq42DowQkP35AurIgpU5GNCi8v8V
-	3alip0QTQZMIdF5owd2KsP8RDVkuVub4gfyGm2xEYMyYPvgMp3f4X8g6dSUf9RaR4hYrkxqbs8HeZ
-	yarxWgA9RhUcKk4LKbQODxBJUDI3ipH7vkis+eIwQ5+jR4Eq17GygAJV4+9/BJkt9B/1RrzknNYj2
-	1oefdDCFRHPidVOB5sB6hbKCHy6H63EoXraOzUX1Nbk9epIR4ka2JA0AyMQ7+SlzYp/XuD6hY3eu8
-	DtEhxUzXk6DifTwmpKlw==;
+	List-Owner; bh=1kLMPeXC7MT3QYpWVTCNWc4/uskjgoYnaNWKVFeJWZk=; b=vnMZPe4FpbfNod
+	VQYfrSMKrg23dg4y8TiQ8KOVEOVWtE+CYU6a3RtXApELAbnozoLtkqI2qu3Qk7LhQO6Rnrz23xK1z
+	QukaLnlcHIors7RheHXidHhjqzeqkTYT2g/L9+9r1gB5hJhSXcEGSTQmuzytxI7m4NEswjrTwtB1K
+	EKK58YlJGuycdhCOERumznMwojmQHRDqv3kIHbQWR5Us7tvOL3xcNXQNF0zjDb2IBD46I8pK8vcWA
+	zRCNrOIvMuNUf7uz+28OV7Rjc17Q3MqqDJbCzAX52UFF361RzHhhNol7gJqJKJU9Qv7j4YQb70oYP
+	3MgvZmW6UAgMajueCwrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOaMI-00000003zBD-46xo;
-	Mon, 09 Jun 2025 11:08:06 +0000
+	id 1uOaOT-00000003zKU-1sSv;
+	Mon, 09 Jun 2025 11:10:21 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOZvD-00000003vmL-3O6j
-	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Jun 2025 10:40:09 +0000
+	id 1uOZvM-00000003vml-28Dv;
+	Mon, 09 Jun 2025 10:40:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=FMnfj+y9foNf3BdzVUknS9MADmvnm+mSEs0FZJCADyE=; b=1xA2jXiDJYZfqT8i8Ji0z54RGL
-	UTZJ4r9YidUhskx8m29eepXqVEFd3J/R3d6vF69TF0EaKsp2c73i66I/RXOJpmURhodxeOwHoHGad
-	W49+lcpL5vOobe2uI/gIem5jlWNdumEqhxLHItE5EPI6M0baE9iAcy018GJyggrbiii1IMewppJYR
-	8rNMvWwjjR5YiEjwVwBuZrkta3Bb7shMl42IME2k4FhdaoGuNDdmA9957Ddu8T1AWOEcrIlGfUJDa
-	JTGV+7CqAxXJ43IKBod3jQyWbZI5wuC7Yne6vZI/oBc6Ygqg6RbMROP0pVINaHTrgpbY46OeRWApo
-	pbAr6D4A==;
+	bh=eCxLv9WnMGQlaBo2iZMhsA5FFtXSFCDHIfpUpCncg8s=; b=FVsI8kSGXH/0fbjfTXScFinc3i
+	azIrJf2m2MMzETH6VlXzIEWGhPwwoCG5p3aqdB8GhbUGRRYgkf8Ks4/9BpoODrKZke8KXP2qUuNyf
+	SN0USvvP6Tl84txbYiVPJbAxscz5BoOoveQlzir+PE+GyIepz/ZTF/Lm5EJK/nvdwHc50QHmrDCJ1
+	O1lvCogRvYj2LWm69tAxCOcW+J10KTqbnaTlbwIqwzRZZB19+pdM+3VaVEVnB7vNifj8QCRbTZTKr
+	VDrWo1bANLJ7Q29zyuwj/0sB8fSa5uH1yzOyCbTSr19s4Kw66rdnHDdSW1/gMwHbAWgL0n08DS+Pe
+	D3MZ6e5Q==;
 Received: from i53875b1c.versanet.de ([83.135.91.28] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uOZfG-0006Av-Ez; Mon, 09 Jun 2025 12:23:38 +0200
+	id 1uOZfG-0006Av-7L; Mon, 09 Jun 2025 12:23:38 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: fix rk3576 pcie1 linux,pci-domain
-Date: Mon,  9 Jun 2025 12:23:07 +0200
-Message-ID: <174946455534.762051.11240348467873991115.b4-ty@sntech.de>
+	Peter Geis <pgwipeout@gmail.com>,
+	Peter Robinson <pbrobinson@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: drop touch panel display from rockpro64
+Date: Mon,  9 Jun 2025 12:23:06 +0200
+Message-ID: <174946455543.762051.12845309784482047662.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <1748918140-212263-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1748918140-212263-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <20250518215944.178582-1-pbrobinson@gmail.com>
+References: <20250518215944.178582-1-pbrobinson@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250609_034007_849788_558B2AE7 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250609_034016_549874_C2F5CBD1 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,21 +79,22 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 03 Jun 2025 10:35:40 +0800, Shawn Lin wrote:
-> pcie0 already used 0 as its pci-domain, so pcie1 will fail to
-> allocate the same pci-domain if both of them are used.
+On Sun, 18 May 2025 22:59:33 +0100, Peter Robinson wrote:
+> The touch panel display is an optional add on for the RockPro64
+> so this should be an DT overlay, drop the panel options in
+> preparation to add this as an overlay.
 > 
-> rk-pcie 2a210000.pcie: PCIe Link up, LTSSM is 0x130011
-> rk-pcie 2a210000.pcie: PCIe Gen.2 x1 link up
-> rk-pcie 2a210000.pcie: Scanning root bridge failed
-> rk-pcie 2a210000.pcie: failed to initialize host
+> This effectively reverts commit b65155c786c4 so as to add an
+> overlay for it.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: fix rk3576 pcie1 linux,pci-domain
-      commit: af0f43d5d0d6e486b6a83190000dfa7ad447f825
+[1/2] arm64: dts: rockchip: drop touch panel display from rockpro64
+      commit: d69cb63780943fc1b0765bb9b46f627573cc97d1
+[2/2] arm64: dts: rockchip: add overlay for RockPro64 screen
+      commit: 49760b9f60528393cca3ea35c4d0719f84215a48
 
 Best regards,
 -- 
