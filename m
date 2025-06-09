@@ -4,161 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 121FAC61CE8
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jun 2025 22:16:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CDC0C5B552
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jun 2025 22:41:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lr6avILKWoK5zvJ6aDe3qcpwdEI82ZYi/ueuA6VVPio=; b=e3lphTh9tE5nJ6
-	/BmkN15BE/7jQ3XBbDQlhN0SnVAIo/bnd/Cqkp2rB2Z03/Q5bI6BfazvYmmvBuAsKfrnJZHyj5flR
-	Bx3EpuN1UREpSfeI4ArJl9URhlhaN+vFr7oVDTHsLyQflvX+pgQ7QSjh3yyltf4AmG3/+uwfOjmDI
-	rXnsjmB5WeXZWkDWa5ChyUgeLNByyaqITsr6hNXpV3ne33TRBdZbuV96m5lqEqwVw4WFmcfG36zWN
-	tykazx05k1tNlYY51nHPpK7RL+qGkHDAARj6M5OQjWAB0ziSD5Ea69SluBlp/JCDoLEjw8Wq8TZyi
-	JuKCCMKcOqDu1667jeAw==;
+	List-Owner; bh=Yy+/CWG3TX1qEhSEtq9ZQhevZ8Yb0AtZ9Z52SQWqMSI=; b=Yu+8ZrWNPXYHxJ
+	h5V1mDVf/PPc68FEhvsem21BOcQlWTWMU9LTtb84xAJlBtYV0X7hcQPgac8ySgQeTWZJKsrPye4rl
+	rhbaIr4tYQbX0YKpk8PneH9dlcm7SnE6WzzBqrVOgyYO8tPFsujR6zbC4iNCroUann8epKuKktEVw
+	yW/4D3dcyCgpmoCGH8eq94NMPV2Lw6FN8s4WZ72PMMj9wNToWwFKgmKMyKlYbEAdGBt7h0eW5UeML
+	urThcqy/0x/rsYPR7yQAzEPttTxJMiqmCFjPCHyzPDstV/jvGRIUq/5OS0TuDKeIzM01UqbykCbdl
+	1oDIZOouCOQAU7Cvm1Uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOknD-00000005KVv-3hw2;
-	Mon, 09 Jun 2025 22:16:35 +0000
-Received: from mail-sn1nam02on20610.outbound.protection.outlook.com ([2a01:111:f403:2406::610] helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+	id 1uOlB7-00000005Mfs-24SC;
+	Mon, 09 Jun 2025 22:41:17 +0000
+Received: from mail-4316.protonmail.ch ([185.70.43.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOkn9-00000005KUu-39n7;
-	Mon, 09 Jun 2025 22:16:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=toO8cJXOuZV+C2OTEC6tYJSNmrYRON7k0BD+c/e5hRb8zSpYoJqLvwxPtJP81dIw3BCVfLuMs8CZV67E4QmC/v4SImp428qzhU2bi/Bs/7wfpH8PyGoix9yXaAwGS7LCSQovcvWxagFSLzkab1gM8GRYXxAZOOiDDfnKigDNFyqPTT/asLlqltiO39DYH4GiwRSxunmTwKAtXzJux3vlIRNgeA9GOtMrMX1zXfMjqYXlQcAIzGcAEMY8mk18Klv9Pr77zOPnzmXDguC3CmSUOJZ3EIKvR/fAmiklqKkbF3jauIAZIXGLA7tIZQuq85VjJSHnutfQusdAAFGAjB96jg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DnxtUCVepOokMLj9HewGrMSru18ryYsCZaVG1F9beBI=;
- b=Z4Z4yPZnaonQmzsw87c7crJWGdYfOtjgEjj0gnUJS4cOKR/W4EjgoCgo2YMKTKNs/pm8wx6udqmYLk5W+0kSf3oCH73RAQpKUf+fYQPfXtmnXBhDnHVbIAaEncft2zrMP2YB9HfpVQ1/hR3a4b3SarH5PY8KHEyQtGCC1Jam1hvpjruJDc/6j0jA9y0AbPIYhF3WEAqtGNeoIV2kmbiKjj4JJa9Oforav599Vl0cq174cuyhtLTnfQlk/FsRL2KsdIKzIb8Lami48/wPoM5+41W1IGHkCwxh52FzNxII5QxhPBv+Z9IkzjM8hT2V+8rRoV5pF2LF4c1V53CekcKPyA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=samsung.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DnxtUCVepOokMLj9HewGrMSru18ryYsCZaVG1F9beBI=;
- b=Hlml93mK+DoN36JmZuHhatJ9ovGuOwzxuoMcEdg8k5bdScYDj50RbiZaGS+b7gKnTyu0yKkEZpDLCO/1vr66McWZ4qBQAHawHsCg1KWz3CKU2rJZwDOn0Ebad1a5+FiGcC4KopbOJ47stLQ7Zt2jZKt6zhy3/BZNQsq6kBz83pwiPExsSCXmgiAIfjrs+pgupoCX6lPLqY4kwZjdzqFBwGpKQDjWry8iM2r+K2O8c+fPyGvle+oaoPQYw0GMY4AZ4yy8RH8BF/NI8fgTDhr1MphWy/lY78DGzUBDCqykfsvysTOiD7RtgF4H5SiBY1zyYu8iPIZx4FRWX9nW63D5bQ==
-Received: from CH0PR04CA0024.namprd04.prod.outlook.com (2603:10b6:610:76::29)
- by PH7PR12MB7842.namprd12.prod.outlook.com (2603:10b6:510:27a::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8792.35; Mon, 9 Jun
- 2025 22:16:24 +0000
-Received: from CH1PEPF0000AD80.namprd04.prod.outlook.com
- (2603:10b6:610:76:cafe::a9) by CH0PR04CA0024.outlook.office365.com
- (2603:10b6:610:76::29) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.8792.35 via Frontend Transport; Mon,
- 9 Jun 2025 22:16:23 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- CH1PEPF0000AD80.mail.protection.outlook.com (10.167.244.90) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8835.15 via Frontend Transport; Mon, 9 Jun 2025 22:16:22 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Mon, 9 Jun 2025
- 15:16:05 -0700
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 9 Jun
- 2025 15:16:05 -0700
-Received: from nvidia.com (10.127.8.10) by mail.nvidia.com (10.129.68.9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14 via Frontend
- Transport; Mon, 9 Jun 2025 15:15:50 -0700
-Date: Mon, 9 Jun 2025 15:15:47 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Albert Ou <aou@eecs.berkeley.edu>,
-	<asahi@lists.linux.dev>, Baolin Wang <baolin.wang@linux.alibaba.com>, "David
- Woodhouse" <dwmw2@infradead.org>, Gerald Schaefer
-	<gerald.schaefer@linux.ibm.com>, Heiko Stuebner <heiko@sntech.de>,
-	<iommu@lists.linux.dev>, Janne Grunau <j@jannau.net>, Jean-Philippe Brucker
-	<jean-philippe@linaro.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-riscv@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-s390@vger.kernel.org>,
-	<linux-samsung-soc@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Matthew Rosato
-	<mjrosato@linux.ibm.com>, Neal Gompa <neal@gompa.dev>, Orson Zhai
-	<orsonzhai@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley
-	<paul.walmsley@sifive.com>, Rob Clark <robin.clark@oss.qualcomm.com>, "Robin
- Murphy" <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, "Sven
- Peter" <sven@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, "Krishna
- Reddy" <vdumpa@nvidia.com>, <virtualization@lists.linux.dev>, Chen-Yu Tsai
-	<wens@csie.org>, Will Deacon <will@kernel.org>, Yong Wu
-	<yong.wu@mediatek.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Lu Baolu
-	<baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
-	<patches@lists.linux.dev>, Niklas Schnelle <schnelle@linux.ibm.com>, "Sven
- Peter" <sven@svenpeter.dev>, Tomasz Jeznach <tjeznach@rivosinc.com>
-Subject: Re: [PATCH v2 1/7] qiommu/arm-smmu-v3: Remove iommu_ops pgsize_bitmap
-Message-ID: <aEddE8bupuaVJTEP@nvidia.com>
-References: <0-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
- <1-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
+	id 1uOl7O-00000005MI4-0bp8;
+	Mon, 09 Jun 2025 22:37:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1749508640; x=1749767840;
+	bh=ePwAWTLBP0goybEt9LUIGj7rug40FGOIf/8aHv/KjBQ=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
+	b=WrJD5m+ipdpSFadzxKB0513AbmaX9XQq4ZXwkX0b9R5PNLMlLgSklRsCqnqGmCz+B
+	 l/FvELmUNanPkE9pn6163SFxF58VU5ztnU1KpG0xLGC3385+Q7m9SH5zr7D/HFHHCc
+	 Hr99Mx7Xm01Q8YuABJDhPPpeg/4FrmCcSFX2sDdc9K7VEHcWkhXhZv/pqjtN9M3QqL
+	 k2kvPFMdeb8ZTlmssngBovN8oQ11PhLI2Ibe1GUtTRmXzHwaY5+pbW77WPMvsnupJ2
+	 4udTcopn6ZWkYH0TrRXqiZb55EFInMJVJOkBtEGvuRyjE1en5IXcVW4J0bR2hMawtS
+	 QTjYTQ9YtZUXA==
+Date: Mon, 09 Jun 2025 22:37:13 +0000
+To: Diederik de Haas <didi.debian@cknow.org>
+From: Piotr Zalewski <pZ010001011111@proton.me>
+Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, Dang Huynh <danct12@riseup.net>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH drm-misc-next] rockchip/drm: vop2: don't check color_mgmt_changed in atomic_enable
+Message-ID: <4z0y_F1ZT_xfO0-DwU-D5NwL3t3wHuGmivOB3QFjDsn0hzpz_hOeU63pRVBIgSU1j89jmYPq-TJHPqMCj3fAygwwX6IaPoVsqKqVi2jxmCc=@proton.me>
+In-Reply-To: <DAH3S8O66J47.3NT18EJCXWKL9@cknow.org>
+References: <20241206192013.342692-3-pZ010001011111@proton.me> <DAEVDSTMWI1E.J454VZN0R9MA@cknow.org> <mArHDRo5bhIAjG8sDOR-kM7DsVdbXxxcC8hfuEEPfUWIdMwNnSUy8ZFoLis66DFSuIEq8TrnAxUGkyo5IUTGw3AG4k3vuVVz0fsoI27BAms=@proton.me> <DAH3S8O66J47.3NT18EJCXWKL9@cknow.org>
+Feedback-ID: 53478694:user:proton
+X-Pm-Message-ID: 21961013ddd1adef816f64a8c4bc9f75454c6cf5
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
-X-NV-OnPremToCloud: AnonymousSubmission
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH1PEPF0000AD80:EE_|PH7PR12MB7842:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1b1b875e-3771-4ba5-4c8a-08dda7a344bb
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|36860700013|82310400026|7416014|376014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?OSezRCpiydD53Qcq2T/8oeT3KoeMpQFSKDai6OzhBEc2t/4yWp9h/ySqq4xb?=
- =?us-ascii?Q?GkFu19ya0mOVmgsnOz+jHrsByPXKDjiQC4y0q9KzpfeEREXboKdk75z/oDmq?=
- =?us-ascii?Q?wukgCtqNksbUx61mkiKD2Z33D/jMnwDHPE5RJI7PWXJSeN3wnOD4hemqLUrx?=
- =?us-ascii?Q?b8D5+lX6j7X9QOic6E383/XZnSKd6tz5Phc++JlTznvAksTgUKOp3HMGTIjH?=
- =?us-ascii?Q?SAaYCuNM3U1v+C5jtU8hLNVa2ayrSF8sHLr93d3AZy+cK1s+aL7ufOaPB186?=
- =?us-ascii?Q?zKHV+6vWMUktAZwlsNxMotkCHQEiUr+DNziVS2XA7fmh2LIiXq4ICcWj7P4D?=
- =?us-ascii?Q?IA/530qo1x7OmAIAXkExCTkvAZ83260NsyXhTdNKp68aAr7EtCtF8/q957Ym?=
- =?us-ascii?Q?kHlugg9BSe7P8CziATyy+adN2Vj03xwMrWeZGcxgM6peedN1G+VmC2Q8gvSv?=
- =?us-ascii?Q?bJUr1H74qtqCMHE5UuVJfkPwcwkdrIIHQcPAOxoc7jrykc4Yt845WMWS2QgR?=
- =?us-ascii?Q?JR3edYcMuNbYxPCKPvXxy8HLfkcVIJx8ztrhiaup9+cSwLZuWsDP/ng6aRYz?=
- =?us-ascii?Q?cE0xlB0QP5S5T4e1G9EHc/DCIFqorAWKbob4nDu3C5MZXNc7NcOaeYOjYnyq?=
- =?us-ascii?Q?IzF7FevIRSgDJ40SMK7rqN153BoLVV2PllX+IV+3otpsYUOiU+i71oVs/xOQ?=
- =?us-ascii?Q?Pbs4naC5IzG+74tUoIK0VG/UhXtpJDvVcxSfS/QZj4Gulhd0bp6xt2EoUtcY?=
- =?us-ascii?Q?KHDkez2KvSSEs9jS6i184sEPaIYEmqwtX9CQAB34GuZi/ly7qqpNj0ztlXxW?=
- =?us-ascii?Q?5URmnTbuICPV3hZZjKPcwOAzwogVf22OONsv39K+ZTpcoz1de0NaKfdHFkIY?=
- =?us-ascii?Q?0PD4QJLN2My8F6TkzgndccK8uJUY/iPKZg6BXoX+/vCsPxDs2+CUXhgYj4aq?=
- =?us-ascii?Q?quPvQNi3t47lffoNXwBA3vhPFA73Jj5fHbYMUAGBwrxPbzZK1cmwObcbbucg?=
- =?us-ascii?Q?6Mmq552W6GDtx8X40gb8QxCzFFBJl9gjaPxhx8ZP+yW5xC3RTioVVVyb57y7?=
- =?us-ascii?Q?C8vcqOUk9cjmpsn/N4GRKsMxS/asuo9UqgoVUIfcToN7W8Era32ejF/saWEk?=
- =?us-ascii?Q?HDQvK09dzXMhqYT5fPNwePkN53DhgbOEldouo2V07fPaaGaqEPLURm583dYo?=
- =?us-ascii?Q?zQChpXmhbb07j5p2xyHRPuCM5zP0U9cLtUv3UkgHag4l5TfkLeIDuOU6BXmJ?=
- =?us-ascii?Q?vtzR25OWYcgu3qAbPb+VBVLo/06yYX/ZD4NQ/9z5ZprbwoYSav/xPxZtlLlR?=
- =?us-ascii?Q?mlcwk4SOkynmro0HlzSYWbcCws3K87FNb1n7ou9afTOSagbxmoirzlspx2O8?=
- =?us-ascii?Q?wz2XoYaKN1UacOB51hm35jaSNAoMTl+YJfigxNTcqmSeODzomJjvwuHD+DvF?=
- =?us-ascii?Q?vnle13Tn6L8WoEFZui4R+fxmMx7vdHwnSGyr3bATyhofhNi5Lk7gGbYnK/5M?=
- =?us-ascii?Q?ukPc5SCUf3iccDv/mTlZ8iuh+FBQUiDzlFox?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230040)(1800799024)(36860700013)(82310400026)(7416014)(376014);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jun 2025 22:16:22.9802
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1b1b875e-3771-4ba5-4c8a-08dda7a344bb
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CH1PEPF0000AD80.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB7842
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250609_151631_806556_18BE524A 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20250609_153726_791164_F7598F7B 
+X-CRM114-Status: GOOD (  29.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -175,21 +68,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 09, 2025 at 05:41:25PM -0300, Jason Gunthorpe wrote:
-> The driver never reads this value, arm_smmu_domain_finalise() always sets
-> domain.pgsize_bitmap to pgtbl_cfg, which comes from the per-smmu
-> calculated value.
-> 
-> Remove the ops version entirely, the related dead code and make
-> arm_smmu_ops const.
-> 
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> Acked-by: Will Deacon <will@kernel.org>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+Hi Diederik, sorry for late response
 
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+> Interesting that it also happened with drm=y.
 
-Is "qiommu" a typo in the subject?
+I actually checked now and i don't have the issue with drm=y, sorry for 
+misinforming you all, hopefully no one's time was wasted.
+
+> As you're more knowledgeable then I am with this, maybe look through
+> https://lists.sr.ht/~diederik/pine64-discuss/D9AM2OOLREO0.2JMAI42J06TW0@cknow.org
+> 
+> to see if you may spot something relevant?
+
+Heh, I'm not that knowledgeable but I will look through it.
+
+> > happened twice and at short interval and since this patch allows for gamma
+> > LUT update regardless of color_mgmt_changed state this makes DSP CTRL GAMMA
+> > LUT EN bit to be unset twice too. It seems that VOP does not like it. I
+> 
+> 
+> Happy to see you found the cause :-)
+> Do you happen to know why it was unset twice? That sounds suboptimal.
+
+It is due to DRM modeset which can happens when CRTC (display) config changes 
+"significantly". AFAIK modeset happens def. when you go out of suspend or
+display timings change. I might have been fooled by serial console last time
+as it does not appear to happen twice in short interval when i review the 
+journal entries.
+
+> But (IIUC) setting a bit to a value it already has causing issues,
+> sounds surprising as well.
+
+Depends on what hardware does, when you write to a register it might cause
+many other things to happen and seems like for vop2 it messes something up.
+
+I made a second patch so that the first write is not permitted but all 
+subsequent are permitted (regardless of lut en state) - issue disappeared 
+too. So it might be that very first write to dsp lut disable happens too 
+fast (in relation to something else)?. It is not intuitive because when drm is
+a module it happens usually like ~second later.
+
+part of the log with drm=y
+```
+[    6.543099] rockchip-drm display-subsystem: [drm] GAMMA LUT DISABLE
+```
+
+part of the log with drm=m
+```
+[    7.944120] rockchip-drm display-subsystem: [drm] GAMMA LUT DISABLE
+```
+
+> > patched vop2_vp_dsp_lut_disable function so that dsp_ctrl is set only if
+> > GAMMA LUT EN bit is set. I checked that this also does not break the gamma
+> > lut functionality with emphasis on out-of/into suspend behavior.
+> > 
+> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > index d0f5fea15e21..7ddf311b38c6 100644
+> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > @@ -897,6 +897,9 @@ static void vop2_vp_dsp_lut_disable(struct vop2_video_port *vp)
+> > {
+> > u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
+> > 
+> > + if ((dsp_ctrl & RK3568_VP_DSP_CTRL__DSP_LUT_EN) == 0)
+> > + return;
+> > +
+> > dsp_ctrl &= ~RK3568_VP_DSP_CTRL__DSP_LUT_EN;
+> > vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
+> > }
+> 
+> 
+> I built a kernel with 6.14-rc1 + this patch and can confirm the screen
+> has output again :-)
+
+cool :)
+ 
+> > I will wait with sending a patch because maybe Andy has something to add
+> > to this.
+> 
+> 
+> Sounds like a plan. It could be that this issue surfaced an underlaying
+> issue and if so, fixing that would be even better.
+
+When i have time this week I will check on what version of the kernel i 
+tested gamma lut when i sent the patches and test there.
+
+> Thanks a lot!
+> 
+
+Thank _you_ for taking your time to do all the bisecting.
+
+Best regards, Piotr Zalewski
 
 _______________________________________________
 Linux-rockchip mailing list
