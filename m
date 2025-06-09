@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CE0CC61CE8
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jun 2025 11:10:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 217DBC5B552
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jun 2025 11:23:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1kLMPeXC7MT3QYpWVTCNWc4/uskjgoYnaNWKVFeJWZk=; b=vnMZPe4FpbfNod
-	VQYfrSMKrg23dg4y8TiQ8KOVEOVWtE+CYU6a3RtXApELAbnozoLtkqI2qu3Qk7LhQO6Rnrz23xK1z
-	QukaLnlcHIors7RheHXidHhjqzeqkTYT2g/L9+9r1gB5hJhSXcEGSTQmuzytxI7m4NEswjrTwtB1K
-	EKK58YlJGuycdhCOERumznMwojmQHRDqv3kIHbQWR5Us7tvOL3xcNXQNF0zjDb2IBD46I8pK8vcWA
-	zRCNrOIvMuNUf7uz+28OV7Rjc17Q3MqqDJbCzAX52UFF361RzHhhNol7gJqJKJU9Qv7j4YQb70oYP
-	3MgvZmW6UAgMajueCwrQ==;
+	List-Owner; bh=mKkeYyBtzcKmFHZPR4gF7E52pwH61bYgMWeNtw/M2v8=; b=ewYsSLVUZaCD+d
+	panEmbuDlyuAy7nUWsX1aBnnCfoJre2gO4VggQyPOrCf3nFJvN4aAT1XtP0ZZmPY9x9hiNXWmQUej
+	caekJy5xnRB99q7NI6vK938ajv5J7kniFs0bX7Ek8uw3L6qWlJ1/Juf8ldJLfKHOK/nUgcF9An2KY
+	e09n1hf4plV9XRfB+snx2B0neV3W2RgzL0XF7zgUF9GJ7gaQ3yWGSK5pPWgZCmAaMYUW/yVzyrpSd
+	5rFeLFFHzRQzW1f0+NOoq/A0rqEweBvxOGJTP5X+l58Q+pU8votG1pbXbcFiNN2ylssRCYGtiXgJo
+	5j7PbkQU3ZYyHJy3VMMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOaOT-00000003zKU-1sSv;
-	Mon, 09 Jun 2025 11:10:21 +0000
+	id 1uOabX-000000041DX-3B0G;
+	Mon, 09 Jun 2025 11:23:51 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOZvM-00000003vml-28Dv;
-	Mon, 09 Jun 2025 10:40:17 +0000
+	id 1uOaPF-00000003zRt-45Ky;
+	Mon, 09 Jun 2025 11:11:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=eCxLv9WnMGQlaBo2iZMhsA5FFtXSFCDHIfpUpCncg8s=; b=FVsI8kSGXH/0fbjfTXScFinc3i
-	azIrJf2m2MMzETH6VlXzIEWGhPwwoCG5p3aqdB8GhbUGRRYgkf8Ks4/9BpoODrKZke8KXP2qUuNyf
-	SN0USvvP6Tl84txbYiVPJbAxscz5BoOoveQlzir+PE+GyIepz/ZTF/Lm5EJK/nvdwHc50QHmrDCJ1
-	O1lvCogRvYj2LWm69tAxCOcW+J10KTqbnaTlbwIqwzRZZB19+pdM+3VaVEVnB7vNifj8QCRbTZTKr
-	VDrWo1bANLJ7Q29zyuwj/0sB8fSa5uH1yzOyCbTSr19s4Kw66rdnHDdSW1/gMwHbAWgL0n08DS+Pe
-	D3MZ6e5Q==;
+	bh=Uaq+qcvYWlUE8XUYIRED91MXduBw3WkGvbeOZQWHwe8=; b=vWlm0hfFQvAZ4ds/uEeDbjWaat
+	XR5U49qIIRZite3bg3zaaf0uCZZoFqFcwYAMTBM9+Oz0PsW382lkpfkC8EAiP21l++yLJEm/dtrRx
+	nVePX3Why4KYJjymVanLD0iZL2r2qd3E4kIq550f0GknFw/5CsR0i3K9I8q4AhpljwyPHLR9ClxIR
+	tzCCztkq0Yoanoqz3P/y/gRk3aj9Yn/nFv1WBEZ8mi4N7DxRMddGT0/frR+LZqWFOUMwt/v1ENOie
+	GQ6EUmb91u9o78EWJSQlvbVqJV0u6ULGpKGuVxQk11NzN7fOPpZ+upbyUV7K3E2nUTVxxNC8WksLo
+	9SXMvMdg==;
 Received: from i53875b1c.versanet.de ([83.135.91.28] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uOZfG-0006Av-7L; Mon, 09 Jun 2025 12:23:38 +0200
+	id 1uOaPC-0006VT-VV; Mon, 09 Jun 2025 13:11:07 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: kever.yang@rock-chips.com,
 	linux-rockchip@lists.infradead.org,
-	Peter Geis <pgwipeout@gmail.com>,
-	Peter Robinson <pbrobinson@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: drop touch panel display from rockpro64
-Date: Mon,  9 Jun 2025 12:23:06 +0200
-Message-ID: <174946455543.762051.12845309784482047662.b4-ty@sntech.de>
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: convert rk3562 to their dt-binding constants
+Date: Mon,  9 Jun 2025 13:11:02 +0200
+Message-ID: <174946744892.771907.16719729052078630169.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250518215944.178582-1-pbrobinson@gmail.com>
-References: <20250518215944.178582-1-pbrobinson@gmail.com>
+In-Reply-To: <20250510161531.2086706-1-heiko@sntech.de>
+References: <20250510161531.2086706-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250609_034016_549874_C2F5CBD1 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20250609_041110_010482_7770AF1C 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,22 +76,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 18 May 2025 22:59:33 +0100, Peter Robinson wrote:
-> The touch panel display is an optional add on for the RockPro64
-> so this should be an DT overlay, drop the panel options in
-> preparation to add this as an overlay.
+On Sat, 10 May 2025 18:15:31 +0200, Heiko Stuebner wrote:
+> Now that the binding head has been merged, convert the power-domain ids
+> back to these constants for easier handling.
 > 
-> This effectively reverts commit b65155c786c4 so as to add an
-> overlay for it.
 > 
-> [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: drop touch panel display from rockpro64
-      commit: d69cb63780943fc1b0765bb9b46f627573cc97d1
-[2/2] arm64: dts: rockchip: add overlay for RockPro64 screen
-      commit: 49760b9f60528393cca3ea35c4d0719f84215a48
+[1/1] arm64: dts: rockchip: convert rk3562 to their dt-binding constants
+      commit: 208e7e76fbc77775b760edeeb528318992c60595
 
 Best regards,
 -- 
