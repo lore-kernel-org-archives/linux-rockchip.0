@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D185BC5B552
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jun 2025 10:48:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B87B9C61CE8
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jun 2025 10:50:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B6GCqE70wZK8sexsBlVkKkfGMZMO3J+NbmdZyUDP2EU=; b=axlyJDcG0T4PV5
-	DScCC0ypd0QFzwjohFfOmyf8onNFgCxLyWs4PN9FMO1f2Qv5t8xgh8hH6ceGAzXmKn+p8bhIbdcaj
-	zwmAlCHLdMVgVZBjUJb/0dwEf6EDlt31f5NLIzAvJ+3UOul2uIdRsISzK0o11uF9N5FfM7G9goTCi
-	j+ieEtAzFl+Rp8UcoVx6FIZi1GlnLvJcAdrPFPBsho+H+Njgg6hCUKkRvUeuJ481231icJPhhxZxU
-	WM3FEFDT8/DMrgYEOSMMjkIC2RrUb9DRADcRZwL1Zz6j99LCF0nKUCljSY3utV05mAPqe1ci7KumI
-	MFkRTuugjTK6LxjPsF3w==;
+	List-Owner; bh=MaExe7RgsW2+Oh9ja/v5P/OBeaUxhp5yp/3vxm9LuqI=; b=vFNqY4CNwhf0cA
+	mFm3B2UrzKMCMhfG10CjTAdQF4NR5xYETj3kwBj1RIH3ElNohoIVCrFILCvafU06r0LPachL5uDgr
+	jRlg8uyxpE2ZUQYbZOodvBPVZPg2M2UtGLLhn2di3qyFl1n1ClWKTIS538awmiVz5iq36vktxIZLS
+	8Rl53pbXT1vLBi82V70wpgZm/C9BGqS2w1WLmq/jfBATRQV11x5U7MwOsZ+7z0ZzBUI8dKR8HHJ9I
+	PiKKF1Y1a1vsJJpDcl5+SNmDuGF1bZh54PxoHltfxIXWNkOQEPBCCm8F72xU0GIK7FsKmw9FEv7Gs
+	VdzIfHIAXT++4pA/ccmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOa2m-00000003wdG-47tl;
-	Mon, 09 Jun 2025 10:47:56 +0000
+	id 1uOa4w-00000003wmF-0EJ7;
+	Mon, 09 Jun 2025 10:50:10 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOZfJ-00000003tWu-2ifH;
-	Mon, 09 Jun 2025 10:23:42 +0000
+	id 1uOZfM-00000003tYC-1l1J;
+	Mon, 09 Jun 2025 10:23:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=xEZECS6vbso0nmjjQa/VPYjFi0sU5YUT4fgKEZQNaBU=; b=fODl7cRehmK4ybPZIIU1U4jMKE
-	dPgLtOuOCi5cqZojh60rej7k5NPL0tStWG7D7HbcTAvBOSPx75B209oeP+3R/C9xiUQbioCLAMZ4V
-	Zl0oKlcj7Ayafdx9aAz7rE52pUr+G7B/8A+A7LF4+rC+HVYz3JgTV8K/wi/YTZSXNZB3NlN+MfFdo
-	UoyDRdX3d9wT/nJCM4E7j++YDXkkFHee2KERGEKMBXReMes3RG7P/JLpXSU3uOCZDXxB1/AjJiODG
-	4G7XcJjTVB5OIdXdh7zSoWpDaczZyMak3YU5F3SnxlfThwJncTfrLnTzJ8NegrrdOOhXUnRX45WDj
-	ai11mSdw==;
+	bh=WgA9iDSNL7LoVYBeJupisyslNFsqQpP5M3SHNxVuOmA=; b=MAGJK8lS/jQ4xm07Q89bSrfWtM
+	JPeaVzwQQpJ9y5O29IsxKdbcZZ6/HU8+WUZeisdxndhzQCJ9A78H7kDOXuiodS+OlFO3yqb2Ck32O
+	mFi8jDh+N7NR8AI12sSinqV1fxdoa9v1mvrijEn1azPCsbXtOP3ZzrdJQg67L5k85s14NITXlOw/H
+	t6vrYBEoX7lBzsqE3goioeNICVYokmbmvBZTW1r5rozhgWuoDUc21E3u3Sk1GoXx8AaVzrn5TqZ52
+	cltmFn0kIgxaLQ7XKobqZyyENxkUa+b6RZucL+SExjZuII0QS7shhXjgip8IQxRh+Xuk+UQU4WH56
+	oe1EQ4vw==;
 Received: from i53875b1c.versanet.de ([83.135.91.28] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uOZfB-0006Av-PN; Mon, 09 Jun 2025 12:23:33 +0200
+	id 1uOZfC-0006Av-8m; Mon, 09 Jun 2025 12:23:34 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: Andy Yan <andyshrk@163.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	simic@manjaro.org,
 	krzk+dt@kernel.org,
 	robh@kernel.org,
-	sebastian.reichel@collabora.com,
 	devicetree@vger.kernel.org,
+	conor+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	conor+dt@kernel.org,
-	jbx6244@gmail.com
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Add cd-gpios for sdcard detect on Cool Pi CM5
-Date: Mon,  9 Jun 2025 12:22:57 +0200
-Message-ID: <174946455537.762051.5518711921835874992.b4-ty@sntech.de>
+	algea.cao@rock-chips.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Adjust the HDMI DDC IO driver strength for rk3588
+Date: Mon,  9 Jun 2025 12:22:58 +0200
+Message-ID: <174946455535.762051.10507198799610616035.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250524064223.5741-1-andyshrk@163.com>
-References: <20250524064223.5741-1-andyshrk@163.com>
+In-Reply-To: <20250522020537.1884771-1-andyshrk@163.com>
+References: <20250522020537.1884771-1-andyshrk@163.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250609_032341_682722_BE423E8C 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250609_032344_452268_E9A1EE31 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,17 +82,21 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 24 May 2025 14:42:12 +0800, Andy Yan wrote:
-> cd-gpios is used for sdcard detects for sdmmc.
+On Thu, 22 May 2025 10:05:24 +0800, Andy Yan wrote:
+> For the RK3588 HDMI controller, the falling edge of DDC SDA and SCL
+> almost coincide and cannot be adjusted by HDMI registrer, resulting
+> in poor compatibility of DDC communication.
 > 
+> An improvement of the compatibility of DDC can be done by increasing
+> the driver strength of SCL and decreasing the driver strength of SDA
+> to increase the slope of the falling edge.
 > 
+> [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: Add cd-gpios for sdcard detect on Cool Pi CM5
-      commit: e625e284172d235be5cd906a98c6c91c365bb9b1
-[2/2] arm64: dts: rockchip: Add cd-gpios for sdcard detect on Cool Pi 4B
-      commit: 98570e8cb8b0c0893810f285b4a3b1a3ab81a556
+[1/1] arm64: dts: rockchip: Adjust the HDMI DDC IO driver strength for rk3588
+      commit: af9feb0b85f92d2972061224839c5fea5ee39f6d
 
 Best regards,
 -- 
