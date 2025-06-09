@@ -4,76 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E10CC61DB2
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jun 2025 10:39:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 641C8C61CE8
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jun 2025 10:43:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y1YPZp99+28vqMbDbYJvQDS9bffa+MUCmn+y3+m6oN4=; b=lbl9cKTPZb94yS
-	MYMv4+klcuzoWfY09W5RGwK6LKHgM/eJzJUtt7cxG386ClTngdb2+QgckuJ6HigxoEixe8DdPlqUX
-	CDqJIolYb7W0xpDQM10LRVG3+8iwl/ptOasUNPsWI0+MGeBX8jUoOvxGgt7nVbSSY3XTSyWw0rBlw
-	9sx7yTHYCUugQoxiXoWPypmLpZSU+P92jEac0L1H4LRxkLLpnrvGMbFoebhb++MmrIEHN3w2HI1mU
-	YkeczymZ3h6KxAEtPcMsPH+EZTdJhFeTZRRqMJehYSedtKYqSwpOp1WtnJjk8J1fkqaQX62Q200Z9
-	AHrPA5KD3j7veOIbwdHQ==;
+	List-Owner; bh=e+wkjUCAM8nrbbOVxMDoEeP36lDer0ffAEqmeUo+xdE=; b=cphng13F9u25PO
+	2KlzPJ+7UW3DXDeQUAOQRUSrnwcF/XXySoDqt1R9QjtMZXlzsLswWPtNAvEp2+mX48PMIhCyxWKi/
+	GFvyezsrBBQwzv65BVrjJRrh7JaKRy768BocmCCYvR+uIynlCo1xuSGp67Q/6/2TgUwl/8YEsjIDM
+	UUBrBGuNhYCF/iYTemFrAHHSSxe7a3f061q92ZabhHbM2SM3M+RIEAsy+TGmZ8O3d8N6UU/pdANJP
+	nC6JIsdNQ0k+39qBKSGkBuGq+qvUf/3r1rdFfnMGFVDwhUX2I5fu/ikZCHLps/uGj1TLEAxB48nIF
+	hA/4kIOUQYS4wX6MoaXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOZu7-00000003vXq-11Q5;
-	Mon, 09 Jun 2025 10:38:59 +0000
+	id 1uOZyR-00000003w4M-23h5;
+	Mon, 09 Jun 2025 10:43:27 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOZfI-00000003tW9-0yjP
-	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Jun 2025 10:23:41 +0000
+	id 1uOZfI-00000003tWE-3a9K;
+	Mon, 09 Jun 2025 10:23:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=K0AL5zLG/bnHCisTlv3I7JUPhVxh/ayleUVJo70oA0w=; b=lNlOB6MgeXdxPAe9TjFU3cpJVZ
-	GfryxcfdyOMRrD1gNxqJWb5iNEvacx97E7D+mBRhLeF4SORLw7nMxOC15dTvP5ZsmqmUHKKHu314T
-	8UebT7IP3vHNlEFm9RI6KWy2++fkk3vKn2NvPi+OVZRjGr2EBTnnyYy54DVLctrwdF8Z1eJyGW1LM
-	E51O+QYqEnKiV1j80ZPRfq4Q0OGb1XRuJo3KmFX69ZdHTqmAyPutux8Ix7pAO3cva+Fkl85CakzAY
-	9daEDAejh2c0dHn6fdPTHevTCmXYTynjNIH0mhfn89hycndTNiStFVUZMSnMODAC9z8ZgfW7+f7Sn
-	3yhpi7zQ==;
+	bh=daOC+vKgljGGAi24/WQBuWAe1UD9I//0tA3pjxmN7ro=; b=X3aQk6g97/OfFKGH+TrgrKp7+9
+	XphR7NRaWmB8Ir2rLPm9OgPt5xHBAz7e/yweXDZq0rU3NJEzCvMXzq0QUa3N4tTM0gTJutwAm4Hw8
+	ZZyxTLkzjfuFQWVDl/zx7qxMvhIIv7PzL2ChCmmEx80YEaHj8pL+QAIyK71dpHGGdQjEo94vLUJ+v
+	IXjWyW3fsIQSVPwGdBj5Lwzca1kOCT1gtKV7uXr3M93azRn8U97uqWU4qhEdd+UNErDvz+YeoekI8
+	JJkSbAeQhifiOPtGDVjndTyaOwZOiS1L5VIHLkRDXy6GCa9DEUGjKz9w7l+e6M8Mw+lW+jLAtu/dK
+	XUHRhAFg==;
 Received: from i53875b1c.versanet.de ([83.135.91.28] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uOZfF-0006Av-18; Mon, 09 Jun 2025 12:23:37 +0200
+	id 1uOZfB-0006Av-AU; Mon, 09 Jun 2025 12:23:33 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: dri-devel@lists.freedesktop.org,
-	Chris Morgan <macroalpha82@gmail.com>
+To: Chukun Pan <amadeus@jmu.edu.cn>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	Yao Zi <ziyao@disroot.org>,
+	Rob Herring <robh@kernel.org>,
+	Mark Brown <broonie@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org,
-	sebastian.reichel@collabora.com,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	tzimmermann@suse.de,
-	mripard@kernel.org,
-	maarten.lankhorst@linux.intel.com,
-	simona@ffwll.ch,
-	airlied@gmail.com,
-	quic_jesszhan@quicinc.com,
-	neil.armstrong@linaro.org,
-	javierm@redhat.com,
-	megi@xff.cz,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: (subset) [PATCH 0/4] Add DSI Panel for Gameforce Ace
-Date: Mon,  9 Jun 2025 12:23:03 +0200
-Message-ID: <174946455531.762051.4163841843437974105.b4-ty@sntech.de>
+	linux-spi@vger.kernel.org
+Subject: Re: (subset) [PATCH 0/2] arm64: dts: rockchip: Add spi nodes for RK3528
+Date: Mon,  9 Jun 2025 12:22:56 +0200
+Message-ID: <174946455541.762051.5287964403437718499.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250603193930.323607-1-macroalpha82@gmail.com>
-References: <20250603193930.323607-1-macroalpha82@gmail.com>
+In-Reply-To: <20250520100102.1226725-1-amadeus@jmu.edu.cn>
+References: <20250520100102.1226725-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250609_032340_271871_267CF94B 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250609_032340_891441_B3A0CAED 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,22 +83,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 03 Jun 2025 14:39:26 -0500, Chris Morgan wrote:
-> Add support for the DSI panel as found on the Gameforce Ace handheld
-> gaming console based on the RK3588s.
+On Tue, 20 May 2025 18:01:00 +0800, Chukun Pan wrote:
+> There are 2 SPI controllers on the RK3528 SoC, describe it.
+> Tested using st7789v chip with spi-cpha and spi-cpol properties.
 > 
-> Chris Morgan (4):
->   dt-bindings: vendor-prefixes: Add prefix for Huiling
->   dt-bindings: display: himax-hx8394: Add Huiling hl055fhav028c
->   drm/panel: himax-hx8394: Add Support for Huiling hl055fhav028c
->   arm64: dts: rockchip: Add DSI panel support for gameforce-ace
+> [   10.831306] fb_st7789v spi0.0: fbtft_property_value: buswidth = 8
+> [   11.042915] graphics fb0: fb_st7789v frame buffer, 240x320, 150 KiB
+>  video memory, 4 KiB buffer memory, fps=20, spi0.0 at 15 MHz
 > 
 > [...]
 
 Applied, thanks!
 
-[4/4] arm64: dts: rockchip: Add DSI panel support for gameforce-ace
-      commit: 6b28769116971a4427ea09ed2cb1cf1afa79ab82
+[2/2] arm64: dts: rockchip: Add spi nodes for RK3528
+      commit: 2783335329e5762deb0dc5b6d634225d8613af16
 
 Best regards,
 -- 
