@@ -4,65 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6413BC5B552
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 17:18:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E160C61DB2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 19:50:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jrTkOOgUOJV0vjcOJNXnZ15vCu3EBZaBYuxoq/Z955k=; b=S0F8zy/CHgKLKL
-	zSyRPcQuREKHTbkBke/M2wfuboMDs7ZNLSTR50PcXBm+jHNwB5e1efyyTlohBg6q/tLY4dPQUEVRg
-	A97hFy9Z2oLKdMFhkn9Qj7TUqAtmHKHLZZgjOWrvIYVU8lo19dsouLE7m/4i5FW7Q3XbakTwPGgHe
-	WEEGi1cA1/R2/IaayH+DZuNlGgTugipiJyt1zVtgbtW39VJl+A4hoBUgsX003TaeCtYJH0Xxd5kgh
-	lYUnNrxgRDEeLVDZqJdaBxWwhzSxcfnBYflbRBtwFk8hU58YHJknlHzDd23ig3R+h97ZzcjErjpcg
-	ZJFdhUHclL0DMC5ibHbQ==;
+	List-Owner; bh=/9mxHwRgvFlvRK8GC1qApDBCOHycA+yuqY+vDJyvbvk=; b=dYlCtOc8XDSdeD
+	P6b9AGgStS7ET0q8TPR6Vc9KMepeYppIc2MaZ30YC/pzLuKvXrt5gtnd/UjnFIdWj2okIewVuij1J
+	MdkJjCiwqM1XIuYwhKSGOc6HEPr52kKGboECjpgkL1BihC93ymKzQjQZoD1ZJxydx7RmmmTPweysK
+	5jEfJ9lWi4zop/Cuo6uARJ3XBrDuGWQbCBFYHMtd1VDgnhp00y6I9FPiGz3Mu2Gyem+T3ugx3NEwt
+	mVc+NKymZlp6V1yNj8w2qHLSyb369HuGIN53tX+thHJpHzE2t/XJlLlZGJasby5iVYYWFjN+Q9u1e
+	VgQdbmZGvEYmnMIuYvvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP2c6-00000007bS4-14hm;
-	Tue, 10 Jun 2025 17:18:18 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uP4yw-00000007xoL-3Ym9;
+	Tue, 10 Jun 2025 19:50:02 +0000
+Received: from smtp-42ac.mail.infomaniak.ch ([2001:1600:4:17::42ac])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOze5-000000075Sh-1Sqh;
-	Tue, 10 Jun 2025 14:08:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749564473; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=JX3mWogYehTYtVJdVmY+UzzvF446RpE/P+y4RIe/MhfEwXWKyknYvJsugJZTds547PQB/hPlS9ho3ejufts25aFKqztcqjN3VI9tq+/9D4wKYR4eZ2KI7+OzEyaLhN1+AbxfbWLcfWlhs5tI35kqDxqUkks3y+wQWWaGoxnhVAA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749564473; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=8VQasU47Fo9+menKFJwxiTlb3u0Ug7mzOiL+ShPS+BE=; 
-	b=Qx9AHUJ41xRYeOm4zNqJAqc/diELcfIlLKRY5AyrrXI5GbEZ/f6hiAXmy7qmab0++inHvfYR07EqEC9raBb6VK/UuFYaicF6iYQ0qmcIVinf3NN4T00alSJBa2QUIdiJoSWbUWWCjKkFGNnve9qMZ4lQlBxpZVlaP++WrNQ/YsQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749564473;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=8VQasU47Fo9+menKFJwxiTlb3u0Ug7mzOiL+ShPS+BE=;
-	b=DUWCLDCONptNaHpFe+ARreVDDr5GUnk+ewKYZbQqZjzqEfSBZw1folva4DCJqK0t
-	Nb/yZ1iiOu3wkHuVDxcUS9iZALpz3+tFcZr8YMNqQGawwjHi27aQVODzSj0k8V0fJuH
-	lT/Wdl/VaN1z308+X16EKJK2lJ2lldC1GFeyEuz0=
-Received: by mx.zohomail.com with SMTPS id 1749564471829701.9243237338251;
-	Tue, 10 Jun 2025 07:07:51 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 10 Jun 2025 16:07:12 +0200
-Subject: [PATCH v4 4/4] arm64: dts: rockchip: enable USB on Sige5
+	id 1uP1kA-00000007S5E-2i5c
+	for linux-rockchip@lists.infradead.org;
+	Tue, 10 Jun 2025 16:22:37 +0000
+Received: from smtp-3-0001.mail.infomaniak.ch (smtp-3-0001.mail.infomaniak.ch [10.4.36.108])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4bGvG03JXvznlH;
+	Tue, 10 Jun 2025 18:22:32 +0200 (CEST)
+Received: from unknown by smtp-3-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4bGvFz4fyJzyLt;
+	Tue, 10 Jun 2025 18:22:31 +0200 (CEST)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Date: Tue, 10 Jun 2025 18:22:18 +0200
+Subject: [PATCH v2 3/3] arm64: dts: rockchip: support camera module on
+ Haikou Video Demo on PX30 Ringneck
 MIME-Version: 1.0
-Message-Id: <20250610-rk3576-sige5-usb-v4-4-7e7f779619c1@collabora.com>
-References: <20250610-rk3576-sige5-usb-v4-0-7e7f779619c1@collabora.com>
-In-Reply-To: <20250610-rk3576-sige5-usb-v4-0-7e7f779619c1@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Frank Wang <frank.wang@rock-chips.com>
+Message-Id: <20250610-ringneck-haikou-video-demo-cam-v2-3-de1bf87e0732@cherry.de>
+References: <20250610-ringneck-haikou-video-demo-cam-v2-0-de1bf87e0732@cherry.de>
+In-Reply-To: <20250610-ringneck-haikou-video-demo-cam-v2-0-de1bf87e0732@cherry.de>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>
 X-Mailer: b4 0.14.2
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_070809_453072_A9ACA914 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20250610_092234_830706_70D44485 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,224 +61,103 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Alexey Charkov <alchark@gmail.com>, linux-phy@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The ArmSoM Sige5 has several USB ports: a Type-A USB 3 port (USB2 lines
-going through a hub), a Type-A USB 2.0 port (also going through a hub),
-a Type-C DC input port that has absolutely no USB data connection and a
-Type-C port with USB3.2 Gen1x1 that's also the maskrom programming port.
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
-Enable these ports, and set the device role to be host for the host
-ports.
+The Haikou Video Demo adapter has a proprietary connector for a camera
+module which has an OV5675 camera sensor and a companion DW9714 focus
+lens driver.
 
-The data capable Type-C USB port uses a fusb302 for data role switching.
+This adds support for the camera module on PX30 Ringneck module fitted
+on a Haikou devkit with the Haikou Video Demo adapter.
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 160 +++++++++++++++++++++
- 1 file changed, 160 insertions(+)
+ .../rockchip/px30-ringneck-haikou-video-demo.dtso  | 53 ++++++++++++++++++++++
+ 1 file changed, 53 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-index b09e789c75c47fec7cf7e9810ab0dcca32d9404a..a2b6cdf0e0b949a9df946606efedfbc747f99975 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-@@ -205,6 +205,33 @@ vcc_3v3_ufs_s0: regulator-vcc-ufs-s0 {
- 		regulator-max-microvolt = <3300000>;
- 		vin-supply = <&vcc_5v0_sys>;
+diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
+index 7d9ea5aa598486680191d52e4c87af59f7b0e579..ea5ce919984f0704d88dc1f5eb02a42d5633656e 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
++++ b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
+@@ -94,6 +94,15 @@ video-adapter-led {
+ 	};
+ };
+ 
++&cif_clkout_m0 {
++	rockchip,pins =
++		<2 RK_PB3 1 &pcfg_pull_none_12ma>;
++};
++
++&csi_dphy {
++	status = "okay";
++};
++
+ &display_subsystem {
+ 	status = "okay";
+ };
+@@ -135,6 +144,12 @@ &i2c1 {
+ 	/* OV5675, GT911, DW9714 are limited to 400KHz */
+ 	clock-frequency = <400000>;
+ 
++	focus: focus@c {
++		compatible = "dongwoon,dw9714";
++		reg = <0xc>;
++		vcc-supply = <&cam_afvdd_2v8>;
++	};
++
+ 	touchscreen@14 {
+ 		compatible = "goodix,gt911";
+ 		reg = <0x14>;
+@@ -157,6 +172,44 @@ pca9670: gpio@27 {
+ 		pinctrl-names = "default";
+ 		reset-gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
  	};
 +
-+	vcc_5v0_typec0: regulator-vcc-5v0-typec0 {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
++	camera@36 {
++		compatible = "ovti,ov5675";
++		reg = <0x36>;
++		clocks = <&cru SCLK_CIF_OUT>;
++		assigned-clocks = <&cru SCLK_CIF_OUT>;
++		/* Only parent to get exactly 19.2MHz */
++		assigned-clock-parents = <&cru USB480M>;
++		assigned-clock-rates = <19200000>;
++		avdd-supply = <&cam_avdd_2v8>;
++		dvdd-supply = <&cam_dvdd_1v2>;
++		dovdd-supply = <&cam_dovdd_1v8>;
++		lens-focus = <&focus>;
++		orientation = <0>;
 +		pinctrl-names = "default";
-+		pinctrl-0 = <&usb_otg0_pwren>;
-+		regulator-name = "vcc_5v0_typec0";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc_5v0_device>;
-+	};
-+	vcc_5v0_usbhost: regulator-vcc-5v0-usbhost {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio4 RK_PA4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb_host_pwren>;
-+		regulator-name = "vcc_5v0_usbhost";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc_5v0_device>;
-+	};
-+};
++		pinctrl-0 = <&cif_clkout_m0>;
++		reset-gpios = <&pca9670 6 GPIO_ACTIVE_LOW>;
++		rotation = <180>;
 +
-+&combphy1_psu {
-+	status = "okay";
- };
- 
- &combphy0_ps {
-@@ -643,6 +670,58 @@ regulator-state-mem {
- &i2c2 {
- 	status = "okay";
- 
-+	usbc0: typec-portc@22 {
-+		compatible = "fcs,fusb302";
-+		reg = <0x22>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA5 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usbc0_interrupt>;
-+		vbus-supply = <&vcc_5v0_typec0>;
-+
-+		connector {
-+			compatible = "usb-c-connector";
-+			label = "USB-C";
-+			data-role = "dual";
-+			/* fusb302 supports PD Rev 2.0 Ver 1.2 */
-+			pd-revision = /bits/ 8 <0x2 0x0 0x1 0x2>;
-+			power-role = "source";
-+			source-pdos = <PDO_FIXED(5000, 2000,
-+						 PDO_FIXED_USB_COMM | PDO_FIXED_DATA_SWAP)>;
-+
-+			altmodes {
-+				displayport {
-+					svid = /bits/ 16 <0xff01>;
-+					vdo = <0xffffffff>;
-+				};
-+			};
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+					usbc0_hs_ep: endpoint {
-+						remote-endpoint = <&usb_drd0_hs_ep>;
-+					};
-+				};
-+				port@1 {
-+					reg = <1>;
-+					usbc0_ss_ep: endpoint {
-+						remote-endpoint = <&usb_drd0_ss_ep>;
-+					};
-+				};
-+				port@2 {
-+					reg = <2>;
-+					usbc0_dp_ep: endpoint {
-+						remote-endpoint = <&usbdp_phy_ep>;
-+					};
-+				};
-+			};
-+		};
-+	};
-+
- 	hym8563: rtc@51 {
- 		compatible = "haoyu,hym8563";
- 		reg = <0x51>;
-@@ -729,6 +808,24 @@ pcie_reset: pcie-reset {
- 			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
-+
-+	usb {
-+		usb_host_pwren: usb-host-pwren {
-+			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+		usb_otg0_pwren: usb-otg0-pwren {
-+			rockchip,pins = <4 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+		usbc0_interrupt: usbc0-interrupt {
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+		usbc0_sbu1: usbc0-sbu1 {
-+			rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+		usbc0_sbu2: usbc0-sbu2 {
-+			rockchip,pins = <2 RK_PA7 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
- };
- 
- &sai1 {
-@@ -770,11 +867,74 @@ &sdmmc {
- 	status = "okay";
- };
- 
-+&u2phy0 {
-+	status = "okay";
-+};
-+
-+&u2phy0_otg {
-+	status = "okay";
-+};
-+
-+&u2phy1 {
-+	status = "okay";
-+};
-+
-+&u2phy1_otg {
-+	phy-supply = <&vcc_5v0_usbhost>;
-+	status = "okay";
-+};
-+
- &uart0 {
- 	pinctrl-0 = <&uart0m0_xfer>;
- 	status = "okay";
- };
- 
-+&usb_drd0_dwc3 {
-+	usb-role-switch;
-+	dr_mode = "otg";
-+	status = "okay";
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+			usb_drd0_hs_ep: endpoint {
-+				remote-endpoint = <&usbc0_hs_ep>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+			usb_drd0_ss_ep: endpoint {
-+				remote-endpoint = <&usbc0_ss_ep>;
++		port {
++			cam_out: endpoint {
++				data-lanes = <1 2>;
++				link-frequencies = /bits/ 64 <450000000>;
++				remote-endpoint = <&mipi_in_cam>;
 +			};
 +		};
 +	};
 +};
 +
-+&usb_drd1_dwc3 {
-+	dr_mode = "host";
++&isp {
 +	status = "okay";
 +};
 +
-+&usbdp_phy {
-+	mode-switch;
-+	orientation-switch;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&usbc0_sbu1 &usbc0_sbu2>;
-+	sbu1-dc-gpios = <&gpio2 RK_PA6 GPIO_ACTIVE_HIGH>;
-+	sbu2-dc-gpios = <&gpio2 RK_PA7 GPIO_ACTIVE_HIGH>;
-+	status = "okay";
-+
-+	port {
-+		usbdp_phy_ep: endpoint {
-+			remote-endpoint = <&usbc0_dp_ep>;
-+		};
++&isp_in {
++	mipi_in_cam: endpoint {
++		data-lanes = <1 2>;
++		remote-endpoint = <&cam_out>;
 +	};
-+};
-+
- &vop {
- 	status = "okay";
  };
+ 
+ &pinctrl {
 
 -- 
 2.49.0
