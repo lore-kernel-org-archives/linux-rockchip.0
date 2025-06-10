@@ -4,66 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A239C71131
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 13:24:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E1CBC5B543
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 13:25:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Mime-Version:
-	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=glNuNwhX27sHqlmgJd3fKm+pVbYiYlOou6Ip/X68LWU=; b=IMB
-	VaG7ebAPo82tc3SRDx6wOoSe6pvMEFV/VnRCRSKm0miaaAegMKwg9NwbeGKL+H+9fAF8L0gi7hIIt
-	ektwIOamAJeb/Pn9l33IXQKdMywAJc/otPIBSrrfWlMZTn5W29NU25yCEytobappxcT+E3/OHglOB
-	RIO7Y778o4YH4ID+bsV355uKOSKrs4eFjsEhZziQ8RqL0Kzy/HUqGR0BFmy4NiJb7tpbTBHqwwPBF
-	ZU8glFOUlTc5nYTlL9OmzCTBUsTAYNr23L6UJWp8ptm1/ldUdKrDpzXba+U9YQq8ydt8sPcTCjuH8
-	IssAZwZ1iihfyCbdJjuQlS7CXjkymiQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:MIME-Version:Message-Id:Date:Subject
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SubCdZmAkZNcCWOGHm4fvE5Ms31wj3m8EJlNANOsQsk=; b=i8Vi/VrgrhrsZ2
+	fdugtgI6DGa7U/r0ddelGAd7j/lhJMx9CdB1CTxaSMNC2t5191Mo7d71EknV4ZMWiZg67MKddVLMM
+	tt75Zl/5vc9vjSbnwZJUjMQ63qXLDAQl2/GnhY66gMM+YjIiPmKckhV1oyCHwUrsIEwpO0bonkOxG
+	5asYsLX34RezZP7vbHFiMbQlWYYVTV7P7leWjCvu+I2BGWRr0Jc2cGLcsaz4yDId8a30+UUVBH8wp
+	JHHLNeFa9dtdbKtq5foIRq7/hG30Dl+Nrq6L8Xu/fh4DfYt/jlTkngKCVqc75NsyjWy6BbYcrf73k
+	I2TDuJQsVHBlEDqgRZsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOyxK-00000006wu9-1jC9;
-	Tue, 10 Jun 2025 13:23:58 +0000
-Received: from mxct.zte.com.cn ([183.62.165.209])
+	id 1uOyye-00000006xTV-0VN1;
+	Tue, 10 Jun 2025 13:25:20 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOxFE-00000006eai-0xyl;
-	Tue, 10 Jun 2025 11:34:22 +0000
-Received: from mse-fl1.zte.com.cn (unknown [10.5.228.132])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mxct.zte.com.cn (FangMail) with ESMTPS id 4bGmsB2P7nz4y3Rt;
-	Tue, 10 Jun 2025 19:34:06 +0800 (CST)
-Received: from xaxapp01.zte.com.cn ([10.88.99.176])
-	by mse-fl1.zte.com.cn with SMTP id 55ABXxDX055070;
-	Tue, 10 Jun 2025 19:33:59 +0800 (+08)
-	(envelope-from shao.mingyin@zte.com.cn)
-Received: from mapi (xaxapp04[null])
-	by mapi (Zmail) with MAPI id mid32;
-	Tue, 10 Jun 2025 19:34:03 +0800 (CST)
-Date: Tue, 10 Jun 2025 19:34:03 +0800 (CST)
-X-Zmail-TransId: 2afb6848182b233-bddc4
-X-Mailer: Zmail v1.0
-Message-ID: <20250610193403161UQCV5cVGXCRVDheTb7jvi@zte.com.cn>
-Mime-Version: 1.0
-From: <shao.mingyin@zte.com.cn>
-To: <ulf.hansson@linaro.org>, <changhuang.liang@starfivetech.com>
-Cc: <geert+renesas@glider.be>, <magnus.damm@gmail.com>, <heiko@sntech.de>,
-        <krzk@kernel.org>, <alim.akhtar@samsung.com>,
-        <walker.chen@starfivetech.com>, <sebastian.reichel@collabora.com>,
-        <detlev.casanova@collabora.com>, <finley.xiao@rock-chips.com>,
-        <shawn.lin@rock-chips.com>, <pgwipeout@gmail.com>,
-        <qiu.yutan@zte.com.cn>, <shao.mingyin@zte.com.cn>,
-        <linux-pm@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <yang.yang29@zte.com.cn>,
-        <xu.xin16@zte.com.cn>, <yang.tao172@zte.com.cn>,
-        <ye.xingchen@zte.com.cn>
-Subject: =?UTF-8?B?W1BBVENIIHYyXSBwbWRvbWFpbjogVXNlIHN0cl9lbmFibGVfZGlzYWJsZS1saWtlIGhlbHBlcnM=?=
-X-MAIL: mse-fl1.zte.com.cn 55ABXxDX055070
-X-Fangmail-Anti-Spam-Filtered: true
-X-Fangmail-MID-QID: 6848182E.001/4bGmsB2P7nz4y3Rt
+	id 1uOyA9-00000006mII-0GfJ;
+	Tue, 10 Jun 2025 12:33:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:From:Sender:Reply-To:
+	Content-ID:Content-Description:In-Reply-To:References;
+	bh=QIi9g6Ji8aGG9JtEtRjtoD3nFJK1xgryL1YyafjBz2o=; b=TGJDjUwclxmYGxW69Z8pDmJFQx
+	EBRFxM1sWf9C6oIGvCsiC77YgemTKbaLlOzvNa8KiuDQkHrYvbNeDBoWNGJZ7ZBkgyqv1lwKvDzHc
+	ZpPoEVzVLdH4pAJha4CamPDKiRKvTZQWjl189q6vTlYo+801SRoyALfHO139iolYrFeVJbkkfJ6CQ
+	Pn71bVrVp9wvmXEC/qGvVQo1pl3aZ4YlqyiFk4lYldR53aQHUKSPMML7bocJCjqQoLa34YLIbGzSa
+	n7bSGyR14eXK5nfmXn4LHZP6P7+LuAYS340A1zpdkABzT8lMulZyQvu17uXcyht6WxA9o6Y7aCJP9
+	djojwVdQ==;
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uOyA6-00000001oQA-1ctr;
+	Tue, 10 Jun 2025 12:33:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749558767; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=kImA814gjUbrxDwdmyR7nTUvysVbaR13KqrXXPCKUjpQBi366peYhyF/JcFZQnfhICH2y+KM3kW0f3YEmCUm3VIyhQrPo+sEyV63ETjqVYlNDUry3VbKvWGj6e8vJTbjxCpxEiD3XY2JmX3DMyDLekQJzaKbIZULsyReni3NRm8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1749558767; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=QIi9g6Ji8aGG9JtEtRjtoD3nFJK1xgryL1YyafjBz2o=; 
+	b=SUBVtOqAFH1nwOunCKP/DmnRbS84jCFlTrYIrv3Sb4WsIQCkoZfn/Gt/Cyqufs1KSBd1rtP+2V5XWsprx547DmF3vWYkelrmbDTjCz2b7UO4e6I/Olc9EDYcFlmkn2xOQ+nI2x6jikhpZLm2qkaFPndOHI9DA0aHKgcY3b1lqUs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749558767;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=QIi9g6Ji8aGG9JtEtRjtoD3nFJK1xgryL1YyafjBz2o=;
+	b=cU2pBJaif8HfHknFgO50Q1cinA5znJraTGktR9P4TVdDfMv/UFPVNqf8NdpPwVtA
+	VN3TcyJZBZSFAbisnMEtax8I3lZWS6k6uEwOxHUWYToZ8mzJrw5hUV30Zp7ZgfoFU8v
+	WEnItqvyPXtHoOY9c1BiNOcXheCFFETPPm3QdTxY=
+Received: by mx.zohomail.com with SMTPS id 1749558765275911.517312346525;
+	Tue, 10 Jun 2025 05:32:45 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: [PATCH v6 0/7] RK3576 thermal sensor support, including OTP trim
+ adjustments
+Date: Tue, 10 Jun 2025 14:32:36 +0200
+Message-Id: <20250610-rk3576-tsadc-upstream-v6-0-b6e9efbf1015@collabora.com>
+MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAOQlSGgC/3XPTW7DIBAF4KtYrEvEPyar3qPqAsbjBjWOE3BQq
+ 8h3L3UqJars5aCZ7/FuJGOKmMm+uZGEJeY4nupgXhoCB3/6QBq7OhPBhGaCa5o+pbaGTtl3QK/
+ nPCX0A7XIgDvZW9N6Um/PCfv4tbhv7/c54eVa+en+SILPSGEchjjtm2J23NAEnPwuH2KexvS9/
+ KnwZfsv3mzEF04ZNQjOOCmE5+oVxuPRhzH5Xc1Y1CKeJLFVpIhFCjYw1mHrYE2Sz1K7JckqqdC
+ HIINxLrg1ST0kye2WpKoENcsBat3Z1Xb6IantdrpKDFrFgnMgGf6X5nn+AajjtkITAgAA
+X-Change-ID: 20250215-rk3576-tsadc-upstream-7e0c193f768a
+To: Alexey Charkov <alchark@gmail.com>, 
+ "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
+ Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Jonas Karlman <jonas@kwiboo.se>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_043420_586337_3A7AF7FB 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20250610_133306_887173_A60C6A54 
+X-CRM114-Status: GOOD (  28.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,163 +94,145 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Ye Zhang <ye.zhang@rock-chips.com>, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Shao Mingyin <shao.mingyin@zte.com.cn>
+This series adds support for the RK3576's thermal sensor.
 
-Replace ternary (condition ? "enable" : "disable") syntax and ternary
-(condition ? "on" : "off") syntax with helpers from
-string_choices.h because:
-1. Simple function call with one argument is easier to read.  Ternary
-   operator has three arguments and with wrapping might lead to quite
-   long code.
-2. Is slightly shorter thus also easier to read.
-3. It brings uniformity in the text - same string.
-4. Allows deduping by the linker, which results in a smaller binary
-   file.
+The sensor has six channels, providing measurements for the package
+temperature, the temperature of the big cores, the temperature of the
+little cores, and the GPU, NPU and DDR controller.
 
-Signed-off-by: Shao Mingyin <shao.mingyin@zte.com.cn>
+In addition to adding support for the sensor itself, the series also
+adds support for reading thermal trim values out of the device tree.
+Most of this functionality is not specific to this SoC, but needed to be
+implemented to make the sensors a little more accurate in order to
+investigate whether the TRM swapped GPU and DDR or downstream swapped
+GPU and DDR in terms of channel IDs, as downstream disagrees with what's
+in the TRM, and the difference is so small and hard to pin down with
+testing that the constant offset between the two sensors was a little
+annoying for me to deal with.
+
+I ended up going with the channel assignment the TRM lists, as I see the
+DDR sensor get a larger deviation from baseline temperatures during memory
+stress tests (stress-ng --memrate 8 --memrate-flush) than what the TRM
+claims is the GPU sensor but downstream claims is the DDR sensor. Input
+from Rockchip engineers on whether the TRM is right or wrong welcome.
+
+The trim functionality is only used by RK3576 at the moment. Code to
+handle other SoCs can rely on the shared otp reading and perhaps even
+the IP revision specific function, but may need its own IP revision
+specific functions added as well. Absent trim functionality in other
+SoCs should not interfere with the modified common code paths.
+
+Patch 1 is a cleanup patch for the rockchip thermal driver, where a
+function was confusingly named.
+
+Patch 2 adds the RK3576 compatible to the bindings.
+
+Patch 3 adds support for this SoC's thermal chip to the driver. It is a
+port of the downstream commit adding support for this.
+
+Patch 4 adds some documentation for imminent additional functionality to
+the binding, namely the trim value stuff.
+
+Patch 5 adds support for reading these OTP values in the
+rockchip_thermal driver, and makes use of them. The code is mostly new
+upstream code written by me, using downstream code as reference.
+
+Patch 6 adds the basic thermal nodes required to get temperature
+readings and device throttling to the rk3576.dtsi device tree.
+
+Patch 7 adds the requisite OTP cells and tsadc nodes to the SoC's device
+tree, conforming with the bindings modified in Patch 4.
+
+For the record, here's a listing of SoCs that implement the OTP trim
+functionality in some variation, with a legend that is as follows:
+- A = chip-wide trim value
+- B = trim_base value
+- C = trim_base_frac value
+- D = per-channel trim value
+- E = compatible is either in mainline or in this series
+
+The list is as follows:
+- RK3502 (A____)
+- RK3528 (A____)
+- RK3562 (ABC__)
+- RK3566 (_BCDE)
+- RK3568 (_BCDE)
+- RK3576 (___DE) <- the only one we're adding OTP trim for here atm
+- RV1126 (AB___)
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
-v2:
- %sable ==> %s in jh71xx_pmu_dev()
- drivers/pmdomain/renesas/rcar-gen4-sysc.c    | 3 ++-
- drivers/pmdomain/renesas/rcar-sysc.c         | 3 ++-
- drivers/pmdomain/rockchip/pm-domains.c       | 3 ++-
- drivers/pmdomain/samsung/exynos-pm-domains.c | 6 +++---
- drivers/pmdomain/starfive/jh71xx-pmu.c       | 7 ++++---
- 5 files changed, 13 insertions(+), 9 deletions(-)
+Changes in v6:
+- dts: change polling-delay-passive to 100 for thermal zones with a
+  passive cooling device, to fix the behaviour Alexey Charkov noticed,
+  wherein the device would never get unthrottled otherwise
+- Link to v5: https://lore.kernel.org/r/20250425-rk3576-tsadc-upstream-v5-0-0c840b99c30e@collabora.com
 
-diff --git a/drivers/pmdomain/renesas/rcar-gen4-sysc.c b/drivers/pmdomain/renesas/rcar-gen4-sysc.c
-index e001b5c25bed..c8aa7538e95f 100644
---- a/drivers/pmdomain/renesas/rcar-gen4-sysc.c
-+++ b/drivers/pmdomain/renesas/rcar-gen4-sysc.c
-@@ -18,6 +18,7 @@
- #include <linux/slab.h>
- #include <linux/spinlock.h>
- #include <linux/types.h>
-+#include <linux/string_choices.h>
+Changes in v5:
+- Reorder dts patches to both be at the end of the series, as per
+  Heiko's wishes
+- Link to v4: https://lore.kernel.org/r/20250317-rk3576-tsadc-upstream-v4-0-c5029ce55d74@collabora.com
 
- #include "rcar-gen4-sysc.h"
+Changes in v4:
+- driver: added a patch to rename tsadcv3_tshut_mode to
+  tsadcv4_tshut_mode, as per Jonas' suggestion, and drop the duplicated
+  function from the RK3576 support patch.
+- Link to v3: https://lore.kernel.org/r/20250228-rk3576-tsadc-upstream-v3-0-4bfbb3b699b9@collabora.com
 
-@@ -171,7 +172,7 @@ static int rcar_gen4_sysc_power(u8 pdr, bool on)
-  out:
-        spin_unlock_irqrestore(&rcar_gen4_sysc_lock, flags);
+Changes in v3:
+- Changed bindings back to using patternProperties, as per Rob's
+  suggestions
+- Adjusted dts changes to comply with the new schema
+- Link to v2: https://lore.kernel.org/r/20250225-rk3576-tsadc-upstream-v2-0-6eb7b00de89c@collabora.com
 
--       pr_debug("sysc power %s domain %d: %08x -> %d\n", on ? "on" : "off",
-+       pr_debug("sysc power %s domain %d: %08x -> %d\n", str_on_off(on),
-                 pdr, ioread32(rcar_gen4_sysc_base + SYSCISCR(reg_idx)), ret);
-        return ret;
- }
-diff --git a/drivers/pmdomain/renesas/rcar-sysc.c b/drivers/pmdomain/renesas/rcar-sysc.c
-index 047495f54e8a..dae01ca0ef6a 100644
---- a/drivers/pmdomain/renesas/rcar-sysc.c
-+++ b/drivers/pmdomain/renesas/rcar-sysc.c
-@@ -17,6 +17,7 @@
- #include <linux/io.h>
- #include <linux/iopoll.h>
- #include <linux/soc/renesas/rcar-sysc.h>
-+#include <linux/string_choices.h>
+Changes in v2:
+- As per Rob's request, the bindings now only feature the new properties
+  depending on the compatible. Since the combination is slightly
+  different for each SoC anyway, this makes future work easier too.
+- The different channels are now explicitly named, instead of giving
+  them patternProperties names. This is once again per-compatible.
+- As per Sebastian's suggestion, unified trim_l and trim_h into just one
+  nvmem cell in the bindings, device tree and driver. I did this after
+  verifying that downstream has no SoC where trim_l and trim_h are ever
+  non-contiguous, including for SoCs upstream does not (yet) support.
+- Rebased on top of next-20250225 and dropped Heiko's OTP patchset as a
+  dependency as it was merged.
+- Added a handy overview of which SoCs use which part of the OTP trim
+  functionality in the cover letter
+- Reintroduced an accidentally removed dev_dbg in the function 
+  rockchip_thermal_set_trips
+- Link to v1: https://lore.kernel.org/r/20250216-rk3576-tsadc-upstream-v1-0-6ec969322a14@collabora.com
 
- #include "rcar-sysc.h"
+---
+Nicolas Frattaroli (6):
+      thermal: rockchip: rename rk_tsadcv3_tshut_mode
+      dt-bindings: rockchip-thermal: Add RK3576 compatible
+      dt-bindings: thermal: rockchip: document otp thermal trim
+      thermal: rockchip: support reading trim values from OTP
+      arm64: dts: rockchip: Add thermal nodes to RK3576
+      arm64: dts: rockchip: Add thermal trim OTP and tsadc nodes
 
-@@ -162,7 +163,7 @@ static int rcar_sysc_power(const struct rcar_sysc_pd *pd, bool on)
+Ye Zhang (1):
+      thermal: rockchip: Support RK3576 SoC in the thermal driver
 
-        spin_unlock_irqrestore(&rcar_sysc_lock, flags);
+ .../bindings/thermal/rockchip-thermal.yaml         |  62 +++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 221 +++++++++++++++++-
+ drivers/thermal/rockchip_thermal.c                 | 251 +++++++++++++++++++--
+ 3 files changed, 511 insertions(+), 23 deletions(-)
+---
+base-commit: d9946fe286439c2aeaa7953b8c316efe5b83d515
+change-id: 20250215-rk3576-tsadc-upstream-7e0c193f768a
 
--       pr_debug("sysc power %s domain %d: %08x -> %d\n", on ? "on" : "off",
-+       pr_debug("sysc power %s domain %d: %08x -> %d\n", str_on_off(on),
-                 pd->isr_bit, ioread32(rcar_sysc_base + SYSCISR), ret);
-        return ret;
- }
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 4cce407bb1eb..0681c763f843 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -21,6 +21,7 @@
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/string_choices.h>
- #include <soc/rockchip/pm_domains.h>
- #include <soc/rockchip/rockchip_sip.h>
- #include <dt-bindings/power/px30-power.h>
-@@ -595,7 +596,7 @@ static int rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
-                                        is_on == on, 0, 10000);
-        if (ret) {
-                dev_err(pmu->dev, "failed to set domain '%s' %s, val=%d\n",
--                       genpd->name, on ? "on" : "off", is_on);
-+                       genpd->name, str_on_off(on), is_on);
-                return ret;
-        }
-
-diff --git a/drivers/pmdomain/samsung/exynos-pm-domains.c b/drivers/pmdomain/samsung/exynos-pm-domains.c
-index 9b502e8751d1..1a892c611dad 100644
---- a/drivers/pmdomain/samsung/exynos-pm-domains.c
-+++ b/drivers/pmdomain/samsung/exynos-pm-domains.c
-@@ -13,6 +13,7 @@
- #include <linux/err.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
-+#include <linux/string_choices.h>
- #include <linux/pm_domain.h>
- #include <linux/delay.h>
- #include <linux/of.h>
-@@ -38,7 +39,6 @@ static int exynos_pd_power(struct generic_pm_domain *domain, bool power_on)
-        struct exynos_pm_domain *pd;
-        void __iomem *base;
-        u32 timeout, pwr;
--       char *op;
-
-        pd = container_of(domain, struct exynos_pm_domain, pd);
-        base = pd->base;
-@@ -51,8 +51,8 @@ static int exynos_pd_power(struct generic_pm_domain *domain, bool power_on)
-
-        while ((readl_relaxed(base + 0x4) & pd->local_pwr_cfg) != pwr) {
-                if (!timeout) {
--                       op = (power_on) ? "enable" : "disable";
--                       pr_err("Power domain %s %s failed\n", domain->name, op);
-+                       pr_err("Power domain %s %s failed\n", domain->name,
-+                              str_enable_disable(power_on));
-                        return -ETIMEDOUT;
-                }
-                timeout--;
-diff --git a/drivers/pmdomain/starfive/jh71xx-pmu.c b/drivers/pmdomain/starfive/jh71xx-pmu.c
-index 74720c09a6e3..dc3e109e273a 100644
---- a/drivers/pmdomain/starfive/jh71xx-pmu.c
-+++ b/drivers/pmdomain/starfive/jh71xx-pmu.c
-@@ -12,6 +12,7 @@
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_domain.h>
-+#include <linux/string_choices.h>
- #include <dt-bindings/power/starfive,jh7110-pmu.h>
-
- /* register offset */
-@@ -155,7 +156,7 @@ static int jh7110_pmu_set_state(struct jh71xx_pmu_dev *pmd, u32 mask, bool on)
-
-        if (ret) {
-                dev_err(pmu->dev, "%s: failed to power %s\n",
--                       pmd->genpd.name, on ? "on" : "off");
-+                       pmd->genpd.name, str_on_off(on));
-                return -ETIMEDOUT;
-        }
-
-@@ -197,8 +198,8 @@ static int jh71xx_pmu_set_state(struct jh71xx_pmu_dev *pmd, u32 mask, bool on)
-        }
-
-        if (is_on == on) {
--               dev_dbg(pmu->dev, "pm domain [%s] is already %sable status.\n",
--                       pmd->genpd.name, on ? "en" : "dis");
-+               dev_dbg(pmu->dev, "pm domain [%s] is already %s status.\n",
-+                       pmd->genpd.name, str_enable_disable(on));
-                return 0;
-        }
-
+Best regards,
 -- 
-2.25.1
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
