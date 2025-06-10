@@ -4,147 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CD8BC87FCB
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33837C87FD3
 	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EziijckFFT37Licm0IAOSM4ggaN61b9UvDFf1pvTM38=; b=v1Claxd6k8g7jg
-	LRxjoaPUAnY2AfsACO9IbkmG/hBACeVoF9Y0M6PYyRUbgjv9I0bzsEt/7yK21OGKOgrGnk/iE7fni
-	9o6mfrGTPaocrBf8Fx1YltuuEQKVq/Eavz97JZ6Gowrr502eO/uB+fG5lDgnZpGcHkDjCPD5xXvqv
-	40Ey3CGz5VSQRWFthgSgJGfDHu1dh9L94adifi9ZbWrddPtgV8w/HMiqAL0OkdR6fMJl1NvltL9WJ
-	bAHg0D8GVZLMIZhXP5XdPeqABLQdMYzlN1IUnBSi0RuogTJVOAxHrS1NgI3d8+F+c4TajaEmo/Mqs
-	CGtwIgX0AA2HMIY2M32g==;
+	List-Owner; bh=At72+phgTykhOcRikya4qXfSPXplQZzeHKAUSIVVD/M=; b=DpdgcMkjDYt/3p
+	llxZ79b1FBywjg84yG0hPYxGbepv6z3EBx6LA6aQEcpEtSqd/fDTWF1XV2TIXFdxn+yBpZKvF3HBY
+	4earmkEhINBLTsH/58cIoGFZiL1WUHA0c1wXaoII5Jy7aVMFxIJrzaC6Tdmv7ZfbuDZleq20LDAKn
+	wtZLICziuYi9eQ+wdD1ug6TjRYiRfh/9h6NGTIWfpjdciMAR/HDAcN5gwCia+12y7sXVer0oFV+Ei
+	+2VmkNohFUxM/+8WWggOZBi+ESZ7Pe8UuW3lVy0DAAuHqyjTZCD4Gluf6AcPEPYBH75HeB/Bgy3tV
+	MyEActDWNviWvC4v2OuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujbcA-0000000EvkA-2OYz;
-	Wed, 06 Aug 2025 10:43:22 +0000
-Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
+	id 1ujbc9-0000000EvjG-3DdB;
+	Wed, 06 Aug 2025 10:43:21 +0000
+Received: from mail-bjschn02on2105.outbound.protection.partner.outlook.cn ([139.219.17.105] helo=CHN02-BJS-obe.outbound.protection.partner.outlook.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWcjK-00000005rIv-41uz
-	for linux-rockchip@lists.infradead.org;
-	Tue, 01 Jul 2025 15:17:09 +0000
-Received: by mail-oa1-x32.google.com with SMTP id 586e51a60fabf-2edec6c5511so1593390fac.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 01 Jul 2025 08:17:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1751383025; x=1751987825; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=kto2WDWq8SXrCfQMl14bP+htdglCH2HfwzImspNOE2s=;
-        b=tFTXD12EL3sjW5iY7vNmcQuotBePn2TCf+cUQW64Gb70ZQIIpWd8oSEOd48POCxqjd
-         Ot+InkY1dEqDYqkcb9EOB+Xg6Akh5wciXxOlQ4ufarAUgWoYgvLvqM/zKH2QjCsZYJ9d
-         7PQ+o1CITfPfZoRi5ehtkYhXrJPYodfNyPAHoPcatKTF4JvfwMHat8tmdp8pEQh0VFKz
-         YgXBaHxRTlitXFqaHTk4xMU/DR/5YPxH+9v0za4cbUcqWJttkuOiVHAP3mEpnO2t9uPy
-         vDi+GScCQ8EL5k/+yJlf4uGhympo4QGBWcRkqg2rUsBnOqDQBUJ2B4CS/JKF8E2Y5v9C
-         P+IQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751383025; x=1751987825;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=kto2WDWq8SXrCfQMl14bP+htdglCH2HfwzImspNOE2s=;
-        b=D2mPYPrspkdz19YQxjHSICuMihiay3qhuWHeRfAbfkfMokQ2t8kMY0Oy99CCedp67I
-         NqNTkYddMo25jF5+016I3KqGBoIWOBmuzZrBAHlPZA0fQt+U8tv4Zci90sOnRpHuOhLz
-         5bGBtrc5Var9iHBnNs6cFvqyXdzNK8xY35lWbop6ugRfExdg68epr6pYum1/jV8g0dW7
-         gitoUw3Zu1tFlrTTbTLG+V2sI3cp3H5qzHfj8Gp/jPWZGP0FBBS+fTXYPUIQpowP3hOj
-         j0fIcB+theW03HIwvvTXdnOXWZl6IRWosC8MPtXkonHYIs8unKqPDf+3Tt03zHErPMk8
-         rv5w==
-X-Forwarded-Encrypted: i=1; AJvYcCU0gLhf/KCr7EO1VXYgAjYsPPHuv84Wkj1dM1/pQbtk0y4txyguR2hIIu6qOZPcuMKYOGrW0rgCERH14l+J7w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxgahnY4gSqE/ljDbMaulsG8lwzMVQ5yVaqVuy75ajdCsJuNZ/4
-	aGDYn/S+qAcHdZtgKiAQJIBeRvu67S+pDoLyjY0hL3Y62lAPa228ENwBzaACDkJZydw=
-X-Gm-Gg: ASbGncuBgk7nSQ2wKUaQCO3KUYJwwLXaAQzqhWbZ8L0s2yLl9IpEC/4fco4DL85Fbv+
-	6udCL18kjyJiAjDCPQFF+MgYGGLEbCNOLhuwUvBDofrds9l9aYgLNUnWCJ/C68mGFkOkL5wpDs/
-	um/rBjbsDz6bILr/5NuLTPDz6WIH0GnzzUGLOgey4hB5v/+ap7BRw1zWnIKIn+mWJfKqkUYfsiw
-	tXeugTO0JBWDNwlVy0NqFkqNvM1kr1NDgbW8dZi2H9uPuK69/KsEXqa0nn1fGQcWG0y7JHYDx6/
-	sHgfj6OarA/L7XrWccyvuBTSdGSYj5iW/hKX7MthlaJ3AawMBBi6QyHk+3uDyEVuWritwO3vslo
-	jP4oo4TzlJdLlIUU5OLiVdbduSp/q93Nwt11FZhw=
-X-Google-Smtp-Source: AGHT+IGFKFZEsYZ4erbtAtqvl8tEHdHdyZFtcG8OKzWXPDqsQnJB5BtiKcEBEjaczDbwqY+Qnse9tA==
-X-Received: by 2002:a05:6871:82a:b0:2c7:6f57:3645 with SMTP id 586e51a60fabf-2efed67879emr12142176fac.18.1751383010329;
-        Tue, 01 Jul 2025 08:16:50 -0700 (PDT)
-Received: from ?IPV6:2600:8803:e7e4:1d00:70a7:ca49:a250:f1d5? ([2600:8803:e7e4:1d00:70a7:ca49:a250:f1d5])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-2efd50fb14esm3319606fac.42.2025.07.01.08.16.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 01 Jul 2025 08:16:49 -0700 (PDT)
-Message-ID: <3df2c424-297e-4538-b350-5c465b22fa39@baylibre.com>
-Date: Tue, 1 Jul 2025 10:16:47 -0500
+	id 1uOvGO-00000006Kjg-25Z6;
+	Tue, 10 Jun 2025 09:27:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hUMJrWeRklH17QPzDjOvxiAekNr6YgQlVDepiOfQwwnlz8azT32PDsv6VSpNytN7hY/WnmbMEQwxB/ds/GD91yJRarpmtcXNllUsH3PNXi7AVVLwuOTCHKmPTmz0YULbRHROmYw5zEJBso0e9WBI8mN1vQ7GSKdrmp+y5oDgicCW1psU1O36ge2mglrK3NzFkhGoOFyrrVulljqPHB/rmqGQTvbyNu8nDkUghnK9EcmDqFu+YHlBCEmZrUupRvF6dBj9tzREzGxcub+Kp9iUNIm2XvJ4sNAi7fht+VJoamWC0bacrDkkTSQScFEZaLkdmXKanJ0a0x+FqFBJjLxCqA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=errlSDBlT7IJoXFJD0CVCYj+y6votvUITo4JMpmu83I=;
+ b=Us4KvuGDS00+waDoe/uGd5do6TbQ6+vMUZYjG5G5SRUsJ470nJ7qtcJ2pIH0ReR5ZEM0mrxn4JIrGICJH5f7BTNYSBrykDFsm80OdPNdX2GgdE7Nx2LvpysrgDlAYLsVR8KTBSdd09k+zVaKlH82uXsVBrPp/5j9qVGVC0/iuTJC07/w6AJTB91M6Suw+noAWx5aybFQgOUsBPRRbW4gml1iMn/HVyUsCWoTku3PLtm/hNlhiFHOU7oBks8q9sUHWuLARu6q8e0BKvcISXmDPOF5ZwZ18XdpkWxdZ/n7C353h0Id6uTEZ9nD4FHODOcRu1KC8rhYjabI/7JzxsaUPA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=starfivetech.com; dmarc=pass action=none
+ header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
+Received: from ZQ0PR01MB1302.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c550:1b::9) by ZQ0PR01MB0952.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c550:c::12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8792.42; Tue, 10 Jun
+ 2025 08:51:30 +0000
+Received: from ZQ0PR01MB1302.CHNPR01.prod.partner.outlook.cn
+ ([fe80::64c5:50d8:4f2c:59aa]) by
+ ZQ0PR01MB1302.CHNPR01.prod.partner.outlook.cn ([fe80::64c5:50d8:4f2c:59aa%7])
+ with mapi id 15.20.8792.038; Tue, 10 Jun 2025 08:51:30 +0000
+From: Changhuang Liang <changhuang.liang@starfivetech.com>
+To: "shao.mingyin@zte.com.cn" <shao.mingyin@zte.com.cn>,
+	"ulf.hansson@linaro.org" <ulf.hansson@linaro.org>
+CC: "geert+renesas@glider.be" <geert+renesas@glider.be>,
+	"magnus.damm@gmail.com" <magnus.damm@gmail.com>, "heiko@sntech.de"
+	<heiko@sntech.de>, "krzk@kernel.org" <krzk@kernel.org>,
+	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, Walker Chen
+	<walker.chen@starfivetech.com>, "sebastian.reichel@collabora.com"
+	<sebastian.reichel@collabora.com>, "detlev.casanova@collabora.com"
+	<detlev.casanova@collabora.com>, "finley.xiao@rock-chips.com"
+	<finley.xiao@rock-chips.com>, "shawn.lin@rock-chips.com"
+	<shawn.lin@rock-chips.com>, "pgwipeout@gmail.com" <pgwipeout@gmail.com>,
+	"qiu.yutan@zte.com.cn" <qiu.yutan@zte.com.cn>, "linux-pm@vger.kernel.org"
+	<linux-pm@vger.kernel.org>, "linux-renesas-soc@vger.kernel.org"
+	<linux-renesas-soc@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-samsung-soc@vger.kernel.org"
+	<linux-samsung-soc@vger.kernel.org>, "yang.yang29@zte.com.cn"
+	<yang.yang29@zte.com.cn>, "xu.xin16@zte.com.cn" <xu.xin16@zte.com.cn>,
+	"yang.tao172@zte.com.cn" <yang.tao172@zte.com.cn>, "ye.xingchen@zte.com.cn"
+	<ye.xingchen@zte.com.cn>
+Subject: =?utf-8?B?5Zue5aSNOiBwbWRvbWFpbjogVXNlIHN0cl9lbmFibGVfZGlzYWJsZS1saWtl?=
+ =?utf-8?Q?_helpers?=
+Thread-Topic: pmdomain: Use str_enable_disable-like helpers
+Thread-Index: AQHb2eK4wQmwS1os/UmiAkf/peV4eLP8FIYw
+Date: Tue, 10 Jun 2025 08:51:30 +0000
+Message-ID: <ZQ0PR01MB130295B1CB3568C596B12F2FF26A2@ZQ0PR01MB1302.CHNPR01.prod.partner.outlook.cn>
+References: <202506101634190538mcMSzfKfxQTy4LgbSpOy@zte.com.cn>
+In-Reply-To: <202506101634190538mcMSzfKfxQTy4LgbSpOy@zte.com.cn>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=starfivetech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: ZQ0PR01MB1302:EE_|ZQ0PR01MB0952:EE_
+x-ms-office365-filtering-correlation-id: ce05f971-3b40-4379-f1e2-08dda7fbfe8d
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|41320700013|1800799024|7416014|38070700018;
+x-microsoft-antispam-message-info: /CBW8qUlCxuuxT6wEADWmekhpnF9mvFGSQa9SyaP1/f0EKf3vCcMYCz0X3FYJuu2R5CJY3eX6vu6tKS0Pwb67iZXKZaML0BTJCAhlSzw7nuienHmDO+52RNtaXq9qdURtTqx9v5KEM4LDWqT8RF+Y0/dSwsUjQ7n/X+tQcXq+utU8vs96sq/UJJTBSfsTBnT9m9J1xg7IKUaUNvw3T18Du5ZFWTk3ae5Uf6X5Pn2CpGwbF617SyHFLT+B90kpqqVMSxfFb5R27ybQC3MT1f9kYZnHTOG4jwG9Wjze16t3NJa5ETvobuY0+eCHss+N5jscmTthB/0BuVz5fpYGR5BdXB8Zsej1Qj2ZK06miZuciB45/Su2uamQexy5wo7W5vt6nHieUd9FWb0tquVM+4/BJV0562pcVEYldREF7mjNi0PaA/Bu2jRfUIamLpsw/rx7PScbY2/g/SaqxGJsEbmBTne0bsM6pQjGl/2K5fTsmy+FTiFxJPIwBvd355Ppnq5j7vGc7avouKu0q79Dh71SFbljZYczr2iZWx9NFTLdvmtDuzITnRo54ffJyvIdL098Uky28w8gsWoi5VXpJByTtOlvxbrdLtWLiEO5Bd1tmI=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:zh-cn;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:ZQ0PR01MB1302.CHNPR01.prod.partner.outlook.cn;PTR:;CAT:NONE;SFS:(13230040)(366016)(41320700013)(1800799024)(7416014)(38070700018);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cjNkWEthL3EvYWZKRFNtRnd2SGdsNm1aR1JkSHhWTGRRaStZMzJrZFJyRGta?=
+ =?utf-8?B?blBWV3p3T3JlYmpCQmFDNkFXRFFYdHNEWjhvR1ZEc0xNTHgxNXBiNDkxYlF5?=
+ =?utf-8?B?ZzBMeHpkZU0wWUNRQ0E3MG1RQWVIajVIdVhzNjhiZkNBNDZram5YTVU5RHI2?=
+ =?utf-8?B?WWRybXJrZWQzUGVtSjVFTjg3eDJ6cERWcGJOMlVGN2JRb2J5ZkZuSFJLQ2F4?=
+ =?utf-8?B?bnBTbUR2dmRBdnlON1dqNGJJc0RsVUV0czNnRWVjeUY1Q2FXRG1LU05oenB1?=
+ =?utf-8?B?dUpobGY3K3lnU0EvaDFGNXNtaHE1QlpHd3VzMUlKNDhtZVd4UHdCQ2o3NExN?=
+ =?utf-8?B?ZEVHeTFHRXdqcnlMMVljemtKbVpkVW1DNG9PRHFqUlg5UmlMZ0tHSXdhb3ho?=
+ =?utf-8?B?RXlaMWVxcSs3NE9CcUtDd3lrVzd4TGxMM25oN2Y4bVJHQWcraTFxL3hVUEJU?=
+ =?utf-8?B?bkJ0VHRRMW43b2tSTGc5Ly8yOWVWU3ZheEpmVXY2eWhDRUw1bFJMMmZQVUk2?=
+ =?utf-8?B?T2JJemluY1Fhb3dlREFjQ0RNS0tRemdnM0NYK2JpRUtBMHZWOER6ZVhhVjhr?=
+ =?utf-8?B?REFrMEJNczVhSTNIcStKNHJSZUV1UXF1Q05lWjRqN3czR00wYi9YUWdpUzkv?=
+ =?utf-8?B?Z0MyTmlXeDRqdGRXcW1WdXE4aDJqN05lQmRoM294WXA2b2ZxVmR4bHFKb0xj?=
+ =?utf-8?B?MGtzeU0rRmdZZ3Z5eGhIWkdSOG5ycENwU2E0VWRDTkt3VytLbk9iSjcwRUQy?=
+ =?utf-8?B?NWRlVVJxNC9kSnc1Wm5NK3V6QUxMT2VDR0JPcmFZZU8ySElnS1d2NFlPcWRI?=
+ =?utf-8?B?d29XQjk3bzlpY3VrRmtvNzZJQXBiQjRKYjFQYnFyVEJ6enRCR0NuRHFYOHM3?=
+ =?utf-8?B?K1BEbTBxRnpiNWMwQnR1K29qTGgwbEMvVTExR0FGQ3NDS2U2RDFqc3RKR2M5?=
+ =?utf-8?B?VUx1dG5pYkZyYWcrOG9hZlFuaERBSTk5WlhvSlZROHRkWGxIaFFmclZ0RTM5?=
+ =?utf-8?B?V2gxVi9hUFkzZ0MxM0tUc3JnM1Y0V2F1Y2U4S3lmaE9FRHo1WXcyY0d0VVY1?=
+ =?utf-8?B?QWs3YVVRZXg3Z1N6N2l1dEg4ZVA5NzdtYXlwWHZta0FnTWhXRVdLU2I1NWwz?=
+ =?utf-8?B?WEtIcDlEbWdobmNqTnpRREV4R1ZianFXYjJvTDgrWXJGd1BNcnBZejlucThy?=
+ =?utf-8?B?Nyt0RnF3RjRXbTFYbTJrWFdObjNGOHZLclhWeDF2bW9WN0FLNDJsSE8xNGFV?=
+ =?utf-8?B?RjhzbG9yaG1uTDlnUUd3eEUyWGVkUTRvZHZMOUw4eE0wT2oxeTlhS0hYT0Np?=
+ =?utf-8?B?bk9IZnUrb0JBMFFWcWRHajkwSFJqNjFKMjI1ZWV5amdheHVlNUM0bHdZNE0x?=
+ =?utf-8?B?OFdod1ZZRmhzZmpINmQ0VWhYbTAvZ1M2TVpaN0s1Zy80dDZQQTRGVWJVZW40?=
+ =?utf-8?B?QVA5Z0VEVkhrdno0UnIraUh1akgwYm1PODZXdVZWWUNnL0FRUTRGYkdyU2RU?=
+ =?utf-8?B?ZjFHb29TSEsyWTZMWWRobWUyb1BIM3ZqejAzQkthL01va3k1K1lDK1NGQXha?=
+ =?utf-8?B?SlBCL2l5Z3FNaWtCZ04vVDc2NWxqcmZ2TWdOQlFQd01iRWQrVG5qdjRXZmFV?=
+ =?utf-8?B?V2lGQTBBZEJjUHFhaFVaRFZWZTVGaEVXN2dma1I2UDhCUDJuM1NhNkVXdGc5?=
+ =?utf-8?B?NkpsQ3FYUTJXL3RsNXY5ZEdQT1RpMFYxU2lDRHdkME4wanRIaGV0TjUyTTd3?=
+ =?utf-8?B?QVhIdC9pL0JxbzNUdS9hWXlHZW05czg2MVd4L2RxLzM4Q3hKVEhKK1MvbzAw?=
+ =?utf-8?B?ZzR0dGVDbS9JbWFrS0VaTm1RTXk4a2E1dEJMNjhJWGtYY1pLSFlRcmZHSEhm?=
+ =?utf-8?B?UC8vdkNxcUJnMUJqZlhHM3JRNUd1dWdPTm9QY2t2T3N4Q1ZDd1FNYzk3U2tE?=
+ =?utf-8?B?Y1hhQ292VkUyYkwvN0tabzIySFhBMUdwb0hTLy9qTy9VWGloaTRNTzhMTXNn?=
+ =?utf-8?B?Tm5Wb1Rmd0s2cSt5SVdOcDY5c29TTTM1V3RZdmJmVzBtNHJRay9Ka0o4VUR5?=
+ =?utf-8?B?SjBXN1k3aDZ1Tk5DbnczZmxkbDRhWjlHOVRiNnJiLzlobk5ORU0xcEd6NS9O?=
+ =?utf-8?B?V0ZlcWZLcXF3Si91VUpMSU9WaWVIZWZpSUJ1SGhPNXpZY2xObm51L2V1Zk1Q?=
+ =?utf-8?Q?wr5W6BFJeyJG8YFaiN+KfGg=3D?=
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
-To: Waqar Hameed <waqar.hameed@axis.com>,
- Vignesh Raghavendra <vigneshr@ti.com>, Julien Panis <jpanis@baylibre.com>,
- William Breathitt Gray <wbg@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski
- <brgl@bgdev.pl>, Peter Rosin <peda@axentia.se>,
- Jonathan Cameron <jic23@kernel.org>, =?UTF-8?Q?Nuno_S=C3=A1?=
- <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
- Cosmin Tanislav <cosmin.tanislav@analog.com>,
- Lars-Peter Clausen <lars@metafoo.de>,
- Michael Hennerich <Michael.Hennerich@analog.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matteo Martelli <matteomartelli3@gmail.com>, Heiko Stuebner
- <heiko@sntech.de>, Francesco Dolcini <francesco@dolcini.it>,
- =?UTF-8?Q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?=
- <jpaulo.silvagoncalves@gmail.com>, Hugo Villeneuve
- <hvilleneuve@dimonoff.com>, Subhajit Ghosh <subhajit.ghosh@tweaklogic.com>,
- Mudit Sharma <muditsharma.info@gmail.com>,
- Gerald Loacker <gerald.loacker@wolfvision.net>,
- Song Qiang <songqiang1304521@gmail.com>, Crt Mori <cmo@melexis.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Karol Gugala <kgugala@antmicro.com>,
- Mateusz Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>,
- Joel Stanley <joel@jms.id.au>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>, Wei Fang <wei.fang@nxp.com>,
- Clark Wang <xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
- <alim.akhtar@samsung.com>, Sebastian Reichel <sre@kernel.org>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Han Xu <han.xu@nxp.com>, Haibo Chen <haibo.chen@nxp.com>,
- Yogesh Gaur <yogeshgaur.83@gmail.com>, Mark Brown <broonie@kernel.org>,
- Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Souradeep Chowdhury <quic_schowdhu@quicinc.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>
-Cc: kernel@axis.com, linux-iio@vger.kernel.org, linux-omap@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
- linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-input@vger.kernel.org, linux-mmc@vger.kernel.org, imx@lists.linux.dev,
- netdev@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-pwm@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-spi@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-usb@vger.kernel.org,
- sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org
-References: <pnd7c0s6ji2.fsf@axis.com>
-Content-Language: en-US
-From: David Lechner <dlechner@baylibre.com>
-In-Reply-To: <pnd7c0s6ji2.fsf@axis.com>
+X-OriginatorOrg: starfivetech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: ZQ0PR01MB1302.CHNPR01.prod.partner.outlook.cn
+X-MS-Exchange-CrossTenant-Network-Message-Id: ce05f971-3b40-4379-f1e2-08dda7fbfe8d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Jun 2025 08:51:30.5745
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: cFbq4yGYQtrNjitaxnAzOx+EEuzYGMyccxOERShYYiRyaKRqVyXqdl7oIbO/P/cZtf+g7/H2UwHNhGss9ojLZaYnxvYS1huze6lrE8cm0k0rG9hy9SqQXO8Z3KViNPqN
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: ZQ0PR01MB0952
+X-Bad-Reply: References and In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_081707_025054_DF381762 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20250610_022724_529163_70A4AACE 
+X-CRM114-Status: GOOD (  13.76  )
 X-Mailman-Approved-At: Wed, 06 Aug 2025 03:42:49 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -162,29 +159,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 7/1/25 10:03 AM, Waqar Hameed wrote:
-> When `devm_add_action_or_reset()` fails, it is due to a failed memory
-> allocation and will thus return `-ENOMEM`. `dev_err_probe()` doesn't do
-> anything when error is `-ENOMEM`. Therefore, remove the useless call to
-> `dev_err_probe()` when `devm_add_action_or_reset()` fails, and just
-> return the value instead.
+Hi, Mingyin
+
+Thanks for your patch.
+
+> From: Shao Mingyin <shao.mingyin@zte.com.cn>
 > 
-> Signed-off-by: Waqar Hameed <waqar.hameed@axis.com>
-> ---
-I can't speak for all subsystems, but this would probably be acceptable
-in the iio subsystem.
+> Replace ternary (condition ? "enable" : "disable") syntax and ternary
+> (condition ? "on" : "off") syntax with helpers from string_choices.h because:
+> 1. Simple function call with one argument is easier to read.  Ternary
+>    operator has three arguments and with wrapping might lead to quite
+>    long code.
+> 2. Is slightly shorter thus also easier to read.
+> 3. It brings uniformity in the text - same string.
+> 4. Allows deduping by the linker, which results in a smaller binary
+>    file.
+> 
+> Signed-off-by: Shao Mingyin <shao.mingyin@zte.com.cn>
 
-However, I don't think anyone is going to accept a patch that touches
-all of these files at the same time across subsystems.
+[...]
 
-So I would suggest to split this up into one patch per driver and create
-one series per subsystem. This way, each subsystem isn't bothered by unrelated
-patches that they don't particularly need to care about. And note that some
-subsystems like net have additional expectations, e.g for the patch subject
-so that it gets picked up by automated tools, so be sure to check the docs
-for this.
+> diff --git a/drivers/pmdomain/starfive/jh71xx-pmu.c
+> b/drivers/pmdomain/starfive/jh71xx-pmu.c
+> index 74720c09a6e3..0e8fca4e2de9 100644
+> --- a/drivers/pmdomain/starfive/jh71xx-pmu.c
+> +++ b/drivers/pmdomain/starfive/jh71xx-pmu.c
+> @@ -12,6 +12,7 @@
+>  #include <linux/of.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_domain.h>
+> +#include <linux/string_choices.h>
+>  #include <dt-bindings/power/starfive,jh7110-pmu.h>
+> 
+>  /* register offset */
+> @@ -155,7 +156,7 @@ static int jh7110_pmu_set_state(struct
+> jh71xx_pmu_dev *pmd, u32 mask, bool on)
+> 
+>         if (ret) {
+>                 dev_err(pmu->dev, "%s: failed to power %s\n",
+> -                       pmd->genpd.name, on ? "on" : "off");
+> +                       pmd->genpd.name, str_on_off(on));
+>                 return -ETIMEDOUT;
+>         }
+> 
+> @@ -198,7 +199,7 @@ static int jh71xx_pmu_set_state(struct
+> jh71xx_pmu_dev *pmd, u32 mask, bool on)
+> 
+>         if (is_on == on) {
+>                 dev_dbg(pmu->dev, "pm domain [%s] is already %sable
+> status.\n",
 
+%sable ==> %s
 
+> -                       pmd->genpd.name, on ? "en" : "dis");
+> +                       pmd->genpd.name, str_enable_disable(on));
+>                 return 0;
+>         }
+> 
+
+Best Regards,
+Changhuang
 
 _______________________________________________
 Linux-rockchip mailing list
