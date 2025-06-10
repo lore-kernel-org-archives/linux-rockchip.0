@@ -4,180 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D4ABC61CE8
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Jun 2025 23:11:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03E19C5B552
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 03:54:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date
+	:From:In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f0ITtlJMvYMzeaosJ/hoElWLV4ZonRJEBmQC0w8TWNI=; b=LJNXopiiWrdPWc
-	Rzi0BF/OBhypQQwEMV+JfJVXPjf1F8PJqHVWXal5hSAls2WD0cJB0NIXBgn4jIBHwV/eSTixsqTgL
-	8VUrWkUQvvoi4eJkCUGmOr3ShmeVrseF7Ri3rkFLGw3YmwNSyfaiq9EtKnHHgLIN6Gt8DN8G3Ijd1
-	C6LAjfSWiIID8Jx9SblB5sHO0DkWAcqUrwp0gp4FDEyt+mmGvNEWP6pJJAjY9HXFlx/seyJg803Qa
-	toCTVsfPcOxQ4tJaACR8oEcxYOew5SIwQzydKXFTHNdS+WeBmAkTyZcJxGz2w7EUH2+PBvb5+2s+0
-	frUb4Ty9gtMLQjfTC1Tw==;
+	List-Owner; bh=ztsYVaTdWYNxDQ3diAGs+aqBu+YSrS0/SYmGoyIcL74=; b=m5DtOh/TT4IiES
+	JjNgPGGvg9Hoi9vEDTewo61qmdGNSgB05fS5YtbinHfZj53sPYWaJGbroxZGxSv4C4ruJNvAKGMGa
+	yLbkyTr1TUAQ+L2UwblNMgJdqzBSRkpU3f/n2qUBQ/pTI/tiCE2EaNATV/UarXQygfbhzmpquSQGq
+	1p6IcFBXHVHR2t850S0u6rKawvv0QUl636dl4wgL6lwablH2Ries+aLjqYL27p1+P+3DUQ7BPEA18
+	mnUlUrMhAYtXb1uaWrYpqydRsevir8KhVMVyuxEfA9GSWPRXoHQ643HvdEB1XuqqnHOdXCbAhjfYF
+	3nnJc+ESJEb9jRgWaaiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOleC-00000005QPG-48yr;
-	Mon, 09 Jun 2025 23:11:20 +0000
-Received: from mail-dm6nam11on20615.outbound.protection.outlook.com ([2a01:111:f403:2415::615] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1uOq3d-00000005iNF-2lX2;
+	Tue, 10 Jun 2025 03:53:53 +0000
+Received: from mail-lf1-f52.google.com ([209.85.167.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOle9-00000005QNt-004M;
-	Mon, 09 Jun 2025 23:11:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=r84z3vNOsF/t67AK+wnfj0+9wdGZqdnYNTvZfnIp7xsTK5CQyJJxWZzd5yU/mN25ol1j/9yro1ZfC674Qax6mRd0aC0FCJdRT3//s1s0SJGPBAR4W5qj4f2X5DW5A1W01ZvzmJw/c++F9gJz/9f1havN5Kl8sx6wAyLjE4ImaKRK4ahnbGcKWsp0e1XVj/3amH8sAmUlQrg7RFefQI0weEOn2qutvCrwxZDQiAI6CcAJ54Z6f2FEvFproYrlLwQ/kAX4Vw9KKg6gvYpsxzm9kE465JgzyXgriNyuCVJwtSHBXXEr+hhNWzyle2HK8NL20QTqmGg+4IJVZ8X1PSMtsQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PsBPkx8jSrmC12XFb8zFQrHo6PRiEQL/cBnz9+SB5KQ=;
- b=VAWw+6JIlpUpipArDn+Q0rbdPTVNRB8xfDkUhkxdvFcdH/kut19ZgCUp4kQWQkTydnpy5alLNXEmeN8hvYG4cVbdtLkgSyJ8XYQqqw3Lk2lBVW/GNTuHu4uHy1D7C3kw3Gcq6uKez+D3vw8WUc0AXKuNuMzYdkweVwiPfug487dfOUabt4LDAtdjdSoSnAZrX+rqxoVYk4JRpLQmcGS40NsqNzyANz1oMr4h0maYa1eRIYKAntpVxB+ZQaAA7lslDPCmRSG99XYMQA8382c8dp8qL+DnzvITUD2E8ss6u0rJaSuPocugqPBSfG6tK1a6m/Ug/uzYZrMKAQF4qgP4fg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PsBPkx8jSrmC12XFb8zFQrHo6PRiEQL/cBnz9+SB5KQ=;
- b=TZARcgCHBC4DJAmHD2uAUiEHmuTYb65hj9fWdCRmlEQqQA/cLDRqkvxQ2ID6cT4GuzYJ25M7uVSOSeTD/+bwGtL21wcOP6jI1j57lfMSRO6b+UfNvWnSzA2WUkGp4HqczlU9+pKDQqBHpO+KEjNuKEpDvlQCe51KmYObY1keKWedaAFJ+Mf7UIjl0OoAar9g7q0g+Jdwm0hH/EERxQdIzhqdbTQp3PHC4CnCneG09ZcZV8JyffmCGha3ctYm/hDFycCqdiKIcJ+LmK8khA7BCO/CvBnnOlcA04FIXv7J23jwuKzum8QGeBb5wGnjy1WyKgA1c9tLLqUjupDAzFSZ2w==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
- by CH1PR12MB9669.namprd12.prod.outlook.com (2603:10b6:610:2af::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8792.41; Mon, 9 Jun
- 2025 23:11:10 +0000
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732%6]) with mapi id 15.20.8792.038; Mon, 9 Jun 2025
- 23:11:10 +0000
-Date: Mon, 9 Jun 2025 20:11:02 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Janne Grunau <j@jannau.net>,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>, Sven Peter <sven@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, virtualization@lists.linux.dev,
-	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	Kevin Tian <kevin.tian@intel.com>, patches@lists.linux.dev,
-	Niklas Schnelle <schnelle@linux.ibm.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Tomasz Jeznach <tjeznach@rivosinc.com>
-Subject: Re: [PATCH v2 1/7] qiommu/arm-smmu-v3: Remove iommu_ops pgsize_bitmap
-Message-ID: <20250609231102.GA712299@nvidia.com>
-References: <0-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
- <1-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
- <aEddE8bupuaVJTEP@nvidia.com>
-Content-Disposition: inline
-In-Reply-To: <aEddE8bupuaVJTEP@nvidia.com>
-X-ClientProxiedBy: YT4P288CA0003.CANP288.PROD.OUTLOOK.COM
- (2603:10b6:b01:d4::11) To CH3PR12MB8659.namprd12.prod.outlook.com
- (2603:10b6:610:17c::13)
+	id 1uOq3a-00000005iMQ-0zaD;
+	Tue, 10 Jun 2025 03:53:51 +0000
+Received: by mail-lf1-f52.google.com with SMTP id 2adb3069b0e04-55324062ea8so6505066e87.3;
+        Mon, 09 Jun 2025 20:53:49 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749527628; x=1750132428;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :reply-to:in-reply-to:references:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=nZk/7/4MvcJfckdyvA+r+JfqYVWkeTH5dDDkcVRzYjI=;
+        b=NvVoQXEEHUqQgLCqad6iDOB2ey1PnDXVYvVBgkk1Ejg388ml+6oI9yd9CYcYlJ7Ink
+         rEvNLk8rOE/Yb6MhCgAdUlr9nyt5UY75+g43wyC8KX7YkjB1XAnwZxy6cDF+Aajnz0iZ
+         GyF56h/+b+CB+jhMDkYqmqOSXfkq9d+lR7I27Jl9UqCoj5AH7cM1LEdMkAJ71DKvOL0/
+         fW9L7ueJsFgKKUD6izPPK/jkq3J3dM27wpNosiWy+ZU5o4jXpe/icvbun+XzZU5ilIuF
+         JciY4CFP9e/JCV0VVNc0B82zQUcpaxlPcRzM31UDrCrHLIdSfnQTaopI4h9eKunSeI2Y
+         WK0A==
+X-Forwarded-Encrypted: i=1; AJvYcCW/KADkwG8o6TzcGhhlRUVv/5sCJucQEhdDXua/GC4ocruucE39FhhzFGtTITQqhTXhW0Zk11ymtN2UPkhyz5o4@lists.infradead.org, AJvYcCW1KXvSBLCX3DFuooh1NDtTf6fIx5StEmCjbdNV9PD2GtVVgm6cG9tpcSBwZXCPCvqPVhnSsLLvu9t96ic=@lists.infradead.org, AJvYcCWhPXitM4TcyNUZ4xEPRgsHGKaIGEFOUFMiAIfQPUO0Px/+a+u35ASqn9tucOknHZs08mh3++bT6IybBXA6VoU=@lists.infradead.org, AJvYcCX6RFNgFJ73cuKyEeuMNUO15kYqVC3b3zRkJJN7oZlkE1Qo44s9NDTs4TB4hMrsksuKhyEcDM1c1aNNKKm0Qe4=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwIpJ7rnfQ5pF8sNMJLj+WMbrcEHCboCRab17dEtoRGQSw1Fij1
+	0+DJ//7C1y4O6a8JBBLmNHLpn6PjGuJKTAjoevh9v8p9z5ilJ6tDmavIdaP8iOXv2xGTFQ==
+X-Gm-Gg: ASbGnct64Xn4NZv/jfmezeyAW5KQqM/EW3Tg0cJQtlcQkvEAGU4ss91a/o20Iwv7kZ/
+	L9vAx6opFBzQnaarxIQRZK87x7HArdAljcqrPWxKr97H7bsQN9XHdETHe0vYq2dUbDbE44ED7m9
+	Je4JUYpobph4WwrvndAA2DUfTX4/n2Zmj//vrjVLPOUz6imq2xMt11FdlHIp0nA4Zizwj4uC41/
+	7Z2Hpcld+Cbsyb40yY+AcPbUQ+X7QKA0bwbFuFTbUIpBRPqglyNH2nM49Bo6bRGvi4Pko3+tMLl
+	OBPSOjXG1ZfYbXjqY/7zMcqN3O7Bau7hTQn+UzCqFhUo+YU2tK0hT3EAAzIeZ8fQJcoOSzUXmfH
+	6kjrO2RfDMpHxVwY=
+X-Google-Smtp-Source: AGHT+IFGLK0tZYKZm1t5cPxA2fB68UgyDQZIdSHhRTXD6PL1o07uVthLCv7vv6A0x5Bilg2FWj/q4Q==
+X-Received: by 2002:a05:6512:239e:b0:553:2ee0:7728 with SMTP id 2adb3069b0e04-55366b856damr4020847e87.0.1749527627265;
+        Mon, 09 Jun 2025 20:53:47 -0700 (PDT)
+Received: from mail-lf1-f43.google.com (mail-lf1-f43.google.com. [209.85.167.43])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-553676d052csm1386631e87.34.2025.06.09.20.53.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 09 Jun 2025 20:53:47 -0700 (PDT)
+Received: by mail-lf1-f43.google.com with SMTP id 2adb3069b0e04-5534f3722caso5675808e87.0;
+        Mon, 09 Jun 2025 20:53:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCW944jJbPfKc9/u7g/3DD9NdJpaHr6HFc5k5Px/P2KzjMCQ6XNagBTRRqV5sP/rvhIYxB9cZZIsNAf8Iik=@lists.infradead.org, AJvYcCWo6mdrmkmUQxn7o3f1m3nBZFYmlFWSNqot08e/IZyxTl4lvJdRgJkWrx9xnhpGiaP4DiUrNNTloY/oSBhatd0=@lists.infradead.org, AJvYcCXSV0lhAv0rd0bMXKmYcrAxwpTZ0bMCZTaPTV9C5M7EMLNZrKzlJy/lstNJKQ6yBDOAPOqHcjkGc6JbxJ3V2yHG@lists.infradead.org, AJvYcCXZjsT9lhQx897mhqhjaOPrs9sYLj8BOpRnFIs55xDHp2T4p4k5MGk9+02yg6u/2md2r83SCwhgTSQSWP83SjA=@lists.infradead.org
+X-Received: by 2002:a2e:b693:0:b0:32a:ddd2:208e with SMTP id
+ 38308e7fff4ca-32adfc06f41mr30364041fa.9.1749527274652; Mon, 09 Jun 2025
+ 20:47:54 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|CH1PR12MB9669:EE_
-X-MS-Office365-Filtering-Correlation-Id: f29d7091-f279-4c7d-f2c8-08dda7aaebc0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|366016;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Tf7KLx6hR73xfO+lfzttAzUQ3J9RvPiXn0kMZWA/1MRTP0IlkKN7nv35L+Ta?=
- =?us-ascii?Q?7B3tTPu0yvTmR7xgMSx2T8s2K0BGKLpw2z8uVllyY4/9ySI0T3P9NSaHu60s?=
- =?us-ascii?Q?oWRv2VDr6k/Lg9BFIxbVkWuW6RTLJmqVl/MeV72v5b59jVbNt0MZCpVkpPs0?=
- =?us-ascii?Q?t8Pb2Z4A5xSa82aB8CgNdAnpZg2k1RWM/p4bHKbOVY4SNFXdzZqSKI3TMrPX?=
- =?us-ascii?Q?7tSmv6T+0Yq7bcpzvKXancOVbrjvxHvN++fyzMTwyDuPpsICJymL9i2/21Th?=
- =?us-ascii?Q?vmQjKv/8WcqMBGYTxC806dIpHBeqXJ+3MYTMyaOrkaOfKP/ZycvwE8B5tlpb?=
- =?us-ascii?Q?cKxpACefIIt2LrbMqbh/FM7Nq3cSyWkEZrJFjyD4Qz3pLJwB85WaiH1LlkaR?=
- =?us-ascii?Q?ldRApIZrZcbn/gOe28dI+xXoCxWzLjE2cb4BrTjoQl9izaoH0mPYfEbDFilO?=
- =?us-ascii?Q?sIzO5cILhOhuePK8DZWl25tkIR2t0fphOi+w4SsEjwTMfncxavbfwXCvAWgZ?=
- =?us-ascii?Q?Yzuowv1EzUcz8hFnQ3ytehCY7+NgfE1wAkrGbn2MXI97SMl+BnQAEXbYjdKT?=
- =?us-ascii?Q?0weDqTWE9zKI2IcIzF6QpnmB7DhM1qBH7REFR1cF8QdeiMjGrcHXwMdIYv9D?=
- =?us-ascii?Q?Ek73X5mkfE40aeuSr1g3SxnP7ufiGZKtrZ7VGbOYfxcZGVAlfBBK9tZVmzXh?=
- =?us-ascii?Q?0JbJbhTVboWEUpdVxWftmfsSZFbAn66+zxASFUGVUAe19MwHL9OKHHQfpDF5?=
- =?us-ascii?Q?kwHa5Zttf7hQJ2KVZ5UTTH5V1/tSH3DlC7yDOyVu/f9VCX4sP0dYDHRR0R93?=
- =?us-ascii?Q?VIjwPccLHaBf7h7+eW0+AtM8o2ISx9OnuIzV8Kng312cINGDOLPSvNayUIlt?=
- =?us-ascii?Q?7rWOWw8TwgjGIuF/ll1suybO+CQgWihS92NzfREUZgnw4NT1SCynvpYSqtd8?=
- =?us-ascii?Q?5I07mAOdF0YLIcKizgTRAztdN6Vfto3DsItzHuw+hN0uDCZFOfUgRRb7RoKK?=
- =?us-ascii?Q?AIY3PMFSoX9z+mPm0DycFNDvSGwDZhEw+QxhUZT8aBVDPIAG2uLWjBlDp80M?=
- =?us-ascii?Q?WeZofjSjy8/2a/5qSc5kDfUPgHxwipb/C3qZevCWdgoraFlUpwGTPQeR/lSs?=
- =?us-ascii?Q?9+0awkJe7cMDmMAO1sWQorIMDq8+C/Hxo0BUgVXhJo+Z6dI26Afz6nfsJfnv?=
- =?us-ascii?Q?jQJJWTfwWCgBmfWx+u6L5tyQwSq8yP4VYE4S1pbJvx+UNrO6nUqTpg7NNHMW?=
- =?us-ascii?Q?3d8ZPYo9visQO5svrvYL8Qqf+In4Fmyel9fy1Umo/kmORNeLaR2Nno5OvaXH?=
- =?us-ascii?Q?myIOOIjDIgujoD/mNLR1YOjk+OkLZL/mYaV+R1a9PqgodBdJjZukNRW2IUMe?=
- =?us-ascii?Q?+U9ajm4IA/ZhEaTqMY+iZeKYsxyQlDFVUSyCwLVATRV2hkP2lBFGPMsm2A0U?=
- =?us-ascii?Q?rx5jePp5y1Y=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?yOTK22FZzQguLdgbsV2gobYwMhuRz0VaXnvdCce3R1mAc4m6lpB3QVz3GP+o?=
- =?us-ascii?Q?72rF8eYffVZ/JB36f32px/UExvv+AEUa0IipJSZiZ+J2j/g/otGSSeZO7d3S?=
- =?us-ascii?Q?uv7TsYSHPbzp/f3YU8lP/opAjYLiCQR4CQMi0PwmRmIj707POwPbzgADwmsS?=
- =?us-ascii?Q?TO3R29DEfJ0UQQWqhnX5+h1Q3qqFhtJQMS7CeaQdz2FXlxc8WIDy3mjSpV+F?=
- =?us-ascii?Q?2PnfOpSyqWe+5Ffof1lcQIbIBzF+JaEXwneID23jVjkL2qDlxYV9KwreE28p?=
- =?us-ascii?Q?7mwvmdA6zE221l64vxksLp3BK2v3xgLnx2+eWnxZ7i3aryQ3w6MP6Gss63zs?=
- =?us-ascii?Q?DIMe4MDC2h6wjr/cH7L8U+CYj5oQERVgRqb9IVgL239dB/Q84As4Bjkbugn6?=
- =?us-ascii?Q?7Tdimyl4TqtN8Qysxp6uVOsCZ0KdBa/dCWoiRTHOh2RRy651+Aqct6HjmOu5?=
- =?us-ascii?Q?9QNyRIIQmW9fmPjNXQyTo7itOw66lc8havJLU0QSpeh6H/qkAEmx+xQTNR8N?=
- =?us-ascii?Q?/BY95p1hUxxP3mgyEiMCgPiHfryPq3hO2yBT58TO0HBINF7s7njbO09z9gw0?=
- =?us-ascii?Q?dHLnH6xlvpVPjX0zyfClHziZn2e66nRwgD6CYr+3ontxlFKa9Ab4sc55kdT4?=
- =?us-ascii?Q?WdVEoOs3VPTcu0g6GAwnrMPDGGa7EW+H3jh88BC+2oQ2606ot2AajlqF4JiD?=
- =?us-ascii?Q?p5Y/Tsrs2djiv78h1rOi0cihV/BRJwPpPRhaxmxB1iDyo2Xs8HOpRgfwrNXL?=
- =?us-ascii?Q?DSRlQXd9sbuXhKycfUTfX/4qk4nznslBcVUtZdoLrOPWiRJtkNo5AEfhkTUm?=
- =?us-ascii?Q?dOvxi5mx1ah6Pb3ZvfE8fp6CuNaxLdINRvf8KxLek3fvJhYoIbGdScigWoFe?=
- =?us-ascii?Q?o+cajOEaeSKcnT40xk2kgzcBbMbPoOyY0n1zfFE/e3DlQ8hpBht+Ba8lDrsl?=
- =?us-ascii?Q?Q+wPL28IzaJgMe3u+Ey364yDCIRMz037OM/TaDm7lXBYQu3KSe6t/Hgi7VHq?=
- =?us-ascii?Q?wwef6O4XS21QTciWOwHol4xmbFznx5YV9FnGlHAMgCnJZour66Hs/KVeT/Ed?=
- =?us-ascii?Q?C12pTYzpbvwmoI0xGBBSIalzYjfAaNZJTPMBp7pNmM6sQLCnHiU+opuCkrYu?=
- =?us-ascii?Q?g8kMrrDkl03fsHSX0+jvlSP0LnZlYFimKPyUeO+tJWE15tR+wt1uCSjwDv5U?=
- =?us-ascii?Q?NJl74EjRJw6tklUsHsVVtW1mD8zPKrd1kXLpClwkMIFGYJU0ryTfSFnhB7Pu?=
- =?us-ascii?Q?nhiSX2OV6094Z8GVPUeVyM5mxGnjjIlbcOtBEfShR3rCELqeMlpLdMOe/xsl?=
- =?us-ascii?Q?oN6IgVmTJvvXbCNwRQkmMu7n5/734VBBedTDJtkkF4VuRO8kgQ3k1TOrcfqv?=
- =?us-ascii?Q?+/mTSh/ndssSlcOCM4jqRbF1c5KPf3qYpdJwz1XVlgz1QSLfc1raSdqfVzX/?=
- =?us-ascii?Q?cRqiWDrQnME0kE7dmxGKO0Lo3WlkbIINQEl0BcRBNdQJj0CDb1QkqKZ81Lly?=
- =?us-ascii?Q?wWKXc37vchmrB3yG6cacR8eaYydoh1W6fFu/ow318TE9ZnMpli9q7KVONSPy?=
- =?us-ascii?Q?Rn6c7v+fb9ooidITHxhMIfjPDGWybmJqErj0/hWx?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f29d7091-f279-4c7d-f2c8-08dda7aaebc0
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jun 2025 23:11:09.9933
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: dt8OVgN4RZ2aNaxJALcMghPOg8ZfqaySvuI/gOUNMPl/idpcIDAi17xDgO64MdaU
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH1PR12MB9669
+References: <0-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com> <4-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
+In-Reply-To: <4-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
+From: Chen-Yu Tsai <wens@csie.org>
+Date: Tue, 10 Jun 2025 11:47:42 +0800
+X-Gmail-Original-Message-ID: <CAGb2v672aLfjX2_+=gnYEt09Z2m+sDoUi-weN2VsgtqnrK_fDw@mail.gmail.com>
+X-Gm-Features: AX0GCFvT3cfnNTYictCtJSVKUrXJH3fCgSrvu85ggYc6KyathRV-zklZHWwYSnM
+Message-ID: <CAGb2v672aLfjX2_+=gnYEt09Z2m+sDoUi-weN2VsgtqnrK_fDw@mail.gmail.com>
+Subject: Re: [PATCH v2 4/7] iommu: Remove iommu_ops pgsize_bitmap from simple drivers
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Albert Ou <aou@eecs.berkeley.edu>, 
+	asahi@lists.linux.dev, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	David Woodhouse <dwmw2@infradead.org>, Gerald Schaefer <gerald.schaefer@linux.ibm.com>, 
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev, Janne Grunau <j@jannau.net>, 
+	Jean-Philippe Brucker <jean-philippe@linaro.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+	Marek Szyprowski <m.szyprowski@samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Matthew Rosato <mjrosato@linux.ibm.com>, Neal Gompa <neal@gompa.dev>, 
+	Orson Zhai <orsonzhai@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
+	Paul Walmsley <paul.walmsley@sifive.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
+	Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, Sven Peter <sven@kernel.org>, 
+	Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>, 
+	virtualization@lists.linux.dev, Will Deacon <will@kernel.org>, 
+	Yong Wu <yong.wu@mediatek.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>, patches@lists.linux.dev, 
+	Niklas Schnelle <schnelle@linux.ibm.com>, Sven Peter <sven@svenpeter.dev>, 
+	Tomasz Jeznach <tjeznach@rivosinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250609_161117_041602_9935DA52 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20250609_205350_274084_012E3B3D 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -189,34 +110,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: wens@csie.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 09, 2025 at 03:15:47PM -0700, Nicolin Chen wrote:
-> On Mon, Jun 09, 2025 at 05:41:25PM -0300, Jason Gunthorpe wrote:
-> > The driver never reads this value, arm_smmu_domain_finalise() always sets
-> > domain.pgsize_bitmap to pgtbl_cfg, which comes from the per-smmu
-> > calculated value.
-> > 
-> > Remove the ops version entirely, the related dead code and make
-> > arm_smmu_ops const.
-> > 
-> > Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> > Acked-by: Will Deacon <will@kernel.org>
-> > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> 
-> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-> 
-> Is "qiommu" a typo in the subject?
-
-Yeah
-
-Thanks,
-Jason
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBKdW4gMTAsIDIwMjUgYXQgNDo0MeKAr0FNIEphc29uIEd1bnRob3JwZSA8amdnQG52
+aWRpYS5jb20+IHdyb3RlOgo+Cj4gVGhlc2UgZHJpdmVycyBqdXN0IGhhdmUgYSBjb25zdGFudCB2
+YWx1ZSBmb3IgdGhlaXIgcGFnZSBzaXplLCBtb3ZlIGl0Cj4gaW50byB0aGVpciBkb21haW5fYWxs
+b2NfcGFnaW5nIGZ1bmN0aW9uIGJlZm9yZSBzZXR0aW5nIHVwIHRoZSBnZW9tZXRyeS4KPgo+IFJl
+dmlld2VkLWJ5OiBLZXZpbiBUaWFuIDxrZXZpbi50aWFuQGludGVsLmNvbT4KPiBBY2tlZC1ieTog
+TmlrbGFzIFNjaG5lbGxlIDxzY2huZWxsZUBsaW51eC5pYm0uY29tPiAjIGZvciBzMzkwLWlvbW11
+LmMKPiBTaWduZWQtb2ZmLWJ5OiBKYXNvbiBHdW50aG9ycGUgPGpnZ0BudmlkaWEuY29tPgo+IC0t
+LQo+ICBkcml2ZXJzL2lvbW11L2V4eW5vcy1pb21tdS5jICAgfCAzICsrLQo+ICBkcml2ZXJzL2lv
+bW11L2lwbW11LXZtc2EuYyAgICAgfCA0ICsrLS0KPiAgZHJpdmVycy9pb21tdS9tdGtfaW9tbXVf
+djEuYyAgIHwgMyArKy0KPiAgZHJpdmVycy9pb21tdS9vbWFwLWlvbW11LmMgICAgIHwgMyArKy0K
+PiAgZHJpdmVycy9pb21tdS9yb2NrY2hpcC1pb21tdS5jIHwgMyArKy0KPiAgZHJpdmVycy9pb21t
+dS9zMzkwLWlvbW11LmMgICAgIHwgMiArLQo+ICBkcml2ZXJzL2lvbW11L3NwcmQtaW9tbXUuYyAg
+ICAgfCAzICsrLQo+ICBkcml2ZXJzL2lvbW11L3N1bjUwaS1pb21tdS5jICAgfCAzICsrLQoKQWNr
+ZWQtYnk6IENoZW4tWXUgVHNhaSA8d2Vuc0Bjc2llLm9yZz4gIyBzdW41MGktaW9tbXUuYwoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
+aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
