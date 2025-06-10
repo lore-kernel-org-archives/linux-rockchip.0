@@ -4,46 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18D7FC61DB2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 22:48:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBC3DC71133
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 22:48:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=ypvfVYGuT/yqSkus3oUNeHh041zPMkzugMheLIfoz5U=; b=OSh8UrYksUcxx8
-	qM1euFUI2necPuTcFnUlxeKcnAW6rjNsUM2zGjzAkVFyuOrB0gjXMm5EtRQFkWn8iUm0egoY4GZuJ
-	6xDHDM055JviX4CG7SeaLfis89uoZ2F2+igujVtszeZAJE/1uQegtU6+AlHXTDM/Mgv76qNxhH3VT
-	jdx8y5KmobA53PD1qTI91PSPoVhj36rOOBtr8xX6Qs171kGX+rGGOaLdjS3QgNIP6QXPih437eUM4
-	5Y9Wqo6qXtwAV1D8DJaEz3jrLCSycykrJQ7tT2UVrv977YksEsYcmQybpf5z90C8Q9QX+iE+nGAwA
-	RNGdiaQofx5k0mP5lb6w==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WS9Op4zg+b0XKygQ4atxqP/EIeHRpR63Q4nCfESw6Qw=; b=TVvaHioGTQ3ZBS
+	XZ22YkhFDQp6OGGpy4CF0YChiFTV7PPlTeGTiE1+mkneRVt6uRJuBbX69hm3AJ1mTdrFPJhEFUt66
+	rY5/keRgQ2cnS5vXhSWaLHHwOe1ybi8kdBkoPbmsKf9BSeI9Grws3V/VkmA69u5aE1TQRBpW74fMm
+	siFKm6/ybQQ4nU/ikMlQaeMJ3ngg9wHhmUObeCbwJSyqIZ6xy8Y6tvxUMoaQYUVyA78M/6j199L60
+	FK9GpQlAh0mwTkXi+IgbKWVNqZmFx/RGNN6fbRSoW9KLXdam23gkvpmLiQID0z6+dy/BjQ6FWWAO0
+	Ju1h48zOTZGoTpnIpvqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP7le-00000008FTY-3bhi;
-	Tue, 10 Jun 2025 22:48:30 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uP7lf-00000008FVE-3dTf;
+	Tue, 10 Jun 2025 22:48:31 +0000
+Received: from mail-ua1-x934.google.com ([2607:f8b0:4864:20::934])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP3xt-00000007prG-06Lh;
-	Tue, 10 Jun 2025 18:44:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A7E6DA5157A;
-	Tue, 10 Jun 2025 18:44:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F070C4CEED;
-	Tue, 10 Jun 2025 18:44:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749581091;
-	bh=joj/ZjLFg+NBtbJ9iqvbjqCoxWFWArbEFXoFWaKYYBc=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=IR8Z198Ks7LgP8Zr1K0TzyqrbxOmz1AnrckCdFX1UFZxj6XqJYw+H3SkpnglH7fw1
-	 7di9Jnz3jA85BbcW4Y+Hh7gLq/hmo7tI8OgRmTAGh2+kSFIj/0GJPAqxdomg5vc9Jg
-	 XmT3ONIwah7+lDvloqeVaqh4HTczwqvFFEpbUkd8fdzBAdGWj1x/sGcmQglv82A2LW
-	 5CU8FiMK//EImFO6sNfsiapjvKjfme0I7u2cxN0TuxFP3R7TegAJK96DOR0hNV0gy8
-	 ATJdQ2Pc6vJ+faC71tgFx+zgvksU3SnUjT8FgXHiBr6PWEkCx8oFREuwT19ThQrtrk
-	 v7zvhIC4+GGHw==
-Date: Tue, 10 Jun 2025 13:44:49 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Geraldo Nascimento <geraldogabriel@gmail.com>
+	id 1uP414-00000007qGj-3OnZ;
+	Tue, 10 Jun 2025 18:48:11 +0000
+Received: by mail-ua1-x934.google.com with SMTP id a1e0cc1a2514c-86dc3482b3dso75181241.0;
+        Tue, 10 Jun 2025 11:48:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749581289; x=1750186089; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=JX4mrNACU5QqiYMm/oWkTJ9YOn7pmJRNtKmkF02gE2o=;
+        b=QRru0EH4aijtTWgUyneQWzyLRkxESjFG1OpDRXdqwZ2SfUMp4pUGfd+MFeOJYLoWfd
+         ch5jthyWWM3Ps55OrlJ7zSUtOAkpDlvhggTZlsDTVmT0j3tWoTOBKzxrGVXq6kyY20yt
+         y8rj6ZUd9x/1zfWudHr5GM7iAU6BkUmkF5o0vp+pWEZZ4POAg+62l1OK6PDlibwv2eDZ
+         8GXigqx5v94wpu+TELGojUhgPh+81Astkb+SEGo3EeEU26VmfQumWAbCzZTX2zYL55NW
+         WBGZxiMj6a2rGvb/0JsdQ6YCup6SZotRAflMEqwImEdWE2mIJEpJgs/EP6yvDamn0xXs
+         84Gw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749581289; x=1750186089;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=JX4mrNACU5QqiYMm/oWkTJ9YOn7pmJRNtKmkF02gE2o=;
+        b=cHY48NZrXPrf/BW351YUzk64lGQSBsIPbzxQgvd979I+dI4XB5K1o/UaZdlaAFXXqz
+         q7Z3z+goMfCCCe/JLvvtkiHWftu8fgHJrv12cB4/uLDJ/rHOfnDS/IPvM/WN+3gWEpBy
+         4atCoLvbuHMJD2MPjQmrjfpss1yf/Qh2FC1NbOTpFGETfFCUxyDqWFWQ/PuLOPasNUsh
+         Vjlfxo6bHPaNs8vPrFE+omuf0w1807MxaMzvDwhtuuWLnmd4FYm4wetqfVtne4hRH/DD
+         3WTgQefeh5EJ/athhYa6cwMpDHro1UnlpTu6LU0a5vndRGWh8vG4VvdKgVPaRPQAuRSv
+         reLg==
+X-Forwarded-Encrypted: i=1; AJvYcCWXV3/a1PswkLlX/KuDJzJ+OwsGlAx+bjbCw/05lK9GH3VC31WLpXIbAcvAtD2H0yk1VnVCPdsY7apHahhThh/O@lists.infradead.org
+X-Gm-Message-State: AOJu0YyHXB0vGzJFx5Svzc5kpcmwFgHKdoCvjZeeVvXtgGhnnDWsdJS1
+	UkzWfKgJLE/Kr40U+B8rF8qw8XaLpQ0rQo885SJzgKTXkL2WN2IMFUzT
+X-Gm-Gg: ASbGncvSQZ3E4J/faHmohfC9DlRTHZSSn2OR5ohAj1DjoRQ9vM58xv/xUwLqvy+P5OU
+	zyq5pQwCuPtEk2B6QIc+NrUVpUBSq/g5ZDpGHTteDsZUUFHI9qjiKHaqvECRIlIhrhAoQgEjKg1
+	ybosBhaSCnDMXFUgTNIyg7VnXDCrxwBJoz0HLEBm1faHI8m4dkr8nGDm5QEoWywtbcP4ROCgjUq
+	khCUSZku+5LSEPjb740xU5gpchtMyDR07NS2YXYXOoduU32igg6XNVkw1+fau9Be3pLam+WYlA9
+	A+QhubKnH1F0gvnaeBObT2SU5MoEO8JjR9UIIY0vUd/m7muTUg==
+X-Google-Smtp-Source: AGHT+IGmT7wJcDq68+XcDGJVWcLx9IDfGN4qKAUL1yE3GxYgT8Php+JzMKRe6suO938HurboJxs2ZQ==
+X-Received: by 2002:a05:6122:4598:b0:530:2c65:5bb8 with SMTP id 71dfb90a1353d-53121d524f0mr973900e0c.1.1749581289454;
+        Tue, 10 Jun 2025 11:48:09 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:5a56::dead:c001])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-531224b91aesm162867e0c.8.2025.06.10.11.48.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Jun 2025 11:48:09 -0700 (PDT)
+Date: Tue, 10 Jun 2025 15:48:03 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
 Cc: linux-rockchip@lists.infradead.org,
 	Hugh Cole-Baker <sigmaris@gmail.com>,
 	Shawn Lin <shawn.lin@rock-chips.com>,
@@ -55,13 +80,15 @@ Cc: linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [RFC PATCH v2 1/2] PCI: rockchip-host: Retry link training on
  failure without PERST#
-Message-ID: <20250610184449.GA819185@bhelgaas>
+Message-ID: <aEh949r9mwY-R0XD@geday>
+References: <810f533e9e8f6844df2f9f2eda28fdbeb11db05e.1749572238.git.geraldogabriel@gmail.com>
+ <20250610184449.GA819185@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <810f533e9e8f6844df2f9f2eda28fdbeb11db05e.1749572238.git.geraldogabriel@gmail.com>
+In-Reply-To: <20250610184449.GA819185@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_114453_126680_2A487264 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20250610_114810_845353_878FC872 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,65 +105,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 10, 2025 at 01:37:12PM -0300, Geraldo Nascimento wrote:
-> After almost 30 days of battling with RK3399 buggy PCIe on my Rock Pi
-> N10 through trial-and-error debugging, I finally got positive results
-> with enumeration on the PCI bus for both a Realtek 8111E NIC and a
-> Samsung PM981a SSD.
+On Tue, Jun 10, 2025 at 01:44:49PM -0500, Bjorn Helgaas wrote:
+> This *looks* like it could be strictly a move of
+> rockchip_pcie_set_vpcie(), without changing it at all.
 
-> +static int rockchip_pcie_set_vpcie(struct rockchip_pcie *rockchip)
-> +{
-> +	struct device *dev = rockchip->dev;
-> +	int err;
-> +
-> +	if (!IS_ERR(rockchip->vpcie12v)) {
-> +		err = regulator_enable(rockchip->vpcie12v);
-> +		if (err) {
-> +			dev_err(dev, "fail to enable vpcie12v regulator\n");
-> +			goto err_out;
-> +		}
-> +	}
-> +
-> +	if (!IS_ERR(rockchip->vpcie3v3)) {
-> +		err = regulator_enable(rockchip->vpcie3v3);
-> +		if (err) {
-> +			dev_err(dev, "fail to enable vpcie3v3 regulator\n");
-> +			goto err_disable_12v;
-> +		}
-> +	}
-> +
-> +	err = regulator_enable(rockchip->vpcie1v8);
-> +	if (err) {
-> +		dev_err(dev, "fail to enable vpcie1v8 regulator\n");
-> +		goto err_disable_3v3;
-> +	}
-> +
-> +	err = regulator_enable(rockchip->vpcie0v9);
-> +	if (err) {
-> +		dev_err(dev, "fail to enable vpcie0v9 regulator\n");
-> +		goto err_disable_1v8;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_disable_1v8:
-> +	regulator_disable(rockchip->vpcie1v8);
-> +err_disable_3v3:
-> +	if (!IS_ERR(rockchip->vpcie3v3))
-> +		regulator_disable(rockchip->vpcie3v3);
-> +err_disable_12v:
-> +	if (!IS_ERR(rockchip->vpcie12v))
-> +		regulator_disable(rockchip->vpcie12v);
-> +err_out:
-> +	return err;
-> +}
+Hi Bjorn,
 
-This *looks* like it could be strictly a move of
-rockchip_pcie_set_vpcie(), without changing it at all.
+yes, a move of rockchip_pcie_set_vpcie() is needed for re-enabling
+power rails, considering patch 2/2 was also applied and the regulator
+is not always-on anymore.
 
-If that's the case, please make the move a separate patch so it's more
-obvious what the interesting changes that actually make a difference
-are.
+> If that's the case, please make the move a separate patch so it's more
+> obvious what the interesting changes that actually make a difference
+> are.
+
+Good idea, I'll send v3.
+
+Thank you!
+Geraldo Nascimento
 
 _______________________________________________
 Linux-rockchip mailing list
