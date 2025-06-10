@@ -4,90 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8FA2C61DB2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 22:50:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBB43C61DB2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 22:50:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=llTUmWHvcwxxjlv+1lYuUp8E9oPwfwCjk3Guc90sdhw=; b=3Tzrc5IivnZ+iT
-	YSHPWhQMOL/g4OP7BUFMP8K/+wlnzZbw+Rzl1M7NrSUp3LzdqTQwF3jRi/PSvqy47XDxUjocRV73d
-	GiLeM26zpY1tXPhQBrIiie18ZNqcfxsf7FNBk8dKJUpLeGwhO6osbXviXEKyuc4kOuFy6ql0MgdUA
-	fH4bokfBuEAKqdZB1lAUK8Givi5BwHycmwYiPYVYXcFK6wLsCEdK2VzH2RAoMYGfRYkmubzam68ss
-	OTTdWf8AN5/+p7C0MpAhwCdNhfVNMo9PbYTGpRE0j6qyOQY1hqQRa42tHX5lvP04BgKWO4LLMwnT+
-	7lf1Hw7QCTgmQtyTYy1w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=netzSzBoFEFoRNhtwj6f9soY2MMpWvw23zfw4YE5HFc=; b=gNR5B126ksP2hf
+	qWUnk9UqJ0ytTwjj7tkjbsIMHTfh7MyI4XGssXYYrEqgCCGTCZyf/cTnP009ILjx+IbQ/G7TavXDa
+	SLCNt17osNqECJ5zcfr8qKocEtv5V1DPVcHTGdjcAqBcE/mjlRNyPadt+Zaee8U6cFF0MTteX9WQS
+	2BC/PAxLNnob4VA10u2qG8sobrY9Hs2ZpOKkJpsr6zVRqOH7KcYhM4FxJy0KdHLGTMlgWwuLwEYhF
+	6ZEcLYSN89vR1b7Qd7fwetj8OaoWdm8gY8UVPam1VYZgOVpMJ6mY5dChd2t9iTnmfW6BvtvxPQ6C5
+	5bgLmpRanEVFcK/ZHV8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP7no-00000008JBV-03W4;
-	Tue, 10 Jun 2025 22:50:44 +0000
-Received: from mail-vk1-xa34.google.com ([2607:f8b0:4864:20::a34])
+	id 1uP7nv-00000008JRc-28xs;
+	Tue, 10 Jun 2025 22:50:51 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP6OC-000000086Cc-0X2p;
-	Tue, 10 Jun 2025 21:20:13 +0000
-Received: by mail-vk1-xa34.google.com with SMTP id 71dfb90a1353d-5311d362528so245511e0c.0;
-        Tue, 10 Jun 2025 14:20:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1749590411; x=1750195211; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=rMyHEENm3aAi7+mpl/5ALuPQmurPsDkuZW0WhOp/NzQ=;
-        b=idLkicYKhJnrTObveCnwmaxR7YrKKul9jKUkZnsflahrPy69pOEYsGaZJpzco/qthT
-         mk+UbpGLGhXn4BQLN/2h3hx29rdIOvCjRGVFooEAqLEXAhTCEGnQPuJjXeq1k3nj7SW5
-         xawT1W+T0hPu6w8Zwask33fYM9WrX4jI+Yy8uxlXNJ/qjydaci1YEzJeD9bFZ8eRig9u
-         3Aglxf4koW/pAWAkZPHTD42nBWtGTFv4plLOWuikPgC4vQSESfh9J34cViU32IUFTMA7
-         b2LCJ30GZYQRytnaoDeQzXdwpjGhvZwLd5QySp7EbDZUlFWnGrwbIoyweCC9yqJX3ovG
-         wUBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749590411; x=1750195211;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rMyHEENm3aAi7+mpl/5ALuPQmurPsDkuZW0WhOp/NzQ=;
-        b=qanCQLkm1k2E5+z8L2Btip3scU64d7FgS37p0RbcM64dzLLkM4Iv4pGDUnCD2z5y6U
-         jQwptqHJIdZDLEfKoY1Ag6m68YiC+3lhvPadk47eapK7IDi8w1GYfcx+QOU/62nE6q3o
-         AjtMCUnCCu8odlxPhGUdHE5EiIn7GMXNhG1NHnvFvnXq9ggz+Z396s2Igog8PKsRFw2i
-         Ju+dYxRBPzzP/z5XkNC9GFbvxpT19NVSSWCZ4Tj8iYkipD6NbdocHA6AVFlbaxtg41Kp
-         jDtwlYnz5W/T15TciwjhYrtogZg7nc/cnvrMuzOoxr/FSt/6YR6iHfi8rgoTDqRZF5oP
-         bqMw==
-X-Forwarded-Encrypted: i=1; AJvYcCUcx/S2+VQ4PThDDOTc8xN0aVXXMCsxoyLhclSZP4yYjc/H6YVAcMPE+3D1fEJh74WVGWYtUkEXQz11@lists.infradead.org, AJvYcCX7HjKK3xT2PL44nqsi73QbMukBQ5fST9r9S9P4GqRD0gZ9dsJJ92g7Xl2zfOWB6QX3Um6SuJMZQjwB3EDTvH2C@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx6BnRqx6R3/k/29lyoYdH9v5Id5mAk2GTWG6IueoxL6oPulmIk
-	YlA/g/Bm9sR9v74iykzCvWK/ZnOITdlV4fuHwKy70I02P2/ctfySJDvO4BHbUq0CGY4dwNFh
-X-Gm-Gg: ASbGncuUWkSX0I+SDqidGzXZ5+Uljt754SVFDRgbu+HINsgEbYALx+jSqH7dCr7VsPs
-	Z3vCmWULRmGb+9O/H1boMhUL/EkPMySzYZZHXRsXG2Q50ESiMNu/UPaDu3jc11kletncqJ9DyTL
-	y4GDneJMIaIDrn1CdydMnT+TssKom38S0dU7rbtbtYCRQt+I5fA0bcN/LTmaj6pYPZeX2jDD6u1
-	VO4HOM57OWwY4nCCvLf9sHSLTWdFM77jQRl+PeabAKpHPRV7ts8A7L6l8EOUn0cni8rasXgr0eu
-	1FHGiJwz2JTu5XkqgTQbaa0UXS5YPuLoQRK+2ebyjRtkojeTHA==
-X-Google-Smtp-Source: AGHT+IGMLQMogM9Y5TYRZq5x/+RY965YqubXBP0wkzvzdldN6Zcyb449bg6gGKSbqhDtgv+1p5DKOg==
-X-Received: by 2002:a05:6122:511a:10b0:530:66e6:e21a with SMTP id 71dfb90a1353d-53122c960f2mr547052e0c.3.1749590410872;
-        Tue, 10 Jun 2025 14:20:10 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:5ce9::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-53113a7e71dsm2065694e0c.2.2025.06.10.14.20.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Jun 2025 14:20:10 -0700 (PDT)
-Date: Tue, 10 Jun 2025 18:20:04 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [RFC PATCH v2 2/4] PCI: rockchip-host: Set Target Link Speed before
- retraining
-Message-ID: <87ca44fc3c34c5ffd3035d0d29b4ebabefed1c63.1749588810.git.geraldogabriel@gmail.com>
-References: <cover.1749588810.git.geraldogabriel@gmail.com>
+	id 1uP6WG-00000008726-1zjc;
+	Tue, 10 Jun 2025 21:28:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References;
+	bh=Awpi5GpyOLDB1Nt8+DeBTohsa+vKyjBC3GHy2DGNNYE=; b=tkGM+2MYM6zqsua3VbEBs0B9wM
+	5yEPvrg8fK5rC8+Iu7nwoxeeeZXMCK6l1FbkO37Xkgb1ZUeBNjb4rnkFzmCz021lQpjvix1P/9pe+
+	M7p4rE4S1XcPRjEXvFyOXNRULT44QYOKgNVJLjHWDJ6jNOJV4Ky99iKlbpf5QpZve0YpjbCVUOrAl
+	d6Pm3FpKFvDTZtgEENTvVIMjNxi5EmnaPxaQGKDP6tcqmjvlInTAZYDy64TCYrEqS5B0sLxP/BLQG
+	m8yjYN6YgibOTHMyxrlbaobIXinZSkMeyV78F5h6yvFTOrT6G1tMb91NkkEkGQ1mnEAOkjT309lBL
+	LhanHnDw==;
+Received: from i53875b1c.versanet.de ([83.135.91.28] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uP6Vs-0007Jb-My; Tue, 10 Jun 2025 23:28:08 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com
+Cc: maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] drm/rockchip: vop2: fail cleanly if missing a primary plane for a video-port
+Date: Tue, 10 Jun 2025 23:27:48 +0200
+Message-ID: <20250610212748.1062375-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1749588810.git.geraldogabriel@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_142012_168513_53DE3541 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20250610_142832_540540_065F9EFE 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,32 +77,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Current code may fail Gen2 retraining if Target Link Speed
-is set to 2.5 GT/s in Link Control and Status Register 2.
-Set it to 5.0 GT/s accordingly.
+Each window of a vop2 is usable by a specific set of video ports, so while
+binding the vop2, we look through the list of available windows trying to
+find one designated as primary-plane and usable by that specific port.
 
-Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
+The code later wants to use drm_crtc_init_with_planes with that found
+primary plane, but nothing has checked so far if a primary plane was
+actually found.
+
+For whatever reason, the rk3576 vp2 does not have a usable primary window
+(if vp0 is also in use) which brought the issue to light and ended in a
+null-pointer dereference further down.
+
+As we expect a primary-plane to exist for a video-port, add a check at
+the end of the window-iteration and fail probing if none was found.
+
+Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/pci/controller/pcie-rockchip-host.c | 4 ++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index b9e7a8710cf0..fd6f1a1d48bf 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -341,6 +341,10 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
- 		 * Enable retrain for gen2. This should be configured only after
- 		 * gen1 finished.
- 		 */
-+		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS_2);
-+		status &= ~PCI_EXP_LNKCTL2_TLS_2_5GT;
-+		status |= PCI_EXP_LNKCTL2_TLS_5_0GT;
-+		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS_2);
- 		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
- 		status |= PCI_EXP_LNKCTL_RL;
- 		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 7ddf311b38c6..a8dc2e55812a 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -2425,6 +2425,10 @@ static int vop2_create_crtcs(struct vop2 *vop2)
+ 				break;
+ 			}
+ 		}
++
++		if (!vp->primary_plane)
++			return dev_err_probe(drm->dev, -ENOENT,
++					     "no primary plane for vp %d\n", i);
+ 	}
+ 
+ 	/* Register all unused window as overlay plane */
 -- 
-2.49.0
+2.47.2
 
 
 _______________________________________________
