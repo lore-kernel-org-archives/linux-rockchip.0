@@ -4,63 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBB43C61DB2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 22:50:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0564C7113C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 00:54:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=netzSzBoFEFoRNhtwj6f9soY2MMpWvw23zfw4YE5HFc=; b=gNR5B126ksP2hf
-	qWUnk9UqJ0ytTwjj7tkjbsIMHTfh7MyI4XGssXYYrEqgCCGTCZyf/cTnP009ILjx+IbQ/G7TavXDa
-	SLCNt17osNqECJ5zcfr8qKocEtv5V1DPVcHTGdjcAqBcE/mjlRNyPadt+Zaee8U6cFF0MTteX9WQS
-	2BC/PAxLNnob4VA10u2qG8sobrY9Hs2ZpOKkJpsr6zVRqOH7KcYhM4FxJy0KdHLGTMlgWwuLwEYhF
-	6ZEcLYSN89vR1b7Qd7fwetj8OaoWdm8gY8UVPam1VYZgOVpMJ6mY5dChd2t9iTnmfW6BvtvxPQ6C5
-	5bgLmpRanEVFcK/ZHV8w==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9Bi5vDOMdNSfVUe7GKX8EfYTZKxZHC8C6B3kn1ZHGE0=; b=v4vFuE8Y/TiD7x
+	2VuMDD/0JfGgtrCfen3S6KZgYRZ/McVydwkyM2jRhNhzXCxJgx83jD4pM7K8HUchgNFR2wn0px+a4
+	PJrLLu4hrDNlNmDQHEyyLSyKNqf2OULJN0Ezcmr/haQAyV6AT4dxSfWIDcdpyu9+uCCg/E8UPKn7B
+	OaM1Aj0kLkn3zsjbwz/rAPpY/0/Pr+ff8qBIUTKmv1+hKoLMX9mZmbhEmh1Rm7aBfwl5EK2rQuhAS
+	OCQjW9+IbuPIXIinkQvyYspU6k+UTwcTSmngzDl4neMWgoUhjOl+qQlAOWFsMhc2c5EqdL3VTlDcb
+	FMU480GIczpQETEy9WCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP7nv-00000008JRc-28xs;
-	Tue, 10 Jun 2025 22:50:51 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uP9j7-00000008VaN-3qvg;
+	Wed, 11 Jun 2025 00:54:01 +0000
+Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP6WG-00000008726-1zjc;
-	Tue, 10 Jun 2025 21:28:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References;
-	bh=Awpi5GpyOLDB1Nt8+DeBTohsa+vKyjBC3GHy2DGNNYE=; b=tkGM+2MYM6zqsua3VbEBs0B9wM
-	5yEPvrg8fK5rC8+Iu7nwoxeeeZXMCK6l1FbkO37Xkgb1ZUeBNjb4rnkFzmCz021lQpjvix1P/9pe+
-	M7p4rE4S1XcPRjEXvFyOXNRULT44QYOKgNVJLjHWDJ6jNOJV4Ky99iKlbpf5QpZve0YpjbCVUOrAl
-	d6Pm3FpKFvDTZtgEENTvVIMjNxi5EmnaPxaQGKDP6tcqmjvlInTAZYDy64TCYrEqS5B0sLxP/BLQG
-	m8yjYN6YgibOTHMyxrlbaobIXinZSkMeyV78F5h6yvFTOrT6G1tMb91NkkEkGQ1mnEAOkjT309lBL
-	LhanHnDw==;
-Received: from i53875b1c.versanet.de ([83.135.91.28] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uP6Vs-0007Jb-My; Tue, 10 Jun 2025 23:28:08 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: hjc@rock-chips.com,
-	heiko@sntech.de,
-	andy.yan@rock-chips.com
-Cc: maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] drm/rockchip: vop2: fail cleanly if missing a primary plane for a video-port
-Date: Tue, 10 Jun 2025 23:27:48 +0200
-Message-ID: <20250610212748.1062375-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
+	id 1uP6Th-000000086qQ-31Ox;
+	Tue, 10 Jun 2025 21:25:54 +0000
+Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-87eeca0d038so407315241.0;
+        Tue, 10 Jun 2025 14:25:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749590752; x=1750195552; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=4uBBexglmDg860eeLxvF6Ft+pxKPH1DbiU+A4sUq4Hk=;
+        b=WwSvJwGjEuGPHTcSxtIRlcQNjVTl2zoHIhMNBnz6XkSmxp3Lsm57HLE1FvM1KSexcY
+         cc2a33lIRxJEMXPLKNzTNAQlQG4Kxd9uEy/D4ts+vq2rlv+qtmP9O8VnvFYzHwnQtb7g
+         mW9Ax+z5mYuVlj2lV0yuLtJUvRsbnhLe8HNVE1wjFsyuI2F/zmt3cXnA51slpeZAO7+j
+         ai8Qy/OKfkOrXKNW7B7jFnpeC3ZzliBWKtAdRyHXvWIwUfMW9gTl9MXIHkGXvHzkXDUf
+         PduHNckvzpz4PrD/Dedc2wTOeE52YkhiCv7Cg8JZUYp6DOYjBNIfYrbIt87fluJm1O8Y
+         g/kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749590752; x=1750195552;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4uBBexglmDg860eeLxvF6Ft+pxKPH1DbiU+A4sUq4Hk=;
+        b=vi23a3JY1JydFEDEMReghW7PCJI2jJBqrvSpJEAZEj3NtcjdTKCfI4VMJIjK1OAeHI
+         ZK2BLeJSzknJVQTBK1K71cIzgUONcR+Br3LDU4JwEkF1cK4woh1cqggkeVH45Px9ejS5
+         b4TdbzAYAD7XuEM89GKXn4Q0DMxFE7vQeV+hmIAQGnpKXXeQhTXqwS60R8C0HHWU7yob
+         smx4xhf1GHtTH7H6apdQh9UuO0LZ/bNYG4t2K+e+zfVbg1hbPEseM5mrhhq5bcFq5PGI
+         XEDCmYjsD9y9gKkHi6XTLGS7wv98hCRB2W8Dq49QNgWEfB5bgZDYH1ncickRikOfRsCt
+         x4NA==
+X-Forwarded-Encrypted: i=1; AJvYcCU8Co0pL0yDPs4bcM5YZZ+E5LbtDmbIHG7bJrhq9p6QSPHxnCEoPIEH9CA1BdX2mQFSJQbXa53hpDInEy2Dq+Wx@lists.infradead.org, AJvYcCXcLsxN3dPxP2Pu/YFUab+If3BEPmpODxXg7b7nWVBi2LPCW4id3L8PFQSH6Ah4J+dxjCiLiy8uPhrT@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyg4rzRnhOWb/HvXZFbnJM29QRuCmDi2k+FyT2AeVVSD4UDnuDi
+	rKSLojcOViEzmHDU1KRVqD9R9PeGNNJSfpQFPbok7lpgy0V7yHKq49zZnBo+UImg+XWdZBfD
+X-Gm-Gg: ASbGncs0mAY6Ce72Y4Awx+9lMnBJ6PDRt34sz1ua+LJRC70QTgdocwHNHyAmoHZO7G1
+	FlnbsC07kOShmFpGQR0zBlsYgydhJqq1xqMa9xjPmjfFnwnwlHumte6g+38JRX9ViGYyiX5hQYn
+	jhYYcSZbVEJzTqOiOsj3gZsXS8CKlpFc+loJaXEj4kQ5Qxk8jVA5a1Y2s6sUVc63jjn6DTIFjgK
+	FNmCAdp5wKjtSiupheBIaGdYP9onvzEWVd6Ssg5HPQE7otSqMtZ3ARmruHJnn7r2iCW/YDoeSYW
+	k7fi4mjiQcZhUzTZWgNux15ONYjD8cj8NcIjugAW7glTT7dnHA==
+X-Google-Smtp-Source: AGHT+IEYCVf9ZTSqj5YgISDZOrt+1R+QNbwbWikBaMK6UitqswT/0tSQ42AOnMjbILWu2QKm252CUQ==
+X-Received: by 2002:a05:6102:54a9:b0:4e6:dbbc:16d0 with SMTP id ada2fe7eead31-4e7bbb8d8f0mr604930137.14.1749590752616;
+        Tue, 10 Jun 2025 14:25:52 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:5ce9::dead:c001])
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4e7bb030493sm356549137.19.2025.06.10.14.25.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Jun 2025 14:25:51 -0700 (PDT)
+Date: Tue, 10 Jun 2025 18:25:45 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [RFC PATCH v2 4/4] phy: rockchip-pcie: adjust read mask and write
+ strobe disable
+Message-ID: <f0451239a23e9c0c97692d2cae0d7d3068d6dc85.1749588810.git.geraldogabriel@gmail.com>
+References: <cover.1749588810.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <cover.1749588810.git.geraldogabriel@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_142832_540540_065F9EFE 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20250610_142553_759246_98FFE790 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,44 +104,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Each window of a vop2 is usable by a specific set of video ports, so while
-binding the vop2, we look through the list of available windows trying to
-find one designated as primary-plane and usable by that specific port.
+Section 17.6.10 of the RK3399 TRM "PCIe PIPE PHY registers Description"
+defines asynchronous strobe TEST_WRITE which should be enabled then
+disabled and seems to have been copy-pasted as of current. Adjust it.
+While at it, adjust read mask which should be the same as write mask.
 
-The code later wants to use drm_crtc_init_with_planes with that found
-primary plane, but nothing has checked so far if a primary plane was
-actually found.
-
-For whatever reason, the rk3576 vp2 does not have a usable primary window
-(if vp0 is also in use) which brought the issue to light and ended in a
-null-pointer dereference further down.
-
-As we expect a primary-plane to exist for a video-port, add a check at
-the end of the window-iteration and fail probing if none was found.
-
-Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-pcie.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 7ddf311b38c6..a8dc2e55812a 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -2425,6 +2425,10 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 				break;
- 			}
- 		}
-+
-+		if (!vp->primary_plane)
-+			return dev_err_probe(drm->dev, -ENOENT,
-+					     "no primary plane for vp %d\n", i);
- 	}
- 
- 	/* Register all unused window as overlay plane */
+diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
+index 48bcc7d2b33b..35d2523ee776 100644
+--- a/drivers/phy/rockchip/phy-rockchip-pcie.c
++++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
+@@ -30,9 +30,9 @@
+ #define PHY_CFG_ADDR_SHIFT    1
+ #define PHY_CFG_DATA_MASK     0xf
+ #define PHY_CFG_ADDR_MASK     0x3f
+-#define PHY_CFG_RD_MASK       0x3ff
++#define PHY_CFG_RD_MASK       0x3f
+ #define PHY_CFG_WR_ENABLE     1
+-#define PHY_CFG_WR_DISABLE    1
++#define PHY_CFG_WR_DISABLE    0
+ #define PHY_CFG_WR_SHIFT      0
+ #define PHY_CFG_WR_MASK       1
+ #define PHY_CFG_PLL_LOCK      0x10
 -- 
-2.47.2
+2.49.0
 
 
 _______________________________________________
