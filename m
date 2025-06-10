@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B532C5B552
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 13:27:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947BBC5B552
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 13:34:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LGQzn3+Q9YO+wU+KbMFpYSTE+JxVspJa7UJIQqIk4Ko=; b=16Wg91PImROtAz
-	rHabS6RAkyyYxZjubUpyh8pfyO8aJaAvIACtWaoRg2ENGG18dPybN6t9MMEBgJbO2XsLOprW/Sl5y
-	47H6TrGBNacMgluR/ug3lcDhjjJHONR4Up0gBULVLO5xVD6Nuyr9h18g1O2PlPx2xDX1tUqOopvln
-	kEOtf3dDlhf6gQUoFHCM6qInz6XJIdPJaD4+E1yKHDiu/oSEABRpYhWDwf9PwzvRcPweknUxfPoKc
-	O2lDY6JAJUwQWe21NaW+6b9kFz5g4qFteiMeGcr/TLCggswSLUtRoUSyxZi/lo+Fy6u9cd//TloDt
-	rvtOnq+RRuO+rKlfI3CA==;
+	List-Owner; bh=DCL7Z4va2IUsInKgx13QnzhtaiHl2uTSqQ1SmrwI0qU=; b=wfn2iBiAJ8mE4o
+	r7sF7lPkO0lSjy069xrZg3w5ifj6h/bHf353neClgYBh/CchGF4w2CNcsJ78n8MS5CTJrlY2ZbiSq
+	Oi0nVNG0VwohyK8slZ5ddmZHBOryLej0xrzzcfrFj64IcFzqgkYAJsZvKdZlKa6rfUN71Fz5u8rD7
+	49xoWr+KnkhMAQpyL5PQTcVyw+2rCuGsYvWTrIWaw1b6F3Se6MppZ6M3XpPuzc/SI29zQ47le66sQ
+	OqJKUvXdHZalNzHzV+6lGgmv93JCIJDIfQcNV6MON42cyKBI+IihIPG9qDWN5V2GPfvPXide0aENi
+	fUPESEB71FyRNOAywMuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOz0m-00000006xsW-0nYV;
-	Tue, 10 Jun 2025 13:27:32 +0000
+	id 1uOz7C-00000006zEm-0v0R;
+	Tue, 10 Jun 2025 13:34:10 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOyAG-00000006mIq-0RiQ;
-	Tue, 10 Jun 2025 12:33:16 +0000
+	id 1uOyAT-00000006mKw-1a79;
+	Tue, 10 Jun 2025 12:33:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=r/yCBdXULN/7dimob9RM70hBvraS8nfz9TzFTVD+37g=; b=pX59d+mO/dHdvd3Wg/G9yw9uoY
-	hvXfIyn2zWt+z75nxnZMcTiclwqYF9sfeaBjlPir5BJ6hOrqKJvVyAlyA3XdY9AUdVzizZyxSM2Ol
-	tmK93c/87FEIEG+XSg7TdvsQVQcE7OWUSEULPFCeNNKbfIYhg35sC3s1pgUPLIhHVXVmwuEGV3Yr7
-	LS2TS+GBMmG8WhFx/g03Q5/wX8/cbtye3oc+QCeBk93nBg8gLhv8LhOwMlxz7ktmzHDMHS6Y4PHnE
-	1ezmYle/8IAlyUph6hEiovADGGqjVjay13zd36mocdFzuBmRbrqs5SG9hCZd9G5FzoGYx6AzI49SL
-	mZ60zGeA==;
+	bh=P1s5SW5XXy2Nmw/a2myc1LsBMYI2XBbGAAdPmoWnhN4=; b=eevEDcWbgIjw2dSL+/0c0A0mRT
+	5FlYtwpp6C8S/z5jy05GiYNZM8HkwbT9Kk4xs5ORPp3u9DKdVYJWXwn6oBx7xNLdbjehbi38X6iau
+	PLRJ3a4pntqBdOcatzaEnFx/lbg9+NsZ6EAcSDj3nb9FD/4vN9TVyE5GrDvgMCaFkwlpGk63b0SZ9
+	Fu/bTPRlToxCMsd6fEGNk0ETunkaEqNt+MXlxT/RI1MvIY641MeO0Mh3cuBP3xt/jTH+Q7kAT/1t4
+	OB85okNDX4BUtsI58l2IQIKc4jN+awpI6HL8maJaO/JT8AE1HhF4AFipNwBrqkPPT9J5Y4HeqBD/s
+	mMGubWzw==;
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOyAD-00000001oR5-3vVj;
-	Tue, 10 Jun 2025 12:33:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749558775; cv=none; 
+	id 1uOyAP-00000001oTU-33Oi;
+	Tue, 10 Jun 2025 12:33:27 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749558785; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=PWrFAe12c+Ts2tfLA2JswJvpCYBMSNzS5AyoFv50ZXlr8FjCWBqcOmSFhpCBdOlRAOaG/+85mB9UF4/AB6PAeymWd6FKePahKd9kHlMFT24NMIncZc4QGZaNjceCcrQwqCG7PFobmUaDRs3RLvIQtaooCaDlhZNNnsHBRxyAcOg=
+	b=MeOm41MaWGxGL7YqS4yDr6YL5/olgjHZDsXQuea9QkvhYD+8RtW9XaIhto0djhvM8rGSbD1Uu2PsZ1YFEKHVgULB1MPgfCp4LoouN3Y47wWetlq2jH3RsZPI6gzrOjFD2NKav+ElL3YGVhBbRz4lwlZyXKAXuRAYwptu+LgMH5Q=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749558775; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=r/yCBdXULN/7dimob9RM70hBvraS8nfz9TzFTVD+37g=; 
-	b=YJHxPvED16rQ8AaSg54DrvzKYbKM0xp7anEcYkRxAL+mGh+m8CprAT3iyLNgjnESta4ovgWOS02Q306hldkwQl824wAta/R/o9gIkzpI5ObsZtEsnkA2F2phppIMESKFUY3bDBXXY9D2ua3Tk02NbFWrh9x8gcuxv+f2WfoZVOQ=
+	t=1749558785; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=P1s5SW5XXy2Nmw/a2myc1LsBMYI2XBbGAAdPmoWnhN4=; 
+	b=GAGJdAdkS2hsWAm2KlXqSB83GqJfFf9+2dwnE2nz4hzAR7QGpvFKqfNSeQ0/vjj5pGd2BY90BKyde/41WSuD5Q/DDjrOE2vA9q/5xcMqBBVWGEAvEOqeENXXNvhl/EEE441+QoECt04+xLf8m4fTOPHoaiHKHMDOLper3aIQ6gk=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749558775;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749558785;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=r/yCBdXULN/7dimob9RM70hBvraS8nfz9TzFTVD+37g=;
-	b=ipXVos4F1ag70tE7+CYrhMEtEYcBoEwficzD+uvDH57MnVWq65ts5BvLE/nQ0HyN
-	Qk5znHRSBksD/RNwcxOnC281HcGQTCGHiPMG1XOJho7mnwwD2bac4NwtmXhOluUTNnk
-	gwtciSxEfTLUYBVqKGaMn+eydf1w3h/4TQ0wRvw0=
-Received: by mx.zohomail.com with SMTPS id 1749558774709569.5144844612655;
-	Tue, 10 Jun 2025 05:32:54 -0700 (PDT)
+	bh=P1s5SW5XXy2Nmw/a2myc1LsBMYI2XBbGAAdPmoWnhN4=;
+	b=gkJdcgSeGcq+BldCIcz9rSefLdShudVUVLHy5TUE3k1hhZ+T5/U3bF4hqtb6ffCr
+	u5EbzpzuZGuf5Hfq2wG/5dctOeU1yMFcWIj6goIsGVJJnIBM84d4nZtk3WV51BM8oY0
+	tLE3ewmBPpD9ujJsl3qN7cykAc/OqZWonGEOMk2E=
+Received: by mx.zohomail.com with SMTPS id 1749558783838173.35577891638252;
+	Tue, 10 Jun 2025 05:33:03 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 10 Jun 2025 14:32:38 +0200
-Subject: [PATCH v6 2/7] dt-bindings: rockchip-thermal: Add RK3576
- compatible
+Date: Tue, 10 Jun 2025 14:32:40 +0200
+Subject: [PATCH v6 4/7] dt-bindings: thermal: rockchip: document otp
+ thermal trim
 MIME-Version: 1.0
-Message-Id: <20250610-rk3576-tsadc-upstream-v6-2-b6e9efbf1015@collabora.com>
+Message-Id: <20250610-rk3576-tsadc-upstream-v6-4-b6e9efbf1015@collabora.com>
 References: <20250610-rk3576-tsadc-upstream-v6-0-b6e9efbf1015@collabora.com>
 In-Reply-To: <20250610-rk3576-tsadc-upstream-v6-0-b6e9efbf1015@collabora.com>
 To: Alexey Charkov <alchark@gmail.com>, 
@@ -77,8 +77,8 @@ To: Alexey Charkov <alchark@gmail.com>,
  Jonas Karlman <jonas@kwiboo.se>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_133314_438341_A3692E9A 
-X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-CacheID: sfid-20250610_133326_349186_0DF779F7 
+X-CRM114-Status: UNSURE (   9.92  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,26 +97,122 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a new compatible for the thermal sensor device on the RK3576 SoC.
+Several Rockchip SoCs, such as the RK3576, can store calibration trim
+data for thermal sensors in OTP cells. This capability should be
+documented.
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Such a rockchip thermal sensor may reference cell handles that store
+both a chip-wide trim for all the sensors, as well as cell handles
+for each individual sensor channel pointing to that specific sensor's
+trim value.
+
+Additionally, the thermal sensor may optionally reference cells which
+store the base in terms of degrees celsius and decicelsius that the trim
+is relative to.
+
+Each SoC that implements this appears to have a slightly different
+combination of chip-wide trim, base, base fractional part and
+per-channel trim, so which ones do which is documented in the bindings.
+
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ .../bindings/thermal/rockchip-thermal.yaml         | 61 ++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-index b717ea8261ca24ebaf709f410ec6372de1366b8a..49ceed68c92ce5a32ed8d4f39bd88fd052de0e80 100644
+index 49ceed68c92ce5a32ed8d4f39bd88fd052de0e80..573f447cc26ed7100638277598b0e745d436fd01 100644
 --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
 +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-@@ -21,6 +21,7 @@ properties:
-       - rockchip,rk3368-tsadc
-       - rockchip,rk3399-tsadc
-       - rockchip,rk3568-tsadc
-+      - rockchip,rk3576-tsadc
-       - rockchip,rk3588-tsadc
-       - rockchip,rv1108-tsadc
+@@ -40,6 +40,17 @@ properties:
+       - const: tsadc
+       - const: apb_pclk
  
++  nvmem-cells:
++    items:
++      - description: cell handle to where the trim's base temperature is stored
++      - description:
++          cell handle to where the trim's tenths of Celsius base value is stored
++
++  nvmem-cell-names:
++    items:
++      - const: trim_base
++      - const: trim_base_frac
++
+   resets:
+     minItems: 1
+     maxItems: 3
+@@ -51,6 +62,12 @@ properties:
+       - const: tsadc
+       - const: tsadc-phy
+ 
++  "#address-cells":
++    const: 1
++
++  "#size-cells":
++    const: 0
++
+   "#thermal-sensor-cells":
+     const: 1
+ 
+@@ -72,6 +89,27 @@ properties:
+     $ref: /schemas/types.yaml#/definitions/uint32
+     enum: [0, 1]
+ 
++patternProperties:
++  "@[0-9a-f]+$":
++    type: object
++    properties:
++      reg:
++        maxItems: 1
++        description: sensor ID, a.k.a. channel number
++
++      nvmem-cells:
++        items:
++          - description: handle of cell containing calibration data
++
++      nvmem-cell-names:
++        items:
++          - const: trim
++
++    required:
++      - reg
++
++    unevaluatedProperties: false
++
+ required:
+   - compatible
+   - reg
+@@ -80,6 +118,29 @@ required:
+   - clock-names
+   - resets
+ 
++allOf:
++  - if:
++      not:
++        properties:
++          compatible:
++            contains:
++              const: rockchip,rk3568-tsadc
++    then:
++      properties:
++        nvmem-cells: false
++        nvmem-cell-names: false
++  - if:
++      not:
++        properties:
++          compatible:
++            contains:
++              enum:
++                - rockchip,rk3568-tsadc
++                - rockchip,rk3576-tsadc
++    then:
++      patternProperties:
++        "@[0-9a-f]+$": false
++
+ unevaluatedProperties: false
+ 
+ examples:
 
 -- 
 2.49.0
