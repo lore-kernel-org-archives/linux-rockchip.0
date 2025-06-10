@@ -4,48 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 576C2C678DA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 22:49:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E58F6C61DB2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Jun 2025 22:50:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=BbA7yzXnWjmiHqtVV/Av0PqwZ1IZWLO5t/FZqGDiS+E=; b=SgIZwZADaJqYuP
-	AMxfCxcPJALx1Utjl/SNuoDKqdmz4RmxxoYDAY5BShPx375mC7M5r86EZjYg8Ddj3w9+NQcBNujyh
-	9rPFfcZlI2/fDa8csHsPYp6Xu/Ya1882B4yqaiUiYlom1M7RfRjZ4mlcE2ZbDqYBG1aEEO+WOcGxt
-	HbFE+tmEr04M114wqtfL40E6JTEIxdkGVWY+lm7kfUAPbDvkdZg6NeP1qDEIgX0m59C8WmBUBtGk0
-	8KsxxXWgmQ86JhTeBpdWMUvpY6HNGMj4G/CkIzh3gJBMIZl0ymK78VUa7eczvJl9RWHQPoXmEiBRU
-	mRdPzph45V1uv/3mJlVA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PwcfbYei8+K6m+UbQ6dsddzovR3EDXzVPV0mBAp1mls=; b=p835gQZ/AZFUze
+	mthaCIwYGyY6tQ3DL9UoEW79EeCvYbiY8m2Iur8eVi1fFz6X9aqEl5f4oi5Md2BkoGhj5RJvZyhe8
+	Wg8O88CbGEZLsyU6Bc+NYT1inxjdImnAuQTUS6lnNNsyzv2j/KVwFVIvIjRRTIe3eaareHKFlj6sn
+	tIPsfVMsLdT39W6dr8dj64Ewp5RsSgzO8hM4VjixZt81mug7zbXPe4g8wfIc5/RVSxhJEbBVWwssf
+	6sdGM2b2MzbFoye+5E5FnkgOHhhUVwwxv/FFNhB1N9GN1fQ091b34Tm/m0SGVOB6ogAcu1Wnn4ldJ
+	vrcNNWRutdd7hxHfIx4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP7mu-00000008Hfu-2vVf;
-	Tue, 10 Jun 2025 22:49:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uP7nj-00000008J1k-2wdK;
+	Tue, 10 Jun 2025 22:50:39 +0000
+Received: from mail-ua1-x935.google.com ([2607:f8b0:4864:20::935])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP5G7-000000080I6-0jj5;
-	Tue, 10 Jun 2025 20:07:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3C275629F9;
-	Tue, 10 Jun 2025 20:07:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3A72C4CEF2;
-	Tue, 10 Jun 2025 20:07:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749586065;
-	bh=lbQngPJAmS13ljvDR/pW0TUmUN4LkzEaZLuRBDXzcOA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=UX23vM6JvgwxNd+hm0flKLu2Gy/D5qE1UszYiy05r2Sijxti8K1ynp3VaVnhsCZA6
-	 JYZe5h5y+BbJGaLMAxH5JKZU+SiYRDdwTmmnbvIKpn+t2Od+NM3zIYZqKdMO5MQUBs
-	 e1fYFuo8olSap0530IHf+HcZhXaRniOgAQrXqo7aEEuSbYOBndyF85vB13sHqDmIYL
-	 p11s1hOoKcQGHfIZsNIcRR7GZZVJde8N3shq69QJ5k2iDt+mWKBylX4NH1m6CN13dL
-	 d/gCPIi/SfHvWJ/76MxPCnHIcNKLWyFjzEuBrwLuNw2utGdEk46pL7BGLr89T2adKR
-	 cqjULovPTEttw==
-Date: Tue, 10 Jun 2025 15:07:44 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Geraldo Nascimento <geraldogabriel@gmail.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>,
+	id 1uP6Ni-0000000862D-3yxK;
+	Tue, 10 Jun 2025 21:19:44 +0000
+Received: by mail-ua1-x935.google.com with SMTP id a1e0cc1a2514c-87eca1c19e2so602183241.1;
+        Tue, 10 Jun 2025 14:19:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749590382; x=1750195182; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VTlGqNZZG2nk5U6PtVHAFn03jhmY0zJz2faCvEujVB0=;
+        b=IHvIP8ntueNvrSAdqTb23Yg096DzWDMndAMaJVb/XdquKTJWpcFwLKPA/Ij/70QNFS
+         kmzxqcHs7C0T9QbwLs3txNAbbSzBqiO8LNzTi97LCIJK6hK+KX3JXQcpC5m8G5YQsIkX
+         gZZ2Y/VkF3OJnuhFk2U5qPXsOorwu5QBpHrnK5A7rEc2QXFMRGaRjARYPiAW4lZpcfG5
+         YeC7rbpmFDKHvdgRogZqbP0D/Fc3F1HTkWm4f2s1/MsBANjAu4CRf6OzVcL8KizQEqHf
+         T8Xf40rAP0bO0k6Z4PZJ62FVknQms/bEkGP3X1gzb9G8PDJ1rqWIa39mv5vaT/2txWLs
+         GzuA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749590382; x=1750195182;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=VTlGqNZZG2nk5U6PtVHAFn03jhmY0zJz2faCvEujVB0=;
+        b=FfWYfMlsMbcuvyrKp71m43qpLI3PcJR3gqvIhrdc8/QgA5/9XYRJYKjb2vkQr4ZQzO
+         PVo3fr4GpTq1yuH4IemPwsJjDAFCSMgngAm1OODhZ9EvN+wBzC+9+QoKavgWqXpAu2Y8
+         5kmmr+tC+HP01iVQwtqV4Yjca78x+/PYwF6g8UPAKVipHwIRnuegI6vFiTClL5OgItPf
+         6oSaTM2ESPW8raRKMI7ejANd1wagvJyrXZHsnf0B5MWva3tlBDPeOBYJOYLV5kItnsFn
+         oUGqM0C63edfhm2RonAJ0e1hdaBHwFJjWobYwhfKUDZFFvVMOJnhjHMtl5T47OGxDsbc
+         sSpA==
+X-Forwarded-Encrypted: i=1; AJvYcCUb2gpmuPbwpvFrMS/MdWqw2l/tvojSyGrSG8iCPjRNyPr1jdqd04TDqimTUv8vT9ZfccvTpJ7HP2hKg4MNC9zT@lists.infradead.org, AJvYcCUgDEClPx4a6h1BTyvIyKekXoGJdAj6GdX1t+ODdHUZsLo7wjAuRJO7mAAU0rMIugbY0FOK5bhXB8Kq@lists.infradead.org
+X-Gm-Message-State: AOJu0YzHXLxjQx5OzDLpWoDqYpamInMf+h+ajRlIsjYQ4TlZJZ+r24oX
+	0j4E515Qi6rsOGWr0TEMfeIiRAKTolIITEHFT3FLIxhz0VgUVYbb9U+31WyN982Z2FYDyvq6
+X-Gm-Gg: ASbGncvtd3MseWUQqRCSkfUZix7RM02D0rsVOjLZmXfY4ZX0twqIpo06iso9OS1ruO1
+	CCDKPM0Ianh/GnCpCz1GboTMpyLnw9Zj9A3L//CGKctNKAMAtCKzRME+940chfqEGRXuumsMFx9
+	+WOiY/ICk9a+A79jaZnwAJmQzl4qckJQdOzSMGZnJG9EsXsKgRGRgA2k6gfS6YTDreLETUEGSB2
+	HBI5z+Tj4FsRo65u6kZTf3jcpPGYdaZE9f+D+qvGWZEvu4l/R7NQkmnfstnS/1MvOFxkfoZWcRm
+	FjQ0/fMZY81YhtpnCtW1a/YjlRePenCkUO0JK8KqjnBeM8yAOg==
+X-Google-Smtp-Source: AGHT+IEc8tayspwhyZzHQNxg9nAlirC8xTvZilA/RPHMja+AJaaRaWniixRITKIg88b7BD1jFLaxvA==
+X-Received: by 2002:a05:6102:3e18:b0:4e5:8eb6:e8f5 with SMTP id ada2fe7eead31-4e7bba3689cmr949646137.3.1749590381691;
+        Tue, 10 Jun 2025 14:19:41 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:5ce9::dead:c001])
+        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-87eeae7722bsm1880161241.12.2025.06.10.14.19.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Jun 2025 14:19:41 -0700 (PDT)
+Date: Tue, 10 Jun 2025 18:19:35 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
 	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
@@ -54,12 +77,14 @@ Cc: linux-rockchip@lists.infradead.org,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
 	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH 1/4] PCI: pcie-rockchip: add bits for Target Link
- Speed in LCS_2
-Message-ID: <20250610200744.GA820589@bhelgaas>
+Subject: [RFC PATCH v2 0/4] Quality Improvements for Rockchip-IP PCIe
+Message-ID: <cover.1749588810.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aEQb5kEOCJNQJMin@geday>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250610_141942_984005_99FC5B42 
+X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,55 +101,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jun 07, 2025 at 08:00:54AM -0300, Geraldo Nascimento wrote:
-> Link Control and Status Register 2 is not present in current
-> pcie-rockchip.h definitions. Add it in preparation for
-> setting it before Gen2 retraining.
-> 
-> Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
-> ---
->  drivers/pci/controller/pcie-rockchip.h | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-> index 14954f43e5e9..7a84899d3812 100644
-> --- a/drivers/pci/controller/pcie-rockchip.h
-> +++ b/drivers/pci/controller/pcie-rockchip.h
-> @@ -166,6 +166,9 @@
->  #define   PCIE_RC_CONFIG_LINK_CAP_L0S		BIT(10)
->  #define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
->  #define PCIE_EP_CONFIG_LCS		(PCIE_EP_CONFIG_BASE + 0xd0)
-> +#define PCIE_RC_CONFIG_LCS_2		(PCIE_RC_CONFIG_BASE + 0xf0)
-> +#define   PCIE_RC_CONFIG_LCS_2_TLS_25	BIT(0)
-> +#define   PCIE_RC_CONFIG_LCS_2_TLS_50	BIT(1)
+During a 30-day debugging-run fighting quirky PCIe devices on RK3399
+some quality improvements began to take form and this is my attempt
+at upstreaming it. It will ensure maximum chance of retraining to Gen2
+5.0GT/s, on all four lanes and plus if anybody is debugging the PHY
+they'll now get real values from TEST_I[3:0] for every TEST_ADDR[4:0]
+without risk of locking up kernel like with present broken async
+strobe TEST_WRITE.
 
-This stuff:
+---
+V1 -> V2: use standard PCIe defines as suggested by Bjorn
 
-  #define PCIE_RC_CONFIG_DCR              (PCIE_RC_CONFIG_BASE + 0xc4)
-  #define PCIE_RC_CONFIG_DCSR             (PCIE_RC_CONFIG_BASE + 0xc8)
-  #define PCIE_RC_CONFIG_LINK_CAP         (PCIE_RC_CONFIG_BASE + 0xcc)
-  #define PCIE_RC_CONFIG_LCS              (PCIE_RC_CONFIG_BASE + 0xd0)
-  #define PCIE_RC_CONFIG_LCS_2            (PCIE_RC_CONFIG_BASE + 0xf0)
+Geraldo Nascimento (4):
+  PCI: pcie-rockchip: add Link Control and Status Register 2
+  PCI: rockchip-host: Set Target Link Speed before retraining
+  phy: rockchip-pcie: enable all four lanes
+  phy: rockchip-pcie: adjust read mask and write strobe disable
 
-*Looks* like it might be duplicates of:
+ drivers/pci/controller/pcie-rockchip-host.c |  4 ++++
+ drivers/pci/controller/pcie-rockchip.h      | 10 ++++++----
+ drivers/phy/rockchip/phy-rockchip-pcie.c    | 16 +++++++++-------
+ 3 files changed, 19 insertions(+), 11 deletions(-)
 
-  #define PCI_EXP_DEVCAP          0x04    /* Device capabilities */
-  #define PCI_EXP_DEVCTL          0x08    /* Device Control */
-  #define PCI_EXP_LNKCAP          0x0c    /* Link Capabilities */
-  #define PCI_EXP_LNKCTL          0x10    /* Link Control */
-  #define PCI_EXP_LNKCTL2         0x30    /* Link Control 2 */
+-- 
+2.49.0
 
-where the PCIe Capability is at (PCIE_RC_CONFIG_BASE + 0xc0).
-
-If so, can you please rework these to use the existing PCI_EXP_*
-definitions, including the fields inside?
-
->  #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
->  #define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
->  #define   PCIE_RC_CONFIG_THP_CAP_NEXT_MASK	GENMASK(31, 20)
-> -- 
-> 2.49.0
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
