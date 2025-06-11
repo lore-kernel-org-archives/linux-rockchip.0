@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50D3BC71135
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 21:51:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41A08C71136
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 22:36:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=/NcYouqpO3ZGkv6ppbRa7gSnqU63l5DP1TeDuXcv+1o=; b=D0ABb9yfjR1Nv5
-	d4wybzNf75BWNv9u2geRgWFgXc2OQ7fuAuf03X7jTimr9c3I2C/TM07piVgMzcPK/zLGbp5dEMqfP
-	RXxBWKD3g5hS8BBVqj3a5KMnArBhCheewCe4N7yng0izpmri5y0pTokfSAx7YAmIpsFtFeGoU8i3m
-	wh/9b8jJ9VwW71xsf3nBoDVW8oURWJ7v0PLEkiHDSEtLRp3rhdVNKXssxk9k31jCkN9sOmqHSsY8+
-	BNS83KZAF8h88Aal717ezYeM9oLqspgIvGeMvZAfEnP6pjnqt2kFRHhaC+2XVOVa/pbcwm6NiFujG
-	7LqSaNny3RSiCM2X1jSw==;
+	List-Owner; bh=cUSzfhg1dQexAwF92uOUAXXBVUX+UD+MvPA4CFgt0fQ=; b=f8ZaaaC4NBtbSH
+	FYdA/po2bVGUdNnJMmUwXkouuOW+bvhg88CW/qGVsd9QiocHW2hSed3YSu+bEfnh+QQvSaetaaPj5
+	E0A3FX26rqs4k9CjligfUF41dOq18WnaVabHOWr2HTkiBDC6LHStXrlkZHXpDypD3JZ4FC3I0M7Br
+	c0f0CNH7QIi3kZYcmc6h9ctsCHyUtrsIN470lT6Ty/98fkoVNMDRtXRIyC2YYLsRmctxvJtBdfOFT
+	SY8cikVPma3wX8phhtLrY3FlHdAEGTS0utwfjbnoeRmTTGu6v+NMcjJ+jKCH14CKpV2lLbatJll4A
+	Q+M+ONfqekg8GEfMno3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPTLq-0000000BOyZ-2Kkd;
-	Wed, 11 Jun 2025 21:51:18 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uPU3R-0000000BUXW-0TtE;
+	Wed, 11 Jun 2025 22:36:21 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPRLi-0000000AyXk-1r3s;
-	Wed, 11 Jun 2025 19:43:02 +0000
+	id 1uPSmh-0000000BGCK-29Xm;
+	Wed, 11 Jun 2025 21:15:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D887C61135;
-	Wed, 11 Jun 2025 19:43:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6ADCFC4CEE3;
-	Wed, 11 Jun 2025 19:43:01 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id D15455C6327;
+	Wed, 11 Jun 2025 21:12:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1EF3C4CEE3;
+	Wed, 11 Jun 2025 21:14:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749670981;
-	bh=7+2javrPWqSAk9Zpl9AulQcOQIGGbbbbRurwg6AeHZw=;
+	s=k20201202; t=1749676498;
+	bh=rzGnHBq3q590xLCbFEMjq52KGw0cqgfhq4h1W1pnXmo=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=HGkXm5jzFWs8lo2Rxe8xrG+ZpRTKtZMg2tULoy/ewNWO8y6xjTiELmi991KtFgw5d
-	 0nvDZJkeQ9A7qRRbbUGOweTehA+Y6k1CAWNsVG90DiKNgwX49/9auuWJfCOKpOy/f4
-	 s7BeJKzk1z0BrLGu5yXMNt8lGkuTWPJwKJjjpkSvaPAru11qBYugvEU9fnH2eauqmR
-	 26P+STx7gehj/DYz8AGFoPjhJUIGuY/oqkJuxs7wSOdG+fyahFaDe8EWLTtVYUmmVJ
-	 tJuPwveYHN1W1PzhNpIP6obWHuujk8J+eZFX947mcvr2Go5YPzcyRJ49Ulbt49iQrN
-	 wEk3iYgr8vqig==
-Date: Wed, 11 Jun 2025 14:42:59 -0500
+	b=cLuJmhWiSA+SUB9IKwBOBYkKtWD2pUR8aNEnIyJ/vV00KzrMsSYxVbGxuffGL9ivF
+	 EQdHhIaV3Oa9gxz4qr17bku5aKLPEegq5EjBrBQ4/AvkyHYZHGH+iLtPxNG871pbQU
+	 gULKcV0XgAEO32DRJosLowzK8zMQ/8Qk0Vl2xltfb1BAd1BrNXNkzqjjeMaIVGfiOg
+	 MTrmH/ri8nbkxtdQHmrN1uKIUqQeMPrg+Urg3o8nSRchpv0wVdTSszB2Pt5JPMFomi
+	 4I+FwxLJNelb/8BDzfn0gmXKKhv4kV51sUd7ywnnsqJBZWp8EAhX3CCjUShKOX61R3
+	 7lmgLdZ4FYXxQ==
+Date: Wed, 11 Jun 2025 16:14:56 -0500
 From: Bjorn Helgaas <helgaas@kernel.org>
-To: Geraldo Nascimento <geraldogabriel@gmail.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
 	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH v2 1/4] PCI: pcie-rockchip: add Link Control and
- Status Register 2
-Message-ID: <20250611194259.GA825364@bhelgaas>
+	Heiko Stuebner <heiko@sntech.de>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Laszlo Fiat <laszlo.fiat@proton.me>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/4] PCI: dw-rockchip: Do not enumerate bus before
+ endpoint devices are ready
+Message-ID: <20250611211456.GA869983@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <28ae3286f3217881ae6ea3aecad47ae4567d6ec7.1749588810.git.geraldogabriel@gmail.com>
+In-Reply-To: <20250611105140.1639031-7-cassel@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250611_141459_638993_F810B7B6 
+X-CRM114-Status: GOOD (  24.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,67 +79,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 10, 2025 at 06:19:49PM -0300, Geraldo Nascimento wrote:
-> Link Control and Status Register 2 is not present in current
-> pcie-rockchip.h definitions. Add it in preparation for
-> setting it before Gen2 retraining.
+On Wed, Jun 11, 2025 at 12:51:42PM +0200, Niklas Cassel wrote:
+> Commit ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can
+> detect Link Up") changed so that we no longer call dw_pcie_wait_for_link(),
+> and instead enumerate the bus directly after receiving the Link Up IRQ.
 > 
-> While at it, also reference other registers from offset at
-> Capabilities Register through standard PCI definitions. Only
-> RC registers have been touched, although in principle there's
-> no functional change.
+> This means that there is no longer any delay between link up and the bus
+> getting enumerated.
+
+Minor quibble about "no longer any delay": dw_pcie_wait_for_link()
+doesn't contain any explicit delay *after* we notice the link is up,
+so we didn't guarantee sufficient delay even before ec9fd499b9c6.
+
+If the link came up before the first check, dw_pcie_wait_for_link()
+didn't delay at all.  Otherwise, it delayed 90ms * N, and we have no
+idea when in the 90ms period the link came up, so the post link-up
+delay was effectively some random amount between 0 and 90ms.
+
+I would propose something like:
+
+  PCI: dw-rockchip: Wait PCIE_T_RRS_READY_MS after link-up IRQ
+
+  Per PCIe r6.0, sec 6.6.1, software must generally wait a minimum of
+  100ms (PCIE_T_RRS_READY_MS) after Link training completes before
+  sending a Configuration Request.
+
+  Prior to ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since
+  we can detect Link Up"), dw-rockchip used dw_pcie_wait_for_link(),
+  which waited between 0 and 90ms after the link came up before we
+  enumerate the bus, and this was apparently enough for most devices.
+
+  After ec9fd499b9c6, rockchip_pcie_rc_sys_irq_thread() started
+  enumeration immediately when handling the link-up IRQ, and devices
+  (e.g., Laszlo Fiat's PLEXTOR PX-256M8PeGN NVMe SSD) may not be ready
+  to handle config requests yet.
+
+  Delay PCIE_T_RRS_READY_MS after the link-up IRQ before starting
+  enumeration.
+
+> As per PCIe r6.0, sec 6.6.1, a Downstream Port that supports Link speeds
+> greater than 5.0 GT/s, software must wait a minimum of 100 ms after Link
+> training completes before sending a Configuration Request.
 > 
-> Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
+> Add this delay in the threaded link up IRQ handler in order to satisfy
+> the requirements of the PCIe spec.
+> 
+> Laszlo Fiat reported (off-list) that his PLEXTOR PX-256M8PeGN NVMe SSD is
+> no longer functional, and simply reverting commit ec9fd499b9c6 ("PCI:
+> dw-rockchip: Don't wait for link since we can detect Link Up") makes his
+> SSD functional again. Adding the 100 ms delay as required by the spec also
+> makes the SSD functional again.
+> 
+> Cc: Laszlo Fiat <laszlo.fiat@proton.me>
+> Fixes: ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can detect Link Up")
+
+I would argue that 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip
+RK356X host controller driver") is the right Fixes: commit here
+because dw_pcie_wait_for_link() *never* waited the required time, and
+it's quite possible that other devices don't work correctly.  The
+delay was about 90ms - <time required for link training>, so could be
+significantly less than 100ms.
+
+> Signed-off-by: Niklas Cassel <cassel@kernel.org>
 > ---
->  drivers/pci/controller/pcie-rockchip.h | 10 ++++++----
->  1 file changed, 6 insertions(+), 4 deletions(-)
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
 > 
-> diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-> index 5864a20323f2..90d98aa8830e 100644
-> --- a/drivers/pci/controller/pcie-rockchip.h
-> +++ b/drivers/pci/controller/pcie-rockchip.h
-> @@ -155,17 +155,19 @@
->  #define PCIE_EP_CONFIG_DID_VID		(PCIE_EP_CONFIG_BASE + 0x00)
->  #define PCIE_EP_CONFIG_LCS		(PCIE_EP_CONFIG_BASE + 0xd0)
->  #define PCIE_RC_CONFIG_RID_CCR		(PCIE_RC_CONFIG_BASE + 0x08)
-> -#define PCIE_RC_CONFIG_DCR		(PCIE_RC_CONFIG_BASE + 0xc4)
-> +#define PCIE_RC_CONFIG_CR		(PCIE_RC_CONFIG_BASE + 0xc0)
-> +#define PCIE_RC_CONFIG_DCR		(PCIE_RC_CONFIG_CR + PCI_EXP_DEVCAP)
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 93171a392879..a941a239cbfc 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -459,6 +459,13 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
+>  	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
+>  		if (rockchip_pcie_link_up(pci)) {
+>  			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
+> +			/*
+> +			 * As per PCIe r6.0, sec 6.6.1, a Downstream Port that
+> +			 * supports Link speeds greater than 5.0 GT/s, software
+> +			 * must wait a minimum of 100 ms after Link training
+> +			 * completes before sending a Configuration Request.
+> +			 */
 
-I would really like to see PCI_EXP_DEVCAP referenced in the source
-where we currently use PCIE_RC_CONFIG_DCR.  That way, cscope/tags/grep
-will find the actual uses of PCI_EXP_DEVCAP, not just this #define of
-PCIE_RC_CONFIG_DCR.
+I think the comment at the PCIE_T_RRS_READY_MS definition should be
+enough (although it might need to be updated to mention link-up).
+This delay is going to be a standard piece of every driver, so it
+won't require special notice.
 
-Something like this:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/controller/pci-mvebu.c?id=v6.15#n265
-
->  #define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
->  #define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
->  #define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
-
-Also use PCI_EXP_DEVCAP_PWR_VAL and PCI_EXP_DEVCAP_PWR_SCL here if
-possible.  And FIELD_GET()/FIELD_PREP(), which avoid the need to
-define _SHIFT values.
-
-I would do a pure conversion patch of the existing #defines.  Then I
-suspect you wouldn't need a patch to add the Link 2 registers at all
-because you could just use the #defines from pci_regs.h.
-
-> -#define PCIE_RC_CONFIG_DCSR		(PCIE_RC_CONFIG_BASE + 0xc8)
-> +#define PCIE_RC_CONFIG_DCSR		(PCIE_RC_CONFIG_CR + PCI_EXP_DEVCTL)
->  #define   PCIE_RC_CONFIG_DCSR_MPS_MASK		GENMASK(7, 5)
->  #define   PCIE_RC_CONFIG_DCSR_MPS_256		(0x1 << 5)
-> -#define PCIE_RC_CONFIG_LINK_CAP		(PCIE_RC_CONFIG_BASE + 0xcc)
-> +#define PCIE_RC_CONFIG_LINK_CAP		(PCIE_RC_CONFIG_CR + PCI_EXP_LNKCAP)
->  #define   PCIE_RC_CONFIG_LINK_CAP_L0S		BIT(10)
-> -#define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
-> +#define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL)
->  #define PCIE_EP_CONFIG_LCS		(PCIE_EP_CONFIG_BASE + 0xd0)
-> +#define PCIE_RC_CONFIG_LCS_2		(PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL2)
->  #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
->  #define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
->  #define   PCIE_RC_CONFIG_THP_CAP_NEXT_MASK	GENMASK(31, 20)
+> +			msleep(PCIE_T_RRS_READY_MS);
+>  			/* Rescan the bus to enumerate endpoint devices */
+>  			pci_lock_rescan_remove();
+>  			pci_rescan_bus(pp->bridge->bus);
 > -- 
 > 2.49.0
 > 
