@@ -4,58 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B48BC677C4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 14:55:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9039C71140
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 15:26:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:Cc:To:From:Subject:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TERt2fHdMGJu3EUMG/bYBELAIXwwkCDfSNchsbZ94b0=; b=hdnpBIxXnanEW6WSIuoj1BctuG
-	JEEG1F1NtyDw2ydXlxHPYtQPTkQ0uq8shspAX0+RosLkDoYNQ/+3JX76Xz8e1dL+dYveg10sQIPS5
-	qiI5gOtARwQIWuKIweyBMVYAvb8Re8Gn+T4g4ijh8TRISMFVDGPw2J2ZoiiZEXyif6fVCBTg1572r
-	BlmWyLPfDOTifx6L7V3WGMP+PQltTFEDJCIGDONe0uQslfmjMMH5yTIOZbVB08/d1TshN2xTtY57M
-	HD0lEgom4cr1kr8ZO1wEBhfgczOKTSZony/byLdfecIe16OEtTChpgaSlE46y3yE+5e6Rx6sU4L0U
-	crTjYmfg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=G7gpW2K2Q00T1MlyklUo5JFDnI9tD29+xBDzq/LzeN0=; b=wDqyp2tPxt4nwH
+	/R5DnWiq0hxacrUjQywZ8uEq69e0PUpGMw+Qy18OfmH/HBEbNXjoN0MLSJJT0F2zGt/QYbwa5O9kh
+	NP6doZOi0h3Mo1gnMNNfxgYtpbD3rvYFuli9B88HA2pLyaVNoRNekDDx0FcNjjL2hetW3aTKYREP2
+	+uSqcN7JoLTisq8k0+tXTKOBT5mPjDYLoKf7G8AaKBR6RaGCgQg3e42Po8U+N3rtIH2fpnR9KRQF/
+	A4VfOEjLycUbNYvonLw5utqNngulSHmpoq/ENMIE6bfDIhDwBdKQi//Nk0+xAmtP8V757wVTXUVQh
+	RBjRIrz0RwMTuJp207Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPMrX-0000000AJ0c-27JM;
-	Wed, 11 Jun 2025 14:55:35 +0000
-Received: from out-183.mta0.migadu.com ([2001:41d0:1004:224b::b7])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPJpn-00000009ldX-2lEY
+	id 1uPNLA-0000000ANqY-1VVe;
+	Wed, 11 Jun 2025 15:26:12 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uPKN3-00000009pJw-47wc
 	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Jun 2025 11:41:37 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1749642083;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=fxnjuZ3xwpIpSVvv3DwGJe1m2GKwbpliPokqupcsJEU=;
-	b=g7qTMC0HoMUUikZtkKCw10K/fst3gi13rV2DlZBzA8OXRlpRyecUMzvEwN6WtZunyuuFzp
-	RGiwPMITezZhNtqp6+p9/xEUr5Lj+Czly3D3dO9LbwB5yW67gsNVYg20Ye36kfv1YHUS6q
-	h2GwOmkqn3A5DorYiZsEFiQ27C31aakcSImY+ukKPY+ZFK5Ej6A3sBpkhuOJXDW2emW29c
-	vg6j0wV3m6Jw4hHuHb+VgRA0vfiktrApkAwPCWIUxM/JycuQ5E4CQAPmUfWQnvnaEz2GBR
-	1UwIwpj9yCfKbRcKBz08YGopEsW3zPAfouKlYR6DrhS491G1i1Gw7Qa0bhLAqw==
-Date: Wed, 11 Jun 2025 13:41:06 +0200
-Message-Id: <DAJOCL4UQWZ1.2CB0NH55US5EI@cknow.org>
-Subject: Re: [PATCH v3 3/7] crypto: testmgr - replace
- CRYPTO_MANAGER_DISABLE_TESTS with CRYPTO_SELFTESTS
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Eric Biggers" <ebiggers@kernel.org>, <linux-crypto@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>
-Cc: <linux-kernel@vger.kernel.org>, "Corentin Labbe" <clabbe@baylibre.com>,
- <linux-arm-kernel@lists.infradead.org>
-References: <20250505203345.802740-1-ebiggers@kernel.org>
- <20250505203345.802740-4-ebiggers@kernel.org>
-In-Reply-To: <20250505203345.802740-4-ebiggers@kernel.org>
-X-Migadu-Flow: FLOW_OUT
+	Wed, 11 Jun 2025 12:15:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=XEEPsmzmcp+YcCPwj94G8UDCWBRJnGic6yDOVxAeHAE=; b=m
+	ZN4FZh9L24OpB9JeI7NuNw07YFWoMLzYWcIPbM3145iEFgH+wED3Mqhp2f/645xW
+	sCm77SxePdHLwDH8DMTx4PyJb6jwzMsS9+SA5wFcdcWCxGlsvYEgG6Tq8rdkT6fq
+	e8hM0tD5sqFYmM5syZhGSBPReUoFqRWUeevNaiA7II=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-145 (Coremail) ; Wed, 11 Jun 2025 20:15:16 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Wed, 11 Jun 2025 20:15:16 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Diederik de Haas" <didi.debian@cknow.org>
+Cc: "Piotr Zalewski" <pZ010001011111@proton.me>, hjc@rock-chips.com,
+	heiko@sntech.de, andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+	"Dang Huynh" <danct12@riseup.net>, dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re:Re: [PATCH drm-misc-next] rockchip/drm: vop2: don't check
+ color_mgmt_changed in atomic_enable
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2025 www.mailtech.cn 163com
+In-Reply-To: <DAJNEG81JCU5.35KVU8KAT5MDU@cknow.org>
+References: <20241206192013.342692-3-pZ010001011111@proton.me>
+ <DAEVDSTMWI1E.J454VZN0R9MA@cknow.org>
+ <mArHDRo5bhIAjG8sDOR-kM7DsVdbXxxcC8hfuEEPfUWIdMwNnSUy8ZFoLis66DFSuIEq8TrnAxUGkyo5IUTGw3AG4k3vuVVz0fsoI27BAms=@proton.me>
+ <DAH3S8O66J47.3NT18EJCXWKL9@cknow.org>
+ <47773829.1fce.1974f732545.Coremail.andyshrk@163.com>
+ <DAH60H3HYG7M.3NFXBJ7576RH1@cknow.org>
+ <3161fa6a.93d0.19753f8c5e0.Coremail.andyshrk@163.com>
+ <DAI0A1Y753FJ.B0NMT8L5VPEH@cknow.org>
+ <4b380a57.8ab2.197591815a8.Coremail.andyshrk@163.com>
+ <DAISW8MXEU0G.3AMRSKNYQUJY8@cknow.org>
+ <4e600374.6dc7.1975df03a2d.Coremail.andyshrk@163.com>
+ <DAJNEG81JCU5.35KVU8KAT5MDU@cknow.org>
+X-NTES-SC: AL_Qu2fC/qfu0kq4CCZYekfmkcVgOw9UcO5v/Qk3oZXOJF8jCvr+R48eFpmBH7G8futByKSoj2yXyBn8cZ2TJZ7f7I0AXETjxiSJFvoMTH2GUiv6w==
+MIME-Version: 1.0
+Message-ID: <b25ddc.a29c.1975eea8033.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: kSgvCgDXf5pUc0loyjwZAA--.13358W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkBNpXmhJapTO5QADsD
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_044136_131994_FC8C826E 
-X-CRM114-Status: GOOD (  24.38  )
+X-CRM114-CacheID: sfid-20250611_051558_346855_15316D53 
+X-CRM114-Status: GOOD (  16.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,339 +85,251 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2986725721380936633=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2986725721380936633==
-Content-Type: multipart/signed;
- boundary=c36e9657663e9deaef35050d42feea9240774d94463be57bf8f99adf8b46;
- micalg=pgp-sha512; protocol="application/pgp-signature"
 
---c36e9657663e9deaef35050d42feea9240774d94463be57bf8f99adf8b46
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
 
-Hi Eric,
-
-On Mon May 5, 2025 at 10:33 PM CEST, Eric Biggers wrote:
-> The negative-sense of CRYPTO_MANAGER_DISABLE_TESTS is a longstanding
-> mistake that regularly causes confusion.  Especially bad is that you can
-> have CRYPTO=3Dn && CRYPTO_MANAGER_DISABLE_TESTS=3Dn, which is ambiguous.
+Hi Diederik,
+At 2025-06-11 18:56:31, "Diederik de Haas" <didi.debian@cknow.org> wrote:
+>Hi Andy,
 >
-> Replace CRYPTO_MANAGER_DISABLE_TESTS with CRYPTO_SELFTESTS which has the
-> expected behavior.
+>On Wed Jun 11, 2025 at 9:41 AM CEST, Andy Yan wrote:
+>> At 2025-06-10 19:02:11, "Diederik de Haas" <didi.debian@cknow.org> wrote:
+>>>On Tue Jun 10, 2025 at 11:07 AM CEST, Andy Yan wrote:
+>>>> At 2025-06-09 20:36:41, "Diederik de Haas" <didi.debian@cknow.org> wrote:
+>>>>>On Mon Jun 9, 2025 at 11:15 AM CEST, Andy Yan wrote:
+>>>>>> At 2025-06-08 20:53:37, "Diederik de Haas" <didi.debian@cknow.org> wrote:
+>>>>>>>On Sun Jun 8, 2025 at 2:10 PM CEST, Andy Yan wrote:
+>>>>>>>> At 2025-06-08 19:08:50, "Diederik de Haas" <didi.debian@cknow.org> wrote:
+>>>>>>>>>On Sat Jun 7, 2025 at 5:32 PM CEST, Piotr Zalewski wrote:
+>>>>>>>>>> On Thursday, June 5th, 2025 at 10:13 PM, Diederik de Haas <didi.debian@cknow.org> wrote:
+>>>>>>>>>>> Since kernel 6.14-rc1 I have the problem that visual output is no longer
+>>>>>>>>>>> shown on my PineTab2 and a `git bisect` pointed to this patch/commit
+>>>>>>>>
+>>>>>>>> I have conducted tests on both rk3566-box-demo (with drm set to y)
+>>>>>>>> and rk3568-lubancat-2 (with drm set to m), but I was unable to
+>>>>>>>> reproduce this issue. Could you two please share your kernel
+>>>>>>>> defconfig and the corresponding kernel startup logs?
+>>>>>>>> Additionally, both of my two boards tested with HDMI output. What
+>>>>>>>> kind of display interface does your board use for output?
+>>>>>>>
+>>>>>>>I wasn't able to reproduce this issue on my PINE64 Quartz-B (rk3566) 
+>>>>>>>with HDMI output either, but the problem is present on a PineTab2 [1]
+>>>>>>>(also rk3566) which uses a MIPI DSI connection to the display panel.
+>>>>>>>
+>>>>>>>Kernel config:
+>>>>>>>https://paste.sr.ht/~diederik/aa747ed170aa01cc759fbe1ffd9cebe8c887b10b
+>>>>>>>
+>>>>>>>dmesg kernel 6.14-rc1:
+>>>>>>>https://paste.sr.ht/~diederik/733fbf8bb7f6aee8b68cf5a652157d445462c24a
+>>>>>>>
+>>>>>>>dmesg kernel 6.14-rc1 with Piotr's patch:
+>>>>>>>https://paste.sr.ht/~diederik/db1af672cfb611acbfbdf35adb6f170e5c38febc
+>>>>>>>
+>>>>>>>Both dmesg outputs contain a suspend-resume cycle.
+>>>>>>>I'm using a USB Wi-Fi adapter for the wireless connection.
+>>>>>>>
+>>>>>>>[1] https://wiki.pine64.org/wiki/PineTab2
+>>>>>>>
+>>>>>>>Happy to provide more info and/or do some tests.
+>>>>>>
+>>>>>> Can you apply the patch in the attachment, reproduce this issue(without Piotr's patch), 
+>>>>>> and then provide me with a copy of the kernel log?
+>>>>>
+>>>>>Same test as above, but added ``dmesg | grep "vop2_"`` at the end as well
+>>>>>
+>>>>>dmesg kernel 6.14-rc1 with Andy's print_lut_0609_1710 patch:
+>>>>>https://paste.sr.ht/~diederik/ac356ee8b0f7e772c7310293d99d95644f59a4ee
+>>>>
+>>>> root@pt2-scmi:~# dmesg | grep "vop2_"
+>>>> [    4.996281] rockchip-drm display-subsystem: bound fe040000.vop (ops vop2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
+>>>> [    5.005207] rockchip-drm display-subsystem: bound fe0a0000.hdmi (ops vop2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
+>>>> [    5.006798] rockchip-drm display-subsystem: bound fe060000.dsi (ops vop2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
+>>>> [    5.021204] vop2_crtc_atomic_try_set_gamma  gamma_lut: 0000000000000000
+>>>> [    5.021219] vop2_vp_dsp_lut_disable dsp_ctrl: 0x0000000f
+>>>>
+>>>> It seems that dsp_ctrl: 0x0000000f , this value is not what we expected.
+>>>>
+>>>> The expected is 0x00010000.
+>>>>
+>>>> Could you please do an experiment for me? When there is no display on your screen, 
+>>>> execute the following command and see if the screen can resume displaying:
+>>>>
+>>>> ./data/io  -w -4 0xfe040d00 0x10000; io -w -4 0xfe040000 0x28002 
+>>>>
+>>>> I have placed the io tool in the attachment.
+>>>>
+>>>> You can use command like bellow to read back to confirm if what you write has taken effect:
+>>>> io -r -4 -l 0x100  0xfe040d00 
+>>>>
+>>>> you may need to make CONFIG_DEVMEM=y so that you can write the register by io command.
+>>>
+>>>I renamed it as ``andy-io`` and performed the test:
+>>>
+>>>```sh
+>>>root@pt2-scmi:~# echo 'just (re-)booted into my PineTab2; screen is blank'
+>>>just (re-)booted into my PineTab2; screen is blank
+>>>root@pt2-scmi:~# uname -a
+>>>Linux pt2-scmi 6.14.0-rc1-00001-gfbe17d9b77b0 #18 SMP Mon Jun  9 13:17:28 CEST 2025 aarch64 GNU/Linux
+>>>root@pt2-scmi:~# ./andy-io -r -4 -l 0x100 0xfe040d00
+>>>mmap() failed: Operation not permitted
+>>>root@pt2-scmi:~# grep CONFIG_DEVMEM /boot/config-6.14.0-rc1-00001-gfbe17d9b77b0
+>>>CONFIG_DEVMEM=y
+>>>root@pt2-scmi:~# ./andy-io -w -4 0xfe040d00 0x10000
+>>>mmap() failed: Operation not permitted
+>>>root@pt2-scmi:~# ./andy-io -w -4 0xfe040000 0x28002
+>>>mmap() failed: Operation not permitted
+>>>```
+>>
+>> This is my config about DEVMEM:
+>>
+>> ~/WorkSpace/linux-next$ rg DEVMEM .config
+>> 1014:CONFIG_NET_DEVMEM=y
+>> 3069:CONFIG_DEVMEM=y
+>> 7280:CONFIG_GENERIC_LIB_DEVMEM_IS_ALLOWED=y
+>> 7542:CONFIG_STRICT_DEVMEM=y
+>> 7543:# CONFIG_IO_STRICT_DEVMEM is not set
+>>
+>> CONFIG_IO_STRICT_DEVMEM should not be set to y if you want to access an IO address from usersapce.
 >
-> The tests continue to be disabled by default.
-> ---
->  <snip>
-> diff --git a/crypto/Kconfig b/crypto/Kconfig
-> index da352f1984ea..8f1353bbba18 100644
-> --- a/crypto/Kconfig
-> +++ b/crypto/Kconfig
->  <snip>
-> @@ -171,20 +171,26 @@ config CRYPTO_USER
->  	select CRYPTO_MANAGER
->  	help
->  	  Userspace configuration for cryptographic instantiations such as
->  	  cbc(aes).
-> =20
-> -config CRYPTO_MANAGER_DISABLE_TESTS
-> -	bool "Disable run-time self tests"
-> -	default y
-> +config CRYPTO_SELFTESTS
-> +	bool "Enable cryptographic self-tests"
-> +	depends on DEBUG_KERNEL
->  	help
-> -	  Disable run-time self tests that normally take place at
-> -	  algorithm registration.
-> +	  Enable the cryptographic self-tests.
-> +
-> +	  The cryptographic self-tests run at boot time, or at algorithm
-> +	  registration time if algorithms are dynamically loaded later.
-> +
-> +	  This is primarily intended for developer use.  It should not be
-> +	  enabled in production kernels, unless you are trying to use these
-> +	  tests to fulfill a FIPS testing requirement.
-
-I built a 6.16-rc1 kernel [1] and its config is based upon Debian's and
-that has enabled CRYPTO_SELFTESTS [2] (due to Debian bug 599441 [3]).
-
-I then installed it on 3 Rockchip based devices and booted into that.
-1. Radxa Rock 5B (rk3588)
-2. PINE64 Quartz64 Model B (rk3568)
-3. PINE64 RockPro64 (rk3399)
-
-The full dmesg output for level 0-4 can be found at [4], [5] and [6]
-
-The filtered dmesg output for Rock 5B:
-ERROR:
-[    0.709822] basic hdkf test(hmac(sha256)): failed to allocate transform:=
- -2
-WARNING:
-[    0.710686] alg: full crypto tests enabled.  This is intended for develo=
-per use only.
-[    8.877288] alg: skcipher: skipping comparison tests for xctr-aes-ce bec=
-ause xctr(aes-generic) is unavailable
-
-The filtered dmesg output for Quartz64-B:
-ERROR:
-[    1.479206] basic hdkf test(hmac(sha256)): failed to allocate transform:=
- -2
-WARNING:
-[    1.480685] alg: full crypto tests enabled.  This is intended for develo=
-per use only.
-[   18.176195] alg: skcipher: skipping comparison tests for xctr-aes-ce bec=
-ause xctr(aes-generic) is unavailable
-
-For both of these, 1 warning is to be expected (developer use only).
-But I do wonder about the error and the other warning. Is that a
-problem? And if so, is that on the crypto or the Rockchip side?
-
-But the filtered dmesg output on RockPro64 seems way more serious:
-ERROR:
-[    1.232672] basic hdkf test(hmac(sha256)): failed to allocate transform:=
- -2
-[   14.172991] alg: ahash: rk-sha1 export() overran state buffer on test ve=
-ctor 0, cfg=3D"import/export"
-[   14.202291] alg: ahash: rk-sha256 export() overran state buffer on test =
-vector 0, cfg=3D"import/export"
-[   14.230887] alg: ahash: rk-md5 export() overran state buffer on test vec=
-tor 0, cfg=3D"import/export"
-WARNING:
-[    1.234017] alg: full crypto tests enabled.  This is intended for develo=
-per use only.
-[   14.173876] alg: self-tests for sha1 using rk-sha1 failed (rc=3D-75)
-[   14.173883] ------------[ cut here ]------------
-[   14.174845] alg: self-tests for sha1 using rk-sha1 failed (rc=3D-75)
-[   14.174886] WARNING: CPU: 4 PID: 669 at crypto/testmgr.c:5807 alg_test+0=
-x6ec/0x708
-[   14.176112] Modules linked in: snd_soc_simple_card_utils snd_soc_spdif_t=
-x snd_soc_rockchip_i2s des_generic gpio_ir_recv snd_soc_core v4l2_h264(+) r=
-ockchip_rga videobuf2_dma_contig ecdh_generic videobuf2_dma_sg leds_gpio v4=
-l2_mem2mem panfrost rfkill pwm_fan snd_compress dw_hdmi_i2s_audio pwrseq_co=
-re gpu_sched rk_crypto(+) snd_pcm_dmaengine videobuf2_memops drm_shmem_help=
-er dw_hdmi_cec videobuf2_v4l2 crypto_engine libdes snd_pcm videodev snd_tim=
-er ofpart snd coresight_cpu_debug soundcore videobuf2_common spi_nor rockch=
-ip_saradc mc mtd industrialio_triggered_buffer coresight_etm4x rockchip_the=
-rmal kfifo_buf industrialio coresight cpufreq_dt evdev binfmt_misc pkcs8_ke=
-y_parser efi_pstore configfs nfnetlink ip_tables x_tables autofs4 ext4 crc1=
-6 mbcache jbd2 realtek phy_rockchip_samsung_hdptx phy_rockchip_naneng_combp=
-hy panel_boe_th101mb31ig002_28a xhci_plat_hcd xhci_hcd rockchipdrm dw_hdmi_=
-qp dw_hdmi dwc3 cec rc_core dw_mipi_dsi udc_core rk808_regulator dwmac_rk s=
-tmmac_platform ulpi analogix_dp stmmac fusb302 tcpm
-[   14.176292]  drm_dp_aux_bus pcs_xpcs fan53555 typec drm_display_helper p=
-hylink mdio_devres drm_client_lib dwc3_of_simple pwm_regulator gpio_rockchi=
-p gpio_keys fixed phy_rockchip_pcie of_mdio ehci_platform sdhci_of_arasan o=
-hci_platform drm_dma_helper fixed_phy phy_rockchip_inno_usb2 ohci_hcd sdhci=
-_pltfm ehci_hcd fwnode_mdio dw_wdt drm_kms_helper phy_rockchip_emmc rockchi=
-p_dfi io_domain pwm_rockchip libphy phy_rockchip_typec sdhci nvmem_rockchip=
-_efuse usbcore pl330 dw_mmc_rockchip drm spi_rockchip dw_mmc_pltfm mdio_bus=
- cqhci dw_mmc usb_common i2c_rk3x
-[   14.188362] CPU: 4 UID: 0 PID: 669 Comm: cryptomgr_test Not tainted 6.16=
--rc1+unreleased-arm64-cknow #1 PREEMPTLAZY  Debian 6.16~rc1-1~exp1
-[   14.189451] Hardware name: Pine64 RockPro64 v2.1 (DT)
-[   14.189897] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=
-=3D--)
-[   14.190510] pc : alg_test+0x6ec/0x708
-[   14.190844] lr : alg_test+0x6ec/0x708
-[   14.191170] sp : ffff800081df3d30
-[   14.191463] x29: ffff800081df3dd0 x28: 00000000000000bd x27: 00000000fff=
-fffb5
-[   14.192094] x26: 00000000000000bf x25: ffffd9bef0455000 x24: 00000000000=
-00178
-[   14.192725] x23: 00000000ffffffff x22: ffff000008799880 x21: 00000000080=
-0018f
-[   14.193355] x20: ffff000008799800 x19: ffffd9beef0558b8 x18: 00000000000=
-00018
-[   14.193985] x17: 0000000000006fd8 x16: ffffd9beeef9e128 x15: 00000000000=
-00000
-[   14.194616] x14: 0f4bc94cbbc50b90 x13: 0000000000000325 x12: 000000000f4=
-bc94c
-[   14.195247] x11: ffffd9beeffffff8 x10: 0000000000000d30 x9 : ffffd9beee1=
-16028
-[   14.195877] x8 : ffff000007518d90 x7 : 0000000000000004 x6 : 00000000000=
-00000
-[   14.196506] x5 : 0000000000000000 x4 : 0000000000000001 x3 : 00000000000=
-00010
-[   14.197137] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0000075=
-18000
-[   14.197767] Call trace:
-[   14.197986]  alg_test+0x6ec/0x708 (P)
-[   14.198315]  cryptomgr_test+0x2c/0x58
-[   14.198642]  kthread+0x150/0x250
-[   14.198932]  ret_from_fork+0x10/0x20
-[   14.199251] ---[ end trace 0000000000000000 ]---
-[   14.203118] alg: self-tests for sha256 using rk-sha256 failed (rc=3D-75)
-[   14.203122] ------------[ cut here ]------------
-[   14.204104] alg: self-tests for sha256 using rk-sha256 failed (rc=3D-75)
-[   14.204133] WARNING: CPU: 4 PID: 672 at crypto/testmgr.c:5807 alg_test+0=
-x6ec/0x708
-[   14.205381] Modules linked in: snd_soc_simple_card_utils snd_soc_spdif_t=
-x snd_soc_rockchip_i2s des_generic gpio_ir_recv snd_soc_core v4l2_h264 rock=
-chip_rga videobuf2_dma_contig ecdh_generic videobuf2_dma_sg leds_gpio v4l2_=
-mem2mem panfrost rfkill pwm_fan snd_compress dw_hdmi_i2s_audio pwrseq_core =
-gpu_sched rk_crypto(+) snd_pcm_dmaengine videobuf2_memops drm_shmem_helper =
-dw_hdmi_cec videobuf2_v4l2 crypto_engine libdes snd_pcm videodev snd_timer =
-ofpart snd coresight_cpu_debug soundcore videobuf2_common spi_nor rockchip_=
-saradc mc mtd industrialio_triggered_buffer coresight_etm4x rockchip_therma=
-l kfifo_buf industrialio coresight cpufreq_dt evdev binfmt_misc pkcs8_key_p=
-arser efi_pstore configfs nfnetlink ip_tables x_tables autofs4 ext4 crc16 m=
-bcache jbd2 realtek phy_rockchip_samsung_hdptx phy_rockchip_naneng_combphy =
-panel_boe_th101mb31ig002_28a xhci_plat_hcd xhci_hcd rockchipdrm dw_hdmi_qp =
-dw_hdmi dwc3 cec rc_core dw_mipi_dsi udc_core rk808_regulator dwmac_rk stmm=
-ac_platform ulpi analogix_dp stmmac fusb302 tcpm
-[   14.205591]  drm_dp_aux_bus pcs_xpcs fan53555 typec drm_display_helper p=
-hylink mdio_devres drm_client_lib dwc3_of_simple pwm_regulator gpio_rockchi=
-p gpio_keys fixed phy_rockchip_pcie of_mdio ehci_platform sdhci_of_arasan o=
-hci_platform drm_dma_helper fixed_phy phy_rockchip_inno_usb2 ohci_hcd sdhci=
-_pltfm ehci_hcd fwnode_mdio dw_wdt drm_kms_helper phy_rockchip_emmc rockchi=
-p_dfi io_domain pwm_rockchip libphy phy_rockchip_typec sdhci nvmem_rockchip=
-_efuse usbcore pl330 dw_mmc_rockchip drm spi_rockchip dw_mmc_pltfm mdio_bus=
- cqhci dw_mmc usb_common i2c_rk3x
-[   14.217640] CPU: 4 UID: 0 PID: 672 Comm: cryptomgr_test Tainted: G      =
-  W           6.16-rc1+unreleased-arm64-cknow #1 PREEMPTLAZY  Debian 6.16~r=
-c1-1~exp1
-[   14.218866] Tainted: [W]=3DWARN
-[   14.219130] Hardware name: Pine64 RockPro64 v2.1 (DT)
-[   14.219576] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=
-=3D--)
-[   14.220188] pc : alg_test+0x6ec/0x708
-[   14.220521] lr : alg_test+0x6ec/0x708
-[   14.220847] sp : ffff800081e03d30
-[   14.221140] x29: ffff800081e03dd0 x28: 00000000000000bd x27: 00000000fff=
-fffb5
-[   14.221771] x26: 00000000000000c1 x25: ffffd9bef0455000 x24: 00000000000=
-00178
-[   14.222402] x23: 00000000ffffffff x22: ffff00000b49c880 x21: 00000000080=
-0018f
-[   14.223033] x20: ffff00000b49c800 x19: ffffd9beef0558b8 x18: 00000000fff=
-ffffe
-[   14.223663] x17: 7463657620747365 x16: ffffd9beee6829e8 x15: ffffd9bef03=
-eb09f
-[   14.224294] x14: 0000000000000000 x13: ffffd9bef03eb0a3 x12: ffffd9bef00=
-85e60
-[   14.224923] x11: ffffd9bef002deb8 x10: ffffd9bef0085eb8 x9 : ffffd9beee1=
-7c8cc
-[   14.225553] x8 : 0000000000000001 x7 : 0000000000017fe8 x6 : c0000000fff=
-fefff
-[   14.226183] x5 : ffff0000f7766448 x4 : 0000000000000000 x3 : 00000000000=
-00027
-[   14.226812] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0000075=
-1bb40
-[   14.227443] Call trace:
-[   14.227662]  alg_test+0x6ec/0x708 (P)
-[   14.227991]  cryptomgr_test+0x2c/0x58
-[   14.228319]  kthread+0x150/0x250
-[   14.228611]  ret_from_fork+0x10/0x20
-[   14.228929] ---[ end trace 0000000000000000 ]---
-[   14.231753] alg: self-tests for md5 using rk-md5 failed (rc=3D-75)
-[   14.231758] ------------[ cut here ]------------
-[   14.232696] alg: self-tests for md5 using rk-md5 failed (rc=3D-75)
-[   14.232742] WARNING: CPU: 4 PID: 674 at crypto/testmgr.c:5807 alg_test+0=
-x6ec/0x708
-[   14.233943] Modules linked in: v4l2_vp9 snd_soc_audio_graph_card snd_soc=
-_simple_card_utils snd_soc_spdif_tx snd_soc_rockchip_i2s des_generic gpio_i=
-r_recv snd_soc_core v4l2_h264 rockchip_rga videobuf2_dma_contig ecdh_generi=
-c videobuf2_dma_sg leds_gpio v4l2_mem2mem panfrost rfkill pwm_fan snd_compr=
-ess dw_hdmi_i2s_audio pwrseq_core gpu_sched rk_crypto(+) snd_pcm_dmaengine =
-videobuf2_memops drm_shmem_helper dw_hdmi_cec videobuf2_v4l2 crypto_engine =
-libdes snd_pcm videodev snd_timer ofpart snd coresight_cpu_debug soundcore =
-videobuf2_common spi_nor rockchip_saradc mc mtd industrialio_triggered_buff=
-er coresight_etm4x rockchip_thermal kfifo_buf industrialio coresight cpufre=
-q_dt evdev binfmt_misc pkcs8_key_parser efi_pstore configfs nfnetlink ip_ta=
-bles x_tables autofs4 ext4 crc16 mbcache jbd2 realtek phy_rockchip_samsung_=
-hdptx phy_rockchip_naneng_combphy panel_boe_th101mb31ig002_28a xhci_plat_hc=
-d xhci_hcd rockchipdrm dw_hdmi_qp dw_hdmi dwc3 cec rc_core dw_mipi_dsi udc_=
-core rk808_regulator dwmac_rk stmmac_platform ulpi
-[   14.234122]  analogix_dp stmmac fusb302 tcpm drm_dp_aux_bus pcs_xpcs fan=
-53555 typec drm_display_helper phylink mdio_devres drm_client_lib dwc3_of_s=
-imple pwm_regulator gpio_rockchip gpio_keys fixed phy_rockchip_pcie of_mdio=
- ehci_platform sdhci_of_arasan ohci_platform drm_dma_helper fixed_phy phy_r=
-ockchip_inno_usb2 ohci_hcd sdhci_pltfm ehci_hcd fwnode_mdio dw_wdt drm_kms_=
-helper phy_rockchip_emmc rockchip_dfi io_domain pwm_rockchip libphy phy_roc=
-kchip_typec sdhci nvmem_rockchip_efuse usbcore pl330 dw_mmc_rockchip drm sp=
-i_rockchip dw_mmc_pltfm mdio_bus cqhci dw_mmc usb_common i2c_rk3x
-[   14.246439] CPU: 4 UID: 0 PID: 674 Comm: cryptomgr_test Tainted: G      =
-  W           6.16-rc1+unreleased-arm64-cknow #1 PREEMPTLAZY  Debian 6.16~r=
-c1-1~exp1
-[   14.247667] Tainted: [W]=3DWARN
-[   14.247931] Hardware name: Pine64 RockPro64 v2.1 (DT)
-[   14.248377] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=
-=3D--)
-[   14.248991] pc : alg_test+0x6ec/0x708
-[   14.249332] lr : alg_test+0x6ec/0x708
-[   14.249664] sp : ffff800081e0bd30
-[   14.249957] x29: ffff800081e0bdd0 x28: 00000000000000bd x27: 00000000fff=
-fffb5
-[   14.250588] x26: 00000000000000a4 x25: ffffd9bef0455000 x24: 00000000000=
-00178
-[   14.251220] x23: 00000000ffffffff x22: ffff00000b49c280 x21: 00000000080=
-0018f
-[   14.251852] x20: ffff00000b49c200 x19: ffffd9beef0558b8 x18: 00000000000=
-00018
-[   14.252484] x17: 0000000000007050 x16: ffffd9beeef9e128 x15: 00000000000=
-00000
-[   14.253114] x14: 0a8fc7a77222d736 x13: 00000000000003da x12: 000000000a8=
-fc7a7
-[   14.253747] x11: ffffd9beeffffff8 x10: 0000000000000d30 x9 : ffffd9beee1=
-16028
-[   14.254377] x8 : ffff00000b6d3510 x7 : 0000000000000004 x6 : 00000000000=
-00000
-[   14.255008] x5 : 0000000000000000 x4 : 0000000000000001 x3 : 00000000000=
-00010
-[   14.255637] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff00000b6=
-d2780
-[   14.256268] Call trace:
-[   14.256498]  alg_test+0x6ec/0x708 (P)
-[   14.256835]  cryptomgr_test+0x2c/0x58
-[   14.257164]  kthread+0x150/0x250
-[   14.257455]  ret_from_fork+0x10/0x20
-[   14.257774] ---[ end trace 0000000000000000 ]---
-[   14.828425] alg: skcipher: skipping comparison tests for xctr-aes-ce bec=
-ause xctr(aes-generic) is unavailable
-
-I'm assuming this is problematic and hopefully you can tell whether this
-is on the crypto or Rockchip side as well. In case of the latter, if
-you'd have pointers as to where the problem is/may be, that would be
-appreciated.
-
-[1] https://salsa.debian.org/diederik/linux/-/tree/cknow/general
-[2] https://salsa.debian.org/kernel-team/linux/-/commit/6991dd77f350
-6991dd77f350 ("crypto: Explicitly enable algorithm self-tests (Closes: #599=
-441)")
-[3] https://bugs.debian.org/599441
-[4] https://paste.sr.ht/~diederik/c18ad65427080d4c48e8bd2ac27282682069aff1
-[5] https://paste.sr.ht/~diederik/8fde0c2c1d005a15bb8a3b6d7ba8ae3298733250
-[6] https://paste.sr.ht/~diederik/cdcb6c4522fa782f9a692b7ea0cf33c2301e2176
-
-Cheers,
-  Diederik
-
---c36e9657663e9deaef35050d42feea9240774d94463be57bf8f99adf8b46
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaElrXAAKCRDXblvOeH7b
-bs/+AQClPPe4tZNNFJz24t2cRxLV/95TtxY52ZefqGhDPjneogEA9gnaR1mtglZq
-721GhOOKRssXZBg0Hlt4d3KnKhzPXw4=
-=y3gL
------END PGP SIGNATURE-----
-
---c36e9657663e9deaef35050d42feea9240774d94463be57bf8f99adf8b46--
+>That last one seems to be the culprit:
+>
+>root@pt2-scmi:~# grep DEVMEM /boot/config-6.14.0-rc1-00001-gfbe17d9b77b0
+>CONFIG_NET_DEVMEM=y
+>CONFIG_DEVMEM=y
+>CONFIG_GENERIC_LIB_DEVMEM_IS_ALLOWED=y
+>CONFIG_STRICT_DEVMEM=y
+>CONFIG_IO_STRICT_DEVMEM=y
+>
+>My kernel config is based upon Debian's and in commit
+>ef7e196951aa ("[arm*,powerpc*,s390x,x86] Enable IO_STRICT_DEVMEM")
+>
+>I found "can be reverted using the kernel parameter: iomem=relaxed", so
+>I added that parameter and rebooted:
+>
+>```sh
+>root@pt2-scmi:~# echo 'just (re-)booted into my PineTab2; screen is blank'
+>just (re-)booted into my PineTab2; screen is blank
+>root@pt2-scmi:~# uname -a
+>Linux pt2-scmi 6.14.0-rc1-00001-gfbe17d9b77b0 #18 SMP Mon Jun  9 13:17:28 CEST 2025 aarch64 GNU/Linux
+>root@pt2-scmi:~# cat /proc/cmdline 
+>root=UUID=42bbb627-189b-49e3-ae42-699815dc2cbb ignore_loglevel ro rootwait earlycon console=tty0 console=ttyS2,1500000n8 fw_devlink=off iomem=relaxed
+>root@pt2-scmi:~# ./andy-io -r -4 -l 0x100 0xfe040d00
+>fe040d00:  0000000f 00000000 00000000 00000000
+>fe040d10:  00000010 00000000 00000000 00000000
+>fe040d20:  00000000 00000000 00000000 00000000
+>fe040d30:  01b70010 00500370 00100510 10001000
+>fe040d40:  00000000 00000000 03b00010 00500370
+>fe040d50:  05120004 00100510 00000000 00000000
+>fe040d60:  00000000 00000000 00000000 00000000
+>fe040d70:  00000000 00000000 00000000 00000000
+>fe040d80:  15110903 00030911 1a150b04 00040b15
+>fe040d90:  15110903 00030911 00000000 00000000
+>fe040da0:  00000000 00000000 00000000 00000000
+>fe040db0:  00000000 00000000 00000000 00000000
+>fe040dc0:  00000000 00000000 00000000 00000000
+>fe040dd0:  00000000 00000000 00000000 00000000
+>fe040de0:  00000000 00000000 00000000 00000000
+>fe040df0:  00000000 00000000 00000000 00000000
+>root@pt2-scmi:~# ./andy-io -w -4 0xfe040d00 0x10000
+>root@pt2-scmi:~# echo 'screen just turned on \o/'
+>screen just turned on \o/
 
 
---===============2986725721380936633==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Do you mean the screen is turned on(that you see the display on the screen) here ?
 
+
+
+
+> root@pt2-scmi:~# ./andy-io -r -4 -l 0x100 0xfe040d00
+>fe040d00:  00010000 00000000 00000000 00000000
+>fe040d10:  00000010 00000000 00000000 00000000
+>fe040d20:  00000000 00000000 00000000 00000000
+>fe040d30:  01b70010 00500370 00100510 10001000
+>fe040d40:  00000000 00000000 03b00010 00500370
+>fe040d50:  05120004 00100510 00000000 00000000
+>fe040d60:  00000000 00000000 00000000 00000000
+>fe040d70:  00000000 00000000 00000000 00000000
+>fe040d80:  15110903 00030911 1a150b04 00040b15
+>fe040d90:  15110903 00030911 00000000 00000000
+>fe040da0:  00000000 00000000 00000000 00000000
+>fe040db0:  00000000 00000000 00000000 00000000
+>fe040dc0:  00000000 00000000 00000000 00000000
+>fe040dd0:  00000000 00000000 00000000 00000000
+>fe040de0:  00000000 00000000 00000000 00000000
+>fe040df0:  00000000 00000000 00000000 00000000
+>root@pt2-scmi:~# ./andy-io -w -4 0xfe040000 0x28002
+>root@pt2-scmi:~# echo "screen is still on ... don't see any changes on screen"
+>screen is still on ... don't see any changes on screen
+>root@pt2-scmi:~# ./andy-io -r -4 -l 0x100 0xfe040d00
+>fe040d00:  00010000 00000000 00000000 00000000
+>fe040d10:  00000010 00000000 00000000 00000000
+>fe040d20:  00000000 00000000 00000000 00000000
+>fe040d30:  01b70010 00500370 00100510 10001000
+>fe040d40:  00000000 00000000 03b00010 00500370
+>fe040d50:  05120004 00100510 00000000 00000000
+>fe040d60:  00000000 00000000 00000000 00000000
+>fe040d70:  00000000 00000000 00000000 00000000
+>fe040d80:  15110903 00030911 1a150b04 00040b15
+>fe040d90:  15110903 00030911 00000000 00000000
+>fe040da0:  00000000 00000000 00000000 00000000
+>fe040db0:  00000000 00000000 00000000 00000000
+>fe040dc0:  00000000 00000000 00000000 00000000
+>fe040dd0:  00000000 00000000 00000000 00000000
+>fe040de0:  00000000 00000000 00000000 00000000
+>fe040df0:  00000000 00000000 00000000 00000000
+>```
+>
+>For completeness, I then closed the lid and opened it again:
+>
+>```sh
+>root@pt2-scmi:~# dmesg | grep "vop2_"
+>[    5.128785] rockchip-drm display-subsystem: bound fe040000.vop (ops vop2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
+>[    5.138031] rockchip-drm display-subsystem: bound fe0a0000.hdmi (ops vop2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
+>[    5.139641] rockchip-drm display-subsystem: bound fe060000.dsi (ops vop2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
+>[    5.160937] vop2_crtc_atomic_try_set_gamma  gamma_lut: 0000000000000000
+>[    5.160950] vop2_vp_dsp_lut_disable dsp_ctrl: 0x0000000f
+>[ 1931.879232] vop2_crtc_atomic_try_set_gamma  gamma_lut: 0000000000000000
+>[ 1931.879245] vop2_vp_dsp_lut_disable dsp_ctrl: 0x00010000
+>```
+>
+>Cheers,
+>  Diederik
+>
+>>>> [   73.750524] vop2_crtc_atomic_try_set_gamma  gamma_lut: 0000000000000000
+>>>> [   73.750542] vop2_vp_dsp_lut_disable dsp_ctrl: 0x00010000
+>>>>>>>>>> patched vop2_vp_dsp_lut_disable function so that dsp_ctrl is set only if 
+>>>>>>>>>> GAMMA LUT EN bit is set. I checked that this also does not break the gamma 
+>>>>>>>>>> lut functionality with emphasis on out-of/into suspend behavior.
+>>>>>>>>>>
+>>>>>>>>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>>>>>>>>>> index d0f5fea15e21..7ddf311b38c6 100644
+>>>>>>>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>>>>>>>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>>>>>>>>>> @@ -897,6 +897,9 @@ static void vop2_vp_dsp_lut_disable(struct vop2_video_port *vp)
+>>>>>>>>>>  {
+>>>>>>>>>>  	u32 dsp_ctrl = vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
+>>>>>>>>>>  
+>>>>>>>>>> +	if ((dsp_ctrl & RK3568_VP_DSP_CTRL__DSP_LUT_EN) == 0)
+>>>>>>>>>> +		return;
+>>>>>>>>>> +
+>>>>>>>>>>  	dsp_ctrl &= ~RK3568_VP_DSP_CTRL__DSP_LUT_EN;
+>>>>>>>>>>  	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
+>>>>>>>>>>  }
+>>>>>>>>>
+>>>>>>>>>I built a kernel with 6.14-rc1 + this patch and can confirm the screen
+>>>>>>>>>has output again :-)
+>>>>>>>>>
+>>>>>>>>>> I will wait with sending a patch because maybe Andy has something to add 
+>>>>>>>>>> to this.
+>>>>>>>>>
+>>>>>>>>>Sounds like a plan. It could be that this issue surfaced an underlaying
+>>>>>>>>>issue and if so, fixing that would be even better.
+>
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2986725721380936633==--
-
