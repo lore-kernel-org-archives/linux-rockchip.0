@@ -4,51 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 328B6C677C4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 14:49:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22607C71131
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 14:49:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yunKzlTRk/MqHHFoN8YbLshBhNk+/mMP7dI47q8OsWo=; b=t+9uWmlrY7Ln4J
-	+V5GFKHRhdlW4OmFI8hMZfzGemF2eyMNye7MOIc3FXEyyk/FBKM/OZIQcna4cTr+l5tzafCv7kRiw
-	ieq7NeVLZVGhFnpOWvqJQCsObdCnKtd1PEvsWaK4/FkHL2w6vX/83o0BEdcxZdHkXXLUh5qlPGz4q
-	XAs+2ksgTkH4JHpXuzamqQhxYGug46SwsoAhX3adusTTRJHKl6NSRr3cgRmeL80jrOmenYWSXFgsY
-	lmr9v1z9F6bYZJcfBIp+6HuwDDINVise56CO/KBKcRQVtKz1m66ObxxJ2CwaP5TY/Gz7zQzIged8p
-	ZCNsl/JJpEC0E+DmtihA==;
+	List-Owner; bh=Iv4w3vFnYSxs9n8Ckp6jAfgIw8Mjcm2AEUaNxo080Gw=; b=ivH4kOlFtHBaHV
+	1YpcgYTdIrEoQEU0inVcyqQKAB/3b/fHz6O4qH3aenPpEFIW+yn+Joewf9CZ2K4RbKTO4aeGAZ6Ew
+	Sjqie1sBjsH7o3F9kkWF35cEVJzqbwhcGGf2V+YuK+zvqcs/ySAjK0hgoXDUKKy3BcA054WSx6Y11
+	m9cpXMi+ME2qKolMM0XhJL8nR7kC2eKVDfyQjIJfkkhBYXAgZSOAm5O+NMFewSa0A0kE5okGf+z2E
+	Ogqk0XvQb+HIhWJF2ScxnxVrmZBLLo1sDgKOkvKSQwKiBsh+EmlmWEun2qJ9+PxxofBB6Uqvu+o/f
+	nOovjMT6R7D9Y2sUbvXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPMlB-0000000AA3y-3HIJ;
-	Wed, 11 Jun 2025 14:49:01 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uPMl9-0000000A9zV-1cE4;
+	Wed, 11 Jun 2025 14:48:59 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPHwV-00000009VIB-1aSr;
-	Wed, 11 Jun 2025 09:40:24 +0000
+	id 1uPHwR-00000009VHT-2rHX;
+	Wed, 11 Jun 2025 09:40:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=K8BvZB90hVySmnnsjprzMk7oDjCE9iFM1r+3FRo9UNY=; b=bdbT+AMCTZOmPrC5zNJYmeN77W
+	jvu4RAPxHw4puuoqtF0HRiQ/yZHe7iiZ28rUH0nd3MmI/hYBU5CQG5ivMb1bhkwx2z+GMD9UcxycN
+	YGhHxm61dhWYGgnPNGGRDeVbBOPj1blB+tsWvuU+a8z6xSbMlWEVf2gfhGYs/0rQIv4/do3IK/Tii
+	if54ssBM08zZ5w05DakSxcZkDZirQIUR8bjnICfrSOl3taQrBTg1Tqs6pL8GCoc8/XeYxHK0vyrHx
+	hxnTc2XoxmGt1LUE0TfSfxtCQ8bk3cR3MYTfqMl64qJNEmhfgtNDYvG+2CHCAElX0tn2P69vSMCmR
+	lUgSDF6g==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uPHwP-00000002EzJ-2cpu;
+	Wed, 11 Jun 2025 09:40:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749634821;
-	bh=oW4XgX/lmD63EJZeg/21ZPWf1q1qDffFRs1xh6RK0tk=;
+	s=mail; t=1749634815;
+	bh=EOF0wPKaDO4VgvfGSVrXCHsbhCfTQG4KN/6dg+9yv4s=;
 	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
-	b=AIOCDZdJNc4cvOI+9dR4QtiyWejVsnTsx76OJcpPK2K47PYK1K25nHnx7NC15UZWg
-	 U9iGg3zXSwKKrJstGNXHeDB23pm48ImbKGlYG1lleu82ZHF8IMyGMJg8CoSFiMOB09
-	 llPZk4oMAaRxc2xD98eB9goX51LHvtnwlnwATWVveVXNtXOc7Cfm9S6nwsYZXbfqDG
-	 HA4RJSB5h6KeYuPVxfELN8+upjB6gR127HILGMeipNd1WbkfAHOPr61vUR+JENTSmt
-	 JzjqERVGHb5WeTn4mDzbcXqS2kGco68WwNBPjsFQYfXHpcbeJnE9wkx4DkdjOxORI8
-	 55Km+HNivIKsw==
+	b=G1EFhqLhpfUNHYRce2Shf7OUW7CiLa9zTxIYeMK9msSvQcpGRddVYbboJFxp09cTw
+	 pfCXxWcB111nao4H/6Un1OT5MRE1keyyNcCbWArEQxEoS4sKk6cKLDyN5wQmCcFRe0
+	 6ULMq4cpFtCfLIVeK1Vn1ahRyCQau3XZn5ofNA0qvwhRWHfYxuoovAr99sRCcgUx2z
+	 P6tlwpz/dHR3L5Keiq4qtZ7yTZES8vavuGGH4aTGckSgw/BhIDDk1c1a8p1aR852Yb
+	 iTSEbqL8vlmj9ANW56RRvQAKnFqOpvUFvx70VMhHzOFWrfwNI15zoQoSEU0wkePWUt
+	 D6rgOCsNCAr2A==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9D1AB17E36B3;
-	Wed, 11 Jun 2025 11:40:19 +0200 (CEST)
-Message-ID: <3827d632-6407-40bf-9b7a-148b0c46bea8@collabora.com>
-Date: Wed, 11 Jun 2025 11:40:19 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D4FA517E0FAD;
+	Wed, 11 Jun 2025 11:40:12 +0200 (CEST)
+Message-ID: <d5f0a339-11a4-42d1-82b6-807e6e45953b@collabora.com>
+Date: Wed, 11 Jun 2025 11:40:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 5/7] iommu/mtk: Remove iommu_ops pgsize_bitmap
+Subject: Re: [PATCH v2 4/7] iommu: Remove iommu_ops pgsize_bitmap from simple
+ drivers
 To: Jason Gunthorpe <jgg@nvidia.com>, Alexandre Ghiti <alex@ghiti.fr>,
  Alim Akhtar <alim.akhtar@samsung.com>,
  Alyssa Rosenzweig <alyssa@rosenzweig.io>, Albert Ou <aou@eecs.berkeley.edu>,
@@ -78,12 +93,12 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Alexandre Ghiti <alex@ghiti.fr>,
 Cc: Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
  patches@lists.linux.dev, Niklas Schnelle <schnelle@linux.ibm.com>,
  Sven Peter <sven@svenpeter.dev>, Tomasz Jeznach <tjeznach@rivosinc.com>
-References: <5-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
+References: <4-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
 Content-Language: en-US
-In-Reply-To: <5-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
+In-Reply-To: <4-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_024023_591960_E85EA756 
-X-CRM114-Status: UNSURE (   7.02  )
+X-CRM114-CacheID: sfid-20250611_104018_043849_A4591020 
+X-CRM114-Status: UNSURE (   7.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,11 +117,14 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Il 09/06/25 22:41, Jason Gunthorpe ha scritto:
-> This driver just uses a constant, put it in domain_alloc_paging
-> and use the domain's value instead of ops during finalise.
+> These drivers just have a constant value for their page size, move it
+> into their domain_alloc_paging function before setting up the geometry.
 > 
 > Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+> Acked-by: Niklas Schnelle <schnelle@linux.ibm.com> # for s390-iommu.c
 > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+
+For MediaTek:
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
