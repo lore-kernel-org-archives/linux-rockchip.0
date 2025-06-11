@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D83DC71136
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 20:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11708C71136
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 20:05:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zRezNX63CXZ+Er5zDAAc0KgwcLzq9R/dWqG4A/T6U0c=; b=kPxjh0QfeS7XUV
-	6mnpD38rGwiA8x4SkS7gB/9b7cnqgQEI1t//Gc4rIqKDLyX8OFImTHQj3nakM+9TD1v/3UXi/RIxz
-	SBoA+3hksYFhsvdukJiSvcMqmCNyqvSfxJIIciw+CeoARDri38JLO/wcNEA/N2pzXnfgY3WvM7kDg
-	xBhgjIApURvXszRzTD396CddTazPPcBJkXgcdACwnlxmuTj6RfpiRoCtb8IXOdRugaaRNRgitdX5b
-	Dx6wMdoXTOVtTM1GfDWXI4gF/zCn6W7EN/W99Ye0XM8HujBjAdNxuYO3kO71wV6wjcOxpdTZ1lz9F
-	t3hXXXeGbRYFfYEBrdKw==;
+	List-Owner; bh=s4fKSSsS8EJZpkfMiSZCPHEYy5hSwDJUlj/eiJSeA2Y=; b=MmGNcFn72tH0n8
+	V0juCoNtum+6f+aRPWr8vYlQk84ZumaH2I89RerAt7V2Yui5/8aYVM+0xMKMvpayGC+df7DjnZ9DL
+	poG6bhNIOXoozReXi5ZaGXr/tvLK3ByZDkeLzd5biB/E6lw+o08KR2146NsNwvBnuUlHMVMPG6ei3
+	HjfWoPwe0JP6jfCsstL2h92MBOP/iK0lKYb11vYjsg8ILjqPeOJHkjht0fvMFrLned5H2ZwoQG/W6
+	z0rQy2opP1vJNzsTHjTbRQRRyOYxVzV6/xSVxybrlpWj91qkTKv9+F83tcvXENhpXNx1KceHMt1p1
+	THvObmxCPHTpsjqI2CeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPRen-0000000B7KO-36k1;
-	Wed, 11 Jun 2025 20:02:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uPRgw-0000000B7kc-1yFO;
+	Wed, 11 Jun 2025 20:04:58 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPP6c-0000000AhLN-35G3;
+	id 1uPP6c-0000000AhLP-2Q61;
 	Wed, 11 Jun 2025 17:19:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DED3D5C5B04;
-	Wed, 11 Jun 2025 17:17:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id C2B7FC4CEEA;
-	Wed, 11 Jun 2025 17:19:16 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A215E4A97B;
+	Wed, 11 Jun 2025 17:19:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 09429C4CEFA;
+	Wed, 11 Jun 2025 17:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749662356;
-	bh=5S76H0gCqRW35R4vrZQiDQSDEFyCSQxzI3LegANS2nk=;
+	s=k20201202; t=1749662357;
+	bh=d14T3b9I7SeoyMIApNHfrQv35BY3u+cgJG5tuiL20fA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=R3nKwIIK4wSEbKv1d7lixP7dF5vO7RCP0X0Wbb33ubbax2DS//GCGq+swXhIPHKlL
-	 tTOIwVwFndeyov6xteu+rVrHGt3ToYP3j3etgIwykxf35rCHiBiNjeJM8XccqLpTuS
-	 7X8+is+K9wDiEgAajOSYSDfTeGbTNA7bb5iuaM0W9lfLo43h9INYs8ILJ61XLmOZz8
-	 bkY1y1gOO83ZmYccMBk9pxFlGDKSAbP29AWgt7h9uKI+2KHpjc9hcQhwX97+MNcHH+
-	 15Z1w3rjXVojiyakiGr7QZINSJwbJAofO4CeNHRWyT0KBCUefHc4fT5OnBSj9vkIiI
-	 B+r3ceMPwR71A==
+	b=JaRKmcETvDCR0dQMgJGiZu6VU0GOdBh6zmEu35aYU07aDg9yqXh16BrTBy0z18ucO
+	 wzhmoKAMzfPWuh/iL84KDlqKDeGSz1rUOmOPFqSVwDE18zKxnPmQSpEOT7Ooz0QPWf
+	 5zq+jT0RtV037N7LkFIfCeKRAMR/qD4PGQECuFJgrUhTXRZSKmiUkN5Bd/GpLK2r3H
+	 iOYfVeVENs98QSRRljPewLirZ01L6nud4r7pTSI5Eo0yeo3HOJXw48WkmwHjGpMcsl
+	 XoX5tRFXYYEoxyhh8cc/Pd+RnnFrnJVYHmjGl2srh1NZCfHaX4+RtHKz8S5u7LlLGU
+	 Y0Ey4XCXM/q7A==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B2285C71137;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED33BC71137;
 	Wed, 11 Jun 2025 17:19:16 +0000 (UTC)
 From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Wed, 11 Jun 2025 19:06:47 +0200
-Subject: [PATCH v8 02/13] media: dt-bindings: video-interfaces: add defines
- for sampling modes
+Date: Wed, 11 Jun 2025 19:06:50 +0200
+Subject: [PATCH v8 05/13] media: dt-bindings: add rockchip rk3568 mipi
+ csi-2 receiver
 MIME-Version: 1.0
-Message-Id: <20240220-rk3568-vicap-v8-2-9d9cbc4b524d@collabora.com>
+Message-Id: <20240220-rk3568-vicap-v8-5-9d9cbc4b524d@collabora.com>
 References: <20240220-rk3568-vicap-v8-0-9d9cbc4b524d@collabora.com>
 In-Reply-To: <20240220-rk3568-vicap-v8-0-9d9cbc4b524d@collabora.com>
 To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
@@ -76,21 +76,22 @@ Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, 
  Michael Riesch <michael.riesch@collabora.com>, 
- Michael Riesch <michael.riesch@collabora.com>
+ Michael Riesch <michael.riesch@collabora.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1749661609; l=1010;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1749661609; l=4591;
  i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=Uz74OJ3MrVHSpMmLIY3bphZ6CO+aAi3TjYd87Bbmoq0=;
- b=IRl2S/6dMLDxuofxiYL3lpS9VZ6rV2Bj9ayUCzijx0fQg7pE9OiO5Pf+T3wFuWu95StdTRrDD
- 9CafAfwrlIRCwc14ft1U+hSqApSk2z3OzqFs2ERCNCBFqXKrSaTwHyL
+ bh=UTHajcIh5J37uHEGDaZDHkVVKfDjHGLHo6x8PCd9zVo=;
+ b=+VQuQkuxI3zP7t7unwIrJwYW3ViARjisdYhv9mxubaTbTE0X3AQyij5rvSCwUU66xXyivmWGL
+ xKtkIizEB/UAuQv1NHicZ49C/rtVl9pFebWpBw00WkHPgf78uR5PGnI
 X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
  pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
 X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
  with auth_id=371
 X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_101918_905958_9E1C70EA 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20250611_101918_716923_E4AB4971 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,30 +111,163 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Michael Riesch <michael.riesch@collabora.com>
 
-Add defines for the pixel clock sampling modes (rising edge, falling edge,
-dual edge) for parallel video interfaces.
-This avoids hardcoded constants in device tree sources.
+Add documentation for the Rockchip RK3568 MIPI CSI-2 Receiver.
 
-Acked-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 ---
- include/dt-bindings/media/video-interfaces.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ .../bindings/media/rockchip,rk3568-mipi-csi.yaml   | 124 +++++++++++++++++++++
+ MAINTAINERS                                        |   6 +
+ 2 files changed, 130 insertions(+)
 
-diff --git a/include/dt-bindings/media/video-interfaces.h b/include/dt-bindings/media/video-interfaces.h
-index 88b9d05d8075..0b19c9b2e627 100644
---- a/include/dt-bindings/media/video-interfaces.h
-+++ b/include/dt-bindings/media/video-interfaces.h
-@@ -20,4 +20,8 @@
- #define MEDIA_BUS_CSI2_CPHY_LINE_ORDER_CAB	4
- #define MEDIA_BUS_CSI2_CPHY_LINE_ORDER_CBA	5
- 
-+#define MEDIA_PCLK_SAMPLE_FALLING_EDGE		0
-+#define MEDIA_PCLK_SAMPLE_RISING_EDGE		1
-+#define MEDIA_PCLK_SAMPLE_DUAL_EDGE		2
+diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml
+new file mode 100644
+index 000000000000..563ad2ab86b0
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml
+@@ -0,0 +1,124 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/rockchip,rk3568-mipi-csi.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- #endif /* __DT_BINDINGS_MEDIA_VIDEO_INTERFACES_H__ */
++title: Rockchip RK3568 MIPI CSI-2 Receiver
++
++maintainers:
++  - Michael Riesch <michael.riesch@collabora.com>
++
++description:
++  The Rockchip RK3568 MIPI CSI-2 Receiver is a CSI-2 bridge with one input port
++  and one output port. It receives the data with the help of an external
++  MIPI PHY (C-PHY or D-PHY) and passes it to the Rockchip RK3568 Video Capture
++  (VICAP) block.
++
++properties:
++  compatible:
++    const: rockchip,rk3568-mipi-csi
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    maxItems: 1
++
++  phys:
++    maxItems: 1
++    description: MIPI C-PHY or D-PHY.
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    properties:
++      port@0:
++        $ref: /schemas/graph.yaml#/$defs/port-base
++        unevaluatedProperties: false
++        description: Input port node. Connect to e.g., a MIPI CSI-2 image sensor.
++
++        properties:
++          endpoint:
++            $ref: video-interfaces.yaml#
++            unevaluatedProperties: false
++
++            properties:
++              bus-type:
++                enum: [1, 4]
++
++              data-lanes:
++                minItems: 1
++                maxItems: 4
++
++            required:
++              - bus-type
++              - data-lanes
++
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Output port connected to a RK3568 VICAP port.
++
++    required:
++      - port@0
++      - port@1
++
++  power-domains:
++    maxItems: 1
++
++  resets:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - phys
++  - ports
++  - power-domains
++  - resets
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3568-cru.h>
++    #include <dt-bindings/media/video-interfaces.h>
++    #include <dt-bindings/power/rk3568-power.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        csi: csi@fdfb0000 {
++            compatible = "rockchip,rk3568-mipi-csi";
++            reg = <0x0 0xfdfb0000 0x0 0x10000>;
++            clocks = <&cru PCLK_CSI2HOST1>;
++            phys = <&csi_dphy>;
++            power-domains = <&power RK3568_PD_VI>;
++            resets = <&cru SRST_P_CSI2HOST1>;
++
++            ports {
++                #address-cells = <1>;
++                #size-cells = <0>;
++
++                csi_in: port@0 {
++                    reg = <0>;
++
++                    csi_input: endpoint {
++                        bus-type = <MEDIA_BUS_TYPE_CSI2_DPHY>;
++                        data-lanes = <1 2 3 4>;
++                        remote-endpoint = <&imx415_output>;
++                    };
++                };
++
++                csi_out: port@1 {
++                    reg = <1>;
++
++                    csi_output: endpoint {
++                        remote-endpoint = <&vicap_mipi_input>;
++                    };
++                };
++            };
++        };
++    };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index c6f56bbcdd1c..159ed29e196a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -21457,6 +21457,12 @@ F:	Documentation/userspace-api/media/v4l/metafmt-rkisp1.rst
+ F:	drivers/media/platform/rockchip/rkisp1
+ F:	include/uapi/linux/rkisp1-config.h
+ 
++ROCKCHIP MIPI CSI-2 RECEIVER DRIVER
++M:	Michael Riesch <michael.riesch@collabora.com>
++L:	linux-media@vger.kernel.org
++S:	Maintained
++F:	Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml
++
+ ROCKCHIP RK3568 RANDOM NUMBER GENERATOR SUPPORT
+ M:	Daniel Golle <daniel@makrotopia.org>
+ M:	Aurelien Jarno <aurelien@aurel32.net>
 
 -- 
 2.39.5
