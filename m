@@ -4,55 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A471DC71141
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 23:07:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 472F6C71136
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 23:13:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mk5HRucn+gEa+XIIr/BtgzvhZWDGNR5rmFRyEnjlS+8=; b=ORjKWKX4hpym1/
-	sfVLT6Z4amSrRka13ip0fxraFbKj9qx/vMuNuxohc/761HNgzaj9OOJzDe85qNRbFim7OjnkXb8aZ
-	0KYlnJElLDTjP1d3AzgWCKS9EnlmC7//eep1UuPmnEH/zHPFO50POhMtxFh7JTbvqQkKlx2uiYczS
-	QCaMaOHu7RXwy3MGLfYJ/P4Sb2t5/SGSVzpaaW+Qx4TQ/Y93dwOWdlOrRgoPh9mUYHsPJ+f9ivKAy
-	NK6tJGTsrAXcqY4jcfWo3GlQMbySGVxtKBDU8asfOAi5y/tZEmARikfk6OO0zxPm2wOY/fX+EWdaW
-	9IhLPzadicw0UsxWcjZQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pIolySAtPuqKumMyzSXwiVs4k6uY0nki0n4kGsDBIv8=; b=QfmjmekX5E9z3K
+	e8qzQM2hOukHF9a4GdNcKpByJHKaN0Pes2gOb9p48CwNS7fFuQT7vqzr7+O4u2ef2lS+3YTqiJLsF
+	Dgvh7iB/gNqKYXzc/t/taEIIluvR6Z1dlf1iR0AzwpqxyOwhkXBElMPeAzPOSu4eIOtAwXlDQVjzb
+	4ldOVAPXyj8WdSc9kf3CeGURlktCz1kOb62SqmkZhL9e1vqTC0cXD3QU79C6cGUaBny3wIcZtp9v3
+	eQ0qN5PgV3BjLI73ASIj42rcUSTUkRowv2LVUfDGSfg94hk1WVratyeyctZhjNPRDYxh4r15Aevh0
+	/XwOjpWfP/p+w4pcb0Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPUX7-0000000Bd01-1SEX;
-	Wed, 11 Jun 2025 23:07:01 +0000
-Received: from mail-10628.protonmail.ch ([79.135.106.28])
+	id 1uPUdc-0000000BeVa-2Cnc;
+	Wed, 11 Jun 2025 23:13:44 +0000
+Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPTgD-0000000BRSC-2Kjb
+	id 1uPU99-0000000BVI2-0Y6o
 	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Jun 2025 22:12:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1749679937; x=1749939137;
-	bh=e7+TKwLiFTgSLhj8SFeUWygx/8rXRPa8q4Cd0wJL3rg=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
-	b=Db/FT/FEExCRwvGk1CN8lOHpwtjVSGl3U1GLOPiDQ5Q5hqNNj+rDEC2tXKRgXAIhp
-	 QxVpLFCbWVlLIc92chKJ+skDN4Z1dQCJ/MAzbw24d7RDMnZwgqKOvRsvdbKeXGffGx
-	 5koby5t+pb+hMExtOT2jiexTDvw3J9vdTddrzxPeL+1edVzxgGDyE3u8TUWCgxfhtk
-	 kS8wUX/lQJPcp0V5qoMl5OZNJOqkTRZVRBf4phwWaaGKMLM+L8WNL270xYg4x1seGo
-	 4I9QaV+p7ZGKXETtuQbV/6ayfj+6zE2rwhDHTkOsc49VC1hW266yjEDfDyhKmcPEQW
-	 32dB7iSBeorAg==
-Date: Wed, 11 Jun 2025 22:12:11 +0000
-To: Andy Yan <andyshrk@163.com>
-From: Piotr Zalewski <pZ010001011111@proton.me>
-Cc: Diederik de Haas <didi.debian@cknow.org>, hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, Dang Huynh <danct12@riseup.net>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH drm-misc-next] rockchip/drm: vop2: don't check color_mgmt_changed in atomic_enable
-Message-ID: <zJBqdllX3IT9_-h9G49ay_GuU4nVf_n2Daxe1vL7PavA21RmMyH-vOqxdpahIknlp0_lpwwsxZyNyyQrF30rJquCjd6BcUU-FBgO0MM45iA=@proton.me>
-In-Reply-To: <562b38e5.a496.1975f09f983.Coremail.andyshrk@163.com>
-References: <20241206192013.342692-3-pZ010001011111@proton.me> <DAI0A1Y753FJ.B0NMT8L5VPEH@cknow.org> <4b380a57.8ab2.197591815a8.Coremail.andyshrk@163.com> <DAISW8MXEU0G.3AMRSKNYQUJY8@cknow.org> <4e600374.6dc7.1975df03a2d.Coremail.andyshrk@163.com> <DAJNEG81JCU5.35KVU8KAT5MDU@cknow.org> <b25ddc.a29c.1975eea8033.Coremail.andyshrk@163.com> <DAJPBG7GPPH2.3BDCMH0U3FU0E@cknow.org> <562b38e5.a496.1975f09f983.Coremail.andyshrk@163.com>
-Feedback-ID: 53478694:user:proton
-X-Pm-Message-ID: 02c8703b38a58061d7584929d53a73e3d33835da
+	Wed, 11 Jun 2025 22:42:18 +0000
+Received: by mail-oi1-x235.google.com with SMTP id 5614622812f47-40667dc8a62so159128b6e.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 11 Jun 2025 15:42:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1749681734; x=1750286534; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=7BvPO14dME7rxPy0XG4Suixfv/o3vfcBS7p0YrP3lVs=;
+        b=t/gLFDpcIeSEcCP7RvT5sK1sP6SRfyLQqvn0zjNRrHK61VVf7rGFycKl3070W+E2yq
+         6w6VUpyeelTp56+6t7knkhLuEVzyMzpOTubbBm2YxrPiqOJJMUBJPoyTBOEApQ0FOjwx
+         OBL+zKvvow2BwB3dgolE5bypOEShZAJ0kzQoFSdrIKi0J6aYPG+OuEtykPhP7AHQPP0J
+         PIKhxzHkVYitCqCVs0BW/ZfZQSefJHbdhIzh+vZvZuwV9N/DIKHCfuA1RANO8ZN2vXU0
+         4ATZ4qoOh4RyxonND2JCquc12c5MciCOfoM8qS5/NdXtYBivPl1waBIxQHp0Ohb4IzMr
+         MAhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749681734; x=1750286534;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7BvPO14dME7rxPy0XG4Suixfv/o3vfcBS7p0YrP3lVs=;
+        b=TE8j5Iaqiq0TNYddk19qDVadQS0IPaLPmeJX9eNF7DWioFcm+QDbQHDnoLgXbrKao+
+         AIszCwC+BvcHNxUynLDMYwWZ3mlBlYE6CyZLYA0iH79PYwRRTZq0f9yOEPaGYw3Y8E0Y
+         2/DIIFlUA5q7Hkq2Ap5bDVkcMNjyoZ4g5aTz/+54L2V8agnoFwz57BLT0GGk4pm1Rumx
+         Ul04d+L2O8fx7KfDB90xC0Mj2XsW6Ug1hxdzxBOEcI0fbbizcFWv3xRbbij0jAgy8FTE
+         cEA6vTrV2XpLvjY5knyE5UhKikGRHmDGn7JN6Oyp2xKoDQU2jYijm0dC1Bwp1TgSqu7Q
+         TGWQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVGHn24R405wUfIyAeDlZZ/cJ570aoKi0pAiBbdFNBtbNSTT2nRGpkPiM1KOkF2fr5flCA8PRsoRdJAmOqf4Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzmUS4GvMQO33iUv+p4N7SlCPmDfU/KfmCumq0vYHQSWSHp/MnB
+	IdCRtTuKZ25NDqyHzp9O+l7hxKjVFadDXs8eSRtgEJwzoFxEpUPhOdPBVWttBslUXXM=
+X-Gm-Gg: ASbGncvrb5w4h0G+dhQJS8g81ZxMPZ7f8lox9kuQVFkiJmQKOa9RHswPJteCnJFi4hr
+	qG1TvizOlfubEwbU60aBmULoSBWUhpRHC4thUbiweZD1CZHT9UXJ7fRq7AnSpY7jd4JsZl2KHT6
+	rGg+BXbWDAdeIdc4txbYgviCLgoAIiH30J3yyYT2AwZkEtGhVqMIvQiVz3IVVDSGZIlK5gtjhAP
+	WM8OrvHgPtsvpRy0p66H9DL3FEAywIp3F0p7ZY8HblA4+ihGVMvm02HZrTQ0OYZA5TONimOOLuw
+	wNFAhG6Gld5DFbrMcAi4be0Dtqgrorp6CvFlJgh3siWNnVgbMRrhCz9pIfdZtrP0atgM
+X-Google-Smtp-Source: AGHT+IF44UK8AdQd6fFvDc21ilNMu4m0bVVIKOfl5xOOjYgMQm/xz/i3oLPfD33Zol0pZXaxSSar7w==
+X-Received: by 2002:a05:6808:4fe7:b0:3fc:7e1:a455 with SMTP id 5614622812f47-40a669c01efmr518853b6e.2.1749681734252;
+        Wed, 11 Jun 2025 15:42:14 -0700 (PDT)
+Received: from [127.0.1.1] ([2600:8803:e7e4:1d00:4753:719f:673f:547c])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-40a682fbf05sm24684b6e.32.2025.06.11.15.42.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Jun 2025 15:42:12 -0700 (PDT)
+From: David Lechner <dlechner@baylibre.com>
+Subject: [PATCH 00/28] iio: zero init stack with { } instead of memset()
+Date: Wed, 11 Jun 2025 17:38:52 -0500
+Message-Id: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAHwFSmgC/x3NQQrCMBBG4auUWTuQCVXBq4iLmEztjzSRTFBp6
+ d0NLr/NexuZVqjRZdio6huGkjvkMFCcQ34oI3WTd/7oTiIMFF61FkZGY2shPvmDNndb05C4TLz
+ oYtrYJfFplHDWeKcefFWd8P3Prrd9/wGWqNUmfAAAAA==
+X-Change-ID: 20250611-iio-zero-init-stack-with-instead-of-memset-0d12d41a7ecb
+To: Michael Hennerich <michael.hennerich@analog.com>, 
+ Lars-Peter Clausen <lars@metafoo.de>, Jonathan Cameron <jic23@kernel.org>, 
+ =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
+ Andy Shevchenko <andy@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Francesco Dolcini <francesco@dolcini.it>, 
+ =?utf-8?q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>, 
+ =?utf-8?q?Leonard_G=C3=B6hrs?= <l.goehrs@pengutronix.de>, 
+ kernel@pengutronix.de, Oleksij Rempel <o.rempel@pengutronix.de>, 
+ Roan van Dijk <roan@protonic.nl>, 
+ Tomasz Duszynski <tomasz.duszynski@octakon.com>, 
+ Jacopo Mondi <jacopo@jmondi.org>, 
+ Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>, 
+ Mudit Sharma <muditsharma.info@gmail.com>, 
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>, 
+ =?utf-8?q?Ond=C5=99ej_Jirman?= <megi@xff.cz>, 
+ Andreas Klinger <ak@it-klinger.de>, 
+ Petre Rodan <petre.rodan@subdimension.ro>
+Cc: linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, 
+ David Lechner <dlechner@baylibre.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4170; i=dlechner@baylibre.com;
+ h=from:subject:message-id; bh=yr3KMlpdAIDpFQpkD3xC/enXTLilJ1AAF5YBAl5/CHI=;
+ b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBoSgWAfjXY88M5ZYDZ+7DX9ossNW945JAucW1/v
+ jGUtSZ5M1eJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaEoFgAAKCRDCzCAB/wGP
+ wPuQB/9qvN9qaCT672/2gBbYyejlFF3k1/j6Gn/mB3Q9wXva2BfxWsvzY/aFxXDjRUixvEIYtHr
+ Aa2OgjvXXp8xeKaF9+2tuO3eZMkPIlIsGMSh8RlslM5ziujYyK74q8EbozYwpwlW1iEN+nhz2d2
+ veKGy321c5RC4/6ArZl7vHAkwa+0YbhQgUQMiL/p0G7uDdnZaPAOsMjP3qOZAFm5g5e6xP3QeuZ
+ NXEr3Fmbf7SKpE+P8cDfUrlyI0ktmNb2LmQCFLyFLxJcwfPz1+dMjbqnyCkB+OsBvSwWgo6eIed
+ GyVNvi0jVIHbMRsHldgnXbcgyInHxugOhj5ZAno4ZKQqOxLc
+X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
+ fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_151222_352602_594CBB28 
-X-CRM114-Status: GOOD (  19.39  )
+X-CRM114-CacheID: sfid-20250611_154215_410301_198D522C 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,66 +130,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgoKCkhpIEFuZHkgYW5kIERpZWRlcmlrCgo+IAo+IFRoZSByb290IGNhc2UgZm9yIHRoZSBwcm9i
-bGVtIGlzIG5vdyBjbGVhcuOAggo+IAo+IE1vc3Qgb2YgdGhlIHJlZ2lzdGVycyBpbiBWT1AgbmVl
-ZCB0byB3cml0ZSB0aGUgY2ZkX2RvbmUgcmVnaXN0ZXIoY2FsbCB2b3AyX2NmZ19kb25lKQo+IGFm
-dGVyIHlvdSBoYXZlIGNvbmZpZ3VyZWQgdGhlIHJlZ2lzdGVycy4gVGhlbiwgdGhleSB3aWxsIHRh
-a2UgZWZmZWN0IG9ubHkgd2hlbiB0aGUgVlNZTkMgZXZlbnQgb2NjdXJzKEl0IGRvZXNuJ3QgdGFr
-ZSBlZmZlY3QgaW1tZWRpYXRlbHkgYWZ0ZXIgeW91IGZpbmlzaCB3cml0aW5nLikuCj4gVGhpcyBh
-bHNvIGluY2x1ZGVzIGFsbCB0aGUgVlBfRFNQX0NUUkwgcmVnaXN0ZXJzLgo+IAo+IHNlZSB0aGUg
-Y29kZToKPiAKPiB2b3AyX3ZwX3dyaXRlKHZwLCBSSzM1NjhfVlBfRFNQX0NUUkwsIGRzcF9jdHJs
-KTsKPiAKPiB2b3AyX2NydGNfYXRvbWljX3RyeV9zZXRfZ2FtbWEodm9wMiwgdnAsIGNydGMsIGNy
-dGNfc3RhdGUpOwo+IC0tPgo+IAo+IHN0YXRpYyB2b2lkIHZvcDJfdnBfZHNwX2x1dF9kaXNhYmxl
-KHN0cnVjdCB2b3AyX3ZpZGVvX3BvcnQgdnApCj4gewo+IHUzMiBkc3BfY3RybCA9IHZvcDJfdnBf
-cmVhZCh2cCwgUkszNTY4X1ZQX0RTUF9DVFJMKTsKPiAKPiAKPiBXaGVuIHdlIHJlYWQgdGhpcyBy
-ZWdpc3Rlciwgd2UgYXJlIHJlYWRpbmcgdGhlIGFjdHVhbCBlZmZlY3RpdmUgdmFsdWUsCj4gbm90
-IHRoZSBvbmUoZHNwX2N0cmwpIHRoYXQgd2FzIGp1c3Qgd3JpdHRlbiBpbiBiZWZvcmUgKGl0IGhh
-cyBub3QgeWV0IHRha2VuIGVmZmVjdCkKPiAKPiBTbyB3aGVuIHdlIGNvbnRpbnVlIHRvIHdyaXRl
-IGFib3V0IHRoaXMgcmVnaXN0ZXIgaGVyZSwgd2Ugb3ZlcndyaXRlIHRoZSBhY3R1YWwKPiB2YWx1
-ZSB3ZSBvcmlnaW5hbGx5IGludGVuZGVkIHRvIHB1dCBpbi4KPiAKPiAKPiBkc3BfY3RybCAmPSB+
-UkszNTY4X1ZQX0RTUF9DVFJMX19EU1BfTFVUX0VOOwo+IHZvcDJfdnBfd3JpdGUodnAsIFJLMzU2
-OF9WUF9EU1BfQ1RSTCwgZHNwX2N0cmwpOwo+IH0KPiAKPiBJIHRoaW5rIHRoZSBjb3JyZWN0IHNv
-bHV0aW9uIHNob3VsZCBiZSBzaW1pbGFyIHRvIHRoZSBXaW5kb3dzLXJlbGF0ZWQgcmVnaXN0cnkg
-c2V0dGluZ3MuCj4gQWxsIHRoZSByZWdpc3RlcnMgcmVsYXRlZCB0byBWaWRlbyBQb3J0cyBzaG91
-bGQgYmUgc2V0IGFzIG5vbi12b2xhdGlsZSwgc2VlOgo+IC8KPiAqIFRoZSB3aW5kb3cgcmVnaXN0
-ZXJzIGFyZSBvbmx5IHVwZGF0ZWQgd2hlbiBjb25maWcgZG9uZSBpcyB3cml0dGVuLgo+ICogVW50
-aWwgdGhhdCB0aGV5IHJlYWQgYmFjayB0aGUgb2xkIHZhbHVlLiBBcyB3ZSByZWFkLW1vZGlmeS13
-cml0ZQo+ICogdGhlc2UgcmVnaXN0ZXJzIG1hcmsgdGhlbSBhcyBub24tdm9sYXRpbGUuIFRoaXMg
-bWFrZXMgc3VyZSB3ZSByZWFkCj4gKiB0aGUgbmV3IHZhbHVlcyBmcm9tIHRoZSByZWdtYXAgcmVn
-aXN0ZXIgY2FjaGUuCj4gKi8KPiBzdGF0aWMgY29uc3Qgc3RydWN0IHJlZ21hcF9yYW5nZSB2b3Ay
-X25vbnZvbGF0aWxlX3JhbmdlW10gPSB7Cj4gcmVnbWFwX3JlZ19yYW5nZSgweDEwMDAsIDB4MjNm
-ZiksCj4gfTsKPiAKPiBzdGF0aWMgY29uc3Qgc3RydWN0IHJlZ21hcF9hY2Nlc3NfdGFibGUgdm9w
-Ml92b2xhdGlsZV90YWJsZSA9IHsKPiAubm9fcmFuZ2VzID0gdm9wMl9ub252b2xhdGlsZV9yYW5n
-ZSwKPiAubl9ub19yYW5nZXMgPSBBUlJBWV9TSVpFKHZvcDJfbm9udm9sYXRpbGVfcmFuZ2UpLAo+
-IH07Cj4gCgpJJ20gd29uZGVyaW5nIHRoYXQgcGVyaGFwcyBtYWtpbmcgYSBzZXBhcmF0ZSBjb2Rl
-IHBhdGggZm9yIGdhbW1hCkxVVCBlbmFibGUgaW4gYXRvbWljIGVuYWJsZSB3b3VsZCBmaXggaXQ/
-IElJVUMgd2Ugc2V0IGNvbmZpZy4gCmVhcmxpZXIgaW4gYXRvbWljX2VuYWJsZSBhbmQgd3JpdGUg
-ZHNwX2N0cmwgKyBjZmdfZG9uZSB3aXRoIHByb3Blcgpjb25maWd1cmF0aW9uIGJ1dCBzaW5jZSB0
-aGVyZSB3YXNuJ3QgYSB2c3luYyB0aGUgcmVhZCBvZiBkc3AgY3RybAppbiBsdXQgZGlzYWJsZSBp
-cyBub3QgY29ycmVjdCAob3Igd2UgY2Fubm90IGJlIHN1cmUgaXQgaXMgY29ycmVjdCkuClB1dHRp
-bmcgdHJ5IHNldCBnYW1tYSBMVVQgYmVmb3JlIGZpcnN0IGRzcCBjdHJsIHdyaXRlIGFuZCBtYWtl
-IGl0CnVzZSB0aGUgZHNwX2N0cmwgdmFsdWUgc28gZmFyIHdyaXR0ZW4gaW4gYXRvbWljIGVuYWJs
-ZSBjb3VsZCBhbHNvCmZpeCB0aGUgaXNzdWUgYmVjYXVzZSB3ZSB3b3VsZG4ndCByZWFkIGRzcCBj
-dHJsIHZhbHVlIGZyb20gdGhlIApyZWdpc3Rlci4KCj4gQWN0dWFsbHksIHRoZXJlIGlzIGFub3Ro
-ZXIgcXVlc3Rpb24uIEkgc3RpbGwgaGF2ZW4ndCBmaWd1cmVkIG91dCB3aHkKPiB0aGlzIHByb2Js
-ZW0gZG9lc24ndCBvY2N1ciB3aGVuIGNvbXBpbGluZyByb2NrY2hpcGRybT15IC4KPiAKCkkgYXBw
-bGllZCB5b3VyIHBhdGNoIGFuZCBydW4gYSB0ZXN0IG9uIGJvdGggdmVyc2lvbnMuIFRoaXMgaXMg
-d2hhdAppIGdvdCB3aXRoIGRybT1tLCBzbyB0aGUgc2FtZSByZXN1bHQgYXMgZGllZGVyaWsuCmBg
-YApbICAgIDguMTM4NDgyXSB2b3AyX2NydGNfYXRvbWljX3RyeV9zZXRfZ2FtbWEgIGdhbW1hX2x1
-dDogMDAwMDAwMDAwMDAwMDAwMApbICAgIDguMTM5MDkzXSB2b3AyX3ZwX2RzcF9sdXRfZGlzYWJs
-ZSBkc3BfY3RybDogMHgwMDAwMDAwZgpgYGAKVGhpcyBpcyB3aGF0IGkgZ290IHdpdGggZHJtPXku
-IFNvIGl0IHNlZW1zIHdpdGggZHJtPXkgcmVhZCB2YWx1ZSBpbiAKdGhlIHJlZ2lzdGVyIF9pc18g
-d2hhdCB3YXMgd3JpdHRlbiBlYXJsaWVyIGluIGF0b21pYyBlbmFibGUgaS5lIHZhbHVlIGlzIAp2
-YWlsZD8gTWF5YmUgaXQgaXMganVzdCAidW5mb3J0dW5hdGUiIHRpbWluZz8KYGBgClsgICAgNi42
-NDY5OTFdIHZvcDJfY3J0Y19hdG9taWNfdHJ5X3NldF9nYW1tYSAgZ2FtbWFfbHV0OiAwMDAwMDAw
-MDAwMDAwMDAwClsgICAgNi42NDc1OTRdIHZvcDJfdnBfZHNwX2x1dF9kaXNhYmxlIGRzcF9jdHJs
-OiAweDAwMDEwMDAwCmBgYAoKSSB3aWxsIGhhdmUgdGltZSB0byBzcGVuZCBtb3JlIG9uIHRoaXMg
-b3ZlciB0aGUgd2Vla2VuZC4KCkJlc3QgcmVnYXJkcywgUGlvdHIgWmFsZXdza2kKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Jonathan mentioned recently that he would like to get away from using
+memset() to zero-initialize stack memory in the IIO subsystem. And we
+have it on good authority that initializing a struct or array with = { }
+is the preferred way to do this in the kernel [1]. So here is a series
+to take care of that.
+
+[1]: https://lore.kernel.org/linux-iio/202505090942.48EBF01B@keescook/
+
+---
+David Lechner (28):
+      iio: accel: adxl372: use = { } instead of memset()
+      iio: accel: msa311: use = { } instead of memset()
+      iio: adc: dln2-adc: use = { } instead of memset()
+      iio: adc: mt6360-adc: use = { } instead of memset()
+      iio: adc: rockchip_saradc: use = { } instead of memset()
+      iio: adc: rtq6056: use = { } instead of memset()
+      iio: adc: stm32-adc: use = { } instead of memset()
+      iio: adc: ti-ads1015: use = { } instead of memset()
+      iio: adc: ti-ads1119: use = { } instead of memset()
+      iio: adc: ti-lmp92064: use = { } instead of memset()
+      iio: adc: ti-tsc2046: use = { } instead of memset()
+      iio: chemical: scd4x: use = { } instead of memset()
+      iio: chemical: scd30: use = { } instead of memset()
+      iio: chemical: sunrise_co2: use = { } instead of memset()
+      iio: dac: ad3552r: use = { } instead of memset()
+      iio: imu: inv_icm42600: use = { } instead of memset()
+      iio: imu: inv_mpu6050: use = { } instead of memset()
+      iio: light: bh1745: use = { } instead of memset()
+      iio: light: ltr501: use = { } instead of memset()
+      iio: light: opt4060: use = { } instead of memset()
+      iio: light: veml6030: use = { } instead of memset()
+      iio: magnetometer: af8133j: use = { } instead of memset()
+      iio: pressure: bmp280: use = { } instead of memset()
+      iio: pressure: mpl3115: use = { } instead of memset()
+      iio: pressure: mprls0025pa: use = { } instead of memset()
+      iio: pressure: zpa2326: use = { } instead of memset()
+      iio: proximity: irsd200: use = { } instead of memset()
+      iio: temperature: tmp006: use = { } instead of memset()
+
+ drivers/iio/accel/adxl372.c                       | 3 +--
+ drivers/iio/accel/msa311.c                        | 4 +---
+ drivers/iio/adc/dln2-adc.c                        | 4 +---
+ drivers/iio/adc/mt6360-adc.c                      | 3 +--
+ drivers/iio/adc/rockchip_saradc.c                 | 4 +---
+ drivers/iio/adc/rtq6056.c                         | 4 +---
+ drivers/iio/adc/stm32-adc.c                       | 3 +--
+ drivers/iio/adc/ti-ads1015.c                      | 4 +---
+ drivers/iio/adc/ti-ads1119.c                      | 4 +---
+ drivers/iio/adc/ti-lmp92064.c                     | 4 +---
+ drivers/iio/adc/ti-tsc2046.c                      | 3 +--
+ drivers/iio/chemical/scd30_core.c                 | 3 +--
+ drivers/iio/chemical/scd4x.c                      | 3 +--
+ drivers/iio/chemical/sunrise_co2.c                | 6 ++----
+ drivers/iio/dac/ad3552r.c                         | 3 +--
+ drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c | 5 ++---
+ drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c  | 5 ++---
+ drivers/iio/imu/inv_mpu6050/inv_mpu_acpi.c        | 4 +---
+ drivers/iio/imu/inv_mpu6050/inv_mpu_ring.c        | 6 ++----
+ drivers/iio/light/bh1745.c                        | 4 +---
+ drivers/iio/light/ltr501.c                        | 4 +---
+ drivers/iio/light/opt4060.c                       | 4 +---
+ drivers/iio/light/veml6030.c                      | 4 +---
+ drivers/iio/magnetometer/af8133j.c                | 4 +---
+ drivers/iio/pressure/bmp280-core.c                | 5 +----
+ drivers/iio/pressure/mpl3115.c                    | 3 +--
+ drivers/iio/pressure/mprls0025pa_i2c.c            | 5 +----
+ drivers/iio/pressure/zpa2326.c                    | 4 +---
+ drivers/iio/proximity/irsd200.c                   | 3 +--
+ drivers/iio/temperature/tmp006.c                  | 4 +---
+ 30 files changed, 34 insertions(+), 85 deletions(-)
+---
+base-commit: 4c6073fec2fee4827fa0dd8a4ab4e6f7bbc05ee6
+change-id: 20250611-iio-zero-init-stack-with-instead-of-memset-0d12d41a7ecb
+
+Best regards,
+-- 
+David Lechner <dlechner@baylibre.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
