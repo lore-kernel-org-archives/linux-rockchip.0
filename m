@@ -4,70 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 458FCC71136
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 23:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A471DC71141
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 23:07:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hCg5s2zR2wsjC3jpoFrakCc0B+CqgJdCge3/PnlMqK0=; b=Igimy271RDMLcQ
-	1fQQejZf6pF3wO+T44pZA/b2Hh1LzBg8hPSveYazxRtfnUzxrNKVZCHGaPtdPgjBwrzGT11eVqqTi
-	O8vgh6SWoCoYDpCwVURUubyn4KnrqcHPedl8R4DpyPZgQpEhBBgrHsG/nfsBum8vVmwxiq79Li/Jr
-	KII70sxDcmKatRCAPoepBmTnWzSDgLCz8kGoMT57WC0YmhEFmzkvpgYqqJTcZubeqk5mtIheP0v68
-	jBgCP2lXlIJm8kUvYu5icjDhXRlYNQpEsOIQ8ghvZwJKSygn9GwYRow3W4ul6n9p4e84zukJsYanG
-	V54TY0lHWc0gCp5+MpDw==;
+	List-Owner; bh=mk5HRucn+gEa+XIIr/BtgzvhZWDGNR5rmFRyEnjlS+8=; b=ORjKWKX4hpym1/
+	sfVLT6Z4amSrRka13ip0fxraFbKj9qx/vMuNuxohc/761HNgzaj9OOJzDe85qNRbFim7OjnkXb8aZ
+	0KYlnJElLDTjP1d3AzgWCKS9EnlmC7//eep1UuPmnEH/zHPFO50POhMtxFh7JTbvqQkKlx2uiYczS
+	QCaMaOHu7RXwy3MGLfYJ/P4Sb2t5/SGSVzpaaW+Qx4TQ/Y93dwOWdlOrRgoPh9mUYHsPJ+f9ivKAy
+	NK6tJGTsrAXcqY4jcfWo3GlQMbySGVxtKBDU8asfOAi5y/tZEmARikfk6OO0zxPm2wOY/fX+EWdaW
+	9IhLPzadicw0UsxWcjZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPUV0-0000000BcUL-06Zu;
-	Wed, 11 Jun 2025 23:04:50 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uPUX7-0000000Bd01-1SEX;
+	Wed, 11 Jun 2025 23:07:01 +0000
+Received: from mail-10628.protonmail.ch ([79.135.106.28])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPTJP-0000000BOQd-2FOt;
-	Wed, 11 Jun 2025 21:48:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749678526;
-	bh=p125Qdh7AXpcJlrV+7yqlZZwam5I0mnuIIk+bsJi8UU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=EidgVnMiQFzztrReyrHUBVJ/dgBh0iS528uSU6ZSU0dw/oVXjLTONw6yvYb3IBPqR
-	 fKgkeucn1eAdTsG9IGr5r2aUrGrxN6zYq7QdHqiCmC4B2zFZDg7TQ2Scgu1sd8Vkma
-	 /SDNw9lX2QVSf79dLPn5C6nN0SqBisjOIt9F2xoXzfsDGUwlygMqnwXUlB33nyq/cD
-	 J+eh0MSZQk8Vd1Il9blFhNbKZsEAk+7KZhyEnvNY1mRQzI+tfGnnc6nJ1MWCJYMAHN
-	 elozjHQDkEKzQZ3L1vxI/6Li0jeFjXFFpvi0NF2PChhCmw9F5Y1S3CwcqhF6ed1T5e
-	 1bPu91kPSGFTQ==
-Received: from localhost (unknown [212.93.144.165])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id EFA8C17E0342;
-	Wed, 11 Jun 2025 23:48:45 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 12 Jun 2025 00:47:49 +0300
-Subject: [PATCH 3/3] arm64: dts: rockchip: Add HDMI PHY PLL clock source to
- VOP2 on rk3576
+	id 1uPTgD-0000000BRSC-2Kjb
+	for linux-rockchip@lists.infradead.org;
+	Wed, 11 Jun 2025 22:12:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1749679937; x=1749939137;
+	bh=e7+TKwLiFTgSLhj8SFeUWygx/8rXRPa8q4Cd0wJL3rg=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
+	b=Db/FT/FEExCRwvGk1CN8lOHpwtjVSGl3U1GLOPiDQ5Q5hqNNj+rDEC2tXKRgXAIhp
+	 QxVpLFCbWVlLIc92chKJ+skDN4Z1dQCJ/MAzbw24d7RDMnZwgqKOvRsvdbKeXGffGx
+	 5koby5t+pb+hMExtOT2jiexTDvw3J9vdTddrzxPeL+1edVzxgGDyE3u8TUWCgxfhtk
+	 kS8wUX/lQJPcp0V5qoMl5OZNJOqkTRZVRBf4phwWaaGKMLM+L8WNL270xYg4x1seGo
+	 4I9QaV+p7ZGKXETtuQbV/6ayfj+6zE2rwhDHTkOsc49VC1hW266yjEDfDyhKmcPEQW
+	 32dB7iSBeorAg==
+Date: Wed, 11 Jun 2025 22:12:11 +0000
+To: Andy Yan <andyshrk@163.com>
+From: Piotr Zalewski <pZ010001011111@proton.me>
+Cc: Diederik de Haas <didi.debian@cknow.org>, hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, Dang Huynh <danct12@riseup.net>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH drm-misc-next] rockchip/drm: vop2: don't check color_mgmt_changed in atomic_enable
+Message-ID: <zJBqdllX3IT9_-h9G49ay_GuU4nVf_n2Daxe1vL7PavA21RmMyH-vOqxdpahIknlp0_lpwwsxZyNyyQrF30rJquCjd6BcUU-FBgO0MM45iA=@proton.me>
+In-Reply-To: <562b38e5.a496.1975f09f983.Coremail.andyshrk@163.com>
+References: <20241206192013.342692-3-pZ010001011111@proton.me> <DAI0A1Y753FJ.B0NMT8L5VPEH@cknow.org> <4b380a57.8ab2.197591815a8.Coremail.andyshrk@163.com> <DAISW8MXEU0G.3AMRSKNYQUJY8@cknow.org> <4e600374.6dc7.1975df03a2d.Coremail.andyshrk@163.com> <DAJNEG81JCU5.35KVU8KAT5MDU@cknow.org> <b25ddc.a29c.1975eea8033.Coremail.andyshrk@163.com> <DAJPBG7GPPH2.3BDCMH0U3FU0E@cknow.org> <562b38e5.a496.1975f09f983.Coremail.andyshrk@163.com>
+Feedback-ID: 53478694:user:proton
+X-Pm-Message-ID: 02c8703b38a58061d7584929d53a73e3d33835da
 MIME-Version: 1.0
-Message-Id: <20250612-rk3576-hdmitx-fix-v1-3-4b11007d8675@collabora.com>
-References: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
-In-Reply-To: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>
-Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, stable@vger.kernel.org
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_144847_740422_6C662230 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20250611_151222_352602_594CBB28 
+X-CRM114-Status: GOOD (  19.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,62 +64,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since commit c871a311edf0 ("phy: rockchip: samsung-hdptx: Setup TMDS
-char rate via phy_configure_opts_hdmi"), the workaround of passing the
-rate from DW HDMI QP bridge driver via phy_set_bus_width() became
-partially broken, as it cannot reliably handle mode switches anymore.
-
-Attempting to fix this up at PHY level would not only introduce
-additional hacks, but it would also fail to adequately resolve the
-display issues that are a consequence of the system CRU limitations.
-
-Instead, proceed with the solution already implemented for RK3588: make
-use of the HDMI PHY PLL as a better suited DCLK source for VOP2. This
-will not only address the aforementioned problem, but it should also
-facilitate the proper operation of display modes up to 4K@60Hz.
-
-It's worth noting that anything above 4K@30Hz still requires high TMDS
-clock ratio and scrambling support, which hasn't been mainlined yet.
-
-Fixes: d74b842cab08 ("arm64: dts: rockchip: Add vop for rk3576")
-Cc: stable@vger.kernel.org
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 6a13fe0c3513fb2ff7cd535aa70e3386c37696e4..b1ac23035dd789f0478bf10c78c74ef167d94904 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1155,12 +1155,14 @@ vop: vop@27d00000 {
- 				 <&cru HCLK_VOP>,
- 				 <&cru DCLK_VP0>,
- 				 <&cru DCLK_VP1>,
--				 <&cru DCLK_VP2>;
-+				 <&cru DCLK_VP2>,
-+				 <&hdptxphy>;
- 			clock-names = "aclk",
- 				      "hclk",
- 				      "dclk_vp0",
- 				      "dclk_vp1",
--				      "dclk_vp2";
-+				      "dclk_vp2",
-+				      "pll_hdmiphy0";
- 			iommus = <&vop_mmu>;
- 			power-domains = <&power RK3576_PD_VOP>;
- 			rockchip,grf = <&sys_grf>;
-
--- 
-2.49.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgoKCkhpIEFuZHkgYW5kIERpZWRlcmlrCgo+IAo+IFRoZSByb290IGNhc2UgZm9yIHRoZSBwcm9i
+bGVtIGlzIG5vdyBjbGVhcuOAggo+IAo+IE1vc3Qgb2YgdGhlIHJlZ2lzdGVycyBpbiBWT1AgbmVl
+ZCB0byB3cml0ZSB0aGUgY2ZkX2RvbmUgcmVnaXN0ZXIoY2FsbCB2b3AyX2NmZ19kb25lKQo+IGFm
+dGVyIHlvdSBoYXZlIGNvbmZpZ3VyZWQgdGhlIHJlZ2lzdGVycy4gVGhlbiwgdGhleSB3aWxsIHRh
+a2UgZWZmZWN0IG9ubHkgd2hlbiB0aGUgVlNZTkMgZXZlbnQgb2NjdXJzKEl0IGRvZXNuJ3QgdGFr
+ZSBlZmZlY3QgaW1tZWRpYXRlbHkgYWZ0ZXIgeW91IGZpbmlzaCB3cml0aW5nLikuCj4gVGhpcyBh
+bHNvIGluY2x1ZGVzIGFsbCB0aGUgVlBfRFNQX0NUUkwgcmVnaXN0ZXJzLgo+IAo+IHNlZSB0aGUg
+Y29kZToKPiAKPiB2b3AyX3ZwX3dyaXRlKHZwLCBSSzM1NjhfVlBfRFNQX0NUUkwsIGRzcF9jdHJs
+KTsKPiAKPiB2b3AyX2NydGNfYXRvbWljX3RyeV9zZXRfZ2FtbWEodm9wMiwgdnAsIGNydGMsIGNy
+dGNfc3RhdGUpOwo+IC0tPgo+IAo+IHN0YXRpYyB2b2lkIHZvcDJfdnBfZHNwX2x1dF9kaXNhYmxl
+KHN0cnVjdCB2b3AyX3ZpZGVvX3BvcnQgdnApCj4gewo+IHUzMiBkc3BfY3RybCA9IHZvcDJfdnBf
+cmVhZCh2cCwgUkszNTY4X1ZQX0RTUF9DVFJMKTsKPiAKPiAKPiBXaGVuIHdlIHJlYWQgdGhpcyBy
+ZWdpc3Rlciwgd2UgYXJlIHJlYWRpbmcgdGhlIGFjdHVhbCBlZmZlY3RpdmUgdmFsdWUsCj4gbm90
+IHRoZSBvbmUoZHNwX2N0cmwpIHRoYXQgd2FzIGp1c3Qgd3JpdHRlbiBpbiBiZWZvcmUgKGl0IGhh
+cyBub3QgeWV0IHRha2VuIGVmZmVjdCkKPiAKPiBTbyB3aGVuIHdlIGNvbnRpbnVlIHRvIHdyaXRl
+IGFib3V0IHRoaXMgcmVnaXN0ZXIgaGVyZSwgd2Ugb3ZlcndyaXRlIHRoZSBhY3R1YWwKPiB2YWx1
+ZSB3ZSBvcmlnaW5hbGx5IGludGVuZGVkIHRvIHB1dCBpbi4KPiAKPiAKPiBkc3BfY3RybCAmPSB+
+UkszNTY4X1ZQX0RTUF9DVFJMX19EU1BfTFVUX0VOOwo+IHZvcDJfdnBfd3JpdGUodnAsIFJLMzU2
+OF9WUF9EU1BfQ1RSTCwgZHNwX2N0cmwpOwo+IH0KPiAKPiBJIHRoaW5rIHRoZSBjb3JyZWN0IHNv
+bHV0aW9uIHNob3VsZCBiZSBzaW1pbGFyIHRvIHRoZSBXaW5kb3dzLXJlbGF0ZWQgcmVnaXN0cnkg
+c2V0dGluZ3MuCj4gQWxsIHRoZSByZWdpc3RlcnMgcmVsYXRlZCB0byBWaWRlbyBQb3J0cyBzaG91
+bGQgYmUgc2V0IGFzIG5vbi12b2xhdGlsZSwgc2VlOgo+IC8KPiAqIFRoZSB3aW5kb3cgcmVnaXN0
+ZXJzIGFyZSBvbmx5IHVwZGF0ZWQgd2hlbiBjb25maWcgZG9uZSBpcyB3cml0dGVuLgo+ICogVW50
+aWwgdGhhdCB0aGV5IHJlYWQgYmFjayB0aGUgb2xkIHZhbHVlLiBBcyB3ZSByZWFkLW1vZGlmeS13
+cml0ZQo+ICogdGhlc2UgcmVnaXN0ZXJzIG1hcmsgdGhlbSBhcyBub24tdm9sYXRpbGUuIFRoaXMg
+bWFrZXMgc3VyZSB3ZSByZWFkCj4gKiB0aGUgbmV3IHZhbHVlcyBmcm9tIHRoZSByZWdtYXAgcmVn
+aXN0ZXIgY2FjaGUuCj4gKi8KPiBzdGF0aWMgY29uc3Qgc3RydWN0IHJlZ21hcF9yYW5nZSB2b3Ay
+X25vbnZvbGF0aWxlX3JhbmdlW10gPSB7Cj4gcmVnbWFwX3JlZ19yYW5nZSgweDEwMDAsIDB4MjNm
+ZiksCj4gfTsKPiAKPiBzdGF0aWMgY29uc3Qgc3RydWN0IHJlZ21hcF9hY2Nlc3NfdGFibGUgdm9w
+Ml92b2xhdGlsZV90YWJsZSA9IHsKPiAubm9fcmFuZ2VzID0gdm9wMl9ub252b2xhdGlsZV9yYW5n
+ZSwKPiAubl9ub19yYW5nZXMgPSBBUlJBWV9TSVpFKHZvcDJfbm9udm9sYXRpbGVfcmFuZ2UpLAo+
+IH07Cj4gCgpJJ20gd29uZGVyaW5nIHRoYXQgcGVyaGFwcyBtYWtpbmcgYSBzZXBhcmF0ZSBjb2Rl
+IHBhdGggZm9yIGdhbW1hCkxVVCBlbmFibGUgaW4gYXRvbWljIGVuYWJsZSB3b3VsZCBmaXggaXQ/
+IElJVUMgd2Ugc2V0IGNvbmZpZy4gCmVhcmxpZXIgaW4gYXRvbWljX2VuYWJsZSBhbmQgd3JpdGUg
+ZHNwX2N0cmwgKyBjZmdfZG9uZSB3aXRoIHByb3Blcgpjb25maWd1cmF0aW9uIGJ1dCBzaW5jZSB0
+aGVyZSB3YXNuJ3QgYSB2c3luYyB0aGUgcmVhZCBvZiBkc3AgY3RybAppbiBsdXQgZGlzYWJsZSBp
+cyBub3QgY29ycmVjdCAob3Igd2UgY2Fubm90IGJlIHN1cmUgaXQgaXMgY29ycmVjdCkuClB1dHRp
+bmcgdHJ5IHNldCBnYW1tYSBMVVQgYmVmb3JlIGZpcnN0IGRzcCBjdHJsIHdyaXRlIGFuZCBtYWtl
+IGl0CnVzZSB0aGUgZHNwX2N0cmwgdmFsdWUgc28gZmFyIHdyaXR0ZW4gaW4gYXRvbWljIGVuYWJs
+ZSBjb3VsZCBhbHNvCmZpeCB0aGUgaXNzdWUgYmVjYXVzZSB3ZSB3b3VsZG4ndCByZWFkIGRzcCBj
+dHJsIHZhbHVlIGZyb20gdGhlIApyZWdpc3Rlci4KCj4gQWN0dWFsbHksIHRoZXJlIGlzIGFub3Ro
+ZXIgcXVlc3Rpb24uIEkgc3RpbGwgaGF2ZW4ndCBmaWd1cmVkIG91dCB3aHkKPiB0aGlzIHByb2Js
+ZW0gZG9lc24ndCBvY2N1ciB3aGVuIGNvbXBpbGluZyByb2NrY2hpcGRybT15IC4KPiAKCkkgYXBw
+bGllZCB5b3VyIHBhdGNoIGFuZCBydW4gYSB0ZXN0IG9uIGJvdGggdmVyc2lvbnMuIFRoaXMgaXMg
+d2hhdAppIGdvdCB3aXRoIGRybT1tLCBzbyB0aGUgc2FtZSByZXN1bHQgYXMgZGllZGVyaWsuCmBg
+YApbICAgIDguMTM4NDgyXSB2b3AyX2NydGNfYXRvbWljX3RyeV9zZXRfZ2FtbWEgIGdhbW1hX2x1
+dDogMDAwMDAwMDAwMDAwMDAwMApbICAgIDguMTM5MDkzXSB2b3AyX3ZwX2RzcF9sdXRfZGlzYWJs
+ZSBkc3BfY3RybDogMHgwMDAwMDAwZgpgYGAKVGhpcyBpcyB3aGF0IGkgZ290IHdpdGggZHJtPXku
+IFNvIGl0IHNlZW1zIHdpdGggZHJtPXkgcmVhZCB2YWx1ZSBpbiAKdGhlIHJlZ2lzdGVyIF9pc18g
+d2hhdCB3YXMgd3JpdHRlbiBlYXJsaWVyIGluIGF0b21pYyBlbmFibGUgaS5lIHZhbHVlIGlzIAp2
+YWlsZD8gTWF5YmUgaXQgaXMganVzdCAidW5mb3J0dW5hdGUiIHRpbWluZz8KYGBgClsgICAgNi42
+NDY5OTFdIHZvcDJfY3J0Y19hdG9taWNfdHJ5X3NldF9nYW1tYSAgZ2FtbWFfbHV0OiAwMDAwMDAw
+MDAwMDAwMDAwClsgICAgNi42NDc1OTRdIHZvcDJfdnBfZHNwX2x1dF9kaXNhYmxlIGRzcF9jdHJs
+OiAweDAwMDEwMDAwCmBgYAoKSSB3aWxsIGhhdmUgdGltZSB0byBzcGVuZCBtb3JlIG9uIHRoaXMg
+b3ZlciB0aGUgd2Vla2VuZC4KCkJlc3QgcmVnYXJkcywgUGlvdHIgWmFsZXdza2kKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
