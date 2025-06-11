@@ -4,62 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B51C4C677C4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 15:43:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59DA6C677C4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 15:50:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4gUz7/nt3r5TEXp39NQWYMK+BjY6rotBH+mZ2b17vd0=; b=lGh+Bel9PSX/72g5h+9vE2hNR8
-	2OVRSdIkoN16aZ8sNMsns+V8mfg38+sX37nuF+6lHlBLf9qqHrnwGTR1wzuoKEE/6RE4+AbQJ4S/a
-	dulbagpJ6ejrwiMGySmhhKMKnJMySoo5LbUz0k6v0TbOiEdmzhYiZhxSCOxcvH3dU5Ee4xcPSTeb1
-	YizImTYt5bPzqOf9SqXnynbgqCHnE771M1plTJe0IXh7h6+wIOhLckVydwOkS4Mcu3Efm2NEfYCLN
-	mKNudlTgd6aSXB86AihHj+zjHeXQ4IwZCUTNbgF04gQ7Mjb/0duPtqiJszPrfkQONrJavS/Wy8oLN
-	nhJlYdvA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QYcYe5oBAXoL1Xqvncx3kKbqyxQrKUaa3ZG9eOnF5bU=; b=2tqxb1+wC9QhD5
+	OwkPTrEFAc3q8k71VUotDBTLhNXLsv7xTQ5/Y3l3eW1gsEuJX4lKWnkZiyRbBfvTLUDIvcIQ2KHNq
+	OnFT2kQ1FJ4OIFsqBPLa6qTCOU2Jm5BOxqSP03C3D1RuZa0mTATZ2ueh3l4U/GSM7S5PPAH+zJYrd
+	6Ogcue+nNumwQieYPY34x4j/meEEebItIvbY222iuTsUN6cwx1RUZoYHZmWwcOvSSujcp27W2hRkR
+	iOJax/GCe3xMHrbgB1C0oxzxZ9SWyZHmE465+VPIWL3UkRUK0xeRLsJhEQwO4Fks4881ArYKpMf/O
+	PHY4iXIo+Zd1xMOpSk8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPNcG-0000000ARJM-0W1X;
-	Wed, 11 Jun 2025 15:43:52 +0000
-Received: from out-183.mta0.migadu.com ([91.218.175.183])
+	id 1uPNiY-0000000ASWQ-1Df2;
+	Wed, 11 Jun 2025 15:50:22 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPKXf-00000009qRv-3oFA
-	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Jun 2025 12:26:57 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1749644812;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=TzoweW1VyuVNEJZRGyBVGxqfzPWF4RZHCiNkVHUDk5Y=;
-	b=Vvw64LLdbK0WMs8ryRBDkxbCsO1tPIylYEbe2NZlDCc/zQnb/cxEl6FRfjx5fL8BpQLy5E
-	axaimd8A1ci1qOdfjgoUYTI2zHTtN+HdZyW7hlvB293ZJRwvWa78w95x/LmeMypyi3c6na
-	DnQUWtrTHgSQ4HjBfkr7YslDMyuAw3TZX/svyfphxJHLvS8+T9EtahrCtb0nXDaqA4+zHg
-	LfYOYCYRhNGMmiuv2UBudtbgp3mr7AjWeR8ZEl8VGwMhuPLXjDCu+f0ThXAdT2R18hfWAT
-	34k0t56pA7W44CLGzQyvyjcM8QZPhwWNEpEMAtgA/gfWf0zitS1Q1kDy7HcQgQ==
-Date: Wed, 11 Jun 2025 14:26:38 +0200
-Message-Id: <DAJPBG7GPPH2.3BDCMH0U3FU0E@cknow.org>
-Cc: "Piotr Zalewski" <pZ010001011111@proton.me>, <hjc@rock-chips.com>,
- <heiko@sntech.de>, <andy.yan@rock-chips.com>,
- <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
- <tzimmermann@suse.de>, <airlied@gmail.com>, <simona@ffwll.ch>, "Dang Huynh"
- <danct12@riseup.net>, <dri-devel@lists.freedesktop.org>,
- <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH drm-misc-next] rockchip/drm: vop2: don't check
- color_mgmt_changed in atomic_enable
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Andy Yan" <andyshrk@163.com>
-References: <20241206192013.342692-3-pZ010001011111@proton.me>
- <DAEVDSTMWI1E.J454VZN0R9MA@cknow.org>
- <mArHDRo5bhIAjG8sDOR-kM7DsVdbXxxcC8hfuEEPfUWIdMwNnSUy8ZFoLis66DFSuIEq8TrnAxUGkyo5IUTGw3AG4k3vuVVz0fsoI27BAms=@proton.me> <DAH3S8O66J47.3NT18EJCXWKL9@cknow.org> <47773829.1fce.1974f732545.Coremail.andyshrk@163.com> <DAH60H3HYG7M.3NFXBJ7576RH1@cknow.org> <3161fa6a.93d0.19753f8c5e0.Coremail.andyshrk@163.com> <DAI0A1Y753FJ.B0NMT8L5VPEH@cknow.org> <4b380a57.8ab2.197591815a8.Coremail.andyshrk@163.com> <DAISW8MXEU0G.3AMRSKNYQUJY8@cknow.org> <4e600374.6dc7.1975df03a2d.Coremail.andyshrk@163.com> <DAJNEG81JCU5.35KVU8KAT5MDU@cknow.org> <b25ddc.a29c.1975eea8033.Coremail.andyshrk@163.com>
-In-Reply-To: <b25ddc.a29c.1975eea8033.Coremail.andyshrk@163.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1uPKeA-00000009qq2-3Cmm;
+	Wed, 11 Jun 2025 12:33:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 988AA5C10A5;
+	Wed, 11 Jun 2025 12:31:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76AD5C4CEEE;
+	Wed, 11 Jun 2025 12:33:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749645218;
+	bh=+lrA0nPf6AP9cSWAaziIRpa/y8tw6zr1d7w3+2DHq2Y=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=A9o71ezQ1GshfhxY7QJyatz0a7jhcqxHGo42lr4cf3GMr9SkxI16i0/HNiqReRL7E
+	 Rh1nXAiBH//IOdO7w20nR+g74ZWECqC/610GHCoHKMPgqDEIgBEyu1Dwu7MIce5uaR
+	 +Nht8Lu6ciosHF+3ZrupkEMApE1T9Zavh3qBArK4enTaChRPJoK1vRU5YjZvEEuW7C
+	 18vAD2uqUp35iG+phmHZqxMDPkwnNhD/w0JQjResqS8AnlFhNBObtgHc5LZ/d+T8BS
+	 oKQIpPha4HqPAivRtDCPo3kP2eOHi0D1vYIYTfyesqb9XBm499jyDLAHIlEyDvKrBA
+	 2JcAbZLc/AZEg==
+Message-ID: <8a00a1ca-fe0e-4d70-a8f8-2d328f4f1620@kernel.org>
+Date: Wed, 11 Jun 2025 21:33:35 +0900
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] PCI: dw-rockchip: Do not enumerate bus before
+ endpoint devices are ready
+To: Niklas Cassel <cassel@kernel.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+ Laszlo Fiat <laszlo.fiat@proton.me>, linux-pci@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20250611105140.1639031-6-cassel@kernel.org>
+ <20250611105140.1639031-7-cassel@kernel.org>
+Content-Language: en-US
+From: Damien Le Moal <dlemoal@kernel.org>
+Organization: Western Digital Research
+In-Reply-To: <20250611105140.1639031-7-cassel@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_052656_375406_4C595C7D 
-X-CRM114-Status: GOOD (  23.75  )
+X-CRM114-CacheID: sfid-20250611_053338_903641_BE978E0E 
+X-CRM114-Status: GOOD (  18.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,299 +75,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0543587121353556530=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============0543587121353556530==
-Content-Type: multipart/signed;
- boundary=1bd61a99ad02106f912f5090cc57499a933afac880da8b9c6edd0841a2a5;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+On 6/11/25 19:51, Niklas Cassel wrote:
+> Commit ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can
+> detect Link Up") changed so that we no longer call dw_pcie_wait_for_link(),
+> and instead enumerate the bus directly after receiving the Link Up IRQ.
+> 
+> This means that there is no longer any delay between link up and the bus
+> getting enumerated.
+> 
+> As per PCIe r6.0, sec 6.6.1, a Downstream Port that supports Link speeds
+> greater than 5.0 GT/s, software must wait a minimum of 100 ms after Link
+> training completes before sending a Configuration Request.
+> 
+> Add this delay in the threaded link up IRQ handler in order to satisfy
+> the requirements of the PCIe spec.
+> 
+> Laszlo Fiat reported (off-list) that his PLEXTOR PX-256M8PeGN NVMe SSD is
+> no longer functional, and simply reverting commit ec9fd499b9c6 ("PCI:
+> dw-rockchip: Don't wait for link since we can detect Link Up") makes his
+> SSD functional again. Adding the 100 ms delay as required by the spec also
+> makes the SSD functional again.
+> 
+> Cc: Laszlo Fiat <laszlo.fiat@proton.me>
+> Fixes: ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can detect Link Up")
+> Signed-off-by: Niklas Cassel <cassel@kernel.org>
+> ---
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 93171a392879..a941a239cbfc 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -459,6 +459,13 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
+>  	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
+>  		if (rockchip_pcie_link_up(pci)) {
+>  			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
 
---1bd61a99ad02106f912f5090cc57499a933afac880da8b9c6edd0841a2a5
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+Should maybe this message be moved after the sleep ?
 
-Hi,
+> +			/*
+> +			 * As per PCIe r6.0, sec 6.6.1, a Downstream Port that
+> +			 * supports Link speeds greater than 5.0 GT/s, software
+> +			 * must wait a minimum of 100 ms after Link training
+> +			 * completes before sending a Configuration Request.
+> +			 */
+> +			msleep(PCIE_T_RRS_READY_MS);
+>  			/* Rescan the bus to enumerate endpoint devices */
+>  			pci_lock_rescan_remove();
+>  			pci_rescan_bus(pp->bridge->bus);
 
-On Wed Jun 11, 2025 at 2:15 PM CEST, Andy Yan wrote:
-> At 2025-06-11 18:56:31, "Diederik de Haas" <didi.debian@cknow.org> wrote:
->>On Wed Jun 11, 2025 at 9:41 AM CEST, Andy Yan wrote:
->>> At 2025-06-10 19:02:11, "Diederik de Haas" <didi.debian@cknow.org> wrot=
-e:
->>>>On Tue Jun 10, 2025 at 11:07 AM CEST, Andy Yan wrote:
->>>>> At 2025-06-09 20:36:41, "Diederik de Haas" <didi.debian@cknow.org> wr=
-ote:
->>>>>>On Mon Jun 9, 2025 at 11:15 AM CEST, Andy Yan wrote:
->>>>>>> At 2025-06-08 20:53:37, "Diederik de Haas" <didi.debian@cknow.org> =
-wrote:
->>>>>>>>On Sun Jun 8, 2025 at 2:10 PM CEST, Andy Yan wrote:
->>>>>>>>> At 2025-06-08 19:08:50, "Diederik de Haas" <didi.debian@cknow.org=
-> wrote:
->>>>>>>>>>On Sat Jun 7, 2025 at 5:32 PM CEST, Piotr Zalewski wrote:
->>>>>>>>>>> On Thursday, June 5th, 2025 at 10:13 PM, Diederik de Haas <didi=
-.debian@cknow.org> wrote:
->>>>>>>>>>>> Since kernel 6.14-rc1 I have the problem that visual output is=
- no longer
->>>>>>>>>>>> shown on my PineTab2 and a `git bisect` pointed to this patch/=
-commit
->>>>>>>>>
->>>>>>>>> I have conducted tests on both rk3566-box-demo (with drm set to y=
-)
->>>>>>>>> and rk3568-lubancat-2 (with drm set to m), but I was unable to
->>>>>>>>> reproduce this issue. Could you two please share your kernel
->>>>>>>>> defconfig and the corresponding kernel startup logs?
->>>>>>>>> Additionally, both of my two boards tested with HDMI output. What
->>>>>>>>> kind of display interface does your board use for output?
->>>>>>>>
->>>>>>>>I wasn't able to reproduce this issue on my PINE64 Quartz-B (rk3566=
-)=20
->>>>>>>>with HDMI output either, but the problem is present on a PineTab2 [=
-1]
->>>>>>>>(also rk3566) which uses a MIPI DSI connection to the display panel=
-.
->>>>>>>>
->>>>>>>>Kernel config:
->>>>>>>>https://paste.sr.ht/~diederik/aa747ed170aa01cc759fbe1ffd9cebe8c887b=
-10b
->>>>>>>>
->>>>>>>>dmesg kernel 6.14-rc1:
->>>>>>>>https://paste.sr.ht/~diederik/733fbf8bb7f6aee8b68cf5a652157d445462c=
-24a
->>>>>>>>
->>>>>>>>dmesg kernel 6.14-rc1 with Piotr's patch:
->>>>>>>>https://paste.sr.ht/~diederik/db1af672cfb611acbfbdf35adb6f170e5c38f=
-ebc
->>>>>>>>
->>>>>>>>Both dmesg outputs contain a suspend-resume cycle.
->>>>>>>>I'm using a USB Wi-Fi adapter for the wireless connection.
->>>>>>>>
->>>>>>>>[1] https://wiki.pine64.org/wiki/PineTab2
->>>>>>>>
->>>>>>>>Happy to provide more info and/or do some tests.
->>>>>>>
->>>>>>> Can you apply the patch in the attachment, reproduce this issue(wit=
-hout Piotr's patch),=20
->>>>>>> and then provide me with a copy of the kernel log?
->>>>>>
->>>>>>Same test as above, but added ``dmesg | grep "vop2_"`` at the end as =
-well
->>>>>>
->>>>>>dmesg kernel 6.14-rc1 with Andy's print_lut_0609_1710 patch:
->>>>>>https://paste.sr.ht/~diederik/ac356ee8b0f7e772c7310293d99d95644f59a4e=
-e
->>>>>
->>>>> root@pt2-scmi:~# dmesg | grep "vop2_"
->>>>> [    4.996281] rockchip-drm display-subsystem: bound fe040000.vop (op=
-s vop2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
->>>>> [    5.005207] rockchip-drm display-subsystem: bound fe0a0000.hdmi (o=
-ps vop2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
->>>>> [    5.006798] rockchip-drm display-subsystem: bound fe060000.dsi (op=
-s vop2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
->>>>> [    5.021204] vop2_crtc_atomic_try_set_gamma  gamma_lut: 00000000000=
-00000
->>>>> [    5.021219] vop2_vp_dsp_lut_disable dsp_ctrl: 0x0000000f
->>>>>
->>>>> It seems that dsp_ctrl: 0x0000000f , this value is not what we expect=
-ed.
->>>>>
->>>>> The expected is 0x00010000.
->>>>>
->>>>> Could you please do an experiment for me? When there is no display on=
- your screen,=20
->>>>> execute the following command and see if the screen can resume displa=
-ying:
->>>>>
->>>>> ./data/io  -w -4 0xfe040d00 0x10000; io -w -4 0xfe040000 0x28002=20
->>>>>
->>>>> I have placed the io tool in the attachment.
->>>>>
->>>>> You can use command like bellow to read back to confirm if what you w=
-rite has taken effect:
->>>>> io -r -4 -l 0x100  0xfe040d00=20
->>>>>
->>>>> you may need to make CONFIG_DEVMEM=3Dy so that you can write the regi=
-ster by io command.
->>>>
->>>>I renamed it as ``andy-io`` and performed the test:
->>>>
->>> 7543:# CONFIG_IO_STRICT_DEVMEM is not set
->>>
->>> CONFIG_IO_STRICT_DEVMEM should not be set to y if you want to access an=
- IO address from usersapce.
->>
->>That last one seems to be the culprit:
->>
->>My kernel config is based upon Debian's and in commit
->>ef7e196951aa ("[arm*,powerpc*,s390x,x86] Enable IO_STRICT_DEVMEM")
->>
->>I found "can be reverted using the kernel parameter: iomem=3Drelaxed", so
->>I added that parameter and rebooted:
->>
->>```sh
->>root@pt2-scmi:~# echo 'just (re-)booted into my PineTab2; screen is blank=
-'
->>just (re-)booted into my PineTab2; screen is blank
->>root@pt2-scmi:~# uname -a
->>Linux pt2-scmi 6.14.0-rc1-00001-gfbe17d9b77b0 #18 SMP Mon Jun  9 13:17:28=
- CEST 2025 aarch64 GNU/Linux
->>root@pt2-scmi:~# cat /proc/cmdline=20
->>root=3DUUID=3D42bbb627-189b-49e3-ae42-699815dc2cbb ignore_loglevel ro roo=
-twait earlycon console=3Dtty0 console=3DttyS2,1500000n8 fw_devlink=3Doff io=
-mem=3Drelaxed
->>root@pt2-scmi:~# ./andy-io -r -4 -l 0x100 0xfe040d00
->>fe040d00:  0000000f 00000000 00000000 00000000
->>fe040d10:  00000010 00000000 00000000 00000000
->>fe040d20:  00000000 00000000 00000000 00000000
->>fe040d30:  01b70010 00500370 00100510 10001000
->>fe040d40:  00000000 00000000 03b00010 00500370
->>fe040d50:  05120004 00100510 00000000 00000000
->>fe040d60:  00000000 00000000 00000000 00000000
->>fe040d70:  00000000 00000000 00000000 00000000
->>fe040d80:  15110903 00030911 1a150b04 00040b15
->>fe040d90:  15110903 00030911 00000000 00000000
->>fe040da0:  00000000 00000000 00000000 00000000
->>fe040db0:  00000000 00000000 00000000 00000000
->>fe040dc0:  00000000 00000000 00000000 00000000
->>fe040dd0:  00000000 00000000 00000000 00000000
->>fe040de0:  00000000 00000000 00000000 00000000
->>fe040df0:  00000000 00000000 00000000 00000000
->>root@pt2-scmi:~# ./andy-io -w -4 0xfe040d00 0x10000
->>root@pt2-scmi:~# echo 'screen just turned on \o/'
->>screen just turned on \o/
->
-> Do you mean the screen is turned on(that you see the display on the scree=
-n) here ?
+Other than that, looks good to me.
 
-Yep. Before the ``-w`` command the screen was blank/black and after the
-``-w`` command the (sway based) login screen was visible.
-
->> root@pt2-scmi:~# ./andy-io -r -4 -l 0x100 0xfe040d00
->>fe040d00:  00010000 00000000 00000000 00000000
->>fe040d10:  00000010 00000000 00000000 00000000
->>fe040d20:  00000000 00000000 00000000 00000000
->>fe040d30:  01b70010 00500370 00100510 10001000
->>fe040d40:  00000000 00000000 03b00010 00500370
->>fe040d50:  05120004 00100510 00000000 00000000
->>fe040d60:  00000000 00000000 00000000 00000000
->>fe040d70:  00000000 00000000 00000000 00000000
->>fe040d80:  15110903 00030911 1a150b04 00040b15
->>fe040d90:  15110903 00030911 00000000 00000000
->>fe040da0:  00000000 00000000 00000000 00000000
->>fe040db0:  00000000 00000000 00000000 00000000
->>fe040dc0:  00000000 00000000 00000000 00000000
->>fe040dd0:  00000000 00000000 00000000 00000000
->>fe040de0:  00000000 00000000 00000000 00000000
->>fe040df0:  00000000 00000000 00000000 00000000
->>root@pt2-scmi:~# ./andy-io -w -4 0xfe040000 0x28002
->>root@pt2-scmi:~# echo "screen is still on ... don't see any changes on sc=
-reen"
->>screen is still on ... don't see any changes on screen
->>root@pt2-scmi:~# ./andy-io -r -4 -l 0x100 0xfe040d00
->>fe040d00:  00010000 00000000 00000000 00000000
->>fe040d10:  00000010 00000000 00000000 00000000
->>fe040d20:  00000000 00000000 00000000 00000000
->>fe040d30:  01b70010 00500370 00100510 10001000
->>fe040d40:  00000000 00000000 03b00010 00500370
->>fe040d50:  05120004 00100510 00000000 00000000
->>fe040d60:  00000000 00000000 00000000 00000000
->>fe040d70:  00000000 00000000 00000000 00000000
->>fe040d80:  15110903 00030911 1a150b04 00040b15
->>fe040d90:  15110903 00030911 00000000 00000000
->>fe040da0:  00000000 00000000 00000000 00000000
->>fe040db0:  00000000 00000000 00000000 00000000
->>fe040dc0:  00000000 00000000 00000000 00000000
->>fe040dd0:  00000000 00000000 00000000 00000000
->>fe040de0:  00000000 00000000 00000000 00000000
->>fe040df0:  00000000 00000000 00000000 00000000
->>```
->>
->>For completeness, I then closed the lid and opened it again:
->>
->>```sh
->>root@pt2-scmi:~# dmesg | grep "vop2_"
->>[    5.128785] rockchip-drm display-subsystem: bound fe040000.vop (ops vo=
-p2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
->>[    5.138031] rockchip-drm display-subsystem: bound fe0a0000.hdmi (ops v=
-op2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
->>[    5.139641] rockchip-drm display-subsystem: bound fe060000.dsi (ops vo=
-p2_crtc_atomic_try_set_gamma.part.0 [rockchipdrm])
->>[    5.160937] vop2_crtc_atomic_try_set_gamma  gamma_lut: 000000000000000=
-0
->>[    5.160950] vop2_vp_dsp_lut_disable dsp_ctrl: 0x0000000f
->>[ 1931.879232] vop2_crtc_atomic_try_set_gamma  gamma_lut: 000000000000000=
-0
->>[ 1931.879245] vop2_vp_dsp_lut_disable dsp_ctrl: 0x00010000
->>```
->>
->>Cheers,
->>  Diederik
->>
->>>>> [   73.750524] vop2_crtc_atomic_try_set_gamma  gamma_lut: 00000000000=
-00000
->>>>> [   73.750542] vop2_vp_dsp_lut_disable dsp_ctrl: 0x00010000
->>>>>>>>>>> patched vop2_vp_dsp_lut_disable function so that dsp_ctrl is se=
-t only if=20
->>>>>>>>>>> GAMMA LUT EN bit is set. I checked that this also does not brea=
-k the gamma=20
->>>>>>>>>>> lut functionality with emphasis on out-of/into suspend behavior=
-.
->>>>>>>>>>>
->>>>>>>>>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/dri=
-vers/gpu/drm/rockchip/rockchip_drm_vop2.c
->>>>>>>>>>> index d0f5fea15e21..7ddf311b38c6 100644
->>>>>>>>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->>>>>>>>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->>>>>>>>>>> @@ -897,6 +897,9 @@ static void vop2_vp_dsp_lut_disable(struct =
-vop2_video_port *vp)
->>>>>>>>>>>  {
->>>>>>>>>>>  	u32 dsp_ctrl =3D vop2_vp_read(vp, RK3568_VP_DSP_CTRL);
->>>>>>>>>>> =20
->>>>>>>>>>> +	if ((dsp_ctrl & RK3568_VP_DSP_CTRL__DSP_LUT_EN) =3D=3D 0)
->>>>>>>>>>> +		return;
->>>>>>>>>>> +
->>>>>>>>>>>  	dsp_ctrl &=3D ~RK3568_VP_DSP_CTRL__DSP_LUT_EN;
->>>>>>>>>>>  	vop2_vp_write(vp, RK3568_VP_DSP_CTRL, dsp_ctrl);
->>>>>>>>>>>  }
->>>>>>>>>>
->>>>>>>>>>I built a kernel with 6.14-rc1 + this patch and can confirm the s=
-creen
->>>>>>>>>>has output again :-)
->>>>>>>>>>
->>>>>>>>>>> I will wait with sending a patch because maybe Andy has somethi=
-ng to add=20
->>>>>>>>>>> to this.
->>>>>>>>>>
->>>>>>>>>>Sounds like a plan. It could be that this issue surfaced an under=
-laying
->>>>>>>>>>issue and if so, fixing that would be even better.
->>
+Reviewed-by: Damien Le Moal <dlemoal@kernel.org>
 
 
---1bd61a99ad02106f912f5090cc57499a933afac880da8b9c6edd0841a2a5
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaEl2BQAKCRDXblvOeH7b
-bj8CAP9k8P9uUMP1hR0diALNWGgTFwtXLPSGNUkmF92M/APjxQEAyhGwbdP5e599
-gcBwjGontmUy9IZcVcQupO6LrrxjnAY=
-=qXta
------END PGP SIGNATURE-----
-
---1bd61a99ad02106f912f5090cc57499a933afac880da8b9c6edd0841a2a5--
-
-
---===============0543587121353556530==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Damien Le Moal
+Western Digital Research
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0543587121353556530==--
-
