@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81733C71135
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 23:28:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6AD4C71136
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 23:33:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nuCxGdOf3XRFIg3GgGC0vvbXOLG7ap5c6tBN2g6VaBw=; b=FWdAEoVbIH6vb4
-	gAPHrH/WqfJZTOKqU7Jxl4jTTr35yjGOaphnpdjmB3zObdewWfINlhpvcDJWQrsktCt2Mfk3vMHvG
-	HlAWoyY5Q/QKPvjtYyE8XRdAOJDG000Le3Ri/MlrnMld9rg1uw/uguad5iEzlF8uyJSMRya1gIfQc
-	DflZKC2fmE2orXjIThyWIF0+gr71V4Obz20bpWMSCkzcRm7uGISRzEt2ZCGMz3dhgcUMtv0Ppv5no
-	V6TjjDOSuiy7AiA1bw/wYp4uoyLSUq3U59pvqTzCAXt91VTwpbUMu11ULd9fgcYkphyphqbrfcvTc
-	c12cAPSHd8lxPArYK0qw==;
+	List-Owner; bh=SgLrJP+/pIMYqqkFtxj8HrVygleZqZkWRiBa7oDgAtk=; b=OnHASqaoNuTFoa
+	4VQSfXColH6dMdeYo2GFgSD8VBsnKRNplktNAr1/hDBB8gRZKBfZ2gg1/OP59clQZUekg+io46xao
+	miZdAmsYzXLdPW6GMCGTkI8/6Z1jYqNUC11s/xRFa/6r9Tmxr8ktLYujL9znN8AW3q36msZOJh6Fq
+	HL6iW9AJNq3REDL5dMRa4XmNl+BPnVD1hpM5C4VRauojsiMMXgTfpq2R7j9KwoVJSNxIp0hTZtja+
+	VJpkQHl9VbBdE+PJuv7atHptdXQZiDjIrNt3koKRRg4bf1yhBw7VwVlru5CK+6R1qwoBA26+EK3CZ
+	7/Kxl9Dcx6p2qG29LUGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPUsK-0000000Bfmw-0X2A;
-	Wed, 11 Jun 2025 23:28:56 +0000
-Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
+	id 1uPUwW-0000000Bg7p-0F7E;
+	Wed, 11 Jun 2025 23:33:16 +0000
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPU9P-0000000BVPw-1lMy
+	id 1uPU9S-0000000BVRn-2HwJ
 	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Jun 2025 22:42:32 +0000
-Received: by mail-oi1-x22d.google.com with SMTP id 5614622812f47-407a3c0654aso185369b6e.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 11 Jun 2025 15:42:31 -0700 (PDT)
+	Wed, 11 Jun 2025 22:42:36 +0000
+Received: by mail-oi1-x22f.google.com with SMTP id 5614622812f47-400fa6eafa9so224784b6e.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 11 Jun 2025 15:42:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1749681751; x=1750286551; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1749681754; x=1750286554; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=wPyCAeDwGaZFGchY0PBly99ut+lLVqj8mqClvHcxWU8=;
-        b=bc1ewna9x/sM5roVBra5w5ji7iQQdK0LyblZvso84q0mbJ6lwqFezQMX9ur0GUXJHy
-         MiFU26qUpmuOXtN4O/46+ULGXL+Os0pGLaH80YU6h848CTQZ5O1mwSG6XtX0+hc7uo4K
-         ZntdT9SlfSy1xaVIoLlLf3GIm9JCUPpntlxjiMPMz5MFJQQqT3EIUv7EMlfNI8I44rY3
-         WkH9leLFXqCCsI/Tt1HXANiJgDsTf2ZuCO0xLBnLXP9t/0Z96k1G1oPg/LIx5Bnvo0hs
-         aiG4GPTYgqoo2Ikmw+xwzvZ5ESxv5PHFuFVx5JfXJfEPeII4C1dN7lOzUTKG1N1LYIaD
-         xmuQ==
+        bh=DVj0z+6x0ImArb5yGvcedbePq6HiJkWaJeSxbPqOIBs=;
+        b=kcOpgXnzHsk1GnDacS3bvvXUUSh4FboYd1eJkoWpHOwMb0pnNqcyo5ZKDI0w/zCx0/
+         lSdit9yiPIXho0YMeyaICR8yjQf1augIPfvxA3fZDp367jxrtUsiA99252gnvuV4aV5n
+         uE/yturGjnn3w09zBvnWKDLU7rNQu2hOAE+5DNKRwqYthx/WoaZ8P7ZHph5nsQYPM5Fp
+         DGnIrQKUTTqEJx/b17LTpPB2k1ozEiFz1MgcvBg/53dAfwESAqKVPsN2dRLdHGCWLef2
+         ee3fKGixwxE/ghikJWAzSi+yrkPopLczZpBfzFBLgJFc3SpD8NclrTJS68phCI+5I1cB
+         jxVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749681751; x=1750286551;
+        d=1e100.net; s=20230601; t=1749681754; x=1750286554;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=wPyCAeDwGaZFGchY0PBly99ut+lLVqj8mqClvHcxWU8=;
-        b=asDkOmUiL5kmRJYd33+7LHDM/AVV9VeVKtOZsBaO1HD3Q7BATxxE8+IOvKLECSsalq
-         ru8Euc5dVOp+dix7tT1wQofW08fblktMTE1okZxSBGbMHluucrIy4DrdDC81ZHy1GPlR
-         dcXWXB3alhm9CP3AcV3QvI0OMC0UL549J1ZaeMRjQgUsDrhHgDtILPtj+LIkoUQNZbyw
-         XDhndseZBlcTeSg7sDADPF5s+5tvvukzyjkxAAJsQwqZHJM4k8X0l42R6TqtW3M1ki43
-         d9uk2pVuNzqzAZ0aPcNNpBpO8i3bDZxkgZi+YPgyl0XjVjhlPw4mjFjUAgwvttGSHxYB
-         JkhA==
-X-Forwarded-Encrypted: i=1; AJvYcCVH5OpqzyclgVb4XsDuO2d88kbZ251HsKePtEWk/CJWKBDUlKaD+6HpQ3tBSXAZRRWmNzgv0wTlptH7ALQtHQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwXOMACyEDPVlxnk7Gdfz9axubvFmY14iwTfrfbHSo1Ehd8EfkA
-	2bDSVwoR8beqSiNiemqPJ1veF3hNrgKVKBaTLotco6T3HK91wPGD04g/janwZtoQIfo=
-X-Gm-Gg: ASbGnctMca6EZPMi2k3uwLxbRKQ3fpzOH+La79xy/CZ1u9uxWtpQLfQ2jwevLYy/weJ
-	DtYqIgEvIzIQ7HR+XNhJrTWOjc3vVbyf5bydM/2DHofIDEXP1fAa4Dd7BK5Q7xnixYA+jXhjdTr
-	aJ9y3Kh+8/gA3qzoqQH8ousf5LSlFqTULkxE/kYUQseyC0uxi6FKPcjE1Nqbu27en0AgK43nV4y
-	2IxhUMXQfmbkC0BsrR3Npl1rCdUokhiAxFcbN3yBzReHK5ICh3znydvG7NfdSR11tdI6UHx2bIC
-	hdzlp8tp3QMWKrWmW/Biyt3fB1KVSA/vFx8NTEk6TweI/lD+ja0x0aptuLUn4Ls7e4mX
-X-Google-Smtp-Source: AGHT+IGnJ7SCSrcoLGGDHLkeFWZl+xwmv56WaGassXNMfNwjd3I20gGItGHx1iX1x1Me2SDAPUpVcQ==
-X-Received: by 2002:a05:6808:178d:b0:403:3370:4768 with SMTP id 5614622812f47-40a5d05539amr3930457b6e.5.1749681750679;
-        Wed, 11 Jun 2025 15:42:30 -0700 (PDT)
+        bh=DVj0z+6x0ImArb5yGvcedbePq6HiJkWaJeSxbPqOIBs=;
+        b=wHV+JBDFQ7lSbThAhL9Rjxu9waT0jyqkwWCN/WfXFYMLPVGS0xOwtlBtUAiMYSHW0e
+         CM6e8Ud5lFaGnevgFXoBvo17k7sNcGEdbWCOhw6u4CVdy95hVxzJhcONNE4yL9VoDEXQ
+         LE//DSvo1g3hRaQYNF67FQvJHc9rlJOkUiAV2onPJZpgvkiCadrTry/yyVmUBO7e35IA
+         mrtdxYeKfkkZ4baPIxTcLz4oHx9MIDKEO7Zprh4UiUQPoQw8AlG7lZsqI0E9UnybuvmG
+         muXdE5AEbnB/VemKTxLTr0+24fgiFrUs+miDZ9vvVwx948HRBEwgGiOfqApiVlvG5Rbq
+         nHjg==
+X-Forwarded-Encrypted: i=1; AJvYcCVShI2PGcbYJ3UQpHeuYnRAeipLcG50c0b6/YuDQ3SXby8OQ9hZ+WxnQTMMBMiz/WU1q/HrTPCHpvb4exloXA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzvx7VbOLnTCpHHdHTsHt8piupi8Jybrlz8pfOeVM4f1opDNpiN
+	i6jls5wSDutKcD0x1NHuoj5LGINudLMeFyVz3jRkSJa6OytZtVORHn1Vqeas9w5a2mk=
+X-Gm-Gg: ASbGnctP/nbXP+xXYafyoPX8R0OqvIv6/JLUpKRJpv88/hsipzm0V2SJb9qdE4Nobwp
+	GnwykD7yxa6HI12nV+mlzCmDzc9TV1zNEnm8G8Fr/NyGV8RGYGg4TkM/jhzmxNFAFaRA3Sozffr
+	t+FhbYwt3kmh0bBuF52n7hDCcWhabckUFi4Y9IBfxKouhg3isxg5CgzbnHATunxa5aMRVXjc3/F
+	0eRZxPfub60tOZq+1qzamtsl0X3YfWhyylneRU6ZHgpqXqI5L88F0GJ2wR8EpfztHZpj1Cq9dB5
+	tXA8Xjm/9LsiRYpYG2JUO3DVejsWa1wCTyDGoCbc28OVuTh2kxHELr/zImrYLlCLsq5q
+X-Google-Smtp-Source: AGHT+IGDN/KHxz9Bnp8yALdHvhwtdj8HwBIeOVLJvupWPyPhdbyamlXaAmqI6CHUMik81UZ3hpwyHA==
+X-Received: by 2002:a05:6808:2223:b0:403:34b3:c986 with SMTP id 5614622812f47-40a5d0b202cmr3734055b6e.17.1749681753896;
+        Wed, 11 Jun 2025 15:42:33 -0700 (PDT)
 Received: from [127.0.1.1] ([2600:8803:e7e4:1d00:4753:719f:673f:547c])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-40a682fbf05sm24684b6e.32.2025.06.11.15.42.27
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-40a682fbf05sm24684b6e.32.2025.06.11.15.42.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Jun 2025 15:42:29 -0700 (PDT)
+        Wed, 11 Jun 2025 15:42:32 -0700 (PDT)
 From: David Lechner <dlechner@baylibre.com>
-Date: Wed, 11 Jun 2025 17:38:59 -0500
-Subject: [PATCH 07/28] iio: adc: stm32-adc: use = { } instead of memset()
+Date: Wed, 11 Jun 2025 17:39:00 -0500
+Subject: [PATCH 08/28] iio: adc: ti-ads1015: use = { } instead of memset()
 MIME-Version: 1.0
-Message-Id: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-7-ebb2d0a24302@baylibre.com>
+Message-Id: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-8-ebb2d0a24302@baylibre.com>
 References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 To: Michael Hennerich <michael.hennerich@analog.com>, 
@@ -103,20 +103,20 @@ Cc: linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, 
  David Lechner <dlechner@baylibre.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1235; i=dlechner@baylibre.com;
- h=from:subject:message-id; bh=+7ef0opXHNBN2h0b3NWv84zYFhgTKH377f2j3if5pfQ=;
- b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBoSgWyAR0/NtALS5gQgsb6D+CiSxnqwsX+WEtuq
- AOohtpPO9eJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaEoFsgAKCRDCzCAB/wGP
- wDuGB/sHqLC2qkSS1PGNPlHGddzhPG/h6E+AJRBdBcDq5LES75oaDoNUp8YYjpUZ8xdWx6xXph9
- 6s27b8H4wFgEqsmBhgTYtnLCeP9M5musN7+TAkf6nypK2UmTcK9fbVKTFJjTfgqDI2SlJXIgEQF
- 9wZZHbHDOUxdLYBXmkPZKrjV+dIg1MvgLe+f0trGAuiVHPzEXT+jESYp6Bg8UvB9t0QQkNYXnP3
- hOfcMmO/eFMS/iKbzKKpfSQde3C42a5c/GPyzIqCLxiEhPIjQobMVq3UgCav5l44eRb1PJ9V2KC
- m6/9HkniYjZKtQ4qPcJc73pexbQoq3dz03m+kTljc/9Bt9Mw
+X-Developer-Signature: v=1; a=openpgp-sha256; l=847; i=dlechner@baylibre.com;
+ h=from:subject:message-id; bh=WSd14gc0IglioCpRcpapejeZeHyJEdiW3ePuDI+8374=;
+ b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBoSgW5Ygza7kmThbyisDqsWQsptmTBU8wIgMgQE
+ pxnhMsh/S+JATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaEoFuQAKCRDCzCAB/wGP
+ wKntB/97ufnI2T1BvBKlrPPhGQWGDqAjoQSkW1QKpcvqm5JNUoqkex0I8noUiFjQLHt6g8Fwi0r
+ VqqpMFbpUdF1MKsd5VP5Zb7DZxC2kjDp6jL041HzjfWKWjfXVH15wEqbhi9WhO8WDjGwDbAlCsC
+ xF7XmULVO9O8XVbEX2VK3nCtJNrC1K8evAkSlACFG8ZzKinPcoB1k9qYzM5sU87+WFtHVkD0AZc
+ Qeah+fJkaOfF+P+wux9OLYTxPFsUcmD0IHW5EsI2+Tkmo1808IBnI/YGG1DoVdGBoAdPrE3h6Cr
+ QU+mELE3P/nwI+trrPO3SatKUUCLCkgwZTzH+YNm4fFPbrtC
 X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
  fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_154231_461242_65C4DFDC 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20250611_154234_591715_884305A1 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,30 +138,26 @@ the code.
 
 Signed-off-by: David Lechner <dlechner@baylibre.com>
 ---
- drivers/iio/adc/stm32-adc.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/iio/adc/ti-ads1015.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/iio/adc/stm32-adc.c b/drivers/iio/adc/stm32-adc.c
-index e84babf433853977b77aa283025f446353510a21..588c69e175f5129030eef9ebfe0eabb6412b1893 100644
---- a/drivers/iio/adc/stm32-adc.c
-+++ b/drivers/iio/adc/stm32-adc.c
-@@ -2470,7 +2470,7 @@ static int stm32_adc_chan_fw_init(struct iio_dev *indio_dev, bool timestamping)
- static int stm32_adc_dma_request(struct device *dev, struct iio_dev *indio_dev)
- {
- 	struct stm32_adc *adc = iio_priv(indio_dev);
--	struct dma_slave_config config;
-+	struct dma_slave_config config = { };
- 	int ret;
+diff --git a/drivers/iio/adc/ti-ads1015.c b/drivers/iio/adc/ti-ads1015.c
+index 21181cc3bd852ba3bb05b295c98b3530d8c07d3d..48549d617e5fdc363a5ff583a2b303cc8adc9eae 100644
+--- a/drivers/iio/adc/ti-ads1015.c
++++ b/drivers/iio/adc/ti-ads1015.c
+@@ -450,11 +450,9 @@ static irqreturn_t ads1015_trigger_handler(int irq, void *p)
+ 	struct {
+ 		s16 chan;
+ 		aligned_s64 timestamp;
+-	} scan;
++	} scan = { };
+ 	int chan, ret, res;
  
- 	adc->dma_chan = dma_request_chan(dev, "rx");
-@@ -2494,7 +2494,6 @@ static int stm32_adc_dma_request(struct device *dev, struct iio_dev *indio_dev)
- 	}
- 
- 	/* Configure DMA channel to read data register */
--	memset(&config, 0, sizeof(config));
- 	config.src_addr = (dma_addr_t)adc->common->phys_base;
- 	config.src_addr += adc->offset + adc->cfg->regs->dr;
- 	config.src_addr_width = DMA_SLAVE_BUSWIDTH_2_BYTES;
+-	memset(&scan, 0, sizeof(scan));
+-
+ 	mutex_lock(&data->lock);
+ 	chan = find_first_bit(indio_dev->active_scan_mask,
+ 			      iio_get_masklength(indio_dev));
 
 -- 
 2.43.0
