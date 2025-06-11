@@ -4,61 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46E5FC71148
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 21:16:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECB91C71135
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 21:16:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lyUZ1LH2l1OFA907PnazY4XmhhpCrrjnu7/RKewe590=; b=IhqI+He9tnFRCE
-	PwYhDeolnRXSEPJPv87kqOIdlsbYUGE+8mZRGI63iUUzavOY7fTRvS638GIZdR73xLm/P1TJIqWQz
-	c/bX83OGLgBcWSUuTQPVTwSXrnHcv7b0Q7NZ6o3W+6lJiwdjyx2pLG1zxN0xd2QPw0B9/PfkVDoKY
-	lquZOnEOMbncx8sCu8r/x8ZGJteLZFp2He26hXBDl4j5GnXByAqGZ7cO3wWEmKgjet99RHRmU+E3e
-	tsFYvf1kONjrJz6tnnYTxdf91+dT7xQAxE4f9ShvwiAXheCxF3NmYyY72aoKt3TgPQPZFc/Km9/Kb
-	FFFPM2mAgUc3nPIhHMag==;
+	List-Owner; bh=RqGl4bVYjYCQeH3L4bce6qjhp4aWY+nd2TLFzl/5Ewg=; b=J1KqDXVFJe+mM9
+	THW18FWxyDsQ9GpMs+J9x+OAK+J39UPMmyltQr+d7T7br2Rr/TagnYkRvblP16Cd7Ie9/+PZxfJpB
+	C2tqNO9Pd8AYql5j0xPYRrPQ+4WT4LS6hylti7Dg5aIUnHhN4+qSJG0amOd8RKSuPI0i334iQQ9Qw
+	GmSbjoJxmDgMRJKTq80DWvErIIvm+ktwTGJ32gbm2Iegj2EHDGLHw+h5hE/YOLXMvk87odMNrmMIm
+	SsoA4DOjUA1yIVK9Sy4w/hsjtZbhz62lVnS3xn1RTLb87d/ZeOd+jM9Wdi6XMuOUVrE/vAeuE+fgi
+	IbHheGWyTW9HbXRb2o/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPSoN-0000000BGeD-0Ry8;
-	Wed, 11 Jun 2025 21:16:43 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uPSoQ-0000000BGjU-0Pl5;
+	Wed, 11 Jun 2025 21:16:46 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPOPg-0000000Acuf-1izP;
-	Wed, 11 Jun 2025 16:34:57 +0000
+	id 1uPP6d-0000000AhNl-2rVB;
+	Wed, 11 Jun 2025 17:19:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A58CBA516A8;
-	Wed, 11 Jun 2025 16:34:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28A1BC4CEE3;
-	Wed, 11 Jun 2025 16:34:55 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 75A4C62A0E;
+	Wed, 11 Jun 2025 17:19:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B8DD2C4AF14;
+	Wed, 11 Jun 2025 17:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749659695;
-	bh=YnBjJCjZGkkrgSbru8fgRTSfROvOQq67aVGW6ZpVPgA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dB+LPFkpPB50dxO2SwKdjRyNRaC4GTJSF+jgfUyoydG4rqDU1/cAhbNfTSc4Zi6Df
-	 cV8hG9u7FZ6UAF7suixSuRhW4+uJrn7i3DRvt3R0wPygCK3FUGNKhxalSjH8aXsUPd
-	 pxWXAGsiEuQRHVLDEtNQkLeJJJu+Isfkoau6xj9RGtyfbdMSE9GH5KAjxfgOwqu/Oa
-	 4hTDzIFuHtOcc8hbq1nVmumB6UOvemPyeCnkPO3/L89aimaVaFZt4DFf0+Oge2dYJF
-	 k5oBFgO/bq0TEWR0qyGieLeOrCEvvx8lei1ZR18LWITEp/URmXPA/H89o8+Fsvy2UL
-	 XG9XKd3xyk6TA==
-Date: Wed, 11 Jun 2025 09:34:30 -0700
-From: Eric Biggers <ebiggers@kernel.org>
-To: Diederik de Haas <didi.debian@cknow.org>
-Cc: linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org, Corentin Labbe <clabbe@baylibre.com>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 3/7] crypto: testmgr - replace
- CRYPTO_MANAGER_DISABLE_TESTS with CRYPTO_SELFTESTS
-Message-ID: <20250611163430.GA1254@sol>
-References: <20250505203345.802740-1-ebiggers@kernel.org>
- <20250505203345.802740-4-ebiggers@kernel.org>
- <DAJOCL4UQWZ1.2CB0NH55US5EI@cknow.org>
+	s=k20201202; t=1749662357;
+	bh=rZujrf8cJQS+I89btYoSUMkKofWIINtOzhrn5MbArYQ=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=IEAaCDlLl7NwSEEC9t2PMVQ8mmD9gUl7QqiL0PYuV2wz+frv8sy/D/R1FoGawMeYx
+	 2vTui0CnFjClLTMSWWBuOC5yGxavf8d3yKyhdwwpcYkVW9GWjuQLDr38Z00OlCJ+We
+	 hae/K3hddGXdPT/cCbn/dAltYYLXt9A67Nx1fHK86QID0F9yoTKje2Uyv+mc3vyDmd
+	 zrSd64AhtYWjlGBxJDQ3mLJ5y+GF4Zspm9OXL77GM/OI9yUR8DyOKVRmTSZAL9q7tv
+	 CUlo0KAJe27TsogYfdE1oih3nH+XHOMAfMZGPEgB4fZrEsFW6/ZEelC/uL49epUxP+
+	 DXEy40Ru/CjqA==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A4E9FC71143;
+	Wed, 11 Jun 2025 17:19:17 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Date: Wed, 11 Jun 2025 19:06:58 +0200
+Subject: [PATCH v8 13/13] arm64: dts: rockchip: enable vicap dvp on
+ wolfvision pf5 io expander
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <DAJOCL4UQWZ1.2CB0NH55US5EI@cknow.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_093456_576467_D8E63EC6 
-X-CRM114-Status: GOOD (  32.53  )
+Message-Id: <20240220-rk3568-vicap-v8-13-9d9cbc4b524d@collabora.com>
+References: <20240220-rk3568-vicap-v8-0-9d9cbc4b524d@collabora.com>
+In-Reply-To: <20240220-rk3568-vicap-v8-0-9d9cbc4b524d@collabora.com>
+To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+ =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Gerald Loacker <gerald.loacker@wolfvision.net>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Markus Elfring <Markus.Elfring@web.de>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Collabora Kernel Team <kernel@collabora.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, 
+ Alexander Shiyan <eagle.alexander923@gmail.com>, 
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Michael Riesch <michael.riesch@collabora.com>, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1749661609; l=1661;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=tkvGHWW1RXCremqXv1+qTo26zNWU0UHQFUaztf+p/DI=;
+ b=m4uzKPsYmskzrSkjBV+s/F9eyoIMqAKlpsD3duVmiZLO5ydbSjtF9HRSv5ChbRco8M1n2QSOS
+ 9aHAYs7+XS0Ac0nZ1J2D0hu3bDcljAq88OcvRs0qVgEOUauEaFxHByQ
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,109 +99,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 11, 2025 at 01:41:06PM +0200, Diederik de Haas wrote:
-> Hi Eric,
-> 
-> On Mon May 5, 2025 at 10:33 PM CEST, Eric Biggers wrote:
-> > The negative-sense of CRYPTO_MANAGER_DISABLE_TESTS is a longstanding
-> > mistake that regularly causes confusion.  Especially bad is that you can
-> > have CRYPTO=n && CRYPTO_MANAGER_DISABLE_TESTS=n, which is ambiguous.
-> >
-> > Replace CRYPTO_MANAGER_DISABLE_TESTS with CRYPTO_SELFTESTS which has the
-> > expected behavior.
-> >
-> > The tests continue to be disabled by default.
-> > ---
-> >  <snip>
-> > diff --git a/crypto/Kconfig b/crypto/Kconfig
-> > index da352f1984ea..8f1353bbba18 100644
-> > --- a/crypto/Kconfig
-> > +++ b/crypto/Kconfig
-> >  <snip>
-> > @@ -171,20 +171,26 @@ config CRYPTO_USER
-> >  	select CRYPTO_MANAGER
-> >  	help
-> >  	  Userspace configuration for cryptographic instantiations such as
-> >  	  cbc(aes).
-> >  
-> > -config CRYPTO_MANAGER_DISABLE_TESTS
-> > -	bool "Disable run-time self tests"
-> > -	default y
-> > +config CRYPTO_SELFTESTS
-> > +	bool "Enable cryptographic self-tests"
-> > +	depends on DEBUG_KERNEL
-> >  	help
-> > -	  Disable run-time self tests that normally take place at
-> > -	  algorithm registration.
-> > +	  Enable the cryptographic self-tests.
-> > +
-> > +	  The cryptographic self-tests run at boot time, or at algorithm
-> > +	  registration time if algorithms are dynamically loaded later.
-> > +
-> > +	  This is primarily intended for developer use.  It should not be
-> > +	  enabled in production kernels, unless you are trying to use these
-> > +	  tests to fulfill a FIPS testing requirement.
-> 
-> I built a 6.16-rc1 kernel [1] and its config is based upon Debian's and
-> that has enabled CRYPTO_SELFTESTS [2] (due to Debian bug 599441 [3]).
-> 
-> I then installed it on 3 Rockchip based devices and booted into that.
-> 1. Radxa Rock 5B (rk3588)
-> 2. PINE64 Quartz64 Model B (rk3568)
-> 3. PINE64 RockPro64 (rk3399)
-> 
-> The full dmesg output for level 0-4 can be found at [4], [5] and [6]
-> 
-> The filtered dmesg output for Rock 5B:
-> ERROR:
-> [    0.709822] basic hdkf test(hmac(sha256)): failed to allocate transform: -2
-> WARNING:
+From: Michael Riesch <michael.riesch@collabora.com>
 
-https://lore.kernel.org/r/20250610191600.54994-1-ebiggers@kernel.org/ fixed the
-HKDF failure.  It was caused by a patch that changed initcall levels.
+The Digital Video Port (DVP, the 16-bit variant) of the RK3568 VICAP
+is broken out to the PF5 mainboard expansion header.
+Enable it in the device tree overlay for the WolfVision PF5 IO
+Expander board.
 
-> [    8.877288] alg: skcipher: skipping comparison tests for xctr-aes-ce because xctr(aes-generic) is unavailable
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+Reviewed-by: Gerald Loacker <gerald.loacker@wolfvision.net>
+Tested-by: Gerald Loacker <gerald.loacker@wolfvision.net>
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+ .../rockchip/rk3568-wolfvision-pf5-io-expander.dtso  | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-That's expected if you have CONFIG_CRYPTO_AES_ARM64_CE_BLK enabled but
-CONFIG_CRYPTO_XCTR disabled.  Some tests are skipped in that case.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
+index 048933de2943..8cfce71dd318 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
++++ b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
+@@ -11,6 +11,7 @@
+ #include <dt-bindings/clock/rk3568-cru.h>
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/media/video-interfaces.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ 
+ &{/} {
+@@ -134,3 +135,22 @@ &usb2phy0_host {
+ 	phy-supply = <&usb_host_vbus>;
+ 	status = "okay";
+ };
++
++&vicap {
++	pinctrl-names = "default";
++	pinctrl-0 = <&cif_clk &cif_dvp_clk &cif_dvp_bus16>;
++	status = "okay";
++};
++
++&vicap_dvp {
++	vicap_dvp_input: endpoint {
++		bus-type = <MEDIA_BUS_TYPE_BT656>;
++		bus-width = <16>;
++		pclk-sample = <MEDIA_PCLK_SAMPLE_DUAL_EDGE>;
++		rockchip,dvp-clk-delay = <10>;
++	};
++};
++
++&vicap_mmu {
++	status = "okay";
++};
 
-> [   14.172991] alg: ahash: rk-sha1 export() overran state buffer on test vector 0, cfg="import/export"
-> [   14.202291] alg: ahash: rk-sha256 export() overran state buffer on test vector 0, cfg="import/export"
-> [   14.230887] alg: ahash: rk-md5 export() overran state buffer on test vector 0, cfg="import/export"
+-- 
+2.39.5
 
-That means the Rockchip crypto driver is broken.
 
-It may have been broken for a long time.  Hardly anyone ever tests the hardware
-crypto drivers, as they only work on very specific platforms and are often
-useless anyway.  The software crypto is much better tested and often faster.
-
-I don't think broken drivers like these should even be in the kernel at all.
-
-For now, you should just disable CONFIG_CRYPTO_DEV_ROCKCHIP.
-
-Anyway, the more interesting part of your email is that you pointed out that
-Debian has the crypto self-tests enabled, precisely in order to automatically
-disable buggy drivers like these.
-
-And actually Fedora does this too.
-
-This seems kind of crazy.  But unfortunately, the crypto/ philosophy seems to be
-to enable as many untested and buggy drivers as possible, then rely on them
-being (incompletely) self-tested in production.  So, aparently this is a thing.
-
-But of course the distros won't want to enable the full set of tests, which
-would slow down boot times significantly, but rather only the "fast" ones (as
-they were doing before)...
-
-So I'll send a patch that adds back a kconfig knob to run the fast tests only,
-which I had removed in commit 698de822780f.
-
-- Eric
 
 _______________________________________________
 Linux-rockchip mailing list
