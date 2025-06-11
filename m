@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66F52C71141
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 23:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 458FCC71136
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Jun 2025 23:04:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ycXMsizFgEDqm2sUhhuzrGNiFW4Yddalb47zLDkwNWw=; b=YO0oBn3jzb66A9
-	BfV/hnEuc5jUtxpV/3W+IpncyXyqwe6n8u8+SeHruZHLhxXilMc9X9FgZBKz91u4Qfton2Mp/ZEUk
-	4VO3qm9Nt6uBafIOmYnPWA54+PB5n6dc/JK+sHTFi2k8qBfXqgnRHPXo0WZTYeYdRODF0M0QFfBc2
-	ktgNyybvyDcx7r3IhqLqvcqE+hOl2LfYg9sPGiPWEnTjymQZoiSRrerBRhTKZDf+g7+Pbf4vD74k8
-	9zA2vS/jWqR7mCI4ZLhhpuQZiP83+7FcOj9dzVwHEuje4x4FBHqXeNuB0IGUiiPBwSeR23g/G2pTl
-	2DBmH8k0TNroMc/z+/Pg==;
+	List-Owner; bh=hCg5s2zR2wsjC3jpoFrakCc0B+CqgJdCge3/PnlMqK0=; b=Igimy271RDMLcQ
+	1fQQejZf6pF3wO+T44pZA/b2Hh1LzBg8hPSveYazxRtfnUzxrNKVZCHGaPtdPgjBwrzGT11eVqqTi
+	O8vgh6SWoCoYDpCwVURUubyn4KnrqcHPedl8R4DpyPZgQpEhBBgrHsG/nfsBum8vVmwxiq79Li/Jr
+	KII70sxDcmKatRCAPoepBmTnWzSDgLCz8kGoMT57WC0YmhEFmzkvpgYqqJTcZubeqk5mtIheP0v68
+	jBgCP2lXlIJm8kUvYu5icjDhXRlYNQpEsOIQ8ghvZwJKSygn9GwYRow3W4ul6n9p4e84zukJsYanG
+	V54TY0lHWc0gCp5+MpDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPUSs-0000000BbuD-41RD;
-	Wed, 11 Jun 2025 23:02:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uPUV0-0000000BcUL-06Zu;
+	Wed, 11 Jun 2025 23:04:50 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPTJG-0000000BOOM-004h;
-	Wed, 11 Jun 2025 21:48:39 +0000
+	id 1uPTJP-0000000BOQd-2FOt;
+	Wed, 11 Jun 2025 21:48:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749678516;
-	bh=LH3RSD841MZ/Wiu+j6uCJ53sshntEVWDrCUzXD6Diq0=;
+	s=mail; t=1749678526;
+	bh=p125Qdh7AXpcJlrV+7yqlZZwam5I0mnuIIk+bsJi8UU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=X1KUaJ2vZwipKPBKokVHgxzdwtYRuJjl1kPJJnlJRoEZsVaLlH7zvZbqAru5khxja
-	 UdazX8hjDh3qWdJEMpTTnHKE/JHAbKmNX7yijDy+DUt+ZoZKani5n7TidH3PNS0HE/
-	 zbf7rbjoEjvcYwcmcoSRN2TJgU7Z07KOJWHGwvDorHqzWRZ7bmkpmXUth+Owb1LVrl
-	 b0L3vcnwziQl3r2jtx6klopCEyKTEcVFMt904uKxIjHJ3hupWP7AAnBXjSL1MRDDr3
-	 rAFBRexrxeLCGq+3mvUhbpeELFkLTycraMSG1Mhm/7p2lK//T4MHCNCaV20CC9pUCz
-	 cjjSSx+t5wXUA==
+	b=EidgVnMiQFzztrReyrHUBVJ/dgBh0iS528uSU6ZSU0dw/oVXjLTONw6yvYb3IBPqR
+	 fKgkeucn1eAdTsG9IGr5r2aUrGrxN6zYq7QdHqiCmC4B2zFZDg7TQ2Scgu1sd8Vkma
+	 /SDNw9lX2QVSf79dLPn5C6nN0SqBisjOIt9F2xoXzfsDGUwlygMqnwXUlB33nyq/cD
+	 J+eh0MSZQk8Vd1Il9blFhNbKZsEAk+7KZhyEnvNY1mRQzI+tfGnnc6nJ1MWCJYMAHN
+	 elozjHQDkEKzQZ3L1vxI/6Li0jeFjXFFpvi0NF2PChhCmw9F5Y1S3CwcqhF6ed1T5e
+	 1bPu91kPSGFTQ==
 Received: from localhost (unknown [212.93.144.165])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 182F617E1560;
-	Wed, 11 Jun 2025 23:48:36 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id EFA8C17E0342;
+	Wed, 11 Jun 2025 23:48:45 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 12 Jun 2025 00:47:48 +0300
-Subject: [PATCH 2/3] arm64: dts: rockchip: Enable HDMI PHY clk provider on
- rk3576
+Date: Thu, 12 Jun 2025 00:47:49 +0300
+Subject: [PATCH 3/3] arm64: dts: rockchip: Add HDMI PHY PLL clock source to
+ VOP2 on rk3576
 MIME-Version: 1.0
-Message-Id: <20250612-rk3576-hdmitx-fix-v1-2-4b11007d8675@collabora.com>
+Message-Id: <20250612-rk3576-hdmitx-fix-v1-3-4b11007d8675@collabora.com>
 References: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
 In-Reply-To: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -66,8 +66,8 @@ Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>,
  linux-kernel@vger.kernel.org, stable@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_144838_184670_1EC50D12 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20250611_144847_740422_6C662230 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,32 +84,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As with the RK3588 SoC, the HDMI PHY PLL on RK3576 can be used as a more
-accurate pixel clock source for VOP2, which is actually mandatory to
-ensure proper support for display modes handling.
+Since commit c871a311edf0 ("phy: rockchip: samsung-hdptx: Setup TMDS
+char rate via phy_configure_opts_hdmi"), the workaround of passing the
+rate from DW HDMI QP bridge driver via phy_set_bus_width() became
+partially broken, as it cannot reliably handle mode switches anymore.
 
-Add the missing #clock-cells property to allow using the clock provider
-functionality of HDMI PHY.
+Attempting to fix this up at PHY level would not only introduce
+additional hacks, but it would also fail to adequately resolve the
+display issues that are a consequence of the system CRU limitations.
 
-Fixes: ad0ea230ab2a ("arm64: dts: rockchip: Add hdmi for rk3576")
+Instead, proceed with the solution already implemented for RK3588: make
+use of the HDMI PHY PLL as a better suited DCLK source for VOP2. This
+will not only address the aforementioned problem, but it should also
+facilitate the proper operation of display modes up to 4K@60Hz.
+
+It's worth noting that anything above 4K@30Hz still requires high TMDS
+clock ratio and scrambling support, which hasn't been mainlined yet.
+
+Fixes: d74b842cab08 ("arm64: dts: rockchip: Add vop for rk3576")
 Cc: stable@vger.kernel.org
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 1086482f04792325dc4c22fb8ceeb27eef59afe4..6a13fe0c3513fb2ff7cd535aa70e3386c37696e4 100644
+index 6a13fe0c3513fb2ff7cd535aa70e3386c37696e4..b1ac23035dd789f0478bf10c78c74ef167d94904 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -2391,6 +2391,7 @@ hdptxphy: hdmiphy@2b000000 {
- 			reg = <0x0 0x2b000000 0x0 0x2000>;
- 			clocks = <&cru CLK_PHY_REF_SRC>, <&cru PCLK_HDPTX_APB>;
- 			clock-names = "ref", "apb";
-+			#clock-cells = <0>;
- 			resets = <&cru SRST_P_HDPTX_APB>, <&cru SRST_HDPTX_INIT>,
- 				 <&cru SRST_HDPTX_CMN>, <&cru SRST_HDPTX_LANE>;
- 			reset-names = "apb", "init", "cmn", "lane";
+@@ -1155,12 +1155,14 @@ vop: vop@27d00000 {
+ 				 <&cru HCLK_VOP>,
+ 				 <&cru DCLK_VP0>,
+ 				 <&cru DCLK_VP1>,
+-				 <&cru DCLK_VP2>;
++				 <&cru DCLK_VP2>,
++				 <&hdptxphy>;
+ 			clock-names = "aclk",
+ 				      "hclk",
+ 				      "dclk_vp0",
+ 				      "dclk_vp1",
+-				      "dclk_vp2";
++				      "dclk_vp2",
++				      "pll_hdmiphy0";
+ 			iommus = <&vop_mmu>;
+ 			power-domains = <&power RK3576_PD_VOP>;
+ 			rockchip,grf = <&sys_grf>;
 
 -- 
 2.49.0
