@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5366C71157
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0429C71150
 	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 22:10:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,46 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tNIRGbQUSbfbejEie8cwm6ZboD15z/kmshEYENTJmp4=; b=0ZSi9pbsf4qYlY
-	72pEG+PSDk8oqcEuTyK/VgEjAu2TkQ1E6bYOkWnj6BoWqyjuuR946ehfjQiTctOhImAs7FZNcaZDA
-	T1DMe5x+owwJYUEpYldx/QITHyxxqrO0aCX19zqcPmLZr/dwEqw8QQqJbp9F74Ic2a2k5fs0B9yfQ
-	cGxl+Fo986cGYiOfpg3UEWqZk1rbfw8EK7K5Uc7gz3KxT5w18/YnvojZRlCCitlZ/aVVTNMiVBefB
-	LocEFccXz3wCKbNjf6JaGzwfcqrhM+CVkPfJmUvlArR/XRpIycjn25GC1dhrBM8SP/jESDmNOIgKC
-	hOZlSVHPpnadoZigK0/w==;
+	List-Owner; bh=L7d9ex+ViM2CiQoD0q/s7luPVjTkU+ZjKvseFUz/EZk=; b=GroJnOyc0+0iGC
+	QTd72r7eh8lsqCttskQSufURVN1Cqo6zhCWbshkypV72szn4uCLE6ujLKYIAmg1zUXpldN7QKhO1u
+	umm+OC1UJWG5yPt2tFhCp3ALbwtwuJ2Kg1yiZHorTGKA9H+9jF9/Ok+EDlB7pdfwlstW6pPOpjgdB
+	PaYM95Ml9FeIQ5tR8jp/KZ4IAHFCNZG1sjoz/V/9khyL9SXx0ToPzQuVN4L5GmCC/xvjWNdondREM
+	jlEN1r9L6+5XJVbtzIN+iACowSKUbrbL02BlheUK9EH+6W49Klk6BnCjjX/mPYfVxy7zsede8XuuC
+	gAPWi1f9dnHm3zr8yQVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPq7X-0000000Ek9r-1Hc2;
-	Thu, 12 Jun 2025 22:10:03 +0000
+	id 1uPq7T-0000000Ejzb-1aUr;
+	Thu, 12 Jun 2025 22:09:59 +0000
 Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPn95-0000000EANC-3lX4;
-	Thu, 12 Jun 2025 18:59:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749754730; cv=none; 
+	id 1uPn7p-0000000EA33-2GP7;
+	Thu, 12 Jun 2025 18:58:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749754651; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=TRM8mOFWyaBYak++nZU8l9Lh9sNaOvaqbi+IF5KwOXAxpxEdhGnj1xHPo0BC8t9jwMsc9bX/n8u29ShdL0HXM2/KZSM6AifRSMqgUwexN+YhM7aeCbVbJShzARE4YkEzpYLZ5Kl1m5XncFNxaNW2TlIfz8bMHFHmUWtWiC97aWA=
+	b=UEyFt0My6Tx57VlsVbAn+L/PzxHg0V1PVWp+0Z6S/LOPyFbP001POGENLGKzpfV1qwLIwkwh0iQQHr4u0waniFL7zjoiP2HTDvf0WRRc1x0gwqdwOKRPvGZ4F3SLj0tjLmq+5V5Qvj+l8WBkfKgMbeyiMhzQpVH70j/1y5uq+C8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749754730; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=40rYDysgIuUPOjEXjeVmWjUJjq2cy29Zm9mzxshoj3Q=; 
-	b=eyNXOpLzG/KfGfQO4VVrBHoSStZG4ttQiQp3pf5y0tTiFbPx09TIH7qU1JY1Ukt6Z4f8vFGHQlc+pcugmiZctcmzwHuqHz5RNz4p72Jew++h8+/OXDSH+Xyy6r4Rtuycnl4JmsZQ67YaLGSpYcOaPW1FyrRNMi/XI1wpARBKEXo=
+	t=1749754651; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=w61WQ83ZUwib69um1YfaUCr6dLg3DGxUyrk3WxNVqeo=; 
+	b=broGtzCUfi5qaijw+A8UWX3vRc7GmFasZzqHbXFoPWkCswDJaCKgF0wrI7B8s0xW0k6g5EzcO06mrp1SUnx17q7RpgN0DGAz02RkVyGij2+88XPmmKa9T7r44M7yu2x/Cv/jsQlzAOTidFj/VI0c1LdsTgUKj/jtCqKx7GdzQpw=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749754730;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749754651;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=40rYDysgIuUPOjEXjeVmWjUJjq2cy29Zm9mzxshoj3Q=;
-	b=XM21WvZ37+5lexo4sUsG3vQNVq/vd9yOHR5204FfyyT1AsygHfQnx7rmP30dSsCV
-	gxz9M1jdmgWMM+DOtWyARQp9vl6GI3NO4/zPJEBCngqxsifVQJFImONiO6r9aufCazz
-	n/10voaGC+YtJZJdXTRGZXwgCnTmvVrUrDtegWwQ=
-Received: by mx.zohomail.com with SMTPS id 1749754729031715.0037807596458;
-	Thu, 12 Jun 2025 11:58:49 -0700 (PDT)
+	bh=w61WQ83ZUwib69um1YfaUCr6dLg3DGxUyrk3WxNVqeo=;
+	b=WAK+vIz29CcEtw89zxcFchzJLHGQXcd15BwTiGlmKu/9+nnkbNxL3/CC3Z+7wYHk
+	88C9/MQArtuBJCDDRHB3eQFukXNDGC9aKn3Ow8SBJxhcFT0eX0pGkSEeyXOLkVKtQQI
+	MZuPIC4cTtR/OTq0lp7jRVstuw7kje6cnAQZP3uY=
+Received: by mx.zohomail.com with SMTPS id 1749754649558158.1279376244986;
+	Thu, 12 Jun 2025 11:57:29 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 12 Jun 2025 20:56:13 +0200
-Subject: [PATCH 11/20] drm/rockchip: inno-hdmi: switch to HWORD_UPDATE
- macro
+Date: Thu, 12 Jun 2025 20:56:07 +0200
+Subject: [PATCH 05/20] drm/rockchip: lvds: switch to HWORD_UPDATE macro
 MIME-Version: 1.0
-Message-Id: <20250612-byeword-update-v1-11-f4afb8f6313f@collabora.com>
+Message-Id: <20250612-byeword-update-v1-5-f4afb8f6313f@collabora.com>
 References: <20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com>
 In-Reply-To: <20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com>
 To: Yury Norov <yury.norov@gmail.com>, 
@@ -86,8 +85,8 @@ To: Yury Norov <yury.norov@gmail.com>,
  Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_115927_987912_781943A1 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20250612_115809_629582_BDF81278 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,58 +107,60 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
 drivers that use constant masks.
 
-The inno-hdmi driver's own HIWORD_UPDATE macro is instantiated only
-twice. Remove it, and replace its uses with HWORD_UPDATE. Since
-HWORD_UPDATE shifts the value for us, we replace using the mask as the
-value by simply using 1 instead.
+Remove rockchip_lvds.h's own HIWORD_UPDATE macro, and replace all
+instances of it with bitfield.h's HWORD_UPDATE macro, which gives us
+more error checking.
 
-With the new HWORD_UPDATE macro, we gain better error checking and a
-central shared definition.
-
-This has been compile-tested only as I lack hardware this old, but the
-change is trivial enough that I am fairly certain it's equivalent.
+For the slightly-less-trivial case of the 2-bit width instance, the
+results were checked during development to match all possible input
+values (0 to 3, inclusive).
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_lvds.h | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index db4b4038e51d5a963f9ddad568282485ed355040..ab6b1d91127885afe0f5e0feb265d6b7b02d88a7 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -6,6 +6,7 @@
-  */
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.h b/drivers/gpu/drm/rockchip/rockchip_lvds.h
+index ca83d7b6bea733588849d3ff379cf8540405462b..568fe8d7918586581a461493d57d7b95f4c9eebc 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.h
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.h
+@@ -9,6 +9,9 @@
+ #ifndef _ROCKCHIP_LVDS_
+ #define _ROCKCHIP_LVDS_
  
- #include <linux/irq.h>
 +#include <linux/bitfield.h>
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/err.h>
-@@ -31,8 +32,6 @@
++#include <linux/bits.h>
++
+ #define RK3288_LVDS_CH0_REG0			0x00
+ #define RK3288_LVDS_CH0_REG0_LVDS_EN		BIT(7)
+ #define RK3288_LVDS_CH0_REG0_TTL_EN		BIT(6)
+@@ -106,18 +109,16 @@
+ #define LVDS_VESA_18				2
+ #define LVDS_JEIDA_18				3
  
- #include "inno_hdmi.h"
- 
--#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
+-#define HIWORD_UPDATE(v, h, l)  ((GENMASK(h, l) << 16) | ((v) << (l)))
 -
- #define INNO_HDMI_MIN_TMDS_CLOCK  25000000U
+ #define PX30_LVDS_GRF_PD_VO_CON0		0x434
+-#define   PX30_LVDS_TIE_CLKS(val)		HIWORD_UPDATE(val,  8,  8)
+-#define   PX30_LVDS_INVERT_CLKS(val)		HIWORD_UPDATE(val,  9,  9)
+-#define   PX30_LVDS_INVERT_DCLK(val)		HIWORD_UPDATE(val,  5,  5)
++#define   PX30_LVDS_TIE_CLKS(val)		HWORD_UPDATE(BIT(8), (val))
++#define   PX30_LVDS_INVERT_CLKS(val)		HWORD_UPDATE(BIT(9), (val))
++#define   PX30_LVDS_INVERT_DCLK(val)		HWORD_UPDATE(BIT(5), (val))
  
- #define RK3036_GRF_SOC_CON2	0x148
-@@ -392,10 +391,10 @@ static int inno_hdmi_config_video_timing(struct inno_hdmi *hdmi,
- 	int value, psync;
+ #define PX30_LVDS_GRF_PD_VO_CON1		0x438
+-#define   PX30_LVDS_FORMAT(val)			HIWORD_UPDATE(val, 14, 13)
+-#define   PX30_LVDS_MODE_EN(val)		HIWORD_UPDATE(val, 12, 12)
+-#define   PX30_LVDS_MSBSEL(val)			HIWORD_UPDATE(val, 11, 11)
+-#define   PX30_LVDS_P2S_EN(val)			HIWORD_UPDATE(val,  6,  6)
+-#define   PX30_LVDS_VOP_SEL(val)		HIWORD_UPDATE(val,  1,  1)
++#define   PX30_LVDS_FORMAT(val)			HWORD_UPDATE(GENMASK(14, 13), (val))
++#define   PX30_LVDS_MODE_EN(val)		HWORD_UPDATE(BIT(12), (val))
++#define   PX30_LVDS_MSBSEL(val)			HWORD_UPDATE(BIT(11), (val))
++#define   PX30_LVDS_P2S_EN(val)			HWORD_UPDATE(BIT(6), (val))
++#define   PX30_LVDS_VOP_SEL(val)		HWORD_UPDATE(BIT(1), (val))
  
- 	if (hdmi->variant->dev_type == RK3036_HDMI) {
--		psync = mode->flags & DRM_MODE_FLAG_PHSYNC ? RK3036_HDMI_PHSYNC : 0;
--		value = HIWORD_UPDATE(psync, RK3036_HDMI_PHSYNC);
--		psync = mode->flags & DRM_MODE_FLAG_PVSYNC ? RK3036_HDMI_PVSYNC : 0;
--		value |= HIWORD_UPDATE(psync, RK3036_HDMI_PVSYNC);
-+		psync = mode->flags & DRM_MODE_FLAG_PHSYNC ? 1 : 0;
-+		value = HWORD_UPDATE(RK3036_HDMI_PHSYNC, psync);
-+		psync = mode->flags & DRM_MODE_FLAG_PVSYNC ? 1 : 0;
-+		value |= HWORD_UPDATE(RK3036_HDMI_PVSYNC, psync);
- 		regmap_write(hdmi->grf, RK3036_GRF_SOC_CON2, value);
- 	}
- 
+ #endif /* _ROCKCHIP_LVDS_ */
 
 -- 
 2.49.0
