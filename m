@@ -4,105 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3060C71136
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 09:56:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A15FC61CE8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 10:33:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sXsFBdY3QcpXRz4OW6M3yv0zSuJ7i+Z78gN6+mYPhdk=; b=UsmSSC30q87LU+
-	T13AEZ4ADmCRM7/vWv/DKQu9gHOHDsq4f9gXWExnLLVRN3GrFAfamUZpQ3LHrGjHJfSAK9Nfnn3hJ
-	ueKBdfpfOLxILMWnmRsFM7zUqxqweKmqW7qK/0dpVzQOeT2005MkZQ4gxd1pJN4G3AKmoIN061Tdh
-	UFO1Jw8j55M1yBAwxo5VDu8NUsNFffr8KhHv/yDwynXip38RspVOSXFqIS8L21JOe0VJiZPSTkOD/
-	dIjwNOtGHy13s0fkqYVY5ePVuQfPTcHO+1Jypfr7L4g7wDTBQym1NhVo24trgl0+y7eg88eahEJXO
-	cITNBs48lI2RwLEusJAA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=087UbHsYosiWIup5gOq1QcMZ0p42Y1Ax+RAdB8igj7g=; b=L0r82LZ/mV6MasUfzmLzW07BZk
+	2Zrrs2IXmdFpS6XdtKEomaWjniPcJJ7k6+HR4+Jb5VNYzeuVjq9tbXUyma9rXIDjaKePX1nGW3xYl
+	dKfsuTi6x5lH2I1Hd8SexWYFpXw/3RR6AelMJknnVTfFfk2pW9ypicRyNQ3aytmmnPghY7n7rPGji
+	GFu/B1ZG0ONJWM6TjAugJOXpWL39DV3iI1RyxoSc5WeFrWzE6Xax/OA5UrCYqcZB8DwQSbud59kIp
+	C99utJZxDCU7tiP4Lr7Oh3L5ko98NRpNKSaaS5Rz4EmKq45gQFevaQty7yUIp4J+QLjw/WN9nbbi1
+	jWcLi28w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPefI-0000000Csqw-2GDs;
-	Thu, 12 Jun 2025 09:56:08 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uPfFn-0000000D03t-3hw2;
+	Thu, 12 Jun 2025 10:33:51 +0000
+Received: from jabberwock.ucw.cz ([46.255.230.98])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPdWl-0000000Cg5Y-1sSv;
-	Thu, 12 Jun 2025 08:43:16 +0000
-Received: from [192.168.88.20] (91-158-153-178.elisa-laajakaista.fi [91.158.153.178])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 55F0C250;
-	Thu, 12 Jun 2025 10:43:03 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1749717784;
-	bh=DFZAKZf8wHZi/y9r247ZL0ZUXvFSN1yMyupDQcqZ3+0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=P97DiLsEsf/6i8aVwoi/8/jCDHmL9CIaqVE6F1kh5oZibLMLuYmgz4R5sZGO7dayi
-	 A9sBXgz1SuZs74C1VD4Xp16/e+PXSodQRenE1+LjsblMSGLXpOt87yMih54vtsY4Sp
-	 87w8fmpZjBB9PIYbdL6yYmzS28ULBjvl9UmrLU2M=
-Message-ID: <d7e016fd-3d0e-4822-a404-a53ba11e5dc4@ideasonboard.com>
-Date: Thu, 12 Jun 2025 11:43:08 +0300
+	id 1uPe4N-0000000CnT4-12uW;
+	Thu, 12 Jun 2025 09:18:01 +0000
+Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
+	id C9E871C00B7; Thu, 12 Jun 2025 11:17:52 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
+	t=1749719872;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=jK207JmCPoreSPAxEuJucLTQP5EiXczQgWbs/TTbYI0=;
+	b=PkZDjm+VNaBiHoM19j/d5n9YER5Bd3SVefh8dKqwEN8k5jc2k65ob+oA7hwkxHW6kxGWBX
+	9O4xDZh7LriFaoxfmyvFJQg3qyg3IlrtwF8xT0JGHqOaRBnYof2s+Lj763My4eXvfO6kxu
+	0RF39dsnyWVpKCOD3wdHEG1hkzigaK4=
+Date: Thu, 12 Jun 2025 11:17:52 +0200
+From: Pavel Machek <pavel@ucw.cz>
+To: David Lechner <dlechner@baylibre.com>
+Cc: Michael Hennerich <michael.hennerich@analog.com>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Francesco Dolcini <francesco@dolcini.it>,
+	=?iso-8859-1?Q?Jo=E3o_Paulo_Gon=E7alves?= <jpaulo.silvagoncalves@gmail.com>,
+	Leonard =?iso-8859-1?Q?G=F6hrs?= <l.goehrs@pengutronix.de>,
+	kernel@pengutronix.de, Oleksij Rempel <o.rempel@pengutronix.de>,
+	Roan van Dijk <roan@protonic.nl>,
+	Tomasz Duszynski <tomasz.duszynski@octakon.com>,
+	Jacopo Mondi <jacopo@jmondi.org>,
+	Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
+	Mudit Sharma <muditsharma.info@gmail.com>,
+	Javier Carrasco <javier.carrasco.cruz@gmail.com>,
+	=?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
+	Andreas Klinger <ak@it-klinger.de>,
+	Petre Rodan <petre.rodan@subdimension.ro>,
+	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
+Message-ID: <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
+References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 03/25] drm/gem-dma: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
- nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
- simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
- maarten.lankhorst@linux.intel.com, geert@linux-m68k.org
-References: <20250311155120.442633-1-tzimmermann@suse.de>
- <20250311155120.442633-4-tzimmermann@suse.de>
-Content-Language: en-US
-From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Autocrypt: addr=tomi.valkeinen@ideasonboard.com; keydata=
- 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
-In-Reply-To: <20250311155120.442633-4-tzimmermann@suse.de>
+In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_014315_628482_9C0CB30F 
-X-CRM114-Status: GOOD (  15.81  )
+X-CRM114-CacheID: sfid-20250612_021759_728529_99F80366 
+X-CRM114-Status: GOOD (  14.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,82 +87,141 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3852137583638333312=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On 11/03/2025 17:47, Thomas Zimmermann wrote:
-> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-> buffer size. Align the pitch to a multiple of 8.
-> 
-> Push the current calculation into the only direct caller imx. Imx's
-> hardware requires the framebuffer width to be aligned to 8. The
-> driver's current approach is actually incorrect, as it only guarantees
-> this implicitly and requires bpp to be a multiple of 8 already. A
-> later commit will fix this problem by aligning the scanline pitch
-> such that an aligned width still fits into each scanline's memory.
-> 
-> A number of other drivers are build on top of gem-dma helpers and
-> implement their own dumb-buffer allocation. These drivers invoke
-> drm_gem_dma_dumb_create_internal(), which is not affected by this
-> commit.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+--===============3852137583638333312==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="rtWrUApkft0MEwbP"
+Content-Disposition: inline
+
+
+--rtWrUApkft0MEwbP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi!
+
+> Jonathan mentioned recently that he would like to get away from using
+> memset() to zero-initialize stack memory in the IIO subsystem. And we
+> have it on good authority that initializing a struct or array with =3D { }
+> is the preferred way to do this in the kernel [1]. So here is a series
+> to take care of that.
+
+1) Is it worth the churn?
+
+2) Will this fail to initialize padding with some obscure compiler?
+
+3) Why do you believe that {} is the preffered way? All we have is
+Kees' email that explains that =3D {} maybe works in configs he tested.
+
+BR,
+								Pavel
+
+> [1]:
+> https://lore.kernel.org/linux-iio/202505090942.48EBF01B@keescook/
+
+
+
 > ---
->  drivers/gpu/drm/drm_gem_dma_helper.c     | 7 +++++--
->  drivers/gpu/drm/imx/ipuv3/imx-drm-core.c | 2 ++
->  2 files changed, 7 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/drm_gem_dma_helper.c b/drivers/gpu/drm/drm_gem_dma_helper.c
-> index b7f033d4352a..49be9b033610 100644
-> --- a/drivers/gpu/drm/drm_gem_dma_helper.c
-> +++ b/drivers/gpu/drm/drm_gem_dma_helper.c
-> @@ -20,6 +20,7 @@
->  #include <drm/drm.h>
->  #include <drm/drm_device.h>
->  #include <drm/drm_drv.h>
-> +#include <drm/drm_dumb_buffers.h>
->  #include <drm/drm_gem_dma_helper.h>
->  #include <drm/drm_vma_manager.h>
->  
-> @@ -304,9 +305,11 @@ int drm_gem_dma_dumb_create(struct drm_file *file_priv,
->  			    struct drm_mode_create_dumb *args)
->  {
->  	struct drm_gem_dma_object *dma_obj;
-> +	int ret;
->  
-> -	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
-> -	args->size = args->pitch * args->height;
-> +	ret = drm_mode_size_dumb(drm, args, SZ_8, 0);
-> +	if (ret)
-> +		return ret;
->  
->  	dma_obj = drm_gem_dma_create_with_handle(file_priv, drm, args->size,
->  						 &args->handle);
-> diff --git a/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c b/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
-> index ec5fd9a01f1e..e7025df7b978 100644
-> --- a/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
-> +++ b/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
-> @@ -145,6 +145,8 @@ static int imx_drm_dumb_create(struct drm_file *file_priv,
->  	int ret;
->  
->  	args->width = ALIGN(width, 8);
-> +	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
-> +	args->size = args->pitch * args->height;
->  
->  	ret = drm_gem_dma_dumb_create(file_priv, drm, args);
->  	if (ret)
+> David Lechner (28):
+>       iio: accel: adxl372: use =3D { } instead of memset()
+>       iio: accel: msa311: use =3D { } instead of memset()
+>       iio: adc: dln2-adc: use =3D { } instead of memset()
+>       iio: adc: mt6360-adc: use =3D { } instead of memset()
+>       iio: adc: rockchip_saradc: use =3D { } instead of memset()
+>       iio: adc: rtq6056: use =3D { } instead of memset()
+>       iio: adc: stm32-adc: use =3D { } instead of memset()
+>       iio: adc: ti-ads1015: use =3D { } instead of memset()
+>       iio: adc: ti-ads1119: use =3D { } instead of memset()
+>       iio: adc: ti-lmp92064: use =3D { } instead of memset()
+>       iio: adc: ti-tsc2046: use =3D { } instead of memset()
+>       iio: chemical: scd4x: use =3D { } instead of memset()
+>       iio: chemical: scd30: use =3D { } instead of memset()
+>       iio: chemical: sunrise_co2: use =3D { } instead of memset()
+>       iio: dac: ad3552r: use =3D { } instead of memset()
+>       iio: imu: inv_icm42600: use =3D { } instead of memset()
+>       iio: imu: inv_mpu6050: use =3D { } instead of memset()
+>       iio: light: bh1745: use =3D { } instead of memset()
+>       iio: light: ltr501: use =3D { } instead of memset()
+>       iio: light: opt4060: use =3D { } instead of memset()
+>       iio: light: veml6030: use =3D { } instead of memset()
+>       iio: magnetometer: af8133j: use =3D { } instead of memset()
+>       iio: pressure: bmp280: use =3D { } instead of memset()
+>       iio: pressure: mpl3115: use =3D { } instead of memset()
+>       iio: pressure: mprls0025pa: use =3D { } instead of memset()
+>       iio: pressure: zpa2326: use =3D { } instead of memset()
+>       iio: proximity: irsd200: use =3D { } instead of memset()
+>       iio: temperature: tmp006: use =3D { } instead of memset()
+>=20
+>  drivers/iio/accel/adxl372.c                       | 3 +--
+>  drivers/iio/accel/msa311.c                        | 4 +---
+>  drivers/iio/adc/dln2-adc.c                        | 4 +---
+>  drivers/iio/adc/mt6360-adc.c                      | 3 +--
+>  drivers/iio/adc/rockchip_saradc.c                 | 4 +---
+>  drivers/iio/adc/rtq6056.c                         | 4 +---
+>  drivers/iio/adc/stm32-adc.c                       | 3 +--
+>  drivers/iio/adc/ti-ads1015.c                      | 4 +---
+>  drivers/iio/adc/ti-ads1119.c                      | 4 +---
+>  drivers/iio/adc/ti-lmp92064.c                     | 4 +---
+>  drivers/iio/adc/ti-tsc2046.c                      | 3 +--
+>  drivers/iio/chemical/scd30_core.c                 | 3 +--
+>  drivers/iio/chemical/scd4x.c                      | 3 +--
+>  drivers/iio/chemical/sunrise_co2.c                | 6 ++----
+>  drivers/iio/dac/ad3552r.c                         | 3 +--
+>  drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c | 5 ++---
+>  drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c  | 5 ++---
+>  drivers/iio/imu/inv_mpu6050/inv_mpu_acpi.c        | 4 +---
+>  drivers/iio/imu/inv_mpu6050/inv_mpu_ring.c        | 6 ++----
+>  drivers/iio/light/bh1745.c                        | 4 +---
+>  drivers/iio/light/ltr501.c                        | 4 +---
+>  drivers/iio/light/opt4060.c                       | 4 +---
+>  drivers/iio/light/veml6030.c                      | 4 +---
+>  drivers/iio/magnetometer/af8133j.c                | 4 +---
+>  drivers/iio/pressure/bmp280-core.c                | 5 +----
+>  drivers/iio/pressure/mpl3115.c                    | 3 +--
+>  drivers/iio/pressure/mprls0025pa_i2c.c            | 5 +----
+>  drivers/iio/pressure/zpa2326.c                    | 4 +---
+>  drivers/iio/proximity/irsd200.c                   | 3 +--
+>  drivers/iio/temperature/tmp006.c                  | 4 +---
+>  30 files changed, 34 insertions(+), 85 deletions(-)
+> ---
+> base-commit: 4c6073fec2fee4827fa0dd8a4ab4e6f7bbc05ee6
+> change-id: 20250611-iio-zero-init-stack-with-instead-of-memset-0d12d41a7e=
+cb
+>=20
+> Best regards,
 
-Won't the pitch and size just be overwritten by the
-drm_gem_dma_dumb_create() call?
+--=20
+I don't work for Nazis and criminals, and neither should you.
+Boycott Putin, Trump, and Musk!
 
- Tomi
+--rtWrUApkft0MEwbP
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCaEqbQAAKCRAw5/Bqldv6
+8quUAJ9TqDazu4enIZD/WIHKSEebP5o8lQCgo2StzDEJ7G4crF9oQEjDZPrt78A=
+=/MEA
+-----END PGP SIGNATURE-----
+
+--rtWrUApkft0MEwbP--
+
+
+--===============3852137583638333312==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3852137583638333312==--
+
