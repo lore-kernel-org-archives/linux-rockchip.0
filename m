@@ -4,85 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21598C61CE8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 13:20:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBA26C61CE8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 13:20:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GP+ZV80sCzS/1yU0tO9aQzsEmreGo26GgYPAubLkQDg=; b=lpPzp1ru28yHKk
-	1bK4H0ccDmQXhF2ifMfHrepOsGM0l7HBPlu2B98HCZpNwqCi2JJ3oV7upim7cuTmE2xBND7b770JO
-	oUKx6bWEWlhldlPh/feGHeypjDITu4fW/kwSKDoysRfuFiBAweV+jj+Cq97NW5d9Z3D4IdxsH3T/Q
-	qtGQZaKdv47LjkdB3m+AN8qkIfwlcWpvtvTAInZlNLq5WSI+Eg/DCn8JrtCONLslzRr6SdhkAYcPG
-	QqMpDJopg8dTIkZjmZelQNM9Lce5/V3JlV9TlxRTClCkaj/JW32a5cjE0GLpt6sl0GvEdXUFheP0D
-	v0uZ8on0UjSNIi1kprPw==;
+	List-Owner; bh=XsvZhh3GgNd3rU7oGZ9G53wu6qjoq7Dj+EFJptzrtfQ=; b=DiDNUpixFVDZA+
+	3oPQwa+KZ+fhBSkiVylxW8wJd7zip8ma+yNsvPofvmM20xgRAe0CX7erb3ckrp4769XnZsaL6EUTH
+	qvd72jkIZeedfg+/d7a4AMxegeUJ9MgBSINB+gzry6PyV9NHKEDF+3kXsCfBmwFCOAFhueiv8lB+l
+	dxCIBaDKuzMmzL0iLMHuH/II4CVtReM3ewGWyQXRHmB2Dci1/bCe2q7GHfDb1r6nMJ6WFxiyK0WGL
+	SCfgTSkgf1VKzS/oO38qJ8UJgr3vwVSh2ewyKdYsubI4eYNDWmbnw5yP9c6Tc8tT2nGPoMXhYObaE
+	39aAsvwj06rA7ix0HN6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPhr0-0000000DP52-0Rv6;
-	Thu, 12 Jun 2025 13:20:26 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1uPhr3-0000000DPCX-4Ase;
+	Thu, 12 Jun 2025 13:20:30 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPgnC-0000000DDTe-0yjC;
-	Thu, 12 Jun 2025 12:12:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749730279; cv=none; 
+	id 1uPgoI-0000000DDfb-2vva;
+	Thu, 12 Jun 2025 12:13:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749730388; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=gLVUSH8whkjznJ84HhEKxxnjU2XuDwX04WtVl7Ke0k/VtxuyHepvYyZFEsDsuRxdsOR+mZGQaf6prN0Jl3RFazK5tsm20vUPJNrfC7uMH7EkaAb8x+J6/uAl/jUVupirBlfKqcEg9lOnbR3b7+HuupT2MjpmNEg4RkgTVsrnDEU=
+	b=JmJQM+jRvKt3sfgWkyOX4HaeWFVmPbVAO8KKw41WsufLNG+hkfi3klar7FzBKqa0rb+LNIFbWFaE/9rwZE+W7v1Grghsny1FiPBo8dhL0YYtuBgOKYn7PojELsZdUPV8SeUsJhRonIaMm6EpPFZjyhQI9cEn3U0UtqxZhgtXQTA=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749730279; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=anKlnwbFl0i8atiPf5c4Ks2L7I/qYyoFEOqCpl8Xjz4=; 
-	b=NnYk+ho5QsNnUw/GyWrBWAlNSFdprVwt/SMpMEjygvo543BdEKRBHtfoDB0IlobqSRFj3aQKnfuW61HRwi3mlbyo7MjKlqvXIxcbmt1jg1nM3R/1ZxeziAGckm4SGc4esonsJ/LIuXqmUTX6AGNZ7pwSisvbKzWfbHfGMTWV5H8=
+	t=1749730388; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=xHyHeKSFmeGChzEgnyhjfuWXXlgy/EN/udP8iYeBM9Y=; 
+	b=Ib9ekT7AwMRUYhGvgD9uKKP6GelvUKk6hJUYqrrJ6CRYajukgppFIPL0voa2jIlyrM90yRs02e71g334VJGyTiT4sOp+9d15BoOjXB4WPx6gOIKEO9sIp8l/KeAt2GUT/6cyZP0MsYHZ28SMss613cMocZObIwa/2LKTP+cGTrc=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749730279;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749730388;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=anKlnwbFl0i8atiPf5c4Ks2L7I/qYyoFEOqCpl8Xjz4=;
-	b=SK7OXUzcTO6J2OvgkAoNUrfYDQNfzeYE74UjS+nOX7vgUkpRNbgyTF8jQkg2hh0D
-	dUAV/oN8qsLxpnK+Y+fEssRjHR7B+gVr7b2h2PGccmdr2X9JotCuSJJ08Fv1WSCt0fN
-	YQykWtOBwsZmWFYSR+CE0ujPPquYI14ZwNERJFwc=
-Received: by mx.zohomail.com with SMTPS id 1749730276781981.6042234328434;
-	Thu, 12 Jun 2025 05:11:16 -0700 (PDT)
+	bh=xHyHeKSFmeGChzEgnyhjfuWXXlgy/EN/udP8iYeBM9Y=;
+	b=d+RkCAVL7ZCghwxV5Eux+3bXYGhO6sl4hXL7ifOJnCTCeQn2zHcqD5oCqiGsg2z4
+	wY20o06EDmfS5LlTr/thtEU5z02fLNUC06JV0yXduO/kai1CtJB7ziqGHNeofc9ov2u
+	xQGtnTc+H1+LtJ9QDY6+Br9AGt45A8vIQDGO5a8A=
+Received: by mx.zohomail.com with SMTPS id 1749730386061466.0088473265579;
+	Thu, 12 Jun 2025 05:13:06 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: David Lechner <dlechner@baylibre.com>, linux-rockchip@lists.infradead.org
-Cc: Michael Hennerich <michael.hennerich@analog.com>,
- Lars-Peter Clausen <lars@metafoo.de>, Jonathan Cameron <jic23@kernel.org>,
- Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>,
- Andy Shevchenko <andy@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Francesco Dolcini <francesco@dolcini.it>,
- =?UTF-8?B?Sm/Do28gUGF1bG8gR29uw6dhbHZlcw==?=
- <jpaulo.silvagoncalves@gmail.com>,
- Leonard =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>,
- kernel@pengutronix.de, Oleksij Rempel <o.rempel@pengutronix.de>,
- Roan van Dijk <roan@protonic.nl>,
- Tomasz Duszynski <tomasz.duszynski@octakon.com>,
- Jacopo Mondi <jacopo@jmondi.org>,
- Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
- Mudit Sharma <muditsharma.info@gmail.com>,
- Javier Carrasco <javier.carrasco.cruz@gmail.com>,
- =?UTF-8?B?T25kxZllag==?= Jirman <megi@xff.cz>,
- Andreas Klinger <ak@it-klinger.de>,
- Petre Rodan <petre.rodan@subdimension.ro>, linux-iio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, Pavel Machek <pavel@ucw.cz>
-Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-Date: Thu, 12 Jun 2025 14:11:08 +0200
-Message-ID: <2243943.irdbgypaU6@workhorse>
-In-Reply-To: <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
-References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
- <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
+To: Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 0/3] arm64: dts: rockchip: Fix HDMI output on RK3576
+Date: Thu, 12 Jun 2025 14:13:00 +0200
+Message-ID: <3011644.e9J7NaK4W3@workhorse>
+In-Reply-To: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
+References: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_051226_351738_F0C4E621 
-X-CRM114-Status: GOOD (  25.02  )
+X-CRM114-CacheID: sfid-20250612_051334_800621_CA8DD630 
+X-CRM114-Status: GOOD (  18.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,140 +75,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Andy Yan <andyshrk@163.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, stable@vger.kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
-
-I thought I'd chime in as someone uninvolved because this seemed
-interesting.
-
-On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel Machek wrote:
-> Hi!
+On Wednesday, 11 June 2025 23:47:46 Central European Summer Time Cristian Ciocaltea wrote:
+> Since commit c871a311edf0 ("phy: rockchip: samsung-hdptx: Setup TMDS
+> char rate via phy_configure_opts_hdmi"), the workaround of passing the
+> PHY rate from DW HDMI QP bridge driver via phy_set_bus_width() became
+> partially broken, unless the rate adjustment is done as with RK3588,
+> i.e. by CCF from VOP2.
 > 
-> > Jonathan mentioned recently that he would like to get away from using
-> > memset() to zero-initialize stack memory in the IIO subsystem. And we
-> > have it on good authority that initializing a struct or array with = { }
-> > is the preferred way to do this in the kernel [1]. So here is a series
-> > to take care of that.
+> Attempting to fix this up at PHY level would not only introduce
+> additional hacks, but it would also fail to adequately resolve the
+> display issues that are a consequence of the system CRU limitations.
 > 
-> 1) Is it worth the churn?
+> Therefore, let's proceed with the solution already implemented for
+> RK3588, that is to make use of the HDMI PHY PLL as a more accurate DCLK
+> source in VOP2.
 > 
-> 2) Will this fail to initialize padding with some obscure compiler?
-
-as of right now, the only two C compilers that are supported are
-GCC >= 8.1, and Clang >= 13.0.1. If anyone even manages to get the kernel
-to finish a build with something else, I think the compiler not
-implementing the C standard correctly is the least of their worries.
-
-My bigger worry is that = { } is only guaranteed to be as correct as
-memset on C23, and the kernel's standard right now is C11. For that
-reason alone, I don't think memset should be moved away from for now,
-unless someone can verify that every GCC release >= 8.1 and every
-Clang release >= 13.0.1 does the right thing here regardless.
-
+> It's worth noting a follow-up patch is going to drop the hack from the
+> bridge driver altogether, while switching to HDMI PHY configuration API
+> for setting up the TMDS character rate.
 > 
-> 3) Why do you believe that {} is the preffered way? All we have is
-> Kees' email that explains that = {} maybe works in configs he tested.
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+> Cristian Ciocaltea (3):
+>       dt-bindings: display: vop2: Add optional PLL clock property for rk3576
+>       arm64: dts: rockchip: Enable HDMI PHY clk provider on rk3576
+>       arm64: dts: rockchip: Add HDMI PHY PLL clock source to VOP2 on rk3576
+> 
+>  .../bindings/display/rockchip/rockchip-vop2.yaml   | 56 +++++++++++++++++-----
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi           |  7 ++-
+>  2 files changed, 49 insertions(+), 14 deletions(-)
+> ---
+> base-commit: 19272b37aa4f83ca52bdf9c16d5d81bdd1354494
+> change-id: 20250611-rk3576-hdmitx-fix-e030fbdb0d17
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
 
-= { } is guaranteed to work in C23, as per the standard, but again we're
-not on C23.
+For the whole series:
 
-The reason to prefer this is likely that it's easier for static analysis
-to see the struct as initialised, but that's me making assumptions here.
+Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-A more human-centric argument is that once we're on a C standards version
-where = { } is guaranteed to be correct, then = { } is much more obviously
-correct to a reader than a memset with a value and a size somewhere later
-in the code. This argument is evident from the number of patches in this
-series where the memset and the declaration are not in the same hunk.
-That's the kind of stuff that keeps me awake at night, sweating profusely.
+This fixes HDMI output for 4K resolutions on my RK3576 ArmSoM Sige5.
+The DTB checks and bindings checks pass as well.
 
 Kind regards,
 Nicolas Frattaroli
-
-> 
-> BR,
-> 								Pavel
-> 
-> > [1]:
-> > https://lore.kernel.org/linux-iio/202505090942.48EBF01B@keescook/
-> 
-> 
-> 
-> > ---
-> > David Lechner (28):
-> >       iio: accel: adxl372: use = { } instead of memset()
-> >       iio: accel: msa311: use = { } instead of memset()
-> >       iio: adc: dln2-adc: use = { } instead of memset()
-> >       iio: adc: mt6360-adc: use = { } instead of memset()
-> >       iio: adc: rockchip_saradc: use = { } instead of memset()
-> >       iio: adc: rtq6056: use = { } instead of memset()
-> >       iio: adc: stm32-adc: use = { } instead of memset()
-> >       iio: adc: ti-ads1015: use = { } instead of memset()
-> >       iio: adc: ti-ads1119: use = { } instead of memset()
-> >       iio: adc: ti-lmp92064: use = { } instead of memset()
-> >       iio: adc: ti-tsc2046: use = { } instead of memset()
-> >       iio: chemical: scd4x: use = { } instead of memset()
-> >       iio: chemical: scd30: use = { } instead of memset()
-> >       iio: chemical: sunrise_co2: use = { } instead of memset()
-> >       iio: dac: ad3552r: use = { } instead of memset()
-> >       iio: imu: inv_icm42600: use = { } instead of memset()
-> >       iio: imu: inv_mpu6050: use = { } instead of memset()
-> >       iio: light: bh1745: use = { } instead of memset()
-> >       iio: light: ltr501: use = { } instead of memset()
-> >       iio: light: opt4060: use = { } instead of memset()
-> >       iio: light: veml6030: use = { } instead of memset()
-> >       iio: magnetometer: af8133j: use = { } instead of memset()
-> >       iio: pressure: bmp280: use = { } instead of memset()
-> >       iio: pressure: mpl3115: use = { } instead of memset()
-> >       iio: pressure: mprls0025pa: use = { } instead of memset()
-> >       iio: pressure: zpa2326: use = { } instead of memset()
-> >       iio: proximity: irsd200: use = { } instead of memset()
-> >       iio: temperature: tmp006: use = { } instead of memset()
-> > 
-> >  drivers/iio/accel/adxl372.c                       | 3 +--
-> >  drivers/iio/accel/msa311.c                        | 4 +---
-> >  drivers/iio/adc/dln2-adc.c                        | 4 +---
-> >  drivers/iio/adc/mt6360-adc.c                      | 3 +--
-> >  drivers/iio/adc/rockchip_saradc.c                 | 4 +---
-> >  drivers/iio/adc/rtq6056.c                         | 4 +---
-> >  drivers/iio/adc/stm32-adc.c                       | 3 +--
-> >  drivers/iio/adc/ti-ads1015.c                      | 4 +---
-> >  drivers/iio/adc/ti-ads1119.c                      | 4 +---
-> >  drivers/iio/adc/ti-lmp92064.c                     | 4 +---
-> >  drivers/iio/adc/ti-tsc2046.c                      | 3 +--
-> >  drivers/iio/chemical/scd30_core.c                 | 3 +--
-> >  drivers/iio/chemical/scd4x.c                      | 3 +--
-> >  drivers/iio/chemical/sunrise_co2.c                | 6 ++----
-> >  drivers/iio/dac/ad3552r.c                         | 3 +--
-> >  drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c | 5 ++---
-> >  drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c  | 5 ++---
-> >  drivers/iio/imu/inv_mpu6050/inv_mpu_acpi.c        | 4 +---
-> >  drivers/iio/imu/inv_mpu6050/inv_mpu_ring.c        | 6 ++----
-> >  drivers/iio/light/bh1745.c                        | 4 +---
-> >  drivers/iio/light/ltr501.c                        | 4 +---
-> >  drivers/iio/light/opt4060.c                       | 4 +---
-> >  drivers/iio/light/veml6030.c                      | 4 +---
-> >  drivers/iio/magnetometer/af8133j.c                | 4 +---
-> >  drivers/iio/pressure/bmp280-core.c                | 5 +----
-> >  drivers/iio/pressure/mpl3115.c                    | 3 +--
-> >  drivers/iio/pressure/mprls0025pa_i2c.c            | 5 +----
-> >  drivers/iio/pressure/zpa2326.c                    | 4 +---
-> >  drivers/iio/proximity/irsd200.c                   | 3 +--
-> >  drivers/iio/temperature/tmp006.c                  | 4 +---
-> >  30 files changed, 34 insertions(+), 85 deletions(-)
-> > ---
-> > base-commit: 4c6073fec2fee4827fa0dd8a4ab4e6f7bbc05ee6
-> > change-id: 20250611-iio-zero-init-stack-with-instead-of-memset-0d12d41a7ecb
-> > 
-> > Best regards,
-> 
-> 
-
-
 
 
 
