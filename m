@@ -4,101 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91D81C61CE8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 13:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CC09C7114A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 19:40:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=49iq1XgN+nX9ohWBKkk8pcXXmztk6v0ivYfOKAxlu/4=; b=dxyNBX7DVlJ3p7
-	c7Vib+LXZMNU4KE/oNw3yFJqF8ulz/91CqJiPsiqSxlka2mGNDJZlR+nTt43Bk5AX9c7V91p9K1zh
-	76mAvVMvweQB0VK6TECG5SKlTxhTfGrpV22vszKK6r+bmSR0I4fOTVTy2Gt4xky/dRktDlMFfwaNr
-	XSZoJ1fDaLuSMiVjHbsSsZn5Wz329HRgZEKDWuIxWgm1EZ2R2ypzbOc6YhSMCIj8jasJTYkmjyt4W
-	s1dagDIspsgMx7VERbi7IAoeriYdH6NGYQkKCTgoQ4TYC13bNupu909STTxXrW7TZ7fnijOEtyp9O
-	Teuz6FIeyh5vaRAKP6Ug==;
+	List-Owner; bh=bWR0NxKx01Q25lQprIeUltPQ/Qm1Vzg3RaXKp0pgpbY=; b=q8jt+C8wFNoJMW
+	sL2QFHZYpVn24IH/AUfaMAXsr/j7J27Cx6UI1eZDabMIQPH61O0v6mKFtAehxWSYX3LYoItG6p0Px
+	V5JaMgJ8Idjkn4WhfTSK8clx8QbrQlxY6fTDqWm8vRZdghJt2Sge9V3qBUhrhDxXM6gw3ROx64kkK
+	pv14BDvfebftkrHbjL3wRCzAVQeA7X9Mcy+V2mf0bwwvyD7v7PZpyg+99gmg6sc8nfC+9ya3EfUUR
+	hU0ppFk+qUNOV//LB7Jqji1HrcoWKGXuYCXUYLYVQrL0vi+Xbz3qwucIHq2u5mTJX1/kriXgEP0Ks
+	GiWLq07m5OLQGGJH98Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPhtr-0000000DRJL-3O7i;
-	Thu, 12 Jun 2025 13:23:23 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1uPnmp-0000000EDdC-3cLZ;
+	Thu, 12 Jun 2025 19:40:31 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPhOv-0000000DJ14-2yQS;
-	Thu, 12 Jun 2025 12:51:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1749732685; x=1781268685;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Bql/TNuo24JhgENmtOEIa3XVAhbnXtyYW3C4rsZ9KFs=;
-  b=SbW4ldG7t6vYkDvdyKYmzgm+j6O4i6JoS4+20uzDzF1Q8zADcziGHeq6
-   HTWC0eC6veOSOc9NoYB/oVGqlzAPl/kojuaQOUCsV5xq9yM4aMkPCoWXM
-   Ha6V0GVLAeax86OaH0/oeWV6sp204g2CUKWgIDjFiWU3FltuleUDtAB+0
-   lquKQL1oBf07LduOYgEoVrcd4D1YKGL50OYuPjpivFGTedq/MsWQN1CHU
-   lGXdWRBJAfVZ59orN8rabHxeFcn7sUX4ltSpGSDA9HnKpNu1VcEEkqNo+
-   JHsGSjweYU3P6TQJch7IuWWRVn+HqZmhv5owL0A2AHY/7FDOLR3NFTVCp
-   g==;
-X-CSE-ConnectionGUID: fDU+g/XeSPKtRD/N1F6wng==
-X-CSE-MsgGUID: J8RwB4uiTWae9SDHBY2Oxw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11462"; a="69478293"
-X-IronPort-AV: E=Sophos;i="6.16,230,1744095600"; 
-   d="scan'208";a="69478293"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jun 2025 05:51:20 -0700
-X-CSE-ConnectionGUID: mofzayPbSfemxo/78nvEhA==
-X-CSE-MsgGUID: 65CP34ARQ+yNMlLSnRyUqQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,230,1744095600"; 
-   d="scan'208";a="152795140"
-Received: from smile.fi.intel.com ([10.237.72.52])
-  by orviesa005.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jun 2025 05:51:14 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1uPhOg-00000005x89-01m7;
-	Thu, 12 Jun 2025 15:51:10 +0300
-Date: Thu, 12 Jun 2025 15:51:09 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: David Lechner <dlechner@baylibre.com>
-Cc: Michael Hennerich <michael.hennerich@analog.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Francesco Dolcini <francesco@dolcini.it>,
-	=?iso-8859-1?Q?Jo=E3o_Paulo_Gon=E7alves?= <jpaulo.silvagoncalves@gmail.com>,
-	Leonard =?iso-8859-1?Q?G=F6hrs?= <l.goehrs@pengutronix.de>,
-	kernel@pengutronix.de, Oleksij Rempel <o.rempel@pengutronix.de>,
-	Roan van Dijk <roan@protonic.nl>,
-	Tomasz Duszynski <tomasz.duszynski@octakon.com>,
-	Jacopo Mondi <jacopo@jmondi.org>,
-	Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
-	Mudit Sharma <muditsharma.info@gmail.com>,
-	Javier Carrasco <javier.carrasco.cruz@gmail.com>,
-	=?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
-	Andreas Klinger <ak@it-klinger.de>,
-	Petre Rodan <petre.rodan@subdimension.ro>,
-	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-Message-ID: <aErNPaZzvgAps_-b@smile.fi.intel.com>
-References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
+	id 1uPhXz-0000000DJpE-1EXp;
+	Thu, 12 Jun 2025 13:00:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 8A137629ED;
+	Thu, 12 Jun 2025 13:00:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97055C4CEEA;
+	Thu, 12 Jun 2025 13:00:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749733246;
+	bh=98J4zwVuQp/nbB05Jiw3q7/W838MgXOQSKEV80NOtco=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oFwezS59tRXNI07znkqsGmf11eibxUmJ5WAEOCUQNxsdiVh8uUUbkBCWCuyBHBeHa
+	 0Y1M4y5lvUb8GEQ4p0gZ8vtrGlzLnhgtGY8k7DlduItEx+B8IpVpBJbHbDB1rL35wS
+	 HQoD/H49516e6BP4JggsLnBhRJOly71NSZ/k75QOUjAL2XYdiq/OaRBIDp5QCriqlw
+	 yhnibje7Apf1SyXtYkhFl3rbU3aRF79hRHwSOTFYB4aV8ISLzkqZxhoKwmmFPrcRT2
+	 S1XF1r0Mo5TPHYgsy1kNALIAAur9YJZFl8fFGTiHyUPOwMAD//EM0yDJDm5qJnPSrm
+	 52ggHCrbOx54A==
+Date: Thu, 12 Jun 2025 18:30:37 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Niklas Cassel <cassel@kernel.org>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Wilfred Mallawa <wilfred.mallawa@wdc.com>, 
+	Damien Le Moal <dlemoal@kernel.org>, Laszlo Fiat <laszlo.fiat@proton.me>, linux-pci@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/4] PCI: dw-rockchip: Do not enumerate bus before
+ endpoint devices are ready
+Message-ID: <apkamrd6ty2km7mjwz4mpe2xhewxgd3crmeqdmnj7wn6jl4emv@3nwrt43u2ons>
+References: <aEq8pxE45PmeXN_W@ryzen>
+ <20250612122108.GA901642@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_055125_757877_E7B0499C 
-X-CRM114-Status: GOOD (  12.40  )
+In-Reply-To: <20250612122108.GA901642@bhelgaas>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,32 +69,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 11, 2025 at 05:38:52PM -0500, David Lechner wrote:
-> Jonathan mentioned recently that he would like to get away from using
-> memset() to zero-initialize stack memory in the IIO subsystem. And we
-> have it on good authority that initializing a struct or array with = { }
-> is the preferred way to do this in the kernel [1]. So here is a series
-> to take care of that.
-
-I believe we may do that independently of the compilers that can leave garbage
-in the padding. In case it happens, it will be good adventure to fix the bugs
-in the code, that for some reason take padding(s) into account for the real
-values.
-
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBKdW4gMTIsIDIwMjUgYXQgMDc6MjE6MDhBTSAtMDUwMCwgQmpvcm4gSGVsZ2FhcyB3
+cm90ZToKPiBPbiBUaHUsIEp1biAxMiwgMjAyNSBhdCAwMTo0MDoyM1BNICswMjAwLCBOaWtsYXMg
+Q2Fzc2VsIHdyb3RlOgo+ID4gT24gVGh1LCBKdW4gMTIsIDIwMjUgYXQgMDY6Mzg6MjdBTSAtMDUw
+MCwgQmpvcm4gSGVsZ2FhcyB3cm90ZToKPiA+ID4gT24gVGh1LCBKdW4gMTIsIDIwMjUgYXQgMDE6
+MTk6NDVQTSArMDIwMCwgTmlrbGFzIENhc3NlbCB3cm90ZToKPiA+ID4gPiBPbiBXZWQsIEp1biAx
+MSwgMjAyNSBhdCAwNDoxNDo1NlBNIC0wNTAwLCBCam9ybiBIZWxnYWFzIHdyb3RlOgo+ID4gPiA+
+ID4gT24gV2VkLCBKdW4gMTEsIDIwMjUgYXQgMTI6NTE6NDJQTSArMDIwMCwgTmlrbGFzIENhc3Nl
+bCB3cm90ZToKPiA+ID4gPiA+ID4gQ29tbWl0IGVjOWZkNDk5YjljNiAoIlBDSTogZHctcm9ja2No
+aXA6IERvbid0IHdhaXQgZm9yIGxpbmsgc2luY2Ugd2UgY2FuCj4gPiA+ID4gPiA+IGRldGVjdCBM
+aW5rIFVwIikgY2hhbmdlZCBzbyB0aGF0IHdlIG5vIGxvbmdlciBjYWxsIGR3X3BjaWVfd2FpdF9m
+b3JfbGluaygpLAo+ID4gPiA+ID4gPiBhbmQgaW5zdGVhZCBlbnVtZXJhdGUgdGhlIGJ1cyBkaXJl
+Y3RseSBhZnRlciByZWNlaXZpbmcgdGhlIExpbmsgVXAgSVJRLgo+ID4gPiA+ID4gPiAKPiA+ID4g
+PiA+ID4gVGhpcyBtZWFucyB0aGF0IHRoZXJlIGlzIG5vIGxvbmdlciBhbnkgZGVsYXkgYmV0d2Vl
+biBsaW5rIHVwIGFuZCB0aGUgYnVzCj4gPiA+ID4gPiA+IGdldHRpbmcgZW51bWVyYXRlZC4KPiA+
+ID4gCj4gPiA+ID4gPiBJIHRoaW5rIHRoZSBjb21tZW50IGF0IHRoZSBQQ0lFX1RfUlJTX1JFQURZ
+X01TIGRlZmluaXRpb24gc2hvdWxkIGJlCj4gPiA+ID4gPiBlbm91Z2ggKGFsdGhvdWdoIGl0IG1p
+Z2h0IG5lZWQgdG8gYmUgdXBkYXRlZCB0byBtZW50aW9uIGxpbmstdXApLgo+ID4gPiA+ID4gVGhp
+cyBkZWxheSBpcyBnb2luZyB0byBiZSBhIHN0YW5kYXJkIHBpZWNlIG9mIGV2ZXJ5IGRyaXZlciwg
+c28gaXQKPiA+ID4gPiA+IHdvbid0IHJlcXVpcmUgc3BlY2lhbCBub3RpY2UuCj4gPiA+ID4gCj4g
+PiA+ID4gTG9va2luZyBhdCBwY2kuaCwgd2UgYWxyZWFkeSBoYXZlIGEgY29tbWVudCBtZW50aW9u
+aW5nIGV4YWN0bHkgdGhpcwo+ID4gPiA+IChsaW5rLXVwKToKPiA+ID4gPiBodHRwczovL2dpdGh1
+Yi5jb20vdG9ydmFsZHMvbGludXgvYmxvYi92Ni4xNi1yYzEvZHJpdmVycy9wY2kvcGNpLmgjTDUx
+LUw2Mwo+ID4gPiA+IAo+ID4gPiA+IEkgd2lsbCBjaGFuZ2UgdGhlIHBhdGNoZXMgdG8gdXNlIFBD
+SUVfUkVTRVRfQ09ORklHX0RFVklDRV9XQUlUX01TIGluc3RlYWQuCj4gPiA+IAo+ID4gPiBJJ2xs
+IG1vcmUgY2xvc2VseSBsYXRlciwgYnV0IEkgdGhpbmsgUENJRV9UX1JSU19SRUFEWV9NUyBhbmQK
+PiA+ID4gUENJRV9SRVNFVF9DT05GSUdfREVWSUNFX1dBSVRfTVMgYXJlIGR1cGxpY2F0ZXMgYW5k
+IG9ubHkgb25lIHNob3VsZAo+ID4gPiBleGlzdC4gIEl0IGxvb2tzIGxpa2UgdGhleSBnb3QgbWVy
+Z2VkIGF0IGFib3V0IHRoZSBzYW1lIHRpbWUgYnkKPiA+ID4gZGlmZmVyZW50IHBlb3BsZSwgc28g
+d2UgZGlkbid0IG5vdGljZS4KPiA+IAo+ID4gSSBjYW1lIHRvIHRoZSBzYW1lIGNvbmNsdXNpb24s
+IEkgd2lsbCBzZW5kIGEgcGF0Y2ggdG8gcmVtb3ZlCj4gPiBQQ0lFX1RfUlJTX1JFQURZX01TIGFu
+ZCBjb252ZXJ0IHRoZSBvbmx5IGV4aXN0aW5nIHVzZXIgdG8gdXNlCj4gPiBQQ0lFX1JFU0VUX0NP
+TkZJR19ERVZJQ0VfV0FJVF9NUy4KPiAKPiBJIHRoaW5rIFBDSUVfVF9SUlNfUkVBRFlfTVMgZXhw
+cmVzc2VzIHRoZSBwdXJwb3NlIG9mIHRoZSB3YWl0IG1vcmUKPiBzcGVjaWZpY2FsbHkuICBJdCdz
+IG5vdCB0aGF0IHRoZSBkZXZpY2UgaXMgY29tcGxldGVseSByZWFkeSBhZnRlcgo+IDEwMG1zOyBq
+dXN0IHRoYXQgaXQgc2hvdWxkIGJlIGFibGUgdG8gcmVzcG9uZCB3aXRoIFJSUyBpZiBpdCBuZWVk
+cwo+IG1vcmUgdGltZS4KClllcywgYnV0IG5vbmUgb2YgdGhlIGRyaXZlcnMgYXJlIGNoZWNraW5n
+IGZvciB0aGUgUlJTIHN0YXR1cyBjdXJyZW50bHkuIFNvIHVzaW5nClBDSUVfVF9SUlNfUkVBRFlf
+TVMgZ2l2ZXMgYSB3cm9uZyBpbXByZXNzaW9uIHRoYXQgdGhlIGRyaXZlciBpcyB3YWl0aW5nIGZv
+ciB0aGUKUlJTIHN0YXR1cyBmcm9tIHRoZSBkZXZpY2UuCgotIE1hbmkKCi0tIArgrq7grqPgrr/g
+rrXgrqPgr43grqPgrqngr40g4K6a4K6k4K6+4K6a4K6/4K614K6u4K+NCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
