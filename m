@@ -4,71 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 572B3C71141
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 13:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91D81C61CE8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 13:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UhFKlWD3D43Dm9IhwKIecfgxGsmfdl4LUVq0UbiNub4=; b=Kid9CZjzN5sTU3
-	A1fsmlYgSqHlQyt/ndB4JQz6CdpYxP8xUxzd/W0gIjI2d77AmObwuhgnsdCs2x/g4vp0CcgJpJp02
-	xSzT7l52OulNonYjrB7Yjpl/Sc2rmaY/ieI4jOouUND8qoQq5Gd+TttuGdYbjeLugS2Z+lK7OkPZg
-	zA2xNutNKiqkNzEPV+FEysYC8QJlLAAc3RZgkrQHqUMUnIB19bvTJpBdblLvAnItx4+XIBn0qGnQT
-	gcldPIdlDX0iX7c26hVtYIwVX0JpgjMxl4XHjUbTra64tJj+1xtU1vipkCNt8JSgzkKBYQk2tyCgg
-	Uo0nFkr/t2c3MQ80dS4w==;
+	List-Owner; bh=49iq1XgN+nX9ohWBKkk8pcXXmztk6v0ivYfOKAxlu/4=; b=dxyNBX7DVlJ3p7
+	c7Vib+LXZMNU4KE/oNw3yFJqF8ulz/91CqJiPsiqSxlka2mGNDJZlR+nTt43Bk5AX9c7V91p9K1zh
+	76mAvVMvweQB0VK6TECG5SKlTxhTfGrpV22vszKK6r+bmSR0I4fOTVTy2Gt4xky/dRktDlMFfwaNr
+	XSZoJ1fDaLuSMiVjHbsSsZn5Wz329HRgZEKDWuIxWgm1EZ2R2ypzbOc6YhSMCIj8jasJTYkmjyt4W
+	s1dagDIspsgMx7VERbi7IAoeriYdH6NGYQkKCTgoQ4TYC13bNupu909STTxXrW7TZ7fnijOEtyp9O
+	Teuz6FIeyh5vaRAKP6Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPhrK-0000000DPaE-3Wkq;
-	Thu, 12 Jun 2025 13:20:46 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uPhtr-0000000DRJL-3O7i;
+	Thu, 12 Jun 2025 13:23:23 +0000
+Received: from mgamail.intel.com ([192.198.163.8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPh4o-0000000DGEg-0dYE;
-	Thu, 12 Jun 2025 12:30:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749731436;
-	bh=xMj0PeXUpejsICB72qzZq/FU9wUca+EJE4sWUqWhTeA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Pdr3jsG8LEBbrTq48ZzhTF8vjLwU0K+gNO+X2iv7Gdtf7LmKBdaFEIz5QMWdeccwD
-	 GLCxrTWkvx74UkGx64K3aPq/B4r5m2wWanFUdRsvxE/zkUcEWjvmC0tdmaSl7DthRD
-	 5BeuUwEdjAOZP363EEtatAdEPq2wvbL19UMWfJpDqLJEWqCebJY82sVUPdY5Cah+Bp
-	 d6wLrrwIXhisc4G9pCT8qm9/8yoDg9PO+QNBA6isGJKMkProKjiDrtP+vHW8of9oIv
-	 T0bBlbb2VBZy8YlsWjQe1n9JNo/CshEopiXzxi9osJgM+NETN7+2eF9RvK13lDKGw6
-	 5cndkuogjgGWQ==
-Received: from [192.168.1.90] (unknown [212.93.144.165])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 48C9D17E06BF;
-	Thu, 12 Jun 2025 14:30:35 +0200 (CEST)
-Message-ID: <85cb44fd-f597-443e-81b4-e259513aec9f@collabora.com>
-Date: Thu, 12 Jun 2025 15:30:23 +0300
+	id 1uPhOv-0000000DJ14-2yQS;
+	Thu, 12 Jun 2025 12:51:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1749732685; x=1781268685;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Bql/TNuo24JhgENmtOEIa3XVAhbnXtyYW3C4rsZ9KFs=;
+  b=SbW4ldG7t6vYkDvdyKYmzgm+j6O4i6JoS4+20uzDzF1Q8zADcziGHeq6
+   HTWC0eC6veOSOc9NoYB/oVGqlzAPl/kojuaQOUCsV5xq9yM4aMkPCoWXM
+   Ha6V0GVLAeax86OaH0/oeWV6sp204g2CUKWgIDjFiWU3FltuleUDtAB+0
+   lquKQL1oBf07LduOYgEoVrcd4D1YKGL50OYuPjpivFGTedq/MsWQN1CHU
+   lGXdWRBJAfVZ59orN8rabHxeFcn7sUX4ltSpGSDA9HnKpNu1VcEEkqNo+
+   JHsGSjweYU3P6TQJch7IuWWRVn+HqZmhv5owL0A2AHY/7FDOLR3NFTVCp
+   g==;
+X-CSE-ConnectionGUID: fDU+g/XeSPKtRD/N1F6wng==
+X-CSE-MsgGUID: J8RwB4uiTWae9SDHBY2Oxw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11462"; a="69478293"
+X-IronPort-AV: E=Sophos;i="6.16,230,1744095600"; 
+   d="scan'208";a="69478293"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jun 2025 05:51:20 -0700
+X-CSE-ConnectionGUID: mofzayPbSfemxo/78nvEhA==
+X-CSE-MsgGUID: 65CP34ARQ+yNMlLSnRyUqQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,230,1744095600"; 
+   d="scan'208";a="152795140"
+Received: from smile.fi.intel.com ([10.237.72.52])
+  by orviesa005.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jun 2025 05:51:14 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1uPhOg-00000005x89-01m7;
+	Thu, 12 Jun 2025 15:51:10 +0300
+Date: Thu, 12 Jun 2025 15:51:09 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: David Lechner <dlechner@baylibre.com>
+Cc: Michael Hennerich <michael.hennerich@analog.com>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Francesco Dolcini <francesco@dolcini.it>,
+	=?iso-8859-1?Q?Jo=E3o_Paulo_Gon=E7alves?= <jpaulo.silvagoncalves@gmail.com>,
+	Leonard =?iso-8859-1?Q?G=F6hrs?= <l.goehrs@pengutronix.de>,
+	kernel@pengutronix.de, Oleksij Rempel <o.rempel@pengutronix.de>,
+	Roan van Dijk <roan@protonic.nl>,
+	Tomasz Duszynski <tomasz.duszynski@octakon.com>,
+	Jacopo Mondi <jacopo@jmondi.org>,
+	Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
+	Mudit Sharma <muditsharma.info@gmail.com>,
+	Javier Carrasco <javier.carrasco.cruz@gmail.com>,
+	=?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
+	Andreas Klinger <ak@it-klinger.de>,
+	Petre Rodan <petre.rodan@subdimension.ro>,
+	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
+Message-ID: <aErNPaZzvgAps_-b@smile.fi.intel.com>
+References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] arm64: dts: rockchip: Fix HDMI output on RK3576
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org
-Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org
-References: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
- <3011644.e9J7NaK4W3@workhorse>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <3011644.e9J7NaK4W3@workhorse>
+Content-Disposition: inline
+In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_053038_345926_07401819 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20250612_055125_757877_E7B0499C 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,53 +115,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
+On Wed, Jun 11, 2025 at 05:38:52PM -0500, David Lechner wrote:
+> Jonathan mentioned recently that he would like to get away from using
+> memset() to zero-initialize stack memory in the IIO subsystem. And we
+> have it on good authority that initializing a struct or array with = { }
+> is the preferred way to do this in the kernel [1]. So here is a series
+> to take care of that.
 
-On 6/12/25 3:13 PM, Nicolas Frattaroli wrote:
-> On Wednesday, 11 June 2025 23:47:46 Central European Summer Time Cristian Ciocaltea wrote:
->> Since commit c871a311edf0 ("phy: rockchip: samsung-hdptx: Setup TMDS
->> char rate via phy_configure_opts_hdmi"), the workaround of passing the
->> PHY rate from DW HDMI QP bridge driver via phy_set_bus_width() became
->> partially broken, unless the rate adjustment is done as with RK3588,
->> i.e. by CCF from VOP2.
->>
->> Attempting to fix this up at PHY level would not only introduce
->> additional hacks, but it would also fail to adequately resolve the
->> display issues that are a consequence of the system CRU limitations.
->>
->> Therefore, let's proceed with the solution already implemented for
->> RK3588, that is to make use of the HDMI PHY PLL as a more accurate DCLK
->> source in VOP2.
->>
->> It's worth noting a follow-up patch is going to drop the hack from the
->> bridge driver altogether, while switching to HDMI PHY configuration API
->> for setting up the TMDS character rate.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->> Cristian Ciocaltea (3):
->>       dt-bindings: display: vop2: Add optional PLL clock property for rk3576
->>       arm64: dts: rockchip: Enable HDMI PHY clk provider on rk3576
->>       arm64: dts: rockchip: Add HDMI PHY PLL clock source to VOP2 on rk3576
->>
->>  .../bindings/display/rockchip/rockchip-vop2.yaml   | 56 +++++++++++++++++-----
->>  arch/arm64/boot/dts/rockchip/rk3576.dtsi           |  7 ++-
->>  2 files changed, 49 insertions(+), 14 deletions(-)
->> ---
->> base-commit: 19272b37aa4f83ca52bdf9c16d5d81bdd1354494
->> change-id: 20250611-rk3576-hdmitx-fix-e030fbdb0d17
->>
-> 
-> For the whole series:
-> 
-> Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> 
-> This fixes HDMI output for 4K resolutions on my RK3576 ArmSoM Sige5.
-> The DTB checks and bindings checks pass as well.
-Many thanks for the additional testing!
+I believe we may do that independently of the compilers that can leave garbage
+in the padding. In case it happens, it will be good adventure to fix the bugs
+in the code, that for some reason take padding(s) into account for the real
+values.
 
-Regards,
-Cristian
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
