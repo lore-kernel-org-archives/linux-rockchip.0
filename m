@@ -4,81 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0B3CC7114A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 19:47:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C67EC71136
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 19:47:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O51AcHcsAqlK4RHF7h9V7kvBbyB7QTUKi618bpTs4k4=; b=KWPt7FuPBv4NFiUiZxeoXgb5iG
-	CATjmzLZVD9e8yOl47ZF0xIq/UB3bUP17USiAqpGLALfDrPOqR2qjqttMgFG55VsXk30M9DIANIYo
-	nSpVnNzmqpPWe+tG4GMXFf11txNZQHLXcmwirLL4SbtcFSZ0isIra0cxoY6UsKILIFsaWo1G2i7Ey
-	yGdfjoM7LLBCaS3CkDgUSULw3WtNvcR1NK+Gd08hc+h18peRbgM06Tjwz9QZTNL6Yv8o5RlduaBOX
-	A5mswLipw/EOGd/GnrgDOGzlmh8j4/7siyMRKiD6YNTRWonASjtAtjuu3rwx1066nYEe4ZocyrPre
-	Dohem/ug==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LRQ/27qiAcharKpUEPxNCBTpEnts7bgb1Cchubj8T7w=; b=TZI+NBV1NSZ/H/
+	d2BmS+qm6WCRq/Lt0iU9Wb9xNV/Xc2aswD/HNTduF9d8RPc1yCWcT/Y/QG3VpgFeLoW6C1HecU6JM
+	qi9Z55TUPCT0mEQS3/2v2uQuCinR3QYOYpWVgTuHrypNYl6C8JP2ljHlZ+Nf7S18tMBH1HgO6r1fo
+	dDJs2RQYluSBgvs6gcCgk/cFwprFVhi3JWmqnzG5Zjp5Nm2VGquz9zubEtEqnu0MNZXCPIUsZ3OO0
+	lJLqunv+W7oVK/QmiOIneH7uDPbulwZsivwcmoDCnTsDCQHSCKvyg4V/0usgZA2yZyerGSdqfTG3f
+	ZYe06kV8cJ0DcGZUtbqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPntx-0000000EOHr-0rmV;
-	Thu, 12 Jun 2025 19:47:53 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1uPnu0-0000000EON1-0Uan;
+	Thu, 12 Jun 2025 19:47:56 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPn41-0000000E9fO-0Tb3;
-	Thu, 12 Jun 2025 18:54:14 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
-	id 0D12D1C00B7; Thu, 12 Jun 2025 20:54:08 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
-	t=1749754448;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ES0AMk0wkXmaqMy9pIGghKd77rIPki0K7cABoa+Z/Lw=;
-	b=bEFAWNrqxiDB3hTLYkNNin93KGymmobI30NxboUjySkMZZbQ1tDkw60ZqsrwZWSPzNXRLT
-	19enMfhHWWz0Q5ewQBDGlyH0l4C9Yl59JXD+rK7DCySYJz3mn+lT8d5y3fwG56k5w4oziS
-	988hpv7ySCcn9jbXEUW0jKpc8UQ+ntg=
-Date: Thu, 12 Jun 2025 20:54:07 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: David Lechner <dlechner@baylibre.com>,
-	linux-rockchip@lists.infradead.org,
-	Michael Hennerich <michael.hennerich@analog.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Francesco Dolcini <francesco@dolcini.it>,
-	=?iso-8859-1?Q?Jo=E3o_Paulo_Gon=E7alves?= <jpaulo.silvagoncalves@gmail.com>,
-	Leonard =?iso-8859-1?Q?G=F6hrs?= <l.goehrs@pengutronix.de>,
-	kernel@pengutronix.de, Oleksij Rempel <o.rempel@pengutronix.de>,
-	Roan van Dijk <roan@protonic.nl>,
-	Tomasz Duszynski <tomasz.duszynski@octakon.com>,
-	Jacopo Mondi <jacopo@jmondi.org>,
-	Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
-	Mudit Sharma <muditsharma.info@gmail.com>,
-	Javier Carrasco <javier.carrasco.cruz@gmail.com>,
-	=?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
-	Andreas Klinger <ak@it-klinger.de>,
-	Petre Rodan <petre.rodan@subdimension.ro>,
-	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-Message-ID: <aEsiTy++yKGe1p9W@duo.ucw.cz>
-References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
- <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
- <2243943.irdbgypaU6@workhorse>
+	id 1uPn76-0000000E9uK-3qdq;
+	Thu, 12 Jun 2025 18:57:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749754599; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=VjTrVaWfz9jfeFDYITSFocj41PBevLpWCKD+yFugt6G1+9d/Hw9jBQso8N/gjAPvpi60iwOZlPdJti4Lm1c8Stdx7ZAV2s32I+igmfs7sfjSiZzNcOGemQ8U3YJi+genYO6P68iKZU887RanvFG2jmIT4EG6ifQWvG3TTwOzVmc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1749754599; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=IjOHGVHF7xIfJfArpDhRS/Px27x14OeLJOrr4ltwi/o=; 
+	b=Hv21Y4ICiKV6kkRup/0kBvaRTAUVqzMvXMTU7oOyjqRyNnKpWlnVTSU85nEPPqG4UtY6ATHj7UGqD9ilByEshaOxWumLRru0Myi5xN/KMure37YfQFtqQmaal02l69q9GpbUglMNHzB8ITpQ0V3kVy+XbtmczpJfHsjaGkX3vq4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749754599;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=IjOHGVHF7xIfJfArpDhRS/Px27x14OeLJOrr4ltwi/o=;
+	b=DDS22aPhBDFhm0N/TbbfWtmcvGpPgih6ABqWtgdiQi1WLz5vBE40IBeFLnhixWy+
+	XeH5bQ1OypUI3HKN9tCAk6z/OJYWnm4DYfBAd0Uz/qp47NLT/xrxRESq5KVRWH0tPYk
+	0l1ydpt0eehm25ZaFWLKUMNlC9fEHBBWV4iUkEww=
+Received: by mx.zohomail.com with SMTPS id 1749754596390629.9899321699246;
+	Thu, 12 Jun 2025 11:56:36 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Thu, 12 Jun 2025 20:56:03 +0200
+Subject: [PATCH 01/20] bitfield: introduce HWORD_UPDATE bitfield macros
 MIME-Version: 1.0
-In-Reply-To: <2243943.irdbgypaU6@workhorse>
+Message-Id: <20250612-byeword-update-v1-1-f4afb8f6313f@collabora.com>
+References: <20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com>
+In-Reply-To: <20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com>
+To: Yury Norov <yury.norov@gmail.com>, 
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>, 
+ Jaehoon Chung <jh80.chung@samsung.com>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Shreeya Patel <shreeya.patel@collabora.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
+ MyungJoo Ham <myungjoo.ham@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, Qin Jian <qinjian@cqplus1.com>, 
+ Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Nathan Chancellor <nathan@kernel.org>, 
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, 
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_115413_613160_985251F2 
-X-CRM114-Status: GOOD (  20.30  )
+X-CRM114-CacheID: sfid-20250612_115725_009976_043BECC4 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,83 +98,109 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6601533306554041857=="
+Cc: linux-pm@vger.kernel.org, netdev@vger.kernel.org, llvm@lists.linux.dev, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, linux-pci@vger.kernel.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hardware of various vendors, but very notably Rockchip, often uses
+32-bit registers where the upper 16-bit half of the register is a
+write-enable mask for the lower half.
 
---===============6601533306554041857==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="qHcR0wTfGJLS0CPf"
-Content-Disposition: inline
+This type of hardware setup allows for more granular concurrent register
+write access.
 
+Over the years, many drivers have hand-rolled their own version of this
+macro, usually without any checks, often called something like
+HIWORD_UPDATE or FIELD_PREP_HIWORD, commonly with slightly different
+semantics between them.
 
---qHcR0wTfGJLS0CPf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Clearly there is a demand for such a macro, and thus the demand should
+be satisfied in a common header file.
 
-Hi1
+Add two macros: HWORD_UPDATE, and HWORD_UPDATE_CONST. The latter is a
+version that can be used in initializers, like FIELD_PREP_CONST. The
+macro names are chosen to not clash with any potential other macros that
+drivers may already have implemented themselves, while retaining a
+familiar name.
 
-> I thought I'd chime in as someone uninvolved because this seemed
-> interesting.
->=20
-> On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel Mac=
-hek wrote:
-> > Hi!
-> >=20
-> > > Jonathan mentioned recently that he would like to get away from using
-> > > memset() to zero-initialize stack memory in the IIO subsystem. And we
-> > > have it on good authority that initializing a struct or array with =
-=3D { }
-> > > is the preferred way to do this in the kernel [1]. So here is a series
-> > > to take care of that.
-> >=20
-> > 1) Is it worth the churn?
-> >=20
-> > 2) Will this fail to initialize padding with some obscure compiler?
->=20
-> as of right now, the only two C compilers that are supported are
-> GCC >=3D 8.1, and Clang >=3D 13.0.1. If anyone even manages to get the
-> kernel
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+ include/linux/bitfield.h | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
 
-Well... I'm pretty sure parts of this would make it into -stable as a
-dependency, or because AUTOSEL decides it is a bugfix. So..
+diff --git a/include/linux/bitfield.h b/include/linux/bitfield.h
+index 6d9a53db54b66c0833973c880444bd289d9667b1..b90d88db7405f95b78cdd6f3426263086bab5aa6 100644
+--- a/include/linux/bitfield.h
++++ b/include/linux/bitfield.h
+@@ -8,6 +8,7 @@
+ #define _LINUX_BITFIELD_H
+ 
+ #include <linux/build_bug.h>
++#include <linux/limits.h>
+ #include <linux/typecheck.h>
+ #include <asm/byteorder.h>
+ 
+@@ -142,6 +143,52 @@
+ 		(((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask))	\
+ 	)
+ 
++/**
++ * HWORD_UPDATE() - prepare a bitfield element with a mask in the upper half
++ * @_mask: shifted mask defining the field's length and position
++ * @_val:  value to put in the field
++ *
++ * HWORD_UPDATE() masks and shifts up the value, as well as bitwise ORs the
++ * result with the mask shifted up by 16.
++ *
++ * This is useful for a common design of hardware registers where the upper
++ * 16-bit half of a 32-bit register is used as a write-enable mask. In such a
++ * register, a bit in the lower half is only updated if the corresponding bit
++ * in the upper half is high.
++ */
++#define HWORD_UPDATE(_mask, _val)					 \
++	({								 \
++		__BF_FIELD_CHECK(_mask, ((u16) 0U), _val,		 \
++				 "HWORD_UPDATE: ");			 \
++		(((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask)) | \
++		((_mask) << 16);					 \
++	})
++
++/**
++ * HWORD_UPDATE_CONST() - prepare a constant bitfield element with a mask in
++ *                        the upper half
++ * @_mask: shifted mask defining the field's length and position
++ * @_val:  value to put in the field
++ *
++ * HWORD_UPDATE_CONST() masks and shifts up the value, as well as bitwise ORs
++ * the result with the mask shifted up by 16.
++ *
++ * This is useful for a common design of hardware registers where the upper
++ * 16-bit half of a 32-bit register is used as a write-enable mask. In such a
++ * register, a bit in the lower half is only updated if the corresponding bit
++ * in the upper half is high.
++ *
++ * Unlike HWORD_UPDATE(), this is a constant expression and can therefore
++ * be used in initializers. Error checking is less comfortable for this
++ * version.
++ */
++#define HWORD_UPDATE_CONST(_mask, _val)					  \
++	(								  \
++		FIELD_PREP_CONST(_mask, _val) |				  \
++		(BUILD_BUG_ON_ZERO(const_true((u64) (_mask) > U16_MAX)) + \
++		 ((_mask) << 16))					  \
++	)
++
+ /**
+  * FIELD_GET() - extract a bitfield element
+  * @_mask: shifted mask defining the field's length and position
 
-GNU C                  4.9              gcc --version
-Clang/LLVM (optional)  10.0.1           clang --version
+-- 
+2.49.0
 
-:-).
-
-Best regards,
-									Pavel
---=20
-I don't work for Nazis and criminals, and neither should you.
-Boycott Putin, Trump, and Musk!
-
---qHcR0wTfGJLS0CPf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCaEsiTwAKCRAw5/Bqldv6
-8rWCAJ9iuK1SPCz8Iqmtg2YYJA3QcN1ZcQCcCDOYZeP9LCuc6TXu3fDJPaQEqxk=
-=IRlm
------END PGP SIGNATURE-----
-
---qHcR0wTfGJLS0CPf--
-
-
---===============6601533306554041857==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6601533306554041857==--
-
