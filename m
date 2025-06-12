@@ -4,41 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28E7CC7114B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 19:48:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D75D9C71136
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 19:48:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=emxeiC4NBdTOvBRNP3uVOB4VNULob+SWVBGtvmLuhF0=; b=Ymm66XS79ha7hL
-	VsfQOpiR+ZC2H2tjbdqKAnCjR1q7lyJ38t2MrEnrQ5+6u76wqaofVZtzEyKSPbeLBeas1GC4NDs1f
-	C0GNMvMjXjPZk84N8UKysPZd9u8E7JGXMcqzkerznx0J4rRlYZHsG5Zw21r3tbvKY1H8NHlBgSav7
-	utKTAYJ7fZy81vGqWvFjnJkIqnhZtUbDdhkSU1d1+ib+Wr1lVgC6yUUmMhulMNA73ssLIiE8jxCO1
-	np6b7U2rmS8J4SBr9lbQ40FRuKkxH1AzzeS8iVt7lCz3JLl4sCCqJpH918Knj4PzcmFbNrKS7SrOB
-	+chvqCYwMKa8rtVU4iGA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=3VjWsclm0h1Rf6I5tJR3MVVeNTq4PNAh/BwqthxDbSU=; b=smS3+Lwg0Npc/K
+	mkyr52L5jdRe0PRNQARrQs3s+8bbTwjqidT9Owlic3MV5fY2TFbBbw7q7J1iwpmShguymAcza4k2R
+	TMujLDg5eiGm6y9lO90GKu9DWOfFz55Gb4/8mh1fyZORURLAmYWyyC5vZPCB77yLDbzJ6qjae8okq
+	Oj6sLdp89bBh090v0Uk8ZQxwftw46uf3NC5wVvKNTPyPCHkAMyIGk46OHMHJYO81zxOpRKW+KBbTk
+	E34YHhw7CKo5RGyVRBSgc/ggv7Dxsnd9qA18st3dOGIbXfU3yZN5npSUXTbo5bUqYcvUFuTqGK7s6
+	UvNXT3XroMN3sOYxHaPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPnuS-0000000EP9r-3GJG;
-	Thu, 12 Jun 2025 19:48:24 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1uPnuZ-0000000EPL5-45Cz;
+	Thu, 12 Jun 2025 19:48:31 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPnIJ-0000000ECBr-1FBC;
-	Thu, 12 Jun 2025 19:09:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=U0UHRZVFR/9o1BtZeDpkFOYGrW0/3kxtp0aIw6uYvBY=; b=2DdGMCY/Cmy+VC5+/1czoZCXwX
-	OlxZReGzj+bxOuaZXkgBDZrb3ccbqYemF5q+lgf/TFl+gC5MGNjNPxSKZWBSsh1u6tXQFprca/pM2
-	qq32uiR7T4l57K4w7SEePztfoxdtwPDhIAasxSLOe0zhxNJHyCzvSg9HCEmjYin5vlIE=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1uPnHg-00FaEs-Pw; Thu, 12 Jun 2025 21:08:20 +0200
-Date: Thu, 12 Jun 2025 21:08:20 +0200
-From: Andrew Lunn <andrew@lunn.ch>
+	id 1uPnju-0000000EDGj-4BJI;
+	Thu, 12 Jun 2025 19:37:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 955D75C5874;
+	Thu, 12 Jun 2025 19:35:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0E6DC4CEEA;
+	Thu, 12 Jun 2025 19:37:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749757049;
+	bh=36nvgb3RLVqinSwoB6Toikfenc4MXd/GpMoSKwvz5Wg=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=fHWO0Z95cw6Xnif0lgMkudamEsIYQ5TItFPsp0mV44qGzrnNQ/l8ATa/QW/mlVbW+
+	 BJDpv6XsUOV1sfZpyXtti3XbmHIkDJB1ieS4WcckkK6g9Kf1ow7LpYemlXBMsdrifv
+	 EQDb8d8yeyT/lWL2Arniqju5L69l3NaMhdfc3HZKCBzriJZgyfBOPcpqqceJFNtEwE
+	 4zTHYWNF3D204ecOvirQqHBZov1CX7evGsPUFIKtJknlqOp+7G7qZ5AFUow9pgR754
+	 DWRwulVdfVVAa15hWiP1TEVqsNevAFM17wtlrxew4HG+c9atHC8iXC9XalOxCB4x9+
+	 UuloGJC1fGthw==
+Date: Thu, 12 Jun 2025 14:37:28 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Cc: Yury Norov <yury.norov@gmail.com>,
 	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
@@ -87,16 +91,14 @@ Cc: Yury Norov <yury.norov@gmail.com>,
 	linux-stm32@st-md-mailman.stormreply.com, linux-pci@vger.kernel.org,
 	linux-pm@vger.kernel.org, linux-clk@vger.kernel.org,
 	llvm@lists.linux.dev
-Subject: Re: [PATCH 15/20] net: stmmac: dwmac-rk: switch to HWORD_UPDATE macro
-Message-ID: <5947475f-ef38-44cb-857e-0c7378023ccd@lunn.ch>
-References: <20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com>
- <20250612-byeword-update-v1-15-f4afb8f6313f@collabora.com>
+Subject: Re: [PATCH 16/20] PCI: rockchip: switch to HWORD_UPDATE* macros
+Message-ID: <20250612193728.GA924118@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250612-byeword-update-v1-15-f4afb8f6313f@collabora.com>
+In-Reply-To: <20250612-byeword-update-v1-16-f4afb8f6313f@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_120859_330527_6A9A7C1E 
-X-CRM114-Status: GOOD (  16.38  )
+X-CRM114-CacheID: sfid-20250612_123731_117671_98795CC5 
+X-CRM114-Status: GOOD (  24.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,30 +115,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 12, 2025 at 08:56:17PM +0200, Nicolas Frattaroli wrote:
+On Thu, Jun 12, 2025 at 08:56:18PM +0200, Nicolas Frattaroli wrote:
 > The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
 > drivers that use constant masks.
 > 
-> Like many other Rockchip drivers, dwmac-rk has its own HIWORD_UPDATE
-> macro. Its semantics allow us to redefine it as a wrapper to the shared
-> bitfield.h HWORD_UPDATE macros though.
+> The Rockchip PCI driver, like many other Rockchip drivers, has its very
+> own definition of HIWORD_UPDATE.
 > 
-> Replace the implementation of this driver's very own HIWORD_UPDATE macro
-> with an instance of HWORD_UPDATE from bitfield.h. This keeps the diff
-> easily reviewable, while giving us more compile-time error checking.
+> Remove it, and replace its usage with either HWORD_UPDATE, or two new
+> header local macros for setting/clearing a bit with the high mask, which
+> use HWORD_UPDATE_CONST internally. In the process, ENCODE_LANES needed
+> to be adjusted, as HWORD_UPDATE* shifts the value for us.
 > 
-> The related GRF_BIT macro is left alone for now; any attempt to rework
-> the code to not use its own solution here would likely end up harder to
-> review and less pretty for the time being.
+> That this is equivalent was verified by first making all HWORD_UPDATE
+> instances HWORD_UPDATE_CONST, then doing a static_assert() comparing it
+> to the old macro (and for those with parameters, static_asserting for
+> the full range of possible values with the old encode macro).
+> 
+> What we get out of this is compile time error checking to make sure the
+> value actually fits in the mask, and that the mask fits in the register,
+> and also generally less icky code that writes shifted values when it
+> actually just meant to set and clear a handful of bits.
 > 
 > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Please split this out into a patch for net-next. Also, Russell King
-has just posted a number of patches for this driver, so you will
-probably want to wait for them to be merged, so you post something
-which will merged without any fuzz.
+Looks good to me.  I assume you want to merge these via a non-PCI tree
+since this depends on patch 01/20.  PCI subject convention would
+capitalize "Switch":
 
-	Andrew
+  PCI: rockchip: Switch to HWORD_UPDATE* macros
+
+Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+
+> ---
+>  drivers/pci/controller/pcie-rockchip.h | 35 +++++++++++++++++-----------------
+>  1 file changed, 18 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+> index 5864a20323f21a004bfee4ac6d3a1328c4ab4d8a..5f2e45f062d94cd75983f7ad0c5b708e5b4cfb6f 100644
+> --- a/drivers/pci/controller/pcie-rockchip.h
+> +++ b/drivers/pci/controller/pcie-rockchip.h
+> @@ -11,6 +11,7 @@
+>  #ifndef _PCIE_ROCKCHIP_H
+>  #define _PCIE_ROCKCHIP_H
+>  
+> +#include <linux/bitfield.h>
+>  #include <linux/clk.h>
+>  #include <linux/kernel.h>
+>  #include <linux/pci.h>
+> @@ -21,10 +22,10 @@
+>   * The upper 16 bits of PCIE_CLIENT_CONFIG are a write mask for the lower 16
+>   * bits.  This allows atomic updates of the register without locking.
+>   */
+> -#define HIWORD_UPDATE(mask, val)	(((mask) << 16) | (val))
+> -#define HIWORD_UPDATE_BIT(val)		HIWORD_UPDATE(val, val)
+> +#define HWORD_SET_BIT(val)		(HWORD_UPDATE_CONST((val), 1))
+> +#define HWORD_CLR_BIT(val)		(HWORD_UPDATE_CONST((val), 0))
+>  
+> -#define ENCODE_LANES(x)			((((x) >> 1) & 3) << 4)
+> +#define ENCODE_LANES(x)			((((x) >> 1) & 3))
+>  #define MAX_LANE_NUM			4
+>  #define MAX_REGION_LIMIT		32
+>  #define MIN_EP_APERTURE			28
+> @@ -32,21 +33,21 @@
+>  
+>  #define PCIE_CLIENT_BASE		0x0
+>  #define PCIE_CLIENT_CONFIG		(PCIE_CLIENT_BASE + 0x00)
+> -#define   PCIE_CLIENT_CONF_ENABLE	  HIWORD_UPDATE_BIT(0x0001)
+> -#define   PCIE_CLIENT_CONF_DISABLE       HIWORD_UPDATE(0x0001, 0)
+> -#define   PCIE_CLIENT_LINK_TRAIN_ENABLE	  HIWORD_UPDATE_BIT(0x0002)
+> -#define   PCIE_CLIENT_LINK_TRAIN_DISABLE  HIWORD_UPDATE(0x0002, 0)
+> -#define   PCIE_CLIENT_ARI_ENABLE	  HIWORD_UPDATE_BIT(0x0008)
+> -#define   PCIE_CLIENT_CONF_LANE_NUM(x)	  HIWORD_UPDATE(0x0030, ENCODE_LANES(x))
+> -#define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
+> -#define   PCIE_CLIENT_MODE_EP            HIWORD_UPDATE(0x0040, 0)
+> -#define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
+> -#define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
+> +#define   PCIE_CLIENT_CONF_ENABLE		HWORD_SET_BIT(0x0001)
+> +#define   PCIE_CLIENT_CONF_DISABLE		HWORD_CLR_BIT(0x0001)
+> +#define   PCIE_CLIENT_LINK_TRAIN_ENABLE		HWORD_SET_BIT(0x0002)
+> +#define   PCIE_CLIENT_LINK_TRAIN_DISABLE	HWORD_CLR_BIT(0x0002)
+> +#define   PCIE_CLIENT_ARI_ENABLE		HWORD_SET_BIT(0x0008)
+> +#define   PCIE_CLIENT_CONF_LANE_NUM(x)		HWORD_UPDATE(0x0030, ENCODE_LANES(x))
+> +#define   PCIE_CLIENT_MODE_RC			HWORD_SET_BIT(0x0040)
+> +#define   PCIE_CLIENT_MODE_EP			HWORD_CLR_BIT(0x0040)
+> +#define   PCIE_CLIENT_GEN_SEL_1			HWORD_CLR_BIT(0x0080)
+> +#define   PCIE_CLIENT_GEN_SEL_2			HWORD_SET_BIT(0x0080)
+>  #define PCIE_CLIENT_LEGACY_INT_CTRL	(PCIE_CLIENT_BASE + 0x0c)
+> -#define   PCIE_CLIENT_INT_IN_ASSERT		HIWORD_UPDATE_BIT(0x0002)
+> -#define   PCIE_CLIENT_INT_IN_DEASSERT		HIWORD_UPDATE(0x0002, 0)
+> -#define   PCIE_CLIENT_INT_PEND_ST_PEND		HIWORD_UPDATE_BIT(0x0001)
+> -#define   PCIE_CLIENT_INT_PEND_ST_NORMAL	HIWORD_UPDATE(0x0001, 0)
+> +#define   PCIE_CLIENT_INT_IN_ASSERT		HWORD_SET_BIT(0x0002)
+> +#define   PCIE_CLIENT_INT_IN_DEASSERT		HWORD_CLR_BIT(0x0002)
+> +#define   PCIE_CLIENT_INT_PEND_ST_PEND		HWORD_SET_BIT(0x0001)
+> +#define   PCIE_CLIENT_INT_PEND_ST_NORMAL	HWORD_CLR_BIT(0x0001)
+>  #define PCIE_CLIENT_SIDE_BAND_STATUS	(PCIE_CLIENT_BASE + 0x20)
+>  #define   PCIE_CLIENT_PHY_ST			BIT(12)
+>  #define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
+> 
+> -- 
+> 2.49.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
