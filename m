@@ -4,79 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73FE8C61CE8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 21:43:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43FC2C71136
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 22:09:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=zW0P4Lr9Qg72Lp/tk0BCjqu37A9J3w4yWuhNzeN6vng=; b=RQiFJqRar4hJ4n
-	OK0pqEkS0Yz5uVLUr/xDeVAAP+lHHkfwzGGcfoCqbw1XmGpYWarl/VjpmGAY9b0im336bXcpGs+LV
-	DsT9S0IplmD2qEebiZxNEsOsJeGs9gYT7JurA+ZxPeE0XBSUlhwHtgJkKGaFkDcxOODfBsJy1ooYg
-	d8WZ9QFvbq7028c0GLW+7uo2nMGBtfFrNM5NhBctR13R0A4pvX5Vw1OMisn288LrGPjaijp7MzNvz
-	OIZaqSaiJ0thob2Ql8JI1Jdc8xuMxZXYI9qy+sgO3F4TvkcPAPlMWDXiBzAXUdPBIxU9bMMKDhYgj
-	B5PxZgAyRbov77x2HSDg==;
+	List-Owner; bh=EvoMcm9q15GyjaLSrGREYfOKdcwWEw7UZDo+H5J/6pI=; b=GhKST5WLmSBXRc
+	Mf44DN+8/uTH1kjIfCo/gKffGyhjvjuMvX3opM7FYLkAsskWM8becm4LHnV4uN0MfiVJbQzrvrgWE
+	Gh4Z1E+AWI25fgqWzr9q7lLlb32wEaQXrI1+zwtFdcxo8ojce6sdwgfSxvfXRcJwLXxx8Bz2u0RTQ
+	1ncCF2q8lDLMAiOs0RnWWlMEca7Y31TmqrB/9RyLnLM7yM1/bf52QkSrQ4NyLsE0Hi+Dr/2Z6w4UF
+	DRHZpR8+73ofEKKjZdVbwzQXurwV1b9MqcGGn6A3bRpbZaNQvOgAfaO6y7MTCnzdDsx6oU6Z/lxEt
+	AdQiqWQ2HzfNszrczSkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPphY-0000000EfZL-3fej;
-	Thu, 12 Jun 2025 21:43:12 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uPq7A-0000000EjTH-2HM9;
+	Thu, 12 Jun 2025 22:09:40 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPpRM-0000000EePi-0mwg;
-	Thu, 12 Jun 2025 21:26:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:References;
-	bh=UWLA222vkvQRYzLbZtIgtM7Crrq4jS1IEZSm6StIyCc=; b=pFLlP9REW/N/KfP6kuBKjcw0Lz
-	87Mvb+ENZkTMYdRLw+/+QkIAyDSc1KyxYicxINlnoTkQ5t8gnQaidIJyi19Ha1Ll0ylySHEzhefer
-	7U78mIVmeYL5Eoasezp8xqBsrrqS4t9QNzcRVT2gnX874vC+B4epUtRwjxB4DBgv2SE1YDC4MZQnp
-	+wPSMZ2nLAFb+Wy8fB+BMr76mH17uZiBZ4E2ZgXlB4eJKmHYzjRTaKZxiso8FrFE5Vy1mm+LuVw+8
-	G4mwH5GFKnuTeHLnLAXrbZjT6CniomRVO2RLVyX+G82KQ3jT66v1IQK7sPAGF5IDWBdPUlRl/tv5/
-	EgdDfLdw==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPpRE-00000002icg-1HFf;
-	Thu, 12 Jun 2025 21:26:27 +0000
+	id 1uPjnM-0000000DmNG-2M2T;
+	Thu, 12 Jun 2025 15:24:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2D8034A50A;
-	Thu, 12 Jun 2025 21:26:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC57BC4CEEA;
-	Thu, 12 Jun 2025 21:26:13 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C4B7F6113B;
+	Thu, 12 Jun 2025 15:24:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F9BAC4CEEA;
+	Thu, 12 Jun 2025 15:24:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749763574;
-	bh=6LN6fAd/m/I9fNEg7TgOenHz2E9XCA7dKBTgHZOBjA8=;
+	s=k20201202; t=1749741884;
+	bh=+qF0IDawijRPYP4Y+6qlnAYE0xTB21o1YrLZ1UK9Vm4=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=RBaMKN7q88dt2SCpxiQd0GEzWLoqZ3LCGCt9XYhCziHo3YTanavefSp3NTXwZoNYZ
-	 m5de7yzQyI5k/vHv0PIBgllwvEpY/fsvmLgb0AI2ad+czensyPXFO8i1hT9JU3/cbT
-	 X0zRj+iLUNTXEdGCgdRoW8aOo9FEx4b6KOZ9C1/WB92PFTWmrHWM04U3uBbibYYaUF
-	 OY2LHGIBxnedMxi7F6cIK5ENto+BNsECzamLjIMVFZ/NSxxkHVkxUvQ2hKa4bvIWOC
-	 lMQQ/y+Wu7gJgliZ7GfR2Z/cn7/rKnKvapr87pGvvL2zEw9078jcOjvCWL2meKHGrG
-	 4T3R31JTy0F8A==
-Date: Thu, 12 Jun 2025 16:26:12 -0500
+	b=YbhRCPOMaIrBYDkKLUWGFcgftPCCK1QyqR2V9Jhjmm9wJlFLikoGYH92CG/vPAAN7
+	 hZccemg6MV6RplqE73kQqlVrggt+9GuDkJvAc7TalwU1w585Cdo3l0UVzsDN95Cmov
+	 9+UnPiICzV0t/Voc5T02ihJQl6OmN3Br0SqKUC+s5zNPCDTZxRlfK35hPy2FfCBR8X
+	 e5uEuUwNKajB+nL5bfUYIfzVr1kwIp1xNgytEoMwLMH39SPuRLZ7elKXXCOd9aghsC
+	 M/OwMcJdObvQPs9m8YeXBaLLDkWnot0W57WPC6qVYd3HcCk9ieXD8AXLbDvl0Aifl4
+	 0NZmOyTA90FRw==
+Date: Thu, 12 Jun 2025 10:24:42 -0500
 From: Bjorn Helgaas <helgaas@kernel.org>
-To: Geraldo Nascimento <geraldogabriel@gmail.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>,
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Niklas Cassel <cassel@kernel.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
 	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH v2 1/4] PCI: pcie-rockchip: add Link Control and
- Status Register 2
-Message-ID: <20250612212612.GA930681@bhelgaas>
+	Heiko Stuebner <heiko@sntech.de>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Laszlo Fiat <laszlo.fiat@proton.me>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/4] PCI: dw-rockchip: Do not enumerate bus before
+ endpoint devices are ready
+Message-ID: <20250612152442.GA908790@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aEs9daeceXkePg7y@geday>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_222620_819836_63C7CD68 
-X-CRM114-Status: GOOD (  16.38  )
+In-Reply-To: <2e23r5i5kmju476fcakodccyqnwanbhtyul5prqpqdgqivy3t6@ci54hfghhbb7>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,28 +76,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 12, 2025 at 05:49:57PM -0300, Geraldo Nascimento wrote:
-> On Wed, Jun 11, 2025 at 02:42:59PM -0500, Bjorn Helgaas wrote:
-> > I would do a pure conversion patch of the existing #defines.  Then I
-> > suspect you wouldn't need a patch to add the Link 2 registers at all
-> > because you could just use the #defines from pci_regs.h.
+On Thu, Jun 12, 2025 at 08:33:54PM +0530, Manivannan Sadhasivam wrote:
+> On Thu, Jun 12, 2025 at 09:44:47AM -0500, Bjorn Helgaas wrote:
+> > On Thu, Jun 12, 2025 at 06:30:37PM +0530, Manivannan Sadhasivam wrote:
+> > > On Thu, Jun 12, 2025 at 07:21:08AM -0500, Bjorn Helgaas wrote:
+> > > > On Thu, Jun 12, 2025 at 01:40:23PM +0200, Niklas Cassel wrote:
+> > > > > On Thu, Jun 12, 2025 at 06:38:27AM -0500, Bjorn Helgaas wrote:
+> > > > > > On Thu, Jun 12, 2025 at 01:19:45PM +0200, Niklas Cassel wrote:
+> > > > > > > On Wed, Jun 11, 2025 at 04:14:56PM -0500, Bjorn Helgaas wrote:
+> > > > > > > > On Wed, Jun 11, 2025 at 12:51:42PM +0200, Niklas Cassel wrote:
+> > > > > > > > > Commit ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can
+> > > > > > > > > detect Link Up") changed so that we no longer call dw_pcie_wait_for_link(),
+> > > > > > > > > and instead enumerate the bus directly after receiving the Link Up IRQ.
+> > > > > > > > > 
+> > > > > > > > > This means that there is no longer any delay between link up and the bus
+> > > > > > > > > getting enumerated.
+> > > > > > 
+> > > > > > > > I think the comment at the PCIE_T_RRS_READY_MS definition should be
+> > > > > > > > enough (although it might need to be updated to mention link-up).
+> > > > > > > > This delay is going to be a standard piece of every driver, so it
+> > > > > > > > won't require special notice.
+> > > > > > > 
+> > > > > > > Looking at pci.h, we already have a comment mentioning exactly this
+> > > > > > > (link-up):
+> > > > > > > https://github.com/torvalds/linux/blob/v6.16-rc1/drivers/pci/pci.h#L51-L63
+> > > > > > > 
+> > > > > > > I will change the patches to use PCIE_RESET_CONFIG_DEVICE_WAIT_MS instead.
+> > > > > > 
+> > > > > > I'll more closely later, but I think PCIE_T_RRS_READY_MS and
+> > > > > > PCIE_RESET_CONFIG_DEVICE_WAIT_MS are duplicates and only one should
+> > > > > > exist.  It looks like they got merged at about the same time by
+> > > > > > different people, so we didn't notice.
+> > > > > 
+> > > > > I came to the same conclusion, I will send a patch to remove
+> > > > > PCIE_T_RRS_READY_MS and convert the only existing user to use
+> > > > > PCIE_RESET_CONFIG_DEVICE_WAIT_MS.
+> > > > 
+> > > > I think PCIE_T_RRS_READY_MS expresses the purpose of the wait more
+> > > > specifically.  It's not that the device is completely ready after
+> > > > 100ms; just that it should be able to respond with RRS if it needs
+> > > > more time.
+> > > 
+> > > Yes, but none of the drivers are checking for the RRS status
+> > > currently. So using PCIE_T_RRS_READY_MS gives a wrong impression
+> > > that the driver is waiting for the RRS status from the device.
+> > 
+> > There's 100ms immediately after reset or link-up when we can't send
+> > config requests because the device may not be able to respond at all.
+> > 
+> > After 100ms, the device should be able to respond to config requests
+> > with SC, UR, RRS, or CA status (sec 2.2.9.1).  If it responds with
+> > RRS, the access should be retried either by hardware or (if RRS SV is
+> > enabled) by software.  This is the origin of "RRS_READY" -- the device
+> > can at least do RRS.
 > 
-> Hi Bjorn,
+> Yeah, but the usage of 100ms is only valid if RRS SV is enabled by
+> the software as per sec 6.6.1:
 > 
-> I've hit roadblock, maybe you can help?
-> 
-> PCIE_RC_CONFIG_DCR_CSPL_LIMIT is defined as 0xff...
-> 
-> I'd like to kill that define too, since it will be
-> orphaned.
-> 
-> But hardcoding 0xff seems like illegible solution.
-> 
-> Perhaps there is another standard define that
-> maps to 0xff that I can use? Anyone comes
-> to your mind?
+> "It is strongly recommended that software use 100 ms wait periods
+> only if software enables Configuration RRS Software Visibility".
 
-Maybe FIELD_MAX(PCI_EXP_DEVCAP_PWR_VAL)?
+I see that statement but don't understand it.  Do you think it's meant
+as an exception to the first two paragraphs that say "software must
+wait a minimum of 100 ms" following either "exit from Conventional
+Reset" or "after Link training completes"?
+
+I can't imagine that it means "if the Root Port doesn't support RRS SV
+or software doesn't enable RRS SV, software needn't wait at all before
+issuing config requests."
+
+This whole thing is about whether the Endpoint is ready to respond.
+A Root Port property (RRS SV support or enablement) doesn't tell us
+anything about the Endpoint.
 
 _______________________________________________
 Linux-rockchip mailing list
