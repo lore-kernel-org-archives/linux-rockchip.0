@@ -4,75 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99329C71136
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 02:43:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37B12C71135
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 02:45:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WdQ+qXPhyaB+yo8PANA+K0v9RwkRrkYZieGMMgH9OWE=; b=QU/wYEb8iuBm8+
-	PUHryBoBXEV9fzx2wa2a6eLmTX9y4punAGj5/atb8aW/8J27R1pm4/pdJBM4ry07IVo1a6l14YTp7
-	0Vmta1Afgbt70XUWKBuax5WxsDkc910nBCz3Bxge5pxlR99ru5JUFLbmDCbBdctvczr6n+X4Y4rLm
-	Bs0dYSQoOkaJCwhSKmYpWWOFXEG/HuR/auNi6imwIPYABcmlHuKABbdCrlExSOe5lRVI4q4x+kcFV
-	eeUa7Ups8dIW6vssCm8uEJo5Xil4JpGRNug8BCNsUsdUgMrq0zDa98eAD2n9h/30aVDU0gKMSMBCH
-	VKlAJrrN0ED5mTiJkerA==;
+	List-Owner; bh=wxyo7Ytz/zLV1zRsnOE+mjk/PwPF00k087ux7RCVKNk=; b=zASgjg6nxqPwlI
+	F/B5OLMJRd6MhprBOQ7NDhTy9EI+o6pijxg52Asf9mgWx1l+l+1xy5SGjBGRJoTc830YTRIr7PxLh
+	j2Qot8qwjigvO8FsPM/uGFIBPFjuVU1nOMvl+PvqvFArYzOj4DFpNZNbzau251Awc2TyHf/uLvmIB
+	x4+W8spUKo6iJH8Jio9fbmOXC+hQ8VogC8GL+gb8++N7HH4vQHAN+nAcsW8QKItMO9kuRk+HJWPw0
+	wGJq9SvwD4nzqmKplXqcV9V2KoY9zmf3Rrwh1FY8aE8+Utnw9+uQqsfu87yP5jToooWUL3bKwNNN6
+	Hiy8W26p8LhGfETi2+Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPXuS-0000000BzYB-3qIi;
-	Thu, 12 Jun 2025 02:43:20 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uPXw1-0000000C0HO-0ZAs;
+	Thu, 12 Jun 2025 02:44:57 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPVNm-0000000Bju5-1EZl;
-	Thu, 12 Jun 2025 00:01:27 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749686457; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=RfUJLgL3uiMWBMZumyBvXpsPE2UMpPd3FQWhCEKj5YlW8CpCzh8drQyfbMrEH8EI96d+2L11XOX5VD8utD7ZQvI72LE3wD2WqVRCfseYEcpBtT89TeHnQkNROZlE4l4T30nS1s5igLVgQ6v8kOUqwsQ1WQi9yn43D3hkqHIXd4M=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749686457; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=vGmPNxgIyEoEQtADc8X3nicC6jEVHqGcMDg8y3I/t3o=; 
-	b=B+8YjO+uqewQPSBMsMZO6HJPPCQm9iq5yZbYGgyvPx9snSvvqPnZ8jtAq+qoggS+EzUENfcIHw3z5Y1WcmVQeji7a1RpZvILe0SwcMk83npw/qm0ZAUqQ0XP0wIKnQV1QNN6DPKM+YkqsHtxkwVDzB9EXxBmX0V3TC9R0hZvKIw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749686457;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=vGmPNxgIyEoEQtADc8X3nicC6jEVHqGcMDg8y3I/t3o=;
-	b=B89YEpc18TsrakKZypLJ7xGiQ6kWyg6E59pyj89kKZmDWb8r5NGmKQEPYBR0D3Fx
-	NOmEBD89GluYxB12j6rZV/ZLix7X6ZnTqRW+Xn5Cg0Q5qqzsIW6u1ft1kCPfBt/+hqq
-	pup6vSnHDcfX3ZuwlZ+C2RdyjA7nJpHzR9/gtB8U=
-Received: by mx.zohomail.com with SMTPS id 1749686454865928.7893063021048;
-	Wed, 11 Jun 2025 17:00:54 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add HDMI PHY PLL clock source to VOP2
- on rk3576
-Date: Wed, 11 Jun 2025 20:00:52 -0400
-Message-ID: <6011857.DvuYhMxLoT@trenzalore>
-In-Reply-To: <20250612-rk3576-hdmitx-fix-v1-3-4b11007d8675@collabora.com>
-References: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
- <20250612-rk3576-hdmitx-fix-v1-3-4b11007d8675@collabora.com>
+	id 1uPW7X-0000000BpUZ-0K0F;
+	Thu, 12 Jun 2025 00:48:44 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-73c17c770a7so589291b3a.2;
+        Wed, 11 Jun 2025 17:48:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749689322; x=1750294122; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=hqINRbhBXUv8DDvAKfwGN3D5A5fdVAfIH4y8gA4/FgQ=;
+        b=e1e8egzpG3QRm3UyEwrKe6nc4py2GsQsOWjkvzsA2huhyZAMwLd7MMnxbOHwvOS7aY
+         cXxF9dG45jULXPX8Eb9/TJlAOzX0gyf2YR6Ktbx+2+yG4hVa+CqmciSUdcnmGBsiGk9N
+         bUWnUPiRvwuIGSpwjAGpBnAXas2t05raXlz9mpeiH7mp00R939UjGMM81YBUhKCU075F
+         wQMdvqwxaAINo7spIOFz4DrAfvdrJ44+rd6X461a62zBUE650hC8/1txMxaCIE57qev1
+         EHtvChWMj8ylK5q35cxsFZ6kWsX0DQYqycTwiaI3hzRwEoUCjCNlIlsgcpVSYWZV+YhM
+         5OjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749689322; x=1750294122;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hqINRbhBXUv8DDvAKfwGN3D5A5fdVAfIH4y8gA4/FgQ=;
+        b=RDTCKzayY/nD/lXkYJSKP658Im5j9qH4ZHoa8sc9k7R+scWuccISWKBnNKqJRMc5av
+         kQXp1Ay4YffIWOegMURQMtIWuGXW1ZiuAl2M2ijoFibgUjK5ABMuosn4nZi0CF2g0cxh
+         1+arr83+xSsJn8f+lPjnNpSJrFS1APjwi11fg+IJliqf18VIgkQDQU3o2excbnS5FEag
+         j0hQulWc0vZR/CCg40PU4O1g1bXR1nvt1GRfdkNVo4VzyAIbFAx1SzJ1gNhVGQFiGziB
+         /jJ6ylAOIsO/u78u4fI7x7xkpmZwfhjdvwj47xqSd1LWqgFohna0yuL+wNYWE/x8AnYH
+         Qk3A==
+X-Forwarded-Encrypted: i=1; AJvYcCXDBTffVkAlngLEpZmXwCvjz7wndjlG9IvHqZzr5lKBW9KcbzBZvSD1CXc4x91jA+/4ffckoikBfC9JuSYsSc8L@lists.infradead.org, AJvYcCXx27EhSC3dTIo+oPKetbS5xfI/ES6UiT9HUV6yZ5APSYTNqPkSc2pzf1m39nYb0e7SxQvmlMjiB6cl@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywonjz8XkpO5n/Tdrs5Hjy7mGflOGmswOSWg6i4CQa4NGZ5fBRe
+	Y1S09H22/NvZPdtnhD197yAefQbElQIheBb2vGZDsI5j4c1kn62ieS0d
+X-Gm-Gg: ASbGncvXttfiBpxaZ6CM6dVcymI8JI8ncp5GFj8ClIlcqAWny8/lmnrwUkad3aFP60Y
+	iefmf9rqA3PONEkHcIW4PWfvs66HYgq43RoVcOlgCcx70YuL40Z7KT+udoFhVAJ3Ug4RBuLL1Ka
+	/4nriXhJHGeFovK0Xjr9mSHvRngXznvWXj2f0qroa8ccOfAPGUN/R81cn2/K2woOARln1g1LOzV
+	cGoRGPNOWbYDisiQzpdFHF5gLJgvPBzDdJuQDBnL7fmrXyl3xnx6QMQX/Bi5hvo71SMi/4B4mde
+	Wk01Y5QxZntZzUzq4pbhNFMQDYuqafve98JDKeVuRVry3Ik1Ww==
+X-Google-Smtp-Source: AGHT+IH/jwJJdwYkzPE0y591nja7/GMlqARzj1ko2DlwznP5A+rVIrdUR5MsMWEBoz/8q6p4qz3Sng==
+X-Received: by 2002:a05:6a21:6d88:b0:215:dee4:4808 with SMTP id adf61e73a8af0-21f9b720273mr1173711637.18.1749689321805;
+        Wed, 11 Jun 2025 17:48:41 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:5f6a::dead:c001])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b2fd611e32dsm221034a12.9.2025.06.11.17.48.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Jun 2025 17:48:41 -0700 (PDT)
+Date: Wed, 11 Jun 2025 21:48:31 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH v2 1/4] PCI: pcie-rockchip: add Link Control and
+ Status Register 2
+Message-ID: <aEoj385BMtLvNuKL@geday>
+References: <28ae3286f3217881ae6ea3aecad47ae4567d6ec7.1749588810.git.geraldogabriel@gmail.com>
+ <20250611194259.GA825364@bhelgaas>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Disposition: inline
+In-Reply-To: <20250611194259.GA825364@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_170126_415953_9336FBED 
-X-CRM114-Status: GOOD (  19.33  )
+X-CRM114-CacheID: sfid-20250611_174843_111465_1D4BE9BD 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,68 +106,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cristian,
-
-On Wednesday, 11 June 2025 17:47:49 EDT Cristian Ciocaltea wrote:
-> Since commit c871a311edf0 ("phy: rockchip: samsung-hdptx: Setup TMDS
-> char rate via phy_configure_opts_hdmi"), the workaround of passing the
-> rate from DW HDMI QP bridge driver via phy_set_bus_width() became
-> partially broken, as it cannot reliably handle mode switches anymore.
+On Wed, Jun 11, 2025 at 02:42:59PM -0500, Bjorn Helgaas wrote:
+> On Tue, Jun 10, 2025 at 06:19:49PM -0300, Geraldo Nascimento wrote:
+> > +#define PCIE_RC_CONFIG_DCR		(PCIE_RC_CONFIG_CR + PCI_EXP_DEVCAP)
 > 
-> Attempting to fix this up at PHY level would not only introduce
-> additional hacks, but it would also fail to adequately resolve the
-> display issues that are a consequence of the system CRU limitations.
+> I would really like to see PCI_EXP_DEVCAP referenced in the source
+> where we currently use PCIE_RC_CONFIG_DCR.  That way, cscope/tags/grep
+> will find the actual uses of PCI_EXP_DEVCAP, not just this #define of
+> PCIE_RC_CONFIG_DCR.
 > 
-> Instead, proceed with the solution already implemented for RK3588: make
-> use of the HDMI PHY PLL as a better suited DCLK source for VOP2. This
-> will not only address the aforementioned problem, but it should also
-> facilitate the proper operation of display modes up to 4K@60Hz.
+> Something like this:
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/controller/pci-mvebu.c?id=v6.15#n265
+>
+
+Hi Bjorn,
+
+Yes, thank you for the code snippet, it makes things more clear.
+
+> >  #define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
+> >  #define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
+> >  #define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
 > 
-> It's worth noting that anything above 4K@30Hz still requires high TMDS
-> clock ratio and scrambling support, which hasn't been mainlined yet.
+> Also use PCI_EXP_DEVCAP_PWR_VAL and PCI_EXP_DEVCAP_PWR_SCL here if
+> possible.  And FIELD_GET()/FIELD_PREP(), which avoid the need to
+> define _SHIFT values.
 > 
-> Fixes: d74b842cab08 ("arm64: dts: rockchip: Add vop for rk3576")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3576.dtsi | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3576.dtsi index
-> 6a13fe0c3513fb2ff7cd535aa70e3386c37696e4..b1ac23035dd789f0478bf10c78c74ef16
-> 7d94904 100644 --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> @@ -1155,12 +1155,14 @@ vop: vop@27d00000 {
->  				 <&cru HCLK_VOP>,
->  				 <&cru DCLK_VP0>,
->  				 <&cru DCLK_VP1>,
-> -				 <&cru DCLK_VP2>;
-> +				 <&cru DCLK_VP2>,
-> +				 <&hdptxphy>;
->  			clock-names = "aclk",
->  				      "hclk",
->  				      "dclk_vp0",
->  				      "dclk_vp1",
-> -				      "dclk_vp2";
-> +				      "dclk_vp2",
-> +				      "pll_hdmiphy0";
->  			iommus = <&vop_mmu>;
->  			power-domains = <&power RK3576_PD_VOP>;
->  			rockchip,grf = <&sys_grf>;
+> I would do a pure conversion patch of the existing #defines.  Then I
+> suspect you wouldn't need a patch to add the Link 2 registers at all
+> because you could just use the #defines from pci_regs.h.
+>
 
-I tested this on the ROCK 4D and can confirm that:
- - New modes like 2K are now working
- - Mode changes is now correctly supported
+Got it!
 
-So,
-Tested-By: Detlev Casanova <detlev.casanova@collabora.com>
-
-Regards,
-
-Detlev.
-
-
+Thanks!
+Geraldo Nascimento
 
 _______________________________________________
 Linux-rockchip mailing list
