@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F190C71136
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 13:20:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21598C61CE8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 13:20:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BYJwUVOXaRrhcZv37s7shkHZH+yqw8ZigY8HDwC+zLg=; b=K2tbBDXx1acrZh
-	IuFmHLCL0WmtgX8NyGIY49gbKPUAJleDgj4APIKFvobbN8oAZPJOhAP1ygZ3dYEENOLUOmI1BKrlH
-	Ts4d8LDo76rYVu2oQC8hUuf9IBkv1vE6Ufp/cIl2imQ3/cCrEPzyYSeIID4Po39YNC87N+Ysm3jpe
-	GN4veuxwBxnDAwDQBIKi2h35/08QoAwFac5CX1edQ7JMYI6GrRxw2uFX1IF/Q4WhvDIjOEFnUAIVs
-	gmy3V5TXk1JzwAQbhCkiuiewPf7WE5V25PKQAoeLrLgQi/aRZfsF/1SMmLBpL9keK6zRTBmN3eWJu
-	736TxMC8EFB5WmpfwtFw==;
+	List-Owner; bh=GP+ZV80sCzS/1yU0tO9aQzsEmreGo26GgYPAubLkQDg=; b=lpPzp1ru28yHKk
+	1bK4H0ccDmQXhF2ifMfHrepOsGM0l7HBPlu2B98HCZpNwqCi2JJ3oV7upim7cuTmE2xBND7b770JO
+	oUKx6bWEWlhldlPh/feGHeypjDITu4fW/kwSKDoysRfuFiBAweV+jj+Cq97NW5d9Z3D4IdxsH3T/Q
+	qtGQZaKdv47LjkdB3m+AN8qkIfwlcWpvtvTAInZlNLq5WSI+Eg/DCn8JrtCONLslzRr6SdhkAYcPG
+	QqMpDJopg8dTIkZjmZelQNM9Lce5/V3JlV9TlxRTClCkaj/JW32a5cjE0GLpt6sl0GvEdXUFheP0D
+	v0uZ8on0UjSNIi1kprPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPhqe-0000000DORP-07IL;
-	Thu, 12 Jun 2025 13:20:04 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uPhr0-0000000DP52-0Rv6;
+	Thu, 12 Jun 2025 13:20:26 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPgRZ-0000000DBry-1dEz;
-	Thu, 12 Jun 2025 11:50:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1FA0E4491B;
-	Thu, 12 Jun 2025 11:50:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29921C4AF0C;
-	Thu, 12 Jun 2025 11:50:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749729005;
-	bh=GHuMuAeNK50IE8bnNq+YCIKQbjGZygjZTh2aEInq0qI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RpS2iSmY6gJsj1xmQLwNSatzd1YUcLQ6Z1HAp/6BAC6nadqpJTsiJZwcsiOqHzuZV
-	 EWm60IVh1PZTq9i5n7IvP8cYojc8J728NRXQgsVPUFZF0Ly4aPKdYaIHvarUtIVcoZ
-	 PsayNiGGp8QBVdzChUzwxlBxFpTgqOtHt1FjDKxUWo/5j9yx+x8FpXCxjzckBzs21+
-	 0k1Dn0GvM02pSOnSyNZSRlggbdzSz4Qub53K8PsKewGg/iMJtkOyHxOcrV4QdLwaI1
-	 fYlOKwkqRCjwLcYu7GXPe2P8v9uf+RQked3Mx8he46G8txXiQIEQK5AmLDG9ypxtYH
-	 H8ljaiYjkkM6w==
-From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Laszlo Fiat <laszlo.fiat@proton.me>,
-	Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2 5/5] PCI: rockchip-host: Use macro PCIE_RESET_CONFIG_DEVICE_WAIT_MS
-Date: Thu, 12 Jun 2025 13:49:28 +0200
-Message-ID: <20250612114923.2074895-12-cassel@kernel.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250612114923.2074895-7-cassel@kernel.org>
-References: <20250612114923.2074895-7-cassel@kernel.org>
+	id 1uPgnC-0000000DDTe-0yjC;
+	Thu, 12 Jun 2025 12:12:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749730279; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=gLVUSH8whkjznJ84HhEKxxnjU2XuDwX04WtVl7Ke0k/VtxuyHepvYyZFEsDsuRxdsOR+mZGQaf6prN0Jl3RFazK5tsm20vUPJNrfC7uMH7EkaAb8x+J6/uAl/jUVupirBlfKqcEg9lOnbR3b7+HuupT2MjpmNEg4RkgTVsrnDEU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1749730279; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=anKlnwbFl0i8atiPf5c4Ks2L7I/qYyoFEOqCpl8Xjz4=; 
+	b=NnYk+ho5QsNnUw/GyWrBWAlNSFdprVwt/SMpMEjygvo543BdEKRBHtfoDB0IlobqSRFj3aQKnfuW61HRwi3mlbyo7MjKlqvXIxcbmt1jg1nM3R/1ZxeziAGckm4SGc4esonsJ/LIuXqmUTX6AGNZ7pwSisvbKzWfbHfGMTWV5H8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749730279;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=anKlnwbFl0i8atiPf5c4Ks2L7I/qYyoFEOqCpl8Xjz4=;
+	b=SK7OXUzcTO6J2OvgkAoNUrfYDQNfzeYE74UjS+nOX7vgUkpRNbgyTF8jQkg2hh0D
+	dUAV/oN8qsLxpnK+Y+fEssRjHR7B+gVr7b2h2PGccmdr2X9JotCuSJJ08Fv1WSCt0fN
+	YQykWtOBwsZmWFYSR+CE0ujPPquYI14ZwNERJFwc=
+Received: by mx.zohomail.com with SMTPS id 1749730276781981.6042234328434;
+	Thu, 12 Jun 2025 05:11:16 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: David Lechner <dlechner@baylibre.com>, linux-rockchip@lists.infradead.org
+Cc: Michael Hennerich <michael.hennerich@analog.com>,
+ Lars-Peter Clausen <lars@metafoo.de>, Jonathan Cameron <jic23@kernel.org>,
+ Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>,
+ Andy Shevchenko <andy@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Francesco Dolcini <francesco@dolcini.it>,
+ =?UTF-8?B?Sm/Do28gUGF1bG8gR29uw6dhbHZlcw==?=
+ <jpaulo.silvagoncalves@gmail.com>,
+ Leonard =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>,
+ kernel@pengutronix.de, Oleksij Rempel <o.rempel@pengutronix.de>,
+ Roan van Dijk <roan@protonic.nl>,
+ Tomasz Duszynski <tomasz.duszynski@octakon.com>,
+ Jacopo Mondi <jacopo@jmondi.org>,
+ Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
+ Mudit Sharma <muditsharma.info@gmail.com>,
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>,
+ =?UTF-8?B?T25kxZllag==?= Jirman <megi@xff.cz>,
+ Andreas Klinger <ak@it-klinger.de>,
+ Petre Rodan <petre.rodan@subdimension.ro>, linux-iio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, Pavel Machek <pavel@ucw.cz>
+Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
+Date: Thu, 12 Jun 2025 14:11:08 +0200
+Message-ID: <2243943.irdbgypaU6@workhorse>
+In-Reply-To: <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
+References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
+ <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2074; i=cassel@kernel.org; h=from:subject; bh=GHuMuAeNK50IE8bnNq+YCIKQbjGZygjZTh2aEInq0qI=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDK89p2UvyofNoNVg0tjwU/bUP9na6M0Tk9/nPntwe8tO mJFuzfmd5SyMIhxMciKKbL4/nDZX9ztPuW44h0bmDmsTCBDGLg4BWAiHBsZ/gefsdfU5LrbsXzZ svgHDRNEEkPdAk9eLH62n7nWk1vj+wGGf9paj28uLI+68GX+LK3oyrQk+09VzDk73ON5tvOVlKS lsAMA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_045005_464315_B012F6A0 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20250612_051226_351738_F0C4E621 
+X-CRM114-Status: GOOD (  25.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,58 +99,136 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Macro PCIE_T_RRS_READY_MS was added to pci.h in commit 70a7bfb1e515 ("PCI:
-rockchip-host: Wait 100ms after reset before starting configuration").
+Hello,
 
-Later, in commit d5ceb9496c56 ("PCI: Add PCIE_RESET_CONFIG_DEVICE_WAIT_MS
-waiting time value"), PCIE_RESET_CONFIG_DEVICE_WAIT_MS was added to pci.h.
+I thought I'd chime in as someone uninvolved because this seemed
+interesting.
 
-These macros represent the same thing.
+On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel Machek wrote:
+> Hi!
+> 
+> > Jonathan mentioned recently that he would like to get away from using
+> > memset() to zero-initialize stack memory in the IIO subsystem. And we
+> > have it on good authority that initializing a struct or array with = { }
+> > is the preferred way to do this in the kernel [1]. So here is a series
+> > to take care of that.
+> 
+> 1) Is it worth the churn?
+> 
+> 2) Will this fail to initialize padding with some obscure compiler?
 
-Since the comment above PCIE_RESET_CONFIG_DEVICE_WAIT_MS is strictly more
-correct than the comment above PCIE_T_RRS_READY_MS, change rockchip-host
-to use PCIE_RESET_CONFIG_DEVICE_WAIT_MS, and remove PCIE_T_RRS_READY_MS,
-as rockchip-host is the only user of this macro.
+as of right now, the only two C compilers that are supported are
+GCC >= 8.1, and Clang >= 13.0.1. If anyone even manages to get the kernel
+to finish a build with something else, I think the compiler not
+implementing the C standard correctly is the least of their worries.
 
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- drivers/pci/controller/pcie-rockchip-host.c | 2 +-
- drivers/pci/pci.h                           | 7 -------
- 2 files changed, 1 insertion(+), 8 deletions(-)
+My bigger worry is that = { } is only guaranteed to be as correct as
+memset on C23, and the kernel's standard right now is C11. For that
+reason alone, I don't think memset should be moved away from for now,
+unless someone can verify that every GCC release >= 8.1 and every
+Clang release >= 13.0.1 does the right thing here regardless.
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index b9e7a8710cf0..3d40daff98bd 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -325,7 +325,7 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
- 	msleep(PCIE_T_PVPERL_MS);
- 	gpiod_set_value_cansleep(rockchip->perst_gpio, 1);
- 
--	msleep(PCIE_T_RRS_READY_MS);
-+	msleep(PCIE_RESET_CONFIG_DEVICE_WAIT_MS);
- 
- 	/* 500ms timeout value should be enough for Gen1/2 training */
- 	err = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_BASIC_STATUS1,
-diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
-index 12215ee72afb..5a83338c8f99 100644
---- a/drivers/pci/pci.h
-+++ b/drivers/pci/pci.h
-@@ -35,13 +35,6 @@ struct pcie_tlp_log;
-  */
- #define PCIE_T_PERST_CLK_US		100
- 
--/*
-- * End of conventional reset (PERST# de-asserted) to first configuration
-- * request (device able to respond with a "Request Retry Status" completion),
-- * from PCIe r6.0, sec 6.6.1.
-- */
--#define PCIE_T_RRS_READY_MS	100
--
- /*
-  * PCIe r6.0, sec 5.3.3.2.1 <PME Synchronization>
-  * Recommends 1ms to 10ms timeout to check L2 ready.
--- 
-2.49.0
+> 
+> 3) Why do you believe that {} is the preffered way? All we have is
+> Kees' email that explains that = {} maybe works in configs he tested.
+
+= { } is guaranteed to work in C23, as per the standard, but again we're
+not on C23.
+
+The reason to prefer this is likely that it's easier for static analysis
+to see the struct as initialised, but that's me making assumptions here.
+
+A more human-centric argument is that once we're on a C standards version
+where = { } is guaranteed to be correct, then = { } is much more obviously
+correct to a reader than a memset with a value and a size somewhere later
+in the code. This argument is evident from the number of patches in this
+series where the memset and the declaration are not in the same hunk.
+That's the kind of stuff that keeps me awake at night, sweating profusely.
+
+Kind regards,
+Nicolas Frattaroli
+
+> 
+> BR,
+> 								Pavel
+> 
+> > [1]:
+> > https://lore.kernel.org/linux-iio/202505090942.48EBF01B@keescook/
+> 
+> 
+> 
+> > ---
+> > David Lechner (28):
+> >       iio: accel: adxl372: use = { } instead of memset()
+> >       iio: accel: msa311: use = { } instead of memset()
+> >       iio: adc: dln2-adc: use = { } instead of memset()
+> >       iio: adc: mt6360-adc: use = { } instead of memset()
+> >       iio: adc: rockchip_saradc: use = { } instead of memset()
+> >       iio: adc: rtq6056: use = { } instead of memset()
+> >       iio: adc: stm32-adc: use = { } instead of memset()
+> >       iio: adc: ti-ads1015: use = { } instead of memset()
+> >       iio: adc: ti-ads1119: use = { } instead of memset()
+> >       iio: adc: ti-lmp92064: use = { } instead of memset()
+> >       iio: adc: ti-tsc2046: use = { } instead of memset()
+> >       iio: chemical: scd4x: use = { } instead of memset()
+> >       iio: chemical: scd30: use = { } instead of memset()
+> >       iio: chemical: sunrise_co2: use = { } instead of memset()
+> >       iio: dac: ad3552r: use = { } instead of memset()
+> >       iio: imu: inv_icm42600: use = { } instead of memset()
+> >       iio: imu: inv_mpu6050: use = { } instead of memset()
+> >       iio: light: bh1745: use = { } instead of memset()
+> >       iio: light: ltr501: use = { } instead of memset()
+> >       iio: light: opt4060: use = { } instead of memset()
+> >       iio: light: veml6030: use = { } instead of memset()
+> >       iio: magnetometer: af8133j: use = { } instead of memset()
+> >       iio: pressure: bmp280: use = { } instead of memset()
+> >       iio: pressure: mpl3115: use = { } instead of memset()
+> >       iio: pressure: mprls0025pa: use = { } instead of memset()
+> >       iio: pressure: zpa2326: use = { } instead of memset()
+> >       iio: proximity: irsd200: use = { } instead of memset()
+> >       iio: temperature: tmp006: use = { } instead of memset()
+> > 
+> >  drivers/iio/accel/adxl372.c                       | 3 +--
+> >  drivers/iio/accel/msa311.c                        | 4 +---
+> >  drivers/iio/adc/dln2-adc.c                        | 4 +---
+> >  drivers/iio/adc/mt6360-adc.c                      | 3 +--
+> >  drivers/iio/adc/rockchip_saradc.c                 | 4 +---
+> >  drivers/iio/adc/rtq6056.c                         | 4 +---
+> >  drivers/iio/adc/stm32-adc.c                       | 3 +--
+> >  drivers/iio/adc/ti-ads1015.c                      | 4 +---
+> >  drivers/iio/adc/ti-ads1119.c                      | 4 +---
+> >  drivers/iio/adc/ti-lmp92064.c                     | 4 +---
+> >  drivers/iio/adc/ti-tsc2046.c                      | 3 +--
+> >  drivers/iio/chemical/scd30_core.c                 | 3 +--
+> >  drivers/iio/chemical/scd4x.c                      | 3 +--
+> >  drivers/iio/chemical/sunrise_co2.c                | 6 ++----
+> >  drivers/iio/dac/ad3552r.c                         | 3 +--
+> >  drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c | 5 ++---
+> >  drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c  | 5 ++---
+> >  drivers/iio/imu/inv_mpu6050/inv_mpu_acpi.c        | 4 +---
+> >  drivers/iio/imu/inv_mpu6050/inv_mpu_ring.c        | 6 ++----
+> >  drivers/iio/light/bh1745.c                        | 4 +---
+> >  drivers/iio/light/ltr501.c                        | 4 +---
+> >  drivers/iio/light/opt4060.c                       | 4 +---
+> >  drivers/iio/light/veml6030.c                      | 4 +---
+> >  drivers/iio/magnetometer/af8133j.c                | 4 +---
+> >  drivers/iio/pressure/bmp280-core.c                | 5 +----
+> >  drivers/iio/pressure/mpl3115.c                    | 3 +--
+> >  drivers/iio/pressure/mprls0025pa_i2c.c            | 5 +----
+> >  drivers/iio/pressure/zpa2326.c                    | 4 +---
+> >  drivers/iio/proximity/irsd200.c                   | 3 +--
+> >  drivers/iio/temperature/tmp006.c                  | 4 +---
+> >  30 files changed, 34 insertions(+), 85 deletions(-)
+> > ---
+> > base-commit: 4c6073fec2fee4827fa0dd8a4ab4e6f7bbc05ee6
+> > change-id: 20250611-iio-zero-init-stack-with-instead-of-memset-0d12d41a7ecb
+> > 
+> > Best regards,
+> 
+> 
+
+
+
 
 
 _______________________________________________
