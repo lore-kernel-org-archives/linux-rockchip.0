@@ -4,120 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B045C71135
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 00:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99329C71136
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 02:43:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c0swBOMpg8aPMwh81JaGwl0AmeRfVj0AyyRSr/oLiFo=; b=3iMjdqT0ReKKld
-	4QeL+7zlNf6/pwvlykBv7oVELRvFKQD64PpRNBfAQHRbO25HkMpraLpaLiVrH9j8XIIVQSEh7lSNm
-	UeC2d+Nr0+A0RMET1c1Aj1e4WecxYTrbrvO4l6oon3dBr13y/PkGQZV3jrpjdAbnAIvJF3kve+GaF
-	GNpiNNWInZEu039UfVZArbf4Su6rFWnv2ZRJvRrYwjRexKZdl/Ym+9x9mrTgx5CK/DyRxA0syDOwu
-	tco9wdpvU/fq52v9GEw1zc9M23twpFieL0YL7CZydktqud/ywPrjUQeKiQ15lGjlDaAkqAmrB32G/
-	Y3lSu2KRIF+tGVoYGyrg==;
+	List-Owner; bh=WdQ+qXPhyaB+yo8PANA+K0v9RwkRrkYZieGMMgH9OWE=; b=QU/wYEb8iuBm8+
+	PUHryBoBXEV9fzx2wa2a6eLmTX9y4punAGj5/atb8aW/8J27R1pm4/pdJBM4ry07IVo1a6l14YTp7
+	0Vmta1Afgbt70XUWKBuax5WxsDkc910nBCz3Bxge5pxlR99ru5JUFLbmDCbBdctvczr6n+X4Y4rLm
+	Bs0dYSQoOkaJCwhSKmYpWWOFXEG/HuR/auNi6imwIPYABcmlHuKABbdCrlExSOe5lRVI4q4x+kcFV
+	eeUa7Ups8dIW6vssCm8uEJo5Xil4JpGRNug8BCNsUsdUgMrq0zDa98eAD2n9h/30aVDU0gKMSMBCH
+	VKlAJrrN0ED5mTiJkerA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPVR3-0000000Bkdq-292P;
-	Thu, 12 Jun 2025 00:04:49 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1uPXuS-0000000BzYB-3qIi;
+	Thu, 12 Jun 2025 02:43:20 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPUA2-0000000BVtF-14R8
-	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Jun 2025 22:43:11 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-4079f80ff0fso864970b6e.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 11 Jun 2025 15:43:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1749681789; x=1750286589; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=sIUkxS3NJlxCBqe+Jr2tfFFp8ENb+E8Z8dAwWew1sZ4=;
-        b=XLbFcytzf6zhLn6sxss7XV9h592mI5p1cyNXQLBaBs0VrZSKLrmdJ4xPsvr5z7GUuh
-         IRMMi6aEFS3d+syTS7N3LPaJ3dhG6K+91byWu/odkcFNwpWPojFTogFEwfqdeOev68wW
-         xJ2xKCJgLZlFzH09E1SvIJ45ubPY/pT1rXvtwLgU9vE1LaOV+bMXDJp+vtdELD9rJBYi
-         71DECesa4Ntpr1tUe9O0KLxDd7XrKGaybWiyryRN68YnZZHQjjiGjha+rFumeqOR7jRp
-         xrWuwnDW8QWctSpIUYjVZbpZf2MRo2Zg7ArHtzoErnXAxm4pOBpuYO4gqk8LLw/CWnYo
-         MwAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749681789; x=1750286589;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sIUkxS3NJlxCBqe+Jr2tfFFp8ENb+E8Z8dAwWew1sZ4=;
-        b=uC06+9qFDZdsyJ5hyszgqm4ootgeWF84ORNNr7t815tW8odzV6jQAjuytJ9kEnwHzz
-         oTFCKMT36wZE2934gez+mLsOIO5PDs3v+LD+ytjrOa2fAkh8e5GIl2Dt5sMGtI2pOZVY
-         v0ExNGVBY1Br0ijy7pInM40CoMTKQl9B0RTBv7YFrj0NslNsuOgcKhgtzinwV9fJLxzx
-         OmZ8ZYv+srRxj5PkzQIppK+Eo4CKikkg6DHU6Rbe9IyytA2gBAOUSvjX3QnHgRwRL9IH
-         cXXaWiXv+NDHecw4STZCb2fv4UpPW36QyBB5cDVVlsUl21rr2MutsMV8qnSnXfoZpvPL
-         U5vg==
-X-Forwarded-Encrypted: i=1; AJvYcCW89O83u4BrCQdmGSDDQHhjhYYXIE+2sJuXGNLKSRIHd7FZRNBTrFChWWJiDxszoV0x/CIpmLsMrH8nXS3Czg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzOx0nkhIK3yYIL/VLB0k90G70YIjxL5dXrfq/opf7GxdTqKsSX
-	Sh/1GnDGYHGU4G8ZbcL1kZAWkNqqZ7sOE3RQkE953802vQpL6qkfPVv39hkoqa0C770=
-X-Gm-Gg: ASbGncuHVxhcVtRMHQZOClVNTphvIGKYnlT2FL2FIBRb2nKM2ahin7K8jdWsLlIPWwI
-	hnHNGqse5DtA2TSN5nu61PkKHDV0sN8KXXwYRrlKuJn+qAp8CwEhm0u4+yCYRDq9s2hrZn8NNfu
-	AGoh7K7P3H3K2IpRhljO7W+oPrzmbMe592bulDXgq5FKXB2+HKz48itkYnLvB0cg7Ak4qy+3kDw
-	9IGwhh+SfUqhMof6+6TFK+A67yOuJJExIbtEfTBHOkTlOPwwFASAYCFbCTiijMlJwxM95Ca1GrM
-	O8YQPQoPXjb5uOcG1B6LfBCp1/QXXXAdlb/sIS6LJ7pAjGjorI1mS/C7v+TwgKnb+Oy7
-X-Google-Smtp-Source: AGHT+IEnYQuuP7+Ed1yUnqPwBXcm60N0HbHjFFI1Q30n3CnvRs0c1N7PubAsOKk34Bxp6isS1gHJpw==
-X-Received: by 2002:a05:6808:181e:b0:408:fef8:9c91 with SMTP id 5614622812f47-40a65fee5edmr1014965b6e.5.1749681789569;
-        Wed, 11 Jun 2025 15:43:09 -0700 (PDT)
-Received: from [127.0.1.1] ([2600:8803:e7e4:1d00:4753:719f:673f:547c])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-40a682fbf05sm24684b6e.32.2025.06.11.15.43.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Jun 2025 15:43:09 -0700 (PDT)
-From: David Lechner <dlechner@baylibre.com>
-Date: Wed, 11 Jun 2025 17:39:20 -0500
-Subject: [PATCH 28/28] iio: temperature: tmp006: use = { } instead of
- memset()
+	id 1uPVNm-0000000Bju5-1EZl;
+	Thu, 12 Jun 2025 00:01:27 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749686457; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=RfUJLgL3uiMWBMZumyBvXpsPE2UMpPd3FQWhCEKj5YlW8CpCzh8drQyfbMrEH8EI96d+2L11XOX5VD8utD7ZQvI72LE3wD2WqVRCfseYEcpBtT89TeHnQkNROZlE4l4T30nS1s5igLVgQ6v8kOUqwsQ1WQi9yn43D3hkqHIXd4M=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1749686457; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=vGmPNxgIyEoEQtADc8X3nicC6jEVHqGcMDg8y3I/t3o=; 
+	b=B+8YjO+uqewQPSBMsMZO6HJPPCQm9iq5yZbYGgyvPx9snSvvqPnZ8jtAq+qoggS+EzUENfcIHw3z5Y1WcmVQeji7a1RpZvILe0SwcMk83npw/qm0ZAUqQ0XP0wIKnQV1QNN6DPKM+YkqsHtxkwVDzB9EXxBmX0V3TC9R0hZvKIw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749686457;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=vGmPNxgIyEoEQtADc8X3nicC6jEVHqGcMDg8y3I/t3o=;
+	b=B89YEpc18TsrakKZypLJ7xGiQ6kWyg6E59pyj89kKZmDWb8r5NGmKQEPYBR0D3Fx
+	NOmEBD89GluYxB12j6rZV/ZLix7X6ZnTqRW+Xn5Cg0Q5qqzsIW6u1ft1kCPfBt/+hqq
+	pup6vSnHDcfX3ZuwlZ+C2RdyjA7nJpHzR9/gtB8U=
+Received: by mx.zohomail.com with SMTPS id 1749686454865928.7893063021048;
+	Wed, 11 Jun 2025 17:00:54 -0700 (PDT)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add HDMI PHY PLL clock source to VOP2
+ on rk3576
+Date: Wed, 11 Jun 2025 20:00:52 -0400
+Message-ID: <6011857.DvuYhMxLoT@trenzalore>
+In-Reply-To: <20250612-rk3576-hdmitx-fix-v1-3-4b11007d8675@collabora.com>
+References: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
+ <20250612-rk3576-hdmitx-fix-v1-3-4b11007d8675@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-28-ebb2d0a24302@baylibre.com>
-References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-To: Michael Hennerich <michael.hennerich@analog.com>, 
- Lars-Peter Clausen <lars@metafoo.de>, Jonathan Cameron <jic23@kernel.org>, 
- =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
- Andy Shevchenko <andy@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Francesco Dolcini <francesco@dolcini.it>, 
- =?utf-8?q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>, 
- =?utf-8?q?Leonard_G=C3=B6hrs?= <l.goehrs@pengutronix.de>, 
- kernel@pengutronix.de, Oleksij Rempel <o.rempel@pengutronix.de>, 
- Roan van Dijk <roan@protonic.nl>, 
- Tomasz Duszynski <tomasz.duszynski@octakon.com>, 
- Jacopo Mondi <jacopo@jmondi.org>, 
- Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>, 
- Mudit Sharma <muditsharma.info@gmail.com>, 
- Javier Carrasco <javier.carrasco.cruz@gmail.com>, 
- =?utf-8?q?Ond=C5=99ej_Jirman?= <megi@xff.cz>, 
- Andreas Klinger <ak@it-klinger.de>, 
- Petre Rodan <petre.rodan@subdimension.ro>
-Cc: linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- linux-stm32@st-md-mailman.stormreply.com, 
- David Lechner <dlechner@baylibre.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=825; i=dlechner@baylibre.com;
- h=from:subject:message-id; bh=PE+CsjhnIQN3X+3KjjOXuO9jk19Iju+HayM9vpAuU1M=;
- b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBoSgY9GS1AXDDpXtL3P/xEFQ0nsgDvgF6m8S2Ri
- XNCmUul8aiJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaEoGPQAKCRDCzCAB/wGP
- wPyqB/9hXsNHRRXkGxsp4YsM2uNtCavgRRTmB64f/KIXhTDYL1RBaHe1kfKU8iu4OLH+gBGaKt6
- aamU7fhFYq9DAZMXKztJTGp4Bn5UPjmsyGKezfM1KqyY5wXinyUHqiDAa6WFesxPAWSYBW4YhuL
- jjsA4pN6Yl0BLbsYRN061SYdEaoiVyNw5oLsxaeCRQCpjdYZ5kEyewIQcC9SYSb8m8YhpDprTXv
- WqEiMd/n7RM4kkOE1jWOSNJ+od1fajr5bI6tF+f2LNjMT5hE/qs1NYFOOBiY+WfrvFrl3aPqZc7
- 060EeNImTcoO1iHforX5lOBvZ5p77oTZs6uZ7OSYFtt07WgK
-X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
- fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_154310_316941_6C7D255D 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20250611_170126_415953_9336FBED 
+X-CRM114-Status: GOOD (  19.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,34 +89,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use { } instead of memset() to zero-initialize stack memory to simplify
-the code.
+Hi Cristian,
 
-Signed-off-by: David Lechner <dlechner@baylibre.com>
----
- drivers/iio/temperature/tmp006.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+On Wednesday, 11 June 2025 17:47:49 EDT Cristian Ciocaltea wrote:
+> Since commit c871a311edf0 ("phy: rockchip: samsung-hdptx: Setup TMDS
+> char rate via phy_configure_opts_hdmi"), the workaround of passing the
+> rate from DW HDMI QP bridge driver via phy_set_bus_width() became
+> partially broken, as it cannot reliably handle mode switches anymore.
+> 
+> Attempting to fix this up at PHY level would not only introduce
+> additional hacks, but it would also fail to adequately resolve the
+> display issues that are a consequence of the system CRU limitations.
+> 
+> Instead, proceed with the solution already implemented for RK3588: make
+> use of the HDMI PHY PLL as a better suited DCLK source for VOP2. This
+> will not only address the aforementioned problem, but it should also
+> facilitate the proper operation of display modes up to 4K@60Hz.
+> 
+> It's worth noting that anything above 4K@30Hz still requires high TMDS
+> clock ratio and scrambling support, which hasn't been mainlined yet.
+> 
+> Fixes: d74b842cab08 ("arm64: dts: rockchip: Add vop for rk3576")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3576.dtsi index
+> 6a13fe0c3513fb2ff7cd535aa70e3386c37696e4..b1ac23035dd789f0478bf10c78c74ef16
+> 7d94904 100644 --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> @@ -1155,12 +1155,14 @@ vop: vop@27d00000 {
+>  				 <&cru HCLK_VOP>,
+>  				 <&cru DCLK_VP0>,
+>  				 <&cru DCLK_VP1>,
+> -				 <&cru DCLK_VP2>;
+> +				 <&cru DCLK_VP2>,
+> +				 <&hdptxphy>;
+>  			clock-names = "aclk",
+>  				      "hclk",
+>  				      "dclk_vp0",
+>  				      "dclk_vp1",
+> -				      "dclk_vp2";
+> +				      "dclk_vp2",
+> +				      "pll_hdmiphy0";
+>  			iommus = <&vop_mmu>;
+>  			power-domains = <&power RK3576_PD_VOP>;
+>  			rockchip,grf = <&sys_grf>;
 
-diff --git a/drivers/iio/temperature/tmp006.c b/drivers/iio/temperature/tmp006.c
-index 29bff9d8859d017e1b59536c531f732a2d749631..10bd3f221929d1b58b7e6a6bd9a75d5d068edf84 100644
---- a/drivers/iio/temperature/tmp006.c
-+++ b/drivers/iio/temperature/tmp006.c
-@@ -254,11 +254,9 @@ static irqreturn_t tmp006_trigger_handler(int irq, void *p)
- 	struct {
- 		s16 channels[2];
- 		aligned_s64 ts;
--	} scan;
-+	} scan = { };
- 	s32 ret;
- 
--	memset(&scan, 0, sizeof(scan));
--
- 	ret = i2c_smbus_read_word_data(data->client, TMP006_VOBJECT);
- 	if (ret < 0)
- 		goto err;
+I tested this on the ROCK 4D and can confirm that:
+ - New modes like 2K are now working
+ - Mode changes is now correctly supported
 
--- 
-2.43.0
+So,
+Tested-By: Detlev Casanova <detlev.casanova@collabora.com>
+
+Regards,
+
+Detlev.
+
 
 
 _______________________________________________
