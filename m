@@ -4,98 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C112C71136
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 19:48:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C611C61CE8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 20:03:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=oLXaYHqF03GvXT8tp40Jn/KKUOsp75EEnEFBh928rx8=; b=VvzUDmEsl+JO5d
-	aK1Wz9KyeJIcZuLtNUMpua9ice5P1GCrvB7Ty+x0L6Br/DsU7OwglQ/QKSjzuJZBv14aEuUUXg2rF
-	TduBeV82AkkY/lf59tFx6/BsJVtkWk0eUHdZEQNvicRO1RkLp1CmQra9CvcJxc0bSQzD3K4K/YoQd
-	FohjuNsqmXFx777TOcrm/KJEBvOgckIAoj80NCovKhl+0UQ4Hyc/fnkjujvTlE0renKjeGIPhOQ+s
-	wpzAsKiHz0nH09BB5nuYN/X4hOhtqLeJKw88Z6x3IRlH2+ePbTw37IGAoNnSQmPMTlh8nE7KkaSza
-	EAnnHsD7N+wFtIV0/WNQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sG10HmRNXE+Tdx7AAtnU2HVs/YjnPwBXkQ7E+kBy7zs=; b=5CEQkYSWvkMrUR
+	PJTmEQiQ0GnLE3obi4sxjrqh6v2WZHSj+zW984kgZKmFqTnkmEmi/JSws6fcZZ3lAW9+kFhwrL+RS
+	IsorOU6bWLdKhPqYDtsi3UVHXQfe3guJRN5kJabI19WaKZUyezh+RZbSUF0DzN0PYCTk2iNvVEiL3
+	ah14Ni++CfCfAmr1k267a2r2DZii3/t0EoPML6IcdWKhU/rhMOrO38OEmNSlp4epWkLEG9UxXjGj+
+	qPxjU/dWV/Vbiy6QJFXmtraPOC2+MFv5Oh5y7w6ELxP/B9Iz8qANobfJraq+ONCP1PlUL/ELfIcZd
+	J8V4rqOGnhQat3rsdMQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPnua-0000000EPMZ-39l4;
-	Thu, 12 Jun 2025 19:48:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uPo9D-0000000ERLu-3Hxl;
+	Thu, 12 Jun 2025 20:03:39 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPnlO-0000000EDQ0-2kOA;
-	Thu, 12 Jun 2025 19:39:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6D6AE6111C;
-	Thu, 12 Jun 2025 19:39:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF5CAC4CEEA;
-	Thu, 12 Jun 2025 19:39:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749757141;
-	bh=8ZQANtvZ4WwIhNchdMuhJm0al1ZNSWYW9HenxnbYz3E=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=EY67E14r6Hcxp9KxQSXXlt1cs3CQHAYC7RagnOxytC637a0G762PrHu3ay+9eNweG
-	 nj6XFWiEKXj85/wWlEp1x9KlQhVcjMDrAnnV80aXqxlWI+Dg5Q9Oao52WD+oQ8Rqs0
-	 C38d7eg8jadm3cQwesFEsIh3tqKM6gDnUlCPrF21XsblFVy3N2KvAroIlWUQbCcTXR
-	 rMnhOxpYFGc2x27BMLO+v92DQ6W8OjNlgDTahcq3tmeLhThFOmXeOIjZ3BC42m19Cj
-	 2f8Xs86ikWwGXwke6oHaNdDnMAoFHMv73ti2rI+bEzeDe8OMATUUB4d9EDVKO8WmVb
-	 /OefydnCg0wOQ==
-Date: Thu, 12 Jun 2025 14:38:59 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+	id 1uPnxG-0000000EQIo-3itv;
+	Thu, 12 Jun 2025 19:51:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749757825; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=niCZ7gfbCTphUt9F4A6BqJhyAWLYx6ZFwS619hLJe6PBl39fzz0Cx8vMltl3JFnMTsylPx4rmHxzSjlI6+i7JxXqUGT3s6Es/ezleTw1LiVQjojUFV2MChvno5MY8Cvp/2xtoIVUvXIUkrk6ZQaLkHxbgid9Eb84F9rtiiep3/w=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1749757825; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=mU+CcqNywPoimgVbJRvOWx8a/xllDqeUM7RTijoC4cY=; 
+	b=QslLP2IFvCv129jJG9S1czdWGSll5oQcKPTGbu69twy2y6tft074Tj9gl4VSLqgkHbZePSQXCS47CfPxgVRXhkhNwNcM8sjdLMyylkaGbgAbNTkJteWsZT0or3z04oq3pKdilJf94Uubjr2Ok5GHz0dv8po0Wsr3HlZiPRC3pWc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749757824;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=mU+CcqNywPoimgVbJRvOWx8a/xllDqeUM7RTijoC4cY=;
+	b=dgrFviZisw0pqrB+YqDeMyESyiRkmHgCVyEhMK+qA9s5JJEM1kHaX6FSiVjc6CAL
+	ESUjzFUcC4kIRX5GaLHv+75hTR9fo3lR/+rESxFHOrnAIQiuvgMjh0P0wu1u/jZe70V
+	f2+QqcSa+85I9n/Kg//f8lLHO3nJsdYBvCrZC82w=
+Received: by mx.zohomail.com with SMTPS id 1749757823600263.75629300643163;
+	Thu, 12 Jun 2025 12:50:23 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Jakub Kicinski <kuba@kernel.org>
 Cc: Yury Norov <yury.norov@gmail.com>,
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
-	Jaehoon Chung <jh80.chung@samsung.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shreeya Patel <shreeya.patel@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Qin Jian <qinjian@cqplus1.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
-	Bill Wendling <morbo@google.com>,
-	Justin Stitt <justinstitt@google.com>, kernel@collabora.com,
-	linux-kernel@vger.kernel.org, linux-mmc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-phy@lists.infradead.org,
-	linux-sound@vger.kernel.org, netdev@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com, linux-pci@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-clk@vger.kernel.org,
-	llvm@lists.linux.dev
-Subject: Re: [PATCH 17/20] PCI: dw-rockchip: switch to HWORD_UPDATE macro
-Message-ID: <20250612193859.GA924246@bhelgaas>
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Shreeya Patel <shreeya.patel@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Krzysztof =?UTF-8?B?V2lsY3p5xYRza2k=?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>, Qin Jian <qinjian@cqplus1.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
+ kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-phy@lists.infradead.org,
+ linux-sound@vger.kernel.org, netdev@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-pci@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-clk@vger.kernel.org, llvm@lists.linux.dev
+Subject: Re: [PATCH 01/20] bitfield: introduce HWORD_UPDATE bitfield macros
+Date: Thu, 12 Jun 2025 21:50:12 +0200
+Message-ID: <22744779.EfDdHjke4D@workhorse>
+In-Reply-To: <20250612124415.3399e26b@kernel.org>
+References: <20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com>
+ <20250612-byeword-update-v1-1-f4afb8f6313f@collabora.com>
+ <20250612124415.3399e26b@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250612-byeword-update-v1-17-f4afb8f6313f@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250612_125119_020666_A0B3945E 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,179 +111,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 12, 2025 at 08:56:19PM +0200, Nicolas Frattaroli wrote:
-> The era of hand-rolled HIWORD_UPDATE macros is over.
+On Thursday, 12 June 2025 21:44:15 Central European Summer Time Jakub Kicinski wrote:
+> On Thu, 12 Jun 2025 20:56:03 +0200 Nicolas Frattaroli wrote:
+> > Hardware of various vendors, but very notably Rockchip, often uses
+> > 32-bit registers where the upper 16-bit half of the register is a
+> > write-enable mask for the lower half.
 > 
-> Like many other Rockchip drivers, pcie-dw-rockchip brings with it its
-> very own flavour of HIWORD_UPDATE. It's occasionally used without a
-> constant mask, which complicates matters. HIWORD_UPDATE_BIT is a
-> confusingly named addition, as it doesn't update the bit, it actually
-> sets all bits in the value to 1. HIWORD_DISABLE_BIT is similarly
-> confusing; it disables several bits at once by using the value as a mask
-> and the inverse of value as the value, and the "disabling only these"
-> effect comes from the hardware actually using the mask. The more obvious
-> approach would've been HIWORD_UPDATE(val, 0) in my opinion.
+> Please limit the spread of this weirdness to a rockchip or "hiword"
+> specific header. To a normal reader of bitfield.h these macros will
+> be equally confusing and useless.
 > 
-> This is part of the motivation why this patch uses bitfield.h's
-> HWORD_UPDATE instead, where possible. HWORD_UPDATE requires a constant
-> bit mask, which isn't possible where the irq number is used to generate
-> a bit mask. For that purpose, we replace it with a more robust macro
-> than what was there but that should also bring close to zero runtime
-> overhead: we actually mask the IRQ number to make sure we're not writing
-> garbage.
-> 
-> For the remaining bits, there also are some caveats. For starters, the
-> PCIE_CLIENT_ENABLE_LTSSM and PCIE_CLIENT_DISABLE_LTSSM were named in a
-> manner that isn't quite truthful to what they do. Their modification
-> actually spans not just the LTSSM bit but also another bit, flipping
-> only the LTSSM one, but keeping the other (which according to the TRM
-> has a reset value of 0) always enabled. This other bit is reserved as of
-> the IP version RK3588 uses at least, and I have my doubts as to whether
-> it was meant to be set, and whether it was meant to be set in that code
-> path. Either way, it's confusing.
-> 
-> Replace it with just writing either 1 or 0 to the LTSSM bit, using the
-> new HWORD_UPDATE macro from bitfield.h, which grants us the benefit of
-> better compile-time error checking.
-> 
-> The change of no longer setting the reserved bit doesn't appear to
-> change the behaviour on RK3568 in RC mode, where it's not marked as
-> reserved.
-> 
-> PCIE_CLIENT_RC_MODE/PCIE_CLIENT_EP_MODE was another field that wasn't
-> super clear on what the bit field modification actually is. As far as I
-> can tell, switching to RC mode doesn't actually write the correct value
-> to the field if any of its bits have been set previously, as it only
-> updates one bit of a 4 bit field.
-> 
-> Replace it by actually writing the full values to the field, using the
-> new HWORD_UPDATE macro, which grants us the benefit of better
-> compile-time error checking.
-> 
-> This patch was tested on RK3588 (PCIe3 x4 controller), RK3576 (PCIe2 x1
-> controller) and RK3568 (PCIe x2 controller), all in RC mode.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-  PCI: dw-rockchip: Switch to HWORD_UPDATE macro
+That is how this change started out, and then a different maintainer told
+me that this is a commonly used thing (see: the sunplus patch), and
+Rockchip just happens to have a lot of these with consistent naming.
 
-Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+I believe normal readers of bitfield.h will be much more confused by the
+undocumented concatenating macro soup at the end, but maybe that's just
+me.
 
-> ---
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 39 ++++++++++++++++-----------
->  1 file changed, 24 insertions(+), 15 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 93171a3928794915ad1e8c03c017ce0afc1f9169..29363346f2cd9774d8d2e06cd76f7f82e6a7fecf 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -29,18 +29,19 @@
->   * The upper 16 bits of PCIE_CLIENT_CONFIG are a write
->   * mask for the lower 16 bits.
->   */
-> -#define HIWORD_UPDATE(mask, val) (((mask) << 16) | (val))
-> -#define HIWORD_UPDATE_BIT(val)	HIWORD_UPDATE(val, val)
-> -#define HIWORD_DISABLE_BIT(val)	HIWORD_UPDATE(val, ~val)
->  
->  #define to_rockchip_pcie(x) dev_get_drvdata((x)->dev)
->  
->  /* General Control Register */
->  #define PCIE_CLIENT_GENERAL_CON		0x0
-> -#define  PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
-> -#define  PCIE_CLIENT_EP_MODE		HIWORD_UPDATE(0xf0, 0x0)
-> -#define  PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
-> -#define  PCIE_CLIENT_DISABLE_LTSSM	HIWORD_UPDATE(0x0c, 0x8)
-> +#define  PCIE_CLIENT_MODE_MASK		GENMASK(7, 4)
-> +#define  PCIE_CLIENT_MODE_EP		0x0U
-> +#define  PCIE_CLIENT_MODE_LEGACY	0x1U
-> +#define  PCIE_CLIENT_MODE_RC		0x4U
-> +#define  PCIE_CLIENT_SET_MODE(x)	HWORD_UPDATE(PCIE_CLIENT_MODE_MASK, (x))
-> +#define  PCIE_CLIENT_LD_RQ_RST_GRT	HWORD_UPDATE(BIT(3), 1)
-> +#define  PCIE_CLIENT_ENABLE_LTSSM	HWORD_UPDATE(BIT(2), 1)
-> +#define  PCIE_CLIENT_DISABLE_LTSSM	HWORD_UPDATE(BIT(2), 0)
->  
->  /* Interrupt Status Register Related to Legacy Interrupt */
->  #define PCIE_CLIENT_INTR_STATUS_LEGACY	0x8
-> @@ -52,6 +53,11 @@
->  
->  /* Interrupt Mask Register Related to Legacy Interrupt */
->  #define PCIE_CLIENT_INTR_MASK_LEGACY	0x1c
-> +#define  PCIE_INTR_MASK			GENMASK(7, 0)
-> +#define  PCIE_INTR_CLAMP(_x)		((BIT((_x)) & PCIE_INTR_MASK))
-> +#define  PCIE_INTR_LEGACY_MASK(x)	(PCIE_INTR_CLAMP((x)) | \
-> +					 (PCIE_INTR_CLAMP((x)) << 16))
-> +#define  PCIE_INTR_LEGACY_UNMASK(x)	(PCIE_INTR_CLAMP((x)) << 16)
->  
->  /* Interrupt Mask Register Related to Miscellaneous Operation */
->  #define PCIE_CLIENT_INTR_MASK_MISC	0x24
-> @@ -114,14 +120,14 @@ static void rockchip_pcie_intx_handler(struct irq_desc *desc)
->  static void rockchip_intx_mask(struct irq_data *data)
->  {
->  	rockchip_pcie_writel_apb(irq_data_get_irq_chip_data(data),
-> -				 HIWORD_UPDATE_BIT(BIT(data->hwirq)),
-> +				 PCIE_INTR_LEGACY_MASK(data->hwirq),
->  				 PCIE_CLIENT_INTR_MASK_LEGACY);
->  };
->  
->  static void rockchip_intx_unmask(struct irq_data *data)
->  {
->  	rockchip_pcie_writel_apb(irq_data_get_irq_chip_data(data),
-> -				 HIWORD_DISABLE_BIT(BIT(data->hwirq)),
-> +				 PCIE_INTR_LEGACY_UNMASK(data->hwirq),
->  				 PCIE_CLIENT_INTR_MASK_LEGACY);
->  };
->  
-> @@ -521,10 +527,11 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
->  	}
->  
->  	/* LTSSM enable control mode */
-> -	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
-> +	val = HWORD_UPDATE(PCIE_LTSSM_ENABLE_ENHANCE, 1);
->  	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
->  
-> -	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_RC_MODE,
-> +	rockchip_pcie_writel_apb(rockchip,
-> +				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_RC),
->  				 PCIE_CLIENT_GENERAL_CON);
->  
->  	pp = &rockchip->pci.pp;
-> @@ -538,7 +545,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
->  	}
->  
->  	/* unmask DLL up/down indicator */
-> -	val = HIWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED, 0);
-> +	val = HWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED, 0);
->  	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
->  
->  	return ret;
-> @@ -567,10 +574,11 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
->  	}
->  
->  	/* LTSSM enable control mode */
-> -	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
-> +	val = HWORD_UPDATE(PCIE_LTSSM_ENABLE_ENHANCE, 1);
->  	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
->  
-> -	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_EP_MODE,
-> +	rockchip_pcie_writel_apb(rockchip,
-> +				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_EP),
->  				 PCIE_CLIENT_GENERAL_CON);
->  
->  	rockchip->pci.ep.ops = &rockchip_pcie_ep_ops;
-> @@ -594,7 +602,8 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
->  	pci_epc_init_notify(rockchip->pci.ep.epc);
->  
->  	/* unmask DLL up/down indicator and hot reset/link-down reset */
-> -	val = HIWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED | PCIE_LINK_REQ_RST_NOT_INT, 0);
-> +	val = HWORD_UPDATE(PCIE_RDLH_LINK_UP_CHGED, 0) |
-> +	      HWORD_UPDATE(PCIE_LINK_REQ_RST_NOT_INT, 0);
->  	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
->  
->  	return ret;
-> 
-> -- 
-> 2.49.0
-> 
+Best regards,
+Nicolas Frattaroli
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
