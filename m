@@ -4,75 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD73C61CE8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 13:19:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FDB3C61CE8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Jun 2025 13:19:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DgnAQWGklsoMutKrJm0pG9Avpd/pgK89KMmkeH0Nfaw=; b=vuvIcHM37mefFG
-	aIYFatrOEDL5MMAuOwrI6gBiQs9JmNUkT/e1n4ryB50p90zpRhJFIIMKvq0s0z7DztnlxvO6ApdNF
-	LuTqOK55o78Z6Yv1cwi26x6D8T6eOSBk+cqAUiPTrHOp0vfLl4SYI5sCclhPvB4EnwBHFIs8dBUAM
-	gCbC8LtsW+TZNJ+LAGERZkBV5q4DxHmK61i9jE8fb9oK5lq7pLxuvHQSIShzemes8OxguY4oLgjSB
-	O69fj9wzb2cAh6w9+uGfYsL4yMiuSxVLN9DlFqguPXX9ICrCAbapYGH/2peqQb9OXcqN51BFAu2FV
-	q5kAqKvKxyHJg3KNBuYA==;
+	List-Owner; bh=6S9A4+lKRBRurFgL6qviKYOejT8shTn0zAANPgh+G/E=; b=cIjGb5OYGPbqTw
+	xNe3kmsO3tvbeoIWE4prrRogLga/FoIS63BdNbiUnunEwe4T8e00RZcIjprynokxjiH+yiXLua9KY
+	/7H4YZtf9/dRXbOe5EmOOZjxpl7b2FYhFIJesRIGjBFHgtW2k0PRYJb0420BNaH1KEa5l/h2OtdFp
+	Gt9iXEkty/eR9WXWLVoZmbi88DOZuo7iid/Egq4n8rR2+vw7d4ONR+QTek1AeJAsrZMZTkAdoHSWB
+	vQHXIbBwj9vFTo4WQhLJyVaxmfRqvL1dp5XXmTqxNBFNq671EbFK67tpQ+cW5Q4G0Hj9bFyiWHQuz
+	XeJIMoyMZjkQAhEI3Ujw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPhpk-0000000DMog-0zZf;
-	Thu, 12 Jun 2025 13:19:08 +0000
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	id 1uPhpq-0000000DN2D-42MV;
+	Thu, 12 Jun 2025 13:19:14 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPfRn-0000000D2Wo-0N7A;
-	Thu, 12 Jun 2025 10:46:17 +0000
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bHzbl64zPz6L54g;
-	Thu, 12 Jun 2025 18:41:39 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 1B8241402A5;
-	Thu, 12 Jun 2025 18:46:01 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 12 Jun
- 2025 12:45:59 +0200
-Date: Thu, 12 Jun 2025 11:45:57 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Pavel Machek <pavel@ucw.cz>
-CC: David Lechner <dlechner@baylibre.com>, Michael Hennerich
-	<michael.hennerich@analog.com>, Lars-Peter Clausen <lars@metafoo.de>,
-	Jonathan Cameron <jic23@kernel.org>, Nuno =?UTF-8?Q?S=C3=A1?=
-	<nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, "Alexandre Torgue"
-	<alexandre.torgue@foss.st.com>, Francesco Dolcini <francesco@dolcini.it>,
-	=?UTF-8?Q?Jo=C3=A3o?= Paulo =?UTF-8?Q?Gon=C3=A7al?= =?UTF-8?Q?ves?=
-	<jpaulo.silvagoncalves@gmail.com>, Leonard =?UTF-8?Q?G?=
- =?UTF-8?Q?=C3=B6hrs?= <l.goehrs@pengutronix.de>, <kernel@pengutronix.de>,
-	Oleksij Rempel <o.rempel@pengutronix.de>, Roan van Dijk <roan@protonic.nl>,
-	Tomasz Duszynski <tomasz.duszynski@octakon.com>, Jacopo Mondi
-	<jacopo@jmondi.org>, Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
-	Mudit Sharma <muditsharma.info@gmail.com>, Javier Carrasco
-	<javier.carrasco.cruz@gmail.com>, =?UTF-8?Q?Ond=C5=99ej?= Jirman
-	<megi@xff.cz>, Andreas Klinger <ak@it-klinger.de>, Petre Rodan
-	<petre.rodan@subdimension.ro>, <linux-iio@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>
-Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-Message-ID: <20250612114557.00007628@huawei.com>
-In-Reply-To: <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
-References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-	<aEqbQPvz0FsLXt0Z@duo.ucw.cz>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+	id 1uPfjZ-0000000D5gr-3HuG;
+	Thu, 12 Jun 2025 11:04:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1749726275;
+	bh=+Ccw5JM2ysrP6p18gVlHfA/xuzZsyf6EShm65BKIUU4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=crVdHEJHZ49tKIM6cQp/sxc/UxQS0Md/A9mrs7WZOkhjq8cTDVp3bXd251kYyZ9ES
+	 tIru8QtPCoM+ymTaCYPFVysC2oVFi+IWaKpPZfvhinNeiK5m/MPEGeljYEtCZktkcy
+	 KU/RZjdrlRcTyhYOfuZNW+BAyPF1ZiTWe6B4ypKVOqwE9ROhDjFRYIpllSyfFapLc5
+	 PMpW7jgXnYZwdrN5Ju3TXOQLHo4Saa6z6zyWdwl9RBrZd9JPyLu0lF5pMa1py3aSEU
+	 dHQqmCoTgonMIG6DgcPYqqpehYKSSSwQBV09hbO0Vc6wdyXdncNZKGfflK2gF50f3d
+	 QtXM5Fq6DOJJg==
+Received: from [192.168.1.90] (unknown [212.93.144.165])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2B0D417E088C;
+	Thu, 12 Jun 2025 13:04:35 +0200 (CEST)
+Message-ID: <535a4e1c-33d3-4941-8315-df20d4dec799@collabora.com>
+Date: Thu, 12 Jun 2025 14:04:09 +0300
 MIME-Version: 1.0
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
- frapeml500008.china.huawei.com (7.182.85.71)
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add HDMI PHY PLL clock source
+ to VOP2 on rk3576
+To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com,
+ Andy Yan <andyshrk@163.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org
+References: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
+ <20250612-rk3576-hdmitx-fix-v1-3-4b11007d8675@collabora.com>
+ <01D5D2D8-392B-4926-884E-1A4FB87C03CF@gmail.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <01D5D2D8-392B-4926-884E-1A4FB87C03CF@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_034615_424532_F7796171 
-X-CRM114-Status: GOOD (  23.06  )
+X-CRM114-CacheID: sfid-20250612_040437_973283_095E8BAC 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,128 +82,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 12 Jun 2025 11:17:52 +0200
-Pavel Machek <pavel@ucw.cz> wrote:
-
-> Hi!
-> 
-> > Jonathan mentioned recently that he would like to get away from using
-> > memset() to zero-initialize stack memory in the IIO subsystem. And we
-> > have it on good authority that initializing a struct or array with = { }
-> > is the preferred way to do this in the kernel [1]. So here is a series
-> > to take care of that.  
-> 
-> 1) Is it worth the churn?
-> 
-> 2) Will this fail to initialize padding with some obscure compiler?
-> 
-> 3) Why do you believe that {} is the preffered way? All we have is
-> Kees' email that explains that = {} maybe works in configs he tested.
-> 
-Pavel,
-
-I think main thing that matters in Kees email is there is a self test
-that should fire if a compiler ever does this wrong.
-
-Using this syntax is definitely not a 'kernel wide' preference yet
-but I do prefer to make some changes like this in IIO just because it
-reduces the amount of code that smells different when reviewing.
-Given how many drivers we now have, sadly people pick different ones
-to cut and paste from so we get a lot of new drivers that look like
-how we preferred to do things 10 years ago :(
-
-However it is a fair bit of churn. hmm.  Let's let this sit for
-a little while and see if other view points come in.
-
-Thanks 
-
-Jonathan
- 
-
-> BR,
-> 								Pavel
-> 
-> > [1]:
-> > https://lore.kernel.org/linux-iio/202505090942.48EBF01B@keescook/  
-> 
-> 
-> 
-> > ---
-> > David Lechner (28):
-> >       iio: accel: adxl372: use = { } instead of memset()
-> >       iio: accel: msa311: use = { } instead of memset()
-> >       iio: adc: dln2-adc: use = { } instead of memset()
-> >       iio: adc: mt6360-adc: use = { } instead of memset()
-> >       iio: adc: rockchip_saradc: use = { } instead of memset()
-> >       iio: adc: rtq6056: use = { } instead of memset()
-> >       iio: adc: stm32-adc: use = { } instead of memset()
-> >       iio: adc: ti-ads1015: use = { } instead of memset()
-> >       iio: adc: ti-ads1119: use = { } instead of memset()
-> >       iio: adc: ti-lmp92064: use = { } instead of memset()
-> >       iio: adc: ti-tsc2046: use = { } instead of memset()
-> >       iio: chemical: scd4x: use = { } instead of memset()
-> >       iio: chemical: scd30: use = { } instead of memset()
-> >       iio: chemical: sunrise_co2: use = { } instead of memset()
-> >       iio: dac: ad3552r: use = { } instead of memset()
-> >       iio: imu: inv_icm42600: use = { } instead of memset()
-> >       iio: imu: inv_mpu6050: use = { } instead of memset()
-> >       iio: light: bh1745: use = { } instead of memset()
-> >       iio: light: ltr501: use = { } instead of memset()
-> >       iio: light: opt4060: use = { } instead of memset()
-> >       iio: light: veml6030: use = { } instead of memset()
-> >       iio: magnetometer: af8133j: use = { } instead of memset()
-> >       iio: pressure: bmp280: use = { } instead of memset()
-> >       iio: pressure: mpl3115: use = { } instead of memset()
-> >       iio: pressure: mprls0025pa: use = { } instead of memset()
-> >       iio: pressure: zpa2326: use = { } instead of memset()
-> >       iio: proximity: irsd200: use = { } instead of memset()
-> >       iio: temperature: tmp006: use = { } instead of memset()
-> > 
-> >  drivers/iio/accel/adxl372.c                       | 3 +--
-> >  drivers/iio/accel/msa311.c                        | 4 +---
-> >  drivers/iio/adc/dln2-adc.c                        | 4 +---
-> >  drivers/iio/adc/mt6360-adc.c                      | 3 +--
-> >  drivers/iio/adc/rockchip_saradc.c                 | 4 +---
-> >  drivers/iio/adc/rtq6056.c                         | 4 +---
-> >  drivers/iio/adc/stm32-adc.c                       | 3 +--
-> >  drivers/iio/adc/ti-ads1015.c                      | 4 +---
-> >  drivers/iio/adc/ti-ads1119.c                      | 4 +---
-> >  drivers/iio/adc/ti-lmp92064.c                     | 4 +---
-> >  drivers/iio/adc/ti-tsc2046.c                      | 3 +--
-> >  drivers/iio/chemical/scd30_core.c                 | 3 +--
-> >  drivers/iio/chemical/scd4x.c                      | 3 +--
-> >  drivers/iio/chemical/sunrise_co2.c                | 6 ++----
-> >  drivers/iio/dac/ad3552r.c                         | 3 +--
-> >  drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c | 5 ++---
-> >  drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c  | 5 ++---
-> >  drivers/iio/imu/inv_mpu6050/inv_mpu_acpi.c        | 4 +---
-> >  drivers/iio/imu/inv_mpu6050/inv_mpu_ring.c        | 6 ++----
-> >  drivers/iio/light/bh1745.c                        | 4 +---
-> >  drivers/iio/light/ltr501.c                        | 4 +---
-> >  drivers/iio/light/opt4060.c                       | 4 +---
-> >  drivers/iio/light/veml6030.c                      | 4 +---
-> >  drivers/iio/magnetometer/af8133j.c                | 4 +---
-> >  drivers/iio/pressure/bmp280-core.c                | 5 +----
-> >  drivers/iio/pressure/mpl3115.c                    | 3 +--
-> >  drivers/iio/pressure/mprls0025pa_i2c.c            | 5 +----
-> >  drivers/iio/pressure/zpa2326.c                    | 4 +---
-> >  drivers/iio/proximity/irsd200.c                   | 3 +--
-> >  drivers/iio/temperature/tmp006.c                  | 4 +---
-> >  30 files changed, 34 insertions(+), 85 deletions(-)
-> > ---
-> > base-commit: 4c6073fec2fee4827fa0dd8a4ab4e6f7bbc05ee6
-> > change-id: 20250611-iio-zero-init-stack-with-instead-of-memset-0d12d41a7ecb
-> > 
-> > Best regards,  
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gNi8xMi8yNSAxOjIyIFBNLCBQaW90ciBPbmlzemN6dWsgd3JvdGU6Cj4gCj4gCj4+IFdpYWRv
+bW/Fm8SHIG5hcGlzYW5hIHByemV6IENyaXN0aWFuIENpb2NhbHRlYSA8Y3Jpc3RpYW4uY2lvY2Fs
+dGVhQGNvbGxhYm9yYS5jb20+IHcgZG5pdSAxMSBjemUgMjAyNSwgbyBnb2R6LiAyMzo0NzoKPj4K
+Pj4gU2luY2UgY29tbWl0IGM4NzFhMzExZWRmMCAoInBoeTogcm9ja2NoaXA6IHNhbXN1bmctaGRw
+dHg6IFNldHVwIFRNRFMKPj4gY2hhciByYXRlIHZpYSBwaHlfY29uZmlndXJlX29wdHNfaGRtaSIp
+LCB0aGUgd29ya2Fyb3VuZCBvZiBwYXNzaW5nIHRoZQo+PiByYXRlIGZyb20gRFcgSERNSSBRUCBi
+cmlkZ2UgZHJpdmVyIHZpYSBwaHlfc2V0X2J1c193aWR0aCgpIGJlY2FtZQo+PiBwYXJ0aWFsbHkg
+YnJva2VuLCBhcyBpdCBjYW5ub3QgcmVsaWFibHkgaGFuZGxlIG1vZGUgc3dpdGNoZXMgYW55bW9y
+ZS4KPj4KPj4gQXR0ZW1wdGluZyB0byBmaXggdGhpcyB1cCBhdCBQSFkgbGV2ZWwgd291bGQgbm90
+IG9ubHkgaW50cm9kdWNlCj4+IGFkZGl0aW9uYWwgaGFja3MsIGJ1dCBpdCB3b3VsZCBhbHNvIGZh
+aWwgdG8gYWRlcXVhdGVseSByZXNvbHZlIHRoZQo+PiBkaXNwbGF5IGlzc3VlcyB0aGF0IGFyZSBh
+IGNvbnNlcXVlbmNlIG9mIHRoZSBzeXN0ZW0gQ1JVIGxpbWl0YXRpb25zLgo+Pgo+PiBJbnN0ZWFk
+LCBwcm9jZWVkIHdpdGggdGhlIHNvbHV0aW9uIGFscmVhZHkgaW1wbGVtZW50ZWQgZm9yIFJLMzU4
+ODogbWFrZQo+PiB1c2Ugb2YgdGhlIEhETUkgUEhZIFBMTCBhcyBhIGJldHRlciBzdWl0ZWQgRENM
+SyBzb3VyY2UgZm9yIFZPUDIuIFRoaXMKPj4gd2lsbCBub3Qgb25seSBhZGRyZXNzIHRoZSBhZm9y
+ZW1lbnRpb25lZCBwcm9ibGVtLCBidXQgaXQgc2hvdWxkIGFsc28KPj4gZmFjaWxpdGF0ZSB0aGUg
+cHJvcGVyIG9wZXJhdGlvbiBvZiBkaXNwbGF5IG1vZGVzIHVwIHRvIDRLQDYwSHouCj4+Cj4+IEl0
+J3Mgd29ydGggbm90aW5nIHRoYXQgYW55dGhpbmcgYWJvdmUgNEtAMzBIeiBzdGlsbCByZXF1aXJl
+cyBoaWdoIFRNRFMKPj4gY2xvY2sgcmF0aW8gYW5kIHNjcmFtYmxpbmcgc3VwcG9ydCwgd2hpY2gg
+aGFzbid0IGJlZW4gbWFpbmxpbmVkIHlldC4KPj4KPj4gRml4ZXM6IGQ3NGI4NDJjYWIwOCAoImFy
+bTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgdm9wIGZvciByazM1NzYiKQo+PiBDYzogc3RhYmxlQHZn
+ZXIua2VybmVsLm9yZwo+PiBTaWduZWQtb2ZmLWJ5OiBDcmlzdGlhbiBDaW9jYWx0ZWEgPGNyaXN0
+aWFuLmNpb2NhbHRlYUBjb2xsYWJvcmEuY29tPgo+PiAtLS0KPj4gYXJjaC9hcm02NC9ib290L2R0
+cy9yb2NrY2hpcC9yazM1NzYuZHRzaSB8IDYgKysrKy0tCj4+IDEgZmlsZSBjaGFuZ2VkLCA0IGlu
+c2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0
+L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU3Ni5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
+Y2hpcC9yazM1NzYuZHRzaQo+PiBpbmRleCA2YTEzZmUwYzM1MTNmYjJmZjdjZDUzNWFhNzBlMzM4
+NmMzNzY5NmU0Li5iMWFjMjMwMzVkZDc4OWYwNDc4YmYxMGM3OGM3NGVmMTY3ZDk0OTA0IDEwMDY0
+NAo+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU3Ni5kdHNpCj4+ICsr
+KyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTc2LmR0c2kKPj4gQEAgLTExNTUs
+MTIgKzExNTUsMTQgQEAgdm9wOiB2b3BAMjdkMDAwMDAgewo+PiA8JmNydSBIQ0xLX1ZPUD4sCj4+
+IDwmY3J1IERDTEtfVlAwPiwKPj4gPCZjcnUgRENMS19WUDE+LAo+PiAtIDwmY3J1IERDTEtfVlAy
+PjsKPj4gKyA8JmNydSBEQ0xLX1ZQMj4sCj4+ICsgPCZoZHB0eHBoeT47Cj4+IGNsb2NrLW5hbWVz
+ID0gImFjbGsiLAo+PiAgICAgICJoY2xrIiwKPj4gICAgICAiZGNsa192cDAiLAo+PiAgICAgICJk
+Y2xrX3ZwMSIsCj4+IC0gICAgICAiZGNsa192cDIiOwo+PiArICAgICAgImRjbGtfdnAyIiwKPj4g
+KyAgICAgICJwbGxfaGRtaXBoeTAiOwo+PiBpb21tdXMgPSA8JnZvcF9tbXU+Owo+PiBwb3dlci1k
+b21haW5zID0gPCZwb3dlciBSSzM1NzZfUERfVk9QPjsKPj4gcm9ja2NoaXAsZ3JmID0gPCZzeXNf
+Z3JmPjsKPj4KPj4gLS0gCj4+IDIuNDkuMAo+Pgo+Pgo+PiBfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwo+PiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+Pj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiBodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4gCj4gQ3Jpc3RpYW4s
+Cj4gSXQgZml4ZXMgZnJhY3Rpb25hbCBoZCBtb2RlcyBmb3IgbWUgb24gcmszNTc2Lgo+IFRoeCBm
+b3IgdGhpcyBmaXghCgpUaGFua3MgZm9yIHRlc3RpbmchIDopCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
