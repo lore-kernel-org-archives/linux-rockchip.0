@@ -4,59 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F5D7C71135
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 07:58:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D942C71135
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 08:54:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MIfxuBie3ZM4/yu6CW/FTpSMLFr5t9Nt/8cjPtArs+g=; b=IN0ybryVKOMVOxJWbbbMzosLm9
-	5wDum0yI1vbNGJsVMr+eIltBS3Bb70wNRL9Z4LNOt354+Bp6gd9Bgde26dhbI9cOiStL/+gTuwIwC
-	+oWMkpRNt7DXp9dI6QkwWp2skXdiiAUZ5Al06dPatI/cMyQcNd2EDSumT+h7dZP1PiUsCNEaL+PB3
-	WZt1QIh2ntrki9TUYZdW2PBRyCCOtmayh/Oi8M6dB8eUNeK217c2aXPNnPC2nhTvTaVfar0nbRafR
-	Df2CCNt3rmo1FgngDpsP3oFe2rpB97axuUSlblV/KTaGiUEclLM+pRrIuTLl1kMYFxNF8cSPlhez7
-	+Qv1oprg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wsKfHfrDlUev+AsSeROoZ+jGAsaOsrQDxKZeAtymiO8=; b=eovLRU4vtgXR8u
+	aFIZcRrqLye4FGr3gh0VDmNY56Yfh68qn6l0MfQJN5XXtKm2MeFUGORyos5SqfDFcgybxsiqgDQVu
+	NCwU+Qknd/WDLsPLkzN8tLVD9AfOJ9h+5BRpFkjp0OGw1vWtvxsFxr48huPZbFTENWKp0TilW325h
+	4og9w+RRh4ZGLDiwv/mAWnOfgDDdvf+3FSxbj/ta01Ms2PeVpycOk94uW2nO8pKa+XE6uBOU9w94y
+	S6hfq1u1zilzRoGl4tgL2nAmIQ7Wta4TYN90dpYjwG3w/RrdxedfL6gdZqIY4Z+m7EUIECzyNAozl
+	FQvOPD2fOjx/v47yUbGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPzIT-0000000Fi4t-0UV1;
-	Fri, 13 Jun 2025 07:57:57 +0000
-Received: from out-179.mta1.migadu.com ([2001:41d0:203:375::b3])
+	id 1uQ0Aj-0000000FozX-0VJG;
+	Fri, 13 Jun 2025 08:54:01 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPzIQ-0000000Fi3T-1Od4
-	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Jun 2025 07:57:56 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1749801470;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=L+YN4MTZBkTzMLCaO2wC4gmmUGZnS4C1FG9BefD5M2o=;
-	b=sG6q1yaomuV3OMNUoQqhkbuH1Xcj2p7del+A7bay2fusZru9OEE8vWFR9UthMbY3VpLLfI
-	FUolafPTe92AVJjXi4pi5inFQskTUn+5VcHL1uolO93tIKvk8tlCvfrwE0e3akdsHhcC8V
-	xULhpn0qpRQt3dVp2ppv0jcfC8bE3yRFWAhE3OIwjSlJd+fb0tB+Svm/dPDtaN8FVUic8Q
-	AlUuSwdrSq1M+QGe+Yic0cPdymG4mu6zz0PJ+rqKgAXWDJlPscQ3e8bvOMPMPVcUGhiwnQ
-	jVaBmQpd3KW1TkF59UGitXhqsK7wY8V8Q1vheo3YthkTxgD8q+/QVo+u1ZZMvg==
-Date: Fri, 13 Jun 2025 09:57:32 +0200
-Message-Id: <DAL8UI7TH6IJ.2EVGYOYRQSS89@cknow.org>
-Cc: <linux-crypto@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, "Corentin Labbe" <clabbe@baylibre.com>,
- <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH v3 3/7] crypto: testmgr - replace
- CRYPTO_MANAGER_DISABLE_TESTS with CRYPTO_SELFTESTS
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Eric Biggers" <ebiggers@kernel.org>
-References: <20250505203345.802740-1-ebiggers@kernel.org>
- <20250505203345.802740-4-ebiggers@kernel.org>
- <DAJOCL4UQWZ1.2CB0NH55US5EI@cknow.org> <20250611163430.GA1254@sol>
-In-Reply-To: <20250611163430.GA1254@sol>
-X-Migadu-Flow: FLOW_OUT
+	id 1uQ08S-0000000FoYF-21Ea;
+	Fri, 13 Jun 2025 08:51:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1749804700; x=1781340700;
+  h=from:to:cc:subject:in-reply-to:references:date:
+   message-id:mime-version;
+  bh=4dvU2gjTBAobluxvnHDFcItktqR+5ChasN0aGjgKaKI=;
+  b=JDwmCjL7h765qAo1Y/8XgZFufTHuz6y4SJwNaIjvxyMelImqJY9a2vVR
+   IkjM3rz/YOI2ygi6Kbk9q3wzbbTU9ilGFFdu6IeTrSQX0Wmkuah7WamNO
+   QmtZ/LRlzuLbpywXYtphkUCsV3eUXospWGmR6qhhNXLmPjwVG9Aq8j2fC
+   3rvmPIJuUu+IbeL6BGS8sEYuZdkBI/t4BmRY59z6KDqzeRDDtumNKat1z
+   pYWpGeDxEJXOQlxwmV7zX0OtCdKACIjA2DFV4m1v/2YREkCwIbss2NWw/
+   vrJSyCPke5F9Cqd7f2P+uTTUsMMJoD+eEKBeEvxa2j0Hdt+EP0fIoQ66f
+   A==;
+X-CSE-ConnectionGUID: nhZVW/deQVWz1FI/QF+yeg==
+X-CSE-MsgGUID: dP8Ze4uDSROlBiCezNA2HQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11462"; a="74547608"
+X-IronPort-AV: E=Sophos;i="6.16,233,1744095600"; 
+   d="scan'208";a="74547608"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jun 2025 01:51:37 -0700
+X-CSE-ConnectionGUID: agVmFPqcQfiQWHXPtV8Rmw==
+X-CSE-MsgGUID: gWFTP0HTRC2RODcDIuxKFQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,233,1744095600"; 
+   d="scan'208";a="147619241"
+Received: from fdefranc-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.246.26])
+  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jun 2025 01:51:19 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Yury Norov
+ <yury.norov@gmail.com>, Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Shreeya Patel
+ <shreeya.patel@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David
+ Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Vinod Koul
+ <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, Nicolas
+ Frattaroli <frattaroli.nicolas@gmail.com>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela
+ <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
+ Abeni <pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Shawn Lin
+ <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan
+ Sadhasivam
+ <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
+ <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham
+ <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Qin
+ Jian <qinjian@cqplus1.com>, Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, Bill Wendling
+ <morbo@google.com>, Justin Stitt <justinstitt@google.com>
+Subject: Re: [PATCH 01/20] bitfield: introduce HWORD_UPDATE bitfield macros
+In-Reply-To: <20250612-byeword-update-v1-1-f4afb8f6313f@collabora.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com>
+ <20250612-byeword-update-v1-1-f4afb8f6313f@collabora.com>
+Date: Fri, 13 Jun 2025 11:51:15 +0300
+Message-ID: <5493fd6017de3f393f632125fad95945d1c4294c@intel.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_005754_782776_08C4F80B 
-X-CRM114-Status: GOOD (  22.67  )
+X-CRM114-CacheID: sfid-20250613_015140_575748_612011E0 
+X-CRM114-Status: GOOD (  27.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,120 +103,133 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2648971198241145029=="
+Cc: Tvrtko Ursulin <tursulin@igalia.com>, linux-pm@vger.kernel.org, netdev@vger.kernel.org, llvm@lists.linux.dev, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, linux-pci@vger.kernel.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2648971198241145029==
-Content-Type: multipart/signed;
- boundary=8d0444eb434897e482c102aa76e1f2eca706077e00be5351cd2962a65c42;
- micalg=pgp-sha512; protocol="application/pgp-signature"
-
---8d0444eb434897e482c102aa76e1f2eca706077e00be5351cd2962a65c42
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-
-On Wed Jun 11, 2025 at 6:34 PM CEST, Eric Biggers wrote:
-> On Wed, Jun 11, 2025 at 01:41:06PM +0200, Diederik de Haas wrote:
->> On Mon May 5, 2025 at 10:33 PM CEST, Eric Biggers wrote:
->> > The negative-sense of CRYPTO_MANAGER_DISABLE_TESTS is a longstanding
->> > mistake that regularly causes confusion.  Especially bad is that you c=
-an
->> > have CRYPTO=3Dn && CRYPTO_MANAGER_DISABLE_TESTS=3Dn, which is ambiguou=
-s.
->> >
->> > Replace CRYPTO_MANAGER_DISABLE_TESTS with CRYPTO_SELFTESTS which has t=
-he
->> > expected behavior.
->> >
->> > The tests continue to be disabled by default.
->> > ---
->> >  <snip>
->>=20
->> I built a 6.16-rc1 kernel [1] and its config is based upon Debian's and
->> that has enabled CRYPTO_SELFTESTS [2] (due to Debian bug 599441 [3]).
->>=20
->> I then installed it on 3 Rockchip based devices and booted into that.
->> 1. Radxa Rock 5B (rk3588)
->> 2. PINE64 Quartz64 Model B (rk3568)
->> 3. PINE64 RockPro64 (rk3399)
->>=20
->> The filtered dmesg output for Rock 5B:
->> ERROR:
->> [    0.709822] basic hdkf test(hmac(sha256)): failed to allocate transfo=
-rm: -2
->> WARNING:
+On Thu, 12 Jun 2025, Nicolas Frattaroli <nicolas.frattaroli@collabora.com> wrote:
+> Hardware of various vendors, but very notably Rockchip, often uses
+> 32-bit registers where the upper 16-bit half of the register is a
+> write-enable mask for the lower half.
 >
-> https://lore.kernel.org/r/20250610191600.54994-1-ebiggers@kernel.org/ fix=
-ed the
-> HKDF failure.  It was caused by a patch that changed initcall levels.
+> This type of hardware setup allows for more granular concurrent register
+> write access.
 >
->> [    8.877288] alg: skcipher: skipping comparison tests for xctr-aes-ce =
-because xctr(aes-generic) is unavailable
+> Over the years, many drivers have hand-rolled their own version of this
+> macro, usually without any checks, often called something like
+> HIWORD_UPDATE or FIELD_PREP_HIWORD, commonly with slightly different
+> semantics between them.
 >
-> That's expected if you have CONFIG_CRYPTO_AES_ARM64_CE_BLK enabled but
-> CONFIG_CRYPTO_XCTR disabled.  Some tests are skipped in that case.
-
-Happy to report that with that patch and that config option, the error
-and warning are now gone. Thanks :-)
-
-PULL request for the patch is already sent to Linus:
-https://lore.kernel.org/linux-crypto/aEupSzhTI4h8kz-5@gondor.apana.org.au/
-
->> [   14.172991] alg: ahash: rk-sha1 export() overran state buffer on test=
- vector 0, cfg=3D"import/export"
->> [   14.202291] alg: ahash: rk-sha256 export() overran state buffer on te=
-st vector 0, cfg=3D"import/export"
->> [   14.230887] alg: ahash: rk-md5 export() overran state buffer on test =
-vector 0, cfg=3D"import/export"
+> Clearly there is a demand for such a macro, and thus the demand should
+> be satisfied in a common header file.
 >
-> That means the Rockchip crypto driver is broken.
-
-The crypto driver for rk3399 is still broken.
-
-> Anyway, the more interesting part of your email is that you pointed out t=
-hat
-> Debian has the crypto self-tests enabled, precisely in order to automatic=
-ally
-> disable buggy drivers like these.
+> Add two macros: HWORD_UPDATE, and HWORD_UPDATE_CONST. The latter is a
+> version that can be used in initializers, like FIELD_PREP_CONST. The
+> macro names are chosen to not clash with any potential other macros that
+> drivers may already have implemented themselves, while retaining a
+> familiar name.
 >
-> So I'll send a patch that adds back a kconfig knob to run the fast tests =
-only,
-> which I had removed in commit 698de822780f.
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  include/linux/bitfield.h | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 47 insertions(+)
+>
+> diff --git a/include/linux/bitfield.h b/include/linux/bitfield.h
+> index 6d9a53db54b66c0833973c880444bd289d9667b1..b90d88db7405f95b78cdd6f3426263086bab5aa6 100644
+> --- a/include/linux/bitfield.h
+> +++ b/include/linux/bitfield.h
+> @@ -8,6 +8,7 @@
+>  #define _LINUX_BITFIELD_H
+>  
+>  #include <linux/build_bug.h>
+> +#include <linux/limits.h>
+>  #include <linux/typecheck.h>
+>  #include <asm/byteorder.h>
+>  
+> @@ -142,6 +143,52 @@
+>  		(((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask))	\
+>  	)
+>  
+> +/**
+> + * HWORD_UPDATE() - prepare a bitfield element with a mask in the upper half
+> + * @_mask: shifted mask defining the field's length and position
+> + * @_val:  value to put in the field
+> + *
+> + * HWORD_UPDATE() masks and shifts up the value, as well as bitwise ORs the
+> + * result with the mask shifted up by 16.
+> + *
+> + * This is useful for a common design of hardware registers where the upper
+> + * 16-bit half of a 32-bit register is used as a write-enable mask. In such a
+> + * register, a bit in the lower half is only updated if the corresponding bit
+> + * in the upper half is high.
+> + */
+> +#define HWORD_UPDATE(_mask, _val)					 \
+> +	({								 \
+> +		__BF_FIELD_CHECK(_mask, ((u16) 0U), _val,		 \
+> +				 "HWORD_UPDATE: ");			 \
+> +		(((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask)) | \
+> +		((_mask) << 16);					 \
+> +	})
 
-I responded about this to a new patch submission here:
-https://lore.kernel.org/linux-crypto/DAJXJHLY2ITB.3IBN23DX0RO4Z@cknow.org/
-and v2 of that patch can be found here:
-https://lore.kernel.org/linux-crypto/20250612174709.26990-1-ebiggers@kernel=
-.org/
+i915 uses something like this for a few registers too, with the name
+_MASKED_FIELD(). I think we could use it.
 
-Cheers,
-  Diederik
+I do think this is clearly an extension of FIELD_PREP(), though, and
+should be be named similarly, instead of the completely deviating
+HWORD_UPDATE().
 
---8d0444eb434897e482c102aa76e1f2eca706077e00be5351cd2962a65c42
-Content-Type: application/pgp-signature; name="signature.asc"
+Also, we recently got GENMASK() versions with sizes, GENMASK_U16()
+etc. so I find it inconsistent to denote size here with HWORD.
 
------BEGIN PGP SIGNATURE-----
+FIELD_PREP_MASKED_U16? MASKED_FIELD_PREP_U16? Something along those
+lines?
 
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaEvZ9AAKCRDXblvOeH7b
-bgePAP4+kEWYKZ1eqayKsFe8tBfUVxnfdStRKU8Qr/95saO95wEApLF/txTDorHT
-OXmTzRTcsInQy9LVjH2/+08cAly/KQs=
-=NvpI
------END PGP SIGNATURE-----
-
---8d0444eb434897e482c102aa76e1f2eca706077e00be5351cd2962a65c42--
+And perhaps that (and more potential users) could persuade Jakub that
+this is not that weird after all?
 
 
---===============2648971198241145029==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+BR,
+Jani.
+
+
+
+
+> +
+> +/**
+> + * HWORD_UPDATE_CONST() - prepare a constant bitfield element with a mask in
+> + *                        the upper half
+> + * @_mask: shifted mask defining the field's length and position
+> + * @_val:  value to put in the field
+> + *
+> + * HWORD_UPDATE_CONST() masks and shifts up the value, as well as bitwise ORs
+> + * the result with the mask shifted up by 16.
+> + *
+> + * This is useful for a common design of hardware registers where the upper
+> + * 16-bit half of a 32-bit register is used as a write-enable mask. In such a
+> + * register, a bit in the lower half is only updated if the corresponding bit
+> + * in the upper half is high.
+> + *
+> + * Unlike HWORD_UPDATE(), this is a constant expression and can therefore
+> + * be used in initializers. Error checking is less comfortable for this
+> + * version.
+> + */
+> +#define HWORD_UPDATE_CONST(_mask, _val)					  \
+> +	(								  \
+> +		FIELD_PREP_CONST(_mask, _val) |				  \
+> +		(BUILD_BUG_ON_ZERO(const_true((u64) (_mask) > U16_MAX)) + \
+> +		 ((_mask) << 16))					  \
+> +	)
+> +
+>  /**
+>   * FIELD_GET() - extract a bitfield element
+>   * @_mask: shifted mask defining the field's length and position
+
+-- 
+Jani Nikula, Intel
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2648971198241145029==--
-
