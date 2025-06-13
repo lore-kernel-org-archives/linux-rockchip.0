@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCF91C7114A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5944C71136
 	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 18:16:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:Date:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w+rF7xybnf+MqvkecrzKRmwXnxqsb1M/Uy3hSu5QeRs=; b=mfpXIWwgiHFUaw5qjGqjJqWM39
-	Duw6fMDYadQD14n0DLdbXQ0iEU57TRucrmuPZGMZHb94JjgompwaYDN8xyB/rAr5g2qhJTNc3m59N
-	qHfQbTH2x3XtS7m42QgKnRmLrm52zXb4eiYT65AU75lUT3ghd9v3l9HDBE+r3DQPtRTUB4mi/3CHL
-	J+K12GvefbcvTHAtJgtg4UY4hT2T+uk5ovkHmqrXt1XUAarpqYZOYZ0FY9wPbzM/kMNRcVYTv9GX2
-	92ovDcA1j0t009ZId4bnNpn7Ctn8oWvwxKgdE8EdYtX+aPbaX8IBfTGYiB6IDtSl5QG1WVZ6oLOOG
-	M1z/FHDQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IklzxxSSa+ima1/WqPjaIfB0jKo50ulf5JYunavOTnQ=; b=Iph/rSXV7qStOb
+	ZDTMoDlF7dVIETlHRHOkkWWbkNVX0MT7rYNWH7Ra56mkTX7sFKJ7GRHCloyRtntZFUEQYfLDMpkoS
+	Wd8UO9+C9DvD2+KMVYz0oog3idUS2U+drDEvVK7Nk+w68EeuLv+XpwIWE98KHbbKEis2DC+VyAyGl
+	QGXxlhogFfjpPYpwV4hWwWyLSS1+30fJ2+m7Uh7EUEFw1FRRrKfByhXxUW/qFJVaazF1K38s7N7Vk
+	7EGaxbsmZZPoGIvGKAqSnvN6PZhvmumN39XhEq56iCLn8kKvmN94FEF9mDWC7YXcp7gXg7V3uv1fW
+	vusOSPd9uC6jf+jaKaUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ8wo-0000000HF3d-1xfB;
-	Fri, 13 Jun 2025 18:16:14 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1uQ8wp-0000000HF4m-45Hm;
+	Fri, 13 Jun 2025 18:16:15 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ6J5-0000000GsTq-2oq3;
-	Fri, 13 Jun 2025 15:27:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1749828424; x=1781364424;
-  h=from:date:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=QDmODICNWiBtCvM/b89KqBEr7GNxx9lEwD2x/dRQD5k=;
-  b=cNFuVMsjVpjh1ZASKejSH9T/O1PV3sIKib5lwk19UE1fIa87cPET7R7Z
-   ALrI+Ai6fIfHnNz+1ehodBIX0QbwRyOGT06+9R3uUOxjF6iKaTPcQtEpf
-   Irzx8IBTxmsl1L6T0fgNmvL4DTzQAfmteyu6QZyxz3Y14KHIuet7FlWEN
-   sOu+oCG1dgrIemHQsnxUmIRZeTLgkAInyhDF/DcrS7ekE6onr4IJMa2t2
-   DifyPo/YvKEw1CZ9rwppPfNGdV2DRo5GaALO2APqzPGWhJgSYiK2iLpwB
-   kVGJM1KxNxLg4A+cPJXn/cBaBlO94rnOeoT4vXVOIQANrNWenXyStAqdy
-   w==;
-X-CSE-ConnectionGUID: SLlGmsieR1u7yH1EWj6cOA==
-X-CSE-MsgGUID: /YBCFdwaQwys8Hs9N/HqMw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11463"; a="69626438"
-X-IronPort-AV: E=Sophos;i="6.16,234,1744095600"; 
-   d="scan'208";a="69626438"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jun 2025 08:27:02 -0700
-X-CSE-ConnectionGUID: eiLse6EbSKa+9117fseorQ==
-X-CSE-MsgGUID: wA+9VSQeRj6fWsmzEAVkKg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,234,1744095600"; 
-   d="scan'208";a="152743439"
-Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.102])
-  by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jun 2025 08:25:53 -0700
-From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
-Date: Fri, 13 Jun 2025 18:25:50 +0300 (EEST)
-To: Geraldo Nascimento <geraldogabriel@gmail.com>
-cc: linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, 
-    Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-    =?ISO-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kw@linux.com>, 
-    Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
-    Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
-    Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
-    linux-phy@lists.infradead.org, linux-pci@vger.kernel.org, 
-    linux-arm-kernel@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>
-Subject: Re: [RFC PATCH v4 2/5] PCI: rockchip: Drop unused custom registers
- and bitfields
-In-Reply-To: <aExBeNdkOtFtW87z@geday>
-Message-ID: <b4dc6d96-b268-7da4-e41f-cc922ae6941c@linux.intel.com>
-References: <cover.1749826250.git.geraldogabriel@gmail.com> <ed25d30f2761e963164efffcfbe35502feb3adc2.1749826250.git.geraldogabriel@gmail.com> <97114c68-5eb7-18b0-adbd-227e1d7957c6@linux.intel.com> <aExBeNdkOtFtW87z@geday>
+	id 1uQ5i5-0000000Gl7o-0PiK;
+	Fri, 13 Jun 2025 14:48:50 +0000
+Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-74877ac9d42so1529420b3a.1;
+        Fri, 13 Jun 2025 07:48:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749826128; x=1750430928; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=d/L0PwwkoPnRzlL6fmDLU+JBmZkHn+VWrN87UcWrxlw=;
+        b=So7wehG3aujX/cNR4lELBLrB6aZnGQ+/8l19+sro4Bh9cxjWJPPew1ttcnnsqvhK9t
+         hqC09u0SrNmJ7YIghf7Vu/0zuonanQWvlNgmCiWEIYG0f0rLobH5lik8zmzEI255LzZW
+         DSIKb8JQLKY1DZjTBs4JIiCQhV6FsN2l8gDbYh+TtEf7jKNQkc55t85C9DeAAiG90DBO
+         dgtitcI8Cq+jZMEOGY9mS4gz+GVtBdDtztNRKHpXIeVQgFEic2wR0foG2wdF5HWpjNX5
+         5ucFIH9T1G3M7OpIXXk+HiDxU5a4B+gJIlSsstN99uj1+bctcSXnYcoMNRgJHfBtZJWn
+         N82A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749826128; x=1750430928;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=d/L0PwwkoPnRzlL6fmDLU+JBmZkHn+VWrN87UcWrxlw=;
+        b=GhUqaU2WkX8dDV59iRjaC+LDNFzcPHDqIMXOcTlpNT0v3tqE512HewKbHx8hHmL7oK
+         if+fqy//oair2391N0njDWSS4i4VOtapTKtX8XwLpWdmLxsD1vSi32hm8IO97ISnr2Si
+         cKzbTeoklYPHSycDAKjjkSUiuk6WFmVRc0HAtfVhgrBI1C3vvr4pVmCKAwZMMWHV3JcK
+         ZLSW7lprcRDhbXuF4/5cdwWZ+5wzjT5tGBQbhWqE9QT3bVQxVuT3C3Fg4aF+RDS+vGJr
+         ilKbH0zEZCuby36NNwyKkSJ9OCrxQZkmGvqEC4B7zYL+4bLTa5KNfwsG//onQqa5Ibe/
+         USCA==
+X-Forwarded-Encrypted: i=1; AJvYcCUzgH3KuA4q8ReLmGWIBk6imynS8MAKmCqmqNbidBGMvWb6Ux8lrPINyAhcfr/VDKIcP4FJznBF/+Dp@lists.infradead.org, AJvYcCXWaKkiPd1ras3QHLTFco5duf02fj/qgYqcbPNVXb+G9psZo5vIxYYIVorlFnzLZF81L/L2BGbzfIUYvsWDQxwY@lists.infradead.org
+X-Gm-Message-State: AOJu0YwCCDeXTz7oYm7EDr/BAonjZ/grCiYBqIay3Fi2eYbaNHUsFupv
+	jTjogwfKAd94yf6C2NfkW25hJPbfJp1Lxwv45RICjvq6apTX7GUJJZxEQiO9Wzcn
+X-Gm-Gg: ASbGncv8bi/jlwhXwc7KGQQiqrz8vt9kkGwJgpNVCr+jVBG8ckEWk6/3bFFT3+TOAT5
+	CinOU7tg3F7rSnUBH8VUfD5rj7fyNjrO2aRt5vb1gc4mlTKjMN3VIOK9JMq4p8QGUGulkpKHq5A
+	x6lzekr0vjTX0I25F7BtV9Tm4GOfiOIcnF4NjlzqbBQtznGTJRTkmoqPInCoggVBFDF88bKxn8n
+	EbdzKcEZkQH2L07vABNwS/TB7pjc7xhQsmUbKjtZCj3PUFpnSxBeVSeZZ+s2f+f7/oNWIOh35Ez
+	GuQdwyxWFZj/MZSbEem8Ct2by9K0aStgZ4jBIz4gv3bW3sFcww==
+X-Google-Smtp-Source: AGHT+IFt4GR3YMTXjNMLs0lezTaz7ETEn/eRAqWAd2cNJwooWka4aI3k3Y5G9iM40lPJlQBBHOCxFg==
+X-Received: by 2002:a05:6a00:2d8e:b0:736:ab49:d56 with SMTP id d2e1a72fcca58-7488f6e49f9mr4575274b3a.1.1749826128253;
+        Fri, 13 Jun 2025 07:48:48 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:838f::dead:c001])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-74890083034sm1728624b3a.98.2025.06.13.07.48.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Jun 2025 07:48:47 -0700 (PDT)
+Date: Fri, 13 Jun 2025 11:48:42 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [RFC PATCH v4 1/4] PCI: rockchip: Drop unused custom registers and
+ bitfields
+Message-ID: <ed25d30f2761e963164efffcfbe35502feb3adc2.1749825317.git.geraldogabriel@gmail.com>
+References: <cover.1749825317.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323328-642005326-1749828350=:948"
+Content-Disposition: inline
+In-Reply-To: <cover.1749825317.git.geraldogabriel@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_082703_725560_ACFA4681 
-X-CRM114-Status: GOOD (  22.45  )
+X-CRM114-CacheID: sfid-20250613_074849_164013_2E871DE9 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,99 +100,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Since we are now using standard PCIe defines, drop
+unused custom-defined ones, which are now referenced
+from offset at added Capabilities Register.
 
---8323328-642005326-1749828350=:948
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Suggested-By: Bjorn Helgaas <bhelgaas@google.com>
+Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
+---
+ drivers/pci/controller/pcie-rockchip.h | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
 
-On Fri, 13 Jun 2025, Geraldo Nascimento wrote:
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index 5864a20323f2..f611599988d7 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -155,16 +155,7 @@
+ #define PCIE_EP_CONFIG_DID_VID		(PCIE_EP_CONFIG_BASE + 0x00)
+ #define PCIE_EP_CONFIG_LCS		(PCIE_EP_CONFIG_BASE + 0xd0)
+ #define PCIE_RC_CONFIG_RID_CCR		(PCIE_RC_CONFIG_BASE + 0x08)
+-#define PCIE_RC_CONFIG_DCR		(PCIE_RC_CONFIG_BASE + 0xc4)
+-#define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
+-#define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT		0xff
+-#define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT		26
+-#define PCIE_RC_CONFIG_DCSR		(PCIE_RC_CONFIG_BASE + 0xc8)
+-#define   PCIE_RC_CONFIG_DCSR_MPS_MASK		GENMASK(7, 5)
+-#define   PCIE_RC_CONFIG_DCSR_MPS_256		(0x1 << 5)
+-#define PCIE_RC_CONFIG_LINK_CAP		(PCIE_RC_CONFIG_BASE + 0xcc)
+-#define   PCIE_RC_CONFIG_LINK_CAP_L0S		BIT(10)
+-#define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
++#define PCIE_RC_CONFIG_CR		(PCIE_RC_CONFIG_BASE + 0xc0)
+ #define PCIE_EP_CONFIG_LCS		(PCIE_EP_CONFIG_BASE + 0xd0)
+ #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
+ #define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
+-- 
+2.49.0
 
-> On Fri, Jun 13, 2025 at 06:03:14PM +0300, Ilpo J=C3=A4rvinen wrote:
-> > On Fri, 13 Jun 2025, Geraldo Nascimento wrote:
-> >=20
-> > > Since we are now using standard PCIe defines, drop
-> > > unused custom-defined ones, which are now referenced
-> > > from offset at added Capabilities Register.
-> >=20
-> > These are quite short lines, please reflow the changelog paragraphs to =
-the=20
-> > usual length.
->=20
-> Hi Ilpo,
->=20
-> I'll reflow for v5.
->=20
-> >=20
-> > > Suggested-By: Bjorn Helgaas <bhelgaas@google.com>
-> > > Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
-> > > ---
-> > >  drivers/pci/controller/pcie-rockchip.h | 11 +----------
-> > >  1 file changed, 1 insertion(+), 10 deletions(-)
-> > >=20
-> > > diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/con=
-troller/pcie-rockchip.h
-> > > index 5864a20323f2..f611599988d7 100644
-> > > --- a/drivers/pci/controller/pcie-rockchip.h
-> > > +++ b/drivers/pci/controller/pcie-rockchip.h
-> > > @@ -155,16 +155,7 @@
-> > >  #define PCIE_EP_CONFIG_DID_VID=09=09(PCIE_EP_CONFIG_BASE + 0x00)
-> > >  #define PCIE_EP_CONFIG_LCS=09=09(PCIE_EP_CONFIG_BASE + 0xd0)
-> > >  #define PCIE_RC_CONFIG_RID_CCR=09=09(PCIE_RC_CONFIG_BASE + 0x08)
-> > > -#define PCIE_RC_CONFIG_DCR=09=09(PCIE_RC_CONFIG_BASE + 0xc4)
-> > > -#define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT=09=0918
-> > > -#define   PCIE_RC_CONFIG_DCR_CSPL_LIMIT=09=090xff
-> > > -#define   PCIE_RC_CONFIG_DCR_CPLS_SHIFT=09=0926
-> > > -#define PCIE_RC_CONFIG_DCSR=09=09(PCIE_RC_CONFIG_BASE + 0xc8)
-> > > -#define   PCIE_RC_CONFIG_DCSR_MPS_MASK=09=09GENMASK(7, 5)
-> > > -#define   PCIE_RC_CONFIG_DCSR_MPS_256=09=09(0x1 << 5)
-> > > -#define PCIE_RC_CONFIG_LINK_CAP=09=09(PCIE_RC_CONFIG_BASE + 0xcc)
-> > > -#define   PCIE_RC_CONFIG_LINK_CAP_L0S=09=09BIT(10)
-> > > -#define PCIE_RC_CONFIG_LCS=09=09(PCIE_RC_CONFIG_BASE + 0xd0)
-> > > +#define PCIE_RC_CONFIG_CR=09=09(PCIE_RC_CONFIG_BASE + 0xc0)
-> >=20
-> > This will cause a build failure because PCIE_RC_CONFIG_CR is used in 1/=
-5=20
-> > but only introduced here so you'll need to do this in the same patch as=
-=20
-> > any step within a series must build too. IMO it would anyway make sense=
- to=20
-> > combine patches 1 & 2.
->=20
-> Ah, interesting angle. I'll fix it.
->=20
-> >=20
-> > >  #define PCIE_EP_CONFIG_LCS=09=09(PCIE_EP_CONFIG_BASE + 0xd0)
-> >=20
-> > Aren't you going to convert this as well?
->=20
-> I can, but I can't test it however! But I'll Cc: someone who hopefully
-> can.
-
-TBH, the risk getting it wrong / changing the resulting object is pretty=20
-low. :-)
-
-It might be that scripts/objdiff tool could prove there were no changes in=
-=20
-the binary code output as it looks just a pre-preprocessor change.
-
---=20
- i.
-
---8323328-642005326-1749828350=:948
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---8323328-642005326-1749828350=:948--
-
