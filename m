@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D51C61DB2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 08:54:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 580A0C61DB2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 08:58:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ctfPSG3BHU+sapB31nQ1iDMYQWY0I5PxpG55AXlSMMU=; b=LHOzCS84Ufy2i4jTHnk8eAhhrj
-	a2EBlcHhUIf0kKKSA1q69Y5zWApS5zC3DYnVHPF08hl42869RXl0macXyZrtRFUdIP7qdM+y4CwGE
-	4HaHXe6pXSwjzxZNAdoHVHbXQVxsj+odli188ke7USVQhEGgYWkxoSWxqeWA8N10Z4WvbP/55W8Ny
-	JuLchBge+PzK0PO0MfJjVvvTpoya/l/G4iszsUwJnkMo0jFrMZ+g5kaPSPaH+GXfST2zWPTHjaVT1
-	gTjvf0Sw0lwqpUm7bt+Wxc7B4Rj/PVr2vz93vKAuYkLTL8PBA28EIsyvMtYDLNAkWS3gzoxcB3cA0
-	UU8k1Ytw==;
+	bh=l5IN4RT2CpUDbZOCMqWXWHTHA5kf4zjJh+bZYpIP0ho=; b=EpJaThgrLoelYfj5eFxO5plD1f
+	mSpzMf4tb3dLb/+TwPgSng1ooZCk3o2ZkAeU7mA83DvaevXW8oLe8bcVftuCM3LllA7M6jKcIp9Bx
+	MmrZUJZXZp4KeZKqjiNRp733AmvkpwUVvFmLPUcA80+zX6wuyJ15Yxdqc4uu55aA8zlMLJSj0iUXD
+	pbzCexhuF6W60iqOuh2CSSsLhV9C6kr5jkqbnO8uZlfP6NPc+Arg8XTOu/vx/ltXaPX8Y5fyHf4+a
+	PKFTegslt9eB0DHFJEJG1quFoKJDpeyUtPY1cQTK4q8+irOIaqwr/+7T3kfhd+j1x/K8bSjGiXOZQ
+	sWBV6OFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ0Ai-0000000Foz5-0PI4;
-	Fri, 13 Jun 2025 08:54:00 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1uQ0FO-0000000FpV0-29ns;
+	Fri, 13 Jun 2025 08:58:50 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ08P-0000000FoWe-1eNh
+	id 1uQ0CP-0000000FpIv-4AkA
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Jun 2025 08:51:39 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-442e9c00bf4so15469895e9.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Jun 2025 01:51:36 -0700 (PDT)
+	Fri, 13 Jun 2025 08:55:48 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-45300c82c1cso6464385e9.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Jun 2025 01:55:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1749804695; x=1750409495; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1749804944; x=1750409744; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4i/uycGc9IMJTkT+aPn3NiUgZauSdlLEx0uEl81rWwk=;
-        b=Ic3Ud6i1jJL0fK0Tvbn/Su7hJCJ0AbVYYFWHk2lCshAkntiGq8mVJeiKxXgOwQbDEp
-         ACt6ExCyYU2Me2AL1YyjNMABHwdt3IqZwel/VjvNk/v7VUH6Di9NsD1qWlM274WjsKde
-         lBf6jro+bxSoEWXisLsHuKEaCq8gTBPkFBav9vkbiComqG/CuV7UX2KUh8VIbAr9KSLK
-         X2Ykh8Mlevvi+sFxGqKndLKvPynya+jNFPAK0CaeAENSR/AyGL+sXl/FBQYmfMJI/xFJ
-         SnPT+lDeGfcHn79SPWxfxOA4N88Op95kOoGZD/VCaKU4tP8TxI+s37ii2KkGBBUurk9t
-         2CAg==
+        bh=WbgFKfFXT0IcoLad5STDBDK8DwIurD39yrIVw+HDTMk=;
+        b=JxjXQJkn4xA7YEneZ/tthE5jsbMjSX+B4NYK/n80qYDW1kXac9M3rQ/l/D7gw2ta1u
+         QxPzrOZefpe4jcRF7L9tafeK8/SKj689dJMSef7TW3tAyESMx1zNIeBOWDjAjZyL6FBw
+         iPMON0/Ug8qtqfb0fKB8/NXk8OeuIXspD0TyX3giwMDGgp2KZhB9h1YQwOYz/AfmEw7F
+         nU7qy9FrknjsQdyhIk6iSKAz4tjriU170iY/20xeA/sky276T1bwipGqlEuk+81t5/cE
+         szGkjHjlZL53YlAs2eNOqH2d7rneRjXqfXpBAsS+oME1EP++Wk33p4JQepSbbHsxs/q0
+         rWiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749804695; x=1750409495;
+        d=1e100.net; s=20230601; t=1749804944; x=1750409744;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=4i/uycGc9IMJTkT+aPn3NiUgZauSdlLEx0uEl81rWwk=;
-        b=niqkoLCfpsySDnE2WB44m1+LScX58XkeM/mSrb9gpJYA/gaSl3PXXZKPiX8wQRJb5l
-         AqwooJwkZ/Qn6sKHia2LtaDzUtvscSs9z0ejBgAZbPDSe27C8NEFzV/LHyRpXa9Dgbea
-         PmWx6bHHcGreWQ47kQ79pVgBxpSLDRvrSSLDDPatBAQ+YiEDp9F82GDhu4d1xBjq48It
-         sKQqUbP/yOiE1xuuHTOQvRqobPZSZ9EHXTRDTylrzaEURelnTDRSLwpgDprzYTjSekoq
-         g5qp8FufvCghBksHRBqZYbJ0BByjF0xi/JkdLbrkS2t+YOf1cp9qNktVUBSn9vdZDHrv
-         tPKw==
-X-Forwarded-Encrypted: i=1; AJvYcCUSo2juXJVxLOJI2vx41Asc2e0pYbeGsELpJE8aE0EvpIjyDw+qmkLyPxerDncttwow8IkX2sdIzVhLONfSYg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxYyKb8mcFbVolwvluIz5fLwBNwzxmhjaqjcsYsnsmcWN/4N67Q
-	q1N/Iq+ijpO8zC27fbnHwjB5pLmgCGV8T1NuN1WZIn2Ea+wCiNUtGgFoac7hXgh+q0M=
-X-Gm-Gg: ASbGnctJD/qIWATabjuYFQJWT0rqWgVedJclei0viwxDfF9epLlCATGtmPrDJWtaBg/
-	O2blMkZSFc+hRgHQnu10cQ84H85WcNzYZ7oUb/kNYZO27extWRke3xeZuB8gMeWntPtjPUQjqH9
-	nvREcLtcdjXQ9QivP3Ox6w+hlbNwCfDldMQ68nsHDlydcV4tFptW+MyP6O1yDOwuRc0OLvJ7kZi
-	Y1sDWY3MZ3/tTXcYylaDtg99ygQXYiU5KHxR+QfGC0t6vWq1wPPM8kOJAaebwYsMQHGwJp41RDK
-	knl8tH/VeUWNgOhbevusTyOAHnT/MwLd2D3OkXBVlGkeXJwFmbbx2GNKS5fpgyf7pUYGQMd1SmM
-	JtaYBWVy+KVyr9aXnd3NJJuHh1J3zm/dwjAKNzdA=
-X-Google-Smtp-Source: AGHT+IEUAqqXCa6QukFfprZqmstdAPX/2X+IrxwAqf6HoHLLDv2NyKBWx+d7mBvUd0+CFYb9GJHC/Q==
-X-Received: by 2002:a05:6000:4313:b0:3a4:dc2a:924e with SMTP id ffacd0b85a97d-3a5686e4794mr1735144f8f.6.1749804694922;
-        Fri, 13 Jun 2025 01:51:34 -0700 (PDT)
+        bh=WbgFKfFXT0IcoLad5STDBDK8DwIurD39yrIVw+HDTMk=;
+        b=fXXvSLSVXWMIFnq2YKCUoybUvkj4dfiQHPByXMhc29P2AE35DwrUm0Ei59V+OCzmIB
+         7Idv3BcQK4Jf3Y35NmYv+yR9yUdZvipJJCVdpLEkWTZeZOGHDOJlPSqO/k/cKEKy794F
+         faP8eU+nQEk1Tn2cuQ+rwoZANwB58utd6tgpMMhu4ikGZt/Mn/tfh8XWeggEbILgRT3l
+         oJ+NAFIryzGsR3pGmYJmPLevcCMBSLCuu3kIQFjU782mX4hiHkUKSmr8Bq5SBwIjICYI
+         BAVptknmv7yiqL/YvMwalWE85JpEJBntY7QQ6nyjg5cscuNaVGW+yp0wo0krLnZ1YCJ4
+         lflQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUrt/7KETT+9IWiIve8aGZWeGFrWcEcM0lnt9JVLzqa79ZJWmx6EYNT7S1ngNjlZqtB/y1lR1wJ24mpQc2eYA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyqf3TWNs70P+34ceJwETxQxH7WQeLu1QMN9XP7rbrFOhP6+hYR
+	7hrqFjxCU7c6oGcdrD+tgx5x3FcKZALqrs0H8sYroZokjk+x4AXggboC3mfBttqf5lw=
+X-Gm-Gg: ASbGncvKax4Mu3Dj7Zx9p/7930N1RBxGBKeAxEf6Xz3Ug4cytp5J/1jIZ1ZAapVJzfe
+	QaIgyQ3SxA4PPcSXVehSihE2CaZdpJAfGFm1kQzKJwghz8D86A8uY8BubJ0AaHQ5XalTIRzK0Q6
+	5USz9amHesoSUCZwG1nYlBhd1RC8XEkYllfd47iqRPSlVRlaCCQBp6RGyveJfkZV1Lg2i4JOIpo
+	Oxbyal+v1kacwnHoLgKmcwN7VJQhqklmvIIs4YeuH0TMT/nNmW6bbJVv23TYKUO0FWF2L5fZSyY
+	ULwiOylGCOZDyqhil0RlkDZntlqq6Pk3Rbu10seTl2GvpBz8pqdfmMzcdnd9oQHv6YWyc8NiOTO
+	txznovaDe2KExN/xjGUFaw/Wp/1cNF+m6weFHnp+3mqAvmGTHcA==
+X-Google-Smtp-Source: AGHT+IED0BAxVtTDwS2fXEfcMGK0wFVpqVPP42bVl1Ked9zQXlMc38uyZUsXUnAGgbS+IP+aE7R9kQ==
+X-Received: by 2002:a05:600c:3545:b0:442:dc6f:2f11 with SMTP id 5b1f17b1804b1-45334b6ef0fmr17740555e9.25.1749804944379;
+        Fri, 13 Jun 2025 01:55:44 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:3d9:2080:4144:6a84:fe1d:3aae? ([2a01:e0a:3d9:2080:4144:6a84:fe1d:3aae])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a568a54a63sm1721189f8f.11.2025.06.13.01.51.34
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a568a7ddefsm1728926f8f.39.2025.06.13.01.55.43
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Jun 2025 01:51:34 -0700 (PDT)
-Message-ID: <e0ce89fd-456d-4ef2-bf8a-0ea0f1e646ef@linaro.org>
-Date: Fri, 13 Jun 2025 10:51:33 +0200
+        Fri, 13 Jun 2025 01:55:43 -0700 (PDT)
+Message-ID: <49eb73df-9a15-436e-a05c-72dd3aa36bf8@linaro.org>
+Date: Fri, 13 Jun 2025 10:55:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: neil.armstrong@linaro.org
-Subject: Re: [PATCH v4 2/4] phy: rockchip: usbdp: move orientation handling
- further down
+Subject: Re: [PATCH v4 3/4] phy: rockchip: usbdp: reset USB3 and reinit on
+ orientation switch
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -90,7 +90,7 @@ Cc: Alexey Charkov <alchark@gmail.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20250610-rk3576-sige5-usb-v4-0-7e7f779619c1@collabora.com>
- <20250610-rk3576-sige5-usb-v4-2-7e7f779619c1@collabora.com>
+ <20250610-rk3576-sige5-usb-v4-3-7e7f779619c1@collabora.com>
 Content-Language: en-US, fr
 Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
@@ -117,10 +117,10 @@ Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
  QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
 Organization: Linaro
-In-Reply-To: <20250610-rk3576-sige5-usb-v4-2-7e7f779619c1@collabora.com>
+In-Reply-To: <20250610-rk3576-sige5-usb-v4-3-7e7f779619c1@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_015137_426054_19533055 
-X-CRM114-Status: GOOD (  18.51  )
+X-CRM114-CacheID: sfid-20250613_015546_038688_F9250652 
+X-CRM114-Status: GOOD (  37.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,139 +138,175 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
+
 On 10/06/2025 16:07, Nicolas Frattaroli wrote:
-> The orientation handling code isn't referenced until very far down the
-> driver code.
+> Until now, super speed on Type-C only worked in one orientation. This is
+> because on an orientation switch, the UDPHY was never reinitialised.
 > 
-> Move it down some ways so it can later reference other driver functions
-> without needing forward declarations.
+> Heiko presented a patch to do this[1], but there were concerns over the
+> correctness of it[2]. Experimentally using Heiko's patch on RK3576 did
+> make me run into issues, though they seemed to be related to the
+> orientation switch actually happening while a clock driving a GRF
+> register was disabled.
 > 
+> The key issue is that the hardware wants the USB 3 controller to be held
+> in reset while the PHY is being reconfigured, otherwise we may run into
+> hard-to-catch race conditions.
+> 
+> Either way, this patch implements the required ordering in a somewhat
+> unpleasant way: we get the USB 3 controller from the DT, and use runtime
+> power management to forcibly suspend it while the UDPHY is being
+> reconfigured, and then forcibly resume it later. As an added pain in the
+> rear, the suspend/resume of the USB 3 controller also tries fiddling
+> with the USB 3 PHY part of the UDPHY, which means we introduce an atomic
+> flag to skip suspending/resuming the UDPHY if we're resetting the USB 3
+> controller. We may just need to skip trying to acquire the mutex again,
+> but both ways work for me in practice.
+> 
+> This solution may in fact be complete rubbish, but it works to get USB 3
+> Super Speed working in both cable orientations on my board.
+
+Yeah this is kind of a hack, and we have a similar situation on Qualcomm platforms
+when dealing with USB2-only and DP-only altmodes, where we need the DWC3 to
+disable the usb3 path. Hopefully on Qcom combo PHYs we can switch lanes without
+disable the USB3 PHY.
+
+So the proper solution would have the dwc3 driver to also react to mux and
+orientation events and disable the usb3 path to allow the phy to reconfigure
+itself.
+
+We don't have any concrete proposal yet, but we will get something soonish.
+
+Neil
+
+> 
+> Link: https://lore.kernel.org/all/20250226103810.3746018-3-heiko@sntech.de/ [1]
+> Link: https://lore.kernel.org/linux-rockchip/h57ok2hw6os7bcafqkrqknfvm7hnu25m2oe54qmrsuzdwqlos3@m4och2fcdm7s/ [2]
 > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > ---
->   drivers/phy/rockchip/phy-rockchip-usbdp.c | 100 +++++++++++++++---------------
->   1 file changed, 50 insertions(+), 50 deletions(-)
+>   drivers/phy/rockchip/phy-rockchip-usbdp.c | 54 +++++++++++++++++++++++++++++++
+>   1 file changed, 54 insertions(+)
 > 
 > diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> index c066cc0a7b4f10fc3cd8779323c369360893520d..fff54900feea601c8fe6bf4c7123dfebc5661a15 100644
+> index fff54900feea601c8fe6bf4c7123dfebc5661a15..5cd6bbc367f69bca15c2a94a07e72f850b381ae3 100644
 > --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 > +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> @@ -651,56 +651,6 @@ static void rk_udphy_set_typec_default_mapping(struct rk_udphy *udphy)
->   	udphy->mode = UDPHY_MODE_DP_USB;
->   }
+> @@ -200,6 +200,10 @@ struct rk_udphy {
+>   	/* PHY devices */
+>   	struct phy *phy_dp;
+>   	struct phy *phy_u3;
+> +
+> +	/* USB 3 controller device */
+> +	struct device *ctrl_u3;
+> +	atomic_t ctrl_resetting;
+>   };
 >   
-> -static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
-> -				 enum typec_orientation orien)
-> -{
-> -	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
-> -
-> -	mutex_lock(&udphy->mutex);
-> -
-> -	if (orien == TYPEC_ORIENTATION_NONE) {
-> -		gpiod_set_value_cansleep(udphy->sbu1_dc_gpio, 0);
-> -		gpiod_set_value_cansleep(udphy->sbu2_dc_gpio, 0);
-> -		/* unattached */
-> -		rk_udphy_usb_bvalid_enable(udphy, false);
-> -		goto unlock_ret;
-> -	}
-> -
-> -	udphy->flip = (orien == TYPEC_ORIENTATION_REVERSE) ? true : false;
-> -	rk_udphy_set_typec_default_mapping(udphy);
-> -	rk_udphy_usb_bvalid_enable(udphy, true);
-> -
-> -unlock_ret:
-> -	mutex_unlock(&udphy->mutex);
-> -	return 0;
-> -}
-> -
-> -static void rk_udphy_orien_switch_unregister(void *data)
-> -{
-> -	struct rk_udphy *udphy = data;
-> -
-> -	typec_switch_unregister(udphy->sw);
-> -}
-> -
-> -static int rk_udphy_setup_orien_switch(struct rk_udphy *udphy)
-> -{
-> -	struct typec_switch_desc sw_desc = { };
-> -
-> -	sw_desc.drvdata = udphy;
-> -	sw_desc.fwnode = dev_fwnode(udphy->dev);
-> -	sw_desc.set = rk_udphy_orien_sw_set;
-> -
-> -	udphy->sw = typec_switch_register(udphy->dev, &sw_desc);
-> -	if (IS_ERR(udphy->sw)) {
-> -		dev_err(udphy->dev, "Error register typec orientation switch: %ld\n",
-> -			PTR_ERR(udphy->sw));
-> -		return PTR_ERR(udphy->sw);
-> -	}
-> -
-> -	return devm_add_action_or_reset(udphy->dev,
-> -					rk_udphy_orien_switch_unregister, udphy);
-> -}
-> -
->   static int rk_udphy_refclk_set(struct rk_udphy *udphy)
+>   static const struct rk_udphy_dp_tx_drv_ctrl rk3588_dp_tx_drv_ctrl_rbr_hbr[4][4] = {
+> @@ -1255,6 +1259,9 @@ static int rk_udphy_usb3_phy_init(struct phy *phy)
+>   	struct rk_udphy *udphy = phy_get_drvdata(phy);
+>   	int ret = 0;
+>   
+> +	if (atomic_read(&udphy->ctrl_resetting))
+> +		return 0;
+> +
+>   	mutex_lock(&udphy->mutex);
+>   	/* DP only or high-speed, disable U3 port */
+>   	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs) {
+> @@ -1273,6 +1280,9 @@ static int rk_udphy_usb3_phy_exit(struct phy *phy)
 >   {
->   	unsigned long rate;
-> @@ -1451,6 +1401,56 @@ static struct phy *rk_udphy_phy_xlate(struct device *dev, const struct of_phandl
+>   	struct rk_udphy *udphy = phy_get_drvdata(phy);
+>   
+> +	if (atomic_read(&udphy->ctrl_resetting))
+> +		return 0;
+> +
+>   	mutex_lock(&udphy->mutex);
+>   	/* DP only or high-speed */
+>   	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs)
+> @@ -1401,10 +1411,31 @@ static struct phy *rk_udphy_phy_xlate(struct device *dev, const struct of_phandl
 >   	return ERR_PTR(-EINVAL);
 >   }
 >   
-> +static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
-> +				 enum typec_orientation orien)
+> +static struct device_node *rk_udphy_to_controller(struct rk_udphy *udphy)
 > +{
-> +	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
+> +	struct device_node *np;
 > +
-> +	mutex_lock(&udphy->mutex);
+> +	for_each_node_with_property(np, "phys") {
+> +		struct of_phandle_iterator it;
+> +		int ret;
 > +
-> +	if (orien == TYPEC_ORIENTATION_NONE) {
-> +		gpiod_set_value_cansleep(udphy->sbu1_dc_gpio, 0);
-> +		gpiod_set_value_cansleep(udphy->sbu2_dc_gpio, 0);
-> +		/* unattached */
-> +		rk_udphy_usb_bvalid_enable(udphy, false);
-> +		goto unlock_ret;
+> +		of_for_each_phandle(&it, ret, np, "phys", NULL, 0) {
+> +			if (it.node != udphy->dev->of_node)
+> +				continue;
+> +
+> +			of_node_put(it.node);
+> +			return np;
+> +		}
 > +	}
 > +
-> +	udphy->flip = (orien == TYPEC_ORIENTATION_REVERSE) ? true : false;
-> +	rk_udphy_set_typec_default_mapping(udphy);
-> +	rk_udphy_usb_bvalid_enable(udphy, true);
-> +
-> +unlock_ret:
-> +	mutex_unlock(&udphy->mutex);
-> +	return 0;
+> +	return NULL;
 > +}
 > +
-> +static void rk_udphy_orien_switch_unregister(void *data)
-> +{
-> +	struct rk_udphy *udphy = data;
-> +
-> +	typec_switch_unregister(udphy->sw);
-> +}
-> +
-> +static int rk_udphy_setup_orien_switch(struct rk_udphy *udphy)
-> +{
-> +	struct typec_switch_desc sw_desc = { };
-> +
-> +	sw_desc.drvdata = udphy;
-> +	sw_desc.fwnode = dev_fwnode(udphy->dev);
-> +	sw_desc.set = rk_udphy_orien_sw_set;
-> +
-> +	udphy->sw = typec_switch_register(udphy->dev, &sw_desc);
-> +	if (IS_ERR(udphy->sw)) {
-> +		dev_err(udphy->dev, "Error register typec orientation switch: %ld\n",
-> +			PTR_ERR(udphy->sw));
-> +		return PTR_ERR(udphy->sw);
-> +	}
-> +
-> +	return devm_add_action_or_reset(udphy->dev,
-> +					rk_udphy_orien_switch_unregister, udphy);
-> +}
-> +
->   static int rk_udphy_probe(struct platform_device *pdev)
+>   static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+>   				 enum typec_orientation orien)
 >   {
->   	struct device *dev = &pdev->dev;
+>   	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
+> +	int ret;
+>   
+>   	mutex_lock(&udphy->mutex);
+>   
+> @@ -1420,6 +1451,18 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+>   	rk_udphy_set_typec_default_mapping(udphy);
+>   	rk_udphy_usb_bvalid_enable(udphy, true);
+>   
+> +	if (udphy->status != UDPHY_MODE_NONE && udphy->ctrl_u3) {
+> +		atomic_set(&udphy->ctrl_resetting, 1);
+> +		pm_runtime_force_suspend(udphy->ctrl_u3);
+> +
+> +		ret = rk_udphy_setup(udphy);
+> +		if (!ret)
+> +			clk_bulk_disable_unprepare(udphy->num_clks, udphy->clks);
+> +
+> +		pm_runtime_force_resume(udphy->ctrl_u3);
+> +		atomic_set(&udphy->ctrl_resetting, 0);
+> +	}
+> +
+>   unlock_ret:
+>   	mutex_unlock(&udphy->mutex);
+>   	return 0;
+> @@ -1430,12 +1473,22 @@ static void rk_udphy_orien_switch_unregister(void *data)
+>   	struct rk_udphy *udphy = data;
+>   
+>   	typec_switch_unregister(udphy->sw);
+> +	put_device(udphy->ctrl_u3);
+>   }
+>   
+>   static int rk_udphy_setup_orien_switch(struct rk_udphy *udphy)
+>   {
+> +	struct device_node *ctrl = rk_udphy_to_controller(udphy);
+>   	struct typec_switch_desc sw_desc = { };
+>   
+> +	if (ctrl) {
+> +		udphy->ctrl_u3 = bus_find_device_by_of_node(udphy->dev->bus, ctrl);
+> +		of_node_put(ctrl);
+> +	}
+> +
+> +	if (!udphy->ctrl_u3)
+> +		dev_info(udphy->dev, "couldn't find this PHY's USB3 controller\n");
+> +
+>   	sw_desc.drvdata = udphy;
+>   	sw_desc.fwnode = dev_fwnode(udphy->dev);
+>   	sw_desc.set = rk_udphy_orien_sw_set;
+> @@ -1499,6 +1552,7 @@ static int rk_udphy_probe(struct platform_device *pdev)
+>   		return ret;
+>   
+>   	mutex_init(&udphy->mutex);
+> +	atomic_set(&udphy->ctrl_resetting, 0);
+>   	platform_set_drvdata(pdev, udphy);
+>   
+>   	if (device_property_present(dev, "orientation-switch")) {
 > 
 
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
