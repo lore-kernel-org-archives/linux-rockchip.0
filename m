@@ -4,92 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D21B2C7114A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 19:04:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E726C71148
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 20:16:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WPZBQzanAiEe4+olxw73WQGNSUIQ8OxheVaRTr+2DpY=; b=Ez26ARg7cBX8dw
-	mkXe0KvXheiYyGUenkCOgoCnFPLcdqFX5jxDBVGK9b45nyy2zvGXXtBItJHiPnJTRv/tUe0KkY4Wy
-	l4EmVpMw5rxqRpeeb7z630axJsrnPxZao22VoK5Y6lmc7lrKLiweSZQJCouhbVulkWUSRqVo7X0Wj
-	9qnsD3+mtnTAlm3TDPUSJCDX7S+w1Doqw+XkDkWL5DAtbFRFF122ESn2eykJckI5I78e/I6ln9F3N
-	7IswL7FL0VgrILSjQXXVOi8KM2qeW8i6NGQ8XwO58U7N9X/o5nS8FlklCG8Ux4DEnYpSpomzjM0oh
-	42CyliGynMaZiEFz5ZLw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=S9mHPNblh2Wrb6yku4sQat9cd73VKoI4H1pfVs14iZk=; b=VJr9ve0RJV5YVU
+	Bh6aGfc/QWfUIxmtdQ2Izl1fqeRr/N2/XNaSqCBcuubmQIRCavHGlMTxGRkG3HhlMfufgok5gkyl0
+	WphtaUNBM23w3K3J6xZUq5I+fneLgUO96quG/HnJvZAI64En9vm7olb6GOxTw4m1V7Iq6h/J11jLw
+	xt58+zdl6LcqwNZ28Bixib6zgKquwVCssRBt/VwVoM4gqRH7w8PUmEWLOfw5ihi3Y7saYkR3sODN8
+	4o5/kNEdSxqmGapZc8wtS+KoLkoZnikO3B8GrkVhlg+4Lm/Abw8KLvi3cmr/axKsehupYyiRxKi4M
+	AengyuCyhYINsOKUghFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ9hE-0000000HNeK-2HPY;
-	Fri, 13 Jun 2025 19:04:12 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1uQAp8-0000000HXwC-19ay;
+	Fri, 13 Jun 2025 20:16:26 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ8n6-0000000HEIq-3grb;
-	Fri, 13 Jun 2025 18:06:13 +0000
-Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-b2fca9dc5f8so1880313a12.1;
-        Fri, 13 Jun 2025 11:06:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1749837972; x=1750442772; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=xXUd6lfewKPENm5Aa8Bd/d/D/7UIBoRsbAQtScnCe8M=;
-        b=TL8SLiD6mrhtNO9f2Evs/vTwZKTGwrCL4m7eupY7h3DmNHa3g4a162xVVn7iTt1ETI
-         w4yItZMROtuDy2+6QNh3lhyZ22CE+iSwca6XwOefYPHNikjEZU2KoenQFo2QIyD8bftS
-         XBP19tDtuyWEFm8suKEWJllcg7SuT+PLy1t1OdtzkrkfZrmCdGenqNqZtYC6F6gamIAc
-         uXIQxBcE9FcbpFeTQkpRvqbSRvEKfIyCFaDDOK1jMq+4evGEn88YyLcCn5yTSpi0GRtE
-         KRHgZNMgnSRbVWcdv5xC5Iov5jEzit7zItln6Dvx3UxEflgpsj5UztW+swbDXXJ2GyGC
-         rGsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749837972; x=1750442772;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xXUd6lfewKPENm5Aa8Bd/d/D/7UIBoRsbAQtScnCe8M=;
-        b=CkLj3hjw7qTER3JYx7AWNXwDmbOyAepPtoQ52MhHUqo+G7hMdpUahp60+Fe5LweGb5
-         B5zn3/rlNJyRYjGnnteY4ZnLUDqkp9F25mITsF7tN0QOPnG0OLWFqcio+Z1A4BSOu66m
-         ktln4DcWnmFWZlQdW4l0x8FwR3NVnMSNQ1eE+ecp1O7XPESk9blLpmBpWISlURdb3SGm
-         5leLae0R1/QCEPyIOzb6xiJfIJWhHucBnSmMHf1B5S2iV4LEegkiEs6ecTbgKrkSVp+O
-         x8zEDajLiM8wnQOhsKVA7KOPfZLCDgwsdyxG7kALwgzPbykVq/uReaoWBk7nEs0kyGpN
-         k9PA==
-X-Forwarded-Encrypted: i=1; AJvYcCWVbg5BN5yL+MwmbPii0Nv55MZQ8gDPW0tRvu3516hpK1S4c/HM1hzzd5hif0xO0d0roR0FcOdVT1WV@lists.infradead.org, AJvYcCXdHYqabom41W6n/gTC81oFovteIGnE9ye9bWdvgySDbjZQCHleOERxbDk2n3LPyw3LzhjOHECJVcdJWjJQVdtI@lists.infradead.org
-X-Gm-Message-State: AOJu0YwF23Ded0kQd0pOY7fsPVARc2UOa8AFh/RLkzSenFwy5UKGxnzT
-	9aIXrlLQy++5tIuFm9LcPtIjocV1fgCWyScrHhs7X3xjIHZ+JR2aJpJGHAoYZdGn
-X-Gm-Gg: ASbGncvNJ1UQY+m6JXxNOXQA4oUW1r+Rl1YaTtFalQOpp+vpOXmAM+YEG4bK9HliR+0
-	Fz5+fohHI7G8lJq8qlsCXtY3vOjWoHT6EB1DP7SAjjjDW3fuTvpKTKuTW0nL9WG6cI7HP1+i552
-	e8ouVCEjIgtNNEugEBiGXb1P1qhRlBfThUDecRi7bQXQ/+vxvyPfo3XrgG4nZrY/JyYVD/qvwEW
-	AtEBRVgWpQM3Suz+e/ICXb947rEDT6g2lU4L/8xt37h+2LMlkYOxcFuVTMvW5nYKtC72GTkVPnk
-	Vks6tMS2A7EQYDiAmS/t/BEQLV5Fa+cYYOfRXYjHeeXL4UyjdtrzGH7IoPx0
-X-Google-Smtp-Source: AGHT+IH2DqbuxD4MEb4wwFaAB966G/5kXTTb/l9FTKLx6klqy6VsZe3elDybbPK71Ba9qjzXcLhjZw==
-X-Received: by 2002:a05:6a21:99a8:b0:1f5:535c:82dc with SMTP id adf61e73a8af0-21fbd668c44mr392814637.42.1749837971960;
-        Fri, 13 Jun 2025 11:06:11 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:84a2::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b2fe1639f97sm1755775a12.6.2025.06.13.11.06.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Jun 2025 11:06:11 -0700 (PDT)
-Date: Fri, 13 Jun 2025 15:06:01 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	id 1uQAmx-0000000HXX9-3dFA;
+	Fri, 13 Jun 2025 20:14:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 3D8A662A10;
+	Fri, 13 Jun 2025 20:14:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C517AC4CEE3;
+	Fri, 13 Jun 2025 20:14:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749845650;
+	bh=Zio/9ed1ISRgWicUqk/j1UAIrxh6W2Aq1NctnSkSqjg=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=IAJP7Raic0SQjqE3t8ej2YiZWcFDLxcJmuLnstD+ww4P3KgdECE5SlqmEi5uEyddi
+	 YDto2pIAg7qcILAQnVArh8oefuPEdsdPYiixPquLyBIkr/ecbhxxM/Ryqsj1wQkYdF
+	 7IStXXPPxsQTSt4dgXOxj/IGLRXwBb3sI4ATE9EgyHlKr2gMKp1GSaJbIbG7+cx5p0
+	 ujnOhVrJN0B60glcRgz01Ju042eHHU+Yn4ueM1WQ2Lkbl5aiVnwjm2onOwvA8YvZnd
+	 OT1IdOTIiJ5QEuP2Mx533U8q53XlJY5TtZ2CxpYL4QOXbtVSTEROAeAqEpPKADmbge
+	 PPBLYTUp8U3jg==
+Date: Fri, 13 Jun 2025 15:14:09 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Geraldo Nascimento <geraldogabriel@gmail.com>
+Cc: linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Rick wertenbroek <rick.wertenbroek@gmail.com>,
 	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH v5 2/4] PCI: rockchip: Set Target Link Speed before
- retraining
-Message-ID: <aExoiaPhqXPmv_Oy@geday>
-References: <cover.1749833986.git.geraldogabriel@gmail.com>
- <1966f8ddc4a81426b4f1f48c22bea9b4a6e6297c.1749833987.git.geraldogabriel@gmail.com>
+Subject: Re: [RESEND RFC PATCH v4 1/5] PCI: rockchip: Use standard PCIe
+ defines
+Message-ID: <20250613201409.GA973486@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1966f8ddc4a81426b4f1f48c22bea9b4a6e6297c.1749833987.git.geraldogabriel@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_110612_916959_73876F90 
-X-CRM114-Status: GOOD (  15.98  )
+In-Reply-To: <992ab6278af59b8f2f82521bf4611f69a916bbe1.1749827015.git.geraldogabriel@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,45 +76,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 13, 2025 at 02:03:50PM -0300, Geraldo Nascimento wrote:
-> Current code may fail Gen2 retraining if Target Link Speed
-> is set to 2.5 GT/s in Link Control and Status Register 2.
-> Set it to 5.0 GT/s accordingly.
-> 
-> Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
-> ---
->  drivers/pci/controller/pcie-rockchip-host.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-> index 8489d51e01ca..467e3fc377f7 100644
-> --- a/drivers/pci/controller/pcie-rockchip-host.c
-> +++ b/drivers/pci/controller/pcie-rockchip-host.c
-> @@ -341,6 +341,10 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
+On Fri, Jun 13, 2025 at 12:05:31PM -0300, Geraldo Nascimento wrote:
+> Current code uses custom-defined register offsets
+> and bitfields for standard PCIe registers. Change
+> to using standard PCIe defines.
+
+Wrap to fill 75 columns so there's space for "git log" to add
+indentation.
+
+> @@ -40,18 +40,18 @@ static void rockchip_pcie_enable_bw_int(struct rockchip_pcie *rockchip)
+>  {
+>  	u32 status;
+>  
+> -	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
+> +	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
+>  	status |= (PCI_EXP_LNKCTL_LBMIE | PCI_EXP_LNKCTL_LABIE);
+> -	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
+> +	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
+>  }
+>  
+>  static void rockchip_pcie_clr_bw_int(struct rockchip_pcie *rockchip)
+>  {
+>  	u32 status;
+>  
+> -	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
+> +	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
+>  	status |= (PCI_EXP_LNKSTA_LBMS | PCI_EXP_LNKSTA_LABS) << 16;
+
+It looks funny to write PCI_EXP_LNKCTL with bits from PCI_EXP_LNKSTA.
+I guess this is because rockchip_pcie_write() does 32-bit writes, but
+PCI_EXP_LNKCTL and PCI_EXP_LNKSTA are adjacent 16-bit registers.
+
+If the hardware supports it, adding rockchip_pcie_readw() and
+rockchip_pcie_writew() for 16-bit accesses would make this read
+better.
+
+Hopefully the hardware *does* support this (it's required per spec at
+least for config accesses, which would be a different path in the
+hardware).  Doing the 32-bit write of PCI_EXP_LNKCTL above is
+problematic because writes PCI_EXP_LNKSTA as well, and PCI_EXP_LNKSTA
+includes some RW1C bits that may be unintentionally cleared.
+
+> -	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
+> +	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
+>  }
+>  
+>  static void rockchip_pcie_update_txcredit_mui(struct rockchip_pcie *rockchip)
+> @@ -269,7 +269,7 @@ static void rockchip_pcie_set_power_limit(struct rockchip_pcie *rockchip)
+>  	scale = 3; /* 0.001x */
+>  	curr = curr / 1000; /* convert to mA */
+>  	power = (curr * 3300) / 1000; /* milliwatt */
+> -	while (power > PCIE_RC_CONFIG_DCR_CSPL_LIMIT) {
+> +	while (power > FIELD_MAX(PCI_EXP_DEVCAP_PWR_VAL)) {
+>  		if (!scale) {
+>  			dev_warn(rockchip->dev, "invalid power supply\n");
+>  			return;
+> @@ -278,10 +278,10 @@ static void rockchip_pcie_set_power_limit(struct rockchip_pcie *rockchip)
+>  		power = power / 10;
+>  	}
+>  
+> -	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_DCR);
+> -	status |= (power << PCIE_RC_CONFIG_DCR_CSPL_SHIFT) |
+> -		  (scale << PCIE_RC_CONFIG_DCR_CPLS_SHIFT);
+> -	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCR);
+> +	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_DEVCAP);
+> +	status |= FIELD_PREP(PCI_EXP_DEVCAP_PWR_VAL, power);
+> +	status |= FIELD_PREP(PCI_EXP_DEVCAP_PWR_SCL, scale);
+
+This assumes the value you read from PCI_EXP_DEVCAP had zeroes in
+these bits.  It might, but it would look safer to do:
+
+  status &= ~(PCI_EXP_DEVCAP_PWR_VAL | PCI_EXP_DEVCAP_PWR_SCL);
+  status |= FIELD_PREP(PCI_EXP_DEVCAP_PWR_VAL, power);
+  status |= FIELD_PREP(PCI_EXP_DEVCAP_PWR_SCL, scale);
+
+> +	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_DEVCAP);
+>  }
+
+>  /**
+> @@ -309,14 +309,14 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
+>  	rockchip_pcie_set_power_limit(rockchip);
+>  
+>  	/* Set RC's clock architecture as common clock */
+> -	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
+> +	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
+>  	status |= PCI_EXP_LNKSTA_SLC << 16;
+> -	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
+> +	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
+>  
+>  	/* Set RC's RCB to 128 */
+> -	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
+> +	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
+>  	status |= PCI_EXP_LNKCTL_RCB;
+> -	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
+> +	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
+>  
+>  	/* Enable Gen1 training */
+>  	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
+> @@ -341,9 +341,9 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
 >  		 * Enable retrain for gen2. This should be configured only after
 >  		 * gen1 finished.
 >  		 */
-> +		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL2);
-> +		status &= ~PCI_EXP_LNKCTL2_TLS;
-> +		status |= PCI_EXP_LNKCTL2_TLS_5_0GT;
-> +		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL2);
->  		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL2);
-
-Hi,
-
-I see rockchip_pcie_write() was added twice, in this patch and also in
-1/4.
-
-I'll send v6 with correction after I get some reviews.
-
-Thank you,
-Geraldo Nascimento
-
->  		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
+> -		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LCS);
+> +		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
 >  		status |= PCI_EXP_LNKCTL_RL;
-> -- 
-> 2.49.0
-> 
+> -		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LCS);
+> +		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
+>  
+>  		err = readl_poll_timeout(rockchip->apb_base + PCIE_CORE_CTRL,
+>  					 status, PCIE_LINK_IS_GEN2(status), 20,
+> @@ -380,15 +380,15 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
+>  
+>  	/* Clear L0s from RC's link cap */
+>  	if (of_property_read_bool(dev->of_node, "aspm-no-l0s")) {
+> -		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LINK_CAP);
+> -		status &= ~PCIE_RC_CONFIG_LINK_CAP_L0S;
+> -		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LINK_CAP);
+> +		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCAP);
+> +		status &= ~PCI_EXP_LNKCAP_ASPM_L0S;
+> +		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCAP);
+>  	}
+>  
+> -	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_DCSR);
+> -	status &= ~PCIE_RC_CONFIG_DCSR_MPS_MASK;
+> -	status |= PCIE_RC_CONFIG_DCSR_MPS_256;
+> -	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DCSR);
+> +	status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_DEVCTL);
+> +	status &= ~PCI_EXP_DEVCTL_PAYLOAD;
+> +	status |= PCI_EXP_DEVCTL_PAYLOAD_256B;
+> +	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_DEVCTL);
+
+Similar problem here; PCI_EXP_DEVCTL is only 16 bits, and writing the
+adjacent PCI_EXP_DEVSTA may clear RW1C bits you didn't want to clear.
+
+Bjorn
 
 _______________________________________________
 Linux-rockchip mailing list
