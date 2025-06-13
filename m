@@ -4,71 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79A41C71135
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 13:20:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17CF8C71136
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 15:16:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fi8N+MBJGHpUJ352KNPkKymSXCNHqJ8hkuUAwAyZEj0=; b=1tJ4QeMCqi5ISY
-	50+fTCeoFKVRAHnx7gHZATquiJAmLvmFKy1adVoMX8eyO7g5qJ1Rtn5qHC4k5HG88Dx5xPHwNdNg9
-	jDG/rVgcpdb6JrTQRwdK42BOm4N48xRCTire4qGrkX16CKGR52S5T3GxSNfXD/xt6R27IlyUFPWWg
-	10hx6u+Qk0hY7jA7oUtx71ph6YSwlQf2oIcd+hxTrKs2Kf4a94SbQLPgVbZnOrHPxwjbv8sMvvCuC
-	kQ170DrwfO/jpnx7TR68ojINGvBHAL6KS2uTUxdj3RkGjeYAnBeCDGpnGhd+mlNvgKwXmD532LnQO
-	9dW/mgPPql0eQ1gvWqzQ==;
+	List-Owner; bh=GwabUI6DvdhgKh+dzkXaFdsF529vQvlQqkz71nla3H4=; b=jZ6ZDKDcdjOXZR
+	4OmKXC/RuEkzqe4AimeyNwbQphWXuDhw5FGe/19SmWqb97KuJ1MqQ+LSxSrCVnjiblmD1XhFfJbiy
+	jWTLZR7hcKZHJUfwY60iK6cX8Xwfh6ylWFlMFR7JUAyDOEYNBqATTqKW8K2DNe5dvDAz2EbGpZ0UC
+	KPxDG+XGvakAum8CmXQyg5n0fd5X8EFkVJEdYiVUMB+5F1QOBmSnVThTspJwEUxaY3JX/M5V3kT5Q
+	U0+XfeKJpJlZvydRf6Nqq4u3fD/mfYv50Ev215SdgfGW4K8jteZZXk+U6qRZqRq6mpZ6/15uzRJYO
+	9eVXK50DAiqQX8vLz3xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ4KZ-0000000GTg4-08W1;
-	Fri, 13 Jun 2025 13:20:27 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ49d-0000000GSVl-11tl;
-	Fri, 13 Jun 2025 13:09:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749820130; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=l9dzbF3zQflwc7yb+7biovokPvXD3AOtCCBg+iBkNSjS8gaSXgLiDdw5aTKKELaTBtikDAvAteFfaU0J33nI3UuwR3v4zPE3cvsBFG3tvDXDRW0sxSUedBhAPIBnwCK5b8inskFpcp3OqYQ+WThMdHz1mKN2Mw8fBAGsDxSAt04=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749820130; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=K9bhrRW+s12WtdaVP6Yi4iBFDQwpPFW/VNIJ084o8RM=; 
-	b=GIwKskccuJOMSPJp2xnn4AGCPMy0TtPoMh1U+LiqS0Y4YLdTR5QOaqHM23gPKWj47lmLoYOMOfa3NZ9FA7hMsrrSRanfDnWzFZQhaYkF0Klvwi/pzdvHLn0hognmYq+vZ6pPJFcGvOvlRWUtJ3xlCdxkSxHK7C0CxTGVOHF+BPc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749820130;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=K9bhrRW+s12WtdaVP6Yi4iBFDQwpPFW/VNIJ084o8RM=;
-	b=iZXbgTQ2EqQYhrsx8UX0Fx4Hrd0EnH8jyDWxuF8nV2kQdKs/GLSYQfDMqRAusWN3
-	zX5C2pP0Ivu0dqnJAwy4lACa2W/IStoAv/iOrxs8sbZAz3SK0rWAYIoInmJ1aqZ7nQU
-	9Zpvf21oRAM7FQwp6kARfJarCm0yZXd3zhDtc7Bs=
-Received: by mx.zohomail.com with SMTPS id 1749820128052943.1985221609309;
-	Fri, 13 Jun 2025 06:08:48 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Neil Armstrong <neil.armstrong@linaro.org>
-Cc: Alexey Charkov <alchark@gmail.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 1/4] phy: rockchip: inno-usb2: add soft vbusvalid control
-Date: Fri, 13 Jun 2025 15:08:42 +0200
-Message-ID: <3284807.VLH7GnMWUR@workhorse>
-In-Reply-To: <5c531d53-3573-4c25-a32b-79dfd5abd4cd@linaro.org>
-References: <20250610-rk3576-sige5-usb-v4-0-7e7f779619c1@collabora.com>
- <20250610-rk3576-sige5-usb-v4-1-7e7f779619c1@collabora.com>
- <5c531d53-3573-4c25-a32b-79dfd5abd4cd@linaro.org>
+	id 1uQ68q-0000000Gq8X-1iWf;
+	Fri, 13 Jun 2025 15:16:28 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uQ4s5-0000000Ga5a-2OQn;
+	Fri, 13 Jun 2025 13:55:06 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 771B8FEC;
+	Fri, 13 Jun 2025 06:54:42 -0700 (PDT)
+Received: from [10.57.28.131] (unknown [10.57.28.131])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 3A0C03F59E;
+	Fri, 13 Jun 2025 06:54:52 -0700 (PDT)
+Message-ID: <1437fe89-341b-4b57-b1fa-a0395081e941@arm.com>
+Date: Fri, 13 Jun 2025 14:54:50 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/20] bitfield: introduce HWORD_UPDATE bitfield macros
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Yury Norov <yury.norov@gmail.com>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Shreeya Patel <shreeya.patel@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Sandy Huang
+ <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>, Qin Jian <qinjian@cqplus1.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
+Cc: linux-pm@vger.kernel.org, netdev@vger.kernel.org, llvm@lists.linux.dev,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-phy@lists.infradead.org,
+ kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+References: <20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com>
+ <20250612-byeword-update-v1-1-f4afb8f6313f@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <20250612-byeword-update-v1-1-f4afb8f6313f@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_060909_380960_2B8E5B41 
-X-CRM114-Status: GOOD (  43.88  )
+X-CRM114-CacheID: sfid-20250613_065505_716770_DDD59E13 
+X-CRM114-Status: GOOD (  26.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,296 +94,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Neil,
-
-thank you for the review! Responses are inline.
-
-On Friday, 13 June 2025 11:02:40 Central European Summer Time neil.armstrong@linaro.org wrote:
-> On 10/06/2025 16:07, Nicolas Frattaroli wrote:
-> > With USB type C connectors, the vbus detect pin of the OTG controller
-> > attached to it is pulled high by a USB Type C controller chip such as
-> > the fusb302. This means USB enumeration on Type-C ports never works, as
-> > the vbus is always seen as high.
-> > 
-> > Rockchip added some GRF register flags to deal with this situation. The
-> > RK3576 TRM calls these "soft_vbusvalid_bvalid" (con0 bit index 15) and
-> > "soft_vbusvalid_bvalid_sel" (con0 bit index 14).
-> > 
-> > Downstream introduces a new vendor property which tells the USB 2 PHY
-> > that it's connected to a type C port, but we can do better. Since in
-> > such an arrangement, we'll have an OF graph connection from the USB
-> > controller to the USB connector anyway, we can walk said OF graph and
-> > check the connector's compatible to determine this without adding any
-> > further vendor properties.
-> > 
-> > Do keep in mind that the usbdp PHY driver seemingly fiddles with these
-> > register fields as well, but what it does doesn't appear to be enough
-> > for us to get working USB enumeration, presumably because the whole
-> > vbus_attach logic needs to be adjusted as well either way.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >   drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 113 +++++++++++++++++++++++++-
-> >   1 file changed, 109 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > index b0f23690ec3002202c0f33a6988f5509622fa10e..4f89bd6568cd3a7a1d2c10e9cddda9f3bd997ed0 100644
-> > --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > @@ -17,6 +17,7 @@
-> >   #include <linux/module.h>
-> >   #include <linux/mutex.h>
-> >   #include <linux/of.h>
-> > +#include <linux/of_graph.h>
-> >   #include <linux/of_irq.h>
-> >   #include <linux/phy/phy.h>
-> >   #include <linux/platform_device.h>
-> > @@ -114,6 +115,8 @@ struct rockchip_chg_det_reg {
-> >   /**
-> >    * struct rockchip_usb2phy_port_cfg - usb-phy port configuration.
-> >    * @phy_sus: phy suspend register.
-> > + * @svbus_en: soft vbus bvalid enable register.
-> > + * @svbus_sel: soft vbus bvalid selection register.
-> >    * @bvalid_det_en: vbus valid rise detection enable register.
-> >    * @bvalid_det_st: vbus valid rise detection status register.
-> >    * @bvalid_det_clr: vbus valid rise detection clear register.
-> > @@ -140,6 +143,8 @@ struct rockchip_chg_det_reg {
-> >    */
-> >   struct rockchip_usb2phy_port_cfg {
-> >   	struct usb2phy_reg	phy_sus;
-> > +	struct usb2phy_reg	svbus_en;
-> > +	struct usb2phy_reg	svbus_sel;
-> >   	struct usb2phy_reg	bvalid_det_en;
-> >   	struct usb2phy_reg	bvalid_det_st;
-> >   	struct usb2phy_reg	bvalid_det_clr;
-> > @@ -203,6 +208,7 @@ struct rockchip_usb2phy_cfg {
-> >    * @event_nb: hold event notification callback.
-> >    * @state: define OTG enumeration states before device reset.
-> >    * @mode: the dr_mode of the controller.
-> > + * @typec_vbus_det: whether to apply Type C logic to OTG vbus detection.
-> >    */
-> >   struct rockchip_usb2phy_port {
-> >   	struct phy	*phy;
-> > @@ -222,6 +228,7 @@ struct rockchip_usb2phy_port {
-> >   	struct notifier_block	event_nb;
-> >   	enum usb_otg_state	state;
-> >   	enum usb_dr_mode	mode;
-> > +	bool typec_vbus_det;
-> >   };
-> >   
-> >   /**
-> > @@ -495,6 +502,13 @@ static int rockchip_usb2phy_init(struct phy *phy)
-> >   	mutex_lock(&rport->mutex);
-> >   
-> >   	if (rport->port_id == USB2PHY_PORT_OTG) {
-> > +		if (rport->typec_vbus_det) {
-> > +			if (rport->port_cfg->svbus_en.enable &&
-> > +					rport->port_cfg->svbus_sel.enable) {
-> > +				property_enable(rphy->grf, &rport->port_cfg->svbus_en, true);
-> > +				property_enable(rphy->grf, &rport->port_cfg->svbus_sel, true);
-> > +			}
-> > +		}
-> >   		if (rport->mode != USB_DR_MODE_HOST &&
-> >   		    rport->mode != USB_DR_MODE_UNKNOWN) {
-> >   			/* clear bvalid status and enable bvalid detect irq */
-> > @@ -535,8 +549,7 @@ static int rockchip_usb2phy_init(struct phy *phy)
-> >   			if (ret)
-> >   				goto out;
-> >   
-> > -			schedule_delayed_work(&rport->otg_sm_work,
-> > -					      OTG_SCHEDULE_DELAY * 3);
-> > +			schedule_delayed_work(&rport->otg_sm_work, 0);
-> >   		} else {
-> >   			/* If OTG works in host only mode, do nothing. */
-> >   			dev_dbg(&rport->phy->dev, "mode %d\n", rport->mode);
-> > @@ -666,8 +679,17 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
-> >   	unsigned long delay;
-> >   	bool vbus_attach, sch_work, notify_charger;
-> >   
-> > -	vbus_attach = property_enabled(rphy->grf,
-> > -				       &rport->port_cfg->utmi_bvalid);
-> > +	if (rport->port_cfg->svbus_en.enable && rport->typec_vbus_det) {
-> > +		if (property_enabled(rphy->grf, &rport->port_cfg->svbus_en) &&
-> > +		    property_enabled(rphy->grf, &rport->port_cfg->svbus_sel)) {
+On 2025-06-12 7:56 pm, Nicolas Frattaroli wrote:
+> Hardware of various vendors, but very notably Rockchip, often uses
+> 32-bit registers where the upper 16-bit half of the register is a
+> write-enable mask for the lower half.
 > 
-> Why do you check the registers since you always enable those bits on those conditions:
-> 	rport->port_id == USB2PHY_PORT_OTG
-> 	rport->typec_vbus_det
-> 	rport->port_cfg->svbus_en.enable
-> 	rport->typec_vbus_det
-> Can't you us them instead ?
-
-That is an excellent question. I think I was imitating downstream code
-here without thinking too much. This whole construct seems a little fishy,
-as these GRF registers are then never cleared again if it's not in OTG
-mode anymore. I'll look into it further, including cross-checking what
-those bits actually do based on the TRMs of various SoCs that use this
-hardware.
-
+> This type of hardware setup allows for more granular concurrent register
+> write access.
 > 
-> Neil
+> Over the years, many drivers have hand-rolled their own version of this
+> macro, usually without any checks, often called something like
+> HIWORD_UPDATE or FIELD_PREP_HIWORD, commonly with slightly different
+> semantics between them.
 > 
-> > +			vbus_attach = true;
-> > +		} else {
-> > +			vbus_attach = false;
-> > +		}
-> > +	} else {
-> > +		vbus_attach = property_enabled(rphy->grf,
-> > +					       &rport->port_cfg->utmi_bvalid);
-> > +	}
-> >   
-> >   	sch_work = false;
-> >   	notify_charger = false;
-> > @@ -1276,6 +1298,83 @@ static int rockchip_otg_event(struct notifier_block *nb,
-> >   	return NOTIFY_DONE;
-> >   }
-> >   
-> > +static const char *const rockchip_usb2phy_typec_cons[] = {
-> > +	"usb-c-connector",
-> > +	NULL,
-> > +};
-> > +
-> > +static struct device_node *rockchip_usb2phy_to_controller(struct rockchip_usb2phy *rphy)
-> > +{
-> > +	struct device_node *np;
-> > +	struct device_node *parent;
-> > +
-> > +	for_each_node_with_property(np, "phys") {
-> > +		struct of_phandle_iterator it;
-> > +		int ret;
-> > +
-> > +		of_for_each_phandle(&it, ret, np, "phys", NULL, 0) {
-> > +			parent = of_get_parent(it.node);
-> > +			if (it.node != rphy->dev->of_node && rphy->dev->of_node != parent) {
-> > +				if (parent)
-> > +					of_node_put(parent);
-> > +				continue;
-> > +			}
-> > +
-> > +			/*
-> > +			 * Either the PHY phandle we're iterating or its parent
-> > +			 * matched, we don't care about which out of the two in
-> > +			 * particular as we just need to know it's the right
-> > +			 * USB controller for this PHY.
-> > +			 */
-> > +			of_node_put(it.node);
-> > +			of_node_put(parent);
-> > +			return np;
-> > +		}
-> > +	}
-> > +
-> > +	return NULL;
-> > +}
-> > +
-> > +static bool rockchip_usb2phy_otg_is_type_c(struct rockchip_usb2phy *rphy)
-> > +{
-> > +	struct device_node *controller = rockchip_usb2phy_to_controller(rphy);
-> > +	struct device_node *ports;
-> > +	struct device_node *ep = NULL;
-> > +	struct device_node *parent;
-> > +
-> > +	if (!controller)
-> > +		return false;
-> > +
-> > +	ports = of_get_child_by_name(controller, "ports");
-> > +	if (ports) {
-> > +		of_node_put(controller);
-> > +		controller = ports;
-> > +	}
-> > +
-> > +	for_each_of_graph_port(controller, port) {
-> > +		ep = of_get_child_by_name(port, "endpoint");
-> > +		if (!ep)
-> > +			continue;
-> > +
-> > +		parent = of_graph_get_remote_port_parent(ep);
-> > +		of_node_put(ep);
-> > +		if (!parent)
-> > +			continue;
-> > +
-> > +		if (of_device_compatible_match(parent, rockchip_usb2phy_typec_cons)) {
-> > +			of_node_put(parent);
-> > +			of_node_put(controller);
-> > +			return true;
-> > +		}
-> > +
-> > +		of_node_put(parent);
-> > +	}
-> > +
-> > +	of_node_put(controller);
-> > +
-> > +	return false;
-> > +}
+> Clearly there is a demand for such a macro, and thus the demand should
+> be satisfied in a common header file.
 > 
-> This DT parsing is quite complex, but seems it's the only way to detect such features
-> without bindings change, not sure it's really beneficial.
+> Add two macros: HWORD_UPDATE, and HWORD_UPDATE_CONST. The latter is a
+> version that can be used in initializers, like FIELD_PREP_CONST. The
+> macro names are chosen to not clash with any potential other macros that
+> drivers may already have implemented themselves, while retaining a
+> familiar name.
 
-Yeah, v1 abused the existing connector binding by having the HS graph
-port point to the PHY instead, and Rob wasn't happy with that. He
-suggested this can actually be done just by walking the graph.
+Nit: while from one angle it indeed looks similar, from another it's 
+even more opaque and less meaningful than what we have already. 
+Personally I cannot help but see "hword" as "halfword", so logically if 
+we want 32+32-bit or 8+8-bit variants in future those would be 
+WORD_UPDATE() and BYTE_UPDATE(), right? ;)
 
-FWIW, even if the PHY knew its controller, that would still only get rid
-of rockchip_usb2phy_to_controller, and leave the graph walking to get to
-the connector in place.
+It's also confounded by "update" not actually having any obvious meaning 
+at this level without all the implicit usage context. FWIW my suggestion 
+would be FIELD_PREP_WM_U16, such that the reader instantly sees 
+"FIELD_PREP with some additional semantics", even if they then need to 
+glance at the kerneldoc for clarification that WM stands for writemask 
+(or maybe WE for write-enable if people prefer). Plus it then leaves 
+room to easily support different sizes (and potentially even bonkers 
+upside-down Ux_WM variants?!) without any bother if we need to.
 
-So a bindings change would only be of measurable benefit if it added a
-phandle property in USB PHYs to the connector or something, and I'm not
-sure if that's the right solution either. It'd once again shift the
-burden of remembering to let PHYs know about their connectors onto board
-DTs, which forget such things all the time.
+Thanks,
+Robin.
 
-The benefit of this solution is that board DTs don't need to think about
-this at all, and the search is unambiguous, as we really don't lack any
-information, we just lack a direct view of that information in the node
-our driver receives.
-
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>   include/linux/bitfield.h | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 47 insertions(+)
 > 
-> > +
-> >   static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
-> >   					  struct rockchip_usb2phy_port *rport,
-> >   					  struct device_node *child_np)
-> > @@ -1297,6 +1396,8 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
-> >   
-> >   	mutex_init(&rport->mutex);
-> >   
-> > +	rport->typec_vbus_det = rockchip_usb2phy_otg_is_type_c(rphy);
-> > +
-> >   	rport->mode = of_usb_get_dr_mode_by_phy(child_np, -1);
-> >   	if (rport->mode == USB_DR_MODE_HOST ||
-> >   	    rport->mode == USB_DR_MODE_UNKNOWN) {
-> > @@ -2050,6 +2151,8 @@ static const struct rockchip_usb2phy_cfg rk3576_phy_cfgs[] = {
-> >   		.port_cfgs	= {
-> >   			[USB2PHY_PORT_OTG] = {
-> >   				.phy_sus	= { 0x0000, 8, 0, 0, 0x1d1 },
-> > +				.svbus_en	= { 0x0000, 15, 15, 0, 1 },
-> > +				.svbus_sel	= { 0x0000, 14, 14, 0, 1 },
-> >   				.bvalid_det_en	= { 0x00c0, 1, 1, 0, 1 },
-> >   				.bvalid_det_st	= { 0x00c4, 1, 1, 0, 1 },
-> >   				.bvalid_det_clr = { 0x00c8, 1, 1, 0, 1 },
-> > @@ -2087,6 +2190,8 @@ static const struct rockchip_usb2phy_cfg rk3576_phy_cfgs[] = {
-> >   		.port_cfgs	= {
-> >   			[USB2PHY_PORT_OTG] = {
-> >   				.phy_sus	= { 0x2000, 8, 0, 0, 0x1d1 },
-> > +				.svbus_en	= { 0x2000, 15, 15, 0, 1 },
-> > +				.svbus_sel	= { 0x2000, 14, 14, 0, 1 },
-> >   				.bvalid_det_en	= { 0x20c0, 1, 1, 0, 1 },
-> >   				.bvalid_det_st	= { 0x20c4, 1, 1, 0, 1 },
-> >   				.bvalid_det_clr = { 0x20c8, 1, 1, 0, 1 },
-> > 
+> diff --git a/include/linux/bitfield.h b/include/linux/bitfield.h
+> index 6d9a53db54b66c0833973c880444bd289d9667b1..b90d88db7405f95b78cdd6f3426263086bab5aa6 100644
+> --- a/include/linux/bitfield.h
+> +++ b/include/linux/bitfield.h
+> @@ -8,6 +8,7 @@
+>   #define _LINUX_BITFIELD_H
+>   
+>   #include <linux/build_bug.h>
+> +#include <linux/limits.h>
+>   #include <linux/typecheck.h>
+>   #include <asm/byteorder.h>
+>   
+> @@ -142,6 +143,52 @@
+>   		(((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask))	\
+>   	)
+>   
+> +/**
+> + * HWORD_UPDATE() - prepare a bitfield element with a mask in the upper half
+> + * @_mask: shifted mask defining the field's length and position
+> + * @_val:  value to put in the field
+> + *
+> + * HWORD_UPDATE() masks and shifts up the value, as well as bitwise ORs the
+> + * result with the mask shifted up by 16.
+> + *
+> + * This is useful for a common design of hardware registers where the upper
+> + * 16-bit half of a 32-bit register is used as a write-enable mask. In such a
+> + * register, a bit in the lower half is only updated if the corresponding bit
+> + * in the upper half is high.
+> + */
+> +#define HWORD_UPDATE(_mask, _val)					 \
+> +	({								 \
+> +		__BF_FIELD_CHECK(_mask, ((u16) 0U), _val,		 \
+> +				 "HWORD_UPDATE: ");			 \
+> +		(((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask)) | \
+> +		((_mask) << 16);					 \
+> +	})
+> +
+> +/**
+> + * HWORD_UPDATE_CONST() - prepare a constant bitfield element with a mask in
+> + *                        the upper half
+> + * @_mask: shifted mask defining the field's length and position
+> + * @_val:  value to put in the field
+> + *
+> + * HWORD_UPDATE_CONST() masks and shifts up the value, as well as bitwise ORs
+> + * the result with the mask shifted up by 16.
+> + *
+> + * This is useful for a common design of hardware registers where the upper
+> + * 16-bit half of a 32-bit register is used as a write-enable mask. In such a
+> + * register, a bit in the lower half is only updated if the corresponding bit
+> + * in the upper half is high.
+> + *
+> + * Unlike HWORD_UPDATE(), this is a constant expression and can therefore
+> + * be used in initializers. Error checking is less comfortable for this
+> + * version.
+> + */
+> +#define HWORD_UPDATE_CONST(_mask, _val)					  \
+> +	(								  \
+> +		FIELD_PREP_CONST(_mask, _val) |				  \
+> +		(BUILD_BUG_ON_ZERO(const_true((u64) (_mask) > U16_MAX)) + \
+> +		 ((_mask) << 16))					  \
+> +	)
+> +
+>   /**
+>    * FIELD_GET() - extract a bitfield element
+>    * @_mask: shifted mask defining the field's length and position
 > 
-> Thanks,
-> Neil
-> 
-
-Kind regards,
-Nicolas Frattaroli
-
-
 
 
 _______________________________________________
