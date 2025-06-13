@@ -4,67 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C014C71159
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 18:16:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A1CC71136
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 18:18:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cRzA0uT8uxoIuUjQGBjDsAdYcRCcVjfkk8YSyBxqibk=; b=282Hw4muv/XIk5
-	XPMO4YaOcSfvLFZcQ8rEkrOqNvIQZJ85RJpiY/z8Ih5FSr4aNezsj6LvJO288rTC1tLMaIuTgB1qn
-	BdTvP+RMJSMsuhXlEKwmXe2NjMuWz4IPLZi53WXKOocjWzbBiRDz3Dm/Et6TV8mfN1YAKhmWVpF3W
-	idKxXTgdj46493WQy/cNzssEGfKh8eraQY+S7ktGJpezQOg3vju6yCOEl9RIV7tErsE/7ZSdeeleI
-	bndOyO+4aR1kYNM85yb5VD3i5uk/L0WxTpXa3fv9/YJyRVtVL+slw+hO4aAgWvtnguFcFAyXnzBR2
-	eqg0jMMdM+I4aingNX5A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=a1PwmmSQmVcXYCPmebV2wzywUhNNSWqedqEabuWOW+o=; b=L1x9CAbLRE1F6x
+	79jS95+lL0tf/OatOr8sq+qtVVC0okjwg8YF/8nrUTZSJUSojUbNlYcXoFTj3p5l0yBkZsK8QBaGl
+	Unz1o59JC/yG5ITslnGJVHM5wzraoprtV3ZgCGG/Ub7/8Bey2Jw7g3/umif3d6Kdb2k1plTw0D7jr
+	6wgXLoDIIPaM3PdBD/VVv9oAOuugfWkx+X9dUHSLNptHSW16m6nYeeSIj7e5R4ZChtyr38ZmOUE7j
+	a4W1dcwD3jdtOgGPzG6rgLV7Vgr1EsOPHNu4cfDC6+X4O1m04C4Cs7QnKxCO9z3GEUnfLZZS+HEjB
+	yUQVczhpkmQx6lUO8lJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ8wz-0000000HFCq-1LyJ;
-	Fri, 13 Jun 2025 18:16:25 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ6XG-0000000Gult-2BQO;
-	Fri, 13 Jun 2025 15:41:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
-	Content-Type; bh=2M/eCXY1ToDvTm9hwkGDq/8LUzWrm55Tahx+FO3/MkM=;
-	b=lS3LqaYlJDzuE5fir8AzvoACaNs2VvSrzFWYdhJauogGyv7h0960NeLFzcFewe
-	s+kbgv00uhKvD4vmYfQu3NemlkNUI/EYKTGH1EzVTq8U0dLSHOgUFu/kcYBd64m5
-	/RM5+8n2FFAW0ysoNM1tOLE9n0ePrEbHzigmWrEY4hOVo=
-Received: from [192.168.71.94] (unknown [])
-	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wBnkHB4RkxorB7fHw--.15462S2;
-	Fri, 13 Jun 2025 23:40:41 +0800 (CST)
-Message-ID: <a88ccb03-3039-4955-a6cc-18774c6799f6@163.com>
-Date: Fri, 13 Jun 2025 23:40:40 +0800
+	id 1uQ8yb-0000000HHwE-2lJi;
+	Fri, 13 Jun 2025 18:18:05 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uQ7oD-0000000H8E3-44eb;
+	Fri, 13 Jun 2025 17:03:19 +0000
+Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-b1396171fb1so1636902a12.2;
+        Fri, 13 Jun 2025 10:03:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749834197; x=1750438997; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Kn1ckhgHo64BPoEpHx9buqHUv1Oyd0BS8vEud6lPxjA=;
+        b=EdmMDOver9YJQGhuprcD57X/povU4kW6fjZcGXl36zN+OZY39pWx9YJWrKQDBwf3xP
+         VHSXEucdnvUw3+TpadMy2qQiW2+ImyD34PV5Ww+E+IO5stzN2VvN8d8NlAoR4eNDOzYC
+         NjFPsctW9lN4Kdimx1UtOBv1T+9TyfEp86I1oGH0KEeIVxNgI+4ecizBDR9q4zWdgDWj
+         3ykobu1OOsfQ3S8k/GMGWZbsdjKX2lyYOhVkwXcTnECCpp1P3fFir5oUNeFOg/JuU474
+         5KktXUcwD6EB+hIZdAlKS4JGJMJSD6cIsdnU3D0GnqxORRWBUwbtjEi4bHU8yPHGsZUV
+         70WA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749834197; x=1750438997;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Kn1ckhgHo64BPoEpHx9buqHUv1Oyd0BS8vEud6lPxjA=;
+        b=mqHYkhp5Eh179YwiCyMV3XTN30mkGD6MgoIEyLoKu0+E7eikzNhIPIOXHLnaMIKTcF
+         lA9juc0bahHAds4qMuwY7aW2Yy4o9bl22oS8DMRlqbTorT7Wp+bsI8GVy3Fw6pQFn1iC
+         PBJveAFLf50BZeGM8F8MjBEWs5i7xg9MEvzMbSrdQxSAMixaQpMQ4zZoVWPrJg5JxtHO
+         A3y9i13V7SbTlkU1tapSNfm857vXMzlxMzEiOgjsVBowIQRM1vVD0FnDfQVyPehZLYMK
+         9e3bsz3sRhIQ9PlBCKdwFPzCzI6Wx3LKS7WfCBNYKNY20Ex9UR1IMiGjWoRwnUjfSdAK
+         j62g==
+X-Forwarded-Encrypted: i=1; AJvYcCUuQ0IIfogiKuAW/HDayiNTiMegrhEHz+2foOnTkRaYPOQ9uEyBN8vcJLKn5NlWrryTk9P7U8xYwZJi@lists.infradead.org, AJvYcCW+C9CHAP2bV6/vQv4C/cZJB/J1LAsS8Lm6sJrVOrj/wJGrpWXbQ8Qm6/i90t96miAIeyFXTg5WNXaItuJPhEua@lists.infradead.org
+X-Gm-Message-State: AOJu0YwEukOheQq6fA0ycPZNhvrQore4lnaCw58YAjwnCO6Zy8EzuUHe
+	QSoMp7i5rl1JEH2Hu5f6pYSFxAlA3o+bBni+YEaWtKrlh6IclyPDj6x7Sm8DXibd
+X-Gm-Gg: ASbGncsNbHUAo17GMeg6LknSyPYfGN6sq4jzzZFD14rm5m3eblymd8V2Dp5PngaCeP+
+	/3IiZTGpDHAg8Lp65dvAOliWa2RpvV85Nfzhn60iv9lSBwUbO10Y/VihJSjix5FkX7v55ywAjDo
+	ROZwZPXTEuWK4rfu+n8sQ/Q/5NMikjh4NLhXGCYDBCr5E6H+kc9KkqfdJjImiSG51NJlnIKzjDC
+	+E8KOe3UOQbrXJUia7VP5vwOQinzAwyEOejDWhMdbhUq2BqpQYgfaFH4/jkYnWSdq2rGFgXxNTb
+	LpW5fSdfxjGf+6w2G4v+jsB4XMXVU2CY3QfzkJqmE+u81eaO+A==
+X-Google-Smtp-Source: AGHT+IE0ysRgafNmvzcIEeHIwfE133KfLqRER/QsYHGgAAkVNDFrgTlsHHQwGU1Al9+VxkGy+d6OGA==
+X-Received: by 2002:a17:90a:d2c8:b0:312:959:dc3e with SMTP id 98e67ed59e1d1-313f1ca0fe1mr613630a91.10.1749834196976;
+        Fri, 13 Jun 2025 10:03:16 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:8497::dead:c001])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2365dea8ccbsm16758555ad.167.2025.06.13.10.03.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Jun 2025 10:03:16 -0700 (PDT)
+Date: Fri, 13 Jun 2025 14:03:06 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rick wertenbroek <rick.wertenbroek@gmail.com>,
+	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [RFC PATCH v5 0/4] PCI: rockchip: Improve driver quality
+Message-ID: <cover.1749833986.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/2] PCI: dwc: Remove redundant MPS configuration
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
- heiko@sntech.de, manivannan.sadhasivam@linaro.org, yue.wang@amlogic.com,
- pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
- jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
- martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
- yue.wang@amlogic.com, hanjie.lin@amlogic.com
-References: <20250510155607.390687-1-18255117159@163.com>
- <20250510155607.390687-3-18255117159@163.com>
- <6v7m7qt4n26n6pmx5tggmmvv7na6t5v5wtfqev5x4wxosymwul@j3dizxyyy4tg>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <6v7m7qt4n26n6pmx5tggmmvv7na6t5v5wtfqev5x4wxosymwul@j3dizxyyy4tg>
-X-CM-TRANSID: _____wBnkHB4RkxorB7fHw--.15462S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxWF4UZFWrurWxWFy8Zr1UJrb_yoW5Zw15pF
-	W5XFs3CF4rJr4rZanFka1rAa42yas8AFyUJF9rG34fZF9IyFsrGFy2yFWF9FyxZrZ2gF1S
-	v34Ygr43Z3Z8JFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07Uq9a9UUUUU=
-X-Originating-IP: [124.79.114.92]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiQxdro2hMQiMsKAACsf
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_084142_954130_ADF01019 
-X-CRM114-Status: GOOD (  23.64  )
+X-CRM114-CacheID: sfid-20250613_100318_009715_A4DA0FF3 
+X-CRM114-Status: UNSURE (   8.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,108 +97,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+During a 30-day debugging-run fighting quirky PCIe devices on RK3399
+some quality improvements began to take form and this is my attempt
+at upstreaming it. It will ensure maximum chance of retraining to Gen2
+5.0GT/s, on all four lanes and plus if anybody is debugging the PHY
+they'll now get real values from TEST_I[3:0] for every TEST_ADDR[4:0]
+without risk of locking up kernel like with present broken async
+strobe TEST_WRITE.
+
+---
+V4 -> V5: fix build failure, reflow commit messages and also convert
+registers for EP operation, all suggested by Ilpo
+V3 -> V4: fix setting-up of TLS in Link Control and Status Register 2,
+also adjust commit titles
+V2 -> V3: correctly clean-up with standard PCIe defines as per Bjorn's
+suggestion
+V1 -> V2: use standard PCIe defines as suggested by Bjorn
 
 
-On 2025/6/13 14:54, Manivannan Sadhasivam wrote:
-> On Sat, May 10, 2025 at 11:56:07PM +0800, Hans Zhang wrote:
->> The Meson PCIe controller driver manually configures maximum payload
->> size (MPS) through meson_set_max_payload, duplicating functionality now
->> centralized in the PCI core.  Deprecating redundant code simplifies the
->> driver and aligns it with the consolidated MPS management strategy,
->> improving long-term maintainability.
->>
->> Signed-off-by: Hans Zhang <18255117159@163.com>
-> 
-> I believe that the root port MPS set by PCI core in patch 1 should be enough to
-> remove the logic in the driver. But given that we already saw that is not the
-> case with Armada controllers, it would be good if one of the Meson maintainers
-> could verify if this series works as intented. Since the driver is not using the
-> DEVCAP value, but using the hardcoded value, I'm slightly worried that setting
-> MPS value other than 256 would have any downside.
-> 
-> But anyway, the root port MPS should be the same with and without this series.
-> This can be verified by:
-> 
-> sudo lspci -vvv | grep MaxPayload
-> 
-> Also, performing any benchmark and making sure that the device performance
-> didn't get affected would be great.
-> 
+Geraldo Nascimento (4):
+  PCI: rockchip: Use standard PCIe defines
+  PCI: rockchip: Set Target Link Speed before retraining
+  phy: rockchip-pcie: Enable all four lanes
+  phy: rockchip-pcie: Adjust read mask and write
 
-Dear Mani,
+ drivers/pci/controller/pcie-rockchip-ep.c   |  4 +-
+ drivers/pci/controller/pcie-rockchip-host.c | 49 ++++++++++++---------
+ drivers/pci/controller/pcie-rockchip.h      | 12 +----
+ drivers/phy/rockchip/phy-rockchip-pcie.c    | 16 ++++---
+ 4 files changed, 39 insertions(+), 42 deletions(-)
 
-Thank you for your reminder. I found two friends of Amlogic from the 
-submission records and copied the email to them. And ask them to help 
-test these two patches.
-
-But I don't know if they are still employed, or do you know anyone to 
-help with the test?
-
-
-
-
-
-Dear yue.wang and hanjie.lin,
-
-Could you help test these two patches? I don't know if it affects the 
-normal function of your Root Port. If it works properly, please let me 
-know. Thank you very much.
-
-Best regards,
-Hans
-
-
-
-> - Mani
-> 
->> ---
->>   drivers/pci/controller/dwc/pci-meson.c | 17 -----------------
->>   1 file changed, 17 deletions(-)
->>
->> diff --git a/drivers/pci/controller/dwc/pci-meson.c b/drivers/pci/controller/dwc/pci-meson.c
->> index db9482a113e9..126f38ed453d 100644
->> --- a/drivers/pci/controller/dwc/pci-meson.c
->> +++ b/drivers/pci/controller/dwc/pci-meson.c
->> @@ -261,22 +261,6 @@ static int meson_size_to_payload(struct meson_pcie *mp, int size)
->>   	return fls(size) - 8;
->>   }
->>   
->> -static void meson_set_max_payload(struct meson_pcie *mp, int size)
->> -{
->> -	struct dw_pcie *pci = &mp->pci;
->> -	u32 val;
->> -	u16 offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
->> -	int max_payload_size = meson_size_to_payload(mp, size);
->> -
->> -	val = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
->> -	val &= ~PCI_EXP_DEVCTL_PAYLOAD;
->> -	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, val);
->> -
->> -	val = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
->> -	val |= PCIE_CAP_MAX_PAYLOAD_SIZE(max_payload_size);
->> -	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, val);
->> -}
->> -
->>   static void meson_set_max_rd_req_size(struct meson_pcie *mp, int size)
->>   {
->>   	struct dw_pcie *pci = &mp->pci;
->> @@ -381,7 +365,6 @@ static int meson_pcie_host_init(struct dw_pcie_rp *pp)
->>   
->>   	pp->bridge->ops = &meson_pci_ops;
->>   
->> -	meson_set_max_payload(mp, MAX_PAYLOAD_SIZE);
->>   	meson_set_max_rd_req_size(mp, MAX_READ_REQ_SIZE);
->>   
->>   	return 0;
->> -- 
->> 2.25.1
->>
-> 
+-- 
+2.49.0
 
 
 _______________________________________________
