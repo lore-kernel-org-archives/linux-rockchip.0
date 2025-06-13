@@ -4,66 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57EC4C71153
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 12:03:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B86B9C61DB2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 12:13:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tXVwAHc11wif0501JgG9JT9FFdCiOF58SEQMOx9bv7w=; b=1tQHGAMtuCdIdi
-	dEDfqMk0S6nH81zdYS6cy46jYlZukqm65tH3xz6XMfaXHxZwHfuOGgW2veefD2yXSbrK1caBBZOBR
-	3ZDbH/mZxyDdCk7PTkA3PLN6U2m7rZWCBo5SN+MBed/CQP6VG/vVLwxM1dSZgTjWFyaj2y77zqxrb
-	Use2o7W9xChgvcwm5vklrvemRzU73O8n3zSdogYho1NWplBWwbovle37w3gku8Fc2QF5i7sSzsV07
-	8QlBSzztONB6kYN61mPZa52msG1cCxDQQm0aV/5FTPf+nsBKHnK+6ClmTsnqfQ0tiSLN7I7kblhX3
-	nWhz+B1Qm5z+s/05q+yQ==;
+	List-Owner; bh=zffzS169BBQ47z/kdJndqSnDQCP10rI4a0JNfSyvaog=; b=wZQ2nYrQbaptl7
+	oSUm8U44BdJ5lkECTJCjY6Uvfj+uflpx1tIJfba8rWc89fgju2vaTLJMDixBOKDc68D2pRNEl/WQI
+	eS3szNMrUgwkNfCj4K3RYnQZSS22QFj69jd6r9ppaZfxmK1s41ZBBsZ0S15TOEPyQTGqRc+LLUDYT
+	4Q7HKab+ufoASV+raoaMAHaM0444eFrQCVLEMDZfHc8qP5+U9TWe8Yjx1lKNPeNDtZi6SjKxLxZwB
+	70dRR+X7ibRKtcnaB36yjLH2M+yz5iZ+aixhELBvI4a1bxO2r0qDl66Y/I1AQItZMp5VSqBlw9LHs
+	CO6wgqtWr5CAInofIVKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ37o-0000000GJeE-3fhV;
-	Fri, 13 Jun 2025 12:03:12 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uQ3HF-0000000GLKZ-1ppL;
+	Fri, 13 Jun 2025 12:12:57 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ2xd-0000000GIKa-3uaw;
-	Fri, 13 Jun 2025 11:52:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6A390A50C13;
-	Fri, 13 Jun 2025 11:52:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3680CC4CEE3;
-	Fri, 13 Jun 2025 11:52:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749815560;
-	bh=9Ib3i1mlFKicVwKiPGf5NRYHamJ2n8eOcsjuXffXj54=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aw8bXodJydbeLxjxs9CS/1ymdxGC+nk/uG6P0DwTJYpW42Pg/5BHWY+BJi5zY2cph
-	 LKHTsRogZ8cDXCb/AGkccXPdupEBA3Ah84vP4n+51iTDbEwRj00qU77a4uUHOCw+dQ
-	 lnvzOuTJRixDvWsz/46CN4nXvGvstFtySvo/iVuwszfFmwpXdTX4FmiqNhqbUvvFLZ
-	 J2BSZ+yTPCkuHm6UqmrUuIOEuWfSgydKa9JUjRMSu3uRcbiIIJPnDNrIhn7wfg9b43
-	 n3qU/sG/nuANHXA8sduV69dpVBZTlX5yi68+CoSdIcI3cTPulotnddlGKqRm5Nx7Gf
-	 LDrFtJaEuhFtQ==
-Date: Fri, 13 Jun 2025 13:52:33 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Hans Zhang <18255117159@163.com>, lpieralisi@kernel.org, kw@linux.com,
-	bhelgaas@google.com, heiko@sntech.de,
-	manivannan.sadhasivam@linaro.org, yue.wang@amlogic.com,
-	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 1/2] PCI: Configure root port MPS during host probing
-Message-ID: <aEwRAZgLJUECbGz6@ryzen>
-References: <20250510155607.390687-1-18255117159@163.com>
- <20250510155607.390687-2-18255117159@163.com>
- <co2q55j4mk2ux7af4sj6snnfomditwizg5jevg6oilo3luby5z@6beqtbn3l432>
+	id 1uQ3Df-0000000GKp4-0gmP;
+	Fri, 13 Jun 2025 12:09:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749816504; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=HxsUUIkbJLHor7xQVOxFnKjQL2tcvAU/8U7uOGAT8YJ5SzkaPujbsMSqqr80mMJL7/C6qPJ5R72AJZZz4V+WGvRuhbDD8RcEdYVp0T3jFCWzPUWFNNQ68W3mkdPx/uRz9Q8CO9KUVnMiuh0wlCTVhHSoXI4LkoQwVLhFcDXTcHE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1749816504; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=oC6j4XXPtFnpNI59vFPxucp8Atnh3iWQ7iCtDWJTvGo=; 
+	b=A1ATiiZZKeXR51mKcGYEcu+ievsJrJBhXTLF5fKN6m6uGlmf+gN+qSW/4BgN2DXa3+ihmm5IDJ0LMQYccMcRuItr2vNHq1tFXK2h6DApxhwbIV2hxsLhxWB7MZeQnM9wPRrdMCbbUDX2/hY046rowLcFe6wBngVN1Vd+mah2Cyc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749816504;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=oC6j4XXPtFnpNI59vFPxucp8Atnh3iWQ7iCtDWJTvGo=;
+	b=iYPe6hd7lzD5NmEuVNlPJNUR1sBcQMTEzgFULW5ZE1tzhGuUUZmsrhquSUKDA+Cs
+	I90mwM0EoNm4PSiTntzA6phjzUyTdMpluFlcfHK8TNliE3+1AYflsiylQRbXHpwn2NL
+	nJ0riWRwAIxWd/I6yzJxEXtQHSBfMYaBpXVI3PVg=
+Received: by mx.zohomail.com with SMTPS id 1749816501559794.9356716993168;
+	Fri, 13 Jun 2025 05:08:21 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Yury Norov <yury.norov@gmail.com>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Shreeya Patel <shreeya.patel@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Krzysztof =?UTF-8?B?V2lsY3p5xYRza2k=?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>, Qin Jian <qinjian@cqplus1.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
+ kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-phy@lists.infradead.org,
+ linux-sound@vger.kernel.org, netdev@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-pci@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-clk@vger.kernel.org, llvm@lists.linux.dev
+Subject: Re: [PATCH 17/20] PCI: dw-rockchip: switch to HWORD_UPDATE macro
+Date: Fri, 13 Jun 2025 14:08:08 +0200
+Message-ID: <12129790.nUPlyArG6x@workhorse>
+In-Reply-To: <aEvzMnxgsjfryCOo@ryzen>
+References: <20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com>
+ <20250612-byeword-update-v1-17-f4afb8f6313f@collabora.com>
+ <aEvzMnxgsjfryCOo@ryzen>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <co2q55j4mk2ux7af4sj6snnfomditwizg5jevg6oilo3luby5z@6beqtbn3l432>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_045242_107791_A43ECE3C 
-X-CRM114-Status: GOOD (  37.23  )
+X-CRM114-CacheID: sfid-20250613_050915_269982_09D25DD7 
+X-CRM114-Status: GOOD (  31.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,120 +111,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 13, 2025 at 12:08:31PM +0530, Manivannan Sadhasivam wrote:
-> On Sat, May 10, 2025 at 11:56:06PM +0800, Hans Zhang wrote:
-> > Current PCIe initialization logic may leave root ports operating with
-> > non-optimal Maximum Payload Size (MPS) settings. While downstream device
-> > configuration is handled during bus enumeration, root port MPS values
-> > inherited from firmware or hardware defaults might not utilize the full
-> > capabilities supported by the controller hardware. This can result is
-> > uboptimal data transfer efficiency across the PCIe hierarchy.
-> > 
-> > During host controller probing phase, when PCIe bus tuning is enabled,
-> > the implementation now configures root port MPS settings to their
-> > hardware-supported maximum values. By iterating through bridge devices
-> > under the root bus and identifying PCIe root ports, each port's MPS is
-> > set to 128 << pcie_mpss to match the device's maximum supported payload
-> > size.
+Hello,
+
+On Friday, 13 June 2025 11:45:22 Central European Summer Time Niklas Cassel wrote:
+> Hello Nicolas,
 > 
-> I don't think the above statement is accurate. This patch is not iterating
-> through the bridges and you cannot identify root ports using that. What this
-> patch does is, it checks whether the device is root port or not and if it is,
-> then it sets the MPS to MPSS (hw maximum) if PCIE_BUS_TUNE_OFF is not set.
+> On Thu, Jun 12, 2025 at 08:56:19PM +0200, Nicolas Frattaroli wrote:
+> > 
+> > PCIE_CLIENT_RC_MODE/PCIE_CLIENT_EP_MODE was another field that wasn't
+> > super clear on what the bit field modification actually is. As far as I
+> > can tell, switching to RC mode doesn't actually write the correct value
+> > to the field if any of its bits have been set previously, as it only
+> > updates one bit of a 4 bit field.
+> > 
+> > Replace it by actually writing the full values to the field, using the
+> > new HWORD_UPDATE macro, which grants us the benefit of better
+> > compile-time error checking.
+> 
+> The current code looks like this:
+> #define  PCIE_CLIENT_RC_MODE            HIWORD_UPDATE_BIT(0x40)
+> #define  PCIE_CLIENT_EP_MODE            HIWORD_UPDATE(0xf0, 0x0)
+> 
+> The device_type field is defined like this:
+> 4'h0: PCI Express endpoint
+> 4'h1: Legacy PCI Express endpoint
+> 4'h4: Root port of PCI Express root complex
+> 
+> The reset value of the device_type field is 0x0 (EP mode).
+> 
+> So switching between RC mode / EP mode should be fine.
+> 
+> But I agree, theoretically there could be a bug if e.g. bootloader
+> has set the device_type to 0x1 (Legacy EP).
+> 
+> So if you want, you could send a patch:
+> -#define  PCIE_CLIENT_RC_MODE            HIWORD_UPDATE_BIT(0x40)
+> +#define  PCIE_CLIENT_RC_MODE            HIWORD_UPDATE(0xf0, 0x40)
+> 
+> With:
+> Fixes: 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
+> 
+> But I also think that your current patch is fine as-is.
+> 
+> I do however think that you can drop this line:
+> +#define  PCIE_CLIENT_MODE_LEGACY       0x1U
+> 
+> Since the define is never used.
 
-Correct.
-Later, when the bus is walked, if any downstream device does not support
-the MPS value currently configured in the root port, pci_configure_mps()
-will reduce the MPS in the root port to the max supported by the downstream
-device.
-
-So even we start off by setting MPS in the root port to the max supported
-by the root port, it might get reduced later on.
-
+Will do
 
 > 
-> > The Max Read Request Size (MRRS) is subsequently adjusted through
-> > existing companion logic to maintain compatibility with PCIe
-> > specifications.
-> > 
-> > Explicit initialization at host probing stage ensures consistent PCIe
-> > topology configuration before downstream devices perform their own MPS
-> > negotiations. This proactive approach addresses platform-specific
-> > requirements where controller drivers depend on properly initialized
-> > root port settings, while maintaining backward compatibility through
-> > PCIE_BUS_TUNE_OFF conditional checks. Hardware capabilities are fully
-> > utilized without altering existing device negotiation behaviors.
-> > 
-> > Suggested-by: Niklas Cassel <cassel@kernel.org>
-> > Signed-off-by: Hans Zhang <18255117159@163.com>
-> > ---
-> >  drivers/pci/probe.c | 72 ++++++++++++++++++++++++++-------------------
-> >  1 file changed, 41 insertions(+), 31 deletions(-)
-> > 
-> > diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-> > index 364fa2a514f8..1f67c03d170a 100644
-> > --- a/drivers/pci/probe.c
-> > +++ b/drivers/pci/probe.c
-> > @@ -2149,6 +2149,37 @@ int pci_setup_device(struct pci_dev *dev)
-> >  	return 0;
-> >  }
-> >  
-> > +static void pcie_write_mps(struct pci_dev *dev, int mps)
-> > +{
-> > +	int rc;
-> > +
-> > +	if (pcie_bus_config == PCIE_BUS_PERFORMANCE) {
-> > +		mps = 128 << dev->pcie_mpss;
-> > +
-> > +		if (pci_pcie_type(dev) != PCI_EXP_TYPE_ROOT_PORT &&
-> > +		    dev->bus->self)
-> > +
-> > +			/*
-> > +			 * For "Performance", the assumption is made that
-> > +			 * downstream communication will never be larger than
-> > +			 * the MRRS.  So, the MPS only needs to be configured
-> > +			 * for the upstream communication.  This being the case,
-> > +			 * walk from the top down and set the MPS of the child
-> > +			 * to that of the parent bus.
-> > +			 *
-> > +			 * Configure the device MPS with the smaller of the
-> > +			 * device MPSS or the bridge MPS (which is assumed to be
-> > +			 * properly configured at this point to the largest
-> > +			 * allowable MPS based on its parent bus).
-> > +			 */
-> > +			mps = min(mps, pcie_get_mps(dev->bus->self));
-> > +	}
-> > +
-> > +	rc = pcie_set_mps(dev, mps);
-> > +	if (rc)
-> > +		pci_err(dev, "Failed attempting to set the MPS\n");
-> > +}
-> > +
-> >  static void pci_configure_mps(struct pci_dev *dev)
-> >  {
-> >  	struct pci_dev *bridge = pci_upstream_bridge(dev);
-> > @@ -2178,6 +2209,16 @@ static void pci_configure_mps(struct pci_dev *dev)
-> >  		return;
-> >  	}
-> >  
-> > +	/*
-> > +	 * Unless MPS strategy is PCIE_BUS_TUNE_OFF (don't touch MPS at all),
-> > +	 * start off by setting root ports' MPS to MPSS. Depending on the MPS
-> > +	 * strategy, and the MPSS of the devices below the root port, the MPS
-> > +	 * of the root port might get overridden later.
-> > +	 */
-> > +	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
-> > +	    pcie_bus_config != PCIE_BUS_TUNE_OFF)
-> > +		pcie_write_mps(dev, 128 << dev->pcie_mpss);
 > 
-> I believe you can just use "pcie_set_mps(dev, 128 << dev->pcie_mpss)" directly
-> and avoid moving pcie_write_mps() around.
+> Also, is there any point in adding the U suffix?
+> 
+> Usually you see UL or ULL suffix, when that is needed, but there actually
+> seems to be extremely few hits of simply U suffix:
+> $ git grep 0x1U | grep -v UL
 
-+1
+Sort of. Literals without the U suffix are considered signed iirc, and
+operating with them and then left-shifting the result can run into issues
+if you shift their bits into the sign bit. In the patch at [1] I needed to
+quell a compiler warning about signed long overflows with a U suffix. This
+should only ever really be a problem for anything that gets shifted up to
+bit index 31 I believe, and maybe there's a better way to handle this in
+the macro itself with an explicit cast to unsigned, but explicit casts
+give me the ick. I'm also open to changing it to an UL, which will have
+the same effect, and has more precedent.
+
+> 
+> 
+> Kind regards,
+> Niklas
+> 
+
+Best Regards,
+Nicolas Frattaroli
+
+Link: https://lore.kernel.org/all/20250612-byeword-update-v1-7-f4afb8f6313f@collabora.com/ [1]
 
 
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
