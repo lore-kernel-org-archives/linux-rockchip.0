@@ -4,169 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2135C61DB2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 07:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F5D7C71135
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 07:58:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XSfC5y57Ni6vXLJbuBsL43aR+GoY3vBvz+939j3kewE=; b=VaSwprL72z+0oq
-	rAI9XwHLYiMTSat2730YJAm0fG0BzluI7Pb7/ng64S+KTRNr9fwPWBNey1nRAnpCZiM1yBWsXeFSH
-	E0/8Gr75yorm42Ci+yACIDnnh2ImXxrPP94Rk8ZnxLcxEK69E6IOOmvcgYoNBAI3DOIQMvdtWuGzW
-	0Q1z/gSoMAJJkorijg/Brsgr6e19drwjE98A/kAR5LK2QtsUFZyWobhXqE/FoxgR5IVz8RimNLWaU
-	gJ6UHXzqZksgW4pFejzMZLZDwbKcJQA7H+uA/6ldcOC21HPWXwxGRnUC1vsI7kwgjkoawBQKmZfRy
-	SnmOjoSezWjtujdIa4wA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MIfxuBie3ZM4/yu6CW/FTpSMLFr5t9Nt/8cjPtArs+g=; b=IN0ybryVKOMVOxJWbbbMzosLm9
+	5wDum0yI1vbNGJsVMr+eIltBS3Bb70wNRL9Z4LNOt354+Bp6gd9Bgde26dhbI9cOiStL/+gTuwIwC
+	+oWMkpRNt7DXp9dI6QkwWp2skXdiiAUZ5Al06dPatI/cMyQcNd2EDSumT+h7dZP1PiUsCNEaL+PB3
+	WZt1QIh2ntrki9TUYZdW2PBRyCCOtmayh/Oi8M6dB8eUNeK217c2aXPNnPC2nhTvTaVfar0nbRafR
+	Df2CCNt3rmo1FgngDpsP3oFe2rpB97axuUSlblV/KTaGiUEclLM+pRrIuTLl1kMYFxNF8cSPlhez7
+	+Qv1oprg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPyuR-0000000FbII-2IGo;
-	Fri, 13 Jun 2025 07:33:07 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uPzIT-0000000Fi4t-0UV1;
+	Fri, 13 Jun 2025 07:57:57 +0000
+Received: from out-179.mta1.migadu.com ([2001:41d0:203:375::b3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPyde-0000000FZsH-1F13
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 13 Jun 2025 07:15:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=AFKIeJdzd7Bm1UfGUYdUXTMZwzn7kuZf09ynXcNd27k=; b=IaxUxwsfKSbRi7LMQtkdKS7ryW
-	5h6njL9/Pfx4goTqttNxd0VZXPXvrL8uYQcw4uLtkH3PVC8Z4bBJL6QCrwqylk9MfCGd4DVDvUKRT
-	ISRP5cFeOf+tUh5nzCXEUTaICNfQupeARCzJQ4KcgFPyyIVHr0T4GJBe+9L2inwUkPkk7cP8I9NuL
-	QPKUSXsb48ZUe2N6n1sBT9O1bhmCrYgBQxicTEJUxnJ2mNiPrZ0BB7Yw45s3jyN/Q6/t0OGANndB7
-	9eZu3IhHkSCHJ2otx9nGXZCqyJ+R2P/4mkAaO2wca8OE24Yu90OkpRjLmqkvqVcxSpDqmWKdxJnj6
-	sIDavgBQ==;
-Received: from smtp-out1.suse.de ([195.135.223.130])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPydc-00000002t8j-0wmA
+	id 1uPzIQ-0000000Fi3T-1Od4
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Jun 2025 07:15:46 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 4F20B2115E;
-	Fri, 13 Jun 2025 07:15:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1749798941; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=AFKIeJdzd7Bm1UfGUYdUXTMZwzn7kuZf09ynXcNd27k=;
-	b=wpnxcqgjRop7dkbkBQ/X1iuElaw96F5zP50QsPn5I4PbCQYjlf8kTIsBu6JxfU6RPDJuDp
-	RxQ4MhnWMcmky2ZNo4wk7bRNFuuNxkOpgFB9eXHAcKu2tTzWDaCYQ4M/VUWfplABYgNbFh
-	sVh+N4mU2AnW9XJXV/M4hBmN1ndOy/w=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1749798941;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=AFKIeJdzd7Bm1UfGUYdUXTMZwzn7kuZf09ynXcNd27k=;
-	b=kPjofHKQaFEdsoc79AwOm7JvdSfaz141myzJctvWsea6Z/9xOjZvLdd1Jo7NEsyl0iHep4
-	TeHnsN5rMrD7G5Aw==
-Authentication-Results: smtp-out1.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1749798941; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=AFKIeJdzd7Bm1UfGUYdUXTMZwzn7kuZf09ynXcNd27k=;
-	b=wpnxcqgjRop7dkbkBQ/X1iuElaw96F5zP50QsPn5I4PbCQYjlf8kTIsBu6JxfU6RPDJuDp
-	RxQ4MhnWMcmky2ZNo4wk7bRNFuuNxkOpgFB9eXHAcKu2tTzWDaCYQ4M/VUWfplABYgNbFh
-	sVh+N4mU2AnW9XJXV/M4hBmN1ndOy/w=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1749798941;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=AFKIeJdzd7Bm1UfGUYdUXTMZwzn7kuZf09ynXcNd27k=;
-	b=kPjofHKQaFEdsoc79AwOm7JvdSfaz141myzJctvWsea6Z/9xOjZvLdd1Jo7NEsyl0iHep4
-	TeHnsN5rMrD7G5Aw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id CB0A513782;
-	Fri, 13 Jun 2025 07:15:40 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id TbJIMBzQS2iFFgAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Fri, 13 Jun 2025 07:15:40 +0000
-Message-ID: <e2478a92-4e37-407c-8f2a-017d8f0e77ba@suse.de>
-Date: Fri, 13 Jun 2025 09:15:40 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 03/25] drm/gem-dma: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
- nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
- simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
- maarten.lankhorst@linux.intel.com, geert@linux-m68k.org
-References: <20250311155120.442633-1-tzimmermann@suse.de>
- <20250311155120.442633-4-tzimmermann@suse.de>
- <d7e016fd-3d0e-4822-a404-a53ba11e5dc4@ideasonboard.com>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <d7e016fd-3d0e-4822-a404-a53ba11e5dc4@ideasonboard.com>
-X-Spamd-Result: default: False [-2.80 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	RCVD_TLS_ALL(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[20];
-	MIME_TRACE(0.00)[0:+];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	ARC_NA(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FROM_HAS_DN(0.00)[];
-	FREEMAIL_CC(0.00)[lists.freedesktop.org,lists.infradead.org,vger.kernel.org,lists.linux.dev,lists.xenproject.org,ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org];
-	TO_DN_SOME(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:mid]
+	Fri, 13 Jun 2025 07:57:56 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1749801470;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=L+YN4MTZBkTzMLCaO2wC4gmmUGZnS4C1FG9BefD5M2o=;
+	b=sG6q1yaomuV3OMNUoQqhkbuH1Xcj2p7del+A7bay2fusZru9OEE8vWFR9UthMbY3VpLLfI
+	FUolafPTe92AVJjXi4pi5inFQskTUn+5VcHL1uolO93tIKvk8tlCvfrwE0e3akdsHhcC8V
+	xULhpn0qpRQt3dVp2ppv0jcfC8bE3yRFWAhE3OIwjSlJd+fb0tB+Svm/dPDtaN8FVUic8Q
+	AlUuSwdrSq1M+QGe+Yic0cPdymG4mu6zz0PJ+rqKgAXWDJlPscQ3e8bvOMPMPVcUGhiwnQ
+	jVaBmQpd3KW1TkF59UGitXhqsK7wY8V8Q1vheo3YthkTxgD8q+/QVo+u1ZZMvg==
+Date: Fri, 13 Jun 2025 09:57:32 +0200
+Message-Id: <DAL8UI7TH6IJ.2EVGYOYRQSS89@cknow.org>
+Cc: <linux-crypto@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, "Corentin Labbe" <clabbe@baylibre.com>,
+ <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH v3 3/7] crypto: testmgr - replace
+ CRYPTO_MANAGER_DISABLE_TESTS with CRYPTO_SELFTESTS
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Eric Biggers" <ebiggers@kernel.org>
+References: <20250505203345.802740-1-ebiggers@kernel.org>
+ <20250505203345.802740-4-ebiggers@kernel.org>
+ <DAJOCL4UQWZ1.2CB0NH55US5EI@cknow.org> <20250611163430.GA1254@sol>
+In-Reply-To: <20250611163430.GA1254@sol>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_081544_526795_891E0BE6 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20250613_005754_782776_08C4F80B 
+X-CRM114-Status: GOOD (  22.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,100 +68,120 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============2648971198241145029=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi
+--===============2648971198241145029==
+Content-Type: multipart/signed;
+ boundary=8d0444eb434897e482c102aa76e1f2eca706077e00be5351cd2962a65c42;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-Am 12.06.25 um 10:43 schrieb Tomi Valkeinen:
-> Hi,
+--8d0444eb434897e482c102aa76e1f2eca706077e00be5351cd2962a65c42
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+On Wed Jun 11, 2025 at 6:34 PM CEST, Eric Biggers wrote:
+> On Wed, Jun 11, 2025 at 01:41:06PM +0200, Diederik de Haas wrote:
+>> On Mon May 5, 2025 at 10:33 PM CEST, Eric Biggers wrote:
+>> > The negative-sense of CRYPTO_MANAGER_DISABLE_TESTS is a longstanding
+>> > mistake that regularly causes confusion.  Especially bad is that you c=
+an
+>> > have CRYPTO=3Dn && CRYPTO_MANAGER_DISABLE_TESTS=3Dn, which is ambiguou=
+s.
+>> >
+>> > Replace CRYPTO_MANAGER_DISABLE_TESTS with CRYPTO_SELFTESTS which has t=
+he
+>> > expected behavior.
+>> >
+>> > The tests continue to be disabled by default.
+>> > ---
+>> >  <snip>
+>>=20
+>> I built a 6.16-rc1 kernel [1] and its config is based upon Debian's and
+>> that has enabled CRYPTO_SELFTESTS [2] (due to Debian bug 599441 [3]).
+>>=20
+>> I then installed it on 3 Rockchip based devices and booted into that.
+>> 1. Radxa Rock 5B (rk3588)
+>> 2. PINE64 Quartz64 Model B (rk3568)
+>> 3. PINE64 RockPro64 (rk3399)
+>>=20
+>> The filtered dmesg output for Rock 5B:
+>> ERROR:
+>> [    0.709822] basic hdkf test(hmac(sha256)): failed to allocate transfo=
+rm: -2
+>> WARNING:
 >
-> On 11/03/2025 17:47, Thomas Zimmermann wrote:
->> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
->> buffer size. Align the pitch to a multiple of 8.
->>
->> Push the current calculation into the only direct caller imx. Imx's
->> hardware requires the framebuffer width to be aligned to 8. The
->> driver's current approach is actually incorrect, as it only guarantees
->> this implicitly and requires bpp to be a multiple of 8 already. A
->> later commit will fix this problem by aligning the scanline pitch
->> such that an aligned width still fits into each scanline's memory.
->>
->> A number of other drivers are build on top of gem-dma helpers and
->> implement their own dumb-buffer allocation. These drivers invoke
->> drm_gem_dma_dumb_create_internal(), which is not affected by this
->> commit.
->>
->> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->> ---
->>   drivers/gpu/drm/drm_gem_dma_helper.c     | 7 +++++--
->>   drivers/gpu/drm/imx/ipuv3/imx-drm-core.c | 2 ++
->>   2 files changed, 7 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/drm_gem_dma_helper.c b/drivers/gpu/drm/drm_gem_dma_helper.c
->> index b7f033d4352a..49be9b033610 100644
->> --- a/drivers/gpu/drm/drm_gem_dma_helper.c
->> +++ b/drivers/gpu/drm/drm_gem_dma_helper.c
->> @@ -20,6 +20,7 @@
->>   #include <drm/drm.h>
->>   #include <drm/drm_device.h>
->>   #include <drm/drm_drv.h>
->> +#include <drm/drm_dumb_buffers.h>
->>   #include <drm/drm_gem_dma_helper.h>
->>   #include <drm/drm_vma_manager.h>
->>   
->> @@ -304,9 +305,11 @@ int drm_gem_dma_dumb_create(struct drm_file *file_priv,
->>   			    struct drm_mode_create_dumb *args)
->>   {
->>   	struct drm_gem_dma_object *dma_obj;
->> +	int ret;
->>   
->> -	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
->> -	args->size = args->pitch * args->height;
->> +	ret = drm_mode_size_dumb(drm, args, SZ_8, 0);
->> +	if (ret)
->> +		return ret;
->>   
->>   	dma_obj = drm_gem_dma_create_with_handle(file_priv, drm, args->size,
->>   						 &args->handle);
->> diff --git a/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c b/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
->> index ec5fd9a01f1e..e7025df7b978 100644
->> --- a/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
->> +++ b/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
->> @@ -145,6 +145,8 @@ static int imx_drm_dumb_create(struct drm_file *file_priv,
->>   	int ret;
->>   
->>   	args->width = ALIGN(width, 8);
->> +	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
->> +	args->size = args->pitch * args->height;
->>   
->>   	ret = drm_gem_dma_dumb_create(file_priv, drm, args);
->>   	if (ret)
-> Won't the pitch and size just be overwritten by the
-> drm_gem_dma_dumb_create() call?
-
-Right, looks like it. Thanks for looking over this. The call to 
-drm_gem_dma_dumb_create() needs to be changed 
-drm_gem_dma_dumb_create_internal(). The latter doesn't modify the 
-arguments besides some sanity checks. BTW patch 10 cleans up imx 
-entirely. Best regards Thomas
+> https://lore.kernel.org/r/20250610191600.54994-1-ebiggers@kernel.org/ fix=
+ed the
+> HKDF failure.  It was caused by a patch that changed initcall levels.
 >
->   Tomi
+>> [    8.877288] alg: skcipher: skipping comparison tests for xctr-aes-ce =
+because xctr(aes-generic) is unavailable
 >
+> That's expected if you have CONFIG_CRYPTO_AES_ARM64_CE_BLK enabled but
+> CONFIG_CRYPTO_XCTR disabled.  Some tests are skipped in that case.
 
--- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
+Happy to report that with that patch and that config option, the error
+and warning are now gone. Thanks :-)
 
+PULL request for the patch is already sent to Linus:
+https://lore.kernel.org/linux-crypto/aEupSzhTI4h8kz-5@gondor.apana.org.au/
+
+>> [   14.172991] alg: ahash: rk-sha1 export() overran state buffer on test=
+ vector 0, cfg=3D"import/export"
+>> [   14.202291] alg: ahash: rk-sha256 export() overran state buffer on te=
+st vector 0, cfg=3D"import/export"
+>> [   14.230887] alg: ahash: rk-md5 export() overran state buffer on test =
+vector 0, cfg=3D"import/export"
+>
+> That means the Rockchip crypto driver is broken.
+
+The crypto driver for rk3399 is still broken.
+
+> Anyway, the more interesting part of your email is that you pointed out t=
+hat
+> Debian has the crypto self-tests enabled, precisely in order to automatic=
+ally
+> disable buggy drivers like these.
+>
+> So I'll send a patch that adds back a kconfig knob to run the fast tests =
+only,
+> which I had removed in commit 698de822780f.
+
+I responded about this to a new patch submission here:
+https://lore.kernel.org/linux-crypto/DAJXJHLY2ITB.3IBN23DX0RO4Z@cknow.org/
+and v2 of that patch can be found here:
+https://lore.kernel.org/linux-crypto/20250612174709.26990-1-ebiggers@kernel=
+.org/
+
+Cheers,
+  Diederik
+
+--8d0444eb434897e482c102aa76e1f2eca706077e00be5351cd2962a65c42
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaEvZ9AAKCRDXblvOeH7b
+bgePAP4+kEWYKZ1eqayKsFe8tBfUVxnfdStRKU8Qr/95saO95wEApLF/txTDorHT
+OXmTzRTcsInQy9LVjH2/+08cAly/KQs=
+=NvpI
+-----END PGP SIGNATURE-----
+
+--8d0444eb434897e482c102aa76e1f2eca706077e00be5351cd2962a65c42--
+
+
+--===============2648971198241145029==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2648971198241145029==--
+
