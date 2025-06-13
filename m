@@ -4,91 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 137CAC71150
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 18:16:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48FCC71148
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 18:16:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aj0e+Lw1UfSUfhnbJRBGd504/C/141yfMU/RA236ZXs=; b=klVS8HRJquRIFG
-	iRlifkZWtJ5NmI8CHs9PZRbfBJER+iQJZEZExQd8KWAaOzmAUEbdPBZgo9FAIIxyE+Z878G7ODxcu
-	7MIeVZxgG/q9TlxTQv9WZjzunjaqNC/QhdJKEHWyY/Vyo5xhevY468O6dtLrGfVYjGtTRS74/t2Y9
-	m7/1Lf5bpGelPUsrRs67mS/oZJuiAO+L++Yyp6haGvtFZHpa0zG32tep2QozGZhXq+wtHBh0T8ZDO
-	/8zdHhDKia0O7P0qqdaVVfgdLxOLrD7MZ7J2gSABBoQCPrdiVg3CDukFmZimEoUUA9gIqy0sjfiAn
-	KbCoUIoDafz+Gqr7MV1w==;
+	List-Owner; bh=ifcPDTwwDoVO75Bd7XiAQ/bYykjW97+HVIR54Wg/LKc=; b=vHLqVfSAxpZD7U
+	fXaxhv5ndUnIDk2ZXHFUbbFC6PBjmbBaMt9aId25aheeIaOVaWEkMFD2N3jnje7GZoHf4Z9SvioH+
+	+YXAcAGJQKSx+pMUcdcCBUtq8goH6usq4Q3OYVKdBGkogZXG11G7PZJa4buyoDgvw2AOUJrL7vqRk
+	IWRkGuJe58BqY4KqlpSSkhsmbL8BH4t3/ulgn3V/lBoCiv5yVsFpJujR553vBj3hSgqzRjam9k0Fa
+	g5qaOCvQ9k3Ewpil9+yhtwvrbbfqgLpPH7j8V12zH9uB0cy+Kqg1Yd3x+jYqdTzTpbIimTm0cNo1h
+	XR/0dQWrugyJm1DhDPAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ8wq-0000000HF5N-2Jbr;
-	Fri, 13 Jun 2025 18:16:16 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ5yp-0000000GorD-3vrO;
-	Fri, 13 Jun 2025 15:06:09 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-742c27df0daso1813287b3a.1;
-        Fri, 13 Jun 2025 08:06:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1749827167; x=1750431967; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=5jwmmYn5mR6/LEUkoHGVPsLNEcwThgX3SiiTAZydAvs=;
-        b=SvfuxwZzpRuIr4FIuTH5B+azQWIE3kTkkSSequplanT6Q3juhXSs+vk54MnZSN2NOv
-         OOgJmwGyhvcr731kNi1f5GSPcAJXSq6AqxwsyDvdJYYIkJvNbJNya9sHJvO+XhuIufCm
-         PAwsJbuPFpQS8jZYxn4UvmYb3vIAn+x4sQoeLW0GUYb6amFGGCSGCKclNODIoO68mtlf
-         YoRLfE/q3SFUOWqv3196juCxWg0TjPUDHYXYxO3z3JrEvtYRvcMbTuIknIAJWRL1DvWn
-         wtkntSXSyLs1X5fKGUMmi7Gzci9FdDElro+48Duuk9oZV2xzT2Ok8apANY1Ho8cN8CCs
-         I61Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749827167; x=1750431967;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=5jwmmYn5mR6/LEUkoHGVPsLNEcwThgX3SiiTAZydAvs=;
-        b=wCpFCp+7ZCJLhhreaItBjP7TpjQ1qy0ZLGcSteC5F03CJnqyNCUYODMcAUYKygOTqc
-         fgARWkCXeAAZFZUtCiIkuhdXXFZtmI3ZJDbs6TgrAtniV6tOOMgR4DDliJnJumarV0j0
-         hmwuu4oE4Rcu9GZGvRdnqTmNUBekJGlQ61nVJN9X4XfNzZ5zKLAAu7sl0N/y6FZNQYRe
-         QnryeLk2qZ07Uz/PW8hRws397pKjHDbqR2Ucy4ztEaxv/TjroQPzBWq0MpfbM0ptCusb
-         5c2SZ/1W3ak+vxgwjcRk2VSf1aCDn86VenvbKAV1TOh+bUKX/cUdZ0WY8FwqD+nw5qZJ
-         mWeg==
-X-Forwarded-Encrypted: i=1; AJvYcCU1oyoU62LPbloJABdwEpl/myetJozttdN2k95PQ5DWnTLjzjM2M/JmrKYxXxsPuIzFB5PJi3mJJITj@lists.infradead.org, AJvYcCXyn5tSNXfDvcbVxl7ynkMAlnxarU80C8m4qwgClv+qz6tCM1ScA7WV9Dsu+dauhEsMFSL4uanPX0TRq+llWvnj@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw5qEuSunjprKRynpN2W+TvS5qTVDdXGL9O71xvcx8BfMKhcftm
-	4+NhsOo/NZkLSxcF3yh7jGhMpccSVgSxar69Ae//f61JqWYQ0cbADPHdq8r03ZqS
-X-Gm-Gg: ASbGncuD8TBMzHXF/wAjWiu7TzNQwcugCoFL2yDiPeoACXXfOUXxoY1VEjjcs5dPQ0W
-	s7eSm9IdkqVMAhy0w+U11leTYW9+vJM2uCiKDu+IoKsuns5+Bf7baLV1dkAU6yyFiomy5VQa6J4
-	ev22tyEHx0vDAeVyRWP/N37ROGXHg3I5VOjdVxndGUM/xbPdX8+pphOpCb/Oy5gCtcDoH5tbwD0
-	Ws6vEAtNo57BRCNuiHFdjbZaw1LGfFu078DzWkHts4uvXFYncMjW/ne8CdYhi+GJVxeXZrlzO7l
-	Z9ZblPJjBnzHnDvSZoE8xJMuKaoXn0ibbWAVYSncmmSWBaijtA==
-X-Google-Smtp-Source: AGHT+IGYw5AjQ+/QZORRx3QoafJhKHVvIiAqNZXzixKJWW+8p/p+htMuLlVMp3U5LPssM6b4Oi+Eew==
-X-Received: by 2002:a05:6a20:7fa4:b0:1f5:6b36:f574 with SMTP id adf61e73a8af0-21fad0d39ebmr4649001637.38.1749827167066;
-        Fri, 13 Jun 2025 08:06:07 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:838f::dead:c001])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7489000531esm1691240b3a.41.2025.06.13.08.06.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Jun 2025 08:06:06 -0700 (PDT)
-Date: Fri, 13 Jun 2025 12:06:00 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [RESEND RFC PATCH v4 3/5] PCI: rockchip: Set Target Link Speed
- before retraining
-Message-ID: <affaa12fedbb6e34696242d1f2f2dc5634b72005.1749827015.git.geraldogabriel@gmail.com>
-References: <cover.1749827015.git.geraldogabriel@gmail.com>
+	id 1uQ8wv-0000000HF9H-3EFf;
+	Fri, 13 Jun 2025 18:16:21 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uQ6Nb-0000000GtEt-1itw;
+	Fri, 13 Jun 2025 15:31:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=5NrQGEgPHc7OkD7NNgqkynvWlZ+jmCbXo3ptECvtkyA=;
+	b=W8lGPEDx7LESJxpUb5VJPClUujkjL1q6IcJemBE/+s8uUCG+le4HuLjIiSP08i
+	00jHcgFvqQ0eJyxPIFB1t7Kknu8YOUsVHY2D5XfYCqTCqotfmJmMYSpCqmT+c/b6
+	o7CKAx2RlyzPFwUe3SO6ZnCHGxX11y86maPP0ZSxrlSCM=
+Received: from [192.168.71.94] (unknown [])
+	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wBX3ZU1RExoruMjIQ--.51583S2;
+	Fri, 13 Jun 2025 23:31:02 +0800 (CST)
+Message-ID: <1e3ba7e1-dad3-4728-85d2-276945119ab0@163.com>
+Date: Fri, 13 Jun 2025 23:31:01 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1749827015.git.geraldogabriel@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/2] PCI: Configure root port MPS during host probing
+To: Niklas Cassel <cassel@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>
+Cc: lpieralisi@kernel.org, kw@linux.com, bhelgaas@google.com,
+ heiko@sntech.de, manivannan.sadhasivam@linaro.org, yue.wang@amlogic.com,
+ pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
+ jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20250510155607.390687-1-18255117159@163.com>
+ <20250510155607.390687-2-18255117159@163.com>
+ <co2q55j4mk2ux7af4sj6snnfomditwizg5jevg6oilo3luby5z@6beqtbn3l432>
+ <aEwRAZgLJUECbGz6@ryzen>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <aEwRAZgLJUECbGz6@ryzen>
+X-CM-TRANSID: _____wBX3ZU1RExoruMjIQ--.51583S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW3Aw1rKr4fGr1UCr17uw1xKrg_yoWxGF1xpa
+	y5Ga1SyFykGry3GanFv3W09r1Ygr93Zry3Jr98J340v3Z0yF17JrWYkr4rCas7GrZ3Aa42
+	vrn0qryxu3ZYvFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UgvtZUUUUU=
+X-Originating-IP: [124.79.114.92]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOgtro2hMOpDXRQAAsl
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_080607_968214_655C9968 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250613_083143_897518_AE29427A 
+X-CRM114-Status: GOOD (  29.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,37 +76,165 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Current code may fail Gen2 retraining if Target Link Speed
-is set to 2.5 GT/s in Link Control and Status Register 2.
-Set it to 5.0 GT/s accordingly.
 
-Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
----
- drivers/pci/controller/pcie-rockchip-host.c | 4 ++++
- 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index 65653218b9ab..7a0b6ebb7c27 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -341,6 +341,10 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
- 		 * Enable retrain for gen2. This should be configured only after
- 		 * gen1 finished.
- 		 */
-+		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL2);
-+		status &= ~PCI_EXP_LNKCTL2_TLS;
-+		status |= PCI_EXP_LNKCTL2_TLS_5_0GT;
-+		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL2);
- 		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
- 		status |= PCI_EXP_LNKCTL_RL;
- 		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
--- 
-2.49.0
+On 2025/6/13 19:52, Niklas Cassel wrote:
+> On Fri, Jun 13, 2025 at 12:08:31PM +0530, Manivannan Sadhasivam wrote:
+>> On Sat, May 10, 2025 at 11:56:06PM +0800, Hans Zhang wrote:
+>>> Current PCIe initialization logic may leave root ports operating with
+>>> non-optimal Maximum Payload Size (MPS) settings. While downstream device
+>>> configuration is handled during bus enumeration, root port MPS values
+>>> inherited from firmware or hardware defaults might not utilize the full
+>>> capabilities supported by the controller hardware. This can result is
+>>> uboptimal data transfer efficiency across the PCIe hierarchy.
+>>>
+>>> During host controller probing phase, when PCIe bus tuning is enabled,
+>>> the implementation now configures root port MPS settings to their
+>>> hardware-supported maximum values. By iterating through bridge devices
+>>> under the root bus and identifying PCIe root ports, each port's MPS is
+>>> set to 128 << pcie_mpss to match the device's maximum supported payload
+>>> size.
+>>
+>> I don't think the above statement is accurate. This patch is not iterating
+>> through the bridges and you cannot identify root ports using that. What this
+>> patch does is, it checks whether the device is root port or not and if it is,
+>> then it sets the MPS to MPSS (hw maximum) if PCIE_BUS_TUNE_OFF is not set.
+> 
+> Correct.
+> Later, when the bus is walked, if any downstream device does not support
+> the MPS value currently configured in the root port, pci_configure_mps()
+> will reduce the MPS in the root port to the max supported by the downstream
+> device.
+> 
+> So even we start off by setting MPS in the root port to the max supported
+> by the root port, it might get reduced later on.
+> 
+> 
+
+Dear Mani and Niklas,
+
+Is it okay to modify the commit message as follows? The last paragraph 
+remains unchanged.
+
+
+
+Current PCIe initialization logic may leave root ports operating with
+non-optimal Maximum Payload Size (MPS) settings. While downstream device
+configuration is handled during bus enumeration, root port MPS values
+inherited from firmware or hardware defaults might not utilize the full
+capabilities supported by the controller hardware. This can result in
+suboptimal data transfer efficiency across the PCIe hierarchy.
+
+During host controller probing phase, when PCIe bus tuning is enabled,
+the implementation now configures root port MPS settings to their
+hardware-supported maximum values. Specifically, when configuring the MPS
+for a PCIe device, if the device is a root port and the bus tuning is not
+disabled (PCIE_BUS_TUNE_OFF), the MPS is set to 128 << dev->pcie_mpss to
+match the device's maximum supported payload size. The Max Read Request
+Size (MRRS) is subsequently adjusted through existing companion logic to
+maintain compatibility with PCIe specifications.
+
+Note that this initial setting of the root port MPS to the maximum might
+be reduced later during the enumeration of downstream devices if any of
+those devices do not support the maximum MPS of the root port.
+
+>>
+>>> The Max Read Request Size (MRRS) is subsequently adjusted through
+>>> existing companion logic to maintain compatibility with PCIe
+>>> specifications.
+>>>
+>>> Explicit initialization at host probing stage ensures consistent PCIe
+>>> topology configuration before downstream devices perform their own MPS
+>>> negotiations. This proactive approach addresses platform-specific
+>>> requirements where controller drivers depend on properly initialized
+>>> root port settings, while maintaining backward compatibility through
+>>> PCIE_BUS_TUNE_OFF conditional checks. Hardware capabilities are fully
+>>> utilized without altering existing device negotiation behaviors.
+>>>
+>>> Suggested-by: Niklas Cassel <cassel@kernel.org>
+>>> Signed-off-by: Hans Zhang <18255117159@163.com>
+>>> ---
+>>>   drivers/pci/probe.c | 72 ++++++++++++++++++++++++++-------------------
+>>>   1 file changed, 41 insertions(+), 31 deletions(-)
+>>>
+>>> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+>>> index 364fa2a514f8..1f67c03d170a 100644
+>>> --- a/drivers/pci/probe.c
+>>> +++ b/drivers/pci/probe.c
+>>> @@ -2149,6 +2149,37 @@ int pci_setup_device(struct pci_dev *dev)
+>>>   	return 0;
+>>>   }
+>>>   
+>>> +static void pcie_write_mps(struct pci_dev *dev, int mps)
+>>> +{
+>>> +	int rc;
+>>> +
+>>> +	if (pcie_bus_config == PCIE_BUS_PERFORMANCE) {
+>>> +		mps = 128 << dev->pcie_mpss;
+>>> +
+>>> +		if (pci_pcie_type(dev) != PCI_EXP_TYPE_ROOT_PORT &&
+>>> +		    dev->bus->self)
+>>> +
+>>> +			/*
+>>> +			 * For "Performance", the assumption is made that
+>>> +			 * downstream communication will never be larger than
+>>> +			 * the MRRS.  So, the MPS only needs to be configured
+>>> +			 * for the upstream communication.  This being the case,
+>>> +			 * walk from the top down and set the MPS of the child
+>>> +			 * to that of the parent bus.
+>>> +			 *
+>>> +			 * Configure the device MPS with the smaller of the
+>>> +			 * device MPSS or the bridge MPS (which is assumed to be
+>>> +			 * properly configured at this point to the largest
+>>> +			 * allowable MPS based on its parent bus).
+>>> +			 */
+>>> +			mps = min(mps, pcie_get_mps(dev->bus->self));
+>>> +	}
+>>> +
+>>> +	rc = pcie_set_mps(dev, mps);
+>>> +	if (rc)
+>>> +		pci_err(dev, "Failed attempting to set the MPS\n");
+>>> +}
+>>> +
+>>>   static void pci_configure_mps(struct pci_dev *dev)
+>>>   {
+>>>   	struct pci_dev *bridge = pci_upstream_bridge(dev);
+>>> @@ -2178,6 +2209,16 @@ static void pci_configure_mps(struct pci_dev *dev)
+>>>   		return;
+>>>   	}
+>>>   
+>>> +	/*
+>>> +	 * Unless MPS strategy is PCIE_BUS_TUNE_OFF (don't touch MPS at all),
+>>> +	 * start off by setting root ports' MPS to MPSS. Depending on the MPS
+>>> +	 * strategy, and the MPSS of the devices below the root port, the MPS
+>>> +	 * of the root port might get overridden later.
+>>> +	 */
+>>> +	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
+>>> +	    pcie_bus_config != PCIE_BUS_TUNE_OFF)
+>>> +		pcie_write_mps(dev, 128 << dev->pcie_mpss);
+>>
+>> I believe you can just use "pcie_set_mps(dev, 128 << dev->pcie_mpss)" directly
+>> and avoid moving pcie_write_mps() around.
+> 
+> +1
+> 
+
+Mani and Niklas,
+
+Thank you very much for your review and suggestions. Will change.
+
+Best regards,
+Hans
+
+
+> 
+> Kind regards,
+> Niklas
 
 
 _______________________________________________
