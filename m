@@ -4,72 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE4A3C71148
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 15:39:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6ED8C71148
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 15:51:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e2hhYR1/mq42ks8MFKhqyGbbAToBHCEY4mmr/YjnZME=; b=svHuEsJfVK5ZoW
-	HJOQndgYlkVPOIMc3XEiKIbPaKtu0wQcWJClVo83HCbtx39KHJw4tk5/sTVnqklXy5O9P/DFKQ3NT
-	tOpHliqpMMop4L9Z7vKYnsc7f3KjGVrobKQxR6ECksotPZ+4JdZa5O04N5IyNskThCAAUTZY01RM4
-	d8afdNRCr/W58ZDO+VgeUh7amdnmO90AOV2ebVeYfZXX7Jz6NbGVxtySCp7ws+4awoRyWz9SY1Dge
-	AuOlF2fS7G76HK/JAYH0Nl+fPDD74wq67fvlm8Ip4xlj9zHY6V7I3lVWh7DIbHH2wNspYJdUhuhOe
-	R4bp57gRsXMMcTi+cYMA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZfZrfnksclQbH3/OL3/sjz3JWBqlccfLX1v5+xnslOM=; b=05SZWl3CE+pkML
+	yOGXTeLtOOjjRK+9mv5H2Ng5KoZpk/ogQtEVFyRWfefeLaU2I61BD5fambvSGdb6vi4XmoLF4mggP
+	w6+gC8dnsPfvDXsCAKveP+sFsC84Ok/soCagP7PHlvT4cB/EVOQdezTS8P2gkzIjXG4Af/h6lRZ7M
+	facmGrdnhu4rFJlyOYwcD9xJXNJFF82BbOj5XifaV4gX5DJ1X4n+i5ezCGQGrQr1tcm5lOMM0bwTP
+	CylcRgq1Qqveo5wJryeyN2NOdj90bNxNx08I3FfzohPNyosTr6bQL0uMCWNhQLXDinjDy761l5qVO
+	FlzPYYqnoDWth9v1G+wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ6VE-0000000GuCc-2Fzl;
-	Fri, 13 Jun 2025 15:39:36 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uQ6gh-0000000GxVc-1Iek;
+	Fri, 13 Jun 2025 15:51:27 +0000
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ4M4-0000000GTwr-3HnL;
-	Fri, 13 Jun 2025 13:22:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749820908; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=HiGP/zFuoD/K72kz39vVKk1DqfaB+k6xKcjlzs0tTQt0FNVA7MvQ4CQazrpNA10Us/jtePzBEos95U2pqs4KIas6Usb27r/x8TXohCTITJL/GzRLLVrTrYE6idzS+h2MdZkxn7WLlEMCtFPdIwQZP20edCf49nitIHlba3qcvpU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749820908; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Nq6vLrgRxcRv0ur30aqw4u0LYcZO69N6Td/qIVTptOM=; 
-	b=XqO6xYlCbyAm/i0O6PNPzeWAQBYLFyGg2dt3zGezuL3kLI7dWsRXivTx8m53D7fhlo1MRXIScgbzzNTnvD/bb0zaSZGdl1cjf67oghQeHqeDKv5fDesbiY0lXJHT2mKQVlLsrGqfebZBzH2x60ZmnciwRgvFpAiG1fknxEuJZFo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749820908;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=Nq6vLrgRxcRv0ur30aqw4u0LYcZO69N6Td/qIVTptOM=;
-	b=UdRJJkA/SCNLBUiZRzD59FVf5gvbzgk3ULumBZ+hke93c66e5XI/T5h0hlfJUOP3
-	YscTk7ST2C715rRAh8R1vlBJFOXnOu4H1u40wUCMicwuGr0e/tXza2WAoRJM1/2L0CE
-	XK/28UPiip/z0l0ThnN8vdAm4i8Elb62fsUMvYZY=
-Received: by mx.zohomail.com with SMTPS id 1749820906115539.1019397469723;
-	Fri, 13 Jun 2025 06:21:46 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Neil Armstrong <neil.armstrong@linaro.org>
-Cc: Alexey Charkov <alchark@gmail.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 3/4] phy: rockchip: usbdp: reset USB3 and reinit on orientation
- switch
-Date: Fri, 13 Jun 2025 15:21:41 +0200
-Message-ID: <4115444.Lt9SDvczpP@workhorse>
-In-Reply-To: <49eb73df-9a15-436e-a05c-72dd3aa36bf8@linaro.org>
-References: <20250610-rk3576-sige5-usb-v4-0-7e7f779619c1@collabora.com>
- <20250610-rk3576-sige5-usb-v4-3-7e7f779619c1@collabora.com>
- <49eb73df-9a15-436e-a05c-72dd3aa36bf8@linaro.org>
+	id 1uQ5hk-0000000Gl07-0SQ6;
+	Fri, 13 Jun 2025 14:48:29 +0000
+Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-b2d46760950so2320951a12.3;
+        Fri, 13 Jun 2025 07:48:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749826107; x=1750430907; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=f9JTiirLp7dFXp65A+6dp+48wUewOH1a1vp6gPpeVWM=;
+        b=BcafQSCJ6Vmp19SJYZi3Xw3NWujoKes1SawmIMs3guDTS0DnAHgn6oimQbXSM2vxEX
+         pHGcHIkZrla4Vu+6teviAASmuI5WtTU+U4QASr1T5GxxUAPS4uJ4w1Y0hubz4idSK6q8
+         LCAeNhoM6UGtPGEZstHqEKaGe635b+BwhV1Yd3IOAMdvbB2hDxHrOXn0ZKlyk/dqLc62
+         JzblRlD10OcVQywt/C7pfIPTLl6o4GP85nW1CFWPMfNAAxcCvU3wHOI8fBxI1sJjloFb
+         5NF1duxOa4s0xvYPdIM4gty6+OrqSKWCo80Eur3OR1gRmMgSie5JL/0RSFTsaQzlRf2m
+         eZSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749826107; x=1750430907;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=f9JTiirLp7dFXp65A+6dp+48wUewOH1a1vp6gPpeVWM=;
+        b=keT/+Txp7+ItNTc2lKA2QVcvCOXRCZoZ21IPtDys7NgbsLUUBOziBchp14t1K7ZHen
+         GAnc4lgX17XNbVCLo28paXDpek7YmzchHK+gQ3EuaF5p3emgYeSQb8dXJL7vSYl7FuOV
+         7SPsQUn6rbzr+cERCtFO9UgOs3X1rUVPnGDmINAXXQi/cqM+JaPMUVcSVdNbMI/F/MPA
+         XydpKpx3Lyg1CFIQP/XT/toSKHfrR0kUybIMNQcfULZ8VsoWaiWxNQwxU0Uuy0vmRIg4
+         JF91nuFGwxewVeVyZpJxkCqd9MfHLO804HsPNB1tVj9lFRwYEL/CHVRUV5z3i8i15XKC
+         gTxQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX59gX+cCsCCdOwE15vb3Yz5tR+2N+kUnI/00vhZhq+ukq/JNVY4g9aB+SkDb0D2So5j0NHebDOLDBC@lists.infradead.org, AJvYcCXx0G/j+WyQvwXi9jfy6+avTd1L/j7qXF6DBtBUMZ+kxqO8VGJEem6c6PWaVJ6tsRBWVR8v+nqhElriaQyywGae@lists.infradead.org
+X-Gm-Message-State: AOJu0YzIlYIoiK1LPp5v3mBr9gxezzIN2u9TCsHPQ2bq7m5Y9BzzI/I0
+	9NiMCbQCCiM3TUGkjTCzZvZxDjlPd3wCwalSDwHeDKg/cfum42zVHooysvw5IHhz
+X-Gm-Gg: ASbGncsnOBo29lgXih8bNPErxpV6Tm3Q9LMGuDFsSGxacHYK8kTh0dxiBeMszkorEOD
+	nKvTCUk/UVFdizhRoPAQGE7zlM81h1yC0YYPOzD5ZdHOtfLxhfHt6NgDhIUf742TWVCCP4hKymj
+	bhbtw3fiSn1nS0zWaXiaxWNfXJeg/x6y6hjyGogUQ0e45KEZvYtgnhiGUcL7Jdj2g8h/NcgQZpb
+	GKeMvajGt4TE027cK4SoUbfzjOTpamWuKDiSdJ8xUtKI+aRbzgcxG5hu5jOHWs3napeT0hMpM1C
+	4YeNoezEb+RBrY8c/i6W2JjZd4nYVCBXkj0lFY+mNgjBervKkg==
+X-Google-Smtp-Source: AGHT+IHcd33U1pPTm2OZvPaNgt6ez8a+j54CjSPCSVvtmMq9GaYDflpq+hrFnm/a0JpIR7GcANSQcQ==
+X-Received: by 2002:a05:6a20:728e:b0:1f5:64fd:68ea with SMTP id adf61e73a8af0-21facb4a140mr4610926637.4.1749826107267;
+        Fri, 13 Jun 2025 07:48:27 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:838f::dead:c001])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b2fe164406esm1803644a12.27.2025.06.13.07.48.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Jun 2025 07:48:26 -0700 (PDT)
+Date: Fri, 13 Jun 2025 11:48:21 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [RFC PATCH v4 0/4] PCI: rockchip: Improve quality of driver
+Message-ID: <cover.1749825317.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_062200_862666_C8DE8943 
-X-CRM114-Status: GOOD (  45.40  )
+X-CRM114-CacheID: sfid-20250613_074828_164958_D44D453D 
+X-CRM114-Status: UNSURE (   7.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,198 +101,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Friday, 13 June 2025 10:55:43 Central European Summer Time neil.armstrong@linaro.org wrote:
-> Hi,
-> 
-> On 10/06/2025 16:07, Nicolas Frattaroli wrote:
-> > Until now, super speed on Type-C only worked in one orientation. This is
-> > because on an orientation switch, the UDPHY was never reinitialised.
-> > 
-> > Heiko presented a patch to do this[1], but there were concerns over the
-> > correctness of it[2]. Experimentally using Heiko's patch on RK3576 did
-> > make me run into issues, though they seemed to be related to the
-> > orientation switch actually happening while a clock driving a GRF
-> > register was disabled.
-> > 
-> > The key issue is that the hardware wants the USB 3 controller to be held
-> > in reset while the PHY is being reconfigured, otherwise we may run into
-> > hard-to-catch race conditions.
-> > 
-> > Either way, this patch implements the required ordering in a somewhat
-> > unpleasant way: we get the USB 3 controller from the DT, and use runtime
-> > power management to forcibly suspend it while the UDPHY is being
-> > reconfigured, and then forcibly resume it later. As an added pain in the
-> > rear, the suspend/resume of the USB 3 controller also tries fiddling
-> > with the USB 3 PHY part of the UDPHY, which means we introduce an atomic
-> > flag to skip suspending/resuming the UDPHY if we're resetting the USB 3
-> > controller. We may just need to skip trying to acquire the mutex again,
-> > but both ways work for me in practice.
-> > 
-> > This solution may in fact be complete rubbish, but it works to get USB 3
-> > Super Speed working in both cable orientations on my board.
-> 
-> Yeah this is kind of a hack, and we have a similar situation on Qualcomm platforms
-> when dealing with USB2-only and DP-only altmodes, where we need the DWC3 to
-> disable the usb3 path. Hopefully on Qcom combo PHYs we can switch lanes without
-> disable the USB3 PHY.
-> 
-> So the proper solution would have the dwc3 driver to also react to mux and
-> orientation events and disable the usb3 path to allow the phy to reconfigure
-> itself.
-> 
-> We don't have any concrete proposal yet, but we will get something soonish.
+During a 30-day debugging-run fighting quirky PCIe devices on RK3399
+some quality improvements began to take form and this is my attempt
+at upstreaming it. It will ensure maximum chance of retraining to Gen2
+5.0GT/s, on all four lanes and plus if anybody is debugging the PHY
+they'll now get real values from TEST_I[3:0] for every TEST_ADDR[4:0]
+without risk of locking up kernel like with present broken async
+strobe TEST_WRITE.
 
-Thanks you for the additional insight, I do agree that having the
-controller be in charge of this is the better solution. That way, the PHY
-doesn't need to know its controller, and the controller driver is in charge
-of ordering the resets and reconfigure right, which means the ugly reset
-loop breaking in this patch isn't needed.
+---
+V3 -> V4: fix TLS setting-up in Link Control and Status Register 2 and
+adjust commit titles
+V2 -> V3: correctly clean-up with standard PCIe defines as per Bjorn's
+suggestion
+V1 -> V2: use standard PCIe defines as suggested by Bjorn
 
-If you do end up sending a patch series with a proposal, please +Cc me,
-so that I can see if it also works for Rockchip.
+Geraldo Nascimento (4):
+  PCI: rockchip: Drop unused custom registers and bitfields
+  PCI: rockchip: Set Target Link Speed before retraining
+  phy: rockchip-pcie: Enable all four lanes
+  phy: rockchip-pcie: Adjust read mask and write
 
-If the hack isn't acceptable to be merged until then, then I'll drop
-this patch from future revisions of the series to get the other parts
-in.
+ drivers/pci/controller/pcie-rockchip-host.c |  4 ++++
+ drivers/pci/controller/pcie-rockchip.h      | 11 +----------
+ drivers/phy/rockchip/phy-rockchip-pcie.c    | 16 +++++++++-------
+ 3 files changed, 14 insertions(+), 17 deletions(-)
 
-> 
-> Neil
-
-Best regards,
-Nicolas Frattaroli
-
-> 
-> > 
-> > Link: https://lore.kernel.org/all/20250226103810.3746018-3-heiko@sntech.de/ [1]
-> > Link: https://lore.kernel.org/linux-rockchip/h57ok2hw6os7bcafqkrqknfvm7hnu25m2oe54qmrsuzdwqlos3@m4och2fcdm7s/ [2]
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >   drivers/phy/rockchip/phy-rockchip-usbdp.c | 54 +++++++++++++++++++++++++++++++
-> >   1 file changed, 54 insertions(+)
-> > 
-> > diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> > index fff54900feea601c8fe6bf4c7123dfebc5661a15..5cd6bbc367f69bca15c2a94a07e72f850b381ae3 100644
-> > --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> > +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> > @@ -200,6 +200,10 @@ struct rk_udphy {
-> >   	/* PHY devices */
-> >   	struct phy *phy_dp;
-> >   	struct phy *phy_u3;
-> > +
-> > +	/* USB 3 controller device */
-> > +	struct device *ctrl_u3;
-> > +	atomic_t ctrl_resetting;
-> >   };
-> >   
-> >   static const struct rk_udphy_dp_tx_drv_ctrl rk3588_dp_tx_drv_ctrl_rbr_hbr[4][4] = {
-> > @@ -1255,6 +1259,9 @@ static int rk_udphy_usb3_phy_init(struct phy *phy)
-> >   	struct rk_udphy *udphy = phy_get_drvdata(phy);
-> >   	int ret = 0;
-> >   
-> > +	if (atomic_read(&udphy->ctrl_resetting))
-> > +		return 0;
-> > +
-> >   	mutex_lock(&udphy->mutex);
-> >   	/* DP only or high-speed, disable U3 port */
-> >   	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs) {
-> > @@ -1273,6 +1280,9 @@ static int rk_udphy_usb3_phy_exit(struct phy *phy)
-> >   {
-> >   	struct rk_udphy *udphy = phy_get_drvdata(phy);
-> >   
-> > +	if (atomic_read(&udphy->ctrl_resetting))
-> > +		return 0;
-> > +
-> >   	mutex_lock(&udphy->mutex);
-> >   	/* DP only or high-speed */
-> >   	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs)
-> > @@ -1401,10 +1411,31 @@ static struct phy *rk_udphy_phy_xlate(struct device *dev, const struct of_phandl
-> >   	return ERR_PTR(-EINVAL);
-> >   }
-> >   
-> > +static struct device_node *rk_udphy_to_controller(struct rk_udphy *udphy)
-> > +{
-> > +	struct device_node *np;
-> > +
-> > +	for_each_node_with_property(np, "phys") {
-> > +		struct of_phandle_iterator it;
-> > +		int ret;
-> > +
-> > +		of_for_each_phandle(&it, ret, np, "phys", NULL, 0) {
-> > +			if (it.node != udphy->dev->of_node)
-> > +				continue;
-> > +
-> > +			of_node_put(it.node);
-> > +			return np;
-> > +		}
-> > +	}
-> > +
-> > +	return NULL;
-> > +}
-> > +
-> >   static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
-> >   				 enum typec_orientation orien)
-> >   {
-> >   	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
-> > +	int ret;
-> >   
-> >   	mutex_lock(&udphy->mutex);
-> >   
-> > @@ -1420,6 +1451,18 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
-> >   	rk_udphy_set_typec_default_mapping(udphy);
-> >   	rk_udphy_usb_bvalid_enable(udphy, true);
-> >   
-> > +	if (udphy->status != UDPHY_MODE_NONE && udphy->ctrl_u3) {
-> > +		atomic_set(&udphy->ctrl_resetting, 1);
-> > +		pm_runtime_force_suspend(udphy->ctrl_u3);
-> > +
-> > +		ret = rk_udphy_setup(udphy);
-> > +		if (!ret)
-> > +			clk_bulk_disable_unprepare(udphy->num_clks, udphy->clks);
-> > +
-> > +		pm_runtime_force_resume(udphy->ctrl_u3);
-> > +		atomic_set(&udphy->ctrl_resetting, 0);
-> > +	}
-> > +
-> >   unlock_ret:
-> >   	mutex_unlock(&udphy->mutex);
-> >   	return 0;
-> > @@ -1430,12 +1473,22 @@ static void rk_udphy_orien_switch_unregister(void *data)
-> >   	struct rk_udphy *udphy = data;
-> >   
-> >   	typec_switch_unregister(udphy->sw);
-> > +	put_device(udphy->ctrl_u3);
-> >   }
-> >   
-> >   static int rk_udphy_setup_orien_switch(struct rk_udphy *udphy)
-> >   {
-> > +	struct device_node *ctrl = rk_udphy_to_controller(udphy);
-> >   	struct typec_switch_desc sw_desc = { };
-> >   
-> > +	if (ctrl) {
-> > +		udphy->ctrl_u3 = bus_find_device_by_of_node(udphy->dev->bus, ctrl);
-> > +		of_node_put(ctrl);
-> > +	}
-> > +
-> > +	if (!udphy->ctrl_u3)
-> > +		dev_info(udphy->dev, "couldn't find this PHY's USB3 controller\n");
-> > +
-> >   	sw_desc.drvdata = udphy;
-> >   	sw_desc.fwnode = dev_fwnode(udphy->dev);
-> >   	sw_desc.set = rk_udphy_orien_sw_set;
-> > @@ -1499,6 +1552,7 @@ static int rk_udphy_probe(struct platform_device *pdev)
-> >   		return ret;
-> >   
-> >   	mutex_init(&udphy->mutex);
-> > +	atomic_set(&udphy->ctrl_resetting, 0);
-> >   	platform_set_drvdata(pdev, udphy);
-> >   
-> >   	if (device_property_present(dev, "orientation-switch")) {
-> > 
-> 
-> 
-
-
-
+-- 
+2.49.0
 
 
 _______________________________________________
