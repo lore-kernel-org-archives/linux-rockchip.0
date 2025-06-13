@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6106C61DB2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 09:07:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99EB9C71155
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 09:07:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bQr1myIm0V3e0bHj+ihCFJu03PxWuZeacvk5CUgN9Pk=; b=e4jTdnTbdOmJdT
-	tDRHreZiU4o/6q3SCsVxl5fqVuGkhfJcm4V8pahIaZqXLARYJ783zSjiSWIRgkuNnh9zTw5POZjEv
-	0BA3qpynr04hpCqGl0RWLKCzVoYjm7Iv7iDMwMWkYoeXcyfKPMyTtRABmlNanf5wTXk9Z/xPnTKzA
-	7cFbvhXBDxsjS4fK1MZNvp8c3A0QKhnljxpHhHO62ZXXCw7M4gh9kL+DOc+NgHMoI0onf7Dw9Tw2/
-	P811BsJWPJJwo6zc2QhMRSp2Ozs6+2aCwbf0R8sm9E+m6IVL17sPXUmWIEfqbq59qCncexTs+ZbU8
-	OqsT4M2qyFQ05QlPdtMQ==;
+	List-Owner; bh=IFBeIsARUotnlEFnWKJJMDaWKWs/Ba1IufuqWYBQuI0=; b=lymJM09j1kTA5E
+	mStl06nvCdQDaiFLbIGuytjm7fsKgj2B7sPOjbRO8qwuYPxJKURUsOOs+npnPTYmZoVRc4lc3JU34
+	QQRGE6R9QgikEr21iYZJpVMG1LrTQZMNiHTOcWDXyi8wF4EcNw+reUbIzE2ti+vUGZT9vgtfi0sge
+	jebZredldRJkG4GVPtp2YS+10rhd/zHREgKGme9QOQ7+RV3GZy47o+4nO2PusiSQ1uKXa2ClNKz57
+	VGdimcDpDxTfUtbVGzsPe3pMCLGuy3KpcrlOAo/3GcBlodJsG7S1C5bASVubnHe20yMbVRchMbSzV
+	dSWGO1h1NbWMTrceba6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ0O1-0000000FrIt-2dwC;
-	Fri, 13 Jun 2025 09:07:45 +0000
+	id 1uQ0O3-0000000FrLd-1QD1;
+	Fri, 13 Jun 2025 09:07:47 +0000
 Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ0La-0000000FqVh-1yYU
+	id 1uQ0Li-0000000FqeB-2kYy
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Jun 2025 09:05:18 +0000
+	Fri, 13 Jun 2025 09:05:24 +0000
 Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id D93101F891;
-	Fri, 13 Jun 2025 09:04:42 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 9D1041F88C;
+	Fri, 13 Jun 2025 09:04:43 +0000 (UTC)
 Authentication-Results: smtp-out2.suse.de;
 	none
 Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 11BCF137FE;
-	Fri, 13 Jun 2025 09:04:42 +0000 (UTC)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 0F8CD137FE;
+	Fri, 13 Jun 2025 09:04:43 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
 	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id mOb7AqrpS2inNAAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Fri, 13 Jun 2025 09:04:42 +0000
+	id MI1tAqvpS2inNAAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Fri, 13 Jun 2025 09:04:43 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: simona@ffwll.ch,
 	airlied@gmail.com,
@@ -67,14 +67,10 @@ Cc: dri-devel@lists.freedesktop.org,
 	intel-xe@lists.freedesktop.org,
 	xen-devel@lists.xenproject.org,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>
-Subject: [PATCH v5 10/25] drm/imx/ipuv3: Compute dumb-buffer sizes with drm_mode_size_dumb()
-Date: Fri, 13 Jun 2025 11:00:29 +0200
-Message-ID: <20250613090431.127087-11-tzimmermann@suse.de>
+	Sui Jingfeng <sui.jingfeng@linux.dev>
+Subject: [PATCH v5 11/25] drm/loongson: Compute dumb-buffer sizes with drm_mode_size_dumb()
+Date: Fri, 13 Jun 2025 11:00:30 +0200
+Message-ID: <20250613090431.127087-12-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250613090431.127087-1-tzimmermann@suse.de>
 References: <20250613090431.127087-1-tzimmermann@suse.de>
@@ -82,17 +78,17 @@ MIME-Version: 1.0
 X-Rspamd-Pre-Result: action=no action;
 	module=replies;
 	Message is reply to one we originated
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
 X-Spamd-Result: default: False [-4.00 / 50.00];
 	REPLY(-4.00)[]
-X-Rspamd-Queue-Id: D93101F891
+X-Rspamd-Queue-Id: 9D1041F88C
 X-Rspamd-Pre-Result: action=no action;
 	module=replies;
 	Message is reply to one we originated
 X-Rspamd-Action: no action
+X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_020517_237957_03B28FBD 
-X-CRM114-Status: GOOD (  14.99  )
+X-CRM114-CacheID: sfid-20250613_020522_965178_C4F68652 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,80 +106,80 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-buffer size. The hardware requires the framebuffer width to be a
-multiple of 8. The scanline pitch has to be large enough to support
-this. Therefore compute the byte size of 8 pixels in the given color
-mode and align the pitch accordingly.
-
-v5:
-- fix typo in commit description
+buffer size. Align the pitch according to hardware requirements.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Shawn Guo <shawnguo@kernel.org>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
-Cc: Fabio Estevam <festevam@gmail.com>
+Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
+Cc: Sui Jingfeng <sui.jingfeng@linux.dev>
 ---
- drivers/gpu/drm/imx/ipuv3/imx-drm-core.c | 31 ++++++++++++++++++------
- 1 file changed, 23 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/loongson/lsdc_gem.c | 29 ++++++++---------------------
+ 1 file changed, 8 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c b/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
-index af4a30311e18..465b5a6ad5bb 100644
---- a/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
-+++ b/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
-@@ -17,7 +17,9 @@
- #include <drm/drm_atomic.h>
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_drv.h>
+diff --git a/drivers/gpu/drm/loongson/lsdc_gem.c b/drivers/gpu/drm/loongson/lsdc_gem.c
+index a720d8f53209..9f982b85301f 100644
+--- a/drivers/gpu/drm/loongson/lsdc_gem.c
++++ b/drivers/gpu/drm/loongson/lsdc_gem.c
+@@ -6,6 +6,7 @@
+ #include <linux/dma-buf.h>
+ 
+ #include <drm/drm_debugfs.h>
 +#include <drm/drm_dumb_buffers.h>
- #include <drm/drm_fbdev_dma.h>
-+#include <drm/drm_fourcc.h>
- #include <drm/drm_gem_dma_helper.h>
- #include <drm/drm_gem_framebuffer_helper.h>
- #include <drm/drm_managed.h>
-@@ -141,19 +143,32 @@ static int imx_drm_dumb_create(struct drm_file *file_priv,
- 			       struct drm_device *drm,
- 			       struct drm_mode_create_dumb *args)
- {
--	u32 width = args->width;
-+	u32 fourcc;
-+	const struct drm_format_info *info;
-+	u64 pitch_align;
+ #include <drm/drm_file.h>
+ #include <drm/drm_gem.h>
+ #include <drm/drm_prime.h>
+@@ -204,45 +205,31 @@ int lsdc_dumb_create(struct drm_file *file, struct drm_device *ddev,
+ 	const struct lsdc_desc *descp = ldev->descp;
+ 	u32 domain = LSDC_GEM_DOMAIN_VRAM;
+ 	struct drm_gem_object *gobj;
+-	size_t size;
+-	u32 pitch;
+-	u32 handle;
  	int ret;
  
--	args->width = ALIGN(width, 8);
--	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
--	args->size = args->pitch * args->height;
+-	if (!args->width || !args->height)
+-		return -EINVAL;
 -
--	ret = drm_gem_dma_dumb_create_internal(file_priv, drm, args);
-+	/*
-+	 * Hardware requires the framebuffer width to be aligned to
-+	 * multiples of 8. The mode-setting code handles this, but
-+	 * the buffer pitch has to be aligned as well. Set the pitch
-+	 * alignment accordingly, so that the each scanline fits into
-+	 * the allocated buffer.
-+	 */
-+	fourcc = drm_driver_color_mode_format(drm, args->bpp);
-+	if (fourcc == DRM_FORMAT_INVALID)
-+		return -EINVAL;
-+	info = drm_format_info(fourcc);
-+	if (!info)
-+		return -EINVAL;
-+	pitch_align = drm_format_info_min_pitch(info, 0, SZ_8);
-+	if (!pitch_align || pitch_align > U32_MAX)
-+		return -EINVAL;
-+	ret = drm_mode_size_dumb(drm, args, pitch_align, 0);
+-	if (args->bpp != 32 && args->bpp != 16)
+-		return -EINVAL;
+-
+-	pitch = args->width * args->bpp / 8;
+-	pitch = ALIGN(pitch, descp->pitch_align);
+-	size = pitch * args->height;
+-	size = ALIGN(size, PAGE_SIZE);
++	ret = drm_mode_size_dumb(ddev, args, descp->pitch_align, 0);
++	if (ret)
++		return ret;
+ 
+ 	/* Maximum single bo size allowed is the half vram size available */
+-	if (size > ldev->vram_size / 2) {
+-		drm_err(ddev, "Requesting(%zuMiB) failed\n", size >> 20);
++	if (args->size > ldev->vram_size / 2) {
++		drm_err(ddev, "Requesting(%zuMiB) failed\n", (size_t)(args->size >> PAGE_SHIFT));
+ 		return -ENOMEM;
+ 	}
+ 
+-	gobj = lsdc_gem_object_create(ddev, domain, size, false, NULL, NULL);
++	gobj = lsdc_gem_object_create(ddev, domain, args->size, false, NULL, NULL);
+ 	if (IS_ERR(gobj)) {
+ 		drm_err(ddev, "Failed to create gem object\n");
+ 		return PTR_ERR(gobj);
+ 	}
+ 
+-	ret = drm_gem_handle_create(file, gobj, &handle);
++	ret = drm_gem_handle_create(file, gobj, &args->handle);
+ 
+ 	/* drop reference from allocate, handle holds it now */
+ 	drm_gem_object_put(gobj);
  	if (ret)
  		return ret;
  
--	args->width = width;
--	return ret;
-+	return drm_gem_dma_dumb_create(file_priv, drm, args);
+-	args->pitch = pitch;
+-	args->size = size;
+-	args->handle = handle;
+-
+ 	return 0;
  }
  
- static const struct drm_driver imx_drm_driver = {
 -- 
 2.49.0
 
