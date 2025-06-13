@@ -4,123 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 580A0C61DB2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 08:58:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11F75C71155
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 09:05:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l5IN4RT2CpUDbZOCMqWXWHTHA5kf4zjJh+bZYpIP0ho=; b=EpJaThgrLoelYfj5eFxO5plD1f
-	mSpzMf4tb3dLb/+TwPgSng1ooZCk3o2ZkAeU7mA83DvaevXW8oLe8bcVftuCM3LllA7M6jKcIp9Bx
-	MmrZUJZXZp4KeZKqjiNRp733AmvkpwUVvFmLPUcA80+zX6wuyJ15Yxdqc4uu55aA8zlMLJSj0iUXD
-	pbzCexhuF6W60iqOuh2CSSsLhV9C6kr5jkqbnO8uZlfP6NPc+Arg8XTOu/vx/ltXaPX8Y5fyHf4+a
-	PKFTegslt9eB0DHFJEJG1quFoKJDpeyUtPY1cQTK4q8+irOIaqwr/+7T3kfhd+j1x/K8bSjGiXOZQ
-	sWBV6OFg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uyClvxUWUw6DzBMkXagGS0zyPlKs6yzGomIS5Ef7OaM=; b=XyMDJbl6E8UDAb
+	XaQqQjL3p1fG+Aky7iW0Dzsbo0l8TRxV5sWUXj2jo3vTkmHTMsWXaSx2HFN7Ty8xT1F378XhUi6qi
+	M1KpUShaqoaX2lW4ACcuS/+3VcCx63FH62lV0MBkHNPchJ/jBxc3chKeS8HWp7hj31ni63QYxxdBg
+	jcdIP3aiKHJj4YdnQxKii6pcP96rZjhbn39bKPLsQQbLIyKZtUp7+QcOUVo0xd8smCaE8ugCJ5Uxd
+	OOSfGGP7cJDFydlDjCJjxSNPlqw4V0ym8S0DtCeMTPKnW9QhVnjARFx6mZnW5pyX701v4bvpVdF9f
+	lw8zHp7yeHSdYQSFNuQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ0FO-0000000FpV0-29ns;
-	Fri, 13 Jun 2025 08:58:50 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1uQ0LW-0000000FqQv-2NTH;
+	Fri, 13 Jun 2025 09:05:10 +0000
+Received: from smtp-out2.suse.de ([195.135.223.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ0CP-0000000FpIv-4AkA
+	id 1uQ0LE-0000000FqDG-0ut1
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Jun 2025 08:55:48 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-45300c82c1cso6464385e9.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Jun 2025 01:55:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1749804944; x=1750409744; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=WbgFKfFXT0IcoLad5STDBDK8DwIurD39yrIVw+HDTMk=;
-        b=JxjXQJkn4xA7YEneZ/tthE5jsbMjSX+B4NYK/n80qYDW1kXac9M3rQ/l/D7gw2ta1u
-         QxPzrOZefpe4jcRF7L9tafeK8/SKj689dJMSef7TW3tAyESMx1zNIeBOWDjAjZyL6FBw
-         iPMON0/Ug8qtqfb0fKB8/NXk8OeuIXspD0TyX3giwMDGgp2KZhB9h1YQwOYz/AfmEw7F
-         nU7qy9FrknjsQdyhIk6iSKAz4tjriU170iY/20xeA/sky276T1bwipGqlEuk+81t5/cE
-         szGkjHjlZL53YlAs2eNOqH2d7rneRjXqfXpBAsS+oME1EP++Wk33p4JQepSbbHsxs/q0
-         rWiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749804944; x=1750409744;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=WbgFKfFXT0IcoLad5STDBDK8DwIurD39yrIVw+HDTMk=;
-        b=fXXvSLSVXWMIFnq2YKCUoybUvkj4dfiQHPByXMhc29P2AE35DwrUm0Ei59V+OCzmIB
-         7Idv3BcQK4Jf3Y35NmYv+yR9yUdZvipJJCVdpLEkWTZeZOGHDOJlPSqO/k/cKEKy794F
-         faP8eU+nQEk1Tn2cuQ+rwoZANwB58utd6tgpMMhu4ikGZt/Mn/tfh8XWeggEbILgRT3l
-         oJ+NAFIryzGsR3pGmYJmPLevcCMBSLCuu3kIQFjU782mX4hiHkUKSmr8Bq5SBwIjICYI
-         BAVptknmv7yiqL/YvMwalWE85JpEJBntY7QQ6nyjg5cscuNaVGW+yp0wo0krLnZ1YCJ4
-         lflQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUrt/7KETT+9IWiIve8aGZWeGFrWcEcM0lnt9JVLzqa79ZJWmx6EYNT7S1ngNjlZqtB/y1lR1wJ24mpQc2eYA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyqf3TWNs70P+34ceJwETxQxH7WQeLu1QMN9XP7rbrFOhP6+hYR
-	7hrqFjxCU7c6oGcdrD+tgx5x3FcKZALqrs0H8sYroZokjk+x4AXggboC3mfBttqf5lw=
-X-Gm-Gg: ASbGncvKax4Mu3Dj7Zx9p/7930N1RBxGBKeAxEf6Xz3Ug4cytp5J/1jIZ1ZAapVJzfe
-	QaIgyQ3SxA4PPcSXVehSihE2CaZdpJAfGFm1kQzKJwghz8D86A8uY8BubJ0AaHQ5XalTIRzK0Q6
-	5USz9amHesoSUCZwG1nYlBhd1RC8XEkYllfd47iqRPSlVRlaCCQBp6RGyveJfkZV1Lg2i4JOIpo
-	Oxbyal+v1kacwnHoLgKmcwN7VJQhqklmvIIs4YeuH0TMT/nNmW6bbJVv23TYKUO0FWF2L5fZSyY
-	ULwiOylGCOZDyqhil0RlkDZntlqq6Pk3Rbu10seTl2GvpBz8pqdfmMzcdnd9oQHv6YWyc8NiOTO
-	txznovaDe2KExN/xjGUFaw/Wp/1cNF+m6weFHnp+3mqAvmGTHcA==
-X-Google-Smtp-Source: AGHT+IED0BAxVtTDwS2fXEfcMGK0wFVpqVPP42bVl1Ked9zQXlMc38uyZUsXUnAGgbS+IP+aE7R9kQ==
-X-Received: by 2002:a05:600c:3545:b0:442:dc6f:2f11 with SMTP id 5b1f17b1804b1-45334b6ef0fmr17740555e9.25.1749804944379;
-        Fri, 13 Jun 2025 01:55:44 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:3d9:2080:4144:6a84:fe1d:3aae? ([2a01:e0a:3d9:2080:4144:6a84:fe1d:3aae])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a568a7ddefsm1728926f8f.39.2025.06.13.01.55.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Jun 2025 01:55:43 -0700 (PDT)
-Message-ID: <49eb73df-9a15-436e-a05c-72dd3aa36bf8@linaro.org>
-Date: Fri, 13 Jun 2025 10:55:43 +0200
+	Fri, 13 Jun 2025 09:04:53 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 34FE21F84C;
+	Fri, 13 Jun 2025 09:04:38 +0000 (UTC)
+Authentication-Results: smtp-out2.suse.de;
+	none
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 9F7A713A9C;
+	Fri, 13 Jun 2025 09:04:37 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id mBafJaXpS2inNAAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Fri, 13 Jun 2025 09:04:37 +0000
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: simona@ffwll.ch,
+	airlied@gmail.com,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	geert@linux-m68k.org,
+	tomi.valkeinen@ideasonboard.com
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	freedreno@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-samsung-soc@vger.kernel.org,
+	nouveau@lists.freedesktop.org,
+	virtualization@lists.linux.dev,
+	spice-devel@lists.freedesktop.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	intel-xe@lists.freedesktop.org,
+	xen-devel@lists.xenproject.org,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Subject: [PATCH v5 03/25] drm/gem-dma: Compute dumb-buffer sizes with drm_mode_size_dumb()
+Date: Fri, 13 Jun 2025 11:00:22 +0200
+Message-ID: <20250613090431.127087-4-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250613090431.127087-1-tzimmermann@suse.de>
+References: <20250613090431.127087-1-tzimmermann@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: neil.armstrong@linaro.org
-Subject: Re: [PATCH v4 3/4] phy: rockchip: usbdp: reset USB3 and reinit on
- orientation switch
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>
-Cc: Alexey Charkov <alchark@gmail.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250610-rk3576-sige5-usb-v4-0-7e7f779619c1@collabora.com>
- <20250610-rk3576-sige5-usb-v4-3-7e7f779619c1@collabora.com>
-Content-Language: en-US, fr
-Autocrypt: addr=neil.armstrong@linaro.org; keydata=
- xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
- GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
- BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
- qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
- 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
- AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
- OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
- Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
- YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
- GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
- UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
- GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
- yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
- QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
- SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
- 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
- Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
- oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
- M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
- 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
- KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
- 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
- QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
-Organization: Linaro
-In-Reply-To: <20250610-rk3576-sige5-usb-v4-3-7e7f779619c1@collabora.com>
+X-Rspamd-Pre-Result: action=no action;
+	module=replies;
+	Message is reply to one we originated
+X-Spamd-Result: default: False [-4.00 / 50.00];
+	REPLY(-4.00)[]
+X-Rspamd-Queue-Id: 34FE21F84C
+X-Rspamd-Pre-Result: action=no action;
+	module=replies;
+	Message is reply to one we originated
+X-Rspamd-Action: no action
+X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_015546_038688_F9250652 
-X-CRM114-Status: GOOD (  37.47  )
+X-CRM114-CacheID: sfid-20250613_020452_396023_59F12EF8 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,180 +99,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: Neil Armstrong <neil.armstrong@linaro.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+buffer size. Align the pitch to a multiple of 8.
 
-On 10/06/2025 16:07, Nicolas Frattaroli wrote:
-> Until now, super speed on Type-C only worked in one orientation. This is
-> because on an orientation switch, the UDPHY was never reinitialised.
-> 
-> Heiko presented a patch to do this[1], but there were concerns over the
-> correctness of it[2]. Experimentally using Heiko's patch on RK3576 did
-> make me run into issues, though they seemed to be related to the
-> orientation switch actually happening while a clock driving a GRF
-> register was disabled.
-> 
-> The key issue is that the hardware wants the USB 3 controller to be held
-> in reset while the PHY is being reconfigured, otherwise we may run into
-> hard-to-catch race conditions.
-> 
-> Either way, this patch implements the required ordering in a somewhat
-> unpleasant way: we get the USB 3 controller from the DT, and use runtime
-> power management to forcibly suspend it while the UDPHY is being
-> reconfigured, and then forcibly resume it later. As an added pain in the
-> rear, the suspend/resume of the USB 3 controller also tries fiddling
-> with the USB 3 PHY part of the UDPHY, which means we introduce an atomic
-> flag to skip suspending/resuming the UDPHY if we're resetting the USB 3
-> controller. We may just need to skip trying to acquire the mutex again,
-> but both ways work for me in practice.
-> 
-> This solution may in fact be complete rubbish, but it works to get USB 3
-> Super Speed working in both cable orientations on my board.
+Push the current calculation into the only direct caller imx. Imx's
+hardware requires the framebuffer width to be aligned to 8. The
+driver's current approach is actually incorrect, as it only guarantees
+this implicitly and requires bpp to be a multiple of 8 already. A
+later commit will fix this problem by aligning the scanline pitch
+such that an aligned width still fits into each scanline's memory.
 
-Yeah this is kind of a hack, and we have a similar situation on Qualcomm platforms
-when dealing with USB2-only and DP-only altmodes, where we need the DWC3 to
-disable the usb3 path. Hopefully on Qcom combo PHYs we can switch lanes without
-disable the USB3 PHY.
+A number of other drivers are build on top of gem-dma helpers and
+implement their own dumb-buffer allocation. These drivers invoke
+drm_gem_dma_dumb_create_internal(), which is not affected by this
+commit.
 
-So the proper solution would have the dwc3 driver to also react to mux and
-orientation events and disable the usb3 path to allow the phy to reconfigure
-itself.
+v5:
+- avoid reset of arguments (Tomi)
 
-We don't have any concrete proposal yet, but we will get something soonish.
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+---
+ drivers/gpu/drm/drm_gem_dma_helper.c     | 7 +++++--
+ drivers/gpu/drm/imx/ipuv3/imx-drm-core.c | 4 +++-
+ 2 files changed, 8 insertions(+), 3 deletions(-)
 
-Neil
-
-> 
-> Link: https://lore.kernel.org/all/20250226103810.3746018-3-heiko@sntech.de/ [1]
-> Link: https://lore.kernel.org/linux-rockchip/h57ok2hw6os7bcafqkrqknfvm7hnu25m2oe54qmrsuzdwqlos3@m4och2fcdm7s/ [2]
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->   drivers/phy/rockchip/phy-rockchip-usbdp.c | 54 +++++++++++++++++++++++++++++++
->   1 file changed, 54 insertions(+)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> index fff54900feea601c8fe6bf4c7123dfebc5661a15..5cd6bbc367f69bca15c2a94a07e72f850b381ae3 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> @@ -200,6 +200,10 @@ struct rk_udphy {
->   	/* PHY devices */
->   	struct phy *phy_dp;
->   	struct phy *phy_u3;
-> +
-> +	/* USB 3 controller device */
-> +	struct device *ctrl_u3;
-> +	atomic_t ctrl_resetting;
->   };
->   
->   static const struct rk_udphy_dp_tx_drv_ctrl rk3588_dp_tx_drv_ctrl_rbr_hbr[4][4] = {
-> @@ -1255,6 +1259,9 @@ static int rk_udphy_usb3_phy_init(struct phy *phy)
->   	struct rk_udphy *udphy = phy_get_drvdata(phy);
->   	int ret = 0;
->   
-> +	if (atomic_read(&udphy->ctrl_resetting))
-> +		return 0;
-> +
->   	mutex_lock(&udphy->mutex);
->   	/* DP only or high-speed, disable U3 port */
->   	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs) {
-> @@ -1273,6 +1280,9 @@ static int rk_udphy_usb3_phy_exit(struct phy *phy)
->   {
->   	struct rk_udphy *udphy = phy_get_drvdata(phy);
->   
-> +	if (atomic_read(&udphy->ctrl_resetting))
-> +		return 0;
-> +
->   	mutex_lock(&udphy->mutex);
->   	/* DP only or high-speed */
->   	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs)
-> @@ -1401,10 +1411,31 @@ static struct phy *rk_udphy_phy_xlate(struct device *dev, const struct of_phandl
->   	return ERR_PTR(-EINVAL);
->   }
->   
-> +static struct device_node *rk_udphy_to_controller(struct rk_udphy *udphy)
-> +{
-> +	struct device_node *np;
-> +
-> +	for_each_node_with_property(np, "phys") {
-> +		struct of_phandle_iterator it;
-> +		int ret;
-> +
-> +		of_for_each_phandle(&it, ret, np, "phys", NULL, 0) {
-> +			if (it.node != udphy->dev->of_node)
-> +				continue;
-> +
-> +			of_node_put(it.node);
-> +			return np;
-> +		}
-> +	}
-> +
-> +	return NULL;
-> +}
-> +
->   static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
->   				 enum typec_orientation orien)
->   {
->   	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
-> +	int ret;
->   
->   	mutex_lock(&udphy->mutex);
->   
-> @@ -1420,6 +1451,18 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
->   	rk_udphy_set_typec_default_mapping(udphy);
->   	rk_udphy_usb_bvalid_enable(udphy, true);
->   
-> +	if (udphy->status != UDPHY_MODE_NONE && udphy->ctrl_u3) {
-> +		atomic_set(&udphy->ctrl_resetting, 1);
-> +		pm_runtime_force_suspend(udphy->ctrl_u3);
-> +
-> +		ret = rk_udphy_setup(udphy);
-> +		if (!ret)
-> +			clk_bulk_disable_unprepare(udphy->num_clks, udphy->clks);
-> +
-> +		pm_runtime_force_resume(udphy->ctrl_u3);
-> +		atomic_set(&udphy->ctrl_resetting, 0);
-> +	}
-> +
->   unlock_ret:
->   	mutex_unlock(&udphy->mutex);
->   	return 0;
-> @@ -1430,12 +1473,22 @@ static void rk_udphy_orien_switch_unregister(void *data)
->   	struct rk_udphy *udphy = data;
->   
->   	typec_switch_unregister(udphy->sw);
-> +	put_device(udphy->ctrl_u3);
->   }
->   
->   static int rk_udphy_setup_orien_switch(struct rk_udphy *udphy)
->   {
-> +	struct device_node *ctrl = rk_udphy_to_controller(udphy);
->   	struct typec_switch_desc sw_desc = { };
->   
-> +	if (ctrl) {
-> +		udphy->ctrl_u3 = bus_find_device_by_of_node(udphy->dev->bus, ctrl);
-> +		of_node_put(ctrl);
-> +	}
-> +
-> +	if (!udphy->ctrl_u3)
-> +		dev_info(udphy->dev, "couldn't find this PHY's USB3 controller\n");
-> +
->   	sw_desc.drvdata = udphy;
->   	sw_desc.fwnode = dev_fwnode(udphy->dev);
->   	sw_desc.set = rk_udphy_orien_sw_set;
-> @@ -1499,6 +1552,7 @@ static int rk_udphy_probe(struct platform_device *pdev)
->   		return ret;
->   
->   	mutex_init(&udphy->mutex);
-> +	atomic_set(&udphy->ctrl_resetting, 0);
->   	platform_set_drvdata(pdev, udphy);
->   
->   	if (device_property_present(dev, "orientation-switch")) {
-> 
+diff --git a/drivers/gpu/drm/drm_gem_dma_helper.c b/drivers/gpu/drm/drm_gem_dma_helper.c
+index b7f033d4352a..49be9b033610 100644
+--- a/drivers/gpu/drm/drm_gem_dma_helper.c
++++ b/drivers/gpu/drm/drm_gem_dma_helper.c
+@@ -20,6 +20,7 @@
+ #include <drm/drm.h>
+ #include <drm/drm_device.h>
+ #include <drm/drm_drv.h>
++#include <drm/drm_dumb_buffers.h>
+ #include <drm/drm_gem_dma_helper.h>
+ #include <drm/drm_vma_manager.h>
+ 
+@@ -304,9 +305,11 @@ int drm_gem_dma_dumb_create(struct drm_file *file_priv,
+ 			    struct drm_mode_create_dumb *args)
+ {
+ 	struct drm_gem_dma_object *dma_obj;
++	int ret;
+ 
+-	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
+-	args->size = args->pitch * args->height;
++	ret = drm_mode_size_dumb(drm, args, SZ_8, 0);
++	if (ret)
++		return ret;
+ 
+ 	dma_obj = drm_gem_dma_create_with_handle(file_priv, drm, args->size,
+ 						 &args->handle);
+diff --git a/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c b/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
+index ec5fd9a01f1e..af4a30311e18 100644
+--- a/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
++++ b/drivers/gpu/drm/imx/ipuv3/imx-drm-core.c
+@@ -145,8 +145,10 @@ static int imx_drm_dumb_create(struct drm_file *file_priv,
+ 	int ret;
+ 
+ 	args->width = ALIGN(width, 8);
++	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
++	args->size = args->pitch * args->height;
+ 
+-	ret = drm_gem_dma_dumb_create(file_priv, drm, args);
++	ret = drm_gem_dma_dumb_create_internal(file_priv, drm, args);
+ 	if (ret)
+ 		return ret;
+ 
+-- 
+2.49.0
 
 
 _______________________________________________
