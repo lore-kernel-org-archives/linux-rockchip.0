@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 340F3C71136
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9584CC71151
 	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Jun 2025 13:00:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,62 +12,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=08qlM1ClSBDWbP0gZxNZuZy/fl1ywn/RO342guo6TaE=; b=IrOjGH8KKuNWrL
-	+HuDQ5H+H5u3RIGE9o+zDUHpT0TslRqZAm6BZ7m6rnmsGryG/2Fcb9YS53SbiLqkxHp5C9dz598mS
-	SDI+RVjTwrFET2CYtJmIQutL4H3XnIF5K5T71Nwx6hXFrPDWbLzmdcYfSRZExDuUojkr/lHAxBlEY
-	FMi/EfrIY3oMgiwv6oyV/I9QVL3R7nRDHJzbwdLBF2bxVQOMR7Dxctuq2NiNUUOsSQ+uowgXV5aRF
-	LXKHzEiYu1HzWmeT1Ak1LB4+6ZbNCU+uXt9Vkw1PDeRZotH//GJznwRkiaK06VBrxOwS+511pG2Mv
-	oQZ3eMYNJLtrP25NjjIw==;
+	List-Owner; bh=0DBBkvf+iHNIbCCDM+bboLSTf868Gu9kRKL5GmAjjqU=; b=lezD59R13hui+A
+	jz6bPAOfs9K7Vq8nbJiaNV5E/vpo9d+t28XK++mQ0/HWKlgmAnQxA9QQkcbBx79SHX7yBEP4h18sO
+	IBo1rvqBa0rc3SPRJKVjE1yZIc0SUFTr4dEFuWLQRMBjWdNO0AA/J1V+Z4pW9Qi54vMtpOgxwhXSq
+	qth8M3T+r6HOAWNjQFKDBB51G1vlVEsjoZN0TQ4OYybHo2gbTDRhc3fhyfCtcqKF3nDX71NAyGYC7
+	aKKPOqw7q7Ptymve0FvaGnG7v9twT8hCMg+MMION/c4jWrD2bjLqnSbZgOmGsLa8YabGIdM+Ny8qo
+	VnDt/WDLzc2MZXjdH6QA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ41M-0000000GRH7-0uCS;
-	Fri, 13 Jun 2025 13:00:36 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uQ41N-0000000GRIK-0iCe;
+	Fri, 13 Jun 2025 13:00:37 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ3qH-0000000GPmh-2d8D;
-	Fri, 13 Jun 2025 12:49:10 +0000
+	id 1uQ3qL-0000000GPo0-2Y81;
+	Fri, 13 Jun 2025 12:49:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8284B5C1125;
-	Fri, 13 Jun 2025 12:46:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B3BAC4CEEF;
-	Fri, 13 Jun 2025 12:49:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 105DE6113B;
+	Fri, 13 Jun 2025 12:49:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91142C4CEF0;
+	Fri, 13 Jun 2025 12:49:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749818948;
-	bh=b4dI36+7QZrufn62jpx3nCwsgQ+MzFpAS9kwu6KrqjQ=;
+	s=k20201202; t=1749818952;
+	bh=wX1Jm2lYAIbPE66Dwi838XJj+Gobl7EuV/Pwtb/T0aU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=st6dNrs+clIM0Xs+sDPIYqnFZJUgdbbF+07JBuLONi+zTuAZ8K9a+giRzTNKwq3/p
-	 I8U+4Pef/v1MCQAfERX4Ej8w/N0S29+6ubqaUJC0EqR/qy8OOVtoSPZ/153LES6q7t
-	 G6afEq4eb61e6ae/xlK54EHPIk7nSnpOeh4yQgF35yUMy6v6Ax7bzSdIcX7tyH5IHK
-	 g/LElfxTgrE+th/kVxysQVuqvHAjFX5orQxuog8LFFajxk/yiJk++uR2uFt0TTcXWR
-	 gtOP20twmwhV1mghT9S5tw/L+eZmuouqRKDXYJuqgM2UcTKFPiN1oxM+UwTc5BS/yA
-	 KTHrrzs7bD9EQ==
+	b=dY4I2aA6Z9SjXZtLDpYISinWj+O617Ldj351pF+kracLye+Kw9TIWvjn8uxIxuDp0
+	 jkPS5lraJ9urY3aBbuZoG7j+UvdETTn2Dyo3x7mQF20QUfSbZzbINynOUxmWe+4l89
+	 vEWo+AS8KtiBnTyCvbCY6J8i/Y/tK/Q5w5jTY59y7LF0Maed6VuMj5ra9ham/13ztQ
+	 Jrqd/VZ3uT0IkKDYLUYfDmj22ZNXERHWCzHByusQORPfGsFQ7pAAnYW+80zAqNgCNQ
+	 WHsijro6ETpxi8I/E0P4PzrA3u1woE47rr6jnPqSCILpPY2GSHYgmMf5thERAfCGPn
+	 f3OoRpKpWIlqQ==
 From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
+	Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>
 Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>,
 	Damien Le Moal <dlemoal@kernel.org>,
 	Laszlo Fiat <laszlo.fiat@proton.me>,
 	Niklas Cassel <cassel@kernel.org>,
+	Simon Xue <xxm@rock-chips.com>,
 	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3 2/6] PCI: rockchip-host: Use macro PCIE_RESET_CONFIG_WAIT_MS
-Date: Fri, 13 Jun 2025 14:48:41 +0200
-Message-ID: <20250613124839.2197945-10-cassel@kernel.org>
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v3 3/6] PCI: dw-rockchip: Wait PCIE_RESET_CONFIG_WAIT_MS after link-up IRQ
+Date: Fri, 13 Jun 2025 14:48:42 +0200
+Message-ID: <20250613124839.2197945-11-cassel@kernel.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250613124839.2197945-8-cassel@kernel.org>
 References: <20250613124839.2197945-8-cassel@kernel.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2155; i=cassel@kernel.org; h=from:subject; bh=b4dI36+7QZrufn62jpx3nCwsgQ+MzFpAS9kwu6KrqjQ=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDJ85LR1d7x7b5p98mOW6IpK38Ve2XfO+h1dvCyWpYlvu lxGWMf8jlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenANzkHYwMP74b7TX3Xn5hJ3vy obNvjj7Z6r/1Xeh6hj7ulloDlZIqH4b/yVITGkqklBqWPJ4b06M/K7XywuJ3LVZOzL0udrzzfik yAAA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1789; i=cassel@kernel.org; h=from:subject; bh=wX1Jm2lYAIbPE66Dwi838XJj+Gobl7EuV/Pwtb/T0aU=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDJ85HT4ufb1SDw2nubNbWhoUZR5dwprmb5Y8Z9bHLwRv m+3f+7pKGVhEONikBVTZPH94bK/uNt9ynHFOzYwc1iZQIYwcHEKwES6djL84Y55rPPKPm2/gt75 XfLS0+Ze5ztoL5ies/y05yeJ5Q3MWQz/fY+8aFqUJysZ/eDl9/r2lScYWbnl/kp79sy/FyyT80y WBQA=
 X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_054909_744071_0B871B2F 
-X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,58 +83,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Macro PCIE_RESET_CONFIG_WAIT_MS was added to pci.h in commit d5ceb9496c56
-("PCI: Add PCIE_RESET_CONFIG_DEVICE_WAIT_MS waiting time value").
+Per PCIe r6.0, sec 6.6.1, software must generally wait a minimum of
+100ms (PCIE_RESET_CONFIG_WAIT_MS) after Link training completes before
+sending a Configuration Request.
 
-Later, in commit 70a7bfb1e515 ("PCI: rockchip-host: Wait 100ms after reset
-before starting configuration"), PCIE_T_RRS_READY_MS was added to pci.h.
+Prior to ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since
+we can detect Link Up"), dw-rockchip used dw_pcie_wait_for_link(),
+which waited between 0 and 90ms after the link came up before we
+enumerate the bus, and this was apparently enough for most devices.
 
-These macros are duplicates, and represent the exact same delay in the
-PCIe specification.
+After ec9fd499b9c6, rockchip_pcie_rc_sys_irq_thread() started
+enumeration immediately when handling the link-up IRQ, and devices
+(e.g., Laszlo Fiat's PLEXTOR PX-256M8PeGN NVMe SSD) may not be ready
+to handle config requests yet.
 
-Since the comment above PCIE_RESET_CONFIG_WAIT_MS is strictly more correct
-than the comment above PCIE_T_RRS_READY_MS, change rockchip-host to use
-PCIE_RESET_CONFIG_WAIT_MS, and remove PCIE_T_RRS_READY_MS, as
-rockchip-host is the only user of this macro.
+Delay PCIE_RESET_CONFIG_WAIT_MS after the link-up IRQ before starting
+enumeration.
 
+Cc: Laszlo Fiat <laszlo.fiat@proton.me>
+Reviewed-by: Damien Le Moal <dlemoal@kernel.org>
 Reviewed-by: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+Fixes: 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
 Signed-off-by: Niklas Cassel <cassel@kernel.org>
 ---
- drivers/pci/controller/pcie-rockchip-host.c | 2 +-
- drivers/pci/pci.h                           | 7 -------
- 2 files changed, 1 insertion(+), 8 deletions(-)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index b9e7a8710cf0..c11ed45c25f6 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -325,7 +325,7 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
- 	msleep(PCIE_T_PVPERL_MS);
- 	gpiod_set_value_cansleep(rockchip->perst_gpio, 1);
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 93171a392879..108d30637920 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -458,6 +458,7 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
  
--	msleep(PCIE_T_RRS_READY_MS);
-+	msleep(PCIE_RESET_CONFIG_WAIT_MS);
- 
- 	/* 500ms timeout value should be enough for Gen1/2 training */
- 	err = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_BASIC_STATUS1,
-diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
-index 98d6fccb383e..819833e57590 100644
---- a/drivers/pci/pci.h
-+++ b/drivers/pci/pci.h
-@@ -35,13 +35,6 @@ struct pcie_tlp_log;
-  */
- #define PCIE_T_PERST_CLK_US		100
- 
--/*
-- * End of conventional reset (PERST# de-asserted) to first configuration
-- * request (device able to respond with a "Request Retry Status" completion),
-- * from PCIe r6.0, sec 6.6.1.
-- */
--#define PCIE_T_RRS_READY_MS	100
--
- /*
-  * PCIe r6.0, sec 5.3.3.2.1 <PME Synchronization>
-  * Recommends 1ms to 10ms timeout to check L2 ready.
+ 	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
+ 		if (rockchip_pcie_link_up(pci)) {
++			msleep(PCIE_RESET_CONFIG_WAIT_MS);
+ 			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
+ 			/* Rescan the bus to enumerate endpoint devices */
+ 			pci_lock_rescan_remove();
 -- 
 2.49.0
 
