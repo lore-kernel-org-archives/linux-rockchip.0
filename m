@@ -4,77 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F03CAC71135
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Jun 2025 12:26:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E62FBC71141
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Jun 2025 14:21:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1Fsf5CnKxIgegnd54eplytnyNSme46TIldqgVrazS7g=; b=DBSgHWnRfUK/tw
-	1pYa93KfqbSTeI5EsgLjq7piySNi4+zzv64uEHowHaAeFgVBEpwXlPTfXhm1L8MuQk3J63XBY8z3t
-	xL4jP+nroYOf6imOo1AgvLq16wbDyGgBfmakmKhcNZBi2xf4RFP4so29z2JfAyGed1jXXNhWVCbs3
-	NoHTteDVeCGA0r+vKgRG+LatRIchpFdXzwS6hxMaxyTSy9nfQlxnPo1Z9o17zr/gawODhYOjN5EAU
-	lVOF7txdw6Hw/EeAtIE+GoCZFN1p6x/jL08wgZ13ZFq0cZKrBz5icadKbQhg1/Vih4sVqf3kSn6Ly
-	c5X9Izk0g5kHjhpmH9QA==;
+	List-Owner; bh=2s3LWMqlrXFTJSnfSyH+3GcHYbu/gzwNl7fH2hKuc5A=; b=HuyQdBdxcpM7/i
+	H8z0R06Czpr1u6OM1YeKw3n5rbWflqQSqQQikN+rReUVBm3AeSNu4vpOPSIVMdEprXFbwWM+bvj6y
+	JmW8rUZAE9+9DiyLYMWIFlwY+oT1cK32PHkGBOWX1YJL2VeKVfxhUrIJ7Oh2ui9/ju17JaVfPFnqF
+	MfGICXecp4IYwEeDN+ShH2229B0B2sSoGQiGOXSj4blomU1WGbvUHWR8Iiu4KewgoNQwuEOMmMvh/
+	FW4T2zYcaqJLOZb0O6B4WTXMDcqg05SRmMjoegcTcW21k5cWOpqq+osxFhjxHq7fk7my7GVaSA67P
+	5+IpUn+siYim8vqiOFzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQPyB-00000001F62-3IQS;
-	Sat, 14 Jun 2025 12:26:47 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uQRl3-00000001Nw1-3CIQ;
+	Sat, 14 Jun 2025 14:21:21 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQPuo-00000001Etm-15D2;
-	Sat, 14 Jun 2025 12:23:19 +0000
+	id 1uQRik-00000001NpH-2weC;
+	Sat, 14 Jun 2025 14:18:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id D1F51A50A79;
-	Sat, 14 Jun 2025 12:23:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2293FC4CEEB;
-	Sat, 14 Jun 2025 12:23:06 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id AC98EA50B0B;
+	Sat, 14 Jun 2025 14:18:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BDCEC4CEEB;
+	Sat, 14 Jun 2025 14:18:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749903796;
-	bh=avQIQVx7PU9oe/rVrLoBrchrvxBkxtx/0zHOHlcJODc=;
+	s=k20201202; t=1749910737;
+	bh=TAefawj8sFz6PzX77ED0UDRrtR9qcAx7l29OSrOfCJ0=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Pgti5zy4ItelGapySex+FZlobPH1ZsV8BcOmcj3kvZ6Snf8tCTF9OmjDGY3m/b9Aj
-	 9TOcW6MkYFqsFdxt+Yd8DvskBa347QChTcLoSzKscD/3BPjAM6oDWD4aqEtqGLCFHJ
-	 gfWHC6vIp9nCB2k7zjGv6UrQnDbSalAu/DY9Rn7uorWpFfqbpjRt6sqse2u82ZxUuN
-	 KFqL9+qjeWTWlaQcSqmx8HfFGcjFxDTQdf5vkViKZkNT+3gXdRlvYPjvJGaSam1uEH
-	 jcn/7MjIf2gi+25/9/TexlgWxUj9VGGmJlktRIIxCG1MglzTHDP9SYeq4mFLCL8x9F
-	 PsUHqZaN26mdg==
-Date: Sat, 14 Jun 2025 13:23:02 +0100
+	b=Ta9SO3rEXMSLA10FI7fBR3F6/8k5nRYF+su0+OPjS5hW+vMPqYqkjwkBqhYYBZJzi
+	 WkxbcgQaolfGAHRjZceYZBqeLjg3nxqewEpEhi/mc3fXRRgOVjQmxu7ghIAZztiJWi
+	 rcXaFy9n2AswtVLbxFPrJHJQ5k7DbNhVzkcrWFm8KVbZvInGvZmzv0P2o5TRxwzScJ
+	 EXpRqYx7xKx2ZA5uXP8ZlvfB0XTbU8PVP30WMoANTItUUqs4EdtCQcckRCKr/THZHj
+	 QqEd2x3S4DlvrLbcIOo7MzysAEzgrI8Z9I2cHL8+5MkDlEBeHuyeU6NRmGWVCBNvn6
+	 0y8FcKrLKOhAw==
+Date: Sat, 14 Jun 2025 15:18:44 +0100
 From: Jonathan Cameron <jic23@kernel.org>
-To: David Lechner <dlechner@baylibre.com>
-Cc: Michael Hennerich <michael.hennerich@analog.com>, Lars-Peter Clausen
- <lars@metafoo.de>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy
- Shevchenko <andy@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko
- Stuebner <heiko@sntech.de>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, Francesco Dolcini
- <francesco@dolcini.it>, =?UTF-8?B?Sm/Do28=?= Paulo =?UTF-8?B?R29uw6dhbHZl?=
- =?UTF-8?B?cw==?= <jpaulo.silvagoncalves@gmail.com>, Leonard
- =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>, kernel@pengutronix.de,
- Oleksij Rempel <o.rempel@pengutronix.de>, Roan van Dijk <roan@protonic.nl>,
- Tomasz Duszynski <tomasz.duszynski@octakon.com>, Jacopo Mondi
- <jacopo@jmondi.org>, Jean-Baptiste Maneyrol
- <jean-baptiste.maneyrol@tdk.com>, Mudit Sharma
- <muditsharma.info@gmail.com>, Javier Carrasco
- <javier.carrasco.cruz@gmail.com>, =?UTF-8?B?T25kxZllag==?= Jirman
- <megi@xff.cz>, Andreas Klinger <ak@it-klinger.de>, Petre Rodan
- <petre.rodan@subdimension.ro>, linux-iio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 25/28] iio: pressure: mprls0025pa: use = { } instead of
- memset()
-Message-ID: <20250614132302.1e134315@jic23-huawei>
-In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-25-ebb2d0a24302@baylibre.com>
+To: Pavel Machek <pavel@ucw.cz>
+Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
+Message-ID: <20250614151844.50524610@jic23-huawei>
+In-Reply-To: <20250614131844.7fdc10b8@jic23-huawei>
 References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-	<20250611-iio-zero-init-stack-with-instead-of-memset-v1-25-ebb2d0a24302@baylibre.com>
+	<aEqbQPvz0FsLXt0Z@duo.ucw.cz>
+	<2243943.irdbgypaU6@workhorse>
+	<aEsiTy++yKGe1p9W@duo.ucw.cz>
+	<aEsmDyc44P8amm5p@smile.fi.intel.com>
+	<aE0a/Y9qVByfA2vI@duo.ucw.cz>
+	<20250614131844.7fdc10b8@jic23-huawei>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.48; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250614_052318_432210_CA5A11DE 
-X-CRM114-Status: GOOD (  17.81  )
+X-CRM114-CacheID: sfid-20250614_071858_886743_2B8C1A17 
+X-CRM114-Status: GOOD (  29.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,44 +70,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-iio@vger.kernel.org, Petre Rodan <petre.rodan@subdimension.ro>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Tomasz Duszynski <tomasz.duszynski@octakon.com>, linux-stm32@st-md-mailman.stormreply.com, Lars-Peter Clausen <lars@metafoo.de>, Francesco Dolcini <francesco@dolcini.it>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Oleksij Rempel <o.rempel@pengutronix.de>, Javier Carrasco <javier.carrasco.cruz@gmail.com>, linux-rockchip@lists.infradead.org, =?UTF-8?B?T25kxZllag==?= Jirman <megi@xff.cz>, David Lechner <dlechner@baylibre.com>, Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>, Jacopo Mondi <jacopo@jmondi.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Michael Hennerich <michael.hennerich@analog.com>, Mudit Sharma <muditsharma.info@gmail.com>, linux-mediatek@lists.infradead.org, Andreas Klinger <ak@it-klinger.de>, Matthias Brugger <matthias.bgg@gmail.com>, Leonard =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>, linux-arm-kernel@lists.infradead.org, Andy Shevchenko <andriy.shevchenko@intel.com>, Andy Shevchenko <andy@kernel.org>, linux-kernel@vger.kernel.org, Roan van Dijk <roan@protonic.nl>, =?UTF-8?B?Sm/Do28=?= Paulo =?UTF-8?B?R29uw6dhbHZl?= =?UTF-8?B?cw==?= <jpaulo.silvagoncalves@gmail.com>, kernel@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 11 Jun 2025 17:39:17 -0500
-David Lechner <dlechner@baylibre.com> wrote:
+On Sat, 14 Jun 2025 13:18:44 +0100
+Jonathan Cameron <jic23@kernel.org> wrote:
 
-> Use { } instead of memset() to zero-initialize stack memory to simplify
-> the code.
+> On Sat, 14 Jun 2025 08:47:25 +0200
+> Pavel Machek <pavel@ucw.cz> wrote:
 > 
-> The initialize of the cmd value is trivial so it can be moved to the
-> array initializer as well.
+> > On Thu 2025-06-12 22:10:07, Andy Shevchenko wrote:  
+> > > On Thu, Jun 12, 2025 at 08:54:07PM +0200, Pavel Machek wrote:    
+> > > > > On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel Machek wrote:    
+> > > > > >     
+> > > > > > > Jonathan mentioned recently that he would like to get away from using
+> > > > > > > memset() to zero-initialize stack memory in the IIO subsystem. And we
+> > > > > > > have it on good authority that initializing a struct or array with = { }
+> > > > > > > is the preferred way to do this in the kernel [1]. So here is a series
+> > > > > > > to take care of that.    
+> > > > > > 
+> > > > > > 1) Is it worth the churn?
+> > > > > > 
+> > > > > > 2) Will this fail to initialize padding with some obscure compiler?    
+> > > > > 
+> > > > > as of right now, the only two C compilers that are supported are
+> > > > > GCC >= 8.1, and Clang >= 13.0.1. If anyone even manages to get the
+> > > > > kernel    
+> > > > 
+> > > > Well... I'm pretty sure parts of this would make it into -stable as a
+> > > > dependency, or because AUTOSEL decides it is a bugfix. So..
+> > > > 
+> > > > GNU C                  4.9              gcc --version
+> > > > Clang/LLVM (optional)  10.0.1           clang --version    
+> > > 
+> > > Even though, what the kernel versions are you referring to? I am sure there
+> > > plenty of cases with {} there.    
+> > 
+> > 5.10, for example. I'm sure they are, uninitialized padding is a
+> > security hole, but rather hard to detect if they are not specifically
+> > looking.  
 > 
-> Signed-off-by: David Lechner <dlechner@baylibre.com>
-> ---
->  drivers/iio/pressure/mprls0025pa_i2c.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
+> The stack kunit test is there back to 5.0-rc4 
+> 50ceaa95ea09 ("lib: Introduce test_stackinit module")
 > 
-> diff --git a/drivers/iio/pressure/mprls0025pa_i2c.c b/drivers/iio/pressure/mprls0025pa_i2c.c
-> index 1a48f8d43d716b28b8fceb8e1a06d63a73a74a86..79811fd4a02b370b3fde8bd67a5115a3934f8614 100644
-> --- a/drivers/iio/pressure/mprls0025pa_i2c.c
-> +++ b/drivers/iio/pressure/mprls0025pa_i2c.c
-> @@ -44,10 +44,7 @@ static int mpr_i2c_write(struct mpr_data *data, const u8 cmd, const u8 unused)
->  {
->  	int ret;
->  	struct i2c_client *client = to_i2c_client(data->dev);
-> -	u8 wdata[MPR_PKT_SYNC_LEN];
-> -
-> -	memset(wdata, 0, sizeof(wdata));
-> -	wdata[0] = cmd;
-> +	u8 wdata[MPR_PKT_SYNC_LEN] = { cmd };
+> So I think we should be pretty well defended against issues.
+> 
+> Hence I plan to pick this up curently.
+> 
+> Thanks all for inputs on this.
+> 
+> Fun corners of the C spec vs implementations!
+> 
+> Jonathan
+> 
+I want to give this some testing exposure from 0-day etc in case
+we missed any build related issues so I've queued it up on my testing branch.
+I can still pick up tags / rebase etc for now.
 
-Slight preference for trailing comma after cmd,
+Thanks,
 
->  
->  	ret = i2c_master_send(client, wdata, MPR_PKT_SYNC_LEN);
->  	if (ret < 0)
+Jonathan
+
+> > 
+> > BR,
+> > 								Pavel  
+> 
 > 
 
 
