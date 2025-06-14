@@ -4,60 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62DEAC71135
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Jun 2025 12:21:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA7C6C71141
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Jun 2025 12:24:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0cY+fr2kqa3RDxma29nxAO1geV0OsXNySaQmQm963jc=; b=jy9aQ40xfS1TNW
-	xKKSajytHMPGPepdRwkoXQQnwR0j4hAJsBZbD90U7Mpxpkk46fCPcSj9eaTKt1CHOKlDzDhezdHJS
-	bbCdPVO4Zhw0EuG3VC7aiP/79M7bbnB1rr07pWdUcVJih4HcGH+1O7GzuTrFK55mPNPLqrsYVL4jG
-	GcdUvu2xXWJKrXa3eRz04O8CGqUnFSjUWpRJ3/i2RCwhPC+uTr/zwPnA38l8dAm1GrMRctJEM4XpI
-	ToKVhsdk7HR7qVjB04McjkspKYtHZnox2BbUynzNfyNLNZDKNAOnA5N/5VSeL4w7zLuDkeJ+72y29
-	egTcV8E4R1AZXzLRUznw==;
+	List-Owner; bh=HkB/kDipgNHIfW+Juj2eOqeNO1ah+gVftl7aF6Mrjbk=; b=OYKnlmftQ57ZtL
+	l5Gr61lN0nrJhNinML4CAdIwqXvi1BHJSDE6H7CzANR5Yg7cwOt6px8ZYZPMwMxi+J+ax84UI41xS
+	oz08mmZZro4b2nhKvK9thBkni9E7ZFV3roXqpEfgwmuZTSk/gJtNSlfElgSvzMS4E3k7su7fqdKY0
+	4nUcIZsbYvxx0+i0l+aFM9g92e1TE77BvV6On7wfqNWvwdse3HyaYxxzsAXg+JhXXgyJZiH3SfmP3
+	TA4ZJ4TOymjwSB6E+xzcCT6wIch2ccg+RPD1/CgsSqn4PzmVjvUKcR7XbA5sm/Voype1N0Wz8NN7Q
+	gqc9g/VWYiZWLi6AI6HA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQPsw-00000001EkA-2aJk;
-	Sat, 14 Jun 2025 12:21:22 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uQPvw-00000001ExW-0EZy;
+	Sat, 14 Jun 2025 12:24:28 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQPqe-00000001Eep-3Hbl;
-	Sat, 14 Jun 2025 12:19:01 +0000
+	id 1uQPte-00000001EpN-0CBL;
+	Sat, 14 Jun 2025 12:22:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D0EA04505B;
-	Sat, 14 Jun 2025 12:18:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A468C4CEEB;
-	Sat, 14 Jun 2025 12:18:48 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id DCD5CA46DDC;
+	Sat, 14 Jun 2025 12:22:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21CA6C4CEEB;
+	Sat, 14 Jun 2025 12:21:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749903538;
-	bh=PKJ0MCiecE4yglZMxR339G1ACqEGU8r/l9NXHPYw7Ac=;
+	s=k20201202; t=1749903724;
+	bh=rGBMrxAgX1GCHG976Dof9q8HsYSXp+4s7rfg/Gplu5A=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=tPWHVI8PJ/YFW4mFxP8gpuscF+qnzTGShqYvVxG+RXB6OJc3vE5MkB4XnOL3FYbGy
-	 zVnavAD1gEV3ABPiELtjvJf7d5phQf/g5HpyBECyplnopLe6sKnWDl7XTzz7Vaxfzx
-	 kTbVBTE/DJnsUPZtGM09csSfRm+K/QdNNVqo+8HzALETdAF058aTJ9Ny6J/D0LrN60
-	 B82/TQ8eC4KkPMGojhstZDLj6ZPrEH2O7C1qyEB8IrqunqCGWd0AocGyrJYy+5NGGP
-	 0fHmi3Wg7fFhSDwRF2vHvEm087IK3ASIb2Z8JoQVhY9pMA3h/eYLTXUtgdR7eK5w4G
-	 aB4K2P4LRuymw==
-Date: Sat, 14 Jun 2025 13:18:44 +0100
+	b=ObgiNchWi3Q5QDAhQdCv9+9wM+/Y73M6FLFMuT1AL13DUqXoevDQbIE7FPcMWErzF
+	 C2sHbXf/5OPnZzoSPF5TfoXuedHe7TK1j/6FNcRGc7mvzemEn8Zavwu6S6xSSz/Sft
+	 zw8KfrwO0JhiVw0cUCtqDIV/gAx5fme+3fzaCgzOYmS2oykxN33M7pl5WD0F4AzNrn
+	 xwKZrlAiL+KvXJpMKO++Tx4aCFA496wFKbZXAnqntqbP6QdHCsBFXVaL0dNk6es71L
+	 mo+Z48ZH+07MZORsjap81CJg82mJ8dVtw+HbLZE+WZAE8XphIYu25AKi45mXs+EgXn
+	 XX+d9+LHp5hBw==
+Date: Sat, 14 Jun 2025 13:21:50 +0100
 From: Jonathan Cameron <jic23@kernel.org>
-To: Pavel Machek <pavel@ucw.cz>
-Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-Message-ID: <20250614131844.7fdc10b8@jic23-huawei>
-In-Reply-To: <aE0a/Y9qVByfA2vI@duo.ucw.cz>
+To: David Lechner <dlechner@baylibre.com>
+Cc: Michael Hennerich <michael.hennerich@analog.com>, Lars-Peter Clausen
+ <lars@metafoo.de>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy
+ Shevchenko <andy@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko
+ Stuebner <heiko@sntech.de>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Francesco Dolcini
+ <francesco@dolcini.it>, =?UTF-8?B?Sm/Do28=?= Paulo =?UTF-8?B?R29uw6dhbHZl?=
+ =?UTF-8?B?cw==?= <jpaulo.silvagoncalves@gmail.com>, Leonard
+ =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>, kernel@pengutronix.de,
+ Oleksij Rempel <o.rempel@pengutronix.de>, Roan van Dijk <roan@protonic.nl>,
+ Tomasz Duszynski <tomasz.duszynski@octakon.com>, Jacopo Mondi
+ <jacopo@jmondi.org>, Jean-Baptiste Maneyrol
+ <jean-baptiste.maneyrol@tdk.com>, Mudit Sharma
+ <muditsharma.info@gmail.com>, Javier Carrasco
+ <javier.carrasco.cruz@gmail.com>, =?UTF-8?B?T25kxZllag==?= Jirman
+ <megi@xff.cz>, Andreas Klinger <ak@it-klinger.de>, Petre Rodan
+ <petre.rodan@subdimension.ro>, linux-iio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH 16/28] iio: imu: inv_icm42600: use = { } instead of
+ memset()
+Message-ID: <20250614132150.6f4a29a3@jic23-huawei>
+In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-16-ebb2d0a24302@baylibre.com>
 References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-	<aEqbQPvz0FsLXt0Z@duo.ucw.cz>
-	<2243943.irdbgypaU6@workhorse>
-	<aEsiTy++yKGe1p9W@duo.ucw.cz>
-	<aEsmDyc44P8amm5p@smile.fi.intel.com>
-	<aE0a/Y9qVByfA2vI@duo.ucw.cz>
+	<20250611-iio-zero-init-stack-with-instead-of-memset-v1-16-ebb2d0a24302@baylibre.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.48; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250614_051900_869675_4C370203 
-X-CRM114-Status: GOOD (  26.05  )
+X-CRM114-CacheID: sfid-20250614_052206_228533_0D94AC8E 
+X-CRM114-Status: GOOD (  17.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,62 +86,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-iio@vger.kernel.org, Petre Rodan <petre.rodan@subdimension.ro>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Tomasz Duszynski <tomasz.duszynski@octakon.com>, linux-stm32@st-md-mailman.stormreply.com, Lars-Peter Clausen <lars@metafoo.de>, Francesco Dolcini <francesco@dolcini.it>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Oleksij Rempel <o.rempel@pengutronix.de>, Javier Carrasco <javier.carrasco.cruz@gmail.com>, linux-rockchip@lists.infradead.org, =?UTF-8?B?T25kxZllag==?= Jirman <megi@xff.cz>, David Lechner <dlechner@baylibre.com>, Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>, Jacopo Mondi <jacopo@jmondi.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Michael Hennerich <michael.hennerich@analog.com>, Mudit Sharma <muditsharma.info@gmail.com>, linux-mediatek@lists.infradead.org, Andreas Klinger <ak@it-klinger.de>, Matthias Brugger <matthias.bgg@gmail.com>, Leonard =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>, linux-arm-kernel@lists.infradead.org, Andy Shevchenko <andriy.shevchenko@intel.com>, Andy Shevchenko <andy@kernel.org>, linux-kernel@vger.kernel.org, Roan van Dijk <roan@protonic.nl>, =?UTF-8?B?Sm/Do28=?= Paulo =?UTF-8?B?R29uw6dhbHZl?= =?UTF-8?B?cw==?= <jpaulo.silvagoncalves@gmail.com>, kernel@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 14 Jun 2025 08:47:25 +0200
-Pavel Machek <pavel@ucw.cz> wrote:
+On Wed, 11 Jun 2025 17:39:08 -0500
+David Lechner <dlechner@baylibre.com> wrote:
 
-> On Thu 2025-06-12 22:10:07, Andy Shevchenko wrote:
-> > On Thu, Jun 12, 2025 at 08:54:07PM +0200, Pavel Machek wrote:  
-> > > > On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel Machek wrote:  
-> > > > >   
-> > > > > > Jonathan mentioned recently that he would like to get away from using
-> > > > > > memset() to zero-initialize stack memory in the IIO subsystem. And we
-> > > > > > have it on good authority that initializing a struct or array with = { }
-> > > > > > is the preferred way to do this in the kernel [1]. So here is a series
-> > > > > > to take care of that.  
-> > > > > 
-> > > > > 1) Is it worth the churn?
-> > > > > 
-> > > > > 2) Will this fail to initialize padding with some obscure compiler?  
-> > > > 
-> > > > as of right now, the only two C compilers that are supported are
-> > > > GCC >= 8.1, and Clang >= 13.0.1. If anyone even manages to get the
-> > > > kernel  
-> > > 
-> > > Well... I'm pretty sure parts of this would make it into -stable as a
-> > > dependency, or because AUTOSEL decides it is a bugfix. So..
-> > > 
-> > > GNU C                  4.9              gcc --version
-> > > Clang/LLVM (optional)  10.0.1           clang --version  
-> > 
-> > Even though, what the kernel versions are you referring to? I am sure there
-> > plenty of cases with {} there.  
-> 
-> 5.10, for example. I'm sure they are, uninitialized padding is a
-> security hole, but rather hard to detect if they are not specifically
-> looking.
+> Use { } instead of memset() to zero-initialize stack memory to simplify
+> the code.
 
-The stack kunit test is there back to 5.0-rc4 
-50ceaa95ea09 ("lib: Introduce test_stackinit module")
+This one isn't as obvious as many as the zeroing was in a loop
+and now it's at declaration.
 
-So I think we should be pretty well defended against issues.
+It's fine because we always copy over the same elements.
 
-Hence I plan to pick this up curently.
-
-Thanks all for inputs on this.
-
-Fun corners of the C spec vs implementations!
+I'll leave this whole series a little longer in case we are missing
+subtle cases like this. (but ones where it actually does make a difference!)
 
 Jonathan
 
+
 > 
-> BR,
-> 								Pavel
+> Signed-off-by: David Lechner <dlechner@baylibre.com>
+> ---
+>  drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c | 5 ++---
+>  drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c  | 5 ++---
+>  2 files changed, 4 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c b/drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c
+> index e6cd9dcb0687d19554e63a69dc60f065c58d70ee..dbd315ad3c4d2bd5085f7cd3cdc6de4391b1c896 100644
+> --- a/drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c
+> +++ b/drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c
+> @@ -902,7 +902,8 @@ int inv_icm42600_accel_parse_fifo(struct iio_dev *indio_dev)
+>  	const int8_t *temp;
+>  	unsigned int odr;
+>  	int64_t ts_val;
+> -	struct inv_icm42600_accel_buffer buffer;
+> +	/* buffer is copied to userspace, zeroing it to avoid any data leak */
+> +	struct inv_icm42600_accel_buffer buffer = { };
+>  
+>  	/* parse all fifo packets */
+>  	for (i = 0, no = 0; i < st->fifo.count; i += size, ++no) {
+> @@ -921,8 +922,6 @@ int inv_icm42600_accel_parse_fifo(struct iio_dev *indio_dev)
+>  			inv_sensors_timestamp_apply_odr(ts, st->fifo.period,
+>  							st->fifo.nb.total, no);
+>  
+> -		/* buffer is copied to userspace, zeroing it to avoid any data leak */
+> -		memset(&buffer, 0, sizeof(buffer));
+>  		memcpy(&buffer.accel, accel, sizeof(buffer.accel));
+>  		/* convert 8 bits FIFO temperature in high resolution format */
+>  		buffer.temp = temp ? (*temp * 64) : 0;
+> diff --git a/drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c b/drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c
+> index b4d7ce1432a4f4d096599877040a89ede0625e0b..4058eca076d8b03a2290535eedffa0a74098d739 100644
+> --- a/drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c
+> +++ b/drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c
+> @@ -806,7 +806,8 @@ int inv_icm42600_gyro_parse_fifo(struct iio_dev *indio_dev)
+>  	const int8_t *temp;
+>  	unsigned int odr;
+>  	int64_t ts_val;
+> -	struct inv_icm42600_gyro_buffer buffer;
+> +	/* buffer is copied to userspace, zeroing it to avoid any data leak */
+> +	struct inv_icm42600_gyro_buffer buffer = { };
+>  
+>  	/* parse all fifo packets */
+>  	for (i = 0, no = 0; i < st->fifo.count; i += size, ++no) {
+> @@ -825,8 +826,6 @@ int inv_icm42600_gyro_parse_fifo(struct iio_dev *indio_dev)
+>  			inv_sensors_timestamp_apply_odr(ts, st->fifo.period,
+>  							st->fifo.nb.total, no);
+>  
+> -		/* buffer is copied to userspace, zeroing it to avoid any data leak */
+> -		memset(&buffer, 0, sizeof(buffer));
+>  		memcpy(&buffer.gyro, gyro, sizeof(buffer.gyro));
+>  		/* convert 8 bits FIFO temperature in high resolution format */
+>  		buffer.temp = temp ? (*temp * 64) : 0;
+> 
 
 
 _______________________________________________
