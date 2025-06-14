@@ -4,61 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E62FBC71141
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Jun 2025 14:21:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA208C7114A
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Jun 2025 18:17:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2s3LWMqlrXFTJSnfSyH+3GcHYbu/gzwNl7fH2hKuc5A=; b=HuyQdBdxcpM7/i
-	H8z0R06Czpr1u6OM1YeKw3n5rbWflqQSqQQikN+rReUVBm3AeSNu4vpOPSIVMdEprXFbwWM+bvj6y
-	JmW8rUZAE9+9DiyLYMWIFlwY+oT1cK32PHkGBOWX1YJL2VeKVfxhUrIJ7Oh2ui9/ju17JaVfPFnqF
-	MfGICXecp4IYwEeDN+ShH2229B0B2sSoGQiGOXSj4blomU1WGbvUHWR8Iiu4KewgoNQwuEOMmMvh/
-	FW4T2zYcaqJLOZb0O6B4WTXMDcqg05SRmMjoegcTcW21k5cWOpqq+osxFhjxHq7fk7my7GVaSA67P
-	5+IpUn+siYim8vqiOFzQ==;
+	List-Archive:List-Unsubscribe:List-Id:To:MIME-Version:Message-Id:Date:Subject
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=D5ZQNhlTcB3/+tJts7LgIIX0vzFsOnmbM11rTWHIGvA=; b=iqjQhcu2hjo6Y+
+	oWBSnCfxab1uEgWG5E2G8218mODDretKowluGQ8La3SH1hsgx1vIgGREDtwQ8UBY7EIpqJhEjqc/w
+	rJiviv5UbBQ15y3Fk5ihCri1P0U+FPAvgk2Tr41ykpEAys8kDsJ6XMdaVQOoM/PDsBUWAv+noDdkO
+	XM6dxA8rDpYknPCJmwa7I/p7jeqCQ+K4M5QEEU7i5aXlv3NGNQ4jZsfwKwBNZVXrBzN/sUHB3V5Xc
+	lq06x8GxfmmnyAxFUBM3GLHJWL4L3xj40Pj1RQ9ZN/dbGPtxbIlOVWjy6xTMhaNRDyduEEh2MmBnb
+	02H1XHHR8rYuIbO0mPIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQRl3-00000001Nw1-3CIQ;
-	Sat, 14 Jun 2025 14:21:21 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uQVRS-00000001eYQ-3Nsi;
+	Sat, 14 Jun 2025 18:17:22 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQRik-00000001NpH-2weC;
-	Sat, 14 Jun 2025 14:18:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id AC98EA50B0B;
-	Sat, 14 Jun 2025 14:18:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BDCEC4CEEB;
-	Sat, 14 Jun 2025 14:18:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749910737;
-	bh=TAefawj8sFz6PzX77ED0UDRrtR9qcAx7l29OSrOfCJ0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Ta9SO3rEXMSLA10FI7fBR3F6/8k5nRYF+su0+OPjS5hW+vMPqYqkjwkBqhYYBZJzi
-	 WkxbcgQaolfGAHRjZceYZBqeLjg3nxqewEpEhi/mc3fXRRgOVjQmxu7ghIAZztiJWi
-	 rcXaFy9n2AswtVLbxFPrJHJQ5k7DbNhVzkcrWFm8KVbZvInGvZmzv0P2o5TRxwzScJ
-	 EXpRqYx7xKx2ZA5uXP8ZlvfB0XTbU8PVP30WMoANTItUUqs4EdtCQcckRCKr/THZHj
-	 QqEd2x3S4DlvrLbcIOo7MzysAEzgrI8Z9I2cHL8+5MkDlEBeHuyeU6NRmGWVCBNvn6
-	 0y8FcKrLKOhAw==
-Date: Sat, 14 Jun 2025 15:18:44 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Pavel Machek <pavel@ucw.cz>
-Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-Message-ID: <20250614151844.50524610@jic23-huawei>
-In-Reply-To: <20250614131844.7fdc10b8@jic23-huawei>
-References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-	<aEqbQPvz0FsLXt0Z@duo.ucw.cz>
-	<2243943.irdbgypaU6@workhorse>
-	<aEsiTy++yKGe1p9W@duo.ucw.cz>
-	<aEsmDyc44P8amm5p@smile.fi.intel.com>
-	<aE0a/Y9qVByfA2vI@duo.ucw.cz>
-	<20250614131844.7fdc10b8@jic23-huawei>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.48; x86_64-pc-linux-gnu)
+	id 1uQVPG-00000001eBz-25XJ;
+	Sat, 14 Jun 2025 18:15:07 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-451e2f0d9c2so26325965e9.1;
+        Sat, 14 Jun 2025 11:15:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749924904; x=1750529704; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=YVu3ELHj03qw6JVbHO+qBJXkWeB0FzNWWpqUWGfylOM=;
+        b=GgI/cjvs7fOJJqMz4VXlgziQLgNtOsQIdNkGASFjclAw6S3iK2iY3CZYAXAwlGNCpm
+         L2rOiL7dU16qrP3h6zT9VISe585DkSjiWNdTS1FPOXqLAd1OPGntpwOYQq1uILzwH+FA
+         N3US/spxft8BjGRMILD2/t+wUWJRon7CY0dLGsEnWa41r+Kk7KHLaa1yMPHX8JEFXdpM
+         OoeVc+3DgGFwTfQ0YWQJ7k4FGAyg1TQGPUEBYU2sjTuYxibwsC+mSo9HfXa1VoXkRhmw
+         u9oICxu3XNVo5O4zoEWVV6ZLI9kNG/SPlG8e8iW9Mn3zLMMP2rF77QWNbYnpxAJ6wrcL
+         tSUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749924904; x=1750529704;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=YVu3ELHj03qw6JVbHO+qBJXkWeB0FzNWWpqUWGfylOM=;
+        b=fI2u/Y5GioasigfTt/zv1foPq9/vI5u9LFxVhCLriBMh7TTOWWhMsifwPMMB9LOOTO
+         9r2v9r/qKW2Upxl/Xm183Qm0aAJcfW559SfYtzkG0HS09YL2l7bJv/b9npvj1DTP0Lqk
+         c09cQQqfdEbezteRKg6A3o0y0YgotEu8RrtAh3iSTLGL16bnzqADvsACOL+YkgiyAsCC
+         6B/EtD9mtcvCZ46CWHV6TrvasXO0CVT5bvVlpoTOubSDEL8SVKRr+khVQiBf+Tkw7vS+
+         4Hp7HEfxTGyDFwdTwkKUTBiv722kmfQbFYnPi8B7VGvxnvHwkZgNvaKVDayzKISoJu8Z
+         DLgA==
+X-Forwarded-Encrypted: i=1; AJvYcCWOFnaO8OlPZBuJ/Axx587GUQftK4LFwqGCmxwgb5GJnV9L4a1gTqyg1/Myn/E8YpI3o74zb9tM8A2+ScNkRCo=@lists.infradead.org, AJvYcCWSrKYRxyjrQvg2hPUNTyfxCfAJowwHNVDCDqwb9Dxq8CtfFxgfweMRdADkETKN8Gtt+H/y94qQptUjaed1iXXr@lists.infradead.org
+X-Gm-Message-State: AOJu0YxVl8z7yjHfAYGZnP5ZSnHO44+Cap0Kv2oM0k9Hc9fPYdOIOnrw
+	x5C4D8IvoesTldnqQ4ccomiJ45uQgLA+8+bGNYUhTbiMDU24kFsfGwJ3
+X-Gm-Gg: ASbGncvmLaRDPYVzFGPL6ieK2eDGopDTm+aCLMNMdplKsq2fYpq2q8zNWaCNtwyN7yN
+	GnmwaQc8E8ar6kqQDb2udzGchfPrbkIVSVwYNAyEcVriCxUfrnVnpy8CdFxjHRv6/ZHX1ORdCnA
+	0AMXZo7wAe+5PjDuCM0KGIDJjpgBgRBcFfM6BYMWr+ZgoFfJskjhuKBHdiGzbwSBq6vW+A7QqyO
+	qw5pn3M9dJxgxNAim93oHtzFBWLSzgyCLadAqDi5HVCpE5KQjexJIKe/U/vOHO1Ze055wtlXBh4
+	1IPvWw0JoDYNnN+e7SH8YeW727x78FMlICIGrZIctHO8SS0IqPagUb1I/k6uI6tvVF5rPvLW33q
+	UaQ==
+X-Google-Smtp-Source: AGHT+IF7S6DdjgB9HqBLnkqzUP5clevKdsXdT1UzIJZ2T7UBIuvG2KsfubEYBL9quR0XBdxCQQ+4lQ==
+X-Received: by 2002:a05:600c:3acd:b0:439:4b23:9e8e with SMTP id 5b1f17b1804b1-4533c8c22b0mr43443515e9.3.1749924904197;
+        Sat, 14 Jun 2025 11:15:04 -0700 (PDT)
+Received: from alchark-surface.localdomain ([5.194.93.132])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4532de8c50esm88195255e9.4.2025.06.14.11.15.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 14 Jun 2025 11:15:03 -0700 (PDT)
+From: Alexey Charkov <alchark@gmail.com>
+Subject: [PATCH v2 0/4] arm64: dts: rockchip: enable further peripherals on
+ ArmSoM Sige5
+Date: Sat, 14 Jun 2025 22:14:32 +0400
+Message-Id: <20250614-sige5-updates-v2-0-3bb31b02623c@gmail.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAAu8TWgC/13MywrCMBCF4VcpszaSiaYRV30P6SJpx3bAXsjUo
+ pS8u7HgxuV/4HwbCEUmgWuxQaSVhacxhzkU0PR+7EhxmxuMNlaX2ijhjqx6zq1fSJTH0gSr0WN
+ AyJ850p1fu3erc/csyxTfO7/id/1Jpz9pRaWVQ0eXhs4+OFd1g+fHsZkGqFNKH/5eTxKqAAAA
+X-Change-ID: 20250602-sige5-updates-a162b501a1b1
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Detlev Casanova <detlev.casanova@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1749924902; l=1743;
+ i=alchark@gmail.com; s=20250416; h=from:subject:message-id;
+ bh=iJiCJI7sEDUMdHrBPmtVqIaCr02IcgWh7GEhyL7jHyM=;
+ b=oOTtK42sNKGPgFOk88atAKW1HsdVOAjslHToD41tGwccGRU4iV1vaf7dEgC9xqs8fGrvk6VF3
+ OBy1U/DvlysA5II5eNVOuw+Z9iQ2A03G1eX9PiLbW3nFMRKNB8KT9Bg
+X-Developer-Key: i=alchark@gmail.com; a=ed25519;
+ pk=ltKbQzKLTJPiDgPtcHxdo+dzFthCCMtC3V9qf7+0rkc=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250614_071858_886743_2B8C1A17 
-X-CRM114-Status: GOOD (  29.76  )
+X-CRM114-CacheID: sfid-20250614_111506_544929_668483B0 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,75 +102,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-iio@vger.kernel.org, Petre Rodan <petre.rodan@subdimension.ro>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Tomasz Duszynski <tomasz.duszynski@octakon.com>, linux-stm32@st-md-mailman.stormreply.com, Lars-Peter Clausen <lars@metafoo.de>, Francesco Dolcini <francesco@dolcini.it>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Oleksij Rempel <o.rempel@pengutronix.de>, Javier Carrasco <javier.carrasco.cruz@gmail.com>, linux-rockchip@lists.infradead.org, =?UTF-8?B?T25kxZllag==?= Jirman <megi@xff.cz>, David Lechner <dlechner@baylibre.com>, Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>, Jacopo Mondi <jacopo@jmondi.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Michael Hennerich <michael.hennerich@analog.com>, Mudit Sharma <muditsharma.info@gmail.com>, linux-mediatek@lists.infradead.org, Andreas Klinger <ak@it-klinger.de>, Matthias Brugger <matthias.bgg@gmail.com>, Leonard =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>, linux-arm-kernel@lists.infradead.org, Andy Shevchenko <andriy.shevchenko@intel.com>, Andy Shevchenko <andy@kernel.org>, linux-kernel@vger.kernel.org, Roan van Dijk <roan@protonic.nl>, =?UTF-8?B?Sm/Do28=?= Paulo =?UTF-8?B?R29uw6dhbHZl?= =?UTF-8?B?cw==?= <jpaulo.silvagoncalves@gmail.com>, kernel@pengutronix.de
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org, linux-rockchip@lists.infradead.org, Alexey Charkov <alchark@gmail.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 14 Jun 2025 13:18:44 +0100
-Jonathan Cameron <jic23@kernel.org> wrote:
+Link up the CPU regulators for DVFS, enable WiFi and Bluetooth.
 
-> On Sat, 14 Jun 2025 08:47:25 +0200
-> Pavel Machek <pavel@ucw.cz> wrote:
-> 
-> > On Thu 2025-06-12 22:10:07, Andy Shevchenko wrote:  
-> > > On Thu, Jun 12, 2025 at 08:54:07PM +0200, Pavel Machek wrote:    
-> > > > > On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel Machek wrote:    
-> > > > > >     
-> > > > > > > Jonathan mentioned recently that he would like to get away from using
-> > > > > > > memset() to zero-initialize stack memory in the IIO subsystem. And we
-> > > > > > > have it on good authority that initializing a struct or array with = { }
-> > > > > > > is the preferred way to do this in the kernel [1]. So here is a series
-> > > > > > > to take care of that.    
-> > > > > > 
-> > > > > > 1) Is it worth the churn?
-> > > > > > 
-> > > > > > 2) Will this fail to initialize padding with some obscure compiler?    
-> > > > > 
-> > > > > as of right now, the only two C compilers that are supported are
-> > > > > GCC >= 8.1, and Clang >= 13.0.1. If anyone even manages to get the
-> > > > > kernel    
-> > > > 
-> > > > Well... I'm pretty sure parts of this would make it into -stable as a
-> > > > dependency, or because AUTOSEL decides it is a bugfix. So..
-> > > > 
-> > > > GNU C                  4.9              gcc --version
-> > > > Clang/LLVM (optional)  10.0.1           clang --version    
-> > > 
-> > > Even though, what the kernel versions are you referring to? I am sure there
-> > > plenty of cases with {} there.    
-> > 
-> > 5.10, for example. I'm sure they are, uninitialized padding is a
-> > security hole, but rather hard to detect if they are not specifically
-> > looking.  
-> 
-> The stack kunit test is there back to 5.0-rc4 
-> 50ceaa95ea09 ("lib: Introduce test_stackinit module")
-> 
-> So I think we should be pretty well defended against issues.
-> 
-> Hence I plan to pick this up curently.
-> 
-> Thanks all for inputs on this.
-> 
-> Fun corners of the C spec vs implementations!
-> 
-> Jonathan
-> 
-I want to give this some testing exposure from 0-day etc in case
-we missed any build related issues so I've queued it up on my testing branch.
-I can still pick up tags / rebase etc for now.
+Different board versions use different incompatible WiFi/Bluetooth modules
+so split the version-specific bits out into an overlay. Basic WiFi
+functionality works even without an overlay, but OOB interrupts and
+all Bluetooth stuff requires one.
 
-Thanks,
+My board is v1.2, so the overlay is only provided for it.
 
-Jonathan
+Signed-off-by: Alexey Charkov <alchark@gmail.com>
+---
+Changes in v2:
+- Expand the commit message for the patch linking CPU regulators and add
+  tags for stable (thanks Nicolas)
+- Fix the ordering of cpu_b* nodes vs. combphy0_ps (thanks Diederik)
+- Drop the USB patch, as Nicolas has already posted a more comprehensive
+  series including also the Type-C stuff (thanks Nicolas)
+- Pick up Nicolas' tags
+- Split out board version specific WiFi/Bluetooth stuff into an overlay
+- Link to v1: https://lore.kernel.org/r/20250603-sige5-updates-v1-0-717e8ce4ab77@gmail.com
 
-> > 
-> > BR,
-> > 								Pavel  
-> 
-> 
+---
+Alexey Charkov (4):
+      arm64: dts: rockchip: list all CPU supplies on ArmSoM Sige5
+      arm64: dts: rockchip: add SDIO controller on RK3576
+      arm64: dts: rockchip: add version-independent WiFi/BT nodes on Sige5
+      arm64: dts: rockchip: add overlay for the WiFi/BT module on Sige5 v1.2
+
+ arch/arm64/boot/dts/rockchip/Makefile              |  5 ++
+ .../rockchip/rk3576-armsom-sige5-v1.2-wifibt.dtso  | 49 +++++++++++++
+ .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 85 ++++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 16 ++++
+ 4 files changed, 155 insertions(+)
+---
+base-commit: 19272b37aa4f83ca52bdf9c16d5d81bdd1354494
+change-id: 20250602-sige5-updates-a162b501a1b1
+
+Best regards,
+-- 
+Alexey Charkov <alchark@gmail.com>
 
 
 _______________________________________________
