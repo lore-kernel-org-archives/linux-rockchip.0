@@ -4,94 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 915A6C71136
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Jun 2025 02:31:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 934CDC71135
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Jun 2025 07:13:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FU16Ey3RxvlD11SHgCPAVTOtdGlGvYVNU2TYIbziMws=; b=4BCyhp/BMmql5n
-	lCZ06xxMEToPf32fUdFfjcerJCMaIEC5/EsCl88GxZrVMkg0BAGHXCo991xt0U3OAPQbNPFkXx2Cz
-	3HD2IFhY6it2gLDpzwTfFNXkE203UpBV6YG6l/rnHmWjhHmiy6evMFxTFonVS4S5Qcx7GjkVrCSp1
-	CZ+jLXx66WJIag4uO+DoWBcZYkchC53ITmEs78ITofLxTtU/u5Fi/lkuYk5QU2PMTTmwJyNBFBaQf
-	jzgDtGyf5PXoqnQ6D97c9p4JpRCUPtOY4RzBAgObMGn2RIusU17DGNgBMLkG+aRO1ofLxfLRWPMAZ
-	uJN+j5kmyh9lTCVYCkZw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=g65RH29zqRX9jyDV58G/zkqavStE/y4QQyxD7xSjsLc=; b=EZne0gzPO8HSlk0Orkv9q7Z/zJ
+	yiMlqRtJTUMdNn6GdL15mdICX3DaeeeBsPFM1gdpgxSf8KTSp62CtuKZ1g3b5MSp97m96htxTXBwC
+	iAkSRv8t4X3b1Bl5eFpAR9ncgywKTu9gSxJCeJwZsq59wAAJFYDc7ZQlBUUK2/WGzWRX0xVNhKq7D
+	6nITd3lYM3CGu9G8313r/fzDLRLMRTSWfoqCgIw6oXeVY/dMbNXAfQ1kbQORqsjddrakhucEH1Fye
+	9nCDZPbFOHQtY38+zGf+gWG+FnxlpfQ9fo6U+ZH4Soe9NooW039ALDYJ2avUlC2vJTNJZwrAXNLK6
+	9U6/IT0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQGgB-00000000XdZ-2crW;
-	Sat, 14 Jun 2025 02:31:35 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1uQL4a-00000000r1l-0SZW;
+	Sat, 14 Jun 2025 07:13:04 +0000
+Received: from jabberwock.ucw.cz ([46.255.230.98])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQGg9-00000000Xd5-41xo;
-	Sat, 14 Jun 2025 02:31:35 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-879d2e419b9so3068990a12.2;
-        Fri, 13 Jun 2025 19:31:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1749868293; x=1750473093; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=muvH186xbp1wZouT3DAGJVB1Ry12NAmcqUPQ49mvjxQ=;
-        b=Pkayy9jIkmePg+DKe+xLLmjmuI6hqsvMjjCEg+0iIaAJ7o/7MU9VcigC8VBxe0SNyH
-         igD9txP1YndW6hyNX7izni+nF8Taso38h9cX5/u0jmPdVpanouWR1T5I/Dn1nLKNIlkn
-         UXlBk9xAPqVg2rg0T2geyexkzD9rUIxvfKuGalq3aLgxVDLk0VlUS7QowLSQkzPuo5lN
-         DK6WN/J8/06YAbJmIKD17IpaIXTzOW0Of6CnpM4qdIb/3ENlW0qrjKIHMbQLlukpEGfp
-         CzLJd/FiwlmNMkiEnExcNSayHjeR+QHnF9tNlyYq4fSvEU3wue9J0Vh5Gvvf/LNdav7h
-         AhWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749868293; x=1750473093;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=muvH186xbp1wZouT3DAGJVB1Ry12NAmcqUPQ49mvjxQ=;
-        b=aAFgALtwHn7+lz536+jth0VyhZW3oUObD7of3/HUcOFVhCBSY/63wlBSYwRAaNBUFT
-         RGLmGRVVg28CeQmxQayOhFt19HB5HLGlu6lYAd1JRT4m+EwICH9GsI17ukgID6ILtQcA
-         6Ku4FnQRCnDkKfBFrjtwXtWH68eWVIvdJluIi8m+J56NVZrR9zrMqphG2QeLUxp4iNIj
-         4vYLg6wbjJIq5/x8+6FVSqwhorp9mkD9gIvOiiJk5AUSnBdK1blY0WkKQMnckztvPNsA
-         6ZXRwInbnOpzlaa9SDsZ8zZCIjP27ssp6EmmH2CUAVFjoWUix/uQjJMHEVXRYcYo0kT3
-         N6xw==
-X-Forwarded-Encrypted: i=1; AJvYcCUBmS9GBVfjpHtGT2k9E7dRsyP1/Wc4ZuaPkS2phsaHX+u6lChNwVg1yul+hEoGUsvltwBLO4GKgQD6@lists.infradead.org, AJvYcCUFhgMcKZdVUqu4GQJZaPce53+4ixhTSEJZR4+2ld6EttyDC/nXxC/8mV4ojLe1nskQPYpCWBZlhzQ1P0pcfoBD@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy3TtC3Gzgpc7eWLmux4ZiodpgzTCHFSzeIJfOVfyPCofQL0MWZ
-	yqCnXaqc1ZBfbd5nMhNwmg4NTcA0/bP9AZff4oGOrfFgI3Z1dPLqrWdkljhQg6i2
-X-Gm-Gg: ASbGncto6Tt8pGWs5cGbowheFtg5c9zYjn2OBhtnf6RDSCnx08+Nmf+USTobKsFmBas
-	ceF9uQ0zDuCR98vULDLfkUFi4PpdWq3kzrnilZqhjRtN7Qoo+dWZPxNdCVZ4M+D3VdCjaygUxGZ
-	eVHqcEBAIAFUPfeMmqjXKfELBOLYS1BkmL3RA29Cqgq4uQjmbCSiqboab1DaHNL+NHS+QSEInrc
-	Wryx4IrUUHOsRPmt4EZ37cjbi0IyAxJMsVXD+DqzjeisdFzDNlCbq/uF8WyMR/r3dXPCXddRVjV
-	TQ1CH058FZBYoUcILsIvceBjZGe7u+oksiG0eqoFgxBpjOzZ/w==
-X-Google-Smtp-Source: AGHT+IHCj4fIQmaD0smD64d+WdoNvxKcsF+LPm8LepKLk3m/wfu/XLkOZVHbtI+96XbJp9WpjbjE8Q==
-X-Received: by 2002:a17:90b:1dc4:b0:311:fde5:e225 with SMTP id 98e67ed59e1d1-313f1c01641mr3118796a91.14.1749868293053;
-        Fri, 13 Jun 2025 19:31:33 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:87ca::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-313c19cd5a6sm4158494a91.12.2025.06.13.19.31.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Jun 2025 19:31:32 -0700 (PDT)
-Date: Fri, 13 Jun 2025 23:31:16 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RESEND RFC PATCH v4 1/5] PCI: rockchip: Use standard PCIe
- defines
-Message-ID: <aEze9A8jtNsZLxr7@geday>
-References: <aEyJhoiPP0Ugm1t6@geday>
- <20250613205023.GA975137@bhelgaas>
- <aEyRrtMZ0LidhyOR@geday>
+	id 1uQKfr-00000000p6Y-1NXc;
+	Sat, 14 Jun 2025 06:47:33 +0000
+Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
+	id 7C4A51C00A4; Sat, 14 Jun 2025 08:47:25 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
+	t=1749883645;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Nq2VMzusQXJdAZDR0PVqMFoxiMFSHB1Zq1d1MUyO7/M=;
+	b=CJtZWBrchouIXzaomFU7ufFekRA9oTEVUBcRxPh1aGCtkolSl3PPeUm6Vdy4Zi/qq+BbIL
+	y2+ONs7eJB1n3//ZNGV+92vplpiqJ2BlqPTy1sNLOONnGZeMEAgOBFJnqxNXIKKVm7uBAk
+	4iLfWoLwa540gktZliYA0g8h3ffD41Y=
+Date: Sat, 14 Jun 2025 08:47:25 +0200
+From: Pavel Machek <pavel@ucw.cz>
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
+Message-ID: <aE0a/Y9qVByfA2vI@duo.ucw.cz>
+References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
+ <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
+ <2243943.irdbgypaU6@workhorse>
+ <aEsiTy++yKGe1p9W@duo.ucw.cz>
+ <aEsmDyc44P8amm5p@smile.fi.intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aEyRrtMZ0LidhyOR@geday>
+In-Reply-To: <aEsmDyc44P8amm5p@smile.fi.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_193133_999603_ECE71858 
-X-CRM114-Status: UNSURE (   7.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250613_234731_802065_4C7BCA48 
+X-CRM114-Status: GOOD (  24.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,26 +63,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-iio@vger.kernel.org, Petre Rodan <petre.rodan@subdimension.ro>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>, Tomasz Duszynski <tomasz.duszynski@octakon.com>, linux-stm32@st-md-mailman.stormreply.com, Lars-Peter Clausen <lars@metafoo.de>, Francesco Dolcini <francesco@dolcini.it>, Oleksij Rempel <o.rempel@pengutronix.de>, Javier Carrasco <javier.carrasco.cruz@gmail.com>, linux-rockchip@lists.infradead.org, =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, David Lechner <dlechner@baylibre.com>, Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>, Jacopo Mondi <jacopo@jmondi.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Michael Hennerich <michael.hennerich@analog.com>, Mudit Sharma <muditsharma.info@gmail.com>, linux-mediatek@lists.infradead.org, Andreas Klinger <ak@it-klinger.de>, Matthias Brugger <matthias.bgg@gmail.com>, Leonard =?iso-8859-1?Q?G=F6hrs?= <l.goehrs@pengutronix.de>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Shevchenko <andy@kernel.org>, linux-kernel@vger.kernel.org, Roan van Dijk <roan@protonic.nl>, =?iso-8859-1?Q?Jo=E3o_Paulo_Gon=E7alves?= <jpaulo.silvagoncalves@gmail.com>, kernel@pengutronix.de, Jonathan Cameron <jic23@kernel.org>
+Content-Type: multipart/mixed; boundary="===============1721146831170165737=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 13, 2025 at 06:01:40PM -0300, Geraldo Nascimento wrote:
-> They are not under NDA and can be obtained though Rockchip's
-> official site:
-> https://rockchip.fr/Rockchip%20RK3399%20TRM%20V1.3%20Part2.pdf
 
-Hm, sorry about the confusion Bjorn, that is not an official website
-at all it seems, so I assume these are leaked?
+--===============1721146831170165737==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="8EN7Mf+Ky8207VFl"
+Content-Disposition: inline
 
-If so, it's a real pity, there's not particularly confidential about
-these docs, and they are essential for working with Rockchip chips.
 
-Sorry,
-Geraldo Nascimento
+--8EN7Mf+Ky8207VFl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu 2025-06-12 22:10:07, Andy Shevchenko wrote:
+> On Thu, Jun 12, 2025 at 08:54:07PM +0200, Pavel Machek wrote:
+> > > On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel=
+ Machek wrote:
+> > > >=20
+> > > > > Jonathan mentioned recently that he would like to get away from u=
+sing
+> > > > > memset() to zero-initialize stack memory in the IIO subsystem. An=
+d we
+> > > > > have it on good authority that initializing a struct or array wit=
+h =3D { }
+> > > > > is the preferred way to do this in the kernel [1]. So here is a s=
+eries
+> > > > > to take care of that.
+> > > >=20
+> > > > 1) Is it worth the churn?
+> > > >=20
+> > > > 2) Will this fail to initialize padding with some obscure compiler?
+> > >=20
+> > > as of right now, the only two C compilers that are supported are
+> > > GCC >=3D 8.1, and Clang >=3D 13.0.1. If anyone even manages to get the
+> > > kernel
+> >=20
+> > Well... I'm pretty sure parts of this would make it into -stable as a
+> > dependency, or because AUTOSEL decides it is a bugfix. So..
+> >=20
+> > GNU C                  4.9              gcc --version
+> > Clang/LLVM (optional)  10.0.1           clang --version
+>=20
+> Even though, what the kernel versions are you referring to? I am sure the=
+re
+> plenty of cases with {} there.
+
+5.10, for example. I'm sure they are, uninitialized padding is a
+security hole, but rather hard to detect if they are not specifically
+looking.
+
+BR,
+								Pavel
+--=20
+I don't work for Nazis and criminals, and neither should you.
+Boycott Putin, Trump, and Musk!
+
+--8EN7Mf+Ky8207VFl
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCaE0a/QAKCRAw5/Bqldv6
+8s8GAJwP0O7BqJu50EUbwvpDrfK4gyMKdACfahroIQZ2mLJdQs4CjH06C6Xtr0Q=
+=2Vk7
+-----END PGP SIGNATURE-----
+
+--8EN7Mf+Ky8207VFl--
+
+
+--===============1721146831170165737==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1721146831170165737==--
+
