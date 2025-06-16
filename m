@@ -4,74 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3993C71159
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jun 2025 15:28:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A934C71155
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jun 2025 15:28:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mhVTv8McYuEVHN2c1AZACrkBcBOdb0Nbb6EhVvxA2sU=; b=MsPHCJ2/NFsszk
-	K3vo7+0I9YEjpOazkW3Otk3xsShc+JLW6cFgSIxXOfWWS8jzk/5nTQSAQO1EN5iAnhlm0h1ilFJOW
-	NC4Q+hGaHyQhKAd+VD8AWztjQ4CkCKq0A3zsh8y7DIC8r2WUKejgcq93nNykrPk86otP5hsa7N9IN
-	0XJ++yesxAahewyJRXJvClAHfG0LGlGM1ECcG+YKdNS1zkFsj6DHxS6CFPTnAq2b6ufw0DUgl9pJZ
-	NzXbp5rTUW/zF9yGhxrhAL7fWgT5m6GlDcNgX5yxOhr1bm4NbGvKUUv+biuD8CIYhC+ym+YDkzQ0T
-	ZGSxMk5Ime4ow+nyreTg==;
+	List-Owner; bh=/yp6v3Afk5/bR/RXaC0xG3ktwFaj6lNzRO1xTgixqAs=; b=CD7VhmryEM8J8e
+	epDLhG1rMOOTIX1gQHNuVUv50beqHwLOWdrce+T8MsPvmwtGqupOISp+fX2VRKgDXeay+vJ501+J1
+	E2Fcx4nRDIMwq0SYuALwGC5vwQecCQdVT4PePpH84unmveUqRmuY9NrAJZpyUH1Zyp0zWnrl7hfj7
+	jAwINE8D/KFV07JqmEbI6sqyHwcFmehYBR4yx36GfwFyQtcxDueKfVGDYEit08VzVwFi+PgD9p4Sx
+	pLNVdmO5osAKStCX3Fl9GZte8ibN6uOY0fR/gm+HBkzepzxgyH16sGhC+oDifts+xEKmma3fvzunU
+	iaOkCKzZpvGTtJoTiMEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRBkg-00000004rrG-3mqp;
-	Mon, 16 Jun 2025 15:28:02 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uRBku-00000004sEl-1fRy;
+	Mon, 16 Jun 2025 15:28:16 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRBG1-00000004lti-1E3O;
-	Mon, 16 Jun 2025 14:56:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750085776;
-	bh=iAx8mzEEjM64kl3dReqUnCAxjjZTtPCO99ShqsJi2Qk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=moaFefQzNAqyMxNFZCgYN7/ZIY2A3LlHEqJJ6rErfkLEiDIJsEQi2Yfp4kotwQcp+
-	 QvwQJhKsC0De+iTa8FzHuGsLuCo9iVCVy8zseEFKbLpMHGKnXnFqOb4VIrgacktzBt
-	 YdcvTsIGhQDxeGRnX541dW7kq/zej4dnrlxJmP4rWM99R2yOoG8D+pRJz037kxiKsh
-	 XxSv/pMzunbcGctCR8K0iel2dQx8KbVN2Ibb5az8oVSKt1o87jFrb1tCrH1NadgkZh
-	 J37uGjNXVr6h/gJhfRexk9Rw/1Ml8LtGSxlhbixd6H1eljmOvBa7WRflgvCQxkwVkm
-	 avMTF2ntxanxg==
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4811:e81c:4b33:730c])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D829717E35D9;
-	Mon, 16 Jun 2025 16:56:15 +0200 (CEST)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	nicolas.dufresne@collabora.com,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org
-Cc: iommu@lists.linux.dev,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-media@vger.kernel.org,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH 5/5] media: verisilicon: Flush IOMMU before decoding a frame
-Date: Mon, 16 Jun 2025 16:55:53 +0200
-Message-ID: <20250616145607.116639-6-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250616145607.116639-1-benjamin.gaignard@collabora.com>
-References: <20250616145607.116639-1-benjamin.gaignard@collabora.com>
+	id 1uRBWb-00000004nxL-0d4g;
+	Mon, 16 Jun 2025 15:13:30 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 357B7346;
+	Mon, 16 Jun 2025 17:13:13 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1750086793;
+	bh=0HNCExAqJ+LaxU1ueCxhXgS3CX0/GTT4qiqhOCeleZE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=cd+rEl4LeP/ZHIM4gWEMYhjqXD0/rin9VjD52OOHdZvIkqhRoZaWZn00QN6bJnKA6
+	 pVExi1IbQLR4xfrlBC/dpwg8ODX0SRU7pxY8ZM2CFH8LzJOKfAccxMJQ+5H54VHgVS
+	 rCMxoyNkNFjfyxiC7+vvZacma5jP5aesiq8AWwhs=
+Date: Mon, 16 Jun 2025 18:13:09 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com, geert@linux-m68k.org,
+	tomi.valkeinen@ideasonboard.com, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
+	linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org
+Subject: Re: [PATCH v5 25/25] drm/xlnx: Compute dumb-buffer sizes with
+ drm_mode_size_dumb()
+Message-ID: <20250616151309.GF10542@pendragon.ideasonboard.com>
+References: <20250613090431.127087-1-tzimmermann@suse.de>
+ <20250613090431.127087-26-tzimmermann@suse.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250613090431.127087-26-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250616_075621_473167_E7A57D59 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20250616_081329_329063_466A0732 
+X-CRM114-Status: GOOD (  14.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,46 +76,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Flush the IOMMU mapping before decoding a frame to ensure that all memory
-translations are properly applied.
+Hi Thomas,
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- drivers/media/platform/verisilicon/hantro_drv.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Thank you for the patch.
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 8542238e0fb1..5a672467d83f 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -11,6 +11,9 @@
-  */
- 
- #include <linux/clk.h>
-+#include <linux/dma-map-ops.h>
-+#include <linux/iommu.h>
-+#include <linux/iommu-dma.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
-@@ -186,6 +189,14 @@ static void device_run(void *priv)
- 
- 	v4l2_m2m_buf_copy_metadata(src, dst, true);
- 
-+	if (use_dma_iommu(ctx->dev->v4l2_dev.dev)) {
-+		struct iommu_domain *mmu_dom;
-+
-+		mmu_dom = iommu_get_domain_for_dev(ctx->dev->v4l2_dev.dev);
-+		if (mmu_dom)
-+			iommu_flush_iotlb_all(mmu_dom);
-+	}
-+
- 	if (ctx->codec_ops->run(ctx))
- 		goto err_cancel_job;
- 
+On Fri, Jun 13, 2025 at 11:00:44AM +0200, Thomas Zimmermann wrote:
+> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+> buffer size. Align the pitch according to hardware requirements.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+> ---
+>  drivers/gpu/drm/xlnx/zynqmp_kms.c | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/xlnx/zynqmp_kms.c b/drivers/gpu/drm/xlnx/zynqmp_kms.c
+> index b47463473472..7ea0cd4f71d3 100644
+> --- a/drivers/gpu/drm/xlnx/zynqmp_kms.c
+> +++ b/drivers/gpu/drm/xlnx/zynqmp_kms.c
+> @@ -19,6 +19,7 @@
+>  #include <drm/drm_crtc.h>
+>  #include <drm/drm_device.h>
+>  #include <drm/drm_drv.h>
+> +#include <drm/drm_dumb_buffers.h>
+>  #include <drm/drm_encoder.h>
+>  #include <drm/drm_fbdev_dma.h>
+>  #include <drm/drm_fourcc.h>
+> @@ -363,10 +364,12 @@ static int zynqmp_dpsub_dumb_create(struct drm_file *file_priv,
+>  				    struct drm_mode_create_dumb *args)
+>  {
+>  	struct zynqmp_dpsub *dpsub = to_zynqmp_dpsub(drm);
+> -	unsigned int pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
+> +	int ret;
+>  
+>  	/* Enforce the alignment constraints of the DMA engine. */
+> -	args->pitch = ALIGN(pitch, dpsub->dma_align);
+> +	ret = drm_mode_size_dumb(drm, args, dpsub->dma_align, 0);
+> +	if (ret)
+> +		return ret;
+>  
+>  	return drm_gem_dma_dumb_create_internal(file_priv, drm, args);
+>  }
+
 -- 
-2.43.0
+Regards,
 
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
