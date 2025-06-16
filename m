@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70AB0C7115A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jun 2025 15:28:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C91CC71136
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jun 2025 18:29:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ro8WSTeLVzSqEKmNNX4baXMYvFxOBAUXlRn2qN6iFiE=; b=ImRQj+YPOxXNFlo1LkM0onWLvB
-	Cbmcbbo9p4xHpMHyWlCWfoJ3Js6PYdP+1yD6sNAo9ep1N6mL2I2db7hfjLu7pujdubxF9/tfqQeSf
-	Y/zQXBHnN+UIKxpZCBTT8mNXt6o3kRwvHPDBJyZEChcrL5CsDnZIO/WWIHnfItUKDPGV83tEBLrnh
-	4m5Ykccz5EQ3PQVZkO80UP0Q66nSFiE3j8UDz6u5wEfxzSLkBaBgSNv8EE9JdXL+y7IPV5lQFgDTp
-	eCGYfgltIFxIs+7XKV+5NmeFgMmPMRkmsIzuO3yIYYoZsmoXnkfQSjNLuevRe0C9F98nQ+r4nfwwQ
-	6iZ2Y5fQ==;
+	bh=DZUahN6DxDXYTNrWVt0vfUSw9D2zwky0ZLpJ58A2hyc=; b=fqShORVGKCh7DRPOw/ny7YOJSL
+	IAm7Kqq9GbD7KC16VrbzIW9WOZdBhWvVpa8WuzFXy0QLUeY1qKA7JhwrufsIGuW8uUspp2ps9nyXQ
+	Z7nXNlbFClgtsczOjhZ2UJBXSfORGyTXFhqR933t1CSti+NpbwA8IbugseucoXsj6v/Ec3AiS0A2x
+	RZ3j8PZPE2vEQfMaG+iFu/LxvhvonaSv7MUsCn9xvoqDP0t8IO/n/rUwFuZuY04+eAXu8lo7hIIWu
+	caKKSXEVo2/Hg7gnR9VLDvWsLzR2OT39ehyk/tx94k5FABfCJTJIp2xKugUn8kTz8rDvKGmRjAwxF
+	nE8nzx1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRBl0-00000004sMo-1po5;
-	Mon, 16 Jun 2025 15:28:22 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uREZy-00000005Dcu-3ngc;
+	Mon, 16 Jun 2025 18:29:10 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRBYC-00000004o9p-1MVP;
-	Mon, 16 Jun 2025 15:15:09 +0000
+	id 1uRByx-00000004usj-1m2w;
+	Mon, 16 Jun 2025 15:42:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D37FA5C624F;
-	Mon, 16 Jun 2025 15:12:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9CD0C4CEEA;
-	Mon, 16 Jun 2025 15:15:03 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F3A0E45133;
+	Mon, 16 Jun 2025 15:42:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 831C7C4CEF0;
+	Mon, 16 Jun 2025 15:42:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750086907;
-	bh=S01e6i/248142ZN8T1QwXvUAAnTI2Pm0YebVCw7eric=;
+	s=k20201202; t=1750088566;
+	bh=EL96VpQZzhoPtchVrd8NRiz8LeFclfDJXhz0xUwdWEg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Qt6DkzSvMTZ2pDGD6PCVS11LpUE02bgSxx6mN5V/nvlZgNsarKHguqkC4KcmcE2q2
-	 dXMo1u9wvwAGu4LZt0pJq20fIykloL6HNR1DK0fB2xERYlirsiknDHLcCQ1J3+vfUm
-	 NQBZpdOjWkZjT36MsYxXlvCTvETWKTlvpTL8caXCtAN9GS1oNxM9trTaEexaHjWjTC
-	 V0uu9MNA+hJhTMnOtlaoXyHOZK/aTrmB+92CjX/VNw1W9iiYEU8y3rQQCCG8IImhg0
-	 XFg3D8f7LE3Jn32Ek3OG/y9wcJtKOld5QF7frs2hYx6MbJp8QZFDq7HQNFI74c4cmQ
-	 n5L7gejiKda7w==
-Date: Mon, 16 Jun 2025 16:15:01 +0100
+	b=M5Ka/c3Pxo+O35mhlGpQYbsO72F4TNYunYxC9sAiN0UEZIa60ATRi78eLQwlw6bgB
+	 raQRDb4JhgkjOV9Kd45dAKE7FK72iXYWxdfRy6mU5bbXypwMbRt+FYr6wtiovTqWBm
+	 Vu4A21c35saGJ9Z5JbcT88hX6baMyaLHvGwaXMhVmNEmzWYBAk2ach3q9DRvZ2Ipsk
+	 Rnk+vVVByYuFwlCBHF++frBXTaZ2UZla0C7b0GBjD7rQ78CCtpTLdNH7dnJQwuckV7
+	 9TM8VTo/DTm9qcr1yC3+gpJKSzqCAGG/3ZABybuPDdfteDDxOygw6B+lJwdmr3iPDa
+	 Y3UKalyDBFfvw==
+Date: Mon, 16 Jun 2025 16:42:41 +0100
 From: Conor Dooley <conor@kernel.org>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
@@ -52,15 +52,18 @@ Cc: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
 	kernel@collabora.com
-Subject: Re: [PATCH 1/5] dt-bindings: vendor-prefixes: Add Verisilicon
-Message-ID: <20250616-cold-dingy-7a3112a52273@spud>
+Subject: Re: [PATCH 2/5] dt-bindings: iommu: verisilicon: Add binding for VSI
+ IOMMU
+Message-ID: <20250616-contempt-remix-5af2b7281cbd@spud>
 References: <20250616145607.116639-1-benjamin.gaignard@collabora.com>
- <20250616145607.116639-2-benjamin.gaignard@collabora.com>
+ <20250616145607.116639-3-benjamin.gaignard@collabora.com>
+ <20250616-winter-strict-db98f85db22d@spud>
+ <5c971c09-c398-40a3-9ed5-ec38b6645e1d@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20250616145607.116639-2-benjamin.gaignard@collabora.com>
+In-Reply-To: <5c971c09-c398-40a3-9ed5-ec38b6645e1d@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250616_081508_414439_BA3E41A2 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20250616_084247_504232_C7BD2B4A 
+X-CRM114-Status: GOOD (  23.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,71 +75,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6219343943767181032=="
+Content-Type: multipart/mixed; boundary="===============0211208753618398055=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============6219343943767181032==
+--===============0211208753618398055==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="8nOZplPpgsff+FjY"
+	protocol="application/pgp-signature"; boundary="3uegz8X9AMqKgIIC"
 Content-Disposition: inline
 
 
---8nOZplPpgsff+FjY
-Content-Type: text/plain; charset=us-ascii
+--3uegz8X9AMqKgIIC
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jun 16, 2025 at 04:55:49PM +0200, Benjamin Gaignard wrote:
-> Verisilicon Microelectronics is a company based in Shanghai, China,
-> developping hardware blocks for SoC.
+On Mon, Jun 16, 2025 at 05:30:44PM +0200, Benjamin Gaignard wrote:
 >=20
-> https://verisilicon.com/
+> Le 16/06/2025 =E0 17:14, Conor Dooley a =E9crit=A0:
+> > On Mon, Jun 16, 2025 at 04:55:50PM +0200, Benjamin Gaignard wrote:
+> > > Add a device tree binding for the Verisilicon (VSI) IOMMU. This IOMMU=
+ sits
+> > > in front of hardware encoder and decoder blocks on SoCs using Verisil=
+icon IP,
+> > > such as the Rockchip RK3588.
+> > >=20
+> > > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > > ---
+> > >   .../bindings/iommu/verisilicon,iommu.yaml     | 71 ++++++++++++++++=
++++
+> > >   1 file changed, 71 insertions(+)
+> > >   create mode 100644 Documentation/devicetree/bindings/iommu/verisili=
+con,iommu.yaml
+> > >=20
+> > > diff --git a/Documentation/devicetree/bindings/iommu/verisilicon,iomm=
+u.yaml b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
+> > > new file mode 100644
+> > > index 000000000000..acef855fc61d
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
+> > > @@ -0,0 +1,71 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/iommu/verisilicon,iommu.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: Verisilicon IOMMU
+> > > +
+> > > +maintainers:
+> > > +  - Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > > +
+> > > +description: |+
+> > > +  A Versilicon iommu translates io virtual addresses to physical add=
+resses for
+> > > +  its associated video decoder.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    oneOf:
+> > > +      - items:
+> > > +          - const: verisilicon,iommu
+> > You're missing a soc-specific compatible at the very least here, but is
+> > there really no versioning on the IP at all? I'd be surprised if
+> > verisilicon only produced exactly one version of an iommu IP.
 >=20
-> Add their name to the list of vendors.
->=20
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> I only aware this version of the iommu for the moment.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+"for the moment", yeah. Is there any information that could be used to
+version this available?
 
-> ---
->  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
->  1 file changed, 2 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Doc=
-umentation/devicetree/bindings/vendor-prefixes.yaml
-> index 5d2a7a8d3ac6..1baf8304c9ac 100644
-> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> @@ -1635,6 +1635,8 @@ patternProperties:
->      description: Variscite Ltd.
->    "^vdl,.*":
->      description: Van der Laan b.v.
-> +  "^verisilicon,.*":
-> +    description: VeriSilicon Microelectronics
->    "^vertexcom,.*":
->      description: Vertexcom Technologies, Inc.
->    "^via,.*":
-> --=20
-> 2.43.0
->=20
+> Does adding verisilicon,rk3588-iommu sound good for you ?
 
---8nOZplPpgsff+FjY
+It'd be "rockchip,rk3588-iommu", but sure.
+
+--3uegz8X9AMqKgIIC
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaFA09QAKCRB4tDGHoIJi
-0ghsAP0R8V9T4k3Bxyhe/X3aEh32l4IHKw5Cn9bsimUNs+RG8AEAg2TMoYlnM6jW
-L6gXbFxHvE9paMA6qFOLCYdHw86GVAo=
-=Lgt1
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaFA7cQAKCRB4tDGHoIJi
+0iCzAP9YCsHKGIYiBpnknc4NXqsdt+3vAksXP7lkL3rhV72dnAD/V+ZJlq0CxEGR
+YIn/c1CTX5YI8+iwECvQSNErsd1qHAo=
+=gnvG
 -----END PGP SIGNATURE-----
 
---8nOZplPpgsff+FjY--
+--3uegz8X9AMqKgIIC--
 
 
---===============6219343943767181032==
+--===============0211208753618398055==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -147,5 +175,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============6219343943767181032==--
+--===============0211208753618398055==--
 
