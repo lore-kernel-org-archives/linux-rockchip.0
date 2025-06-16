@@ -4,71 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95604C71155
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jun 2025 14:04:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2779DC7115A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jun 2025 15:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2bKzLEFbLgwWOl3ez/Otsu6jI3D5aVlNE5FC3+0LooE=; b=PXXJ5ZjCEg5eBN
-	NNkFbWhrCcNA3eRFR24UKw8PhZVgckez1l4j3Id0/0Oa5+VG6zmGdGqFKbahWAZz+FwTt9XZk9uQK
-	o/Ew2ug7TVbBB+T1cuA5IFC1EngRVmZrrz2RyHsgk2YB3GviqaT6EH6juBfGJSZjU5SaFA+7CbH6+
-	nvY4fA6ZAOPmUd/16k6YhcBOk+vRts0+Ug6IViyyU3dAgTKxa3T9a0gqjejF2kuin3hHmExQWycTL
-	oWUtjzyyAvGA3JBiY6IHl8sTHRD+F1elRRyRhBWz6P7sWjY6vI8zcGU3Ds3KYFNMyKRqfrNay581A
-	e11ou9i4WqyMo/aiej5g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Mmn0FkYz/fOAMEHHcwZ/wBDoElYFDL0G1uKq8Gf1WYI=; b=OU/ycXw4uvOCCcKz54e9b9nuGT
+	Gn/Pwya4cva98Bb/zatUzK7NN+H+KrtmU6X+gboGufAVS4Bwx2mN51QhFTVbxM7Woy/94V152VgyS
+	4YITdKktHog6M6pb68LhL3aYA3zKEyfRuAgxtWXSCAC+njI9jBb8hcAtMp0GWkU7rmpxTKnWT1V3i
+	IziLcS2EcfFqbx9pzFF75Xh0KjIRRQUncmkwWDoKEZDTwm4cu3E3kR3zzQ4tZFuUr0j88ZQoot/o8
+	g83hU9jaiDSXLOUhgn4IoXsXggHwS3/9jFOJv3O5cz0uV1NAQAB81naG530F1oSaE0F8m1Iv3D/gk
+	7Jkbi2Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRARm-00000004dop-2J4v;
-	Mon, 16 Jun 2025 14:04:26 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uRBih-00000004p4W-0pIG;
+	Mon, 16 Jun 2025 15:25:59 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR9GI-00000004QEg-1PBA;
-	Mon, 16 Jun 2025 12:48:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750078090; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Noj837lL1QUwu7QwkZOvSNZyMANKK4hvJRpnt3BeaQkZfvjrMDtbEVB7pyeP9H3rGsZIwZjbnZto6Dw6xvLqZDOgRi0WdWOHnSFq+w8ocLkp4KRC8FISqOMAtulZN/hErS2wNCwChKeF5ct2yxovVMu8osk6129ALt5XeIbbGE8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750078090; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=HKjeTdmJPh/8z/0sRDDRVkWKLbnDMCBBoa4t9bucIe4=; 
-	b=J0sXDy+hxuy+880JvsArY9kGS8zGenjEO6mtuM1TOAokRZZalldQcJTXzjB87BSnUK6KeIH4nSGPZ8PD4AwN1QWTloUKOwgzynnz9mo1FBuo1lLVlGdnCxYa97ZUR4qSILEKXjbZHmJHh3gYNZ0i+7ZfRwpGvwZpIJ6uyludl2U=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750078090;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=HKjeTdmJPh/8z/0sRDDRVkWKLbnDMCBBoa4t9bucIe4=;
-	b=P1mehgoW9dxsq8haTmNMgTw+EKa3hxVmX6x429UQxc+r06naOkrbhD2WzXCJrfa1
-	4ZB4MIsrQMxJYC4u6ku4JNUBduBRPV1NutWRlCdXt7NExjrrvwAE07Gd4tjJBz6dP3Y
-	VH7KKk2bIoArvK9W559I77SqtxhjQxUezTlYzC4k=
-Received: by mx.zohomail.com with SMTPS id 1750078087706132.33901078776455;
-	Mon, 16 Jun 2025 05:48:07 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Neil Armstrong <neil.armstrong@linaro.org>
-Cc: Alexey Charkov <alchark@gmail.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 1/4] phy: rockchip: inno-usb2: add soft vbusvalid control
-Date: Mon, 16 Jun 2025 14:48:01 +0200
-Message-ID: <7815489.EvYhyI6sBW@workhorse>
-In-Reply-To: <5c531d53-3573-4c25-a32b-79dfd5abd4cd@linaro.org>
-References: <20250610-rk3576-sige5-usb-v4-0-7e7f779619c1@collabora.com>
- <20250610-rk3576-sige5-usb-v4-1-7e7f779619c1@collabora.com>
- <5c531d53-3573-4c25-a32b-79dfd5abd4cd@linaro.org>
+	id 1uR9Uy-00000004TOx-0cn8;
+	Mon, 16 Jun 2025 13:03:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 91F3D4AC56;
+	Mon, 16 Jun 2025 13:03:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD64CC4CEEA;
+	Mon, 16 Jun 2025 13:03:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750079019;
+	bh=a7j27RQuAyvZnCvRGb4L4XPkG2jx93P21IQMnptuauU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qbCdWXICAoHbASkv2kppLcyRQQ6+aYqV7jEI2SspphRpmjFSXmRaAHbscPyOf27+p
+	 vib9dZYkbzP1B0oxXG4d3QbJkXWHo6aMXpOzbqRLfgG+BFVbh1goeHmihfmGw0cXan
+	 z+HD8WKupg2opOlUu+S+re67Q/s2Jv5tmCCHhxj70dvkKuzN4Py5VzF7j5/g710Vjh
+	 s7F4pove0fhUsgVqtZ17TrOJ+RtSr0qlblAQgTBNvRQDXiX97VrbgPOON2z+Po5zby
+	 Fnk29kIHu6BhwrRI6Gvk4YUturpgSMUOhORTkRTY0Oi+0axDDOveKR3/KPVKiObNzB
+	 YZERVv/rLzA5g==
+Date: Mon, 16 Jun 2025 15:03:36 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, 
+	Brian Norris <briannorris@chromium.org>, Boris Brezillon <bbrezillon@kernel.org>, 
+	Thierry Reding <thierry.reding@gmail.com>, kernel@collabora.com, linux-pwm@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] pwm: rockchip: round period/duty down on apply, up on get
+Message-ID: <nf5bpi3sv5rrlvjg7q2ehyck6brmm3bzmzw4zclirwtiy7vrjp@yzsiao7krnt7>
+References: <20250522-rockchip-pwm-rounding-fix-v1-1-b516ad76a25a@collabora.com>
 MIME-Version: 1.0
+In-Reply-To: <20250522-rockchip-pwm-rounding-fix-v1-1-b516ad76a25a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250616_054830_443947_D69BB618 
-X-CRM114-Status: GOOD (  27.03  )
+X-CRM114-CacheID: sfid-20250616_060340_229132_00E3ECEB 
+X-CRM114-Status: GOOD (  25.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,81 +67,126 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0313822012660778362=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Friday, 13 June 2025 11:02:40 Central European Summer Time neil.armstrong@linaro.org wrote:
-> On 10/06/2025 16:07, Nicolas Frattaroli wrote:
-> > With USB type C connectors, the vbus detect pin of the OTG controller
-> > attached to it is pulled high by a USB Type C controller chip such as
-> > the fusb302. This means USB enumeration on Type-C ports never works, as
-> > the vbus is always seen as high.
-> > 
-> > Rockchip added some GRF register flags to deal with this situation. The
-> > RK3576 TRM calls these "soft_vbusvalid_bvalid" (con0 bit index 15) and
-> > "soft_vbusvalid_bvalid_sel" (con0 bit index 14).
-> > 
-> > Downstream introduces a new vendor property which tells the USB 2 PHY
-> > that it's connected to a type C port, but we can do better. Since in
-> > such an arrangement, we'll have an OF graph connection from the USB
-> > controller to the USB connector anyway, we can walk said OF graph and
-> > check the connector's compatible to determine this without adding any
-> > further vendor properties.
-> > 
-> > Do keep in mind that the usbdp PHY driver seemingly fiddles with these
-> > register fields as well, but what it does doesn't appear to be enough
-> > for us to get working USB enumeration, presumably because the whole
-> > vbus_attach logic needs to be adjusted as well either way.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >   drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 113 +++++++++++++++++++++++++-
-> >   1 file changed, 109 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > index b0f23690ec3002202c0f33a6988f5509622fa10e..4f89bd6568cd3a7a1d2c10e9cddda9f3bd997ed0 100644
-> > --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > [...]
-> > @@ -666,8 +679,17 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
-> >   	unsigned long delay;
-> >   	bool vbus_attach, sch_work, notify_charger;
-> >   
-> > -	vbus_attach = property_enabled(rphy->grf,
-> > -				       &rport->port_cfg->utmi_bvalid);
-> > +	if (rport->port_cfg->svbus_en.enable && rport->typec_vbus_det) {
-> > +		if (property_enabled(rphy->grf, &rport->port_cfg->svbus_en) &&
-> > +		    property_enabled(rphy->grf, &rport->port_cfg->svbus_sel)) {
-> 
-> Why do you check the registers since you always enable those bits on those conditions:
-> 	rport->port_id == USB2PHY_PORT_OTG
-> 	rport->typec_vbus_det
-> 	rport->port_cfg->svbus_en.enable
-> 	rport->typec_vbus_det
-> Can't you us them instead ?
 
-I did some more looking into this, and agree that I can drop the
-property_enabled lines here. The other concern I had immediately (that
-the bits never get turned off, which seemed fishy) isn't a concern after
-all, because after sleeping on it some more, I realised that it's probably
-not very likely that a USB-C connector is ever going to morph into anything
-else spontaneously.
+--===============0313822012660778362==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="t53uq6jf7edocakw"
+Content-Disposition: inline
 
-Thank you for spotting this!
 
-> 
-> Neil
-> 
+--t53uq6jf7edocakw
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] pwm: rockchip: round period/duty down on apply, up on get
+MIME-Version: 1.0
+
+Hello Nico,
+
+On Thu, May 22, 2025 at 09:26:44PM +0200, Nicolas Frattaroli wrote:
+> With CONFIG_PWM_DEBUG=3Dy, the rockchip PWM driver produces warnings like
+> this:
+>=20
+>   rockchip-pwm fd8b0010.pwm: .apply is supposed to round down
+>   duty_cycle (requested: 23529/50000, applied: 23542/50000)
+>=20
+> This is because the driver chooses ROUND_CLOSEST for idempotency
+> reasons. However, it's possible to keep idempotency while always
+> rounding down in .apply.
+
+Note that rounding nearest is difficult for idempotency. Consider a PWM
+can implement the following period lengths:
+
+	20.61, 21.4, 22.19
+
+First if you use round-nearest you cannot set 21.4 because if you
+request 21 you get 20.61 and if you request 22 you get 22.19. So if the
+hardware still runs at 21.4, obviously apply =E2=9A=AC get_state cannot be
+idempotent. If you round down in apply and up in get_state (or
+vice-versa) you get idempotency. So using ROUND_CLOSEST for idempotency
+is based on a wrong intuition.
+
+> Do this by making get_state always round up, and making apply always
+> round down. This is done with u64 maths, and setting both period and
+> duty to U32_MAX (the biggest the hardware can support) if they would
+> exceed their 32 bits confines.
+>=20
+> Fixes: 12f9ce4a5198 ("pwm: rockchip: Fix period and duty cycle approximat=
+ion")
+> Fixes: 1ebb74cf3537 ("pwm: rockchip: Add support for hardware readout")
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+> This fix may need some careful testing from others before definitely
+> being applied and backported. While I did test it myself of course,
+> making sure to try a combination of periods and duty cycles, I really
+> don't want to accidentally undo someone else's fix.
+
+I like it apart from a small nitpick, see below. I think the danger of
+breaking something is small and I tend to apply your patch.
+
+> Some of the u64 math is a bit overkill, but I don't want to assume
+> prescalers will never get larger than 4, which is where we start needing
+> the 64-bit prescaled NSECS_PER_SEC value. clk_rate could also
+> comfortably fit within u32 for any expected clock rate, but unsigned
+> long can fit more depending on architecture, even if nobody is running
+> the PWM hardware at 4.294967296 GHz.
+> ---
 > [...]
+> @@ -103,8 +106,9 @@ static void rockchip_pwm_config(struct pwm_chip *chip=
+, struct pwm_device *pwm,
+>  			       const struct pwm_state *state)
+>  {
+>  	struct rockchip_pwm_chip *pc =3D to_rockchip_pwm_chip(chip);
+> -	unsigned long period, duty;
+> -	u64 clk_rate, div;
+> +	u64 prescaled_ns =3D (u64)pc->data->prescaler * NSEC_PER_SEC;
+> +	u64 clk_rate, tmp;
+> +	u32 period, duty;
 
-Kind regards,
-Nicolas Frattaroli
+These hold the period and duty in ticks, so I'd call them period_ticks
+and duty_ticks respectively.
+
+>  	u32 ctrl;
+> =20
+>  	clk_rate =3D clk_get_rate(pc->clk);
+> @@ -114,12 +118,15 @@ static void rockchip_pwm_config(struct pwm_chip *ch=
+ip, struct pwm_device *pwm,
+
+Best regards
+Uwe
+
+--t53uq6jf7edocakw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmhQFiUACgkQj4D7WH0S
+/k6RIggAsLLr/RA5R0kZBQiL6qGYpa0dMKd4CntzFu4LMeuLZsSWcXFKnP5RdvO0
+2ysAsVZCJLejyUxDn9VjSDFwpSgw4LoP/hnKbGguh9h/zGozMq/A1E0dYPXqSfPD
+BePTzoZkw7qfzHVMrvR/dY2wTIOuzQHiBSi02eSiO0ye1CfuDIJ0CUQfT86SQ5ju
+VpBfoU63QPjF+o6Ewp/ewIomFgw3J+xytch2HT15kJcrwRibobH2j6ZyDriMt3jh
+ak0utCjLsxnJLXTlGTb0Z/DROUMXnHsCrSutyDFcAa057c0/zas+cwS+PErlW53s
+RdAGcmvcBnvbX+vNuqTSO5f11T0zfQ==
+=ljjR
+-----END PGP SIGNATURE-----
+
+--t53uq6jf7edocakw--
 
 
+--===============0313822012660778362==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0313822012660778362==--
+
