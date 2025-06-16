@@ -4,118 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B256C71136
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jun 2025 15:27:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B96AC71155
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Jun 2025 15:27:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZJkW2TSe90z+/pD2IKTCVsFReMu6qcqMixiUEYyxit8=; b=SqO9sJW4F9xJFJ
-	K8trttzB0r8aXmmFYsNYIcd3s/IB0umfmjXh71oEzCsqjg8EMMhvq4pupjJIMGzrVrQ6IP0XU2SGR
-	7Nz8DoBKkLOxcBYRDdWS+BhyGATJwM2uv5gC3iIlconP05OyJIpsyoXDSYFlRPp9ZpapZPopirwHc
-	3YmVyWuPNVqaj5PR2F5kMCVXUCJSqtI0vfbV1gE8lk3rQRr5/74wf4Cg/R8e5GP1z9Yj+jU7wPaOO
-	lDlQhtSZDg8nQXZd1/pD2MUBkPYXg3pI3i3xAAIhQHQ+MkbJwh3x8G83CvC9Zm2utdOe9DgN8Fl6s
-	1sCu/OUPa8UEkbrC2/mA==;
+	List-Owner; bh=BvRlk31mWr2CIl4F+3+ezrpTQGs0GX4n6TZBj1Dwqtk=; b=s9p0hQF4tUF6Lo
+	Jg73ln7FVBSkEBwoCJh2Y7cYg8I/dhu2hdiRsS7Z5M9ZhXe21yD4YHxjesldM8G2jo/xdNkOm4YWs
+	BHu2S8pgMPJBUIXmLh2x3Db6oqWlz9GwkLgHoNSnNSOjaLoOUVwOOMpRsEBoxo1PCJQJ5+o4eDq4T
+	o1y4o+M9RfBvn366QCDCmnSy+x4H1bV8UWPuxA3L4ZZcoWu+cXSadN+4C9e1N71H9prC04DHfgnxW
+	6T9ltnn92sXL15Tg2N/iO82aw8hRwrk3V4abZGvZlLJqOU7/YI2iyxdEjZyXDWlwl6HzlK96P1BO2
+	AGVHlA4USFfpqYWLp3Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRBjl-00000004qYP-43nh;
-	Mon, 16 Jun 2025 15:27:05 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uRBjq-00000004qf5-2pvc;
+	Mon, 16 Jun 2025 15:27:12 +0000
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR9rD-00000004XSb-1BqY;
-	Mon, 16 Jun 2025 13:26:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
-	Date:References:In-Reply-To:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=NkQEvwmgjTHGj3/M2aKLGR2hgsNYITiFQ1oG2L/HREo=; b=SRV+LZkKzuw2/otqpmclrpcjHz
-	v5ijfuHudVp7GfI5wEN/hxs36HJ3Hr/LU4g+mwhRq+6HwpiXRwGXWG2KBVu4UP5UWGKm0GVmpLae/
-	c/AxdsI3AV/Z33q7XpNYbNiYFjso/vHtIVS4WPcvinLlWBiGWGRmO5ki4FmACMKpipyGFzcfcsXq3
-	aDqzCA7Pu9b0HhxC02UNf5Cnt4VkhOJtGmS3+XXBFuZ+xfSxmq5UwzfVY0xKMDgriElPyKNOg70MP
-	r9AWqj57oyIgrjfYJdj94udLqUqUMAw0vXsC/OtSjAB7amBr/L7ruIam1Y7RvrkFFFn9ZcECO9WYX
-	nhPP0boA==;
-Received: from mgamail.intel.com ([198.175.65.13])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR9rA-00000003aql-1R0R;
-	Mon, 16 Jun 2025 13:26:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1750080396; x=1781616396;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version;
-  bh=W1ULqCjf8lfOUmBr3Wu+Ci3avbmtCxJZhQsdCwBauN4=;
-  b=LWUeA/51RUjMm8tPlNwRoxQrN/IpdRCm9O3i/JFZRWyfsZDtruRbd2GM
-   d0EfMPF5rDh7E0CMU877mskkC0Wj95QUtswJZf/T8urZ1mG4MxGlvaQj7
-   6Uqw073xyrX4Wvs6jZ8TUyU1p4tl1BT0pnqc/IaFgfp8OoriqwqHpYqCI
-   iueatYEJMVtuZ907B08Qj0Juktg33hky3wCrmcMF6GaY28k6CXA1QiUyl
-   xwGQoVnAehpIhn8CBulUususB4t7DNzgIzTN4GIExAxPZajFagfiqF3Bp
-   p6qT6CcX9mGQ07o/jq4JwwSB0juQ7WzCWnJSIZ4aFPF3TI20Vr9fFTy5k
-   w==;
-X-CSE-ConnectionGUID: lwRrUTUrRR207SDd93aDjQ==
-X-CSE-MsgGUID: aIjBngfFT+S9+8Q2y6jxvA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11465"; a="63255606"
-X-IronPort-AV: E=Sophos;i="6.16,241,1744095600"; 
-   d="scan'208";a="63255606"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2025 06:26:29 -0700
-X-CSE-ConnectionGUID: sUy1hWcBTaOgchksDDuQnw==
-X-CSE-MsgGUID: y/Hym029QOuoVBlZiI68jA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,241,1744095600"; 
-   d="scan'208";a="153426298"
-Received: from mjarzebo-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.246.92])
-  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2025 06:26:10 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Robin Murphy
- <robin.murphy@arm.com>, Yury Norov <yury.norov@gmail.com>, Jakub Kicinski
- <kuba@kernel.org>
-Cc: Rasmus Villemoes <linux@rasmusvillemoes.dk>, Jaehoon Chung
- <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Heiko
- Stuebner <heiko@sntech.de>, Shreeya Patel <shreeya.patel@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Sandy Huang
- <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David
- Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Vinod Koul
- <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, Nicolas
- Frattaroli <frattaroli.nicolas@gmail.com>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela
- <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Maxime
- Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Shawn Lin <shawn.lin@rock-chips.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy?=
- =?utf-8?Q?=C5=84ski?=
- <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, Rob
- Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Chanwoo
- Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>, Qin Jian <qinjian@cqplus1.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Nathan Chancellor <nathan@kernel.org>, Nick
- Desaulniers <nick.desaulniers+lkml@gmail.com>, Bill Wendling
- <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
- linux-pm@vger.kernel.org, netdev@vger.kernel.org, llvm@lists.linux.dev,
- linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
- linux-pci@vger.kernel.org, linux-phy@lists.infradead.org,
- kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Subject: Re: [PATCH 01/20] bitfield: introduce HWORD_UPDATE bitfield macros
-In-Reply-To: <3361713.44csPzL39Z@workhorse>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com>
- <1437fe89-341b-4b57-b1fa-a0395081e941@arm.com> <aEw7LBpmkfOqZgf1@yury>
- <3361713.44csPzL39Z@workhorse>
-Date: Mon, 16 Jun 2025 16:26:07 +0300
-Message-ID: <35d8c6372fb38f6d7e452c2e3b5a80327f20dae6@intel.com>
+	id 1uR9uo-00000004Y87-1fy3
+	for linux-rockchip@lists.infradead.org;
+	Mon, 16 Jun 2025 13:30:23 +0000
+Received: by mail-yb1-xb30.google.com with SMTP id 3f1490d57ef6-e81ec95d944so4710791276.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 16 Jun 2025 06:30:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1750080621; x=1750685421; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=8dIM4ggq6nkqhLbVMKcT1ezBsK840f8IM9RKNGuYHjk=;
+        b=MKzUXo98qQWXnacho74Ez0BjonbseTA5zpAsUGG1FxO5ncaVvRBocQt+5cW+FPdLkI
+         Gh7GD+62/cwire0Kephgwp1/CArZR8zNs8UrzC3FFsJsXnrgtOs9Q9gleAYImA/1HmH3
+         l+xsVencfHtDc7G6fWHjbh6sWvoUkdicHmTzu/uYujzm0V4UphzPaajy3o9BRDPsJXxg
+         2MsX2aZ0IpYnVx9PMBuS/s6okewjzfZAUbHOQgSnqr1ZGH1usgTnRdmUEH7Ghw18q3be
+         80DOIlKVQdy92LhvgEJyamfdT4G02h4n4VyoWZqpd9sQoWQ+UL0YY41uUPhlMol+0kHk
+         NHAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750080621; x=1750685421;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8dIM4ggq6nkqhLbVMKcT1ezBsK840f8IM9RKNGuYHjk=;
+        b=KO+Z6bFii5cq07UHHUuZqSYEa7bWInrny/PsHCLNyVwUy48EfhEZrNB0JMZEUPPaJt
+         RrkhHYUvPikar8afmfNJmJFBUZySYXEfIUdavUNrT4hsBk+z4Q764mR8dTXfD4N+2yB2
+         8rHT03kQ1XQP7ywbj77gNFcmxQyLtWXVag5+yd3LwwS9iHJ0TutyedsiBLQfi+mvRixq
+         h6aILJPoLatMF30+IJL+eloGYPn+7o5FSXIU9/GRMyEZIHY2ZLLXFd4KjZeo99q6dWUc
+         nCAUhC9yfQzeMdMmu6hn8Q50AWPmZ2zPSmXSiVvJ7TEeACePo2uIbKyT3LNy7pqd1kiy
+         vbJA==
+X-Forwarded-Encrypted: i=1; AJvYcCVWpVaXkle9i6d/ORyjUCfAV8aThyPkmO17gxah6nGzc9TKGhWk2XPv4ot9aGUjF6ZHODYaXT9Zr+R7T7lv4w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwGZlRa9yANKr7kt0o2l8RTknfO3vGJowddMygwB57o8gQxbHFg
+	8d9Ts0BO1vMkYrp3GmUInlEHyqp5fmTv+BoMCpdG8zJl+ACB1s1fIA2Q7cKpo++8L8bEmY7XzUO
+	iaNqLxiqB9bqovIaO1IZLKwoDwY6x7XyhDGqmMuU9DQ==
+X-Gm-Gg: ASbGncsNAZ2ZU7kLvHhQShBz8fefKJa6OIQOvQKGfqk2xIndYO5IanLzF2/pryRbiZd
+	/qOWNIu4olSquySNR+w538ihxC6wNsj3WP0z0EjTnZXaCkmJPyKdujhedzv/7OfqsDMUwOu0VNY
+	UkmWLtAAX5HLB9LE8ghDJeLe9ajLV5tpQrt5gFKLSfbbRA
+X-Google-Smtp-Source: AGHT+IHvwFdTtrctzoiWIaPE71W/8FTAI+xhZY2HkhDJbIaDsGip4BNw9qrbXT3Tk9Kd8tGyhyS35T/gDOg+zFs+nYI=
+X-Received: by 2002:a05:6902:703:b0:e81:566c:3085 with SMTP id
+ 3f1490d57ef6-e8227f0e61bmr12875927276.1.1750080620760; Mon, 16 Jun 2025
+ 06:30:20 -0700 (PDT)
 MIME-Version: 1.0
+References: <20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com> <20250612-byeword-update-v1-2-f4afb8f6313f@collabora.com>
+In-Reply-To: <20250612-byeword-update-v1-2-f4afb8f6313f@collabora.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 16 Jun 2025 15:29:44 +0200
+X-Gm-Features: AX0GCFucmmVjhuxKNu1-kopwQ1Ifcn7b36ykDZEf_SV72XMHIWGaSa8Aqxa6A60
+Message-ID: <CAPDyKFr_-aQ+YoRqYVUFhRR=94NWOredaSYQsVb-xvot83HJ3w@mail.gmail.com>
+Subject: Re: [PATCH 02/20] mmc: dw_mmc-rockchip: switch to HWORD_UPDATE macro
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Yury Norov <yury.norov@gmail.com>, Rasmus Villemoes <linux@rasmusvillemoes.dk>, 
+	Jaehoon Chung <jh80.chung@samsung.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Shreeya Patel <shreeya.patel@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Qin Jian <qinjian@cqplus1.com>, 
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Nathan Chancellor <nathan@kernel.org>, Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, 
+	Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, kernel@collabora.com, 
+	linux-kernel@vger.kernel.org, linux-mmc@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-phy@lists.infradead.org, linux-sound@vger.kernel.org, 
+	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-pci@vger.kernel.org, linux-pm@vger.kernel.org, 
+	linux-clk@vger.kernel.org, llvm@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250616_142636_898299_E14E7FE2 
-X-CRM114-Status: GOOD (  38.72  )
+X-CRM114-CacheID: sfid-20250616_063022_447606_3264C202 
+X-CRM114-Status: GOOD (  19.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,100 +118,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 16 Jun 2025, Nicolas Frattaroli <nicolas.frattaroli@collabora.com> wrote:
-> Hello,
+On Thu, 12 Jun 2025 at 20:57, Nicolas Frattaroli
+<nicolas.frattaroli@collabora.com> wrote:
 >
-> On Friday, 13 June 2025 16:52:28 Central European Summer Time Yury Norov wrote:
->> On Fri, Jun 13, 2025 at 02:54:50PM +0100, Robin Murphy wrote:
->> > On 2025-06-12 7:56 pm, Nicolas Frattaroli wrote:
->> > > Hardware of various vendors, but very notably Rockchip, often uses
->> > > 32-bit registers where the upper 16-bit half of the register is a
->> > > write-enable mask for the lower half.
->> > > 
->> > > This type of hardware setup allows for more granular concurrent register
->> > > write access.
->> > > 
->> > > Over the years, many drivers have hand-rolled their own version of this
->> > > macro, usually without any checks, often called something like
->> > > HIWORD_UPDATE or FIELD_PREP_HIWORD, commonly with slightly different
->> > > semantics between them.
->> > > 
->> > > Clearly there is a demand for such a macro, and thus the demand should
->> > > be satisfied in a common header file.
->> > > 
->> > > Add two macros: HWORD_UPDATE, and HWORD_UPDATE_CONST. The latter is a
->> > > version that can be used in initializers, like FIELD_PREP_CONST. The
->> > > macro names are chosen to not clash with any potential other macros that
->> > > drivers may already have implemented themselves, while retaining a
->> > > familiar name.
->> > 
->> > Nit: while from one angle it indeed looks similar, from another it's even
->> > more opaque and less meaningful than what we have already. Personally I
->> > cannot help but see "hword" as "halfword", so logically if we want 32+32-bit
->> > or 8+8-bit variants in future those would be WORD_UPDATE() and
->> > BYTE_UPDATE(), right? ;)
->> > 
->> > It's also confounded by "update" not actually having any obvious meaning at
->> > this level without all the implicit usage context. FWIW my suggestion would
->> > be FIELD_PREP_WM_U16, such that the reader instantly sees "FIELD_PREP with
->> > some additional semantics", even if they then need to glance at the
->> > kerneldoc for clarification that WM stands for writemask (or maybe WE for
->> > write-enable if people prefer). Plus it then leaves room to easily support
->> > different sizes (and potentially even bonkers upside-down Ux_WM variants?!)
->> > without any bother if we need to.
->> 
->> I like the idea. Maybe even shorter: FIELD_PREP_WM16()?
->> 
+> The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
+> drivers that use constant masks.
 >
-> I do think FIELD_PREP_WM16() is a good name. If everyone is okay with this
-> as a name, I will use it in v2 of the series. And by "everyone" I really
-> mean everyone should get their hot takes in before the end of the week,
-> as I intend to send out a v2 on either Friday or the start of next week
-> to keep the ball rolling, but I don't want to reroll a 20 patch series
-> with a trillion recipients more than is absolutely necessary.
-
-I'd never guess what WM stands for in this context without looking it
-up, but I'll be happy if we have FIELD_PREP_ and 16 in there. So works
-for me.
-
-> To that end, I'd also like to get some other naming choices clarified.
+> Switch to the new HWORD_UPDATE macro in bitfield.h, which has error
+> checking. Instead of redefining the driver's HIWORD_UPDATE macro in this
+> case, replace the two only instances of it with the new macro, as I
+> could test that they result in an equivalent value.
 >
-> As I gathered, these two macros should best be placed in its own header.
-> Is include/linux/hw_bitfield.h a cromulent choice, or should we go with
-> include/linux/hw_bits.h?
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-I'll let y'all fight it out.
+Acked-by: Ulf Hansson <ulf.hansson@linaro.org>
 
-> Furthermore, should it be FIELD_PREP_WM16_CONST or FIELD_PREP_CONST_WM16?
-> I'm personally partial to the former.
+Kind regards
+Uffe
 
-Ditto.
-
-> And finally, is it okay if I leave out refactoring Intel's
-> _MASKED_FIELD() or should I see if I can at least replace its
-> implementation while I'm at it?
-
-I think you can just let us deal with that afterwards. You have enough
-users already.
-
-
-BR,
-Jani.
-
-
+> ---
+>  drivers/mmc/host/dw_mmc-rockchip.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
 >
-> For less opinionated changes, I'll also change all the `U` literal
-> suffixes to `UL` wherever I've added them. As I understand it, it doesn't
-> really make a difference in these instances, but `UL` is more prevalent
-> in the kernel.
+> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+> index baa23b51773127b4137f472581259b61649273a5..9e3d17becf65ffb60fe3d32d2cdec341fbd30b1e 100644
+> --- a/drivers/mmc/host/dw_mmc-rockchip.c
+> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+> @@ -5,6 +5,7 @@
 >
-> Kind regards,
-> Nicolas Frattaroli
+>  #include <linux/module.h>
+>  #include <linux/platform_device.h>
+> +#include <linux/bitfield.h>
+>  #include <linux/clk.h>
+>  #include <linux/mmc/host.h>
+>  #include <linux/of_address.h>
+> @@ -24,8 +25,6 @@
+>  #define ROCKCHIP_MMC_DELAYNUM_OFFSET   2
+>  #define ROCKCHIP_MMC_DELAYNUM_MASK     (0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
+>  #define ROCKCHIP_MMC_DELAY_ELEMENT_PSEC        60
+> -#define HIWORD_UPDATE(val, mask, shift) \
+> -               ((val) << (shift) | (mask) << ((shift) + 16))
 >
+>  static const unsigned int freqs[] = { 100000, 200000, 300000, 400000 };
 >
-
--- 
-Jani Nikula, Intel
+> @@ -148,9 +147,9 @@ static int rockchip_mmc_set_internal_phase(struct dw_mci *host, bool sample, int
+>         raw_value |= nineties;
+>
+>         if (sample)
+> -               mci_writel(host, TIMING_CON1, HIWORD_UPDATE(raw_value, 0x07ff, 1));
+> +               mci_writel(host, TIMING_CON1, HWORD_UPDATE(GENMASK(11, 1), raw_value));
+>         else
+> -               mci_writel(host, TIMING_CON0, HIWORD_UPDATE(raw_value, 0x07ff, 1));
+> +               mci_writel(host, TIMING_CON0, HWORD_UPDATE(GENMASK(11, 1), raw_value));
+>
+>         dev_dbg(host->dev, "set %s_phase(%d) delay_nums=%u actual_degrees=%d\n",
+>                 sample ? "sample" : "drv", degrees, delay_num,
+>
+> --
+> 2.49.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
