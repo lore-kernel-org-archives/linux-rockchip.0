@@ -4,95 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74C2FC71136
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 17:13:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37771C71157
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 20:23:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6yGlObx/1y1cATDTfdM3VkoTUVhkYKvjIHCq7fh+4jg=; b=GqACKy+5O/ofmw
-	ICwsuyLuwT5yrzwLF7YVxkKmT1w9FNXySrsF5pdmweU3GK+xY8aNbE7joPM/e2wBksOA0nXkngYd1
-	fneLhtU4Fj2tE7qV995CRnEVk0cMVh38t8fuXQozvCGD0pFbKAqIhxkwFOqjnPNY0rMxyuwQnVEbh
-	0zngd5OoBYvtDJDdWm3sE67CJNBcWrvCwZlsvQCrKDmknZQOPhFJYUk6VaNgvYAfQX9UuxHwmSwj/
-	gKwvpAtUcotlsbm9/9DYdDhfQuJy74D3U4F1tASNEh+92b2OI0dxz38FqrPIX+5C7tGfwKxu6WItk
-	urMnVw4q/475mKDtkQkw==;
+	List-Owner; bh=nqLQKPMpeE3wDo8od30lTfr+LcDDrTBwb2bDBhKFheM=; b=nB/BNitjLWlhmr
+	SqD/1PfoSv1mlwDNlLiSQXDYNCYLoa8i5YMQuiA0BB+c4slMjkAoFJ/iT+DzTfCA0+L5x0+BijLjp
+	REGUpAZfoaKEOspe8pUb5rUoCMmTz/OH6W3OBrnYoe1l36KHQA9+IlZlos6Q/58Mu+FV1E1+q0tVb
+	l2TxdLQOp2H+4pwMeyLaZJHMnI1c/+ilvJ3/cpjKQUG43tiBicedkpEYaF+3gemdTAef/cZVe3x37
+	gmx+jFpwPJaBuKgTKhz+MzLvpnuu9CaI5dzPjApjm9MTuIlfZe7AMyJmXDYqKnCTybR6yeXk1NRnW
+	Wx54B89k/ZpZ+TWp+ysQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRZrm-000000080bP-2EVL;
-	Tue, 17 Jun 2025 17:12:58 +0000
-Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
+	id 1uRcpn-00000008LMU-0XML;
+	Tue, 17 Jun 2025 20:23:07 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRZEU-00000007sxb-11Xr
-	for linux-rockchip@lists.infradead.org;
-	Tue, 17 Jun 2025 16:32:23 +0000
-Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-6fad4a1dc33so60822196d6.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 17 Jun 2025 09:32:22 -0700 (PDT)
+	id 1uRcna-00000008L8M-1Ot9;
+	Tue, 17 Jun 2025 20:20:52 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-607ea238c37so12977612a12.2;
+        Tue, 17 Jun 2025 13:20:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ziepe.ca; s=google; t=1750177941; x=1750782741; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=nC7rm+Bwrl6nau/SPrD4L98tdg/BZZbxkCiAvlgkDgo=;
-        b=IqWqQiAyWCykB2r072NPZvTOoa0Kj573/8mCer0hGs5r2s4N9rxECoovca1kHgUvas
-         LUDOSIxqAkgrrv4D3YO8dq1xySCtnsnhIl5xqvkdU5NItF1epg8/VkfiI9CeZaaFfalm
-         NPmJsxCVf9mfndgPmeA8KemGyijyYq8MzykdLZ4Sxpx0oOt9G2IPgZDUxwm2czhIG0EG
-         jVT8KzHoxdy1Si19uHulXO/FZlGtsTEkmFzQWoM6Vb0tJaW3rlQw6UyJwZ+D7uEqRZfK
-         aIgU0OdlvGFvp9bKy/CgFvsDlZuZ8HU31d1m41g2V18urniHWs/XBbGb2Tk3IOXtdidO
-         FmZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750177941; x=1750782741;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1750191648; x=1750796448; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=nC7rm+Bwrl6nau/SPrD4L98tdg/BZZbxkCiAvlgkDgo=;
-        b=te4jzylyfEtdygBqGnB6XZEiLwXeOpHym816OGag7jwFN/2pzNiIBkKFR00WyPYBfo
-         H61T3l5wUMG14H9MbdCENo5xZZO6PqVg3xS4adHxDX2M0Uf5h6//zTDgJ+cwS4frtHmT
-         Gyjh2oa1/c40y7JzN8Jvzb7fRmJeFzHvESyNDZqha5Y2L6cOkaAbcmJfcOv5++ttoYCK
-         j0pY/0vDXOOuwb6Qmyg+JT41MSCjS5KIkmHU0fvoYjcJoLZucQ81QlgPB7dioquMyi2f
-         ZgjnfZn/aGSnk8XnMsZX7d80WBjcPSsD+HDOj4bSK3ru7ErttqWboWZHmQkNK6fCgI74
-         ucCw==
-X-Forwarded-Encrypted: i=1; AJvYcCXQLU/IW065R6mbcQWlpxsI3lKAFkuaoIVClGnBUAhK3BJnEcGhIOtHLGJ8szRVo3y0W/MfkroCTR/3B8pDzA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzNGPqi6W5RzeEIsriIBv43l5mn2OPCvSu/113+xNBJ5EqBhBjH
-	XEsts1itZcKCSpl7Gaw/8882u/a6ehL4RqtDY4TE1vY9797M5u38OAWy1bEaDH4iOzQ=
-X-Gm-Gg: ASbGncskqeLmQoUjX9mbYD1iR3uiq4aPxDIHsV9U1pxrmzi18Cf9o2IGLPLJid38nix
-	zlFNlFyO/awGB0l5m3viBYxGwginGnmmrxYPa0sJ8uPGIv1ok0VL9cbaHNPDBhzd/Rd8FhECW5X
-	lKFhklkq6jQ0uMk9fh2LKIiCY9VWaYG+6iq1v5eUqYczzJYA6SGwu9ZqaFFEAEnG2WDItWfASCA
-	F61zYRw4YEx9/C75kLXiNvPLZqVK8+7AScl3lt1knxx7KhtZO+qsT/bKckXYUrbzf0ABcIeKck9
-	v4+gJa6tpaMKGPftm4HNACoeDzHJ0T8InUCGV4xwtOXnVBoftVbNSu80hTmV9KB3PLMdWrwvvSM
-	cv6STjtC65P4WFpzVvlutWgWSwKVFFfy8iuEq8A==
-X-Google-Smtp-Source: AGHT+IEn/8UILucmSUjm3Ghk3vbiODu7JZ3ElN7VeLJXr7Tqd6s5+YqK3eHc6OVfIyOPTPJQFQWeeQ==
-X-Received: by 2002:a05:6214:2344:b0:6fa:bd17:32a with SMTP id 6a1803df08f44-6fb47798100mr185358346d6.29.1750177940786;
-        Tue, 17 Jun 2025 09:32:20 -0700 (PDT)
-Received: from ziepe.ca (hlfxns017vw-142-167-56-70.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.167.56.70])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6fb5f63431bsm8459256d6.43.2025.06.17.09.32.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jun 2025 09:32:20 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.97)
-	(envelope-from <jgg@ziepe.ca>)
-	id 1uRZER-00000006X8g-3Ob6;
-	Tue, 17 Jun 2025 13:32:19 -0300
-Date: Tue, 17 Jun 2025 13:32:19 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
-	nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
-	mchehab@kernel.org, iommu@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH 3/5] iommu: Add verisilicon IOMMU driver
-Message-ID: <20250617163219.GF1376515@ziepe.ca>
-References: <20250616145607.116639-1-benjamin.gaignard@collabora.com>
- <20250616145607.116639-4-benjamin.gaignard@collabora.com>
+        bh=PoWkML0br1CB5IKrik82J2Iqxt05XtbYr/y6VLetGDo=;
+        b=hHvhoB1V+FRVHwwRzYZQbciHPbvn7FxP+JsEMu/7YShLr0AoVriSTvD1UX/GCIotqU
+         SfzdJIKm+5Eqm428ZIasUL3fnu3CZgBbDRbmTMYepRLsojBTVr02bvvXhHyui8fltW0C
+         OwydtExJ7aM4X1O+wsgV+W0gDZ8poQsDABAdGdLS/sFaivsdRxkVFEykPlGVu3pFSuP0
+         jcUsK4lvYO7o4Rjhqhu2YV06LsbpjQwTctfzm2Pjl1tSnrGuZwN7lVP3132W3L5Y7Qe0
+         w06h6w0x3HpLUh+cj9468n9mbycXCZq0wj+1sJcFB2PXOMeh2LD/bwvadCxnUY+FLy6I
+         pYbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750191648; x=1750796448;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=PoWkML0br1CB5IKrik82J2Iqxt05XtbYr/y6VLetGDo=;
+        b=WaZZPeLIAkfvOtlV/Rw+bFklEK0CAboWa273As67aijE/fGSSstm+MSRnwF3/3rlBk
+         Xm0gz8GX8rib0wggYWAgOl7zxOwzx2ba4tG2bnxIHVr+PUOwh76XpmbrTe8hfBSQ6jE3
+         DZOrbPChc/v/VwegxRlEL8IBnS0oEG36TdWh+xwA3aPbn40e7ZPeLBGcqoTnjSOKDnlK
+         hbUXwlMQxQYJ88cTeVms53qjKLkXorPINDn6FGoLwnJfoT/eIdZ6YED0uEX+Q68nayRp
+         r06yIM9NJ2YEUT4zIW0JN7+tqxJnGybpBEDK50pkEehEK5YcsSR5r9Dd4cEG28mGh7vY
+         zjpA==
+X-Forwarded-Encrypted: i=1; AJvYcCU1dZh9375XZN+4rw3UHZnsQ1HD2cqXaXytnxeIdjTLalIew7qcXcddPglSP/xR8LNpzHOW/OOCbueH/rOCS7uV@lists.infradead.org, AJvYcCVtb0to/BG/SXHTHlutVfr78M7XNW5zdsdGdsovbgOjQl1bNer4RR+qNyesom0XE5IBG5Ebtwwp+C+OALo4qto=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxjF4zAh2kYVvlKfOVLa2ax9pBIIBfUWgnNo1UyFT+Wn/X1dBp1
+	kVSidfqM1HyYDc9Z8yx4DFM4vv06PNj3PD7l+xkxnqmqd7w4gU9Puvu2P1ZIE9I+rMBKU/u0bau
+	KIJuDr5fXw2uzD2vV6sFo2Jgyi6U0/3M=
+X-Gm-Gg: ASbGncuGdQYRi6pAh3v/Yf3cl4gD0jDMb3MvsN5lVYU+kIY9MywGL0u3Xag4axSzJg6
+	tRjbuRe5R5NTLsVBp1JK+FkMI0dJ2B8mAS25YRguPT9q5xfRYhm9nQBfuF4/S9iIZ5E2TEO7rSG
+	eaHRH7fE/KQQHSf2iOUUz/Lg3FywFQUnDCBJcFN+PybLo=
+X-Google-Smtp-Source: AGHT+IH55q2E7WN90zlOR6v7MpoEZG1ZkgzQBcnVbtaOcZW1nXjzThJdLm8vxQ3uGqz1hgnih3z7TEc6CNrqy3XXCpk=
+X-Received: by 2002:a17:907:6088:b0:ad5:5302:4023 with SMTP id
+ a640c23a62f3a-adfad5a09f1mr1412781866b.44.1750191648049; Tue, 17 Jun 2025
+ 13:20:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250616145607.116639-4-benjamin.gaignard@collabora.com>
+References: <20250617-gpiochip-set-rv-gpio-v1-0-903703881fa2@linaro.org> <20250617-gpiochip-set-rv-gpio-v1-3-903703881fa2@linaro.org>
+In-Reply-To: <20250617-gpiochip-set-rv-gpio-v1-3-903703881fa2@linaro.org>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Tue, 17 Jun 2025 23:20:11 +0300
+X-Gm-Features: AX0GCFv4-ZOYtBYGK94NP7YGG7FmZo--RTOkdcfKWd4WwJAEnvHM4GXHaVOeSrs
+Message-ID: <CAHp75Vf5DhkNL3pb=KW9CsKr=9Cxr6d3Kwi4R+raF0T0h20x4Q@mail.gmail.com>
+Subject: Re: [PATCH 03/12] gpio: pch: use new GPIO line value setter callbacks
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Andy Shevchenko <andy@kernel.org>, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, 
+	Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_093222_279168_E43DE435 
-X-CRM114-Status: GOOD (  32.92  )
+X-CRM114-CacheID: sfid-20250617_132050_375231_5E22CA00 
+X-CRM114-Status: UNSURE (   8.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,367 +93,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 16, 2025 at 04:55:51PM +0200, Benjamin Gaignard wrote:
-
-> +static struct vsi_iommu *vsi_iommu_from_dev(struct device *dev)
-> +{
-> +	struct vsi_iommudata *data = dev_iommu_priv_get(dev);
-> +
-> +	return data ? data->iommu : NULL;
-
-It would be a serious bug if dev_iommu_priv_get() is null, don't check
-for it, let it crash.
-
-> +static struct iommu_domain *vsi_iommu_domain_alloc_paging(struct device *dev)
-> +{
-> +	struct vsi_iommu_domain *vsi_domain;
-> +
-> +	if (!dma_dev)
-> +		return NULL;
-> +
-> +	vsi_domain = kzalloc(sizeof(*vsi_domain), GFP_KERNEL);
-> +	if (!vsi_domain)
-> +		return NULL;
-> +
-> +	/*
-> +	 * iommu use a 2 level pagetable.
-> +	 * Each level1 (dt) and level2 (pt) table has 1024 4-byte entries.
-> +	 * Allocate one 4 KiB page for each table.
-> +	 */
-> +	vsi_domain->dt = iommu_alloc_pages_sz(GFP_KERNEL | GFP_DMA32,
-> +					      SPAGE_SIZE);
-> +	if (!vsi_domain->dt)
-> +		goto err_free_domain;
-> +
-> +	vsi_domain->dt_dma = dma_map_single(dma_dev, vsi_domain->dt,
-> +					    SPAGE_SIZE, DMA_TO_DEVICE);
-> +	if (dma_mapping_error(dma_dev, vsi_domain->dt_dma)) {
-> +		dev_err(dma_dev, "DMA map error for DT\n");
-> +		goto err_free_dt;
-> +	}
-> +
-> +	vsi_domain->pta = iommu_alloc_pages_sz(GFP_KERNEL | GFP_DMA32,
-> +					       SPAGE_SIZE);
-> +	if (!vsi_domain->pta)
-> +		goto err_unmap_dt;
-> +
-> +	vsi_domain->pta_dma = dma_map_single(dma_dev, vsi_domain->pta,
-> +					     SPAGE_SIZE, DMA_TO_DEVICE);
-> +	if (dma_mapping_error(dma_dev, vsi_domain->pta_dma)) {
-> +		dev_err(dma_dev, "DMA map error for PTA\n");
-> +		goto err_free_pta;
-> +	}
-> +	vsi_domain->pta[0] = vsi_mk_pta(vsi_domain->dt_dma);
-
-> +
-> +	vsi_table_flush(vsi_domain, vsi_domain->pta_dma, 1024);
-> +	vsi_table_flush(vsi_domain, vsi_domain->dt_dma, NUM_DT_ENTRIES);
-
-dma_map_single already flushes, put things in the write order and no
-need to double flush.
-
-> +	spin_lock_init(&vsi_domain->iommus_lock);
-> +	spin_lock_init(&vsi_domain->dt_lock);
-> +	INIT_LIST_HEAD(&vsi_domain->iommus);
-> +
-> +	vsi_domain->domain.geometry.aperture_start = 0;
-> +	vsi_domain->domain.geometry.aperture_end   = DMA_BIT_MASK(32);
-> +	vsi_domain->domain.geometry.force_aperture = true;
-
-Initialize domain.pgsize_bitmap here and remove this:
-
-+       .pgsize_bitmap = VSI_IOMMU_PGSIZE_BITMAP,
-
-It is going away.
-
-> +	return &vsi_domain->domain;
-> +
-> +err_free_pta:
-> +	iommu_free_pages(vsi_domain->pta);
-> +err_unmap_dt:
-> +	dma_unmap_single(dma_dev, vsi_domain->dt_dma,
-> +			 SPAGE_SIZE, DMA_TO_DEVICE);
-> +err_free_dt:
-> +	iommu_free_pages(vsi_domain->dt);
-> +err_free_domain:
-> +	kfree(vsi_domain);
-> +
-> +	return NULL;
-> +}
-> +
-> +static phys_addr_t vsi_iommu_iova_to_phys(struct iommu_domain *domain,
-> +					  dma_addr_t iova)
-> +{
-> +	struct vsi_iommu_domain *vsi_domain = to_vsi_domain(domain);
-> +	unsigned long flags;
-> +	phys_addr_t pt_phys, phys = 0;
-> +	u32 dte, pte;
-> +	u32 *page_table;
-> +
-> +	spin_lock_irqsave(&vsi_domain->dt_lock, flags);
-
-No locking should be here. Drivers are supposed to use cmpxchg to set
-the new tables to avoid races, however there is complexity around the
-cache flushing that this locking solves.
-
-IDK, you might be better to use the new iommupt stuff since all these
-algorithms including the complicated lockless cache flushing
-optmization are sorted out there.
-
-https://lore.kernel.org/linux-iommu/0-v3-a93aab628dbc+521-iommu_pt_jgg@nvidia.com/
-
-> +	dte_index = vsi_iova_dte_index(iova);
-> +	dte_addr = &vsi_domain->dt[dte_index];
-> +	dte = *dte_addr;
-> +	if (vsi_dte_is_pt_valid(dte))
-> +		goto done;
-> +
-> +	page_table = (u32 *)get_zeroed_page(GFP_ATOMIC | GFP_DMA32);
-> +	if (!page_table)
-> +		return ERR_PTR(-ENOMEM);
-
-Don't use get_zeroed_page for page table memory.
-
-> +
-> +	pt_dma = dma_map_single(dma_dev, page_table, SPAGE_SIZE, DMA_TO_DEVICE);
-> +	if (dma_mapping_error(dma_dev, pt_dma)) {
-> +		dev_err(dma_dev, "DMA mapping error while allocating page table\n");
-> +		free_page((unsigned long)page_table);
-> +		return ERR_PTR(-ENOMEM);
-> +	}
-> +
-> +	dte = vsi_mk_dte(pt_dma);
-> +	*dte_addr = dte;
-> +
-> +	vsi_table_flush(vsi_domain, pt_dma, NUM_PT_ENTRIES);
-> +	vsi_table_flush(vsi_domain,
-> +			vsi_domain->dt_dma + dte_index * sizeof(u32), 1);
-
-Double flushing again.
-
-> +static int vsi_iommu_map_iova(struct vsi_iommu_domain *vsi_domain, u32 *pte_addr,
-> +			      dma_addr_t pte_dma, dma_addr_t iova,
-> +			      phys_addr_t paddr, size_t size, int prot)
-> +{
-> +	unsigned int pte_count;
-> +	unsigned int pte_total = size / SPAGE_SIZE;
-> +	phys_addr_t page_phys;
-> +
-> +	assert_spin_locked(&vsi_domain->dt_lock);
-> +
-> +	for (pte_count = 0; pte_count < pte_total; pte_count++) {
-> +		u32 pte = pte_addr[pte_count];
-> +
-> +		if (vsi_pte_is_page_valid(pte))
-> +			goto unwind;
-> +
-> +		pte_addr[pte_count] = vsi_mk_pte(paddr, prot);
-
-So why is this:
-
-#define VSI_IOMMU_PGSIZE_BITMAP 0x007ff000
-
-If the sizes don't become encoded in the PTE? The bits beyond 4k
-should reflect actual ability to store those sizes in PTEs, eg using
-contiguous bits or something.
-
-> +		paddr += SPAGE_SIZE;
-> +	}
-> +
-> +	vsi_table_flush(vsi_domain, pte_dma, pte_total);
-> +
-> +	return 0;
-> +unwind:
-> +	/* Unmap the range of iovas that we just mapped */
-> +	vsi_iommu_unmap_iova(vsi_domain, pte_addr, pte_dma,
-> +			     pte_count * SPAGE_SIZE);
-> +
-> +	iova += pte_count * SPAGE_SIZE;
-> +	page_phys = vsi_pte_page_address(pte_addr[pte_count]);
-> +	pr_err("iova: %pad already mapped to %pa cannot remap to phys: %pa prot: %#x\n",
-> +	       &iova, &page_phys, &paddr, prot);
-
-No pr_errs prints on normal errors.
-
-> +static void vsi_iommu_detach_device(struct iommu_domain *domain,
-> +				    struct device *dev)
-> +{
-> +	struct vsi_iommu *iommu;
-> +	struct vsi_iommu_domain *vsi_domain = to_vsi_domain(domain);
-> +	unsigned long flags;
-> +	int ret;
-> +
-> +	/* Allow 'virtual devices' (eg drm) to detach from domain */
-> +	iommu = vsi_iommu_from_dev(dev);
-> +	if (WARN_ON(!iommu))
-> +		return;
-> +
-> +	dev_dbg(dev, "Detaching from iommu domain\n");
-> +
-> +	if (!iommu->domain)
-> +		return;
-> +
-> +	spin_lock_irqsave(&vsi_domain->iommus_lock, flags);
-> +	list_del_init(&iommu->node);
-> +	spin_unlock_irqrestore(&vsi_domain->iommus_lock, flags);
-
-The list del should probably be after the vsi_iommu_disable()? We
-expect invalidations to continue to keep the IOTLB consistent until
-the HW is no longer walking the page table.
-
-> +static struct iommu_device *vsi_iommu_probe_device(struct device *dev)
-> +{
-> +	struct vsi_iommudata *data;
-> +	struct vsi_iommu *iommu;
-> +
-> +	data = dev_iommu_priv_get(dev);
-> +	if (!data)
-> +		return ERR_PTR(-ENODEV);
-> +
-> +	iommu = vsi_iommu_from_dev(dev);
-> +
-> +	pr_info("%s,%d, consumer : %s, supplier : %s\n",
-> +		__func__, __LINE__, dev_name(dev), dev_name(iommu->dev));
-
-No prints
-
-> +	/*
-> +	 * link will free by platform_device_del(master) via
-> +	 * BUS_NOTIFY_REMOVED_DEVICE
-> +	 */
-> +	data->link = device_link_add(dev, iommu->dev,
-> +				     DL_FLAG_STATELESS | DL_FLAG_PM_RUNTIME);
-> +
-> +	/* set max segment size for dev, needed for single chunk map */
-> +	if (!dev->dma_parms)
-> +		dev->dma_parms = kzalloc(sizeof(*dev->dma_parms), GFP_KERNEL);
-> +	if (!dev->dma_parms)
-> +		return ERR_PTR(-ENOMEM);
-> +
-> +	dma_set_max_seg_size(dev, DMA_BIT_MASK(32));
-
-I'm not sure this should be in an iommu driver??? Doesn't dma-iommu.c
-deal with this stuff
-
-> +static void vsi_iommu_release_device(struct device *dev)
-> +{
-> +	struct vsi_iommudata *data = dev_iommu_priv_get(dev);
-> +
-> +	device_link_del(data->link);
-
-Leaking data..
-
-> +static int vsi_iommu_of_xlate(struct device *dev,
-> +			      const struct of_phandle_args *args)
-> +{
-> +	struct platform_device *iommu_dev;
-> +	struct vsi_iommudata *data;
-> +
-> +	data = devm_kzalloc(dma_dev, sizeof(*data), GFP_KERNEL);
-> +	if (!data)
-> +		return -ENOMEM;
-> +
-> +	dev_info(dev, "%s,%d\n", __func__, __LINE__);
-> +	iommu_dev = of_find_device_by_node(args->np);
-> +
-> +	data->iommu = platform_get_drvdata(iommu_dev);
-> +
-> +	dev_iommu_priv_set(dev, data);
-
-Can you use iommu_fwspec_add_ids() instead of this?
-
-The only thing 'data' is doing here is to pass the iommu_dev, it is
-much better if you can get that from the fwspec in probe, like say ARM
-does it:
-
-	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-
-	smmu = arm_smmu_get_by_fwnode(fwspec->iommu_fwnode);
-
-And then don't allocate memory in the of_xlate.
-
-> +static struct iommu_ops vsi_iommu_ops = {
-> +	.domain_alloc_paging = vsi_iommu_domain_alloc_paging,
-> +	.probe_device = vsi_iommu_probe_device,
-> +	.release_device = vsi_iommu_release_device,
-> +	.device_group = generic_single_device_group,
-> +	.pgsize_bitmap = VSI_IOMMU_PGSIZE_BITMAP,
-
-move pgsize_bitmap to alloc paging
-
-
-> +static int vsi_iommu_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct vsi_iommu *iommu;
-> +	struct resource *res;
-> +	int num_res = pdev->num_resources;
-> +	int err, i;
-> +
-> +	iommu = devm_kzalloc(dev, sizeof(*iommu), GFP_KERNEL);
-> +	if (!iommu)
-> +		return -ENOMEM;
-> +
-> +	platform_set_drvdata(pdev, iommu);
-
-This should be done last after the function can't fail
-
-> +
-> +	iommu->group = iommu_group_alloc();
-> +	if (IS_ERR(iommu->group)) {
-> +		err = PTR_ERR(iommu->group);
-> +		goto err_unprepare_clocks;
-> +	}
-
-This should not be in iommu drivers. I'm guessing you want
-generic_single_device_group() ?
-
-> +	/*
-> +	 * use the first registered sysmmu device for performing
-> +	 * dma mapping operations on iommu page tables (cpu cache flush)
-> +	 */
-> +	if (!dma_dev)
-> +		dma_dev = &pdev->dev;
-
-Huh? This is racey, and why? What is the reason not to use the current
-device always? Put the dev in the iommu_domain during
-domain_alloc_paging and get it from  dev->iommu->iommu_dev->dev.
-
-> +
-> +	pm_runtime_enable(dev);
-> +
-> +	err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
-> +	if (err)
-> +		goto err_put_group;
-> +
-> +	err = iommu_device_register(&iommu->iommu, &vsi_iommu_ops, dev);
-> +	if (err)
-> +		goto err_remove_sysfs;
-
-Register should usually be last.
-
-> +	for (i = 0; i < iommu->num_irq; i++) {
-> +		int irq = platform_get_irq(pdev, i);
-> +
-> +		if (irq < 0)
-> +			return irq;
-> +
-> +		err = devm_request_irq(iommu->dev, irq, vsi_iommu_irq,
-> +				       IRQF_SHARED, dev_name(dev), iommu);
-> +		if (err)
-> +			goto err_unregister;
-> +	}
-
-Why allocate interrupts after registration?
-
-Jason
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBKdW4gMTcsIDIwMjUgYXQgMzoyNOKAr1BNIEJhcnRvc3ogR29sYXN6ZXdza2kgPGJy
+Z2xAYmdkZXYucGw+IHdyb3RlOgo+Cj4gRnJvbTogQmFydG9zeiBHb2xhc3pld3NraSA8YmFydG9z
+ei5nb2xhc3pld3NraUBsaW5hcm8ub3JnPgo+Cj4gc3RydWN0IGdwaW9fY2hpcCBub3cgaGFzIGNh
+bGxiYWNrcyBmb3Igc2V0dGluZyBsaW5lIHZhbHVlcyB0aGF0IHJldHVybgo+IGFuIGludGVnZXIs
+IGFsbG93aW5nIHRvIGluZGljYXRlIGZhaWx1cmVzLiBDb252ZXJ0IHRoZSBkcml2ZXIgdG8gdXNp
+bmcKPiB0aGVtLgoKUmV2aWV3ZWQtYnk6IEFuZHkgU2hldmNoZW5rbyA8YW5keUBrZXJuZWwub3Jn
+PgpJIGRvbid0IGV4cGVjdCBhbnkgY29uZmxpY3RzIGluIHRoaXMgZHJpdmVyIGluIHRoaXMgY3lj
+bGUsIGZlZWwgZnJlZQp0byB0YWtlIHZpYSB5b3VyIHRyZWUgZGlyZWN0bHkuCgotLSAKV2l0aCBC
+ZXN0IFJlZ2FyZHMsCkFuZHkgU2hldmNoZW5rbwoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
