@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E4ACC71157
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 22:59:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 706C2C71136
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 23:01:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vBBlkGLBTPMfHBLJ5f3EB+r4fVYW2TzmnEbnx6aHovk=; b=D+6Md8KN6usl5v
-	zBrE+LtMZyJuXLAt6CfTGUs2K8bfQ5cFOp4XEocn3meX578X27T3L1nGuQDk1F2R/6VZklnrTG678
-	tB04p+XUgMAWRzUpvi+XguEfh+UJ7kI50nmeAefLsUX/T11ggucmggg3TQw1OftRuQat2dtBcWzkt
-	hDOAiXXREIBBdgcEXCJtz9Ef1PjSPQ45HrzbInbAST8YOU/LC3A4/TjlG+FzKZ0pqsBjFyq4EOxsa
-	31OJkhJZ5mXKC3xntEnUQHoi285AzfPlgojy5FpzNj++nTG6oBBT5ECw7DJr5pKEqAzB/L1W1KfZk
-	Ziib8XLeF9kRw4Bb40cQ==;
+	List-Owner; bh=WmVmBYG7x/VuLUySzO3zYLCBxa/qHZbBvWzo4QTyhc4=; b=qiRier7deWsbFd
+	lYs7wKcG4Kq0sdD7ghHE/7V28ACGJUXOfkbfojOt+Jp92/9kar0ICLB/RKnJkqNaNO/ENaVlZuo3i
+	V5SRdAxcxOcP/Q/A/nmaADOneZFVtRQ2n+yseJgcL+BmV4WTkbqgF+K1cA0K/nTm76pOoi36T8lT1
+	5TW9/ze7LGdO0V3ZeFL0sWn7r78l6KQIPBmp8l8BO8FHZI/I2QENAQPnc5VahiFnD2YcuTjq87Jqc
+	sWZdhUkr9c9Zf+aUggjf/oafArIeRqKHVtQ4lux++cp6B7NF/8iIBMxgOXUyeTlgt3WJB5hZtKJkm
+	oy/8yZBRV66Ye38+cZ+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRfGy-00000008ZrX-2LDj;
-	Tue, 17 Jun 2025 22:59:20 +0000
-Received: from relay2-d.mail.gandi.net ([217.70.183.194])
+	id 1uRfJ9-00000008aAW-2Y2t;
+	Tue, 17 Jun 2025 23:01:35 +0000
+Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uReqd-00000008WSl-3IMB;
-	Tue, 17 Jun 2025 22:32:09 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 38C2143165;
+	id 1uReqe-00000008WSp-1Dz5;
+	Tue, 17 Jun 2025 22:32:10 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id A21D64316C;
 	Tue, 17 Jun 2025 22:32:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1750199524;
+	t=1750199525;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=BY8lr3cwBhpY747VHtfxpWMlqtvjqMvD4rBIcdrKAxU=;
-	b=C5tZyF3M+bt1MHFLo9nXnW9oA87sYfPMoAAzCDOJgOaUYBToftzB8ensVCrrjf5ioRM/Wa
-	g5wOkC2qxmQxVXjUBxW8Uy6uAA3Nb4EE0xhKct/vS8kecXMneLuKjj3PHxitwbY4ZJ0fOc
-	rijcA1Nml/R8umSpXkJ0E4sDhyPNZI26PUPADFlJ+VyVq2XGHtqjDQ5keBKRCtfnxY38+4
-	03hw85ZtaInPvfAKpVWVzt/CGRreSijRiVZwL+VNLm8pA6XK0J4TUgLZNN+ZMDpD3Lv0K/
-	6Rer6iJk4asT3b2KmrbZgxnOToRmPQdtETEClsoONKa2diUG02jwkaBOIcb3aQ==
+	bh=esmmfpi3kvEuTnF8NNPy+ASdlcPdHl8nczq2Wpky2kI=;
+	b=f7YEoRxabbDiuDE81Y4N7liiuep0PepQZBg4OcbRpIFGIKa4Bn/euoAyzd5uw/Dqwk32+3
+	3ZfiIWRiAz+G/U/aPg4jtSknpoUL3rw0jZIl42c21UD0ai3BnXJnWL8dO8ziKmBz53G5LP
+	ua9CNK/CX6XDyNfKjkN5B/Sfl8It4K5mbJzTAs34AikOaMRL7SldUojIGlSAG9DsCrjBly
+	B8l1OmSOyUrd/gfBQuCx8RzgXbxKj7mr2FPpzKU5PVqUsCo1GmxTS1+7fyq+Fpsf6f3qhp
+	bFxZfOaciK6wQ+0N6uXDXw4hLHh9bpeJuihmnY5qOwZH324wEJ32gLSYAWDHMw==
 From: Olivier Benjamin <olivier.benjamin@bootlin.com>
-Date: Wed, 18 Jun 2025 00:32:01 +0200
-Subject: [PATCH 2/3] arm64: dts: rockchip: Fix the mipi port definition for
- RK3399
+Date: Wed, 18 Jun 2025 00:32:02 +0200
+Subject: [PATCH 3/3] arm64: dts: rockchip: Remove unused property in
+ PinePhone Pro MIPI panel
 MIME-Version: 1.0
-Message-Id: <20250618-dtb_fixes-v1-2-e54797ad2eba@bootlin.com>
+Message-Id: <20250618-dtb_fixes-v1-3-e54797ad2eba@bootlin.com>
 References: <20250618-dtb_fixes-v1-0-e54797ad2eba@bootlin.com>
 In-Reply-To: <20250618-dtb_fixes-v1-0-e54797ad2eba@bootlin.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -61,8 +61,9 @@ X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddvgddufeelucetufdoteggodetrfd
  ghpthhtohepthhhohhmrghsrdhpvghtrgiiiihonhhisegsohhothhlihhnrdgtohhmpdhrtghpthhtoheplhhinhhugidqrghrmhdqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtoheplhhinhhugidqrhhotghktghhihhpsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtoheptghonhhorhdoughtsehkvghrnhgvlhdrohhrghdprhgtphhtthhopeguvghvihgtvghtrhgvvgesvhhgvghrrdhkvghrnhgvlhdrohhrgh
 X-GND-Sasl: olivier.benjamin@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_153208_410515_13D944B3 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20250617_153208_488496_ADA783F4 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,27 +80,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3399's MIPI DSI has 2 ports: in an out. The definition of
-the port property necessitates the value of #address-cells to be 1.
+The MIPI panel definition in the PinePhone Pro DTS includes a
+"pinctrl-names" property, which is unused in the absence of pinctrl-0.
 
 Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-index 5ebc380a24df86ba7172b0950b89cac56b61c507..5a7341fb6bcb0613af6f3ac31d99355a0f890e89 100644
+index 5a7341fb6bcb0613af6f3ac31d99355a0f890e89..405140700208365c8631de86a2d7b6e577b7aa7f 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-@@ -468,7 +468,7 @@ &mipi_dsi {
+@@ -485,7 +485,6 @@ panel@0 {
+ 		reset-gpios = <&gpio4 RK_PD1 GPIO_ACTIVE_LOW>;
+ 		vcc-supply = <&vcc2v8_lcd>;
+ 		iovcc-supply = <&vcc1v8_lcd>;
+-		pinctrl-names = "default";
  
- 	ports {
- 		mipi_out: port@1 {
--			#address-cells = <0>;
-+			#address-cells = <1>;
- 			#size-cells = <0>;
- 			reg = <1>;
- 
+ 		port {
+ 			mipi_in_panel: endpoint {
 
 -- 
 2.49.0
