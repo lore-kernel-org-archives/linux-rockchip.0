@@ -4,165 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04618C71157
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 10:53:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28741C71136
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 12:45:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:To:Subject:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YzZ1DUd91chkwkTo+XsAQPy+FgSiIOR1IfOFn+N0JC4=; b=HM0Hj2D2laDoBJ3sc+OWTeWoGL
-	yJvMOOtdUkJiAwgbQ2iPItV48ZlcBraOu+dyEOyRPbCaWHDR5wrqcrKe4PlrwSq/PjkRwDcRM7yXC
-	Cq4NLoZdvyMX76+OCSIm/UcdGLVtVlvb3fSXSb/FbTEC7PIaVLQ8sMHXam6qQBLEwj5m28wo6JN3N
-	fMBgY3UDGLI0q2J6CvkODn0exCvfmj6Tb2HdyaB5DDG5tliuQ7+qUL/7Rsa4a+BhfwYDvAQavYhuP
-	peqxxKLQJ+i1p2kkHe3vEoiSUKBv0KiCGqAcj9WWKJmtp9SpLJS7mlgGpY85Jz3rwNRv2H1yVUNZI
-	o/hG+V5A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pYKG9+V2whC3P2zSkkoVq7aZrAR5UJnoLz3Wm1xK6aw=; b=JgqnswAaIssWSR
+	CVbK5XcVhRq5kJHfGCPDwE9HuACsFZ0l86nvekkOP3AzMVs5Hph1WOo8FLcy1sL7E4HYYgucdJhTB
+	woh60a3MFMCQqLYovrRtpxdp2rkkPRqVXS/sbcP34PjLxcz0wOKj4FncfiDdfSzwyjm788ec8yfg1
+	YE/XvdpufqPP25m+zr/syUVqLy8p/I4zuZ2fuklSqD/STYyu51Ta1Uxr92nn5PL739e1xm6z8aoIn
+	00oWLZV0FY32Q/6CH+vIP9Ir8npB9hfi/lPBy7jJqy9qFZZi5nfsaZWQWDMDIA+im8hkJ2u0wkXGD
+	Fy3IJWaim4TTbHzJcd7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRTwE-00000006yVs-0VUv;
-	Tue, 17 Jun 2025 10:53:10 +0000
-Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	id 1uRVgW-00000007E7A-41Vn;
+	Tue, 17 Jun 2025 12:45:04 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRToS-00000006xHg-130v;
-	Tue, 17 Jun 2025 10:45:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tgT4WZlY7o2MOUNSPjoGm2vga91n7YJzOZBlQ0Asmy6GbzasIj7HtWam0nl1rdxQZjrUn6RfsVDlxRQ0ANwDElzzidm0toVm6VwT0Kj2YL9afKgBvWsA29ZfV7Bo+xyEl2txGdVfMcMUsT32jc9+jjILddWF5Iv4vfcsMQ0mWReZDmU5V5Rr0ofcuSjiHwudP536vADelsJh3ZcQcOd130rZr4Sar+vHp69gO9FnMArvXbGhpdyjcdlKeUiKr62V6q1VUJh8hOoEOulmmq6w5WBDoMrQkzfhO4nLkzfdLOvTTFlw7LvMWFpvM5vARmtf7CWMJjusJYK7duHUXfusag==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2FvF8i9yKEknCnp1R7BpME3Jh492GiB1OufY4hWd4ng=;
- b=KYjA2GLFW2pm94As0HorUHImfSYB+0ulRQiTgFXTfdlVJJrE0YDIT9Bc49WDEaJI8ATUetgNrBZyhmGLXhElQPgfXKy08OjBuYdz1wJ+bQF5TJL+feiupqHM1y1KwMKO72h5dQ8rVsAp3gfIjGOR3GJ9V6Ce5OpMfyXFlzyhyy1gyAnxgXKMdcr49Gy5J54Ju/uorI2MZK10zCET+uUv6jogT1fZ1Y3UItsGVFL1SioknNkMf48P47aa+gXINz/RCNHh3d/MSEfjGC7XeKx5zSC9jNM9N8I8/YtjyfGWFq6py31aMTIB6TFC9QkQoake5QP30NVOPXVqn3CRAVaMjQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2FvF8i9yKEknCnp1R7BpME3Jh492GiB1OufY4hWd4ng=;
- b=mJe9FZLqYxkIwSPl9li5PPX5Nie/9KMyr5VND02cI7uMAkMxqKl3hJVchidFPUNr443vD7bTUD954aeHzMDF4ZGLqCWqGGHnuzz6e9SBAReARU/n6whAsxEQxEFXGPJ76+AUM3sFxZwcC/MZ7KWQvN62v3ey+J8s0EeJkr9FbCs=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by DU4PR04MB10909.eurprd04.prod.outlook.com (2603:10a6:10:587::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8835.29; Tue, 17 Jun
- 2025 10:45:03 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::35f6:bc7d:633:369a%5]) with mapi id 15.20.8835.027; Tue, 17 Jun 2025
- 10:45:02 +0000
-Message-ID: <d262b45a-c0ed-4eff-86c6-e8bcfc005ddb@cherry.de>
-Date: Tue, 17 Jun 2025 12:45:00 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/4] dt-bindings: mfd: rk806: allow to customize PMIC
- reset mode
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- Quentin Schulz <foss+kernel@0leil.net>
-References: <20250605-rk8xx-rst-fun-v2-0-143d190596dd@cherry.de>
- <20250605-rk8xx-rst-fun-v2-1-143d190596dd@cherry.de>
- <20250617-small-vivacious-labrador-7f0eb0@kuoka>
- <b079fc14-8692-4521-bd81-fe2fca713f2f@cherry.de>
- <704d75df-a484-4da3-9bcb-85b480e2ecf0@kernel.org>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <704d75df-a484-4da3-9bcb-85b480e2ecf0@kernel.org>
-X-ClientProxiedBy: FR2P281CA0059.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:93::13) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
+	id 1uRVMp-00000007AvN-3CAD
+	for linux-rockchip@lists.infradead.org;
+	Tue, 17 Jun 2025 12:24:45 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-451d7b50815so47719495e9.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 17 Jun 2025 05:24:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1750163082; x=1750767882; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=0aOiT8aWvV9AtVi02w4ktGyvJjNxDzIlcv3Oau2aYCg=;
+        b=Mibn+8ZVkjgAsH7xR5ZWkxUzj79UegXnmrhabPdNxRI6cG+y0oDE7u7FvW3j2+vRNJ
+         baKlMUiQmj+41sJsmOT756PKL3uzdRGACgKL6QYBAxbzCURfRwQVX5uQeqlh9JWE5CRl
+         SNIN9nlvCiBGcfFsN4DJteEt+FzcycOBVjvi0NO541Vxu5Ijs5kjMEO25o+cCq6waQ3n
+         VUFVj/XsbZ89JDMvn9eCwsnFCLlgvfnBEDs4JS/76ycMmJ64KM2uTngOFwiX2XZfRvwb
+         bjljGSlnCfJsalX/K754pZ6ZmE949tx8vD3rLg5l7VCNDlaulsLj1ewC5fzJ8oj8Y3tA
+         a4AA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750163082; x=1750767882;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0aOiT8aWvV9AtVi02w4ktGyvJjNxDzIlcv3Oau2aYCg=;
+        b=LtnNRk/8g9f34YAIbZXWEeuPo9f9WMYRlfIrBFL+q3xMOh8YqmzPAVcnr7kUOqJ9zV
+         8J3r0iccz+JMZ/AT6H2cxzXQW2blRsqCILvTJKebmMjhqP66gcnGKr3AQLwYa29udu0r
+         FZtqEuhNoq/ciquSiCG/+3jW/yH5brfYOyDrn3A5+/I75aHUUEpERWNTjgS6QmS2e1Wz
+         TgcVFFDzsDyaSGEwYOuExra+viXufU2gqhmXW++/D/VNOa1r/fuDXBws7rdcXZZRHjMV
+         CQkQ4jcLT9a6dF/Df2Rss+SH/QWu8Jp6TrtUXlNb7lDRF9zP/o/zW35GCppDvQAQI+EQ
+         b5ww==
+X-Forwarded-Encrypted: i=1; AJvYcCX7vxz7LJEOw4JHt6yWokl24MCw7Yq90GI21Ds28UAHSg5ExherS3SBD9JOMkXEvGvwQJIqpUEi4jRIOzD+DQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzpE2UXmDJdtBmUzkKaX5snyVOmWQRFx4ZBR9DhozGyo4qKjgib
+	Ct6oQaHlYbADUu6CSKSBeQv44wJny2IlE14eVHdf4F9kaMODqpcKYv4RaclvvdLMW+I=
+X-Gm-Gg: ASbGncvD3Pq8lnWCpHXqSqwITWNqKdTDywfSiN3B31+x0Ws5whQOPEyy4VifH6GOlSm
+	IVAnUZ37bN0fiI8xXbEdw7WME+ako6pmUjCQTQrosL3RhjZgLl0ffSbOqlIl4DUJkylePu+q7XZ
+	6SiMYjs9XJYA7gth5pmoJZ+evqC/gSYZKWgDp78XyhhBLg42h4+9YfdPrupPnAGQ5BqfM1CVI6v
+	A6vAWLTx1XGyx+rzCI8clNeWdWwJgYu5pARwV8Nga8C579RzHLsNFh5NQ+pKgUD1TqwE2xKHJhk
+	tRSSacMscGKHqnHBbVfoixMO3BMjUj0ahcA/L7GjTSi5HxFD5WdkCVge
+X-Google-Smtp-Source: AGHT+IF+mB5SqbWQ/IXeYHMObyrSVvwo7MdGf15Ymmh88YebHVybFE0gf/vBSiFaY6F9NM4JITbNiQ==
+X-Received: by 2002:a05:600c:5305:b0:453:9b7:c22a with SMTP id 5b1f17b1804b1-4533cb56708mr128208385e9.30.1750163081796;
+        Tue, 17 Jun 2025 05:24:41 -0700 (PDT)
+Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:90df:ded7:9cbf:4074])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45320562afbsm173816135e9.1.2025.06.17.05.24.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Jun 2025 05:24:41 -0700 (PDT)
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Subject: [PATCH 00/12] gpio: use new GPIO line value setter callbacks
+Date: Tue, 17 Jun 2025 14:24:22 +0200
+Message-Id: <20250617-gpiochip-set-rv-gpio-v1-0-903703881fa2@linaro.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|DU4PR04MB10909:EE_
-X-MS-Office365-Filtering-Correlation-Id: b31171f7-9cc9-4280-c894-08ddad8c0327
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?ZUxpQ3k4aVVJTWhiRDJ3dlBBczR0bjVyZ1Q2Q0NoUWg2RlFRcnh6aWlHV0Yr?=
- =?utf-8?B?dHRDbDlKTFR6ZDBOZFh1bS96RmFxd1IwWGxGSGR6RHNTdjRsbE9Ja0F5NHNa?=
- =?utf-8?B?TjNFME1hRXdqTTZzemJNc1d5aW8rVHpIZUs2ZXN5cnhESitKY2VpcVNOZk5r?=
- =?utf-8?B?QU1sendmbzJtWWN3WHZmeVRncHMwMFlIaUZpK2YzVExJUHMrU0hHcUJOV2NN?=
- =?utf-8?B?RVpSTEkyaG5XeHhRc292Q1IwTG9jbDUvKzVLbUJGbGZEU3ZNRC9QNFFtbjRB?=
- =?utf-8?B?aEhTRTlqcnlUWU5USjZmdUdINVl2cVdXSldwR0JKanAzdy9vQVpLU1BUUUJS?=
- =?utf-8?B?bHZhMnp3Wm5HUlFnT3JjL3R1L29rdE9BWGhlcGkvQ0ovclVCSmFTM2h4UHFI?=
- =?utf-8?B?Ull6M0Z5VWlNcENtWVo3ZStYeW9UUWd2QVZFc2lKclp1OTJENXhoV1cxVEZ5?=
- =?utf-8?B?Ukk3MXM5NFlvTTBueXJRL0tJOFFnRDBWSjNka084ZlVNUzNIb2IzcEt5TDR6?=
- =?utf-8?B?NEZkQ05vL1VhZ3A3VDd1ajdmMUJBRjdrMFRnbTlSdytSKzF5VzNiVG9GWVRC?=
- =?utf-8?B?UkttcVdKOHk1V3A3cGZkdktqVm1yL0RUcHBDV21XZ3ozRmhUSk1GdHZGVHJR?=
- =?utf-8?B?Q0RSVVcrelFBdGZkbWxMOVZMK1pSMTNUTW5USGIrM0VaUXJYQ3F5OWpJUnNp?=
- =?utf-8?B?YktBaHRCU1RuK1EvN2xaYUN1Rms1UG5EbklSK1FiRWJjdnFidUlIVUFwVE1E?=
- =?utf-8?B?dVF3L2luRXlYYWY5L1JFSlhjYjhZZkN2VklsY2VjcGlJN0RhUDAwVjFYQkRK?=
- =?utf-8?B?M0VKYWJFaFUzR2J0aTh1d1BGNDBYS0JsTVkzZFFEV0tuQ2ZRU1BUVDRFRmds?=
- =?utf-8?B?S2xaT0lIcm9pdzk3eWxvbE9JQ3VST1dRRm04dkJXby80L2FwWXA5K1IwSFBL?=
- =?utf-8?B?L21sWDBpQ1VWN2pxUm1LN0NJU0I3a1JSRFpjRSsyZitZRXBLYUxGVWUvTk1T?=
- =?utf-8?B?d3ZhK1ZiTFgreVZJMzZjTExIUFVYWFNhbktaWTNHbEorOGdwK0NmYXFTbGN3?=
- =?utf-8?B?SCtjK1JkaTZZRi9udjdaZEk1MmJXdWJjSkVwZVpTV2VUdTV1TStlblJHWDZN?=
- =?utf-8?B?V2p3MjJ2cGVJUVZlZ2dTSXdEejVPWE1vRUh5dkc4QytVVnZ6MUZvN0ZDbEdF?=
- =?utf-8?B?VnFpcnpwWDc3SlcrZFZWaVpGN05wQmxrK0UwZG5Jcy9SU3FTN1hWTytZa0h2?=
- =?utf-8?B?WDNIUXNTTkdqTDNtWGpUb212UXZrYmMzM28wbW5qTU45VGNVSE9YTUdObmw4?=
- =?utf-8?B?N1Bpb1ZwYUpRdE80QTFPZ1N4VUIwd1NUMFBSRlNPMUl6QlBOZXFra2FvMzRu?=
- =?utf-8?B?bE9na0pnaUpBVTJWOWtoRkhOYWpNOHBGWjd3YmxPL0kyM0VXM2NvZGFYVG5q?=
- =?utf-8?B?WjJLdFlYUjlCZXZpTTBMWkhoc3hORHk5aVU3WU1uMDh6TmVHemFLYUFNRVQ4?=
- =?utf-8?B?MStkNmNOMG15N2VxbVZOQ2ZNa2I4LzQ2bVk2YkFQZW5FNG56LysyY09BRkZm?=
- =?utf-8?B?b293RFlyYWFBb1hYYkk4OW55azFIUFhPK3NQd0pvaFZab1J3eGxNZkg1TlVN?=
- =?utf-8?B?emdKcm9NbWE1ckRwYWhaOWp1NXhId0ZoZHVTUkV3ckM0R1ZyMHJpVFAwSjBM?=
- =?utf-8?B?ZmpvV0pDWVk5QnpSZUFYeEVhNjhEQ0l0dnEyQkhUSEUzR3lSTkRTZlBjbEFB?=
- =?utf-8?B?QXdUZ2JNcW9OelpyT2xlWUgxbWk1UzRQRUFaYitKYklzbEx2bEd6MjFnbHNt?=
- =?utf-8?B?NWRvazI5WHFhSEgzMUUyR3NmeHdWSGthYXhEYWRuekRsdUJqbi9nQU95NUZR?=
- =?utf-8?B?TVVTeFZBVWhkRytxQWdJdG1sT1Y5aTNxMjZMSi85OG5ZSzRlKzdGdWhKWDRO?=
- =?utf-8?Q?5K4OBbUjGis=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?d1J3RlB1Vzduc2JSMW9FWEFPYW5KdmlwRVFTZmVkbWNkbmd4SDFuVWljeUpD?=
- =?utf-8?B?ZTJkenpjZ0UzcU1nbDVGTmRzMkV6NkQrbU5iR3NONkxxKzNCOEpyRzN3TEVG?=
- =?utf-8?B?TjAxYWc3b3dhcnptZDBZa2NRUmR6QWtQR1FNUVhWWnRvWTBseFIrMGFMQ3d2?=
- =?utf-8?B?VXFvZ1lDVjlXcEM5Rm9JbC9jWDVXR0s4ck05NkhZRzZKeThrSmxBcXVTLzVH?=
- =?utf-8?B?OTNxL1U5ZFZoTFQzY1lVaXBTWCtUclJZMndsSU1nRjRiVmxxTkV1NnNEZm56?=
- =?utf-8?B?a2dTL29tSDdsQXE1eW1qdFFyelVPZXZ3MzljRVkraGNvNldMWUZIVURoSGlK?=
- =?utf-8?B?UVovM3ZhUUx5Y08yRE9iNVgyd1NycEJVVnlmaUNxV3VJOUNPUk4ycCtjN0dj?=
- =?utf-8?B?SzA1bUw3dXAwZmxrT3BINlpvN0o3K0gvMkhRbVRxMVFOU2VnZ2xkVEwrZjZI?=
- =?utf-8?B?bVRaUk1hUE9mVWVmQ2hRaXdHWHVhVXU1NmZHbVVRWmIxSkxIeXZkaXNVQ1dI?=
- =?utf-8?B?TExzbTVBR1hmd0l0K2Z4WUhEek4ybFdJeVVlTzd3U0tuR011eHdQVHlRVmNX?=
- =?utf-8?B?VzU0TEVGd3gyTU0vZjUvRTkvNGVJcytGM01sR0NlNUU4aU5tZmtvRjB6UTdo?=
- =?utf-8?B?d250bDI4QnRZTytFS1orbTE2S2p5b1VJbWhRcGZySkdGSktiNTIvSHhEWW1Z?=
- =?utf-8?B?K0JIRlUvZ3lXWldXMUJYS1A3d2xKdGdrTTdNdVFrS09uWUFtdFBmT0pUbXFW?=
- =?utf-8?B?TmVUUi9lNTljMHV6c3V6WTFYWGlGaTVPWnVoY3k1YlU3c1pLdXl6dGtsdTBo?=
- =?utf-8?B?d0Rxc1h4cStna2dianplV1FrRmpNaDhtbWExVUdPR21CUmNlZ05talo5YmIw?=
- =?utf-8?B?SHRPejE4Ry9rcW9BMmw3akhzeHFydURObzZRQmFuUmR1bW51QmdUOGxtMzNv?=
- =?utf-8?B?ZGwwbHFRUGRINEIwK2dFTHA5M3NyRmRGa0NzUUxUUXhxT1h4OUxXeFQyTGhk?=
- =?utf-8?B?ZEk5YzduMXNsN1BqSkxQcXdXdFhNSDBjNzJDbFQ0VzlXL0xSSFg4RnNDVEVT?=
- =?utf-8?B?bVlSTUVqS1ZaTGVjRWsvbGYwb0hUTFBLMVdMS2plZWdhQ3RHcUpuaTBNSHpo?=
- =?utf-8?B?YWRzcDRJd0ZQTGJuVWhoMkJmQTg0dEZreW90Uml5YVNMWVhkdmtVaUlpU0hz?=
- =?utf-8?B?UjZBQnVoTWJ3d25NQmpINERqV3Fkamw5dEFmRGxrVmZTS2FWdlVSYkpWZVdN?=
- =?utf-8?B?M0pDeHR3cnF6WkJ0OU9ldlBGRU5uRzJzQ3NzQW9XS0VwNC9IQ3E5akhyODNL?=
- =?utf-8?B?K3MrQWVwV1I2VFE4VEhYMDdEckZTamRuSVArMmRGbUpZTGlMdi8xaVpJZlpj?=
- =?utf-8?B?eUR3MVZxWnoxWHdXVzJybi9zeEM0WkJqL2laNDExTHpVNkRLb3dsbldKejM3?=
- =?utf-8?B?Rm45YkdhZnliM24zeFgzaXd0SkIwRTFYQ3lUOHNJbWhzU1lJZkxYMUt0cGdU?=
- =?utf-8?B?VGc4R1hxWXBSM2lHM3ZnUW9td08zc1BPbGs2eGFpVkVRN2oxaVhpbHQyUUxQ?=
- =?utf-8?B?MVNpTWN3ak9zc3VmdllJZWhpNXZkV0JwMVlpSEJkWDRScFYyMG82bmtzTDNV?=
- =?utf-8?B?dkswdmVKaEIzZXBkVDJvT05QKzFhb3h1b2Ezd2QzZlF5RGVRK3lGdUVOUzFL?=
- =?utf-8?B?cFA3VmZDUU5xcWpmWVZsNXFrNlVWcElBaUZJTVV4aThkUjhFWExPaWtBK0tq?=
- =?utf-8?B?Zm9DK3FFbVNYNlF1RDI0d0xmSnY5Y3NTTDFUZXk3bC9wOUswNVVFbm50U0Ry?=
- =?utf-8?B?L0h3WTgydXN1aHNvdW15UFNuc0dQMFJ4MStNOVlPV0lxcmNNNHFiL3QzTkQw?=
- =?utf-8?B?NEh0V0dzcFcyL2liWG5qaVFpMitmcG5wVmdCcTFZSEdqaE1QdXgvYnI3SWRr?=
- =?utf-8?B?eE96QlpUUkN2WEk2MThTMzdtNm1peUtyYjhPbjk3bXcrcHFUcUNOeDVSbCt0?=
- =?utf-8?B?TmQwVi93TGtaemd1N0VwMjVCT0RhTWJFUjdKc2RBUVN6MllvMXoyUXZTbk5h?=
- =?utf-8?B?WTJHclZyK2ZrVk84ZlhPbnRqNTU2YW1odUxmZHFrZ08wbnNkT2pGNjdhQndC?=
- =?utf-8?B?dGhqNzl1aEszMElEWkJ5SzVHSXd5RHhaMUt5WU50UDdZek9MdnUreG5aQzYr?=
- =?utf-8?B?ekE9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: b31171f7-9cc9-4280-c894-08ddad8c0327
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jun 2025 10:45:01.9130
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: XoR6g4k291w8D0eez5y24AP0czpNL8newHW8fz0DwgakAWkicSd7FKzszlyRJc2CKoSOjB1u5t3A1tZDT6EfU8kqzoeFEbCf/K7Avp8YgjI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU4PR04MB10909
+X-B4-Tracking: v=1; b=H4sIAHZeUWgC/x3MQQqAIBBA0avIrBtIMbWuEi3CppyNiYYE0d2Tl
+ m/x/wOFMlOBSTyQqXLhMzbIToAPazwIeWsG1auhN9Likfj0gRMWujDX30iSnNHWuFEraGnKtPP
+ 9b+flfT82d1slZgAAAA==
+X-Change-ID: 20250617-gpiochip-set-rv-gpio-e1e864768942
+To: Linus Walleij <linus.walleij@linaro.org>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>, Andy Shevchenko <andy@kernel.org>, 
+ Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2023;
+ i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
+ bh=RLnOLguCkXn77LVyLm/6OTIhPoN1Dit0JrVu41r0fmE=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBoUV6CDET79f1o2CbISvL3vLRy6ELTLtQKnb084
+ knXSnThFB+JAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaFFeggAKCRARpy6gFHHX
+ cpf1D/9lK1akx62CUxztvvy7rfND61EV2eVXetZwZCru69u+80k0krblUEs+OzEEsNomzQQjunB
+ t6oGVkODsx9MDCHGMisesmtpssyc9U9ZL9/3Phkj46EdmTFQA4Jv4qP+XwlamMBQXIy1zf3KWOV
+ Dx7s9uYPiEhyWDXW1IMHpJksogNn4kOOG9CYb7oZaaHR8S9i9Mujk0yqG77pOgFCF+oWy9cp1qj
+ lYsB08HLcanT6fAWkXZ1Ll5rleE9+beB9+HKLi7p1Y31IvlsQ1/D67xx525vqjPeFM1EJ76Igl0
+ /FnoKItV4ubW65epwmmWbi/UKTiSP+lU7u6zXY0eEOWuMkrg/uBakg7An2VYYSjtiz5w4e8LjPC
+ r1eSzfsmrjHDC8HrNVwbnj9Ashn2tRis9fXAZ7+p7LodRjS6RLKebeav4NUPp3jCDyCGz44Sl82
+ KxZktKjqp+0hnXOg2ATa3Ck8pHHtIgTiGXBQF/msz98sLdJq0YdtHn+9Ad2YfzcfYbTvSvq4WgO
+ GRO30/0rIKexr/ctI8lBGNh/9MlBpeHFiEpr2CZsmCuht2vy38g0TzZJ8r0tBvYL39W2BdS5SEp
+ kjk+/W1gC4lU3DDhbBHQVXR+laf4oumYx342Rjvm8paGhaf+h0T/XKk99JFDuDdPXicCCHnyKRO
+ arX7wibv6dGhGwQ==
+X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
+ fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_034508_453336_E0452D19 
-X-CRM114-Status: GOOD (  37.36  )
+X-CRM114-CacheID: sfid-20250617_052443_804492_610BB5DC 
+X-CRM114-Status: UNSURE (   6.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,139 +118,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Semkowicz <dse@thaumatec.com>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Lee Jones <lee@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Lukasz Czechowski <lukasz.czechowski@thaumatec.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 6/17/25 12:21 PM, Krzysztof Kozlowski wrote:
-> On 17/06/2025 11:38, Quentin Schulz wrote:
->> Hi Krzysztof,
->>
->> On 6/17/25 10:08 AM, Krzysztof Kozlowski wrote:
->>> On Thu, Jun 05, 2025 at 05:41:06PM GMT, Quentin Schulz wrote:
->>>> +  rockchip,reset-mode:
->>>> +    $ref: /schemas/types.yaml#/definitions/uint32
->>>> +    enum: [0, 1, 2]
->>>> +    description:
->>>> +      Mode to use when a reset of the PMIC is triggered.
->>>> +
->>>> +      The reset can be triggered either programmatically, via one of
->>>> +      the PWRCTRL pins (provided additional configuration) or
->>>> +      asserting RESETB pin low.
->>>> +
->>>> +      The following modes are supported (see also
->>>> +      include/dt-bindings/mfd/rockchip,rk8xx.h)
->>>> +
->>>> +      - 0 (RK806_RESTART) restart PMU,
->>>> +      - 1 (RK806_RESET) reset all power off reset registers and force
->>>> +        state to switch to ACTIVE mode,
->>>> +      - 2 (RK806_RESET_NOTIFY) same as RK806_RESET and also pull
->>>> +        RESETB pin down for 5ms,
->>>> +
->>>> +      For example, some hardware may require a full restart
->>>> +      (RK806_RESTART mode) in order to function properly as regulators
->>>> +      are shortly interrupted in this mode.
->>>> +
->>>
->>> This is fine, although now points to missing restart-handler schema and
->>> maybe this should be once made common property. But that's just
->>> digression, nothing needed here.
->>>
->>>>      vcc1-supply:
->>>>        description:
->>>>          The input supply for dcdc-reg1.
->>>> diff --git a/include/dt-bindings/mfd/rockchip,rk8xx.h b/include/dt-bindings/mfd/rockchip,rk8xx.h
->>>> new file mode 100644
->>>> index 0000000000000000000000000000000000000000..f058ed1ca661185f79738a358aa2d4f04539c590
->>>> --- /dev/null
->>>> +++ b/include/dt-bindings/mfd/rockchip,rk8xx.h
->>>> @@ -0,0 +1,17 @@
->>>> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
->>>> +/*
->>>> + * Device Tree defines for Rockchip RK8xx PMICs
->>>> + *
->>>> + * Copyright 2025 Cherry Embedded Solutions GmbH
->>>> + *
->>>> + * Author: Quentin Schulz <quentin.schulz@cherry.de>
->>>> + */
->>>> +
->>>> +#ifndef _DT_BINDINGS_MFD_ROCKCHIP_RK8XX_H
->>>> +#define _DT_BINDINGS_MFD_ROCKCHIP_RK8XX_H
->>>> +
->>>> +#define RK806_RESTART		0
->>>> +#define RK806_RESET		1
->>>> +#define RK806_RESET_NOTIFY	2
->>>
->>> I do not see how this is a binding. Where do you use this in the driver
->>> (to be a binding because otherwise you just add unused ABI)?
->>>
->>
->> Explained in the commit log of the driver patch:
->>
->> """
->> This adds the appropriate logic in the driver to parse the new
->> rockchip,reset-mode DT property to pass this information. It just
->> happens that the values in the binding match the values to write in the
->> bitfield so no mapping is necessary.
->> """
->>
->> I can add useless mapping in the driver if it's preferred. I had the
-> 
-> No, I comment and raise questions when you add ABI which is neither ABI
-> or should not be ABI.
-> 
+Commit 98ce1eb1fd87e ("gpiolib: introduce gpio_chip setters that return
+values") added new line setter callbacks to struct gpio_chip. They allow
+to indicate failures to callers. We're in the process of converting all
+GPIO controllers to using them before removing the old ones. This series
+converts another round of GPIO drivers.
 
-Not sure what would make something part of the ABI or not. I would 
-assume the value in the DT property to be ABI anyway so this is just 
-another name for the same value no? Trying to understand this from your 
-perspective.
+Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+---
+Bartosz Golaszewski (12):
+      gpio: pca9570: use new GPIO line value setter callbacks
+      gpio: pcf857x: use new GPIO line value setter callbacks
+      gpio: pch: use new GPIO line value setter callbacks
+      gpio: pl061: use new GPIO line value setter callbacks
+      gpio: pmic-eic-sprd: drop unneeded .set() callback
+      gpio: pxa: use new GPIO line value setter callbacks
+      gpio: rc5t583: use new GPIO line value setter callbacks
+      gpio: rdc321x: use new GPIO line value setter callbacks
+      gpio: reg: use new GPIO line value setter callbacks
+      gpio: rockchip: use new GPIO line value setter callbacks
+      gpio: rtd: use new GPIO line value setter callbacks
+      gpio: sa1100: use new GPIO line value setter callbacks
 
->> impression that simply using a hardcoded value in the DT binding and
->> then writing it to the register was not desired, so the constant is now
->> here to make this less obscure from DT perspective though I'm still
->> writing the value directly in the register. If hardcoded values are ok
->> in the binding, then I can remove that header file.
-> 
-> If you want something user readable, make it an enum string or keep the
-> header within DTS.
-> 
+ drivers/gpio/gpio-pca9570.c       |  5 +++--
+ drivers/gpio/gpio-pcf857x.c       | 17 ++++++++++-------
+ drivers/gpio/gpio-pch.c           |  6 ++++--
+ drivers/gpio/gpio-pl061.c         |  6 ++++--
+ drivers/gpio/gpio-pmic-eic-sprd.c |  7 -------
+ drivers/gpio/gpio-pxa.c           |  6 ++++--
+ drivers/gpio/gpio-rc5t583.c       | 19 ++++++++++++++-----
+ drivers/gpio/gpio-rdc321x.c       |  8 +++++---
+ drivers/gpio/gpio-reg.c           |  6 ++++--
+ drivers/gpio/gpio-rockchip.c      |  8 +++++---
+ drivers/gpio/gpio-rtd.c           |  6 ++++--
+ drivers/gpio/gpio-sa1100.c        |  7 +++++--
+ 12 files changed, 62 insertions(+), 39 deletions(-)
+---
+base-commit: f3763403a6bbc3a18379fe4c415bda899a111d55
+change-id: 20250617-gpiochip-set-rv-gpio-e1e864768942
 
-Just to be sure I understood correctly, moving that file to e.g. 
-arch/arm64/boot/dts/rockchip/rk806.h (or rk8xx.h or whatever) with the 
-file content unchanged from this v2 would be fine with you? Would I be 
-able to point at this file from the DT binding (I assume not)?
-Of course, Heiko may have a different opinion on the location of this 
-file as I don't see header files in arch/arm64/boot/dts/rockchip yet :)
+Best regards,
+-- 
+Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-> If I review it like that, it will be brought to me next time for some
-> other patch saying that commit was reviewed so I can do the same. [1]
-
-Fair :)
-
-> Therefore since I object against unused binding headers in general
-> (there is no user here technically), I need to object here as well. :(
-> 
-
-Laws do evolve too over time, same as how society view things. Something 
-done decades ago could simply not be acceptable today, and vice-versa. 
-It can be good, it can be bad :) Not here to judge, if there are new 
-rules to contribute, there are new rules to follow :) (or discussed so 
-they evolve to better work for maintainers, the community or project :) ).
-
-It's easier to follow rules if they are made explicit somewhere. Is 
-there a public documentation on those "new" rules maybe we can read 
-ahead of time to make this easier on you? For example I really like 
-https://www.kernel.org/doc/html/latest/devicetree/bindings/dts-coding-style.html 
-and point to it often (internally, sometimes on the ML too). Maybe 
-something to add to 
-https://www.kernel.org/doc/html/latest/devicetree/bindings/writing-bindings.html 
-or 
-https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html?
-
-Cheers,
-Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
