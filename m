@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B81C5C71136
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 22:03:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7FC7C71157
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 22:07:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=V2WN1HjivQk6h7T+ni8r2JsmOYqWLzMEfPAWezmLca0=; b=RcTP9yZiqH8GLt
-	h2g4s1R/8YIIKc29OH7J0SlPORQmu3YL5Yxq43RLc2hufCo8svgPfib0GfO4yaqdx1NJE0Xth1UJ6
-	VINWTJ7uLbx5PNw0Q2nZHEnFH7Bgz7UUETt8fS6AMo6P3Ceru6NfQ+FXwMqMy1nuaHd4ll5xAZFwd
-	CcQyMyD8/be0fFxauFegYWckr7tZyQ67FkeVr/p+vn9axhN1NI7KzrgfruxWOY8FkRTVqIOG+fMLc
-	rmFJHR0AfM67juI3Qppp/EmYDYOya6PbStan/9QqfgSM5uO9BGzEy4CWY4hwCQJ07IzdnEXA5ZHHa
-	8P8ZGnZWoP258LNEK4rA==;
+	List-Owner; bh=3a2lc6d/wTqioUv1RcdWT/PGO6ASgBDZcoJ9OpJAemo=; b=V3XP7eeFVXaT3J
+	01exHKyXhA9sPRjLXB79Z4wdERfJJgNf4SvE6LaGivRjviiPOGw+LzoP9Wd1fUgxZ2lwcq3rvgok/
+	BpzEngNihIe1GWxE6NYi4sAk1QwHJMMpki+R2pHLmNvbpPvcZJd/2n1JrpSeMKEZDJ9FiulvYEoJ9
+	npRmh5krvrWo94ZOMHlAtgAIw3aQi4q5y+Fa+MKov/ZBo0X+A1+51T00bgieuoaUjU4nn9UtES6/5
+	X+2axEvi7Yz7zkWrbmF8wJ4G25x3/VuO4tnCZewEhOfAqZQYa9k7hN523VMequwzPHmJtiPuYTFsj
+	4RwCIDYp8sYmv7HwOOBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uReP5-00000008TuW-2vpT;
-	Tue, 17 Jun 2025 22:03:39 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uReT0-00000008U6D-40wX;
+	Tue, 17 Jun 2025 22:07:42 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uReMq-00000008Tcz-0oWr;
-	Tue, 17 Jun 2025 22:01:21 +0000
+	id 1uReQn-00000008U2P-2Tmz;
+	Tue, 17 Jun 2025 22:05:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id F1C3D5C5D8A;
-	Tue, 17 Jun 2025 21:58:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1EB6EC4CEEE;
-	Tue, 17 Jun 2025 22:01:16 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 350CB44682;
+	Tue, 17 Jun 2025 22:05:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DCE98C4CEE3;
+	Tue, 17 Jun 2025 22:05:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750197676;
-	bh=mjG34P5ievMcUsjM+9tVEAx2pOKKUIM0BpCGoy0H9fM=;
+	s=k20201202; t=1750197925;
+	bh=QIFxvBnCg8PCPYSi3v2GFIu+Hyf6Y4rvlEki6zdPCNk=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=lqZg+lbeU64TDh6F0fACvBoTOkt1uGtQBCqnmD3px+UrHQ6nvT6WMqvQqoBiVXG12
-	 XtoYTUnhS+XrNksEaZd9JK2xSRZq8HTJhMuImeclZzzsB/wZCvfoGM6D6YUF9fUi2N
-	 YB50+YSwG6UnK1l52azjOFGSvgeqaGblXqFr96cmhXM9lg+h+4yYx9BVVC4WB7mLyk
-	 q8qd6uE/tN8K2vFekUYi6tsZuQ05tHMP+gHypgmVSkg22nyyB+tAPQUep3M6m+TuAR
-	 m3rv41fLs1N1/g5EFLIyZYjUmvNy9SOweUx/DTqJgerdogKsIswXaHUQcCvpn6o/aM
-	 rBFWNXRhDElAQ==
-Date: Tue, 17 Jun 2025 17:01:14 -0500
+	b=Tz42bycTE9uBK78yGj7A7SwCEIwA6LWcFlKJWGI+vfbCjQJkahp5z2aALe/4EZfER
+	 bLcMWfTId/XcJNKrPy9o/uX3z+nIFrL2IFDAgYlfyrundlIDvlf3wv5qL6XgBIdvH6
+	 3VxI1iNCpnzmWvoEoMVi0MG7TXcISthodgcUNpCgUfV65tgb5dYC1B9XgHT5xppWal
+	 ZED4YVZnz5ODoKVVyDbXGLrfktTyZJKdtRlzNxnlw+enPVSGAvcu67hZYce9z/plHF
+	 Cxy2zXx3Ef775rP77Rkt+aWoFLhurH+gGduycHoNWAzWfzWHM+Og2lCrPXDI/3aaYL
+	 5ndTNAw9nxepQ==
+Date: Tue, 17 Jun 2025 17:05:23 -0500
 From: Bjorn Helgaas <helgaas@kernel.org>
 To: Niklas Cassel <cassel@kernel.org>
 Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -54,13 +54,13 @@ Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH v2] PCI: dw-rockchip: Delay link training after hot reset
  in EP mode
-Message-ID: <20250617220114.GA1156610@bhelgaas>
+Message-ID: <20250617220523.GA1157905@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250613101908.2182053-2-cassel@kernel.org>
+In-Reply-To: <20250617220114.GA1156610@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_150120_327550_26493293 
-X-CRM114-Status: GOOD (  27.69  )
+X-CRM114-CacheID: sfid-20250617_150525_676545_4571FBFA 
+X-CRM114-Status: GOOD (  36.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,107 +77,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 13, 2025 at 12:19:09PM +0200, Niklas Cassel wrote:
-> From: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+On Tue, Jun 17, 2025 at 05:01:16PM -0500, Bjorn Helgaas wrote:
+> On Fri, Jun 13, 2025 at 12:19:09PM +0200, Niklas Cassel wrote:
+> > From: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+> > 
+> > RK3588 TRM, section "11.6.1.3.3 Hot Reset and Link-Down Reset" states that:
+> > """
+> > If you want to delay link re-establishment (after reset) so that you can
+> > reprogram some registers through DBI, you must set app_ltssm_enable =0
+> > immediately after core_rst_n as shown in above. This can be achieved by
+> > enable the app_dly2_en, and end-up the delay by assert app_dly2_done.
+> > """
 > 
-> RK3588 TRM, section "11.6.1.3.3 Hot Reset and Link-Down Reset" states that:
-> """
-> If you want to delay link re-establishment (after reset) so that you can
-> reprogram some registers through DBI, you must set app_ltssm_enable =0
-> immediately after core_rst_n as shown in above. This can be achieved by
-> enable the app_dly2_en, and end-up the delay by assert app_dly2_done.
-> """
-
-Ugh.  Is """ some sort of markup?  There's a nice English convention
-of indenting block quotes a couple spaces with no quote marks at all
-that would work nicely here.
-
-> I.e. setting app_dly2_en will automatically deassert app_ltssm_enable on
-> a hot reset, and setting app_dly2_done will re-assert app_ltssm_enable,
-> re-enabling link training.
+> Ugh.  Is """ some sort of markup?  There's a nice English convention
+> of indenting block quotes a couple spaces with no quote marks at all
+> that would work nicely here.
 > 
-> When receiving a hot reset/link-down IRQ when running in EP mode, we will
-> call dw_pcie_ep_linkdown(), which will call the .link_down() callback in
-> the currently bound endpoint function (EPF) drivers.
+> > I.e. setting app_dly2_en will automatically deassert app_ltssm_enable on
+> > a hot reset, and setting app_dly2_done will re-assert app_ltssm_enable,
+> > re-enabling link training.
+> > 
+> > When receiving a hot reset/link-down IRQ when running in EP mode, we will
+> > call dw_pcie_ep_linkdown(), which will call the .link_down() callback in
+> > the currently bound endpoint function (EPF) drivers.
+> > 
+> > The callback in an EPF driver can theoretically take a long time to
+> > complete, so make sure that the link is not re-established until after
+> > dw_pcie_ep_linkdown() (which calls the .link_down() callback(s)
+> > synchronously).
 > 
-> The callback in an EPF driver can theoretically take a long time to
-> complete, so make sure that the link is not re-established until after
-> dw_pcie_ep_linkdown() (which calls the .link_down() callback(s)
-> synchronously).
-
-I don't know why we care *how long* EPF callbacks might take.  
-
-From the TRM quote, it sounds like the important thing is that you
-don't want the link to train before dw_pcie_ep_linkdown() calls
-dw_pcie_ep_init_non_sticky_registers(), which looks like it programs
-registers through DBI.
-
-Maybe you also want to allow the EFP ->link_down() callbacks to also
-program things via DBI before link training?  But I don't think the
-amount of time they take is relevant.  If you need to do *anything*
-via DBI before the link trains, you have to prevent training until
-you're finished with DBI.
-
-> Signed-off-by: Wilfred Mallawa <wilfred.mallawa@wdc.com>
-> Co-developed-by: Niklas Cassel <cassel@kernel.org>
-> Signed-off-by: Niklas Cassel <cassel@kernel.org>
-> ---
-> Changes since v1:
-> -Rebased on v6.16-rc1
+> I don't know why we care *how long* EPF callbacks might take.  
 > 
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 15 ++++++++++++---
->  1 file changed, 12 insertions(+), 3 deletions(-)
+> From the TRM quote, it sounds like the important thing is that you
+> don't want the link to train before dw_pcie_ep_linkdown() calls
+> dw_pcie_ep_init_non_sticky_registers(), which looks like it programs
+> registers through DBI.
 > 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 93171a392879..cd1e9352b21f 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -58,6 +58,8 @@
->  
->  /* Hot Reset Control Register */
->  #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
-> +#define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
-> +#define  PCIE_LTSSM_APP_DLY2_DONE	BIT(3)
->  #define  PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
->  
->  /* LTSSM Status Register */
-> @@ -474,7 +476,7 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
->  	struct rockchip_pcie *rockchip = arg;
->  	struct dw_pcie *pci = &rockchip->pci;
->  	struct device *dev = pci->dev;
-> -	u32 reg;
-> +	u32 reg, val;
->  
->  	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
->  	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
-> @@ -485,6 +487,10 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
->  	if (reg & PCIE_LINK_REQ_RST_NOT_INT) {
->  		dev_dbg(dev, "hot reset or link-down reset\n");
->  		dw_pcie_ep_linkdown(&pci->ep);
-> +		/* Stop delaying link training. */
-> +		val = HIWORD_UPDATE_BIT(PCIE_LTSSM_APP_DLY2_DONE);
-> +		rockchip_pcie_writel_apb(rockchip, val,
-> +					 PCIE_CLIENT_HOT_RESET_CTRL);
->  	}
->  
->  	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
-> @@ -566,8 +572,11 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
->  		return ret;
->  	}
->  
-> -	/* LTSSM enable control mode */
-> -	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
-> +	/*
-> +	 * LTSSM enable control mode, and automatically delay link training on
-> +	 * hot reset/link-down reset.
-> +	 */
-> +	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE | PCIE_LTSSM_APP_DLY2_EN);
->  	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
->  
->  	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_EP_MODE,
-> -- 
-> 2.49.0
-> 
+> Maybe you also want to allow the EFP ->link_down() callbacks to also
+> program things via DBI before link training?  But I don't think the
+> amount of time they take is relevant.  If you need to do *anything*
+> via DBI before the link trains, you have to prevent training until
+> you're finished with DBI.
+
+Oh, and this sets PCIE_LTSSM_ENABLE_ENHANCE | PCIE_LTSSM_APP_DLY2_EN
+once at probe-time, but what about after a link-down/link-up cycle?
+
+Don't we need to set PCIE_LTSSM_ENABLE_ENHANCE |
+PCIE_LTSSM_APP_DLY2_EN again when the link comes up so we don't have
+the same race when the link goes down again?
+
+> > Signed-off-by: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+> > Co-developed-by: Niklas Cassel <cassel@kernel.org>
+> > Signed-off-by: Niklas Cassel <cassel@kernel.org>
+> > ---
+> > Changes since v1:
+> > -Rebased on v6.16-rc1
+> > 
+> >  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 15 ++++++++++++---
+> >  1 file changed, 12 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > index 93171a392879..cd1e9352b21f 100644
+> > --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > @@ -58,6 +58,8 @@
+> >  
+> >  /* Hot Reset Control Register */
+> >  #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
+> > +#define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
+> > +#define  PCIE_LTSSM_APP_DLY2_DONE	BIT(3)
+> >  #define  PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
+> >  
+> >  /* LTSSM Status Register */
+> > @@ -474,7 +476,7 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+> >  	struct rockchip_pcie *rockchip = arg;
+> >  	struct dw_pcie *pci = &rockchip->pci;
+> >  	struct device *dev = pci->dev;
+> > -	u32 reg;
+> > +	u32 reg, val;
+> >  
+> >  	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
+> >  	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
+> > @@ -485,6 +487,10 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+> >  	if (reg & PCIE_LINK_REQ_RST_NOT_INT) {
+> >  		dev_dbg(dev, "hot reset or link-down reset\n");
+> >  		dw_pcie_ep_linkdown(&pci->ep);
+> > +		/* Stop delaying link training. */
+> > +		val = HIWORD_UPDATE_BIT(PCIE_LTSSM_APP_DLY2_DONE);
+> > +		rockchip_pcie_writel_apb(rockchip, val,
+> > +					 PCIE_CLIENT_HOT_RESET_CTRL);
+> >  	}
+> >  
+> >  	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
+> > @@ -566,8 +572,11 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+> >  		return ret;
+> >  	}
+> >  
+> > -	/* LTSSM enable control mode */
+> > -	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
+> > +	/*
+> > +	 * LTSSM enable control mode, and automatically delay link training on
+> > +	 * hot reset/link-down reset.
+> > +	 */
+> > +	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE | PCIE_LTSSM_APP_DLY2_EN);
+> >  	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+> >  
+> >  	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_EP_MODE,
+> > -- 
+> > 2.49.0
+> > 
 
 _______________________________________________
 Linux-rockchip mailing list
