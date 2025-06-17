@@ -4,89 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 190EBC71157
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 13:24:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 102D2C71157
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 13:24:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KKGFBd8r3Ahvx3lmxeZwkoadUBK1ZdU3ZBcr2tkP4kw=; b=JLMkrwsqDyQpyG
-	SOlG7YpCIRhNjVlay+M9ln7V43dXvuJR41WnHWI7uDMV2dURalPckbhd/1Qdao1QT0yjt6WK15YuJ
-	ngRojRIN7yQpCwsm4AL9vCbsiNR9qmFpL8AkrYACmyc2eSwTt6z7Lvvn9Zl9Djpxj60f3LUNzGdgh
-	hdVGH6v8USZcC+MIFVNAgNAzZLhxnz3qLmgaOnak+htxew8H6R0Cy/Eq/ckm/Av4h6BQbwgfmtk20
-	04UU7E9UEYqKGZxGQZnjw/pvPVGUxUVhr2B26e4gqcDWtgKPb6ZuikGOiFAxGSZ1sR0C7z0MtV1qq
-	MyiQTKVNKa4pKK9694AQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YavbYIXDYpMaST2W66RULKcmGc4jaVAX7mIfjqY4iUI=; b=JLdDRzZfVaCJZhz58v7cex87gf
+	LnrEZF3/BAW/1/Txqiqw4kHh9SWxyySCSLZBIQt42oJR8WwhJMAJ3QeXo/j1iKnB96EUsUlMgYiTR
+	2jdj+5NeoDCQdcVxjMxz9JCWvn3rLjhGIQYqkyl5skwsgvz93ME4JYFmSFD4XvEw/+GtW65sU3DhL
+	0ot1Qy2spqRMAAasBKVaNjdw+2ndy2EmBBpTF9Kt5TYJ9V/UwgMXvDoGq8hddXpp1jXkypGSDDnCV
+	MbaqKYcP3rUaJJo3WIupfiXL0BC62me/dOwOrCk0k25Mq139vD2GX3OtTSeFaooMlGa9awbfA+EHF
+	LKGax78g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRWIT-00000007L4x-1ZAH;
-	Tue, 17 Jun 2025 13:24:17 +0000
-Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31])
+	id 1uRWIo-00000007LAo-36Qj;
+	Tue, 17 Jun 2025 13:24:38 +0000
+Received: from out-181.mta0.migadu.com ([2001:41d0:1004:224b::b5])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRVul-00000007G9j-1bwK;
-	Tue, 17 Jun 2025 12:59:48 +0000
-Received: by mail-vk1-xa31.google.com with SMTP id 71dfb90a1353d-525b44b7720so1330720e0c.0;
-        Tue, 17 Jun 2025 05:59:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1750165186; x=1750769986; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IJGnTu2P8k2zWLpKT9gQ0C6Ynav6qAdbDTnXBuG6SzE=;
-        b=GhHBkvYdbeLm5S2p5fAes7jUJHQVt0WXgJHjiqy8nWJRyLMNIwQBwszHngsMB5MWfn
-         WTpj5ZQnmUVA+xJS6bMGGhwjuHZG0hLLIrn/MtZW4BlIxn4hCv6KI1u6nqEZxxMNZEr+
-         iq3yae2Y8VJON+KsIYCLOxoQ5AeT5J/wu7mL5I3L7LmZHDRaDZITwhrQ3S0y8IYPZLn5
-         gi84r/5JKJeAWA6ZpwgxnbXJd+mzl33z+bZzKkuV/8othcW7/6A8BgvXfDAIGIeeEkH6
-         f4iZGt9aHpPYTU/qXNnl3zOvBaHLIv+Ma/j3i3WoKpzolcPVECaM+sUHdvqiyMdfQFbg
-         uWBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750165186; x=1750769986;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=IJGnTu2P8k2zWLpKT9gQ0C6Ynav6qAdbDTnXBuG6SzE=;
-        b=lwi/rw9ScsyafSiTtNdswiJV5KMB9JR4thbIrjtRG5dVWsOgI6yt0c+/cVDQyKiwir
-         ySKG2H/7qRfQsgQ6WKAv3J3ZOqWwTAo8w7uwwB1BUL/vik7VHZ6nOEw9LLz/OTZXpfHa
-         PCwWAGVWkc2PAPmjseLSoZ97HYKZkL/UrituOnU+8OSnoDDBH5Hwzh9b/dMb8x5eALCt
-         YCWK/Qh0EcuiFad4eR6EMZrIAVh4wFxQI50Xbzrk046ZuLQi+mEzoztLRDZ1xCplA/92
-         aPboTpUbsQ5Z9Wwbo9gCaoMTZQlyoniCFy4b8CjbswKWqDBOOSGDES+0i41/xq6sfmQ6
-         86lQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUFVIl5SvRpSxkIRjXOvMsbidJOYHpk4f5oVspO4U/0viiag99Hq2lB1z4JMreuiY4tv6OnE31QrvL2wRRvDt0=@lists.infradead.org, AJvYcCWnCWiRkhZE7qH/pPF3mYRncWkSIAiqC6jAqutIg7LuwxqvnFxaMjc8MQsmq/M3q6X8mt+oJoQy45PEYxyVcw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywj/5toczqYiGSb7Dn1uhNMbMJEhyZDpGukjxo4JJ8X5f0U0bHX
-	MAF8/tc6gRkr4lMOkAAnv/Vz768OGNxbvrbb0nVUxNic7WimVvMCGprvQq9lMfScC3S4KonP/f/
-	FePnh9R0Wb04BrLPXgjv6RZbOsQkgMpl+01dT
-X-Gm-Gg: ASbGncvJxtPRZVSXV8JFYN2TQBqpmpSvaA9/ywOauTKJcr45aU/k4eE2PUMAdz51ZM9
-	8ckXg1vUGpokENvJq5KLI3SApHVhr6tsPQwv482AUIOOx0OrfW0miGBi0SVS5p1rGsYrhCCGoUp
-	pHaSpF37mUKRZ+GRlmuGVrNkwlCE0nxPqIDNqZouwtag==
-X-Google-Smtp-Source: AGHT+IFyDxk9ofOoSE1jUdDwuXC6uj68bPw86gFHeN0xbFulbam2J1M/auQRgbuNa5uXdcywAXE8tSUc/+x2hYqgo2M=
-X-Received: by 2002:a05:6122:4586:b0:52f:47de:3700 with SMTP id
- 71dfb90a1353d-53149677e4amr8402312e0c.5.1750165185838; Tue, 17 Jun 2025
- 05:59:45 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250613090431.127087-1-tzimmermann@suse.de> <20250613090431.127087-8-tzimmermann@suse.de>
-In-Reply-To: <20250613090431.127087-8-tzimmermann@suse.de>
-From: Inki Dae <daeinki@gmail.com>
-Date: Tue, 17 Jun 2025 21:59:08 +0900
-X-Gm-Features: Ac12FXy1YqAOwtksyoMPU_mcRXzK8GOxRWP5F_To6gWRQ1V5y95DviShSwJIG6g
-Message-ID: <CAAQKjZOiz3Z42N_GEPzqU=CCfim+Z7oCuyxuji6Guj_dKYsimw@mail.gmail.com>
-Subject: Re: [PATCH v5 07/25] drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org, 
-	maarten.lankhorst@linux.intel.com, geert@linux-m68k.org, 
-	tomi.valkeinen@ideasonboard.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, 
-	linux-arm-msm@vger.kernel.org, imx@lists.linux.dev, 
-	linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org, 
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-tegra@vger.kernel.org, intel-xe@lists.freedesktop.org, 
-	xen-devel@lists.xenproject.org, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>
+	id 1uRVzx-00000007HSg-2XAu
+	for linux-rockchip@lists.infradead.org;
+	Tue, 17 Jun 2025 13:05:10 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1750165497;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=3zjtqGhgjnm5yBwbIgqfOiHPrC8nlYTo3NpdAZ+T86I=;
+	b=Fkvmjd2w2NQ8I5Hn2AJHECacEiSJ1Ao16vtWobrQ89RmfTW9kxU8gLMlO+MMDsSdqAcHRM
+	ZSOeUUHWE21vVjLIgdR/pl48JrO9JuhNQ4I9WvjudTFO2fyrLI3m0cofplneVJR2gZ4BG5
+	DjWx1auT9lzJ3gw0gYvyyzmkDQZqg35+bLkZ3AouwWgpUhv/p+K6TfuYXbZBHcAJM0gB39
+	Y0/Q0KcW5E4RSrcfuM51EuSEvtnLGnqp9FsB84aO5Y7YWBZkVnOl/92OdbpmahOS+gxAOv
+	7CSSpYfKxL9oxN0n8jvcYwZktO3rtX9xc9oC8pI461JhMWyNVJ6ZfCBI60hNwQ==
+Date: Tue, 17 Jun 2025 15:04:44 +0200
+Message-Id: <DAOTVW4YEC5Q.STXG6APE0YGN@cknow.org>
+Cc: <joro@8bytes.org>, <will@kernel.org>, <robin.murphy@arm.com>,
+ <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
+ <heiko@sntech.de>, <nicolas.dufresne@collabora.com>,
+ <p.zabel@pengutronix.de>, <mchehab@kernel.org>, <joro@8bytes.org>,
+ <iommu@lists.linux.dev>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-media@vger.kernel.org>,
+ <kernel@collabora.com>
+Subject: Re: [PATCH 3/5] iommu: Add verisilicon IOMMU driver
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Benjamin Gaignard" <benjamin.gaignard@collabora.com>
+References: <20250616145607.116639-1-benjamin.gaignard@collabora.com>
+ <20250616145607.116639-4-benjamin.gaignard@collabora.com>
+In-Reply-To: <20250616145607.116639-4-benjamin.gaignard@collabora.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_055947_422879_115E81CC 
-X-CRM114-Status: GOOD (  14.31  )
+X-CRM114-CacheID: sfid-20250617_060509_776600_50C56D49 
+X-CRM114-Status: GOOD (  20.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,43 +71,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============4203564441060081465=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-MjAyNeuFhCA27JuUIDEz7J28ICjquIgpIOyYpO2bhCA2OjA1LCBUaG9tYXMgWmltbWVybWFubiA8
-dHppbW1lcm1hbm5Ac3VzZS5kZT7ri5jsnbQg7J6R7ISxOgo+Cj4gQ2FsbCBkcm1fbW9kZV9zaXpl
-X2R1bWIoKSB0byBjb21wdXRlIGR1bWItYnVmZmVyIHNjYW5saW5lIHBpdGNoIGFuZAo+IGJ1ZmZl
-ciBzaXplLiBObyBhbGlnbm1lbnQgcmVxdWlyZWQuCj4KCkFja2VkLWJ5IDogSW5raSBEYWUgPGlu
-a2kuZGFlQHNhbXN1bmcuY29tPgoKVGhhbmtzLApJbmtpIERhZQoKPiBTaWduZWQtb2ZmLWJ5OiBU
-aG9tYXMgWmltbWVybWFubiA8dHppbW1lcm1hbm5Ac3VzZS5kZT4KPiBDYzogSW5raSBEYWUgPGlu
-a2kuZGFlQHNhbXN1bmcuY29tPgo+IENjOiBTZXVuZy1Xb28gS2ltIDxzdzAzMTIua2ltQHNhbXN1
-bmcuY29tPgo+IENjOiBLeXVuZ21pbiBQYXJrIDxreXVuZ21pbi5wYXJrQHNhbXN1bmcuY29tPgo+
-IENjOiBLcnp5c3p0b2YgS296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+Cj4gQ2M6IEFsaW0gQWto
-dGFyIDxhbGltLmFraHRhckBzYW1zdW5nLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2V4
-eW5vcy9leHlub3NfZHJtX2dlbS5jIHwgOCArKysrKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNSBp
-bnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9leHlub3MvZXh5bm9zX2RybV9nZW0uYyBiL2RyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5
-bm9zX2RybV9nZW0uYwo+IGluZGV4IDQ3ODdmZWU0Njk2Zi4uZmZhMWMwMmI0YjFlIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9nZW0uYwo+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9nZW0uYwo+IEBAIC0xMSw2ICsxMSw3IEBA
-Cj4gICNpbmNsdWRlIDxsaW51eC9zaG1lbV9mcy5oPgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxl
-Lmg+Cj4KPiArI2luY2x1ZGUgPGRybS9kcm1fZHVtYl9idWZmZXJzLmg+Cj4gICNpbmNsdWRlIDxk
-cm0vZHJtX3ByaW1lLmg+Cj4gICNpbmNsdWRlIDxkcm0vZHJtX3ZtYV9tYW5hZ2VyLmg+Cj4gICNp
-bmNsdWRlIDxkcm0vZXh5bm9zX2RybS5oPgo+IEBAIC0zMzAsMTUgKzMzMSwxNiBAQCBpbnQgZXh5
-bm9zX2RybV9nZW1fZHVtYl9jcmVhdGUoc3RydWN0IGRybV9maWxlICpmaWxlX3ByaXYsCj4gICAg
-ICAgICB1bnNpZ25lZCBpbnQgZmxhZ3M7Cj4gICAgICAgICBpbnQgcmV0Owo+Cj4gKyAgICAgICBy
-ZXQgPSBkcm1fbW9kZV9zaXplX2R1bWIoZGV2LCBhcmdzLCAwLCAwKTsKPiArICAgICAgIGlmIChy
-ZXQpCj4gKyAgICAgICAgICAgICAgIHJldHVybiByZXQ7Cj4gKwo+ICAgICAgICAgLyoKPiAgICAg
-ICAgICAqIGFsbG9jYXRlIG1lbW9yeSB0byBiZSB1c2VkIGZvciBmcmFtZWJ1ZmZlci4KPiAgICAg
-ICAgICAqIC0gdGhpcyBjYWxsYmFjayB3b3VsZCBiZSBjYWxsZWQgYnkgdXNlciBhcHBsaWNhdGlv
-bgo+ICAgICAgICAgICogICAgICB3aXRoIERSTV9JT0NUTF9NT0RFX0NSRUFURV9EVU1CIGNvbW1h
-bmQuCj4gICAgICAgICAgKi8KPgo+IC0gICAgICAgYXJncy0+cGl0Y2ggPSBhcmdzLT53aWR0aCAq
-ICgoYXJncy0+YnBwICsgNykgLyA4KTsKPiAtICAgICAgIGFyZ3MtPnNpemUgPSBhcmdzLT5waXRj
-aCAqIGFyZ3MtPmhlaWdodDsKPiAtCj4gICAgICAgICBpZiAoaXNfZHJtX2lvbW11X3N1cHBvcnRl
-ZChkZXYpKQo+ICAgICAgICAgICAgICAgICBmbGFncyA9IEVYWU5PU19CT19OT05DT05USUcgfCBF
-WFlOT1NfQk9fV0M7Cj4gICAgICAgICBlbHNlCj4gLS0KPiAyLjQ5LjAKPgo+CgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+--===============4203564441060081465==
+Content-Type: multipart/signed;
+ boundary=95b0041d640d325258bcee1396591f4111b720f6b27198e107b759077302;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+
+--95b0041d640d325258bcee1396591f4111b720f6b27198e107b759077302
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+Hi,
+
+On Mon Jun 16, 2025 at 4:55 PM CEST, Benjamin Gaignard wrote:
+> Verisilicon IOMMU hardware block can be found in combination
+
+Can there be only 1 hardware block or is multiple possible?
+If only 1, then I'd start with "The Verisilicon ...".
+If more then one, then I'd use "blocks".
+
+> with hardware video codecs (encoders or decoders) on
+> different SoCs.
+
+This makes it sound like it can also be used with non-Verisilicon codecs
+and based on the DT binding description, I get the _impression_ that
+that is not the case?
+But it's actually not clear to me if that's the case or not.
+
+> Enable it will allows to use non contiguous memory
+
+"Enabling it will allow us to use non ..." or "Enable it to allow [the]
+use of non ..." or "Enabling allows the use of non ..."
+
+> allocators for Verisilicon video codecs.
+
+And the wrapping of the whole commit message is not following the
+standards.
+
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  drivers/iommu/Kconfig     |   8 +
+>  drivers/iommu/Makefile    |   1 +
+>  drivers/iommu/vsi-iommu.c | 900 ++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 909 insertions(+)
+>  create mode 100644 drivers/iommu/vsi-iommu.c
+>
+> diff --git a/drivers/iommu/Kconfig b/drivers/iommu/Kconfig
+> index 0a33d995d15d..4cf4504dcc25 100644
+> --- a/drivers/iommu/Kconfig
+> +++ b/drivers/iommu/Kconfig
+> @@ -383,4 +383,12 @@ config SPRD_IOMMU
+> =20
+>  	  Say Y here if you want to use the multimedia devices listed above.
+> =20
+> +config VSI_IOMMU
+> +	bool "Verisilicon IOMMU Support"
+> +	depends on ARM64
+> +	select IOMMU_API
+> +	select ARM_DMA_USE_IOMMU
+> +	help
+> +	  Support for IOMMUs used by Verisilicon video decoders.
+> +
+>  endif # IOMMU_SUPPORT
+> diff --git a/drivers/iommu/Makefile b/drivers/iommu/Makefile
+> index 355294fa9033..68aeff31af8b 100644
+> --- a/drivers/iommu/Makefile
+> +++ b/drivers/iommu/Makefile
+> @@ -34,3 +34,4 @@ obj-$(CONFIG_IOMMU_SVA) +=3D iommu-sva.o
+>  obj-$(CONFIG_IOMMU_IOPF) +=3D io-pgfault.o
+>  obj-$(CONFIG_SPRD_IOMMU) +=3D sprd-iommu.o
+>  obj-$(CONFIG_APPLE_DART) +=3D apple-dart.o
+> +obj-$(CONFIG_VSI_IOMMU) +=3D vsi-iommu.o
+> diff --git a/drivers/iommu/vsi-iommu.c b/drivers/iommu/vsi-iommu.c
+> new file mode 100644
+> index 000000000000..f2fa1197916c
+> --- /dev/null
+> +++ b/drivers/iommu/vsi-iommu.c
+> @@ -0,0 +1,900 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +
+
+No copyright statement? (or an informational header block?)
+
+Cheers,
+  Diederik
+
+> +#include <linux/clk.h>
+> + <snip>
+
+--95b0041d640d325258bcee1396591f4111b720f6b27198e107b759077302
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaFFn8gAKCRDXblvOeH7b
+bgL/AQC2+pfAq9y+rYClfqDV6JafnSW/BsK29aRiz2WgF9RTPwD/V9oxqTRqrf49
+ZD2TLkIPP43QDiTJOJ66STMrp/UUAAw=
+=lqws
+-----END PGP SIGNATURE-----
+
+--95b0041d640d325258bcee1396591f4111b720f6b27198e107b759077302--
+
+
+--===============4203564441060081465==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4203564441060081465==--
+
