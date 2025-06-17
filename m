@@ -4,57 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48DFC71157
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 08:10:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E569AC71157
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Jun 2025 09:10:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4UvQBhVHXGlALCEaUmfyRotReG+kKVBDk3djp2P1NsY=; b=bVrmoFNJ3LgNCm
-	5LUudJGjO0watfKpIphlYl7Xz4NNqB2oWtGzquaBG8HpiKun4cJualG7OKqMmtfWeKnsW4e8lgt42
-	gHIuakEGAmOJ09OnDM995oxoseP8OKSejXugpc3xA07N3pQdxQvQyax3OoA4BdfyjRhC3pN16Dtzl
-	/5MRS/SJUUjm3DTJTj94AVOKQXMRXM+wDbYfYsmEhfTr3y/EuxqylLe0+di41cjhuQ8ZzEVj2HeCz
-	X84lsGLq9PSVf8ORtlsST9Nk2AQTXsuIG7hSDZXmqTccNmxnJ72uUzAN7/WLVLsL5aWp2y8Z/ydkx
-	vQFfFhTvcYIilCDZBt9g==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=r4xk2ImOSP3iy3P9B2pbGzDC356cPkprqlg5SnE1XRo=; b=vGJyYkvGCbSf0u
+	RNUV/vFkX3tBMK5nwiC6X3bAaeDyW0v4JiP1iUxTpXE76gnlRqsvwTecMEOqceYTeWe9Fvntes3N9
+	Y+Vkkubt3PFT3acfbv80a5XZWi0ETEe3RRX/xFK8Xa8T7lkBQhWc1mUcqQUGVb1CybMWZytIXsn8+
+	zESto/Kq7frmK9ZNbJJvYz981cjSEFvIaQzE2w57Qmr7dlxm5JbEkq1lo6RVxbCOv47jvV70Jjwx0
+	+HykowXVca1cH9bqVXA8uVGYru4g+aP0cv3D1ukV7NGyjHMqsgyCAE+MsRs4X2KakkCqI+22oyMWy
+	mmvJVzs82a99YZtsRyqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRROz-00000006YNx-0iUx;
-	Tue, 17 Jun 2025 08:10:41 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uRSKI-00000006hLa-1nFN;
+	Tue, 17 Jun 2025 09:09:54 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRRMe-00000006Y5U-2TQE;
-	Tue, 17 Jun 2025 08:08:17 +0000
+	id 1uRSHw-00000006gvt-2660;
+	Tue, 17 Jun 2025 09:07:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 567FC5C629E;
-	Tue, 17 Jun 2025 08:05:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02F24C4CEE3;
-	Tue, 17 Jun 2025 08:08:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A2A0E629F2;
+	Tue, 17 Jun 2025 09:07:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4B1D5C4CEED;
+	Tue, 17 Jun 2025 09:07:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750147695;
-	bh=xSp6YzXqyFFcF2Z2Zs5t0bWps7VV8UD7jYJkKHZXM/o=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jO8swg8tV7STz2bUcJ9YCtQWUWoTKiqQrzOUzXza+nsU39hVu0EUGgliDvYKP2rLc
-	 6cGmSR3DT+tJa/rJcLN3NLYGKTdJ5ciOR1gUi/KmFmKUQ9qnkTa+M2U/n6uEOvRiki
-	 TJ9FY3IHIzksbh2K0E/JyENQQkM0irvxW4JwPveiVplqxnC7C70NHE9b9V42ilWYrL
-	 fHJei7Fs+MtBSZsyYo4ryVAWpFdvgfDT8kau8rHY9sLfuJUJzwOkQNs/NCCjgQFMn+
-	 eWm482swAZI18VzqH+AMY9SC1N5VG/wZcxuv3t/0MhEWQKatRhVCfWaM3H7yY8s5h1
-	 VNVR9j4o8uKEg==
-Date: Tue, 17 Jun 2025 10:08:12 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Quentin Schulz <foss+kernel@0leil.net>
-Subject: Re: [PATCH v2 1/4] dt-bindings: mfd: rk806: allow to customize PMIC
- reset mode
-Message-ID: <20250617-small-vivacious-labrador-7f0eb0@kuoka>
-References: <20250605-rk8xx-rst-fun-v2-0-143d190596dd@cherry.de>
- <20250605-rk8xx-rst-fun-v2-1-143d190596dd@cherry.de>
+	s=k20201202; t=1750151247;
+	bh=Si2W4F7cUbz3L54al/Qkxuum2j7kVFvTLzKFSkA8wyQ=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=c2APkMi3x0QA2ljjvUff2h++NBZ80rMXaSxc++gORSMjyM2ccuN/T//dorduTr7fi
+	 Hlqh3xi4b9AL+bs67OYkm50qdy8Nx423bRnu35y+ZuMbm6TS7DyJUAAlqXHHwa54+g
+	 LXavtweI7+g2gqKnnAhyHa628oz3NpUYuWQfm1w6H4W9V0AThUkDLNag3KlOtgVRbR
+	 Ugozn+q/OlyaOIQOQqnLwvT+hwCvNVXvr4L/qx8mcyWNe2ou93/vaDOZ07h5XQHEU5
+	 B9XOd5umXc+kAp5BnHbtNEDwAbweHqHWys7w1pIzXhNzg78oBOVuSpKxN+7Wcj4HBr
+	 XXn4rHQqEdINQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 33632C71157;
+	Tue, 17 Jun 2025 09:07:27 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Subject: [PATCH 0/5] phy: rockchip: phy-rockchip-inno-csidphy: add support
+ for rk3588 variant
+Date: Tue, 17 Jun 2025 10:54:41 +0200
+Message-Id: <20250616-rk3588-csi-dphy-v1-0-84eb3b2a736c@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250605-rk8xx-rst-fun-v2-1-143d190596dd@cherry.de>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_010816_710421_E33EB795 
-X-CRM114-Status: GOOD (  20.64  )
+X-B4-Tracking: v=1; b=H4sIAFEtUWgC/x3MQQqAIBBA0avErBswS7GuEi3CmXIILBSiiO6et
+ HyL/x/InIQzDNUDiU/JsseCpq7AhzmujELFoJU2yjYW09Ya59BnQTrCjb5n0jN1nvoFSnUkXuT
+ 6j+P0vh9u/TV2YQAAAA==
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Jagan Teki <jagan@amarulasolutions.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Collabora Kernel Team <kernel@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-phy@lists.infradead.org, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1750150493; l=1495;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=Si2W4F7cUbz3L54al/Qkxuum2j7kVFvTLzKFSkA8wyQ=;
+ b=+p79y9jGgbIVFS386LZQ8TkpJw4rRZgJWWo3ICGeMWt4e0bJeMPjAC6VRl6QTmGaCgn2g/1VP
+ cV9D94y/SBoCd72D6wrP7Yf32Xp2wJV04pR88bAa2zcbbYTaNO7Iofm
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,71 +86,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Semkowicz <dse@thaumatec.com>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>, Lee Jones <lee@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Lukasz Czechowski <lukasz.czechowski@thaumatec.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 05, 2025 at 05:41:06PM GMT, Quentin Schulz wrote:
-> +  rockchip,reset-mode:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    enum: [0, 1, 2]
-> +    description:
-> +      Mode to use when a reset of the PMIC is triggered.
-> +
-> +      The reset can be triggered either programmatically, via one of
-> +      the PWRCTRL pins (provided additional configuration) or
-> +      asserting RESETB pin low.
-> +
-> +      The following modes are supported (see also
-> +      include/dt-bindings/mfd/rockchip,rk8xx.h)
-> +
-> +      - 0 (RK806_RESTART) restart PMU,
-> +      - 1 (RK806_RESET) reset all power off reset registers and force
-> +        state to switch to ACTIVE mode,
-> +      - 2 (RK806_RESET_NOTIFY) same as RK806_RESET and also pull
-> +        RESETB pin down for 5ms,
-> +
-> +      For example, some hardware may require a full restart
-> +      (RK806_RESTART mode) in order to function properly as regulators
-> +      are shortly interrupted in this mode.
-> +
+Habidere,
 
-This is fine, although now points to missing restart-handler schema and
-maybe this should be once made common property. But that's just
-digression, nothing needed here.
+The Rockchip RK3588 features two MIPI CSI-2 DPHYs (not to be confused with
+the two combo MIPI DSI/CSI CPHY/DPHY blocks). The CSI-2 DPHYs can be
+supported using the existing phy-rockchip-inno-csidphy driver, the notable
+differences being
+ - the control bits in the GRF
+ - the additional reset line
+This patch series adds support for this variant.
 
->    vcc1-supply:
->      description:
->        The input supply for dcdc-reg1.
-> diff --git a/include/dt-bindings/mfd/rockchip,rk8xx.h b/include/dt-bindings/mfd/rockchip,rk8xx.h
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..f058ed1ca661185f79738a358aa2d4f04539c590
-> --- /dev/null
-> +++ b/include/dt-bindings/mfd/rockchip,rk8xx.h
-> @@ -0,0 +1,17 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
-> +/*
-> + * Device Tree defines for Rockchip RK8xx PMICs
-> + *
-> + * Copyright 2025 Cherry Embedded Solutions GmbH
-> + *
-> + * Author: Quentin Schulz <quentin.schulz@cherry.de>
-> + */
-> +
-> +#ifndef _DT_BINDINGS_MFD_ROCKCHIP_RK8XX_H
-> +#define _DT_BINDINGS_MFD_ROCKCHIP_RK8XX_H
-> +
-> +#define RK806_RESTART		0
-> +#define RK806_RESET		1
-> +#define RK806_RESET_NOTIFY	2
+As you may have guessed, this is part of the efforts to bring the support
+for the RK3588 Video Capture (VICAP) unit mainline.
 
-I do not see how this is a binding. Where do you use this in the driver
-(to be a binding because otherwise you just add unused ABI)?
+Looking forward to your comments!
+
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+Michael Riesch (5):
+      dt-bindings: soc: rockchip: add rk3588 csidphy grf syscon
+      dt-bindings: phy: rockchip-inno-csi-dphy: add rk3588 variant
+      phy: rockchip: phy-rockchip-inno-csidphy: allow writes to grf register 0
+      phy: rockchip: phy-rockchip-inno-csidphy: add support for rk3588 variant
+      arm64: dts: rockchip: add mipi csi-2 dphy nodes to rk3588
+
+ .../bindings/phy/rockchip-inno-csi-dphy.yaml       | 60 ++++++++++++++++++++--
+ .../devicetree/bindings/soc/rockchip/grf.yaml      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      | 31 +++++++++++
+ drivers/phy/rockchip/phy-rockchip-inno-csidphy.c   | 28 ++++++++--
+ 4 files changed, 112 insertions(+), 8 deletions(-)
+---
+base-commit: 19272b37aa4f83ca52bdf9c16d5d81bdd1354494
+change-id: 20250616-rk3588-csi-dphy-c9ed2ad4cd9f
 
 Best regards,
-Krzysztof
+-- 
+Michael Riesch <michael.riesch@collabora.com>
+
 
 
 _______________________________________________
