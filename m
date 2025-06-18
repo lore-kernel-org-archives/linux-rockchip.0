@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89541C71157
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 16:08:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31900C71157
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 16:13:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a5K153dvMH9yug9xoIw7M2TgSFeGSvzly9jl3sYT2mw=; b=imq3N9ndNXXLAB
-	GgAlpZHZBFE/pulC/yrjV238HbmZnZGDvk1lvAGe1F+uMdNi9Fh97mEn7B6EYu+FJ/XPgmzpVoPhM
-	/uibgUa+u8UezbcGnJxjluQozcBFuQVqdxcKDNJLmYMJCd6QFjIvnM/v/jF73Grvi7NQv/8x6NJW6
-	3lIWtm075cPihGpfFUjsjNQcjO7UzvYs7hB2+vB3nlVzFS7+1oh+ZH31chSUNyutVnIqzK2olKJ1Q
-	TcRRSd3nCSYqQA0ys9XgW+VbkvtSmAGbby+qFm0p1rpRrHZSh6BaV22MZ2VhyjeF7/ECab6kthryv
-	TgfZesYYaVZ8zsdWrF5g==;
+	List-Owner; bh=53eU9VWLxZDF5j+pKXOFd1q5BuefIzwo5LnJNwG00DY=; b=tkOsP8KIxMU6s1
+	oFOHifV8qooZfPUyziG/Vh213Sdvrf/gfxhf9pZTyfffEoGJ+M0kUtexC2c96HNwrQDz64eHWtfAo
+	jOk75luQb3V4k561O8Jb8+xsBtjnZgsUiYb9q+/TNfd0ozNMDMsz6dhrki0q1eXDn2kSBKaev/ePO
+	cSs6aT9iv7IbgN0vi6FZzie7+4ieCdZWbANZQkSJHZodF+jNymeI84hgjHrkt5Fzq625tCDWe8wie
+	NmzdJMzW6BsN1LG5WZzgFoqXzJm1x6oqwayQ/5wuE8XYMrdMAmhWDo2HZLDtzbIJAqm615eJVo3jT
+	+YQd/d5R8wBhSGvYZIqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRvKb-0000000Agz7-2kt9;
-	Wed, 18 Jun 2025 16:08:09 +0000
-Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
+	id 1uRvPD-0000000AhLg-3ecE;
+	Wed, 18 Jun 2025 16:12:55 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRtYv-0000000AP8y-2eem;
-	Wed, 18 Jun 2025 14:14:51 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 44DE743A29;
-	Wed, 18 Jun 2025 14:14:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1750256086;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=BR2Js8AYTA3uqJ+dhjRGvYCUNC9Z3XvtFngEWfHaNL4=;
-	b=M3GMdsgxD6lk12yug3GZIA8tEeyFYbrlJgFxgmCaHKFUrC5JJagMIGi3UonPF93IgRsa0e
-	91VmMYNOWFqFjkgDwrtJCBNw0kqYZ78J7y/0GcpTTb5w9PScz8COG1ISoU+ymvY6deqwHU
-	eFa8aDov6g1X5Z0U7XvCaG3a2TC3vJx8Q58k96AcZsZcGLy0o+/s8AiHhvL/XRjHZQ57V+
-	t+oMgkfbyWN6LIZZE350GAwt4swQwwMRB8EIuQKKPAygPkzZQX4XpN0jddH+BhU7S55K1X
-	9XFLQ7bAdz5CemKbwN+ahVr+YigNdMg5BZoI32c8u593JeheOJHk+9jqWIv2BA==
-Message-ID: <3acaaf1c-b4ed-47ff-8de5-195a9cfc5338@bootlin.com>
-Date: Wed, 18 Jun 2025 16:14:44 +0200
+	id 1uRthG-0000000AQ14-12f9;
+	Wed, 18 Jun 2025 14:23:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=IZ7GT9tpTg48vlfg0U/YtaR7zQg4ihM+JAeyaKK+GSk=; b=n7ggpt2HCDEc5Ja5gOza091alY
+	TidK9h7stjS8E616jr/QSUWs19tqX3rKZQwwCBmPLvJAF4i4F/I3aLlenM50X35J7ecT7bPKEO9Qc
+	2qLGuIkK/DYl2EPERfYgX4zBqH5rjUxCm95j4wip9XqLqF78Ze0aX1sk1llatL0+qJ/VeF4rHNdBD
+	5BkLmlRlbjE0TrJrc1dpXSn2OVayoIecNYZl7VhgATlU04Oiogsv9PfplX9uus89GwrzeRN4vLQce
+	0YJl4R14H1Z9tCC1i7He7mS+/Dwa6cdyqplt3xgVpf2gD4X69N4luJjJUlzN5BQtrXlZ3gxCdunj8
+	kRlAx4iA==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uRthE-000000045nM-005T;
+	Wed, 18 Jun 2025 14:23:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id EAFB25C621E;
+	Wed, 18 Jun 2025 14:21:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF084C4CEEE;
+	Wed, 18 Jun 2025 14:23:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750256599;
+	bh=Tw82APBfnc8betE49fdk4f7dJxLN1BXDSLLXI9UwX7M=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QdAUprYKJiSnsrJGpXN4Wmdq8DXkBhrJMF/FEGPXR2QnvW9p3H5kK1elO6+oQ5zP1
+	 XWfCiGXzCXewJYibrQhrnn9YbF4K8CXWAjkxTaK94+H+HqVsWFvD32lh1WptSPnOXp
+	 yLUkrvU/uomcQPTVq2Y1HpLub6VBB64WZILuuqiHz2dOxVw+MpxQEKcdKorBw1VXLz
+	 gx7FoLEG/ELzuaYl5dzpzz8k/8C0WuLqq56KxebvN8Nov7JpBZL2qnZqq9waTzqBCs
+	 61XHUF4Y/CmTLy+LXFmqFy2rPVd0ExD28khi6AoUdXa4nPx9R2gvLrqPYk2J4fkUws
+	 hJDkGdgT+BDxQ==
+Date: Wed, 18 Jun 2025 16:23:14 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Delay link training after hot reset
+ in EP mode
+Message-ID: <aFLL0vPFzxdVOR9a@ryzen>
+References: <20250617220114.GA1156610@bhelgaas>
+ <20250617220523.GA1157905@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Fix the mipi port definition
- for RK3399
-To: Diederik de Haas <didi.debian@cknow.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20250618-dtb_fixes-v1-0-e54797ad2eba@bootlin.com>
- <20250618-dtb_fixes-v1-2-e54797ad2eba@bootlin.com>
- <DAPPHL6RPWWM.94C7P26AUCCN@cknow.org>
-Content-Language: en-US
-From: Olivier Benjamin <olivier.benjamin@bootlin.com>
-In-Reply-To: <DAPPHL6RPWWM.94C7P26AUCCN@cknow.org>
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddvgddvkeehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfesthejredttddvjeenucfhrhhomhepqfhlihhvihgvrhcuuegvnhhjrghmihhnuceoohhlihhvihgvrhdrsggvnhhjrghmihhnsegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpedvheejtdeifeejvedvffdtuddtheehtdelvdehvefgjeetveejfeeiveduvdejteenucffohhmrghinhepsghoohhtlhhinhdrtghomhenucfkphepvdgrtddumegvfeegmegvtgefkeemvdegvgdtmehfhegtvgemfhefgedvmeeiheekjeemfheiheeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegvfeegmegvtgefkeemvdegvgdtmehfhegtvgemfhefgedvmeeiheekjeemfheiheeipdhhvghloheplgfkrfggieemvdgrtddumegvfeegmegvtgefkeemvdegvgdtmehfhegtvgemfhefgedvmeeiheekjeemfheiheeingdpmhgrihhlfhhrohhmpeholhhivhhivghrrdgsvghnjhgrmhhinhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepuddtpdhrtghpthhtohepughiughirdguvggsihgrnhestghknhhofidrohhrghdprhgtphhtthhop
- ehrohgshheskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepkhhriihkodgutheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheptghonhhorhdoughtsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehhvghikhhosehsnhhtvggthhdruggvpdhrtghpthhtohepthhhohhmrghsrdhpvghtrgiiiihonhhisegsohhothhlihhnrdgtohhmpdhrtghpthhtohepuggvvhhitggvthhrvggvsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidqrghrmhdqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhg
-X-GND-Sasl: olivier.benjamin@bootlin.com
+Content-Disposition: inline
+In-Reply-To: <20250617220523.GA1157905@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_071449_817417_BA98A4D3 
-X-CRM114-Status: GOOD (  26.44  )
+X-CRM114-CacheID: sfid-20250618_152324_203303_5587EF74 
+X-CRM114-Status: GOOD (  16.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,105 +88,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jun 17, 2025 at 05:05:23PM -0500, Bjorn Helgaas wrote:
+> On Tue, Jun 17, 2025 at 05:01:16PM -0500, Bjorn Helgaas wrote:
+> > On Fri, Jun 13, 2025 at 12:19:09PM +0200, Niklas Cassel wrote:
+> 
+> Oh, and this sets PCIE_LTSSM_ENABLE_ENHANCE | PCIE_LTSSM_APP_DLY2_EN
+> once at probe-time, but what about after a link-down/link-up cycle?
+> 
+> Don't we need to set PCIE_LTSSM_ENABLE_ENHANCE |
+> PCIE_LTSSM_APP_DLY2_EN again when the link comes up so we don't have
+> the same race when the link goes down again?
+
+Nope, we don't.
+
+To verify I used this patch:
+
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index be239254aacd..e79add5412b8 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -506,6 +506,8 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+        if (reg & PCIE_LINK_REQ_RST_NOT_INT) {
+                dev_dbg(dev, "hot reset or link-down reset\n");
+                dw_pcie_ep_linkdown(&pci->ep);
++               pr_info("PCIE_CLIENT_HOT_RESET_CTRL after reset: %#x\n",
++                       rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_HOT_RESET_CTRL));
+                /* Stop delaying link training. */
+                val = HIWORD_UPDATE_BIT(PCIE_LTSSM_APP_DLY2_DONE);
+                rockchip_pcie_writel_apb(rockchip, val,
 
 
-On 6/18/25 15:50, Diederik de Haas wrote:
-> Hi (again),
-> 
-Hello again, I appreciate you taking the time!
-> On Wed Jun 18, 2025 at 12:32 AM CEST, Olivier Benjamin wrote:
->> The RK3399's MIPI DSI has 2 ports: in an out. The definition of
->> the port property necessitates the value of #address-cells to be 1.
->>
->> Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
->> ---
->>   arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
->> index 5ebc380a24df86ba7172b0950b89cac56b61c507..5a7341fb6bcb0613af6f3ac31d99355a0f890e89 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
->> @@ -468,7 +468,7 @@ &mipi_dsi {
->>   
->>   	ports {
->>   		mipi_out: port@1 {
->> -			#address-cells = <0>;
->> +			#address-cells = <1>;
->>   			#size-cells = <0>;
->>   			reg = <1>;
->>   
-> 
-> In rk3399-base.dtsi there is already a definition for mipi-in and
-> mipi-out. AFAICT what this change does is require a reg property on the
-> endpoint and I don't think that's correct.
-> 
-Those definitions do indeed exist in the base DTSI.
-> It seems to me that all you need is a mipi_out_panel definition.
-> So what I came up with is this:
-> 
-> ```sh
-> $ git diff
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> index 04ba4c4565d0..b175aeed99e2 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> @@ -466,18 +466,6 @@ &mipi_dsi {
->   	status = "okay";
->   	clock-master;
-> 
-> -	ports {
-> -		mipi_out: port@1 {
-> -			#address-cells = <0>;
-> -			#size-cells = <0>;
-> -			reg = <1>;
-> -
-> -			mipi_out_panel: endpoint {
-> -				remote-endpoint = <&mipi_in_panel>;
-> -			};
-> -		};
-> -	};
-> -
->   	panel@0 {
->   		compatible = "hannstar,hsd060bhw4";
->   		reg = <0>;
-> @@ -495,6 +483,12 @@ mipi_in_panel: endpoint {
->   	};
->   };
-> 
-> +&mipi_out {
-> +	mipi_out_panel: endpoint {
-> +		remote-endpoint = <&mipi_in_panel>;
-> +	};
-> +};
-> +
->   &pmu_io_domains {
->   	pmu1830-supply = <&vcc_1v8>;
->   	status = "okay";
-> ```
-> 
-Thanks for the suggestion, that looks like it might actually solve the 
-issue.
-> I don't have a PPP so I can't verify it, but ``make CHECK_DTBS=y W=1
-> rockchip/rk3399-pinephone-pro.dtb`` no longer reports issues wrt
-> dsi@ff960000 (after I also fixed the panel compatible like in patch 1
-> and added a LCD1_RST pinctrl definition as indicated in my reply to
-> patch 3).
-> 
-I'll test on my PPP and report back in v2.
-> Cheers,
->    Diederik
 
--- 
-Olivier Benjamin, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
 
+[   85.979567] rockchip-dw-pcie a40000000.pcie-ep: hot reset or link-down reset
+[   85.980210] PCIE_CLIENT_HOT_RESET_CTRL after reset: 0x12
+[   93.720413] rockchip-dw-pcie a40000000.pcie-ep: hot reset or link-down reset
+[   93.721074] PCIE_CLIENT_HOT_RESET_CTRL after reset: 0x12
+
+0x12 == bit 1 and bit 4 are set.
+
+bit 1: app_dly2_en
+bit 4: app_ltssm_enable_enhance
+
+
+
+I also looked at the downstream driver and they also only set it once
+during probe().
+
+
+When running the controller EP mode, we (the Linux driver) currently never
+reset the whole core after probe(), and as we can see above, the hardware
+itself also does not reset the app_dly2_en bit during a hot reset signal.
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
