@@ -4,44 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDC18C7115A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 12:25:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE408C71157
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 12:25:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:MIME-Version:Message-Id:Date:Subject
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tbWAetNBEOy505NvJ9Ix54YSxZvYAzE40+uKTeulPb0=; b=3VmcLG7AuF1BZS
-	6EvnN4k1NJavHUTWFyzzNmyrAR2EFNB8aMBGZQcj+mIV9lzRcwH0uQ59l+HCdvhaodB7bb8W/trVe
-	h+Sp636ya4/G8rqF7Puv90DwftuPyi6GUrQPTRKAfqe7VfpmjI4ol6WQ1qb4ZPdbnarQj413w4lhQ
-	39DROzy2YkI8seUZthOBiYQmbnDcIyWewUk9LxSuwl2PGwRVH0fl+1qQyMojQXfWIko42HcnE6qOL
-	YkrMPPAiy8aNzHOTXrIjColenmKYx1toinSjV88KG0dtM7IyTTgwamwRn22n4hgHzglSV81TmjF3L
-	IMGpliXOgsASlA2wUIzg==;
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VpN00XQo43T+F5d8QOG0OIz8Vd/XUattiaGTRrELcUk=; b=ER13NaLaUYKyGZ
+	vLQR+J1RhljZziy8KF7/Usora4qWFVmY+CpxcB7yOizFI+wjBDk0NqSUwJZEKa9mIK2osu17/4fFH
+	ry0Ob5vD1Ci1K5TISPYTqzzQY+jvvtZL3UBiQKig9lEF2DdZR2WNyKet0Gn7/3KAEcJaonVbeVHka
+	U5XjDsOxVY89UqMWrV5Zp+P20ZxPqTrdeS+fQMU3ytzoTo/4lATzRpDcRvipSo4kJdrWWv90f0qUU
+	P3fjPNYsFPFrBq0Z/DrZvodsAMG4WFjFQSD+7uZhuLTXUiWHX5uSVanL/3DZwd2Ggnsmiwgp83fHA
+	hQKZ/oX12CimCeWtr0Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRrqw-0000000A78J-2WkP;
+	id 1uRrqw-0000000A78Q-3xP8;
 	Wed, 18 Jun 2025 12:25:18 +0000
-Received: from smtp-bc0d.mail.infomaniak.ch ([2001:1600:7:10::bc0d])
+Received: from smtp-8fa9.mail.infomaniak.ch ([2001:1600:7:10::8fa9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRq6F-00000009nhI-2ZNe;
+	id 1uRq6F-00000009ni1-2gst
+	for linux-rockchip@lists.infradead.org;
 	Wed, 18 Jun 2025 10:33:02 +0000
 Received: from smtp-4-0001.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6c])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4bMg6t0WC0zW6F;
-	Wed, 18 Jun 2025 12:32:54 +0200 (CEST)
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4bMg6r6KLZzD9N;
-	Wed, 18 Jun 2025 12:32:52 +0200 (CEST)
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4bMg6x3r9szVfM;
+	Wed, 18 Jun 2025 12:32:57 +0200 (CEST)
+Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4bMg6w64MDzCyK;
+	Wed, 18 Jun 2025 12:32:56 +0200 (CEST)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Subject: [PATCH v3 0/5] rockchip: rk8xx: allow to customize PMIC reset mode
- on RK806
-Date: Wed, 18 Jun 2025 12:32:39 +0200
-Message-Id: <20250618-rk8xx-rst-fun-v3-0-081f02d3d348@cherry.de>
+Date: Wed, 18 Jun 2025 12:32:44 +0200
+Subject: [PATCH v3 5/5] arm64: dts: rockchip: force PMIC reset behavior to
+ restart PMU on RK3588 Tiger
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAMeVUmgC/3XMQQ6CMBCF4auQrq2ZlrZSV97DuMB2kMYEyBQbC
- OHuFjYaE5fvJd+/sIgUMLJzsTDCFGLouzzKQ8FcW3cP5MHnzSRIDVoaTs9qmjjFkTevjjfSCKf
- gbjw4ls1A2IRp711vebchjj3Nez6J7f1XSoIDx7qyylt1UggX1yLRfPTItlKSH21A/2qZtVClF
- xa0Nd5/63Vd3yy6hw3oAAAA
-X-Change-ID: 20250526-rk8xx-rst-fun-f261c40b6d0c
+Message-Id: <20250618-rk8xx-rst-fun-v3-5-081f02d3d348@cherry.de>
+References: <20250618-rk8xx-rst-fun-v3-0-081f02d3d348@cherry.de>
+In-Reply-To: <20250618-rk8xx-rst-fun-v3-0-081f02d3d348@cherry.de>
 To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
@@ -49,8 +47,8 @@ To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 X-Mailer: b4 0.14.2
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_033259_826587_28A0D98E 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20250618_033259_869767_6A6E680A 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,72 +66,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This allows to customize the PMIC reset method (also called RST_FUN) on
-RK806 PMIC from Rockchip, mainly found on RK3588 devices but also on
-RK3576.
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
-Finally, this is required on the two RK3588 devices from Theobroma as
-U-Boot changes the silicon-default (which is suitable for us) to
-something that breaks our companion microcontroller's reboot detection
-which breaks a bunch of assumptions in the MCU FW code.
+The bootloader for RK3588 Tiger currently forces the PMIC reset behavior
+(stored in RST_FUN bitfield in register SYS_CFG3 of the PMIC) to 0b1X
+which is incorrect for our devices.
 
-To validate this works on those devices do the following:
+It is required to restart the PMU as otherwise the companion
+microcontroller cannot detect the PMIC (and by extension the full
+product and main SoC) being rebooted which is an issue as that is used
+to reset a few things like the PWM beeper and watchdogs.
 
-On Tiger:
-i2cset -y -f 6 0x6f 0x9 0x62
-On Jaguar:
-i2cset -y -f 0 0x6f 0x9 0x62
-
-You hear a nice (loud :) ) beep, then reboot and it should stop right
-before entering U-Boot TPL again.
+Let's add the new rockchip,reset-mode property to make sure the PMIC
+reset behavior is the expected one.
 
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
-Changes in v3:
-- (hopefully) fixed missing bitfield.h include in driver as reported by
-  Intel's kernel test robot,
-- removed dt-binding header file,
-- removed mentions to constants that used to be in dt-binding header
-  file since they aren't anymore,
-- added (patch 3) header file in arch/arm64/boot/dts/rockchip to make
-  the value of rockchip,reset-mode easier to understand when reading the
-  device tree,
-- Link to v2: https://lore.kernel.org/r/20250605-rk8xx-rst-fun-v2-0-143d190596dd@cherry.de
+ arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changes in v2:
-- moved rst_fun variable declaration out of the switch-case,
-- initialized rst_fun variable to make kernel test robot happy even
-  though the variable wouldn't be used uninitialized due to breaking
-  before using it,
-- renamed rockchip,rst-fun to rockchip,reset-mode
-- rewrote rockchip,reset-mode binding description to not mention the
-  relation to registers or register values,
-- added binding header file to make it easier to understand what the
-  mode is when reading a Device Tree without having to read the binding,
-- Link to v1: https://lore.kernel.org/r/20250526-rk8xx-rst-fun-v1-0-ea894d9474e0@cherry.de
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+index c4933a08dd1e3c92f3e0747135faf97c5eeca906..b44e89e1bb1599ee70b921598c2eb6fd54614f55 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+@@ -6,6 +6,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include "rk8xx.h"
+ #include "rk3588.dtsi"
+ 
+ / {
+@@ -440,6 +441,7 @@ pmic@0 {
+ 		vcc13-supply = <&vcc_1v1_nldo_s3>;
+ 		vcc14-supply = <&vcc_1v1_nldo_s3>;
+ 		vcca-supply = <&vcc5v0_sys>;
++		rockchip,reset-mode = <RK806_RESTART>;
+ 
+ 		rk806_dvs1_null: dvs1-null-pins {
+ 			pins = "gpio_pwrctrl1";
 
----
-Quentin Schulz (5):
-      dt-bindings: mfd: rk806: allow to customize PMIC reset mode
-      mfd: rk8xx-core: allow to customize RK806 reset mode
-      arm64: dts: rockchip: add header for RK8XX PMIC constants
-      arm64: dts: rockchip: force PMIC reset behavior to restart PMU on RK3588 Jaguar
-      arm64: dts: rockchip: force PMIC reset behavior to restart PMU on RK3588 Tiger
-
- .../devicetree/bindings/mfd/rockchip,rk806.yaml     | 21 +++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts      |  2 ++
- arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi      |  2 ++
- arch/arm64/boot/dts/rockchip/rk8xx.h                | 18 ++++++++++++++++++
- drivers/mfd/rk8xx-core.c                            | 15 +++++++++++++++
- include/linux/mfd/rk808.h                           |  2 ++
- 6 files changed, 60 insertions(+)
----
-base-commit: 52da431bf03b5506203bca27fe14a97895c80faf
-change-id: 20250526-rk8xx-rst-fun-f261c40b6d0c
-
-Best regards,
 -- 
-Quentin Schulz <quentin.schulz@cherry.de>
+2.49.0
 
 
 _______________________________________________
