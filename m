@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5D67C71157
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 15:45:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E634C7115B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 15:52:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y9qNxQ2wB0hN/8Qg2kFMe9ibWgW3dqAmtHHPFH2EbNk=; b=mi1k7r7UlhdXym
-	7C9BEH0VQaiNw2WGjfIhlvsNWPtMHSjsCi8iXHX+02WKlK2Tjv7K+UlH40qYfTQVZtLfJUiB5byPR
-	qqxb7RmeiFcxg7mMzvIIatx/FQFnr6A1oW5/oRJ7ItvfxFkRthl4y0hXPuKB/mfPfYorQgRK+K0G0
-	gggpRxyfW6j1B/eFDAMX7ehSdlvaX5oFZg3bcgbz4+2n2Z0WDK5UOTRGetS7bpHJ3pr17jTWGotPN
-	4z1A1CQHGHWWPCxA1mXcGG6DXNXN3yJYqxppF8mwFX4VZLpoFOJfL6T6e/Q2GtSHUf29M38EImcaY
-	cZYA5O6wmPFWDTb1gsmQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=NsV0RW3VgchIXJr/178bKrq8k/mAkq3rWWmpDEk+uAA=; b=jWE
+	wphmeZ50rY6vFXt8XJ6UAagk26XuCHjSsmZJMrrflPx4xhfZMi4C5M2GPXZQm6goupfptONuQjya2
+	caYqA4kqrLKopjH9cnUkqeZ3GUO4IQ9XzKi/+N7aU2ZhPROxDRP8IzTIr3SEM0ht+nhNoQ4HmxTF6
+	XlA3LgCEqa3Eb5xoVhkVqPfNJ1JYVGgNhMlNCi+/zvMNOutRqgkmJSZYmvFDa2BMpcFjSh5dTqdIl
+	qwhcc5Ritaavzo6+rZyGdqGX4zHs+WKVP/IeSwtuOyQVk3iC+h2UluPkaTpN0aB7L+jLTU/sBv0qs
+	q+lEpu/Sn7qXtYpHu9vuPNmC2qTI4cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRuyX-0000000AdHN-0mvm;
-	Wed, 18 Jun 2025 15:45:21 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uRv55-0000000AeG9-1jU6;
+	Wed, 18 Jun 2025 15:52:07 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRtOp-0000000AO3l-1akT;
-	Wed, 18 Jun 2025 14:04:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 63BCB43A99;
-	Wed, 18 Jun 2025 14:04:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0D67C4CEE7;
-	Wed, 18 Jun 2025 14:04:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750255462;
-	bh=8ME5v/hbha7Hqgfb/MYQuYkCDiujKyZOMdxGPEwNxaE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=utsfPTiKdWG5yqldfUyi9RqXLiA7RpqLtvuMHDYdk2fTsbjBFQx2biUrtadfBYLlF
-	 PkjX9o/DwlmjDIihI2R2/fb+tJKKAAotcEKRs1zPPKi2eyKEFYjXVoQQYxaAn+u0fk
-	 HRFsiGF+57228si6wv1bTrUEye8ZHRrpfnDb6d9laGGzBRcWmfJoqh7Ab/18Q82zCV
-	 sq0ydIQEpnaFxjfz/rflyny3j2DDbcdznss6GQk3b6CKl3b97XYIMQpeFclxQ6+q8i
-	 yYzzBy3gfkixA2mhxAWnaHbKd1qj45lO0o4BAT/ggHranFJATCvQZgpCXv5wR3ip01
-	 K/nT9m6vfjMlA==
-Date: Wed, 18 Jun 2025 16:04:17 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Delay link training after hot reset
- in EP mode
-Message-ID: <aFLHYfs1iDgwMdcp@ryzen>
-References: <20250613101908.2182053-2-cassel@kernel.org>
- <20250617220114.GA1156610@bhelgaas>
+	id 1uRtTr-0000000AOS0-03Lo;
+	Wed, 18 Jun 2025 14:09:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1750255773;
+	bh=AbqsY+BazuQPKrih3PHbSIbfF8unqnM3+U3VJBeLOj0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=BF6Zile11yaAxf1Y9/5SyLmogOa92FtcI13KXHY8Az2py36Ch7W7wWPM8/R2TyxzD
+	 29aLaP39PBFC/v/uiojZREEJd4NvDbtB7ZLFRQ7Zh1Y+K/sYYuyV/hcVLjPkCML3kF
+	 etquDrL0A+UPNRJcWfD9tI2MVQD/qUXLlu2+mAY00n3X4elovblyKYGFVPr+yLzoRe
+	 deQTQt5tW2b0qIwqm7SUlgC/J04lJiphuYN4zp7KQw5FtNUOkdWeUE0r44jdPZ6hnW
+	 zBGDwxcBffMBc9dyn2UQyHxIgVknUtelXWrsCjpowwreqbUGABueymFY2Zq4rhiK40
+	 ElFrgPHyjWaQQ==
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:45c6:994a:f902:5c74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D04C217E0DD0;
+	Wed, 18 Jun 2025 16:09:32 +0200 (CEST)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	nicolas.dufresne@collabora.com,
+	jgg@ziepe.ca
+Cc: iommu@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v2 0/5] Add support for Verisilicon IOMMU used by media codec blocks
+Date: Wed, 18 Jun 2025 16:09:09 +0200
+Message-ID: <20250618140923.97693-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250617220114.GA1156610@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_070423_462308_B091E16B 
-X-CRM114-Status: GOOD (  41.36  )
+X-CRM114-CacheID: sfid-20250618_070935_197043_C64690E3 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,148 +79,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2566689010868034996=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Bjorn,
+--===============2566689010868034996==
+Content-Type: text/plain; charset=y
+Content-Transfer-Encoding: 8bit
 
-On Tue, Jun 17, 2025 at 05:01:14PM -0500, Bjorn Helgaas wrote:
-> On Fri, Jun 13, 2025 at 12:19:09PM +0200, Niklas Cassel wrote:
-> > From: Wilfred Mallawa <wilfred.mallawa@wdc.com>
-> > 
-> > RK3588 TRM, section "11.6.1.3.3 Hot Reset and Link-Down Reset" states that:
-> > """
-> > If you want to delay link re-establishment (after reset) so that you can
-> > reprogram some registers through DBI, you must set app_ltssm_enable =0
-> > immediately after core_rst_n as shown in above. This can be achieved by
-> > enable the app_dly2_en, and end-up the delay by assert app_dly2_done.
-> > """
-> 
-> Ugh.  Is """ some sort of markup?  There's a nice English convention
-> of indenting block quotes a couple spaces with no quote marks at all
-> that would work nicely here.
+Hi all,
 
-""" is not any markup, just to highlight that it is a direct quote from
-the TRM.
+This patch series adds support for the Verisilicon IOMMU, which is found in front
+of hardware encoder and decoder blocks in several SoCs using Verisilicon IP. 
+A first implementation of this IOMMU is available on the Rockchip RK3588 SoC.
 
-Since the patch is already queued, could you please fix it up?
+Rockchip provides a driver for this hardware in their 6.1 kernel branch:
+https://github.com/rockchip-linux/kernel/blob/develop-6.1/drivers/iommu/rockchip-iommu-av1d.c
 
+This series includes:
+- a new binding for the Verisilicon IOMMU
+- a basic driver implementation
+- DT updates for RK3588
 
-> 
-> > I.e. setting app_dly2_en will automatically deassert app_ltssm_enable on
-> > a hot reset, and setting app_dly2_done will re-assert app_ltssm_enable,
-> > re-enabling link training.
-> > 
-> > When receiving a hot reset/link-down IRQ when running in EP mode, we will
-> > call dw_pcie_ep_linkdown(), which will call the .link_down() callback in
-> > the currently bound endpoint function (EPF) drivers.
-> > 
-> > The callback in an EPF driver can theoretically take a long time to
-> > complete, so make sure that the link is not re-established until after
-> > dw_pcie_ep_linkdown() (which calls the .link_down() callback(s)
-> > synchronously).
-> 
-> I don't know why we care *how long* EPF callbacks might take.
+The driver was forward-ported from Rockchip’s 6.1 implementation, 
+the prefix was renamed to vsi for generality, and several fixes were applied.
 
-Well, because currently, we do NOT delay link training, and everything
-works as expected.
+AV1 decoding was tested using the stateless VPU driver and Fluster.
+The test results show a score of 205/239, which confirms that no regressions
+were introduced by this series.
 
-Most likely we are just lucky, because dw_pcie_ep_linkdown() calls
-dw_pcie_ep_init_non_sticky_registers(), which is quite a short function.
+Feedback and testing welcome.
 
-During a hot reset, the BARs get resized to 1 GB (yes, that is the
-default/reset value on rk3588), so the fact that the host sees a smaller
-BAR size means that dw_pcie_ep_init_non_sticky_registers() must have had
-time to run before link training completed.
+changes in version 2:
+- Add a compatible "rockchip,rk3588-av1-iommu"
+- Fix clock-names in binding 
+- Remove "vsi_mmu" label in binding example.
+- Rework driver probe function
+- Remove double flush
+- Rework driver internal structures and avoid allocate
+  in xlate function.
+- Do not touch to VPU driver anymore (path removed)
+- Add a patch to enable the driver in arm64 defconfig
 
-But we do not want to rely on luck for these DBI writes to finish before
-link training is complete, hence this patch.
-
-The .link_down() callback in drivers/pci/endpoint/functions/pci-epf-test.c
-simply does a cancel_delayed_work_sync().
-
-I could imagine an EPF driver doing some more time consuming work in the
-callback, like allocating memory (which could trigger direct reclaim), and
-then calling pci_epc_set_bar() which will eventually result in some DBI
-writes. That most likely would not work without this patch.
+Thanks,
+Benjamin
 
 
-> 
-> From the TRM quote, it sounds like the important thing is that you
-> don't want the link to train before dw_pcie_ep_linkdown() calls
-> dw_pcie_ep_init_non_sticky_registers(), which looks like it programs
-> registers through DBI.
-> 
-> Maybe you also want to allow the EFP ->link_down() callbacks to also
-> program things via DBI before link training?  But I don't think the
-> amount of time they take is relevant.  If you need to do *anything*
-> via DBI before the link trains, you have to prevent training until
-> you're finished with DBI.
-> 
-> > Signed-off-by: Wilfred Mallawa <wilfred.mallawa@wdc.com>
-> > Co-developed-by: Niklas Cassel <cassel@kernel.org>
-> > Signed-off-by: Niklas Cassel <cassel@kernel.org>
-> > ---
-> > Changes since v1:
-> > -Rebased on v6.16-rc1
-> > 
-> >  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 15 ++++++++++++---
-> >  1 file changed, 12 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > index 93171a392879..cd1e9352b21f 100644
-> > --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > @@ -58,6 +58,8 @@
-> >  
-> >  /* Hot Reset Control Register */
-> >  #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
-> > +#define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
-> > +#define  PCIE_LTSSM_APP_DLY2_DONE	BIT(3)
-> >  #define  PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
-> >  
-> >  /* LTSSM Status Register */
-> > @@ -474,7 +476,7 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
-> >  	struct rockchip_pcie *rockchip = arg;
-> >  	struct dw_pcie *pci = &rockchip->pci;
-> >  	struct device *dev = pci->dev;
-> > -	u32 reg;
-> > +	u32 reg, val;
-> >  
-> >  	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
-> >  	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
-> > @@ -485,6 +487,10 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
-> >  	if (reg & PCIE_LINK_REQ_RST_NOT_INT) {
-> >  		dev_dbg(dev, "hot reset or link-down reset\n");
-> >  		dw_pcie_ep_linkdown(&pci->ep);
-> > +		/* Stop delaying link training. */
-> > +		val = HIWORD_UPDATE_BIT(PCIE_LTSSM_APP_DLY2_DONE);
-> > +		rockchip_pcie_writel_apb(rockchip, val,
-> > +					 PCIE_CLIENT_HOT_RESET_CTRL);
-> >  	}
-> >  
-> >  	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
-> > @@ -566,8 +572,11 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
-> >  		return ret;
-> >  	}
-> >  
-> > -	/* LTSSM enable control mode */
-> > -	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
-> > +	/*
-> > +	 * LTSSM enable control mode, and automatically delay link training on
-> > +	 * hot reset/link-down reset.
-> > +	 */
-> > +	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE | PCIE_LTSSM_APP_DLY2_EN);
-> >  	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
-> >  
-> >  	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_EP_MODE,
-> > -- 
-> > 2.49.0
-> > 
+Benjamin Gaignard (5):
+  dt-bindings: vendor-prefixes: Add Verisilicon
+  dt-bindings: iommu: verisilicon: Add binding for VSI IOMMU
+  iommu: Add verisilicon IOMMU driver
+  arm64: dts: rockchip: Add verisilicon IOMMU node on RK3588
+  arm64: defconfig: enable Verisilicon IOMMU
+
+ .../bindings/iommu/verisilicon,iommu.yaml     |  72 ++
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  11 +
+ arch/arm64/configs/defconfig                  |   1 +
+ drivers/iommu/Kconfig                         |  12 +
+ drivers/iommu/Makefile                        |   1 +
+ drivers/iommu/vsi-iommu.c                     | 841 ++++++++++++++++++
+ 7 files changed, 940 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
+ create mode 100644 drivers/iommu/vsi-iommu.c
+
+-- 
+2.43.0
+
+
+
+--===============2566689010868034996==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2566689010868034996==--
