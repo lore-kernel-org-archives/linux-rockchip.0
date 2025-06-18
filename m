@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 684F4C77B73
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 19:11:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0CFCC7115E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 19:11:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hLhdTjefQVne8LhJeGMWyBCBjNRLV8+2nhI7ElVikpU=; b=B4o0wDs1XBZJCl
-	Bi9VWKh05B5hWyUX7WEb6JQ4KdeQfjXWkbX4RHKeztafNhE8Fel14WOKHsQ3ybTcO9TE7kO8uERTT
-	tfVUajSzVPd82HS4R8f6dCdVII/02PrYqZp4hMGYOXCEf6325ZtDnTlBkFxkERMj16IoI9CX63Cbu
-	x4vZVA9rkqZ9lkdLJ9iELBmP9axxz1tn212ASZuHCDieaLxwz44bwPVxdSWG8vaS1gWVn6QMEA06r
-	qKlDfmSq0DyPz0XedsXSLpW4cKZFQkf6G4ZRJJk0zo9gp5SSiCkJZZhrxGiO6aMUkDR5NHy3yRmNE
-	nwknqIba1qqZc4zBkTjw==;
+	List-Owner; bh=sYmS37NZmDmyHfuerF5W9MlgcGaQ92JKfNfIVWEOzKw=; b=YxjVkwvCRpIpQj
+	6/Q1buel0wH3PNBiXz7wOuPNMMKcxqLzC79pnWSoOeMSeZLPa0QzOkOGrABeuYFu+SWBBfDu+6SVk
+	VVzlgFdO7zMmehPIKIP3WaRBm49sh/Oqp0emTyWd2t9fDtpE97IG3BU6xd2RLhr2qwG7aTU1ZxVE8
+	5QeNEEnML/plYHdjXh56HU9Y1c1/2MluA3Wx1HU+Rmay+DaS90fUgLVXnao3V8mVJJKjGFUohC6mF
+	DR2OksKlk3Bnqwr8z1oDINK5So5qGbZT4hZq9K2Z8fd73g9JBCXs8E6KKDxTPxLmcl2Uf3thRICvy
+	elgjwTMv43jIyXCaTUBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRyC7-0000000B9aM-3krC;
-	Wed, 18 Jun 2025 19:11:35 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uRyCB-0000000B9gX-1rE8;
+	Wed, 18 Jun 2025 19:11:39 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRv3z-0000000Ae4h-13G8;
-	Wed, 18 Jun 2025 15:50:59 +0000
+	id 1uRv41-0000000Ae5j-0hYU;
+	Wed, 18 Jun 2025 15:51:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Reply-To:Cc:To:In-Reply-To:References:
+	d=infradead.org; s=casper.20170209; h=Reply-To:Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Content-ID:Content-Description;
-	bh=yDRpz+WjpZ7sC8EePoSNkoBxCQWB5I873+s6sivp2Vc=; b=bUJqgBzNDLj9oiBQEIFtJKtSEV
-	78IFKDmiM7Qqd7p7zSpKTlelx52sYTjaKxEYD8Lg8CTdnIcLoDsj+Z5F8L6jnvEXI0LFiUZ7gUjQE
-	DYkRZFmjmpbGawZWCyIHR6+6u2vA6woh1kw46+tesy8i2fCtba2L8T46xdxHtjrtKKt9wlXJgHWSo
-	1DxYurv87HvNw3Yj2Wi5rxZ10rS66TkgLu8ZxCYdbcDOudDLhyxtk9jGRytiiThMHvKsUOJP13qgA
-	t0567StKnUNz+TwWNbfV45xfqfcXxRowUNA38+ndy7f7TXBro9Ebdza6ko/lCt1S0iUIFhGaQxwdA
-	MiRA2BKQ==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRv3u-00000004A1Q-14Bh;
-	Wed, 18 Jun 2025 15:50:58 +0000
+	bh=SEmBCA939OWS4mfAmcDM6+KqTISrYGkdHgEDsSzoSnY=; b=C3+GfE09cLZh9QrzTYe82j0lwT
+	txp1u6I1ORgPqqWx42eDGnVCfUX44GIxZ3iFup11N1uTMN1jTkaPGIB85wgcwl5iNZsZLKctoyMH6
+	fXDUTRtxajKn4vcS88ttPbeBVg/V/23lM5GXq5FN3w9I6YLu22e7/sErQMtsz78WVD4KkdqlpZ7FU
+	BFdcwXY2/BoHjF55lJbuQ2umWGJ9WFTW41AMqiF/7xrQyQZEQb9Y7ttgDiXEnxY7EqKxtLmVyowQz
+	0wysehR9dZnzfIe5WOn3SHiIytgZ81UrxhpQvZVbDn0ZEUWG30+690c89yjYPe3eAuoqFSmub/BFg
+	BhbNiF1Q==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uRv3x-000000048H1-0FQW;
+	Wed, 18 Jun 2025 15:51:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7A8824AA96;
-	Wed, 18 Jun 2025 15:50:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id E1766C4CEF8;
+	by dfw.source.kernel.org (Postfix) with ESMTP id E6F565C478E;
+	Wed, 18 Jun 2025 15:48:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id D3352C4CEF5;
 	Wed, 18 Jun 2025 15:50:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750261850;
-	bh=TNMqQ9ig0Rudb1/QNWTgkgtSOUlp1gOt/QsZw37f/u0=;
+	s=k20201202; t=1750261849;
+	bh=00ySgDeY2SbqvhPX9kBYvU/RMgHNCrJd0O4BG6/GCrE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=dqT3W5wBtuwtVbx97Sjwwgi6BzY1X5PjeY33h2Vw8SmVBprkDroDHyDBW3eqDg4JX
-	 Q6B/3bBzRsZkG5oVl3TVNhUzYkL2IMKCmZoUt/zzyy+p3xx9KATUvEeHO7/3SVRMQ+
-	 HxrLUCbTHp3KC0ewhDtgfBXvI0jFtham16n5dWsr+YYI/nPqKk6P0VyRjfsk1hWv2C
-	 DSmB9Im9aUPFD4HPAaeEdmWrhogN72lrH78sAZrteTGjiwy8eme3kqpj9JH7jRJBuz
-	 c8TwtxV+vjYNK/T0zOQJzcnuTol957fcddNcyu0hgOsULeAUEHF2ktplXCWUN/oQBO
-	 ACXtdwoz/wpoQ==
+	b=XvNxcPN/WiABHT0QX+K+lDaZZpFTBrDOvmXse4m9sxiNC5PMVJ3CyC59L81A5CCZb
+	 ucA90aEoP6+PkXfZIiEa0sFGilYAjDH2hq2XB4nCBUgbU3KpQsrMbVYhPqIRMfuKsL
+	 ah+w0CoT8IM2iOkME7KodNd/LpE3fiamjhx1iOAOX0t5vwJ35uqHyFMCKOuLO9kwdY
+	 qWPEj2KeMCfCP5nN90yUbOU7FQzEIWaD+UcP3DLzVKN2S7/rEbvSRle0mkbwhQ3XxH
+	 95eAVEKuya6jdm8Uhn8zce4+q7int+CV5N915lUBQjJjrg1M35KOR4aC8tbpafTqgY
+	 bXvmwaT+bWaqg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D8E18C7115B;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C9AF1C71157;
 	Wed, 18 Jun 2025 15:50:49 +0000 (UTC)
 From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Wed, 18 Jun 2025 17:38:07 +0200
-Subject: [PATCH v9 12/13] arm64: dts: rockchip: add mipi csi-2 receiver
- node to rk356x
+Date: Wed, 18 Jun 2025 17:38:06 +0200
+Subject: [PATCH v9 11/13] arm64: dts: rockchip: add vicap node to rk356x
 MIME-Version: 1.0
-Message-Id: <20240220-rk3568-vicap-v9-12-ace1e5cc4a82@collabora.com>
+Message-Id: <20240220-rk3568-vicap-v9-11-ace1e5cc4a82@collabora.com>
 References: <20240220-rk3568-vicap-v9-0-ace1e5cc4a82@collabora.com>
 In-Reply-To: <20240220-rk3568-vicap-v9-0-ace1e5cc4a82@collabora.com>
 To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
@@ -92,20 +91,19 @@ Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  Michael Riesch <michael.riesch@collabora.com>, 
  Michael Riesch <michael.riesch@collabora.com>
 X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1750261092; l=1648;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1750261092; l=2050;
  i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=ddLOdVHadRX9CBv2fUjtzIB7CMDsWUeV+RUY6i6krlk=;
- b=oa2ZnPe3H1OmvcZqgSJxMN5QkMzQ6RgbI3/O/NU4lPh1RveOydEnM2tkh2Z/uGb6o466rO5mW
- PaKzUOk5vGuCy0Oxtd9nWof7X3OlRSdf68cudoGJirrt95pYdSXLkSH
+ bh=lEu6UcdwUJ585mOVJj4+wXFbf1qt1nIxcP9Qq7FSezA=;
+ b=ygmsimWSJqgoc8c9dXn3YdySMstSNL/lT5/0FEbVSR1IohGpapa4OdE2tqVSk7C1LFgGzOqGk
+ dKvaoAdAvYkCrjw4ORTr8amYmxUjhVYt6PY6pVKwe9JcYT9EiUh63Wa
 X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
  pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
 X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
  with auth_id=371
 X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_165054_842229_C11FD3C7 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250618_165057_457138_12870231 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,66 +123,69 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Michael Riesch <michael.riesch@collabora.com>
 
-Add the device tree node for the RK356x MIPI CSI-2 Receiver.
+Add the device tree node for the RK356x Video Capture (VICAP) unit.
 
 Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 34 +++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 44 +++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index e0e4dc85a3a9..a6956aacad1a 100644
+index fd2214b6fad4..e0e4dc85a3a9 100644
 --- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -564,6 +564,36 @@ gpu: gpu@fde60000 {
+@@ -564,6 +564,50 @@ gpu: gpu@fde60000 {
  		status = "disabled";
  	};
  
-+	csi: csi@fdfb0000 {
-+		compatible = "rockchip,rk3568-mipi-csi";
-+		reg = <0x0 0xfdfb0000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "irq1", "irq2";
-+		clocks = <&cru PCLK_CSI2HOST1>;
-+		phys = <&csi_dphy>;
++	vicap: video-capture@fdfe0000 {
++		compatible = "rockchip,rk3568-vicap";
++		reg = <0x0 0xfdfe0000 0x0 0x200>;
++		interrupts = <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>;
++		assigned-clocks = <&cru DCLK_VICAP>;
++		assigned-clock-rates = <300000000>;
++		clocks = <&cru ACLK_VICAP>, <&cru HCLK_VICAP>,
++			 <&cru DCLK_VICAP>, <&cru ICLK_VICAP_G>;
++		clock-names = "aclk", "hclk", "dclk", "iclk";
++		iommus = <&vicap_mmu>;
 +		power-domains = <&power RK3568_PD_VI>;
-+		resets = <&cru SRST_P_CSI2HOST1>;
++		resets = <&cru SRST_A_VICAP>, <&cru SRST_H_VICAP>,
++			 <&cru SRST_D_VICAP>, <&cru SRST_P_VICAP>,
++			 <&cru SRST_I_VICAP>;
++		reset-names = "arst", "hrst", "drst", "prst", "irst";
++		rockchip,grf = <&grf>;
 +		status = "disabled";
 +
 +		ports {
 +			#address-cells = <1>;
 +			#size-cells = <0>;
 +
-+			csi_in: port@0 {
++			vicap_dvp: port@0 {
 +				reg = <0>;
 +			};
 +
-+			csi_out: port@1 {
++			vicap_mipi: port@1 {
 +				reg = <1>;
-+
-+				csi_output: endpoint {
-+					remote-endpoint = <&vicap_mipi_input>;
-+				};
 +			};
 +		};
 +	};
 +
- 	vicap: video-capture@fdfe0000 {
- 		compatible = "rockchip,rk3568-vicap";
- 		reg = <0x0 0xfdfe0000 0x0 0x200>;
-@@ -592,6 +622,10 @@ vicap_dvp: port@0 {
- 
- 			vicap_mipi: port@1 {
- 				reg = <1>;
++	vicap_mmu: iommu@fdfe0800 {
++		compatible = "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdfe0800 0x0 0x100>;
++		interrupts = <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_VICAP>, <&cru HCLK_VICAP>;
++		clock-names = "aclk", "iface";
++		#iommu-cells = <0>;
++		power-domains = <&power RK3568_PD_VI>;
++		rockchip,disable-mmu-reset;
++		status = "disabled";
++	};
 +
-+				vicap_mipi_input: endpoint {
-+					remote-endpoint = <&csi_output>;
-+				};
- 			};
- 		};
- 	};
+ 	vpu: video-codec@fdea0400 {
+ 		compatible = "rockchip,rk3568-vpu";
+ 		reg = <0x0 0xfdea0000 0x0 0x800>;
 
 -- 
 2.39.5
