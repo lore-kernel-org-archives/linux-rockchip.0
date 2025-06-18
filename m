@@ -4,75 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7640C71157
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 15:36:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48AFCC7115A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 15:38:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:Subject:Cc:To:From:Message-Id:Date:Mime-Version:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LF6tEhZXev+Tcv303HA+GmkMnP+ose0j5Z6U+IcgJQM=; b=iiuO/grcUdX8dD6G2OcUU7OIyG
-	uEDlpx7Rvac0okAgRyuwQS4vkVC9l4a4QxzKFjVMn7UkZIjZPjAtuN+5hUsKomzdhot7sqqfXJM0C
-	RRjVho5TolH4K2OTinXpV7ONgU+DsMXatC4uZo+BGfjwMY2+Wplm9VO1l+BfXTA2YH9Uc5lufUaLM
-	OHRmDYmaws0QrCnKEZFAJj9twnePR5A6o2cl7cq4HRvHgR9+i20XuynanBdwSWRbVq1iemT5adOwX
-	g0e+G7vomW3HW0iIrT0yA/pjAxcnGyLYvskYHFcG8tLjdRl5jPVG7pC/jJmWwPc8n7V2xTj3zmJvo
-	MU1gT5RA==;
+	bh=N4UXdUgaY78IJfu/t6JuaRAEaNJlCh97qvGTO5O1nxs=; b=md6BQkcsqaSmRjIuV2Z3ChMV3d
+	Es7tNeoWW2rOyr+qNQb9OZUqA4wogZ+WlEReVRthjtoI9lv+y5Yk36R+ercQjTUhWvGTdien2phdr
+	bdOO1qy4uf5Iv/GI6SM9vayF+FyTbFwKYi9LK5KIrSfezvb2+qpvSntfDRfB99iGNAXmXJgZVzQxd
+	0r5WrRYImMwFTbZcV35tza0N277kkjf5mAiIRJya9izcuOuPNfKwzEZUjsoWlL5xX9le0/b21rUUz
+	DrX5Kekle0V3VyQ77U2dQk9OsVeqnyNfbG/HKif9GtxCp7ejKUiqVZRYjYyOGDhQf9pWvyZhecBZe
+	EDq2A3dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRupm-0000000AcAg-1a0J;
-	Wed, 18 Jun 2025 15:36:18 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uRurx-0000000AcMk-3DHP;
+	Wed, 18 Jun 2025 15:38:33 +0000
+Received: from out-177.mta0.migadu.com ([2001:41d0:1004:224b::b1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRtBy-0000000AMHO-3qom
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 18 Jun 2025 13:51:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:References:Subject:Cc:To:
-	From:Message-Id:Date:Content-Type:Mime-Version:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=wyRqvCiBUNreiVdu1C2ibSdtvPeHazL8eEH7UAzR7EU=; b=bxQTErCmskxfPnKo64gAcv9nSq
-	t/Gu9fi9mI4qCCOkI4o+CpyZ8l84+h9F/hbOdTAM5+Br5VY3vfmcsAFBOlaBmF+4qW7jPo8AeXP8I
-	hIlujJ1sYaZevK9IjkA+Qg9aq9vNXyBdJuqp4DUQQsA+6HHO/2HtokTDDHeCvJCgNTo5UvrA99PCu
-	jZSMkQnPQ+E/rOAT/ASQ+gGB12G580RvMM3coQXNaAYzGR0rW9oiGtSNbJ+WWtOg4PQTS/SJMx7N6
-	MaMtMEEC3h3gNkCUgP02i3spTR0q0+F3gWHkUbfXQ2aIHGHDJqEpABG9iJl8VKd7sFzW27/qeWxgL
-	NynS+Ezg==;
-Received: from out-180.mta1.migadu.com ([95.215.58.180])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRtBv-000000044SK-30ko
+	id 1uRtFZ-0000000AN1r-0jnw
 	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Jun 2025 13:51:06 +0000
+	Wed, 18 Jun 2025 13:54:50 +0000
 Mime-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1750254652;
+	t=1750254885;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=wyRqvCiBUNreiVdu1C2ibSdtvPeHazL8eEH7UAzR7EU=;
-	b=PO8Pt/BtUik48+dNlnsyUpVPXJGAil3xpxAmvB3wa5plkjFiDY9SvLfpotgUxNiUpXi2Pn
-	RHIceBY5WeG1CUgwC/ijnwS51ENTQqWsKBw0do/zDCK38mBHiBBM9HhYwKzKkRN61QQa0o
-	/TXiW4L/qAhWOCdhCJalWaRPpApsfXSELtS/plOMwpSPPpS0YaQXV36Ecgu1WX40K0/4EQ
-	uZrAid+s6JWpYmA4Q2PU8FPGATnipXAxOduV7UmOeWbtacFwARWb536WA8Qo9aAW17IPRd
-	V0C8tzAic03D549Gox5ZGJ5poa6kbB89SGILMDoSYSVoYMqLl6p6ic2UTP2y/g==
-Date: Wed, 18 Jun 2025 15:50:39 +0200
-Message-Id: <DAPPHL6RPWWM.94C7P26AUCCN@cknow.org>
+	bh=NNSuuSfon4v/pI6IqbQjhOGu6PQA9a2GdCCeTthXBQE=;
+	b=KwN4nI+sPvrR3Atnz9e4RDMD/yXXMZ5uKrzyu8qawrYeXE4EZaNPQt2z/rZSdMMeWoJRMw
+	o7rGNEoRHx5S57NlsH3aLFtvfacb/J3RIALrpa7Edf57l+6tb2F9WmASv7+Ec4lWcPEyvp
+	9MCY5GyWR2OTXLMVI8fS1feNwH7qQcWCN4eD77RSjpa4r7aTXyHioxIjW71h8JOVUg3uaX
+	jqItFNw3k/ynTUaa3yiI42cOap8vFqXaWf6L1f/tIIumxf5gh+HVPLrdukPL8YEDYZA+PZ
+	ia7tcVeiyFcAaF+eJEmW54IQqBzOsn1QD+Yg6XL164FZDSRjsEjXDC0Et+v4Ag==
+Date: Wed, 18 Jun 2025 15:54:42 +0200
+Message-Id: <DAPPKP3OWLMU.C6HXTY24NZ4H@cknow.org>
+Cc: "Thomas Petazzoni" <thomas.petazzoni@bootlin.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Fix the panel compatible for
+ the PinePhone Pro
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 From: "Diederik de Haas" <didi.debian@cknow.org>
 To: "Olivier Benjamin" <olivier.benjamin@bootlin.com>, "Rob Herring"
  <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor
  Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
-Cc: "Thomas Petazzoni" <thomas.petazzoni@bootlin.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Fix the mipi port definition
- for RK3399
 References: <20250618-dtb_fixes-v1-0-e54797ad2eba@bootlin.com>
- <20250618-dtb_fixes-v1-2-e54797ad2eba@bootlin.com>
-In-Reply-To: <20250618-dtb_fixes-v1-2-e54797ad2eba@bootlin.com>
+ <20250618-dtb_fixes-v1-1-e54797ad2eba@bootlin.com>
+In-Reply-To: <20250618-dtb_fixes-v1-1-e54797ad2eba@bootlin.com>
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_145104_765758_1C56B19D 
-X-CRM114-Status: GOOD (  17.59  )
+X-CRM114-CacheID: sfid-20250618_065449_356376_63998DE9 
+X-CRM114-Status: GOOD (  14.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,24 +69,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2623545169613849178=="
+Content-Type: multipart/mixed; boundary="===============2960381011471044897=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2623545169613849178==
+--===============2960381011471044897==
 Content-Type: multipart/signed;
- boundary=bf878dc077ebb1f1135359669f74c117a74de9e39e80d44933d5744a26aa;
+ boundary=9dfd3ed0cdf1941689833775b5493883736f568288baa81c052167a40120;
  micalg=pgp-sha512; protocol="application/pgp-signature"
 
---bf878dc077ebb1f1135359669f74c117a74de9e39e80d44933d5744a26aa
+--9dfd3ed0cdf1941689833775b5493883736f568288baa81c052167a40120
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset=UTF-8
 
-Hi (again),
-
 On Wed Jun 18, 2025 at 12:32 AM CEST, Olivier Benjamin wrote:
-> The RK3399's MIPI DSI has 2 ports: in an out. The definition of
-> the port property necessitates the value of #address-cells to be 1.
+> As documented in its bindings, the compatible for the Himax HX8394
+> MIPI-DSI LCD panel controller is in 2 parts.
+> The PinePhone Pro DTS currently only specifies the first part of the
+> compatible, generating a warning.
 >
 > Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
 > ---
@@ -110,92 +95,44 @@ On Wed Jun 18, 2025 at 12:32 AM CEST, Olivier Benjamin wrote:
 >
 > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch=
 /arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> index 5ebc380a24df86ba7172b0950b89cac56b61c507..5a7341fb6bcb0613af6f3ac31=
-d99355a0f890e89 100644
+> index 04ba4c4565d0a205e2e46d7535c6a3190993621d..5ebc380a24df86ba7172b0950=
+b89cac56b61c507 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
 > +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> @@ -468,7 +468,7 @@ &mipi_dsi {
+> @@ -479,7 +479,7 @@ mipi_out_panel: endpoint {
+>  	};
 > =20
->  	ports {
->  		mipi_out: port@1 {
-> -			#address-cells =3D <0>;
-> +			#address-cells =3D <1>;
->  			#size-cells =3D <0>;
->  			reg =3D <1>;
-> =20
+>  	panel@0 {
+> -		compatible =3D "hannstar,hsd060bhw4";
+> +		compatible =3D "hannstar,hsd060bhw4", "himax,hx8394";
+>  		reg =3D <0>;
+>  		backlight =3D <&backlight>;
+>  		reset-gpios =3D <&gpio4 RK_PD1 GPIO_ACTIVE_LOW>;
 
-In rk3399-base.dtsi there is already a definition for mipi-in and
-mipi-out. AFAICT what this change does is require a reg property on the
-endpoint and I don't think that's correct.
+Reviewed-by: Diederik de Haas <didi.debian@cknow.org>
 
-It seems to me that all you need is a mipi_out_panel definition.
-So what I came up with is this:
-
-```sh
-$ git diff
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/a=
-rm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-index 04ba4c4565d0..b175aeed99e2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-@@ -466,18 +466,6 @@ &mipi_dsi {
- 	status =3D "okay";
- 	clock-master;
-
--	ports {
--		mipi_out: port@1 {
--			#address-cells =3D <0>;
--			#size-cells =3D <0>;
--			reg =3D <1>;
--
--			mipi_out_panel: endpoint {
--				remote-endpoint =3D <&mipi_in_panel>;
--			};
--		};
--	};
--
- 	panel@0 {
- 		compatible =3D "hannstar,hsd060bhw4";
- 		reg =3D <0>;
-@@ -495,6 +483,12 @@ mipi_in_panel: endpoint {
- 	};
- };
-
-+&mipi_out {
-+	mipi_out_panel: endpoint {
-+		remote-endpoint =3D <&mipi_in_panel>;
-+	};
-+};
-+
- &pmu_io_domains {
- 	pmu1830-supply =3D <&vcc_1v8>;
- 	status =3D "okay";
-```
-
-I don't have a PPP so I can't verify it, but ``make CHECK_DTBS=3Dy W=3D1
-rockchip/rk3399-pinephone-pro.dtb`` no longer reports issues wrt
-dsi@ff960000 (after I also fixed the panel compatible like in patch 1
-and added a LCD1_RST pinctrl definition as indicated in my reply to
-patch 3).
+But I'd actually suggest to combine it with patch 3 and use that
+opportunity to also fix the property sorting, so you'd get 1 patch which
+fixes all of the panel issues.
 
 Cheers,
   Diederik
 
---bf878dc077ebb1f1135359669f74c117a74de9e39e80d44933d5744a26aa
+--9dfd3ed0cdf1941689833775b5493883736f568288baa81c052167a40120
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaFLENQAKCRDXblvOeH7b
-bv7jAP92BoaEAnzcznQlnluIJ5X4iWpd/HlBmdpadX6RnGY14wEAjkopAG+tNdwu
-6H5yPB7qZUbPv1znf4zQjUKT3EQO3AM=
-=DH21
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaFLFJQAKCRDXblvOeH7b
+btb2AQCP2M61/SnTc3rFJb6VZ5pU6CwVut533jHFQU+h+sbrNwEAqNoB84+3F5h/
+FBJ6x+MXFLlxBAsVt7NKd1cgWc86cAo=
+=S//c
 -----END PGP SIGNATURE-----
 
---bf878dc077ebb1f1135359669f74c117a74de9e39e80d44933d5744a26aa--
+--9dfd3ed0cdf1941689833775b5493883736f568288baa81c052167a40120--
 
 
---===============2623545169613849178==
+--===============2960381011471044897==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -206,5 +143,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============2623545169613849178==--
+--===============2960381011471044897==--
 
