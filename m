@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39F97C71157
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9004C7115D
 	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 19:11:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nuU6elCm7UKSgenwhfV9Bok6CL0de8FL04sAkgEhAkQ=; b=THP1QJtKrdrT1Z
-	SVzzmtfIEFIA+YcAfqBXUdwBVIY1RlrX3jWsOrIRYklXPiEs534EnrYxfbjKubhVeRorQ6xSvC47f
-	ovsNzyyVcPvVsVeH86uMh3nPx8iHBqeY50g0rfCXH15Ib74qbvcNnIStpOQqGVlomUblTROUDdwph
-	WIMPjXvl3OqPezd7zyHh5gdmK5Pu4QmxPeq1Ik7GHRPEWWod47Q/vaR0s2z8+3IH8cqFoDsCUJsEE
-	uX0YNMUawXR1wFhQdFmMruLENzLDCeNeCMxNeGcMjk66dgyuglde1ywLggLOZjY7IfnFoBu2VMaY0
-	coefh4irSbZB57ff06vw==;
+	List-Owner; bh=kwfRt02cxwmXStaXm6vKq0HM9BpHQmQBE2rojNVsAS4=; b=VEDwsbkKFfaJdx
+	erAt37awvYNt9JhFzJeXH76zFj191qtI1PhqpTMbF5/3T5FBTjTAIs0pAVgSP5U0rtJWeyPcJozN1
+	23S+CNq7XcQs2/8PmmlQH7saswrA6NQ4F47+O7EaKn6s0yJgnGiIi9nniXcpsdJ/z9eiaEaTEOGuG
+	GDIVVzH+3fJv3EXcsEKQcWs4kGIN0uVpfMDFrfD7Z+mcJ1/Q/DmbMsiCWldi5cI45tAPiD5pnhnra
+	b4sz64FgzRY/FXDpNSHIfJ9Yy/T02emJuQow/tUdF2nqfEOopr9w9MH9XAOrvJYMos6N5FdoTeTNu
+	juhWFD3LZrchgv2/yQBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRyBy-0000000B9Nx-0waB;
-	Wed, 18 Jun 2025 19:11:26 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uRyBz-0000000B9P6-2Ilq;
+	Wed, 18 Jun 2025 19:11:27 +0000
+Received: from relay2-d.mail.gandi.net ([217.70.183.194])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRtTt-0000000AOT6-3OaV;
-	Wed, 18 Jun 2025 14:09:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750255776;
-	bh=keF4qtNzrgMOTjYFNPm6e0DVoWKRm4eaIoCysbWwg0I=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GOjyIbuKXih008ST9b1XsYdBxBz0K1uPl3kiY+oxxU6PHfh8w4xrLOCHpzxBkILTf
-	 Nx+5e8gYQZDa6YkHn1z2dWmULH2JHeVtllgoM0/S+27EDnyIj6o8qILOhU0VnuSGx9
-	 hyshYy4saA5/ak9Zcx5B7nCMIW7+hRf951YFEGCOAENenX4liiPl7hgTZPVmu5J4cK
-	 ll6jDan2SwjZ0+3Qhs1X7Vur04fjIt0S9NY5yIu4vR+yh6XKbj2R5BtSeVw0do0xEV
-	 FyDXIX8BeCFx9qymjJn4eW9j8QPxfuo9h8OZ7O08rUDlh6QXgDWHgwVYBQCjIO8CTm
-	 ygQPL3A+Lyd7A==
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:45c6:994a:f902:5c74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BE43417E1580;
-	Wed, 18 Jun 2025 16:09:35 +0200 (CEST)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	nicolas.dufresne@collabora.com,
-	jgg@ziepe.ca
-Cc: iommu@lists.linux.dev,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v2 5/5] arm64: defconfig: enable Verisilicon IOMMU
-Date: Wed, 18 Jun 2025 16:09:14 +0200
-Message-ID: <20250618140923.97693-6-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250618140923.97693-1-benjamin.gaignard@collabora.com>
-References: <20250618140923.97693-1-benjamin.gaignard@collabora.com>
+	id 1uRtW7-0000000AOkK-23Vk;
+	Wed, 18 Jun 2025 14:11:57 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 2463F43137;
+	Wed, 18 Jun 2025 14:11:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1750255912;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vXF18F4sgIg2jD9ptU1LZHnjRdgQrEW5rmy82LsXF4s=;
+	b=QBSZx0pj5qIxdvnIs5yPuGcY31Ww95QxRTZz5xQ6MvKFyBxJperJouMSpwrLPbXqLnuhFJ
+	yG6Gg95xudBvhnqiDZKbePaRxdU1sQ5xN+tZ7KhJLpwFYT7rXZ5pCdVp2xoKxQGIWbx29a
+	eFK7ji7esOMZDrd92Wj3SuAHjnhL5A1ToFm6eWB2Gyr1ZphaXt5fObdUSS16Jkb3bsTdZu
+	yUM/WpmdN8bnEFXtnrs2i1BBGxO2f7jZY7PlG2q52efBmEBLYDb2Kcbweb26dvPOQThzGH
+	BKONq2bU5FXVly8SXPTW55P9354qyGQELcTETFod+XvGWpHuISxvLBQvHKXtiQ==
+Message-ID: <865fc263-b3c6-470a-9fb8-3d6df51a2b74@bootlin.com>
+Date: Wed, 18 Jun 2025 16:11:49 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Fix the panel compatible for
+ the PinePhone Pro
+To: Diederik de Haas <didi.debian@cknow.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250618-dtb_fixes-v1-0-e54797ad2eba@bootlin.com>
+ <20250618-dtb_fixes-v1-1-e54797ad2eba@bootlin.com>
+ <DAPPKP3OWLMU.C6HXTY24NZ4H@cknow.org>
+Content-Language: en-US
+From: Olivier Benjamin <olivier.benjamin@bootlin.com>
+In-Reply-To: <DAPPKP3OWLMU.C6HXTY24NZ4H@cknow.org>
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddvgddvkeehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfesthejredttddvjeenucfhrhhomhepqfhlihhvihgvrhcuuegvnhhjrghmihhnuceoohhlihhvihgvrhdrsggvnhhjrghmihhnsegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpedvheejtdeifeejvedvffdtuddtheehtdelvdehvefgjeetveejfeeiveduvdejteenucffohhmrghinhepsghoohhtlhhinhdrtghomhenucfkphepvdgrtddumegvfeegmegvtgefkeemvdegvgdtmehfhegtvgemfhefgedvmeeiheekjeemfheiheeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegvfeegmegvtgefkeemvdegvgdtmehfhegtvgemfhefgedvmeeiheekjeemfheiheeipdhhvghloheplgfkrfggieemvdgrtddumegvfeegmegvtgefkeemvdegvgdtmehfhegtvgemfhefgedvmeeiheekjeemfheiheeingdpmhgrihhlfhhrohhmpeholhhivhhivghrrdgsvghnjhgrmhhinhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepuddtpdhrtghpthhtohepughiughirdguvggsihgrnhestghknhhofidrohhrghdprhgtphhtthhop
+ ehrohgshheskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepkhhriihkodgutheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheptghonhhorhdoughtsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehhvghikhhosehsnhhtvggthhdruggvpdhrtghpthhtohepthhhohhmrghsrdhpvghtrgiiiihonhhisegsohhothhlihhnrdgtohhmpdhrtghpthhtohepuggvvhhitggvthhrvggvsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidqrghrmhdqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhg
+X-GND-Sasl: olivier.benjamin@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_070937_991851_0E04DD84 
-X-CRM114-Status: UNSURE (   7.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250618_071155_992753_C26E56DE 
+X-CRM114-Status: GOOD (  17.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,32 +77,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable Verisilicon IOMMU used by RK3588 AV1 hardware codec.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 897fc686e6a9..ad1515f69b4f 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -1451,6 +1451,7 @@ CONFIG_ARM_SMMU=y
- CONFIG_ARM_SMMU_V3=y
- CONFIG_MTK_IOMMU=y
- CONFIG_QCOM_IOMMU=y
-+CONFIG_VSI_IOMMU=y
- CONFIG_REMOTEPROC=y
- CONFIG_IMX_REMOTEPROC=y
- CONFIG_MTK_SCP=m
+On 6/18/25 15:54, Diederik de Haas wrote:
+> On Wed Jun 18, 2025 at 12:32 AM CEST, Olivier Benjamin wrote:
+>> As documented in its bindings, the compatible for the Himax HX8394
+>> MIPI-DSI LCD panel controller is in 2 parts.
+>> The PinePhone Pro DTS currently only specifies the first part of the
+>> compatible, generating a warning.
+>>
+>> Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
+>> ---
+>>   arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+>> index 04ba4c4565d0a205e2e46d7535c6a3190993621d..5ebc380a24df86ba7172b0950b89cac56b61c507 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+>> @@ -479,7 +479,7 @@ mipi_out_panel: endpoint {
+>>   	};
+>>   
+>>   	panel@0 {
+>> -		compatible = "hannstar,hsd060bhw4";
+>> +		compatible = "hannstar,hsd060bhw4", "himax,hx8394";
+>>   		reg = <0>;
+>>   		backlight = <&backlight>;
+>>   		reset-gpios = <&gpio4 RK_PD1 GPIO_ACTIVE_LOW>;
+> 
+> Reviewed-by: Diederik de Haas <didi.debian@cknow.org>
+> 
+Thanks for the review.
+> But I'd actually suggest to combine it with patch 3 and use that
+> opportunity to also fix the property sorting, so you'd get 1 patch which
+> fixes all of the panel issues.
+> 
+Makes sense, I'll integrate your suggestions from the other 2 patches, 
+fix the property sorting, and squash the fixes into 1 commit/patch in v2.
+> Cheers,
+>    Diederik
+
 -- 
-2.43.0
+Olivier Benjamin, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 
 _______________________________________________
