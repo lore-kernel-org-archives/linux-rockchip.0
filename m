@@ -4,82 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6044C71157
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 14:03:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD447C71157
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 14:31:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C2SpEdKxSTyotS0xvM8VRSOQ5qM/NYugm2ovhgs+uNI=; b=p00SUCz0CbIL0W
-	K/cnl23UInkxj/8jI7WecL1ujIQiAfGoEt5YRLPnxRi2kPMJ4jhp9vc+32eZpryZKz3d4+SL/ab20
-	/6FRDmdbUALaYzJSOARhGyH6moOKxXsocYPrZGVHU13lGrumoZ/b9rYl11VpAsZZnfsvwetb/OZbt
-	370zIYddfAx7dryKVoqICirwQ1Be5UZBPAoNai9fcyVToY63L1V+p96Mnl8aA2pDkzmXEY7wQIqF1
-	Oko+YLhY50ZrU3rqEMEtsQhcnxGKvCJw6+xonRQ1XoRzpxzJdCMt40rXl+TOPFQqw7ChAhMlBkRQl
-	rWpB3rFL5R2Lsjf8YYeg==;
+	List-Owner; bh=4aZ6L8CSPoX0Yhm1kOSo6J+Cfu5UI3LA7HzyOey8ghs=; b=eFZ1crYATbGQfA
+	HIbYF6dAS3bhdSuWUDfD2Agm9x28Asa+KMa2Lrtr1nuZFokhDm5FhWVwcGsGcZvl+NmonLet7+oFm
+	FK5GqhTiotFk7LSWL6E/p+5Aw3x6/uY7mNY+uWjngsse39TSjDL6ZKuUBANKylrkQejkn77y2Onmg
+	I4O2aVXRLhuhwK88ra140eYEskL2eJ2eVadcTjss+jW1Y/80qWaE6BQHAanCnNWjfmFmcrZf0jinq
+	8R239I4ssBlJHC06D1978kJVFPJx4PZAV7sy2uPPqeQszG1Eg5ApaluUtlZNK3QYZpv40WnHr/O6s
+	7lwIab+Ch8fUSi3CxtQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRtNn-0000000ANsO-2MV5;
-	Wed, 18 Jun 2025 14:03:19 +0000
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+	id 1uRtpP-0000000ARKW-41Cf;
+	Wed, 18 Jun 2025 14:31:51 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRsLa-0000000ACUv-0JX6
-	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Jun 2025 12:56:59 +0000
-Received: by mail-yb1-xb35.google.com with SMTP id 3f1490d57ef6-e82596e88c4so2906449276.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Jun 2025 05:56:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750251417; x=1750856217; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=6Jfv7W89jcyNI5g8maM5e0NmglDrqdzJne5yo5vZPXg=;
-        b=jYaE/YPIhxbnwMGatatjUQ7wr7u2CUW586Frod6eE0+HRhTL98Bk14u51USZCI+Htc
-         SW1dEH97lWHC9TePqPouIeutFDgvAme0HKULSeLTm81DcKbnDJ85aZv9WWB5Pm5jsRor
-         DKqwZ9WhW8lVFsmqeXMChuRxE8F7gZH+cUGAPI5iIOYGrAhjAL1Xmwlm4+PQLLZNcd+I
-         xWc+FxfwRaITvqoRv9u7BiLijZkeGenk7tP9MRgeabdpSQz3X+LbdZXq6fIaAP29ew8+
-         6QCS/yWJ6proR13l7yBytmLKONnr5WrXJSsUoz1EATrJrIS3AM5Yu+NFLz4IjRUGOuU8
-         MTSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750251417; x=1750856217;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=6Jfv7W89jcyNI5g8maM5e0NmglDrqdzJne5yo5vZPXg=;
-        b=ntEXVrk6gM0FLkrbIp0fA78q887C3m4A9WhgL1n28LXSHrxo5wjuaTJYupoVKC2Nua
-         C6TpFedGX7y5CnwRZ39hSOrJbJZNcQCVMGkhwp4FJ8EA30JkopR2NLSONagzMuPkRnc8
-         IAN/c1AHiJyvgwlV8S6ZW62xxEMDheXh+xHQwwv8uyDMCrufLfjA+W2lsHmt1LMcGlW8
-         0VEsFF6AasxHUjNRr24S6LaY6vPi41C1hPAuOTn9qRvj5pyf5QFnuzo/dfowP5u93ii4
-         0z1jZdwv8VdGBlb7fj3pxdXjL+GkSyl0HKqmkxAkYXLGkfNtSfd7uO2LPOmthB8hG79E
-         N49w==
-X-Forwarded-Encrypted: i=1; AJvYcCWekWVgXq/DPrEQ+dQ8Q1vt+uM12m5/SUkgI4stQ75ObFeUUsuku/Vs8fj07fW0BHs9eKWWU6cQErUTTTUiNg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxlXqoRcYpU7wauToXaOxhIhO2o52kbnYceq1V2CfOnybG2Dakt
-	odnm+T/y/cz2Ck0TFUHuJVd64GrnxjIwBZzMBH0qBFIeKmcNzR7nqn1wqnhAK5EnrWZmWFC3ic/
-	AyjhknOWjh1XpmkHU3K4H2fMBnCbG97K8s1rn02RDzQ==
-X-Gm-Gg: ASbGncvR7x6sSiDSYhcFAQ4MDKq59wziggBpqUgMyNJGx9zwcSpR/JQ4S4tZxy3R/vs
-	smk8aKqmQ7AsMpUQWlP7P92+SCnKhBjtTbcFx5jGn+j6vZM4RKx6S3V3xsOXUWU9HtX2DH+hQzS
-	Ne/nOY+RLNLu2NbD4qaQqzXHLBP3ad6u5ymQEJHQTQyw4=
-X-Google-Smtp-Source: AGHT+IEF7aSd2gChdpDkWFgFxP4fyCJRIi/0rOPMDF7EBy8fifK6rpldismzyPaU5FnMtFjQSC8V5hmVyzcxyRjq81Y=
-X-Received: by 2002:a05:6902:a06:b0:e81:2740:2d96 with SMTP id
- 3f1490d57ef6-e822acc6cc8mr22162870276.17.1750251416986; Wed, 18 Jun 2025
- 05:56:56 -0700 (PDT)
+	id 1uRrnf-0000000A6UO-1luG;
+	Wed, 18 Jun 2025 12:21:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1750249313;
+	bh=Ih5zjiRGwMAvZQPX9KEr/plji2ng+jsO/q4Yt/O5IRU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ohlgtAWT7yjpPcE/xEv1XBO2m6bmo3mg0DJxG6HAaeNer6gFJzTrUtR24807KK1L9
+	 RGxCKVMFvq+n8MX8gL+l/JQjRrsco0O1EuykFJ6hnvegjFKVcGzTBnucvh4p+w5Tj6
+	 LLw2EUydJU/Mu0tdsHjfRUcujDaGZk7L39eit/oeNYZDqDWkqy39t3qzuoj5Y507yL
+	 6VHI6/U44lBH0Vh5YmmqbBsBzRTbZ+8YLLXmaY6Ll7K/12zENr0WcM2yHOqP6HeE5R
+	 6Las4LiVbTzVkZzTZ3lvuB9kFCQRKppNfNcXFwKtngTRXlqAVkEMS2qUHqNSj1ftxY
+	 w9GQZiHKvbvHQ==
+Received: from [10.40.0.100] (185-251-200-162.lampert.tv [185.251.200.162])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3C17D17E0CEE;
+	Wed, 18 Jun 2025 14:21:52 +0200 (CEST)
+Message-ID: <5d3418a3-70f5-46d8-a538-72e6958d5d02@collabora.com>
+Date: Wed, 18 Jun 2025 14:21:51 +0200
 MIME-Version: 1.0
-References: <20250518220707.669515-1-jonas@kwiboo.se>
-In-Reply-To: <20250518220707.669515-1-jonas@kwiboo.se>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Wed, 18 Jun 2025 14:56:21 +0200
-X-Gm-Features: AX0GCFurdlTWKY938doCIooXAEmUu9ZI2vYDArR38Vi5OuNwlGZr8B4vigPCwUY
-Message-ID: <CAPDyKFrtp7MHMuXhhYm7c8TY9u5DoGV89x4d__gYLQSNU48voA@mail.gmail.com>
-Subject: Re: [PATCH 0/9] rockchip: Add power controller support for RK3528
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>, 
-	Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org, 
-	linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 06/13] media: rockchip: add a driver for the rockchip
+ camera interface
+To: Mehdi Djait <mehdi.djait@linux.intel.com>
+Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
+ =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Gerald Loacker <gerald.loacker@wolfvision.net>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Markus Elfring <Markus.Elfring@web.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Paul Kocialkowski <paulk@sys-base.io>,
+ Alexander Shiyan <eagle.alexander923@gmail.com>,
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Mehdi Djait <mehdi.djait@bootlin.com>
+References: <20240220-rk3568-vicap-v8-0-9d9cbc4b524d@collabora.com>
+ <20240220-rk3568-vicap-v8-6-9d9cbc4b524d@collabora.com>
+ <656zxutvwytnd5i5l3nknni47r3wofmmwtxycleekjtrkbgfeo@xm7xbzirh3ce>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <656zxutvwytnd5i5l3nknni47r3wofmmwtxycleekjtrkbgfeo@xm7xbzirh3ce>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_055658_117055_B52374E8 
-X-CRM114-Status: GOOD (  19.44  )
+X-CRM114-CacheID: sfid-20250618_052155_642863_0009ACC8 
+X-CRM114-Status: GOOD (  23.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,74 +97,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 19 May 2025 at 00:07, Jonas Karlman <jonas@kwiboo.se> wrote:
->
-> The Rockchip RK3528 support multiple power domains, one PD_GPU that can
-> fully be powered down, and other that can be idle requested.
->
-> Vendor kernel flag all power domains on RK3528 as always-on, this takes
-> a different route and instead tries to describe all devices power-domain
-> in the device tree, even for controllers with unsupported runtime status.
->
-> The PD_RKVDEC is used by RKVDEC and DDRPHY CRU, and is kept disabled to
-> prevent a full system reset when trying to read current rate of the
-> SCMI_CLK_DDR clock.
->
-> Patch 1-4 prepares and makes it possible to use the PD_GPU power domain
-> for a separate "Add GPU support for RK3528" series.
->
-> Patch 7-9 updates dt-bindings for controllers not supporting use of the
-> power-domains prop and enables the PD_RKVENC, PD_VO and PD_VPU domains.
->
-> pm_genpd_summary on a Radxa E20C after this:
->
->   domain                          status          children        performance
->       /device                         runtime status                  managed by
->   ------------------------------------------------------------------------------
->   vpu                             on                              0
->       ffaf0000.gpio                   unsupported                 0           SW
->       ffb10000.gpio                   unsupported                 0           SW
->       ffbe0000.ethernet               active                      0           SW
->       ffae0000.adc                    unsupported                 0           SW
->       ffbf0000.mmc                    suspended                   0           SW
->   vo                              on                              0
->       ffb00000.gpio                   unsupported                 0           SW
->       ffc30000.mmc                    suspended                   0           SW
->   venc                            on                              0
->       ffb20000.gpio                   unsupported                 0           SW
->       ffa58000.i2c                    unsupported                 0           SW
->   gpu                             off-0                           0
->       ff700000.gpu                    suspended                   0           SW
->
-> Jonas Karlman (9):
->   dt-bindings: power: rockchip: Add support for RK3528
->   pmdomain: rockchip: Add support for RK3528
->   dt-bindings: rockchip: pmu: Add compatible for RK3528
->   arm64: dts: rockchip: Add power controller for RK3528
->   dt-bindings: mmc: sdhci-of-dwcmhsc: Allow use of a power-domain
->   dt-bindings: gpio: rockchip: Allow use of a power-domain
->   dt-bindings: i2c: i2c-rk3x: Allow use of a power-domain
->   dt-bindings: iio: adc: rockchip-saradc: Allow use of a power-domain
->   arm64: dts: rockchip: Enable more power domains for RK3528
->
->  .../devicetree/bindings/arm/rockchip/pmu.yaml |  2 +
->  .../bindings/gpio/rockchip,gpio-bank.yaml     |  3 +
->  .../devicetree/bindings/i2c/i2c-rk3x.yaml     |  3 +
->  .../bindings/iio/adc/rockchip-saradc.yaml     |  3 +
->  .../bindings/mmc/snps,dwcmshc-sdhci.yaml      |  4 -
->  .../power/rockchip,power-controller.yaml      |  1 +
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 87 +++++++++++++++++++
->  drivers/pmdomain/rockchip/pm-domains.c        | 27 ++++++
->  .../dt-bindings/power/rockchip,rk3528-power.h | 19 ++++
->  9 files changed, 145 insertions(+), 4 deletions(-)
->  create mode 100644 include/dt-bindings/power/rockchip,rk3528-power.h
->
+Hi Mehdi,
 
-Patch 1->3 applied for next, thanks! Note that patch1 and patch 3 are
-also available on the immutable dt branch.
+On 6/13/25 14:33, Mehdi Djait wrote:
+> Hi Michael,
+> 
+> [...]
 
-Kind regards
-Uffe
+Let's cut the long story short, shall we :-)
+
+>> +static void rkcif_stream_fill_format(struct rkcif_stream *stream,
+>> +				     struct v4l2_pix_format_mplane *pix)
+>> +{
+>> +	const struct rkcif_output_fmt *fmt;
+>> +	u32 height, width;
+>> +
+>> +	fmt = rkcif_stream_find_output_fmt(stream, true, pix->pixelformat);
+>> +	height = clamp_t(u32, pix->height, CIF_MIN_HEIGHT, CIF_MAX_HEIGHT);
+>> +	width = clamp_t(u32, pix->width, CIF_MIN_WIDTH, CIF_MAX_WIDTH);
+>> +	v4l2_fill_pixfmt_mp(pix, fmt->fourcc, width, height);
+> 
+> The rkcif supports the SRGGB10P: the packed version of the SRGGB10.
+> 
+> When you try to capture with SRGGB10P, the following fails in
+> v4l2_fill_pixfmt_mp()
+> 
+> 	info = v4l2_format_info(pixelformat);
+> 	if (!info)
+> 		return -EINVAL;
+> 
+> The return value is not checked in rkcif_stream_fill_format() resulting
+> in a call to queue_setup returning with sizes[0] = 0
+
+Thanks for pointing that out. I failed to realize that this helper
+function may return an error. What I can do is to implement the error
+propagation correctly. Of course this will only avoid the kernel
+warning, you still won't be able to stream.
+
+> This will cause a kernel Warning in the vb2_core_reqbufs() because
+> plane_size = 0
+> 
+> Exactly here:
+> 
+> 	for (i = 0; i < num_planes; i++)
+> 		if (WARN_ON(!plane_sizes[i])) {
+> 			ret = -EINVAL;
+> 			goto error;
+> 		}
+> 
+> I still don't have the solution here but wanted to let you know about
+> it.
+
+I only had a quick look at it, but apparently the compact formats are
+missing in the format list here:
+https://elixir.bootlin.com/linux/v6.16-rc2/source/drivers/media/v4l2-core/v4l2-common.c#L244
+for whatever reason.
+
+Have you by chance tried adding a line like
+{
+	.format = V4L2_PIX_FMT_SRGGB10P,
+	.pixel_enc = V4L2_PIXEL_ENC_BAYER,
+	.mem_planes = 1,
+	.comp_planes = 1,
+	.bpp = { 5, 0, 0, 0 },
+	.bpp_div = { 4, 1, 1, 1 },
+	.hdiv = 1,
+	.vdiv = 1,
+}
+?
+
+
+Maybe we can fix this, but please note that this issue should not block
+merging this patch series.
+
+Best regards,
+Michael
 
 _______________________________________________
 Linux-rockchip mailing list
