@@ -4,81 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E83DC7115C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 05:04:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E56B6C7115B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 06:24:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v75vtNoBkpoXueLQ3I/2IgYe9JYeifOa8uWbQwT0z/U=; b=y+E51bPee+ZYwp
-	wz2vYwJqUXrb4RmL/ATU5BKfYsttKOokbohwBP2a5VOlCTg53nKtmROapHoBgaiBnEhC93Wdtpsby
-	UrqpUeYvY5/TYJlkBTDqGX9lvhGbdMkGTHcemQ46Vu1GuQV2saM5PZpPit57OogmAkk1MU1Ni0aDo
-	z7S4iPmAqxNH00OLYdH2yA1z4bmL67S8u9Iv+a316NjhRDWmA1UhOk1vTXQpnzACv3StSmBtbmpkP
-	ytg1ixQc89rJ+1KKlfA4kl7LlkL/lpVu+9pXSh1meMArYikfhMSyXdKq4KNUU3/AtmVDE3Utm1x6X
-	WCpJ+InPYWsD4FrPMO/g==;
+	List-Owner; bh=lrt8fXSSOxxq0btj9933jifqscp9U28oPcld61Cdo6I=; b=SEkOZBCQcfkepL
+	eBeFzhxm+OigvueLdPxxgvEip2ZIxkIDaV9eyqmapRNJDQU8vTlplG+pDSPtCmV/nx1nKAwPdT7TM
+	xaN2aSAONeQvjchqguJz7qdp7uy8wq8NM6gHsHDX83P5BzJ2swVdcs6Y+oNNhWdKZ842d1SvtVZFv
+	12RPwkJz071P3pjIU1WwjS/cu7IT/vCMnKBi2gID/pn43QVyvLrpDWJQFEQdPo1ndjBD8ySsAz4mE
+	vf40H4qhuwWh5NEXsB+bhimO+Irr7+fCDd6vQxSoSZj/itzgAym8gYvK9AWgH2R5wQMVYIBwm7W2b
+	8crz0ajMpNKzeQqIf1bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRkxq-000000094Ah-2BGV;
-	Wed, 18 Jun 2025 05:03:58 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1uRmDD-00000009ADz-2gqX;
+	Wed, 18 Jun 2025 06:23:55 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRkoE-000000093Hl-1xc1;
-	Wed, 18 Jun 2025 04:54:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1750222442; x=1781758442;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=DEKlm+ejo/0mzszOUsL53ctVVQ1j4m3qewxhIFLcv0M=;
-  b=MvRQD13m/2GjqaQ3PLufxQ//8XWD9ExvXLL4pOFXwZkQEcnyOK/cBiLW
-   D+Ate2EILgRIlfcGYMMsceD7+tTlsyzdCMcqQ3/sSWcChNnNTd4VQ84g0
-   ObkuG84q+EIBSINWgyR5j+Ty6pTEqcQTk77BBl17uF4jXBxkRTYQnYCYm
-   7gN0bG4Lai45SBffVMh6BLamaSp074blXFhfmyKBzj5anSsx8eSRl9T1x
-   5OOyYjLFA1bZl2ZtxmcsfH+dnaDuXnwk+gI1tkAtyn4SAa6YZZrCdH+t2
-   m8FDncTP9f8+h6aHsP64LkKnNitNMA8zcdGffWb6jbBBVxdinvbUvDWv+
-   g==;
-X-CSE-ConnectionGUID: SRnprPrdTfKJgOCkU+rYMA==
-X-CSE-MsgGUID: UaHuGxFtSE2JsOas2mT+pg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11467"; a="63460460"
-X-IronPort-AV: E=Sophos;i="6.16,245,1744095600"; 
-   d="scan'208";a="63460460"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jun 2025 21:54:01 -0700
-X-CSE-ConnectionGUID: IlMBVbuZTBeIdVORDtt5FA==
-X-CSE-MsgGUID: fyNBzSTZSCeodXZuqA5+kw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,245,1744095600"; 
-   d="scan'208";a="149026086"
-Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
-  by fmviesa007.fm.intel.com with ESMTP; 17 Jun 2025 21:53:57 -0700
-Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uRko7-000JPW-1J;
-	Wed, 18 Jun 2025 04:53:55 +0000
-Date: Wed, 18 Jun 2025 12:53:41 +0800
-From: kernel test robot <lkp@intel.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, joro@8bytes.org,
-	will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
-	nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
-	mchehab@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, iommu@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH 3/5] iommu: Add verisilicon IOMMU driver
-Message-ID: <202506181230.D53QwmdL-lkp@intel.com>
-References: <20250616145607.116639-4-benjamin.gaignard@collabora.com>
+	id 1uRmAy-00000009A1s-37C6;
+	Wed, 18 Jun 2025 06:21:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 51C614A883;
+	Wed, 18 Jun 2025 06:21:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78356C4CEE7;
+	Wed, 18 Jun 2025 06:21:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750227696;
+	bh=evww31BVMvnjI08mEOR/S1s5oLWOAOIFCw8pCnqB3PM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mwv+/rrJVkWuJiwGtBdp3PC22kQfxnzDTIWoNNg4/xze/bKjGKv/pZ7xE021GYqm7
+	 TzDbDzxgrX2YfhoGF0JTv2jQvJ5+NUO4RFXiF4hhololvmo0tvBM2SwSlyhDEifGdA
+	 hgHR2bpCraUL5Rg+WSKiPdU5VgzI0jaulkMguYe/LOzPmqD6RvfvJePp1x5arGPNNy
+	 +4OzbDlpE3zJ1rNCNlIH1z6ucaf9C80W4f1x1SPFZ5+fMOpa6RVIn7rkLyXCcEzdct
+	 8+DQ6HQiVlKGyMca/3cMd4FW0DyL0phnkbmEjCm9IHFnp0QhZswSaBE85+4FYhg+t8
+	 BGWwg+XcSnL5A==
+Message-ID: <a9baf6b0-b668-4d10-b9de-b63eb3fd8f23@kernel.org>
+Date: Wed, 18 Jun 2025 08:21:30 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250616145607.116639-4-benjamin.gaignard@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/4] dt-bindings: mfd: rk806: allow to customize PMIC
+ reset mode
+To: Quentin Schulz <quentin.schulz@cherry.de>,
+ Quentin Schulz <foss+kernel@0leil.net>
+References: <20250605-rk8xx-rst-fun-v2-0-143d190596dd@cherry.de>
+ <20250605-rk8xx-rst-fun-v2-1-143d190596dd@cherry.de>
+ <20250617-small-vivacious-labrador-7f0eb0@kuoka>
+ <b079fc14-8692-4521-bd81-fe2fca713f2f@cherry.de>
+ <704d75df-a484-4da3-9bcb-85b480e2ecf0@kernel.org>
+ <d262b45a-c0ed-4eff-86c6-e8bcfc005ddb@cherry.de>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <d262b45a-c0ed-4eff-86c6-e8bcfc005ddb@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_215402_545944_68F6C281 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20250617_232136_825989_9EBEECBF 
+X-CRM114-Status: GOOD (  31.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,45 +115,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Daniel Semkowicz <dse@thaumatec.com>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Lee Jones <lee@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Lukasz Czechowski <lukasz.czechowski@thaumatec.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
+On 17/06/2025 12:45, Quentin Schulz wrote:
+> On 6/17/25 12:21 PM, Krzysztof Kozlowski wrote:
+>> On 17/06/2025 11:38, Quentin Schulz wrote:
+>>> Hi Krzysztof,
+>>>
+>>> On 6/17/25 10:08 AM, Krzysztof Kozlowski wrote:
+>>>> On Thu, Jun 05, 2025 at 05:41:06PM GMT, Quentin Schulz wrote:
+>>>>> +  rockchip,reset-mode:
+>>>>> +    $ref: /schemas/types.yaml#/definitions/uint32
+>>>>> +    enum: [0, 1, 2]
+>>>>> +    description:
+>>>>> +      Mode to use when a reset of the PMIC is triggered.
+>>>>> +
+>>>>> +      The reset can be triggered either programmatically, via one of
+>>>>> +      the PWRCTRL pins (provided additional configuration) or
+>>>>> +      asserting RESETB pin low.
+>>>>> +
+>>>>> +      The following modes are supported (see also
+>>>>> +      include/dt-bindings/mfd/rockchip,rk8xx.h)
+>>>>> +
+>>>>> +      - 0 (RK806_RESTART) restart PMU,
+>>>>> +      - 1 (RK806_RESET) reset all power off reset registers and force
+>>>>> +        state to switch to ACTIVE mode,
+>>>>> +      - 2 (RK806_RESET_NOTIFY) same as RK806_RESET and also pull
+>>>>> +        RESETB pin down for 5ms,
+>>>>> +
+>>>>> +      For example, some hardware may require a full restart
+>>>>> +      (RK806_RESTART mode) in order to function properly as regulators
+>>>>> +      are shortly interrupted in this mode.
+>>>>> +
+>>>>
+>>>> This is fine, although now points to missing restart-handler schema and
+>>>> maybe this should be once made common property. But that's just
+>>>> digression, nothing needed here.
+>>>>
+>>>>>      vcc1-supply:
+>>>>>        description:
+>>>>>          The input supply for dcdc-reg1.
+>>>>> diff --git a/include/dt-bindings/mfd/rockchip,rk8xx.h b/include/dt-bindings/mfd/rockchip,rk8xx.h
+>>>>> new file mode 100644
+>>>>> index 0000000000000000000000000000000000000000..f058ed1ca661185f79738a358aa2d4f04539c590
+>>>>> --- /dev/null
+>>>>> +++ b/include/dt-bindings/mfd/rockchip,rk8xx.h
+>>>>> @@ -0,0 +1,17 @@
+>>>>> +/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
+>>>>> +/*
+>>>>> + * Device Tree defines for Rockchip RK8xx PMICs
+>>>>> + *
+>>>>> + * Copyright 2025 Cherry Embedded Solutions GmbH
+>>>>> + *
+>>>>> + * Author: Quentin Schulz <quentin.schulz@cherry.de>
+>>>>> + */
+>>>>> +
+>>>>> +#ifndef _DT_BINDINGS_MFD_ROCKCHIP_RK8XX_H
+>>>>> +#define _DT_BINDINGS_MFD_ROCKCHIP_RK8XX_H
+>>>>> +
+>>>>> +#define RK806_RESTART		0
+>>>>> +#define RK806_RESET		1
+>>>>> +#define RK806_RESET_NOTIFY	2
+>>>>
+>>>> I do not see how this is a binding. Where do you use this in the driver
+>>>> (to be a binding because otherwise you just add unused ABI)?
+>>>>
+>>>
+>>> Explained in the commit log of the driver patch:
+>>>
+>>> """
+>>> This adds the appropriate logic in the driver to parse the new
+>>> rockchip,reset-mode DT property to pass this information. It just
+>>> happens that the values in the binding match the values to write in the
+>>> bitfield so no mapping is necessary.
+>>> """
+>>>
+>>> I can add useless mapping in the driver if it's preferred. I had the
+>>
+>> No, I comment and raise questions when you add ABI which is neither ABI
+>> or should not be ABI.
+>>
+> 
+> Not sure what would make something part of the ABI or not. I would 
+> assume the value in the DT property to be ABI anyway so this is just 
+> another name for the same value no? Trying to understand this from your 
+> perspective.
 
-kernel test robot noticed the following build warnings:
+Drop the header, it's not an ABI. You just use register values. This is
+not a Linux ABI. The values are coming from the hardware.
 
-[auto build test WARNING on robh/for-next]
-[also build test WARNING on rockchip/for-next linus/master v6.16-rc2 next-20250617]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> 
+>>> impression that simply using a hardcoded value in the DT binding and
+>>> then writing it to the register was not desired, so the constant is now
+>>> here to make this less obscure from DT perspective though I'm still
+>>> writing the value directly in the register. If hardcoded values are ok
+>>> in the binding, then I can remove that header file.
+>>
+>> If you want something user readable, make it an enum string or keep the
+>> header within DTS.
+>>
+> 
+> Just to be sure I understood correctly, moving that file to e.g. 
+> arch/arm64/boot/dts/rockchip/rk806.h (or rk8xx.h or whatever) with the 
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/dt-bindings-vendor-prefixes-Add-Verisilicon/20250616-225842
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-patch link:    https://lore.kernel.org/r/20250616145607.116639-4-benjamin.gaignard%40collabora.com
-patch subject: [PATCH 3/5] iommu: Add verisilicon IOMMU driver
-config: arm64-randconfig-r111-20250618 (https://download.01.org/0day-ci/archive/20250618/202506181230.D53QwmdL-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 15.1.0
-reproduce: (https://download.01.org/0day-ci/archive/20250618/202506181230.D53QwmdL-lkp@intel.com/reproduce)
+Yes
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202506181230.D53QwmdL-lkp@intel.com/
+> file content unchanged from this v2 would be fine with you? Would I be 
+> able to point at this file from the DT binding (I assume not)?
 
-sparse warnings: (new ones prefixed by >>)
->> drivers/iommu/vsi-iommu.c:890:24: sparse: sparse: symbol 'rockchip_vsi_iommu_driver' was not declared. Should it be static?
+No, because it is not a binding.
 
-vim +/rockchip_vsi_iommu_driver +890 drivers/iommu/vsi-iommu.c
-
-   889	
- > 890	struct platform_driver rockchip_vsi_iommu_driver = {
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
