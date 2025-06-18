@@ -4,81 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAD03C7115B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 17:51:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74325C7115D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 18:02:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oENznUAXADUrXErxB7am1fGLSP9ryEgEi4s8+tOSELg=; b=Comldsv2jVRR2x3EY15eWX0DVx
-	FL5+/i1F75eoURxFOhYEfNaM/k45WK50sNyJCCSCSyEqb7mf0+FnhIO+q4vJIGE/Bk973LzH9uveH
-	JDtvHKi4er6LvBuD+ArjkHWLmDoN3IjqpqKx1RBwkww74RZ++Itf9E/trqf4p+dwjTHU7XBBnrIkw
-	TBKDk484mbvu/4PC/V3UKDK3RQ1dQvu7i8INsSIOPqKi0VywtAb3SjS9ZHcu6D1JHPVqwlA71rn3a
-	+lgBrRez3E4yisE/VYZ9k5XigCLUzqcGQsNhADZ+2yorx1RDersXh23UY5tZx4WlcZoTfAY+qQHQk
-	l6F61RXg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cubFN6mk+LxUIm4pGXz99hPk6wuNpK1vu0cIdlnog0A=; b=c7+EiA3w/Fxn17
+	tHfRjJdy57lB0QxPdVvuFJ1puIMXeK2s0aYkAMc06WcpmL8bJAuyhHulb0aFkiD6CnL/Do1sT6VgQ
+	P3jOQK0NSXn0sK0HZpYRnN6FL1bGE/KERslu/IyOss7JwqovTyQGJWbVRhmyJ5ssslrEbOP3ahvYC
+	fn1z+8CCVIr9mA8wMwqSpSE+vD636AylrHt2lf/om8pxe4mnirLTq3FNIoxKjd7ZO3Yp9mVWUDnP7
+	J4uQKYWv3aeoPAJT4F6rtoZHji+tKQVMMxZFJC8Sd75Tzyx2wDeGvYNlJhfvOXLfaxFoKdLw7pQCy
+	YsDCiLf7Mw9vj+5N36uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRwwt-0000000AwjL-2cu8;
-	Wed, 18 Jun 2025 17:51:47 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uRx6h-0000000B0jX-144V;
+	Wed, 18 Jun 2025 18:01:55 +0000
+Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRw3E-0000000AmS5-3QlD;
-	Wed, 18 Jun 2025 16:54:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:References:
-	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=kBiRr8MyVCDx2IHSe1QbON+d3OAAkqPRo1XDBFOzGA4=; b=qJzppYB9CFgAYESThj+icS2K8L
-	36qyLxGKKuXI2+iiUgpXEwv1KCC+28DRIkmBCjIfY+SWUtLP+XrwWJhavsXybM8l13aMzEmVgdpzt
-	PtCNeiPJaOrMnOdx8IO4iaYZ+UogvWKkkE1UfFGOhb+qSza2sNyWqzBxrdo+bYw2y+GSp5o+M9bL4
-	twrD5AKrvGb+9Hwd13JyuPhsZsUtsfBgiHZKIt7+Lv7BoZuKsiLVrKoECS+GCH5N3E4itdqpgBHum
-	OnafgyY/sHF5LOjFXul3bpDfVbC3NyG3vEoTkY4kUZbVKPz4RJna0Hb6rIBGztB9Omwk8wS3GlUtM
-	tEqBr3Mg==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRw39-00000004Cmn-2cFV;
-	Wed, 18 Jun 2025 16:54:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750265645;
-	bh=kBiRr8MyVCDx2IHSe1QbON+d3OAAkqPRo1XDBFOzGA4=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=AJfsT/wk398JAIgFfr5V6YyaDGkK8LzNxoxZts9xXcxdB8Gy2wod6/9/NvZ/LzwH+
-	 YhYF1FGUI6l/uuoiYVfR5uVLkigBmJFAnD7z1MVG0Ke0St9/ZOyxwe2TDZ0CR3cQXb
-	 2c7H1Z5zmy5LfpuVQ6sSqSRGgoJyyzcTGCwUr5axQ66KkvD7xm/88GhocP8cKQNM5b
-	 Huly3QLWcM5hsJ9Bp/6aknCsKYhf41oEn2SoSXXOkT3UnUERs+C2DdYBQ17ajjU+Se
-	 tHABZWkj+HeMuMa20MkSqiC10pNLswp5hXlA6/Q8l2EAfnGCCYWtCu+iJB+z2wcgLw
-	 FMxIs4rbA+w8Q==
-Received: from [IPv6:2606:6d00:17:b699::5ac] (unknown [IPv6:2606:6d00:17:b699::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9C48D17E06BF;
-	Wed, 18 Jun 2025 18:54:03 +0200 (CEST)
-Message-ID: <2f63c39a3b9f16c47dfe7f62338ef17839d1b286.camel@collabora.com>
-Subject: Re: [PATCH v2 2/5] dt-bindings: iommu: verisilicon: Add binding for
- VSI IOMMU
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Conor Dooley <conor@kernel.org>, Benjamin Gaignard
-	 <benjamin.gaignard@collabora.com>
+	id 1uRuEC-0000000AVlp-3G5S
+	for linux-rockchip@lists.infradead.org;
+	Wed, 18 Jun 2025 14:57:29 +0000
+Received: by mail-qk1-x72b.google.com with SMTP id af79cd13be357-7d3862646eeso428346585a.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Jun 2025 07:57:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ziepe.ca; s=google; t=1750258648; x=1750863448; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=nWuA5n/7XV52piKpzEtlj4+eRvGXTp7zsvMDV3q1c/g=;
+        b=fRIi+RUuAlTr55qnUST6K28RL559QqjaC3qKJontlZhXsSifrbY+2oAJ711aDq8Wvu
+         N7Y/Xf4vxLvrT7CjYIfLeKtdzB0Q/eon2HqsKOnL4ZvD1iL8hplsgvjerVF9LXlUju/s
+         tLVuDfPdOL2QskJXHYsxkca0cMAufvDDYJXe4B8/F8sr03JBv0zfT8H5S0RL0oFX/Fuc
+         jgq9MUncridmoe+qtQ95NCQS9y/h8ZI/AMekbRBToshDo8gUjBPg3GzZWcslrEIKPvLX
+         gGva54NI7UjplBvaSMQAywJh7TUoooEdaz9bdUfsnWYtURd05RZE724gl9ODja1jgaO+
+         Vxfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750258648; x=1750863448;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=nWuA5n/7XV52piKpzEtlj4+eRvGXTp7zsvMDV3q1c/g=;
+        b=qci4XthYjtRXSHaxh0+X2HMuR/gq8tM4d4Y5B81BZAFv4IUeHEPm+5iURStygT+Xip
+         OeWQw7uX1Q2WPCg0jiYKlE/AzfNsDY3vpL5X1Ev5cYUNRygERwGL5IaCI1fLveGK28c2
+         R7/P59Bb4xUp4R9go10YJmoA2wQd6y6CKaqui0GJoC/8QKBdewjXUIbyIBMOQZ9tu1HR
+         wV5GoS87GRJC/VkHEo3y4BVCFSe3jm5Gkdkv8l+kavxdty5h5sIwOS6USup25y84V+E0
+         xzWNAJ6D4xApVD8U8EDrxTYKALVcPT2a72jjLp+xMyMuHKu5Wy/3V1r0tbql9xqzeX18
+         3coQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUqYrOPgVY5IeumSOwhJR34QDKUhpTuY00MFSVuDReagN8ga1WUXxlHfwOyyXdtThqRkAf0oqidDOeWYYwYAQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzeiU3kLXJ28rt7JuSSxrT4EdZ8mrjElZqb/WfML7t0Z9HdZp9S
+	cms/SV9Bo6WplCMfxC8R2dlM3fIHaaOriwk36I56koVZ6wJOX4ktaEyN8+nF5mQ8bpI=
+X-Gm-Gg: ASbGnctvpepiYmZcR0DtPUX8/elJziJasxj5vgxAkxDn249NTQ/P8dhO96cY98U0l1B
+	9zOUsgWnQj0kWdQzOxUHsnE0h2IGN1844PuJPyKlusCu38WeFn9CJ/sRELVzqw8PKjUmtRt8mu7
+	k3jDc7afvrYHXhMc2sRh9ITdHecFOYnvxAer4nRo+fzAptHYl8vea7BM6dn63TTb9i2j1tYj3ti
+	xZl5zGPt43KxpGc7AdtuBe/VrGk+0U1kxHdrhUCl1dnlOjOcYcQq+OZdRb6ljkyFl8YQvXJGhFe
+	e6joqnMDVRvoJLTMkOHmXpt5gqvBfVG8VLQyeAMtSrTfF8PQgOyZjaKxMo2WFeDwhuPhy5niKHb
+	FPF50RUBE4svW1X5kdA47iVmT04XL2paNlUzlOQ==
+X-Google-Smtp-Source: AGHT+IEqAm8w07CYn9jssi0u9N9oTKmQEBd4zXaVvYiKXP4kVC2Pg2ZszP/NIklhkByTPLh6hrPUVw==
+X-Received: by 2002:a05:620a:2720:b0:7d3:8fd2:c0cd with SMTP id af79cd13be357-7d3c6d0c5e6mr2844239185a.56.1750258645240;
+        Wed, 18 Jun 2025 07:57:25 -0700 (PDT)
+Received: from ziepe.ca (hlfxns017vw-142-167-56-70.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.167.56.70])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7d3b8edf51fsm771719285a.93.2025.06.18.07.57.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Jun 2025 07:57:24 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.97)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1uRuE7-00000006osS-460H;
+	Wed, 18 Jun 2025 11:57:23 -0300
+Date: Wed, 18 Jun 2025 11:57:23 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
- 	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, jgg@ziepe.ca, 
-	iommu@lists.linux.dev, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, 	kernel@collabora.com
-Date: Wed, 18 Jun 2025 12:54:01 -0400
-In-Reply-To: <20250618-tighten-morphing-47953075b131@spud>
+	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+	nicolas.dufresne@collabora.com, iommu@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 3/5] iommu: Add verisilicon IOMMU driver
+Message-ID: <20250618145723.GR1376515@ziepe.ca>
 References: <20250618140923.97693-1-benjamin.gaignard@collabora.com>
-	 <20250618140923.97693-3-benjamin.gaignard@collabora.com>
-	 <20250618-tighten-morphing-47953075b131@spud>
-Organization: Collabora Canada
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+ <20250618140923.97693-4-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250618140923.97693-4-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_175411_861003_8F08CE3D 
-X-CRM114-Status: GOOD (  23.44  )
+X-CRM114-CacheID: sfid-20250618_075728_814763_FB654084 
+X-CRM114-Status: GOOD (  18.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,115 +102,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4389543594881013892=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed, Jun 18, 2025 at 04:09:12PM +0200, Benjamin Gaignard wrote:
+> +config VSI_IOMMU
+> +	bool "Verisilicon IOMMU Support"
+> +	depends on ARM64
+> +	select IOMMU_API
+> +	select ARM_DMA_USE_IOMMU
 
---===============4389543594881013892==
-Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-H4420/eJuZI3vRrv3ALH"
+ARM_DMA_USE_IOMMU is only used by ARM32, you don't need it if you
+depends on ARM64
 
+> +static void vsi_iommu_release_device(struct device *dev)
+> +{
+> +	struct vsi_iommu *iommu = dev_iommu_priv_get(dev);
+> +
+> +	device_link_remove(dev, iommu->dev);
+> +}
 
---=-H4420/eJuZI3vRrv3ALH
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This does not seem right, release is supposed to reprogram the HW to
+stop walking any page table.
 
-Le mercredi 18 juin 2025 =C3=A0 16:55 +0100, Conor Dooley a =C3=A9crit=C2=
-=A0:
-> On Wed, Jun 18, 2025 at 04:09:11PM +0200, Benjamin Gaignard wrote:
-> > Add a device tree binding for the Verisilicon (VSI) IOMMU.
-> > This IOMMU sits in front of hardware encoder and decoder
-> > blocks on SoCs using Verisilicon IP, such as the Rockchip RK3588.
-> >=20
-> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > ---
-> > changes in version 2:
-> > - Add a compatible "rockchip,rk3588-av1-iommu"
-> > - Fix clock-names in binding=20
-> > - Remove "vsi_mmu" label in binding example.
-> >=20
-> > =C2=A0.../bindings/iommu/verisilicon,iommu.yaml=C2=A0=C2=A0=C2=A0=C2=A0=
- | 72 +++++++++++++++++++
-> > =C2=A01 file changed, 72 insertions(+)
-> > =C2=A0create mode 100644 Documentation/devicetree/bindings/iommu/verisi=
-licon,iommu.yaml
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/iommu/verisilicon,iommu.=
-yaml
-> > b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
-> > new file mode 100644
-> > index 000000000000..9ae4a45d76f4
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
-> > @@ -0,0 +1,72 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/iommu/verisilicon,iommu.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Verisilicon IOMMU
-> > +
-> > +maintainers:
-> > +=C2=A0 - Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > +
-> > +description: |+
-> > +=C2=A0 A Versilicon iommu translates io virtual addresses to physical =
-addresses for
-> > +=C2=A0 its associated video decoder.
-> > +
-> > +properties:
-> > +=C2=A0 compatible:
-> > +=C2=A0=C2=A0=C2=A0 oneOf:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - enum:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - verisilicon,i=
-ommu
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - rockchip,rk35=
-88-av1-iommu
->=20
-> This isn't right. Firstly, the "oneOf: - enum" construct doesn't do
-> anything. oneOf one item is just the item. Secondly this still allows
-> verisilicon,iommu in isolation which is not okay. What you actually want
-> here is
-> items:
-> =C2=A0 - const: a
-> =C2=A0 - const: b
->=20
-> Thirdly, Nicolas mentioned that the version of this iommu is 1.2.0,
-> which I would like to see reflected in the compatible.
+You should implement a static blocked (or identity?) domain that idles
+the hardware and use that as the blocked and release_domain in the
+ops.
 
-I believe just 1.2 will be sufficient, the last number is the build number,
-the IP is interface is unchanged.
+The logic around vsi_iommu_detach_device() and
+vsi_iommu_attach_device() is also not quite right. The attach can
+happen while iommu->domain is already set and doesn't deal with
+removing the iommu from the old domain's list.
 
-Nicolas
+I would probably change vsi_iommu_enable() into vsi_iommu_set_paging()
+and then presumably vsi_iommu_disable() is vsi_iommu_set_blocking() ?
 
+vsi_iommu_detach_device() should be deleted and integrated into the
+blocked domain and attach error unwind.
 
---=-H4420/eJuZI3vRrv3ALH
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+> +static int vsi_iommu_of_xlate(struct device *dev,
+> +			      const struct of_phandle_args *args)
+> +{
+> +	struct platform_device *iommu_dev;
+> +
+> +	if (!dev_iommu_priv_get(dev)) {
+> +		iommu_dev = of_find_device_by_node(args->np);
+> +		if (WARN_ON(!iommu_dev))
+> +			return -EINVAL;
+> +
+> +		dev_iommu_priv_set(dev, platform_get_drvdata(iommu_dev));
+> +	}
 
------BEGIN PGP SIGNATURE-----
+The driver should ideally not be calling dev_iommu_priv_set/get here,
+and this leads the reference doesn't it? Do what ARM did to locate
+the iommu_dev.
 
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaFLvKQAKCRBxUwItrAao
-HEIBAJ4+fNWvctsbsGY2hG9WzLfQYcW51QCg2j4bOqlf9fdEsgEh4zPtrR8oLqc=
-=SlrU
------END PGP SIGNATURE-----
+I would also add a comment here:
 
---=-H4420/eJuZI3vRrv3ALH--
+> +static int vsi_iommu_map(struct iommu_domain *domain, unsigned long _iova,
+> +                        phys_addr_t paddr, size_t size, size_t count,
+> +                        int prot, gfp_t gfp, size_t *mapped)
+> +{
+> +       struct vsi_iommu_domain *vsi_domain = to_vsi_domain(domain);
+> +       unsigned long flags;
+> +       dma_addr_t pte_dma, iova = (dma_addr_t)_iova;
+> +       u32 *page_table, *pte_addr;
+> +       u32 dte, pte_index;
+> +       int ret;
 
+/*
+ * IOMMU drivers are not supposed to lock the page table, however this
+ * driver does not safely handle the cache flushing or table
+ * installation across concurrent threads so locking is used as a simple
+ * solution.
+ */
 
---===============4389543594881013892==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> +       spin_lock_irqsave(&vsi_domain->dt_lock, flags);
+
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4389543594881013892==--
-
