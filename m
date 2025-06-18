@@ -4,76 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86814C71157
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 17:20:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDD1AC7115E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 17:20:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FEPosr83TbyZT+kaFV3+loSIQnTqhHrnMa56QzJ7OBI=; b=XeQTugesOBSOb0N24d4rVF0Ifh
-	MnyhySA+k1kYtpi7uzEBoSPvmvX2FHL0IQ+5XLLfvC4j3QtBgZ7RupS80wpfToxmzecFotSw5DJLD
-	TVZ2tn3RNZ0t5tulRKicf7H1WatkctotH2Tf5SnIRZJyG7ZKbPFx7ldcHz10PQmrJksWodJTp1rmj
-	A3Osi68N5NtyLUR/XtkRbTBa2XgaRmQaUh2gC5SrORaIR5Mxa+FePqY9nBLaxkuVhVOWcG7R7+lDS
-	wDWfljT50rOEHkJUDCwGETseKv7d55jQ5/IQZaRLx4X9vmM2QC14X40cdgekKJ2vwCDXqcVuVcjN6
-	/m9BApeQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=RqGl4bVYjYCQeH3L4bce6qjhp4aWY+nd2TLFzl/5Ewg=; b=SOmwz0zrmQAY3V
+	Xkwe25/o2JD3s0jKLfaP0LEESpB3OAWPulBx8lahZ5B/MFdJ1923HZGK7YN3sQyNyxXUWQL88AQ+4
+	avNxXUQ/DfMlgCLMug4tSjS6W5Gmdx3/6IpjuXMIxN0ZNce+AErqSoqfA1diEEiYlylqJqv3m7uFw
+	6r9b6t/47ON5nFid4n0cCDHv7pGv/+RuQhdsi2r9/7k+UaMkup2FdIq/e3uI8Q29c2qxML5ztnkZw
+	YYpQwnUDZZXZWAlzHEcR79C9Z1ydY/eFLsGRtsp/4oit4kdQPuyiNKDh3U6ugFnA7e7yZbwFsWxJJ
+	s4nD/YMkLpN9Qi8ULLNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRwSL-0000000AptT-1mTL;
-	Wed, 18 Jun 2025 17:20:13 +0000
+	id 1uRwSK-0000000Aps5-20aC;
+	Wed, 18 Jun 2025 17:20:12 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRv91-0000000AetP-2YeF;
-	Wed, 18 Jun 2025 15:56:11 +0000
+	id 1uRv42-0000000Ae6J-2JOZ;
+	Wed, 18 Jun 2025 15:51:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=GB2paiAGLYNnrfDVK4I79lILy6NFVoAMUpS1p9Hcjbk=; b=D3YRhZNN+eYk5xxqMA1qkt2OLJ
-	ns7Snjc8P4yt47Xkc9iu1HSUbRTYKv5FDy8ALKgCqB5zxK0loTlv07OXeXf+xJO97MIMrDg4qtDsd
-	Ezv+B/QBM21CxQF/6ka2alZ/LdrO+gscFHpYuYs/UOTnH6PZVBeijU0Xnxy8adK1ZRHhx3IvRzWKB
-	kgnV2K8GtpCA717vhKVJw4Mq2PuvWu26VexIMw3jQDrcaaT7OLBst4xI+q2ncw47pPvMil3ocT875
-	C3BYXkowD9CVADIgFvGTSC4UzzNyWl+dEM9oyG12QHVUxebq3Cnr1osbIdJYE9gu9Ne7bsqKhQMwt
-	U9ECBCMA==;
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	d=infradead.org; s=desiato.20200630; h=Reply-To:Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Content-ID:Content-Description;
+	bh=dMPwT7zVwPPdHvV9vRNubW65ThDdMMP/EBY++6qwz3Q=; b=gezzHXex65zkjdfXtjtSEjTtzU
+	8Ii7WAUZE0htkAZjfalz1wnILTkF8R5A0iXT5Gx+yANkgn4QTvK37c43DRkDXhC8evnx9gQeaUVcP
+	pu+KJokcr+nVKO2608BAYoQf0+WY3lHxtGaXDDlBjIjqGmVEwPLanLjRTO8BquVmk1M6V5rZSiX9V
+	xQ+BMGM3znF2FaBxAGnL5CsVLhw5ca2b6zXGXWt0t6ChBye53DJNkSITGUPQekXD3ScrANy3U//Yk
+	kR+C7BK5NMhyVdaZHU5u56R978qFSybQLRT08AcwU+3yp+AgCfcpIqMu9KCfJcNDI5PYbxPVmHBIT
+	QFediE2g==;
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRv8y-00000004AV1-1qNI;
-	Wed, 18 Jun 2025 15:56:10 +0000
+	id 1uRv3y-00000004A5k-3ui6;
+	Wed, 18 Jun 2025 15:51:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id AF049A5252C;
-	Wed, 18 Jun 2025 15:56:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64C31C4CEE7;
-	Wed, 18 Jun 2025 15:56:01 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8A0CD4AA9D;
+	Wed, 18 Jun 2025 15:50:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 0005AC4CEFC;
+	Wed, 18 Jun 2025 15:50:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750262164;
-	bh=y14ImL1XP5d71TlD/C03rbujmTDgub3jAIW5DPpjTro=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tiTLVs24ov/F6fXLP+VBWrYe/DlTd7uUrvgNJvE1noOe4Py7jE3N21L2npCpagKxj
-	 nExCzeEMlhXTJXAd5PrlDJiRiwVgaB7gxJeeuegcH2lmcWK234alCReruO1u/Juw/B
-	 aE+jfxwuV0hbkMv/tHdcIhQcYbHH4czrzK53Iurlblvc3kv7DV/budWE4/wsOlpPf4
-	 EqGwxR91q5pY3KLD0CwZ7Yw/pYvxKpWqhMYdgz0CZ0eP4cE2/Ad5LIvaLfvnMspi9M
-	 V7Do2AdO4783IldIsHnc7v/GesZ44/PelzNtLQjYP6S/qFnOIb4FDlgZ+qwR3y+09y
-	 AWEDKk7kL6z+A==
-Date: Wed, 18 Jun 2025 16:55:59 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
-	nicolas.dufresne@collabora.com, jgg@ziepe.ca, iommu@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 2/5] dt-bindings: iommu: verisilicon: Add binding for
- VSI IOMMU
-Message-ID: <20250618-tighten-morphing-47953075b131@spud>
-References: <20250618140923.97693-1-benjamin.gaignard@collabora.com>
- <20250618140923.97693-3-benjamin.gaignard@collabora.com>
+	s=k20201202; t=1750261850;
+	bh=rZujrf8cJQS+I89btYoSUMkKofWIINtOzhrn5MbArYQ=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=TqtK1aCE4tV9SmBCEd+oJZ0P0+f7cgth2F2mBswKO+Ob5zK2957jPgAKhi5G+br3c
+	 3JF/x3w1OJECjIGQVcB32GR48y3pQogPGTBMfvyfZ4qGe9rF8uxUSnm7pTRN0cQHlx
+	 vZPM3Q3ift0ruO/6e6TDit6hjpnFXlbJ0DdnksEE8ZDdGDCsbFyajiehTyv5nNEZfm
+	 XR7uHRgOaVfuM6/SMTUHq4sTGeuD58dE2AzOD6u7sJfDPfnKJQDYNLP+ZfGiFCZzJD
+	 EgxRvUA6Ap3K3CDkwnvhhnfJUdtVAcopTiPROrXokGRzpm07LcuFQrnJFJe2ikgm2p
+	 S4aeGP5XaNfRA==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E8435C7115A;
+	Wed, 18 Jun 2025 15:50:49 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Date: Wed, 18 Jun 2025 17:38:08 +0200
+Subject: [PATCH v9 13/13] arm64: dts: rockchip: enable vicap dvp on
+ wolfvision pf5 io expander
 MIME-Version: 1.0
-In-Reply-To: <20250618140923.97693-3-benjamin.gaignard@collabora.com>
+Message-Id: <20240220-rk3568-vicap-v9-13-ace1e5cc4a82@collabora.com>
+References: <20240220-rk3568-vicap-v9-0-ace1e5cc4a82@collabora.com>
+In-Reply-To: <20240220-rk3568-vicap-v9-0-ace1e5cc4a82@collabora.com>
+To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+ =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Gerald Loacker <gerald.loacker@wolfvision.net>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Markus Elfring <Markus.Elfring@web.de>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Collabora Kernel Team <kernel@collabora.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, 
+ Alexander Shiyan <eagle.alexander923@gmail.com>, 
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Michael Riesch <michael.riesch@collabora.com>, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1750261092; l=1661;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=tkvGHWW1RXCremqXv1+qTo26zNWU0UHQFUaztf+p/DI=;
+ b=XqyCIQ3Brf1VeGWUXB+ZXIaeF0HDCkqFjyzkAVTcbxsYQT6o+KVZ7DSahoLdPWniN9fuO2SrZ
+ aAma1XwO2PBBwfkRWmUvBr2IFBmfUSJ6KrDj5usbF8U0wbYcjf3xD5N
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_165608_710271_55C8E203 
-X-CRM114-Status: GOOD (  19.66  )
+X-CRM114-CacheID: sfid-20250618_165059_319519_919EF039 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,104 +116,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3178389780890878496=="
+Reply-To: michael.riesch@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Michael Riesch <michael.riesch@collabora.com>
 
---===============3178389780890878496==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Z++lINJ27TajwB1V"
-Content-Disposition: inline
+The Digital Video Port (DVP, the 16-bit variant) of the RK3568 VICAP
+is broken out to the PF5 mainboard expansion header.
+Enable it in the device tree overlay for the WolfVision PF5 IO
+Expander board.
 
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+Reviewed-by: Gerald Loacker <gerald.loacker@wolfvision.net>
+Tested-by: Gerald Loacker <gerald.loacker@wolfvision.net>
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+ .../rockchip/rk3568-wolfvision-pf5-io-expander.dtso  | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
---Z++lINJ27TajwB1V
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
+index 048933de2943..8cfce71dd318 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
++++ b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
+@@ -11,6 +11,7 @@
+ #include <dt-bindings/clock/rk3568-cru.h>
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/media/video-interfaces.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ 
+ &{/} {
+@@ -134,3 +135,22 @@ &usb2phy0_host {
+ 	phy-supply = <&usb_host_vbus>;
+ 	status = "okay";
+ };
++
++&vicap {
++	pinctrl-names = "default";
++	pinctrl-0 = <&cif_clk &cif_dvp_clk &cif_dvp_bus16>;
++	status = "okay";
++};
++
++&vicap_dvp {
++	vicap_dvp_input: endpoint {
++		bus-type = <MEDIA_BUS_TYPE_BT656>;
++		bus-width = <16>;
++		pclk-sample = <MEDIA_PCLK_SAMPLE_DUAL_EDGE>;
++		rockchip,dvp-clk-delay = <10>;
++	};
++};
++
++&vicap_mmu {
++	status = "okay";
++};
 
-On Wed, Jun 18, 2025 at 04:09:11PM +0200, Benjamin Gaignard wrote:
-> Add a device tree binding for the Verisilicon (VSI) IOMMU.
-> This IOMMU sits in front of hardware encoder and decoder
-> blocks on SoCs using Verisilicon IP, such as the Rockchip RK3588.
->=20
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
-> changes in version 2:
-> - Add a compatible "rockchip,rk3588-av1-iommu"
-> - Fix clock-names in binding=20
-> - Remove "vsi_mmu" label in binding example.
->=20
->  .../bindings/iommu/verisilicon,iommu.yaml     | 72 +++++++++++++++++++
->  1 file changed, 72 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/iommu/verisilicon,i=
-ommu.yaml
->=20
-> diff --git a/Documentation/devicetree/bindings/iommu/verisilicon,iommu.ya=
-ml b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
-> new file mode 100644
-> index 000000000000..9ae4a45d76f4
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
-> @@ -0,0 +1,72 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/iommu/verisilicon,iommu.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Verisilicon IOMMU
-> +
-> +maintainers:
-> +  - Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> +
-> +description: |+
-> +  A Versilicon iommu translates io virtual addresses to physical address=
-es for
-> +  its associated video decoder.
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - enum:
-> +          - verisilicon,iommu
-> +          - rockchip,rk3588-av1-iommu
-
-This isn't right. Firstly, the "oneOf: - enum" construct doesn't do
-anything. oneOf one item is just the item. Secondly this still allows
-verisilicon,iommu in isolation which is not okay. What you actually want
-here is
-items:
-  - const: a
-  - const: b
-
-Thirdly, Nicolas mentioned that the version of this iommu is 1.2.0,
-which I would like to see reflected in the compatible.
-
---Z++lINJ27TajwB1V
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaFLhjgAKCRB4tDGHoIJi
-0vB/AQCNK4tUJrrBtB91ikBSoiUUESBAhs91t/tLoNI6BezTNwD/TT+xxCi+29w8
-EL8ApkHM1NexQn9tJmglNf0tfkz4rwA=
-=ASP4
------END PGP SIGNATURE-----
-
---Z++lINJ27TajwB1V--
+-- 
+2.39.5
 
 
---===============3178389780890878496==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3178389780890878496==--
-
