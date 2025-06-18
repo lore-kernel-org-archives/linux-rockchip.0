@@ -4,84 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5775FC71136
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 01:59:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E83DC7115C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 05:04:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YvwImOXHpnktVsXx/6lwmy0okMfrmdtgK2ddnrf8prE=; b=y92yFMTRM56Rvh
-	F3rNqlGHs66Ts4J/gKLrngtEyL4sEK/a6oqeH6M5qg3N878j8YlQ86j8llxhpSg7kGmjyLhnAAJPc
-	j2wJNipRsPdC+wa6qujjP9/mh/pWQ+d+BfjnAjcP3HKf1zOqJ0BXTlpVclIYva0OvLo/wQ9eWnG3G
-	i/NP08Yh2MspTyViuokpRqv2yTeRKMzz9gKEc5RTQU6pcF0Nu6wH7fVsu54APW8lL0xZJQ/1N/xc1
-	HiquI43O1Lumf+6z0/sU9yLh5nIcPaRSVSl+ryjV9wl+gK55GHTPlvGjHhs5+W6f7rpL749r+de5t
-	KirkT0VxzDu1qW4PO9nQ==;
+	List-Owner; bh=v75vtNoBkpoXueLQ3I/2IgYe9JYeifOa8uWbQwT0z/U=; b=y+E51bPee+ZYwp
+	wz2vYwJqUXrb4RmL/ATU5BKfYsttKOokbohwBP2a5VOlCTg53nKtmROapHoBgaiBnEhC93Wdtpsby
+	UrqpUeYvY5/TYJlkBTDqGX9lvhGbdMkGTHcemQ46Vu1GuQV2saM5PZpPit57OogmAkk1MU1Ni0aDo
+	z7S4iPmAqxNH00OLYdH2yA1z4bmL67S8u9Iv+a316NjhRDWmA1UhOk1vTXQpnzACv3StSmBtbmpkP
+	ytg1ixQc89rJ+1KKlfA4kl7LlkL/lpVu+9pXSh1meMArYikfhMSyXdKq4KNUU3/AtmVDE3Utm1x6X
+	WCpJ+InPYWsD4FrPMO/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRi5Y-00000008n4j-2hct;
-	Wed, 18 Jun 2025 01:59:44 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1uRkxq-000000094Ah-2BGV;
+	Wed, 18 Jun 2025 05:03:58 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRi5W-00000008n2v-04t2
-	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Jun 2025 01:59:43 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-3a531fcaa05so3935179f8f.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 17 Jun 2025 18:59:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1750211980; x=1750816780; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kFKCnbNn1bDqe5v5bLkKEdiwzvFlVEFsyLsrg5iRjl8=;
-        b=kP0orGcQmhVQQCrbWKYKmZxIVmMAVdgKGz3Ix3s8Jr/vuxLSYANT18jlZ/yHBWKCmM
-         Di+CWq6YmdX7e9+9HVZ6bIgbk2aah0NG9mKGlkRs9EZqrGSuqE8OK7bq5MwxVzmPKFbY
-         lSjiix9qrMO/8zyvXx5SU+GrjqXLV3tweqdGqOrX0U6ng0GOuTsGW9SyV8ESuqzHm2m5
-         g/MpGekbNm3T9n7rQqPHRUPB1wcFMz5pjrtjPGp2l+5/Mdf/E1dlGQnduCw9NL8s8pIK
-         xTq7Uc3nVFU+5zSJiW10aBjr0QNfF/3vvXM8rQ/nvUUt7JpSX5N24FQ9H35guIfMMxPb
-         /Q7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750211980; x=1750816780;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kFKCnbNn1bDqe5v5bLkKEdiwzvFlVEFsyLsrg5iRjl8=;
-        b=FQNd8x1GToHXoSjwUaB1ZGcTzySSuDH7t9KloquITMhlzdvXG/J+/VzJuasRdY2Lw5
-         k4+k644TEeMUuIZTm2yiHZSSBExoAp+pxZFxXvSPcFHRCPyJgClYQHNAbulbiZ+Q+ufp
-         sfLajZN0eOE7VSwxE52dh8cGZY/ThommxEOrlEr3CpkJoIYa8QLUsU0jtxg8mQlztq9G
-         N6kRT4tt60Pw54FJa7V5XCMvmt4RBmuTUoihR6uW049268Xk5lF20hbqPAKzbcVaNnoe
-         oiXWWOkFsYNIb8nK9DsVispdbaPmgUtI5sjVTe5k0zBGTkNjIN3J+U+HPF3Zk0a4DQ3X
-         K4FQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW5OS3J9TF1S4X2rMoXDHPE2aVShtKgdtpohkbADJ9jfTFuLjs1moB50c0Kk6DpQqE037a8q9oZR1kaZaaOGg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxU5tuf6aYwtiPPq908YUKDhVOIigUaVmh96ssajStngxcK0vsc
-	Y9b8bUVnx6vhGtcfN57fxeWcwrAcKnZI9mXUe5tPW0IVNBIW00mdBPuTKbodq4BPvMPiFohWNM3
-	K3OAF13pAAq8SIUS5nwZpl1pwScn6ZJU=
-X-Gm-Gg: ASbGnct7xllyFriSGBDrnm7o3Ycb9TT1jANk+iehVoXGxu8S6G9Kn/aOQ2L6dopCudg
-	TLrRxepC9Yx/V+d+W6c//ZUTpx7GCk7jL7R5a9iYOe3fSDeudk/Dbefij2csfDjRQyvTl0QOv8Q
-	bVqPO2BEV3iJQcr+pc21i3UjbMSEjUUDr4lZireJEMgV/mi9VKlFbkWLUlNn2Hu5C72zIPKOEca
-	Mw+3b2mZjtRug==
-X-Google-Smtp-Source: AGHT+IGQmwkOIeqTr61hnlAr1/zAkoeC5stDMeIncKSo1hy+Fff4A3fDO6knRQJTt3WedDhfX2o3EVfgIMf54gN6ThQ=
-X-Received: by 2002:a5d:584d:0:b0:3a3:64fb:304d with SMTP id
- ffacd0b85a97d-3a5723990f6mr11469933f8f.12.1750211979834; Tue, 17 Jun 2025
- 18:59:39 -0700 (PDT)
+	id 1uRkoE-000000093Hl-1xc1;
+	Wed, 18 Jun 2025 04:54:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1750222442; x=1781758442;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=DEKlm+ejo/0mzszOUsL53ctVVQ1j4m3qewxhIFLcv0M=;
+  b=MvRQD13m/2GjqaQ3PLufxQ//8XWD9ExvXLL4pOFXwZkQEcnyOK/cBiLW
+   D+Ate2EILgRIlfcGYMMsceD7+tTlsyzdCMcqQ3/sSWcChNnNTd4VQ84g0
+   ObkuG84q+EIBSINWgyR5j+Ty6pTEqcQTk77BBl17uF4jXBxkRTYQnYCYm
+   7gN0bG4Lai45SBffVMh6BLamaSp074blXFhfmyKBzj5anSsx8eSRl9T1x
+   5OOyYjLFA1bZl2ZtxmcsfH+dnaDuXnwk+gI1tkAtyn4SAa6YZZrCdH+t2
+   m8FDncTP9f8+h6aHsP64LkKnNitNMA8zcdGffWb6jbBBVxdinvbUvDWv+
+   g==;
+X-CSE-ConnectionGUID: SRnprPrdTfKJgOCkU+rYMA==
+X-CSE-MsgGUID: UaHuGxFtSE2JsOas2mT+pg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11467"; a="63460460"
+X-IronPort-AV: E=Sophos;i="6.16,245,1744095600"; 
+   d="scan'208";a="63460460"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jun 2025 21:54:01 -0700
+X-CSE-ConnectionGUID: IlMBVbuZTBeIdVORDtt5FA==
+X-CSE-MsgGUID: fyNBzSTZSCeodXZuqA5+kw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,245,1744095600"; 
+   d="scan'208";a="149026086"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+  by fmviesa007.fm.intel.com with ESMTP; 17 Jun 2025 21:53:57 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uRko7-000JPW-1J;
+	Wed, 18 Jun 2025 04:53:55 +0000
+Date: Wed, 18 Jun 2025 12:53:41 +0800
+From: kernel test robot <lkp@intel.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, joro@8bytes.org,
+	will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+	nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
+	mchehab@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, iommu@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH 3/5] iommu: Add verisilicon IOMMU driver
+Message-ID: <202506181230.D53QwmdL-lkp@intel.com>
+References: <20250616145607.116639-4-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-References: <20250617-rk3588s-cm5-io-dts-upstream-v5-0-8d96854a5bbd@gmail.com> <20250617-rk3588s-cm5-io-dts-upstream-v5-3-8d96854a5bbd@gmail.com>
-In-Reply-To: <20250617-rk3588s-cm5-io-dts-upstream-v5-3-8d96854a5bbd@gmail.com>
-From: Jimmy Hon <honyuenkwun@gmail.com>
-Date: Tue, 17 Jun 2025 20:59:28 -0500
-X-Gm-Features: Ac12FXy5cpVvK5gEID9BrCvh3p-E9_Lv5BBK6utf9O5u4cKC1jiShpMGr7IRbB4
-Message-ID: <CALWfF7+G6MRvuSm8a-a0KcPduXz=sYsJT0bB300rAqmtt2w-cg@mail.gmail.com>
-Subject: Re: [PATCH v5 3/3] arm64: dts: rockchip: Add support for CM5 IO carrier
-To: Joseph Kogut <joseph.kogut@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Steve deRosier <derosier@cal-sierra.com>, devicetree@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Disposition: inline
+In-Reply-To: <20250616145607.116639-4-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_185942_056702_40C494BA 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250617_215402_545944_68F6C281 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,26 +90,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBKdW4gMTcsIDIwMjUgYXQgNToxMuKAr1BNIEpvc2VwaCBLb2d1dCA8am9zZXBoLmtv
-Z3V0QGdtYWlsLmNvbT4gd3JvdGU6Cj4gKwo+ICsmZ21hYzEgewo+ICsgICAgICAgY2xvY2tfaW5f
-b3V0ID0gIm91dHB1dCI7Cj4gKyAgICAgICBwaHktaGFuZGxlID0gPCZyZ21paV9waHkxPjsKPiAr
-ICAgICAgIHBoeS1tb2RlID0gInJnbWlpLWlkIjsKPiArICAgICAgIHBoeS1zdXBwbHkgPSA8JnZj
-Y18zdjNfczA+Owo+ICsgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiArICAgICAg
-IHBpbmN0cmwtMCA9IDwmZ21hYzFfbWlpbQo+ICsgICAgICAgICAgICAgICAgICAgICZnbWFjMV90
-eF9idXMyCj4gKyAgICAgICAgICAgICAgICAgICAgJmdtYWMxX3J4X2J1czIKPiArICAgICAgICAg
-ICAgICAgICAgICAmZ21hYzFfcmdtaWlfY2xrCj4gKyAgICAgICAgICAgICAgICAgICAgJmdtYWMx
-X3JnbWlpX2J1cwo+ICsgICAgICAgICAgICAgICAgICAgICZnbWFjMV9jbGtpbm91dD47Cj4gKyAg
-ICAgICBzdGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwpTb3JyeSwgSSBtZWFudCBvbmx5IHRoZSBz
-dGF0dXMgcHJvcGVydHkgc2hvdWxkIGdvIHRvIHRoZSBib2FyZCBEVFMuClRoZSByZXN0IG9mIHRo
-ZSBnbWFjMSBkZWZpbml0aW9uIG1ha2VzIHNlbnNlIHRvIHB1dCBpbiB0aGUgU29NIGR0c2ksCnNp
-bmNlIHRoZSBQSFkgaXMgb24gdGhlIFNvTSAoYXMgZGVmaW5lZCBpbiAgdGhlIG1kaW8xIG5vZGUp
-LiBTbyBhbGwKdGhlIHBpbnMgYmV0d2VlbiB0aGUgTUFDIGFuZCBQSFkgd2lsbCBiZSB0aGUgc2Ft
-ZS4KCkppbW15Cgo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+Hi Benjamin,
+
+kernel test robot noticed the following build warnings:
+
+[auto build test WARNING on robh/for-next]
+[also build test WARNING on rockchip/for-next linus/master v6.16-rc2 next-20250617]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/dt-bindings-vendor-prefixes-Add-Verisilicon/20250616-225842
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+patch link:    https://lore.kernel.org/r/20250616145607.116639-4-benjamin.gaignard%40collabora.com
+patch subject: [PATCH 3/5] iommu: Add verisilicon IOMMU driver
+config: arm64-randconfig-r111-20250618 (https://download.01.org/0day-ci/archive/20250618/202506181230.D53QwmdL-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 15.1.0
+reproduce: (https://download.01.org/0day-ci/archive/20250618/202506181230.D53QwmdL-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202506181230.D53QwmdL-lkp@intel.com/
+
+sparse warnings: (new ones prefixed by >>)
+>> drivers/iommu/vsi-iommu.c:890:24: sparse: sparse: symbol 'rockchip_vsi_iommu_driver' was not declared. Should it be static?
+
+vim +/rockchip_vsi_iommu_driver +890 drivers/iommu/vsi-iommu.c
+
+   889	
+ > 890	struct platform_driver rockchip_vsi_iommu_driver = {
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
