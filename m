@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5099C71157
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 06:40:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6021C71157
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 07:48:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GiWdD2vmspuPGXWcd8zfAWMGM94VKYunXJ3VtxcRjcA=; b=ppTtQVdVLq1A/m
-	Jr5U36jBsXhru4D53A7jhJGRxqiQirbMGmh9dMGcLs11ETlPi9gxE0pKS3fobzwztatH8K2OHB/8e
-	GSAGidBosmG7UlnaDjj2eT4wWFIZcH6KIvCZ2abnvkmsf3y1htIYgNH3KANP84SJJDXmQc4MSYO49
-	UNHynQ6fCwVMVyIs9pugHBe1WI9/kGXZsMzEjYd4mzaU6qoggA7P8Ylizbe//pFtASP8ylov8U/RZ
-	Xye+PHuLPw+e2vAX49Ldm9xg3LlJNJ8lk4+6XsCU1bTmXBdfDeq6UQ745KiwQQpcCE9GUcVEcjjcY
-	RogursMZyADnu8VaUZhQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+a7zxkF2Z+/P6xK/zmf1e3xeAwxnt07JJFzjelNwWCc=; b=KtvPVQhunK1Njt
+	K7rytXhJSVARtVR0bZuJHjxdNzk4kMK+nWhbhTpSpOhtTBOv1UJfz1JENkIlU6UGG5Ekz6/pgP0CM
+	hT451c/BahVuQ1nBlR9wyWzad/mB8f1zziSI7Q4IrWThq8hmOykSlQtbwrF+3xtIXqU+Nqb3Uly/1
+	a4cK53sAiUKB7txFeARcIvW1X0z4t2Mp8QVrfoqooGTKPKpbWBbdWuJ0Iak9I+ez8uH1NGuD6l4ep
+	vYYQQLENT5yJ3qPSrJ08GE4cnlSwazM/kiKBiZ3+TWc1kgzdYFO8aPauUndiIGfmKTyP1gS0P2nr5
+	ApZKEr9ji8QOB472f2Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRmSu-00000009CLw-0IWi;
-	Wed, 18 Jun 2025 06:40:08 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRmPV-00000009Bkt-0NXK;
-	Wed, 18 Jun 2025 06:36:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=3o
-	2xSY68L4BFEQO///ypgcnI/0VLZaCbM2XNC4HBpeY=; b=pAtMcJvPcQ2qTGZhjz
-	mbAW9TZwMpF/4HwIa0cCVME1c4bSb1p7kltvnF7qnbtZhv/y7WIYWtIxXfomX8PX
-	x717cIA+NlnUzsOvMA13DR3U8xCY9NQKKr87RCjzFosrYMXnHwwbwl8l408YRgIl
-	PjamjEjpyuADmQY83GrwT4AXA=
-Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wDn3xpaXlJo+K25AA--.26565S2;
-	Wed, 18 Jun 2025 14:36:14 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: detlev.casanova@collabora.com,
-	conor+dt@kernel.org,
-	dsimic@manjaro.org,
-	kever.yang@rock-chips.com,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: Enable gpu on rk3576-evb1-v10
-Date: Wed, 18 Jun 2025 14:36:01 +0800
-Message-ID: <20250618063609.690332-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
+	id 1uRnX0-00000009KLb-0nch;
+	Wed, 18 Jun 2025 07:48:26 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uRnUF-00000009JpU-3ZuS;
+	Wed, 18 Jun 2025 07:45:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1750232733;
+	bh=1JdQ904uDrVw5CrNkcjW/fEGquyhcUzIxxmQVdihypM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TU7G28jrXco5LKBo88MJI++Q+39OFW5Pvy4t6nHJ5tPRAk0w6CKZmVmBE3WTXlXlI
+	 PLEo4d3UQc/w9X3mft+gsnDzSFFAIPnsQqnrJ+oikqcfzyKzkXZwoICJ9McYwo1QXk
+	 hL0rKRkyOjZlHT0TkrdI6pjN4TvztXLDSM5fNujhhxRkbFglMvIwjINvFtIWmYPwEO
+	 +ISZiLO3Rcw88JONnttSfqNs1vZhf9JdUDzBAG0hltjLPquofmSwhsgdX8Laq/kXEs
+	 tJihM2MU5HArPpBR4E+H2T+Rg3F6rNasL8DX8i96/IT9QUX8qvv90sJL2fSDz8eVC4
+	 3cvpFD+KoynVg==
+Received: from [10.40.0.100] (185-251-200-162.lampert.tv [185.251.200.162])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A548117E0F99;
+	Wed, 18 Jun 2025 09:45:32 +0200 (CEST)
+Message-ID: <e9db11c2-b02d-4fd5-8927-7b5857089533@collabora.com>
+Date: Wed, 18 Jun 2025 09:45:32 +0200
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDn3xpaXlJo+K25AA--.26565S2
-X-Coremail-Antispam: 1Uf129KBjvdXoWruF1kCF43uw4xXFyDuFy7GFg_yoWxuFg_t3
-	Z2gw15XF4rGrn8t34ktayrG34jk34DCa4xWa1rXFWDGF9Ivay8JFW8tay3Kr9xKrW29r4f
-	Jay5XasrAasxCjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8uBTUUUUUU==
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqA9wXmhSW+dvxQAAsl
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/5] dt-bindings: phy: rockchip-inno-csi-dphy: add rk3588
+ variant
+To: Diederik de Haas <didi.debian@cknow.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Jagan Teki <jagan@amarulasolutions.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Kever Yang <kever.yang@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org
+References: <20250616-rk3588-csi-dphy-v1-0-84eb3b2a736c@collabora.com>
+ <20250616-rk3588-csi-dphy-v1-2-84eb3b2a736c@collabora.com>
+ <DAOVBOKLXLS2.S9MXDD29X68J@cknow.org>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <DAOVBOKLXLS2.S9MXDD29X68J@cknow.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_233637_544291_85E19816 
-X-CRM114-Status: UNSURE (   7.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250618_004536_097836_828FE9D0 
+X-CRM114-Status: GOOD (  23.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,34 +86,172 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+Hi Diederik,
 
-Enable gpu for rk3576 evb.
+Thanks for your comments!
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
+On 6/17/25 16:12, Diederik de Haas wrote:
+> Hi,
+> 
+> I'm (unfortunately) not seeing any @rock-chips.com recipients ...
 
- arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts | 5 +++++
- 1 file changed, 5 insertions(+)
+Oops, I meant to include at least Kever, but forgot to do it. Will do in v2.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-index 6dfccf44c7f65..21e47155fa690 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-@@ -323,6 +323,11 @@ &eth1m0_rgmii_bus
- 	status = "okay";
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_gpu_s0>;
-+	status = "okay";
-+};
-+
- &hdmi {
- 	status = "okay";
- };
--- 
-2.43.0
+Cc: Kever
+
+> 
+> On Tue Jun 17, 2025 at 10:54 AM CEST, Michael Riesch via B4 Relay wrote:
+>> From: Michael Riesch <michael.riesch@collabora.com>
+>>
+>> The Rockchip RK3588 variant of the CSI-2 DPHY features two reset lines.
+>> Add the variant and allow for the additional reset.
+>>
+>> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+>> ---
+>>  .../bindings/phy/rockchip-inno-csi-dphy.yaml       | 60 ++++++++++++++++++++--
+>>  1 file changed, 55 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+>> index 5ac994b3c0aa..6755738b13ee 100644
+>> --- a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+>> +++ b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+>> @@ -21,6 +21,7 @@ properties:
+>>        - rockchip,rk3326-csi-dphy
+>>        - rockchip,rk3368-csi-dphy
+>>        - rockchip,rk3568-csi-dphy
+>> +      - rockchip,rk3588-csi-dphy
+>>  
+>>    reg:
+>>      maxItems: 1
+>> @@ -39,18 +40,49 @@ properties:
+>>      maxItems: 1
+>>  
+>>    resets:
+>> -    items:
+>> -      - description: exclusive PHY reset line
+>> +    minItems: 1
+>> +    maxItems: 2
+>>  
+>>    reset-names:
+>> -    items:
+>> -      - const: apb
+>> +    minItems: 1
+>> +    maxItems: 2
+>>  
+>>    rockchip,grf:
+>>      $ref: /schemas/types.yaml#/definitions/phandle
+>>      description:
+>>        Some additional phy settings are access through GRF regs.
+>>  
+>> +allOf:
+>> +  - if:
+>> +      properties:
+>> +        compatible:
+>> +          contains:
+>> +            enum:
+>> +              - rockchip,px30-csi-dphy
+>> +              - rockchip,rk1808-csi-dphy
+>> +              - rockchip,rk3326-csi-dphy
+>> +              - rockchip,rk3368-csi-dphy
+>> +              - rockchip,rk3568-csi-dphy
+>> +    then:
+>> +      properties:
+>> +        resets:
+>> +          items:
+>> +            - description: exclusive PHY reset line
+>> +
+>> +        reset-names:
+>> +          items:
+>> +            - const: apb
+>> +
+>> +      required:
+>> +        - reset-names
+>> +    else:
+>> +      properties:
+>> +        resets:
+>> +          minItems: 2
+>> +
+>> +        reset-names:
+>> +          minItems: 2
+>> +
+>>  required:
+>>    - compatible
+>>    - reg
+>> @@ -59,7 +91,6 @@ required:
+>>    - '#phy-cells'
+>>    - power-domains
+>>    - resets
+>> -  - reset-names
+>>    - rockchip,grf
+>>  
+>>  additionalProperties: false
+>> @@ -78,3 +109,22 @@ examples:
+>>          reset-names = "apb";
+>>          rockchip,grf = <&grf>;
+>>      };
+>> +  - |
+>> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
+>> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+>> +
+>> +    soc {
+>> +        #address-cells = <2>;
+>> +        #size-cells = <2>;
+>> +
+>> +        csi_dphy0: phy@fedc0000 {
+>> +            compatible = "rockchip,rk3588-csi-dphy";
+>> +            reg = <0x0 0xfedc0000 0x0 0x8000>;
+>> +            clocks = <&cru PCLK_CSIPHY0>;
+>> +            clock-names = "pclk";
+>> +            #phy-cells = <0>;
+>> +            resets = <&cru SRST_CSIPHY0>, <&cru SRST_P_CSIPHY0>;
+>> +            rockchip,grf = <&csidphy0_grf>;
+>> +            status = "disabled";
+>> +        };
+>> +    };
+> 
+> ... which could hopefully tell us what the value is/should be for the
+> *required* 'power-domains' property, which is missing in this example.
+> IOW: the binding example is invalid according to its own binding.
+
+Huh, indeed. Hm. Why didn't make dt_binding_check warn me about that?!
+
+TRM Part 1, p. 1097 states that HDMI_CSI_DPHY is in the ALIVE(PD_BUS)
+power domain. With some creativity one can interpret that the CSI DPHY
+is always on anyways. @Kever: Could you please elaborate on that?
+
+> (btw: you can drop the 'csi_dphy0' label)
+
+Will do.
+
+> 
+> And hopefully also for rk3568 so we can add it to rk356x-base.dtsi and
+> you can add it in patch 5 where it's also missing.
+
+I recall a similar discussion [0]. In the RK3568 the CSIPHY is in the
+ALIVE power domain.
+
+Note that the PHY must not be confused with the HOST blocks, which are
+the MIPI CSI-2 receivers.
+
+I guess the correct solution is to make power-domains optional. Further
+input welcome, though.
+
+Best regards,
+Michael
+
+> 
+> Grepping for "csi-dphy" in arch/arm*/boot/dts/rockchip returns:
+> - px30.dtsi
+> - rk356x-base.dtsi
+> 
+> With this patch set applied, we'd have a 3rd result: rk3588-base.dtsi
+> 
+> For all the listed compatibles, it's only actually defined in px30.dtsi.
+> 
+> Cheers (and sorry),
+>   Diederik
+
+[0] https://lore.kernel.org/all/D4QNJ85V43NU.YD01E8AB4116@cknow.org/
 
 
 _______________________________________________
