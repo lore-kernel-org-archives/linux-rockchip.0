@@ -4,58 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31900C71157
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 16:13:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DAC1C71157
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Jun 2025 16:36:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=53eU9VWLxZDF5j+pKXOFd1q5BuefIzwo5LnJNwG00DY=; b=tkOsP8KIxMU6s1
-	oFOHifV8qooZfPUyziG/Vh213Sdvrf/gfxhf9pZTyfffEoGJ+M0kUtexC2c96HNwrQDz64eHWtfAo
-	jOk75luQb3V4k561O8Jb8+xsBtjnZgsUiYb9q+/TNfd0ozNMDMsz6dhrki0q1eXDn2kSBKaev/ePO
-	cSs6aT9iv7IbgN0vi6FZzie7+4ieCdZWbANZQkSJHZodF+jNymeI84hgjHrkt5Fzq625tCDWe8wie
-	NmzdJMzW6BsN1LG5WZzgFoqXzJm1x6oqwayQ/5wuE8XYMrdMAmhWDo2HZLDtzbIJAqm615eJVo3jT
-	+YQd/d5R8wBhSGvYZIqg==;
+	List-Owner; bh=LuNZDh7KQzIFqm4yThsdTD0Zxx5qdRBVPHlWANO5y6k=; b=1XFs1zkGfahC7m
+	11tklAjjNulF2srIDDF2nkcGzgWqDs7DVAtGBJp9Fd4qxhzFZXLa8c4PRbD5kHSEhF8CRw3N8VW0o
+	7PPz9uKu5v3khiLUXpDIL5YcaViebfvMtL0mSK8E0ivCHnTTsMuuaP9wqz2AovT6NZYg/6cXGQvE8
+	ApRmhwJ7Otu+TYTXPMdRvna7DGaEe5Zjjy31Kgrij0CuG4pk6ryRgbhg9430yxlKC5wolDZLXM11R
+	+aEQgbUoqp7nTF0lOm0gTX87E3ZlMvwgOGzYrSKM4/3foEXXenWOf0Dm8kncf1DN5S2qlmCzwCGZ2
+	WGQMCD8w5DI24GB6jGMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRvPD-0000000AhLg-3ecE;
-	Wed, 18 Jun 2025 16:12:55 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uRvlo-0000000Ak1z-1KFT;
+	Wed, 18 Jun 2025 16:36:16 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRthG-0000000AQ14-12f9;
-	Wed, 18 Jun 2025 14:23:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=IZ7GT9tpTg48vlfg0U/YtaR7zQg4ihM+JAeyaKK+GSk=; b=n7ggpt2HCDEc5Ja5gOza091alY
-	TidK9h7stjS8E616jr/QSUWs19tqX3rKZQwwCBmPLvJAF4i4F/I3aLlenM50X35J7ecT7bPKEO9Qc
-	2qLGuIkK/DYl2EPERfYgX4zBqH5rjUxCm95j4wip9XqLqF78Ze0aX1sk1llatL0+qJ/VeF4rHNdBD
-	5BkLmlRlbjE0TrJrc1dpXSn2OVayoIecNYZl7VhgATlU04Oiogsv9PfplX9uus89GwrzeRN4vLQce
-	0YJl4R14H1Z9tCC1i7He7mS+/Dwa6cdyqplt3xgVpf2gD4X69N4luJjJUlzN5BQtrXlZ3gxCdunj8
-	kRlAx4iA==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRthE-000000045nM-005T;
-	Wed, 18 Jun 2025 14:23:25 +0000
+	id 1uRtxZ-0000000ATKk-2veP;
+	Wed, 18 Jun 2025 14:40:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id EAFB25C621E;
-	Wed, 18 Jun 2025 14:21:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF084C4CEEE;
-	Wed, 18 Jun 2025 14:23:16 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 9A8BFA5207E;
+	Wed, 18 Jun 2025 14:40:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03704C4AF09;
+	Wed, 18 Jun 2025 14:40:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750256599;
-	bh=Tw82APBfnc8betE49fdk4f7dJxLN1BXDSLLXI9UwX7M=;
+	s=k20201202; t=1750257616;
+	bh=NZxcboNj0nuhBZTiZGcW1Uoh9H3u/i+DdNNtMO2BCiw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QdAUprYKJiSnsrJGpXN4Wmdq8DXkBhrJMF/FEGPXR2QnvW9p3H5kK1elO6+oQ5zP1
-	 XWfCiGXzCXewJYibrQhrnn9YbF4K8CXWAjkxTaK94+H+HqVsWFvD32lh1WptSPnOXp
-	 yLUkrvU/uomcQPTVq2Y1HpLub6VBB64WZILuuqiHz2dOxVw+MpxQEKcdKorBw1VXLz
-	 gx7FoLEG/ELzuaYl5dzpzz8k/8C0WuLqq56KxebvN8Nov7JpBZL2qnZqq9waTzqBCs
-	 61XHUF4Y/CmTLy+LXFmqFy2rPVd0ExD28khi6AoUdXa4nPx9R2gvLrqPYk2J4fkUws
-	 hJDkGdgT+BDxQ==
-Date: Wed, 18 Jun 2025 16:23:14 +0200
+	b=fHAFPWY+bjZDxt88PVq4qICdy1RJi09dMFa8vOiWZGgCG0FvkQGsOWm1vvWeifh/y
+	 4GxoSjdkIvCB5pIF3Ssu3kLb597vzXRBLBFPIn8CrT0FWDHg3tW2EDGElcRK+7/Wdd
+	 D4f9blxctSSEh7VvHA0F391whCHN0kz+076R/CpLk0vzSCh75dLcJL86lRAv6ami0x
+	 onyqMfNhrLZYU8ODll/pBG33p2rhancEWnop2WSLAFpXg6+401K4KID/IzMx7ldRc1
+	 fgGQaQWRQK7zcnFkTJgFEVmGjXrC8JE4ReqzXpMSGF5UwMPIMHo5rn43VzGhK3KmFx
+	 k9DdIMJHMye6Q==
+Date: Wed, 18 Jun 2025 16:40:11 +0200
 From: Niklas Cassel <cassel@kernel.org>
 To: Bjorn Helgaas <helgaas@kernel.org>
 Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -68,15 +54,16 @@ Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH v2] PCI: dw-rockchip: Delay link training after hot reset
  in EP mode
-Message-ID: <aFLL0vPFzxdVOR9a@ryzen>
+Message-ID: <aFLPyxZD5lkAtw6b@ryzen>
 References: <20250617220114.GA1156610@bhelgaas>
  <20250617220523.GA1157905@bhelgaas>
+ <aFLL0vPFzxdVOR9a@ryzen>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250617220523.GA1157905@bhelgaas>
+In-Reply-To: <aFLL0vPFzxdVOR9a@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_152324_203303_5587EF74 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20250618_074017_860020_03D35EBF 
+X-CRM114-Status: GOOD (  23.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,57 +80,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 17, 2025 at 05:05:23PM -0500, Bjorn Helgaas wrote:
-> On Tue, Jun 17, 2025 at 05:01:16PM -0500, Bjorn Helgaas wrote:
-> > On Fri, Jun 13, 2025 at 12:19:09PM +0200, Niklas Cassel wrote:
+On Wed, Jun 18, 2025 at 04:23:19PM +0200, Niklas Cassel wrote:
+> On Tue, Jun 17, 2025 at 05:05:23PM -0500, Bjorn Helgaas wrote:
+> > On Tue, Jun 17, 2025 at 05:01:16PM -0500, Bjorn Helgaas wrote:
+> > > On Fri, Jun 13, 2025 at 12:19:09PM +0200, Niklas Cassel wrote:
+> > 
+> > Oh, and this sets PCIE_LTSSM_ENABLE_ENHANCE | PCIE_LTSSM_APP_DLY2_EN
+> > once at probe-time, but what about after a link-down/link-up cycle?
+> > 
+> > Don't we need to set PCIE_LTSSM_ENABLE_ENHANCE |
+> > PCIE_LTSSM_APP_DLY2_EN again when the link comes up so we don't have
+> > the same race when the link goes down again?
 > 
-> Oh, and this sets PCIE_LTSSM_ENABLE_ENHANCE | PCIE_LTSSM_APP_DLY2_EN
-> once at probe-time, but what about after a link-down/link-up cycle?
+> Nope, we don't.
 > 
-> Don't we need to set PCIE_LTSSM_ENABLE_ENHANCE |
-> PCIE_LTSSM_APP_DLY2_EN again when the link comes up so we don't have
-> the same race when the link goes down again?
+> To verify I used this patch:
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index be239254aacd..e79add5412b8 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -506,6 +506,8 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+>         if (reg & PCIE_LINK_REQ_RST_NOT_INT) {
+>                 dev_dbg(dev, "hot reset or link-down reset\n");
+>                 dw_pcie_ep_linkdown(&pci->ep);
+> +               pr_info("PCIE_CLIENT_HOT_RESET_CTRL after reset: %#x\n",
+> +                       rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_HOT_RESET_CTRL));
+>                 /* Stop delaying link training. */
+>                 val = HIWORD_UPDATE_BIT(PCIE_LTSSM_APP_DLY2_DONE);
+>                 rockchip_pcie_writel_apb(rockchip, val,
+> 
+> 
+> 
+> 
+> [   85.979567] rockchip-dw-pcie a40000000.pcie-ep: hot reset or link-down reset
+> [   85.980210] PCIE_CLIENT_HOT_RESET_CTRL after reset: 0x12
+> [   93.720413] rockchip-dw-pcie a40000000.pcie-ep: hot reset or link-down reset
+> [   93.721074] PCIE_CLIENT_HOT_RESET_CTRL after reset: 0x12
+> 
+> 0x12 == bit 1 and bit 4 are set.
+> 
+> bit 1: app_dly2_en
+> bit 4: app_ltssm_enable_enhance
 
-Nope, we don't.
+Oh, and just to verify that the hardware does not clear the app_dly2_en bit
+when we write the app_dly2_done bit, I ran the same test, but with the
+prints in rockchip_pcie_ep_sys_irq_thread(), just after calling
+dw_pcie_ep_linkup(&pci->ep); and got the same result:
 
-To verify I used this patch:
+[   57.176862] rockchip-dw-pcie a40000000.pcie-ep: link up
+[   57.177338] PCIE_CLIENT_HOT_RESET_CTRL after linkup: 0x12
+[   72.448052] rockchip-dw-pcie a40000000.pcie-ep: link up
+[   72.448527] PCIE_CLIENT_HOT_RESET_CTRL after linkup: 0x12
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index be239254aacd..e79add5412b8 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -506,6 +506,8 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
-        if (reg & PCIE_LINK_REQ_RST_NOT_INT) {
-                dev_dbg(dev, "hot reset or link-down reset\n");
-                dw_pcie_ep_linkdown(&pci->ep);
-+               pr_info("PCIE_CLIENT_HOT_RESET_CTRL after reset: %#x\n",
-+                       rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_HOT_RESET_CTRL));
-                /* Stop delaying link training. */
-                val = HIWORD_UPDATE_BIT(PCIE_LTSSM_APP_DLY2_DONE);
-                rockchip_pcie_writel_apb(rockchip, val,
-
-
-
-
-[   85.979567] rockchip-dw-pcie a40000000.pcie-ep: hot reset or link-down reset
-[   85.980210] PCIE_CLIENT_HOT_RESET_CTRL after reset: 0x12
-[   93.720413] rockchip-dw-pcie a40000000.pcie-ep: hot reset or link-down reset
-[   93.721074] PCIE_CLIENT_HOT_RESET_CTRL after reset: 0x12
-
-0x12 == bit 1 and bit 4 are set.
-
-bit 1: app_dly2_en
-bit 4: app_ltssm_enable_enhance
-
-
-
-I also looked at the downstream driver and they also only set it once
-during probe().
-
-
-When running the controller EP mode, we (the Linux driver) currently never
-reset the whole core after probe(), and as we can see above, the hardware
-itself also does not reset the app_dly2_en bit during a hot reset signal.
+So I think this patch is good as is.
+(Except for the citation style in the commit message which you didn't like :))
 
 
 Kind regards,
