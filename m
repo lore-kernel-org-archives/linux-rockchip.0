@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2DE5C7115B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 11:27:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81383C7115B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 11:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BanvfKdcHhpq35lxF7SATx0W2phonHU9JGddxSbPo60=; b=WU3XAuJoY32oe1v4YBTVIVraLB
-	tH30h6xvJZnW61Sl1hQrUNZwHk97VCghgh2ssi9UMDA0qBUzOrzwcIEdP4ZWQThoC8dNX55HfgIOg
-	zTzqlJgvHRIyupeYitAUoC7fVDWMKlZZSiU4sLTwar80Xf1wV5WCCU3fVEXrTjaGg67L/mMix9+sx
-	1WtceQs2aPaROQLBJfk7G+MKicV0y3OYSIKueDwyPu9r8Uwg4KOK59ajgmwont1Pnk8dfYXXU5ub5
-	dOy2dTZSnHR/+WUpOlWhPWJ9/LUX3U7+pJiKuCRqs71jw5DUUylpR3sBAE0e5V8yiwvS+myftUzcU
-	pvYzsPqw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Zc9WODY2ECeR2nnoLyX+VETDz44uK3pyzkT95GeEa18=; b=DPH2Zt8wtfcAKh
+	GYYmkcfEK7/ATjMCkaqCJ9sCsXPBLQlr2Ft8ErlVTRr7EuY49iCIVtL5d6ncI2WX3cQikrhTiURXY
+	46OluURG+QoARKA91Ie4iO+kln6w1ulR5d93LAJZZbp700mAAyq05nXNlPybBDLwO6tfxDjkNjqGV
+	jvxgbo0xeV6FHWtSBG8qV7jjqjfFTRLS547OfHDCAPFXAhiHymZZMGrS1SQnmxlohDKZexCEdaZKu
+	H6HSwTfqUmndm73IpZFW8oJAlIOgkQtK792R9kLeWTkHy1Mi7pBTHE7NkipDoU+oc1mX2aXgp6FXc
+	jqS30hcHCsLEcO4UAXCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSDQD-0000000CrU6-3q7x;
-	Thu, 19 Jun 2025 11:27:09 +0000
-Received: from out-182.mta1.migadu.com ([2001:41d0:203:375::b6])
+	id 1uSDQj-0000000CrZx-1MQN;
+	Thu, 19 Jun 2025 11:27:41 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSBqy-0000000CexF-2Bcz
-	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Jun 2025 09:46:41 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1750326388;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=95jwxwqOy3CE/suGZD6MlYCwgFQV2q5DD7APLcXDGSw=;
-	b=qBF6F/JFB8Ga+29xGShrQ+nv00Iv5P6Zpb4T/dk3e6MAJbO+H6+doGGxnsJfJI/kx0fgba
-	LpxYBlt/zc0ZxyJif1oMwDiMJa2RcXRGHRpLaLxrafWhFf3V0Vh+7RqAJQCUQwfRo8X7si
-	X0xwcrsDc9qzk1RPCPGkhrof7KLlyWVLEkl51JD73B8iW4qmHKoFatW4WrpoRqGSvpAClR
-	B9zyua4faYw4VV6P6C+tYUeI76n0bezZbhO9o7X0M0ecQ0TD9VFRS8HWMRmp7J4KWv1l/c
-	b34pOS6eG0FPqmk+YATMaGS1RL7N9JrziEtqd09cNbkXTkZ/gEMg38ZC+GAEKA==
-Date: Thu, 19 Jun 2025 11:46:15 +0200
-Message-Id: <DAQEX04P5320.CQDU7SL7AV4A@cknow.org>
-Cc: "Thomas Petazzoni" <thomas.petazzoni@bootlin.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Fix the PinePhone Pro DTS'
- panel description
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Olivier Benjamin" <olivier.benjamin@bootlin.com>, "Rob Herring"
- <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor
- Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
-References: <20250619-dtb_fixes-v2-1-abd711d11b67@bootlin.com>
-In-Reply-To: <20250619-dtb_fixes-v2-1-abd711d11b67@bootlin.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1uSBy6-0000000Cg8F-2Kpw;
+	Thu, 19 Jun 2025 09:54:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A65E55C5C27;
+	Thu, 19 Jun 2025 09:51:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98164C4CEEA;
+	Thu, 19 Jun 2025 09:53:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750326840;
+	bh=3kDiPSCG/YSn0QGi0c8Zra1rZG6c2gbaqXpd8Muw3N8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KfbyxoKV+C8IW2ITf7tcRxFv7ovSQRozIwhrvYVvfzncgmpFzwrsoijrTidHx4w9J
+	 ykg1odCt52H0hrPNksfyqDcR5qyGz+Me8RJQtR5m46Z6S4RbvGSWJBzfwrG7wZMGXB
+	 l4M6K9pk9Dea2wuiMRPLDdwkrnQs8j/FNz9dXUYguxKlUs5JDMzE9N/6CElXBx9c+9
+	 tABKRJA7WLRWCWgQZh/R9KmHu9LGFLVCc2cygWVM/uneYxsVAS3wyE3GwZhFmkK3zO
+	 KZUvm4TyaXfpzqGxHyWu1RHZpVd01N6aU8FvaRxGtT1s5J1Fq3JnRK0JepYrn/6O4r
+	 s81N+V/2KSkDQ==
+Date: Thu, 19 Jun 2025 11:53:55 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Delay link training after hot reset
+ in EP mode
+Message-ID: <aFPeMzLxbiXEOQCt@ryzen>
+References: <aFLHYfs1iDgwMdcp@ryzen>
+ <20250618195959.GA1207191@bhelgaas>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250618195959.GA1207191@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_024640_695456_791A4F69 
-X-CRM114-Status: GOOD (  20.40  )
+X-CRM114-CacheID: sfid-20250619_025402_684005_AA086E08 
+X-CRM114-Status: GOOD (  23.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,154 +74,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============9053577127315041427=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============9053577127315041427==
-Content-Type: multipart/signed;
- boundary=a3a566baaebf2efb32d488967dad63a47cda141ad75c7e052b59f3fe5c0e;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+On Wed, Jun 18, 2025 at 02:59:59PM -0500, Bjorn Helgaas wrote:
+> > 
+> > Well, because currently, we do NOT delay link training, and everything
+> > works as expected.
+> > 
+> > Most likely we are just lucky, because dw_pcie_ep_linkdown() calls
+> > dw_pcie_ep_init_non_sticky_registers(), which is quite a short function.
+> 
+> I'm just making the point that IIUC there's a race between link
+> training and any DBI accesses done by
+> dw_pcie_ep_init_non_sticky_registers() and potentially EPF callbacks,
+> and the time those paths take is immaterial.
+> 
+> If this is indeed a race and this patch is the fix, I think it's
+> misleading to describe it as "this path might take a long time and
+> lose the race."  We have to assume arbitrary delays can be added to
+> either path, so we can never rely on a path being "fast enough" to
+> avoid the race.
 
---a3a566baaebf2efb32d488967dad63a47cda141ad75c7e052b59f3fe5c0e
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+I agree 100%.
 
-Hi,
+When writing the commit message, we simply wanted to be transparent that we
+have not observed the problem that this fix (theoretical fix?) is solving.
 
-Thanks for working on upstreaming PPP things :-)
-
-On Thu Jun 19, 2025 at 7:21 AM CEST, Olivier Benjamin wrote:
-> Fix a few issues in the panel section of the PinePhone Pro DTS:
->   - add the second part of the Himax HX8394 LCD panel controller
->     compatible
->   - as proposed by Diederik de Haas, reuse the mipi_out and ports
->     definitions from rk3399-base.dtsi instead of redefining them
->   - add a pinctrl for the LCD_RST signal for LCD1, derived from
->     LCD1_RST, which is on GPIO4_D1, as documented on pages 11
->     and 16 of the PinePhone Pro schematic
->
-> Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
-> ---
-> Small fixes to the PinePhone Pro DTS to fit bindings and
-> suppress warnings at build.
-> ---
-> Changes in v2:
-> - Added the pinctrl definition for GPIO4_D1/LCD1_RST
-> - Incorporated Diederik de Haas' suggestion for defining mipi_out
-> - Squashed multiple patches into one
-> - Link to v1: https://lore.kernel.org/r/20250618-dtb_fixes-v1-0-e54797ad2=
-eba@bootlin.com
-> ---
->  .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 33 +++++++++++-----=
-------
->  1 file changed, 17 insertions(+), 16 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch=
-/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> index 04ba4c4565d0a205e2e46d7535c6a3190993621d..98aba146749998dd5a798aabe=
-d0fe844c474d1cf 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> @@ -463,29 +463,18 @@ &io_domains {
->  };
-> =20
->  &mipi_dsi {
-> -	status =3D "okay";
->  	clock-master;
-> -
-> -	ports {
-> -		mipi_out: port@1 {
-> -			#address-cells =3D <0>;
-> -			#size-cells =3D <0>;
-> -			reg =3D <1>;
-> -
-> -			mipi_out_panel: endpoint {
-> -				remote-endpoint =3D <&mipi_in_panel>;
-> -			};
-> -		};
-> -	};
-> +	status =3D "okay";
-> =20
->  	panel@0 {
-> -		compatible =3D "hannstar,hsd060bhw4";
-> +		compatible =3D "hannstar,hsd060bhw4", "himax,hx8394";
->  		reg =3D <0>;
->  		backlight =3D <&backlight>;
-> -		reset-gpios =3D <&gpio4 RK_PD1 GPIO_ACTIVE_LOW>;
-> -		vcc-supply =3D <&vcc2v8_lcd>;
->  		iovcc-supply =3D <&vcc1v8_lcd>;
->  		pinctrl-names =3D "default";
-> +		pinctrl-0 =3D <&lcd_reset_pin>;
-> +		reset-gpios =3D <&gpio4 RK_PD1 GPIO_ACTIVE_LOW>;
-> +		vcc-supply =3D <&vcc2v8_lcd>;
-> =20
->  		port {
->  			mipi_in_panel: endpoint {
-> @@ -495,6 +484,12 @@ mipi_in_panel: endpoint {
->  	};
->  };
-> =20
-> +&mipi_out {
-> +	mipi_out_panel: endpoint {
-> +		remote-endpoint =3D <&mipi_in_panel>;
-> +	};
-> +};
-> +
->  &pmu_io_domains {
->  	pmu1830-supply =3D <&vcc_1v8>;
->  	status =3D "okay";
-> @@ -507,6 +502,12 @@ pwrbtn_pin: pwrbtn-pin {
->  		};
->  	};
-> =20
-> +	lcd {
-> +		lcd_reset_pin: reset-pin {
-
-I don't know if there's a 'hard rule' for it, but I'd recommend to use
-``lcd1_rst_pin: lcd1-rst-pin {`` as that would match the naming from
-the schematics. I realize that some but not all (other) pinctrl nodes
-follow that 'rule', but it helps with traceability.
-
-> +			rockchip,pins =3D <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
->  	leds {
->  		red_led_pin: red-led-pin {
->  			rockchip,pins =3D <4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-
-Otherwise,
-
-Reviewed-by: Diederik de Haas <didi.debian@cknow.org>
-
-Cheers,
-  Diederik
-
---a3a566baaebf2efb32d488967dad63a47cda141ad75c7e052b59f3fe5c0e
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaFPcbQAKCRDXblvOeH7b
-boy+AQDbwzeOk3i0OYHIv6wu+lPogKc5TzKOKmCgkGkNRFumNwEAjC++J6IJV1V3
-YclMmumArJ0L1UN/PjW9uBrL/NoamwQ=
-=RIuv
------END PGP SIGNATURE-----
-
---a3a566baaebf2efb32d488967dad63a47cda141ad75c7e052b59f3fe5c0e--
+However, from reading the TRM (trust me, a lot of hours...), we are certain
+that this feature DLY2_EN + DLY2_DONE was implemented such that there would
+not be a race between link training and reinitializing registers via the DBI.
 
 
---===============9053577127315041427==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> 
+> Is the following basically what we're doing?
+> 
+>   Set PCIE_LTSSM_APP_DLY2_EN so the controller never automatically
+>   trains the link after a link-down interrupt.  That way any DBI
+>   updates done in the dw_pcie_ep_linkdown() path will happen while the
+>   link is still down.  Then allow link training by setting
+>   PCIE_LTSSM_APP_DLY2_DONE.
+
+Yes.
+
+s/link-down interrupt/link-down or hot reset interrupt/
+
+When Hot Reset or Link-down reset occurs, controller will assert
+smlh_req_rst_not as an early warning. This warning is an interrupt bit in
+Client Register group(link_req_rst_not_int).
+
+(It is the same IRQ, so we can't tell the difference, at least not from
+only looking at the IRQ status.)
+
+
+> 
+> We don't set PCIE_LTSSM_APP_DLY2_DONE anywhere in the initial probe
+> path.  Obviously the link must train in that case, so I guess
+> PCIE_LTSSM_APP_DLY2_EN only applies to the case of link state
+> transition from link-up to link-down?
+
+Yes.
+
+The register description for dly2_en:
+Set "1" to enable delaying the link training after Hot Reset.
+
+The register description for dly2_done:
+Set "1" to end the delaying of the link training after Hot Reset.
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============9053577127315041427==--
-
