@@ -4,65 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81383C7115B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 11:27:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB5D9C7115A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 11:27:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zc9WODY2ECeR2nnoLyX+VETDz44uK3pyzkT95GeEa18=; b=DPH2Zt8wtfcAKh
-	GYYmkcfEK7/ATjMCkaqCJ9sCsXPBLQlr2Ft8ErlVTRr7EuY49iCIVtL5d6ncI2WX3cQikrhTiURXY
-	46OluURG+QoARKA91Ie4iO+kln6w1ulR5d93LAJZZbp700mAAyq05nXNlPybBDLwO6tfxDjkNjqGV
-	jvxgbo0xeV6FHWtSBG8qV7jjqjfFTRLS547OfHDCAPFXAhiHymZZMGrS1SQnmxlohDKZexCEdaZKu
-	H6HSwTfqUmndm73IpZFW8oJAlIOgkQtK792R9kLeWTkHy1Mi7pBTHE7NkipDoU+oc1mX2aXgp6FXc
-	jqS30hcHCsLEcO4UAXCw==;
+	List-Owner; bh=zLPJBwJSCLt+9uvr+GJb2yL9ld4GHmL/gnxJyldY1Nw=; b=PYnG4HRcyTiIEY
+	qpTR4f0PYIkIVTTHzKzMntaGl4qy15bX1LQfSBlm2XRhxBU5L8lXf4ruI+vEZyBkh6ql9Vq7WiLfp
+	0wWPSwcDuHjFwpUUDsHEYSRnMRjuiy+jyXhVojc3SnBvauEf5FRwRlPfud2mYm79W27sQHFQuRhGH
+	4NisfC/AMuk1F7pU3dZFWPhDeXtdn2eAhsF1FtKihfoF/ehZQLOTsN764f/QBHZroWhfa4urLQSCX
+	QbOVoxEBL1mhmYh9q9hGkMoTpOZLVpZz/BqPEvvZfawy3TeAv/OR2fECBT/RjvaB4Uee+Djo9sF8m
+	NwPOTSF2wHUY/C0OVKGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSDQj-0000000CrZx-1MQN;
-	Thu, 19 Jun 2025 11:27:41 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uSDQt-0000000Crbu-2oOT;
+	Thu, 19 Jun 2025 11:27:51 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSBy6-0000000Cg8F-2Kpw;
-	Thu, 19 Jun 2025 09:54:03 +0000
+	id 1uSByM-0000000CgDG-3Hrr;
+	Thu, 19 Jun 2025 09:54:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A65E55C5C27;
-	Thu, 19 Jun 2025 09:51:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98164C4CEEA;
-	Thu, 19 Jun 2025 09:53:58 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 2C9F64A6D6;
+	Thu, 19 Jun 2025 09:54:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 426C3C4CEEA;
+	Thu, 19 Jun 2025 09:54:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750326840;
-	bh=3kDiPSCG/YSn0QGi0c8Zra1rZG6c2gbaqXpd8Muw3N8=;
+	s=k20201202; t=1750326857;
+	bh=liBrC581olewIxjbEjqmezkc4FAvhL6bE6utTt8dFjU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KfbyxoKV+C8IW2ITf7tcRxFv7ovSQRozIwhrvYVvfzncgmpFzwrsoijrTidHx4w9J
-	 ykg1odCt52H0hrPNksfyqDcR5qyGz+Me8RJQtR5m46Z6S4RbvGSWJBzfwrG7wZMGXB
-	 l4M6K9pk9Dea2wuiMRPLDdwkrnQs8j/FNz9dXUYguxKlUs5JDMzE9N/6CElXBx9c+9
-	 tABKRJA7WLRWCWgQZh/R9KmHu9LGFLVCc2cygWVM/uneYxsVAS3wyE3GwZhFmkK3zO
-	 KZUvm4TyaXfpzqGxHyWu1RHZpVd01N6aU8FvaRxGtT1s5J1Fq3JnRK0JepYrn/6O4r
-	 s81N+V/2KSkDQ==
-Date: Thu, 19 Jun 2025 11:53:55 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Delay link training after hot reset
- in EP mode
-Message-ID: <aFPeMzLxbiXEOQCt@ryzen>
-References: <aFLHYfs1iDgwMdcp@ryzen>
- <20250618195959.GA1207191@bhelgaas>
+	b=Z5pcnnELNdgWWTpUPqvWO/Rjn59mzJal3u0PTtDti6dHWFKIeZ9bYaddL+4kJYJsY
+	 +imfxJt+pi3/S79q8A25sV833O7pajN7iYJR4F8wzkP04ZeRLpzC2N26SF0XiYQyzz
+	 0SXoZguPVAbHYQ1idOBHeuHxYh8hXzLDqWYiF4dSpWcFtp8R4QdGnLfQUu3CSUjR6D
+	 xTXQIFzHKKXhYyB5/rzqzgdG9vKqbHPdS6ccjWvYPtlTeKNieMbs80rtW0ls0Hyvm0
+	 XwsTe6eYbyGy2gWPm3phDYEtrviPH+8L+0qMtYrwUfu6XqQHSJsXFjKL9z46UICmKN
+	 z+oIUFNTFph8g==
+Date: Thu, 19 Jun 2025 11:54:15 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Quentin Schulz <foss+kernel@0leil.net>
+Subject: Re: [PATCH v3 1/5] dt-bindings: mfd: rk806: allow to customize PMIC
+ reset mode
+Message-ID: <20250619-unselfish-gorilla-of-joy-13fb93@kuoka>
+References: <20250618-rk8xx-rst-fun-v3-0-081f02d3d348@cherry.de>
+ <20250618-rk8xx-rst-fun-v3-1-081f02d3d348@cherry.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250618195959.GA1207191@bhelgaas>
+In-Reply-To: <20250618-rk8xx-rst-fun-v3-1-081f02d3d348@cherry.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_025402_684005_AA086E08 
-X-CRM114-Status: GOOD (  23.39  )
+X-CRM114-CacheID: sfid-20250619_025418_843028_04979717 
+X-CRM114-Status: GOOD (  16.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,78 +66,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Daniel Semkowicz <dse@thaumatec.com>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>, Lee Jones <lee@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Lukasz Czechowski <lukasz.czechowski@thaumatec.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 18, 2025 at 02:59:59PM -0500, Bjorn Helgaas wrote:
-> > 
-> > Well, because currently, we do NOT delay link training, and everything
-> > works as expected.
-> > 
-> > Most likely we are just lucky, because dw_pcie_ep_linkdown() calls
-> > dw_pcie_ep_init_non_sticky_registers(), which is quite a short function.
+On Wed, Jun 18, 2025 at 12:32:40PM GMT, Quentin Schulz wrote:
+> From: Quentin Schulz <quentin.schulz@cherry.de>
 > 
-> I'm just making the point that IIUC there's a race between link
-> training and any DBI accesses done by
-> dw_pcie_ep_init_non_sticky_registers() and potentially EPF callbacks,
-> and the time those paths take is immaterial.
+> The RK806 PMIC allows to configure its reset/restart behavior whenever
+> the PMIC is reset either programmatically or via some external pins
+> (e.g. PWRCTRL or RESETB).
 > 
-> If this is indeed a race and this patch is the fix, I think it's
-> misleading to describe it as "this path might take a long time and
-> lose the race."  We have to assume arbitrary delays can be added to
-> either path, so we can never rely on a path being "fast enough" to
-> avoid the race.
-
-I agree 100%.
-
-When writing the commit message, we simply wanted to be transparent that we
-have not observed the problem that this fix (theoretical fix?) is solving.
-
-However, from reading the TRM (trust me, a lot of hours...), we are certain
-that this feature DLY2_EN + DLY2_DONE was implemented such that there would
-not be a race between link training and reinitializing registers via the DBI.
-
-
+> The following modes exist:
+>  - 0; restart PMU,
+>  - 1; reset all power off reset registers and force state to switch to
+>    ACTIVE mode,
+>  - 2; same as mode 1 and also pull RESETB pin down for 5ms,
 > 
-> Is the following basically what we're doing?
+> For example, some hardware may require a full restart (mode 0) in order
+> to function properly as regulators are shortly interrupted in this mode.
 > 
->   Set PCIE_LTSSM_APP_DLY2_EN so the controller never automatically
->   trains the link after a link-down interrupt.  That way any DBI
->   updates done in the dw_pcie_ep_linkdown() path will happen while the
->   link is still down.  Then allow link training by setting
->   PCIE_LTSSM_APP_DLY2_DONE.
+> This is the case for RK3588 Jaguar and RK3588 Tiger which have a
+> companion microcontroller running on an independent power supply and
+> monitoring the PMIC power rail to know the state of the main system.
+> When it detects a restart, it resets its own IPs exposed to the main
+> system as if to simulate its own reset. Failing to perform this fake
+> reset of the microcontroller may break things (e.g. watchdog not
+> automatically disabled, buzzer still running until manually disabled,
+> leftover configuration from previous main system state, etc...).
 
-Yes.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-s/link-down interrupt/link-down or hot reset interrupt/
+Best regards,
+Krzysztof
 
-When Hot Reset or Link-down reset occurs, controller will assert
-smlh_req_rst_not as an early warning. This warning is an interrupt bit in
-Client Register group(link_req_rst_not_int).
-
-(It is the same IRQ, so we can't tell the difference, at least not from
-only looking at the IRQ status.)
-
-
-> 
-> We don't set PCIE_LTSSM_APP_DLY2_DONE anywhere in the initial probe
-> path.  Obviously the link must train in that case, so I guess
-> PCIE_LTSSM_APP_DLY2_EN only applies to the case of link state
-> transition from link-up to link-down?
-
-Yes.
-
-The register description for dly2_en:
-Set "1" to enable delaying the link training after Hot Reset.
-
-The register description for dly2_done:
-Set "1" to end the delaying of the link training after Hot Reset.
-
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
