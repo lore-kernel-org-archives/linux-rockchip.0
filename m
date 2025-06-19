@@ -4,66 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5EB6C71136
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 05:23:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41567C71136
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 06:46:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QzeYd7PcQnr95lr41C5Gd2JsIEpUkQo95v6EJ0ZsW54=; b=yWz8sOuCFvaG54
-	XXsPvXkdntwOHe3rgQ7hLpNG5tHQLsU+/01nrjQcztGafxPGh3PFccb1+OzacgL11Jj57qJ0etH0l
-	joakqdQzI045o1zDCwniI+/uHXmCTXLSA0NitwLXn+Nk8Okg/UzRUTNWS6sCFFasuD52E0PCnAdU3
-	To4ZesUWrDC93/2m7gqlt0iifm/dT4j0yJEgxd0jJEZCJoWvp2Zi2CO9ZFRV70r8sbrcuiOZGu+uQ
-	Ohcj6a1SqMcQaZDYAOGzxX+MEbur4cpsqvtKMtNffX3/TkSHdXQ8Z3C8WY2qmc7uUiVcYObsHjvtO
-	jCj7Cqbmg0v4EX87g6Qw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+hBLFy+EPrsUWmyaWwfyyg0I6WWvZdO0N54ePEohWCQ=; b=GNRTpQt/O0LUMV
+	+WCCwIpSdb/GXs1MZomXOjpLgGREWByvyfBuLApnbipHWOGzZZxEcGiNn/xD/UIzSB5ukUTlSKOsr
+	0ebhExNNjB0drAl8kBgvi7Dw+GAV2A2MIJvh3d/dHaN1q0JFmY6/otPRYKoC4Zy07xFc7+ZhtxmHN
+	G3e0SBlq/5lK09dmIRZyyj7W3xo31+pkhDCHlZ0sQjpVCbXT2RflZOh/IserIelFNWMl9dRIaTIUG
+	dLAbu9621IzxM0OEvEMDg1pH3PyTkDva6E5p1kmF1tKF8RbGOEPOG2SYIrNoiOOoX+NUMc+vJPnzJ
+	1hfTJBhDJFptFrLWo/DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uS7kP-0000000C39k-3wr0;
-	Thu, 19 Jun 2025 05:23:37 +0000
-Received: from relay7-d.mail.gandi.net ([217.70.183.200])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uS7i9-0000000C2wh-35Zg;
-	Thu, 19 Jun 2025 05:21:20 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 6814043994;
-	Thu, 19 Jun 2025 05:21:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1750310473;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=JLmMakORo/bjvYHh1BYejrDyt6i6mfqrJjTJJ0Tsbvw=;
-	b=HKuq5902ViCbbhOdChQM+LrEMpXkWrKsQymSO8dQbIzxyRYE3nw/7iYX8nU2WAzol1eLPZ
-	Jg17EctvIU+nKZ8UkMdNSMPNnF6OYSNWJIMLa0eBr/TwttEZQSFIw+QOvLkHdjjkZpRTSu
-	wHivS2Q82cxx2wPwsN4/EMqhUOMWe+uVShWQusutjUlnbBBJULy6D8SFUHjzujVq/4bP9Z
-	uUCEDZZBW0E/zNT7K6YjVEKlvTdmnDtTBUgQ2l/QaAW1gXNEmxwhZm7V1aCZ0r7ONQILYN
-	h/h9ycMQUWBRBcdbDzkbrYev9i6l7z9BMbE9SBhi1leNG9tbPR0TQHKsRwji5A==
-From: Olivier Benjamin <olivier.benjamin@bootlin.com>
-Date: Thu, 19 Jun 2025 07:21:05 +0200
-Subject: [PATCH v2] arm64: dts: rockchip: Fix the PinePhone Pro DTS' panel
- description
+	id 1uS92H-0000000CCMG-3qwn;
+	Thu, 19 Jun 2025 06:46:09 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uS8w3-0000000CAuf-44qu;
+	Thu, 19 Jun 2025 06:39:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=vB
+	8wLIz0WHvujVMHowKC0Q/8HNa8Qgp3eo7drb5rVz4=; b=C4s0OJO+Ikm4wxq+uu
+	gehZUv4bdqSAzq4O3CqCynf8NYH7oW785lT+r/Zd9W3ay2Y+bJzquv6/Vp98APQE
+	T56iue+3JgqqQ5yx8neUaafRN9YArz5blAqVkQ8OhQUqogFJiePKHHGU+XaLHdTS
+	jeTFTo1c4NN09r0ruRBN2qJlU=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wD312OGsFNoUtqyAQ--.3973S6;
+	Thu, 19 Jun 2025 14:39:13 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: dmitry.baryshkov@oss.qualcomm.com,
+	heiko@sntech.de
+Subject: [PATCH v4 4/9] dt-bindings: display: simple-bridge: Add ra620 compatible
+Date: Thu, 19 Jun 2025 14:38:50 +0800
+Message-ID: <20250619063900.700491-5-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250619063900.700491-1-andyshrk@163.com>
+References: <20250619063900.700491-1-andyshrk@163.com>
 MIME-Version: 1.0
-Message-Id: <20250619-dtb_fixes-v2-1-abd711d11b67@bootlin.com>
-X-B4-Tracking: v=1; b=H4sIAECeU2gC/22MwQ7CIBAFf6XZsxggUKwn/8M0ppTVbqLQACGah
- n8Xe/Y48yZvg4SRMMG52yBioUTBN5CHDuZl8g9k5BqD5FLzXpyYy/Z2pzcmNpheadW8kAitXyP
- uQ8uvY+OFUg7xs18X8bP/XopgnKFWZjCTk2iniw0hP8kf5/CCsdb6BfW29wSkAAAA
-X-Change-ID: 20250618-dtb_fixes-97645402512e
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Olivier Benjamin <olivier.benjamin@bootlin.com>
-X-Mailer: b4 0.14.2
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddvgdegieeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkvfevofesthejredtredtjeenucfhrhhomhepqfhlihhvihgvrhcuuegvnhhjrghmihhnuceoohhlihhvihgvrhdrsggvnhhjrghmihhnsegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeetkefhvdelleeuhefgvdekveffieelhfeujefgtdejueelgfeltdefffehtddvfeenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecukfhppedvrgdtudemvgefgeemvggtfeekmedvgegvtdemfhehtggvmehffeegvdemieehkeejmehfieehieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtudemvgefgeemvggtfeekmedvgegvtdemfhehtggvmehffeegvdemieehkeejmehfieehiedphhgvlhhopegludelvddrudeikedruddrvddtngdpmhgrihhlfhhrohhmpeholhhivhhivghrrdgsvghnjhgrmhhinhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepuddtpdhrtghpthhtohepuggvvhhitggvthhrvggvsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheprhhosghhsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigq
- dhrohgtkhgthhhipheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehthhhomhgrshdrphgvthgriiiiohhnihessghoohhtlhhinhdrtghomhdprhgtphhtthhopegtohhnohhrodgutheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidqrghrmhdqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtohephhgvihhkohesshhnthgvtghhrdguvgdprhgtphhtthhopeholhhivhhivghrrdgsvghnjhgrmhhinhessghoohhtlhhinhdrtghomh
-X-GND-Sasl: olivier.benjamin@bootlin.com
+X-CM-TRANSID: _____wD312OGsFNoUtqyAQ--.3973S6
+X-Coremail-Antispam: 1Uf129KBjvdXoWrZw1UZrWxKw4DCw4kKF18Grg_yoWDAFc_X3
+	Z7Aw1UJr1FqasYgFs8ZFs7Gry3Xw48KrWrCr10yrs7Ar4S934DKa97J34rGr1rAF1I9Fn7
+	ur1fW39rCwsrujkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8N_-PUUUUU==
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkBVxXmhTsFgHLwAAsR
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_222118_543188_091DB013 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20250618_233944_342880_91CEFCC9 
+X-CRM114-Status: UNSURE (   7.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,101 +67,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix a few issues in the panel section of the PinePhone Pro DTS:
-  - add the second part of the Himax HX8394 LCD panel controller
-    compatible
-  - as proposed by Diederik de Haas, reuse the mipi_out and ports
-    definitions from rk3399-base.dtsi instead of redefining them
-  - add a pinctrl for the LCD_RST signal for LCD1, derived from
-    LCD1_RST, which is on GPIO4_D1, as documented on pages 11
-    and 16 of the PinePhone Pro schematic
+From: Andy Yan <andy.yan@rock-chips.com>
 
-Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
----
-Small fixes to the PinePhone Pro DTS to fit bindings and
-suppress warnings at build.
----
-Changes in v2:
-- Added the pinctrl definition for GPIO4_D1/LCD1_RST
-- Incorporated Diederik de Haas' suggestion for defining mipi_out
-- Squashed multiple patches into one
-- Link to v1: https://lore.kernel.org/r/20250618-dtb_fixes-v1-0-e54797ad2eba@bootlin.com
----
- .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 33 +++++++++++-----------
- 1 file changed, 17 insertions(+), 16 deletions(-)
+RA620 is a DP to HDMI bridge converter from RADXA, which first
+found be used on ROCK 5 ITX.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-index 04ba4c4565d0a205e2e46d7535c6a3190993621d..98aba146749998dd5a798aabed0fe844c474d1cf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-@@ -463,29 +463,18 @@ &io_domains {
- };
- 
- &mipi_dsi {
--	status = "okay";
- 	clock-master;
--
--	ports {
--		mipi_out: port@1 {
--			#address-cells = <0>;
--			#size-cells = <0>;
--			reg = <1>;
--
--			mipi_out_panel: endpoint {
--				remote-endpoint = <&mipi_in_panel>;
--			};
--		};
--	};
-+	status = "okay";
- 
- 	panel@0 {
--		compatible = "hannstar,hsd060bhw4";
-+		compatible = "hannstar,hsd060bhw4", "himax,hx8394";
- 		reg = <0>;
- 		backlight = <&backlight>;
--		reset-gpios = <&gpio4 RK_PD1 GPIO_ACTIVE_LOW>;
--		vcc-supply = <&vcc2v8_lcd>;
- 		iovcc-supply = <&vcc1v8_lcd>;
- 		pinctrl-names = "default";
-+		pinctrl-0 = <&lcd_reset_pin>;
-+		reset-gpios = <&gpio4 RK_PD1 GPIO_ACTIVE_LOW>;
-+		vcc-supply = <&vcc2v8_lcd>;
- 
- 		port {
- 			mipi_in_panel: endpoint {
-@@ -495,6 +484,12 @@ mipi_in_panel: endpoint {
- 	};
- };
- 
-+&mipi_out {
-+	mipi_out_panel: endpoint {
-+		remote-endpoint = <&mipi_in_panel>;
-+	};
-+};
-+
- &pmu_io_domains {
- 	pmu1830-supply = <&vcc_1v8>;
- 	status = "okay";
-@@ -507,6 +502,12 @@ pwrbtn_pin: pwrbtn-pin {
- 		};
- 	};
- 
-+	lcd {
-+		lcd_reset_pin: reset-pin {
-+			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	leds {
- 		red_led_pin: red-led-pin {
- 			rockchip,pins = <4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+This chip can be used without involving software.
+
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+---
+
+(no changes since v3)
+
+Changes in v3:
+- First introduced in this version.
+
+ .../devicetree/bindings/display/bridge/simple-bridge.yaml        | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/display/bridge/simple-bridge.yaml b/Documentation/devicetree/bindings/display/bridge/simple-bridge.yaml
+index 43cf4df9811a5..421f99ca42d9b 100644
+--- a/Documentation/devicetree/bindings/display/bridge/simple-bridge.yaml
++++ b/Documentation/devicetree/bindings/display/bridge/simple-bridge.yaml
+@@ -28,6 +28,7 @@ properties:
+       - enum:
+           - adi,adv7123
+           - dumb-vga-dac
++          - radxa,ra620
+           - ti,opa362
+           - ti,ths8134
+           - ti,ths8135
 -- 
-Olivier Benjamin <olivier.benjamin@bootlin.com>
+2.43.0
 
 
 _______________________________________________
