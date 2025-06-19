@@ -4,72 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB3FC7115A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 17:02:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D999AC77B7C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 17:02:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YO0y8eQbNVU7TbW3FN79OdPehLTzeSJtIj4WNPtu0XI=; b=y7istCNhjWm1LA
-	+/b8W+PXqv19V/Cmo3ptehWMaBa/fWH3fx8NXbLOOySJWtKztHgS4VQus5wWDbeEBKxoHfJGS2fEN
-	DS80YSQ3mF8TIJQxEZY3Nm1Z44zlvHaVeXOcRS90C6OExraOJAyQaCuzb5VtUXQTEAQkizAVeAg4o
-	bKW0G709ijbEjtUpX3sDw/3XU/wdG2bsPG28i8V72T5tLNO5qdh7X9hH4o0AxeFWAc4Mkq/HRUYsQ
-	2SLlOWdWgRo9zcGZbrht19JS0r30rQkYVyY8CIdZSDZhkxsohV/e9PaE+U60h5oWXsP523sBR6Pgs
-	FvyxTdTiAcJ5VJnjDfEw==;
+	List-Owner; bh=BtLzq32s+XAcOZBDwW+IsnlJLt87+JsoqKLG9+Jm3Ac=; b=ptNilD65A5Y/n6
+	9CXsBv8flYb7zzEEIq17Gp2kvFBBSF5CVo4oiTrJI5SPGmVtk3rGsVF2XdSTisFVHgzk3cKlIupcm
+	FB7CGRHZkFY1jD5X5lgTBU/KpKdjh6ErUknsxdFHhwczDiEJbjRE26e/hcrC6ivi2iBBhJX8Cj80C
+	LDWHYL8c3oqDGmoXWJSNmGlpVZD+aXNLfzGM2tCA9vi/Nwa7K1PDh1stwVNhCNfvQkergmfzopToq
+	RrXSM6oSF9ZEl74gVQ1isFy8Cm4Oiv9w0wEaTfUkiF95UKNPJL6iWi4Le7DrS6aGMMtoImAX+42NX
+	S2uCQ+cQDB8eKCovtVsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSIee-0000000DenM-1uMY;
-	Thu, 19 Jun 2025 17:02:24 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uSIed-0000000Dem4-1CbK;
+	Thu, 19 Jun 2025 17:02:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSF4L-0000000D8AZ-12DB;
-	Thu, 19 Jun 2025 13:12:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750338759;
-	bh=+NY3GCsxRLO2Jbz8nrVqCE9qh9gb1hvQsPE9AeSJ0ZU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UY61/sczAvge80wz748vFwuQ6OzGS4j1WdYhZxZhrLD6MyfKDIwoTGaa5Ssv48URQ
-	 dsgAwzFx3Qr0dw99tTzk9z6X33RzsWhVVX5LVcend8D5X1Y63anVx/E4EDTHW/HBeD
-	 S2ve/LhEsvDxbJkmsUIvZc37PjGthdguGB6gKETGH0TN0ZdtqraNXdJXFucmhVoTpj
-	 EKINlxqgj8mXSsKHBq1rURqXaeXIxH8fblM3dGjsbORBagmhg+/A721dPnbhJkJi/k
-	 baUOLy26i4BqfzZpbdi6NtvTCy/lB6yd/GV3SVeGROvuvpv3Aix9zvwxrzog7kZDJi
-	 IomGV8QPR5fNQ==
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ba4e:a6e2:6d63:7f02])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6774717E0CE6;
-	Thu, 19 Jun 2025 15:12:39 +0200 (CEST)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	nicolas.dufresne@collabora.com,
-	jgg@ziepe.ca
-Cc: iommu@lists.linux.dev,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v3 4/5] arm64: dts: rockchip: Add verisilicon IOMMU node on RK3588
-Date: Thu, 19 Jun 2025 15:12:25 +0200
-Message-ID: <20250619131232.69208-5-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250619131232.69208-1-benjamin.gaignard@collabora.com>
-References: <20250619131232.69208-1-benjamin.gaignard@collabora.com>
+	id 1uSEoH-0000000D6dB-2Wf1;
+	Thu, 19 Jun 2025 12:56:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 46A1F5C677A;
+	Thu, 19 Jun 2025 12:53:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC06DC4CEEA;
+	Thu, 19 Jun 2025 12:56:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750337764;
+	bh=61z3Z9ZUMVuGadXMmxoys/sL/Hu56s62dGvdkITuqjY=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=W3OMvFyJJlwm4NWv+4YydZ9uOtxHp04NLHXzOaghRPApC1xVT88UHNPr+Nw4Zv2tS
+	 HXYoZns4xPKpwyaiVZfZIqh0KlCyxBvRUEFBgecPNPowT9v9g9baPxFbKFrCfe3BLR
+	 MHWzNIE+JG7UeaQh7U92F6O/RcdqC5T6PM2QP0eMkSX2h/k1kIw2jHstyjAo2FBiLO
+	 XArxqHEsabqTVdpJf/+TCjOa9ajuvlqiN1z7V6965tFRuDFKYwXWJEfhEnbLIHu52r
+	 NhWZ1j+66E/2418KS6turkmp032w1yXfdzjTtD0bMny0Yv8F9fcgEvdqqqY4uwQJ5k
+	 5Htx57H4CZl2Q==
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: lpieralisi@kernel.org, bhelgaas@google.com, kwilczynski@kernel.org, 
+ shawn.lin@rock-chips.com, heiko@sntech.de, Hans Zhang <18255117159@163.com>
+Cc: robh@kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20250607154913.805027-1-18255117159@163.com>
+References: <20250607154913.805027-1-18255117159@163.com>
+Subject: Re: (subset) [PATCH 0/2] PCI: Consolidate PCIe message routing
+ definitions and remove driver-specific duplicates
+Message-Id: <175033776037.16241.1043152602736525633.b4-ty@kernel.org>
+Date: Thu, 19 Jun 2025 18:26:00 +0530
 MIME-Version: 1.0
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_061241_428405_6862561E 
-X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-CacheID: sfid-20250619_055605_682578_611AFCA7 
+X-CRM114-Status: UNSURE (   5.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,42 +75,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the device tree node for the Verisilicon IOMMU present
-in the RK3588 SoC.
-This IOMMU handles address translation for the VPU hardware blocks.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
-changes in version 3:
-- Update DT to use "rockchip,rk3588-iommu-1.2" compatible
+On Sat, 07 Jun 2025 23:49:11 +0800, Hans Zhang wrote:
+> This series consolidates PCIe message routing definitions into the common
+> PCI core header, eliminating redundant enums in the Cadence and Rockchip
+> drivers. By using standardized macros (PCIE_MSG_TYPE_R_* and
+> PCIE_MSG_CODE_*) from drivers/pci/pci.h, we ensure alignment with the PCIe
+> r6.0 specification, reduce code duplication, and improve maintainability
+> across the PCI subsystem.
+> 
+> [...]
 
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Applied, thanks!
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 70f03e68ba55..ab97f06eea74 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1263,6 +1263,17 @@ av1d: video-codec@fdc70000 {
- 		clock-names = "aclk", "hclk";
- 		power-domains = <&power RK3588_PD_AV1>;
- 		resets = <&cru SRST_A_AV1>, <&cru SRST_P_AV1>, <&cru SRST_A_AV1_BIU>, <&cru SRST_P_AV1_BIU>;
-+		iommus = <&av1d_mmu>;
-+	};
-+
-+	av1d_mmu: iommu@fdca0000 {
-+		compatible = "verisilicon,iommu","rockchip,rk3588-iommu-1.2";
-+		reg = <0x0 0xfdca0000 0x0 0x600>;
-+		interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
-+		clock-names = "core", "iface";
-+		#iommu-cells = <0>;
-+		power-domains = <&power RK3588_PD_AV1>;
- 	};
- 
- 	vop: vop@fdd90000 {
+[2/2] PCI: rockchip: Remove redundant PCIe message routing definitions
+      commit: 1a69c63fdf1c9095e132096081e27ac85a4d48a5
+
+Best regards,
 -- 
-2.43.0
+Manivannan Sadhasivam <mani@kernel.org>
 
 
 _______________________________________________
