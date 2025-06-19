@@ -4,61 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62C57C7115C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 15:48:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 999A9C7115A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 15:49:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5atHashePMJHBhNJObDsMwbr5SVCmpxjtO8mLeY6q18=; b=GJFFh2Beum6dny
-	1c1+67b3WG36kBre4AS/fgpT7hP1lQfn8aLLW15tR/TcamaRxtcVbu+5fdmDP3PAg6+dNWmI2I/NO
-	uBKRgiQOdMsulUffv1xI6blWAD2QcO0+uwZavFXljxNjdPdwaRAZ9qenCdJnk8HRvn4Jb9IpQKsF+
-	fYvkcb25dJSCnWTScfuB8FJBO1DjdhVqz23uXionYePub+Gto1vR5iUXvEtTEeLJkX8PuCFhtsmRE
-	viQfkd3o/+/Hpdw2i4CDWTfuz8P1v2jXIaw72MuH3yScoX4VzaGLUk9btGLC9nZZxbPjr0upJPu8w
-	4IO6AFgN7OJvihlfm2ew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=KxOrmJuvwCACiDkia+2IKmRWoZnTHvbBQ0cNmd04Mbc=; b=AG5
+	NaW5l7r8Wi9H2fGg/PkTPLKZL6Df51LYQN56A9UkgRpFuOUXd1JeoIttgtgJ24zg0AhGzeIF9R0Ou
+	lrUXkOEtJh5MhsMw4E6692pzJZexemFx6+GOiI5HDnrUEJTY7e9+NJk12c4zubZMj34Wh4BQ11QXR
+	FClxkwAvS6POCfm2HlgUv3ZZUAt0wNzLGgWx8wcp4n0u6zEEE5R65v3YxCGOlacZai1PtivhsFsBw
+	juws8m7BdG7jmw3Xpuq9zOUr+w7d52nia/iaQzG1Z3yVb6jydA15xwcF3pEeIrtkcARp+LXruYYFk
+	9x0GIT0gxs/XGyKyr1iSvdEgMGKe8bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSHVE-0000000DXBJ-2j9z;
-	Thu, 19 Jun 2025 15:48:36 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uSHVf-0000000DXn5-18Ue;
+	Thu, 19 Jun 2025 15:49:03 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSEkj-0000000D6Dn-45Yx;
-	Thu, 19 Jun 2025 12:52:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id AC2E2A54422;
-	Thu, 19 Jun 2025 12:52:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E7DAC4CEEA;
-	Thu, 19 Jun 2025 12:52:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750337544;
-	bh=p9Kau10uglpH75TFRcHGcWbbB8CHO/pVjhJTQAlCcVw=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=WiOvT/D5zxTuexZvAyuVgsA0F+9yZIE6u3Zgr6ALQOfrvBis0ZINnwvApXTdKxGYW
-	 fZKk6eOiHg1g5eXjM2was9KnhC7QWn/uWu7W4B/iCBQiVnr4DQZOLs1hDynZjQD6TM
-	 CAE1nSXC4JXZd6ib2Z9TgDbh0sNIgzCEkeHwKy057ffn4QHb//5hyRPQ5tD3WPWtUj
-	 P9qQt6MHNnUfO2Fpe7dtRrfVwdGSu9Dx9YBPpgKz40yxJam5kT+gKbYcuWY6px1sCN
-	 7FOYfCx0/UhmZ1SO5ekxBLrVkedIho7AZxPMM/AMTMGantP1JoRnYICkQhxPqBhhxR
-	 41NflEXNBbfTg==
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: lpieralisi@kernel.org, bhelgaas@google.com, kwilczynski@kernel.org, 
- shawn.lin@rock-chips.com, heiko@sntech.de, Hans Zhang <18255117159@163.com>
-Cc: robh@kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20250607154913.805027-1-18255117159@163.com>
-References: <20250607154913.805027-1-18255117159@163.com>
-Subject: Re: (subset) [PATCH 0/2] PCI: Consolidate PCIe message routing
- definitions and remove driver-specific duplicates
-Message-Id: <175033754020.15449.12159303573503323127.b4-ty@kernel.org>
-Date: Thu, 19 Jun 2025 18:22:20 +0530
+	id 1uSF4K-0000000D8AL-2i4P;
+	Thu, 19 Jun 2025 13:12:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1750338757;
+	bh=Ork85X//Hh9e5Enb36KwQRqXelZ7oSr9ZRWSSzEpQ7k=;
+	h=From:To:Cc:Subject:Date:From;
+	b=iTr9XAn4jvk5BZir348XWWxi2oAsbZH9f8i1/44hpdnevwibIx6O4tBTxRUgIKLoM
+	 Slm1yEbcZ/hQxdJ5C6+27qnwa9PLfIpphg1pLqFPlNof60zCpTn9SBHhI4tuVJsLAE
+	 5S3Fi2SZU5uY6ab1W+L1pYX+Ml+aDksUPJlfr6hVBzIn2fTZi20nuJMRAu88oitk2n
+	 VajsAfEgnomxFXn0dGdWKYBdxshHPz3ksTXz6ddkuhu99JwHLIvG2FWs3cEmZqlHdc
+	 6Irkih+YYpOwBr6BsGkFrXch1qK7Nau4oSHr2vGrAxBEf9hDmg1LtaGEUL9z7jCenx
+	 xAvAqKWWUY4gQ==
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ba4e:a6e2:6d63:7f02])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0FC0C17E05C1;
+	Thu, 19 Jun 2025 15:12:37 +0200 (CEST)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	nicolas.dufresne@collabora.com,
+	jgg@ziepe.ca
+Cc: iommu@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v3 0/5]  Add support for Verisilicon IOMMU used by media codec blocks
+Date: Thu, 19 Jun 2025 15:12:21 +0200
+Message-ID: <20250619131232.69208-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_055226_086864_0ACC8129 
-X-CRM114-Status: UNSURE (   5.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250619_061240_845989_2C5B9372 
+X-CRM114-Status: GOOD (  19.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,33 +79,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5441223258856977743=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+--===============5441223258856977743==
+Content-Type: text/plain; charset=y
+Content-Transfer-Encoding: 8bit
 
-On Sat, 07 Jun 2025 23:49:11 +0800, Hans Zhang wrote:
-> This series consolidates PCIe message routing definitions into the common
-> PCI core header, eliminating redundant enums in the Cadence and Rockchip
-> drivers. By using standardized macros (PCIE_MSG_TYPE_R_* and
-> PCIE_MSG_CODE_*) from drivers/pci/pci.h, we ensure alignment with the PCIe
-> r6.0 specification, reduce code duplication, and improve maintainability
-> across the PCI subsystem.
-> 
-> [...]
+Hi all,
 
-Applied, thanks!
+This patch series adds support for the Verisilicon IOMMU, which is found in front
+of hardware encoder and decoder blocks in several SoCs using Verisilicon IP. 
+A first implementation of this IOMMU is available on the Rockchip RK3588 SoC.
 
-[1/2] PCI: cadence: Replace private message routing enums with PCI core definitions
-      commit: f28413fe0899591492d8ca3cdf5fd35558d9c05d
+Rockchip provides a driver for this hardware in their 6.1 kernel branch:
+https://github.com/rockchip-linux/kernel/blob/develop-6.1/drivers/iommu/rockchip-iommu-av1d.c
 
-Best regards,
+This series includes:
+- a new binding for the Verisilicon IOMMU
+- a basic driver implementation
+- DT updates for RK3588
+
+The driver was forward-ported from Rockchip’s 6.1 implementation, 
+the prefix was renamed to vsi for generality, and several fixes were applied.
+
+AV1 decoding was tested using the stateless VPU driver and Fluster.
+The test results show a score of 205/239, which confirms that no regressions
+were introduced by this series.
+
+Feedback and testing welcome.
+
+changes in version 3:
+- Change compatible to "rockchip,rk3588-iommu-1.2"
+- Fix compatible in .yaml
+- Update DT and driver to use "rockchip,rk3588-iommu-1.2" compatible
+- Set CONFIG_VSI_IOMMU as module in defconfig
+- Create an identity domain for the driver
+- Fix double flush issue
+- Rework attach/detach logic
+- Simplify xlate function
+- Discover iommu device like done in ARM driver
+- Remove ARM_DMA_USE_IOMMU from Kconfig
+
+changes in version 2:
+- Add a compatible "rockchip,rk3588-av1-iommu"
+- Fix clock-names in binding 
+- Remove "vsi_mmu" label in binding example.
+- Rework driver probe function
+- Remove double flush
+- Rework driver internal structures and avoid allocate
+  in xlate function.
+- Do not touch to VPU driver anymore (path removed)
+- Add a patch to enable the driver in arm64 defconfig
+
+Benjamin Gaignard (5):
+  dt-bindings: vendor-prefixes: Add Verisilicon
+  dt-bindings: iommu: verisilicon: Add binding for VSI IOMMU
+  iommu: Add verisilicon IOMMU driver
+  arm64: dts: rockchip: Add verisilicon IOMMU node on RK3588
+  arm64: defconfig: enable Verisilicon IOMMU
+
+ .../bindings/iommu/verisilicon,iommu.yaml     |  71 ++
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  11 +
+ arch/arm64/configs/defconfig                  |   1 +
+ drivers/iommu/Kconfig                         |  11 +
+ drivers/iommu/Makefile                        |   1 +
+ drivers/iommu/vsi-iommu.c                     | 874 ++++++++++++++++++
+ 7 files changed, 971 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
+ create mode 100644 drivers/iommu/vsi-iommu.c
+
 -- 
-Manivannan Sadhasivam <mani@kernel.org>
+2.43.0
 
+
+
+--===============5441223258856977743==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5441223258856977743==--
