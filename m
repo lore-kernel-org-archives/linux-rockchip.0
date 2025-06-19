@@ -4,64 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F38EC7115B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 10:23:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2DE5C7115B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 11:27:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rI/OqoGKdryXYN54vCC3AA+qzJcTzpvuCNTL6cKY6tk=; b=X4no+vr6JW7OqO
-	W1in0u+gG+uJp1bLwXq682wx9Y5TdwcIeTeA2YiAjgWJio/FwEfRWCwR7doa9uE0o316SxUd+gRE4
-	9jThUaoZGsN6A6oYrBH68AqRgRJjMfs+zFNoUUyt2r5grUU0xWc9BpaybMQ9aNxn3QZqB5taLgavF
-	5uE3kJaqQ1Jfa880MARNFr5yaaB2wg4NNXKMzT6AwvfeMJ4o/d8A15elbZCQDr2XZvS7ffXXQf8ql
-	pHjVL655ZneBPieYBu/1DEl03hKO7pWribLKQIUhJvVRxBZEVK4Cuk0XvPs79tvh4P9H/+xKGK1XS
-	uQto8HqkyTDUrpPD3ohA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BanvfKdcHhpq35lxF7SATx0W2phonHU9JGddxSbPo60=; b=WU3XAuJoY32oe1v4YBTVIVraLB
+	tH30h6xvJZnW61Sl1hQrUNZwHk97VCghgh2ssi9UMDA0qBUzOrzwcIEdP4ZWQThoC8dNX55HfgIOg
+	zTzqlJgvHRIyupeYitAUoC7fVDWMKlZZSiU4sLTwar80Xf1wV5WCCU3fVEXrTjaGg67L/mMix9+sx
+	1WtceQs2aPaROQLBJfk7G+MKicV0y3OYSIKueDwyPu9r8Uwg4KOK59ajgmwont1Pnk8dfYXXU5ub5
+	dOy2dTZSnHR/+WUpOlWhPWJ9/LUX3U7+pJiKuCRqs71jw5DUUylpR3sBAE0e5V8yiwvS+myftUzcU
+	pvYzsPqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSCQC-0000000CkEw-0A1k;
-	Thu, 19 Jun 2025 10:23:04 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uSDQD-0000000CrU6-3q7x;
+	Thu, 19 Jun 2025 11:27:09 +0000
+Received: from out-182.mta1.migadu.com ([2001:41d0:203:375::b6])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSB7u-0000000CX2S-010f
+	id 1uSBqy-0000000CexF-2Bcz
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Jun 2025 09:00:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 716E362A2C
-	for <linux-rockchip@lists.infradead.org>; Thu, 19 Jun 2025 09:00:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8487C4CEFC
-	for <linux-rockchip@lists.infradead.org>; Thu, 19 Jun 2025 09:00:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750323604;
-	bh=UzuK/CxyCGnL+YSPUVuW3jK4T0cRHWwLE+0svoU+I9s=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=hbRxkQlRExVDwH79ADkhlXgwcMX3ygDlcbmP6ZXM7dXQNpBpOFxP8MCYW4/6U/9F8
-	 n0Oq+kPjOZHzEhc6sLC3FXXA3c/NuLYxyphmSY8nf+gV0lnrMYYLiwa2OeKrZdD2CC
-	 GZrDq0MXa4Z0d7ZeSZ5s5vsEyfyX8yiepwCeOul1+WPaTgSgKz13GgDHKUv3bEyv+R
-	 RS6L0oORVTLA69sTfvqZJvHzZ+KCaamKmXDG8ir7W0uJkZFB7b/P+ddStsNxHBtmKB
-	 O+nf2bfMF0UezscT2RMpPEDT44te82KJWxp8Tvgoyql7A4QlB+EDP70XDhGQfqr967
-	 KvAzqsn38gkHQ==
-Received: by mail-yb1-f179.google.com with SMTP id 3f1490d57ef6-e812fc35985so491105276.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 19 Jun 2025 02:00:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUghrbwUAh0J4KlhJogVzudpiJdyjxkRRC56aX1zEFpVwWTzhVzEsQ3JtLBi1KTY0/vGQMJlRezWGYBoOMNIQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw7sX5nshvGAtwMPcqejT8qz+bXASrSe367bHteFMuuEaC3rmiZ
-	Bg7Uwe8YwTSJ9YbpX4lv3HdJQt47rvY4ZfZ7feunD+ZTyoItgSwS4djScIK8meg9FklaRT5U+f4
-	Yk+S/CpG6MoTTPjvrT+/Tj/Ic7RhMN0TPOBYv3Ca2VQ==
-X-Google-Smtp-Source: AGHT+IFTSpIXWJ8aJgks2cku0velW0M+JCR6Rbfmtd6WsoM033VVzHoiXCwOg94pnYfHO2hy+W/9swsQZRSpK6zIGwQ=
-X-Received: by 2002:a05:6902:2613:b0:e82:6c9b:8287 with SMTP id
- 3f1490d57ef6-e826c9b85e4mr11134815276.9.1750323604035; Thu, 19 Jun 2025
- 02:00:04 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250606-6-10-rocket-v7-0-dc16cfe6fe4e@tomeuvizoso.net> <20250606-6-10-rocket-v7-2-dc16cfe6fe4e@tomeuvizoso.net>
-In-Reply-To: <20250606-6-10-rocket-v7-2-dc16cfe6fe4e@tomeuvizoso.net>
-From: Robert Foss <rfoss@kernel.org>
-Date: Thu, 19 Jun 2025 10:59:53 +0200
-X-Gmail-Original-Message-ID: <CAN6tsi4p2wuMVVvQOJ5c6ecT=x2pr2VoZhS4wH27qaR9DptQHA@mail.gmail.com>
-X-Gm-Features: AX0GCFskbG-ChYYQk7bGtKWaX4j6fsAKjpFPkM8iQ7QewPkQLLciRbSAzy_fqYo
-Message-ID: <CAN6tsi4p2wuMVVvQOJ5c6ecT=x2pr2VoZhS4wH27qaR9DptQHA@mail.gmail.com>
-Subject: Re: [PATCH v7 02/10] accel/rocket: Add a new driver for Rockchip's NPU
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+	Thu, 19 Jun 2025 09:46:41 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1750326388;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=95jwxwqOy3CE/suGZD6MlYCwgFQV2q5DD7APLcXDGSw=;
+	b=qBF6F/JFB8Ga+29xGShrQ+nv00Iv5P6Zpb4T/dk3e6MAJbO+H6+doGGxnsJfJI/kx0fgba
+	LpxYBlt/zc0ZxyJif1oMwDiMJa2RcXRGHRpLaLxrafWhFf3V0Vh+7RqAJQCUQwfRo8X7si
+	X0xwcrsDc9qzk1RPCPGkhrof7KLlyWVLEkl51JD73B8iW4qmHKoFatW4WrpoRqGSvpAClR
+	B9zyua4faYw4VV6P6C+tYUeI76n0bezZbhO9o7X0M0ecQ0TD9VFRS8HWMRmp7J4KWv1l/c
+	b34pOS6eG0FPqmk+YATMaGS1RL7N9JrziEtqd09cNbkXTkZ/gEMg38ZC+GAEKA==
+Date: Thu, 19 Jun 2025 11:46:15 +0200
+Message-Id: <DAQEX04P5320.CQDU7SL7AV4A@cknow.org>
+Cc: "Thomas Petazzoni" <thomas.petazzoni@bootlin.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Fix the PinePhone Pro DTS'
+ panel description
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Olivier Benjamin" <olivier.benjamin@bootlin.com>, "Rob Herring"
+ <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor
+ Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
+References: <20250619-dtb_fixes-v2-1-abd711d11b67@bootlin.com>
+In-Reply-To: <20250619-dtb_fixes-v2-1-abd711d11b67@bootlin.com>
+X-Migadu-Flow: FLOW_OUT
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250619_024640_695456_791A4F69 
+X-CRM114-Status: GOOD (  20.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,42 +68,154 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, David Airlie <airlied@gmail.com>, Sumit Semwal <sumit.semwal@linaro.org>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Sebastian Reichel <sebastian.reichel@collabora.com>, Daniel Stone <daniel@fooishbar.org>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jeff Hugo <jeff.hugo@oss.qualcomm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, Oded Gabbay <ogabbay@kernel.org>, linux-kernel@vger.kernel.org, Da Xue <da@libre.computer>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>, =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============9053577127315041427=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBKdW4gNiwgMjAyNSBhdCA4OjI54oCvQU0gVG9tZXUgVml6b3NvIDx0b21ldUB0b21l
-dXZpem9zby5uZXQ+IHdyb3RlOgo+Cj4gVGhpcyBpbml0aWFsIHZlcnNpb24gc3VwcG9ydHMgdGhl
-IE5QVSBhcyBzaGlwcGVkIGluIHRoZSBSSzM1ODggU29DIGFuZAo+IGRlc2NyaWJlZCBpbiB0aGUg
-Zmlyc3QgcGFydCBvZiBpdHMgVFJNLCBpbiBDaGFwdGVyIDM2Lgo+Cj4gVGhpcyBOUFUgY29udGFp
-bnMgMyBpbmRlcGVuZGVudCBjb3JlcyB0aGF0IHRoZSBkcml2ZXIgY2FuIHN1Ym1pdCBqb2JzCj4g
-dG8uCj4KPiBUaGlzIGNvbW1pdCBhZGRzIGp1c3QgaGFyZHdhcmUgaW5pdGlhbGl6YXRpb24gYW5k
-IHBvd2VyIG1hbmFnZW1lbnQuCj4KPiB2MjoKPiAtIFNwbGl0IGNvcmVzIGFuZCBJT01NVXMgYXMg
-aW5kZXBlbmRlbnQgZGV2aWNlcyAoU2ViYXN0aWFuIFJlaWNoZWwpCj4gLSBBZGQgc29tZSBkb2N1
-bWVudGF0aW9uIChKZWZmcmV5IEh1Z28pCj4gLSBCZSBtb3JlIGV4cGxpY2l0IGluIHRoZSBLY29u
-ZmlnIGRvY3VtZW50YXRpb24gKEplZmZyZXkgSHVnbykKPiAtIFJlbW92ZSByZXNldHMsIGFzIHRo
-ZXNlIGhhdmVuJ3QgYmVlbiBmb3VuZCB1c2VmdWwgc28gZmFyIChaZW5naHVpIFl1KQo+IC0gUmVw
-YWNrIHN0cnVjdHMgKEplZmZyZXkgSHVnbykKPiAtIFVzZSBERUZJTkVfRFJNX0FDQ0VMX0ZPUFMg
-KEplZmZyZXkgSHVnbykKPiAtIFVzZSBkZXZtX2RybV9kZXZfYWxsb2MgKEplZmZyZXkgSHVnbykK
-PiAtIFVzZSBwcm9iZSBsb2cgaGVscGVyIChKZWZmcmV5IEh1Z28pCj4gLSBJbnRyb2R1Y2UgVUFC
-SSBoZWFkZXIgaW4gYSBsYXRlciBwYXRjaCAoSmVmZnJleSBIdWdvKQo+Cj4gdjM6Cj4gLSBBZGFw
-dCB0byBhIHNwbGl0IG9mIHRoZSByZWdpc3RlciBibG9jayBpbiB0aGUgRFQgYmluZGluZ3MgKE5p
-Y29sYXMKPiAgIEZyYXR0YXJvbGkpCj4gLSBNb3ZlIHJlZ2lzdGVycyBoZWFkZXIgdG8gaXRzIG93
-biBjb21taXQgKFRob21hcyBaaW1tZXJtYW5uKQo+IC0gTWlzYy4gY2xlYW51cHMgKFRob21hcyBa
-aW1tZXJtYW5uIGFuZCBKZWZmIEh1Z28pCj4gLSBNYWtlIHVzZSBvZiBHUEwtMi4wLW9ubHkgZm9y
-IHRoZSBjb3B5cmlnaHQgbm90aWNlIChKZWZmIEh1Z28pCj4gLSBQTSBpbXByb3ZlbWVudHMgKE5p
-Y29sYXMgRnJhdHRhcm9saSkKPgo+IHY0Ogo+IC0gVXNlIGJ1bGsgY2xrIEFQSSAoS3J6eXN6dG9m
-IEtvemxvd3NraSkKPgo+IHY2Ogo+IC0gUmVtb3ZlIG1lbnRpb24gdG8gTlZETEEsIGFzIHRoZSBo
-YXJkd2FyZSBpcyBvbmx5IGluY2lkZW50YWxseSByZWxhdGVkCj4gICAoS2V2ZXIgWWFuZykKPiAt
-IFVzZSBjYWxsb2MgaW5zdGVhZCBvZiBHRlBfWkVSTyAoSmVmZiBIdWdvKQo+IC0gRXhwbGljaXRs
-eSBpbmNsdWRlIGxpbnV4L2NvbnRhaW5lcl9vZi5oIChKZWZmIEh1Z28pCj4gLSBwY2xrIGFuZCBu
-cHUgY2xvY2tzIGFyZSBub3cgbmVlZGVkIGJ5IGFsbCBjb3JlcyAoUm9iIEhlcnJpbmcpCj4KPiB2
-NzoKPiAtIEFzc2lnbiBpdHMgb3duIElPTU1VIGRvbWFpbiB0byBlYWNoIGNsaWVudCwgZm9yIGlz
-b2xhdGlvbiAoRGFuaWVsCj4gICBTdG9uZSBhbmQgUm9iaW4gTXVycGh5KQo+Cj4gU2lnbmVkLW9m
-Zi1ieTogVG9tZXUgVml6b3NvIDx0b21ldUB0b21ldXZpem9zby5uZXQ+CgpSZXZpZXdlZC1ieTog
-Um9iZXJ0IEZvc3MgPHJmb3NzQGtlcm5lbC5vcmc+CgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+--===============9053577127315041427==
+Content-Type: multipart/signed;
+ boundary=a3a566baaebf2efb32d488967dad63a47cda141ad75c7e052b59f3fe5c0e;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+
+--a3a566baaebf2efb32d488967dad63a47cda141ad75c7e052b59f3fe5c0e
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+Hi,
+
+Thanks for working on upstreaming PPP things :-)
+
+On Thu Jun 19, 2025 at 7:21 AM CEST, Olivier Benjamin wrote:
+> Fix a few issues in the panel section of the PinePhone Pro DTS:
+>   - add the second part of the Himax HX8394 LCD panel controller
+>     compatible
+>   - as proposed by Diederik de Haas, reuse the mipi_out and ports
+>     definitions from rk3399-base.dtsi instead of redefining them
+>   - add a pinctrl for the LCD_RST signal for LCD1, derived from
+>     LCD1_RST, which is on GPIO4_D1, as documented on pages 11
+>     and 16 of the PinePhone Pro schematic
+>
+> Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
+> ---
+> Small fixes to the PinePhone Pro DTS to fit bindings and
+> suppress warnings at build.
+> ---
+> Changes in v2:
+> - Added the pinctrl definition for GPIO4_D1/LCD1_RST
+> - Incorporated Diederik de Haas' suggestion for defining mipi_out
+> - Squashed multiple patches into one
+> - Link to v1: https://lore.kernel.org/r/20250618-dtb_fixes-v1-0-e54797ad2=
+eba@bootlin.com
+> ---
+>  .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 33 +++++++++++-----=
+------
+>  1 file changed, 17 insertions(+), 16 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch=
+/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> index 04ba4c4565d0a205e2e46d7535c6a3190993621d..98aba146749998dd5a798aabe=
+d0fe844c474d1cf 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> @@ -463,29 +463,18 @@ &io_domains {
+>  };
+> =20
+>  &mipi_dsi {
+> -	status =3D "okay";
+>  	clock-master;
+> -
+> -	ports {
+> -		mipi_out: port@1 {
+> -			#address-cells =3D <0>;
+> -			#size-cells =3D <0>;
+> -			reg =3D <1>;
+> -
+> -			mipi_out_panel: endpoint {
+> -				remote-endpoint =3D <&mipi_in_panel>;
+> -			};
+> -		};
+> -	};
+> +	status =3D "okay";
+> =20
+>  	panel@0 {
+> -		compatible =3D "hannstar,hsd060bhw4";
+> +		compatible =3D "hannstar,hsd060bhw4", "himax,hx8394";
+>  		reg =3D <0>;
+>  		backlight =3D <&backlight>;
+> -		reset-gpios =3D <&gpio4 RK_PD1 GPIO_ACTIVE_LOW>;
+> -		vcc-supply =3D <&vcc2v8_lcd>;
+>  		iovcc-supply =3D <&vcc1v8_lcd>;
+>  		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&lcd_reset_pin>;
+> +		reset-gpios =3D <&gpio4 RK_PD1 GPIO_ACTIVE_LOW>;
+> +		vcc-supply =3D <&vcc2v8_lcd>;
+> =20
+>  		port {
+>  			mipi_in_panel: endpoint {
+> @@ -495,6 +484,12 @@ mipi_in_panel: endpoint {
+>  	};
+>  };
+> =20
+> +&mipi_out {
+> +	mipi_out_panel: endpoint {
+> +		remote-endpoint =3D <&mipi_in_panel>;
+> +	};
+> +};
+> +
+>  &pmu_io_domains {
+>  	pmu1830-supply =3D <&vcc_1v8>;
+>  	status =3D "okay";
+> @@ -507,6 +502,12 @@ pwrbtn_pin: pwrbtn-pin {
+>  		};
+>  	};
+> =20
+> +	lcd {
+> +		lcd_reset_pin: reset-pin {
+
+I don't know if there's a 'hard rule' for it, but I'd recommend to use
+``lcd1_rst_pin: lcd1-rst-pin {`` as that would match the naming from
+the schematics. I realize that some but not all (other) pinctrl nodes
+follow that 'rule', but it helps with traceability.
+
+> +			rockchip,pins =3D <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+>  	leds {
+>  		red_led_pin: red-led-pin {
+>  			rockchip,pins =3D <4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+
+Otherwise,
+
+Reviewed-by: Diederik de Haas <didi.debian@cknow.org>
+
+Cheers,
+  Diederik
+
+--a3a566baaebf2efb32d488967dad63a47cda141ad75c7e052b59f3fe5c0e
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaFPcbQAKCRDXblvOeH7b
+boy+AQDbwzeOk3i0OYHIv6wu+lPogKc5TzKOKmCgkGkNRFumNwEAjC++J6IJV1V3
+YclMmumArJ0L1UN/PjW9uBrL/NoamwQ=
+=RIuv
+-----END PGP SIGNATURE-----
+
+--a3a566baaebf2efb32d488967dad63a47cda141ad75c7e052b59f3fe5c0e--
+
+
+--===============9053577127315041427==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============9053577127315041427==--
+
