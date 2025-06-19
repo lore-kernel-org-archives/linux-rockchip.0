@@ -4,61 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB701C7115C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 15:45:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16405C7115C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Jun 2025 15:46:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AjJ0XSKut2UcQQJwHhr/2BrVJ6rSzrvOMIqAYKjkCJg=; b=3l8gOZfoOBfRIybxDhkFdakyMe
-	RfMAnoPtAF2+IsefftlAxHnRr6sXvZZf76t0TQyghoZP52rY26wYrcRqQG55mz1Tx4MrQNMthy8R3
-	91/UY14ndAW1A3FtCrEreQ01/soAJ2B8L/7iKjDColTqMFmVYwjUrW9cvsQHe4ZyavVIFhBaKcr8F
-	Mv8bv1PC3SZZs3zGvwsh3cQh8pXftBF8FUNPfL4xRPO2qCiwKeWrKslytmz17GItXqrjTocEejGim
-	mxW2usB8+0CEDXqaTY40u2m97r19+cICXKyc3en4TzsPriQ+W+ysYgaom1QWQRjz4iGCHZM4i6YmF
-	gPQUiM9Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uVFp/OTCem3Rsy/Qr1KGULTuaqYreYZDeogwdi9qtqc=; b=WEFro1Jj+OSD4G
+	c0T5DldT0juA7UinvY2mKrh3c1PsjPpHs+NfmeV59gFHCtXVAZ8PoEfuHiqIYgZmYwbyHOfJF8nB0
+	CdAG40VwdLSo06otP9alObKu5zzPf7s834Brh73KGpVBZMDjL6J2Me9yfAYf+3DZa1W3Us70mdaao
+	hxAHyPGX8dNSKFdiRHPsC32sG4SFeGpZpgyWH8oMuNnWCN55fhq2EGHXOOdHM3naODdpyHbriAp/9
+	ynEuRqrQHTvo4ylgW5iMIWBRCV6UuwRAqrGHajSHNOhIisb/sWxsGtpnkjNTImNhWPj0FwjqRACgl
+	YbihA9UKLMLgIMMGAfDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSHSU-0000000DT3n-0LuN;
-	Thu, 19 Jun 2025 15:45:46 +0000
-Received: from out-172.mta0.migadu.com ([2001:41d0:1004:224b::ac])
+	id 1uSHT3-0000000DTzt-3sBX;
+	Thu, 19 Jun 2025 15:46:21 +0000
+Received: from mail-10629.protonmail.ch ([79.135.106.29])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSDdt-0000000CvNw-2y4d
+	id 1uSDqX-0000000CxZ8-2PjF
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Jun 2025 11:41:19 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1750333273;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=UlxTUj5Ir+oO3iGWYKmoJ9ycuaXkjQkkYTvLvsQbhwI=;
-	b=P92wfx2kjqVESzvsjtMDG06Ohguto8BeIB3FFHgIMXvCnwAQj49+r7N2yWFEA4MI6m4Q59
-	shyyFpYG9kEpxklcX2EbTabMIHxV0RJH4z6DOP5bnrtIWy7KlMqWw0cUYlovxX2Y3O0vaJ
-	IDWXdqxT98Ge7B7XTe7HuYVWBLXeC+TscRPYns1xaFP4vdI7g2Itwx2jK7hjZCwm2e4BFd
-	VAsBsm1t5U6vOFMINsb/VMqcX71NMDHyU/QfKac88/qitTP5aYH8q9p7cWoKujwJUj79Nv
-	+TvErZLKsDYOSXadvbF9iz7EaVd7Xrun7+xwJqCDCW3lR6wLDt88+H0abmFNvA==
-Date: Thu, 19 Jun 2025 13:41:03 +0200
-Message-Id: <DAQHCWR6W4LD.2Q1H9B9JO2LJZ@cknow.org>
-Cc: "Thomas Petazzoni" <thomas.petazzoni@bootlin.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Fix the PinePhone Pro DTS'
- panel description
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Olivier Benjamin" <olivier.benjamin@bootlin.com>, "Heiko Stuebner"
- <heiko@sntech.de>, "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>
-References: <20250619-dtb_fixes-v2-1-abd711d11b67@bootlin.com>
- <DAQEX04P5320.CQDU7SL7AV4A@cknow.org> <5461462.0VBMTVartN@phil>
- <c26ce505-343a-4759-90b5-a026c66979c7@bootlin.com>
-In-Reply-To: <c26ce505-343a-4759-90b5-a026c66979c7@bootlin.com>
-X-Migadu-Flow: FLOW_OUT
+	Thu, 19 Jun 2025 11:54:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=itb3llscg5chjipokufu5vmc4u.protonmail; t=1750334056; x=1750593256;
+	bh=Iz0J/KCDZc0l+Va2OMeieFNBnxG4UEBoIuugIS4vfeQ=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
+	b=km3bVzcHZg3BwGBm6/0yFFDtJOgSmPsr9f19NHWXq0rGo4y3zfyTibsiER2DzSDLY
+	 WvKp9NaQVeqCIcJCibg5Uq9gbO9ebT1w5rN2aj9kWLAxSDBmGzaNfqcrF6PzYFa/WC
+	 7q1cFaH1q01Eg0bgYeHtDy/Lz1M46EqYwBgireY8v+Vt4kmWTT+low5KxgnPc5nDSJ
+	 S5rmpHRF4ASOmQ6Pu0quwfRHr3apiuXJsq7CXJmI5pIlyey2WMneugPt3aDL8uAn5G
+	 lyDbBmvLiBeEu2HKRdwY0Pr1CWIVKxwBNFrbo2Pr08sLW8I6o0Wd0yEB5/u2OdUWnI
+	 I52n+oMdgtZCA==
+Date: Thu, 19 Jun 2025 11:54:12 +0000
+To: Andy Yan <andyshrk@163.com>
+From: Piotr Zalewski <pZ010001011111@proton.me>
+Cc: Diederik de Haas <didi.debian@cknow.org>, hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, Dang Huynh <danct12@riseup.net>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH drm-misc-next] rockchip/drm: vop2: don't check color_mgmt_changed in atomic_enable
+Message-ID: <oT4pI24an4vFCCysHCInNVi7B-jsgNUVKs4olmiuQ4lWzdd0FS_nwMs-ja40ofjDElVARdad8I_eTG9tRXkgJos48eQmsWo13V5mgc-dXEg=@proton.me>
+In-Reply-To: <562b38e5.a496.1975f09f983.Coremail.andyshrk@163.com>
+References: <20241206192013.342692-3-pZ010001011111@proton.me> <DAI0A1Y753FJ.B0NMT8L5VPEH@cknow.org> <4b380a57.8ab2.197591815a8.Coremail.andyshrk@163.com> <DAISW8MXEU0G.3AMRSKNYQUJY8@cknow.org> <4e600374.6dc7.1975df03a2d.Coremail.andyshrk@163.com> <DAJNEG81JCU5.35KVU8KAT5MDU@cknow.org> <b25ddc.a29c.1975eea8033.Coremail.andyshrk@163.com> <DAJPBG7GPPH2.3BDCMH0U3FU0E@cknow.org> <562b38e5.a496.1975f09f983.Coremail.andyshrk@163.com>
+Feedback-ID: 53478694:user:proton
+X-Pm-Message-ID: 8e2fa2b68f5f05b4114d9aa2c31446fe0646ed33
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_044118_151148_51A17D4A 
-X-CRM114-Status: GOOD (  17.35  )
+X-CRM114-CacheID: sfid-20250619_045422_373170_772761B9 
+X-CRM114-Status: GOOD (  17.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,120 +64,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3347206293583665164=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============3347206293583665164==
-Content-Type: multipart/signed;
- boundary=b5fff2ebebde679f93dfaf923c9136a97ab4b047f673687733da1b95f36b;
- micalg=pgp-sha512; protocol="application/pgp-signature"
-
---b5fff2ebebde679f93dfaf923c9136a97ab4b047f673687733da1b95f36b
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-
-On Thu Jun 19, 2025 at 12:47 PM CEST, Olivier Benjamin wrote:
-> On 6/19/25 12:31, Heiko Stuebner wrote:
->> Am Donnerstag, 19. Juni 2025, 11:46:15 Mitteleurop=C3=A4ische Sommerzeit=
- schrieb Diederik de Haas:
->>> On Thu Jun 19, 2025 at 7:21 AM CEST, Olivier Benjamin wrote:
->>> Thanks for working on upstreaming PPP things :-)
->>>
-> My pleasure. I also have
-> https://lore.kernel.org/linux-rockchip/20250509-camera-v3-0-dab2772d229a@=
-bootlin.com/
-> pending =3D )
-
-Happy about that too, but I 'happen' to research DSI connected displays
-(for other devices), so I felt comfortable to chime in with that.
-I haven't looked at camera stuff yet (and it's not high on my prio
-list), so hopefully others will chime in for that :-)
-
->>>> Fix a few issues in the panel section of the PinePhone Pro DTS:
->>>>    - add the second part of the Himax HX8394 LCD panel controller
->>>>      compatible
->>>>    - as proposed by Diederik de Haas, reuse the mipi_out and ports
->>>>      definitions from rk3399-base.dtsi instead of redefining them
->>>>    - add a pinctrl for the LCD_RST signal for LCD1, derived from
->>>>      LCD1_RST, which is on GPIO4_D1, as documented on pages 11
->>>>      and 16 of the PinePhone Pro schematic
->>>>
->>>> Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
->>=20
->>>> +	lcd {
->>>> +		lcd_reset_pin: reset-pin {
->>>
->>> I don't know if there's a 'hard rule' for it, but I'd recommend to use
->>> ``lcd1_rst_pin: lcd1-rst-pin {`` as that would match the naming from
->>> the schematics. I realize that some but not all (other) pinctrl nodes
->>> follow that 'rule', but it helps with traceability.
->>=20
->> not a "hard" rule, but a strong preference.
->> I.e. we want people to ideally be able to just hit search in the
->> schematics PDFs for the name they saw in the devicetree.
->>=20
->> But following the schematic names, is the general goal.
->>=20
-> Very fair. I used "lcd_reset" because even the schematic is not super=20
-> clear: it uses "LCD_RST" on page 16 and LCD1_RST on pages 11 and 16.
-
-AIUI, the GPIO pin (GPIO4_D1) is labeled LCD1_RST and on page 16 you can
-see that is connected to LCD_RST from BL102-G39-1FR.
-The definition here is about the GPIO pin, hence LCD1_RST.
-The other part of my suggestion was related to another 'convention':
-the name and label/phandle are the same with ``s/-/_/`` (and 'reset-pin'
-is not specific enough; there are a number of reset pins).
-
-Afaic you don't need to mention that I suggested the mipi_out related
-changes; the reason to do that (unneeded redefinition of already defined
-things), is.
-
-Cheers,
-  Diederik=20
-=20
->> If this stays the only suggestion though, I can fix that when
->> applying. Or you can send a v3 - up to you :-)
->>=20
-> I'll correct to lcd1_rst_pin and send a v3 (most likely later today)
->
->>>> +			rockchip,pins =3D <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
->>>> +		};
->>>> +	};
->>>> +
->>>>   	leds {
->>>>   		red_led_pin: red-led-pin {
->>>>   			rockchip,pins =3D <4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
->>>
->>> Otherwise,
->>>
->>> Reviewed-by: Diederik de Haas <didi.debian@cknow.org>
->>>
-
---b5fff2ebebde679f93dfaf923c9136a97ab4b047f673687733da1b95f36b
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaFP3UgAKCRDXblvOeH7b
-bi9DAP9ZolhYlKXrTz+ChkMa/hViAuhi8CvNP7H+iQUeMfPungEAvGMwNigMNSff
-1ZcRaGagcoiWom9lXI7yxhvd5TpmGws=
-=K75Z
------END PGP SIGNATURE-----
-
---b5fff2ebebde679f93dfaf923c9136a97ab4b047f673687733da1b95f36b--
-
-
---===============3347206293583665164==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3347206293583665164==--
-
+SGkgQW5keQoKPiAKPiBUaGUgcm9vdCBjYXNlIGZvciB0aGUgcHJvYmxlbSBpcyBub3cgY2xlYXLj
+gIIKPiAKPiBNb3N0IG9mIHRoZSByZWdpc3RlcnMgaW4gVk9QIG5lZWQgdG8gd3JpdGUgdGhlIGNm
+ZF9kb25lIHJlZ2lzdGVyKGNhbGwgdm9wMl9jZmdfZG9uZSkKPiBhZnRlciB5b3UgaGF2ZSBjb25m
+aWd1cmVkIHRoZSByZWdpc3RlcnMuIFRoZW4sIHRoZXkgd2lsbCB0YWtlIGVmZmVjdCBvbmx5IHdo
+ZW4gdGhlIFZTWU5DIGV2ZW50IG9jY3VycyhJdCBkb2Vzbid0IHRha2UgZWZmZWN0IGltbWVkaWF0
+ZWx5IGFmdGVyIHlvdSBmaW5pc2ggd3JpdGluZy4pLgo+IFRoaXMgYWxzbyBpbmNsdWRlcyBhbGwg
+dGhlIFZQX0RTUF9DVFJMIHJlZ2lzdGVycy4KPiAKPiBzZWUgdGhlIGNvZGU6Cj4gCj4gdm9wMl92
+cF93cml0ZSh2cCwgUkszNTY4X1ZQX0RTUF9DVFJMLCBkc3BfY3RybCk7Cj4gCj4gdm9wMl9jcnRj
+X2F0b21pY190cnlfc2V0X2dhbW1hKHZvcDIsIHZwLCBjcnRjLCBjcnRjX3N0YXRlKTsKPiAtLT4K
+PiAKPiBzdGF0aWMgdm9pZCB2b3AyX3ZwX2RzcF9sdXRfZGlzYWJsZShzdHJ1Y3Qgdm9wMl92aWRl
+b19wb3J0IHZwKQo+IHsKPiB1MzIgZHNwX2N0cmwgPSB2b3AyX3ZwX3JlYWQodnAsIFJLMzU2OF9W
+UF9EU1BfQ1RSTCk7Cj4gCj4gCj4gV2hlbiB3ZSByZWFkIHRoaXMgcmVnaXN0ZXIsIHdlIGFyZSBy
+ZWFkaW5nIHRoZSBhY3R1YWwgZWZmZWN0aXZlIHZhbHVlLAo+IG5vdCB0aGUgb25lKGRzcF9jdHJs
+KSB0aGF0IHdhcyBqdXN0IHdyaXR0ZW4gaW4gYmVmb3JlIChpdCBoYXMgbm90IHlldCB0YWtlbiBl
+ZmZlY3QpCj4gCj4gU28gd2hlbiB3ZSBjb250aW51ZSB0byB3cml0ZSBhYm91dCB0aGlzIHJlZ2lz
+dGVyIGhlcmUsIHdlIG92ZXJ3cml0ZSB0aGUgYWN0dWFsCj4gdmFsdWUgd2Ugb3JpZ2luYWxseSBp
+bnRlbmRlZCB0byBwdXQgaW4uCj4gCj4gCj4gZHNwX2N0cmwgJj0gflJLMzU2OF9WUF9EU1BfQ1RS
+TF9fRFNQX0xVVF9FTjsKPiB2b3AyX3ZwX3dyaXRlKHZwLCBSSzM1NjhfVlBfRFNQX0NUUkwsIGRz
+cF9jdHJsKTsKPiB9Cj4gCj4gSSB0aGluayB0aGUgY29ycmVjdCBzb2x1dGlvbiBzaG91bGQgYmUg
+c2ltaWxhciB0byB0aGUgV2luZG93cy1yZWxhdGVkIHJlZ2lzdHJ5IHNldHRpbmdzLgo+IEFsbCB0
+aGUgcmVnaXN0ZXJzIHJlbGF0ZWQgdG8gVmlkZW8gUG9ydHMgc2hvdWxkIGJlIHNldCBhcyBub24t
+dm9sYXRpbGUsIHNlZToKPiAKPiAvCj4gKiBUaGUgd2luZG93IHJlZ2lzdGVycyBhcmUgb25seSB1
+cGRhdGVkIHdoZW4gY29uZmlnIGRvbmUgaXMgd3JpdHRlbi4KPiAqIFVudGlsIHRoYXQgdGhleSBy
+ZWFkIGJhY2sgdGhlIG9sZCB2YWx1ZS4gQXMgd2UgcmVhZC1tb2RpZnktd3JpdGUKPiAqIHRoZXNl
+IHJlZ2lzdGVycyBtYXJrIHRoZW0gYXMgbm9uLXZvbGF0aWxlLiBUaGlzIG1ha2VzIHN1cmUgd2Ug
+cmVhZAo+ICogdGhlIG5ldyB2YWx1ZXMgZnJvbSB0aGUgcmVnbWFwIHJlZ2lzdGVyIGNhY2hlLgo+
+ICovCj4gc3RhdGljIGNvbnN0IHN0cnVjdCByZWdtYXBfcmFuZ2Ugdm9wMl9ub252b2xhdGlsZV9y
+YW5nZVtdID0gewo+IHJlZ21hcF9yZWdfcmFuZ2UoMHgxMDAwLCAweDIzZmYpLAo+IH07Cj4gCj4g
+c3RhdGljIGNvbnN0IHN0cnVjdCByZWdtYXBfYWNjZXNzX3RhYmxlIHZvcDJfdm9sYXRpbGVfdGFi
+bGUgPSB7Cj4gLm5vX3JhbmdlcyA9IHZvcDJfbm9udm9sYXRpbGVfcmFuZ2UsCj4gLm5fbm9fcmFu
+Z2VzID0gQVJSQVlfU0laRSh2b3AyX25vbnZvbGF0aWxlX3JhbmdlKSwKPiB9OwoKRm9sbG93aW5n
+IHlvdXIgc3VnZ2VzdGlvbiBJIGFkZGVkIHZvcDIgdmlkZW8gcG9ydCByZWdpc3RlcnMgYXMgbm90
+CnZvbGF0aWxlIGFuZCBpdCBmaXhlZCB0aGUgaXNzdWUuIEkgdG9vayB0aGUgdmFsdWVzIGZyb20g
+UkszNTg4IFRSTQpQYXJ0MiBWMS4xLiBTZWUgdGhlIHBhdGNoIGJlbG93IGFuZCBjb25maXJtIGlm
+IGl0IGlzIGNvcnJlY3QuCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV92b3AyLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3ZvcDIuYwppbmRleCBkMGY1ZmVhMTVlMjEuLmM1YzE5MTBmYTVjYSAxMDA2NDQKLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMKKysrIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMKQEAgLTI1OTYsNiArMjU5Niw3IEBA
+IHN0YXRpYyBpbnQgdm9wMl93aW5faW5pdChzdHJ1Y3Qgdm9wMiAqdm9wMikKICAqLwogc3RhdGlj
+IGNvbnN0IHN0cnVjdCByZWdtYXBfcmFuZ2Ugdm9wMl9ub252b2xhdGlsZV9yYW5nZVtdID0gewog
+CXJlZ21hcF9yZWdfcmFuZ2UoMHgxMDAwLCAweDIzZmYpLAorCXJlZ21hcF9yZWdfcmFuZ2UoMHgw
+QzAwLCAweDBmZmYpLAogfTsKIAogc3RhdGljIGNvbnN0IHN0cnVjdCByZWdtYXBfYWNjZXNzX3Rh
+YmxlIHZvcDJfdm9sYXRpbGVfdGFibGUgPSB7CgoKPiBBY3R1YWxseSwgdGhlcmUgaXMgYW5vdGhl
+ciBxdWVzdGlvbi4gSSBzdGlsbCBoYXZlbid0IGZpZ3VyZWQgb3V0IHdoeQo+IHRoaXMgcHJvYmxl
+bSBkb2Vzbid0IG9jY3VyIHdoZW4gY29tcGlsaW5nIHJvY2tjaGlwZHJtPXkgLgoKQ291bGRuJ3Qg
+cmVhc29uIG91dCB3aHkgdGhpcyBvbmx5IGhhcHBlbnMgd2l0aCBkcm09bSB5ZXQKdW5mb3J0dW5h
+dGVseS4KCkJlc3QgcmVnYXJkcywgUGlvdHIgWmFsZXdza2kKCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
