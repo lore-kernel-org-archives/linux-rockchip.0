@@ -4,51 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 648E5C7EE2A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jun 2025 13:02:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 129C8C71155
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jun 2025 14:24:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OlUnZBBUdOnFX/F/ZXSPM27ALdRe/6gdSR+erub5yek=; b=3jQoyZ3nwQ1q19
-	R9nC3eCsIutjjefWTZHfN0vFe3k0TuKsIjFuD2Cv7why8tkNQ4ia7/A2ye+jwGYO2jkVJ8V3ExmN9
-	NUsUV6LZR1LX+8AZ+bQcyCjIyFjNWkQa/WBUpmc9t0AGRgOqE/Q51QMfDLEAGUMQcB4hJlL01bP4w
-	Tv6O1Gw5F5sM8NCIiIPBCc3+gbpZBXPtObkX8ToKTHh/Mbo4f6hBcEk3D79tEUkKV46SFwn0OX3gG
-	Ku49jQwLmnPz5MhCd7jTwfKBhoeqsh9ibPDaUR99RumqgoPnr22iXNn5kXCb5dTGCjSQnw9z1cOcL
-	DgwWGTU40CIqA0hW5Twg==;
+	List-Owner; bh=VPY0BLIZ+FEGiLl0ruIoqthflyaOwwShUlH6B6emj6E=; b=xpuKJTHzkJkngp
+	on9LJcqII6l0+CuyYLde8a+tv8juqeLH/xRfmZG2DOnb1JHxVeR6qSsxj89Vis/H7twGZQv0DfcmP
+	4DCUeepT+zjYZ8Eb7ej4XpxfgmDUWuIcemTePuKeRknLSZfY4qhx34yMvHc6uddn7rLfZM9GSBHba
+	oNDOAJZ/areUEml618doHBk658rVbK7x8aOz8U+39PQWstzpEvWLM/95n+rdKGfQvEuwBSHLGzh40
+	iEh/eqerKYDvvvu+Jtxj4fzsBr8D5HHxoMKhjjGc+1ESyqYKZLGJ+O7tS29JtgDiaQKyyBbRshBNT
+	bdgnQ8npGeynfoKWOatA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSbNn-0000000Fepw-0jLJ;
-	Fri, 20 Jun 2025 13:02:15 +0000
+	id 1uScf2-0000000FqI8-2TLR;
+	Fri, 20 Jun 2025 14:24:08 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSZmX-0000000FRyT-0twX;
-	Fri, 20 Jun 2025 11:19:42 +0000
+	id 1uScaF-0000000FpuT-3rj5;
+	Fri, 20 Jun 2025 14:19:13 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D909C176A;
-	Fri, 20 Jun 2025 04:19:18 -0700 (PDT)
-Received: from [10.57.31.151] (unknown [10.57.31.151])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C72773F673;
-	Fri, 20 Jun 2025 04:19:35 -0700 (PDT)
-Message-ID: <340d76b8-c3a6-4116-ae51-ac4e4ee6a994@arm.com>
-Date: Fri, 20 Jun 2025 12:19:28 +0100
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 483E816F2;
+	Fri, 20 Jun 2025 07:18:51 -0700 (PDT)
+Received: from [10.57.27.59] (unknown [10.57.27.59])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 795A33F58B;
+	Fri, 20 Jun 2025 07:19:08 -0700 (PDT)
+Message-ID: <d52fce68-d01e-4b92-825f-f7408df2ca18@arm.com>
+Date: Fri, 20 Jun 2025 15:19:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] iommu/rockchip: prevent iommus dead loop when two masters
- share one IOMMU
-To: Simon Xue <xxm@rock-chips.com>, joro@8bytes.org, will@kernel.org,
- heiko@sntech.de
-Cc: iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20250620073945.572523-1-xxm@rock-chips.com>
+Subject: Re: [RFC PATCH v5 4/4] phy: rockchip-pcie: Adjust read mask and write
+To: Geraldo Nascimento <geraldogabriel@gmail.com>,
+ linux-rockchip@lists.infradead.org
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Rick wertenbroek <rick.wertenbroek@gmail.com>,
+ linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <cover.1749833986.git.geraldogabriel@gmail.com>
+ <7068a941037eca8ef37cc65e8e08a136c7aac924.1749833987.git.geraldogabriel@gmail.com>
 From: Robin Murphy <robin.murphy@arm.com>
 Content-Language: en-GB
-In-Reply-To: <20250620073945.572523-1-xxm@rock-chips.com>
+In-Reply-To: <7068a941037eca8ef37cc65e8e08a136c7aac924.1749833987.git.geraldogabriel@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250620_041941_302178_AB4A4BE0 
-X-CRM114-Status: GOOD (  17.38  )
+X-CRM114-CacheID: sfid-20250620_071912_009070_72E341D4 
+X-CRM114-Status: GOOD (  15.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,59 +72,51 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2025-06-20 8:39 am, Simon Xue wrote:
-> When two masters share an IOMMU, calling ops->of_xlate during
-> the second master's driver init may overwrite iommu->domain set
-> by the first. This causes the check if (iommu->domain == domain)
-> in rk_iommu_attach_device() to fail, resulting in the same
-> iommu->node being added twice to &rk_domain->iommus, which can
-> lead to an infinite loop in subsequent &rk_domain->iommus operations.
+On 2025-06-13 6:04 pm, Geraldo Nascimento wrote:
+> Section 17.6.10 of the RK3399 TRM "PCIe PIPE PHY registers Description"
+> defines asynchronous strobe TEST_WRITE which should be enabled then
+> disabled and seems to have been copy-pasted as of current. Adjust it.
 
-Indeed this is a property of the IOMMU instance itself so it really 
-should be initialised before registration, irrespective of client 
-devices. FWIW, if it's possible to take an unexpected 
-RK_MMU_IRQ_PAGE_FAULT immediately after requesting the IRQ (e.g. in a 
-kdump kernel after a crash with the hardware still running) then I think 
-the current code could probably end up dereferencing NULL in 
-report_iommu_fault() as well.
+FWIW that's a bit hard to make sense of, given that it bears no relation 
+whatsoever to the naming used in the code :/
 
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+(Not least because the mapping of register fields to phy signals here is 
+really a property of GRF_SOC_CON8 rather than the phy itself)
 
-And probably also:
+> While at it, adjust read mask which should be the same as write mask.
 
-Cc: stable@vger.kernel.org
-Fixes: 25c2325575cc ("iommu/rockchip: Add missing set_platform_dma_ops 
-callback")
+Which write mask? Certainly not PHY_CFG_WR_MASK... However as this 
+definition is unused since 64cdc0360811 ("phy: rockchip-pcie: remove 
+unused phy_rd_cfg function"), I don't see much point in touching it 
+other than to remove it entirely. If it is the case that only the 
+address field is significant for whatever a "read" operation actually 
+means, well then that's just another job for ADDR_MASK (which I guess is 
+what the open-coded business with PHY_CFG_PLL_LOCK is actually doing...)
 
 Thanks,
 Robin.
 
-> Signed-off-by: Simon Xue <xxm@rock-chips.com>
+> Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
 > ---
->   drivers/iommu/rockchip-iommu.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+>   drivers/phy/rockchip/phy-rockchip-pcie.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 22f74ba33a0e..e6bb3c784017 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -1157,7 +1157,6 @@ static int rk_iommu_of_xlate(struct device *dev,
->   		return -ENOMEM;
->   
->   	data->iommu = platform_get_drvdata(iommu_dev);
-> -	data->iommu->domain = &rk_identity_domain;
->   	dev_iommu_priv_set(dev, data);
->   
->   	platform_device_put(iommu_dev);
-> @@ -1195,6 +1194,8 @@ static int rk_iommu_probe(struct platform_device *pdev)
->   	if (!iommu)
->   		return -ENOMEM;
->   
-> +	iommu->domain = &rk_identity_domain;
-> +
->   	platform_set_drvdata(pdev, iommu);
->   	iommu->dev = dev;
->   	iommu->num_mmu = 0;
+> diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
+> index 48bcc7d2b33b..35d2523ee776 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-pcie.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
+> @@ -30,9 +30,9 @@
+>   #define PHY_CFG_ADDR_SHIFT    1
+>   #define PHY_CFG_DATA_MASK     0xf
+>   #define PHY_CFG_ADDR_MASK     0x3f
+> -#define PHY_CFG_RD_MASK       0x3ff
+> +#define PHY_CFG_RD_MASK       0x3f
+>   #define PHY_CFG_WR_ENABLE     1
+> -#define PHY_CFG_WR_DISABLE    1
+> +#define PHY_CFG_WR_DISABLE    0
+>   #define PHY_CFG_WR_SHIFT      0
+>   #define PHY_CFG_WR_MASK       1
+>   #define PHY_CFG_PLL_LOCK      0x10
 
 
 _______________________________________________
