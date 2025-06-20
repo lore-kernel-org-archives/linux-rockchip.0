@@ -4,66 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBECFC71155
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jun 2025 08:26:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45DBFC71155
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jun 2025 08:51:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Mime-Version:
-	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=kKfQKxb0z/sNDENsTRxS8axrBs5cMJ7sk8+yL3+N5e4=; b=GbW
-	ab9IhwXM/+MSxxX2jlNozcX2gu3qpqapuMQKQYnb77NkcANcIHXTXny22Gh/mzPQZ9urOnva4w+iB
-	eVhUXwYPz7dYG2ngZ9AcH1p0MnwHceuJV9wva0oZvkg18G11Cwk4ILq8bYL+2Wm1KHSM47DujI7hG
-	0l9XUIR/RUZS0ZF1hgx+6zfqeCXT0bDKzda8JgC0jYNnh8fjUjhSYqERaRVZgarzqQf7GrSpJxuEP
-	w32kv39+VemRawpgCwK1VYTC9yTrJ9EnfIcemvJhfXFNb762n3Cir2VJMOohmjPIOOJ4c/3fuxxpm
-	SPwXW1CzpEXBTog/LGi1NjyS6RZ7G/w==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=maHcpPOFWFJdmcp4l8MII54kY6Oj0cc1H87wWzFMks4=; b=4m5Rz0gFUom73I
+	RN0ZQHonR/53MDKUeRjhl/1u7jNQc986IQ4H5ZXGu70JFuF3V/4voAyPjo93mIGdudvYw70wejbmP
+	XzDBqCT6WSjDd4e9MvycUVBQ2NPA1rpWisU0L6gwIDCB8yPo7kCiIgtI/GcykKZStmSf5H84SPOs/
+	CFuClkmp++h0aMHPwAgx9XLSAswx7xrw4qXjvDOiXn5EJsJFpvKgFL9RCGdjiOrx1Mktmf/DGzaMt
+	DEqLa2D+SGc7Z1lpLN8FLWerrD/ufwk1HoKlK3pFC1eDSXRwc3osBXYNvOB2CIQKkrgsKYMLIkLuF
+	+3VMWW0BmZh/ZnxwDZVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSX4U-0000000F39D-0WWZ;
-	Fri, 20 Jun 2025 08:26:02 +0000
-Received: from mxct.zte.com.cn ([183.62.165.209])
+	id 1uSXSk-0000000F7dw-1Odn;
+	Fri, 20 Jun 2025 08:51:06 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSWny-0000000F0YO-3aaS;
-	Fri, 20 Jun 2025 08:09:00 +0000
-Received: from mse-fl2.zte.com.cn (unknown [10.5.228.133])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mxct.zte.com.cn (FangMail) with ESMTPS id 4bNqqg07y6z4xfxK;
-	Fri, 20 Jun 2025 16:08:47 +0800 (CST)
-Received: from xaxapp04.zte.com.cn ([10.99.98.157])
-	by mse-fl2.zte.com.cn with SMTP id 55K88WkU022600;
-	Fri, 20 Jun 2025 16:08:32 +0800 (+08)
-	(envelope-from shao.mingyin@zte.com.cn)
-Received: from mapi (xaxapp02[null])
-	by mapi (Zmail) with MAPI id mid32;
-	Fri, 20 Jun 2025 16:08:34 +0800 (CST)
-Date: Fri, 20 Jun 2025 16:08:34 +0800 (CST)
-X-Zmail-TransId: 2afa68551702562-5cd67
-X-Mailer: Zmail v1.0
-Message-ID: <20250620160834242DDgecL4HF8b1OBLiZnnrl@zte.com.cn>
-Mime-Version: 1.0
-From: <shao.mingyin@zte.com.cn>
-To: <geert+renesas@glider.be>
-Cc: <changhuang.liang@starfivetech.com>, <geert+renesas@glider.be>,
-        <magnus.damm@gmail.com>, <heiko@sntech.de>, <alim.akhtar@samsung.com>,
-        <walker.chen@starfivetech.com>, <sebastian.reichel@collabora.com>,
-        <detlev.casanova@collabora.com>, <finley.xiao@rock-chips.com>,
-        <shawn.lin@rock-chips.com>, <pgwipeout@gmail.com>,
-        <shao.mingyin@zte.com.cn>, <linux-pm@vger.kernel.org>,
-        <linux-renesas-soc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <yang.yang29@zte.com.cn>,
-        <xu.xin16@zte.com.cn>, <yang.tao172@zte.com.cn>,
-        <ye.xingchen@zte.com.cn>
-Subject: =?UTF-8?B?W1BBVENIIHYzXSBwbWRvbWFpbjogVXNlIHN0cl9lbmFibGVfZGlzYWJsZSgpIGFuZCBzdHJfb25fb2ZmKCkgaGVscGVycw==?=
-X-MAIL: mse-fl2.zte.com.cn 55K88WkU022600
-X-Fangmail-Anti-Spam-Filtered: true
-X-Fangmail-MID-QID: 6855170F.000/4bNqqg07y6z4xfxK
+	id 1uSX13-0000000F2ka-1mUb;
+	Fri, 20 Jun 2025 08:22:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1750407750; x=1781943750;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=H5xdLvsboeL7dlRK+EBFcm4+UCVw3/qL8XO1zqk3X1c=;
+  b=nLMIA21YZ0IKuCxtBiWGD2dAYM7y6pNIDNG5aHd+wWxUNnqk/5YFiYDx
+   tSkt0nahicuJhmELn90dR1rBK359MvB39fspG2+77skwmKjme7kYCyLqy
+   g55Uy/Pt4gfNVg6K/B7Y4FIJbwqJ2yCxmL6CT9m3qdGyUYfpXLPYZtLu9
+   NFxdhEl4iJ10Z7iHuVtPdmET9QZsuHfZRcaRjWeqS/Sw+yLc1wsLsEPlD
+   CXomANaVr4RKJNulhxDO/jMB1nJE+WADT8OwZzr0aCQtliP4I+fRg9Wxg
+   oGOQIHJS4InNSHY5G9Vz9YsmNK+lZLoMN9roZuVj03ksSpzP5mdRRex4J
+   Q==;
+X-CSE-ConnectionGUID: 7rTV3B8pQZe3cG1dWTKOHw==
+X-CSE-MsgGUID: gV/QmqbxRUK4iUMMIu1pog==
+X-IronPort-AV: E=McAfee;i="6800,10657,11469"; a="52752115"
+X-IronPort-AV: E=Sophos;i="6.16,251,1744095600"; 
+   d="scan'208";a="52752115"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jun 2025 01:22:28 -0700
+X-CSE-ConnectionGUID: lCc1D+E/SoWU5sVJ0FxjrA==
+X-CSE-MsgGUID: 0EqHp+/xSrCciscrR+1Vbg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,251,1744095600"; 
+   d="scan'208";a="150990090"
+Received: from mjarzebo-mobl1.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.245.66])
+  by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jun 2025 01:22:22 -0700
+Date: Fri, 20 Jun 2025 10:22:14 +0200
+From: Mehdi Djait <mehdi.djait@linux.intel.com>
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+	=?utf-8?B?VGjDqW8=?= Lebrun <theo.lebrun@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+	Gerald Loacker <gerald.loacker@wolfvision.net>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+	Markus Elfring <Markus.Elfring@web.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, 
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	Collabora Kernel Team <kernel@collabora.com>, Paul Kocialkowski <paulk@sys-base.io>, 
+	Alexander Shiyan <eagle.alexander923@gmail.com>, Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	Mehdi Djait <mehdi.djait@bootlin.com>
+Subject: Re: [PATCH v8 06/13] media: rockchip: add a driver for the rockchip
+ camera interface
+Message-ID: <xgycmti27be4ah64o4mflj6i2nzh34tbnlfqghiizqhtkusuif@ia3idwgrjoil>
+References: <20240220-rk3568-vicap-v8-0-9d9cbc4b524d@collabora.com>
+ <20240220-rk3568-vicap-v8-6-9d9cbc4b524d@collabora.com>
+ <656zxutvwytnd5i5l3nknni47r3wofmmwtxycleekjtrkbgfeo@xm7xbzirh3ce>
+ <5d3418a3-70f5-46d8-a538-72e6958d5d02@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <5d3418a3-70f5-46d8-a538-72e6958d5d02@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250620_010859_223463_44492CE5 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20250620_012229_548396_AF5D0915 
+X-CRM114-Status: GOOD (  33.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,151 +99,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Shao Mingyin <shao.mingyin@zte.com.cn>
+Hi Michael,
 
-Use str_enable_disable() and str_on_off() helper instead of open
-coding the same.
+On Wed, Jun 18, 2025 at 02:21:51PM +0200, Michael Riesch wrote:
+> Hi Mehdi,
+> 
+> On 6/13/25 14:33, Mehdi Djait wrote:
+> > Hi Michael,
+> > 
+> > [...]
+> 
+> Let's cut the long story short, shall we :-)
+> 
 
-Signed-off-by: Shao Mingyin <shao.mingyin@zte.com.cn>
-Reviewed-by: Changhuang Liang <changhuang.liang@starfivetech.com>
----
-v3:
-preserve the original patch format to avoid whitespace-damaged
- drivers/pmdomain/renesas/rcar-gen4-sysc.c    | 3 ++-
- drivers/pmdomain/renesas/rcar-sysc.c         | 3 ++-
- drivers/pmdomain/rockchip/pm-domains.c       | 3 ++-
- drivers/pmdomain/samsung/exynos-pm-domains.c | 6 +++---
- drivers/pmdomain/starfive/jh71xx-pmu.c       | 7 ++++---
- 5 files changed, 13 insertions(+), 9 deletions(-)
+Yes, sorry for that :)
 
-diff --git a/drivers/pmdomain/renesas/rcar-gen4-sysc.c b/drivers/pmdomain/renesas/rcar-gen4-sysc.c
-index e001b5c25bed..c8aa7538e95f 100644
---- a/drivers/pmdomain/renesas/rcar-gen4-sysc.c
-+++ b/drivers/pmdomain/renesas/rcar-gen4-sysc.c
-@@ -18,6 +18,7 @@
- #include <linux/slab.h>
- #include <linux/spinlock.h>
- #include <linux/types.h>
-+#include <linux/string_choices.h>
+> >> +static void rkcif_stream_fill_format(struct rkcif_stream *stream,
+> >> +				     struct v4l2_pix_format_mplane *pix)
+> >> +{
+> >> +	const struct rkcif_output_fmt *fmt;
+> >> +	u32 height, width;
+> >> +
+> >> +	fmt = rkcif_stream_find_output_fmt(stream, true, pix->pixelformat);
+> >> +	height = clamp_t(u32, pix->height, CIF_MIN_HEIGHT, CIF_MAX_HEIGHT);
+> >> +	width = clamp_t(u32, pix->width, CIF_MIN_WIDTH, CIF_MAX_WIDTH);
+> >> +	v4l2_fill_pixfmt_mp(pix, fmt->fourcc, width, height);
+> > 
+> > The rkcif supports the SRGGB10P: the packed version of the SRGGB10.
+> > 
+> > When you try to capture with SRGGB10P, the following fails in
+> > v4l2_fill_pixfmt_mp()
+> > 
+> > 	info = v4l2_format_info(pixelformat);
+> > 	if (!info)
+> > 		return -EINVAL;
+> > 
+> > The return value is not checked in rkcif_stream_fill_format() resulting
+> > in a call to queue_setup returning with sizes[0] = 0
+> 
+> Thanks for pointing that out. I failed to realize that this helper
+> function may return an error. What I can do is to implement the error
+> propagation correctly. Of course this will only avoid the kernel
+> warning, you still won't be able to stream.
+> 
+> > This will cause a kernel Warning in the vb2_core_reqbufs() because
+> > plane_size = 0
+> > 
+> > Exactly here:
+> > 
+> > 	for (i = 0; i < num_planes; i++)
+> > 		if (WARN_ON(!plane_sizes[i])) {
+> > 			ret = -EINVAL;
+> > 			goto error;
+> > 		}
+> > 
+> > I still don't have the solution here but wanted to let you know about
+> > it.
+> 
+> I only had a quick look at it, but apparently the compact formats are
+> missing in the format list here:
+> https://elixir.bootlin.com/linux/v6.16-rc2/source/drivers/media/v4l2-core/v4l2-common.c#L244
+> for whatever reason.
+> 
+> Have you by chance tried adding a line like
+> {
+> 	.format = V4L2_PIX_FMT_SRGGB10P,
+> 	.pixel_enc = V4L2_PIXEL_ENC_BAYER,
+> 	.mem_planes = 1,
+> 	.comp_planes = 1,
+> 	.bpp = { 5, 0, 0, 0 },
+> 	.bpp_div = { 4, 1, 1, 1 },
+> 	.hdiv = 1,
+> 	.vdiv = 1,
+> }
+> ?
+> 
+> 
+> Maybe we can fix this, but please note that this issue should not block
+> merging this patch series.
+> 
 
- #include "rcar-gen4-sysc.h"
+Of course! The solution from the driver side is to check the return
+code.
 
-@@ -171,7 +172,7 @@ static int rcar_gen4_sysc_power(u8 pdr, bool on)
-  out:
- 	spin_unlock_irqrestore(&rcar_gen4_sysc_lock, flags);
+I will investigate the issue with v4l2_fill_pixfmt_mp() separately.
 
--	pr_debug("sysc power %s domain %d: %08x -> %d\n", on ? "on" : "off",
-+	pr_debug("sysc power %s domain %d: %08x -> %d\n", str_on_off(on),
- 		 pdr, ioread32(rcar_gen4_sysc_base + SYSCISCR(reg_idx)), ret);
- 	return ret;
- }
-diff --git a/drivers/pmdomain/renesas/rcar-sysc.c b/drivers/pmdomain/renesas/rcar-sysc.c
-index 047495f54e8a..dae01ca0ef6a 100644
---- a/drivers/pmdomain/renesas/rcar-sysc.c
-+++ b/drivers/pmdomain/renesas/rcar-sysc.c
-@@ -17,6 +17,7 @@
- #include <linux/io.h>
- #include <linux/iopoll.h>
- #include <linux/soc/renesas/rcar-sysc.h>
-+#include <linux/string_choices.h>
+> Best regards,
+> Michael
 
- #include "rcar-sysc.h"
-
-@@ -162,7 +163,7 @@ static int rcar_sysc_power(const struct rcar_sysc_pd *pd, bool on)
-
- 	spin_unlock_irqrestore(&rcar_sysc_lock, flags);
-
--	pr_debug("sysc power %s domain %d: %08x -> %d\n", on ? "on" : "off",
-+	pr_debug("sysc power %s domain %d: %08x -> %d\n", str_on_off(on),
- 		 pd->isr_bit, ioread32(rcar_sysc_base + SYSCISR), ret);
- 	return ret;
- }
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 4cce407bb1eb..0681c763f843 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -21,6 +21,7 @@
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/string_choices.h>
- #include <soc/rockchip/pm_domains.h>
- #include <soc/rockchip/rockchip_sip.h>
- #include <dt-bindings/power/px30-power.h>
-@@ -595,7 +596,7 @@ static int rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
- 					is_on == on, 0, 10000);
- 	if (ret) {
- 		dev_err(pmu->dev, "failed to set domain '%s' %s, val=%d\n",
--			genpd->name, on ? "on" : "off", is_on);
-+			genpd->name, str_on_off(on), is_on);
- 		return ret;
- 	}
-
-diff --git a/drivers/pmdomain/samsung/exynos-pm-domains.c b/drivers/pmdomain/samsung/exynos-pm-domains.c
-index 9b502e8751d1..1a892c611dad 100644
---- a/drivers/pmdomain/samsung/exynos-pm-domains.c
-+++ b/drivers/pmdomain/samsung/exynos-pm-domains.c
-@@ -13,6 +13,7 @@
- #include <linux/err.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
-+#include <linux/string_choices.h>
- #include <linux/pm_domain.h>
- #include <linux/delay.h>
- #include <linux/of.h>
-@@ -38,7 +39,6 @@ static int exynos_pd_power(struct generic_pm_domain *domain, bool power_on)
- 	struct exynos_pm_domain *pd;
- 	void __iomem *base;
- 	u32 timeout, pwr;
--	char *op;
-
- 	pd = container_of(domain, struct exynos_pm_domain, pd);
- 	base = pd->base;
-@@ -51,8 +51,8 @@ static int exynos_pd_power(struct generic_pm_domain *domain, bool power_on)
-
- 	while ((readl_relaxed(base + 0x4) & pd->local_pwr_cfg) != pwr) {
- 		if (!timeout) {
--			op = (power_on) ? "enable" : "disable";
--			pr_err("Power domain %s %s failed\n", domain->name, op);
-+			pr_err("Power domain %s %s failed\n", domain->name,
-+			       str_enable_disable(power_on));
- 			return -ETIMEDOUT;
- 		}
- 		timeout--;
-diff --git a/drivers/pmdomain/starfive/jh71xx-pmu.c b/drivers/pmdomain/starfive/jh71xx-pmu.c
-index 74720c09a6e3..dc3e109e273a 100644
---- a/drivers/pmdomain/starfive/jh71xx-pmu.c
-+++ b/drivers/pmdomain/starfive/jh71xx-pmu.c
-@@ -12,6 +12,7 @@
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_domain.h>
-+#include <linux/string_choices.h>
- #include <dt-bindings/power/starfive,jh7110-pmu.h>
-
- /* register offset */
-@@ -155,7 +156,7 @@ static int jh7110_pmu_set_state(struct jh71xx_pmu_dev *pmd, u32 mask, bool on)
-
- 	if (ret) {
- 		dev_err(pmu->dev, "%s: failed to power %s\n",
--			pmd->genpd.name, on ? "on" : "off");
-+			pmd->genpd.name, str_on_off(on));
- 		return -ETIMEDOUT;
- 	}
-
-@@ -197,8 +198,8 @@ static int jh71xx_pmu_set_state(struct jh71xx_pmu_dev *pmd, u32 mask, bool on)
- 	}
-
- 	if (is_on == on) {
--		dev_dbg(pmu->dev, "pm domain [%s] is already %sable status.\n",
--			pmd->genpd.name, on ? "en" : "dis");
-+		dev_dbg(pmu->dev, "pm domain [%s] is already %s status.\n",
-+			pmd->genpd.name, str_enable_disable(on));
- 		return 0;
- 	}
-
--- 
-2.25.1
+--
+Kind Regards
+Mehdi Djait
 
 _______________________________________________
 Linux-rockchip mailing list
