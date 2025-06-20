@@ -4,70 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68F39C77B7C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jun 2025 10:47:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A59C71155
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jun 2025 10:47:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/dGAcGTNBhFK2HU9uuTVOmdzQHCFacmlQAY1/kKW/1U=; b=gd7E/YA4IET7Za
-	Zx3s9Iv1P9q0uMCrUDOmaQwWGCCZR80yGRQLG8kPNoWi62BUruXc/ErZ5lYLJFqhEFlp4w8U9/CY5
-	nJfoCgFIrHavgWbU/Gmf6F8WJqm2M5dF47JbcpNSGPOeQQMZf432nkRCaElq7TxzYAVh5r8oEGWbZ
-	VxGoy4OcRaLvyqP5VA1ltN9w6tiuMLVmP539OgO+5wlN6E5BmooANl/sklQmh8zHdQjsquu8SxYI+
-	Sog7p97pV0WjML3ShgSv7cnI+POPwMiuY5lRF7Vl+ITjKmu5LUSa7LNnR6RWD/32iME6Mgb1WmyPZ
-	Gs8vUWupFSCK/4INQhew==;
+	List-Owner; bh=wOdgGiqV6+6ASJan9VBgi/lN17GNqhoy2k9dFvpFnag=; b=j6n7cv9ER4GUoC
+	FRuRTkz0GDg/pCwfukkzZCxEFib8nKl1vsYFCkyjFvD63QA1+MFVudaPg+QtmvKayQXPxVfUUZUfd
+	jHHrqcO+yrKe3XhEVtjqsfNYTdSBppVVdE0Y2w7tkfcqHVd63wS27veV4AVnky3WR1Ic0fmNcjZpi
+	jgjdwTMRWnEnpiSz6wNTLkmibYxVkcmmCmNhZ1LF+NEIsJtsH5i5wY06QhStO/YEJYWRYIkXOlR5l
+	7cCWZsFWaVvDqPc7tIUo3hhdUrV+6jG88bLYoSdTeGrkWRgag13xnuHt71RpWV4HTej0zNEliOsJ0
+	CpZEErepLxUrLCPuoFdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSZHL-0000000FO7m-0jZf;
-	Fri, 20 Jun 2025 10:47:27 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uSZHV-0000000FOJe-3GJk;
+	Fri, 20 Jun 2025 10:47:37 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSYSk-0000000FGwD-0nyZ;
-	Fri, 20 Jun 2025 09:55:11 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750413294; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=buxEGVBXCHdiuRG7q6sV4d7yeqisQewFmfTArcPMLDMJpVhZiQuhXPN4YH3nsW4EX4A+94uzTa1+mcC9m8i2tpwyZ0YeeVOCMpH8ZmrCpMxWXo+DplH30C870y4PqeaehgSZDEaWTQUTWGuDnJDI/meJgM7KOSAXBSw4B5kIcO8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750413294; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=PwxAthPjmI1ic6P01b6IWTuo7e6HnLmqXzNXxwM6Kuo=; 
-	b=UjItsuDRwJWVwiC9s/iFH6yZkARBVy/bUrQwerP4Qq/Z6QProSOvgVbEpymy1IfInMue2XZhMiKIQZv1U3jzMDr5KTL8hSrsrQ2hZW9LzLdDt+YKHzhoauu4oVQYwqcm1UpxZEFPL9CMD9ujT0qy+6LwpkOj0bPjIe6Tgdf91IU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=benjamin.gaignard@collabora.com;
-	dmarc=pass header.from=<benjamin.gaignard@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750413294;
-	s=zohomail; d=collabora.com; i=benjamin.gaignard@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=PwxAthPjmI1ic6P01b6IWTuo7e6HnLmqXzNXxwM6Kuo=;
-	b=b/q7LDjRPLKkw0j9TTNYtSjmnIfQ0z6/o4T8vE45q5PeXmqtyVFcMk/sRT03KhRl
-	tF5z2L3pGW/oYrbRtiwIKTKc4e0wmJDztFMJ3KVwtmtp9gCtQnGtnIfU22blVE1KTen
-	jfna8vqrDKhd4aPBUALRvOsCv8aXhBQhrYalZeEc=
-Received: by mx.zohomail.com with SMTPS id 17504132917981020.3930091890192;
-	Fri, 20 Jun 2025 02:54:51 -0700 (PDT)
-Message-ID: <34c871c9-3367-4b62-b2f8-11ed7d3482e5@collabora.com>
-Date: Fri, 20 Jun 2025 11:54:48 +0200
+	id 1uSYXj-0000000FHcR-3PW4;
+	Fri, 20 Jun 2025 10:00:21 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c02:2eb0:2d06:fb3f:ec9:50ac])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 195ff8217;
+	Fri, 20 Jun 2025 18:00:16 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Yao Zi <ziyao@disroot.org>,
+	Rob Herring <robh@kernel.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH v2 1/1] arm64: dts: rockchip: rk3528: Add CPU frequency scaling support
+Date: Fri, 20 Jun 2025 18:00:10 +0800
+Message-Id: <20250620100010.1291658-2-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250620100010.1291658-1-amadeus@jmu.edu.cn>
+References: <20250620100010.1291658-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/5] dt-bindings: iommu: verisilicon: Add binding for
- VSI IOMMU
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
- nicolas.dufresne@collabora.com, jgg@ziepe.ca, iommu@lists.linux.dev,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-References: <20250619131232.69208-1-benjamin.gaignard@collabora.com>
- <20250619131232.69208-3-benjamin.gaignard@collabora.com>
- <n5ddeogrpgctrljnxjfxqaz22qfnxsgm6ro7qihbjeyhd5br44@ojlzlz7gsuzb>
-Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <n5ddeogrpgctrljnxjfxqaz22qfnxsgm6ro7qihbjeyhd5br44@ojlzlz7gsuzb>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaGksZVkhJGUkaSU8dSENDTVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlJT0seQUgZSEFJGEtJQUkeGUtBSR9LTUEdGUgdQR4YQkFOSxoYWVdZFhoPEh
+	UdFFlBWU9LSFVKS0hKTkxOVUpLS1VKQktLWQY+
+X-HM-Tid: 0a978cc825cc03a2kunm2902750c11af80
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mkk6Kzo6NjE4HioLLTEICzMu
+	SCoKCzNVSlVKTE5LT0pITUpMTUpOVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
+	Sx5BSBlIQUkYS0lBSR4ZS0FJH0tNQR0ZSB1BHhhCQU5LGhhZV1kIAVlBT0pMSzcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250620_025510_300759_755A4BD0 
-X-CRM114-Status: GOOD (  13.09  )
+X-CRM114-CacheID: sfid-20250620_030020_020462_E684786C 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,44 +72,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDE5LzA2LzIwMjUgw6AgMTY6MTksIFNlYmFzdGlhbiBSZWljaGVsIGEgw6ljcml0wqA6Cj4g
-SGksCj4KPiBPbiBUaHUsIEp1biAxOSwgMjAyNSBhdCAwMzoxMjoyM1BNICswMjAwLCBCZW5qYW1p
-biBHYWlnbmFyZCB3cm90ZToKPj4gK3Byb3BlcnRpZXM6Cj4+ICsgIGNvbXBhdGlibGU6Cj4+ICsg
-ICAgaXRlbXM6Cj4+ICsgICAgICAtIGNvbnN0OiB2ZXJpc2lsaWNvbixpb21tdQo+PiArICAgICAg
-LSBjb25zdDogcm9ja2NoaXAscmszNTg4LWlvbW11LTEuMgo+IFRoZSBlbnRyaWVzIHNob3VsZCBi
-ZSBvcmRlcmVkIHRoZSBvdGhlciB3YXkgYXJvdW5kLCBzbyB0aGF0IHRoZQo+ICJnZW5lcmljIiBj
-b21wYXRpYmxlIGlzIHRoZSBmYWxsYmFjay4gQWxzbyB0aGUgMS4yIHZlcnNpb24gaXMgZnJvbQo+
-IFZlcmlzaWxpY29uLiBJdCBkb2VzIG5vdCByZWFsbHkgbWFrZSBzZW5zZSBmb3IgUm9ja2NoaXAu
-IFNvIEkKPiB0aGluayBpdCBzaG91bGQgbG9vayBsaWtlIHRoaXM6Cj4KPiBwcm9wZXJ0aWVzOgo+
-ICAgIGNvbXBhdGlibGU6Cj4gICAgICBpdGVtczoKPiAgICAgICAgLSBjb25zdDogcm9ja2NoaXAs
-cmszNTg4LWF2MS1pb21tdQo+ICAgICAgICAtIGNvbnN0OiB2ZXJpc2lsaWNvbixpb21tdS0xLjIK
-Pgo+IE90aGVyd2lzZSBMR1RNLgoKVGhhbmtzIEkgd2lsbCBkbyBsaWtlIHRoYXQuCgpSZWdhcmRz
-LApCZW5qYW1pbgoKPgo+IC0tIFNlYmFzdGlhbgo+Cj4+ICsKPj4gKyAgcmVnOgo+PiArICAgIG1h
-eEl0ZW1zOiAxCj4+ICsKPj4gKyAgaW50ZXJydXB0czoKPj4gKyAgICBtYXhJdGVtczogMQo+PiAr
-Cj4+ICsgIGNsb2NrczoKPj4gKyAgICBpdGVtczoKPj4gKyAgICAgIC0gZGVzY3JpcHRpb246IENv
-cmUgY2xvY2sKPj4gKyAgICAgIC0gZGVzY3JpcHRpb246IEludGVyZmFjZSBjbG9jawo+PiArCj4+
-ICsgIGNsb2NrLW5hbWVzOgo+PiArICAgIGl0ZW1zOgo+PiArICAgICAgLSBjb25zdDogY29yZQo+
-PiArICAgICAgLSBjb25zdDogaWZhY2UKPj4gKwo+PiArICAiI2lvbW11LWNlbGxzIjoKPj4gKyAg
-ICBjb25zdDogMAo+PiArCj4+ICsgIHBvd2VyLWRvbWFpbnM6Cj4+ICsgICAgbWF4SXRlbXM6IDEK
-Pj4gKwo+PiArcmVxdWlyZWQ6Cj4+ICsgIC0gY29tcGF0aWJsZQo+PiArICAtIHJlZwo+PiArICAt
-IGludGVycnVwdHMKPj4gKyAgLSBjbG9ja3MKPj4gKyAgLSBjbG9jay1uYW1lcwo+PiArICAtICIj
-aW9tbXUtY2VsbHMiCj4+ICsKPj4gK2FkZGl0aW9uYWxQcm9wZXJ0aWVzOiBmYWxzZQo+PiArCj4+
-ICtleGFtcGxlczoKPj4gKyAgLSB8Cj4+ICsgICAgI2luY2x1ZGUgPGR0LWJpbmRpbmdzL2Nsb2Nr
-L3JvY2tjaGlwLHJrMzU4OC1jcnUuaD4KPj4gKyAgICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvaW50
-ZXJydXB0LWNvbnRyb2xsZXIvYXJtLWdpYy5oPgo+PiArCj4+ICsgICAgYnVzIHsKPj4gKyAgICAg
-ICNhZGRyZXNzLWNlbGxzID0gPDI+Owo+PiArICAgICAgI3NpemUtY2VsbHMgPSA8Mj47Cj4+ICsK
-Pj4gKyAgICAgIGlvbW11QGZkY2EwMDAwIHsKPj4gKyAgICAgICAgY29tcGF0aWJsZSA9ICJ2ZXJp
-c2lsaWNvbixpb21tdSIsInJvY2tjaGlwLHJrMzU4OC1pb21tdS0xLjIiOwo+PiArICAgICAgICBy
-ZWcgPSA8MHgwIDB4ZmRjYTAwMDAgMHgwIDB4NjAwPjsKPj4gKyAgICAgICAgaW50ZXJydXB0cyA9
-IDxHSUNfU1BJIDEwOSBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+Owo+PiArICAgICAgICBjbG9ja3Mg
-PSA8JmNydSBBQ0xLX0FWMT4sIDwmY3J1IFBDTEtfQVYxPjsKPj4gKyAgICAgICAgY2xvY2stbmFt
-ZXMgPSAiY29yZSIsICJpZmFjZSI7Cj4+ICsgICAgICAgICNpb21tdS1jZWxscyA9IDwwPjsKPj4g
-KyAgICAgIH07Cj4+ICsgICAgfTsKPj4gLS0gCj4+IDIuNDMuMAo+PgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+By default, the CPUs on RK3528 operates at 1.5GHz. Add CPU frequency and
+voltage mapping to the device tree to enable dynamic scaling via cpufreq.
+
+The OPP values come from downstream kernel[1]. Both 408MHz and 600MHz
+frequencies use the normal PLL, so use the corresponding highest voltage.
+
+The voltage used for other frequencies can't be less than above (875mV).
+Therefore, 816MHz to 1200MHz also uses the corresponding highest voltage.
+
+The remaining 1416MHz to 2016MHz use a voltage close to actual frequency.
+
+[1] https://github.com/rockchip-linux/kernel/blob/develop-5.10/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+---
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi | 64 ++++++++++++++++++++++++
+ 1 file changed, 64 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+index 829f980ea353..5cb7f10b79ed 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+@@ -53,6 +53,7 @@ cpu0: cpu@0 {
+ 			device_type = "cpu";
+ 			enable-method = "psci";
+ 			clocks = <&scmi_clk SCMI_CLK_CPU>;
++			operating-points-v2 = <&cpu_opp_table>;
+ 		};
+ 
+ 		cpu1: cpu@1 {
+@@ -61,6 +62,7 @@ cpu1: cpu@1 {
+ 			device_type = "cpu";
+ 			enable-method = "psci";
+ 			clocks = <&scmi_clk SCMI_CLK_CPU>;
++			operating-points-v2 = <&cpu_opp_table>;
+ 		};
+ 
+ 		cpu2: cpu@2 {
+@@ -69,6 +71,7 @@ cpu2: cpu@2 {
+ 			device_type = "cpu";
+ 			enable-method = "psci";
+ 			clocks = <&scmi_clk SCMI_CLK_CPU>;
++			operating-points-v2 = <&cpu_opp_table>;
+ 		};
+ 
+ 		cpu3: cpu@3 {
+@@ -77,6 +80,67 @@ cpu3: cpu@3 {
+ 			device_type = "cpu";
+ 			enable-method = "psci";
+ 			clocks = <&scmi_clk SCMI_CLK_CPU>;
++			operating-points-v2 = <&cpu_opp_table>;
++		};
++	};
++
++	cpu_opp_table: opp-table-cpu {
++		compatible = "operating-points-v2";
++		opp-shared;
++
++		opp-408000000 {
++			opp-hz = /bits/ 64 <408000000>;
++			opp-microvolt = <875000 875000 1100000>;
++			clock-latency-ns = <40000>;
++			opp-suspend;
++		};
++
++		opp-600000000 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <875000 875000 1100000>;
++			clock-latency-ns = <40000>;
++		};
++
++		opp-816000000 {
++			opp-hz = /bits/ 64 <816000000>;
++			opp-microvolt = <875000 875000 1100000>;
++			clock-latency-ns = <40000>;
++		};
++
++		opp-1008000000 {
++			opp-hz = /bits/ 64 <1008000000>;
++			opp-microvolt = <875000 875000 1100000>;
++			clock-latency-ns = <40000>;
++		};
++
++		opp-1200000000 {
++			opp-hz = /bits/ 64 <1200000000>;
++			opp-microvolt = <900000 900000 1100000>;
++			clock-latency-ns = <40000>;
++		};
++
++		opp-1416000000 {
++			opp-hz = /bits/ 64 <1416000000>;
++			opp-microvolt = <925000 925000 1100000>;
++			clock-latency-ns = <40000>;
++		};
++
++		opp-1608000000 {
++			opp-hz = /bits/ 64 <1608000000>;
++			opp-microvolt = <975000 975000 1100000>;
++			clock-latency-ns = <40000>;
++		};
++
++		opp-1800000000 {
++			opp-hz = /bits/ 64 <1800000000>;
++			opp-microvolt = <1037500 1037500 1100000>;
++			clock-latency-ns = <40000>;
++		};
++
++		opp-2016000000 {
++			opp-hz = /bits/ 64 <2016000000>;
++			opp-microvolt = <1100000 1100000 1100000>;
++			clock-latency-ns = <40000>;
+ 		};
+ 	};
+ 
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
