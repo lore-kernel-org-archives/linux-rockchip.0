@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 165A2C7115B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jun 2025 07:40:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBECFC71155
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jun 2025 08:26:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5hAVZggrpG4MLKUbbopp6CIKJUkbShZay4ba+jKVSlo=; b=z193km5JoktW9w
-	TbTAjoysAfsDEBDug8E4nqN1bdGLQ4QmiNb4iEWgClo5erFGh8EjxThCYFwEXqt5/1Fv/7ka6Cb1x
-	RGXsMATZxHvxpDId48zokiQuSyozoX3xRwq6ouIth2paxgitvIjekepk6SJLj1TDgsiuJW9IN+ioq
-	si8Dd4ifTZPFPKaSvCymXxX++Sfmg1c01zcRCkuZOMXvQcGayax9Nz0bLC1N/g9dcH7ycdNI89IfS
-	o9kCebYs4qErkvdoqDeoaegXTperCM/v1oUvMeUoKi3oanI1gOCRrfsGMq6c4OYfU8BRU+SrE9LE0
-	BlwWbM9gVdXSha4nfwjg==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Mime-Version:
+	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=kKfQKxb0z/sNDENsTRxS8axrBs5cMJ7sk8+yL3+N5e4=; b=GbW
+	ab9IhwXM/+MSxxX2jlNozcX2gu3qpqapuMQKQYnb77NkcANcIHXTXny22Gh/mzPQZ9urOnva4w+iB
+	eVhUXwYPz7dYG2ngZ9AcH1p0MnwHceuJV9wva0oZvkg18G11Cwk4ILq8bYL+2Wm1KHSM47DujI7hG
+	0l9XUIR/RUZS0ZF1hgx+6zfqeCXT0bDKzda8JgC0jYNnh8fjUjhSYqERaRVZgarzqQf7GrSpJxuEP
+	w32kv39+VemRawpgCwK1VYTC9yTrJ9EnfIcemvJhfXFNb762n3Cir2VJMOohmjPIOOJ4c/3fuxxpm
+	SPwXW1CzpEXBTog/LGi1NjyS6RZ7G/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSWME-0000000Exlw-2Fep;
-	Fri, 20 Jun 2025 07:40:18 +0000
-Received: from mail-m3294.qiye.163.com ([220.197.32.94])
+	id 1uSX4U-0000000F39D-0WWZ;
+	Fri, 20 Jun 2025 08:26:02 +0000
+Received: from mxct.zte.com.cn ([183.62.165.209])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSWMB-0000000Exkb-2YgM;
-	Fri, 20 Jun 2025 07:40:17 +0000
-Received: from xxm-vm.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 195b0d954;
-	Fri, 20 Jun 2025 15:39:57 +0800 (GMT+08:00)
-From: Simon Xue <xxm@rock-chips.com>
-To: joro@8bytes.org,
-	will@kernel.org,
-	heiko@sntech.de
-Cc: robin.murphy@arm.com,
-	iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Simon Xue <xxm@rock-chips.com>
-Subject: [PATCH] iommu/rockchip: prevent iommus dead loop when two masters share one IOMMU
-Date: Fri, 20 Jun 2025 15:39:45 +0800
-Message-Id: <20250620073945.572523-1-xxm@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0gZTVZDTxkdTBlKGB5CT0NWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a978c47ae6e03ackunmcb7fa41f11474ac
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PRw6EAw*HjEzGisJIx4uTE5M
-	KR8wCylVSlVKTE5LT0tOSkJDTUpCVTMWGhIXVQMDFjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lBWU5D
-	VUlJVUxVSkpPWVdZCAFZQUpDTU43Bg++
-DKIM-Signature: a=rsa-sha256;
-	b=gjphdfhh0nY/GJYzRcfVJLITkUA9LoiEU4bSerBb1bo+c9pCMFJkOkidlToWHQpYlOZquPRjwWiOZiqvTHhLVt12/bdOUFOMxw8xSvgaqshVn/lgJ/QqwG+b5YBpP5q+q8zub84WTJq+3wclsYsX/ij5L4BT7MMm8nv66xVyKGU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=MIAoOLarClJnlNEVDtXTBGL5MPjZ94Xdyikr6suQV3Y=;
-	h=date:mime-version:subject:message-id:from;
+	id 1uSWny-0000000F0YO-3aaS;
+	Fri, 20 Jun 2025 08:09:00 +0000
+Received: from mse-fl2.zte.com.cn (unknown [10.5.228.133])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mxct.zte.com.cn (FangMail) with ESMTPS id 4bNqqg07y6z4xfxK;
+	Fri, 20 Jun 2025 16:08:47 +0800 (CST)
+Received: from xaxapp04.zte.com.cn ([10.99.98.157])
+	by mse-fl2.zte.com.cn with SMTP id 55K88WkU022600;
+	Fri, 20 Jun 2025 16:08:32 +0800 (+08)
+	(envelope-from shao.mingyin@zte.com.cn)
+Received: from mapi (xaxapp02[null])
+	by mapi (Zmail) with MAPI id mid32;
+	Fri, 20 Jun 2025 16:08:34 +0800 (CST)
+Date: Fri, 20 Jun 2025 16:08:34 +0800 (CST)
+X-Zmail-TransId: 2afa68551702562-5cd67
+X-Mailer: Zmail v1.0
+Message-ID: <20250620160834242DDgecL4HF8b1OBLiZnnrl@zte.com.cn>
+Mime-Version: 1.0
+From: <shao.mingyin@zte.com.cn>
+To: <geert+renesas@glider.be>
+Cc: <changhuang.liang@starfivetech.com>, <geert+renesas@glider.be>,
+        <magnus.damm@gmail.com>, <heiko@sntech.de>, <alim.akhtar@samsung.com>,
+        <walker.chen@starfivetech.com>, <sebastian.reichel@collabora.com>,
+        <detlev.casanova@collabora.com>, <finley.xiao@rock-chips.com>,
+        <shawn.lin@rock-chips.com>, <pgwipeout@gmail.com>,
+        <shao.mingyin@zte.com.cn>, <linux-pm@vger.kernel.org>,
+        <linux-renesas-soc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-rockchip@lists.infradead.org>,
+        <linux-samsung-soc@vger.kernel.org>, <yang.yang29@zte.com.cn>,
+        <xu.xin16@zte.com.cn>, <yang.tao172@zte.com.cn>,
+        <ye.xingchen@zte.com.cn>
+Subject: =?UTF-8?B?W1BBVENIIHYzXSBwbWRvbWFpbjogVXNlIHN0cl9lbmFibGVfZGlzYWJsZSgpIGFuZCBzdHJfb25fb2ZmKCkgaGVscGVycw==?=
+X-MAIL: mse-fl2.zte.com.cn 55K88WkU022600
+X-Fangmail-Anti-Spam-Filtered: true
+X-Fangmail-MID-QID: 6855170F.000/4bNqqg07y6z4xfxK
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250620_004016_114360_28ECD78D 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250620_010859_223463_44492CE5 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,42 +80,151 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When two masters share an IOMMU, calling ops->of_xlate during
-the second master's driver init may overwrite iommu->domain set
-by the first. This causes the check if (iommu->domain == domain)
-in rk_iommu_attach_device() to fail, resulting in the same
-iommu->node being added twice to &rk_domain->iommus, which can
-lead to an infinite loop in subsequent &rk_domain->iommus operations.
+From: Shao Mingyin <shao.mingyin@zte.com.cn>
 
-Signed-off-by: Simon Xue <xxm@rock-chips.com>
+Use str_enable_disable() and str_on_off() helper instead of open
+coding the same.
+
+Signed-off-by: Shao Mingyin <shao.mingyin@zte.com.cn>
+Reviewed-by: Changhuang Liang <changhuang.liang@starfivetech.com>
 ---
- drivers/iommu/rockchip-iommu.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+v3:
+preserve the original patch format to avoid whitespace-damaged
+ drivers/pmdomain/renesas/rcar-gen4-sysc.c    | 3 ++-
+ drivers/pmdomain/renesas/rcar-sysc.c         | 3 ++-
+ drivers/pmdomain/rockchip/pm-domains.c       | 3 ++-
+ drivers/pmdomain/samsung/exynos-pm-domains.c | 6 +++---
+ drivers/pmdomain/starfive/jh71xx-pmu.c       | 7 ++++---
+ 5 files changed, 13 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 22f74ba33a0e..e6bb3c784017 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -1157,7 +1157,6 @@ static int rk_iommu_of_xlate(struct device *dev,
- 		return -ENOMEM;
- 
- 	data->iommu = platform_get_drvdata(iommu_dev);
--	data->iommu->domain = &rk_identity_domain;
- 	dev_iommu_priv_set(dev, data);
- 
- 	platform_device_put(iommu_dev);
-@@ -1195,6 +1194,8 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	if (!iommu)
- 		return -ENOMEM;
- 
-+	iommu->domain = &rk_identity_domain;
-+
- 	platform_set_drvdata(pdev, iommu);
- 	iommu->dev = dev;
- 	iommu->num_mmu = 0;
+diff --git a/drivers/pmdomain/renesas/rcar-gen4-sysc.c b/drivers/pmdomain/renesas/rcar-gen4-sysc.c
+index e001b5c25bed..c8aa7538e95f 100644
+--- a/drivers/pmdomain/renesas/rcar-gen4-sysc.c
++++ b/drivers/pmdomain/renesas/rcar-gen4-sysc.c
+@@ -18,6 +18,7 @@
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
+ #include <linux/types.h>
++#include <linux/string_choices.h>
+
+ #include "rcar-gen4-sysc.h"
+
+@@ -171,7 +172,7 @@ static int rcar_gen4_sysc_power(u8 pdr, bool on)
+  out:
+ 	spin_unlock_irqrestore(&rcar_gen4_sysc_lock, flags);
+
+-	pr_debug("sysc power %s domain %d: %08x -> %d\n", on ? "on" : "off",
++	pr_debug("sysc power %s domain %d: %08x -> %d\n", str_on_off(on),
+ 		 pdr, ioread32(rcar_gen4_sysc_base + SYSCISCR(reg_idx)), ret);
+ 	return ret;
+ }
+diff --git a/drivers/pmdomain/renesas/rcar-sysc.c b/drivers/pmdomain/renesas/rcar-sysc.c
+index 047495f54e8a..dae01ca0ef6a 100644
+--- a/drivers/pmdomain/renesas/rcar-sysc.c
++++ b/drivers/pmdomain/renesas/rcar-sysc.c
+@@ -17,6 +17,7 @@
+ #include <linux/io.h>
+ #include <linux/iopoll.h>
+ #include <linux/soc/renesas/rcar-sysc.h>
++#include <linux/string_choices.h>
+
+ #include "rcar-sysc.h"
+
+@@ -162,7 +163,7 @@ static int rcar_sysc_power(const struct rcar_sysc_pd *pd, bool on)
+
+ 	spin_unlock_irqrestore(&rcar_sysc_lock, flags);
+
+-	pr_debug("sysc power %s domain %d: %08x -> %d\n", on ? "on" : "off",
++	pr_debug("sysc power %s domain %d: %08x -> %d\n", str_on_off(on),
+ 		 pd->isr_bit, ioread32(rcar_sysc_base + SYSCISR), ret);
+ 	return ret;
+ }
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 4cce407bb1eb..0681c763f843 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -21,6 +21,7 @@
+ #include <linux/regmap.h>
+ #include <linux/regulator/consumer.h>
+ #include <linux/mfd/syscon.h>
++#include <linux/string_choices.h>
+ #include <soc/rockchip/pm_domains.h>
+ #include <soc/rockchip/rockchip_sip.h>
+ #include <dt-bindings/power/px30-power.h>
+@@ -595,7 +596,7 @@ static int rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+ 					is_on == on, 0, 10000);
+ 	if (ret) {
+ 		dev_err(pmu->dev, "failed to set domain '%s' %s, val=%d\n",
+-			genpd->name, on ? "on" : "off", is_on);
++			genpd->name, str_on_off(on), is_on);
+ 		return ret;
+ 	}
+
+diff --git a/drivers/pmdomain/samsung/exynos-pm-domains.c b/drivers/pmdomain/samsung/exynos-pm-domains.c
+index 9b502e8751d1..1a892c611dad 100644
+--- a/drivers/pmdomain/samsung/exynos-pm-domains.c
++++ b/drivers/pmdomain/samsung/exynos-pm-domains.c
+@@ -13,6 +13,7 @@
+ #include <linux/err.h>
+ #include <linux/platform_device.h>
+ #include <linux/slab.h>
++#include <linux/string_choices.h>
+ #include <linux/pm_domain.h>
+ #include <linux/delay.h>
+ #include <linux/of.h>
+@@ -38,7 +39,6 @@ static int exynos_pd_power(struct generic_pm_domain *domain, bool power_on)
+ 	struct exynos_pm_domain *pd;
+ 	void __iomem *base;
+ 	u32 timeout, pwr;
+-	char *op;
+
+ 	pd = container_of(domain, struct exynos_pm_domain, pd);
+ 	base = pd->base;
+@@ -51,8 +51,8 @@ static int exynos_pd_power(struct generic_pm_domain *domain, bool power_on)
+
+ 	while ((readl_relaxed(base + 0x4) & pd->local_pwr_cfg) != pwr) {
+ 		if (!timeout) {
+-			op = (power_on) ? "enable" : "disable";
+-			pr_err("Power domain %s %s failed\n", domain->name, op);
++			pr_err("Power domain %s %s failed\n", domain->name,
++			       str_enable_disable(power_on));
+ 			return -ETIMEDOUT;
+ 		}
+ 		timeout--;
+diff --git a/drivers/pmdomain/starfive/jh71xx-pmu.c b/drivers/pmdomain/starfive/jh71xx-pmu.c
+index 74720c09a6e3..dc3e109e273a 100644
+--- a/drivers/pmdomain/starfive/jh71xx-pmu.c
++++ b/drivers/pmdomain/starfive/jh71xx-pmu.c
+@@ -12,6 +12,7 @@
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_domain.h>
++#include <linux/string_choices.h>
+ #include <dt-bindings/power/starfive,jh7110-pmu.h>
+
+ /* register offset */
+@@ -155,7 +156,7 @@ static int jh7110_pmu_set_state(struct jh71xx_pmu_dev *pmd, u32 mask, bool on)
+
+ 	if (ret) {
+ 		dev_err(pmu->dev, "%s: failed to power %s\n",
+-			pmd->genpd.name, on ? "on" : "off");
++			pmd->genpd.name, str_on_off(on));
+ 		return -ETIMEDOUT;
+ 	}
+
+@@ -197,8 +198,8 @@ static int jh71xx_pmu_set_state(struct jh71xx_pmu_dev *pmd, u32 mask, bool on)
+ 	}
+
+ 	if (is_on == on) {
+-		dev_dbg(pmu->dev, "pm domain [%s] is already %sable status.\n",
+-			pmd->genpd.name, on ? "en" : "dis");
++		dev_dbg(pmu->dev, "pm domain [%s] is already %s status.\n",
++			pmd->genpd.name, str_enable_disable(on));
+ 		return 0;
+ 	}
+
 -- 
-2.34.1
-
+2.25.1
 
 _______________________________________________
 Linux-rockchip mailing list
