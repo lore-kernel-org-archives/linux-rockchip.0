@@ -4,57 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C44EEC7115B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jun 2025 15:44:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE78AC7115B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jun 2025 16:17:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=oJ80w8tiOGrF52U3FLv/zABh+Wv7wmRzYJg7FVM32iw=; b=2vYW61rLaYqpJz
-	GkgGncXFKMm8qXIUl+XNGetx1e5rQvoKSHefWrokol2doQJ+rv0lI5xQkzDR+tln493DNJCSF+C7H
-	S5x8YbZkG6Kt0X9ZXDVxF1gU39wQvS0WSZXgbzSCPHEnA84P9sO1kHo23+u051bW4LFv5g7KM1x+3
-	NFZ26P3RVT1UgNy7INJQ1zt2xL2F5Fn98nxPwPmwxahvlBt40zOFGj476FD4rhHxhNeqhI2Fm1V5b
-	dQiw/wmSz8HOKZ5zflYsJ0GEOYkODoEpDSsxoKPAjY2J60XMHaSTIGmCY/wzlQmsr8/0mPX1HTPTl
-	qygT00oQSFzlikBV9ZeQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lCN0CJRCxKmkz6QBL12StpjQBGNayOHZzZtk8cJQkaY=; b=l1IGL1XQW++rts
+	YW8DGSaWJ2cnVJ/NNNxnGfn9UGgN3FbUt59RulWqCHlRLnQf7nqXxkAKW8gz9B1nw4VL/fW5snti6
+	sdF1JDLWmzf3Y4ZZ7vc9m3kNSqRIj7uO0LUKDiFBses3dqChOy3q4mfuX04VmTHbom0F3+YG6E7um
+	1MJd2S2NAgwb8zA5WkBavw55gz/O9y8Ai4IEww/N/EqbAUAat7TmROnCBTxEkGxhVMB3x/hkxVTmB
+	/7UfM/c3UgGGyBwlHAYftuhaAM6P/UGyBU/PAmS0CubtDmiQ5yugjvURTq3XxYEBk1LT680A9SLIW
+	bryJN3EBRXhRKJZMgnfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSduh-0000000G1bn-2GvB;
-	Fri, 20 Jun 2025 15:44:23 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSdsT-0000000G1CL-0exg;
-	Fri, 20 Jun 2025 15:42:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6CC946250A;
-	Fri, 20 Jun 2025 15:42:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2BC2C4CEE3;
-	Fri, 20 Jun 2025 15:42:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750434124;
-	bh=SHPTxnd4pbMYQOtiIQLzx9eD7HZDUt3+mEFmqV4gGBg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=g5okcp6JBl2EOByxwdGhanD/oHlYvrWI0Ju/YEgHG3PVZv122YXGG65QLIySgjCma
-	 EvWhT3unRjT77HoYGSlzUPV2HwmghNbhw7zb3sVVWlaXsf4xguDKGYXMERIg2YM9pX
-	 gXDqosrULppL3gOfoy8ENwCQQq1pLft2MI/KDPXuKmovWBi50brnztquvRguMV/Kf/
-	 Kw4lvcJCWsZB9ch0PkRu3OxocrNdJc6cypNlM7NJoZRv/PxZRISSIqPDff2kM0uGmK
-	 dqHzCD9MspAjRyfIlWI3SkIGkwfQj+F+zUfHIg8ucU5RnCXhFOQJ2ysIWuRpDdKTof
-	 Uu7jXcW0sVKdQ==
-Date: Fri, 20 Jun 2025 10:42:02 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, bhelgaas@google.com, kwilczynski@kernel.org,
-	shawn.lin@rock-chips.com, heiko@sntech.de, robh@kernel.org,
+	id 1uSeQJ-0000000G7LA-2qyp;
+	Fri, 20 Jun 2025 16:17:03 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uSe5p-0000000G3wo-1EjV;
+	Fri, 20 Jun 2025 15:55:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=i8
+	TapiMRiV+/DhKkWGWqqhK/Kqxyy8HtlXWR339Cxls=; b=RYMbneu9ctyb7xsH69
+	wODmw1d5sYKMXuugkeZtFbY20GNjqE0jBAHZ7P46kpjvsUHNEev+VJqPvrsqOGvn
+	Ehd/XYdEqJW17yxh86TQEPhH1mZuJSzCflXZIlBHj3hca/KBs1FntbKaKSNXlYjS
+	dwd3h12MskT3faw5Plb/4leS8=
+Received: from localhost.localdomain (unknown [])
+	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wDHyCldhFVo3bDnAg--.55764S3;
+	Fri, 20 Jun 2025 23:55:11 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	bhelgaas@google.com,
+	heiko@sntech.de,
+	mani@kernel.org,
+	yue.wang@Amlogic.com
+Cc: pali@kernel.org,
+	neil.armstrong@linaro.org,
+	robh@kernel.org,
+	jingoohan1@gmail.com,
+	khilman@baylibre.com,
+	jbrunet@baylibre.com,
+	martin.blumenstingl@googlemail.com,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] PCI: rockchip: Remove redundant PCIe message routing
- definitions
-Message-ID: <20250620154202.GA1292011@bhelgaas>
+	Hans Zhang <18255117159@163.com>,
+	Niklas Cassel <cassel@kernel.org>
+Subject: [PATCH v5 1/2] PCI: Configure root port MPS during host probing
+Date: Fri, 20 Jun 2025 23:55:06 +0800
+Message-Id: <20250620155507.1022099-2-18255117159@163.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250620155507.1022099-1-18255117159@163.com>
+References: <20250620155507.1022099-1-18255117159@163.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250607154913.805027-3-18255117159@163.com>
+X-CM-TRANSID: _____wDHyCldhFVo3bDnAg--.55764S3
+X-Coremail-Antispam: 1Uf129KBjvJXoWxCw17Gw1DuryUZFyrZF17GFg_yoW5Xryxpa
+	yUJws3AFZ7GFyfWa1kX3W09ryYv3Z7Cry7JrZ8Cr9093Z8AF1DJrWaya1rA3s7Gr9av34Y
+	vr4qqryUu3Z5uFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pivJP_UUUUU=
+X-Originating-IP: [240e:b8f:919b:3100:8440:da7c:be7e:927f]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOgRyo2hVfXVwHQACs1
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250620_085553_794121_EA3D6708 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,53 +89,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jun 07, 2025 at 11:49:13PM +0800, Hans Zhang wrote:
-> The Rockchip driver contained duplicated message routing and INTx code
-> definitions (e.g., ROCKCHIP_PCIE_MSG_ROUTING_TO_RC,
-> ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTA). These are already provided by the
-> PCI core in drivers/pci/pci.h as PCIE_MSG_TYPE_R_RC and
-> PCIE_MSG_CODE_ASSERT_INTA, respectively.
-> 
-> Remove the driver-specific definitions and use the common PCIe macros
-> instead. This aligns the driver with the PCIe specification and reduces
-> maintenance overhead.
-> 
-> Signed-off-by: Hans Zhang <18255117159@163.com>
-> ---
->  drivers/pci/controller/pcie-rockchip.h | 14 --------------
->  1 file changed, 14 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-> index 5864a20323f2..12bc8da59d73 100644
-> --- a/drivers/pci/controller/pcie-rockchip.h
-> +++ b/drivers/pci/controller/pcie-rockchip.h
-> @@ -215,20 +215,6 @@
->  #define RC_REGION_0_TYPE_MASK			GENMASK(3, 0)
->  #define MAX_AXI_WRAPPER_REGION_NUM		33
->  
-> -#define ROCKCHIP_PCIE_MSG_ROUTING_TO_RC		0x0
-> -#define ROCKCHIP_PCIE_MSG_ROUTING_VIA_ADDR		0x1
-> -#define ROCKCHIP_PCIE_MSG_ROUTING_VIA_ID		0x2
-> -#define ROCKCHIP_PCIE_MSG_ROUTING_BROADCAST		0x3
-> -#define ROCKCHIP_PCIE_MSG_ROUTING_LOCAL_INTX		0x4
-> -#define ROCKCHIP_PCIE_MSG_ROUTING_PME_ACK		0x5
-> -#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTA		0x20
-> -#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTB		0x21
-> -#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTC		0x22
-> -#define ROCKCHIP_PCIE_MSG_CODE_ASSERT_INTD		0x23
-> -#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTA		0x24
-> -#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTB		0x25
-> -#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTC		0x26
-> -#define ROCKCHIP_PCIE_MSG_CODE_DEASSERT_INTD		0x27
+Current PCIe initialization logic may leave root ports operating with
+non-optimal Maximum Payload Size (MPS) settings. While downstream device
+configuration is handled during bus enumeration, root port MPS values
+inherited from firmware or hardware defaults might not utilize the full
+capabilities supported by the controller hardware. This can result in
+suboptimal data transfer efficiency across the PCIe hierarchy.
 
-Thanks for doing this!  In fact, these definitions are not only
-redundant, they're not even used at all.
+During host controller probing phase, when PCIe bus tuning is enabled,
+the implementation now configures root port MPS settings to their
+hardware-supported maximum values. Specifically, when configuring the MPS
+for a PCIe device, if the device is a root port and the bus tuning is not
+disabled (PCIE_BUS_TUNE_OFF), the MPS is set to 128 << dev->pcie_mpss to
+match the Root Port's maximum supported payload size. The Max Read Request
+Size (MRRS) is subsequently adjusted through existing companion logic to
+maintain compatibility with PCIe specifications.
 
->  #define ROCKCHIP_PCIE_MSG_ROUTING_MASK			GENMASK(7, 5)
->  #define ROCKCHIP_PCIE_MSG_ROUTING(route) \
->  	(((route) << 5) & ROCKCHIP_PCIE_MSG_ROUTING_MASK)
+Note that this initial setting of the root port MPS to the maximum might
+be reduced later during the enumeration of downstream devices if any of
+those devices do not support the maximum MPS of the root port.
 
-And neither are these ROUTING and CODE definitions.
+Explicit initialization at host probing stage ensures consistent PCIe
+topology configuration before downstream devices perform their own MPS
+negotiations. This proactive approach addresses platform-specific
+requirements where controller drivers depend on properly initialized
+root port settings, while maintaining backward compatibility through
+PCIE_BUS_TUNE_OFF conditional checks. Hardware capabilities are fully
+utilized without altering existing device negotiation behaviors.
+
+Suggested-by: Niklas Cassel <cassel@kernel.org>
+Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
+Signed-off-by: Hans Zhang <18255117159@163.com>
+---
+ drivers/pci/probe.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+index 4b8693ec9e4c..9f8803da914c 100644
+--- a/drivers/pci/probe.c
++++ b/drivers/pci/probe.c
+@@ -2178,6 +2178,16 @@ static void pci_configure_mps(struct pci_dev *dev)
+ 		return;
+ 	}
+ 
++	/*
++	 * Unless MPS strategy is PCIE_BUS_TUNE_OFF (don't touch MPS at all),
++	 * start off by setting root ports' MPS to MPSS. Depending on the MPS
++	 * strategy, and the MPSS of the devices below the root port, the MPS
++	 * of the root port might get overridden later.
++	 */
++	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
++	    pcie_bus_config != PCIE_BUS_TUNE_OFF)
++		pcie_set_mps(dev, 128 << dev->pcie_mpss);
++
+ 	if (!bridge || !pci_is_pcie(bridge))
+ 		return;
+ 
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
