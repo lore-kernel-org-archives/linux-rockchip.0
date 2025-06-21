@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98D9BC71157
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Jun 2025 14:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F23A6C71157
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Jun 2025 17:01:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+mH2Mk8tW3f26N7Qo2Ue7ojmuFFQwFYr+3XhNiBFYUE=; b=Wu+7e49/oQ80Ce
-	3X1j2YflWnroJ4E5JdV4c9QjK6GLnqHwKVux83Evr9mevB6jaZxkBPS+6O1JI+0qj67n2WqBVdEWv
-	m0vOD4kwlpFzEsmCCMqPZrP5EV3msOPt5RHJUhQoqYXiTFPf4EU29q5XZEiT8bRcv1vOtdh4krFxh
-	Td2O4IvLxIQjWstcp1pN84y/8PV6PWQTC3jPg+9PstjSwbeimsUJCaRAG2TR4zgDxzhGnZL3XlMWM
-	N/BNfIJOX7jxd5AnCOL0VtCIqH1O3Tx4YlX6K0hNRewf88LPnifTY7pXuM5UgcBLmy+3BkamW00hj
-	p+MvP6XQ6q8ddrzdzJZg==;
+	List-Owner; bh=6hDO563bIQSsej/VLPNkn69kJk+wWriTJy6sKpD02EI=; b=P0mCahbZjeTGxv
+	Yt9Ixu0keosCAyqo8Vf5eow6beeyEO2jbNsHC7e9eaKR3Y2lL5VrrYIawIaIA1chitxjZasBu0HS2
+	JCwo+P+keyOCQj8KODsU4PBo7qSWb4VfEoLaX7vbHK4it9mXBZ54+/YM1EAVTifxWu7Ujgv7oLxON
+	+wHSMuMvn2HgZSkqW/E+uzJ5pSKBgXnNaTsLiQcy3mB/eIQELdL/J163ltcvK5gFPt1isEM0ApTH9
+	xxtlyU6M8XAake8p8RNzNar2yfW0eCmCBviUNq0ajYAT42llixELT+AU3PDDvdgF4ERWZiuvWA1WX
+	Fu8BiIVHeSFwiLd8PdsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSzOW-0000000HWXh-2SI9;
-	Sat, 21 Jun 2025 14:40:36 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uT1aR-000000003NH-3Mx5;
+	Sat, 21 Jun 2025 17:01:03 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSzMG-0000000HWPu-2UvG;
-	Sat, 21 Jun 2025 14:38:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750516684; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=bsonAPj5BW6bDAR1EZrw/fVDrU9F2d/Q0GQs9/xpvo68z0VSER97k6FKXL3X4JhuHN79s10SjALfyd/wtaRiNqM83VdJTRgCvI6IoTo4gyRC2ucGIpuDaeTBvri9qs8eBqMTq6Ib42r2QC0BYg9B37PpULwX5EV6WwyQcyzWl3U=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750516684; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Cznoi6wyY4gO6EMxLblj8iGeR4EkxP9PchzAUeg4/vI=; 
-	b=WBmIIjCgr3e6HnMUXuMkWCP5gJyhzanzmqsuHxiJjisAj0E2M7aVqf/5SrFYjgEim+yIaxph54HaWzIOsyhv2DiQraoSI1mQc1nV8AVNAP+mJ82blsPbdviiayQXDL1XKTzK5sSgosAjYZf53pIXcpEES2hu/bdKP2yO2k87sWs=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750516684;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=Cznoi6wyY4gO6EMxLblj8iGeR4EkxP9PchzAUeg4/vI=;
-	b=KJdnA9/hgN9EDXgZOUpXJ3P066Rpf975uZPAN6QLw8niW4iK6Q4oGYP+4Pwj2qNZ
-	35t8bETwer7OwJbwgziDOoS9wr//9TcZnuHl43Zc/RA2S+oUEDy0kfUZILtpuKxWRnM
-	eBmeOmU95CYSeukn5hKNp9HtSXryMTB4ZapqBN1A=
-Received: by mx.zohomail.com with SMTPS id 1750516683302154.92519442089372;
-	Sat, 21 Jun 2025 07:38:03 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Sat, 21 Jun 2025 16:37:55 +0200
-Subject: [PATCH] arm64: dts: rockchip: enable PCIe on ROCK 4D
+	id 1uT1YC-000000003Ed-3EVM
+	for linux-rockchip@lists.infradead.org;
+	Sat, 21 Jun 2025 16:58:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1750525121;
+ bh=4cuZR2OeJH9U0xo9iqQwKBOuSBnLCscDjqcJkUSqVlk=;
+ b=FFK8NHgQ31ekNfm4u/gEMUnu+arZHGBeICnZcwormlTzeGgUHp7RTxHAvi65fQ/oyahysMyU7
+ Bev4WfdhxEihd3Y8MGixvmFNbxfCufUssYi/d9dKX+jVNCFwez0BKGJW6Grs5jFZFu/W7+9yH+r
+ TisXaNByNgCgHrj61053DTz1Euh/0GQwrZo297nb94//7V5efIjbZ5DMH3wCzGW4O2LJdGnhXQU
+ 1ztZa+K/4e3BT9mti8+a+rE+sghTc5JvMDdKkK4W5ONj/FKJ+DdHc7ZxufjQP2yqIDdE82NrgR0
+ dEPMKsTBkMhTleSOnLi717gqMEiNa39EVp2WVZpwEGlA==
+X-Forward-Email-ID: 6856e4be9932e6905b7c425e
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 1.0.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Fix eMMC HS200 mode on Radxa E20C
+Date: Sat, 21 Jun 2025 16:58:30 +0000
+Message-ID: <20250621165832.2226160-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-Message-Id: <20250621-rk3576-rock4d-pcie-v1-1-2b33c9f12955@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAMLDVmgC/y3MQQrCMBCF4auUWTuQRJNgryJd1HTUoTSpk1QKp
- Xc3WJf/g/dtkEmYMrTNBkIfzpxiDX1qILz6+CTkoTYYZaxyRqOMZ+sdSgrjZcA5MKFV2hnrvPJ
- XB/U4Cz14/aG37mih91Ltcoxw7zNhSNPEpW0irQX/voJu379/kYW+lQAAAA==
-X-Change-ID: 20250621-rk3576-rock4d-pcie-501625670796
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250621_073816_702707_24272BC0 
-X-CRM114-Status: UNSURE (   8.35  )
+X-CRM114-CacheID: sfid-20250621_095844_894154_F7DB6F7A 
+X-CRM114-Status: UNSURE (   8.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,71 +74,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RADXA ROCK 4D board has a PCIe controller connected to a flat flex
-connector, compatible with the one the RPi5 uses.
+eMMC HS200 mode (1.8V I/O) is supported by the MMC host controller on
+RK3528 and works with the optional on-board eMMC module on Radxa E20C.
 
-Enable the associated combphy and pcie controller node, as well as add
-the remaining pinctrl definition for the reset.
+Be explicit about HS200 support in the device tree for Radxa E20C.
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Fixes: 3a01b5f14a8a ("arm64: dts: rockchip: Enable onboard eMMC on Radxa E20C")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+This also help assist boot firmware that consume Linux device tree's to
+use HS200 mode when booting from eMMC, see [1] for a related U-Boot fix.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 6756403111e704cad42f6674d5ab55eb0306f1e3..0388d72076bf79ee4f20ac1d3bc04fe1859f857b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -194,6 +194,10 @@ vcc_5v0_sys: regulator-vcc-5v0-sys {
- 	};
- };
- 
-+&combphy0_ps {
-+	status = "okay";
-+};
-+
- &combphy1_psu {
- 	status = "okay";
- };
-@@ -652,6 +656,14 @@ rgmii_phy0: ethernet-phy@1 {
- 	};
- };
- 
-+&pcie0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_reset>;
-+	reset-gpios = <&gpio2 RK_PB4 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc_3v3_pcie>;
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	hym8563 {
- 		hym8563_int: hym8563-int {
-@@ -678,6 +690,9 @@ pcie {
- 		pcie_pwren: pcie-pwren {
- 			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-+		pcie_reset: pcie-reset {
-+			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
- 	};
- 
- 	usb {
-
+[1] https://source.denx.de/u-boot/u-boot/-/commit/f8cb3fde935ed003ad1d7cf6a06d59586fe65cd5
 ---
-base-commit: db1774a51d78a34dafe9221298b94116a7f5d5ef
-change-id: 20250621-rk3576-rock4d-pcie-501625670796
+ arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts | 1 +
+ 1 file changed, 1 insertion(+)
 
-Best regards,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+index e4333674a0ec..12eec2c1db22 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
+@@ -283,6 +283,7 @@ &saradc {
+ &sdhci {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
+ 	no-sd;
+ 	no-sdio;
+ 	non-removable;
 -- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+2.49.0
 
 
 _______________________________________________
