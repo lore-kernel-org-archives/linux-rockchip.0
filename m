@@ -4,93 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0177C7115C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Jun 2025 11:33:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C6A8C7115C
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Jun 2025 11:39:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZJgrXQtCi9sgihf5fs0B+tFW6T6ZoFxJGZ2eUt9YwZc=; b=r/chpDAN9TNOEJ
-	1IUPIC0R+6H7W98iuARmYngbcr5z2rQTTicv/z68DZJfQJjrSQeWwm1GhIwgKqWgMzsYfOcK2e9Dj
-	SytcSiQWj1a5DwL9zpcDzflhlMMlXSDwbPeQdnCR/qRjcCqmwUU3SwABHG8SoSexr470+gXDeapIW
-	SYGKi2svVcDolOYq9IyPZfRihYLiHFoBvYw4e6S2rSlu6vZ4GJV94IjJRdii/kIflsQOZR5JHaVjS
-	HK1sQkuU3aTKYOTxdAFDF+RUZUtAP2e3sSw+4SC3ApsUe25OFj1NWzv9nQxwWX7syT7E1XxNFx2Zn
-	nYxYBzszimZKBORGi4zg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nDsplSmis6xDL+n4DuHOLV1wOim5KCDBa+HLe0Mk66Y=; b=oJFXQH5DNiY0M2
+	pkDQMMj5QdImlyYqYvdgn0vrUYt+qmasDJsYRKi87g3uPX99RG/YQ3qWt2qe5+f1UmqipCxXMuyPX
+	W/2ZN4MzkT26Fb5ur/HxNjGxwDpLdj8DZHOxR4kRbBzhV2H39M1zSp12jQsCxfIsAVRPC4oBBCuLI
+	VD5iQz8yu5V73bEwqzZmWNLALkBRhGawMrUZoUevFUeBVKWln59Ewbm3rcImiYEMnNxsMFAo8G9mC
+	pGUWgUGvbiXhoPhWl8uPNLg0mikEoKdvSzPrPhEeshHegr1kM/V+FR3gfi7dNacblSK5I/vLerenX
+	chAXhvEUiBb3d0NBquBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSwT9-0000000HOj0-0Y7t;
-	Sat, 21 Jun 2025 11:33:11 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1uSwZ1-0000000HPAq-3D4O;
+	Sat, 21 Jun 2025 11:39:15 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSwT7-0000000HOiZ-2al4;
-	Sat, 21 Jun 2025 11:33:10 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-3141b84bf65so2508911a91.1;
-        Sat, 21 Jun 2025 04:33:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1750505589; x=1751110389; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=m6xWMsAWZYmxQCQIsCXgEHzm6wGct00ke2bZk96Vt4g=;
-        b=aAm00aO3K1j4pxTDQ0eXslvdtK3okBena4R1Zlb9qEsQI4+88KaHbQVpcutAaSILHz
-         U8p3hiZ6H+LyxkVi6QQHaLV9JnAF6x+HCm75FX9eDfx4qNa85UofOnpJV1hru7B7J4VR
-         627gIR5LxAJ7c1pKJTJN5XWQK4r+iDr8yWQpJGENYYeLOeGB0a9E5XIDZPVTrXR7OhS8
-         cp2IEGVr6jqy63PK55R6NUPcpMUGhKPi10Ot7P5dDvm9MoO8ijxYy34o6rz70GZSaiiC
-         QLsi3f5MPoO6m1z2mQS+65l3BkLPLerg1S1OCq37bxKtrRuwN9crq5NbrKDp+SVstGe1
-         OEgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750505589; x=1751110389;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=m6xWMsAWZYmxQCQIsCXgEHzm6wGct00ke2bZk96Vt4g=;
-        b=hoBPwFYN2EJ+AZjH+usXJpgbdLb3IMDUs8sr1mWyMGzUCHOGbdOQwg4WmoS7eXk1ge
-         +V39s+gxnjA1QL2uM661b/YtyTZYpzPXQs3dSLO6cmnlK1thIeBZO5cqG59wKfjRvpmP
-         3+Qsyq/31zhHnA6zFP8kDzdctZlbJcczbWDAg7qW3L7VddrW3DovhBn3ghsIHuvqo8d8
-         VhDgypjHdGVVyN+N2+gZ2R+33wtM8KQVNdJSsFQgcbx0L4A0MIbobKiuq6Y5H5sPHCN/
-         ypONDAWzIzvlDEL2xUFdZ6XXFPo41cdwcTT3+XQmxWHeosLHMr1iEajo39Ez1I5mUncE
-         4SkA==
-X-Forwarded-Encrypted: i=1; AJvYcCU9UsHEA8dQryTmqU7Oile0zzCo2BkVHJGQMCKy1/vUSpZiITFq4Vk1umczdca+CMDH0Yrx4eP0XCRqNdtUgkVE@lists.infradead.org, AJvYcCWJkZmKajZO5iz7ErCeg+gDz6p9jMDrjXK7fLQyUJHkpAQKGq+UFY5NAI4z21ArmJKo2TS3+VrqNm8Z@lists.infradead.org
-X-Gm-Message-State: AOJu0YxrVyMQQ9sOtmHSffFPMG0gE/1jUw/9O8tLevCFeNKaWh3wc6WY
-	kuVscBWnFnvtV9zO29tZwmol6ZdgUcjSuP5CnR/oPsaqSflJRvA1arHg
-X-Gm-Gg: ASbGncuHbQFuk3TYCiYVSGK6tf5hww8qCN8bSSI7ZSaar/j67xVvJ9R2K1A/2g+6U7W
-	Zh1h1u5RmaASzYIHfST51QIrT2r9LmFi4VrPaLOYvIbY0TQso0LFp+ED8vR38+oYf3jpz4/6U1R
-	BD4Ai7VniT10apdTJ8l7UjDMp95EEy+swZUAc/Bs6cqByG2J3LceTiAgj9griMt2N498Gx+b9xf
-	kEEtXoBVNxqGS/R/oshuRUhUi2+7XxcEvJKep53XZ2a5eUTZGD9Qbm1FYkKv9sSkgdR1FZGB1sJ
-	+3AsiTgcv+4c0mWDIbwMPqhcxwaSLEktZL5oq0Jmtha/RTrFiA==
-X-Google-Smtp-Source: AGHT+IH6gtQnon9pj6eccRXS/FbkW5+UypmNMlcvNoE6c4fJcgUCpR3GPt9papU67FN/24ZcWA6t+g==
-X-Received: by 2002:a17:90b:1f89:b0:313:176b:3d4b with SMTP id 98e67ed59e1d1-3159d7c8fb2mr7713377a91.22.1750505588733;
-        Sat, 21 Jun 2025 04:33:08 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:d58e::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3158a226f7asm6301825a91.10.2025.06.21.04.33.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Jun 2025 04:33:08 -0700 (PDT)
-Date: Sat, 21 Jun 2025 08:33:02 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Rick wertenbroek <rick.wertenbroek@gmail.com>,
-	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH v6 0/4] PCI: rockchip: Improve driver quality
-Message-ID: <aFaYbqRRV2l7nPcr@geday>
-References: <cover.1750470187.git.geraldogabriel@gmail.com>
- <4760493.mogB4TqSGs@phil>
+	id 1uSwYy-0000000HPA2-19Ce
+	for linux-rockchip@lists.infradead.org;
+	Sat, 21 Jun 2025 11:39:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1750505949;
+ bh=ir11YpcbwxWD+w+nzz2s0FsuVrnNjiwPhxkmWuSazqw=;
+ b=dSYTpBQmGRmwze8YHSaJlkEW3c6M1mKz7foeTNWjnKodkrE43+IuMlcJ6iB4LL7Ciu5kTzvWz
+ ReU7xQKNsyPzBHhEzhKH+JIknt6CkT1TKfPE9cY7OcDP9gEWl1MNxjEfuuifshuavhgeG4WQRhx
+ xJbU9IYMsLmi4NMJwx8ToZz+2OVKZX6aH/WB6SpDYhlJ8+oljINsU9yXrwjb4D/W7XaxU73I+ME
+ +S153F9mPEwuUDvfAYa0ebHiIWk+9d2Kc/RTZ1cNx5xR/7m2JDJRxPOkS8s9nuIap3ONcGw9tnh
+ TXwMA4XCgqmKW3ODH4+2UzoxKvc2+HwuhRi6dgOgqKDg==
+X-Forward-Email-ID: 685699d9f0bccf4584158851
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 1.0.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Fix pinctrl node names for RK3528
+Date: Sat, 21 Jun 2025 11:38:57 +0000
+Message-ID: <20250621113859.2146400-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4760493.mogB4TqSGs@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250621_043309_656979_CD1B3379 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20250621_043912_704262_5236743E 
+X-CRM114-Status: UNSURE (   7.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,30 +74,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCBKdW4gMjEsIDIwMjUgYXQgMDk6Mzk6MDhBTSArMDIwMCwgSGVpa28gU3R1ZWJuZXIg
-d3JvdGU6Cj4gSGkgR2VyYWxkbywKPiAKPiBBbSBTYW1zdGFnLCAyMS4gSnVuaSAyMDI1LCAwMzo0
-Nzo1MSBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIEdlcmFsZG8gTmFzY2lt
-ZW50bzoKPiA+IER1cmluZyBhIDMwLWRheSBkZWJ1Z2dpbmctcnVuIGZpZ2h0aW5nIHF1aXJreSBQ
-Q0llIGRldmljZXMgb24gUkszMzk5Cj4gPiBzb21lIHF1YWxpdHkgaW1wcm92ZW1lbnRzIGJlZ2Fu
-IHRvIHRha2UgZm9ybSBhbmQgdGhpcyBpcyBteSBhdHRlbXB0Cj4gPiBhdCB1cHN0cmVhbWluZyBp
-dC4gSXQgd2lsbCBlbnN1cmUgbWF4aW11bSBjaGFuY2Ugb2YgcmV0cmFpbmluZyB0byBHZW4yCj4g
-PiA1LjBHVC9zLCBvbiBhbGwgZm91ciBsYW5lcyBhbmQgZml4IGFzeW5jIHN0cm9iZSBURVNUX1dS
-SVRFIGRpc2FibGVtZW50Lgo+IAo+IGp1c3QgYSBkcml2ZXIgYnkgY29tbWVudCwgeW91IG1pZ2h0
-IHdhbnQgdG8gZHJvcCB0aGUgUkZDIGVsZW1lbnQgZnJvbQo+IHRoZSBwYXRjaCBzdWJqZWN0cy4K
-PiAKPiBJdCBkb2VzIGxvb2sgbGlrZSB0aGluZ3MgdGFrZSBmb3JtIG5pY2VseSBhbmQgaG93IHBl
-b3BsZSByZWFkIHRob3NlCj4gUkZDIG1hcmtzIHZhcmllcyB3aWxkbHkuIFNvbWUgbWF5IGV2ZW4g
-cmVhZCBpdCBhcyAidGhpcyBpcyB1bmZpbmlzaGVkIgo+IG9yIHNvbWV0aGluZyBhbmQgc3BlbnQg
-cmV2aWV3IHRpbWUgb24gb3RoZXIgdGhpbmdzLgo+IAo+IFNvIGlmIHlvdSdyZSBtb3N0bHkgaGFw
-cHkgd2l0aCB5b3VyIGNoYW5nZXMsIGp1c3QgZHJvcCB0aGUgUkZDIHBhcnQgOi0pCj4KCkhpIEhl
-aWtvLAoKdGhhbmtzIGZvciBoZWFkcy11cCwgd2UgcmVhbGx5IGRvbid0IHdhbnQgcGVvcGxlIHRv
-IGlnbm9yZSBwYXRjaGVzIHNvCkknbGwgZHJvcCBSRkMgdGFnIGZvciBuZXh0IGl0ZXJhdGlvbi4g
-VGhlIGNvdmVyIGxldHRlciBuZWVkcyBzb21lIGxvdmUKdG9vLgoKVGhhbmtzLApHZXJhbGRvIE5h
-c2NpbWVudG8KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+Following warnings can be observed with CHECK_DTBS=y for the RK3528:
+
+  rk3528-pinctrl.dtsi:101.36-105.5: Warning (node_name_chars_strict):
+    /pinctrl/fephy/fephym0-led_dpx: Character '_' not recommended in node name
+  rk3528-pinctrl.dtsi:108.38-112.5: Warning (node_name_chars_strict):
+    /pinctrl/fephy/fephym0-led_link: Character '_' not recommended in node name
+  rk3528-pinctrl.dtsi:115.36-119.5: Warning (node_name_chars_strict):
+    /pinctrl/fephy/fephym0-led_spd: Character '_' not recommended in node name
+  rk3528-pinctrl.dtsi:122.36-126.5: Warning (node_name_chars_strict):
+   /pinctrl/fephy/fephym1-led_dpx: Character '_' not recommended in node name
+  rk3528-pinctrl.dtsi:129.38-133.5: Warning (node_name_chars_strict):
+    /pinctrl/fephy/fephym1-led_link: Character '_' not recommended in node name
+  rk3528-pinctrl.dtsi:136.36-140.5: Warning (node_name_chars_strict):
+    /pinctrl/fephy/fephym1-led_spd: Character '_' not recommended in node name
+  rk3528-pinctrl.dtsi:782.32-790.5: Warning (node_name_chars_strict):
+    /pinctrl/rgmii/rgmii-rx_bus2: Character '_' not recommended in node name
+  rk3528-pinctrl.dtsi:793.32-801.5: Warning (node_name_chars_strict):
+    /pinctrl/rgmii/rgmii-tx_bus2: Character '_' not recommended in node name
+  rk3528-pinctrl.dtsi:804.36-810.5: Warning (node_name_chars_strict):
+    /pinctrl/rgmii/rgmii-rgmii_clk: Character '_' not recommended in node name
+  rk3528-pinctrl.dtsi:813.36-823.5: Warning (node_name_chars_strict):
+    /pinctrl/rgmii/rgmii-rgmii_bus: Character '_' not recommended in node name
+
+Rename the affected nodes to fix these warnings.
+
+Fixes: a31fad19ae39 ("arm64: dts: rockchip: Add pinctrl and gpio nodes for RK3528")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+ .../boot/dts/rockchip/rk3528-pinctrl.dtsi     | 20 +++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-pinctrl.dtsi b/arch/arm64/boot/dts/rockchip/rk3528-pinctrl.dtsi
+index ea051362fb26..59b75c91bbb7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-pinctrl.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3528-pinctrl.dtsi
+@@ -98,42 +98,42 @@ eth_pins: eth-pins {
+ 
+ 	fephy {
+ 		/omit-if-no-ref/
+-		fephym0_led_dpx: fephym0-led_dpx {
++		fephym0_led_dpx: fephym0-led-dpx {
+ 			rockchip,pins =
+ 				/* fephy_led_dpx_m0 */
+ 				<4 RK_PB5 2 &pcfg_pull_none>;
+ 		};
+ 
+ 		/omit-if-no-ref/
+-		fephym0_led_link: fephym0-led_link {
++		fephym0_led_link: fephym0-led-link {
+ 			rockchip,pins =
+ 				/* fephy_led_link_m0 */
+ 				<4 RK_PC0 2 &pcfg_pull_none>;
+ 		};
+ 
+ 		/omit-if-no-ref/
+-		fephym0_led_spd: fephym0-led_spd {
++		fephym0_led_spd: fephym0-led-spd {
+ 			rockchip,pins =
+ 				/* fephy_led_spd_m0 */
+ 				<4 RK_PB7 2 &pcfg_pull_none>;
+ 		};
+ 
+ 		/omit-if-no-ref/
+-		fephym1_led_dpx: fephym1-led_dpx {
++		fephym1_led_dpx: fephym1-led-dpx {
+ 			rockchip,pins =
+ 				/* fephy_led_dpx_m1 */
+ 				<2 RK_PA4 5 &pcfg_pull_none>;
+ 		};
+ 
+ 		/omit-if-no-ref/
+-		fephym1_led_link: fephym1-led_link {
++		fephym1_led_link: fephym1-led-link {
+ 			rockchip,pins =
+ 				/* fephy_led_link_m1 */
+ 				<2 RK_PA6 5 &pcfg_pull_none>;
+ 		};
+ 
+ 		/omit-if-no-ref/
+-		fephym1_led_spd: fephym1-led_spd {
++		fephym1_led_spd: fephym1-led-spd {
+ 			rockchip,pins =
+ 				/* fephy_led_spd_m1 */
+ 				<2 RK_PA5 5 &pcfg_pull_none>;
+@@ -779,7 +779,7 @@ rgmii_miim: rgmii-miim {
+ 		};
+ 
+ 		/omit-if-no-ref/
+-		rgmii_rx_bus2: rgmii-rx_bus2 {
++		rgmii_rx_bus2: rgmii-rx-bus2 {
+ 			rockchip,pins =
+ 				/* rgmii_rxd0 */
+ 				<3 RK_PA3 2 &pcfg_pull_none>,
+@@ -790,7 +790,7 @@ rgmii_rx_bus2: rgmii-rx_bus2 {
+ 		};
+ 
+ 		/omit-if-no-ref/
+-		rgmii_tx_bus2: rgmii-tx_bus2 {
++		rgmii_tx_bus2: rgmii-tx-bus2 {
+ 			rockchip,pins =
+ 				/* rgmii_txd0 */
+ 				<3 RK_PA1 2 &pcfg_pull_none_drv_level_2>,
+@@ -801,7 +801,7 @@ rgmii_tx_bus2: rgmii-tx_bus2 {
+ 		};
+ 
+ 		/omit-if-no-ref/
+-		rgmii_rgmii_clk: rgmii-rgmii_clk {
++		rgmii_rgmii_clk: rgmii-rgmii-clk {
+ 			rockchip,pins =
+ 				/* rgmii_rxclk */
+ 				<3 RK_PA5 2 &pcfg_pull_none>,
+@@ -810,7 +810,7 @@ rgmii_rgmii_clk: rgmii-rgmii_clk {
+ 		};
+ 
+ 		/omit-if-no-ref/
+-		rgmii_rgmii_bus: rgmii-rgmii_bus {
++		rgmii_rgmii_bus: rgmii-rgmii-bus {
+ 			rockchip,pins =
+ 				/* rgmii_rxd2 */
+ 				<3 RK_PA7 2 &pcfg_pull_none>,
+-- 
+2.49.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
