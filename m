@@ -4,58 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CE90C7115C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Jun 2025 09:00:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0177C7115C
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Jun 2025 11:33:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h0WqMecLFRFv878gFgUU7Dg4zip+tMFW9Fgmi2p4DqQ=; b=eUmfQ2KC4mOrSk
-	q91kZ0XaxI7dWeBTNafL9b4YY11mbX7ITlcMKPa90Jg9GhTqSkkV5DZZ+uhwMfjW6a/+vSeHC4Kvp
-	j3ZH9S3Fvk/3uML5bNEJmY0pKV0fETIo44c/neakZ07uaR3NFzMpjq9KIV5S+YhiABF9D4aAPLQkD
-	WJJYMXNkbD2ggHEJe6jJhIiAz0uCOPbXjFHclJF8GZCu+w5AAt2Q0umuPpljoapf3t5A/FUcwMKlQ
-	sfkqTLNy3qesR5R4PDC5fhTvYLLQKmqf+sk6cs3/FwSMbMh/jNzRAUJGgYoVqeHVM0v7gNl3wjSBG
-	9FIc9g7pNKVrg1/lUtqw==;
+	List-Owner; bh=ZJgrXQtCi9sgihf5fs0B+tFW6T6ZoFxJGZ2eUt9YwZc=; b=r/chpDAN9TNOEJ
+	1IUPIC0R+6H7W98iuARmYngbcr5z2rQTTicv/z68DZJfQJjrSQeWwm1GhIwgKqWgMzsYfOcK2e9Dj
+	SytcSiQWj1a5DwL9zpcDzflhlMMlXSDwbPeQdnCR/qRjcCqmwUU3SwABHG8SoSexr470+gXDeapIW
+	SYGKi2svVcDolOYq9IyPZfRihYLiHFoBvYw4e6S2rSlu6vZ4GJV94IjJRdii/kIflsQOZR5JHaVjS
+	HK1sQkuU3aTKYOTxdAFDF+RUZUtAP2e3sSw+4SC3ApsUe25OFj1NWzv9nQxwWX7syT7E1XxNFx2Zn
+	nYxYBzszimZKBORGi4zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSu5g-0000000HHM4-1igm;
-	Sat, 21 Jun 2025 09:00:48 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1uSwT9-0000000HOj0-0Y7t;
+	Sat, 21 Jun 2025 11:33:11 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSu5d-0000000HHLZ-26bt;
-	Sat, 21 Jun 2025 09:00:47 +0000
-Received: from localhost.localdomain (unknown [116.25.95.207])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 19728b98b;
-	Sat, 21 Jun 2025 17:00:35 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: heiko@sntech.de
-Cc: amadeus@jmu.edu.cn,
-	ziyao@disroot.org,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 0/3] rockchip: Add GPU support for RK3528
-Date: Sat, 21 Jun 2025 17:00:26 +0800
-Message-Id: <20250621090026.23293-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <175045054807.1572438.8910024255365917623.b4-ty@sntech.de>
-References: <175045054807.1572438.8910024255365917623.b4-ty@sntech.de>
+	id 1uSwT7-0000000HOiZ-2al4;
+	Sat, 21 Jun 2025 11:33:10 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-3141b84bf65so2508911a91.1;
+        Sat, 21 Jun 2025 04:33:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1750505589; x=1751110389; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=m6xWMsAWZYmxQCQIsCXgEHzm6wGct00ke2bZk96Vt4g=;
+        b=aAm00aO3K1j4pxTDQ0eXslvdtK3okBena4R1Zlb9qEsQI4+88KaHbQVpcutAaSILHz
+         U8p3hiZ6H+LyxkVi6QQHaLV9JnAF6x+HCm75FX9eDfx4qNa85UofOnpJV1hru7B7J4VR
+         627gIR5LxAJ7c1pKJTJN5XWQK4r+iDr8yWQpJGENYYeLOeGB0a9E5XIDZPVTrXR7OhS8
+         cp2IEGVr6jqy63PK55R6NUPcpMUGhKPi10Ot7P5dDvm9MoO8ijxYy34o6rz70GZSaiiC
+         QLsi3f5MPoO6m1z2mQS+65l3BkLPLerg1S1OCq37bxKtrRuwN9crq5NbrKDp+SVstGe1
+         OEgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750505589; x=1751110389;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=m6xWMsAWZYmxQCQIsCXgEHzm6wGct00ke2bZk96Vt4g=;
+        b=hoBPwFYN2EJ+AZjH+usXJpgbdLb3IMDUs8sr1mWyMGzUCHOGbdOQwg4WmoS7eXk1ge
+         +V39s+gxnjA1QL2uM661b/YtyTZYpzPXQs3dSLO6cmnlK1thIeBZO5cqG59wKfjRvpmP
+         3+Qsyq/31zhHnA6zFP8kDzdctZlbJcczbWDAg7qW3L7VddrW3DovhBn3ghsIHuvqo8d8
+         VhDgypjHdGVVyN+N2+gZ2R+33wtM8KQVNdJSsFQgcbx0L4A0MIbobKiuq6Y5H5sPHCN/
+         ypONDAWzIzvlDEL2xUFdZ6XXFPo41cdwcTT3+XQmxWHeosLHMr1iEajo39Ez1I5mUncE
+         4SkA==
+X-Forwarded-Encrypted: i=1; AJvYcCU9UsHEA8dQryTmqU7Oile0zzCo2BkVHJGQMCKy1/vUSpZiITFq4Vk1umczdca+CMDH0Yrx4eP0XCRqNdtUgkVE@lists.infradead.org, AJvYcCWJkZmKajZO5iz7ErCeg+gDz6p9jMDrjXK7fLQyUJHkpAQKGq+UFY5NAI4z21ArmJKo2TS3+VrqNm8Z@lists.infradead.org
+X-Gm-Message-State: AOJu0YxrVyMQQ9sOtmHSffFPMG0gE/1jUw/9O8tLevCFeNKaWh3wc6WY
+	kuVscBWnFnvtV9zO29tZwmol6ZdgUcjSuP5CnR/oPsaqSflJRvA1arHg
+X-Gm-Gg: ASbGncuHbQFuk3TYCiYVSGK6tf5hww8qCN8bSSI7ZSaar/j67xVvJ9R2K1A/2g+6U7W
+	Zh1h1u5RmaASzYIHfST51QIrT2r9LmFi4VrPaLOYvIbY0TQso0LFp+ED8vR38+oYf3jpz4/6U1R
+	BD4Ai7VniT10apdTJ8l7UjDMp95EEy+swZUAc/Bs6cqByG2J3LceTiAgj9griMt2N498Gx+b9xf
+	kEEtXoBVNxqGS/R/oshuRUhUi2+7XxcEvJKep53XZ2a5eUTZGD9Qbm1FYkKv9sSkgdR1FZGB1sJ
+	+3AsiTgcv+4c0mWDIbwMPqhcxwaSLEktZL5oq0Jmtha/RTrFiA==
+X-Google-Smtp-Source: AGHT+IH6gtQnon9pj6eccRXS/FbkW5+UypmNMlcvNoE6c4fJcgUCpR3GPt9papU67FN/24ZcWA6t+g==
+X-Received: by 2002:a17:90b:1f89:b0:313:176b:3d4b with SMTP id 98e67ed59e1d1-3159d7c8fb2mr7713377a91.22.1750505588733;
+        Sat, 21 Jun 2025 04:33:08 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:d58e::dead:c001])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3158a226f7asm6301825a91.10.2025.06.21.04.33.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 21 Jun 2025 04:33:08 -0700 (PDT)
+Date: Sat, 21 Jun 2025 08:33:02 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rick wertenbroek <rick.wertenbroek@gmail.com>,
+	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH v6 0/4] PCI: rockchip: Improve driver quality
+Message-ID: <aFaYbqRRV2l7nPcr@geday>
+References: <cover.1750470187.git.geraldogabriel@gmail.com>
+ <4760493.mogB4TqSGs@phil>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDSElOVkNKTxpJQkpCGEMfTlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSk1VSU5VQk5VSUtMWVdZFhoPEhUdFFlBWU9LSFVKS0lCTUhKVUpLS1VLWQ
-	Y+
-X-HM-Tid: 0a9791b7dc5703a2kunmb42a6c8b19ec90
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PVE6GCo*HTExMCgBMBU*FysX
-	FU0KCQpVSlVKTE5LT0JNT0hNS01IVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	TVVJTlVCTlVJS0xZV1kIAVlBSkpLQjcG
+Content-Disposition: inline
+In-Reply-To: <4760493.mogB4TqSGs@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250621_020045_709788_1547748E 
-X-CRM114-Status: UNSURE (   5.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250621_043309_656979_CD1B3379 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,32 +102,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-> Applied, thanks!
->
-> [2/3] arm64: dts: rockchip: Add GPU node for RK3528
->       commit: 6b88b8a640fa5d2169e0ce47b88dc30727fc1105
-> [3/3] arm64: dts: rockchip: Enable GPU on Radxa E20C
->       commit: 669080eb7f7c4720aa4e640a49f7490cd928cfcc
-
-https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=6b88b8a640fa5d2169e0ce47b88dc30727fc1105
-
-Should the gpu_opp_table node be above the pinctrl node?
-
-Thanks,
-Chukun
-
---
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU2F0LCBKdW4gMjEsIDIwMjUgYXQgMDk6Mzk6MDhBTSArMDIwMCwgSGVpa28gU3R1ZWJuZXIg
+d3JvdGU6Cj4gSGkgR2VyYWxkbywKPiAKPiBBbSBTYW1zdGFnLCAyMS4gSnVuaSAyMDI1LCAwMzo0
+Nzo1MSBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIEdlcmFsZG8gTmFzY2lt
+ZW50bzoKPiA+IER1cmluZyBhIDMwLWRheSBkZWJ1Z2dpbmctcnVuIGZpZ2h0aW5nIHF1aXJreSBQ
+Q0llIGRldmljZXMgb24gUkszMzk5Cj4gPiBzb21lIHF1YWxpdHkgaW1wcm92ZW1lbnRzIGJlZ2Fu
+IHRvIHRha2UgZm9ybSBhbmQgdGhpcyBpcyBteSBhdHRlbXB0Cj4gPiBhdCB1cHN0cmVhbWluZyBp
+dC4gSXQgd2lsbCBlbnN1cmUgbWF4aW11bSBjaGFuY2Ugb2YgcmV0cmFpbmluZyB0byBHZW4yCj4g
+PiA1LjBHVC9zLCBvbiBhbGwgZm91ciBsYW5lcyBhbmQgZml4IGFzeW5jIHN0cm9iZSBURVNUX1dS
+SVRFIGRpc2FibGVtZW50Lgo+IAo+IGp1c3QgYSBkcml2ZXIgYnkgY29tbWVudCwgeW91IG1pZ2h0
+IHdhbnQgdG8gZHJvcCB0aGUgUkZDIGVsZW1lbnQgZnJvbQo+IHRoZSBwYXRjaCBzdWJqZWN0cy4K
+PiAKPiBJdCBkb2VzIGxvb2sgbGlrZSB0aGluZ3MgdGFrZSBmb3JtIG5pY2VseSBhbmQgaG93IHBl
+b3BsZSByZWFkIHRob3NlCj4gUkZDIG1hcmtzIHZhcmllcyB3aWxkbHkuIFNvbWUgbWF5IGV2ZW4g
+cmVhZCBpdCBhcyAidGhpcyBpcyB1bmZpbmlzaGVkIgo+IG9yIHNvbWV0aGluZyBhbmQgc3BlbnQg
+cmV2aWV3IHRpbWUgb24gb3RoZXIgdGhpbmdzLgo+IAo+IFNvIGlmIHlvdSdyZSBtb3N0bHkgaGFw
+cHkgd2l0aCB5b3VyIGNoYW5nZXMsIGp1c3QgZHJvcCB0aGUgUkZDIHBhcnQgOi0pCj4KCkhpIEhl
+aWtvLAoKdGhhbmtzIGZvciBoZWFkcy11cCwgd2UgcmVhbGx5IGRvbid0IHdhbnQgcGVvcGxlIHRv
+IGlnbm9yZSBwYXRjaGVzIHNvCkknbGwgZHJvcCBSRkMgdGFnIGZvciBuZXh0IGl0ZXJhdGlvbi4g
+VGhlIGNvdmVyIGxldHRlciBuZWVkcyBzb21lIGxvdmUKdG9vLgoKVGhhbmtzLApHZXJhbGRvIE5h
+c2NpbWVudG8KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
