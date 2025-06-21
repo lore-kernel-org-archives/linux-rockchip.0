@@ -4,87 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8B79C7115C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Jun 2025 13:53:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98D9BC71157
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Jun 2025 14:40:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XVjJKzr/QUgwNEdw0Xt4LuH79rh/yeXZ5sgBuw+6Vr4=; b=MrbEtivge/fwcw
-	71vpyfhRNT5ius4g/4CeHw3BeSA7L2KcST0WDYmRrLn1vU7YO/MFWpzbFHHoKFa/URt1qtD49o4xm
-	BKFzHQegFFlUiVP0YrHDZqqCgHnrQXFwkW/hwmOU49xWOtq5bmzEeQH1GTobXh/WG832bp+FNvWmu
-	rwGRHaKLIh6+zxFr1SsIaalKoDlCxYHOQDXwKY2pYueb6l1p2G2hHpyJ/3RG8s/Fq6rC7R0JOVF4e
-	RVGFzVXLWnyOMbgy+9/7oQZmaZjuUz+BH3w4b4KN9uE3phsYWwBoME6qGggI/t6+l6leNe6l4eA7+
-	IgWme+Br6rHGoy1w4p3w==;
+	List-Owner; bh=+mH2Mk8tW3f26N7Qo2Ue7ojmuFFQwFYr+3XhNiBFYUE=; b=Wu+7e49/oQ80Ce
+	3X1j2YflWnroJ4E5JdV4c9QjK6GLnqHwKVux83Evr9mevB6jaZxkBPS+6O1JI+0qj67n2WqBVdEWv
+	m0vOD4kwlpFzEsmCCMqPZrP5EV3msOPt5RHJUhQoqYXiTFPf4EU29q5XZEiT8bRcv1vOtdh4krFxh
+	Td2O4IvLxIQjWstcp1pN84y/8PV6PWQTC3jPg+9PstjSwbeimsUJCaRAG2TR4zgDxzhGnZL3XlMWM
+	N/BNfIJOX7jxd5AnCOL0VtCIqH1O3Tx4YlX6K0hNRewf88LPnifTY7pXuM5UgcBLmy+3BkamW00hj
+	p+MvP6XQ6q8ddrzdzJZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSyf5-0000000HUEP-1O8g;
-	Sat, 21 Jun 2025 13:53:39 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1uSzOW-0000000HWXh-2SI9;
+	Sat, 21 Jun 2025 14:40:36 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSyf3-0000000HUDw-2VLP;
-	Sat, 21 Jun 2025 13:53:38 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-23496600df1so5603395ad.2;
-        Sat, 21 Jun 2025 06:53:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1750514016; x=1751118816; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=bTflLiAJEMI7+0/3feKtggy4eDDBbx+qju7cZDBIaN0=;
-        b=LdYx8QbSSXYJSgfh6dTCphLNA2MZUcGZtKLoBJ63e/LIACYLpszR3Qzw+3kZgoliA8
-         aLvcpvjZXJ1CB6+3YC6Icvf4TMwxL0JNDxgBpxc7F9OfkxJQVHo/XkK7UPfhqZmAZOAi
-         rvA4irjyzyJMa5AsBK7A+JK1OuLU0ZH/7085Hb/xFOvCaFXKgNxk9oTt6/Z5pc3Vw/rM
-         D157yHJXcZhWSBqusAKffU/uCzJEplcpzZMeJ6o26RJabEBDLWWEZHvRxpgBMUStRa6x
-         o6U0dLGd0D/BUh63XmlEyH5XxOdPojgPVtVSPkP1+EFIReF+Uv849Xc6kLX82gegCNsD
-         cCMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750514016; x=1751118816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bTflLiAJEMI7+0/3feKtggy4eDDBbx+qju7cZDBIaN0=;
-        b=ZtAJbHrbMbhBGYe1VCc59wkZZwl37xGFnyWfcrncFUpGekJ7wT6bPnk/2YZ5KQCq+L
-         crK01BEIhwG1XbwamIZr14H+kdcfwproVJJ1zg8T/hSiDyyzAe3hDDV167Jk4Ebab0i5
-         zTGhCCI230oZCcJhmpAw2hwCyx9MN4xZSxtIOEKEH4ScbpvmvxOOHp4/nenfVERj5i4I
-         fFo3Nndn97outTcc052IETsDapk/+1Ld6+skYjxn5H2nrZls9VwV89WlxOegsaoSeYuv
-         PSwO7Mjf/ecpMRPYMgAbV3/uNENkZ8KCiQnSoT2zw0ChgtzqWwcyxDhxvxLdL7Xq+eUd
-         ByIg==
-X-Forwarded-Encrypted: i=1; AJvYcCUmCys+nvdYnZFJsqUA+cBmkS2oJsUgZBC4r3c5yxMbUQx0WEddvK16t3gbvUvwiYpDxidfRLlpLZyinN78gWSS@lists.infradead.org
-X-Gm-Message-State: AOJu0YykBVo6LHZmjcxMxanappQl8VQFneWwuHdYCsp8/Co426VQRGIO
-	CrpZ2iKWmXeEZU3c3VyoJlEvsqFOFedlCiPjNhQGubRXX5kEvPgphf+EcOAd4wwPsEs=
-X-Gm-Gg: ASbGnctk+558dOFbaVk2QHKS55ACM308km/MEw3emxJNpYlnxP7xHwOIseeyAwLvCic
-	z4N3z6HpJHot/U6he2xVfwffd9wj7A9ZW+jQ+AG2goLRjryoiAjtCz5KSJMmu3ILS6TGmSbKjiW
-	V4vGqBCIOHBgVM7WF8oDzkVd7NJZ4b676aBRZ4Bl3G/+H9QvPlWqQnx+IUQyAjwP3zIN6ECOQ9m
-	bQO4nVOpGjbcYhtXNzYd6YMBY5yucfPgxSBj6O4f/mkVsj0YmmsEYAy5vSHzhsBKx51M4l0VUii
-	GRuDzelyJ9Q2A/q59Y4c8vOfcEwDmCtDBO2YOL4+y9iXp1xxtElvMFwFu9lutN4=
-X-Google-Smtp-Source: AGHT+IHNSz1H+Y6EvxrMfpwVtSmD5EjhjR2Uj7VVL9JBRhFfCwNGQaZuAsJ9UFVRyUwVzOhTpkaRDg==
-X-Received: by 2002:a17:902:d4ce:b0:235:f1e4:3381 with SMTP id d9443c01a7336-237d9a2539fmr35469485ad.8.1750514016224;
-        Sat, 21 Jun 2025 06:53:36 -0700 (PDT)
-Received: from rock-5b.. ([45.32.55.39])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-237d86103c1sm40700275ad.105.2025.06.21.06.53.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Jun 2025 06:53:35 -0700 (PDT)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Jianfeng Liu <liujianfeng1994@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Stephen Rothwell <sfr@canb.auug.org.au>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Add bluetooth support to ArmSoM Sige7
-Date: Sat, 21 Jun 2025 21:53:14 +0800
-Message-ID: <20250621135319.61766-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1uSzMG-0000000HWPu-2UvG;
+	Sat, 21 Jun 2025 14:38:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1750516684; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=bsonAPj5BW6bDAR1EZrw/fVDrU9F2d/Q0GQs9/xpvo68z0VSER97k6FKXL3X4JhuHN79s10SjALfyd/wtaRiNqM83VdJTRgCvI6IoTo4gyRC2ucGIpuDaeTBvri9qs8eBqMTq6Ib42r2QC0BYg9B37PpULwX5EV6WwyQcyzWl3U=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1750516684; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Cznoi6wyY4gO6EMxLblj8iGeR4EkxP9PchzAUeg4/vI=; 
+	b=WBmIIjCgr3e6HnMUXuMkWCP5gJyhzanzmqsuHxiJjisAj0E2M7aVqf/5SrFYjgEim+yIaxph54HaWzIOsyhv2DiQraoSI1mQc1nV8AVNAP+mJ82blsPbdviiayQXDL1XKTzK5sSgosAjYZf53pIXcpEES2hu/bdKP2yO2k87sWs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750516684;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=Cznoi6wyY4gO6EMxLblj8iGeR4EkxP9PchzAUeg4/vI=;
+	b=KJdnA9/hgN9EDXgZOUpXJ3P066Rpf975uZPAN6QLw8niW4iK6Q4oGYP+4Pwj2qNZ
+	35t8bETwer7OwJbwgziDOoS9wr//9TcZnuHl43Zc/RA2S+oUEDy0kfUZILtpuKxWRnM
+	eBmeOmU95CYSeukn5hKNp9HtSXryMTB4ZapqBN1A=
+Received: by mx.zohomail.com with SMTPS id 1750516683302154.92519442089372;
+	Sat, 21 Jun 2025 07:38:03 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Sat, 21 Jun 2025 16:37:55 +0200
+Subject: [PATCH] arm64: dts: rockchip: enable PCIe on ROCK 4D
 MIME-Version: 1.0
+Message-Id: <20250621-rk3576-rock4d-pcie-v1-1-2b33c9f12955@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAMLDVmgC/y3MQQrCMBCF4auUWTuQRJNgryJd1HTUoTSpk1QKp
+ Xc3WJf/g/dtkEmYMrTNBkIfzpxiDX1qILz6+CTkoTYYZaxyRqOMZ+sdSgrjZcA5MKFV2hnrvPJ
+ XB/U4Cz14/aG37mih91Ltcoxw7zNhSNPEpW0irQX/voJu379/kYW+lQAAAA==
+X-Change-ID: 20250621-rk3576-rock4d-pcie-501625670796
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250621_065337_634907_B2A66A32 
-X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-CacheID: sfid-20250621_073816_702707_24272BC0 
+X-CRM114-Status: UNSURE (   8.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,77 +73,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-ArmSoM Sige7 has onboard AP6275P Wi-Fi6 (PCIe) and BT5 (UART) module
-which is similar with Khadas Edge2. This commit enables bluetooth
-at uart6.
+The RADXA ROCK 4D board has a PCIe controller connected to a flat flex
+connector, compatible with the one the RPi5 uses.
 
-Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+Enable the associated combphy and pcie controller node, as well as add
+the remaining pinctrl definition for the reset.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
+ arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
- .../boot/dts/rockchip/rk3588-armsom-sige7.dts | 36 +++++++++++++++++++
- 1 file changed, 36 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts b/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-index ae9274365be..39197ee1983 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-@@ -373,6 +373,20 @@ vcc5v0_host_en: vcc5v0-host-en {
- 			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+index 6756403111e704cad42f6674d5ab55eb0306f1e3..0388d72076bf79ee4f20ac1d3bc04fe1859f857b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+@@ -194,6 +194,10 @@ vcc_5v0_sys: regulator-vcc-5v0-sys {
  	};
-+
-+	wireless-bluetooth {
-+		bt_reset_pin: bt-reset-pin {
-+			rockchip,pins = <3 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_wake_pin: bt-wake-pin {
-+			rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		bt_wake_host_irq: bt-wake-host-irq {
-+			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
  };
  
- &pwm1 {
-@@ -767,6 +781,28 @@ &uart2 {
- 	status = "okay";
- };
- 
-+&uart6 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart6m1_xfer &uart6m1_ctsn &uart6m1_rtsn>;
++&combphy0_ps {
 +	status = "okay";
-+
-+	bluetooth {
-+		compatible = "brcm,bcm43438-bt";
-+		clocks = <&hym8563>;
-+		clock-names = "lpo";
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PC5 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "host-wakeup";
-+		device-wakeup-gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
-+		shutdown-gpios = <&gpio3 RK_PA6 GPIO_ACTIVE_HIGH>;
-+		max-speed = <1500000>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_wake_host_irq &bt_wake_pin &bt_reset_pin>;
-+		vbat-supply = <&vcc_3v3_s3>;
-+		vddio-supply = <&vcc_1v8_s3>;
-+	};
 +};
 +
- &usbdp_phy1 {
+ &combphy1_psu {
  	status = "okay";
  };
+@@ -652,6 +656,14 @@ rgmii_phy0: ethernet-phy@1 {
+ 	};
+ };
+ 
++&pcie0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie_reset>;
++	reset-gpios = <&gpio2 RK_PB4 GPIO_ACTIVE_HIGH>;
++	vpcie3v3-supply = <&vcc_3v3_pcie>;
++	status = "okay";
++};
++
+ &pinctrl {
+ 	hym8563 {
+ 		hym8563_int: hym8563-int {
+@@ -678,6 +690,9 @@ pcie {
+ 		pcie_pwren: pcie-pwren {
+ 			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
++		pcie_reset: pcie-reset {
++			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
+ 	};
+ 
+ 	usb {
+
+---
+base-commit: db1774a51d78a34dafe9221298b94116a7f5d5ef
+change-id: 20250621-rk3576-rock4d-pcie-501625670796
+
+Best regards,
 -- 
-2.43.0
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
