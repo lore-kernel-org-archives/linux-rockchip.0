@@ -4,57 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E8B1C7115C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Jun 2025 21:01:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 912E7C7115B
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Jun 2025 01:48:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WYgmm/QOKWymgDj6SxiVr0dZ2gvJvKp6RqAfCmCAZpM=; b=V3Wpn+ZSsme4MY
-	GXDEtbruRDAVJv1W9Ya40fu98q7YN/oI+dhyU68p/IxrJje4gj8o2da0A5NprFWJQngU22fJXtePo
-	MnbZhcC83bsRLu2wKUZ+PxW4lK3ViTcTjBmoDrVjrVnUEHKyIVewvy5XEtM4UIDZpQL5ZDdlhkV8h
-	az54ccgf9z+Ws+d0To23IIOcUdFxyM4winL3u8x0LhAJvge+8ibYpu3MgR1KbE+M3bOG6TC22rYi/
-	dUBAeIu3+bxqnRVpvIJwhtmK/hRtPSVveC45JT9amsVdUVgeJdp3fJzjr4nFiB0b+6GyGuPblABsv
-	0j9FXb8P1aXoZD+7ysUg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qenF4RVhWEt1O4Edc2Rl0620qfZWQcnYCXuElMUj/W4=; b=SutYcIX2GKzZUE
+	0RHAAljPsb2gQe/gCj8ilgBtWjE9Z8+JIAcmOatRQhLSzIco+NU7d9FIFaKQvWDEfKt3GO2duBE4x
+	HvoJHAhpIvGmDZ7v9lrjhc8EnY4yUaPEy+f3/1T9KNxzqOhvgUl/FC4dt7StFEslY+DmmTjtdegM1
+	CpeUh+0XCtGp45LL/XDjXQHOb217G2ggA4ovQOkkV39Pg5gIEt5CMxsITpAcfQk4kfXucIbIpu07a
+	1tCQj7+CDIexzcQfEVPe4vXMt4OxpuB8O/XCU+TIuIrh6+zXTcP69KJD48yUCMvJvi/Y63Q02SGOC
+	j7XDJPKgWtykohG3wshA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSir3-0000000GaHR-0SWq;
-	Fri, 20 Jun 2025 21:00:57 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uSnL1-0000000Gvrn-0cCF;
+	Sat, 21 Jun 2025 01:48:11 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSion-0000000Ga9y-0rc3;
-	Fri, 20 Jun 2025 20:58:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=RmxX3GcEAqirVX2xL3JmZWN/yrXriImaULmWLhDXmS8=; b=ISdXrzz2QewK1kgmY3GyFg++AM
-	/6qLB8uUlYUyKOF6vEmVu4PkYV1YU9zFWU6/5+u3ruI2VhbjQ/vvKep6buGqhREZwFnUwn8rHkWNr
-	pOEMuAdZXTOe7kwoLzLgXcrDUxvdojBE5aH0cuyjcY/ZWPFELOafQQhBlhaXpBM65ogxfw4VyYVMq
-	Q9ADmHPsdKuLYUz0rgw6+BFnP7AAm+HP8QxiVXjiA4ARcUToS5kmBFrsQoJS7tfbikZM1VNQuNcW1
-	UkOyJxRLekQrw3O850Ik4Tp8M1UvubhqAbKvS1mC7wHJoA2kP3JFB3gukvY0D4uV827oJy1r8dYnG
-	3fumYUYw==;
-Received: from 85-207-219-154.static.bluetone.cz ([85.207.219.154] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uSioS-0005nr-Ra; Fri, 20 Jun 2025 22:58:16 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	Hsun Lai <i@chainsx.cn>
-Subject: Re: [RESEND PATCH v5 0/2] Add support for Firefly Station-M3/ROC-RK3588S-PC
-Date: Fri, 20 Jun 2025 22:58:06 +0200
-Message-ID: <175045307845.1579770.12394851384194838033.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250609113044.8846-1-i@chainsx.cn>
-References: <20250609113044.8846-1-i@chainsx.cn>
+	id 1uSnKx-0000000GvrE-3xiw;
+	Sat, 21 Jun 2025 01:48:09 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-234bfe37cccso31991155ad.0;
+        Fri, 20 Jun 2025 18:48:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1750470487; x=1751075287; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=NXz3exVEQXWDc3wTEzEXN840OGMK0hx/i3YSgfAvZ0s=;
+        b=NKyjYepAistIoUtC/cHcrZYxx2WrOQkOOyXQmjze0u38TAVBH02O9Qee9B+/Ip9F1X
+         fIVqdStMhCb8BVz3bb/QUJENiedykSa8aeE+9fOOtgB/f8P33id4ENTM0aqRGN/ave+t
+         k+YxZDTk6l/mdWIT2WnXox6nP4Y8tECmfZg2YTihsrQqyZwEiT0Zz6dA59GJKj3Vsqpj
+         z0AfCPkwHqIFCWbCnIGhHShVOpgAtNDGZOZCFSM25qw1ceXB0525OtMGLtb3cir+d7kZ
+         q5WfqVGo78tWq3OeBJW1cNkb9RfTHgdF3caNO1RitW8C5I74JFtmMx1dww6ybDydFWgy
+         lhZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750470487; x=1751075287;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=NXz3exVEQXWDc3wTEzEXN840OGMK0hx/i3YSgfAvZ0s=;
+        b=cjIHc+mSjfE9iIjcspf8ULInodtwxEkEfI244yhGoqvCLWM/9dMwJxwetYhEhQ3JxB
+         aB/gUP50UXXVG7jiOkO0qyyYjGjNL00GDGQrAMxTG5f5bMPHMcDOAJ0t/Hg2spVI7dO8
+         Lb/tSn8isFFEKz5ugKnR+eWGonIeM07CUW0QtjSCg1YOgnwb4MuER0NW9NK8+sj7omHN
+         S7HGu1oZG09Wn8nUab94ocgRIVrGLg+i8NLzo1Hl1RhBOPi8mbVAO8pVOGlSPY7RakLU
+         /FQScSAP24MOoAG5rbALp6AlrpQEkQeoUDabNCFXFihdO2lWuu6ITQ1EIGLNy1JJliZR
+         P4jw==
+X-Forwarded-Encrypted: i=1; AJvYcCWIcgFR1YRQ48KJCl3MH2Rm7y5S19W3sTpy/ME7hXZok9XbNU/eN3Ep+SqrO0lqzxmVSTJWHus3wykM@lists.infradead.org, AJvYcCWs6ewGlfRPtwe/QfuWlt0NO+r2BUKv6/cf2YyNmjccEss5lTYN9iTUIFMf8MCwjRMpq0+3JVH3274q77zC/HMf@lists.infradead.org
+X-Gm-Message-State: AOJu0YxOt20m5OElWWGImLITZKP+6KLhm7y000+DcehtFHiiVQEBtVOJ
+	NKH11rag5+AhYyBvbbIRBpfxtmg+ck97IJ5Q1DPss9pYE9rsF5Bo9kGv0O7WWRhF
+X-Gm-Gg: ASbGncsxt4LXs1wmtsJ+42USsXrAX1ZjT+IIi0r2iCEq9tY6A2mphKT6kSZQsH01Yww
+	VHZmEenOEFfVlBjwuU6XcxJf0W6m09ZmLvAR8UPCHJq7eIiDDEl4FWTyVpRNjnSuHLnxlT63hLO
+	pJEUoWlsFb+XhM4jBuyaaOFAFnlTcln3kCyZt0By/iynzQLLBAGScwSi0hh0tSOnlZq1daXLja4
+	/unzyEtVeuNUEElcEJESp2wUkOkfeRHMeMUPMuP763USx5Hk17ZowN5AG+T4aQnrtscdwy127hH
+	7p3iZ0ZmW4FVOjpNj++nGFpHnNvGJKQRwKLJtlfqEieebd+9oQ==
+X-Google-Smtp-Source: AGHT+IFMj8zujnmQyUnnom6Sk4SjVcrZEQeYPoia8cwd9VCLwZSbqcg4mJosbw1axQAjm2sXPpgR7w==
+X-Received: by 2002:a17:903:32c5:b0:235:2799:61d with SMTP id d9443c01a7336-237d991f9b4mr79363855ad.33.1750470486935;
+        Fri, 20 Jun 2025 18:48:06 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:d1c8::dead:c001])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-237d8393893sm28573845ad.25.2025.06.20.18.48.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Jun 2025 18:48:06 -0700 (PDT)
+Date: Fri, 20 Jun 2025 22:47:51 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rick wertenbroek <rick.wertenbroek@gmail.com>,
+	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [RFC PATCH v6 0/4] PCI: rockchip: Improve driver quality
+Message-ID: <cover.1750470187.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250620_135837_240587_BBFA076B 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20250620_184807_989316_0D54E89F 
+X-CRM114-Status: UNSURE (   7.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,44 +97,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: andrew@lunn.ch, inindev@gmail.com, Heiko Stuebner <heiko@sntech.de>, jonas@kwiboo.se, quentin.schulz@cherry.de, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, krzysztof.kozlowski@linaro.org, devicetree@vger.kernel.org, sfr@canb.auug.org.au, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+During a 30-day debugging-run fighting quirky PCIe devices on RK3399
+some quality improvements began to take form and this is my attempt
+at upstreaming it. It will ensure maximum chance of retraining to Gen2
+5.0GT/s, on all four lanes and fix async strobe TEST_WRITE disablement.
 
-On Mon, 09 Jun 2025 19:30:42 +0800, Hsun Lai wrote:
-> This series add support for Firefly Station-M3/ROC-RK3588S-PC.
-> 
-> Info of device can be found at:
-> https://wiki.t-firefly.com/en/Station-M3/index.html
-> 
-> Changes in v5:
-> - Make led-1 off by default (Chukun Pan, v4)
-> - Add color settings for led (Chukun Pan, v4)
-> - Remove vcc5v0_usbdcin
-> - Put enable/gpio before regulator (Chukun Pan, v4)
-> - Remove always-on and boot-on from vcc5v0_host (Chukun Pan, v4)
-> - Update the name of vbus_typec (Chukun Pan, v4)
-> - Remove always-on and boot-on from vbus5v0_typec (Chukun Pan, v4)
-> - Put pinctrl-names before pinctrl-0 (Chukun Pan, v4)
-> - Remove usb_con node
-> - Remove extra blank lines (Chukun Pan, v4)
-> - Add phy-supply for u2phy3_host (Chukun Pan, v4)
-> 
-> [...]
+---
+V5 -> V6: reflow to 75 cols, use 5.0GTs instead of Gen2 nomenclature,
+clarify strobe write adjustment and remove PHY_CFG_RD_MASK
+V4 -> V5: fix build failure, reflow commit messages and also convert
+registers for EP operation, all suggested by Ilpo
+V3 -> V4: fix setting-up of TLS in Link Control and Status Register 2,
+also adjust commit titles
+V2 -> V3: correctly clean-up with standard PCIe defines as per Bjorn's
+suggestion
+V1 -> V2: use standard PCIe defines as suggested by Bjorn
 
-Applied, thanks!
+Geraldo Nascimento (4):
+  PCI: rockchip: Use standard PCIe defines
+  PCI: rockchip: Set Target Link Speed before retraining
+  phy: rockchip-pcie: Enable all four lanes if required
+  phy: rockchip-pcie: Properly disable TEST_WRITE strobe signal
 
-[1/2] dt-bindings: arm: rockchip: Add Firefly ROC-RK3588S-PC
-      commit: 4734c93b5032a3a28ab2313fd9e2a792204de2fe
-[2/2] arm64: dts: rockchip: add DTs for Firefly ROC-RK3588S-PC
-      commit: 471f0718c815767c2c7f6ce66880f1acb9515581
+ drivers/pci/controller/pcie-rockchip-ep.c   |  4 +-
+ drivers/pci/controller/pcie-rockchip-host.c | 48 +++++++++++----------
+ drivers/pci/controller/pcie-rockchip.h      | 12 +-----
+ drivers/phy/rockchip/phy-rockchip-pcie.c    | 15 +++----
+ 4 files changed, 36 insertions(+), 43 deletions(-)
 
-Best regards,
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.49.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
