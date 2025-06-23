@@ -4,57 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 859E3C77B7C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98EF7C7115B
 	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 19:49:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7ahVfxuo8cgi/1bBtcrolMBOB4WQCRw6nV/DbsODyEQ=; b=CxozwRHFjgcKqV
-	rI0JEA+rdkkyVmqXc2IYLVwq9HGB13JNEMgC77SnLDF/1mEz7EuGnnlN52ZY3gbrxMUiQl0BHLSUY
-	Rh7uyS4bEhVAvqlO1z9UY6aB96uZPxwIi2fyKp7s8fkOcmKhyRsINUIKX70QE+CHCGIdlbJkCvjo4
-	1Ff1e6p6a+6lm5R8ccqI6HU9RpnQg3KBZGk2faeVv5q2GDgCH0OwYWeazo9163zOqSe+yqW6US1n9
-	BC8Dvg2RF2B2/gds9CMp/fdh8C5aBLRKJcQBumFnI0Y6rn5mz8HM37jvYW0uW75b1j87mZFY5Wb9K
-	NxibxvD8MzO+VkjZnnjA==;
+	List-Owner; bh=+i97NvgEh4Ue2ShEviCsEuB5NinrxYEitCfQDsx5o1w=; b=fQRlIVniL3G6lE
+	8MXpGNr1sm7fvDAU3lw2Rrc+TqOKZUHW2CmWVOem4AorXEQvadqBbQgSlf+9Bcx4dO7Jh0tiRWW9b
+	R8M/XRknN2nWNkjBH6KErlXKTOEMUjkBmNz7fvko0kSwlVWHKI9OZU5xZiuFbHInr2TgpLsZXZ4yg
+	zc04lTkPceUlRfplvbAhExZx+0tGr+ZVfxkpDCDXKeni4LXHzRwwmMupXj0iJXVV4jKlAy/KiQYRn
+	5EFjyEQZSvonW8NDvBC40q1NYAM4c27Wc8nPGEBhAUILZU5ugNDQXqHAICkLyL6BCUsHZ5Bt3Dmtb
+	/xHbGyZc6choeQ/38TwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTnAH-00000003s5o-3mlo;
-	Mon, 23 Jun 2025 19:49:13 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uTnAI-00000003s5y-0zN1;
+	Mon, 23 Jun 2025 19:49:14 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTjiF-00000003M85-2I01;
-	Mon, 23 Jun 2025 16:08:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750694882;
-	bh=hjgMrwRTA3fWP6Sf+lK8Wy4pKEPzPfk2AxMPnEjNQQw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nlWBzUP6DB+1Jn+vVBslLMVPlFvaxyjeyK2ivVv9r1sen405X9zxDqTPyYf8g9iXl
-	 HZj0IPCvCA/TWIONlYOR8nspWIxkq+WZ0+7z3ZCHAyudMO/IJsrg1HSY8jmHqTu4q1
-	 21U2NBUobIs+3jEU7t+3TZ2ozPqkzFVDJq/YLBchTf9nMEph/oyZ+kK5KFM8O+4EwU
-	 gv39r6MxQntnyaOhmi7eTbA5YvmKpfPGJlFhKZ6YvPPJ2xluOQcsfcnnPqaoempqsS
-	 vSR4/2nkyVQZF4r7XBfSk5oVZ0C1d2WY/x6kUmwVg/+eT8bDxiiZ7Yvl8bgBE5AF5V
-	 eQs7X6mvs39zg==
-Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AC8F717E3659;
-	Mon, 23 Jun 2025 18:07:58 +0200 (CEST)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH 5/8] media: uapi: HEVC: Add v4l2_ctrl_hevc_ext_sps_rps control
-Date: Mon, 23 Jun 2025 12:07:19 -0400
-Message-ID: <20250623160722.55938-6-detlev.casanova@collabora.com>
-X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250623160722.55938-1-detlev.casanova@collabora.com>
-References: <20250623160722.55938-1-detlev.casanova@collabora.com>
+	id 1uTjiH-00000003M9C-0rIA;
+	Mon, 23 Jun 2025 16:08:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1750694844; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=EIT8duZaEru2MmNFkH17+ln1IIP4IavbRzXbIiy2QiUh/d2aciJyS1Izh14Rz//qTiHKcVH+oTgOC6dgJQ6K2R57tDbCRYsBl26OMECKmDY7t5PqwBOObNcO/44mkdzZxSc9avn/J17ic0CiQh1oZ32vwlZ8S5cYGuSnf/OqsuI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1750694844; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=3vxzpmqQhtBTxrTmTd5Bzl/GtkmPJzUHuKrqn6sWqUs=; 
+	b=hwxyil+U7MtLL/WuKplFKlR6zFJMyRYpOTPLNOQvC4wQ6M/QCNNxCb0wcag0xDeHTQQjar5h1i1R27DczszCZyNX6lFrddzwg6B8Inq2uMIaqJMlOuD6mH0jd5c/oFcjSm9rap3qAlSm49tklyWDwvhz1wY4TP01gl2XEaQF8hY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750694844;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=3vxzpmqQhtBTxrTmTd5Bzl/GtkmPJzUHuKrqn6sWqUs=;
+	b=D8/AyvqfleOxQ5u+HAmjai387RcB6u3Pe/Ngg0HiSeQZhBRYTWJmlKvFJiKYyLhg
+	weGvQ2B+HxV6Gv5W6paN+Je7jognnkAHg5tn63e+gATBi+mMpPSy2rREt3ZgdWzSccR
+	QzjdWw7RjN6RLCBO7LnbjjzqtoT3uQiLjx59TjUY=
+Received: by mx.zohomail.com with SMTPS id 175069484197195.58532796051668;
+	Mon, 23 Jun 2025 09:07:21 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Mon, 23 Jun 2025 18:05:35 +0200
+Subject: [PATCH v2 07/20] drm/rockchip: dsi: switch to FIELD_PREP_WM16*
+ macros
 MIME-Version: 1.0
+Message-Id: <20250623-byeword-update-v2-7-cf1fc08a2e1f@collabora.com>
+References: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
+In-Reply-To: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
+To: Yury Norov <yury.norov@gmail.com>, 
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>, 
+ Jaehoon Chung <jh80.chung@samsung.com>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Shreeya Patel <shreeya.patel@collabora.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
+ MyungJoo Ham <myungjoo.ham@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, Qin Jian <qinjian@cqplus1.com>, 
+ Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Nathan Chancellor <nathan@kernel.org>, 
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, 
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_090803_763266_D910BA57 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20250623_090805_309937_9D5B8E8B 
+X-CRM114-Status: GOOD (  18.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,122 +99,344 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dragan Simic <dsimic@manjaro.org>, Rob Herring <robh@kernel.org>, Yunke Cao <yunkec@google.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Detlev Casanova <detlev.casanova@collabora.com>, Frank Wang <frank.wang@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, Jianfeng Liu <liujianfeng1994@gmail.com>, Alexey Charkov <alchark@gmail.com>, Ricardo Ribalda <ribalda@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Hans de Goede <hansg@kernel.org>
+Cc: linux-pm@vger.kernel.org, netdev@vger.kernel.org, llvm@lists.linux.dev, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, linux-pci@vger.kernel.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some hardware (e.g.: Rockchip's rk3588 hevc decoder) need the parsed
-long and short term reference information for HEVC decoding.
+The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
+drivers that use constant masks.
 
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+Remove this driver's HIWORD_UPDATE macro, and replace instances of it
+with either FIELD_PREP_WM16 or FIELD_PREP_WM16_CONST, depending on
+whether they're in an initializer. This gives us better error checking,
+which already saved me some trouble during this refactor.
+
+The driver's HIWORD_UPDATE macro doesn't shift up the value, but expects
+a pre-shifted value. Meanwhile, FIELD_PREP_WM16 and
+FIELD_PREP_WM16_CONST will shift the value for us, based on the given
+mask. So a few things that used to be a HIWORD_UPDATE(VERY_LONG_FOO,
+VERY_LONG_FOO) are now a somewhat more pleasant
+FIELD_PREP_WM16(VERY_LONG_FOO, 1).
+
+There are some non-trivial refactors here. A few literals needed a UL
+suffix added to stop them from unintentionally overflowing as a signed
+long. To make sure all of these cases are caught, and not just the ones
+where the FIELD_PREP_WM16* macros use such a value as a mask, just mark
+every literal that's used as a mask as unsigned.
+
+Non-contiguous masks also have to be split into multiple
+FIELD_PREP_WM16* instances, as the macro's checks and shifting logic
+rely on contiguous masks.
+
+This is compile-tested only.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- .../media/v4l/ext-ctrls-codec-stateless.rst   | 73 +++++++++++++++++++
- .../media/v4l/vidioc-queryctrl.rst            |  6 ++
- 2 files changed, 79 insertions(+)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 142 ++++++++++++------------
+ 1 file changed, 68 insertions(+), 74 deletions(-)
 
-diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-index 0da635691fdcb..745f38a8fe69c 100644
---- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-+++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-@@ -2958,6 +2958,79 @@ This structure contains all loop filter related parameters. See sections
-       - 0x00000004
-       -
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 3398160ad75e4a9629082bc47491eab473caecc0..5523911b990d93aa5b8a28acb8ffa01298c4a3b7 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -7,6 +7,7 @@
+  */
  
-+.. c:type:: v4l2_ctrl_hevc_ext_sps_rps
-+
-+.. cssclass:: longtable
-+
-+.. flat-table:: struct v4l2_ctrl_hevc_ext_sps_rps
-+    :header-rows:  0
-+    :stub-columns: 0
-+    :widths:       1 1 2
-+
-+    * - __u16
-+      - ``lt_ref_pic_poc_lsb_sps``
-+      - Long term reference picture order count as described in section 7.4.3.2.1
-+        "General sequence parameter set RBSP semantics" of the specification.
-+    * - __u8
-+      - ``delta_idx_minus1``
-+      - Specifies the delta compare to the index. See details in section 7.4.8 "Short-term
-+        reference picture set semantics" of the specification.
-+    * - __u8
-+      - ``delta_rps_sign``
-+      - Sign of the delta as specified in section 7.4.8 "Short-term reference picture set
-+        semantics" of the specification.
-+    * - __u16
-+      - ``abs_delta_rps_minus1``
-+      - Absolute delta RPS as specified in section 7.4.8 "Short-term reference picture set
-+        semantics" of the specification.
-+    * - __u8
-+      - ``num_negative_pics``
-+      - Number of short-term RPS entries that have picture order count values less than the
-+        picture order count value of the current picture.
-+    * - __u8
-+      - ``num_positive_pics``
-+      - Number of short-term RPS entries that have picture order count values greater than the
-+        picture order count value of the current picture.
-+    * - __u8
-+      - ``used_by_curr_pic_s0[16]``
-+      - Specifies if short-term RPS i (that has a negative POC) is used by the current picture.
-+    * - __u8
-+      - ``used_by_curr_pic_s1[16]``
-+      - Specifies if short-term RPS i (that has a positive POC) is used by the current picture.
-+    * - __s32
-+      - ``delta_poc_s0[16]``
-+      - Specifies the negative picture order count delta for the i-th entry in the short-term RPS.
-+        See details in section 7.4.8 "Short-term reference picture set semantics" of the
-+        specification.
-+    * - __s32
-+      - ``delta_poc_s1[16]``
-+      - Specifies the positive picture order count delta for the i-th entry in the short-term RPS.
-+        See details in section 7.4.8 "Short-term reference picture set semantics" of the
-+        specification.
-+    * - __u8
-+      - ``flags``
-+      - See :ref:`Extended RPS Flags <hevc_ext_sps_rps_flags>`
-+
-+.. _hevc_ext_sps_rps_flags:
-+
-+``Extended SPS RPS Flags``
-+
-+.. cssclass:: longtable
-+
-+.. flat-table::
-+    :header-rows:  0
-+    :stub-columns: 0
-+    :widths:       1 1 2
-+
-+    * - ``V4L2_HEVC_EXT_SPS_RPS_FLAG_USED_LT``
-+      - 0x00000001
-+      - Specifies if the long-term reference picture is used 7.4.3.2.1 "General sequence parameter
-+        set RBSP semantics" of the specification.
-+    * - ``V4L2_HEVC_EXT_SPS_RPS_FLAG_INTER_REF_PIC_SET_PRED``
-+      - 0x00000002
-+      - Specifies if the short-term RPS is predicted from another short term RPS. See details in
-+        section 7.4.8 "Short-term reference picture set semantics" of the specification.
-+
- .. _v4l2-codec-stateless-av1:
+ #include <linux/clk.h>
++#include <linux/hw_bitfield.h>
+ #include <linux/iopoll.h>
+ #include <linux/math64.h>
+ #include <linux/mfd/syscon.h>
+@@ -148,7 +149,7 @@
+ #define DW_MIPI_NEEDS_GRF_CLK		BIT(1)
  
- ``V4L2_CID_STATELESS_AV1_SEQUENCE (struct)``
-diff --git a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
-index 3549417c7febb..dc7caf4bf6208 100644
---- a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
-+++ b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
-@@ -523,6 +523,12 @@ See also the examples in :ref:`control`.
-       - n/a
-       - A struct :c:type:`v4l2_ctrl_hevc_decode_params`, containing HEVC
- 	decoding parameters for stateless video decoders.
-+    * - ``V4L2_CTRL_TYPE_HEVC_EXT_SPS_RPS``
-+      - n/a
-+      - n/a
-+      - n/a
-+      - A struct :c:type:`v4l2_ctrl_hevc_ext_sps_rps`, containing HEVC
-+	extended RPS for stateless video decoders.
-     * - ``V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR``
-       - n/a
-       - n/a
+ #define PX30_GRF_PD_VO_CON1		0x0438
+-#define PX30_DSI_FORCETXSTOPMODE	(0xf << 7)
++#define PX30_DSI_FORCETXSTOPMODE	(0xfUL << 7)
+ #define PX30_DSI_FORCERXMODE		BIT(6)
+ #define PX30_DSI_TURNDISABLE		BIT(5)
+ #define PX30_DSI_LCDC_SEL		BIT(0)
+@@ -167,16 +168,16 @@
+ #define RK3399_DSI1_LCDC_SEL		BIT(4)
+ 
+ #define RK3399_GRF_SOC_CON22		0x6258
+-#define RK3399_DSI0_TURNREQUEST		(0xf << 12)
+-#define RK3399_DSI0_TURNDISABLE		(0xf << 8)
+-#define RK3399_DSI0_FORCETXSTOPMODE	(0xf << 4)
+-#define RK3399_DSI0_FORCERXMODE		(0xf << 0)
++#define RK3399_DSI0_TURNREQUEST		(0xfUL << 12)
++#define RK3399_DSI0_TURNDISABLE		(0xfUL << 8)
++#define RK3399_DSI0_FORCETXSTOPMODE	(0xfUL << 4)
++#define RK3399_DSI0_FORCERXMODE		(0xfUL << 0)
+ 
+ #define RK3399_GRF_SOC_CON23		0x625c
+-#define RK3399_DSI1_TURNDISABLE		(0xf << 12)
+-#define RK3399_DSI1_FORCETXSTOPMODE	(0xf << 8)
+-#define RK3399_DSI1_FORCERXMODE		(0xf << 4)
+-#define RK3399_DSI1_ENABLE		(0xf << 0)
++#define RK3399_DSI1_TURNDISABLE		(0xfUL << 12)
++#define RK3399_DSI1_FORCETXSTOPMODE	(0xfUL << 8)
++#define RK3399_DSI1_FORCERXMODE		(0xfUL << 4)
++#define RK3399_DSI1_ENABLE		(0xfUL << 0)
+ 
+ #define RK3399_GRF_SOC_CON24		0x6260
+ #define RK3399_TXRX_MASTERSLAVEZ	BIT(7)
+@@ -186,8 +187,8 @@
+ #define RK3399_TXRX_TURNREQUEST		GENMASK(3, 0)
+ 
+ #define RK3568_GRF_VO_CON2		0x0368
+-#define RK3568_DSI0_SKEWCALHS		(0x1f << 11)
+-#define RK3568_DSI0_FORCETXSTOPMODE	(0xf << 4)
++#define RK3568_DSI0_SKEWCALHS		(0x1fUL << 11)
++#define RK3568_DSI0_FORCETXSTOPMODE	(0xfUL << 4)
+ #define RK3568_DSI0_TURNDISABLE		BIT(2)
+ #define RK3568_DSI0_FORCERXMODE		BIT(0)
+ 
+@@ -197,18 +198,16 @@
+  * come from. Name GRF_VO_CON3 is assumed.
+  */
+ #define RK3568_GRF_VO_CON3		0x36c
+-#define RK3568_DSI1_SKEWCALHS		(0x1f << 11)
+-#define RK3568_DSI1_FORCETXSTOPMODE	(0xf << 4)
++#define RK3568_DSI1_SKEWCALHS		(0x1fUL << 11)
++#define RK3568_DSI1_FORCETXSTOPMODE	(0xfUL << 4)
+ #define RK3568_DSI1_TURNDISABLE		BIT(2)
+ #define RK3568_DSI1_FORCERXMODE		BIT(0)
+ 
+ #define RV1126_GRF_DSIPHY_CON		0x10220
+-#define RV1126_DSI_FORCETXSTOPMODE	(0xf << 4)
++#define RV1126_DSI_FORCETXSTOPMODE	(0xfUL << 4)
+ #define RV1126_DSI_TURNDISABLE		BIT(2)
+ #define RV1126_DSI_FORCERXMODE		BIT(0)
+ 
+-#define HIWORD_UPDATE(val, mask)	(val | (mask) << 16)
+-
+ enum {
+ 	DW_DSI_USAGE_IDLE,
+ 	DW_DSI_USAGE_DSI,
+@@ -1484,14 +1483,13 @@ static const struct rockchip_dw_dsi_chip_data px30_chip_data[] = {
+ 	{
+ 		.reg = 0xff450000,
+ 		.lcdsel_grf_reg = PX30_GRF_PD_VO_CON1,
+-		.lcdsel_big = HIWORD_UPDATE(0, PX30_DSI_LCDC_SEL),
+-		.lcdsel_lit = HIWORD_UPDATE(PX30_DSI_LCDC_SEL,
+-					    PX30_DSI_LCDC_SEL),
++		.lcdsel_big = FIELD_PREP_WM16_CONST(PX30_DSI_LCDC_SEL, 0),
++		.lcdsel_lit = FIELD_PREP_WM16_CONST(PX30_DSI_LCDC_SEL, 1),
+ 
+ 		.lanecfg1_grf_reg = PX30_GRF_PD_VO_CON1,
+-		.lanecfg1 = HIWORD_UPDATE(0, PX30_DSI_TURNDISABLE |
+-					     PX30_DSI_FORCERXMODE |
+-					     PX30_DSI_FORCETXSTOPMODE),
++		.lanecfg1 = FIELD_PREP_WM16_CONST((PX30_DSI_TURNDISABLE |
++						PX30_DSI_FORCERXMODE |
++						PX30_DSI_FORCETXSTOPMODE), 0),
+ 
+ 		.max_data_lanes = 4,
+ 	},
+@@ -1502,9 +1500,9 @@ static const struct rockchip_dw_dsi_chip_data rk3128_chip_data[] = {
+ 	{
+ 		.reg = 0x10110000,
+ 		.lanecfg1_grf_reg = RK3128_GRF_LVDS_CON0,
+-		.lanecfg1 = HIWORD_UPDATE(0, RK3128_DSI_TURNDISABLE |
+-					     RK3128_DSI_FORCERXMODE |
+-					     RK3128_DSI_FORCETXSTOPMODE),
++		.lanecfg1 = FIELD_PREP_WM16_CONST((RK3128_DSI_TURNDISABLE |
++						RK3128_DSI_FORCERXMODE |
++						RK3128_DSI_FORCETXSTOPMODE), 0),
+ 		.max_data_lanes = 4,
+ 	},
+ 	{ /* sentinel */ }
+@@ -1514,16 +1512,16 @@ static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
+ 	{
+ 		.reg = 0xff960000,
+ 		.lcdsel_grf_reg = RK3288_GRF_SOC_CON6,
+-		.lcdsel_big = HIWORD_UPDATE(0, RK3288_DSI0_LCDC_SEL),
+-		.lcdsel_lit = HIWORD_UPDATE(RK3288_DSI0_LCDC_SEL, RK3288_DSI0_LCDC_SEL),
++		.lcdsel_big = FIELD_PREP_WM16_CONST(RK3288_DSI0_LCDC_SEL, 0),
++		.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3288_DSI0_LCDC_SEL, 1),
+ 
+ 		.max_data_lanes = 4,
+ 	},
+ 	{
+ 		.reg = 0xff964000,
+ 		.lcdsel_grf_reg = RK3288_GRF_SOC_CON6,
+-		.lcdsel_big = HIWORD_UPDATE(0, RK3288_DSI1_LCDC_SEL),
+-		.lcdsel_lit = HIWORD_UPDATE(RK3288_DSI1_LCDC_SEL, RK3288_DSI1_LCDC_SEL),
++		.lcdsel_big = FIELD_PREP_WM16_CONST(RK3288_DSI1_LCDC_SEL, 0),
++		.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3288_DSI1_LCDC_SEL, 1),
+ 
+ 		.max_data_lanes = 4,
+ 	},
+@@ -1539,13 +1537,13 @@ static int rk3399_dphy_tx1rx1_init(struct phy *phy)
+ 	 * Assume ISP0 is supplied by the RX0 dphy.
+ 	 */
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON24,
+-		     HIWORD_UPDATE(0, RK3399_TXRX_SRC_SEL_ISP0));
++		     FIELD_PREP_WM16(RK3399_TXRX_SRC_SEL_ISP0, 0));
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON24,
+-		     HIWORD_UPDATE(0, RK3399_TXRX_MASTERSLAVEZ));
++		     FIELD_PREP_WM16(RK3399_TXRX_MASTERSLAVEZ, 0));
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON24,
+-		     HIWORD_UPDATE(0, RK3399_TXRX_BASEDIR));
++		     FIELD_PREP_WM16(RK3399_TXRX_BASEDIR, 0));
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON23,
+-		     HIWORD_UPDATE(0, RK3399_DSI1_ENABLE));
++		     FIELD_PREP_WM16(RK3399_DSI1_ENABLE, 0));
+ 
+ 	return 0;
+ }
+@@ -1559,21 +1557,20 @@ static int rk3399_dphy_tx1rx1_power_on(struct phy *phy)
+ 	usleep_range(100, 150);
+ 
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON24,
+-		     HIWORD_UPDATE(0, RK3399_TXRX_MASTERSLAVEZ));
++		     FIELD_PREP_WM16(RK3399_TXRX_MASTERSLAVEZ, 0));
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON24,
+-		     HIWORD_UPDATE(RK3399_TXRX_BASEDIR, RK3399_TXRX_BASEDIR));
++		     FIELD_PREP_WM16(RK3399_TXRX_BASEDIR, 1));
+ 
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON23,
+-		     HIWORD_UPDATE(0, RK3399_DSI1_FORCERXMODE));
++		     FIELD_PREP_WM16(RK3399_DSI1_FORCERXMODE, 0));
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON23,
+-		     HIWORD_UPDATE(0, RK3399_DSI1_FORCETXSTOPMODE));
++		     FIELD_PREP_WM16(RK3399_DSI1_FORCETXSTOPMODE, 0));
+ 
+ 	/* Disable lane turn around, which is ignored in receive mode */
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON24,
+-		     HIWORD_UPDATE(0, RK3399_TXRX_TURNREQUEST));
++		     FIELD_PREP_WM16(RK3399_TXRX_TURNREQUEST, 0));
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON23,
+-		     HIWORD_UPDATE(RK3399_DSI1_TURNDISABLE,
+-				   RK3399_DSI1_TURNDISABLE));
++		     FIELD_PREP_WM16(RK3399_DSI1_TURNDISABLE, 0xf));
+ 	usleep_range(100, 150);
+ 
+ 	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_TESTCLK | PHY_UNTESTCLR);
+@@ -1581,8 +1578,8 @@ static int rk3399_dphy_tx1rx1_power_on(struct phy *phy)
+ 
+ 	/* Enable dphy lanes */
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON23,
+-		     HIWORD_UPDATE(GENMASK(dsi->dphy_config.lanes - 1, 0),
+-				   RK3399_DSI1_ENABLE));
++		     FIELD_PREP_WM16(RK3399_DSI1_ENABLE,
++				  GENMASK(dsi->dphy_config.lanes - 1, 0)));
+ 
+ 	usleep_range(100, 150);
+ 
+@@ -1594,7 +1591,7 @@ static int rk3399_dphy_tx1rx1_power_off(struct phy *phy)
+ 	struct dw_mipi_dsi_rockchip *dsi = phy_get_drvdata(phy);
+ 
+ 	regmap_write(dsi->grf_regmap, RK3399_GRF_SOC_CON23,
+-		     HIWORD_UPDATE(0, RK3399_DSI1_ENABLE));
++		     FIELD_PREP_WM16(RK3399_DSI1_ENABLE, 0));
+ 
+ 	return 0;
+ }
+@@ -1603,15 +1600,14 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
+ 	{
+ 		.reg = 0xff960000,
+ 		.lcdsel_grf_reg = RK3399_GRF_SOC_CON20,
+-		.lcdsel_big = HIWORD_UPDATE(0, RK3399_DSI0_LCDC_SEL),
+-		.lcdsel_lit = HIWORD_UPDATE(RK3399_DSI0_LCDC_SEL,
+-					    RK3399_DSI0_LCDC_SEL),
++		.lcdsel_big = FIELD_PREP_WM16_CONST(RK3399_DSI0_LCDC_SEL, 0),
++		.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3399_DSI0_LCDC_SEL, 1),
+ 
+ 		.lanecfg1_grf_reg = RK3399_GRF_SOC_CON22,
+-		.lanecfg1 = HIWORD_UPDATE(0, RK3399_DSI0_TURNREQUEST |
+-					     RK3399_DSI0_TURNDISABLE |
+-					     RK3399_DSI0_FORCETXSTOPMODE |
+-					     RK3399_DSI0_FORCERXMODE),
++		.lanecfg1 = FIELD_PREP_WM16_CONST((RK3399_DSI0_TURNREQUEST |
++						RK3399_DSI0_TURNDISABLE |
++						RK3399_DSI0_FORCETXSTOPMODE |
++						RK3399_DSI0_FORCERXMODE), 0),
+ 
+ 		.flags = DW_MIPI_NEEDS_PHY_CFG_CLK | DW_MIPI_NEEDS_GRF_CLK,
+ 		.max_data_lanes = 4,
+@@ -1619,25 +1615,23 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
+ 	{
+ 		.reg = 0xff968000,
+ 		.lcdsel_grf_reg = RK3399_GRF_SOC_CON20,
+-		.lcdsel_big = HIWORD_UPDATE(0, RK3399_DSI1_LCDC_SEL),
+-		.lcdsel_lit = HIWORD_UPDATE(RK3399_DSI1_LCDC_SEL,
+-					    RK3399_DSI1_LCDC_SEL),
++		.lcdsel_big = FIELD_PREP_WM16_CONST(RK3399_DSI1_LCDC_SEL, 0),
++		.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3399_DSI1_LCDC_SEL, 1),
++
+ 
+ 		.lanecfg1_grf_reg = RK3399_GRF_SOC_CON23,
+-		.lanecfg1 = HIWORD_UPDATE(0, RK3399_DSI1_TURNDISABLE |
+-					     RK3399_DSI1_FORCETXSTOPMODE |
+-					     RK3399_DSI1_FORCERXMODE |
+-					     RK3399_DSI1_ENABLE),
++		.lanecfg1 = FIELD_PREP_WM16_CONST((RK3399_DSI1_TURNDISABLE |
++						RK3399_DSI1_FORCETXSTOPMODE |
++						RK3399_DSI1_FORCERXMODE |
++						RK3399_DSI1_ENABLE), 0),
+ 
+ 		.lanecfg2_grf_reg = RK3399_GRF_SOC_CON24,
+-		.lanecfg2 = HIWORD_UPDATE(RK3399_TXRX_MASTERSLAVEZ |
+-					  RK3399_TXRX_ENABLECLK,
+-					  RK3399_TXRX_MASTERSLAVEZ |
+-					  RK3399_TXRX_ENABLECLK |
+-					  RK3399_TXRX_BASEDIR),
++		.lanecfg2 = (FIELD_PREP_WM16_CONST(RK3399_TXRX_MASTERSLAVEZ, 1) |
++			     FIELD_PREP_WM16_CONST(RK3399_TXRX_ENABLECLK, 1) |
++			     FIELD_PREP_WM16_CONST(RK3399_TXRX_BASEDIR, 0)),
+ 
+ 		.enable_grf_reg = RK3399_GRF_SOC_CON23,
+-		.enable = HIWORD_UPDATE(RK3399_DSI1_ENABLE, RK3399_DSI1_ENABLE),
++		.enable = FIELD_PREP_WM16_CONST(RK3399_DSI1_ENABLE, RK3399_DSI1_ENABLE),
+ 
+ 		.flags = DW_MIPI_NEEDS_PHY_CFG_CLK | DW_MIPI_NEEDS_GRF_CLK,
+ 		.max_data_lanes = 4,
+@@ -1653,19 +1647,19 @@ static const struct rockchip_dw_dsi_chip_data rk3568_chip_data[] = {
+ 	{
+ 		.reg = 0xfe060000,
+ 		.lanecfg1_grf_reg = RK3568_GRF_VO_CON2,
+-		.lanecfg1 = HIWORD_UPDATE(0, RK3568_DSI0_SKEWCALHS |
+-					  RK3568_DSI0_FORCETXSTOPMODE |
+-					  RK3568_DSI0_TURNDISABLE |
+-					  RK3568_DSI0_FORCERXMODE),
++		.lanecfg1 = (FIELD_PREP_WM16_CONST(RK3568_DSI0_SKEWCALHS, 0) |
++			     FIELD_PREP_WM16_CONST(RK3568_DSI0_FORCETXSTOPMODE, 0) |
++			     FIELD_PREP_WM16_CONST(RK3568_DSI0_TURNDISABLE, 0) |
++			     FIELD_PREP_WM16_CONST(RK3568_DSI0_FORCERXMODE, 0)),
+ 		.max_data_lanes = 4,
+ 	},
+ 	{
+ 		.reg = 0xfe070000,
+ 		.lanecfg1_grf_reg = RK3568_GRF_VO_CON3,
+-		.lanecfg1 = HIWORD_UPDATE(0, RK3568_DSI1_SKEWCALHS |
+-					  RK3568_DSI1_FORCETXSTOPMODE |
+-					  RK3568_DSI1_TURNDISABLE |
+-					  RK3568_DSI1_FORCERXMODE),
++		.lanecfg1 = (FIELD_PREP_WM16_CONST(RK3568_DSI1_SKEWCALHS, 0) |
++			     FIELD_PREP_WM16_CONST(RK3568_DSI1_FORCETXSTOPMODE, 0) |
++			     FIELD_PREP_WM16_CONST(RK3568_DSI1_TURNDISABLE, 0) |
++			     FIELD_PREP_WM16_CONST(RK3568_DSI1_FORCERXMODE, 0)),
+ 		.max_data_lanes = 4,
+ 	},
+ 	{ /* sentinel */ }
+@@ -1675,9 +1669,9 @@ static const struct rockchip_dw_dsi_chip_data rv1126_chip_data[] = {
+ 	{
+ 		.reg = 0xffb30000,
+ 		.lanecfg1_grf_reg = RV1126_GRF_DSIPHY_CON,
+-		.lanecfg1 = HIWORD_UPDATE(0, RV1126_DSI_TURNDISABLE |
+-					     RV1126_DSI_FORCERXMODE |
+-					     RV1126_DSI_FORCETXSTOPMODE),
++		.lanecfg1 = (FIELD_PREP_WM16_CONST(RV1126_DSI_TURNDISABLE, 0) |
++			     FIELD_PREP_WM16_CONST(RV1126_DSI_FORCERXMODE, 0) |
++			     FIELD_PREP_WM16_CONST(RV1126_DSI_FORCETXSTOPMODE, 0)),
+ 		.max_data_lanes = 4,
+ 	},
+ 	{ /* sentinel */ }
+
 -- 
 2.50.0
 
