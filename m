@@ -4,56 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4275DC7EE33
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59DD4C7EE2A
 	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 19:42:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aiEbJNF3X77BOWahHkrkbKrxr99es1KW0AhAoUiW7xE=; b=r7uXywZegoVSTD
-	OllbJVfVS/8Q+Gw5khFTqXoitzgcPkVDLNZIZRNPJQM9nFDt9C35sqm1EdC9zMKkEAUSdZ2RdVbAg
-	Z1xsowxBvhLdblbc+uC/QMzA2OdAB9jNTsbbrhgWBousYG+SDCzoWx7pUGc9QbnH9vQPX5XZejI9A
-	3dFF/8/VCx/AjePrey2QI6OLb6peNfukL6nYZPwXp/Xdk95h5r+T1i/2naBEqldv9gSTyZ/M5HIDC
-	ovJ3Sojh2wrSPdlsAjpSuGNqGBGjRykfW7RBFf4JTMK5teSoUO+ArYDYBIRWO6c5gZ1yTltHVlawW
-	o1P+64vidtx24izGSamA==;
+	List-Archive:List-Unsubscribe:List-Id:To:MIME-Version:Message-Id:Date:Subject
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=20VVHWoWncaSkmMBKkGnOtGvdMLRdqEsLrHLxOGtUoc=; b=kI3NckRq0Q+pUE
+	lYfbNOpwjx4NaEqz0x8O0mRRIWJXOngPd4rY38gXNETUJPY4FAQHQsxN8Wl5NYVwK+DzB5e/0Mg2V
+	G34350UqhNAhCOw4CXUWSRyVzhL25OZ2bryrIJ/ZZPuvYpBIawKQYr+QKhDBjHFH/GSUYUf7f+AoH
+	r9vCF7dgtd3/wMbHklyQodH5/LsYORnBSPg7aioH3cw4L8Qf4+6YLLOUF6mO5Q9Wzlfp4VT5iA5W7
+	oWYmeJFQ/clqZNxYFH6meGd7s0PflQ8i3cAxliwqKwZ7qVjY9Nh8SHLuBrrXAod8a4Aibm2Jqw7cX
+	Gg3N2umEBSCvf65KPZYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTn3j-00000003pjX-3mZh;
-	Mon, 23 Jun 2025 19:42:27 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1uTn3i-00000003phP-3lLn;
+	Mon, 23 Jun 2025 19:42:26 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTjhD-00000003LmO-1XP6;
-	Mon, 23 Jun 2025 16:07:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750694778; cv=none; 
+	id 1uTjh7-00000003Ljx-0SMd;
+	Mon, 23 Jun 2025 16:06:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1750694752; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=RKHqaCEzPeR4zy0teDOkQZRDqkpOv+JrYL6vZr3gblXVkFqwh8npxTDRHW5zWXOIF3/p1bjTnYqNcLJ6sXWua9h/9jQF8KB0RCRY6NnYvbFFsqvr66ZxkDkd57wfZ8hfgGe4tURMK2SRGJYo2Dx9d38Bz+5UTqgyoZJNl4Hpplc=
+	b=ALvgrtg+SBpE7ZZ5IkKOvEGS2SR4IufJdiOtiRVy68FjasB3QJgnA6RvY/N+EWWViRfyhEVxnTbdcTnv2v5XfDJzm7WEQ0UnzaDPAyseLdjkl1hb650UOTbiPdDATgqwdQ0m5LpepSWI3r6mky17Jk1JFGkOO2tMYLrNthhObwc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750694778; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=yEdxHJmCEw0Pc/7UrKzJWEnE1Ei3x3Qa8UoZFYS3K3A=; 
-	b=dUYM/iWCffN7WUrXMzoXlVVVfflSkd0yeWyTHzVJZwBMoVrRVypJDpTDkBR0a+vk1ptNOh7bqwF81oXYCeq0uL58S5j5iYI+oPLO5d01Tp9ZLipbdqsFN8iiOT3fY74Tmuhhfm13MEBTRmlhrHBaVeYyIs4sewfBNxwl3kr4794=
+	t=1750694752; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=OBRKd+xA4VsUyeckNojrdNQY/i5zR4hbYSAkGkUAxmI=; 
+	b=f3ISUawrfRo5+VIsmDCuLxBzcU2wsRYh8AzkHPaZdDI7cgoz33XFITfsgEElgM9NSiGaUM3OQfm+dYsD9LIHYxcv+/b6ZROeF56zQHjEWzyGwaqBBxO33FdbDSPb6iXhG6JZJ0LIg+Xrl2mcrBRdGxRMwgFHPpAjRG9/ITc6ZEA=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750694778;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750694752;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=yEdxHJmCEw0Pc/7UrKzJWEnE1Ei3x3Qa8UoZFYS3K3A=;
-	b=ETz5TV9bbWWNK9JkXWIDXBSDvnDvqCzI0WzI2j2JWUddTXk2s7q9lYDn5ERabOS2
-	JmqWwbvDUujhTWNS5ZYvGksWpYAcIB9BeOrHyq5H0zKmwjY2Y70tB76+xjUmEGzQSyP
-	8afjrwARQzts/pl7VC1JSEEqV13EyStVWN+oVtMY=
-Received: by mx.zohomail.com with SMTPS id 1750694775956412.24403309942795;
-	Mon, 23 Jun 2025 09:06:15 -0700 (PDT)
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=OBRKd+xA4VsUyeckNojrdNQY/i5zR4hbYSAkGkUAxmI=;
+	b=Ur91gAI5Pg4ujGe9cgYtIhXeRdyWF4npt8XEVb3xB6c3gzjKDMoCcqGXSa540LUH
+	6uxd/EWPKNeFn3LrQ2TzaIZiMHsCyJroUlVvMjiRyJDgSkbfLlkadlnnc8+V/IkF3gU
+	4xPwrh5EMDEFFEwzxIcgQctKEDXccsek567/7Rjw=
+Received: by mx.zohomail.com with SMTPS id 1750694748824857.0971844130715;
+	Mon, 23 Jun 2025 09:05:48 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 23 Jun 2025 18:05:30 +0200
-Subject: [PATCH v2 02/20] mmc: dw_mmc-rockchip: switch to FIELD_PREP_WM16
- macro
+Subject: [PATCH v2 00/20] BYEWORD_UPDATE: unifying (most) HIWORD_UPDATE
+ macros
+Date: Mon, 23 Jun 2025 18:05:28 +0200
+Message-Id: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20250623-byeword-update-v2-2-cf1fc08a2e1f@collabora.com>
-References: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
-In-Reply-To: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAEh7WWgC/12OzQ6DIBAGX8XsuTSAf42nvkfjAWSpJCoW0GqM7
+ 16qPfU4m8x8u4FHZ9BDlWzgcDbe2CECvyTQtGJ4IjEqMnDKc1owSuSKb+sUmUYlApIsyxuKKMq
+ SKYjS6FCb5Qg+6pMdvqbYDecRpPBIGtv3JlTJgEsgZ5un8BVa44N16/HQzA7jt83/t2dGKNGZ0
+ PKmi5Sl+t7YrhPSOnGNA1Dv+/4BLKkE/uEAAAA=
+X-Change-ID: 20250610-byeword-update-445c0eea771d
 To: Yury Norov <yury.norov@gmail.com>, 
  Rasmus Villemoes <linux@rasmusvillemoes.dk>, 
  Jaehoon Chung <jh80.chung@samsung.com>, 
@@ -86,8 +89,8 @@ To: Yury Norov <yury.norov@gmail.com>,
  Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_090659_458035_418D234A 
-X-CRM114-Status: GOOD (  14.42  )
+X-CRM114-CacheID: sfid-20250623_090653_180565_8291E4B7 
+X-CRM114-Status: GOOD (  30.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,58 +108,146 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
-drivers that use constant masks.
+This series was spawned by [1], where I was asked to move every instance
+of HIWORD_UPDATE et al that I could find to a common macro in the same
+series that I am introducing said common macro.
 
-Switch to the new FIELD_PREP_WM16 macro in hw_bitfield.h, which has
-error checking. Instead of redefining the driver's HIWORD_UPDATE macro
-in this case, replace the two only instances of it with the new macro,
-as I could test that they result in an equivalent value.
+The first patch of the series introduces a new header file,
+hw_bitfield.h, which contains two new macros: FIELD_PREP_WM16 and
+FIELD_PREP_WM16_CONST. The latter can be used in initializers.
 
-Acked-by: Ulf Hansson <ulf.hansson@linaro.org>
+I've cheekily added the hw_bitfield.h header to the BITMAP API section
+of the MAINTAINERS file.
+
+This macro definition checks that the mask fits, and that the value fits
+in the mask. Like FIELD_PREP, it also shifts the value up to the mask,
+so turning off a bit does not require using the mask as a value. Masks
+are also required to be contiguous, like with FIELD_PREP.
+
+For each definition of such a macro, the driver(s) that used it were
+evaluated for three different treatments:
+ - full conversion to the new macro, for cases where replacing the
+   implementation of the old macro wouldn't have worked, or where the
+   conversion was trivial. These are the most complex patches in this
+   series, as they sometimes have to pull apart definitions of masks
+   and values due to the new semantics, which require a contiguous
+   mask and shift the value for us.
+ - replacing the implementation of the old macro with an instance of the
+   new macro, done where I felt it made the patch much easier to review
+   because I didn't want to drop a big diff on people.
+ - skipping conversion entirely, usually because the mask is
+   non-constant and it's not trivial to make it constant. Sometimes an
+   added complication is that said non-constant mask is either used in a
+   path where runtime overhead may not be desirable, or in an
+   initializer.
+
+Left out of conversion:
+ - drivers/mmc/host/sdhci-of-arasan.c: mask is non-constant.
+ - drivers/phy/rockchip/phy-rockchip-inno-csidphy.c: mask is
+   non-constant likely by way of runtime pointer dereferencing, even if
+   struct and members are made const.
+ - drivers/clk/rockchip/clk.h: way too many clock drivers use non-const
+   masks in the context of an initializer.
+
+I will not be addressing these 3 remaining users in this series, as
+implementing a runtime checked version on top of this and verifying that
+it doesn't cause undue overhead just for 3 stragglers is a bit outside
+the scope of wanting to get my RK3576 PWM series unblocked. Please have
+mercy.
+
+In total, I count 19 different occurrences of such a macro fixed out of
+22 I found. The vast majority of these patches have either undergone
+static testing to ensure the values end up the same during development,
+or have been verified to not break the device the driver is for at
+runtime. Only a handful are just compile-tested, and the individual
+patches remark which ones those are.
+
+This took a lot of manual work as this wasn't really something that
+could be automated: code had to be refactored to ensure masks were
+contiguous, made sense to how the hardware actually works and to human
+readers, were constant, and that the code uses unshifted values.
+
+Please note that I will not be resending the whole series again for
+purely subjective cosmetic changes. This series touches a lot of
+subsystems, which means many clashing tastes. You've had a week's notice
+to get any low-effort naming nitpicks out of the way after v1. If you as
+a maintainer are unhappy with a commit prefix or such, then you have my
+express permission to modify it while applying the patch, so that I
+don't need to bombard everyone else's inboxes again.
+
+https://lore.kernel.org/all/aD8hB-qJ4Qm6IFuS@yury/ [1]
+
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/mmc/host/dw_mmc-rockchip.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+Changes in v2:
+- rebase onto next-20250623. This involved solving two conflicts in
+  pcie-dw-rockchip.
+- move new macros to a new hw_bitfield.h, and rename them to
+  FIELD_PREP_WM16*. All patches in the series have been updated to use
+  the new names.
+- hw_bitfield.h: fix macro param re-use in FIELD_PREP_WM16. I don't know
+  if there's any way to do the same in FIELD_PREP_WM16_CONST, but the
+  bitfield.h FIELD_PREP functions don't do it for either, so I'm already
+  strictly better anyway.
+- hw_bitfield.h: remove whitespace after cast operators.
+- change newly introduced U literal suffixes to UL, as they are more
+  commonly used in the kernel.
+- pcie-dw-rockchip: remove the legacy mode flag, as it's unused.
+- Link to v1: https://lore.kernel.org/r/20250612-byeword-update-v1-0-f4afb8f6313f@collabora.com
 
-diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-index baa23b51773127b4137f472581259b61649273a5..218b2072688408fffa66d593eebc1efa81ae4969 100644
---- a/drivers/mmc/host/dw_mmc-rockchip.c
-+++ b/drivers/mmc/host/dw_mmc-rockchip.c
-@@ -6,6 +6,7 @@
- #include <linux/module.h>
- #include <linux/platform_device.h>
- #include <linux/clk.h>
-+#include <linux/hw_bitfield.h>
- #include <linux/mmc/host.h>
- #include <linux/of_address.h>
- #include <linux/mmc/slot-gpio.h>
-@@ -24,8 +25,6 @@
- #define ROCKCHIP_MMC_DELAYNUM_OFFSET	2
- #define ROCKCHIP_MMC_DELAYNUM_MASK	(0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
- #define ROCKCHIP_MMC_DELAY_ELEMENT_PSEC	60
--#define HIWORD_UPDATE(val, mask, shift) \
--		((val) << (shift) | (mask) << ((shift) + 16))
- 
- static const unsigned int freqs[] = { 100000, 200000, 300000, 400000 };
- 
-@@ -148,9 +147,11 @@ static int rockchip_mmc_set_internal_phase(struct dw_mci *host, bool sample, int
- 	raw_value |= nineties;
- 
- 	if (sample)
--		mci_writel(host, TIMING_CON1, HIWORD_UPDATE(raw_value, 0x07ff, 1));
-+		mci_writel(host, TIMING_CON1,
-+			   FIELD_PREP_WM16(GENMASK(11, 1), raw_value));
- 	else
--		mci_writel(host, TIMING_CON0, HIWORD_UPDATE(raw_value, 0x07ff, 1));
-+		mci_writel(host, TIMING_CON0,
-+			   FIELD_PREP_WM16(GENMASK(11, 1), raw_value));
- 
- 	dev_dbg(host->dev, "set %s_phase(%d) delay_nums=%u actual_degrees=%d\n",
- 		sample ? "sample" : "drv", degrees, delay_num,
+---
+Nicolas Frattaroli (20):
+      bitmap: introduce hardware-specific bitfield operations
+      mmc: dw_mmc-rockchip: switch to FIELD_PREP_WM16 macro
+      soc: rockchip: grf: switch to FIELD_PREP_WM16_CONST macro
+      media: synopsys: hdmirx: replace macros with bitfield variants
+      drm/rockchip: lvds: switch to FIELD_PREP_WM16 macro
+      phy: rockchip-emmc: switch to FIELD_PREP_WM16 macro
+      drm/rockchip: dsi: switch to FIELD_PREP_WM16* macros
+      drm/rockchip: vop2: switch to FIELD_PREP_WM16 macro
+      phy: rockchip-samsung-dcphy: switch to FIELD_PREP_WM16 macro
+      drm/rockchip: dw_hdmi_qp: switch to FIELD_PREP_WM16 macro
+      drm/rockchip: inno-hdmi: switch to FIELD_PREP_WM16 macro
+      phy: rockchip-usb: switch to FIELD_PREP_WM16 macro
+      drm/rockchip: dw_hdmi: switch to FIELD_PREP_WM16* macros
+      ASoC: rockchip: i2s-tdm: switch to FIELD_PREP_WM16_CONST macro
+      net: stmmac: dwmac-rk: switch to FIELD_PREP_WM16 macro
+      PCI: rockchip: Switch to FIELD_PREP_WM16* macros
+      PCI: dw-rockchip: Switch to FIELD_PREP_WM16 macro
+      PM / devfreq: rockchip-dfi: switch to FIELD_PREP_WM16 macro
+      clk: sp7021: switch to FIELD_PREP_WM16 macro
+      phy: rockchip-pcie: switch to FIELD_PREP_WM16 macro
 
+ MAINTAINERS                                        |   1 +
+ drivers/clk/clk-sp7021.c                           |  22 ++--
+ drivers/devfreq/event/rockchip-dfi.c               |  27 ++--
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c    | 142 ++++++++++-----------
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        |  80 ++++++------
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c     |  68 +++++-----
+ drivers/gpu/drm/rockchip/inno_hdmi.c               |  11 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h       |   1 -
+ drivers/gpu/drm/rockchip/rockchip_lvds.h           |  21 +--
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c       |  15 ++-
+ .../media/platform/synopsys/hdmirx/snps_hdmirx.h   |   6 +-
+ drivers/mmc/host/dw_mmc-rockchip.c                 |   9 +-
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     |   3 +-
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c      |  42 +++---
+ drivers/pci/controller/pcie-rockchip.h             |  35 ++---
+ drivers/phy/rockchip/phy-rockchip-emmc.c           |   3 +-
+ drivers/phy/rockchip/phy-rockchip-pcie.c           |  72 +++--------
+ drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c  |  11 +-
+ drivers/phy/rockchip/phy-rockchip-usb.c            |  51 +++-----
+ drivers/soc/rockchip/grf.c                         |  35 +++--
+ include/linux/hw_bitfield.h                        |  62 +++++++++
+ sound/soc/rockchip/rockchip_i2s_tdm.h              |   4 +-
+ 22 files changed, 367 insertions(+), 354 deletions(-)
+---
+base-commit: 0491b8f4897c1ed267446959628592fd1cf8107d
+change-id: 20250610-byeword-update-445c0eea771d
+
+Best regards,
 -- 
-2.50.0
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
