@@ -4,95 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F4141C7115D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 07:27:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11DCEC7115B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 09:06:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T1PVJBhuQ7csdCh0GUbvNVcXr/5+2sEBAEaYAgyo+qc=; b=Jl0ceLPtabyPhF
-	GFUvGemZpV6zHtZ2iLAAj3dwYt6CY7QX2kXyGyfU8LtA6iXgYl2vMXG/ITEbuLnuKCYC1dNOta5/D
-	uJW/MG9lhxafaU0Jw49Fg3BWnv2VJyX96MeF2qAP73LFS+2Oo3nn5m6O0NDSyU0raHYbH950nezXm
-	3jq0thTGt2E+T8dUjzL3MTFdBg0P4jTIzUzWoqfeHkxMS8jvz0umO+jadvGk/kJQAQdmadDiF4p/w
-	hB0neJL+u36ZdMDUyX7VjqU4vHbInuPCe7HOntp47s/Fy7RFcI+G2WQPv/RwH08N7gJOBl+3jdDiV
-	/wkCNYEVfla0N6bbUPPQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7b28weoZbH2Y6msdkXm0H9m9z9qniHEEE7Wq8DTyyyI=; b=gfgSlBWwGW+64VEY620oYeaxjJ
+	xYrUth3/Smm5yXD7mZsX6GbNKATGqciUrJEQ9zGPZgMh1bXBTcgkRUj5eYBXQnRue8S1qMbiideVZ
+	ww9NwXMo9nrCnsA68V7YW54vma4xgVvxSDxdFAS+igMYWtNf7sLFD/2HO/KiXJFPHRA+SAKvVe+My
+	RFk4xV/5A07gxAfqUE7M5D34sThbz98HiHj7w/PbeNdc3XOGolwHGmkp0v0C2m9UOh8R5piuzm/hN
+	4CzVnA4FDGg5mZUAWWxa94CfhiMjnoAZiJVRB+4VL0aD4IdFRA8Ncm09PlLx0RmZdvn1V7Rk/HH8j
+	mQFwiU5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTbao-00000001rp5-3rm2;
-	Mon, 23 Jun 2025 07:27:50 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1uTd82-000000026jh-03da;
+	Mon, 23 Jun 2025 09:06:14 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTbam-00000001ro7-2tyx
-	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Jun 2025 07:27:49 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-45310223677so28624165e9.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 23 Jun 2025 00:27:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1750663666; x=1751268466; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dzPqdhEKbFE4WKMT2toUuYysK0Z15a9xzSQs3F9Y55s=;
-        b=aVrYYhFhHXD09Pqf+60KmiAroSvJly8mR8Zq3RRuO36MpK4gyWxgVDaK2oIDnowX3T
-         CN+cxvrVf9XQqfXwWlayhbI9ebKSxc5jh7EC9ErLsWmQx6vasp5gY5Iy1Cxc6U528hX5
-         nit9Ih+m5omhJjy74VnWalfG3YPoVKKl+nJSp2f0GT384lgz+KChThIsjqO9hm419dHD
-         jf8MWhEO+7Be1Sw4NLtL0nUym2x42IQMZyFLtIEMx3+LLdoVykYR4yHQ0Dk5g4JoqHTG
-         WXwqiOwoThZH8fLlAo9akQGOvbwGp+41hieeYANoKmblDjxIkntKOdSr06oYeJNvX41N
-         jCkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750663666; x=1751268466;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=dzPqdhEKbFE4WKMT2toUuYysK0Z15a9xzSQs3F9Y55s=;
-        b=Ba+EWMuZOOMvIfahTQ6fFdMRaCWrq4FpJuDp558J/9uNbVf55LdiInXhflu4CYRRj5
-         C7WFxX8FGnmEDhduAS7lK3pusJskAMG69lbtApOQ9PUcmqsq2zVf4CcTg+bVGokuB1ry
-         4RFSarzVlQ4VUw9jSxEpP5B3kwvbJ4PiHjbqDmzV9lNw4NrKVfUI5T4qsYJ/NJXnv25P
-         KIgezXYlm4gw2GrWyt4lUmb5S1oZx7alI8ZGl3ikiIW9IqPbT4wf0tiwZBqsrH2ImwB2
-         k/LcMwx+re4qdMvMI26enFtv9nXl9LOIrAdFgy9avLSq5l6mH4QWH1wtACWDIO4/ZvIF
-         P9UA==
-X-Forwarded-Encrypted: i=1; AJvYcCXIy8qKOZzex/8J6Lg7l92xqktzi2FUbDQskUWdaUCUfJSsf27hdY7SJj4sFscFGkGHRiHN1lkS8IwWGdbXcA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwU2QddgeGY/B68nzKbl0CVYqQIXmDN47Ice3ckiodB5HQYB77y
-	ptDxohrIYktIPK3EHLt2iIBMqxoMoifLC47IGmAAUasvKj5p02ZT1onmLzxpXsZxQu4=
-X-Gm-Gg: ASbGncsvqfRsCpQMh8Ott6w4xz5G5H8apeTDaShU+ikAXSx2TjJ42PFdyn9N5eMMoJA
-	mubt1PvFwUlr/loXwNCxfKey2xYpY5N1fDWe4ExcmdcFdwna/LyjbYm4Uy6vssz61cxD/wSCy5m
-	kkh5w3qEMTOYfoo1pfanPvNwqt0rOROBIhhWgqkRoPAWRnweHjjCdEsq28fQ4rhlJUipmC3+WD2
-	Kn3ubR2y5uSXWIepRZhK6QZwytZSi0hjvaeIA3FvC0u7BczxGaInbV+mcr8GqeKcfnOGrVWAY6E
-	V35pIX/VNbf9XYv5dwwOjyHCaHxtmTcXQ3WbtqHvB/RzMhiGW03VKAytEP+C+g==
-X-Google-Smtp-Source: AGHT+IH9rEDeNXFSSnMBqu6I5pB5WPT7zqUetHOerVAMMI8lCebpPpqi/qM3evPjb+mgZmc3Iz0qeg==
-X-Received: by 2002:a05:600c:3b2a:b0:43c:fdbe:4398 with SMTP id 5b1f17b1804b1-453659b68afmr92295725e9.6.1750663666401;
-        Mon, 23 Jun 2025 00:27:46 -0700 (PDT)
-Received: from brgl-uxlite.home ([2a01:cb1d:dc:7e00:5ce:238e:62a6:cbbc])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-453646d7fe5sm100018525e9.16.2025.06.23.00.27.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Jun 2025 00:27:46 -0700 (PDT)
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-To: Linus Walleij <linus.walleij@linaro.org>,
-	Andy Shevchenko <andy@kernel.org>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH v2 00/12] gpio: use new GPIO line value setter callbacks
-Date: Mon, 23 Jun 2025 09:27:44 +0200
-Message-ID: <175066365840.13100.13826929521170869175.b4-ty@linaro.org>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250619-gpiochip-set-rv-gpio-v2-0-74abf689fbd8@linaro.org>
-References: <20250619-gpiochip-set-rv-gpio-v2-0-74abf689fbd8@linaro.org>
+	id 1uTcnU-000000022f6-2lfk;
+	Mon, 23 Jun 2025 08:45:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id C964A6113A;
+	Mon, 23 Jun 2025 08:44:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFA2CC4CEED;
+	Mon, 23 Jun 2025 08:44:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750668299;
+	bh=T+ZvFATpMVmo9JrjrJ0psl5XSDccDVqxEVtTuUwWGYI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qSeSVtBe24oPA3fxyQOIEjU6APWTd0ILLyIKNoUPlgMC/+0TiNHEq3l3qE3rN+kw6
+	 hXGrKsSt8/wXQNmnNBULq5BmlBb7gqK8KaaJRkfaIG8DlApgOhMO8NIEeYVehCdwM/
+	 eDvCQwA5LefVr1p1ZlFqdla9/blsb+eQQPZwTeuINQmlw2Gkc9FdYvfjvuEra0JcLO
+	 d2ycrAcDI8W0CQSz7WIui8aaKVg02RFR9uxGiYnOEqqjJn3+AQWk80ekdlX/xRUNT+
+	 VvAWhbkaExKX1N5xk2b2sQjKBu5BJNvNKn+dyo1lOdsAhRD5ogrCThLnEQNmWaGQIC
+	 QZ41rtsNkZIPw==
+Date: Mon, 23 Jun 2025 10:44:57 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	William Breathitt Gray <wbg@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	Kever Yang <kever.yang@rock-chips.com>, Yury Norov <yury.norov@gmail.com>, 
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Dave Ertman <david.m.ertman@intel.com>, Ira Weiny <ira.weiny@intel.com>, 
+	Leon Romanovsky <leon@kernel.org>, Lee Jones <lee@kernel.org>, linux-gpio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org, 
+	linux-iio@vger.kernel.org, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, 
+	Detlev Casanova <detlev.casanova@collabora.com>
+Subject: Re: [PATCH v2 5/7] pwm: Add rockchip PWMv4 driver
+Message-ID: <o5xaoorrqb6a3jwwpdcsowrqbo7owrjzwj4r3laytusms6txdi@ku4bvbynkwh7>
+References: <20250602-rk3576-pwm-v2-0-a6434b0ce60c@collabora.com>
+ <20250602-rk3576-pwm-v2-5-a6434b0ce60c@collabora.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_002748_730911_472F1A61 
-X-CRM114-Status: UNSURE (   8.41  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20250602-rk3576-pwm-v2-5-a6434b0ce60c@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,54 +73,290 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8882814440577384891=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+
+--===============8882814440577384891==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="4g26suiz7oblktsa"
+Content-Disposition: inline
 
 
-On Thu, 19 Jun 2025 10:33:13 +0200, Bartosz Golaszewski wrote:
-> Commit 98ce1eb1fd87e ("gpiolib: introduce gpio_chip setters that return
-> values") added new line setter callbacks to struct gpio_chip. They allow
-> to indicate failures to callers. We're in the process of converting all
-> GPIO controllers to using them before removing the old ones. This series
-> converts another round of GPIO drivers.
-> 
-> 
+--4g26suiz7oblktsa
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Subject: Re: [PATCH v2 5/7] pwm: Add rockchip PWMv4 driver
+MIME-Version: 1.0
+
+Hello Nicolas,
+
+On Mon, Jun 02, 2025 at 06:19:16PM +0200, Nicolas Frattaroli wrote:
+> +/**
+> + * rockchip_pwm_v4_round_params - convert PWM parameters to hardware
+> + * @rate: PWM clock rate to do the calculations at
+> + * @duty: PWM duty cycle in nanoseconds
+> + * @period: PWM period in nanoseconds
+> + * @offset: PWM offset in nanoseconds
+> + * @out_duty: pointer to where the rounded duty value should be stored
+> + * @out_period: pointer to where the rounded period value should be stored
+> + * @out_offset: pointer to where the rounded offset value should be stored
+> + *
+> + * Convert nanosecond-based duty/period/offset parameters to the PWM hardware's
+> + * native rounded representation in number of cycles at clock rate @rate. Should
+> + * any of the input parameters be out of range for the hardware, the
+> + * corresponding output parameter is the maximum permissible value for said
+> + * parameter with considerations to the others.
+> + */
+> +static void rockchip_pwm_v4_round_params(unsigned long rate, u64 duty,
+> +					u64 period, u64 offset, u32 *out_duty,
+> +					u32 *out_period, u32 *out_offset)
+> +{
+> +	int ret;
+> +
+> +	ret = rockchip_pwm_v4_round_single(rate, period, out_period);
+> +	if (ret)
+> +		*out_period = U32_MAX;
+
+It's strange to let rockchip_pwm_v4_round_single return failure just to
+reset it to U32_MAX here then. I'd make rockchip_pwm_v4_round_single do:
+
+	tmp = mul_u64_u64_div_u64(rate, in_val, NSEC_PER_SEC);
+	if (tmp > U32_MAX)
+		return U32_MAX
+	return tmp;
+
+and then just do
+
+	*out_period = rockchip_pwm_v4_round_single(rate, period);
+	*out_duty = rockchip_pwm_v4_round_single(rate, duty)
+	...
+
+> +
+> +	ret = rockchip_pwm_v4_round_single(rate, duty, out_duty);
+> +	if (ret || *out_duty > *out_period)
+> +		*out_duty = *out_period;
+
+You can assume that .round_wf_tohw() is called only with duty <= period.
+
+> +	ret = rockchip_pwm_v4_round_single(rate, offset, out_offset);
+> +	if (ret || *out_offset > (*out_period - *out_duty))
+> +		*out_offset = *out_period - *out_duty;
+
+Is this a hardware limitation? In general
+
+	.period_length_ns = 1000
+	.duty_length_ns = 600
+	.duty_offset_ns = 600
+
+is a valid waveform.
+
+> +}
+> +
+> +static int rockchip_pwm_v4_round_wf_tohw(struct pwm_chip *chip,
+> +					 struct pwm_device *pwm,
+> +					 const struct pwm_waveform *wf,
+> +					 void *_wfhw)
+> +{
+> +	struct rockchip_pwm_v4 *pc = to_rockchip_pwm_v4(chip);
+> +	struct rockchip_pwm_v4_wf *wfhw = _wfhw;
+> +	unsigned long rate;
+> +	int ret;
+> +
+> +	/* We do not want chosen_clk to change out from under us here */
+> +	ret = mfpwm_acquire(pc->pwmf);
+> +	if (ret)
+> +		return ret;
+> +
+> +	rate = clk_get_rate(pc->pwmf->core);
+> +
+> +	rockchip_pwm_v4_round_params(rate, wf->duty_length_ns,
+> +				     wf->period_length_ns, wf->duty_offset_ns,
+> +				     &wfhw->duty, &wfhw->period, &wfhw->offset);
+> +
+> +	if (wf->period_length_ns > 0)
+> +		wfhw->enable = PWMV4_EN_BOTH_MASK;
+> +	else
+> +		wfhw->enable = 0;
+> +
+> +	dev_dbg(&chip->dev, "tohw: duty = %u, period = %u, offset = %u, rate %lu\n",
+> +		wfhw->duty, wfhw->period, wfhw->offset, rate);
+
+This is more helpful if the input parameters (i.e. wf) is also emitted.
+
+> +	mfpwm_release(pc->pwmf);
+> +	return 0;
+> +}
+> +
+> +static int rockchip_pwm_v4_round_wf_fromhw(struct pwm_chip *chip,
+> +					   struct pwm_device *pwm,
+> +					   const void *_wfhw,
+> +					   struct pwm_waveform *wf)
+> +{
+> +	struct rockchip_pwm_v4 *pc = to_rockchip_pwm_v4(chip);
+> +	const struct rockchip_pwm_v4_wf *wfhw = _wfhw;
+> +	unsigned long rate;
+> +	int ret = 0;
+> +
+> +	/* We do not want chosen_clk to change out from under us here */
+> +	ret = mfpwm_acquire(pc->pwmf);
+> +	if (ret)
+> +		return ret;
+
+Hmm, there is little gain here. Correct me if I'm wrong, but you prevent
+a rate change only until mfpwm_release() is called, so the assertion
+ends before the caller can use the calculated parameters anyhow. So
+maybe drop the acquire/release pair?
+
+> +	rate = clk_get_rate(pc->pwmf->core);
+> +
+> +	if (rockchip_pwm_v4_is_enabled(wfhw->enable)) {
+> +		if (!rate) {
+> +			ret = -EINVAL;
+> +			goto out_mfpwm_release;
+> +		}
+> +		wf->period_length_ns = mul_u64_u64_div_u64(wfhw->period, NSEC_PER_SEC, rate);
+
+(u64)wfhw->period * NSEC_PER_SEC cannot overflow, so a plain
+multiplication and then a division is cheaper here.
+
+> +		wf->duty_length_ns = mul_u64_u64_div_u64(wfhw->duty, NSEC_PER_SEC, rate);
+> +		wf->duty_offset_ns = mul_u64_u64_div_u64(wfhw->offset, NSEC_PER_SEC, rate);
+> +	} else {
+> +		wf->period_length_ns = 0;
+> +		wf->duty_length_ns = 0;
+> +		wf->duty_offset_ns = 0;
+> +	}
+> +
+> +	dev_dbg(&chip->dev, "fromhw: duty = %llu, period = %llu, offset = %llu, rate = %lu\n",
+> +		wf->duty_length_ns, wf->period_length_ns, wf->duty_offset_ns, rate);
+
+As above, please include wfhw in the output.
+
+> +out_mfpwm_release:
+> +	mfpwm_release(pc->pwmf);
+> +	return ret;
+> +}
+> +
 > [...]
+> +static int rockchip_pwm_v4_probe(struct platform_device *pdev)
+> +{
+> +	struct rockchip_mfpwm_func *pwmf = dev_get_platdata(&pdev->dev);
+> +	struct rockchip_pwm_v4 *pc;
+> +	struct pwm_chip *chip;
+> +	struct device *dev = &pdev->dev;
+> +	int ret;
+> +
+> +	chip = devm_pwmchip_alloc(dev, 1, sizeof(*pc));
+> +	if (IS_ERR(chip))
+> +		return PTR_ERR(chip);
+> +
+> +	pc = to_rockchip_pwm_v4(chip);
+> +	pc->pwmf = pwmf;
+> +
+> +	ret = mfpwm_acquire(pwmf);
+> +	if (ret == -EBUSY)
+> +		dev_warn(dev, "pwm hardware already in use, can't check initial state\n");
+> +	else if (ret < 0)
+> +		return dev_err_probe(dev, ret, "couldn't acquire mfpwm in probe\n");
+> +
+> +	if (!rockchip_pwm_v4_on_and_continuous(pc))
+> +		mfpwm_release(pwmf);
+> +	else {
+> +		dev_dbg(dev, "pwm was already on at probe time\n");
+> +		ret = clk_enable(pwmf->core);
+> +		if (ret)
+> +			return dev_err_probe(dev, ret, "enabling pwm clock failed\n");
+> +		ret = clk_rate_exclusive_get(pc->pwmf->core);
+> +		if (ret) {
+> +			clk_disable(pwmf->core);
+> +			return dev_err_probe(dev, ret, "protecting pwm clock failed\n");
+> +		}
+> +	}
+> +
+> +	platform_set_drvdata(pdev, chip);
+> +
+> +	chip->ops = &rockchip_pwm_v4_ops;
+> +
+> +	ret = pwmchip_add(chip);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "failed to add PWM chip\n");
 
-Applied, thanks!
+I like error messages starting with a capital letter.
 
-[01/12] gpio: pca9570: use new GPIO line value setter callbacks
-        https://git.kernel.org/brgl/linux/c/40b71f1171da13664e9677fbd993d9098315d71e
-[02/12] gpio: pcf857x: use new GPIO line value setter callbacks
-        https://git.kernel.org/brgl/linux/c/4027438be823abdcfb50ee2abed06fa4e6af4b7c
-[03/12] gpio: pch: use new GPIO line value setter callbacks
-        https://git.kernel.org/brgl/linux/c/74260fb09cc6f6e7bb6741bedca4463079800ead
-[04/12] gpio: pl061: use new GPIO line value setter callbacks
-        https://git.kernel.org/brgl/linux/c/201e0f24a5b73fa73606ae2261d155f00cb6d577
-[05/12] gpio: pmic-eic-sprd: drop unneeded .set() callback
-        https://git.kernel.org/brgl/linux/c/fecdef830c442e4375a3bbdde26af385583fb05c
-[06/12] gpio: pxa: use new GPIO line value setter callbacks
-        https://git.kernel.org/brgl/linux/c/f1ff31c8ef80f4720ebf7854e6af6204dddd9ce3
-[07/12] gpio: rc5t583: use new GPIO line value setter callbacks
-        https://git.kernel.org/brgl/linux/c/309ea5811136a06f572c7abbeae2dcf773629a5e
-[08/12] gpio: rdc321x: use new GPIO line value setter callbacks
-        https://git.kernel.org/brgl/linux/c/76033f1f927cd93907c1e9eb3f86e54015e4366d
-[10/12] gpio: rockchip: use new GPIO line value setter callbacks
-        https://git.kernel.org/brgl/linux/c/6731ad96e8770595d4a6ceb07e587b07d22da110
-[11/12] gpio: rtd: use new GPIO line value setter callbacks
-        https://git.kernel.org/brgl/linux/c/d68ddf651dd2faea5cdc6f6656148b739c38645b
-[12/12] gpio: sa1100: use new GPIO line value setter callbacks
-        https://git.kernel.org/brgl/linux/c/cb908f3699fb137e28017a8fdf506c35762b3eb6
+> +
+> +	return 0;
+> +}
+> +
+> +static void rockchip_pwm_v4_remove(struct platform_device *pdev)
+> +{
+> +	struct pwm_chip *chip = platform_get_drvdata(pdev);
+> +	struct rockchip_pwm_v4 *pc = to_rockchip_pwm_v4(chip);
+> +
+> +	mfpwm_remove_func(pc->pwmf);
 
-Best regards,
--- 
-Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+What does this function do? It is not used in .probe()'s error path?!
+
+> +	pwmchip_remove(chip);
+
+Wrong order (I think). If mfpwm_remove_func() affects operation,
+pwmchip_remove() must be called first.
+
+> +}
+> +
+> +static const struct platform_device_id rockchip_pwm_v4_ids[] = {
+> +	{ .name = "pwm-rockchip-v4", },
+> +	{ /* sentinel */ }
+> +};
+> +MODULE_DEVICE_TABLE(platform, rockchip_pwm_v4_ids);
+> +
+> +static struct platform_driver rockchip_pwm_v4_driver = {
+> +	.probe = rockchip_pwm_v4_probe,
+> +	.remove = rockchip_pwm_v4_remove,
+> +	.driver = {
+> +		.name = "pwm-rockchip-v4",
+> +	},
+> +	.id_table = rockchip_pwm_v4_ids,
+> +};
+> +module_platform_driver(rockchip_pwm_v4_driver);
+> +
+> +MODULE_AUTHOR("Nicolas Frattaroli <nicolas.frattaroli@collabora.com>");
+> +MODULE_DESCRIPTION("Rockchip PWMv4 Driver");
+> +MODULE_LICENSE("GPL");
+> +MODULE_IMPORT_NS("ROCKCHIP_MFPWM");
+
+Best regards
+Uwe
+
+--4g26suiz7oblktsa
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmhZFAYACgkQj4D7WH0S
+/k5t6ggAjmDJYKJYUEg5lEGucA+QTWdT0UbHkO7qf1jcahM1hd34ZOp7tYXkD9wC
+m28YV1gus2tgEIqldCRmqO0y5hJhniDfOJ92BRihB50Bkg1m6hox9P4iqMRPSJnd
+uDnmATiNVdY7Et8MPEe9Y9YDACD2CKfv/DSvUxkp3la1rhIglcTMHfPDFRMnSynw
+WUgyHKQ1hLEokOyBXvXY3wlDZCTpUZQpW5eSVW6p+h+Qj/liLp7CWNbW5myK/H49
+GYN3F/oEPrF+TMASFJkOfQb4Cs+MgPWOhTZfjj693TbWuFxc1p6seTByPZN8h3gg
+8B0jF2BSQvP4BiSbf9asZfRRNTd3DQ==
+=4kAc
+-----END PGP SIGNATURE-----
+
+--4g26suiz7oblktsa--
+
+
+--===============8882814440577384891==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8882814440577384891==--
+
