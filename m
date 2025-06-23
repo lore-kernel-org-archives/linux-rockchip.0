@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11DCEC7115B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 09:06:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9376BC77B7F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 09:13:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7b28weoZbH2Y6msdkXm0H9m9z9qniHEEE7Wq8DTyyyI=; b=gfgSlBWwGW+64VEY620oYeaxjJ
-	xYrUth3/Smm5yXD7mZsX6GbNKATGqciUrJEQ9zGPZgMh1bXBTcgkRUj5eYBXQnRue8S1qMbiideVZ
-	ww9NwXMo9nrCnsA68V7YW54vma4xgVvxSDxdFAS+igMYWtNf7sLFD/2HO/KiXJFPHRA+SAKvVe+My
-	RFk4xV/5A07gxAfqUE7M5D34sThbz98HiHj7w/PbeNdc3XOGolwHGmkp0v0C2m9UOh8R5piuzm/hN
-	4CzVnA4FDGg5mZUAWWxa94CfhiMjnoAZiJVRB+4VL0aD4IdFRA8Ncm09PlLx0RmZdvn1V7Rk/HH8j
-	mQFwiU5Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CcjnLYzaBjw5oLHUDKzzTKLXeO3hTxOPVltEjvt8Pos=; b=iiPmznmCryuDYe
+	L1CU2AAgGMn2XUBsNcB0oubc/Y3tLxWKyildE/jmthdPJ4gXldg7Q20sfqUZawavCwx1OwPu8jPTA
+	6Vb3UeNsbawG+QElzcBGLPigzcSZOLE5LPNacgFIedlqguszoGj7XYHGwZOBZQoPa68Axbon5NQQd
+	wEWjw3OSUWetphE+lrN/+oyfvs1nzO92+/kBRvVCf2UwmnPqy0ikbg2rPI+3db59lDYGvMtMuXPjR
+	7phhRMvi7t3RgJzXqEGKFyWC4hLHh/QASD+xI6wTEmfFRNvBRtZ1TfduzKPHGAjh5xD1bzrLl5TmZ
+	l54Se2PjAhhpj4OLTS+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTd82-000000026jh-03da;
-	Mon, 23 Jun 2025 09:06:14 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uTdEx-0000000286o-2vyV;
+	Mon, 23 Jun 2025 09:13:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTcnU-000000022f6-2lfk;
-	Mon, 23 Jun 2025 08:45:00 +0000
+	id 1uTd5p-000000026If-0Ck9;
+	Mon, 23 Jun 2025 09:03:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C964A6113A;
-	Mon, 23 Jun 2025 08:44:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFA2CC4CEED;
-	Mon, 23 Jun 2025 08:44:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B0F985C5B2B;
+	Mon, 23 Jun 2025 09:01:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BDDBC4CEEA;
+	Mon, 23 Jun 2025 09:03:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750668299;
-	bh=T+ZvFATpMVmo9JrjrJ0psl5XSDccDVqxEVtTuUwWGYI=;
+	s=k20201202; t=1750669435;
+	bh=WMeEW71Xdq2ImqfTThMcOgR/sZmGRoU60zXvKkMFza4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qSeSVtBe24oPA3fxyQOIEjU6APWTd0ILLyIKNoUPlgMC/+0TiNHEq3l3qE3rN+kw6
-	 hXGrKsSt8/wXQNmnNBULq5BmlBb7gqK8KaaJRkfaIG8DlApgOhMO8NIEeYVehCdwM/
-	 eDvCQwA5LefVr1p1ZlFqdla9/blsb+eQQPZwTeuINQmlw2Gkc9FdYvfjvuEra0JcLO
-	 d2ycrAcDI8W0CQSz7WIui8aaKVg02RFR9uxGiYnOEqqjJn3+AQWk80ekdlX/xRUNT+
-	 VvAWhbkaExKX1N5xk2b2sQjKBu5BJNvNKn+dyo1lOdsAhRD5ogrCThLnEQNmWaGQIC
-	 QZ41rtsNkZIPw==
-Date: Mon, 23 Jun 2025 10:44:57 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	William Breathitt Gray <wbg@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
-	Kever Yang <kever.yang@rock-chips.com>, Yury Norov <yury.norov@gmail.com>, 
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Dave Ertman <david.m.ertman@intel.com>, Ira Weiny <ira.weiny@intel.com>, 
-	Leon Romanovsky <leon@kernel.org>, Lee Jones <lee@kernel.org>, linux-gpio@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org, 
-	linux-iio@vger.kernel.org, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, 
-	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH v2 5/7] pwm: Add rockchip PWMv4 driver
-Message-ID: <o5xaoorrqb6a3jwwpdcsowrqbo7owrjzwj4r3laytusms6txdi@ku4bvbynkwh7>
-References: <20250602-rk3576-pwm-v2-0-a6434b0ce60c@collabora.com>
- <20250602-rk3576-pwm-v2-5-a6434b0ce60c@collabora.com>
+	b=rN9L0PwELUUOtTfwVpPRzaEkxywCB5Aptk70y8l7NmLSpDDGsR9eWzpxY8kGSrFKy
+	 hnb1YnyaOc0yQhuy9HWot33LrDioD5drYUZzF5HNpF7IiwqXPzUyCzBLUO2g1F+M3f
+	 o6qT5dHI/WHCGzHDp7MMm3onSef0Q2rK3/aN8k5tV2wu/Xy1K+82Jk/ZlkT2N4suHR
+	 N0DEFTwyMh2MC06W+dn9MT7gxRimOiq9bhv7M3mO6OdW3UkBidDz/I3NcSDFxHawyk
+	 CiZ9HnCeefZ/19D7T1jNHRh2f5jN58yUdJltg3D0v/G1sBZiFgAJrvgKFymCugTAHX
+	 hfwwhpP7ePP6g==
+Date: Mon, 23 Jun 2025 11:03:49 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
+	heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com,
+	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
+	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
+	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 0/2] Configure root port MPS during host probing
+Message-ID: <aFkYdRkQpyE8pOVD@ryzen>
+References: <20250620155507.1022099-1-18255117159@163.com>
+ <e9eeeeb4-77e6-48f1-bedc-15207f39d7b6@163.com>
 MIME-Version: 1.0
-In-Reply-To: <20250602-rk3576-pwm-v2-5-a6434b0ce60c@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <e9eeeeb4-77e6-48f1-bedc-15207f39d7b6@163.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250623_020357_134426_4E2A432B 
+X-CRM114-Status: UNSURE (   9.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,290 +74,18 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8882814440577384891=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============8882814440577384891==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4g26suiz7oblktsa"
-Content-Disposition: inline
-
-
---4g26suiz7oblktsa
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Subject: Re: [PATCH v2 5/7] pwm: Add rockchip PWMv4 driver
-MIME-Version: 1.0
-
-Hello Nicolas,
-
-On Mon, Jun 02, 2025 at 06:19:16PM +0200, Nicolas Frattaroli wrote:
-> +/**
-> + * rockchip_pwm_v4_round_params - convert PWM parameters to hardware
-> + * @rate: PWM clock rate to do the calculations at
-> + * @duty: PWM duty cycle in nanoseconds
-> + * @period: PWM period in nanoseconds
-> + * @offset: PWM offset in nanoseconds
-> + * @out_duty: pointer to where the rounded duty value should be stored
-> + * @out_period: pointer to where the rounded period value should be stored
-> + * @out_offset: pointer to where the rounded offset value should be stored
-> + *
-> + * Convert nanosecond-based duty/period/offset parameters to the PWM hardware's
-> + * native rounded representation in number of cycles at clock rate @rate. Should
-> + * any of the input parameters be out of range for the hardware, the
-> + * corresponding output parameter is the maximum permissible value for said
-> + * parameter with considerations to the others.
-> + */
-> +static void rockchip_pwm_v4_round_params(unsigned long rate, u64 duty,
-> +					u64 period, u64 offset, u32 *out_duty,
-> +					u32 *out_period, u32 *out_offset)
-> +{
-> +	int ret;
-> +
-> +	ret = rockchip_pwm_v4_round_single(rate, period, out_period);
-> +	if (ret)
-> +		*out_period = U32_MAX;
-
-It's strange to let rockchip_pwm_v4_round_single return failure just to
-reset it to U32_MAX here then. I'd make rockchip_pwm_v4_round_single do:
-
-	tmp = mul_u64_u64_div_u64(rate, in_val, NSEC_PER_SEC);
-	if (tmp > U32_MAX)
-		return U32_MAX
-	return tmp;
-
-and then just do
-
-	*out_period = rockchip_pwm_v4_round_single(rate, period);
-	*out_duty = rockchip_pwm_v4_round_single(rate, duty)
-	...
-
-> +
-> +	ret = rockchip_pwm_v4_round_single(rate, duty, out_duty);
-> +	if (ret || *out_duty > *out_period)
-> +		*out_duty = *out_period;
-
-You can assume that .round_wf_tohw() is called only with duty <= period.
-
-> +	ret = rockchip_pwm_v4_round_single(rate, offset, out_offset);
-> +	if (ret || *out_offset > (*out_period - *out_duty))
-> +		*out_offset = *out_period - *out_duty;
-
-Is this a hardware limitation? In general
-
-	.period_length_ns = 1000
-	.duty_length_ns = 600
-	.duty_offset_ns = 600
-
-is a valid waveform.
-
-> +}
-> +
-> +static int rockchip_pwm_v4_round_wf_tohw(struct pwm_chip *chip,
-> +					 struct pwm_device *pwm,
-> +					 const struct pwm_waveform *wf,
-> +					 void *_wfhw)
-> +{
-> +	struct rockchip_pwm_v4 *pc = to_rockchip_pwm_v4(chip);
-> +	struct rockchip_pwm_v4_wf *wfhw = _wfhw;
-> +	unsigned long rate;
-> +	int ret;
-> +
-> +	/* We do not want chosen_clk to change out from under us here */
-> +	ret = mfpwm_acquire(pc->pwmf);
-> +	if (ret)
-> +		return ret;
-> +
-> +	rate = clk_get_rate(pc->pwmf->core);
-> +
-> +	rockchip_pwm_v4_round_params(rate, wf->duty_length_ns,
-> +				     wf->period_length_ns, wf->duty_offset_ns,
-> +				     &wfhw->duty, &wfhw->period, &wfhw->offset);
-> +
-> +	if (wf->period_length_ns > 0)
-> +		wfhw->enable = PWMV4_EN_BOTH_MASK;
-> +	else
-> +		wfhw->enable = 0;
-> +
-> +	dev_dbg(&chip->dev, "tohw: duty = %u, period = %u, offset = %u, rate %lu\n",
-> +		wfhw->duty, wfhw->period, wfhw->offset, rate);
-
-This is more helpful if the input parameters (i.e. wf) is also emitted.
-
-> +	mfpwm_release(pc->pwmf);
-> +	return 0;
-> +}
-> +
-> +static int rockchip_pwm_v4_round_wf_fromhw(struct pwm_chip *chip,
-> +					   struct pwm_device *pwm,
-> +					   const void *_wfhw,
-> +					   struct pwm_waveform *wf)
-> +{
-> +	struct rockchip_pwm_v4 *pc = to_rockchip_pwm_v4(chip);
-> +	const struct rockchip_pwm_v4_wf *wfhw = _wfhw;
-> +	unsigned long rate;
-> +	int ret = 0;
-> +
-> +	/* We do not want chosen_clk to change out from under us here */
-> +	ret = mfpwm_acquire(pc->pwmf);
-> +	if (ret)
-> +		return ret;
-
-Hmm, there is little gain here. Correct me if I'm wrong, but you prevent
-a rate change only until mfpwm_release() is called, so the assertion
-ends before the caller can use the calculated parameters anyhow. So
-maybe drop the acquire/release pair?
-
-> +	rate = clk_get_rate(pc->pwmf->core);
-> +
-> +	if (rockchip_pwm_v4_is_enabled(wfhw->enable)) {
-> +		if (!rate) {
-> +			ret = -EINVAL;
-> +			goto out_mfpwm_release;
-> +		}
-> +		wf->period_length_ns = mul_u64_u64_div_u64(wfhw->period, NSEC_PER_SEC, rate);
-
-(u64)wfhw->period * NSEC_PER_SEC cannot overflow, so a plain
-multiplication and then a division is cheaper here.
-
-> +		wf->duty_length_ns = mul_u64_u64_div_u64(wfhw->duty, NSEC_PER_SEC, rate);
-> +		wf->duty_offset_ns = mul_u64_u64_div_u64(wfhw->offset, NSEC_PER_SEC, rate);
-> +	} else {
-> +		wf->period_length_ns = 0;
-> +		wf->duty_length_ns = 0;
-> +		wf->duty_offset_ns = 0;
-> +	}
-> +
-> +	dev_dbg(&chip->dev, "fromhw: duty = %llu, period = %llu, offset = %llu, rate = %lu\n",
-> +		wf->duty_length_ns, wf->period_length_ns, wf->duty_offset_ns, rate);
-
-As above, please include wfhw in the output.
-
-> +out_mfpwm_release:
-> +	mfpwm_release(pc->pwmf);
-> +	return ret;
-> +}
-> +
-> [...]
-> +static int rockchip_pwm_v4_probe(struct platform_device *pdev)
-> +{
-> +	struct rockchip_mfpwm_func *pwmf = dev_get_platdata(&pdev->dev);
-> +	struct rockchip_pwm_v4 *pc;
-> +	struct pwm_chip *chip;
-> +	struct device *dev = &pdev->dev;
-> +	int ret;
-> +
-> +	chip = devm_pwmchip_alloc(dev, 1, sizeof(*pc));
-> +	if (IS_ERR(chip))
-> +		return PTR_ERR(chip);
-> +
-> +	pc = to_rockchip_pwm_v4(chip);
-> +	pc->pwmf = pwmf;
-> +
-> +	ret = mfpwm_acquire(pwmf);
-> +	if (ret == -EBUSY)
-> +		dev_warn(dev, "pwm hardware already in use, can't check initial state\n");
-> +	else if (ret < 0)
-> +		return dev_err_probe(dev, ret, "couldn't acquire mfpwm in probe\n");
-> +
-> +	if (!rockchip_pwm_v4_on_and_continuous(pc))
-> +		mfpwm_release(pwmf);
-> +	else {
-> +		dev_dbg(dev, "pwm was already on at probe time\n");
-> +		ret = clk_enable(pwmf->core);
-> +		if (ret)
-> +			return dev_err_probe(dev, ret, "enabling pwm clock failed\n");
-> +		ret = clk_rate_exclusive_get(pc->pwmf->core);
-> +		if (ret) {
-> +			clk_disable(pwmf->core);
-> +			return dev_err_probe(dev, ret, "protecting pwm clock failed\n");
-> +		}
-> +	}
-> +
-> +	platform_set_drvdata(pdev, chip);
-> +
-> +	chip->ops = &rockchip_pwm_v4_ops;
-> +
-> +	ret = pwmchip_add(chip);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "failed to add PWM chip\n");
-
-I like error messages starting with a capital letter.
-
-> +
-> +	return 0;
-> +}
-> +
-> +static void rockchip_pwm_v4_remove(struct platform_device *pdev)
-> +{
-> +	struct pwm_chip *chip = platform_get_drvdata(pdev);
-> +	struct rockchip_pwm_v4 *pc = to_rockchip_pwm_v4(chip);
-> +
-> +	mfpwm_remove_func(pc->pwmf);
-
-What does this function do? It is not used in .probe()'s error path?!
-
-> +	pwmchip_remove(chip);
-
-Wrong order (I think). If mfpwm_remove_func() affects operation,
-pwmchip_remove() must be called first.
-
-> +}
-> +
-> +static const struct platform_device_id rockchip_pwm_v4_ids[] = {
-> +	{ .name = "pwm-rockchip-v4", },
-> +	{ /* sentinel */ }
-> +};
-> +MODULE_DEVICE_TABLE(platform, rockchip_pwm_v4_ids);
-> +
-> +static struct platform_driver rockchip_pwm_v4_driver = {
-> +	.probe = rockchip_pwm_v4_probe,
-> +	.remove = rockchip_pwm_v4_remove,
-> +	.driver = {
-> +		.name = "pwm-rockchip-v4",
-> +	},
-> +	.id_table = rockchip_pwm_v4_ids,
-> +};
-> +module_platform_driver(rockchip_pwm_v4_driver);
-> +
-> +MODULE_AUTHOR("Nicolas Frattaroli <nicolas.frattaroli@collabora.com>");
-> +MODULE_DESCRIPTION("Rockchip PWMv4 Driver");
-> +MODULE_LICENSE("GPL");
-> +MODULE_IMPORT_NS("ROCKCHIP_MFPWM");
-
-Best regards
-Uwe
-
---4g26suiz7oblktsa
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmhZFAYACgkQj4D7WH0S
-/k5t6ggAjmDJYKJYUEg5lEGucA+QTWdT0UbHkO7qf1jcahM1hd34ZOp7tYXkD9wC
-m28YV1gus2tgEIqldCRmqO0y5hJhniDfOJ92BRihB50Bkg1m6hox9P4iqMRPSJnd
-uDnmATiNVdY7Et8MPEe9Y9YDACD2CKfv/DSvUxkp3la1rhIglcTMHfPDFRMnSynw
-WUgyHKQ1hLEokOyBXvXY3wlDZCTpUZQpW5eSVW6p+h+Qj/liLp7CWNbW5myK/H49
-GYN3F/oEPrF+TMASFJkOfQb4Cs+MgPWOhTZfjj693TbWuFxc1p6seTByPZN8h3gg
-8B0jF2BSQvP4BiSbf9asZfRRNTd3DQ==
-=4kAc
------END PGP SIGNATURE-----
-
---4g26suiz7oblktsa--
-
-
---===============8882814440577384891==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8882814440577384891==--
-
+T24gU2F0LCBKdW4gMjEsIDIwMjUgYXQgMTI6MDU6NDNBTSArMDgwMCwgSGFucyBaaGFuZyB3cm90
+ZToKPiBIaSBhbGzvvIwKPiAKPiBJJ20gdmVyeSBzb3JyeS4gSSBmb3Jnb3QgdGhlIHJldmlldyBs
+YWJlbCBvZiBOaWtsYXMuIElmCj4gaXQgY2FuIGJlIG1lcmdlZCwgcGxlYXNlIGFzayB0aGUgbWFp
+bnRhaW5lciB0byBoZWxwIGFkZAo+IHRoaXMgdGFnLiBUaGFuayB5b3UgdmVyeSBtdWNoLgo+IAo+
+IFJldmlld2VkLWJ5OiBOaWtsYXMgQ2Fzc2VsIDxjYXNzZWxAa2VybmVsLm9yZz4KCklmIHRoZSBt
+YWludGFpbmVyIGlzIHVzaW5nIGI0LCBpdCBzaG91bGQgcGljayB1cCB0aGUgdGFnIGFib3ZlIGF1
+dG9tYXRpY2FsbHkuCgoKS2luZCByZWdhcmRzLApOaWtsYXMKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
