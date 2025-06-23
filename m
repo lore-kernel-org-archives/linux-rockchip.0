@@ -4,57 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B818AC7115B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 19:42:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48F67C7EE2A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 19:42:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ksbvJcJEvvC7EGrgd0mSxnlhHuUvxlmkeGJ81Tetxms=; b=vBMVGxfBXIseWC
-	7qUsnmAcgz6Gm9Rf+TL5E0ZH1ifjxHYIoOCKCjOUVfX2AAb1vyznk4bxPuogHF+mgK8tEpajE2ydq
-	Df3VmjnhT9pBUUJ5/ENP8n3f4Gv4ZiUOCnujPfNLV1+evTGlj9WZfnlynof4VhXura7W8mD2sEqtW
-	+wW77wCYygmjeVHzPyiwFFnTkBkBtd98rvGmjfg8U2UkOCHx9IkYVaDeyEUYlM3edadeZvAqtAeZO
-	tyv8uPJE8PpbAd4cPFfvOm6u9Iyb4Cp2A54RtNka7CqId6tmhapV9TkDBbpodvI+zpm4b8eZcLyAC
-	W2Gk562isT+n0kCk4eOQ==;
+	List-Owner; bh=6zhxVTpDeV5+fry/K1K5FJJ5fX+CtqgisiELbhQx5Sk=; b=m+VPIIGitnSDRX
+	mE6QvFbXHKN+fT3J914No8+f5b7HjSuiF/4peqZTeqs8/Mu8wAtepIN57rm4U38Z0f8vwFgUdc4ln
+	ou+/PWCMLiDS0F6L/nBke1RnssrDCFp45dpsyYXjihuiB/U6J0zeNZhlAegVMsUYXAzQKxGIrHgb9
+	jG5RXZ9iN9vR3B0/OHhxs7+KEq7jkTxP83U3myHsQlhhEaczUJe+ReZ1RK7jCTNgpZoYlbTAi8SPc
+	pCT0EeGgUFH83dfXc4lHc2AnRSOF35fKYEe+39lJp7G8fRq4fu+eqbWIREF9gV7UYSDE6KhJFcmcw
+	qHZASie47ZggTDk5aGvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTn3w-00000003q5Z-2bSU;
-	Mon, 23 Jun 2025 19:42:40 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uTn41-00000003qBE-0IzV;
+	Mon, 23 Jun 2025 19:42:45 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTji4-00000003M2N-2hiG;
-	Mon, 23 Jun 2025 16:07:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750694871;
-	bh=UTdif7JufIoFJNm1QPMJyIUlLbeXViK0TKeCIJV7eq4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VF8rYvYZX32tFHupmDNnAwZMci2CVeh5DbdrqnR4SeumETbsR5JDgsQMTtVgCBZBM
-	 IInd5QURDwxAnccc8Yh6K5FseR8gz5fGM9Lrm9CWyY1qhic487y3qXFeIKGSswvAS1
-	 XoB7PtCC1aFDOwdG5VgS/vnSK1P1rJFpYoH+tuJfA0LNYs1aL8a+m8wKYusJzIq+iW
-	 7hRsjcCE7rqzLJ0fgqtLPkyjap8qR1d03xrmNdof1Ky/MEwm+DFPQdukMDcgKpuCfs
-	 S7AtuuAne1hkzDEynt5VQMA6f/mE57ivtmbvGmvhBvYnc9urd0YlYWq4HvUdGe5t9N
-	 JJI6ba9Bt/DDQ==
-Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E557A17E1560;
-	Mon, 23 Jun 2025 18:07:47 +0200 (CEST)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH 2/8] media: dt-bindings: rockchip: Add RK3576 Video Decoder bindings
-Date: Mon, 23 Jun 2025 12:07:16 -0400
-Message-ID: <20250623160722.55938-3-detlev.casanova@collabora.com>
-X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250623160722.55938-1-detlev.casanova@collabora.com>
-References: <20250623160722.55938-1-detlev.casanova@collabora.com>
+	id 1uTji8-00000003M51-14C7;
+	Mon, 23 Jun 2025 16:07:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1750694830; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=loJS8W16Z02Cu6fnl3R0RD/dzALHZA4dxEuncXhZBhvJq+Jx+BmHws/0REPfKX6GvS4LKDBm7U9SJeuncg1yecSHB6bUmPwvLcTlHfgJ7WQOBNKrVSQmnOy9rDdeK7bU9w7jemn1HmKbQQ7D38Iqsg5zagMhdRK25qio1G5lbaA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1750694830; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=w4UQ2aQQRHizQgGHJB0otQTEkx720VSWFSPI0QYEkHo=; 
+	b=KMgkETM5XpmyKyeC+bjMzixubiqqS3C4M2/RFA7n9o/7X1aCHBqjGYraQIEW3poim8VAG+87A3sTTq0UMbMKGJ8xjFfq0N1cGev4yBvpiQ67nqKlTj/dpQ6FpUSD8lcey7gFreEyCbDplRq0Gz49mlyOypgocHUxw+lTdppw0l0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750694830;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=w4UQ2aQQRHizQgGHJB0otQTEkx720VSWFSPI0QYEkHo=;
+	b=T/FuRxcxjlZFOyVf/dMNjf1pk3VdNoieHWVKfSh/vHXALTivmf7DAokMhbIo6Qew
+	xmPVO3Z9Gah27lnlBQENxc0HMiMOaLxBjsFxcnMgC3mdSQALF6e/+JHKRCXi9BbWDxn
+	4tVNFdjpbA3BQj9d37nR7MgJb72RbTL23VKUgDyU=
+Received: by mx.zohomail.com with SMTPS id 1750694828635697.2662783904857;
+	Mon, 23 Jun 2025 09:07:08 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Mon, 23 Jun 2025 18:05:34 +0200
+Subject: [PATCH v2 06/20] phy: rockchip-emmc: switch to FIELD_PREP_WM16
+ macro
 MIME-Version: 1.0
+Message-Id: <20250623-byeword-update-v2-6-cf1fc08a2e1f@collabora.com>
+References: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
+In-Reply-To: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
+To: Yury Norov <yury.norov@gmail.com>, 
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>, 
+ Jaehoon Chung <jh80.chung@samsung.com>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Shreeya Patel <shreeya.patel@collabora.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
+ MyungJoo Ham <myungjoo.ham@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, Qin Jian <qinjian@cqplus1.com>, 
+ Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Nathan Chancellor <nathan@kernel.org>, 
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, 
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_090752_856717_71A59FCB 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20250623_090756_361411_E5204ED5 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,44 +99,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dragan Simic <dsimic@manjaro.org>, Rob Herring <robh@kernel.org>, Yunke Cao <yunkec@google.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Detlev Casanova <detlev.casanova@collabora.com>, Frank Wang <frank.wang@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, Jianfeng Liu <liujianfeng1994@gmail.com>, Alexey Charkov <alchark@gmail.com>, Ricardo Ribalda <ribalda@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Hans de Goede <hansg@kernel.org>
+Cc: linux-pm@vger.kernel.org, netdev@vger.kernel.org, llvm@lists.linux.dev, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, linux-pci@vger.kernel.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The video decoder in RK3576 (vdpu383) is described the same way as the
-one in RK3588 (vdpu381). A new compatible is added as the driver
-implementation will be different.
+The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
+drivers that use constant masks.
 
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+Replace the implementation of the rockchip eMMC PHY driver's
+HIWORD_UPDATE macro with hw_bitfield.h's FIELD_PREP_WM16. This makes the
+change more easily reviewable.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/phy/rockchip/phy-rockchip-emmc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-index e9b82dc05fd1d..96b6c89387683 100644
---- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-@@ -17,6 +17,7 @@ properties:
-   compatible:
-     oneOf:
-       - const: rockchip,rk3399-vdec
-+      - const: rockchip,rk3576-vdec
-       - const: rockchip,rk3588-vdec
-       - items:
-           - enum:
-@@ -104,7 +105,9 @@ allOf:
-       properties:
-         compatible:
-           contains:
--            const: rockchip,rk3588-vdec
-+            enum:
-+              - rockchip,rk3576-vdec
-+              - rockchip,rk3588-vdec
-     then:
-       properties:
-         reg:
+diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
+index 20023f6eb9944eaab505101d57e806476ecfac71..5187983c58e5e9bc56e65c208122a3be7be00427 100644
+--- a/drivers/phy/rockchip/phy-rockchip-emmc.c
++++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
+@@ -8,6 +8,7 @@
+ 
+ #include <linux/clk.h>
+ #include <linux/delay.h>
++#include <linux/hw_bitfield.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+@@ -21,7 +22,7 @@
+  * only if BIT(x + 16) set to 1 the BIT(x) can be written.
+  */
+ #define HIWORD_UPDATE(val, mask, shift) \
+-		((val) << (shift) | (mask) << ((shift) + 16))
++		(FIELD_PREP_WM16((mask) << (shift), (val)))
+ 
+ /* Register definition */
+ #define GRF_EMMCPHY_CON0		0x0
+
 -- 
 2.50.0
 
