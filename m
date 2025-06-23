@@ -4,90 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48F67C7EE2A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 19:42:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 861B7C7115B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 19:44:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6zhxVTpDeV5+fry/K1K5FJJ5fX+CtqgisiELbhQx5Sk=; b=m+VPIIGitnSDRX
-	mE6QvFbXHKN+fT3J914No8+f5b7HjSuiF/4peqZTeqs8/Mu8wAtepIN57rm4U38Z0f8vwFgUdc4ln
-	ou+/PWCMLiDS0F6L/nBke1RnssrDCFp45dpsyYXjihuiB/U6J0zeNZhlAegVMsUYXAzQKxGIrHgb9
-	jG5RXZ9iN9vR3B0/OHhxs7+KEq7jkTxP83U3myHsQlhhEaczUJe+ReZ1RK7jCTNgpZoYlbTAi8SPc
-	pCT0EeGgUFH83dfXc4lHc2AnRSOF35fKYEe+39lJp7G8fRq4fu+eqbWIREF9gV7UYSDE6KhJFcmcw
-	qHZASie47ZggTDk5aGvg==;
+	List-Owner; bh=tymReBNtARkVqBdVH/+Ie4U2+K/6lfCxImvs21FiXAo=; b=ttURcX1Ozf0XiO
+	785CEkUKeqIcXUhrqA5dtmLItAdBOXKpEJ9y30jLh4WoJy3JEGT0vEyokO2cO+DqkWfTmQMVz+j7y
+	MI3JJM4JcgmHnosnaVOVkpi6MhbpUHmWDHqyzI/osvzXO4WC+XM8+xx8XDefVMrwfued53RHY3LiY
+	TxBeimRxoFT03TUeo/PXQJz2nKZJVACJK+5e6EjJiLON/bPUcNJCiozpUS/EpfHV6tjmbdJNthOoE
+	3PL5D87QfjG354HxtMz+EoQao1idEWWCpFd6U+Zxt1+rwTR9PZ7jo/QSyFYs8UlXgWRqYVsMFOB1v
+	CosXRfriBFRq3+D4daLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTn41-00000003qBE-0IzV;
-	Mon, 23 Jun 2025 19:42:45 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1uTn5h-00000003rRy-2nJ1;
+	Mon, 23 Jun 2025 19:44:29 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTji8-00000003M51-14C7;
+	id 1uTji8-00000003M4q-15eW;
 	Mon, 23 Jun 2025 16:07:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750694830; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=loJS8W16Z02Cu6fnl3R0RD/dzALHZA4dxEuncXhZBhvJq+Jx+BmHws/0REPfKX6GvS4LKDBm7U9SJeuncg1yecSHB6bUmPwvLcTlHfgJ7WQOBNKrVSQmnOy9rDdeK7bU9w7jemn1HmKbQQ7D38Iqsg5zagMhdRK25qio1G5lbaA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750694830; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=w4UQ2aQQRHizQgGHJB0otQTEkx720VSWFSPI0QYEkHo=; 
-	b=KMgkETM5XpmyKyeC+bjMzixubiqqS3C4M2/RFA7n9o/7X1aCHBqjGYraQIEW3poim8VAG+87A3sTTq0UMbMKGJ8xjFfq0N1cGev4yBvpiQ67nqKlTj/dpQ6FpUSD8lcey7gFreEyCbDplRq0Gz49mlyOypgocHUxw+lTdppw0l0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750694830;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=w4UQ2aQQRHizQgGHJB0otQTEkx720VSWFSPI0QYEkHo=;
-	b=T/FuRxcxjlZFOyVf/dMNjf1pk3VdNoieHWVKfSh/vHXALTivmf7DAokMhbIo6Qew
-	xmPVO3Z9Gah27lnlBQENxc0HMiMOaLxBjsFxcnMgC3mdSQALF6e/+JHKRCXi9BbWDxn
-	4tVNFdjpbA3BQj9d37nR7MgJb72RbTL23VKUgDyU=
-Received: by mx.zohomail.com with SMTPS id 1750694828635697.2662783904857;
-	Mon, 23 Jun 2025 09:07:08 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 23 Jun 2025 18:05:34 +0200
-Subject: [PATCH v2 06/20] phy: rockchip-emmc: switch to FIELD_PREP_WM16
- macro
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1750694874;
+	bh=zt/DaCss2i5ulknRW3sJNkFnzwFerUvIICmaqy3KydU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=gvKMbe3b4XE3UscHhE6pkbYBUhJlem382157apB5Hu7W52ybOAb4wdwyvJPSCtS5R
+	 KV1SJCmsRmtga1KWke6xeJCvC1NXXw6Ve4j1y++g1CnqVsBg4bnsKvShEEcfKQUuSu
+	 NTvjvaP/Bn2eg29kdKMeRRYG+YRLZkF0cCjvWCdJ8bpFZ6IznZlqNVm5Evtq5FGeX3
+	 zNHbKZue9Nj0hAsw+afPUrOWAnqRSkz+WipJBf/pbtjJzYkPzH+KUDaSvSnMxd8fYB
+	 zOlElfRbwAcjnXfXoyPVmyFr8z+PRHKQg+ckeyH3hD2w/pvRUplGSe24waD42StvZ4
+	 zLvfMt3E+ODYA==
+Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 70AEB17E1580;
+	Mon, 23 Jun 2025 18:07:51 +0200 (CEST)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH 3/8] arm64: dts: rockchip: Add the vdpu381 Video Decoders on RK3588
+Date: Mon, 23 Jun 2025 12:07:17 -0400
+Message-ID: <20250623160722.55938-4-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.50.0
+In-Reply-To: <20250623160722.55938-1-detlev.casanova@collabora.com>
+References: <20250623160722.55938-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20250623-byeword-update-v2-6-cf1fc08a2e1f@collabora.com>
-References: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
-In-Reply-To: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
-To: Yury Norov <yury.norov@gmail.com>, 
- Rasmus Villemoes <linux@rasmusvillemoes.dk>, 
- Jaehoon Chung <jh80.chung@samsung.com>, 
- Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
- Shreeya Patel <shreeya.patel@collabora.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Shawn Lin <shawn.lin@rock-chips.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
- Bjorn Helgaas <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
- MyungJoo Ham <myungjoo.ham@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, Qin Jian <qinjian@cqplus1.com>, 
- Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Nathan Chancellor <nathan@kernel.org>, 
- Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, 
- Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_090756_361411_E5204ED5 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20250623_090756_478022_7EB712D5 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,46 +67,114 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pm@vger.kernel.org, netdev@vger.kernel.org, llvm@lists.linux.dev, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, linux-pci@vger.kernel.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dragan Simic <dsimic@manjaro.org>, Rob Herring <robh@kernel.org>, Yunke Cao <yunkec@google.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Detlev Casanova <detlev.casanova@collabora.com>, Frank Wang <frank.wang@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, Jianfeng Liu <liujianfeng1994@gmail.com>, Alexey Charkov <alchark@gmail.com>, Ricardo Ribalda <ribalda@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Hans de Goede <hansg@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
-drivers that use constant masks.
+Add the vdpu381 Video Decoders to the rk3588-base devicetree.
 
-Replace the implementation of the rockchip eMMC PHY driver's
-HIWORD_UPDATE macro with hw_bitfield.h's FIELD_PREP_WM16. This makes the
-change more easily reviewable.
+The RK3588 based SoCs all embed 2 vdpu381 decoders.
+This also adds the dedicated IOMMU controllers.
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-emmc.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 74 +++++++++++++++++++
+ 1 file changed, 74 insertions(+)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-index 20023f6eb9944eaab505101d57e806476ecfac71..5187983c58e5e9bc56e65c208122a3be7be00427 100644
---- a/drivers/phy/rockchip/phy-rockchip-emmc.c
-+++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
-@@ -8,6 +8,7 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index 70f03e68ba550..c1eaff86d5b73 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -1252,6 +1252,70 @@ vepu121_3_mmu: iommu@fdbac800 {
+ 		#iommu-cells = <0>;
+ 	};
  
- #include <linux/clk.h>
- #include <linux/delay.h>
-+#include <linux/hw_bitfield.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
-@@ -21,7 +22,7 @@
-  * only if BIT(x + 16) set to 1 the BIT(x) can be written.
-  */
- #define HIWORD_UPDATE(val, mask, shift) \
--		((val) << (shift) | (mask) << ((shift) + 16))
-+		(FIELD_PREP_WM16((mask) << (shift), (val)))
++	vdec0: video-codec@fdc38000 {
++		compatible = "rockchip,rk3588-vdec";
++		reg = <0x0 0xfdc38100 0x0 0x500>,
++		      <0x0 0xfdc38000 0x0 0x100>,
++		      <0x0 0xfdc38600 0x0 0x100>;
++		reg-names = "function", "link", "cache";
++		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>, <&cru CLK_RKVDEC0_CA>,
++			 <&cru CLK_RKVDEC0_CORE>, <&cru CLK_RKVDEC0_HEVC_CA>;
++		clock-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
++		assigned-clocks = <&cru ACLK_RKVDEC0>, <&cru CLK_RKVDEC0_CORE>,
++				  <&cru CLK_RKVDEC0_CA>, <&cru CLK_RKVDEC0_HEVC_CA>;
++		assigned-clock-rates = <800000000>, <600000000>,
++				       <600000000>, <1000000000>;
++		iommus = <&vdec0_mmu>;
++		power-domains = <&power RK3588_PD_RKVDEC0>;
++		resets = <&cru SRST_A_RKVDEC0>, <&cru SRST_H_RKVDEC0>, <&cru SRST_RKVDEC0_CA>,
++			 <&cru SRST_RKVDEC0_CORE>, <&cru SRST_RKVDEC0_HEVC_CA>;
++		reset-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
++		sram = <&vdec0_sram>;
++	};
++
++	vdec0_mmu: iommu@fdc38700 {
++		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdc38700 0x0 0x40>, <0x0 0xfdc38740 0x0 0x40>;
++		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>;
++		clock-names = "aclk", "iface";
++		power-domains = <&power RK3588_PD_RKVDEC0>;
++		#iommu-cells = <0>;
++	};
++
++	vdec1: video-codec@fdc40000 {
++		compatible = "rockchip,rk3588-vdec";
++		reg = <0x0 0xfdc40100 0x0 0x500>,
++		      <0x0 0xfdc40000 0x0 0x100>,
++		      <0x0 0xfdc40600 0x0 0x100>;
++		reg-names = "function", "link", "cache";
++		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_RKVDEC1>, <&cru HCLK_RKVDEC1>, <&cru CLK_RKVDEC1_CA>,
++			 <&cru CLK_RKVDEC1_CORE>, <&cru CLK_RKVDEC1_HEVC_CA>;
++		clock-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
++		assigned-clocks = <&cru ACLK_RKVDEC1>, <&cru CLK_RKVDEC1_CORE>,
++				  <&cru CLK_RKVDEC1_CA>, <&cru CLK_RKVDEC1_HEVC_CA>;
++		assigned-clock-rates = <800000000>, <600000000>,
++				       <600000000>, <1000000000>;
++		iommus = <&vdec1_mmu>;
++		power-domains = <&power RK3588_PD_RKVDEC1>;
++		resets = <&cru SRST_A_RKVDEC1>, <&cru SRST_H_RKVDEC1>, <&cru SRST_RKVDEC1_CA>,
++			 <&cru SRST_RKVDEC1_CORE>, <&cru SRST_RKVDEC1_HEVC_CA>;
++		reset-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
++		sram = <&vdec1_sram>;
++	};
++
++	vdec1_mmu: iommu@fdc40700 {
++		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdc40700 0x0 0x40>, <0x0 0xfdc40740 0x0 0x40>;
++		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_RKVDEC1>, <&cru HCLK_RKVDEC1>;
++		clock-names = "aclk", "iface";
++		power-domains = <&power RK3588_PD_RKVDEC1>;
++		#iommu-cells = <0>;
++	};
++
+ 	av1d: video-codec@fdc70000 {
+ 		compatible = "rockchip,rk3588-av1-vpu";
+ 		reg = <0x0 0xfdc70000 0x0 0x800>;
+@@ -3093,6 +3157,16 @@ system_sram2: sram@ff001000 {
+ 		ranges = <0x0 0x0 0xff001000 0xef000>;
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
++
++		vdec0_sram: codec-sram@0 {
++			reg = <0x0 0x78000>;
++			pool;
++		};
++
++		vdec1_sram: codec-sram@78000 {
++			reg = <0x78000 0x77000>;
++			pool;
++		};
+ 	};
  
- /* Register definition */
- #define GRF_EMMCPHY_CON0		0x0
-
+ 	pinctrl: pinctrl {
 -- 
 2.50.0
 
