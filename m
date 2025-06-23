@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EC0FC77B7F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Jun 2025 00:30:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8DFEC77B7C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Jun 2025 00:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nAAb8aLSqP6orRUiI84/nvUSQZzNfZDNnYDQjNb2eiY=; b=faD3YF3HT09QPmK/hEYaZxcYJu
-	wDIZsL8Pdr/TltL6rMf2xCCtfrMbACqvxKKL67asHlTs6DBTuuspm77it7nV6lqgnMAOPiPgF8a4I
-	XbJ4kkS812YL7bvvG3JkJ31a4+xo7hwaFPZVYN0ZW8Art/hLxn+LJWKDbapUOCc1qbJArZUT5txI2
-	kQPmgFQJ0wp6fRzWGpcVYr4PlKrr0bhny9SEuWOacjRzoK1+lRO+aYkolV1hHWqEGE2bLf6voXWRo
-	wE7WeKgGD5t8ycY1liZ8wOwoaDJQjqvmV2PVAvl1fdW1YHF+B6eLFvrQqvnmcPHlIcRkSVZtgnkdL
-	iG6QYE0g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=neYmO12KcdLM4OpEap7/y5ntD5RTIJSV6Eo5km4aacw=; b=owcXZT32I3F1t+
+	9z1+Clr/0AZ0hlH0QO22zXLVMPLr2BpD1vDcUPzUH5/nOxMrPY2UwcMdLY0C3UT43JlUIkF568MMX
+	olCTWcueTIoEMl6MztRZfrv/NCprql9TqgRbCgMsIbq7u5p2DVVfDiPZvdMduvvoBK9LUO569B/9w
+	SZ8IJ/Qe8SkO/RAxeByYUcP63wU8pihXHZ4l7IdkftKr3g0nAO75RiLhuJccXyEH7dS/kyFRuE0bO
+	Y5OaYLPcu/Q3LhNJnerTkobC0HLGpte2P0qI31ndh47FQbrVdXIcjoB+LXIBlWS1QRqXp9Mm1k3jg
+	EPIoRL1gZitlpngOT2OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTrYk-00000004Edu-1NPQ;
-	Tue, 24 Jun 2025 00:30:46 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uTrZV-00000004FQr-1IXk;
+	Tue, 24 Jun 2025 00:31:33 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTlGa-00000003bTU-2YpX
+	id 1uTlXf-00000003dlM-1GJF
 	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Jun 2025 17:47:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750700850; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=HoP6ru0tRsyiSsw2S7EaGG97yVGCL+XzUiWPc4tkHekFOE2rCRTQ4/hKsbm0gS4emLutlwKbQ5auObXN7KiYTXpvwvnYHD2RsAk6Xg5tjwukPCx6AMVrsYGTlE0wDv9X8xiJsOwkHZz/Fxn9LL1zUoDREaINIpeTJvB0UK6nx/4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750700850; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=SAP9ZoSDN099bYrKgdNfpIKbEdFruDtkUbcW65OTaKE=; 
-	b=QtLXPeFBd2cGPi/fQV92g3X3tAa/Fk3ftC6CMNIL4sJVBODvEbCMLSaT05fTAq8koxWvBk720grA+ADOZ05mQhZ/i5dVbbkoKojWLX4rCPexFB1Er4Tloayi1yQ02y/RqeUHrhI4z1IoxossL6dOmqhIeX2rtLUKa/WMtox9xRM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750700850;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=SAP9ZoSDN099bYrKgdNfpIKbEdFruDtkUbcW65OTaKE=;
-	b=WLAD3ImnHCk6WRjCeKNcvjhfdPQ31ezmTEWtyoSHf7lymdE7gMC5OKwEGnrVwclO
-	PH6dXgayKhu/RRDJnLsEZ0mpK2/V4qOoYDd5VIU8q81QkIcwZMtKOAXw9z0vIdyOsmB
-	j7bfqOOw839/2XreU7aGTja07D8JQnghHIFU53m0=
-Received: by mx.zohomail.com with SMTPS id 1750700849253177.21966327827772;
-	Mon, 23 Jun 2025 10:47:29 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 1DA881807CE; Mon, 23 Jun 2025 19:47:25 +0200 (CEST)
-Date: Mon, 23 Jun 2025 19:47:25 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, broonie@kernel.org, lgirdwood@gmail.com, heiko@sntech.de, 
-	conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org, lee@kernel.org, 
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V3 3/5] power: supply: bq257xx: Add support for BQ257XX
- charger
-Message-ID: <tzn53fqo6vgdxayokwlfwluf33af2kly2c6rlxasvjuaetwtl3@rwzqx5gdrflo>
-References: <20250623162223.184304-1-macroalpha82@gmail.com>
- <20250623162223.184304-4-macroalpha82@gmail.com>
+	Mon, 23 Jun 2025 18:05:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1750701913;
+ bh=uilE6HfoONKcwjQl3lsLQM5Nt8SZOoXAj5Yv5RvTGoM=;
+ b=cbbM+8D/dtAQXz+dnpXJkDoXhKcCOKkher+Vh8rcrc+mXboKxbr+E0ugM1LkmUiPqcrY2xIzJ
+ szzfE2/dzQAgzeHXdWdbB2Vxly40t1yLp9kTfDlvdlEjk+wrhTeB3BK/xuUgnB1jSAeZvz39ASV
+ VAFwnZ1i5fCtYyavmRArFbYEPoMI7boFivh/P+UwGdi2yxvROvFGMMcm72mr7v86d+/Ds63AQ+1
+ n/pblsUbPCLBHhPUc5Wf0U7pu+Zz3hC9sqqWvPAGgEWUIkaiUrR+TtYPiXCZaGX8V933t9OEEFH
+ uS3XQcTNV6XYhehxGGSk+6GPZ1GWVWil/wlh1rAJ9cTA==
+X-Forward-Email-ID: 6859974e294ea86d0db5f82b
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 1.0.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <647270be-832c-470b-832c-faf16f23f41a@kwiboo.se>
+Date: Mon, 23 Jun 2025 20:04:58 +0200
 MIME-Version: 1.0
-In-Reply-To: <20250623162223.184304-4-macroalpha82@gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.4.3/250.696.82
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] arm64: dts: rockchip: list all CPU supplies on ArmSoM
+ Sige5
+To: Alexey Charkov <alchark@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+References: <20250603-sige5-updates-v1-0-717e8ce4ab77@gmail.com>
+ <3286000.Y6S9NjorxK@phil>
+ <CABjd4YyaNF1zosFFi6hEsZanPDxoaa1h4Dpd6uTPRwA3BZn0=w@mail.gmail.com>
+ <5897576.DvuYhMxLoT@phil>
+ <CABjd4Yy8WeXKmmxh2-TjjF5-ABy-NzzJsWpt1KvSjJqTHh0Xwg@mail.gmail.com>
+ <CABjd4Yz4NbqzZH4Qsed3ias56gcga9K6CmYA+BLDBxtbG915Ag@mail.gmail.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <CABjd4Yz4NbqzZH4Qsed3ias56gcga9K6CmYA+BLDBxtbG915Ag@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_104736_742009_69D4AF91 
-X-CRM114-Status: GOOD (  36.77  )
+X-CRM114-CacheID: sfid-20250623_110515_410013_504092DC 
+X-CRM114-Status: GOOD (  41.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,878 +75,301 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6056425928349889760=="
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Piotr Oniszczuk <piotr.oniszczuk@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, XiaoDong Huang <derrick.huang@rock-chips.com>, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============6056425928349889760==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3rluckearszbi5kv"
-Content-Disposition: inline
-
-
---3rluckearszbi5kv
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH V3 3/5] power: supply: bq257xx: Add support for BQ257XX
- charger
-MIME-Version: 1.0
-
-Hi,
-
-On Mon, Jun 23, 2025 at 11:22:21AM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
->=20
-> Add support for the charger function of the BQ257XX. The device is
-> capable of charging batteries with a layout of 1 to 4 cells in
-> series.
->=20
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-Greetings,
-
--- Sebastian
-
->  drivers/power/supply/Kconfig           |   7 +
->  drivers/power/supply/Makefile          |   1 +
->  drivers/power/supply/bq257xx_charger.c | 754 +++++++++++++++++++++++++
->  3 files changed, 762 insertions(+)
->  create mode 100644 drivers/power/supply/bq257xx_charger.c
->=20
-> diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-> index 79ddb006e2da..11893c50c5d2 100644
-> --- a/drivers/power/supply/Kconfig
-> +++ b/drivers/power/supply/Kconfig
-> @@ -767,6 +767,13 @@ config CHARGER_BQ2515X
->  	  rail, ADC for battery and system monitoring, and push-button
->  	  controller.
-> =20
-> +config CHARGER_BQ257XX
-> +	tristate "TI BQ257XX battery charger family"
-> +	depends on MFD_BQ257XX
-> +	help
-> +	  Say Y to enable support for the TI BQ257XX family of battery
-> +	  charging integrated circuits.
-> +
->  config CHARGER_BQ25890
->  	tristate "TI BQ25890 battery charger driver"
->  	depends on I2C
-> diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
-> index 4f5f8e3507f8..425caeb31fc2 100644
-> --- a/drivers/power/supply/Makefile
-> +++ b/drivers/power/supply/Makefile
-> @@ -97,6 +97,7 @@ obj-$(CONFIG_CHARGER_BQ24190)	+=3D bq24190_charger.o
->  obj-$(CONFIG_CHARGER_BQ24257)	+=3D bq24257_charger.o
->  obj-$(CONFIG_CHARGER_BQ24735)	+=3D bq24735-charger.o
->  obj-$(CONFIG_CHARGER_BQ2515X)	+=3D bq2515x_charger.o
-> +obj-$(CONFIG_CHARGER_BQ257XX)	+=3D bq257xx_charger.o
->  obj-$(CONFIG_CHARGER_BQ25890)	+=3D bq25890_charger.o
->  obj-$(CONFIG_CHARGER_BQ25980)	+=3D bq25980_charger.o
->  obj-$(CONFIG_CHARGER_BQ256XX)	+=3D bq256xx_charger.o
-> diff --git a/drivers/power/supply/bq257xx_charger.c b/drivers/power/suppl=
-y/bq257xx_charger.c
-> new file mode 100644
-> index 000000000000..749c471eccb1
-> --- /dev/null
-> +++ b/drivers/power/supply/bq257xx_charger.c
-> @@ -0,0 +1,754 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * BQ257XX Battery Charger Driver
-> + * Copyright (C) 2024 Chris Morgan <macromorgan@hotmail.com>
-> + * Based off of BQ256XX Battery Charger Driver
-> + * Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/
-> + */
-> +
-> +#include <linux/bitfield.h>
-> +#include <linux/i2c.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/mfd/bq257xx.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/power_supply.h>
-> +#include <linux/property.h>
-> +#include <linux/regmap.h>
-> +
-> +/* Forward declaration of driver data. */
-> +struct bq257xx_chg;
-> +
-> +/**
-> + * struct bq257xx_chip_info - chip specific routines
-> + * @bq257xx_hw_init: init function for hw
-> + * @bq257xx_hw_shutdown: shutdown function for hw
-> + * @bq257xx_get_state: get and update state of hardware
-> + * @bq257xx_set_ichg: set maximum charge current (in uA)
-> + * @bq257xx_set_vbatreg: set maximum charge voltage (in uV)
-> + * @bq257xx_set_iindpm: set maximum input current (in uA)
-> + */
-> +struct bq257xx_chip_info {
-> +	int (*bq257xx_hw_init)(struct bq257xx_chg *pdata);
-> +	void (*bq257xx_hw_shutdown)(struct bq257xx_chg *pdata);
-> +	int (*bq257xx_get_state)(struct bq257xx_chg *pdata);
-> +	int (*bq257xx_set_ichg)(struct bq257xx_chg *pdata, int ichg);
-> +	int (*bq257xx_set_vbatreg)(struct bq257xx_chg *pdata, int vbatreg);
-> +	int (*bq257xx_set_iindpm)(struct bq257xx_chg *pdata, int iindpm);
-> +};
-> +
-> +/**
-> + * struct bq257xx_chg - driver data for charger
-> + * @chip: hw specific functions
-> + * @bq: parent MFD device
-> + * @charger: power supply device
-> + * @online: charger input is present
-> + * @fast_charge: charger is in fast charge mode
-> + * @pre_charge: charger is in pre-charge mode
-> + * @ov_fault: charger reports over voltage fault
-> + * @batoc_fault: charger reports battery over current fault
-> + * @oc_fault: charger reports over current fault
-> + * @usb_type: USB type reported from parent power supply
-> + * @supplied: Status of parent power supply
-> + * @iindpm_max: maximum input current limit (uA)
-> + * @vbat_max: maximum charge voltage (uV)
-> + * @ichg_max: maximum charge current (uA)
-> + * @vsys_min: minimum system voltage (uV)
-> + */
-> +struct bq257xx_chg {
-> +	const struct bq257xx_chip_info *chip;
-> +	struct bq257xx_device *bq;
-> +	struct power_supply *charger;
-> +	bool online;
-> +	bool fast_charge;
-> +	bool pre_charge;
-> +	bool ov_fault;
-> +	bool batoc_fault;
-> +	bool oc_fault;
-> +	int usb_type;
-> +	int supplied;
-> +	u32 iindpm_max;
-> +	u32 vbat_max;
-> +	u32 ichg_max;
-> +	u32 vsys_min;
-> +};
-> +
-> +/**
-> + * bq25703_get_state() - Get the current state of the device
-> + * @pdata: driver platform data
-> + *
-> + * Get the current state of the charger. Check if the charger is
-> + * powered, what kind of charge state (if any) the device is in,
-> + * and if there are any active faults.
-> + *
-> + * Return: Returns 0 on success, or error on failure to read device.
-> + */
-> +static int bq25703_get_state(struct bq257xx_chg *pdata)
-> +{
-> +	unsigned int reg;
-> +	int ret;
-> +
-> +	ret =3D regmap_read(pdata->bq->regmap, BQ25703_CHARGER_STATUS, &reg);
-> +	if (ret)
-> +		return ret;
-> +
-> +	pdata->online =3D reg & BQ25703_STS_AC_STAT;
-> +	pdata->fast_charge =3D reg & BQ25703_STS_IN_FCHRG;
-> +	pdata->pre_charge =3D reg & BQ25703_STS_IN_PCHRG;
-> +	pdata->ov_fault =3D reg & BQ25703_STS_FAULT_ACOV;
-> +	pdata->batoc_fault =3D reg & BQ25703_STS_FAULT_BATOC;
-> +	pdata->oc_fault =3D reg & BQ25703_STS_FAULT_ACOC;
-> +
-> +	return 0;
-> +}
-> +
-> +/**
-> + * bq25703_get_min_vsys() - Get the minimum system voltage
-> + * @pdata: driver platform data
-> + * @intval: value for minimum voltage
-> + *
-> + * Return: Returns 0 on success or error on failure to read.
-> + */
-> +static int bq25703_get_min_vsys(struct bq257xx_chg *pdata, int *intval)
-> +{
-> +	unsigned int reg;
-> +	int ret;
-> +
-> +	ret =3D regmap_read(pdata->bq->regmap, BQ25703_MIN_VSYS,
-> +			  &reg);
-> +	if (ret)
-> +		return ret;
-> +
-> +	reg =3D FIELD_GET(BQ25703_MINVSYS_MASK, reg);
-> +	*intval =3D (reg * BQ25703_MINVSYS_STEP_UV) + BQ25703_MINVSYS_MIN_UV;
-> +
-> +	return ret;
-> +}
-> +
-> +/**
-> + * bq25703_set_min_vsys() - Set the minimum system voltage
-> + * @pdata: driver platform data
-> + * @vsys: voltage value to set in uV.
-> + *
-> + * This function takes a requested minimum system voltage value, clamps
-> + * it between the minimum supported value by the charger and a user
-> + * defined minimum system value, and then writes the value to the
-> + * appropriate register.
-> + *
-> + * Return: Returns 0 on success or error if an error occurs.
-> + */
-> +static int bq25703_set_min_vsys(struct bq257xx_chg *pdata, int vsys)
-> +{
-> +	unsigned int reg;
-> +	int vsys_min =3D pdata->vsys_min;
-> +
-> +	vsys =3D clamp(vsys, BQ25703_MINVSYS_MIN_UV, vsys_min);
-> +	reg =3D ((vsys - BQ25703_MINVSYS_MIN_UV) / BQ25703_MINVSYS_STEP_UV);
-> +	reg =3D FIELD_PREP(BQ25703_MINVSYS_MASK, reg);
-> +
-> +	return regmap_write(pdata->bq->regmap, BQ25703_MIN_VSYS,
-> +			    reg);
-> +}
-> +
-> +/**
-> + * bq25703_get_cur() - Get the reported current from the battery
-> + * @pdata: driver platform data
-> + * @intval: value of reported battery current
-> + *
-> + * Read the reported current from the battery. Since value is always
-> + * positive set sign to negative if discharging.
-> + *
-> + * Return: Returns 0 on success or error if unable to read value.
-> + */
-> +static int bq25703_get_cur(struct bq257xx_chg *pdata, int *intval)
-> +{
-> +	unsigned int reg;
-> +	int ret;
-> +
-> +	ret =3D regmap_read(pdata->bq->regmap, BQ25703_ADCIBAT_CHG, &reg);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	if (pdata->online)
-> +		*intval =3D FIELD_GET(BQ25703_ADCIBAT_CHG_MASK, reg) *
-> +			  BQ25703_ADCIBAT_CHG_STEP_UA;
-> +	else
-> +		*intval =3D -(FIELD_GET(BQ25703_ADCIBAT_DISCHG_MASK, reg) *
-> +			    BQ25703_ADCIBAT_DIS_STEP_UA);
-> +
-> +	return ret;
-> +}
-> +
-> +/**
-> + * bq25703_get_ichg_cur() - Get the maximum reported charge current
-> + * @pdata: driver platform data
-> + * @intval: value of maximum reported charge current
-> + *
-> + * Get the maximum reported charge current from the battery.
-> + *
-> + * Return: Returns 0 on success or error if unable to read value.
-> + */
-> +static int bq25703_get_ichg_cur(struct bq257xx_chg *pdata, int *intval)
-> +{
-> +	unsigned int reg;
-> +	int ret;
-> +
-> +	ret =3D regmap_read(pdata->bq->regmap, BQ25703_CHARGE_CURRENT, &reg);
-> +	if (ret)
-> +		return ret;
-> +
-> +	*intval =3D FIELD_GET(BQ25703_ICHG_MASK, reg) * BQ25703_ICHG_STEP_UA;
-> +
-> +	return ret;
-> +}
-> +
-> +/**
-> + * bq25703_set_ichg_cur() - Set the maximum charge current
-> + * @pdata: driver platform data
-> + * @ichg: current value to set in uA.
-> + *
-> + * This function takes a requested maximum charge current value, clamps
-> + * it between the minimum supported value by the charger and a user
-> + * defined maximum charging value, and then writes the value to the
-> + * appropriate register.
-> + *
-> + * Return: Returns 0 on success or error if an error occurs.
-> + */
-> +static int bq25703_set_ichg_cur(struct bq257xx_chg *pdata, int ichg)
-> +{
-> +	unsigned int reg;
-> +	int ichg_max =3D pdata->ichg_max;
-> +
-> +	ichg =3D clamp(ichg, BQ25703_ICHG_MIN_UA, ichg_max);
-> +	reg =3D FIELD_PREP(BQ25703_ICHG_MASK, (ichg / BQ25703_ICHG_STEP_UA));
-> +
-> +	return regmap_write(pdata->bq->regmap, BQ25703_CHARGE_CURRENT,
-> +			    reg);
-> +}
-> +
-> +/**
-> + * bq25703_get_chrg_volt() - Get the maximum set charge voltage
-> + * @pdata: driver platform data
-> + * @intval: maximum charge voltage value
-> + *
-> + * Return: Returns 0 on success or error if unable to read value.
-> + */
-> +static int bq25703_get_chrg_volt(struct bq257xx_chg *pdata, int *intval)
-> +{
-> +	unsigned int reg;
-> +	int ret;
-> +
-> +	ret =3D regmap_read(pdata->bq->regmap, BQ25703_MAX_CHARGE_VOLT,
-> +			  &reg);
-> +	if (ret)
-> +		return ret;
-> +
-> +	*intval =3D FIELD_GET(BQ25703_MAX_CHARGE_VOLT_MASK, reg) *
-> +		  BQ25703_VBATREG_STEP_UV;
-> +
-> +	return ret;
-> +}
-> +
-> +/**
-> + * bq25703_set_chrg_volt() - Set the maximum charge voltage
-> + * @pdata: driver platform data
-> + * @vbat: voltage value to set in uV.
-> + *
-> + * This function takes a requested maximum charge voltage value, clamps
-> + * it between the minimum supported value by the charger and a user
-> + * defined maximum charging value, and then writes the value to the
-> + * appropriate register.
-> + *
-> + * Return: Returns 0 on success or error if an error occurs.
-> + */
-> +static int bq25703_set_chrg_volt(struct bq257xx_chg *pdata, int vbat)
-> +{
-> +	unsigned int reg;
-> +	int vbat_max =3D pdata->vbat_max;
-> +
-> +	vbat =3D clamp(vbat, BQ25703_VBATREG_MIN_UV, vbat_max);
-> +
-> +	reg =3D FIELD_PREP(BQ25703_MAX_CHARGE_VOLT_MASK,
-> +			 (vbat / BQ25703_VBATREG_STEP_UV));
-> +
-> +	return regmap_write(pdata->bq->regmap, BQ25703_MAX_CHARGE_VOLT,
-> +			    reg);
-> +}
-> +
-> +/**
-> + * bq25703_get_iindpm() - Get the maximum set input current
-> + * @pdata: driver platform data
-> + * @intval: maximum input current value
-> + *
-> + * Read the actual input current limit from the device into intval.
-> + * This can differ from the value programmed due to some autonomous
-> + * functions that may be enabled (but are not currently). This is why
-> + * there is a different register used.
-> + *
-> + * Return: Returns 0 on success or error if unable to read register
-> + * value.
-> + */
-> +static int bq25703_get_iindpm(struct bq257xx_chg *pdata, int *intval)
-> +{
-> +	unsigned int reg;
-> +	int ret;
-> +
-> +	ret =3D regmap_read(pdata->bq->regmap, BQ25703_IIN_DPM, &reg);
-> +	if (ret)
-> +		return ret;
-> +
-> +	reg =3D FIELD_GET(BQ25703_IINDPM_MASK, reg);
-> +	*intval =3D (reg * BQ25703_IINDPM_STEP_UA) + BQ25703_IINDPM_OFFSET_UA;
-> +
-> +	return ret;
-> +}
-> +
-> +/**
-> + * bq25703_set_iindpm() - Set the maximum input current
-> + * @pdata: driver platform data
-> + * @iindpm: current value in uA.
-> + *
-> + * This function takes a requested maximum input current value, clamps
-> + * it between the minimum supported value by the charger and a user
-> + * defined maximum input value, and then writes the value to the
-> + * appropriate register.
-> + *
-> + * Return: Returns 0 on success or error if an error occurs.
-> + */
-> +static int bq25703_set_iindpm(struct bq257xx_chg *pdata, int iindpm)
-> +{
-> +	unsigned int reg;
-> +	int iindpm_max =3D pdata->iindpm_max;
-> +
-> +	iindpm =3D clamp(iindpm, BQ25703_IINDPM_MIN_UA, iindpm_max);
-> +
-> +	reg =3D ((iindpm - BQ25703_IINDPM_OFFSET_UA) / BQ25703_IINDPM_STEP_UA);
-> +
-> +	return regmap_write(pdata->bq->regmap, BQ25703_IIN_HOST,
-> +			    FIELD_PREP(BQ25703_IINDPM_MASK, reg));
-> +}
-> +
-> +/**
-> + * bq25703_get_vbat() - Get the reported voltage from the battery
-> + * @pdata: driver platform data
-> + * @intval: value of reported battery voltage
-> + *
-> + * Read value of battery voltage into intval.
-> + *
-> + * Return: Returns 0 on success or error if unable to read value.
-> + */
-> +static int bq25703_get_vbat(struct bq257xx_chg *pdata, int *intval)
-> +{
-> +	unsigned int reg;
-> +	int ret;
-> +
-> +	ret =3D regmap_read(pdata->bq->regmap, BQ25703_ADCVSYSVBAT, &reg);
-> +	if (ret)
-> +		return ret;
-> +
-> +	reg =3D FIELD_GET(BQ25703_ADCVBAT_MASK, reg);
-> +	*intval =3D (reg * BQ25703_ADCVSYSVBAT_STEP) + BQ25703_ADCVSYSVBAT_OFFS=
-ET_UV;
-> +
-> +	return ret;
-> +}
-> +
-> +/**
-> + * bq25703_hw_init() - Set all the required registers to init the charger
-> + * @pdata: driver platform data
-> + *
-> + * Initialize the BQ25703 by first disabling the watchdog timer (which
-> + * shuts off the charger in the absence of periodic writes). Then, set
-> + * the charge current, charge voltage, minimum system voltage, and
-> + * input current limit. Disable low power mode to allow ADCs and
-> + * interrupts. Enable the ADC, start the ADC, set the ADC scale to
-> + * full, and enable each individual ADC channel.
-> + *
-> + * Return: Returns 0 on success or error code on error.
-> + */
-> +static int bq25703_hw_init(struct bq257xx_chg *pdata)
-> +{
-> +	struct regmap *regmap =3D pdata->bq->regmap;
-> +	int ret =3D 0;
-> +
-> +	regmap_update_bits(regmap, BQ25703_CHARGE_OPTION_0,
-> +			   BQ25703_WDTMR_ADJ_MASK,
-> +			   FIELD_PREP(BQ25703_WDTMR_ADJ_MASK,
-> +			   BQ25703_WDTMR_DISABLE));
-> +
-> +	ret =3D pdata->chip->bq257xx_set_ichg(pdata, pdata->ichg_max);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret =3D pdata->chip->bq257xx_set_vbatreg(pdata, pdata->vbat_max);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret =3D bq25703_set_min_vsys(pdata, pdata->vsys_min);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret =3D pdata->chip->bq257xx_set_iindpm(pdata, pdata->iindpm_max);
-> +	if (ret)
-> +		return ret;
-> +
-> +	regmap_update_bits(regmap, BQ25703_CHARGE_OPTION_0,
-> +			   BQ25703_EN_LWPWR, !BQ25703_EN_LWPWR);
-> +
-> +	regmap_update_bits(regmap, BQ25703_ADC_OPTION,
-> +			   BQ25703_ADC_CONV_EN, BQ25703_ADC_CONV_EN);
-> +
-> +	regmap_update_bits(regmap, BQ25703_ADC_OPTION,
-> +			   BQ25703_ADC_START, BQ25703_ADC_START);
-> +
-> +	regmap_update_bits(regmap, BQ25703_ADC_OPTION,
-> +			   BQ25703_ADC_FULL_SCALE, BQ25703_ADC_FULL_SCALE);
-> +
-> +	regmap_update_bits(regmap, BQ25703_ADC_OPTION,
-> +			   BQ25703_ADC_CH_MASK,
-> +			   (BQ25703_ADC_CMPIN_EN | BQ25703_ADC_VBUS_EN |
-> +			   BQ25703_ADC_PSYS_EN | BQ25703_ADC_IIN_EN |
-> +			   BQ25703_ADC_IDCHG_EN | BQ25703_ADC_ICHG_EN |
-> +			   BQ25703_ADC_VSYS_EN | BQ25703_ADC_VBAT_EN));
-> +
-> +	return ret;
-> +}
-> +
-> +/**
-> + * bq25703_hw_shutdown() - Set registers for shutdown
-> + * @pdata: driver platform data
-> + *
-> + * Enable low power mode for the device while in shutdown.
-> + */
-> +static void bq25703_hw_shutdown(struct bq257xx_chg *pdata)
-> +{
-> +	regmap_update_bits(pdata->bq->regmap, BQ25703_CHARGE_OPTION_0,
-> +			   BQ25703_EN_LWPWR, BQ25703_EN_LWPWR);
-> +}
-> +
-> +static int bq257xx_set_charger_property(struct power_supply *psy,
-> +		enum power_supply_property prop,
-> +		const union power_supply_propval *val)
-> +{
-> +	struct bq257xx_chg *pdata =3D power_supply_get_drvdata(psy);
-> +
-> +	switch (prop) {
-> +	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
-> +		return pdata->chip->bq257xx_set_iindpm(pdata, val->intval);
-> +
-> +	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX:
-> +		return pdata->chip->bq257xx_set_vbatreg(pdata, val->intval);
-> +
-> +	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX:
-> +		return pdata->chip->bq257xx_set_ichg(pdata, val->intval);
-> +
-> +	default:
-> +		break;
-> +	}
-> +
-> +	return -EINVAL;
-> +}
-> +
-> +static int bq257xx_get_charger_property(struct power_supply *psy,
-> +				enum power_supply_property psp,
-> +				union power_supply_propval *val)
-> +{
-> +	struct bq257xx_chg *pdata =3D power_supply_get_drvdata(psy);
-> +	int ret =3D 0;
-> +
-> +	ret =3D pdata->chip->bq257xx_get_state(pdata);
-> +	if (ret)
-> +		return ret;
-> +
-> +	switch (psp) {
-> +	case POWER_SUPPLY_PROP_STATUS:
-> +		if (!pdata->online)
-> +			val->intval =3D POWER_SUPPLY_STATUS_DISCHARGING;
-> +		else if (pdata->fast_charge || pdata->pre_charge)
-> +			val->intval =3D POWER_SUPPLY_STATUS_CHARGING;
-> +		else
-> +			val->intval =3D POWER_SUPPLY_STATUS_NOT_CHARGING;
-> +		break;
-> +
-> +	case POWER_SUPPLY_PROP_HEALTH:
-> +		if (pdata->ov_fault || pdata->batoc_fault)
-> +			val->intval =3D POWER_SUPPLY_HEALTH_OVERVOLTAGE;
-> +		else if (pdata->oc_fault)
-> +			val->intval =3D POWER_SUPPLY_HEALTH_OVERCURRENT;
-> +		else
-> +			val->intval =3D POWER_SUPPLY_HEALTH_GOOD;
-> +		break;
-> +
-> +	case POWER_SUPPLY_PROP_MANUFACTURER:
-> +		val->strval =3D "Texas Instruments";
-> +		break;
-> +
-> +	case POWER_SUPPLY_PROP_ONLINE:
-> +		val->intval =3D pdata->online;
-> +		break;
-> +
-> +	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
-> +		return bq25703_get_iindpm(pdata, &val->intval);
-> +
-> +	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX:
-> +		return bq25703_get_chrg_volt(pdata, &val->intval);
-> +
-> +	case POWER_SUPPLY_PROP_CURRENT_NOW:
-> +		return bq25703_get_cur(pdata, &val->intval);
-> +
-> +	case POWER_SUPPLY_PROP_VOLTAGE_NOW:
-> +		return bq25703_get_vbat(pdata, &val->intval);
-> +
-> +	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX:
-> +		return bq25703_get_ichg_cur(pdata, &val->intval);
-> +
-> +	case POWER_SUPPLY_PROP_VOLTAGE_MIN:
-> +		return bq25703_get_min_vsys(pdata, &val->intval);
-> +
-> +	case POWER_SUPPLY_PROP_USB_TYPE:
-> +		val->intval =3D pdata->usb_type;
-> +		break;
-> +
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static enum power_supply_property bq257xx_power_supply_props[] =3D {
-> +	POWER_SUPPLY_PROP_MANUFACTURER,
-> +	POWER_SUPPLY_PROP_STATUS,
-> +	POWER_SUPPLY_PROP_ONLINE,
-> +	POWER_SUPPLY_PROP_HEALTH,
-> +	POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT,
-> +	POWER_SUPPLY_PROP_CURRENT_NOW,
-> +	POWER_SUPPLY_PROP_VOLTAGE_NOW,
-> +	POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX,
-> +	POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX,
-> +	POWER_SUPPLY_PROP_VOLTAGE_MIN,
-> +	POWER_SUPPLY_PROP_USB_TYPE,
-> +};
-> +
-> +static int bq257xx_property_is_writeable(struct power_supply *psy,
-> +					 enum power_supply_property prop)
-> +{
-> +	switch (prop) {
-> +	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX:
-> +	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX:
-> +	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
-> +		return true;
-> +	default:
-> +		return false;
-> +	}
-> +}
-> +
-> +/**
-> + * bq257xx_external_power_changed() - Handler for external power change
-> + * @psy: Power supply data
-> + *
-> + * When the external power into the charger is changed, check the USB
-> + * type so that it can be reported. Additionally, update the max input
-> + * current and max charging current to the value reported if it is a
-> + * USB PD charger, otherwise use the default value. Note that each time
-> + * a charger is removed the max charge current register is erased, so
-> + * it must be set again each time the input changes or the device will
-> + * not charge.
-> + */
-> +static void bq257xx_external_power_changed(struct power_supply *psy)
-> +{
-> +	struct bq257xx_chg *pdata =3D power_supply_get_drvdata(psy);
-> +	union power_supply_propval val;
-> +	int ret;
-> +	int imax =3D pdata->iindpm_max;
-> +
-> +	pdata->chip->bq257xx_get_state(pdata);
-> +
-> +	pdata->supplied =3D power_supply_am_i_supplied(pdata->charger);
-> +	if (pdata->supplied < 0)
-> +		return;
-> +
-> +	if (pdata->supplied =3D=3D 0)
-> +		goto out;
-> +
-> +	ret =3D power_supply_get_property_from_supplier(psy,
-> +						      POWER_SUPPLY_PROP_USB_TYPE,
-> +						      &val);
-> +	if (ret)
-> +		return;
-> +
-> +	pdata->usb_type =3D val.intval;
-> +
-> +	if ((pdata->usb_type =3D=3D POWER_SUPPLY_USB_TYPE_PD) ||
-> +	    (pdata->usb_type =3D=3D POWER_SUPPLY_USB_TYPE_PD_DRP) ||
-> +	    (pdata->usb_type =3D=3D POWER_SUPPLY_USB_TYPE_PD_PPS)) {
-> +		ret =3D power_supply_get_property_from_supplier(psy,
-> +							      POWER_SUPPLY_PROP_CURRENT_MAX,
-> +							      &val);
-> +		if (ret)
-> +			return;
-> +
-> +		if (val.intval)
-> +			imax =3D val.intval;
-> +	}
-> +
-> +	if (pdata->supplied) {
-> +		pdata->chip->bq257xx_set_ichg(pdata, pdata->ichg_max);
-> +		pdata->chip->bq257xx_set_iindpm(pdata, imax);
-> +		pdata->chip->bq257xx_set_vbatreg(pdata, pdata->vbat_max);
-> +	}
-> +
-> +out:
-> +	power_supply_changed(psy);
-> +}
-> +
-> +static irqreturn_t bq257xx_irq_handler_thread(int irq, void *private)
-> +{
-> +	struct bq257xx_chg *pdata =3D private;
-> +
-> +	bq257xx_external_power_changed(pdata->charger);
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static const struct power_supply_desc bq257xx_power_supply_desc =3D {
-> +	.name =3D "bq257xx-charger",
-> +	.type =3D POWER_SUPPLY_TYPE_USB,
-> +	.usb_types =3D BIT(POWER_SUPPLY_USB_TYPE_C) |
-> +		     BIT(POWER_SUPPLY_USB_TYPE_PD) |
-> +		     BIT(POWER_SUPPLY_USB_TYPE_PD_DRP) |
-> +		     BIT(POWER_SUPPLY_USB_TYPE_PD_PPS) |
-> +		     BIT(POWER_SUPPLY_USB_TYPE_UNKNOWN),
-> +	.properties =3D bq257xx_power_supply_props,
-> +	.num_properties =3D ARRAY_SIZE(bq257xx_power_supply_props),
-> +	.get_property =3D bq257xx_get_charger_property,
-> +	.set_property =3D bq257xx_set_charger_property,
-> +	.property_is_writeable =3D bq257xx_property_is_writeable,
-> +	.external_power_changed =3D bq257xx_external_power_changed,
-> +};
-> +
-> +static const struct bq257xx_chip_info bq25703_chip_info =3D {
-> +		.bq257xx_hw_init =3D &bq25703_hw_init,
-> +		.bq257xx_hw_shutdown =3D &bq25703_hw_shutdown,
-> +		.bq257xx_get_state =3D &bq25703_get_state,
-> +		.bq257xx_set_ichg =3D &bq25703_set_ichg_cur,
-> +		.bq257xx_set_vbatreg =3D &bq25703_set_chrg_volt,
-> +		.bq257xx_set_iindpm =3D &bq25703_set_iindpm,
-> +};
-> +
-> +/**
-> + * bq257xx_parse_dt() - Parse the device tree for required properties
-> + * @pdata: driver platform data
-> + * @psy_cfg: power supply config data
-> + * @dev: device struct
-> + *
-> + * Read the device tree to identify the minimum system voltage, the
-> + * maximum charge current, the maximum charge voltage, and the maximum
-> + * input current.
-> + *
-> + * Return: Returns 0 on success or error code on error.
-> + */
-> +static int bq257xx_parse_dt(struct bq257xx_chg *pdata,
-> +		struct power_supply_config *psy_cfg, struct device *dev)
-> +{
-> +	struct power_supply_battery_info *bat_info;
-> +	int ret;
-> +
-> +	ret =3D power_supply_get_battery_info(pdata->charger,
-> +					    &bat_info);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret,
-> +				     "Unable to get battery info\n");
-> +
-> +	if ((bat_info->voltage_min_design_uv <=3D 0) ||
-> +	    (bat_info->constant_charge_voltage_max_uv <=3D 0) ||
-> +	    (bat_info->constant_charge_current_max_ua <=3D 0))
-> +		return dev_err_probe(dev, -EINVAL,
-> +				     "Required bat info missing or invalid\n");
-> +
-> +	pdata->vsys_min =3D bat_info->voltage_min_design_uv;
-> +	pdata->vbat_max =3D bat_info->constant_charge_voltage_max_uv;
-> +	pdata->ichg_max =3D bat_info->constant_charge_current_max_ua;
-> +
-> +	power_supply_put_battery_info(pdata->charger, bat_info);
-> +
-> +	ret =3D device_property_read_u32(dev,
-> +				       "input-current-limit-microamp",
-> +				       &pdata->iindpm_max);
-> +	if (ret)
-> +		pdata->iindpm_max =3D BQ25703_IINDPM_DEFAULT_UA;
-> +
-> +	return 0;
-> +}
-> +
-> +static int bq257xx_charger_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev =3D &pdev->dev;
-> +	struct bq257xx_device *bq =3D dev_get_drvdata(pdev->dev.parent);
-> +	struct bq257xx_chg *pdata;
-> +	struct power_supply_config psy_cfg =3D { };
-> +	int ret;
-> +
-> +	device_set_of_node_from_dev(dev, pdev->dev.parent);
-> +
-> +	pdata =3D devm_kzalloc(&pdev->dev, sizeof(*pdata), GFP_KERNEL);
-> +	if (!pdata)
-> +		return -ENOMEM;
-> +
-> +	pdata->bq =3D bq;
-> +	pdata->chip =3D &bq25703_chip_info;
-> +
-> +	platform_set_drvdata(pdev, pdata);
-> +
-> +	psy_cfg.drv_data =3D pdata;
-> +	psy_cfg.fwnode =3D dev_fwnode(dev);
-> +
-> +	pdata->charger =3D devm_power_supply_register(dev,
-> +						    &bq257xx_power_supply_desc,
-> +						    &psy_cfg);
-> +	if (IS_ERR(pdata->charger))
-> +		return dev_err_probe(dev, PTR_ERR(pdata->charger),
-> +				     "Power supply register charger failed\n");
-> +
-> +	ret =3D bq257xx_parse_dt(pdata, &psy_cfg, dev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret =3D pdata->chip->bq257xx_hw_init(pdata);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Cannot initialize the charger\n");
-> +
-> +	platform_set_drvdata(pdev, pdata);
-> +
-> +	if (bq->client->irq) {
-> +		ret =3D devm_request_threaded_irq(dev, bq->client->irq, NULL,
-> +						bq257xx_irq_handler_thread,
-> +						IRQF_TRIGGER_RISING |
-> +						IRQF_TRIGGER_FALLING |
-> +						IRQF_ONESHOT,
-> +						dev_name(&bq->client->dev), pdata);
-> +		if (ret < 0) {
-> +			dev_err(dev, "get irq fail: %d\n", ret);
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static void bq257xx_charger_shutdown(struct platform_device *pdev)
-> +{
-> +	struct bq257xx_chg *pdata =3D platform_get_drvdata(pdev);
-> +
-> +	pdata->chip->bq257xx_hw_shutdown(pdata);
-> +}
-> +
-> +static struct platform_driver bq257xx_chg_driver =3D {
-> +	.driver =3D {
-> +		.name =3D "bq257xx-charger",
-> +	},
-> +	.probe =3D bq257xx_charger_probe,
-> +	.shutdown =3D bq257xx_charger_shutdown,
-> +};
-> +module_platform_driver(bq257xx_chg_driver);
-> +
-> +MODULE_DESCRIPTION("bq257xx charger driver");
-> +MODULE_AUTHOR("Chris Morgan <macromorgan@hotmail.com>");
-> +MODULE_LICENSE("GPL");
-> --=20
-> 2.43.0
->=20
-
---3rluckearszbi5kv
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmhZkykACgkQ2O7X88g7
-+poFMQ//RC4qhekqUPLyFwdlJa0roye4HYumeewZwe/nbiAsFClFYExQwoxnhRWE
-PokIGAnBx5h7Gy/dukKQwVtq3DXm+FJSYfoe4oAPTakayr04Ux71lovZft4ZRTGZ
-bxepQDQQmanpUX+C6SjNRoL5VvdtTmk0JPz12wXn+IrSjjccBUG0s+zO0DfNAk3j
-86mdVrJs303XllEJAHwVIfaSKMazzFEa7kAnLbdvU+roV1y5ruY1xzbm9CZrtTrk
-IRwuZqBo1v55Qqzq1mdtTBZDpq7odNVbpAATlUHIU/CBOT7QpnzRYLziHGCbQxvk
-jFccpQxjKF2yToYU+SUsZttZuI3cszhczPO9Ccj/itKzRRMW+J5rioDqAD4C0R6w
-URTVcNs9KN6Tepv6ygSVkT6Tzt4Sr507SF8DYnFCbekEdpL+pdUcFu83D5fe1NpI
-a1rSb3iEf3E6gs4Zv+Et/Qwg1Moq8GqdqcsF910fTmt9Zf0tVq233LcnADTWNY6P
-9D4DgIoXGM6RaNstoCsR2TMMUSh5OKzd6rWAL8TwEexWQOLdMwoeYBOpzcsi4w0D
-X+dPb55y/ue/yDbXqr00qEXMqXBRTDWC7Xd13O8g/Db00S4xxdYfTO38caAlxiPC
-hL1w8QPJQ7N7GrqN/MvrhPsxMdtF7BGn1DFiuIC9bjZUrXkjSpc=
-=67jR
------END PGP SIGNATURE-----
-
---3rluckearszbi5kv--
-
-
---===============6056425928349889760==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6056425928349889760==--
-
+T24gMjAyNS0wNi0yMyAxNTo1OCwgQWxleGV5IENoYXJrb3Ygd3JvdGU6Cj4gT24gTW9uLCBKdW4g
+MjMsIDIwMjUgYXQgMToxOeKAr1BNIEFsZXhleSBDaGFya292IDxhbGNoYXJrQGdtYWlsLmNvbT4g
+d3JvdGU6Cj4+Cj4+IE9uIFN1biwgSnVuIDIyLCAyMDI1IGF0IDU6NDjigK9QTSBIZWlrbyBTdHVl
+Ym5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPj4+Cj4+PiBBbSBTYW1zdGFnLCAyMS4gSnVu
+aSAyMDI1LCAyMzoyMToxMSBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIEFs
+ZXhleSBDaGFya292Ogo+Pj4+IE9uIFNhdCwgSnVuIDIxLCAyMDI1IGF0IDExOjQ04oCvUE0gSGVp
+a28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4gd3JvdGU6Cj4+Pj4+Cj4+Pj4+IEFtIFNhbXN0
+YWcsIDIxLiBKdW5pIDIwMjUsIDIxOjM1OjU2IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0
+IHNjaHJpZWIgQWxleGV5IENoYXJrb3Y6Cj4+Pj4+PiBPbiBGcmksIEp1biAyMCwgMjAyNSBhdCA4
+OjAy4oCvUE0gQWxleGV5IENoYXJrb3YgPGFsY2hhcmtAZ21haWwuY29tPiB3cm90ZToKPj4+Pj4+
+Pgo+Pj4+Pj4+IE9uIFdlZCwgSnVuIDE4LCAyMDI1IGF0IDY6NDjigK9QTSBBbGV4ZXkgQ2hhcmtv
+diA8YWxjaGFya0BnbWFpbC5jb20+IHdyb3RlOgo+Pj4+Pj4+Pgo+Pj4+Pj4+PiBPbiBXZWQsIEp1
+biAxOCwgMjAyNSBhdCA2OjA24oCvUE0gTmljb2xhcyBGcmF0dGFyb2xpCj4+Pj4+Pj4+IDxuaWNv
+bGFzLmZyYXR0YXJvbGlAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4g
+SGVsbG8sCj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4gK0NjIEpvbmFzIEthcmxtYW4gYXMgaGUgaXMgaW50
+aW1hdGVseSBmYW1pbGlhciB3aXRoIFJLMzU3NiBjbG9jayBzaGVuYW5pZ2FucyBieSBub3csCj4+
+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4gT24gV2VkbmVzZGF5LCAxOCBKdW5lIDIwMjUgMTU6NTE6NDUgQ2Vu
+dHJhbCBFdXJvcGVhbiBTdW1tZXIgVGltZSBBbGV4ZXkgQ2hhcmtvdiB3cm90ZToKPj4+Pj4+Pj4+
+PiBPbiBTdW4sIEp1biAxNSwgMjAyNSBhdCA4OjAw4oCvUE0gUGlvdHIgT25pc3pjenVrCj4+Pj4+
+Pj4+Pj4gPHBpb3RyLm9uaXN6Y3p1a0BnbWFpbC5jb20+IHdyb3RlOgo+Pj4+Pj4+Pj4+Pgo+Pj4+
+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+Pj4gV2lhZG9tb8WbxIcgbmFwaXNhbmEgcHJ6
+ZXogQWxleGV5IENoYXJrb3YgPGFsY2hhcmtAZ21haWwuY29tPiB3IGRuaXUgOSBjemUgMjAyNSwg
+byBnb2R6LiAxNjowNToKPj4+Pj4+Pj4+Pj4+Cj4+Pj4+Pj4+Pj4+PiBPbiBTdW4sIEp1biA4LCAy
+MDI1IGF0IDExOjI04oCvQU0gUGlvdHIgT25pc3pjenVrCj4+Pj4+Pj4+Pj4+PiA8cGlvdHIub25p
+c3pjenVrQGdtYWlsLmNvbT4gd3JvdGU6Cj4+Pj4+Pj4+Pj4+Pj4+IFdpYWRvbW/Fm8SHIG5hcGlz
+YW5hIHByemV6IEFsZXhleSBDaGFya292IDxhbGNoYXJrQGdtYWlsLmNvbT4gdyBkbml1IDUgY3pl
+IDIwMjUsIG8gZ29kei4gMTU6NDI6Cj4+Pj4+Pj4+Pj4+Pj4+PiBBbGV4ZXksCj4+Pj4+Pj4+Pj4+
+Pj4+PiBJIHNlZSB5b3UgYXJlIHVzaW5nIHJrMzU3NiBib2FyZCBsaWtlIG1lIChuYW5vcGktbTUp
+Cj4+Pj4+Pj4+Pj4+Pj4+PiBIYXZlIHlvdSBvbiB5b3VyIGJvYXJkIGNvcnJlY3RseSB3b3JraW5n
+IGNwdSBkdmZzPwo+Pj4+Pj4+Pj4+Pj4+Pj4gSSBtZWFuOiBbMV1bZGVzaXJlZCBjbG9ja3MgcmVw
+b3J0ZWQgYnkga2VybmVsIHN5c2ZzIGFyZSBpbiBwYWlyIHdpdGggWzJbXWN1ciBjbG9ja3M/Cj4+
+Pj4+Pj4+Pj4+Pj4+PiBJbiBteSBjYXNlIGkgc2VlIG1pbmUgY3B1IGxpdmVzIHRvdGFsbHkgb24g
+aXTigJlzIG93biB3aXRoIGR2ZnM6Cj4+Pj4+Pj4+Pj4+Pj4+Cj4+Pj4+Pj4+Pj4+Pj4+IEhpIFBp
+b3RyLAo+Pj4+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+Pj4+PiBJIGhhdmVuJ3QgdHJpZWQgdG8gdmFs
+aWRhdGUgYWN0dWFsIHJ1bm5pbmcgZnJlcXVlbmNpZXMgdnMuIHJlcXVlc3RlZAo+Pj4+Pj4+Pj4+
+Pj4+PiBmcmVxdWVuY2llcywgYnV0IHN1YmplY3RpdmUgcGVyZm9ybWFuY2UgYW5kIHBvd2VyIGNv
+bnN1bXB0aW9uIHNlZW0gdG8KPj4+Pj4+Pj4+Pj4+Pj4gYmUgaW4gbGluZSB3aXRoIHdoYXQgSSBl
+eHBlY3QuCj4+Pj4+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+Pj4+PiB3ZWxsIC0gbXkgc3ViamVjdGl2ZSBs
+JmYgaXMgdGhhdCAgLSBjdXJyZW50bHkgLSBteSByazM1NzYgc2VlbXMg4oCec2xvd2VyIiB0aGFu
+IGkuZS4gNHhBNTMgaDYxOC4KPj4+Pj4+Pj4+Pj4+Cj4+Pj4+Pj4+Pj4+PiBJbiBteSBleHBlcmll
+bmNlLCBuYXRpdmUgY29tcGlsYXRpb24gb2YgR0NDIDE0IHVzaW5nIDggdGhyZWFkcyBvbgo+Pj4+
+Pj4+Pj4+Pj4gUkszNTc2IChtYWlubGluZSB3aXRoIHBhc3NpdmUgY29vbGluZyBhbmQgdGhyb3R0
+bGluZyBlbmFibGVkKTogMiBob3Vycwo+Pj4+Pj4+Pj4+Pj4gNiBtaW51dGVzLCBvbiBSSzM1ODgg
+KG1haW5saW5lIHdpdGggcGFzc2l2ZSBjb29saW5nIHZpYSBSYWR4YSBSb2NrIDVCCj4+Pj4+Pj4+
+Pj4+PiBjYXNlIGFuZCB0aHJvdHRsaW5nIGVuYWJsZWQgYnV0IG5ldmVyIGtpY2tpbmcgaW4pOiAx
+IGhvdXIgMTAgbWludXRlcwo+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+PiBieSBjdXJpb3NpdHkgaSBs
+b29rZWQgcmFuZG9tbHkgb24gMzU3NiB2cyAzNTg4Ogo+Pj4+Pj4+Pj4+PiBtdWx0aXRocmVhZCBw
+YXNzbWFyazogMzY3NSAoaHR0cHM6Ly93d3cuY3B1YmVuY2htYXJrLm5ldC9jcHUucGhwP2NwdT1S
+b2NrY2hpcCtSSzM1NzYmaWQ9NjIxMwo+Pj4+Pj4+Pj4+PiBtdWx0aXRocmVhZCBwYXNzbWFyazog
+NDUzMCAoaHR0cHM6Ly93d3cuY3B1YmVuY2htYXJrLm5ldC9jcHUucGhwP2NwdT1Sb2NrY2hpcCtS
+SzM1ODgmaWQ9NDkwNgo+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+PiBhc3N1bWluZyAzNTg4IGFzIGJh
+c2VsaW5lLCAzNTc2IGlzIGFwcHJveCAyMCUgc2xvd2VyIG9uIG11bHRpdGhyZWFkIHBhc3NtYXJr
+IChoYXMgfjAsOCBjb21wIHBvd2VyIG9mIDM1ODgpCj4+Pj4+Pj4+Pj4+IDcwIG1pbiBjb21waWxl
+IG9uIDM1ODggc2hvdWxkIHRha2Ugc29tZXRoaW5nIGxpa2Ugfjg2bWluIG9uIDM1NzYuCj4+Pj4+
+Pj4+Pj4+IEluIHlvdXIgY2FzZSAxMjZtaW4gY29tcGlsZSBvbiAzNTc2IHNob3dzIDM1NzYgb2Zm
+ZXJzIDAsNTUgY29tcCBwb3dlciBvZiAzNTg4Lgo+Pj4+Pj4+Pj4+PiBSb3VnaGx5IDM1NzYgc2hv
+dWxkIGRvIHRoaXMgdGFzayBpbiA0MG1pbiBsZXNzIHRoYW4geW91IGN1cnJlbnRseSBzZWUgaSB0
+aGluawo+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+Pj4gQ2FuJ3Qgc2VlIGhvdyB1
+LWJvb3Qgd291bGQgYWZmZWN0IENQVSBzcGVlZCBpbiBMaW51eCwgYXMgbG9uZyBhcyB5b3UKPj4+
+Pj4+Pj4+Pj4+IHVzZSBjb21wYXJhYmxlIEFURiBpbWFnZXMuIERvIHlvdSB1c2UgdGhlIHNhbWUg
+a2VybmVsIGFuZCBkdGIgaW4gYWxsCj4+Pj4+Pj4+Pj4+PiB0aGVzZSBjYXNlcz8gQWxzbywgd2hh
+dCdzIHlvdXIgdGhlcm1hbCBzZXR1cD8KPj4+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+Pj4geWVzLiBpbiBh
+bGwgY2FzZXMgb25seSBjaGFuZ2Ugd2FzOiB1Ym9vdCAmIGF0Zgo+Pj4+Pj4+Pj4+PiB0aGVybWFs
+IGlzIGJhc2VkIG9uIHJlY2VudCBjb2xsYWJvcmEgc2VyaWVzICgrIHJlY2VudCBwb29saW5nIGZp
+eCBmb3IgY2xvY2tzIHJldHVybiBmcm9tIHRocm90dGxpbmcpCj4+Pj4+Pj4+Pj4+Cj4+Pj4+Pj4+
+Pj4+Pgo+Pj4+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+Pj4+IE5vdCBzdXJlIFVYIGlzIGEgcGFydGljdWxh
+cmx5IGdvb2QgbWVhc3VyZSBvZiBDUFUgcGVyZm9ybWFuY2UsIGFzIGxvbmcKPj4+Pj4+Pj4+Pj4+
+IGFzIHlvdSd2ZSBnb3QgYSBwcm9wZXJseSBhY2NlbGVyYXRlZCBEUk0gZ3JhcGhpY3MgcGlwZWxp
+bmUuIE1vcmUKPj4+Pj4+Pj4+Pj4+IGxpa2VseSAyRC8zRCBhbmQgbWVtb3J5Lgo+Pj4+Pj4+Pj4+
+Pgo+Pj4+Pj4+Pj4+PiBpbmRlZWQuCj4+Pj4+Pj4+Pj4+IEZvciBxdWFudGlmaWVkIGxvb2sgaeKA
+mW0gbG9va2luZyBvbiB2LnNpbXBsZSBhcHByb2FjaCB0byBlc3RpbWF0ZSByZWFsIGNsb2NrIGlz
+IGh0dHA6Ly91b2ItaHBjLmdpdGh1Yi5pby8yMDE3LzExLzIyL2FybS1jbG9jay1mcmVxLmh0bWwK
+Pj4+Pj4+Pj4+Pj4gYnkgY3VyaW9zaXR5IGkgbG9va2VkIHdoYXQgaXQgcmVwb3J0cyBvbiBhNTMv
+YTU1L2E3Mi9hNzYgYW5kIGl0IGlzIHN1cnByaXNpbmdseSBhY2N1cmF0ZSA6LSkKPj4+Pj4+Pj4+
+Pj4gb24gbWluZSAzNTc2IHdpdGggY29sbGFib3JhIHVib290K21haW5saW5lIGF0ZiBpcyBob3dz
+IDgwME1IeiAoYW5kIGluIHBlcmYuIGdvdiBpdCBzZWVtcyB0byBiZSBjb25zdGFudCkKPj4+Pj4+
+Pj4+Pj4KPj4+Pj4+Pj4+Pj4+Cj4+Pj4+Pj4+Pj4+PiBUaGVyZSBtaWdodCBiZSBzb21lIGRpZmZl
+cmVuY2UgaW4gaG93IFBWVFBMTCBiZWhhdmVzIG9uIFJLMzU3NiB2cy4KPj4+Pj4+Pj4+Pj4+IFJL
+MzU4OC4gQnV0IGZyYW5rbHkgZmlyc3QgSSB3b3VsZCBjaGVjayBpZiB5b3UgYXJlIHVzaW5nIGNv
+bXBhcmFibGUKPj4+Pj4+Pj4+Pj4+IEFURiBpbXBsZW1lbnRhdGlvbnMgKGUuZy4gdXBzdHJlYW0g
+VEYtQSBpbiBib3RoIGNhc2VzKSwga2VybmVscyBhbmQKPj4+Pj4+Pj4+Pj4+IHRoZXJtYWwgZW52
+aXJvbm1lbnQgOikKPj4+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+Pj4gYWxsIHRlc3RzOiB0aGUgc2FtZSA2
+LjE1LjIgbWFpbmxpbmUgKyBzb21lIGNvbGxhYm9yYSBwYXRjaGVzCj4+Pj4+Pj4+Pj4+Cj4+Pj4+
+Pj4+Pj4+IGRpZmZzIHdlcmU6Cj4+Pj4+Pj4+Pj4+IDEuY29sbGFib3JhIHVib290WzFdICsgbWFp
+bmxpbmUgYXRmIDIuMTMKPj4+Pj4+Pj4+Pj4gMi5jb2xsYWJvcmEgdWJvb3RbMV0gKyByb2NrY2hp
+cCBya2JpbiBibDMxIGJsb2IKPj4+Pj4+Pj4+Pj4gMy52ZW5kb3IgdWJvb3QgKGJpbiBkdW1wIGZy
+b20gZnJpZW5kbHllbGVjIHVidW50dSBpbWFnZSkKPj4+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+Pj4gb24g
+MS8yIGkgc2VlIGtpbmQgb2YgaXNzdWUgd2l0aCBjbG9jayB2YWx1ZXMgKGkuZS4gcGVyZiBnb3Yg
+Z2l2ZXMgY29uc3RhbnQgODAwTUh6IG9uIG1haW5saW5lIGF0ZikuCj4+Pj4+Pj4+Pj4+IDMgc2Vl
+bXMgdG8gcGVyZm9ybSBiZXR0ZXIgLSAoaS5lLiBwZXJmIGdvdiBnaXZlcyBjb25zdGFudCAxNTAw
+TUh6IHNvIGFsbCBpcyBzbmFwcGllci9mYXN0ZXIpCj4+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+PiBUaGVy
+ZSBpcyBpbmRlZWQgc29tZXRoaW5nIHdlaXJkIGdvaW5nIG9uLiBJJ3ZlIHRyaWVkIHJ1bm5pbmcg
+c2JjLWJlbmNoCj4+Pj4+Pj4+Pj4gWzFdLCBhbmQgZXZlbiB0aG91Z2ggSSBvYnNlcnZlIGR5bmFt
+aWNhbGx5IHZhcnlpbmcgQ1BVIGZyZXF1ZW5jaWVzCj4+Pj4+Pj4+Pj4gYWZ0ZXIgYm9vdCB3aXRo
+IHNjaGVkdXRpbCBnb3Zlcm5vciwgb25jZSBzYmMtYmVuY2ggc3dpdGNoZXMgdGhlCj4+Pj4+Pj4+
+Pj4gZ292ZXJub3IgdG8gInBlcmZvcm1hbmNlIiBhbmQgZ29lcyB0aHJvdWdoIHRoZSBPUFBzIGlu
+IGRlc2NlbmRpbmcKPj4+Pj4+Pj4+PiBmcmVxdWVuY3kgb3JkZXIsIHRoZSBDUFVzIHNlZW0gdG8g
+Z2V0IHN0dWNrIGF0IHRoZSBsYXN0IGFwcGxpZWQgbG93Cj4+Pj4+Pj4+Pj4gZnJlcXVlbmN5LiBF
+dmVuIGFmdGVyIG1heCBmcmVxdWVuY3kgZ2V0cyByZXZlcnRlZCBmcm9tIDQwOCBNSHogdG8KPj4+
+Pj4+Pj4+PiBzb21ldGhpbmcgaGlnaGVyLCBldmVuIGFmdGVyIEkgc3dpdGNoIHRoZSBnb3Zlcm5v
+ciB0byBzb21ldGhpbmcgZWxzZSAtCj4+Pj4+Pj4+Pj4gbm8gbWF0dGVyIHdoYXQuIE9ubHkgYSBy
+ZWJvb3QgZ2V0cyB0aGUgaGlnaGVyIGZyZXF1ZW5jaWVzICd1bnN0dWNrJwo+Pj4+Pj4+Pj4+IGZv
+ciBtZS4KPj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+IFRoZXNlIGFyZSBhbGwgb2JzZXJ2ZWQgYXQgYXJv
+dW5kIDU1QyBTb0MgdGVtcGVyYXR1cmUsIHNvIHRocm90dGxpbmcgaXMKPj4+Pj4+Pj4+PiBub3Qg
+YW4gaXNzdWUuIFJlZ3VsYXRvcnMgYXJlIHN0dWNrIGF0IDk1MDAwMCB1ViAtIHdheSBhYm92ZSA3
+MDAwMDAgdVYKPj4+Pj4+Pj4+PiB0aGF0IHRoZSA0MDggTUh6IE9QUCByZXF1aXJlcyAoYW5kIHBv
+d2VyIHJlYWRpbmdzIHNlZW0gdG8gbWF0Y2g6IEknbQo+Pj4+Pj4+Pj4+IGdldHRpbmcgYWJvdXQg
+Mi4zVyBjb25zdW1wdGlvbiBhdCA0MDggTUh6IGluIGlkbGUgdnMuIG5vcm1hbCBpZGxlCj4+Pj4+
+Pj4+Pj4gcmVhZGluZyBvZiAxLjRXIGF0IGFyb3VuZCAxIEdIeikuCj4+Pj4+Pj4+Pj4KPj4+Pj4+
+Pj4+PiBOb3Qgc3VyZSB3aGF0J3MgZ29pbmcgb24gaGVyZSwgYW5kIEkgZG9uJ3QgcmVtZW1iZXIg
+c2VlaW5nIGFueXRoaW5nCj4+Pj4+Pj4+Pj4gc2ltaWxhciBvbiBSSzM1ODguIFRob3VnaHRzIHdl
+bGNvbWUuCj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4gVGhpcyBtYXkgb25jZSBhZ2FpbiBiZSBhICJhY2Np
+ZGVudGFsbHkgdXNlcyB3cm9uZyBjbG9jayBJRHMiIHR5cGUKPj4+Pj4+Pj4+IHNpdHVhdGlvbi4g
+VGhlIG90aGVyIHBvc3NpYmlsaXR5IGlzIHRoYXQgd2UncmUgZ2V0dGluZyBjb25mdXNlZAo+Pj4+
+Pj4+Pj4gYmV0d2VlbiB3aGF0IHdlIHRoaW5rIHRoZSBjbG9jayByYXRlIGlzIGFuZCB3aGF0IFND
+TUkgYWN0dWFsbHkgc2V0Cj4+Pj4+Pj4+PiB0aGUgY2xvY2sgcmF0ZSB0by4KPj4+Pj4+Pj4+Cj4+
+Pj4+Pj4+PiBUaGluZ3MgdG8gY2hlY2sgaXMgd2hldGhlciB0aGUgcmlnaHQgY2xvY2sgY29udHJv
+bGxlciAoc2NtaSB2cyBjcnUpCj4+Pj4+Pj4+PiBhbmQgdGhlIHJpZ2h0IGNsb2NrIGlkIChjaGVj
+ayBBVEYgc291cmNlIGZvciB0aGlzKSBpcyB1c2VkLgo+Pj4+Pj4+Pgo+Pj4+Pj4+PiBDbG9jayBJ
+RHMgaW4gdGhlIGtlcm5lbCBzZWVtIHRvIG1hdGNoIHRob3NlIGluIEFURiwgYnV0IEkndmUgbm90
+aWNlZAo+Pj4+Pj4+PiB3aGF0IGFwcGVhcnMgdG8gYmUgYSBidWZmZXIgb3ZlcmZsb3cgaW4gc29t
+ZSBvZiB0aGUgU0NNSSBjbG9jayBuYW1lcwo+Pj4+Pj4+PiBkZWZpbmVkIGluIHRoZSBvcGVuc291
+cmNlIFRGLUEgKHRoYW5rcyBHQ0MgMTUgYW5kIGl0cyB6ZWFsb3VzCj4+Pj4+Pj4+IHdhcm5pbmdz
+KToKPj4+Pj4+Pgo+Pj4+Pj4+IEFmdGVyIHNvbWUgbW9yZSB0ZXN0aW5nLCBJIHRlbmQgdG8gY29u
+ZmlybSB3aGF0IFBpb3RyIG9ic2VydmVkCj4+Pj4+Pj4gZWFybGllci4gTmFtZWx5LCBmcmVxdWVu
+Y3kgc2NhbGluZyBhY3RzIHdlaXJkIG9uIGFueSBBVEYgdmVyc2lvbiAoYmUKPj4+Pj4+PiBpdCBi
+aW5hcnkgQkwzMSBvciBvcGVuc291cmNlIFRGLUEpLCBhcyBsb25nIGFzIG1haW5saW5lIHUtYm9v
+dCBpcwo+Pj4+Pj4+IHVzZWQuIFVzaW5nIHRoZSB1LWJvb3QgYmluYXJ5IGV4dHJhY3RlZCBmcm9t
+IHRoZSBBcm1Tb00gUVdSVCBpbWFnZQo+Pj4+Pj4+IGRvZXMgbm90IGxlYWQgdG8gInN0dWNrIiBD
+UFUgZnJlcXVlbmNpZXMgd2hlbiBydW5uaW5nIHNiYy1iZW5jaC4KPj4+Pj4+Pgo+Pj4+Pj4+IEkn
+bSBnZXR0aW5nIHRoaXMgd2l0aCB0aGUgZXhhY3Qgc2FtZSBrZXJuZWwgYnVpbGQgKDYuMTYtcmMx
+IHdpdGggc29tZQo+Pj4+Pj4+IFNpZ2U1IHJlbGF0ZWQgcGF0Y2hlcywgbmFtZWx5IHYyIG9mIHRo
+aXMgc2VyaWVzLCBOaWNvbGFzJyBVU0IKPj4+Pj4+PiBlbmFibGVtZW50IHNlcmllcyBhbmQgVFNB
+REMpLiBUaGUgb25seSBvdGhlciBkaWZmZXJlbmNlIGlzIHRoYXQgdGhlCj4+Pj4+Pj4gYmluYXJ5
+IHUtYm9vdCBkb2Vzbid0IGhhdmUgRUZJIHN1cHBvcnQsIHNvIEkgaGFkIHRvIGJvb3QgaW50byB0
+aGUKPj4+Pj4+PiBBUk02NCB1bmNvbXByZXNzZWQgSW1hZ2UgaW5zdGVhZCBvZiB2bWxpbnV6LmVm
+aSwgYnV0IHRob3NlIHdlcmUgYm90aAo+Pj4+Pj4+IHRha2VuIGZyb20gdGhlIHNhbWUgYnVpbGQu
+Cj4+Pj4+Pj4KPj4+Pj4+PiBXaGF0IEknbSBvYnNlcnZpbmcgZHVyaW5nIHRoZSBzYmMtYmVuY2gg
+cnVuOgo+Pj4+Pj4+ICAtIEl0IHN3aXRjaGVzIHRoZSBjcHVmcmVxIGdvdmVybm9yIGZyb20gc2No
+ZWR1dGlsIHRvIHBlcmZvcm1hbmNlCj4+Pj4+Pj4gIC0gSXQgZ29lcyB0aHJvdWdoIGFsbCBDUFUg
+T1BQcyBpbiBkZXNjZW5kaW5nIGZyZXF1ZW5jeSBvcmRlcgo+Pj4+Pj4+ICAtLS0gV2hpbGUgaXQg
+ZG9lcyB0aGF0IHdoZW4gYm9vdGVkIHVzaW5nIG1haW5saW5lIHUtYm9vdCArCj4+Pj4+Pj4gdm1s
+aW51ei5lZmk6ICJoYXJkd2FyZSBsaW1pdHMiIGxpbmUgaW4gImNwdXBvd2VyIC1jIDAsNAo+Pj4+
+Pj4+IGZyZXF1ZW5jeS1pbmZvIiBjaGFuZ2VzIHdpdGggZWFjaCBPUFAgY2hhbmdlICh0aGUgbWF4
+IGZyZXF1ZW5jeQo+Pj4+Pj4+IGdldHRpbmcgcmVkdWNlZCBzZXF1ZW50aWFsbHkpLCB0aGVuIGl0
+IHJlc2V0cyB0byB0aGUgaW5pdGlhbCBmdWxsCj4+Pj4+Pj4gcmFuZ2UsIGJ1dCB0aGUgYWN0dWFs
+IGZyZXF1ZW5jeSBzdGF5cyBzdHVjayBhdCB0aGUgbG93ZXN0IHBvc3NpYmxlCj4+Pj4+Pj4gdmFs
+dWUKPj4+Pj4+PiAgLS0tIFdoaWxlIGl0IGRvZXMgdGhhdCB3aGVuIGJvb3RlZCB1c2luZyBiaW5h
+cnkgdS1ib290ICsgSW1hZ2U6Cj4+Pj4+Pj4gImhhcmR3YXJlIGxpbWl0cyIgbGluZSBpbiAiY3B1
+cG93ZXIgLWMgMCw0IGZyZXF1ZW5jeS1pbmZvIiBkb2Vzbid0Cj4+Pj4+Pj4gY2hhbmdlLCBidXQg
+dGhlIGFjdHVhbCBmcmVxdWVuY3kgZ2V0cyByZWR1Y2VkIHNlcXVlbnRpYWxseS4gVGhlbiBhZnRl
+cgo+Pj4+Pj4+IHRoZSBpdGVyYXRpb24gb3ZlciBhbGwgT1BQcyBpcyBjb21wbGV0ZWQgaXQgcmV0
+dXJucyB0byB0aGUgaGlnaGVzdAo+Pj4+Pj4+IHBvc3NpYmxlIHZhbHVlLCBhbmQgYWRqdXN0cyBk
+eW5hbWljYWxseSBiYXNlZCBvbiB0aGVybWFsIHRocm90dGxpbmcgYXMKPj4+Pj4+PiB0aGUgYmVu
+Y2htYXJrIHByb2dyZXNzZXMKPj4+Pj4+Cj4+Pj4+PiBTbGlnaHQgY29ycmVjdGlvbjogaXQncyBu
+b3QgdGhlICJoYXJkd2FyZSBsaW1pdHMiIGxpbmUsIGJ1dCByYXRoZXIKPj4+Pj4+ICJjdXJyZW50
+IHBvbGljeSIuCj4+Pj4+Pgo+Pj4+Pj4gTm90ZSB0aGF0IGJvb3RpbmcgbWFpbmxpbmUgdS1ib290
+IGluIG5vbi1FRkkgbW9kZSAodXNpbmcgcGxhaW4gSW1hZ2UpCj4+Pj4+PiBkb2Vzbid0IGNoYW5n
+ZSB0aGUgcmVzdWx0cyBhYm92ZS4KPj4+Pj4KPj4+Pj4gSSdtIGluIGEgc2ltaWxhciBib2F0LCB3
+aGlsZSB0cnlpbmcgdG8gbWFrZSBEU0kgcnVuIG9uIHRoZSByazM1NzYuCj4+Pj4+IEFuZHkgZnJv
+bSBSb2NrY2hpcCB3YXMgYWJsZSB0byBtYWtlIGl0IHdvcmsgImp1c3QiIGJ5IHVzaW5nIHZlbmRv
+ci0KPj4+Pj4gZmlybXdhcmUgLSB3aGlsZSB1c2luZyBtYWlubGluZSB1LWJvb3QgKHdpdGggYm90
+aCBtYWlubGluZSBURi1BCj4+Pj4+IG9yIHZlbmRvciBURi1BKSBwcm9kdWNlcyBqdXN0IGJsYWNr
+IG91dHB1dC4KPj4+Pj4KPj4+Pj4gSSB0aGluayB3aGVuIEkgZGlkIHRoZSBtYWlubGluZSB1LWJv
+b3QgdGhpbmcgSSB0b29rIHRoZSAidmVuZG9yIi1jb2RlCj4+Pj4+IGZyb20gdGhlIGFybWJpYW4g
+cmszNTc2IHZlbmRvci11LWJvb3QgLi4uIGJ1dCB0aGF0IGFjdHVhbGx5IG1heSBkaWZmZXIKPj4+
+Pj4gZnJvbSB3aGF0IHRoZSB2ZW5kb3JzIHByb3ZpZGVkPwo+Pj4+Cj4+Pj4gSnVzdCB0cmllZCBi
+b290aW5nIGludG8gdS1ib290IGJ1aWx0IGZyb20gQXJtU29NIHNvdXJjZXMgYXQgWzFdIC0gc2Ft
+ZQo+Pj4+IGlzc3VlcyBhcyB1c2luZyBtYWlubGluZS4gRWl0aGVyIEknbSBkb2luZyBzb21ldGhp
+bmcgc3R1cGlkIGJ1aWxkaW5nCj4+Pj4gaXQgKGRvbid0IGtub3cgd2hhdCB0aG91Z2gpLCBvciB0
+aGUgYmluYXJ5IHNoaXBwZWQgaW4gQXJtU29NIGltYWdlcyBpcwo+Pj4+IGluZGVlZCBkaWZmZXJl
+bnQgZnJvbSB3aGF0IHRoZSBzb3VyY2VzIGFyZS4KPj4+Cj4+PiBDYW4geW91IGxpc3QgdGhlIHZl
+cnNpb25zIHlvdSBzZWUgZm9yIHRoZSBfd29ya2luZ18gYmluYXJpZXM/Cj4+Cj4+IFRob3NlIGFy
+ZSBub3QgYXMgZGV0YWlsZWQgYXMgSSdkIGxpa2UsIGFzIHZlbmRvciBidWlsZHMgc2VlbSB0bwo+
+PiBvdmVycmlkZSB0aGUgZGVmYXVsdCBVLWJvb3QgdmVyc2lvbmluZyBydWxlcyAoc3RyaXBwaW5n
+IHRoZSBnaXQgaGFzaAo+PiBpbmZvcm1hdGlvbiBvZmYpLgo+Pgo+PiBJJ3ZlIGlkZW50aWZpZWQg
+dGhlIGZvbGxvd2luZyB2ZXJzaW9ucyBmb3IgdGhlIGJpbmFyeSBpbWFnZSB0aGF0IHdvcmtlZCBm
+b3IgbWU6Cj4+Cj4+IEREUiBpbml0IHYxLjAzICh2ZXJzaW9uIHN0cmluZyAiRERSIDgxZGQ3NTA4
+OGEgd2VzbGV5Lnlhbwo+PiAyNC8wNC8xNi0xMToxOTo0MSxmd3ZlcjogdjEuMDMiKQo+PiBVLWJv
+b3QgU1BMIDIwMTcuMDkgKG5vIHRyYWNlcyBvZiBhbnkgcGFydGljdWxhciBnaXQgY29tbWl0LCB2
+ZXJzaW9uCj4+IHN0cmluZyAiVS1Cb290IFNQTCAyMDE3LjA5IChBdWcgMjMgMjAyNCAtIDAwOjQ3
+OjM5KSIpCj4+IFUtYm9vdCBwcm9wZXIgMjAxNy4wOSAoZGl0dG8sIHZlcnNpb24gc3RyaW5nICJV
+LUJvb3QgMjAxNy4wOSAoQXVnIDIzCj4+IDIwMjQgLSAwMDo0NzozOSArMDAwMCkgT3BlbldydCIp
+Cj4+IEJMMzEgaW1hZ2UgdjEuMDQgKHZlcnNpb24gc3RyaW5nCj4+ICJ2Mi4zKCk6djIuMy03NDkt
+ZzMwMDE4Yjc3MTpkZXJyaWNrLmh1YW5nLCBmd3ZlcjogdjEuMDQiKQo+PiBCTDMyIGltYWdlIHYx
+LjAxICh2ZXJzaW9uIHN0cmluZyAiVTMuMTMuMC03OTEtZzE4NWRjM2M5MiAjaGlzcGluZy5saW4K
+Pj4gKGdjYyB2ZXJzaW9uIDEwLjIuMSAyMDIwMTEwMyAoR05VIFRvb2xjaGFpbiBmb3IgdGhlIEEt
+cHJvZmlsZQo+PiBBcmNoaXRlY3R1cmUgMTAuMi0yMDIwLjExIChhcm0tMTAuMTYpKSkgIzIgVHVl
+IEFwciAxNiAxMTowNToyNSBDU1QKPj4gMjAyNCBhYXJjaDY0LCBmd3ZlcjogdjEuMDEiKQo+Pgo+
+Pj4gSS5lLiB1LWJvb3QgYW5kIGZyaWVuZHMgbWF5IGxpc3Qgc29tZXZlcnNpb24tZ0dJVEhBU0gg
+dGhpbmd5IGxpa2UgeW91cgo+Pj4gT1BURUUgYWxyZWFkeSBkb2VzOiBPUC1URUUgdmVyc2lvbjog
+My4xMy4wLTc5MS1nMTg1ZGMzYzkyIC4KPj4+IEFsc28gcG9zc2libHkgdGhlIGJ1aWxkIGRhdGUu
+Cj4+Cj4+IFRoZSBidWlsZCBkYXRlIGlzIGxhdGVyIHRoYW4gYW55IGNvbW1pdCBJIHNlZSBpbiB0
+aGUgQXJtU29NIHJlcG8KPj4gbGVhZGluZyB1cCB0byBlaXRoZXIgb2YgdGhlIHR3byB0YWdzIHRo
+ZXkgaGF2ZSB0aGVyZSAoInJrMzU3NiIgYW5kCj4+ICJyazM1NzYtNi4xLXJrMy4xIiwgbmVpdGhl
+ciBvZiB0aGVtIGJlbG9uZ2luZyB0byBhbnkgcHVibGlzaGVkIGJyYW5jaAo+PiB0aGVyZSkKPj4K
+Pj4+IEkuZS4gSSdtIHdvbmRlcmluZy9ob3BpbmcgaWYgd2UgY2FuIG1hdGNoIHRvIHNvbWUgZ2l0
+IGNvbW1pdC4KPj4KPj4gSSd2ZSBhbHNvIG5vdGljZWQgdGhhdCBBcm1Tb00gU0RLIHJlZmVyZW5j
+ZXMgdGhlICJib29zdCIgYmluYXJ5IGZyb20KPj4gcmtiaW4gKHJrMzU3Nl9ib29zdF92MS4wMC5i
+aW4gaW4gcGFydGljdWxhciksIGJ1dCBpdCBkb2Vzbid0IHNlZW0gdG8KPj4gYmUgcHJlc2VudCBp
+biB0aGUgYm9vdGxvYWRlciBiaW5hcnkgSSdtIGxvb2tpbmcgYXQuIFRoZSB2ZXJzaW9uIHN0cmlu
+Zwo+PiBvZiB0aGUgU1BMIGJpbmFyeSBpbiBya2JpbiBhcyBpbmNsdWRlZCBpbiB0aGUgU0RLIGlz
+IGFsc28gZGlmZmVyZW50Cj4+IGZyb20gd2hhdCBJJ20gc2VlaW5nIGluIHRoZSBhY3R1YWwgYmlu
+YXJ5OiBTREsgaGFzICJVLUJvb3QgU1BMCj4+IDIwMTcuMDktZzU3YjhjZWVkMWMzLTI0MDQxOCAj
+bHhoIChBcHIgMTkgMjAyNCAtIDE3OjA3OjIyKSwgZnd2ZXI6Cj4+IHYxLjAyIi4KPj4KPj4gSSds
+bCB0cnkgYW5kIHJlYnVpbGQgdGhlIHZlbmRvciB1LWJvb3QgZnJvbSBzb3VyY2Ugd2l0aCB0aGVz
+ZSBzcGVjaWZpYwo+PiB2ZXJzaW9ucyBvZiBya2JpbiBibG9icyAoZGRyIHYxLjAzLCBibDMxIHYx
+LjA0IGFuZCBibDMyIHYxLjAxKSwgYnV0Cj4+IHRoZSBjaGFuZ2Vsb2cgaW4gcmtiaW4gZGlkbid0
+IG1lbnRpb24gYW55dGhpbmcgdGhhdCB3b3VsZCBzZWVtCj4+IHJlbGV2YW50IHRvIHRoZSBpc3N1
+ZSBJJ20gb2JzZXJ2aW5nIDooCj4gCj4gT2theSwgSSd2ZSBiaXNlY3RlZCB0aGlzLgo+IAo+IFRM
+RFI6IExpbnV4IGFuZCB1LWJvb3Qgc2VlbSB0byBoYXZlIG5vdGhpbmcgdG8gZG8gd2l0aCBpdCwg
+b3BlbnNvdXJjZQo+IFRGLUEgZG9lc24ndCB3b3JrLCBiaW5hcnkgQkwzMSBzdGFydGluZyB3aXRo
+IHYxLjA5IGRvIG5vdCB3b3JrLiBCTDMxCj4gdjEuMDggYW5kIGVhcmxpZXIgd29yayBmaW5lLiBU
+ZXN0ZWQgd2l0aCB2ZW5kb3IgdS1ib290IGFuZCB3aXRoCj4gMjAyNS4wNy1yYzIsIHJlc3VsdHMg
+YXJlIHNpbWlsYXIuIE9QLVRFRSBwcmVzZW5jZSBkb2VzIG5vdCBhZmZlY3QgdGhlCj4gcmVzdWx0
+cy4KPiAKPiBUbyB0ZXN0Ogo+IDEuIEJ1aWxkIGFuZCBhcHBseSBhIGZyZXNoIHUtYm9vdC1yb2Nr
+Y2hpcC5iaW4gdXNpbmcgdGhlIEREUiBpbml0IGFuZAo+IEJMMzEgZnJvbSBya2JpbiByZXBvIFsx
+XQo+IDIuIFJ1biAid2F0Y2ggY3B1cG93ZXIgLWMgMCw0IGZyZXF1ZW5jeS1pbmZvIiB0byBvYnNl
+cnZlIGhvdyBDUFUKPiBmcmVxdWVuY2llcyBjaGFuZ2UKPiAzLiBJbiBhIHNlcGFyYXRlIHRlcm1p
+bmFsLCBydW4gImJhc2ggc2JjLWJlbmNoLnNoIC1jIiBbMl0KPiA0LiAiR29vZCIgYmVoYXZpb3I6
+Cj4gICAgIGEuIE9uY2UgdGhlIGNwdWZyZXEgZ292ZXJub3IgaXMgc3dpdGNoZWQgdG8gInBlcmZv
+cm1hbmNlIiAoaWYgaXQKPiB3YXMgYW55dGhpbmcgZGlmZmVyZW50IGF0IGJvb3QpLCBib3RoIENQ
+VSBjbHVzdGVycyBnbyB1cCB0byB0aGVpciBtYXgKPiBmcmVxdWVuY2llcwo+ICAgICBiLiBXaGls
+ZSB0aGUgYmVuY2htYXJrIHJ1bnMgdGhyb3VnaCB0aGUgc3RhZ2Ugd2hlcmUgaXQgc2F5cwo+ICJD
+aGVja2luZyBjcHVmcmVxIE9QUCIsIENQVSBmcmVxdWVuY2llcyBjb25zZWN1dGl2ZWx5IGRlY3Jl
+YXNlIGZyb20KPiB0aGUgbWF4IE9QUCBmcmVxdWVuY3kgdG8gdGhlIG1pbgo+ICAgICBjLiBBZnRl
+ciB0aGUgYmVuY2htYXJrIGZpbmlzaGVzIHRoZSBzdGFnZSB3aGVyZSBpdCBzYXlzICJDaGVja2lu
+Zwo+IGNwdWZyZXEgT1BQIiwgYm90aCBDUFUgY2x1c3RlcnMgZ28gdXAgdG8gdGhlaXIgbWF4IGZy
+ZXF1ZW5jaWVzIGZvciB0aGUKPiByZXN0IG9mIHRoZSBiZW5jaG1hcmtpbmcgcnVuCj4gICAgICJC
+YWQiIGJlaGF2aW9yOgo+ICAgICBhLiBPbmNlIHRoZSBjcHVmcmVxIGdvdmVybm9yIGlzIHN3aXRj
+aGVkIHRvICJwZXJmb3JtYW5jZSIgKGlmIGl0Cj4gd2FzIGFueXRoaW5nIGRpZmZlcmVudCBhdCBi
+b290KSwgYm90aCBDUFUgY2x1c3RlcnMgc3RheSBhdCB3aGF0ZXZlcgo+IGZyZXF1ZW5jaWVzIHRo
+ZXkgd2VyZSBhdCB3aGVuIHRoZSBzd2l0Y2ggb2NjdXJyZWQKPiAgICAgYi4gV2hpbGUgdGhlIGJl
+bmNobWFyayBydW5zIHRocm91Z2ggdGhlIHN0YWdlIHdoZXJlIGl0IHNheXMKPiAiQ2hlY2tpbmcg
+Y3B1ZnJlcSBPUFAiLCBDUFUgZnJlcXVlbmNpZXMgY29uc2VjdXRpdmVseSBkZWNyZWFzZSBmcm9t
+Cj4gdGhlICJwcmUtbWF4IiBPUFAgZnJlcXVlbmN5IHRvIHRoZSBtaW4gKG1heCBmcmVxdWVuY3kg
+bmV2ZXIgZ2V0cwo+IGFwcGxpZWQgb24gZWl0aGVyIG9mIHRoZSBjbHVzdGVycyEpCj4gICAgIGMu
+IEFmdGVyIHRoZSBiZW5jaG1hcmsgZmluaXNoZXMgdGhlIHN0YWdlIHdoZXJlIGl0IHNheXMgIkNo
+ZWNraW5nCj4gY3B1ZnJlcSBPUFAiLCBib3RoIENQVSBjbHVzdGVycyBzdGF5IGF0IHRoZWlyIG1p
+biBmcmVxdWVuY2llcyBmb3IgdGhlCj4gcmVzdCBvZiB0aGUgYmVuY2htYXJraW5nIHJ1bgo+IAo+
+IEkgc3VzcGVjdCBpdCBoYXMgc29tZXRoaW5nIHRvIGRvIHdpdGggdGhlIHRvcG1vc3QgT1BQIHNv
+bWVob3cgYmVjb21pbmcKPiB1bnNlbGVjdGFibGUgaW4gQVRGIHN0YXJ0aW5nIGZyb20gYmluYXJ5
+IEJMMzEgdjEuMDkgKGFuZCBzaW1pbGFybHkgaW4KPiBvcGVuc291cmNlIFRGLUEpLiBUaGlzIHRp
+bWUgSSBjb3VsZG4ndCByZXByb2R1Y2UgdGhlICJwZXJtYW5lbnRseQo+IHN0dWNrIiBDUFUgZnJl
+cXVlbmNpZXMgdGhvdWdoLgoKT3Blbi1zb3VyY2UgVEYtQSBvbmx5IHNlZW0gdG8gc3VwcG9ydCBy
+YXRlcyB1cCB0byAyMjA4IE1IeiBmb3IgY3B1YiBhbmQKMjAxNiBNSHogZm9yIGNwdWwsIHNlZSBb
+M10uIFRoZSBvcHAtMjMwNDAwMDAwMCBzaG91bGQgcHJvYmFibHkgYmUKcmVtb3ZlZCBmcm9tIHJr
+MzU3Ni5kdHNpLgoKQWxsIHJhdGVzIHN0YXJ0aW5nIGZyb20gODE2IE1IeiBhcmUgZXhwZWN0ZWQg
+dG8gdXNlIHRoZSBQVlRQTEwsIGkuZS4gdGhlCmNvbmZpZ3VyZWQgb3NjIHJpbmcgbGVuZ3RoIChi
+eSB0Zi1hKSBhbmQgb3BwIHZvbHRhZ2UgKGxpbnV4KSB3aWxsCnJlZ3VsYXRlIHRoZSByYXRlLiBU
+aGUgbWVhc3VyZWQgcmF0ZSBjYW4gdHlwaWNhbGx5IGFsc28gYmUgcmVhZCBmcm9tIGEKUFZUUExM
+IGdyZiByZWcgKDB4MTgpLgoKRm9yIHRoZSBHUFUgY2xvY2sgSSBoYXZlIGFuIGluY29taW5nIHNl
+cmllcyB0aGF0IHN3aXRjaCB0byB1c2UgR1BVClBWVFBMTCBpbnN0ZWFkIG9mIGEgbm9ybWFsIFBM
+TCwgc2VlIFs0XS4KClszXSBodHRwczovL2dpdGh1Yi5jb20vQVJNLXNvZnR3YXJlL2FybS10cnVz
+dGVkLWZpcm13YXJlL2Jsb2IvbWFzdGVyL3BsYXQvcm9ja2NoaXAvcmszNTc2L3NjbWkvcmszNTc2
+X2Nsay5jI0wyNjQtTDMwNApbNF0gaHR0cHM6Ly9naXRodWIuY29tL0t3aWJvby9saW51eC1yb2Nr
+Y2hpcC9jb21taXRzL25leHQtMjAyNTA0MjgtcmszNXh4LXNjbWktZ3B1LWNsay8KClJlZ2FyZHMs
+CkpvbmFzCgo+IAo+IEhlcmUgYXJlIHRoZSBnaXQgYmlzZWN0IHJlc3VsdHMgKHJ1bm5pbmcgaW4g
+cmtiaW4gcmVwbyk6Cj4gCj4gMGIzMzhmZDZhZTdhZDgxNjI5NWE3NWM4MGIwMDk2OGJiMTg2ODYy
+NSBpcyB0aGUgZmlyc3QgYmFkIGNvbW1pdAo+IGNvbW1pdCAwYjMzOGZkNmFlN2FkODE2Mjk1YTc1
+YzgwYjAwOTY4YmIxODY4NjI1IChIRUFEKQo+IEF1dGhvcjogWGlhb0RvbmcgSHVhbmcgPGRlcnJp
+Y2suaHVhbmdAcm9jay1jaGlwcy5jb20+Cj4gRGF0ZTogICBGcmkgSnVuIDI4IDE3OjQ3OjU1IDIw
+MjQgKzA4MDAKPiAKPiAgICAgcmszNTc2OiBibDMxOiB1cGRhdGUgdmVyc2lvbiB0byB2MS4wOQo+
+IAo+ICAgICBCdWlsZCBmcm9tIEFURiBjb21taXQ6Cj4gICAgICAgICAyODZjMDEzYjIgcGxhdDog
+cm9ja2NoaXA6IHJrMzU3NjogQWRkIHN1cHBvcnQgdG8gc2V0IGxvdyBsZW5ndGgKPiAgICAgdXBk
+YXRlIGZlYXR1cmU6Cj4gICAgICAgICAyODZjMDEzYjIgcGxhdDogcm9ja2NoaXA6IHJrMzU3Njog
+QWRkIHN1cHBvcnQgdG8gc2V0IGxvdyBsZW5ndGgKPiAgICAgICAgIDVmYjc4Y2Q2NCByb2NrY2hp
+cDogdWFydDogc3dpdGNoIHRvIGxvb3BiYWNrIG1vZGUgYmVmb3JlCj4gY2hlY2tpbmcgYnVzeSBz
+dGF0dXMKPiAgICAgICAgIDAyZmYzYjBkYSByb2NrY2hpcDogdWFydDogc2F2ZSB1YXJ0IHJlZ2lz
+dGVyIG9uY2UKPiAgICAgICAgIDIzYmQ0Njg0ZSBwbGF0OiByazM1NzY6IHN1cHBvcnQgdG8gc3dp
+dGNoIGhwdGltZXIgdG8gMUcKPiAgICAgICAgIGI0ODMzZTk4OCBwbGF0OiByazM1NzY6IHJlbW92
+ZSBBVVRPQ1NfRU5fQ09VTlQKPiAgICAgICAgIDQzN2VkNTljYiBwbGF0OiByb2NrY2hpcDogcmsz
+NTc2OiBzdXBwb3J0IGFjbGtfc2VuY3VyZV9zIGVuYWJsZQo+ICAgICAgICAgNmQ4YzY3ZDZhIHBs
+YXQ6IHJrMzU3Njogc3VwcG9ydCBwb3dlcm9mZiBzY3UxIHdoZW4gY3B1NH5jcHU3IG9mZgo+IAo+
+ICAgICBDaGFuZ2UtSWQ6IEkwZmNiNWFmZWZjYzM4NjVjZjhjNDEzYjRjMGVkMDAyMzRkMjY3NWNi
+Cj4gICAgIFNpZ25lZC1vZmYtYnk6IFhpYW9Eb25nIEh1YW5nIDxkZXJyaWNrLmh1YW5nQHJvY2st
+Y2hpcHMuY29tPgo+IAo+ICBSS1RSVVNUL1JLMzU3NlRSVVNULmluaSAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KPiAgYmluL3JrMzUve3JrMzU3Nl9ibDMxX3YxLjA4
+LmVsZiA9PiByazM1NzZfYmwzMV92MS4wOS5lbGZ9IHwgQmluCj4gMzQ5MDMyIC0+IDM0OTAzMiBi
+eXRlcwo+ICBkb2MvcmVsZWFzZS9SSzM1NzZfQ04ubWQgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgfCAgMTMgKysrKysrKysrKysrKwo+ICBkb2MvcmVsZWFzZS9SSzM1NzZfRU4ubWQg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMTQgKysrKysrKysrKysrKysKPiAg
+NCBmaWxlcyBjaGFuZ2VkLCAyOCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gIHJlbmFt
+ZSBiaW4vcmszNS97cmszNTc2X2JsMzFfdjEuMDguZWxmID0+IHJrMzU3Nl9ibDMxX3YxLjA5LmVs
+Zn0gKDgyJSkKPiAKPiBbMV0gaHR0cHM6Ly9naXRodWIuY29tL3JvY2tjaGlwLWxpbnV4L3JrYmlu
+LmdpdAo+IFsyXSBodHRwczovL2dpdGh1Yi5jb20vVGhvbWFzS2Fpc2VyL3NiYy1iZW5jaAo+IAo+
+IERlcnJpY2ssIGlmIHlvdSBjb3VsZCBjaGltZSBpbiBvbiB3aGF0IG1pZ2h0IGJlIGdvaW5nIG9u
+IGhlcmUsIHRoYXQKPiB3b3VsZCBiZSBncmVhdGx5IGFwcHJlY2lhdGVkIDopCj4gCj4gQmVzdCBy
+ZWdhcmRzLAo+IEFsZXhleQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
