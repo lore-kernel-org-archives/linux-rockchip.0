@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93817C7115B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 19:56:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D3D3C8300F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Jun 2025 19:56:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DLUeHsoUid13snipb7iviOH4BEj82+i7qCD00+ZdVIc=; b=ZlApiIeyPLjZT/
-	r4LbnY8HQSFP5xaQWDC0U1RwS8LJDOEIef4AW3CyCNfrCrninVSUXQt6fanzWszXwKyuK9ZzoGx9c
-	kP5PbotKNDG0Q1aSusmocUAIFSAAAg8F3be0ZKaJqAuElj4eNJy+5sbMpH0Fel3xDAvBeIXDK1mPp
-	aPy5KAOz+gktLX3CkcArPkaXvnNz9d4TaYHiU3M9tNI8nJKFM0n0QupRnU1d5is/BmFZ3aHYtVT2w
-	aOmunqW1pLQT0qEUlNN2vsJfXJVtUeAXnWsxfStA37dUi3zn7TIBBCed+L2c0crDUs9ZK7eopreEN
-	Lr4s9vRiLLk/qIE24Wgw==;
+	List-Owner; bh=l1e/x9haXenhfi6pMm00TB4aylxO0vX8Yb3dJm7WFNs=; b=X++fmuR5iXxiuM
+	E8/K+B/5Z5HM1VuYdZfCXD2CLeqbwak7oSBasDbmHZzXykdkSA5DHE/GuTwUxuwJqSDNDP+6eJeMO
+	tQgADI1BaDKmt9tyk8S5N2QHq6sqsWoHsgbISmWaPrxRPq+bszK+oNvE3d/mRVdJ8ViIX/hH8rYzL
+	w78qU0FkMz+lOvC8RxiQQpWMjwK1Dgw96olop6uTKNOCqUqQe4b5afBvry1JpZwBVUQZtAkL02GPi
+	+iOO/XqKqq0cvpGxcNKkANZf8CJkxIPMBCAiXVEJdVSR2dKfv07Wb1AvFret7J3hpGaLxx76qh7Ak
+	ePAKPX9DZQY8n6/TzN0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTnHH-00000003sla-1HNR;
-	Mon, 23 Jun 2025 19:56:27 +0000
+	id 1uTnHJ-00000003sok-076n;
+	Mon, 23 Jun 2025 19:56:29 +0000
 Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTjk9-00000003MhG-3BtV;
-	Mon, 23 Jun 2025 16:10:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750694961; cv=none; 
+	id 1uTjkb-00000003Mq1-1ws8;
+	Mon, 23 Jun 2025 16:10:30 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1750694988; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=mncMv78fuHFxiGfT/LI0BwqI5tBKrSKx1OMEMcym0W7GGgBmFppdcGBn9ZjwOuwv7LI0MP6j2kCWjArwkFi8V/E0XZWssGlu/Xjg0WdarsOezwxO6N9slWIktT8QE5ld9VWbZ8uH7+/O0RVuFeG+wBqP3WoJl4ueqNFdMwuhIHM=
+	b=cQ2N+IGixkP2aaQ5UXF6V5lMJAcXbf4VGy9C6I6eP7vadIKKKbSa6io98A+qPjwdMAG5c4Y/+yM8oASFS2+FcLHHUp44H5DSxsEH4rYdFXLSqsHZA4mPGKwRS5aenUWldjAteT2huZRwHNMRZ4rX7Uz4hL3c6q0LuYGsTTFDwwQ=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750694961; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=D8+zxl+COrWMTrUlyFMUFr4AK3BhUh+Xg/ajfhme3B4=; 
-	b=lhNFQvdAvxL4jBTRo+s0vtfxm0NYAyPYBEAxKWF7NgJ8IVJ03Rbva/97/Gd5eflmK2+Ru6wCIghT7WLPKreYi1hGzNnCPdOLflNf+OYE3RPBHDfFmvNm7ldpNMfCpo0ys6naENwEqKECayn4QZOxT045QcATEM7aGOvQjevUPIQ=
+	t=1750694988; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=TsAvYRXNRfH8KCEl7dLPCJt6A++zI5/qvE+2kyphiOI=; 
+	b=m6DqzHn0qZp9DXv9SOq0fu9zxtAxIlcCEHJRdS13wu6vxGiOl7s60nB2g4sE0mwCAA0cxTn2/EeiGxORL3Z8xvdLrRWOQYdJjOMPcZAot62R3FiatWjFxi5MEen6MLS7y72GJ3P3wSZvIZ1+GnRZXoD2Cec7/9Uw97y5Es1l3Nw=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750694961;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750694988;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=D8+zxl+COrWMTrUlyFMUFr4AK3BhUh+Xg/ajfhme3B4=;
-	b=M7qaQ4c5QLmqFuae9rKn/v/ZSkKDEE96Q6Qf63pLaElEnIvdivLm9KVphHRg2JPW
-	5cZTPf28BqZCJFNkLpih6p0OJQ3jmBTmPr91vaFjmd0K88t9gIWJl68FCd2bhMBrQ3z
-	CGYMzywICUe/NugSGGpBzBjVILq8jsaWPNHNNttI=
-Received: by mx.zohomail.com with SMTPS id 1750694960672118.32026456856795;
-	Mon, 23 Jun 2025 09:09:20 -0700 (PDT)
+	bh=TsAvYRXNRfH8KCEl7dLPCJt6A++zI5/qvE+2kyphiOI=;
+	b=KQk6HRvBD4gLQV6ahaEy7C5wl/BlNOOwSwoFRCTV7TkA3EOiW8kJzdpUlkhxiYH8
+	dnCjdh1PyJGnmerfszhtnaOOdoVevYdgl7r0PB7E53ZHmJNNXRniJdFLFqNZ8AquK4F
+	3ZvFZm1vsVfLVSHOb+sheSYv4IB1j3IMj9zoQ3p8=
+Received: by mx.zohomail.com with SMTPS id 1750694986506634.2794375369417;
+	Mon, 23 Jun 2025 09:09:46 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 23 Jun 2025 18:05:44 +0200
-Subject: [PATCH v2 16/20] PCI: rockchip: Switch to FIELD_PREP_WM16* macros
+Date: Mon, 23 Jun 2025 18:05:46 +0200
+Subject: [PATCH v2 18/20] PM / devfreq: rockchip-dfi: switch to
+ FIELD_PREP_WM16 macro
 MIME-Version: 1.0
-Message-Id: <20250623-byeword-update-v2-16-cf1fc08a2e1f@collabora.com>
+Message-Id: <20250623-byeword-update-v2-18-cf1fc08a2e1f@collabora.com>
 References: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
 In-Reply-To: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
 To: Yury Norov <yury.norov@gmail.com>, 
@@ -85,8 +86,8 @@ To: Yury Norov <yury.norov@gmail.com>,
  Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_091001_918477_685E6984 
-X-CRM114-Status: GOOD (  14.22  )
+X-CRM114-CacheID: sfid-20250623_091029_557118_2EF1276C 
+X-CRM114-Status: GOOD (  16.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,92 +108,107 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
 drivers that use constant masks.
 
-The Rockchip PCI driver, like many other Rockchip drivers, has its very
-own definition of HIWORD_UPDATE.
+Like many other Rockchip drivers, rockchip-dfi brings with it its own
+HIWORD_UPDATE macro. This variant doesn't shift the value (and like the
+others, doesn't do any checking).
 
-Remove it, and replace its usage with either FIELD_PREP_WM16, or two new
-header local macros for setting/clearing a bit with the high mask, which
-use FIELD_PREP_WM16_CONST internally. In the process, ENCODE_LANES
-needed to be adjusted, as FIELD_PREP_WM16* shifts the value for us.
+Remove it, and replace instances of it with hw_bitfield.h's
+FIELD_PREP_WM16.  Since FIELD_PREP_WM16 requires contiguous masks and
+shifts the value for us, some reshuffling of definitions needs to
+happen.
 
-That this is equivalent was verified by first making all FIELD_PREP_WM16
-instances FIELD_PREP_WM16_CONST, then doing a static_assert() comparing
-it to the old macro (and for those with parameters, static_asserting for
-the full range of possible values with the old encode macro).
+This gives us better compile-time error checking, and in my opinion,
+nicer code.
 
-What we get out of this is compile time error checking to make sure the
-value actually fits in the mask, and that the mask fits in the register,
-and also generally less icky code that writes shifted values when it
-actually just meant to set and clear a handful of bits.
+Tested on an RK3568 ODROID-M1 board, and an RK3588 ROCK 5B board.
 
-Acked-by: Bjorn Helgaas <bhelgaas@google.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/pci/controller/pcie-rockchip.h | 35 +++++++++++++++++-----------------
- 1 file changed, 18 insertions(+), 17 deletions(-)
+ drivers/devfreq/event/rockchip-dfi.c | 27 +++++++++++++--------------
+ 1 file changed, 13 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 12bc8da59d73bef0ba1c9e94da01e15aacd4b87f..4f3042a54780ef0b5febc332bb4653ffeb3eb5bb 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -12,6 +12,7 @@
- #define _PCIE_ROCKCHIP_H
- 
- #include <linux/clk.h>
+diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+index 54effb63519653d20b40eed88681330983399a77..7ba68b7b7ebe37bef71b6f78abc88e117330d8fc 100644
+--- a/drivers/devfreq/event/rockchip-dfi.c
++++ b/drivers/devfreq/event/rockchip-dfi.c
+@@ -20,6 +20,7 @@
+ #include <linux/of.h>
+ #include <linux/of_device.h>
+ #include <linux/bitfield.h>
 +#include <linux/hw_bitfield.h>
- #include <linux/kernel.h>
- #include <linux/pci.h>
- #include <linux/pci-ecam.h>
-@@ -21,10 +22,10 @@
-  * The upper 16 bits of PCIE_CLIENT_CONFIG are a write mask for the lower 16
-  * bits.  This allows atomic updates of the register without locking.
-  */
--#define HIWORD_UPDATE(mask, val)	(((mask) << 16) | (val))
--#define HIWORD_UPDATE_BIT(val)		HIWORD_UPDATE(val, val)
-+#define HWORD_SET_BIT(val)		(FIELD_PREP_WM16_CONST((val), 1))
-+#define HWORD_CLR_BIT(val)		(FIELD_PREP_WM16_CONST((val), 0))
+ #include <linux/bits.h>
+ #include <linux/perf_event.h>
  
--#define ENCODE_LANES(x)			((((x) >> 1) & 3) << 4)
-+#define ENCODE_LANES(x)			((((x) >> 1) & 3))
- #define MAX_LANE_NUM			4
- #define MAX_REGION_LIMIT		32
- #define MIN_EP_APERTURE			28
-@@ -32,21 +33,21 @@
+@@ -30,8 +31,6 @@
  
- #define PCIE_CLIENT_BASE		0x0
- #define PCIE_CLIENT_CONFIG		(PCIE_CLIENT_BASE + 0x00)
--#define   PCIE_CLIENT_CONF_ENABLE	  HIWORD_UPDATE_BIT(0x0001)
--#define   PCIE_CLIENT_CONF_DISABLE       HIWORD_UPDATE(0x0001, 0)
--#define   PCIE_CLIENT_LINK_TRAIN_ENABLE	  HIWORD_UPDATE_BIT(0x0002)
--#define   PCIE_CLIENT_LINK_TRAIN_DISABLE  HIWORD_UPDATE(0x0002, 0)
--#define   PCIE_CLIENT_ARI_ENABLE	  HIWORD_UPDATE_BIT(0x0008)
--#define   PCIE_CLIENT_CONF_LANE_NUM(x)	  HIWORD_UPDATE(0x0030, ENCODE_LANES(x))
--#define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
--#define   PCIE_CLIENT_MODE_EP            HIWORD_UPDATE(0x0040, 0)
--#define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
--#define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
-+#define   PCIE_CLIENT_CONF_ENABLE		HWORD_SET_BIT(0x0001)
-+#define   PCIE_CLIENT_CONF_DISABLE		HWORD_CLR_BIT(0x0001)
-+#define   PCIE_CLIENT_LINK_TRAIN_ENABLE		HWORD_SET_BIT(0x0002)
-+#define   PCIE_CLIENT_LINK_TRAIN_DISABLE	HWORD_CLR_BIT(0x0002)
-+#define   PCIE_CLIENT_ARI_ENABLE		HWORD_SET_BIT(0x0008)
-+#define   PCIE_CLIENT_CONF_LANE_NUM(x)		FIELD_PREP_WM16(0x0030, ENCODE_LANES(x))
-+#define   PCIE_CLIENT_MODE_RC			HWORD_SET_BIT(0x0040)
-+#define   PCIE_CLIENT_MODE_EP			HWORD_CLR_BIT(0x0040)
-+#define   PCIE_CLIENT_GEN_SEL_1			HWORD_CLR_BIT(0x0080)
-+#define   PCIE_CLIENT_GEN_SEL_2			HWORD_SET_BIT(0x0080)
- #define PCIE_CLIENT_LEGACY_INT_CTRL	(PCIE_CLIENT_BASE + 0x0c)
--#define   PCIE_CLIENT_INT_IN_ASSERT		HIWORD_UPDATE_BIT(0x0002)
--#define   PCIE_CLIENT_INT_IN_DEASSERT		HIWORD_UPDATE(0x0002, 0)
--#define   PCIE_CLIENT_INT_PEND_ST_PEND		HIWORD_UPDATE_BIT(0x0001)
--#define   PCIE_CLIENT_INT_PEND_ST_NORMAL	HIWORD_UPDATE(0x0001, 0)
-+#define   PCIE_CLIENT_INT_IN_ASSERT		HWORD_SET_BIT(0x0002)
-+#define   PCIE_CLIENT_INT_IN_DEASSERT		HWORD_CLR_BIT(0x0002)
-+#define   PCIE_CLIENT_INT_PEND_ST_PEND		HWORD_SET_BIT(0x0001)
-+#define   PCIE_CLIENT_INT_PEND_ST_NORMAL	HWORD_CLR_BIT(0x0001)
- #define PCIE_CLIENT_SIDE_BAND_STATUS	(PCIE_CLIENT_BASE + 0x20)
- #define   PCIE_CLIENT_PHY_ST			BIT(12)
- #define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
+ #define DMC_MAX_CHANNELS	4
+ 
+-#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
+-
+ /* DDRMON_CTRL */
+ #define DDRMON_CTRL	0x04
+ #define DDRMON_CTRL_DDR4		BIT(5)
+@@ -40,9 +39,6 @@
+ #define DDRMON_CTRL_LPDDR23		BIT(2)
+ #define DDRMON_CTRL_SOFTWARE_EN		BIT(1)
+ #define DDRMON_CTRL_TIMER_CNT_EN	BIT(0)
+-#define DDRMON_CTRL_DDR_TYPE_MASK	(DDRMON_CTRL_DDR4 | \
+-					 DDRMON_CTRL_LPDDR4 | \
+-					 DDRMON_CTRL_LPDDR23)
+ 
+ #define DDRMON_CH0_WR_NUM		0x20
+ #define DDRMON_CH0_RD_NUM		0x24
+@@ -143,29 +139,32 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ 			continue;
+ 
+ 		/* clear DDRMON_CTRL setting */
+-		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN |
+-			       DDRMON_CTRL_SOFTWARE_EN | DDRMON_CTRL_HARDWARE_EN),
++		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_TIMER_CNT_EN, 0) |
++			       FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0) |
++			       FIELD_PREP_WM16(DDRMON_CTRL_HARDWARE_EN, 0),
+ 			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
+ 
+ 		/* set ddr type to dfi */
+ 		switch (dfi->ddr_type) {
+ 		case ROCKCHIP_DDRTYPE_LPDDR2:
+ 		case ROCKCHIP_DDRTYPE_LPDDR3:
+-			ctrl = DDRMON_CTRL_LPDDR23;
++			ctrl = FIELD_PREP_WM16(DDRMON_CTRL_LPDDR23, 1) |
++			       FIELD_PREP_WM16(DDRMON_CTRL_LPDDR4, 0);
+ 			break;
+ 		case ROCKCHIP_DDRTYPE_LPDDR4:
+ 		case ROCKCHIP_DDRTYPE_LPDDR4X:
+-			ctrl = DDRMON_CTRL_LPDDR4;
++			ctrl = FIELD_PREP_WM16(DDRMON_CTRL_LPDDR23, 0) |
++			       FIELD_PREP_WM16(DDRMON_CTRL_LPDDR4, 1);
+ 			break;
+ 		default:
+ 			break;
+ 		}
+ 
+-		writel_relaxed(HIWORD_UPDATE(ctrl, DDRMON_CTRL_DDR_TYPE_MASK),
+-			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
++		writel_relaxed(ctrl, dfi_regs + i * dfi->ddrmon_stride +
++			       DDRMON_CTRL);
+ 
+ 		/* enable count, use software mode */
+-		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN, DDRMON_CTRL_SOFTWARE_EN),
++		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 1),
+ 			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
+ 
+ 		if (dfi->ddrmon_ctrl_single)
+@@ -195,8 +194,8 @@ static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
+ 		if (!(dfi->channel_mask & BIT(i)))
+ 			continue;
+ 
+-		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
+-			      dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
++		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0),
++			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
+ 
+ 		if (dfi->ddrmon_ctrl_single)
+ 			break;
 
 -- 
 2.50.0
