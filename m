@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB17CC77B7C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Jun 2025 03:53:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F748C7EE2A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Jun 2025 04:53:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UsTbrl52fVDsJmE0ZUQvBHARE3HIm19ulQUy5/He9hk=; b=SHXG+4+beUOg79
-	Q6t2MDhyM+Wr3mMo9eTAPMXmFxz2Ra7H7O3Pj0yRRneA5ttkYQmfjaYB0YyoznhGfafmpJwSBIkyH
-	cmM7GpJ2ZssVNmSAfsyRm+Su+0WZZt+6SOvkfF674x7gdzsP+tfh+fJ46FV8PwrFRn8ac++3qxyp1
-	MdAhugtow2f8fpSjJwJBgY/owuw54LQ/UMGskXGBF/XTwRjrJT9x3rVCvxJN/lczUu2iyHzP7Id29
-	Vr82LYR491jBAgnqttDgp0Xjq+5IXTt3NfW2zKu5IZTsYojCBR8Tr8yw3T94v60Xnn15ux2YO2+aW
-	Sz7ZRwJI0PNODG5ju2Pw==;
+	List-Owner; bh=XYpP+d8XuLqNU6L8fa0pdsk4jPMewkMk2k378LJqvb0=; b=XL0oUt+DHzLfGt
+	V4qCvgc1acXutoihQE4jT5nSld8gm4kS+9/6BJM3Y7RYt2GLuS4eEDgU3uN9XYQcgPhxrqjViKJ/S
+	O/dmlV4qZyhOu+VNrZyhgrVm2OBnAiuw8At/5i9IbTkBCq+f8lQbPoO6Jnupns2RyakJt0aFF12A+
+	p0XjHNOMjd/wnSEr+m4PSuTf5nzHb6v/YYqO5Hfp8Mp4RV/LsZXgtbnY/Extgrl0lvvbj3iPZvbhI
+	X5xcLzuQq7zt821zwy0K/zFkDu3gsBuMMXaCK4usE6boNSWU98E3l6lbfboaVNK2tGE9S7kSJ//EE
+	+H3JV5/2w3w7+lkkBfmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTuiu-00000004ZwZ-1qy2;
-	Tue, 24 Jun 2025 03:53:28 +0000
+	id 1uTvf6-00000004dfB-2QO4;
+	Tue, 24 Jun 2025 04:53:36 +0000
 Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTuVn-00000004YyK-0fQq;
-	Tue, 24 Jun 2025 03:39:56 +0000
+	id 1uTuUq-00000004YoQ-2YE7;
+	Tue, 24 Jun 2025 03:38:58 +0000
 Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id E0D6625A24;
-	Tue, 24 Jun 2025 05:39:53 +0200 (CEST)
+	by disroot.org (Postfix) with ESMTP id 6DA7825E27;
+	Tue, 24 Jun 2025 05:38:53 +0200 (CEST)
 X-Virus-Scanned: SPAM Filter at disroot.org
 Received: from layka.disroot.org ([127.0.0.1])
  by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uTZH90UD7F9r; Tue, 24 Jun 2025 05:39:53 +0200 (CEST)
+ id aFgsdalLs7_F; Tue, 24 Jun 2025 05:38:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1750736393; bh=Cn577oWTiuD78zUlriRAp/KCdUeL45UyKPT3ZBfVSNg=;
+	t=1750736332; bh=yODzzaf9Fz4zDNnq6RmSVB/x6hfsM2gZLYhXaaV9Fc8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=MvpY/fp/GC/4at6lGtQowOZO/8toL+OLqjdCqhMbcnsa8/RujJ1XHBCvyx83zh3UQ
-	 SPdXvB0xdxZ1NHDQaw0jB6H0bnGJfzavbFAQD/mndyAc9kISM1JNzxngKPd2Ex1rZF
-	 IG9PPmDHiSpId/9jZGyudx10QjTUp5tBZrG2Oytvwv/3dyc7RQ8LoQGgDPMGg6UOtX
-	 h0GgTcqm1z43zl3We7QRRkbR4V4shR1RrrJtfR6PlpUfAB8fh9aygUgsjuHA6mO20P
-	 XcSuczhntnHFm65KZQbJsZsSwdl+U0cAxsj3sjgW1omWilsy7FUvS/bXVB26snkmQr
-	 aD4PaKFyEKcOw==
+	b=Nfh7JAADztLWQODlkPoldvQSDqPRmIYLBqWG0Gmj7CKFNAhLcztG/ZlgX/O//39or
+	 oqOHrrJiy3R4LDUvhVExr5ke6E7LCVTGFVkVZs7JbFNYJeOwJgY0URA80F7i5Poab4
+	 C9ETlWWVjFfwBLOkD5T+b4hHcIGkwGqTw5p7mPuroUhdQAvzctL5Azc/ZbK/AS6/AE
+	 vU0jvLh9BjkZ45q68OArFjO2gGrzTNgPdkqSLdHPqfglW03IUgnTreQUxgTJN/23CN
+	 0vValTcbSTuewKqC9x3ahxxn08vuNHQnY+ucldNdynsJh06gUtZe4liCnJAyGy73Sr
+	 fqmhfRvYSAh6A==
 From: Yao Zi <ziyao@disroot.org>
 To: Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -61,16 +61,17 @@ Cc: linux-phy@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 6/6] arm64: dts: rockchip: Add naneng-combphy for RK3528
-Date: Tue, 24 Jun 2025 03:37:33 +0000
-Message-ID: <20250624033733.50197-7-ziyao@disroot.org>
+	linux-kernel@vger.kernel.org,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v4 3/6] dt-bindings: phy: rockchip: naneng-combphy: Add RK3528 variant
+Date: Tue, 24 Jun 2025 03:37:30 +0000
+Message-ID: <20250624033733.50197-4-ziyao@disroot.org>
 In-Reply-To: <20250624033733.50197-1-ziyao@disroot.org>
 References: <20250624033733.50197-1-ziyao@disroot.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_203955_357281_0EBF5B4A 
-X-CRM114-Status: UNSURE (   6.87  )
+X-CRM114-CacheID: sfid-20250623_203856_777189_DB38CF76 
+X-CRM114-Status: UNSURE (   7.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,56 +89,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RK3528 ships a naneng-combphy that is shared by PCIe and USB
-3.0 controllers. Describe it and the pipe-phy grf which it depends on.
+Rockchip RK3528 ships one naneng-combphy which operates in either PCIe
+or USB 3 mode. Document its compatible string.
 
 Signed-off-by: Yao Zi <ziyao@disroot.org>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3528.dtsi | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ .../devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-index a22db9d4b518..31b27096566a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-@@ -417,6 +417,11 @@ vpu_grf: syscon@ff340000 {
- 			reg = <0x0 0xff340000 0x0 0x8000>;
- 		};
- 
-+		pipe_phy_grf: syscon@ff348000 {
-+			compatible = "rockchip,rk3528-pipe-phy-grf", "syscon";
-+			reg = <0x0 0xff348000 0x0 0x8000>;
-+		};
-+
- 		vo_grf: syscon@ff360000 {
- 			compatible = "rockchip,rk3528-vo-grf", "syscon";
- 			reg = <0x0 0xff360000 0x0 0x10000>;
-@@ -1085,6 +1090,25 @@ dmac: dma-controller@ffd60000 {
- 			#dma-cells = <1>;
- 			arm,pl330-periph-burst;
- 		};
-+
-+		combphy: phy@ffdc0000 {
-+			compatible = "rockchip,rk3528-naneng-combphy";
-+			reg = <0x0 0xffdc0000 0x0 0x10000>;
-+			assigned-clocks = <&cru CLK_REF_PCIE_INNER_PHY>;
-+			assigned-clock-rates = <100000000>;
-+			clocks = <&cru CLK_REF_PCIE_INNER_PHY>,
-+				 <&cru PCLK_PCIE_PHY>,
-+				 <&cru PCLK_PIPE_GRF>;
-+			clock-names = "ref", "apb", "pipe";
-+			power-domains = <&power RK3528_PD_VPU>;
-+			resets = <&cru SRST_PCIE_PIPE_PHY>,
-+				 <&cru SRST_P_PCIE_PHY>;
-+			reset-names = "phy", "apb";
-+			#phy-cells = <1>;
-+			rockchip,pipe-grf = <&vpu_grf>;
-+			rockchip,pipe-phy-grf = <&pipe_phy_grf>;
-+			status = "disabled";
-+		};
- 	};
- };
- 
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
+index db293d2fbf1a..379b08bd9e97 100644
+--- a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
++++ b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
+@@ -12,6 +12,7 @@ maintainers:
+ properties:
+   compatible:
+     enum:
++      - rockchip,rk3528-naneng-combphy
+       - rockchip,rk3562-naneng-combphy
+       - rockchip,rk3568-naneng-combphy
+       - rockchip,rk3576-naneng-combphy
+@@ -108,7 +109,9 @@ allOf:
+       properties:
+         compatible:
+           contains:
+-            const: rockchip,rk3588-naneng-combphy
++            enum:
++              - rockchip,rk3528-naneng-combphy
++              - rockchip,rk3588-naneng-combphy
+     then:
+       properties:
+         resets:
 -- 
 2.49.0
 
