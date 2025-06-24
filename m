@@ -4,79 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B531AC77B7F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Jun 2025 12:19:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C915C77B7F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Jun 2025 12:33:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JNCAfYMUfSJdTDxAW8kCwR2v/Dam+KnTHhpIviW8ctg=; b=UwB4P+QG5ca9s2
-	XC8Qo1H3Mvo9XwaKm7YbDvUOfZS5gYM3tKA4d2VAUodJrcOdvvI69h65EYkaJuAQRiEhEO6sVeA/K
-	HWijKf8Gybpz6Cz5XjPkE8mSfmO9faciXNcAe+XnXnLfbg5GWQkUBwqpJQOMMdgoN/1N3R26NCKKc
-	2Gd/tkfKZJV34plJSWMquFnKNe3AwpE0zBR5lBVKClMQ5Im8V/MGo78mxC+rmcbcQXhK4ESg7v1AX
-	Dw1TDZ16BaPu7kpEw1M5zAeoLUE4m0fEkIWh1DrsF10xewkcAaCBGKv8g9nLxgB574Byayk/pW3nw
-	QPWuapM5VDLQzNTMfy6g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jVKhubm6CtMW71D3EVMvamXq2G4sxtNRpgIgPCJsPhc=; b=UDOWQejIeMNawU
+	Ebtafe+riI0IP+ig280fzDC9tCqJmFWxCiCKksm+CEEy7tJycKgLVJSuQUcIjYXGjNXbDZbBE4hyN
+	DIKRm8AjT6zqnqHzq5fkciso/uhOa2s4Q5lV+D6JAtKeWWIalq5URZOPCCcRHdXgVUueaGdL18twB
+	YB0rg4fD4nPLp3RgAjlJQbQ2stE7+1MKHIuzjyz69nQSVBWXsnIpmFVWsF/JglbrpqgoWbNcUxheH
+	2939m0K4wZ/vpMIiUZ9p+V6OcEyIDw6zETjjrLRV1EBOJxAXsfglZxCyXcVNfNPSQizoq11v4McrH
+	j7/Z5wtM5weCghJgK6LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU2cX-00000005XeQ-0tlg;
-	Tue, 24 Jun 2025 12:19:25 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1uU2px-00000005aye-3ym9;
+	Tue, 24 Jun 2025 12:33:17 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU2YY-00000005WX5-0jli;
-	Tue, 24 Jun 2025 12:15:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1750767318; x=1782303318;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=RS3Ir0XcZ0wtTv3mLgddInGQ7GnUnQCjtJ18Ke5dvSs=;
-  b=bNEdlFI43fANoe8ulXaDdFPRH4gM37lQxFNo6tjeXHPqwU/rqHTC3lXi
-   ylK0IMoVf90+m119HgNdZplv4osxeza4LTlM7Xk2fk+pfPR3zjAmlTj8i
-   rxfzBxrpY4cqkP6iSijSsHuISRSHSTGT9YzIF0axvrb1Ui4CARbFBdDfQ
-   ODuVpYe3bz8VOLWjRqpnwcUjY+y1+xOX3T4W1Pt9PM9Hu+aUeWW3O0FyT
-   +6zVNFCwnRCUMw3jk0DRm1FcWeVdhFClIdFVChnENR/gUUXfgW1+/yvbT
-   +uNoR3fNkHBvvN1FQpK8opDi08Jfp2ED/gt+9v9rqBP1PRAqg+khfOJiX
-   w==;
-X-CSE-ConnectionGUID: 1eIhLXa5TiylkHgtIGdbGw==
-X-CSE-MsgGUID: 46ndnT1TRVmsL4Gly7X47w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11474"; a="78423402"
-X-IronPort-AV: E=Sophos;i="6.16,261,1744095600"; 
-   d="scan'208";a="78423402"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2025 05:15:18 -0700
-X-CSE-ConnectionGUID: KMhT0jvkQG6oua368CzdYg==
-X-CSE-MsgGUID: WAduLzKvSmGFelTHd0uYrA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,261,1744095600"; 
-   d="scan'208";a="156295716"
-Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
-  by orviesa003.jf.intel.com with ESMTP; 24 Jun 2025 05:15:13 -0700
-Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uU2YR-000S5m-0z;
-	Tue, 24 Jun 2025 12:15:11 +0000
-Date: Tue, 24 Jun 2025 20:14:32 +0800
-From: kernel test robot <lkp@intel.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, joro@8bytes.org,
-	will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
-	nicolas.dufresne@collabora.com, jgg@ziepe.ca
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	iommu@lists.linux.dev, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com,
+	id 1uU2mX-00000005aBg-0NPu
+	for linux-rockchip@lists.infradead.org;
+	Tue, 24 Jun 2025 12:29:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1750768182;
+	bh=8WAPJMaT3RPf5H8MPe+6Y+/A6cCV8GHnSu9zGp/405I=;
+	h=From:To:Cc:Subject:Date:From;
+	b=qctFoLm4S1HCsLWt+Nk4SlF4ZMzxRq0J4jEg964rH2UaOfmjM/0VmQirKWRj4WuOA
+	 huRpTjdECUX+l4o6iHyG+0OXYZdHwNFKJeAC9xD1euHK0orJ+VHKk7U9zyiNBRlyP6
+	 UXzKdJq0WKtLNzcwNbqErR5o+SFtReDu6R1IJApUmYTVEX/7HR+2/8bQtBOz2tPw0n
+	 qu0DDoTIg5SOKyEUIW9+BQYniSd7/4R8Xo0qfqkk0SNe0cvt2/9Hgw8tAM7tN37r/c
+	 nPFyHNW2XQzDOoFPN6rFJZTy8Cs4pmbkWcl3L79XmsL0tUCiGxoK669wiYhG1P3kiI
+	 aJiy31f9T0lmw==
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ed49:23ab:f92:d8a4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8B6F517E0FDB;
+	Tue, 24 Jun 2025 14:29:42 +0200 (CEST)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: nicolas.dufresne@collabora.com,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	hverkuil@xs4all.nl
+Cc: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v4 3/5] iommu: Add verisilicon IOMMU driver
-Message-ID: <202506242057.NVRNN4W1-lkp@intel.com>
-References: <20250623153931.158765-4-benjamin.gaignard@collabora.com>
+Subject: [PATCH] media: verisilicon: Export only needed pixels formats.
+Date: Tue, 24 Jun 2025 14:29:38 +0200
+Message-ID: <20250624122938.62004-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250623153931.158765-4-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_051518_250482_13F13DEF 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20250624_052945_279114_4B41B2AC 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,108 +78,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
+When enumerating the pixels formats check if the context
+request to only export post-processed pixels formats.
+The exception is when V4L2_FMTDESC_FLAG_ENUM_ALL is set, we
+need to export all pixels formats.
 
-kernel test robot noticed the following build warnings:
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Fixes: bcd4f091cf1e ("media: verisilicon: Use V4L2_FMTDESC_FLAG_ENUM_ALL flag")
+---
+ drivers/media/platform/verisilicon/hantro_v4l2.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-[auto build test WARNING on robh/for-next]
-[also build test WARNING on rockchip/for-next arm64/for-next/core linus/master v6.16-rc3 next-20250623]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/dt-bindings-vendor-prefixes-Add-Verisilicon/20250623-234734
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-patch link:    https://lore.kernel.org/r/20250623153931.158765-4-benjamin.gaignard%40collabora.com
-patch subject: [PATCH v4 3/5] iommu: Add verisilicon IOMMU driver
-config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20250624/202506242057.NVRNN4W1-lkp@intel.com/config)
-compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250624/202506242057.NVRNN4W1-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202506242057.NVRNN4W1-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/iommu/vsi-iommu.c:657:10: warning: variable 'err' is uninitialized when used here [-Wuninitialized]
-     657 |                 return err;
-         |                        ^~~
-   drivers/iommu/vsi-iommu.c:643:9: note: initialize the variable 'err' to silence this warning
-     643 |         int err;
-         |                ^
-         |                 = 0
-   1 warning generated.
-
-
-vim +/err +657 drivers/iommu/vsi-iommu.c
-
-   638	
-   639	static int vsi_iommu_probe(struct platform_device *pdev)
-   640	{
-   641		struct device *dev = &pdev->dev;
-   642		struct vsi_iommu *iommu;
-   643		int err;
-   644	
-   645		iommu = devm_kzalloc(dev, sizeof(*iommu), GFP_KERNEL);
-   646		if (!iommu)
-   647			return -ENOMEM;
-   648	
-   649		iommu->dev = dev;
-   650	
-   651		iommu->regs = devm_platform_ioremap_resource(pdev, 0);
-   652		if (IS_ERR(iommu->regs))
-   653			return -ENOMEM;
-   654	
-   655		iommu->num_clocks = devm_clk_bulk_get_all(dev, &iommu->clocks);
-   656		if  (iommu->num_clocks < 0)
- > 657			return err;
-   658	
-   659		err = clk_bulk_prepare(iommu->num_clocks, iommu->clocks);
-   660		if (err)
-   661			return err;
-   662	
-   663		iommu->irq = platform_get_irq(pdev, 0);
-   664		if (iommu->irq < 0)
-   665			return iommu->irq;
-   666	
-   667		err = devm_request_irq(iommu->dev, iommu->irq, vsi_iommu_irq,
-   668				       IRQF_SHARED, dev_name(dev), iommu);
-   669		if (err)
-   670			goto err_unprepare_clocks;
-   671	
-   672		spin_lock_init(&iommu->lock);
-   673		dma_set_mask_and_coherent(dev, DMA_BIT_MASK(32));
-   674		platform_set_drvdata(pdev, iommu);
-   675	
-   676		pm_runtime_set_autosuspend_delay(dev, 100);
-   677		pm_runtime_use_autosuspend(dev);
-   678		pm_runtime_enable(dev);
-   679	
-   680		err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
-   681		if (err)
-   682			goto err_runtime_disable;
-   683	
-   684		err = iommu_device_register(&iommu->iommu, &vsi_iommu_ops, dev);
-   685		if (err)
-   686			goto err_remove_sysfs;
-   687	
-   688		return 0;
-   689	
-   690	err_remove_sysfs:
-   691		iommu_device_sysfs_remove(&iommu->iommu);
-   692	err_runtime_disable:
-   693		pm_runtime_disable(dev);
-   694	err_unprepare_clocks:
-   695		clk_bulk_unprepare(iommu->num_clocks, iommu->clocks);
-   696		return err;
-   697	}
-   698	
-
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 7c3515cf7d64..7869faf921f4 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -222,6 +222,7 @@ static int vidioc_enum_fmt(struct file *file, void *priv,
+ 	unsigned int num_fmts, i, j = 0;
+ 	bool skip_mode_none, enum_all_formats;
+ 	u32 index = f->index & ~V4L2_FMTDESC_FLAG_ENUM_ALL;
++	bool need_postproc = ctx->need_postproc;
+ 
+ 	/*
+ 	 * If the V4L2_FMTDESC_FLAG_ENUM_ALL flag is set, we want to enumerate all
+@@ -230,6 +231,9 @@ static int vidioc_enum_fmt(struct file *file, void *priv,
+ 	enum_all_formats = !!(f->index & V4L2_FMTDESC_FLAG_ENUM_ALL);
+ 	f->index = index;
+ 
++	if (enum_all_formats)
++		need_postproc = HANTRO_AUTO_POSTPROC;
++
+ 	/*
+ 	 * When dealing with an encoder:
+ 	 *  - on the capture side we want to filter out all MODE_NONE formats.
+@@ -242,7 +246,7 @@ static int vidioc_enum_fmt(struct file *file, void *priv,
+ 	 */
+ 	skip_mode_none = capture == ctx->is_encoder;
+ 
+-	formats = hantro_get_formats(ctx, &num_fmts, HANTRO_AUTO_POSTPROC);
++	formats = hantro_get_formats(ctx, &num_fmts, need_postproc);
+ 	for (i = 0; i < num_fmts; i++) {
+ 		bool mode_none = formats[i].codec_mode == HANTRO_MODE_NONE;
+ 		fmt = &formats[i];
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
