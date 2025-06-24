@@ -4,81 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81923CCD1A7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57D3CCCD1A5
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:17:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Mime-Version:
-	References:In-Reply-To:Message-ID:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=upRzYaVra4zINtVpQmnYqQg824UBQz7Kp+11YprYhpE=; b=ZVp4MVYv/TSKugy/tcQt7RefVE
-	VSES6R2bJ5algHEm2Wpis9wU4dXyr556i+jHI8dWfdKlDe+9/pZLS82+w0wYIBU9+L1XtkhShX75U
-	1WG36B1Xj+s5oVNy3En6WrGcw4AdxxIfOa98t/LUySsAk0lfoigvO5A0UWjegdaITvJUcl72VSlxo
-	KAH8G9wbA4yOcRygTtSSQwCCwGjgs0BlSFRIw76uBfUlUOT5+jhkMamtW1FTfi4ubNo9H042fCxGq
-	qMNH74HevJ0WB8j87zVWQQUpynrpYCK1EG1+IWlZCQfdA1I0dlHgqREhLbwZWcaYxQeN+AA6ujOX2
-	WTP0HF/g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7kNGuMwCA9XOzpTV4qfh41gEL4S2goUMtn16VOJpUok=; b=voQgJt/+q3IbjD
+	joqOqNDrh7+el5QloDCJ9FF7Kjjcvy598Qh+FW5bwW0RIMKvKR/GZ0kpOsu+1T/vVLQRFYUOhTeuC
+	UX4vf6TlNAX1IT/whtO89SgOBh1YSQiEea9EKskok4Y+s4q2hamcNtWBOEEC8hunQxweNRI9xuxUZ
+	pCt932VguJ1VwmE/XtU0o+g9WQrxShjF9VLpDpQK9krXmmVbigrwjucbETQoEywDvb9kMYWJE8mMi
+	a3K6AjOb1UqVipIp/SlnJGhgFv9o7Ixx7F1lR0kph+A7bVJYb8QphgB+g3vmN7NqlPVnRnnd6+MMv
+	ua3jbWksE4RMSmlfQS1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoox-0000000DMbw-0DuP;
+	id 1vAoox-0000000DMca-1q7W;
 	Mon, 20 Oct 2025 12:17:03 +0000
-Received: from mxct.zte.com.cn ([58.251.27.85])
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPB3D-00000008dc4-0o3O;
-	Wed, 11 Jun 2025 02:18:52 +0000
-Received: from mxde.zte.com.cn (unknown [10.35.20.165])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mxct.zte.com.cn (FangMail) with ESMTPS id 4bH8KW1M0kz57fb;
-	Wed, 11 Jun 2025 10:11:27 +0800 (CST)
-Received: from mxhk.zte.com.cn (unknown [192.168.250.138])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mxde.zte.com.cn (FangMail) with ESMTPS id 4bH8KM1WDjz4xBTJ;
-	Wed, 11 Jun 2025 10:11:19 +0800 (CST)
-Received: from mse-fl1.zte.com.cn (unknown [10.5.228.132])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mxhk.zte.com.cn (FangMail) with ESMTPS id 4bH8K31lSsz5B1Gv;
-	Wed, 11 Jun 2025 10:11:03 +0800 (CST)
-Received: from xaxapp05.zte.com.cn ([10.99.98.109])
-	by mse-fl1.zte.com.cn with SMTP id 55B2AotE031617;
-	Wed, 11 Jun 2025 10:10:50 +0800 (+08)
-	(envelope-from shao.mingyin@zte.com.cn)
-Received: from mapi (xaxapp01[null])
-	by mapi (Zmail) with MAPI id mid32;
-	Wed, 11 Jun 2025 10:10:52 +0800 (CST)
-Date: Wed, 11 Jun 2025 10:10:52 +0800 (CST)
-X-Zmail-TransId: 2af96848e5ac313-fd045
-X-Mailer: Zmail v1.0
-Message-ID: <202506111010521118VJaiO_pb0rD7b3daxqox@zte.com.cn>
-In-Reply-To: <6b9d5edf-7186-4d7b-814c-5c3f306c68db@kernel.org>
-References: 20250610193403161UQCV5cVGXCRVDheTb7jvi@zte.com.cn,6b9d5edf-7186-4d7b-814c-5c3f306c68db@kernel.org
-Mime-Version: 1.0
-From: <shao.mingyin@zte.com.cn>
-To: <krzk@kernel.org>
-Cc: <ulf.hansson@linaro.org>, <changhuang.liang@starfivetech.com>,
-        <geert+renesas@glider.be>, <magnus.damm@gmail.com>, <heiko@sntech.de>,
-        <alim.akhtar@samsung.com>, <walker.chen@starfivetech.com>,
-        <sebastian.reichel@collabora.com>, <detlev.casanova@collabora.com>,
-        <finley.xiao@rock-chips.com>, <shawn.lin@rock-chips.com>,
-        <pgwipeout@gmail.com>, <qiu.yutan@zte.com.cn>,
-        <linux-pm@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <yang.yang29@zte.com.cn>,
-        <xu.xin16@zte.com.cn>, <yang.tao172@zte.com.cn>,
-        <ye.xingchen@zte.com.cn>
-Subject: =?UTF-8?B?UmU6IFtQQVRDSCB2Ml0gcG1kb21haW46IFVzZSBzdHJfZW5hYmxlX2Rpc2FibGUtbGlrZSBoZWxwZXJz?=
-X-MAIL: mse-fl1.zte.com.cn 55B2AotE031617
-X-Fangmail-Anti-Spam-Filtered: true
-X-Fangmail-MID-QID: 6848E5CD.005/4bH8KW1M0kz57fb
-X-Bad-Reply: References and In-Reply-To but no 'Re:' in Subject.
+	id 1uU14R-00000005Ki3-38Ek;
+	Tue, 24 Jun 2025 10:40:09 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1750761604;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=PmKtYLO9DDYaj9Me5RnB2od40m2nfSC9/3iVyLRTgPc=;
+	b=v1IFWcFrbObYtAZ/RT0Kppv2+R1ysQJUiAOhyBDBdBD7GRafKVhWIJlEp4M1/MAbW7r3Ca
+	o8ExT+FJNwE1MLi5ZHj7mixRk7DPF7y0JESsK+b/BXPx0H36L3GknAlPGKQ80sDZSd8kX8
+	c7tk3xzYOhkh9+PB8l0sOAqBJbObspXXOYombtNTWorYQc/dnlFuIdXCWjoZNydWHsEEfw
+	BxAB1cxurgSdDrVSKVwi91WSkw72/7/zhYIxKx2zfbMR8WyyBWVel7X/khQj5qlBzANr+W
+	waHxljQ3WDmwbOBvDQ6fj/PD/LbBRXtKBrQTzgU9iEnxcn0NlO2wYO/ak4OZtw==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1750761604;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=PmKtYLO9DDYaj9Me5RnB2od40m2nfSC9/3iVyLRTgPc=;
+	b=3q5D0uT4oSfP2VhfCp/l4dQktoBuSpc64H38sBuCNB8bE8D63GfRugryCyLDa3R+2guT87
+	o5CUyJOaQUdlplCw==
+To: Pan Chuang <panchuang@vivo.com>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui
+ <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Miquel Raynal
+ <miquel.raynal@bootlin.com>, Markus Mayer <mmayer@broadcom.com>, Broadcom
+ internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>, Shawn Guo
+ <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
+ Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
+ zhanghongchen <zhanghongchen@loongson.cn>, Yinbo Zhu
+ <zhuyinbo@loongson.cn>, Amit Kucheria <amitk@kernel.org>, Thara Gopinath
+ <thara.gopinath@gmail.com>, Niklas =?utf-8?Q?S=C3=B6derlund?=
+ <niklas.soderlund@ragnatech.se>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Heiko
+ Stuebner <heiko@sntech.de>, Bartlomiej Zolnierkiewicz
+ <bzolnier@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Vasily Khoruzhick
+ <anarsoul@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>, Chen-Yu Tsai
+ <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland
+ <samuel@sholland.org>, Thierry Reding <thierry.reding@gmail.com>, Jonathan
+ Hunter <jonathanh@nvidia.com>, Kunihiko Hayashi
+ <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Srinivas Pandruvada
+ <srinivas.pandruvada@linux.intel.com>, Greg KH
+ <gregkh@linuxfoundation.org>, Peter Zijlstra <peterz@infradead.org>,
+ =?utf-8?Q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>,
+ Conor Dooley
+ <conor.dooley@microchip.com>, Julien Panis <jpanis@baylibre.com>, Arnd
+ Bergmann <arnd@arndb.de>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=
+ <u.kleine-koenig@baylibre.com>,
+ Colin Ian King <colin.i.king@gmail.com>, Raphael Gallais-Pou
+ <rgallaispou@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, "Jiri Slaby (SUSE)"
+ <jirislaby@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Andrew Morton <akpm@linux-foundation.org>, Costa Shulyupin
+ <costa.shul@redhat.com>, Yury Norov <yury.norov@gmail.com>, Cheng-Yang
+ Chou <yphbchou0911@gmail.com>, Caleb Sander Mateos
+ <csander@purestorage.com>, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ imx@lists.linux.dev, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Yangtao Li <frank.li@vivo.com>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=
+ <u.kleine-koenig@pengutronix.de>, Jonathan Cameron
+ <Jonathan.Cameron@Huawei.com>, Pan Chuang <panchuang@vivo.com>
+Subject: Re: [PATCH v6 01/24] genirq/devres: Add
+ devm_request_threaded_irq_probe() and devm_request_irq_probe()
+In-Reply-To: <20250623123054.472216-2-panchuang@vivo.com>
+References: <20250623123054.472216-1-panchuang@vivo.com>
+ <20250623123054.472216-2-panchuang@vivo.com>
+Date: Tue, 24 Jun 2025 10:13:10 +0200
+Message-ID: <87h605o8vd.ffs@tglx>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_191851_410233_88053E70 
-X-CRM114-Status: GOOD (  11.01  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 05:16:52 -0700
+X-CRM114-CacheID: sfid-20250624_034007_944426_F589B578 
+X-CRM114-Status: GOOD (  29.31  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 05:16:55 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,43 +122,120 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
->> From: Shao Mingyin <shao.mingyin@zte.com.cn>
->> 
->> Replace ternary (condition ? "enable" : "disable") syntax and ternary
->> (condition ? "on" : "off") syntax with helpers from
->> string_choices.h because:
->> 1. Simple function call with one argument is easier to read.  Ternary
->>    operator has three arguments and with wrapping might lead to quite
->>    long code.
->> 2. Is slightly shorter thus also easier to read.
->> 3. It brings uniformity in the text - same string.
->> 4. Allows deduping by the linker, which results in a smaller binary
->>    file.
->
->So you just taken everything from the same my patch - even entire commit
->subject and commit description - and sent it as yours?
->
->https://lore.kernel.org/all/20250114203547.1013010-1-krzysztof.kozlowski@linaro.org/
->
->oh my, if doing EXACTLY the same keep original authorship - the From and
->Sob fields.
->
->Best regards,
->Krzysztof
-Dear Krzysztof,
-Thank you for your suggestions. I have carefully read your advice and
-made adjustments to the patches accordingly. I used your patch as a
-reference standard, not just taking everything from the same your patch.
+On Mon, Jun 23 2025 at 20:30, Pan Chuang wrote:
+> +/**
+> + * devm_request_threaded_irq_probe - request irq for a managed device with error msg (recommended in probe)
+> + * @dev:	Device to request interrupt for
+> + * @irq:	Interrupt line to allocate
+> + * @handler:	Function to be called when the IRQ occurs
+> + * @thread_fn:	Function to be called in a threaded interrupt context. NULL
+> + *		for devices which handle everything in @handler
+> + * @irqflags:	Interrupt type flags
+> + * @devname:	An ascii name for the claiming device, dev_name(dev) if NULL
+> + * @dev_id:	A cookie passed back to the handler function
+> + * @info:	Optional additional error log
+> + *
+> + * This is a variant of the devm_request_threaded_irq function.
+> + * It will print an error message by default when the request fails,
+> + * and the consumer can add a special error msg.
+> + *
+> + * Except for the extra @info argument, this function takes the
+> + * same arguments and performs the same function as
+> + * devm_request_threaded_irq(). IRQs requested with this function will be
+> + * automatically freed on driver detach.
 
-Based on your suggestion, I have consolidated the series of patches for
-the pmdomain driver into a single patch. Additionally, following
-@changhuang's suggestion, I have supplemented the patch for
-drivers/pmdomain/starfive/jh71xx-pmu.c.
+I really have to ask why you need the extra info argument. It's not
+providing any really value.
 
-If there's anything inappropriate in this patch, I sincerely apologize.
+What's important when the interrupt request fails?
 
-Best regards,
-Mingyin
+    1) The device, which is identifiable by @devname and/or dev_name(@dev)
+
+    2) The interrupt number
+
+    3) The error code
+
+If you want to be more expressive then you can also print out the
+handler function symbols, which makes it even more useful to map back
+into the affected driver.
+
+As you cited correctly I said back then:
+
+  "So there is certainly an argument to be made that this particular
+   function should print a well formatted and informative error
+   message."
+
+This particular function is: devm_request_threaded_irq().
+
+IOW, I did not ask you should go an create a new one, right?
+
+The extra @info argument is just proliferating the nonsensical
+information which driver developers put into the output. I just looked
+through a couple of your thermal patches (hint, I had to chase them
+manually because you failed to thread them properly). While most of them
+provide NULL, the two adding 'alarm' are really not providing any useful
+information.
+
+The point is, that the information is aimed at developers and not to be
+helpful for Joe User to identify/fix a problem. If the driver
+developer/maintainer is not able to track back the information (name,
+number, error code) to the driver in question, then the added "foo" info
+is not going to make him any smarter.
+
+If that happens, then being able to map it back to the driver is only 1%
+of the problem analysis, simply because you need to decode the
+underlying problem (DT, vector exhaustion, memory exhaustion ....) to be
+able to address it.
+
+So just make devm_request.*irq() emit a uniform and informative message
+on fail and you can go and remove all the homebrewn useless error prints
+from the drivers.
+
+It does not matter at all if there are duplicated error messages for a
+release or two until all drivers have been cleaned up. This is not the
+common case and only rarely triggered. So what?
+
+> +int devm_request_threaded_irq_probe(struct device *dev, unsigned int irq,
+> +				    irq_handler_t handler, irq_handler_t thread_fn,
+> +				    unsigned long irqflags, const char *devname,
+> +				    void *dev_id, const char *info)
+> +{
+> +	int rc;
+> +
+> +	rc = devm_request_threaded_irq(dev, irq, handler, NULL, irqflags, devname, dev_id);
+
+This is just wrong as you fail to hand in thread_fn.
+
+Q: How was this code ever tested?
+A: Not at all.
+
+> Could you please consider merging the entire series into your branch? 
+
+You're seriously asking that for something which is so obviously broken?
+
+> +	if (rc) {
+> +		return dev_err_probe(dev, rc, "Failed to request %sinterrupt %u %s %s\n",
+> +				     thread_fn ? "threaded " : "", irq, devname ? : dev_name(dev),
+> +				     info ? : "");
+
+This is wrong too because devm_request_threaded_irq() allows you to hand
+in both a hard interrupt and a threaded handler and either one of them
+can be NULL.
+
+So what you want to add in devm_request_threaded_irq() is something like
+this:
+
+	if (rc < 0) {
+		return dev_err_probe(dev, rc, "request_irq(%u) %pS %pS %s\n",
+                        	     handler, thread_fn, devname ? : "");
+        }
+
+dev_err_probe() already prefixes the caller string with 'error ', so
+there is no need for a lenghty 'failed to request ....' novel.
+
+Thanks,
+
+        tglx
 
 _______________________________________________
 Linux-rockchip mailing list
