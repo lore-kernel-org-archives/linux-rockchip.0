@@ -4,69 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB27EC77B7C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jun 2025 01:29:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C376C7EE30
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Jun 2025 08:42:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/UeZJ6Oh8OebeR55x+6KHQliMjkfrQpxJVUJV5loORw=; b=0WzYewy0yh7XWCpNscZfPXoOXe
-	0gr06TWeVlDyFgo+TQ50oayGz/rJ8Pd08ENq/wX3N6oz2/iTfPLU1YwtapOY47B8baO+lt7u8AM6L
-	szQNJQ6vpzZwJLA5in/7RFokOp0vjZOuQejJ6jTX7rxPydgRA3OEa80U7gDzq8SHqGH2i0zmIsn5u
-	rjAmrddLcuSRm5rlSj+VL1MFsXDLSvpPuqv6pThcoUkIo2lNBg5g1dqrPoodIxfdO98LzHOy+fg5+
-	/KHQLTKoQfW4QT/3qd/4ZjTyqW4jZ/KqC696ONXcPnc9tJtH8uxXXKhDfD3Kicml2S9TtyxJu+0iq
-	jIepSJ5A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4cUPGYaiiBlrPlnJuktYkBIbnPnQ1ihxmBB4Z/VhSJo=; b=R3j6LGBscZtgGB
+	u2gOSp0MiEl295GYi4ElJnli56Q4pF1KwL+P5P9dak62FZ6Z0aeSQ3YE6Ec/9OYmrZLmWtgNXhhHp
+	hIAQ2xjNKaAwZSzDvhhLSqKn2m/oLCOEiRclmH/Yvt6ggpkU8ThZWa4Xvfn9lB7Wev4/3f29kZ4ll
+	dnMS79kSl/zoqGXcearW6l4IIPU8pDR14SQKUEiwZAe/JbGMy/hSNl86I+iwX9mGTy/BDiTTLnEU5
+	BpH24q4fhG62Oq7g8N7BtZbX/UrdRPhZ6L6RlmJL2POWsWKxvO/MmJplQ/mPElQI2jHf40FWEKeZ7
+	1NrnouLb1xc32JxEK/NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUEwu-00000007GHw-1776;
-	Wed, 25 Jun 2025 01:29:16 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uULhf-00000007zmt-2pgH;
+	Wed, 25 Jun 2025 08:41:59 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUEub-00000007G9g-3E9O;
-	Wed, 25 Jun 2025 01:26:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750814804; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=CY915g0J9dwjK/VuSxR3Ffb2t1N38ldg0Jy+2nyRBgZNhBed6yO5jhUrmOXr/QaA5NvXAItDUu/Cj80vNjRC2OiC4I5rSHa1vyZC0898ca22VdJC7pkWPV7Iuc9/efdnUIZFKykJ3hV9wL6elXVUTkT7q/CzgEcmF7SlZkYsg6c=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750814804; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=dqqXtvz4DGOvWCpKBme8+JTNyTNkM/rvX9pTimfD8GY=; 
-	b=lzp4Uqo4vMKzwljxxWSslksGnaQBzYt2u7eNQ6QY5jPXFdz4KcueMKnI7PRJShbhBG7LOXzQ022afliCV+oaodps0kewlIqW3oItZauEnMenl0TbubjrYtbmz9hgxM+4p2xXZ/CMYsPLrrJnfekxu8ZJ8KAQlAFKGnH5jwxSqek=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750814804;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=dqqXtvz4DGOvWCpKBme8+JTNyTNkM/rvX9pTimfD8GY=;
-	b=LahF0Ho6qrRFiBpniTx85Y2OsPAc3ydS7skuSodBj2tnsf/Kdb/3KOauk3+N+R6+
-	D5FwuUYG/IkZdjbKbT3m7rHIpShXP2NnEAGkj4ephBMxNPvqiGD7w8356EQpLjDJ8y9
-	x/sj4IxY7JVNo/95Kynr3zAi8Wb6BTfA16HmjWPQ=
-Received: by mx.zohomail.com with SMTPS id 1750814803177217.20995854983448;
-	Tue, 24 Jun 2025 18:26:43 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 118841809B8; Wed, 25 Jun 2025 03:26:38 +0200 (CEST)
-Date: Wed, 25 Jun 2025 03:26:37 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Quentin Schulz <quentin.schulz@cherry.de>
-Subject: Re: [PATCH v3 3/5] arm64: dts: rockchip: add header for RK8XX PMIC
- constants
-Message-ID: <nja7c4ikyoxpoque62c52eboa22gt4zt72vaseaoo5bbzyrlor@gte3jm2sbecv>
-References: <20250618-rk8xx-rst-fun-v3-0-081f02d3d348@cherry.de>
- <20250618-rk8xx-rst-fun-v3-3-081f02d3d348@cherry.de>
- <t3wbjpbw7phqvip4yvxm5kux6hor5pehzamrw6hjv3hq2b3j3n@zuf2vuhgpdpp>
- <7149b6a8-7715-4920-829d-5b416d40fc16@cherry.de>
+	id 1uUKry-00000007reE-1knO
+	for linux-rockchip@lists.infradead.org;
+	Wed, 25 Jun 2025 07:48:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7187061784;
+	Wed, 25 Jun 2025 07:48:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88541C4CEEA;
+	Wed, 25 Jun 2025 07:48:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750837713;
+	bh=wcxbDOO23BZSK9SuEAS8HrjXgynk1/RQtyt2aVRPI9g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Eosilbo1a2u7ZIOph35J9pAazHEt04/+SO+151EwKwNke744IyH4NyXjCLNf60pBS
+	 cwvDeXlnq6rLavGYUmVZt1m8j3lpPhrUEx4XSr2wjnwBGntgWaojhZBAd5XROkxjxf
+	 ozkxp4dSh5YLUGGTsYAf4noiL1Z38howiQReahs4TWooTvpyRu0EEnR5xiJou9e2mz
+	 nefeMarc1jT9Sb9UrYzj6wgR27gvON90TUz4n2Q6TYAysQT2BA9hBBHZGAIpR9Hj8j
+	 0grxp/QMPTJDnuaPDJNz/6hDk99NzcxxEHfFbDgmQmP2K94Ejp9jOGuxi/A/3qkxR4
+	 4ZidlxkWJc77w==
+Date: Wed, 25 Jun 2025 09:48:30 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, broonie@kernel.org, lgirdwood@gmail.com, sre@kernel.org, 
+	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org, 
+	lee@kernel.org, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V3 1/5] dt-bindings: mfd: ti,bq25703a: Add TI BQ25703A
+ Charger
+Message-ID: <5qeo2xqjprozcjd553qmozzrmbciuf66gic65tzw7jspoub5n4@5wzkqasisgcz>
+References: <20250623162223.184304-1-macroalpha82@gmail.com>
+ <20250623162223.184304-2-macroalpha82@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <7149b6a8-7715-4920-829d-5b416d40fc16@cherry.de>
-X-Zoho-Virus-Status: 1
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.4.2/250.326.2
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_182653_885578_859CB880 
-X-CRM114-Status: GOOD (  21.24  )
+Content-Disposition: inline
+In-Reply-To: <20250623162223.184304-2-macroalpha82@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,108 +68,143 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Semkowicz <dse@thaumatec.com>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Lee Jones <lee@kernel.org>, linux-kernel@vger.kernel.org, Quentin Schulz <foss+kernel@0leil.net>, Lukasz Czechowski <lukasz.czechowski@thaumatec.com>, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============9046185749568331794=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Mon, Jun 23, 2025 at 11:22:19AM -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Document the Texas instruments BQ25703A series of charger managers/
+> buck/boost regulators.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  .../devicetree/bindings/mfd/ti,bq25703a.yaml  | 121 ++++++++++++++++++
+>  1 file changed, 121 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml b/Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml
+> new file mode 100644
+> index 000000000000..0727f24b8e54
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml
+> @@ -0,0 +1,121 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/ti,bq25703a.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: BQ25703A Charger Manager/Buck/Boost Converter
+> +
+> +maintainers:
+> +  - Chris Morgan <macromorgan@hotmail.com>
+> +
+> +allOf:
+> +  - $ref: /schemas/power/supply/power-supply.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    const: ti,bq25703a
+> +
+> +  reg:
+> +    const: 0x6b
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  power-supplies: true
 
---===============9046185749568331794==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="lor23qymgpuiul5d"
-Content-Disposition: inline
+Drop, redundant.
 
+> +
+> +  monitored-battery:
+> +    description:
+> +      The phandle for a simple-battery connected to this gauge.
 
---lor23qymgpuiul5d
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 3/5] arm64: dts: rockchip: add header for RK8XX PMIC
- constants
-MIME-Version: 1.0
+This part is redundant. It cannot be anything else, according to
+power-supply.yaml
 
-Hi,
+> +      A minimum of constant-charge-current-max-microamp,
+> +      constant-charge-voltage-max-microvolt, and
+> +      voltage-min-design-microvolt are required.
 
-On Mon, Jun 23, 2025 at 11:48:27AM +0200, Quentin Schulz wrote:
-> On 6/19/25 5:51 PM, Sebastian Reichel wrote:
-> > On Wed, Jun 18, 2025 at 12:32:42PM +0200, Quentin Schulz wrote:
-> > > From: Quentin Schulz <quentin.schulz@cherry.de>
-> > >=20
-> > > To make it easier to read the device tree, let's add constants for the
-> > > rockchip,reset-mode property values that are currently only applicable
-> > > to RK806 PMIC.
-> > >=20
-> > > Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
-> > > ---
-> > >   arch/arm64/boot/dts/rockchip/rk8xx.h | 18 ++++++++++++++++++
-> >=20
-> > I think this header should be in include/dt-bindings/, otherwise the
->=20
-> v2 did that and the feedback from dt-binding people was they didn't want =
-(as
-> far as I understood) unused constants as ABI[1][2].
->=20
-> [1]
-> https://lore.kernel.org/all/704d75df-a484-4da3-9bcb-85b480e2ecf0@kernel.o=
-rg/
-> [2]
-> https://lore.kernel.org/all/a9baf6b0-b668-4d10-b9de-b63eb3fd8f23@kernel.o=
-rg/
+This is fine.
 
-I wonder if it would be considered an ABI, if the drivers would use
-the values like this:
+> +
+> +  input-current-limit-microamp:
+> +    description:
+> +      Maximum total input current allowed used for both charging and
+> +      powering the device.
+> +    minimum: 50000
+> +    maximum: 6400000
+> +    default: 3250000
+> +
+> +  regulators:
+> +    type: object
+> +    additionalProperties: false
+> +    description:
+> +      Boost converter regulator output of bq257xx.
+> +
+> +    properties:
+> +      "usb-otg-vbus":
 
-switch (value_from_dt) {
-case RK806_RESTART:
-case RK806_RESET:
-case RK806_RESET_NOTIFY:
-    program_register(...);
-    break;
-default:
-    return dev_err_probe(dev, -EINVAL, "invalid restart setting");
-}
-
-IMHO register values not being an ABI is kind of weird, as this is a
-very strong ABI from my POV - it's just not defined by us. But I don't
-intent to fight for this, so ignore my comment :)
-
-Greetings,
-
--- Sebastian
-
---lor23qymgpuiul5d
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmhbUEoACgkQ2O7X88g7
-+prfGRAAhMwSZGvBSU4k92HD+ibNltYMwuzkm2IBNQ3+JJq/HlqKZcpbwMSWr/+y
-sjFgtalHlfR40P0lGMaXHuYW/cxy95VVa4Qmh+PQHgiijyWwdxFoHtHmvm+OHBCQ
-pV3ifwm6n6GdzEE3CbnAWlk8FnidWYjLTOwsQYkFPhX/4YL/A+cmkn/2HcBhK24v
-EI1n09NHzS9Q3pHXrNDuhkVYLWME8mdTDeje3rp9lJ8w5MA5a1aYU5AjDw6nobNf
-Didji/DO+WsQPX2TQ4PogSft9RPMx8HeXA0KO0kFguGfdKMcRoOfE6R9dvd4Xe9+
-JEOj6XQI0fl2Ql1eBIdh5uEzcTmnzbWgq15BXFpHOWYeg62eCM3QVOQDh3bkkDFE
-lXITizn3MmrsQ0w+xHKskAekDtIArt2gKB+HVrwXmd6eFPniH1WNbD6ZUsDq3sjX
-7DmXoN34UE1Sj9H7vheZGBS7bzNyxk/CGUnoZ6GQTGAVJ99E9WwqCGsK9GNwx57w
-k7uqOmIVt4dzbj9c47i80FQc7Ipp1OiZyhsBMlGjMSzEgg1q62O4GtAl4UI5qACh
-UEjAGubnqSOgfES9lhZ3sG1pnqV/KOGA9lZA78POC0oqFENuH5krigAazYNZ55tN
-9KZbpmolU2/lakgWt49Zcq8yPohbfgJYeOtM9Bz3ByUq6FvLmds=
-=ovhb
------END PGP SIGNATURE-----
-
---lor23qymgpuiul5d--
+Drop quotes. Is this the name of regulator called in datasheet? To which
+pin this corresponds to? I cannot find anything on usb-otg or usb_otg.
 
 
---===============9046185749568331794==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> +        type: object
+> +        $ref: /schemas/regulator/regulator.yaml
+> +
+> +        properties:
+> +          regulator-name: true
+> +          regulator-min-microamp:
+> +            minimum: 0
+> +            maximum: 6350000
+> +          regulator-max-microamp:
+> +            minimum: 0
+> +            maximum: 6350000
+> +          regulator-min-microvolt:
+> +            minimum: 4480000
+> +            maximum: 20800000
+> +          regulator-max-microvolt:
+> +            minimum: 4480000
+> +            maximum: 20800000
+> +          enable-gpios:
+> +            description:
+> +              The BQ25703 may require both a register write and a GPIO
+> +              toggle to enable the boost regulator.
+> +
+> +        additionalProperties: false
+
+Please place it after $ref.
+
+> +
+> +        required:
+> +          - regulator-name
+> +          - regulator-min-microamp
+> +          - regulator-max-microamp
+> +          - regulator-min-microvolt
+> +          - regulator-max-microvolt
+> +
+> +unevaluatedProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - input-current-limit-microamp
+> +  - monitored-battery
+> +  - power-supplies
+
+Keep the same order as in properties.
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============9046185749568331794==--
-
