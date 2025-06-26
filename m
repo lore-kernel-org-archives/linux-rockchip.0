@@ -4,109 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C51CC7EE32
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Jun 2025 09:50:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0742C7EE30
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Jun 2025 13:01:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G2/UPEXpGxSn/NAlclr936nnKV/bcfdTXsqriRZ3+xA=; b=Bot6rRCKa/Fj49
-	lJpTHw/A3+XRoeRMoan43Ad/xLIKgqgO7wLd55Y9b2AVmlLb/cbEzt/2gnc72Dl185HyjKegr2wT9
-	eXpM5/Meopu48ptLE1FcJpOJoK2dZYrmmdVArBsahbHOCGXnwOs3BUjlC2NtxzlO45YZxPbJHYTpW
-	ihBqc/TizsAOJ7tGNPrbt11Gg/eAsohsvBNfVHa3WbncK1hMZoBOkumLCTouXJ1d91jIoN8Z7JCx8
-	OjewamonAvfjwqKy0vpShooJz+k1ATUrANnb7wLDMhYPgLa1KaJxwK/fm9T/gzEJacyaVL8EdLGfa
-	O4QR9qe8Me65IJk8kQQw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KDAYyfZ+TXFDJ3hpp3MQ912ut3fQnnYfavI0cnCiNns=; b=1AshJ9T0ombOfUK1u9cH94vfdm
+	HXoXbpS7EvG9cGk30+Pvf9fFudIGrYTAUb439SaSgywdslka3AQ7JXtpqqS2/ns8aSEQUWHqAKe7L
+	Nk1ksn7fvOFUakTiWea6HgvOZdJmaymqky26z5gXh3aUOsrkbh0sgkPBPMzZ7mA09LRSlO3tbrxNg
+	CMxzFnkq5fbcUXC2mAzqK4KVOOXvsBCGW2wOaZL94mGicoo9weexwJPC4DxzcCSMtLjozd/78tO3x
+	s98ISoNo8lUSExuFpRJ1FUvHczT2shkqKLjB1Br+E/rYoQT4jmWWvhgmifkk86mvjZ428S/fTborz
+	W3JkD72w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUjFo-0000000BCI0-2QCo;
-	Thu, 26 Jun 2025 09:50:48 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uUmDn-0000000Bbgx-2YqT;
+	Thu, 26 Jun 2025 13:00:55 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUiuW-0000000B8dJ-1eP4
+	id 1uUmC2-0000000BbPa-18jU
 	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Jun 2025 09:28:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BF75343FE6;
-	Thu, 26 Jun 2025 09:28:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6896C4CEF1;
-	Thu, 26 Jun 2025 09:28:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750930127;
-	bh=MTnYOhfIlYQkbWQ7pNy2fBJJ6WIhBislhNl/olHHxXM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hkmDgIA5kHRStD9aUliLNs6lzGzDUW1Rp9h9a7bXMXy908uKmGWVFs5zlwyD36v8p
-	 aMo4HGowTEp764lO5NnqvJsFlqnAQYTDb5/ihILZyNH+MOGYiX4L8aFOymIFESRR5Q
-	 VIR6GphgMvC+cS/aTfzXVuySZrhyG5gKjmA5wgWK6iQZyr9kcwszFIFpCd3QHs79PZ
-	 hx4CdYIPAfLrhEopGqP+t6VIAbPrSxuR/FS1tvTDo6YF/U7E0Q9pR5FyBdS/Cd1aOU
-	 fFLrnU6Arb1C2HIYzCDUI97jdUF7pyArtvHhNc3nFp3mnhQks9FRG2bMr8B8tQhCim
-	 dfr5oC/r4x+zA==
-Message-ID: <38b627d0-23f2-4996-94e0-1768e6df1a20@kernel.org>
-Date: Thu, 26 Jun 2025 11:28:40 +0200
+	Thu, 26 Jun 2025 12:59:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1750942744;
+	bh=vWZsTWEYyiseXKnsMjc+Ej2o40AytKq/Q/YXshCELco=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=IfPIAzkK86cNlx+joISzT0lktX9hNc8EHL1j8sYgfT91UH2B8ieIqND/amayYoZlr
+	 U1jN7EmjoV5/8m0QoRD3mROCe575iaaBG0R0VIBkBjNQI89CRsIdvRzXnESHwrn44d
+	 eWWPxpl2Xu2Iyau8GRBjNavwHPvQUd8FfBXxCtDJ/RRiGNxiJhky2vVK/dROtlURzC
+	 SANE/sgQzSbGVIN7o8LMbb/PxWEMMXNgsH+FHHVQrPQkr0iN6uPCn6b1frmA82dAW/
+	 +X451FKvQFP2OZattOXR/odGYNmA/JIxHZcg0YulqMkXNjmzc3ff52VUuKYfZE0yxc
+	 +u6+Qct1yCeHA==
+Received: from [IPv6:2606:6d00:17:b699::bad] (unknown [IPv6:2606:6d00:17:b699::bad])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7CF0017E04EE;
+	Thu, 26 Jun 2025 14:59:03 +0200 (CEST)
+Message-ID: <dc841d1e6b12c46388aec8ebcd0b002f56d30d1c.camel@collabora.com>
+Subject: Re: [PATCH] media: verisilicon: Export only needed pixels formats.
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	p.zabel@pengutronix.de, mchehab@kernel.org, hverkuil@xs4all.nl
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, kernel@collabora.com
+Date: Thu, 26 Jun 2025 08:59:00 -0400
+In-Reply-To: <20250624122938.62004-1-benjamin.gaignard@collabora.com>
+References: <20250624122938.62004-1-benjamin.gaignard@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
+ oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
+ zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
+ TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
+ 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
+ 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
+ cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
+ tHYWTDxBOP5peztyc2PqeKsLsLWzAr7QnTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVz
+ bmUuY2E+iGIEExECACIFAlXA3CACGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sB
+ qgcJngAnRDBTr8bhzuH0KQwFP1nEYtfgpKdAKCrQ/sJfuG/8zsd7J8wVl7y3e8ARbRDTmljb2xhcy
+ BEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29
+ tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCg
+ zYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc
+ 25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udW
+ s+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8
+ An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZy
+ ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJC
+ AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypw
+ CfWKc9DorA9f5pyYlD5pQo6SgSoiC0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF
+ 1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkI
+ BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr
+ +E7ItOqZEHAs+xabBgknYZIFPU=
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V3 1/5] dt-bindings: mfd: ti,bq25703a: Add TI BQ25703A
- Charger
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, broonie@kernel.org, lgirdwood@gmail.com,
- sre@kernel.org, heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
- robh@kernel.org, lee@kernel.org, Chris Morgan <macromorgan@hotmail.com>
-References: <20250623162223.184304-1-macroalpha82@gmail.com>
- <20250623162223.184304-2-macroalpha82@gmail.com>
- <5qeo2xqjprozcjd553qmozzrmbciuf66gic65tzw7jspoub5n4@5wzkqasisgcz>
- <aFwV2Xxyjhi6KQkw@neuromancer.localdomain>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <aFwV2Xxyjhi6KQkw@neuromancer.localdomain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250626_022848_477180_9756B02C 
-X-CRM114-Status: UNSURE (   7.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250626_055906_611415_C399F19A 
+X-CRM114-Status: GOOD (  18.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,37 +94,117 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7192524808938737922=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25/06/2025 17:29, Chris Morgan wrote:
->>> +  regulators:
->>> +    type: object
->>> +    additionalProperties: false
->>> +    description:
->>> +      Boost converter regulator output of bq257xx.
->>> +
->>> +    properties:
->>> +      "usb-otg-vbus":
->>
->> Drop quotes. Is this the name of regulator called in datasheet? To which
->> pin this corresponds to? I cannot find anything on usb-otg or usb_otg.
->>
-> 
-> This corresponds to the VBUS pin. VBUS is an input usually but becomes
-> an output when OTG output voltage and OTG output current are set; OTG
-> enable is set, and a GPIO connected to EN_OTG is set high (per section
-> 8.3.3 of the bq25703a technical docs).
 
-Then the name should be just "vbus".
+--===============7192524808938737922==
+Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
+	boundary="=-sB3Sk195f1XnVNw57mvc"
 
 
-Best regards,
-Krzysztof
+--=-sB3Sk195f1XnVNw57mvc
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Benjamin,
+
+Le mardi 24 juin 2025 =C3=A0 14:29 +0200, Benjamin Gaignard a =C3=A9crit=C2=
+=A0:
+> When enumerating the pixels formats check if the context
+> request to only export post-processed pixels formats.
+> The exception is when V4L2_FMTDESC_FLAG_ENUM_ALL is set, we
+> need to export all pixels formats.
+
+The change looks good. The explanation could perhaps be improved. Perhaps
+something along this instead ?
+
+	Some pixel formats can only be produced if the decoder outputs=C2=A0
+	reference=C2=A0pictures directly. In some cases, such as AV1 film-grain,
+	the use of the post-processor is strictly required. In this case,
+	only enumerate the post-processor supported formats. The exception is
+	when V4L2_FMTDESC_FLAG_ENUM_ALL is set, in this case, we enumerate
+	everything regardless of the state.
+
+Perhaps long term we should rename need_postproc by force_postproc. I think=
+ this
+would help reading the code.
+
+>=20
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Fixes: bcd4f091cf1e ("media: verisilicon: Use V4L2_FMTDESC_FLAG_ENUM_ALL =
+flag")
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+> ---
+> =C2=A0drivers/media/platform/verisilicon/hantro_v4l2.c | 6 +++++-
+> =C2=A01 file changed, 5 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/m=
+edia/platform/verisilicon/hantro_v4l2.c
+> index 7c3515cf7d64..7869faf921f4 100644
+> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> @@ -222,6 +222,7 @@ static int vidioc_enum_fmt(struct file *file, void *p=
+riv,
+> =C2=A0	unsigned int num_fmts, i, j =3D 0;
+> =C2=A0	bool skip_mode_none, enum_all_formats;
+> =C2=A0	u32 index =3D f->index & ~V4L2_FMTDESC_FLAG_ENUM_ALL;
+> +	bool need_postproc =3D ctx->need_postproc;
+> =C2=A0
+> =C2=A0	/*
+> =C2=A0	 * If the V4L2_FMTDESC_FLAG_ENUM_ALL flag is set, we want to enume=
+rate all
+> @@ -230,6 +231,9 @@ static int vidioc_enum_fmt(struct file *file, void *p=
+riv,
+> =C2=A0	enum_all_formats =3D !!(f->index & V4L2_FMTDESC_FLAG_ENUM_ALL);
+> =C2=A0	f->index =3D index;
+> =C2=A0
+> +	if (enum_all_formats)
+> +		need_postproc =3D HANTRO_AUTO_POSTPROC;
+> +
+> =C2=A0	/*
+> =C2=A0	 * When dealing with an encoder:
+> =C2=A0	 *=C2=A0 - on the capture side we want to filter out all MODE_NONE=
+ formats.
+> @@ -242,7 +246,7 @@ static int vidioc_enum_fmt(struct file *file, void *p=
+riv,
+> =C2=A0	 */
+> =C2=A0	skip_mode_none =3D capture =3D=3D ctx->is_encoder;
+> =C2=A0
+> -	formats =3D hantro_get_formats(ctx, &num_fmts, HANTRO_AUTO_POSTPROC);
+> +	formats =3D hantro_get_formats(ctx, &num_fmts, need_postproc);
+> =C2=A0	for (i =3D 0; i < num_fmts; i++) {
+> =C2=A0		bool mode_none =3D formats[i].codec_mode =3D=3D HANTRO_MODE_NONE;
+> =C2=A0		fmt =3D &formats[i];
+
+--=-sB3Sk195f1XnVNw57mvc
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaF1EFQAKCRBxUwItrAao
+HN+uAKDZJpOTbi3XRGHgmRHEOJte9UVyBACbBmNozfzUgXXYoUEvfUr4S4lMT6k=
+=WH3I
+-----END PGP SIGNATURE-----
+
+--=-sB3Sk195f1XnVNw57mvc--
+
+
+--===============7192524808938737922==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7192524808938737922==--
+
