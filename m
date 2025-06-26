@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B7C3C7EE30
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Jun 2025 14:21:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFEBEC7EE31
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Jun 2025 14:26:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lvociq7bS6d/I6DBNYZ5MisKDwNABD8ZpAwOaGI4MvA=; b=vFBv60Xkt6IVa8OjUSsVuSia85
-	32MX2hTcuJBWkvzEOCpeUgkV134oqL5oYThCqoeb1//c+GdTC3E7CM9YM7bfhdqZ5t4aHkznaP1Z/
-	czaHoWXGmgDTTs1wGEtkmMvQI3UE5ZW2h+I4hftMTI5tnu+EmK2O4TTc6CNtRrA9P8Deo8d6GP+pp
-	PSs1hVA/MVbyO34piqLHFBGpWhFeEjHMWAuSf5hFSyYNQW/Dr65/PMTxXYbxHu5VtpxwQjvgWZMfn
-	IImXIG/bZeuT16FHzoKk/gZRH814XhVktQPm6fL2zUeXY9FA6QQziQOvwNA/1RZml5aVHdB6tWAnU
-	9uRIYejA==;
+	bh=n4niw+O2NJ9ZaFl+8FQ0EKSe5Nxyozy3cx/v1FVvXm8=; b=Tcky4nYR0wU3C1BT1hRJ+4924o
+	0dJrfwfoPv1s840MtOT0um6zUsW2Vn8wqLKUg1TTSOjW9Y08mbNmQiMO9I2CddTIkOKY1ASr1YhV+
+	iKgmY8s6GLMLugusteS6lDd+TPSwo7E4unRfBbagGPpZEXg4nkRE1uRIugQFeftoESBn2k6XxwQso
+	21vnekhj2neW8i4fqGzd1wPYeQmfgWywuB9ESLs531fkY7yKZOTs0c9rcRXzD6taUdAkbDBfcW1PB
+	HMb5g3EwsTZfg3eIy99jPQfrGqpV6r3W3NvOya/cXBwZuB2wM2mDbLEPistpTXu6hfxD5goIJGFcc
+	x9WZSZ6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUnTo-0000000Bu3e-0CXs;
-	Thu, 26 Jun 2025 14:21:32 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1uUnYK-0000000BuwM-2DRS;
+	Thu, 26 Jun 2025 14:26:12 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUnG2-0000000BrRc-31mP
+	id 1uUnJv-0000000Bs5W-2WxL
 	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Jun 2025 14:07:20 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-3a6d1369d4eso566986f8f.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 26 Jun 2025 07:07:17 -0700 (PDT)
+	Thu, 26 Jun 2025 14:11:22 +0000
+Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-32b910593edso8889411fa.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 26 Jun 2025 07:11:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750946837; x=1751551637; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1750947078; x=1751551878; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4tyfKJ3iWwfYhEwtvlvqYH/qs9dAR1n1suyqwAjSqmI=;
-        b=VbJ2GEnqm3y4btTaxDox9sImjBB91CdBsHi8b163sVkExb2LManxBCENXDK2dJqjPY
-         Gysv+dx9ioXqYN/ema5wvSvD8E4dntQFeD0QIT94Y55k7bh6ZQzoxZ+XjHH6ccJdi+dn
-         HpsVNbkwiiXKxvpxbuF96Ds9/uwOkJ10ws1ZaauXwNrjKh269KV7E6qfTfsox7zE3q7C
-         Lo/gxxSew70GERaKtOVlTB0d3jjUkJvBi6KnhFJv/eg5PRD7/6UPC6Iac0n3z5xePKDL
-         1QTg7YiQKWFcH8ksCaUDQ4JGg1eMPyP3Cl1ny2q6uqanrS7aCU0vhvYtbrySbTYfUQAZ
-         szgw==
+        bh=6fdOEM8p+cMc46FrDcs5XD9n0jfsivYeiqvEqZqCd3c=;
+        b=enm0uIL3kI+/Y//Q3Pt+sFh8BoyhI5EwCn76NMoIdRjctsOokw9UiO5SYDoFAzFHwV
+         zK0Ae5NBJdPdOuDfU1of8WxAgOn+ysASzRt7w1eQpZz/D5vqCpOrES3c6VSNuKZpvX/R
+         cwrHykA511gUI0RUyYuIpMZ8o8w/kUx4ywUqkY409izCAXwHw6L1peEBfOJgryF1g821
+         Qj0dpVs1nlOUhpfzwo9Od+83L1m5j6Cfa7oq1n2PD5hR1Of/HCCEwLGx/q4m8jn8rKJX
+         uldy0LUKNBV1pYEU9cwNO9uTI53QTZn9id3wBKQn+SV8192z869KLoTmcautJdPgPuy7
+         dcNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750946837; x=1751551637;
+        d=1e100.net; s=20230601; t=1750947078; x=1751551878;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=4tyfKJ3iWwfYhEwtvlvqYH/qs9dAR1n1suyqwAjSqmI=;
-        b=tAxxx7NAQ1OgnS86JLu6h5/GTdE/94aw7tWOhQ/o7bRxIwapS8q+XaETUfoQP/D2Ne
-         46EqxLp9bCmvdj6duPidWmdW3599kKjowVX+JCVG8LXNS8wxaxwfUqqlcFysdXwQlC1P
-         kQymU66JcdLoWGxoi6FUnTHVWobeKDobvV9vcr8Y1I6dC4BPY7jCyZYA8N3jROxE5wUQ
-         PBS8CvH++6i3BD09JNfhX/SagO0F6zo+npbfEwdxoEwYT29kr9h26ATmDTEVjZr72Uzt
-         lC3jTsP3fRaDm7QtTc6jisbq8ZWQFKYXCWkw1wzcZhRjiB824tOBV4ebaA+p7iyQHbTi
-         Dz3Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXNCBgverFPE4IFVErEb0Ghk6wwPY8WXJybNd5hHDrnaHoIGwr13FCdnhwLMp7wRdZudkdfC4Z39bcFzErJlg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxvQpPzeZdUSPYdBC7q8DCnoHVS0vXC8OeK89OP3gdojU0skeyv
-	IQNtPmZNVRz+E5lJ0LzK/IQ4KOBuaVO78ae94RrcEzXCPA5+e7O5E19sA/D9sXBZaaYF7XjILtz
-	8JX2vuHw=
-X-Gm-Gg: ASbGncvNy0l18md/czJdigmp0WRYRNMZoCwzyoNtTrhcKbgZlf4JaG0Wo4e5TDIqGYx
-	Dsy7ZB4F9DmsObCDThxdD9d7JGy7d62zJnHDtS1aFdQElGZHmhZWfqplSG6LDzFt4PgvpD5fIMa
-	AFh1mJJWonND2in8J1HXH98lBalGvk3cmZ7tKNsafWeaFt+fg6g0LSH5AbTtduOwj2gTMI7X5vp
-	5Y8Jtw6pScRqH/179LSeTx3t6RJCf8nUy27tMtNnGmtcFqTiY6ftCiEMC+97Rv7LJOHDjgWZOia
-	8DLKWQ9wLrTaqld6l620el2GdSgJdXYmH0/n7gzoF9T0xBO27Jju3JtCc5Zh/AMdzyqLYssr81L
-	8Dc8TmO9W5nrgHMT+dmTbn14UnPCbGOjXTBqNcOM=
-X-Google-Smtp-Source: AGHT+IH2o/48Q3NSxhVyfkjDMI5iDi5m1hTz1aTZlrpWBbENmqy1WfQrH0ZoXoOKjfZDADuR+Pkv4w==
-X-Received: by 2002:a05:6000:420c:b0:3a6:e2d5:f161 with SMTP id ffacd0b85a97d-3a6f2e8725bmr2928225f8f.8.1750946832282;
-        Thu, 26 Jun 2025 07:07:12 -0700 (PDT)
+        bh=6fdOEM8p+cMc46FrDcs5XD9n0jfsivYeiqvEqZqCd3c=;
+        b=fH0L4eke0s6RMgqCPV1h9qsUCOIav+b4tjtmRzrsGOynhhUi03C7GrPLPeiRVCBfv3
+         sCPDE+Xx5ynveeUndA+/lQ57m5X/ssnTCtPYmoBd0M847YeamsCV6oP6CQbPcQpjVGu+
+         rsEpzrLwdyD2GaYEapJSuR7AlZxSgMhmkAljNWYz2zgZF/OCAcFSQMqd+XG6bb8v89g/
+         321Yc1GD+HEiehYbygydDKsdbkjfpi4Ows1VSYxgKFrNGh036qSrSTwu3owNw1fOYiVS
+         wav7uTgfYzxjsBYCpp86bksgsMPHMzd3p2Zk8VdvSFxkyr7LN19+mcgcrL0FV9H78fE/
+         ufOQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXr2IAImXKyDeFxIwIC4loRSds8kEjavVeAux/UHTe1d06v6sH3LFyL4sUCd0TqBNPYzO5v9vczKXQd8Ww2rA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx858ZshNfRkuo0+5XRGYpDm0Q8m4y9hehZiexzyakN86QmahP5
+	d+12phDnnDILNd7O9RaPBwEgSVqmvsiDPIhjTKrhdZFbudx2uaB/HWqzC3hPSDfNM3o=
+X-Gm-Gg: ASbGnctIzRpB8mnJirN/ZgLTJgyUMYU3sUgdDWl1oJqQfUklltWvXCHmjWB0CaPzb7q
+	jk8sUtVLPOXoLTZWhVOXZkxX5M1thZF/GGQtqLdGJfMt9sgYZdr3T/FicyBEGi9YrwVPJ8FfhbW
+	e4dbOywYu3XmSffLmsb44MUw8DV/mNS2iMyNF2drINNOmKTw7AfOPnr4fuzI7UbGahrnr4IWJii
+	THxn+3k3IX8PPFJGEv55TKggTLM0zD8hA1yu8kIyZYDTfeBIyGafKCkfcZxzbuEs+WdRNtISRzE
+	Xek50VmZ7ZiT8rRz9zGNRa9N5CdQ4uDu2rFFySM6P7ZBh4ZcLDJ56GBveTh4zBPnIHvDI/LRX9E
+	oVrAZmPUPeBKq1c5xaDmkBtOp7IRTeX+HDQzV4o0=
+X-Google-Smtp-Source: AGHT+IGdwB1n5Hfp/EPE9UIcSDFeslDjsQLAW8xrE4nxWT5wqqFoYILk6ydKTS2s4DS26tcagpzuxw==
+X-Received: by 2002:a2e:b8c6:0:b0:30b:b987:b6a7 with SMTP id 38308e7fff4ca-32cc631712fmr26665881fa.0.1750947077698;
+        Thu, 26 Jun 2025 07:11:17 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:3d9:2080:fa6f:b132:4858:18cc? ([2a01:e0a:3d9:2080:fa6f:b132:4858:18cc])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a88c7e72c1sm18312f8f.1.2025.06.26.07.07.11
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-453823c0812sm50833075e9.34.2025.06.26.07.11.17
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 26 Jun 2025 07:07:12 -0700 (PDT)
-Message-ID: <f92836f5-c81a-4bfd-a77f-903e74452c59@linaro.org>
-Date: Thu, 26 Jun 2025 16:07:11 +0200
+        Thu, 26 Jun 2025 07:11:17 -0700 (PDT)
+Message-ID: <09af27e2-34a7-4cda-b36c-5577829cc173@linaro.org>
+Date: Thu, 26 Jun 2025 16:11:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: neil.armstrong@linaro.org
-Subject: Re: [PATCH 2/5] mfd: khadas-mcu: drop unused nvmem code
+Subject: Re: [PATCH 4/5] thermal: khadas_mcu_fan: add support for Khadas Edge
+ 2
 To: muhammed.efecetin.67@gmail.com, linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, lee@kernel.org,
  rafael@kernel.org, efectn@protonmail.com, daniel.lezcano@linaro.org
 References: <cover.1746518265.git.efectn@protonmail.com>
- <1b421ddfd44d096cd3a979462ced002e2356eb21.1746518265.git.efectn@protonmail.com>
+ <d8596aeea72b2acab614277372f15b773ef3d008.1746518265.git.efectn@protonmail.com>
 Content-Language: en-US, fr
 Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
@@ -111,10 +111,10 @@ Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
  QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
 Organization: Linaro
-In-Reply-To: <1b421ddfd44d096cd3a979462ced002e2356eb21.1746518265.git.efectn@protonmail.com>
+In-Reply-To: <d8596aeea72b2acab614277372f15b773ef3d008.1746518265.git.efectn@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250626_070718_788225_F3DFF93D 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20250626_071119_676878_FDF53D51 
+X-CRM114-Status: GOOD (  27.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,44 +135,151 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 26/06/2025 16:04, muhammed.efecetin.67@gmail.com wrote:
 > From: Muhammed Efe Cetin <efectn@protonmail.com>
 > 
-> Drop "khadas-mcu-user-mem" code since it is not used anywhere.
+> Fan control on the Khadas Edge 2 is controlled with the 0x8A register,
+> using percentage values from 0 to 100, whereas there are only 3 constant steps in previous Khadas boards.
+> Therefore, i added a new cooling-levels property, similar to the one used in the pwm-fan driver.
+> The original behavior can still be used when the cooling-levels property is not specified,
+> ensuring that the new functionality does not break old boards.
+
+Thanks for the explanation, but would would you like to change that ? The MCU can accept
+any value between 0 and 99, so why change the levels from DT ?
+
+Neil
+
 > 
 > Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
 > ---
->   drivers/mfd/khadas-mcu.c | 11 -----------
->   1 file changed, 11 deletions(-)
+>   drivers/thermal/khadas_mcu_fan.c | 76 ++++++++++++++++++++++++++++++--
+>   1 file changed, 72 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/mfd/khadas-mcu.c b/drivers/mfd/khadas-mcu.c
-> index ba981a788..ca4bd6cf5 100644
-> --- a/drivers/mfd/khadas-mcu.c
-> +++ b/drivers/mfd/khadas-mcu.c
-> @@ -80,10 +80,6 @@ static struct mfd_cell khadas_mcu_fan_cells[] = {
->   	{ .name = "khadas-mcu-fan-ctrl", },
+> diff --git a/drivers/thermal/khadas_mcu_fan.c b/drivers/thermal/khadas_mcu_fan.c
+> index d35e5313b..504e7d254 100644
+> --- a/drivers/thermal/khadas_mcu_fan.c
+> +++ b/drivers/thermal/khadas_mcu_fan.c
+> @@ -15,10 +15,16 @@
+>   #include <linux/thermal.h>
+>   
+>   #define MAX_LEVEL 3
+> +#define MAX_SPEED 0x64
+>   
+>   struct khadas_mcu_fan_ctx {
+>   	struct khadas_mcu *mcu;
+>   	unsigned int level;
+> +
+> +	unsigned int fan_max_level;
+> +	unsigned int fan_register;
+> +	unsigned int *fan_cooling_levels;
+> +
+>   	struct thermal_cooling_device *cdev;
 >   };
 >   
-> -static struct mfd_cell khadas_mcu_cells[] = {
-> -	{ .name = "khadas-mcu-user-mem", },
-> -};
-> -
->   static int khadas_mcu_probe(struct i2c_client *client)
+> @@ -26,9 +32,21 @@ static int khadas_mcu_fan_set_level(struct khadas_mcu_fan_ctx *ctx,
+>   				    unsigned int level)
 >   {
->   	struct device *dev = &client->dev;
-> @@ -105,13 +101,6 @@ static int khadas_mcu_probe(struct i2c_client *client)
->   		return ret;
->   	}
+>   	int ret;
+> +	unsigned int write_level = level;
+> +
+> +	if (level > ctx->fan_max_level)
+> +		return -EINVAL;
+> +
+> +	if (ctx->fan_cooling_levels != NULL) {
+> +		write_level = ctx->fan_cooling_levels[level];
+> +
+> +		if (write_level > MAX_SPEED)
+> +			return -EINVAL;
+> +	}
+> +
+> +	ret = regmap_write(ctx->mcu->regmap, ctx->fan_register,
+> +			   write_level);
 >   
-> -	ret = devm_mfd_add_devices(dev, PLATFORM_DEVID_NONE,
-> -				   khadas_mcu_cells,
-> -				   ARRAY_SIZE(khadas_mcu_cells),
-> -				   NULL, 0, NULL);
-> -	if (ret)
-> -		return ret;
-> -
->   	if (of_property_present(dev->of_node, "#cooling-cells"))
->   		return devm_mfd_add_devices(dev, PLATFORM_DEVID_NONE,
->   					    khadas_mcu_fan_cells,
+> -	ret = regmap_write(ctx->mcu->regmap, KHADAS_MCU_CMD_FAN_STATUS_CTRL_REG,
+> -			   level);
+>   	if (ret)
+>   		return ret;
+>   
+> @@ -40,7 +58,9 @@ static int khadas_mcu_fan_set_level(struct khadas_mcu_fan_ctx *ctx,
+>   static int khadas_mcu_fan_get_max_state(struct thermal_cooling_device *cdev,
+>   					unsigned long *state)
+>   {
+> -	*state = MAX_LEVEL;
+> +	struct khadas_mcu_fan_ctx *ctx = cdev->devdata;
+> +
+> +	*state = ctx->fan_max_level;
+>   
+>   	return 0;
+>   }
+> @@ -61,7 +81,7 @@ khadas_mcu_fan_set_cur_state(struct thermal_cooling_device *cdev,
+>   {
+>   	struct khadas_mcu_fan_ctx *ctx = cdev->devdata;
+>   
+> -	if (state > MAX_LEVEL)
+> +	if (state > ctx->fan_max_level)
+>   		return -EINVAL;
+>   
+>   	if (state == ctx->level)
+> @@ -76,6 +96,47 @@ static const struct thermal_cooling_device_ops khadas_mcu_fan_cooling_ops = {
+>   	.set_cur_state = khadas_mcu_fan_set_cur_state,
+>   };
+>   
+> +static int khadas_mcu_fan_get_cooling_data_edge2(struct khadas_mcu_fan_ctx *ctx, struct device *dev)
+> +{
+> +	struct device_node *np = ctx->mcu->dev->of_node;
+> +	int num, i, ret;
+> +
+> +	if (!of_property_present(np, "cooling-levels"))
+> +		return 0;
+> +
+> +	ret = of_property_count_u32_elems(np, "cooling-levels");
+> +	if (ret <= 0) {
+> +		dev_err(dev, "Wrong data!\n");
+> +		return ret ? : -EINVAL;
+> +	}
+> +
+> +	num = ret;
+> +	ctx->fan_cooling_levels = devm_kcalloc(dev, num, sizeof(u32),
+> +						   GFP_KERNEL);
+> +	if (!ctx->fan_cooling_levels)
+> +		return -ENOMEM;
+> +
+> +	ret = of_property_read_u32_array(np, "cooling-levels",
+> +					 ctx->fan_cooling_levels, num);
+> +	if (ret) {
+> +		dev_err(dev, "Property 'cooling-levels' cannot be read!\n");
+> +		return ret;
+> +	}
+> +
+> +	for (i = 0; i < num; i++) {
+> +		if (ctx->fan_cooling_levels[i] > MAX_SPEED) {
+> +			dev_err(dev, "MCU fan state[%d]:%d > %d\n", i,
+> +				ctx->fan_cooling_levels[i], MAX_SPEED);
+> +			return -EINVAL;
+> +		}
+> +	}
+> +
+> +	ctx->fan_max_level = num - 1;
+> +	ctx->fan_register = KHADAS_MCU_CMD_FAN_STATUS_CTRL_REG_V2;
+> +
+> +	return 0;
+> +}
+> +
+>   static int khadas_mcu_fan_probe(struct platform_device *pdev)
+>   {
+>   	struct khadas_mcu *mcu = dev_get_drvdata(pdev->dev.parent);
+> @@ -90,6 +151,13 @@ static int khadas_mcu_fan_probe(struct platform_device *pdev)
+>   	ctx->mcu = mcu;
+>   	platform_set_drvdata(pdev, ctx);
+>   
+> +	ctx->fan_max_level = MAX_LEVEL;
+> +	ctx->fan_register = KHADAS_MCU_CMD_FAN_STATUS_CTRL_REG;
+> +
+> +	ret = khadas_mcu_fan_get_cooling_data_edge2(ctx, dev);
+> +	if (ret)
+> +		return ret;
+> +
+>   	cdev = devm_thermal_of_cooling_device_register(dev->parent,
+>   			dev->parent->of_node, "khadas-mcu-fan", ctx,
+>   			&khadas_mcu_fan_cooling_ops);
 
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
