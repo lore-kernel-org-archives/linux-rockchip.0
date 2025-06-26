@@ -4,66 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F0A7C7EE30
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Jun 2025 16:17:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A4B9C7EE30
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Jun 2025 21:31:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RNS54dQh5qJxJojC4m58D+yOEi9fdxgypvALJIz3CE8=; b=sr2YHBcBmijwhz
-	74hgzy5wmL3jbNMfU/CCPUPLEceHuRFwt9ooAdVPNGSk2l9nB8ycdJYPLUeICJlhMVnGsDea1HClx
-	93bJdaqKg21e5NmSSETz4kclbYP4Jb4LENucSpY2+MaiG0uhCjth0V8fi//nJaq22mbdHOIRRmSZl
-	r/fiwSTTm/SOQq9rMO4vQyUzu7f/sM+vqE5z1284OLn4rsqndZB8zn9jqkzSlmw0Q97LdWAPsY/7u
-	/sSvvc/F2Lx9NzzUT0l5K0bIAegV6ZuT7Oqj/+SRpPjNv5qdxVF14fJkZPFopfbbwL2szJmhmi9Bl
-	LLwXDMOxfkGzKr1875Lw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4AxeB5ZpwUPJ22qw2vysjfky4dA30RjnkjgFFSrLJZs=; b=fFsKZIs8peCs4A
+	7Vgj2Tf4ojharVTyjG7AH669ggObs1Blsg6nOA9CCo3MvCa+nrbjfnkqUrxpfWfrqket8BI5YFVyV
+	KlyJYLDNbm7h7quGdvZe51kcUyQqFgzngfaTkalJv24oSBYXEuagA8KP+ntTK02Qt+bkUrhhkd/vU
+	gqlDjU4eFyI6E2MaNWU4MjqpHNaSxOchGs19UiqgKtvX6YEAz5wfN3AOvExeok3YYLhqmxKwZe4KK
+	PaiDSyth3zrC9TT2joR+7WJ1W0L6JngQIhkAqFqvGZ5imzu+seQBAaH75PrwaQfL2nZCGGRulnVHv
+	xP0HDfniRUS6dPpgXkyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUpID-0000000CEwP-0EkB;
-	Thu, 26 Jun 2025 16:17:41 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uUuBI-0000000CqHR-3NOE;
+	Thu, 26 Jun 2025 21:30:52 +0000
+Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUoa1-0000000C7kE-15NE;
-	Thu, 26 Jun 2025 15:32:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750951908; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=FrndBkfH5Yb2hczHdjvZqLHKmGh24t0qRtvSHL54QVLoPvLancdd9ugXgSDXr1yfWFaiA+96D7SNInWSRIKjBaLrLdQcAxuHyJq9MS5VMMa5UgH2p09eOnrl17YZJyo16szJHeWrAAtqomNQ+5ViaIM1hU/hkTXtvrj6Q00z1qY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750951908; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=QzJ+mw1mZ61E4BVBc6eVU0mJdCfS5N8n38LYhvIVPcQ=; 
-	b=EnEyuXkYIqKLKBz4gRYejn0GG5+5NQ6QGEYB0o2XKiJKwpHS49P9LskOZViHoDDIIZ5evX2ic6yYL8d5UhZETAE+OTkyM8fpwjcSYHfaFl4MYm9lN+t4cppALW0Rxd/wbR8VMzaf2vRHjzpSjXo3+wb1HDLn98cLTZqDzutbe8M=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
-	dmarc=pass header.from=<nfraprado@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750951908;
-	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=QzJ+mw1mZ61E4BVBc6eVU0mJdCfS5N8n38LYhvIVPcQ=;
-	b=GPwvi2JERhAm14b28wt6nqJSJUgC5hmNtxTniKoaSYSUD26Dut6Qy7SZDtqXlPC+
-	u+c4iDnGone5HN01r5dARbuDDXUm9+qTLPZzTuUjRh2hrZAh0W9XL3Q/3opVM/RKrGC
-	fGjtjiwqkyO+q2Wrigk0TmnOpkut8cQUyksJUZmc=
-Received: by mx.zohomail.com with SMTPS id 1750951905438943.3169151421496;
-	Thu, 26 Jun 2025 08:31:45 -0700 (PDT)
-Message-ID: <e6b3c842625d9740da2481f9b5893015ac699db0.camel@collabora.com>
-Subject: Re: [PATCH] arm64: defconfig: enable further Rockchip platform
- drivers
-From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Heiko Stuebner
-	 <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon
-	 <will@kernel.org>
-Cc: kernel@collabora.com, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Date: Thu, 26 Jun 2025 11:31:38 -0400
-In-Reply-To: <20250626-rk3588-defconfig-v1-1-39a19a41c181@collabora.com>
-References: <20250626-rk3588-defconfig-v1-1-39a19a41c181@collabora.com>
-User-Agent: Evolution 3.46.4-2 
+	id 1uUshb-0000000Cf0V-1IjY
+	for linux-rockchip@lists.infradead.org;
+	Thu, 26 Jun 2025 19:56:08 +0000
+Received: by mail-oo1-xc36.google.com with SMTP id 006d021491bc7-610d87553b6so593465eaf.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 26 Jun 2025 12:56:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1750967766; x=1751572566; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=hk3radOrdiIbqfj9Koe35i0uF/bY0CW4+GPlMQ1CzR0=;
+        b=OLtcogYPWrbX0A07Rg5sf/XowkJsuw/DTmAC4hsUKHmK0k8nCyfF27vAcb5YXzAyxG
+         vEC5UlcnStsIM/sR/oiZd9ePm01PK6wA2gYL808zOB1dvqqT9ZOKAFVzC7lTdynDYKa7
+         wx35LOqOM5G3v1YQw7wF4zN7c4u52WfiDPYiy0cWCv09sWBMX8A4h2IA8VUTBejFhS9L
+         zT1HQUpTNT+vTvu5kIcvtja/HSWe8AWcX/eTF3H8Dq+r6qxgo07q6c523DyiIe1vjv4G
+         KldbqHG9ubNVRqm0wbgQnSjdl6r2dbdsIV4X/iZI6D2OxEqi/yVPHYXavnl29ZEey1kD
+         OVIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750967766; x=1751572566;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=hk3radOrdiIbqfj9Koe35i0uF/bY0CW4+GPlMQ1CzR0=;
+        b=WynOtuw9byCA/Kz7Ok3n+WuR5MLTFPy6uBCEyy/24O8Tcol8GKgHt8EvJ8NmwAo7LH
+         uIuGGkKKfGqew7VHdLVzwhelMzrY6z30XfPD2TsuR7eb6wwaQ7INjsNuyMTvII8JjFfX
+         +extcNJpxToD0XpyG6KSFvSGiM/tMPUdsxkUDmek06Oie3Z+TtIExSMIUTnvEMABwokp
+         YgKFfLfvDyDr3tjE9nZ0SUOGcpzXisSqcpLxBszzldWT2ZPS3uG5sEJv3VA6CWTW/DhG
+         ZzK5p+lEU3Fc5Q/iiIjr7ef13fZfjgSd76rlh4vezg+js03YM0jPDv3QHi04yJ460YSP
+         Z5nA==
+X-Gm-Message-State: AOJu0Yzr33X4UTaZ2SZlhZv9sAdEv4H9yrRJ9g1PWJhRCphX4P1T9ddO
+	helxrUZZx77u4ZNHlhIcIC+NECd5EyE7M4Gm/LMgFRoo2gQcNER9TIPy
+X-Gm-Gg: ASbGnctkH7xr0+tkPlwisbyA7sozC/5LqagKPgIk3TsNjQBYWPWMsibiKsn20R9lbyh
+	l6Cn7FdJk86iBFUj+wWahd/cPvHtxNorcS2ITqrlYyOseY2mgiMsiRLQUR9uR54320J6It83ivS
+	jrvXWP6rfwBCIsdjB5emL6YZ0A3w92Yvp4zfHAZFjsnDtKjLBOHpvPpBgK7mOlJwsFkXYL+r2QX
+	RnGChlFj3BhX8AiIFxP4wIdbUY00ack2fpNQDTn2aLW+oT/tLov9hvPvKJ4ORNDW1F9uuYvusY7
+	60cVKiVk6BVyRK5jCzuQ1mdzBKpFfn5896ELiWAedYvUItHBgaV9vrcwiIWM8uYeaxJLvcUG3Z4
+	vLVsl/w==
+X-Google-Smtp-Source: AGHT+IF5S5CU5Uz4mqpGNWHcGdAzqV7+uNsJZkPUL952E2bpu12FDSIRsUQQsy2Cu0EA2r19IrYvpw==
+X-Received: by 2002:a05:6820:8189:b0:611:7385:77a0 with SMTP id 006d021491bc7-611b90a898fmr432166eaf.4.1750967765969;
+        Thu, 26 Jun 2025 12:56:05 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0:f978:7e9c:c207:c035])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-611b8582352sm66915eaf.22.2025.06.26.12.56.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Jun 2025 12:56:05 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-pm@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	broonie@kernel.org,
+	lgirdwood@gmail.com,
+	sre@kernel.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	lee@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH V4 0/5] Add Texas Instruments BQ25703A Charger
+Date: Thu, 26 Jun 2025 14:53:38 -0500
+Message-ID: <20250626195343.54653-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250626_083201_370063_E91AF87C 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20250626_125607_351281_B8E61406 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,42 +99,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDI1LTA2LTI2IGF0IDE3OjE2ICswMjAwLCBOaWNvbGFzIEZyYXR0YXJvbGkgd3Jv
-dGU6Cj4gVGhlIFJLMzU4OCBTb0MsIGFuZCBpdHMgc2libGluZywgdGhlIFJLMzU4OFMsIGFyZSBz
-dXBwb3J0ZWQgYnkKPiBtYWlubGluZQo+IExpbnV4LiBIb3dldmVyLCBzb21lIG9mIGl0cyBTb0Mg
-ZHJpdmVycyBhcmUgY3VycmVudGx5IG5vdCBlbmFibGVkIGluCj4gdGhlCj4gYXJtNjQgZGVmY29u
-ZmlnLgo+IAo+IEVuYWJsZSByb2NrY2hpcC1kZmksIHJvY2tjaGlwLXJnYSwgYW5kIHRoZSBSb2Nr
-Y2hpcCBzcGVjaWZpYwo+IGV4dGVuc2lvbnMKPiB0byBIYW50cm8gYXMgbW9kdWxlcy4KClBlcnNv
-bmFsbHkgSSBkb24ndCB0aGluayB0aGUgZmlyc3QgcGFyYWdyYXBoIGFkZHMgbXVjaCwgc28gSSdk
-IGRyb3AgaXQuCsKgCkFsc28gSSBmZWVsIGxpa2UgeW91J3JlIG1pc3NpbmcgdGhlIG1vc3QgaW1w
-b3J0YW50IGluZm9ybWF0aW9uIGhlcmUsCndoaWNoIGlzIHdoYXQgdGhlc2UgbW9kdWxlcyBhcmUg
-dXNlZCBmb3IsIHNvIEknZCBmb2N1cyBvbiB0aGF0IGVnCiJFbmFibGUgY29uZmlncyBmb3Igcm9j
-a2NoaXAtZGZpLCByZ2EsIGhhbnRybywgZXRjLiBUaGlzIGVuYWJsZXMKbW9uaXRvcmluZyBvZiBE
-RFIgbG9hZCwgdXNhZ2Ugb2YgdGhlIGhhcmR3YXJlIGNvZGVjcywgZXRjIgoKPiAKPiBUaGVzZSBk
-cml2ZXJzIGFyZSBhbHNvIHVzZWQgb24gb3RoZXIgUm9ja2NoaXAgU29DcyB0aGF0IG1haW5saW5l
-Cj4gc3VwcG9ydHMsIG5vdGFibHkgUkszNTY2L1JLMzU2OCwgYXMgd2VsbCBhcyBSSzMzOTkuCj4g
-Cj4gU3VnZ2VzdGVkLWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8bmZyYXByYWRvQGNvbGxh
-Ym9yYS5jb20+Cj4gU2lnbmVkLW9mZi1ieTogTmljb2xhcyBGcmF0dGFyb2xpIDxuaWNvbGFzLmZy
-YXR0YXJvbGlAY29sbGFib3JhLmNvbT4KPiAtLS0KPiDCoGFyY2gvYXJtNjQvY29uZmlncy9kZWZj
-b25maWcgfCAzICsrKwo+IMKgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKQo+IAo+IGRp
-ZmYgLS1naXQgYS9hcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnCj4gYi9hcmNoL2FybTY0L2Nv
-bmZpZ3MvZGVmY29uZmlnCj4gaW5kZXgKPiBlMDcxZjhmNDU2MDdkYmZkOGUwMGI5MTViMjc5OTk5
-NDllZTBmYzg4Li44YjVlY2IyMGVkNjQ1MGZhYTBkYTE0YTZmZGIKPiA0Y2IyMjdhMWY3MzVmIDEw
-MDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvY29uZmlncy9kZWZjb25maWcKPiArKysgYi9hcmNoL2Fy
-bTY0L2NvbmZpZ3MvZGVmY29uZmlnCj4gQEAgLTE3ODksMyArMTc4OSw2IEBAIENPTkZJR19DT1JF
-U0lHSFRfU1RNPW0KPiDCoENPTkZJR19DT1JFU0lHSFRfQ1BVX0RFQlVHPW0KPiDCoENPTkZJR19D
-T1JFU0lHSFRfQ1RJPW0KPiDCoENPTkZJR19NRU1URVNUPXkKPiArQ09ORklHX0RFVkZSRVFfRVZF
-TlRfUk9DS0NISVBfREZJPW0KPiArQ09ORklHX1ZJREVPX1JPQ0tDSElQX1JHQT1tCj4gK0NPTkZJ
-R19WSURFT19IQU5UUk9fUk9DS0NISVA9bQoKWW91IHNob3VsZCBydW4gbWFrZSBzYXZlZGVmY29u
-ZmlnIGFuZCBjb21taXQgdGhlIGNvbmZpZ3MgZnJvbSB0aGUKZ2VuZXJhdGVkIGRlZmNvbmZpZyBz
-byB0aGV5J3JlIGluIHRoZSByaWdodCBwbGFjZSBpbiB0aGUgZGVmY29uZmlnLApyYXRoZXIgdGhh
-biBqdXN0IGFwcGVuZGluZyB0aGVtIHRvIGVuZCBsaWtlIHRoaXMuCgotLSAKVGhhbmtzLAoKTsOt
-Y29sYXMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+From: Chris Morgan <macromorgan@hotmail.com>
+
+Add support for the Texas Instruments BQ25703A charger manager. The
+device integrates a boost converter with the charger manager. This
+series adds the device as an MFD with separate regulator and power
+supply drivers. This allows us to manage a circular dependency with
+a type-c port manager which depends on the regulator for usb-otg
+but supplies power to the BQ25703A charger.
+
+---
+Changes since RFC
+ - Corrected some minor issues with code and device-tree labels.
+ - Replaced most of the manufacturer specific device-tree properties
+   with monitored-battery properties.
+Changes since V2
+ - Added reference to power-supply.yaml and removed note for i2c
+   address per recommendation from Sebastian.
+ - Corrected documentation error for charger driver found by kernel
+   test robot.
+ - Corrected duplicate POWER_SUPPLY_USB_TYPE_PD entry and corrected
+   ichg logic in power supply changed function.
+ - Corrected missing linux/bitfield.h header in regulator driver found
+   by kernel test robot.
+Changes since V3
+ - Changed name of regulator from usb_otg_vbus to just vbus to align
+   with datasheet.
+ - Additional cleanup of the device tree documentation.
+---
+
+Chris Morgan (5):
+  dt-bindings: mfd: ti,bq25703a: Add TI BQ25703A Charger
+  mfd: bq257xx: Add support for BQ25703A core driver
+  power: supply: bq257xx: Add support for BQ257XX charger
+  regulator: bq257xx: Add bq257xx boost regulator driver
+  arm64: dts: rockchip: Add USB and charger to Gameforce Ace
+
+ .../devicetree/bindings/mfd/ti,bq25703a.yaml  | 117 +++
+ .../dts/rockchip/rk3588s-gameforce-ace.dts    | 122 +++
+ drivers/mfd/Kconfig                           |  11 +
+ drivers/mfd/Makefile                          |   1 +
+ drivers/mfd/bq257xx.c                         | 104 +++
+ drivers/power/supply/Kconfig                  |   7 +
+ drivers/power/supply/Makefile                 |   1 +
+ drivers/power/supply/bq257xx_charger.c        | 754 ++++++++++++++++++
+ drivers/regulator/Kconfig                     |   8 +
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/bq257xx-regulator.c         | 189 +++++
+ include/linux/mfd/bq257xx.h                   | 108 +++
+ 12 files changed, 1423 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml
+ create mode 100644 drivers/mfd/bq257xx.c
+ create mode 100644 drivers/power/supply/bq257xx_charger.c
+ create mode 100644 drivers/regulator/bq257xx-regulator.c
+ create mode 100644 include/linux/mfd/bq257xx.h
+
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
