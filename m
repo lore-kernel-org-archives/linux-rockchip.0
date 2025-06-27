@@ -4,72 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40142C83000
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Jun 2025 19:40:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2637C77B7F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Jun 2025 20:29:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cmNf45+gWWAp2EB05+9twuLnVT+ZV3M2AcyDVYB/R1E=; b=oSXqFXfhKYznV0
-	PkaN2CPQzoL4QD5gZZ2v2i5MSPMQIp/pOQsYQusClSRISevJo9FTfh1+O4zSQhhfW9KLKubCmOVyW
-	9UPZ+KpThorUjmEN7e0UAerYJMj1YosDPY7JGWDXNxeap98JIHBdfeBr9tYhJPpcWqo6XcaxnZPN2
-	Wf6jqkuRn3HfaCVironZtQj1u8RpKm1eUaRyK04N0aTjSy9L7gzPm/+3zzjd4TJInUdoW4AwLemt7
-	owrKzL9zaCxfsp/c/NN0j0lMkiEkb/RpEG2cJATOUjcbFjmA1UrkEmegissEBIqFlI7gsCQUjef4R
-	5Jz4k0j5tgTWHfWDDYNg==;
+	List-Owner; bh=E6K3gai1+fuXUJYYW9vHLEgKx2tYw3e86XywaB8L2NY=; b=DTJ2GLDkdCNuAy
+	JybbccADJTSlP9OXTm2GAOEujZfNUeU8KszomEXTFs6zIWqci43ZTLwN+HbkemWV10UMPphZ82leY
+	wtfkyhKVvAIM4SWOsypt5A89aDhmS2SPZ7RdDmEqQW76iHjkESFIcwB3mKUEiI5MrjYnofdTWI5H0
+	USnuW1FSwFJAF5NbALt3cxM3AHlTxm/UMIGABE/nu0MfJ8HJXrLE5ZZMJOLim/SaZ31C249XvSPxM
+	ASXKT6m3RYVoxNPDmFOpWNuoR9Q1xqZr7GrvmUFbwmtdTUi0UiCAesnQNlkdFl7iaM/ki72wW15SZ
+	Y9zKacdodO2iRnx7540Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVEvs-0000000FfQg-0bBx;
-	Fri, 27 Jun 2025 19:40:20 +0000
+	id 1uVFgy-0000000Fkrq-0wFy;
+	Fri, 27 Jun 2025 20:29:00 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVEZo-0000000FcHp-1lTs;
-	Fri, 27 Jun 2025 19:17:34 +0000
+	id 1uVFbv-0000000FkED-1NC4;
+	Fri, 27 Jun 2025 20:23:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CEEB44520D;
-	Fri, 27 Jun 2025 19:17:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 891C0C4CEE3;
-	Fri, 27 Jun 2025 19:17:31 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 9FFEF460CA;
+	Fri, 27 Jun 2025 20:23:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55852C4CEE3;
+	Fri, 27 Jun 2025 20:23:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751051851;
-	bh=4tIY5Xv1aq93hm2eYGyz9mdC6DOUVIOyHjZ+4y79CfQ=;
+	s=k20201202; t=1751055826;
+	bh=ZUs7oMicwFryr12OGl0ndU7qfjIlyTt3/e0DKs0MGVo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MrokVCE/iHGDnWfI2S2bpRHqVDTYWrOZjsS0Notwml4J1ce0uUyE0NYLMuxXrF4lL
-	 Gv8LJBYbedx1LqCCpBGikDCZggPY3HiPXy/DFIDkU5pmH4TC3mD7if3RPMp98TUkPx
-	 eOh6yRKMGs3LvXWwt/R7PUQpnz4M50xkqBZGg9wqFmfpn3psUG7Y4Oq3430IkwNbuJ
-	 Ym9DWQ7ES8tkLTsb4ybKl/bsoDxb0/i1Ae8lFNy+RBRCDTqZij0bd3e7EPK30+atEl
-	 QZhPzW6UwC0SH6Zj6DBR3tOnr1tIHtauojq/XTNg9+HePZ38UAfwwgREf4uO+E0Orp
-	 1F1HqILr8Mhzg==
-Date: Fri, 27 Jun 2025 14:17:30 -0500
-From: Rob Herring <robh@kernel.org>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: Diederik de Haas <didi.debian@cknow.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Collabora Kernel Team <kernel@collabora.com>,
-	Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org
-Subject: Re: [PATCH 2/5] dt-bindings: phy: rockchip-inno-csi-dphy: add rk3588
- variant
-Message-ID: <20250627191730.GA4025458-robh@kernel.org>
-References: <20250616-rk3588-csi-dphy-v1-0-84eb3b2a736c@collabora.com>
- <20250616-rk3588-csi-dphy-v1-2-84eb3b2a736c@collabora.com>
- <DAOVBOKLXLS2.S9MXDD29X68J@cknow.org>
- <e9db11c2-b02d-4fd5-8927-7b5857089533@collabora.com>
+	b=XYvqsoLCo0czRGJb19eWtrW5bHpMhPlUhmy3uB8g/ehHEVFMs0cYqhFkC6s1buEte
+	 d3kuw4FX3ejzT8lKoG5vvM8t5pJLOpUD1C/l0ILPWGcpiDU+Pt2/zXqjzw6XZZJRBx
+	 R83HUQ0OLhZmEFVYHvgTO6kV8+se8wkpCRZs2hWif0nEVt8crYdNOBjVGT3vI6xTZ7
+	 ZQ+wk7leKA7qh/DwmmOEToGfD5FyMUa7slAWwXG4OB0WaIBO+P+ylzMZ7LwlLSB6lg
+	 1vGJEWgbMfOrt9o++UWhJ8niIFR4SlzkluUyq7SEqmWgr4faAJDig5UNL7OJQw5lTZ
+	 O8TFDLQHEogBg==
+Date: Fri, 27 Jun 2025 15:23:45 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Subject: Re: [PATCH 2/8] media: dt-bindings: rockchip: Add RK3576 Video
+ Decoder bindings
+Message-ID: <175105582524.23618.936234591360412095.robh@kernel.org>
+References: <20250623160722.55938-1-detlev.casanova@collabora.com>
+ <20250623160722.55938-3-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <e9db11c2-b02d-4fd5-8927-7b5857089533@collabora.com>
+In-Reply-To: <20250623160722.55938-3-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250627_121732_500013_1143D382 
-X-CRM114-Status: GOOD (  24.22  )
+X-CRM114-CacheID: sfid-20250627_132347_387227_D66846D6 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,148 +66,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dragan Simic <dsimic@manjaro.org>, Yunke Cao <yunkec@google.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Frank Wang <frank.wang@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, Jianfeng Liu <liujianfeng1994@gmail.com>, linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>, Ricardo Ribalda <ribalda@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Hans de Goede <hansg@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 18, 2025 at 09:45:32AM +0200, Michael Riesch wrote:
-> Hi Diederik,
-> 
-> Thanks for your comments!
-> 
-> On 6/17/25 16:12, Diederik de Haas wrote:
-> > Hi,
-> > 
-> > I'm (unfortunately) not seeing any @rock-chips.com recipients ...
-> 
-> Oops, I meant to include at least Kever, but forgot to do it. Will do in v2.
-> 
-> Cc: Kever
-> 
-> > 
-> > On Tue Jun 17, 2025 at 10:54 AM CEST, Michael Riesch via B4 Relay wrote:
-> >> From: Michael Riesch <michael.riesch@collabora.com>
-> >>
-> >> The Rockchip RK3588 variant of the CSI-2 DPHY features two reset lines.
-> >> Add the variant and allow for the additional reset.
-> >>
-> >> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
-> >> ---
-> >>  .../bindings/phy/rockchip-inno-csi-dphy.yaml       | 60 ++++++++++++++++++++--
-> >>  1 file changed, 55 insertions(+), 5 deletions(-)
-> >>
-> >> diff --git a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
-> >> index 5ac994b3c0aa..6755738b13ee 100644
-> >> --- a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
-> >> +++ b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
-> >> @@ -21,6 +21,7 @@ properties:
-> >>        - rockchip,rk3326-csi-dphy
-> >>        - rockchip,rk3368-csi-dphy
-> >>        - rockchip,rk3568-csi-dphy
-> >> +      - rockchip,rk3588-csi-dphy
-> >>  
-> >>    reg:
-> >>      maxItems: 1
-> >> @@ -39,18 +40,49 @@ properties:
-> >>      maxItems: 1
-> >>  
-> >>    resets:
-> >> -    items:
-> >> -      - description: exclusive PHY reset line
-> >> +    minItems: 1
-> >> +    maxItems: 2
-> >>  
-> >>    reset-names:
-> >> -    items:
-> >> -      - const: apb
-> >> +    minItems: 1
-> >> +    maxItems: 2
-> >>  
-> >>    rockchip,grf:
-> >>      $ref: /schemas/types.yaml#/definitions/phandle
-> >>      description:
-> >>        Some additional phy settings are access through GRF regs.
-> >>  
-> >> +allOf:
-> >> +  - if:
-> >> +      properties:
-> >> +        compatible:
-> >> +          contains:
-> >> +            enum:
-> >> +              - rockchip,px30-csi-dphy
-> >> +              - rockchip,rk1808-csi-dphy
-> >> +              - rockchip,rk3326-csi-dphy
-> >> +              - rockchip,rk3368-csi-dphy
-> >> +              - rockchip,rk3568-csi-dphy
-> >> +    then:
-> >> +      properties:
-> >> +        resets:
-> >> +          items:
-> >> +            - description: exclusive PHY reset line
-> >> +
-> >> +        reset-names:
-> >> +          items:
-> >> +            - const: apb
-> >> +
-> >> +      required:
-> >> +        - reset-names
-> >> +    else:
-> >> +      properties:
-> >> +        resets:
-> >> +          minItems: 2
-> >> +
-> >> +        reset-names:
-> >> +          minItems: 2
 
-You have to define the names. Ideally, at the top level and then keep 
-this part like this.
-
-> >> +
-> >>  required:
-> >>    - compatible
-> >>    - reg
-> >> @@ -59,7 +91,6 @@ required:
-> >>    - '#phy-cells'
-> >>    - power-domains
-> >>    - resets
-> >> -  - reset-names
-> >>    - rockchip,grf
-> >>  
-> >>  additionalProperties: false
-> >> @@ -78,3 +109,22 @@ examples:
-> >>          reset-names = "apb";
-> >>          rockchip,grf = <&grf>;
-> >>      };
-> >> +  - |
-> >> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
-> >> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
-> >> +
-> >> +    soc {
-> >> +        #address-cells = <2>;
-> >> +        #size-cells = <2>;
-> >> +
-> >> +        csi_dphy0: phy@fedc0000 {
-> >> +            compatible = "rockchip,rk3588-csi-dphy";
-> >> +            reg = <0x0 0xfedc0000 0x0 0x8000>;
-> >> +            clocks = <&cru PCLK_CSIPHY0>;
-> >> +            clock-names = "pclk";
-> >> +            #phy-cells = <0>;
-> >> +            resets = <&cru SRST_CSIPHY0>, <&cru SRST_P_CSIPHY0>;
-> >> +            rockchip,grf = <&csidphy0_grf>;
-> >> +            status = "disabled";
-> >> +        };
-> >> +    };
-> > 
-> > ... which could hopefully tell us what the value is/should be for the
-> > *required* 'power-domains' property, which is missing in this example.
-> > IOW: the binding example is invalid according to its own binding.
+On Mon, 23 Jun 2025 12:07:16 -0400, Detlev Casanova wrote:
+> The video decoder in RK3576 (vdpu383) is described the same way as the
+> one in RK3588 (vdpu381). A new compatible is added as the driver
+> implementation will be different.
 > 
-> Huh, indeed. Hm. Why didn't make dt_binding_check warn me about that?!
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
 
-You disabled the node, what do you want us to check?
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-Rob
 
 _______________________________________________
 Linux-rockchip mailing list
