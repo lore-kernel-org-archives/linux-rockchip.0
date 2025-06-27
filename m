@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59AE2C77B7F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Jun 2025 15:54:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1330EC77B7F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Jun 2025 15:58:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vC27nD7Nxk9A/9R3ElfX4hXxWoOrTNGmbhirOtdeenM=; b=H/HT8hxZ6yjDGA
-	u3kQIMY0DjB4GYB2doa9YAnDk2bpJ6t2rI4ehXWPUyCI0wcIzRx7EcfpzNFKuTmIyW0vMavSX8/Na
-	8NPjJTksC65V07gpwVX0YIVPnU5WGoAWxxi6FIpQpTqW5ZQI/YB5nI/W2V3FVKmdVTcD7ovu1Kn+r
-	DnMV4LJXnOi9uUU01bz+ByccLjSNPUONNA+jK0ZrpEds0lAG2IZnVpo+zIquz6qgv0Hv0aASwtnii
-	whQNthXt3v3F+Hdgb2aqtR+KHvRWQm/SsyKkYI3Cz6l96g5UAmH+uNon279XN3X7zIDHvYvCJ09LR
-	5MRRjEBoo3It0LGtK9jw==;
+	List-Owner; bh=7sfMzADc8efz73NZRrbgOE24FcwSbfnVhbB9BwSosLY=; b=SC+cDQiWAthySx
+	+N/x353UtJyxYtFu0COFZvD+ChUuZa7m/wjxLzcIq0skMdjzqyZ5Mdj0+kI4VXADBhQ57mmAwVHEx
+	ojYSxSAtFON1GsjqmuVl0g5D5eee753ruGnUBXB8/kZDnqnbgf5s1LktgM2qKF8K/p/X/csHvZi8P
+	PeCOkEyj3mTQXRWKIU+ExHuB1tLCPePadVFvmO04vSzMA4pvJkSq3urxCwVhTYJZIf2lHFUgNbAV3
+	SzlQFaRbB1+2qEb35ikL/8cU3UOxNcpa1l0Mi4JDZWfskMPEu8TPwW9vfwPrqnB2FLAM7AoQEYqrR
+	t81mJ9Br9fxG59uA6R/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVBOz-0000000FBDk-3TLv;
-	Fri, 27 Jun 2025 15:54:09 +0000
-Received: from out-173.mta0.migadu.com ([91.218.175.173])
+	id 1uVBTY-0000000FCCK-1KkG;
+	Fri, 27 Jun 2025 15:58:52 +0000
+Received: from out-179.mta0.migadu.com ([91.218.175.179])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVAyt-0000000F66f-1VVL
+	id 1uVAz3-0000000F6Aw-1ADp
 	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Jun 2025 15:27:12 +0000
+	Fri, 27 Jun 2025 15:27:23 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1751038029;
+	t=1751038039;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=IvcxkrvBiBUkVTTSTfgCGQwPzHmN5OZ3q178klwKd4g=;
-	b=AIoHMfXxYuQewBtQ1iiyF+ABi0Xj3b9khQOMIergAB2mRQZ/+1xwoBr8y5pemFTMgZR39Z
-	+JA+u4WUUS4/4S6n9Lo+1EjwWN5yQYHUJ20ds82aGtgZ2Te0G3bGFYW0z63svQ1T1axVFC
-	kOXtYGOMTbXsypYd/vY8bNePXOpDnyYeym4SMabwxbLD2H+4SUsAj+4Ld31ErEPl54QWBB
-	pWqk+hw+Sq/VSddKLaNMEzb8UByOtsY3pXuXd1gIf1yGP5OEU+aVgbuQRlTJjbvWIgYFS2
-	siUelEdBXyjSQLac4PKcUeL0KBZ7YIB6dfhVrLYp8eEUFksCXYSEHiJmmlycnA==
+	bh=LdOjVT0hxZ4MogGhHL86KxEfuOHrbi5hNR9VAR3J/Ig=;
+	b=nxbfwm+MitF8loH1tKwMyCkE2/0eI4R2TRx7llUMTV7XNzavxNSb6A0rfxYWub6ZZL0qU6
+	1e8FNAXP7UEHC2hBiEaXGDL/OwOadbujC4CZMsRGW1h7KGakSccQ09eVZTsosSFYcXmToB
+	0zOtqoBVWErn8FlWL0/VrQfj7K15hCtFtO0l8hxy5WAPazn5bS65eJ55HfQ1R7U5w609dF
+	EmsoJUvk75ryjTlM4jxgouDYd4kg9Qw1HcDtwchMdf+7lk1uGZH/hJICGezP+hAILdgP0s
+	IphcZBjlG2TLczXikdeuLi56TczP4jTsmYByiiTTu5I2ZTF0147HXrbtgeGjkw==
 From: Diederik de Haas <didi.debian@cknow.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -53,16 +53,17 @@ Cc: Dragan Simic <dsimic@manjaro.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH 2/8] arm64: dts: rockchip: Refactor DSI nodes on rk3399 boards
-Date: Fri, 27 Jun 2025 17:16:21 +0200
-Message-ID: <20250627152645.740981-3-didi.debian@cknow.org>
+Subject: [PATCH 4/8] arm64: dts: rockchip: Simplify VOP port definition on rk3328
+Date: Fri, 27 Jun 2025 17:16:23 +0200
+Message-ID: <20250627152645.740981-5-didi.debian@cknow.org>
 In-Reply-To: <20250627152645.740981-1-didi.debian@cknow.org>
 References: <20250627152645.740981-1-didi.debian@cknow.org>
 MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250627_082711_693974_60C21804 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20250627_082721_458843_11DC966A 
+X-CRM114-Status: UNSURE (   8.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,192 +80,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The #address-cells and #size-cells properties are not useful on the DSI
-controller nodes; they are only useful/required on ports and panel(s).
-So remove them from the controller node and add them where actually
-needed on the various rk3399 based boards.
-
-Next to that, there were several (exact) redefinitions of nodes which
-are already present in rk3399-base.dtsi to add a mipi_out endpoint.
-Simplify that by referencing the mipi_out phandle and add the endpoint
-to that, which allows the removeal of the ports redefinition.
-
-And fix 1 instance where the mipi_out referenced node was not sorted
-correctly.
+When there's only 1 endpoint, there is no need for a unit-address and
+removing that allows removing of related properties as well.
 
 This fixes the following DTB validation warnings:
 
-  unnecessary #address-cells/#size-cells without "ranges",
-  "dma-ranges" or child "reg" property
+  graph node has single child node 'endpoint@0',
+  #address-cells/#size-cells are not necessary
 
 Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-base.dtsi |  4 ---
- .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 30 ++++++++-----------
- .../dts/rockchip/rk3399-pinephone-pro.dts     |  2 ++
- .../rk3399-puma-haikou-video-demo.dtso        | 12 ++++----
- .../dts/rockchip/rk3399-rockpro64-screen.dtso | 21 ++++---------
- 5 files changed, 26 insertions(+), 43 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-index 9d5f5b083e3c..4dcceb9136b7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-@@ -2071,8 +2071,6 @@ mipi_dsi: dsi@ff960000 {
- 		resets = <&cru SRST_P_MIPI_DSI0>;
- 		reset-names = "apb";
- 		rockchip,grf = <&grf>;
--		#address-cells = <1>;
--		#size-cells = <0>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 7d992c3c01ce..6438c969f9d7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -731,11 +731,7 @@ vop: vop@ff370000 {
  		status = "disabled";
  
- 		ports {
-@@ -2112,8 +2110,6 @@ mipi_dsi1: dsi@ff968000 {
- 		resets = <&cru SRST_P_MIPI_DSI1>;
- 		reset-names = "apb";
- 		rockchip,grf = <&grf>;
--		#address-cells = <1>;
--		#size-cells = <0>;
- 		#phy-cells = <0>;
- 		status = "disabled";
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-index 5e068377a0a2..100c22af7265 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-@@ -627,18 +627,10 @@ &mipi_dphy_rx0 {
- };
- 
- &mipi_dsi {
--	status = "okay";
- 	clock-master;
+ 		vop_out: port {
+-			#address-cells = <1>;
+-			#size-cells = <0>;
 -
--	ports {
--		mipi_out: port@1 {
--			reg = <1>;
--
--			mipi_out_panel: endpoint {
--				remote-endpoint = <&mipi_in_panel>;
--			};
--		};
--	};
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
- 
- 	mipi_panel: panel@0 {
- 		/* 2 different panels are used, compatibles are in dts files */
-@@ -673,15 +665,17 @@ mipi1_in_panel: endpoint {
- 
- &mipi_dsi1 {
- 	status = "okay";
-+};
- 
--	ports {
--		mipi1_out: port@1 {
--			reg = <1>;
-+&mipi_out {
-+	mipi_out_panel: endpoint {
-+		remote-endpoint = <&mipi_in_panel>;
-+	};
-+};
- 
--			mipi1_out_panel: endpoint {
--				remote-endpoint = <&mipi1_in_panel>;
--			};
--		};
-+&mipi1_out {
-+	mipi1_out_panel: endpoint {
-+		remote-endpoint = <&mipi1_in_panel>;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-index 909ed14035f7..fe32937a2d16 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-@@ -464,6 +464,8 @@ &io_domains {
- 
- &mipi_dsi {
- 	clock-master;
-+	#address-cells = <1>;
-+	#size-cells = <0>;
- 	status = "okay";
- 
- 	panel@0 {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
-index 0377ec860d35..d28880b8dd44 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
-@@ -124,12 +124,6 @@ pca9670: gpio@27 {
- 	};
- };
- 
--&mipi_out {
--	mipi_out_panel: endpoint {
--		remote-endpoint = <&mipi_in_panel>;
--	};
--};
--
- &mipi_dsi {
- 	#address-cells = <1>;
- 	#size-cells = <0>;
-@@ -151,6 +145,12 @@ mipi_in_panel: endpoint {
- 	};
- };
- 
-+&mipi_out {
-+	mipi_out_panel: endpoint {
-+		remote-endpoint = <&mipi_in_panel>;
-+	};
-+};
-+
- &pinctrl {
- 	pca9670 {
- 		pca9670_resetn: pca9670-resetn {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-screen.dtso b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-screen.dtso
-index b1f4ab22b99c..3a68c5f7c5ff 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-screen.dtso
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-screen.dtso
-@@ -47,25 +47,11 @@ touch: touchscreen@5d {
- };
- 
- &mipi_dsi {
-+	clock-master;
- 	#address-cells = <1>;
- 	#size-cells = <0>;
--
--	clock-master;
- 	status = "okay";
- 
--	ports {
--		#address-cells = <1>;
--		#size-cells = <0>;
--
--		mipi_out: port@1 {
--			reg = <1>;
--
--			mipi_out_panel: endpoint {
--				remote-endpoint = <&mipi_in_panel>;
--			};
--		};
--	};
--
- 	mipi_panel: panel@0 {
- 		compatible = "feiyang,fy07024di26a30d";
- 		reg = <0>;
-@@ -81,6 +67,11 @@ mipi_in_panel: endpoint {
- 	};
- };
- 
-+&mipi_out {
-+	mipi_out_panel: endpoint {
-+		remote-endpoint = <&mipi_in_panel>;
-+	};
-+}
- &pwm0 {
- 	status = "okay";
- };
+-			vop_out_hdmi: endpoint@0 {
+-				reg = <0>;
++			vop_out_hdmi: endpoint {
+ 				remote-endpoint = <&hdmi_in_vop>;
+ 			};
+ 		};
 -- 
 2.50.0
 
