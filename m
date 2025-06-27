@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90A29C7EE32
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Jun 2025 11:13:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80EDCC7EE31
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Jun 2025 12:24:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xuuc4EQEi/kkPDo1UHU2/vY1x3wZgRhTs/JLryv3V2Q=; b=E6Zzp0h7R6QujP
-	oZjsbKlDCAeJh8yc4SX2rzy5fWAjBYKEVTuUL0w5HXbX2IpD3rW10WPil4IAX4UPMo6POUVxsPgoS
-	BzJP1JurxCkZ6edEQN/YcMlaMtzBi3nP6Z5cHtK3p1WLBEBDw3gx7pgAKC1latJPBDAGOdcvyM1n1
-	dB1R7pPOn/X6+Q4xo8F7iLbEkHXdnBkFWSJPo18NB8JOrXVbsvuu6JSIWMbDiKbimDzS8Ay60S/DP
-	b2gL0SKtVS5C12ixP2OAuZubMwqY/Gca6EYNdLZAFb+layDVqREtI7ykxm59Q8E7SIhAyrTxKUkO1
-	mxmmkHph2FUcAlvQDlgw==;
+	List-Owner; bh=Bsl9M3rhIhC70LL93XilhQku9AVMK5ua/0medFPBvgo=; b=YMUQ9jbGm+eHFC
+	nUllv5ETW2N0vLRhktXwDWwJIkUHp1/upFwIxKQ5zwSELCRHBQ3bixPBoiVozqDGp1BszTszddaZL
+	vxHkT86xKoGVyeP7YVTDxwsDFG9j32hA3dkqpZRCiff1TNhl2i9nOv4XxrmyujO+SMBlexk9K5aA3
+	Zu7SOO2ykmwu36YqMHSEe0wgkqqLpFTnp0ANuf8upLgtV+tRYtY5oF62OwcqwtSYwSM5Gks+DVWwy
+	04UiIsA4RPxmnlt6C50urNm/1/Zhd77mBxg+e5MwEQ0mHlP79q4jLucbf9DIPICvC81OpM7gR1Alp
+	BT4uhw2XGYHEK8Hrh68A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uV71b-0000000ERVD-35R8;
-	Fri, 27 Jun 2025 11:13:43 +0000
+	id 1uV87i-0000000EdLG-2K9m;
+	Fri, 27 Jun 2025 12:24:06 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uV6is-0000000EMyh-3c84
+	id 1uV6is-0000000EMye-3WcY
 	for linux-rockchip@bombadil.infradead.org;
 	Fri, 27 Jun 2025 10:54:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=+KTkkcuGqyAnxeNSHub1NpNvSC0dY6zuN9Oy6QBuK74=; b=K9WmhLsvnjpsyJMOXqifyMwitl
-	Pbp3b6jMSBSI1n6Vjtfe/T0nAnG1fXtbrG76V+1V9uOjCpKMXBo7RctNRhT8bO+MES6ec013MnQBH
-	DEFmeaGf46KpzAgq52B1MEmpeC55+rQsmAlioJX/ThIZWfI4EiiPRx4FCBWoqUi46X8syG2vHnWz+
-	tXecDgVVFFcV3NOlUNbded4S2GaE2dm6hofZMY3L5Mhr1SEs4kkmH08udgcnkLpI/HHCW7TD7A5TL
-	Sp71ZFockjO0gU8TqjWK8aEsursbm9NRcRwmVLMlI5WrlopItr91ztVORAGtc1s2eXW6MPEbsf7Bz
-	dhiF84Hg==;
-Received: from smtp-bc0b.mail.infomaniak.ch ([2001:1600:7:10::bc0b])
+	bh=OJDvBGyHImOjLMbMlylERVMAfTrZLH7q5YtWvNoL9AM=; b=a4tuxq/Ihl969IZQitu+4g3b48
+	1gRlMaU7LH8qOozRf8aaqa/Ae6WpWBqmz7n7q/srknnnIIxyK5unA7s3LPVgBNom9voqtqaWdBiWl
+	bcxDoQ2hheO4NgGlciR+bVyhH78Rgwgqeg6tukAqvZ+mEQEcQvJ0QrsrCGEKsEIXE/BRXofFuoOwb
+	zOruxHGOlquBzBHUsWDR864VdA6auk5cE9RYBJn7/JsAMv2dY4qZ66Sk67XC0dhPqfoFYkSi/Db4V
+	csh0DK5Z2SPePrkRcld89SnWfujfUn280Fd4y+7y2kpZFXvt/tsWjGt/Abz9FQeLgG6Na/xp7rtur
+	kvOjqxVQ==;
+Received: from smtp-bc0d.mail.infomaniak.ch ([2001:1600:7:10::bc0d])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uV6io-00000006J77-0mbf
+	id 1uV6ip-00000006J7x-0q8j
 	for linux-rockchip@lists.infradead.org;
 	Fri, 27 Jun 2025 10:54:21 +0000
-Received: from smtp-4-0001.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6c])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4bTC9L4pN1zW0Y;
-	Fri, 27 Jun 2025 12:54:14 +0200 (CEST)
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4bTC9K3SKyzx9C;
-	Fri, 27 Jun 2025 12:54:13 +0200 (CEST)
+Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4bTC9P1q2ZzZJF;
+	Fri, 27 Jun 2025 12:54:17 +0200 (CEST)
+Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4bTC9N13KQzw8D;
+	Fri, 27 Jun 2025 12:54:16 +0200 (CEST)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Fri, 27 Jun 2025 12:53:54 +0200
-Subject: [PATCH v4 2/5] mfd: rk8xx-core: allow to customize RK806 reset
- mode
+Date: Fri, 27 Jun 2025 12:53:56 +0200
+Subject: [PATCH v4 4/5] arm64: dts: rockchip: force PMIC reset behavior to
+ restart PMU on RK3588 Jaguar
 MIME-Version: 1.0
-Message-Id: <20250627-rk8xx-rst-fun-v4-2-ce05d041b45f@cherry.de>
+Message-Id: <20250627-rk8xx-rst-fun-v4-4-ce05d041b45f@cherry.de>
 References: <20250627-rk8xx-rst-fun-v4-0-ce05d041b45f@cherry.de>
 In-Reply-To: <20250627-rk8xx-rst-fun-v4-0-ce05d041b45f@cherry.de>
 To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -62,8 +62,9 @@ To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 X-Mailer: b4 0.14.2
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250627_115418_401435_942507EA 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20250627_115419_778237_76118D95 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,86 +84,43 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@cherry.de>
 
-The RK806 PMIC has a bitfield for configuring the restart/reset behavior
-(which I assume Rockchip calls "function") whenever the PMIC is reset
-either programmatically (c.f. DEV_RST in the datasheet) or via PWRCTRL
-or RESETB pins.
+The bootloader for RK3588 Jaguar currently forces the PMIC reset
+behavior (stored in RST_FUN bitfield in register SYS_CFG3 of the PMIC)
+to 0b1X which is incorrect for our devices.
 
-For RK806, the following values are possible for RST_FUN:
+It is required to restart the PMU as otherwise the companion
+microcontroller cannot detect the PMIC (and by extension the full
+product and main SoC) being rebooted which is an issue as that is used
+to reset a few things like the PWM beeper and watchdogs.
 
-0b00 means "Restart PMU"
-0b01 means "Reset all the power off reset registers, forcing
-	the state to switch to ACTIVE mode"
-0b10 means "Reset all the power off reset registers, forcing
-	the state to switch to ACTIVE mode, and simultaneously
-	pull down the RESETB PIN for 5mS before releasing"
-0b11 means the same as for 0b10 just above.
-
-This adds the appropriate logic in the driver to parse the new
-rockchip,reset-mode DT property to pass this information. It just
-happens that the values in the binding match the values to write in the
-bitfield so no mapping is necessary.
-
-If it is missing, the register is left untouched and relies either on
-the silicon default or on whatever was set earlier in the boot stages
-(e.g. the bootloader).
+Let's add the new rockchip,reset-mode property to make sure the PMIC
+reset behavior is the expected one.
 
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- drivers/mfd/rk8xx-core.c  | 12 ++++++++++++
- include/linux/mfd/rk808.h |  2 ++
- 2 files changed, 14 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
-index 71c2b80a4678d627e86cfbec8135f08e262559d3..def4587fdfb8b82e5548e70310d3e16e6d07d7af 100644
---- a/drivers/mfd/rk8xx-core.c
-+++ b/drivers/mfd/rk8xx-core.c
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+index ebe77cdd24e803b00fb848dc81258909472290f1..176925d0a1a809d1e2500f5e5efbbfa6a6d0bd42 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
 @@ -10,6 +10,7 @@
-  * Author: Wadim Egorov <w.egorov@phytec.de>
-  */
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/soc/rockchip,vop2.h>
+ #include <dt-bindings/usb/pd.h>
++#include "rk8xx.h"
+ #include "rk3588.dtsi"
  
-+#include <linux/bitfield.h>
- #include <linux/interrupt.h>
- #include <linux/mfd/rk808.h>
- #include <linux/mfd/core.h>
-@@ -699,6 +700,7 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
- 	const struct mfd_cell *cells;
- 	int dual_support = 0;
- 	int nr_pre_init_regs;
-+	u32 rst_fun = 0;
- 	int nr_cells;
- 	int ret;
- 	int i;
-@@ -726,6 +728,16 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
- 		cells = rk806s;
- 		nr_cells = ARRAY_SIZE(rk806s);
- 		dual_support = IRQF_SHARED;
-+
-+		ret = device_property_read_u32(dev, "rockchip,reset-mode", &rst_fun);
-+		if (ret)
-+			break;
-+
-+		ret = regmap_update_bits(rk808->regmap, RK806_SYS_CFG3, RK806_RST_FUN_MSK,
-+					 FIELD_PREP(RK806_RST_FUN_MSK, rst_fun));
-+		if (ret)
-+			return dev_err_probe(dev, ret,
-+					     "Failed to configure requested restart/reset behavior\n");
- 		break;
- 	case RK808_ID:
- 		rk808->regmap_irq_chip = &rk808_irq_chip;
-diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
-index 69cbea78b430b562a23d995263369d475daa6287..28170ee08898ca59c76a741a1d42763a42b72380 100644
---- a/include/linux/mfd/rk808.h
-+++ b/include/linux/mfd/rk808.h
-@@ -812,6 +812,8 @@ enum rk806_pin_dr_sel {
- #define RK806_INT_POL_H			BIT(1)
- #define RK806_INT_POL_L			0
+ / {
+@@ -693,6 +694,7 @@ pmic@0 {
+ 		vcc13-supply = <&vcc_1v1_nldo_s3>;
+ 		vcc14-supply = <&vcc_1v1_nldo_s3>;
+ 		vcca-supply = <&vcc5v0_sys>;
++		rockchip,reset-mode = <RK806_RESTART>;
  
-+/* SYS_CFG3 */
-+#define RK806_RST_FUN_MSK		GENMASK(7, 6)
- #define RK806_SLAVE_RESTART_FUN_MSK	BIT(1)
- #define RK806_SLAVE_RESTART_FUN_EN	BIT(1)
- #define RK806_SLAVE_RESTART_FUN_OFF	0
+ 		rk806_dvs1_null: dvs1-null-pins {
+ 			pins = "gpio_pwrctrl1";
 
 -- 
 2.50.0
