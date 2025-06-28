@@ -4,66 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E768CC83026
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Jun 2025 15:13:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8747FC54ED1
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Jun 2025 18:13:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a5IzG+NIgyHHLpZqHCHw8Ra/57AeGC5EFMLg3l8X8GA=; b=jhT3q6XNsdAnzT
-	4aFObTBet7oBtQnx8PqQjLQX5Hrs+Gy8+IsPMSc5bFNyq1cdHQCAlQy5keuqtIBQwib5oohSTaF4z
-	NBIT2BlQQVwdF/k4gxunQlmQWUk/ythy5rzWwA0XXLqPlFxJG4dfmcjWyRAGl2Sc3MAnoWYQ3WLrB
-	aj80Pq5/LZYgRA3QXateoUsBW1M46NbmB3D7Amhd5J/QDmnc6K6Piol0EvKE3M2VXr+Ye8iT7HcwZ
-	4zP1F93hLdtjwWxdgjGRu2M4LDV5AJFp0Sn3qWqTXq8j1HkHZElzwGjp/mVJq99HPRkbwatEMcgVh
-	XkT7uWvc/k2PgvkQ2eGg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:From
+	:To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2nvt1Uo7Glgl8JQC2Fxl4+u77Bdv+7cYrx1NGDRdsOg=; b=ZArMK3BinGcBSM
+	h83+vVsrGCevcwFPFUj7EMBUNwEggQ6A+/BZugmt1EyJ7w+5inmPe4poPSnvW4Vidg8QYd/mf6INv
+	pQ1mQNA1Z9MO38FnnWYz6AcXS0OQEp9C/VB+6MreXDSTIJ0e4CbddLPvL2mJofQ7TyG4JMS/HMWhD
+	gt27R5ImP54BF0O+dWhEOqfBtO6ovO2ZU0QaTl/M56AQtwAiY4ayyZstv5apvid0vGGbJDt45fWHg
+	Hn+SxsS2fqRQb6jhdG6stIJcheg7m65PkyaTPWv4eHy9SYOoN+uTyjc+eqDXnK2oUJPSKfCRvmmIP
+	9PTNjXnZnS7bAlnhRb8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVXEv-0000000GwVy-25Io;
-	Sat, 28 Jun 2025 15:13:13 +0000
-Received: from out-183.mta0.migadu.com ([2001:41d0:1004:224b::b7])
+	id 1uVa3X-0000000HBle-2SCX;
+	Sat, 28 Jun 2025 18:13:39 +0000
+Received: from mail-10631.protonmail.ch ([79.135.106.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVWs5-0000000Gu5W-2E06
-	for linux-rockchip@lists.infradead.org;
-	Sat, 28 Jun 2025 14:49:38 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1751122175;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=nOCOpdzyJGYo0WmyPHPzo5U4cOQf2vkC3N8qsd5gyAo=;
-	b=daIS9324QttA57y7l+xdjF7zturzgBK5nNg+qp3Hk7JGrM5dsSwOhhvgWyEOv2FaWA6MgQ
-	wNZDOMw83JkimbY/BaGuief0BcMrDrw7TLOAMfIfpSnu05VHGMBji2Q3nMAkNM99walqix
-	nkxax+IBVUL8jS5pnk+2DI7eutzBBjrcMK5X2worrx6c8OFrDQI2iuR/5SzLoZmuby5/R7
-	9OfOAu+w60u3SyjLzP5l4ipwonv5LF0ia+6l7DiGoSQzE2g1BgUyJB897dmulltNf2vUoB
-	Rrawoo02XSQFcRVttstA+PpPp0evYF5WTfjTXy6NERsMmDJFjB+6Ha/+k7Vg+g==
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Dragan Simic <dsimic@manjaro.org>,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Johan Jonker <jbx6244@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH v2 10/10] arm64: dts: rockchip: Drop regulator-compatible property on rk3399
-Date: Sat, 28 Jun 2025 16:32:44 +0200
-Message-ID: <20250628144915.839338-11-didi.debian@cknow.org>
-In-Reply-To: <20250628144915.839338-1-didi.debian@cknow.org>
-References: <20250628144915.839338-1-didi.debian@cknow.org>
+	id 1uVa1C-0000000HBds-2DFI;
+	Sat, 28 Jun 2025 18:11:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=6cpe4ktcdvd67ngbngfuz5xzca.protonmail; t=1751134268; x=1751393468;
+	bh=dq6sTVoUvyIYla+M1WiLd0H4wGmmDdgUa/v1ni4cxzA=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=Ec8s2KMC4SC/8PnZ0fXrVzIwaMSosjk22f1lvjVVhR6WKSB8mHkF1ZnWUJDwRlN3d
+	 O5Pa+f7QkVv/a+qR74ytqZMHjCJ8VrrKr4vZc1oqz1VOt8gs5SCFOUVcGAiJpBn9+z
+	 xhGcxOc39tHaQRZtNuW564JTsgewLdlUEX3zcssxyu08TMP25TbGBt8TfY0w7OZ7Hs
+	 8eWNu9Dl9ubtxdO/FpPp/d7jJ6bwnVx5btKdOhIRT/z93YE+jAZ9uJ9/XBo7MlToII
+	 dBO9kLHPW1CNBKY/laqf+9Z0GdApiEclzFJ0qFIlrrHA//6I1gJHb4ubSJj37QThrv
+	 vz/2gWSbPKmag==
+Date: Sat, 28 Jun 2025 18:11:00 +0000
+To: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Piotr Zalewski <pZ010001011111@proton.me>
+Cc: Piotr Zalewski <pZ010001011111@proton.me>, Diederik de Haas <didi.debian@cknow.org>
+Subject: [PATCH] rockchip/drm: vop2: make vp registers nonvolatile
+Message-ID: <20250628180914.1177177-2-pZ010001011111@proton.me>
+Feedback-ID: 53478694:user:proton
+X-Pm-Message-ID: 545f9ed5d7d61bdded3750b1707295524307882c
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250628_074937_709110_5940A1B6 
-X-CRM114-Status: UNSURE (   7.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250628_111115_184396_D598E394 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,62 +65,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The regulator-compatible property has never existed in the
-regulator/fcs,fan53555.yaml binding, so drop it.
+Make video port registers nonvolatile. As DSP_CTRL register is written
+to twice due to gamma LUT enable bit which is set outside of the main
+DSP_CTRL initialization within atomic_enable (for rk356x case it is also
+necesarry to always disable gamma LUT before writing a new LUT) there is
+a chance that DSP_CTRL value read-out in gamma LUT init/update code is
+not the one which was written by the preceding DSP_CTRL initialization
+code within atomic_enable. This might result in misconfigured DSP_CTRL
+which leads to no visual output[1]. Since DSP_CTRL write takes effect
+after VSYNC[1] the issue is not always present. When tested on Pinetab2
+with kernel 6.14 it happenes only when DRM is compiled as a module[1].
+In order to confirm that it is because of timing I inserted 18ms udelay
+before vop2_crtc_atomic_try_set_gamma in atomic enable and compiled DRM
+as module - this has also fixed the issue on Pinetab2.
 
-This fixes the following DTB validation warnings:
+[1] https://lore.kernel.org/linux-rockchip/562b38e5.a496.1975f09f983.Coremail.andyshrk@163.com/
 
-  Unevaluated properties are not allowed
-  ('regulator-compatible' was unexpected)
-
-Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+Reported-by: Diederik de Haas <didi.debian@cknow.org>
+Closes: https://lore.kernel.org/linux-rockchip/DAEVDSTMWI1E.J454VZN0R9MA@cknow.org/
+Suggested-by: Andy Yan <andy.yan@rock-chips.com>
+Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts   | 2 --
- arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts | 2 --
- 2 files changed, 4 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-index 81c4fcb30f39..352c8efb37e0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-@@ -211,7 +211,6 @@ &i2c0 {
- 	vdd_cpu_b: syr827@40 {
- 		compatible = "silergy,syr827";
- 		reg = <0x40>;
--		regulator-compatible = "fan53555-reg";
- 		pinctrl-0 = <&vsel1_pin>;
- 		regulator-name = "vdd_cpu_b";
- 		regulator-min-microvolt = <712500>;
-@@ -229,7 +228,6 @@ regulator-state-mem {
- 	vdd_gpu: syr828@41 {
- 		compatible = "silergy,syr828";
- 		reg = <0x41>;
--		regulator-compatible = "fan53555-reg";
- 		pinctrl-0 = <&vsel2_pin>;
- 		regulator-name = "vdd_gpu";
- 		regulator-min-microvolt = <712500>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-index 15da5c80d25d..962b8b231c96 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-@@ -421,7 +421,6 @@ vdd_cpu_b: regulator@40 {
- 		compatible = "silergy,syr827";
- 		reg = <0x40>;
- 		fcs,suspend-voltage-selector = <1>;
--		regulator-compatible = "fan53555-reg";
- 		pinctrl-0 = <&vsel1_gpio>;
- 		vsel-gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
- 		regulator-name = "vdd_cpu_b";
-@@ -440,7 +439,6 @@ vdd_gpu: regulator@41 {
- 		compatible = "silergy,syr828";
- 		reg = <0x41>;
- 		fcs,suspend-voltage-selector = <1>;
--		regulator-compatible = "fan53555-reg";
- 		pinctrl-0 = <&vsel2_gpio>;
- 		vsel-gpios = <&gpio1 RK_PB6 GPIO_ACTIVE_HIGH>;
- 		regulator-name = "vdd_gpu";
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index d0f5fea15e21..241060cc24cb 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -2589,12 +2589,13 @@ static int vop2_win_init(struct vop2 *vop2)
+ }
+ 
+ /*
+- * The window registers are only updated when config done is written.
+- * Until that they read back the old value. As we read-modify-write
+- * these registers mark them as non-volatile. This makes sure we read
+- * the new values from the regmap register cache.
++ * The window and video port registers are only updated when config
++ * done is written. Until that they read back the old value. As we
++ * read-modify-write these registers mark them as non-volatile. This
++ * makes sure we read the new values from the regmap register cache.
+  */
+ static const struct regmap_range vop2_nonvolatile_range[] = {
++	regmap_reg_range(RK3568_VP0_CTRL_BASE, RK3588_VP3_CTRL_BASE+255),
+ 	regmap_reg_range(0x1000, 0x23ff),
+ };
+ 
 -- 
 2.50.0
+
 
 
 _______________________________________________
