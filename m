@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C96B4C7EE32
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Jun 2025 08:58:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA4AFC7EE39
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Jun 2025 14:31:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OhAc0JPzZMzdAP4cXznESCpC0Kf58q/cAV3dVqoOgDw=; b=M5+MTX2yrF2GHLZxFhP3mNPbro
-	n5cFjnCClGb3LYiqyIgpcVkzHr0zVaWJxos6FIN0E6edKIrkZwXOHrkNn7duAIwy4L1PkCI+Zj67c
-	nEk7Bl8wCEhi/rWyNTPW0MlTh8iXOcCvjdv5DH0vCrEnKs4Taf35i5NkC3qLGg3C9oAEhaLpcN4zL
-	DUkT56qr+Q9mkwl9PNvEZV4SpTOzVEN96CM+JDQHSQiuzEfuiFSFfXzH+fKd9wY8ukIf+yFu1rrtw
-	ZlzXe6+rK2qaApXDC1i4wKonhO59X8F/V7L5YyxXDcp6buaAkaQb1iQq6Y3I2abBmv/t6O3DB8beV
-	YWqu/Xvw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6r5cssMlI/uUWwuRIqIE96Q0QqPiSyVIeykr3vi++FU=; b=dpOPNp/ycRJ9DY
+	2wXyuFWGjkkFmn/NMJDctYcDFfRTlCFz9gjO3eLxjMuQzvNfVw+X7V/bR+Hlb4vTOzPhnFn3BQZyg
+	1ywxbsQhjsKhwUU3dSZanf/Bfoz4y+T2gtMxleJh/ZkrN3JxFGool4vKXr2G10NMBlF4a8jEq1p3+
+	3Kih1eurhJdSEF5QH+2JzxQ3B2UhLc5L6aloSUNZY8eUBfw79NGcYwoJNx8w+H3D4/bwz93iEVlYI
+	ikqdYG06fM3JTuYbXlbgvDJ9uI2rG0c9TlxvIAez1C/rZTECHDgfJkwm3DVTolJ3vcWP/HUSmeH6f
+	9G0MzLS1qb7crnxrNcAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVRNk-0000000GaCG-2YGX;
-	Sat, 28 Jun 2025 08:57:56 +0000
-Received: from out-186.mta1.migadu.com ([2001:41d0:203:375::ba])
+	id 1uVWaP-0000000GsDe-3O0e;
+	Sat, 28 Jun 2025 14:31:21 +0000
+Received: from out-186.mta0.migadu.com ([2001:41d0:1004:224b::ba])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVRNh-0000000GaBu-3T4j
+	id 1uVWYE-0000000Gryj-140B
 	for linux-rockchip@lists.infradead.org;
-	Sat, 28 Jun 2025 08:57:55 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1751101070;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ybqsyqEQtaTyGQvk+BFdCF7y271RgdQMonWszxYB88c=;
-	b=ROENJZTIjZyoCI9g2NPJUEtCzQMHCjP4pthou6YG3P6yiZ2a1ek19Xv1QSzBHZzkaWgQAm
-	3xmFVpxPyobZosVJygZtNI5iEPcIz/nFt5Mi1Gc0t8WkooJHZ4VZCjxfnlm2XBe0aAKk6J
-	4umnJnAB61UfIauxFGLuU7SsDfGL6YYM6ROHv/9Ge7Gvz1h2GptoLGsLO7TiXmULdPMdsC
-	d9ksbrHAIcJaOT53g1FN6EWXLzMCU+ziHi9IXhoOw7M1fBsJ33315yDrQI5J8nUc+uOQI0
-	2HVtYevIo0/JXHjMDXN9et/v3aON1lm6QZ90GzwsA4oYmvanj77wP183v7Bpkw==
-Date: Sat, 28 Jun 2025 10:57:29 +0200
-Message-Id: <DAY1IKPD6TB6.1JICGYYQTWEDR@cknow.org>
-Cc: "Dragan Simic" <dsimic@manjaro.org>, "Johan Jonker" <jbx6244@gmail.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 2/8] arm64: dts: rockchip: Refactor DSI nodes on rk3399
- boards
+	Sat, 28 Jun 2025 14:29:07 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "Quentin Schulz"
- <quentin.schulz@cherry.de>, "Rob Herring" <robh@kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>
-References: <20250627152645.740981-1-didi.debian@cknow.org>
- <b1c789bf-1369-42ec-8bb3-d7a45c92abf0@cherry.de>
- <DAXGZG0DEKS2.7RLXKSDO0C9T@cknow.org> <5121698.88bMQJbFj6@diego>
-In-Reply-To: <5121698.88bMQJbFj6@diego>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1751120932;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=cfDZ1inHOui4m5H5mXU1kp88kQ35TPyN/bSvxLYsfwA=;
+	b=drzaFM0YVkZsqVrjLUvXn3A1tp93N4Rp0hgxvjIF/Zyf2+HaXHjSdNeQtnEQa12wR3Aczj
+	w+NpD19PqXPEWQHqjKTEzqYvSrKC1JArSEwyrDHaq3Epbh1iSWasW8E/3fwg9wVjXtwexe
+	UFHRziCozyLVNdHBbfbXzP2JPxZC6tlCxhnP6qWMKE2vlBp868vEGNQnTcWCYjeuOp8HFj
+	Tg8Rli9QtB7q1SplwJgl+QZ08H+tJ4TXikfz841Bdjwl8TVmG6exLJTroOaDFwMfxJx5GW
+	lTmKjQw63UB41KSc44tZhxGRTeEg2zyat8CejBpMrrp1vBPJhYPZtZ+KWLHKcA==
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Dragan Simic <dsimic@manjaro.org>,
+	Johan Jonker <jbx6244@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Diederik de Haas <didi.debian@cknow.org>
+Subject: [PATCH] arm64: dts: rockchip: Add missing fan-supply to rk3566-quartz64-a
+Date: Sat, 28 Jun 2025 16:28:18 +0200
+Message-ID: <20250628142843.839150-1-didi.debian@cknow.org>
+MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250628_015754_575338_C4BC6B01 
-X-CRM114-Status: GOOD (  24.87  )
+X-CRM114-CacheID: sfid-20250628_072906_423769_2E570092 
+X-CRM114-Status: UNSURE (   6.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,125 +71,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4057279385965445388=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============4057279385965445388==
-Content-Type: multipart/signed;
- boundary=45ff3aaff99b43270ac8aa38352e1e585a3b95bead335ff4d3af9d1accaf;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+The Quartz 64 Model-A Schematic from 20210427 on page 7 shows that the
+fan's power supply is provided by VCC12V_DCIN.
 
---45ff3aaff99b43270ac8aa38352e1e585a3b95bead335ff4d3af9d1accaf
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+This fixes the following warning:
 
-Hi Heiko & Quentin,
+  gpio-fan gpio_fan: supply fan not found, using dummy regulator
 
-On Fri Jun 27, 2025 at 8:25 PM CEST, Heiko St=C3=BCbner wrote:
-> Am Freitag, 27. Juni 2025, 18:52:08 Mitteleurop=C3=A4ische Sommerzeit sch=
-rieb Diederik de Haas:
->> On Fri Jun 27, 2025 at 6:10 PM CEST, Quentin Schulz wrote:
->> > On 6/27/25 5:16 PM, Diederik de Haas wrote:
->> >> The #address-cells and #size-cells properties are not useful on the D=
-SI
->> >> controller nodes; they are only useful/required on ports and panel(s)=
-.
->> >> So remove them from the controller node and add them where actually
->> >> needed on the various rk3399 based boards.
->> >>=20
->> >> Next to that, there were several (exact) redefinitions of nodes which
->> >> are already present in rk3399-base.dtsi to add a mipi_out endpoint.
->> >> Simplify that by referencing the mipi_out phandle and add the endpoin=
-t
->> >> to that, which allows the removeal of the ports redefinition.
->> >>=20
->> >> And fix 1 instance where the mipi_out referenced node was not sorted
->> >> correctly.
->> >>=20
->> >> This fixes the following DTB validation warnings:
->> >>=20
->> >>    unnecessary #address-cells/#size-cells without "ranges",
->> >>    "dma-ranges" or child "reg" property
->> >>=20
->> >
->> > Too many unrelated changes in this commit, please split into multiple=
-=20
->> > commits.
->> >
->> > I could identify:
->> >
->> > - moving address-cells/size-cells from SoC.dtsi to board dts(i)s,
->> > - reordering properties to better match DT coding style=20
->> > https://www.kernel.org/doc/html/latest/devicetree/bindings/dts-coding-=
-style.html#order-of-properties-in-device-node
->> > - use phandle to directly access ports,
->> > - reorder DT node to better match DT coding style=20
->> > https://www.kernel.org/doc/html/latest/devicetree/bindings/dts-coding-=
-style.html#order-of-nodes
->>=20
->> I initially had it as several commits, but that resulted in (f.e.) 1
->> issue being fixed, but 1 (or more) others would pop up.
->> Those were then fixed in follow-up commits, but I assumed I'd get Rob's
->> bot screaming at me for introducing new warnings (first).
->>=20
->> And as they all relate(d) to fixing the dsi node, I then choose to
->> combine them (but still separated by SoC).
->> IMO there are several ways to organize the commits and each would have
->> their pros and cons, so I 'settled' for this arrangement.
->>=20
->> So I prefer to wait for other people's opinion first before reorganizing
->> the commits again (if there's a different consensus).
->
-> personally, I can live with the current setup here, because as you said
-> it's all DSI related, and also not a functional change ;-) .
->
-> I guess you _could_ move the clock-master + status moves into a separate
-> patch, as that should not trigger any warnings.
+Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 1 +
+ 1 file changed, 1 insertion(+)
 
-After having thought a bit more about it, I actually agree that the
-moving of address/size-cells from SoC to board dts[i] should be separate
-from extracting the ports/endpoints into a node with a phandle
-reference. This patch set is actually from 2 branches:
-- dtb-fixes-dsi
-- dtb-fixes-ports-endpoints (although I now use 'dtb-fixes-fruit')
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+index 3c127c5c2607..a9021c524afb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+@@ -30,6 +30,7 @@ gmac1_clkin: external-gmac1-clock {
+ 
+ 	fan: gpio_fan {
+ 		compatible = "gpio-fan";
++		fan-supply = <&vcc12v_dcin>;
+ 		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
+ 		gpio-fan,speed-map =
+ 				<   0 0>,
+-- 
+2.50.0
 
-ports-endpoints is on top of dsi and came forth as it made sense to do
-the ports/endpoints extraction in more places.
-I'll then also put the DT node movement in a separate patch.
-
-I'm not a fan of putting clock-master + status property move into a
-separate patch as then the address/size patch would look weird (to me)
-as you'd see how those properties were inconsistently sorted ... just so
-that can be fixed in a separate patch.
-
-Cheers,
-  Diederik
-
---45ff3aaff99b43270ac8aa38352e1e585a3b95bead335ff4d3af9d1accaf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaF+ufwAKCRDXblvOeH7b
-biZgAQCME6QUUiJaphH6VGnwcT9ww6WdV692xu7Owyds/SRnrQD/dSITCnYbGopt
-SHRh40ahmolnhZl8p4Azfb0upjxs9gs=
-=rbBp
------END PGP SIGNATURE-----
-
---45ff3aaff99b43270ac8aa38352e1e585a3b95bead335ff4d3af9d1accaf--
-
-
---===============4057279385965445388==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4057279385965445388==--
-
