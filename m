@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F538C7EE39
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Jun 2025 14:59:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF598C54ED1
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Jun 2025 15:01:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7sfMzADc8efz73NZRrbgOE24FcwSbfnVhbB9BwSosLY=; b=srmyQ82USangtK
-	GkzLxcaBJPUlyjtZ7CazkWK3Lnw4k+EuZBaPypwBmLDUzZXXrOF9dH+1pRYFtZWFzGsjkx6wrztYN
-	sisQkKHVw/TZngPHWTEi0gsktF0UbsWSnZMcnKecG5gR/mc/pM09OFKgt+il7CpXGC9spk/f2uRLN
-	NQtwB3K3CwcLSTXrFNRzx9u7+qsDX0c8z1WzDgAQgzqIrDGQsProa8GMPuzoozyPIVyEXx4DthHwZ
-	dRD1rbdBRy6f4sMjt3+ok6QUVrK/hzOk3rZJp4DpkSEKWzfnbtNkLIl0KkZbrtFXVUmocR7UhoDZa
-	Fv5oTyLvtd4HzCzurinQ==;
+	List-Owner; bh=+8mxMZYFbX9fQX6XXuukD5S7f68lk3P6CkQG+FJThHk=; b=KIVujiflxnLpuj
+	PCc1KrdySlhwyJJ1uhWjKSsotJU/sxYXZqCiPWhfvLRBrTd0/w0xaYbQb2NM/ykqul0VEcQdLgZef
+	J4lEGhip4YeaA+gL6inHlelhWN4oAdajYgeGPl+UXUKrFd5boWmb27YKurlYk55IrpHpigs/yx3IP
+	NRo8QJMcsPG/Bwx0qrEDC/nNDbeV3pTOAJ6+FHjPNqIXEp11E0lNaHxFBTnPq47geud9G5OEs05gh
+	kfazotPJq/ZQV6YmqAjebku3jTFhjAqiRYJjV7B89XF+Mdd6pZCYilq5z03otsjdMjPHNnHDCgmWL
+	mGLeGP9AE005gJpoayrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVX1B-0000000GvLj-405q;
-	Sat, 28 Jun 2025 14:59:01 +0000
-Received: from out-181.mta0.migadu.com ([91.218.175.181])
+	id 1uVX3T-0000000GvbN-2MJl;
+	Sat, 28 Jun 2025 15:01:23 +0000
+Received: from out-182.mta0.migadu.com ([2001:41d0:1004:224b::b6])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVWs0-0000000Gu03-00gr
+	id 1uVWs0-0000000Gu1d-46oN
 	for linux-rockchip@lists.infradead.org;
-	Sat, 28 Jun 2025 14:49:34 +0000
+	Sat, 28 Jun 2025 14:49:35 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1751122169;
+	t=1751122170;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=LdOjVT0hxZ4MogGhHL86KxEfuOHrbi5hNR9VAR3J/Ig=;
-	b=ZhiAGTrNFHZZKC7ljxViWEQizcIb9e/dSqJYq0x/9LVH839ibJv8W/krAqafA1qXMLXWrH
-	V5zlcW7movc/vHUAGp147Z1HFiiya+SyfmIl8J8dhrujZzyMU+RHYY+yf7LiAEcMULWI+e
-	RbtE1yHNkI3IS8kJYpby4FyXSdYhvo0qg1/alSulFV46bgNL6M8W2YqvRWx+S0Hqa+afyv
-	8McMYwW/NUAsPD4bId1HL5x5FeTQ9/DZtHuXu7QJGOrmaEVehefkde5kt+K4puAV/u8tPK
-	5r14qAEoz0m9v+u3ahcCQYInuG0pekAhzzRQEpHHe4p3QPexmuKfU6dpgSmpFA==
+	bh=JXGz2WRYkb5YR3U/LDov8OvZiUYlL4TD2HwVbGHyw/0=;
+	b=lM4DZ4KnoLlPPUaEu6usoxkV86zoUCnUScVx4Ekwfvf6GaaywSlu+IaZCE5OQvzkLhdz+T
+	u25AI1cJxl6MhWgITj+BYHK5S8uJOkI2m/e75+YSKD4aY+Dxluj6tOusqg53Iy17drQD5y
+	2HVXfhBHPwmOn2QmUOt1+tgh3urKoyJOuYvuDvSWgwjCppUP8YvvwNyP7DTAxU1QJoAu1Q
+	Q7f7IfThfVXlFMn23s2WvcbUKLuu5uexiB4ejWJcbwZIs/j8+HgEHQVbosXkj1XeGmtogK
+	4EP7oat5zIIDj41oHqKLcQBfw1PKHKM/Y990e8Vzuerr8WVgVtFONp855gIo/Q==
 From: Diederik de Haas <didi.debian@cknow.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -53,16 +53,16 @@ Cc: Dragan Simic <dsimic@manjaro.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH v2 04/10] arm64: dts: rockchip: Simplify VOP port definition on rk3328
-Date: Sat, 28 Jun 2025 16:32:38 +0200
-Message-ID: <20250628144915.839338-5-didi.debian@cknow.org>
+Subject: [PATCH v2 05/10] arm64: dts: rockchip: Simplify edp endpoints on several rk3399 boards
+Date: Sat, 28 Jun 2025 16:32:39 +0200
+Message-ID: <20250628144915.839338-6-didi.debian@cknow.org>
 In-Reply-To: <20250628144915.839338-1-didi.debian@cknow.org>
 References: <20250628144915.839338-1-didi.debian@cknow.org>
 MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250628_074932_204832_C2CD1911 
-X-CRM114-Status: UNSURE (   8.20  )
+X-CRM114-CacheID: sfid-20250628_074933_175497_463A7F85 
+X-CRM114-Status: UNSURE (   8.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,8 +80,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When there's only 1 endpoint, there is no need for a unit-address and
-removing that allows removing of related properties as well.
+The only thing actually added here is a single endpoint on edp_out,
+which is already defined in rk3399-base.dtsi, so it's simpler to just
+reference that phandle, which allows the removal of several properties.
 
 This fixes the following DTB validation warnings:
 
@@ -90,26 +91,95 @@ This fixes the following DTB validation warnings:
 
 Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 15 ++++-----------
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts    | 15 ++++-----------
+ .../dts/rockchip/rk3399-sapphire-excavator.dts   | 16 ++++------------
+ 3 files changed, 12 insertions(+), 34 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 7d992c3c01ce..6438c969f9d7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -731,11 +731,7 @@ vop: vop@ff370000 {
- 		status = "disabled";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+index a9ea4b0daa04..9d07353df52c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+@@ -250,18 +250,11 @@ &edp {
+ 	 */
+ 	assigned-clocks = <&cru PCLK_EDP>;
+ 	assigned-clock-rates = <24000000>;
++};
  
- 		vop_out: port {
+-	ports {
+-		edp_out: port@1 {
+-			reg = <1>;
 -			#address-cells = <1>;
 -			#size-cells = <0>;
 -
--			vop_out_hdmi: endpoint@0 {
+-			edp_out_panel: endpoint@0 {
 -				reg = <0>;
-+			vop_out_hdmi: endpoint {
- 				remote-endpoint = <&hdmi_in_vop>;
- 			};
- 		};
+-				remote-endpoint = <&panel_in_edp>;
+-			};
+-		};
++&edp_out {
++	edp_out_panel: endpoint {
++		remote-endpoint = <&panel_in_edp>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+index 5473070823cb..5a8551d9ffe4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+@@ -404,18 +404,11 @@ &edp {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&edp_hpd>;
+ 	status = "okay";
++};
+ 
+-	ports {
+-		edp_out: port@1 {
+-			reg = <1>;
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-
+-			edp_out_panel: endpoint@0 {
+-				reg = <0>;
+-				remote-endpoint = <&panel_in_edp>;
+-			};
+-		};
++&edp_out {
++	edp_out_panel: endpoint {
++		remote-endpoint = <&panel_in_edp>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+index fdaa8472b7a7..a4ceafe6dd7a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+@@ -142,21 +142,13 @@ sdio_pwrseq: sdio-pwrseq {
+ 
+ &edp {
+ 	status = "okay";
++};
+ 
+-	ports {
+-		edp_out: port@1 {
+-			reg = <1>;
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-
+-			edp_out_panel: endpoint@0 {
+-				reg = <0>;
+-				remote-endpoint = <&panel_in_edp>;
+-			};
+-		};
++&edp_out {
++	edp_out_panel: endpoint {
++		remote-endpoint = <&panel_in_edp>;
+ 	};
+ };
+-
+ &i2c1 {
+ 	i2c-scl-rising-time-ns = <300>;
+ 	i2c-scl-falling-time-ns = <15>;
 -- 
 2.50.0
 
