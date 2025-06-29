@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92354C7EE39
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31796C7EE30
 	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Jun 2025 12:57:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,34 +12,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HznzANA/A3cmzcKbL9xtc90a/YolhiOpMB7m/jUN/h4=; b=qi6GVIvydylDd/
-	6FvE0hUFbPnNB57/kxpRtyhABpZtUyMuqOifavhyWCsQsokaO4Tvoh9g5h8QQzWYxMbZcopRh0XMT
-	t7HOTkp3DfBEVYxPXq+zE3sKn6as1QA17JaVTj46CoW8QzBNpxu9/ZHNAl1zJb531xQuXstPa1Uwn
-	3xx7VzBrg0/VzvjWuXHcJGL94adzf2K0kICrqXHCI8tkWI2C8IAQU2tOi5LNyfcdCYU1u/GHICbsZ
-	lZ4I6eonx/jHVRQh3q5tj3QIJstAS9SJPIxWCKeVQlqZWAujHUI8zDJDWxWKjPGdJh8ILPL6noMjB
-	HMN1vBkySvcRbfCklJ4g==;
+	List-Owner; bh=OZk40DsfMFpMDL1yXkgMOkhoXs04t9Y2N+9y9bPw+fA=; b=qNUXcaM4rtIEW1
+	Ecy3Ea6Jcqsk+g3QzB5juId6xZLRFygsrbJ1Yv5989M9ebk8Eh9yvMe0PS8rawo8wCqOOpU7DXWw3
+	IcZCu6luPjiygiJ6+Jp5QYvdw5Yn9MuAHyvHkPl92UU/4w0EfcjvZdqtfV8ZFsYA9Fp0O9Y4jjDOt
+	f/zSDQ0snVAiGxO3e4iDlE+DkF/pH/frOyM6eNg69g5uJgRb7H9B8m26sQ80F5BcVDrDrzMXyVkf+
+	Iuzbc1kfysw1DoZxGXR9nF9xWBK4nGSLzX6cKbyHrKWAFqYciOXRRU+nrEC6VGc4YrGlsB0sWN3my
+	q3pSFeyZSFAuVckadWFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVrbT-00000000FdF-2pPU;
+	id 1uVrbT-00000000Fcz-1Lw2;
 	Sun, 29 Jun 2025 12:57:51 +0000
-Received: from out-185.mta0.migadu.com ([2001:41d0:1004:224b::b9])
+Received: from out-172.mta0.migadu.com ([2001:41d0:1004:224b::ac])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVrJE-00000000Dhs-2DEX
+	id 1uVrJD-00000000DhT-2MgT
 	for linux-rockchip@lists.infradead.org;
-	Sun, 29 Jun 2025 12:39:01 +0000
+	Sun, 29 Jun 2025 12:39:00 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1751200738;
+	t=1751200737;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=uYtxvQntJrQzDe3coaU4yovvxAekHNN2pEKLjqZB3iA=;
-	b=ku9QBElezaC8iMeFayCQCN+WSJTuojq8hLZiGXOMj8zmBcwSvGaMwzat56/lAXO3gZAgL0
-	B4VrXNFIUSsWedS4C2B31KIxZHgJ2+SozuzTQNA/fmlYJFa+x8L3JKssXJ8FlfoP4ITWnF
-	y+jv1kAs81+EJXgzcgj1EF5/kU0uw7X53cJrZ2L5v09PGLIcfTo7OKyg5fv378G7IkePPt
-	g33ZKOoN8sJD5yp8R986MXM89ynJoogwaxvUlBLWbQ7EoQnsU6TbFpeeCxxTJ4PakbnDNg
-	G6n0xtB2rHfj+pGNxQGXDA878W5z06R9AWErGu7rByB737LdbEXtCR0/wtvpgw==
+	bh=855oi/aHiPaIX6D7ew4EHyshWsVi9Qr95Z7nFCB1Mlw=;
+	b=UrCb7a5+ttaYcZzIa9jeW5t6UPHWwSoz6EWmMmMpK9rYzOesiswOnpOcgYNQo67OAySCKU
+	EtsBTsSTsG9PreeVXCMhedwPGKjCikOWt9oESBpgQNR7PQE0KzysE+TaUzzz+2Pmc+CwnU
+	RL4FF5JcGaJLULsRmg7vxG1WyUbUEUD+W79WKytIZFGRfOMV0Qc84M3RLBDdzqoBG65oby
+	xl28O6ZmgPZLYtmU4cXgUgwJv5ak1/dxrrh/vmWqH1P/FBoXX5h1X1yU/0cRrngoiH6oav
+	y5+VDYzG7izz8N7Ag684wWmp0iqdhVs1GsIRU3sgUqshlIpPOo3IOjecwfptHw==
 From: Diederik de Haas <didi.debian@cknow.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -53,16 +53,16 @@ Cc: Dragan Simic <dsimic@manjaro.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH v3 08/10] arm64: dts: rockchip: Fix LCD panel port on rk3566-pinetab2
-Date: Sun, 29 Jun 2025 14:34:49 +0200
-Message-ID: <20250629123840.34948-9-didi.debian@cknow.org>
+Subject: [PATCH v3 07/10] arm64: dts: rockchip: Move mipi_out node on rk3399 haikou demo dtso
+Date: Sun, 29 Jun 2025 14:34:48 +0200
+Message-ID: <20250629123840.34948-8-didi.debian@cknow.org>
 In-Reply-To: <20250629123840.34948-1-didi.debian@cknow.org>
 References: <20250629123840.34948-1-didi.debian@cknow.org>
 MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250629_053900_695307_706F25F3 
-X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-CacheID: sfid-20250629_053859_735466_232462A0 
+X-CRM114-Status: UNSURE (   8.02  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,39 +80,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The MIPI DSI connector on the PineTab2 only has 1 port with 1 endpoint,
-so drop the unit-address properties.
+According to the DTS coding style [1] referenced nodes should be sorted
+alpha-numerically so move mipi_out to be after mipi_in_panel.
 
-While at it, move 'rotation' property to its proper sorting position.
-
-This fixes the following DTB validation warnings:
-
-  node has a unit name, but no reg or ranges property
+[1] https://www.kernel.org/doc/html/latest/devicetree/bindings/dts-coding-style.html#order-of-nodes
 
 Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ .../dts/rockchip/rk3399-puma-haikou-video-demo.dtso  | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-index 3473b1eef5cd..d0e38412d56a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-@@ -282,11 +282,11 @@ lcd: panel@0 {
- 		reg = <0>;
- 		backlight = <&backlight>;
- 		enable-gpios = <&gpio0 RK_PC7 GPIO_ACTIVE_HIGH>;
--		rotation = <90>;
- 		power-supply = <&vcc_3v3>;
-+		rotation = <90>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
+index 0377ec860d35..d28880b8dd44 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
+@@ -124,12 +124,6 @@ pca9670: gpio@27 {
+ 	};
+ };
  
--		port@0 {
--			panel_in_dsi: endpoint@0 {
-+		port {
-+			panel_in_dsi: endpoint {
- 				remote-endpoint = <&dsi0_out_con>;
- 			};
- 		};
+-&mipi_out {
+-	mipi_out_panel: endpoint {
+-		remote-endpoint = <&mipi_in_panel>;
+-	};
+-};
+-
+ &mipi_dsi {
+ 	#address-cells = <1>;
+ 	#size-cells = <0>;
+@@ -151,6 +145,12 @@ mipi_in_panel: endpoint {
+ 	};
+ };
+ 
++&mipi_out {
++	mipi_out_panel: endpoint {
++		remote-endpoint = <&mipi_in_panel>;
++	};
++};
++
+ &pinctrl {
+ 	pca9670 {
+ 		pca9670_resetn: pca9670-resetn {
 -- 
 2.50.0
 
