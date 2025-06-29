@@ -4,91 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA4B8C7EE39
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Jun 2025 13:12:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FAA0C7EE30
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Jun 2025 15:22:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UZ3snqcVMNISb4S/AKDCuqQe/Rn1yYVJFY9HCIsazn8=; b=v/n2ymtCQCV/YY
-	6vrEaYbS9+iPbYGEpYrmH14jxhBnT+LalKYzs0OdT6cu68qaPFVE9WmE0bMosEoDMUBgu6wlU8LRf
-	n53P4FDe05X2eYdS10QCtOsQXDhpcFtFdLFenR5SZ3pItnhZSsILkhalSSwx4n+P0FNUufdymzsb1
-	BVKgJr1hJBYBw7Z4I3Gr68XQzNoosQa0yneFsfCuNIacNQczsAdQ7mm4PLWYt4tG56UKGITjY/010
-	hQfTQhqVv62LWn28KcLNC4O2lozEMrI38xUB8D50Z3DcHh3qwJ+1vmYb8CP4TDyPcJ/jZrl2JVHGm
-	/df34aPq7Q+wVLu8YY+Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:Cc:From:Subject:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xgnpwKextrgDdGqe9Evc79ZLNtVtylv6EkX4at/4Lqg=; b=jOaNAZTZ9u9fkuxpdReUC/htCa
+	tG70+QDmOdbUyJO2QuK9CtEtSCL3bUNB54Cg2lmLrtL/7X7PjRkl0G0+m6+sl4qTif7tbvYxBXeB0
+	h3zMm4N57B2Ua31M9KLdXqFQYnzjYZgqzGkcgT4D1lLAhr0EroNYefyqWgwNqf8Gjue9TqU4DOiPp
+	2BcrV1/SRkNLG5cg83QsfsctMFh46HwK4f/debkSO3QNI45B5zHyZNdsNgq5aHTRvkkxmqpO2EKkT
+	JmoPeHgZ50Zc9Tx0qfDrpc5rrbgk3CToik4QjXViWLL7z8WpY8G7TujncYYj16GEYHokn3Z79ptjw
+	crw7TQ4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVrpA-00000000GsQ-18H0;
-	Sun, 29 Jun 2025 13:12:00 +0000
-Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
+	id 1uVtrD-00000000PSs-1MaH;
+	Sun, 29 Jun 2025 15:22:15 +0000
+Received: from out-183.mta1.migadu.com ([95.215.58.183])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVrSS-00000000F50-0m3H;
-	Sun, 29 Jun 2025 12:48:33 +0000
-Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-7d20f799fe9so404362785a.2;
-        Sun, 29 Jun 2025 05:48:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751201311; x=1751806111; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=OvjviZOYrIKurfYh7ExfJUlmx0DJYashywHEqMq8QKk=;
-        b=S48m+xg2ln9ZcU1MDPwQ+4o+zg0B0Ws+nRkmnIOv889AC12j0n03GSe7QTzVK5j6MO
-         q4QHawlRbbtLOOa+ZFm1dKSN4m8zXXlrfBb+BbT2NG5WgRxnTxZ3HqnmVchU0zlpGmO2
-         AmWBBJey2Tr2vELNvcsAX+X1onczjC1qJyIViuJbSFJbJF4BQyx6ZWK/63/32nkxRY+b
-         rZ+0cIExv5u0wwDKndhwfNNyssQyZxtmEN5USFbaTet+DLDoruA4X107Li87kAitRwOV
-         Kzhiv/pczhfalyQimtXP0KFif2mANrp9IikiyBl4b/5PsQzItX5zF5sdULS658vEzwYs
-         fxng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751201311; x=1751806111;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OvjviZOYrIKurfYh7ExfJUlmx0DJYashywHEqMq8QKk=;
-        b=adKtjFdy178eIInBN7A8ba598RsU6KBRR9CyOdXyLdhI/1hwFxqQt+dLK2sSmhUNhn
-         A6iHP8R50AjND8pG4uGVOycxgmdOGiT7/plzToN6V/tvzdaka+E7Bmb+Zvh5F/magQjj
-         X9Q/rrtOzXbVOt5yls5yYuqGDDt5CluxNCrN6wyEuU/gu73JUghC860SyfQLB0esbDS9
-         Y9Kohi2LAe3XFf++sDzzqrPGwktVScMgbVRHmsV0dhbm5ooEvAbBEm2Uqyh+ZPXWcMoq
-         l+XNXyehxUY+j6OgUSissI7rVktqEcAzcR0hXHVjQMA677/XfdiXrOwIptEbyML7vnxQ
-         TuDQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX6HkmWNpU/Rch9bnCjPIgo51vefWGHqt5csmvW6PE0NnHixJp+5lLCFmpHb+6dN5uJoS/tRIdIYrxT@lists.infradead.org, AJvYcCX6cRVWwDo5gdYnfOYnAU5BHw8MpeJezqYp+K06XOhFmgRPwSxGuPrpw7JsiBOmHL779GVgHnitB+nwu0NKxJLu@lists.infradead.org
-X-Gm-Message-State: AOJu0YzUH2X0UJ7fUQkx1oanQ0jDa0PmwspSJsXvKAUqhznUIkQQ0g86
-	J4hsOB+LRYY2LbEdWLfy/4edjgRgt60gaLlfUo9qL5/oTOPWZg2K90oTUdiV7zmyn5nvyOVU
-X-Gm-Gg: ASbGncue/CdYib+F7zNqJ1WleKkIy1+ZJXrHuDQzv0w4sXFSIuR6g+aNLsLa8wdKYII
-	Mbd951S69DDZ/87M3AKBccws1xbC6C56cjoTZyzpFcQYIckhfcg7ass0RIF+xgrQR4PS2abv6nV
-	fKPvcVXl3URAirEnU3Szy+7sdx7pxwOESfOyothU3c3a9Gt3eFSdu1Gst66r8t3TNDZcH0X0U4i
-	cK4TznYUkTMDcD5H1HJyNDsHqCbUhadz+DQbwiapDzEhTSHROCOpDymz8HCjBf2dHArrysguJj4
-	ojDMo/yhn9eufPhMkbEfINSAYXzxeTxAVngPagL1Xi0BUI9+aA==
-X-Google-Smtp-Source: AGHT+IEL/USEP/o68qM8kpTv7RVt+yvEVYuaMW1bky10qQjPlYApX6JjeupaO/caQhzoh8VdKrp98w==
-X-Received: by 2002:a05:620a:2556:b0:7d4:567e:3df3 with SMTP id af79cd13be357-7d4567e4429mr264478785a.46.1751201311114;
-        Sun, 29 Jun 2025 05:48:31 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:24f4::dead:c001])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7d443203134sm435231085a.67.2025.06.29.05.48.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Jun 2025 05:48:30 -0700 (PDT)
-Date: Sun, 29 Jun 2025 09:48:24 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Rick wertenbroek <rick.wertenbroek@gmail.com>,
-	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v7 4/4] phy: rockchip-pcie: Properly disable TEST_WRITE
- strobe signal
-Message-ID: <60ad1985a0de0a6b47044ea9c0acefe6ff865aad.1751200382.git.geraldogabriel@gmail.com>
-References: <cover.1751200382.git.geraldogabriel@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1751200382.git.geraldogabriel@gmail.com>
+	id 1uVtrA-00000000PRe-2iU1
+	for linux-rockchip@lists.infradead.org;
+	Sun, 29 Jun 2025 15:22:14 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1751210519;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=CQig8DqKUDgYQc5TUxBurAmCLuuco1HaVKaFPcbDts0=;
+	b=lwQ6TVbB9kA4v8c+9fEI1MCHKrvlSlCdL2QanaMY1bJs5vKvNM8vHwVXFQJZKZMn+Q7+J+
+	VIja3RCvQjYFkgEGgGCVjMM4NNe23F70ba/iR/jZFItleEuPbDcGSGy7G1RiWR4DrLNs7Y
+	CXaeF0jiHkvfKHAGfmr3mGD1STZESGdWRQVSl3g++jhZf1ugQQYvlw+Tnqg1WvgBig7ub+
+	gqndaa8s/b+xxXCLRyrr80NYCl7ox8/g2Dwf79Rhb4t4UR8WRF8Ik6dQr66l8ogqD9P2Uy
+	cJbLEGG/k+VoDqBz0dUaQCfxHAeOhxY60In3k7di9kfQpgLH4JV3n/E9TW9TXA==
+Date: Sun, 29 Jun 2025 17:21:42 +0200
+Message-Id: <DAZ4BALHEJ9M.10FO1U9IYP4WA@cknow.org>
+Subject: Re: [PATCH] rockchip/drm: vop2: make vp registers nonvolatile
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+Cc: <hjc@rock-chips.com>, <heiko@sntech.de>, <andy.yan@rock-chips.com>,
+ <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
+ <tzimmermann@suse.de>, <airlied@gmail.com>, <simona@ffwll.ch>,
+ <dri-devel@lists.freedesktop.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+To: "Piotr Zalewski" <pZ010001011111@proton.me>
+References: <20250628180914.1177177-2-pZ010001011111@proton.me>
+In-Reply-To: <20250628180914.1177177-2-pZ010001011111@proton.me>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250629_054832_220964_1D57DC04 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20250629_082212_831431_CA3B42E5 
+X-CRM114-Status: GOOD (  25.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,42 +67,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4037180434399038620=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-pcie_conf is used to touch TEST_WRITE strobe signal. This signal should
-be enabled, a little time waited, and then disabled. Current code clearly
-was copy-pasted and never disables the strobe signal. Adjust the define.
-While at it, remove PHY_CFG_RD_MASK which has been unused since
-64cdc0360811 ("phy: rockchip-pcie: remove unused phy_rd_cfg function").
+--===============4037180434399038620==
+Content-Type: multipart/signed;
+ boundary=8b0b4523779c4da51aebb377aae00a4fbb05642b98251df13617b5a6d748;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
----
- drivers/phy/rockchip/phy-rockchip-pcie.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+--8b0b4523779c4da51aebb377aae00a4fbb05642b98251df13617b5a6d748
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-index f22ffb41cdc2..4e2dfd01adf2 100644
---- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-+++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-@@ -30,9 +30,8 @@
- #define PHY_CFG_ADDR_SHIFT    1
- #define PHY_CFG_DATA_MASK     0xf
- #define PHY_CFG_ADDR_MASK     0x3f
--#define PHY_CFG_RD_MASK       0x3ff
- #define PHY_CFG_WR_ENABLE     1
--#define PHY_CFG_WR_DISABLE    1
-+#define PHY_CFG_WR_DISABLE    0
- #define PHY_CFG_WR_SHIFT      0
- #define PHY_CFG_WR_MASK       1
- #define PHY_CFG_PLL_LOCK      0x10
--- 
-2.49.0
+Hi Piotr,
 
+On Sat Jun 28, 2025 at 8:11 PM CEST, Piotr Zalewski wrote:
+> Make video port registers nonvolatile. As DSP_CTRL register is written
+> to twice due to gamma LUT enable bit which is set outside of the main
+> DSP_CTRL initialization within atomic_enable (for rk356x case it is also
+> necesarry to always disable gamma LUT before writing a new LUT) there is
+> a chance that DSP_CTRL value read-out in gamma LUT init/update code is
+> not the one which was written by the preceding DSP_CTRL initialization
+> code within atomic_enable. This might result in misconfigured DSP_CTRL
+> which leads to no visual output[1]. Since DSP_CTRL write takes effect
+> after VSYNC[1] the issue is not always present. When tested on Pinetab2
+> with kernel 6.14 it happenes only when DRM is compiled as a module[1].
+> In order to confirm that it is because of timing I inserted 18ms udelay
+> before vop2_crtc_atomic_try_set_gamma in atomic enable and compiled DRM
+> as module - this has also fixed the issue on Pinetab2.
+>
+> [1] https://lore.kernel.org/linux-rockchip/562b38e5.a496.1975f09f983.Core=
+mail.andyshrk@163.com/
+>
+> Reported-by: Diederik de Haas <didi.debian@cknow.org>
+> Closes: https://lore.kernel.org/linux-rockchip/DAEVDSTMWI1E.J454VZN0R9MA@=
+cknow.org/
+> Suggested-by: Andy Yan <andy.yan@rock-chips.com>
+> Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/d=
+rm/rockchip/rockchip_drm_vop2.c
+> index d0f5fea15e21..241060cc24cb 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -2589,12 +2589,13 @@ static int vop2_win_init(struct vop2 *vop2)
+>  }
+> =20
+>  /*
+> - * The window registers are only updated when config done is written.
+> - * Until that they read back the old value. As we read-modify-write
+> - * these registers mark them as non-volatile. This makes sure we read
+> - * the new values from the regmap register cache.
+> + * The window and video port registers are only updated when config
+> + * done is written. Until that they read back the old value. As we
+> + * read-modify-write these registers mark them as non-volatile. This
+> + * makes sure we read the new values from the regmap register cache.
+>   */
+>  static const struct regmap_range vop2_nonvolatile_range[] =3D {
+> +	regmap_reg_range(RK3568_VP0_CTRL_BASE, RK3588_VP3_CTRL_BASE+255),
+>  	regmap_reg_range(0x1000, 0x23ff),
+>  };
+> =20
+
+I built a 6.16-rc3 kernel with this patch and booted into it ... and it
+fixed the issue I reported \o/ Thus:
+
+Tested-by: Diederik de Haas <didi.debian@cknow.org>
+
+Thanks!
+
+Cheers,
+  Diederik
+
+--8b0b4523779c4da51aebb377aae00a4fbb05642b98251df13617b5a6d748
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaGFaCQAKCRDXblvOeH7b
+blnvAQDRa0zYQCz0TbHhkzDu2IbxQRVxIb6zmpUFwWz5jPwfLwD/T5yIvj+Cmn20
+1n04TWUawcOG/GyocXAfoaWpF07LOA0=
+=GYzV
+-----END PGP SIGNATURE-----
+
+--8b0b4523779c4da51aebb377aae00a4fbb05642b98251df13617b5a6d748--
+
+
+--===============4037180434399038620==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4037180434399038620==--
+
