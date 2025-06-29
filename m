@@ -4,64 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED9B4C7EE39
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Jun 2025 13:02:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FC0DC7EE39
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Jun 2025 13:04:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hKSpQCMKjV4o/Pcae/VDGGdzN9zEAnkCTIxvQRqVZFM=; b=UWbi5roet4zDsp
-	dSGLswinXilu4/Mae3V0KW2J3dILcekx30NAkqkm3xaKOfS6O2nWYoY7dGQE1iyph5A9YLVn0DqD4
-	t6mUO9fW34OYtXTv0DmOwky0pTEX5+eMczQcLCW80UtyTUpRTP4jaL4eFLDZm/Ao6MGJv5wOp7zv1
-	KOFZheSWchZUGkMFEdk9L2171pBqAdZFfz1/KNtMqvcrgU+7+U1hbkz2hoBfZLh/mVw3A8iWSIikH
-	QGeCYybBPRyO+O9MTsXEqMCXkM8LuqFkUCJEatAITLl56X0GEw5uMQ015xJptgl9si75I4LxUw9Ej
-	IhHt4Nq/bOp/6LQ0jSfg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jILKog2kKPf2U4sJXhz4ghQfu2bFdXKbYjHuNaxj04g=; b=zYwEKUbWBYVZn4
+	IgvN5vm40IoQatIUDmomfxAiqyjUqPSaN1JfKb2/vAVBODgCA9Zu5yOojNphvWi0q1NIRyYCKRlk4
+	mqeDCNXBwXl/7JQC8c3yAwSLsGKRcpequUvsxHefA6dedVUZtOWnSaHWFildZc0MGg4grlKiko95D
+	r2Niixn2cB4Uz604ehfHyzJIp3mS2Y22tFtDMNa2/sF2dacgl8eu7wLkUPkb6SpTwClx/qaBwd46/
+	fQJHdpAMmVKS3rYM8R57GAcyWwa117Vupr75ZZ10O0eoDHtNG642tXcjxyMhOP+9clAw8tnUMsC2z
+	ujrEyOiQe4JRRPEic+3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVrg2-00000000GCC-3jv2;
-	Sun, 29 Jun 2025 13:02:34 +0000
-Received: from out-189.mta0.migadu.com ([2001:41d0:1004:224b::bd])
+	id 1uVriK-00000000GNk-2eAj;
+	Sun, 29 Jun 2025 13:04:56 +0000
+Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVrJF-00000000DiX-2VkH;
-	Sun, 29 Jun 2025 12:39:02 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1751200739;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=kTB3zWm7oNw70pUsCc6ZoGv3uOF6aJxYArBzhguuOPM=;
-	b=cerCUDLV4y09ANz1AxbiKp9t527+KDGSHIeyAKh5ZXzyAhuafj3hpVAJB6ivgTV2op8xql
-	KJeHKoKltLqluqk/2IsoPnJO03ufCEgIkox3ggQTqewdXct1C+eLhDecVIxCc5aMOymQ1w
-	0Ycigjz8tBcblX2Wf7HuK97s2sGlRBEJIt0JX2cNAW0PohrigjVTJ8Ya4F+X+tUhWbQ0Z1
-	VhCWzEeoj0nUXCRXAUl/sYfsK42bKJATgHDnOTPn8vcMsxEfA11cBbPCyx1WBFfNSLOtx8
-	8Z3hFQLWDOYrQIpOq/zMKwZwXSLFOCOxajLik4sbHb+4DjxWVRsMsFwARaNeww==
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Dragan Simic <dsimic@manjaro.org>,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Johan Jonker <jbx6244@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH v3 09/10] arm64: dts: rockchip: Drop unneeded address+size-cells on px30
-Date: Sun, 29 Jun 2025 14:34:50 +0200
-Message-ID: <20250629123840.34948-10-didi.debian@cknow.org>
-In-Reply-To: <20250629123840.34948-1-didi.debian@cknow.org>
-References: <20250629123840.34948-1-didi.debian@cknow.org>
+	id 1uVrRm-00000000EuH-2bMO;
+	Sun, 29 Jun 2025 12:47:51 +0000
+Received: by mail-qv1-xf2a.google.com with SMTP id 6a1803df08f44-6fd0a3cd326so17345506d6.1;
+        Sun, 29 Jun 2025 05:47:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1751201267; x=1751806067; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=3qT9O4ctgmI4E+K04BSgVRvvO5rn1N9tEpioEcUF5MA=;
+        b=i//dlq/Hk/Qvkmfii3lQMS+WL30VDjn4glC+CeeBt/rTbHx2yqWypewXazJ+m6OMtB
+         yi8d7cm75994G3f6Xz4ozFAvpemlFHeAa4omtzpb2Lx2+TWSgoFMiBCM3b7m7up0SijN
+         E2gNR1rm4xemyRE8baDoaH2z2HEzV7XNf0c84jufnruDe69NjGrXbAXP5B6IRsJNYlKM
+         x+W9MnujNjz+cMGQK6G9HE6aZxBnJX0xZwI+plwJao78sHbQZddqv/xu7oKQVGBhYROp
+         67/CU6ZUM3VqcAD/6oQ8A32y3YhLDN20NFrHO+FVOfomYMSYP2uWa9kWfb7HHZ6WqWpO
+         a/+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751201267; x=1751806067;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3qT9O4ctgmI4E+K04BSgVRvvO5rn1N9tEpioEcUF5MA=;
+        b=WllGjY3KVIa9SJOInLoOrhS5sfIfXy3KyZ+FvW5XPwN1I+P2X7d4S1iSUbo3EZclXg
+         EYUD09djuBOGejPFP0Llca3Deq4tnyk8wL7/A6u2XHQ99IZE7dXzd8CP2lSqFUtuPmFb
+         8i9o/uHkZyyxfs6T5StyNufg5FgzCLSJVNOx/VhFIuepsR+/IysKJFaCwKzPoYK4gbAW
+         nXUB7sTbB2/Ho+gEVV856Cqnlxmqti8EzUMeCbS+26N0eCAulEYsqobunzvTuVindkUv
+         6gNOdvdah4qwADEjjDsiLUQJVal7BS7E1KMa63H0QrKl+CqbLn/oYkh/V6eDebWqyObG
+         LMew==
+X-Forwarded-Encrypted: i=1; AJvYcCUx9YAGOgB9DQ/Za71vBTbVRacrt6utJ9/V+YDpYUcNAb+1ITvO9rgK2qVZDo0wdpXjR5lj76sp4VfS@lists.infradead.org, AJvYcCXzsA3j9vLo/MgV39f2+Y0SeEXT+kcHHZoxWpL6hq3DAxPhz0o7czGLQcNzCbnG2Oq9A3BRCyO1CDjkWJxuRzaq@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz0cZkJdyjmFLcCNL2cviMFTZJTtIfMAOW98J8xL+XUPgYo+/0C
+	swkUxvWxJhMLeQqtSg28novwvRhyldemMw5lT3/FClPclfOPDLT63WrE4lSAuzddoReeFCN6
+X-Gm-Gg: ASbGncvOnkdKQHZ1vWJvkFKP4nCLOTEQJgUrMjv2IfUyhFArl2gYa5Itwz+1rTArF53
+	tnMOZL7kATYCrYgYoe+dYZT+L97H1pMKvvv8mvaVGg6YtWCL26XJOIe2Y8UXLdm/57GWFECn+Hk
+	YSuG0OFTI0wur2DpbYIhHV9JJ2i8AI/rk+lKj9SLmXCJCPQQMZnkmrptVeEzv+AGiKYE4SJkZMy
+	f7a9qTv1PMSeGvGkfMUR98kkvnsa9Hwi6+X8SScx6pS6QX1IRc6x0HlDBY/pCtfafK9KBgnL8KR
+	A1Mt764AxwdiaOVfJswoYPpFZbBatC9ggLtbrcCbgbZB+htmWWSPMiuVpIaT
+X-Google-Smtp-Source: AGHT+IFcnXAwt3wLBy9B+NJBG4yLeL8rwe64avI9teL+o/I8vjzQhNTT6+gyyIUOBrLOsm/ff7s0DQ==
+X-Received: by 2002:a05:6214:428d:b0:6fa:cd55:3823 with SMTP id 6a1803df08f44-7000214f607mr153311086d6.26.1751201264933;
+        Sun, 29 Jun 2025 05:47:44 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:24f4::dead:c001])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7d44323bba2sm430549085a.109.2025.06.29.05.47.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 29 Jun 2025 05:47:44 -0700 (PDT)
+Date: Sun, 29 Jun 2025 09:47:38 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rick wertenbroek <rick.wertenbroek@gmail.com>,
+	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v7 0/4] PCI: rockchip: Improve driver quality
+Message-ID: <cover.1751200382.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250629_053901_769989_0089E70D 
-X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-CacheID: sfid-20250629_054750_677697_DA76B7C4 
+X-CRM114-Status: UNSURE (   9.34  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,45 +102,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On nodes with compatible "rockchip,px30-usb2phy-grf", the #address-cells
-and #size-cells are required and consequently their child nodes should
-have unit addresses. That is not the case for the px30-pmugrf and
-px30-grf nodes, so remove them there.
+During a 30-day debugging-run fighting quirky PCIe devices on RK3399
+some quality improvements began to take form and after feedback from
+community they reached more polished state.
 
-This fixes the following DTB validation warnings:
+This will ensure maximum chance of retraining to 5.0GT/s, on all four
+lanes and fix async strobe TEST_WRITE disablement. On top of this,
+standard PCIe defines are now used to reference registers from offset
+at Capabilities Register.
 
-  unnecessary #address-cells/#size-cells without "ranges",
-  "dma-ranges" or child "reg" property
+Unfortunately, it seems Rockchip-IP PCIe is unable to handle 16-bit
+register writes and there's risk of corrupting state of RW1C registers,
+an issue raised by Bjorn Helgaas. There's little I could do to fix that,
+so on this issue the situation remains the same.
 
-Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
 ---
- arch/arm64/boot/dts/rockchip/px30.dtsi | 4 ----
- 1 file changed, 4 deletions(-)
+V6 -> V7: drop RFC tag as per Heiko Stuebner's reminder, update cover
+letter
+V5 -> V6: reflow to 75 cols, use 5.0GTs instead of Gen2 nomenclature,
+clarify strobe write adjustment and remove PHY_CFG_RD_MASK
+V4 -> V5: fix build failure, reflow commit messages and also convert
+registers for EP operation, all suggested by Ilpo
+V3 -> V4: fix setting-up of TLS in Link Control and Status Register 2,
+also adjust commit titles
+V2 -> V3: correctly clean-up with standard PCIe defines as per Bjorn's
+suggestion
+V1 -> V2: use standard PCIe defines as suggested by Bjorn
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 5034ad8019a8..46f64cd33b9b 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -351,8 +351,6 @@ power-domain@PX30_PD_GPU {
- 	pmugrf: syscon@ff010000 {
- 		compatible = "rockchip,px30-pmugrf", "syscon", "simple-mfd";
- 		reg = <0x0 0xff010000 0x0 0x1000>;
--		#address-cells = <1>;
--		#size-cells = <1>;
- 
- 		pmu_io_domains: io-domains {
- 			compatible = "rockchip,px30-pmu-io-voltage-domain";
-@@ -453,8 +451,6 @@ gic: interrupt-controller@ff131000 {
- 	grf: syscon@ff140000 {
- 		compatible = "rockchip,px30-grf", "syscon", "simple-mfd";
- 		reg = <0x0 0xff140000 0x0 0x1000>;
--		#address-cells = <1>;
--		#size-cells = <1>;
- 
- 		io_domains: io-domains {
- 			compatible = "rockchip,px30-io-voltage-domain";
+Geraldo Nascimento (4):
+  PCI: rockchip: Use standard PCIe defines
+  PCI: rockchip: Set Target Link Speed before retraining
+  phy: rockchip-pcie: Enable all four lanes if required
+  phy: rockchip-pcie: Properly disable TEST_WRITE strobe signal
+
+ drivers/pci/controller/pcie-rockchip-ep.c   |  4 +-
+ drivers/pci/controller/pcie-rockchip-host.c | 48 +++++++++++----------
+ drivers/pci/controller/pcie-rockchip.h      | 12 +-----
+ drivers/phy/rockchip/phy-rockchip-pcie.c    | 15 +++----
+ 4 files changed, 36 insertions(+), 43 deletions(-)
+
 -- 
-2.50.0
+2.49.0
 
 
 _______________________________________________
