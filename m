@@ -4,51 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8747FC54ED1
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Jun 2025 18:13:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7968C54ED1
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Jun 2025 00:36:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:From
-	:To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2nvt1Uo7Glgl8JQC2Fxl4+u77Bdv+7cYrx1NGDRdsOg=; b=ZArMK3BinGcBSM
-	h83+vVsrGCevcwFPFUj7EMBUNwEggQ6A+/BZugmt1EyJ7w+5inmPe4poPSnvW4Vidg8QYd/mf6INv
-	pQ1mQNA1Z9MO38FnnWYz6AcXS0OQEp9C/VB+6MreXDSTIJ0e4CbddLPvL2mJofQ7TyG4JMS/HMWhD
-	gt27R5ImP54BF0O+dWhEOqfBtO6ovO2ZU0QaTl/M56AQtwAiY4ayyZstv5apvid0vGGbJDt45fWHg
-	Hn+SxsS2fqRQb6jhdG6stIJcheg7m65PkyaTPWv4eHy9SYOoN+uTyjc+eqDXnK2oUJPSKfCRvmmIP
-	9PTNjXnZnS7bAlnhRb8g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iaMws1yu8lpWs59+OW6cNByEcMyQL9QkI+yuXetcoFU=; b=pFzkKG/NcnzDug
+	vrDrYxkAwiv79Tz9gnqh2b2tytNnTAkuf2L4o+6hLa9//LOTvXfCMAEBQy/XkZ2cZtylYRH1lHSNh
+	i2euv+Mt0hiQH3X1oXn5Gz5aNCll112LmqxaunDFCFyPck/LGX8oeb7Gj6EZdgMilNwsiLEoA7LQ8
+	mTM4SNKZbca4P2LkwET1qViZdarT4v2akMmoBdKc6QDMfO9gKcfCuto9GsBsBxdsr8bA2GHE0beEk
+	uf1izcbQHMeVOke2GGau3yIP2vyNUb7MGIsy+Q1ALHEkpQZM8GfUK0kQVx0M/MzAHetTLEkIDe4iI
+	7w2a46lMkoNfN9fW57Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVa3X-0000000HBle-2SCX;
-	Sat, 28 Jun 2025 18:13:39 +0000
-Received: from mail-10631.protonmail.ch ([79.135.106.31])
+	id 1uVg1W-0000000HPOt-0ml9;
+	Sun, 29 Jun 2025 00:35:58 +0000
+Received: from mgamail.intel.com ([198.175.65.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVa1C-0000000HBds-2DFI;
-	Sat, 28 Jun 2025 18:11:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=6cpe4ktcdvd67ngbngfuz5xzca.protonmail; t=1751134268; x=1751393468;
-	bh=dq6sTVoUvyIYla+M1WiLd0H4wGmmDdgUa/v1ni4cxzA=;
-	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
-	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
-	b=Ec8s2KMC4SC/8PnZ0fXrVzIwaMSosjk22f1lvjVVhR6WKSB8mHkF1ZnWUJDwRlN3d
-	 O5Pa+f7QkVv/a+qR74ytqZMHjCJ8VrrKr4vZc1oqz1VOt8gs5SCFOUVcGAiJpBn9+z
-	 xhGcxOc39tHaQRZtNuW564JTsgewLdlUEX3zcssxyu08TMP25TbGBt8TfY0w7OZ7Hs
-	 8eWNu9Dl9ubtxdO/FpPp/d7jJ6bwnVx5btKdOhIRT/z93YE+jAZ9uJ9/XBo7MlToII
-	 dBO9kLHPW1CNBKY/laqf+9Z0GdApiEclzFJ0qFIlrrHA//6I1gJHb4ubSJj37QThrv
-	 vz/2gWSbPKmag==
-Date: Sat, 28 Jun 2025 18:11:00 +0000
-To: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-From: Piotr Zalewski <pZ010001011111@proton.me>
-Cc: Piotr Zalewski <pZ010001011111@proton.me>, Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH] rockchip/drm: vop2: make vp registers nonvolatile
-Message-ID: <20250628180914.1177177-2-pZ010001011111@proton.me>
-Feedback-ID: 53478694:user:proton
-X-Pm-Message-ID: 545f9ed5d7d61bdded3750b1707295524307882c
+	id 1uVfzB-0000000HPKO-3tSo;
+	Sun, 29 Jun 2025 00:33:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1751157214; x=1782693214;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=AolaRGjJTaifs7f9V7/iIwPTII8Eu6lCuQv6L5dV754=;
+  b=mOdmgeTbKj6bAlAeYC0u2HNHhkkfL0w6vQmGxNw9Z9K2jJJUNlegob4Z
+   E7d91/sT1B+aGwiPkWfQF9bF/td0p0XDE+oIs13i1P3ftkqEfbUO9Fk8N
+   IYLDpJklO3tP7w9ppEHrs3qOkwdUhHeOMQG+splrYlUe1yCW8yUd2lUnf
+   TDDcTvCfI367D65vVpu0Rk0BdkJrY9yYnbI7yLeWCqgQsk1GrOrurHS7Y
+   dc0Gq2+rGZATfnXnei1e8SNaMJvFg2z4IkMsVzgbe0KdcnvpLUkwbZxj2
+   ySRCbiGhG+KtgtqULiCBNU7N5/8tf2ByUZm2Bd9InATGaWOgZoODqA4n9
+   Q==;
+X-CSE-ConnectionGUID: r07LPyhTQpyO2oDuZJohGA==
+X-CSE-MsgGUID: douH9L5KQ7Okz1BDDWSn6g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11478"; a="53286977"
+X-IronPort-AV: E=Sophos;i="6.16,274,1744095600"; 
+   d="scan'208";a="53286977"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Jun 2025 17:33:28 -0700
+X-CSE-ConnectionGUID: XZi4Py13R+Ok+7qSxSkg8Q==
+X-CSE-MsgGUID: SiYl6Y9lSYOAL5Mz/TgZkA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,274,1744095600"; 
+   d="scan'208";a="153598075"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+  by orviesa008.jf.intel.com with ESMTP; 28 Jun 2025 17:33:25 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uVfz0-000XXK-2l;
+	Sun, 29 Jun 2025 00:33:22 +0000
+Date: Sun, 29 Jun 2025 08:32:40 +0800
+From: kernel test robot <lkp@intel.com>
+To: Diederik de Haas <didi.debian@cknow.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Dragan Simic <dsimic@manjaro.org>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Johan Jonker <jbx6244@gmail.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Diederik de Haas <didi.debian@cknow.org>
+Subject: Re: [PATCH 2/8] arm64: dts: rockchip: Refactor DSI nodes on rk3399
+ boards
+Message-ID: <202506290852.bWro2lBe-lkp@intel.com>
+References: <20250627152645.740981-3-didi.debian@cknow.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250627152645.740981-3-didi.debian@cknow.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250628_111115_184396_D598E394 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20250628_173334_035813_CC1ED997 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,56 +96,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Make video port registers nonvolatile. As DSP_CTRL register is written
-to twice due to gamma LUT enable bit which is set outside of the main
-DSP_CTRL initialization within atomic_enable (for rk356x case it is also
-necesarry to always disable gamma LUT before writing a new LUT) there is
-a chance that DSP_CTRL value read-out in gamma LUT init/update code is
-not the one which was written by the preceding DSP_CTRL initialization
-code within atomic_enable. This might result in misconfigured DSP_CTRL
-which leads to no visual output[1]. Since DSP_CTRL write takes effect
-after VSYNC[1] the issue is not always present. When tested on Pinetab2
-with kernel 6.14 it happenes only when DRM is compiled as a module[1].
-In order to confirm that it is because of timing I inserted 18ms udelay
-before vop2_crtc_atomic_try_set_gamma in atomic enable and compiled DRM
-as module - this has also fixed the issue on Pinetab2.
+Hi Diederik,
 
-[1] https://lore.kernel.org/linux-rockchip/562b38e5.a496.1975f09f983.Coremail.andyshrk@163.com/
+kernel test robot noticed the following build errors:
 
-Reported-by: Diederik de Haas <didi.debian@cknow.org>
-Closes: https://lore.kernel.org/linux-rockchip/DAEVDSTMWI1E.J454VZN0R9MA@cknow.org/
-Suggested-by: Andy Yan <andy.yan@rock-chips.com>
-Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+[auto build test ERROR on rockchip/for-next]
+[also build test ERROR on next-20250627]
+[cannot apply to robh/for-next krzk/for-next krzk-dt/for-next linus/master v6.16-rc3]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index d0f5fea15e21..241060cc24cb 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -2589,12 +2589,13 @@ static int vop2_win_init(struct vop2 *vop2)
- }
- 
- /*
-- * The window registers are only updated when config done is written.
-- * Until that they read back the old value. As we read-modify-write
-- * these registers mark them as non-volatile. This makes sure we read
-- * the new values from the regmap register cache.
-+ * The window and video port registers are only updated when config
-+ * done is written. Until that they read back the old value. As we
-+ * read-modify-write these registers mark them as non-volatile. This
-+ * makes sure we read the new values from the regmap register cache.
-  */
- static const struct regmap_range vop2_nonvolatile_range[] = {
-+	regmap_reg_range(RK3568_VP0_CTRL_BASE, RK3588_VP3_CTRL_BASE+255),
- 	regmap_reg_range(0x1000, 0x23ff),
- };
- 
+url:    https://github.com/intel-lab-lkp/linux/commits/Diederik-de-Haas/arm64-dts-rockchip-Refactor-DSI-nodes-on-px30-boards/20250627-233300
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/20250627152645.740981-3-didi.debian%40cknow.org
+patch subject: [PATCH 2/8] arm64: dts: rockchip: Refactor DSI nodes on rk3399 boards
+config: arm64-randconfig-002-20250629 (https://download.01.org/0day-ci/archive/20250629/202506290852.bWro2lBe-lkp@intel.com/config)
+compiler: clang version 19.1.7 (https://github.com/llvm/llvm-project cd708029e0b2869e80abe31ddb175f7c35361f90)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250629/202506290852.bWro2lBe-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202506290852.bWro2lBe-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> Error: arch/arm64/boot/dts/rockchip/rk3399-rockpro64-screen.dtso:75.1-6 syntax error
+   FATAL ERROR: Unable to parse input tree
+
 -- 
-2.50.0
-
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
