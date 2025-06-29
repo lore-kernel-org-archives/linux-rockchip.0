@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71683C7EE30
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Jun 2025 10:13:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB727C7EE39
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Jun 2025 12:46:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:Subject:Cc:To:From:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UejA1iw606CgPwArBy2YQ+2B2qjZkuGTAbDpndOTQUQ=; b=38dE7+UlAf6dzPaJ9epAP49IGz
-	TrYGD7IreP9+nSg4xr5rGdSSmIBd+d3PE8nDVSMNgPPpBwrXlmgTgokqjXH4LBTi5z0BVzr0sTNVT
-	64I23acmO5cyp8GK6paX9CeHOtIhjT2h8dZtIt+Mjwl6ZirB8cHXPVXJEQgA5SgvWnWcgn2UOTUsL
-	PF/OL9Y4UjxfBTbJL0LIQm9wkW8gz1nW0DmsUPO6hjnBcAO1YJM/EwcZvPLJrxmviKnCBAe8SlwV6
-	5LmhtKzvbpyO01+oiBtpqdP0YydoTc6m9se59BLA7sc+UDlvnvrUUGxmQkUSrkhvZ2j9AM+euQwGM
-	zOCBnQ1g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/tqrqgRF5VsjxQRNdLsKQxIUuXaAbMno+aslDZUv1f0=; b=Q73UBNn8VlT9OM
+	L3Fly2/a2aRsM41JDGF1ki92VxCVmLtrFDA3/H1/EkPKBIKPh0Dctsp06jG1zI7Hh5egx/NHvjjRU
+	fb7jLLGdoRsEDuEsnndWRpsA9DfzNvi+JWpxiVRJM9d6DudbfoPDMlmm9azzek2KhOPY6NPCVmWZE
+	/P7AaEd4mV3RuijthLYMx8+Ok2BPr4uqqMfCLhcUZauAEvz9jTSAGmVQINYCgJ/3nqVzkkxSaMWg6
+	BFNQYAsihY3gPHDiKWheM3kAkO5PAy77gkpjEldNYJT+FTGsW6FjVC3n4iOUB/iRzG93KRgqW3Fhk
+	TtoaMUO1YgnQ/gJ/xnVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVp2b-000000007Sh-2JFm;
-	Sun, 29 Jun 2025 10:13:41 +0000
-Received: from out-186.mta0.migadu.com ([91.218.175.186])
+	id 1uVrQ2-00000000EiF-2sLS;
+	Sun, 29 Jun 2025 12:46:02 +0000
+Received: from out-177.mta0.migadu.com ([91.218.175.177])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVozH-00000000758-3Z1l;
-	Sun, 29 Jun 2025 10:10:19 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1751191803;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=H6Wlp3JgvEp0ycS0t6Z7WKduaZTKhf5gEm0eW6oKUXk=;
-	b=jbLTkcMkzlOS4+CCECrHk6uIoEiUlZ8gi1AojI4kxi/eKj82hZVBUd0JkXPnB663LhL/Ek
-	gVqtKR4nI0DDAfDOLpK/pQysjigMfgN3b1oiUOlRymhs+BHhUm9Z2CIhjA6/dxDofMziof
-	bnZIC1eACNKyzLAaEjVmvFIWqNG5ubaMMU3Bswi2HkrK89/j4dBSJJ+/1Zwh7tZHRPMd7F
-	h8lCIjiqZr5zNjUESE1775Fn9QF8oEovSIHTMpvWLnkHDCJkdQKwj0qhGDK74YgzHqetQ1
-	lUR6lfFU1Fa45OZRahJUi6V6lS9ljIdgWs2JFN09YMxLkfMYs6Tf+IRgJb//Zg==
-Date: Sun, 29 Jun 2025 12:09:49 +0200
-Message-Id: <DAYXOI4WITJW.1G5DBWEQDDY1Z@cknow.org>
+	id 1uVrJ9-00000000Den-2Y1J
+	for linux-rockchip@lists.infradead.org;
+	Sun, 29 Jun 2025 12:38:57 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "kernel test robot" <lkp@intel.com>, "Rob Herring" <robh@kernel.org>,
- "Krzysztof Kozlowski" <krzk@kernel.org>, "Conor Dooley"
- <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
-Cc: <llvm@lists.linux.dev>, <oe-kbuild-all@lists.linux.dev>, "Dragan Simic"
- <dsimic@manjaro.org>, "Quentin Schulz" <quentin.schulz@cherry.de>, "Johan
- Jonker" <jbx6244@gmail.com>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 2/8] arm64: dts: rockchip: Refactor DSI nodes on rk3399
- boards
-References: <20250627152645.740981-3-didi.debian@cknow.org>
- <202506290852.bWro2lBe-lkp@intel.com>
-In-Reply-To: <202506290852.bWro2lBe-lkp@intel.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1751200733;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FvDG6tIe9cP6E3SSgrjHunQaCLP0z6lp3rhIo96W2Gg=;
+	b=mlPpIbMxczq+HF4S7dBEtez0pCckZ4hAlaXYFIlYcXvzdeX3HJeF9W677OCRPgf0Ngj9Ao
+	X6rVDLoN1UK+9HUeZDpgZHEzalUl445iekUUp7GoMuxLqHygoRMC7ff7SAON9ylE8f0f6r
+	MJAiCDKdzSYmV4sNX9lsYCyC+NjNZFID3e6MOotW+8CiDMGICUjKEUhVP5od+XXah1gWEn
+	zgINgZh3/UnJ6iU7OI5cNLm3n8COqRjQ6alSSyvQ8f6iBLE6VkmIeCfOBrL5zbc7Cemqdb
+	s1z+i+Q4FR+wOcad8cE0asR8mS91mm6mPadayM4VChvlUTY29U56hlDHgM8OQg==
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Dragan Simic <dsimic@manjaro.org>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Johan Jonker <jbx6244@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Diederik de Haas <didi.debian@cknow.org>
+Subject: [PATCH v3 03/10] dt-bindings: display: rockchip,dw-mipi-dsi: Drop address/size cells
+Date: Sun, 29 Jun 2025 14:34:44 +0200
+Message-ID: <20250629123840.34948-4-didi.debian@cknow.org>
+In-Reply-To: <20250629123840.34948-1-didi.debian@cknow.org>
+References: <20250629123840.34948-1-didi.debian@cknow.org>
+MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250629_031018_414858_3A930DF3 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20250629_053855_783293_9D640051 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,107 +75,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5515696476367150052=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5515696476367150052==
-Content-Type: multipart/signed;
- boundary=43508436bcd3ad84eb98e0bb756b39ac53921fae364149a231ac9f8d2b94;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+When the dw-mipi-dsi binding was initially added in commit
+a20d86e7f964 ("Documentation: dt-bindings: Add bindings for rk3288 DW MIPI DSI driver")
+the #address-cells and #size-cells were added as required properties.
 
---43508436bcd3ad84eb98e0bb756b39ac53921fae364149a231ac9f8d2b94
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+When the binding was converted to yaml format in commit
+0dac2102cf6b ("dt-bindings: display: rockchip: convert dw_mipi_dsi_rockchip.txt to yaml")
+those properties were demoted to optional and removed from the binding
+example.
 
-Hi,
+As for the compatibles:
+- rockchip,px30-mipi-dsi      removed in this patch set
+- rockchip,rk3128-mipi-dsi    never used
+- rockchip,rk3288-mipi-dsi    added (invalid); later removed [1]
+- rockchip,rk3399-mipi-dsi    removed in this patch set
+- rockchip,rk3568-mipi-dsi    never used
+- rockchip,rv1126-mipi-dsi    proposed (invalid); never accepted [2]
 
-On Sun Jun 29, 2025 at 2:32 AM CEST, kernel test robot wrote:
-> kernel test robot noticed the following build errors:
->
-> [auto build test ERROR on rockchip/for-next]
-> [also build test ERROR on next-20250627]
-> [cannot apply to robh/for-next krzk/for-next krzk-dt/for-next linus/maste=
-r v6.16-rc3]
-> [If your patch is applied to the wrong git tree, kindly drop us a note.
-> And when submitting patch, we suggest to use '--base' as documented in
-> https://git-scm.com/docs/git-format-patch#_base_tree_information]
->
-> url:    https://github.com/intel-lab-lkp/linux/commits/Diederik-de-Haas/a=
-rm64-dts-rockchip-Refactor-DSI-nodes-on-px30-boards/20250627-233300
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockc=
-hip.git for-next
-> patch link:    https://lore.kernel.org/r/20250627152645.740981-3-didi.deb=
-ian%40cknow.org
-> patch subject: [PATCH 2/8] arm64: dts: rockchip: Refactor DSI nodes on rk=
-3399 boards
-> config: arm64-randconfig-002-20250629 (https://download.01.org/0day-ci/ar=
-chive/20250629/202506290852.bWro2lBe-lkp@intel.com/config)
-> compiler: clang version 19.1.7 (https://github.com/llvm/llvm-project cd70=
-8029e0b2869e80abe31ddb175f7c35361f90)
-> reproduce (this is a W=3D1 build): (https://download.01.org/0day-ci/archi=
-ve/20250629/202506290852.bWro2lBe-lkp@intel.com/reproduce)
->
-> If you fix the issue in a separate patch/commit (i.e. not just a new vers=
-ion of
-> the same patch/commit), kindly add following tags
-> | Reported-by: kernel test robot <lkp@intel.com>
-> | Closes: https://lore.kernel.org/oe-kbuild-all/202506290852.bWro2lBe-lkp=
-@intel.com/
->
-> All errors (new ones prefixed by >>):
->
->>> Error: arch/arm64/boot/dts/rockchip/rk3399-rockpro64-screen.dtso:75.1-6=
- syntax error
->    FATAL ERROR: Unable to parse input tree
+[1] 282e2e078ba5 ("ARM: dts: rockchip: Remove #address/#size-cells from rk3288 mipi_dsi")
+[2] https://lore.kernel.org/all/20230731110012.2913742-12-jagan@edgeble.ai/
 
-The kernel test robot is right as the ``&mipi_out`` node is missing a
-closing ``;``, so thanks for that :-)
-The problem is also present in v2, so I'll send a v3 shortly.
+The #address-cells and #size-cells are useful (and required) in the
+ports node and for panel(s), but those properties are declared in their
+schemas already. Now that there are no remaining users, remove these
+properties from the Rockchip specific extensions of the Synopsys
+DesignWare MIPI DSI host controller.
 
-Luckily I've now found why my build script didn't catch it.
-```sh
-export PATH=3D~/dev/kernel.org/dt-schema-venv/bin/:$PATH CROSS_COMPILE=3Daa=
-rch64-linux-gnu- ARCH=3Darm64
-make distclean
-make debarm64_defconfig
-make CHECK_DTBS=3Dy W=3D1 rockchip/px30-cobra-ltk050h3146w-a2.dtb
-<quite-a-long-list-of-all-boards-at-least-I-thought-so>
-```
+Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+---
+ .../bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml     | 6 ------
+ 1 file changed, 6 deletions(-)
 
-(debarm64_defconfig is my own defconfig based on Debian's kernel config)
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
+index ccd71c5324af..0881e82deb11 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
+@@ -58,12 +58,6 @@ properties:
+   power-domains:
+     maxItems: 1
+ 
+-  "#address-cells":
+-    const: 1
+-
+-  "#size-cells":
+-    const: 0
+-
+ required:
+   - compatible
+   - clocks
+-- 
+2.50.0
 
-That long list didn't have ``rockchip/rk3399-rockpro64-screen.dtbo``.
-Is there a better/simpler way to validate all rockchip boards without
-having to explicitly list each and every one of them?
-
-Cheers,
-  Diederik
-
---43508436bcd3ad84eb98e0bb756b39ac53921fae364149a231ac9f8d2b94
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaGEQ8wAKCRDXblvOeH7b
-bkmOAP9oM6RsgNp49/g+vN6x7caM8SHQCK0m03vWy5v9AUMPCAD9Gu0vIsw3p1fn
-Jw3UxbRGaW+2LtlZ/raAKpP6oBKDRA4=
-=vkok
------END PGP SIGNATURE-----
-
---43508436bcd3ad84eb98e0bb756b39ac53921fae364149a231ac9f8d2b94--
-
-
---===============5515696476367150052==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5515696476367150052==--
-
