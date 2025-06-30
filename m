@@ -4,64 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9988CC8302D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 10:45:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41E48C83030
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 11:59:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+NAbEgukUpnuVkvlsA/GNb0odgm0wwbpeotomC4o8/0=; b=H5C/hLXNDh4ZA2
-	5fPx8Uh2vdmD/NBN0fBMFzmWKO6klH9L7yvcOrlYMS8D8tOx9aW5Og301RXZisxb8oKi2cOhPakiM
-	r1YhLCzRFRte4Rh2HhPkZaEMzGFy5ICjv6qzqowDGNUcKQgLZS9OOwsIT0GwK2ek0RGeDPZSnjfHq
-	beNP3fPxlXURh6hBDz3g6QJ9sPP2j6q9NJr/NynlBkZt0jUNwtnEoKX30qWFRJdBYL0EI+aTwgU3u
-	Qf0KraG52vaMV3LNhx6WNC0Gk46Khi2/+RiAOzE3mHLki5kTTbrW5dkEENJF0mhUPLcKC+r3Nm/5l
-	oH6K97gd7KRSXcMeZf9g==;
+	List-Owner; bh=mp85PJ8SoOlRZXy4qpWheN3f+GEnZZ670bMzJtSqcSs=; b=tv0YCxFfJaJNmW
+	rmMhJfi3Fn0pFBxglKeSjd3hQwnFrCzW01zr0xXeeuxfRrLaCWToLoWAkX4b4mno/pHzWfW4x8Hrg
+	8siNDuk3U6cTYblU4Yk/IQjtG8pYIq1Sl8FNA3ovX8n55l9c4DOYASknx+FLqsVe4mAeZifPqFulL
+	IcAtKNkXy91Hq1wz0gjRSB5kJA4MkILykWJrkuiQGcMCm/br4uIZdX7kocNTqsYj/+bxNH3LXMrNX
+	4It2DSCwBvMJE/RFWUh9SYwcIJrW4jQYi+ck/rD1OnZ304S0SWo8y2YZSa/60SEQI48VUCd36LwtR
+	TyEzpZJUwJVgDQpF1vnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWC0y-00000001vw8-36cA;
-	Mon, 30 Jun 2025 10:45:32 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uWD9o-000000027Sp-0QAg;
+	Mon, 30 Jun 2025 11:58:44 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWBcF-00000001rto-2cuP;
-	Mon, 30 Jun 2025 10:20:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1751278786; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=R+XsFmJlOH88IPsfmTD8tDk8RlbfWYQS8CSLDpRd2LvIOpVOD7Dm3hDLgBinQLA4CNNc/G14bapI+9XdK1FGzEVMudSq9Ca0i6dOp2TyhoFyvLOx1cvb35uuuDX9r/zqyCaD5qe2oXal61UvDlH431rTVsDiA5wnv3udMAY0u3g=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1751278786; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=DVGNQK3ovA1eStReJPPWHDBj+E6PFN3lZlWCymwT7kA=; 
-	b=gg4y2DBoW9TKvUNNXly/AJWjkkICsOzIuY2Evbzn6psahfRaXgkvcS6L+f+55zBA3YCwKzLXmM8DmMKZ2R5digvIejp3mGJQWGLaKyaa/MZx+lyQ/Ulh3zerGqe2wBa9jzvTMy+yc0l5SW3fIXcbsHVKHdZ89Cb+FsAbyjvKnSo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1751278786;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=DVGNQK3ovA1eStReJPPWHDBj+E6PFN3lZlWCymwT7kA=;
-	b=V646PLmcVVU+4vqXaywt467wXSxznevX+2nnj9Y+ClnwXT/t3J07FZRwilpzrx9s
-	l9KyRR4S+bKU1DIPh6e7jWhiiz4S6cQ1CLvrk8XsHXS6n5bRJdT1sSo6cTeC+AnkHsk
-	3rI/iK9O30eumSFoaJiaZjZyPIZx4LExc/BzICyw=
-Received: by mx.zohomail.com with SMTPS id 1751278785189692.9528694352027;
-	Mon, 30 Jun 2025 03:19:45 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 30 Jun 2025 12:19:27 +0200
-Subject: [PATCH 4/4] arm64: dts: rockchip: add HDMI audio on ROCK 4D
-MIME-Version: 1.0
-Message-Id: <20250630-rock4d-audio-v1-4-0b3c8e8fda9c@collabora.com>
+	id 1uWCpP-000000023fn-1xDP;
+	Mon, 30 Jun 2025 11:37:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=xPFwbPUWBXDT92ojYtJuOQPO2L8B2j+IEn0/GIzjJBo=; b=Ui75+re1+KHTh458MbR2Bd8mPl
+	fOrvQv6wD2E4IGeav9+UmD++98eSS9csdwlsEA1HIomHH3gzWvvVfs41PHmk7llKYSQwgXNKtaOiL
+	AOXC7abgKoZk9smIrQjMKrpBQzXk8XxXwt1QTHgadnWPBVsOOLNlExIqBeGdqrsFfWcXcNMsQID88
+	RZ8ydWZg0j6zM/5m4DhUwJ+QOgcUx9rKl5qEqME542DtN4XORD/Efywkrz/iKmOMLuOAwc3ehtmM5
+	i3haBZVQrj/fCb3bx3+hhOOvLmWU57e00f7fFkB8kKL3kTCkLBh4p1STkCL24tcOgHeYoo7WksAvU
+	ONCuxQHQ==;
+Received: from i53875bfd.versanet.de ([83.135.91.253] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uWCpJ-0008LL-Qw; Mon, 30 Jun 2025 13:37:33 +0200
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: Re: [PATCH 1/4] dt-bindings: input: adc-keys: allow linux,input-type property
+Date: Mon, 30 Jun 2025 13:37:32 +0200
+Message-ID: <5913630.hdfAi7Kttb@diego>
+In-Reply-To: <20250630-rock4d-audio-v1-1-0b3c8e8fda9c@collabora.com>
 References: <20250630-rock4d-audio-v1-0-0b3c8e8fda9c@collabora.com>
-In-Reply-To: <20250630-rock4d-audio-v1-0-0b3c8e8fda9c@collabora.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Heiko Stuebner <heiko@sntech.de>
-X-Mailer: b4 0.14.2
+ <20250630-rock4d-audio-v1-1-0b3c8e8fda9c@collabora.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_031959_726357_943C5F27 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20250630_043739_520710_2110265F 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,54 +68,35 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Much like the Sige5, the ROCK 4D also has an HDMI port, so is capable of
-providing HDMI audio output as well.
-
-Enable the SoC's hdmi_sound card, and also enable the SoC audio
-controller (sai6) that feeds into it.
-
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 4d4b8ababd2436b82515443b029916b3c786dba1..70bc6f909ec0843607c2705ee9f73b0ba521a977 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -322,6 +322,10 @@ hdmi_out_con: endpoint {
- 	};
- };
- 
-+&hdmi_sound {
-+	status = "okay";
-+};
-+
- &hdptxphy {
- 	status = "okay";
- };
-@@ -772,6 +776,10 @@ &sai1m0_sdi0
- 	status = "okay";
- };
- 
-+&sai6 {
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&vcca1v8_pldo2_s0>;
- 	status = "okay";
-
--- 
-2.50.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTW9udGFnLCAzMC4gSnVuaSAyMDI1LCAxMjoxOToyNCBNaXR0ZWxldXJvcMOkaXNjaGUgU29t
+bWVyemVpdCBzY2hyaWViIE5pY29sYXMgRnJhdHRhcm9saToKPiBhZGMta2V5cywgdW5saWtlIGdw
+aW8ta2V5cywgZG9lcyBub3QgYWxsb3cgbGludXgsaW5wdXQtdHlwZSBhcyBhIHZhbGlkCj4gcHJv
+cGVydHkuIFRoaXMgbWFrZXMgaXQgaW1wb3NzaWJsZSB0byBtb2RlbCBkZXZpY2VzIHRoYXQgaGF2
+ZSBBREMgaW5wdXRzCj4gdGhhdCBzaG91bGQgZ2VuZXJhdGUgc3dpdGNoIGV2ZW50cy4KPiAKPiBB
+ZGQgdGhlIHByb3BlcnR5IHRvIHRoZSBiaW5kaW5nIHdpdGggdGhlIHNhbWUgZGVmYXVsdCBhcyBn
+cGlvLWtleXMuCj4gCj4gU2lnbmVkLW9mZi1ieTogTmljb2xhcyBGcmF0dGFyb2xpIDxuaWNvbGFz
+LmZyYXR0YXJvbGlAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL2lucHV0L2FkYy1rZXlzLnlhbWwgfCAzICsrKwo+ICAxIGZpbGUgY2hhbmdl
+ZCwgMyBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNl
+dHJlZS9iaW5kaW5ncy9pbnB1dC9hZGMta2V5cy55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL2lucHV0L2FkYy1rZXlzLnlhbWwKPiBpbmRleCA3YWEwNzhkZWFkMzc4MTYy
+OTQ3MzI1MDFlMTk4M2FiODY5ZjM4MzExLi5lMzcyZWJjMjNkMTY1MWQ3M2VmMzc0OWE1NmQ1NDg3
+MjA2NzAzN2I1IDEwMDY0NAo+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9pbnB1dC9hZGMta2V5cy55YW1sCj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL2lucHV0L2FkYy1rZXlzLnlhbWwKPiBAQCAtNDIsNiArNDIsOSBAQCBwYXR0ZXJuUHJv
+cGVydGllczoKPiAgCj4gICAgICAgIGxpbnV4LGNvZGU6IHRydWUKPiAgCj4gKyAgICAgIGxpbnV4
+LGlucHV0LXR5cGU6Cj4gKyAgICAgICAgZGVmYXVsdDogMSAgIyBFVl9LRVkKPiArCgpoYXZpbmcg
+Ym90aCBhZGMtIGFuZCBncGlvLWtleXMgYmVoYXZlIHRoZSBzYW1lIGluIHRoYXQgcmVnYXJkIG1h
+a2VzIGEgbG90Cm9mIHNlbnNlLCBhbmQgdGhlIGFkZGl0aW9uIG1hdGNoZXMgZ3Bpby1rZXlzLnlh
+bWwsIHNvCgpSZXZpZXdlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KCj4g
+ICAgICAgIHByZXNzLXRocmVzaG9sZC1taWNyb3ZvbHQ6Cj4gICAgICAgICAgZGVzY3JpcHRpb246
+Cj4gICAgICAgICAgICBWb2x0YWdlIGFib3ZlIG9yIGVxdWFsIHRvIHdoaWNoIHRoaXMga2V5IGlz
+IGNvbnNpZGVyZWQgcHJlc3NlZC4gTm8KPiAKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
