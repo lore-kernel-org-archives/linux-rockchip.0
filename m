@@ -4,93 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A057C8302F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 22:52:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60BB0C8302F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 23:15:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=74aC+gfnkMS5TrBTC4zh95zaLv5kIPw/IHXz+fmgKns=; b=lTzqi52UCyTmny
-	irEhKvlN6VyYxUnwLLav98/hPky3bVWVm4sw9b4jRHT7HOa0kN6GoIYJ7T/aVw3+VI14QEaNK6fT7
-	+XLWWkA8fNHHfeQynyl0TeisfkKmP+H0Kp/OcOP4xnacdLRp95YrnvXLoArKimc1i3HvVgdTBmzzQ
-	Y/9EXI2OahcROfYFVUwIDRQMW5ATeXZSVsOdwBT7ineSqK9QvvuADzsw4Q5fQEojl2gXF382A/u8c
-	+NGolN30ihR4QOK3CQY0rTIgYFBJKtz94KMU90X2tkNU13ngmNxCwAu2Dfl91544YjAGF3ihiTRG+
-	gsJ+HQQPNc1lUy1AK1pQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0Xq4aio4H5VzMIl6Ebip7uNsZFK4q+ZWiO/EtwEtrJk=; b=a2ccHa0HkiIw2GllCaOBPG1Z2P
+	dn157qaRYb52QYwERXA7oGg/pq9CFPnsIPOUQu4coG5tkCI5b73iDPw0qXbra38cR39Y6N8/H0SZW
+	xDmSUlVgN6TZ250LT7faKLhWZnYEGYQ4bfmMVUPx3n2hstzP7R79ZZnnVdzIQTwjGd8v6hcabiqhp
+	i14+CMptyFuvZuAK3R+s2hbP55HWRke4vpzabyzdpKF95cGt+nL6+8ge2ZIT07F676fQcioxjVIkh
+	JxiiM9/o3G+a74s/n1GAxp9ay4CejnGah9kc2plXqcsZL3Cs4DNrG903ThpIGSWBD+BtrPy3C9Qx1
+	aUQpoSNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWNM8-00000003eHX-1vWn;
-	Mon, 30 Jun 2025 22:52:08 +0000
-Received: from mail-il1-x12c.google.com ([2607:f8b0:4864:20::12c])
+	id 1uWNik-00000003ftp-2NRP;
+	Mon, 30 Jun 2025 23:15:30 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWN1b-00000003bqi-2gpU;
-	Mon, 30 Jun 2025 22:30:56 +0000
-Received: by mail-il1-x12c.google.com with SMTP id e9e14a558f8ab-3de18fdeab0so44242715ab.3;
-        Mon, 30 Jun 2025 15:30:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751322655; x=1751927455; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=BB+BO3+Ju9SCf7b/TLt6zXjibbwRGCyTQVjEHxQIl60=;
-        b=YJKuBmytGfV7/94RXxorpoO3IH3Y2dOVTjC8QJRI0QzH9F5kjDvWqnFWptFQEi7rly
-         Z+FsjTnBiC6feNEvcejPFtWULV9v6796x/oJgZBoGezwpdsQnIeOdczYiGApAmXKVpoE
-         I/0cA4DtoLvMZnfjACH29vBTWpk2QZEzvtBexe6r2SI3B9jV7fJdK2CiphKJm5nUxXjq
-         lTCVATrL26GIXkPGIGHp+6SbnMbON9FQhVlJwqXsmSgQyRKhhTR9w+rPUvdhAau1oPLm
-         mMNm30yOcpQNJbqHrL1N9N58SPMTqZ91gWh2mg8nMbW25QQhtacu4+VElJ5yq2fUoZnK
-         oaZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751322655; x=1751927455;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BB+BO3+Ju9SCf7b/TLt6zXjibbwRGCyTQVjEHxQIl60=;
-        b=KZmNQN+33SZoIm+bazTR9Lxsp1GF0sZ+CHSOuJIczZDtLrQaVIOcxm5riu0KB/2fbo
-         jjpGtus+ZHhqoi6vMCdlVexLIHv9UgDY0FLbpUtJCt4Gsao7ZdxQpMQ/lnYR1ene9Fif
-         3+KrxKsnzKeXkFKXnDhnGulf+0sotTKDlHiHRgJfbUNDT9FwmKrvvHKojYG/RXTjcIJ4
-         eIHGshDdBNNI+MwPFvLrAJRWcEXNsi8GGhGathwPGZ8a+XfCLH9VoBmqSisBjTS16wdW
-         OwHvObMSsjoxHVhZtqQYsICLnBFulqLe5LiihnxyPIwSpbAik33GqEKILF7X2ZLZp13H
-         /9IQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX7MHrrt3v/Z2NMgcwEMT12ZnEE3Y6BMrNJ4/YkxfQUtrjzOaZFpWy3lu8tLITq9iwDTq6sXoixx2J6mG+l63I6@lists.infradead.org, AJvYcCXXdl/QmPRyFn0SKwRET8EQueZrhG/NRKmb9mjmpIWtWRLttLXfGntkpAeeNTZwQquwNVRuW0k/gjis@lists.infradead.org
-X-Gm-Message-State: AOJu0Yye4zI8hVbGewdK9epo7+P+g+s5nEfIjhZKI8VYPX6+jXtJ4Tmr
-	x/HVC83Y2xCBahn0KFkYUM4oLNet4iLKPGX3Fb+xr/z5XkD/JI/mQjB0g/v3u129
-X-Gm-Gg: ASbGnctDF2eOMHWiAmOHaLMr+dSiG7TXOilTPeLiCsJwQhsRttfJotcl5NcveyxmsaW
-	TLRfF/fv9OI09G2H18gEBXzHtG9nBVtkPaZ773Rlmaj9a8Jv4suVXOidxvi57Khcq8t5QhMXowP
-	hjQwEfsMUxtWdnzCZzeSADDMDJbJvHFH4S47EUuRDmC8jz0NQqdXGNokS1s+YaJ96dLpOpUHWBh
-	bXzZ+WoxiZ5V8AvNJp58jyIebfHtrRJ/tRm9LWdSPuD25cfwdJQWk0e8jXFnUdsaLhKRgOHO42Y
-	ETGy3cqQod9ICO5ObxCUviEIdqeuTRdu0/pYe5we+vM2jRCkww==
-X-Google-Smtp-Source: AGHT+IFTRrEGCx789ysocz2vuPu09+VjUsb7fSHj7n8oVet+ThKIVJeolTpBlxxkV1sBDbYfdguHzQ==
-X-Received: by 2002:a05:620a:27c6:b0:7c5:3c0a:ab7e with SMTP id af79cd13be357-7d443909f4amr2207841185a.5.1751322320919;
-        Mon, 30 Jun 2025 15:25:20 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:4851::dead:c001])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7d44323bba2sm672602885a.109.2025.06.30.15.25.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Jun 2025 15:25:20 -0700 (PDT)
-Date: Mon, 30 Jun 2025 19:25:14 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Rick wertenbroek <rick.wertenbroek@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Valmantas Paliksa <walmis@gmail.com>, linux-phy@lists.infradead.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [RESEND PATCH v9 3/4] phy: rockchip-pcie: Enable all four lanes if
- required
-Message-ID: <16b610aab34e069fd31d9f57260c10df2a968f80.1751322015.git.geraldogabriel@gmail.com>
-References: <cover.1751322015.git.geraldogabriel@gmail.com>
+	id 1uWNe3-00000003fVX-15Ge;
+	Mon, 30 Jun 2025 23:10:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1751325027; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=kNUtf021KMtv7ipHIehHdCrJkE1VU45x1iToozGgvTRjrieFWc96z/FUK/djFDZVoZpCXu5fFtC9SEoIq/fbPnFRzlYDbRZ71hJSK8glw5BBggkbbRKS4Ri72NTdaJjOySUDdW7i+7yGMvAQHUvfbBR766/BfI2WLAlKc8pWFSg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1751325027; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=NMoRzxFpPcptg7A9l+92hIng0UBiDJ8hvoxFQ6v0Zsk=; 
+	b=I+gt4qsOCCsvFVeFA0HL9zNhomzKmIbSgkJTYGi6hOsi1gnEbhWC54cuiWQxphYzftkhmUg+fybCpb7qOjQfM8qytP0vxwk95IbJBxPIsdknVzS7Y6vLIp0vFqijkkI83nNChfTGZdOvFE8JBKJlP7pf1+7Ms440/gRaXruhKXA=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1751325027;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=NMoRzxFpPcptg7A9l+92hIng0UBiDJ8hvoxFQ6v0Zsk=;
+	b=bRyJuM7InKHLhoFTGk9AWIOnRw25H4iGk+0AZvpubUikxOdRiMFwO9u8KIQvCxI6
+	9gDtmjVv8sZ6CRBxoKtXOrWBARmlLxYlaeHL4c//D6V1hIeICesda2nmqlPEEsY+zYg
+	onV/fIBT7xiC3nsI1R9ckqQ53MolB89tzMwiEO9c=
+Received: by mx.zohomail.com with SMTPS id 1751325024081616.6563756773481;
+	Mon, 30 Jun 2025 16:10:24 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 8AD3B1809B6; Tue, 01 Jul 2025 01:10:19 +0200 (CEST)
+Date: Tue, 1 Jul 2025 01:10:19 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Diederik de Haas <didi.debian@cknow.org>
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: adjust dcin regulator on ROCK
+ 4D
+Message-ID: <5acizoywvjolaffojiawqlzixiclrqzohuhq55lbsjm6yhhlwi@w2amqugl3ee2>
+References: <20250630-rock4d-reg-usb-wifi-v1-0-1057f412d98c@collabora.com>
+ <20250630-rock4d-reg-usb-wifi-v1-1-1057f412d98c@collabora.com>
+ <DB02KKR1VK9H.1Q1Y5A98FKGLK@cknow.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1751322015.git.geraldogabriel@gmail.com>
+In-Reply-To: <DB02KKR1VK9H.1Q1Y5A98FKGLK@cknow.org>
+X-Zoho-Virus-Status: 1
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.4.3/251.316.55
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_153055_675977_C305580E 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20250630_161039_367646_79E531A6 
+X-CRM114-Status: GOOD (  25.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,61 +77,149 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============8837858817531889500=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Valmantas Paliksa <walmis@gmail.com>
 
-Current code enables only Lane 0 because pwr_cnt will be incremented on
-first call to the function. Let's reorder the enablement code to enable
-all 4 lanes through GRF.
+--===============8837858817531889500==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="d22k3ikyl4mwgwcs"
+Content-Disposition: inline
 
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 
-Signed-off-by: Valmantas Paliksa <walmis@gmail.com>
-Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
----
- drivers/phy/rockchip/phy-rockchip-pcie.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+--d22k3ikyl4mwgwcs
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: adjust dcin regulator on ROCK
+ 4D
+MIME-Version: 1.0
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-index bd44af36c67a..f22ffb41cdc2 100644
---- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-+++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-@@ -160,6 +160,12 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 
- 	guard(mutex)(&rk_phy->pcie_mutex);
- 
-+	regmap_write(rk_phy->reg_base,
-+		     rk_phy->phy_data->pcie_laneoff,
-+		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
-+				   PHY_LANE_IDLE_MASK,
-+				   PHY_LANE_IDLE_A_SHIFT + inst->index));
-+
- 	if (rk_phy->pwr_cnt++) {
- 		return 0;
- 	}
-@@ -176,12 +182,6 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 				   PHY_CFG_ADDR_MASK,
- 				   PHY_CFG_ADDR_SHIFT));
- 
--	regmap_write(rk_phy->reg_base,
--		     rk_phy->phy_data->pcie_laneoff,
--		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
--				   PHY_LANE_IDLE_MASK,
--				   PHY_LANE_IDLE_A_SHIFT + inst->index));
--
- 	/*
- 	 * No documented timeout value for phy operation below,
- 	 * so we make it large enough here. And we use loop-break
--- 
-2.49.0
+Hi,
 
+On Mon, Jun 30, 2025 at 08:12:27PM +0200, Diederik de Haas wrote:
+> Hi Nicolas,
+>=20
+> On Mon Jun 30, 2025 at 5:36 PM CEST, Nicolas Frattaroli wrote:
+> > The ROCK 4D's actual DC input is 5V, and the schematic names it as being
+> > 5V as well.
+> >
+> > Rename the regulator, and change the voltage it claims to be at.
+>=20
+> Shouldn't it have a fixes tag then? Providing 12V where 5V is expected
+> sounds problematic ;-)
+
+This is basically "just" documentation, as the DT just describes
+a fixed regulator (i.e. nothing software controllable). This just
+changes a number in sysfs :)
+
+Note, that the 5V DCIN is a USB-C port, which does not do any PD
+negotiation, but has the 5K1 resistors on the CC lines to "request"
+5V. If for whatever reason a higher voltage is applied (which does
+not happen as long as the power is provided by anything remotely
+following the USB specifications) there also is an over-voltage
+protection chip. So it's not problematic :)
+
+OTOH adding a Fixes tag does not hurt ;)
+
+-- Sebastian
+
+> > Furthermore, fix vcc_1v1_nldo_s3's vin-supply as coming from
+> > vcc_5v0_sys, and not the DCIN, as per the schematic. This makes no
+> > functional change; both regulators are always on, and one feeds into the
+> > other.
+> >
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 12 ++++++------
+> >  1 file changed, 6 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm=
+64/boot/dts/rockchip/rk3576-rock-4d.dts
+> > index 6756403111e704cad42f6674d5ab55eb0306f1e3..352e3df165688219bfedc19=
+734d9eb32c547ec44 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+> > @@ -57,13 +57,13 @@ user-led {
+> >  		};
+> >  	};
+> > =20
+> > -	vcc_12v0_dcin: regulator-vcc-12v0-dcin {
+> > +	vcc_5v0_dcin: regulator-vcc-5v0-dcin {
+> >  		compatible =3D "regulator-fixed";
+> >  		regulator-always-on;
+> >  		regulator-boot-on;
+> > -		regulator-min-microvolt =3D <12000000>;
+> > -		regulator-max-microvolt =3D <12000000>;
+> > -		regulator-name =3D "vcc_12v0_dcin";
+> > +		regulator-min-microvolt =3D <5000000>;
+> > +		regulator-max-microvolt =3D <5000000>;
+> > +		regulator-name =3D "vcc_5v0_dcin";
+> >  	};
+>=20
+> With the name change, this block needs to be moved down.
+>=20
+> Cheers,
+>   Diederik
+> > =20
+> >  	vcc_1v1_nldo_s3: regulator-vcc-1v1-nldo-s3 {
+> > @@ -166,7 +166,7 @@ vcc_5v0_device: regulator-vcc-5v0-device {
+> >  		regulator-min-microvolt =3D <5000000>;
+> >  		regulator-max-microvolt =3D <5000000>;
+> >  		regulator-name =3D "vcc_5v0_device";
+> > -		vin-supply =3D <&vcc_12v0_dcin>;
+> > +		vin-supply =3D <&vcc_5v0_sys>;
+> >  	};
+> > =20
+> >  	vcc_5v0_host: regulator-vcc-5v0-host {
+> > @@ -190,7 +190,7 @@ vcc_5v0_sys: regulator-vcc-5v0-sys {
+> >  		regulator-min-microvolt =3D <5000000>;
+> >  		regulator-max-microvolt =3D <5000000>;
+> >  		regulator-name =3D "vcc_5v0_sys";
+> > -		vin-supply =3D <&vcc_12v0_dcin>;
+> > +		vin-supply =3D <&vcc_5v0_dcin>;
+> >  	};
+> >  };
+> > =20
+>=20
+
+
+
+--d22k3ikyl4mwgwcs
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmhjGVgACgkQ2O7X88g7
++pq8fhAAkPFlVvN2lEwUG4bNLm+GgZTuLazptAsw4tjhJ84qzDA8jiPT//VFbSYo
+Rkx2KZD9GEeBnjW8bVDqNhEKrcHR5AoBBmciXgNeCvFPon/YR9zC5aYnGmb3MgYL
+Qwn7dbpwtKwSdTPC4p0xOH706rJn7gORx6VhIy1jls8lX0VyU+RsKs+9axztrlIO
+YAFGNwtTJgUSaBzDKhbGtswmi3pNZVef+4RgM6nJhaf7x1LClFnCvyL3q0Ma0uKn
+gI5PWZ5X+qKh5wxAbVNTB4U597AzukdK94OAZS7/vSGpMhXPcTGPB+VlXvE5vPbr
+c3mquGrcPSW47wpcI+8v+OmY0u/EuvCDqfWb2XovQst01FPL4FXPZzSjkFsHWoJ0
+aV5pb9JBHdt+HIVv4B8/jwabVtFIi+7x4Ma19I72tkFcOv7+Ue6u8ox41Fs0oGDg
+CTo1boGHCv8hsF0Z74hQAiZnGXHUrdjsdIzEY/02o4+b3+h0IeLYdQbzc9S1aEV5
+UA2RpUaQweHy7JZ0odYY2jj3JbGa8mwPien/JZN78K+LW3kuJfHXr7R6aCrdHyzt
+TZCR9uxodGvF8UO4vSfjA/URXoAp1DXS5Sb6ltJYCQZ3ZzAv6YvTHJaa4rrNqubh
+1Vrnf014Tm6oa7arlUHzgfZ+mDEPj3FFutGz/JLmcn/GC3AppsA=
+=c3Lc
+-----END PGP SIGNATURE-----
+
+--d22k3ikyl4mwgwcs--
+
+
+--===============8837858817531889500==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8837858817531889500==--
+
