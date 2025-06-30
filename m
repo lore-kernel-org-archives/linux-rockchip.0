@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11E58C8302D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 16:15:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27BD8C83036
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 16:15:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7l4BPG9B+/UmgbHmbj9LRh/BnJZHgRMvvPACRdnPwDk=; b=inQbWr0TJeXiWb
-	V9XgzDqkrrLcaqFClUEynCqd9T5lki73udlyyAzyKZUyY09y2k7poHsHP3V7Mvwhfm4CvyTRKOyfx
-	B9RNS7pqYw1sosAHS2CgU4XxV+cN6/s+RaerBQSyRdMFQUCiYVvm+oMpNlzPB4XbNNaTqiTxyzGDO
-	BshhLxkDSrVh1Y/7RCsH7S+P8nvXV7kUOPTyHwZ1uzsJp72z7z4sluEno2Xrpxc9sgKLfRaZvthTc
-	6Sb5xj5rGEt0jNnyF9k0pv2WRzE+j53b45PN30bK8URUrDmyUiFYQtonqXCW9kAM1oAnpmdk9HNzM
-	3mVJmHws5q9MI9IRYclg==;
+	List-Owner; bh=/+8zP4r5358dpAHh1YOK5JFUqMqr9NtsDYYrcvbkNco=; b=TldfhGO0iiVWpK
+	B7fuCM6se4MPDmhy28TPMV6FU7R8rXzthspErgvnGITzS7NMuLyVkNF+lFwJnM/842QJq9eZ1Odrt
+	jZfrRH3uR03UNw4bB40ncb9eaVyFIxFJgUiNDga58SWCNIhDt15FyO2kTZlKM4THuOH4tv5vK48cV
+	ci6hPiQ/QaMGe2l57rVq+Cy8sd/erc5sqqfi/TyceX4yQ94iQA4TrtzmMizhzSWJZReTwmxEC1d6B
+	x2ipkJeBHvZWUlsI2VvDIr7RfuDikibQSJXkOM9tuL1r+R7N8PHWKz83zIaQCKfLRl0cYSP1KMBOR
+	upKDnelLoOSOcFL1DLYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWHAd-00000002rag-1GBQ;
-	Mon, 30 Jun 2025 16:15:51 +0000
+	id 1uWHAf-00000002reK-0Yyn;
+	Mon, 30 Jun 2025 16:15:53 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWGZ0-00000002lyu-1vqn;
-	Mon, 30 Jun 2025 15:36:59 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1751297805; cv=none; 
+	id 1uWGZ5-00000002m0o-1uzG;
+	Mon, 30 Jun 2025 15:37:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1751297809; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=c30bn2kRQe+kHF0a5fjiGbGefd+J5bnPgFebggqvohGyd2hPWNvEK5943AQfllOP7lbJY2j378bASokshDacGIjcCH6Njydwjm/vvV7Wv1gAGFEnL+67ELHG3obfaMYS10+bQqWiga2JaPVDB93UjsV+exjYtPfQUathMC7Tf8c=
+	b=fcmnJxw89CijL3dQAiVqrbC3o+mSiPlb1gYaPODOuAZahrqXh9Q7MJljPbl44c3H/s3kbDYiCDMzkZkdxKrwN7xZPRlE1Yecxe5+RwhFTezM7jcr+9O1u4syuMyDRpjT4aP71sTEJLMyU/uWbpi++7xMfctgSDv6bkYH46z826s=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1751297805; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=j9GQKLguf1mAV7iA4o9HzpFt+9CePr8v5rNhiPiX5m0=; 
-	b=leNmZK2qTURJXbjcHDg5uZwU2RMI/kbyXSg4yJoLgaGUPlPJDZKZkDRfFgFK4xriV2CLfzEWOGWA7VxQ40rOLx2dFmjQkdDfvQNE8ZwSsyBXucHOFvmV39mH5avxocI96BZ+9drnckdExCg3gEguDurFYU5Vj0cCI5wNqGA+mp0=
+	t=1751297809; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=c1YGdk2ZohmIABV7Pc0xmFdEGzRW5c9+R0A8R/9CkYc=; 
+	b=BPP1iDvvCXrrHNJkMnE4/qjD5+IbRSfoot+73k/vBhYIHSffcEY6FukWmLMDlXtoOWnLzYiJa59ya9G10YL5Yt0uGfDPV1tzgX0jr9Sgxzr/8VzzcmXr46kNLj0iWXyT91JmTCBPueM829ZjIaJJc4nStXYDDjsUHQ9gtCTucxE=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1751297805;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1751297809;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=j9GQKLguf1mAV7iA4o9HzpFt+9CePr8v5rNhiPiX5m0=;
-	b=C0qIcSgXOpIGsZkN89Sp8Rg75Ms36o45KysoBaWXz8Xuo5RjJgGyG0FMkxvvlCQ9
-	k0eSrsHa3L2TWPy/nGPWFEtDENvLl1Vw468XBctqE3hwSyVHPR1auw6OKCH9KPkmqc/
-	AFb1pIqJZKP4WtbqipgmTHkfXk6nI5ZPnbHopS+0=
-Received: by mx.zohomail.com with SMTPS id 1751297804325888.6960560432937;
-	Mon, 30 Jun 2025 08:36:44 -0700 (PDT)
+	bh=c1YGdk2ZohmIABV7Pc0xmFdEGzRW5c9+R0A8R/9CkYc=;
+	b=KqJ9LBf36QU99xqK9haLS0d6mQ8XIfJD3kVIrNtDq+I3TaZvYX6jgdjABgiRdLAh
+	5tBfT9rky1ou9xADQ86BCgcetbK+TAAv4c6ND92/45/m26CfeLGb7VckzJFa/HVh/Nd
+	+7cIqMrNdv8MA2GH7ez/oa/PvfkVavXz4vPQ+SQw=
+Received: by mx.zohomail.com with SMTPS id 1751297807261784.8387235480643;
+	Mon, 30 Jun 2025 08:36:47 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 30 Jun 2025 17:36:33 +0200
-Subject: [PATCH 1/3] arm64: dts: rockchip: adjust dcin regulator on ROCK 4D
+Date: Mon, 30 Jun 2025 17:36:34 +0200
+Subject: [PATCH 2/3] arm64: dts: rockchip: complete USB nodes on ROCK 4D
 MIME-Version: 1.0
-Message-Id: <20250630-rock4d-reg-usb-wifi-v1-1-1057f412d98c@collabora.com>
+Message-Id: <20250630-rock4d-reg-usb-wifi-v1-2-1057f412d98c@collabora.com>
 References: <20250630-rock4d-reg-usb-wifi-v1-0-1057f412d98c@collabora.com>
 In-Reply-To: <20250630-rock4d-reg-usb-wifi-v1-0-1057f412d98c@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_083658_563348_16825C7D 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20250630_083703_561745_BDF06DFD 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,60 +76,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The ROCK 4D's actual DC input is 5V, and the schematic names it as being
-5V as well.
+The ROCK 4D uses both USB controllers, and both of which in host mode.
+However, it still names one of the supplies for them "OTG" in the
+schematic.
 
-Rename the regulator, and change the voltage it claims to be at.
-Furthermore, fix vcc_1v1_nldo_s3's vin-supply as coming from
-vcc_5v0_sys, and not the DCIN, as per the schematic. This makes no
-functional change; both regulators are always on, and one feeds into the
-other.
+Fix the "host" supply's input, and add the "otg" supply. Enable the
+remaining USB PHY nodes, and the first controller node as well.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 41 +++++++++++++++++++++++--
+ 1 file changed, 39 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 6756403111e704cad42f6674d5ab55eb0306f1e3..352e3df165688219bfedc19734d9eb32c547ec44 100644
+index 352e3df165688219bfedc19734d9eb32c547ec44..ed8b018539acb77328627c24b88a5a220fe085d2 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -57,13 +57,13 @@ user-led {
- 		};
- 	};
- 
--	vcc_12v0_dcin: regulator-vcc-12v0-dcin {
-+	vcc_5v0_dcin: regulator-vcc-5v0-dcin {
- 		compatible = "regulator-fixed";
- 		regulator-always-on;
- 		regulator-boot-on;
--		regulator-min-microvolt = <12000000>;
--		regulator-max-microvolt = <12000000>;
--		regulator-name = "vcc_12v0_dcin";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-name = "vcc_5v0_dcin";
- 	};
- 
- 	vcc_1v1_nldo_s3: regulator-vcc-1v1-nldo-s3 {
-@@ -166,7 +166,7 @@ vcc_5v0_device: regulator-vcc-5v0-device {
+@@ -180,7 +180,21 @@ vcc_5v0_host: regulator-vcc-5v0-host {
  		regulator-min-microvolt = <5000000>;
  		regulator-max-microvolt = <5000000>;
- 		regulator-name = "vcc_5v0_device";
--		vin-supply = <&vcc_12v0_dcin>;
+ 		regulator-name = "vcc5v0_host";
+-		vin-supply = <&vcc_5v0_device>;
++		vin-supply = <&vcc_5v0_sys>;
++	};
++
++	vcc_5v0_otg: regulator-vcc-5v0-otg {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpios = <&gpio2 RK_PD2 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&usb_otg_pwren>;
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		regulator-name = "vcc5v0_otg";
 +		vin-supply = <&vcc_5v0_sys>;
  	};
  
- 	vcc_5v0_host: regulator-vcc-5v0-host {
-@@ -190,7 +190,7 @@ vcc_5v0_sys: regulator-vcc-5v0-sys {
- 		regulator-min-microvolt = <5000000>;
- 		regulator-max-microvolt = <5000000>;
- 		regulator-name = "vcc_5v0_sys";
--		vin-supply = <&vcc_12v0_dcin>;
-+		vin-supply = <&vcc_5v0_dcin>;
+ 	vcc_5v0_sys: regulator-vcc-5v0-sys {
+@@ -682,7 +696,11 @@ pcie_pwren: pcie-pwren {
+ 
+ 	usb {
+ 		usb_host_pwren: usb-host-pwren {
+-			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++		usb_otg_pwren: usb-otg-pwren {
++			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_down>;
++
+ 		};
  	};
  };
+@@ -721,15 +739,34 @@ &u2phy0 {
+ 	status = "okay";
+ };
  
++&u2phy0_otg {
++	phy-supply = <&vcc_5v0_otg>;
++	status = "okay";
++};
++
+ &u2phy1 {
+ 	status = "okay";
+ };
+ 
++&u2phy1_otg {
++	phy-supply = <&vcc_5v0_host>;
++	status = "okay";
++};
++
+ &uart0 {
+ 	pinctrl-0 = <&uart0m0_xfer>;
+ 	status = "okay";
+ };
+ 
++&usbdp_phy {
++	status = "okay";
++};
++
++&usb_drd0_dwc3 {
++	dr_mode = "host";
++	status = "okay";
++};
++
+ &usb_drd1_dwc3 {
+ 	dr_mode = "host";
+ 	status = "okay";
 
 -- 
 2.50.0
