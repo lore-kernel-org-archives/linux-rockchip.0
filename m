@@ -4,62 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8CB2C83035
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 16:15:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD983C8302D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 17:05:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T2xZqeyWqxouooAx9ydSwCV7+bb2SJ+EtTB7m0uFWa0=; b=h1pEMhjRBdmI9w
-	wdy3ptiShMPz6G0ebmyc2KRA/AiU1kl7AlmvNIZdgbOOJJVM+po3ML5d9UsGKmUXFB2+a1nuxT7oP
-	JVLTEyfXSEuJZwtNYW8y989UN7IdbMOmC4/Kzw2Ky7GALuMi1pUM4l5lRj3nZMPASzee58vbg/omp
-	79D2fdPywmX5PBjG/S3DSrB/e3V9QZPT+qOgVERNNbqFY3C/zuh7PU1Kc2HZwxp/bm58T3Q5zjuI7
-	CTFdieI7POd/VbzU6F0E8z4aObdGeKJqTZcTqWGHKWx/fyiF3l823liNX75pRNINdlHhrI18Qgw4p
-	XOxHNVPExaoIGE9J5FtA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=22iGls6hMLbJUZTfScOgcaAsr36s+UNa3TN6oSBmJDw=; b=bk1GZcXLCNW5rT
+	KOu/4t7qOXeBf9VBOWUYPiHuPbmk9eQkFSrP1z6Y/VsuWFrPYNBZc2g1SwZ4TLBjOaTi6yZEvB/63
+	d0cJpsJ3vs+zempl3ciNEI1YtgarTDhEVGNCOBztFdIrP2iNzZEF9kiDxOLEALYmZMmazHayWyl15
+	p9y1jxmP/k0fjIuPdup3lCxgrnfR4awBWGYm+10t7/7PTlDD1ALupkRnGSyLLylqqRvo11dooZIJy
+	F6AXG9MhIDHr3WNcPZJ/jVhRtFTJKzqxTtA/E0VYtTekRapt7pn/0/onNHdJPu7GkZRk5Ya5GSr99
+	FT8ZIqLw+FlwRbj4dVKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWHAg-00000002rhe-3pv1;
-	Mon, 30 Jun 2025 16:15:54 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uWHwy-000000031yJ-3INO;
+	Mon, 30 Jun 2025 17:05:48 +0000
+Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWGZ6-00000002m15-0lfX;
-	Mon, 30 Jun 2025 15:37:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1751297811; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=dFpvo546i+o+0y0ZvSbc31+hjS8gKxW1/ScGQz8pMXWQaUP6keGdnEXNn1vDQtnWxB2f6MezYHuD7ZmrNRYeHM72bxNK4YO+379tAwBUmk1YOZ+l/Meh9Z/QkCMIx48JMTBtEY80T8E9Jtwo5P3X1GN9JHGCBHNrEeGbzqYDew8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1751297811; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=FOdigrsQQpd9WEDOm3Dn2iOG8VrxDhh0NLeJNZe4Nnc=; 
-	b=oJMTHy6RS+SNua2Oey07DPgnVQqj4kf5CLeMUyC4+aK+CRTFv7Zhb1iFKCj0+Phi+w3Qs2MjtLiFNboxCm6WTD/4VLpMdXH4fFaX/be4QAY008W5XXpzvvTuGAHSCpoNgt4CismBq+pERyf4vznU1CD5tVtObuu8VXM0Uw+3o8k=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1751297811;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=FOdigrsQQpd9WEDOm3Dn2iOG8VrxDhh0NLeJNZe4Nnc=;
-	b=lHu1l7KwuXmeDwZ2n6b+4WYUWxphCYFKunVzmOTwVc+4A3K6fky4lln7962lzB57
-	n9W8aY+0D2BwckIBtvr+sgDQ4brFosfJR6DARiRvAck6vTACN32VP/eQFXi82CBbhkQ
-	QbiWHBkj8ReGiaTTE+WvuAkS3+gN+M0Xa1wFLTLI=
-Received: by mx.zohomail.com with SMTPS id 1751297810110842.1922689401597;
-	Mon, 30 Jun 2025 08:36:50 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 30 Jun 2025 17:36:35 +0200
-Subject: [PATCH 3/3] arm64: dts: rockchip: theoretically enable Wi-Fi on
- ROCK 4D
+	id 1uWH8q-00000002qrY-1wjc
+	for linux-rockchip@lists.infradead.org;
+	Mon, 30 Jun 2025 16:14:01 +0000
+Received: by mail-oi1-x229.google.com with SMTP id 5614622812f47-407a6c6a6d4so1468186b6e.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 30 Jun 2025 09:13:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1751300039; x=1751904839; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=z4K2GXVJiuaKILQGQTItkLUww/Aie+jD+a1eWqS2IOU=;
+        b=cWsvbHnM03TMo6qahUnnFZhNnUG0cWeT9TUlnShfCe5oYfxYL3wjzJathlk11Zq0NQ
+         rYP9amftw3CX2DxP6Mu9GqNh2chPrHc54/jwHIcXLRCnApYRlDf3PsvGpGm8mYUo1ZC1
+         2MsT0KMxjG66ziQW77iqEFfXLXd1AeH2HloPAvuLKiZZRN6GVSVngE0EZl47If4G3CD/
+         1e9djRADZh/TiKiZeDfXmMuSNjtSo1RAGQP1UqwLSWcH2ImoxRxqAPcgA7w9+6M7ElHG
+         k6/8b1lCOhC5o0omLnY2vOxHuHSOUpVPXZyJ/s/ePsEk7VyDQ3zupv8lxG3LlkE1BRCy
+         zHkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751300039; x=1751904839;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=z4K2GXVJiuaKILQGQTItkLUww/Aie+jD+a1eWqS2IOU=;
+        b=XVs8dssPs3CRye/MGmxxjnJcHo3p2DMrap3BKXXLlkoN7vCxkWbujYt0CQLT9WbTkj
+         IunxdetufM29QldG5ncf7jTFwypguqn9dMXaQACDAs3d8xbP2sb5+E39qfGDx+Pc4pXd
+         9bXyRUmaWO2geNsfB1p0H2UCq6J1MGfYozy/BPdvkwxUwcNummxFjaj5eGbOla2m37Cx
+         W5AJmJR3Hf9DSce02Rd11snTyCY1ggVmniAH2mN+w9RfdWj4ysGaLpp2FLwaZFcOv2li
+         n/3/+ey/8bNwV3sIkAkLulcfeaF34j1Cfzqt1pEtCI/Tlv6p1iQdp6kDauXdV2BB8mTN
+         EYEg==
+X-Forwarded-Encrypted: i=1; AJvYcCUZhu5CtRpH5Ux34HeElRzavP6UqzHQpC6mqsgyJUko7V5L/hiOL74wjydYBuVfHKBIQmWtDGYLjoKSvdMqfw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwpL5KGE9BUoQTkq6eckEGXLicSG5OaI8hPd5nx54pUcRs3zmYX
+	uGAaFL3h2Rv9HjBL97urN84PNUy04YZzhk/9ojyymCQJs5v8ejxAvZxyZDDvcpJlgmc=
+X-Gm-Gg: ASbGncuEnlhlEvEow9eEV7NaK9TzJ2bWf92PYYeWQptAn3tWsDIEa728i03CHHxoGbk
+	6x3Ase4F+ccEjyjcgJczo06/imJXdhATpfpKhMlLKiSbcHu5R0KFhwzmI8gtTOhy/96do9cTP5K
+	e3y5786sWd3LDz3YDdYvk1ZV2llfrkiTHVX70TmCkNaVOvPW3Q/iO5KUzqSC5oGNnRS3nPDmrkr
+	kvPTv3RpcEmgBHbZfQqKUgz/XghOx1/24YrUPRLbUWyPDFKeqtzVtwbkxpciVWgaU7ZzzaQJ7lo
+	zRVHatKE93wQj4g6066tvlMDeo8dsguKE5x9pZUgXqU3gEMrfolPH6Gp27N0oYG+kKEk
+X-Google-Smtp-Source: AGHT+IFAFlASv7Ojn6bTOl96SOGAN68965wAV7Dt6BYrHwwgQEMEUSNQsxpaQz7AhcjUol0ME8awag==
+X-Received: by 2002:a05:6808:4f54:b0:404:764:f7b6 with SMTP id 5614622812f47-40b33c469c7mr12480268b6e.9.1751300038962;
+        Mon, 30 Jun 2025 09:13:58 -0700 (PDT)
+Received: from localhost ([2603:8080:b800:f700:fb67:363d:328:e253])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-40b32406a58sm1743722b6e.29.2025.06.30.09.13.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 Jun 2025 09:13:58 -0700 (PDT)
+Date: Mon, 30 Jun 2025 19:13:57 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: oe-kbuild@lists.linux.dev,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	joro@8bytes.org, will@kernel.org, robin.murphy@arm.com,
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	heiko@sntech.de, nicolas.dufresne@collabora.com, jgg@ziepe.ca
+Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev, iommu@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v4 3/5] iommu: Add verisilicon IOMMU driver
+Message-ID: <9d247bec-d206-495e-b8d6-23a7c3cc0882@suswa.mountain>
 MIME-Version: 1.0
-Message-Id: <20250630-rock4d-reg-usb-wifi-v1-3-1057f412d98c@collabora.com>
-References: <20250630-rock4d-reg-usb-wifi-v1-0-1057f412d98c@collabora.com>
-In-Reply-To: <20250630-rock4d-reg-usb-wifi-v1-0-1057f412d98c@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-X-Mailer: b4 0.14.2
+Content-Disposition: inline
+In-Reply-To: <20250623153931.158765-4-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_083704_285431_96F57DC9 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20250630_091400_500981_F9D94A7F 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,85 +99,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The production version of the ROCK 4D appears to sport a AICSEMI
-AIC8800D80 USB Wi-Fi + BT chipset. This chip does not yet have a
-mainline driver.
+Hi Benjamin,
 
-Add the necessary rfkill node and wifi regulator node to at least make
-it show up in lsusb output. The regulator is set as always-on, as like 2
-hours deep into debugging why onboard_usb_dev.c wouldn't try enabling
-the regulator the device needs to actually show up and thus bind to
-onboard_usb_dev.c, I decided that it's not worth the effort.
+kernel test robot noticed the following build warnings:
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 30 +++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index ed8b018539acb77328627c24b88a5a220fe085d2..291b6e4ffdac86280280de49c30de7ddde80462b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -37,6 +37,14 @@ hdmi_con_in: endpoint {
- 		};
- 	};
- 
-+	rfkill {
-+		compatible = "rfkill-gpio";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_en_h>;
-+		radio-type = "wlan";
-+		shutdown-gpios = <&gpio2 RK_PD1 GPIO_ACTIVE_HIGH>;
-+	};
-+
- 	leds: leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
-@@ -159,6 +167,19 @@ vcc_3v3_ufs_s0: regulator-vcc-ufs-s0 {
- 		vin-supply = <&vcc_5v0_sys>;
- 	};
- 
-+	vcc_3v3_wifi: regulator-vcc-3v3-wifi {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio2 RK_PC7 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb_wifi_pwr>;
-+		regulator-always-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-name = "vcc_3v3_wifi";
-+		vin-supply = <&vcc_3v3_s3>;
-+	};
-+
- 	vcc_5v0_device: regulator-vcc-5v0-device {
- 		compatible = "regulator-fixed";
- 		regulator-always-on;
-@@ -703,6 +724,15 @@ usb_otg_pwren: usb-otg-pwren {
- 
- 		};
- 	};
-+
-+	wifi {
-+		usb_wifi_pwr: usb-wifi-pwr {
-+			rockchip,pins = <2 RK_PC7 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+		wifi_en_h: wifi-en-h {
-+			rockchip,pins = <2 RK_PD1 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
- };
- 
- &sdmmc {
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/dt-bindings-vendor-prefixes-Add-Verisilicon/20250623-234734
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+patch link:    https://lore.kernel.org/r/20250623153931.158765-4-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v4 3/5] iommu: Add verisilicon IOMMU driver
+config: alpha-randconfig-r073-20250627 (https://download.01.org/0day-ci/archive/20250629/202506290711.T0HOr5wS-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 8.5.0
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+| Closes: https://lore.kernel.org/r/202506290711.T0HOr5wS-lkp@intel.com/
+
+smatch warnings:
+drivers/iommu/vsi-iommu.c:657 vsi_iommu_probe() error: uninitialized symbol 'err'.
+
+vim +/err +657 drivers/iommu/vsi-iommu.c
+
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  639  static int vsi_iommu_probe(struct platform_device *pdev)
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  640  {
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  641  	struct device *dev = &pdev->dev;
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  642  	struct vsi_iommu *iommu;
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  643  	int err;
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  644  
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  645  	iommu = devm_kzalloc(dev, sizeof(*iommu), GFP_KERNEL);
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  646  	if (!iommu)
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  647  		return -ENOMEM;
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  648  
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  649  	iommu->dev = dev;
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  650  
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  651  	iommu->regs = devm_platform_ioremap_resource(pdev, 0);
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  652  	if (IS_ERR(iommu->regs))
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  653  		return -ENOMEM;
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  654  
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  655  	iommu->num_clocks = devm_clk_bulk_get_all(dev, &iommu->clocks);
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  656  	if  (iommu->num_clocks < 0)
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23 @657  		return err;
+
+s/err/iommu->num_clocks/
+
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  658  
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  659  	err = clk_bulk_prepare(iommu->num_clocks, iommu->clocks);
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  660  	if (err)
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  661  		return err;
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  662  
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  663  	iommu->irq = platform_get_irq(pdev, 0);
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  664  	if (iommu->irq < 0)
+15ea72d5401fb7 Benjamin Gaignard 2025-06-23  665  		return iommu->irq;
 
 -- 
-2.50.0
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 
 _______________________________________________
