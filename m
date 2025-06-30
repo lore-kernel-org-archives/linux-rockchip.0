@@ -4,90 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6341C7EE30
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Jun 2025 21:00:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DBE5C7EE2A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 06:00:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1Mg+/aeZ7+IJS4+Uw/ZQy7wD5kLIUq2fWgCJxV5O18Q=; b=IkhpM140LlcAVL
-	84r3YMlSJFxesceZjKgl2B1Pa8ox0js8s3yW5/q2oemExI4QwEtsNLey/SR5PjfbY4HI+ZYu/HI1R
-	uMI+J5VtvEOg1BbCVyokagstnTEfPitNZrt3QVQ8jlwO1PpYzGx5eopTgpaKOqRxYUzcWDVu2wlom
-	4hutXR6wgMFL7+IpAq0Vhb1BNNpYgDIIgQv/neLjYxm8C5dP7N/LyrNiRF+yCBYsvNw5uiY1VO/jA
-	Z8/2njdp0gdS5i+6CN7hLsMGe6FWCUhGE0v3RBrkvlVQvB3N6Z6scmI4VUPWoaymEzBFOvumdvXf0
-	3M0jjClsuv8kdoxy0nKg==;
+	List-Owner; bh=cKQv1lDSxjFGfywB+qWtphN/veAEk+16Oo/xiQYSXjo=; b=akWc3tbiKH7dt6
+	yha2sBIbvzDaHnvD4jEAVav5PCQoYe5ZtcrToL//WceLL4jbhY4OCm3DH2901zkmZJK8Z2TjS+XVc
+	KqCZTi+OEwhF3iH6kktUE0Jf/K+JTJRV4O6WtLsW5+50lKpyugOmASiCiqXk26L8PymN0tcTs7LY4
+	1x+rctPRqY2dxaJIuHHkg6sZz9D4xm1vElXqBlS2YdMWUJpIu0+m08HXjOpH4xv0Tde+xe/pjWl4b
+	XR8Med+TqJkVzpEmrm5ktt1/bKxMjLvJZ/bh7cnkmV9J0ESwqmtLyROIRGS5vzbQXyXuvvTpoYLYG
+	e6Tr/0QhIQeYpLVR0QJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVz87-00000000k14-2WKN;
-	Sun, 29 Jun 2025 21:00:03 +0000
-Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
+	id 1uW7Yc-00000001IW2-3TGn;
+	Mon, 30 Jun 2025 05:59:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVz6r-00000000jur-2I90;
-	Sun, 29 Jun 2025 20:58:46 +0000
-Received: by mail-qk1-x72e.google.com with SMTP id af79cd13be357-7d44c6774e7so68542985a.3;
-        Sun, 29 Jun 2025 13:58:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751230724; x=1751835524; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=yie4J6/XsAs1Q8lv5qOjqiXHg7FYWZHizYmDgi4UuNs=;
-        b=HTjm2khaJmFm+0Bx33tc32uDs/EO3fzX/FA7TzanW2/L59cq4Nso73Glhe6UvQVXAA
-         QiNDUD074F5HFjOBerudAb1ZECOBT6fgN1Kahph4CeWDf+njgElfa8XJsOFNLXuwvM+E
-         oVBMvr/sYKroQ66eKbvtWAKQqDPH5s5bOStl/3cij2+EwfTMQsZuzNFYL+CbfhDvJVi+
-         wkBEqzQmziCvIx2bezcRk9INF3bWqFxqeIh3nusUlmhkKlVcLYK/V+d57ZUJeJhLUk9k
-         jdBZHeqregyuip4eN5bXYEvFDRq/GvNejUzinf6cbL3aSmradKtlUw9WpEGdN7dTfUs+
-         ds7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751230724; x=1751835524;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yie4J6/XsAs1Q8lv5qOjqiXHg7FYWZHizYmDgi4UuNs=;
-        b=k+Uec/NLISsmgxoW7qPe3sRdO5uZs25NP2d83BLKZ1jqhTp7dW64OVtboB8q0vTeLJ
-         zHJOLgfWQZu2NFerRy6247UA6C4EJtvAq1g+Bv1TAgszI3W1GQFNz3YXUHro8Ri5Dfx7
-         wCfpUnBKonnUfbTLJIsDWqZyQAALhdM63cJouA0nhFW/zFJo4f3yd8P+BCgBL8eaRW/y
-         P+ZbUMfRgmIhUYK/o5SWFK1wPrVYcyhCKkSDDYmsXtXXeilk2PVhvRJw2E8Ez9tu4cp/
-         hP0mpFl+Gyn0GzLupcrLtYseEhd9UHyRSWH3y0wpnlKTrFeAUc+QEqIsDapDBGKTr5/2
-         3pQA==
-X-Forwarded-Encrypted: i=1; AJvYcCV98DjYIfM9Q/QklDPUgRigS2PTlsh9EiQ5HKzPOWkhrQ5gyJexEOvAIQ7+VNlH9Nq/yq5aUfXjpGQO@lists.infradead.org, AJvYcCXvI38f3JCU0x3t6uCNBbS136gYl2ldNLkvtHkNS9eyWfJxL923ZnOJWg5iaXtIb9aTLFe41KSV5kBVk03Nh3c7@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxn7PnZO5cuDabQuK5RTzm1J9OKDpoy1DX9j2n8ZhD6dM/qAxYA
-	LSG6+6xv7qqLaejvzAQfpjmQNZbEQFd09mtWhVZz8SOKXtOfnBP6TUDI1pTaJG+5gy3YZQ==
-X-Gm-Gg: ASbGncu8TR2EZwLp6OP+Ur0IeIqIHpFxfRkmt2rrtGowkWBhYqlTXIm4MEbx8Gk0m72
-	OJz+GV0QJVd4BRaqSMWVcdFWbUyeb5xqkWZVBRN9NkgEPnzsfgWdxKi9dzChYqxxELaioJIdSwC
-	ErsmjxVFbaKyW9TTKsWOmAYXUCwX2IdJgnnHChx6okiRCZEXUehnwDiCuA3woCRUigPHG2uBOee
-	g/D2kTffY4xoqsw1CxgLmZPJBDfRtWe1HOa1J0ej0iBo1xOATJyeZkXE3apbvFMdC1dd2g0qawE
-	Ns/zPG2zp95z5OHedKER9naBmMfa9bGA9wti1O+dY+zg8yr1Pw==
-X-Google-Smtp-Source: AGHT+IHV9zmUEfgqMrmNKPmx2kRTuxTdY/cY3aGuTYatCyaiuxMqaEx69QeCSt7OKPnppAGC83yv0w==
-X-Received: by 2002:a05:6214:6201:b0:700:c7ef:ad26 with SMTP id 6a1803df08f44-700c7efaf90mr50674366d6.29.1751230724134;
-        Sun, 29 Jun 2025 13:58:44 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:24f4::dead:c001])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7d443231da6sm484599585a.101.2025.06.29.13.58.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Jun 2025 13:58:43 -0700 (PDT)
-Date: Sun, 29 Jun 2025 17:58:30 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Rick wertenbroek <rick.wertenbroek@gmail.com>,
-	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v7 3/4] phy: rockchip-pcie: Enable all four lanes if required
-Message-ID: <b203b067e369411b029039f96cfeae300874b4c7.1751200382.git.geraldogabriel@gmail.com>
-References: <cover.1751200382.git.geraldogabriel@gmail.com>
+	id 1uW7WH-00000001INO-1xBJ;
+	Mon, 30 Jun 2025 05:57:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7CC575C5A0A;
+	Mon, 30 Jun 2025 05:57:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C1CCAC4CEE3;
+	Mon, 30 Jun 2025 05:57:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751263051;
+	bh=OY5FnNZGUzQJJVdY+bYafYRhPm+gNzUjp5rwfE9mw98=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=D6IFAbbsR9baNXm7IKEg3A/pxbYPQ+rJifRo4vcljd0Cqa11Lx6ptE9P+HruolI1u
+	 n71CqVBWo72Nx85zn4Nm2/Wm4Wk7+xzwmf1673xf+EUiTp/o83yaqKqJV0xoPoFb2o
+	 E4fJyyw1dRCYWwHuhpGnTbYzPqCYMwn1eFlcIG3SY9X08cZRNQ+fE1TLI3qa32Iowd
+	 oH3P/grFN6zYNeE366QVFifRibxnKBq2e9lP0GURUj1u7aT10tVK0uEcT0By93AYLF
+	 Pp8wSVa4GcQ6jwwdSgMMPYob2RG54fb5A5AoK4GElndNYQZ9LDdYHqpJ3VM6R0vgpm
+	 6ACXsuAbvhXPg==
+Message-ID: <9f1ac97a-6109-40d1-bf85-f2a8e25138f0@kernel.org>
+Date: Mon, 30 Jun 2025 07:57:24 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1751200382.git.geraldogabriel@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/8] arm64: dts: rockchip: Refactor DSI nodes on rk3399
+ boards
+To: Diederik de Haas <didi.debian@cknow.org>,
+ kernel test robot <lkp@intel.com>, Rob Herring <robh@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+ Dragan Simic <dsimic@manjaro.org>, Quentin Schulz
+ <quentin.schulz@cherry.de>, Johan Jonker <jbx6244@gmail.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250627152645.740981-3-didi.debian@cknow.org>
+ <202506290852.bWro2lBe-lkp@intel.com> <DAYXOI4WITJW.1G5DBWEQDDY1Z@cknow.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <DAYXOI4WITJW.1G5DBWEQDDY1Z@cknow.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250629_135845_584653_4ECA4264 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20250629_225733_597158_82ED23DA 
+X-CRM114-Status: GOOD (  19.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,48 +122,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Current code enables only Lane 0 because pwr_cnt will be incremented on
-first call to the function. Let's reorder the enablement code to enable
-all 4 lanes through GRF.
+On 29/06/2025 12:09, Diederik de Haas wrote:
+> Hi,
+> 
+> On Sun Jun 29, 2025 at 2:32 AM CEST, kernel test robot wrote:
+>> kernel test robot noticed the following build errors:
+>>
+>> [auto build test ERROR on rockchip/for-next]
+>> [also build test ERROR on next-20250627]
+>> [cannot apply to robh/for-next krzk/for-next krzk-dt/for-next linus/master v6.16-rc3]
+>> [If your patch is applied to the wrong git tree, kindly drop us a note.
+>> And when submitting patch, we suggest to use '--base' as documented in
+>> https://git-scm.com/docs/git-format-patch#_base_tree_information]
+>>
+>> url:    https://github.com/intel-lab-lkp/linux/commits/Diederik-de-Haas/arm64-dts-rockchip-Refactor-DSI-nodes-on-px30-boards/20250627-233300
+>> base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+>> patch link:    https://lore.kernel.org/r/20250627152645.740981-3-didi.debian%40cknow.org
+>> patch subject: [PATCH 2/8] arm64: dts: rockchip: Refactor DSI nodes on rk3399 boards
+>> config: arm64-randconfig-002-20250629 (https://download.01.org/0day-ci/archive/20250629/202506290852.bWro2lBe-lkp@intel.com/config)
+>> compiler: clang version 19.1.7 (https://github.com/llvm/llvm-project cd708029e0b2869e80abe31ddb175f7c35361f90)
+>> reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250629/202506290852.bWro2lBe-lkp@intel.com/reproduce)
+>>
+>> If you fix the issue in a separate patch/commit (i.e. not just a new version of
+>> the same patch/commit), kindly add following tags
+>> | Reported-by: kernel test robot <lkp@intel.com>
+>> | Closes: https://lore.kernel.org/oe-kbuild-all/202506290852.bWro2lBe-lkp@intel.com/
+>>
+>> All errors (new ones prefixed by >>):
+>>
+>>>> Error: arch/arm64/boot/dts/rockchip/rk3399-rockpro64-screen.dtso:75.1-6 syntax error
+>>    FATAL ERROR: Unable to parse input tree
+> 
+> The kernel test robot is right as the ``&mipi_out`` node is missing a
+> closing ``;``, so thanks for that :-)
+> The problem is also present in v2, so I'll send a v3 shortly.
+> 
+> Luckily I've now found why my build script didn't catch it.
+> ```sh
+> export PATH=~/dev/kernel.org/dt-schema-venv/bin/:$PATH CROSS_COMPILE=aarch64-linux-gnu- ARCH=arm64
+> make distclean
+> make debarm64_defconfig
+> make CHECK_DTBS=y W=1 rockchip/px30-cobra-ltk050h3146w-a2.dtb
+> <quite-a-long-list-of-all-boards-at-least-I-thought-so>
+> ```
+> 
+> (debarm64_defconfig is my own defconfig based on Debian's kernel config)
+> 
+> That long list didn't have ``rockchip/rk3399-rockpro64-screen.dtbo``.
+> Is there a better/simpler way to validate all rockchip boards without
+> having to explicitly list each and every one of them?
+make defconfig && make
 
-Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
----
- drivers/phy/rockchip/phy-rockchip-pcie.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+or make dtbs
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-index bd44af36c67a..f22ffb41cdc2 100644
---- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-+++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-@@ -160,6 +160,12 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 
- 	guard(mutex)(&rk_phy->pcie_mutex);
- 
-+	regmap_write(rk_phy->reg_base,
-+		     rk_phy->phy_data->pcie_laneoff,
-+		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
-+				   PHY_LANE_IDLE_MASK,
-+				   PHY_LANE_IDLE_A_SHIFT + inst->index));
-+
- 	if (rk_phy->pwr_cnt++) {
- 		return 0;
- 	}
-@@ -176,12 +182,6 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
- 				   PHY_CFG_ADDR_MASK,
- 				   PHY_CFG_ADDR_SHIFT));
- 
--	regmap_write(rk_phy->reg_base,
--		     rk_phy->phy_data->pcie_laneoff,
--		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
--				   PHY_LANE_IDLE_MASK,
--				   PHY_LANE_IDLE_A_SHIFT + inst->index));
--
- 	/*
- 	 * No documented timeout value for phy operation below,
- 	 * so we make it large enough here. And we use loop-break
--- 
-2.49.0
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
