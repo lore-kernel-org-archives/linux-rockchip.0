@@ -4,83 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC9CBC8302D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 18:40:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BFC4C83039
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 19:35:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UBZVooDlNh+h6Xt0PS1ts/M8wkAUYg3/ZT7otCZdgnQ=; b=qJtLWfTQa7tc8+
-	hTenAlA+b8Wb0t121m/rlSRQCd/ZBnlBJem4Wm3auRa4ECtRJga/atfkmIZGZbSAi95aHXIS1YZ6+
-	2+ZgMLTn86NXlPhBjAHKge6lsIeo8kRU6M+DlADqbXwBoF5Cs0SuUZnQ89GSCO5PfdD+VWcG0AVHU
-	sZAUSEzn7L6ciQqzJ2tNRcs3wG3JdTR/mPqzfoQV7ac0HpsTV9s/j03Mm+QebvnV76rTSOn8wEt0Y
-	ZyWJuv/Po//95TJi86MgmY13Uj5jVuTb79+zsFkoVdZbq1XMdJ78FEoDlnkAOM3gWKdfBbMSgPlwB
-	7gmBEsXLHPKHeJPnQunw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hdPnme4/hYDFFKg85mihYHAdz0ei1vIrV3IPfk/W9CU=; b=xba5zwDDihzbxQ
+	YGq8UrBYbRG4rDvEQsb6eBe+aDA1I41stWalEjM+kql3b4ziUdFxDVGtmee4et4I3f61DPzSwbjSV
+	/eQhb+vsNAZG5jDjNi1uvlOcNlRbkmslcoDPmc4mCdfBcKvJPuF5wxMHiWgI7YSqacKJsH2bCiXh3
+	tnDswE62vYuAz2Lnx0mrb/67mza8oaBL/vSC4NgKLMEUa5Cfp17hCFx7whzjzuuLKPfrpRIhfkJr3
+	vWCH0nxTTeaSQeVvbI7ZRedFX6Xe2001ZdCKqYxVxi9VfYu0nEVlAWGTKMOz2HsSYolYVHughFBRh
+	bF2iojtT8FTx4ojpBLBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWJQi-00000003Dd7-0mv0;
-	Mon, 30 Jun 2025 18:40:36 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uWKI9-00000003J1V-1jnk;
+	Mon, 30 Jun 2025 19:35:49 +0000
+Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWJ9B-00000003Bou-1e82;
-	Mon, 30 Jun 2025 18:22:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=rMkTHKD3jio2hpq8BtE0DToF1CwksemxWLN6Z8dMYEk=; b=mUz7NqgffV0rYPh3ZnLwvJkEpu
-	0J0LuhLwsePTDDo35/na7mHRt9ZIwvrSorQoLAIw8OacoMDEuj3HUm8PBstW43g/LDeaDB+DwmIrU
-	Jhx2Hr4BHJ2TtYRHPyqk8TOH86aK6tBMHiWP1z1bekinaaaB8iZh67Rp3UJg3WWd06qilocV9f5Nk
-	cRnxWgodAByFMsIyf0oQb1w9GbGtiLss3+OU1usksRezvb4Mxxm890rnCJVG2g8VUELO++F6Se4D5
-	ZlnmNbIAvUXpR9fQjZmf7Yg5CuS+UwPUqDbwxID/vt8yfxTkjKKa4OLH97c2Qj8SPwnWzBNix5ynG
-	mmNa7j/A==;
-Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWJ98-00000006rIf-1pYh;
-	Mon, 30 Jun 2025 18:22:28 +0000
-Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-700fee04941so16189756d6.1;
-        Mon, 30 Jun 2025 11:22:25 -0700 (PDT)
+	id 1uWJ88-00000003BZI-1wGl;
+	Mon, 30 Jun 2025 18:21:25 +0000
+Received: by mail-qt1-x829.google.com with SMTP id d75a77b69052e-4a77ffcb795so48639911cf.0;
+        Mon, 30 Jun 2025 11:21:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751307744; x=1751912544; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=rMkTHKD3jio2hpq8BtE0DToF1CwksemxWLN6Z8dMYEk=;
-        b=V7v7wMwphrsIT8Rj/6jaXligTaOt/zIBNKM+Xkmf8B5ZEX8XDPVnFhL+mpv8FS9ZlS
-         I6kjK9M8VqzP+VJGi/VUP9uYpALdbnZeMG2TPy4URy+4bgneUJLoS6tZ0H7fcX/NmrNg
-         A14gozA2kYOGgimxHO/bQMKI0ldqp+GZjybv50TjU2j8+nQQTF7qzsRg594ZZUUUWn0Q
-         uujotyh+CtHJqURW7XDoWCNboBzh7YjmfvcenOjThPJ9PaKRBtyoVoDzIm9g2QM8kgIG
-         Gb8pa7/HvJEH7cVM/Lr+Cco0OxsLnfjKiGoQGQcHVcILNB3tf5cFtRWs1htbJ1hqx99h
-         XHVg==
+        d=gmail.com; s=20230601; t=1751307683; x=1751912483; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=j5oPe7NuWEBlVMssFfuoeeybtC7f7CEpTOJiXlRikAU=;
+        b=mIcWtAj1U4Y9LujxLZTI1V4CwrVVxkxWeB9Wxq6Xzzc1GoHukV7Yu/c5kRc12zcXsb
+         UecSE9RwoS41clmdH9cA7t5Vg0EqJE6Mv5tA1pygqFfTdulQaAtSobM0eAyPh+syyk5P
+         hJRyqNcC9RCyg/YQ6SatM3wTl/ZE9qZrawUnNja1srdDLIkcdfZxSyzVj1LkpfzckmZb
+         BgatZFVt+iTz1A81lD/lngSz+wfP3B+vlS0kDraSl6Z0gIsEqmzfkB1XRD9BMykOtTMg
+         fktWr8cHjEPOqShkwHrufmktypLixWFNMEDcQVR351+1dzBsrazd2GsqWJebNMBvXY7V
+         JYew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751307744; x=1751912544;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rMkTHKD3jio2hpq8BtE0DToF1CwksemxWLN6Z8dMYEk=;
-        b=tKM2O8O7Q6Slg7O0gAb75AUsMmM9hzy/AlXMFvQRR/AzeZNLp0VMUKGprqTNrmrLLi
-         5U54gd0jFm+w2sx6cv6q4sMaamAsmnnzaP4/ChcArswU7mPt0FFD/EizWK/4X2vlMTCs
-         at/EJ7hcpFlBM6+1GzmDHXvdO+EDGZZB77O9aEdSX0xwyrhVLjehm0dO386pwf8Bf9Z0
-         l7rPkVXs6xNEoZomqbE27ow2N63AwQFv9It1xy0Ek3A0SGNytw/qx+d6t1AfE84iJhBi
-         YmqGZ0JPQslGbVjDOhXutOqUrgXSWmhgEa7yxdcYS8aoDGygaPLys/3+/sEBdjZ37rY0
-         bQyg==
-X-Forwarded-Encrypted: i=1; AJvYcCWcjqDFyyDntQiOCDsiYEPsb+FH9TaZ4pcVNAMq8mlhS8+JmTRRAohOqE2nZ1RXhs/mTDDpOHMhhnfk@lists.infradead.org, AJvYcCXDH51P2YMsbdipCVvaz8WOCGDjPDFDduZU4vnUR4Da6W1CdOCkfjfbdIQR3qQPdXBSMDoSq/oevDa4uIIaXCcS@lists.infradead.org
-X-Gm-Message-State: AOJu0YzvlAai94ygY01GYOP26+BPNM4sZhtZ2nGQtFpw7zZEPHcXGDUN
-	sUcUsgZq3sBFlgvRzwVvDxT39a6GGswtkAEOfojzEKMLKijbfXTx78cGz9eVQaQK
-X-Gm-Gg: ASbGnctUTRB6lfXRNThDNH/iXFRzyNuAOYGQ4qwaHEFDZA7B5f373SLx5VJf3pizIGt
-	5Dj2hkJBHwaVD7sAiKA8EXoXPelA80paNMzNVOfi/x1Fh5lqfrgjR6bgmxjmd91fAoYPqo20cWm
-	3NwpFcgqZ2FK/eFb6HAsxsWfHiOpYRjcLbaoSgRLnpP6OqsBXuxRfDRoDD2t1ZFGv1bPojwgpAb
-	Cm+RjKsKCCnK2ZirLj9p19aIqMZE6GIC8jHG3v52xIRkOBJ6gKbjuz4wY6G0i0U2Z++YlZyeMdp
-	bSK/Nf5BB/Q9JNbuwbXyQhMZBWBX9uV3v1zTHM3RT7zo27k0eaZTvY2Jvq0p
-X-Google-Smtp-Source: AGHT+IGiwj5LxtClCIDG815VfHCCgo1NQzaiahcgS1gasNLfX8v0zIb2JwxXV6ze0QIzIZrdOwwtAQ==
-X-Received: by 2002:a05:6214:468b:b0:6fc:ff41:8eb7 with SMTP id 6a1803df08f44-700035b783bmr287653906d6.31.1751307744228;
-        Mon, 30 Jun 2025 11:22:24 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1751307683; x=1751912483;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=j5oPe7NuWEBlVMssFfuoeeybtC7f7CEpTOJiXlRikAU=;
+        b=mYVXyscb8y5jLs4esSQ1Dryn5SW4gy9uTkceQJjcO4BaEJr0qOTnaMH+TuY0dhrxXr
+         w057Ksc9wF0hb0zdm6OmM4MlpVaJY/enLaPcKDoDl9cFiD8MNT6qrhySWbjYjQRGrvDs
+         BQ/Cb34wZL0YN8HreLsRbmaOIegqLFqBiTvVyx4Gazk5FrQbkY2JLJWBl04Xm+9mz93r
+         ccLG89QeZ9E5jEH0fa9SeFeGOtjiLwNkVlBkUMxD5ARgvWWt9xy23VwHQc4wlCIZgrab
+         CUygYjCX/r/OeylLpzyOVyD97KdRPwEXm+ciNA92cnWTJW7Gc6UHO9neo8h4eWyYv9Rn
+         gbSQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVp5gK5+chr9GpBDr8nacBJUiTKm+/Ct/Xo79eTDwyEagryuBxpQjxvQX4QTBV/fYQRfcTQt39eklgZ@lists.infradead.org, AJvYcCXFTCie6Bq3IentLyFziyt4HHzKMOklRnAxLgbWW1GIPXJ5m+gfz+XdDlghMHlHxYheIOcZKZqVB2tyWvuQyZdv@lists.infradead.org
+X-Gm-Message-State: AOJu0YyjKnASrxq5Sm7SH/gJVj0KMJA6l191u5SLwbztPVBA8C1DDbKH
+	l4h4rkhe707Mie2v2jktr9kkton3CZshn67Ry4hlhYZ/7vNOVjdVNUR8YlwE6Wl9
+X-Gm-Gg: ASbGnct+h5MP7IsR5SKBfp+ovOaNWwgj8K/FvDqhg7LaIQ1WadS8IWRbWl9WoV213is
+	5irIIao8NGVH3CvMswJxsOtwb/hqKBPEngqbuc6VT3hjlF7Tomj10tKlplKmtpHus7locK6s/X1
+	TRmsPaF9Ux8C4aqU7xY839CrZcsNMQsg6uW8w2JDViX5hWPitcKr1e2M/mtONeI2CbmdefkpK4c
+	9ivTTf55aqJPfWEzf21VL+we4RwWCYKAqHisIL9suDYrmeQy3mdYPGIvtluCqZit33ZUATfho/Q
+	plPkg+bs6t8ERg8VeC5qv+gPr4M69PnOJZpBSn9XgrRFn45nkw==
+X-Google-Smtp-Source: AGHT+IFsXJjoVwUXm0fcOFhLVNqsYO/moCefhcFNV46+xG5upfucPDlS2Uf2IOjWztKAdTp7b2Jfhg==
+X-Received: by 2002:a05:622a:1355:b0:4a4:4af2:5cff with SMTP id d75a77b69052e-4a7fc9d4f7amr238186611cf.3.1751307682697;
+        Mon, 30 Jun 2025 11:21:22 -0700 (PDT)
 Received: from geday ([2804:7f2:800b:4851::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6fd771bc01bsm70953466d6.40.2025.06.30.11.22.19
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4a7fc5cd906sm62801131cf.79.2025.06.30.11.21.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Jun 2025 11:22:23 -0700 (PDT)
-Date: Mon, 30 Jun 2025 15:22:17 -0300
+        Mon, 30 Jun 2025 11:21:22 -0700 (PDT)
+Date: Mon, 30 Jun 2025 15:21:06 -0300
 From: Geraldo Nascimento <geraldogabriel@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: Shawn Lin <shawn.lin@rock-chips.com>,
@@ -95,16 +80,14 @@ Cc: Shawn Lin <shawn.lin@rock-chips.com>,
 	Valmantas Paliksa <walmis@gmail.com>, linux-phy@lists.infradead.org,
 	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v8 4/4] phy: rockchip-pcie: Properly disable TEST_WRITE
- strobe signal
-Message-ID: <ec6557ed50171594de5297d46dd5e2c96c2459a4.1751307390.git.geraldogabriel@gmail.com>
-References: <cover.1751307390.git.geraldogabriel@gmail.com>
+Subject: [PATCH v8 0/4] PCI: rockchip: Improve driver quality
+Message-ID: <cover.1751307390.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <cover.1751307390.git.geraldogabriel@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_192226_605407_498B7F95 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20250630_112124_500891_1B291651 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,33 +104,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-pcie_conf is used to touch TEST_WRITE strobe signal. This signal should
-be enabled, a little time waited, and then disabled. Current code clearly
-was copy-pasted and never disables the strobe signal. Adjust the define.
-While at it, remove PHY_CFG_RD_MASK which has been unused since
-64cdc0360811 ("phy: rockchip-pcie: remove unused phy_rd_cfg function").
+During a 30-day debugging-run fighting quirky PCIe devices on RK3399
+some quality improvements began to take form and after feedback from
+community they reached more polished state.
 
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
-Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
+This will ensure maximum chance of retraining to 5.0GT/s, on all four
+lanes and fix async strobe TEST_WRITE disablement. On top of this,
+standard PCIe defines are now used to reference registers from offset
+at Capabilities Register.
+
+Unfortunately, it seems Rockchip-IP PCIe is unable to handle 16-bit
+register writes and there's risk of corrupting state of RW1C registers,
+an issue raised by Bjorn Helgaas. There's little I could do to fix that,
+so on this issue the situation remains the same.
+
 ---
- drivers/phy/rockchip/phy-rockchip-pcie.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+V7 -> V8: add Valmantas Paliksa Signed-off-by to third patch
+V6 -> V7: drop RFC tag as per Heiko Stuebner's reminder, update cover
+letter
+V5 -> V6: reflow to 75 cols, use 5.0GTs instead of Gen2 nomenclature,
+clarify strobe write adjustment and remove PHY_CFG_RD_MASK
+V4 -> V5: fix build failure, reflow commit messages and also convert
+registers for EP operation, all suggested by Ilpo
+V3 -> V4: fix setting-up of TLS in Link Control and Status Register 2,
+also adjust commit titles
+V2 -> V3: correctly clean-up with standard PCIe defines as per Bjorn's
+suggestion
+V1 -> V2: use standard PCIe defines as suggested by Bjorn
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
-index f22ffb41cdc2..4e2dfd01adf2 100644
---- a/drivers/phy/rockchip/phy-rockchip-pcie.c
-+++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
-@@ -30,9 +30,8 @@
- #define PHY_CFG_ADDR_SHIFT    1
- #define PHY_CFG_DATA_MASK     0xf
- #define PHY_CFG_ADDR_MASK     0x3f
--#define PHY_CFG_RD_MASK       0x3ff
- #define PHY_CFG_WR_ENABLE     1
--#define PHY_CFG_WR_DISABLE    1
-+#define PHY_CFG_WR_DISABLE    0
- #define PHY_CFG_WR_SHIFT      0
- #define PHY_CFG_WR_MASK       1
- #define PHY_CFG_PLL_LOCK      0x10
+Geraldo Nascimento (4):
+  PCI: rockchip: Use standard PCIe defines
+  PCI: rockchip: Set Target Link Speed before retraining
+  phy: rockchip-pcie: Enable all four lanes if required
+  phy: rockchip-pcie: Properly disable TEST_WRITE strobe signal
+
+ drivers/pci/controller/pcie-rockchip-ep.c   |  4 +-
+ drivers/pci/controller/pcie-rockchip-host.c | 48 +++++++++++----------
+ drivers/pci/controller/pcie-rockchip.h      | 12 +-----
+ drivers/phy/rockchip/phy-rockchip-pcie.c    | 15 +++----
+ 4 files changed, 36 insertions(+), 43 deletions(-)
+
 -- 
 2.49.0
 
