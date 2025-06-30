@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07D55C8302D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 10:38:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFAB3C8302D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 10:40:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QS4wdxHESwv6dZJlcutGFjBIlpBFce5s5fcWhaT0Wm4=; b=0FcIBxebI6rew8
-	REoNdA8v46g17MhpvBOB3E07cCLV2k0fN34DQIGT6RqShlGwj2hk9J/4xvkIzVf89zbMydqxYT9fC
-	GSLHTIVS5OsAud5AXAcu1uumqfdSIPej4BZ+EhXzF0aNlIMbj+ozENEbSXEP5v5XJbewi3SjreBUm
-	ZODUCIk3klWchFfPFPZdQy3debhKWg9jPBAh9u2GUfdQUgwj7IRSdciYUrGLZUdEZIw+5KHEYMKBj
-	zCzC0KxEbxLxeVoR5cM8e30KYC+0Ftp+1Z2nbwMLfO6h6gVuAmYAldCqP1js81YBXJU83Zx9ui4vq
-	8a4sNRu31rJbOnZR1DTw==;
+	List-Owner; bh=tkUiEqZhVvFxno7l/XHyuEIQbJlsz8g+cUDnCyqVZjQ=; b=YGEnAUKFLS6WlC
+	p+iGs2W4S6cDISXt2XCyJYHb49ENh6cH8aTFOwQcOtb6vRTwAew6hmsl/J2LdwtD+i4hyFLS0N+bb
+	RqZz0Kj05QVFnKu3Z8/yopi8+jLav/D28jiSIhZtX2UWPdRQgpmRveiQj+5IMBkdtyTU79+xPaZ+r
+	wk1Gf9ZV1cUh+rN1RFrAdJz8h9wmCfTCHU7K9a8+Vtv4y3ue6BFZVBIFIZfC3y1yhe/DiJ9oFQ3Ar
+	zvD+bpVx5BrIDilsPgTVz9BPfmWqqBLqJhTCA3Yw7S0TnNlfJvT2NKr514hOpGwgJHmCHavPUrGOb
+	3GtYjtUbkkQX7qJukv7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWBu7-00000001uUv-0kPC;
-	Mon, 30 Jun 2025 10:38:27 +0000
+	id 1uWBwP-00000001uwM-1Hab;
+	Mon, 30 Jun 2025 10:40:49 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWBc5-00000001rrb-4BD8;
-	Mon, 30 Jun 2025 10:19:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1751278776; cv=none; 
+	id 1uWBc8-00000001rs6-0qmd;
+	Mon, 30 Jun 2025 10:19:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1751278780; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=UenH2PSwuBcCB0VSc0tN7EZqkcRncrF0BlEgwCF+98x3a2QZvtPfHafdjPmS0npBh0rdxF2slFXtsonSe3J+xjU/ES0LuJtnViVuiU+ZraEeQQc4yfy8T1bavVqwtPyYCDsrajgLf/TjBUO0HEJBZ/KJNMaF/pCKc6O7WPJKicE=
+	b=jROBuHf0xcyCm8EJp0YEPAO+1wuYvGA9BllRQAAUkju9dEqdDp+Y7iqHrhFGZ3tSTrirfTL9tkOUeJiaXHcahDeCqtDRU5Nw5b+POayxdC4em5heAPSG9Nc9HC27MHuzPtZLe5LLw7tnic5QeI4ehOQVXizfFO1Z49sJH+yU1Fc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1751278776; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=6PpIVd/iyvJzOX8nF42c2ZQhA/JbIIXEjxLRd183mMY=; 
-	b=T1ET82UWFUv5RWR6gcdxiXnuqnbJXS0i7ydKBYv4u2Yr8iPH1VYOd8CZwX4uzD2DXZzKFrnRckm6V1kjhk/eghCWfnhfN6RrQesArjh4O3uMcXMZJNGS7PFBjr2fD2rv05W6dUck4dZz1Z6ooSENh1YBR0NUyenfHzp/88rZbUM=
+	t=1751278780; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=WFu69/QqOwnD97nGaVd7ct9S+S2KCBb9pcd5mzHtYXU=; 
+	b=IdPK/3CstqL1VXykLEs1XNKwqW+rvCR1HCXkFSecOUhJrInAs8oJr4Gpj0NJAag3/ia+vz4938QQfs/Uw6I7Bx8JTYs71GBsWNdgiae6b+WAGkjHGBPxiOhYnexT3hBUEA5uNeuwngNQSNeqDwof0Bm0r93aGKdR/+a3M+7GgUU=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1751278776;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1751278780;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=6PpIVd/iyvJzOX8nF42c2ZQhA/JbIIXEjxLRd183mMY=;
-	b=f5CowVq/qV4oeWU9rr+BLMx+h7M6sWL+uKZOpIB+9YjpaaLW8Ye/kNtQn/YHEYSB
-	AiiNmHxJHZ+VQgyqqJo6rn8SbQLwLn3LOAwcpo94KVcSruABG2tP9PIIsYdbAcTW1iK
-	4yWnAoFepGgA7zFkOlfSfXiek/wMfzQseQR/L+wA=
-Received: by mx.zohomail.com with SMTPS id 1751278774601621.415894842219;
-	Mon, 30 Jun 2025 03:19:34 -0700 (PDT)
+	bh=WFu69/QqOwnD97nGaVd7ct9S+S2KCBb9pcd5mzHtYXU=;
+	b=QWENp+4+IXgftLgYRZiqAOgSZ3OgoNfMGaioQ8KyiFl5u5OC9QYfICWpNR/acv0i
+	rmmESTZ9QacXO9I717FwdAuaydQXLA9hW1rNZ40VlfhiXkmJUKV9R1S5bfFTOkfWJf6
+	Aah1b/NA168jbH/JCokQ0M5mrKmwhu03nhFYg1Po=
+Received: by mx.zohomail.com with SMTPS id 1751278778027201.13477834233447;
+	Mon, 30 Jun 2025 03:19:38 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 30 Jun 2025 12:19:24 +0200
-Subject: [PATCH 1/4] dt-bindings: input: adc-keys: allow linux,input-type
- property
+Date: Mon, 30 Jun 2025 12:19:25 +0200
+Subject: [PATCH 2/4] Input: adc-keys - support types that aren't just
+ keyboard keys
 MIME-Version: 1.0
-Message-Id: <20250630-rock4d-audio-v1-1-0b3c8e8fda9c@collabora.com>
+Message-Id: <20250630-rock4d-audio-v1-2-0b3c8e8fda9c@collabora.com>
 References: <20250630-rock4d-audio-v1-0-0b3c8e8fda9c@collabora.com>
 In-Reply-To: <20250630-rock4d-audio-v1-0-0b3c8e8fda9c@collabora.com>
 To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
@@ -61,9 +61,8 @@ To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
  Heiko Stuebner <heiko@sntech.de>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_031950_099903_3C506D67 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250630_031952_307847_1AF6F0DF 
+X-CRM114-Status: GOOD (  15.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,31 +80,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-adc-keys, unlike gpio-keys, does not allow linux,input-type as a valid
-property. This makes it impossible to model devices that have ADC inputs
-that should generate switch events.
+Instead of doing something like what gpio-keys is doing, adc-keys
+hardcodes that all keycodes must be of type EV_KEY.
 
-Add the property to the binding with the same default as gpio-keys.
+This limits the usefulness of adc-keys, and overcomplicates the code
+with manual bit-setting logic.
+
+Instead, refactor the code to read the linux,input-type fwnode property,
+and get rid of the custom bit setting logic, replacing it with
+input_set_capability instead. input_report_key is replaced with
+input_event, which allows us to explicitly pass the type.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- Documentation/devicetree/bindings/input/adc-keys.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/input/keyboard/adc-keys.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/input/adc-keys.yaml b/Documentation/devicetree/bindings/input/adc-keys.yaml
-index 7aa078dead37816294732501e1983ab869f38311..e372ebc23d1651d73ef3749a56d54872067037b5 100644
---- a/Documentation/devicetree/bindings/input/adc-keys.yaml
-+++ b/Documentation/devicetree/bindings/input/adc-keys.yaml
-@@ -42,6 +42,9 @@ patternProperties:
+diff --git a/drivers/input/keyboard/adc-keys.c b/drivers/input/keyboard/adc-keys.c
+index f1753207429db02ce6510e5ec0da9b24d9edb61d..339dd4d4a0842108da2c6136b1e0098cd1f6a3cd 100644
+--- a/drivers/input/keyboard/adc-keys.c
++++ b/drivers/input/keyboard/adc-keys.c
+@@ -19,12 +19,14 @@
+ struct adc_keys_button {
+ 	u32 voltage;
+ 	u32 keycode;
++	u32 type;
+ };
  
-       linux,code: true
+ struct adc_keys_state {
+ 	struct iio_channel *channel;
+ 	u32 num_keys;
+ 	u32 last_key;
++	u32 last_type;
+ 	u32 keyup_voltage;
+ 	const struct adc_keys_button *map;
+ };
+@@ -35,6 +37,7 @@ static void adc_keys_poll(struct input_dev *input)
+ 	int i, value, ret;
+ 	u32 diff, closest = 0xffffffff;
+ 	int keycode = 0;
++	u32 type = EV_KEY;
  
-+      linux,input-type:
-+        default: 1  # EV_KEY
+ 	ret = iio_read_channel_processed(st->channel, &value);
+ 	if (unlikely(ret < 0)) {
+@@ -46,6 +49,7 @@ static void adc_keys_poll(struct input_dev *input)
+ 			if (diff < closest) {
+ 				closest = diff;
+ 				keycode = st->map[i].keycode;
++				type = st->map[i].type;
+ 			}
+ 		}
+ 	}
+@@ -54,13 +58,14 @@ static void adc_keys_poll(struct input_dev *input)
+ 		keycode = 0;
+ 
+ 	if (st->last_key && st->last_key != keycode)
+-		input_report_key(input, st->last_key, 0);
++		input_event(input, st->last_type, st->last_key, 0);
+ 
+ 	if (keycode)
+-		input_report_key(input, keycode, 1);
++		input_event(input, type, keycode, 1);
+ 
+ 	input_sync(input);
+ 	st->last_key = keycode;
++	st->last_type = type;
+ }
+ 
+ static int adc_keys_load_keymap(struct device *dev, struct adc_keys_state *st)
+@@ -93,6 +98,10 @@ static int adc_keys_load_keymap(struct device *dev, struct adc_keys_state *st)
+ 			return -EINVAL;
+ 		}
+ 
++		if (fwnode_property_read_u32(child, "linux,input-type",
++					     &map[i].type))
++			map[i].type = EV_KEY;
 +
-       press-threshold-microvolt:
-         description:
-           Voltage above or equal to which this key is considered pressed. No
+ 		i++;
+ 	}
+ 
+@@ -156,9 +165,8 @@ static int adc_keys_probe(struct platform_device *pdev)
+ 	input->id.product = 0x0001;
+ 	input->id.version = 0x0100;
+ 
+-	__set_bit(EV_KEY, input->evbit);
+ 	for (i = 0; i < st->num_keys; i++)
+-		__set_bit(st->map[i].keycode, input->keybit);
++		input_set_capability(input, st->map[i].type, st->map[i].keycode);
+ 
+ 	if (device_property_read_bool(dev, "autorepeat"))
+ 		__set_bit(EV_REP, input->evbit);
 
 -- 
 2.50.0
