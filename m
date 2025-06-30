@@ -4,64 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A895C8302D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 09:18:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED4F5C8302D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Jun 2025 09:23:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PckBi0Wcjzad0Su650GmzG3GVsjnWIqypxNrrJXNovY=; b=LIL0KnQAk8vn//
-	51M9N1WIfEl9i8+9Vg9l06k6gyU2yT0VY9Wph/Is5n8b5oE6JqsM2znsO3Tb9zWgzqHfC0r8MzKiT
-	71OBsS3j3CVZhqc4iJysKVxfZCLjTiNw4HaD7qRK8Shp8YYVzZF66j3PZWARLIa5p0zcaAydRBffj
-	GKnppC99WUR7T/7GrfJKaaA50WEEAtTumzQAD+63KOrZS1fnfV288Kd38JgR1wQMAhn3QoQOf8MyB
-	JpTfqeYRh47n94eWOXd3oUP/ZT0a1LBxxv/eYwRjBK80NIOXEADVcK2SgkvLPlhGVPetNQUDrhg9o
-	47sgOTyPbb9O2aJvMXeg==;
+	List-Owner; bh=VgQDVmiv9bcfrRUQEA26BAU4M4xAXhdddLxgk1rKOuI=; b=opPyFcGjXafLFr
+	pe16PkjjtWGavnhxUQKCwuRZySWWZwCfhbN4RFj1SlAN5gCJqjFjznw3ltXVZohQpolK+tPKRzLI6
+	mPkOax+F7GPcn/Jzc4EF+R3ZOJeSpIhWjX+kjmjx979rGP0LCPNlk8N8C8t5luQwFe3jeyjXySIq3
+	Wt30K6xBAmE1Cmm6WIq3g37OdGfiOxIP6Sjm9hnqwqy++9nIdFijSNQd8Zbh8ANN5QniFbbaN4yet
+	V7otas5vVGKkXF7FP+2S5IiSBiXxl21/Dk6wrU6w/IvCIGj5sUxCMfz8JGvnmfieP7Jgdmt7Y7BzO
+	W5bKJ2uZX3j1OB7WENPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWAf3-00000001jUq-0JF8;
-	Mon, 30 Jun 2025 09:18:49 +0000
+	id 1uWAjb-00000001k8j-3toT;
+	Mon, 30 Jun 2025 09:23:31 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWAYI-00000001ib7-1vPy;
-	Mon, 30 Jun 2025 09:11:51 +0000
+	id 1uWAbX-00000001j1F-2CbM;
+	Mon, 30 Jun 2025 09:15:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=HwVUTZQKNW/ggCzjg2eCwPTwxdG9ZX3n70WlY3ZOPic=; b=zZQE1uvMxW9DStbgQ/xyA8KycJ
-	8shhjMFRqsUso4UxhsrduIqFI7km7seVGEU9T6S/GFGnOlUwztGpYunCXRk0/wnhQiUlaMmd4VubS
-	JuMG2+3fWWzrvkvqWeZJ0qOoXvjCxw87S62mkW+g06k3bIBzeSvm4Dh9wwaoe6cWdKlgQWD3/O++B
-	1OEHuY7BmkIjIhu07t1/+d5AaUCES3+e/6DDaf+oPDB1IH4OwDIOX0XxmN17HX9m3WI/md+WBxq2B
-	2f8Nsq5rjca7OHUzRAYoxdI1clRMFiKwyrU9l4IZaMd0M+9YXFC25F/5wbB4TWkYAaulGp5CupRat
-	n/YgmUWg==;
+	bh=+fqpA/Lpac9+JlswIBpsVSCZtAGmxs1CgIvPDGfFS84=; b=p+mVLfZ6Sbj4jjBCwKAaXU3Eh1
+	BQ99XI07HJ0uWwEVHEhluIiblIYNyzteiu1sClMHdiViQuFQv9vaL+EHhkDWTefKVtNq7H9Kv/DwN
+	WrvFu7bkHcLzdUQ5FeJRWha2fWeH3X38S+6GSE/7Ey7ZUcqB3n/xlMv38L5tlPqUTsgFLLnTy7ENu
+	9Riljpgx4CyvPsr9fYiTfOOc98BULHfeQ4F6W8vDaCuJ88QY/YuuTtCuvjmIa2XEaLx6zUBOtnAwB
+	VhYe/9iU26D7U0XmPloUlvO575XgXzYLPEzaJxXN8SopKWtsSPrBb0EoJZSHWVCMJdtvwFYyi4NDE
+	Qa3cWGnw==;
 Received: from i53875bfd.versanet.de ([83.135.91.253] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uWAY5-00065C-15; Mon, 30 Jun 2025 11:11:37 +0200
+	id 1uWAbC-00068L-5E; Mon, 30 Jun 2025 11:14:50 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
+To: Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Diederik de Haas <didi.debian@cknow.org>
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Johan Jonker <jbx6244@gmail.com>,
+	kernel@collabora.com,
+	Andy Yan <andyshrk@163.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	dri-devel@lists.freedesktop.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Add missing fan-supply to rk3566-quartz64-a
-Date: Mon, 30 Jun 2025 11:11:24 +0200
-Message-ID: <175127468078.130313.6730196931400503235.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: Re: (subset) [PATCH 0/3] arm64: dts: rockchip: Fix HDMI output on RK3576
+Date: Mon, 30 Jun 2025 11:14:38 +0200
+Message-ID: <175127486757.133006.13048263625888495346.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250628142843.839150-1-didi.debian@cknow.org>
-References: <20250628142843.839150-1-didi.debian@cknow.org>
+In-Reply-To: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
+References: <20250612-rk3576-hdmitx-fix-v1-0-4b11007d8675@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_021150_495023_895F552F 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20250630_021511_568698_0CEEC271 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,20 +89,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 28 Jun 2025 16:28:18 +0200, Diederik de Haas wrote:
-> The Quartz 64 Model-A Schematic from 20210427 on page 7 shows that the
-> fan's power supply is provided by VCC12V_DCIN.
+On Thu, 12 Jun 2025 00:47:46 +0300, Cristian Ciocaltea wrote:
+> Since commit c871a311edf0 ("phy: rockchip: samsung-hdptx: Setup TMDS
+> char rate via phy_configure_opts_hdmi"), the workaround of passing the
+> PHY rate from DW HDMI QP bridge driver via phy_set_bus_width() became
+> partially broken, unless the rate adjustment is done as with RK3588,
+> i.e. by CCF from VOP2.
 > 
-> This fixes the following warning:
-> 
->   gpio-fan gpio_fan: supply fan not found, using dummy regulator
+> Attempting to fix this up at PHY level would not only introduce
+> additional hacks, but it would also fail to adequately resolve the
+> display issues that are a consequence of the system CRU limitations.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Add missing fan-supply to rk3566-quartz64-a
-      commit: 9037532ab893635a46afe88542cd747a4a846497
+[1/3] dt-bindings: display: vop2: Add optional PLL clock property for rk3576
+      commit: 3832dc42aed9b047ccecebf5917d008bd2dac940
 
 Best regards,
 -- 
