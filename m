@@ -4,76 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75FE0C87FD1
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CD8BC87FCB
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fDzOltS8Grfhw8EzLpuXFIc0T6HF8ZELv/c6e9jSFt4=; b=FRrDmrG3uRn3SM
-	COqExaqOJeUFmcz5VVpCktZa7fMIq4soA3W5jPcckow9XVRiuavb//IfNbqFswJp4KPBC+B04weKJ
-	MK1+rgOHO3Dktx2B7owuXTbPjnSMNlYl6u0rOi/6Xu1J4kOWS+qsQgE5dwRJik5aGPop7JsF5oBZu
-	VBbUUhXJKXCglk9S30fscHv5mh5rgoe5Xq0DOEasKh+mqV8mGBW/nm6GiGzlhIwaT2gANDUao8pQ5
-	HDdd1u9TKeS/qX7Bh/jp1092rAGuWC/3l0TVietw/FBkIcOiKI4sHtx7SygNXHk7Rytt+DoZGS/QP
-	CskN2tv+KyBg7m83qawA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EziijckFFT37Licm0IAOSM4ggaN61b9UvDFf1pvTM38=; b=v1Claxd6k8g7jg
+	LRxjoaPUAnY2AfsACO9IbkmG/hBACeVoF9Y0M6PYyRUbgjv9I0bzsEt/7yK21OGKOgrGnk/iE7fni
+	9o6mfrGTPaocrBf8Fx1YltuuEQKVq/Eavz97JZ6Gowrr502eO/uB+fG5lDgnZpGcHkDjCPD5xXvqv
+	40Ey3CGz5VSQRWFthgSgJGfDHu1dh9L94adifi9ZbWrddPtgV8w/HMiqAL0OkdR6fMJl1NvltL9WJ
+	bAHg0D8GVZLMIZhXP5XdPeqABLQdMYzlN1IUnBSi0RuogTJVOAxHrS1NgI3d8+F+c4TajaEmo/Mqs
+	CGtwIgX0AA2HMIY2M32g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujbc9-0000000EviI-0GpV;
-	Wed, 06 Aug 2025 10:43:21 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpenh-00000006pa5-30tY;
-	Wed, 05 Mar 2025 02:48:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Message-ID:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=VFHlaOkps4gELsNG93bMey9hkOJsRA3mqrGKinS7NNw=; b=fDhPnK7lUBS349Jpa5huRZ5gfv
-	C0LhkdKwQ6/dmNbaYhplyryS2YGMJlkq1oJ4cSOqKZsbukDnqywKUdRUVcOPPkgVKgspF65FVJ4iu
-	lhgxT705ukZcZ3S/Zxsi8Uq7flzuJcf6sxWJpjNqVbpr9uJQAH3qs34R4ZbhY7ZVZ3fXaWZ0rf3Ri
-	o5Q1LkcAcKqFJF7HxBMdJWMh6EJR7gfEuXwDPWCoOu8e74/1dsR/8bo4r8Ux5S6iW52+sWCEFsl4y
-	PhBZ1wJuaV5ldb46je6GvqpdhFHHNeMu/5VGIQGhi/k77BPC0DnlET8lHskQJ9xdQewhQzo4XAefH
-	SGJaCTag==;
-Received: from m16.mail.163.com ([220.197.31.5])
-	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tpenc-00000000KN2-0gCb;
-	Wed, 05 Mar 2025 02:48:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=UOhnFF01l7HOjYg5x6uMcW+B9fbrcWjnbUnMIBSb6g4=; b=o
-	TDXhF0ao8rGr8j8jqZSvZyPwCn4bRtMbMUqolB3b0d33NLVtg8Do+zE4hoqyKSPc
-	zOJuUqn0UDL/56pNMjEk7XWHy1TvHLbfex2UCxGVCdwMmtrpxuop+RhsFVrPw0Fo
-	ipgMP4wcY2oyQyyBZFmm/QVjGPIMLLCZxeuxv5CPHg=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-118 (Coremail) ; Wed, 5 Mar 2025 10:30:55 +0800 (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Wed, 5 Mar 2025 10:30:55 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Piotr Oniszczuk" <piotr.oniszczuk@gmail.com>
-Cc: heiko@sntech.de, neil.armstrong@linaro.org,
-	sebastian.reichel@collabora.com, devicetree@vger.kernel.org,
-	hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, yubing.zhang@rock-chips.com,
-	dri-devel@lists.freedesktop.org,
-	"Andy Yan" <andy.yan@rock-chips.com>, krzk+dt@kernel.org,
-	robh@kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re:Re: [PATCH 0/6] Add support for RK3588 DisplayPort Controller
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-X-NTES-SC: AL_Qu2fA/2fvkAu4yiaZukfmkcVgOw9UcO5v/Qk3oZXOJF8jDDp2ycwUUJSDXLaweO0FQ+OmgmGXTtC9/R7f4VTVaQNuZe6Rui3nVzOCdmFQHxStA==
+	id 1ujbcA-0000000EvkA-2OYz;
+	Wed, 06 Aug 2025 10:43:22 +0000
+Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uWcjK-00000005rIv-41uz
+	for linux-rockchip@lists.infradead.org;
+	Tue, 01 Jul 2025 15:17:09 +0000
+Received: by mail-oa1-x32.google.com with SMTP id 586e51a60fabf-2edec6c5511so1593390fac.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 01 Jul 2025 08:17:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1751383025; x=1751987825; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kto2WDWq8SXrCfQMl14bP+htdglCH2HfwzImspNOE2s=;
+        b=tFTXD12EL3sjW5iY7vNmcQuotBePn2TCf+cUQW64Gb70ZQIIpWd8oSEOd48POCxqjd
+         Ot+InkY1dEqDYqkcb9EOB+Xg6Akh5wciXxOlQ4ufarAUgWoYgvLvqM/zKH2QjCsZYJ9d
+         7PQ+o1CITfPfZoRi5ehtkYhXrJPYodfNyPAHoPcatKTF4JvfwMHat8tmdp8pEQh0VFKz
+         YgXBaHxRTlitXFqaHTk4xMU/DR/5YPxH+9v0za4cbUcqWJttkuOiVHAP3mEpnO2t9uPy
+         vDi+GScCQ8EL5k/+yJlf4uGhympo4QGBWcRkqg2rUsBnOqDQBUJ2B4CS/JKF8E2Y5v9C
+         P+IQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751383025; x=1751987825;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kto2WDWq8SXrCfQMl14bP+htdglCH2HfwzImspNOE2s=;
+        b=D2mPYPrspkdz19YQxjHSICuMihiay3qhuWHeRfAbfkfMokQ2t8kMY0Oy99CCedp67I
+         NqNTkYddMo25jF5+016I3KqGBoIWOBmuzZrBAHlPZA0fQt+U8tv4Zci90sOnRpHuOhLz
+         5bGBtrc5Var9iHBnNs6cFvqyXdzNK8xY35lWbop6ugRfExdg68epr6pYum1/jV8g0dW7
+         gitoUw3Zu1tFlrTTbTLG+V2sI3cp3H5qzHfj8Gp/jPWZGP0FBBS+fTXYPUIQpowP3hOj
+         j0fIcB+theW03HIwvvTXdnOXWZl6IRWosC8MPtXkonHYIs8unKqPDf+3Tt03zHErPMk8
+         rv5w==
+X-Forwarded-Encrypted: i=1; AJvYcCU0gLhf/KCr7EO1VXYgAjYsPPHuv84Wkj1dM1/pQbtk0y4txyguR2hIIu6qOZPcuMKYOGrW0rgCERH14l+J7w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxgahnY4gSqE/ljDbMaulsG8lwzMVQ5yVaqVuy75ajdCsJuNZ/4
+	aGDYn/S+qAcHdZtgKiAQJIBeRvu67S+pDoLyjY0hL3Y62lAPa228ENwBzaACDkJZydw=
+X-Gm-Gg: ASbGncuBgk7nSQ2wKUaQCO3KUYJwwLXaAQzqhWbZ8L0s2yLl9IpEC/4fco4DL85Fbv+
+	6udCL18kjyJiAjDCPQFF+MgYGGLEbCNOLhuwUvBDofrds9l9aYgLNUnWCJ/C68mGFkOkL5wpDs/
+	um/rBjbsDz6bILr/5NuLTPDz6WIH0GnzzUGLOgey4hB5v/+ap7BRw1zWnIKIn+mWJfKqkUYfsiw
+	tXeugTO0JBWDNwlVy0NqFkqNvM1kr1NDgbW8dZi2H9uPuK69/KsEXqa0nn1fGQcWG0y7JHYDx6/
+	sHgfj6OarA/L7XrWccyvuBTSdGSYj5iW/hKX7MthlaJ3AawMBBi6QyHk+3uDyEVuWritwO3vslo
+	jP4oo4TzlJdLlIUU5OLiVdbduSp/q93Nwt11FZhw=
+X-Google-Smtp-Source: AGHT+IGFKFZEsYZ4erbtAtqvl8tEHdHdyZFtcG8OKzWXPDqsQnJB5BtiKcEBEjaczDbwqY+Qnse9tA==
+X-Received: by 2002:a05:6871:82a:b0:2c7:6f57:3645 with SMTP id 586e51a60fabf-2efed67879emr12142176fac.18.1751383010329;
+        Tue, 01 Jul 2025 08:16:50 -0700 (PDT)
+Received: from ?IPV6:2600:8803:e7e4:1d00:70a7:ca49:a250:f1d5? ([2600:8803:e7e4:1d00:70a7:ca49:a250:f1d5])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-2efd50fb14esm3319606fac.42.2025.07.01.08.16.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 01 Jul 2025 08:16:49 -0700 (PDT)
+Message-ID: <3df2c424-297e-4538-b350-5c465b22fa39@baylibre.com>
+Date: Tue, 1 Jul 2025 10:16:47 -0500
 MIME-Version: 1.0
-Message-ID: <25401bfa.291d.19564244e54.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: digvCgD3Xw5ft8dn2jd2AA--.4215W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkAMHXmfHsp5IAwACsP
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
-X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
+To: Waqar Hameed <waqar.hameed@axis.com>,
+ Vignesh Raghavendra <vigneshr@ti.com>, Julien Panis <jpanis@baylibre.com>,
+ William Breathitt Gray <wbg@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski
+ <brgl@bgdev.pl>, Peter Rosin <peda@axentia.se>,
+ Jonathan Cameron <jic23@kernel.org>, =?UTF-8?Q?Nuno_S=C3=A1?=
+ <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
+ Cosmin Tanislav <cosmin.tanislav@analog.com>,
+ Lars-Peter Clausen <lars@metafoo.de>,
+ Michael Hennerich <Michael.Hennerich@analog.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matteo Martelli <matteomartelli3@gmail.com>, Heiko Stuebner
+ <heiko@sntech.de>, Francesco Dolcini <francesco@dolcini.it>,
+ =?UTF-8?Q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?=
+ <jpaulo.silvagoncalves@gmail.com>, Hugo Villeneuve
+ <hvilleneuve@dimonoff.com>, Subhajit Ghosh <subhajit.ghosh@tweaklogic.com>,
+ Mudit Sharma <muditsharma.info@gmail.com>,
+ Gerald Loacker <gerald.loacker@wolfvision.net>,
+ Song Qiang <songqiang1304521@gmail.com>, Crt Mori <cmo@melexis.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Karol Gugala <kgugala@antmicro.com>,
+ Mateusz Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>, Wei Fang <wei.fang@nxp.com>,
+ Clark Wang <xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Sebastian Reichel <sre@kernel.org>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Han Xu <han.xu@nxp.com>, Haibo Chen <haibo.chen@nxp.com>,
+ Yogesh Gaur <yogeshgaur.83@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Souradeep Chowdhury <quic_schowdhu@quicinc.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>
+Cc: kernel@axis.com, linux-iio@vger.kernel.org, linux-omap@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
+ linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-input@vger.kernel.org, linux-mmc@vger.kernel.org, imx@lists.linux.dev,
+ netdev@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-pwm@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-spi@vger.kernel.org, linux-scsi@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-usb@vger.kernel.org,
+ sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org
+References: <pnd7c0s6ji2.fsf@axis.com>
+Content-Language: en-US
+From: David Lechner <dlechner@baylibre.com>
+In-Reply-To: <pnd7c0s6ji2.fsf@axis.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250305_024757_301458_429E8488 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20250701_081707_025054_DF381762 
+X-CRM114-Status: GOOD (  17.92  )
 X-Mailman-Approved-At: Wed, 06 Aug 2025 03:42:49 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,34 +157,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhpIFBpb3RyLAoK5ZyoIDIwMjUtMDMtMDQgMjE6MTI6NTDvvIwiUGlvdHIgT25pc3pjenVrIiA8
-cGlvdHIub25pc3pjenVrQGdtYWlsLmNvbT4g5YaZ6YGT77yaCj4KPgo+PiBXaWFkb21vxZvEhyBu
-YXBpc2FuYSBwcnpleiBBbmR5IFlhbiA8YW5keXNocmtAMTYzLmNvbT4gdyBkbml1IDEgbWFyIDIw
-MjUsIG8gZ29kei4gMTM6MjQ6Cj4+IAo+PiAKPj4gSGkgUGlvdHIsCj4+IAo+Pj4gCj4+PiBpcyBp
-dCB3b3J0aCB0byBwbGF5IHdpdGggdGhpcyBvciBpdCBpcyB0b28gZWFybHk/Cj4+IAo+PiBJIHRo
-aW5rIHlvdSBjb3VsZCBnaXZlIGl0IGEgdHJ5IGlmIGl0IHVzaW5nIHRoZSBTdGFuZGFyZCBEUO+8
-iG5vbi1BTFQgbW9kZe+8iSBwb3J0IGZvciBvdXRwdXQuIAo+PiBTaW5jZSBJIGRvbid0IGN1cnJl
-bnRseSBoYXZlIGEgZGV2ZWxvcG1lbnQgYm9hcmQgd2l0aCBEUDEgb3V0cHV0IGF2YWlsYWJsZSwg
-SSBoYXZlbid0IGJlZW4KPj4gYWJsZSB0byB0ZXN0IGl0IHlldC4gQXMgZm9yIHRoZSBUeXBlLUMg
-QWx0ZXJuYXRlIE1vZGUgb3V0cHV0LCBzb21lIHBhdGNoZXMgYXJlIHN0aWxsIHJlcXVpcmVkIAo+
-PiBJJ2xsICBzZW5kIGl0IHdpdGggVjIgdG9tb3Jyb3cgb3IgbmV4dCB3ZWVrLgo+PiBGZWVsIGZy
-ZWUgdG8gbGV0IG1lIGtub3cgaWYgSWYgeW91IGVuY291bnRlciBhbnkgaXNzdWVz44CCCj4+IAo+
-Cj5BbmR5LAo+SSBhZGRlZCBkcDEgZW5hYmxlbWVudCBpbiByb2NrNSBpdHggbGlrZSB0aGlzOiBo
-dHRwczovL2dpc3QuZ2l0aHViLmNvbS93YXJwbWUvYmRkZjc1OTEyMTkzZjU3NzI0YzQ5MjE2ZDVk
-ODVkNGEKPlVuZm9ydHVuYXRlbHkgaXQgbm90IHdvcmtzLgo+Rm9yIC9zeXMva2VybmVsL2RlYnVn
-L2RyaS8wL3N0YXRlIC0gcGxzIHNlZSBhYm92ZSBsaW5r4oCmCj5J4oCZbSBub3Qgc3VyZTogZG8g
-aSBtaXNzZWQgc29tZXRoaW5nIGluIGR0IG9yIHJhdGhlciBpc3N1ZSBpc3N1ZSAgaXMgaW4gZHAg
-Y29kZS4uLgoKSSBvbmx5IHNlZSB0aGUgSERNSSBjb25uZWN0b3IgZnJvbSB5b3VyIGRyaS9zdGF0
-ZSA7IHNvIGl0IGFwcGVhcnMgdGhlIERQIGRyaXZlciBoYXNuJ3QgYmVlbiBzdWNjZXNzZnVsbHkK
-aW5pdGlhbGl6ZWTvvIhJIHRoaW5rIGtlcm5lbCBkbWVzZyBjYW4gdGVsbCB0aGF077yJLiAKSGF2
-ZSB5b3UgZW5hYmxlZCBDT05GSUdfUk9DS0NISVBfRFdfRFAgPyBUaGlzIGlzIG5lZWRlZC4KCgo+
-Cj5GWUk6IHNjaGVtYXRpYzogaHR0cHM6Ly9kbC5yYWR4YS5jb20vcm9jazUvNWl0eC92MTExMC9y
-YWR4YV9yb2NrXzVpdHhfdjExMTBfc2NoZW1hdGljLnBkZgo+Cj4KPgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 7/1/25 10:03 AM, Waqar Hameed wrote:
+> When `devm_add_action_or_reset()` fails, it is due to a failed memory
+> allocation and will thus return `-ENOMEM`. `dev_err_probe()` doesn't do
+> anything when error is `-ENOMEM`. Therefore, remove the useless call to
+> `dev_err_probe()` when `devm_add_action_or_reset()` fails, and just
+> return the value instead.
+> 
+> Signed-off-by: Waqar Hameed <waqar.hameed@axis.com>
+> ---
+I can't speak for all subsystems, but this would probably be acceptable
+in the iio subsystem.
+
+However, I don't think anyone is going to accept a patch that touches
+all of these files at the same time across subsystems.
+
+So I would suggest to split this up into one patch per driver and create
+one series per subsystem. This way, each subsystem isn't bothered by unrelated
+patches that they don't particularly need to care about. And note that some
+subsystems like net have additional expectations, e.g for the patch subject
+so that it gets picked up by automated tools, so be sure to check the docs
+for this.
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
