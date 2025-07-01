@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2AF1CCFA1E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE645CCFA1C
 	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:28:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
@@ -12,42 +12,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uDyMsuPAxSuicAWxrT/bM3ajq1NZg8dMtoj308c4PGU=; b=lly4NXf87LsC8z9tHidGx5s/2G
-	4T1iWVGrNkcQAkMXHc6wGeFNG1y7Y/XhW0W+7ZIIT1gkXGPOLmM0trLT6fUfVPG9kPt2pB+X5CQFF
-	W1evH7swOh57UQkMNJGGUSvJnyjjH8K6I8ffKMOtAT4XYB3sm8fwB/I7QrBiNkMN6PJXDbFI4VT3t
-	ZD/SBJxzkOclgwc6UATG+rhozMN807MvVfQG+3b0ekMCO8+HGWVER9QJkj1PkRQFetyueHRvptd05
-	zmGYVMOQ8LkaHQPv4sh+itOyNFmeepm5wT+DGt4LduhUIbMv52QueW1KR5ts5WTXE9kUh72mj/REF
-	9us0ojSw==;
+	bh=CM159oLooPmN82em0OoYZ9V716q8wd+63DYv06gGDAk=; b=tyHvMnnJ9ppt6aM/7zn/II9cD1
+	iJv+QxzzeVjNFgDVcx4+BpbxLQN1GwuSERPEuCdLCJ7z5fpm0zs69dhCdziQ2soWyH480+nCQgudc
+	mkYf+3tIBsN/dOhUx1ye7NzQIslTabZkU42ve6HRDjltuGAV9F+fSDGiFjs57aXW59bTpZTSkOuhv
+	lQu56v5dMp1niuXavNEwFZpywjzyNlLEy07o1n/MMs3PujJA+z/ungzVpbQE4kwrC5kG+qOLbXRfc
+	V6QjH4TxUfIaPpYxy1z2cRcB29z5XmpKB7vVXGxirYOBlyt8cQrRyMzRXtRu7sFrSe7jeQ0UU75en
+	QYjkQJ6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGz6Z-0000000FRRH-0Ozz;
-	Thu, 06 Nov 2025 12:28:43 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vGz6Y-0000000FRPj-2ITe;
+	Thu, 06 Nov 2025 12:28:42 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWrMp-00000007Rx2-321M;
-	Wed, 02 Jul 2025 06:54:52 +0000
+	id 1uWf1q-00000006GJd-24oO;
+	Tue, 01 Jul 2025 17:44:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 01A3846044;
-	Wed,  2 Jul 2025 06:54:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4DADDC4CEEE;
-	Wed,  2 Jul 2025 06:54:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5CAA545F3B;
+	Tue,  1 Jul 2025 17:44:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A33B7C4CEEB;
+	Tue,  1 Jul 2025 17:44:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751439290;
-	bh=OygOYEPels4czGsYfayew2rB/2MBUfzsc+sH9m4SBq0=;
+	s=k20201202; t=1751391860;
+	bh=T/Oh3jotCzcmLKi13L685F87dDpqLPMtMcQj6fakPvk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HgEzaVEsk//JdYC+Qyn/5EKrQUtKGk9503aAH2+MGID4BNeVQ532beH+YUPat8bTE
-	 ksassL7x58UVM8H2z1YiCwar+F03MKvsVVnuzRRKynO2HQG/FWdGtT9efkSLGsT2I7
-	 Ms+P4pZHTOL3Vi5wMI5yX6frOXuS33VSRWuaxiWcuK7ssHBQAM1VMY79ox/M3t/Kkg
-	 MpzSll7uEgbWqbwWs12mIdTWwhhed0E7KABMg9q7RSCMgBIviaW2okigJHox485Vzp
-	 +NGA4KhTUCCW4PB5nkG0t/tcwwrvz8+nBPF7c5fUeC9tKEKmXUIejMhEFiSWJ7w1Sq
-	 ROwcsDKchkEaA==
-Date: Wed, 2 Jul 2025 08:54:48 +0200
+	b=PFC8LLDaQCERloxxDdzc9fDp24D33SKAmYgZ1QFEOmzF6jiKiF2fH1EYoGLBTDyic
+	 DAf4tg0M7jTvpKKWO6Bcb9xNER/kpNY8Am6LmTbfe7sVF+DtYDlF35U1Coo3CpV4M7
+	 /Th3Z18z7qwHtMSYuKvYYoGDluKbU7eBxqGLTb2vcV1rZcyfADPAoDl0EaInKSZQMy
+	 +523XjIJeVk/nSgi3w/m0+h4md8zNTFLXti5KrMVtUpNMoC8ixPYLXAhDIboKSx9jS
+	 e17VaG1/Z+x6oAaXb9lBOGsWH7AmAbp/zzL2jDYTGZ/Kq2PWkC1Yc60bP+K5sjuSO+
+	 BX5oEW8zb2ibw==
+Date: Tue, 1 Jul 2025 19:44:17 +0200
 From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: Waqar Hameed <waqar.hameed@axis.com>, 
-	Vignesh Raghavendra <vigneshr@ti.com>, Julien Panis <jpanis@baylibre.com>, 
-	William Breathitt Gray <wbg@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, Peter Rosin <peda@axentia.se>, 
+To: Waqar Hameed <waqar.hameed@axis.com>
+Cc: Vignesh Raghavendra <vigneshr@ti.com>, 
+	Julien Panis <jpanis@baylibre.com>, William Breathitt Gray <wbg@kernel.org>, 
+	Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, 
+	Peter Rosin <peda@axentia.se>, Jonathan Cameron <jic23@kernel.org>, 
 	David Lechner <dlechner@baylibre.com>, Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, 
 	Andy Shevchenko <andy@kernel.org>, Cosmin Tanislav <cosmin.tanislav@analog.com>, 
 	Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>, 
@@ -89,15 +89,13 @@ Cc: Waqar Hameed <waqar.hameed@axis.com>,
 	linux-scsi@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-usb@vger.kernel.org, 
 	sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org
 Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
-Message-ID: <jeajjewfbg5qo736imozpghnpxln2pux74aegtqsi57qsbpug2@opndel6zc3m3>
+Message-ID: <ylr7cuxldwb24ccenen4khtyddzq3owgzzfblbohkdxb7p7eeo@qpuddn6wrz3x>
 References: <pnd7c0s6ji2.fsf@axis.com>
- <ylr7cuxldwb24ccenen4khtyddzq3owgzzfblbohkdxb7p7eeo@qpuddn6wrz3x>
- <20250701185519.1410e831@jic23-huawei>
 MIME-Version: 1.0
-In-Reply-To: <20250701185519.1410e831@jic23-huawei>
+In-Reply-To: <pnd7c0s6ji2.fsf@axis.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_235451_805417_23BDD633 
-X-CRM114-Status: GOOD (  35.24  )
+X-CRM114-CacheID: sfid-20250701_104422_580916_6962B4BF 
+X-CRM114-Status: GOOD (  18.23  )
 X-Mailman-Approved-At: Thu, 06 Nov 2025 04:28:36 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,110 +108,141 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2513687272221245229=="
+Content-Type: multipart/mixed; boundary="===============1186385353783400623=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============2513687272221245229==
+--===============1186385353783400623==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="yoqxembgtzssn7jy"
+	protocol="application/pgp-signature"; boundary="siz3npg32duy4f54"
 Content-Disposition: inline
 
 
---yoqxembgtzssn7jy
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+--siz3npg32duy4f54
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
 MIME-Version: 1.0
 
-Hello Jonathan,
+Hello,
 
-On Tue, Jul 01, 2025 at 06:55:19PM +0100, Jonathan Cameron wrote:
-> On Tue, 1 Jul 2025 19:44:17 +0200
-> Uwe Kleine-K=F6nig <ukleinek@kernel.org> wrote:
->=20
-> > On Tue, Jul 01, 2025 at 05:03:33PM +0200, Waqar Hameed wrote:
-> > >  drivers/pwm/pwm-meson.c                          | 3 +-- =20
-> >=20
-> > Looking at this driver I tried the following:
->=20
-> I'm not sure what we actually want here.
->=20
-> My thought when suggesting removing instances of this
-> particular combination wasn't saving on code size, but rather just
-> general removal of pointless code that was getting cut and
-> paste into new drivers and wasting a tiny bit of review bandwidth.
-> I'd consider it bad practice to have patterns like
->=20
-> void *something =3D kmalloc();
-> if  (!something)
-> 	return dev_err_probe(dev, -ENOMEM, ..);
->=20
-> and my assumption was people would take a similar view with
-> devm_add_action_or_reset().
->
-> It is a bit nuanced to have some cases where we think prints
-> are reasonable and others where they aren't so I get your
-> point about consistency.
+On Tue, Jul 01, 2025 at 05:03:33PM +0200, Waqar Hameed wrote:
+>  drivers/pwm/pwm-meson.c                          | 3 +--
 
-The problem I see is that there are two classes of functions: a) Those
-that require an error message and b) those that don't. Class b) consists
-of the functions that can only return success or -ENOMEM and the
-functions that emit an error message themselves. (And another problem I
-see is that for the latter the error message is usually non-optimal
-because the function doesn't know the all details of the request. See my
-reply to Andy for more details about that rant.)
+Looking at this driver I tried the following:
 
-IMHO what takes away the review bandwidth is that the reviewer has to
-check which class the failing function is part of. If this effort
-results in more driver authors not adding an error message after
-devm_add_action_or_reset() that's nice, but in two months I have
-forgotten the details of this discussion and I have to recheck if
-devm_add_action_or_reset() is part of a) or b) and so the burden is
-still on me.
+diff --git a/drivers/base/core.c b/drivers/base/core.c
+index 3809baed42f3..58a2ab74f14c 100644
+--- a/drivers/base/core.c
++++ b/drivers/base/core.c
+@@ -5062,7 +5062,7 @@ static void __dev_probe_failed(const struct device *d=
+ev, int err, bool fatal,
+  *
+  * Returns @err.
+  */
+-int dev_err_probe(const struct device *dev, int err, const char *fmt, ...)
++int _dev_err_probe(const struct device *dev, int err, const char *fmt, ...)
+ {
+ 	va_list vargs;
+=20
+@@ -5075,7 +5075,7 @@ int dev_err_probe(const struct device *dev, int err, =
+const char *fmt, ...)
+=20
+ 	return err;
+ }
+-EXPORT_SYMBOL_GPL(dev_err_probe);
++EXPORT_SYMBOL_GPL(_dev_err_probe);
+=20
+ /**
+  * dev_warn_probe - probe error check and log helper
+diff --git a/include/linux/dev_printk.h b/include/linux/dev_printk.h
+index eb2094e43050..23ef250727f1 100644
+--- a/include/linux/dev_printk.h
++++ b/include/linux/dev_printk.h
+@@ -275,7 +275,13 @@ do {									\
+ 	WARN_ONCE(condition, "%s %s: " format, \
+ 			dev_driver_string(dev), dev_name(dev), ## arg)
+=20
+-__printf(3, 4) int dev_err_probe(const struct device *dev, int err, const =
+char *fmt, ...);
++__printf(3, 4) int _dev_err_probe(const struct device *dev, int err, const=
+ char *fmt, ...);
++
++#define dev_err_probe(dev, err, ...) (								\
++	(__builtin_constant_p(err) && err =3D=3D -ENOMEM) ? err : _dev_err_probe(=
+dev, err, __VA_ARGS__)	\
++)
++
++
+ __printf(3, 4) int dev_warn_probe(const struct device *dev, int err, const=
+ char *fmt, ...);
+=20
+ /* Simple helper for dev_err_probe() when ERR_PTR() is to be returned. */
+diff --git a/include/linux/device/devres.h b/include/linux/device/devres.h
+index ae696d10faff..abfa5152b5a7 100644
+--- a/include/linux/device/devres.h
++++ b/include/linux/device/devres.h
+@@ -157,8 +157,11 @@ static inline int __devm_add_action_or_reset(struct de=
+vice *dev, void (*action)(
+ 	int ret;
+=20
+ 	ret =3D __devm_add_action(dev, action, data, name);
+-	if (ret)
++	if (ret) {
++		if (ret !=3D -ENOMEM)
++			__builtin_unreachable();
+ 		action(data);
++	}
+=20
+ 	return ret;
+ }
 
-So to give my answer on your question "What do we actually want here?":
-Please let us get rid of the need to care for a) or b).
+With that
 
-> The code size reduction is nice so I'd not be against it as an extra
-> if the reduction across a kernel builds is significant and enough
-> people want to keep these non printing prints.
+        ret =3D devm_add_action_or_reset(dev, meson_pwm_s4_put_clk,
+                                       meson->channels[i].clk);
+        if (ret)
+                return dev_err_probe(dev, ret,
+                                     "Failed to add clk_put action\n");
 
-To complete implementing my wish all API functions would need to stop to
-emit an error message. Unfortunately that isn't without downsides
-because the result is that there are more error strings and so the
-kernel size is increased. So you have to weight if you prefer individual
-error messages and easier review/maintenance at the cost of a bigger
-binary size and more dev_err_probe() calls in drivers eating vertical
-space in your editor.
+=66rom drivers/pwm/pwm-meson.c is optimized to
 
-I know on which side I am, but I bet we won't find agreement about that
-in the kernel community ...
+        ret =3D devm_add_action_or_reset(dev, meson_pwm_s4_put_clk,
+                                       meson->channels[i].clk);
+        if (ret)
+                return ret;
+
+=2E
+
+I would prefer this approach, because a) there is no need to drop all
+dev_err_probe()s after devm_add_action_or_reset() and b) the
+dev_err_probe()s could stay for consistency in the error paths of a
+driver.
 
 Best regards
 Uwe
 
---yoqxembgtzssn7jy
+--siz3npg32duy4f54
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmhk17UACgkQj4D7WH0S
-/k4YcQgAlm1BDi3/P3JcN5b6Y1UamZV/S9cGOikezq/kf1GhqDBu8DxrVjTBFjOf
-OJoBgw/566zxq5agBq8EUgc7GrJBwe7BhieAXUGmYQI0pBg1Zdhgyj42kXhx7B9R
-u2j6XXXrEWa1Sw58sbK3g8bLeDEo9/kIem6g0Yk6NZX2WibbNU6Bw6UuV3yVwVaX
-TH4uFzMJ5wVvnwJDz2HCuxCLQ9NO25UL0U3DdZWIPI9oeuodG3U3MVNJWMJ5OuXc
-e+Yo5MhzsrnrMpj4nWPaicdD25qLOdVCySFDim72U4oI24wsmtlQBiJmDuNoldf/
-kbQM9dmwp48V3mVs7SFSmrt/TD4bFw==
-=6zPO
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmhkHm4ACgkQj4D7WH0S
+/k40Ugf+IGBhMZPHVoCFXh9jXSPImkCDM81Omc7cyM5CZFFdOO09K82bfGBFD7bF
+X+9ZxJqCFCRmF8AtN+3Z6xmAia7Q4jKwUgvdR/iJY4jMX6uQk49IxGgv9Ux9aAu2
+/jttnDFocIwCi6sjUxxf2HCdfwLPKhfhrl+xNpQ80kh4oBZ+L0X5s6u6Mcsu8V2P
+2O3Q05nJZK/bpCYZNgRHMeg4k71v6nG8eYw2nJ6n7dbTOtj+HnQC3GCfajWFg7mf
+al8FLQxckEkDif0f7yDlSnjUT7oF78eg1G2pf9PDBr9I15efw+TkKSmkr/MIVXJE
+YFLNKMZeRFfoAyzKWfjfpuR/ZUe+3Q==
+=uD6x
 -----END PGP SIGNATURE-----
 
---yoqxembgtzssn7jy--
+--siz3npg32duy4f54--
 
 
---===============2513687272221245229==
+--===============1186385353783400623==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -224,5 +253,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============2513687272221245229==--
+--===============1186385353783400623==--
 
