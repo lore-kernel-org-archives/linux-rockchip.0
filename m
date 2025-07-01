@@ -4,75 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 480D9C7EE30
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Jul 2025 09:39:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3826C8302F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Jul 2025 09:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q2ICtjoQh1IgYhi8zwKCWhqoXUid71vP+outkq/LHMQ=; b=JHL57etFA9nIJasQUCq5jwHb4Y
-	i+VCTFRnNS604gC9uEOxMeO7mPS/8KwoZCl+Djcm6Cg8HXzoLlQCzQIotFnkbutg7dM8AXANRPfuq
-	nLqQGdDCeUab1YCLcnqXYPnhj4XY40ygxPYMKcgl9kHL4sgX0s+02m1homluqB5b45eIv25OoT3uF
-	yhlC8d912SMcqRPuIhj8UDowSb9y3emiYDoNwRcoSzFR10xyyLZzGPfiTs5iGcA8GPRhJprCEsQF4
-	gUczC5lXKiY9AWRu/wZOf216kho2bDZzsOK40Hvw5hVYoTQ44oDcgvmAbqx8rZHiXUhXNZ2g1Jc3O
-	v9bxxZkg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=en7mkWRZJV2mglrfqQbOb5nrf0snlPx/u+eOma5KtwU=; b=zxjLjG1jjvjfQJ
+	qYIYnYx2CvibrZaNMSQIt3XJBizLdu8TYTAewdyw1RFyWOC9RP81GU5zqB1UWggzO37VAeZ6yVJNH
+	6BFusoktwbZ/l4bqu5JFJ7+hYpglnOmX6Baya3Odm/4IBuAx6r/6lT1R1RyuQfUKy3SERt7gUQsKw
+	+jZ0camcbix1MW1pC1jPvQS0fj2OixFbr2lKY6RiN1JECR8kd0tKCsZX6itwZ0/JXS9gloW7TkkQi
+	aV2QfZ+QO6qqfARShuONzS4nUR7m0f0lYkfvLp+Aj1iQot81p/HmbaUaOwBEo+uIepBMW7EElpR44
+	PRy2UJyRat5KuyE7+cmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWXSI-00000004cai-2oTi;
-	Tue, 01 Jul 2025 09:39:10 +0000
+	id 1uWXkj-00000004end-2zrN;
+	Tue, 01 Jul 2025 09:58:13 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWWyS-00000004Yfw-3Fn8;
-	Tue, 01 Jul 2025 09:08:20 +0000
+	id 1uWXP4-00000004c7u-2LC7;
+	Tue, 01 Jul 2025 09:35:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:References:To:From:Subject
-	:Cc:Message-Id:Date:Content-Type:Mime-Version:Sender:Reply-To:
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Cc:To:Subject:Message-ID:
+	Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=sCKhaBsg8xUAooQ2UnBR99qEvYpdT0zIlTvlGHqxLsI=; b=hkGLsjxCizzhbgbP1rKp+l8kel
-	WQVPbouyAin+CyviswSrSEQzbsCuz7cNHh7ZZruemyauVZA8z5vjiDsyZu0ljrgCtkeiV33TVfCkI
-	BHQoVfikUipGYN+zEHK9o8vlp6AsQ8pfsoP+blcBLd/jftYcnDHNnoZTceTptPMn7mNR4VKRpM8bB
-	AooVLFs2z8PExwYDfUwvOdf7WLHtLmHk+5Cq8zx5aEHfv+GolRmy5Ztt71vHjoo/CjM6shgpOdBWB
-	y3zyCq6BrgfdgETDkhMEmosNq20O0SevDo988i50/wFS1IirhgfgOYgA7NVQfmiUoMHzD7Dqf7GJ8
-	hwQNiidA==;
-Received: from out-172.mta0.migadu.com ([2001:41d0:1004:224b::ac])
+	bh=UkC7eZA+uDX58TZWGGsjh/Z3xk06FWPrdqdvUqT03SQ=; b=YOHNtF/JNfNziK/moNSUqCjfud
+	UDXP+m2BbYUKNIGLJ1rsviv5DyKBiwA69NKRMkO25xsuf7DUQENiDyfABN6pRJrhiXfYkcNBIznKQ
+	rsNTRdcot6N+f/+980KDQacBWltafJT58nkt2LJPldOVNO0jXIH5J8nbvJOG9m1fHIhUrOOo7ZNK4
+	YLa19v3CoN1Zx/JS4WFdd2Eyr/h3u8wvLSyBIWQUj7YqtGxgNjIGfnfLh62d8XnUKk0xmaCyG8xB0
+	JG13I3e6+eGP+qrolxo4ehSBkm8UoQUBiGZNVGdV8GwrTchPhylSD44i396yjT04sCzxCYWHJmb7T
+	g1bS47Gg==;
+Received: from mail-vk1-f171.google.com ([209.85.221.171])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWWyP-000000071Tx-1Pdh;
-	Tue, 01 Jul 2025 09:08:19 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1751360887;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=sCKhaBsg8xUAooQ2UnBR99qEvYpdT0zIlTvlGHqxLsI=;
-	b=hwwkWF8SmOXJLw9wzALqdogqAoTe/5RQm7bPFyxQrcWnFMjdT2GuLKk21ZDWysMGviZ5f9
-	bFW5nLhOSzTFNd/KKAgJys6NIt5GGPMzTN5ExlBdQ+ttoSfDQf813i2zfAhSjBy5T9S5nm
-	29imL8mAXYjoMtwg6ieAmEp4bhhpPxmNV3e4mokzW0Q5uHpiToqxC+UdhwIeghoW2Rr5Yc
-	MEgpH9jb0lb+sGuLV3r7uZu3Xe32CPkiZyHDzGbG2mp5HMb9juEXMXYXFjErEa7CJNckxS
-	o2HuCpmNUldlDxBTa1/KBP1Tidc4c6apZEkK2BCsDZDzHI0/9eb/zNK1mHafGQ==
-Date: Tue, 01 Jul 2025 11:07:51 +0200
-Message-Id: <DB0LM56C47LH.YYFY0ZGCVVKC@cknow.org>
-Cc: "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko
- Stuebner" <heiko@sntech.de>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <kernel@collabora.com>, <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: adjust dcin regulator on ROCK
- 4D
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com>, "Sebastian
- Reichel" <sebastian.reichel@collabora.com>
-References: <20250630-rock4d-reg-usb-wifi-v1-0-1057f412d98c@collabora.com>
- <5acizoywvjolaffojiawqlzixiclrqzohuhq55lbsjm6yhhlwi@w2amqugl3ee2>
- <DB0KL629S4E4.3ENNM27XN3IYM@cknow.org> <5039013.31r3eYUQgx@workhorse>
-In-Reply-To: <5039013.31r3eYUQgx@workhorse>
-X-Migadu-Flow: FLOW_OUT
+	id 1uWXP1-000000072mz-1o9V;
+	Tue, 01 Jul 2025 09:35:49 +0000
+Received: by mail-vk1-f171.google.com with SMTP id 71dfb90a1353d-53185535ed9so3931900e0c.0;
+        Tue, 01 Jul 2025 02:35:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751362544; x=1751967344;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UkC7eZA+uDX58TZWGGsjh/Z3xk06FWPrdqdvUqT03SQ=;
+        b=ZPeTGjtP44TUXEujoKGwunFuTPecKaS9TQWnJyUHwHTFsqh3zgZSVnv0Q+P8O32pig
+         BsH8/5XnIrzeGXM9c9R+TwDSWU6RkZmVTWFJhjh+1cANIxYFOIf6bRkUgLVyTHdDGD6D
+         hvPmJyFjG4S89wbVRhrZA2JhnVFEtmfeuxp3OqjXqISWaCOzTg1iV2j9yl9I40mk582a
+         QQFBLTNsM+h3C8GZnVskANvb6s5IO2gkJxlQWbJJN0H7/t708bn1BRqYTGdsaichG5bm
+         g9fhPMrPANMG2iW53F8krhecKTmEoYJByIwlstcajotCwSRUVLsfua4VOdG6G74bwu1j
+         yrBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVBlpeN5FJpKqStEUWacFgq/b8hGLlvJio5gb0rqLyoA6s8iUs75qVVQpm759Tz5p14vYSOfUVtAzv81mhwMAID@lists.infradead.org, AJvYcCXVAXEScjANHkD0EUeQnkvtNoSBAuvM2wyVDxJknB+xSvBUTFG+/7gmMh1zi7BDR1eA50ccpcm5t2o5oATsNuI=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwAkhcQx0zL8l1txEN/+KII1daObAlJVpuyn02RYnQTsmvmuy+f
+	NHMYmU8r57LYG+L2SEYp0Hk4XKcP1NC5oc5sCxVsDQGvhPXEzcI1EN8/YAnlFeJj
+X-Gm-Gg: ASbGncu6glEQWDhkZf7pX4wNIUzJg2LHOeeOBebUNprMBq0RF6+P111gjg0Z9ytgFkq
+	NEIO/qHmwe9urfxuPKQeUYhxVbCi/mY2v6odChAWM9t42CuXlGa6hlcKACyVzgwoPU498B2zpEu
+	4l639ds21M+sG+x7UXCk4m+M0ECWqOuGj74MXAEH1GOiLc/vV5kTGeodMuL3LpVfvfGb9wiWssB
+	R6cPu+pPR3Q7jbYIhNDq34Rxl6fi2MWFCs/oWsotsAtkNm4dtdMfrGX6c1rjV7sNITWI+VMW1ar
+	xP3J6V7UNnoyMQnkqDZUrZ412iwXP4ijOpbP6yHTb8p3ynypsRv0jq0dFKtZCA8ThW+8yaPF7HT
+	wVaT+TQGfo8HBvTFX3pvnqV5QCb5DN4k5pfekRTA=
+X-Google-Smtp-Source: AGHT+IE2qRUVgLLrHs/Q5Y4Gh4o/QkINgqeKwWwPs1lnGjHyGbnV6CqC1zfR6ck82tfca/fswOWuNg==
+X-Received: by 2002:a05:6122:3c4f:b0:531:1314:618d with SMTP id 71dfb90a1353d-534145f907bmr2145517e0c.0.1751362538847;
+        Tue, 01 Jul 2025 02:35:38 -0700 (PDT)
+Received: from mail-vk1-f180.google.com (mail-vk1-f180.google.com. [209.85.221.180])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-533091bb565sm1647076e0c.28.2025.07.01.02.35.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 01 Jul 2025 02:35:38 -0700 (PDT)
+Received: by mail-vk1-f180.google.com with SMTP id 71dfb90a1353d-5315972826dso3422649e0c.1;
+        Tue, 01 Jul 2025 02:35:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUtlXRFoXtNxtVYrQ0nK7T4IGZ0ykc/hSBVI+IgFelEDvlre2y+1m6CW7v8IDH5DvHE79PqRl30U3sGwWLwOWPt@lists.infradead.org, AJvYcCXEYAHwgG5fAXNYB03XRjtYTHpldRgJG276CeiDxTbs3GgTk6gzYe9Fn7iHBgxCshw5EdKZjaZDlWeZAH5YpCQ=@lists.infradead.org
+X-Received: by 2002:a05:6122:811b:20b0:531:bb45:18b1 with SMTP id
+ 71dfb90a1353d-53425617336mr1027771e0c.7.1751362537889; Tue, 01 Jul 2025
+ 02:35:37 -0700 (PDT)
+MIME-Version: 1.0
+References: <20250620160834242DDgecL4HF8b1OBLiZnnrl@zte.com.cn>
+In-Reply-To: <20250620160834242DDgecL4HF8b1OBLiZnnrl@zte.com.cn>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Tue, 1 Jul 2025 11:35:26 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdVEkq_W99XuKA9KJW5Bm156ZBZowH2gmg2iY27y2fDFug@mail.gmail.com>
+X-Gm-Features: Ac12FXxtXuRYLmTpc7TJbisFnd7Fe3xZafLHlyEUkNhw-qkfFhNc1GHH1T18Cpo
+Message-ID: <CAMuHMdVEkq_W99XuKA9KJW5Bm156ZBZowH2gmg2iY27y2fDFug@mail.gmail.com>
+Subject: Re: [PATCH v3] pmdomain: Use str_enable_disable() and str_on_off() helpers
+To: shao.mingyin@zte.com.cn
+Cc: geert+renesas@glider.be, changhuang.liang@starfivetech.com, 
+	magnus.damm@gmail.com, heiko@sntech.de, alim.akhtar@samsung.com, 
+	walker.chen@starfivetech.com, sebastian.reichel@collabora.com, 
+	detlev.casanova@collabora.com, finley.xiao@rock-chips.com, 
+	shawn.lin@rock-chips.com, pgwipeout@gmail.com, linux-pm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, yang.yang29@zte.com.cn, 
+	xu.xin16@zte.com.cn, yang.tao172@zte.com.cn, ye.xingchen@zte.com.cn
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_100817_624322_587CE9C2 
-X-CRM114-Status: GOOD (  25.21  )
+X-CRM114-CacheID: sfid-20250701_103547_562761_114DAF7A 
+X-CRM114-Status: GOOD (  22.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,101 +109,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8435276660451707603=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============8435276660451707603==
-Content-Type: multipart/signed;
- boundary=b8323306f1bbbc5afcc52f8f8b6518b1db3b53e34623a0a8a033e4200c2d;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+Hi Shao,
 
---b8323306f1bbbc5afcc52f8f8b6518b1db3b53e34623a0a8a033e4200c2d
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-
-On Tue Jul 1, 2025 at 10:55 AM CEST, Nicolas Frattaroli wrote:
-> On Tuesday, 1 July 2025 10:19:33 Central European Summer Time Diederik de=
- Haas wrote:
->> On Tue Jul 1, 2025 at 1:10 AM CEST, Sebastian Reichel wrote:
->> > On Mon, Jun 30, 2025 at 08:12:27PM +0200, Diederik de Haas wrote:
->> >> On Mon Jun 30, 2025 at 5:36 PM CEST, Nicolas Frattaroli wrote:
->> >> > The ROCK 4D's actual DC input is 5V, and the schematic names it as =
-being
->> >> > 5V as well.
->> >> >
->> >> > Rename the regulator, and change the voltage it claims to be at.
->> >>=20
->> >> Shouldn't it have a fixes tag then? Providing 12V where 5V is expecte=
-d
->> >> sounds problematic ;-)
->> >
->> > This is basically "just" documentation, as the DT just describes
->> > a fixed regulator (i.e. nothing software controllable). This just
->> > changes a number in sysfs :)
->> >
->> > Note, that the 5V DCIN is a USB-C port, which does not do any PD
->> > negotiation, but has the 5K1 resistors on the CC lines to "request"
->> > 5V. If for whatever reason a higher voltage is applied (which does
->> > not happen as long as the power is provided by anything remotely
->> > following the USB specifications) there also is an over-voltage
->> > protection chip. So it's not problematic :)
->>=20
->> I was worried about and wondered why I/we did NOT receive reports about
->> boards being fried. Good to know, thanks!
->>=20
->> > OTOH adding a Fixes tag does not hurt ;)
+On Fri, 20 Jun 2025 at 10:09, <shao.mingyin@zte.com.cn> wrote:
+> From: Shao Mingyin <shao.mingyin@zte.com.cn>
 >
-> to add to what Sebastian already said: I purposefully didn't include the
-> Fixes: tag because there is no functional change here. I don't think
-> cosmetic fixes are worth pulling into stable kernels unless they're a
-
-Then I agree with you. I didn't realize it was not a functional change.
-I guess I didn't (fully) understand the "just documentation" remark.
-
-Cheers,
-  Diederik
-
-> dependency of a follow-up functional fix patch, which isn't the case
-> right now. If such a functional fix patch does emerge, it can explicitly
-> declare its dependence on this patch, or even have our robot overlords
-> figure it out itself.
+> Use str_enable_disable() and str_on_off() helper instead of open
+> coding the same.
 >
-> In that sense, I do think a Fixes tag hurts, because it needlessly
-> adds to the patch queue of the stable kernel people, and it's worth
-> pointing out that while I claim this patch has no functional change,
-> that's always predicated on the understanding that it does not
-> unintentionally break anything. In this case the chance is essentially
-> zero though, but I won't bother re-rolling this for that tag alone.
+> Signed-off-by: Shao Mingyin <shao.mingyin@zte.com.cn>
+> Reviewed-by: Changhuang Liang <changhuang.liang@starfivetech.com>
+> ---
+> v3:
+> preserve the original patch format to avoid whitespace-damaged
+>  drivers/pmdomain/renesas/rcar-gen4-sysc.c    | 3 ++-
+>  drivers/pmdomain/renesas/rcar-sysc.c         | 3 ++-
+>  drivers/pmdomain/rockchip/pm-domains.c       | 3 ++-
+>  drivers/pmdomain/samsung/exynos-pm-domains.c | 6 +++---
+>  drivers/pmdomain/starfive/jh71xx-pmu.c       | 7 ++++---
+>  5 files changed, 13 insertions(+), 9 deletions(-)
 >
-> Regards,
-> Nicolas Frattaroli
+> diff --git a/drivers/pmdomain/renesas/rcar-gen4-sysc.c b/drivers/pmdomain/renesas/rcar-gen4-sysc.c
+> index e001b5c25bed..c8aa7538e95f 100644
+> --- a/drivers/pmdomain/renesas/rcar-gen4-sysc.c
+> +++ b/drivers/pmdomain/renesas/rcar-gen4-sysc.c
+> @@ -18,6 +18,7 @@
+>  #include <linux/slab.h>
+>  #include <linux/spinlock.h>
+>  #include <linux/types.h>
+> +#include <linux/string_choices.h>
 
+Please insert new includes alphabetically, like in Krzysztof's original [1],
+for which I already provided my Rb-tag.
 
---b8323306f1bbbc5afcc52f8f8b6518b1db3b53e34623a0a8a033e4200c2d
-Content-Type: application/pgp-signature; name="signature.asc"
+[1] https://lore.kernel.org/all/CAMuHMdXJ57mATWW4AnBedn+D7TQ4PadkJ642daquFtAo=wZFrQ@mail.gmail.com/
 
------BEGIN PGP SIGNATURE-----
+Gr{oetje,eeting}s,
 
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaGOlcAAKCRDXblvOeH7b
-bhLJAP97JDpJXhGMfDQaNL37OzPukLBLbOqLs8V/lgGwI5aFpAEAhggtFpJ3o9PL
-NRBJV2vUQPI7/xkFk0EFLqPv3aJFcAo=
-=mOO0
------END PGP SIGNATURE-----
+                        Geert
 
---b8323306f1bbbc5afcc52f8f8b6518b1db3b53e34623a0a8a033e4200c2d--
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
 
-
---===============8435276660451707603==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8435276660451707603==--
-
