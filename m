@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60870C87FD1
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:48:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02E10C87FD3
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:48:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OB9WpfQtNnOBUUh6h+22VOuMmezK083intw6ZQR+LAk=; b=HkMCjoMDTuzan/
-	eEmRjyPMOT7FehViXmiL/YZ2eyWBuA7TLdAGdA6Dybh8RaovYfWrkk60rHkcGKsOTzdp5/4wqFjEY
-	xsWPAs05ZdN1ncTL0nOATCrHInS8y1fK0U3zu+rLCxtPPv/TJBy8JY1b1cBPRkUVQBliOntUsWk2y
-	yayE4nWFs0PAoAQoLVwY384x3HT+kSBmRaxNG5U8ul0RwrsE3WoqDkqnE7a3wCsmiJX8hMoG6kMcT
-	uUuSYJDVZ+8+0VlFS+04RsAnWsgJe4EjbsRkYI3BMWLCG0wQdeBZ/EWLRhUtpZUL/hbZ5dq9kiHmU
-	Zn8ie2j2b7SFJ0FuTBlA==;
+	List-Owner; bh=wbMDXm7P6vNQs/JSg0wmJFQrXt0kpHrDxlWfi+DWgBc=; b=UOfOmJWTPnHn9S
+	p6x4RHFLRaV/Hb5qfq5JALbCxRhmghA2Gy0/PkugCIR3iwWIW72Aj4UrZBwQ6NMaYvpQQxEvJTT3j
+	yIZHa1I4abIc7AUTzrZnmMphGrBmlxVy4sNXwZLVCM3bkVHWl6O5Hx8Cosqkm9uBsoFGacz0b6OcW
+	/lxgHbcXnI3Tqg3gJDH+OBE67DD2oVcxF1cUvlnMTPL6JIGcHTag7BWF9VBblv8jUz8OW+V8dS1y3
+	Fa+97IB+7n02Q/k/iOyXOF+PCQG8fkrtQstPR5mrBVPhqCytltS2+y90egKpz6jHWlS8Od7oivr+0
+	8yqm6t1FCH0gpULmKFWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujbh9-0000000Ewha-3yx7;
+	id 1ujbh9-0000000Ewgu-1XLU;
 	Wed, 06 Aug 2025 10:48:31 +0000
-Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
+Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWdnl-000000062CM-01zL;
-	Tue, 01 Jul 2025 16:25:46 +0000
-Received: by mail-qk1-x734.google.com with SMTP id af79cd13be357-7d45f5fde50so170855985a.2;
-        Tue, 01 Jul 2025 09:25:44 -0700 (PDT)
+	id 1uWcrZ-00000005sZZ-3rT2;
+	Tue, 01 Jul 2025 15:25:39 +0000
+Received: by mail-qv1-xf29.google.com with SMTP id 6a1803df08f44-6fafdd322d3so38215446d6.3;
+        Tue, 01 Jul 2025 08:25:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751387144; x=1751991944; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1751383537; x=1751988337; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=MwCrqmYe9TCJHuYWG2jCcUWVn5259lJARsV/a3PINFE=;
-        b=lAsYTX5Q/b+rJKmHkojnbcUBDqsB9ytu+fhYKWzmWwNJlzCWFYgVES5ZbrKhTdviM6
-         VDRmXT8LyObUh/jbKHz7i5u1zzUa82H3RBjo++gK/unnXy+NQmF0zRqoLhqNWkb+e1ZI
-         vsVO2M+ffNINvaXYC7OTgUukugegJ0rr4ciCuJMin6ZGLSJwwouRCYqLAnuuJFKR+uTD
-         pCH8Avp6kw54rHrZgF9zaG8ECiRfaG0u919F/C5/MpUzncrAU8R2YsabnuK+NWqtGQ+Y
-         v3ZbPrgazCjdagcviyfzgHAOjmADovYmyb0JFlYUBzrpVSQcHLJNXwecqthl2MbCIUig
-         thgg==
+        bh=H69zG5gO7h9M6iKs5G+TtTbg5NtVZiozRw1J2ZHqQt8=;
+        b=fzk1h6BCEI8LPPFqKo3vx5lm2kf5rIemtvaP9XjPa2TmeZL/nLgHrV7m9u+ovHgg8c
+         6f3GKrmoto2AixJnEs10LK9h69pIvbhwdMFHxSPRZUmIFeeIsuF8pbASy3fcCS4Mc0Wn
+         Ew5V7UJC4FsOMyHuL03U+JyoKsfspBgwdiYIo3byJk3c/HMWZrgNsWbRrOJB2nlL+cUu
+         +zjQZ5OhAZN6sSwcGvt3FxsxGt5C7Rmn/r0nTSSJ3REpAkgo4YTpF2cYDQ7aFHrT4Qie
+         l5jwBcsvbWTT6p7JXlkM0X0GISCABp1InEOzD9JwDcj0ycGp1fqcb1sx4tFo5fvRUzyP
+         xVgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751387144; x=1751991944;
+        d=1e100.net; s=20230601; t=1751383537; x=1751988337;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MwCrqmYe9TCJHuYWG2jCcUWVn5259lJARsV/a3PINFE=;
-        b=XQYXy+zWldHiBuIns2EtlPIjzIamKmUSjRheQBYZ0T3tsbMgnmiiGTU6o06Faq+pz5
-         D8HglteAq0PQOacRTjoIeZnpV5A7BqSKBdNZCV9NzHw8aerMVGSvHbUo8KyoWko53pyo
-         Q7QkSFBQnikubGL+7AzV+drlUcrpwons5PYGY6mDvOvbuez50ZORm0cWkbb/OOslFTgf
-         7a+A9G/a/tc1sLvxH6X0yvGydQyqGKP7SGpLWPpudrE26AGEnU84JVdo0orhQVz+W0/Z
-         AV07Y8hDjqiMaQbpW5BmKbc4aYcSxG1xjWwuNsGoxBZYrsv1QfOrQ7WiLEfHdaUnEDmg
-         g9Wg==
-X-Forwarded-Encrypted: i=1; AJvYcCUKh8TeSfhhtBzC5nGJAcSCSat1dpJA7xMBF6gJw527FIDsvad5aE4h16zlhYM4NKr+sYNaj1jvoyqDT2/6MLA=@lists.infradead.org, AJvYcCULJJbxVwRbtzIK78BGRsMC9sYc1PjLI+noAd+cuRq2G6PpyeOD5htwGrYP+980iYPcr08cYjIOTQOh@lists.infradead.org, AJvYcCUMOqvntwMRqIpkaluQQWpvot6WwrPOpj09/W+dAgSV4qhtpqFEbt/kbeIjvJiq3jeR5ztBueDzhC+r/D8vmIWnbA==@lists.infradead.org, AJvYcCV3IeoCKjZGiMT8GtoTk+EvLV2k8bnvnAeLXyAyFlqpJVS0E8xCYM4mDM0wKkhy6jesA1DM2FGlKpcvDBjezjA=@lists.infradead.org, AJvYcCV8vXWSNrDhWuzR7SZyFeYNWxHSKY5hPPA/pv3XD/MHpJo7EdGCAJKWnsXV8KbKV1IJky4hQib8IpUpbYwF@lists.infradead.org
-X-Gm-Message-State: AOJu0YwEmsffPNIfxb3eTE6ixHo27IzX9+fqcxHkkxhTj6g6Vh4O63OB
-	akSn/RFgLllXPsQxIwO/uKItHxz+kGZV4Y6zwrOJxdPcwFFmThFl02ay
-X-Gm-Gg: ASbGnctck+xuNSkRFKw0FQdEMq9CDUt+DPBvSMIab4iDckQ7MkyHkRivJi7pBwJHG+X
-	e22ISRhYGN7CddTDcj+TZzz5l6u6Js/nrfeduhqL4tYMLQd6thtUzBrYvogVv8n0qYFTTcVdpKP
-	1Fe1N6/GrfcSbJupRkSJmAkJLpCOdjDmmLgi94NXtMFyA1sztabDM7r3Wv7OLRZHKwdpCzkQvUL
-	e9sZrMrdVG4AVTdebShr38LY3MOvSy0mvXKv26cCrc576ZN4cBmzUjKhw6zsoU1SJioCyW4XKLL
-	lDUUXQPUSTbJfHrV8hTm9Dc/7jnXbYmouqm8wAfAXWSchaxRMg==
-X-Google-Smtp-Source: AGHT+IFaquJkOuj7GD/t4hRYC7j2CE8mxqIujMtOYOepN4kjeXyf+EKHtvQBv03/JpyXmxYQUG4sHA==
-X-Received: by 2002:a05:620a:1a1a:b0:7c5:95e6:ce1d with SMTP id af79cd13be357-7d4438566f9mr2476294085a.0.1751387143543;
-        Tue, 01 Jul 2025 09:25:43 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:55e2::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6fd772e4305sm86349236d6.66.2025.07.01.09.25.22
+        bh=H69zG5gO7h9M6iKs5G+TtTbg5NtVZiozRw1J2ZHqQt8=;
+        b=EcfwYkY5+tO0XG8kXqtdc076W1pJBdwaTE+r49tLvYqqCFIBsytd23MVmlRX5lGlZo
+         jP5vDf9qtrlqde1NR7hcFZ8nEnMBEuUrLQYqUm0yU/o/nQq2TItx6/KMoHYSQo0ggTIq
+         22RdbO11lCtxZpc5iQ9+COWBUOCTLqeWhPUWzGASCPcoHioC4rmILEcdQB3aCl06k2Ec
+         Yi50DDnGLjZNTyclS3cjNd4DzUGhyRV+JZCp4Sb3bh1fWGpfXT3wf1sTaNgGbMgRwvbM
+         66urYiJfGDy/f0JiHB1rZZbC07CF2FXOf3lGCyC5qOrZ8Rk7TIizux4gXQFVYHxDEEqe
+         SSlg==
+X-Forwarded-Encrypted: i=1; AJvYcCU9IfheQqaRDQuT6h123AVUsSQzKy94lpp3++L3yP8EOsjD/v3F0q+Z/pJcHt5zCXgu3F3IYSIo+DiFccN8xgY=@lists.infradead.org, AJvYcCUw2IEJpm54lBEJPFoGF29J30PBWJmMGLbuz48kB9WWlRug4oWxzejvcIyl9sc2Rbeo38nW5pl5DxsD@lists.infradead.org, AJvYcCWkuDQ09Z+43kyIqq21j3Sjs4PpoWWaSigFuiKzDaG+IQsXJu7ooPHFfuE+oaShy8YvvRxn3QyVbH29GVPu@lists.infradead.org, AJvYcCXMQXlA/V70u6GuxBcC/ipjnou/wkZdgDT9OkH4ENp2Xuc8K6mizY89CYuoxkh172syoHRFaq9ZvVKVzDewGyo=@lists.infradead.org, AJvYcCXMwFeClWt0e+ykAjh1Mdv5I296SJDiJtxdR8mCMN355NCVYa/qv7BbrODn4ABzK5rdtV+Sqmu8pop0noKfGRxdwA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz1CJMLRCUo9o1fo5Hu5dq1xHZnwYXKe85bzbId0sB58hyH29NT
+	QR7wY+nGZfwCwWsQnhqgqj71jYyxh7ANqVASWjTz2LwueCL1Tdxs+wgz
+X-Gm-Gg: ASbGncsv4hTuxCnUsZXINKXwzKb+L6xDUxpZCfB4PmVlZok5OlsqOE8IHSzE32utws0
+	5dJj+xU7Aw6PC2oyzApAerH/JJOvtso+E3Ha04ITCxo4kvNYYBfpvo1AnN9p+ziLaXm/GVKCdDz
+	rUVw9RplGM+0EtT0VUlZB1TGrtV+ypGCCiMtwqBVK5g+9qCUgqQ8GctO4AbFkqnox2cYpViehJy
+	kuGiZHrk7A7100wf0NffZvSg+dVnzh2NceqtI+OsKW+fEzPIvg7i6ecR+UI/US7mJ1UI/EoAs0c
+	qEHaNlFgFVThxGQsxO2Sn/YHKSnzMQyFgoUXIyMuKRHrlKSzov2aucS+A91U
+X-Google-Smtp-Source: AGHT+IFGwV5rgzZNlThD3qZhxiETqJeu0UK36HZAls92ncvO2dh0OxLl48BruxfcxiFAUDT+MVUh3g==
+X-Received: by 2002:a05:6214:d08:b0:6e8:fbb7:675b with SMTP id 6a1803df08f44-7000291854amr270803556d6.32.1751383536220;
+        Tue, 01 Jul 2025 08:25:36 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:517d::dead:c001])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6fd771acfe6sm85521916d6.31.2025.07.01.08.25.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Jul 2025 09:25:43 -0700 (PDT)
-Date: Tue, 1 Jul 2025 13:25:19 -0300
+        Tue, 01 Jul 2025 08:25:35 -0700 (PDT)
+Date: Tue, 1 Jul 2025 12:25:12 -0300
 From: Geraldo Nascimento <geraldogabriel@gmail.com>
 To: Waqar Hameed <waqar.hameed@axis.com>
 Cc: Vignesh Raghavendra <vigneshr@ti.com>,
@@ -147,16 +147,14 @@ Cc: Vignesh Raghavendra <vigneshr@ti.com>,
 	linux-arm-msm@vger.kernel.org, linux-usb@vger.kernel.org,
 	sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org
 Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
-Message-ID: <aGQL72Ssa4RHShIp@geday>
+Message-ID: <aGP92Aqcxt-x78nu@geday>
 References: <pnd7c0s6ji2.fsf@axis.com>
- <aGP92Aqcxt-x78nu@geday>
- <pndsejf6g5k.fsf@axis.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <pndsejf6g5k.fsf@axis.com>
+In-Reply-To: <pnd7c0s6ji2.fsf@axis.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_092545_046339_75702DD3 
-X-CRM114-Status: GOOD (  24.85  )
+X-CRM114-CacheID: sfid-20250701_082537_963138_1CEF01A4 
+X-CRM114-Status: GOOD (  15.51  )
 X-Mailman-Approved-At: Wed, 06 Aug 2025 03:45:50 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -174,40 +172,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 01, 2025 at 06:15:51PM +0200, Waqar Hameed wrote:
-> On Tue, Jul 01, 2025 at 12:25 -0300 Geraldo Nascimento <geraldogabriel@gmail.com> wrote:
-> 
-> > [Some people who received this message don't often get email from geraldogabriel@gmail.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
-> >
-> > On Tue, Jul 01, 2025 at 05:03:33PM +0200, Waqar Hameed wrote:
-> >> When `devm_add_action_or_reset()` fails, it is due to a failed memory
-> >> allocation and will thus return `-ENOMEM`. `dev_err_probe()` doesn't do
-> >> anything when error is `-ENOMEM`. Therefore, remove the useless call to
-> >> `dev_err_probe()` when `devm_add_action_or_reset()` fails, and just
-> >> return the value instead.
-> >
-> > Hi Waqar,
-> >
-> > thank you for the patch. However I personally advise you to split the
-> > patches per-file and remember to then precede each individual patch
-> > subject with the proper subsystem and driver touched.
-> >
-> > While this looks like a nit-pick, it really isn't, and my suggestion
-> > will make reviewing much more easier and you'll get your Reviewed-by's
-> > and Acked-by's much more smoothly.
-> >
-> > The cover-letter should probably be preceded by "treewide" instead of
-> > a specific subsystem.
-> 
-> Thank you for the suggestion Geraldo! I will do that (as also answered
-> to David).
+On Tue, Jul 01, 2025 at 05:03:33PM +0200, Waqar Hameed wrote:
+> When `devm_add_action_or_reset()` fails, it is due to a failed memory
+> allocation and will thus return `-ENOMEM`. `dev_err_probe()` doesn't do
+> anything when error is `-ENOMEM`. Therefore, remove the useless call to
+> `dev_err_probe()` when `devm_add_action_or_reset()` fails, and just
+> return the value instead.
 
-You're welcome Waqar! Note that David's suggestion is even smarter than
-mine: instead of patch-bombing lots of maintainers with changes unrelated
-to their subsystems through a treewide change, he suggests you split the
-patch into one series per subsystem. This is indeed advisable.
+Hi Waqar,
 
-Thanks,
+thank you for the patch. However I personally advise you to split the
+patches per-file and remember to then precede each individual patch
+subject with the proper subsystem and driver touched.
+
+While this looks like a nit-pick, it really isn't, and my suggestion
+will make reviewing much more easier and you'll get your Reviewed-by's
+and Acked-by's much more smoothly.
+
+The cover-letter should probably be preceded by "treewide" instead of
+a specific subsystem.
+
+Thank you,
 Geraldo Nascimento
 
 _______________________________________________
