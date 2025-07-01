@@ -4,52 +4,184 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDEAACD13DD
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:28:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F08B7CD13DF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:28:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Qujgm/Fc9XqttegZcpZLOttgnT12dcMbECL+U2pgWWE=; b=eSa/lU9r3HbH5W
-	yc2zJcmFxOGbpkwyN1ywbHVRZl6RqQMdKgMoJvGkvg5iS8R11OtDO+xl9m6Xzj7iOYxfODscbB8e5
-	sb/3FvadillJ66AD/htkuJ/hbw5uy9+7GBwDwIJprZlN/UJLoFfT1fko47sUgaBqIy56PBHxLqIRH
-	tMpsE2iprpx4/k5eop9vy99VDf1mk3d7pDPvqI5FBiMyasUlQEF87xpNsSWweHPYX9h6o4AYOjRd3
-	AQBKtkEPC0ytIbsc9F37De76sapKAOpHpoQa+h61x8oWu68obAgpAYQFLVHHofeG57dHD40MsgINm
-	b3F1tGSJImwmiOBb0Rxg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/1IZj5nqUDJB+KvjCBRbkzokJSgZpw1ij39uwIdYOwo=; b=zDcEk0x4a6HbXj
+	lxumsJMl26TkgNAj3vZ1EoHsApg2Yo28AfIUYHtd0eLhr0D9v2i7GfQOi7cACbLhHaN24wnK/5YDn
+	dJZDTi3Io8SMFYR4og+Hds/rWwrRHqi5rnk52IVeHmiWnn2TGrkrIiK+OlObO86DG1UMYL0oYdYmm
+	t8xTQJ89yA/BJ/BVT3ERhW1zF5Te41zohQLLmjWAwVeM4pWReNAaPp5ww/fT0sQZUxFUZrT+KnGHg
+	D20qu5y/bZEc4Dr94aPp4GweymJE+JS1+AKxU/eq445Ovp3Y9HczGdIqCupJrseATAs+k/8Daw55/
+	0qZPUikbRdlwxKsxe3Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGz6a-0000000FRV1-3kJl;
-	Thu, 06 Nov 2025 12:28:44 +0000
-Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1vGz6Y-0000000FROo-12hE;
+	Thu, 06 Nov 2025 12:28:42 +0000
+Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umE92-0000000ELYz-3guc
-	for linux-rockchip@lists.infradead.org;
-	Wed, 13 Aug 2025 16:16:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding; s=k1; bh=8r/LCX9rzyog3y
-	rylwFjwRMpIaemTxzslMXi3Wwcda8=; b=QCJ48aONHnHPI67IOJ/3D8OQB3Cd/k
-	va3dqQAxVecMFTPLNQfZkeRCBnr21f5AP85A+ko/Co2kn3d1vUsGdjjGnQSoqHT/
-	XhtDURAzo7LNMG2Hw6aJkJP1nHKCJDt/I4UFOhqYSkFA3npSGKStA4S5hsN3gfb8
-	C8iP/CLkf5T/WRnlry5E/M4rY/ikuUABioRBeFix0sZAgPzikWKDzZXwcrM/PlZn
-	9QF5GBzn0iIdqib/tI3qtiZXmnTMTK2djC7YMTKPNRHBv7OXt7TeyHMZFzQFHHD9
-	4yuXLJeM/fwFHXJlvGUnp8QGyn4bljRJZaBZSVKQgiNlixK49bkom2HA==
-Received: (qmail 694422 invoked from network); 13 Aug 2025 18:15:54 +0200
-Received: by mail.zeus03.de with UTF8SMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 13 Aug 2025 18:15:54 +0200
-X-UD-Smtp-Session: l3s3148p1@6vOVeEE8NodtKLKq
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: linux-kernel@vger.kernel.org
-Cc: Mark Brown <broonie@kernel.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Adrian Hunter <adrian.hunter@intel.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Alim Akhtar <alim.akhtar@samsung.com>, Andrea della Porta <andrea.porta@suse.com>, =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, Andy Shevchenko <andy@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, Avi Fishman <avifishman70@gmail.com>, Bartosz Golaszewski <brgl@bgdev.pl>, Benjamin Fair <benjaminfair@google.com>, Bjorn Andersson <andersson@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, David Airlie <airlied@gmail.com>, David Lechner <dlechner@baylibre.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Drew Fustini <fustini@kernel.org>, dri-devel@lists.freedesktop.org, Fabio Estevam <festevam@gmail.com>, Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Fu Wei <wefu@redhat.com>, Guo Ren <guoren@kernel.org>, Hans Verkuil <hverkuil@kernel.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, imx@lists.linux.dev, Iwona Winiarska <iwona.winiarska@intel.com>, Jaroslav Kysela <perex@perex.cz>, Jassi Brar <jassisinghbrar@gmail.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>, Jonas Karlman <jonas@kwiboo.se>, Jonathan Cameron <jic23@kernel.org>, Kevin Hilman <khilman@baylibre.com>, Kishon Vijay Abraham I <kishon@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Lee Jones <lee@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, linux-actions@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-clk@vger.kernel.org, linux-gpio@vger.kernel.org, linux-iio@vger.kernel.org, linux-input@vger.kernel.org, linux-media@vger.kernel.org, linux-mmc@vger.kernel.org, linux-phy@lists.infradead.org, linux-pm@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-pwm@vger.kernel.org, linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-rtc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-sound@vger.kernel.org, linux-spi@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, Liu Ying <victor.liu@nxp.com>, Lukasz Luba <lukasz.luba@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Manivannan Sadhasivam <mani@kernel.org>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Maxime Ripard <mripard@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Nancy Yuen <yuenn@google.com>, Neil Armstrong <neil.armstrong@linaro.org>, Nicolin Chen <nicoleotsuka@gmail.com>, =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>, openbmc@lists.ozlabs.org, Patrick Venture <venture@google.com>, Paul Walmsley <paul.walmsley@sifive.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, "Rafael J. Wysocki" <rafael@kernel.org>, Robert Foss <rfoss@kernel.org>, Samuel Holland <samuel.holland@sifive.com>, Samuel Holland <samuel@sholland.org>, Sandy Huang <hjc@rock-chips.com>, Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, Shengjiu Wang <shengjiu.wang@gmail.com>, Simona Vetter <simona@ffwll.ch>, Stephen Boyd <sboyd@kernel.org>, Takashi Iwai <tiwai@suse.com>, Tali Perry <tali.perry1@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Tomer Maimon <tmaimon77@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Vasily Khoruzhick <anarsoul@gmail.com>, Vinod Koul <vkoul@kernel.org>, Vladimir Zapolskiy <vz@mleia.com>, Xiubo Li <Xiubo.Lee@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>, Zhang Rui <rui.zhang@intel.com>
-Subject: [PATCH 00/21] treewide: remove unneeded 'fast_io' parameter in regmap_config
-Date: Wed, 13 Aug 2025 18:14:46 +0200
-Message-ID: <20250813161517.4746-1-wsa+renesas@sang-engineering.com>
-X-Mailer: git-send-email 2.47.2
+	id 1uWdeF-0000000607F-3xIl;
+	Tue, 01 Jul 2025 16:15:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=vdZ0aQoiKWMy/+U+OjZ6VgOvZ1kpBWQ7ZlgSFGuIi2fJzt1dV/UrKEdL05O4pT9oatbamoInnas17lQe6BIzTE4BnLZOxQuP5b1/mIWx0KIkzm/ZYt8DW2S7TPxLiPwht6byt5S1vzqpBBVKek/ehBPZ9rGoHH9ZOakp3tM48UWXhbDnMNOAIJ9tn0nicMboHsoo8inGdT5U+8esvhY24haaigBf/xViWUdhiO9h8Iqy12vmsCh5ZlnH/VYjYJ9DYFtBL5/B9IlN71N6kGSick1tK4D7QgQMSZnEo4Pps89O62GU7KYIG2AIidtSs9yNWoGDm7P9SUZZZ2NSbfwEGg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=hQ7P2ntSObQjOdUtoLXQN/5jfsoQGPMkvrHC1iauVgs=;
+ b=i8iEIE9xEZ0VUBVCEDhxkbpBoQO3t2kYjfO1nClSSGEVgeexcgfcbuUBOh5dWSPOjNXpHJ74+9cwKzqR/79yC9OTT5B9DjE1x0UiSNLldRJ6GrHgu3WitbAOKBJrOGwdaL9NQ7UNdA37S3CPoulIq5OnRGR6ezwNwEXHGkLT6+iCMAZ5wda/6j1t36sxwWLZ2lLw7Z3YwevPqnHrYgSyyGWhX8Du8Xp7yw5BT/Zhqwbd3XYxJCcCbXvvSADYrH3AKs8jtPIFttBI5ZVKMJTnmM2GQtykPDECddHmFjQxq3KFvZrf5mvZh99vkHikj6mUOIf1EpKpsaLABFYhyq4eYg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 195.60.68.100) smtp.rcpttodomain=vger.kernel.org smtp.mailfrom=axis.com;
+ dmarc=pass (p=none sp=none pct=100) action=none header.from=axis.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axis.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hQ7P2ntSObQjOdUtoLXQN/5jfsoQGPMkvrHC1iauVgs=;
+ b=d8byZ8S7WUnXp0RLtMoQx/nVuuaigcAC3TzT8KNIzmD7RkNobcGgd+uDg4t7qAo/wgh/nRCVU/M9RpxRHPNEO/i1eh23t9Dri4nKdwPjy4airyYt4EH2JHoGXzjQCUiDP3Xc1tse8feYR5RsxwjvSRnZqozJ/Us1hKHPIa22Q0Q=
+Received: from DU2PR04CA0017.eurprd04.prod.outlook.com (2603:10a6:10:3b::22)
+ by VI0PR02MB10729.eurprd02.prod.outlook.com (2603:10a6:800:206::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8880.25; Tue, 1 Jul
+ 2025 16:15:52 +0000
+Received: from DB1PEPF000509FD.eurprd03.prod.outlook.com
+ (2603:10a6:10:3b:cafe::93) by DU2PR04CA0017.outlook.office365.com
+ (2603:10a6:10:3b::22) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8901.19 via Frontend Transport; Tue,
+ 1 Jul 2025 16:15:52 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 195.60.68.100)
+ smtp.mailfrom=axis.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=axis.com;
+Received-SPF: Pass (protection.outlook.com: domain of axis.com designates
+ 195.60.68.100 as permitted sender) receiver=protection.outlook.com;
+ client-ip=195.60.68.100; helo=mail.axis.com; pr=C
+Received: from mail.axis.com (195.60.68.100) by
+ DB1PEPF000509FD.mail.protection.outlook.com (10.167.242.39) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.8901.15 via Frontend Transport; Tue, 1 Jul 2025 16:15:52 +0000
+Received: from pc52311-2249 (10.4.0.13) by se-mail01w.axis.com (10.20.40.7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.44; Tue, 1 Jul
+ 2025 18:15:51 +0200
+From: Waqar Hameed <waqar.hameed@axis.com>
+To: Geraldo Nascimento <geraldogabriel@gmail.com>
+CC: Vignesh Raghavendra <vigneshr@ti.com>, Julien Panis <jpanis@baylibre.com>,
+	William Breathitt Gray <wbg@kernel.org>, Linus Walleij
+	<linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Peter Rosin
+	<peda@axentia.se>, Jonathan Cameron <jic23@kernel.org>, David Lechner
+	<dlechner@baylibre.com>, Nuno =?utf-8?Q?S=C3=A1?= <nuno.sa@analog.com>, "Andy
+ Shevchenko" <andy@kernel.org>, Cosmin Tanislav <cosmin.tanislav@analog.com>,
+	Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich
+	<Michael.Hennerich@analog.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Matteo
+ Martelli" <matteomartelli3@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+	Francesco Dolcini <francesco@dolcini.it>, =?utf-8?Q?Jo=C3=A3o?= Paulo
+ =?utf-8?Q?Go?= =?utf-8?Q?n=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>,
+	Hugo Villeneuve <hvilleneuve@dimonoff.com>, Subhajit Ghosh
+	<subhajit.ghosh@tweaklogic.com>, Mudit Sharma <muditsharma.info@gmail.com>,
+	Gerald Loacker <gerald.loacker@wolfvision.net>, Song Qiang
+	<songqiang1304521@gmail.com>, Crt Mori <cmo@melexis.com>, Dmitry Torokhov
+	<dmitry.torokhov@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>, "Karol
+ Gugala" <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>,
+	Gabriel Somlo <gsomlo@gmail.com>, Joel Stanley <joel@jms.id.au>, "Claudiu
+ Manoil" <claudiu.manoil@nxp.com>, Vladimir Oltean <vladimir.oltean@nxp.com>,
+	Wei Fang <wei.fang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, "Andrew
+ Lunn" <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, "Eric
+ Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, "Paolo
+ Abeni" <pabeni@redhat.com>, Vinod Koul <vkoul@kernel.org>, "Kishon Vijay
+ Abraham I" <kishon@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, "Alim
+ Akhtar" <alim.akhtar@samsung.com>, Sebastian Reichel <sre@kernel.org>, Uwe
+ =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Neil Armstrong
+	<neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, "Jerome
+ Brunet" <jbrunet@baylibre.com>, Martin Blumenstingl
+	<martin.blumenstingl@googlemail.com>, Han Xu <han.xu@nxp.com>, Haibo Chen
+	<haibo.chen@nxp.com>, Yogesh Gaur <yogeshgaur.83@gmail.com>, Mark Brown
+	<broonie@kernel.org>, Avri Altman <avri.altman@wdc.com>, Bart Van Assche
+	<bvanassche@acm.org>, "James E.J. Bottomley"
+	<James.Bottomley@hansenpartnership.com>, "Martin K. Petersen"
+	<martin.petersen@oracle.com>, Souradeep Chowdhury
+	<quic_schowdhu@quicinc.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Liam Girdwood <lgirdwood@gmail.com>, Peter Ujfalusi
+	<peter.ujfalusi@linux.intel.com>, Bard Liao
+	<yung-chuan.liao@linux.intel.com>, Ranjani Sridharan
+	<ranjani.sridharan@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>, Pierre-Louis Bossart
+	<pierre-louis.bossart@linux.dev>, Jaroslav Kysela <perex@perex.cz>, "Takashi
+ Iwai" <tiwai@suse.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+	<s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>, <kernel@axis.com>,
+	<linux-iio@vger.kernel.org>, <linux-omap@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-gpio@vger.kernel.org>,
+	<linux-i2c@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-input@vger.kernel.org>, <linux-mmc@vger.kernel.org>,
+	<imx@lists.linux.dev>, <netdev@vger.kernel.org>,
+	<linux-phy@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
+	<linux-pm@vger.kernel.org>, <linux-pwm@vger.kernel.org>,
+	<linux-amlogic@lists.infradead.org>, <linux-spi@vger.kernel.org>,
+	<linux-scsi@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-usb@vger.kernel.org>, <sound-open-firmware@alsa-project.org>,
+	<linux-sound@vger.kernel.org>
+Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
+In-Reply-To: <aGP92Aqcxt-x78nu@geday> (Geraldo Nascimento's message of "Tue, 1
+	Jul 2025 12:25:12 -0300")
+References: <pnd7c0s6ji2.fsf@axis.com> <aGP92Aqcxt-x78nu@geday>
+User-Agent: a.out
+Date: Tue, 1 Jul 2025 18:15:51 +0200
+Message-ID: <pndsejf6g5k.fsf@axis.com>
 MIME-Version: 1.0
+X-Originating-IP: [10.4.0.13]
+X-ClientProxiedBy: se-mail01w.axis.com (10.20.40.7) To se-mail01w.axis.com
+ (10.20.40.7)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB1PEPF000509FD:EE_|VI0PR02MB10729:EE_
+X-MS-Office365-Filtering-Correlation-Id: bd7d811a-d9a8-44e6-867e-08ddb8ba8cf9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|1800799024|36860700013|376014|7416014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?14j9Gc2362zNkZ9kPgdtwQVmz/gFEzVAs3qF7WLLgFezF2FaqY+pxd9i2tpw?=
+ =?us-ascii?Q?7Rpcga+vh6c4ki4aPPSTQ0rK6PSSyOP4n3EUaLREu7jVjZXstQRF1sAhz4jV?=
+ =?us-ascii?Q?2iCEnPdpiT4aRTiQeNnRKrzwVOnR4NXfhpr07Ai8w8V0++O5l4APNi+ewqMs?=
+ =?us-ascii?Q?1r5+/z85keCRoc8f1OLXaEy91t2uamgvti9ys7QCvXFF3IopW8KrfI8wV6bk?=
+ =?us-ascii?Q?tQLlRe/td1ohhE5twgd//1VZkeSoKlkrhFY1iOrEUKJG4EROK2iPXkPffE9U?=
+ =?us-ascii?Q?OAbjhyIsolMaAJGRINH/QsziNE7EBc6A6CKA1JrW7W8mkw1hChOKckNMwh1k?=
+ =?us-ascii?Q?4uYH1Dc9onotaGRXEntot5Z6WYrwqyg24lFI5bJi2m4XjC9nOjxYjrZnKp46?=
+ =?us-ascii?Q?yHaPPiuIIfS/pzzAIYwSnbpKRHmMpivjG/Bazk6Br63ufKqqfUAmdZYPwMiD?=
+ =?us-ascii?Q?wunMXesIYcnmptCw7d5SNlYieniu5w15yPUmg/FeRFSUH3TwMMql+NcsyZ+L?=
+ =?us-ascii?Q?3i6GLyjAlLUaSdVEAWMo7bHOwUcrzAHgJWFW0N1n2LfW1EDU3OKNYBs/+YX8?=
+ =?us-ascii?Q?hC48rfZJLJAOOYEMD/FRZhgGrRTU4Zejl0udHZ0xJueMK02nME9x6sBk27Db?=
+ =?us-ascii?Q?FYDI+LHfu0cPKCvWce9kL78sZR118sbAmEwR71C7rPmPJtWrfsy5OMJ0v2YK?=
+ =?us-ascii?Q?3jLWPxu2FgRl6843NaFFBSyuUHpMebTqCZF4NAL0c9tsI7UcnPJHXKd9LxUW?=
+ =?us-ascii?Q?2zqgDtFHUym+UpdZNULVOCZWSmO/jSWKIPWJFkY2+g+ODI1L3pFvoEkNQecy?=
+ =?us-ascii?Q?6EXCDc7MCDeqOxRN/miflo/kzA2nAY7HHaqYRiYckpZ/nveLH1+5SkWprqYp?=
+ =?us-ascii?Q?YLf55IKeX4yoJSN+NmHK2s3Mh+zig6WC3n2pz3BTL+cHzek2Yo5jSR8ob0iq?=
+ =?us-ascii?Q?LJcz9j9LAbEhKJl8lt3U5RrKVpKbV7inz9FduC1d0usMHagNuGkbyusvv798?=
+ =?us-ascii?Q?/E7LoMTHVphVPQ0rTEEtVUZ0Dp9LW6NIAj7FJnP4TyAoK7kCtWcunognpMy+?=
+ =?us-ascii?Q?rVnY93uwzgcLNU0EyQZ1fKyEDvw5jAKBxDZPxMpOhCdbonbmFhq1pAHUmg0G?=
+ =?us-ascii?Q?BGfC/txnN9VQJK19HfOZRIUhgcrCkYhsBrlAJJ4phovWR9lwO9opgj2My6w1?=
+ =?us-ascii?Q?3apEOBUxxrxwq9Km8p2YDAGHmDnnWnEyyq0dDwn9ItjdorAjNMdybS8CS18s?=
+ =?us-ascii?Q?574YahChvqEQGifaDbjEPWILrq+h02Q8siCLJkX96SNCAaJBxEIaKsO2EQG1?=
+ =?us-ascii?Q?gENi0B58E810bl+AoTdmgsi+As5ba0mR/6MetMR5EhcmdDbPlq6TRSTn6lgn?=
+ =?us-ascii?Q?u4CZJXMGTpx+oxl4m1OIff10gm8vU2VONFddeVnVPfzDnjiQOprfF6Utp+86?=
+ =?us-ascii?Q?LW9vX0del8tgAepWZaQvNry74PIGhDTGi3U3dwKmBXVo3EMFiB1uPIC7XNfi?=
+ =?us-ascii?Q?J33ChwFmJ8exVGjjqRxze65hhzwTsUrrgWA7?=
+X-Forefront-Antispam-Report: CIP:195.60.68.100;CTRY:SE;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.axis.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(82310400026)(1800799024)(36860700013)(376014)(7416014);DIR:OUT;SFP:1101;
+X-OriginatorOrg: axis.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jul 2025 16:15:52.4461
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: bd7d811a-d9a8-44e6-867e-08ddb8ba8cf9
+X-MS-Exchange-CrossTenant-Id: 78703d3c-b907-432f-b066-88f7af9ca3af
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=78703d3c-b907-432f-b066-88f7af9ca3af;Ip=[195.60.68.100];Helo=[mail.axis.com]
+X-MS-Exchange-CrossTenant-AuthSource: DB1PEPF000509FD.eurprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR02MB10729
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250813_091609_191654_D1BE40BE 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20250701_091555_989487_468F36DA 
+X-CRM114-Status: GOOD (  19.34  )
 X-Mailman-Approved-At: Thu, 06 Nov 2025 04:28:36 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,135 +199,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-While working on a driver using regmap with MMIO, I wondered if I need
-to set 'fast_io' in the config. Turned out I don't need to, so I added
-documentation for it with commit ffc72771ff6e ("regmap: Annotate that
-MMIO implies fast IO").
+On Tue, Jul 01, 2025 at 12:25 -0300 Geraldo Nascimento <geraldogabriel@gmail.com> wrote:
 
-This series fixes the existing users in the tree which needlessly set
-the flag. They have been found using this coccinelle script:
+> [Some people who received this message don't often get email from geraldogabriel@gmail.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
+>
+> On Tue, Jul 01, 2025 at 05:03:33PM +0200, Waqar Hameed wrote:
+>> When `devm_add_action_or_reset()` fails, it is due to a failed memory
+>> allocation and will thus return `-ENOMEM`. `dev_err_probe()` doesn't do
+>> anything when error is `-ENOMEM`. Therefore, remove the useless call to
+>> `dev_err_probe()` when `devm_add_action_or_reset()` fails, and just
+>> return the value instead.
+>
+> Hi Waqar,
+>
+> thank you for the patch. However I personally advise you to split the
+> patches per-file and remember to then precede each individual patch
+> subject with the proper subsystem and driver touched.
+>
+> While this looks like a nit-pick, it really isn't, and my suggestion
+> will make reviewing much more easier and you'll get your Reviewed-by's
+> and Acked-by's much more smoothly.
+>
+> The cover-letter should probably be preceded by "treewide" instead of
+> a specific subsystem.
 
-===
-
-@ match @
-expression dev, clk, regs;
-identifier config;
-@@
-
-(
-	regmap_init_mmio(dev, regs, &config)
-|
-	devm_regmap_init_mmio(dev, regs, &config)
-|
-	regmap_init_mmio_clk(dev, clk, regs, &config)
-|
-	devm_regmap_init_mmio_clk(dev, clk, regs, &config)
-)
-
-@ fix depends on match @
-identifier match.config;
-@@
-
-	struct regmap_config config = {
--	.fast_io = true,
-	};
-
-===
-
-It misses occasions where 'config' is an expression and not an
-identifier. These are rare, though, I can fix them manually later. The
-advantage of this approach is that it produces no false positives to the
-best of my knowledge.
-
-Please apply individually per subsystem. There are no dependencies and
-buildbot is happy. Patches are based on 6.17-rc1
-
-Happy hacking,
-
-   Wolfram
-
-
-Wolfram Sang (21):
-  bus: remove unneeded 'fast_io' parameter in regmap_config
-  clk: remove unneeded 'fast_io' parameter in regmap_config
-  gpio: remove unneeded 'fast_io' parameter in regmap_config
-  drm: remove unneeded 'fast_io' parameter in regmap_config
-  iio: remove unneeded 'fast_io' parameter in regmap_config
-  Input: remove unneeded 'fast_io' parameter in regmap_config
-  mailbox: remove unneeded 'fast_io' parameter in regmap_config
-  media: remove unneeded 'fast_io' parameter in regmap_config
-  mfd: remove unneeded 'fast_io' parameter in regmap_config
-  mmc: remove unneeded 'fast_io' parameter in regmap_config
-  peci: remove unneeded 'fast_io' parameter in regmap_config
-  phy: remove unneeded 'fast_io' parameter in regmap_config
-  pinctrl: remove unneeded 'fast_io' parameter in regmap_config
-  pmdomain: remove unneeded 'fast_io' parameter in regmap_config
-  regulator: remove unneeded 'fast_io' parameter in regmap_config
-  reset: remove unneeded 'fast_io' parameter in regmap_config
-  rtc: remove unneeded 'fast_io' parameter in regmap_config
-  soc: remove unneeded 'fast_io' parameter in regmap_config
-  spi: remove unneeded 'fast_io' parameter in regmap_config
-  thermal: remove unneeded 'fast_io' parameter in regmap_config
-  ASoC: remove unneeded 'fast_io' parameter in regmap_config
-
- drivers/bus/bt1-apb.c                             | 1 -
- drivers/clk/actions/owl-common.c                  | 1 -
- drivers/clk/clk-axm5516.c                         | 1 -
- drivers/clk/nxp/clk-lpc32xx.c                     | 1 -
- drivers/clk/qcom/a53-pll.c                        | 1 -
- drivers/clk/qcom/a7-pll.c                         | 1 -
- drivers/clk/qcom/apss-ipq-pll.c                   | 1 -
- drivers/clk/qcom/clk-cbf-8996.c                   | 1 -
- drivers/clk/qcom/clk-cpu-8996.c                   | 1 -
- drivers/clk/qcom/hfpll.c                          | 1 -
- drivers/clk/qcom/ipq-cmn-pll.c                    | 1 -
- drivers/clk/thead/clk-th1520-ap.c                 | 1 -
- drivers/gpio/gpio-mvebu.c                         | 1 -
- drivers/gpio/gpio-sifive.c                        | 1 -
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c    | 1 -
- drivers/gpu/drm/imx/dc/dc-cf.c                    | 1 -
- drivers/gpu/drm/imx/dc/dc-de.c                    | 1 -
- drivers/gpu/drm/imx/dc/dc-ed.c                    | 2 --
- drivers/gpu/drm/imx/dc/dc-fg.c                    | 1 -
- drivers/gpu/drm/imx/dc/dc-fl.c                    | 1 -
- drivers/gpu/drm/imx/dc/dc-fw.c                    | 2 --
- drivers/gpu/drm/imx/dc/dc-ic.c                    | 1 -
- drivers/gpu/drm/imx/dc/dc-lb.c                    | 2 --
- drivers/gpu/drm/imx/dc/dc-tc.c                    | 1 -
- drivers/gpu/drm/imx/ipuv3/imx-tve.c               | 2 --
- drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c  | 1 -
- drivers/iio/adc/sun4i-gpadc-iio.c                 | 1 -
- drivers/input/touchscreen/fsl-imx25-tcq.c         | 1 -
- drivers/mailbox/qcom-apcs-ipc-mailbox.c           | 1 -
- drivers/media/cec/platform/stm32/stm32-cec.c      | 1 -
- drivers/mfd/exynos-lpass.c                        | 1 -
- drivers/mfd/fsl-imx25-tsadc.c                     | 1 -
- drivers/mfd/stm32-lptimer.c                       | 1 -
- drivers/mfd/sun4i-gpadc.c                         | 1 -
- drivers/mmc/host/sdhci_am654.c                    | 1 -
- drivers/peci/controller/peci-npcm.c               | 1 -
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 1 -
- drivers/phy/rockchip/phy-rockchip-usbdp.c         | 1 -
- drivers/phy/ti/phy-am654-serdes.c                 | 1 -
- drivers/phy/ti/phy-j721e-wiz.c                    | 1 -
- drivers/pinctrl/pinctrl-rp1.c                     | 1 -
- drivers/pmdomain/imx/gpc.c                        | 1 -
- drivers/regulator/qcom-refgen-regulator.c         | 1 -
- drivers/reset/reset-intel-gw.c                    | 1 -
- drivers/reset/reset-qcom-pdc.c                    | 1 -
- drivers/reset/reset-th1520.c                      | 1 -
- drivers/rtc/rtc-meson.c                           | 1 -
- drivers/soc/qcom/llcc-qcom.c                      | 1 -
- drivers/soc/qcom/ramp_controller.c                | 1 -
- drivers/spi/spi-altera-platform.c                 | 1 -
- drivers/thermal/armada_thermal.c                  | 1 -
- drivers/thermal/sun8i_thermal.c                   | 1 -
- sound/soc/fsl/fsl_sai.c                           | 1 -
- 53 files changed, 57 deletions(-)
-
--- 
-2.47.2
-
+Thank you for the suggestion Geraldo! I will do that (as also answered
+to David).
 
 _______________________________________________
 Linux-rockchip mailing list
