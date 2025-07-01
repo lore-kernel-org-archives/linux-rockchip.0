@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37A90C83030
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Jul 2025 02:59:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9266C83038
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Jul 2025 07:57:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wZvxrnxMzhQwUVhA10wY9JJaM5tnqCrn7z/NYa00rn4=; b=TuweXqr9sJ3eC1
-	naAr6XTOWxMeHJ/Srn2DNXOLVwsf6pYWJSCEjlQ5DH3iX1hUwvXq963gaRoGsykY32niV4mUn5bNC
-	9bmWlygqF5J8282yh+Xb0NK+5irX5T8ZElGzO+hMc+ddZ9Rv4Ji1bVU0INLcb7wnXeV747qJRUfP4
-	zcQsdl+nfdBP6b4rz8Vv0uKzSyuaRXabImc19IVrmLsOr2juHgtWhptgULLLjZDqeSl3Hpip+R6Y0
-	WwjDnleaD/PKyiXpLWEUFnP17cr0dTDtEMBJatAOta0NRG3VIuznmo7v1qyowFIjbZjJbNqLftG0l
-	tlTRDomGAvvL8q0dckfA==;
+	List-Owner; bh=movIor/DLhIUDvRzgJlJKH0qAjEsksGOvMeKXDIuWhs=; b=Fvdxo2BFcnTLZ7
+	+BaB0FsBMUmnMYEsQoaoGXSeZCsURdaBIFprAHIcQZERSQ6qdc6/4+lSpTil8VWApopn033u008dX
+	OV4wpy1CYxf2MwYAHh83obnbfYFyBo+LygB6B+d+dxqy3IS3tZtoEehmi1aPpAZjSUNgaHHlAN1t/
+	nihu07elelaXJ7xZ5RaDOpQ0snmUF9njKCcT9QsNlf+5z6HcfcIj8fMWYDNw9SuY7sjtvey/YC5sk
+	N0KoIuYfnsyBJHgNtFL+aoMkiztq2j0qP0PYVPk/H1emf/lkZyaJbE8+qzW4m78c2pctRuPQ1EHWV
+	SllmgZxM56T6Nv84kOKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWRD4-00000003ttK-00xc;
-	Tue, 01 Jul 2025 02:59:02 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWRAh-00000003taX-03eA;
-	Tue, 01 Jul 2025 02:56:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=Sg2mYFgUwmv5/+xuBpG048q/hO1BMCXZutXVptqmaoo=; b=L
-	4tooCxj3QmlsHYS0OAIYxN0pJfpNk/Zi2A8x4mW+PyryfHoHDI07L6bmevwYRY3R
-	NtJbCAPzFFiGtABr+dxDANpWmtDDFtpYKqTsnY/5wRFxKq+mpA02wlPA3PO/uMXi
-	hpbm01NwxJd4n+lWo70HkHiEr+snRDs41GxFAkJ8OY=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-146 (Coremail) ; Tue, 1 Jul 2025 10:55:00 +0800 (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Tue, 1 Jul 2025 10:55:00 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Konstantin Shabanov" <mail@etehtsea.me>
-Cc: "Sandy Huang" <hjc@rock-chips.com>,
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
-	"Andy Yan" <andy.yan@rock-chips.com>,
-	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>,
-	"Maxime Ripard" <mripard@kernel.org>,
-	"Thomas Zimmermann" <tzimmermann@suse.de>,
-	"David Airlie" <airlied@gmail.com>,
-	"Simona Vetter" <simona@ffwll.ch>, "Dan Callaghan" <djc@djc.id.au>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	"Daniel Stone" <daniel@fooishbar.org>
-Subject: Re:[PATCH V5 RESEND] drm/rockchip: Reject AFBC for res >2560 on
- rk3399
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <20250604090054.7070-1-mail@etehtsea.me>
-References: <20250604090054.7070-1-mail@etehtsea.me>
-X-NTES-SC: AL_Qu2eA/+Yt00r5iadYekfmkcVgOw9UcO5v/Qk3oZXOJF8jCzr+QYventMEmfc3vOOKwaIkReYbSho7uZ8WbNyZqYgFat2EzuoShH/1RflS4VtwQ==
+	id 1uWVs4-00000004LVQ-0Axy;
+	Tue, 01 Jul 2025 07:57:40 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uWVdz-00000004INH-1jXk;
+	Tue, 01 Jul 2025 07:43:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9FA496114D;
+	Tue,  1 Jul 2025 07:43:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E805C4CEEB;
+	Tue,  1 Jul 2025 07:43:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751355786;
+	bh=krITJM0978IRsY752Yojw78vCX5/sdxxG3qP5TVzy9Y=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=t8kzdJvVaW+RVkrfsOqoFvovi3S0LHUUSHi478rxkKO6yyXkKC0cU/ZpGAjsMT4qn
+	 1JkXekfymC9MGmxV94LQ3vVsgdkNMzGtbkzV4RA6kbpQlSbs6BSRRlTDlyoIGzI43J
+	 rsB5Jm/QFVoS3fB7JKVod82EgqT837jAC7aUQUq1nL/+AH1Xd4MqdZYS3uygK/RZV6
+	 N8LuSTnys4A10aRFgkIpfYfOoCv0f5aB/rMATYEsF9+Iblccn5ycEzQoQJDkBViMu6
+	 ilZq8DioXEDURnmgVyxW0HPPXHRJ+hNs4XnU9JpH0LcwdwDoez94rgGMeWQI44NdEA
+	 VU47dKBUk5MZQ==
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: linux-rockchip@lists.infradead.org, 
+ Geraldo Nascimento <geraldogabriel@gmail.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Rick wertenbroek <rick.wertenbroek@gmail.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Valmantas Paliksa <walmis@gmail.com>, linux-phy@lists.infradead.org, 
+ linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>
+In-Reply-To: <cover.1751322015.git.geraldogabriel@gmail.com>
+References: <cover.1751322015.git.geraldogabriel@gmail.com>
+Subject: Re: (subset) [RESEND PATCH v9 0/4] PCI: rockchip: Improve driver
+ quality
+Message-Id: <175135578094.10306.3959145621535083465.b4-ty@kernel.org>
+Date: Tue, 01 Jul 2025 13:13:00 +0530
 MIME-Version: 1.0
-Message-ID: <3682f894.3077.197c3e8c232.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: kigvCgDXH6oETmNodugoAA--.5380W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkAV9XmhjSIa4vwABs1
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_195635_391365_6D527BBA 
-X-CRM114-Status: GOOD (  12.89  )
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,91 +73,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpIZWxsbyBLb25zdGFuaW4gYW5kICBEYW5pZWzvvIwKCkF0IDIwMjUtMDYtMDQgMTc6MDA6NTMs
-ICJLb25zdGFudGluIFNoYWJhbm92IiA8bWFpbEBldGVodHNlYS5tZT4gd3JvdGU6Cj5BcyBpdCBp
-c24ndCBzdXBwb3J0ZWQgYnkgcmszMzk5LiBGcm9tIHRoZSBkYXRhc2hlZXRbMV0KPigiMS4yLjEw
-IFZpZGVvIElOL09VVCIsICJEaXNwbGF5IEludGVyZmFjZSIsIHAuIDE3KToKPgo+ICBTdXBwb3J0
-IEFGQkMgZnVuY3Rpb24gY28tb3BlcmF0aW9uIHdpdGggR1BVCj4gICAgKiBzdXBwb3J0IDI1NjB4
-MTYwMCBVSQo+Cj5TaWduZWQtb2ZmLWJ5OiBLb25zdGFudGluIFNoYWJhbm92IDxtYWlsQGV0ZWh0
-c2VhLm1lPgo+UmVwb3J0ZWQtYnk6IERhbiBDYWxsYWdoYW4gPGRqY0BkamMuaWQuYXU+Cj5DbG9z
-ZXM6IGh0dHBzOi8vZ2l0bGFiLmZyZWVkZXNrdG9wLm9yZy9tZXNhL21lc2EvLS9pc3N1ZXMvNzk2
-OAo+Cj5bMV06IGh0dHBzOi8vb3BlbnNvdXJjZS5yb2NrLWNoaXBzLmNvbS9pbWFnZXMvZC9kNy9S
-b2NrY2hpcF9SSzMzOTlfRGF0YXNoZWV0X1YyLjEtMjAyMDAzMjMucGRmCj4tLS0KPiBWNCAtPiBW
-NTogRXh0cmFjdCBBRkJDIHN1cHBvcnQgY2hlY2sgaW50byBkcnYKPiBWMyAtPiBWNDogQ29ycmVj
-dCByZWR1bmRhbnQgaGVhZGVyIGluY2x1c2lvbgo+IFYyIC0+IFYzOiBSdW4gY2hlY2sgb25seSBv
-biByazMzOTkKPiBWMSAtPiBWMjogTW92ZSB0aGUgY2hlY2sgdG8gdGhlIGZiX2NyZWF0ZSBjYWxs
-YmFjawo+Cj4gQUZCQyBjaGVjayBpcyBpbXBsZW1lbnRlZCBpbiBhIHNpbWlsYXIgbWFubmVyIGFz
-IGluIHRoZSBtYWxpZHAgZHJpdmVyLgo+IFJlc2VuZCBvZiB0aGUgaHR0cHM6Ly9sb3JlLmtlcm5l
-bC5vcmcvYWxsLzIwMjUwNTIxMTYwNTU2LjE0MzQ2LTItbWFpbEBldGVodHNlYS5tZS8uCj4gCj4g
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8IDE2ICsrKysrKysr
-KysrKysrKysKPiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIHwg
-IDIgKysKPiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgIHwgIDMg
-KysrCj4gMyBmaWxlcyBjaGFuZ2VkLCAyMSBpbnNlcnRpb25zKCspCj4KPmRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+aW5kZXggMTgwZmFkNWQ0OWFkLi45ZmIw
-NDAyMmIyZjMgMTAwNjQ0Cj4tLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX2Rydi5jCj4rKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Ry
-di5jCj5AQCAtNDIsNiArNDIsOCBAQAo+ICNkZWZpbmUgRFJJVkVSX01BSk9SCTEKPiAjZGVmaW5l
-IERSSVZFUl9NSU5PUgkwCj4gCj4rI2RlZmluZSBSSzMzOTlfQUZCQ19NQVhfV0lEVEgJCTI1NjAK
-PisKPiBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9kcml2ZXIgcm9ja2NoaXBfZHJtX2RyaXZlcjsK
-PiAKPiAvKgo+QEAgLTM1MCw2ICszNTIsMjAgQEAgaW50IHJvY2tjaGlwX2RybV9lbmRwb2ludF9p
-c19zdWJkcml2ZXIoc3RydWN0IGRldmljZV9ub2RlICplcCkKPiAJcmV0dXJuIGZhbHNlOwo+IH0K
-PiAKPitib29sIHJvY2tjaGlwX3ZlcmlmeV9hZmJjX2ZyYW1lYnVmZmVyX3NpemUoc3RydWN0IGRy
-bV9kZXZpY2UgKmRldiwKPisJCQkJCSAgIGNvbnN0IHN0cnVjdCBkcm1fbW9kZV9mYl9jbWQyICpt
-b2RlX2NtZCkKPit7Cj4rCWlmIChvZl9tYWNoaW5lX2lzX2NvbXBhdGlibGUoInJvY2tjaGlwLHJr
-MzM5OSIpICYmCj4rCSAgICBtb2RlX2NtZC0+d2lkdGggPiBSSzMzOTlfQUZCQ19NQVhfV0lEVEgp
-IHsKPisJCURSTV9ERUJVR19LTVMoIkFGQkMgaXMgbm90IHN1cHBvcnRlZCBmb3IgdGhlIHdpZHRo
-ICVkIChtYXggJWQpXG4iLAo+KwkJCSAgICAgIG1vZGVfY21kLT53aWR0aCwKPisJCQkgICAgICBS
-SzMzOTlfQUZCQ19NQVhfV0lEVEgpOwo+KwkJcmV0dXJuIGZhbHNlOwo+Kwl9Cj4rCj4rCXJldHVy
-biB0cnVlOwo+K30KPisKPiBzdGF0aWMgdm9pZCByb2NrY2hpcF9kcm1fbWF0Y2hfcmVtb3ZlKHN0
-cnVjdCBkZXZpY2UgKmRldikKPiB7Cj4gCXN0cnVjdCBkZXZpY2VfbGluayAqbGluazsKPmRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAo+aW5kZXggYzE4M2U4MmE0
-MmE1Li41ZGFiY2VhYTRmZDYgMTAwNjQ0Cj4tLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX2Rydi5oCj4rKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX2Rydi5oCj5AQCAtODYsNiArODYsOCBAQCBpbnQgcm9ja2NoaXBfZHJtX3dhaXRfdmFj
-dF9lbmQoc3RydWN0IGRybV9jcnRjICpjcnRjLCB1bnNpZ25lZCBpbnQgbXN0aW1lb3V0KTsKPiBp
-bnQgcm9ja2NoaXBfZHJtX2VuY29kZXJfc2V0X2NydGNfZW5kcG9pbnRfaWQoc3RydWN0IHJvY2tj
-aGlwX2VuY29kZXIgKnJlbmNvZGVyLAo+IAkJCQkJICAgICAgc3RydWN0IGRldmljZV9ub2RlICpu
-cCwgaW50IHBvcnQsIGludCByZWcpOwo+IGludCByb2NrY2hpcF9kcm1fZW5kcG9pbnRfaXNfc3Vi
-ZHJpdmVyKHN0cnVjdCBkZXZpY2Vfbm9kZSAqZXApOwo+K2Jvb2wgcm9ja2NoaXBfdmVyaWZ5X2Fm
-YmNfZnJhbWVidWZmZXJfc2l6ZShzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+KwkJCQkJICAgY29u
-c3Qgc3RydWN0IGRybV9tb2RlX2ZiX2NtZDIgKm1vZGVfY21kKTsKPiBleHRlcm4gc3RydWN0IHBs
-YXRmb3JtX2RyaXZlciBjZG5fZHBfZHJpdmVyOwo+IGV4dGVybiBzdHJ1Y3QgcGxhdGZvcm1fZHJp
-dmVyIGR3X2hkbWlfcm9ja2NoaXBfcGx0Zm1fZHJpdmVyOwo+IGV4dGVybiBzdHJ1Y3QgcGxhdGZv
-cm1fZHJpdmVyIGR3X2hkbWlfcXBfcm9ja2NoaXBfcGx0Zm1fZHJpdmVyOwo+ZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+aW5kZXggNTgyOWVlMDYxYzYxLi5mMDUy
-N2YxMmY1NjggMTAwNjQ0Cj4tLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX2ZiLmMKPisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIu
-Ywo+QEAgLTUyLDYgKzUyLDkgQEAgcm9ja2NoaXBfZmJfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNl
-ICpkZXYsIHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwKPiAJfQo+IAoKCkkgZm91bmQgdGhhdCB3aGVu
-IGNhbGxpbmcgZHJtX2dlbV9mYl9pbml0X3dpdGhfZnVuY3MgZWFybGllciwgIGRybV9hbnlfcGxh
-bmVfaGFzX2Zvcm1hdCB3b3VsZCBiZSBjYWxsZWQuCgpib29sIGRybV9wbGFuZV9oYXNfZm9ybWF0
-KHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAogICAgICAgICAgICAgICAgICAgICAgICAgIHUzMiBm
-b3JtYXQsIHU2NCBtb2RpZmllcikKeyAgICAgICAgICAgICAgIAogICAgICAgIHVuc2lnbmVkIGlu
-dCBpOwoKICAgICAgICBmb3IgKGkgPSAwOyBpIDwgcGxhbmUtPmZvcm1hdF9jb3VudDsgaSsrKSB7
-CiAgICAgICAgICAgICAgICBpZiAoZm9ybWF0ID09IHBsYW5lLT5mb3JtYXRfdHlwZXNbaV0pCiAg
-ICAgICAgICAgICAgICAgICAgICAgIGJyZWFrOyAKICAgICAgICB9ICAgICAgIAogICAgICAgIGlm
-IChpID09IHBsYW5lLT5mb3JtYXRfY291bnQpCiAgICAgICAgICAgICAgICByZXR1cm4gZmFsc2U7
-CgogICAgICAgIGlmIChwbGFuZS0+ZnVuY3MtPmZvcm1hdF9tb2Rfc3VwcG9ydGVkKSB7CiAgICAg
-ICAgICAgICAgICBpZiAoIXBsYW5lLT5mdW5jcy0+Zm9ybWF0X21vZF9zdXBwb3J0ZWQocGxhbmUs
-IGZvcm1hdCwgbW9kaWZpZXIpKQogICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gZmFsc2U7
-CiAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgIGlmICghcGxhbmUtPm1vZGlmaWVyX2Nv
-dW50KQoKSWYgd2UgZXh0ZW5kIHRoZSBmb3JtYXRfbW9kX3N1cHBvcnRlZCAgYnkgcGFzcyBkb3du
-IGZi77yMIHdlIHN0aWxsIGNhbiBkbyB0aGlzCmNoZWNrIGJ5IGZvcm1hdF9tb2Rfc3VwcG9ydGVk
-IGF0IHRoZSBmYiBjcmVhdGUgc3RhdGUg77yfCgoKCj4gCWlmIChkcm1faXNfYWZiYyhtb2RlX2Nt
-ZC0+bW9kaWZpZXJbMF0pKSB7Cj4rCQlpZiAoIXJvY2tjaGlwX3ZlcmlmeV9hZmJjX2ZyYW1lYnVm
-ZmVyX3NpemUoZGV2LCBtb2RlX2NtZCkpCj4rCQkJcmV0dXJuIEVSUl9QVFIoLUVJTlZBTCk7Cj4r
-Cj4gCQlyZXQgPSBkcm1fZ2VtX2ZiX2FmYmNfaW5pdChkZXYsIG1vZGVfY21kLCBhZmJjX2ZiKTsK
-PiAJCWlmIChyZXQpIHsKPiAJCQlkcm1fZnJhbWVidWZmZXJfcHV0KCZhZmJjX2ZiLT5iYXNlKTsK
-Pgo+YmFzZS1jb21taXQ6IDY4NWM0MDdmMTY4Y2I0OWExMmNjNzAzMjMwZDFlMmQ2Mjc2N2JmZDIK
-Pi0tIAo+Mi40OS4wCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+
+On Mon, 30 Jun 2025 19:24:15 -0300, Geraldo Nascimento wrote:
+> During a 30-day debugging-run fighting quirky PCIe devices on RK3399
+> some quality improvements began to take form and after feedback from
+> community they reached more polished state.
+> 
+> This will ensure maximum chance of retraining to 5.0GT/s, on all four
+> lanes and fix async strobe TEST_WRITE disablement. On top of this,
+> standard PCIe defines are now used to reference registers from offset
+> at Capabilities Register.
+> 
+> [...]
+
+Applied, thanks!
+
+[1/4] PCI: rockchip: Use standard PCIe defines
+      commit: a54fa9e656b38d64761478d06aa8679eae074ca1
+[2/4] PCI: rockchip: Set Target Link Speed before retraining
+      commit: 7a886fbf4004a990cb7231d64370c622d0eb741f
+
+Best regards,
+-- 
+Manivannan Sadhasivam <mani@kernel.org>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
