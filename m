@@ -4,110 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59CE0CCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3492FCCD1AB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1ZRkMR7fWWlBDvH08qyDcqPVMBpjWHupX7j4mQqBR4c=; b=3YnyZ7ap3YdLzU
-	YgaAnuBJ0qOe6dOqe98Oy2NB13h9udL5H3nuoe+I6NDQwwimD2sCMdHStdzWtMB53gZJUVV4am8/X
-	LYnTH5aThxHroC57OrMO/ZvnNoV1mTYP/BVWvocaMQGAYQ+/gSlSoBovMWV/6wptgNl+8vJlIxRsL
-	kiXfAoTh++tGrPmMPrFAEqytgv5p+/qeiF1JQhmwp5sOVzhlegXcWL6bgEJ39/dVRp3ZtvNCOsT9m
-	lrWql9hYdicbdKL4+2niqmgJcqSPxkhcf0+BxjkgsQnvgntIPNZZiKHYsq3nRc5j6dAY/CC3jyf3r
-	Jc7UjaSOK15vDP2TC6ZQ==;
+	List-Owner; bh=ZGTcwx4IHNOiss2uaKQt1/MHVnmfljsVIpa35dYGyzU=; b=UfIy0ZKjxIOFHO
+	9pDKbH9sSGj5tD3h9cDJxHoXiSGMSFehsuFf6HTm7+6ZTUFNqoxsxi3zsNXyBr4t9d7GqnA6jJIqG
+	Q/0ZTTvGLLt8kApgf54LKHSu0KM+iCn5aXnAgYpoKj+teGOZu/ZpZjkPaU3QhYSUhdYO6Z9zuMw5V
+	GeVIagmOeVtQpXL3tGOMHrQbSPV5JNMzKCFVA4jxrwuIzVuVN2PSP25qODcInNh3o2q8RMD/I3EL/
+	GmeFeWmD9+/bPyQcVQdU+9QxT7VAi6mkbjIl3viFzDPVonubosfJoRleZGd0CKjg9tYMlNPza3G6M
+	o3K8X/87oBHnvJTh/UQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoVr-0000000D9LR-3fhL;
-	Mon, 20 Oct 2025 11:57:19 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1vAoVt-0000000D9Q3-3flf;
+	Mon, 20 Oct 2025 11:57:22 +0000
+Received: from frasgout.his.huawei.com ([185.176.79.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTis0-00000003BPb-3unj;
-	Mon, 23 Jun 2025 15:14:06 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id EC94944288;
-	Mon, 23 Jun 2025 15:13:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1750691640;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=45lmqAUYpUykmyRNsOjFpkel3OPLmML527QXdh0o9zU=;
-	b=Dk4DRySeiEHJkC5ucZz7LZZ5UhTo8qfaM+NNpNfIAmI8eb71jZ1iyZigWxGJIVUh/eddQP
-	8Xl1XY+V1ya18+kaQTE+VfNrEVges9y6YeLXaGu/C3rRQVwdpYLIzr+sV2HHzE/5UmgjzB
-	/+xepzhCWX1cw6Sjteg1eK+SyfTf1nG848+wARLHC34oEtB0GGeHyHyWCzEjD96U8cz4ZV
-	Q9lHqj9ZKe3ogELbhBMi//RQzmrzPpFKAf5qiAiUT/AZUHomVPjE09J5Bf3w9srIdSfWcY
-	Yt4Oua24qVH3rU576TSTUWjL+lZ5mN7oW47CVCJAgdJIvxqw3/Z3LAIlRF5uqQ==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Pan Chuang <panchuang@vivo.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,  Daniel Lezcano
- <daniel.lezcano@linaro.org>,  Zhang Rui <rui.zhang@intel.com>,  Lukasz
- Luba <lukasz.luba@arm.com>,  Markus Mayer <mmayer@broadcom.com>,  Broadcom
- internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-  Florian Fainelli <florian.fainelli@broadcom.com>,  Shawn Guo
- <shawnguo@kernel.org>,  Sascha Hauer <s.hauer@pengutronix.de>,
-  Pengutronix Kernel Team <kernel@pengutronix.de>,  Fabio Estevam
- <festevam@gmail.com>,  zhanghongchen <zhanghongchen@loongson.cn>,  Yinbo
- Zhu <zhuyinbo@loongson.cn>,  Amit Kucheria <amitk@kernel.org>,  Thara
- Gopinath <thara.gopinath@gmail.com>,  Niklas =?utf-8?Q?S=C3=B6derlund?=
- <niklas.soderlund@ragnatech.se>,  Geert Uytterhoeven
- <geert+renesas@glider.be>,  Magnus Damm <magnus.damm@gmail.com>,  Heiko
- Stuebner <heiko@sntech.de>,  Bartlomiej Zolnierkiewicz
- <bzolnier@gmail.com>,  Krzysztof Kozlowski <krzk@kernel.org>,  Alim Akhtar
- <alim.akhtar@samsung.com>,  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-  Alexandre Torgue <alexandre.torgue@foss.st.com>,  Vasily Khoruzhick
- <anarsoul@gmail.com>,  Yangtao Li <tiny.windzz@gmail.com>,  Chen-Yu Tsai
- <wens@csie.org>,  Jernej Skrabec <jernej.skrabec@gmail.com>,  Samuel
- Holland <samuel@sholland.org>,  Thierry Reding <thierry.reding@gmail.com>,
-  Jonathan Hunter <jonathanh@nvidia.com>,  Kunihiko Hayashi
- <hayashi.kunihiko@socionext.com>,  Masami Hiramatsu <mhiramat@kernel.org>,
-  Thomas Gleixner <tglx@linutronix.de>,  Matthias Brugger
- <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Srinivas Pandruvada
- <srinivas.pandruvada@linux.intel.com>,  Greg KH
- <gregkh@linuxfoundation.org>,  Peter Zijlstra <peterz@infradead.org>,
-  =?utf-8?Q?N=C3=ADcolas?= F. R. A. Prado <nfraprado@collabora.com>,  Conor
- Dooley
- <conor.dooley@microchip.com>,  Julien Panis <jpanis@baylibre.com>,  Arnd
- Bergmann <arnd@arndb.de>,  Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=
- <u.kleine-koenig@baylibre.com>,  Colin Ian King <colin.i.king@gmail.com>,
-  Raphael Gallais-Pou <rgallaispou@gmail.com>,  Patrice Chotard
- <patrice.chotard@foss.st.com>,  Jonathan Cameron
- <Jonathan.Cameron@huawei.com>,  "Jiri Slaby (SUSE)"
- <jirislaby@kernel.org>,  Sebastian Andrzej Siewior
- <bigeasy@linutronix.de>,  Andrew Morton <akpm@linux-foundation.org>,
-  Costa Shulyupin <costa.shul@redhat.com>,  Yury Norov
- <yury.norov@gmail.com>,  Cheng-Yang Chou <yphbchou0911@gmail.com>,  Caleb
- Sander Mateos <csander@purestorage.com>,  linux-pm@vger.kernel.org,
-  linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
-  imx@lists.linux.dev,  linux-arm-msm@vger.kernel.org,
-  linux-renesas-soc@vger.kernel.org,  linux-rockchip@lists.infradead.org,
-  linux-samsung-soc@vger.kernel.org,
-  linux-stm32@st-md-mailman.stormreply.com,  linux-sunxi@lists.linux.dev,
-  linux-tegra@vger.kernel.org,  linux-mediatek@lists.infradead.org,
-  Yangtao Li <frank.li@vivo.com>,  Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=
- <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH v6 01/24] genirq/devres: Add
- devm_request_threaded_irq_probe() and devm_request_irq_probe()
-In-Reply-To: <20250623123054.472216-2-panchuang@vivo.com> (Pan Chuang's
-	message of "Mon, 23 Jun 2025 20:30:34 +0800")
-References: <20250623123054.472216-1-panchuang@vivo.com>
-	<20250623123054.472216-2-panchuang@vivo.com>
-User-Agent: mu4e 1.12.7; emacs 30.1
-Date: Mon, 23 Jun 2025 17:13:54 +0200
-Message-ID: <87a55ywkwd.fsf@bootlin.com>
+	id 1uWuEi-00000007s3v-1VNK;
+	Wed, 02 Jul 2025 09:58:42 +0000
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bXFdQ6LTjz6L55h;
+	Wed,  2 Jul 2025 17:55:38 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id B5DAB1404FD;
+	Wed,  2 Jul 2025 17:58:31 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 2 Jul
+ 2025 11:58:28 +0200
+Date: Wed, 2 Jul 2025 10:58:26 +0100
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>
+CC: Jonathan Cameron <jic23@kernel.org>, Waqar Hameed <waqar.hameed@axis.com>,
+	Vignesh Raghavendra <vigneshr@ti.com>, "Julien Panis" <jpanis@baylibre.com>,
+	William Breathitt Gray <wbg@kernel.org>, "Linus Walleij"
+	<linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Peter Rosin
+	<peda@axentia.se>, David Lechner <dlechner@baylibre.com>, Nuno
+ =?ISO-8859-1?Q?S=E1?= <nuno.sa@analog.com>, Andy Shevchenko
+	<andy@kernel.org>, Cosmin Tanislav <cosmin.tanislav@analog.com>, "Lars-Peter
+ Clausen" <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Matteo Martelli
+	<matteomartelli3@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Francesco
+ Dolcini <francesco@dolcini.it>, =?ISO-8859-1?Q?Jo=E3o?= Paulo
+ =?ISO-8859-1?Q?Gon=E7alves?= <jpaulo.silvagoncalves@gmail.com>, Hugo
+ Villeneuve <hvilleneuve@dimonoff.com>, Subhajit Ghosh
+	<subhajit.ghosh@tweaklogic.com>, Mudit Sharma <muditsharma.info@gmail.com>,
+	Gerald Loacker <gerald.loacker@wolfvision.net>, Song Qiang
+	<songqiang1304521@gmail.com>, Crt Mori <cmo@melexis.com>, Dmitry Torokhov
+	<dmitry.torokhov@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>, Karol
+ Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>,
+	Gabriel Somlo <gsomlo@gmail.com>, Joel Stanley <joel@jms.id.au>, Claudiu
+ Manoil <claudiu.manoil@nxp.com>, Vladimir Oltean <vladimir.oltean@nxp.com>,
+	Wei Fang <wei.fang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, Andrew Lunn
+	<andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
+	<kishon@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
+	<alim.akhtar@samsung.com>, Sebastian Reichel <sre@kernel.org>, "Neil
+ Armstrong" <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
+	<martin.blumenstingl@googlemail.com>, Han Xu <han.xu@nxp.com>, Haibo Chen
+	<haibo.chen@nxp.com>, Yogesh Gaur <yogeshgaur.83@gmail.com>, Mark Brown
+	<broonie@kernel.org>, Avri Altman <avri.altman@wdc.com>, Bart Van Assche
+	<bvanassche@acm.org>, "James E.J. Bottomley"
+	<James.Bottomley@hansenpartnership.com>, "Martin K. Petersen"
+	<martin.petersen@oracle.com>, Souradeep Chowdhury
+	<quic_schowdhu@quicinc.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Liam Girdwood <lgirdwood@gmail.com>, "Peter Ujfalusi"
+	<peter.ujfalusi@linux.intel.com>, Bard Liao
+	<yung-chuan.liao@linux.intel.com>, Ranjani Sridharan
+	<ranjani.sridharan@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>, Pierre-Louis Bossart
+	<pierre-louis.bossart@linux.dev>, Jaroslav Kysela <perex@perex.cz>, "Takashi
+ Iwai" <tiwai@suse.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+	<s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>, <kernel@axis.com>,
+	<linux-iio@vger.kernel.org>, <linux-omap@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-gpio@vger.kernel.org>,
+	<linux-i2c@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-input@vger.kernel.org>, <linux-mmc@vger.kernel.org>,
+	<imx@lists.linux.dev>, <netdev@vger.kernel.org>,
+	<linux-phy@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
+	<linux-pm@vger.kernel.org>, <linux-pwm@vger.kernel.org>,
+	<linux-amlogic@lists.infradead.org>, <linux-spi@vger.kernel.org>,
+	<linux-scsi@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-usb@vger.kernel.org>, <sound-open-firmware@alsa-project.org>,
+	<linux-sound@vger.kernel.org>, "Joe Perches" <joe@perches.com>, Andy
+ Whitcroft <apw@canonical.com>, "Dwaipayan Ray" <dwaipayanray1@gmail.com>,
+	Lukas Bulwahn <lukas.bulwahn@gmail.com>
+Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
+Message-ID: <20250702105826.0000315e@huawei.com>
+In-Reply-To: <jeajjewfbg5qo736imozpghnpxln2pux74aegtqsi57qsbpug2@opndel6zc3m3>
+References: <pnd7c0s6ji2.fsf@axis.com>
+	<ylr7cuxldwb24ccenen4khtyddzq3owgzzfblbohkdxb7p7eeo@qpuddn6wrz3x>
+	<20250701185519.1410e831@jic23-huawei>
+	<jeajjewfbg5qo736imozpghnpxln2pux74aegtqsi57qsbpug2@opndel6zc3m3>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddvgddujeefhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvvefujghffgffkfggtgfgsehtqhertddtreejnecuhfhrohhmpefoihhquhgvlhcutfgrhihnrghluceomhhiqhhuvghlrdhrrgihnhgrlhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepffeghfejtdefieeguddukedujeektdeihfelleeuieeuveehkedvleduheeivdefnecukfhppeeltddrkeelrdduieefrdduvdejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepledtrdekledrudeifedruddvjedphhgvlhhopehlohgtrghlhhhoshhtpdhmrghilhhfrhhomhepmhhiqhhuvghlrdhrrgihnhgrlhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepjedtpdhrtghpthhtohepphgrnhgthhhurghnghesvhhivhhordgtohhmpdhrtghpthhtoheprhgrfhgrvghlsehkvghrnhgvlhdrohhrghdprhgtphhtthhopegurghnihgvlhdrlhgviigtrghnoheslhhinhgrrhhordhorhhgpdhrtghpthhtoheprhhuihdriihhrghnghesihhnthgvlhdrtghomhdprhgtphhtthhopehluhhkrghsiidrlhhusggrsegrrhhmrdgtohhmpdhrtghpthhtohepmhhmrgihv
- ghrsegsrhhorggutghomhdrtghomhdprhgtphhtthhopegstghmqdhkvghrnhgvlhdqfhgvvggusggrtghkqdhlihhsthessghrohgruggtohhmrdgtohhmpdhrtghpthhtohepfhhlohhrihgrnhdrfhgrihhnvghllhhisegsrhhorggutghomhdrtghomh
-X-GND-Sasl: miquel.raynal@bootlin.com
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
+ frapeml500008.china.huawei.com (7.182.85.71)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_081405_268350_0EA41A34 
-X-CRM114-Status: GOOD (  15.32  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:05 -0700
+X-CRM114-CacheID: sfid-20250702_025840_678206_EEE540ED 
+X-CRM114-Status: GOOD (  42.05  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:36 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,33 +125,118 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUGFuLAoKT24gMjMvMDYvMjAyNSBhdCAyMDozMDozNCArMDgsIFBhbiBDaHVhbmcgPHBhbmNo
-dWFuZ0B2aXZvLmNvbT4gd3JvdGU6Cgo+IEZyb206IFlhbmd0YW8gTGkgPGZyYW5rLmxpQHZpdm8u
-Y29tPgo+Cj4gVGhlcmUgYXJlIG1vcmUgdGhhbiA3MDAgY2FsbHMgdG8gZGV2bV9yZXF1ZXN0X3Ro
-cmVhZGVkX2lycSBtZXRob2QgYW5kCj4gbW9yZSB0aGFuIDEwMDAgY2FsbHMgdG8gZGV2bV9yZXF1
-ZXN0X2lycSBtZXRob2QuIE1vc3QgZHJpdmVycyBvbmx5Cj4gcmVxdWVzdCBvbmUgaW50ZXJydXB0
-IHJlc291cmNlLCBhbmQgdGhlc2UgZXJyb3IgbWVzc2FnZXMgYXJlIGJhc2ljYWxseQo+IHRoZSBz
-YW1lLiBJZiBlcnJvciBtZXNzYWdlcyBhcmUgcHJpbnRlZCBldmVyeXdoZXJlLCBtb3JlIHRoYW4g
-MjAwMCBsaW5lcwo+IG9mIGNvZGUgY2FuIGJlIHNhdmVkIGJ5IHJlbW92aW5nIHRoZSBtc2cgaW4g
-dGhlIGRyaXZlci4KClsuLi5dCgo+IFNvIGFkZCBkZXZtX3JlcXVlc3RfdGhyZWFkZWRfaXJxX3By
-b2JlKCkgYW5kIGRldm1fcmVxdWVzdF9pcnFfcHJvYmUoKSwKPiB3aGljaCBlbnN1cmUgdGhhdCBh
-bGwgZXJyb3IgaGFuZGxpbmcgYnJhbmNoZXMgcHJpbnQgZXJyb3IgaW5mb3JtYXRpb24uCj4gSW4g
-dGhpcyB3YXksIHdoZW4gdGhpcyBmdW5jdGlvbiBmYWlscywgdGhlIHVwcGVyLWxheWVyIGZ1bmN0
-aW9ucyBjYW4KPiBkaXJlY3RseSByZXR1cm4gYW4gZXJyb3IgY29kZSB3aXRob3V0IG1pc3Npbmcg
-ZGVidWdnaW5nIGluZm9ybWF0aW9uLgo+IE90aGVyd2lzZSwgdGhlIGVycm9yIG1lc3NhZ2Ugd2ls
-bCBiZSBwcmludGVkIHJlZHVuZGFudGx5IG9yIG1pc3NpbmcuCgpXaGlsZSBJIHVuZGVyc3RhbmQg
-dGhlIGdvYWwgYW5kIGFkaGVyZSB0byBpdCwgbWF5IEkgY2hhbGxlbmdlIHRoZSB1c2Ugb2YKYSB5
-ZXQgYW5vdGhlciBpbnRlcm1lZGlhdGUgZnVuY3Rpb24gdGhhdCA5OSUgb2YgdGhlIHVzZXJzIHdp
-bGwgYW55d2F5CnVzZT8gV291bGRuJ3QgaXQgYmUgbW9yZSBzdHJhaWdodGZvcndhcmQgdG8ganVz
-dCBhZGQgdGhlIGVycm9yIG1lc3NhZ2UKaW4gdGhlIGV4aXN0aW5nIGZ1bmN0aW9ucyBkaXJlY3Rs
-eT8gSWYgd2UgcmVhbGx5IHdhbnQgYW4gYWx0ZXJuYXRpdmUsIGl0Cm1heSBiZSBjcmVhdGVkIGFu
-ZCBjYWxsZWQgaW4gdGhlIGZldyBwbGFjZXMgd2hlcmUgYSBkZXZfZXJyX3Byb2JlKCkKbWlnaHQg
-bm90IGJlIHJlbGV2YW50LgoKVGhhbmtzLApNaXF1w6hsCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Wed, 2 Jul 2025 08:54:48 +0200
+Uwe Kleine-K=F6nig <ukleinek@kernel.org> wrote:
+
+> Hello Jonathan,
+> =
+
+> On Tue, Jul 01, 2025 at 06:55:19PM +0100, Jonathan Cameron wrote:
+> > On Tue, 1 Jul 2025 19:44:17 +0200
+> > Uwe Kleine-K=F6nig <ukleinek@kernel.org> wrote:
+> >   =
+
+> > > On Tue, Jul 01, 2025 at 05:03:33PM +0200, Waqar Hameed wrote:  =
+
+> > > >  drivers/pwm/pwm-meson.c                          | 3 +--    =
+
+> > > =
+
+> > > Looking at this driver I tried the following:  =
+
+> > =
+
+> > I'm not sure what we actually want here.
+> > =
+
+> > My thought when suggesting removing instances of this
+> > particular combination wasn't saving on code size, but rather just
+> > general removal of pointless code that was getting cut and
+> > paste into new drivers and wasting a tiny bit of review bandwidth.
+> > I'd consider it bad practice to have patterns like
+> > =
+
+> > void *something =3D kmalloc();
+> > if  (!something)
+> > 	return dev_err_probe(dev, -ENOMEM, ..);
+> > =
+
+> > and my assumption was people would take a similar view with
+> > devm_add_action_or_reset().
+> >
+> > It is a bit nuanced to have some cases where we think prints
+> > are reasonable and others where they aren't so I get your
+> > point about consistency.  =
+
+> =
+
+> The problem I see is that there are two classes of functions: a) Those
+> that require an error message and b) those that don't. Class b) consists
+> of the functions that can only return success or -ENOMEM and the
+> functions that emit an error message themselves. (And another problem I
+> see is that for the latter the error message is usually non-optimal
+> because the function doesn't know the all details of the request. See my
+> reply to Andy for more details about that rant.)
+> =
+
+> IMHO what takes away the review bandwidth is that the reviewer has to
+> check which class the failing function is part of. If this effort
+> results in more driver authors not adding an error message after
+> devm_add_action_or_reset() that's nice, but in two months I have
+> forgotten the details of this discussion and I have to recheck if
+> devm_add_action_or_reset() is part of a) or b) and so the burden is
+> still on me.
+
+Maybe this is a job for checkpatch, at least for the common cases.
+
+There is already a check for kmalloc etc.
+https://elixir.bootlin.com/linux/v6.16-rc4/source/scripts/checkpatch.pl#L64=
+42
+
++CC Joe (who wrote the allocation functions test years ago) and other check=
+patch
+folk.
+
+
+> =
+
+> So to give my answer on your question "What do we actually want here?":
+> Please let us get rid of the need to care for a) or b).
+> =
+
+> > The code size reduction is nice so I'd not be against it as an extra
+> > if the reduction across a kernel builds is significant and enough
+> > people want to keep these non printing prints.  =
+
+> =
+
+> To complete implementing my wish all API functions would need to stop to
+> emit an error message. Unfortunately that isn't without downsides
+> because the result is that there are more error strings and so the
+> kernel size is increased. So you have to weight if you prefer individual
+> error messages and easier review/maintenance at the cost of a bigger
+> binary size and more dev_err_probe() calls in drivers eating vertical
+> space in your editor.
+> =
+
+> I know on which side I am, but I bet we won't find agreement about that
+> in the kernel community ...
+
+
+> =
+
+> Best regards
+> Uwe
+> =
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
