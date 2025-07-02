@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AACBBC7EE30
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Jul 2025 09:00:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49F18C7EE30
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Jul 2025 09:36:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f2XBHGCPfpcsNwim9JQGBtcoAa4FxyhSeTHJGJzdIjg=; b=EgjUrW/Z8efYoN
-	ck9LXtIBkgLq1z7FKpNp31fM2egbx3jeuqnBt86bN39DLtAvMtczIoDE3rPf9EN9isP2umoLHuiNO
-	1vVDmMu0mb+/WmNTvXAh5UzI+NWR6D0TWEVcRADffbBQeDsJPgm3PUSmqRokCxvRBIqvN3wDYOyEL
-	l2Y9Umtwe6hmBtqYSNebQjG/ALk1O2+zJwfKf3H9Sm9Gy0enHzVjNqMzYfwuujLLr1cThsJp5exD6
-	VO47I7FFfWsLRJPB70mFkKwkQDw+jPlx0nICyXgGMVqAr4/SZUE3+hDvsGuzesxAKX6AaBYbY3d7M
-	gZUYlWYYiw0V8ARI+MoQ==;
+	List-Owner; bh=LSlxb5nU242qcnrB+70zBmahLMuxU4/w/NdlcFDMRp8=; b=OlbnEevc/PxEhu
+	dq/1vo66uZs4T9MuX7aZ8YbIrGiRR1OHuyc+vEhd9b8xowHjwccgWkkTdkYE+OwdpPnPcXUc4gdek
+	banQlsiD64z+OtNryNny6F+cmsgOo+/+4WokFGipf783NoBR3cLL4E46MzPQbNVMtbT4mlVuWvQty
+	OxdcM8pmIw3z/VJZUnP+JDvvvlBEgqOxZqDAn0SUiAY+AboTr0ovD/4kLiknGfMa7bYMxNDtQGsZY
+	C5q42zTwrFJ+WwnpIQqicH37lifR1YexAIaSn9hHsEYJwvamx66KQ/Tr9ZY48Ert12xcxUG7Bjq0B
+	DQQaapSa20LZyG6YGBEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWtJw-00000007fgT-02Ps;
-	Wed, 02 Jul 2025 09:00:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uWtsy-00000007n10-3Un0;
+	Wed, 02 Jul 2025 09:36:12 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWtHa-00000007fV3-3C1D;
-	Wed, 02 Jul 2025 08:57:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1751446652;
-	bh=AA9AlIrZgAydaDEjjbmsNIEiAQNjOYkPwuQMM7PW/hg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Op8cI2b9O6bAX4reORlcxA7sX3fWm61pByhJs7+IFee02nmz53x0Vk/5v3SQapl2/
-	 6lVtnC8O/3lFCmqy2LgNB3ZP6ZpsqnBCBOmPpYmDaC+GwSbTI+bLKYrWIq4oZb9LEu
-	 OyJm/uNOsDZDUv6AUwYF139FXcdtIIy3cjz5moAPV8hlwGCGxd25ZdmqznqZvnTE9T
-	 6joiDhezFcor9i9fGncK0Cy9NkreimW9JNHkOl5sHB8/UT4J9ij+AHCiT9JdgLR+X5
-	 +dxA1Gi9fFQYzcoBsGeq8fuKT2PfxMV4bjRPo9LVr42CotrNDil50f95uTlphhbKYK
-	 bOdegJCZ9+OdQ==
-Received: from [192.168.1.90] (unknown [212.93.144.165])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CE2B017E059B;
-	Wed,  2 Jul 2025 10:57:31 +0200 (CEST)
-Message-ID: <53dcc520-fd8a-4c6b-9bc0-cf9daf3e4597@collabora.com>
-Date: Wed, 2 Jul 2025 11:57:31 +0300
+	id 1uWtc0-00000007jyK-20xY;
+	Wed, 02 Jul 2025 09:18:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1751447920; x=1782983920;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=YgIsYbsQFBijlbHTYsgXc9tCHNmRLzh8Vr+Nl8ZnQ3Y=;
+  b=CuB+c7iTvjiAcBaxL+Xq8ZqevfuprXwmOA7CseMZCvJGDz0gG1rZ0Z7D
+   F4hlB93Wl1cYr2xDehoREj/Ymti1PzjyPc8qPBb1e+S3/2iyfk+Aacnpm
+   3WUJ9aGARNgO7cnZrGbIQ0Ld5ahMOJWEsVolO0Cox2kfxTnIIfbAJoniL
+   mjRPOaQHCDxG5umQQCFBP4wQByx0mdCQLME2EBJM2XgUrnVA/SsaOpRoj
+   8kyM8u1l6eUnd3L7dLeWr5GMWGVu1dYI7BwQhy73jms2qX/3DIcvJOs7o
+   iZ+6A7lNTQY0GJIlp4sHw9EjQZz+hfaeYzTX5wFXS7Yyja/MZCs6U70DB
+   Q==;
+X-CSE-ConnectionGUID: +wgN5iv0RA68Hm42Ehhr2g==
+X-CSE-MsgGUID: 8n5R2itWTqq26wc8aIO9wA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11481"; a="64427973"
+X-IronPort-AV: E=Sophos;i="6.16,281,1744095600"; 
+   d="scan'208";a="64427973"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Jul 2025 02:18:39 -0700
+X-CSE-ConnectionGUID: vxd1XndcT3OoMKfVHJDRig==
+X-CSE-MsgGUID: gpP80ZaVRkCf3Rmd/W+dKw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,281,1744095600"; 
+   d="scan'208";a="159538616"
+Received: from lkp-server01.sh.intel.com (HELO 0b2900756c14) ([10.239.97.150])
+  by fmviesa004.fm.intel.com with ESMTP; 02 Jul 2025 02:18:36 -0700
+Received: from kbuild by 0b2900756c14 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uWtbu-0000RX-0P;
+	Wed, 02 Jul 2025 09:18:34 +0000
+Date: Wed, 2 Jul 2025 17:17:54 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>
+Cc: oe-kbuild-all@lists.linux.dev, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: gpio: Create a trivial GPIO schema
+Message-ID: <202507021740.qURVV9D8-lkp@intel.com>
+References: <20250701225355.2977294-1-robh@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] arm64: dts: rockchip: add HDMI audio on ROCK 4D
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: kernel@collabora.com, linux-input@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20250630-rock4d-audio-v1-0-0b3c8e8fda9c@collabora.com>
- <20250630-rock4d-audio-v1-4-0b3c8e8fda9c@collabora.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20250630-rock4d-audio-v1-4-0b3c8e8fda9c@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20250701225355.2977294-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250702_015734_952240_A22A920C 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20250702_021840_537750_B2134C85 
+X-CRM114-Status: GOOD (  13.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,20 +97,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 6/30/25 1:19 PM, Nicolas Frattaroli wrote:
-> Much like the Sige5, the ROCK 4D also has an HDMI port, so is capable of
-> providing HDMI audio output as well.
-> 
-> Enable the SoC's hdmi_sound card, and also enable the SoC audio
-> controller (sai6) that feeds into it.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Hi Rob,
 
-This worked as expected on my ROCK 4D board after enabling
-CONFIG_SND_SOC_ROCKCHIP_SAI, hence
+kernel test robot noticed the following build warnings:
 
-Tested-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+[auto build test WARNING on brgl/gpio/for-next]
+[also build test WARNING on linus/master v6.16-rc4 next-20250701]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
+url:    https://github.com/intel-lab-lkp/linux/commits/Rob-Herring-Arm/dt-bindings-gpio-Create-a-trivial-GPIO-schema/20250702-065536
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/brgl/linux.git gpio/for-next
+patch link:    https://lore.kernel.org/r/20250701225355.2977294-1-robh%40kernel.org
+patch subject: [PATCH] dt-bindings: gpio: Create a trivial GPIO schema
+reproduce: (https://download.01.org/0day-ci/archive/20250702/202507021740.qURVV9D8-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202507021740.qURVV9D8-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> Warning: Documentation/devicetree/bindings/mfd/lp3943.txt references a file that doesn't exist: Documentation/devicetree/bindings/gpio/gpio-lp3943.txt
+>> Warning: Documentation/devicetree/bindings/powerpc/nintendo/wii.txt references a file that doesn't exist: Documentation/devicetree/bindings/gpio/nintendo,hollywood-gpio.txt
+   Warning: Documentation/devicetree/bindings/regulator/siliconmitus,sm5703-regulator.yaml references a file that doesn't exist: Documentation/devicetree/bindings/mfd/siliconmitus,sm5703.yaml
+   Warning: Documentation/hwmon/g762.rst references a file that doesn't exist: Documentation/devicetree/bindings/hwmon/g762.txt
+   Warning: Documentation/translations/ja_JP/SubmittingPatches references a file that doesn't exist: linux-2.6.12-vanilla/Documentation/dontdiff
+   Warning: Documentation/translations/ja_JP/process/submit-checklist.rst references a file that doesn't exist: Documentation/translations/ja_JP/SubmitChecklist
+   Warning: Documentation/translations/zh_CN/admin-guide/README.rst references a file that doesn't exist: Documentation/dev-tools/kgdb.rst
+   Warning: Documentation/translations/zh_CN/dev-tools/gdb-kernel-debugging.rst references a file that doesn't exist: Documentation/dev-tools/gdb-kernel-debugging.rst
+   Warning: Documentation/translations/zh_CN/how-to.rst references a file that doesn't exist: Documentation/xxx/xxx.rst
+   Warning: Documentation/translations/zh_TW/admin-guide/README.rst references a file that doesn't exist: Documentation/dev-tools/kgdb.rst
+   Warning: Documentation/translations/zh_TW/dev-tools/gdb-kernel-debugging.rst references a file that doesn't exist: Documentation/dev-tools/gdb-kernel-debugging.rst
+>> Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/gpio/gpio-moxtet.txt
+   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/firmware/intel,stratix10-svc.txt
+>> Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/gpio/snps,creg-gpio.txt
+   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/leds/ti,tps6131x.yaml
+   Warning: arch/riscv/kernel/kexec_image.c references a file that doesn't exist: Documentation/riscv/boot-image-header.rst
+   Warning: drivers/clocksource/timer-armada-370-xp.c references a file that doesn't exist: Documentation/devicetree/bindings/timer/marvell,armada-370-xp-timer.txt
+   Using alabaster theme
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
