@@ -4,92 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B0CEC8303D
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jul 2025 18:25:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1165DC83F03
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jul 2025 21:44:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=beaoz6aGxkXC3bEckPXH0/i0OZjBOQ6jJXD4MY2RRrU=; b=W4L6O+74TowCvh
-	5sDBFHSD+7M4aaBh1prnCJPogVLqT50FrC/HTGpaf26SwYT2M/30JLF80rAw0TFBPbO3pwFo7Da/R
-	RPW1EvYT4t6gBfLlRXAkEYqqgWg809+KS9kv1AUmppGgAK+I01xXjWKVEhgBMI3LGJ5ptSbrNvhg9
-	oI7tHHPpxvKBJgznUNcqwNATZ2SxrfANP2mRsIXAnlXZi4Lzd6QyPRNpGu+VsaLyOmHlUuyqP2p/F
-	v4/rD4Wwc2oQp8fpS+KGHX6JGVFM5xzw6ckSkYu/2bBxKCFCoBI+ehsMTy7r/q/Wzbh/E48EfYlgI
-	V985eHDPBf5v+iZsfCbg==;
+	List-Owner; bh=Nj02Nwb+S3W5KqLZgnrOMBg0Pwqt8J0NyJQbp6BZ0Eo=; b=OmPrs7SWZP3nFf
+	QOHNpz3gCmQ9NsSBHc5cAHyiItqk/4p0lVWCMFwrKe5GXxxYe1sQUuoopoCtlqGAc6tuUPc6Q3sec
+	vtj5kfkrKgp3igKtdDRcJCt+LkcCjYI4RW/3uYL6pXtRN1KYsdOX2mn/Gy/i7AnXKjcHMbbVmWrIq
+	zRm+4Bv1W3BR03cmud16w8WqaM525mJ9GcJt16RMLaCnvyUKhHNGtq9/Ll3xqdd8MzTh11MiP9Rp9
+	JT6Z4DDT765zTPNTc3abeM/BYru4I/Yf8RmYfFGDWlFm517GOUU/E5VYzn81qrQlJZuWdzC6xNBqT
+	AZyQ1+ac/8rzy9VHGBOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXl65-0000000FDWn-2Tv2;
-	Fri, 04 Jul 2025 18:25:17 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1uXoDB-0000000FY0r-2SZj;
+	Fri, 04 Jul 2025 21:44:49 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXkcF-0000000F9WV-3Yt8
-	for linux-rockchip@lists.infradead.org;
-	Fri, 04 Jul 2025 17:54:28 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-b34a8f69862so942336a12.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 04 Jul 2025 10:54:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ziepe.ca; s=google; t=1751651667; x=1752256467; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=XuxUGCJzgBIyontDTdqwJrs5j4TnI5gqZ41JcRqn9+o=;
-        b=AEj0SNaj+UFlGBjxePsM4CEjaG9G/L9C5NLSkcw0PYFp/2Fi1F18UWal3LBSSYCGS/
-         5m3BWxQqHUO7PSC6THann6P+Y4f2QT8a//RQfY2OTQsdxfsWIym2NdRfDAbo/Je47pcW
-         +wL2V9P5C7ZIoQR5aghgcmc1/COK0duTuj5dwthqb1Lqh5A89sVEe+cvBwVuRYTPgSTq
-         9maY+Y6EBW6WvcXhM2bHOU1wFzBOOwFzjWMHmf5wg2FG9lag1Wpwhe1UObPsiDEsDJJu
-         mxgSip7mrtItRjcRgtDLyec8wmzDlgt3zmpT8QQFDLrzledgPU5puzJDizY3K6NA94V4
-         +JlQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751651667; x=1752256467;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XuxUGCJzgBIyontDTdqwJrs5j4TnI5gqZ41JcRqn9+o=;
-        b=H7qSh+OFfCRKCQI8xHdYqMK/aBPXpaxaGUK3nHAbMexc4ECoCV1CcgV8xEQnJFZvT3
-         QDarnnmxFhd6MMaCQCJBjmDNOBPOqzt60ajzpUCsdJo8bv8NwTX2/uGCE5PiOFkcZ4zM
-         kMGy5RVyngWS3tRR+gyPxpYAF54QcCvkxcvgRXiSnQjskoVju3up2iVVb4n2bgb3jQF2
-         oNUWVsc0JKHYTyxc2lybiLb3uZAnxh7UX0nLWyvYFSFVv7qUqHF/0wGaprrxYpbPCl/G
-         rcI0WI0AHsnLdmII4jipHXyl+e4k5LIYEVG9mGAi/3dQ4VcSaKW51aSonV+Bf2OS7zgU
-         UKxg==
-X-Forwarded-Encrypted: i=1; AJvYcCUKqeYPFNvXeHFcY5bneQQIp5/yk1AcVRz2XqFOF+C78Manc/t1UpBQZ9vF8ZdaSlyLZWLDQmmkDhYWOtnf7A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyObnSs6Gd84w35nLLxLWG4kz6oZO9QZIFwmLsf3h0Q0vEGGoTg
-	SFCTHVjgn6Pr3Y/IBEqIV3CCoa8ZjlE7xV9rvtnziq14Buo7WMJjn74TawUVR4zZlgQ=
-X-Gm-Gg: ASbGnctJ0le94BoUq+4Zy3+UBIujatMhTlSmtDdwIfM/k1/B/C3fnVdhwr3BgDonQNh
-	t0gP/BMQje7uPxddY6CV/IuWvxUFW9iHtB4JInMGJRMpWhJ+mOArTebD5HNVTNgZppDhbnj+3/I
-	wz1FXKiKkteD0oRbrdYD7hHu01JhfO4jNRJTj/C75+O60xsGVzV3eeJ44h37Ogp1Bm97HoPSFXt
-	KCTAzKCkSthlpFSe3EKJnfYRmVUBem5AgvDwDCUjIkuhnqMP1kcE7sYbAcU5559IqUTPpGWPAj9
-	zzNqkO1FMlg4vq8WfZ7zY1WZex2JSdoOMVge
-X-Google-Smtp-Source: AGHT+IEh1aJoFY/nLlH7wiffnloJQKoRXxbF/IF6yLU1DedrCGkd2rfvxrkg/X7+7Uo3KEx9efT39g==
-X-Received: by 2002:a17:90a:dfcc:b0:313:1e9d:404b with SMTP id 98e67ed59e1d1-31aadcf8e2bmr4389360a91.2.1751651667045;
-        Fri, 04 Jul 2025 10:54:27 -0700 (PDT)
-Received: from ziepe.ca ([130.41.10.202])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-31aaae4095asm2682225a91.8.2025.07.04.10.54.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Jul 2025 10:54:26 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.97)
-	(envelope-from <jgg@ziepe.ca>)
-	id 1uXkcD-00000005zua-0liE;
-	Fri, 04 Jul 2025 14:54:25 -0300
-Date: Fri, 4 Jul 2025 14:54:25 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
-	nicolas.dufresne@collabora.com, iommu@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v4 3/5] iommu: Add verisilicon IOMMU driver
-Message-ID: <20250704175425.GM904431@ziepe.ca>
-References: <20250623153931.158765-1-benjamin.gaignard@collabora.com>
- <20250623153931.158765-4-benjamin.gaignard@collabora.com>
+	id 1uXoAq-0000000FXgJ-2KWe;
+	Fri, 04 Jul 2025 21:42:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 272B16146A;
+	Fri,  4 Jul 2025 21:42:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9E48C4CEE3;
+	Fri,  4 Jul 2025 21:42:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751665342;
+	bh=6yn4rMYivw3/KIBDGpK476SEiUbXY5TLmhWSBFNrfuE=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=XM0YJq5cnTC5wgCVzcz7ybjl9cDO99a5Y/IaR/r+mzhuujwQ+auUqC9+YjdZxU52r
+	 sQwj+fWy449ni/DgMFpqesdt7Ts8ksrcg8PaCXQ6X8T96UbZ/SHMWqxSTgvSYWPdTl
+	 NO/LVxPA6PhBgoJuPVoIGnIoACVF+e9LvT5gvo1dzYqv9VWNZS8C7zN8bpRuyHJag6
+	 RKVfNBYORdblAAiUq2iyhyaMZDcib2cUv1mpSpB/CwRaPuPlVaCKNX8Il86/k2l30b
+	 fF8KtrkFQPiauAN+By2oECOr8BEfHwAy47CMfP+r1jnwWpNa9JTFxTqe/1HoS48m93
+	 aCcJQRgDu8ZDw==
+From: Mark Brown <broonie@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+ linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Peng Fan <peng.fan@nxp.com>
+Cc: linus.walleij@linaro.org, brgl@bgdev.pl
+In-Reply-To: <20250704130906.1207134-1-peng.fan@nxp.com>
+References: <20250704130906.1207134-1-peng.fan@nxp.com>
+Subject: Re: [PATCH] ASoC: codec: rockchip_sai: Remove including of_gpio.h
+Message-Id: <175166533831.206730.2590873270491527384.b4-ty@kernel.org>
+Date: Fri, 04 Jul 2025 22:42:18 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250623153931.158765-4-benjamin.gaignard@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250704_105427_888565_43DBAF42 
-X-CRM114-Status: GOOD (  19.13  )
+X-Mailer: b4 0.15-dev-cff91
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,71 +72,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 23, 2025 at 05:39:27PM +0200, Benjamin Gaignard wrote:
-> The Verisilicon IOMMU hardware block can be found in combination
-> with Verisilicon hardware video codecs (encoders or decoders) on
-> different SoCs.
-> Enable it will allow us to use non contiguous memory allocators
-> for Verisilicon video codecs.
+On Fri, 04 Jul 2025 21:09:06 +0800, Peng Fan wrote:
+> of_gpio.h is deprecated. And there is no user in this driver
+> using API in of_gpio.h, so remove it.
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
-> change in version 4:
-> - Kconfig dependencies
-> - Fix the remarks done by Jason and Robin: locking, clocks, macros
->   probing, pm_runtime, atomic allocation.
+> 
 
-It broadly seems OK to me
+Applied to
 
-Though I did notice this:
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-> +static struct iommu_domain *vsi_iommu_domain_alloc_paging(struct device *dev)
-> +{
-> +	struct vsi_iommu *iommu = dev_iommu_priv_get(dev);
-> +	struct vsi_iommu_domain *vsi_domain;
-> +
-> +	vsi_domain = kzalloc(sizeof(*vsi_domain), GFP_KERNEL);
-> +	if (!vsi_domain)
-> +		return NULL;
-> +
-> +	vsi_domain->iommu = iommu;
+Thanks!
 
-So we store the iommu in the domain? And use the iommu->lock all over
-the place
+[1/1] ASoC: codec: rockchip_sai: Remove including of_gpio.h
+      commit: 571defe0dff3f1e4180bd0db79283d3d5bf74a71
 
-> +static int vsi_iommu_attach_device(struct iommu_domain *domain,
-> +				   struct device *dev)
-> +{
-> +	struct vsi_iommu *iommu = dev_iommu_priv_get(dev);
-> +	struct vsi_iommu_domain *vsi_domain = to_vsi_domain(domain);
-> +	unsigned long flags;
-> +	int ret = 0;
-> +
-> +	ret = pm_runtime_resume_and_get(iommu->dev);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	spin_lock_irqsave(&iommu->lock, flags);
-> +	/* iommu already attached */
-> +	if (iommu->domain == domain)
-> +		goto unlock;
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-But here we don't check that the domain matches the iommu of dev.
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-This seems a bit weird to me, I didn't quite get why the domain uses
-iommu->lock instead of just having its own per-domain lock?
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-But if it does use iommu->lock then this does need to prevent using
-domains with the wrong iommu because the also use the wrong lock and
-then this:
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-> +
-> +	vsi_iommu_enable(iommu, domain);
-> +	list_add_tail(&iommu->node, &vsi_domain->iommus);
+Thanks,
+Mark
 
-Is not safe?
-
-Jason
 
 _______________________________________________
 Linux-rockchip mailing list
