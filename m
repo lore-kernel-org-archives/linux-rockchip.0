@@ -4,105 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB21CC83F0C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jul 2025 11:52:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28863C83F03
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jul 2025 11:53:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gdUIOhIcvzqDKR75wHubkuXaK8GWUKXZKCqEYc5dZOQ=; b=NhKc69/u4PbWVA3JFHPChQ7ZGK
-	6q7arUm2NmXw8QnO7cZ7qBPff/JrosRfQ/v8DLcmD0fkvylzSp6e0nZf13Rf3C0cvwvN60pkvFbtj
-	YY+tpmODLqMjr02Q5mYHc7uygF6X6rxlmIAskG/TZNeBe3G9NGXZI99oFY7BFHDn+WX2UrUKAKYLG
-	RY/Cq/me6U+WKoyrBHKSxvcNeTJ4CBijWnF9Yn5D9P04NLQaG0weew0LMF8K86WXJLNbUQ71i+qWT
-	jVggtJTtQPHjNhx78ZUIPFeZOpGFTPpv1oVYxKlS3Rak6dk79k2A9wUw1raXkJht/WZ/aXJ+7N5pm
-	Cy6Vj+BA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bCgCOmzs605j+ndf/Mhv22YuZfY/QuL49EzvT2oeBfY=; b=vyZzrsw4WDHbKE
+	0My5BjvFN/0d1QTFjtQpMVxybos9h3wh46984z8UY5Y7DCwhLn3+VyieOli1xd3JYMAV2OYGZvbR5
+	ptXZFzL9lzcm+xz5Uu2PrMt0a2ajlSc/9mQM80e5wgFW7WqZgVirw1hh/hpZ4qH/DcmI3oEw60Xkd
+	d6ivGXitavEtzLwtd29OOc+NRU+O4w/joVE2GYVGR97EXSYrM+wS+ewxgCxR7pNxEyb/Wi6lkaVrH
+	PsoZDaAoMYwN8cFGv6rewtPZmgSukJq3pCAjN6Jm0ek5px1/w92fd0q4qzLFxIyxX+Kbptm7CE7S/
+	OOdJPMVEh/kKZ4f2VPVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXey8-0000000EHkn-1G0U;
-	Fri, 04 Jul 2025 11:52:40 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1uXeyr-0000000EIq7-1HSi;
+	Fri, 04 Jul 2025 11:53:25 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXcO1-0000000DsZ8-28t0;
-	Fri, 04 Jul 2025 09:07:14 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-3b45edf2303so595626f8f.2;
-        Fri, 04 Jul 2025 02:07:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751620032; x=1752224832; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=VDywWjxdtqgZteOHlklAyHpSbZ7foh31pe/ikqYRz6k=;
-        b=ItOY2D65qDOJmCtIGyHygigG/TbBXn4R/jR3HDHxlBCcDy93sOMeiht4YPkq1J1M7T
-         GhE/Y7jo2xtCQBhgEtqeJa+Iegoh/Qa+gBBy+qvq7tl5FTzdWFVq5LmjeE5BT9Oew5R2
-         LRPlOQ8av3EbGOd4Nr8YNL3JYOoBo1SQzsJlnLabN1gZTF7p8JbC2yrJbuVoxbrFaMTx
-         oUMzN42tTleGpmtwe5ucJNzXlftgp5XA1gHyVp7y+mHu3mWCjiE/ldBuHUF7KO4Q+/98
-         WM3qcC9psbOps/S8z7TWm2NLWjm4qJvY6L4cEIAMudlnkSKGmmoGuRXOtm8Q/b4xUDlf
-         HZYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751620032; x=1752224832;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VDywWjxdtqgZteOHlklAyHpSbZ7foh31pe/ikqYRz6k=;
-        b=bSoh/2y17oVVmeoHbB4Sn3cH56eUrNfn/rqxnkEG0o/Ox2EtaWVuCSbRxYZZp/hmIW
-         mYIyieYxc0J1KftPEeIuU2pFJm/+VpUhSRWPib1cCZXK7l2mphXFhgC9EDBSgYdpZ/ki
-         OPD/QUOt1gwFOzwsXHvbBBFPca8nDivasfKTizK0JSbjQxVFB9s7L+2GooFXpZlClNT/
-         H0FkoGBs+af0MzZYrBF3+y2ylk0AXHO2QZIOqE2lbmQXmplHzj5Nkv1V19WBfs0BlHDQ
-         8Yr7PnzZNJaFKs2k+Y5Wpc6f9ZxLsSQfkz+PS14PXtJOGIQZGnpoG/AYEtLIvP6/RegX
-         18EA==
-X-Forwarded-Encrypted: i=1; AJvYcCUxgnt2KIpVr7Po7K2b4XA0+cw+8iAKtgmoe5ZnZ2nXghTROTzQ8iVYlW7aq3RXWxzmdfL8wELAiPY03wdfe7Q4@lists.infradead.org, AJvYcCV3qh8ONMX4NilBiyTthOYyBjrKgMviX3WEQ/kATCGtcu1ONacVfvft4DLFjNr8h5ln2Gqtd1EVh8nD4EUiEqezHQ==@lists.infradead.org, AJvYcCVdwq6pBcO3+zDqnbsGMjB8BTBKidOakn3FpWCy+hJKg3tZZfekxr/c0Let5t5fhevkLZksGbBIDHZ3SUx5Y7M=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxgG4F4RxM6pKopdO/Pot2zly7skDU/cIfKuGbS/qzRKy8M9MiM
-	C7UhtVPyEqImfio0dhucdCbhY7imNbVaz+X4dGaSnm7rbZCpJUx1FsgT
-X-Gm-Gg: ASbGncuxkwla0L2nNPT5AnrdebdEy052dW9gaJu8K8YHPDgzs8izlLHWZjZ7NSD3yEJ
-	WEiC9XVbrt+7kJw4zSY8IWWjL0Gwlp5jQn4ufYTtysXDuBPtXttT0GwcoEpgCH86ZajixyTDG5N
-	jynk2vgmS3p7bW++J9CmnNBGlaDtmwY49p2+nQdcO6kjdMbrEoUd06ezLKSqEy1u4FDJ/sv05og
-	Lxyvoh7/1L138ioc7LnYAY5bmSxfwdjB34GXJccrmo9yY+oKc2PlygZMRM2A3de6Om8jQZdkqgR
-	xYEs009G8sfSB/rY/1JvVeZoK9bhOc6bo0ILJRIv7NHH9InlIMGM32ReRzVuADdPQzWfnFxyffB
-	Qs/WCRyntgjpiuvpUyrMzi5eAUmQ6mC+9ZYu2yI8eYGr2tNB5
-X-Google-Smtp-Source: AGHT+IHEPxQdMHTXbR1zyfFVxzPQhYfItopt0GRpKhNC4icZ8avdDH2El8o9lUAz/MQc695EIAp2Fw==
-X-Received: by 2002:a5d:5d8a:0:b0:3a4:e4ee:4c7b with SMTP id ffacd0b85a97d-3b4964f8be8mr1457452f8f.15.1751620031616;
-        Fri, 04 Jul 2025 02:07:11 -0700 (PDT)
-Received: from orome (p200300e41f4e9b00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f4e:9b00:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b47285c9f9sm1967858f8f.93.2025.07.04.02.07.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Jul 2025 02:07:10 -0700 (PDT)
-Date: Fri, 4 Jul 2025 11:07:07 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: Tommaso Merciai <tomm.merciai@gmail.com>, 
-	Martin Hecht <mhecht73@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Sebastian Reichel <sre@kernel.org>, Alain Volmat <alain.volmat@foss.st.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, Kieran Bingham <kieran.bingham@ideasonboard.com>, 
-	Umang Jain <umang.jain@ideasonboard.com>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Michael Riesch <michael.riesch@collabora.com>, 
-	Mikhail Rudenko <mike.rudenko@gmail.com>, Steve Longerbeam <slongerbeam@gmail.com>, 
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Nicholas Roth <nicholas@rothemail.net>, 
-	Benjamin Mugnier <benjamin.mugnier@foss.st.com>, Sylvain Petinot <sylvain.petinot@foss.st.com>, 
-	Paul Elder <paul.elder@ideasonboard.com>, Matt Ranostay <matt@ranostay.sg>, 
-	Nas Chung <nas.chung@chipsnmedia.com>, Jackson Lee <jackson.lee@chipsnmedia.com>, 
-	Dmitry Osipenko <digetx@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Vikash Garodia <quic_vgarodia@quicinc.com>, Dikshita Agarwal <quic_dikshita@quicinc.com>, 
-	Abhinav Kumar <abhinav.kumar@linux.dev>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Sean Young <sean@mess.org>, Hans Verkuil <hverkuil@xs4all.nl>, 
-	Matthias Fend <matthias.fend@emfend.at>, Marco Felsch <m.felsch@pengutronix.de>, 
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Ricardo Ribalda <ribalda@chromium.org>, 
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 41/80] media: Remove redundant
- pm_runtime_mark_last_busy() calls
-Message-ID: <oanwnvwlfewhtihgxqhxeuyayiqehzryqdsvmq5hku62nn7ri7@favwssinmjjq>
+	id 1uXeeV-0000000EFUd-34YC;
+	Fri, 04 Jul 2025 11:32:25 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5645iBLC018568;
+	Fri, 4 Jul 2025 11:31:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	2C1tL1cyUjmdUt5666UxjttpvYe1I2PpGbZ0Gq7p9u0=; b=DQHc7R8C6yKFEVK/
+	6IboEgwHcO3cocNXxQqLXFhnT2HU/ASiS1aEsWxKDNo96h0JIevrTyWfg0BzweZS
+	uxasC4MbRMOBokwc7WL105SP5o8CF9e9jhIjI17G2WK8gsie3QbpNsr5d7Qn43Jr
+	vDUT/NZGrHTAa2LUHRqFupSTjLZRN/kq/hP/yem0y2tQtKym33+fthgb6rah7y8C
+	Q68Jg4Q6vVUVFlnS0Rhx00T+JrvHESixRuV6u9g0ruedJQMQD1Lhm/w8ESdmPE1L
+	hRBgMIeruYtmoc9U8Ky1I7CIQ8s6kg5w/hLlDE1b2o8xE1i+uIYRjpsCbGa40iei
+	NDLwjg==
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47j8fxuupq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 04 Jul 2025 11:31:09 +0000 (GMT)
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
+	by NASANPPMTA04.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 564BV8lC008382
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 4 Jul 2025 11:31:08 GMT
+Received: from [10.50.59.132] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Fri, 4 Jul
+ 2025 04:30:55 -0700
+Message-ID: <edfd0bd9-e2b0-93ef-a573-2f2a3ae8d810@quicinc.com>
+Date: Fri, 4 Jul 2025 17:00:48 +0530
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 41/80] media: Remove redundant pm_runtime_mark_last_busy()
+ calls
+Content-Language: en-US
+To: Sakari Ailus <sakari.ailus@linux.intel.com>,
+        Tommaso Merciai
+	<tomm.merciai@gmail.com>,
+        Martin Hecht <mhecht73@gmail.com>,
+        "Mauro Carvalho
+ Chehab" <mchehab@kernel.org>,
+        Sebastian Reichel <sre@kernel.org>,
+        Alain
+ Volmat <alain.volmat@foss.st.com>,
+        Dave Stevenson
+	<dave.stevenson@raspberrypi.com>,
+        Kieran Bingham
+	<kieran.bingham@ideasonboard.com>,
+        Umang Jain <umang.jain@ideasonboard.com>,
+        Manivannan Sadhasivam <mani@kernel.org>,
+        Laurent Pinchart
+	<laurent.pinchart@ideasonboard.com>,
+        Michael Riesch
+	<michael.riesch@collabora.com>,
+        Mikhail Rudenko <mike.rudenko@gmail.com>,
+        Steve Longerbeam <slongerbeam@gmail.com>,
+        Jacopo Mondi
+	<jacopo.mondi@ideasonboard.com>,
+        Nicholas Roth <nicholas@rothemail.net>,
+        Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+        Sylvain Petinot
+	<sylvain.petinot@foss.st.com>,
+        Paul Elder <paul.elder@ideasonboard.com>,
+        "Matt Ranostay" <matt@ranostay.sg>,
+        Nas Chung <nas.chung@chipsnmedia.com>,
+        "Jackson Lee" <jackson.lee@chipsnmedia.com>,
+        Dmitry Osipenko
+	<digetx@gmail.com>,
+        Thierry Reding <thierry.reding@gmail.com>,
+        Jonathan
+ Hunter <jonathanh@nvidia.com>,
+        Vikash Garodia <quic_vgarodia@quicinc.com>,
+        "Abhinav Kumar" <abhinav.kumar@linux.dev>,
+        Bryan O'Donoghue
+	<bryan.odonoghue@linaro.org>,
+        Raspberry Pi Kernel Maintenance
+	<kernel-list@raspberrypi.com>,
+        Florian Fainelli
+	<florian.fainelli@broadcom.com>,
+        Broadcom internal kernel review list
+	<bcm-kernel-feedback-list@broadcom.com>,
+        Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>,
+        Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>,
+        Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
+        Hans Verkuil <hverkuil@xs4all.nl>,
+        Matthias Fend
+	<matthias.fend@emfend.at>,
+        Marco Felsch <m.felsch@pengutronix.de>,
+        "Tomi
+ Valkeinen" <tomi.valkeinen@ideasonboard.com>,
+        Ricardo Ribalda
+	<ribalda@chromium.org>
+CC: <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-tegra@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+        <linux-rpi-kernel@lists.infradead.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-rockchip@lists.infradead.org>
 References: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
  <20250704075431.3220262-1-sakari.ailus@linux.intel.com>
-MIME-Version: 1.0
+From: Dikshita Agarwal <quic_dikshita@quicinc.com>
 In-Reply-To: <20250704075431.3220262-1-sakari.ailus@linux.intel.com>
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzA0MDA4OCBTYWx0ZWRfX94SUNz9Zog9s
+ 241uiCiS8OVAytLuDJY25SN5WBo2A15VpvTMJToQUJBTBD5tSk4brYdb7zaZPtNru1KP2D7ucOI
+ MP7OoWwNRfSp2vZyGAhRtK+GWPKPTC8CYcaz3pJrf0bvbPF0p6Tg6lQG8kNVwjM1v/lwgpbm1sI
+ 9W3lBD8vDg9u5BhiyrHx5ES5xCkubkQOLvlAYhlLN0xeAziKI1O0M/r0b5MHvmDpyLTQ/s38Dus
+ XjjluoWlT5f2jJF+Y1Ri81wN8xu6nn2AJfKF+gtxVeKeSC6SS29JcpLv2ONoxL/lbwrkxGfP05S
+ WrLFk95oIfphsWUlPaLpl9uKyc9zZz6KR54Jmd1IWdNNg8BmRm8DRjzYRKFQFU3BwFHPABy84mN
+ k7jN9W2mHATSPb7ZegYBV/S0C/iK3zQm+yZ/iqD+JuVLZ4pubHA+BceFQgNCaautkqWZ1okn
+X-Proofpoint-GUID: L0pLOEq6Xr5MYWPfr9s13YUNZ-ZnYjRo
+X-Proofpoint-ORIG-GUID: L0pLOEq6Xr5MYWPfr9s13YUNZ-ZnYjRo
+X-Authority-Analysis: v=2.4 cv=TqPmhCXh c=1 sm=1 tr=0 ts=6867bb7d cx=c_pps
+ a=JYp8KDb2vCoCEuGobkYCKw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=GEpy-HfZoHoA:10 a=IkcTkHD0fZMA:10 a=Wb1JkmetP80A:10 a=VwQbUJbxAAAA:8
+ a=QyXUC8HyAAAA:8 a=COk6AnOGAAAA:8 a=PTLqzckoA416w6NZUygA:9 a=QEXdDO2ut3YA:10
+ a=TjNXssC_j7lpFel5tvFf:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
+ definitions=2025-07-04_04,2025-07-02_04,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 bulkscore=0 mlxlogscore=999 suspectscore=0 adultscore=0
+ phishscore=0 malwarescore=0 clxscore=1011 lowpriorityscore=0 mlxscore=0
+ impostorscore=0 spamscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
+ definitions=main-2507040088
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250704_020713_550120_6CC26CEC 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20250704_043223_884945_3EAE679D 
+X-CRM114-Status: GOOD (  16.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,71 +169,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============9088833897068259748=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============9088833897068259748==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="kwmvyrwxhkrq3xlc"
-Content-Disposition: inline
 
-
---kwmvyrwxhkrq3xlc
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 41/80] media: Remove redundant
- pm_runtime_mark_last_busy() calls
-MIME-Version: 1.0
-
-On Fri, Jul 04, 2025 at 10:54:31AM +0300, Sakari Ailus wrote:
+On 7/4/2025 1:24 PM, Sakari Ailus wrote:
 > pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
 > pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
 > to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
 > pm_runtime_mark_last_busy().
->=20
+> 
 > Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-[...]
+> ---
+> The cover letter of the set can be found here
+> <URL:https://lore.kernel.org/linux-pm/20250704075225.3212486-1-sakari.ailus@linux.intel.com>.
+> 
+> In brief, this patch depends on PM runtime patches adding marking the last
+> busy timestamp in autosuspend related functions. The patches are here, on
+> rc2:
+> 
+>         git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git \
+>                 pm-runtime-6.17-rc1
+> 
+>  drivers/media/i2c/alvium-csi2.c                          | 1 -
+>  drivers/media/i2c/ccs/ccs-core.c                         | 4 ----
+>  drivers/media/i2c/dw9768.c                               | 1 -
+>  drivers/media/i2c/gc0308.c                               | 3 ---
+>  drivers/media/i2c/gc2145.c                               | 3 ---
+>  drivers/media/i2c/imx219.c                               | 2 --
+>  drivers/media/i2c/imx283.c                               | 3 ---
+>  drivers/media/i2c/imx290.c                               | 3 ---
+>  drivers/media/i2c/imx296.c                               | 1 -
+>  drivers/media/i2c/imx415.c                               | 1 -
+>  drivers/media/i2c/mt9m114.c                              | 6 ------
+>  drivers/media/i2c/ov4689.c                               | 3 ---
+>  drivers/media/i2c/ov5640.c                               | 4 ----
+>  drivers/media/i2c/ov5645.c                               | 3 ---
+>  drivers/media/i2c/ov64a40.c                              | 4 ----
+>  drivers/media/i2c/ov8858.c                               | 2 --
+>  drivers/media/i2c/st-mipid02.c                           | 2 --
+>  drivers/media/i2c/tc358746.c                             | 5 -----
+>  drivers/media/i2c/thp7312.c                              | 4 ----
+>  drivers/media/i2c/vd55g1.c                               | 4 ----
+>  drivers/media/i2c/vd56g3.c                               | 4 ----
+>  drivers/media/i2c/video-i2c.c                            | 4 ----
+>  drivers/media/platform/chips-media/wave5/wave5-vpu-dec.c | 4 ----
+>  drivers/media/platform/chips-media/wave5/wave5-vpu-enc.c | 5 -----
 >  drivers/media/platform/nvidia/tegra-vde/h264.c           | 2 --
-[...]
+>  drivers/media/platform/qcom/iris/iris_hfi_queue.c        | 1 -
+>  drivers/media/platform/raspberrypi/pisp_be/pisp_be.c     | 2 --
+>  drivers/media/platform/verisilicon/hantro_drv.c          | 1 -
+>  drivers/media/rc/gpio-ir-recv.c                          | 1 -
+>  29 files changed, 83 deletions(-)
+> 
+[snip]> diff --git a/drivers/media/platform/qcom/iris/iris_hfi_queue.c
+b/drivers/media/platform/qcom/iris/iris_hfi_queue.c
+> index fac7df0c4d1a..0b37f9b76da5 100644
+> --- a/drivers/media/platform/qcom/iris/iris_hfi_queue.c
+> +++ b/drivers/media/platform/qcom/iris/iris_hfi_queue.c
+> @@ -142,7 +142,6 @@ int iris_hfi_queue_cmd_write(struct iris_core *core, void *pkt, u32 pkt_size)
+>  	}
+>  	mutex_unlock(&core->lock);
+>  
+> -	pm_runtime_mark_last_busy(core->dev);
+>  	pm_runtime_put_autosuspend(core->dev);
+>  
+>  	return 0;
+Reviewed-by: Dikshita Agarwal <quic_dikshita@quicinc.com>
 
-Acked-by: Thierry Reding <treding@nvidia.com>
-
---kwmvyrwxhkrq3xlc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmhnmbsACgkQ3SOs138+
-s6HR2g/+NoY3pcxcF7vUmDQS013DsHFgpV+Tl+JcGqzntxo7nvqoPqTVCDHLybr8
-bkYad4XE946YrelbKsxzncJn4vZjVB6qrGMujyv65H8WfO7AG6nzlibOIunL8WOd
-Y+uxVe5SBCDS7bajKFtmuEKFnz08e0bpIWOgKkOauDAuEkrbPsqXXYSUxXE+pf0z
-8XTFc6AQAMeg4AQTnDMUYRA1FgHi5ZQCFhedxjKRmXSQd+P8td6GZsvYK427AWyK
-mvKwRu4NPb6FosulEpEctkbpI6ObbN7fAUdjbIlSIHnNm9L/GDApH3zAGn5oGT0q
-m1XodmUsGZHRJt7KEzAqHqx2pzM/ab9UNEJGDaCMzpYGJMjowIYpoVgxubKmwVUV
-YgVNJ0IZL4QrGL5yr1S5XZD0+0pi+vH0nrjX9MewaJyhDebyBNKuifREtuPndWqS
-hXBQXVtSFW/mMCCxyMYmmT6GBNjnbd+vaTiRFGCNz1cds0nz0F3LtGTAg+UjGe7o
-p5+7dWzdafTk8aIeGY6Pozuei+LziegbVWpegNMLkK9TRVwm21bKvhggMay1Fl8z
-R3OBaZKmkHmsqC25vsdaVhwNjFoR36UqmGhXUMnl3gl4aee0lbG6nCqJKBAfCJUa
-dkGr3BlRGwk0DC98kTAVD7TUuwmROlTKR5tlcoLgvi7rPb/C/Ek=
-=tZ0M
------END PGP SIGNATURE-----
-
---kwmvyrwxhkrq3xlc--
-
-
---===============9088833897068259748==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Dikshita
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============9088833897068259748==--
-
