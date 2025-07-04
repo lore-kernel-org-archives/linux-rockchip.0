@@ -4,74 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF82DC83F0B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jul 2025 15:31:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D77CC83F03
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jul 2025 17:17:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EqwQjbqwB2anTT71645wGTJ965DAr+EDt4CquHYRpGo=; b=rlVwN1YH0CSbDK
-	3gg+bwIr/GAORG6XpscR1c3/PoJi5D/1k4Tct0kHpimSC0xmLY/51ZEVn+wzdP5m3YEaDAOdArK3h
-	N4hRZ73yVOTvVkM4zTSg31d4mfBv811lzfjttYvoQRtSSJgdCSGSegLFDR+wrv3wKPONB/gz5w8++
-	DbkpEIyXGlfJsfst7qqTialb0t+tDwZEK0T/V//8uLcNeO8vecXaKlO8csevXCP5xPnIL1vGscwGs
-	OmyylSBaWKrPXx0OF9wzzz4d8Tq0XyCP1BYSxj42McAulmNCdvRs7zPIZPCfQu2XgpN9afeiKZPya
-	OykvsU5Z0qkoQ8gpy5mg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ppacRNtOo68KVkSmen9iKMtHF4v1PeJLVqK5EMHXvEc=; b=EoZqppLdoSWhcC
+	ydvpz3/b2Mn8ndyKENjpy9/5DCi5FjWapxXwiwHXLZrC4DRR6STWj9ajn6FhGiSLp/GVDz9Bl0OiW
+	aWIFWdUrimIIIbntooL+++0r+Z+zo5A1ID/eOpOgyMfVKvfj0sXFl3CFmh8pPUtIwWYFejbnY8O1M
+	0VfBd2TyD3jAErVrwHiIlhMggN3K252RqEvy58d/Aig4+SS4s5ZOdJrBIaJyten0Ehj9W2jR055zb
+	JUX6onKwpKE4B4wZTgj3Z0aM5ye/1VQ3Qcf1EIcfdJfyTcRRm7ZPZc4RqAEUu7sQoGT2vyh1DMVcX
+	h5azrHAeY+X41Gj4vpjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXiOC-0000000EpS4-26VG;
-	Fri, 04 Jul 2025 15:31:48 +0000
+	id 1uXk1k-0000000F4aT-3uCw;
+	Fri, 04 Jul 2025 17:16:44 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXiIm-0000000EolE-2dy8;
-	Fri, 04 Jul 2025 15:26:13 +0000
+	id 1uXjzM-0000000F4Ki-28w7;
+	Fri, 04 Jul 2025 17:14:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1751642770;
-	bh=ohRy4gcoGuEcRKZpJdSU1G0sKmqubXx68E7KSC1A01I=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IQpuTJ46xB7t9TZsLEqdQUqcaUBAf7UcGR9KeXm5AbW+VdHtVw9PDpxe3+Zx8pk1A
-	 2tofxiaQsxOsBqI1Xoko5rRmH1K5bu7qQfSPpuDh9FHDevntD6KW1HNq8gawLU7HWj
-	 QN/lN+G1R0r+Nw79biJPjRdmz1WYurJMekV6zpmEDl6scwasEp6xsbqmNTSljPz6J6
-	 pDCt8GB71tdiXMdZ++n5SpjvzRnxX7/0eOzOnA9yMMhfpHs04vvBc2wV18ZLD0P/6T
-	 hvRxPGgcRDfX0NNfaE6a/UgspTX3s/2td2/OaNlIvJoPeuPYsoHL9B+Vb1799nm2kj
-	 uNYYV5pFL+w3w==
-Received: from [192.168.1.90] (unknown [212.93.144.165])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1751649254;
+	bh=S8cWKIiwtDiSfStJh84KCei6d3DwGM2GwUkVOE4faQo=;
+	h=From:Date:Subject:To:Cc:From;
+	b=KWDkUUaoYN5CRfFZTT0YTXnnnEB67PNOS49ze/RoxK2MOpu2GIqsGC51CPfCScOQp
+	 F1da3abN0+7q7KS+1jti0WYgANv+bom883yz9AN/RxV5sgRzrMgKeEdRAPJqTdhSMD
+	 Roht7RWoTZrdIMj8W+Q5mLTPXAPv6+NMDghupC6Rh2gJiiG9yoZ00laB98vtWBawuf
+	 z3vzpz5Iv9sAqRPoUb9UK6qOhDtaMleOppXfUvPp8Ulmv5EJhF3O+aTlQMFj4IUFyC
+	 7c401ccgr0l//zJOOjLAIhJBg+zAYYreTsYw1VN7Hbjy2Hmp45gq/GsLRBqmZ9LIcj
+	 hy20ndBaFDmkw==
+Received: from jupiter.universe (dyndsl-091-248-191-229.ewe-ip-backbone.de [91.248.191.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDC8517E07C9;
-	Fri,  4 Jul 2025 17:26:09 +0200 (CEST)
-Message-ID: <c08e55bb-fb93-44d6-bcb2-f1a1b78a5fb7@collabora.com>
-Date: Fri, 4 Jul 2025 18:26:09 +0300
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7161A17E0202;
+	Fri,  4 Jul 2025 19:14:14 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 19F71480039; Fri, 04 Jul 2025 19:14:14 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Fri, 04 Jul 2025 19:14:14 +0200
+Subject: [PATCH] arm64: dts: rockchip: Enable HDMI receiver on RK3588 EVB1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/5] drm/rockchip: dw_hdmi_qp: Provide ref clock rate in
- dw_hdmi_qp_plat_data
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250704-rk3588-hdmi-cec-v1-0-2bd8de8700cd@collabora.com>
- <20250704-rk3588-hdmi-cec-v1-3-2bd8de8700cd@collabora.com>
- <20250704-granite-piculet-of-elevation-f01e08@houat>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20250704-granite-piculet-of-elevation-f01e08@houat>
+Message-Id: <20250704-rk3588-evb1-hdmi-rx-v1-1-248315c36ccd@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAOULaGgC/x3MSwqAMAwA0atI1gZStVi9irhQm2oQP6Qggnh3i
+ 8u3mHkgsgpHaLMHlC+JcuwJJs9gWoZ9ZhSfDAUVlmqqUNfSOod8jQYXvwnqjda4sjHUEFGAVJ7
+ KQe7/2vXv+wG/4P39ZQAAAA==
+X-Change-ID: 20250704-rk3588-evb1-hdmi-rx-51839109000f
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1392; i=sre@kernel.org;
+ h=from:subject:message-id; bh=S8cWKIiwtDiSfStJh84KCei6d3DwGM2GwUkVOE4faQo=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGhoC+Ynu96nCSNsKxpenn4F4N4nZhIray6ew
+ sopv3oLcmldc4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJoaAvmAAoJENju1/PI
+ O/qa3gcP/0pAVYqWKnbMQo58dsFsLmzMm+rZ72RwyO8pvHgKJYwDUuibJYQSMwAI12W//vIOQ8S
+ p6KZ4YmF7BClcHA/2cJiIk8Q3WygeLfOxxKjry6LEFOHjqy7Vn0jd7VNXZMbkX77LAdWAmf5kfx
+ mxGLyjZYTTgS5CHmVi2NVw14gdZxmB9esDEk8SrIY2ycV1fntN5MiNFjnoTW/uQuxaCWaydbqCF
+ W91WhRcOmdUozfmD7ybDOUKUMeRYRQBNZPHNDPGyYxQv8WPCWO5yvZ1BO0xO4VJWxkcEjcrBv3R
+ BtxMDzAlrkusn71xdJ1hLCMhLVT0kUBGQlB/6ONIM17NFattTZ+pEo9CD78m4Fd+XigeE6X1Lvn
+ OX6jhcFIt9th7c9n97je48RiKodHBJWZRcwOPIs7PheGVkYiq7zJAgoMAoWo/W9ZMkt/S29xz2t
+ niKYxym7MgwzzKR+bREw9LGaIaNqADBmVeDh/vVZKFerZNdVwsFs/bfhI8UhQbuENmGfUBc2tT8
+ gzfjdpcWb1fCmmLeI/BHAd+jEsNadaUjZHELSAAbou1DUNf8oqyaqQZ8GqvEHVipUCZwc6GzDZ1
+ 8vRFAXLbgBYF3igUVZ6tX9dMdGSSr0Zb99AlM25zr2V9WA5/+v4yeVFmOCqmRLu+Qnkqqy4c3Ba
+ LWGGlvGbb4XH7C0LXrk8fCA==
+X-Developer-Key: i=sre@kernel.org; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250704_082612_825315_D78B3029 
-X-CRM114-Status: GOOD (  20.31  )
+X-CRM114-CacheID: sfid-20250704_101416_718495_5D827266 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,62 +97,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+Enable HDMI input port of the RK3588 EVB1.
 
-On 7/4/25 6:07 PM, Maxime Ripard wrote:
-> On Fri, Jul 04, 2025 at 05:23:24PM +0300, Cristian Ciocaltea wrote:
->> In order to support correct initialization of the timer base in the HDMI
->> QP IP block, extend the platform data to provide the necessary reference
->> clock rate.
->>
->> While at it, ensure plat_data is zero-initialized in
->> dw_hdmi_qp_rockchip_bind().
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 13 ++++++++++++-
->>  include/drm/bridge/dw_hdmi_qp.h                |  1 +
->>  2 files changed, 13 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
->> index 126e556025961e8645f3567b4d7a1c73cc2f2e7f..8c1185490009c5f1bc658998a868f8b18dc479a3 100644
->> --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
->> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
->> @@ -431,8 +431,8 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
->>  				    void *data)
->>  {
->>  	struct platform_device *pdev = to_platform_device(dev);
->> +	struct dw_hdmi_qp_plat_data plat_data = {};
->>  	const struct rockchip_hdmi_qp_cfg *cfg;
->> -	struct dw_hdmi_qp_plat_data plat_data;
->>  	struct drm_device *drm = data;
->>  	struct drm_connector *connector;
->>  	struct drm_encoder *encoder;
->> @@ -515,6 +515,17 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
->>  		return ret;
->>  	}
->>  
->> +	for (i = 0; i < ret; i++) {
->> +		if (!strcmp(clks[i].id, "ref")) {
->> +			plat_data.ref_clk_rate = clk_get_rate(clks[i].clk);
->> +			break;
->> +		}
->> +	}
->> +	if (!plat_data.ref_clk_rate) {
->> +		dev_err(hdmi->dev, "Missing ref clock\n");
->> +		return -EINVAL;
->> +	}
->> +
-> 
-> You'd be better off not using clk_bulk, or calling an additional clk_get
-> for the ref clock only.
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-I'd keep clk_bulk as there are 5 more clocks in the list.  But replacing the
-loop with just an extra clk_get would be a simpler approach, indeed, so
-thanks for the hint!
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+index 8e912da299a218b61623e6973d2f955504bd44aa..ff1ba5ed56ef5b985c54fa9e1a433fc81f988f8b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+@@ -391,6 +391,17 @@ hdmi1_out_con: endpoint {
+ 	};
+ };
+ 
++&hdmi_receiver_cma {
++	status = "okay";
++};
++
++&hdmi_receiver {
++	hpd-gpios = <&gpio2 RK_PB5 GPIO_ACTIVE_LOW>;
++	pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdmim1_rx_sda &hdmirx_hpd>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
+ &hdptxphy0 {
+ 	status = "okay";
+ };
+@@ -582,6 +593,12 @@ rtl8211f_rst: rtl8211f-rst {
+ 
+ 	};
+ 
++	hdmirx {
++		hdmirx_hpd: hdmirx-5v-detection {
++			rockchip,pins = <2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	hym8563 {
+ 		hym8563_int: hym8563-int {
+ 			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
 
-Regards,
-Cristian
+---
+base-commit: e05818ef75bee755fc56811cb54febf4174d7cf2
+change-id: 20250704-rk3588-evb1-hdmi-rx-51839109000f
+
+Best regards,
+-- 
+Sebastian Reichel <sre@kernel.org>
+
 
 _______________________________________________
 Linux-rockchip mailing list
