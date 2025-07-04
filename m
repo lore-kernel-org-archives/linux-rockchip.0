@@ -4,160 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28863C83F03
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jul 2025 11:53:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AECD7C8303D
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jul 2025 13:09:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bCgCOmzs605j+ndf/Mhv22YuZfY/QuL49EzvT2oeBfY=; b=vyZzrsw4WDHbKE
-	0My5BjvFN/0d1QTFjtQpMVxybos9h3wh46984z8UY5Y7DCwhLn3+VyieOli1xd3JYMAV2OYGZvbR5
-	ptXZFzL9lzcm+xz5Uu2PrMt0a2ajlSc/9mQM80e5wgFW7WqZgVirw1hh/hpZ4qH/DcmI3oEw60Xkd
-	d6ivGXitavEtzLwtd29OOc+NRU+O4w/joVE2GYVGR97EXSYrM+wS+ewxgCxR7pNxEyb/Wi6lkaVrH
-	PsoZDaAoMYwN8cFGv6rewtPZmgSukJq3pCAjN6Jm0ek5px1/w92fd0q4qzLFxIyxX+Kbptm7CE7S/
-	OOdJPMVEh/kKZ4f2VPVQ==;
+	List-Owner; bh=2BnFuXHgLuPUeBPpqArJxk60Viv/1qsZzc1aRnXzAP8=; b=CuZ+t8aB2eM0uh
+	OcuILq4aUAEh8CyX5BlBfSN/WU2WL5bjBu4oFf4kYl+2VrrDYw3VtR84P8Hfr6nbzRkjWYvsE+7YT
+	5UTwEMpEUSg6Fp9nDdR0/h3b4JvS+qCP8I0BrzIUvnqoqVsqAtSoeGUEfW9ExflF84NmVLddPI2lh
+	H1QlnoVLoz0ifGWk3SyWkZUl8/Lh9tmlvF04n0z+tXqvx3DnOMzF2bgWi2kwOYTW41KAO8HT94fxd
+	Tr37909DhgAsyO4nuaVZc9U4lvwp8paJx+0ogDrKs1ToXKDGRVGYykvGi9r7CtDlHITOJmFqfWJ8Y
+	OmZmHdQwCxCdhu30Bu2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXeyr-0000000EIq7-1HSi;
-	Fri, 04 Jul 2025 11:53:25 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1uXg9v-0000000ETOB-3mSq;
+	Fri, 04 Jul 2025 13:08:55 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXeeV-0000000EFUd-34YC;
-	Fri, 04 Jul 2025 11:32:25 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5645iBLC018568;
-	Fri, 4 Jul 2025 11:31:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	2C1tL1cyUjmdUt5666UxjttpvYe1I2PpGbZ0Gq7p9u0=; b=DQHc7R8C6yKFEVK/
-	6IboEgwHcO3cocNXxQqLXFhnT2HU/ASiS1aEsWxKDNo96h0JIevrTyWfg0BzweZS
-	uxasC4MbRMOBokwc7WL105SP5o8CF9e9jhIjI17G2WK8gsie3QbpNsr5d7Qn43Jr
-	vDUT/NZGrHTAa2LUHRqFupSTjLZRN/kq/hP/yem0y2tQtKym33+fthgb6rah7y8C
-	Q68Jg4Q6vVUVFlnS0Rhx00T+JrvHESixRuV6u9g0ruedJQMQD1Lhm/w8ESdmPE1L
-	hRBgMIeruYtmoc9U8Ky1I7CIQ8s6kg5w/hLlDE1b2o8xE1i+uIYRjpsCbGa40iei
-	NDLwjg==
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47j8fxuupq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 04 Jul 2025 11:31:09 +0000 (GMT)
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA04.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 564BV8lC008382
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 4 Jul 2025 11:31:08 GMT
-Received: from [10.50.59.132] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Fri, 4 Jul
- 2025 04:30:55 -0700
-Message-ID: <edfd0bd9-e2b0-93ef-a573-2f2a3ae8d810@quicinc.com>
-Date: Fri, 4 Jul 2025 17:00:48 +0530
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 41/80] media: Remove redundant pm_runtime_mark_last_busy()
- calls
-Content-Language: en-US
-To: Sakari Ailus <sakari.ailus@linux.intel.com>,
-        Tommaso Merciai
-	<tomm.merciai@gmail.com>,
-        Martin Hecht <mhecht73@gmail.com>,
-        "Mauro Carvalho
- Chehab" <mchehab@kernel.org>,
-        Sebastian Reichel <sre@kernel.org>,
-        Alain
- Volmat <alain.volmat@foss.st.com>,
-        Dave Stevenson
-	<dave.stevenson@raspberrypi.com>,
-        Kieran Bingham
-	<kieran.bingham@ideasonboard.com>,
-        Umang Jain <umang.jain@ideasonboard.com>,
-        Manivannan Sadhasivam <mani@kernel.org>,
-        Laurent Pinchart
-	<laurent.pinchart@ideasonboard.com>,
-        Michael Riesch
-	<michael.riesch@collabora.com>,
-        Mikhail Rudenko <mike.rudenko@gmail.com>,
-        Steve Longerbeam <slongerbeam@gmail.com>,
-        Jacopo Mondi
-	<jacopo.mondi@ideasonboard.com>,
-        Nicholas Roth <nicholas@rothemail.net>,
-        Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
-        Sylvain Petinot
-	<sylvain.petinot@foss.st.com>,
-        Paul Elder <paul.elder@ideasonboard.com>,
-        "Matt Ranostay" <matt@ranostay.sg>,
-        Nas Chung <nas.chung@chipsnmedia.com>,
-        "Jackson Lee" <jackson.lee@chipsnmedia.com>,
-        Dmitry Osipenko
-	<digetx@gmail.com>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Jonathan
- Hunter <jonathanh@nvidia.com>,
-        Vikash Garodia <quic_vgarodia@quicinc.com>,
-        "Abhinav Kumar" <abhinav.kumar@linux.dev>,
-        Bryan O'Donoghue
-	<bryan.odonoghue@linaro.org>,
-        Raspberry Pi Kernel Maintenance
-	<kernel-list@raspberrypi.com>,
-        Florian Fainelli
-	<florian.fainelli@broadcom.com>,
-        Broadcom internal kernel review list
-	<bcm-kernel-feedback-list@broadcom.com>,
-        Nicolas Dufresne
-	<nicolas.dufresne@collabora.com>,
-        Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>,
-        Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
-        Hans Verkuil <hverkuil@xs4all.nl>,
-        Matthias Fend
-	<matthias.fend@emfend.at>,
-        Marco Felsch <m.felsch@pengutronix.de>,
-        "Tomi
- Valkeinen" <tomi.valkeinen@ideasonboard.com>,
-        Ricardo Ribalda
-	<ribalda@chromium.org>
-CC: <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-tegra@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-rpi-kernel@lists.infradead.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>
+	id 1uXg6u-0000000ESwJ-3YR5
+	for linux-rockchip@lists.infradead.org;
+	Fri, 04 Jul 2025 13:05:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1751634346;
+	bh=yBMvYngooK6EJfsWMCJUDLpwW8VA0ZjBtwiC97EGBZc=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=eRDThnc/NDm+M2Ul2z1dSvnrLN1ARR5Yf31jhgrVTzShjPxH4+IbwZpP0AgIgm/6F
+	 uUMxC0TXKjnqNkXruIGbTD4QErwDA8a5FKoc3tu0d6A+lqen6BKupBIe67xuoYfMQ5
+	 lTvXpIp1IlDzDeiMpto7Q6fiYAB7nkatXOz1YcjbFN2q3w78XHIQnZtNYyh9zbUGpu
+	 w30keY0Mk/jh3vEsLi40EpzxFd0OxeeFz5/QliOcWMJKHwNu8y2GmoU7ASoyMs6J9g
+	 Kl99sKoWC+weIGC8MrUl86OTec/pFD0u21eErD5o/hFNHi3+dv5m2ZZliIkcsh555G
+	 2qaI/S05E36tg==
+Received: from [IPv6:2606:6d00:17:b699::c41] (unknown [IPv6:2606:6d00:17:b699::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9711217E07FF;
+	Fri,  4 Jul 2025 15:05:45 +0200 (CEST)
+Message-ID: <88675ffb0b8336c0b2c195bdc53dc9823849055b.camel@collabora.com>
+Subject: Re: [PATCH 64/80] media: rkvdec: Remove redundant
+ pm_runtime_mark_last_busy() calls
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>, Ezequiel Garcia	
+ <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>,  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Date: Fri, 04 Jul 2025 09:05:44 -0400
+In-Reply-To: <20250704075450.3221972-1-sakari.ailus@linux.intel.com>
 References: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
- <20250704075431.3220262-1-sakari.ailus@linux.intel.com>
-From: Dikshita Agarwal <quic_dikshita@quicinc.com>
-In-Reply-To: <20250704075431.3220262-1-sakari.ailus@linux.intel.com>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzA0MDA4OCBTYWx0ZWRfX94SUNz9Zog9s
- 241uiCiS8OVAytLuDJY25SN5WBo2A15VpvTMJToQUJBTBD5tSk4brYdb7zaZPtNru1KP2D7ucOI
- MP7OoWwNRfSp2vZyGAhRtK+GWPKPTC8CYcaz3pJrf0bvbPF0p6Tg6lQG8kNVwjM1v/lwgpbm1sI
- 9W3lBD8vDg9u5BhiyrHx5ES5xCkubkQOLvlAYhlLN0xeAziKI1O0M/r0b5MHvmDpyLTQ/s38Dus
- XjjluoWlT5f2jJF+Y1Ri81wN8xu6nn2AJfKF+gtxVeKeSC6SS29JcpLv2ONoxL/lbwrkxGfP05S
- WrLFk95oIfphsWUlPaLpl9uKyc9zZz6KR54Jmd1IWdNNg8BmRm8DRjzYRKFQFU3BwFHPABy84mN
- k7jN9W2mHATSPb7ZegYBV/S0C/iK3zQm+yZ/iqD+JuVLZ4pubHA+BceFQgNCaautkqWZ1okn
-X-Proofpoint-GUID: L0pLOEq6Xr5MYWPfr9s13YUNZ-ZnYjRo
-X-Proofpoint-ORIG-GUID: L0pLOEq6Xr5MYWPfr9s13YUNZ-ZnYjRo
-X-Authority-Analysis: v=2.4 cv=TqPmhCXh c=1 sm=1 tr=0 ts=6867bb7d cx=c_pps
- a=JYp8KDb2vCoCEuGobkYCKw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
- a=GEpy-HfZoHoA:10 a=IkcTkHD0fZMA:10 a=Wb1JkmetP80A:10 a=VwQbUJbxAAAA:8
- a=QyXUC8HyAAAA:8 a=COk6AnOGAAAA:8 a=PTLqzckoA416w6NZUygA:9 a=QEXdDO2ut3YA:10
- a=TjNXssC_j7lpFel5tvFf:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
- definitions=2025-07-04_04,2025-07-02_04,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 bulkscore=0 mlxlogscore=999 suspectscore=0 adultscore=0
- phishscore=0 malwarescore=0 clxscore=1011 lowpriorityscore=0 mlxscore=0
- impostorscore=0 spamscore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
- definitions=main-2507040088
+	 <20250704075450.3221972-1-sakari.ailus@linux.intel.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
+ oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
+ zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
+ TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
+ 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
+ 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
+ cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
+ tHYWTDxBOP5peztyc2PqeKsLsLWzAr7QnTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVz
+ bmUuY2E+iGIEExECACIFAlXA3CACGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sB
+ qgcJngAnRDBTr8bhzuH0KQwFP1nEYtfgpKdAKCrQ/sJfuG/8zsd7J8wVl7y3e8ARbRDTmljb2xhcy
+ BEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29
+ tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCg
+ zYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc
+ 25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udW
+ s+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8
+ An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZy
+ ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJC
+ AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypw
+ CfWKc9DorA9f5pyYlD5pQo6SgSoiC0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF
+ 1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkI
+ BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr
+ +E7ItOqZEHAs+xabBgknYZIFPU=
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250704_043223_884945_3EAE679D 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20250704_060549_035813_A2A9BD02 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,81 +97,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 7/4/2025 1:24 PM, Sakari Ailus wrote:
-> pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
-> pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
-> to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
-> pm_runtime_mark_last_busy().
-> 
-> Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> ---
-> The cover letter of the set can be found here
-> <URL:https://lore.kernel.org/linux-pm/20250704075225.3212486-1-sakari.ailus@linux.intel.com>.
-> 
-> In brief, this patch depends on PM runtime patches adding marking the last
-> busy timestamp in autosuspend related functions. The patches are here, on
-> rc2:
-> 
->         git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git \
->                 pm-runtime-6.17-rc1
-> 
->  drivers/media/i2c/alvium-csi2.c                          | 1 -
->  drivers/media/i2c/ccs/ccs-core.c                         | 4 ----
->  drivers/media/i2c/dw9768.c                               | 1 -
->  drivers/media/i2c/gc0308.c                               | 3 ---
->  drivers/media/i2c/gc2145.c                               | 3 ---
->  drivers/media/i2c/imx219.c                               | 2 --
->  drivers/media/i2c/imx283.c                               | 3 ---
->  drivers/media/i2c/imx290.c                               | 3 ---
->  drivers/media/i2c/imx296.c                               | 1 -
->  drivers/media/i2c/imx415.c                               | 1 -
->  drivers/media/i2c/mt9m114.c                              | 6 ------
->  drivers/media/i2c/ov4689.c                               | 3 ---
->  drivers/media/i2c/ov5640.c                               | 4 ----
->  drivers/media/i2c/ov5645.c                               | 3 ---
->  drivers/media/i2c/ov64a40.c                              | 4 ----
->  drivers/media/i2c/ov8858.c                               | 2 --
->  drivers/media/i2c/st-mipid02.c                           | 2 --
->  drivers/media/i2c/tc358746.c                             | 5 -----
->  drivers/media/i2c/thp7312.c                              | 4 ----
->  drivers/media/i2c/vd55g1.c                               | 4 ----
->  drivers/media/i2c/vd56g3.c                               | 4 ----
->  drivers/media/i2c/video-i2c.c                            | 4 ----
->  drivers/media/platform/chips-media/wave5/wave5-vpu-dec.c | 4 ----
->  drivers/media/platform/chips-media/wave5/wave5-vpu-enc.c | 5 -----
->  drivers/media/platform/nvidia/tegra-vde/h264.c           | 2 --
->  drivers/media/platform/qcom/iris/iris_hfi_queue.c        | 1 -
->  drivers/media/platform/raspberrypi/pisp_be/pisp_be.c     | 2 --
->  drivers/media/platform/verisilicon/hantro_drv.c          | 1 -
->  drivers/media/rc/gpio-ir-recv.c                          | 1 -
->  29 files changed, 83 deletions(-)
-> 
-[snip]> diff --git a/drivers/media/platform/qcom/iris/iris_hfi_queue.c
-b/drivers/media/platform/qcom/iris/iris_hfi_queue.c
-> index fac7df0c4d1a..0b37f9b76da5 100644
-> --- a/drivers/media/platform/qcom/iris/iris_hfi_queue.c
-> +++ b/drivers/media/platform/qcom/iris/iris_hfi_queue.c
-> @@ -142,7 +142,6 @@ int iris_hfi_queue_cmd_write(struct iris_core *core, void *pkt, u32 pkt_size)
->  	}
->  	mutex_unlock(&core->lock);
->  
-> -	pm_runtime_mark_last_busy(core->dev);
->  	pm_runtime_put_autosuspend(core->dev);
->  
->  	return 0;
-Reviewed-by: Dikshita Agarwal <quic_dikshita@quicinc.com>
-
-Thanks,
-Dikshita
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+TGUgdmVuZHJlZGkgMDQganVpbGxldCAyMDI1IMOgIDEwOjU0ICswMzAwLCBTYWthcmkgQWlsdXMg
+YSDDqWNyaXTCoDoKPiBwbV9ydW50aW1lX3B1dF9hdXRvc3VzcGVuZCgpLCBwbV9ydW50aW1lX3B1
+dF9zeW5jX2F1dG9zdXNwZW5kKCksCj4gcG1fcnVudGltZV9hdXRvc3VzcGVuZCgpIGFuZCBwbV9y
+ZXF1ZXN0X2F1dG9zdXNwZW5kKCkgbm93IGluY2x1ZGUgYSBjYWxsCj4gdG8gcG1fcnVudGltZV9t
+YXJrX2xhc3RfYnVzeSgpLiBSZW1vdmUgdGhlIG5vdy1yZWR1bnRhbnQgZXhwbGljaXQgY2FsbCB0
+bwo+IHBtX3J1bnRpbWVfbWFya19sYXN0X2J1c3koKS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBTYWth
+cmkgQWlsdXMgPHNha2FyaS5haWx1c0BsaW51eC5pbnRlbC5jb20+CgpSZXZpZXdlZC1ieTogTmlj
+b2xhcyBEdWZyZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPgoKPiAtLS0KPiBU
+aGUgY292ZXIgbGV0dGVyIG9mIHRoZSBzZXQgY2FuIGJlIGZvdW5kIGhlcmUKPiA8VVJMOgo+IGh0
+dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXBtLzIwMjUwNzA0MDc1MjI1LjMyMTI0ODYtMS1z
+YWthcmkuYWlsdXNAbGludXguaQo+IG50ZWwuY29tPi4KPiAKPiBJbiBicmllZiwgdGhpcyBwYXRj
+aCBkZXBlbmRzIG9uIFBNIHJ1bnRpbWUgcGF0Y2hlcyBhZGRpbmcgbWFya2luZyB0aGUgbGFzdAo+
+IGJ1c3kgdGltZXN0YW1wIGluIGF1dG9zdXNwZW5kIHJlbGF0ZWQgZnVuY3Rpb25zLiBUaGUgcGF0
+Y2hlcyBhcmUgaGVyZSwgb24KPiByYzI6Cj4gCj4gwqDCoMKgwqDCoMKgwqAgZ2l0Oi8vZ2l0Lmtl
+cm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3JhZmFlbC9saW51eC1wbS5naXQgXAo+
+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwbS1ydW50aW1lLTYuMTctcmMxCj4gCj4g
+wqBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5jIHwgMSAtCj4gwqAxIGZpbGUg
+Y2hhbmdlZCwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcv
+bWVkaWEvcmt2ZGVjL3JrdmRlYy5jCj4gYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3Jr
+dmRlYy5jCj4gaW5kZXggZDcwNzA4OGVjMGRjLi40NDVmN2M5MmVlZTMgMTAwNjQ0Cj4gLS0tIGEv
+ZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuYwo+ICsrKyBiL2RyaXZlcnMvc3Rh
+Z2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMKPiBAQCAtNzY1LDcgKzc2NSw2IEBAIHN0YXRpYyB2
+b2lkIHJrdmRlY19qb2JfZmluaXNoKHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgsCj4gwqB7Cj4gwqAJ
+c3RydWN0IHJrdmRlY19kZXYgKnJrdmRlYyA9IGN0eC0+ZGV2Owo+IMKgCj4gLQlwbV9ydW50aW1l
+X21hcmtfbGFzdF9idXN5KHJrdmRlYy0+ZGV2KTsKPiDCoAlwbV9ydW50aW1lX3B1dF9hdXRvc3Vz
+cGVuZChya3ZkZWMtPmRldik7Cj4gwqAJcmt2ZGVjX2pvYl9maW5pc2hfbm9fcG0oY3R4LCByZXN1
+bHQpOwo+IMKgfQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
