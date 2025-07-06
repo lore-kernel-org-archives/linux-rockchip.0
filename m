@@ -4,97 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB806C83030
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Jul 2025 18:38:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B029CC83F03
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Jul 2025 08:37:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ROrecHw1+DcCKlz79T/A8ZTnhyEj2uwluX8EdD3KnXo=; b=aEUYthd2Vd/K1p
-	4QzFgvBb323vG4MfVxuTOgSdzjUMonz9BxMf9H/lUZMtGl7iGk0IZiXMh9EiawuT1Fbf3nHIVXgnp
-	rDFrP1CtUxSQmV/XqB+JFATPHWdC7CwazCSl1Xcbnat7dP1APZ4xeod33duSdXeM3XwXutMCLTu7D
-	LmOQTRoF0C3Uq/I6/BeXM4hgoaPh+Y/nMm7Mxemm4I4CMyg+DW3PX6yeVS4NRojZXbpNLuwCwXMQp
-	1mazBKOMMaMrmmK6mgwssoaP24MzYgVGKo6Hkc5o2fyiZeaq80YAOE1XXF5yXN1D1xqr71+xIUHLB
-	T/WwoVKcBgdHQh+0EQRQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:From
+	:To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cyhC/8LRo80Cygj5AOE8RjbPODIrWzDunx3UeWNnzgk=; b=j119ZVzIOk9YRM
+	7SWtCRbu+ONP6s4IE8pVQkasXTVnzf5MRyfS+RzRVI1fwg+4991oRdyLJJPrz/X6SMuNkqe7Wn2Uz
+	AjayRT0IpzOu2nD5oxURlLCf2LG3iDfZJnSTptYg32vqwXIGWICS1hS2bI1u2E3zTTYaiLfTIgdoS
+	RFiq2e9wAd9fUZ5rqAgkBlKVqb3yah6+Vkjw/kACLGXTaXWqgzIUTBFZDzrsCM+IZR/BF358aolOG
+	3g1oGr+xW8QuOKepIiv2KHFV8bWXu7mXMB7H62zKZtTbEgH2Ze37KJbk2t1bqGl20GgbhckztT7kx
+	l9SNR3NUVZDkyUqun50A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uY7mS-0000000GrTs-0fmX;
-	Sat, 05 Jul 2025 18:38:32 +0000
-Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
+	id 1uYKs4-0000000HavZ-14R8;
+	Sun, 06 Jul 2025 08:37:12 +0000
+Received: from mail-10628.protonmail.ch ([79.135.106.28])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uY7mP-0000000GrT2-37sk
+	id 1uYKs0-0000000Hauh-40XM
 	for linux-rockchip@lists.infradead.org;
-	Sat, 05 Jul 2025 18:38:31 +0000
-Received: by mail-qk1-x735.google.com with SMTP id af79cd13be357-7d38ddc198eso235619085a.1
-        for <linux-rockchip@lists.infradead.org>; Sat, 05 Jul 2025 11:38:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ziepe.ca; s=google; t=1751740708; x=1752345508; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=WIHdEgEb4h7ncGmlqKNUeHDxe1TLcrT5/vC0Zduw6NY=;
-        b=VnBWAYlipN3Jc4b71hyzHUvCpKPFIbrOeRBpyVAOI706eyEKmPaeX15QBc7eWkxGSx
-         hlJBeYAVulaG59ughn+u+XUiMKVqsdxnEemfLcDqBO+tKGs8VrkfvV7qW1zLQYRhzqLe
-         R+MdUBhpTcsbksxCP4EbIaH4oxTkzbZMm+hzT7gju1JELbyjB79lLGl0qdQzKQivbK4n
-         8wtBL1Exc5YrlKaiW1uub+9U4lLhlqk6WZ/fOO4h46SB1wm/WesIwcnBfo5WqtTg/gUn
-         A5Lg6TOrggR4+fs5pJRiU80BvxUR1HRb6NHC4LtiJmS0nuINNalaTjROtIn52hSpjsXV
-         p9WQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751740708; x=1752345508;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=WIHdEgEb4h7ncGmlqKNUeHDxe1TLcrT5/vC0Zduw6NY=;
-        b=r90lQV0OoWQHCzO2IpIBrtkb6kLxxcjbwDOgMJUiiErMT68/uinpVO1WS6iewPQalE
-         Y9WgLgEHZ0H6ZRU4waffMz57DgUa2LKBAF/LX/6O25MEH/iP1Qzg1aQ4LTvCox0kIoth
-         TPvpMMYl0KJJftMgDOp3HwbMOlTGErATa4+TTQVM5ca+rpI13ziGQ4oOG37Y2Dqwaou6
-         TjARCIa4iy03i5/15NppkdPHAsdMfHfq6kj5sqQAJd+aLBKuKamwm7Bp8oriBJXL7SFN
-         jksjhtGfL7QVHpv5IMogz1RK5A8vDw4TvWpAErTy09378WG0jTiISQowZOiccB7XfgyF
-         rdug==
-X-Forwarded-Encrypted: i=1; AJvYcCVyp4iDgx/oMkmS4QH37JXKv2X3Gcnn3eDNXy1yEVnBTz1eXClOppPTUtt7MbueYs607lzJwSe+AcngzrN0gg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwC2/lbEVTPp3qzApCCO2FiHX5kH6ZQbz9L4qKZ23CwxNRRto1G
-	rkEBQCboEoWwMHwX7yTrMpQmM1jexPfqnf7uxrshond+rTb7vRNZmm+ldyjPZ3UjVHA4ulJUHN3
-	ZPDUY
-X-Gm-Gg: ASbGncs/TjFLb57DMYgE7SyCr2uM39OfwiOJENJzcsn2Sb5O9f+/Pl1yds6FreZrfmh
-	mKiCWLuJdNneta9KxIwYLJ7ar2RnR9L5txeife46NkPabKtYlrPbYGCsR1oVp0cg0qEpiGgtNF9
-	AAcE+OU3CNadsIiZEHjfm4lpwtHTg1qNxa5JwvpUFNLVNF/6M7blYhLFz1OZwn3VwFdSkzG8hnn
-	aV+al4VSCIFWLNpv65vQOaXf2PYx56R8fwnhhhBGQaOgBVfrepcuYIG+GT3D/DilTuXc8ycJJt0
-	0QhK4RJr4zznr1VuX89utcDwNWZna98hiZOeeDYxzAtYROYb2kJjGT4kUBUYFlT8jV1w1qU/730
-	RQWpewRHJz9lWGHal1dO0Yro0pBh9HhGEnor8Zs/6h4xD2Y7r
-X-Google-Smtp-Source: AGHT+IHGynn880Btao0rr5ATgmcaLhy8fafgWIOLP+yaNkVftZqqbIrm82pa3BfiHgQu8aK3kR04IA==
-X-Received: by 2002:a05:620a:40c9:b0:7d3:f0a3:d8cc with SMTP id af79cd13be357-7d5df169b32mr814175485a.45.1751740708064;
-        Sat, 05 Jul 2025 11:38:28 -0700 (PDT)
-Received: from ziepe.ca (hlfxns017vw-142-167-56-70.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.167.56.70])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7d5dbe7baedsm345886685a.57.2025.07.05.11.38.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 05 Jul 2025 11:38:27 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.97)
-	(envelope-from <jgg@ziepe.ca>)
-	id 1uY7mM-000000068pv-2jB7;
-	Sat, 05 Jul 2025 15:38:26 -0300
-Date: Sat, 5 Jul 2025 15:38:26 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
-	nicolas.dufresne@collabora.com, iommu@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v4 3/5] iommu: Add verisilicon IOMMU driver
-Message-ID: <20250705183826.GN904431@ziepe.ca>
-References: <20250623153931.158765-1-benjamin.gaignard@collabora.com>
- <20250623153931.158765-4-benjamin.gaignard@collabora.com>
- <20250704175425.GM904431@ziepe.ca>
- <62cead85-2d50-45f1-8020-7aea77f6833b@collabora.com>
+	Sun, 06 Jul 2025 08:37:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1751791024; x=1752050224;
+	bh=/Ohrs39hlVJ6gfC/U0noqNa3V3N+ZommgmvaEIkhTAQ=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=bQoU4Wm2XIOEOoU/Cxdo7xAG4YjGz3rj1xQE4Os+pTuSbwmrdSK1ROnoTkyJGdRlg
+	 2/Ihs/8Wz2jRe4VrpQ7bw0MpmJ9n0DLwJsUoDgHvEPCfyEgCnUwZC1p/Ke8/XrpX9C
+	 FBpsa9oeGlehPDymhHY7i0/Twrja5WhMLJE7T0Cyp2sQlzQ+NLvDDovgw1UoOmO4t8
+	 UdNMvLcN7B7ELq1AgP0nOWYELYnP+OHXV9+LQ/vMwT71xKIQu6UjqoRAkEmPcadNCA
+	 Die+hwEgVRWJa0cBYBEwaxoIpZkDSYVaQwle0IxtriscTD2KhcUSvDCCcrbWSmbzDo
+	 J3tDcLe7viCbQ==
+Date: Sun, 06 Jul 2025 08:36:58 +0000
+To: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Piotr Zalewski <pZ010001011111@proton.me>
+Cc: Piotr Zalewski <pZ010001011111@proton.me>, Diederik de Haas <didi.debian@cknow.org>
+Subject: [PATCH v2] rockchip/drm: vop2: make vp registers nonvolatile
+Message-ID: <20250706083629.140332-2-pZ010001011111@proton.me>
+Feedback-ID: 53478694:user:proton
+X-Pm-Message-ID: bdc28c03eaa8b0c275fd97f59617d9355f9144d7
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <62cead85-2d50-45f1-8020-7aea77f6833b@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250705_113829_930795_95FBA595 
-X-CRM114-Status: UNSURE (   7.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250706_013709_132351_7311EEB5 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,16 +66,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 05, 2025 at 12:04:05PM +0200, Benjamin Gaignard wrote:
+Make video port registers nonvolatile. As DSP_CTRL register is written
+to twice due to gamma LUT enable bit which is set outside of the main
+DSP_CTRL initialization within atomic_enable (for rk356x case it is also
+necesarry to always disable gamma LUT before writing a new LUT) there is
+a chance that DSP_CTRL value read-out in gamma LUT init/update code is
+not the one which was written by the preceding DSP_CTRL initialization
+code within atomic_enable. This might result in misconfigured DSP_CTRL
+which leads to no visual output[1]. Since DSP_CTRL write takes effect
+after VSYNC[1] the issue is not always present. When tested on Pinetab2
+with kernel 6.14 it happenes only when DRM is compiled as a module[1].
+In order to confirm that it is a timing issue I inserted 18ms udelay
+before vop2_crtc_atomic_try_set_gamma in atomic enable and compiled DRM
+as module - this has also fixed the issue.
 
-> I would like to avoid that but maybe a static spinlock can solve that problem ?
+[1] https://lore.kernel.org/linux-rockchip/562b38e5.a496.1975f09f983.Coremail.andyshrk@163.com/
 
-I think you can't really (technically) store an iommu pointer in a
-domain and not prevent it from being used by other iommus.
+Reported-by: Diederik de Haas <didi.debian@cknow.org>
+Closes: https://lore.kernel.org/linux-rockchip/DAEVDSTMWI1E.J454VZN0R9MA@cknow.org/
+Suggested-by: Andy Yan <andy.yan@rock-chips.com>
+Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
+---
 
-Can't the spinlock be in the domain?
+Notes:
+    Changes in v2:
+        - add spaces before and after '+'
+    
+    Link to v1: https://lore.kernel.org/linux-rockchip/20250628180914.1177177-2-pZ010001011111@proton.me/
 
-Jason
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index d0f5fea15e21..0931cb636493 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -2589,12 +2589,13 @@ static int vop2_win_init(struct vop2 *vop2)
+ }
+ 
+ /*
+- * The window registers are only updated when config done is written.
+- * Until that they read back the old value. As we read-modify-write
+- * these registers mark them as non-volatile. This makes sure we read
+- * the new values from the regmap register cache.
++ * The window and video port registers are only updated when config
++ * done is written. Until that they read back the old value. As we
++ * read-modify-write these registers mark them as non-volatile. This
++ * makes sure we read the new values from the regmap register cache.
+  */
+ static const struct regmap_range vop2_nonvolatile_range[] = {
++	regmap_reg_range(RK3568_VP0_CTRL_BASE, RK3588_VP3_CTRL_BASE + 255),
+ 	regmap_reg_range(0x1000, 0x23ff),
+ };
+ 
+-- 
+2.50.0
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
