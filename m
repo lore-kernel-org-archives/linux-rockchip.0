@@ -4,61 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAB64C83F07
-	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Jul 2025 10:49:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4369EC83F03
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Jul 2025 11:41:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qMCDJkMvo3tEFEqx3RHiMXzKM8uwrZul+bim3grIQS4=; b=RFvDKOZTyIcEun
-	lGXWOL2s9fECVV2y0NaHSsx0wZFImqS5+Bi75OAk/ofmX3Y/H7pRwyMZ4ZX3FVf/v3UxO8K4LCZZo
-	rPkPJEG90k1DZhxjU2/++dIcpdEtfk8yzBWVI3Zqm/EnymU/XKc9xH/7+MuGu/O4siw4P6RxqxiOu
-	+aadwIS3vFFtl6+DvJ3U3sh6IE5lb8PyuPrto3lYbUZL+RHJXiO5cAE04Fd6NOn8cC0i45/POJfsg
-	VbwUCI+2fnGhKtBbLpz3SgyxBk5KVYfGvsMZxSOl1B3VNhRrHr2/LZDLDboerSeBTpcG0uQBdqGnT
-	x1DAOOEPidH4W3jQKi0w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nONoKP0ivmyBQ/t6/DteQ7SyK13dbT62g2X44BD/nfU=; b=RlMlSRYrRoTAgu
+	QSqs8ZosGfjlfWVOQ60zxHEpOpMmOUdh11Kt9uV2Eqhem9nnIE00VJjoDfHJkUkFBMO195mNR0jtp
+	ptsjgUkpq+sH1I29bJK5g4/LZp7oz05KoEKA28ot5cQ+6gsvm8kav80kbTvN2t4HoUCqMZUoPGIFP
+	PB/TqtKxqrf1NQwZ87LVoaNmObJQe9SjyTIJx+tXsZNKcYAj2r3XEXVj/5y/76FBd0g8DT0TeBMt1
+	9eEW4tSeeeDUkhHGPbg2GG1+Rr5fMwFhZJe9O6Afi2KoVgZDl1JYKFjHvQUT8XjlJ+VM/VYN4hNB3
+	EtJ15g63o7aC4y6cwNwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYMwP-000000009Lj-0ZQJ;
-	Sun, 06 Jul 2025 10:49:49 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYMtU-0000000099D-3Anq;
-	Sun, 06 Jul 2025 10:46:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=1csdPJkrYHqiTa7aBB4h7tPO9DoYuuIveSxw3PXJbts=; b=Fv7E4uY+Zu9UYX7fPZFpy6q6Fn
-	4qZleqGkmvnnsKgTWZalmNha82+2YZxq21TUUsgBclr3OO9eQ2wEcv5puHoYGgVyP/J07OZBhRsAY
-	uCy5DyjvCYgO4yuiEfLjAHOaMC/PWOrfEJ4MkFk6vvRP3ZMkF0q3Oa/HqWRjVFvqr4vwB0Fr4qm7O
-	BRXdTRhGtCmeL5El4kJ7JJ8J1PsQMORmIw7bZe/T6jyqegTYDJCsJgzdY/CBbSzSq34+Yy+/C+LWx
-	RMFzxrAK4NrmIUo/Oaq+s+yTBJAipo/tyvE8PKUDZhXsvDVMmBx+vrve3XUiIIDxhTqMGj6xxAtIh
-	T1KPJGzg==;
-Received: from i53875a35.versanet.de ([83.135.90.53] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uYMt8-0002wB-6E; Sun, 06 Jul 2025 12:46:26 +0200
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Piotr Zalewski <pZ010001011111@proton.me>,
- Diederik de Haas <didi.debian@cknow.org>
-Cc: hjc@rock-chips.com, andy.yan@rock-chips.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] rockchip/drm: vop2: make vp registers nonvolatile
-Date: Sun, 06 Jul 2025 12:46:25 +0200
-Message-ID: <4207630.fIoEIV5pvu@diego>
-In-Reply-To: <DB4WNMVBIWYS.273Z54K6O7DTM@cknow.org>
-References: <20250706083629.140332-2-pZ010001011111@proton.me>
- <OWFHI491RHadO01jlQPA34GX28LC7SseKfNRwqQy4etkkJyP1YeF_0EDdAgpSXx5RW7go62EAOkedW5nbyn_hlz_K-NUrnNJeDFWv0OOSO8=@proton.me>
- <DB4WNMVBIWYS.273Z54K6O7DTM@cknow.org>
+	id 1uYNkU-00000000C7D-3Xcm;
+	Sun, 06 Jul 2025 11:41:34 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uYNiA-00000000Bzi-05fw;
+	Sun, 06 Jul 2025 11:39:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=Ci
+	N8aT9Et5jhNJ0SP8OnU+4yqCjb+pcPmRVpPHf+LEg=; b=NO3dJ6nSfWxw/LePkm
+	4FSukGXk5iZQtQKsIqKtbCb8H6tDHm23Wg7JAQ0fLSPRcFFeDRwPD8fuJPUu2F81
+	5TbgU9RTPZtMTGbIF30g2MifhW4A2Kt/HfUlJCmyIvXtKFLg+rpOw+gkuuJP8l3N
+	YpovnIq96OV0rM3oOWi82K234=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g0-0 (Coremail) with SMTP id _____wB37yQ4YGpo5RCCCw--.60201S2;
+	Sun, 06 Jul 2025 19:38:36 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: conor+dt@kernel.org,
+	didi.debian@cknow.org,
+	krzk+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH] arm64: dts: rockchip: Enable mipi dsi on rk3568-evb1-v10
+Date: Sun,  6 Jul 2025 19:38:24 +0800
+Message-ID: <20250706113831.330799-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
+X-CM-TRANSID: _____wB37yQ4YGpo5RCCCw--.60201S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxAr4rCr43tr1fKr48XF1kKrg_yoW5Xr17pr
+	nrCw4Sgw4xurW2qw15tr1kJrn5Gan5AFWxGF17uFyIyrsFqa4vg34IqF98tFyUtF18Z3yY
+	qrnxAFy29anFgaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j8txfUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEgmCXmhqWtxqyAAAsh
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250706_034648_797864_921F0BB4 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20250706_043910_438529_93D33A15 
+X-CRM114-Status: UNSURE (   8.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,28 +72,128 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gU29ubnRhZywgNi4gSnVsaSAyMDI1LCAxMjozNzo0MCBNaXR0ZWxldXJvcMOkaXNjaGUgU29t
-bWVyemVpdCBzY2hyaWViIERpZWRlcmlrIGRlIEhhYXM6Cj4gSGkgUGlvdHIsCj4gCj4gT24gU3Vu
-IEp1bCA2LCAyMDI1IGF0IDEyOjIwIFBNIENFU1QsIFBpb3RyIFphbGV3c2tpIHdyb3RlOgo+ID4+
-IFdpdGggYSBuZXcgdmVyc2lvbiBvZiBhIHBhdGNoLCB5b3UncmUgc3VwcG9zZWQgdG8gYWRkIHRo
-ZSB0YWdzIHlvdQo+ID4+IHJlY2VpdmVkIGZvciBwcmV2aW91cyB2ZXJzaW9ucywgbGlrZSBteSBU
-ZXN0ZWQtYnkgdGFnIFsxXS4KPiA+PiAKPiA+PiAodW5sZXNzIHRoZSBuZXcgdmVyc2lvbiBoYXMg
-Y2hhbmdlZCBzbyBtdWNoIHlvdSBmZWVsIHRoZXkgc2hvdWxkIG5vdCBiZQo+ID4+IGNhcnJpZWQg
-b3ZlcjsgeW91IHRoZW4gbmVlZCB0byBleHBsaWNpdGx5IGRlc2NyaWJlIHRoYXQgYW5kIHdoeSB5
-b3UKPiA+PiBkcm9wcGVkIHRoZW0pCj4gPiAgCj4gPiBGb3Jnb3QuLi4gU2hvdWxkIGkgc2VuZCBp
-dCBhcyBQQVRDSCB2MiBSRVNFTkQ/Cj4gCj4gSSBkb24ndCB0aGluayB0aGF0J3MgbmVlZGVkOyB0
-aGUgbWFpbnRhaW5lciB3aWxsIGxldCB5b3Uga25vdyBpZiB0aGF0J3MKPiBkZXNpcmFibGUgb3Ig
-dGhhdCB0aGV5IHdpbGwgYWRkIGl0IChiYWNrKSB3aGVuIGNvbW1pdHRpbmcuCgpUaGUgcHJvYmxl
-bSBpcyB0aGVuIHJlbWVtYmVyaW5nIHRvIG1hbnVhbGx5IGNvbGxlY3QgdGhlIHRhZ3MgZnJvbSBh
-CnByZXZpb3VzIHNlcmllcy4KCkZvciBteSByZWZlcmVuY2UsIGl0IHdhcwpUZXN0ZWQtYnk6IERp
-ZWRlcmlrIGRlIEhhYXMgPGRpZGkuZGViaWFuQGNrbm93Lm9yZz4KClNvIGhvcGVmdWxseSBJJ2xs
-IHJlbWVtYmVyIG5vdyA6LSkgYW5kIHRoZXJlIGlzIG5vIG5lZWQgZm9yIGEgcmVzZW5kCmF0IHRo
-aXMgdGltZS4KCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Andy Yan <andy.yan@rock-chips.com>
+
+Enable the w552793baa 1080x1920 dsi panel on rk3568 evb1.
+
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+---
+
+ .../boot/dts/rockchip/rk3568-evb1-v10.dts     | 66 ++++++++++++++++++-
+ 1 file changed, 64 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+index b073a4d03e4fb..a28bb90b85bed 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+@@ -22,6 +22,15 @@ aliases {
+ 		mmc1 = &sdhci;
+ 	};
+ 
++	backlight: backlight {
++		compatible = "pwm-backlight";
++		pwms = <&pwm4 0 25000 0>;
++		brightness-levels = <20 220>;
++		num-interpolated-steps = <200>;
++		default-brightness-level = <100>;
++		power-supply = <&vcc3v3_sys>;
++	};
++
+ 	chosen: chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
+@@ -184,6 +193,47 @@ &cpu3 {
+ 	cpu-supply = <&vdd_cpu>;
+ };
+ 
++&dsi0 {
++	status = "okay";
++	clock-master;
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	panel@0 {
++		compatible = "wanchanglong,w552793baa", "raydium,rm67200";
++		reg = <0>;
++		backlight = <&backlight>;
++		vdd-supply = <&vcc3v3_lcd0_n>;
++		iovcc-supply = <&vcc3v3_lcd0_n>;
++		vsp-supply = <&vcc5v0_sys>;
++		vsn-supply = <&vcc5v0_sys>;
++		reset-gpios = <&gpio3 RK_PB5 GPIO_ACTIVE_LOW>;
++
++		port {
++			panel_in_dsi: endpoint {
++				remote-endpoint = <&dsi0_out_panel>;
++			};
++		};
++	};
++
++};
++
++&dsi0_in {
++	dsi0_in_vp1: endpoint {
++		remote-endpoint = <&vp1_out_dsi0>;
++	};
++};
++
++&dsi0_out {
++	dsi0_out_panel: endpoint {
++		remote-endpoint = <&panel_in_dsi>;
++	};
++};
++
++&dsi_dphy0 {
++	status = "okay";
++};
++
+ &gmac0 {
+ 	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
+ 	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>;
+@@ -581,6 +631,10 @@ &pmu_io_domains {
+ 	status = "okay";
+ };
+ 
++&pwm4 {
++	status = "okay";
++};
++
+ &saradc {
+ 	vref-supply = <&vcca_1v8>;
+ 	status = "okay";
+@@ -672,8 +726,9 @@ &usb2phy1_otg {
+ };
+ 
+ &vop {
+-	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
+-	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
++	assigned-clocks = <&cru DCLK_VOP0>, <&cru PLL_VPLL>, <&cru DCLK_VOP1>;
++	assigned-clock-parents = <&pmucru PLL_HPLL>, <&xin24m>, <&cru PLL_VPLL>;
++	assigned-clock-rates = <0>, <132000000>, <132000000>;
+ 	status = "okay";
+ };
+ 
+@@ -687,3 +742,10 @@ vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+ 		remote-endpoint = <&hdmi_in_vp0>;
+ 	};
+ };
++
++&vp1 {
++	vp1_out_dsi0: endpoint@ROCKCHIP_VOP2_EP_MIPI0 {
++		reg = <ROCKCHIP_VOP2_EP_MIPI0>;
++		remote-endpoint = <&dsi0_in_vp1>;
++	};
++};
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
