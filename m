@@ -4,91 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F650C8303C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jul 2025 07:38:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB80FC8303C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jul 2025 10:01:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=B8hoUKO6Z/rjSbMRhiAkZynsse0ybz+00EctM0Vrjog=; b=vLtVEgAnf+Xy1c
-	MIy9MX/Afy0XEx+Uua3/bvmfmi+4MRBBxgQ+LRYIDhDvtreO4oG4ML4jh+w1H7WzFvTUTiPb6JLHQ
-	GVUDzav2hcYCLKMej7mk6hvdON4iQR8C70sIrCorrMKKPb5i69kgy/KlgSyUf/6G063ADjOoKR3IO
-	RfwgIwGiLnIn9wvClrM7nUpxkLfw1NHAvKmlrmRUzYD/R2twVA8Wvz65QJyN1hbiFyKnGOxPQnAvm
-	KXMvSP9W+9WUiQ6C8QNOqZqfGzwxjKfXh8SCj0bSWVEWGnaia/3NPJw9LB6OYwziY6addQqSkLPwY
-	LxV6UJwKxPtXeIzFb7vw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2YqixqMCTgoLIG5ouzR1PygKoeIKzkjEVmni4nRrzXE=; b=ak9orNEC3jzTI1
+	hLkBtR8h5PSJWNV9Gbnede/0NGjACImHLoyKpMN3siXtpujaJVtwPnBrr/v4j8qA07DkQeVF71L+S
+	l0iWpChr5tELdWc3k5PzY1L4qcFHAPvGuboAf3K7fMuhLgbH1kuefhH6i38iRvifYrXHgCVqQ6ySv
+	Whk3NBbanGrT6AgTEj7crELPRy1ER/et6NbW6FZ8OtNxwOKmyD3kCz7huhPLjF3rSQyYaO57ew1Il
+	JAMFR9yi0PG/OL5cAnh8v53lSZne0s7YVdxut7J9soK59HNlyAEAx+MtKa2kNie1XnQ3jCB/UhMK0
+	v0wFs0oAeZPqX/6mUbiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYgQN-00000001iJV-1iG3;
-	Mon, 07 Jul 2025 07:38:03 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1uYieb-000000024v6-44g5;
+	Mon, 07 Jul 2025 10:00:53 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYgI0-00000001gZs-2M22;
-	Mon, 07 Jul 2025 07:29:25 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-3a524caf77eso401313f8f.3;
-        Mon, 07 Jul 2025 00:29:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751873362; x=1752478162; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=f7BZqFkfOFsbvgNq/dMOXUdgZS94yQFfuDJDCmTrvc8=;
-        b=gTApZrtvQ0duJdvXEKQZICgFyVeHopPU5tW4oJq7JwkG8pGasTueAlFtNbNIsGlDD8
-         +ce68mCf8QIscDizJPXANUlxHgy5klmrCLOGZxpAuiQ19IjrxUJdUxK30VFXCGiQ+7dP
-         T52oD8DFZDm7ONH+dD3iSPBBFOk0f4PfDPY8ejJD9lnA/llLYXHPrOD5Yy2/6MIrRG6X
-         K882cD2JiCLZsZjPsUsCwYcnjh8oAJnMWyIXaIlQ8hir1qUjlBUk/UW1h14dqwe0LKUB
-         NUy+nKeayIOqS1eWya4QXbaM9AJI8LG7q3bfm9X6Yj5fYhDtZluU80XsJPTuwZ3YDsuh
-         3dEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751873362; x=1752478162;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=f7BZqFkfOFsbvgNq/dMOXUdgZS94yQFfuDJDCmTrvc8=;
-        b=BMeibVRrBpVdVZ0ukqBIH2wUcOX2C1ng4DoSPrMW97ce9/ZyUHpSjPJjdEQoD8/AvX
-         0/urrQ9CjiGbNfpU06Y/Xva1R5cltlD/4bAtdQvnYv0OTLJJQMYX3+I+P6mqV/mxL0tH
-         maThs6jPuWnXBv3MmGjvARW0J98JuYYslGPZvySMbR+9NAPG48aJM1Y/orewKzgQ0wdZ
-         FIBudzwFTFOfIL6reWGwGZYPpZ5238IERNzbbv241n5hC7VV+Sjv8cUlwS/yLwSGihRM
-         xUV6a6nGH07/DgBAZioi87f86SWhu35e0Jq/2VA8LqZWlkAGHt6aNqXkAMx3Bm4uGToq
-         BXww==
-X-Forwarded-Encrypted: i=1; AJvYcCV6paq2Vz8MfKT+6nPXjk/GCpYaHiAxD9+Ph6eDL18E1e7zNYLIhv8llYMbNxziiPir+4rFZ9Ji6i9pGINId28=@lists.infradead.org, AJvYcCVpIJ2yNXIz4+wn5IHcU+qmhuF4JLIP5thmMqFwaUznxCA7jw/D4Sty8Lv89P8bYtF11f3fqqdJfAyifd8IbzW7@lists.infradead.org, AJvYcCXvcv1mCQZ6GcrABpnJbiP+j+uEbpknl76nuRiocAXTiv3UVVXEAe/yDwll6pN4zUlhR9kC6Xzm82Ir@lists.infradead.org
-X-Gm-Message-State: AOJu0YwTsptziWM2u36EAmpWF/sZ+5N0UubzK06Apl6ttyn8tpZxTqKZ
-	0ZhXTBnP2Bih1GgRrZm9+74eQ/lmhQ1ANHg4oK5wWHU9fYQO5qNj0S8D
-X-Gm-Gg: ASbGncvCZql0xEGvDQXtG3A8tyYJdtTBuJhaJ9TIazl2S9kXrMG7ODXxMoWQz3uJkFX
-	520QjiRwHkY64/1fwbqyOPCnSQ86Ugz565gpVqFfcrneUuQXM2QXh7WOIQzaWb1fFGv637XWaOZ
-	45gEKvcrxn8nkXz7ra4vKwcOb6s1rhrkTQB8DCqt+4BiNuJ1JawPA3cIrpVUe9RljXmwyC4gOnu
-	zQsVqjsl97Bp/e8pwL5LjO06OA1z3zzQJdympDK47VzVZYhu+Q25ttgPmFR0z95iyxbQenPINvB
-	KOvEXuJJZGnQMIukHVyOYImTBAYGOOmQ6gkXK+i+mWTcVd5CbEksDrd8agBbg8l5IeRhPaeduLy
-	cyq3s9rkiswLPKSY=
-X-Google-Smtp-Source: AGHT+IHji7PN/GJFmbMU9res4F6B0DmJU3BUQZ93VGwv1mxSzlZuoVKlPVnXhlUOtz7ZsOT9N7jXRA==
-X-Received: by 2002:a05:6000:4007:b0:3a3:6a3d:163a with SMTP id ffacd0b85a97d-3b496604c59mr3115795f8f.12.1751873362269;
-        Mon, 07 Jul 2025 00:29:22 -0700 (PDT)
-Received: from thomas-precision3591.imag.fr ([2001:660:5301:24:ef01:c9dd:1349:ddcf])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3b471b97f10sm9478350f8f.57.2025.07.07.00.29.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Jul 2025 00:29:21 -0700 (PDT)
-From: Thomas Fourier <fourier.thomas@gmail.com>
-To: 
-Cc: Thomas Fourier <fourier.thomas@gmail.com>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
-	Jinjie Ruan <ruanjinjie@huawei.com>,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-	linux-mtd@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] mtd: rawnand: rockchip:  Add missing check after DMA map
-Date: Mon,  7 Jul 2025 09:15:50 +0200
-Message-ID: <20250707071555.17704-2-fourier.thomas@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1uYiFt-0000000200u-3OOD;
+	Mon, 07 Jul 2025 09:35:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1751880920;
+	bh=KxcW44ReYaXX/YVr1c81zqjDrt3qzOZtstbYqbhmd0A=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RVrqUW/TeUiGBqU56GhCWxR6xUF9bMyVuoV9RIM2fcly3Xf6kk1UPv1ndiBzimuJy
+	 kCsjio3fRjwlrLB89Iixw3UdsNpk+Sm2QlQR6xh22XGkzRUW5UsjxvW7S8LdJzi4E4
+	 We5WcoLLeOaToKRzi8MEOzqyhJeAFOvDKOf/DBwcdOAL5HxeKOWUcxK15QozjharVZ
+	 V8OO8AbSoaNXza/iJnHPGaTTY9wAo7XkX0gJaNWDIznjcYAQZbWnlUoetyEFz1OvWJ
+	 7oJpewOJyjN8u+JXvKIk4dy1I5yC50PulWkNc+LW9nMCJ3n5IeWDRBuHHuQ/MaI80P
+	 XawMBmqBF/kkA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A5B5917E07C9;
+	Mon,  7 Jul 2025 11:35:18 +0200 (CEST)
+Message-ID: <57398fc7-2955-4717-9868-eee16d3a00d3@collabora.com>
+Date: Mon, 7 Jul 2025 11:35:17 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 61/80] spi: Remove redundant pm_runtime_mark_last_busy()
+ calls
+To: Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mark Brown <broonie@kernel.org>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, Frank Li <Frank.Li@nxp.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>,
+ Haibo Chen <haibo.chen@nxp.com>, Yogesh Gaur <yogeshgaur.83@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>, Andi Shyti <andi.shyti@kernel.org>,
+ Tudor Ambarus <tudor.ambarus@linaro.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Alain Volmat <alain.volmat@foss.st.com>, Michal Simek <michal.simek@amd.com>
+Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, imx@lists.linux.dev,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
+References: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
+ <20250704075447.3221784-1-sakari.ailus@linux.intel.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250704075447.3221784-1-sakari.ailus@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_002924_601573_4169AE73 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20250707_023522_000940_B0C018BC 
+X-CRM114-Status: UNSURE (   7.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,60 +92,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DMA map functions can fail and should be tested for errors.
+Il 04/07/25 09:54, Sakari Ailus ha scritto:
+> pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
+> pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
+> to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
+> pm_runtime_mark_last_busy().
+> 
+> Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 
-Fixes: 058e0e847d54 ("mtd: rawnand: rockchip: NFC driver for RK3308, RK2928 and others")
-Signed-off-by: Thomas Fourier <fourier.thomas@gmail.com>
----
- drivers/mtd/nand/raw/rockchip-nand-controller.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
 
-diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-index 63e7b9e39a5a..c5d7cd8a6cab 100644
---- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
-+++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-@@ -656,9 +656,16 @@ static int rk_nfc_write_page_hwecc(struct nand_chip *chip, const u8 *buf,
- 
- 	dma_data = dma_map_single(nfc->dev, (void *)nfc->page_buf,
- 				  mtd->writesize, DMA_TO_DEVICE);
-+	if (dma_mapping_error(nfc->dev, dma_data))
-+		return -ENOMEM;
-+
- 	dma_oob = dma_map_single(nfc->dev, nfc->oob_buf,
- 				 ecc->steps * oob_step,
- 				 DMA_TO_DEVICE);
-+	if (dma_mapping_error(nfc->dev, dma_oob)) {
-+		dma_unmap_single(nfc->dev, dma_data, mtd->writesize, DMA_TO_DEVICE);
-+		return -ENOMEM;
-+	}
- 
- 	reinit_completion(&nfc->done);
- 	writel(INT_DMA, nfc->regs + nfc->cfg->int_en_off);
-@@ -772,9 +779,17 @@ static int rk_nfc_read_page_hwecc(struct nand_chip *chip, u8 *buf, int oob_on,
- 	dma_data = dma_map_single(nfc->dev, nfc->page_buf,
- 				  mtd->writesize,
- 				  DMA_FROM_DEVICE);
-+	if (dma_mapping_error(nfc->dev, dma_data))
-+		return -ENOMEM;
-+
- 	dma_oob = dma_map_single(nfc->dev, nfc->oob_buf,
- 				 ecc->steps * oob_step,
- 				 DMA_FROM_DEVICE);
-+	if (dma_mapping_error(nfc->dev, dma_oob)) {
-+		dma_unmap_single(nfc->dev, dma_data, mtd->writesize,
-+				 DMA_FROM_DEVICE);
-+		return -ENOMEM;
-+	}
- 
- 	/*
- 	 * The first blocks (4, 8 or 16 depending on the device)
--- 
-2.43.0
+For MediaTek:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 _______________________________________________
