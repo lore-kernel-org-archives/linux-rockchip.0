@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 106ADC71130
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jul 2025 17:40:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C258C8303C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jul 2025 17:40:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z/8N4DgxfbtzTAygnOa2UxXGlV4BYusdFNEcKi87Ifg=; b=2pc/eBTk6yAk65
-	W5gfu1Fdx2tpuzvYTPp3BcbDsgcJDbfTIULqJkxBO/VHiIY5ilzQbMFC7RWVZA2wjTfTGDaGQ9V7u
-	VNBbdDe2ooWsYgqEHEUU4y0tFfaIqXcf+rRE8mHKfWoWAXgIIwjAzbevOe1wA0gVAIuNtlpPintsQ
-	uS/fChdhDi0uKmMMnZVmjGYKpZMLPfw6+2J1UiYe12RBWv0qvMAj14D+St5ExR4W1VtgJXSQPmFXE
-	Hh8WH/qUQcEgzr6tci6R+pcYB3a5FLE2WQhFQgmObyXK2Q5v4VCtdjV+AZB4K9gdhP0chAzFgK6tR
-	2Y7DIQ8ItfgNIPT6cYEw==;
+	List-Owner; bh=GEuMpmq0M+ZteW4if1Sx2VwNZk+Jt0+VBJ93RnTIvyU=; b=aDKfIsynIhMdnE
+	WoG4h2LUeYwRCLs0lCLZMp0i000dETLLUPiixU+1GGZuGEWSRlGMXzmrlw278wstzWfn8h94uaVV2
+	PGeJam8xGpng4KKaTGbwNC36g3BIz7370q0nUOuXUMVgx2RXGCGpnmRakb8mZUAkrmsDZWuovK/Gf
+	oOEI86exdyU/nd9LGq0ZdMMjBgbOMhjCfY2Vivb2VzONhpao+yGnZLmy6gHiikMx41gRLCuIw0jO4
+	NpZDwtDgdYSmraZgucJUgPPGhq0jK43ax5pPQBfZGAlVKGZLavshcWkrzFwK5smiN7BX2I45sgur8
+	vAgBYMWXZ8yVfLobDOPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYppN-00000003C8l-3pEq;
-	Mon, 07 Jul 2025 17:40:29 +0000
+	id 1uYppO-00000003C90-10Lz;
+	Mon, 07 Jul 2025 17:40:30 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYp2N-000000033ze-0H5r;
+	id 1uYp2N-000000033zg-0MsU;
 	Mon, 07 Jul 2025 16:49:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=v4TLQmAGOcWD0y8Mnt5eC5Fpk/ELMiMig19bQQmdhOg=; b=j1FbE116GrdVoQK9ijrfRr8Hhx
-	TKwzoBePZ7MsI/oHcKP5Cogld+t1KdRxusbn1hDlul5ZDEqw1WXz/dKOWKFwMq6fuGmURKHIYpwI6
-	+k/xPiFDjgAE/5cedxZbeskedf3TXPbmX2GVW5nlLekqnESEMRxzQ1IXjXNCeZp6r3pXHZtw8NhAD
-	kGrmjsG2uq9QxSjTCW+FSDeGYGqoya5bEPu7yCHelco4DfzNz3hpn/TC9QIOUNbr9lvrOzqWXZfT7
-	wsRHwLxwbF/127nqi0xlgGT07+j2Jp5cAKlX5SDXdk9iZ9LMZUKqrGxAaZkUraoCJwKddFVrxBd7i
-	sRSAtywA==;
+	bh=mKluaDJd+46jb4+9m6pp57pzlsEm486O32TbldwJjns=; b=xFE7ieg15stL2Ic38IK9roETXO
+	GwgASLdwpgFTXckUhYRuw9ufnTPtZ7/tWfd1j7ncxukdXdaTA20VZAtGBLmOqc0SCcxeCQzomI0bB
+	jW2nl6jm+qUWw1wtLx0WS8glwErm6RaRaI2tudhuW+Qfoy6IfV3gHhSuCf/F+h631QSG4O7swzHgw
+	4mMRv9GYNYuq089+qDFm2j4943EEMCPHyBW/ki1V4s1rHL3Ji86WwStzzejf+0xjU+p/Vn3aiL6ps
+	zTztLIZBPcQ4rJHsQipktHzAnaED4Eg5OstpP81o3aSyipXJjBggMEDrOKtASxG11UpxRSHE66lgy
+	2DD449iA==;
 Received: from i53875bf5.versanet.de ([83.135.91.245] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uYp1u-0004yl-N8; Mon, 07 Jul 2025 18:49:22 +0200
+	id 1uYp1t-0004yl-Tr; Mon, 07 Jul 2025 18:49:21 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
-Subject: [PATCH 08/13] dt-bindings: display: rockchip: Add rk3576 to RK3588 DW DSI2 controller schema
-Date: Mon,  7 Jul 2025 18:49:01 +0200
-Message-ID: <20250707164906.1445288-9-heiko@sntech.de>
+Subject: [PATCH 07/13] dt-bindings: soc: rockchip: add rk3576 mipi dcphy syscon
+Date: Mon,  7 Jul 2025 18:49:00 +0200
+Message-ID: <20250707164906.1445288-8-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250707164906.1445288-1-heiko@sntech.de>
 References: <20250707164906.1445288-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_094951_155360_FA2EE44D 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20250707_094951_158591_F342D35D 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,29 +69,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rk3576 controller is based on the same newer Synopsis IP as the one
-found in the rk3588.
-
-Its external setting bits in the GRF are different though, so it needs
-its own distinct compatible.
+RK3576 CSI and DSI support requires the GRF for its DC-PHY.
+The "general register files" provide additional setting-bits
+outside the regular ip-block reg-space.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- .../bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml     | 1 +
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml
-index 53384e47b507..75cd1c13fa52 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml
-@@ -12,6 +12,7 @@ maintainers:
- properties:
-   compatible:
-     enum:
-+      - rockchip,rk3576-mipi-dsi2
-       - rockchip,rk3588-mipi-dsi2
- 
-   reg:
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index ccdcc889ba8e..d4fda4ee33e4 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -31,6 +31,7 @@ properties:
+               - rockchip,rk3568-usb2phy-grf
+               - rockchip,rk3576-bigcore-grf
+               - rockchip,rk3576-cci-grf
++              - rockchip,rk3576-dcphy-grf
+               - rockchip,rk3576-gpu-grf
+               - rockchip,rk3576-hdptxphy-grf
+               - rockchip,rk3576-litcore-grf
 -- 
 2.47.2
 
