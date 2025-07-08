@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BA1BC83F09
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 23:01:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EEEAC8303C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 23:04:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MhtIr0Wg2RStUysHeykGbXvp26sMS410HfLoweAJMyU=; b=C8n+Ou+N3e5pau
-	xYGTYo//BWyeHaywhlW6myFWE+hfU+AFNlbODffNakbkAxkmU1JY8zBVhzitaqoMsMRcxakcYMNDL
-	N32smQePvJ3DG/FQbGl6/uSGThGw4vZkj0yt7mQmL/Sz503paUWYrhxgHe5aq9h7VSXPRS8iTWVRH
-	nTfLkvvLJeHHoUeZszOuk1TtOdJkdA17nAxvzf/wYlFWAzjfGKLEH1BgWwOEy7b5+Jvg4gTdLrB4y
-	tWMhkv6PWI4CYHkfjesQfK78pbN455mO2zJTKJWzxvJcZm9JemLeDFirKLdCv9SPLfT4u+uWGbda8
-	Sn5VxarvRxPo06rLA7sw==;
+	List-Owner; bh=rNIdIbTF1LrT3h5qo1gj2/5zXZmJoSIFqE7S5y0cNw4=; b=EFo7sT58nNNzga
+	uOBV2ol7HEIu+OZK+x4YJYd134uKXVr7McfXe7erK5eYlVAF3qJd4tjBKrb1tm2TSPUIripGBMhl8
+	sARBuZmkdkYRBOi/px42Lz+18dnlW94pFZGJpzwOj6IUUUWtm3nqUx6TbS6AluYlarv3naJzrMzdT
+	djdbQ+eSb9c6GZQiYrKyMJa4SX3mjuMDHuh8uLL3nd6KzVih9hd0RFO2jII9sP4pHdXbKKPHXACsd
+	xbNNMYoBgqUwrdBAIBfWbP0OZtVrPzFIqgrugO13USBTNB90PXHyvAl9U1+X3c3SgATi4zY9qAb8e
+	Qtjs0pHLpp/N9pmh7QFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZHJl-00000006r8c-3RbG;
-	Tue, 08 Jul 2025 23:01:41 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1uZHM5-00000006rNp-19xN;
+	Tue, 08 Jul 2025 23:04:05 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZH8N-00000006pjb-2LBi
+	id 1uZH8b-00000006pno-3wDU
 	for linux-rockchip@lists.infradead.org;
-	Tue, 08 Jul 2025 22:49:56 +0000
+	Tue, 08 Jul 2025 22:50:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1752014994; bh=eowzcy8ITG2aagOcds6bHgFeKHO9g+RqlX3pgIIMC1E=;
- b=cmItHPxJNuh1ml+TNMbB4w/Hp8QdbV5fajDiEc+ZYNJk3E9B1b5a/ZzQgZVHZ+vMlolm/pKJ6
- XMn6m0bAhU6Ihn04LyDBUfSmDOL1ektSinymnQcZEeQI4u6F9rLSOli/0FYVOiadZsAuv4EKCTw
- kExkBG8d9cvB4MAHA2dpwPYI6+yFfSxiQE6SwiyjdCU/KiTTYwl84XCRikRhdwhV7+AznWIFtCs
- ws+1TS/qlgzcol/vb/BifiGL301+BnQJ8yEc1bR42ELh6ThLEWDa0Thnd9i6AubZCZ/K04hUHcR
- 9ofuob8rPR/h5jTnJkRqsMcjsdpz5lj3jPItB65ctMQQ==
-X-Forward-Email-ID: 686da09075317ad3cfdad41c
+ t=1752015009; bh=AaE1Zf0tPosN4O0ohibQWK7rQ9p5L8gIlWL2uprfeeQ=;
+ b=nDSrIGnYfoVJjUzsoEDAHJWuo23ed6PC9V/5icBKWK/hZjDIR/mjhqFeTzT8U+oypkxTAopVF
+ +i+/tN+un6499scYRY38K7WLmw/+6Pi6qfYBxoUspOqdPKZlAEy4uD+VGrpyflwaUYMcXjA4v48
+ G/9lsmoPvS/FVugmIPT0vKl+2XcaWj035nC5QZE/5Nofm7KwbnNXbOnfeDMu9qBGiI6wW+XRnCI
+ YRJ5q/QvKCXXCqmV9vBRU5mEBCjaBePcCHY8Doj88nzEWslctKO9PZoCKMnfPxWPN1I1ctx6RVy
+ ekIaem6LWBoD6tlXZ0TUvBCP7HivmLHi+bFSa41ulOiQ==
+X-Forward-Email-ID: 686da09c75317ad3cfdad45b
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
+ 149.28.215.223
 X-Forward-Email-Version: 1.1.3
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -56,16 +56,16 @@ Cc: Yao Zi <ziyao@disroot.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 4/6] arm64: dts: rockchip: Add ArmSoM Sige1
-Date: Tue,  8 Jul 2025 22:48:54 +0000
-Message-ID: <20250708224921.2254116-5-jonas@kwiboo.se>
+Subject: [PATCH 6/6] arm64: dts: rockchip: Add FriendlyElec NanoPi Zero2
+Date: Tue,  8 Jul 2025 22:48:56 +0000
+Message-ID: <20250708224921.2254116-7-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250708224921.2254116-1-jonas@kwiboo.se>
 References: <20250708224921.2254116-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_154955_655633_EB3BD59F 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20250708_155010_026272_C90CF308 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,38 +82,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Sige1 is a single board computer developed by ArmSoM, based on the
-Rockchip RK3528A SoC.
+The NanoPi Zero2 is a small single board computer developed by
+FriendlyElec, based on the Rockchip RK3528A SoC.
 
-Add initial device tree for the ArmSoM Sige1 board.
+Add initial device tree for the FriendlyElec NanoPi Zero2 board.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
-Schematics: https://drive.google.com/drive/folders/15uvc2lcOAKP0enXezASUhVFLuzkq3IEX
+Schematics: https://wiki.friendlyelec.com/wiki/images/3/37/NanoPi_Zero2_2407_SCH.pdf
 ---
  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 449 ++++++++++++++++++
- 2 files changed, 450 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+ .../boot/dts/rockchip/rk3528-nanopi-zero2.dts | 341 ++++++++++++++++++
+ 2 files changed, 342 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
 
 diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index d0d21f5029ea..e86131b03692 100644
+index e86131b03692..8e95b5620af1 100644
 --- a/arch/arm64/boot/dts/rockchip/Makefile
 +++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -89,6 +89,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64-screen.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
+@@ -90,6 +90,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-armsom-sige1.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-armsom-sige1.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-nanopi-zero2.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-radxa-e20c.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-rock-2a.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-rock-2f.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts b/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
 new file mode 100644
-index 000000000000..15d8d32572e8
+index 000000000000..8bc5da9f24c3
 --- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
-@@ -0,0 +1,449 @@
++++ b/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
+@@ -0,0 +1,341 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +
 +/dts-v1/;
@@ -124,24 +124,22 @@ index 000000000000..15d8d32572e8
 +#include "rk3528.dtsi"
 +
 +/ {
-+	model = "ArmSoM Sige1";
-+	compatible = "armsom,sige1", "rockchip,rk3528";
++	model = "FriendlyElec NanoPi Zero2";
++	compatible = "friendlyarm,nanopi-zero2", "rockchip,rk3528";
 +
 +	aliases {
 +		ethernet0 = &gmac1;
-+		i2c0 = &i2c0;
++		i2c1 = &i2c1;
 +		mmc0 = &sdhci;
 +		mmc1 = &sdmmc;
-+		mmc2 = &sdio0;
 +		serial0 = &uart0;
-+		serial2 = &uart2;
 +	};
 +
 +	chosen {
 +		stdout-path = "serial0:1500000n8";
 +	};
 +
-+	adc-keys {
++	adc-keys-0 {
 +		compatible = "adc-keys";
 +		io-channels = <&saradc 0>;
 +		io-channel-names = "buttons";
@@ -149,8 +147,22 @@ index 000000000000..15d8d32572e8
 +		poll-interval = <100>;
 +
 +		button-maskrom {
-+			label = "MASKROM";
++			label = "MASK";
 +			linux,code = <KEY_SETUP>;
++			press-threshold-microvolt = <0>;
++		};
++	};
++
++	adc-keys-1 {
++		compatible = "adc-keys";
++		io-channels = <&saradc 1>;
++		io-channel-names = "buttons";
++		keyup-threshold-microvolt = <1800000>;
++		poll-interval = <100>;
++
++		button-recovery {
++			label = "RECOVERY";
++			linux,code = <KEY_VENDOR>;
 +			press-threshold-microvolt = <0>;
 +		};
 +	};
@@ -158,22 +170,22 @@ index 000000000000..15d8d32572e8
 +	leds {
 +		compatible = "gpio-leds";
 +		pinctrl-names = "default";
-+		pinctrl-0 = <&g_led>, <&r_led>;
++		pinctrl-0 = <&led1>, <&led_sys>;
 +
-+		led-green {
++		led-1 {
 +			color = <LED_COLOR_ID_GREEN>;
 +			default-state = "on";
-+			function = LED_FUNCTION_HEARTBEAT;
-+			gpios = <&gpio3 RK_PB3 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "heartbeat";
++			function = LED_FUNCTION_STATUS;
++			gpios = <&gpio4 RK_PB1 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "default-on";
 +		};
 +
-+		led-red {
++		led-sys {
 +			color = <LED_COLOR_ID_RED>;
 +			default-state = "on";
-+			function = LED_FUNCTION_STATUS;
-+			gpios = <&gpio3 RK_PB2 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "default-on";
++			function = LED_FUNCTION_HEARTBEAT;
++			gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "heartbeat";
 +		};
 +	};
 +
@@ -217,16 +229,6 @@ index 000000000000..15d8d32572e8
 +		vin-supply = <&vcc_3v3>;
 +	};
 +
-+	vcc1v8_ddr: regulator-1v8-vcc-ddr {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc1v8_ddr";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
 +	vcc_3v3: regulator-3v3-vcc {
 +		compatible = "regulator-fixed";
 +		regulator-name = "vcc_3v3";
@@ -234,7 +236,7 @@ index 000000000000..15d8d32572e8
 +		regulator-boot-on;
 +		regulator-min-microvolt = <3300000>;
 +		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_dcin>;
++		vin-supply = <&vcc5v0_sys>;
 +	};
 +
 +	vcc3v3_sd: regulator-3v3-vcc-sd {
@@ -255,59 +257,23 @@ index 000000000000..15d8d32572e8
 +		regulator-boot-on;
 +		regulator-min-microvolt = <5000000>;
 +		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc_dcin>;
 +	};
 +
-+	vcc5v0_usb1_host: regulator-5v0-vcc-usb1-host {
++	usb2_host_5v: regulator-5v0-usb2-host {
 +		compatible = "regulator-fixed";
 +		enable-active-high;
-+		gpios = <&gpio4 RK_PB1 GPIO_ACTIVE_HIGH>;
++		gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
 +		pinctrl-names = "default";
-+		pinctrl-0 = <&usb20_host1_drv_h>;
-+		regulator-name = "vcc5v0_usb1_host";
-+		regulator-always-on;
-+		regulator-boot-on;
++		pinctrl-0 = <&usb20_host1_pwren>;
++		regulator-name = "usb2_host_5v";
 +		regulator-min-microvolt = <5000000>;
 +		regulator-max-microvolt = <5000000>;
 +		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc5v0_usb2_host: regulator-5v0-vcc-usb2-host {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb20_host2_drv_h>;
-+		regulator-name = "vcc5v0_usb2_host";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc5v0_usb_otg: regulator-5v0-vcc-usb-otg {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio1 RK_PB4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb20_otg0_drv_h>;
-+		regulator-name = "vcc5v0_usb_otg";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_dcin: regulator-vcc-dcin {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_dcin";
-+		regulator-always-on;
-+		regulator-boot-on;
 +	};
 +
 +	vccio_sd: regulator-vccio-sd {
 +		compatible = "regulator-gpio";
-+		gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
++		gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
 +		pinctrl-names = "default";
 +		pinctrl-0 = <&sdmmc_vol_ctrl_h>;
 +		regulator-name = "vccio_sd";
@@ -319,7 +285,7 @@ index 000000000000..15d8d32572e8
 +
 +	vdd_arm: regulator-vdd-arm {
 +		compatible = "pwm-regulator";
-+		pwms = <&pwm3 0 5000 PWM_POLARITY_INVERTED>;
++		pwms = <&pwm1 0 5000 PWM_POLARITY_INVERTED>;
 +		pwm-supply = <&vcc5v0_sys>;
 +		regulator-name = "vdd_arm";
 +		regulator-always-on;
@@ -339,24 +305,6 @@ index 000000000000..15d8d32572e8
 +		regulator-min-microvolt = <705000>;
 +		regulator-max-microvolt = <1006000>;
 +		regulator-settling-time-up-us = <250>;
-+	};
-+
-+	rfkill {
-+		compatible = "rfkill-gpio";
-+		label = "rfkill-wlan";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_reg_on_h>;
-+		radio-type = "wlan";
-+		shutdown-gpios = <&gpio1 RK_PA6 GPIO_ACTIVE_HIGH>;
-+	};
-+
-+	rfkill-bt {
-+		compatible = "rfkill-gpio";
-+		label = "rfkill-bt";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_reg_on_h>;
-+		radio-type = "bluetooth";
-+		shutdown-gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
 +	};
 +};
 +
@@ -392,9 +340,9 @@ index 000000000000..15d8d32572e8
 +	status = "okay";
 +};
 +
-+&i2c0 {
++&i2c1 {
 +	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c0m0_xfer>;
++	pinctrl-0 = <&i2c1m0_xfer>;
 +	status = "okay";
 +
 +	hym8563: rtc@51 {
@@ -403,7 +351,7 @@ index 000000000000..15d8d32572e8
 +		#clock-cells = <0>;
 +		clock-output-names = "hym8563";
 +		interrupt-parent = <&gpio4>;
-+		interrupts = <RK_PA0 IRQ_TYPE_LEVEL_LOW>;
++		interrupts = <RK_PC1 IRQ_TYPE_LEVEL_LOW>;
 +		pinctrl-names = "default";
 +		pinctrl-0 = <&rtc_int_l>;
 +		wakeup-source;
@@ -418,50 +366,36 @@ index 000000000000..15d8d32572e8
 +		pinctrl-0 = <&gmac1_rstn_l>;
 +		reset-assert-us = <20000>;
 +		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_LOW>;
++		reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
 +	};
 +};
 +
 +&pinctrl {
-+	bluetooth {
-+		bt_reg_on_h: bt-reg-on-h {
-+			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_wake_host_h: bt-wake-host-h {
-+			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		host_wake_bt_h: host-wake-bt-h {
-+			rockchip,pins = <3 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
 +	ethernet {
 +		gmac1_rstn_l: gmac1-rstn-l {
-+			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +	};
 +
 +	leds {
-+		g_led: g-led {
-+			rockchip,pins = <3 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
++		led1: led1 {
++			rockchip,pins = <4 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +
-+		r_led: r-led {
-+			rockchip,pins = <3 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
++		led_sys: led-sys {
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +	};
 +
 +	rtc {
 +		rtc_int_l: rtc-int-l {
-+			rockchip,pins = <4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <4 RK_PC1 RK_FUNC_GPIO &pcfg_pull_up>;
 +		};
 +	};
 +
 +	sdmmc {
 +		sdmmc_vol_ctrl_h: sdmmc-vol-ctrl-h {
-+			rockchip,pins = <4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +
 +		sdmmc_pwren_l: sdmmc-pwren-l {
@@ -470,39 +404,21 @@ index 000000000000..15d8d32572e8
 +	};
 +
 +	usb {
-+		usb20_host1_drv_h: usb20-host1-drv-h {
-+			rockchip,pins = <4 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		usb20_host2_drv_h: usb20-host2-drv-h {
-+			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		usb20_otg0_drv_h: usb20-otg0-drv-h {
-+			rockchip,pins = <1 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
++		usb20_host1_pwren: usb20-host1-pwren {
++			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +	};
++};
 +
-+	wifi {
-+		wifi_reg_on_h: wifi-reg-on-h {
-+			rockchip,pins = <1 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		wifi_wake_host_h: wifi-wake-host-h {
-+			rockchip,pins = <1 RK_PA7 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
++&pwm1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pwm1m0_pins>;
++	status = "okay";
 +};
 +
 +&pwm2 {
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&pwm2m0_pins>;
-+	status = "okay";
-+};
-+
-+&pwm3 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm3m0_pins>;
 +	status = "okay";
 +};
 +
@@ -523,23 +439,6 @@ index 000000000000..15d8d32572e8
 +	status = "okay";
 +};
 +
-+&sdio0 {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	disable-wp;
-+	keep-power-in-suspend;
-+	no-mmc;
-+	no-sd;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>, <&clkm1_32k_out>;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc_3v3>;
-+	vqmmc-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
 +&sdmmc {
 +	bus-width = <4>;
 +	cap-mmc-highspeed;
@@ -554,13 +453,6 @@ index 000000000000..15d8d32572e8
 +&uart0 {
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&uart0m0_xfer>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart2m1_xfer>, <&uart2m1_ctsn>, <&uart2m1_rtsn>;
-+	uart-has-rtscts;
 +	status = "okay";
 +};
 -- 
