@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E92B4C83F09
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 16:20:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 366FAC83F09
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 16:42:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XlGPp2DCuwHW7xNkHLhEW6pjBFs58OnHo9HDGVRGCZM=; b=UKyYizRpZkbRl1
-	6iYf7N/BXDXOOYcYrcHEUocksbXrad3w7nF7L1biwlNxoForJGAblubw8hgqQ9x/DW3PN43YbkZrL
-	Fi97uwq4yUdi3cW3RSYKLpoylsjZt/Xf/AxfUVElcLG4+C6nLxHjZpEeGEQSu+sqTnvC2uMBMUDWZ
-	aYob9thAh0IhUXiyW85XeuZDVPjdfyyjKzLpkM79KcgcDY/jXDv/Nzg7n4mlM92luERKzG5QEat9X
-	+gdXOaT98YEcTvWThCNWE9pHTwayq2dzXBeKcmd8gl1rg3SS1/XHmnh5CJY/AFcIZ7mnRN1Rr2FfA
-	jGx/iS+TE7P8SVD9KpOw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/Us7REiSuGJi1MIJ6a3PUBLRAkzkhKPAc3/FQBfJG/w=; b=oivXhxe1oGLzuE
+	sClNfP82pwY3krB9Zq8KsR07rRir9v/LdwiHAw5vTLdJu556CaPCHkrIfEvMYSzXl7kLSV1IoaxjZ
+	mjedMfx+HUkwpDd/odEQjZrviCQMVMVGrLvdOY2ts4dy287Sdsq2wzfbINoF/7ixSmK1AmhBevHhX
+	Q7fdV5aSA1nYDTYuqgsDhDMrJbWtBM3bXRga7xt5A2ECCxrBCKUMvv6szmBTUGYy75lofaeq5ytB9
+	0y8JIKKpk6boE73dAUod8n5mfFyeFls2NJp0d4IrHO2YV5krRab5lMxvEICGLERTMlbaDAsCAOhtg
+	Hn+HLC8DYpnYsEWP547A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZB3a-00000005x9r-0Vaz;
-	Tue, 08 Jul 2025 16:20:34 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uZBOW-0000000601H-2gvb;
+	Tue, 08 Jul 2025 16:42:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZAXa-00000005rlB-3t98;
-	Tue, 08 Jul 2025 15:47:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 36B225C5A07;
-	Tue,  8 Jul 2025 15:47:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B1F2C4CEF6;
-	Tue,  8 Jul 2025 15:47:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751989649;
-	bh=9FILRncBVkMcWlg7bphOJ6WLT1i1sMQ9/aj0fvNpAZE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OpHqpEe4OJt3bSjV0GUV+OV+vE84DzupQmimawIBkC7W8Q3987d9H0T+FmyqDObRl
-	 qaJk7QZyhb7Qrh10gnyUhjRCAnJ5asunOFgJdKK0ypjqL7oi65ly6g4FYaRRWFIpBS
-	 NuPGe4Kc0IAJzpoIRoIkmAHTxZJ3BcTJMQz2mqNhr7BjtaNGWICFOghXQA3Togbjj0
-	 1IsYpFiaeTjTiLA3LXY3hRwJCzXt7BIK8YyRG8/ja13u7CJWQYCxgzzG+DCDUxurFL
-	 2kKot4Hd5hJRA1+p745XmCkLo4s7X4KvupJiK6AZz9ZMD9aNP+Y/X5t0p83WdFfYIG
-	 NWS+0uhXE9iog==
-Date: Tue, 8 Jul 2025 10:47:28 -0500
-From: Rob Herring <robh@kernel.org>
-To: Diederik de Haas <didi.debian@cknow.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1uZAaH-00000005sPa-1tTs;
+	Tue, 08 Jul 2025 15:50:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1751989815;
+	bh=lXcwdp32iiymNLFQz/K2sNz47GpZk/42dMVTvWiz2ZQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=j1RQVjxwIoVnBJQKqwktgowBn2Rb1sYctGTO9LFC5kbxzwSJXNTuDeBa2c5669kxW
+	 hKhorN+7Jg5tfls4P+XvkoRizppcY4MVJ/q+OVre3i0+ZecIhl9KfoGRyXDDq8iaIG
+	 mD8HO5CcDiPIjj7l7RVzYpNnxsOay70RRPPvTirlgNXuJX591wiBMKCorhziCmiKEP
+	 0F4JBfzKCKwB/KJb0XDjfKXkjwjqESasXscCGRyvdlyfefUI7vXbkVYFtV2FL+AukZ
+	 kMjS4O6ocYfvnx4BVSeSYEukg+zhkMIdydyhUj5QJC6uFLjhUGYtqwVbE5L755M8ez
+	 CIZVqx+ZdzAAQ==
+Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2541D17E0F34;
+	Tue,  8 Jul 2025 17:50:14 +0200 (CEST)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Dragan Simic <dsimic@manjaro.org>,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Johan Jonker <jbx6244@gmail.com>, devicetree@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Stephen Chen <stephen@radxa.com>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 03/10] dt-bindings: display: rockchip,dw-mipi-dsi:
- Drop address/size cells
-Message-ID: <20250708154728.GA401802-robh@kernel.org>
-References: <20250629123840.34948-1-didi.debian@cknow.org>
- <20250629123840.34948-4-didi.debian@cknow.org>
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH] arm64: dts: rockchip: Add UFS support on the ROCK 4D
+Date: Tue,  8 Jul 2025 11:50:10 -0400
+Message-ID: <20250708155010.401446-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.50.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250629123840.34948-4-didi.debian@cknow.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_084731_048293_1880D203 
-X-CRM114-Status: GOOD (  22.29  )
+X-CRM114-CacheID: sfid-20250708_085017_629693_3D368C38 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,67 +81,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jun 29, 2025 at 02:34:44PM +0200, Diederik de Haas wrote:
-> When the dw-mipi-dsi binding was initially added in commit
-> a20d86e7f964 ("Documentation: dt-bindings: Add bindings for rk3288 DW MIPI DSI driver")
-> the #address-cells and #size-cells were added as required properties.
-> 
-> When the binding was converted to yaml format in commit
-> 0dac2102cf6b ("dt-bindings: display: rockchip: convert dw_mipi_dsi_rockchip.txt to yaml")
-> those properties were demoted to optional and removed from the binding
-> example.
-> 
-> As for the compatibles:
-> - rockchip,px30-mipi-dsi      removed in this patch set
-> - rockchip,rk3128-mipi-dsi    never used
-> - rockchip,rk3288-mipi-dsi    added (invalid); later removed [1]
-> - rockchip,rk3399-mipi-dsi    removed in this patch set
-> - rockchip,rk3568-mipi-dsi    never used
-> - rockchip,rv1126-mipi-dsi    proposed (invalid); never accepted [2]
-> 
-> [1] 282e2e078ba5 ("ARM: dts: rockchip: Remove #address/#size-cells from rk3288 mipi_dsi")
-> [2] https://lore.kernel.org/all/20230731110012.2913742-12-jagan@edgeble.ai/
-> 
-> The #address-cells and #size-cells are useful (and required) in the
-> ports node and for panel(s), but those properties are declared in their
-> schemas already. Now that there are no remaining users, remove these
-> properties from the Rockchip specific extensions of the Synopsys
-> DesignWare MIPI DSI host controller.
+This device supports removable UFS chips, add support for it.
 
-The change is fine, but your reasoning is flawed. These properties are 
-used if you define DSI devices on the "DSI bus" where the address of the 
-child devices are the DSI virtual channel. Often though that's just 0 
-and not really used, so you don't need it. 
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-The change is fine because these properties are defined in 
-dsi-controller.yaml, so specifying them here is redundant.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+index 6756403111e70..c7b65ef588bb8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+@@ -730,6 +730,10 @@ &uart0 {
+ 	status = "okay";
+ };
+ 
++&ufshc {
++	status = "okay";
++};
++
+ &usb_drd1_dwc3 {
+ 	dr_mode = "host";
+ 	status = "okay";
+-- 
+2.50.0
 
-> 
-> Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
-> ---
->  .../bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml     | 6 ------
->  1 file changed, 6 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-> index ccd71c5324af..0881e82deb11 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-> @@ -58,12 +58,6 @@ properties:
->    power-domains:
->      maxItems: 1
->  
-> -  "#address-cells":
-> -    const: 1
-> -
-> -  "#size-cells":
-> -    const: 0
-> -
->  required:
->    - compatible
->    - clocks
-> -- 
-> 2.50.0
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
