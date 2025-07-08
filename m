@@ -4,53 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3805DC83F09
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 21:23:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0918C83F09
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 22:49:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GTGfLMATL8caDt/xUVq/ecKfiO4chFsNW4dHeSUwBD8=; b=YJDgwnn0vPlNyI
-	sOUE0c48eoel2bdCpYs3cuNKWPmKrvKhx36ebrt8khOJMioHUd949b+MGhjNKpe8Ez6JY8TMGQ5sD
-	r97BSOTzE4mDPOUkI7QWAS7e8EPNMbB0aGc55JknHSOeHoTkxSemXfcxDVlGElaZJkEBL4TSpNfEu
-	O2BYcxcudIAB/8EnjbGebUuGImWEI7wPfd19CtvBDgM2IbQOj+T3waiJKH3+UQLmHnCrkBVdVPtJx
-	3cRFndrDIGHXknJCZ4Ysl1EHHQmewN7e6mGXk7aKzHaZnhNDhFXP2pqm+VeCxqKBJWIsTfQ508ayP
-	oYPnZQdcJj+mXRdDMfIA==;
+	List-Owner; bh=+a7Z0XU/0WnW8thkX2mGKiBQ5y3WMXfYhOTdCcvGIoE=; b=NdeRbrYPfY1zwN
+	D3p63lr+6EzcFSNrb8nqUbxqqPZP5zBckYs6aZ4kQ9UxeQ+hwhhGXq0zTj1Hd6F/LfVqdKHJsv4Pf
+	Ccz5XN1rX6renfDkiaq5iIu+y0VhkCY4Kd66lefF6UksMJS0F0XRNF7nLcBYMMflWqnNliqsD7uEd
+	KhJl9cxeb1MRh4Z+hIzVOgGUrN9hbKJiNxx6+zKAdq9MtTgf/ZVuW0FGYQI3/bFzV7Aud3Ghnm46S
+	7DORgfIF1FZWDEqi5SXSdecmIWz/BLm3u8jbKO7PHsXCXWq5OuDx2wpecgUCX9V4UD6X65ci7eN5k
+	F8BnI+Q9Qj/8dZ1e5fqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZFmB-00000006eDT-0BuN;
-	Tue, 08 Jul 2025 21:22:55 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uZH84-00000006peu-1vx8;
+	Tue, 08 Jul 2025 22:49:36 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZF7w-00000006Xs5-3Xih;
-	Tue, 08 Jul 2025 20:41:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=uygCH21KbdcGkN1lZ0Sna3b75q2CK0gWLRBqeJYnhYo=; b=u+yrMRrgBJXNuN+2fBDeMtSzP1
-	zLsNSX3U50MzpnP+b4t1egPndg9OII9v9nXNjn5KDLv6SE+Tppp53b6/jonupNaSnCcpoUUyLrUEe
-	Cf6NCv2MfHzx+9iRIdhI0wpc+s24JmAirSueEczSwCHuaDG/zXoXgdTjAY0LVY2uqoJF8TuYboRGP
-	K+P6C3kT1CzO7kKju7bWyH8OVAbrrwmNIfOFdMOLzdwlGX7NK3XLsqnEKmglEghgYLWtIYEtUsmV1
-	X0Bp3UKqA8NzcHEQBydRjPdcCtaPIink7ShHOdyYXqDtuApImXcmH5DA5fRFhBpoo/dXAqD/2gbBx
-	wUxR8Yfw==;
-Received: from i53875a8d.versanet.de ([83.135.90.141] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uZF7u-0006dd-Lo; Tue, 08 Jul 2025 22:41:18 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts fixes for 6.16 #1
-Date: Tue, 08 Jul 2025 22:41:18 +0200
-Message-ID: <5108768.AiC22s8V5E@diego>
+	id 1uZH81-00000006pd2-36de
+	for linux-rockchip@lists.infradead.org;
+	Tue, 08 Jul 2025 22:49:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1752014971;
+ bh=UvbgoGgrmXP3B5uQ+cywVTSDeS9uHHY5U7o4ME++MHI=;
+ b=ODXAp3FMDk1GGm+hgUlv5zyOAM5zx220P73ox/ayfDmkNF1SsD6Btw2Y2DFvifphvvBzpNsgu
+ qjYx0RoaBaalItpnC0/PhsOayQairTWCGztBihoLHcFK3x3MfGbC1Bw8ZXwtfC3xcvrhJF5Heww
+ Rs7a4jffbUtKTOijcuHu7tMbjow2bHFbB6hbJI5gP/3Gj+QSlB2Xbvceluy14xceaDaTmJlM4i7
+ CQEN8JBV+uU9SE2s1OS4O+T7SlMQ0v9lIoyMj0AeBAo0ygmGu9hoEuZUMUeVvXM5d38omdbU3YO
+ uXqRGCTe6YJbFSx6E0DCLiYPsRawnGVNKUI/8CDhmAEA==
+X-Forward-Email-ID: 686da07775317ad3cfdad39e
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 1.1.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Yao Zi <ziyao@disroot.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH 0/6] arm64: dts: rockchip: Add ROCK 2A/2F, Sige1 and NanoPi Zero2
+Date: Tue,  8 Jul 2025 22:48:50 +0000
+Message-ID: <20250708224921.2254116-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_134120_907442_F80E0F24 
-X-CRM114-Status: GOOD (  12.34  )
+X-CRM114-CacheID: sfid-20250708_154934_174971_D13B00ED 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,64 +81,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd, Kevin, Olof,
+This series adds dt-bindings and initial device tree for the following
+Rockchip RK3528A boards:
+- Radxa ROCK 2A/2F
+- ArmSoM Sige1
+- FriendlyElec NanoPi Zero2
 
-please find a below some fixes for the current 6.16 release-cycle.
+The bt/wifi_reg_on pins are described in the device tree using
+rfkill-gpio nodes.
 
-Please pull
+These boards can be booted from emmc or sd-card using the U-Boot 2025.07
+generic-rk3528 target.
 
-Thanks
-Heiko
+The patch "arm64: dts: rockchip: Fix pinctrl node names for RK3528" [1]
+is recommended to remove a few CHECK_DTBS=y W=2 node_name_chars_strict
+warnings for these boards.
 
+[1] https://lore.kernel.org/r/20250621113859.2146400-1-jonas@kwiboo.se
 
-The following changes since commit 19272b37aa4f83ca52bdf9c16d5d81bdd1354494:
+Jonas Karlman (6):
+  dt-bindings: arm: rockchip: Add Radxa ROCK 2A/2F
+  arm64: dts: rockchip: Add Radxa ROCK 2A/2F
+  dt-bindings: arm: rockchip: Add ArmSoM Sige1
+  arm64: dts: rockchip: Add ArmSoM Sige1
+  dt-bindings: arm: rockchip: Add FriendlyElec NanoPi Zero2
+  arm64: dts: rockchip: Add FriendlyElec NanoPi Zero2
 
-  Linux 6.16-rc1 (2025-06-08 13:44:43 -0700)
+ .../devicetree/bindings/arm/rockchip.yaml     |  17 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   4 +
+ .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 449 ++++++++++++++++++
+ .../boot/dts/rockchip/rk3528-nanopi-zero2.dts | 341 +++++++++++++
+ .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 292 ++++++++++++
+ .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 ++++
+ .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
+ 7 files changed, 1195 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
 
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.16-rockchip-dtsfixes1
-
-for you to fetch changes up to 9037532ab893635a46afe88542cd747a4a846497:
-
-  arm64: dts: rockchip: Add missing fan-supply to rk3566-quartz64-a (2025-06-30 11:08:36 +0200)
-
-----------------------------------------------------------------
-Switch to the gpio variant for spi-cs and mmc-detect for some boards
-as the in-controller functionality does not work as intended for them.
-HDMI drive strength adjustment for better ddc communication and some
-missing supplies.
-
-----------------------------------------------------------------
-Alexey Charkov (1):
-      arm64: dts: rockchip: list all CPU supplies on ArmSoM Sige5
-
-Andy Yan (3):
-      arm64: dts: rockchip: Adjust the HDMI DDC IO driver strength for rk3588
-      arm64: dts: rockchip: Add cd-gpios for sdcard detect on Cool Pi CM5
-      arm64: dts: rockchip: Add cd-gpios for sdcard detect on Cool Pi 4B
-
-Diederik de Haas (1):
-      arm64: dts: rockchip: Add missing fan-supply to rk3566-quartz64-a
-
-Jakob Unterwurzacher (1):
-      arm64: dts: rockchip: use cs-gpios for spi1 on ringneck
-
-Shawn Lin (1):
-      arm64: dts: rockchip: fix rk3576 pcie1 linux,pci-domain
-
- arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi    | 23 ++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts |  1 +
- .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 28 +++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3576.dtsi           |  2 +-
- .../boot/dts/rockchip/rk3588-base-pinctrl.dtsi     | 20 ++++++-------
- .../arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi |  1 +
- .../boot/dts/rockchip/rk3588-extra-pinctrl.dtsi    |  5 ++--
- arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts |  1 +
- arch/arm64/boot/dts/rockchip/rockchip-pinconf.dtsi | 35 ++++++++++++++++++++++
- 9 files changed, 103 insertions(+), 13 deletions(-)
-
-
+-- 
+2.49.0
 
 
 _______________________________________________
