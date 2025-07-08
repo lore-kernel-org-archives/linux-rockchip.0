@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73C39C83F09
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 20:37:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3805DC83F09
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 21:23:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pk2OIHfMDkNHtZDR9G7v4CtT56Tmc4lyLrszrpY1Mhs=; b=TldECU+I0Fwssb
-	l8qMEFeRNGCdWB7o67uL+SEu2qNP95+OZkxLNjgOUX67c1UGYauKX8gB/nXcSqVmIe6QFKyf1KExk
-	39w3PXG2UTv4KW07K8XGRn65b3NNshRUULiLwylRBs2nUPRtl4dfEdWgB/mXPBaSTKqayqqJ8ZJfM
-	I+DymTitmz5UFc7brWCGCTIiMbg7TjBzjjGLbANj6Ml7fV2cVidMKJecxpJXkVS7qN2/PfYfJCBMP
-	LHK0Y8krBTKObsh8kUtFfqJnBWYqyIFARHmGPP7w6eEnUqNVaLCMUK9UmjQSa8Jh2lyfXmb2bu8Dk
-	t6gKfzIwls+f8pynmWRQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GTGfLMATL8caDt/xUVq/ecKfiO4chFsNW4dHeSUwBD8=; b=YJDgwnn0vPlNyI
+	sOUE0c48eoel2bdCpYs3cuNKWPmKrvKhx36ebrt8khOJMioHUd949b+MGhjNKpe8Ez6JY8TMGQ5sD
+	r97BSOTzE4mDPOUkI7QWAS7e8EPNMbB0aGc55JknHSOeHoTkxSemXfcxDVlGElaZJkEBL4TSpNfEu
+	O2BYcxcudIAB/8EnjbGebUuGImWEI7wPfd19CtvBDgM2IbQOj+T3waiJKH3+UQLmHnCrkBVdVPtJx
+	3cRFndrDIGHXknJCZ4Ysl1EHHQmewN7e6mGXk7aKzHaZnhNDhFXP2pqm+VeCxqKBJWIsTfQ508ayP
+	oYPnZQdcJj+mXRdDMfIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZF41-00000006XJM-0hzN;
-	Tue, 08 Jul 2025 20:37:17 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uZFmB-00000006eDT-0BuN;
+	Tue, 08 Jul 2025 21:22:55 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZEdh-00000006TCi-24to;
-	Tue, 08 Jul 2025 20:10:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B7E786112E;
-	Tue,  8 Jul 2025 20:10:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36164C4CEED;
-	Tue,  8 Jul 2025 20:10:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752005404;
-	bh=ku8L98emvYfIz4KPutlqA+m9OYjVsmlwLx2UjJrAYKk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IfgBvxJrGxsZR5xYwilNvEoJfRN3Bh0FtmvTXJ3vipPzA7HmlrqkVHD8Wdyf8pyer
-	 YqLQlLGQwahwyhNPrFb2a7ku9wh+7fvUUjSEwlyq5rlZdDoaqFJW8LAsf7nzEsY8GO
-	 4uKVJqrc9MM16llgqXaNZy3Iz6hpTMma8ykcHTIMnshnweFeoQyW5cB9tFrMhNLXd9
-	 NYs4j8xWouuv5h0+weX7gwkS9hU1poagWDZB631nCit1Hpyk6PACUPoh6Qtvb2FRSJ
-	 53cNnOotNo/Q8dUqEuTBhZ8yeqe5orammUyInVm6dt5363qKvFh8cN2hEz4VOk84NR
-	 ZyhB9kzoKR2LQ==
-Date: Tue, 8 Jul 2025 15:10:02 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 08/13] dt-bindings: display: rockchip: Add rk3576 to
- RK3588 DW DSI2 controller schema
-Message-ID: <175200540168.891369.12402940753218880108.robh@kernel.org>
-References: <20250707164906.1445288-1-heiko@sntech.de>
- <20250707164906.1445288-9-heiko@sntech.de>
+	id 1uZF7w-00000006Xs5-3Xih;
+	Tue, 08 Jul 2025 20:41:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=uygCH21KbdcGkN1lZ0Sna3b75q2CK0gWLRBqeJYnhYo=; b=u+yrMRrgBJXNuN+2fBDeMtSzP1
+	zLsNSX3U50MzpnP+b4t1egPndg9OII9v9nXNjn5KDLv6SE+Tppp53b6/jonupNaSnCcpoUUyLrUEe
+	Cf6NCv2MfHzx+9iRIdhI0wpc+s24JmAirSueEczSwCHuaDG/zXoXgdTjAY0LVY2uqoJF8TuYboRGP
+	K+P6C3kT1CzO7kKju7bWyH8OVAbrrwmNIfOFdMOLzdwlGX7NK3XLsqnEKmglEghgYLWtIYEtUsmV1
+	X0Bp3UKqA8NzcHEQBydRjPdcCtaPIink7ShHOdyYXqDtuApImXcmH5DA5fRFhBpoo/dXAqD/2gbBx
+	wUxR8Yfw==;
+Received: from i53875a8d.versanet.de ([83.135.90.141] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uZF7u-0006dd-Lo; Tue, 08 Jul 2025 22:41:18 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts fixes for 6.16 #1
+Date: Tue, 08 Jul 2025 22:41:18 +0200
+Message-ID: <5108768.AiC22s8V5E@diego>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250707164906.1445288-9-heiko@sntech.de>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250708_134120_907442_F80E0F24 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,27 +62,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, neil.armstrong@linaro.org, linux-kernel@vger.kernel.org, maarten.lankhorst@linux.intel.com, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, andyshrk@163.com, linux-rockchip@lists.infradead.org, mripard@kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, quic_jesszhan@quicinc.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Arnd, Kevin, Olof,
 
-On Mon, 07 Jul 2025 18:49:01 +0200, Heiko Stuebner wrote:
-> The rk3576 controller is based on the same newer Synopsis IP as the one
-> found in the rk3588.
-> 
-> Its external setting bits in the GRF are different though, so it needs
-> its own distinct compatible.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  .../bindings/display/rockchip/rockchip,rk3588-mipi-dsi2.yaml     | 1 +
->  1 file changed, 1 insertion(+)
-> 
+please find a below some fixes for the current 6.16 release-cycle.
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Please pull
+
+Thanks
+Heiko
+
+
+The following changes since commit 19272b37aa4f83ca52bdf9c16d5d81bdd1354494:
+
+  Linux 6.16-rc1 (2025-06-08 13:44:43 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.16-rockchip-dtsfixes1
+
+for you to fetch changes up to 9037532ab893635a46afe88542cd747a4a846497:
+
+  arm64: dts: rockchip: Add missing fan-supply to rk3566-quartz64-a (2025-06-30 11:08:36 +0200)
+
+----------------------------------------------------------------
+Switch to the gpio variant for spi-cs and mmc-detect for some boards
+as the in-controller functionality does not work as intended for them.
+HDMI drive strength adjustment for better ddc communication and some
+missing supplies.
+
+----------------------------------------------------------------
+Alexey Charkov (1):
+      arm64: dts: rockchip: list all CPU supplies on ArmSoM Sige5
+
+Andy Yan (3):
+      arm64: dts: rockchip: Adjust the HDMI DDC IO driver strength for rk3588
+      arm64: dts: rockchip: Add cd-gpios for sdcard detect on Cool Pi CM5
+      arm64: dts: rockchip: Add cd-gpios for sdcard detect on Cool Pi 4B
+
+Diederik de Haas (1):
+      arm64: dts: rockchip: Add missing fan-supply to rk3566-quartz64-a
+
+Jakob Unterwurzacher (1):
+      arm64: dts: rockchip: use cs-gpios for spi1 on ringneck
+
+Shawn Lin (1):
+      arm64: dts: rockchip: fix rk3576 pcie1 linux,pci-domain
+
+ arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi    | 23 ++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts |  1 +
+ .../boot/dts/rockchip/rk3576-armsom-sige5.dts      | 28 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           |  2 +-
+ .../boot/dts/rockchip/rk3588-base-pinctrl.dtsi     | 20 ++++++-------
+ .../arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi |  1 +
+ .../boot/dts/rockchip/rk3588-extra-pinctrl.dtsi    |  5 ++--
+ arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts |  1 +
+ arch/arm64/boot/dts/rockchip/rockchip-pinconf.dtsi | 35 ++++++++++++++++++++++
+ 9 files changed, 103 insertions(+), 13 deletions(-)
+
+
 
 
 _______________________________________________
