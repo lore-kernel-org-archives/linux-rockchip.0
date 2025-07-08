@@ -4,57 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A18E7C83F09
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 15:39:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BC8AC8303C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 15:40:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mGq91HAKaJrrgWpYjxlTkTYDShQEVDpsIKboUhIOd2g=; b=08mMp27vWr12Bf
-	HWv4c2+M6dqU9yNHT0MlFCxdt1GjurpIy2fAO47akG9aNroufpGjyaI+wuazs4M4fRbmJP1iTXuzy
-	6tqfIfbHfQAJ0MG+hNc8TZwpUeRlPDNr/IBgeTvt2VyFBVapjnKuDZBqdgDqlZ57DremH0fJCaacv
-	DvNcSvPJVIlwzuDbHR2e0shFMvB/ZebMhjvhy0ODplNz9B1+enFiIfVq3xGWZEZluDemxL44GxROy
-	lJLnW6Cd2ufNQNI3fb66MF6P++hHrbZ/Jp7hPFTZQrnwWaeaebAbKW4qjV7JZX73JMLJwjJX22qL9
-	Yt9nSehA4C63yFOBJWLw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sIggqZMFELD/pYdCtk9YcRz2i48WHKomeznIolqkNio=; b=LT6ZMKLgE42MqM
+	qFaomkNz/1nS+M1V9psTFNze4dj+NmSkt13/bNQnohS0So8C4t69vhJ71pIR1b9rnQvgULt9d8b7G
+	FTYd1OtbHKEihJqwF2LZnRbbl0jSUOaSv0uuuGzM4hu+8mAUbki5zJ2eACklL3VrNI4L8xhn+Krak
+	3pBVVj4TZbNRzonSqJmsONHiTuGKoYihIzMpVSxDxsCDYkHLbFlBhI18BFQ4TWH1/PaeHval4yMSs
+	muqIEXIWEIzfxr2Hwqo0Pmn6qfWPGM1jQq03U7HM23wwwt29HpBZhXsMygeGTNahKdpEKiclVzf6N
+	u6ooQehv9606tj3TIiBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZAQ4-00000005qCg-1s1J;
-	Tue, 08 Jul 2025 15:39:44 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uZAQ1-00000005qA5-3Yo6;
+	Tue, 08 Jul 2025 15:39:41 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZA70-00000005leC-3Sw5;
-	Tue, 08 Jul 2025 15:20:04 +0000
+	id 1uZA6v-00000005lZy-1Jdc;
+	Tue, 08 Jul 2025 15:19:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1751988000;
-	bh=IYkfgzyTm1r3u/AVPZFB0sE58bGEguRbyPcffVUmwi8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=njgFWMNbXIyfqcettUYApYXbBkRRw91GNoGXSFInPopzwZjwqy5YVQZRWxBt7fsBR
-	 PAA1d6BXwttumnnRDOYoA62RBgUQHatIwY5Z5VCc/eu7ceiYXioecZg2kK/fQUDfQ6
-	 cxo1ScXpURaIND+5Y7CjVGhCw6v1twi/+1/xEB00g7JkFJ1Jm8Q7U8OUq3My0VLzGJ
-	 Yw6ISvrhp1sIjMR3vQcuoNiO2sVwN7eb4dhef6fdIeYxuLn3wpeoQ3nqjN6YqY47Gl
-	 f6aMTs5aFY0mTzFwj83YuNauBEpQBhoWMH/j8tgfpX1jKnACIvVWBq1aSxsyfdD/hK
-	 0mYMgXH0X+75w==
+	s=mail; t=1751987994;
+	bh=ldW+8NLIWI9EH03+6vgdJz7W7PLDyT0T4sDDOhAg+Wg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=O+CkKxN93ev5LYgwxsRmUCBdvNE/oYc0sqGBkbZ1MUyp44t3xf4+NPkhZT6wvE942
+	 jQ/tj8uxiQfjqptkJKJStnaUiKXwJKTvulWEPCu0ZbhwOA/0X1qFKSqOAjcHPeCQBm
+	 uWUk+hibDaS74i0MBmV7/X18hRMViszziMfnInJi918cH9kY54UH6owlK0xZKgNJlH
+	 HPKFSL7JsPB9irr6cg2AKGycNpMJEMViNXGZkVGSfz4duo5WkxqyCPsKRbYEhqTURo
+	 GtX6MdeoBXv55dm/xfBErTeENjeudFeY7E7lkhxFXrdjOdqo2aYWLjnK9kiYpOCpRr
+	 5C08OcXMP3upQ==
 Received: from trenzalore.hitronhub.home (unknown [23.233.251.139])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EC5DF17E1045;
-	Tue,  8 Jul 2025 17:19:58 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7E28017E0456;
+	Tue,  8 Jul 2025 17:19:53 +0200 (CEST)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 03/12] media: rkvdec: Use structs to represent the HW RPS
-Date: Tue,  8 Jul 2025 11:19:36 -0400
-Message-ID: <20250708151946.374349-4-detlev.casanova@collabora.com>
+Subject: [PATCH 00/12] media: rkvdec: Add support for VDPU381 and VDPU383
+Date: Tue,  8 Jul 2025 11:19:33 -0400
+Message-ID: <20250708151946.374349-1-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250708151946.374349-1-detlev.casanova@collabora.com>
-References: <20250708151946.374349-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_082003_039881_1C8B4511 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20250708_081957_506691_04ED7060 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,168 +70,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is in preparation to add support for other variants of the decoder.
+These variants are found respectively in the RK3588 and RK3576 SoCs.
+This patch only adds support for H264 and H265 in both variants.
 
-Moving to struct representation is mainly to prepare for multicore
-support that is present in e.g. rk3588.
+As there is a considerable part of the code that can be shared with the
+already supported rkvdec decoder driver, the support for these variants
+is added here rather than writing a new driver.
 
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- .../platform/rockchip/rkvdec/rkvdec-h264.c    | 97 ++++++++++++++++---
- 1 file changed, 86 insertions(+), 11 deletions(-)
+This patch set uses the newly introduced EXT_SPS_RPS v4l2 control for
+HEVC [1].
+Therefore, a patched version of userpace tools is needed for HEVC
+support (currently only added for GStreamer[2])
 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
-index cfe849cc93cb3..355d63aef7ea4 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
-@@ -19,7 +19,6 @@ extern const s8 rkvdec_h264_cabac_table[4][464][2];
- 
- /* Size with u32 units. */
- #define RKV_CABAC_INIT_BUFFER_SIZE	(3680 + 128)
--#define RKV_RPS_SIZE			((128 + 128) / 4)
- #define RKV_ERROR_INFO_SIZE		(256 * 144 * 4)
- 
- #define RKVDEC_NUM_REFLIST		3
-@@ -34,6 +33,40 @@ struct rkvdec_sps_pps_packet {
- 	u32 info[8];
- };
- 
-+struct rkvdec_rps_entry {
-+	u32 dpb_info0:          5;
-+	u32 bottom_flag0:       1;
-+	u32 view_index_off0:    1;
-+	u32 dpb_info1:          5;
-+	u32 bottom_flag1:       1;
-+	u32 view_index_off1:    1;
-+	u32 dpb_info2:          5;
-+	u32 bottom_flag2:       1;
-+	u32 view_index_off2:    1;
-+	u32 dpb_info3:          5;
-+	u32 bottom_flag3:       1;
-+	u32 view_index_off3:    1;
-+	u32 dpb_info4:          5;
-+	u32 bottom_flag4:       1;
-+	u32 view_index_off4:    1;
-+	u32 dpb_info5:          5;
-+	u32 bottom_flag5:       1;
-+	u32 view_index_off5:    1;
-+	u32 dpb_info6:          5;
-+	u32 bottom_flag6:       1;
-+	u32 view_index_off6:    1;
-+	u32 dpb_info7:          5;
-+	u32 bottom_flag7:       1;
-+	u32 view_index_off7:    1;
-+} __packed;
-+
-+struct rkvdec_rps {
-+	u16 frame_num[16];
-+	u32 reserved0;
-+	struct rkvdec_rps_entry entries[12];
-+	u32 reserved1[66];
-+} __packed;
-+
- struct rkvdec_ps_field {
- 	u16 offset;
- 	u8 len;
-@@ -94,7 +127,7 @@ struct rkvdec_ps_field {
- struct rkvdec_h264_priv_tbl {
- 	s8 cabac_table[4][464][2];
- 	struct rkvdec_h264_scaling_list scaling_list;
--	u32 rps[RKV_RPS_SIZE];
-+	struct rkvdec_rps rps;
- 	struct rkvdec_sps_pps_packet param_set[256];
- 	u8 err_info[RKV_ERROR_INFO_SIZE];
- };
-@@ -260,20 +293,64 @@ static void lookup_ref_buf_idx(struct rkvdec_ctx *ctx,
- 	}
- }
- 
-+static void set_dpb_info(struct rkvdec_rps_entry *entries,
-+			 u8 reflist,
-+			 u8 refnum,
-+			 u8 info,
-+			 bool bottom)
-+{
-+	struct rkvdec_rps_entry *entry = &entries[(reflist * 4) + refnum / 8];
-+	u8 idx = refnum % 8;
-+
-+	switch (idx) {
-+	case 0:
-+		entry->dpb_info0 = info;
-+		entry->bottom_flag0 = bottom;
-+		break;
-+	case 1:
-+		entry->dpb_info1 = info;
-+		entry->bottom_flag1 = bottom;
-+		break;
-+	case 2:
-+		entry->dpb_info2 = info;
-+		entry->bottom_flag2 = bottom;
-+		break;
-+	case 3:
-+		entry->dpb_info3 = info;
-+		entry->bottom_flag3 = bottom;
-+		break;
-+	case 4:
-+		entry->dpb_info4 = info;
-+		entry->bottom_flag4 = bottom;
-+		break;
-+	case 5:
-+		entry->dpb_info5 = info;
-+		entry->bottom_flag5 = bottom;
-+		break;
-+	case 6:
-+		entry->dpb_info6 = info;
-+		entry->bottom_flag6 = bottom;
-+		break;
-+	case 7:
-+		entry->dpb_info7 = info;
-+		entry->bottom_flag7 = bottom;
-+		break;
-+	}
-+}
-+
- static void assemble_hw_rps(struct rkvdec_ctx *ctx,
--			    struct v4l2_h264_reflist_builder *builder,
--			    struct rkvdec_h264_run *run)
-+		     struct v4l2_h264_reflist_builder *builder,
-+		     struct rkvdec_h264_run *run)
- {
- 	const struct v4l2_ctrl_h264_decode_params *dec_params = run->decode_params;
- 	const struct v4l2_h264_dpb_entry *dpb = dec_params->dpb;
- 	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
- 	struct rkvdec_h264_priv_tbl *priv_tbl = h264_ctx->priv_tbl.cpu;
- 
--	u32 *hw_rps = priv_tbl->rps;
-+	struct rkvdec_rps *hw_rps = &priv_tbl->rps;
- 	u32 i, j;
--	u16 *p = (u16 *)hw_rps;
- 
--	memset(hw_rps, 0, sizeof(priv_tbl->rps));
-+	memset(hw_rps, 0, sizeof(*hw_rps));
- 
- 	/*
- 	 * Assign an invalid pic_num if DPB entry at that position is inactive.
-@@ -285,7 +362,7 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
- 		if (!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE))
- 			continue;
- 
--		p[i] = builder->refs[i].frame_num;
-+		hw_rps->frame_num[i] = builder->refs[i].frame_num;
- 	}
- 
- 	for (j = 0; j < RKVDEC_NUM_REFLIST; j++) {
-@@ -312,9 +389,7 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
- 			dpb_valid = run->ref_buf[ref->index] != NULL;
- 			bottom = ref->fields == V4L2_H264_BOTTOM_FIELD_REF;
- 
--			set_ps_field(hw_rps, DPB_INFO(i, j),
--				     ref->index | dpb_valid << 4);
--			set_ps_field(hw_rps, BOTTOM_FLAG(i, j), bottom);
-+			set_dpb_info(hw_rps->entries, j, i, ref->index | (dpb_valid << 4), bottom);
- 		}
- 	}
- }
+This patch set also depends on the preparation patch set sent earlier [3]
+as well as the iommu restore fix [4] (already merged in linux-media) and
+Nicolas Frattaroli's bitmap patch [5] to support setting registers that
+uses upper 16 bits as masks.
+
+[1]: https://lore.kernel.org/all/20250623160722.55938-7-detlev.casanova@collabora.com/
+[2]: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/9355
+[3]: https://lore.kernel.org/all/20250623160722.55938-1-detlev.casanova@collabora.com/
+[4]: https://lore.kernel.org/all/20250508-rkvdec-iommu-reset-v1-1-c46b6efa6e9b@collabora.com/
+[5]: https://lore.kernel.org/all/20250623-byeword-update-v2-1-cf1fc08a2e1f@collabora.com/
+
+Detlev Casanova (12):
+  media: rkvdec: Switch to using structs instead of writel
+  media: rkvdec: Move cabac table to its own source file
+  media: rkvdec: Use structs to represent the HW RPS
+  media: rkvdec: Move h264 functions to common file
+  media: rkvdec: Add per variant configuration
+  media: rkvdec: Add RCB and SRAM support
+  media: rkvdec: Support per-variant interrupt handler
+  media: rkvdec: Enable all clocks without naming them
+  media: rkvdec: Add H264 support for the VDPU381 variant
+  media: rkvdec: Add H264 support for the VDPU383 variant
+  media: rkvdec: Add HEVC support for the VDPU381 variant
+  media: rkvdec: Add HEVC support for the VDPU383 variant
+
+ .../media/platform/rockchip/rkvdec/Kconfig    |    1 +
+ .../media/platform/rockchip/rkvdec/Makefile   |   13 +-
+ .../platform/rockchip/rkvdec/rkvdec-cabac.c   | 3944 +++++++++++++++++
+ .../rockchip/rkvdec/rkvdec-h264-common.c      |  253 ++
+ .../rockchip/rkvdec/rkvdec-h264-common.h      |   81 +
+ .../platform/rockchip/rkvdec/rkvdec-h264.c    |  891 +---
+ .../rockchip/rkvdec/rkvdec-hevc-common.c      |  331 ++
+ .../rockchip/rkvdec/rkvdec-hevc-common.h      |   99 +
+ .../platform/rockchip/rkvdec/rkvdec-rcb.c     |  175 +
+ .../platform/rockchip/rkvdec/rkvdec-rcb.h     |   29 +
+ .../platform/rockchip/rkvdec/rkvdec-regs.h    |  567 ++-
+ .../rockchip/rkvdec/rkvdec-vdpu381-h264.c     |  469 ++
+ .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c     |  596 +++
+ .../rockchip/rkvdec/rkvdec-vdpu381-regs.h     |  425 ++
+ .../rockchip/rkvdec/rkvdec-vdpu383-h264.c     |  583 +++
+ .../rockchip/rkvdec/rkvdec-vdpu383-hevc.c     |  687 +++
+ .../rockchip/rkvdec/rkvdec-vdpu383-regs.h     |  284 ++
+ .../platform/rockchip/rkvdec/rkvdec-vp9.c     |  230 +-
+ .../media/platform/rockchip/rkvdec/rkvdec.c   |  565 ++-
+ .../media/platform/rockchip/rkvdec/rkvdec.h   |   39 +
+ 20 files changed, 9073 insertions(+), 1189 deletions(-)
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-cabac.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-regs.h
+
 -- 
 2.50.0
 
