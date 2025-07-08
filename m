@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6E43C8303C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 20:30:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B6F8C8303C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 20:30:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kDUAkc0H/g2VWnumJExrbHGwnra4BDERFrCw9Mzf9Vo=; b=XFHluLqbLcdOQm
-	aBfbqIYrFCzIy2K1OA6HcJL/XuNkxaCUPbmLOCui1bLCFWKwlRTblHOqbncdNTLYInHpwHu3mdYJx
-	yv8JxHFMSKJePuXalAIa6To2AsXceVPrqBlWC6qqxhilW4lBvKOzhZVxniEedlhQB31XyRgzTuK8W
-	iZV03YUEEV8fAVE0ks3iN+CRv/nEIQo0myvQfddn+o5WzWUG5HCvUzXIIy/Y2LFUXsFvgaZuCMa+Y
-	TcA22T66DDADGJfF97+Vl6dLqADdW3p5yNllzfDgdA6wqFJhiOBEk0SFVhrmzB+hxUHvhAGCv4etr
-	YWhdWf1DJXomEt20I+gw==;
+	List-Owner; bh=6aFWKd24P3+jCbUlU8G+dnEMS+KfLoc95LHt6azFsS8=; b=3WJtka1SELzpe2
+	y/Xu703ZmBRbEMBgad0/v9ql3OTVZbEPB7BMxHbWZk8Qp49lE/U9Fh02eoQGVmzj1v4l7WaEiyga3
+	mSTF29Ei7HtkYnt34LWHpbq91W2h3rDrHrRPeW5cqwDzMcgw8O2/qVJx1dxNbe4jHRcpN12xnDgPm
+	T9E3QUsVTqBTFxxYEfM+C73s/Irgkvfgm8/56dUNkCPsaqaliG32Ytui3oa3G46qbahISSrqOVgNe
+	xGkEA0m2wAmle2VNrzTn8Xp60kO47YVCKgHnxWARhenKpcpZf8xR6ZWKWpxmdONXQR7zdN+6n2K7A
+	xeCfhG/iMsPT8J261hww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZEx1-00000006Vye-0ein;
-	Tue, 08 Jul 2025 20:30:03 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uZExA-00000006W1M-3IBn;
+	Tue, 08 Jul 2025 20:30:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZE8B-00000006MDS-0a4Q;
-	Tue, 08 Jul 2025 19:37:32 +0000
+	id 1uZE8G-00000006MFh-3c7y;
+	Tue, 08 Jul 2025 19:37:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752003449;
-	bh=aYtMeZ/tb8o0wUxSZjFLDIhmoJH3XuBQfxSOP4kOBk8=;
+	s=mail; t=1752003455;
+	bh=fJwma0mJDBsY9ZVoxM1qMkYfUKryUIw86A5Ugpb8bzs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=adcs+IZTFmJJJspkMs2ZaVpSjhUltMWtTxNeVkEZsMHHBqSbI02QXgTHsuXruHK+v
-	 mn8xYvPTcaXmI8cEJH6MBuZl0tNDaG55Nw0k+ZUoTNW0iEWQuvOtf+qUbTA1E2zlks
-	 4eAXj31WSSTX9T+xKNGm7FnMrX4riXmrrvn7JUPGb1XW1MfL/JmzC0B+0F9/wpd0H1
-	 c7UUG4Z/Oj1UhBjMUmoT09u4umHPBCV2XBOxtDJE6vCnS6da7T3m61AwGYbs1A+jfb
-	 WFYOgaf7oVJlR+KMaHOrDvdQb/hmWc6QrTi9FCaY3mKQX8xWiIpQEaRvY97xPewLlY
-	 su20Or+qWqwmg==
+	b=VIpJrn69xdg63f0kze3ScULFeu855+uLn/DZLbBXAR39bzsGVEyLSzaTiKiWQTx0x
+	 o8OajCewUcVbtky8+cp3w8Ehmb/8oBK8BZJ6KD3lHSuiqqvMGs/FVoMFCOL9ZLzqch
+	 o+1IvQAp9a6SJSuIqO+VtHzTb/VFFL8LXPy6lJFzIrafURP/JDWXm6vs3fXVKqtebR
+	 KYsPfFcCN0/NGmbTgDsCYywag8kdR2q0/KbJsGB7cjom1eOvZT+o7VYSJudVGh0mAV
+	 VT3A85djOS/6hUmt6j/Wjtws+gY9Zn6NUcULH9YCDpp8avozHY5/EaisgKWEK1gBO1
+	 e9DJHnKeNjiYg==
 Received: from localhost (unknown [212.93.144.165])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 4D12317E088B;
-	Tue,  8 Jul 2025 21:37:29 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 3E34317E04AA;
+	Tue,  8 Jul 2025 21:37:35 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 08 Jul 2025 22:35:49 +0300
-Subject: [PATCH 08/12] phy: rockchip: samsung-hdptx: Cleanup *_cmn_init_seq
- lists
+Date: Tue, 08 Jul 2025 22:35:50 +0300
+Subject: [PATCH 09/12] phy: rockchip: samsung-hdptx: Compute clk rate from
+ PLL config
 MIME-Version: 1.0
-Message-Id: <20250708-phy-hdptx-frl-v1-8-cfe096e224f4@collabora.com>
+Message-Id: <20250708-phy-hdptx-frl-v1-9-cfe096e224f4@collabora.com>
 References: <20250708-phy-hdptx-frl-v1-0-cfe096e224f4@collabora.com>
 In-Reply-To: <20250708-phy-hdptx-frl-v1-0-cfe096e224f4@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -59,9 +59,8 @@ Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_123731_355853_A21A3A3F 
-X-CRM114-Status: UNSURE (   8.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250708_123737_047677_B7281A9D 
+X-CRM114-Status: GOOD (  12.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,112 +77,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Drop redundant reg_sequence entries from rk_hdptx_common_cmn_init_seq[],
-i.e. those that are either duplicated or overridden in
-rk_hdptx_tmds_cmn_init_seq[].
-
-Additionally, a few items do not really belong to the former, hence move
-them to the latter.  That's mostly a preparatory step for adding FRL
-support.
-
-No functional changes intended at this point.
+Improve ->recalc_rate() callback of hdptx_phy_clk_ops to calculate the
+initial clock rate based on the actual PHY PLL configuration as
+retrieved from the related HW registers.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 22 ++++------------------
- 1 file changed, 4 insertions(+), 18 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 90 ++++++++++++++++++++++-
+ 1 file changed, 89 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index 595aa94eb2dd22acd44c653e51d85ac497a1cc44..71b076de7b75f2ba08eae679ded77caa2ba86590 100644
+index 71b076de7b75f2ba08eae679ded77caa2ba86590..e86bbc270a4ca448f55ca58b4b5b52d378730d74 100644
 --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
 +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -465,13 +465,11 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(000e), 0x0f),
- 	REG_SEQ0(CMN_REG(000f), 0x0f),
- 	REG_SEQ0(CMN_REG(0010), 0x04),
--	REG_SEQ0(CMN_REG(0011), 0x00),
- 	REG_SEQ0(CMN_REG(0012), 0x26),
- 	REG_SEQ0(CMN_REG(0013), 0x22),
- 	REG_SEQ0(CMN_REG(0014), 0x24),
- 	REG_SEQ0(CMN_REG(0015), 0x77),
- 	REG_SEQ0(CMN_REG(0016), 0x08),
--	REG_SEQ0(CMN_REG(0017), 0x00),
- 	REG_SEQ0(CMN_REG(0018), 0x04),
- 	REG_SEQ0(CMN_REG(0019), 0x48),
- 	REG_SEQ0(CMN_REG(001a), 0x01),
-@@ -479,13 +477,7 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(001c), 0x01),
- 	REG_SEQ0(CMN_REG(001d), 0x64),
- 	REG_SEQ0(CMN_REG(001f), 0x00),
--	REG_SEQ0(CMN_REG(0026), 0x53),
- 	REG_SEQ0(CMN_REG(0029), 0x01),
--	REG_SEQ0(CMN_REG(0030), 0x00),
--	REG_SEQ0(CMN_REG(0031), 0x20),
--	REG_SEQ0(CMN_REG(0032), 0x30),
--	REG_SEQ0(CMN_REG(0033), 0x0b),
--	REG_SEQ0(CMN_REG(0034), 0x23),
- 	REG_SEQ0(CMN_REG(0035), 0x00),
- 	REG_SEQ0(CMN_REG(0038), 0x00),
- 	REG_SEQ0(CMN_REG(0039), 0x00),
-@@ -496,7 +488,6 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(003f), 0x83),
- 	REG_SEQ0(CMN_REG(0040), 0x06),
- 	REG_SEQ0(CMN_REG(0041), 0x20),
--	REG_SEQ0(CMN_REG(0042), 0xb8),
- 	REG_SEQ0(CMN_REG(0043), 0x00),
- 	REG_SEQ0(CMN_REG(0044), 0x46),
- 	REG_SEQ0(CMN_REG(0045), 0x24),
-@@ -506,14 +497,9 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(004b), 0x00),
- 	REG_SEQ0(CMN_REG(004c), 0x01),
- 	REG_SEQ0(CMN_REG(004d), 0x64),
--	REG_SEQ0(CMN_REG(004e), 0x14),
- 	REG_SEQ0(CMN_REG(004f), 0x00),
- 	REG_SEQ0(CMN_REG(0050), 0x00),
--	REG_SEQ0(CMN_REG(005d), 0x0c),
- 	REG_SEQ0(CMN_REG(005f), 0x01),
--	REG_SEQ0(CMN_REG(006b), 0x04),
--	REG_SEQ0(CMN_REG(0073), 0x30),
--	REG_SEQ0(CMN_REG(0074), 0x00),
- 	REG_SEQ0(CMN_REG(0075), 0x20),
- 	REG_SEQ0(CMN_REG(0076), 0x30),
- 	REG_SEQ0(CMN_REG(0077), 0x08),
-@@ -525,13 +511,10 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(007e), 0x00),
- 	REG_SEQ0(CMN_REG(007f), 0x00),
- 	REG_SEQ0(CMN_REG(0080), 0x00),
--	REG_SEQ0(CMN_REG(0081), 0x09),
- 	REG_SEQ0(CMN_REG(0082), 0x04),
- 	REG_SEQ0(CMN_REG(0083), 0x24),
- 	REG_SEQ0(CMN_REG(0084), 0x20),
- 	REG_SEQ0(CMN_REG(0085), 0x03),
--	REG_SEQ0(CMN_REG(0086), 0x01),
--	REG_SEQ0(CMN_REG(0087), 0x0c),
- 	REG_SEQ0(CMN_REG(008a), 0x55),
- 	REG_SEQ0(CMN_REG(008b), 0x25),
- 	REG_SEQ0(CMN_REG(008c), 0x2c),
-@@ -543,7 +526,6 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(0092), 0x00),
- 	REG_SEQ0(CMN_REG(0093), 0x00),
- 	REG_SEQ0(CMN_REG(009a), 0x11),
--	REG_SEQ0(CMN_REG(009b), 0x10),
- };
+@@ -1850,12 +1850,100 @@ static void rk_hdptx_phy_clk_unprepare(struct clk_hw *hw)
+ 	rk_hdptx_phy_consumer_put(hdptx, true);
+ }
  
- static const struct reg_sequence rk_hdptx_tmds_cmn_init_seq[] = {
-@@ -577,9 +559,13 @@ static const struct reg_sequence rk_hdptx_tmds_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(0048), 0x11),
- 	REG_SEQ0(CMN_REG(004e), 0x34),
- 	REG_SEQ0(CMN_REG(005c), 0x25),
-+	REG_SEQ0(CMN_REG(005d), 0x0c),
- 	REG_SEQ0(CMN_REG(005e), 0x4f),
-+	REG_SEQ0(CMN_REG(006b), 0x04),
-+	REG_SEQ0(CMN_REG(0073), 0x30),
- 	REG_SEQ0(CMN_REG(0074), 0x04),
- 	REG_SEQ0(CMN_REG(0081), 0x01),
-+	REG_SEQ0(CMN_REG(0086), 0x01),
- 	REG_SEQ0(CMN_REG(0087), 0x04),
- 	REG_SEQ0(CMN_REG(0089), 0x00),
- 	REG_SEQ0(CMN_REG(0095), 0x00),
++#define PLL_REF_CLK 24000000ULL
++
++static unsigned long rk_hdptx_phy_clk_calc_rate_from_pll_cfg(struct rk_hdptx_phy *hdptx)
++{
++	struct ropll_config ropll_hw;
++	u64 fout, sdm;
++	u32 mode, val;
++	int ret;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0008), &mode);
++	if (ret)
++		return 0;
++
++	if (mode & LCPLL_LCVCO_MODE_EN_MASK)
++		return 0;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0051), &val);
++	if (ret)
++		return 0;
++	ropll_hw.pms_mdiv = val;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(005E), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdm_en = val & ROPLL_SDM_EN_MASK;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0064), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdm_num_sign = val & ROPLL_SDM_NUM_SIGN_RBR_MASK;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0065), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdm_num = val;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0060), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdm_deno = val;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0069), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdc_n = (val & ROPLL_SDC_N_RBR_MASK) + 3;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(006c), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdc_num = val;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0070), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdc_deno = val;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0086), &val);
++	if (ret)
++		return 0;
++	ropll_hw.pms_sdiv = ((val & PLL_PCG_POSTDIV_SEL_MASK) >> 4) + 1;
++
++	fout = PLL_REF_CLK * ropll_hw.pms_mdiv;
++	if (ropll_hw.sdm_en) {
++		sdm = div_u64(PLL_REF_CLK * ropll_hw.sdc_deno *
++			      ropll_hw.pms_mdiv * ropll_hw.sdm_num,
++			      16 * ropll_hw.sdm_deno *
++			      (ropll_hw.sdc_deno * ropll_hw.sdc_n - ropll_hw.sdc_num));
++
++		if (ropll_hw.sdm_num_sign)
++			fout = fout - sdm;
++		else
++			fout = fout + sdm;
++	}
++
++	fout = div_u64(fout * 2, ropll_hw.pms_sdiv * 10);
++
++	return fout;
++}
++
+ static unsigned long rk_hdptx_phy_clk_recalc_rate(struct clk_hw *hw,
+ 						  unsigned long parent_rate)
+ {
+ 	struct rk_hdptx_phy *hdptx = to_rk_hdptx_phy(hw);
++	u32 status;
++	int ret;
++
++	if (hdptx->hw_rate)
++		return hdptx->hw_rate;
++
++	ret = regmap_read(hdptx->grf, GRF_HDPTX_CON0, &status);
++	if (ret || !(status & HDPTX_I_PLL_EN))
++		return 0;
+ 
+-	return hdptx->hw_rate;
++	return rk_hdptx_phy_clk_calc_rate_from_pll_cfg(hdptx);
+ }
+ 
+ static long rk_hdptx_phy_clk_round_rate(struct clk_hw *hw, unsigned long rate,
 
 -- 
 2.50.0
