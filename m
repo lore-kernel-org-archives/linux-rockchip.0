@@ -4,75 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80EB9C8303C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 11:22:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58478C83F09
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 13:32:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rKk57ZYk7DQWcxuTbDjwItgi07dUC9qBLFYFcgZK4Hs=; b=df83PUUwbsgd0E
-	ytjgO7ufgQT2BoLyP8T6k82Gib4GwjK56BL83m2+VaAWmIE5xyLBCYE71f5bwa2qIJS7On+ZA3BeY
-	W42sPwV8pX5+dNYI4HRuf9F7IKst7oNwp9TOWL+sAtGY5XFgyw6OSHyeQEib7tR/ZQhQEdGRJ/vyp
-	PArYo0QUm3+FRnSfWwMON2x2j9ec74quwkKpsrFnjL++nWQI06i3ec7FsT+d0nBZjFyTW8O0H+55y
-	DmF9nb6LqAWScBhcxfn073InwOEfCD0BknIuI0MEAlcwgmEKg5t//f9ww0YJF197L27D1tbcCyiZJ
-	3+1O3Jt8X/M6pWItzKJw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lMJku+URhh3YpE0vIp/fPkmm+Te+UgtL6OONHyu2y68=; b=RsrxpcFj/tUn/e
+	qquENIVuPLi7OZ7Wmz3G/aSdHlsMlkNrekrJGL9vGY+UEBk11NsVozvL3VPI19zHrnXjcrtFaK25x
+	K5UwPRzSZ8kldZOrV10J1vnV9rl1Vp5DkN/VjhO5yD1zOxozddysp4S8SnK93quO3qKRLm4SKI1hE
+	v4YU3MTud5B0GgCIZ3DY9KeclhL5eZXE6zHXGiFUxUy4Jp07rrpi+S30tXRlI1f6zueqOS3RQP3Mj
+	7g5oZQCHyoWOuL+j/XyzozMtlGfH95urmf6m5e6uD8GGt9VA5prb6Qoa1WG9GEmnwCUtD8xPQ8+wY
+	OYHS7+tvA9wUlUWBNf+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ6Oh-00000005BCB-30pX;
-	Tue, 08 Jul 2025 11:22:03 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uZ8R5-00000005RwT-0IVY;
+	Tue, 08 Jul 2025 13:32:39 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ5lE-000000055f4-3RQU;
-	Tue, 08 Jul 2025 10:41:18 +0000
-Received: from [192.168.0.172] (mob-5-90-136-241.net.vodafone.it [5.90.136.241])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id AA1625514;
-	Tue,  8 Jul 2025 12:40:47 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1751971248;
-	bh=BFyCUyrT0Ujus6OGYnAmCl/GqNuIEDJQSk8MQCzrzmo=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=d3XtUyRTSlBKWAyEZ9OacY8yb4d0nb/GR0r/dn4FJISgW805syFgLnohyEdJHgtXX
-	 jlUsiqut9xE15NX35R+Zf5Vz8SGJaVRCpgk/MhfDwt5i1HpdyoO7dQR9DUVffljJhc
-	 wHQ9Z6HI6oJzu3rZ9q3Ltlna7D8kJTFSoxtsHTEg=
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Tue, 08 Jul 2025 12:40:55 +0200
-Subject: [PATCH 8/8] media: Documentation: kapi: Add v4l2 extensible
- parameters
+	id 1uZ8IJ-00000005PtN-1QSV;
+	Tue, 08 Jul 2025 13:23:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A8F6943578;
+	Tue,  8 Jul 2025 13:23:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 441BEC4CEED;
+	Tue,  8 Jul 2025 13:23:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751981014;
+	bh=/1iFN9Ws/aEeuST/Nfzh/QqtvoeQni33+rb0JMvW6b0=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=cpIUSsJc926Rqyxocwd9lOms7TgwgZMOkrmp/AILO1nw8CLCpJJIOzZAEcvb8c1EI
+	 M/nzsm19kBajLlzM5aVK/JXJAXG0VBkVn751qqlmpvKoZ3XK1UwNlfXnMzMrAc094D
+	 NGBJL7zSwmQ9qrdoY0up1H/91xVmLzh1RAVE3Hc+KcefD++h2XWUj644Eav37D+zim
+	 PH1PaGJvikusjpB8YbKAZ/M6MgKN/FmsSMLuzfUkNz7de8y0k5VPb81MPexZSLEq3s
+	 Sa/UDPHar4p2YF2xV3f5yQmETgc2LWzQMiw7l4QaQb/TJn0Ert14Ba0AhlublyFTaF
+	 ugsCqQ5LZvkLw==
+Date: Tue, 08 Jul 2025 08:23:32 -0500
 MIME-Version: 1.0
-Message-Id: <20250708-extensible-parameters-validation-v1-8-9fc27c9c728c@ideasonboard.com>
-References: <20250708-extensible-parameters-validation-v1-0-9fc27c9c728c@ideasonboard.com>
-In-Reply-To: <20250708-extensible-parameters-validation-v1-0-9fc27c9c728c@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1789;
- i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=BFyCUyrT0Ujus6OGYnAmCl/GqNuIEDJQSk8MQCzrzmo=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBobPXAuvdLqG+nFbVdQsYLUYtlT4MhvtXvbD/G1
- q23FH7dlnyJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaGz1wAAKCRByNAaPFqFW
- PNa1EACWDCbdXUMrjjZ3dwSewW2dqOeAYL+/NTASuFxXjqj3O/wzLkc137vzxllzAQOK5ULUVMM
- DO9MIafzKqFzZz/9JKFFw9ASfu+XFeJItR8JvwCED6TZKBBlIlqrespYcbB8b3I7GNuZnkkTot2
- aRqwBe/bOaWMTT4xSxeBNkFfJy+e8aeymuK44B3fEDmSdNz1BGsXo3Dtu9AGSCBJLestNjs8+P4
- apT06q3Yd3enoWtZxPnAWhR3KB2dWrA9qnaMswAK5mImZCB1fYZWMRqiOGkR3gkOsWf76r5c3Po
- EIGWv/fx9jYDkA5ke5K6Tr+SwDwbAm2pbA3YAAdYyJaXD7Z51p3Lm5SndFnuipA3b9pmNDnP7oO
- yOkz+yrbKIdXAMtDvpf4SgvJBcBSB/3V8NEzYwe/fC4hlaRd8GCov0rHoLd3FFlEv0vrni8aGVV
- On/NLU5egtXOJzaXdvK7zNCUb4FcZg4sLFKyUHAtyPTj4XmD2hR2GSlySmQ2nV/2fOxiwnIKSfE
- IzkD+GvQ9bWqgxZFU8laNBYixXaUl+7HrjGNj4CW8j4EaeRfn8/iY/6Z+cAL5mdAWC9IMXOSWbQ
- IKsfxABSHl62egk0pZ7BjsFmO5XLnbi0qyAijE3ZLRGobRb4GdEXZfJMwX3zii34SRNO0HZrVkd
- MMS0qSER9ycIf8Q==
-X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
- fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+In-Reply-To: <20250707164906.1445288-1-heiko@sntech.de>
+References: <20250707164906.1445288-1-heiko@sntech.de>
+Message-Id: <175198090646.436895.4175521744544423549.robh@kernel.org>
+Subject: Re: [PATCH 00/13] Support DSI output on rk3576 and roc-rk3576-pc
+ board
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_034117_002768_2773F71B 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20250708_062335_443850_F056602F 
+X-CRM114-Status: GOOD (  20.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,56 +64,132 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, neil.armstrong@linaro.org, linux-kernel@vger.kernel.org, maarten.lankhorst@linux.intel.com, hjc@rock-chips.com, mripard@kernel.org, andyshrk@163.com, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, tzimmermann@suse.de, quic_jesszhan@quicinc.com, andy.yan@rock-chips.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add to the driver-api documentation the v4l2-params.h types and
-helpers documentation.
 
-Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
----
- Documentation/driver-api/media/v4l2-core.rst   | 1 +
- Documentation/driver-api/media/v4l2-params.rst | 5 +++++
- MAINTAINERS                                    | 1 +
- 3 files changed, 7 insertions(+)
+On Mon, 07 Jul 2025 18:48:53 +0200, Heiko Stuebner wrote:
+> This enables all the necesary bits and bindings to get display output
+> on the dm-m10r800-v3s addon module for the Firefly roc-rk3576-pc board.
+> 
+> A bit of cleanup of the ili9881c, because the driver was still trying
+> to send dcs commands when the underlying DSI driver might have already
+> switched to video-mode, which caused me quite a bit of headache until
+> I realized this being the culprit for my garbled display output :-) .
+> 
+> Only the last patch has a dependency on Nicolas' pwm series [0]
+> everything else, is directly usable.
+> 
+> 
+> [0] https://lore.kernel.org/lkml/20250602-rk3576-pwm-v2-0-a6434b0ce60c@collabora.com/
+> 
+> Guochun Huang (1):
+>   drm/rockchip: dsi2: add support rk3576
+> 
+> Heiko Stuebner (12):
+>   drm/panel: ilitek-ili9881c: turn off power-supply when init fails
+>   drm/panel: ilitek-ili9881c: move display_on/_off dcs calls to
+>     (un-)prepare
+>   drm/panel: ilitek-ili9881c: convert (un-)prepare to
+>     mipi_dsi_multi_context
+>   dt-bindings: vendor-prefixes: Add prefix for Shenzhen Bestar
+>     Electronic
+>   dt-bindings: display: ili9881c: Add Bestar BSD1218-A101KL68 LCD panel
+>   drm/panel: ilitek-ili9881c: Add Bestar BSD1218-A101KL68 support
+>   dt-bindings: soc: rockchip: add rk3576 mipi dcphy syscon
+>   dt-bindings: display: rockchip: Add rk3576 to RK3588 DW DSI2
+>     controller schema
+>   arm64: dts: rockchip: add mipi-dcphy to rk3576
+>   arm64: dts: rockchip: add the dsi controller to rk3576
+>   arm64: dts: rockchip: add vcc3v3-lcd-s0 regulator to roc-rk3576-pc
+>   arm64: dts: rockchip: add dm-m10r800-v3s overlay for roc-rk3576-pc
+> 
+>  .../display/panel/ilitek,ili9881c.yaml        |   1 +
+>  .../rockchip/rockchip,rk3588-mipi-dsi2.yaml   |   1 +
+>  .../devicetree/bindings/soc/rockchip/grf.yaml |   1 +
+>  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   5 +
+>  .../rk3576-roc-pc-dm-m10r800-v3s.dtso         | 134 ++++++++
+>  .../arm64/boot/dts/rockchip/rk3576-roc-pc.dts |  16 +
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi      |  50 +++
+>  drivers/gpu/drm/panel/panel-ilitek-ili9881c.c | 301 ++++++++++++++----
+>  .../gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c  |  21 ++
+>  10 files changed, 475 insertions(+), 57 deletions(-)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-roc-pc-dm-m10r800-v3s.dtso
+> 
+> --
+> 2.47.2
+> 
+> 
+> 
 
-diff --git a/Documentation/driver-api/media/v4l2-core.rst b/Documentation/driver-api/media/v4l2-core.rst
-index ad987c34ad2a8460bb95e97adc4d850d624e0b81..2d7793298c6a2046bdd59b185a411e092b659d52 100644
---- a/Documentation/driver-api/media/v4l2-core.rst
-+++ b/Documentation/driver-api/media/v4l2-core.rst
-@@ -27,3 +27,4 @@ Video4Linux devices
-     v4l2-common
-     v4l2-tveeprom
-     v4l2-jpeg
-+    v4l2-params
-diff --git a/Documentation/driver-api/media/v4l2-params.rst b/Documentation/driver-api/media/v4l2-params.rst
-new file mode 100644
-index 0000000000000000000000000000000000000000..8d2a5f004d21dfc3a81255cabbc6b7cce588db71
---- /dev/null
-+++ b/Documentation/driver-api/media/v4l2-params.rst
-@@ -0,0 +1,5 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+V4L2 extensible parameters kAPI
-+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+.. kernel-doc:: include/media/v4l2-params.h
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 3d9a8e06c59eb08360d1e8eea85e450a15ee95af..f03c10092a891a06052484b691409f0c459de87d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -25972,6 +25972,7 @@ V4L2 EXTENSIBLE PARAMETERS FORMAT
- M:	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
- L:	linux-media@vger.kernel.org
- S:	Maintained
-+F:	Documentation/driver-api/media/v4l2-params.rst
- F:	Documentation/userspace-api/media/v4l/extensible-parameters.rst
- F:	drivers/media/v4l2-core/v4l2-params.c
- F:	include/media/v4l2-params.h
 
--- 
-2.49.0
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: tags/v6.16-rc1-17-g63289206e26f (best guess, 8/9 blobs matched)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250707164906.1445288-1-heiko@sntech.de:
+
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): pwm1:pwm1m1-ch5:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): pwm0:pwm0m1-ch1:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): i3c1:i3c1m1-xfer:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): i3c1:i3c1m1-xfer:rockchip,pins:1:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): i3c1_sda:i3c1_sdam1-pu:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): pwm2:pwm2m1-ch1:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): pwm2:pwm2m0-ch4:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): pwm2:pwm2m1-ch0:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): pwm2:pwm2m0-ch2:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): pwm2:pwm2m1-ch2:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): pwm2:pwm2m1-ch5:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): pwm2:pwm2m1-ch6:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): pwm2:pwm2m0-ch3:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: pinctrl (rockchip,rk3576-pinctrl): pwm2:pwm2m1-ch3:rockchip,pins:0:2: 14 is greater than the maximum of 13
+	from schema $id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: syscon@26034000 (rockchip,rk3576-dcphy-grf): clocks: False schema does not allow [[21, 492]]
+	from schema $id: http://devicetree.org/schemas/soc/rockchip/grf.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dtb: syscon@26034000 (rockchip,rk3576-dcphy-grf): clocks: False schema does not allow [[20, 492]]
+	from schema $id: http://devicetree.org/schemas/soc/rockchip/grf.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dtb: syscon@26034000 (rockchip,rk3576-dcphy-grf): clocks: False schema does not allow [[21, 492]]
+	from schema $id: http://devicetree.org/schemas/soc/rockchip/grf.yaml#
+arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dtb: syscon@26034000 (rockchip,rk3576-dcphy-grf): clocks: False schema does not allow [[21, 492]]
+	from schema $id: http://devicetree.org/schemas/soc/rockchip/grf.yaml#
+
+
+
+
 
 
 _______________________________________________
