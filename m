@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73431C8303C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 20:18:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03675C83F09
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jul 2025 20:20:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a+tKuRyq7Cd1fEA/dLnyUrRgspogIucUUXwIAuPCQs8=; b=wN7sowP62cCQFO
-	0J+GSLVo42iX4V5X7Adm3M/vB082GuWqPMnVC10JaXS+VwEC/oTmoTjY5wKrfiw9HLeeOFgwQfz0X
-	8KThOIVU/fVw5Z9XUK2KULMWI4rafPAVkbG2wyMWSQLERddOMwMU1NZxZAQeHYrRYNc6dn5AjzX4l
-	j020W9rAImzn4Lj3Pu1LJjN9NoDD8ukoirw5dwb1+6D/a6p4QcAiX487uTnxNEg311pR5VIKj77Ka
-	pl2areX1NU5DK1o2kiafmlM7cSXXktpnu32USfw1me4gPAygBCINQvVH+noW6QN79GvZKQYGz7HP/
-	biBt2XIETqNK7FmptPkA==;
+	List-Owner; bh=RU6S1LW5vU35y8xPGW61cCGoqomd7agaf2U9a7mtRxM=; b=HWAjTP8ApDiioq
+	V9j+vFtDlD39dbySi41ncjBj2ExsjB65husDbl0DbXtyfXX5FH93FKFWusDNVDE+vVv7ONPS1ep9A
+	IejlfP4DpOrq/p1TfDzBupQcf9tW7tom9l4Q6DHsgjexuCduQ3Pl5s5t8rQp2yLOJvmHEbMCpHC7z
+	qh91gJV6tumPhG8PGhUeP79WrbPXgIOgY8qfBMXvSEVNmT1cP4Xg8NIcyY2ejCtOJTWuMXqS+0boc
+	NgU/fD0OyZe428F2dr9c/hREgqd+v3e2tsybcftQKcgeFY2yg+32v6jI36s8Tr9X2TFCJ4x1q2zS8
+	gYHQi5wrxu4U4jPUx1Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZElN-00000006U8Y-1v1n;
-	Tue, 08 Jul 2025 20:18:01 +0000
+	id 1uZEnh-00000006Ucd-0VPr;
+	Tue, 08 Jul 2025 20:20:25 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZE7w-00000006M93-3PjC;
-	Tue, 08 Jul 2025 19:37:18 +0000
+	id 1uZE82-00000006MAi-2qzw;
+	Tue, 08 Jul 2025 19:37:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752003435;
-	bh=QvHYoBZpVNwqNTbauHVKNfMaD6wc++kyq4PE4rdkCb0=;
+	s=mail; t=1752003441;
+	bh=+erTwrLAUAZ2OsDl2bkXkrwnk4JpthhQCZF8qikCfo4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=EcAxHAY/gAzDlJ8OuP0RnmQoB5gCPVnyZ+7wl39KWyUZVDs2xcgnjCjFmUHe6GA7q
-	 XaGXzr2YTK2N+/EDjVkWS9g5m2fsin13vkvBXUP57yt6bt6xafUVnIspojApW54Et5
-	 A5UWVFKnXwoeEU6S658CjhDw/EzhEWBPQc+OBNTv+QVRYhyiplhjbqu4YWFaYjB8F7
-	 iWehbKrNXieTVV9Z3s8bUjrHB657KchE+hhoxHe4Rp4q8PA1XIMv70z7XtpSyNnGAx
-	 9owgGSAVDUDZTuhtuglCGJfPfI2tP97VHh86c4FW2L8U6PIBxjN6viOHaSEvwkBxFZ
-	 vgUYrsAilAb1A==
+	b=ph0J5lb58BZKDnah1X9pNHZcabTHk+EwvqIKCARjcKyhFI8esQ4Ummsy3erLqvLPP
+	 cSV5GbvvnCPMfkCcJzveqn7BY4uga8EZwN0/JO6T3Oki4FFLIkfnzbUQ9+alxfqz7T
+	 i+QY6YAnDA62YNH97ROBm9k5m16zlslFHHk8l44Lu02XVWskxFR5RseDGmmoIJaPsB
+	 P/UGj7My5M6V4teGLlph7tmgSF9K04lndrBtmAxkAeZSX1YalBDqO4DtEUgdRTnGzz
+	 X8W3ID9XVBbhteAOsIJn0PZwXYEBM+CpjkaGliRtPf2ei6UVvxDOlIo/oo5g2SEYx+
+	 0FzkarYZiEBMw==
 Received: from localhost (unknown [212.93.144.165])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 2840517E0CF8;
-	Tue,  8 Jul 2025 21:37:15 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 0B6F017E04AA;
+	Tue,  8 Jul 2025 21:37:21 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 08 Jul 2025 22:35:44 +0300
-Subject: [PATCH 03/12] phy: rockchip: samsung-hdptx: Prevent Inter-Pair
- Skew from exceeding the limits
+Date: Tue, 08 Jul 2025 22:35:45 +0300
+Subject: [PATCH 04/12] phy: rockchip: samsung-hdptx: Use usleep_range()
+ instead of udelay()
 MIME-Version: 1.0
-Message-Id: <20250708-phy-hdptx-frl-v1-3-cfe096e224f4@collabora.com>
+Message-Id: <20250708-phy-hdptx-frl-v1-4-cfe096e224f4@collabora.com>
 References: <20250708-phy-hdptx-frl-v1-0-cfe096e224f4@collabora.com>
 In-Reply-To: <20250708-phy-hdptx-frl-v1-0-cfe096e224f4@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -59,8 +59,8 @@ Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_123717_003071_577395C8 
-X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-CacheID: sfid-20250708_123722_864506_77A07848 
+X-CRM114-Status: UNSURE (   9.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,48 +78,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fixup PHY deskew FIFO to prevent the phase of D2 lane going ahead of
-other lanes.  It's worth noting this might only happen when dealing with
-HDMI 2.0 rates.
+rk_hdptx_dp_reset() is allowed to sleep, hence replace the busy waiting
+with usleep_range(), to allow other threads to run.
 
-Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
-Co-developed-by: Algea Cao <algea.cao@rock-chips.com>
-Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index d7d6c1ebacc890e257c1550210ee144387ef7183..2dd70f0cd8de34aad957d4d146366e5521cd897e 100644
+index 2dd70f0cd8de34aad957d4d146366e5521cd897e..6f12ac54abc1e1f0d67226899bb2c394e71a99cf 100644
 --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
 +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -668,13 +668,9 @@ static const struct reg_sequence rk_hdtpx_common_lane_init_seq[] = {
+@@ -1074,7 +1074,7 @@ static void rk_hdptx_dp_reset(struct rk_hdptx_phy *hdptx)
+ 	reset_control_assert(hdptx->rsts[RST_INIT].rstc);
  
- static const struct reg_sequence rk_hdtpx_tmds_lane_init_seq[] = {
- 	REG_SEQ0(LANE_REG(0312), 0x00),
--	REG_SEQ0(LANE_REG(031e), 0x00),
- 	REG_SEQ0(LANE_REG(0412), 0x00),
--	REG_SEQ0(LANE_REG(041e), 0x00),
- 	REG_SEQ0(LANE_REG(0512), 0x00),
--	REG_SEQ0(LANE_REG(051e), 0x00),
- 	REG_SEQ0(LANE_REG(0612), 0x00),
--	REG_SEQ0(LANE_REG(061e), 0x08),
- 	REG_SEQ0(LANE_REG(0303), 0x2f),
- 	REG_SEQ0(LANE_REG(0403), 0x2f),
- 	REG_SEQ0(LANE_REG(0503), 0x2f),
-@@ -687,6 +683,11 @@ static const struct reg_sequence rk_hdtpx_tmds_lane_init_seq[] = {
- 	REG_SEQ0(LANE_REG(0406), 0x1c),
- 	REG_SEQ0(LANE_REG(0506), 0x1c),
- 	REG_SEQ0(LANE_REG(0606), 0x1c),
-+	/* Keep Inter-Pair Skew in the limits */
-+	REG_SEQ0(LANE_REG(031e), 0x02),
-+	REG_SEQ0(LANE_REG(041e), 0x02),
-+	REG_SEQ0(LANE_REG(051e), 0x02),
-+	REG_SEQ0(LANE_REG(061e), 0x0a),
- };
+ 	reset_control_assert(hdptx->rsts[RST_APB].rstc);
+-	udelay(10);
++	usleep_range(10, 15);
+ 	reset_control_deassert(hdptx->rsts[RST_APB].rstc);
  
- static struct tx_drv_ctrl tx_drv_ctrl_rbr[4][4] = {
+ 	regmap_update_bits(hdptx->regmap, LANE_REG(0301),
 
 -- 
 2.50.0
