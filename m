@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1102DC83F0A
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 15:30:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C2C9C83F03
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 15:32:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gFbWEIYdn1cID5yXKN6n8fuhz0YFhWQx8RPRJiS7ns4=; b=akRFal3i3EmVbQ
-	ZMyre9MmpUKGKLTIhg4+wkADDMKwuyWryJTjUmq+QaThDUT0kdIjxMymuaW5QabvtmupsQfI2F77Y
-	WpqUjO8jyVc3qfI1ha/RJUqX9pvEKwhp2t89VdlbyyuG7rgV7SDsGpnClkqa8O7BF+IoUaeM4IsBo
-	be/Ctkkm/zpSzDQ+kawlly1LuO3wGXVA5mxD3L1fFDjFDQvUScxFckP4+AR8yEVRKlY0m49HwAcG2
-	oEv9SiqLucrFOfGe1HeVg0SO6b58o/GP2zzggzhGESz7P9MgqT21hkUUXEyH1/MiER7NMkVoPutB7
-	1JP8e+ewUhyGlx9JxvYg==;
+	List-Owner; bh=+8mxMZYFbX9fQX6XXuukD5S7f68lk3P6CkQG+FJThHk=; b=RNmTsweSFPoNbA
+	Mw5ky/EYNqFeSNrqKrNu60QtBrkk27r/+ReNxqle+Od60Jc1jIONC+blqHmQjpo2x8Gn8EGxMr4Ws
+	2id6VGvWwiBeC8m77ZRHJw40KNiW00EgcFpzq7h8mH8DQy6ybsGlebXWvs2Fir+EVUo1ZXT6oPsK+
+	6R8wXYJ7Hfa07XDgd+b6Z+iACH1839HvDGBsnACNq4ecMoJCHpa4tD6sv0t7Z/x5diwonnup1RWP+
+	2MCOvONyMwsHo62ih2jkZVgTDlU2/LV36AruEEeehOqC9YCOwOy+yb0kNyDhVBmqaaTtPi2hvFWmt
+	7/MECGTnMVs7TUn6hfpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZWkd-00000009Apb-18w8;
-	Wed, 09 Jul 2025 15:30:27 +0000
-Received: from out-170.mta0.migadu.com ([2001:41d0:1004:224b::aa])
+	id 1uZWmv-00000009B8C-37hR;
+	Wed, 09 Jul 2025 15:32:49 +0000
+Received: from out-180.mta0.migadu.com ([91.218.175.180])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZUlt-00000008lqQ-2NDy
+	id 1uZUlv-00000008lrm-1Il5
 	for linux-rockchip@lists.infradead.org;
-	Wed, 09 Jul 2025 13:23:38 +0000
+	Wed, 09 Jul 2025 13:23:40 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1752067415;
+	t=1752067417;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=CGiINAVxrmdGU1PCrP23FZvlTFaK01obSa4XqumrYhM=;
-	b=lKsKQ2q4ZBk/za6pTF38bYIbjhaJTuEUqYP6d+q0rAxowzY/zJDyxEt2L5TdKnHcMaXE7/
-	jiVohHfPVk7niMVYyXZWc4bo+oUS7tv5khIaTeA8q+Bwjrqwu8H4NsbFmy+p/TN6Zia3OW
-	6KD7KrEoXrwNZA7mBXNMc/dH51UOZI9QRLNDJ4fNcdz9AeAT7c1vIP0/fhW1YAQbEv30o0
-	QFrmDWPX4QK6jsQJNltcFyUdbh4F1EfQy6xS8B+bz/ONJE9BK1nXqiRDdj9XC0NMbNGUDW
-	mXRp+Svipuu3SGgsN+752Q2p3XLlA//r2kT/L4fDosTa6qKG8b+/nlRJFZ0ghg==
+	bh=JXGz2WRYkb5YR3U/LDov8OvZiUYlL4TD2HwVbGHyw/0=;
+	b=0KxKgpxqDV1ZI4oKLSpkMvqRtnjL/Nc/0t07ibxNqLThuLJHY0a6XTTv0vn6X5I/H/2CEQ
+	VSxsSzMSZUSOCUdR87HPS3j3bIe+G30YyZB7KultcBmZ6/L/otMqkMQ3kSVo+Z5bWbPfSy
+	r0Sj0QHXqIJXBt4djIxptPXk/7cPrVk7GM3OjfB7XKZmkyt62r73ZKC5/ZDMnn/Ek/D8I9
+	AyC4bxHaIbPkhhOO7GJdZO81UVctqoGVQij0JyPqTZafvlCv+8jVhEoZsWP6v0PSLadSHY
+	AMhEg8pJ6pLWXJco2PIGc9W24yWAqSs3Krjl76MT9yaHQ6pDizxcHDKslEf5bQ==
 From: Diederik de Haas <didi.debian@cknow.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -53,16 +53,16 @@ Cc: Dragan Simic <dsimic@manjaro.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH v4 03/10] dt-bindings: display: rockchip,dw-mipi-dsi: Drop address/size cells
-Date: Wed,  9 Jul 2025 15:15:16 +0200
-Message-ID: <20250709132323.128757-4-didi.debian@cknow.org>
+Subject: [PATCH v4 05/10] arm64: dts: rockchip: Simplify edp endpoints on several rk3399 boards
+Date: Wed,  9 Jul 2025 15:15:18 +0200
+Message-ID: <20250709132323.128757-6-didi.debian@cknow.org>
 In-Reply-To: <20250709132323.128757-1-didi.debian@cknow.org>
 References: <20250709132323.128757-1-didi.debian@cknow.org>
 MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_062337_754952_64A52110 
-X-CRM114-Status: UNSURE (   4.94  )
+X-CRM114-CacheID: sfid-20250709_062339_494400_22CB67AD 
+X-CRM114-Status: UNSURE (   8.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,33 +80,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The "rockchip,dw-mipi-dsi" binding has allOf "snps,dw-mipi-dsi.yaml"
-which has allOf "dsi-controller.yaml", which already has #address-cells
-and #size-cells defined as '1' and '0' respectively.
-So drop this re-definition.
+The only thing actually added here is a single endpoint on edp_out,
+which is already defined in rk3399-base.dtsi, so it's simpler to just
+reference that phandle, which allows the removal of several properties.
+
+This fixes the following DTB validation warnings:
+
+  graph node has single child node 'endpoint@0',
+  #address-cells/#size-cells are not necessary
 
 Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
 ---
- .../bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml     | 6 ------
- 1 file changed, 6 deletions(-)
+ .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 15 ++++-----------
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts    | 15 ++++-----------
+ .../dts/rockchip/rk3399-sapphire-excavator.dts   | 16 ++++------------
+ 3 files changed, 12 insertions(+), 34 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-index ccd71c5324af..0881e82deb11 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
-@@ -58,12 +58,6 @@ properties:
-   power-domains:
-     maxItems: 1
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+index a9ea4b0daa04..9d07353df52c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+@@ -250,18 +250,11 @@ &edp {
+ 	 */
+ 	assigned-clocks = <&cru PCLK_EDP>;
+ 	assigned-clock-rates = <24000000>;
++};
  
--  "#address-cells":
--    const: 1
+-	ports {
+-		edp_out: port@1 {
+-			reg = <1>;
+-			#address-cells = <1>;
+-			#size-cells = <0>;
 -
--  "#size-cells":
--    const: 0
+-			edp_out_panel: endpoint@0 {
+-				reg = <0>;
+-				remote-endpoint = <&panel_in_edp>;
+-			};
+-		};
++&edp_out {
++	edp_out_panel: endpoint {
++		remote-endpoint = <&panel_in_edp>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+index 5473070823cb..5a8551d9ffe4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+@@ -404,18 +404,11 @@ &edp {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&edp_hpd>;
+ 	status = "okay";
++};
+ 
+-	ports {
+-		edp_out: port@1 {
+-			reg = <1>;
+-			#address-cells = <1>;
+-			#size-cells = <0>;
 -
- required:
-   - compatible
-   - clocks
+-			edp_out_panel: endpoint@0 {
+-				reg = <0>;
+-				remote-endpoint = <&panel_in_edp>;
+-			};
+-		};
++&edp_out {
++	edp_out_panel: endpoint {
++		remote-endpoint = <&panel_in_edp>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+index fdaa8472b7a7..a4ceafe6dd7a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+@@ -142,21 +142,13 @@ sdio_pwrseq: sdio-pwrseq {
+ 
+ &edp {
+ 	status = "okay";
++};
+ 
+-	ports {
+-		edp_out: port@1 {
+-			reg = <1>;
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-
+-			edp_out_panel: endpoint@0 {
+-				reg = <0>;
+-				remote-endpoint = <&panel_in_edp>;
+-			};
+-		};
++&edp_out {
++	edp_out_panel: endpoint {
++		remote-endpoint = <&panel_in_edp>;
+ 	};
+ };
+-
+ &i2c1 {
+ 	i2c-scl-rising-time-ns = <300>;
+ 	i2c-scl-falling-time-ns = <15>;
 -- 
 2.50.0
 
