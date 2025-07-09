@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0BBCC8303C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 03:33:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A521CC83F03
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 04:32:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ia678JSO964x+b6FEWc+GZQc2AHNp2XNhTHPG0bvkwA=; b=pFCqle707j8OM2
-	qxsL6J8+OSgccjY5RORvvyquZvNdHq6N7oKjmwmVDpz/lEUehJP9y8Z/gSchCDW/u415aoSjsV/fF
-	N4MfrlGSfnnupUDQ3IS43n6Z1HzR1YJQw3bUIDQJ/zM6+5bPLfDBAkBYiqNPHZYxU0pW7w3mRV5gK
-	jqMIYkxDJM2NCxr0gcbVj8ZL+Jzi3dpV+YV6qhv7Qy1/EnVNp2QJaqSTWQZhSJ5AV/LWffjAyDy5s
-	aeL0HCatJMHs26akxhPmCyAmhU8qkGBEaEv3TrdXzVl+QRH+J5fmZFcLcNzcfaeAFg14ZIroqRDRk
-	QnC0k37npkDEXgRBOi+g==;
+	List-Owner; bh=J8naDVrYrNFKe+YLNLvJ3AUr7CLk5KtycfW8FRooCF0=; b=TiP670IywAFgNS
+	RIO1WDj+lBvmDnzz6Cd77E01A2BWBu0jYdFhiFxNFAN89ExHQjljdcMYwXArbtG53lZ07g/d8PlPb
+	KabRb1QcL5wkbozyzRZjk1sHvmySUdf12CYDJCCTWZkKVLtXf8gq7d8UxTaket1ScaiAziFayyKve
+	W29UHf4YUs3q8mHExMVvegQb1U5wmuK1lpmnuuTHTuEBuwhtoysO2pAmrM0I17pNT1A8dHMRWAqQx
+	JHaEYYB1sCqkcaXaxOY96i9hyuKbVjZvzVXkiSmLJtVVJzQrQyDDuM2jGRTZhsgCv9BSXgZQAXK6W
+	nwpWducX33/7+33kgneQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZLZ0-00000007HUd-0quA;
-	Wed, 09 Jul 2025 03:33:42 +0000
+	id 1uZMTg-00000007OdN-20tz;
+	Wed, 09 Jul 2025 04:32:16 +0000
 Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZLWa-00000007H0c-44KC;
-	Wed, 09 Jul 2025 03:31:14 +0000
+	id 1uZMNR-00000007O5i-37tH;
+	Wed, 09 Jul 2025 04:25:51 +0000
 Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id B93BC25D89;
-	Wed,  9 Jul 2025 05:31:09 +0200 (CEST)
+	by disroot.org (Postfix) with ESMTP id 03C1925D92;
+	Wed,  9 Jul 2025 06:25:48 +0200 (CEST)
 X-Virus-Scanned: SPAM Filter at disroot.org
 Received: from layka.disroot.org ([127.0.0.1])
  by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3EKmnVBUklPl; Wed,  9 Jul 2025 05:31:09 +0200 (CEST)
+ id afcibFT-X543; Wed,  9 Jul 2025 06:25:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1752031868; bh=VhdAlvUZfUyiLoHfSnGHdv+8Iktvv187Kvax6HkpuBo=;
+	t=1752035147; bh=vhsZhBP/tmhB80J/KvDuaVinV3BhipYVeRoM5brC1XA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=hTJfT3i4lsyWwGvUqATGqCTf+VVuVvxScnJOqFtiKQIHJPiAQ0JIqb8BIAAlJrDZ/
-	 vJ/iWyKzRyoMVyu6GmAPAVnO+BD6ZOeAwPwm1ZjL8JkRC4n0yMRmZ5yPiGtY219/OS
-	 hGXSILKAhFrq98LQKfW9mQUpU90uBlFZAZLw6dnJPG8bsYwonXvd+vkEXoO/TeNIIh
-	 PmUGJbeS/B24SYhFTI/cpIFruE6FbEqwjDCOlvKeIWNGMJx5WIKLLWR4KSeGQT47h8
-	 yCBHRz/TTXbtxueQBRUcqiFojjukdaDQFiah5Jm3CHlOCHPEJfGS/qtsqTbKLtDJh1
-	 KZEOFY/yiOtxw==
-Date: Wed, 9 Jul 2025 03:30:57 +0000
+	b=NvazntVAYt6ECuXArhY1cgQLkbCkUChinemwdo0ScEVv3S8BbGALGgD9rms54tl6v
+	 BKaMQylL5IK9vcxr8Zi4jEVIX7Mst79bsoX32y8CL9OsJgHUvqG43cJX/1VOf5KvvI
+	 SvDXjx8j0ONvmS8xtmaq1rfG/r6VlgJ3JARCS5jzTMIR3Y54wlItggk0Ko300U5KJ4
+	 PBHJ1VFmuOaJliCSwLBAo/Yerq1fsS2w9YwqyOeu7yVhw7197FTfTnTpXQBORCCVBk
+	 aTIESJ4bAGEwmTHOzPoJ/NHFrZmoS4wz56onKe38T0/ZIcHsARUbwXrQsSzBkXepYP
+	 xEhnce5QYdSnA==
+Date: Wed, 9 Jul 2025 04:25:34 +0000
 From: Yao Zi <ziyao@disroot.org>
 To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh@kernel.org>,
@@ -51,16 +51,16 @@ To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
 Cc: Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 6/6] arm64: dts: rockchip: Add FriendlyElec NanoPi Zero2
-Message-ID: <aG3iceT_JbERhA4O@pie.lan>
+Subject: Re: [PATCH 2/6] arm64: dts: rockchip: Add Radxa ROCK 2A/2F
+Message-ID: <aG3vPsUd-FPkhi-S@pie.lan>
 References: <20250708224921.2254116-1-jonas@kwiboo.se>
- <20250708224921.2254116-7-jonas@kwiboo.se>
+ <20250708224921.2254116-3-jonas@kwiboo.se>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250708224921.2254116-7-jonas@kwiboo.se>
+In-Reply-To: <20250708224921.2254116-3-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_203113_420913_238ED58B 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20250708_212549_922279_3EFD2139 
+X-CRM114-Status: GOOD (  15.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,25 +77,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 08, 2025 at 10:48:56PM +0000, Jonas Karlman wrote:
-> The NanoPi Zero2 is a small single board computer developed by
-> FriendlyElec, based on the Rockchip RK3528A SoC.
+On Tue, Jul 08, 2025 at 10:48:52PM +0000, Jonas Karlman wrote:
+> The ROCK 2A and ROCK 2F is a high-performance single board computer
+> developed by Radxa, based on the Rockchip RK3528A SoC.
 > 
-> Add initial device tree for the FriendlyElec NanoPi Zero2 board.
-
-Tested on my NanoPi Zero 2 board, RTC could be read out, and Ethernet
-and SDMMC reaches a reasonable speed.
-
-Tested-by: Yao Zi <ziyao@disroot.org>
-
+> Add initial device tree for the Radxa ROCK 2A and ROCK 2F boards.
+> 
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
-> Schematics: https://wiki.friendlyelec.com/wiki/images/3/37/NanoPi_Zero2_2407_SCH.pdf
+> Schematics:
+> - https://dl.radxa.com/rock2/2a/v1.2/radxa_rock_2a_v1.2_schematic.pdf
+> - https://dl.radxa.com/rock2/2f/radxa_rock2f_v1.01_schematic.pdf
 > ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3528-nanopi-zero2.dts | 341 ++++++++++++++++++
->  2 files changed, 342 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
+>  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+>  .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 292 ++++++++++++++++++
+>  .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++++
+>  .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
+>  4 files changed, 386 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
+ 
+While testing the patch on my Rock 2A board, I noticed one of my SDcard
+that works perfectly on Radxa E20C and NanoPi Zero 2 cannot be correctly
+read out under UHS-125-SDR mode,
+
+	# dd if=/dev/mmcblk1 of=/dev/null bs=4M count=4
+	[   18.616828] mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+	[   19.193315] mmc1: Skipping voltage switch
+	[   19.202046] mmc1: tried to HW reset card, got error -110
+	[   19.213312] mmcblk1: recovery failed!
+	[   19.213709] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 256 prio class 0
+	[   19.225201] mmcblk1: recovery failed!
+	[   19.225530] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+	[   19.226283] Buffer I/O error on dev mmcblk1, logical block 0, async page read
+	dd: /dev/mmcblk1: I/O error
+
+which could be reproduced stably.
+
+the SDMMC controller issued interesting messages during the tuning
+process,
+
+	[    0.665246] mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
+	[    0.851940] dwmmc_rockchip ffc30000.mmc: All phases work, using default phase 90.
+
+but actually it doesn't work with phase = 90. If the frequency is
+limited to 100MHz with max-frequency = <100000000> instead of the
+default 150MHz, tuning results in a very different phase,
+
+	[    0.665483] mmc_host mmc1: Bus speed (slot 0) = 99600000Hz (slot req 100000000Hz, actual 99600000HZ div = 0)
+	[    1.166340] dwmmc_rockchip ffc30000.mmc: Successfully tuned phase to 141
+
+and the card works, too. If I set rockchip,default-sample-phase to 141
+in devicetree, the card could work at full 150MHz as well.
+
+I think there's something wrong with the tuning process, or the board's
+design cannot always run reliably at 150MHz.
+
+Could you reproduce similar failures on Radxa 2A? If so, it may be
+necessary to lower the SDMMC's maximum frequency for the board.
+
+Regards,
+Yao Zi
 
 _______________________________________________
 Linux-rockchip mailing list
