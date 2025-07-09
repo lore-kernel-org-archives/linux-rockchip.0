@@ -4,83 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B50F1C83F03
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 06:21:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B7EBC83F09
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 07:54:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UWuMJiMgZ8RIGepZrU/KpMxyr+t5u2+onC0clb/K0wI=; b=wN9Ew76CUf+JtA
-	1DWfL5iZD9FWmGslcKRjM9QJ+NXaX+LM+EfPkUrA3U5m4A6DqLA4WUgSGYMpAcRTxM78xnvzuQAk3
-	QnJxlUDZ6mMkoUGjwrKov0Xy+EJoTXWFia7Nq1AWu+mPgs7WvzxABdLKT5u3YPF0MRBxLGpbhiGob
-	61CwqBbXqs4w4mBUgfWErm3l1Pg6ygWBBTZpt23KtqNsyhEB5ZwwkmUZA3Ta7I7uHm9CJhbZ4TTZB
-	Rwn3zm/UypbtWaJknhA3b/67v+6rOKbUfE3JxeoqwU2WEnA4E7f1jAadebVSySueaNBdyoqKj74OE
-	noVns1mvIkbAvwfrJltg==;
+	List-Owner; bh=7xc5GRGzHzUQCoI4jnY0EetTSsKNN0Ncv+n4Kaey/fI=; b=I8cB9/azsitd5g
+	yGAw1f3zXPzecRCDWm0Xk8bv2wV1PfX3joPDTmhqbTVCI/yQsOhtQrvZLFPNFFN/LXbxuh7HdOcL9
+	McjA8B1dMOb9rSQ85HsV2zDR/9/8lVNSbH9e58A1dn0NMtU9g1l0pxdmicG5qIMC7QDcNCtBneNvf
+	zMhg79uYwERvBLaesJzNj5DDwq4FRW8FAH8Y3i5Pax2CdWGb8DJq5tHxFzsf0tKCBp7D+wBCZBh2D
+	EurLUpP7jzsnw+L7xLAkvPkAwWdQL1IsuE7rQR/uOivqqn3VLELvACP/Nn68ImZZSLpz4mvDYdQuz
+	bZY4H65Qaj67KsZi8JLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZOAs-00000007fIK-2OPd;
-	Wed, 09 Jul 2025 06:20:58 +0000
-Received: from mgamail.intel.com ([198.175.65.12])
+	id 1uZPcq-00000007rXU-3WhD;
+	Wed, 09 Jul 2025 07:53:56 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZOAp-00000007fHe-491f;
-	Wed, 09 Jul 2025 06:20:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1752042056; x=1783578056;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=jpf7GN1ILP/Fhm7204GJfAH89v4Oue2jmt399gQml9w=;
-  b=KBI+Qa+fobaKJj8FW5Ysey3GgUovbuQRlvd3rVp/QaY96fZf/Y8n5JCI
-   jCliI8nHjLa9ta5eWTP4F4EnwDsMqamX9VuTMM3MSZc+RMG/SKc7FYYXq
-   CCpN8N/SjbdD5ix7PHb2YSJvwHouWY4RtuJ/m7uspmEfd+W7ohWAracol
-   az8sehoGsFwPjelzm5jN2iM4X5QWBiCIwsR86Ze6lrhSRQPsOJRKGrzuR
-   R3M6ZTjIR1wiLiZuJOJQozVjjb3BBfU1L85wUu2BLEQGiLf2kUCe9V0C+
-   Bt/nzHgmsta1JTYzuEnncEImAjqDi+qdd3mVrRUOMdU6LgePzM9kS9UJP
-   A==;
-X-CSE-ConnectionGUID: riA1pz6BR82bX/duiMbG7w==
-X-CSE-MsgGUID: 6ZMX4HfVR06WccLJM/wStQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11487"; a="65744597"
-X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
-   d="scan'208";a="65744597"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Jul 2025 23:20:53 -0700
-X-CSE-ConnectionGUID: r0xqCEgwRhurC5eP5ba1jQ==
-X-CSE-MsgGUID: AXwoEScWRV6uHZc8eOhWXQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
-   d="scan'208";a="179366208"
-Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
-  by fmviesa002.fm.intel.com with ESMTP; 08 Jul 2025 23:20:50 -0700
-Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uZOAh-0003BD-25;
-	Wed, 09 Jul 2025 06:20:47 +0000
-Date: Wed, 9 Jul 2025 14:20:22 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Keke Li <keke.li@amlogic.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Dan Scally <dan.scally@ideasonboard.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
+	id 1uZOn5-00000007kIH-2GTZ;
+	Wed, 09 Jul 2025 07:00:29 +0000
+Received: from localhost.localdomain (unknown [119.122.214.98])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1b68dd445;
+	Wed, 9 Jul 2025 15:00:08 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: jonas@kwiboo.se
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Subject: Re: [PATCH 5/8] media: v4l2-common: Introduce v4l2-params.c
-Message-ID: <202507091324.p3wVWAxc-lkp@intel.com>
-References: <20250708-extensible-parameters-validation-v1-5-9fc27c9c728c@ideasonboard.com>
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org,
+	ziyao@disroot.org
+Subject: Re: [PATCH 4/6] arm64: dts: rockchip: Add ArmSoM Sige1
+Date: Wed,  9 Jul 2025 15:00:03 +0800
+Message-Id: <20250709070003.53484-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250708224921.2254116-5-jonas@kwiboo.se>
+References: <20250708224921.2254116-5-jonas@kwiboo.se>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250708-extensible-parameters-validation-v1-5-9fc27c9c728c@ideasonboard.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCSkpKVkwaSk1MQ0IeGE9LTlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VCQ1lXWRYaDxIVHRRZQVlLVUtVS1VLWQY+
+X-HM-Tid: 0a97edfc0df903a2kunm4d206f074e8f19
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OBw6CCo5DDE3CS8cFwIDMS4*
+	FyIaFA9VSlVKTE5JS09PT0pITEJCVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpPVUJDWVdZCAFZQUlDTEg3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_232056_130648_06338818 
-X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-CacheID: sfid-20250709_000027_806620_F75DCB2E 
+X-CRM114-Status: UNSURE (   8.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,34 +76,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jacopo,
+Hi,
 
-kernel test robot noticed the following build errors:
+> +	vcc5v0_usb1_host: regulator-5v0-vcc-usb1-host {
+> +		compatible = "regulator-fixed";
+> ...
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> ...
+> +	vcc5v0_usb2_host: regulator-5v0-vcc-usb2-host {
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> ...
 
-[auto build test ERROR on a8598c7de1bcd94461ca54c972efa9b4ea501fb9]
+I think these two regulators do not need boot-on?
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Jacopo-Mondi/media-uapi-Introduce-V4L2-extensible-params/20250708-184651
-base:   a8598c7de1bcd94461ca54c972efa9b4ea501fb9
-patch link:    https://lore.kernel.org/r/20250708-extensible-parameters-validation-v1-5-9fc27c9c728c%40ideasonboard.com
-patch subject: [PATCH 5/8] media: v4l2-common: Introduce v4l2-params.c
-config: i386-buildonly-randconfig-002-20250709 (https://download.01.org/0day-ci/archive/20250709/202507091324.p3wVWAxc-lkp@intel.com/config)
-compiler: clang version 20.1.7 (https://github.com/llvm/llvm-project 6146a88f60492b520a36f8f8f3231e15f3cc6082)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250709/202507091324.p3wVWAxc-lkp@intel.com/reproduce)
+> +	rfkill {
+> +		compatible = "rfkill-gpio";
+> +		label = "rfkill-wlan";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&wifi_reg_on_h>;
+> +		radio-type = "wlan";
+> +		shutdown-gpios = <&gpio1 RK_PA6 GPIO_ACTIVE_HIGH>;
+> +	};
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202507091324.p3wVWAxc-lkp@intel.com/
+Why not use mmc-pwrseq instead of rfkill?
 
-All errors (new ones prefixed by >>):
+> +	rfkill-bt {
+> +		compatible = "rfkill-gpio";
+> +		label = "rfkill-bt";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&bt_reg_on_h>;
+> +		radio-type = "bluetooth";
+> +		shutdown-gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
+> +	};
 
->> ld.lld: error: undefined symbol: vb2_plane_vaddr
-   >>> referenced by v4l2-params.c
-   >>>               drivers/media/v4l2-core/v4l2-params.o:(v4l2_params_buffer_validate) in archive vmlinux.a
+Why not use shutdown-gpios of bcm43438-bt?
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> +&i2c0 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c0m0_xfer>;
+> +	status = "okay";
+> +
+> +	hym8563: rtc@51 {
+> +		compatible = "haoyu,hym8563";
+> +		reg = <0x51>;
+> +		#clock-cells = <0>;
+> +		clock-output-names = "hym8563";
+
+CLKOUT pin is not connected.
+
+> +&sdio0 {
+> +	bus-width = <4>;
+> +	cap-sd-highspeed;
+> +	cap-sdio-irq;
+> +	disable-wp;
+> +	keep-power-in-suspend;
+> +	no-mmc;
+> +	no-sd;
+> +	non-removable;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>, <&clkm1_32k_out>;
+
+I recommend using clkm1_32k_out at the sdio-pwrseq node.
+
+> +	sd-uhs-sdr104;
+> +	vmmc-supply = <&vcc_3v3>;
+> +	vqmmc-supply = <&vcc_1v8>;
+> +	status = "okay";
+
+Maybe `brcm,bcm4329-fmac` nodes can be added here?
+
+> +&uart2 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&uart2m1_xfer>, <&uart2m1_ctsn>, <&uart2m1_rtsn>;
+> +	uart-has-rtscts;
+> +	status = "okay";
+
+You can add `brcm,bcm43438-bt` nodes here:
+
+	bluetooth {
+		compatible = "brcm,bcm43438-bt";
+		device-wakeup-gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
+		host-wakeup-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
+		shutdown-gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
+		...
+	};
+
+Thanks,
+Chukun
+
+--
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
