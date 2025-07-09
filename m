@@ -4,63 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A521CC83F03
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 04:32:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 329A6C83F09
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 06:00:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J8naDVrYrNFKe+YLNLvJ3AUr7CLk5KtycfW8FRooCF0=; b=TiP670IywAFgNS
-	RIO1WDj+lBvmDnzz6Cd77E01A2BWBu0jYdFhiFxNFAN89ExHQjljdcMYwXArbtG53lZ07g/d8PlPb
-	KabRb1QcL5wkbozyzRZjk1sHvmySUdf12CYDJCCTWZkKVLtXf8gq7d8UxTaket1ScaiAziFayyKve
-	W29UHf4YUs3q8mHExMVvegQb1U5wmuK1lpmnuuTHTuEBuwhtoysO2pAmrM0I17pNT1A8dHMRWAqQx
-	JHaEYYB1sCqkcaXaxOY96i9hyuKbVjZvzVXkiSmLJtVVJzQrQyDDuM2jGRTZhsgCv9BSXgZQAXK6W
-	nwpWducX33/7+33kgneQ==;
+	List-Owner; bh=Q3+atbr02/WHq37O2kpHzbNULJZA4GYmZetS7z6FJS8=; b=TdUj5CIqJGYzdJ
+	vxQCw5qudQLDYqGjaDTHUc+9mDgA1P1oHi9/uV/sWKtCepH0rM9OQRfw2Rv6ROiTICRvqmeYbPSAi
+	NrgL7E4Iwv0i7mlMoQe0CfGdwN/ABy9Op+A6nMSwOtFZDxoXwW87t9Mxv/i/Thx/vmo1PCdBTTSgZ
+	rCzplgm0rdiP1W5AfwoHWvPrr03Q7d1zGICtTFbe5HJutC67rSbGcx33EwY0obBdFsEwcorshVDPq
+	9xDrHQWP8MgGLkLGoaqh2+luFaPZzjq1wYly4ylSQZQZZkZhxUStXLzhT+5Wjb8+k+7wJhS/XnYyR
+	PdHQFL8IeeRV+ztLk5FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZMTg-00000007OdN-20tz;
-	Wed, 09 Jul 2025 04:32:16 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1uZNqX-00000007e1z-1ZZo;
+	Wed, 09 Jul 2025 05:59:57 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZMNR-00000007O5i-37tH;
-	Wed, 09 Jul 2025 04:25:51 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 03C1925D92;
-	Wed,  9 Jul 2025 06:25:48 +0200 (CEST)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id afcibFT-X543; Wed,  9 Jul 2025 06:25:47 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1752035147; bh=vhsZhBP/tmhB80J/KvDuaVinV3BhipYVeRoM5brC1XA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=NvazntVAYt6ECuXArhY1cgQLkbCkUChinemwdo0ScEVv3S8BbGALGgD9rms54tl6v
-	 BKaMQylL5IK9vcxr8Zi4jEVIX7Mst79bsoX32y8CL9OsJgHUvqG43cJX/1VOf5KvvI
-	 SvDXjx8j0ONvmS8xtmaq1rfG/r6VlgJ3JARCS5jzTMIR3Y54wlItggk0Ko300U5KJ4
-	 PBHJ1VFmuOaJliCSwLBAo/Yerq1fsS2w9YwqyOeu7yVhw7197FTfTnTpXQBORCCVBk
-	 aTIESJ4bAGEwmTHOzPoJ/NHFrZmoS4wz56onKe38T0/ZIcHsARUbwXrQsSzBkXepYP
-	 xEhnce5QYdSnA==
-Date: Wed, 9 Jul 2025 04:25:34 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/6] arm64: dts: rockchip: Add Radxa ROCK 2A/2F
-Message-ID: <aG3vPsUd-FPkhi-S@pie.lan>
-References: <20250708224921.2254116-1-jonas@kwiboo.se>
- <20250708224921.2254116-3-jonas@kwiboo.se>
+	id 1uZNqV-00000007e1P-0gyd;
+	Wed, 09 Jul 2025 05:59:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1752040795; x=1783576795;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=LzYB6pw/2+1lvLXdkdXCIJm1qBGvJhF76UZJym27mtI=;
+  b=PUy+jt29B+AS6VgSHuTlTZeTtAy7LcGQWHeKebrEJvdbaUHsmdQi8Xd7
+   IM+wKzUeXh08/NgW3uCx4vK5CrfcYzBAM7utn0F8ox5YGToVgeYtHZsWp
+   Fm8TR6OnoA8v4RzIP/FIYR89aTHZjW9h9NcDxXpGCPaCWlqhhfMyoZItu
+   ymrACk3MHHO8ttZzTHkcOQjF/DcymKYyfwNt3oaIMVehw+PbibcuoANzP
+   2JCECzPqfWIDAUHqBj8piMcyQKEZ65SF5p4YrH9dO4yTnrZogPiH+ZWJ9
+   ZNKkhl8v8U0shga9VCwS+IFdtzid2yl6LbNPAxNs25VoRwAHi2lKWwCWa
+   w==;
+X-CSE-ConnectionGUID: 776E7IXtQa2OFEuGjmQgLg==
+X-CSE-MsgGUID: 791wO8a4SAar2kZpk2Y75g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11487"; a="54009931"
+X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
+   d="scan'208";a="54009931"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Jul 2025 22:59:50 -0700
+X-CSE-ConnectionGUID: A6UhJEe2QCS4oMRU34mFqw==
+X-CSE-MsgGUID: L/VUNKizQfG5E89QG7KNzg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
+   d="scan'208";a="156414304"
+Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
+  by fmviesa010.fm.intel.com with ESMTP; 08 Jul 2025 22:59:47 -0700
+Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uZNqL-00039P-06;
+	Wed, 09 Jul 2025 05:59:45 +0000
+Date: Wed, 9 Jul 2025 13:59:35 +0800
+From: kernel test robot <lkp@intel.com>
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Keke Li <keke.li@amlogic.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Dan Scally <dan.scally@ideasonboard.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Subject: Re: [PATCH 1/8] media: uapi: Introduce V4L2 extensible params
+Message-ID: <202507091305.hPkKkWZJ-lkp@intel.com>
+References: <20250708-extensible-parameters-validation-v1-1-9fc27c9c728c@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250708224921.2254116-3-jonas@kwiboo.se>
+In-Reply-To: <20250708-extensible-parameters-validation-v1-1-9fc27c9c728c@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_212549_922279_3EFD2139 
-X-CRM114-Status: GOOD (  15.92  )
+X-CRM114-CacheID: sfid-20250708_225955_267945_407CB9BE 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,68 +98,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 08, 2025 at 10:48:52PM +0000, Jonas Karlman wrote:
-> The ROCK 2A and ROCK 2F is a high-performance single board computer
-> developed by Radxa, based on the Rockchip RK3528A SoC.
-> 
-> Add initial device tree for the Radxa ROCK 2A and ROCK 2F boards.
-> 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
-> Schematics:
-> - https://dl.radxa.com/rock2/2a/v1.2/radxa_rock_2a_v1.2_schematic.pdf
-> - https://dl.radxa.com/rock2/2f/radxa_rock2f_v1.01_schematic.pdf
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
->  .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 292 ++++++++++++++++++
->  .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++++
->  .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
->  4 files changed, 386 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
- 
-While testing the patch on my Rock 2A board, I noticed one of my SDcard
-that works perfectly on Radxa E20C and NanoPi Zero 2 cannot be correctly
-read out under UHS-125-SDR mode,
+Hi Jacopo,
 
-	# dd if=/dev/mmcblk1 of=/dev/null bs=4M count=4
-	[   18.616828] mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
-	[   19.193315] mmc1: Skipping voltage switch
-	[   19.202046] mmc1: tried to HW reset card, got error -110
-	[   19.213312] mmcblk1: recovery failed!
-	[   19.213709] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 256 prio class 0
-	[   19.225201] mmcblk1: recovery failed!
-	[   19.225530] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
-	[   19.226283] Buffer I/O error on dev mmcblk1, logical block 0, async page read
-	dd: /dev/mmcblk1: I/O error
+kernel test robot noticed the following build errors:
 
-which could be reproduced stably.
+[auto build test ERROR on a8598c7de1bcd94461ca54c972efa9b4ea501fb9]
 
-the SDMMC controller issued interesting messages during the tuning
-process,
+url:    https://github.com/intel-lab-lkp/linux/commits/Jacopo-Mondi/media-uapi-Introduce-V4L2-extensible-params/20250708-184651
+base:   a8598c7de1bcd94461ca54c972efa9b4ea501fb9
+patch link:    https://lore.kernel.org/r/20250708-extensible-parameters-validation-v1-1-9fc27c9c728c%40ideasonboard.com
+patch subject: [PATCH 1/8] media: uapi: Introduce V4L2 extensible params
+config: i386-buildonly-randconfig-003-20250709 (https://download.01.org/0day-ci/archive/20250709/202507091305.hPkKkWZJ-lkp@intel.com/config)
+compiler: clang version 20.1.7 (https://github.com/llvm/llvm-project 6146a88f60492b520a36f8f8f3231e15f3cc6082)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250709/202507091305.hPkKkWZJ-lkp@intel.com/reproduce)
 
-	[    0.665246] mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-	[    0.851940] dwmmc_rockchip ffc30000.mmc: All phases work, using default phase 90.
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202507091305.hPkKkWZJ-lkp@intel.com/
 
-but actually it doesn't work with phase = 90. If the frequency is
-limited to 100MHz with max-frequency = <100000000> instead of the
-default 150MHz, tuning results in a very different phase,
+All errors (new ones prefixed by >>):
 
-	[    0.665483] mmc_host mmc1: Bus speed (slot 0) = 99600000Hz (slot req 100000000Hz, actual 99600000HZ div = 0)
-	[    1.166340] dwmmc_rockchip ffc30000.mmc: Successfully tuned phase to 141
+   In file included from <built-in>:1:
+>> ./usr/include/linux/media/v4l2-extensible-params.h:23:2: error: "This file should not be included directly by applications"
+      23 | #error "This file should not be included directly by applications"
+         |  ^
+   1 error generated.
 
-and the card works, too. If I set rockchip,default-sample-phase to 141
-in devicetree, the card could work at full 150MHz as well.
-
-I think there's something wrong with the tuning process, or the board's
-design cannot always run reliably at 150MHz.
-
-Could you reproduce similar failures on Radxa 2A? If so, it may be
-necessary to lower the SDMMC's maximum frequency for the board.
-
-Regards,
-Yao Zi
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
