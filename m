@@ -4,83 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63671C83F09
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 12:08:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D845C83F10
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 13:21:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EMAsb3ZCs8tSLd47d/K1pwu8y714oejNAlM6ZP45V/E=; b=akrwTqSq4J2w79
-	s3iLmF1UGpCptYut2KEotsfoawTOIoYzVPtIhnNMSAr3l2QHmupQ5b6U6fdJc2Iw4pQgAqED9mmBl
-	dlk1YJpC2ZoPMSXmwPWuKP2rdhtLy9HaQUBTM9hu1TI8mSyr0d7LzYn5JNBg0fdUQ7jtsbGidnBw0
-	unXb0NX1z6kWJHM8q3mRF27E//6/jQd34l0SlbR2+q6jrRgOIH9ezHRS024k45CTiXA0btwyz3tDb
-	qDFZpk/ok54oCXV8PqUIVoE/U4QfLGpk3kHuDZUVrcQzrLLylyAnjIHoQ8Qa1/xvF8GmvGeC3GOuc
-	56csa1BCDbGWR9bv96Zg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eWDevfEEdiOnBCjyjZSDrFCK1Jnp0c+PVHdEmTnYCZs=; b=CTd4ELGYSnSnys
+	bzyWAdfpuF5z0VMSNQUpjF/e3TnpHAzLcqYKOaPFVMCOpHXZZApYU8S5sYNMsIdG392nRChtqOovN
+	C3K/TBTG2E3fhRNZ8A5vy2wpfbKfhGSQR5WRKhBY/fnRxiFgaGi4Mq1Q++bjUfiygF1wngFXuW6U9
+	0FTAaCXjqy3lHMp6MFurieBWyduNf1E1cEKhL3D5z1kCdlvPIGLhm8D5HYMFC4ESjIkM6Q2v99uyZ
+	OzTPwj4SfPG8n9OtLqA/Q4h7Hb9dYznRzSVmWObNO/FSocra1yUVKByvDbLxKiSlqICzC5Uswm/TF
+	pFf58vcVVxDgNx9nbwsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZTad-00000008aOq-33cT;
-	Wed, 09 Jul 2025 12:07:55 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1uZUjl-00000008lWr-1ttE;
+	Wed, 09 Jul 2025 13:21:25 +0000
+Received: from out-189.mta0.migadu.com ([2001:41d0:1004:224b::bd])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZRxN-00000008IG2-428p;
-	Wed, 09 Jul 2025 10:23:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1752056598; x=1783592598;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=saN/d4gfnEw13D+prR8b8IdE3mlm76MqGHQUgKWmIVM=;
-  b=Nicqy+R0TdipZB532ShK1EFZo84lQVBzNlTwzCGM2jTJJ7yx8f1TythC
-   9cD1nXSvYFloTkkGz4nwkJCEl+LsAdRag1io2J/GZxi65Nb8aaCACCXBE
-   XAzZPyiu7JEcaqtaUpiermnk0zc9yfyBtFXoye25HeK2jP1Uixxo+Sf0x
-   oon5ciUIsitZYlfUskxocOQdwb7gu7P88tnsH4koKTl+IMin7ftr1SGV8
-   Z6LXjylATW79MznIQcARhCA2+GNh2/uThBhx2ZO9yR1omWwclhuj7hQJu
-   fzPjQNW1OH3dVL22NJ0mzCGBUzzALKTs5vTx/lvJ4TFVBQG88N+v4jwey
-   w==;
-X-CSE-ConnectionGUID: LZOzDkG6Qka2Ua2wF2ICJA==
-X-CSE-MsgGUID: /BZkWSaQTfS/4SrfN3ZBCA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11487"; a="76860270"
-X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
-   d="scan'208";a="76860270"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2025 03:23:16 -0700
-X-CSE-ConnectionGUID: 0H38jff9RYSTaPGDbHz5iw==
-X-CSE-MsgGUID: P5tlRiFCQPi8zz6fhqvRcQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
-   d="scan'208";a="156221519"
-Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
-  by orviesa008.jf.intel.com with ESMTP; 09 Jul 2025 03:23:13 -0700
-Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uZRxG-0003OR-0S;
-	Wed, 09 Jul 2025 10:23:10 +0000
-Date: Wed, 9 Jul 2025 18:22:37 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Keke Li <keke.li@amlogic.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Dan Scally <dan.scally@ideasonboard.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
+	id 1uZSUQ-00000008Oit-0AF2
+	for linux-rockchip@lists.infradead.org;
+	Wed, 09 Jul 2025 10:57:27 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1752058643;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=C6I02oAO5O9n+NqOYPD+dGaxhuaskJQMZV+WpCzJXCs=;
+	b=AP+BQZNGoaJmYJygNM/cNI4+L4nhRS9+v7XJ5tpNOmB/nZd++qTbTBwNo/O+1votD3hpuU
+	d2fuhHU756K8GgwfWy5GeCU+ivd/FYXqqwRXiEltwXyM1sIBCAstixjodvc8CRFhKokd9C
+	D233PemB7tVZu576E/LMMtVGOZwXHMeojtpVXR0Oe95O3l2xINtDlkzqFhZu/ViPAV4tlg
+	RoqiV6pYcLWjXPQiU5cgM9aynKpPtCaCZhYcr5KlrnJHgZbK1qqS4OM8w/0SRYQ28ywlrZ
+	ZP9psoJFX7TlIMTbxfojeVfvI4+uBHyTdUhs5VXjS3WhmW7noKCQeEJsRKtiEA==
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Subject: Re: [PATCH 2/8] media: uapi: Convert RkISP1 to V4L2 extensible params
-Message-ID: <202507091859.x8Yx8AZb-lkp@intel.com>
-References: <20250708-extensible-parameters-validation-v1-2-9fc27c9c728c@ideasonboard.com>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Diederik de Haas <didi.debian@cknow.org>
+Subject: [PATCH] arm64: dts: rockchip: Add reset button to NanoPi R5S
+Date: Wed,  9 Jul 2025 12:57:08 +0200
+Message-ID: <20250709105715.119771-1-didi.debian@cknow.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250708-extensible-parameters-validation-v1-2-9fc27c9c728c@ideasonboard.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_032318_038494_616338FA 
-X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-CacheID: sfid-20250709_035726_406012_B61CE9E9 
+X-CRM114-Status: UNSURE (   9.28  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,36 +74,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jacopo,
+The NanoPi R5S LTS version has a reset button, which is connected via
+GPIO. Note that the non-LTS version does not have the reset button and
+therefore on page 19 of the schematic version 2204 it is marked 'NC',
+but it is connected on the LTS version.
 
-kernel test robot noticed the following build errors:
+Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+---
+ .../boot/dts/rockchip/rk3568-nanopi-r5s.dts   | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-[auto build test ERROR on a8598c7de1bcd94461ca54c972efa9b4ea501fb9]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Jacopo-Mondi/media-uapi-Introduce-V4L2-extensible-params/20250708-184651
-base:   a8598c7de1bcd94461ca54c972efa9b4ea501fb9
-patch link:    https://lore.kernel.org/r/20250708-extensible-parameters-validation-v1-2-9fc27c9c728c%40ideasonboard.com
-patch subject: [PATCH 2/8] media: uapi: Convert RkISP1 to V4L2 extensible params
-config: i386-buildonly-randconfig-003-20250709 (https://download.01.org/0day-ci/archive/20250709/202507091859.x8Yx8AZb-lkp@intel.com/config)
-compiler: clang version 20.1.7 (https://github.com/llvm/llvm-project 6146a88f60492b520a36f8f8f3231e15f3cc6082)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250709/202507091859.x8Yx8AZb-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202507091859.x8Yx8AZb-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   In file included from <built-in>:1:
->> ./usr/include/linux/rkisp1-config.h:10:10: fatal error: 'linux/build_bug.h' file not found
-      10 | #include <linux/build_bug.h>
-         |          ^~~~~~~~~~~~~~~~~~~
-   1 error generated.
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+index 3b31f0dd8f3b..4eaedb321914 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+@@ -17,6 +17,19 @@ aliases {
+ 		ethernet0 = &gmac0;
+ 	};
+ 
++	gpio-keys {
++		compatible = "gpio-keys";
++		pinctrl-0 = <&gpio4_a0_k1>;
++		pinctrl-names = "default";
++
++		button-reset {
++			debounce-interval = <50>;
++			gpios = <&gpio4 RK_PA0 GPIO_ACTIVE_LOW>;
++			label = "RESET";
++			linux,code = <KEY_RESTART>;
++		};
++	};
++
+ 	gpio-leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+@@ -127,6 +140,12 @@ eth_phy0_reset_pin: eth-phy0-reset-pin {
+ 		};
+ 	};
+ 
++	gpio-keys {
++		gpio4_a0_k1: gpio4-a0-k1 {
++			rockchip,pins = <4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	gpio-leds {
+ 		lan1_led_pin: lan1-led-pin {
+ 			rockchip,pins = <3 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.50.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
