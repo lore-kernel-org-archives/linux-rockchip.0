@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46285C83F1B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 22:57:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B6D9C83F17
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 23:56:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=496BB269t8pY36VWa8y9s7iXco0ko3XpS9DThO4OzNc=; b=zIfUAhQuQyLzil
-	55MWUhB5h+4U6d1poR3NL1CqdqNxK3LCd4el7QTTY2W6W4H/Qq7ymXa7N6KcL02mohKMcyN2obOLm
-	MFdm87E+6KIZ/q9kaU0djdbL2ThLfKthCZnbt8aW+Xf65WjgZot8kqI87/AzGBN4lIEsMTwy3NzA7
-	6WOiQsVqVt8hOnm2GQ497wgguqWNfzdi1+g59fF+2fXCNn3zxsgwRvs1J812Bx+xtvbl8uyp4+UhR
-	LX5tJposslN2kZzl5++or3CV8c+0huC4Kbxl+6ROr4kooLQJ6MwKS78AVuslWJBXx0EX5rZ0I2Hx3
-	DCqdXihlndNKJ6SYUmIg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DKTDU3M/oWV3xeyzFhHcrjYH9VoqamdJ5gpccQGPXYQ=; b=xzuEQZjoKMlw6S
+	9+d5h/Ng23DPtCDVQ4VqzWV/4HZobA3MmcfRWFkjTfJ57g2UMwljlDe/dDFL8APXJXEDp4yhRZHVq
+	sZoMRHVQyS+kF/B1RbSKryBHyRhvkuqgODo0kkfMpIC21KWHHzfMO7Wd6pNg6V21baTG04YG5U+4r
+	G5jDat1t1XCtazahyOCjrgm/HNzDZo/bdM0BREZHVNYcL9vPB8kGnZlu01jhqMfOI3b+umsz+ftu1
+	uTrDNi6hgQXO0v8acKC+ElA73yWJjOnN27gqeFAo9Q4tJxhiB9FALE8h871vJoBY6ORqRIxIThm77
+	9xmfaDqPgj/dPF344eHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZdj0-0000000A9aU-1O0M;
-	Wed, 09 Jul 2025 22:57:14 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1uZeeB-0000000AHEq-3mZR;
+	Wed, 09 Jul 2025 23:56:19 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZc1y-00000009scX-2R81
+	id 1uZee8-0000000AHEB-3iO4
 	for linux-rockchip@lists.infradead.org;
-	Wed, 09 Jul 2025 21:08:44 +0000
+	Wed, 09 Jul 2025 23:56:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1752095320;
- bh=yLPdjZGdoWUbTfAy2GwqZq8+x71kvvXbnWtl1wzXyRk=;
- b=IZu6U/DFAuzhPKegMWoNbbffLHw/sGGSFmiRjiBWNYUj4INUJ6XE+Llk+IuGvISy1vH0MPlvq
- syn2d8Q0plHpIFVbxs2jtGWnSIwuEYUGcRrYfulGtfMqeIoNlp5QcS/ymtNQX/d5PwTnTqMW1gS
- fSLr61l6nWEdoa5PP0LfepnTdQaKn0ZVqtwRWc0YU+nqIk2yiNy3sGJlMHUAHfokYaL3/ikEvRB
- 3twWHpjkws0XzyblaVp5j2RSVOGLKRareb8dYcd1K2/tUklWMtpM6lZOqWxy7HUi0EBT3VgltJm
- aNsqwrO8wYCNLnwB7AT2EotlniNzYP4UkXNQiLvJxW2g==
-X-Forward-Email-ID: 686eda55c4bb2e061789d0d3
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1752105375;
+ bh=2DQ9gjXXuEt0O2/rJn65m+kWyPKUAoslRtuiFDYcZeU=;
+ b=gnOdsi+iPnQQ5HaBSPMoDTf/pb76fKqHmwIoIFcVora4NiDlL6dleYq/RYhTm8SkoHM/EfEPq
+ caLkZHju1EEaxGLH8JEeDENlRcu6ngDtscGoYPRr9WyDOVH15P2GfEvsKzrH2Xcjbordh0vhQL1
+ Ybv2AGdh59mPd6pwL10UVt14+XHXhG01QXVu5XRhKPH80WB97AzxiQCPERyN6oAuoFb/t1resDm
+ yqY2WJMnBeVriHvsjsiRYemnbD0wrfTfPpexk+rCNsYLk94K6y76EpVIMDx5zETKsNcpmzVo40d
+ PcuPCF+2TfzviOcoibGRfziznFXc9AJRTCIVIZTEPWEA==
+X-Forward-Email-ID: 686f0196c4bb2e06178a2682
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
+ 149.28.215.223
 X-Forward-Email-Version: 1.1.3
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Yao Zi <ziyao@disroot.org>,
-	linux-rockchip@lists.infradead.org,
-	Jonas Karlman <jonas@kwiboo.se>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Fix UART DMA support for RK3528
-Date: Wed,  9 Jul 2025 21:08:28 +0000
-Message-ID: <20250709210831.3170458-1-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.49.0
+Message-ID: <5ce03a37-1b60-4328-8d04-07bf835def94@kwiboo.se>
+Date: Thu, 10 Jul 2025 01:56:02 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/6] arm64: dts: rockchip: Add Radxa ROCK 2A/2F
+To: Yao Zi <ziyao@disroot.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250708224921.2254116-1-jonas@kwiboo.se>
+ <20250708224921.2254116-3-jonas@kwiboo.se> <aG3vPsUd-FPkhi-S@pie.lan>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <aG3vPsUd-FPkhi-S@pie.lan>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_140842_972752_2B7002F2 
-X-CRM114-Status: UNSURE (   9.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250709_165616_975329_15F11891 
+X-CRM114-Status: GOOD (  23.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,114 +80,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Trying to use UART2 DMA for Bluetooth on ArmSoM Sige1 result in tx
-timeout when using dma-names = "tx", "rx" as required by the dt-binding:
+Hi,
 
-  Bluetooth: hci0: command 0x0c03 tx timeout
-  Bluetooth: hci0: BCM: Reset failed (-110)
+On 7/9/2025 6:25 AM, Yao Zi wrote:
+> On Tue, Jul 08, 2025 at 10:48:52PM +0000, Jonas Karlman wrote:
+>> The ROCK 2A and ROCK 2F is a high-performance single board computer
+>> developed by Radxa, based on the Rockchip RK3528A SoC.
+>>
+>> Add initial device tree for the Radxa ROCK 2A and ROCK 2F boards.
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> ---
+>> Schematics:
+>> - https://dl.radxa.com/rock2/2a/v1.2/radxa_rock_2a_v1.2_schematic.pdf
+>> - https://dl.radxa.com/rock2/2f/radxa_rock2f_v1.01_schematic.pdf
+>> ---
+>>  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+>>  .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 292 ++++++++++++++++++
+>>  .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++++
+>>  .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
+>>  4 files changed, 386 insertions(+)
+>>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+>>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
+>>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
+>  
+> While testing the patch on my Rock 2A board, I noticed one of my SDcard
+> that works perfectly on Radxa E20C and NanoPi Zero 2 cannot be correctly
+> read out under UHS-125-SDR mode,
+> 
+> 	# dd if=/dev/mmcblk1 of=/dev/null bs=4M count=4
+> 	[   18.616828] mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+> 	[   19.193315] mmc1: Skipping voltage switch
+> 	[   19.202046] mmc1: tried to HW reset card, got error -110
+> 	[   19.213312] mmcblk1: recovery failed!
+> 	[   19.213709] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 256 prio class 0
+> 	[   19.225201] mmcblk1: recovery failed!
+> 	[   19.225530] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+> 	[   19.226283] Buffer I/O error on dev mmcblk1, logical block 0, async page read
+> 	dd: /dev/mmcblk1: I/O error
+> 
+> which could be reproduced stably.
+> 
+> the SDMMC controller issued interesting messages during the tuning
+> process,
+> 
+> 	[    0.665246] mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
+> 	[    0.851940] dwmmc_rockchip ffc30000.mmc: All phases work, using default phase 90.
+> 
+> but actually it doesn't work with phase = 90. If the frequency is
+> limited to 100MHz with max-frequency = <100000000> instead of the
+> default 150MHz, tuning results in a very different phase,
+> 
+> 	[    0.665483] mmc_host mmc1: Bus speed (slot 0) = 99600000Hz (slot req 100000000Hz, actual 99600000HZ div = 0)
+> 	[    1.166340] dwmmc_rockchip ffc30000.mmc: Successfully tuned phase to 141
+> 
+> and the card works, too. If I set rockchip,default-sample-phase to 141
+> in devicetree, the card could work at full 150MHz as well.
+> 
+> I think there's something wrong with the tuning process, or the board's
+> design cannot always run reliably at 150MHz.
+> 
+> Could you reproduce similar failures on Radxa 2A? If so, it may be
+> necessary to lower the SDMMC's maximum frequency for the board.
 
-Change the dmas order to fix UART DMA support on RK3528.
+I have not been able to reproduce this issue on any of my ROCK 2A or 2F
+boards, my boards seem to tune phase to around 250-265 for the sd-cards
+I tested.
 
-With this fixed Bluetooth can be loaded using DMA on ArmSoM Sige1:
+Could you try with something like this:
 
-  Bluetooth: hci0: BCM: chip id 159
-  Bluetooth: hci0: BCM: features 0x0f
-  Bluetooth: hci0: BCM4362A2
-  Bluetooth: hci0: BCM4362A2 (000.017.017) build 0000
-  Bluetooth: hci0: BCM4362A2 'brcm/BCM4362A2.hcd' Patch
-  Bluetooth: hci0: BCM: features 0x0f
-  Bluetooth: hci0: BCM43752A2 UART 37.4MHz Ampak AP6398 sLNA iLNA CL1 [Version: 1091.1173]
-  Bluetooth: hci0: BCM4362A2 (000.017.017) build 1173
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi b/arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+index fc23c51836b15..a82791db55699 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+@@ -285,6 +285,10 @@
+ 	status = "okay";
+ };
+ 
++&sdmmc_clk {
++	rockchip,pins = <2 RK_PA5 1 &pcfg_pull_up_drv_level_3>;
++};
++
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0m0_xfer>;
 
-Fixes: ab6fcb58aedf ("arm64: dts: rockchip: Add UART DMA support for RK3528")
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
-This can be verified with an upcoming v2 of "arm64: dts: rockchip: Add
-ArmSoM Sige1" [1].
 
-[1] https://lore.kernel.org/r/20250708224921.2254116-5-jonas@kwiboo.se
----
- arch/arm64/boot/dts/rockchip/rk3528.dtsi | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+Changing clk drive strength seem to be something that has been done in
+Radxa vendor kernel [1], could be something that we can include if it
+fixes your issue.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-index b215126efcc2..001a555c83b7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-@@ -595,7 +595,7 @@ uart0: serial@ff9f0000 {
- 			clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
- 			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
--			dmas = <&dmac 8>, <&dmac 9>;
-+			dmas = <&dmac 9>, <&dmac 8>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
- 			status = "disabled";
-@@ -607,7 +607,7 @@ uart1: serial@ff9f8000 {
- 			clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
- 			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>;
--			dmas = <&dmac 10>, <&dmac 11>;
-+			dmas = <&dmac 11>, <&dmac 10>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
- 			status = "disabled";
-@@ -619,7 +619,7 @@ uart2: serial@ffa00000 {
- 			clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
- 			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>;
--			dmas = <&dmac 12>, <&dmac 13>;
-+			dmas = <&dmac 13>, <&dmac 12>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
- 			status = "disabled";
-@@ -631,7 +631,7 @@ uart3: serial@ffa08000 {
- 			clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
- 			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
--			dmas = <&dmac 14>, <&dmac 15>;
-+			dmas = <&dmac 15>, <&dmac 14>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
- 			status = "disabled";
-@@ -643,7 +643,7 @@ uart4: serial@ffa10000 {
- 			clocks = <&cru SCLK_UART4>, <&cru PCLK_UART4>;
- 			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
--			dmas = <&dmac 16>, <&dmac 17>;
-+			dmas = <&dmac 17>, <&dmac 16>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
- 			status = "disabled";
-@@ -655,7 +655,7 @@ uart5: serial@ffa18000 {
- 			clocks = <&cru SCLK_UART5>, <&cru PCLK_UART5>;
- 			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
--			dmas = <&dmac 18>, <&dmac 19>;
-+			dmas = <&dmac 19>, <&dmac 18>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
- 			status = "disabled";
-@@ -667,7 +667,7 @@ uart6: serial@ffa20000 {
- 			clocks = <&cru SCLK_UART6>, <&cru PCLK_UART6>;
- 			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
--			dmas = <&dmac 20>, <&dmac 21>;
-+			dmas = <&dmac 21>, <&dmac 20>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
- 			status = "disabled";
-@@ -679,7 +679,7 @@ uart7: serial@ffa28000 {
- 			clocks = <&cru SCLK_UART7>, <&cru PCLK_UART7>;
- 			clock-names = "baudclk", "apb_pclk";
- 			interrupts = <GIC_SPI 47 IRQ_TYPE_LEVEL_HIGH>;
--			dmas = <&dmac 22>, <&dmac 23>;
-+			dmas = <&dmac 23>, <&dmac 22>;
- 			reg-io-width = <4>;
- 			reg-shift = <2>;
- 			status = "disabled";
--- 
-2.49.0
+The kernel I tested was built from [2].
+
+[1] https://github.com/radxa/kernel/commit/e9b33cbc97a902560d3f3b43b4d36a1a0ac68a50
+[2] https://github.com/Kwiboo/linux-rockchip/commits/next-20250708-rk3528-boards/
+
+Regards,
+Jonas
+
+> 
+> Regards,
+> Yao Zi
 
 
 _______________________________________________
