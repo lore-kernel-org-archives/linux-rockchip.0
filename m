@@ -4,72 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CB8DC83F09
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 10:44:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63671C83F09
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 12:08:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xpv+WX3ouElMBVYIpeBC6oodGiU2ERnDnyil2aJVzKI=; b=kLrxLpOIULJjtA
-	e4xJQeO5UyhqKtXRfdJGUQ7PQgaGXze6NamPE9lrXueZlNln38jsHQjqXd5q/A5a5Ddg4mFM7ymg4
-	ftHOrjqd5CB+MfbjXJYz6TRx64tTK8I8rYnoBF4ZJWK3a4xvJ/oHg/T8gcenwygUy/JEanuM6HrgF
-	x6eX6yom3nOb6I9YQa8uOcVD2FNxLdtkpquyfHh1WnWAsOOgQGpaVL8HPl5v4IrRD1L2pPKj0TiWs
-	UYim51o4qk6GtSytAUpbskr4HC3C4lVAC73e7YGnO9NFjTYQyWP1vawqEYP0R7wZHJoq274mL7qkR
-	T93fnTvscjY+neeRdk5w==;
+	List-Owner; bh=EMAsb3ZCs8tSLd47d/K1pwu8y714oejNAlM6ZP45V/E=; b=akrwTqSq4J2w79
+	s3iLmF1UGpCptYut2KEotsfoawTOIoYzVPtIhnNMSAr3l2QHmupQ5b6U6fdJc2Iw4pQgAqED9mmBl
+	dlk1YJpC2ZoPMSXmwPWuKP2rdhtLy9HaQUBTM9hu1TI8mSyr0d7LzYn5JNBg0fdUQ7jtsbGidnBw0
+	unXb0NX1z6kWJHM8q3mRF27E//6/jQd34l0SlbR2+q6jrRgOIH9ezHRS024k45CTiXA0btwyz3tDb
+	qDFZpk/ok54oCXV8PqUIVoE/U4QfLGpk3kHuDZUVrcQzrLLylyAnjIHoQ8Qa1/xvF8GmvGeC3GOuc
+	56csa1BCDbGWR9bv96Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZSI5-00000008Lrm-3KWB;
-	Wed, 09 Jul 2025 10:44:41 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uZTad-00000008aOq-33cT;
+	Wed, 09 Jul 2025 12:07:55 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZQYl-000000081ry-3Rdg;
-	Wed, 09 Jul 2025 08:53:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752051225;
-	bh=QYXHcCL2Vs79N2X0jF3tLL5lpOOl+YSA52sVaeKfUeo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=m3hO8Z/Hm/WU0S2/37/px10JjlMVhXiD/fzyJW0SGXHoI8NvJNx04URZMYlnuna0q
-	 4W7Jk3s0WDiWqE3t/HabB5kpht0mAhHhQE3FBsb40PNpaNyWLfpmxiRQMvVTr9+HRq
-	 aJn3FnC1s3VbAraASXGMoNm9b6ATG8WZXnk3zs0+gRnlczo+7ykdEt+EzjE1WmfzRC
-	 yzuXt08zNRT8Srax5ietcZ39lylFVwNwpxA98mlmA/WDU2vdGbbGHCarb/70Me85vv
-	 JnpSwi2Kw62X7rfrcXp60jDfAXzv0M4q+Zb0sTZmdzvW40ca8Xsw6C3xB29aCY68Bx
-	 Yy6b1u24sghSA==
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:8d6b:4a4d:ad13:46c1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 41E4217E1110;
-	Wed,  9 Jul 2025 10:53:45 +0200 (CEST)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	nicolas.dufresne@collabora.com,
-	jgg@ziepe.ca
-Cc: iommu@lists.linux.dev,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1uZRxN-00000008IG2-428p;
+	Wed, 09 Jul 2025 10:23:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1752056598; x=1783592598;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=saN/d4gfnEw13D+prR8b8IdE3mlm76MqGHQUgKWmIVM=;
+  b=Nicqy+R0TdipZB532ShK1EFZo84lQVBzNlTwzCGM2jTJJ7yx8f1TythC
+   9cD1nXSvYFloTkkGz4nwkJCEl+LsAdRag1io2J/GZxi65Nb8aaCACCXBE
+   XAzZPyiu7JEcaqtaUpiermnk0zc9yfyBtFXoye25HeK2jP1Uixxo+Sf0x
+   oon5ciUIsitZYlfUskxocOQdwb7gu7P88tnsH4koKTl+IMin7ftr1SGV8
+   Z6LXjylATW79MznIQcARhCA2+GNh2/uThBhx2ZO9yR1omWwclhuj7hQJu
+   fzPjQNW1OH3dVL22NJ0mzCGBUzzALKTs5vTx/lvJ4TFVBQG88N+v4jwey
+   w==;
+X-CSE-ConnectionGUID: LZOzDkG6Qka2Ua2wF2ICJA==
+X-CSE-MsgGUID: /BZkWSaQTfS/4SrfN3ZBCA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11487"; a="76860270"
+X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
+   d="scan'208";a="76860270"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2025 03:23:16 -0700
+X-CSE-ConnectionGUID: 0H38jff9RYSTaPGDbHz5iw==
+X-CSE-MsgGUID: P5tlRiFCQPi8zz6fhqvRcQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
+   d="scan'208";a="156221519"
+Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
+  by orviesa008.jf.intel.com with ESMTP; 09 Jul 2025 03:23:13 -0700
+Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uZRxG-0003OR-0S;
+	Wed, 09 Jul 2025 10:23:10 +0000
+Date: Wed, 9 Jul 2025 18:22:37 +0800
+From: kernel test robot <lkp@intel.com>
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Keke Li <keke.li@amlogic.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Dan Scally <dan.scally@ideasonboard.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v5 5/5] arm64: defconfig: enable Verisilicon IOMMU
-Date: Wed,  9 Jul 2025 10:53:30 +0200
-Message-ID: <20250709085337.53697-6-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250709085337.53697-1-benjamin.gaignard@collabora.com>
-References: <20250709085337.53697-1-benjamin.gaignard@collabora.com>
+	linux-arm-kernel@lists.infradead.org,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Subject: Re: [PATCH 2/8] media: uapi: Convert RkISP1 to V4L2 extensible params
+Message-ID: <202507091859.x8Yx8AZb-lkp@intel.com>
+References: <20250708-extensible-parameters-validation-v1-2-9fc27c9c728c@ideasonboard.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250708-extensible-parameters-validation-v1-2-9fc27c9c728c@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_015348_003582_A9B0777C 
-X-CRM114-Status: UNSURE (   7.61  )
+X-CRM114-CacheID: sfid-20250709_032318_038494_616338FA 
+X-CRM114-Status: UNSURE (   9.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,28 +98,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable Verisilicon IOMMU used by RK3588 AV1 hardware codec.
+Hi Jacopo,
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+kernel test robot noticed the following build errors:
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 7e04a2905ce4..a639388298e7 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -1451,6 +1451,7 @@ CONFIG_ARM_SMMU=y
- CONFIG_ARM_SMMU_V3=y
- CONFIG_MTK_IOMMU=y
- CONFIG_QCOM_IOMMU=y
-+CONFIG_VSI_IOMMU=m
- CONFIG_REMOTEPROC=y
- CONFIG_IMX_REMOTEPROC=y
- CONFIG_MTK_SCP=m
+[auto build test ERROR on a8598c7de1bcd94461ca54c972efa9b4ea501fb9]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Jacopo-Mondi/media-uapi-Introduce-V4L2-extensible-params/20250708-184651
+base:   a8598c7de1bcd94461ca54c972efa9b4ea501fb9
+patch link:    https://lore.kernel.org/r/20250708-extensible-parameters-validation-v1-2-9fc27c9c728c%40ideasonboard.com
+patch subject: [PATCH 2/8] media: uapi: Convert RkISP1 to V4L2 extensible params
+config: i386-buildonly-randconfig-003-20250709 (https://download.01.org/0day-ci/archive/20250709/202507091859.x8Yx8AZb-lkp@intel.com/config)
+compiler: clang version 20.1.7 (https://github.com/llvm/llvm-project 6146a88f60492b520a36f8f8f3231e15f3cc6082)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250709/202507091859.x8Yx8AZb-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202507091859.x8Yx8AZb-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   In file included from <built-in>:1:
+>> ./usr/include/linux/rkisp1-config.h:10:10: fatal error: 'linux/build_bug.h' file not found
+      10 | #include <linux/build_bug.h>
+         |          ^~~~~~~~~~~~~~~~~~~
+   1 error generated.
+
 -- 
-2.43.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
