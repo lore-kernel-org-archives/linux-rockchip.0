@@ -4,104 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED328C83F03
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 13:28:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6049C83F03
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 14:09:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JH0WasvP5jhXpmbKuc269gGxy90vdoI/dmLuI495WYw=; b=hqpPndjqQwQ8h1
-	8w+TRyXR9GBmDBRgLlZgoZLaLCrwMTyXqLv0KrOBzYUhZgNCUchpn+8ZAFqiuQPs8094JhhXIezW9
-	cW2L1LeXkoFP4YUnRfHKPz4QbbiPK+Y2Y3puOOj1oU9AxrpRVgTGoVAUB6gkpL7bKeMg8SIOh7pFY
-	WMZ1oaML+D3ZU741fEeo1Qhe2FP8G2szQ1XgZ+ZbTGiX4R+98lgO3fHZFoX4mKgn7vs3DRCStAI3p
-	LfEMZaw7m8lE8qwWo/FK0FS7NM33n7z8rD63eviy57Ii5Y8p8+H75d2KG+xfacaOKDPz6FkpRKOk1
-	yxPA2GQyssrAhPBsfLQQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3YVfvk7Sr4iQzhHYOX/kTwslUiDINBtdf2tm29W02/I=; b=KDd5fztuAQIqPqzhgAE9ZyRU8D
+	uxLszym9/SYkZNojmAVQBnPgk76UEawPSFtnBZZkTZYtbjEWNstkxOCCRN2lTGvGPZyuyaXzzIdfM
+	cf6NrOyqwk7028LZE9Soi8mx7WCe2VvU/3Gm2B3l4FZMg5NahAuUSj0Eg4gUK+V9Fpvz9bCg0X0qE
+	t7ZlEmuB4ke38fsodytu9AGcSn2bFIWHTobuck+BcTXHj/Z/3B2X7REmlpwVS7YM3bWrdAfUqJup5
+	i588BmO18rNNBhCFl3Xm8emtrEP80zHeFif2RDHfsrw+7sWEQsfilhZyl7TN5pGUc/yi4blqQEpWd
+	GIprxnsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZUqg-00000008mlz-2td3;
-	Wed, 09 Jul 2025 13:28:34 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uZVTu-00000008ucN-3e3p;
+	Wed, 09 Jul 2025 14:09:06 +0000
+Received: from out-189.mta0.migadu.com ([2001:41d0:1004:224b::bd])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZSc0-00000008Qot-395b;
-	Wed, 09 Jul 2025 11:05:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 761DF454C7;
-	Wed,  9 Jul 2025 11:05:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99AEFC4CEEF;
-	Wed,  9 Jul 2025 11:05:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752059116;
-	bh=L6FEap1P5pzGaj4wNUU+zauIzGODBRBQ8BtkaLI+3XM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FSJ4xrj7BOFtxFZqPN6/S0owfj6x+iwNbeMojijrj3cXRXpOrUqtSzCd/4KSQjJuW
-	 pRVghCRJ86jaE8AFTQf0t2tllDeTj+5dtkjwnykFECfj5xCLfC3bYrpvep7UOJib0q
-	 yW9mRZK0K5VZwFh3IlSqowWqOeDk9TUC39LSZYYUry4/boRvE5JVGg8mNdIBIco4LF
-	 t3nKfh5f02MLzRw9i+yFIUwNog8yNGPUc2Ujk4pS8NCDsP5JR6u9NtLl5L1znEk+HM
-	 QT6mgS60tDC6htmjGvNrmEJ7bZe5K5xZKhtmAOnOjxaaCD114Vi3hovKbhlshcXc9V
-	 u5ThzjH3nzxfA==
-Message-ID: <649824ea-a420-437e-ace1-2f079235c604@kernel.org>
-Date: Wed, 9 Jul 2025 13:05:10 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1uZSnv-00000008TNP-1uXm
+	for linux-rockchip@lists.infradead.org;
+	Wed, 09 Jul 2025 11:17:37 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1752059852;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=2jiUrJWIjrS/zl54Lua+tp5RGUjRBoaPMIxbNmfvQnk=;
+	b=EZug0f5S+/AFz3Oz/SwVdCwV/oLCi9n3Ho1yrquCajDl1sjiNb71yHqETQh7MqlOSf2uoz
+	psA3PKH5qYO+j+uDUSm0vloPFdNuC00n9oAK0Mf69vh9B9sD9XC9w21QHNRnGjRuDXqADX
+	XZH7dniVfMA7lFA5MMj+d90SH8UWusVxqKBQSOBxyxq7txnToUjO9mINyjmOiZHISkHr2u
+	LTDneFcGyq/7sBEViNnZsSPCsIMXNTRSAvwUsvGliPdu3kHee81sCLMbUJHN3df98ak4Uf
+	KTL+Yiyt0S0wB2819QUPuNkL1Mtj3mg45N4jemDAPidBTxICYrtikgmOrm8npQ==
+Date: Wed, 09 Jul 2025 13:17:23 +0200
+Message-Id: <DB7HDOPFOQAE.3NG4SP67ES80J@cknow.org>
+Cc: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
 Subject: Re: [PATCH] arm64: dts: rockchip: Add reset button to NanoPi R5S
-To: Diederik de Haas <didi.debian@cknow.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Krzysztof Kozlowski" <krzk@kernel.org>, "Rob Herring"
+ <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor
+ Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
 References: <20250709105715.119771-1-didi.debian@cknow.org>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250709105715.119771-1-didi.debian@cknow.org>
+ <649824ea-a420-437e-ace1-2f079235c604@kernel.org>
+In-Reply-To: <649824ea-a420-437e-ace1-2f079235c604@kernel.org>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_040516_840647_E026AD49 
-X-CRM114-Status: UNSURE (   7.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250709_041736_190409_673D5786 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,41 +67,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7752085458327989071=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 09/07/2025 12:57, Diederik de Haas wrote:
-> +	gpio-keys {
-> +		compatible = "gpio-keys";
-> +		pinctrl-0 = <&gpio4_a0_k1>;
-> +		pinctrl-names = "default";
-> +
-> +		button-reset {
-> +			debounce-interval = <50>;
-> +			gpios = <&gpio4 RK_PA0 GPIO_ACTIVE_LOW>;
-> +			label = "RESET";
-> +			linux,code = <KEY_RESTART>;
-> +		};
-> +	};
-> +
->  	gpio-leds {
->  		compatible = "gpio-leds";
->  		pinctrl-names = "default";
-> @@ -127,6 +140,12 @@ eth_phy0_reset_pin: eth-phy0-reset-pin {
->  		};
->  	};
->  
-> +	gpio-keys {
-> +		gpio4_a0_k1: gpio4-a0-k1 {
+--===============7752085458327989071==
+Content-Type: multipart/signed;
+ boundary=a15b73511b44a3a7249de8bd0c977f6d60b982377015c90af4dbb343db1a;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-Are you sure that this passes checks?
+--a15b73511b44a3a7249de8bd0c977f6d60b982377015c90af4dbb343db1a
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Best regards,
-Krzysztof
+On Wed Jul 9, 2025 at 1:05 PM CEST, Krzysztof Kozlowski wrote:
+> On 09/07/2025 12:57, Diederik de Haas wrote:
+>> +	gpio-keys {
+>> +		compatible =3D "gpio-keys";
+>> +		pinctrl-0 =3D <&gpio4_a0_k1>;
+>> +		pinctrl-names =3D "default";
+>> +
+>> +		button-reset {
+>> +			debounce-interval =3D <50>;
+>> +			gpios =3D <&gpio4 RK_PA0 GPIO_ACTIVE_LOW>;
+>> +			label =3D "RESET";
+>> +			linux,code =3D <KEY_RESTART>;
+>> +		};
+>> +	};
+>> +
+>>  	gpio-leds {
+>>  		compatible =3D "gpio-leds";
+>>  		pinctrl-names =3D "default";
+>> @@ -127,6 +140,12 @@ eth_phy0_reset_pin: eth-phy0-reset-pin {
+>>  		};
+>>  	};
+>> =20
+>> +	gpio-keys {
+>> +		gpio4_a0_k1: gpio4-a0-k1 {
+>
+> Are you sure that this passes checks?
+
+I did the following:
+
+```sh
+export PATH=3D~/dev/kernel.org/dt-schema-venv/bin/:$PATH CROSS_COMPILE=3Daa=
+rch64-linux-gnu- ARCH=3Darm64
+make distclean
+make debarm64_defconfig
+make CHECK_DTBS=3Dy W=3D1 rockchip/rk3568-nanopi-r5s.dtb
+```
+
+And it did not report any issues.
+Then booted up my NanoPi R5S and verified that with the updated dtb the
+reset button worked.
+
+If it's about the 'weird' name/label, it is what is used in the
+schematic document I have and I asked Heiko (on IRC) if using
+``reset_button_pin: gpio4-a0-k1`` would not be better. That would make
+it more descriptive while also having the schematic traceability in it.
+The answer was no, use the form I used in this patch.
+
+Am I missing checks I should've done as well?
+
+Cheers,
+  Diederik
+
+--a15b73511b44a3a7249de8bd0c977f6d60b982377015c90af4dbb343db1a
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaG5PxgAKCRDXblvOeH7b
+bi3IAP0QZ6nrHeJEorK5zsrkL55Nlul5jDIYPBwehpDyDLT8BgD+JuPieM/qOX2V
+t77WC+GEezyPZaeos/wdCAlTkGS+OA8=
+=okS4
+-----END PGP SIGNATURE-----
+
+--a15b73511b44a3a7249de8bd0c977f6d60b982377015c90af4dbb343db1a--
+
+
+--===============7752085458327989071==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7752085458327989071==--
+
