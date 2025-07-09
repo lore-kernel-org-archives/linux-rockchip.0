@@ -4,58 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD2D6C83F03
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 14:47:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7430CC83F03
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 15:25:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S3dDXTmD5Z4lHljLnJnvNr7BOzVSCgeDpRdpRT1OzlE=; b=fooS+gHxsSs/vT
-	mm/qi0mixMhHpSYsHU6oDetuHu1EaXpUrfLPQh6KznKBeXxgGeVaJyZL7DiVaMTf7q0hUkFpqAK+V
-	8AGm+eH5X2SjOY9BOeTcLdcAohLuJJzlvxyMzPfcLyAe4TlmazvP57xwGuaUgnXLTFvGLCaLxBIGX
-	SuBsvb1K5bn9v6Mhtal0cGhocMHifG1jZizr5U99L2qJeP8g6wAJqFLEsZW685QvywCUzKMJnJt+e
-	6FcLjKe54qjQMa/NRR+JjkGzQJ3ChFCnPT26tRzODL9qUiaoyNK6BmTkO9/IlstJXxkdW95ZutSXN
-	56wCDUEaNH33Wyf8yoDg==;
+	List-Owner; bh=5n0kK5m+XZdjGBR+wcnk8NhzCuEzStUYF7BNA8m8xUA=; b=VmL5J3RImJn179
+	N91U/k9tA58JAp4UIjyjm80ipeo738cYmZDoDe0ZEFw2YJIJWQfuxob0eHGn3kB4JJWaofTDMr63/
+	t57SxFOphWnMDsHlzAgYpuckhiuDZa5G9HENbH9dcyVKDjvGI+PtYwyovSfI1/IxfFi3S607aqPhC
+	UGzlcrEwV+GayDHBedl6WpMBz+6ytpWj4XhfqMZrZEKiczusJM5SRe7GADy8mvIuxDoZHzzsu2IZV
+	R9JbYTZrgL5auiSDmlusdCXtTooFXWwF0G9tD9Us7oAdVlLHZKyf3ihHZDPts1WIRu4+DXveKExaY
+	uSM7LkfG7ybYhCBEaX8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZW4p-000000092HK-3Lnd;
-	Wed, 09 Jul 2025 14:47:15 +0000
+	id 1uZWfQ-000000099l5-2KfW;
+	Wed, 09 Jul 2025 15:25:04 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZTN0-00000008YKK-2grI;
-	Wed, 09 Jul 2025 11:53:52 +0000
-Received: from ideasonboard.com (mob-5-90-141-178.net.vodafone.it [5.90.141.178])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E59D0669;
-	Wed,  9 Jul 2025 13:53:18 +0200 (CEST)
+	id 1uZUgf-00000008l4o-0wo0;
+	Wed, 09 Jul 2025 13:18:14 +0000
+Received: from [192.168.0.43] (cpc141996-chfd3-2-0-cust928.12-3.cable.virginm.net [86.13.91.161])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B5A19351;
+	Wed,  9 Jul 2025 15:17:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1752061999;
-	bh=DoyjVHx3V4D/LlpaXO0wCC/NZ6ww2nexB0QU8JuI/VE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AKNvO5DUSSpDSn3S8IrpERtXLHDldnLJTZ8rS7YRJXPCWEPoOFAh9RF7N8BF2lCoO
-	 bYq7uBk6e3/oaNtJ+vtFb24Uh3TBH+Gshc8LWganCmmc4Pd28WRb5ynM2T0sXqIAja
-	 c5OtLoiZbqsEbkTw3kLB7QvoqC3KnIU4DUjU7PDE=
-Date: Wed, 9 Jul 2025 13:53:39 +0200
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Dan Scally <dan.scally@ideasonboard.com>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
-	Dafna Hirschfeld <dafna@fastmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org
+	s=mail; t=1752067063;
+	bh=Vm0ZX5g2g8BiViNGV9jB8LvmbIyvMlbDjjqe3kbhKlo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=pT18jA1LCMOcoYLi+mBZ/KWgq8MMsqd8VXaPnIh1IQkleZLtDu+8IE+N+RNi6GeJu
+	 UqdK3i+XQymXyxa7kTi0KxlXIEOjV1tfy/qt9+N6vbObYpSsw19dEUyETtq2n+YRP8
+	 OEjkyuJEpizsLdOCJOv0/RhQIEp9jL7HZUcAtHPY=
+Message-ID: <78006c71-592b-4f54-93ed-5f4b21b5bc33@ideasonboard.com>
+Date: Wed, 9 Jul 2025 14:18:07 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/8] media: uapi: Introduce V4L2 extensible params
-Message-ID: <yydzeg53koeawjc3vtzwfnq5x6avmv4ep53bcxff6kvzzu36jl@qp37ojw2drug>
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Cc: Dafna Hirschfeld <dafna@fastmail.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Sakari Ailus
+ <sakari.ailus@linux.intel.com>, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 References: <20250708-extensible-parameters-validation-v1-0-9fc27c9c728c@ideasonboard.com>
  <20250708-extensible-parameters-validation-v1-1-9fc27c9c728c@ideasonboard.com>
  <9b12b035-a80d-4d12-a039-daa94d13280e@ideasonboard.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <9b12b035-a80d-4d12-a039-daa94d13280e@ideasonboard.com>
+ <yydzeg53koeawjc3vtzwfnq5x6avmv4ep53bcxff6kvzzu36jl@qp37ojw2drug>
+Content-Language: en-US
+From: Dan Scally <dan.scally@ideasonboard.com>
+Autocrypt: addr=dan.scally@ideasonboard.com; keydata=
+ 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
+In-Reply-To: <yydzeg53koeawjc3vtzwfnq5x6avmv4ep53bcxff6kvzzu36jl@qp37ojw2drug>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_045350_867771_B79AB266 
-X-CRM114-Status: GOOD (  60.61  )
+X-CRM114-CacheID: sfid-20250709_061813_544369_0ED3C1E2 
+X-CRM114-Status: GOOD (  52.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,244 +113,190 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dan,
-   thanks for the comments
-
-On Wed, Jul 09, 2025 at 12:33:17PM +0100, Dan Scally wrote:
-> Hi Jacopo - thanks for the patches
->
-> On 08/07/2025 11:40, Jacopo Mondi wrote:
-> > Introduce v4l2-extensible-params.h in the Linux kernel uAPI.
-> >
-> > The header defines two types that all drivers that use the extensible
-> > parameters format for ISP configuration shall use to build their own
-> > parameters format.
-> >
-> > The newly introduce type v4l2_params_block represent the
-> > header to be prepend to each ISP configuration block and the
-> > v4l2_params_buffer type represent the base type for the configuration
-> > parameters buffer.
-> >
-> > The newly introduced header is not meant to be used directly by
-> > applications which should instead use the platform-specific ones.
-> >
-> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > ---
-> >   MAINTAINERS                                       |   6 ++
-> >   include/uapi/linux/media/v4l2-extensible-params.h | 106 ++++++++++++++++++++++
-> >   2 files changed, 112 insertions(+)
-> >
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 658543062bba3b7e600699d7271ffc89250ba7e5..49a9329e5fe8874bdbaca13946ea28bd80134cb3 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -25968,6 +25968,12 @@ F:	drivers/media/i2c/vd55g1.c
-> >   F:	drivers/media/i2c/vd56g3.c
-> >   F:	drivers/media/i2c/vgxy61.c
-> > +V4L2 EXTENSIBLE PARAMETERS FORMAT
-> > +M:	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > +L:	linux-media@vger.kernel.org
-> > +S:	Maintained
-> > +F:	include/uapi/linux/media/v4l2-extensible-params.h
-> > +
-> >   VF610 NAND DRIVER
-> >   M:	Stefan Agner <stefan@agner.ch>
-> >   L:	linux-mtd@lists.infradead.org
-> > diff --git a/include/uapi/linux/media/v4l2-extensible-params.h b/include/uapi/linux/media/v4l2-extensible-params.h
-> > new file mode 100644
-> > index 0000000000000000000000000000000000000000..ed37da433c6b1a34523b6a9befde5c0dee601cfb
-> > --- /dev/null
-> > +++ b/include/uapi/linux/media/v4l2-extensible-params.h
-> > @@ -0,0 +1,106 @@
-> > +/* SPDX-License-Identifier: ((GPL-2.0+ WITH Linux-syscall-note) OR MIT) */
-> > +/*
-> > + * Video4Linux2 extensible configuration parameters base types
-> > + *
-> > + * Copyright (C) 2025 Ideas On Board Oy
-> > + * Author: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > + */
-> > +
-> > +#ifndef _UAPI_V4L2_PARAMS_H_
-> > +#define _UAPI_V4L2_PARAMS_H_
-> > +
-> > +#ifndef _UAPI_V4L2_EXTENSIBLE_PARAMS_GUARD_
-> > +/*
-> > + * Note: each ISP driver exposes a different uAPI, where the types layout
-> > + * match (more or less strictly) the hardware registers layout.
-> > + *
-> > + * This file defines the base types on which each ISP driver can implement its
-> > + * own types that define its uAPI.
-> > + *
-> > + * This file is not meant to be included directly by applications which shall
-> > + * instead only include the ISP-specific implementation.
-> > + */
-> > +#error "This file should not be included directly by applications"
-> > +#endif
-> > +
-> > +#include <linux/types.h>
-> > +
-> > +/**
-> > + * struct v4l2_params_block - V4L2 extensible parameters block header
->
-> struct v4l2_params_block_header would be nicer I think
->
-
-That's what I had started with :)
-
-I'm debated between a longer but more explicative name, or a shorter
-one.
-
-> > + *
-> > + * This structure represents the common part of all the ISP configuration
-> > + * blocks. Each parameters block shall embed an instance of this structure type
-> > + * as its first member, followed by the block-specific configuration data. The
-> > + * driver inspects this common header to discern the block type and its size and
-> > + * properly handle the block content by casting it to the correct block-specific
-> > + * type.
-> > + *
-> > + * The @type field is one of the values enumerated by each platform-specific ISP
-> > + * block types which specifies how the data should be interpreted by the driver.
-> > + * The @size field specifies the size of the parameters block and is used by the
-> > + * driver for validation purposes.
-> > + *
-> > + * The @flags field is a bitmask of platform-specific control flags.
-> Since we're including flags in this base struct rather than a platform
-> specific subclass I think perhaps we should centralise some flags (which I
-> think is supported by the fact that all three implementations share the same
-> flags so far). Perhaps we could reserve the bottom 8 bits for common flags
-> (like ENABLE / DISABLE) and validate them centrally, and leave the top 8 for
-> platform specific flags. I think we could then drop the platform specific
-> validation for rkisp1 and c3 and just pass null to the helpers, since they
-> do the same thing.
-
-Yes, that's one of the things I was not sure about... if we should
-centralize flags definition as well or not...
-
-Knowing that Mali will use the same flags that the two existing
-implementations already have is a good indication that we can probably
-centralize at least the ENABLE/DISABLE ones
-
-> > + *
-> > + * Userspace shall never use this type directly but use the platform specific
-> > + * one with the associated data types.
->
-> Why wouldn't userspace just use these directly? I could see why it might be
-> difficult for the C3 and Rkisp1 which are merged, but for a new
-> implementation couldn't they just use these objects without bothering to
-> define their own?
->
-
-mmm, my thinking was that each driver implementation shall define
-their own types because I would expect that they will have to define
-their own meta image format... For v4l2_params_buffer see below, for
-the blocks it might be totally possible to use these type most
-probably..
-
->
-> If we end up using these objects directly I think it would be nice to have
-> the example code block from the platform specific headers documentation here
-> too.
->
-> > + *
-> > + * - Rockchip RkISP1: :c:type:`rkisp1_ext_params_block_type`
-> > + * - Amlogic C3: :c:type:`c3_isp_params_block_type`
-> > + *
-> > + * @type: The parameters block type (platform-specific)
-> > + * @flags: A bitmask of block flags (platform-specific)
-> > + * @size: Size (in bytes) of the parameters block, including this header
-> > + */
-> > +struct v4l2_params_block {
-> > +	__u16 type;
-> > +	__u16 flags;
-> > +	__u32 size;
-> > +} __attribute__((aligned(8)));
-> > +
-> > +/**
-> > + * struct v4l2_params_buffer - V4L2 extensible parameters configuration
-> > + *
-> > + * This struct contains the configuration parameters of the ISP algorithms,
-> > + * serialized by userspace into a data buffer. Each configuration parameter
-> > + * block is represented by a block-specific structure which contains a
-> > + * :c:type:`v4l2_params_block` entry as first member. Userspace populates
-> > + * the @data buffer with configuration parameters for the blocks that it intends
-> > + * to configure. As a consequence, the data buffer effective size changes
-> > + * according to the number of ISP blocks that userspace intends to configure and
-> > + * is set by userspace in the @data_size field.
-> > + *
-> > + * The parameters buffer is versioned by the @version field to allow modifying
-> > + * and extending its definition. Userspace shall populate the @version field to
-> > + * inform the driver about the version it intends to use. The driver will parse
-> > + * and handle the @data buffer according to the data layout specific to the
-> > + * indicated version and return an error if the desired version is not
-> > + * supported.
-> > + *
-> > + * For each ISP block that userspace wants to configure, a block-specific
-> > + * structure is appended to the @data buffer, one after the other without gaps
-> > + * in between nor overlaps. Userspace shall populate the @data_size field with
-> > + * the effective size, in bytes, of the @data buffer.
-> > + *
-> > + * Each ISP driver using the extensible parameters format shall define a
-> > + * type which is type-convertible to this one, with the difference that the
-> > + * @data member shall actually a memory buffer of platform-specific size and
-> > + * not a pointer.
->
-> Why not just use this object directly? We could provide a helper in
-> v4l2-extensible-params.h that calculates the size of the buffer with a given
-> data array size for the driver's convenience
-
-The main reason I thought v4l2_params_buffer cannot be used is because
-of the flexible-array at the end of the type
-
-struct v4l2_params_buffer {
-	__u32 version;
-	__u32 data_size;
-	__u8 data[];
-};
-
-vs
-
-struct rkisp1_ext_params_cfg {
-	__u32 version;
-	__u32 data_size;
-	__u8 data[RKISP1_EXT_PARAMS_MAX_SIZE];
-};
-
-I might have missed what you're suggesting here with the helper in
-v4l2-extensible-params.h :)
-
-
->
->
-> Thanks
->
-> Dan
->
-> > + *
-> > + * Userspace shall never use this type directly but use the platform specific
-> > + * one with the associated data types.
-> > + *
-> > + * - Rockchip RkISP1: :c:type:`rkisp1_ext_params_cfg`
-> > + * - Amlogic C3: :c:type:`c3_isp_params_cfg`
-> > + *
-> > + * @version: The parameters buffer version (platform-specific)
-> > + * @data_size: The configuration data effective size, excluding this header
-> > + * @data: The configuration data
-> > + */
-> > +struct v4l2_params_buffer {
-> > +	__u32 version;
-> > +	__u32 data_size;
-> > +	__u8 data[];
-> > +};
-> > +
-> > +#endif /* _UAPI_V4L2_PARAMS_H_ */
-> >
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSmFjb3BvCgpPbiAwOS8wNy8yMDI1IDEyOjUzLCBKYWNvcG8gTW9uZGkgd3JvdGU6Cj4gSGkg
+RGFuLAo+ICAgICB0aGFua3MgZm9yIHRoZSBjb21tZW50cwo+Cj4gT24gV2VkLCBKdWwgMDksIDIw
+MjUgYXQgMTI6MzM6MTdQTSArMDEwMCwgRGFuIFNjYWxseSB3cm90ZToKPj4gSGkgSmFjb3BvIC0g
+dGhhbmtzIGZvciB0aGUgcGF0Y2hlcwo+Pgo+PiBPbiAwOC8wNy8yMDI1IDExOjQwLCBKYWNvcG8g
+TW9uZGkgd3JvdGU6Cj4+PiBJbnRyb2R1Y2UgdjRsMi1leHRlbnNpYmxlLXBhcmFtcy5oIGluIHRo
+ZSBMaW51eCBrZXJuZWwgdUFQSS4KPj4+Cj4+PiBUaGUgaGVhZGVyIGRlZmluZXMgdHdvIHR5cGVz
+IHRoYXQgYWxsIGRyaXZlcnMgdGhhdCB1c2UgdGhlIGV4dGVuc2libGUKPj4+IHBhcmFtZXRlcnMg
+Zm9ybWF0IGZvciBJU1AgY29uZmlndXJhdGlvbiBzaGFsbCB1c2UgdG8gYnVpbGQgdGhlaXIgb3du
+Cj4+PiBwYXJhbWV0ZXJzIGZvcm1hdC4KPj4+Cj4+PiBUaGUgbmV3bHkgaW50cm9kdWNlIHR5cGUg
+djRsMl9wYXJhbXNfYmxvY2sgcmVwcmVzZW50IHRoZQo+Pj4gaGVhZGVyIHRvIGJlIHByZXBlbmQg
+dG8gZWFjaCBJU1AgY29uZmlndXJhdGlvbiBibG9jayBhbmQgdGhlCj4+PiB2NGwyX3BhcmFtc19i
+dWZmZXIgdHlwZSByZXByZXNlbnQgdGhlIGJhc2UgdHlwZSBmb3IgdGhlIGNvbmZpZ3VyYXRpb24K
+Pj4+IHBhcmFtZXRlcnMgYnVmZmVyLgo+Pj4KPj4+IFRoZSBuZXdseSBpbnRyb2R1Y2VkIGhlYWRl
+ciBpcyBub3QgbWVhbnQgdG8gYmUgdXNlZCBkaXJlY3RseSBieQo+Pj4gYXBwbGljYXRpb25zIHdo
+aWNoIHNob3VsZCBpbnN0ZWFkIHVzZSB0aGUgcGxhdGZvcm0tc3BlY2lmaWMgb25lcy4KPj4+Cj4+
+PiBTaWduZWQtb2ZmLWJ5OiBKYWNvcG8gTW9uZGkgPGphY29wby5tb25kaUBpZGVhc29uYm9hcmQu
+Y29tPgo+Pj4gLS0tCj4+PiAgICBNQUlOVEFJTkVSUyAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIHwgICA2ICsrCj4+PiAgICBpbmNsdWRlL3VhcGkvbGludXgvbWVkaWEvdjRs
+Mi1leHRlbnNpYmxlLXBhcmFtcy5oIHwgMTA2ICsrKysrKysrKysrKysrKysrKysrKysKPj4+ICAg
+IDIgZmlsZXMgY2hhbmdlZCwgMTEyIGluc2VydGlvbnMoKykKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEv
+TUFJTlRBSU5FUlMgYi9NQUlOVEFJTkVSUwo+Pj4gaW5kZXggNjU4NTQzMDYyYmJhM2I3ZTYwMDY5
+OWQ3MjcxZmZjODkyNTBiYTdlNS4uNDlhOTMyOWU1ZmU4ODc0YmRiYWNhMTM5NDZlYTI4YmQ4MDEz
+NGNiMyAxMDA2NDQKPj4+IC0tLSBhL01BSU5UQUlORVJTCj4+PiArKysgYi9NQUlOVEFJTkVSUwo+
+Pj4gQEAgLTI1OTY4LDYgKzI1OTY4LDEyIEBAIEY6CWRyaXZlcnMvbWVkaWEvaTJjL3ZkNTVnMS5j
+Cj4+PiAgICBGOglkcml2ZXJzL21lZGlhL2kyYy92ZDU2ZzMuYwo+Pj4gICAgRjoJZHJpdmVycy9t
+ZWRpYS9pMmMvdmd4eTYxLmMKPj4+ICtWNEwyIEVYVEVOU0lCTEUgUEFSQU1FVEVSUyBGT1JNQVQK
+Pj4+ICtNOglKYWNvcG8gTW9uZGkgPGphY29wby5tb25kaUBpZGVhc29uYm9hcmQuY29tPgo+Pj4g
+K0w6CWxpbnV4LW1lZGlhQHZnZXIua2VybmVsLm9yZwo+Pj4gK1M6CU1haW50YWluZWQKPj4+ICtG
+OglpbmNsdWRlL3VhcGkvbGludXgvbWVkaWEvdjRsMi1leHRlbnNpYmxlLXBhcmFtcy5oCj4+PiAr
+Cj4+PiAgICBWRjYxMCBOQU5EIERSSVZFUgo+Pj4gICAgTToJU3RlZmFuIEFnbmVyIDxzdGVmYW5A
+YWduZXIuY2g+Cj4+PiAgICBMOglsaW51eC1tdGRAbGlzdHMuaW5mcmFkZWFkLm9yZwo+Pj4gZGlm
+ZiAtLWdpdCBhL2luY2x1ZGUvdWFwaS9saW51eC9tZWRpYS92NGwyLWV4dGVuc2libGUtcGFyYW1z
+LmggYi9pbmNsdWRlL3VhcGkvbGludXgvbWVkaWEvdjRsMi1leHRlbnNpYmxlLXBhcmFtcy5oCj4+
+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+Pj4gaW5kZXggMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw
+MDAwMDAwMDAwMDAwMDAwMC4uZWQzN2RhNDMzYzZiMWEzNDUyM2I2YTliZWZkZTVjMGRlZTYwMWNm
+Ygo+Pj4gLS0tIC9kZXYvbnVsbAo+Pj4gKysrIGIvaW5jbHVkZS91YXBpL2xpbnV4L21lZGlhL3Y0
+bDItZXh0ZW5zaWJsZS1wYXJhbXMuaAo+Pj4gQEAgLTAsMCArMSwxMDYgQEAKPj4+ICsvKiBTUERY
+LUxpY2Vuc2UtSWRlbnRpZmllcjogKChHUEwtMi4wKyBXSVRIIExpbnV4LXN5c2NhbGwtbm90ZSkg
+T1IgTUlUKSAqLwo+Pj4gKy8qCj4+PiArICogVmlkZW80TGludXgyIGV4dGVuc2libGUgY29uZmln
+dXJhdGlvbiBwYXJhbWV0ZXJzIGJhc2UgdHlwZXMKPj4+ICsgKgo+Pj4gKyAqIENvcHlyaWdodCAo
+QykgMjAyNSBJZGVhcyBPbiBCb2FyZCBPeQo+Pj4gKyAqIEF1dGhvcjogSmFjb3BvIE1vbmRpIDxq
+YWNvcG8ubW9uZGlAaWRlYXNvbmJvYXJkLmNvbT4KPj4+ICsgKi8KPj4+ICsKPj4+ICsjaWZuZGVm
+IF9VQVBJX1Y0TDJfUEFSQU1TX0hfCj4+PiArI2RlZmluZSBfVUFQSV9WNEwyX1BBUkFNU19IXwo+
+Pj4gKwo+Pj4gKyNpZm5kZWYgX1VBUElfVjRMMl9FWFRFTlNJQkxFX1BBUkFNU19HVUFSRF8KPj4+
+ICsvKgo+Pj4gKyAqIE5vdGU6IGVhY2ggSVNQIGRyaXZlciBleHBvc2VzIGEgZGlmZmVyZW50IHVB
+UEksIHdoZXJlIHRoZSB0eXBlcyBsYXlvdXQKPj4+ICsgKiBtYXRjaCAobW9yZSBvciBsZXNzIHN0
+cmljdGx5KSB0aGUgaGFyZHdhcmUgcmVnaXN0ZXJzIGxheW91dC4KPj4+ICsgKgo+Pj4gKyAqIFRo
+aXMgZmlsZSBkZWZpbmVzIHRoZSBiYXNlIHR5cGVzIG9uIHdoaWNoIGVhY2ggSVNQIGRyaXZlciBj
+YW4gaW1wbGVtZW50IGl0cwo+Pj4gKyAqIG93biB0eXBlcyB0aGF0IGRlZmluZSBpdHMgdUFQSS4K
+Pj4+ICsgKgo+Pj4gKyAqIFRoaXMgZmlsZSBpcyBub3QgbWVhbnQgdG8gYmUgaW5jbHVkZWQgZGly
+ZWN0bHkgYnkgYXBwbGljYXRpb25zIHdoaWNoIHNoYWxsCj4+PiArICogaW5zdGVhZCBvbmx5IGlu
+Y2x1ZGUgdGhlIElTUC1zcGVjaWZpYyBpbXBsZW1lbnRhdGlvbi4KPj4+ICsgKi8KPj4+ICsjZXJy
+b3IgIlRoaXMgZmlsZSBzaG91bGQgbm90IGJlIGluY2x1ZGVkIGRpcmVjdGx5IGJ5IGFwcGxpY2F0
+aW9ucyIKPj4+ICsjZW5kaWYKPj4+ICsKPj4+ICsjaW5jbHVkZSA8bGludXgvdHlwZXMuaD4KPj4+
+ICsKPj4+ICsvKioKPj4+ICsgKiBzdHJ1Y3QgdjRsMl9wYXJhbXNfYmxvY2sgLSBWNEwyIGV4dGVu
+c2libGUgcGFyYW1ldGVycyBibG9jayBoZWFkZXIKPj4gc3RydWN0IHY0bDJfcGFyYW1zX2Jsb2Nr
+X2hlYWRlciB3b3VsZCBiZSBuaWNlciBJIHRoaW5rCj4+Cj4gVGhhdCdzIHdoYXQgSSBoYWQgc3Rh
+cnRlZCB3aXRoIDopCj4KPiBJJ20gZGViYXRlZCBiZXR3ZWVuIGEgbG9uZ2VyIGJ1dCBtb3JlIGV4
+cGxpY2F0aXZlIG5hbWUsIG9yIGEgc2hvcnRlcgo+IG9uZS4KCgpJIHZvdGUgZm9yIGxvbmdlciBo
+ZXJlIGJ1dCBvbmx5IGJlY2F1c2UgSSB0aGluayB0aGUgcGhyYXNlICJibG9jayIgYXBwbGllcyBt
+b3JlIHByb3Blcmx5IHRvIHRoZSAKbGlrZXMgb2Ygc3RydWN0IHJraXNwMV9leHRfcGFyYW1zX2Js
+c19jb25maWcgZm9yIGV4YW1wbGUuCgo+Cj4+PiArICoKPj4+ICsgKiBUaGlzIHN0cnVjdHVyZSBy
+ZXByZXNlbnRzIHRoZSBjb21tb24gcGFydCBvZiBhbGwgdGhlIElTUCBjb25maWd1cmF0aW9uCj4+
+PiArICogYmxvY2tzLiBFYWNoIHBhcmFtZXRlcnMgYmxvY2sgc2hhbGwgZW1iZWQgYW4gaW5zdGFu
+Y2Ugb2YgdGhpcyBzdHJ1Y3R1cmUgdHlwZQo+Pj4gKyAqIGFzIGl0cyBmaXJzdCBtZW1iZXIsIGZv
+bGxvd2VkIGJ5IHRoZSBibG9jay1zcGVjaWZpYyBjb25maWd1cmF0aW9uIGRhdGEuIFRoZQo+Pj4g
+KyAqIGRyaXZlciBpbnNwZWN0cyB0aGlzIGNvbW1vbiBoZWFkZXIgdG8gZGlzY2VybiB0aGUgYmxv
+Y2sgdHlwZSBhbmQgaXRzIHNpemUgYW5kCj4+PiArICogcHJvcGVybHkgaGFuZGxlIHRoZSBibG9j
+ayBjb250ZW50IGJ5IGNhc3RpbmcgaXQgdG8gdGhlIGNvcnJlY3QgYmxvY2stc3BlY2lmaWMKPj4+
+ICsgKiB0eXBlLgo+Pj4gKyAqCj4+PiArICogVGhlIEB0eXBlIGZpZWxkIGlzIG9uZSBvZiB0aGUg
+dmFsdWVzIGVudW1lcmF0ZWQgYnkgZWFjaCBwbGF0Zm9ybS1zcGVjaWZpYyBJU1AKPj4+ICsgKiBi
+bG9jayB0eXBlcyB3aGljaCBzcGVjaWZpZXMgaG93IHRoZSBkYXRhIHNob3VsZCBiZSBpbnRlcnBy
+ZXRlZCBieSB0aGUgZHJpdmVyLgo+Pj4gKyAqIFRoZSBAc2l6ZSBmaWVsZCBzcGVjaWZpZXMgdGhl
+IHNpemUgb2YgdGhlIHBhcmFtZXRlcnMgYmxvY2sgYW5kIGlzIHVzZWQgYnkgdGhlCj4+PiArICog
+ZHJpdmVyIGZvciB2YWxpZGF0aW9uIHB1cnBvc2VzLgo+Pj4gKyAqCj4+PiArICogVGhlIEBmbGFn
+cyBmaWVsZCBpcyBhIGJpdG1hc2sgb2YgcGxhdGZvcm0tc3BlY2lmaWMgY29udHJvbCBmbGFncy4K
+Pj4gU2luY2Ugd2UncmUgaW5jbHVkaW5nIGZsYWdzIGluIHRoaXMgYmFzZSBzdHJ1Y3QgcmF0aGVy
+IHRoYW4gYSBwbGF0Zm9ybQo+PiBzcGVjaWZpYyBzdWJjbGFzcyBJIHRoaW5rIHBlcmhhcHMgd2Ug
+c2hvdWxkIGNlbnRyYWxpc2Ugc29tZSBmbGFncyAod2hpY2ggSQo+PiB0aGluayBpcyBzdXBwb3J0
+ZWQgYnkgdGhlIGZhY3QgdGhhdCBhbGwgdGhyZWUgaW1wbGVtZW50YXRpb25zIHNoYXJlIHRoZSBz
+YW1lCj4+IGZsYWdzIHNvIGZhcikuIFBlcmhhcHMgd2UgY291bGQgcmVzZXJ2ZSB0aGUgYm90dG9t
+IDggYml0cyBmb3IgY29tbW9uIGZsYWdzCj4+IChsaWtlIEVOQUJMRSAvIERJU0FCTEUpIGFuZCB2
+YWxpZGF0ZSB0aGVtIGNlbnRyYWxseSwgYW5kIGxlYXZlIHRoZSB0b3AgOCBmb3IKPj4gcGxhdGZv
+cm0gc3BlY2lmaWMgZmxhZ3MuIEkgdGhpbmsgd2UgY291bGQgdGhlbiBkcm9wIHRoZSBwbGF0Zm9y
+bSBzcGVjaWZpYwo+PiB2YWxpZGF0aW9uIGZvciBya2lzcDEgYW5kIGMzIGFuZCBqdXN0IHBhc3Mg
+bnVsbCB0byB0aGUgaGVscGVycywgc2luY2UgdGhleQo+PiBkbyB0aGUgc2FtZSB0aGluZy4KPiBZ
+ZXMsIHRoYXQncyBvbmUgb2YgdGhlIHRoaW5ncyBJIHdhcyBub3Qgc3VyZSBhYm91dC4uLiBpZiB3
+ZSBzaG91bGQKPiBjZW50cmFsaXplIGZsYWdzIGRlZmluaXRpb24gYXMgd2VsbCBvciBub3QuLi4K
+CgpJIHRoaW5rIHByb2JhYmx5IHRoZSBhYmlsaXR5IHRvIGhhdmUgYm90aCBjZW50cmFsaXNlZCBh
+bmQgcGxhdGZvcm0gc3BlY2lmaWMgb25lcyB3b3VsZCBiZSB3b3J0aHdoaWxlCgo+Cj4gS25vd2lu
+ZyB0aGF0IE1hbGkgd2lsbCB1c2UgdGhlIHNhbWUgZmxhZ3MgdGhhdCB0aGUgdHdvIGV4aXN0aW5n
+Cj4gaW1wbGVtZW50YXRpb25zIGFscmVhZHkgaGF2ZSBpcyBhIGdvb2QgaW5kaWNhdGlvbiB0aGF0
+IHdlIGNhbiBwcm9iYWJseQo+IGNlbnRyYWxpemUgYXQgbGVhc3QgdGhlIEVOQUJMRS9ESVNBQkxF
+IG9uZXMKCgpZZWFoCgo+Cj4+PiArICoKPj4+ICsgKiBVc2Vyc3BhY2Ugc2hhbGwgbmV2ZXIgdXNl
+IHRoaXMgdHlwZSBkaXJlY3RseSBidXQgdXNlIHRoZSBwbGF0Zm9ybSBzcGVjaWZpYwo+Pj4gKyAq
+IG9uZSB3aXRoIHRoZSBhc3NvY2lhdGVkIGRhdGEgdHlwZXMuCj4+IFdoeSB3b3VsZG4ndCB1c2Vy
+c3BhY2UganVzdCB1c2UgdGhlc2UgZGlyZWN0bHk/IEkgY291bGQgc2VlIHdoeSBpdCBtaWdodCBi
+ZQo+PiBkaWZmaWN1bHQgZm9yIHRoZSBDMyBhbmQgUmtpc3AxIHdoaWNoIGFyZSBtZXJnZWQsIGJ1
+dCBmb3IgYSBuZXcKPj4gaW1wbGVtZW50YXRpb24gY291bGRuJ3QgdGhleSBqdXN0IHVzZSB0aGVz
+ZSBvYmplY3RzIHdpdGhvdXQgYm90aGVyaW5nIHRvCj4+IGRlZmluZSB0aGVpciBvd24/Cj4+Cj4g
+bW1tLCBteSB0aGlua2luZyB3YXMgdGhhdCBlYWNoIGRyaXZlciBpbXBsZW1lbnRhdGlvbiBzaGFs
+bCBkZWZpbmUKPiB0aGVpciBvd24gdHlwZXMgYmVjYXVzZSBJIHdvdWxkIGV4cGVjdCB0aGF0IHRo
+ZXkgd2lsbCBoYXZlIHRvIGRlZmluZQo+IHRoZWlyIG93biBtZXRhIGltYWdlIGZvcm1hdC4uLiBG
+b3IgdjRsMl9wYXJhbXNfYnVmZmVyIHNlZSBiZWxvdywgZm9yCj4gdGhlIGJsb2NrcyBpdCBtaWdo
+dCBiZSB0b3RhbGx5IHBvc3NpYmxlIHRvIHVzZSB0aGVzZSB0eXBlIG1vc3QKPiBwcm9iYWJseS4u
+Cj4KPj4gSWYgd2UgZW5kIHVwIHVzaW5nIHRoZXNlIG9iamVjdHMgZGlyZWN0bHkgSSB0aGluayBp
+dCB3b3VsZCBiZSBuaWNlIHRvIGhhdmUKPj4gdGhlIGV4YW1wbGUgY29kZSBibG9jayBmcm9tIHRo
+ZSBwbGF0Zm9ybSBzcGVjaWZpYyBoZWFkZXJzIGRvY3VtZW50YXRpb24gaGVyZQo+PiB0b28uCj4+
+Cj4+PiArICoKPj4+ICsgKiAtIFJvY2tjaGlwIFJrSVNQMTogOmM6dHlwZTpgcmtpc3AxX2V4dF9w
+YXJhbXNfYmxvY2tfdHlwZWAKPj4+ICsgKiAtIEFtbG9naWMgQzM6IDpjOnR5cGU6YGMzX2lzcF9w
+YXJhbXNfYmxvY2tfdHlwZWAKPj4+ICsgKgo+Pj4gKyAqIEB0eXBlOiBUaGUgcGFyYW1ldGVycyBi
+bG9jayB0eXBlIChwbGF0Zm9ybS1zcGVjaWZpYykKPj4+ICsgKiBAZmxhZ3M6IEEgYml0bWFzayBv
+ZiBibG9jayBmbGFncyAocGxhdGZvcm0tc3BlY2lmaWMpCj4+PiArICogQHNpemU6IFNpemUgKGlu
+IGJ5dGVzKSBvZiB0aGUgcGFyYW1ldGVycyBibG9jaywgaW5jbHVkaW5nIHRoaXMgaGVhZGVyCj4+
+PiArICovCj4+PiArc3RydWN0IHY0bDJfcGFyYW1zX2Jsb2NrIHsKPj4+ICsJX191MTYgdHlwZTsK
+Pj4+ICsJX191MTYgZmxhZ3M7Cj4+PiArCV9fdTMyIHNpemU7Cj4+PiArfSBfX2F0dHJpYnV0ZV9f
+KChhbGlnbmVkKDgpKSk7Cj4+PiArCj4+PiArLyoqCj4+PiArICogc3RydWN0IHY0bDJfcGFyYW1z
+X2J1ZmZlciAtIFY0TDIgZXh0ZW5zaWJsZSBwYXJhbWV0ZXJzIGNvbmZpZ3VyYXRpb24KPj4+ICsg
+Kgo+Pj4gKyAqIFRoaXMgc3RydWN0IGNvbnRhaW5zIHRoZSBjb25maWd1cmF0aW9uIHBhcmFtZXRl
+cnMgb2YgdGhlIElTUCBhbGdvcml0aG1zLAo+Pj4gKyAqIHNlcmlhbGl6ZWQgYnkgdXNlcnNwYWNl
+IGludG8gYSBkYXRhIGJ1ZmZlci4gRWFjaCBjb25maWd1cmF0aW9uIHBhcmFtZXRlcgo+Pj4gKyAq
+IGJsb2NrIGlzIHJlcHJlc2VudGVkIGJ5IGEgYmxvY2stc3BlY2lmaWMgc3RydWN0dXJlIHdoaWNo
+IGNvbnRhaW5zIGEKPj4+ICsgKiA6Yzp0eXBlOmB2NGwyX3BhcmFtc19ibG9ja2AgZW50cnkgYXMg
+Zmlyc3QgbWVtYmVyLiBVc2Vyc3BhY2UgcG9wdWxhdGVzCj4+PiArICogdGhlIEBkYXRhIGJ1ZmZl
+ciB3aXRoIGNvbmZpZ3VyYXRpb24gcGFyYW1ldGVycyBmb3IgdGhlIGJsb2NrcyB0aGF0IGl0IGlu
+dGVuZHMKPj4+ICsgKiB0byBjb25maWd1cmUuIEFzIGEgY29uc2VxdWVuY2UsIHRoZSBkYXRhIGJ1
+ZmZlciBlZmZlY3RpdmUgc2l6ZSBjaGFuZ2VzCj4+PiArICogYWNjb3JkaW5nIHRvIHRoZSBudW1i
+ZXIgb2YgSVNQIGJsb2NrcyB0aGF0IHVzZXJzcGFjZSBpbnRlbmRzIHRvIGNvbmZpZ3VyZSBhbmQK
+Pj4+ICsgKiBpcyBzZXQgYnkgdXNlcnNwYWNlIGluIHRoZSBAZGF0YV9zaXplIGZpZWxkLgo+Pj4g
+KyAqCj4+PiArICogVGhlIHBhcmFtZXRlcnMgYnVmZmVyIGlzIHZlcnNpb25lZCBieSB0aGUgQHZl
+cnNpb24gZmllbGQgdG8gYWxsb3cgbW9kaWZ5aW5nCj4+PiArICogYW5kIGV4dGVuZGluZyBpdHMg
+ZGVmaW5pdGlvbi4gVXNlcnNwYWNlIHNoYWxsIHBvcHVsYXRlIHRoZSBAdmVyc2lvbiBmaWVsZCB0
+bwo+Pj4gKyAqIGluZm9ybSB0aGUgZHJpdmVyIGFib3V0IHRoZSB2ZXJzaW9uIGl0IGludGVuZHMg
+dG8gdXNlLiBUaGUgZHJpdmVyIHdpbGwgcGFyc2UKPj4+ICsgKiBhbmQgaGFuZGxlIHRoZSBAZGF0
+YSBidWZmZXIgYWNjb3JkaW5nIHRvIHRoZSBkYXRhIGxheW91dCBzcGVjaWZpYyB0byB0aGUKPj4+
+ICsgKiBpbmRpY2F0ZWQgdmVyc2lvbiBhbmQgcmV0dXJuIGFuIGVycm9yIGlmIHRoZSBkZXNpcmVk
+IHZlcnNpb24gaXMgbm90Cj4+PiArICogc3VwcG9ydGVkLgo+Pj4gKyAqCj4+PiArICogRm9yIGVh
+Y2ggSVNQIGJsb2NrIHRoYXQgdXNlcnNwYWNlIHdhbnRzIHRvIGNvbmZpZ3VyZSwgYSBibG9jay1z
+cGVjaWZpYwo+Pj4gKyAqIHN0cnVjdHVyZSBpcyBhcHBlbmRlZCB0byB0aGUgQGRhdGEgYnVmZmVy
+LCBvbmUgYWZ0ZXIgdGhlIG90aGVyIHdpdGhvdXQgZ2Fwcwo+Pj4gKyAqIGluIGJldHdlZW4gbm9y
+IG92ZXJsYXBzLiBVc2Vyc3BhY2Ugc2hhbGwgcG9wdWxhdGUgdGhlIEBkYXRhX3NpemUgZmllbGQg
+d2l0aAo+Pj4gKyAqIHRoZSBlZmZlY3RpdmUgc2l6ZSwgaW4gYnl0ZXMsIG9mIHRoZSBAZGF0YSBi
+dWZmZXIuCj4+PiArICoKPj4+ICsgKiBFYWNoIElTUCBkcml2ZXIgdXNpbmcgdGhlIGV4dGVuc2li
+bGUgcGFyYW1ldGVycyBmb3JtYXQgc2hhbGwgZGVmaW5lIGEKPj4+ICsgKiB0eXBlIHdoaWNoIGlz
+IHR5cGUtY29udmVydGlibGUgdG8gdGhpcyBvbmUsIHdpdGggdGhlIGRpZmZlcmVuY2UgdGhhdCB0
+aGUKPj4+ICsgKiBAZGF0YSBtZW1iZXIgc2hhbGwgYWN0dWFsbHkgYSBtZW1vcnkgYnVmZmVyIG9m
+IHBsYXRmb3JtLXNwZWNpZmljIHNpemUgYW5kCj4+PiArICogbm90IGEgcG9pbnRlci4KPj4gV2h5
+IG5vdCBqdXN0IHVzZSB0aGlzIG9iamVjdCBkaXJlY3RseT8gV2UgY291bGQgcHJvdmlkZSBhIGhl
+bHBlciBpbgo+PiB2NGwyLWV4dGVuc2libGUtcGFyYW1zLmggdGhhdCBjYWxjdWxhdGVzIHRoZSBz
+aXplIG9mIHRoZSBidWZmZXIgd2l0aCBhIGdpdmVuCj4+IGRhdGEgYXJyYXkgc2l6ZSBmb3IgdGhl
+IGRyaXZlcidzIGNvbnZlbmllbmNlCj4gVGhlIG1haW4gcmVhc29uIEkgdGhvdWdodCB2NGwyX3Bh
+cmFtc19idWZmZXIgY2Fubm90IGJlIHVzZWQgaXMgYmVjYXVzZQo+IG9mIHRoZSBmbGV4aWJsZS1h
+cnJheSBhdCB0aGUgZW5kIG9mIHRoZSB0eXBlCj4KPiBzdHJ1Y3QgdjRsMl9wYXJhbXNfYnVmZmVy
+IHsKPiAJX191MzIgdmVyc2lvbjsKPiAJX191MzIgZGF0YV9zaXplOwo+IAlfX3U4IGRhdGFbXTsK
+PiB9Owo+Cj4gdnMKPgo+IHN0cnVjdCBya2lzcDFfZXh0X3BhcmFtc19jZmcgewo+IAlfX3UzMiB2
+ZXJzaW9uOwo+IAlfX3UzMiBkYXRhX3NpemU7Cj4gCV9fdTggZGF0YVtSS0lTUDFfRVhUX1BBUkFN
+U19NQVhfU0laRV07Cj4gfTsKPgo+IEkgbWlnaHQgaGF2ZSBtaXNzZWQgd2hhdCB5b3UncmUgc3Vn
+Z2VzdGluZyBoZXJlIHdpdGggdGhlIGhlbHBlciBpbgo+IHY0bDItZXh0ZW5zaWJsZS1wYXJhbXMu
+aCA6KQoKU28gSSB0aGluayBhIGtub3duIHNpemUgaXMgbmVlZGVkIHRvIGFjY29tb2RhdGUgb3Bl
+cmF0aW9ucyBsaWtlICJtZW1jcHkoZHN0LCBzcmMsIApzaXplb2Yocmtpc3AxX2V4dF9wYXJhbXNf
+Y2ZnKSkiLCBidXQgd2l0aCBzb21ldGhpbmcgbGlrZS4uLgoKCiNkZWZpbmUgdjRsMl9wYXJhbXNf
+YnVmZmVyX3NpemUobWF4X3BhcmFtc19zaXplKSBcCgogwqDCoMKgwqDCoMKgwqAgKG9mZnNldG9m
+KHN0cnVjdCB2NGwyX3BhcmFtc19idWZmZXIsIGRhdGEpICsgbWF4X3BhcmFtc19zaXplKQoKCnRo
+ZW4gdGhlIGFib3ZlIG9wZXJhdGlvbiBjYW4gYmUgbWVtY3B5KGRzdCwgCnNyYyzCoHY0bDJfcGFy
+YW1zX2J1ZmZlcl9zaXplKFJLSVNQMV9FWFRfUEFSQU1TX01BWF9TSVpFKSkgaW5zdGVhZAoKClVu
+bGVzcyBJJ20gbWlzc2luZyBzb21ldGhpbmcgdGhhdCBzaG91bGQgYmUgZW5vdWdoIHRvIGRyb3Ag
+dGhlIGRyaXZlciBzcGVjaWZpYyBzdHJ1Y3QuLi5pdCBzZWVtcyB0byAKd29yayBvayBhbnl3YXkK
+CgpEYW4KCj4KPgo+Pgo+PiBUaGFua3MKPj4KPj4gRGFuCj4+Cj4+PiArICoKPj4+ICsgKiBVc2Vy
+c3BhY2Ugc2hhbGwgbmV2ZXIgdXNlIHRoaXMgdHlwZSBkaXJlY3RseSBidXQgdXNlIHRoZSBwbGF0
+Zm9ybSBzcGVjaWZpYwo+Pj4gKyAqIG9uZSB3aXRoIHRoZSBhc3NvY2lhdGVkIGRhdGEgdHlwZXMu
+Cj4+PiArICoKPj4+ICsgKiAtIFJvY2tjaGlwIFJrSVNQMTogOmM6dHlwZTpgcmtpc3AxX2V4dF9w
+YXJhbXNfY2ZnYAo+Pj4gKyAqIC0gQW1sb2dpYyBDMzogOmM6dHlwZTpgYzNfaXNwX3BhcmFtc19j
+ZmdgCj4+PiArICoKPj4+ICsgKiBAdmVyc2lvbjogVGhlIHBhcmFtZXRlcnMgYnVmZmVyIHZlcnNp
+b24gKHBsYXRmb3JtLXNwZWNpZmljKQo+Pj4gKyAqIEBkYXRhX3NpemU6IFRoZSBjb25maWd1cmF0
+aW9uIGRhdGEgZWZmZWN0aXZlIHNpemUsIGV4Y2x1ZGluZyB0aGlzIGhlYWRlcgo+Pj4gKyAqIEBk
+YXRhOiBUaGUgY29uZmlndXJhdGlvbiBkYXRhCj4+PiArICovCj4+PiArc3RydWN0IHY0bDJfcGFy
+YW1zX2J1ZmZlciB7Cj4+PiArCV9fdTMyIHZlcnNpb247Cj4+PiArCV9fdTMyIGRhdGFfc2l6ZTsK
+Pj4+ICsJX191OCBkYXRhW107Cj4+PiArfTsKPj4+ICsKPj4+ICsjZW5kaWYgLyogX1VBUElfVjRM
+Ml9QQVJBTVNfSF8gKi8KPj4+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
