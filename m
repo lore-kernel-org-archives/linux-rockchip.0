@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A76CC83F03
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3CE5C83F0A
 	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 08:00:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,23 +12,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9sYJqcnLBZ4oxfnWawWyC/CE0rtuDxFqta18eLUQVl0=; b=ABEkOV40PPHrAC
-	uCPYISHYCw1ifmHED8bN0e30LEtKVemeAy39TQokw9kC3F4YXNB/f9ucxeQO76Wz+xOTPl0XcoCar
-	QXRO+6s+h5l9KAIf/w8Xl1pvd19WuEfDus61sz3+5ixTJAQTNDs+dxM2xhFUvj0fNAcogJ+PGwNLS
-	6MDGEK4VTxJQDwA8UY92s1CG1pnkAf4dcAjdUxOB8rMDYkmGTdfIoI9gu/D/EKtB7C9trHnMcOz8z
-	2Vf8dtsGzXDs2JXa410I6POQqRfNAEUU6Zq10HIrnERlbDd3gw125ZVazJzSgesQySUEgjbdu/Kop
-	LaaFIEQ+hpPjoNdCE5ew==;
+	List-Owner; bh=0Swrgk200fnyKLSOweR1ZlH+MUSrDsMos/L3KkkpzXQ=; b=NiUohdT91tbPCB
+	9JupIMpwhC9ZZsP5t756WHBsmQyRxcUQZykQ66IHrvraDOpBSn7qLHONJodXYDjHzpEQZ+B/WLy0p
+	LCk68LVcFngSvWOj1Pb3DFhaleuCojXReQi9REMtk4uHdYkGqzH0WfyaSC3+0K15JfMpfapK2Dr9o
+	DOZ9Tl9zGPHuwG6dgS3aIe6ervBGM4Ie3P2yk88bNOjDC5YDbZHZafDkiYLNUbZuwUlNXGfa9ci+n
+	niWffNDB3BUsXvswy6YDSaUwr2TujWQdyQov66jPbuIY551k9kcq6WmhsW1qQpocYk6wHeCWtAiLo
+	b7eKi53fNiTyRaeDxeRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZPik-00000007sKk-3NVg;
-	Wed, 09 Jul 2025 08:00:02 +0000
-Received: from mail-m21467.qiye.163.com ([117.135.214.67])
+	id 1uZPil-00000007sKo-0sMe;
+	Wed, 09 Jul 2025 08:00:03 +0000
+Received: from mail-m15588.qiye.163.com ([101.71.155.88])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZOpD-00000007kdF-0oSW;
+	id 1uZOpE-00000007ke7-2ERV;
 	Wed, 09 Jul 2025 07:02:45 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1b69b7a0f;
-	Wed, 9 Jul 2025 15:02:33 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1b69b7a28;
+	Wed, 9 Jul 2025 15:02:35 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: andrzej.hajda@intel.com,
 	neil.armstrong@linaro.org,
@@ -59,29 +59,30 @@ Cc: Laurent.pinchart@ideasonboard.com,
 	linux-samsung-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v2 07/12] drm/bridge: analogix_dp: Add support to find panel or bridge
-Date: Wed,  9 Jul 2025 15:01:34 +0800
-Message-Id: <20250709070139.3130635-8-damon.ding@rock-chips.com>
+Subject: [PATCH v2 08/12] drm/rockchip: analogix_dp: Apply drmm_encoder_init() instead of drm_simple_encoder_init()
+Date: Wed,  9 Jul 2025 15:01:35 +0800
+Message-Id: <20250709070139.3130635-9-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250709070139.3130635-1-damon.ding@rock-chips.com>
 References: <20250709070139.3130635-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRgeHlYeSUkZSUoaTB5OTUpWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkpKH1ZJSEweHktCGk5JSE5WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a97edfe43a803a3kunm3a7bcd50c83aac
+X-HM-Tid: 0a97edfe4d7c03a3kunm3a7bcd50c83b03
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NQg6PAw4TDE6DS9WShYIIjgR
-	ThAKCS1VSlVKTE5JS09PTk5OTkxMVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFOS09INwY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MFE6KRw5MDExIy9KMxcuIioh
+	EUgKCSJVSlVKTE5JS09PTk5DSUpDVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJTkNDNwY+
 DKIM-Signature: a=rsa-sha256;
-	b=XdyGplKK88WCMv25zUU03Vzz/3V8/WEsEZO2zJ5NvT76Dz4N8LnFf5bVb88GVrIJJFYlJDnaiOARlWZZcHSNsS7+U0mq9TxlrPtFEoti7k0JnNmnZVIx0gNVj9EINfD+BHwMW12BP6ZvFRe0iOWXg4gHBX605CRVZT3cNXACpLo=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=LW2h9nJKg9Aawmrb76/zi4Gng/uV3PfR7/nXS/EIWaw=;
+	b=EiJnEfrNyqDPJadLOFzu542SI3c2hgOXtYli4ATo6d1jQrwDk1QQSMgaa+MjS7Yxq4fQcsn3P0HbUPak46Gt2iIiSqehfroIvegI/8zcf3OiZbNcLeMoE4j/BdoG8fu1FmQSIl/ArRYnUtOQcuBRlDcWqt4nxO98Zzb8NjwdDlU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=zPlxZWDQIK3s2FJH/2CXtRJ9gZ/3RtAB+yN2+4NuAvE=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_000244_616894_6C731FC0 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20250709_000244_730690_CDC97C86 
+X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,107 +99,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since the panel/bridge should logically be positioned behind the
-Analogix bridge in the display pipeline, it makes sense to handle
-the panel/bridge parsing on the Analogix side.
+Compared with drm_simple_encoder_init(), drmm_encoder_init() can handle
+the cleanup automatically through registering drm_encoder_cleanup() with
+drmm_add_action().
 
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 ---
- .../drm/bridge/analogix/analogix_dp_core.c    | 48 +++++++++++++++++++
- include/drm/bridge/analogix_dp.h              |  2 +
- 2 files changed, 50 insertions(+)
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 78d68310e4f6..660f95e90490 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -19,12 +19,14 @@
- #include <linux/platform_device.h>
- 
- #include <drm/bridge/analogix_dp.h>
-+#include <drm/display/drm_dp_aux_bus.h>
- #include <drm/drm_atomic.h>
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_bridge.h>
- #include <drm/drm_crtc.h>
- #include <drm/drm_device.h>
- #include <drm/drm_edid.h>
-+#include <drm/drm_of.h>
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index d30f0983a53a..4ed6bf9e5377 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -29,7 +29,6 @@
+ #include <drm/drm_of.h>
  #include <drm/drm_panel.h>
- #include <drm/drm_print.h>
  #include <drm/drm_probe_helper.h>
-@@ -1707,6 +1709,52 @@ struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp)
- }
- EXPORT_SYMBOL_GPL(analogix_dp_get_aux);
+-#include <drm/drm_simple_kms_helper.h>
  
-+static int analogix_dp_aux_done_probing(struct drm_dp_aux *aux)
-+{
-+	struct analogix_dp_device *dp = to_dp(aux);
-+	struct analogix_dp_plat_data *plat_data = dp->plat_data;
-+	int port = plat_data->dev_type == EXYNOS_DP ? 0 : 1;
-+	int ret;
-+
-+	/*
-+	 * If drm_of_find_panel_or_bridge() returns -ENODEV, there may be no valid panel
-+	 * or bridge nodes. The driver should go on for the driver-free bridge or the DP
-+	 * mode applications.
-+	 */
-+	ret = drm_of_find_panel_or_bridge(dp->dev->of_node, port, 0,
-+					  &plat_data->panel, &plat_data->bridge);
-+	if (ret && ret != -ENODEV)
-+		return ret;
-+
-+	return component_add(dp->dev, plat_data->ops);
-+}
-+
-+int analogix_dp_find_panel_or_bridge(struct analogix_dp_device *dp)
-+{
-+	int ret;
-+
-+	ret = devm_of_dp_aux_populate_bus(&dp->aux, analogix_dp_aux_done_probing);
-+	if (ret) {
-+		/*
-+		 * If devm_of_dp_aux_populate_bus() returns -ENODEV, the done_probing() will
-+		 * not be called because there are no EP devices. Then the callback function
-+		 * analogix_dp_aux_done_probing() will be called directly in order to support
-+		 * the other valid DT configurations.
-+		 *
-+		 * NOTE: The devm_of_dp_aux_populate_bus() is allowed to return -EPROBE_DEFER.
-+		 */
-+		if (ret != -ENODEV) {
-+			dev_err(dp->dev, "failed to populate aux bus\n");
-+			return ret;
-+		}
-+
-+		return analogix_dp_aux_done_probing(&dp->aux);
-+	}
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(analogix_dp_find_panel_or_bridge);
-+
- MODULE_AUTHOR("Jingoo Han <jg1.han@samsung.com>");
- MODULE_DESCRIPTION("Analogix DP Core Driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index 202e5eafb2cc..0b6d85f1924e 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -30,6 +30,7 @@ struct analogix_dp_plat_data {
- 	struct drm_bridge *bridge;
- 	struct drm_encoder *encoder;
- 	struct drm_connector *connector;
-+	const struct component_ops *ops;
+ #include "rockchip_drm_drv.h"
  
- 	int (*power_on)(struct analogix_dp_plat_data *);
- 	int (*power_off)(struct analogix_dp_plat_data *);
-@@ -52,5 +53,6 @@ int analogix_dp_stop_crc(struct drm_connector *connector);
+@@ -377,8 +376,7 @@ static int rockchip_dp_drm_create_encoder(struct rockchip_dp_device *dp)
+ 							     dev->of_node);
+ 	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
  
- struct analogix_dp_plat_data *analogix_dp_aux_to_plat_data(struct drm_dp_aux *aux);
- struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp);
-+int analogix_dp_find_panel_or_bridge(struct analogix_dp_device *dp);
- 
- #endif /* _ANALOGIX_DP_H_ */
+-	ret = drm_simple_encoder_init(drm_dev, encoder,
+-				      DRM_MODE_ENCODER_TMDS);
++	ret = drmm_encoder_init(drm_dev, encoder, NULL, DRM_MODE_ENCODER_TMDS, NULL);
+ 	if (ret) {
+ 		DRM_ERROR("failed to initialize encoder with drm\n");
+ 		return ret;
 -- 
 2.34.1
 
