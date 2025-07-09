@@ -4,61 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B7EBC83F09
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 07:54:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C1DFC83F09
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 07:54:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7xc5GRGzHzUQCoI4jnY0EetTSsKNN0Ncv+n4Kaey/fI=; b=I8cB9/azsitd5g
-	yGAw1f3zXPzecRCDWm0Xk8bv2wV1PfX3joPDTmhqbTVCI/yQsOhtQrvZLFPNFFN/LXbxuh7HdOcL9
-	McjA8B1dMOb9rSQ85HsV2zDR/9/8lVNSbH9e58A1dn0NMtU9g1l0pxdmicG5qIMC7QDcNCtBneNvf
-	zMhg79uYwERvBLaesJzNj5DDwq4FRW8FAH8Y3i5Pax2CdWGb8DJq5tHxFzsf0tKCBp7D+wBCZBh2D
-	EurLUpP7jzsnw+L7xLAkvPkAwWdQL1IsuE7rQR/uOivqqn3VLELvACP/Nn68ImZZSLpz4mvDYdQuz
-	bZY4H65Qaj67KsZi8JLg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2ku7dw2S3SY9aT6uXTBfjoQ7J2ZEaGCS6efs1fi9REQ=; b=zi9AwEYFqnltpL
+	VPPvbFozE6/OaAU1ndU9FsIx0VDF4BIhcpzNqlgdwZw4ycstxSXw5+duPfXWkQQQaEzgDZQvS4Ast
+	v7k4Jqm49UsdVq9EmMuCnCdhk1mJItbf3Yo9KU3Z7DZZBTvHImRtYRteMAK3MrLbK0TjtAzGPb4dS
+	uxEwAFn7mm0qbP7h9td1oLxpe/tU0jZ8ot00Y7L4cYD4FWFIJP8b60DqNlH92H12A2Z4yofLM62xz
+	MlpmgnYVJ+CxY4iF6TpFjtHsglpaDRrtx5vRfmx8rCkeg2XJ6AT5yVur3HBetU5LAQr/PkBvuOdtW
+	odD0BvA2UZC43xbk9UXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZPcq-00000007rXU-3WhD;
-	Wed, 09 Jul 2025 07:53:56 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1uZPdE-00000007ref-04db;
+	Wed, 09 Jul 2025 07:54:20 +0000
+Received: from mail-m32117.qiye.163.com ([220.197.32.117])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZOn5-00000007kIH-2GTZ;
-	Wed, 09 Jul 2025 07:00:29 +0000
-Received: from localhost.localdomain (unknown [119.122.214.98])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1b68dd445;
-	Wed, 9 Jul 2025 15:00:08 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: jonas@kwiboo.se
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
+	id 1uZOox-00000007kYE-38mm;
+	Wed, 09 Jul 2025 07:02:25 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1b69b799a;
+	Wed, 9 Jul 2025 15:02:16 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org
+Cc: Laurent.pinchart@ideasonboard.com,
+	jonas@kwiboo.se,
+	jernej.skrabec@gmail.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	jingoohan1@gmail.com,
+	inki.dae@samsung.com,
+	sw0312.kim@samsung.com,
+	kyungmin.park@samsung.com,
+	krzk@kernel.org,
+	alim.akhtar@samsung.com,
+	hjc@rock-chips.com,
 	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	andy.yan@rock-chips.com,
+	dmitry.baryshkov@oss.qualcomm.com,
+	l.stach@pengutronix.de,
+	dianders@chromium.org,
+	dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	robh@kernel.org,
-	ziyao@disroot.org
-Subject: Re: [PATCH 4/6] arm64: dts: rockchip: Add ArmSoM Sige1
-Date: Wed,  9 Jul 2025 15:00:03 +0800
-Message-Id: <20250709070003.53484-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250708224921.2254116-5-jonas@kwiboo.se>
-References: <20250708224921.2254116-5-jonas@kwiboo.se>
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v2 00/12] Apply drm_bridge_connector helper for the Analogix DP driver
+Date: Wed,  9 Jul 2025 15:01:27 +0800
+Message-Id: <20250709070139.3130635-1-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCSkpKVkwaSk1MQ0IeGE9LTlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VCQ1lXWRYaDxIVHRRZQVlLVUtVS1VLWQY+
-X-HM-Tid: 0a97edfc0df903a2kunm4d206f074e8f19
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OBw6CCo5DDE3CS8cFwIDMS4*
-	FyIaFA9VSlVKTE5JS09PT0pITEJCVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	QlVKSUlVSUpPVUJDWVdZCAFZQUlDTEg3Bg++
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh8dTlYeS04YHR9IGE8fHhlWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpPSE
+	xVSktLVUpCS0tZBg++
+X-HM-Tid: 0a97edfe02a503a3kunm3a7bcd50c83882
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MyI6Lww*KjEzQi8rFRVMI0oR
+	NjxPCTdVSlVKTE5JS09PTkhDTE9MVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFJQ0NNNwY+
+DKIM-Signature: a=rsa-sha256;
+	b=ZwK7Ywp5C+VjGI7jFlKvgIwk+1+l+e/7zKTo8xfobMIrnOsi7a2QU8ONWp4yynusrFZ+sJtHriTtrdJb38/HUkENYELRlSR7UJ2qy0bHUH2/KbsrnLVkLn+olHV8VIYm7s9U/838ajb8N3TGCodnJVASttHPQ/4vD0LCe9WOzJY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=+bjluHkW3SFP0xqLuvonF0izTiZCHO6le07wELtphZs=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_000027_806620_F75DCB2E 
-X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-CacheID: sfid-20250709_000224_314716_FA560647 
+X-CRM114-Status: UNSURE (   6.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,98 +97,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+PATCH 1 is a small format optimization for struct analogid_dp_device.
+PATCH 2 is to perform mode setting in &drm_bridge_funcs.atomic_enable.
+PATCH 3-8 are preparations for the movement of the panel/bridge parsing.
+PATCH 9 is to apply a better API for the encoder initialization.
+PATCH 10-11 are to apply the newly added API to find panel or bridge.
+PATCH 12 is to apply the drm_bridge_connector helper.
 
-> +	vcc5v0_usb1_host: regulator-5v0-vcc-usb1-host {
-> +		compatible = "regulator-fixed";
-> ...
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> ...
-> +	vcc5v0_usb2_host: regulator-5v0-vcc-usb2-host {
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> ...
+Damon Ding (12):
+  drm/bridge: analogix_dp: Formalize the struct analogix_dp_device
+  drm/bridge: analogix_dp: Move &drm_bridge_funcs.mode_set to
+    &drm_bridge_funcs.atomic_enable
+  drm/bridge: analogix_dp: Add &analogix_dp_plat_data.bridge
+  drm/exynos: exynos_dp: Remove &exynos_dp_device.ptn_bridge
+  drm/exynos: exynos_dp: Remove redundant
+    &analogix_dp_plat_data.skip_connector
+  drm/bridge: analogix_dp: Remove redundant
+    &analogix_dp_plat_data.skip_connector
+  drm/bridge: analogix_dp: Add support to find panel or bridge
+  drm/rockchip: analogix_dp: Apply drmm_encoder_init() instead of
+    drm_simple_encoder_init()
+  drm/rockchip: analogix_dp: Apply analogix_dp_find_panel_or_bridge()
+  drm/exynos: exynos_dp: Apply analogix_dp_find_panel_or_bridge()
+  drm/bridge: analogix_dp: Remove unused APIs for AUX bus
+  drm/bridge: analogix_dp: Apply drm_bridge_connector helper
 
-I think these two regulators do not need boot-on?
+ .../drm/bridge/analogix/analogix_dp_core.c    | 370 ++++++++++--------
+ .../drm/bridge/analogix/analogix_dp_core.h    |   8 +-
+ drivers/gpu/drm/exynos/exynos_dp.c            |  27 +-
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  42 +-
+ include/drm/bridge/analogix_dp.h              |   6 +-
+ 5 files changed, 217 insertions(+), 236 deletions(-)
 
-> +	rfkill {
-> +		compatible = "rfkill-gpio";
-> +		label = "rfkill-wlan";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wifi_reg_on_h>;
-> +		radio-type = "wlan";
-> +		shutdown-gpios = <&gpio1 RK_PA6 GPIO_ACTIVE_HIGH>;
-> +	};
-
-Why not use mmc-pwrseq instead of rfkill?
-
-> +	rfkill-bt {
-> +		compatible = "rfkill-gpio";
-> +		label = "rfkill-bt";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&bt_reg_on_h>;
-> +		radio-type = "bluetooth";
-> +		shutdown-gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
-> +	};
-
-Why not use shutdown-gpios of bcm43438-bt?
-
-> +&i2c0 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&i2c0m0_xfer>;
-> +	status = "okay";
-> +
-> +	hym8563: rtc@51 {
-> +		compatible = "haoyu,hym8563";
-> +		reg = <0x51>;
-> +		#clock-cells = <0>;
-> +		clock-output-names = "hym8563";
-
-CLKOUT pin is not connected.
-
-> +&sdio0 {
-> +	bus-width = <4>;
-> +	cap-sd-highspeed;
-> +	cap-sdio-irq;
-> +	disable-wp;
-> +	keep-power-in-suspend;
-> +	no-mmc;
-> +	no-sd;
-> +	non-removable;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>, <&clkm1_32k_out>;
-
-I recommend using clkm1_32k_out at the sdio-pwrseq node.
-
-> +	sd-uhs-sdr104;
-> +	vmmc-supply = <&vcc_3v3>;
-> +	vqmmc-supply = <&vcc_1v8>;
-> +	status = "okay";
-
-Maybe `brcm,bcm4329-fmac` nodes can be added here?
-
-> +&uart2 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&uart2m1_xfer>, <&uart2m1_ctsn>, <&uart2m1_rtsn>;
-> +	uart-has-rtscts;
-> +	status = "okay";
-
-You can add `brcm,bcm43438-bt` nodes here:
-
-	bluetooth {
-		compatible = "brcm,bcm43438-bt";
-		device-wakeup-gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
-		host-wakeup-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
-		shutdown-gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
-		...
-	};
-
-Thanks,
-Chukun
-
---
-2.25.1
+-- 
+2.34.1
 
 
 _______________________________________________
