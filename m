@@ -4,85 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6B4EC83F09
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 08:05:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55FEDC83F09
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 08:41:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0zrFEYviy1dB3RNFGs5EHJ2FtJfX+zlMEb2DwqwlpN4=; b=wcRxvfs37kW0QI
-	yTPc3uhH4KVwB4HzqXLvSSk0tSeboulCrVOTXhiTSbKbaDQI1bd4pFWkGAIiAMi6GF9rbIbo62bqb
-	kFxVVl6tlV+VwcOyFItUwDwbj9bS1TFofc9watWxIxxTT7RWEvcpulpPXozBCgQTI7HcfZ0LA76sr
-	qp5hiP+KNNdcrNpC+4tKlPwfm0Z6sQE584coa2MtLmaDRBDT9yl+zfBszp3AihtfIsH/wT9yer9OV
-	f06LlgSD75PYWNi4vlWFbgFdIpPu6eJ9hNyYDQrh4Dr+k5eSjyGWwrDCl4FI7n7hFiE77AOmvOavi
-	QOjpa9BHtwdeSjx3hlMw==;
+	List-Owner; bh=PmJwXN5XWI9d/dAPtgLnr080/wmUZmgmwJ99QvyknXE=; b=RBTEwvB1zW8Tl9
+	qBDYP79S+BDWlzuVr3IXsMg855uQKOaRxng+9cJhQYa32KoXAo4pBrut3PTJUgWVJ//roPwQarpXN
+	5rQ5BEFZ68scyhbdsc7ySgh3BihM1mL0z3HcybrwgZM9uYqrWAwcczAyyXTFQG5LmE9UhT5rN699n
+	HxqQ0rJY0zelUetglpnl7mUtfu5s+BGvl2cm5iajzkUjiin1ui8Eh6hDAB090cOmdwxxU0Tsto0nL
+	iZ4Roe7qbkP46ESURVv7XId5hSrbBInR4+Jj2BqqwvJtJ1Zs+GbiGSnPE923cHILPt0FQGUlsyiDM
+	5jXp7QwlKYKNlDJf7U9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZPoD-00000007tSd-1nt7;
-	Wed, 09 Jul 2025 08:05:41 +0000
-Received: from mail-m32123.qiye.163.com ([220.197.32.123])
+	id 1uZQMr-000000080Cd-2ru0;
+	Wed, 09 Jul 2025 08:41:29 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZOpM-00000007kgZ-35Zu;
-	Wed, 09 Jul 2025 07:02:57 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1b69d1c4b;
-	Wed, 9 Jul 2025 15:02:42 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com,
-	jonas@kwiboo.se,
-	jernej.skrabec@gmail.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	jingoohan1@gmail.com,
-	inki.dae@samsung.com,
-	sw0312.kim@samsung.com,
-	kyungmin.park@samsung.com,
-	krzk@kernel.org,
-	alim.akhtar@samsung.com,
-	hjc@rock-chips.com,
-	heiko@sntech.de,
-	andy.yan@rock-chips.com,
-	dmitry.baryshkov@oss.qualcomm.com,
-	l.stach@pengutronix.de,
-	dianders@chromium.org,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v2 11/12] drm/bridge: analogix_dp: Remove unused APIs for AUX bus
-Date: Wed,  9 Jul 2025 15:01:38 +0800
-Message-Id: <20250709070139.3130635-12-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250709070139.3130635-1-damon.ding@rock-chips.com>
-References: <20250709070139.3130635-1-damon.ding@rock-chips.com>
+	id 1uZP8p-00000007nlI-26mr
+	for linux-rockchip@lists.infradead.org;
+	Wed, 09 Jul 2025 07:22:58 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20250709072246euoutp0112657b32208d02fcd9920c87f5741427~QhFeKiE1T1133511335euoutp01I
+	for <linux-rockchip@lists.infradead.org>; Wed,  9 Jul 2025 07:22:46 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20250709072246euoutp0112657b32208d02fcd9920c87f5741427~QhFeKiE1T1133511335euoutp01I
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1752045766;
+	bh=qIHbeL0LG8G55ANYGcdpujwUfCstWXCxAhnRkcjxSxo=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=u+O8eUBejQ0U3lDJSuGDT7O5A/2mhQfjdEr38ZnnSm3Z8lCrRXk6b+nevytM15awo
+	 25r7QXh3IEnRHwfD96bFEDkSZQ3ByBaTuHMeYQrrxorgL8Y3By2iGo6nYl2vAjLAM5
+	 n0Mdgya150E1spOOOyzKUWIQ1LJBxrPnGh+Tabqg=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20250709072246eucas1p1d64e4c09a83c92497d76cb3efeaf6509~QhFdx5tSY0368803688eucas1p1I;
+	Wed,  9 Jul 2025 07:22:46 +0000 (GMT)
+Received: from [106.210.134.192] (unknown [106.210.134.192]) by
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20250709072243eusmtip29880f65c5964c8e0828e1df05a890579~QhFbeaA3i1291112911eusmtip2E;
+	Wed,  9 Jul 2025 07:22:43 +0000 (GMT)
+Message-ID: <4eb09ec9-bb7b-4266-8771-26b4819f47db@samsung.com>
+Date: Wed, 9 Jul 2025 09:22:43 +0200
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkMdQlZCHx4YThlCGE8aGBlWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-X-HM-Tid: 0a97edfe6a1803a3kunm3a7bcd50c83bc0
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pkk6TRw5UTEzFS8RIxdMIi4J
-	IkkwC0hVSlVKTE5JS09PTk1OSkhOVTMWGhIXVR8aFhQVVR8SFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFISU5LNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=ZHGcEjNWd8Ny++COiRajpPxJxHQekEehDeGuu9Y4E9O7z8QGdVqEXvkKN1LP1c7k8/Debbz4uRuv6VfLjhx7YEerzTPINgAqhTXYqdJbAvtaas9gPGzCN4U9DgzvElAeKzVVp07yV4an3fkKdbMqyYRg51tG04FzOBwULGPhiHg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=fqyUN1F8Tzi8KnSDWJShNFEL8g+VnD7YEPfF0DJm4TE=;
-	h=date:mime-version:subject:message-id:from;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/12] Apply drm_bridge_connector helper for the
+ Analogix DP driver
+To: Damon Ding <damon.ding@rock-chips.com>, andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org, rfoss@kernel.org
+Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+	jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+	jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
+	kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
+	hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
+	dmitry.baryshkov@oss.qualcomm.com, l.stach@pengutronix.de,
+	dianders@chromium.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Language: en-US
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+In-Reply-To: <20250709070139.3130635-1-damon.ding@rock-chips.com>
+X-CMS-MailID: 20250709072246eucas1p1d64e4c09a83c92497d76cb3efeaf6509
+X-Msg-Generator: CA
+X-RootMTR: 20250709070241eucas1p1351e2b508cc648d1fafd93640b471e7b
+X-EPHeader: CA
+X-CMS-RootMailID: 20250709070241eucas1p1351e2b508cc648d1fafd93640b471e7b
+References: <CGME20250709070241eucas1p1351e2b508cc648d1fafd93640b471e7b@eucas1p1.samsung.com>
+	<20250709070139.3130635-1-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_000249_406285_5B5B7137 
-X-CRM114-Status: UNSURE (   7.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250709_002255_802390_FE88D101 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,56 +93,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since the panel/bridge parsing has been moved to the Analogix side,
-the analogix_dp_aux_to_plat_data() and analogix_dp_get_aux() is
-redundant.
+On 09.07.2025 09:01, Damon Ding wrote:
+> PATCH 1 is a small format optimization for struct analogid_dp_device.
+> PATCH 2 is to perform mode setting in &drm_bridge_funcs.atomic_enable.
+> PATCH 3-8 are preparations for the movement of the panel/bridge parsing.
+> PATCH 9 is to apply a better API for the encoder initialization.
+> PATCH 10-11 are to apply the newly added API to find panel or bridge.
+> PATCH 12 is to apply the drm_bridge_connector helper.
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 14 --------------
- include/drm/bridge/analogix_dp.h                   |  2 --
- 2 files changed, 16 deletions(-)
+This patchset conflicts with my recent fix for Analogix DP driver 
+applied to drm-misc-fixes:
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 660f95e90490..abc64cc17e4c 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1695,20 +1695,6 @@ int analogix_dp_stop_crc(struct drm_connector *connector)
- }
- EXPORT_SYMBOL_GPL(analogix_dp_stop_crc);
- 
--struct analogix_dp_plat_data *analogix_dp_aux_to_plat_data(struct drm_dp_aux *aux)
--{
--	struct analogix_dp_device *dp = to_dp(aux);
--
--	return dp->plat_data;
--}
--EXPORT_SYMBOL_GPL(analogix_dp_aux_to_plat_data);
--
--struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp)
--{
--	return &dp->aux;
--}
--EXPORT_SYMBOL_GPL(analogix_dp_get_aux);
--
- static int analogix_dp_aux_done_probing(struct drm_dp_aux *aux)
- {
- 	struct analogix_dp_device *dp = to_dp(aux);
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index 0b6d85f1924e..94854b5949c2 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -51,8 +51,6 @@ void analogix_dp_unbind(struct analogix_dp_device *dp);
- int analogix_dp_start_crc(struct drm_connector *connector);
- int analogix_dp_stop_crc(struct drm_connector *connector);
- 
--struct analogix_dp_plat_data *analogix_dp_aux_to_plat_data(struct drm_dp_aux *aux);
--struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp);
- int analogix_dp_find_panel_or_bridge(struct analogix_dp_device *dp);
- 
- #endif /* _ANALOGIX_DP_H_ */
+https://lore.kernel.org/all/20250627165652.580798-1-m.szyprowski@samsung.com/
+
+
+> Damon Ding (12):
+>    drm/bridge: analogix_dp: Formalize the struct analogix_dp_device
+>    drm/bridge: analogix_dp: Move &drm_bridge_funcs.mode_set to
+>      &drm_bridge_funcs.atomic_enable
+>    drm/bridge: analogix_dp: Add &analogix_dp_plat_data.bridge
+>    drm/exynos: exynos_dp: Remove &exynos_dp_device.ptn_bridge
+>    drm/exynos: exynos_dp: Remove redundant
+>      &analogix_dp_plat_data.skip_connector
+>    drm/bridge: analogix_dp: Remove redundant
+>      &analogix_dp_plat_data.skip_connector
+>    drm/bridge: analogix_dp: Add support to find panel or bridge
+>    drm/rockchip: analogix_dp: Apply drmm_encoder_init() instead of
+>      drm_simple_encoder_init()
+>    drm/rockchip: analogix_dp: Apply analogix_dp_find_panel_or_bridge()
+>    drm/exynos: exynos_dp: Apply analogix_dp_find_panel_or_bridge()
+>    drm/bridge: analogix_dp: Remove unused APIs for AUX bus
+>    drm/bridge: analogix_dp: Apply drm_bridge_connector helper
+>
+>   .../drm/bridge/analogix/analogix_dp_core.c    | 370 ++++++++++--------
+>   .../drm/bridge/analogix/analogix_dp_core.h    |   8 +-
+>   drivers/gpu/drm/exynos/exynos_dp.c            |  27 +-
+>   .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  42 +-
+>   include/drm/bridge/analogix_dp.h              |   6 +-
+>   5 files changed, 217 insertions(+), 236 deletions(-)
+>
+Best regards
 -- 
-2.34.1
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
 
 
 _______________________________________________
