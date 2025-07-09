@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1618C83F0A
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 15:40:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DFEFC83F03
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jul 2025 15:42:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HznzANA/A3cmzcKbL9xtc90a/YolhiOpMB7m/jUN/h4=; b=enmLiIXE0TTsKP
-	BiaPE3zaT3JnaACL23Es6bB/f3ABX+L+reilymnVSLKMxfjXAlg6QJTYUqAbXFumkrbdsMNeDio13
-	dye2gWTrkn2r2YpuAjgizsCvg35pmo5MHPb/xfExBFGN0Q0Oj7N6me4A6sT/TOVcDf+QQ5pXy1q6z
-	a1zOMn9JqSHjA7BydaX4PWCLfgOrCQfnULxFh4P9owAHhnvPWOrn7H+9UTKqQw9ecDEZEkgTBX3nR
-	xUcE7ZVTf6GKa+Ou+m+mxS3wJ5tSZJSQ4/WBG4uoUNJe2GPfaWycc/iSlO7nBkR5TP3nyvpVUR/Te
-	LRxOqmW3oWFPMd4eEIxA==;
+	List-Owner; bh=hKSpQCMKjV4o/Pcae/VDGGdzN9zEAnkCTIxvQRqVZFM=; b=VX0vidAl0yH/iM
+	gV1KeNdpaQnRu/Pqd0+OOnUuMQu7R4tiYjFa3zEE9/M63O94YPD08SWx0Goj2TTkni12Rpb1yvIX0
+	81rBjofxepOJAjAjNXNL6OMJgSRjwyNfFKyQmaQjGHMLkhSC98HMhHCQl3YetmwxtWunQaomP/coh
+	KqwzO1pvIQeHz6Dr3D+HGiIlTWyLDKj3O8HaKdWsI63kl6dXg9ObCbnQbUjnMupMbR+5up7BPx10u
+	Co9+zaNOCdpx1OF/E7ELoSh231k78KL2QR6/i3OgCIHuodgQVCEPexpJOAaWBiZkocXSdZfi6ab44
+	EVZ6KjONwWjt5yL1JMhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZWtp-00000009BtU-0zcj;
-	Wed, 09 Jul 2025 15:39:57 +0000
-Received: from out-178.mta0.migadu.com ([2001:41d0:1004:224b::b2])
+	id 1uZWw8-00000009CBh-1CS2;
+	Wed, 09 Jul 2025 15:42:20 +0000
+Received: from out-179.mta0.migadu.com ([91.218.175.179])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZUly-00000008lth-1vqv
+	id 1uZUm0-00000008lub-0B4X
 	for linux-rockchip@lists.infradead.org;
-	Wed, 09 Jul 2025 13:23:43 +0000
+	Wed, 09 Jul 2025 13:23:45 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1752067421;
+	t=1752067422;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=uYtxvQntJrQzDe3coaU4yovvxAekHNN2pEKLjqZB3iA=;
-	b=J83Rg0853eudvxnf9NiHH5SXvgmplIlEz6jQFGT5erQWarfMlMWJSsVoSHKcYMcGXSmaWj
-	nbEyMuNlMMun6XRsHbdZqYS0fVq24MirXh6ZMw0VDF+Abd/3bir6NWTFYPKY2MseM3FIXz
-	1MTJ2sosgHACtA0Sguw6Ibf0LKdwMT1PwWrI49nYWC4NRqGatvHwYxAQ+QCl9pKZR/X0Xa
-	oQGav8vmZnFtNdPaC8gEGUZDS5yJoQswWCmIZjUGL+G8iojPdus5RMrDLFUrOEoMLNWkpe
-	6cUc0yotOjjagtnTmMdv5PPLDrVqxNf0Ra6SLIJliIOh1aD9puqjcAsKdCi7+A==
+	bh=kTB3zWm7oNw70pUsCc6ZoGv3uOF6aJxYArBzhguuOPM=;
+	b=KO5Q6YXO9Ww53d6JLKzNXTcI5lzqn0g8g5lOJTUIPPa30aSWTb9EUvcSaWX6LfdFlfPWjX
+	O3KhA6IXbvUhEMahPUqdbm+RK9K2hlAWJK9x6P+maUX57YC6IgQc5tgW7uWvaZTl+0YE0B
+	cJpVzUdbCqVSkHDLdy3GmYKVTTRrqDTr4bX006HCUGpPVU2rsM2GobqkO/yszsjIFAEsCK
+	qHZwd1R/UAxrDFropMFVf2njb6zG9mVxiJ9tk7x/3K8Lfm+W1dWOs1P6Xd53KnUQafG0t9
+	6nKz6wiPLsVcwmGhb4odDy+QwnV8rhYxXu1nh96bKWLJtAx2lYI398By3NB3Mw==
 From: Diederik de Haas <didi.debian@cknow.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -53,16 +53,16 @@ Cc: Dragan Simic <dsimic@manjaro.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH v4 08/10] arm64: dts: rockchip: Fix LCD panel port on rk3566-pinetab2
-Date: Wed,  9 Jul 2025 15:15:21 +0200
-Message-ID: <20250709132323.128757-9-didi.debian@cknow.org>
+Subject: [PATCH v4 09/10] arm64: dts: rockchip: Drop unneeded address+size-cells on px30
+Date: Wed,  9 Jul 2025 15:15:22 +0200
+Message-ID: <20250709132323.128757-10-didi.debian@cknow.org>
 In-Reply-To: <20250709132323.128757-1-didi.debian@cknow.org>
 References: <20250709132323.128757-1-didi.debian@cknow.org>
 MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_062342_638976_FE63BF29 
-X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-CacheID: sfid-20250709_062344_227142_A9BA9127 
+X-CRM114-Status: UNSURE (   7.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,39 +80,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The MIPI DSI connector on the PineTab2 only has 1 port with 1 endpoint,
-so drop the unit-address properties.
-
-While at it, move 'rotation' property to its proper sorting position.
+On nodes with compatible "rockchip,px30-usb2phy-grf", the #address-cells
+and #size-cells are required and consequently their child nodes should
+have unit addresses. That is not the case for the px30-pmugrf and
+px30-grf nodes, so remove them there.
 
 This fixes the following DTB validation warnings:
 
-  node has a unit name, but no reg or ranges property
+  unnecessary #address-cells/#size-cells without "ranges",
+  "dma-ranges" or child "reg" property
 
 Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-index 3473b1eef5cd..d0e38412d56a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-@@ -282,11 +282,11 @@ lcd: panel@0 {
- 		reg = <0>;
- 		backlight = <&backlight>;
- 		enable-gpios = <&gpio0 RK_PC7 GPIO_ACTIVE_HIGH>;
--		rotation = <90>;
- 		power-supply = <&vcc_3v3>;
-+		rotation = <90>;
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 5034ad8019a8..46f64cd33b9b 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -351,8 +351,6 @@ power-domain@PX30_PD_GPU {
+ 	pmugrf: syscon@ff010000 {
+ 		compatible = "rockchip,px30-pmugrf", "syscon", "simple-mfd";
+ 		reg = <0x0 0xff010000 0x0 0x1000>;
+-		#address-cells = <1>;
+-		#size-cells = <1>;
  
--		port@0 {
--			panel_in_dsi: endpoint@0 {
-+		port {
-+			panel_in_dsi: endpoint {
- 				remote-endpoint = <&dsi0_out_con>;
- 			};
- 		};
+ 		pmu_io_domains: io-domains {
+ 			compatible = "rockchip,px30-pmu-io-voltage-domain";
+@@ -453,8 +451,6 @@ gic: interrupt-controller@ff131000 {
+ 	grf: syscon@ff140000 {
+ 		compatible = "rockchip,px30-grf", "syscon", "simple-mfd";
+ 		reg = <0x0 0xff140000 0x0 0x1000>;
+-		#address-cells = <1>;
+-		#size-cells = <1>;
+ 
+ 		io_domains: io-domains {
+ 			compatible = "rockchip,px30-io-voltage-domain";
 -- 
 2.50.0
 
