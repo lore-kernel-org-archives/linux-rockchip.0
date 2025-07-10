@@ -4,65 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BE7DC83F17
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 00:03:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 447E2C83F0F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 02:20:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8QxGd/4kySY4CUOmQY+uD+gxzICWgNzqPNBQJZFMDKw=; b=TuCzb44FAnoXTP
-	ztTXOYWb4af3vGjTu2e1ywgHY3R6UCM6pP3aq97vhBJDo53Hx75c7oCR8WsbZjCLyPVcR8Du7yIR5
-	7d7XIl3UeYgTOeuEZw6cM8uMnH+/+87tGWNeGGuj6QCrKQxIfXDgTOGPq4GeKc/c2ngDTr7UdHgUC
-	NNI/WGY7zTH+5FYagO6NztqBeSZi7lDcEfxuqIBQrN2eh4KLrG2BxPtCONHgId9g3zorJgIN9P1XJ
-	I0atSneK8B8R8oZ1DY1qg+f7wCZwU+ZxiErpkrR35adyOz5bILw6XF2tYFSpdM+AtyXJw+lGXmtEp
-	I0RkxmHwoKw0k6AWW+MQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mxzbuFPfmNACGATTM6oTw+tvZ/dWzvZAnUPD2PREEj0=; b=awXlVcGTXS6d8K0lwMNmJJHt02
+	kbXlBLfgbW6rhN6gB32FBHV9CORRA9x0Rm77ZCiFctNQLHV3/uCEblGp940bJbz15Bzi5/CQsfEZv
+	u4O5jLB53CBSfkxNg3hfRbGHf4IFgcWULf1J96Se+1+WB8u5tzCLm/P9Eby10oeUP6I1qEflBqtRi
+	U3kDoBafmaNcNJVENg8FnyuqtKDtU7U0v3+0cwwanaYeZK+we9RpuFMLRIfBGKu20ggXIIp808x8p
+	MsLGHyFn8ICCmy1rtuNXD9PLbrTLJSdrOxN+nisZaNymYMtCqnjuolJm3mPuSF/rf8R2CHpwjbVar
+	5QmXBbNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZekq-0000000AID5-3SAj;
-	Thu, 10 Jul 2025 00:03:12 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1uZgtF-0000000ATCo-24w9;
+	Thu, 10 Jul 2025 02:20:01 +0000
+Received: from mail-koreacentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c40f::7] helo=SEYPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZeiY-0000000AI6Z-0L3y
-	for linux-rockchip@lists.infradead.org;
-	Thu, 10 Jul 2025 00:00:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1752105648;
- bh=vkPooPX6zi3QRoM9CrTsbZoAxP36NlshDQEMrww4eZw=;
- b=BJfgIgfcHeBADU194dOrcMsRYvJIrYXXWa2HZRF22PfKQ9zu8q1QRTQBcaXYYQ0VJ8wobpxfQ
- 1l7YFGR4d1GgxmXm6DvyPZzv+jDtuAPc8sCIngjS3nhj8rX0I6pPNk9MkvSQtCJSQAeDBwdWJHl
- kUJAFWquXOm78DlQQCByZaB3fP3PRUIXy8IRM85k30LLB/kDa9cDJnriuswyNl2TNdmg/swTkSg
- M4GKtFOSCzLOHngg0L3p9Tbd3awgkt1a0vmxLDqfPUYI1kPCIVwxUmhhLq6zbuIv4nvMKzFh5EU
- /HX4Obk/s49YyHto+XRhnGTFV9XMxLDNHOFmlOz5MsRQ==
-X-Forward-Email-ID: 686f02a6cecacbdaffda9867
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.1.3
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <87c6249a-96f1-4557-b4eb-70e69e6d773f@kwiboo.se>
-Date: Thu, 10 Jul 2025 02:00:34 +0200
-MIME-Version: 1.0
+	id 1uZgtD-0000000ATBV-0LbH;
+	Thu, 10 Jul 2025 02:20:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=NFHuA+s4aDx8ve2nTgGIi/3Hx2d8am+np2qN7xavhIRckAAdLOYY8ujx2MehcgUmVc03A/+54RItKseWneEWIIw80/dXMuPKvBBm9B86mTSnauefMltTiekkWtm5b1quWzC+/PGex5H0bFLpayAoE1YSLXXR7CVYBKylJ0WNTE5N/aN2F9hdQExHLRhU6+TibvP+x9zVX/cObQH1ZTRPEPDyz2MNXWuYj5iTxdE0jYXgXCGZ8m3B+Cjxqst2kkDaIzh9zbejUP58lk1A1BBVUTolajD4ur247ox9dDagv4jilg16Os4+tfqlbMjJW+fmKNBpG9MvfsfdmDXc0QOLfQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nEiHwzqEq1wz9NoKJTpfwGZvy1LaZkI9en9P2ikHOUQ=;
+ b=Q2/vlhVSU2QrbSEG9cLciS1i4oP6GKCjEZyothFCO2fk8Rio2V0KRRFgZ5dPA38kH9232xpbgzaWsQVP5Y5Zasphu/5edt57VaWLwKjdzzMcezqLERahxA11g5VASqytgPJEpPzstESJvPrFb9we1XNwaOaOy4SgHu4u3KFRxtvcci03SKSS6COsb/zNn+BFnzR92ZNR38XEzx0g+jSafKi/qHuxYXAtXgRrAvXhKEeDJ6ykUnlTx6WRra13ztoREr1EAyVn2muNG0dlX33FM+5J/4BIoWc6UyUFCdrTW31FkE4S4tvgD09WdTaPb0WxthtenAYWVBePw0XJBHbnbw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amlogic.com; dmarc=pass action=none header.from=amlogic.com;
+ dkim=pass header.d=amlogic.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amlogic.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nEiHwzqEq1wz9NoKJTpfwGZvy1LaZkI9en9P2ikHOUQ=;
+ b=q6jGa96ARjhiBwIBwwhWEUw4MTfwKqwupgh95Akpa4OgxJed9O74qiKTKhJhhVkB//pXQAS1HNLcdlef8fbEQTWNuHRrIrQDdlZPp0A5ttxAf1wGoNAWjvd5BkCqBO4oQAHR1Pi/V6s17NHjgUEx0rBG+1fQVehNZbOzaBK2CPEybbhRtvLjrb+4TBT6TNjSPhnlMTkCLwjowIXbB61ttNjL7JDjVnobPoxaSC+MN74F+FgAPrlJ8MjVRPeqgZJBK9gNdOo8Zlyns9XMkTFBaycyHgCS23weIHz9SX7APV0yOVCdGW8q2lajt6qXA3sqfOT7BLhB8Qdv6HHU/zLxtg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amlogic.com;
+Received: from TYSPR03MB8627.apcprd03.prod.outlook.com (2603:1096:405:8a::9)
+ by OSQPR03MB8770.apcprd03.prod.outlook.com (2603:1096:604:276::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8901.28; Thu, 10 Jul
+ 2025 02:19:31 +0000
+Received: from TYSPR03MB8627.apcprd03.prod.outlook.com
+ ([fe80::cf16:aa54:9bd5:26f]) by TYSPR03MB8627.apcprd03.prod.outlook.com
+ ([fe80::cf16:aa54:9bd5:26f%7]) with mapi id 15.20.8901.024; Thu, 10 Jul 2025
+ 02:19:31 +0000
+Message-ID: <fd518fa2-be83-4b51-a5a7-d3e7d0aac08d@amlogic.com>
+Date: Thu, 10 Jul 2025 10:19:26 +0800
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/6] arm64: dts: rockchip: Add ArmSoM Sige1
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
- krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- robh@kernel.org, ziyao@disroot.org
-References: <20250708224921.2254116-5-jonas@kwiboo.se>
- <20250709070003.53484-1-amadeus@jmu.edu.cn>
+Subject: Re: [PATCH 0/8] media: Introduce V4L2 extensible parameters
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+ Dafna Hirschfeld <dafna@fastmail.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+References: <20250708-extensible-parameters-validation-v1-0-9fc27c9c728c@ideasonboard.com>
 Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250709070003.53484-1-amadeus@jmu.edu.cn>
+From: Keke Li <keke.li@amlogic.com>
+In-Reply-To: <20250708-extensible-parameters-validation-v1-0-9fc27c9c728c@ideasonboard.com>
+X-ClientProxiedBy: SG2PR02CA0011.apcprd02.prod.outlook.com
+ (2603:1096:3:17::23) To TYSPR03MB8627.apcprd03.prod.outlook.com
+ (2603:1096:405:8a::9)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYSPR03MB8627:EE_|OSQPR03MB8770:EE_
+X-MS-Office365-Filtering-Correlation-Id: a6dc6db8-f12a-40d5-9906-08ddbf583400
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?K3h2NjFrdGRnOHBudWpGRDljSjgwNVJDN3B3c2dQdEJOQ2J5OXVzZWhqdVBk?=
+ =?utf-8?B?QWtxSFE4bGVDdUJJUDdvNHFGVWkwWGpFaXVKdHMwTFhEMmY2UmlBK01RMGxy?=
+ =?utf-8?B?cEF6VG82R2NlQWRORDJFQmZLT2tYdTFzcXhLSmlXVm1xVnN1Q0lJYWQ4a3R6?=
+ =?utf-8?B?Z0dHNkRxS2piRFpsUk5nR2swK0JmR0ZGR0dPczBIWW5QS2NPSTRHamFQUmlO?=
+ =?utf-8?B?WXpQMzB6S0VZbU5tRTJCMXJ3VkhLVVZiRnhkT2N4NTBmRmVDdEkveWhQZjJs?=
+ =?utf-8?B?WlhJbTYreXJMRkZzNG9qeURFMmJOenNMNzhDTFJ2Q0NnZ3JGVmQ2ZnpDcUV3?=
+ =?utf-8?B?ZE9TQUhHTHpXOHZkWlRRUjIwYVdsV0RuVC9xUkdWcGUwc25BeWJRWjc4Nmcx?=
+ =?utf-8?B?RGk5Tkg1M1BXdlB1UVNESTlGYUp5dE5FSTNhTzVhdTV0ekpqQnRsZVhkRlVt?=
+ =?utf-8?B?a3RCcGtkN2pCSHdiemp4RVVZWTRKa0lmSXVxb2JMdWJVK0t5SGUvR0w2dkFk?=
+ =?utf-8?B?VW5HVjlkR0JpY0JYU3IrMTYxenQ5eFNrVXhmaWVhMlJWMHR1UDRJODVCb1I5?=
+ =?utf-8?B?QmV5eXBGRm8rKzQxWCthczRRTmdLSmFRNXUvYWh5Mk1GMGJ2aEJjVkZBMjBv?=
+ =?utf-8?B?c2tUVXIydFVqektRcmxIL0grdkNZcU5jQzhMSjNkajZ3K093WEp3VnZCaHFo?=
+ =?utf-8?B?Q0V5QXUrWXkyQzJOVmMrRUR6RjQvNXNiRG1VQ2hLamhwMG53V09rZzdsamxW?=
+ =?utf-8?B?NzQ3OCsyalRlUWtXclVyNnFFVEFrZU1WcWhwS1ZCQXNtUkhEK3RmRk9BR3ho?=
+ =?utf-8?B?SDFZNnhYTTA0RDFveUhyZmRKbnh4ZVUvOE5sbFg1RWNCYVdibm50YlNMMk1S?=
+ =?utf-8?B?M0V2SmxwVm9TR0RlTTNrdXdUSGJwTFhSOEp3N3BGclJ1bXN3MnBwOWNhNHgw?=
+ =?utf-8?B?dnJQekxUZXVVb1Nac3dSVmFUR3dRRS9EdE9ma1V5aStKUHA3NjZYd2pCak56?=
+ =?utf-8?B?eDV0T2I0Y0hqRkkxeWhjUEVJNkdYaFBVdm1NSHQxYnZnNlVkVGJWcGVYeDN6?=
+ =?utf-8?B?NG9RZVJDVVpGcjF4d2x2Q2JsK0U2M1c1cEljWU04a0Y0YlBjN2VGRElpN3V5?=
+ =?utf-8?B?UndPYS9HczQ2bDNuOGxvczBrRWVpY0xVOEhRZ016OEhGT2dVbmRpaG91R3FG?=
+ =?utf-8?B?c2s1Sm5jeUIwMmh6N3J6eTU3MktSTWoybmRDOHU2ZTZZYkY4bVhYa2NpNzUv?=
+ =?utf-8?B?eXZ6d0N5RW1QQndRR2pCY0hzOWw2cW5mQjFiQmVFZFJtY3NSd3JmM0tMdEVm?=
+ =?utf-8?B?MXYrbUJlcGxBOFJFeVdFdFd6S05MTTBUdEtaTUdmR2pIYzBMSHBWU1VsYTdr?=
+ =?utf-8?B?aUhWd1J1cjNya0dQN2VSTTJpT3FVblBFQ1FvNE1vRkNvUWpNaytKVlZoUnMw?=
+ =?utf-8?B?RW1CbUR5OXo1RlVOQUZ3eTFuZmtVNnhiN3FsdGU5cnAvRU5jbkVzZS9IR1lP?=
+ =?utf-8?B?T2ZwdUppYy9Sbm5IcVFXMHFCYWVqOFV4clRya2ZnSy9ieUs1OS9KVEpjaTla?=
+ =?utf-8?B?M2V1OUhzYVg0aHZnVlVRaFNIRlZhVGFKd0pkRUZVZWNBQ1MyZzNBd3YrMXFZ?=
+ =?utf-8?B?UUxIZitRcVdzeWY3c2ZxcVpRS3JxTEU4ODkyYmsxM0VWU2dRQUJxQmRPc20w?=
+ =?utf-8?B?ZDBQV0EvZlFEYU9xY0R1VjFQUW95a3RHN2xscVFxTGUzZWMzUVFaeWRwWWpJ?=
+ =?utf-8?B?WFJCNEE1YlA5dnpFcndwYnM5YjZTWXhCRHRzZGpxUUd4dUtGQ0E4ZWFYWlVU?=
+ =?utf-8?Q?G9Nlfm3A0VEHPZGt7sJqj6/lTXCzJaZdsvtN0=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYSPR03MB8627.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?alZITHQrM2t6eUFLR0Ewa2ltc1pFU2g0aFRyUitaMXF4TnZ3MlBFaHFBL2dE?=
+ =?utf-8?B?OC94b1F6b1hTMHhTcjhxZ0sxT0xpZnhqU0dnUkNncFpPcks0d1VLRXlGQ1pi?=
+ =?utf-8?B?bzl2N1VwRURSMUsvMGhEOTd4MGVlblNGQ09NNFFVeUwwblp1VER2RlcxWjFq?=
+ =?utf-8?B?T0grWmE5TXA1dU52cjJmVzJLZ1lqeXNkdnpmWVU0SkY1MHdkQlFNZk1POVl6?=
+ =?utf-8?B?S3pOUVNYd3NIczBoMEFaNzI0VzVFWDdTbGgzcG9kbzlWcG1kWUY4UndLRW41?=
+ =?utf-8?B?K28zanZWRk1wNmEycTkvbWxCSWx0TlRIM1djS3psSFd5cE9ob0FHeDJYME9v?=
+ =?utf-8?B?bmdheUVCUFJ5VFdVbnlQNDNtY1ZSeng3OUtXOGFNQ1dvTHZYeGk4K2VuNVFB?=
+ =?utf-8?B?Q0c1VSt5UjZMU1hsQVpNN05pL0oyMXpDOTExVWNkTTF0Z3l4MXZVclJOUk5Z?=
+ =?utf-8?B?dW0rZk0xMytJUXNhVVBwclFWcnJJeWxtUG1vNXdmdHBxUjEzUGdKWXBMT3k0?=
+ =?utf-8?B?aTVOWHRVNFQwSGR6UmdwWEF3c0Fwd3VNZ2RpYk1sQUJJelJKbU40MWN6cHBw?=
+ =?utf-8?B?THB3cnA1M2diNkVZZkwvL1BLVVRGd0VrMXJVZFJqM2lTMUh6OGRVUjd2TXpu?=
+ =?utf-8?B?cjljdDlUK3RYMWVmZXExTGk4ZzJhNWJCZjNxTnh5S0JEeHliRG0zcjZhdkdJ?=
+ =?utf-8?B?TVV5WTNRaHFkYWordVhhcXpld25heG8wZDJVV2tnOGYyVyt0RCsxQnlUSmEw?=
+ =?utf-8?B?eXVzWlZMaGNqZ3hUcGVrZEsyT2dacXFYYVNGc1dHb1ZXSzVZZE9iYXZFOVE0?=
+ =?utf-8?B?Z2dENjMvYVlhSTFDRVg3NGZPbE83blF3Sm9MZG45blk1amZMZHUwQk8vQThC?=
+ =?utf-8?B?ZFpZNlBFZHpBT0p6Q0ZaWEVsUGJUYW9VR0lEbXhDZnJ3OFJsK2cxWnpZNis4?=
+ =?utf-8?B?WG1rQkp4KzBwcTErL2o4di81WDhQWHB5RGVNazhhL3FUTUVscys1eEdHWWpL?=
+ =?utf-8?B?SjJrYjkrbllWUlF1Mk8weE5OSWxEWlV5WmplRE5XT1NZTmdIRmthelkvN29W?=
+ =?utf-8?B?T1J6eXlBNjVQN1lhREh4emFzV1d5eE8wL2J1akdKWXluQ0RSNURXRUtwNXI1?=
+ =?utf-8?B?VDNSRnBMaTJIM3lrMUJRbk1MdFh5RTBuTUJsOFlXSVgrK1NGNzRteW56aXk5?=
+ =?utf-8?B?WVdXajRYNzAvTXVZdituc3YvK2RycWtrdXFOd0dKNHFoLy9QbmVBaDlJblU3?=
+ =?utf-8?B?WkhKYnBaR3R5T0o5SHYxL3dkN0U5bDEvNmh0QWhFaXBhMExmYlBxSWNKQkNm?=
+ =?utf-8?B?b2U2Zlo4eUoyNDZCb3IyMVBQbGNoZ3pLY0JoZGlMY0NJTnNqWklIcmh5VnBY?=
+ =?utf-8?B?SkZ2cjNuRlVkRUM4ZEZKN1Y4aUJ0MXkxY29nRkZWV01qNXJKMHd3M0ZYbTFT?=
+ =?utf-8?B?bEJ2UnBqeWR5SExUN0w5YUpzRldRb2F6bG5aY1o2NHIyRmd0bm9OeWNvSWFV?=
+ =?utf-8?B?M2I5UTlZTU1KdzNEbGpDcUY2QzNIdHB1ZzBmL3pxN2RENEUrWkwvUjczcVhH?=
+ =?utf-8?B?UFVkTThWSGorTGZ4MjhCOUxOS1g0VFVUVUNRVFJ3UUJaS0h6UnJ3U1AzdGdr?=
+ =?utf-8?B?OGxoUmtqVXJnZjNwVU9HRS9VdnpwQ0haNi9KeXF4YWovdWhhc1F3TnR2NWV6?=
+ =?utf-8?B?cG1VTmxKOVZPVjVUWGVDcFJFSVZSSDliQXhYYUxRaklEMEhqeHdkV214MVFR?=
+ =?utf-8?B?TEErWTQ3UDVCb2h2d2Yrc3RFNDNLRUxmallhcUJPMHBCUEpVVHAxSDU3QmNl?=
+ =?utf-8?B?YTZBQkplUjlzdHRQLyt1SkRudFVyRmkyZUdWVGdIS01UelZINkxpS2YyOEFC?=
+ =?utf-8?B?ZFJFKzc3SHZrSmtFWlRMMEw2eGc5OTI4MzNVZjhZTUNmVEE2WXI0MUhCUlVn?=
+ =?utf-8?B?L0tITVJsWjZOTmo0ZnM3bTVwK2x0dkJvb0VWQ3JJVE1uMG9kWkVtR0wydHNJ?=
+ =?utf-8?B?enIwL09ZdUl2c290REdwOTYrOFFabnZST2VHSG1yU0JnUnVaWkJ3c0tnamdX?=
+ =?utf-8?B?am9Jd0Z0WFNhUmg1YW55U2pWbkxvb0lVMzZCWTZQWm1mU05pcTJ3WUhIQ3hW?=
+ =?utf-8?Q?NGbz7VehS5w4IZ3H3PWrEr17W?=
+X-OriginatorOrg: amlogic.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a6dc6db8-f12a-40d5-9906-08ddbf583400
+X-MS-Exchange-CrossTenant-AuthSource: TYSPR03MB8627.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Jul 2025 02:19:31.1847
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 0df2add9-25ca-4b3a-acb4-c99ddf0b1114
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 02rDgCp1nZtPdaYnLM5MwRrE5FNGS6Zo7j1gYGqu978zDPIME5rTpHTMTi/FEe/9Q+x5jKFimLMC9ChrpQISNA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSQPR03MB8770
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_170050_151214_79D14BFF 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20250709_191959_115520_BD8AD4E9 
+X-CRM114-Status: GOOD (  24.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,137 +172,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Jacopo
 
-On 7/9/2025 9:00 AM, Chukun Pan wrote:
-> Hi,
-> 
->> +	vcc5v0_usb1_host: regulator-5v0-vcc-usb1-host {
->> +		compatible = "regulator-fixed";
->> ...
->> +		regulator-always-on;
->> +		regulator-boot-on;
->> ...
->> +	vcc5v0_usb2_host: regulator-5v0-vcc-usb2-host {
->> +		regulator-always-on;
->> +		regulator-boot-on;
->> ...
-> 
-> I think these two regulators do not need boot-on?
+On 2025/7/8 18:40, Jacopo Mondi wrote:
+> [ EXTERNAL EMAIL ]
+>
+> Extensible parameters meta formats have been introduced in the Linux
+> kernel v6.12 initially to support different revision of the RkISP1 ISP
+> implemented in different SoC. In order to avoid breaking userspace
+> everytime an ISP configuration block is added or modified in the uAPI
+> these new formats, which are versionated and extensible by their
+> definition have been introduced.
+>
+> See for reference:
+> e9d05e9d5db1 ("media: uapi: rkisp1-config: Add extensible params format")
+> 6c53a7b68c5d ("media: rkisp1: Implement extensible params support")
+>
+> The Amlogic C3 ISP driver followed shortly, introducing an extensible
+> format for the ISP configuration:
+>
+> 6d406187ebc0 ("media: uapi: Add stats info and parameters buffer for C3 ISP")
+>
+> with a very similar, if not identical, implementation of the routines to
+> validate and handle the ISP configuration in the ISP driver in the
+> c3-isp-params.c file.
+>
+> fb2e135208f3 ("media: platform: Add C3 ISP driver")
+>
+> With the recent upstreaming attempt of the Mali C55 ISP driver from Dan,
+> a third user of extensible parameters is going to be itroduced in the
+> kernel, duplicating again in the driver the procedure for validating and
+> handling the ISP configuration blocks
+>
+> https://patchwork.linuxtv.org/project/linux-media/patch/20250624-c55-v10-15-54f3d4196990@ideasonboard.com/
+>
+> To avoid duplicating again the validation routines and common types
+> definition, this series introduces v4l2-params.c/.h for the kAPI
+> and v4l2-extensible-params.h for the uAPI and re-organize the RkISP1
+> and Amlogic C3 drivers to use the common types and the helper validation
+> routines.
+>
+> If the here proposed approach is accepted, I propose to rebase the Mali
+> C55 driver on top of this series, to use the new common types and
+> helpers.
+>
+> I have been able to test this on RkISP1 but not on C3.
+> Keke: would you be able to give this series a try and see what happens ?
 
-Agree, will remove the boot-on in v2.
 
-> 
->> +	rfkill {
->> +		compatible = "rfkill-gpio";
->> +		label = "rfkill-wlan";
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&wifi_reg_on_h>;
->> +		radio-type = "wlan";
->> +		shutdown-gpios = <&gpio1 RK_PA6 GPIO_ACTIVE_HIGH>;
->> +	};
-> 
-> Why not use mmc-pwrseq instead of rfkill?
+I have tested this patch series on C3, the result is OK.
 
-Not sure, have changed to use mmc-pwrseq in v2.
+Thanks.
 
-> 
->> +	rfkill-bt {
->> +		compatible = "rfkill-gpio";
->> +		label = "rfkill-bt";
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&bt_reg_on_h>;
->> +		radio-type = "bluetooth";
->> +		shutdown-gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
->> +	};
-> 
-> Why not use shutdown-gpios of bcm43438-bt?
-
-Sure, will use that in v2.
-
-> 
->> +&i2c0 {
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&i2c0m0_xfer>;
->> +	status = "okay";
->> +
->> +	hym8563: rtc@51 {
->> +		compatible = "haoyu,hym8563";
->> +		reg = <0x51>;
->> +		#clock-cells = <0>;
->> +		clock-output-names = "hym8563";
-> 
-> CLKOUT pin is not connected.
-
-Thanks, will remove the clock-output-names for the Sige1 and the NanoPi
-Zero2 in v2, #clock-cells seem to be required by the dt-bindings.
-
-> 
->> +&sdio0 {
->> +	bus-width = <4>;
->> +	cap-sd-highspeed;
->> +	cap-sdio-irq;
->> +	disable-wp;
->> +	keep-power-in-suspend;
->> +	no-mmc;
->> +	no-sd;
->> +	non-removable;
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>, <&clkm1_32k_out>;
-> 
-> I recommend using clkm1_32k_out at the sdio-pwrseq node.
-
-Will do so in v2.
-
-> 
->> +	sd-uhs-sdr104;
->> +	vmmc-supply = <&vcc_3v3>;
->> +	vqmmc-supply = <&vcc_1v8>;
->> +	status = "okay";
-> 
-> Maybe `brcm,bcm4329-fmac` nodes can be added here?
-
-Will add to in v2.
-
-> 
->> +&uart2 {
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&uart2m1_xfer>, <&uart2m1_ctsn>, <&uart2m1_rtsn>;
->> +	uart-has-rtscts;
->> +	status = "okay";
-> 
-> You can add `brcm,bcm43438-bt` nodes here:
-> 
-> 	bluetooth {
-> 		compatible = "brcm,bcm43438-bt";
-> 		device-wakeup-gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
-> 		host-wakeup-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
-> 		shutdown-gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
-> 		...
-> 	};
-
-Will use something similar in v2.
-
-See [1] for fixups I am testing for v2.
-
-[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20250708-rk3528-boards/
-
-Regards,
-Jonas
-
-> 
-> Thanks,
-> Chukun
-> 
+>
+> Media CI pipeline:
+> https://gitlab.freedesktop.org/linux-media/users/jmondi/-/pipelines/1465950
+>
+> Thanks
+>    j
+>
+> Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> ---
+> Jacopo Mondi (8):
+>        media: uapi: Introduce V4L2 extensible params
+>        media: uapi: Convert RkISP1 to V4L2 extensible params
+>        media: uapi: Convert Amlogic C3 to V4L2 extensible params
+>        media: Documentation: uapi: Add V4L2 extensible parameters
+>        media: v4l2-common: Introduce v4l2-params.c
+>        media: rkisp1: Use v4l2-params for validation
+>        media: amlogic-c3: Use v4l2-params for validation
+>        media: Documentation: kapi: Add v4l2 extensible parameters
+>
+>   Documentation/driver-api/media/v4l2-core.rst       |   1 +
+>   Documentation/driver-api/media/v4l2-params.rst     |   5 +
+>   .../media/v4l/extensible-parameters.rst            |  89 +++++
+>   .../userspace-api/media/v4l/meta-formats.rst       |   1 +
+>   MAINTAINERS                                        |  10 +
+>   .../media/platform/amlogic/c3/isp/c3-isp-params.c  | 272 ++++++---------
+>   .../media/platform/rockchip/rkisp1/rkisp1-params.c | 364 +++++++++------------
+>   drivers/media/v4l2-core/Makefile                   |   3 +-
+>   drivers/media/v4l2-core/v4l2-params.c              | 106 ++++++
+>   include/media/v4l2-params.h                        | 166 ++++++++++
+>   include/uapi/linux/media/amlogic/c3-isp-config.h   |  45 +--
+>   include/uapi/linux/media/v4l2-extensible-params.h  | 106 ++++++
+>   include/uapi/linux/rkisp1-config.h                 |  60 +---
+>   13 files changed, 775 insertions(+), 453 deletions(-)
+> ---
+> base-commit: a8598c7de1bcd94461ca54c972efa9b4ea501fb9
+> change-id: 20250701-extensible-parameters-validation-c831f7f5cc0b
+>
+> Best regards,
 > --
-> 2.25.1
-> 
-
+> Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
