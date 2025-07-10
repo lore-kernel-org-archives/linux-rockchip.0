@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55DEAC83F17
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 13:43:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6AF8C83F1B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 14:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:Message-ID:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yovunl4gxp3tvj0yk8+7I/EluwIIuBuyp6wxxe0eAr4=; b=Wmbzc4tmf1ltXdztmwAaMlswkj
-	fB7JVLbXw0nhKqyXPCOkylqg5DRxtaZ5AN7jIs6YSrHVFoUQyjyqIneZusabylNImTkDQf9xVZWiB
-	BOG0GZ8tU4o5XxyjMSOSxOYbIfAUEcHWq+plp/reqtbFXOow1bFwNUAwx8qZhYfGMFeiwn3ECcVuq
-	RsuuV3jMnzDt3g4KYKh0No1ij+Ie7WqPD8pJFx75ScJYi7XmtzCkJUVm7l3K9OuJnTOB9UsqoI1Lm
-	1bdnI9YL+ckMuVSL2nHebswNuD2dLHXNAB8j3tvPvaXyG0wTHgpkkckv8vbcpr0cr9knfiLWV/2oj
-	Sn5/EK2Q==;
+	bh=2ONSMixrT++gJ3fCltStMjtI5mj3BZPOlgPbqplrWy4=; b=wT0pQ0fL9prh5u6rW3ee9OiB1E
+	UzZZ0diYAvfdIKWJdXuCxvT//OX9rd9QjqOP7iLnuETjSZtzKCBs7bYsB6Z56M6Brhn7GSxlc0BKe
+	mnZQUBl7zwJXF42K2uGc35/D29LZZWa0KUBl3GoP6sf49hbc/xeqcxNte6coquGcUlJTRAVw0IsXt
+	Klf8vapwG/1A/VQEJhJJg/VhzNxTpNEGOxlr0aDWpQ40NcBPUXW0jWQnJF80wRGdk1kXmYptVaGPN
+	8kR4P09WSLbMNGwm2C5J+H97kp8FaINUC8oMHKk/6ihXP29qnpCHwnlE6qomKOGYd/sA/Rs4t6VZV
+	GqbG86yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZrYr-0000000BzBS-3MXU;
-	Thu, 10 Jul 2025 13:43:41 +0000
+	id 1uZs7d-0000000C5mt-1cpY;
+	Thu, 10 Jul 2025 14:19:37 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZqJq-0000000Bl3S-3CUS;
-	Thu, 10 Jul 2025 12:24:08 +0000
+	id 1uZqS1-0000000BmS4-3NAh;
+	Thu, 10 Jul 2025 12:32:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752150245;
-	bh=AZPm53jrNoLfHebJRkqiB3Dkh1nnJmHOSVi/px8SSXU=;
+	s=mail; t=1752150751;
+	bh=/CM+lyP53J7UcGjxOHDtIVWvKIVGjaIQZW9DSJl3mss=;
 	h=Date:To:Cc:From:Subject:From;
-	b=aWZ3WMi9AQ0+PQwamNgwwOKYqVHE5i0jS1/dsvJlH/qvujExjcXnpcPR7ZRs2Y9Qp
-	 3piMWhmACY1vV49+4IWm2DpLB7KKCSjTROt5BrQUx9PiAeyN3ukztHr0Pknsz1LoE5
-	 b59YIrzac5VTtEcpx7qI07JXCIIoWSTO9+/dDWanlXbafuDOOCCLejwOAX7GWkhOWW
-	 iQ9xaZnevQIVqi+wY9PEGmrJNFjJOiVthr/HLg45h4Z5Xb32I94R3+mD6tb1lgJgjg
-	 vBZJHcDnFlZW4WFRF3YizOL9BaNSkfccGBKGTWqi+U6GnIXaZEHXZD9mT8ZF1L3oAr
-	 P5UNxgUX/C5xw==
+	b=GYEXtVAdnx9AE0HL2pY8kVV7VwIiPfXPaBO8PL4nj7cWPmEqP8EeXwu80gQ0p3IA6
+	 xrrBBXgYgxDjWvmtyMgaO31OoBppKTnor/CRvnTVb6SihtWxPGW5zihjTX/NhMAHZv
+	 pVTPK7oTGP1dDcqUnkovhELXn6q8QLQiDjNqdW4RD3pl3rUyXzUmmITBCbuPqeaacP
+	 PkpvS/nvI+LBRvjFkrmJvA+uhOoJiztAxdMTuwd+n8LtfVtHRKZQ4ksheTIAVJvAHr
+	 JUr3KxpKhzXljDGSZ+kqLFQC8aMweMiTojGi3SqgyKT0hnFbwTMHhvsCfPzecR50pl
+	 W6irUbaAwbr+w==
 Received: from [192.168.50.250] (unknown [171.76.82.69])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0D16F17E0FC7;
-	Thu, 10 Jul 2025 14:24:01 +0200 (CEST)
-Message-ID: <81e13fcc-d916-4eb8-91cd-f74f64f53f72@collabora.com>
-Date: Thu, 10 Jul 2025 17:53:59 +0530
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 07FC417E0EBD;
+	Thu, 10 Jul 2025 14:32:28 +0200 (CEST)
+Message-ID: <10c5abab-c8fe-4eff-8eed-009038436b49@collabora.com>
+Date: Thu, 10 Jul 2025 18:02:26 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Content-Language: en-US
@@ -57,11 +57,10 @@ Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
  Helen Mae Koike Fornazier <helen.fornazier@gmail.com>,
  sebastian.reichel@collabora.com, linux-arm-kernel@lists.infradead.org
 From: Vignesh Raman <vignesh.raman@collabora.com>
-Subject: drm-ci: rk3288-veyron-jaq: kms_flip@flip-vs-dpms-on-nop-interruptible
- flake
+Subject: drm-ci: rk3288-veyron-jaq: kms_flip@plain-flip-fb-recreate flake
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250710_052406_955539_D7684C86 
-X-CRM114-Status: UNSURE (   4.17  )
+X-CRM114-CacheID: sfid-20250710_053234_012157_49EF9FA0 
+X-CRM114-Status: UNSURE (   3.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,67 +83,110 @@ Hi Maintainers,
 There are some flake test reported for rockchip driver testing in drm-ci.
 
 # Board Name: rk3288-veyron-jaq
-# Failure Rate: 40
+# Failure Rate: 20
 # IGT Version: 2.1-g26ddb59c1
 # Linux Version: 6.16.0-rc2
-kms_flip@flip-vs-dpms-on-nop-interruptible
+kms_flip@plain-flip-fb-recreate
 
-02:09:26.564: DEBUG - Begin test kms_flip@flip-vs-dpms-on-nop-interruptible
-02:09:26.564: ERROR - Igt error: (kms_flip:764) CRITICAL: Test assertion 
+11:11:35.318: DEBUG - Begin test 
+kms_flip@plain-flip-fb-recreate-interruptible
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Test assertion 
 failure function calibrate_ts, file ../tests/kms_flip.c:1455:
-02:09:31.611: ERROR - Igt error: (kms_flip:764) CRITICAL: Failed 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Failed 
 assertion: 3 * stddev / mean < 0.005
-02:09:31.611: ERROR - Igt error: (kms_flip:764) CRITICAL: Last errno: 4, 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Last errno: 4, 
 Interrupted system call
-02:09:31.611: ERROR - Igt error: Dynamic subtest B-eDP1 failed.
-02:09:31.611: ERROR - Igt error: **** DEBUG ****
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_fb-DEBUG: 
+11:11:35.318: ERROR - Igt error: Dynamic subtest A-eDP1 failed.
+11:11:35.318: ERROR - Igt error: **** DEBUG ****
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: 
 igt_create_fb_with_bo_size(width=1366, height=768, 
 format=XR24(0x34325258), modifier=0x0, size=0)
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_fb-DEBUG: 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: 
 igt_create_fb_with_bo_size(handle=1, pitch=5504)
-02:09:31.611: ERROR - Igt error: (kms_flip:764) ioctl_wrappers-DEBUG: 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) ioctl_wrappers-DEBUG: 
 Test requirement passed: igt_has_fb_modifiers(fd)
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_fb-DEBUG: 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: 
 igt_create_fb_with_bo_size(width=1366, height=768, 
 format=XR24(0x34325258), modifier=0x0, size=0)
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_fb-DEBUG: 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: 
 igt_create_fb_with_bo_size(handle=2, pitch=5504)
-02:09:31.611: ERROR - Igt error: (kms_flip:764) ioctl_wrappers-DEBUG: 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) ioctl_wrappers-DEBUG: 
 Test requirement passed: igt_has_fb_modifiers(fd)
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_fb-DEBUG: Test 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: Test 
 requirement passed: cairo_surface_status(fb->cairo_surface) == 
 CAIRO_STATUS_SUCCESS
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_fb-DEBUG: Test 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: Test 
 requirement passed: cairo_surface_status(fb->cairo_surface) == 
 CAIRO_STATUS_SUCCESS
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_kms-INFO: 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_kms-INFO: 
 1366x768: 58 74250 1366 1502 1532 1592 768 776 788 800 0x48 0xa
-02:09:31.611: ERROR - Igt error: (kms_flip:764) DEBUG: No stale events found
-02:09:31.611: ERROR - Igt error: (kms_flip:764) INFO: Expected 
-frametime: 17153us; measured 17152.9us +- 30.262us accuracy 0.53%
-02:09:31.611: ERROR - Igt error: (kms_flip:764) CRITICAL: Test assertion 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) DEBUG: No stale events found
+11:11:35.318: ERROR - Igt error: (kms_flip:500) INFO: Expected 
+frametime: 17153us; measured 17154.4us +- 32.168us accuracy 0.56%
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Test assertion 
 failure function calibrate_ts, file ../tests/kms_flip.c:1455:
-02:09:31.611: ERROR - Igt error: (kms_flip:764) CRITICAL: Failed 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Failed 
 assertion: 3 * stddev / mean < 0.005
-02:09:31.611: ERROR - Igt error: (kms_flip:764) CRITICAL: Last errno: 4, 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Last errno: 4, 
 Interrupted system call
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_core-INFO: Stack trace:
-02:09:31.611: ERROR - Igt error: ****  END  ****
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_kms-CRITICAL: Test 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_core-INFO: Stack trace:
+11:11:35.318: ERROR - Igt error: ****  END  ****
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Test assertion 
+failure function calibrate_ts, file ../tests/kms_flip.c:1455:
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Failed 
+assertion: 3 * stddev / mean < 0.005
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Last errno: 4, 
+Interrupted system call
+11:11:35.318: ERROR - Igt error: Dynamic subtest B-eDP1 failed.
+11:11:35.318: ERROR - Igt error: **** DEBUG ****
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: 
+igt_create_fb_with_bo_size(width=1366, height=768, 
+format=XR24(0x34325258), modifier=0x0, size=0)
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: 
+igt_create_fb_with_bo_size(handle=3, pitch=5504)
+11:11:35.318: ERROR - Igt error: (kms_flip:500) ioctl_wrappers-DEBUG: 
+Test requirement passed: igt_has_fb_modifiers(fd)
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: 
+igt_create_fb_with_bo_size(width=1366, height=768, 
+format=XR24(0x34325258), modifier=0x0, size=0)
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: 
+igt_create_fb_with_bo_size(handle=4, pitch=5504)
+11:11:35.318: ERROR - Igt error: (kms_flip:500) ioctl_wrappers-DEBUG: 
+Test requirement passed: igt_has_fb_modifiers(fd)
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: Test 
+requirement passed: cairo_surface_status(fb->cairo_surface) == 
+CAIRO_STATUS_SUCCESS
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_fb-DEBUG: Test 
+requirement passed: cairo_surface_status(fb->cairo_surface) == 
+CAIRO_STATUS_SUCCESS
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_kms-INFO: 
+1366x768: 58 74250 1366 1502 1532 1592 768 776 788 800 0x48 0xa
+11:11:35.318: ERROR - Igt error: (kms_flip:500) DEBUG: No stale events found
+11:11:35.318: ERROR - Igt error: (kms_flip:500) INFO: Expected 
+frametime: 17153us; measured 17152.9us +- 40.380us accuracy 0.71%
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Test assertion 
+failure function calibrate_ts, file ../tests/kms_flip.c:1455:
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Failed 
+assertion: 3 * stddev / mean < 0.005
+11:11:35.318: ERROR - Igt error: (kms_flip:500) CRITICAL: Last errno: 4, 
+Interrupted system call
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_core-INFO: Stack trace:
+11:11:35.318: ERROR - Igt error: ****  END  ****
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_kms-CRITICAL: Test 
 assertion failure function kmstest_set_connector_dpms, file 
 ../lib/igt_kms.c:2247:
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_kms-CRITICAL: Failed 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_kms-CRITICAL: Failed 
 assertion: found_it
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_kms-CRITICAL: Last 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_kms-CRITICAL: Last 
 errno: 9, Bad file descriptor
-02:09:31.611: ERROR - Igt error: (kms_flip:764) igt_kms-CRITICAL: DPMS 
+11:11:35.318: ERROR - Igt error: (kms_flip:500) igt_kms-CRITICAL: DPMS 
 property not found on 52
-02:09:31.611: ERROR - Test kms_flip@flip-vs-dpms-on-nop-interruptible: 
-Crash: See "/results/igt.kms_flip@flip-vs-dpms-on-nop-interruptible.log"
-02:09:31.611: DEBUG - End test kms_flip@flip-vs-dpms-on-nop-interruptible
+11:11:35.318: ERROR - Test 
+kms_flip@plain-flip-fb-recreate-interruptible: Crash: See 
+"/results/igt.kms_flip@plain-flip-fb-recreate-interruptible.log"
+11:11:35.318: DEBUG - End test kms_flip@plain-flip-fb-recreate-interruptible
 
-Pipeline: https://gitlab.freedesktop.org/vigneshraman/msm/-/jobs/79872339
+Pipeline: https://gitlab.freedesktop.org/vigneshraman/msm/-/jobs/79896646
 
 Please could you have a look at these test results and let us know if 
 you need more information. Thank you.
