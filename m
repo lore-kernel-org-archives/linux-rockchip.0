@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E97F4C83F1A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 21:08:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 084CEC83F20
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 21:22:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DdxgnGbks6LZHxpLd2yC/b9sFUxcK6ZeRmdTlbNdh3A=; b=UHvRC1A0ZXyEvf
-	TbaTtMgfOhJ4Zj0QwzvahHrd5ZHGhAwU6wDTlwPzfpeVqg5uOhDHz2nczfQZJ2IYGulB1ivWVYv4e
-	UiXpd+89Sz760RoyVaMX1J67aFGRbIYFq0GZWkAI48hcsHgHU99lK5ayd9DrChwNwM22CiufShZHh
-	YbP78s87c7E8v1oZdtXmnYs1KhHl86x8+svo/rswvzrAZv9fNPhg4q3wfAmnKhyzjwHzVV48Bcmbg
-	pvgLeoDLXtwCJAfjdoQGMcegwJxLv1TPGbIp6GtHB2SznIj5rYFTPlvYBOfxhh5/xbIipWuKKNREf
-	EsDrVndughuq6IOQ9A2A==;
+	List-Owner; bh=ZK51nGaOza/sLpTaou9U+y8vTrObqphGhPpghkOIYj8=; b=XiAkT/X1WzryeK
+	0gjcVBlwtABlcBj9TRPRXC98JVMb6cW5ToTHh1ei9Bvi4Agy/9dJWbph35a4WwCk3f817meAJ/he1
+	GFlYn3jLW6Fu2fqULWGMo4sEdvQlIFB+cM72c814k2Ih2Pi4YzJ/h3/cbh88P75qxowon2v5offqB
+	/KVGhQbO2NzOxVJLRxsnnVg2R8IBXxlE9eFPlWEN2/lo1NQlc9y1P7p5yJsIOBS9blvniB79SugOB
+	k00uiXjx9dKwDtfWhCbvvhhCkGKAGuiCkv3usLhVZ3svDpGDxU7GvVdpdSDVYrPr4VGFLhPwmbC79
+	bPZFZqpcU8z9OPeAo3TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZyUa-0000000D1ro-1SCP;
-	Thu, 10 Jul 2025 21:07:44 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uZyiR-0000000D3TK-2ZbJ;
+	Thu, 10 Jul 2025 21:22:03 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZwyZ-0000000CoqY-3XRv;
-	Thu, 10 Jul 2025 19:30:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1752175820; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=I/ka+SLGhV+QGCE7fhGV9qYnglLgy9/7ibP/VHkpOEkzzlN+hYr3n1hU+m0Czd3JuzQEcq3dJutzOQDlLs4uuTOHYI/Lj8p3iXdTFweEpCXHRjKKkqLQ24u3kz7ogTT6ITQRIH8buzu3rmYlidtSoboB93yZBpHRO+aGTxnuDY4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1752175820; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=2bzdLOutw45NuzUy8PqWXaJAtp7VYXU2KwETf6FwUq4=; 
-	b=KGNFyCXuU/Eu7gI53XiCbXZ+2vpS1Ajv5tsP6P5DkQZQ7IogkRrzv2E2nSQ6QPoYGfJZFxB9rHfMFncR5gkPpshEpNmhmshWWYu93Hkr46rex2NKwDW57U5JARz8hTeTCfu6ErwawJQdGWt5x+2Gy63PfS87RHWiQxSiNu09gwk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1752175820;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=2bzdLOutw45NuzUy8PqWXaJAtp7VYXU2KwETf6FwUq4=;
-	b=kw7up1/5sk7CS9DwqFvhC738rMQmLkDy+YBescJyPukKyMiQXceMUwSSbDObh1iU
-	ZFgMXP3VSkSTnRsOVkc3kmN5JNUm1ed5mQHxwFolk5+x8M8+Yi9IJdDT66VzpDBwZwD
-	9Sono6bXrQ7cofGqQpGwIZMHjH9DgKP4GZKvxFWQ=
-Received: by mx.zohomail.com with SMTPS id 1752175818697100.88359010230067;
-	Thu, 10 Jul 2025 12:30:18 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Alexey Charkov <alchark@gmail.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com,
- linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 4/7] dt-bindings: thermal: rockchip: document otp thermal trim
-Date: Thu, 10 Jul 2025 21:30:12 +0200
-Message-ID: <6505070.lOV4Wx5bFT@workhorse>
-In-Reply-To: <3592348.tdWV9SEqCh@phil>
-References: <20250610-rk3576-tsadc-upstream-v6-0-b6e9efbf1015@collabora.com>
- <20250610-rk3576-tsadc-upstream-v6-4-b6e9efbf1015@collabora.com>
- <3592348.tdWV9SEqCh@phil>
+	id 1uZxYB-0000000CsvA-27n9
+	for linux-rockchip@lists.infradead.org;
+	Thu, 10 Jul 2025 20:07:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1752178042;
+ bh=/1M1f0WXZO5bxuDo4DpdIlyXNWZQiDSA9GNt+SrC4Gs=;
+ b=d2HpPcNRJ2C8pxLjAUAoCM6jgNDeUlTHCTzdc0i/Axyrq0tfPLeictSK9CkeHcMuCnW+afOxW
+ p1BrdEDP8/90DHuHieqwya2hMT6MEV1FZue8IfwLAGgiFA4j95y1tg6qOZyTqjTdnVXrGq8sJ2q
+ zRzrsfpAiqR1+fkUYokGiUwXYqr3MgilgIvOEYIRpppcckZ6RtBcidQPdbsOyKcjN3QwjbMRg0W
+ VA1Pja6EQzY7LnLDQBwmN5cqc8eDON8b2loJ85dzWflUXH2lR7KjsTktNzoAPNhr4VY9rOUFybk
+ wrHFdppo4cTRr6FnmkRfcu9jZzR0RXkXFRDNaCJfOPNQ==
+X-Forward-Email-ID: 68701d735dd88a88be4f45f3
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 1.1.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <48bdfce3-d87f-43d4-8d05-837132d68ed6@kwiboo.se>
+Date: Thu, 10 Jul 2025 22:07:11 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/6] arm64: dts: rockchip: Add Radxa ROCK 2A/2F
+To: Yao Zi <ziyao@disroot.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250708224921.2254116-1-jonas@kwiboo.se>
+ <20250708224921.2254116-3-jonas@kwiboo.se> <aG3vPsUd-FPkhi-S@pie.lan>
+ <5ce03a37-1b60-4328-8d04-07bf835def94@kwiboo.se> <aG_tTPRYZPYHMpf7@pie.lan>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <aG_tTPRYZPYHMpf7@pie.lan>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250710_123035_944630_C70F4C74 
-X-CRM114-Status: GOOD (  19.42  )
+X-CRM114-CacheID: sfid-20250710_130723_894473_304B8D79 
+X-CRM114-Status: GOOD (  22.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,57 +76,135 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1cnNkYXksIDEwIEp1bHkgMjAyNSAxMzoyMToxOSBDZW50cmFsIEV1cm9wZWFuIFN1bW1l
-ciBUaW1lIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+IEFtIERpZW5zdGFnLCAxMC4gSnVuaSAyMDI1
-LCAxNDozMjo0MCBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIE5pY29sYXMg
-RnJhdHRhcm9saToKPiA+IFNldmVyYWwgUm9ja2NoaXAgU29Dcywgc3VjaCBhcyB0aGUgUkszNTc2
-LCBjYW4gc3RvcmUgY2FsaWJyYXRpb24gdHJpbQo+ID4gZGF0YSBmb3IgdGhlcm1hbCBzZW5zb3Jz
-IGluIE9UUCBjZWxscy4gVGhpcyBjYXBhYmlsaXR5IHNob3VsZCBiZQo+ID4gZG9jdW1lbnRlZC4K
-PiA+IAo+ID4gU3VjaCBhIHJvY2tjaGlwIHRoZXJtYWwgc2Vuc29yIG1heSByZWZlcmVuY2UgY2Vs
-bCBoYW5kbGVzIHRoYXQgc3RvcmUKPiA+IGJvdGggYSBjaGlwLXdpZGUgdHJpbSBmb3IgYWxsIHRo
-ZSBzZW5zb3JzLCBhcyB3ZWxsIGFzIGNlbGwgaGFuZGxlcwo+ID4gZm9yIGVhY2ggaW5kaXZpZHVh
-bCBzZW5zb3IgY2hhbm5lbCBwb2ludGluZyB0byB0aGF0IHNwZWNpZmljIHNlbnNvcidzCj4gPiB0
-cmltIHZhbHVlLgo+ID4gCj4gPiBBZGRpdGlvbmFsbHksIHRoZSB0aGVybWFsIHNlbnNvciBtYXkg
-b3B0aW9uYWxseSByZWZlcmVuY2UgY2VsbHMgd2hpY2gKPiA+IHN0b3JlIHRoZSBiYXNlIGluIHRl
-cm1zIG9mIGRlZ3JlZXMgY2Vsc2l1cyBhbmQgZGVjaWNlbHNpdXMgdGhhdCB0aGUgdHJpbQo+ID4g
-aXMgcmVsYXRpdmUgdG8uCj4gPiAKPiA+IEVhY2ggU29DIHRoYXQgaW1wbGVtZW50cyB0aGlzIGFw
-cGVhcnMgdG8gaGF2ZSBhIHNsaWdodGx5IGRpZmZlcmVudAo+ID4gY29tYmluYXRpb24gb2YgY2hp
-cC13aWRlIHRyaW0sIGJhc2UsIGJhc2UgZnJhY3Rpb25hbCBwYXJ0IGFuZAo+ID4gcGVyLWNoYW5u
-ZWwgdHJpbSwgc28gd2hpY2ggb25lcyBkbyB3aGljaCBpcyBkb2N1bWVudGVkIGluIHRoZSBiaW5k
-aW5ncy4KPiA+IAo+ID4gUmV2aWV3ZWQtYnk6IFJvYiBIZXJyaW5nIChBcm0pIDxyb2JoQGtlcm5l
-bC5vcmc+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBOaWNvbGFzIEZyYXR0YXJvbGkgPG5pY29sYXMuZnJh
-dHRhcm9saUBjb2xsYWJvcmEuY29tPgo+IAo+IEFja2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVp
-a29Ac250ZWNoLmRlPgo+IAo+IHdpdGggb25lIHF1ZXN0aW9uIGJlbG93Cj4gCj4gPiAtLS0KPiA+
-ICAuLi4vYmluZGluZ3MvdGhlcm1hbC9yb2NrY2hpcC10aGVybWFsLnlhbWwgICAgICAgICB8IDYx
-ICsrKysrKysrKysrKysrKysrKysrKysKPiA+ICAxIGZpbGUgY2hhbmdlZCwgNjEgaW5zZXJ0aW9u
-cygrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
-bmdzL3RoZXJtYWwvcm9ja2NoaXAtdGhlcm1hbC55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL3RoZXJtYWwvcm9ja2NoaXAtdGhlcm1hbC55YW1sCj4gPiBpbmRleCA0OWNl
-ZWQ2OGM5MmNlNWEzMmVkOGQ0ZjM5YmQ4OGZkMDUyZGUwZTgwLi41NzNmNDQ3Y2MyNmVkNzEwMDYz
-ODI3NzU5OGIwZTc0NWQ0MzZmZDAxIDEwMDY0NAo+ID4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZp
-Y2V0cmVlL2JpbmRpbmdzL3RoZXJtYWwvcm9ja2NoaXAtdGhlcm1hbC55YW1sCj4gPiArKysgYi9E
-b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdGhlcm1hbC9yb2NrY2hpcC10aGVybWFs
-LnlhbWwKPiA+IEBAIC00MCw2ICs0MCwxNyBAQCBwcm9wZXJ0aWVzOgo+ID4gICAgICAgIC0gY29u
-c3Q6IHRzYWRjCj4gPiAgICAgICAgLSBjb25zdDogYXBiX3BjbGsKPiA+ICAKPiA+ICsgIG52bWVt
-LWNlbGxzOgo+ID4gKyAgICBpdGVtczoKPiA+ICsgICAgICAtIGRlc2NyaXB0aW9uOiBjZWxsIGhh
-bmRsZSB0byB3aGVyZSB0aGUgdHJpbSdzIGJhc2UgdGVtcGVyYXR1cmUgaXMgc3RvcmVkCj4gPiAr
-ICAgICAgLSBkZXNjcmlwdGlvbjoKPiA+ICsgICAgICAgICAgY2VsbCBoYW5kbGUgdG8gd2hlcmUg
-dGhlIHRyaW0ncyB0ZW50aHMgb2YgQ2Vsc2l1cyBiYXNlIHZhbHVlIGlzIHN0b3JlZAo+ID4gKwo+
-ID4gKyAgbnZtZW0tY2VsbC1uYW1lczoKPiA+ICsgICAgaXRlbXM6Cj4gPiArICAgICAgLSBjb25z
-dDogdHJpbV9iYXNlCj4gPiArICAgICAgLSBjb25zdDogdHJpbV9iYXNlX2ZyYWMKPiA+ICsKPiAK
-PiBhcmUgd2Ugc3VyZSwgd2Ugd2FudCB1bmRlcnNjb3JlcyBoZXJlPwo+IHRyaW0tYmFzZSwgdHJp
-bS1iYXNlLWZyYWMgbG9va3Mgc29tZXdoYXQgbmljZXIuCgphIHF1aWNrIGdyZXAgb2YgYWxsIHRo
-ZSBiaW5kaW5ncyBzaG93cyBtZSB0aGF0IF8gdnMuIC0gaXMgYWJvdXQgZXZlbi4KSSdtIG5vdCBz
-dXJlIGRldmlhdGluZyBmcm9tIHdoYXQgZG93bnN0cmVhbSBjYWxscyBpdCwgd2hhdCBJIGFscmVh
-ZHkKc2VudCwgYW5kIHdoYXQgdGhlIGFscmVhZHkgc2VudCBkcml2ZXIgZXhwZWN0cyBpcyByZWFs
-bHkgd29ydGggYW55b25lJ3MKdGltZSBhbmQgbWFpbGJveCBzcGFjZSBmb3Igd2hhdCBib2lscyBk
-b3duIHRvIGEgbWF0dGVyIG9mIHBlcnNvbmFsCnByZWZlcmVuY2UuCgo+IAo+IEhlaWtvCj4gCgpL
-aW5kIHJlZ2FyZHMsCk5pY29sYXMgRnJhdHRhcm9saQoKCgoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
-aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On 7/10/2025 6:41 PM, Yao Zi wrote:
+> On Thu, Jul 10, 2025 at 01:56:02AM +0200, Jonas Karlman wrote:
+>> Hi,
+>>
+>> On 7/9/2025 6:25 AM, Yao Zi wrote:
+>>> On Tue, Jul 08, 2025 at 10:48:52PM +0000, Jonas Karlman wrote:
+>>>> The ROCK 2A and ROCK 2F is a high-performance single board computer
+>>>> developed by Radxa, based on the Rockchip RK3528A SoC.
+>>>>
+>>>> Add initial device tree for the Radxa ROCK 2A and ROCK 2F boards.
+>>>>
+>>>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>>>> ---
+>>>> Schematics:
+>>>> - https://dl.radxa.com/rock2/2a/v1.2/radxa_rock_2a_v1.2_schematic.pdf
+>>>> - https://dl.radxa.com/rock2/2f/radxa_rock2f_v1.01_schematic.pdf
+>>>> ---
+>>>>  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+>>>>  .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 292 ++++++++++++++++++
+>>>>  .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++++
+>>>>  .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
+>>>>  4 files changed, 386 insertions(+)
+>>>>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+>>>>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
+>>>>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
+>>>  
+>>> While testing the patch on my Rock 2A board, I noticed one of my SDcard
+>>> that works perfectly on Radxa E20C and NanoPi Zero 2 cannot be correctly
+>>> read out under UHS-125-SDR mode,
+>>>
+>>> 	# dd if=/dev/mmcblk1 of=/dev/null bs=4M count=4
+>>> 	[   18.616828] mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+>>> 	[   19.193315] mmc1: Skipping voltage switch
+>>> 	[   19.202046] mmc1: tried to HW reset card, got error -110
+>>> 	[   19.213312] mmcblk1: recovery failed!
+>>> 	[   19.213709] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 256 prio class 0
+>>> 	[   19.225201] mmcblk1: recovery failed!
+>>> 	[   19.225530] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+>>> 	[   19.226283] Buffer I/O error on dev mmcblk1, logical block 0, async page read
+>>> 	dd: /dev/mmcblk1: I/O error
+>>>
+>>> which could be reproduced stably.
+>>>
+>>> the SDMMC controller issued interesting messages during the tuning
+>>> process,
+>>>
+>>> 	[    0.665246] mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
+>>> 	[    0.851940] dwmmc_rockchip ffc30000.mmc: All phases work, using default phase 90.
+>>>
+>>> but actually it doesn't work with phase = 90. If the frequency is
+>>> limited to 100MHz with max-frequency = <100000000> instead of the
+>>> default 150MHz, tuning results in a very different phase,
+>>>
+>>> 	[    0.665483] mmc_host mmc1: Bus speed (slot 0) = 99600000Hz (slot req 100000000Hz, actual 99600000HZ div = 0)
+>>> 	[    1.166340] dwmmc_rockchip ffc30000.mmc: Successfully tuned phase to 141
+>>>
+>>> and the card works, too. If I set rockchip,default-sample-phase to 141
+>>> in devicetree, the card could work at full 150MHz as well.
+>>>
+>>> I think there's something wrong with the tuning process, or the board's
+>>> design cannot always run reliably at 150MHz.
+>>>
+>>> Could you reproduce similar failures on Radxa 2A? If so, it may be
+>>> necessary to lower the SDMMC's maximum frequency for the board.
+>>
+>> I have not been able to reproduce this issue on any of my ROCK 2A or 2F
+>> boards, my boards seem to tune phase to around 250-265 for the sd-cards
+>> I tested.
+>>
+>> Could you try with something like this:
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi b/arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+>> index fc23c51836b15..a82791db55699 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+>> @@ -285,6 +285,10 @@
+>>  	status = "okay";
+>>  };
+>>  
+>> +&sdmmc_clk {
+>> +	rockchip,pins = <2 RK_PA5 1 &pcfg_pull_up_drv_level_3>;
+>> +};
+>> +
+>>  &uart0 {
+>>  	pinctrl-names = "default";
+>>  	pinctrl-0 = <&uart0m0_xfer>;
+>>
+>>
+>> Changing clk drive strength seem to be something that has been done in
+>> Radxa vendor kernel [1], could be something that we can include if it
+>> fixes your issue.
+> 
+> This seems to improve the situation a little, but doesn't solve the
+> issue. Among more than ten times of testing, the tuning process only
+> worked twice.
+> 
+>> The kernel I tested was built from [2].
+> 
+> I've tried this branch as well, but things don't improve.
+> 
+> Do you consider lower the clock-frequency acceptable?
+
+Sure, I will include the max-frequency = <100000000> in a v2 shortly.
+
+Regards,
+Jonas
+
+> 
+>> [1] https://github.com/radxa/kernel/commit/e9b33cbc97a902560d3f3b43b4d36a1a0ac68a50
+>> [2] https://github.com/Kwiboo/linux-rockchip/commits/next-20250708-rk3528-boards/
+>>
+>> Regards,
+>> Jonas
+>>
+>>>
+>>> Regards,
+>>> Yao Zi
+>>
+> 
+> Regards,
+> Yao Zi
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
