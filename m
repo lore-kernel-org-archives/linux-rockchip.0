@@ -4,61 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B13C83F0F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 02:50:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FC8CC83F09
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 07:37:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=kTdFmu+7oTVLTm3sTRZPZH7chj/3Hr72akqFolCDPh0=; b=BpJroiCIocDuViPcpKYaApqtQl
-	/PTgE8ndnzv1a9wvTYYy/XKFEqCsLOvJPc5b2Ek3D6SldM0b4M01/s+l3+u4f81tp3n1uR1F4MeE4
-	v7n2cpg2dmzyLtnR6bJ+4+l6mX2gN5QmvcynWJo+qVZuPQAP+IQHfrFlHym4wRkl8WKZJYmUeuQCT
-	iW8TlT3L4MlYo4FPhq41iqj89hA0Q+AhStKVl57VlNuo0MUoLrQX1VZotJMUl0fd5sOO1htoX2duC
-	qIx5S9aQYVO2gSG79CFqVmnvaE4yLlOPrsP2217OEHzdd3XOW7dfu9evz0I67kygeerzuTAyXFxBB
-	pPIC4ejw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Z+jkMfK6U9d4qlRoXAydcS1uWmtS8G1eSJkHofopem4=; b=SRlhi4ut8D8typ
+	z/Y/65j9pEmHZuhRa5bmEMqp3qJWwsJ4/RXlleDifiUqwrrld1i7hjxBihFMYyARyi/654JD/LrD4
+	x1MTUhlV0J25Iv16mfplM/FKOwD8yEzIxNiRI/5WWK5+BTSFuZS+2h5vYbwbGaZqVcWvlJ9zxpz4a
+	WT79cpZ/1BygTeRpwUrT2L6QzvA/P6zk/43+isnupL/jaBjdyRKFDugRpmdWeVWo+GnrvCXAGDL/m
+	nuXuVNXefqt83P/WpyUIFC+qDbZFIi+lHdq+4na10m+ZMve8C/s4JdXztyCGWguThi1EWyLoVQr19
+	HHvfAPshiSdivrQGXgBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZhMp-0000000AWo1-0XzC;
-	Thu, 10 Jul 2025 02:50:35 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uZlq5-0000000B2Er-2nxx;
+	Thu, 10 Jul 2025 07:37:05 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZhI7-0000000AVxl-41Qi;
-	Thu, 10 Jul 2025 02:45:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DFE135C6BD5;
-	Thu, 10 Jul 2025 02:45:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FCC7C4CEF5;
-	Thu, 10 Jul 2025 02:45:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752115542;
-	bh=DbJ7pzvyLSajFxPAjFNYWqJERvyPy80AQtVzVHLDCDs=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=GYRDqzqSMAPcWOjTOiM60Ttb6B3Tgp727qClmWixa6Lmprs6KTULXchOBDZS1dneb
-	 jjYdqNG7sjQC5hxzo9WY3uCEY26EP4xQMTcOMGBm6BFE54ll1Vg3ixMjoxA+wvS92S
-	 sfby6XDLjyiJKvPGAMuwqNMnjfsYWyz6LaxrINr9TaEPSdsdV7EESzwYaxljdcLcAo
-	 hv5hr6PpZNpT+s5/1yvPYKLam2UEE+w5AoiuZAzr/ARbxumVnlGiy71X/j0zi5566c
-	 U8Bm//c/RGf8W9+FjLr+om46N0KscL9sAsrvO3xfbQgJEa+7uv0FgNlSm/zZ+ClN8N
-	 ZMYoaDDS+X2TQ==
-Date: Wed, 09 Jul 2025 21:45:41 -0500
+	id 1uZl1Z-0000000Aty3-46Rs;
+	Thu, 10 Jul 2025 06:44:55 +0000
+Received: from ideasonboard.com (mob-5-90-141-178.net.vodafone.it [5.90.141.178])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1FBE4B2B;
+	Thu, 10 Jul 2025 08:44:20 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1752129862;
+	bh=G2mP+TzUpeF4VFP/EQ7A/yoG+29WO+bDjDJWRAYrtuw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PyRV9bH3jTKdG61AxpHwFNrD5ZlVCKtu1dsfjtd9DN1UJuO+mKEYI+KILfjwjeoC6
+	 +brRni8FqbT6gb+vSERcsif0R4l85tmvx0x82mLnYo44CNzXx73rXVzCUN/pHFRHXo
+	 Q1gae9a/49W4znJEAraMCWAZ2RXoe3EtfTMfwLNI=
+Date: Thu, 10 Jul 2025 08:44:40 +0200
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+To: Keke Li <keke.li@amlogic.com>
+Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+	Dafna Hirschfeld <dafna@fastmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Dan Scally <dan.scally@ideasonboard.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 3/8] media: uapi: Convert Amlogic C3 to V4L2 extensible
+ params
+Message-ID: <y6d6slegpjoduxnvmed3xurjwt7t6me2jiy65u743lk4wc6zny@zhed5vdusmen>
+References: <20250708-extensible-parameters-validation-v1-0-9fc27c9c728c@ideasonboard.com>
+ <20250708-extensible-parameters-validation-v1-3-9fc27c9c728c@ideasonboard.com>
+ <968ffcce-9fef-4336-b83d-f9cd7ade6ea0@amlogic.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-kernel@vger.kernel.org, 
- Conor Dooley <conor+dt@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>, 
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, 
- linux-arm-kernel@lists.infradead.org
-To: Yao Zi <ziyao@disroot.org>
-In-Reply-To: <aG3vPsUd-FPkhi-S@pie.lan>
-References: <20250708224921.2254116-1-jonas@kwiboo.se>
- <20250708224921.2254116-3-jonas@kwiboo.se> <aG3vPsUd-FPkhi-S@pie.lan>
-Message-Id: <175211539781.410915.4272303348693567023.robh@kernel.org>
-Subject: Re: [PATCH 2/6] arm64: dts: rockchip: Add Radxa ROCK 2A/2F
+Content-Disposition: inline
+In-Reply-To: <968ffcce-9fef-4336-b83d-f9cd7ade6ea0@amlogic.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_194544_379992_C6E4024D 
-X-CRM114-Status: GOOD (  25.64  )
+X-CRM114-CacheID: sfid-20250709_234454_355623_E3FFA72A 
+X-CRM114-Status: GOOD (  39.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,146 +73,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Keke
 
-On Wed, 09 Jul 2025 04:25:34 +0000, Yao Zi wrote:
-> On Tue, Jul 08, 2025 at 10:48:52PM +0000, Jonas Karlman wrote:
-> > The ROCK 2A and ROCK 2F is a high-performance single board computer
-> > developed by Radxa, based on the Rockchip RK3528A SoC.
+   thanks for the comment and for testing
+
+On Thu, Jul 10, 2025 at 10:32:01AM +0800, Keke Li wrote:
+> Hi Jacopo
+>
+> On 2025/7/8 18:40, Jacopo Mondi wrote:
+> > [ EXTERNAL EMAIL ]
 > >
-> > Add initial device tree for the Radxa ROCK 2A and ROCK 2F boards.
+> > With the introduction of common types for extensible parameters
+> > format, convert the c3-isp-config.h header to use the new types.
 > >
-> > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> > Factor-out the documentation that is now part of the common header
+> > and only keep the driver-specific on in place.
+> >
+> > The conversion to use common types doesn't impact userspace as the
+> > new types are either identical to the ones already existing in the
+> > C3 ISP uAPI or are 1-to-1 type convertible.
+> >
+> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 > > ---
-> > Schematics:
-> > - https://dl.radxa.com/rock2/2a/v1.2/radxa_rock_2a_v1.2_schematic.pdf
-> > - https://dl.radxa.com/rock2/2f/radxa_rock2f_v1.01_schematic.pdf
-> > ---
-> >  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
-> >  .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 292 ++++++++++++++++++
-> >  .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++++
-> >  .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
-> >  4 files changed, 386 insertions(+)
-> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
-> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
-> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
-> 
-> While testing the patch on my Rock 2A board, I noticed one of my SDcard
-> that works perfectly on Radxa E20C and NanoPi Zero 2 cannot be correctly
-> read out under UHS-125-SDR mode,
-> 
-> 	# dd if=/dev/mmcblk1 of=/dev/null bs=4M count=4
-> 	[   18.616828] mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
-> 	[   19.193315] mmc1: Skipping voltage switch
-> 	[   19.202046] mmc1: tried to HW reset card, got error -110
-> 	[   19.213312] mmcblk1: recovery failed!
-> 	[   19.213709] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 256 prio class 0
-> 	[   19.225201] mmcblk1: recovery failed!
-> 	[   19.225530] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
-> 	[   19.226283] Buffer I/O error on dev mmcblk1, logical block 0, async page read
-> 	dd: /dev/mmcblk1: I/O error
-> 
-> which could be reproduced stably.
-> 
-> the SDMMC controller issued interesting messages during the tuning
-> process,
-> 
-> 	[    0.665246] mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> 	[    0.851940] dwmmc_rockchip ffc30000.mmc: All phases work, using default phase 90.
-> 
-> but actually it doesn't work with phase = 90. If the frequency is
-> limited to 100MHz with max-frequency = <100000000> instead of the
-> default 150MHz, tuning results in a very different phase,
-> 
-> 	[    0.665483] mmc_host mmc1: Bus speed (slot 0) = 99600000Hz (slot req 100000000Hz, actual 99600000HZ div = 0)
-> 	[    1.166340] dwmmc_rockchip ffc30000.mmc: Successfully tuned phase to 141
-> 
-> and the card works, too. If I set rockchip,default-sample-phase to 141
-> in devicetree, the card could work at full 150MHz as well.
-> 
-> I think there's something wrong with the tuning process, or the board's
-> design cannot always run reliably at 150MHz.
-> 
-> Could you reproduce similar failures on Radxa 2A? If so, it may be
-> necessary to lower the SDMMC's maximum frequency for the board.
-> 
-> Regards,
-> Yao Zi
-> 
-> 
+> >   include/uapi/linux/media/amlogic/c3-isp-config.h | 45 +++++++-----------------
+> >   1 file changed, 12 insertions(+), 33 deletions(-)
+> >
+> > diff --git a/include/uapi/linux/media/amlogic/c3-isp-config.h b/include/uapi/linux/media/amlogic/c3-isp-config.h
+> > index ed085ea62a574932c7ad8d59d34b2c5c74a597d8..203116cdfb89356301c16c98cb40e5b83efe71d6 100644
+> > --- a/include/uapi/linux/media/amlogic/c3-isp-config.h
+> > +++ b/include/uapi/linux/media/amlogic/c3-isp-config.h
+> > @@ -6,8 +6,12 @@
+> >   #ifndef _UAPI_C3_ISP_CONFIG_H_
+> >   #define _UAPI_C3_ISP_CONFIG_H_
+> >
+> > +#include <linux/build_bug.h>
+> >   #include <linux/types.h>
+> >
+> > +#define _UAPI_V4L2_EXTENSIBLE_PARAMS_GUARD_
+> > +#include <linux/media/v4l2-extensible-params.h>
+> > +
+> >   /*
+> >    * Frames are split into zones of almost equal width and height - a zone is a
+> >    * rectangular tile of a frame. The metering blocks within the ISP collect
+> > @@ -183,11 +187,6 @@ enum c3_isp_params_block_type {
+> >    * struct c3_isp_params_block_header - C3 ISP parameter block header
+> >    *
+> >    * This structure represents the common part of all the ISP configuration
+> > - * blocks. Each parameters block shall embed an instance of this structure type
+> > - * as its first member, followed by the block-specific configuration data. The
+> > - * driver inspects this common header to discern the block type and its size and
+> > - * properly handle the block content by casting it to the correct block-specific
+> > - * type.
+> >    *
+> >    * The @type field is one of the values enumerated by
+> >    * :c:type:`c3_isp_params_block_type` and specifies how the data should be
+> > @@ -223,15 +222,8 @@ enum c3_isp_params_block_type {
+> >    *                     gamma->pst_gamma_lut[i] = i;
+> >    *     }
+> >    *
+> > - * @type: The parameters block type from :c:type:`c3_isp_params_block_type`
+> > - * @flags: A bitmask of block flags
+> > - * @size: Size (in bytes) of the parameters block, including this header
+> >    */
+> > -struct c3_isp_params_block_header {
+> > -       __u16 type;
+> > -       __u16 flags;
+> > -       __u32 size;
+> > -};
+> > +#define c3_isp_params_block_header v4l2_params_block
+>
+> Why not use v4l2_params_block directly?
 
+The types of the Amlogic C3 and RkISP1 headers are already part of the
+kernel userspace API and we can't change them without breaking
+existing users I'm afraid. In the C3 case the kernel support has been
+collected in the v6.16 merge window, and v6.16 has not been released yet,
+so one could argue there are no "existing users" yet.
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+It's however too late in my opinion to make modifications that depend
+on this patch series which will, be collected for v6.18 at the
+earliest.
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+Thanks
+  j
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/v6.16-rc1-34-g7f9509791507 (exact match)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for aG3vPsUd-FPkhi-S@pie.lan:
-
-arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
-arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
-arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
-	'allwinner,sun8i-a23-mali' was expected
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
-	'allwinner,sun7i-a20-mali' was expected
-	'arm,mali-400' was expected
-	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
-arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
-	'allwinner,sun8i-a23-mali' was expected
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
-	'allwinner,sun7i-a20-mali' was expected
-	'arm,mali-400' was expected
-	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
-arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
-arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
-arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
-arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
-	'allwinner,sun8i-a23-mali' was expected
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
-	'allwinner,sun7i-a20-mali' was expected
-	'arm,mali-400' was expected
-	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
-arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
-	'allwinner,sun8i-a23-mali' was expected
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
-	'allwinner,sun7i-a20-mali' was expected
-	'arm,mali-400' was expected
-	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
-arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
-
-
-
-
-
+>
+> Thanks
+>
+> Keke
+>
+> >
+> >   /**
+> >    * struct c3_isp_params_awb_gains - Gains for auto-white balance
+> > @@ -498,26 +490,9 @@ struct c3_isp_params_blc {
+> >   /**
+> >    * struct c3_isp_params_cfg - C3 ISP configuration parameters
+> >    *
+> > - * This struct contains the configuration parameters of the C3 ISP
+> > - * algorithms, serialized by userspace into an opaque data buffer. Each
+> > - * configuration parameter block is represented by a block-specific structure
+> > - * which contains a :c:type:`c3_isp_param_block_header` entry as first
+> > - * member. Userspace populates the @data buffer with configuration parameters
+> > - * for the blocks that it intends to configure. As a consequence, the data
+> > - * buffer effective size changes according to the number of ISP blocks that
+> > - * userspace intends to configure.
+> > - *
+> > - * The parameters buffer is versioned by the @version field to allow modifying
+> > - * and extending its definition. Userspace should populate the @version field to
+> > - * inform the driver about the version it intends to use. The driver will parse
+> > - * and handle the @data buffer according to the data layout specific to the
+> > - * indicated revision and return an error if the desired revision is not
+> > - * supported.
+> > - *
+> > - * For each ISP block that userspace wants to configure, a block-specific
+> > - * structure is appended to the @data buffer, one after the other without gaps
+> > - * in between nor overlaps. Userspace shall populate the @total_size field with
+> > - * the effective size, in bytes, of the @data buffer.
+> > + * This is the driver-specific implementation of :c:type:`v4l2_params_buffer`.
+> > + *
+> > + * Currently only C3_ISP_PARAM_BUFFER_V0 is supported.
+> >    *
+> >    * The expected memory layout of the parameters buffer is::
+> >    *
+> > @@ -561,4 +536,8 @@ struct c3_isp_params_cfg {
+> >          __u8 data[C3_ISP_PARAMS_MAX_SIZE];
+> >   };
+> >
+> > +/* Make sure the header is type-convertible to the generic v4l2 params one */
+> > +static_assert((sizeof(struct c3_isp_params_cfg) - C3_ISP_PARAMS_MAX_SIZE) ==
+> > +             sizeof(struct v4l2_params_buffer));
+> > +
+> >   #endif
+> >
+> > --
+> > 2.49.0
+> >
+>
 
 _______________________________________________
 Linux-rockchip mailing list
