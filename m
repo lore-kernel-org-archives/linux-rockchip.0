@@ -4,79 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0DEEC83F20
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 13:14:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE935C83F1D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 13:29:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:Message-ID:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ce4bwaInpHCh4KzULTUDlsc8zab33X3Xb9JvwrTgqbw=; b=zBZ+SCD5bRByAZ03YGVQqCYJjl
-	kuy+btm2eOf1luyviijY9vlaOwJ+Cy1bi2UoYxlBkPPZZoFWCnNqdsoOsMbE6lg10P8RYE/QG4xbL
-	lL9NGIzxQ1Awb1AsGl9VTVc2dfjb7CBtlfjnAIAdI9dVHz/dXKllUIenOG88obfbgjejeVR6JQP76
-	Waggm/X75JE5N+6yEDLFKZBj7VZvkTIJzQ1S99wZl2sewed+NiNeE3zVGNgLAhWRZJPiO0do9C9vR
-	Lh1O4wSsYQMJtdOFYaGsVYWbrLFCr0FS1HCgOxSRdbfZuTTCtUXrF8gp+VxN5DSwtUmNb0YRY5/yU
-	CoH3E0Rw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jRVJb+uLkSIx4XJYKnyjb9S/r1ogl6aVcDQjfaFF7hY=; b=SiQjkW4+Weh90G
+	6F65PKTNJzoVCV2rVZPMyZ/AUg7ExE3ZgAN9SfdpzKa47qLRT5L3lHIskdIK1UjiIIFkNZWGJw8Os
+	/xiPByhPIfRDl5pexiZmicXChf9ohLAUAQllbMQ36H9cugpQ++Al6RUMo385RSZCC5zisAF+13g4Y
+	RVnH9NHfC5heyrk4KjQhvixXgvHvbpJIl7Q3z2bvACnHzEIunWoyRqPyJGJCW5WHdZ/+MpaS+hw3k
+	0y8ZGaH714/e+jRtjRZdx0G6S06g7YtEPsbiIu5LnPn8nVwgZdWNL+y481JK3sup6xczHvKfYjSR/
+	dcTXxJJhKHt2RVTKJ4nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZr6E-0000000BtOI-2haF;
-	Thu, 10 Jul 2025 13:14:06 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uZrKl-0000000Bvm2-23mQ;
+	Thu, 10 Jul 2025 13:29:07 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZoqW-0000000BXEn-0I6L;
-	Thu, 10 Jul 2025 10:49:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=S5pXaI1r/zpH3w7W9hJhtiCehE4r0uIxKw1TgRh8vR8=; b=Ht9a9ds8QmgNk96vPVGQ+vPQy7
-	tzfGfN5/ClJZvtqv6wE3cxEjpMhZYAPuICJu2IikGf3mATfmr/ESku9F9AKfaQQ/kZNO+iQ48/+Eg
-	6WziwOLSuSGLMFiL3sX9WTqMWq1ku93MPek76sg2Pkt1eWdK84abTuROtVXhhfpRSn+/FqSmoMKB/
-	aFkMw4cdrKTLUhG/zWx5+LMmTNDVZUnPsAFw7dc3ejODB69Z8+bWoleIEAT8fPrY3rE2hYf9LRJei
-	7bqarUkQVgH50GullncS6Bq/88t+1tmdlotpBHF1Wy6sL3JQsx4TuR91PpihGJgmcSmC38Uvgg+9v
-	9i+terzw==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZoqS-00000008zyD-0yat;
-	Thu, 10 Jul 2025 10:49:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752144574;
-	bh=6eCyQRGUL84zvCp0r/7JvZNwmMn+HX4Mb1TJDE3F9Wg=;
-	h=Date:To:Cc:From:Subject:From;
-	b=XuviOK6SBd2NvqMbB2L6+gu9vU3NmambBlBUx0FGqVrbYsdYcqmU28Pr3MWUO6R3o
-	 6Oir2TVfotwjcaQLnNCHkMoPa8smRsz1gjumj/H1DUYXG0oFP0S1GhSfiLKCMnZ3cc
-	 aJ9uONWY7gPE52f3OR5+zsRrN4s36z+FVorr2LWvtcATAy4Fq6ScnF/9Jcil2HBYog
-	 qbCqW601yIBf4IxJmHfxl3avVAhBnVUOeMdEnvuH5rdB3NpH7eZCSvVaMCLUyoQWio
-	 ti5fU/6NJ/ZOV6WaZubJM0cJaXtnu6x9FaNfLoQMBn80BUehK2XOsroFQlV1WkU9sz
-	 aoF9r2NETeH7A==
-Received: from [192.168.50.250] (unknown [171.76.82.69])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5501717E0489;
-	Thu, 10 Jul 2025 12:49:31 +0200 (CEST)
-Message-ID: <59724e10-12ca-4481-b0e4-72d7b6e4dae0@collabora.com>
-Date: Thu, 10 Jul 2025 16:19:22 +0530
+	id 1uZnYs-0000000BLAt-2OMm;
+	Thu, 10 Jul 2025 09:27:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=B9sgA9KEUZfto5gbFbrYuGKWO4F6LlXYQzl0p1sXfYE=; b=gptBhNBpJmVaIz2i3RyQA2Sdqm
+	9z1dt1+GlDuecoh6aea9a7nL1mYX3QoxzV8KXqPlkcKXoW4egYxqX9+YlxXlKMBUZstSZW3cyRex4
+	V0VtuWnFFLeixCFe7rI7VAdS5JR9s2U7awT+SSiWkzgqRAq7+y1ByBOmdirwoMXbHd4IdfQIw5UAU
+	D51JQwC6QqPwIAJL4Alz4bsr2b45qDvqPSBCDlZf34lqwRXkvJpXGy8+E9mnlnZpG0I23Bb5OEqI6
+	Hc/ROxtmwJyS9urc1zTNPFBvtlgwNPgUbrYXDU1anyKt0E04X5uwCgo0tJcdWV+Yft63g5w1+L1MO
+	H2DWl64w==;
+Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uZnYo-0003fo-5H; Thu, 10 Jul 2025 11:27:22 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	kernel@collabora.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/3] ROCK 4D DT additions: regulators, usb, rfkill
+Date: Thu, 10 Jul 2025 11:27:15 +0200
+Message-ID: <175213962001.1887379.15984995159169129964.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250630-rock4d-reg-usb-wifi-v1-0-1057f412d98c@collabora.com>
+References: <20250630-rock4d-reg-usb-wifi-v1-0-1057f412d98c@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: linux-rockchip@lists.infradead.org,
- dri-devel <dri-devel@lists.freedesktop.org>
-Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
- maarten.lankhorst@linux.intel.com, Maxime Ripard <mripard@kernel.org>,
- tzimmermann@suse.de, Dave Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>,
- Helen Mae Koike Fornazier <helen.fornazier@gmail.com>,
- sebastian.reichel@collabora.com, linux-arm-kernel@lists.infradead.org
-From: Vignesh Raman <vignesh.raman@collabora.com>
-Subject: drm-ci: rk3399-gru-kevin: kms_flip@plain-flip-ts-check-interruptible
- flake
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250710_114940_778704_8B831780 
-X-CRM114-Status: UNSURE (   4.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250710_022726_632838_405E2CE0 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,164 +72,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maintainers,
 
-There are some flake test reported for rockchip driver testing in drm-ci.
+On Mon, 30 Jun 2025 17:36:32 +0200, Nicolas Frattaroli wrote:
+> Turns out the ROCK 4D DT in mainline right now is neither accurate nor
+> complete.
+> 
+> These changes should quell the fires a little, since at least we now get
+> two additional working USB ports, plus the Wi-Fi chip shows up (even if
+> it doesn't have a driver right now).
+> 
+> [...]
 
-# Board Name: rk3399-gru-kevin
-# Failure Rate: 40
-# IGT Version: 2.1-g26ddb59c1
-# Linux Version: 6.16.0-rc2
-kms_flip@plain-flip-ts-check-interruptible
+Applied, thanks!
 
-command: cd "/igt/libexec/igt-gpu-tools" && 
-"/igt/libexec/igt-gpu-tools/kms_flip" "--run-subtest" 
-"plain-flip-ts-check-interruptible"
-pid: 1007
-exit status: exit status: 98
-stdout:
--------
-IGT-Version: 2.1-g26ddb59c1 (aarch64) (Linux: 6.16.0-rc2-ga202a71c05dc 
-aarch64)
-Using IGT_SRANDOM=1751940132 for randomisation
-Opened device: /dev/dri/card1
-Using monotonic timestamps
-Starting subtest: plain-flip-ts-check-interruptible
-Starting dynamic subtest: A-eDP1
-   2400x1600: 60 266666 2400 2448 2480 2564 1600 1603 1613 1733 0x48 0xa
-Expected frametime: 16663us; measured 16669.4us +- 86.357us accuracy 1.55%
-Stack trace:
-   #0 ../lib/igt_core.c:2075 __igt_fail_assert()
-   #1 ../tests/kms_flip.c:1435 run_test_on_crtc_set.constprop.0()
-   #2 ../tests/kms_flip.c:1856 run_test()
-   #3 ../tests/kms_flip.c:2141 __igt_unique____real_main2028()
-   #4 ../tests/kms_flip.c:2028 main()
-   #5 [__libc_init_first+0x80]
-   #6 [__libc_start_main+0x98]
-   #7 [_start+0x30]
-Dynamic subtest A-eDP1: FAIL (1.733s)
-Starting dynamic subtest: B-eDP1
-   2400x1600: 60 266666 2400 2448 2480 2564 1600 1603 1613 1733 0x48 0xa
-Expected frametime: 16663us; measured 16662.7us +- 30.159us accuracy 0.54%
-Stack trace:
-   #0 ../lib/igt_core.c:2075 __igt_fail_assert()
-   #1 ../tests/kms_flip.c:1435 run_test_on_crtc_set.constprop.0()
-   #2 ../tests/kms_flip.c:1856 run_test()
-   #3 ../tests/kms_flip.c:2141 __igt_unique____real_main2028()
-   #4 ../tests/kms_flip.c:2028 main()
-   #5 [__libc_init_first+0x80]
-   #6 [__libc_start_main+0x98]
-   #7 [_start+0x30]
-Dynamic subtest B-eDP1: FAIL (1.544s)
-Subtest plain-flip-ts-check-interruptible: FAIL (3.308s)
-stderr:
--------
-(kms_flip:1007) CRITICAL: Test assertion failure function calibrate_ts, 
-file ../tests/kms_flip.c:1455:
-(kms_flip:1007) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
-(kms_flip:1007) CRITICAL: Last errno: 4, Interrupted system call
-Dynamic subtest A-eDP1 failed.
-**** DEBUG ****
-(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
-height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
-(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=1, 
-pitch=9600)
-(kms_flip:1007) ioctl_wrappers-DEBUG: Test requirement passed: 
-igt_has_fb_modifiers(fd)
-(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
-height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
-(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=2, 
-pitch=9600)
-(kms_flip:1007) ioctl_wrappers-DEBUG: Test requirement passed: 
-igt_has_fb_modifiers(fd)
-(kms_flip:1007) igt_fb-DEBUG: Test requirement passed: 
-cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
-(kms_flip:1007) igt_fb-DEBUG: Test requirement passed: 
-cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
-(kms_flip:1007) igt_kms-INFO:   2400x1600: 60 266666 2400 2448 2480 2564 
-1600 1603 1613 1733 0x48 0xa
-(kms_flip:1007) DEBUG: No stale events found
-(kms_flip:1007) INFO: Expected frametime: 16663us; measured 16669.4us +- 
-86.357us accuracy 1.55%
-(kms_flip:1007) CRITICAL: Test assertion failure function calibrate_ts, 
-file ../tests/kms_flip.c:1455:
-(kms_flip:1007) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
-(kms_flip:1007) CRITICAL: Last errno: 4, Interrupted system call
-(kms_flip:1007) igt_core-INFO: Stack trace:
-(kms_flip:1007) igt_core-INFO:   #0 ../lib/igt_core.c:2075 
-__igt_fail_assert()
-(kms_flip:1007) igt_core-INFO:   #1 ../tests/kms_flip.c:1435 
-run_test_on_crtc_set.constprop.0()
-(kms_flip:1007) igt_core-INFO:   #2 ../tests/kms_flip.c:1856 run_test()
-(kms_flip:1007) igt_core-INFO:   #3 ../tests/kms_flip.c:2141 
-__igt_unique____real_main2028()
-(kms_flip:1007) igt_core-INFO:   #4 ../tests/kms_flip.c:2028 main()
-(kms_flip:1007) igt_core-INFO:   #5 [__libc_init_first+0x80]
-(kms_flip:1007) igt_core-INFO:   #6 [__libc_start_main+0x98]
-(kms_flip:1007) igt_core-INFO:   #7 [_start+0x30]
-****  END  ****
-(kms_flip:1007) CRITICAL: Test assertion failure function calibrate_ts, 
-file ../tests/kms_flip.c:1455:
-(kms_flip:1007) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
-(kms_flip:1007) CRITICAL: Last errno: 4, Interrupted system call
-Dynamic subtest B-eDP1 failed.
-**** DEBUG ****
-(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
-height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
-(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=3, 
-pitch=9600)
-(kms_flip:1007) ioctl_wrappers-DEBUG: Test requirement passed: 
-igt_has_fb_modifiers(fd)
-(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
-height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
-(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=4, 
-pitch=9600)
-(kms_flip:1007) ioctl_wrappers-DEBUG: Test requirement passed: 
-igt_has_fb_modifiers(fd)
-(kms_flip:1007) igt_fb-DEBUG: Test requirement passed: 
-cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
-(kms_flip:1007) igt_fb-DEBUG: Test requirement passed: 
-cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
-(kms_flip:1007) igt_kms-INFO:   2400x1600: 60 266666 2400 2448 2480 2564 
-1600 1603 1613 1733 0x48 0xa
-(kms_flip:1007) DEBUG: No stale events found
-(kms_flip:1007) INFO: Expected frametime: 16663us; measured 16662.7us +- 
-30.159us accuracy 0.54%
-(kms_flip:1007) CRITICAL: Test assertion failure function calibrate_ts, 
-file ../tests/kms_flip.c:1455:
-(kms_flip:1007) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
-(kms_flip:1007) CRITICAL: Last errno: 4, Interrupted system call
-(kms_flip:1007) igt_core-INFO: Stack trace:
-(kms_flip:1007) igt_core-INFO:   #0 ../lib/igt_core.c:2075 
-__igt_fail_assert()
-(kms_flip:1007) igt_core-INFO:   #1 ../tests/kms_flip.c:1435 
-run_test_on_crtc_set.constprop.0()
-(kms_flip:1007) igt_core-INFO:   #2 ../tests/kms_flip.c:1856 run_test()
-(kms_flip:1007) igt_core-INFO:   #3 ../tests/kms_flip.c:2141 
-__igt_unique____real_main2028()
-(kms_flip:1007) igt_core-INFO:   #4 ../tests/kms_flip.c:2028 main()
-(kms_flip:1007) igt_core-INFO:   #5 [__libc_init_first+0x80]
-(kms_flip:1007) igt_core-INFO:   #6 [__libc_start_main+0x98]
-(kms_flip:1007) igt_core-INFO:   #7 [_start+0x30]
-****  END  ****
-(kms_flip:1007) igt_kms-CRITICAL: Test assertion failure function 
-kmstest_set_connector_dpms, file ../lib/igt_kms.c:2247:
-(kms_flip:1007) igt_kms-CRITICAL: Failed assertion: found_it
-(kms_flip:1007) igt_kms-CRITICAL: Last errno: 9, Bad file descriptor
-(kms_flip:1007) igt_kms-CRITICAL: DPMS property not found on 54
+[1/3] arm64: dts: rockchip: adjust dcin regulator on ROCK 4D
+      commit: fc276de7b63efc92f301d5b78d5000c1715c4313
+[2/3] arm64: dts: rockchip: complete USB nodes on ROCK 4D
+      commit: 37e557333b66f036a5638035765219531327025c
+[3/3] arm64: dts: rockchip: theoretically enable Wi-Fi on ROCK 4D
+      commit: 0e72c9aba2029f66dd92ad5f2cb68c44e1d910de
 
-Pipeline: https://gitlab.freedesktop.org/vigneshraman/msm/-/jobs/79971538
-
-Please could you have a look at these test results and let us know if 
-you need more information. Thank you.
-
-Regards,
-Vignesh
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
