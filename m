@@ -4,62 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AE10C83F17
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 12:58:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0DEEC83F20
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 13:14:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Tz6cArJGmq91G/W9PwaTDpkrkObMF6+k5zX8DUCEM8M=; b=Q/EiDur6LfGBMS
-	xMUnjN2zYYXtrtMuuEtxmCPG2W8gdjhUWrs2BVkFsmu0mjFWqbNxCwCd388xRIHzq/+m+I8tqq9rH
-	73TlI9mgV1epf9G3WKFYSF9tpzBpx3rYozuGb6rb/BoAFlrYKbvqCXH+GgZOici4WpUiEToKpxwZS
-	Zr+kQs7vMvfqO5zxjo99ehOqanTYKX5rKFln7zE2PRppJ99RGCLjd4OwvFHZ5mTRWtnOreW6nuz3A
-	twwWEMA+9qXVmA2NA1aeNMzXwzSKq5zQdCpYSJJ9XEv9VkgcuX58tga+75vyNyGMtFUnkmUh7jY7A
-	PfRQwbk+Dd4NLvVzEaDQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:Message-ID:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ce4bwaInpHCh4KzULTUDlsc8zab33X3Xb9JvwrTgqbw=; b=zBZ+SCD5bRByAZ03YGVQqCYJjl
+	kuy+btm2eOf1luyviijY9vlaOwJ+Cy1bi2UoYxlBkPPZZoFWCnNqdsoOsMbE6lg10P8RYE/QG4xbL
+	lL9NGIzxQ1Awb1AsGl9VTVc2dfjb7CBtlfjnAIAdI9dVHz/dXKllUIenOG88obfbgjejeVR6JQP76
+	Waggm/X75JE5N+6yEDLFKZBj7VZvkTIJzQ1S99wZl2sewed+NiNeE3zVGNgLAhWRZJPiO0do9C9vR
+	Lh1O4wSsYQMJtdOFYaGsVYWbrLFCr0FS1HCgOxSRdbfZuTTCtUXrF8gp+VxN5DSwtUmNb0YRY5/yU
+	CoH3E0Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZqqy-0000000Bqyr-1fSf;
-	Thu, 10 Jul 2025 12:58:20 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uZr6E-0000000BtOI-2haF;
+	Thu, 10 Jul 2025 13:14:06 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZplf-0000000BfpH-47mp;
-	Thu, 10 Jul 2025 11:48:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=y4s+IUaUyh9dlQ/Hx8EWkCmljPen6fWuwD0jHRtCum8=; b=nRHLVAA91vDKuodTPolGnRickg
-	MZaOnRcGGAMfQxRoBaiOPM8+2tohT5OeBxIjdjRNeDIrx+xB5VeYB/NnDGzC4ooY0DAjB0ig+Bu6R
-	F6ZVldo36ZBFEJy6GloU1ozA0jnI8JnF6s0nHgkAx/SCSfpILFSUlF5/nHclT8x1Iviz4+MhM+O6s
-	3ZzGlk0uzhUc1I7OgVsMFrN2weqxgHFRa9Q215flxKPQo/gFflrO3gjwt4cMUew8kM1sgNZN+knzD
-	WXZcJBNywCOjf70pXwimIsehTUu4wtGRkdELWLA3Yg/zyEM8TYrT9rkskh3DgEyHvNDOh+pvB3jVx
-	8K8jSB7Q==;
-Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uZplY-0004dU-ES; Thu, 10 Jul 2025 13:48:40 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	sboyd@kernel.org,
-	zhangqing@rock-chips.com,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH] clk: rockchip: rk3568: Add PLL rate for 132MHz
-Date: Thu, 10 Jul 2025 13:48:37 +0200
-Message-ID: <175214811246.1905791.3082982718132036980.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250615123922.661998-1-andyshrk@163.com>
-References: <20250615123922.661998-1-andyshrk@163.com>
+	id 1uZoqW-0000000BXEn-0I6L;
+	Thu, 10 Jul 2025 10:49:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=S5pXaI1r/zpH3w7W9hJhtiCehE4r0uIxKw1TgRh8vR8=; b=Ht9a9ds8QmgNk96vPVGQ+vPQy7
+	tzfGfN5/ClJZvtqv6wE3cxEjpMhZYAPuICJu2IikGf3mATfmr/ESku9F9AKfaQQ/kZNO+iQ48/+Eg
+	6WziwOLSuSGLMFiL3sX9WTqMWq1ku93MPek76sg2Pkt1eWdK84abTuROtVXhhfpRSn+/FqSmoMKB/
+	aFkMw4cdrKTLUhG/zWx5+LMmTNDVZUnPsAFw7dc3ejODB69Z8+bWoleIEAT8fPrY3rE2hYf9LRJei
+	7bqarUkQVgH50GullncS6Bq/88t+1tmdlotpBHF1Wy6sL3JQsx4TuR91PpihGJgmcSmC38Uvgg+9v
+	9i+terzw==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uZoqS-00000008zyD-0yat;
+	Thu, 10 Jul 2025 10:49:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1752144574;
+	bh=6eCyQRGUL84zvCp0r/7JvZNwmMn+HX4Mb1TJDE3F9Wg=;
+	h=Date:To:Cc:From:Subject:From;
+	b=XuviOK6SBd2NvqMbB2L6+gu9vU3NmambBlBUx0FGqVrbYsdYcqmU28Pr3MWUO6R3o
+	 6Oir2TVfotwjcaQLnNCHkMoPa8smRsz1gjumj/H1DUYXG0oFP0S1GhSfiLKCMnZ3cc
+	 aJ9uONWY7gPE52f3OR5+zsRrN4s36z+FVorr2LWvtcATAy4Fq6ScnF/9Jcil2HBYog
+	 qbCqW601yIBf4IxJmHfxl3avVAhBnVUOeMdEnvuH5rdB3NpH7eZCSvVaMCLUyoQWio
+	 ti5fU/6NJ/ZOV6WaZubJM0cJaXtnu6x9FaNfLoQMBn80BUehK2XOsroFQlV1WkU9sz
+	 aoF9r2NETeH7A==
+Received: from [192.168.50.250] (unknown [171.76.82.69])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5501717E0489;
+	Thu, 10 Jul 2025 12:49:31 +0200 (CEST)
+Message-ID: <59724e10-12ca-4481-b0e4-72d7b6e4dae0@collabora.com>
+Date: Thu, 10 Jul 2025 16:19:22 +0530
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: linux-rockchip@lists.infradead.org,
+ dri-devel <dri-devel@lists.freedesktop.org>
+Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
+ maarten.lankhorst@linux.intel.com, Maxime Ripard <mripard@kernel.org>,
+ tzimmermann@suse.de, Dave Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>,
+ Helen Mae Koike Fornazier <helen.fornazier@gmail.com>,
+ sebastian.reichel@collabora.com, linux-arm-kernel@lists.infradead.org
+From: Vignesh Raman <vignesh.raman@collabora.com>
+Subject: drm-ci: rk3399-gru-kevin: kms_flip@plain-flip-ts-check-interruptible
+ flake
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250710_044848_018802_FE66714F 
-X-CRM114-Status: UNSURE (   8.05  )
+X-CRM114-CacheID: sfid-20250710_114940_778704_8B831780 
+X-CRM114-Status: UNSURE (   4.28  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,26 +88,164 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Maintainers,
 
-On Sun, 15 Jun 2025 20:39:05 +0800, Andy Yan wrote:
-> Add PLL rate for 132 MHz to allow raydium-rm67200 panel with
-> 1080x1920 resolution to run at 60 fps that driven by VPLL.
-> 
-> 
+There are some flake test reported for rockchip driver testing in drm-ci.
 
-Applied, thanks!
+# Board Name: rk3399-gru-kevin
+# Failure Rate: 40
+# IGT Version: 2.1-g26ddb59c1
+# Linux Version: 6.16.0-rc2
+kms_flip@plain-flip-ts-check-interruptible
 
-[1/1] clk: rockchip: rk3568: Add PLL rate for 132MHz
-      commit: 132b62280a9dbe38c627183ae7f1611de3ee0d9a
+command: cd "/igt/libexec/igt-gpu-tools" && 
+"/igt/libexec/igt-gpu-tools/kms_flip" "--run-subtest" 
+"plain-flip-ts-check-interruptible"
+pid: 1007
+exit status: exit status: 98
+stdout:
+-------
+IGT-Version: 2.1-g26ddb59c1 (aarch64) (Linux: 6.16.0-rc2-ga202a71c05dc 
+aarch64)
+Using IGT_SRANDOM=1751940132 for randomisation
+Opened device: /dev/dri/card1
+Using monotonic timestamps
+Starting subtest: plain-flip-ts-check-interruptible
+Starting dynamic subtest: A-eDP1
+   2400x1600: 60 266666 2400 2448 2480 2564 1600 1603 1613 1733 0x48 0xa
+Expected frametime: 16663us; measured 16669.4us +- 86.357us accuracy 1.55%
+Stack trace:
+   #0 ../lib/igt_core.c:2075 __igt_fail_assert()
+   #1 ../tests/kms_flip.c:1435 run_test_on_crtc_set.constprop.0()
+   #2 ../tests/kms_flip.c:1856 run_test()
+   #3 ../tests/kms_flip.c:2141 __igt_unique____real_main2028()
+   #4 ../tests/kms_flip.c:2028 main()
+   #5 [__libc_init_first+0x80]
+   #6 [__libc_start_main+0x98]
+   #7 [_start+0x30]
+Dynamic subtest A-eDP1: FAIL (1.733s)
+Starting dynamic subtest: B-eDP1
+   2400x1600: 60 266666 2400 2448 2480 2564 1600 1603 1613 1733 0x48 0xa
+Expected frametime: 16663us; measured 16662.7us +- 30.159us accuracy 0.54%
+Stack trace:
+   #0 ../lib/igt_core.c:2075 __igt_fail_assert()
+   #1 ../tests/kms_flip.c:1435 run_test_on_crtc_set.constprop.0()
+   #2 ../tests/kms_flip.c:1856 run_test()
+   #3 ../tests/kms_flip.c:2141 __igt_unique____real_main2028()
+   #4 ../tests/kms_flip.c:2028 main()
+   #5 [__libc_init_first+0x80]
+   #6 [__libc_start_main+0x98]
+   #7 [_start+0x30]
+Dynamic subtest B-eDP1: FAIL (1.544s)
+Subtest plain-flip-ts-check-interruptible: FAIL (3.308s)
+stderr:
+-------
+(kms_flip:1007) CRITICAL: Test assertion failure function calibrate_ts, 
+file ../tests/kms_flip.c:1455:
+(kms_flip:1007) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
+(kms_flip:1007) CRITICAL: Last errno: 4, Interrupted system call
+Dynamic subtest A-eDP1 failed.
+**** DEBUG ****
+(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
+height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=1, 
+pitch=9600)
+(kms_flip:1007) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
+height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=2, 
+pitch=9600)
+(kms_flip:1007) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_flip:1007) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_flip:1007) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_flip:1007) igt_kms-INFO:   2400x1600: 60 266666 2400 2448 2480 2564 
+1600 1603 1613 1733 0x48 0xa
+(kms_flip:1007) DEBUG: No stale events found
+(kms_flip:1007) INFO: Expected frametime: 16663us; measured 16669.4us +- 
+86.357us accuracy 1.55%
+(kms_flip:1007) CRITICAL: Test assertion failure function calibrate_ts, 
+file ../tests/kms_flip.c:1455:
+(kms_flip:1007) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
+(kms_flip:1007) CRITICAL: Last errno: 4, Interrupted system call
+(kms_flip:1007) igt_core-INFO: Stack trace:
+(kms_flip:1007) igt_core-INFO:   #0 ../lib/igt_core.c:2075 
+__igt_fail_assert()
+(kms_flip:1007) igt_core-INFO:   #1 ../tests/kms_flip.c:1435 
+run_test_on_crtc_set.constprop.0()
+(kms_flip:1007) igt_core-INFO:   #2 ../tests/kms_flip.c:1856 run_test()
+(kms_flip:1007) igt_core-INFO:   #3 ../tests/kms_flip.c:2141 
+__igt_unique____real_main2028()
+(kms_flip:1007) igt_core-INFO:   #4 ../tests/kms_flip.c:2028 main()
+(kms_flip:1007) igt_core-INFO:   #5 [__libc_init_first+0x80]
+(kms_flip:1007) igt_core-INFO:   #6 [__libc_start_main+0x98]
+(kms_flip:1007) igt_core-INFO:   #7 [_start+0x30]
+****  END  ****
+(kms_flip:1007) CRITICAL: Test assertion failure function calibrate_ts, 
+file ../tests/kms_flip.c:1455:
+(kms_flip:1007) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
+(kms_flip:1007) CRITICAL: Last errno: 4, Interrupted system call
+Dynamic subtest B-eDP1 failed.
+**** DEBUG ****
+(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
+height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=3, 
+pitch=9600)
+(kms_flip:1007) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(width=2400, 
+height=1600, format=XR24(0x34325258), modifier=0x0, size=0)
+(kms_flip:1007) igt_fb-DEBUG: igt_create_fb_with_bo_size(handle=4, 
+pitch=9600)
+(kms_flip:1007) ioctl_wrappers-DEBUG: Test requirement passed: 
+igt_has_fb_modifiers(fd)
+(kms_flip:1007) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_flip:1007) igt_fb-DEBUG: Test requirement passed: 
+cairo_surface_status(fb->cairo_surface) == CAIRO_STATUS_SUCCESS
+(kms_flip:1007) igt_kms-INFO:   2400x1600: 60 266666 2400 2448 2480 2564 
+1600 1603 1613 1733 0x48 0xa
+(kms_flip:1007) DEBUG: No stale events found
+(kms_flip:1007) INFO: Expected frametime: 16663us; measured 16662.7us +- 
+30.159us accuracy 0.54%
+(kms_flip:1007) CRITICAL: Test assertion failure function calibrate_ts, 
+file ../tests/kms_flip.c:1455:
+(kms_flip:1007) CRITICAL: Failed assertion: 3 * stddev / mean < 0.005
+(kms_flip:1007) CRITICAL: Last errno: 4, Interrupted system call
+(kms_flip:1007) igt_core-INFO: Stack trace:
+(kms_flip:1007) igt_core-INFO:   #0 ../lib/igt_core.c:2075 
+__igt_fail_assert()
+(kms_flip:1007) igt_core-INFO:   #1 ../tests/kms_flip.c:1435 
+run_test_on_crtc_set.constprop.0()
+(kms_flip:1007) igt_core-INFO:   #2 ../tests/kms_flip.c:1856 run_test()
+(kms_flip:1007) igt_core-INFO:   #3 ../tests/kms_flip.c:2141 
+__igt_unique____real_main2028()
+(kms_flip:1007) igt_core-INFO:   #4 ../tests/kms_flip.c:2028 main()
+(kms_flip:1007) igt_core-INFO:   #5 [__libc_init_first+0x80]
+(kms_flip:1007) igt_core-INFO:   #6 [__libc_start_main+0x98]
+(kms_flip:1007) igt_core-INFO:   #7 [_start+0x30]
+****  END  ****
+(kms_flip:1007) igt_kms-CRITICAL: Test assertion failure function 
+kmstest_set_connector_dpms, file ../lib/igt_kms.c:2247:
+(kms_flip:1007) igt_kms-CRITICAL: Failed assertion: found_it
+(kms_flip:1007) igt_kms-CRITICAL: Last errno: 9, Bad file descriptor
+(kms_flip:1007) igt_kms-CRITICAL: DPMS property not found on 54
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Pipeline: https://gitlab.freedesktop.org/vigneshraman/msm/-/jobs/79971538
+
+Please could you have a look at these test results and let us know if 
+you need more information. Thank you.
+
+Regards,
+Vignesh
 
 _______________________________________________
 Linux-rockchip mailing list
