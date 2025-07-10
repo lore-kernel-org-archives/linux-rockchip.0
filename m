@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1E6DC83F1F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 09:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51835C83F1F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 09:46:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EyQ0HuK+773hqeJEDqXB9LLiPXDthI7BjA3j1IdSkIM=; b=a28bGseY2NlZzj
-	7J1CHaEgMPGoESVwUkTZ5rWZmrcsttcFdMSmeXD6fhnJinqfICeOiX3rTr2gNrYijYZWkajcN/h0i
-	aMOAuM+8LOr2tjsyZ57WItW+0w+cBmPC8zmeGgwPtYptMxUycXDXKdCNmCQ/xrFImG91eG1gfJ5Cu
-	8/kcxmJlil2wZRobKQOvrob6o32tPrAhI1UtNjB5hoyEYguRBNCpTh/avMSQWEfIkKi1f6NUtLw96
-	vFfXSpEDVnrQUfJOW2iosBjVG5QEFad122Vbg3Zk85PG6nzaz6FyVTf6ncwHELhbEbUDZ1uVneG3P
-	CgtIS8PP5H2M2FMs0BDA==;
+	List-Owner; bh=UgjBqdM4QqlNJbd/IxJCg+xvQHAbzjt/7iZoBUhlkAQ=; b=N1w2VmfX1bG3lp
+	hgHu7OPyEtjthROVZGIYalYCkwZJWVTf463SwjjU/pHvkwLTX6q7pSi0G3Wm/qCPbnU5vt3BewsyD
+	cyVcJDfX3g2RhKFaBYMj5TvW6SLrljg44qn22TQKtElr3TTs+ilvkx3R69fN40ix0yyWLoM+h4xcs
+	V15b4PC3o+9shIikZtZccUwPUfzB22VIFz+fV6TswcpMfljLGM0ZlQGMJfEC8QZP8fME0jVOWbz5V
+	t7+3brCEZsIsASsCdt2pxcKQ5oB+luoyCS/WVGnj4o6IQ/6EAIJLgPRkbozI/JkZFoniZZqAdC8N/
+	3Plj0/TzjkJcqMSvpYnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZnox-0000000BNMe-3tdM;
-	Thu, 10 Jul 2025 09:44:03 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uZnrG-0000000BNcD-0DZ2;
+	Thu, 10 Jul 2025 09:46:26 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZmaR-0000000BA4L-0E2w;
-	Thu, 10 Jul 2025 08:25:00 +0000
+	id 1uZmaQ-0000000BA3o-1EsB;
+	Thu, 10 Jul 2025 08:25:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752135897;
-	bh=q5GwU4MYKLNZYOjfJdedkBXBEIKaRbZFbJqlrk3qFCc=;
+	s=mail; t=1752135896;
+	bh=heh+k/1ODoaxXv2R5HPjXJm6oybJcbQZVD3EyshC35g=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=A/igRqivVdN502VAKRZUmCNutGLkb+hn+6OKfh1r9LPQdsnCMeey22v4Uo3CDzSQJ
-	 k0VD6ZYtnOvEL3zLqYPYz81PLzgEgPYtwO+haKYPBlOVaZdfk1tdR9c1C1sjMxLxH9
-	 eMPfBhNviBRs0h8x3xTC6HK49zM/4LVM/mgKQkmVx8tl/P0YVJxJBmeV6VThhcrnRu
-	 0ul/DenKBDLfNTPvmt+O7FVgqDyc4TP4LaMjAz59tyiVSqEKs6TGT+Cz679n2BDzEB
-	 6kSCnZqI1l2V+Wq5w9kgwAcfTfO2TLPQBKV2iLIonFBK3Lex8LOUpIgSx4TkigfR8e
-	 uzxek0IAKNxag==
+	b=gYNOf5igpAnWLzHAtZAH1bvV4tOnx+qoB0y+GL/+EtJIqjE06JEpLnoOOoCIW/ryX
+	 GXERgARp1jxDqqdjNroi0Vcz6OghromuqLdBW4LOEeQaLCUTV0vfHoyYJpErAVVNI3
+	 GqppZvkrfnFu0nLP6QKAPUUJ+sdQlC32b1gZRBgzSCqC3DWivxZev2rQLeWHkW55GM
+	 uj+YnrhkFBt9EezMLV6CgBH8OkmkWtX3ZPxnv1dQt1GE1BfNE+y4iuDECElgdwTOdS
+	 gS2WReoYpTwWn/X6SP/r0wMY4fM7bINSCBxnx8nPH3Puv8Oev86nkQIBMcSahYliPq
+	 SEkUUi2p+4Esw==
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:9f5a:8ea0:8d89:78d4])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4BEF017E1090;
-	Thu, 10 Jul 2025 10:24:57 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1F66F17E0FD3;
+	Thu, 10 Jul 2025 10:24:56 +0200 (CEST)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: joro@8bytes.org,
 	will@kernel.org,
@@ -59,18 +59,18 @@ Cc: iommu@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v6 4/5] arm64: dts: rockchip: Add verisilicon IOMMU node on RK3588
-Date: Thu, 10 Jul 2025 10:24:45 +0200
-Message-ID: <20250710082450.125585-5-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v6 2/5] dt-bindings: iommu: verisilicon: Add binding for VSI IOMMU
+Date: Thu, 10 Jul 2025 10:24:43 +0200
+Message-ID: <20250710082450.125585-3-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250710082450.125585-1-benjamin.gaignard@collabora.com>
 References: <20250710082450.125585-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250710_012459_239433_2D1C854D 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250710_012458_503097_79403F02 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,37 +87,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the device tree node for the Verisilicon IOMMU present
-in the RK3588 SoC.
-This IOMMU handles address translation for the VPU hardware blocks.
+Add a device tree binding for the Verisilicon (VSI) IOMMU.
+This IOMMU sits in front of hardware encoder and decoder
+blocks on SoCs using Verisilicon IP, such as the Rockchip RK3588.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ .../bindings/iommu/verisilicon,iommu.yaml     | 71 +++++++++++++++++++
+ 1 file changed, 71 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 70f03e68ba55..8656e46ad288 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1263,6 +1263,17 @@ av1d: video-codec@fdc70000 {
- 		clock-names = "aclk", "hclk";
- 		power-domains = <&power RK3588_PD_AV1>;
- 		resets = <&cru SRST_A_AV1>, <&cru SRST_P_AV1>, <&cru SRST_A_AV1_BIU>, <&cru SRST_P_AV1_BIU>;
-+		iommus = <&av1d_mmu>;
-+	};
+diff --git a/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
+new file mode 100644
+index 000000000000..d3ce9e603b61
+--- /dev/null
++++ b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
+@@ -0,0 +1,71 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/iommu/verisilicon,iommu.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	av1d_mmu: iommu@fdca0000 {
-+		compatible = "rockchip,rk3588-av1-iommu", "verisilicon,iommu-1.2";
-+		reg = <0x0 0xfdca0000 0x0 0x600>;
-+		interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
-+		clock-names = "core", "iface";
-+		#iommu-cells = <0>;
-+		power-domains = <&power RK3588_PD_AV1>;
- 	};
- 
- 	vop: vop@fdd90000 {
++title: Verisilicon IOMMU
++
++maintainers:
++  - Benjamin Gaignard <benjamin.gaignard@collabora.com>
++
++description: |+
++  A Versilicon iommu translates io virtual addresses to physical addresses for
++  its associated video decoder.
++
++properties:
++  compatible:
++    items:
++      - const: rockchip,rk3588-av1-iommu
++      - const: verisilicon,iommu-1.2
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: Core clock
++      - description: Interface clock
++
++  clock-names:
++    items:
++      - const: core
++      - const: iface
++
++  "#iommu-cells":
++    const: 0
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - "#iommu-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    bus {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      iommu@fdca0000 {
++        compatible = "rockchip,rk3588-av1-iommu","verisilicon,iommu-1.2";
++        reg = <0x0 0xfdca0000 0x0 0x600>;
++        interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>;
++        clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
++        clock-names = "core", "iface";
++        #iommu-cells = <0>;
++      };
++    };
 -- 
 2.43.0
 
