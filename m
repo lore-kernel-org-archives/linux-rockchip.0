@@ -4,167 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99257C83F17
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 02:32:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B13C83F0F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jul 2025 02:50:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ip/BmbWPXNh71R32L8iOiGC8W7833tf+reXnEcxChDU=; b=aO/02N7/N92kM/I/MaCSa1BFLX
-	4p7D8IwbGqaDzr4VnSS6vcFSeJblqPtD6zOFLuPoLCbxiob3syI7C8fP0+wTCkQSzBnXZDmIENAJ8
-	JOOgW8i41ECY8cmVSqgw2oSG2xwvFUd7tbEjYkCQYGHt+nXuQRqgJmLwL8kOl0Oih9q0zQNUG8p7A
-	2wmfhotvqbAGRL4CIMWBgdRSzYXapllushoCY7dCr5r9a8IJcEVnNiNYtahq/9XhUAEPrG+hp4cME
-	ZT6PCifOHVMFuIwFwhPo+Fbwo+9WAg9dgGrl52pur/MqYWlADphvRQwg2ul6sZC9nwekO0P8QfpsV
-	ftpartKg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=kTdFmu+7oTVLTm3sTRZPZH7chj/3Hr72akqFolCDPh0=; b=BpJroiCIocDuViPcpKYaApqtQl
+	/PTgE8ndnzv1a9wvTYYy/XKFEqCsLOvJPc5b2Ek3D6SldM0b4M01/s+l3+u4f81tp3n1uR1F4MeE4
+	v7n2cpg2dmzyLtnR6bJ+4+l6mX2gN5QmvcynWJo+qVZuPQAP+IQHfrFlHym4wRkl8WKZJYmUeuQCT
+	iW8TlT3L4MlYo4FPhq41iqj89hA0Q+AhStKVl57VlNuo0MUoLrQX1VZotJMUl0fd5sOO1htoX2duC
+	qIx5S9aQYVO2gSG79CFqVmnvaE4yLlOPrsP2217OEHzdd3XOW7dfu9evz0I67kygeerzuTAyXFxBB
+	pPIC4ejw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZh59-0000000AUgC-43qY;
-	Thu, 10 Jul 2025 02:32:19 +0000
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+	id 1uZhMp-0000000AWo1-0XzC;
+	Thu, 10 Jul 2025 02:50:35 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZh53-0000000AUej-0K4o;
-	Thu, 10 Jul 2025 02:32:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Os7FPxehRt18hVHQP1Mve9J9Kx+Af7mrxbuUfuNuyEcPrMmHm2ucTIhVxxM7VPFQ4doGzaeVYZSPy4LRgwQ/bgpycPjv5pMHqrEotBflK4b/o3TPtXCrDxaBhGRKU0R+UTeCvKYrvuGpFmlHYB8OUbL22LxG2Ol6+5UB1Mb9dpkwSYhh2Z0wqhYm1vmG43fd+Jn+Hku/Y0d9LMx6bxC0xlydxVKUYo7HOz+87LOzWluV93/315lNSGahQtZ+aeeVBCwyvIKD3sl5nzMXScEw77GNUz/RQFGajPtfPvJCKBXXn80HXuSxiu82fKrWj44TTkUEwFw8VN+GOJCpXoFrHQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VRo9/P3rrCqscEcGILzPVCYJvs/q/oCNYKjJEWPTFyw=;
- b=rwk3NRx5uAPSY+1L8itB5rcuz5HIXbJC70fGqmVvh+8Jx0JvFwdx4AWJ/V5DmDwn6bPcaHbTe7frwpA1OHIYaPP3n8eHlcyxBvaqJ1kqauByLdjC8jsTbf0EFpZuwfeN3tM70RaEOIhfrZSpn3elgdgrv3Fr1AZakIKKheP6ES26TXeyaDHarNGXX4t5x7PEq9+WW34vhmkoHYb1LjlYCzybih5HcoagFWYW23oEgpHPwjbXns9Qr4YZCRN2r0VhPfepNamSFoGnZA8X0R4ye90LxSALJeTEh/nqC+54PtBXJeLnSUVXuvES3shciRH+8nPYwA0qPPlYruNx57ch6w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amlogic.com; dmarc=pass action=none header.from=amlogic.com;
- dkim=pass header.d=amlogic.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amlogic.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VRo9/P3rrCqscEcGILzPVCYJvs/q/oCNYKjJEWPTFyw=;
- b=I5QwuZ6tLFgrV5rueidZ+RF0EmAVdem1jJ1nM8oX1YLSHLIwGkHAsa07KjDbGTaZ0M0yxkgLoHe8SW607dJa3kWpITurovXInGvujmLUdj97Nj93aSWlKe9x2HwklyXpQiUESP+dy1bk5upU1rydfmcNzXMcmgFvy1NpbclbzpYKJd9olJyKaXQZn/WG6fE/7k1ocYNOXDdAN1fnjwLcEJORIfk2zJo5zBSIrjK+NMy4s3F+VuLydhotqT/4Hsx05zQjAFewnmJpCJA+6LojLCSpaC2prCbmjMnB/U/EUKWjl9XkSiMdMYMnzYlP+ocWsYl3v+D8Cf24X22FDT1oJg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amlogic.com;
-Received: from TYSPR03MB8627.apcprd03.prod.outlook.com (2603:1096:405:8a::9)
- by TYSPR03MB7331.apcprd03.prod.outlook.com (2603:1096:400:412::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8901.28; Thu, 10 Jul
- 2025 02:32:05 +0000
-Received: from TYSPR03MB8627.apcprd03.prod.outlook.com
- ([fe80::cf16:aa54:9bd5:26f]) by TYSPR03MB8627.apcprd03.prod.outlook.com
- ([fe80::cf16:aa54:9bd5:26f%7]) with mapi id 15.20.8901.024; Thu, 10 Jul 2025
- 02:32:05 +0000
-Message-ID: <968ffcce-9fef-4336-b83d-f9cd7ade6ea0@amlogic.com>
-Date: Thu, 10 Jul 2025 10:32:01 +0800
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/8] media: uapi: Convert Amlogic C3 to V4L2 extensible
- params
-To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
- Dafna Hirschfeld <dafna@fastmail.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20250708-extensible-parameters-validation-v1-0-9fc27c9c728c@ideasonboard.com>
- <20250708-extensible-parameters-validation-v1-3-9fc27c9c728c@ideasonboard.com>
-Content-Language: en-US
-From: Keke Li <keke.li@amlogic.com>
-In-Reply-To: <20250708-extensible-parameters-validation-v1-3-9fc27c9c728c@ideasonboard.com>
-X-ClientProxiedBy: SG2PR04CA0203.apcprd04.prod.outlook.com
- (2603:1096:4:187::22) To TYSPR03MB8627.apcprd03.prod.outlook.com
- (2603:1096:405:8a::9)
+	id 1uZhI7-0000000AVxl-41Qi;
+	Thu, 10 Jul 2025 02:45:45 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id DFE135C6BD5;
+	Thu, 10 Jul 2025 02:45:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FCC7C4CEF5;
+	Thu, 10 Jul 2025 02:45:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752115542;
+	bh=DbJ7pzvyLSajFxPAjFNYWqJERvyPy80AQtVzVHLDCDs=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=GYRDqzqSMAPcWOjTOiM60Ttb6B3Tgp727qClmWixa6Lmprs6KTULXchOBDZS1dneb
+	 jjYdqNG7sjQC5hxzo9WY3uCEY26EP4xQMTcOMGBm6BFE54ll1Vg3ixMjoxA+wvS92S
+	 sfby6XDLjyiJKvPGAMuwqNMnjfsYWyz6LaxrINr9TaEPSdsdV7EESzwYaxljdcLcAo
+	 hv5hr6PpZNpT+s5/1yvPYKLam2UEE+w5AoiuZAzr/ARbxumVnlGiy71X/j0zi5566c
+	 U8Bm//c/RGf8W9+FjLr+om46N0KscL9sAsrvO3xfbQgJEa+7uv0FgNlSm/zZ+ClN8N
+	 ZMYoaDDS+X2TQ==
+Date: Wed, 09 Jul 2025 21:45:41 -0500
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYSPR03MB8627:EE_|TYSPR03MB7331:EE_
-X-MS-Office365-Filtering-Correlation-Id: 331eb91b-2966-4fba-fdc1-08ddbf59f5d2
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016|7053199007;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?UWFqZmNDc3RUd3NSWTRNQldHS0pPazhQR3A4MjZzbHd4UWNYR0JRS3lwdXlp?=
- =?utf-8?B?OG00alFVUml3bGwrWkViQmM1cWF4akhJblZaNTNic3ZadVhsRytwTkRuWkhF?=
- =?utf-8?B?bEd2YzZxWmRBdGZxQlpBLzhvWVJaYjBUai9NTE9BdDFQbzNxbWNYY0JNRzZW?=
- =?utf-8?B?K3YvN2hMTG8wMGljdmtqSzR5N2MveWYzY2JVcDlzdXdQRWNQOWhGTGRjZUpq?=
- =?utf-8?B?ZEFXRGlScXhPMW14djltWmdvWHdDL2thODBnb0VjV1cxR0NqZXdlZmZhVU9N?=
- =?utf-8?B?YTMwd25WUHpydDI5Vk5iamtHL2lBQkJ6VXBrSDI5Ui9tRnhzZ0xQVnJ2VEdM?=
- =?utf-8?B?Yk5VdlFpdUtaMlBKTnMvMnBqVGlNRjBXSHVydk9NOStBdWFIb1Ntc1pZcDc3?=
- =?utf-8?B?USsxR2VJVWZwcjJvUlgvSHRJaVJYUTdpU0NoOXdkamhvaFhJOHhkbS9EUE05?=
- =?utf-8?B?WjZrMjV5VlQ4NVBzWS9uNTZGOEtDRnNPa0lmbXFXNTB2KzBDejlaNjAxMXpM?=
- =?utf-8?B?cFlXeHhtamVBY0tHbVVRVHI0dUkvWkg3YmxjK01od0gzZ0FqZjJQb2dQaFZC?=
- =?utf-8?B?Vk1yRWhYb0U4Nk0xdm1yT0Z2NHdUZ2UwN3VaLzQrNlE1Z05DcmxiaXBBRVhE?=
- =?utf-8?B?bFEwcmNjTk1lV1JkdVU5TEkzbEhhaytOMUVIeWRBbnArTm1Jam1Yb0huRDFs?=
- =?utf-8?B?TWpKbmJTVlYyYnhJaHpXZFRMbFUzOVJUTTlBbjZ5S1dnVjhrS3g0TjJpV01X?=
- =?utf-8?B?VVpBLzJIbjVIRVZCRUFDalQrL256VE1QaTF4aHVMOWdIVXFpV3hRRHlKM1Jm?=
- =?utf-8?B?RlcwbXV2R3hkNnpwY2ROZWgvcVp2MVliMGJLQ1d5OXlyL0EvMUlHWkhSTTFh?=
- =?utf-8?B?NEFqUHQ0NUpYZUZ5QmRlYUhlZWtER2NvQkxMMXIzZVkxQlBlcndPZ3ZnY2Q0?=
- =?utf-8?B?MFpTSFY5emZORzdYMnFtNWpiYnhHWGlrcjZ3VE5SbjdTYjBDTkRBMkFBV0or?=
- =?utf-8?B?RHd0Q3J2RXdmNVdYWTdoSkVYaWNZdkZ3YVVORlVjcFdQNzJLUEtUZ0FjSjY3?=
- =?utf-8?B?UUpBN1hBSGQ4TlBpcWc1UXFwMk45ZEtQTDhYK2JpWUxDc1FpOFVCUnptaWxW?=
- =?utf-8?B?b2xHVTg3b1FKZ21DYUp3Nm4wTk9zVS9OZ3lVMkxSNGtjNThLOHRSU3NQV0xl?=
- =?utf-8?B?WGx1aXpNaEFoR01SVjVQT202ZjdCdWZQMTNqaG11TE04U3cvSEN6QkhzQU84?=
- =?utf-8?B?dWpydkVxelE4ODc0am0xWjJUWDl4UnVGRG5mMFJzblZaRUdBSmNQZEwycmVB?=
- =?utf-8?B?UEJrbWFMNVI4V0NyQ1JFemM2U1J5RFUydXVKVXAwWmRpdldWUWFZSWx3eFJ4?=
- =?utf-8?B?aVhZdlZOdzRLOUhJTkw1cVM1RUgzRGpUdk83RllRb2xIRGtsOFNNYVFHV0E0?=
- =?utf-8?B?Qm5odjFmNSsvdXgwN0VQWnIrOXR4dWhBdy9qdXZQVUVqK3JmLzArRDRmQXIz?=
- =?utf-8?B?Z3VaNklZVXRSR2ZhVFFTTXNhNHhBMzRIRDBxektVOFRmdjVQWWs0UXZqYVh2?=
- =?utf-8?B?TnN1UitMQ1ZQdm9XZ09Ib0trODRjNSt2S1VrOHk5T2c1dXRYY2JlNFNPZU9U?=
- =?utf-8?B?SEF5Zlk3T2Z4cWY4WHhSemxYNnZuWUxPTzN1QzdZVkJtSVFxZjk2SXFCcy8y?=
- =?utf-8?B?NHVSVWpWQTIrWldCUFUxd3lhWHBiR3Z2TFE2Z25rQVNWV0x5NUlvdzNiMytL?=
- =?utf-8?B?eEhwQVQ5aC96WGo4eFhyQ0N3R3NPWkVCU2pIbjZWQXVKaFdQS2ZiMWh1cWp2?=
- =?utf-8?B?T2IxdTduM3g0Zjdhb0Jwd1FDOFBmTUM0QnJZVmZEbDQrRWxkeVVENGhhZGlT?=
- =?utf-8?B?Ym55RU9nRDQwVldrSkhYTk5mNGdrMFlid1Z2M1dmbGZVSFc0Uk5KalpZTG9s?=
- =?utf-8?Q?AL8DXxem53M=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYSPR03MB8627.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016)(7053199007);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UExPN2hnWmdETUVldDh5TUU2Q25oVHpnT0lyRll5aTlzL1MzaE5QNDhoOUVr?=
- =?utf-8?B?MVVybS9LTng3cGxzaVRKMDJYQlM3WFAzMVJ2a2ppYXk4OVlnWkJVQmJIRFA5?=
- =?utf-8?B?MzRrV21WZm1DWjhJdlhIeFBFV29tVGNiMk9ESVF4WGd3MGdlam5JaDdyenhL?=
- =?utf-8?B?YjBiUjhaaUszUGh3ME9Kc2FNb3I2UE96a1pMN0tqRFJBUCtRNkNXU2lEY05O?=
- =?utf-8?B?ZXBOUjRiMmYwMUxBMDhlTDdNT1N4RXpjYmRsNzM5UHorclA1TlptQjR5SUNT?=
- =?utf-8?B?RUJ4TkU1WVNnTk9GaDMrTUpmT2V1alV6UzZuaDlEclBIeUxid0dmWDRReGhC?=
- =?utf-8?B?VVNaWDNETXUwL3VvcTc5M25kaFNnczBjRW5XOGM5QmZ5UEZhNzVvdnQ1aTUy?=
- =?utf-8?B?ZXlSZm1teDAyT3VOdC9qcDFBVVRGMmxBUU0vS1lHbXplT0xIY2d5eUFWeGg2?=
- =?utf-8?B?K2Q5NGRIak1zNWNFRmNMZkhKMnVnSk5qUUpCSUNsRG5xSkFZcFA5UEF3SWZV?=
- =?utf-8?B?RXM1eFlPaWNiU3RJUVBzbU1vUUJLLytCKzBFNkhTUDc3d3YwVkZhU0ZreW0z?=
- =?utf-8?B?MFErT2FRRHFEdVhDcVp5ckI4ZERxS3R0OVpYbmY5U0lBWVZSckRvd09nd0RJ?=
- =?utf-8?B?MjV3MHNNRFdlRGdIdzhZUWhCUVZqekkzRUl1ZHIyejZGeDNITCtGZktFVHhu?=
- =?utf-8?B?a2VVMHJwZjZiV1lEZTZoN3dHOUxQdjhML09ReFc0a1VGeDJiSGRScFowUnVJ?=
- =?utf-8?B?RExLVjZOdWhhRWNvNDlIdXNQRkhXV0dIaEhpSDQ3Ty85YlBCd2Z4aHA3UmJC?=
- =?utf-8?B?TER6bW5zQU5La1dENzl3eHdEOTNWTzAwYmczeCt3Q1VPMjFnLzZwNFZkeXpK?=
- =?utf-8?B?bWdiQlY2UDIycjZENVowejRSS2Njb0tDcGZnekorS3QzVnIyNllGa3lHV3pT?=
- =?utf-8?B?cmtHV2g5ZUU5QUZERUNxTkJZOVpZZEY3S3lhY0NOUmNFSVlOMjRXOHd3Zk5a?=
- =?utf-8?B?bGNwYW40M0tWS0RGTVNmMy9kR1FTMlhXdWhPNGlpOE4vMlRhNTI2STF5Ukg5?=
- =?utf-8?B?QS9zNTFnNU4wa3dGTVg1c0JDTUJmM2MxM1ZpOEJCOC9mcVhKRnpIbytKTEJ3?=
- =?utf-8?B?SDkzdStFTHRST2NsT2FoUVo3VUR6TmdpcnhVMUU5U05oUUNKZTRtTDV3ZE5y?=
- =?utf-8?B?SFZubmxiSDJCbjhnaXRuemVkVmEyOEhXOGVUZjFhYXVYcElEWnVobXFUeGtz?=
- =?utf-8?B?MUlrTXBmd2pjZG1HVUZra2xTRGtiRnFROHltZkNiMnlIN1VmTW1Td3psalA4?=
- =?utf-8?B?cFY5d2pEczhSMVB0dDFlS01zTmhLUVBYOGtBWjlTMUs2V3JGRFoyaVhqdTN0?=
- =?utf-8?B?OTJOelNQRkZNMjE5L3FWWE5kSURwVnpET3dzWW9mNVM1ZWdUb0NUbDBmR0hG?=
- =?utf-8?B?a1lvd1VyQjJmeVZCdFdZajdPUWVrZ2VSZmRHMEdMeDJ3QTV0YkYvZnVjQlhk?=
- =?utf-8?B?TDIzazMvN290Z0lnOU8xSzZMWGFvODZlRzhsVlVXRzBxY1RwRlJIK1VFOHcy?=
- =?utf-8?B?Z3lZZFFvN25CREdwQWd5UDkxK1lFcjVPaEo1dDR4WngrbmY4RXF1YlJCRU43?=
- =?utf-8?B?V3JvbE84Q3pXVzBJc0RZbmVmREpKU2ExTVNWRU5BZkxZa2Noa0R1ZjdlWmNs?=
- =?utf-8?B?eGpuVG1Kd3M5OGZYUS9kN3FsUGFiQVRUMG1DWnpNVVZWVStUWGZtOVJOdDhY?=
- =?utf-8?B?T2svVERhUDkxMjMvMjhXSG13T2tmeUI0TjJza0g0QUQwT1QwblQxek05a25i?=
- =?utf-8?B?bk12a3l1bk56djV4L0VsVEVTZXN6R01JVHJWRGk4RXhoeGN3VDNXOEdmam5N?=
- =?utf-8?B?ci80OU5kcWg0NkY5UWRTdU5iV0NxOXIrcFVxcVZCMVp1U29VU1pyaExRMWZV?=
- =?utf-8?B?QTVDaHJOOE1PZWhNblI3VGN5eWh3cm5wK1VheGpkdU1QUFJoTjFjUVJkcVU5?=
- =?utf-8?B?aFptUGo1RldkbGUyK0JMQUZpYThXc3JzVXUydUdaRFRjaXRUZitkL2lhbUo2?=
- =?utf-8?B?RHZVU2kxMnhNZXF4V0Q5dnBaTmp1QmdTd0gydHo4T3RRV2hBQWJ3ZW8zRHV2?=
- =?utf-8?Q?hobnpcCgzA/pkwkmzfjeo5Hcz?=
-X-OriginatorOrg: amlogic.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 331eb91b-2966-4fba-fdc1-08ddbf59f5d2
-X-MS-Exchange-CrossTenant-AuthSource: TYSPR03MB8627.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Jul 2025 02:32:05.5886
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 0df2add9-25ca-4b3a-acb4-c99ddf0b1114
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ZTyRDwV+sqGlEH6FZzL/BXLAVPatCKe+UTZzKD04B/2N1ifUAKpELy6Pak6SDAdZQcKAAGJqKqimWq4beQYQ5Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYSPR03MB7331
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-kernel@vger.kernel.org, 
+ Conor Dooley <conor+dt@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>, 
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, 
+ linux-arm-kernel@lists.infradead.org
+To: Yao Zi <ziyao@disroot.org>
+In-Reply-To: <aG3vPsUd-FPkhi-S@pie.lan>
+References: <20250708224921.2254116-1-jonas@kwiboo.se>
+ <20250708224921.2254116-3-jonas@kwiboo.se> <aG3vPsUd-FPkhi-S@pie.lan>
+Message-Id: <175211539781.410915.4272303348693567023.robh@kernel.org>
+Subject: Re: [PATCH 2/6] arm64: dts: rockchip: Add Radxa ROCK 2A/2F
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_193213_232086_0A7C2EBD 
-X-CRM114-Status: GOOD (  31.12  )
+X-CRM114-CacheID: sfid-20250709_194544_379992_C6E4024D 
+X-CRM114-Status: GOOD (  25.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,127 +70,151 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jacopo
 
-On 2025/7/8 18:40, Jacopo Mondi wrote:
-> [ EXTERNAL EMAIL ]
->
-> With the introduction of common types for extensible parameters
-> format, convert the c3-isp-config.h header to use the new types.
->
-> Factor-out the documentation that is now part of the common header
-> and only keep the driver-specific on in place.
->
-> The conversion to use common types doesn't impact userspace as the
-> new types are either identical to the ones already existing in the
-> C3 ISP uAPI or are 1-to-1 type convertible.
->
-> Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> ---
->   include/uapi/linux/media/amlogic/c3-isp-config.h | 45 +++++++-----------------
->   1 file changed, 12 insertions(+), 33 deletions(-)
->
-> diff --git a/include/uapi/linux/media/amlogic/c3-isp-config.h b/include/uapi/linux/media/amlogic/c3-isp-config.h
-> index ed085ea62a574932c7ad8d59d34b2c5c74a597d8..203116cdfb89356301c16c98cb40e5b83efe71d6 100644
-> --- a/include/uapi/linux/media/amlogic/c3-isp-config.h
-> +++ b/include/uapi/linux/media/amlogic/c3-isp-config.h
-> @@ -6,8 +6,12 @@
->   #ifndef _UAPI_C3_ISP_CONFIG_H_
->   #define _UAPI_C3_ISP_CONFIG_H_
->
-> +#include <linux/build_bug.h>
->   #include <linux/types.h>
->
-> +#define _UAPI_V4L2_EXTENSIBLE_PARAMS_GUARD_
-> +#include <linux/media/v4l2-extensible-params.h>
-> +
->   /*
->    * Frames are split into zones of almost equal width and height - a zone is a
->    * rectangular tile of a frame. The metering blocks within the ISP collect
-> @@ -183,11 +187,6 @@ enum c3_isp_params_block_type {
->    * struct c3_isp_params_block_header - C3 ISP parameter block header
->    *
->    * This structure represents the common part of all the ISP configuration
-> - * blocks. Each parameters block shall embed an instance of this structure type
-> - * as its first member, followed by the block-specific configuration data. The
-> - * driver inspects this common header to discern the block type and its size and
-> - * properly handle the block content by casting it to the correct block-specific
-> - * type.
->    *
->    * The @type field is one of the values enumerated by
->    * :c:type:`c3_isp_params_block_type` and specifies how the data should be
-> @@ -223,15 +222,8 @@ enum c3_isp_params_block_type {
->    *                     gamma->pst_gamma_lut[i] = i;
->    *     }
->    *
-> - * @type: The parameters block type from :c:type:`c3_isp_params_block_type`
-> - * @flags: A bitmask of block flags
-> - * @size: Size (in bytes) of the parameters block, including this header
->    */
-> -struct c3_isp_params_block_header {
-> -       __u16 type;
-> -       __u16 flags;
-> -       __u32 size;
-> -};
-> +#define c3_isp_params_block_header v4l2_params_block
+On Wed, 09 Jul 2025 04:25:34 +0000, Yao Zi wrote:
+> On Tue, Jul 08, 2025 at 10:48:52PM +0000, Jonas Karlman wrote:
+> > The ROCK 2A and ROCK 2F is a high-performance single board computer
+> > developed by Radxa, based on the Rockchip RK3528A SoC.
+> >
+> > Add initial device tree for the Radxa ROCK 2A and ROCK 2F boards.
+> >
+> > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> > ---
+> > Schematics:
+> > - https://dl.radxa.com/rock2/2a/v1.2/radxa_rock_2a_v1.2_schematic.pdf
+> > - https://dl.radxa.com/rock2/2f/radxa_rock2f_v1.01_schematic.pdf
+> > ---
+> >  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+> >  .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 292 ++++++++++++++++++
+> >  .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++++
+> >  .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
+> >  4 files changed, 386 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
+> 
+> While testing the patch on my Rock 2A board, I noticed one of my SDcard
+> that works perfectly on Radxa E20C and NanoPi Zero 2 cannot be correctly
+> read out under UHS-125-SDR mode,
+> 
+> 	# dd if=/dev/mmcblk1 of=/dev/null bs=4M count=4
+> 	[   18.616828] mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+> 	[   19.193315] mmc1: Skipping voltage switch
+> 	[   19.202046] mmc1: tried to HW reset card, got error -110
+> 	[   19.213312] mmcblk1: recovery failed!
+> 	[   19.213709] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 256 prio class 0
+> 	[   19.225201] mmcblk1: recovery failed!
+> 	[   19.225530] I/O error, dev mmcblk1, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+> 	[   19.226283] Buffer I/O error on dev mmcblk1, logical block 0, async page read
+> 	dd: /dev/mmcblk1: I/O error
+> 
+> which could be reproduced stably.
+> 
+> the SDMMC controller issued interesting messages during the tuning
+> process,
+> 
+> 	[    0.665246] mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
+> 	[    0.851940] dwmmc_rockchip ffc30000.mmc: All phases work, using default phase 90.
+> 
+> but actually it doesn't work with phase = 90. If the frequency is
+> limited to 100MHz with max-frequency = <100000000> instead of the
+> default 150MHz, tuning results in a very different phase,
+> 
+> 	[    0.665483] mmc_host mmc1: Bus speed (slot 0) = 99600000Hz (slot req 100000000Hz, actual 99600000HZ div = 0)
+> 	[    1.166340] dwmmc_rockchip ffc30000.mmc: Successfully tuned phase to 141
+> 
+> and the card works, too. If I set rockchip,default-sample-phase to 141
+> in devicetree, the card could work at full 150MHz as well.
+> 
+> I think there's something wrong with the tuning process, or the board's
+> design cannot always run reliably at 150MHz.
+> 
+> Could you reproduce similar failures on Radxa 2A? If so, it may be
+> necessary to lower the SDMMC's maximum frequency for the board.
+> 
+> Regards,
+> Yao Zi
+> 
+> 
 
-Why not use v4l2_params_block directly?
 
-Thanks
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-Keke
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
->
->   /**
->    * struct c3_isp_params_awb_gains - Gains for auto-white balance
-> @@ -498,26 +490,9 @@ struct c3_isp_params_blc {
->   /**
->    * struct c3_isp_params_cfg - C3 ISP configuration parameters
->    *
-> - * This struct contains the configuration parameters of the C3 ISP
-> - * algorithms, serialized by userspace into an opaque data buffer. Each
-> - * configuration parameter block is represented by a block-specific structure
-> - * which contains a :c:type:`c3_isp_param_block_header` entry as first
-> - * member. Userspace populates the @data buffer with configuration parameters
-> - * for the blocks that it intends to configure. As a consequence, the data
-> - * buffer effective size changes according to the number of ISP blocks that
-> - * userspace intends to configure.
-> - *
-> - * The parameters buffer is versioned by the @version field to allow modifying
-> - * and extending its definition. Userspace should populate the @version field to
-> - * inform the driver about the version it intends to use. The driver will parse
-> - * and handle the @data buffer according to the data layout specific to the
-> - * indicated revision and return an error if the desired revision is not
-> - * supported.
-> - *
-> - * For each ISP block that userspace wants to configure, a block-specific
-> - * structure is appended to the @data buffer, one after the other without gaps
-> - * in between nor overlaps. Userspace shall populate the @total_size field with
-> - * the effective size, in bytes, of the @data buffer.
-> + * This is the driver-specific implementation of :c:type:`v4l2_params_buffer`.
-> + *
-> + * Currently only C3_ISP_PARAM_BUFFER_V0 is supported.
->    *
->    * The expected memory layout of the parameters buffer is::
->    *
-> @@ -561,4 +536,8 @@ struct c3_isp_params_cfg {
->          __u8 data[C3_ISP_PARAMS_MAX_SIZE];
->   };
->
-> +/* Make sure the header is type-convertible to the generic v4l2 params one */
-> +static_assert((sizeof(struct c3_isp_params_cfg) - C3_ISP_PARAMS_MAX_SIZE) ==
-> +             sizeof(struct v4l2_params_buffer));
-> +
->   #endif
->
-> --
-> 2.49.0
->
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: tags/v6.16-rc1-34-g7f9509791507 (exact match)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for aG3vPsUd-FPkhi-S@pie.lan:
+
+arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
+arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
+arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
+	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
+	'allwinner,sun8i-a23-mali' was expected
+	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
+	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
+	'allwinner,sun7i-a20-mali' was expected
+	'arm,mali-400' was expected
+	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
+arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
+arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
+arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
+arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
+	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
+	'allwinner,sun8i-a23-mali' was expected
+	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
+	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
+	'allwinner,sun7i-a20-mali' was expected
+	'arm,mali-400' was expected
+	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
+arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
+arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
+arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
+arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
+	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
+	'allwinner,sun8i-a23-mali' was expected
+	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
+	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
+	'allwinner,sun7i-a20-mali' was expected
+	'arm,mali-400' was expected
+	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
+arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
+arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
+arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
+arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
+	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
+	'allwinner,sun8i-a23-mali' was expected
+	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
+	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
+	'allwinner,sun7i-a20-mali' was expected
+	'arm,mali-400' was expected
+	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
+arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
