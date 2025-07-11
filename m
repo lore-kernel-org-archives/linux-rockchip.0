@@ -4,159 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CA77C83F25
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 18:10:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77E8FC83F1A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 20:48:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qFsNUvvkoX0uDV8zek0xrmSUjSn4fe6A6Yv2nxvFJaQ=; b=NCg1jE3+5F3kO5
-	o6YRGtdrgwd356xCUpNxSHvJFgfKr8ChaN10fmFlCRUWkiEZP1cN71jpl/t2xmcgj9cEgHKPlbNbg
-	594GcYTGr9UMqENeRTirp+wFze+jGLRjHKfqWDQcOzuKMi3pziBWZlLIZUGfKlBWviJCOE+M3GA64
-	Ojh5jgihje5AU+oHcwxABuTHw9tkTif38fsVA9R9BSKgth2FssmNmZcP0BshVa30atEXmuB9elsal
-	8e1DGBEu5DexfKI/ZZicKX7x3ydE/nqyP9yzN4DCCKHMDcg3gxofZ4fKyIwlO7uVI0mkoh4YXhxVC
-	+RwDwau+AnvSxU4k5lQg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RQpvqt0w6+z2m6DC1KChQLlT+nUdnqWi0OFfXpg9aNk=; b=kYZ8EmgYFV7OMreKQL7wBOLHs+
+	DjmCJNtPKO7STFc7MhTtQKIVLnG1TYBfgmF+tJHkT3tq2U+J4gifPci5rVI+2weCs4GWmWICl5n9U
+	CGhng2FaNHXTDomJ2waJ5TGQ5gZMevU/KhXyziGYleG03dTvrO6uKGVSYsPDtIhSj7dA2hcKo5Zxb
+	02O/yp1oykaRFauQB+pvLP1e4/0K6P8I6LZv4dhtON6fz9wB1urOrJMR4dTlTXz3BbYkiF44TiUjQ
+	NnZCkYTEPW65nanHtEi0PR1PTAF7lqNbOJNZyK7nfbHvExDRex33IwuYCP+vlyYZr9fJI8WSCSCua
+	aqIykSDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaICo-0000000FTBn-3Qst;
-	Fri, 11 Jul 2025 18:10:42 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1uaKeu-0000000Fp2a-2JLv;
+	Fri, 11 Jul 2025 20:47:52 +0000
+Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaHtD-0000000FReB-3LZ1
+	id 1uaJti-0000000FkIG-0qDv
 	for linux-rockchip@lists.infradead.org;
-	Fri, 11 Jul 2025 17:50:28 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56BB7i3p001266
-	for <linux-rockchip@lists.infradead.org>; Fri, 11 Jul 2025 17:50:27 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	zODF07FEndKVYerePzf13yZa0v9IMBpC/Vm6umRGgcQ=; b=gApSY9r+2eAhMTb/
-	78i0vkS9emlIFK2N5TD+V0KqbqrE+DJTruHeob27jHnXjtuMt6rEH6OnMoIKrZxX
-	3Jq4Hr5MiTU8vX6sUu6IL//2V4H3anIsaXpeuOu0QaYGh6EQ5x45kEy0GonU8Lv/
-	nLN1jzwClGo2Lr3s2CEXqhRwP8bFtWyp5WkI8xz2IMmP/8P/jxUqHbb+orW6fkJb
-	WtBbHDz+O9dVEaTTVpNR3QLe7fR3brxtWx7elNWmJgiibuy2YvnEBP1TFmDrkja+
-	dCF80k5Kjn7KMZFjQb1pJYRpF25bm1DDZDkX3l+rxZqa+NFHLEzIEUJvOagwF9/t
-	k90SgA==
-Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com [209.85.215.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47pucncve0-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Fri, 11 Jul 2025 17:50:26 +0000 (GMT)
-Received: by mail-pg1-f198.google.com with SMTP id 41be03b00d2f7-b00e4358a34so1698274a12.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 11 Jul 2025 10:50:26 -0700 (PDT)
+	Fri, 11 Jul 2025 19:59:07 +0000
+Received: by mail-qk1-x72a.google.com with SMTP id af79cd13be357-7d3f5796755so220887485a.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 11 Jul 2025 12:59:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1752263945; x=1752868745; darn=lists.infradead.org;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=KggEA/YDHTi+B94iHR0d5HwR3sGfFH/eH/dYBbqHvU0=;
+        b=XDexn7tuGvqlAgJTbrUCpyDiUO8J+SWDhdr+Q7yDXWb6iiIIH7Kc/cXvnuhdSUSaFX
+         AYDOzzJjO0WvRxX3S13rN8Sq4tvqinmW7kjTsAdZgrvPQa08tRsxLaRkMcFemMp78Xm2
+         2s1tNmuwVni24Uo7xc8eJPQFd8C7jAe7RogQZw8EfUIzG0u6+bPhSAVK81tDiv+M++Ui
+         GXm4kAa+mkE68zV+E9XlS2gDQYDGyp3aaLXLp0sSXKuiP2/wJUsWJ1rCWdz1GetKSiMS
+         2bQR8+Eq7HbQOTJDayO4wqZMgEh7ctjTERKCwqq1LZDIdTLvDZhNJO5klVfKfee/0klo
+         agdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752256206; x=1752861006;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zODF07FEndKVYerePzf13yZa0v9IMBpC/Vm6umRGgcQ=;
-        b=eOIRg22oi1fpY5f8KllwMzD2UjAjWZMLG04ZgkgKlE1JJoOiL/SSg0z/BSD7m9T4vu
-         FLBMz7x39d0ew4ZKpPHlXhDccBkNKKcbc4Y37HLngf6LU53FItjsW7aC05OjP5HpUeIP
-         kGfq+AvXA6KyulKkFc4QBP8mYTqsTmQzm1QLHd6Ig6YgSunmCRgUG91mq4qhgZFRV5Yu
-         Ma1/l691StwzO1gdd/XxjgqkHBpLEEeCa48gEHpDKcqgKyRC1LLNWqCP1vqZg89//cDa
-         x2Fsj5aDwR7koQXNkjLRkNLg8a7DyNgBeS0j5+W41VuaLxS1HHjaK8iqzfdiPYsFsEeC
-         XTKw==
-X-Forwarded-Encrypted: i=1; AJvYcCV9lLsUcCE3gWEDBX43KKQ5CZwbLamev2iqzhSqmT/xwbBgmBIYN27l1+gvdD3vIsHrQDjnVhUCO45N6fPEHQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwaC067vHyUxT8qqwoHgXmUIRDlK9yjkFgfBXzx6zBnxHG5O/t9
-	Ylooqjj1fhJ5JDuXZKc2x1yUSjN+wrya1q9XRY7Qft2tcRNaAgRfwS69mcXPkZxbT5T1xBhrAjs
-	tpVw3+5AwBHu+AUZXw4Mu5MvnsYNBP1NSdpNrjjvB3H7aRUwRb/4drsffpL1QdN+wNbWb+9Fh9y
-	U=
-X-Gm-Gg: ASbGncuYcVl5Hr/2KwBNWl/0GlGRGiqYFAhHwhu7DvwxRQlIFRQvd8SS2teUu2ecsr+
-	4CD3ghZNGGUAcC1me9+4bSzyHUylDVAMraVrdhw7x5iiT37p3wophNfqQ0zGOtlH71acRbqtyD9
-	37tyW7dwLK3Zn0jnR5ktIA13/VELi37G1RF0yZW93+lyYZgXLgCCqgvKDq28J5gf95c4dEQWsI5
-	6DV0FyOIpzhMM8Gb2Js9sJ6JWcGaBrzWQ32YvkrVnJ8FfA2zsyfZS7pkcec1QDx0pVAuVbKky62
-	eTDrSBKN5npIAWXi/yuwRtM9IjCrvqcFZzB1mG71XxwSlm3YvKHAylppZQGYVLDigCxe7bQFhQ=
-	=
-X-Received: by 2002:a17:902:f545:b0:235:efbb:9539 with SMTP id d9443c01a7336-23dee1abb0emr63643175ad.17.1752256205862;
-        Fri, 11 Jul 2025 10:50:05 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHoW1pfrpu8TJ9bIwQOf4KOWgHALwSOkO1BYsTZCrJkUsn+7Lrx4ekRpFxTdtXkf6n8J7ntUA==
-X-Received: by 2002:a17:902:f545:b0:235:efbb:9539 with SMTP id d9443c01a7336-23dee1abb0emr63642755ad.17.1752256205266;
-        Fri, 11 Jul 2025 10:50:05 -0700 (PDT)
-Received: from [192.168.29.115] ([49.43.229.152])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23de433e160sm50153985ad.172.2025.07.11.10.49.53
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Jul 2025 10:50:04 -0700 (PDT)
-Message-ID: <42a98c8d-7287-8aa1-ad39-4d5b79e177b7@oss.qualcomm.com>
-Date: Fri, 11 Jul 2025 23:19:51 +0530
+        d=1e100.net; s=20230601; t=1752263945; x=1752868745;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KggEA/YDHTi+B94iHR0d5HwR3sGfFH/eH/dYBbqHvU0=;
+        b=sA3Fm9H5ngCfu2NW0P2Hk8rnGEb5UTkE8IeZvOTrowt/G6P3mJ8msC6s9znE2ij39q
+         35OGDMVni2SdKZjLC1yPRtG7K0biYd2gMHXsINULvMD3CMgAMPL6PbmpfwSX1vtDoUN6
+         Jr9dQhWaTdJkpGTMerExdajh0GxrpH9oEWQcYfUfuUEn/pvWz7CFeFECohOfR+JuyVVh
+         oWomzvBQo3dcl848dS0TAwM7736VDTw/eJ3pES7h9RryhDNyEuHjf4jJyYU2zaOc6V2I
+         lLrXo6Fdj6zmSTgRkH+KaaS7hq7bGfZ/F240sYlPVS7Eilk6rsfvKVH3uHYmQdRJ7aeu
+         ro4w==
+X-Forwarded-Encrypted: i=1; AJvYcCWvthU+imaGAbTnFuChMyf+VSJKLf5k5OPExXHK7oHXbeZi2dPB2oVL9qF3UVF/VOn5gYrvzjozbSQ7ZniQxQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YytUj1NgdPqXyDtYiDHv1F5N0FmgOa5uGJXsR6GdCC9gzBJGjHz
+	pDPOSU2+0FgAEY+Ekhn6m7TePNdGJHvSvxF9fSXKF/dr/35cQIbSl9oOkJPjC80paK8=
+X-Gm-Gg: ASbGnctnBQqd0QeeMpjBt1bhkuDlQlL2Zft8Y6IjwMrk8gEH/gI9j4apjDrOsrdtrr0
+	Gy1dgmc56BbLS025+cPbyj9QZifjg0wPj1hzFrjQbMVBtkF6lhN3edi8CE1DO5JGnlVBE76AkuN
+	93wejxNqM1+ayQmCxlJR+jlnLzyb9PUILArqV5LiqoPvoV43aU9ufk0dQPk/1UaPde6uzaqcVo3
+	cdb75ok+Utawt+8lDN2xH1sg0BeNHBlZeJqM96uKyLPrD3VwiuQI/RM08xAxhvBlfJUydhAKRgK
+	jz1SzI9yeNL3G4QpkLZxCQ5eBIc81EOsIrKMSY2mlFvufncU9D8ge+rdjaebHauzHf0etSuONtJ
+	YQSVe1diRZcBK9m1kU5TLdAkVG7k=
+X-Google-Smtp-Source: AGHT+IEMN28GIL2fj0mSdcwNMNRsi58DvX91WQKhdFH3bBY+HPq8y10Ik8GGOtDgnbxn+L/FmEEnxg==
+X-Received: by 2002:a05:620a:6590:b0:7e0:892b:e447 with SMTP id af79cd13be357-7e0892bec92mr129076085a.22.1752263944593;
+        Fri, 11 Jul 2025 12:59:04 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:17:b699::5ac? ([2606:6d00:17:b699::5ac])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7dcde80650asm252765185a.90.2025.07.11.12.59.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 11 Jul 2025 12:59:03 -0700 (PDT)
+Message-ID: <9f4a00b3a0b6491b1f50c878cb18569009a4441e.camel@ndufresne.ca>
+Subject: Re: [PATCH 5/8] media: uapi: HEVC: Add v4l2_ctrl_hevc_ext_sps_rps
+ control
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Detlev Casanova <detlev.casanova@collabora.com>, 
+	linux-kernel@vger.kernel.org
+Date: Fri, 11 Jul 2025 15:59:01 -0400
+In-Reply-To: <20250623160722.55938-6-detlev.casanova@collabora.com>
+References: <20250623160722.55938-1-detlev.casanova@collabora.com>
+	 <20250623160722.55938-6-detlev.casanova@collabora.com>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0MU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT6ImQQTFg
+ oAQQIbAwULCQgHAgIiAgYVCgkICwIEFgIDAQIeBwIXgBYhBO8NUoEVxMPCGgRvEtlBlFEpYHL0BQJ
+ oLLLGBQkJZfd1AAoJENlBlFEpYHL0BEkA/3qkWYt99myYFSmTJUF8UB/7OroEm3vr1HRqXeQe9Qp2
+ AP0bsoAe6KjEPa/pJfuJ2khrOPPHxvyt/PBNbI5BYcIABLQnTmljb2xhcyBEdWZyZXNuZSA8bmljb
+ 2xhc0BuZHVmcmVzbmUuY2E+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AWIQ
+ TvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyy+AUJCWX3dQAKCRDZQZRRKWBy9FJ5AQCNy8SX8DpHbLa
+ cy58vgDwyIpB89mok9eWGGejY9mqpRwEAhHzs+/n5xlVlM3bqy1yHnAzJqVwqBE1D0jG0a9V6VQI=
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH v10 02/10] dt-bindings: power: reset: Document reboot-mode
- cookie
-Content-Language: en-US
-To: Arnd Bergmann <arnd@arndb.de>, Rob Herring <robh@kernel.org>
-Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Sebastian Reichel <sre@kernel.org>,
-        Sudeep Holla <sudeep.holla@arm.com>,
-        Souvik Chakravarty <Souvik.Chakravarty@arm.com>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley
- <conor+dt@kernel.org>,
-        Andy Yan <andy.yan@rock-chips.com>,
-        Mark Rutland <mark.rutland@arm.com>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        Olof Johansson <olof@lixom.net>,
-        Konrad Dybcio <konradybcio@kernel.org>,
-        cros-qcom-dts-watchers@chromium.org, Vinod Koul <vkoul@kernel.org>,
-        Catalin Marinas <catalin.marinas@arm.com>,
-        Will Deacon <will@kernel.org>,
-        Florian Fainelli <florian.fainelli@broadcom.com>,
-        Elliot Berman <elliotb317@gmail.com>,
-        Stephen Boyd <swboyd@chromium.org>, linux-pm@vger.kernel.org,
-        linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        =?UTF-8?Q?Andr=c3=a9_Draszik?=
- <andre.draszik@linaro.org>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        linux-samsung-soc@vger.kernel.org, Wei Xu <xuwei5@hisilicon.com>,
-        linux-rockchip@lists.infradead.org,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-        Macpaul Lin <macpaul.lin@mediatek.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-        bcm-kernel-feedback-list@broadcom.com,
-        Nicolas Ferre <nicolas.ferre@microchip.com>,
-        Alexandre Belloni <alexandre.belloni@bootlin.com>,
-        Elliot Berman <quic_eberman@quicinc.com>,
-        Srinivas Kandagatla <srini@kernel.org>
-References: <20250710-arm-psci-system_reset2-vendor-reboots-v10-0-b2d3b882be85@oss.qualcomm.com>
- <20250710-arm-psci-system_reset2-vendor-reboots-v10-2-b2d3b882be85@oss.qualcomm.com>
- <20250710224740.GA15385-robh@kernel.org>
- <cdadd6cf-18c9-15c7-c58a-b5d56b53452a@oss.qualcomm.com>
- <454c8361-151e-42b3-adfc-d82d2af62299@app.fastmail.com>
- <28f277af-9882-2c70-5156-123c95adc2ee@oss.qualcomm.com>
- <b870ed33-7d4f-4b0e-a9ae-b9c374ea854b@app.fastmail.com>
-From: Shivendra Pratap <shivendra.pratap@oss.qualcomm.com>
-In-Reply-To: <b870ed33-7d4f-4b0e-a9ae-b9c374ea854b@app.fastmail.com>
-X-Authority-Analysis: v=2.4 cv=GdQXnRXL c=1 sm=1 tr=0 ts=68714ee2 cx=c_pps
- a=Qgeoaf8Lrialg5Z894R3/Q==:117 a=8g6h00HoWaIZ3EdQG8aEvw==:17
- a=IkcTkHD0fZMA:10 a=Wb1JkmetP80A:10 a=xZdgJlt2tE-EQpnRY6gA:9
- a=QEXdDO2ut3YA:10 a=x9snwWr2DeNwDh03kgHS:22
-X-Proofpoint-GUID: IzehoqpmaBLGwwe8hOe0o0vDK2DSsMpi
-X-Proofpoint-ORIG-GUID: IzehoqpmaBLGwwe8hOe0o0vDK2DSsMpi
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzExMDEzMiBTYWx0ZWRfX2VCO3VA266N6
- P0keYIsYclkV1wwoobvC1Hq1XXb1AYLTfkHhqU8181oXj2Zcw4QW67NGvh/QZY75v8B7hCi/8Dz
- fnsen0nXFDUM6vljR4BqU4xjpMFEnpI0n0CfMzniVJgzLxkFDd6gGNodvBaCSqzyQ6HuCzjk1F+
- 1NQYxej04l2oI7+BtSdJTiP86Kz/1YuoS/lxysxtMvqKFvRjxjD/DoH1Z7ubfqw4l+L7sxD3wIc
- Vg4WCwkD1+HPMcvQ8IoBbbHYXIJGWHoylWuBvjAZ3DH1VE5MNNufkwR5R0l8T2eDKPQ+WJxJJDh
- JFiNBf0E9COAL+eY4wv4lWVL/DD4XWkTGSbi3H7yUmpVkconoDppn71WWrOrpSnarYalbsm+SLe
- iE4q3w6MLekRdJ88S6UvgzJnbkYCwBB0UH8PF2/3UWa8BdTiVOP2sExC9pFhMIBfqZdtPMsX
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
- definitions=2025-07-11_05,2025-07-09_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 phishscore=0 adultscore=0 bulkscore=0 clxscore=1015
- spamscore=0 suspectscore=0 mlxlogscore=690 priorityscore=1501 impostorscore=0
- malwarescore=0 mlxscore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
- definitions=main-2507110132
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250711_105027_948219_111762A1 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20250711_125906_354006_918C9BD2 
+X-CRM114-Status: GOOD (  19.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -168,32 +103,230 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dragan Simic <dsimic@manjaro.org>, Rob Herring <robh@kernel.org>, Yunke Cao <yunkec@google.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Frank Wang <frank.wang@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, Jianfeng Liu <liujianfeng1994@gmail.com>, Alexey Charkov <alchark@gmail.com>, Ricardo Ribalda <ribalda@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Hans de Goede <hansg@kernel.org>
+Content-Type: multipart/mixed; boundary="===============8582906680549291015=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
+--===============8582906680549291015==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-QFZNUyCQD9CH6UQ+5gcH"
 
-On 7/11/2025 11:09 PM, Arnd Bergmann wrote:
-> On Fri, Jul 11, 2025, at 19:00, Shivendra Pratap wrote:
->> On 7/11/2025 8:14 PM, Arnd Bergmann wrote:
->>> On Fri, Jul 11, 2025, at 14:32, Shivendra Pratap wrote:
->>>
->>> The distinction between cookie and magic value may be relevant in the
->>> context of the psci specification, but for the Linux driver, this is
->>> really just a 64-bit magic number.
->> ok. then if i understand, this binding change for reboot-mode be dropped
->> and driver can internally handle the two 32 bit numbers?
-> 
-> Yes, if you can easily keep it internal to the psci driver, that
-> would work, or you could just change the callback type to take a
-> 64-bit number and leave the interpretation up to the driver.
-ok. thanks. Will try it out. 
-> 
->      Arnd
+
+--=-QFZNUyCQD9CH6UQ+5gcH
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le lundi 23 juin 2025 =C3=A0 12:07 -0400, Detlev Casanova a =C3=A9crit=C2=
+=A0:
+> Some hardware (e.g.: Rockchip's rk3588 hevc decoder) need the parsed
+> long and short term reference information for HEVC decoding.
+>=20
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+> =C2=A0.../media/v4l/ext-ctrls-codec-stateless.rst=C2=A0=C2=A0 | 73 ++++++=
++++++++++++++
+> =C2=A0.../media/v4l/vidioc-queryctrl.rst=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 6 ++
+> =C2=A02 files changed, 79 insertions(+)
+>=20
+> diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-statel=
+ess.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.r=
+st
+> index 0da635691fdcb..745f38a8fe69c 100644
+> --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
+> +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
+> @@ -2958,6 +2958,79 @@ This structure contains all loop filter related pa=
+rameters. See sections
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - 0x00000004
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -
+> =C2=A0
+> +.. c:type:: v4l2_ctrl_hevc_ext_sps_rps
+> +
+> +.. cssclass:: longtable
+> +
+> +.. flat-table:: struct v4l2_ctrl_hevc_ext_sps_rps
+> +=C2=A0=C2=A0=C2=A0 :header-rows:=C2=A0 0
+> +=C2=A0=C2=A0=C2=A0 :stub-columns: 0
+> +=C2=A0=C2=A0=C2=A0 :widths:=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 1 1 2
+
+
+Something, somewhere should say this is an array.
+
+> +
+> +=C2=A0=C2=A0=C2=A0 * - __u16
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``lt_ref_pic_poc_lsb_sps``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Long term reference picture order count=
+ as described in section 7.4.3.2.1
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "General sequence parameter s=
+et RBSP semantics" of the specification.
+
+Each LONG term reference have one of these.
+
+> +=C2=A0=C2=A0=C2=A0 * - __u8
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``delta_idx_minus1``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies the delta compare to the inde=
+x. See details in section 7.4.8 "Short-term
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 reference picture set semanti=
+cs" of the specification.
+
+
+And each SHORT term have one of these. How can both be int he same control =
+? For
+me this could make a bit more sense with two structures:
+
+	v4l2_ctrl_hevc_ext_sps_st_rps[]
+	v4l2_ctrl_hevc_ext_sps_lt_rps[]
+
+Did I miss something ?
+
+> +=C2=A0=C2=A0=C2=A0 * - __u8
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``delta_rps_sign``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Sign of the delta as specified in secti=
+on 7.4.8 "Short-term reference picture set
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 semantics" of the specificati=
+on.
+> +=C2=A0=C2=A0=C2=A0 * - __u16
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``abs_delta_rps_minus1``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Absolute delta RPS as specified in sect=
+ion 7.4.8 "Short-term reference picture set
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 semantics" of the specificati=
+on.
+> +=C2=A0=C2=A0=C2=A0 * - __u8
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``num_negative_pics``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Number of short-term RPS entries that h=
+ave picture order count values less than the
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 picture order count value of =
+the current picture.
+> +=C2=A0=C2=A0=C2=A0 * - __u8
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``num_positive_pics``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Number of short-term RPS entries that h=
+ave picture order count values greater than the
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 picture order count value of =
+the current picture.
+> +=C2=A0=C2=A0=C2=A0 * - __u8
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``used_by_curr_pic_s0[16]``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies if short-term RPS i (that has=
+ a negative POC) is used by the current picture.
+
+Use bit field for that, a __u16 works, and one per ST.
+
+>=20
+> +=C2=A0=C2=A0=C2=A0 * - __u8
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``used_by_curr_pic_s1[16]``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies if short-term RPS i (that has=
+ a positive POC) is used by the current picture.
+>=20
+
+Same.
+
+> +=C2=A0=C2=A0=C2=A0 * - __s32
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``delta_poc_s0[16]``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies the negative picture order co=
+unt delta for the i-th entry in the short-term RPS.
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 See details in section 7.4.8 =
+"Short-term reference picture set semantics" of the
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 specification.
+
+Keep it delta_poc_s0_minus1 like int he spec, and then you can go back so u=
+16.
+
+> +=C2=A0=C2=A0=C2=A0 * - __s32
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``delta_poc_s1[16]``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies the positive picture order co=
+unt delta for the i-th entry in the short-term RPS.
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 See details in section 7.4.8 =
+"Short-term reference picture set semantics" of the
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 specification.
+
+Same.
+
+
+regards,
+Nicolas
+
+> +=C2=A0=C2=A0=C2=A0 * - __u8
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``flags``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - See :ref:`Extended RPS Flags <hevc_ext_=
+sps_rps_flags>`
+> +
+> +.. _hevc_ext_sps_rps_flags:
+> +
+> +``Extended SPS RPS Flags``
+> +
+> +.. cssclass:: longtable
+> +
+> +.. flat-table::
+> +=C2=A0=C2=A0=C2=A0 :header-rows:=C2=A0 0
+> +=C2=A0=C2=A0=C2=A0 :stub-columns: 0
+> +=C2=A0=C2=A0=C2=A0 :widths:=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 1 1 2
+> +
+> +=C2=A0=C2=A0=C2=A0 * - ``V4L2_HEVC_EXT_SPS_RPS_FLAG_USED_LT``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - 0x00000001
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies if the long-term reference pi=
+cture is used 7.4.3.2.1 "General sequence parameter
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 set RBSP semantics" of the sp=
+ecification.
+> +=C2=A0=C2=A0=C2=A0 * - ``V4L2_HEVC_EXT_SPS_RPS_FLAG_INTER_REF_PIC_SET_PR=
+ED``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - 0x00000002
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies if the short-term RPS is pred=
+icted from another short term RPS. See details in
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 section 7.4.8 "Short-term ref=
+erence picture set semantics" of the specification.
+> +
+> =C2=A0.. _v4l2-codec-stateless-av1:
+> =C2=A0
+> =C2=A0``V4L2_CID_STATELESS_AV1_SEQUENCE (struct)``
+> diff --git a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst b=
+/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
+> index 3549417c7febb..dc7caf4bf6208 100644
+> --- a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
+> +++ b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
+> @@ -523,6 +523,12 @@ See also the examples in :ref:`control`.
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - A struct :c:type:`v4l2_ctrl_hevc_d=
+ecode_params`, containing HEVC
+> =C2=A0	decoding parameters for stateless video decoders.
+> +=C2=A0=C2=A0=C2=A0 * - ``V4L2_CTRL_TYPE_HEVC_EXT_SPS_RPS``
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - A struct :c:type:`v4l2_ctrl_hevc_ext_sp=
+s_rps`, containing HEVC
+> +	extended RPS for stateless video decoders.
+> =C2=A0=C2=A0=C2=A0=C2=A0 * - ``V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR``
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+
+--=-QFZNUyCQD9CH6UQ+5gcH
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHQEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaHFtBQAKCRDZQZRRKWBy
+9ISzAPidxCwdhetQDnozQ9rkv6zHmwuNG2/63/iuwoWBzkyQAQD7SLIPvi5xterW
+wf+MjUZIrzLCUQ4C8voHcQLpGbHPCA==
+=sK20
+-----END PGP SIGNATURE-----
+
+--=-QFZNUyCQD9CH6UQ+5gcH--
+
+
+--===============8582906680549291015==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8582906680549291015==--
+
