@@ -4,92 +4,159 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4294C83F22
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 18:10:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CA77C83F25
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 18:10:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cT4Jj7RWPC58I67I7R0XNy6Fm5l+c6rxsCN6XYBnbkU=; b=siwtlSVbJJec+j
-	04qxzXViTNloU59LPue/KnRjUJFEmch9jP6Z/P+iuhe1xykUhdlPPFIKDVB0eTNjtYtAUeCj4Im4l
-	NP4fdmqO49JBqmiTP5winAKCuLyo1iEx4VvcT6OyZQIn3pTodpb21mi7kVBKKkxMyr/EJNzX2BzDv
-	LiRlzdRe489bQ57QDpE1DvIwXZmVGicJD+DAGdVBT78Q3iFvvMY9P6GUsjzRuuEJW4XrXvhfRFtV9
-	yEFqC9qKfH0SXUCWpoL9OXteKLEE29Ynbd7Kv5TULuIewDJ+PFEsKHBetDxoQSnNDalZewbZ9sf1k
-	GWLz7gu0+xOYqOXvHnSg==;
+	List-Owner; bh=qFsNUvvkoX0uDV8zek0xrmSUjSn4fe6A6Yv2nxvFJaQ=; b=NCg1jE3+5F3kO5
+	o6YRGtdrgwd356xCUpNxSHvJFgfKr8ChaN10fmFlCRUWkiEZP1cN71jpl/t2xmcgj9cEgHKPlbNbg
+	594GcYTGr9UMqENeRTirp+wFze+jGLRjHKfqWDQcOzuKMi3pziBWZlLIZUGfKlBWviJCOE+M3GA64
+	Ojh5jgihje5AU+oHcwxABuTHw9tkTif38fsVA9R9BSKgth2FssmNmZcP0BshVa30atEXmuB9elsal
+	8e1DGBEu5DexfKI/ZZicKX7x3ydE/nqyP9yzN4DCCKHMDcg3gxofZ4fKyIwlO7uVI0mkoh4YXhxVC
+	+RwDwau+AnvSxU4k5lQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaICj-0000000FT4l-37Xk;
-	Fri, 11 Jul 2025 18:10:37 +0000
-Received: from fllvem-ot03.ext.ti.com ([198.47.19.245])
+	id 1uaICo-0000000FTBn-3Qst;
+	Fri, 11 Jul 2025 18:10:42 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaHk5-0000000FQLX-3ZNf;
-	Fri, 11 Jul 2025 17:41:03 +0000
-Received: from fllvem-sh04.itg.ti.com ([10.64.41.54])
-	by fllvem-ot03.ext.ti.com (8.15.2/8.15.2) with ESMTP id 56BHemug1861107;
-	Fri, 11 Jul 2025 12:40:48 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1752255648;
-	bh=avkCSBI/cy3dHICmDxAzJXYe1H+unqcSXKS5zVohgaE=;
-	h=Date:Subject:To:CC:References:From:In-Reply-To;
-	b=MfxRnRrKgfCUgO2J9UsENDPiXwTOrv7M+KRQK4+WubWagVc1t8P07KW7Eqp+XtZUK
-	 kEbQVJRSEM/E4NEI1bAIugDacmCrpCTnuo/gdgQp7j9MAA3mc4VLjM+KuTu0R+rRO6
-	 ZiN1UFF5JJS6uX5fPKjBaY5Yzkevs1GL6yNSaKfk=
-Received: from DLEE101.ent.ti.com (dlee101.ent.ti.com [157.170.170.31])
-	by fllvem-sh04.itg.ti.com (8.18.1/8.18.1) with ESMTPS id 56BHem8U533293
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA256 bits=128 verify=FAIL);
-	Fri, 11 Jul 2025 12:40:48 -0500
-Received: from DLEE101.ent.ti.com (157.170.170.31) by DLEE101.ent.ti.com
- (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.55; Fri, 11
- Jul 2025 12:40:47 -0500
-Received: from lelvem-mr06.itg.ti.com (10.180.75.8) by DLEE101.ent.ti.com
- (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.55 via
- Frontend Transport; Fri, 11 Jul 2025 12:40:47 -0500
-Received: from [10.250.35.60] ([10.250.35.60])
-	by lelvem-mr06.itg.ti.com (8.18.1/8.18.1) with ESMTP id 56BHekf83588411;
-	Fri, 11 Jul 2025 12:40:46 -0500
-Message-ID: <7178abc9-8f92-4bba-9b50-ffdf5f8d1279@ti.com>
-Date: Fri, 11 Jul 2025 12:40:46 -0500
+	id 1uaHtD-0000000FReB-3LZ1
+	for linux-rockchip@lists.infradead.org;
+	Fri, 11 Jul 2025 17:50:28 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56BB7i3p001266
+	for <linux-rockchip@lists.infradead.org>; Fri, 11 Jul 2025 17:50:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	zODF07FEndKVYerePzf13yZa0v9IMBpC/Vm6umRGgcQ=; b=gApSY9r+2eAhMTb/
+	78i0vkS9emlIFK2N5TD+V0KqbqrE+DJTruHeob27jHnXjtuMt6rEH6OnMoIKrZxX
+	3Jq4Hr5MiTU8vX6sUu6IL//2V4H3anIsaXpeuOu0QaYGh6EQ5x45kEy0GonU8Lv/
+	nLN1jzwClGo2Lr3s2CEXqhRwP8bFtWyp5WkI8xz2IMmP/8P/jxUqHbb+orW6fkJb
+	WtBbHDz+O9dVEaTTVpNR3QLe7fR3brxtWx7elNWmJgiibuy2YvnEBP1TFmDrkja+
+	dCF80k5Kjn7KMZFjQb1pJYRpF25bm1DDZDkX3l+rxZqa+NFHLEzIEUJvOagwF9/t
+	k90SgA==
+Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com [209.85.215.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47pucncve0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Fri, 11 Jul 2025 17:50:26 +0000 (GMT)
+Received: by mail-pg1-f198.google.com with SMTP id 41be03b00d2f7-b00e4358a34so1698274a12.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 11 Jul 2025 10:50:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752256206; x=1752861006;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=zODF07FEndKVYerePzf13yZa0v9IMBpC/Vm6umRGgcQ=;
+        b=eOIRg22oi1fpY5f8KllwMzD2UjAjWZMLG04ZgkgKlE1JJoOiL/SSg0z/BSD7m9T4vu
+         FLBMz7x39d0ew4ZKpPHlXhDccBkNKKcbc4Y37HLngf6LU53FItjsW7aC05OjP5HpUeIP
+         kGfq+AvXA6KyulKkFc4QBP8mYTqsTmQzm1QLHd6Ig6YgSunmCRgUG91mq4qhgZFRV5Yu
+         Ma1/l691StwzO1gdd/XxjgqkHBpLEEeCa48gEHpDKcqgKyRC1LLNWqCP1vqZg89//cDa
+         x2Fsj5aDwR7koQXNkjLRkNLg8a7DyNgBeS0j5+W41VuaLxS1HHjaK8iqzfdiPYsFsEeC
+         XTKw==
+X-Forwarded-Encrypted: i=1; AJvYcCV9lLsUcCE3gWEDBX43KKQ5CZwbLamev2iqzhSqmT/xwbBgmBIYN27l1+gvdD3vIsHrQDjnVhUCO45N6fPEHQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwaC067vHyUxT8qqwoHgXmUIRDlK9yjkFgfBXzx6zBnxHG5O/t9
+	Ylooqjj1fhJ5JDuXZKc2x1yUSjN+wrya1q9XRY7Qft2tcRNaAgRfwS69mcXPkZxbT5T1xBhrAjs
+	tpVw3+5AwBHu+AUZXw4Mu5MvnsYNBP1NSdpNrjjvB3H7aRUwRb/4drsffpL1QdN+wNbWb+9Fh9y
+	U=
+X-Gm-Gg: ASbGncuYcVl5Hr/2KwBNWl/0GlGRGiqYFAhHwhu7DvwxRQlIFRQvd8SS2teUu2ecsr+
+	4CD3ghZNGGUAcC1me9+4bSzyHUylDVAMraVrdhw7x5iiT37p3wophNfqQ0zGOtlH71acRbqtyD9
+	37tyW7dwLK3Zn0jnR5ktIA13/VELi37G1RF0yZW93+lyYZgXLgCCqgvKDq28J5gf95c4dEQWsI5
+	6DV0FyOIpzhMM8Gb2Js9sJ6JWcGaBrzWQ32YvkrVnJ8FfA2zsyfZS7pkcec1QDx0pVAuVbKky62
+	eTDrSBKN5npIAWXi/yuwRtM9IjCrvqcFZzB1mG71XxwSlm3YvKHAylppZQGYVLDigCxe7bQFhQ=
+	=
+X-Received: by 2002:a17:902:f545:b0:235:efbb:9539 with SMTP id d9443c01a7336-23dee1abb0emr63643175ad.17.1752256205862;
+        Fri, 11 Jul 2025 10:50:05 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHoW1pfrpu8TJ9bIwQOf4KOWgHALwSOkO1BYsTZCrJkUsn+7Lrx4ekRpFxTdtXkf6n8J7ntUA==
+X-Received: by 2002:a17:902:f545:b0:235:efbb:9539 with SMTP id d9443c01a7336-23dee1abb0emr63642755ad.17.1752256205266;
+        Fri, 11 Jul 2025 10:50:05 -0700 (PDT)
+Received: from [192.168.29.115] ([49.43.229.152])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23de433e160sm50153985ad.172.2025.07.11.10.49.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Jul 2025 10:50:04 -0700 (PDT)
+Message-ID: <42a98c8d-7287-8aa1-ad39-4d5b79e177b7@oss.qualcomm.com>
+Date: Fri, 11 Jul 2025 23:19:51 +0530
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 03/10] accel/rocket: Add IOCTL for BO creation
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-        Oded Gabbay <ogabbay@kernel.org>, Jonathan
- Corbet <corbet@lwn.net>,
-        Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Sumit Semwal <sumit.semwal@linaro.org>,
-        =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
-        Sebastian
- Reichel <sebastian.reichel@collabora.com>,
-        Nicolas Frattaroli
-	<nicolas.frattaroli@collabora.com>,
-        Kever Yang <kever.yang@rock-chips.com>,
-        Robin Murphy <robin.murphy@arm.com>,
-        Daniel Stone <daniel@fooishbar.org>, Da
- Xue <da@libre.computer>,
-        Jeff Hugo <jeff.hugo@oss.qualcomm.com>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-        <dri-devel@lists.freedesktop.org>, <linux-doc@vger.kernel.org>,
-        <linux-media@vger.kernel.org>, <linaro-mm-sig@lists.linaro.org>
-References: <20250606-6-10-rocket-v7-0-dc16cfe6fe4e@tomeuvizoso.net>
- <20250606-6-10-rocket-v7-3-dc16cfe6fe4e@tomeuvizoso.net>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.1
+Subject: Re: [PATCH v10 02/10] dt-bindings: power: reset: Document reboot-mode
+ cookie
 Content-Language: en-US
-From: Andrew Davis <afd@ti.com>
-In-Reply-To: <20250606-6-10-rocket-v7-3-dc16cfe6fe4e@tomeuvizoso.net>
-X-C2ProcessedOrg: 333ef613-75bf-4e12-a4b1-8e3623f5dcea
+To: Arnd Bergmann <arnd@arndb.de>, Rob Herring <robh@kernel.org>
+Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Sebastian Reichel <sre@kernel.org>,
+        Sudeep Holla <sudeep.holla@arm.com>,
+        Souvik Chakravarty <Souvik.Chakravarty@arm.com>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley
+ <conor+dt@kernel.org>,
+        Andy Yan <andy.yan@rock-chips.com>,
+        Mark Rutland <mark.rutland@arm.com>,
+        Lorenzo Pieralisi <lpieralisi@kernel.org>,
+        Olof Johansson <olof@lixom.net>,
+        Konrad Dybcio <konradybcio@kernel.org>,
+        cros-qcom-dts-watchers@chromium.org, Vinod Koul <vkoul@kernel.org>,
+        Catalin Marinas <catalin.marinas@arm.com>,
+        Will Deacon <will@kernel.org>,
+        Florian Fainelli <florian.fainelli@broadcom.com>,
+        Elliot Berman <elliotb317@gmail.com>,
+        Stephen Boyd <swboyd@chromium.org>, linux-pm@vger.kernel.org,
+        linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        =?UTF-8?Q?Andr=c3=a9_Draszik?=
+ <andre.draszik@linaro.org>,
+        Alim Akhtar <alim.akhtar@samsung.com>,
+        linux-samsung-soc@vger.kernel.org, Wei Xu <xuwei5@hisilicon.com>,
+        linux-rockchip@lists.infradead.org,
+        Baolin Wang <baolin.wang@linux.alibaba.com>,
+        Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+        Macpaul Lin <macpaul.lin@mediatek.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+        bcm-kernel-feedback-list@broadcom.com,
+        Nicolas Ferre <nicolas.ferre@microchip.com>,
+        Alexandre Belloni <alexandre.belloni@bootlin.com>,
+        Elliot Berman <quic_eberman@quicinc.com>,
+        Srinivas Kandagatla <srini@kernel.org>
+References: <20250710-arm-psci-system_reset2-vendor-reboots-v10-0-b2d3b882be85@oss.qualcomm.com>
+ <20250710-arm-psci-system_reset2-vendor-reboots-v10-2-b2d3b882be85@oss.qualcomm.com>
+ <20250710224740.GA15385-robh@kernel.org>
+ <cdadd6cf-18c9-15c7-c58a-b5d56b53452a@oss.qualcomm.com>
+ <454c8361-151e-42b3-adfc-d82d2af62299@app.fastmail.com>
+ <28f277af-9882-2c70-5156-123c95adc2ee@oss.qualcomm.com>
+ <b870ed33-7d4f-4b0e-a9ae-b9c374ea854b@app.fastmail.com>
+From: Shivendra Pratap <shivendra.pratap@oss.qualcomm.com>
+In-Reply-To: <b870ed33-7d4f-4b0e-a9ae-b9c374ea854b@app.fastmail.com>
+X-Authority-Analysis: v=2.4 cv=GdQXnRXL c=1 sm=1 tr=0 ts=68714ee2 cx=c_pps
+ a=Qgeoaf8Lrialg5Z894R3/Q==:117 a=8g6h00HoWaIZ3EdQG8aEvw==:17
+ a=IkcTkHD0fZMA:10 a=Wb1JkmetP80A:10 a=xZdgJlt2tE-EQpnRY6gA:9
+ a=QEXdDO2ut3YA:10 a=x9snwWr2DeNwDh03kgHS:22
+X-Proofpoint-GUID: IzehoqpmaBLGwwe8hOe0o0vDK2DSsMpi
+X-Proofpoint-ORIG-GUID: IzehoqpmaBLGwwe8hOe0o0vDK2DSsMpi
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzExMDEzMiBTYWx0ZWRfX2VCO3VA266N6
+ P0keYIsYclkV1wwoobvC1Hq1XXb1AYLTfkHhqU8181oXj2Zcw4QW67NGvh/QZY75v8B7hCi/8Dz
+ fnsen0nXFDUM6vljR4BqU4xjpMFEnpI0n0CfMzniVJgzLxkFDd6gGNodvBaCSqzyQ6HuCzjk1F+
+ 1NQYxej04l2oI7+BtSdJTiP86Kz/1YuoS/lxysxtMvqKFvRjxjD/DoH1Z7ubfqw4l+L7sxD3wIc
+ Vg4WCwkD1+HPMcvQ8IoBbbHYXIJGWHoylWuBvjAZ3DH1VE5MNNufkwR5R0l8T2eDKPQ+WJxJJDh
+ JFiNBf0E9COAL+eY4wv4lWVL/DD4XWkTGSbi3H7yUmpVkconoDppn71WWrOrpSnarYalbsm+SLe
+ iE4q3w6MLekRdJ88S6UvgzJnbkYCwBB0UH8PF2/3UWa8BdTiVOP2sExC9pFhMIBfqZdtPMsX
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
+ definitions=2025-07-11_05,2025-07-09_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 phishscore=0 adultscore=0 bulkscore=0 clxscore=1015
+ spamscore=0 suspectscore=0 mlxlogscore=690 priorityscore=1501 impostorscore=0
+ malwarescore=0 mlxscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
+ definitions=main-2507110132
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250711_104101_986716_1417193B 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20250711_105027_948219_111762A1 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,73 +168,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 6/6/25 1:28 AM, Tomeu Vizoso wrote:
-> This uses the SHMEM DRM helpers and we map right away to the CPU and NPU
-> sides, as all buffers are expected to be accessed from both.
-> 
-> v2:
-> - Sync the IOMMUs for the other cores when mapping and unmapping.
-> 
-> v3:
-> - Make use of GPL-2.0-only for the copyright notice (Jeff Hugo)
-> 
-> v6:
-> - Use mutexes guard (Markus Elfring)
-> 
-> v7:
-> - Assign its own IOMMU domain to each client, for isolation (Daniel
->    Stone and Robin Murphy)
-> 
-> Reviewed-by: Jeffrey Hugo <quic_jhugo@quicinc.com>
-> Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-> ---
->   drivers/accel/rocket/Makefile        |   3 +-
->   drivers/accel/rocket/rocket_device.c |   4 ++
->   drivers/accel/rocket/rocket_device.h |   2 +
->   drivers/accel/rocket/rocket_drv.c    |   7 ++-
->   drivers/accel/rocket/rocket_gem.c    | 115 +++++++++++++++++++++++++++++++++++
->   drivers/accel/rocket/rocket_gem.h    |  27 ++++++++
->   include/uapi/drm/rocket_accel.h      |  44 ++++++++++++++
->   7 files changed, 200 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/accel/rocket/Makefile b/drivers/accel/rocket/Makefile
-> index abdd75f2492eaecf8bf5e78a2ac150ea19ac3e96..4deef267f9e1238c4d8bd108dcc8afd9dc8b2b8f 100644
-> --- a/drivers/accel/rocket/Makefile
-> +++ b/drivers/accel/rocket/Makefile
-> @@ -5,4 +5,5 @@ obj-$(CONFIG_DRM_ACCEL_ROCKET) := rocket.o
->   rocket-y := \
->   	rocket_core.o \
->   	rocket_device.o \
-> -	rocket_drv.o
-> +	rocket_drv.o \
-> +	rocket_gem.o
-> diff --git a/drivers/accel/rocket/rocket_device.c b/drivers/accel/rocket/rocket_device.c
-> index a05c103e117e3eaa6439884b7acb6e3483296edb..5e559104741af22c528914c96e44558323ab6c89 100644
-> --- a/drivers/accel/rocket/rocket_device.c
-> +++ b/drivers/accel/rocket/rocket_device.c
-> @@ -4,6 +4,7 @@
->   #include <linux/array_size.h>
->   #include <linux/clk.h>
->   #include <linux/dev_printk.h>
-> +#include <linux/mutex.h>
->   
->   #include "rocket_device.h"
->   
-> @@ -16,10 +17,13 @@ int rocket_device_init(struct rocket_device *rdev)
->   	if (err)
->   		return err;
->   
-> +	mutex_init(&rdev->iommu_lock);
 
-devm_mutex_init() again keeps you from needing rocket_device_fini().
-Same in the next patch even if you don't end up needing the iommu_lock.
 
-Andrew
+On 7/11/2025 11:09 PM, Arnd Bergmann wrote:
+> On Fri, Jul 11, 2025, at 19:00, Shivendra Pratap wrote:
+>> On 7/11/2025 8:14 PM, Arnd Bergmann wrote:
+>>> On Fri, Jul 11, 2025, at 14:32, Shivendra Pratap wrote:
+>>>
+>>> The distinction between cookie and magic value may be relevant in the
+>>> context of the psci specification, but for the Linux driver, this is
+>>> really just a 64-bit magic number.
+>> ok. then if i understand, this binding change for reboot-mode be dropped
+>> and driver can internally handle the two 32 bit numbers?
+> 
+> Yes, if you can easily keep it internal to the psci driver, that
+> would work, or you could just change the callback type to take a
+> 64-bit number and leave the interpretation up to the driver.
+ok. thanks. Will try it out. 
+> 
+>      Arnd
 
 _______________________________________________
 Linux-rockchip mailing list
