@@ -4,62 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37360C8303C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 08:43:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3925EC83F1A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 09:05:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G8vT6esGRdlyMLOvcsNDkM6JQTyzt97I6LnDSq/o2ks=; b=qt5FZkzfQLxXuY
-	Vzgo7LpBpoXIMHHXYgysVfTRSolmTISWxAR6K+cv9hTiIBgaUCSuK8QnEzj4yZzUaRCirV1JBm6tP
-	+etv0O4kGhDmOGDd8j2kO9qZFEegkRLLpG83xnZWHb9+jE244wE7tWH/Anrmm3k5buAS0H99SZXxV
-	LtaYozE9RZ/KDk6d4Fz1/qZoI7sPp5V8IsU9j1ZsEBDgcXL5/r7JuEarNiuebv6BNS5AH8FTAURmb
-	XAzY2B5P0J59fVQKCZCNaZSpPMYI3G5Du5tMftjPVA0+UhmyqvrMLzQHtnNhWZAOHmaFRagG8bSNe
-	3LX8gukhpRKNiCz2SyUw==;
+	List-Owner; bh=2ub6v2tDc2BnuWTUH8zzRvEgkm2B1j2lym7dFs8xbtY=; b=3M2lt+43JG2iwq
+	is8TUZL0FZpf5Bb5HlYfk3E68CtH/Bjl+t9Ld3VhAQAJzVcxbY2VogeeqVxBhwl9dkRH2sLLrZ1vw
+	/xUGLPsRzcCrjFuNPdNmYk8H9EOPxiilVIAESq8K0SICQ0YfWHLxzopeKivfqGP7n+JBKxIRkHZf5
+	AVd4JU20az18oYSuYCWkol6qFJ8ilpn2U5V7yLH5SmK6troNwx0S2Cdf/TmpAk+wWSwrjdmGatH76
+	p563n55N/6vT6LkcM57wI1pgtBdicw7fuasnEOlP5o6VmhqVVQ1YFH8qDXLfgkPsimvT57Sg/bhrD
+	5Pf7J8HNTWxdfHilpK2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ua9Lr-0000000ECEp-0Q6Z;
-	Fri, 11 Jul 2025 08:43:27 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1ua9gj-0000000EFr5-0FKr;
+	Fri, 11 Jul 2025 09:05:01 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ua8gD-0000000E3cO-1yWK;
-	Fri, 11 Jul 2025 08:00:27 +0000
-Received: from localhost.localdomain (unknown [119.122.214.98])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1baf2e80d;
-	Fri, 11 Jul 2025 16:00:15 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: jonas@kwiboo.se
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	ziyao@disroot.org
-Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: Add ArmSoM Sige1
-Date: Fri, 11 Jul 2025 16:00:09 +0800
-Message-Id: <20250711080009.72677-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250710202958.3717181-5-jonas@kwiboo.se>
-References: <20250710202958.3717181-5-jonas@kwiboo.se>
+	id 1ua8zx-0000000E6j6-0y4F;
+	Fri, 11 Jul 2025 08:20:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6E8356116F;
+	Fri, 11 Jul 2025 08:20:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C62DC4CEED;
+	Fri, 11 Jul 2025 08:20:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752222048;
+	bh=cdaXOqQf+RYrHBXTumCBfxof5X07gqf2jbXZEIVlCdc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=iZM3fiGYXWni54KQ5OCCvYNGt5xxzaXnGNjgO/eA3ULRjRL0AJfxXC/hxGkVbQVfV
+	 2HlidtjWETQTIjAt0hcvZ5BtWMBGIB01CELX927KIG4qoPtHEarSY+ntWXiPkzXVQo
+	 JRc/FuSpCCnAxPn4976pplrbh5jHepPpo8msgMXjEEBz4jhmlH/PEQ6JOzsHOPLBwW
+	 d9a4QW1M2n7ptYWow83lNcn1AmUi73lPgE8bwOm7/MnsWG9m2FfJn2dODzNYaN6GJT
+	 lruUGlt9PJqOXRdFneM9I7csSRf6IaH/S8ShT1/Xp8Ou5ZC0lMQirskrFcTYmyM1nP
+	 OMmoldGVY6c3A==
+Date: Fri, 11 Jul 2025 10:20:45 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>, 
+	Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/6] dt-bindings: arm: rockchip: Add Radxa ROCK 2A/2F
+Message-ID: <20250711-polite-seagull-of-expertise-7acdbd@krzk-bin>
+References: <20250710202958.3717181-1-jonas@kwiboo.se>
+ <20250710202958.3717181-2-jonas@kwiboo.se>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDGEwdVktLHR1KSBpJTUxIGlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VCQ1lXWRYaDxIVHRRZQVlPS0hVSktJT09PS1VKS0tVS1
-	kG
-X-HM-Tid: 0a97f87fd03a03a2kunm1c8745eb5f1e92
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Ni46Eyo*GDE*Lx8aEA0fHwso
-	NjdPCQNVSlVKTE5JSUlLQ0pNQktLVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	QlVKSUlVSUpPVUJDWVdZCAFZQUpMQkk3Bg++
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250711_010025_675265_8A914E0A 
-X-CRM114-Status: UNSURE (   6.77  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20250710202958.3717181-2-jonas@kwiboo.se>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,55 +71,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Thu, Jul 10, 2025 at 08:29:40PM +0000, Jonas Karlman wrote:
+> The ROCK 2A and ROCK 2F is a high-performance single board computer
+> developed by Radxa, based on the Rockchip RK3528A SoC.
+> 
+> Add devicetree binding documentation for the Radxa ROCK 2A and ROCK 2F
+> boards.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+> v2: No change
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
+>  1 file changed, 7 insertions(+)
 
-> +	leds {
-> +		compatible = "gpio-leds";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&g_led>, <&r_led>;
-> +
-> +		led-green {
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Should this label be named as led-0/led-1?
-
-> +&sdio0 {
-> +	bus-width = <4>;
-> +	cap-sd-highspeed;
-> +	cap-sdio-irq;
-> +	disable-wp;
-> +	keep-power-in-suspend;
-> +	mmc-pwrseq = <&sdio_pwrseq>;
-> +	no-mmc;
-> +	no-sd;
-> +	non-removable;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>;
-
-This pinctrl is the same as that of rk3528.dtsi, we can remove it.
-
-BTW there is a fan connector on the board (connected to pwm6m2),
-so pwm6 should be enabled.
-
-> +&uart2 {
-> +	dma-names = "tx", "rx";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&uart2m1_xfer>, <&uart2m1_ctsn>, <&uart2m1_rtsn>;
-> +	uart-has-rtscts;
-> +	status = "okay";
-> +
-> +	bluetooth {
-> +		compatible = "brcm,bcm43438-bt";
-> +		clocks = <&cru CLK_DEEPSLOW>;
-> +		clock-names = "lpo";
-> +		device-wakeup-gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
-
-Is host-wakeup-gpios needed?
-
-Thanks,
-Chukun
-
---
-2.25.1
+Best regards,
+Krzysztof
 
 
 _______________________________________________
