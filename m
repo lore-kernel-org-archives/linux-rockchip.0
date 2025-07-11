@@ -4,57 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3925EC83F1A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 09:05:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2516AC8303C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 09:07:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2ub6v2tDc2BnuWTUH8zzRvEgkm2B1j2lym7dFs8xbtY=; b=3M2lt+43JG2iwq
-	is8TUZL0FZpf5Bb5HlYfk3E68CtH/Bjl+t9Ld3VhAQAJzVcxbY2VogeeqVxBhwl9dkRH2sLLrZ1vw
-	/xUGLPsRzcCrjFuNPdNmYk8H9EOPxiilVIAESq8K0SICQ0YfWHLxzopeKivfqGP7n+JBKxIRkHZf5
-	AVd4JU20az18oYSuYCWkol6qFJ8ilpn2U5V7yLH5SmK6troNwx0S2Cdf/TmpAk+wWSwrjdmGatH76
-	p563n55N/6vT6LkcM57wI1pgtBdicw7fuasnEOlP5o6VmhqVVQ1YFH8qDXLfgkPsimvT57Sg/bhrD
-	5Pf7J8HNTWxdfHilpK2Q==;
+	List-Owner; bh=6r/C4Bi/q3XwZXdPCzIGdvlcJNtjzXRPYGxYtN6ji3E=; b=2P+sFUCU1O/Da6
+	SV285SThZIEEa/EnUup1391J9xKrf4eHrS0X8cJdc5TbfYQJTXUOBWAA1AlYPuZntsZAOs62NeEMn
+	vO2socdLpNyLQYl+KIg47RLPwt06HMJVDd8vGfRPQMjAjTpmSg2IImRPDB9ldRv9VEOynpSPlyP1c
+	tJUm6TXd13ft7x73ytwHDCndYXczLWpbknnHDafldQT6og6iTlv3lXRfB0GXI4y3rK3Hj1gdnvybR
+	a8oFaYje5G+osr+dHE3DskTcBsxPk/WaK3FTEaHMvkixDmF9tEegnl93eRjBwolYwbUTC8AvAg/G2
+	zEYWQX4EFV5BvboqVuxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ua9gj-0000000EFr5-0FKr;
-	Fri, 11 Jul 2025 09:05:01 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ua9j2-0000000EG7Z-0X4R;
+	Fri, 11 Jul 2025 09:07:24 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ua8zx-0000000E6j6-0y4F;
-	Fri, 11 Jul 2025 08:20:49 +0000
+	id 1ua90Z-0000000E6pE-45ob;
+	Fri, 11 Jul 2025 08:21:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6E8356116F;
-	Fri, 11 Jul 2025 08:20:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C62DC4CEED;
-	Fri, 11 Jul 2025 08:20:47 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 3559DA54B0F;
+	Fri, 11 Jul 2025 08:21:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71C8FC4CEED;
+	Fri, 11 Jul 2025 08:21:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752222048;
-	bh=cdaXOqQf+RYrHBXTumCBfxof5X07gqf2jbXZEIVlCdc=;
+	s=k20201202; t=1752222086;
+	bh=/sUXyiwiYSWcLO2lEUxoAOTkqT9mf6i244gGAm0GuOo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iZM3fiGYXWni54KQ5OCCvYNGt5xxzaXnGNjgO/eA3ULRjRL0AJfxXC/hxGkVbQVfV
-	 2HlidtjWETQTIjAt0hcvZ5BtWMBGIB01CELX927KIG4qoPtHEarSY+ntWXiPkzXVQo
-	 JRc/FuSpCCnAxPn4976pplrbh5jHepPpo8msgMXjEEBz4jhmlH/PEQ6JOzsHOPLBwW
-	 d9a4QW1M2n7ptYWow83lNcn1AmUi73lPgE8bwOm7/MnsWG9m2FfJn2dODzNYaN6GJT
-	 lruUGlt9PJqOXRdFneM9I7csSRf6IaH/S8ShT1/Xp8Ou5ZC0lMQirskrFcTYmyM1nP
-	 OMmoldGVY6c3A==
-Date: Fri, 11 Jul 2025 10:20:45 +0200
+	b=gBKBFQ0O0IBd1VD3BMGK89KHQaZFU7loMWAQZVgWCjEtePTF1zqEG5GyLvZ7w/rdM
+	 6McYNpSZc15knvzVXnTEwJ2PhCan7SgAraQs1EEzBTansZ4y8vSETi0sXdkV1KswXx
+	 JElQTVp1VqYwJ/7uVTQ1mqGNElUQoB3LU5lSu8ztOxWaaeSrZChbMaO74mD8YiAIVN
+	 y4GybxkjZN824QQBW6DtqcA3VzYQ3nyWgqDiLTH8nZ7rhnX/QIuldIzCfIfExfaFE0
+	 WzLltSut1mUbzDbbjgV8JOnJ6PdtYKB2k0HMskoYMq6pitoaswirdLoptgzdvamdE/
+	 fLTsmBDelvw/g==
+Date: Fri, 11 Jul 2025 10:21:24 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Jonas Karlman <jonas@kwiboo.se>
 Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>, 
 	Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/6] dt-bindings: arm: rockchip: Add Radxa ROCK 2A/2F
-Message-ID: <20250711-polite-seagull-of-expertise-7acdbd@krzk-bin>
+Subject: Re: [PATCH v2 3/6] dt-bindings: arm: rockchip: Add ArmSoM Sige1
+Message-ID: <20250711-silky-arcane-coot-acfeb1@krzk-bin>
 References: <20250710202958.3717181-1-jonas@kwiboo.se>
- <20250710202958.3717181-2-jonas@kwiboo.se>
+ <20250710202958.3717181-4-jonas@kwiboo.se>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250710202958.3717181-2-jonas@kwiboo.se>
+In-Reply-To: <20250710202958.3717181-4-jonas@kwiboo.se>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250711_012128_075841_4EC6EA42 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,19 +75,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 10, 2025 at 08:29:40PM +0000, Jonas Karlman wrote:
-> The ROCK 2A and ROCK 2F is a high-performance single board computer
-> developed by Radxa, based on the Rockchip RK3528A SoC.
+On Thu, Jul 10, 2025 at 08:29:42PM +0000, Jonas Karlman wrote:
+> The Sige1 is a single board computer developed by ArmSoM, based on the
+> Rockchip RK3528A SoC.
 > 
-> Add devicetree binding documentation for the Radxa ROCK 2A and ROCK 2F
-> boards.
+> Add devicetree binding documentation for the ArmSoM Sige1 board.
 > 
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
 > v2: No change
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
->  1 file changed, 7 insertions(+)
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
