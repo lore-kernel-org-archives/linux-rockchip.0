@@ -4,58 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36BF1C83F1A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 09:09:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D715C83F1A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 11:03:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FPrjNOtFbhlMDIVMkbft6RSvCjbOoJtZSlOzEVppQzA=; b=tHQjAVRYH40FlC
-	bU8vLy+Rpykgj0hpl2abecaosrE0eKHo87XijGpEnWQf3dwbuiP4Oe4cgsGVEWHtioQi7cKcnSIg8
-	U8J28QesRIzk72n020zwuMy3n0uOfJ83giWapnp/D//AQ05AHOlpGG7cjPKT+o2Svh1XQ28G6uECD
-	ESXjiOxYy1zPjzWhyel6hL5S+y2YWLHU1BlY0f301eNaYEVJjDTEEraXalfQDZ2gHFVihBqv8xUxn
-	YWdurnM1ZWtsOrFvCn0JxUVjMXabrzetKg5eX22J7eiOeQVnknS4hTF1ugbYdbuv1MGOV66uEkW8M
-	/x8p4rSzs3ast3uLAlJg==;
+	List-Owner; bh=QNhe6fmGO+IxJ9bdr2LmPNi97ujpdw2ggoTRgHn8a1k=; b=sPXKWov31Nw8Fw
+	jgHl6sG4UDtus8jEN0hEk1NxF/oh69By4BJw2pCD+8a5ICLYrwMxsIawomMAOYMmhafuNX0xWFmH4
+	NJ8Bl8qewbyl43o+KX1pMK7gvAbad2mBzIQUdxDXcEkS6saPaN35iTpZzPG9OpO44taogoCcShrG0
+	GB7ammwos/wXT2JYuLDML7VlfFfmhcG27fF4iJzWH9FGjR017GV6S+1GQS/SS6P3CoE+SWnqryETG
+	RL2rYqDZHD7aKtv1+HukVpSh/NKMKvFgnJT2kzZInH7Q/R7yKWKI89TturMmEbyEpkCYpObWQgYIu
+	qNmBz81f7BctZsM65IVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ua9lM-0000000EGXN-0sv0;
-	Fri, 11 Jul 2025 09:09:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uaBWz-0000000EYD9-2Szd;
+	Fri, 11 Jul 2025 11:03:05 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ua91M-0000000E70J-2uTC;
-	Fri, 11 Jul 2025 08:22:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4C44B611BD;
-	Fri, 11 Jul 2025 08:22:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92992C4CEED;
-	Fri, 11 Jul 2025 08:22:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752222135;
-	bh=V0vPUEIisTa6mtflTRv2e4S7Ta+SaccNSSFcmicIeeE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mWfNc/3IX9QBE778jmKcZgu3d3usjMtmaD3yQMlf24TBG+b7vQZw0rRe98p3QHFDX
-	 lVvJdsicnnB+XJZSW7mSRjZaM26uF9Pv473eZ3sJaDx5oLYZNXj9EYByBeeRut6zdc
-	 2uC3sIeXIKPrk5ixEnX90A0Ethia6GFJfqDGWvLKQJXR3csoTbnaOrCNYmBRFARR6J
-	 Wu8FW1o8qbpjJXoO03NY+I/rq4GVR37Lx02kGdu/YrLBuv4PwFMppxlVJWOFW0d5jY
-	 L9Hx7ru7hgoG+VR5fOjupa13qEN0Y7V7w1B75Q6vXcmPVsRMhcVXE0kx8JXCWqyRRt
-	 iJBMR60kbLZyA==
-Date: Fri, 11 Jul 2025 10:22:12 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>, 
-	Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 5/6] dt-bindings: arm: rockchip: Add FriendlyElec
- NanoPi Zero2
-Message-ID: <20250711-jumping-macho-pillbug-43fcd1@krzk-bin>
-References: <20250710202958.3717181-1-jonas@kwiboo.se>
- <20250710202958.3717181-6-jonas@kwiboo.se>
+	id 1uaAUm-0000000EORe-1vck
+	for linux-rockchip@lists.infradead.org;
+	Fri, 11 Jul 2025 09:56:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1752227804;
+ bh=4rVIc3YXAPNKeRBKRO+kcpmDUDUsEdoUffccwiP9wS4=;
+ b=OviRDQ+LlIUEPVLvY868yBoNv6ucH1im6LkGRb5SYWhffzytPCt73ucNNk45K42gGXLae0SFi
+ MPO7NST8iPX9pvnfeM+qjq+f8dGvNVWcCxjc2OczqZiLV33RzdQvXEdO28zApKkPtuAlVm2Esvf
+ QPrOb+GyPtvPthZrCNNNMzXXVso95+CGBZMlWl9Z1HYpm8J4RMxp9uPsXaETxq4bx/ArrkHEEha
+ ETmxXwPYCUrXSIJSCw/9dx8FiTlPJUHWpFh7WNr2OfenMbjBP2HyCLF0LjC+5si8Ova5fJmXviJ
+ tY8E4mcjJCBgbF42UBFo3lcTiwPN9NfMS2g5ORu4aNaQ==
+X-Forward-Email-ID: 6870dfd1f6410632f515ce81
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 1.1.6
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <acbbf570-7a56-4d88-a631-32acd13d29c7@kwiboo.se>
+Date: Fri, 11 Jul 2025 11:56:28 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250710202958.3717181-6-jonas@kwiboo.se>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: Add ArmSoM Sige1
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
+ krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ ziyao@disroot.org
+References: <20250710202958.3717181-5-jonas@kwiboo.se>
+ <20250711080009.72677-1-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250711080009.72677-1-amadeus@jmu.edu.cn>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250711_025644_835867_4094D851 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,24 +79,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 10, 2025 at 08:29:44PM +0000, Jonas Karlman wrote:
-> The NanoPi Zero2 is small single board computer developed by
-> FriendlyElec, based on the Rockchip RK3528A SoC.
-> 
-> Add devicetree binding documentation for the FriendlyElec NanoPi Zero2
-> board.
-> 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
-> v2: No change
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
+Hi,
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+On 7/11/2025 10:00 AM, Chukun Pan wrote:
+> Hi,
+> 
+>> +	leds {
+>> +		compatible = "gpio-leds";
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&g_led>, <&r_led>;
+>> +
+>> +		led-green {
+> 
+> Should this label be named as led-0/led-1?
 
-Best regards,
-Krzysztof
+The nodes must include 'led' anywhere in their name according to schema:
+
+"""
+patternProperties:
+  # The first form is preferred, but fall back to just 'led' anywhere in the
+  # node name to at least catch some child nodes.
+  "(^led-[0-9a-f]$|led)":
+"""
+
+Using the color name similar to the the pin labels in schematics made
+most sense to me.
+
+Do you want me to change these to conform to the more restricted
+^led-[0-9a-f]$ pattern?
+
+> 
+>> +&sdio0 {
+>> +	bus-width = <4>;
+>> +	cap-sd-highspeed;
+>> +	cap-sdio-irq;
+>> +	disable-wp;
+>> +	keep-power-in-suspend;
+>> +	mmc-pwrseq = <&sdio_pwrseq>;
+>> +	no-mmc;
+>> +	no-sd;
+>> +	non-removable;
+>> +	pinctrl-names = "default";
+>> +	pinctrl-0 = <&sdio0_bus4>, <&sdio0_clk>, <&sdio0_cmd>;
+> 
+> This pinctrl is the same as that of rk3528.dtsi, we can remove it.
+
+I will drop the pinctrl props in a v3.
+
+> 
+> BTW there is a fan connector on the board (connected to pwm6m2),
+> so pwm6 should be enabled.
+
+I only try to enable controllers for devices that are properly described,
+so I ignored the pwm-fan and its required pwm6 controller. Mostly
+because it make more sense to describe the fan once thermal support is
+completed, work [1] currently being blocked by a rk356x otp series [2]
+and that depends on a rk3576 thermal series [3].
+
+[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20250620-rk3528/
+[2] https://lore.kernel.org/r/20250415103203.82972-1-kever.yang@rock-chips.com
+[3] https://lore.kernel.org/r/20250610-rk3576-tsadc-upstream-v6-0-b6e9efbf1015@collabora.com
+
+> 
+>> +&uart2 {
+>> +	dma-names = "tx", "rx";
+>> +	pinctrl-names = "default";
+>> +	pinctrl-0 = <&uart2m1_xfer>, <&uart2m1_ctsn>, <&uart2m1_rtsn>;
+>> +	uart-has-rtscts;
+>> +	status = "okay";
+>> +
+>> +	bluetooth {
+>> +		compatible = "brcm,bcm43438-bt";
+>> +		clocks = <&cru CLK_DEEPSLOW>;
+>> +		clock-names = "lpo";
+>> +		device-wakeup-gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
+> 
+> Is host-wakeup-gpios needed?
+
+The host-wakeup interrupt is described using interrupt* props, not
+using the deprecated host-wakeup-gpios prop.
+
+Regards,
+Jonas
+
+> 
+> Thanks,
+> Chukun
+> 
+> --
+> 2.25.1
+> 
 
 
 _______________________________________________
