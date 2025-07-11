@@ -4,91 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3F28C83F17
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 01:20:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A0E1C83F1A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jul 2025 05:49:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JkDODxIByn+Y0KocqaUCskI3PEWklCRjhcDzkTEauLw=; b=r2ffUyIOnDanYp
-	sBatk2VpxpThH8vly+y0aeZ3BTjz3KGawphe82KIGYUQ9XO74Xmpqg+t+rnpiwOr5/xJ8y7biWmfd
-	szVBbah1/SU3kJO94gx+alFhfJOBs12nadWRBI5xqdDSrusq1MIoE8FX/hm/n4T6WZih3ZioUOIL9
-	2tCjMdEbrueoCzjSrEjPBuQXUPW3SreCV+Vwl3TfWOVl+y1wiT95O9wv6ilcEWotLjxCIHwMS4G4y
-	XpMiaxETAT0w6xuGK6INzYbYdb+ne4VKyzVhRvHorBcRPdSO0K8EYoCc69x0z6Gwh/l5gaAxA4cX7
-	jrnE+lHzYhG8VlKh4ITg==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:References:In-Reply-To:
+	Message-Id:Cc:To:From:Date:MIME-Version:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=luEuLRRuvkA89PYIqkpMeOCVGhwFHkGWYVrDo8T/qyg=; b=3/uJ9qNZHZE+HLTm0FPzePbgeS
+	Oh9QXcUEHC/szMUo9DR5CjBULcpuQeshs3SrykhX5BAzzht9qnArRNO0QO1WrHymDvHXNaIzOWr+6
+	CD8VWlCJOEk7i0ybrNJHERkbJ1i4zgRY8dnMQw2sLB3hfZ2/AjWuP9Q0AlP7yrKT2HmLjsmWGdAKY
+	8+bkdMz4EFRMX8J7DuQu28aynLfndlJXrrKuW8kkVsepG42xICkcMXmQlD1fgnYb0sj806pSn/C/g
+	mdYXkNNd6yMpKEs7JRwsvleDLQ8afNk2TPyL+0M1g7APi8jXxggzPaZ7VahUGzVh6unlwyNGogZfK
+	6Mx2MiUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ua2Qs-0000000DR5S-1QVV;
-	Fri, 11 Jul 2025 01:20:10 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1ua6de-0000000Dn5H-1W9k;
+	Fri, 11 Jul 2025 05:49:38 +0000
+Received: from flow-b8-smtp.messagingengine.com ([202.12.124.143])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ua03M-0000000DC87-48ZX;
-	Thu, 10 Jul 2025 22:47:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 91BD945B78;
-	Thu, 10 Jul 2025 22:47:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47B54C4CEE3;
-	Thu, 10 Jul 2025 22:47:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752187662;
-	bh=4o95IkNEz5qpXJwUn+JNDIWRtNDnZj8MA7Si8Zwy1S8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KP+sVKUDFDP9NafAD/jq4V4vwbBR9xx9KDdzk/xN015ABez2x6loPMO18npmrWcQJ
-	 kfZBpXkdQ078YNC6gA/UabJEBdtDYAgsHAzHYjSUxy2/zjRGYyZ7xIVZxxHcN4j7U5
-	 JVPAOAu/7uMLrPR2SFSPlPNBTbWgb8/ZTUrw62PROOVUMFpc3GK9oj16D47lbNQAJ7
-	 JjsUmLGSqQgz2LhdN2IF6/FSjFt1AncRUXBvNZjzL45KHCwrf0WNf1RqfQUtO+L3a4
-	 jA8x2i1SRVmSSNmjTi/SdJaS8+HJzJUu0Q4AdbMRuJXthu4J3Q7nMx+NLHXQ4qHZho
-	 RWHPOFGlqqaiA==
-Date: Thu, 10 Jul 2025 17:47:40 -0500
-From: Rob Herring <robh@kernel.org>
-To: Shivendra Pratap <shivendra.pratap@oss.qualcomm.com>
-Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Sebastian Reichel <sre@kernel.org>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Souvik Chakravarty <Souvik.Chakravarty@arm.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Mark Rutland <mark.rutland@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	cros-qcom-dts-watchers@chromium.org, Vinod Koul <vkoul@kernel.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Elliot Berman <elliotb317@gmail.com>,
-	Stephen Boyd <swboyd@chromium.org>, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	Andre Draszik <andre.draszik@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	linux-samsung-soc@vger.kernel.org, Wei Xu <xuwei5@hisilicon.com>,
-	linux-rockchip@lists.infradead.org,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	bcm-kernel-feedback-list@broadcom.com,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Elliot Berman <quic_eberman@quicinc.com>,
-	Srinivas Kandagatla <srini@kernel.org>
-Subject: Re: [PATCH v10 02/10] dt-bindings: power: reset: Document
- reboot-mode cookie
-Message-ID: <20250710224740.GA15385-robh@kernel.org>
-References: <20250710-arm-psci-system_reset2-vendor-reboots-v10-0-b2d3b882be85@oss.qualcomm.com>
- <20250710-arm-psci-system_reset2-vendor-reboots-v10-2-b2d3b882be85@oss.qualcomm.com>
+	id 1ua6Vc-0000000Dm9Y-3nWK;
+	Fri, 11 Jul 2025 05:41:22 +0000
+Received: from phl-compute-05.internal (phl-compute-05.phl.internal [10.202.2.45])
+	by mailflow.stl.internal (Postfix) with ESMTP id B7630130002D;
+	Fri, 11 Jul 2025 01:41:18 -0400 (EDT)
+Received: from phl-imap-02 ([10.202.2.81])
+  by phl-compute-05.internal (MEProxy); Fri, 11 Jul 2025 01:41:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm1; t=1752212478;
+	 x=1752219678; bh=K+c4cfk5bIIVixUFmq0Bup+UjA5hE+VOmmk++Lxu70M=; b=
+	HumDKL0v0T1NJLhwr7jorqx1vvP05PA4e7HznW7B5DO5PxN8083rX9TxWizbtOZO
+	u/xFeEad3A9mupqIZOGe+F1zbfBf/gpc2t/WShiOY89OmC0pR9wzgzqR7cn8rftT
+	4Aib3kQwmJy2raUNW61UEjiwa028RW2yuc2bMl3UIxxZsyllZ630SZGVLKCalfRw
+	E3mWXuBeJpQCX18MM3BmtGe2DVN2wtPRkX9unVbs1mQoZP8KMvE/QdqDWk0oAClE
+	unvhalCoUSqD5KtjP/RwaDcwvzNYtZV6zWPFH2MwW1MXaETwubbd7ONLzshV49LH
+	5isCvpJWKsNacACiTXxgkA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1752212478; x=
+	1752219678; bh=K+c4cfk5bIIVixUFmq0Bup+UjA5hE+VOmmk++Lxu70M=; b=F
+	B+ou8KfW0Z2ZwTJ6TD76msOg4vedRCHv+T7arkXqrDXZHbgpZ/TpbfwfFyQtxs9T
+	Dh7ikS34egNK2DHtsMkRm+hiHlPb0L6iwiAFiNQIebGr4ic/An4CpykugrL8avLf
+	ecRqzDIOOtB29CR1x9ZCB2r44btykK6otD6XLlbjaFl5LcOX6ar3MQNOeK5vU1uO
+	USX5PNSn8rRil0XB2WigpBZ4waf5+J8RXdScV/uq/4KAUeKOZHMU4tCkE4YhbYJd
+	l+W2YfJbBo8sX6ZZp577t2IkSE5lN1eyaL6CC1Ztc5xfKTQU+EX2XqMd0s6wczGD
+	wHk5kbDRz6Kct6TmgNBTA==
+X-ME-Sender: <xms:-6NwaE9lod84s0CXMHkWfZC0AO7TO311GcRRwtgrwS1_5zEsM_swlg>
+    <xme:-6NwaMs4h2clYaMgfLfM6-evGe8bWGyOpzKbQ4XqdLBrZ5Hy9U4xyxWBT6fxFrHxr
+    ln44xztCgiO9ZIM3t8>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgdegvdehudcutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
+    ihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjug
+    hrpefoggffhffvvefkjghfufgtgfesthejredtredttdenucfhrhhomhepfdetrhhnugcu
+    uegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdruggvqeenucggtffrrghtthgvrh
+    hnpefhtdfhvddtfeehudekteeggffghfejgeegteefgffgvedugeduveelvdekhfdvieen
+    ucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrrhhnug
+    esrghrnhgusgdruggvpdhnsggprhgtphhtthhopeeggedpmhhouggvpehsmhhtphhouhht
+    pdhrtghpthhtohepshhouhhvihhkrdgthhgrkhhrrghvrghrthihsegrrhhmrdgtohhmpd
+    hrtghpthhtoheptggrthgrlhhinhdrmhgrrhhinhgrshesrghrmhdrtghomhdprhgtphht
+    thhopehmrghrkhdrrhhuthhlrghnugesrghrmhdrtghomhdprhgtphhtthhopehsuhguvg
+    gvphdrhhholhhlrgesrghrmhdrtghomhdprhgtphhtthhopegrlhgvgigrnhgurhgvrdgs
+    vghllhhonhhisegsohhothhlihhnrdgtohhmpdhrtghpthhtohepsggtmhdqkhgvrhhnvg
+    hlqdhfvggvuggsrggtkhdqlhhishhtsegsrhhorggutghomhdrtghomhdprhgtphhtthho
+    pehflhhorhhirghnrdhfrghinhgvlhhlihessghrohgruggtohhmrdgtohhmpdhrtghpth
+    htoheprhhjuhhisegsrhhorggutghomhdrtghomhdprhgtphhtthhopehssghrrghnuggv
+    nhessghrohgruggtohhmrdgtohhm
+X-ME-Proxy: <xmx:-6NwaAKKFPiix-Afsub2jew7TZkSNHqvQc0vt7cI6doA_m_pMEoBNg>
+    <xmx:-6NwaAUUPtPEsWr3Hikpbe4OZuFzJ04UMTX_-_fCFZIGyordVvxKjQ>
+    <xmx:-6NwaKNtpq6HXvZORQd_4Are9OXcNBqTFMAhhOHgg7tM0TbYGY-U0Q>
+    <xmx:-6NwaMfVeIX68FhwV5CX_NT4Go1KiFOsqTBQmFgwSIpixngJ2Yvd-Q>
+    <xmx:_qNwaAWvRqSa4EGy36-XT2ZxBnr1FJDRZBtWxWMPy17gkSSWTXSfNgi1>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id ADDDD700068; Fri, 11 Jul 2025 01:41:15 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250710-arm-psci-system_reset2-vendor-reboots-v10-2-b2d3b882be85@oss.qualcomm.com>
+X-ThreadId: T17e904bff5b9beaf
+Date: Fri, 11 Jul 2025 07:40:55 +0200
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Shivendra Pratap" <shivendra.pratap@oss.qualcomm.com>,
+ "Bartosz Golaszewski" <bartosz.golaszewski@linaro.org>,
+ "Bjorn Andersson" <andersson@kernel.org>,
+ "Sebastian Reichel" <sre@kernel.org>, "Rob Herring" <robh@kernel.org>,
+ "Sudeep Holla" <sudeep.holla@arm.com>,
+ "Souvik Chakravarty" <Souvik.Chakravarty@arm.com>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>,
+ "Conor Dooley" <conor+dt@kernel.org>, "Andy Yan" <andy.yan@rock-chips.com>,
+ "Mark Rutland" <mark.rutland@arm.com>,
+ "Lorenzo Pieralisi" <lpieralisi@kernel.org>,
+ "Olof Johansson" <olof@lixom.net>, "Konrad Dybcio" <konradybcio@kernel.org>,
+ cros-qcom-dts-watchers@chromium.org, "Vinod Koul" <vkoul@kernel.org>,
+ "Catalin Marinas" <catalin.marinas@arm.com>, "Will Deacon" <will@kernel.org>,
+ "Florian Fainelli" <florian.fainelli@broadcom.com>,
+ "Elliot Berman" <elliotb317@gmail.com>
+Cc: "Stephen Boyd" <swboyd@chromium.org>, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ =?UTF-8?Q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>,
+ "Alim Akhtar" <alim.akhtar@samsung.com>,
+ linux-samsung-soc@vger.kernel.org, "Wei Xu" <xuwei5@hisilicon.com>,
+ linux-rockchip@lists.infradead.org,
+ "Baolin Wang" <baolin.wang@linux.alibaba.com>,
+ "Sen Chu" <sen.chu@mediatek.com>, "Sean Wang" <sean.wang@mediatek.com>,
+ "Macpaul Lin" <macpaul.lin@mediatek.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Ray Jui" <rjui@broadcom.com>, "Scott Branden" <sbranden@broadcom.com>,
+ bcm-kernel-feedback-list@broadcom.com,
+ "Nicolas Ferre" <nicolas.ferre@microchip.com>,
+ "Alexandre Belloni" <alexandre.belloni@bootlin.com>,
+ "Elliot Berman" <quic_eberman@quicinc.com>,
+ "Srinivas Kandagatla" <srini@kernel.org>,
+ "Elliot Berman" <elliot.berman@oss.qualcomm.com>
+Message-Id: <23e0f0d5-c0f6-4fc5-9775-c0ae73681d31@app.fastmail.com>
+In-Reply-To: <9bd63c0b-cf14-d00b-c600-9582061e3afc@oss.qualcomm.com>
+References: <20250710-arm-psci-system_reset2-vendor-reboots-v10-0-b2d3b882be85@oss.qualcomm.com>
+ <20250710-arm-psci-system_reset2-vendor-reboots-v10-4-b2d3b882be85@oss.qualcomm.com>
+ <2d8e17ad-6bd6-47a9-b5ab-0a91689684ee@app.fastmail.com>
+ <9bd63c0b-cf14-d00b-c600-9582061e3afc@oss.qualcomm.com>
+Subject: Re: [PATCH v10 04/10] dt-bindings: arm: Document reboot mode magic
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250710_154745_062490_07B3C18A 
-X-CRM114-Status: GOOD (  22.03  )
+X-CRM114-CacheID: sfid-20250710_224121_050796_3620039F 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,56 +148,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 10, 2025 at 02:45:44PM +0530, Shivendra Pratap wrote:
-> Update the reboot-mode binding to support an optional cookie
-> value in mode-<cmd> properties. The cookie is used to supply
-> additional data for reboot modes that accept two arguments.
-> 
-> Signed-off-by: Shivendra Pratap <shivendra.pratap@oss.qualcomm.com>
-> ---
->  .../devicetree/bindings/power/reset/reboot-mode.yaml         | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/power/reset/reboot-mode.yaml b/Documentation/devicetree/bindings/power/reset/reboot-mode.yaml
-> index 3ddac06cec7277789b066d8426ea77d293298fac..a4d2fe1db51e0c1f34ebefddaad82b8cc0b1b34a 100644
-> --- a/Documentation/devicetree/bindings/power/reset/reboot-mode.yaml
-> +++ b/Documentation/devicetree/bindings/power/reset/reboot-mode.yaml
-> @@ -10,14 +10,15 @@ maintainers:
->    - Andy Yan <andy.yan@rock-chips.com>
->  
->  description: |
-> -  This driver get reboot mode arguments and call the write
-> -  interface to store the magic value in special register
-> -  or ram. Then the bootloader can read it and take different
-> -  action according to the argument stored.
-> +  This driver gets reboot mode arguments and calls the write
-> +  interface to store the magic and an optional cookie value
-> +  in special register or ram. Then the bootloader can read it
-> +  and take different action according to the argument stored.
->  
->    All mode properties are vendor specific, it is a indication to tell
->    the bootloader what to do when the system reboots, and should be named
-> -  as mode-xxx = <magic> (xxx is mode name, magic should be a non-zero value).
-> +  as mode-xxx = <magic cookie> (xxx is mode name, magic should be a
-> +  non-zero value, cookie is optional).
+On Thu, Jul 10, 2025, at 18:53, Shivendra Pratap wrote:
+> On 7/10/2025 9:00 PM, Arnd Bergmann wrote:
+>> On Thu, Jul 10, 2025, at 11:15, Shivendra Pratap wrote:
+>> 
+>>> +  reset-types:
+>>> +    type: object
+>>> +    $ref: /schemas/power/reset/reboot-mode.yaml#
+>> 
+>> The other users of the reboot-mode.yaml binding all call this
+>> node 'reboot-mode' instead of 'reset-types', can you change that
+>> here for consistency?
+> nvmem-reboot-mode and syscon-reboot-mode use reboot-mode in the
+> device tree node name.
+> qcom-pon does not uses reboot-mode at its device tree node name, it
+> uses pon.
+> Kept it reset-types as this patch was already reviewed earlier and
+> the name makes it closer to vendor-specific reset-type.
+> Should we make it reboot-mode? Please suggest.
 
-I don't understand the distinction between magic and cookie... Isn't all 
-just magic values and some platform needs more than 32-bits of it?
+Yes, I would still change that. At least all the platform-independent
+drivers are consistent that way.
 
->  
->    For example, modes common Android platform are:
->      - normal: Normal reboot mode, system reboot with command "reboot".
-> @@ -45,5 +46,6 @@ examples:
->        mode-recovery = <1>;
->        mode-bootloader = <2>;
->        mode-loader = <3>;
-> +      mode-edl = <1 2>;
->      };
->  ...
-> 
-> -- 
-> 2.34.1
-> 
+      Arnd
 
 _______________________________________________
 Linux-rockchip mailing list
