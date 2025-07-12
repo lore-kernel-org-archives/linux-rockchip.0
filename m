@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5B2AC83F10
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Jul 2025 17:41:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 480C8C83F1D
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Jul 2025 17:43:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=G+XxlR/cy9HRSqqSFxWRw33sMUlr2xL947dXetDQwDg=; b=SGXykjJ+J4AKpF
-	+PyTd5JJVHR19AXOhgM89qsuARKAH3taMyZwx5xQBs07rctWZu+S5bsH2ru0RV3veaBbvsqM/znGO
-	cHh93VInXMBXi/5W5LRyM5K3Wfy9OP2w4gz6U+WRoK30g1V30xvHbf+6PB//BffWG25QeXcZNaxIX
-	1RWxXYX4DQXOwYP00jGz6NcWmCQ6YBTjqr36l2VFaP6BusKK7SE2pFJdt4xNayKsXU2MRqQEM3h0y
-	H5Lu527MuQkkBKOrSV+Vo3b0bsy7oY2NDJ3AnyeauBbWC7ir+F/eMMLGVhkaJTCHxkfEJISfTYzyZ
-	G/05g5jxctP8L1xaGAOg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iaFdG8YAoeKlNDSZiWWaoGmWtGZ5ZNwdzjpDhr06lww=; b=lKwAelIfgMi3c6
+	UpQNduckmDRIGivx2nfzpCRYc/u8QD5GEeHr6ZjhtUqbrkBbABUEFF+K5LnBpDow2lfOhl1fV6kSm
+	GO7ch/XZN/4C3WJpqrN5OCQiC0eIUYMdBKrNqkoS+iJPPgprkpe4CzeIIIlIBOf6JfZTzx5P2JJKv
+	13vFirhCz9UaCSQ0vAg+LHvbeRnt38kcU9sy/PLaj8vBr1vza2cGE6NPHze5WufKHQYDE4HdSRdsq
+	Wb+INsGRsZRv3q0xlOBqgT9VR4OD49wcBYGAfAhYQ+cka4AR/f8trjRanT3g6HGGWrbJ3KX09oQmm
+	JxYUn3pnLK0Z4gXIOaSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaeDQ-0000000GqrE-0ICG;
-	Sat, 12 Jul 2025 17:40:48 +0000
+	id 1uaeFn-0000000Gr1Z-0uqw;
+	Sat, 12 Jul 2025 17:43:15 +0000
 Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaeAy-0000000GqS3-2jvT
+	id 1uaeB2-0000000GqSt-0yLM
 	for linux-rockchip@lists.infradead.org;
-	Sat, 12 Jul 2025 17:38:18 +0000
+	Sat, 12 Jul 2025 17:38:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1752341895;
- bh=TilQ8i0bxzGSbTWKnj6uJy6hAD8gixd/aU3B3kF+KTo=;
- b=AY0bwSBLo2oqL9fUx8l93RWEQayWcyOO8tp4iBdVo47iKrv5AEmLoIXCCE4GUBKV1et7Qu9Xl
- WDRSej02TRV8TzKmgN2VE9yBQAaAJADuM77iuzG+yjM536fwZS9tsM8BPmqXVpuga8pyQxq4WAD
- 1/ioArkM7lZ0FW9JpWlgRU17FLjqAvaPRS/0C2LXDXMR/uallILx4X4hQLrjBYeQ0A60lkcj18h
- xMk/1Hz3NYv4D1NLec3D/7gVwcJN4u2YpxSZWbqMzC6CpRvgaY7nRnxR9AKn8CqNvFbsu6GTCSy
- dCflUbpbTpc9RAPxh0tjxDLvqTjGwNQ0i2YCsqqzrVTw==
-X-Forward-Email-ID: 68729d83d7dd91652d16c15f
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1752341899; bh=zUUJaSexh2VYtX8DOLchztOxi2I49Lkt2Wh789XXUTs=;
+ b=AVGO6KY7HHhAY+bDg974hCxfGYTh5Nl3zNTxVmaITPkdvOvyHVY/Jk6yFD43HWMbt3QIs7sED
+ w9c9nUOPAbhS0LleKxACtN6jYJEoPxWyYnPGx6Dii1ZVBFb+8wyCe/sYfGiTQqlk60oRB4p2VQj
+ dLkJ9ef4W6rFv2za2cyojBegWnxnqr+U6mVnMsTiN9o8coloXRTIw7nqlHZ+ZERQKriA5zUxRsN
+ wJb0hd50zyPUakblqAqUxLWuEZ0dpJX3fgNZoyD+2PrwChM+imIseYy7zmReQLYfuZtXL8+8xK2
+ swyq2TsFQlFKJuwrT0GuZvAS6gGlU2ebuQKuU2U+f+qQ==
+X-Forward-Email-ID: 68729d87d7dd91652d16c179
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  121.127.44.73
 X-Forward-Email-Version: 1.1.6
@@ -55,15 +55,19 @@ Cc: Yao Zi <ziyao@disroot.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 0/6] arm64: dts: rockchip: Add ROCK 2A/2F, Sige1 and NanoPi Zero2
-Date: Sat, 12 Jul 2025 17:37:42 +0000
-Message-ID: <20250712173805.584586-1-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v3 1/6] dt-bindings: arm: rockchip: Add Radxa ROCK 2A/2F
+Date: Sat, 12 Jul 2025 17:37:43 +0000
+Message-ID: <20250712173805.584586-2-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250712173805.584586-1-jonas@kwiboo.se>
+References: <20250712173805.584586-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250712_103817_103668_3F873885 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20250712_103820_392709_972BA691 
+X-CRM114-Status: UNSURE (   6.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,58 +84,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds dt-bindings and initial device tree for the following
-Rockchip RK3528A boards:
-- Radxa ROCK 2A/2F
-- ArmSoM Sige1
-- FriendlyElec NanoPi Zero2
+The ROCK 2A and ROCK 2F is a high-performance single board computer
+developed by Radxa, based on the Rockchip RK3528A SoC.
 
-The bt/wifi_reg_on pins are described in the device tree using
-rfkill-gpio nodes.
+Add devicetree binding documentation for the Radxa ROCK 2A and ROCK 2F
+boards.
 
-Changes in v3:
-- Rename led nodes to led-0/led-1
-- Remove pinctrl* props from sdio0
-- Collect a-b tags
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+v3: Collect a-b tag
+v2: No change
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Changes in v2:
-- Limit sdmmc max-frequency to 100 MHz on ROCK 2A/2F
-- Drop clock-output-names prop from rtc node on Sige1 and NanoPi Zero2
-- Drop regulator-boot-on from usb 2.0 host regulators on Sige1
-- Add bluetooth and wifi nodes on Sige1
-- Collect t-b tag for NanoPi Zero2
-
-These boards can be booted from emmc or sd-card using the U-Boot 2025.07
-generic-rk3528 target or work-in-progress patches for these boards [1].
-
-For working bluetooth on ArmSoM Sige1 the patch "arm64: dts: rockchip:
-Fix UART DMA support for RK3528" [2] is required.
-
-[1] https://source.denx.de/u-boot/contributors/kwiboo/u-boot/-/commits/rk3528
-[2] https://lore.kernel.org/r/20250709210831.3170458-1-jonas@kwiboo.se
-
-Jonas Karlman (6):
-  dt-bindings: arm: rockchip: Add Radxa ROCK 2A/2F
-  arm64: dts: rockchip: Add Radxa ROCK 2A/2F
-  dt-bindings: arm: rockchip: Add ArmSoM Sige1
-  arm64: dts: rockchip: Add ArmSoM Sige1
-  dt-bindings: arm: rockchip: Add FriendlyElec NanoPi Zero2
-  arm64: dts: rockchip: Add FriendlyElec NanoPi Zero2
-
- .../devicetree/bindings/arm/rockchip.yaml     |  17 +
- arch/arm64/boot/dts/rockchip/Makefile         |   4 +
- .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 465 ++++++++++++++++++
- .../boot/dts/rockchip/rk3528-nanopi-zero2.dts | 340 +++++++++++++
- .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 293 +++++++++++
- .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++
- .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
- 7 files changed, 1211 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 28db6bd6aa5b..c5690098f2ed 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -881,6 +881,13 @@ properties:
+           - const: radxa,rock
+           - const: rockchip,rk3188
+ 
++      - description: Radxa ROCK 2A/2F
++        items:
++          - enum:
++              - radxa,rock-2a
++              - radxa,rock-2f
++          - const: rockchip,rk3528
++
+       - description: Radxa ROCK Pi 4A/A+/B/B+/C
+         items:
+           - enum:
 -- 
 2.49.0
 
