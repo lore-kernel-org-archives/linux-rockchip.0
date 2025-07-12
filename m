@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF9FDC83F22
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Jul 2025 17:53:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4757BC83F22
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Jul 2025 18:00:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z0S5PLm8Lw9NN/qW4nKt7MJHrGmgb2Xln+PsppSQ0tE=; b=ilslmDTnbMMWNR
-	fMvT+VUfmDjWOb2nSO+m3inHP0+PxMOzD3wDHInH8tvH6u6NzLujis4U9rEjXzbWSbTZur1MTGunl
-	DIW4ch2eAKa3OE2nduSXLSGJgsYW1jx/Z66QkTN4/+M+Y4rvL3iX+ZepB2IRyU8s0exj1tUdpKCBA
-	cGtTvvnOA+9KKJP4td5ev3lxf7KH80LLUhVBq2hcNmde1fyXN2XvEgRfpBPJH54yljzCxaTvzwY8a
-	RlitB+6KX61T5sOHvQ8yX3Up9XNdgjcPJfyHYun5CY7hoVa9puKjC93vxvpO5Om6o7yVv0FwowldL
-	yDidmwlTrENjAyaRH5wg==;
+	List-Owner; bh=BjxY7LAUtTfMVOckBAQk/pxueWOZ1XdRXp/W3yuSjrQ=; b=T1ijR4Ro1pPCHP
+	/cTHP9lLG93MWOmRYjFDQb/rtSyG+NNx4Z+FwdpM3aQ7HP5MgrHXjxA3Yh0vt7HxXGpyk+z8f8U+5
+	azmU+Go+viTzem5tX+FCelcDLy0M3LNX49MUjP/laDsxp6UBE59T5X24YXaBKlgzWSIkGV/7zfRks
+	fU++Z1rYYEsLtlt1/3Qm4AJwSGXRyyUzzlyr7pmnHCfWCC0xvwUiC/TWmxBc3hLrcJEdsZ+uE0e3h
+	DjJ/S1s3MGBHsGpq6q9TjtbcZLpJyLwwaWXCQLA7C/DGC0WaR5wTgAruH+wA9Oiddjv7h6ptonu7e
+	GKD8NqObzLOSOuh37cKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaePF-0000000GreA-1oP9;
-	Sat, 12 Jul 2025 17:53:01 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1uaeWL-0000000GsL4-46G7;
+	Sat, 12 Jul 2025 18:00:21 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaeBU-0000000Gqbi-0t7I
-	for linux-rockchip@lists.infradead.org;
-	Sat, 12 Jul 2025 17:38:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1752341928; bh=qYfHoSX4b3htp+5TO0OpaAQ8vTO0p4OZ9z8N/ozHauM=;
- b=Baf2vvjmIqIJuDezJi90SxxStxh3HOWdpgecNbW6jxoQ8iRzqZGLg8qtxit6IcPECKJTpJuqK
- 9jlLdliiS3MGm++PiNaYWx85WmGaxFY63oTIKOrqeKDkthQEsrHiZ+uzBMJFiFjgRo5A9IZiMff
- arF0y0oQU4nnpvUCSlBoQyFpBrPuQcYH6ZxStbhbJ2HtDpfj1OiWZEW7X8v6cC+svSglOwHA8Gz
- l8jsKFVzrydieg3pjHXcyQNftkr3DLQC0LvbPScAOWg5Q9Fnzrx8v6ANXU0D8GFGjZ4njp4z3RH
- 2bGEv04D5QYixAp17qZUWbnyJp9d88SL0l4Lb3c/hK+g==
-X-Forward-Email-ID: 68729da4d7dd91652d16c1f0
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.1.6
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Yao Zi <ziyao@disroot.org>,
-	Chukun Pan <amadeus@jmu.edu.cn>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 6/6] arm64: dts: rockchip: Add FriendlyElec NanoPi Zero2
-Date: Sat, 12 Jul 2025 17:37:48 +0000
-Message-ID: <20250712173805.584586-7-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250712173805.584586-1-jonas@kwiboo.se>
-References: <20250712173805.584586-1-jonas@kwiboo.se>
+	id 1uaeTK-0000000Gs0F-1clu;
+	Sat, 12 Jul 2025 17:57:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1752343034; x=1783879034;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=ZqFuhsGBU+wJcNeFRHN2M3/rUmGdy3TQzFSP8z9fkRE=;
+  b=FjzB3cY5oUdxALBHmIpT14thrVhNgbN79sluV9EpD4rI9g0Z3hnpmeyU
+   WbXHkfn2ASEGyi4xQ5hsCcakGBEWBstqVxmSRyEr4TRTY08hDQy3hV+cJ
+   /oRBDT5OVO3QqNo+vN+kEw/HZi18ptcFki5eHEuq4DijgEh6ehROoYNGv
+   IuPUjHe3l7+F8c9NQld9FHkNDVgn55i69G66kyCorvM+LhwIMevSJxvmx
+   p21rDn9Y6F3oHl/zmylsG88XrN5GkfS6Frd6Tf+NA7EQgDFMls1PPDixU
+   QC8VrIwzZWVhIWd6ZQ/QISJz64QLFjPkKIjQucRM8nbz6KOnzQi75UEpE
+   Q==;
+X-CSE-ConnectionGUID: J3VmcF1KSwSGnAP9kqLKdA==
+X-CSE-MsgGUID: 4cI2W/LVTdipRZWD6KizjA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11491"; a="54570796"
+X-IronPort-AV: E=Sophos;i="6.16,306,1744095600"; 
+   d="scan'208";a="54570796"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jul 2025 10:57:10 -0700
+X-CSE-ConnectionGUID: 9jkPxG5WSLiUICQXlrvIjA==
+X-CSE-MsgGUID: dApIRtUfTKCNLasfM3x7ZA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,306,1744095600"; 
+   d="scan'208";a="160938198"
+Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
+  by orviesa003.jf.intel.com with ESMTP; 12 Jul 2025 10:57:07 -0700
+Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uaeTB-0007ZR-0h;
+	Sat, 12 Jul 2025 17:57:05 +0000
+Date: Sun, 13 Jul 2025 01:56:13 +0800
+From: kernel test robot <lkp@intel.com>
+To: Troy Mitchell <troy.mitchell@linux.dev>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Troy Mitchell <troy.mitchell@linux.dev>
+Subject: Re: [PATCH] ASoC: rockchip: i2s: simplify clock handling and error
+ cleanup in probe
+Message-ID: <202507130140.HxI37WQ3-lkp@intel.com>
+References: <20250712-rockchip-i2s-simplify-clk-v1-1-3b23fd1b3e26@linux.dev>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250712-rockchip-i2s-simplify-clk-v1-1-3b23fd1b3e26@linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250712_103848_291704_D8367F5F 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20250712_105714_466003_A4A04D1C 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,389 +93,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The NanoPi Zero2 is a small single board computer developed by
-FriendlyElec, based on the Rockchip RK3528A SoC.
+Hi Troy,
 
-Add initial device tree for the FriendlyElec NanoPi Zero2 board.
+kernel test robot noticed the following build warnings:
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Tested-by: Yao Zi <ziyao@disroot.org>
----
-Changes in v3:
-- Rename led nodes to led-0/led-1 (Chukun Pan)
+[auto build test WARNING on 733923397fd95405a48f165c9b1fbc8c4b0a4681]
 
-Changes in v2:
-- Drop clock-output-names prop from rtc node (Chukun Pan)
-- Collect t-b tag
+url:    https://github.com/intel-lab-lkp/linux/commits/Troy-Mitchell/ASoC-rockchip-i2s-simplify-clock-handling-and-error-cleanup-in-probe/20250712-215647
+base:   733923397fd95405a48f165c9b1fbc8c4b0a4681
+patch link:    https://lore.kernel.org/r/20250712-rockchip-i2s-simplify-clk-v1-1-3b23fd1b3e26%40linux.dev
+patch subject: [PATCH] ASoC: rockchip: i2s: simplify clock handling and error cleanup in probe
+config: x86_64-buildonly-randconfig-003-20250712 (https://download.01.org/0day-ci/archive/20250713/202507130140.HxI37WQ3-lkp@intel.com/config)
+compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250713/202507130140.HxI37WQ3-lkp@intel.com/reproduce)
 
-Schematics: https://wiki.friendlyelec.com/wiki/images/3/37/NanoPi_Zero2_2407_SCH.pdf
----
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3528-nanopi-zero2.dts | 340 ++++++++++++++++++
- 2 files changed, 341 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202507130140.HxI37WQ3-lkp@intel.com/
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 206fb8572cf7..0662fcf00628 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -90,6 +90,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-armsom-sige1.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-nanopi-zero2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-radxa-e20c.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-rock-2a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-rock-2f.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts b/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
-new file mode 100644
-index 000000000000..9f683033c5f3
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
-@@ -0,0 +1,340 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pwm/pwm.h>
-+#include "rk3528.dtsi"
-+
-+/ {
-+	model = "FriendlyElec NanoPi Zero2";
-+	compatible = "friendlyarm,nanopi-zero2", "rockchip,rk3528";
-+
-+	aliases {
-+		ethernet0 = &gmac1;
-+		i2c1 = &i2c1;
-+		mmc0 = &sdhci;
-+		mmc1 = &sdmmc;
-+		serial0 = &uart0;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:1500000n8";
-+	};
-+
-+	adc-keys-0 {
-+		compatible = "adc-keys";
-+		io-channels = <&saradc 0>;
-+		io-channel-names = "buttons";
-+		keyup-threshold-microvolt = <1800000>;
-+		poll-interval = <100>;
-+
-+		button-maskrom {
-+			label = "MASK";
-+			linux,code = <KEY_SETUP>;
-+			press-threshold-microvolt = <0>;
-+		};
-+	};
-+
-+	adc-keys-1 {
-+		compatible = "adc-keys";
-+		io-channels = <&saradc 1>;
-+		io-channel-names = "buttons";
-+		keyup-threshold-microvolt = <1800000>;
-+		poll-interval = <100>;
-+
-+		button-recovery {
-+			label = "RECOVERY";
-+			linux,code = <KEY_VENDOR>;
-+			press-threshold-microvolt = <0>;
-+		};
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&led1>, <&led_sys>;
-+
-+		led-0 {
-+			color = <LED_COLOR_ID_RED>;
-+			default-state = "on";
-+			function = LED_FUNCTION_HEARTBEAT;
-+			gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "heartbeat";
-+		};
-+
-+		led-1 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "on";
-+			function = LED_FUNCTION_STATUS;
-+			gpios = <&gpio4 RK_PB1 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "default-on";
-+		};
-+	};
-+
-+	vcc0v6_ddr: regulator-0v6-vcc-ddr {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc0v6_ddr";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <600000>;
-+		regulator-max-microvolt = <600000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vdd_0v9: regulator-0v9-vdd {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_0v9";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <900000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_ddr: regulator-1v1-vcc-ddr {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_ddr";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1100000>;
-+		regulator-max-microvolt = <1100000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_1v8: regulator-1v8-vcc {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc_3v3>;
-+	};
-+
-+	vcc_3v3: regulator-3v3-vcc {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_3v3";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc3v3_sd: regulator-3v3-vcc-sd {
-+		compatible = "regulator-fixed";
-+		gpios = <&gpio4 RK_PA1 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sdmmc_pwren_l>;
-+		regulator-name = "vcc3v3_sd";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_3v3>;
-+	};
-+
-+	vcc5v0_sys: regulator-5v0-vcc-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+
-+	usb2_host_5v: regulator-5v0-usb2-host {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb20_host1_pwren>;
-+		regulator-name = "usb2_host_5v";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vccio_sd: regulator-vccio-sd {
-+		compatible = "regulator-gpio";
-+		gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sdmmc_vol_ctrl_h>;
-+		regulator-name = "vccio_sd";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <3300000>;
-+		states = <1800000 0x0>, <3300000 0x1>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vdd_arm: regulator-vdd-arm {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm1 0 5000 PWM_POLARITY_INVERTED>;
-+		pwm-supply = <&vcc5v0_sys>;
-+		regulator-name = "vdd_arm";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <746000>;
-+		regulator-max-microvolt = <1201000>;
-+		regulator-settling-time-up-us = <250>;
-+	};
-+
-+	vdd_logic: regulator-vdd-logic {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm2 0 5000 PWM_POLARITY_INVERTED>;
-+		pwm-supply = <&vcc5v0_sys>;
-+		regulator-name = "vdd_logic";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <705000>;
-+		regulator-max-microvolt = <1006000>;
-+		regulator-settling-time-up-us = <250>;
-+	};
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&gmac1 {
-+	clock_in_out = "output";
-+	phy-handle = <&rgmii_phy>;
-+	phy-mode = "rgmii-id";
-+	phy-supply = <&vcc_3v3>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rgmii_miim>, <&rgmii_tx_bus2>, <&rgmii_rx_bus2>,
-+		    <&rgmii_rgmii_clk>, <&rgmii_rgmii_bus>;
-+	status = "okay";
-+};
-+
-+&gpu {
-+	mali-supply = <&vdd_logic>;
-+	status = "okay";
-+};
-+
-+&i2c1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c1m0_xfer>;
-+	status = "okay";
-+
-+	hym8563: rtc@51 {
-+		compatible = "haoyu,hym8563";
-+		reg = <0x51>;
-+		#clock-cells = <0>;
-+		interrupt-parent = <&gpio4>;
-+		interrupts = <RK_PC1 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&rtc_int_l>;
-+		wakeup-source;
-+	};
-+};
-+
-+&mdio1 {
-+	rgmii_phy: ethernet-phy@1 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <0x1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&gmac1_rstn_l>;
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&pinctrl {
-+	ethernet {
-+		gmac1_rstn_l: gmac1-rstn-l {
-+			rockchip,pins = <4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	leds {
-+		led1: led1 {
-+			rockchip,pins = <4 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		led_sys: led-sys {
-+			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	rtc {
-+		rtc_int_l: rtc-int-l {
-+			rockchip,pins = <4 RK_PC1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	sdmmc {
-+		sdmmc_vol_ctrl_h: sdmmc-vol-ctrl-h {
-+			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		sdmmc_pwren_l: sdmmc-pwren-l {
-+			rockchip,pins = <4 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb {
-+		usb20_host1_pwren: usb20-host1-pwren {
-+			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&pwm1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm1m0_pins>;
-+	status = "okay";
-+};
-+
-+&pwm2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm2m0_pins>;
-+	status = "okay";
-+};
-+
-+&saradc {
-+	vref-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	cap-mmc-highspeed;
-+	mmc-hs200-1_8v;
-+	no-sd;
-+	no-sdio;
-+	non-removable;
-+	vmmc-supply = <&vcc_3v3>;
-+	vqmmc-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc3v3_sd>;
-+	vqmmc-supply = <&vccio_sd>;
-+	status = "okay";
-+};
-+
-+&uart0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart0m0_xfer>;
-+	status = "okay";
-+};
+All warnings (new ones prefixed by >>):
+
+>> sound/soc/rockchip/rockchip_i2s.c:776:36: warning: variable 'ret' is uninitialized when used here [-Wuninitialized]
+     776 |                 return dev_err_probe(&pdev->dev, ret, "Failed to initialise managed register map");
+         |                                                  ^~~
+   sound/soc/rockchip/rockchip_i2s.c:742:9: note: initialize the variable 'ret' to silence this warning
+     742 |         int ret;
+         |                ^
+         |                 = 0
+   1 warning generated.
+
+
+vim +/ret +776 sound/soc/rockchip/rockchip_i2s.c
+
+   733	
+   734	static int rockchip_i2s_probe(struct platform_device *pdev)
+   735	{
+   736		struct device_node *node = pdev->dev.of_node;
+   737		struct rk_i2s_dev *i2s;
+   738		struct snd_soc_dai_driver *dai;
+   739		struct resource *res;
+   740		void __iomem *regs;
+   741		struct clk *clk;
+   742		int ret;
+   743	
+   744		i2s = devm_kzalloc(&pdev->dev, sizeof(*i2s), GFP_KERNEL);
+   745		if (!i2s)
+   746			return -ENOMEM;
+   747	
+   748		spin_lock_init(&i2s->lock);
+   749		i2s->dev = &pdev->dev;
+   750	
+   751		i2s->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
+   752		if (!IS_ERR(i2s->grf)) {
+   753			i2s->pins = device_get_match_data(&pdev->dev);
+   754			if (!i2s->pins)
+   755				return -EINVAL;
+   756	
+   757		}
+   758	
+   759		/* try to prepare related clocks */
+   760		clk = devm_clk_get_enabled(&pdev->dev, "i2s_hclk");
+   761		if (IS_ERR(clk))
+   762			return dev_err_probe(&pdev->dev, PTR_ERR(clk), "hclock enable failed");
+   763	
+   764		i2s->mclk = devm_clk_get(&pdev->dev, "i2s_clk");
+   765		if (IS_ERR(i2s->mclk))
+   766			return dev_err_probe(&pdev->dev, PTR_ERR(i2s->mclk),
+   767					     "Can't retrieve i2s master clock");
+   768	
+   769		regs = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
+   770		if (IS_ERR(regs))
+   771			dev_err_probe(&pdev->dev, PTR_ERR(regs), "Can't ioremap registers");
+   772	
+   773		i2s->regmap = devm_regmap_init_mmio(&pdev->dev, regs,
+   774						    &rockchip_i2s_regmap_config);
+   775		if (IS_ERR(i2s->regmap))
+ > 776			return dev_err_probe(&pdev->dev, ret, "Failed to initialise managed register map");
+   777	
+   778		i2s->bclk_ratio = 64;
+   779		i2s->pinctrl = devm_pinctrl_get(&pdev->dev);
+   780		if (!IS_ERR(i2s->pinctrl)) {
+   781			i2s->bclk_on = pinctrl_lookup_state(i2s->pinctrl, "bclk_on");
+   782			if (!IS_ERR_OR_NULL(i2s->bclk_on)) {
+   783				i2s->bclk_off = pinctrl_lookup_state(i2s->pinctrl, "bclk_off");
+   784				if (IS_ERR_OR_NULL(i2s->bclk_off))
+   785					return dev_err_probe(&pdev->dev, -EINVAL,
+   786							     "failed to find i2s bclk_off");
+   787			}
+   788		} else {
+   789			dev_dbg(&pdev->dev, "failed to find i2s pinctrl\n");
+   790		}
+   791	
+   792		i2s_pinctrl_select_bclk_off(i2s);
+   793	
+   794		dev_set_drvdata(&pdev->dev, i2s);
+   795	
+   796		pm_runtime_enable(&pdev->dev);
+   797		if (!pm_runtime_enabled(&pdev->dev)) {
+   798			ret = i2s_runtime_resume(&pdev->dev);
+   799			if (ret)
+   800				goto err_pm_disable;
+   801		}
+   802	
+   803		ret = rockchip_i2s_init_dai(i2s, res, &dai);
+   804		if (ret)
+   805			goto err_pm_disable;
+   806	
+   807		ret = devm_snd_soc_register_component(&pdev->dev,
+   808						      &rockchip_i2s_component,
+   809						      dai, 1);
+   810	
+   811		if (ret) {
+   812			dev_err(&pdev->dev, "Could not register DAI\n");
+   813			goto err_suspend;
+   814		}
+   815	
+   816		ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
+   817		if (ret) {
+   818			dev_err(&pdev->dev, "Could not register PCM\n");
+   819			goto err_suspend;
+   820		}
+   821	
+   822		return 0;
+   823	
+   824	err_suspend:
+   825		if (!pm_runtime_status_suspended(&pdev->dev))
+   826			i2s_runtime_suspend(&pdev->dev);
+   827	err_pm_disable:
+   828		pm_runtime_disable(&pdev->dev);
+   829		return ret;
+   830	}
+   831	
+
 -- 
-2.49.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
