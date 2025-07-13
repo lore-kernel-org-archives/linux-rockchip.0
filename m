@@ -4,79 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4757BC83F22
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Jul 2025 18:00:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38DE3C83F20
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jul 2025 08:52:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BjxY7LAUtTfMVOckBAQk/pxueWOZ1XdRXp/W3yuSjrQ=; b=T1ijR4Ro1pPCHP
-	/cTHP9lLG93MWOmRYjFDQb/rtSyG+NNx4Z+FwdpM3aQ7HP5MgrHXjxA3Yh0vt7HxXGpyk+z8f8U+5
-	azmU+Go+viTzem5tX+FCelcDLy0M3LNX49MUjP/laDsxp6UBE59T5X24YXaBKlgzWSIkGV/7zfRks
-	fU++Z1rYYEsLtlt1/3Qm4AJwSGXRyyUzzlyr7pmnHCfWCC0xvwUiC/TWmxBc3hLrcJEdsZ+uE0e3h
-	DjJ/S1s3MGBHsGpq6q9TjtbcZLpJyLwwaWXCQLA7C/DGC0WaR5wTgAruH+wA9Oiddjv7h6ptonu7e
-	GKD8NqObzLOSOuh37cKg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2TM/HSFQdRrYGurYwjY2FqfUonygW9jo9XROEGQz8B0=; b=q/SDeL/rlzcMTq
+	GTfgPDBngtrfW9COB1Ds1GBhOqgNxuAiDxCEwU5BFS8qtTULENbcpV/CtaZadcQelp3AkpfaDctLj
+	d0uXQPmPfPx3xVhpneuODD9sQ/LakMUi0DXf4k1kVtMva0eBUwzkgTp8em2FG7n7sDWPl5h0twQp/
+	2ii/uK75sbazGqPd1AaL8rmFi0zCAicEWOVdKSNp+KgbKrpNaZfEcUMISpjeMw7+ti9EJYp38lGDx
+	If344oOfeTCwuB3zGd6Fsa2+PUK4MIIuqCvt1xWA88fuUr0zexP6vreRfnYnhb7X3wMd4Gq/fXZxO
+	SMwFri6Yyu5KUhnkzVCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaeWL-0000000GsL4-46G7;
-	Sat, 12 Jul 2025 18:00:21 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1uasRi-0000000HYoq-47xL;
+	Sun, 13 Jul 2025 08:52:30 +0000
+Received: from mail-ej1-f43.google.com ([209.85.218.43])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaeTK-0000000Gs0F-1clu;
-	Sat, 12 Jul 2025 17:57:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1752343034; x=1783879034;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=ZqFuhsGBU+wJcNeFRHN2M3/rUmGdy3TQzFSP8z9fkRE=;
-  b=FjzB3cY5oUdxALBHmIpT14thrVhNgbN79sluV9EpD4rI9g0Z3hnpmeyU
-   WbXHkfn2ASEGyi4xQ5hsCcakGBEWBstqVxmSRyEr4TRTY08hDQy3hV+cJ
-   /oRBDT5OVO3QqNo+vN+kEw/HZi18ptcFki5eHEuq4DijgEh6ehROoYNGv
-   IuPUjHe3l7+F8c9NQld9FHkNDVgn55i69G66kyCorvM+LhwIMevSJxvmx
-   p21rDn9Y6F3oHl/zmylsG88XrN5GkfS6Frd6Tf+NA7EQgDFMls1PPDixU
-   QC8VrIwzZWVhIWd6ZQ/QISJz64QLFjPkKIjQucRM8nbz6KOnzQi75UEpE
-   Q==;
-X-CSE-ConnectionGUID: J3VmcF1KSwSGnAP9kqLKdA==
-X-CSE-MsgGUID: 4cI2W/LVTdipRZWD6KizjA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11491"; a="54570796"
-X-IronPort-AV: E=Sophos;i="6.16,306,1744095600"; 
-   d="scan'208";a="54570796"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jul 2025 10:57:10 -0700
-X-CSE-ConnectionGUID: 9jkPxG5WSLiUICQXlrvIjA==
-X-CSE-MsgGUID: dApIRtUfTKCNLasfM3x7ZA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,306,1744095600"; 
-   d="scan'208";a="160938198"
-Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
-  by orviesa003.jf.intel.com with ESMTP; 12 Jul 2025 10:57:07 -0700
-Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uaeTB-0007ZR-0h;
-	Sat, 12 Jul 2025 17:57:05 +0000
-Date: Sun, 13 Jul 2025 01:56:13 +0800
-From: kernel test robot <lkp@intel.com>
-To: Troy Mitchell <troy.mitchell@linux.dev>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Troy Mitchell <troy.mitchell@linux.dev>
-Subject: Re: [PATCH] ASoC: rockchip: i2s: simplify clock handling and error
- cleanup in probe
-Message-ID: <202507130140.HxI37WQ3-lkp@intel.com>
-References: <20250712-rockchip-i2s-simplify-clk-v1-1-3b23fd1b3e26@linux.dev>
+	id 1uasEe-0000000HX8k-3rXN;
+	Sun, 13 Jul 2025 08:39:02 +0000
+Received: by mail-ej1-f43.google.com with SMTP id a640c23a62f3a-ae361e8ec32so625784766b.3;
+        Sun, 13 Jul 2025 01:39:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752395939; x=1753000739;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=iox57DVjdaoaKfxo5AboCSCO4GMqqNFB8Dj9mmEAG9U=;
+        b=WjcGleMGzfO5oCa6W6VQqL2xFjdpKR5a3Pxl2VOOLPjavTvHnKbpL8f+N8wHEFNEUp
+         H9Lo3ovtQYuI/X8xKkwIFtb52yqcFE5NDFwjCH9PufDLkr36VPLWx5OH5fAa+HqZAnfG
+         d+F8o6+zoaXjVCbXJVqWCgPN58d5+cW2g/QokHN1UNec93u5Me+Ek29mWsPwHy9saz4C
+         4w1+NNOdo62op/T44hFCm/Qr3NHB5JYC7TyjA/1YOxamcz98G4ZeBmi+4w7klTZMWeCB
+         7d/nK1DEZSUozch/2xtDggLaotBVldNJu6b8yLJwfp28r75LNQg36r+azb3Av2rIal0z
+         h7+g==
+X-Forwarded-Encrypted: i=1; AJvYcCVYc3kUNaDArAE5VBwpPl6LABA9WkDVOrQuRIyZU/74gQCyLLgwM4hD3k/9gw/Dddd3c3h/3ZK533tHw1w9hpgT@lists.infradead.org, AJvYcCXCJLKQe3ebJ/LZzDizAubV5SzhVwQNlwPairRoTTgIz45Araogvr0uyOoAChhUfvU8joLyPCdAFbhRCKVMsR4=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwEC3EVmPKW8Q+4yMjORiISRSDd0sE64Hh6Fa29a8hkbXVyvoYf
+	hhffpwlC0XTo9t6i3aIB30IqeqrLvC3A3heQL9Swy/Bf9fJwXkl6o+TIKY102B8G
+X-Gm-Gg: ASbGncvLji2cRUZTsyWsiEI+mGGZA3YAS+Z+KTHgARSYbGzpHtWg1R99VTYmFgRAQqH
+	/e7HY8R3An5DsqMqadS5uQn2sGAdio1/adXhiL7uC2vaz8xjMPKycVzw1IqaY2H5M3qGfqnz44+
+	jpeKa+XM69t5vDCIUac7HsDrUC2vhGEzskxr8VMq5yOAPI2x6t0JTr2r4CwIs800N3CajXJIStB
+	DZ+Lq90xO3GnQtRtIJ9MQOiAwU/uIfCrYrROgLwvldq7aQzzVBM8g2JyeV6Wtzn1IXhzU6f/f8o
+	B1AndLJFVr3pRCISSvN+3uwayEHV0kN/f56FgkEWCPu7x36fnIZZEGdsTvyYJwNQpmK7NUztZxh
+	i4Kl0Xpx5q+GWla4NDRqxsFgPURkv91PJzDIb/kK6IPEYGuqj2I46IWXN
+X-Google-Smtp-Source: AGHT+IGQt4zhcJArH6o30HJl75IntEaAKyUOXg4i37WOL0jJEDPrPv4BbMBWt/Q2KxZH+6OQZBiXZg==
+X-Received: by 2002:a17:907:3cc8:b0:ae6:f663:7232 with SMTP id a640c23a62f3a-ae701371015mr731574466b.61.1752395938613;
+        Sun, 13 Jul 2025 01:38:58 -0700 (PDT)
+Received: from [10.42.0.1] (cst-prg-46-162.cust.vodafone.cz. [46.135.46.162])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ae6e7e90a42sm610876266b.27.2025.07.13.01.38.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 13 Jul 2025 01:38:58 -0700 (PDT)
+From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: [PATCH v8 00/10] New DRM accel driver for Rockchip's RKNN NPU
+Date: Sun, 13 Jul 2025 10:38:50 +0200
+Message-Id: <20250713-6-10-rocket-v8-0-64fa3115e910@tomeuvizoso.net>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250712-rockchip-i2s-simplify-clk-v1-1-3b23fd1b3e26@linux.dev>
+X-B4-Tracking: v=1; b=H4sIAJpwc2gC/3XQwUrEMBAG4FdZcjYySZNJ68n3EA/pZOIGsZG2F
+ nXpu5suyLYSj//AfPwzFzHxmHgSD6eLGHlJU8pDCe3dSdDZDy8sUyhZaNAGUGmJUoEcM73yLLt
+ GYeBIypATZeN95Jg+r9rTc8nnNM15/Lrii9qmdWdREiQgsGmZvbbwOOc3/ljSd57y/cCz2LRF/
+ woWtLZHQRchmNBT9FsfVReam2AVHoWmCK6MPXVFD31dMHuhOwpm64AhRuwNgee6YHeChqNgi6B
+ a6shDpL6huoA3AcEcBSyCbpwnZ0Po7T8d3F748we3XUEKKTJGNhVhXdcfpsU+mTgCAAA=
+X-Change-ID: 20240612-6-10-rocket-9316defc14c7
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Oded Gabbay <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Sumit Semwal <sumit.semwal@linaro.org>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Kever Yang <kever.yang@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, 
+ Daniel Stone <daniel@fooishbar.org>, Da Xue <da@libre.computer>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Jeff Hugo <jeff.hugo@oss.qualcomm.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
+ Tomeu Vizoso <tomeu@tomeuvizoso.net>, Robert Foss <rfoss@kernel.org>, 
+ Jeff Hugo <jeff.hugo@oss.qualcomm.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250712_105714_466003_A4A04D1C 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20250713_013900_969959_3BD86C06 
+X-CRM114-Status: GOOD (  16.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,142 +108,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Troy,
+This series adds a new driver for the NPU that Rockchip includes in its
+newer SoCs, developed by them on the NVDLA base.
 
-kernel test robot noticed the following build warnings:
+In its current form, it supports the specific NPU in the RK3588 SoC.
 
-[auto build test WARNING on 733923397fd95405a48f165c9b1fbc8c4b0a4681]
+The userspace driver is part of Mesa and an initial draft can be found at:
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Troy-Mitchell/ASoC-rockchip-i2s-simplify-clock-handling-and-error-cleanup-in-probe/20250712-215647
-base:   733923397fd95405a48f165c9b1fbc8c4b0a4681
-patch link:    https://lore.kernel.org/r/20250712-rockchip-i2s-simplify-clk-v1-1-3b23fd1b3e26%40linux.dev
-patch subject: [PATCH] ASoC: rockchip: i2s: simplify clock handling and error cleanup in probe
-config: x86_64-buildonly-randconfig-003-20250712 (https://download.01.org/0day-ci/archive/20250713/202507130140.HxI37WQ3-lkp@intel.com/config)
-compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250713/202507130140.HxI37WQ3-lkp@intel.com/reproduce)
+https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/29698
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202507130140.HxI37WQ3-lkp@intel.com/
+Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+---
+Changes in v8:
+- Kconfig improvements
+- Removed notion of top core, all cores are equivalent now
+- Explicitly allocate DMA addresses
+- Sync BOs always in both directions
+- UAPI improvements
+- Simplified job scheduling
+- Misc. style improvements
+- Link to v7: https://lore.kernel.org/r/20250606-6-10-rocket-v7-0-dc16cfe6fe4e@tomeuvizoso.net
 
-All warnings (new ones prefixed by >>):
+Changes in v7:
+- Actually enable process isolation by allocating its own IOMMU domain
+  to each DRM client.
+- Link to v6: https://lore.kernel.org/r/20250604-6-10-rocket-v6-0-237ac75ddb5e@tomeuvizoso.net
 
->> sound/soc/rockchip/rockchip_i2s.c:776:36: warning: variable 'ret' is uninitialized when used here [-Wuninitialized]
-     776 |                 return dev_err_probe(&pdev->dev, ret, "Failed to initialise managed register map");
-         |                                                  ^~~
-   sound/soc/rockchip/rockchip_i2s.c:742:9: note: initialize the variable 'ret' to silence this warning
-     742 |         int ret;
-         |                ^
-         |                 = 0
-   1 warning generated.
+Changes in v6:
+- Make all cores depend on pclk and npu clocks
+- Fix BO sync direction logic
+- Misc. cleanups
+- Link to v5: https://lore.kernel.org/r/20250520-6-10-rocket-v5-0-18c9ca0fcb3c@tomeuvizoso.net
 
+Changes in v5:
+- Use bulk clk API
+- Rename bindings file
+- Syntax improvement to bindings
+- Link to v4: https://lore.kernel.org/r/20250519-6-10-rocket-v4-0-d6dff6b4c0ae@tomeuvizoso.net
 
-vim +/ret +776 sound/soc/rockchip/rockchip_i2s.c
+Changes in v4:
+- Several fixes to DT bindings.
+- Link to v3: https://lore.kernel.org/r/20250516-6-10-rocket-v3-0-7051ac9225db@tomeuvizoso.net
 
-   733	
-   734	static int rockchip_i2s_probe(struct platform_device *pdev)
-   735	{
-   736		struct device_node *node = pdev->dev.of_node;
-   737		struct rk_i2s_dev *i2s;
-   738		struct snd_soc_dai_driver *dai;
-   739		struct resource *res;
-   740		void __iomem *regs;
-   741		struct clk *clk;
-   742		int ret;
-   743	
-   744		i2s = devm_kzalloc(&pdev->dev, sizeof(*i2s), GFP_KERNEL);
-   745		if (!i2s)
-   746			return -ENOMEM;
-   747	
-   748		spin_lock_init(&i2s->lock);
-   749		i2s->dev = &pdev->dev;
-   750	
-   751		i2s->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
-   752		if (!IS_ERR(i2s->grf)) {
-   753			i2s->pins = device_get_match_data(&pdev->dev);
-   754			if (!i2s->pins)
-   755				return -EINVAL;
-   756	
-   757		}
-   758	
-   759		/* try to prepare related clocks */
-   760		clk = devm_clk_get_enabled(&pdev->dev, "i2s_hclk");
-   761		if (IS_ERR(clk))
-   762			return dev_err_probe(&pdev->dev, PTR_ERR(clk), "hclock enable failed");
-   763	
-   764		i2s->mclk = devm_clk_get(&pdev->dev, "i2s_clk");
-   765		if (IS_ERR(i2s->mclk))
-   766			return dev_err_probe(&pdev->dev, PTR_ERR(i2s->mclk),
-   767					     "Can't retrieve i2s master clock");
-   768	
-   769		regs = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
-   770		if (IS_ERR(regs))
-   771			dev_err_probe(&pdev->dev, PTR_ERR(regs), "Can't ioremap registers");
-   772	
-   773		i2s->regmap = devm_regmap_init_mmio(&pdev->dev, regs,
-   774						    &rockchip_i2s_regmap_config);
-   775		if (IS_ERR(i2s->regmap))
- > 776			return dev_err_probe(&pdev->dev, ret, "Failed to initialise managed register map");
-   777	
-   778		i2s->bclk_ratio = 64;
-   779		i2s->pinctrl = devm_pinctrl_get(&pdev->dev);
-   780		if (!IS_ERR(i2s->pinctrl)) {
-   781			i2s->bclk_on = pinctrl_lookup_state(i2s->pinctrl, "bclk_on");
-   782			if (!IS_ERR_OR_NULL(i2s->bclk_on)) {
-   783				i2s->bclk_off = pinctrl_lookup_state(i2s->pinctrl, "bclk_off");
-   784				if (IS_ERR_OR_NULL(i2s->bclk_off))
-   785					return dev_err_probe(&pdev->dev, -EINVAL,
-   786							     "failed to find i2s bclk_off");
-   787			}
-   788		} else {
-   789			dev_dbg(&pdev->dev, "failed to find i2s pinctrl\n");
-   790		}
-   791	
-   792		i2s_pinctrl_select_bclk_off(i2s);
-   793	
-   794		dev_set_drvdata(&pdev->dev, i2s);
-   795	
-   796		pm_runtime_enable(&pdev->dev);
-   797		if (!pm_runtime_enabled(&pdev->dev)) {
-   798			ret = i2s_runtime_resume(&pdev->dev);
-   799			if (ret)
-   800				goto err_pm_disable;
-   801		}
-   802	
-   803		ret = rockchip_i2s_init_dai(i2s, res, &dai);
-   804		if (ret)
-   805			goto err_pm_disable;
-   806	
-   807		ret = devm_snd_soc_register_component(&pdev->dev,
-   808						      &rockchip_i2s_component,
-   809						      dai, 1);
-   810	
-   811		if (ret) {
-   812			dev_err(&pdev->dev, "Could not register DAI\n");
-   813			goto err_suspend;
-   814		}
-   815	
-   816		ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
-   817		if (ret) {
-   818			dev_err(&pdev->dev, "Could not register PCM\n");
-   819			goto err_suspend;
-   820		}
-   821	
-   822		return 0;
-   823	
-   824	err_suspend:
-   825		if (!pm_runtime_status_suspended(&pdev->dev))
-   826			i2s_runtime_suspend(&pdev->dev);
-   827	err_pm_disable:
-   828		pm_runtime_disable(&pdev->dev);
-   829		return ret;
-   830	}
-   831	
+Changes in v3:
+- Reference in the device tree only the register blocks that are
+  actually used.
+- Several style and robustness fixes suggested in the mailing list.
+- Added patches from Nicolas Frattaroli that add support to the NPU for
+  the Rock 5B board.
+- Link to v2: https://lore.kernel.org/r/20250225-6-10-rocket-v2-0-d4dbcfafc141@tomeuvizoso.net
 
+Changes in v2:
+- Drop patch adding the rk3588 compatible to rockchip-iommu (Sebastian Reichel)
+- Drop patch adding support for multiple power domains to rockchip-iommu (Sebastian Reichel)
+- Link to v1: https://lore.kernel.org/r/20240612-6-10-rocket-v1-0-060e48eea250@tomeuvizoso.net
+
+---
+Nicolas Frattaroli (2):
+      arm64: dts: rockchip: add pd_npu label for RK3588 power domains
+      arm64: dts: rockchip: enable NPU on ROCK 5B
+
+Tomeu Vizoso (8):
+      accel/rocket: Add registers header
+      accel/rocket: Add a new driver for Rockchip's NPU
+      accel/rocket: Add IOCTL for BO creation
+      accel/rocket: Add job submission IOCTL
+      accel/rocket: Add IOCTLs for synchronizing memory accesses
+      dt-bindings: npu: rockchip,rknn: Add bindings
+      arm64: dts: rockchip: Add nodes for NPU and its MMU to rk3588-base
+      arm64: dts: rockchip: Enable the NPU on quartzpro64
+
+ Documentation/accel/index.rst                      |    1 +
+ Documentation/accel/rocket/index.rst               |   19 +
+ .../bindings/npu/rockchip,rk3588-rknn-core.yaml    |  112 +
+ MAINTAINERS                                        |   10 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   93 +-
+ .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |   30 +
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi   |   57 +
+ drivers/accel/Kconfig                              |    1 +
+ drivers/accel/Makefile                             |    1 +
+ drivers/accel/rocket/Kconfig                       |   24 +
+ drivers/accel/rocket/Makefile                      |   10 +
+ drivers/accel/rocket/rocket_core.c                 |  110 +
+ drivers/accel/rocket/rocket_core.h                 |   64 +
+ drivers/accel/rocket/rocket_device.c               |   60 +
+ drivers/accel/rocket/rocket_device.h               |   30 +
+ drivers/accel/rocket/rocket_drv.c                  |  290 ++
+ drivers/accel/rocket/rocket_drv.h                  |   30 +
+ drivers/accel/rocket/rocket_gem.c                  |  181 +
+ drivers/accel/rocket/rocket_gem.h                  |   34 +
+ drivers/accel/rocket/rocket_job.c                  |  636 +++
+ drivers/accel/rocket/rocket_job.h                  |   52 +
+ drivers/accel/rocket/rocket_registers.h            | 4404 ++++++++++++++++++++
+ include/uapi/drm/rocket_accel.h                    |  142 +
+ 23 files changed, 6390 insertions(+), 1 deletion(-)
+---
+base-commit: 156faa3ffe21347203b35a3edb6d2bcb663f429b
+change-id: 20240612-6-10-rocket-9316defc14c7
+
+Best regards,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Tomeu Vizoso <tomeu@tomeuvizoso.net>
+
 
 _______________________________________________
 Linux-rockchip mailing list
