@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22321C83F17
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jul 2025 16:51:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A5E8C83F17
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jul 2025 17:31:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bGh6fvoXglR1zMgVcn6Z3Lja/VA56pKI3W1SeYgNMJQ=; b=uqR1k1zGN5OhuY
-	qo5SG1LyPklzUVDwssZc5/umr9XBZdG6yKa5g9riUr/6CWvvmehE0vlkoZelyUvx6wDX1Q+PHRs5F
-	R3wHyha9zJjtjBBx6zzunva75GRYVCxj+y73GCW7BtbZV3SyF3imKCZ/Ed8Wqjl+ozuv26dRKCZUf
-	pLMCmVLI6q5XyfsPoFWOvoZteXdUwEg3TsOV3VJF5UUXR1qvSZhcy6ywcw3D2CXNnslkDu+jcg8tN
-	ytMmzrXoHZeLgrewMyp16vaUeSMV7MkCZg7vLBN7VEzsDnApeZ3mYu4+XEPejsmbbC7vmC3CRj851
-	eEBjGqlbY1tzOxFGv8OA==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=uU85Biee7q6Kus6KXH/ownu59twDT+Zt+GD/h4MFCf0=; b=2YHSSEq068zfVOlGNEpZ2VnVfY
+	qY9mNDyYDiGIT+AD9ume4X85M4LiCEtHpylnztbC4KMnoYXsoKadrlHVeLVuU3uedH+pwaVXdgVNI
+	BM4i9Cyw9/xp6qxyzpr/X7bD4sq4fov1B+Q+4bo2qmYILn/20BZ1gYzJrUM9ulIZpTkarL26NesRI
+	CrIK4qR3W8ghYz+vbb1VVCYTtj0xKQxe+kbVhWjTJfg59OE1p6Sdb6c8jcZjjnhIYjL04xyJKSFKS
+	lT9H+LnU0yjSzM08ZHGhRdK8+Pm8evDI80s1y46GrgnemXib1hlHE4AewnGfdk09wXyAgSUqDPTqP
+	Ia3uuBmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uazvY-00000000PJP-1vS9;
-	Sun, 13 Jul 2025 16:51:48 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1ub0XX-00000000RgI-2WcY;
+	Sun, 13 Jul 2025 17:31:03 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uazsq-00000000P5Q-0Q8l;
-	Sun, 13 Jul 2025 16:49:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=zFrEQnPOyh3CgDK5rpfd+i/car9R4H7VSU3yUmUQiEU=; b=IpZUWctL1A8lW/QJNZgbSTBTbj
-	z3+Yzc41EDXL4gL5g8KUMsMghn4C0ELvsIgfu8sPnWKxi5nhKemu8bwFOsQXGoQto8vMZi9HOb0zW
-	p/CQaiWH+RpMpavOTGX3BT6x9Y+4AvLQZiaeZVN9DHBmzLvkGYb18nQep5J+keJbQaZw=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1uazsT-001Nvo-Ru; Sun, 13 Jul 2025 18:48:37 +0200
-Date: Sun, 13 Jul 2025 18:48:37 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Jun Yan <jerrysteve1101@gmail.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	heiko@sntech.de, quentin.schulz@cherry.de, dsimic@manjaro.org,
-	naoki@radxa.com, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add OneThing Cloud OEC turbo
-Message-ID: <3387f3d1-6ede-4b71-984a-e0403d72bcec@lunn.ch>
-References: <20250713163255.163669-1-jerrysteve1101@gmail.com>
- <20250713163255.163669-4-jerrysteve1101@gmail.com>
+	id 1ub0V8-00000000RXE-429a;
+	Sun, 13 Jul 2025 17:28:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 193636112D;
+	Sun, 13 Jul 2025 17:28:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D4A6C4CEE3;
+	Sun, 13 Jul 2025 17:28:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752427713;
+	bh=edVLvKXLku8AzoLHs3//yeBJLHTnb8ffMj79O9ITrPE=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=azFdOneNcEqorhUiBpnudttXl7MMIFA0txH1bU29PeZOzlQ66foHezu/CS0XR4TUa
+	 hPWUkYZrYC87PyzvFNM+5NE98UkEEQ0KHxqwWdsEeG1xdFz7UDx+2aFHVxLTk3MbUC
+	 m5bs+BTeOaDogK0hivr+5fpjbZ1k2DTPN+/G0/AFr3OIudA5VeWybN1iQvu4mIl60j
+	 dcXMxptXreplBFerTRtYOZz8k3l3Z1TcbUF/UcKu5QkL5Rjg4A4sGbScoJprkVzRiB
+	 rd7B8gSYP0cKAxw0GnBcjDXZcorQ36Pw2VMtBS8xW4fZewuMQ+iEinLGfYB0ju3gyZ
+	 WCuJcgxOMfLqg==
+Date: Sun, 13 Jul 2025 12:28:32 -0500
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250713163255.163669-4-jerrysteve1101@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250713_094900_138841_8492D96A 
-X-CRM114-Status: UNSURE (   8.27  )
-X-CRM114-Notice: Please train this message.
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: conor+dt@kernel.org, krzk+dt@kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ devicetree@vger.kernel.org, heiko@sntech.de, naoki@radxa.com, 
+ quentin.schulz@cherry.de, dsimic@manjaro.org
+To: Jun Yan <jerrysteve1101@gmail.com>
+In-Reply-To: <20250713163255.163669-2-jerrysteve1101@gmail.com>
+References: <20250713163255.163669-1-jerrysteve1101@gmail.com>
+ <20250713163255.163669-2-jerrysteve1101@gmail.com>
+Message-Id: <175242771243.3659205.1009205477863284849.robh@kernel.org>
+Subject: Re: [PATCH 1/3] dt-bindings: vendor-prefixes: Add Shenzhen
+ OneThing Technologies Co., Ltd.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,34 +72,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> +&gmac1 {
-> +	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
-> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
-> +	phy-mode = "rgmii";
 
-This has the usual problem with Rockchip boards. Does the PCB have
-extra long clock lines to impose the 2ns delay? I guess not, so this
-should be "rgmii-id"
+On Mon, 14 Jul 2025 00:32:53 +0800, Jun Yan wrote:
+> OneThing is a company engaged in edge computing.
+> 
+> Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
 
-> +	clock_in_out = "input";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&gmac1m1_miim
-> +		    &gmac1m1_tx_bus2
-> +		    &gmac1m1_rx_bus2
-> +		    &gmac1m1_rgmii_clk
-> +		    &gmac1m1_rgmii_bus
-> +		    &gmac1m1_clkinout>;
-> +	snps,reset-gpio = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
-> +	snps,reset-active-low;
-> +	/* Reset time is 20ms, 100ms for rtl8211f */
-> +	snps,reset-delays-us = <0 20000 100000>;
-> +
-> +	tx_delay = <0x4f>;
-> +	rx_delay = <0x2d>;
+My bot found errors running 'make dt_binding_check' on your patch:
 
-And then these should probably be 0, or deleted.
+yamllint warnings/errors:
 
-	Andrew
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/vendor-prefixes.yaml: patternProperties:^onething,.*: 'anyOf' conditional failed, one must be fixed:
+	'descriotion' is not one of ['$ref', 'additionalItems', 'additionalProperties', 'allOf', 'anyOf', 'const', 'contains', 'default', 'dependencies', 'dependentRequired', 'dependentSchemas', 'deprecated', 'description', 'else', 'enum', 'exclusiveMaximum', 'exclusiveMinimum', 'items', 'if', 'minItems', 'minimum', 'maxItems', 'maximum', 'multipleOf', 'not', 'oneOf', 'pattern', 'patternProperties', 'properties', 'required', 'then', 'typeSize', 'unevaluatedProperties', 'uniqueItems']
+	'type' was expected
+	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250713163255.163669-2-jerrysteve1101@gmail.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
 _______________________________________________
 Linux-rockchip mailing list
