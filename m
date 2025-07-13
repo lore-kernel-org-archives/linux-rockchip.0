@@ -4,88 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C770C83F17
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jul 2025 09:14:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88AC3C83F1D
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jul 2025 13:43:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GIA+hGOvr+sDrTyKWLESPTLCadOf3SAHUoGXK8mUW8c=; b=Wm2lgNQe7wA4Ed
-	COTHarO6iGm4Xt6PtP+gigf1u+fpqm7qlziimOlLCaS9V2ECO3xBINnEo0zkN9iJmM5DObro88CqM
-	ZVQ1oDMB584QsGf0kLED3yq72gnQFpsazTQu4g9asYB+4u+TuWpK26gVy6uOE4jDYF850m5jmv1nO
-	bVMIUOAUDhzHDRyNYn1bhLCsPOHqeJTp7xIwMuYYI81nudw+HbFOHGRTjLWEA8E+KrieHbVVMoYYs
-	gy1DPruvbOfPxamp11geyHK6dx8uraZEu8AkApzEZAY2E1k0Ln8deR4FA4NopwWNHCOD98hUWmKOy
-	W9DAXj1KgTXbMWR/9oNQ==;
+	List-Owner; bh=JtO9LvHEI7AzwzLFX+amO5JQqpG5WItaKpip3roS91Y=; b=u62ostNaaEiGHU
+	rQRup1jO/MNlDxKI0UmA3l8whcARcXuu6lyaX/DwE0JtHgPbQLVX573HbiOid9dgmC7VeHx7yAika
+	oQYj0TFCfumqotIb1lxHDhf7IE1NWH/UAXMnZveblC+dZLnCuJhsYmxyM1D2BR6GDW5GDWfFkABOo
+	IhSTXoYER58sH+MAeWIu0WdzXG0saYUhSjlI1IJrCFvALtzfIPMKVbVmtSAaxG3pHB2ptdCMp2bPl
+	nCEHQ2L6heZ5vSImktoV5zPTXwHC9blCvrkmsQshhWy9L3q+cgtGgaIQQ7vS2Bu9f+SPDI85mGCsI
+	2da+GebU1S8qTC7Cvf2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uasn0-0000000HayS-1f12;
-	Sun, 13 Jul 2025 09:14:30 +0000
-Received: from mail-ej1-f53.google.com ([209.85.218.53])
+	id 1uawyt-00000000CvS-2CKr;
+	Sun, 13 Jul 2025 13:43:03 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uasF2-0000000HXJB-3WH1;
-	Sun, 13 Jul 2025 08:39:25 +0000
-Received: by mail-ej1-f53.google.com with SMTP id a640c23a62f3a-ae0de0c03e9so597462466b.2;
-        Sun, 13 Jul 2025 01:39:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752395963; x=1753000763;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=FeyMo4Jt7UfkzhL/r2KfmA979+uFc7fR7QoglkpcpSU=;
-        b=T8NUYKRBDCe8qmwhzXQqqD0Y+KBfOFwN2f/n2LrUD/5teqmhLtomh6VS9838ecrXOw
-         s/iD16rCcuRR8PZbYzdGD/g916viGlqgIAuRoW1Y0KLSUK6SF0zlW+70Hfvts6NwCI2u
-         FlC6/B5DSiyy3oDAyvt8hbgZ3NuSbc/tEgf1BXqKjNFgOQdI6KKgru/iHlDBORahYNYC
-         z4FoXiWvOvXXnOJPAYpYHtPmHkXsw4L7SYSnKz1gtB8Uv+Vj6SmM0/EflOEqo4mBfAL5
-         lXzMAfO/EatwnAoM2raJ3dgeBRaugdVSywIKKARNCIbNCQdlkZVFdmpB6YputCxPQjrO
-         ZCoA==
-X-Forwarded-Encrypted: i=1; AJvYcCWcjKeNYSJD/rp2jBet7yhvoNWWR29G9/hsyT3TVNQ0QBeMZxFlCSbpxnf4mFuLc90iy0Lf8D4U/WqaqT43mWqF@lists.infradead.org, AJvYcCWjn+sihN4aRTrq/niyrUcUzRFKjh82H2YIe1s5YAhaJQBcsqlG8bxPmSdUMAiehJCa8DjtF7t43znGAKjeb/0=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzMsAg+Z/aotnI1WQ/tessmu6EIOOtwXYfJro8EyDKxPJ1cWLBR
-	zgvU3C3ScMLwIQudwudlhOsd96kjsrewlrJHhmpvPHhMKquE1E6rXK5HZA/Oa37Q
-X-Gm-Gg: ASbGncune2PzkR8IzO6i1lDqlHmsnLMDsVx6EH9EOftgz/XXUnIQwyVd9rJXZi13/e7
-	zC5akSiF0frrEECuKxOTz/DsMye2EFlVmsB5qX3u/DsWBmm+t0MU0BYf4BeC0zSIN7BmQjJmfD8
-	DH6toy3TAYx7pcJKToggvNHZKDjJBwAc84+NIUhV/caER/Qt4n7hyEl72ZCzcBOpPkzicqx2wrF
-	qB//Mg7xKn8fzWLocXpUEBEbv3ymvCdx55lbUh3DuHaMRvMyB3X0uSiDC5q522bRphI2sulzV8E
-	X7HKPaNxnjpdfny6AoYgrcWrJQAQtOxitfUjT7fSvRTp9nSSwky/0HJ8BKoZbVsrlP4VNyu2nu0
-	jZvwoQGD03WPb39PUZCTY5o64uniONny1lkXDN+dwtW+eXvZ3kyoqJ+7g
-X-Google-Smtp-Source: AGHT+IHxIHGjEkE5SiJCVQleLSfE7Ew8CiAdy3INMXoGnJecgmb8mpelQgFGDmsS+2hlzLznSM+Hlw==
-X-Received: by 2002:a17:907:803:b0:add:ede0:b9c4 with SMTP id a640c23a62f3a-ae6fc0c3696mr934268766b.42.1752395963198;
-        Sun, 13 Jul 2025 01:39:23 -0700 (PDT)
-Received: from [10.42.0.1] (cst-prg-46-162.cust.vodafone.cz. [46.135.46.162])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ae6e7e90a42sm610876266b.27.2025.07.13.01.39.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 13 Jul 2025 01:39:22 -0700 (PDT)
-From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Date: Sun, 13 Jul 2025 10:39:00 +0200
-Subject: [PATCH v8 10/10] arm64: dts: rockchip: enable NPU on ROCK 5B
+	id 1uawvM-00000000Cd2-0ZwE;
+	Sun, 13 Jul 2025 13:39:26 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id C04C722C21;
+	Sun, 13 Jul 2025 15:39:19 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ifD--ucc6E1n; Sun, 13 Jul 2025 15:39:19 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1752413958; bh=ipxl4zfw0YG+RKZ7tPVA6e20g09wAN/2FpTRmkI4s4k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=TgFdNYAUHEcFBuxzTSDNUnNhncmZAe6GQlUQlfQY/42yHIuSGVm9hY236iFYe41ex
+	 W4tcGSwc+o0NhGlHWGM/t9xUadlWPIw6gGXN7Kz0IVQzEen3AcYZwQyKNk4xxl2myR
+	 8qNNsnHrDsujTZkuQ7jlOHSGgtN4fduFqwUs7eYOSnwgByCmg0ddEX4xM6DK/n5i4d
+	 LSsL2cSb9G8D85nziJlJ5tr/c2ANeFekmb/9snyyy9V3ETCst5zwfutSmG2o2096DQ
+	 sYpS0B5ZVESxWbeftkAgPrStWxtgAIv81DkA9Jaig0UdVw4qMRWs/7Sq4sDHHxPZ6m
+	 fy1FKRDkrGgcA==
+Date: Sun, 13 Jul 2025 13:39:06 +0000
+From: Yao Zi <ziyao@disroot.org>
+To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 2/6] arm64: dts: rockchip: Add Radxa ROCK 2A/2F
+Message-ID: <aHO2-l7MuaouBNmw@pie.lan>
+References: <20250712173805.584586-1-jonas@kwiboo.se>
+ <20250712173805.584586-3-jonas@kwiboo.se>
 MIME-Version: 1.0
-Message-Id: <20250713-6-10-rocket-v8-10-64fa3115e910@tomeuvizoso.net>
-References: <20250713-6-10-rocket-v8-0-64fa3115e910@tomeuvizoso.net>
-In-Reply-To: <20250713-6-10-rocket-v8-0-64fa3115e910@tomeuvizoso.net>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Oded Gabbay <ogabbay@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Sumit Semwal <sumit.semwal@linaro.org>, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Kever Yang <kever.yang@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, 
- Daniel Stone <daniel@fooishbar.org>, Da Xue <da@libre.computer>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Jeff Hugo <jeff.hugo@oss.qualcomm.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
- Tomeu Vizoso <tomeu@tomeuvizoso.net>
-X-Mailer: b4 0.14.2
+Content-Disposition: inline
+In-Reply-To: <20250712173805.584586-3-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250713_013924_882277_B196104A 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20250713_063924_585169_01521039 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,108 +77,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+On Sat, Jul 12, 2025 at 05:37:44PM +0000, Jonas Karlman wrote:
+> The ROCK 2A and ROCK 2F is a high-performance single board computer
+> developed by Radxa, based on the Rockchip RK3528A SoC.
+> 
+> Add initial device tree for the Radxa ROCK 2A and ROCK 2F boards.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 
-The NPU on the ROCK5B uses the same regulator for both the sram-supply
-and the npu's supply. Add this regulator, and enable all the NPU bits.
-Also add the regulator as a domain-supply to the pd_npu power domain.
+Tested on my Radxa 2A board, the SD card could be read out at 45MB/s,
+the GbE port reaches 942Mbps with iperf, and the EEPROM could be read
+out correctly. I also saw the heartbeat LED blinking,
 
-v8:
-- Remove notion of top core (Robin Murphy)
+Tested-by: Yao Zi <ziyao@disroot.org>
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
----
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi | 57 ++++++++++++++++++++++++
- 1 file changed, 57 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
-index 6052787d2560978d2bae6cfbeea5fc1d419d583a..06f73f16901026485c02cecf9176d0d7dc7a021a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
-@@ -309,6 +309,29 @@ regulator-state-mem {
- 	};
- };
- 
-+&i2c1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c1m2_xfer>;
-+	status = "okay";
-+
-+	vdd_npu_s0: regulator@42 {
-+		compatible = "rockchip,rk8602";
-+		reg = <0x42>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_npu_s0";
-+		regulator-boot-on;
-+		regulator-enable-ramp-delay = <500>;
-+		regulator-min-microvolt = <550000>;
-+		regulator-max-microvolt = <950000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		 };
-+	};
-+};
-+
- &i2c6 {
- 	status = "okay";
- 
-@@ -433,6 +456,10 @@ &pd_gpu {
- 	domain-supply = <&vdd_gpu_s0>;
- };
- 
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	hdmirx {
- 		hdmirx_hpd: hdmirx-5v-detection {
-@@ -487,6 +514,36 @@ &pwm1 {
- 	status = "okay";
- };
- 
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_1 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_2 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_top {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_1 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_2 {
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&avcc_1v8_s0>;
- 	status = "okay";
-
--- 
-2.50.0
-
+> ---
+> v3: Rename led nodes to led-0/led-1 (Chukun Pan)
+> v2: Limit sdmmc max-frequency to 100 MHz (Yao Zi)
+> 
+> Schematics:
+> - https://dl.radxa.com/rock2/2a/v1.2/radxa_rock_2a_v1.2_schematic.pdf
+> - https://dl.radxa.com/rock2/2f/radxa_rock2f_v1.01_schematic.pdf
+> ---
+>  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+>  .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 293 ++++++++++++++++++
+>  .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++++
+>  .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
+>  4 files changed, 387 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
 
 _______________________________________________
 Linux-rockchip mailing list
