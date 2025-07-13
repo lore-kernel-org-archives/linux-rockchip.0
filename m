@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF393C83F1D
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jul 2025 09:02:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C804CC83F1D
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jul 2025 09:04:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NiKn+I2PPrpt+FpS3SvPprT+YwftHC8nMEJG9aBFplU=; b=4vDUN+rcD68iGw
-	1FTZGJuXa4kXkzcdgb0VRJobbBeF1oVKuJUcycPfaR33bpVhNqQRQhF+ORVjeBGPFD8X8ozSvtb84
-	MSFWmucF3jCaC7QhDucQl7cKMcZt78kZH4T2ehfgXxLdaSz2+8eELWLlPFM/2NlHeE/cQpPxOIb3/
-	EF+nEK4nN+bZh4bXIQyo0WlLut2ApW/micDiwBsr4fg62HmXf/ojZZXJ6wSLYn+RRz7/NYTLT7YYE
-	e3eltcutKw/Vht6JHCFiqWp/KZvBfizHcxWjisizwGKsOB8FRgP2WDtxKd1dueCVZ2I5Q5SNIP211
-	f8w0RIteNOdxMupKEHIA==;
+	List-Owner; bh=WwQALGAVBonqGisHh3DvZFk697rMpy3Y9ls+PCsP7GM=; b=hn8QRgqspLTsMq
+	WvKNRQeCNbWMmi+CHjYl+VJ2gHq7OJL4lc0O5MbW4wjf54YLlxMOSwZ/pR1YVsCIDcv0dfBoQ+CkM
+	fs7q3mAxX78DeZsUd3HUMS/iLkQKKtoJOeRX+j7Mwen/UsSAccPkMUwXSoOAuJJmABWofnhaGCuy6
+	A/RbE0o/2AFB33PUNJMAT2gEYrgJcnAFCd/R3DnHTIcHKoTV5jIED+NH/dtWeZFY+6fe4+xainiB9
+	pA4xIfK/k7d66WjJdOSDY/52DXvKs8rB9Zdy49GgI/M0vBb7TChOqnErMnknhYm0QlcOGRSU+Z1QE
+	VgCMBk3ZlqJsf5Z0YLYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uasbA-0000000HZiI-2RSk;
-	Sun, 13 Jul 2025 09:02:16 +0000
-Received: from mail-ej1-f54.google.com ([209.85.218.54])
+	id 1uasdW-0000000HZwZ-3Ejh;
+	Sun, 13 Jul 2025 09:04:42 +0000
+Received: from mail-ej1-f44.google.com ([209.85.218.44])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uasEp-0000000HXBc-3sb5;
-	Sun, 13 Jul 2025 08:39:13 +0000
-Received: by mail-ej1-f54.google.com with SMTP id a640c23a62f3a-ad56cbc7b07so592353366b.0;
-        Sun, 13 Jul 2025 01:39:11 -0700 (PDT)
+	id 1uasEs-0000000HXDP-2CPk;
+	Sun, 13 Jul 2025 08:39:15 +0000
+Received: by mail-ej1-f44.google.com with SMTP id a640c23a62f3a-ae708b0e83eso326230266b.2;
+        Sun, 13 Jul 2025 01:39:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752395950; x=1753000750;
+        d=1e100.net; s=20230601; t=1752395953; x=1753000753;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=H72rn8ogX3KhM94X5uibatMEZGkDkzHDrTXRw3fgC8g=;
-        b=sAZGJ4dWvwNE9X/np9zv/2VhThT/LIExT8SmHOAvonKL5awiCkXFrb0GAkT0ZT3Lli
-         ZqoY8Yv9KCyYLens2pjP84Rhwf46mf+8IXSNUk8sMNnb3Za30eYbQdWCJ+uzrixEZTYw
-         TegE5673+Yi99uLVMg0XxN60N9Hv9l/lfXjqrsLpkI7DymhnlT/++nf3YjbTLniI7fgP
-         vbemJL6xGwDoxbiBLDGmhV6rjVJYjJR8M+yboEOI14aVRj8L+xU1BmCSAYNdob+UP0ci
-         NL5zKEwVleakUrChhqGdbSkmgHFB2qqKd53NhI8c+uz3Xi7NWGJHP96dERJfm4y5Wxwe
-         Emmw==
-X-Forwarded-Encrypted: i=1; AJvYcCU2sWswTQKXIHjPVMOh0Vyi0XeFTgZdKAJtw+lIhbnbmfmf/gfFQdP3dQOMOWOB5wD/6JdlnhbmyOgz9RaS856+@lists.infradead.org, AJvYcCVDRXU1SF1YucRnDr1Dw/ElzOR3y9w3Uh1K//tl/2ybP28Ab4ncExFJMnfhDGVgwVm6uTZVyWvXqCF+oOWC5fw=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw6bbaiRp/lQ6ReYCFup5wkorMxGCAXzK5kr5++WJVfQdkn9ZYf
-	wIAne+67Ln6jj6KdJCyZpSIA44A4JumJwxqC14ter02US+aHUrQ5cha4Xxa4i5dc
-X-Gm-Gg: ASbGncurXD7YLrsP8vRA3Wz0pSQq+mv9vgQdAHnSitWBHOLvuihCMouqgVZ+kgth1Jb
-	sKDFxDAN61S2W7Efy7FF96liXUQyQpt7UQCHinAxgR09RDDLQOZkpph6MC/Q2mKjVckiOP50KlG
-	9X7P56dPEteq81kGMIGOJNqLsrNtzJkqLXf5xfg0VvEj+xHmkxbAgC1mG+b+/ynCONHT96cdDF1
-	F9HFkZOvNZvq6teglZ7ZMm4enqiYSNNuqSRWjYBOFo6ONAz0S+C/jMsSzi+RINLvbmzpozSG74k
-	Kzy1CC4P5mC4n95OacfpJyw2PxC5tO9q3oWih9TWjhV6n6kmA0HU/KIthXWw33wBK8d5OfsHXBh
-	s5ISDyVjF3R1rqYUQIL1qray6vI04t8Ipn9WW0LS+QItXT47i4QoI6EtS
-X-Google-Smtp-Source: AGHT+IEnUEEowUGfSdqp7ZjyLw6vDg0ImHNsDuzMVOpeAmqIoh/s37dukeUPYiyw3AirsdVVG4tMDw==
-X-Received: by 2002:a17:907:962a:b0:ad8:50c3:3359 with SMTP id a640c23a62f3a-ae6fc6a360emr904292866b.9.1752395950161;
-        Sun, 13 Jul 2025 01:39:10 -0700 (PDT)
+        bh=HOHpT8kGZSJVLxTQMVWR2M9VRzfmT5p8z/9ngbND8fo=;
+        b=D/VLGTdbx2q+GPovIpSE5g6RTb8BFDFMIXQJ3dSUM8tha2caexLQbVp3y/7Z7iBF9X
+         CCFDs/Y87cBU0ZqX1akQPPzWtM4BjFUxGkr1xo5oMDP3fEv/3zIXvtgs/3rTYWN9iZ7D
+         XF49iXKZe/khKRZ5f2dX6nl1gEkGhtbZzhMsdklYRme/e/PXrIfgF6EXau4xPVE3ig5F
+         HxlZumHLoNPaLhBWPv4WmsadsfvVfiBgQ92Zxeq9Iah8U86aKDueFm/mES1DhpgpTaVJ
+         oNA6PnF18zSG67T9xDz9ZviV37yarhrsE2KEoxL7qI9dR8We05AscjOrqW+cIeJSEfoH
+         Tg2A==
+X-Forwarded-Encrypted: i=1; AJvYcCV4/WdQeCmt8LmyTBH4ofW4/oWiBTVyF+a5OSJqlJTXGyNp6FFCcWW72ziS/4Q7UmPhYl89BsdARigcdZae5ks=@lists.infradead.org, AJvYcCWUC45nJSLOu1wCeAJtNjhg/CyRn4ysuw79bB+LXAucb11iaipL/eEmHOHe2lGS3gdp+q7gkRz6DDLfmUo82JDb@lists.infradead.org
+X-Gm-Message-State: AOJu0YzvEvY3ClPudJnT+6AddYCzafs3zArDPKiDli/iC6HVfnpVObv/
+	mCMHTVMd8+MAFdp5VzMVndtH5R0oVOpvF+2rWxCp8IUGZS2ICUdPnf1oZZVKKFSx
+X-Gm-Gg: ASbGnctb2MyNaIGc3I8EfP+gwtqL8AzNgF6xyhZF61NcE4b8taXCs3Tqi8W46w11ksI
+	n6KFnKaSIyiD7riQhVQH/qepAX546B+HXYLbDA7R9def/5QZ8030AmiBwb7zzdyYthopD8zdn4a
+	aPVtUbRvrja0ruvZb8Sp0WQfefruaFb/9SEbl1HfCq46ET1VPY0SsXakrajs9XuFYlU8/Cn9J/s
+	HLORDWCcENhHNTvu12MzCjxe5Rx05YRJj/LjwH1maHSwU+m5hI3u+dsX/t+qQRBu//p9hhlC1OQ
+	yfPAQ1go3s3kg+/HtNq+AYVTtN/BGbBWzyFJ+EOlQNi5Id7bUaTIX1U7AB+AEF2bCAZcm1MjnjC
+	1Z2b69UjN3ipyGAVsltUEmoqKk68CDlsijLC/legD4u9EB5OAGevVy5hV
+X-Google-Smtp-Source: AGHT+IHl3nw9qjo4aS5LVukEuyLIVG/s6+0jGJrU9nM4JX0orxt25nmWT7xes/c92JOudJh9cADHRw==
+X-Received: by 2002:a17:907:1b08:b0:ad8:a41a:3cd2 with SMTP id a640c23a62f3a-ae6fbe71f29mr1117728466b.16.1752395952721;
+        Sun, 13 Jul 2025 01:39:12 -0700 (PDT)
 Received: from [10.42.0.1] (cst-prg-46-162.cust.vodafone.cz. [46.135.46.162])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ae6e7e90a42sm610876266b.27.2025.07.13.01.39.07
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ae6e7e90a42sm610876266b.27.2025.07.13.01.39.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 13 Jul 2025 01:39:09 -0700 (PDT)
+        Sun, 13 Jul 2025 01:39:12 -0700 (PDT)
 From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Date: Sun, 13 Jul 2025 10:38:55 +0200
-Subject: [PATCH v8 05/10] accel/rocket: Add IOCTLs for synchronizing memory
- accesses
+Date: Sun, 13 Jul 2025 10:38:56 +0200
+Subject: [PATCH v8 06/10] dt-bindings: npu: rockchip,rknn: Add bindings
 MIME-Version: 1.0
-Message-Id: <20250713-6-10-rocket-v8-5-64fa3115e910@tomeuvizoso.net>
+Message-Id: <20250713-6-10-rocket-v8-6-64fa3115e910@tomeuvizoso.net>
 References: <20250713-6-10-rocket-v8-0-64fa3115e910@tomeuvizoso.net>
 In-Reply-To: <20250713-6-10-rocket-v8-0-64fa3115e910@tomeuvizoso.net>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -83,11 +82,11 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  dri-devel@lists.freedesktop.org, linux-doc@vger.kernel.org, 
  linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org, 
  Tomeu Vizoso <tomeu@tomeuvizoso.net>, 
- Jeff Hugo <jeff.hugo@oss.qualcomm.com>
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250713_013911_970523_336AE7AF 
-X-CRM114-Status: GOOD (  18.47  )
+X-CRM114-CacheID: sfid-20250713_013914_573685_5232AF5D 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,196 +98,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The NPU cores have their own access to the memory bus, and this isn't
-cache coherent with the CPUs.
-
-Add IOCTLs so userspace can mark when the caches need to be flushed, and
-also when a writer job needs to be waited for before the buffer can be
-accessed from the CPU.
-
-Initially based on the same IOCTLs from the Etnaviv driver.
-
-v2:
-- Don't break UABI by reordering the IOCTL IDs (Jeff Hugo)
-
-v3:
-- Check that padding fields in IOCTLs are zero (Jeff Hugo)
-
-v6:
-- Fix conversion logic to make sure we use DMA_BIDIRECTIONAL when needed
-  (Lucas Stach)
-
-v8:
-- Always sync BOs in both directions (Robin Murphy)
-
-Reviewed-by: Jeff Hugo <jeff.hugo@oss.qualcomm.com>
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Tomeu Vizoso <tomeu@tomeuvizoso.net>
----
- drivers/accel/rocket/rocket_drv.c |  2 ++
- drivers/accel/rocket/rocket_gem.c | 56 +++++++++++++++++++++++++++++++++++++++
- drivers/accel/rocket/rocket_gem.h |  4 +++
- include/uapi/drm/rocket_accel.h   | 34 ++++++++++++++++++++++++
- 4 files changed, 96 insertions(+)
-
-diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
-index a21aa9aa189ba585c70fbf57d2a41fb578357efd..5c0b63f0a8f00dc71060e7177d0ed1ca15755ec4 100644
---- a/drivers/accel/rocket/rocket_drv.c
-+++ b/drivers/accel/rocket/rocket_drv.c
-@@ -134,6 +134,8 @@ static const struct drm_ioctl_desc rocket_drm_driver_ioctls[] = {
- 
- 	ROCKET_IOCTL(CREATE_BO, create_bo),
- 	ROCKET_IOCTL(SUBMIT, submit),
-+	ROCKET_IOCTL(PREP_BO, prep_bo),
-+	ROCKET_IOCTL(FINI_BO, fini_bo),
- };
- 
- DEFINE_DRM_ACCEL_FOPS(rocket_accel_driver_fops);
-diff --git a/drivers/accel/rocket/rocket_gem.c b/drivers/accel/rocket/rocket_gem.c
-index 05cf46040865c01fe14a169c865227780f2db679..0551e11cc184143a582d1718a621e22086217ad9 100644
---- a/drivers/accel/rocket/rocket_gem.c
-+++ b/drivers/accel/rocket/rocket_gem.c
-@@ -123,3 +123,59 @@ int rocket_ioctl_create_bo(struct drm_device *dev, void *data, struct drm_file *
- 
- 	return ret;
- }
-+
-+int rocket_ioctl_prep_bo(struct drm_device *dev, void *data, struct drm_file *file)
-+{
-+	struct drm_rocket_prep_bo *args = data;
-+	unsigned long timeout = drm_timeout_abs_to_jiffies(args->timeout_ns);
-+	struct drm_gem_object *gem_obj;
-+	struct drm_gem_shmem_object *shmem_obj;
-+	long ret = 0;
-+
-+	if (args->reserved != 0) {
-+		drm_dbg(dev, "Reserved field in drm_rocket_prep_bo struct should be 0.\n");
-+		return -EINVAL;
-+	}
-+
-+	gem_obj = drm_gem_object_lookup(file, args->handle);
-+	if (!gem_obj)
-+		return -ENOENT;
-+
-+	ret = dma_resv_wait_timeout(gem_obj->resv, DMA_RESV_USAGE_WRITE, true, timeout);
-+	if (!ret)
-+		ret = timeout ? -ETIMEDOUT : -EBUSY;
-+
-+	shmem_obj = &to_rocket_bo(gem_obj)->base;
-+
-+	dma_sync_sgtable_for_cpu(dev->dev, shmem_obj->sgt, DMA_BIDIRECTIONAL);
-+
-+	drm_gem_object_put(gem_obj);
-+
-+	return ret;
-+}
-+
-+int rocket_ioctl_fini_bo(struct drm_device *dev, void *data, struct drm_file *file)
-+{
-+	struct drm_rocket_fini_bo *args = data;
-+	struct drm_gem_shmem_object *shmem_obj;
-+	struct rocket_gem_object *rkt_obj;
-+	struct drm_gem_object *gem_obj;
-+
-+	if (args->reserved != 0) {
-+		drm_dbg(dev, "Reserved field in drm_rocket_fini_bo struct should be 0.\n");
-+		return -EINVAL;
-+	}
-+
-+	gem_obj = drm_gem_object_lookup(file, args->handle);
-+	if (!gem_obj)
-+		return -ENOENT;
-+
-+	rkt_obj = to_rocket_bo(gem_obj);
-+	shmem_obj = &rkt_obj->base;
-+
-+	dma_sync_sgtable_for_device(dev->dev, shmem_obj->sgt, DMA_BIDIRECTIONAL);
-+
-+	drm_gem_object_put(gem_obj);
-+
-+	return 0;
-+}
-diff --git a/drivers/accel/rocket/rocket_gem.h b/drivers/accel/rocket/rocket_gem.h
-index 91a1fc09c56ce483ebe80959e1a7ff934867bedc..24043033450941cb866a21378875810c6e8b9323 100644
---- a/drivers/accel/rocket/rocket_gem.h
-+++ b/drivers/accel/rocket/rocket_gem.h
-@@ -21,6 +21,10 @@ struct drm_gem_object *rocket_gem_create_object(struct drm_device *dev, size_t s
- 
- int rocket_ioctl_create_bo(struct drm_device *dev, void *data, struct drm_file *file);
- 
-+int rocket_ioctl_prep_bo(struct drm_device *dev, void *data, struct drm_file *file);
-+
-+int rocket_ioctl_fini_bo(struct drm_device *dev, void *data, struct drm_file *file);
-+
- static inline
- struct  rocket_gem_object *to_rocket_bo(struct drm_gem_object *obj)
- {
-diff --git a/include/uapi/drm/rocket_accel.h b/include/uapi/drm/rocket_accel.h
-index 374f8370ac9df6944fdb6ef06e56f15226e072ba..14b2e12b7c49288a84e645570cdeb815cd632d96 100644
---- a/include/uapi/drm/rocket_accel.h
-+++ b/include/uapi/drm/rocket_accel.h
-@@ -13,9 +13,13 @@ extern "C" {
- 
- #define DRM_ROCKET_CREATE_BO			0x00
- #define DRM_ROCKET_SUBMIT			0x01
-+#define DRM_ROCKET_PREP_BO			0x02
-+#define DRM_ROCKET_FINI_BO			0x03
- 
- #define DRM_IOCTL_ROCKET_CREATE_BO		DRM_IOWR(DRM_COMMAND_BASE + DRM_ROCKET_CREATE_BO, struct drm_rocket_create_bo)
- #define DRM_IOCTL_ROCKET_SUBMIT			DRM_IOW(DRM_COMMAND_BASE + DRM_ROCKET_SUBMIT, struct drm_rocket_submit)
-+#define DRM_IOCTL_ROCKET_PREP_BO		DRM_IOW(DRM_COMMAND_BASE + DRM_ROCKET_PREP_BO, struct drm_rocket_prep_bo)
-+#define DRM_IOCTL_ROCKET_FINI_BO		DRM_IOW(DRM_COMMAND_BASE + DRM_ROCKET_FINI_BO, struct drm_rocket_fini_bo)
- 
- /**
-  * struct drm_rocket_create_bo - ioctl argument for creating Rocket BOs.
-@@ -39,6 +43,36 @@ struct drm_rocket_create_bo {
- 	__u64 offset;
- };
- 
-+/**
-+ * struct drm_rocket_prep_bo - ioctl argument for starting CPU ownership of the BO.
-+ *
-+ * Takes care of waiting for any NPU jobs that might still use the NPU and performs cache
-+ * synchronization.
-+ */
-+struct drm_rocket_prep_bo {
-+	/** Input: GEM handle of the buffer object. */
-+	__u32 handle;
-+
-+	/** Reserved, must be zero. */
-+	__u32 reserved;
-+
-+	/** Input: Amount of time to wait for NPU jobs. */
-+	__s64 timeout_ns;
-+};
-+
-+/**
-+ * struct drm_rocket_fini_bo - ioctl argument for finishing CPU ownership of the BO.
-+ *
-+ * Synchronize caches for NPU access.
-+ */
-+struct drm_rocket_fini_bo {
-+	/** Input: GEM handle of the buffer object. */
-+	__u32 handle;
-+
-+	/** Reserved, must be zero. */
-+	__u32 reserved;
-+};
-+
- /**
-  * struct drm_rocket_task - A task to be run on the NPU
-  *
-
--- 
-2.50.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QWRkIHRoZSBiaW5kaW5ncyBmb3IgdGhlIE5ldXJhbCBQcm9jZXNzaW5nIFVuaXQgSVAgZnJvbSBS
+b2NrY2hpcC4KCnYyOgotIEFkYXB0IHRvIG5ldyBub2RlIHN0cnVjdHVyZSAob25lIG5vZGUgcGVy
+IGNvcmUsIGVhY2ggd2l0aCBpdHMgb3duCiAgSU9NTVUpCi0gU2V2ZXJhbCBtaXNjLiBmaXhlcyBm
+cm9tIFNlYmFzdGlhbiBSZWljaGVsCgp2MzoKLSBTcGxpdCByZWdpc3RlciBibG9jayBpbiBpdHMg
+Y29uc3RpdHVlbnQgc3ViYmxvY2tzLCBhbmQgb25seSByZXF1aXJlCiAgdGhlIG9uZXMgdGhhdCB0
+aGUga2VybmVsIHdvdWxkIGV2ZXIgdXNlIChOaWNvbGFzIEZyYXR0YXJvbGkpCi0gR3JvdXAgc3Vw
+cGxpZXMgKFJvYiBIZXJyaW5nKQotIEV4cGxhaW4gdGhlIHdheSBpbiB3aGljaCB0aGUgdG9wIGNv
+cmUgaXMgc3BlY2lhbCAoUm9iIEhlcnJpbmcpCgp2NDoKLSBDaGFuZ2UgcmVxdWlyZWQgbm9kZSBu
+YW1lIHRvIG5wdUAgKFJvYiBIZXJyaW5nIGFuZCBLcnp5c3p0b2YgS296bG93c2tpKQotIFJlbW92
+ZSB1bm5lZWRlZCBpdGVtczogKEtyenlzenRvZiBLb3psb3dza2kpCi0gRml4IHVzZSBvZiBtaW5J
+dGVtcy9tYXhJdGVtcyAoS3J6eXN6dG9mIEtvemxvd3NraSkKLSBBZGQgcmVnLW5hbWVzIHRvIGxp
+c3Qgb2YgcmVxdWlyZWQgcHJvcGVydGllcyAoS3J6eXN6dG9mIEtvemxvd3NraSkKLSBGaXggZXhh
+bXBsZSAoS3J6eXN6dG9mIEtvemxvd3NraSkKCnY1OgotIFJlbmFtZSBmaWxlIHRvIHJvY2tjaGlw
+LHJrMzU4OC1ya25uLWNvcmUueWFtbCAoS3J6eXN6dG9mIEtvemxvd3NraSkKLSBTdHJlYW1saW5l
+IGNvbXBhdGlibGUgcHJvcGVydHkgKEtyenlzenRvZiBLb3psb3dza2kpCgp2NjoKLSBSZW1vdmUg
+bWVudGlvbiB0byBOVkRMQSwgYXMgdGhlIGhhcmR3YXJlIGlzIG9ubHkgaW5jaWRlbnRhbGx5IHJl
+bGF0ZWQKICAoS2V2ZXIgWWFuZykKLSBNYXJrIHBjbGsgYW5kIG5wdSBjbG9ja3MgYXMgcmVxdWly
+ZWQgYnkgYWxsIGNsb2NrcyAoUm9iIEhlcnJpbmcpCgp2NzoKLSBSZW1vdmUgYWxsT2Ygc2VjdGlv
+biwgbm90IG5lZWRlZCBub3cgdGhhdCBhbGwgbm9kZXMgcmVxdWlyZSA0IGNsb2NrcwogIChIZWlr
+byBTdMO8Ym5lcikKCnY4OgotIFJlbW92ZSBub3Rpb24gb2YgdG9wIGNvcmUgKFJvYmluIE11cnBo
+eSkKClNpZ25lZC1vZmYtYnk6IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBj
+b2xsYWJvcmEuY29tPgpSZXZpZXdlZC1ieTogS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6eXN6dG9m
+Lmtvemxvd3NraUBsaW5hcm8ub3JnPgpUZXN0ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0Bz
+bnRlY2guZGU+ClNpZ25lZC1vZmYtYnk6IFRvbWV1IFZpem9zbyA8dG9tZXVAdG9tZXV2aXpvc28u
+bmV0PgotLS0KIC4uLi9iaW5kaW5ncy9ucHUvcm9ja2NoaXAscmszNTg4LXJrbm4tY29yZS55YW1s
+ICAgIHwgMTEyICsrKysrKysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDExMiBpbnNl
+cnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L25wdS9yb2NrY2hpcCxyazM1ODgtcmtubi1jb3JlLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2Rldmlj
+ZXRyZWUvYmluZGluZ3MvbnB1L3JvY2tjaGlwLHJrMzU4OC1ya25uLWNvcmUueWFtbApuZXcgZmls
+ZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw
+MDAwLi5hMWJkZDgzMWE4ZTY2NWE3YzczYjczZjE1YTljZGU4ZGViNDc0MDk1Ci0tLSAvZGV2L251
+bGwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25wdS9yb2NrY2hpcCxy
+azM1ODgtcmtubi1jb3JlLnlhbWwKQEAgLTAsMCArMSwxMTIgQEAKKyMgU1BEWC1MaWNlbnNlLUlk
+ZW50aWZpZXI6IChHUEwtMi4wLW9ubHkgT1IgQlNELTItQ2xhdXNlKQorJVlBTUwgMS4yCistLS0K
+KyRpZDogaHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvbnB1L3JvY2tjaGlwLHJrMzU4OC1y
+a25uLWNvcmUueWFtbCMKKyRzY2hlbWE6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9tZXRhLXNjaGVt
+YXMvY29yZS55YW1sIworCit0aXRsZTogTmV1cmFsIFByb2Nlc3NpbmcgVW5pdCBJUCBmcm9tIFJv
+Y2tjaGlwCisKK21haW50YWluZXJzOgorICAtIFRvbWV1IFZpem9zbyA8dG9tZXVAdG9tZXV2aXpv
+c28ubmV0PgorCitkZXNjcmlwdGlvbjoKKyAgUm9ja2NoaXAgSVAgZm9yIGFjY2VsZXJhdGluZyBp
+bmZlcmVuY2Ugb2YgbmV1cmFsIG5ldHdvcmtzLgorCisgIFRoZXJlIGlzIHRvIGJlIGEgbm9kZSBw
+ZXIgZWFjaCBOUFUgY29yZSBpbiB0aGUgU29DLCBhbmQgZWFjaCBjb3JlIHNob3VsZCByZWZlcmVu
+Y2UgYWxsIHRoZQorICByZXNvdXJjZXMgdGhhdCBpdCBuZWVkcyB0byBmdW5jdGlvbiwgc3VjaCBh
+cyBjbG9ja3MsIHBvd2VyIGRvbWFpbnMsIGFuZCByZXNldHMuCisKK3Byb3BlcnRpZXM6CisgICRu
+b2RlbmFtZToKKyAgICBwYXR0ZXJuOiAnXm5wdUBbYS1mMC05XSskJworCisgIGNvbXBhdGlibGU6
+CisgICAgZW51bToKKyAgICAgIC0gcm9ja2NoaXAscmszNTg4LXJrbm4tY29yZQorCisgIHJlZzoK
+KyAgICBtYXhJdGVtczogMworCisgIHJlZy1uYW1lczoKKyAgICBpdGVtczoKKyAgICAgIC0gY29u
+c3Q6IHBjICMgUHJvZ3JhbSBDb250cm9sLXJlbGF0ZWQgcmVnaXN0ZXJzCisgICAgICAtIGNvbnN0
+OiBjbmEgIyBDb252b2x1dGlvbiBOZXVyYWwgTmV0d29yayBBY2NlbGVyYXRvciByZWdpc3RlcnMK
+KyAgICAgIC0gY29uc3Q6IGNvcmUgIyBNYWluIE5QVSBjb3JlIHByb2Nlc3NpbmcgdW5pdCByZWdp
+c3RlcnMKKworICBjbG9ja3M6CisgICAgbWF4SXRlbXM6IDQKKworICBjbG9jay1uYW1lczoKKyAg
+ICBpdGVtczoKKyAgICAgIC0gY29uc3Q6IGFjbGsKKyAgICAgIC0gY29uc3Q6IGhjbGsKKyAgICAg
+IC0gY29uc3Q6IG5wdQorICAgICAgLSBjb25zdDogcGNsaworCisgIGludGVycnVwdHM6CisgICAg
+bWF4SXRlbXM6IDEKKworICBpb21tdXM6CisgICAgbWF4SXRlbXM6IDEKKworICBucHUtc3VwcGx5
+OiB0cnVlCisKKyAgcG93ZXItZG9tYWluczoKKyAgICBtYXhJdGVtczogMQorCisgIHJlc2V0czoK
+KyAgICBtYXhJdGVtczogMgorCisgIHJlc2V0LW5hbWVzOgorICAgIGl0ZW1zOgorICAgICAgLSBj
+b25zdDogc3JzdF9hCisgICAgICAtIGNvbnN0OiBzcnN0X2gKKworICBzcmFtLXN1cHBseTogdHJ1
+ZQorCityZXF1aXJlZDoKKyAgLSBjb21wYXRpYmxlCisgIC0gcmVnCisgIC0gcmVnLW5hbWVzCisg
+IC0gY2xvY2tzCisgIC0gY2xvY2stbmFtZXMKKyAgLSBpbnRlcnJ1cHRzCisgIC0gaW9tbXVzCisg
+IC0gcG93ZXItZG9tYWlucworICAtIHJlc2V0cworICAtIHJlc2V0LW5hbWVzCisgIC0gbnB1LXN1
+cHBseQorICAtIHNyYW0tc3VwcGx5CisKK2FkZGl0aW9uYWxQcm9wZXJ0aWVzOiBmYWxzZQorCitl
+eGFtcGxlczoKKyAgLSB8CisgICAgI2luY2x1ZGUgPGR0LWJpbmRpbmdzL2Nsb2NrL3JvY2tjaGlw
+LHJrMzU4OC1jcnUuaD4KKyAgICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvaW50ZXJydXB0LWNvbnRy
+b2xsZXIvaXJxLmg+CisgICAgI2luY2x1ZGUgPGR0LWJpbmRpbmdzL2ludGVycnVwdC1jb250cm9s
+bGVyL2FybS1naWMuaD4KKyAgICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvcG93ZXIvcmszNTg4LXBv
+d2VyLmg+CisgICAgI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3Jlc2V0L3JvY2tjaGlwLHJrMzU4OC1j
+cnUuaD4KKworICAgIGJ1cyB7CisgICAgICAjYWRkcmVzcy1jZWxscyA9IDwyPjsKKyAgICAgICNz
+aXplLWNlbGxzID0gPDI+OworCisgICAgICBucHVAZmRhYjAwMDAgeworICAgICAgICBjb21wYXRp
+YmxlID0gInJvY2tjaGlwLHJrMzU4OC1ya25uLWNvcmUiOworICAgICAgICByZWcgPSA8MHgwIDB4
+ZmRhYjAwMDAgMHgwIDB4MTAwMD4sCisgICAgICAgICAgICAgIDwweDAgMHhmZGFiMTAwMCAweDAg
+MHgxMDAwPiwKKyAgICAgICAgICAgICAgPDB4MCAweGZkYWIzMDAwIDB4MCAweDEwMDA+OworICAg
+ICAgICByZWctbmFtZXMgPSAicGMiLCAiY25hIiwgImNvcmUiOworICAgICAgICBjbG9ja3MgPSA8
+JmNydSBBQ0xLX05QVTA+LCA8JmNydSBIQ0xLX05QVTA+LAorICAgICAgICAgICAgICAgICA8JnNj
+bWlfY2xrIFNDTUlfQ0xLX05QVT4sIDwmY3J1IFBDTEtfTlBVX1JPT1Q+OworICAgICAgICBjbG9j
+ay1uYW1lcyA9ICJhY2xrIiwgImhjbGsiLCAibnB1IiwgInBjbGsiOworICAgICAgICBpbnRlcnJ1
+cHRzID0gPEdJQ19TUEkgMTEwIElSUV9UWVBFX0xFVkVMX0hJR0ggMD47CisgICAgICAgIGlvbW11
+cyA9IDwmcmtubl9tbXVfdG9wPjsKKyAgICAgICAgbnB1LXN1cHBseSA9IDwmdmRkX25wdV9zMD47
+CisgICAgICAgIHBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzU4OF9QRF9OUFVUT1A+OworICAg
+ICAgICByZXNldHMgPSA8JmNydSBTUlNUX0FfUktOTjA+LCA8JmNydSBTUlNUX0hfUktOTjA+Owor
+ICAgICAgICByZXNldC1uYW1lcyA9ICJzcnN0X2EiLCAic3JzdF9oIjsKKyAgICAgICAgc3JhbS1z
+dXBwbHkgPSA8JnZkZF9ucHVfbWVtX3MwPjsKKyAgICAgIH07CisgICAgfTsKKy4uLgoKLS0gCjIu
+NTAuMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
