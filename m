@@ -4,63 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88AC3C83F1D
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jul 2025 13:43:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E9F6C83F17
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jul 2025 14:30:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JtO9LvHEI7AzwzLFX+amO5JQqpG5WItaKpip3roS91Y=; b=u62ostNaaEiGHU
-	rQRup1jO/MNlDxKI0UmA3l8whcARcXuu6lyaX/DwE0JtHgPbQLVX573HbiOid9dgmC7VeHx7yAika
-	oQYj0TFCfumqotIb1lxHDhf7IE1NWH/UAXMnZveblC+dZLnCuJhsYmxyM1D2BR6GDW5GDWfFkABOo
-	IhSTXoYER58sH+MAeWIu0WdzXG0saYUhSjlI1IJrCFvALtzfIPMKVbVmtSAaxG3pHB2ptdCMp2bPl
-	nCEHQ2L6heZ5vSImktoV5zPTXwHC9blCvrkmsQshhWy9L3q+cgtGgaIQQ7vS2Bu9f+SPDI85mGCsI
-	2da+GebU1S8qTC7Cvf2g==;
+	List-Owner; bh=ObIknfy7o7e2/dN60dja4ABwNxpuAPugxJtSm6/SQ5Q=; b=b3IaExb6izGhfr
+	a42X6OKsPX6c84lkEZP1j/zRagrTsd8gHTG3lC3UEfY8JJYPHSfoHjNVPh/5aAkj4k5HQe8JFDVar
+	hNdCLo2pF4W6cpAk1YifW4AGsKHDU0YE+hO5wM+I15ozO2yT+0T4SzCVTUSwZzK5zXHNXHMxi4Wou
+	NFEImjoMvJILOvm8qhi/JDQyPhlaSd95D3+JyCwvDWXiOX4omUKi7cnyZ+9qyrtk9cGHXDucWhU+g
+	XUPwbWPonEXGcc0mWujHpNp8ujK4/bYKdwiKphfIwfBm9BZ1ByGSp3+r5FxQJE+PKW8Whbv0CKaNK
+	2gB/SCA/bBGyU/y/7cmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uawyt-00000000CvS-2CKr;
-	Sun, 13 Jul 2025 13:43:03 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1uaxiK-00000000FoH-0orl;
+	Sun, 13 Jul 2025 14:30:00 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uawvM-00000000Cd2-0ZwE;
-	Sun, 13 Jul 2025 13:39:26 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id C04C722C21;
-	Sun, 13 Jul 2025 15:39:19 +0200 (CEST)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ifD--ucc6E1n; Sun, 13 Jul 2025 15:39:19 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1752413958; bh=ipxl4zfw0YG+RKZ7tPVA6e20g09wAN/2FpTRmkI4s4k=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=TgFdNYAUHEcFBuxzTSDNUnNhncmZAe6GQlUQlfQY/42yHIuSGVm9hY236iFYe41ex
-	 W4tcGSwc+o0NhGlHWGM/t9xUadlWPIw6gGXN7Kz0IVQzEen3AcYZwQyKNk4xxl2myR
-	 8qNNsnHrDsujTZkuQ7jlOHSGgtN4fduFqwUs7eYOSnwgByCmg0ddEX4xM6DK/n5i4d
-	 LSsL2cSb9G8D85nziJlJ5tr/c2ANeFekmb/9snyyy9V3ETCst5zwfutSmG2o2096DQ
-	 sYpS0B5ZVESxWbeftkAgPrStWxtgAIv81DkA9Jaig0UdVw4qMRWs/7Sq4sDHHxPZ6m
-	 fy1FKRDkrGgcA==
-Date: Sun, 13 Jul 2025 13:39:06 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 2/6] arm64: dts: rockchip: Add Radxa ROCK 2A/2F
-Message-ID: <aHO2-l7MuaouBNmw@pie.lan>
-References: <20250712173805.584586-1-jonas@kwiboo.se>
- <20250712173805.584586-3-jonas@kwiboo.se>
+	id 1uaxds-00000000FSr-3cqv;
+	Sun, 13 Jul 2025 14:25:26 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-748e60725fcso432971b3a.3;
+        Sun, 13 Jul 2025 07:25:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1752416724; x=1753021524; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mkyQWYlswEIA/awfOx7Ojl2ZOMViZ7vIFKeJUQPM2ig=;
+        b=Sycv70jtYHyIAQAsjvystiYXTT+fOCR4V2GCQT/3xOGuQ8tiDv+wB8/mbAUr8s5hcL
+         Hq4oLMf1Xw0JQkuseaHcBExCk+VSuJPZ974kBxYHsQqti2GDp25xsIkf91TdD5PMrrK7
+         NSyRLftCyJobVKOMNHA0ktxaikQ4JkSGSJDLHqlIi2Y/RWjEKht7JE2HIARurXLseFv0
+         f0ZYkXFG5w8faIHaGVnqVC1f1v9c4tLClTVdNoWpNsNTXE6F851wHgqMSNwHpMfpfgtK
+         zMgD44WSJPqM1rJ3ljYmOfT+/VMD1XOCb6ITTLmrPXNa/tXi55YFpWMJBFeMQm2He7Tc
+         Pq1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752416724; x=1753021524;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mkyQWYlswEIA/awfOx7Ojl2ZOMViZ7vIFKeJUQPM2ig=;
+        b=lshhLbCod2w9WSRkTXwnJB6W5ME39NQcUYmDARilOxbXLPVmYNW1C6B4fOTjvDp6jd
+         cqawQI8HIjdp3ms4iMpGJlnBwmGYRkLYPe0jEnkPSVxWkyLmCJ/bGNQ204pKUla/DWa9
+         U7umbvWz3gjyB1SxJxAzjE2gV7q94QY36ANwX/qyyuvF4nw3vHi8MTy8TPef3tnxleHx
+         upV46AyXWAoZIqZ3yfFck3LlrSyl2TPwebgi+yH9nso9QkJ6Demt+7Va4Kqk4B1/AI8D
+         pqM2rVWT/KqkJji8Vpit3I4q+0XCYyAci3IKQs9Hpo16xCHV4gM+9NchtfSegC4yWGJd
+         SMhw==
+X-Forwarded-Encrypted: i=1; AJvYcCWsnbE+vyI9GJx//l52GreOIg04RaLLmTu1TXGzbVL4tf03K3DPDzm3MrUdNOzSaTqAcV1NarBvW+xwrWmy3Yk=@lists.infradead.org, AJvYcCXrzhhfQVpbq4zn9y5kd8Ok11oiZP5suqL3TsmCmg/6F+bjeNCHrkdBX9QcCjX/syROeiP+U0HBPDaWojHt1bvv@lists.infradead.org
+X-Gm-Message-State: AOJu0YzvijTG+CWZtKf4oGpZLdxqKW17bUQtgxLof2sK8BdDe5mdnSeD
+	akUX3XdgmYFdP3AADNLoaB+f4ID8dc8CwHK13j2Xqa89SnBDyMhsXZ4dxAx1Hm4h
+X-Gm-Gg: ASbGncucdGoV7vP2KK/f/kTTQDqCd9UyTjxeH6imJ2e6FfDCcV3+ELjpw+37hyuSDpY
+	oRMSHmTEAOE8PD2ulCss0IhUwdEAARqKpulJCGqNjgQKgxFevzkIZWWMZUHMVp4rfr3gyFmgY2k
+	fJ0FSuEc6asvLcHtrQzxh5EqWrXfuyde2a+sx6haGn+7CLZ9lpWtXXY1K0X7huhPsSCEh9nNZa1
+	LfYmuuFv82Hfhhb8JXTapyNIoHruEVRnlvbLhzEuVYjBn5ZtJoWowL4WN72XUapceqyqtyFD4Ep
+	rNQqcW//DyyZ32yMiHC8QKRSopmZFOGGyPTLN6KD0SGH3V8YIx/o88ESL7u3Xt/RM1re69FLu7T
+	1WRk+QP86yY0x/ec5QhzKXcLvIE8k
+X-Google-Smtp-Source: AGHT+IFe8Nke6gA7rUZjK0GXgdQSkFeo3RLnI6nP7zfSRLpGatQXNVoWZbEIqke10QCKsGdaZplJwQ==
+X-Received: by 2002:a05:6a00:b1d:b0:747:b043:41d4 with SMTP id d2e1a72fcca58-74ee3b110b4mr3471889b3a.4.1752416723683;
+        Sun, 13 Jul 2025 07:25:23 -0700 (PDT)
+Received: from rock-5b.. ([111.172.109.98])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-74eb9dd7140sm8810149b3a.24.2025.07.13.07.25.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 13 Jul 2025 07:25:23 -0700 (PDT)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: detlev.casanova@collabora.com
+Subject: Re:[PATCH 00/12] media: rkvdec: Add support for VDPU381 and VDPU383
+Date: Sun, 13 Jul 2025 22:25:14 +0800
+Message-ID: <20250713142514.56742-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250708151946.374349-1-detlev.casanova@collabora.com>
+References: <20250708151946.374349-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250712173805.584586-3-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250713_063924_585169_01521039 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20250713_072524_906448_92D506F1 
+X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,41 +92,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: mchehab@kernel.org, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, nicolas.dufresne@collabora.com, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 12, 2025 at 05:37:44PM +0000, Jonas Karlman wrote:
-> The ROCK 2A and ROCK 2F is a high-performance single board computer
-> developed by Radxa, based on the Rockchip RK3528A SoC.
-> 
-> Add initial device tree for the Radxa ROCK 2A and ROCK 2F boards.
-> 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Hi,
 
-Tested on my Radxa 2A board, the SD card could be read out at 45MB/s,
-the GbE port reaches 942Mbps with iperf, and the EEPROM could be read
-out correctly. I also saw the heartbeat LED blinking,
+On Tue,  8 Jul 2025 11:19:33 -0400, Detlev Casanova wrote:
+>As there is a considerable part of the code that can be shared with the
+>already supported rkvdec decoder driver, the support for these variants
+>is added here rather than writing a new driver.
 
-Tested-by: Yao Zi <ziyao@disroot.org>
+I have tested the new series on rk3588 and rk3399 with chromium. Since the
+HEVC decoder need EXT_SPS_RPS related patches, I ony test the H264 decoder.
+There are two issues:
 
-> ---
-> v3: Rename led nodes to led-0/led-1 (Chukun Pan)
-> v2: Limit sdmmc max-frequency to 100 MHz (Yao Zi)
-> 
-> Schematics:
-> - https://dl.radxa.com/rock2/2a/v1.2/radxa_rock_2a_v1.2_schematic.pdf
-> - https://dl.radxa.com/rock2/2f/radxa_rock2f_v1.01_schematic.pdf
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
->  .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 293 ++++++++++++++++++
->  .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++++
->  .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
->  4 files changed, 387 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
+1, The decoder max size is detected 1920x1088, which should be the fallback
+size when queryig VIDIOC_ENUM_FRAMESIZES[1].
+
+2, Playing H264 videos ends up with green screen.
+
+These above issues don't happen with the old rkvdec2 series.
+
+[1] https://github.com/chromium/chromium/blob/138.0.7204.92/media/gpu/v4l2/v4l2_utils.cc#L520-L533
+
+Best regards,
+Jianfeng
 
 _______________________________________________
 Linux-rockchip mailing list
