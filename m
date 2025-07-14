@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63889C83F1A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jul 2025 11:16:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9D60C83F1B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jul 2025 12:33:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Wn1cuxCF/3wxm5F4wErQwCs6KXdoj3po9dMbs3pYKhg=; b=Ce3tApC//DK/YK
-	Gbn2gPXvYcTrMln2JPYKcZssBCAU5xYyhIo8+KAp7DmL7Bi7RFoN0MPOyIQm4BWuVcilioQxgtO6n
-	bLsgmm6Vesig/OVlUmrHDgENQsMQOJLC2T3rW/+CqsU98ui4gYinhpAQryFjV8U7rIt596oA6b/3M
-	zZqHafhaZhn08aZ4M2raOgPdRHd1KRFchJyvR3yXKQO9SfzFuBxCc+QQ6oSKRHyQn4XH7HaMwYe+x
-	RQH/TVjea+m9SGE1Ck/XHAYED+xR8GqDXrqjG44bJtdNCL4TbhfkhMVib3WVihlXemWuJkQM00GP0
-	rRfXbyYUHCL+sFOCTuJQ==;
+	List-Owner; bh=QmzmEi+fknTFTsnym898GcyuxzkA/sYij0AMvgXDlFI=; b=HQ3BCV4rV4jUKE
+	uIHSWy6/rbjiec4wYMiAHlnE+jUrUDJwYPSnj5bSGtdXwXqvwxr+k3yHcZHcW2ZoQF21PBZ8qkelo
+	9NxAG2Bld7zG7sKAOQl5+hSkxJCCNuYOk057EFFDD89AABKzBCfmGzjsEoxFt5Oc7AVBuhQVPkeOi
+	raOS0drHFDPLkdgguwUhedW7L5XQw5bQMT5OoRjYW2EQGhr4/qzaiQmsjnjd2OksFu6lU6eOzKR54
+	TZPvdW6qLKkc7UIYbVJJNHlVXpOURgGSbmA64vnGHwnBN/xUk0sL5xYI1ear4nuFzhXkb3viM6a7K
+	D5wVLN6uTn1gzuQqZhvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubHA5-000000020hb-25BB;
-	Mon, 14 Jul 2025 11:15:57 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1ubIMX-00000002B3h-0aEo;
+	Mon, 14 Jul 2025 12:32:53 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubH9V-000000020do-01zy;
-	Mon, 14 Jul 2025 11:15:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1752491708; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ibsPL+Yzf77mSlY7Lf1egFE2iTkwDtHU6GT2qNDcj7XWUlyxhIcv1NVNVAQCGvWKZTa7xWB4+DuykKUYvIspil6K3CghdmSgYR9ilY8BywL5bGc8DOzuD2zdBXBLM6IuSZf9K85NWIu9g2gr0JqC5s3AuQxr6bavXjPVzKkjNrg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1752491708; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=PXtC+Ido9YgtHxLvcR+egm84Hyw0TuokS2ZdVegZyNI=; 
-	b=GBWyE6UeZ+RMC1M8QkdgITsjQLqOhr0iUUP0Sh4VDow6/JwVbfennNxp9wqpkBvQP+5YNNOycH1+2Zs0He9Kf+8864vT4dZkM5tNT7xwIBH6AxKkNFESLqFJN9ZMg2jmVtRitGJNVn7rAZeZYb/kKWZvWfrJpTfj9Gms4TY2GJQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1752491708;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=PXtC+Ido9YgtHxLvcR+egm84Hyw0TuokS2ZdVegZyNI=;
-	b=ERDEhpx8linIT39t7UxCNawgqgt40n96Iw5HQkSwLUoOxFLi5Ab/HLgEDU+iYgXp
-	t966lIBjCiVkRAT+H9mwTTWUpOUBiEq64aFN0M2vuCHMoPhJJ4tkXMrPgzuB2u+qfrl
-	w+gVnx5JYUFFRqK0yG+H3HzErm0afCh140k83uf4=
-Received: by mx.zohomail.com with SMTPS id 175249170629941.44373789408917;
-	Mon, 14 Jul 2025 04:15:06 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- linux-rockchip@lists.infradead.org, Yao Zi <ziyao@disroot.org>,
- Chukun Pan <amadeus@jmu.edu.cn>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 2/6] arm64: dts: rockchip: Add Radxa ROCK 2A/2F
-Date: Mon, 14 Jul 2025 13:15:01 +0200
-Message-ID: <6066694.MhkbZ0Pkbq@workhorse>
-In-Reply-To: <54a76b31-5f69-4004-a030-0096a18a0de4@kwiboo.se>
-References: <20250712173805.584586-1-jonas@kwiboo.se> <7826308.EvYhyI6sBW@workhorse>
- <54a76b31-5f69-4004-a030-0096a18a0de4@kwiboo.se>
+	id 1ubHz4-000000027fH-1nTx;
+	Mon, 14 Jul 2025 12:08:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id A7091A57041;
+	Mon, 14 Jul 2025 12:08:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A99D4C4CEED;
+	Mon, 14 Jul 2025 12:08:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752494917;
+	bh=wJpZOrDsWmR3OsD6VllKDLh4xwGIWO/czyVInoIGEZY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=trqiWccHinVvUiKTbjbxlGMWU2TqEjXG1ph1pc6e/dbRniwMVzHuzjWYIgSx5zY/S
+	 n5D2uxRV0KYpkK68a/cJLoWy6EL5T9gOnR/gn3oho6w6PNt2yN6auNj2N1sBc0hxNS
+	 K7z1j2Wv5C+a4VkQX0nNSSHfaFqWPjmx6ML5znRkgmLNdCJ2EePrQ/dJOumtQ5juQO
+	 MhHt4tzV/51KIrhrRL9QZrSi7xdFmlq2knGX0kFd2yhT+A5MBEqSPA4mRQwLs4Hq9C
+	 nnfsZtPAl49b3+Q/oRzYUboKsiFIYphlM4myKDlEK5iq8hI2vUEMXC15ObePthXA9C
+	 Q/UnTDZpVVzxw==
+Date: Mon, 14 Jul 2025 13:08:31 +0100
+From: Will Deacon <will@kernel.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: joro@8bytes.org, robin.murphy@arm.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+	nicolas.dufresne@collabora.com, jgg@ziepe.ca, iommu@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v6 3/5] iommu: Add verisilicon IOMMU driver
+Message-ID: <aHTzPwTob8_5rtBS@willie-the-truck>
+References: <20250710082450.125585-1-benjamin.gaignard@collabora.com>
+ <20250710082450.125585-4-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250710082450.125585-4-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_041521_155362_36AA47A4 
-X-CRM114-Status: GOOD (  43.14  )
+X-CRM114-CacheID: sfid-20250714_050838_597937_6E575721 
+X-CRM114-Status: GOOD (  22.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,294 +76,154 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonas,
+Hi,
 
-On Monday, 14 July 2025 12:49:24 Central European Summer Time Jonas Karlman wrote:
-> Hi Nicolas,
-> 
-> On 7/14/2025 11:44 AM, Nicolas Frattaroli wrote:
-> > Hi Jonas,
-> > 
-> > see comments in-line.
-> > 
-> > On Saturday, 12 July 2025 19:37:44 Central European Summer Time Jonas Karlman wrote:
-> >> The ROCK 2A and ROCK 2F is a high-performance single board computer
-> >> developed by Radxa, based on the Rockchip RK3528A SoC.
-> >>
-> >> Add initial device tree for the Radxa ROCK 2A and ROCK 2F boards.
-> >>
-> >> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> >> ---
-> >> v3: Rename led nodes to led-0/led-1 (Chukun Pan)
-> >> v2: Limit sdmmc max-frequency to 100 MHz (Yao Zi)
-> >>
-> >> Schematics:
-> >> - https://dl.radxa.com/rock2/2a/v1.2/radxa_rock_2a_v1.2_schematic.pdf
-> >> - https://dl.radxa.com/rock2/2f/radxa_rock2f_v1.01_schematic.pdf
-> >> ---
-> >>  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
-> >>  .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 293 ++++++++++++++++++
-> >>  .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++++
-> >>  .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
-> >>  4 files changed, 387 insertions(+)
-> >>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
-> >>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
-> >>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
-> >>
-> >> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> >> index 099520962ffb..4cb6106b16f2 100644
-> >> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> >> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> >> @@ -90,6 +90,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
-> >>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
-> >>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
-> >>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-radxa-e20c.dtb
-> >> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-rock-2a.dtb
-> >> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-rock-2f.dtb
-> >>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3562-evb2-v10.dtb
-> >>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg-arc-d.dtb
-> >>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg-arc-s.dtb
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi b/arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
-> >> new file mode 100644
-> >> index 000000000000..aedc7ee9ee46
-> >> --- /dev/null
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
-> >> [...]
-> >> +
-> >> +&pinctrl {
-> >> +	bluetooth {
-> >> +		bt_wake_host_h: bt-wake-host-h {
-> >> +			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
-> >> +		};
-> >> +
-> >> +		host_wake_bt_h: host-wake-bt-h {
-> >> +			rockchip,pins = <1 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-> >> +		};
-> >> +	};
-> >> +
-> >> +	leds {
-> >> +		state_led_b: state-led-b {
-> >> +			rockchip,pins = <1 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
-> >> +		};
-> >> +	};
-> >> +
-> >> +	sdmmc {
-> >> +		sdmmc_vol_ctrl_h: sdmmc-vol-ctrl-h {
-> >> +			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
-> >> +		};
-> >> +	};
-> >> +
-> >> +	usb {
-> >> +		usb_host_en: usb-host-en {
-> >> +			rockchip,pins = <0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-> >> +		};
-> >> +	};
-> >> +
-> >> +	wifi {
-> >> +		usb_wifi_pwr: usb-wifi-pwr {
-> >> +			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
-> >> +		};
-> >> +
-> >> +		wifi_reg_on_h: wifi-reg-on-h {
-> >> +			rockchip,pins = <1 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-> > 
-> > I don't see an external pull-up or pull-down in the schematic. I'm not
-> > sure what the recommended practice is; should we have a pull direction
-> > set in the SoC's pin controller in these cases, or leave it floating?
-> 
-> This is at least what I have done for gpio output pins in the past, see
-> other defines for a wifi_reg_on_h in tree.
-> 
-> My (possible wrong) reasoning is that this pin is used as a gpio output
-> pin and the output value should determin high/low. For this perticiular
-> board the wifi_reg_on_h pin is referenced as shutdown-gpios in the
-> rfkill-gpio node, so when this is initialized the output value should be
-> set high/low and the internal pull value no longer has a real purpose.
-> 
-> Please correct me if my reasoning is wrong :-)
+On Thu, Jul 10, 2025 at 10:24:44AM +0200, Benjamin Gaignard wrote:
+> diff --git a/drivers/iommu/vsi-iommu.c b/drivers/iommu/vsi-iommu.c
+> new file mode 100644
+> index 000000000000..15322b9929af
+> --- /dev/null
+> +++ b/drivers/iommu/vsi-iommu.c
+> @@ -0,0 +1,781 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/* Copyright (C) 2025 Collabora Ltd.
+> + *
+> + * IOMMU API for Verisilicon
+> + *
+> + * Module Authors:	Yandong Lin <yandong.lin@rock-chips.com>
+> + *			Simon Xue <xxm@rock-chips.com>
+> + *			Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> + */
+> +
+> +#include <linux/clk.h>
+> +#include <linux/compiler.h>
+> +#include <linux/delay.h>
+> +#include <linux/device.h>
+> +#include <linux/dma-mapping.h>
+> +#include <linux/errno.h>
+> +#include <linux/init.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/io.h>
+> +#include <linux/iommu.h>
+> +#include <linux/list.h>
+> +#include <linux/mm.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_iommu.h>
+> +#include <linux/of_platform.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/slab.h>
+> +#include <linux/spinlock.h>
+> +
+> +#include "iommu-pages.h"
+> +
+> +struct vsi_iommu {
+> +	struct device *dev;
+> +	void __iomem *regs;
+> +	struct clk_bulk_data *clocks;
+> +	int num_clocks;
+> +	struct iommu_device iommu;
+> +	struct list_head node; /* entry in vsi_iommu_domain.iommus */
+> +	struct iommu_domain *domain; /* domain to which iommu is attached */
+> +	spinlock_t lock;
+> +	int irq;
+> +};
+> +
+> +struct vsi_iommu_domain {
+> +	struct list_head iommus;
+> +	struct device *dev;
+> +	u32 *dt;
+> +	dma_addr_t dt_dma;
+> +	struct iommu_domain domain;
+> +	u64 *pta;
+> +	dma_addr_t pta_dma;
+> +	spinlock_t lock;
+> +};
+> +
+> +static struct iommu_domain vsi_identity_domain;
+> +
+> +#define NUM_DT_ENTRIES	1024
+> +#define NUM_PT_ENTRIES	1024
+> +#define PT_SIZE		(NUM_PT_ENTRIES * sizeof(u32))
+> +
+> +#define SPAGE_SIZE	BIT(12)
+> +
+> +/* vsi iommu regs address */
+> +#define VSI_MMU_CONFIG1_BASE			0x1ac
+> +#define VSI_MMU_AHB_EXCEPTION_BASE		0x380
+> +#define VSI_MMU_AHB_CONTROL_BASE		0x388
+> +#define VSI_MMU_AHB_TLB_ARRAY_BASE_L_BASE	0x38C
+> +
+> +/* MMU register offsets */
+> +#define VSI_MMU_FLUSH_BASE		0x184
+> +#define VSI_MMU_BIT_FLUSH		BIT(4)
+> +
+> +#define VSI_MMU_PAGE_FAULT_ADDR		0x380
+> +#define VSI_MMU_STATUS_BASE		0x384	/* IRQ status */
+> +
+> +#define VSI_MMU_BIT_ENABLE		BIT(0)
+> +
+> +#define VSI_MMU_OUT_OF_BOUND		BIT(28)
+> +/* Irq mask */
+> +#define VSI_MMU_IRQ_MASK		0x7
+> +
+> +#define VSI_DTE_PT_ADDRESS_MASK		0xffffffc0
+> +#define VSI_DTE_PT_VALID		BIT(0)
+> +
+> +#define VSI_PAGE_DESC_LO_MASK		0xfffff000
+> +#define VSI_PAGE_DESC_HI_MASK		GENMASK_ULL(39, 32)
+> +#define VSI_PAGE_DESC_HI_SHIFT		(32 - 4)
 
-Your explanation makes sense to me. I don't know which way is the right
-way, but I assume setting pulls does indeed not do much because any
-effect they'd have would already be way too late in the power cycle.
+How does this page-table format relate to the one supported already by
+rockchip-iommu.c? From a quick glance, I suspect this is a derivative
+and so ideally we'd be able to have a common implementation of the
+page-table code which can be used by both of the drivers.
 
-> 
-> > 
-> >> +		};
-> >> +
-> >> +		wifi_wake_host_h: wifi-wake-host-h {
-> >> +			rockchip,pins = <1 RK_PA7 RK_FUNC_GPIO &pcfg_pull_down>;
-> >> +		};
-> >> +	};
-> >> +};
-> >> +
-> >> +&pwm1 {
-> >> +	pinctrl-names = "default";
-> >> +	pinctrl-0 = <&pwm1m0_pins>;
-> >> +	status = "okay";
-> >> +};
-> >> +
-> >> +&pwm2 {
-> >> +	pinctrl-names = "default";
-> >> +	pinctrl-0 = <&pwm2m0_pins>;
-> >> +	status = "okay";
-> >> +};
-> >> +
-> >> +&saradc {
-> >> +	vref-supply = <&vcc_1v8>;
-> >> +	status = "okay";
-> >> +};
-> >> +
-> >> +&sdhci {
-> >> +	bus-width = <8>;
-> >> +	cap-mmc-highspeed;
-> >> +	mmc-hs200-1_8v;
-> >> +	no-sd;
-> >> +	no-sdio;
-> >> +	non-removable;
-> >> +	vmmc-supply = <&vcc_3v3>;
-> >> +	vqmmc-supply = <&vcc_1v8>;
-> >> +	status = "okay";
-> >> +};
-> >> +
-> >> +&sdmmc {
-> >> +	bus-width = <4>;
-> >> +	cap-mmc-highspeed;
-> >> +	cap-sd-highspeed;
-> >> +	disable-wp;
-> >> +	max-frequency = <100000000>;
-> > 
-> > Any reason why we reduce this from the 150000000 in the SoC .dtsi?
-> 
-> Please see v1 of this series, Yao Zi reported issues when 150 MHz was
-> usued with a SD-card that works with 150 MHz on the Radxa E20C.
-> 
-> Vendor kernel seem to change drive strenght of clk pin, but that did not
-> improve the situation, so I changed it to use a lower rate for now.
+Similarly:
 
-Oops, thanks for pointing this out. Yeah, that makes sense to me then.
+> +static void vsi_iommu_domain_free(struct iommu_domain *domain)
+> +{
+> +	struct vsi_iommu_domain *vsi_domain = to_vsi_domain(domain);
+> +	unsigned long flags;
+> +	int i;
+> +
+> +	spin_lock_irqsave(&vsi_domain->lock, flags);
+> +
+> +	WARN_ON(!list_empty(&vsi_domain->iommus));
+> +
+> +	for (i = 0; i < NUM_DT_ENTRIES; i++) {
+> +		u32 dte = vsi_domain->dt[i];
+> +
+> +		if (vsi_dte_is_pt_valid(dte)) {
+> +			phys_addr_t pt_phys = vsi_dte_pt_address(dte);
+> +			u32 *page_table = phys_to_virt(pt_phys);
+> +
+> +			dma_unmap_single(vsi_domain->dev, pt_phys,
+> +					 SPAGE_SIZE, DMA_TO_DEVICE);
+> +			iommu_free_pages(page_table);
+> +		}
+> +	}
+> +
+> +	dma_unmap_single(vsi_domain->dev, vsi_domain->dt_dma,
+> +			 SPAGE_SIZE, DMA_TO_DEVICE);
+> +	iommu_free_pages(vsi_domain->dt);
+> +
+> +	dma_unmap_single(vsi_domain->dev, vsi_domain->pta_dma,
+> +			 SPAGE_SIZE, DMA_TO_DEVICE);
+> +	iommu_free_pages(vsi_domain->pta);
+> +
+> +	spin_unlock_irqrestore(&vsi_domain->lock, flags);
+> +
+> +	kfree(vsi_domain);
+> +}
 
-> 
-> > Using the frequency the SoC .dtsi uses seems to work for me on the
-> > ROCK 2A:
-> > 
-> >   [    0.347556] mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
-> >   [    0.547362] mmc_host mmc1: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
-> >   [    0.814405] dwmmc_rockchip ffc30000.mmc: Successfully tuned phase to 248
-> >   [    0.815407] mmc1: new UHS-I speed SDR104 SDXC card at address aaaa
-> >   [    0.817030] mmcblk1: mmc1:aaaa SH64G 59.5 GiB
-> >   [    0.820943]  mmcblk1: p1 p2
-> 
-> Using 150 MHz also worked with my 2A/3F boards and the two SD-cards I
-> could test.
-> 
-> > 
-> >> +	sd-uhs-sdr104;
-> >> +	vmmc-supply = <&vcc_3v3>;
-> >> +	vqmmc-supply = <&vccio_sd>;
-> >> +	status = "okay";
-> >> +};
-> >> +
-> >> +&uart0 {
-> >> +	pinctrl-names = "default";
-> >> +	pinctrl-0 = <&uart0m0_xfer>;
-> >> +	status = "okay";
-> >> +};
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts b/arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
-> >> new file mode 100644
-> >> index 000000000000..c03ae1dd3456
-> >> --- /dev/null
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
-> >> [...]
-> >> +
-> >> +&pinctrl {
-> >> +	ethernet {
-> >> +		gmac1_rstn_l: gmac1-rstn-l {
-> >> +			rockchip,pins = <4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-> > 
-> > Same concern as with wifi-reg-on-h, there's no external pull resistor
-> > in the schematic.
-> 
-> Same resoning as above, this pin is used as the Ethernet PHY reset-gpios
-> pin. Here the bootloader (U-Boot) will also configure this pin with a
-> gpio output value to trigger a PHY reset.
-> 
-> I can change these to pull-down as that seem to be the reset value for
-> these two pins, if I understand the schematic and PinOut correctly, if
-> you have a strong opinion on that these defines are wrong.
+is almost a carbon copy of rk_iommu_domain_free(), so it seems that
+there's room for code re-use even beyond the page-table support.
 
-I don't feel strongly about the pinctrl at all, I think your explanation
-that U-Boot got there before us puts a nail in the coffin of whether
-they should be set at all; if anything, we'd probably make the device
-even less happy by needlessly toggling the reset again with a pull
-before it then gets toggled again by the Linux driver.
+I think that also means we'll want Heiko's Ack before we merge anything.
 
-Everything looks good to me with those questions of mine cleared up,
-thanks for working on this!
-
-Kind regards,
-Nicolas Frattaroli
-
-> 
-> Regards,
-> Jonas
-> 
-> > 
-> >> +		};
-> >> +	};
-> >> +
-> >> +	leds {
-> >> +		sys_led_g: sys-led-g {
-> >> +			rockchip,pins = <3 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
-> >> +		};
-> >> +	};
-> >> +
-> >> +	usb {
-> >> +		usb_otg_en: usb-otg-en {
-> >> +			rockchip,pins = <1 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
-> >> +		};
-> >> +	};
-> >> +};
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts b/arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
-> >> new file mode 100644
-> >> index 000000000000..3e2b9b685cb2
-> >> --- /dev/null
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
-> >> @@ -0,0 +1,10 @@
-> >> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> >> +
-> >> +/dts-v1/;
-> >> +
-> >> +#include "rk3528-rock-2.dtsi"
-> >> +
-> >> +/ {
-> >> +	model = "Radxa ROCK 2F";
-> >> +	compatible = "radxa,rock-2f", "rockchip,rk3528";
-> >> +};
-> >>
-> > 
-> > Other than the indicated comments,
-> > 
-> > Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > 
-> > ensured the pinctrls were correct, checked that they correspond to the
-> > GPIOs being used in the devices associated with them. Also checked the
-> > rock 2a schematic to verify that the vccio_sd switching setup is
-> > correct, i.e. that high is indeed 3.3V and low is 1.8V.
-> > 
-> > And:
-> > 
-> > Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > 
-> > test-booted on a ROCK 2A, tested that SD card shows up, made sure
-> > ethernet works as well, also ensured that the adc key works.
-> > 
-> > 
-> 
-> 
-
-
-
-
+Will
 
 _______________________________________________
 Linux-rockchip mailing list
