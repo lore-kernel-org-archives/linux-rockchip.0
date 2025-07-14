@@ -4,87 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE23EC83F17
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jul 2025 07:33:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 887A5C83F17
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jul 2025 08:52:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z5dAJEmwV5auxvdZv/XIhFlxv9gITDH+8cOFzu4Uzb0=; b=zK8sDBR+aaRJaV
-	8jilKHkpo8BXNUT6RO3MqBCFsx1ztkEjE/9V2SzKiJVov8uJsCfQNFCn0SwfoyCFLUO9B719+hUg/
-	/ZNCEQrv2X/Mqr73sqASkA2Eibgs+Lj2XUWXRRU7d7AE/bRAscoiRscicK3slUofc4a96gjtBkqs6
-	Jjgl1FV/nOqfRbERc/+utYoJ+UjlkmtAHb2/2UXTXpXrTxc69d+QFmQehZLeSKUf1dIolVZmjUGRs
-	IVIDDINVbqEP/VNYmGdvc+7hnnnUxzMbhMuv9qQw/28d4jdYXcFcIRNNbNWaDhfqd/ZIHI68Gl0Ze
-	5boRMGl+7IWpAPqotQXA==;
+	List-Owner; bh=qBQ0iWw6trXZZ6dJW7tJKA1aCnmRIt4YF6WegybFaig=; b=HEIsoRmHNklLKI
+	9ptIWHO5Zuezc+p2I+WMbC3HQr7fn4x64YL9Ctepj0lKcD90ISpBE3jjKXrjhUdwvTAZx+ammwIu6
+	d+mdl7yN4exnwlo+3cjC83J14ozNp0p9eSgTJDR9BuCaPRZUC1VPRit7AuaXR4LYjDctDwgBCtNBy
+	v0bQ0+RdS35ON7P6JXvpsYD80IvAD0eqXxCIyQWcNLyr8OvXGhv1WZH1NuixKUCH5gdy82onH5iSa
+	c3La6CrJY6A43CfmLQpIrCSM9V7wTZDpQYYEzWtVmLslN04RMORgY8NFkyKf1NrcoJMwEhfTGJk2X
+	cPd3LT1zDC1yg8KRNTpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubDgw-00000001U2t-1AhX;
-	Mon, 14 Jul 2025 07:33:38 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1ubEvS-00000001hGA-2o0s;
+	Mon, 14 Jul 2025 08:52:42 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubDIc-00000001Qdj-0Xw1;
-	Mon, 14 Jul 2025 07:08:31 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-553d771435fso3469543e87.3;
-        Mon, 14 Jul 2025 00:08:29 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752476908; x=1753081708;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=Tvj3gb3g5xG1uLM/RcM8g7BKLGsZeoiyqFNvZ44VmfY=;
-        b=qOXm+mQT+KL483L8KALVx+mdpw8ZyEhOd6x4yI5K8EXmvE3bMiIw/fpqv73iKQeft2
-         +VCVNsyEJk6vhzbIL9RWr+HnhQKCLAXQogmjrKhUrGYMvU1d7tk3TZT1Gb7rnuFgVsiC
-         zRnZUkl3lQOrVPeLXRYy3SufcWx51v56rizKNzJI8PNIP5olj1cKSKqXon7pYk0oi0lw
-         q4P0P2J1yJQq3ofKmBq9FL4EEh4wBmHj+Z08qos5k4887axxV4wytjmcL8v4oFlWqOGo
-         0z4ZplTl6Yd4q8kP9fNj8pmKWuF6ekYbUOx94Bq6XffjWIY62ii2W8suIOyKbjW1Xcex
-         6tSg==
-X-Forwarded-Encrypted: i=1; AJvYcCUJls37t7UxzQfhRrpe6qhtoViGMnnc3vm90w3U5mysGuIq/4HTmHji5Rl2OuAc0S56JmoqFvxro2GeT4ipC7YZ@lists.infradead.org, AJvYcCVbIVaxVVcMYe0gpPy0euEfQCwdzW9HWeO/XpSko8MEkzD/ac7JMxUoliUiqgvYiDF03g136ftkzuAwALQVw2c=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzR3DfdObKctK2xuAbUdmpnH9qh/a31OFIGrwXit3X145VIYQvw
-	NM8+1lyDyk3LJzQyLpIlsw+jlBpv82Eq43vvZod+FS0hy6Kb7dbEYXcb
-X-Gm-Gg: ASbGnctXR5QN7gtg8RZPMUKyCkHoG4JJllBaFVMXBflVqdu8G1yD6t/UVphXnHCEfuA
-	qgANrKGmVQe1Z4k3tUB5u5cKkcsbxB/SsjyU5iDR0CCUX/HsTv3yUKpSNOX4rvGxgva36p4t094
-	YTGDtw9Stp5Vsk0SThuV9++LqDrEd/jnDWd04p8SIb0cxFofU1zStaIEc42OXJSzv4Zg/rJMaKP
-	0ofq19fx7ukjL7IOTL4LF0Kw5RUK7nDr8PXkXHoX64RK7SNndWq6fPFbAVfF+yb11z+KRbLHnug
-	8h5M9/Xxbw3NoXhPYwPsTogvGjqBi2/etx6FWal+IKr8C+SpGtKWXeTtytk33GZl5MktnkV/peM
-	LWJhNF9fi5h/yYlOO3CYZ19ZQYo7DwPIklY/Pk4mYfptJ4hJY630=
-X-Google-Smtp-Source: AGHT+IHZExcglefkFbZyxQyZmTQW7ESvjfFFcOrkVbfQH5yCY2A1BKdqYldJd9CQjXY0nM8bm5Zx/Q==
-X-Received: by 2002:ac2:4f05:0:b0:553:2e4a:bb58 with SMTP id 2adb3069b0e04-55a057c3822mr3294856e87.9.1752476907492;
-        Mon, 14 Jul 2025 00:08:27 -0700 (PDT)
-Received: from flawful.org (c-85-226-250-50.bbcust.telenor.se. [85.226.250.50])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55943b8c5ccsm1838327e87.258.2025.07.14.00.08.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Jul 2025 00:08:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=flawful.org; s=mail;
-	t=1752476905; bh=pT3B4LvfDX/MI3J6lEc9pWSE+5SEOgad6IB0H01Ds/8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZAzUu6mTAghiqz+sb/0NN+t3i5vbtH2Gm0D/k79j8IW1KdAXdxYqI+TyyNvO+m+pR
-	 j++AqOsMDVLapns9fbPJiEwAc2serysN51fUe8tpkJZIZy9wdzXjyUNGHnmK480yHa
-	 vYQWoBPspdSwe8tejxapHU8TtFlYMxZaUKsgcIBw=
-Received: by flawful.org (Postfix, from userid 1001)
-	id 4F1AE2C0F; Mon, 14 Jul 2025 09:08:25 +0200 (CEST)
-Date: Mon, 14 Jul 2025 09:08:25 +0200
-From: Niklas Cassel <nks@flawful.org>
-To: David Bremner <david@tethera.net>
-Cc: wilfred.opensource@gmail.com, alistair@alistair23.me,
-	bhelgaas@google.com, cassel@kernel.org, dlemoal@kernel.org,
-	heiko@sntech.de, kw@linux.com, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, lpieralisi@kernel.org,
-	mani@kernel.org, p.zabel@pengutronix.de, robh@kernel.org,
-	wilfred.mallawa@wdc.com, Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Add support for slot reset on link
- down event
-Message-ID: <aHSs6ZF8rQIqEOyR@flawful.org>
-References: <20250509-b4-pci_dwc_reset_support-v3-1-37e96b4692e7@wdc.com>
- <87cya6wdhc.fsf@tethera.net>
+	id 1ubEvQ-00000001hFF-2cl6;
+	Mon, 14 Jul 2025 08:52:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1752483145; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=cPIvEWqgyPzfPU2Pzl4YkZxowH0/lPVy7yb660klPkA6fT6qLmtzHqPgv570Jz8zrXsozQ44gA1ww2BrymQ2I2bgPDcuKY8Fxu/T96rin4jmK7JKOjQ6WugRP+Iyawq3odYVMAUL7I3FlmvCJVTmB7q97Qx72nmGx6jogycH5mY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1752483145; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=aAmMtPikedDzzrWNEE4etFqjFIi0lZYc3D9DwNk0y+U=; 
+	b=jt9y2WhoNnM4SmJsJv9wT7lX2EZq1F/M7CkIQWYOa5TDg2rv+ZD5wAloQvBHMX7Kot22OV/SDCPLYf7mEocKcdL08rt204KOlu6lkMW7Jaa5l6GtNB+zmHpEgvTYuO4pi4zYKFWqB3bPdxNPx7csXPBwUJB59rb/hDddDDWISgI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1752483145;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=aAmMtPikedDzzrWNEE4etFqjFIi0lZYc3D9DwNk0y+U=;
+	b=aRlmpvpfXLglPznghkrAXTJQRU1ayaqRIDd2Xtwqn98e3zaPKq+fCS7Ph5Q9/HeG
+	oFq+8p97xAcDIN9/jWDB5y6IWwZUpLHXfhJHhd5/m+gJ4/fFFrwZWb47N5emgnCZ0qs
+	yt86GP4VB9YIYypqen0iUWqG+EUHrtPDpoKEMxlg=
+Received: by mx.zohomail.com with SMTPS id 1752483141694960.830248739222;
+	Mon, 14 Jul 2025 01:52:21 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Alex Bee <knaerzche@gmail.com>, Jonas Karlman <jonas@kwiboo.se>,
+ linux-rockchip@lists.infradead.org, Kever Yang <kever.yang@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Yao Zi <ziyao@disroot.org>
+Subject: Re: [PATCH v3 0/6] arm64: dts: rockchip: Add ROCK 2A/2F,
+ Sige1 and NanoPi Zero2
+Date: Mon, 14 Jul 2025 10:52:17 +0200
+Message-ID: <13801788.uLZWGnKmhe@workhorse>
+In-Reply-To: <aHRWmMFTh7leEhrq@pie.lan>
+References: <20250712173805.584586-1-jonas@kwiboo.se>
+ <88c7b90d-4c29-453b-9a5c-9679b371a3a9@gmail.com> <aHRWmMFTh7leEhrq@pie.lan>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87cya6wdhc.fsf@tethera.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_000830_472025_0B16C49C 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20250714_015240_738032_3BD974A0 
+X-CRM114-Status: GOOD (  59.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,34 +81,188 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello David,
+Hello,
 
-On Fri, Jul 11, 2025 at 07:48:31PM -0300, David Bremner wrote:
++To: kever, as he may have some insight on the differences between
+RK3528 and RK3528A.
+
+On Monday, 14 July 2025 03:00:08 Central European Summer Time Yao Zi wrote:
+> On Sun, Jul 13, 2025 at 10:56:59PM +0200, Alex Bee wrote:
+> > Hi Jonas,
+> > 
+> > > Hi Alex,
+> > > 
+> > > On 7/13/2025 9:13 PM, Alex Bee wrote:
+> > > > Hi list, Hi Jonas,
+> > > > 
+> > > > > This series adds dt-bindings and initial device tree for the following
+> > > > > Rockchip RK3528A boards:
+> > > > > - Radxa ROCK 2A/2F
+> > > > > - ArmSoM Sige1
+> > > > > - FriendlyElec NanoPi Zero2
+> > > > 
+> > > > this only sub-related to this series: Is there any particular reason, why
+> > > > we call the compatible "rockchip,rk3528" and not "rockchip,rk3528a"? From
+> > > > what I can see all boards currently supported (and those in this series)
+> > > > are having the RK3528A version of the SoC. I didn't follow the development
+> > > > here, but there are differences - I did a quick compare of the datasheets
+> > > > of those two SoC versions - it looks like RK3528 version has USB3-DRD
+> > > > controller, while RK3528A has USB3 host-only controller. Also it seems to
+> > > > have different video codec IPs and the DRAM controller additionally
+> > > > supports LPDDR4X.
+> > > What datasheet versions did you check? I can only find:
+> > > - RK3528 Rev 1.0 (2023-05-22)
+> > > - RK3528A Rev 1.2 (2024-04-10)
+> > I used
+> > 
+> > 2023-07-12 Revision V1.0
+> > 
+> > which didn't include these features - which is interesting: Why would a
+> > SoC vendor not try to sell all features in the first place :)
+> > 
+> > But I now double checked in
+> > 
+> > 2025-05-12 Revision 1.4
+> > 
+> > and you are right: It appears there also for RK3528A.
+> > 
+> > The only difference I could now make out by comparing v1.4 of both versions
+> > is the cipher engine: RK3528 additionally supports "SM2/SM3/SM4 cipher" -
+> > but still it exists and additionally the different video codec (if mpp
+> > userspace library is correct about that).
+> > 
+> > Anyway: My question was more about: Why didn't we choose the correct
+> > compatible from the beginning? And of course the dts files would have to be
+> > renamed if the compatible is changed, as they are named according to their
+> > SoC-compatible.
 > 
-> What is the current status of this patch (and the pre-requisites) with
-> respect to mainline linux?
-> 
-> I'm wondering if it might be relevent to the problems [1] I've been
-> having with rk3588 resume, but it isn't clear to me what I need to apply
-> to e.g. v6.16~rc1 to test it.
+> Just like what Jonas said, I was not aware of any technical
+> documentation at the time of writing the basic devicetree, and even for
+> now the only datasheet I manage to find is the 2023 revision about
+> RK3528 without A suffix, so I didn't realize the difference between
+> RK3528 and RK3528A, but just followed the vendor code and devicetree[1],
+> where only RK3528 is mentioned :-(
 
-This is the prerequisite series:
-https://lore.kernel.org/linux-pci/20250508-pcie-reset-slot-v4-0-7050093e2b50@linaro.org/
+I wouldn't be too worried about getting this wrong, the only set-in-
+stone part of this is the name of the device tree for devices and the
+compatible; we can still rename rk3528.dtsi to rk3528a.dtsi and shuffle
+things around internally. Furthermore, if the only difference is
+something that can be enumerated at runtime (e.g. if a different set
+of supported features in the crypto accel is identifiable with some
+config register bits initial value), then I don't think we need to
+distinguish them at all.
 
-However, Bjorn gave some comments on it, and Manivannan has said that he
-will send a new version.
+As another data point, rkbin mentions "Add support for rk3528A" in the
+changelog file `doc/release/RK3528_EN.md` for `rk3528_bl31_v1.15.elf`.
 
+Someone could contrast and compare that BL31 binary with the v1.14 one
+to see if they have any immediately obvious differences.
 
-
-That said, if you have problems with suspend/resume, perhaps you want to
-try this patch instead:
-https://lore.kernel.org/linux-pci/1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com/
-
-I don't know if Shawn intends to send a new version or not.
-
+My personal guess for what happened here is that they switched
+the packaging process after release to optimize supply, like what
+happened with RK3568 -> RK3568B2, and the only change is some OTP
+values to identify the chip variant. This would also explain why
+everything we've seen on the market so far, at least to my knowledge,
+has been RK3528A.
 
 Kind regards,
-Niklas
+Nicolas Frattaroli
+
+> 
+> Regards,
+> Yao Zi
+> 
+> [1]: https://github.com/rockchip-linux/kernel, branch develop-5.10
+> 
+> > Regards,
+> > Alex
+> > > 
+> > > And both list LPDDR4X support and the A-variant seem to list USB3-DRD
+> > > support, did you mix them up above?
+> > > 
+> > > I think these SoCs are similar to rk3228/rk3229, rk3228h/rk3328 and now
+> > > rk3528/rk3528a, in that only the second variant support VP9 decoding.
+> > > 
+> > > Use of rockchip,rk3528a compatible could be something to change,
+> > > could also be something that bootloader set at runtime, similar to
+> > > what it does for rk3288w.
+> > > 
+> > > > I guess it would be good to discuss this before this series is merged,
+> > > > because re-naming *.dts files after they have been in a release is somewhat
+> > > > impossible.
+> > > I think renaming the device tree files is unnecessary, as there seem to
+> > > be very little difference. All boards I have come across are currently
+> > > RK3528A variants. How would we treat the Radxa E20C?, it is not named
+> > > rk3528-radxa-e20c.dtb, yet uses the A-variant.
+> > > 
+> > > For mainline U-Boot I have included printing out the SoC-variant,
+> > > however the compatible is not adjusted:
+> > > 
+> > >    Model: Radxa E20C
+> > >    SoC:   RK3528A
+> > >    DRAM:  2 GiB
+> > > 
+> > > Regards,
+> > > Jonas
+> > > 
+> > > > Regards,
+> > > > Alex
+> > > > > The bt/wifi_reg_on pins are described in the device tree using
+> > > > > rfkill-gpio nodes.
+> > > > > 
+> > > > > Changes in v3:
+> > > > > - Rename led nodes to led-0/led-1
+> > > > > - Remove pinctrl* props from sdio0
+> > > > > - Collect a-b tags
+> > > > > 
+> > > > > Changes in v2:
+> > > > > - Limit sdmmc max-frequency to 100 MHz on ROCK 2A/2F
+> > > > > - Drop clock-output-names prop from rtc node on Sige1 and NanoPi Zero2
+> > > > > - Drop regulator-boot-on from usb 2.0 host regulators on Sige1
+> > > > > - Add bluetooth and wifi nodes on Sige1
+> > > > > - Collect t-b tag for NanoPi Zero2
+> > > > > 
+> > > > > These boards can be booted from emmc or sd-card using the U-Boot 2025.07
+> > > > > generic-rk3528 target or work-in-progress patches for these boards [1].
+> > > > > 
+> > > > > For working bluetooth on ArmSoM Sige1 the patch "arm64: dts: rockchip:
+> > > > > Fix UART DMA support for RK3528" [2] is required.
+> > > > > 
+> > > > > [1] https://source.denx.de/u-boot/contributors/kwiboo/u-boot/-/commits/rk3528
+> > > > > [2] https://lore.kernel.org/r/20250709210831.3170458-1-jonas@kwiboo.se
+> > > > > 
+> > > > > Jonas Karlman (6):
+> > > > >     dt-bindings: arm: rockchip: Add Radxa ROCK 2A/2F
+> > > > >     arm64: dts: rockchip: Add Radxa ROCK 2A/2F
+> > > > >     dt-bindings: arm: rockchip: Add ArmSoM Sige1
+> > > > >     arm64: dts: rockchip: Add ArmSoM Sige1
+> > > > >     dt-bindings: arm: rockchip: Add FriendlyElec NanoPi Zero2
+> > > > >     arm64: dts: rockchip: Add FriendlyElec NanoPi Zero2
+> > > > > 
+> > > > >    .../devicetree/bindings/arm/rockchip.yaml     |  17 +
+> > > > >    arch/arm64/boot/dts/rockchip/Makefile         |   4 +
+> > > > >    .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 465 ++++++++++++++++++
+> > > > >    .../boot/dts/rockchip/rk3528-nanopi-zero2.dts | 340 +++++++++++++
+> > > > >    .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 293 +++++++++++
+> > > > >    .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++
+> > > > >    .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
+> > > > >    7 files changed, 1211 insertions(+)
+> > > > >    create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+> > > > >    create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
+> > > > >    create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+> > > > >    create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
+> > > > >    create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
+> > > > > 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
