@@ -4,60 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A0B6C83F1B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jul 2025 06:16:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE23EC83F17
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jul 2025 07:33:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=834/pLLZaY8cPx6CvhBm6/qeb296j/GnQSRW1Z2rnvI=; b=Kyco0s12s+8Ors
-	KSPFKZKRU/tb57Ypw6xjLviPAIxMeHZFKwDEOPaubUyooINe/84VVBGJ3yoPFxcY5pbmFXLkRpA/H
-	vLYW0m0nAgzIQT6QeOGMgPcXZJOs4ndrjt/tIOBWw3adcxNCFf/j/jILrzHP6VfN3Te/vJHDUrL+7
-	3cn99UcnG3Vx1SwEUaPiCu1mx+CPVtXP/+XbFYN12ZeSYbpHtAg1oG+JdBeQDjLoJTByhtItIrwkc
-	kxeyHryCVjkVn30g+uO3tvu8nGGVtcTcI0MYmJ0qFVrfMPe2p/EIvE2w4C4wsJYlZpkmssVWJkRk1
-	HX4fDpGFfGtmTW9r+AdQ==;
+	List-Owner; bh=Z5dAJEmwV5auxvdZv/XIhFlxv9gITDH+8cOFzu4Uzb0=; b=zK8sDBR+aaRJaV
+	8jilKHkpo8BXNUT6RO3MqBCFsx1ztkEjE/9V2SzKiJVov8uJsCfQNFCn0SwfoyCFLUO9B719+hUg/
+	/ZNCEQrv2X/Mqr73sqASkA2Eibgs+Lj2XUWXRRU7d7AE/bRAscoiRscicK3slUofc4a96gjtBkqs6
+	Jjgl1FV/nOqfRbERc/+utYoJ+UjlkmtAHb2/2UXTXpXrTxc69d+QFmQehZLeSKUf1dIolVZmjUGRs
+	IVIDDINVbqEP/VNYmGdvc+7hnnnUxzMbhMuv9qQw/28d4jdYXcFcIRNNbNWaDhfqd/ZIHI68Gl0Ze
+	5boRMGl+7IWpAPqotQXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubCUE-00000001JLv-00Nk;
-	Mon, 14 Jul 2025 06:16:26 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1ubDgw-00000001U2t-1AhX;
+	Mon, 14 Jul 2025 07:33:38 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubCGu-00000001H6P-0yHj;
-	Mon, 14 Jul 2025 06:02:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 87096461AC;
-	Mon, 14 Jul 2025 06:02:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD1D4C4CEED;
-	Mon, 14 Jul 2025 06:02:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752472958;
-	bh=mwksL5g+ek+4+NJV5sWXHoC3uZulpG3hdPudzC2//WE=;
+	id 1ubDIc-00000001Qdj-0Xw1;
+	Mon, 14 Jul 2025 07:08:31 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-553d771435fso3469543e87.3;
+        Mon, 14 Jul 2025 00:08:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752476908; x=1753081708;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=Tvj3gb3g5xG1uLM/RcM8g7BKLGsZeoiyqFNvZ44VmfY=;
+        b=qOXm+mQT+KL483L8KALVx+mdpw8ZyEhOd6x4yI5K8EXmvE3bMiIw/fpqv73iKQeft2
+         +VCVNsyEJk6vhzbIL9RWr+HnhQKCLAXQogmjrKhUrGYMvU1d7tk3TZT1Gb7rnuFgVsiC
+         zRnZUkl3lQOrVPeLXRYy3SufcWx51v56rizKNzJI8PNIP5olj1cKSKqXon7pYk0oi0lw
+         q4P0P2J1yJQq3ofKmBq9FL4EEh4wBmHj+Z08qos5k4887axxV4wytjmcL8v4oFlWqOGo
+         0z4ZplTl6Yd4q8kP9fNj8pmKWuF6ekYbUOx94Bq6XffjWIY62ii2W8suIOyKbjW1Xcex
+         6tSg==
+X-Forwarded-Encrypted: i=1; AJvYcCUJls37t7UxzQfhRrpe6qhtoViGMnnc3vm90w3U5mysGuIq/4HTmHji5Rl2OuAc0S56JmoqFvxro2GeT4ipC7YZ@lists.infradead.org, AJvYcCVbIVaxVVcMYe0gpPy0euEfQCwdzW9HWeO/XpSko8MEkzD/ac7JMxUoliUiqgvYiDF03g136ftkzuAwALQVw2c=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzR3DfdObKctK2xuAbUdmpnH9qh/a31OFIGrwXit3X145VIYQvw
+	NM8+1lyDyk3LJzQyLpIlsw+jlBpv82Eq43vvZod+FS0hy6Kb7dbEYXcb
+X-Gm-Gg: ASbGnctXR5QN7gtg8RZPMUKyCkHoG4JJllBaFVMXBflVqdu8G1yD6t/UVphXnHCEfuA
+	qgANrKGmVQe1Z4k3tUB5u5cKkcsbxB/SsjyU5iDR0CCUX/HsTv3yUKpSNOX4rvGxgva36p4t094
+	YTGDtw9Stp5Vsk0SThuV9++LqDrEd/jnDWd04p8SIb0cxFofU1zStaIEc42OXJSzv4Zg/rJMaKP
+	0ofq19fx7ukjL7IOTL4LF0Kw5RUK7nDr8PXkXHoX64RK7SNndWq6fPFbAVfF+yb11z+KRbLHnug
+	8h5M9/Xxbw3NoXhPYwPsTogvGjqBi2/etx6FWal+IKr8C+SpGtKWXeTtytk33GZl5MktnkV/peM
+	LWJhNF9fi5h/yYlOO3CYZ19ZQYo7DwPIklY/Pk4mYfptJ4hJY630=
+X-Google-Smtp-Source: AGHT+IHZExcglefkFbZyxQyZmTQW7ESvjfFFcOrkVbfQH5yCY2A1BKdqYldJd9CQjXY0nM8bm5Zx/Q==
+X-Received: by 2002:ac2:4f05:0:b0:553:2e4a:bb58 with SMTP id 2adb3069b0e04-55a057c3822mr3294856e87.9.1752476907492;
+        Mon, 14 Jul 2025 00:08:27 -0700 (PDT)
+Received: from flawful.org (c-85-226-250-50.bbcust.telenor.se. [85.226.250.50])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55943b8c5ccsm1838327e87.258.2025.07.14.00.08.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Jul 2025 00:08:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=flawful.org; s=mail;
+	t=1752476905; bh=pT3B4LvfDX/MI3J6lEc9pWSE+5SEOgad6IB0H01Ds/8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Q7fEW1NMcgVLY9/EsCySsOSV7cx9B4TKxh2qRERIQArZhdyyo4rv3au33Vc4dELw8
-	 Qqf2CbS7Kotn+iqHYNSPbJfZzR+qcv0XMuauiO7s8aSe+5kXEV7+ebbhujDzeZHu4M
-	 3Gqgf92zITOpwotvUdwKgVgeJR7SCBD6AA5qRaN9wqCCuemCgal+pTMb1Fpvg84GU0
-	 2Q9QjteS6bNoM6P1FQUvx7PVz0HR9x5UOLKotU/RA7lzw1/N8C9857lCGtj6Fy7HsZ
-	 PtBo5+qJ4CvLPJPsisCHnmZq5MBUXcz/FJ6SPqAUL4FhD7GCo+gV2NQfjF2vevFRCv
-	 tZGAS++M3X4pQ==
-Date: Mon, 14 Jul 2025 08:02:35 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Jun Yan <jerrysteve1101@gmail.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	heiko@sntech.de, quentin.schulz@cherry.de, dsimic@manjaro.org, naoki@radxa.com, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add OneThing Cloud OEC turbo
-Message-ID: <20250714-wise-tall-parrot-3e4347@krzk-bin>
-References: <20250713163255.163669-1-jerrysteve1101@gmail.com>
- <20250713163255.163669-4-jerrysteve1101@gmail.com>
+	b=ZAzUu6mTAghiqz+sb/0NN+t3i5vbtH2Gm0D/k79j8IW1KdAXdxYqI+TyyNvO+m+pR
+	 j++AqOsMDVLapns9fbPJiEwAc2serysN51fUe8tpkJZIZy9wdzXjyUNGHnmK480yHa
+	 vYQWoBPspdSwe8tejxapHU8TtFlYMxZaUKsgcIBw=
+Received: by flawful.org (Postfix, from userid 1001)
+	id 4F1AE2C0F; Mon, 14 Jul 2025 09:08:25 +0200 (CEST)
+Date: Mon, 14 Jul 2025 09:08:25 +0200
+From: Niklas Cassel <nks@flawful.org>
+To: David Bremner <david@tethera.net>
+Cc: wilfred.opensource@gmail.com, alistair@alistair23.me,
+	bhelgaas@google.com, cassel@kernel.org, dlemoal@kernel.org,
+	heiko@sntech.de, kw@linux.com, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, lpieralisi@kernel.org,
+	mani@kernel.org, p.zabel@pengutronix.de, robh@kernel.org,
+	wilfred.mallawa@wdc.com, Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Add support for slot reset on link
+ down event
+Message-ID: <aHSs6ZF8rQIqEOyR@flawful.org>
+References: <20250509-b4-pci_dwc_reset_support-v3-1-37e96b4692e7@wdc.com>
+ <87cya6wdhc.fsf@tethera.net>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250713163255.163669-4-jerrysteve1101@gmail.com>
+In-Reply-To: <87cya6wdhc.fsf@tethera.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250713_230240_385011_C29037A9 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20250714_000830_472025_0B16C49C 
+X-CRM114-Status: GOOD (  15.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,108 +101,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 14, 2025 at 12:32:55AM +0800, Jun Yan wrote:
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/leds/common.h>
-> +#include <dt-bindings/pinctrl/rockchip.h>
-> +#include "rk3566.dtsi"
-> +
-> +/ {
-> +	model = "OneThing Cloud OEC turbo";
-> +	compatible = "onething,cloud-oec-turbo", "rockchip,rk3566";
-> +
-> +	aliases {
-> +		ethernet0 = &gmac1;
-> +		mmc0 = &sdhci;
-> +	};
-> +
-> +	chosen: chosen {
-> +		stdout-path = "serial2:1500000n8";
-> +	};
-> +
-> +	/* No hardware video output port */
-> +	/delete-node/ display-subsystem;
+Hello David,
 
-Nodes should be disabled, not removed. What does it mean it is being
-removed? You physically take it out from the hardware? How could it
-exist in the first place in the SoC if it is not present on the board?
+On Fri, Jul 11, 2025 at 07:48:31PM -0300, David Bremner wrote:
+> 
+> What is the current status of this patch (and the pre-requisites) with
+> respect to mainline linux?
+> 
+> I'm wondering if it might be relevent to the problems [1] I've been
+> having with rk3588 resume, but it isn't clear to me what I need to apply
+> to e.g. v6.16~rc1 to test it.
 
-> +
-> +	gmac1_clkin: external-gmac1-clock {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <125000000>;
-> +		clock-output-names = "gmac1_clkin";
-> +		#clock-cells = <0>;
-> +	};
-> +
-> +	leds {
-> +		compatible = "gpio-leds";
-> +
-> +		rgb_led_r: rgb-led-r {
+This is the prerequisite series:
+https://lore.kernel.org/linux-pci/20250508-pcie-reset-slot-v4-0-7050093e2b50@linaro.org/
 
-led-0
+However, Bjorn gave some comments on it, and Manivannan has said that he
+will send a new version.
 
-Node names should be generic. See also an explanation and list of
-examples (not exhaustive) in DT specification:
-https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
 
-> +			color = <LED_COLOR_ID_RED>;
-> +			default-state = "off";
-> +			function = LED_FUNCTION_STATUS;
-> +			gpios = <&gpio0 RK_PC3 GPIO_ACTIVE_LOW>;
-> +		};
 
-...
+That said, if you have problems with suspend/resume, perhaps you want to
+try this patch instead:
+https://lore.kernel.org/linux-pci/1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com/
 
-> +
-> +&gmac1 {
-> +	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
-> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
-> +	phy-mode = "rgmii";
-> +	clock_in_out = "input";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&gmac1m1_miim
-> +		    &gmac1m1_tx_bus2
-> +		    &gmac1m1_rx_bus2
-> +		    &gmac1m1_rgmii_clk
-> +		    &gmac1m1_rgmii_bus
-> +		    &gmac1m1_clkinout>;
-> +	snps,reset-gpio = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
-> +	snps,reset-active-low;
-> +	/* Reset time is 20ms, 100ms for rtl8211f */
-> +	snps,reset-delays-us = <0 20000 100000>;
-> +
-> +	tx_delay = <0x4f>;
-> +	rx_delay = <0x2d>;
-> +	phy-handle = <&rgmii_phy1>;
-> +	status = "okay";
-> +};
-> +
-> +&gpu {
-> +	status = "okay";
-> +};
-> +
-> +&mdio1 {
-> +	rgmii_phy1: ethernet-phy@1 {
-> +		compatible = "ethernet-phy-ieee802.3-c22";
-> +		reg = <0x1>;
-> +	};
-> +};
-> +
-> +&pinctrl {
-> +	usb {
-> +		vcc5v0_usb_host_en: vcc5v0_usb_host_en {
+I don't know if Shawn intends to send a new version or not.
 
-Follow DTS coding style.
 
-> +			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +};
-
-Best regards,
-Krzysztof
-
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
