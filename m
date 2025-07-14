@@ -4,61 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B2D5C83F17
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jul 2025 17:10:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46C3EC83F1B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jul 2025 18:50:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=weaVeCfr9XYwvVzvG858vCjqNg5rJmdBeMZBCG2LXmo=; b=kLLSWLdKyyqceBJlv/C22Uit7l
-	/OtmqgarOUG8uyUlJXaMJDkD7wMnwMgMMkdzAXcOmi4vz2dEgTChgyNQ3v5H4umER6C+dmhM1RXNF
-	JGqDCPNMFazvRmetP5uYQYJpdbLbIXJ3xLEWqVShn2EM6Xal3udqI7CCBskttbdpzgAmI6DnaMzwK
-	HNsH2H9BR8Pv1ACMarvfUj1raHWIexaTVA8VHCYUYW2T7Sdu4FT9P1OMu+seUusgEXEmQDXFJOM6R
-	C2nitws0VXhVSbDmRs/k2z+/Rmko7uJsyYI3SlqOvuBUupgcGr11xJC3/WdEVVVax4L4WMoaO7s3R
-	MUWg+HcA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Owlva9Mum8H2p7FycF+phgkrk7KS8qegR7hHSKYfHe8=; b=zUfCOgFB/lgDVA
+	yBm6Bms3NvgruPqZHw9HvcYhFC2o0MlMWfWLiu7GzIrBDXsY2d9t7FzOJk4K3LGVTfml3WM/hCvjj
+	R/9rfZVWIXFk/RY1FUcW14WTTMSB+JXjCwhxbxNe0yKKCepGpJEIHBEu7MjOgLpYQHcK6AXGBTVjx
+	zI6eW3cTNpQx/xQJum8UfGuicuJlRzEksyHV4vOoAwhdSR4KyCaaIr9oKWTNC1Hr9b2AknsIMRTK+
+	bb+b1BNxIvNJWGK0F34QzuCD/+UXaN1XdSxsbrlcUnOZj8etihd2BMGAdqJxtJ33FVhmlQmCuVb2B
+	sV5jBOjWdYIKhTCGG2Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubMhM-00000002vRE-0lUd;
-	Mon, 14 Jul 2025 17:10:40 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1ubOFj-000000034Hu-3urV;
+	Mon, 14 Jul 2025 18:50:15 +0000
+Received: from mail-dm6nam12olkn20823.outbound.protection.outlook.com ([2a01:111:f403:2c17::823] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubL2d-00000002emg-405n;
-	Mon, 14 Jul 2025 15:24:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 09A7A45AE1;
-	Mon, 14 Jul 2025 15:24:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF8C6C4CEED;
-	Mon, 14 Jul 2025 15:24:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752506670;
-	bh=ebj+x8BRZYtGu0+fsstXx8pq/KEArsv8puj0jnGCTeo=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=iZHQZOFy58hQK1TSK64A8XEqaieOFuOfXEe6RfCMqk7LwtAtsGFYTHdY41MflNb1B
-	 Iu9LpTCtiRvogtl7Y2S3ooz/Ppm7K11IzpBGw5Aj2SrkWdJmpDil7RzHTkqOAsHQzC
-	 YJ3I9umQ8HRCcd33qoPXlEaEJLCnx0AVRVURElQVnfTvRGYX++OfzHilQz17SqSMZd
-	 jcHfPuWHHb+skUh51KpMgKpewT/ct/f27nxaZY9lTSJQ3WeukfBEbjOdNOalxcLCzB
-	 VR25VcbfD5FmAQHtRLkzaFMzXLhV2x1+RDie4mwmpmQl5xYbmCAqbRauk5iHHZ5ATK
-	 BNaTxLu/KgAsg==
-Date: Mon, 14 Jul 2025 10:24:30 -0500
+	id 1ubMby-00000002udV-2qHZ
+	for linux-rockchip@lists.infradead.org;
+	Mon, 14 Jul 2025 17:05:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Pnbp49+LZHZfTmY0NadmlpSDceBKqAxb1qysJm+0db4ieaOyCusUchnfDmLaeUrKP76XRFvobL6OOZKTZLfGggx64rqCJKwvViRpFyb3/HWpfBRKl/d2734L9B5r6fePMTVzdgGFBwS7OfSW3xXs3BrJneY2wuqfoASZRblMD0MBhJS4+gZmR+JhubnvnpzDx/+2sWcWHJKmCQlXsphcKsXPu3uHns0aPcTtFqtFeepaA5ZAgnzHIFKPOIiFOfme5zFGlb2HORgTke07WSd+u9O+oKcmc+NDtMAH67kqJtOlPs8oqrleHTPB1g87ZWRCVEhkS4rgz0yqJ3jAnrb9cQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=p2LcYHJfC+9Jxv6GNUZTHe1mekS5nreemM8O2I1e5ds=;
+ b=AWPjTNFYlYxjnVLZ7TWqRSXSv7aGngDtDAPS5al3/GusxvlEC8c5af68H1doKx5lTARWjQVIkDZUhbR0YTIA6INrwKipOueIAn8a8WdsGGYhatLXCuU70ZJCx+d6NCE+xRnmtiE207finBa2Api4asX+DPLwl4J75U45OgKmDFxB9mwxDBWUcVTx8qEHm9uX5ire8dPWsJqmNGd8jblOdOIcfjEvXRcl/akY7SJNZwvBKQwclyKIot3dNlHKvBArF56tczaZtKT7NyE/QaPxHh3TlfBC9wrnx4642Ky4aX5fMBI0/uKk0EXhKqPWt15Tk9M2bQHwj6IUKsR4cubDEw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=p2LcYHJfC+9Jxv6GNUZTHe1mekS5nreemM8O2I1e5ds=;
+ b=LjPGHclfIU+h+nxvcT2hqHKR2Bblxsx3dBAcw3WAvt3fAavstjxawUsEXGHjcCJGYEgifEr8oCqUYXf0IjneT5GSqb9Zxf6ju7jIEnrEr/krwUC4sOiaXOY6VIZuO+lmixaKuO3PAFfb3LHsMTRZ8TlpFcoP8I9BGC/agEOQGsIm6VfP/sRZ5JYA4QEdIX+dRZKAgL8m7MsUySj+WsVvJ+oLHsxMqsxtGg0CrsK+O8G2Gck61Q0+dvWmltrUhbiO6k6wJxDOaMhOjVTpuqgG/P05GNDfedIANaJOsJdlUyWHWKEUaUw6Go+PBd4DTym++E/cZzhZWEFt3K9boeg2Og==
+Received: from SN6PR1901MB4654.namprd19.prod.outlook.com (2603:10b6:805:b::18)
+ by BY3PR19MB5025.namprd19.prod.outlook.com (2603:10b6:a03:36e::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.32; Mon, 14 Jul
+ 2025 17:04:57 +0000
+Received: from SN6PR1901MB4654.namprd19.prod.outlook.com
+ ([fe80::7ffe:9f3a:678b:150]) by SN6PR1901MB4654.namprd19.prod.outlook.com
+ ([fe80::7ffe:9f3a:678b:150%5]) with mapi id 15.20.8901.024; Mon, 14 Jul 2025
+ 17:04:57 +0000
+Date: Mon, 14 Jul 2025 12:04:54 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Lee Jones <lee@kernel.org>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	broonie@kernel.org, lgirdwood@gmail.com, sre@kernel.org,
+	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
+	robh@kernel.org
+Subject: Re: [PATCH V3 2/5] mfd: bq257xx: Add support for BQ25703A core driver
+Message-ID: <SN6PR1901MB4654D00CBB0CB0673D51F9BDA554A@SN6PR1901MB4654.namprd19.prod.outlook.com>
+References: <20250623162223.184304-1-macroalpha82@gmail.com>
+ <20250623162223.184304-3-macroalpha82@gmail.com>
+ <20250702150210.GS10134@google.com>
+Content-Disposition: inline
+In-Reply-To: <20250702150210.GS10134@google.com>
+X-ClientProxiedBy: SA0PR11CA0115.namprd11.prod.outlook.com
+ (2603:10b6:806:d1::30) To SN6PR1901MB4654.namprd19.prod.outlook.com
+ (2603:10b6:805:b::18)
+X-Microsoft-Original-Message-ID: <aHU4tlaQyhCUrXQe@wintermute.localhost.fail>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Chukun Pan <amadeus@jmu.edu.cn>, 
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
- Yao Zi <ziyao@disroot.org>, linux-rockchip@lists.infradead.org
-To: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250712173805.584586-1-jonas@kwiboo.se>
-References: <20250712173805.584586-1-jonas@kwiboo.se>
-Message-Id: <175250104064.2052710.11974428601899236231.robh@kernel.org>
-Subject: Re: [PATCH v3 0/6] arm64: dts: rockchip: Add ROCK 2A/2F, Sige1 and
- NanoPi Zero2
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR1901MB4654:EE_|BY3PR19MB5025:EE_
+X-MS-Office365-Filtering-Correlation-Id: e7433517-50dc-4997-4984-08ddc2f88f20
+X-Microsoft-Antispam: BCL:0;ARA:14566002|15080799012|461199028|5072599009|6090799003|41001999006|3412199025|440099028|40105399003|51005399003|10035399007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?eUw5TzQ5cXVQaElXVnhSeXBUQ2tnczlCYjg1bjRiVmwyV1BsTGVrM3g4VE9O?=
+ =?utf-8?B?bG04b1MyZWE0M0xCL2VsanpDdUNVUkVhbDBtaWZEVDE4YlZWM1dkaFJVUnM1?=
+ =?utf-8?B?MVR3aFhqMkNwbVFkSzc3SWRMSnJCSW1kSXJiYTJSU29tWFYxWXBreU82WW9j?=
+ =?utf-8?B?VVlsUDJIWCtLUElISnhvUHc0OTBzVnc4TTY4K1cyMGRjbmIwWm1tWUY1K0NN?=
+ =?utf-8?B?eUdhVGcrVVRKakFhQzVFQVNtOWRqazB4K2lEWi9UZElyaytsMDhuL2VsTFUz?=
+ =?utf-8?B?T3h4WnZqUlRtazRhSVZTS25qRXVQWUdrc1dKMytoQzM1ajV4YlZseEMzd1dx?=
+ =?utf-8?B?RTdkb0pKUnVTUWFGanBISGpSM014alVRN2E2allYVW5JSTZxbXVvcHJJeUpB?=
+ =?utf-8?B?MmU3ajdIUExLaHdORGtiR0VhaWswSTR2clVhdERFVllIR2QvNWYyNitOUkJF?=
+ =?utf-8?B?eVM2UGJXWkhkakQ5eFo1NzlqeTFtcGNzZzZEelV4c0NFMFc0VW9YRlAyNzhE?=
+ =?utf-8?B?dWV5VFlaVTFQZEpUd0F4L3ZRR1dqK1F5NkZLMWEwd29xcDJYMzFHY1hvejlV?=
+ =?utf-8?B?Mmt6djBBRzc3eUFjcXMyT3BIWDlQTHc4OG53Z2o2T0RMQlM2S20yRzZYcWtD?=
+ =?utf-8?B?RzJGR1lWSHpoV1QyMEVxRklqbVVjcWpXRDd3L0VSNUdxektGdDg4NW14bFdt?=
+ =?utf-8?B?TlI0bVdLc0RIa0xVclNzNTgwWDZRYnV4TE4wRUZMQjlKYmZOV29lU0xPZFB6?=
+ =?utf-8?B?UFBzUEEzZm4vNmhFV0RjS0w4K29tS2FLbHhuK3RRNjYrdWhCNXozREh4aGcr?=
+ =?utf-8?B?ZHZzZnY1OWQzM3JiM3ZmTXF3MW5xT1diTmphNWZZc0Y0RTBsR3c5a0l2UU5z?=
+ =?utf-8?B?eS9DT3pRVlJyRExOSzFmUklXWkhEOFZFNnlFRlRRbjF5cE40WnBnZU5zQm00?=
+ =?utf-8?B?Ti9xMmsvd3RQcGgzYUdaay9NMGRKU3JNQitMRnUyZ3phVkI0cFN6QTRkMTg3?=
+ =?utf-8?B?SmhDejRWdHVIRjVULzR3T3pYZFlaOSt4bTJlOWdoZ01qTUhLZGhDQ2N0bXVl?=
+ =?utf-8?B?Z0crQ1lYVHJkcmh1Q0JoSlB3cEtEamJmS2hvMVBiVHFWTnExaG1Od2FCQy9W?=
+ =?utf-8?B?MnJWbnpBbXBMV0NTZnMxK3VVVEdtMkhKOEcxR2dXQ3RFdGdrUVdDNDBqQ2s1?=
+ =?utf-8?B?Vmx5bXg2NGxHbmVrZ0JTMnp2M25qbE15RzRpQ3VTV0JCMytkTFJ2eHVwczRQ?=
+ =?utf-8?B?cEdrem9VREhxaFFqMHBVb285aWJYSVkrSEZPZW1WOEtzVFhLbSt4T3NHZ01K?=
+ =?utf-8?B?dEswVHBKcHZ2eWxFTUNKamhMRFdUblYwMlBSczduT2VDd2p2OTFEOGdpK3FV?=
+ =?utf-8?B?ZFNzZGRhanQyNjM1OHZJZW9KTkhVeVZsUUhZc1l0dXMzQ2cxMFBOVFBSVWhX?=
+ =?utf-8?B?MkhKRmdLZmY2MVA4YXRtZEJ1V00wZzdoT3Y4SmNhVFU4d3E2Q3VwbFMyU0lz?=
+ =?utf-8?B?K2pVaXJZQ2lOZXdTTnpGbm44Qm1BZFFwYzNSTjk5Wm9uZk9ZZG0wUEtJQzB0?=
+ =?utf-8?Q?7N1x8H2R8cblMTdoehMU1lxA4=3D?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UXdDRDB3SDdmQkF4djJOQm92UWVzcmxkQ0pZTjBUQk11eEZVNDR2SllMM0Zu?=
+ =?utf-8?B?V2NPY2RTNk1Ca1pDTk1HRXdYbXBpZ0MvdXJHSTNyTlB2Q0Z1NThWME83SWFj?=
+ =?utf-8?B?MVU1algyaE1uUlhsS05UczZRYkx1ZXNxZGt5Vi83RHJDVkJSVEFSN0RwcnVC?=
+ =?utf-8?B?MHcvdTd5enFEaFVtcm1RRmxlWHhXaGljVUxyaVB6VUthVDFkN1ZiQi9ZK3R5?=
+ =?utf-8?B?MVBSa0VKZUZ6Wnl5R201WDNtN1ZMYnBKVmFqRjhoYk9zcVRtU1BQMUUxMlZW?=
+ =?utf-8?B?YWg4RGwyYkY2eTROY3ZXOXJUQ2JCNnNvNGxuZmZGM211R3NKaWpsR3gzQjE1?=
+ =?utf-8?B?ODN5eFZmQWpDN1lsYmhFSmRrb2ZidzIySnh4SFpoQ1ZpUlZhdDNhMklWQ0JP?=
+ =?utf-8?B?NW56aFQ2NVA0RzhoUTFucmhhSXFtNDdzekFjcGlDdmc0eFJ6bHV3UXV2M0FE?=
+ =?utf-8?B?MGxabUJVZk1YdXB1TWJGMEs2UlZzQW8yUytnZFd2YVhnVGxCSTQrVVlMdFNT?=
+ =?utf-8?B?NUcyUkN3dm85Tmt0L0IrdGQ0OWJGNDQyQnQ5NzF4Y01NQ3JtYlZ3WVFNZWJp?=
+ =?utf-8?B?c1VvOUNrRlE3SXNGVDJzeGh1RFJVUEtnT0N2Y1NPRkh5VnJIMGVkaHJmUURD?=
+ =?utf-8?B?WVBvekxrblgyNFJGZ241Z3BHdE5Ic0RWMk51alpBZVRTTExNSU9RZU1MVjU5?=
+ =?utf-8?B?NWx5Q3MrbHlTMzhYcnlZNXVGUFlNSFdBVWdsYXV6Z1MyUTRrSTVIMkxsSXhF?=
+ =?utf-8?B?TWVjM25KbENnRFNSbnlCbVRRUTNRK0orM0ZzQlNGSWpqU2locWlUV3Y5ZVFB?=
+ =?utf-8?B?M01nNEJIQnQ5MUpuaEJmcjdTTEx2eGIzR1J2cjloTnZxaTh4aVFWSCtlZE9r?=
+ =?utf-8?B?dXFsN2RKNWRYWHRnaVZZU3AzNTN3SDRNTWgyR3F2NTArWXJVdEtIUmdGYWNy?=
+ =?utf-8?B?Z2RGZVNxUm1NcjRaMEtNcUxpZStCbkJQOTd1emk5dHQyQWt5YTZqdG1OakVy?=
+ =?utf-8?B?N2ZyQXdManNCSzVUd0VoaytoTGNvYVlaZ3RRcllUcTkzM3FnZEtveXpIVmRR?=
+ =?utf-8?B?UE15eVZ1RER0Qkh0L0pvS2ltQVBSRDk4Z3poZmlQNG9vTW4rN29KM01GWnRW?=
+ =?utf-8?B?dEFJWVdzdGVoL2ZSMnJBaXY3dkJ1ZklteW5sNXVHZk9MQXo3MjRrSmY2c3U4?=
+ =?utf-8?B?Wld6K1pucG8zMDBkRHNXV0dCZnRPYjBSelhSYmdnMjV5eDNJOWFnQmszTXBO?=
+ =?utf-8?B?anJMQ3BtQzNxemNUcjBrQlVVbXRGV21tVFJidFhYc09xSTFOcWI1SjZDdFVH?=
+ =?utf-8?B?QzRzWUJmV2VkcHc1UlZ0VDhjVTE2TGRuODdrQTJLNUozcUc4c3dLZG9GMEhP?=
+ =?utf-8?B?WGVTK1BIOW5BMVRkRTRYVHJTTHhvRldZNWo4VHFvd01ReHY3SWZJTXlqdTND?=
+ =?utf-8?B?bjdaaDBPa2VuZ0lKTklDbVE0TkEyaTEvVk5oSGFjdkFqT3FvaWdmdnFlRjhN?=
+ =?utf-8?B?UWx6Vmwvend0SFk4OHNydXBWejZYUG5GcXhtRTJKT3ZOR2NUcG1vT0dVUUpU?=
+ =?utf-8?B?ck9IU3FwVTNVcUpYOGlIQklpeTIybUQvZmxTVlVxbE10eEtWVkZjcnZvNEZF?=
+ =?utf-8?B?a2FWQ094Qnd1YjEwWkdXb0ZUQzVrZkRjQ0pacFlqeE9WcGs3OFBYLzRmRktn?=
+ =?utf-8?B?SlpLdU1JL0YzZEljR1FmZ1ppZkRqMC9JS0hHU3diU2JCR3NweUJkQlNvR1JU?=
+ =?utf-8?Q?KmgilpvPc4/umSA/zB39H+IC894wlq7pd0Wvl2T?=
+X-OriginatorOrg: sct-15-20-8534-20-msonline-outlook-2c339.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: e7433517-50dc-4997-4984-08ddc2f88f20
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR1901MB4654.namprd19.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jul 2025 17:04:57.7332
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY3PR19MB5025
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_082432_040436_AE8CD9DC 
-X-CRM114-Status: GOOD (  19.71  )
+X-CRM114-CacheID: sfid-20250714_100506_787632_3A67AAAC 
+X-CRM114-Status: GOOD (  35.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,146 +157,202 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Sat, 12 Jul 2025 17:37:42 +0000, Jonas Karlman wrote:
-> This series adds dt-bindings and initial device tree for the following
-> Rockchip RK3528A boards:
-> - Radxa ROCK 2A/2F
-> - ArmSoM Sige1
-> - FriendlyElec NanoPi Zero2
-> 
-> The bt/wifi_reg_on pins are described in the device tree using
-> rfkill-gpio nodes.
-> 
-> Changes in v3:
-> - Rename led nodes to led-0/led-1
-> - Remove pinctrl* props from sdio0
-> - Collect a-b tags
-> 
-> Changes in v2:
-> - Limit sdmmc max-frequency to 100 MHz on ROCK 2A/2F
-> - Drop clock-output-names prop from rtc node on Sige1 and NanoPi Zero2
-> - Drop regulator-boot-on from usb 2.0 host regulators on Sige1
-> - Add bluetooth and wifi nodes on Sige1
-> - Collect t-b tag for NanoPi Zero2
-> 
-> These boards can be booted from emmc or sd-card using the U-Boot 2025.07
-> generic-rk3528 target or work-in-progress patches for these boards [1].
-> 
-> For working bluetooth on ArmSoM Sige1 the patch "arm64: dts: rockchip:
-> Fix UART DMA support for RK3528" [2] is required.
-> 
-> [1] https://source.denx.de/u-boot/contributors/kwiboo/u-boot/-/commits/rk3528
-> [2] https://lore.kernel.org/r/20250709210831.3170458-1-jonas@kwiboo.se
-> 
-> Jonas Karlman (6):
->   dt-bindings: arm: rockchip: Add Radxa ROCK 2A/2F
->   arm64: dts: rockchip: Add Radxa ROCK 2A/2F
->   dt-bindings: arm: rockchip: Add ArmSoM Sige1
->   arm64: dts: rockchip: Add ArmSoM Sige1
->   dt-bindings: arm: rockchip: Add FriendlyElec NanoPi Zero2
->   arm64: dts: rockchip: Add FriendlyElec NanoPi Zero2
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |  17 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   4 +
->  .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 465 ++++++++++++++++++
->  .../boot/dts/rockchip/rk3528-nanopi-zero2.dts | 340 +++++++++++++
->  .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 293 +++++++++++
->  .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 +++
->  .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
->  7 files changed, 1211 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
-> 
-> --
-> 2.49.0
-> 
-> 
-> 
-
-
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/v6.16-rc1-53-g96cbdfdd3ac2 (exact match)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250712173805.584586-1-jonas@kwiboo.se:
-
-arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
-arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
-arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
-	'allwinner,sun8i-a23-mali' was expected
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
-	'allwinner,sun7i-a20-mali' was expected
-	'arm,mali-400' was expected
-	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
-arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
-	'allwinner,sun8i-a23-mali' was expected
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
-	'allwinner,sun7i-a20-mali' was expected
-	'arm,mali-400' was expected
-	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
-arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
-arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
-arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
-arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
-	'allwinner,sun8i-a23-mali' was expected
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
-	'allwinner,sun7i-a20-mali' was expected
-	'arm,mali-400' was expected
-	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
-arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: /soc/power-management@ff600000: failed to match any schema with compatible: ['rockchip,rk3528-pmu', 'syscon', 'simple-mfd']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: /soc/power-management@ff600000/power-controller: failed to match any schema with compatible: ['rockchip,rk3528-power-controller']
-arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: gpu@ff700000 (rockchip,rk3528-mali): compatible: 'oneOf' conditional failed, one must be fixed:
-	['rockchip,rk3528-mali', 'arm,mali-450'] is too short
-	'allwinner,sun8i-a23-mali' was expected
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun4i-a10-mali', 'allwinner,sun7i-a20-mali', 'allwinner,sun8i-h3-mali', 'allwinner,sun8i-r40-mali', 'allwinner,sun50i-a64-mali', 'rockchip,rk3036-mali', 'rockchip,rk3066-mali', 'rockchip,rk3128-mali', 'rockchip,rk3188-mali', 'rockchip,rk3228-mali', 'samsung,exynos4210-mali', 'st,stih410-mali', 'stericsson,db8500-mali', 'xlnx,zynqmp-mali']
-	'rockchip,rk3528-mali' is not one of ['allwinner,sun50i-h5-mali', 'amlogic,meson8-mali', 'amlogic,meson8b-mali', 'amlogic,meson-gxbb-mali', 'amlogic,meson-gxl-mali', 'hisilicon,hi6220-mali', 'mediatek,mt7623-mali', 'rockchip,rk3328-mali']
-	'allwinner,sun7i-a20-mali' was expected
-	'arm,mali-400' was expected
-	from schema $id: http://devicetree.org/schemas/gpu/arm,mali-utgard.yaml#
-arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dtb: /soc/gpu@ff700000: failed to match any schema with compatible: ['rockchip,rk3528-mali', 'arm,mali-450']
-
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBKdWwgMDIsIDIwMjUgYXQgMDQ6MDI6MTBQTSArMDEwMCwgTGVlIEpvbmVzIHdyb3Rl
+Ogo+IE9uIE1vbiwgMjMgSnVuIDIwMjUsIENocmlzIE1vcmdhbiB3cm90ZToKPiAKPiA+IEZyb206
+IENocmlzIE1vcmdhbiA8bWFjcm9tb3JnYW5AaG90bWFpbC5jb20+Cj4gPiAKPiA+IFRoZSBUZXhh
+cyBJbnN0cnVtZW50cyBCUTI1NzAzQSBpcyBhbiBpbnRlZ3JhdGVkIGNoYXJnZXIgbWFuYWdlciBh
+bmQKPiA+IGJvb3N0IGNvbnZlcnRlci4KPiA+IAo+ID4gVGhlIE1GRCBkcml2ZXIgaW5pdGFsaXpl
+cyB0aGUgZGV2aWNlIGZvciB0aGUgcmVndWxhdG9yIGRyaXZlcgo+ID4gYW5kIHBvd2VyIHN1cHBs
+eSBkcml2ZXIuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IENocmlzIE1vcmdhbiA8bWFjcm9tb3Jn
+YW5AaG90bWFpbC5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL21mZC9LY29uZmlnICAgICAgICAg
+fCAgMTEgKysrKwo+ID4gIGRyaXZlcnMvbWZkL01ha2VmaWxlICAgICAgICB8ICAgMSArCj4gPiAg
+ZHJpdmVycy9tZmQvYnEyNTd4eC5jICAgICAgIHwgMTA0ICsrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysKPiA+ICBpbmNsdWRlL2xpbnV4L21mZC9icTI1N3h4LmggfCAxMDggKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gPiAgNCBmaWxlcyBjaGFuZ2VkLCAyMjQg
+aW5zZXJ0aW9ucygrKQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21mZC9icTI1N3h4
+LmMKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgaW5jbHVkZS9saW51eC9tZmQvYnEyNTd4eC5oCj4g
+PiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21mZC9LY29uZmlnIGIvZHJpdmVycy9tZmQvS2Nv
+bmZpZwo+ID4gaW5kZXggNmZiMzc2OGUzZDcxLi5kOGIzOWU4YThhMTcgMTAwNjQ0Cj4gPiAtLS0g
+YS9kcml2ZXJzL21mZC9LY29uZmlnCj4gPiArKysgYi9kcml2ZXJzL21mZC9LY29uZmlnCj4gPiBA
+QCAtMTU4NSw2ICsxNTg1LDE3IEBAIGNvbmZpZyBNRkRfVElfTE1VCj4gPiAgCSAgTE0zNjI3NC4g
+IEl0IGNvbnNpc3RzIG9mIGJhY2tsaWdodCwgTEVEIGFuZCByZWd1bGF0b3IgZHJpdmVyLgo+ID4g
+IAkgIEl0IHByb3ZpZGVzIGNvbnNpc3RlbnQgZGV2aWNlIGNvbnRyb2xzIGZvciBsaWdodGluZyBm
+dW5jdGlvbnMuCj4gPiAgCj4gPiArY29uZmlnIE1GRF9CUTI1N1hYCj4gPiArCXRyaXN0YXRlICJU
+SSBCUTI1N1hYIEJ1Y2svQm9vc3QgQ2hhcmdlIENvbnRyb2xsZXIiCj4gPiArCWRlcGVuZHMgb24g
+STJDCj4gPiArCXNlbGVjdCBNRkRfQ09SRQo+ID4gKwlzZWxlY3QgUkVHTUFQX0kyQwo+ID4gKwlo
+ZWxwCj4gPiArCSAgU3VwcG9ydCBUZXhhcyBJbnN0cnVtZW50cyBCUTI1NzAzIEJ1Y2svQm9vc3Qg
+Y29udmVydGVyIHdpdGgKPiA+ICsJICBjaGFyZ2UgY29udHJvbGxlci4gSXQgY29uc2lzdHMgb2Yg
+cmVndWxhdG9ycyB0aGF0IHByb3ZpZGUKPiA+ICsJICBzeXN0ZW0gdm9sdGFnZSBhbmQgT1RHIHZv
+bHRhZ2UsIGFuZCBhIGNoYXJnZXIgbWFuYWdlciBmb3IKPiA+ICsJICBiYXR0ZXJpZXMgY29udGFp
+bmluZyBvbmUgb3IgbW9yZSBjZWxscy4KPiA+ICsKPiA+ICBjb25maWcgTUZEX09NQVBfVVNCX0hP
+U1QKPiA+ICAJYm9vbCAiVEkgT01BUCBVU0JIUyBjb3JlIGFuZCBUTEwgZHJpdmVyIgo+ID4gIAlk
+ZXBlbmRzIG9uIFVTQl9FSENJX0hDRF9PTUFQIHx8IFVTQl9PSENJX0hDRF9PTUFQMwo+ID4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvbWZkL01ha2VmaWxlIGIvZHJpdmVycy9tZmQvTWFrZWZpbGUKPiA+
+IGluZGV4IDc5NDk1ZjlmMzQ1Ny4uMDZkYTkzMmNjZTVkIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVy
+cy9tZmQvTWFrZWZpbGUKPiA+ICsrKyBiL2RyaXZlcnMvbWZkL01ha2VmaWxlCj4gPiBAQCAtMTMs
+NiArMTMsNyBAQCBvYmotJChDT05GSUdfTUZEX1NNNTAxKQkJKz0gc201MDEubwo+ID4gIG9iai0k
+KENPTkZJR19BUkNIX0JDTTI4MzUpCSs9IGJjbTI4MzUtcG0ubwo+ID4gIG9iai0kKENPTkZJR19N
+RkRfQkNNNTkwWFgpCSs9IGJjbTU5MHh4Lm8KPiA+ICBvYmotJChDT05GSUdfTUZEX0JEOTU3MU1X
+VikJKz0gYmQ5NTcxbXd2Lm8KPiA+ICtvYmotJChDT05GSUdfTUZEX0JRMjU3WFgpCSs9IGJxMjU3
+eHgubwo+ID4gIG9iai0kKENPTkZJR19NRkRfQ0dCQykJCSs9IGNnYmMtY29yZS5vCj4gPiAgb2Jq
+LSQoQ09ORklHX01GRF9DUk9TX0VDX0RFVikJKz0gY3Jvc19lY19kZXYubwo+ID4gIG9iai0kKENP
+TkZJR19NRkRfQ1M0Mkw0MykJKz0gY3M0Mmw0My5vCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9t
+ZmQvYnEyNTd4eC5jIGIvZHJpdmVycy9tZmQvYnEyNTd4eC5jCj4gPiBuZXcgZmlsZSBtb2RlIDEw
+MDY0NAo+ID4gaW5kZXggMDAwMDAwMDAwMDAwLi4yN2ZiYjY0MTEwZWQKPiA+IC0tLSAvZGV2L251
+bGwKPiA+ICsrKyBiL2RyaXZlcnMvbWZkL2JxMjU3eHguYwo+ID4gQEAgLTAsMCArMSwxMDQgQEAK
+PiA+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMAo+ID4gKy8qCj4gPiArICog
+QlEyNTdYWCBDb3JlIERyaXZlcgo+ID4gKyAqIENvcHlyaWdodCAoQykgMjAyNCBDaHJpcyBNb3Jn
+YW4gPG1hY3JvbW9yZ2FuQGhvdG1haWwuY29tPgo+IAo+IE5vIHVwZGF0ZXMgc2luY2UgdGhlbj8K
+ClllcywgdGhlcmUgaGF2ZSBiZWVuLCBJJ2xsIHJlc3VibWl0IHdpdGggdXBkYXRlZCBjb3B5cmln
+aHQgc3RyaW5ncy4KCj4gCj4gPiArICovCj4gPiArCj4gPiArI2luY2x1ZGUgPGxpbnV4L2Rldmlj
+ZS5oPgo+ID4gKyNpbmNsdWRlIDxsaW51eC9pMmMuaD4KPiA+ICsjaW5jbHVkZSA8bGludXgvbWZk
+L2JxMjU3eHguaD4KPiA+ICsjaW5jbHVkZSA8bGludXgvbWZkL2NvcmUuaD4KPiA+ICsjaW5jbHVk
+ZSA8bGludXgvcmVnbWFwLmg+Cj4gPiArCj4gPiArc3RhdGljIGNvbnN0IHN0cnVjdCByZWdtYXBf
+cmFuZ2UgYnEyNTcwM19yZWFkb25seV9yZWdfcmFuZ2VzW10gPSB7Cj4gPiArCXJlZ21hcF9yZWdf
+cmFuZ2UoQlEyNTcwM19DSEFSR0VSX1NUQVRVUywgQlEyNTcwM19NQU5VRkFDVF9ERVZfSUQpLAo+
+ID4gK307Cj4gPiArCj4gPiArc3RhdGljIGNvbnN0IHN0cnVjdCByZWdtYXBfYWNjZXNzX3RhYmxl
+IGJxMjU3MDNfd3JpdGVhYmxlX3JlZ3MgPSB7Cj4gPiArCS5ub19yYW5nZXMgPSBicTI1NzAzX3Jl
+YWRvbmx5X3JlZ19yYW5nZXMsCj4gPiArCS5uX25vX3JhbmdlcyA9IEFSUkFZX1NJWkUoYnEyNTcw
+M19yZWFkb25seV9yZWdfcmFuZ2VzKSwKPiA+ICt9Owo+ID4gKwo+ID4gK3N0YXRpYyBjb25zdCBz
+dHJ1Y3QgcmVnbWFwX3JhbmdlIGJxMjU3MDNfdm9sYXRpbGVfcmVnX3Jhbmdlc1tdID0gewo+ID4g
+KwlyZWdtYXBfcmVnX3JhbmdlKEJRMjU3MDNfQ0hBUkdFX09QVElPTl8wLCBCUTI1NzAzX0lJTl9I
+T1NUKSwKPiA+ICsJcmVnbWFwX3JlZ19yYW5nZShCUTI1NzAzX0NIQVJHRVJfU1RBVFVTLCBCUTI1
+NzAzX0FEQ19PUFRJT04pLAo+ID4gK307Cj4gPiArCj4gPiArc3RhdGljIGNvbnN0IHN0cnVjdCBy
+ZWdtYXBfYWNjZXNzX3RhYmxlIGJxMjU3MDNfdm9sYXRpbGVfcmVncyA9IHsKPiA+ICsJLnllc19y
+YW5nZXMgPSBicTI1NzAzX3ZvbGF0aWxlX3JlZ19yYW5nZXMsCj4gPiArCS5uX3llc19yYW5nZXMg
+PSBBUlJBWV9TSVpFKGJxMjU3MDNfdm9sYXRpbGVfcmVnX3JhbmdlcyksCj4gPiArfTsKPiA+ICsK
+PiA+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHJlZ21hcF9jb25maWcgYnEyNTcwM19yZWdtYXBfY29u
+ZmlnID0gewo+ID4gKwkucmVnX2JpdHMgPSA4LAo+ID4gKwkudmFsX2JpdHMgPSAxNiwKPiA+ICsJ
+Lm1heF9yZWdpc3RlciA9IEJRMjU3MDNfQURDX09QVElPTiwKPiA+ICsJLmNhY2hlX3R5cGUgPSBS
+RUdDQUNIRV9SQlRSRUUsCj4gPiArCS53cl90YWJsZSA9ICZicTI1NzAzX3dyaXRlYWJsZV9yZWdz
+LAo+ID4gKwkudm9sYXRpbGVfdGFibGUgPSAmYnEyNTcwM192b2xhdGlsZV9yZWdzLAo+ID4gKwku
+dmFsX2Zvcm1hdF9lbmRpYW4gPSBSRUdNQVBfRU5ESUFOX0xJVFRMRSwKPiA+ICt9Owo+ID4gKwo+
+ID4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbWZkX2NlbGwgYnEyNTcwM19jZWxsc1tdID0gewo+ID4g
+KwlNRkRfQ0VMTF9OQU1FKCJicTI1N3h4LXJlZ3VsYXRvciIpLAo+ID4gKwlNRkRfQ0VMTF9OQU1F
+KCJicTI1N3h4LWNoYXJnZXIiKSwKPiA+ICt9Owo+ID4gKwo+ID4gK3N0YXRpYyBpbnQgYnEyNTd4
+eF9wcm9iZShzdHJ1Y3QgaTJjX2NsaWVudCAqY2xpZW50KQo+ID4gK3sKPiA+ICsJc3RydWN0IGJx
+MjU3eHhfZGV2aWNlICpkZGF0YTsKPiA+ICsJY29uc3Qgc3RydWN0IG1mZF9jZWxsICpjZWxsczsK
+PiA+ICsJaW50IG5yX2NlbGxzOwo+ID4gKwlpbnQgcmV0Owo+ID4gKwo+ID4gKwlkZGF0YSA9IGRl
+dm1fa3phbGxvYygmY2xpZW50LT5kZXYsIHNpemVvZigqZGRhdGEpLCBHRlBfS0VSTkVMKTsKPiA+
+ICsJaWYgKCFkZGF0YSkKPiA+ICsJCXJldHVybiAtRU5PTUVNOwo+ID4gKwo+ID4gKwlkZGF0YS0+
+Y2xpZW50ID0gY2xpZW50Owo+ID4gKwo+ID4gKwljZWxscyA9IGJxMjU3MDNfY2VsbHM7Cj4gPiAr
+CW5yX2NlbGxzID0gQVJSQVlfU0laRShicTI1NzAzX2NlbGxzKTsKPiAKPiBXaGF0J3MgdGhlIGp1
+c3RpZmljYXRpb24gZm9yIHVzaW5nIGxvY2FsIHZhcmlhYmxlcyBmb3IgdGhlc2U/Cj4gCj4gV2h5
+IG5vdCB1c2UgdGhlbSBkaXJlY3RseT8KCkkgb3JpZ2luYWxseSB3cm90ZSB0aGlzIGRyaXZlciB0
+byBiZSBhIGJpdCBtb3JlICJnZW5lcmljIiBpbiB0aGF0IGZvcgpkaWZmZXJlbnQgaGFyZHdhcmUg
+cmV2aXNpb25zIGEgdXNlciBjb3VsZCBqdXN0IGFkZCByZWdpc3RlcgpkZWZpbml0aW9ucyBhbmQg
+aGFyZHdhcmUgc3BlY2lmaWMgZnVuY3Rpb25zIGFuZCBpdCB3b3VsZCBiZSBzdXBwb3J0ZWQuCkkg
+ZGlkIHRoYXQgYmVjYXVzZSB2ZXJ5IG9mdGVuIEkgZmluZCBteXNlbGYgaGF2aW5nIHRvIHJlZmFj
+dG9yIGRyaXZlcnMKd2hlbiBhZGRpbmcgYSBuZXcgcGllY2Ugb2YgaGFyZHdhcmUuLi4gSSBmaWd1
+cmVkIEknZCBqdXN0IGRvIGl0IGZyb20KdGhlIHN0YXJ0IHRoaXMgdGltZSwgYW5kIHRoYXQncyB3
+aHkgdGhpcyBpcyBkb25lIHRoaXMgd2F5LiBTaW5jZSBmb3IKbm93IHRoZSBvbmx5IHBpZWNlIG9m
+IGhhcmR3YXJlIEkga25vdyBvZiBpcyB0aGUgYnEyNTcwM2EgdGhvdWdoLCBJIGNhbgpza2lwIHVz
+aW5nIGxvY2FsIHZhcmlhYmxlcyBpZiB5b3UgcHJlZmVyLgoKPiAKPiA+ICsJZGRhdGEtPnJlZ21h
+cCA9IGRldm1fcmVnbWFwX2luaXRfaTJjKGNsaWVudCwgJmJxMjU3MDNfcmVnbWFwX2NvbmZpZyk7
+Cj4gPiArCWlmIChJU19FUlIoZGRhdGEtPnJlZ21hcCkpIHsKPiA+ICsJCWRldl9lcnIoJmNsaWVu
+dC0+ZGV2LCAiRmFpbGVkIHRvIGFsbG9jYXRlIHJlZ2lzdGVyIG1hcFxuIik7Cj4gPiArCQlyZXR1
+cm4gUFRSX0VSUihkZGF0YS0+cmVnbWFwKTsKPiAKPiBkZXZfZXJyX3Byb2JlKCkKCldpbGwgZml4
+LCB0aGFuayB5b3UuCgo+IAo+ID4gKwl9Cj4gPiArCj4gPiArCWkyY19zZXRfY2xpZW50ZGF0YShj
+bGllbnQsIGRkYXRhKTsKPiA+ICsKPiA+ICsJcmV0ID0gZGV2bV9tZmRfYWRkX2RldmljZXMoJmNs
+aWVudC0+ZGV2LCBQTEFURk9STV9ERVZJRF9BVVRPLAo+ID4gKwkJCQkgICBjZWxscywgbnJfY2Vs
+bHMsIE5VTEwsIDAsIE5VTEwpOwo+ID4gKwlpZiAocmV0KSB7Cj4gPiArCQlkZXZfZXJyKCZjbGll
+bnQtPmRldiwgIkZhaWxlZCB0byByZWdpc3RlciBjaGlsZCBkZXZpY2VzICVkXG4iLCByZXQpOwo+
+ID4gKwkJcmV0dXJuIHJldDsKPiAKPiBkZXZfZXJyX3Byb2JlKCkKPiAKCldpbGwgZml4LCB0aGFu
+ayB5b3UuCgo+ID4gKwl9Cj4gPiArCj4gPiArCXJldHVybiByZXQ7Cj4gPiArfQo+ID4gKwo+ID4g
+K3N0YXRpYyBjb25zdCBzdHJ1Y3QgaTJjX2RldmljZV9pZCBicTI1N3h4X2kyY19pZHNbXSA9IHsK
+PiA+ICsJeyAiYnEyNTcwM2EiIH0sCj4gPiArCXt9Cj4gPiArfTsKPiA+ICtNT0RVTEVfREVWSUNF
+X1RBQkxFKGkyYywgYnEyNTd4eF9pMmNfaWRzKTsKPiA+ICsKPiA+ICtzdGF0aWMgY29uc3Qgc3Ry
+dWN0IG9mX2RldmljZV9pZCBicTI1N3h4X29mX21hdGNoW10gPSB7Cj4gPiArCXsgLmNvbXBhdGli
+bGUgPSAidGksYnEyNTcwM2EiIH0sCj4gPiArCXt9Cj4gPiArfTsKPiA+ICtNT0RVTEVfREVWSUNF
+X1RBQkxFKG9mLCBicTI1N3h4X29mX21hdGNoKTsKPiA+ICsKPiA+ICtzdGF0aWMgc3RydWN0IGky
+Y19kcml2ZXIgYnEyNTd4eF9kcml2ZXIgPSB7Cj4gPiArCS5kcml2ZXIgPSB7Cj4gPiArCQkubmFt
+ZSA9ICJicTI1N3h4IiwKPiA+ICsJCS5vZl9tYXRjaF90YWJsZSA9IGJxMjU3eHhfb2ZfbWF0Y2gs
+Cj4gPiArCX0sCj4gPiArCS5wcm9iZSA9IGJxMjU3eHhfcHJvYmUsCj4gPiArCS5pZF90YWJsZSA9
+IGJxMjU3eHhfaTJjX2lkcywKPiA+ICt9Owo+ID4gK21vZHVsZV9pMmNfZHJpdmVyKGJxMjU3eHhf
+ZHJpdmVyKTsKPiA+ICsKPiA+ICtNT0RVTEVfREVTQ1JJUFRJT04oImJxMjU3eHggYnVjay9ib29z
+dC9jaGFyZ2VyIGRyaXZlciIpOwo+ID4gK01PRFVMRV9BVVRIT1IoIkNocmlzIE1vcmdhbiA8bWFj
+cm9tb3JnYW5AaG90bWFpbC5jb20+Iik7Cj4gPiArTU9EVUxFX0xJQ0VOU0UoIkdQTCIpOwo+ID4g
+ZGlmZiAtLWdpdCBhL2luY2x1ZGUvbGludXgvbWZkL2JxMjU3eHguaCBiL2luY2x1ZGUvbGludXgv
+bWZkL2JxMjU3eHguaAo+ID4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiA+IGluZGV4IDAwMDAwMDAw
+MDAwMC4uMTUzYTk2MjQ4ZjMyCj4gPiAtLS0gL2Rldi9udWxsCj4gPiArKysgYi9pbmNsdWRlL2xp
+bnV4L21mZC9icTI1N3h4LmgKPiA+IEBAIC0wLDAgKzEsMTA4IEBACj4gPiArLyogU1BEWC1MaWNl
+bnNlLUlkZW50aWZpZXI6IEdQTC0yLjAgKi8KPiA+ICsvKgo+ID4gKyAqIFJlZ2lzdGVyIGRlZmlu
+aXRpb25zIGZvciBUSSBCUTI1N1hYCj4gPiArICogQ29weXJpZ2h0IChDKSAyMDIwIFRleGFzIElu
+c3RydW1lbnRzIEluY29ycG9yYXRlZCAtIGh0dHA6Ly93d3cudGkuY29tLwo+IAo+IE5vIHVwZGF0
+ZXMgc2luY2UgdGhlbj8KPiAKCldpbGwgZml4LgoKPiA+ICsgKi8KPiA+ICsKPiA+ICsjZGVmaW5l
+IEJRMjU3MDNfQ0hBUkdFX09QVElPTl8wCQkJMHgwMAo+ID4gKyNkZWZpbmUgQlEyNTcwM19DSEFS
+R0VfQ1VSUkVOVAkJCTB4MDIKPiA+ICsjZGVmaW5lIEJRMjU3MDNfTUFYX0NIQVJHRV9WT0xUCQkJ
+MHgwNAo+ID4gKyNkZWZpbmUgQlEyNTcwM19PVEdfVk9MVAkJCTB4MDYKPiA+ICsjZGVmaW5lIEJR
+MjU3MDNfT1RHX0NVUlJFTlQJCQkweDA4Cj4gPiArI2RlZmluZSBCUTI1NzAzX0lOUFVUX1ZPTFRB
+R0UJCQkweDBhCj4gPiArI2RlZmluZSBCUTI1NzAzX01JTl9WU1lTCQkJMHgwYwo+ID4gKyNkZWZp
+bmUgQlEyNTcwM19JSU5fSE9TVAkJCTB4MGUKPiA+ICsjZGVmaW5lIEJRMjU3MDNfQ0hBUkdFUl9T
+VEFUVVMJCQkweDIwCj4gPiArI2RlZmluZSBCUTI1NzAzX1BST0NIT1RfU1RBVFVTCQkJMHgyMgo+
+ID4gKyNkZWZpbmUgQlEyNTcwM19JSU5fRFBNCQkJCTB4MjQKPiA+ICsjZGVmaW5lIEJRMjU3MDNf
+QURDSUJBVF9DSEcJCQkweDI4Cj4gPiArI2RlZmluZSBCUTI1NzAzX0FEQ0lJTkNNUElOCQkJMHgy
+YQo+ID4gKyNkZWZpbmUgQlEyNTcwM19BRENWU1lTVkJBVAkJCTB4MmMKPiA+ICsjZGVmaW5lIEJR
+MjU3MDNfTUFOVUZBQ1RfREVWX0lECQkJMHgyZQo+ID4gKyNkZWZpbmUgQlEyNTcwM19DSEFSR0Vf
+T1BUSU9OXzEJCQkweDMwCj4gPiArI2RlZmluZSBCUTI1NzAzX0NIQVJHRV9PUFRJT05fMgkJCTB4
+MzIKPiA+ICsjZGVmaW5lIEJRMjU3MDNfQ0hBUkdFX09QVElPTl8zCQkJMHgzNAo+ID4gKyNkZWZp
+bmUgQlEyNTcwM19BRENfT1BUSU9OCQkJMHgzYQo+ID4gKwo+ID4gKyNkZWZpbmUgQlEyNTcwM19F
+Tl9MV1BXUgkJCUJJVCgxNSkKPiA+ICsjZGVmaW5lIEJRMjU3MDNfV0RUTVJfQURKX01BU0sJCQlH
+RU5NQVNLKDE0LCAxMykKPiA+ICsjZGVmaW5lIEJRMjU3MDNfV0RUTVJfRElTQUJMRQkJCTAKPiA+
+ICsjZGVmaW5lIEJRMjU3MDNfV0RUTVJfNV9TRUMJCQkxCj4gPiArI2RlZmluZSBCUTI1NzAzX1dE
+VE1SXzg4X1NFQwkJCTIKPiA+ICsjZGVmaW5lIEJRMjU3MDNfV0RUTVJfMTc1X1NFQwkJCTMKPiA+
+ICsKPiA+ICsjZGVmaW5lIEJRMjU3MDNfSUNIR19NQVNLCQkJR0VOTUFTSygxMiwgNikKPiA+ICsj
+ZGVmaW5lIEJRMjU3MDNfSUNIR19TVEVQX1VBCQkJNjQwMDAKPiA+ICsjZGVmaW5lIEJRMjU3MDNf
+SUNIR19NSU5fVUEJCQk2NDAwMAo+ID4gKyNkZWZpbmUgQlEyNTcwM19JQ0hHX01BWF9VQQkJCTgx
+MjgwMDAKPiA+ICsKPiA+ICsjZGVmaW5lIEJRMjU3MDNfTUFYX0NIQVJHRV9WT0xUX01BU0sJCUdF
+Tk1BU0soMTUsIDQpCj4gPiArI2RlZmluZSBCUTI1NzAzX1ZCQVRSRUdfU1RFUF9VVgkJCTE2MDAw
+Cj4gPiArI2RlZmluZSBCUTI1NzAzX1ZCQVRSRUdfTUlOX1VWCQkJMTAyNDAwMAo+ID4gKyNkZWZp
+bmUgQlEyNTcwM19WQkFUUkVHX01BWF9VVgkJCTE5MjAwMDAwCj4gPiArCj4gPiArI2RlZmluZSBC
+UTI1NzAzX09UR19WT0xUX01BU0sJCQlHRU5NQVNLKDEzLCA2KQo+ID4gKyNkZWZpbmUgQlEyNTcw
+M19PVEdfVk9MVF9TVEVQX1VWCQk2NDAwMAo+ID4gKyNkZWZpbmUgQlEyNTcwM19PVEdfVk9MVF9N
+SU5fVVYJCQk0NDgwMDAwCj4gPiArI2RlZmluZSBCUTI1NzAzX09UR19WT0xUX01BWF9VVgkJCTIw
+ODAwMDAwCj4gPiArI2RlZmluZSBCUTI1NzAzX09UR19WT0xUX05VTV9WT0xUCQkyNTYKPiA+ICsK
+PiA+ICsjZGVmaW5lIEJRMjU3MDNfT1RHX0NVUl9NQVNLCQkJR0VOTUFTSygxNCwgOCkKPiA+ICsj
+ZGVmaW5lIEJRMjU3MDNfT1RHX0NVUl9TVEVQX1VBCQkJNTAwMDAKPiA+ICsjZGVmaW5lIEJRMjU3
+MDNfT1RHX0NVUl9NQVhfVUEJCQk2MzUwMDAwCj4gPiArCj4gPiArI2RlZmluZSBCUTI1NzAzX01J
+TlZTWVNfTUFTSwkJCUdFTk1BU0soMTMsIDgpCj4gPiArI2RlZmluZSBCUTI1NzAzX01JTlZTWVNf
+U1RFUF9VVgkJCTI1NjAwMAo+ID4gKyNkZWZpbmUgQlEyNTcwM19NSU5WU1lTX01JTl9VVgkJCTEw
+MjQwMDAKPiA+ICsjZGVmaW5lIEJRMjU3MDNfTUlOVlNZU19NQVhfVVYJCQkxNjEyODAwMAo+ID4g
+Kwo+ID4gKyNkZWZpbmUgQlEyNTcwM19TVFNfQUNfU1RBVAkJCUJJVCgxNSkKPiA+ICsjZGVmaW5l
+IEJRMjU3MDNfU1RTX0lOX0ZDSFJHCQkJQklUKDEwKQo+ID4gKyNkZWZpbmUgQlEyNTcwM19TVFNf
+SU5fUENIUkcJCQlCSVQoOSkKPiA+ICsjZGVmaW5lIEJRMjU3MDNfU1RTX0ZBVUxUX0FDT1YJCQlC
+SVQoNykKPiA+ICsjZGVmaW5lIEJRMjU3MDNfU1RTX0ZBVUxUX0JBVE9DCQkJQklUKDYpCj4gPiAr
+I2RlZmluZSBCUTI1NzAzX1NUU19GQVVMVF9BQ09DCQkJQklUKDUpCj4gPiArCj4gPiArI2RlZmlu
+ZSBCUTI1NzAzX0lJTkRQTV9NQVNLCQkJR0VOTUFTSygxNCwgOCkKPiA+ICsjZGVmaW5lIEJRMjU3
+MDNfSUlORFBNX1NURVBfVUEJCQk1MDAwMAo+ID4gKyNkZWZpbmUgQlEyNTcwM19JSU5EUE1fTUlO
+X1VBCQkJNTAwMDAKPiA+ICsjZGVmaW5lIEJRMjU3MDNfSUlORFBNX01BWF9VQQkJCTY0MDAwMDAK
+PiA+ICsjZGVmaW5lIEJRMjU3MDNfSUlORFBNX0RFRkFVTFRfVUEJCTMzMDAwMDAKPiA+ICsjZGVm
+aW5lIEJRMjU3MDNfSUlORFBNX09GRlNFVF9VQQkJNTAwMDAKPiA+ICsKPiA+ICsjZGVmaW5lIEJR
+MjU3MDNfQURDSUJBVF9ESVNDSEdfTUFTSwkJR0VOTUFTSyg2LCAwKQo+ID4gKyNkZWZpbmUgQlEy
+NTcwM19BRENJQkFUX0NIR19NQVNLCQlHRU5NQVNLKDE0LCA4KQo+ID4gKyNkZWZpbmUgQlEyNTcw
+M19BRENJQkFUX0NIR19TVEVQX1VBCQk2NDAwMAo+ID4gKyNkZWZpbmUgQlEyNTcwM19BRENJQkFU
+X0RJU19TVEVQX1VBCQkyNTYwMDAKPiA+ICsKPiA+ICsjZGVmaW5lIEJRMjU3MDNfQURDSUlOCQkJ
+CUdFTk1BU0soMTUsIDgpCj4gPiArI2RlZmluZSBCUTI1NzAzX0FEQ0lJTkNNUElOX1NURVAJCTUw
+MDAwCj4gPiArCj4gPiArI2RlZmluZSBCUTI1NzAzX0FEQ1ZTWVNfTUFTSwkJCUdFTk1BU0soMTUs
+IDgpCj4gPiArI2RlZmluZSBCUTI1NzAzX0FEQ1ZCQVRfTUFTSwkJCUdFTk1BU0soNywgMCkKPiA+
+ICsjZGVmaW5lIEJRMjU3MDNfQURDVlNZU1ZCQVRfT0ZGU0VUX1VWCQkyODgwMDAwCj4gPiArI2Rl
+ZmluZSBCUTI1NzAzX0FEQ1ZTWVNWQkFUX1NURVAJCTY0MDAwCj4gPiArCj4gPiArI2RlZmluZSBC
+UTI1NzAzX0FEQ19DSF9NQVNLCQkJR0VOTUFTSyg3LCAwKQo+ID4gKyNkZWZpbmUgQlEyNTcwM19B
+RENfQ09OVl9FTgkJCUJJVCgxNSkKPiA+ICsjZGVmaW5lIEJRMjU3MDNfQURDX1NUQVJUCQkJQklU
+KDE0KQo+ID4gKyNkZWZpbmUgQlEyNTcwM19BRENfRlVMTF9TQ0FMRQkJCUJJVCgxMykKPiA+ICsj
+ZGVmaW5lIEJRMjU3MDNfQURDX0NNUElOX0VOCQkJQklUKDcpCj4gPiArI2RlZmluZSBCUTI1NzAz
+X0FEQ19WQlVTX0VOCQkJQklUKDYpCj4gPiArI2RlZmluZSBCUTI1NzAzX0FEQ19QU1lTX0VOCQkJ
+QklUKDUpCj4gPiArI2RlZmluZSBCUTI1NzAzX0FEQ19JSU5fRU4JCQlCSVQoNCkKPiA+ICsjZGVm
+aW5lIEJRMjU3MDNfQURDX0lEQ0hHX0VOCQkJQklUKDMpCj4gPiArI2RlZmluZSBCUTI1NzAzX0FE
+Q19JQ0hHX0VOCQkJQklUKDIpCj4gPiArI2RlZmluZSBCUTI1NzAzX0FEQ19WU1lTX0VOCQkJQklU
+KDEpCj4gPiArI2RlZmluZSBCUTI1NzAzX0FEQ19WQkFUX0VOCQkJQklUKDApCj4gPiArCj4gPiAr
+I2RlZmluZSBCUTI1NzAzX0VOX09UR19NQVNLCQkJQklUKDEyKQo+ID4gKwo+ID4gK2VudW0gYnEy
+NTd4eF9pZCB7Cj4gPiArCUJRMjU3MDNBLAo+ID4gK307Cj4gPiArCj4gPiArc3RydWN0IGJxMjU3
+eHhfZGV2aWNlIHsKPiA+ICsJc3RydWN0IGkyY19jbGllbnQgKmNsaWVudDsKPiA+ICsJc3RydWN0
+IHJlZ21hcCAqcmVnbWFwOwo+ID4gK307Cj4gPiAtLSAKPiA+IDIuNDMuMAo+ID4gCj4gCj4gLS0g
+Cj4gTGVlIEpvbmVzIFvmnY7nkLzmlq9dCgpUaGFuayB5b3UsCkNocmlzIE1vcmdhbgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
