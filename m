@@ -4,153 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BBDAC83F22
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jul 2025 04:52:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 597D6C83F1D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jul 2025 06:36:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3WgtWq6sY/d1h2iH0Gd669B+KHnoIpnD2vp7xcyaKos=; b=IJQHipb9vHhy6K
-	3ShRMxF6wN+G5ZPST3xRcAcL9noK5/HciCCru3cODteEwAlTQwJfsLBwURG+pc8SXU44mCvqV+n9v
-	ga6pa53IgkuwwW0zL3AqcxEuayF2msFl2t/dpLTYaDKBgu1yfZfRxBrv7LPwhYJdcXlO6gl8Qk8Os
-	auvtefJAcLx9zDD26Ouik62q1GM4UcbsTqKmV9y6UdcP/qL/z3MK0wADVPiS6l2JoDQ3+KLqqQvhb
-	Klsqyv38E+2YAOOhHx+nBqq9RJ5UK+VJrpfkXjKaB4pqKQVeSF/9qFs/G8HscCKfvUzo34Vq4SagX
-	RyIhkurBMQA9g1eKbIgQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0H6jcNDUxl1hEyCtq8fC1ISa1JQTKrpXRbwpOeuDGGE=; b=T5BzFvb9ZKfjW8
+	HzKPyoAq5yrEpdLtg4mB4hT34KShY/YFG57cFx/bPDVT2041jDb4aGV3O5Qltg+H2QoVaRjqH/As/
+	ToQ/0ISUCYPnu6oQOxFQqoCWPOnw02EqMju/oxgVdsqJL3L+FQCfqPuySEOzIDJulM1/YJ7YJgh+1
+	ATm5dNWGySdf1E0m+h069MWRxhyIaMpEj92aSy1afhsW2mSTLJwQ9eDvk+O9vbANgvJrBOWRq27lN
+	mybnZ6oUV8G8mtZnb+6GB4imR9gahSIWtOFlrRX1dzLgzjwY5tNuzSv0KwjMUhGYA09ukNny/qe5Z
+	xcEwIkAmmKfF7iNp9zuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubXe3-0000000433C-4AdI;
-	Tue, 15 Jul 2025 04:52:00 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1ubZGd-00000004Dvw-3uXG;
+	Tue, 15 Jul 2025 06:35:55 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubXaA-000000042gM-3dQK
+	id 1ubZCd-00000004DM8-1F6k
 	for linux-rockchip@lists.infradead.org;
-	Tue, 15 Jul 2025 04:48:00 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56EGH33h005751
-	for <linux-rockchip@lists.infradead.org>; Tue, 15 Jul 2025 04:47:57 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	1G81B60xsleyJTfUNHppUdfBzYqz0JcVfIPyN+RmVmM=; b=lTHCMFWJPCu8e0E9
-	V/AAabygrTtorP9ChfuHJ9QbaufTRbwAtIY2Rnsv6uzT8ZS6xO8bM8WClCszfr+3
-	2UESTZeWJreQfs82l6td3wsLsNo7xAOgkgkMFCVK1nxaq0nL16cVvLakSs4lN89J
-	WI/HZUoYudLihQS+dLl2FY30gwZV4AIZufsJl3kaOVET2/9yrljJ0YedI4ElPHlF
-	nypIZuCALT0fhRhoUCP92kBc2JHq8t5L8/TG0IZzx2QRtDJhe4uc8AqC8RkeqZUF
-	csLwdvEUN5twDhMSZpwg9ST71WieDwSh9lhcEKT1jzmlpYdexbtdvTGQO07ozx5H
-	+o57kw==
-Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com [209.85.210.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47w58yhnnk-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Tue, 15 Jul 2025 04:47:57 +0000 (GMT)
-Received: by mail-pf1-f197.google.com with SMTP id d2e1a72fcca58-748efefedb5so4723976b3a.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 14 Jul 2025 21:47:57 -0700 (PDT)
+	Tue, 15 Jul 2025 06:31:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1752561104;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=njsXx1MQHjG0pYvx/jMfwxyJj9N+8fHFUPSJkTCfXcA=;
+	b=jQyqORKH8hzAnMsW1p1EfT9nITZ63oeRP3vC1+j7JgV8ahkXPVFA62Zcus2qdPEtPmniTp
+	Q6VE5kBfr17moJqbFFURq8l+RBp2T8cLVuhCS9Yb7Fo9Qu70gcPk7zuRZKHaBy0GZqDxRe
+	MD2J3rzQjWpFR46M55W3LkfCj0o/NMs=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-615-s6Qgn7qwMD21IT7utYlgPg-1; Tue, 15 Jul 2025 02:31:43 -0400
+X-MC-Unique: s6Qgn7qwMD21IT7utYlgPg-1
+X-Mimecast-MFC-AGG-ID: s6Qgn7qwMD21IT7utYlgPg_1752561102
+Received: by mail-ej1-f70.google.com with SMTP id a640c23a62f3a-ae0d798398bso403978766b.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 14 Jul 2025 23:31:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752554876; x=1753159676;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1G81B60xsleyJTfUNHppUdfBzYqz0JcVfIPyN+RmVmM=;
-        b=AV3y3UTQfPIociSvww4Fk6O3EG3ZKJrI1nU7ljCltGkoSeh+mogDrKzlh1Td5KUXc+
-         QHCNuhofGFcbyqvaXGzqArWoIET3k5ntFZX0oN4SqX41uWocGYGhbwubzvzIbdscO3ml
-         jHiRGMBwLfPcaMYi7EJFgiitqJpNLTvOG9gpkkv+hnYBRcBflPWJXne70ycPDFasn1fq
-         Jr4xEt1O6H4ky3YbAQIdgqoXfFiuDQLq47hfQbYV+qfhUbFREQfGonvZ3BEzfVNhFVmZ
-         QQKkmNolgoaZj/7n0N71VLUHTgtvTkOx6Zo55wuhsUwGkWHy6P2hAO5vOqGIbvxmr/L8
-         jd+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVvXVXIfM6ZSEg0uoxbxSYpqErWaIgzlYsWOVk58uTV5yEh4oTBAZcOuA25aJQIdXCFxb7cU8fxxokyk9gvNA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YybA1weXEhWoQFxPer6DQn8lhjU/tJj2z0uYRjh8RVVENX6tRAT
-	EXiuzEvm0sfs+8cnNJo5FzpdX6bYHbran5if13zP9PMLMkeAjaP3wyT3QoMDf3BzoTussPSBjL5
-	o72VQ9mZPP9JIqhNMr0do1YIuDnqWJBmbyMboQ5eW6FqcvEhWrQv5rODxq1uGBxoPBx+LuL02sM
-	c=
-X-Gm-Gg: ASbGncvp1CaodFBIX4kOGnXtRYnYT8drfcUvr6gcd/wdMCgLRjxdun70ZGCVY5Po4xD
-	/lxhQUHpLaPImdpnVa8f4b30uJCAjJdNBY5Ygv3/A0yZ41iVsc3t+Uoi3a5l8KzTkn9j5fMKn/G
-	oaW+gzmqb63t+XCpyjD8nDfsRSdtMkVyDJe9Yq64lHnQ+LjHWbyreO+2dmPf8Fr6v4ClQiLstC+
-	VXPO+yUZvhFf4e86r5eGoUseAU7sesG9ZgkPUAp/je+gNkbcoNiokhUw3h4oASnX9or27/8SYkT
-	IAJe07woQzm5YeDOk0mZvm0Biy/BjWFFiSeC7PHenLr6wJYWS58+MjwiImjwosK7cApyGdU=
-X-Received: by 2002:a05:6a00:148c:b0:740:9d7c:aeb9 with SMTP id d2e1a72fcca58-755b4cb576cmr2345388b3a.21.1752554875856;
-        Mon, 14 Jul 2025 21:47:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFLw7QsQsRMoAC5kgpjcNQia8kN0Ju9KrU7l9OxO3SkPSGi12dP1bd89nTq4dVCoxD0vfJycQ==
-X-Received: by 2002:a05:6a00:148c:b0:740:9d7c:aeb9 with SMTP id d2e1a72fcca58-755b4cb576cmr2345327b3a.21.1752554875237;
-        Mon, 14 Jul 2025 21:47:55 -0700 (PDT)
-Received: from [10.219.56.108] ([202.46.23.19])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-74eb9dd5d30sm11715343b3a.5.2025.07.14.21.47.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 14 Jul 2025 21:47:54 -0700 (PDT)
-Message-ID: <08a0b50c-76e3-5c34-22b0-74b8d20c8e63@oss.qualcomm.com>
-Date: Tue, 15 Jul 2025 10:17:41 +0530
+        d=1e100.net; s=20230601; t=1752561102; x=1753165902;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=njsXx1MQHjG0pYvx/jMfwxyJj9N+8fHFUPSJkTCfXcA=;
+        b=F0y8GhbD1V7CMXqOwFvhC5zunPtLxmHeMUE12v1hS/YMMryf8dtVQ2+xH725C0o8jd
+         EVTpTNipMOURBSYi53mbYeYnI4Ca4heuJ01v4T0nIWd7z1KW09DWpIG6xEGQk8VqKD7U
+         65yx2Suk7LMzw96nht0y3ql89mT2P4wIeCvHb+Sgiilq5yCbGFRCI33lCnD/lh2gkWV+
+         mgOnO7e4N0YPupkeyJf0jJgq7+XbJxetkpvHtKZVYYLAN8oz1gfbY2oCty7apKEUurV+
+         NaDC3eemAtFD8Nltye/SFS8ZEnxBmBDlL3Vu5vdgIieG4/M18HCU9TWs9ddgqZrz/n4u
+         Q5Tg==
+X-Forwarded-Encrypted: i=1; AJvYcCXKCtgMrLNvOg0S1ok1Ldw3BXlIhd9liwdjpGqlEwqLuJIHQsHH5u9yLD3SwBDsk+lMipc9oFb+Cs/gKyIdmg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyazTBnRcPoRW5Ap+PJdct+8kYJwqSlINeT77xx4iVZ4q+mYYEe
+	e6j5fQM2PK9eK2ZSLD/hbqjI/ynYxgnm6cD9DUHZ2UrLYrSAY0fOHwR+aDQoHCO29r4qwfvLd0z
+	+YHYPU0UkNVZ29BrdDZs82IvCugwcN6VIgXq9FYPCfmP5/lZwdSrBeMAjB8mAAhrJYsSqC4pydA
+	==
+X-Gm-Gg: ASbGnctJ4eGVqhfWQsAqOzSAIMsXrTDWigMohVZIizcstjrlooAiUNw0Q8jtZQUyPBt
+	6GvUoh458HHKTEWqsGr0gMWJAXaoCIcYsXSbDg5eKIgUqPlUzGhGbh4aKxMyOJbfecduBBBFTbQ
+	9yIyE9CD1lmZ8uHJQoQgNwaHeixFdYOOxrdPNFC4xYIM3u3eX5C1eHYT5XX1qVbnT18z/ymZAuO
+	z6wxyYTNw5Vtn5B+Fgm1cmyAhki+stTkF4ncRIRsDyYxG//lNN27q7fkrJ7JNqgJ4hGJUo1hrvV
+	ccY1q8NYeac37h0BmGwTibQhedHlgTIyv0TWtfEqYeocO4s+togGnLZrpYUn51jdFCXD1wSg4tc
+	MoYTvvWDScg==
+X-Received: by 2002:a17:907:3e14:b0:ae9:876a:4f14 with SMTP id a640c23a62f3a-ae9b96bb26cmr146895066b.59.1752561101847;
+        Mon, 14 Jul 2025 23:31:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFbahyJQ8uPvvKj2Eu2Bjb83oyH09cB9oPzy2+yyYmKgrlH0TrWtXbUYxonD5LHJNMzFi0wSw==
+X-Received: by 2002:a17:907:3e14:b0:ae9:876a:4f14 with SMTP id a640c23a62f3a-ae9b96bb26cmr146892566b.59.1752561101291;
+        Mon, 14 Jul 2025 23:31:41 -0700 (PDT)
+Received: from lbulwahn-thinkpadx1carbongen9.rmtde.csb ([2a02:810d:7e01:ef00:b52:2ad9:f357:f709])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ae6e82df56esm945349166b.156.2025.07.14.23.31.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Jul 2025 23:31:40 -0700 (PDT)
+From: Lukas Bulwahn <lbulwahn@redhat.com>
+X-Google-Original-From: Lukas Bulwahn <lukas.bulwahn@redhat.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Lukas Bulwahn <lukas.bulwahn@redhat.com>
+Subject: [PATCH] MAINTAINERS: merge sections for ROCKCHIP VIDEO DECODER DRIVER
+Date: Tue, 15 Jul 2025 08:31:34 +0200
+Message-ID: <20250715063134.100733-1-lukas.bulwahn@redhat.com>
+X-Mailer: git-send-email 2.50.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.1
-Subject: Re: [PATCH v10 01/10] power: reset: reboot-mode: Add device tree
- node-based registration
-Content-Language: en-US
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Sebastian Reichel <sre@kernel.org>, Rob Herring <robh@kernel.org>,
-        Sudeep Holla <sudeep.holla@arm.com>,
-        Souvik Chakravarty <Souvik.Chakravarty@arm.com>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley
- <conor+dt@kernel.org>,
-        Andy Yan <andy.yan@rock-chips.com>,
-        Mark Rutland <mark.rutland@arm.com>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
-        Konrad Dybcio <konradybcio@kernel.org>,
-        cros-qcom-dts-watchers@chromium.org, Vinod Koul <vkoul@kernel.org>,
-        Catalin Marinas <catalin.marinas@arm.com>,
-        Will Deacon <will@kernel.org>,
-        Florian Fainelli <florian.fainelli@broadcom.com>,
-        Elliot Berman <elliotb317@gmail.com>,
-        Stephen Boyd <swboyd@chromium.org>, linux-pm@vger.kernel.org,
-        linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        Andre Draszik <andre.draszik@linaro.org>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        linux-samsung-soc@vger.kernel.org, Wei Xu <xuwei5@hisilicon.com>,
-        linux-rockchip@lists.infradead.org,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-        Macpaul Lin <macpaul.lin@mediatek.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-        bcm-kernel-feedback-list@broadcom.com,
-        Nicolas Ferre <nicolas.ferre@microchip.com>,
-        Alexandre Belloni <alexandre.belloni@bootlin.com>,
-        Elliot Berman <quic_eberman@quicinc.com>,
-        Srinivas Kandagatla <srini@kernel.org>
-References: <20250710-arm-psci-system_reset2-vendor-reboots-v10-0-b2d3b882be85@oss.qualcomm.com>
- <20250710-arm-psci-system_reset2-vendor-reboots-v10-1-b2d3b882be85@oss.qualcomm.com>
- <5zlix4hfxkz447g6e6imjlatmnf26pvunnsmfkol7mhvropq6o@k7wr6h4hyqtg>
-From: Shivendra Pratap <shivendra.pratap@oss.qualcomm.com>
-In-Reply-To: <5zlix4hfxkz447g6e6imjlatmnf26pvunnsmfkol7mhvropq6o@k7wr6h4hyqtg>
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzE1MDA0MSBTYWx0ZWRfX8jQvovntN/Dd
- Qy9a8kq6FPzVvHWV1D4FeluG/6InmE28WsRpDvFFQXUaIT2jDG3Z2chq6Mi3fK+XyziZXWCdlss
- 1mkVK5BCMtnnqu//hUgrOzJtPoYaMakBEpQO16ughFGde0TO3SYQioAfAtW7k2BXToR+1dekGhs
- WyTQfa/GHA4B7WGmy9IS+DPrzKJ/ffFu5euA9AXx62uUN96OHKCQL1wvctyRl51fxygUtmhzput
- twRsK9RllJQ78KPeeTU490AnQYZhlPVzB8JpRIBzO9zSmzpKsnjVHlSXEH+oDpyEp+WmNFZu48t
- I8Pn2f3tVtaziIUllBoqIOhZ86b3+4i9XK32QxGBRI+K650XK9WEBKLKSv6DWuiazdPSlBWMINa
- wbJNW+BMQDhn+uUNtKug92uzlSBLktwYOig1fJe3NAV7Im2jowGEvUusFQtfrzlnZfLqEBqW
-X-Proofpoint-GUID: VjqzKGhZDQJeZeE3HEnduOVupwgJO6bs
-X-Proofpoint-ORIG-GUID: VjqzKGhZDQJeZeE3HEnduOVupwgJO6bs
-X-Authority-Analysis: v=2.4 cv=Or9Pyz/t c=1 sm=1 tr=0 ts=6875dd7d cx=c_pps
- a=rEQLjTOiSrHUhVqRoksmgQ==:117 a=j4ogTh8yFefVWWEFDRgCtg==:17
- a=IkcTkHD0fZMA:10 a=Wb1JkmetP80A:10 a=EUspDBNiAAAA:8 a=w5sRTUNUNuywR65qw8YA:9
- a=QEXdDO2ut3YA:10 a=2VI0MkxyNR6bbpdq8BZq:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
- definitions=2025-07-14_03,2025-07-14_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 suspectscore=0 adultscore=0 spamscore=0 phishscore=0
- priorityscore=1501 lowpriorityscore=0 mlxlogscore=999 bulkscore=0
- impostorscore=0 malwarescore=0 clxscore=1015 classifier=spam authscore=0
- authtc=n/a authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2505280000 definitions=main-2507150041
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: mL8s6otuyU4RtgHvbd-aMbOur4MdYsO8uVZSMqsOtlk_1752561102
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_214759_145634_F3136B2C 
-X-CRM114-Status: GOOD (  18.56  )
+X-CRM114-CacheID: sfid-20250714_233147_426443_5E2165D5 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,43 +117,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Lukas Bulwahn <lukas.bulwahn@redhat.com>
 
+Commit d968e50b5c26 ("media: rkvdec: Unstage the driver") moves the driver
+from staging/media/ to media/platform/rockchip/ and adds a new section
+ROCKCHIP RKVDEC VIDEO DECODER DRIVER in MAINTAINERS. It seems that it was
+overlooked that the section ROCKCHIP VIDEO DECODER DRIVER in MAINTAINERS
+already existed, referring to the same files before the driver was moved
+as the new section refers to after the driver was moved.
 
-On 7/15/2025 4:41 AM, Dmitry Baryshkov wrote:
-> On Thu, Jul 10, 2025 at 02:45:43PM +0530, Shivendra Pratap wrote:
->> The reboot-mode driver does not have a strict requirement for
->> device-based registration. It primarily uses the device's of_node
->> to read mode-<cmd> properties and the device pointer for logging.
->>
->> Remove the dependency on struct device and introduce support for
->> Device Tree (DT) node-based registration. This enables drivers
->> that are not associated with a struct device to leverage the
->> reboot-mode framework.
->>
->> Signed-off-by: Shivendra Pratap <shivendra.pratap@oss.qualcomm.com>
->> ---
->>  drivers/power/reset/reboot-mode.c | 23 +++++++++++++----------
->>  include/linux/reboot-mode.h       |  2 +-
->>  2 files changed, 14 insertions(+), 11 deletions(-)
->>
->> diff --git a/drivers/power/reset/reboot-mode.c b/drivers/power/reset/reboot-mode.c
->> index fba53f638da04655e756b5f8b7d2d666d1379535..61f647b23959789a313f3af0bd967abcad45fa43 100644
->> --- a/drivers/power/reset/reboot-mode.c
->> +++ b/drivers/power/reset/reboot-mode.c
->> @@ -12,6 +12,7 @@
->>  #include <linux/reboot-mode.h>
->>  
->>  #define PREFIX "mode-"
->> +#define pr_fmt(fmt)	"reboot-mode: " fmt
-> 
-> This wasn't really tested. If I remember correctly, it should be defined
-> before the first include.
-yes. fixing this in next patch.
-> 
->>  
->>  struct mode_info {
->>  	const char *mode;
-> 
+So, merge the information from the two sections for ROCKCHIP (RKVDEC) VIDEO
+DECODER DRIVER into one. This essentially results in adding the maintainer
+of the previously existing section in the new section and then removing
+that previously existing section.
+
+Signed-off-by: Lukas Bulwahn <lukas.bulwahn@redhat.com>
+---
+ MAINTAINERS | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 5efcdb5537f5..d044e4f71ae5 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -21673,6 +21673,7 @@ F:	drivers/media/platform/rockchip/rga/
+ 
+ ROCKCHIP RKVDEC VIDEO DECODER DRIVER
+ M:	Detlev Casanova <detlev.casanova@collabora.com>
++M:	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+ L:	linux-media@vger.kernel.org
+ L:	linux-rockchip@lists.infradead.org
+ S:	Maintained
+@@ -21693,14 +21694,6 @@ S:	Maintained
+ F:	Documentation/devicetree/bindings/sound/rockchip,rk3576-sai.yaml
+ F:	sound/soc/rockchip/rockchip_sai.*
+ 
+-ROCKCHIP VIDEO DECODER DRIVER
+-M:	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+-L:	linux-media@vger.kernel.org
+-L:	linux-rockchip@lists.infradead.org
+-S:	Maintained
+-F:	Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+-F:	drivers/staging/media/rkvdec/
+-
+ ROCKER DRIVER
+ M:	Jiri Pirko <jiri@resnulli.us>
+ L:	netdev@vger.kernel.org
+-- 
+2.50.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
