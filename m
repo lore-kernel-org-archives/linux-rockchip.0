@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E37CAC83F22
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jul 2025 11:57:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8689AC83F21
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jul 2025 12:00:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wvHhD+raDjFN5MJJIoxTksE2OyIQbz/gC9wl1KU72Rk=; b=TQzLUo40JR8PLv
-	BRKeYKNtPa4+JEZAeNz1boc0lQwxZbUGuyIiaPzkWaO7JCoVydo/L+bLlo5N7vkVnE/A4iQkOjX/3
-	F2atyBhiTNoudi/0qkdWi7TN/bWMdClw30sTtpZfLgcno7rnjcxaYmwc8yYS0gavv+H2VpK4Qw67x
-	Tkh5KXJNXYMYZLcW2Kwh0h6nvh6NjOwtzeGgkXgYPGU+hZ0aeebRHzWBmV+RKsIHR4tgiFb3jZuTO
-	H6j5iEWQ32OPFt/ZKp4R+pttD6inuSCuvDnHYtpjnkLwxdnhUilp8DoobbbK6auPJpo/2p/mXekS/
-	JpTVpx+4jK4oGY/KAH/w==;
+	List-Owner; bh=5gfXykCFEf3tIRmlJbCQ23C0xar0bgA7xiEAU2MJ8QM=; b=rChThanhqFQhTc
+	ibSpUMFlcQVh5lffwfIUwOz/E1OdLlKyHSmjwko0iRAQzEVXQZlafFhILe6aXnsZMCIK6uG1g83wW
+	UeTW1XxyJSHipl8dr6FkMG+BGJYpeQBIyTcE4nfIV+zlKI30mDdpUIent1bY28WubIGoFBa7WGJ0r
+	i5X0TUu3wD01KaNX7LqD9FvjOMprjPI5xegiDQefL5HmNizpZbtwptnFX6QUimEd5IbQNIAZ7gBM7
+	yGIgv0xCS/YHhZFQPC2WL7emC8Bb5J/KWGmYzZmwcQ94k7uw76oaO+yn9q9YyevLL1HnddD6Cpw4b
+	X/EddwdThulQ6dlPBjGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubeIB-000000050Jp-4Bpf;
-	Tue, 15 Jul 2025 11:57:52 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1ubeKd-000000050zc-1Waw;
+	Tue, 15 Jul 2025 12:00:23 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubdxi-00000004xlE-3MxR;
-	Tue, 15 Jul 2025 11:36:44 +0000
+	id 1ubdz6-00000004xtP-0Er5;
+	Tue, 15 Jul 2025 11:38:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2AE9D44AF5;
-	Tue, 15 Jul 2025 11:36:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9557C4CEE3;
-	Tue, 15 Jul 2025 11:36:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C550B60053;
+	Tue, 15 Jul 2025 11:38:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44BEDC4CEF1;
+	Tue, 15 Jul 2025 11:38:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752579402;
-	bh=/ylle1xZMdj/zXOOKBEBI5yYp6ullFXneRP4z4g54+Q=;
+	s=k20201202; t=1752579486;
+	bh=k3Pt22s3urH1ffPht49H+gTfknzAhbGPucTExEY/I64=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iz9lxkMACNlUUE4KMMsaCeA3ZSg3HOmLBkoo7d9W2yc6XAWTesJ5OBnvOp7KojpCt
-	 waDSLm4bshmPiD/tJWprf4N0YuNHZk9P/Rx4rEa73IfxaHA2v+uMUfjHVRdJIjVPcL
-	 SZkmAlcobwMATmnatev2oYu5vaGTkT8xrLs1856TZ+yu/ifF+jdOYJVRJk3cZEbB16
-	 onigiaEOhJv+Qmr1Vvs02Q2tK4uNXa1QBiHsSBXt0hHMkc/iTuks08nuX6Xcy0DCl/
-	 1oRWD11AZoCRCrT8L78/H9E2/8pjYdWHdHQUT0KxAN1u2bTxudrZF4VHVE9fNbXBaU
-	 k6pFIJgU6Zf8g==
-Message-ID: <dab567f3-cc62-4b52-a0dd-5929297b68a0@kernel.org>
-Date: Tue, 15 Jul 2025 13:36:34 +0200
+	b=DHCY5xQjmFJX69MUX4vYWPw8P17yNMGOpFFR35NcdrKuCa9bNGljgInX7Iyvks0BV
+	 g2BdCE6bEtcWQXKsPR3t76G6LNF3oBVrxIB7RGS4faIf0EOemPNRYmhferOp7sna+9
+	 7ZBskGv1Eb8CRRcPEuIxwaDgLA/44hkbaVxt9OyJg8CBZ0923dNyBJRGGzmF88JuKn
+	 11U7XL3MwiZ4w7diF5Om0zFOdkDkyE2KfJwdPr9JTMJqCGxumd2phg+jKqzu+Xx7Y7
+	 ZHeLSRMMa++3DCWGk1W7CpFAy0HWWlRK6y+PDRFv8VTl5OnAdqlmBURUpIhDYPEVMR
+	 ctzEdSx3SPj8A==
+Message-ID: <c62d168b-92b5-44a2-9a9a-402d7f4815a2@kernel.org>
+Date: Tue, 15 Jul 2025 13:37:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] dt-bindings: connector: Add displayport connector for
- hotplug notify
+Subject: Re: [PATCH 5/5] arm64: dts: rockchip: rk3399-evb-ind: Add support for
+ DisplayPort
 To: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
@@ -66,7 +66,7 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 References: <20250715112456.101-1-kernel@airkyi.com>
- <20250715112456.101-2-kernel@airkyi.com>
+ <20250715112456.101-6-kernel@airkyi.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -112,10 +112,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20250715112456.101-2-kernel@airkyi.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250715_043642_887181_D71E1BA3 
-X-CRM114-Status: GOOD (  11.87  )
+In-Reply-To: <20250715112456.101-6-kernel@airkyi.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,37 +130,79 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 15/07/2025 13:24, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> The USB Type-C DisplayPort alternate mode driver will find
-> "displayport" property for DRM hotplug event notify[0].
-> 
-> [0]: https://lore.kernel.org/all/20210817215201.795062-9-hdegoede@redhat.com/
-> 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> ---
->  .../devicetree/bindings/connector/usb-connector.yaml          | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/connector/usb-connector.yaml b/Documentation/devicetree/bindings/connector/usb-connector.yaml
-> index 11e40d225b9f..ccb258972cd6 100644
-> --- a/Documentation/devicetree/bindings/connector/usb-connector.yaml
-> +++ b/Documentation/devicetree/bindings/connector/usb-connector.yaml
-> @@ -300,6 +300,10 @@ properties:
->      $ref: /schemas/types.yaml#/definitions/uint8-array
->      maxItems: 4
+>  /dts-v1/;
+> +#include <dt-bindings/usb/pd.h>
+>  #include "rk3399.dtsi"
 >  
-> +  displayport:
-> +    description: A phandle to displayport connector for DRM hotplug event notify.
-> +    $ref: /schemas/types.yaml#/definitions/phandle
+>  / {
+> @@ -19,6 +20,16 @@ chosen {
+>  		stdout-path = "serial2:1500000n8";
+>  	};
+>  
+> +	vbus_typec: vbus-typec-regulator {
 
-That's not how you express graphs. Plus I don't understand why you need
-ONE more port property, beside existing ones.
+use consistent naming. How other regulators are called? foo-regulator?
 
-Look at the binding first - what's there.
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&vcc5v0_typec0_en>;
+> +		regulator-name = "vbus_typec";
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+> +
+>  	vcc5v0_sys: regulator-vcc5v0-sys {
+>  		compatible = "regulator-fixed";
+>  		enable-active-high;
+> @@ -29,6 +40,16 @@ vcc5v0_sys: regulator-vcc5v0-sys {
+>  		regulator-max-microvolt = <5000000>;
+>  		regulator-min-microvolt = <5000000>;
+>  	};
+> +
+> +	sound: sound {
+> +		compatible = "rockchip,rk3399-gru-sound";
+> +		rockchip,cpu = <&i2s0 &spdif>;
+> +	};
+> +};
+> +
+> +&cdn_dp {
+> +	status = "okay";
+> +	phys = <&tcphy0_dp>;
+>  };
+>  
+>  &cpu_b0 {
+> @@ -341,6 +362,66 @@ regulator-state-mem {
+>  	};
+>  };
+>  
+> +&i2c4 {
+> +	i2c-scl-rising-time-ns = <475>;
+> +	i2c-scl-falling-time-ns = <26>;
+> +	status = "okay";
+> +
+> +	usbc0: fusb302@22 {
+
+Node names should be generic. See also an explanation and list of
+examples (not exhaustive) in DT specification:
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
 
 
+> +		compatible = "fcs,fusb302";
+> +		reg = <0x22>;
+> +		interrupt-parent = <&gpio1>;
+> +		interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&usbc0_int>;
+> +		vbus-supply = <&vbus_typec>;
+> +		status = "okay";
 
+Why? What disabled it?
+
+> +
+> +		usb_con: connector {
+> +			compatible = "usb-c-connector";
+> +			label = "USB-C";
 Best regards,
 Krzysztof
 
