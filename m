@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46C25C83F21
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jul 2025 09:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BA25C83F17
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jul 2025 09:25:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pwvAMg5BZAfvYWDhHEImguQRoKg0OTQ5PXl7foHShyc=; b=d7x5zxAb9CIQq3
-	EUuqmo5RUzcPgUi/Ci0q/kLHgGHCYAJTGbF/8hRt0e+1FUdiV8Qx7tsMZPSmBzWhDOjmm6YLjQAcw
-	pOHplNAMULBChd61PuK4hsC9qrY7x/SikBsaQzf8xdkC/VaFGUxwtF73Tna50/Vln2G53k6uB0xOX
-	pVQJ7V7mdytrcq/DFgSbH6tt17AHYebi6WR6v7eTfDQVlfBLOqzwjguarOrsDXfREWzile+Vp6k4v
-	mDpD10vvz4wKXrwrgiDOdYb+e7N30K5w+Xq1Uv5/Z6SXbbIrxDAAppnVWlamFgCuYgGv1aXc2jA3s
-	RXbZc9SP30hiaUeW93bg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0SpXElHrkT9N9oSN0SYFZG39kkjjdd9/i2m3EUbvPVk=; b=BeMFmvoQNc+pzTHTAcgE64zmRa
+	TXj/DpiD8hJomhJRUz72PqvyAW5h7bZSNksC2Pzrj9vnl1GlY2xi6BQ/RazK64mESxIbmZckNcARU
+	5l4Nb1+G7142XaNZkZV1KkH+jZX1M+BYIFjLtluTVT99cn3BnpO4CsgrP8L8EjmzQbS5JKUReb4m0
+	rMh9JAroD6Nlz+8AfcJTA0W8f3xb1R/ela3Wrz3vRWSeCTTpzSXoxXkZgXXWVEiu1+TBtQvUI544Y
+	KnrAPVHtyJ4mBHFfUXu6lyQNAv33bq+e2iE77Q/1teNiKkLjHBRo3tC5M2PhXDWtA6WtaL8146xan
+	VK4pe4IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubbYc-00000004c3W-49Mf;
-	Tue, 15 Jul 2025 09:02:38 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ubbuI-00000004fTY-14cB;
+	Tue, 15 Jul 2025 09:25:02 +0000
+Received: from out-172.mta1.migadu.com ([95.215.58.172])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubav8-00000004VO2-1G1c;
-	Tue, 15 Jul 2025 08:21:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BBAF55C5C85;
-	Tue, 15 Jul 2025 08:21:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 065E6C4CEE3;
-	Tue, 15 Jul 2025 08:21:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752567709;
-	bh=ebyRrw2T66Vzg5kyH0139ZzFXfnA3ppd4smjTMuCtCg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Yyk0S7eOz/0KbQcEVcC5HVGT72qMwkR1B39BAzmJtFx98gqSqwZ4cYEgYVtBzfVC2
-	 3LUSs4MzmTyUthDeusmxzQyPAnItNXqPDSAaBKGncGsxf674KT3iPqjsNMH8QJF50r
-	 uns7xxoYXavnWYAXKTs5ke1MooR+1YlpXF/d4IFkViu3sQYGMfTC4R167CnyCrP3cb
-	 OBKhOQA8y3xL1n+i6OobBanD3L+f9z5hM3J90JBoCLiFFV+dvjL7KIouxwwUIC0nQ4
-	 +sBbdKX1FQ5v8tLfgxCXp1VLxKiZKu/aGa85eNPomMFjn+FlTuilFKATMst1z1SvvE
-	 kyUrS5zSO/XCg==
-Date: Tue, 15 Jul 2025 10:21:46 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Keguang Zhang <keguang.zhang@gmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee@kernel.org>, 
-	Madhavan Srinivasan <maddy@linux.ibm.com>, Michael Ellerman <mpe@ellerman.id.au>, 
-	Nicholas Piggin <npiggin@gmail.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, 
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linuxppc-dev@lists.ozlabs.org
-Subject: Re: [PATCH v2] dt-bindings: gpio: Create a trivial GPIO schema
-Message-ID: <20250715-hidden-marmoset-of-serenity-dcbfcc@krzk-bin>
-References: <20250714201959.2983482-1-robh@kernel.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250714201959.2983482-1-robh@kernel.org>
+	id 1ubb7y-00000004XRL-30vI
+	for linux-rockchip@lists.infradead.org;
+	Tue, 15 Jul 2025 08:35:08 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1752568494;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dn9j9avwFidQxU2bCX0UIziQTEnB16DYh3Wd/7lUs1Q=;
+	b=t9UsxVY6mXLFPCJpyr5YZ/a+GWum9nHB2cHNy+irWcyW8uPXld7KsWybnukiHlRBofOCVf
+	w4AgPUuSUsTRsUrcZlP26RteB+xEZgFHE8yX12cnAb8g8mesnWWu7vKMXI8/T86OBOX+/E
+	l8M5SdeVR+5IsGx07C6IzsYhKS9Sc6dTXFPAXQGJ1gz9/M47KnhGNBzm8HdFIIOuMbvl8V
+	3dBDkvtZFiQDPpxh62HhrYFttoHOq/vhKSz63/okaXVh7vLtyByb8fNyhQjuJ0dba9Fb2k
+	XAolqQq/V429pazWA1JEX78DbAR9B89oaUwjNQf1cWnwjF6hkzrvzg9PaqwlVw==
+Date: Tue, 15 Jul 2025 10:34:43 +0200
+Message-Id: <DBCHOEMXSOZW.JRB0UTWSPG4J@cknow.org>
+Cc: "Heiko Stuebner" <heiko@sntech.de>, "Kever Yang"
+ <kever.yang@rock-chips.com>, "Hans Verkuil" <hverkuil@xs4all.nl>,
+ <kernel@collabora.com>, "Dragan Simic" <dsimic@manjaro.org>, "Rob Herring"
+ <robh@kernel.org>, "Yunke Cao" <yunkec@google.com>, "Sebastian Reichel"
+ <sebastian.reichel@collabora.com>, <linux-rockchip@lists.infradead.org>,
+ "Ezequiel Garcia" <ezequiel@vanguardiasur.com.ar>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>, "Conor Dooley"
+ <conor+dt@kernel.org>, "Frank Wang" <frank.wang@rock-chips.com>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, "Jianfeng Liu"
+ <liujianfeng1994@gmail.com>, "Alexey Charkov" <alchark@gmail.com>, "Ricardo
+ Ribalda" <ribalda@chromium.org>, "Andy Yan" <andy.yan@rock-chips.com>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Hans de Goede"
+ <hansg@kernel.org>
+Subject: Re: [PATCH 8/8] media: rkvdec: Unstage the driver
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Detlev Casanova" <detlev.casanova@collabora.com>,
+ <linux-kernel@vger.kernel.org>
+References: <20250623160722.55938-1-detlev.casanova@collabora.com>
+ <20250623160722.55938-9-detlev.casanova@collabora.com>
+In-Reply-To: <20250623160722.55938-9-detlev.casanova@collabora.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250715_012150_379569_591333FC 
-X-CRM114-Status: GOOD (  13.32  )
+X-CRM114-CacheID: sfid-20250715_013506_904637_DCFB79D0 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,35 +78,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4973949340868998707=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 14, 2025 at 03:19:51PM -0500, Rob Herring (Arm) wrote:
-> Many simple GPIO controllers without interrupt capability have the same
-> schema other than their compatible value. Combine all these bindings
-> into a single schema. The criteria to be included here is must use 2
-> cells, have no interrupt capability, have 0 or 1 "reg" entries, and
-> have no other resources (like clocks).
-> 
-> Note that "ngpios" is now allowed in some cases it wasn't before and
-> constraints on it have been dropped.
-> 
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+--===============4973949340868998707==
+Content-Type: multipart/signed;
+ boundary=31e8725035cdaae867651e5f629dfe5e1cdfa919bc8e4b5fe9769c11329a;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+
+--31e8725035cdaae867651e5f629dfe5e1cdfa919bc8e4b5fe9769c11329a
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+Hi,
+
+On Mon Jun 23, 2025 at 6:07 PM CEST, Detlev Casanova wrote:
+> The TODO list for unstaging being empty, the driver can now be moved to t=
+he
+> main media folder.
+>
+> Also add myself as maintainer.
+
+I've tested this patch on a Rock64 (rk3328) and RockPro64 (rk3399) and
+did not notice any regressions. And I no longer see this warning:
+
+  rockchip_vdec: module is from the staging directory, the quality
+  is unknown, you have been warned.
+
+Tested-by: Diederik de Haas <didi.debian@cknow.org> # Rock64 + RockPro64
+
+Cheers,
+  Diederik
+
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 > ---
-> We could also do this for ones with interrupts, but that seems a bit
-> more varied.
-> 
-> v2:
+>  MAINTAINERS                                               | 8 ++++++++
+>  drivers/media/platform/rockchip/Kconfig                   | 1 +
+>  drivers/media/platform/rockchip/Makefile                  | 1 +
+>  .../media =3D> media/platform/rockchip}/rkvdec/Kconfig      | 0
+>  .../media =3D> media/platform/rockchip}/rkvdec/Makefile     | 0
+>  .../platform/rockchip}/rkvdec/rkvdec-h264.c               | 0
+>  .../platform/rockchip}/rkvdec/rkvdec-regs.h               | 0
+>  .../media =3D> media/platform/rockchip}/rkvdec/rkvdec-vp9.c | 0
+>  .../media =3D> media/platform/rockchip}/rkvdec/rkvdec.c     | 0
+>  .../media =3D> media/platform/rockchip}/rkvdec/rkvdec.h     | 0
+>  drivers/staging/media/Kconfig                             | 2 --
+>  drivers/staging/media/Makefile                            | 1 -
+>  12 files changed, 10 insertions(+), 3 deletions(-)
+>  rename drivers/{staging/media =3D> media/platform/rockchip}/rkvdec/Kconf=
+ig (100%)
+>  rename drivers/{staging/media =3D> media/platform/rockchip}/rkvdec/Makef=
+ile (100%)
+>  rename drivers/{staging/media =3D> media/platform/rockchip}/rkvdec/rkvde=
+c-h264.c (100%)
+>  rename drivers/{staging/media =3D> media/platform/rockchip}/rkvdec/rkvde=
+c-regs.h (100%)
+>  rename drivers/{staging/media =3D> media/platform/rockchip}/rkvdec/rkvde=
+c-vp9.c (100%)
+>  rename drivers/{staging/media =3D> media/platform/rockchip}/rkvdec/rkvde=
+c.c (100%)
+>  rename drivers/{staging/media =3D> media/platform/rockchip}/rkvdec/rkvde=
+c.h (100%)
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Best regards,
-Krzysztof
+--31e8725035cdaae867651e5f629dfe5e1cdfa919bc8e4b5fe9769c11329a
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaHYSqAAKCRDXblvOeH7b
+bqCZAPsEcQhHp1n/MQnvFCLsexjxPRpuv36uOmPgYq3iZ8tgYQEA8+gXctndsbuB
+3iimQ6yPbpe40td5BCY2Y6XWce3fWg4=
+=lFcf
+-----END PGP SIGNATURE-----
+
+--31e8725035cdaae867651e5f629dfe5e1cdfa919bc8e4b5fe9769c11329a--
+
+
+--===============4973949340868998707==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4973949340868998707==--
+
