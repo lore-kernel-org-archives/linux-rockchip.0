@@ -4,148 +4,199 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47407C83F1A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jul 2025 00:15:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71BE2C83F1A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jul 2025 03:16:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nWK+f8zuW6Qs0ceG/8RDwW7meAsGA9hMtzI1NaVyecA=; b=Rsxn34cwGUDTdd
-	7d2maPLB8N0/5u6TcuGJGmEntHEB7QcFNGEJ6N969+vlbNRUtlSEJ188GayRuS/pH0Z93qUiZrEJa
-	o8yHmufhXFsAJ4byguJ0p8UVYt+2J4ZCRD2QfXYO3KR6DizpyK94k5LcYqSwRQ8QOr0HKX9b8g/6N
-	k07Q4IXj/d9bLSCV0R3E6vMIASlloJwvcy6N0GvNM+p3WD0a0XFbdXRAqASKiRKd31kMadyD5QR5e
-	EHQxFfZur+OSLs1EZ2PnxlRm79+hkP1FNmClTwH1wktmHkJ7SmZyCMfSb66LZ1ym1Ft8ehooh5e9I
-	OKb+M/8N8bhSO8zw/1Dg==;
+	List-Owner; bh=3L2ojzqtSzfLOrNaIjdeUWX6x/EUVya2owc99p0r1Mw=; b=v0ywAWH7FsjQSb
+	/b7bE1BsKFe+AyL/EkWsLKaVOWQK3gjpq5dihMdycRGupSNglT8ixTPux2KW6Rg2lJEXsslm+zHXO
+	Il8K+DNvwl+gWO9ZmeVfcBpVFDp/4ysuf1IVQt4abSfsMCjr5VGmOLWBeBT25AjGjTW9AY0xei83b
+	w3BTyF0Y9LxysGMDU3XKY5nxSHB9/JPZPA1DQxLBVSkUhDzWaK2/QwKqSiGo16CNgX1qvsoJbYzax
+	F+/Xh5ebY2zPx3+8kH9NpyKMQWYeOoibipxc8B55CevnLXH7lfI7glq6G8EJz1cVOLbneyGQPEN5x
+	8tkS1N9vXhVMzKVg0kqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubTK1-00000003c9H-08WN;
-	Tue, 15 Jul 2025 00:15:01 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1ubW94-00000003rB7-2hQ0;
+	Tue, 15 Jul 2025 03:15:54 +0000
+Received: from esa1.hgst.iphmx.com ([68.232.141.245])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubSKC-00000003VXr-3jSC
-	for linux-rockchip@lists.infradead.org;
-	Mon, 14 Jul 2025 23:11:10 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56EIoePY013628
-	for <linux-rockchip@lists.infradead.org>; Mon, 14 Jul 2025 23:11:07 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=lnAbRsgM5Xpw854WTnr2PpxC
-	p0fWTNuQo/r6LvQOASo=; b=Byi6Oq1mlQ2Du1UBtBznaIYzQY4p8hL5pynHWdSv
-	aTDe7W6x/B7tNhEqPkO5Y+VCzcSxQOtr0SuJfn7PglX+uFZMeALZiw5WrQcMh9rf
-	sJ/Mc7HQOsEFmM9uIhSp5TBa7YwgWQ1Y4TrG1gWWLFFEW0WjJs/h8KGUsIHfDcD2
-	49jcgELppT87gxfGxfXrNE98HiZW3Wn2N2WeWsSdypESIKNDnuxrp27nFMZzD+bx
-	yU9qvwOPSfNE3+VFAsukhHo6roMkV6ATzLPh7u6HFnfVKFPkYJtaWBlZlEnxipRV
-	XPQa3LJW0KKZLLpv05ITsY9TLU5AbgQXd0WQ0ZKra56mOQ==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47ufxax6aj-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Mon, 14 Jul 2025 23:11:07 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-7d4576e83cdso1288543385a.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 14 Jul 2025 16:11:07 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752534667; x=1753139467;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lnAbRsgM5Xpw854WTnr2PpxCp0fWTNuQo/r6LvQOASo=;
-        b=UD7lc+zY9sumwPmeI+lmoPy9VxI89PLjq1AwkwdCioT+4A/Sq4sTHm3VOB6gTGS+lk
-         MYcefx+IsHWYgz9by0d+8VlTRhYUMpHhmvfLwYg7xFGg5obq+UlKdcJthHJaJzD90hOd
-         qa9jb+xQgQJBNSJoehIULL/qhEuti6aWOjIatzW4667eHmjMbFkyA5E6VQQmQ+nraYDy
-         TmYvSYAcGdRMd2/M0CurPs36EKimPtOqNIEObgYdTMiaA3LaMAxc3xYQpkwkD4nZH0ww
-         4OYSM4JA+kAosiMRZJoTxiKSoS88IBh9nj7k3Smg9gOXCVYHkMETxkyH4cBEMXhB9zO0
-         TMXg==
-X-Forwarded-Encrypted: i=1; AJvYcCUU+SkOsCaJE3FyYoOoJLC3ex+MVqjSpR/8e5ElrIRDgJ5IZOI56P4P9BCljvaEfb87sAi9hEdj6GsoCksiEw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YztGFYmnxBPkFYNJ0QnuvEYtK7zwLLY80RwaMuSLeqP+wPS90w1
-	71xUtP+SBzoHUh4zaPXsuA1XHhZDh/LJtUsNHsRYJsJnjnoquXt4zSkB4ReIZjrBZ1fPhdzXtk4
-	hBbLYkPhFRsGee4na5ruzu0eU3KIZG6rxJbyUKRZTFFhqqdAJmCZt1umnoxKTB3qiywZEFQLsZp
-	c=
-X-Gm-Gg: ASbGncv+rp/RS8RG0ye7WQeUnF6Ya8B4qmO2X0hdv3Kqrdg/97lGl8KM3dWJKDfAeaZ
-	o2czxbaiU7Z+sdjXaP9CR/ECYueOjKts6GXjjwW7utBlaFCJERuLcBQHiIXMMRMzRP2tXdqRnqU
-	GnsT6HBWTuuKNohnGRsXolz/cwNT7PNr7k7i9CRsmpa0Auflvk2dUjAzlPsV3AwNyPNp9INliWj
-	CRwFiiOe+gfSSrQ0sPQtJVQZCkOn2q16bIi6AzwK6EcJ4EdWYY9vOFpdwCYGKTgTAT/7Xh1ye+t
-	VItPhexSRq0/BScEqbwSYn+6Wqhv+5Ozp97g1rHW/NKrZYCstRTnagGpwaYiPulwwBrixrfuiuZ
-	Wt3BsLY+p8qFPVsjcNqGPwkjeGJk+oPFb07bShTpmmcHqyJiT5Qf7
-X-Received: by 2002:a05:620a:394d:b0:7e1:f16c:16d6 with SMTP id af79cd13be357-7e1f16c171bmr1319843085a.8.1752534666760;
-        Mon, 14 Jul 2025 16:11:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHgcpRDGfh0tTeMaTiRAOLif3PtbYVlsrcAaMwHK8S/xvzLSUZaIFYJ4fcz95Qmvjsb6mBB+Q==
-X-Received: by 2002:a05:620a:394d:b0:7e1:f16c:16d6 with SMTP id af79cd13be357-7e1f16c171bmr1319837885a.8.1752534666331;
-        Mon, 14 Jul 2025 16:11:06 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55943b73366sm2094948e87.211.2025.07.14.16.11.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Jul 2025 16:11:04 -0700 (PDT)
-Date: Tue, 15 Jul 2025 02:11:02 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Shivendra Pratap <shivendra.pratap@oss.qualcomm.com>
-Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Sebastian Reichel <sre@kernel.org>, Rob Herring <robh@kernel.org>,
-        Sudeep Holla <sudeep.holla@arm.com>,
-        Souvik Chakravarty <Souvik.Chakravarty@arm.com>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, Andy Yan <andy.yan@rock-chips.com>,
-        Mark Rutland <mark.rutland@arm.com>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
-        Konrad Dybcio <konradybcio@kernel.org>,
-        cros-qcom-dts-watchers@chromium.org, Vinod Koul <vkoul@kernel.org>,
-        Catalin Marinas <catalin.marinas@arm.com>,
-        Will Deacon <will@kernel.org>,
-        Florian Fainelli <florian.fainelli@broadcom.com>,
-        Elliot Berman <elliotb317@gmail.com>,
-        Stephen Boyd <swboyd@chromium.org>, linux-pm@vger.kernel.org,
-        linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        Andre Draszik <andre.draszik@linaro.org>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        linux-samsung-soc@vger.kernel.org, Wei Xu <xuwei5@hisilicon.com>,
-        linux-rockchip@lists.infradead.org,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-        Macpaul Lin <macpaul.lin@mediatek.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-        bcm-kernel-feedback-list@broadcom.com,
-        Nicolas Ferre <nicolas.ferre@microchip.com>,
-        Alexandre Belloni <alexandre.belloni@bootlin.com>,
-        Elliot Berman <quic_eberman@quicinc.com>,
-        Srinivas Kandagatla <srini@kernel.org>
-Subject: Re: [PATCH v10 01/10] power: reset: reboot-mode: Add device tree
- node-based registration
-Message-ID: <5zlix4hfxkz447g6e6imjlatmnf26pvunnsmfkol7mhvropq6o@k7wr6h4hyqtg>
-References: <20250710-arm-psci-system_reset2-vendor-reboots-v10-0-b2d3b882be85@oss.qualcomm.com>
- <20250710-arm-psci-system_reset2-vendor-reboots-v10-1-b2d3b882be85@oss.qualcomm.com>
+	id 1ubW37-00000003qbI-1UOJ;
+	Tue, 15 Jul 2025 03:09:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+  t=1752548985; x=1784084985;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-id:content-transfer-encoding:
+   mime-version;
+  bh=E2DkHBC9ODjQ96Nm3ewij7eO2weCaSekkyTaLJiKKCk=;
+  b=G/rGC1YdQxEjeqmKvARrP3a5YpJvc4ZEbzVioovqSUNqv7sniYal4Gll
+   vywWnU9CpICmEDj/V+FBANjlp8f3CTv1gPnYiM6m8oqpQFMgdU3kDrrlA
+   9vAvo8onw3jOJXxYvv17ViXuPL01zRxAH6meCPVcMRG5msbhA7BNXjfM1
+   j+btZoz2cb1aYNq+FGWgytdurW7SKU7y9Pd3pjTfHupqOU5l5HR4c/hPN
+   xIAE49SkPhlL0tUJtUywmZNnUrj3ECVPKxm2ErdkgWgROfNQ075zAzOEG
+   AAdxW/KpnjU+Nj5gvSxXYCd1VISzi0QtERPInvuZqw6YpQdewIIlRTUha
+   Q==;
+X-CSE-ConnectionGUID: n0oLU6eFRvyb5OFUuEXpjQ==
+X-CSE-MsgGUID: 7rbmUzn2RPK20iqULD0r7Q==
+X-IronPort-AV: E=Sophos;i="6.16,312,1744041600"; 
+   d="scan'208";a="87021533"
+Received: from mail-dm6nam12on2074.outbound.protection.outlook.com (HELO NAM12-DM6-obe.outbound.protection.outlook.com) ([40.107.243.74])
+  by ob1.hgst.iphmx.com with ESMTP; 15 Jul 2025 11:09:41 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ZQVi1CWlgmphEmv1THFOU4FJCcEFswltQwxH+oRfhCBx6ocr5oqkzVyqfOspTu3zdcj//3R1gjpRlJeAbDWmWJij1PkicJOYBtFjTTBxaRnvJgXGsN6dwP7TRD+7ifbKIRdxtnz+ocFV/QmXRPG7iwO94fYxFvuPsCs0YbcP5EvZlknDjJLRVIiYd8A3Y999vNuFO7vpAR3petYdAMVgYPcxqQOBsCg+kw4hcLsat6nT8eEkLPRMha840I+QDTYqpmUlozhhAxiJsQrF+ImHmPgcgQsiJcbqE2J4nV69Fjho50cSlrdHmEPelKu2g/8cUnbEOs8GBTLp1no+OEudXg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=E2DkHBC9ODjQ96Nm3ewij7eO2weCaSekkyTaLJiKKCk=;
+ b=rgaHcVpUTf6UyflbuRaNzBRg2tLmpei+Oq8KkPxOuAB/F4HzKtKB3naKHytJ8uAWajQ4Wwwh6uK4ADRkQ2RAfe0M6cndf7JIlJOT7r8D7hxZDQaSJKJilbHnwH/7G8k2sWnMNJH+VsRj4VMyAbY8gbUZcbfGLpC8vq/CbNX2afh1dnM0XOrQ6VIVXRMP5orVglPm/7T2sXpOA2fhwQiHLQ/oJE0TRmdB+xqnk6mkKfyUqxIyKV9Oflse0/Sxw/gvLTkwfVWZr3b+5YLDtzOM2llaala/HZpgi9q90M4bMBTI/8p0zI1RY0zCYgVfPJ2bYVyqdIlsxgs6/DvxHlmpMg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=E2DkHBC9ODjQ96Nm3ewij7eO2weCaSekkyTaLJiKKCk=;
+ b=HMMuhjJ42LxSa/WGspKmC5ZBtoZJiLblf7gix2Q3rXBUzgAM+CTtHxY9TCEcCVQEXJEgk/WVd/YPE7fMwK9WMtY0b+vlm9smi48+oErcb9ykpK+M+kEL6tZyNAA2HTs+NGozOq+DMrLxnuWt/Xu2y5XurGjGH5c+JdnU74KZtl8=
+Received: from PH0PR04MB8549.namprd04.prod.outlook.com (2603:10b6:510:294::20)
+ by CO1PR04MB8298.namprd04.prod.outlook.com (2603:10b6:303:155::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.32; Tue, 15 Jul
+ 2025 03:09:40 +0000
+Received: from PH0PR04MB8549.namprd04.prod.outlook.com
+ ([fe80::5b38:4ce0:937:6d5e]) by PH0PR04MB8549.namprd04.prod.outlook.com
+ ([fe80::5b38:4ce0:937:6d5e%3]) with mapi id 15.20.8922.028; Tue, 15 Jul 2025
+ 03:09:40 +0000
+From: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+To: "david@tethera.net" <david@tethera.net>
+CC: "dlemoal@kernel.org" <dlemoal@kernel.org>, "kw@linux.com" <kw@linux.com>,
+	"alistair@alistair23.me" <alistair@alistair23.me>, "cassel@kernel.org"
+	<cassel@kernel.org>, "manivannan.sadhasivam@linaro.org"
+	<manivannan.sadhasivam@linaro.org>, "lpieralisi@kernel.org"
+	<lpieralisi@kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "robh@kernel.org" <robh@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-pci@vger.kernel.org"
+	<linux-pci@vger.kernel.org>, "heiko@sntech.de" <heiko@sntech.de>,
+	"bhelgaas@google.com" <bhelgaas@google.com>, "p.zabel@pengutronix.de"
+	<p.zabel@pengutronix.de>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Add support for slot reset on link
+ down event
+Thread-Topic: [PATCH v3] PCI: dw-rockchip: Add support for slot reset on link
+ down event
+Thread-Index: AQHbwIpZ70Uk8zYD6UqKMlfLq36i/rQt6sSAgAT/9IA=
+Date: Tue, 15 Jul 2025 03:09:40 +0000
+Message-ID: <f083038e43899cbe17624bf10c8d118fe92bec29.camel@wdc.com>
+References: <87cya6wdhc.fsf@tethera.net>
+In-Reply-To: <87cya6wdhc.fsf@tethera.net>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wdc.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR04MB8549:EE_|CO1PR04MB8298:EE_
+x-ms-office365-filtering-correlation-id: 011bbb30-87fa-4bd5-8454-08ddc34d09d7
+wdcipoutbound: EOP-TRUE
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|1800799024|19092799006|376014|7416014|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?SVJRRk56NElHREdrRGNXcm5SbDZWRGs5WVJrMzNYYnM2N2Vpcy9CN2FRMzBv?=
+ =?utf-8?B?MW11cGt2OWZQL3Y5TFVyM2FoUVJMT2dZRm1FK1FhRHJKekUxeGN2eUdoakRI?=
+ =?utf-8?B?N3loa3RVUWprM1NCSGRPd3kzZVBic05XYThWMzBTUHZJdVhMQ3MySHFXRTIr?=
+ =?utf-8?B?TDd1Y1JFQWdXOVZlcU5pQmpsN2FjNm04aVVIRGlGMnA5RCs4MzZIMmg2cThN?=
+ =?utf-8?B?cEJQU3ZadmU3Smg4WDZRSmtScGZ6cDVDdmhlc0svejVPYUVwVkxTdzIwNitJ?=
+ =?utf-8?B?Tk5UaDlmSlZMakt3MTlndDJNSFdxSlRjTEpsN3Ixby94NTFLSkNPb1lJSHRZ?=
+ =?utf-8?B?UElZZ3BoVjZyekYyZzJsWjJCWG0rcVBJOU02dTBCRUU3aFVMUW1TbktkYnQ5?=
+ =?utf-8?B?cXBFRGJabXlxaThLaTJzZTUyMGw1Y1ZMRjNIdVplYUVYdUtJYm5QRGlxQ1o0?=
+ =?utf-8?B?eXQwalB0Q3RCNXljVkJMY1hwUEIzZU1Sc3pQem9oaTJmSmdGVUJRdjc0Qm1C?=
+ =?utf-8?B?WWVxc012Z0tSVldEQVZZR2R1alBUNWRNd1g0alpQVnN5cjFQTWN2bkZNMW14?=
+ =?utf-8?B?OFJXbFhJc2ppWWVOc3oyR0tWWGxnVmJ2QkozTUJ1YjJmRnZLcGdSeTk0YVNk?=
+ =?utf-8?B?OUFYeVNkOWgxQlBCbXhZWDJuVk84RW40OEtVa0kvckhBeko5RzF5UVhkelcr?=
+ =?utf-8?B?ZTRBQjVCYkhqMFVmR044Q0FXMCtwZXV2MGJwZjRScVFNa00wZ0lNYlhwQUM0?=
+ =?utf-8?B?NjhDZlNhNGl5bnVldWRzc0h6Sk5KZkZwUXhWUytTYkhNUzZGZlVuZFRmWGRt?=
+ =?utf-8?B?RmZVSGY0alZLZVFKbTNHMUVNOVFuOTJ6R0kvSUQvY1U2UVJ5NGJjWDU0dEJE?=
+ =?utf-8?B?UE5RTmdOVXJKR1ZtelJPRU4wSW9wdlNHSjhyYitOQURyTlF0NlVvS2U1QVU2?=
+ =?utf-8?B?TFdMOUJPMWpCc0lNOWgyeUxwNlZqK1o0R05BSDdTS2RCMzBrK1JGeDRJcFha?=
+ =?utf-8?B?d3V6R2R0L3dXQmlmZXdIUCtxOTR6TnY5NTBZSFRKWExHQWZqRFgzT1c1WGI3?=
+ =?utf-8?B?ZU1rWkNManUxVVQrUk1BSjF0N3BCM2VqdHE1TVlmNE5YM1V2QkMwM1hDb2Nn?=
+ =?utf-8?B?WGpyb2tmdlNodzl2cklydHZSUVA3dndwRXh3bThYVi9mdjg4blJuZEh4UmZK?=
+ =?utf-8?B?ZzFQSUhSYXB4VlhMT2pJMk44VzJBVTFsV1FlYnRjY0x4NDZ0YWhEaWw5Rzh0?=
+ =?utf-8?B?dFhpcjdITHFyNHhBWVFSV0ZEMGpVM2NXWE5PTzJMNzJOSzNVRWRJM0M0SzdF?=
+ =?utf-8?B?TDNxTHFjanZmb0FvOG04VjhaTlpic3dVN0w3aStSSzJ1WHJYbWxZRDJzNndz?=
+ =?utf-8?B?S1V5QStpUGFma1l1K1VZTlZnNGQ1L1hrcnczQWFEeEFiN0hrNmprZ2k3emE1?=
+ =?utf-8?B?S2tBbnRCZHJ4QzNaUDVMdGIxR2thN0tjTldxaGJ1dVBES2lpTmxIZFBlaDdY?=
+ =?utf-8?B?ZFcrZXpLc2pyTHpkNlZOdWVTb3J5NmpuS1pzUklGdjdxa3BKME41V053TGt4?=
+ =?utf-8?B?Nm12cHl2bjQycDJLSS9heGV4cW5wU0E0a2VMMGI4WEVMaEVLekMyd2pZUGJP?=
+ =?utf-8?B?ekJZOEU0QTRBSzVITG50OXhMYUI4dm15Q3M5TEs2Vlg4UGdEYkNNWGhTaHJP?=
+ =?utf-8?B?eGN6RTBySlY4Y2tDcnNQU2pudVZiRGZ6akhQNG5LSlBLNTIvb0tQbCtZbzA4?=
+ =?utf-8?B?K3NkK2cvZ0R6bmRZMDA1am8rdXk3a1RqR2lZRlpqempEdGwwYVdFMFZKUnpY?=
+ =?utf-8?B?YWF5VFExL0VTOUQvTzNuMlhmSkNVa3VrYm1hWDZyOHI3a2lzZWhvYUJpaG9r?=
+ =?utf-8?B?dDRuTitZL2JwOHBmV3pNajlhcmpnRTRsVkE5cFBGMUhweEZGUk5UR3dmWnZ2?=
+ =?utf-8?B?VjRiYlMvaHBPL1QvUWUvcE1hS0U1d0JkMFpTOGlhL0o3SmhsNVBOa0diSmJI?=
+ =?utf-8?Q?7bndOsE9Ok6xFQWmqC4vLw8gYWX76o=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR04MB8549.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(19092799006)(376014)(7416014)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Rkd0VlRxY3RFMGdHZmNkZlNoTzlWUjhWWFVudWtzWGpzanlkVWIyQ1pqeGZW?=
+ =?utf-8?B?S1JQcm5oK1lXV1RyK0cxMlJtc1RvSzZZREcrUy9tTjduMElWaVV3czZSd0d2?=
+ =?utf-8?B?VlFleTU0K25XRE9QU0gxaUxJQXVuZFptUDBpWldCaVdmbS9NL3FFOFJ6ZmpM?=
+ =?utf-8?B?d05aSTlEWmJ6Lzl5UTdYMkVZQ0FmVExsZFJ6b3N1YzB6Qmw3Y2s4ZHpXaFpK?=
+ =?utf-8?B?d09KQTVRbW5lNnVuTzN1SHpxUVpsNFVBa014dUYxK1RMVWxmMTZvNWJnc2Iy?=
+ =?utf-8?B?TmhZODhsSkJkM2phMk9rUERxU2VoN0RleTllMlRtSDFsSGp1UW5RRkt5clVa?=
+ =?utf-8?B?Qjg1SXNsaC9mblBhRnB6RVM2ckpkblN1ZXo4cUZOOEYxTkQ1cS81UzY4TENZ?=
+ =?utf-8?B?WmRGL2tBRWlmd1lDdUNpY01aSWYyMU1qaDNMYmk2WHNVYS9ZQ1NRd3pzTkpp?=
+ =?utf-8?B?a280ZzNWdjREWnEwT0ZhL2s2NTdhT3ZnSnc3NlBtRWRyVnkxcUpNS0RocUNG?=
+ =?utf-8?B?WU9sNHFmN0dXZVlvMUN1M2V6a0xrQ3lhQU5IUlRnSDhKV3d5Z2d2bDRRajFK?=
+ =?utf-8?B?SDBHWGlPZVYzTG1MV2ViOWFJQlVKT0RKUEtIbGFrMmxSeldSZHhDQ3lSU1N3?=
+ =?utf-8?B?YlhUc0hDWlF3dEFJNGhBbmc1c0FwZWdnYkExQ3d6YS9GZCtaVmRKUlBIN2pS?=
+ =?utf-8?B?eDd2RWNXU1ZtU0gvM0hyclM3MHRuaTY2WGFKZGdaYUh4d2FrRUxPUXJWMWxW?=
+ =?utf-8?B?RkRkQjhuZW1sZHZtWGdoMERYek4xeWQzMkhZMXBwVTV3ZWNvVmd0Z3hqdUQ4?=
+ =?utf-8?B?K0kxUE5EVGo0UGNoRHBRZFUwNElnYnoybFgvS2pzL0cyK2dJNnM2M0gwQkxt?=
+ =?utf-8?B?d2tkU0huanZmak1mZkU2RDJBSjV2VkZMd2E1b2NTYXJ5OVBYSjFUS2dMYlJ1?=
+ =?utf-8?B?L28zQ0RVRHVrR2Nhcys4V1d0SFhUd1NKeW9HL09mWFRCc3l6S1l5TlBvQjhn?=
+ =?utf-8?B?WktKRXNwRjVuazZkYnRia0lrR2drSlgwUDNveDFvZnlOY1BNUlBUQk9aOFFo?=
+ =?utf-8?B?MExKaU0xdzVyQjgvZjhia0FNU1NlUTlDemRoMk9oelEvWHZJU2owMjFoRmh1?=
+ =?utf-8?B?Nm9ZUnBBdkJTM0dTbWg3NEc4SHFjZVVEQ0pjVkxUZDFXM3JXS1NFNVYzSzdV?=
+ =?utf-8?B?b2pSZzdYZ21IbkZWVnliN25jTmhWbGladW8rSXd5RlM3U2pLZExJYWlxN05H?=
+ =?utf-8?B?MzRNbW5BVXJOTzVHS1dQMnBNUHNnYTVCMHViUzJqOGN2N1BoT0d2VFpmSlRq?=
+ =?utf-8?B?aXVzaEtOUmtvNDNOYnF0ZlFrME93TXdseVJ2cjRnSEg5WEYxWTN0RUh4d05V?=
+ =?utf-8?B?bTdrZWxkSzUyUXdNYURZUTBteGFhZDR5YzU3TXptUXBwZi8vaVRxQ2hZRnVt?=
+ =?utf-8?B?QjNQaG51NnpnU3pqQmJQM1oxdWpWdmFzYjFCclRhSFdUdWM1emQwM3MxOUc0?=
+ =?utf-8?B?dnJCaDI0OStZK21rcjVYNkNNZHlRYk5rbjVkTlNmYzVjU2gvSUpYSkIvNmlE?=
+ =?utf-8?B?VDB3OXVPL1hqb1dSMHdESmphZWRKL0c4WDh0bU5uTTUreGZmTHV0N3ExQUtn?=
+ =?utf-8?B?RlBKYjNGWnA5ZURYT3h0WjI4Ty9YNUgzaFh5SFhnOGxjL3JLNHpRZTh0S3VM?=
+ =?utf-8?B?VE84V2FHMWVXbW5VY1RmcXQ1ZzcrZk0rNytLTWlmMUdPelZjK0k5elk4dnpa?=
+ =?utf-8?B?eWdPQnZ6TzhBVHZtVVVveEdneFQxTDhNMHE1bUhFSWZKRVdLWE1SRTJGOHhv?=
+ =?utf-8?B?bmxxR0tBY0o3MjBBak4yc2t2UWFzOGtJWUJJRmtSdjhsMFpuNjNEUDlVYzc2?=
+ =?utf-8?B?dmVUeG5YczBHdVY4aTQ2TU5JaHlnNTNIaTBBcFBkUGxKOG5ZdGRqSlJqQUF0?=
+ =?utf-8?B?ZW9CY2lRajFLNUkxcGRyazBHTVgrMnBHRlNlZWJVVnJIRTllRStXMzMwWEdM?=
+ =?utf-8?B?MjdvV3RCYzJ5a2pHRHZmanFCam1MMm56L2EzTEZJZVpBeVAxQkoybzBvZmNQ?=
+ =?utf-8?B?ck5TSkpxS1Vjdm8vVVRYTFcvZXhvVGZmQzRTbGZ4ZXo4THZaYSsyL0loMkVo?=
+ =?utf-8?B?cGJPdmk5endwWTdmOUc1UzBwQ01GVVZOejBJTjk2RzFUWXBwcGRuUitLb2xt?=
+ =?utf-8?B?VlE9PQ==?=
+Content-ID: <1DBC1C94742FAC499A64A7D8DBAA4F66@namprd04.prod.outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250710-arm-psci-system_reset2-vendor-reboots-v10-1-b2d3b882be85@oss.qualcomm.com>
-X-Proofpoint-GUID: b0qxHOGaBSNKstMU2r2Wp2XWjYI8HFKd
-X-Proofpoint-ORIG-GUID: b0qxHOGaBSNKstMU2r2Wp2XWjYI8HFKd
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzE0MDE2MyBTYWx0ZWRfX8iTzTQg1CZ3+
- YGelKL17ZGRVQBZNO1EHY9JQLrrbI+rWCG/kYE+iJjfb+vYTIT4/57HodKWuZGsnJa7UVn9kKAG
- VjCWxKi3Q3NjeJol8scNVymj+UP+tYSQq0OroGwnNZgtGeLs9BVTDpHzx0isglj4WjqmyyZkGoj
- LHF6Uvlk5Ek0nMYiCeGAESRgVks9FhIqrOhVQ0OEOFcRXMWWZodjUH+DkrjbLRuhKS4rRGqvKCQ
- JlpCRENu+EF9sO0gbHLGSAi/ad5S9nXHyRDznnN6v665cIQISEgT1pDH8gULhjLrlWw5YkvSZJN
- +9v+YYuEy5weN98z+XF7tJv+kx/RMBbaL/Ps/Qd0SU9BlTs6yPOoijRJFGPyPOghOqnVoYrZhF8
- pd26mrdacos5QFG7Hx9XFrRRnN5PHbFXhBVZQeglEa1FOp3dx6xvkzvG8Qb7q//nj4ANQOS3
-X-Authority-Analysis: v=2.4 cv=Xc2JzJ55 c=1 sm=1 tr=0 ts=68758e8b cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=Wb1JkmetP80A:10 a=EUspDBNiAAAA:8 a=SZ81-B_MNtUeYvdDzSwA:9 a=CjuIK1q_8ugA:10
- a=bTQJ7kPSJx9SKPbeHEYW:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
- definitions=2025-07-14_03,2025-07-14_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 mlxscore=0 priorityscore=1501 adultscore=0 mlxlogscore=999
- phishscore=0 suspectscore=0 spamscore=0 lowpriorityscore=0 impostorscore=0
- clxscore=1015 malwarescore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
- definitions=main-2507140163
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: fdhCDby0BvNPo7q+JrsYKGUhVqI+T5AR8wvILuhJQ/WZ5kxni1EKawzKLI3QYfmI+tpRAK774QJ+WkYfhdV1xqvpJ+k7MzJ1r8yyL8SpU97lENYSl94jhPeGFBRLpJGmaY5lejWoeTNpUN8rUTeFzBYGyIaWWu5AW6RTtriERzs59IEHxKjcypszpPSSNQKsVFyFQh0Csswg+EuDGP1awDH2vB4WN2PYmHlcXaZCHPyopZNUJA7fm9R+cP4sza328BNFG9kAoXksbVzfwNM4zlp9u/w4g2d9fHH83XQAiCfGPR/OJLXavQhJsLzhueiSakLYKhdSRXaFPdPidVXwdmjYIuYxv7c/k+1mNfUvir3nTKy3hWzpeUiEaIWMPU0XTRQdWgGTbHvGkEmjFwQwX47Ss1KQdOyBss7lm01n6i7nPpVibEh6ayeJZU/29wJT22aGRiknhPUSiaIwMDwT+pu8wT3k040hgoRVdKroCLX0m2CAhGrTNIfIe9PzE5WqK6Q836ADgZUbtbqeMRK5UFL0iNter3mMTp0SgccVP1KLcW3QDMEKmf6M5nx+M53tEJ98PHscAibSck06l4RlHZVAsKighUoJF6L1AEHSmOowqWx0rtg0nmp7s0TZky5t
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR04MB8549.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 011bbb30-87fa-4bd5-8454-08ddc34d09d7
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jul 2025 03:09:40.1251
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0bc1r0dpTsBDb42n5EVNVLCA7HqcMdFTT3zjXs1rwE3WblJHml+L8N6O6fJ444iTeKx9Nn8cm/Jg82cQQHuTFQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR04MB8298
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_161109_053865_E01A87C1 
-X-CRM114-Status: GOOD (  22.20  )
+X-CRM114-CacheID: sfid-20250714_200945_431143_EAD4C1CC 
+X-CRM114-Status: GOOD (  18.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,43 +213,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 10, 2025 at 02:45:43PM +0530, Shivendra Pratap wrote:
-> The reboot-mode driver does not have a strict requirement for
-> device-based registration. It primarily uses the device's of_node
-> to read mode-<cmd> properties and the device pointer for logging.
+Hey David,
+
+The series was dropped due to some changes that need to be added. I
+believe Mani is working on it. However, you should still be able to
+test things with the addition of the reset slot series [1], and the
+support for the dwc-rockchip driver [2]. The reset slot code should run
+on a link down, so it may help your case. Worth a try :)
+
+[1]
+https://lore.kernel.org/linux-pci/20250508-pcie-reset-slot-v4-0-7050093e2b50@linaro.org/
+
+[2]
+https://lore.kernel.org/linux-pci/20250509-b4-pci_dwc_reset_support-v3-1-37e96b4692e7@wdc.com/
+
+Regards,
+Wilfred
+On Fri, 2025-07-11 at 19:48 -0300, David Bremner wrote:
 > 
-> Remove the dependency on struct device and introduce support for
-> Device Tree (DT) node-based registration. This enables drivers
-> that are not associated with a struct device to leverage the
-> reboot-mode framework.
+> What is the current status of this patch (and the pre-requisites)
+> with
+> respect to mainline linux?
 > 
-> Signed-off-by: Shivendra Pratap <shivendra.pratap@oss.qualcomm.com>
-> ---
->  drivers/power/reset/reboot-mode.c | 23 +++++++++++++----------
->  include/linux/reboot-mode.h       |  2 +-
->  2 files changed, 14 insertions(+), 11 deletions(-)
+> I'm wondering if it might be relevent to the problems [1] I've been
+> having with rk3588 resume, but it isn't clear to me what I need to
+> apply
+> to e.g. v6.16~rc1 to test it.
 > 
-> diff --git a/drivers/power/reset/reboot-mode.c b/drivers/power/reset/reboot-mode.c
-> index fba53f638da04655e756b5f8b7d2d666d1379535..61f647b23959789a313f3af0bd967abcad45fa43 100644
-> --- a/drivers/power/reset/reboot-mode.c
-> +++ b/drivers/power/reset/reboot-mode.c
-> @@ -12,6 +12,7 @@
->  #include <linux/reboot-mode.h>
->  
->  #define PREFIX "mode-"
-> +#define pr_fmt(fmt)	"reboot-mode: " fmt
-
-This wasn't really tested. If I remember correctly, it should be defined
-before the first include.
-
->  
->  struct mode_info {
->  	const char *mode;
-
--- 
-With best wishes
-Dmitry
-
+> [1]: https://www.cs.unb.ca/~bremner/blog/posts/hibernate-pocket-4/
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
