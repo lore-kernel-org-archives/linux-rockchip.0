@@ -4,88 +4,200 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13CB5C83F27
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jul 2025 22:10:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CC54C83F27
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jul 2025 22:56:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kHuFYNHRzKxywUcR5q5G7B+z0r0NjPefsuLJaqnF3lc=; b=zU3T8IaiURu2RR
-	CBCVwGUsCgOMBzLStXG68lahWW/Kl1ni2KES6kvmF+nfwIf1TcazIyjJmkgP90hnEkLCYWzAlZ3KY
-	8MeAfpw+owZvMhDDZUpwEa+gM8CT/9qa75KUGyg9kPyykyI2hm4PVHkg/F2ifoyGkSOpUswvb35/a
-	lU/4Gs1JK1Ut3d4yaSGzC6TE9qoQjXMnLIOKvXHpKcKmT0EgjMxcWP6WBJzjVSts3wKrOZt3i13+n
-	GhjfVDgCuo/5Pds7Dorbqvnkqa4bE98Pyp8NKkc2NRQerHbH6ZTmZdhaihi5+DRhUGPVIqDtvTPp+
-	d9q/72O79nbPlhZpngag==;
+	List-Owner; bh=JYX3UT1kik+ZSq5nmF+2Yi6CCoNAGccq5BpWKhTQDg8=; b=t9TwbPgK2iotrJ
+	x7JPL4ws65Vxrcnpb/26cgQ3rOq09Ta8qxx8eZ88J7//p6nTAFRg2JbRnuLTcB6Ms2T4fw4Sfv29g
+	64mtCDGJcEt2Ip71LwV71PKVAcBuC44v+c1XtIyUoLX+KmfuuUVqsh+dEi5uxcquJYpDLa++kNUs2
+	9feX61LIghpmSDzk/JiI1jxahLPdXffzqchLRDv1AI10YI+1t6VHORNkBtuGV7tp+5DRuw9YPnQYp
+	q4k1uTrFVIepsDp+o/aIMv2k8TyaPR7bCMcDThJrDBpKL9UV2RXo7AXZytVdGcEHYPwjYor11I3u3
+	68VjkSAyC/HpTlRlNLlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubnqy-00000006J3m-1SKN;
-	Tue, 15 Jul 2025 22:10:24 +0000
-Received: from mgamail.intel.com ([198.175.65.14])
+	id 1uboZe-00000006LrR-1MHb;
+	Tue, 15 Jul 2025 22:56:34 +0000
+Received: from esa2.hgst.iphmx.com ([68.232.143.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubnoW-00000006IlB-403c;
-	Tue, 15 Jul 2025 22:07:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1752617273; x=1784153273;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=vnRZObHgS0QjJyF2yT7e0Wftl8BxleHhpS9kJZodEzg=;
-  b=OBXdOTwn8CKyaPvHlZS3z6H3JyQk92/3tMXRQA/TvwAa51EQK47NEk2t
-   VM9Qu+P0qWFtaCUYVTZYqiOXoKRG1kN5COuAb/+wuR7QM1dpK7dYAY1W3
-   7P7hVRO8j3K/ofFJeU9MPm8/5+wjfIzLeryWlCbojh5jiqIMPpwhK6G2E
-   Bueujuuj0VKX9x1zy/gV+BODIiC0X7bkoG1702d7raOFqFqnDJxfjd9nW
-   zn73t5o21K90gqFif7g1lNe6XfK6BWOoocwOKFBoXscjS7zvqKRuYhLya
-   C/8nzbZXYKOgmsNpDjnER57cY0nFpTNE4CfHS+IJLWyDsyui7KQGE0gHU
-   g==;
-X-CSE-ConnectionGUID: K/rE1oPeQAK+9DzqVLAeJw==
-X-CSE-MsgGUID: vIjvMkIKR86OBhZlq7qkeQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11493"; a="58619887"
-X-IronPort-AV: E=Sophos;i="6.16,314,1744095600"; 
-   d="scan'208";a="58619887"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2025 15:07:52 -0700
-X-CSE-ConnectionGUID: 7W8UrI6GSh+JssxH0CVzMQ==
-X-CSE-MsgGUID: 0LiZ2H85TZeeeyLgzoEo6w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,314,1744095600"; 
-   d="scan'208";a="161357586"
-Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
-  by fmviesa003.fm.intel.com with ESMTP; 15 Jul 2025 15:07:46 -0700
-Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1ubnoO-000Bab-1J;
-	Tue, 15 Jul 2025 22:07:44 +0000
-Date: Wed, 16 Jul 2025 06:06:55 +0800
-From: kernel test robot <lkp@intel.com>
-To: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	Bjorn Helgaas <helgaas@kernel.org>,
-	Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
-	Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: oe-kbuild-all@lists.linux.dev, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Niklas Cassel <cassel@kernel.org>,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>
-Subject: Re: [PATCH v5 2/4] PCI: host-common: Add link down handling for Root
- Ports
-Message-ID: <202507160557.oy6ZGYI7-lkp@intel.com>
-References: <20250715-pci-port-reset-v5-2-26a5d278db40@oss.qualcomm.com>
+	id 1uboXD-00000006Lbi-05S0;
+	Tue, 15 Jul 2025 22:54:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+  t=1752620042; x=1784156042;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-id:content-transfer-encoding:
+   mime-version;
+  bh=jeCCENn9N/J3u9VtGg0hTZvyGVWhp+fxNLhkg73cuAo=;
+  b=hZ1lSlG/Js96bRwGUbh41qaJVvDGWNYLgOmmDsprJj0ZMe/rY/AXMszG
+   uQsw1+oXBzThZeluVOsvKl98MSOyqC7I+TgJuODe5ZOYS2tZ/z9BtpnWg
+   OHiOoyJDScEOudlAjTZD4ijfk//x+r7BVwbSZs4EzAIIRMwvu2Wb1rFOX
+   Pirf1FOcOpV1WU1Cq7ERIoBSzaehnSBgNrTEJgUEFHtDRYECuPUdMpwXc
+   5oaSXOKCFkCG6pXdaB1BfYpyVGt/8CHYlBQd3yGT0bObo+Z1+HvZqy/bF
+   YNaiz+osFCoQaWAQtcT8B2DrnkylH+KNrn1GhnvmzjMX9ZRk3x74Oe/Wq
+   A==;
+X-CSE-ConnectionGUID: 4bWYKhXYROSLFPru1Wc1FQ==
+X-CSE-MsgGUID: qmOKz5QZSrKYApHzcJ37jg==
+X-IronPort-AV: E=Sophos;i="6.16,314,1744041600"; 
+   d="scan'208";a="94069968"
+Received: from mail-westusazon11010016.outbound.protection.outlook.com (HELO BYAPR05CU005.outbound.protection.outlook.com) ([52.101.85.16])
+  by ob1.hgst.iphmx.com with ESMTP; 16 Jul 2025 06:54:00 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Snla8UjX+nt3h7+wl50sxmTyz7AAftDnaMQw8dxcdDPu2XkW91XwWBsT2Nrst9ZjCl4jfmb0e1cKNNjkyH6tCsNqhV3FEXWEXklt103Q5Rgj0X9Geh7RbppCtAeqEU7sLoKjGpbDjK7nfeC7T3gX+HkGI50hbfVMe36v6ZiUEsdFRumIBI/UttEAn17n9hHyRDnhMwv3tE31IrGUfrqjH/sgEDK1m8cm+TDP/aaDCME92MQU9C5rtgdvRVx01SuUEYBecnsSkrdvuKWwUBFJu/t9WymZFykMm3qzlvTZl+QmPwV7jerkM2oHeDdKD77xfEK2RQantuJuPLrFDvrcrA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=jeCCENn9N/J3u9VtGg0hTZvyGVWhp+fxNLhkg73cuAo=;
+ b=xetBQBfxaHTzt51t5JcT3romAHuNMW5Yg8JehFJcx5g2lVB8uGymVJL/TwQVbWy1sIn0/W1uAwcPCIFhV5kcSaL/U7BVpJH35oL0Kx+qKITUayJF8B5TazeTg0c5kIu6RTn/8iKWMJWeVNAi65J5iMKJSG4YY1D1bYRjTvR/mIlZhjEHv1yEhdl6GRJ3K10tRaVs7mqZpQoLOZJscQEXVuJncZm61J1Y2sTubqKbEnZ03VsdE5Tdmf1Lh0e/gqPI5XLaIzciXS9Exz7ltFJDz8X9JfglXkEaHnrNOsbKyDK4bmaOgLKOOFnrSFRvgGELpzQx1E6kAguj1YbVmdBzoQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jeCCENn9N/J3u9VtGg0hTZvyGVWhp+fxNLhkg73cuAo=;
+ b=EVjV+SVWZX6BjbXPFNdOVlMDDyzOxR/J4dryUFDfwsO0nKEMoT5tTFk9+scFQ0a1DmymMzKVddAMIehbuYpTEGJaK7SPbrNkvkF7HiHiDYhNTzK6aJjmD49keYznyqU1u8jQf3aOYvh57UIIxd5f56jkGLGB/o3hmJiJqxeZKt4=
+Received: from PH0PR04MB8549.namprd04.prod.outlook.com (2603:10b6:510:294::20)
+ by SJ0PR04MB8422.namprd04.prod.outlook.com (2603:10b6:a03:3e2::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.24; Tue, 15 Jul
+ 2025 22:53:58 +0000
+Received: from PH0PR04MB8549.namprd04.prod.outlook.com
+ ([fe80::5b38:4ce0:937:6d5e]) by PH0PR04MB8549.namprd04.prod.outlook.com
+ ([fe80::5b38:4ce0:937:6d5e%3]) with mapi id 15.20.8922.028; Tue, 15 Jul 2025
+ 22:53:57 +0000
+From: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+To: "david@tethera.net" <david@tethera.net>
+CC: "dlemoal@kernel.org" <dlemoal@kernel.org>, "kw@linux.com" <kw@linux.com>,
+	"alistair@alistair23.me" <alistair@alistair23.me>, "cassel@kernel.org"
+	<cassel@kernel.org>, "manivannan.sadhasivam@linaro.org"
+	<manivannan.sadhasivam@linaro.org>, "lpieralisi@kernel.org"
+	<lpieralisi@kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "robh@kernel.org" <robh@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-pci@vger.kernel.org"
+	<linux-pci@vger.kernel.org>, "heiko@sntech.de" <heiko@sntech.de>,
+	"bhelgaas@google.com" <bhelgaas@google.com>, "p.zabel@pengutronix.de"
+	<p.zabel@pengutronix.de>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Add support for slot reset on link
+ down event
+Thread-Topic: [PATCH v3] PCI: dw-rockchip: Add support for slot reset on link
+ down event
+Thread-Index: AQHbwIpZ70Uk8zYD6UqKMlfLq36i/rQt6sSAgAT/9ICAAUrkgA==
+Date: Tue, 15 Jul 2025 22:53:57 +0000
+Message-ID: <bc71f7fb38c1cf2e3faa6d191d61d40121c4ea22.camel@wdc.com>
+References: <87cya6wdhc.fsf@tethera.net>
+	 <f083038e43899cbe17624bf10c8d118fe92bec29.camel@wdc.com>
+In-Reply-To: <f083038e43899cbe17624bf10c8d118fe92bec29.camel@wdc.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wdc.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR04MB8549:EE_|SJ0PR04MB8422:EE_
+x-ms-office365-filtering-correlation-id: e2354531-11ee-4aa0-04c3-08ddc3f27b94
+wdcipoutbound: EOP-TRUE
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|7416014|1800799024|376014|19092799006|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?eGdIQ0o1bEFQdVB5SjBxQWFLbGVwYVRXa04zNVhwRy9OSmZZK2x5ajQ2WkFz?=
+ =?utf-8?B?ZjlFZXdBQ1p4NUdkWU5lL2JtbGpEckxkaldUb080NnVuUmI5VGkvRVhEcVY3?=
+ =?utf-8?B?d1NjcWFRYTR1VFNPcmFudENhaUtxMDBjWmxrMVlNdGM5Y1V3KzV4UzFKY1M4?=
+ =?utf-8?B?ck5GSmlQZnBPNFdqbW9UalA5ZTBlRTQwN1J0RGM3RlA0VW9jZlU4eHF3VFly?=
+ =?utf-8?B?ZlpoVUtWbi96d1NmUCtJRTNzZkhYdWdHZklYUis2OHlScVZ1d0xtbWVPNzdJ?=
+ =?utf-8?B?TWNXMXpTYVRwSFA2YjRGSGVheHpveCtWUzVTcjZlbkVncGJpakdLZmEvNngw?=
+ =?utf-8?B?VU9rTS96aExqZENxdG9adDdJSStGMUNjVUdOWG0yOFFrQ0ZCVkR6Tm9iSFdX?=
+ =?utf-8?B?WHZmQ2M1RkhwSmtsR1JiWTNqS1hPZ0t2NXErRVJoYmpPVmFZOXdwNEFGVTNm?=
+ =?utf-8?B?UmIwY0MyNU90QzJlUkZMZ2o2cVBKV3VYSldFcUNoVlRIc3ZraG5SRm1kZDJS?=
+ =?utf-8?B?L3VqUXZXcmhONEVBSExJRjlBVmNKVUt5TERYU20yOFVzdVY1cmRaWGRXdFow?=
+ =?utf-8?B?eGpYVFViVjJzUjJ4TXZweERTbDFhMVRNbitlMDNRT0JqUkhqc25DeHhFeUNp?=
+ =?utf-8?B?WDVyUExYVWFIcXNqZEpKaXRxOVJJemdIa3NIQ3A3clFDdkQ4Sy9tV3U1azQ2?=
+ =?utf-8?B?MldRSHF1dmZ0R09kMDNxOXFUYkdwTXFvUjVpcG5WUWVFdjR2REJWSUVnWWwy?=
+ =?utf-8?B?ekdXM3lPMzhuekdQQzRqUFZ4cW45ODIydUhLODRLNVducWpkQ2F3bWdlWFdM?=
+ =?utf-8?B?RG1VTTF2WFBabTNOU3NxODJYUWFkUG04b0hWaGFDTXhVRFVWd3dUT2UzR0tD?=
+ =?utf-8?B?OWVReDlvcUk5SW0xT2RxZzhObkNFdlorOStQZ1REci9OSWNZaEIxcmJKQnFW?=
+ =?utf-8?B?clluQ0Rxdk5mTG44UnhkSUg4Mld2dHpxNFp3TC80QklkNFZWaDJtQ0o3M0JM?=
+ =?utf-8?B?c1FScWlmV3BwRkMxK0oyZUlHYkpNVHNTMUhvU1pYNkQ2dG9sZCtQemNheGlG?=
+ =?utf-8?B?aHBNd0J3T2VPSjhjdHdtTXFkMDdEY3JNdzJvREFDNC95RVBTY285bGtJaXRv?=
+ =?utf-8?B?ZFhMaXFuRFZTMXlmanJicFJEUkpPVWpqUHpPaTRBQlNkNEIwNHNyTzJRc21h?=
+ =?utf-8?B?aWtkMk56YWJVUFM4bUU3WlhCN3JYeWlYV2NoMk5mOGVaOVg2bGM5bmxnL2Q3?=
+ =?utf-8?B?aXFaSWY3NytOcjcrNys3TXB4NkIvdTRiMjhWamJFY0xXSHZhbWJyWVk0RVRq?=
+ =?utf-8?B?YUsvMVFTeEpleXRxQVRWamFFRUN0UEhEekQ2ZVdHRDZpY2FSMWt2YjFiL1Vv?=
+ =?utf-8?B?cTNNS1pPcFZYaitBK2p4ejVYaEFRWmpvbHJFSnB0bW1ienNNb2JFTnlpMjZn?=
+ =?utf-8?B?c2NzWXJwR0RscjR0aXRVa3V4RFo3aWVkSmRMOUQrQkd2MlVkRzYyUWh5NGUr?=
+ =?utf-8?B?aEdUVFI3MGUybVdRdXF4WWNNbElPYm9yVHhLa3dnRWI1ZmZHS0dMRWtHaTBV?=
+ =?utf-8?B?Zm9yRTd2NWszZVZvYk5JeDdOWkFQVzhmWEZmaElOdmFSYzFITlVuYUl1N1hz?=
+ =?utf-8?B?NndESTBjc3M4VFlNazR1c2JCLzVwZ2R1ODZ1OThQTDk0QWo3dTN4WUZ5WUxh?=
+ =?utf-8?B?b2s4QjNEUDlIamFxaWhZRWFOczU2QkJKbEhoa0Jrb0k5ZC9yZUFDWExZNGNH?=
+ =?utf-8?B?YUpoOXU4Rm5IL0FwM0k0NFVpNlRUMTZvUHJaNzliYXNVNFpyVk5oWXQrY29r?=
+ =?utf-8?B?enhVUkF2SklBNkRnWmRHWjlZT3Z4WXdWdUJGTVFNQ20wN2c5VEludGpxVEZr?=
+ =?utf-8?B?bjdoTmh4RFF2QlZPa0IwTnV4ZVVUT29OU0hIUmw3YkF0QlZUaWZCaHpyV1NX?=
+ =?utf-8?B?U3ozb2RXVHBGUUdXRzNvZk54Vi9zNWY1YkIwcnJNcG1zSGR1TTd0LzNGaW1z?=
+ =?utf-8?Q?FDd20DFR+Hf0mhpmQrE8/1huuac45c=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR04MB8549.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(1800799024)(376014)(19092799006)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?VlI2WE85RlJhRld4azIzT0Z2OXZkRWwvV0dwSVVuMEdRMW41M01mTmRPTVdL?=
+ =?utf-8?B?c3Nvb1B1UWN0L21BMk9Ka0FmRkQrQk5HNHZSVVU5NnVDZ200OHRIenp0MmRH?=
+ =?utf-8?B?a1E1cFMybHk2eWlqSFZ2TEM3NjBvVmgwZTdseXhxN1A0dkdNdnJPS0FOQ2tx?=
+ =?utf-8?B?WW1NdWEzT0NjMEp4QXMwWDJiTEtJRWJ1R3diMXpaVG9RVktCazBxZ0trcDBn?=
+ =?utf-8?B?cXd4MmE3UWs3blpGUGRvSjJPRWZnTWpMeGNFNHkyZDJjblhzMW05SmN5K1NR?=
+ =?utf-8?B?ZHo1Sm1hVDAwRk5TVFhnYWY0WDhZZjZRUnViTS9TVDRWOTg4Mmg2VFBzYXE4?=
+ =?utf-8?B?cnRqTEw3N2dBWUp4NVd3dEUwODNkV09PQXBHZCtRSEM2WTZhR2V4Rkc5bEFC?=
+ =?utf-8?B?UnJYa3VTalkvNTQyVk0xM0ZQVFlYM3dMKy8yS2VyZlZlMjIxR3F2NDBGbU9P?=
+ =?utf-8?B?SXZldmtpUzFtWFg3TGFmcWZiQjZUb2d6Qm84Zi92VjdrU0VVWWFiVzJaYWF5?=
+ =?utf-8?B?OUNzb1BDZlNTMWF6KzdGQmdxelhiVVpaTXZJWlZ0R2p2akI2NkdIWWhjMkdj?=
+ =?utf-8?B?a3Y4eWw3dkI1cHJGOGt3RWNnRWxmb2RXRU96eDFXRXMrck5pbHdzSUhHSFU3?=
+ =?utf-8?B?OUp3aXhKcWhSU0ZURVFITGxxQTBPN1JTeThnV1NleFJmdksyVnJieFFGKzI3?=
+ =?utf-8?B?WWJZYi9PeC8yTVE5TlZEbHlpZGRRc3pWT3NGRFoxRW4yTG9PcFNwcXJKU3Bh?=
+ =?utf-8?B?WkczdmVjV09qaGI0Zy94bEdPMS9xOHdjTDZvRXFJQzBxaTFFZ3JtQWsyblFJ?=
+ =?utf-8?B?K2RjMVk2a2JGb0FxcEMrNENKd3R0M0VSQnFXSEtLWEVNdFZxc0RsOElnbUxW?=
+ =?utf-8?B?OVgzbVFsR2trdWRXZmdySlhuREV2K2xtMW9YUGF2N01XN3JCc1hYei8yb0d3?=
+ =?utf-8?B?VGNBMm8rVGJUU2JzWU1ySFU4UjFCNHBSRGppQXhRSENUQTRiUW04b3o0NWZK?=
+ =?utf-8?B?ZEhQaiswYUU5dUtNNDN6bEE1alZJTmxnbkFDOVJhWmhkbWtoaVJyTWNXUC94?=
+ =?utf-8?B?VnA3NUxZWnJKNWNnOE91N0pCczlTaFlLWUlrazY2RTFYbnZ4UWMxVmp5ZDVO?=
+ =?utf-8?B?K3ZqWEl5SkFsS2ZPZHcrd1o2U0xvR0pqYkJMN3F5Z1RuSDQ4VXpjQk5NbXdm?=
+ =?utf-8?B?Mnpob25SUE1YcVJmY0lYdjhTYmt2SzFQL2hHaWRYc0FlNldGNkVnOWZxUDhw?=
+ =?utf-8?B?NGFkWU82WmNZOHVPWUFjMnh1UUlMMGNYTEVvRjFxY2NreUU0ODJyT0NWc3V4?=
+ =?utf-8?B?NjlwQm1LNzhKRDJuZEdzZEx4OHg5b1BGbFBVTmJ5R2lOSXdQeDVTU1BKVTJt?=
+ =?utf-8?B?YXlXN1dSVDVuNUJhUWV5UG14K056S3dvdmUxZzQxWU1TNytpUjJoR2JHS0xK?=
+ =?utf-8?B?eHlSa3R6c3dFN0VGMDRJZG9DNks4b1lBMytzV0hCR2NTL2djTzVxMFZVRmVi?=
+ =?utf-8?B?eC96TCsyYTREcGJGYXQvZEtEZVdOZW1vUkRUT2tBYytXTVZYc3A3T2s3SHJO?=
+ =?utf-8?B?Um1QSThOOGtzc3VlQ1BnWHdhK05Neld6OFFJUGwwdk15R3QzeWVadjZVbG9E?=
+ =?utf-8?B?RE5xcFdKbTRiYnA0anJMaHhLNTEvUnBKK0VvTTRZRWp2UTh1azlWNEJCb1Jv?=
+ =?utf-8?B?VGhtbk94c2pTeWIzNVhxcUhsMitpWDZtbTdSaGxYSFpFWVRuL2xQalpMWUNW?=
+ =?utf-8?B?ZlNZVmJOOUJkcXdHaVNTV3V4Vkxpa29McUZtd2QwSjZzSnlrM3RBOXpqclVj?=
+ =?utf-8?B?WDFuekQ3bEJqVEVRaURyMS9PKzhsNkNxYm5OWUZOcXFjaTBEQ3FTdXdMTysr?=
+ =?utf-8?B?RCtobTNWR3RzTTBORkJ2cGhGUmlGTTdKNk1yRnl6TTZXekZ3ZzhaOE11K3Ew?=
+ =?utf-8?B?SDF2RDBFVElxdXFKUnpaODlqcnV2Y2hjMFBBQ1pDQmpkMmFGRTZJNlRCWUxH?=
+ =?utf-8?B?a3JLUGxQTlNINGtoOWhmbTVRTEVhOElLSlI4M1RYZW1STi9XRURkSkVPUHFI?=
+ =?utf-8?B?bm1VbTA3VkJRTXJYeHY5NzBGZkJOQ3JucWROMW9HVThyaVArS051ZVhDTCt1?=
+ =?utf-8?B?VldaK3ZMUEgybHViU1Q3Nm01WGlSUEN0M0M2Wk9CRnBRUkFUanpHMHJ2UUFP?=
+ =?utf-8?B?NHc9PQ==?=
+Content-ID: <5BFC3976849192469E0DC201414DF2ED@namprd04.prod.outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250715-pci-port-reset-v5-2-26a5d278db40@oss.qualcomm.com>
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: RO+7Mr9vFRJXPKv8Bjf3tz5qHzseYJF0fHr8sQ3KYNlC76ckiCtIw45eAY5c25f1KYIzNCIaKcqbY4qvbh4q3NvVr5680SWql1kB+LTUSC3CDtc+AQRQLpBogA9JHFYhyWxXy0+w1/SYE6C4CExgwWeFyy7tmHuA+/wtsMmqrShNejiLAPuyub0PQtr40FjnJCcShFIx6nEC0Y54QVolOWq9sPz76lSpAmFoj6DKO5BV3DAEGOMqBKuaTrZJ2v6uFDt2MskNVEez5RYhji86LW7GPF3eLQVFJuEZFA5n2gQCHZ90Tkeulp6S0wiQBwxSa9iltBHf04yGl/kXIglW9CKqqNI8dc9GMVhE4+eh7imZDOJMQWoT/TTneNarBfN5F8Rh1eAgwXatBgVs5PjY4isoKwhfSpWc918hqK9vjX+3JLxznbPs7oxRvwV3e0t0Mw1w+OA/H3i8uyQc6pVQ3rACQNVpTH8GOPRnZGnQ95rCudSnVcv2Ox7FCARq7G7/6ryA2Bms7lb3M16fndalR4eRVW+L9G73Bzb15O9NrNwmbJgySF6OZphQgUGaFcVbbqg+1yNPQIIuPP4pjS9MN9Kkhs0rTKjQigEou0804NP4yE9IwkTclJUYc73efDBA
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR04MB8549.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e2354531-11ee-4aa0-04c3-08ddc3f27b94
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jul 2025 22:53:57.8921
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +tm0Dn2VPF13wCnleGQcrE1LIsLaXKwPAVnXvCh23evwX2tUhOshmukjqckhme1iYG8giJH8QLxgtSmwUt9mXg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR04MB8422
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250715_150753_053012_E86E0B3C 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250715_155403_168419_DA598FEA 
+X-CRM114-Status: GOOD (  23.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,233 +214,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Manivannan,
+Hey David,
 
-kernel test robot noticed the following build warnings:
+Quick follow up, there's a new series from Mani now [1]. Which should
+have all the patches you need to test the reset slot functionality.
 
-[auto build test WARNING on 19272b37aa4f83ca52bdf9c16d5d81bdd1354494]
+Cheers,
+Wilfred
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Manivannan-Sadhasivam/PCI-ERR-Add-support-for-resetting-the-Root-Ports-in-a-platform-specific-way/20250715-160430
-base:   19272b37aa4f83ca52bdf9c16d5d81bdd1354494
-patch link:    https://lore.kernel.org/r/20250715-pci-port-reset-v5-2-26a5d278db40%40oss.qualcomm.com
-patch subject: [PATCH v5 2/4] PCI: host-common: Add link down handling for Root Ports
-config: i386-buildonly-randconfig-003-20250716 (https://download.01.org/0day-ci/archive/20250716/202507160557.oy6ZGYI7-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14+deb12u1) 12.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250716/202507160557.oy6ZGYI7-lkp@intel.com/reproduce)
+[1]
+https://lore.kernel.org/linux-pci/20250715-pci-port-reset-v6-0-6f9cce94e7bb@oss.qualcomm.com/
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202507160557.oy6ZGYI7-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/nfc/s3fwrn5/core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nfc/s3fwrn5/phy_common.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nfc/st-nci/core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nfc/st-nci/ndlc.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nfc/st-nci/se.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nfc/st-nci/vendor_cmds.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nfc/st21nfca/core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nfc/st21nfca/dep.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nfc/st21nfca/se.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nfc/st21nfca/vendor_cmds.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nfc/st95hf/spi.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/ntb/core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/ntb/msi.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nubus/bus.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nubus/nubus.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvdimm/btt.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvdimm/btt_devs.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvdimm/bus.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvdimm/claim.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvdimm/dax_devs.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvdimm/dimm_devs.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvdimm/namespace_devs.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvdimm/nd_perf.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvdimm/nd_virtio.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvdimm/pfn_devs.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvdimm/region_devs.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/common/auth.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/common/keyring.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/host/auth.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/host/constants.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/host/core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/host/fabrics.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/host/fault_inject.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/host/fc.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/host/multipath.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/host/sysfs.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/target/core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvme/target/fc.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/nvmem/layouts.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/address.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/base.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/cpu.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/device.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/dynamic.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/fdt.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/irq.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/module.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/of_kunit_helpers.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/of_reserved_mem.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/overlay.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/platform.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/property.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/of/resolver.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/parisc/eisa.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/parisc/gsc.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/parisc/iosapic.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/parisc/sba_iommu.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/parport/ieee1284.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/parport/ieee1284_ops.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/parport/parport_pc.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/parport/share.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/access.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/bus.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/cadence/pcie-cadence-ep.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/cadence/pcie-cadence-host.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/cadence/pcie-cadence.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/dwc/pcie-designware-ep.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/dwc/pcie-designware-host.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/dwc/pcie-designware.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/dwc/pcie-qcom-common.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/pci-host-common.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/pci-hyperv-intf.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/pcie-iproc-msi.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/pcie-iproc.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/pcie-rockchip.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/controller/plda/pcie-plda-host.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/devres.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/doe.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/ecam.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/endpoint/pci-ep-cfs.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/endpoint/pci-epc-core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/endpoint/pci-epc-mem.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/endpoint/pci-epf-core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/host-bridge.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/hotplug/acpi_pcihp.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/hotplug/acpiphp_core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/hotplug/cpci_hotplug_core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/hotplug/pci_hotplug_core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/hotplug/pnv_php.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/hotplug/rpaphp_core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/hotplug/rpaphp_slot.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/msi/irqdomain.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/of.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/p2pdma.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/pci-acpi.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/pci-bridge-emul.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/pci-driver.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/pci.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/pcie/aer.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/pcie/aspm.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
->> drivers/pci/pcie/err.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/pcie/portdrv.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/pcie/ptm.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/probe.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/remove.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/search.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/setup-bus.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/slot.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/switch/switchtec.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/tph.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pci/vgaarb.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/cistpl.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/cs.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/ds.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/max1600.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/pcmcia_cis.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/pcmcia_resource.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/pxa2xx_base.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/rsrc_iodyn.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/rsrc_mgr.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/rsrc_nonstatic.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/sa11xx_base.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pcmcia/soc_common.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/peci/cpu.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/peci/device.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/perf/arm_cspmu/arm_cspmu.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/perf/hisilicon/hisi_uncore_pmu.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/perf/riscv_pmu_sbi.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/phy/allwinner/phy-sun4i-usb.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/phy/tegra/xusb-tegra124.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/phy/tegra/xusb-tegra186.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/phy/tegra/xusb-tegra210.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/phy/tegra/xusb.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/phy/ti/phy-omap-control.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/phy/ti/phy-omap-usb2.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/devicetree.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/freescale/pinctrl-imx.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/freescale/pinctrl-scu.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/intel/pinctrl-intel.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/mediatek/mtk-eint.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/mediatek/pinctrl-paris.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/meson/pinctrl-meson-axg-pmx.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/meson/pinctrl-meson.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/meson/pinctrl-meson8-pmx.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/pinconf-generic.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/pinmux.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/pxa/pinctrl-pxa2xx.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/qcom/pinctrl-lpass-lpi.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/qcom/pinctrl-msm.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/realtek/pinctrl-rtd.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/sprd/pinctrl-sprd.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/starfive/pinctrl-starfive-jh7110.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pinctrl/tegra/pinctrl-tegra-xusb.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/arm64/huawei-gaokun-ec.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/arm64/lenovo-yoga-c630.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/chrome/cros_ec.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/chrome/cros_ec_lpc_mec.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/chrome/cros_ec_proto.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/chrome/cros_ec_sensorhub_ring.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/chrome/cros_usbpd_notify.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/chrome/wilco_ec/mailbox.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/cznic/turris-omnia-mcu-base.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/cznic/turris-signing-key.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/olpc/olpc-ec.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/surface/aggregator/bus.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/surface/aggregator/controller.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/surface/aggregator/core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/surface/aggregator/ssh_packet_layer.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/surface/surface_acpi_notify.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/amd/hsmp/hsmp.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/amd/hsmp/hwmon.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/amd/wbrf.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/asus-wmi.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/dell/dcdbas.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/dell/dell-rbtn.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/dell/dell-smbios-base.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/dell/dell-wmi-descriptor.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/dell/dell-wmi-privacy.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/firmware_attributes_class.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/ideapad-laptop.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/int3472/common.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/int3472/discrete.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/pmc/ssram_telemetry.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/pmt/class.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/pmt/telemetry.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/punit_ipc.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/speed_select_if/isst_if_common.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/speed_select_if/isst_tpmi_core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/telemetry/core.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/uncore-frequency/uncore-frequency-common.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/vsec.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel/vsec_tpmi.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel_ips.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/intel_scu_ipc.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/mxm-wmi.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/siemens/simatic-ipc-batt.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/platform/x86/wmi.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pmdomain/actions/owl-sps-helper.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pmdomain/rockchip/pm-domains.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-   drivers/pnp/card.c: warning: EXPORT_SYMBOL() is used, but #include <linux/export.h> is missing
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
+On Tue, 2025-07-15 at 13:09 +1000, Wilfred Mallawa wrote:
+> Hey David,
+> 
+> The series was dropped due to some changes that need to be added. I
+> believe Mani is working on it. However, you should still be able to
+> test things with the addition of the reset slot series [1], and the
+> support for the dwc-rockchip driver [2]. The reset slot code should
+> run
+> on a link down, so it may help your case. Worth a try :)
+> 
+> [1]
+> https://lore.kernel.org/linux-pci/20250508-pcie-reset-slot-v4-0-7050093e2b50@linaro.org/
+> 
+> [2]
+> https://lore.kernel.org/linux-pci/20250509-b4-pci_dwc_reset_support-v3-1-37e96b4692e7@wdc.com/
+> 
+> Regards,
+> Wilfred
+> On Fri, 2025-07-11 at 19:48 -0300, David Bremner wrote:
+> > 
+> > What is the current status of this patch (and the pre-requisites)
+> > with
+> > respect to mainline linux?
+> > 
+> > I'm wondering if it might be relevent to the problems [1] I've been
+> > having with rk3588 resume, but it isn't clear to me what I need to
+> > apply
+> > to e.g. v6.16~rc1 to test it.
+> > 
+> > [1]: https://www.cs.unb.ca/~bremner/blog/posts/hibernate-pocket-4/
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
