@@ -4,57 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE678C83F37
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jul 2025 12:58:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AADCC83F27
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jul 2025 14:34:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T/Hl22LbNUg4nhR8WjOP++rTUn9ZVs0IBqZOAXd44Vo=; b=wwZPFERneqsWKZ
-	fvS0fIZQqfdHWJfoXltPBmYci70MMlsde2wTV6xLUGprh/MGUq4XoZ0tsW5VVv06BBPHjxgJQikHG
-	deb67wnMhBElB/iqem0fXJt1cpJkFvdx1sKcBmbRMTEwX4LLuEdwp+eeyzoxU1oL1i7ALvemXx6fb
-	NAX23yT6xZFGcQFFIS/vg+xNhVaFiZWwmgo5UE+y5+4nKHHlkKZGj3EIIqJJ9aQ3x13wZghs1raAp
-	l5BnYWYzhxmemmrzBlU2U+r0XGv8dx7xXMediSPM8C+q5QbA/VMnQyivipZS5Ys2PuYUySQKPB8K9
-	6SNAZWxgXigRnNbD1ZpQ==;
+	List-Owner; bh=DHH3wCHCw92SeBTM27LaG0vM4qJMC19qmm7YieXHvA4=; b=c8avyQXnEY5yMZ
+	6BOeQTuqyTwf9QOgMnHfROXp27s/+qmLEeMvuc0GE+5o0ZDK6ssvDQD6oyGO9Vjhk4ZBqPl5XldMJ
+	gyGYfcb/oVdm8BXVP138NgY8GJnjEQB7Wq3MrfFMI2/aBDk+rxsYpqm2RbtuO0+66Gg+n7XhXv5fo
+	sygV52X8EhMabi6EYEjXaGQaqIl68nEGgYVms/X5P4Zo3ld39Dqr4PjA3kixCQpNG9CTgOzO4g8f0
+	erOW6TwS+UqqFHHHqvsw+vD9w4EosEoSLRj9aIbweQbk9gR1VZ1YYwuPAPHeawIvUytfqCvvq28LN
+	0OiyR22CvAo69j0WWPxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uc1iK-00000007j2y-2UKr;
-	Wed, 16 Jul 2025 12:58:24 +0000
-Received: from phubs.tethera.net ([2607:5300:60:3a9d::1])
+	id 1uc3DU-00000007v7w-1vR5;
+	Wed, 16 Jul 2025 14:34:40 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uc1fp-00000007idH-1Pqj;
-	Wed, 16 Jul 2025 12:55:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tethera.net;
- i=@tethera.net; q=dns/txt; s=2024; t=1752670540; h=from : to : cc :
- subject : in-reply-to : references : date : message-id : mime-version
- : content-type : from;
- bh=Ia9GyGbk8B9rjMX/RPITkTLboZkRzYcVoZFfzz+/9ho=;
- b=MR9kmxwYKgoB6qvgTWe3XASPi1F6c62HiYwIBJY1Dvg0Tk2YovQguaaJ7sFv+f/USkCV+
- cnyR39/CZ5fvL6Z5D52jKrP0gEQug6JbX9TK/AuKThrXmmA3EEe2V3+MUqdqukW4EkQ+C5H
- BKV4bFVRuSJQ/V8TH2/H/B0bv4LHwUMjYQchBjYu6TOQJaPnjm+I2DhXwlZGFyZotwqTyto
- otGcMWlzXuUmLOGrhs0ntxhQwsNmfo4NQ0s9a+YqSs/DN4jccWFFGyfHWtdoef6hVd5tOCJ
- fZz2v1+IitN+g9Q32K/amKtTL+C8yiEOLWmB/rqs9tFqoFTVM2fBsL6+eE+Q==
-Received: from tethera.net (fctnnbsc51w-159-2-211-58.dhcp-dynamic.fibreop.nb.bellaliant.net [159.2.211.58])
-	by phubs.tethera.net (Postfix) with ESMTPS id 9AD4118006D;
-	Wed, 16 Jul 2025 09:55:39 -0300 (ADT)
-Received: (nullmailer pid 2675178 invoked by uid 1000);
-	Wed, 16 Jul 2025 12:55:39 -0000
-From: David Bremner <david@tethera.net>
-To: Niklas Cassel <nks@flawful.org>
-Cc: wilfred.opensource@gmail.com, alistair@alistair23.me, bhelgaas@google.com, cassel@kernel.org, dlemoal@kernel.org, heiko@sntech.de, kw@linux.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, lpieralisi@kernel.org, mani@kernel.org, p.zabel@pengutronix.de, robh@kernel.org, wilfred.mallawa@wdc.com, Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Add support for slot reset on link
- down event
-In-Reply-To: <aHSs6ZF8rQIqEOyR@flawful.org>
-References: <20250509-b4-pci_dwc_reset_support-v3-1-37e96b4692e7@wdc.com>
- <87cya6wdhc.fsf@tethera.net> <aHSs6ZF8rQIqEOyR@flawful.org>
-Date: Wed, 16 Jul 2025 09:55:39 -0300
-Message-ID: <87zfd41eic.fsf@tethera.net>
+	id 1uc39W-00000007uSD-0HCN;
+	Wed, 16 Jul 2025 14:30:35 +0000
+Received: from localhost.localdomain (unknown [119.122.214.181])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1c3b8f49f;
+	Wed, 16 Jul 2025 22:30:22 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: alchark@gmail.com
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	jonas@kwiboo.se,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	ziyao@disroot.org
+Subject: Re: [PATCH v2 1/1] arm64: dts: rockchip: rk3528: Add CPU frequency scaling support
+Date: Wed, 16 Jul 2025 22:30:16 +0800
+Message-Id: <20250716143016.620430-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <CABjd4YzCL3U9yf65FUBE6EMqFjZHosULU7fUcjVo9VJ_=Ov+Dw@mail.gmail.com>
+References: <CABjd4YzCL3U9yf65FUBE6EMqFjZHosULU7fUcjVo9VJ_=Ov+Dw@mail.gmail.com>
 MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaSk9CVhpJT0lLSUgdHk5PGVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VKQ0pZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE5VSktLVU
+	pCS0tZBg++
+X-HM-Tid: 0a9813a4c74803a2kunm62c672118974a5
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODI6Hgw*EzExDQ1LVk0MNTM8
+	DTxPCz5VSlVKTE5JTUxNSUlIQ0pNVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	QlVKSUlVSUpPVUpDSllXWQgBWUFITk9LNwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250716_055549_569169_CC1536AA 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20250716_073034_302473_70256A7E 
+X-CRM114-Status: GOOD (  19.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,21 +76,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Niklas Cassel <nks@flawful.org> writes:
+Hi,
 
+> > There has often been the argument that selecting a frequency that has
+> > the same voltage as a faster frequency does not save any power.
+> >
+> > Hence I remember that we dropped slower frequencies on other socs
+> > that share the same voltage with a higher frequency.
 
-> That said, if you have problems with suspend/resume, perhaps you want to
-> try this patch instead:
-> https://lore.kernel.org/linux-pci/1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com/
+Sorry, but soc.dtsi on rockchip doesn't seem to have dropped slower
+frequencies with the same voltage?
+
+rk3562.dtsi: CPU 408MHz -  816MHz 825mV | GPU 300MHz - 600MHz 825mV
+rk3566.dtsi: CPU 408MHz -  816MHz 850mV | GPU 200MHz - 400MHz 850mV
+rk3576.dtsi: CPU 408MHz - 1200MHz 700mV | GPU 300MHz - 600MHz 700mV
+
+> I.e. here the mainline kernel will always choose opp-1008000000 as
+> long as the regulator voltage is 875000 uV, unless explicitly
+> prevented from doing so by userspace. Whereas the BSP kernel [1] would
+> request different frequencies for different silicon, e.g.
+> opp-1200000000 for a silicon specimen with a leakage value of L4 and
+> opp-1416000000 for a silicon specimen with a leakage value of L8 - all
+> for the same regulator voltage of 875000 uV.
 >
-> I don't know if Shawn intends to send a new version or not.
+> So my 2 cents would be: no added benefit in having "lower frequency,
+> same voltage" OPPs defined here until we implement an OPP driver
+> reading the NVMEM programmed leakage values and selecting different
+> *-L* voltages for each OPP depending on those. Once there is this
+> support in the drivers, those OPPs can be added together with
+> leakage-specific voltages (opp-microvolt-L0..11).
 
-Thanks for the suggestion. In fact the hardware vendor (mnt research)
-ships a version of this patch with a 6.15.x kernel. An updated version
-would be helpful, as the previous version(s) no longer apply (with git
-am). Failing that I can have a go at manually rebasing the patch.
+I assume this has nothing to do with the NVMEM driver?
 
-d
+From [1], we can see that the voltage used by the same board from
+408MHz to 1008MHz is the same. The actual test is also like this:
+
+The first  board: CPU 408MHz - 1008MHz both 850mV | 1200MHz 862mV
+The second board: CPU 408MHz - 1008MHz both 875mV | 1200MHz 875mV
+
+[1] https://github.com/rockchip-linux/kernel/blob/develop-5.10/arch/arm64/boot/dts/rockchip/rk3528.dtsi#L227-L271
+
+> Right now OPP values with frequencies lower than 1008000000 won't be
+> selected by any of the energy-aware cpufreq governors anyway, because
+> their voltages are the same. Exercise for the reader: try to convince
+> e.g. the "schedutil" governor to select anything below 1008000000
+> without touching
+> /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq :) This may
+> change if OPP tuning logic is implemented such as in [2]: that will
+> try and find the _voltage_ resulting in PVTPLL providing a frequency
+> closest to what cpufreq requested, and use that for the in-memory OPP
+> table instead of what was provided by the DTS.
+
+Thanks for the clarification, so should we remove 408MHz, 600MHz and
+816MHz from the opp-table? Is this also the case with GPU's opp-table?
+
+Thanks,
+Chukun
+
+--
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
