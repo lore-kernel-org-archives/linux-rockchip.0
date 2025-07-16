@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A548C83F2D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jul 2025 07:48:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2EA3C83F1B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jul 2025 07:48:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s31WOInYT09x1DQCoLcgDPA3PVDGldI7qzct8qU1orU=; b=aUdBEQufJBZMCu
-	954TionXOw/VHGAYnYQwFZ5GuWHoZL/kgALpKMgsJ95c4AXTSy/YwnHSXNyA6GwbNOG2IRSV4Ygig
-	qODrJklkFf6KXNGYl5VTTj/aXAtWKPPGEoGeJlMjmxUfktDe7uaPAGAiisQFNoT/aw8r9jwFTxixp
-	RiRhOy/yU+fpsTKYAUnEDzZX3gyzr9lope/D3pf1hwdTWvBYpMwoDiHDtOtqnVJV9g4OSd4Kk7URS
-	pR23yQenvBlrtPPuWQtC5AvepoCL4Exsc2VG9qMPp9O7vLfD533dFA32PVQ2+V8YB7p7y8jlUs0FC
-	EqAZTQo+AvITgaeJ07CA==;
+	List-Owner; bh=hP66bJOgYQ2ps5Owdw1ZFr8tSF/5+Xqhuw6GOO56Z38=; b=E+cH0eD0k8qucI
+	wxVBOBgq7f2sJCPWV51Le3GABec5l/OhxCyowbRORkXo1FrTsaHtZ3w897WFOXSU4sTLfIZRcJj8w
+	eas1ibJXdDQDV4fNr+bQ1kvCV1VLFjqGRgaaklYIaU9r2UuNMrcCZQ3lWZ7xL94i8g1dKv0zeibJo
+	wQmkKQHGC5QTL3C574Fj1MWheEyK6+7ka/UJWX7SZ78gF9ozlR4+TPnYvtYrfoFOFG2j9LaQGcLT/
+	dLBHWAP/AlHbqldZRgkAruY3pA3l2W9pTFSAomDnQzWC4GgpUaaApZ/AG0GLX+Q00NzAdEfSMiern
+	Ra4Qj24yVkqEbL85TWiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubws2-000000073V8-0IrF;
-	Wed, 16 Jul 2025 07:48:06 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ubws0-000000073TN-0iRL;
+	Wed, 16 Jul 2025 07:48:04 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubwmA-000000072mB-1ZRg;
-	Wed, 16 Jul 2025 07:42:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 588435C6581;
-	Wed, 16 Jul 2025 07:42:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A0D5C4CEF0;
-	Wed, 16 Jul 2025 07:41:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752651721;
-	bh=zdIsE8zMh+Q9b21Tzn+0aEdVw4+F6kLYzxIztPzl06U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MebXlxNvdo6y4CMS/mqxoQ2xFLxVMUEkAK0nDRI0znnVgjscwpAL6eKw1ElxcNis5
-	 pLFwQ0fTbKA0C3pg4H1dXXyd2CgXFKAmwJY0D3nZ9rQsTE++t4819Eh7/xs/UQ21Wp
-	 mF/RS3IztXa6/ELVGb+PZyJU5a+lbXiGZCXzR8TjQxHROo1+8SKuQe/ucCZa0TM/DX
-	 QORRzVFEHTsMl0upK+DPMk+xfPXU/C2a8Zkk7qxy4fgB78RtKf3fKeqk5WT/YvI8sS
-	 Na/gdoRKRqq8+/pzlFC+zCHX5N/rjrZD/g2HApXyRkgVKadQGvaxU1KDUfYrPOtZlq
-	 0zkTAF5CD23ZA==
-Date: Wed, 16 Jul 2025 09:41:54 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
-	heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com,
-	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v5 0/2] Configure root port MPS during host probing
-Message-ID: <aHdXwr-UZz6jZX3f@ryzen>
-References: <20250620155507.1022099-1-18255117159@163.com>
+	id 1ubwkc-000000072Oy-27hS;
+	Wed, 16 Jul 2025 07:40:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=qgtjBGVAZ1tS5fJXKd4+bhI2PQYUrEH4Cz/qfvC/2po=; b=FTxmbPG1x9gKKjsM5WAh+rNIRC
+	/+YNAwSYKFOaLt++uJ4akLU4L1U3GETfMY892VjCy5ZAPJnsrTOxzSQtdS2Npx5vrgDaI+q2gfISo
+	FaSHyV2RSkf2RiUvTVOgEFrZKhcu6NXSPclXeHBTz793LdTFZqCMt3lVmXh8gVkH2Y9keELpbryPl
+	CZ8aDjoPcXgtHDjDNDuGI7sPMsDiQz0cDk4gyULnFp1hcUNUtnyUDulCnWUUWYbmuzcqXsl2lz2z8
+	UFk5YsvH+HJU7Co075/zAc39Up67VtRcLRfZlG6I+JYhQdESBQ4dEJG0WcGPM0E4hvxo/GOw83Sqw
+	pXOdRX6A==;
+Received: from i53875a74.versanet.de ([83.135.90.116] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1ubwjz-0008Vz-1P; Wed, 16 Jul 2025 09:39:47 +0200
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Chaoyi Chen <kernel@airkyi.com>, Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Yubing Zhang <yubing.zhang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Amit Sunil Dhamne <amitsd@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+ Diederik de Haas <didi.debian@cknow.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH 3/5] phy: rockchip: phy-rockchip-typec: Add support for Type-C
+ TCPM
+Date: Wed, 16 Jul 2025 09:39:48 +0200
+Message-ID: <23651445.EfDdHjke4D@diego>
+In-Reply-To: <c84cb838-e6e7-4ed0-8d12-67b82f85ff28@rock-chips.com>
+References: <20250715112456.101-1-kernel@airkyi.com>
+ <eqb5m22om6bx2ypjtnlwdjmgfyycpmgrlvro34xwlwjj4j2jeq@mrarg36wetp6>
+ <c84cb838-e6e7-4ed0-8d12-67b82f85ff28@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250620155507.1022099-1-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250716_004202_456776_0E1A9903 
-X-CRM114-Status: UNSURE (   8.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250716_004026_568495_8AEC0ED4 
+X-CRM114-Status: GOOD (  21.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,36 +82,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 20, 2025 at 11:55:05PM +0800, Hans Zhang wrote:
-(snip)
-> ---
-> 
-> Hans Zhang (2):
->   PCI: Configure root port MPS during host probing
->   PCI: dwc: Remove redundant MPS configuration
-> 
->  drivers/pci/controller/dwc/pci-meson.c | 17 -----------------
->  drivers/pci/probe.c                    | 10 ++++++++++
->  2 files changed, 10 insertions(+), 17 deletions(-)
-> 
-> 
-> base-commit: 19272b37aa4f83ca52bdf9c16d5d81bdd1354494
-> -- 
-> 2.25.1
-> 
-
-Any chance of this series getting picked up?
-
-
-Kind regards,
-Niklas
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTWl0dHdvY2gsIDE2LiBKdWxpIDIwMjUsIDAzOjU2OjI3IE1pdHRlbGV1cm9ww6Rpc2NoZSBT
+b21tZXJ6ZWl0IHNjaHJpZWIgQ2hhb3lpIENoZW46Cj4gSGkgRG1pdHJ5LAo+IAo+IE9uIDIwMjUv
+Ny8xNSAyMDowNSwgRG1pdHJ5IEJhcnlzaGtvdiB3cm90ZToKPiA+IE9uIFR1ZSwgSnVsIDE1LCAy
+MDI1IGF0IDA3OjI0OjU0UE0gKzA4MDAsIENoYW95aSBDaGVuIHdyb3RlOgo+ID4+IEZyb206IENo
+YW95aSBDaGVuIDxjaGFveWkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiA+Pgo+ID4+IFRoaXMgcGF0
+Y2ggYWRkIHN1cHBvcnQgZm9yIFR5cGUtQyBQb3J0IENvbnRyb2xsZXIgTWFuYWdlci4KPiA+PiBU
+aGUgZXh0Y29uIGRldmljZSBzaG91bGQgc3RpbGwgYmUgc3VwcG9ydGVkLgo+ID4+Cj4gPj4gU2ln
+bmVkLW9mZi1ieTogQ2hhb3lpIENoZW4gPGNoYW95aS5jaGVuQHJvY2stY2hpcHMuY29tPgo+ID4+
+IC0tLQo+ID4+ICAgZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXR5cGVjLmMgfCAz
+MzUgKysrKysrKysrKysrKysrKysrKystLQo+ID4+ICAgMSBmaWxlIGNoYW5nZWQsIDMxOSBpbnNl
+cnRpb25zKCspLCAxNiBkZWxldGlvbnMoLSkKPiA+IFBsZWFzZSBrZWVwIFRDUE0gaW1wbGVtZW50
+YXRpb24gdW5kZXIgZHJpdmVycy91c2IvdHlwZWMvdGNwbS8gLiBDcmVhdGUKPiA+IGFuIGF1eCBk
+ZXZpY2UgYW5kIHdyaXRlIGFuIGF1eCBkcml2ZXIgZm9yIHRoZSBUQ1BNIHBhcnQuCj4gCj4gU29y
+cnksIHRoZSBjb21taXQgbWVzc2FnZXMgbWF5IG5vdCBiZSBkZXNjcmliZWQgYWNjdXJhdGVseSBl
+bm91Z2guCj4gCj4gVGhpcyBwYXRjaCBhZGRzIG11eC9zd2l0Y2ggb3BlcmF0aW9ucyB0byB0aGUg
+UEhZIGRyaXZlciB0byBpbXByb3ZlIAo+IGNvbW11bmljYXRpb24gd2l0aCB0aGUgVENQTSBmcmFt
+ZXdvcmsuIFNpbmNlIHRoaXMgUEhZIGlzIGEgY29tYm8gVVNCL0RQIAo+IFBIWSwgaXQgcmVxdWly
+ZXMgY29uZmlndXJhdGlvbiBjaGFuZ2VzIHRvIHRoZSBQSFkgbGFuZXMgYmFzZWQgb24gdGhlIAo+
+IFVTQi1DICBwbHVnIG9yaWVudGF0aW9uIChDQyBsb2dpYyksIHNpbWlsYXIgdG8gdGhlIGV4aXN0
+aW5nIGV4dGNvbiAKPiBtZWNoYW5pc20gaW1wbGVtZW50YXRpb24uIE9mIGNvdXJzZSwgdGhlIG9y
+aWdpbmFsIGV4dGNvbiBmdW5jdGlvbmFsaXR5IAo+IHdpbGwgcmVtYWluIGZ1bGx5IGNvbXBhdGli
+bGUuCgphbmQgbG9va2luZyBhdCBvdGhlciB1c2VycyBvZiBmb3IgZXhhbXBsZSB0eXBlY19zd2l0
+Y2hfcmVnaXN0ZXIoKSBbMF0sCnRoZXJlIGFyZSBhIG51bWJlciBvZiB0aGVtIGFscmVhZHkgdXNl
+ZCBpbiBvdGhlciBwaHkgZHJpdmVycyBhY2Nyb3NzCkZyZWVzY2FsZSwgUXVhbGNvbW0sIFJvY2tj
+aGlwIGFuZCBTYW1zdW5nLgoKR3JvdXBpbmcgdGhlIG11eC9zd2l0Y2ggd2l0aCB0aGUgcGh5IGRy
+aXZlciBhcyB0aGlzIHBhdGNoIGRvZXMsIG1ha2VzCndheSBtb3JlIHNlbnNlIHRoYW4gdG8gaW50
+cm9kdWNlIGFkZGl0aW9uYWwgaW5mcmFzdHJ1dHVyZS4KCgpbMF0gaHR0cHM6Ly9lbGl4aXIuYm9v
+dGxpbi5jb20vbGludXgvdjYuMTUuNi9BL2lkZW50L3R5cGVjX3N3aXRjaF9yZWdpc3RlcgoKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
