@@ -4,59 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AD9AC83F27
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jul 2025 07:12:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A548C83F2D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jul 2025 07:48:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1TVKS+FWTY9NC1Smx4eIhCeSebYu38zsChhm37JVZLk=; b=EurF7s5f3Wqv/h
-	K75muv2fOPeztdtxiui9oFxH8UYu0K20mRb0yYkavvTIu2uTZIpe8Zjbv46R28WRkVppEkvR4j1GA
-	ld1gV3dXxwXDuDyURvzfodmcGKFdPyAItueYiLpf/JS4z5UAHNIBcEhVzSxdIOmmsHjyABtN/L0Sm
-	sQN9Vqa1kOugn7RPs/XFEf6V+2ergv0QhprlWDqJtrmNOveUFWuaCowTJXZbYJku+ELYszDTTqqC4
-	6A1Kj/Fek3dRaNbSPxgFYbMGdhzBRWQ8lbR4j4WV3xiPMbU/obz4CmabA7G2HESF7o1VnHtNDrR94
-	KZSqCQ76iDokzQeo394A==;
+	List-Owner; bh=s31WOInYT09x1DQCoLcgDPA3PVDGldI7qzct8qU1orU=; b=aUdBEQufJBZMCu
+	954TionXOw/VHGAYnYQwFZ5GuWHoZL/kgALpKMgsJ95c4AXTSy/YwnHSXNyA6GwbNOG2IRSV4Ygig
+	qODrJklkFf6KXNGYl5VTTj/aXAtWKPPGEoGeJlMjmxUfktDe7uaPAGAiisQFNoT/aw8r9jwFTxixp
+	RiRhOy/yU+fpsTKYAUnEDzZX3gyzr9lope/D3pf1hwdTWvBYpMwoDiHDtOtqnVJV9g4OSd4Kk7URS
+	pR23yQenvBlrtPPuWQtC5AvepoCL4Exsc2VG9qMPp9O7vLfD533dFA32PVQ2+V8YB7p7y8jlUs0FC
+	EqAZTQo+AvITgaeJ07CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubwJc-00000006yLz-3zkh;
-	Wed, 16 Jul 2025 07:12:32 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1ubws2-000000073V8-0IrF;
+	Wed, 16 Jul 2025 07:48:06 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubwCy-00000006xkb-2Yl0;
-	Wed, 16 Jul 2025 07:05:42 +0000
-Received: from localhost.localdomain (unknown [119.122.214.181])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1c2e61632;
-	Wed, 16 Jul 2025 15:00:32 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: jonas@kwiboo.se
-Cc: amadeus@jmu.edu.cn,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	ziyao@disroot.org
-Subject: Re: [PATCH v3 4/6] arm64: dts: rockchip: Add ArmSoM Sige1
-Date: Wed, 16 Jul 2025 15:00:25 +0800
-Message-Id: <20250716070025.236160-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <9050b4fe-ce69-4f93-9093-5461a6aa052f@kwiboo.se>
-References: <9050b4fe-ce69-4f93-9093-5461a6aa052f@kwiboo.se>
+	id 1ubwmA-000000072mB-1ZRg;
+	Wed, 16 Jul 2025 07:42:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 588435C6581;
+	Wed, 16 Jul 2025 07:42:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A0D5C4CEF0;
+	Wed, 16 Jul 2025 07:41:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752651721;
+	bh=zdIsE8zMh+Q9b21Tzn+0aEdVw4+F6kLYzxIztPzl06U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MebXlxNvdo6y4CMS/mqxoQ2xFLxVMUEkAK0nDRI0znnVgjscwpAL6eKw1ElxcNis5
+	 pLFwQ0fTbKA0C3pg4H1dXXyd2CgXFKAmwJY0D3nZ9rQsTE++t4819Eh7/xs/UQ21Wp
+	 mF/RS3IztXa6/ELVGb+PZyJU5a+lbXiGZCXzR8TjQxHROo1+8SKuQe/ucCZa0TM/DX
+	 QORRzVFEHTsMl0upK+DPMk+xfPXU/C2a8Zkk7qxy4fgB78RtKf3fKeqk5WT/YvI8sS
+	 Na/gdoRKRqq8+/pzlFC+zCHX5N/rjrZD/g2HApXyRkgVKadQGvaxU1KDUfYrPOtZlq
+	 0zkTAF5CD23ZA==
+Date: Wed, 16 Jul 2025 09:41:54 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
+	heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com,
+	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
+	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
+	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 0/2] Configure root port MPS during host probing
+Message-ID: <aHdXwr-UZz6jZX3f@ryzen>
+References: <20250620155507.1022099-1-18255117159@163.com>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZGRhJVh0aHRlPS0lOTR5MGlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VKQ0pZV1kWGg8SFR0UWUFZT0tIVUpLSUJNS0pVSktLVU
-	tZBg++
-X-HM-Tid: 0a981208f05503a2kunmaae0551a86f5ff
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6N1E6TRw5CDE6Sg8tLUJLS0lJ
-	ORkKCzZVSlVKTE5JTU9CSUhPT09LVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	QlVKSUlVSUpPVUpDSllXWQgBWUFKS09DNwY+
+Content-Disposition: inline
+In-Reply-To: <20250620155507.1022099-1-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250716_000540_802393_CEE4B3F9 
-X-CRM114-Status: UNSURE (   6.74  )
+X-CRM114-CacheID: sfid-20250716_004202_456776_0E1A9903 
+X-CRM114-Status: UNSURE (   8.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,24 +78,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Fri, Jun 20, 2025 at 11:55:05PM +0800, Hans Zhang wrote:
+(snip)
+> ---
+> 
+> Hans Zhang (2):
+>   PCI: Configure root port MPS during host probing
+>   PCI: dwc: Remove redundant MPS configuration
+> 
+>  drivers/pci/controller/dwc/pci-meson.c | 17 -----------------
+>  drivers/pci/probe.c                    | 10 ++++++++++
+>  2 files changed, 10 insertions(+), 17 deletions(-)
+> 
+> 
+> base-commit: 19272b37aa4f83ca52bdf9c16d5d81bdd1354494
+> -- 
+> 2.25.1
+> 
 
-> It mention 'not used in combination with eMMC or SDIO', yet I see
-> multiple boards where disable-wp is currently used with eMMC and SDIO.
+Any chance of this series getting picked up?
 
-This seems to be a DT bug introduced from the bsp kernel.
 
-> Do you have anything else to remark before I send a v4 with this prop
-> removed?
-
-No further questions, thanks for your work.
-
-Thanks,
-Chukun
-
---
-2.25.1
-
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
