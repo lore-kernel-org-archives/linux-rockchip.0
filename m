@@ -4,63 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DCF5C83F27
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jul 2025 23:22:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68A72C83F17
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jul 2025 01:16:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hMQHEX57JqmWetfQ7MPigFip6d8N/9dJ2fWZovw1uSM=; b=lJwQ90pdCqnzy5
-	XEJqqS4iYoqPp9Sj6VDrZfXekiPpjbPLcasJsqapZuztAk953QqAJoJKFR4zZVstn5Rz2acXv8i9J
-	onuPuXt1P40VQB83GIPMNihEbfmi52KDPJgxNsQqKFK2SnLWx545kHYdcrFM+Flp8ka2zCU6m3emJ
-	zX64U+WgK1fKP/XOJbdTtPZhJfJNgGgljXg72e1ceyuo7QXdgZSXI4I2LPO9yrquCm0U9LbA51CI7
-	y4E9nNf1HRcxftk0O/vPgAuaileBF3VRlcfBF40VHpEP6jSAmMuhnXt3vqCgoWJFNY0mt3cDr+9aJ
-	tYNeU+xVPQlK0/Fg7rvA==;
+	List-Owner; bh=pOzeiM8RfqrRapc5/kZLFEsJx+ruzmGoTiFxqA+Y/1c=; b=0jacjEwDe3tT7Y
+	tXa8muLyIOOyLtcEew74zkW3U3+2MG+uBgfA3zkTYbq4/eUrHcQaJyrKS26dOn21Tt+RFwKLArGGr
+	0kF19SwFVlw6W/nkTbdT3hQKatcfWvw8M50tXsAwn84YCtBCIPLBlXkpvJWKN+j+J+A41EssXoyiI
+	x6FSx48Xp6kPQI1XhGO/TbGrERRoCZlCPqrCvgH05XcvErjOJ3SKRcX1wSlhetoHJu21kvf/j93kP
+	N5WNWhDeOLRe27AQ06JBFLbUKJVJtwwHNV0oOD35EnDODlqlCuYAJc8o63OFG58PNdY+IxtXcjwQX
+	JLM3As3byF6zCj4XBpPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uboyo-00000006OiS-1tBV;
-	Tue, 15 Jul 2025 23:22:34 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ubqkn-00000006WuB-2bz6;
+	Wed, 16 Jul 2025 01:16:13 +0000
+Received: from mail-m15580.qiye.163.com ([101.71.155.80])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubouc-00000006O6v-0dNA;
-	Tue, 15 Jul 2025 23:18:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5607D5C606C;
-	Tue, 15 Jul 2025 23:18:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FDDDC4CEE3;
-	Tue, 15 Jul 2025 23:18:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752621493;
-	bh=AUahzZtoXc5ty3fkQO9PKsTZSnvoat888MImzDyfSaU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RxebOClDE6XG13qHrmUoM/32uqXeyE68HU7kXpwgYwSgjCaQdOUtfzfzf2a6Xl4ia
-	 7beFC/fw/a9gkJ1bLE+iJaKDUxb98U1I98V8pvfYJh1npd7qY5wvhBSN7XBG40ZB9G
-	 sAf1oEUDazh+zUz1qEpgQijFmtaV5ne4YyPAB9qN+ZlQkaUsaoJCoN+b3hFxouKQ2R
-	 PDKqUGDaWouD6jY1UfF3kPyqW0+V/vm5O2XGEELUgGlZmGQasqZMuO/7gIYr79oiw0
-	 FSLW9E7D7OnaNQbbo80UdDeXEKg6eQqcild99OPbCztgrszE/KYR7TNNlNzT8bW3XB
-	 HJziJTSqD9dag==
-Message-ID: <5a7f47a7-c81e-4f70-9391-0dd1e3aa9f65@kernel.org>
-Date: Wed, 16 Jul 2025 08:18:10 +0900
+	id 1ubqkh-00000006WtL-47JV;
+	Wed, 16 Jul 2025 01:16:12 +0000
+Received: from [127.0.0.1] (gy-adaptive-ssl-proxy-2-entmail-virt205.gy.ntes [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1c20d7125;
+	Wed, 16 Jul 2025 09:15:47 +0800 (GMT+08:00)
+Message-ID: <3a27b7f6-a614-49b4-85dd-5ecba1fbbf70@rock-chips.com>
+Date: Wed, 16 Jul 2025 09:13:19 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] phy: rockchip-snps-pcie3: add support for
- rockchip,phy-ref-use-pad
-To: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Cc: rick.wertenbroek@heig-vd.ch, alberto.dassatti@heig-vd.ch,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org,
+Subject: Re: [PATCH 1/5] dt-bindings: connector: Add displayport connector for
+ hotplug notify
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Chaoyi Chen <kernel@airkyi.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Yubing Zhang <yubing.zhang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Amit Sunil Dhamne <amitsd@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+ Diederik de Haas <didi.debian@cknow.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250715105820.4037272-1-rick.wertenbroek@gmail.com>
-Content-Language: en-US
-From: Damien Le Moal <dlemoal@kernel.org>
-Organization: Western Digital Research
-In-Reply-To: <20250715105820.4037272-1-rick.wertenbroek@gmail.com>
+ dri-devel@lists.freedesktop.org
+References: <20250715112456.101-1-kernel@airkyi.com>
+ <20250715112456.101-2-kernel@airkyi.com>
+ <r7b4y74lr5qwejkejquosaar75mthjvjfy4pp6bbl4pgte6cq4@n3gwjolsaw2j>
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <r7b4y74lr5qwejkejquosaar75mthjvjfy4pp6bbl4pgte6cq4@n3gwjolsaw2j>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkxOSVZISklNSh0dHkIYGk9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
+	9VSktLVUpCS0tZBg++
+X-HM-Tid: 0a9810cd504203abkunm840d694a1422a31
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PDo6KCo4ITE1QgkzSBFDOBBD
+	KD4wCg1VSlVKTE5JTUlDTk5MT0tLVTMWGhIXVRgTGhQCElUYEx4VOwkUGBBWGBMSCwhVGBQWRVlX
+	WRILWUFZTkNVSUlVTFVKSk9ZV1kIAVlBSU5ITTcG
+DKIM-Signature: a=rsa-sha256;
+	b=QErOC5UoqyDYWY6i+q1Kg2Q45UWi3O2IVyJcMA1U/7LcGrlGgWVB09uVvIPfrOYKEcsJjjpCUbjXms9J4bcz4KxHOo2ErvusAHAuHfIyYmuk3PwbGw6m0m6hCQLlKA6SYkIKMj/7nPuL8sgKuV/dILnY4vDV16XIqVGUvBs+5u4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=8tvZ89+8JoZnHFukEKSRMTvjOkm6vgN7ue8AXAXJ2pE=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250715_161814_277774_C9874716 
-X-CRM114-Status: GOOD (  28.96  )
+X-CRM114-CacheID: sfid-20250715_181608_526221_BE30D924 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,148 +87,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 7/15/25 19:58, Rick Wertenbroek wrote:
->>From the RK3588 Technical Reference Manual, Part1,
-> section 6.19 PCIe3PHY_GRF Register Description: "ref_use_pad"
-> 
-> "Select reference clock connected to ref_pad_clk_p/ref_pad_clk_m.
-> Selects the external ref_pad_clk_p and ref_pad_clk_m inputs as the
-> reference clock source when asserted. When de-asserted, ref_alt_clk_p
-> and ref_alt_clk_m are the sources of the reference clock."
-> 
-> The hardware reset value for this field is 0x1 (enabled).
-> Note that this register field is only available on RK3588, not on RK3568.
-> 
-> Add support for the device tree property rockchip,phy-ref-use-pad,
-> such that the PCIe PHY can be used on boards where there is no PCIe
-> reference clock generated or connected to the external pad, by setting
-> this property to 0 so that the internal clock is used.
-> 
-> DT bindings for internal clocks are CLK_PHY0_REF_ALT_P/M and
-> CLK_PHY1_REF_ALT_P/M and clock rate should be set to 100MHz in
-> the RK3588 cru clock controller (PLL_PPLL).
-> 
-> Example DT overlay where PHY0 uses internal clock (the first clock of
-> the cru (PLL_PPLL) must be set to 100MHz, other values are copied from
-> rk3588-base.dtsi) and PHY1 uses the external pad (the default):
-> 
-> ---
-> &cru {
->         assigned-clock-rates =
->                 <100000000>, <786432000>,
->                 <850000000>, <1188000000>,
->                 <702000000>,
->                 <400000000>, <500000000>,
->                 <800000000>, <100000000>,
->                 <400000000>, <100000000>,
->                 <200000000>, <500000000>,
->                 <375000000>, <150000000>,
->                 <200000000>;
-> };
-> 
-> &pcie30phy {
->         rockchip,rx-common-refclk-mode = <0 0 1 1>;
->         rockchip,phy-ref-use-pad = <0 1>;
->         clocks = <&cru PCLK_PCIE_COMBO_PIPE_PHY>, <&cru CLK_PHY0_REF_ALT_P>,
->                          <&cru CLK_PHY0_REF_ALT_M>, <&cru CLK_PHY1_REF_ALT_P>,
->                          <&cru CLK_PHY1_REF_ALT_M>;
->         clock-names = "pclk", "phy0_ref_alt_p",
->                               "phy0_ref_alt_m", "phy1_ref_alt_p",
->                               "phy1_ref_alt_m";
-> };
-> ---
-> 
+On 2025/7/15 20:04, Dmitry Baryshkov wrote:
 
-This looks OK to me, but don't you need to also update the dt-bindings yaml to
-document this new "phy-ref-use-pad" property ?
+> On Tue, Jul 15, 2025 at 07:24:52PM +0800, Chaoyi Chen wrote:
+>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>>
+>> The USB Type-C DisplayPort alternate mode driver will find
+>> "displayport" property for DRM hotplug event notify[0].
+>>
+>> [0]: https://lore.kernel.org/all/20210817215201.795062-9-hdegoede@redhat.com/
+>>
+>> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>> ---
+>>   .../devicetree/bindings/connector/usb-connector.yaml          | 4 ++++
+>>   1 file changed, 4 insertions(+)
+>>
+> Please see how it was done on other platforms. For example, qualcomm
+> (both tcpm and pmic-glink) use port / endpoint to link to the DP PHY /
+> DP controller.
+Thank you! I'll check these out.
 
-
-> Signed-off-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-> ---
->  .../phy/rockchip/phy-rockchip-snps-pcie3.c    | 32 +++++++++++++++++++
->  1 file changed, 32 insertions(+)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-> index 4e8ffd173096..0859c7960167 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-> @@ -33,6 +33,8 @@
->  /* Register for RK3588 */
->  #define PHP_GRF_PCIESEL_CON			0x100
->  #define RK3588_PCIE3PHY_GRF_CMN_CON0		0x0
-> +#define RK3588_PCIE3PHY_GRF_PHY0_CONTROL6	0x118
-> +#define RK3588_PCIE3PHY_GRF_PHY1_CONTROL6	0x218
->  #define RK3588_PCIE3PHY_GRF_PHY0_STATUS1	0x904
->  #define RK3588_PCIE3PHY_GRF_PHY1_STATUS1	0xa04
->  #define RK3588_PCIE3PHY_GRF_PHY0_LN0_CON1	0x1004
-> @@ -44,6 +46,8 @@
->  #define RK3588_BIFURCATION_LANE_0_1		BIT(0)
->  #define RK3588_BIFURCATION_LANE_2_3		BIT(1)
->  #define RK3588_LANE_AGGREGATION		BIT(2)
-> +#define RK3588_PHY_REF_USE_PAD_EN		((BIT(2) << 16 | BIT(2)))
-> +#define RK3588_PHY_REF_USE_PAD_DIS		((BIT(2) << 16))
->  #define RK3588_RX_CMN_REFCLK_MODE_EN		((BIT(7) << 16) |  BIT(7))
->  #define RK3588_RX_CMN_REFCLK_MODE_DIS		(BIT(7) << 16)
->  #define RK3588_PCIE1LN_SEL_EN			(GENMASK(1, 0) << 16)
-> @@ -67,6 +71,7 @@ struct rockchip_p3phy_priv {
->  	int num_lanes;
->  	u32 lanes[4];
->  	u32 rx_cmn_refclk_mode[4];
-> +	u32 phy_ref_use_pad[2];
->  };
->  
->  struct rockchip_p3phy_ops {
-> @@ -157,6 +162,14 @@ static int rockchip_p3phy_rk3588_init(struct rockchip_p3phy_priv *priv)
->  		     priv->rx_cmn_refclk_mode[3] ? RK3588_RX_CMN_REFCLK_MODE_EN :
->  		     RK3588_RX_CMN_REFCLK_MODE_DIS);
->  
-> +	/* Select PHY reference clock, external pad or internal clock */
-> +	regmap_write(priv->phy_grf, RK3588_PCIE3PHY_GRF_PHY0_CONTROL6,
-> +		     priv->phy_ref_use_pad[0] ? RK3588_PHY_REF_USE_PAD_EN :
-> +		     RK3588_PHY_REF_USE_PAD_DIS);
-> +	regmap_write(priv->phy_grf, RK3588_PCIE3PHY_GRF_PHY1_CONTROL6,
-> +		     priv->phy_ref_use_pad[1] ? RK3588_PHY_REF_USE_PAD_EN :
-> +		     RK3588_PHY_REF_USE_PAD_DIS);
-> +
->  	/* Deassert PCIe PMA output clamp mode */
->  	regmap_write(priv->phy_grf, RK3588_PCIE3PHY_GRF_CMN_CON0, BIT(8) | BIT(24));
->  
-> @@ -312,6 +325,25 @@ static int rockchip_p3phy_probe(struct platform_device *pdev)
->  		return ret;
->  	}
->  
-> +	ret = of_property_read_variable_u32_array(dev->of_node,
-> +						  "rockchip,phy-ref-use-pad",
-> +						  priv->phy_ref_use_pad, 1,
-> +						  ARRAY_SIZE(priv->phy_ref_use_pad));
-> +
-> +	/*
-> +	 * if no rockhip,phy-use-internal-clk, assume PHY uses pad for the
-> +	 * reference clock in order to be DT backwards compatible. (Since HW
-> +	 * reset val is enabled.)
-> +	 */
-> +	if (ret == -EINVAL) {
-> +		for (int i = 0; i < ARRAY_SIZE(priv->phy_ref_use_pad); i++)
-> +			priv->phy_ref_use_pad[i] = 1;
-> +	} else if (ret < 0) {
-> +		dev_err(dev, "failed to read rockchip,phy-ref-use-pad property %d\n",
-> +			ret);
-> +		return ret;
-> +	}
-> +
->  	priv->phy = devm_phy_create(dev, NULL, &rockchip_p3phy_ops);
->  	if (IS_ERR(priv->phy)) {
->  		dev_err(dev, "failed to create combphy\n");
-
-
--- 
-Damien Le Moal
-Western Digital Research
 
 _______________________________________________
 Linux-rockchip mailing list
