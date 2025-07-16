@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BD4DC83F22
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jul 2025 10:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0C1BC83F22
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jul 2025 10:30:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HeOzEdK2rQaeL7VEk0xdSz2HwPoywELDkrtY9B5wpeQ=; b=mVJYZZrcoIG0Du
-	DyPnAgbMIBkJ05A3RfVaYBgwR8syZw35bpjCj2TtTHpgIwRSIWOkmkxAawJCw770QhGX44aKKZ5TJ
-	LtWR08L4lZvrWgAwXMK99gCZ9lIgyGR7Vjy67/x0uhpS9L7zhIwtyKAbr8vjnVhCsFEVuplo8KOjE
-	WNr4BtzeYO+bH9BO139kaxC4Whv4wegHHcX6BdZ63V6FsVmezdj1jpqasntHN6cHR7Qi06nYdfXok
-	bS8uiVUWxVULPNaILlAVaxO5RfRe61XvSmQGkUuNTVCbJMkOr2qWJfeyMWZZ1oj0ho4DZh6lhBSKh
-	tH8gvrgofIEawdp6oPsw==;
+	List-Owner; bh=A4TxChy8dk8eDTqkEZt1Uxz2hOxk/0zO9dbD0VssdvQ=; b=HpVfLIAA3bpwRO
+	iKuCsWEhlHjbHdEtKq+V3RJNV2T6TFe+1W9wiZdHR/BGQFjo32jwrJsjHGqRCk9M4GNG0wNN1NtxI
+	rIORC/ZlpFZiaUtComih4cxiNgVGX0DjnI4/gNh/IYcz8G8LTdTd68rubyW8kWHA/5hdzeR4NHF+2
+	EO+gR4n+PckIjy5jQkmhIOXGsCXY8KyLeD7okFnJ3kaUQjU24dxrqXjiQxJVhHfNakG89R/9yu1X7
+	7GkxKOe66k+KeIyPsTAP09fJvf0bp73KccfygtdbO1QuW/AD1Rrn89T/0KCs54ixScVFvUNH0p7cX
+	S7b4iFNiByk+yC5yCY6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubzKJ-00000007Po3-1Ac1;
-	Wed, 16 Jul 2025 10:25:27 +0000
+	id 1ubzP7-00000007QZO-2sDZ;
+	Wed, 16 Jul 2025 10:30:25 +0000
 Received: from m16.mail.163.com ([220.197.31.5])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubz0y-00000007M8P-2G5g;
-	Wed, 16 Jul 2025 10:05:32 +0000
+	id 1ubz10-00000007MBw-0fLw;
+	Wed, 16 Jul 2025 10:05:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=F5
-	Mn/v7RZ7UFx8WGpT30YpU6PJiEWQ1DE0lZ8cE+J4c=; b=hs9UwhbknfRDF1YPgz
-	xYhlgvomvCK7k5DanIwc++TwoQi38jkcATqUl6HL6ovWrZfIZ+P6iEMNo7Eb1dXU
-	ndEZLqLf8NFIrq/cpSC56oY+yCQBLbzoiCd0JyObxo2eo40577UAk92TxNgubflr
-	CbfDPLrPsjEoSsBorx6fxBH3I=
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=xp
+	tJ5nlr75MekjpYY473ZW53Q3YMWO/bs6PyrYC1z1Q=; b=p1LZaVc4EgGkfW4qQv
+	wm9R5Aaqs5CG5xAGwUSS9ewuTtDGkdyE/z+lS5FD0dZUFnqbh4v8inlqui5YT97/
+	6Wu9ciwQJAHSCVGZ8NCpIMHcrkVO8HnmxTien74xGU6pNpsJ+yJ/sXIeRfdgnkyJ
+	FwOUSpMP85sIVN8BQU7iaKSrI=
 Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wAH0s46eXdoG0BuFQ--.1985S10;
-	Wed, 16 Jul 2025 18:05:08 +0800 (CST)
+	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wAH0s46eXdoG0BuFQ--.1985S12;
+	Wed, 16 Jul 2025 18:05:12 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: dmitry.baryshkov@oss.qualcomm.com,
 	heiko@sntech.de
-Subject: [PATCH v5 08/10] arm64: dts: rockchip: Add DP1 for rk3588
-Date: Wed, 16 Jul 2025 18:04:35 +0800
-Message-ID: <20250716100440.816351-9-andyshrk@163.com>
+Subject: [PATCH v5 10/10] arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX
+Date: Wed, 16 Jul 2025 18:04:37 +0800
+Message-ID: <20250716100440.816351-11-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250716100440.816351-1-andyshrk@163.com>
 References: <20250716100440.816351-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wAH0s46eXdoG0BuFQ--.1985S10
-X-Coremail-Antispam: 1Uf129KBjvJXoW7ZrWDCry7tFWfJw17JFWDJwb_yoW8Xw4fpw
-	nrurZ3GrW8uF1aqwnxt34kXrZ8A3Z5CFZrKr1xK3W8Kr1Sqr92k34akrZ3C34UXr17XwsF
-	kFs3tryUKF4qy3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j8a9-UUUUU=
+X-CM-TRANSID: _____wAH0s46eXdoG0BuFQ--.1985S12
+X-Coremail-Antispam: 1Uf129KBjvJXoW7CrykKw18Xw43uF4kCF18uFg_yoW8tFW8pF
+	nF9rs5KryxuryYqw1YyF1kZF4DKrs5ua93Jr1aqry0yFW7Xas5K3WrWr9YqF1jvF1xXw4a
+	yr4kXa4j93WDXFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jeXdbUUUUU=
 X-Originating-IP: [103.29.142.67]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkBOMXmh3dCSOzAAAsc
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0heMXmh3dDKNdwAAs0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250716_030528_948109_6CF567E0 
-X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-CacheID: sfid-20250716_030530_568868_0471EFB8 
+X-CRM114-Status: UNSURE (   9.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,59 +75,116 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-The DP1 is compliant with the DisplayPort Specification
-Version 1.4, and share the USBDP combo PHY1 with USB 3.1
-HOST1 controller.
+The HDMI0(Port next to Headphone Jack) is drived by DP1 on rk3588
+via RA620(a dp2hdmi converter).
+
+Add related dt nodes to enable it.
+
+Note: ROCKCHIP_VOP2_EP_DP1 is defined as 11 in dt-binding header,
+but it will trigger a dtc warning like "graph node unit address
+error, expected "b"" if we use it directly after endpoint, so we
+use "b" instead here.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+
 ---
 
-(no changes since v1)
+(no changes since v3)
 
- .../arm64/boot/dts/rockchip/rk3588-extra.dtsi | 30 +++++++++++++++++++
- 1 file changed, 30 insertions(+)
+Changes in v3:
+- Add RA620 into bridge chain.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-index 90414486e466f..691fe941d53a1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-@@ -210,6 +210,36 @@ i2s10_8ch: i2s@fde00000 {
- 		status = "disabled";
+ .../boot/dts/rockchip/rk3588-rock-5-itx.dts   | 59 +++++++++++++++++++
+ 1 file changed, 59 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+index 7de17117df7ae..903ad42f97177 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+@@ -57,6 +57,29 @@ analog-sound {
+ 			  "Headphone", "Headphones";
  	};
  
-+	dp1: dp@fde60000 {
-+		compatible = "rockchip,rk3588-dp";
-+		reg = <0x0 0xfde60000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 162 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru PCLK_DP1>, <&cru CLK_AUX16M_1>,
-+			 <&cru CLK_DP1>, <&cru MCLK_I2S8_8CH_TX>,
-+			 <&cru MCLK_SPDIF5_DP1>;
-+		clock-names = "apb", "aux", "hdcp", "i2s", "spdif";
-+		assigned-clocks = <&cru CLK_AUX16M_1>;
-+		assigned-clock-rates = <16000000>;
-+		resets = <&cru SRST_DP1>;
-+		phys = <&usbdp_phy1 PHY_TYPE_DP>;
-+		power-domains = <&power RK3588_PD_VO0>;
-+		#sound-dai-cells = <0>;
-+		status = "disabled";
++	bridge {
++		compatible = "radxa,ra620";
 +
 +		ports {
 +			#address-cells = <1>;
 +			#size-cells = <0>;
-+
-+			dp1_in: port@0 {
++			port@0 {
 +				reg = <0>;
++				hdmi_bridge_in: endpoint {
++					remote-endpoint = <&dp1_out_con>;
++				};
 +			};
 +
-+			dp1_out: port@1 {
++			port@1 {
 +				reg = <1>;
++
++				hdmi_bridge_out: endpoint {
++					remote-endpoint = <&hdmi_con_in>;
++				};
 +			};
 +		};
 +	};
 +
- 	hdmi1: hdmi@fdea0000 {
- 		compatible = "rockchip,rk3588-dw-hdmi-qp";
- 		reg = <0x0 0xfdea0000 0x0 0x20000>;
+ 	gpio-leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+@@ -73,6 +96,17 @@ hdd-led2 {
+ 		};
+ 	};
+ 
++	hdmi0-con {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi_con_in: endpoint {
++				remote-endpoint = <&hdmi_bridge_out>;
++			};
++		};
++	};
++
+ 	hdmi1-con {
+ 		compatible = "hdmi-connector";
+ 		type = "a";
+@@ -268,6 +302,24 @@ &cpu_l3 {
+ 	cpu-supply = <&vdd_cpu_lit_s0>;
+ };
+ 
++&dp1 {
++	status = "okay";
++	pinctrl-names = "default";
++	pinctrl-0 = <&dp1m0_pins>;
++};
++
++&dp1_in {
++	dp1_in_vp2: endpoint {
++		remote-endpoint = <&vp2_out_dp1>;
++	};
++};
++
++&dp1_out {
++	dp1_out_con: endpoint {
++		remote-endpoint = <&hdmi_bridge_in>;
++	};
++};
++
+ &gpu {
+ 	mali-supply = <&vdd_gpu_s0>;
+ 	status = "okay";
+@@ -1261,3 +1313,10 @@ vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
+ 		remote-endpoint = <&hdmi1_in_vp1>;
+ 	};
+ };
++
++&vp2 {
++	vp2_out_dp1: endpoint@b {
++		reg = <ROCKCHIP_VOP2_EP_DP1>;
++		remote-endpoint = <&dp1_in_vp2>;
++	};
++};
 -- 
 2.43.0
 
