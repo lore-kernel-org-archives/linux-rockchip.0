@@ -4,165 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F73C83F22
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Jul 2025 13:29:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C50DC83F22
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Jul 2025 13:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qNZzxgKzl0PB4qFrbRr+BLjWQI8TY7n8GT6kwOglosU=; b=IBJQTXTq61oQ7XFfMGKWgkpGZO
-	7o31niO7vgCLayyElUiSP874XX1aHdYywpsLZEL5YVnOEKmsJl9V92eLOz+CVpdp3WOSzey48PP1x
-	hZFCPqHEuJqrY7j30zQrYKa4b669hoDw4FSP5a/Fjs0Gd1McC9TMR77ik7AEX4uaDBcefdQe8tK2l
-	BTEtszW3Oc7Uhv5P2BxEc0pysptXaesAkPaTFcCkMp/oH3SERnJw/lqhFYLafTEaV0mk8zjRRvlIp
-	qWLN/UVTBjT9IeO1zDgeageilMYQB2nbl5CX77GOGdoti7ePq3abqqCwhxecqcRhDiZkaQr0/0VVM
-	PFrAdVXA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yqlhGy3e3qJQZjaiSlHz5FZBnrLNvPRBBhGwz83eYU8=; b=WuGWYOg8IbHwJP
+	gBtHYnCytjwyPcZQHm3fDf9rrHThXR9gll9PRAhl4ud0viBkiuy9Ms1dtGQFaCE5TxrZ4XV8yQaAz
+	A1yq3iKlgQ1mQqgVd2HcHmukPT0zfF/rvm8wr6pNuyZGaamopNs2osi/Suus6kA3eb6lNiW9VMygC
+	R3F6L62zd3LQFz9k9FPjcro8HGiK7CwERaqPwUzZnbgNWWIduXk/QATLl5I8DvoU+XbDY0QIrnX3j
+	R3E/ng72+2AUkZz9aK9YuBm089dD5RbGzxbEbZW1Me6KNVSRpZlHuH1CXsWTYtACxGQZVRKNGEuPo
+	vyTR0e0My2p28vextZRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucOgA-0000000AGDh-3vnH;
-	Thu, 17 Jul 2025 13:29:42 +0000
-Received: from mail-norwayeastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20f::7] helo=OSPPR02CU001.outbound.protection.outlook.com)
+	id 1ucOsH-0000000AHkC-2M9X;
+	Thu, 17 Jul 2025 13:42:13 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucNc9-0000000A6O3-1QTX;
-	Thu, 17 Jul 2025 12:21:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=R0v6SnB2Owf8FbcRDJp1xrpXQBHIv+Cv4c+GRUgsptDqKRZFcQh+bYhhGgil5JeZ1zGNL4EqkbWS6cG/y3O+9veRdAKjNtUKGa6pHEuFeJJQrG8nFBgY36v7aa28XtqldTFHT1xYRwhHrUq0Qrf8XS+d/6bgFchFfpE66MqTNoR+VZl9QMvVh6IbqUphbJm4tFmySZHhAEP5OQWfpHnf4CU9L1vrsTCiu85LkryuTN4K4r3bnUN2jbTLamXL9bcDWm2lkXAoFv3q6U91ICuY7KnpnllaUKwTffvqQm+NT7wzG0x2UXIn7l65i8NhKKeGxpuuJnOarJj28qMFPb1VRw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=H7ewydCkaWbY70NTSgS2/SowvSDW7glWGukpgLQ/s18=;
- b=xq3uc6DcFE9q6aksm6WaVaz16/SANX0wJoG3Xd0fkbfDvpiBUwIAqyYNQWrkCmB+6CRWqh15a+rw4PXszQ9qmtveMjDuRkKVjFaGOFn4FnYUfr8fYvpF3utg8oV6HJKSTKExKiJMt5cbGDZtWfKRhP7UQKrxtDpKkkga9OCXGZtBywQJEoZyB/lK0PSK80iEE7wEBlNy+jnCycGGp7qIy0emhwlUEGi+ANHg9jay8ddPH/UVLth7Cl5l7xapd5NAlo1jwBg0mAhPcg7UFcb8Rn7DNp5o2lRDz7Tyxry9Y62nmYczA2IMHvf3ZcUDdfkai5itjX/wZ2vcuwXPIUCxVw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=H7ewydCkaWbY70NTSgS2/SowvSDW7glWGukpgLQ/s18=;
- b=G3p40X7OOHg5hKg/CvKXO/VE+3f5YTk36oashr/zXo2jit2g8t1LHkf2RUb0cS9PRj1KDllhLVzIac8IA/LUamI/iLCXuuVSi6rryB3XBioo0HHdFuqVyuhw9AdK/hQq6afs6bNWEFvIYtuFbRPZdRDN78MOwYgr3e9qsUXLoeA=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by PA2PR04MB10347.eurprd04.prod.outlook.com (2603:10a6:102:424::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.39; Thu, 17 Jul
- 2025 12:21:23 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::5ee:7297:93b4:a8d1]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::5ee:7297:93b4:a8d1%4]) with mapi id 15.20.8922.037; Thu, 17 Jul 2025
- 12:21:23 +0000
-Message-ID: <470dc543-9619-419c-9ea3-6671f4d52326@cherry.de>
-Date: Thu, 17 Jul 2025 14:21:22 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add RK3588 DP carrier from
- Theobroma Systems
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh@kernel.org, krzk+dt@kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, damon.ding@rock-chips.com,
- Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20250716185027.2762175-1-heiko@sntech.de>
- <20250716185027.2762175-3-heiko@sntech.de>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20250716185027.2762175-3-heiko@sntech.de>
-X-ClientProxiedBy: VI1PR09CA0185.eurprd09.prod.outlook.com
- (2603:10a6:800:120::39) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
+	id 1ucNk6-0000000A7FM-0UwW;
+	Thu, 17 Jul 2025 12:29:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 85673465F6;
+	Thu, 17 Jul 2025 12:29:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8082C4CEE3;
+	Thu, 17 Jul 2025 12:29:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752755381;
+	bh=wuTslYNT33q0ZwkBocmRlf+/H/EC1qjjCuq+1hLV8/8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ceJopmgBy57bJV7/pVeyCt/sWnxvpAsEluSAjSqU2w3Jh04BHtaiAKo9lmJ9AvYfZ
+	 K5pBwXOHitlun8dR26Zstr1RUWJM84CUNJfJY0BVF+gf0zWoLpnwdZR4sNr81K1YBk
+	 VUBJ/VjvFxZgy3wMohvdUgSwrCUch0CBivHiD0o0g95164OK9/znhIREB+z7g1Nqfm
+	 VsB2MSBRiMVxTaAYbHVNFLA/s2h37gLvnyn9KZt5WyJYtPI3Y+idAjq2x0myzQGof3
+	 7u8IWr9UGLr91Oy0qtj9GnGEqOjcPxca775YWvWve0YENWg7eoUzNJiULTgSMnK/Ev
+	 dWpaGUGxT++EQ==
+Date: Thu, 17 Jul 2025 17:59:32 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Geraldo Nascimento <geraldogabriel@gmail.com>, 
+	Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, 
+	Hugh Cole-Baker <sigmaris@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH v3 2/3] PCI: rockchip-host: Retry link training on
+ failure without PERST#
+Message-ID: <djbhz7qfyzrn7mdqmvqhyh6yjsjyigjly7py4f7aj5f4qbabou@67gk3qdnvzws>
+References: <cover.1749582046.git.geraldogabriel@gmail.com>
+ <b7c09279b4a7dbdba92543db9b9af169776bd90c.1749582046.git.geraldogabriel@gmail.com>
+ <zuiq3b2rsixymtjr3xzrb26clikvlja62wgj65umnse4kuk75c@x5qan73ispxe>
+ <aFk-MeIWFcBiGBPr@geday>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|PA2PR04MB10347:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4bdf07d6-bbbf-4dc5-0d50-08ddc52c719f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?bnQrTHNmZnh5VExMQ2pDMUMvNVRsYU93MmVVTVpvc3l6V3VzVW1hSzhKMmhq?=
- =?utf-8?B?UXRheExjNTd2cXBPazNlQmZwdGNjQ3dDVGg4RHd2Wk9NT2xJZ2tDdDMyU1JB?=
- =?utf-8?B?RW5UTVZVc3JsZEtWaVFPTG9JNDFBV3VRa2RxUjNVQVJJOTAyNVRRYjdubjd2?=
- =?utf-8?B?dXg3aGlRaHFBd1JycUkzMEFHekNkMEhWS1E2WGEzVWpwZGdHMmZYN013RTNN?=
- =?utf-8?B?MTR5VHVtaFRUem4xUEZCamg3b01hK2VyNnRxcDdoWFJXWWNhOHB4b3NVQ096?=
- =?utf-8?B?ZEZhcGljcjhHTmdvREJVbTh0eWpMeEtCWmROVmNiM2VPeDJBeWptWFVNdkRY?=
- =?utf-8?B?cmhXVEtTMFJkM0Nza2JEdkNNV01adkZ0R3g0WklQNlhkbUpzTUNyTll6N0kr?=
- =?utf-8?B?QXZXNGV3eXFCQmZpUU0vR2pzTk00a3prZ3MxM3FnYUVqblk5WWpUTmxsZDNy?=
- =?utf-8?B?cTVKNEN2Q29QVGVzcnFtTlFEamZnNy9kbGJPM25GM3pROUJiak9Kbkx0Y2VO?=
- =?utf-8?B?R0JvZzlIc3F6bDZSQkFUQ2Z0UHphM28vK2lqTW5yWlE0VlROVTFEdkVWZmZn?=
- =?utf-8?B?U3JlODA2SkJpSlJQM3QxSWQ0YlB0d3VuVWV5YzhhdG1sMURYbW1OVUd4T3cz?=
- =?utf-8?B?Rmh5ZVF0SFovVnltdHpYS0lhdnk1OUJYTjB5ZjVKT2Fqc1FOQ013Rm8yYWpj?=
- =?utf-8?B?U1ZrOFFPMmxLVWFJNmtKS0RMZ2lqSXZFZndhTmdRZGZQR2hkZWlYRmlrVjFm?=
- =?utf-8?B?SjQ3azN6Vk8xa2VGMXU5QUduSTREa3k2eEpYK0cwYk9pdHVrVTlzdEtLOEhQ?=
- =?utf-8?B?OEdtOHhHMXFEY21sRExwbklRbS9lZXZRZG5uTW1GNXp1Uk9NU0FTZUdpMWVk?=
- =?utf-8?B?MGtNVG5FOEhyY0duMGp3UzUzdUZyb3BIaVNWNDIwbFcxU2preXZCeURNY3hS?=
- =?utf-8?B?RnBEMG5tWklBclhVVjY3NEU4QmdiVmpDaGFYTGpuUUVEMGNZbUZ6SXkzWXR5?=
- =?utf-8?B?UWFEdS80aXh3a1Q2em1yVDJVdFhCMHB1bnVPaFdSNlNCdks1QUNDVXY4Y2hC?=
- =?utf-8?B?amtUdXNsOUpQRFhoMWZ0SkJvMk1XN3A4d290eU9KQWMyZGNsZU43V05nOVVI?=
- =?utf-8?B?V0Q3ZG14MTBiNEpqZVVLektzZU5PazNVTHQ5TGc1bmhSWlMzVjcrQjYrNFdB?=
- =?utf-8?B?RG9rcHk1Y1l0SWlKWEpKY2dXUW4zU1h6bnlIa210R2kwY2s5SmtUTlJZNndZ?=
- =?utf-8?B?Q0t1K2krRzdZN012V1BZUE92V0tIR2oza1dPTG5pWEtpWEZwNDB3eHh6dHY3?=
- =?utf-8?B?dTF5Y2g0bmJHWFVOaTljdE9SbEVhWjNwMGRJOHpRbFJiSjBaZWFmSC85YUpr?=
- =?utf-8?B?WS9ZQndsTi9odG03K1V6WkN5Z1dhTzFqb3owZ1E2NjV0SzVWNEduQzRoRGFV?=
- =?utf-8?B?MllORE13T0hLd21XbGVzaXJaMmt1ajhQK0JKS1BXODMwRzI1Ty90WmFRVjZw?=
- =?utf-8?B?eUc4cnE1UHNoK1BYazJvajYxT2lSUXBYOHVzYysvOW5odERMdUlxUjIxTWdB?=
- =?utf-8?B?dm1RbW9DSG1hQ3BuU21xTTdNRHVRNFA1WXJCL3BXVnpJWEZQVmFQV0UzY3lZ?=
- =?utf-8?B?L3B4bnJDcGxmbW91Y2NzVWZQUm1aaXpYRVpLVm9kVVYyeUh6U1hmaXdBTUYx?=
- =?utf-8?B?Z2t3cTNGR1FKdEZTUEdMTWxQM3VGUThKckpRdmFoMGRtNEk1UmVEWnhpSjlT?=
- =?utf-8?B?S3h2cjBVY3lqQ2dHRUNxeVNnYW95VjFQUXVNVFJvREpDWmpLRlFYV0RQcUpE?=
- =?utf-8?B?cVpFcUJhZTlrTVVWOGg4NThsdGRkSDhnOFU4c0VMa0pSTXE5T3E1RDlUa05x?=
- =?utf-8?B?L3lhZUF4cmliQkN4dmFXbllvUnU3eVdlTEx2SEdZTi9GNEhVZUxOSERxZW9l?=
- =?utf-8?Q?qw/zo4au9Bs=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?U2RCVmtaVGJ5QjRKTFJJb25hb2ZVS2hmbmw4ZjVVUmdMQVV4NTJSNENRcFBl?=
- =?utf-8?B?L291TnB5TmNQZnFaUXpTVXAwYkFuMWNuNHZrTE9MWWFLQi92YVVjQ0M2dlZ5?=
- =?utf-8?B?R3FML0QxRitzNkwvSVVCbFRKRFB4MGxkbHR0SXpUZWFZYnhET3hNZ2N4MG9J?=
- =?utf-8?B?SXVEQXVvQUZOd2VCaHQrNnh3L2ZnanFzYkJBVnlOWElyT3gvcDF2RW9yeEZV?=
- =?utf-8?B?aHJLbVJMSVVTTTJIZThSam9CSHNqenppRVlMYzd4T3cxUCtaeFVtR3MvZUlz?=
- =?utf-8?B?MnloUDJzRlFSWllYQ3hyVGJlZ1Q5REZkM2ZNaEliaGRkRk9lQjlmbWJnM2tr?=
- =?utf-8?B?Ty9rQmx3dHFSOERDUm5YMFhRWTZyWDdvUkxHNDAvenZVeDQzS3ZMNVpQYzAz?=
- =?utf-8?B?WVd0eXZaMXBtNklUaE1pRWtDYS82NERnNUZTOGpLTmtzQXBKR3Q0TFdUWk9B?=
- =?utf-8?B?VENvMkZIcEE0TlA0U0pQU0FKU2NlM3UzaUh5eGx6MVRtQnB3cDZqSzZWbEpB?=
- =?utf-8?B?RlBZOWFxd0JrTHBnaS81Z3lrbUtpV2N4VWhwMXlWclV6L2FzVm0vZkQ1TGNJ?=
- =?utf-8?B?VEVIUWF6b3VVRW1yMlN6QUVDT1AxMEQyTm5Mb0xkaXNNeDV4TWFBeHA5VFBT?=
- =?utf-8?B?V2Fjd080d0w5Vkp2YlB5Qm5TOXRNT2RIYkFoVUNPYUVOQUVaZkFicWJpVjNT?=
- =?utf-8?B?d3FqWkh1N3I4U2VtT2ZSejhoNGl3SFJpOGhuMXpNODEyT3VCeGZQSnJrbXQ0?=
- =?utf-8?B?ajBsZzdPbU52bEp1NmIza3hCMmlOYXFFV1IzRHhGVVh6b1NpYnFKcXM5dFFP?=
- =?utf-8?B?UVVZY2JGL2g0Q0FsTGdaalFHckcwOGRrWEVVTlBoOUtzNGpaR0VBTnNtamt4?=
- =?utf-8?B?TFJUcmk5M293dG1sQWZnVnlya09Jc0gyN05tQkkwZ2dqZVZMS2VzV1dPNDJi?=
- =?utf-8?B?QmxOTGN5SnFLYVE1aktoSU5CRXY1SzNSYkNKNDBGUUxxRmRONTREUWhySm9i?=
- =?utf-8?B?Ym9ZWURnbE12VEhEOXE0bWIydXRQWWJ1RU1HU2hPRm1pWThadDZEd3BGQXpG?=
- =?utf-8?B?b243bzNsTXVhL1dpa2ZRaGtjTHBPcm9wUjRiazk0Tkt1QTBzcmlzK1J4dHRo?=
- =?utf-8?B?MkNPYjRqWmsvRnRSRkc0NFdka1FlRDkxTnZIblZGNjg3TjZYQkI2OUFKcjY4?=
- =?utf-8?B?V3l6QVF5RmhmVENOSnhrK1VyN0lRREFtT2R3WkQyVnFKUng1NXhrMnlKK0ly?=
- =?utf-8?B?SkhPb0Vkd0I3UWQ1Y2Zoa3JScW9XMXA5bklPN000NEF6OVFhMHdONjNSZTNN?=
- =?utf-8?B?a0VVdjJsdWt5ejNPYUFYdFJmMjZDd2xSRVYzVWJ1ZDJWdWlZekJaQjNKb3FJ?=
- =?utf-8?B?U2luZyt0Ym9sR080bm9DbHo5QUtvMjFORjA4ZDI5bnhVb2Mzb2ZrRklCbTV5?=
- =?utf-8?B?NDNsRUM5RnY5K1BQU2ZVZCtUdVY0U1BVKzluVXRERmgvWnQ3YWRFOVNWbk41?=
- =?utf-8?B?WEQ2cTdGd2x2Q3JEOGY5czlVeng2UzlEQnNtVEFXK2pLNFc3NkE1dnZCOTEw?=
- =?utf-8?B?ZklLQm5IbG9xMWh3WkMzeWlTWnYxb3dEaVNkMmh5M0ZxS1NTZytwOFN4cjVQ?=
- =?utf-8?B?YVFzVzlKeHVuMWcyNHdzVjRpM0pEL3VMRUpsNGNkMlVKOHNENGg5cTJkN2JX?=
- =?utf-8?B?NVJNSW9iTFI3YXV3QkNaUlVMdDBOTFZlekNjeHRscS9SbTdqMS9FNzNUSkVw?=
- =?utf-8?B?SDRsbWpLSzczbXlLaWN5NWI5dTJEYU93SGE4VnNpeU1DNTUzZElXelIvSkNw?=
- =?utf-8?B?QlRjS09qK013TmtMUlA0Si9aK1dxSnhhd1U0cGFmWmpqT1FaaUpwVTVlQlJR?=
- =?utf-8?B?WU8rQmQxWWx0TTdvdlUxSklRU3M3WjJuaEJ2WU1ab0pxbFJMcldsUWRJZUc2?=
- =?utf-8?B?dG04NHNta1Q4dnBQT1BKSGk0WXZ2MnBDU0NPZngvdlVXVDlxenNpSkNlUDFr?=
- =?utf-8?B?K2RVcElVOWp6QU1XNUFvWGNsWEdjbExhaUlKdW5WenIybURmSS9ka3hPR3ls?=
- =?utf-8?B?ejVjOEN3LzhOOS9DV3NUc2xoRzFITG5GMlBVRk9JTlJmQ2RwQ3ltU1BpMHh6?=
- =?utf-8?B?bHEyWkFRV09uRVRnSDVVUmtXQ3VXWWYrOGFiUDJoZy82ZVNmTjNyVk1YQXJj?=
- =?utf-8?B?YXc9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4bdf07d6-bbbf-4dc5-0d50-08ddc52c719f
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jul 2025 12:21:23.4001
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 6MHtSICGH1Csf2Pr/K1Am2r4QXYN/dFUlEpQIJ5seChsYRBnfnEmbFv6MB2LV789siz/PSrPuMiGxesJ1pFi5FMPzh9Z4dEXbHg5WiLwQjc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA2PR04MB10347
+Content-Disposition: inline
+In-Reply-To: <aFk-MeIWFcBiGBPr@geday>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250717_052129_546283_BA69FDFD 
-X-CRM114-Status: GOOD (  31.78  )
+X-CRM114-CacheID: sfid-20250717_052942_196634_27726916 
+X-CRM114-Status: GOOD (  45.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,163 +75,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
-
-On 7/16/25 8:50 PM, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> 
-> The DisplayPort carrier is a very simple baseboard only providing serial,
-> ethernet and a displayport output.
-> 
-> But its main functionality is that it routes the Analogix eDP controller
-> to this DisplayPort output, which allows to test that controller simply
-> by hooking it up to a suitable monitor.
-> 
-> The Analogix-DP controller supports eDP 1.3 and DP 1.2, so can drive
-> both eDP displays as well as full DP monitors. It does not support DP+
-> so passive DP-to-HDMI adapters won't work.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-> ---
->   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->   .../rk3588-tiger-displayport-carrier.dts      | 118 ++++++++++++++++++
->   2 files changed, 119 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 7946bec10670..0c915679fde6 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -178,6 +178,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-video-demo.dtbo
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-displayport-carrier.dtb
-
-Please sort this alphabetically.
-
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-turing-rk1.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-coolpi-4b.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
-> new file mode 100644
-> index 000000000000..5bd79877194a
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
-> @@ -0,0 +1,118 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2024 Cherry Embedded Solutions GmbH
-> + */
-> +
-> +/dts-v1/;
-> +#include <dt-bindings/soc/rockchip,vop2.h>
-> +#include "rk3588-tiger.dtsi"
-> +
-> +/ {
-> +	model = "Theobroma Systems RK3588-Q7 SoM on Tiger Displayport Carrier v1";
-> +	compatible = "tsd,rk3588-tiger-displayport-carrier", "tsd,rk3588-tiger", "rockchip,rk3588";
-> +
-
-Please add ethernet0 to /aliases?
-
-> +	chosen {
-> +		stdout-path = "serial2:115200n8";
-> +	};
-> +
-> +	dp-connector {
-> +		compatible = "dp-connector";
-> +		dp-pwr-supply = <&vcc3v3_baseboard>;
-> +		label = "dp0";
-> +		type = "full-size";
-
-Please order alphabetically the two properties above.
-
-> +
-> +		/* Q7_DP_HPD# but Q7_HDMI_HPD# could be used too */
-> +		hpd-gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_LOW>;
-> +		pinctrl-0 = <&edp0_hpd_l>;
-> +		pinctrl-names = "default";
-> +
-> +		port {
-> +			dp_con_in: endpoint {
-> +				remote-endpoint = <&edp0_out_con>;
-> +			};
-> +		};
-> +	};
-> +
-> +	vcc3v3_baseboard: regulator-vcc3v3-baseboard {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc3v3_baseboard";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&vcc5v0_baseboard>;
-> +	};
-> +
-> +	vcc5v0_baseboard: regulator-vcc5v0-baseboard {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc5v0_baseboard";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +	};
-> +};
-> +
-> +&edp0 {
-> +	/*
-> +	 * Note that this board doesn't respect Q7 standard as Q7 has
-> +	 * lane 2 of HDMI on the same pin as lane 0 of DP and lane 0 of HDMI
-> +	 * on lane 2 of DP but this board uses HDMI lane numbering instead of
-> +	 * DP lane numbering for its DP lanes.
-> +	 *
-> +	 * It should be possible to match Q7 standard if required by requesting
-> +	 * the eDPTX controller to swap lanes with:
-> +	 *
-> +	 * data-lanes = <2 1 0 3>;
-
-I don't think that's true currently?
-
-The driver only seems to be supporting swapping the lanes, c.f. 
-analogix_dp_lane_swap() which routes it to either 0 1 2 3 or 3 2 1 0 but 
-no mix like the one we would need. Also, this function is never called 
-with anything but "do not swap" argument. So we would need to fix the 
-driver to support that.
-
-Also, this is the kind of information we should have in Tiger DTSI and 
-not some "random" baseboard DTS which will actually not make use of it. 
-We should have data-lanes = <2 1 0 3>; in Tiger DTSI actually but 
-considering 1) the driver doesn't support that, 2) we don't have HW to 
-validate it works; I guess we'll just leave it at that.
-
-> +	 */
-> +
-
-Aren't we missing the data-lanes property here? I don't see a default 
-and I would assume we should be providing one?
-
-Documentation/devicetree/bindings/media/video-interfaces.yaml specifies 
-it either starts at 0 or 1, depending if there's a clock lane or not. As 
-far as I could tell, DP has 4 data lanes and the AUX lane as well, but 
-nothing clock-specific so I assume starting at 0 would be correct?
-
-On a side note, is the audio output on eDP TX controller already 
-supported like on HDMI? If so, we should add the edp0-sound node like in 
-our downstream fork. But looking at the driver, I don't think we 
-implement any dp_audio_* callbacks from drm_bridge_funcs which I assume 
-would be the way to implement that.
-
-Cheers,
-Quentin
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBKdW4gMjMsIDIwMjUgYXQgMDg6NDQ6NDlBTSBHTVQsIEdlcmFsZG8gTmFzY2ltZW50
+byB3cm90ZToKPiBPbiBNb24sIEp1biAyMywgMjAyNSBhdCAwNToyOTo0NkFNIC0wNjAwLCBNYW5p
+dmFubmFuIFNhZGhhc2l2YW0gd3JvdGU6Cj4gPiBPbiBUdWUsIEp1biAxMCwgMjAyNSBhdCAwNDow
+NTo0MFBNIC0wMzAwLCBHZXJhbGRvIE5hc2NpbWVudG8gd3JvdGU6Cj4gPiA+IEFmdGVyIGFsbW9z
+dCAzMCBkYXlzIG9mIGJhdHRsaW5nIHdpdGggUkszMzk5IGJ1Z2d5IFBDSWUgb24gbXkgUm9jayBQ
+aQo+ID4gPiBOMTAgdGhyb3VnaCB0cmlhbC1hbmQtZXJyb3IgZGVidWdnaW5nLCBJIGZpbmFsbHkg
+Z290IHBvc2l0aXZlIHJlc3VsdHMKPiA+ID4gd2l0aCBlbnVtZXJhdGlvbiBvbiB0aGUgUENJIGJ1
+cyBmb3IgYm90aCBhIFJlYWx0ZWsgODExMUUgTklDIGFuZCBhCj4gPiA+IFNhbXN1bmcgUE05ODFh
+IFNTRC4KPiA+ID4gCj4gPiA+IFRoZSBOSUMgd2FzIGNvbm5lY3RlZCB0byBhIE0uMi0+UENJZSB4
+NCByaXNlciBjYXJkIGFuZCBpdCB3b3VsZCBnZXQKPiA+ID4gc3R1Y2sgb24gUG9sbGluZy5Db21w
+bGlhbmNlLCB3aXRob3V0IGJyZWFraW5nIGVsZWN0cmljYWwgaWRsZSBvbiB0aGUKPiA+ID4gSG9z
+dCBSWCBzaWRlLiBUaGUgU2Ftc3VuZyBQTTk4MWEgU1NEIGlzIGRpcmVjdGx5IGNvbm5lY3RlZCB0
+byBNLjIKPiA+ID4gY29ubmVjdG9yIGFuZCB0aGF0IFNTRCBpcyBrbm93biB0byBiZSBxdWlya3kg
+KE9FTS4uLiBubyBzdXBwb3J0KQo+ID4gPiBhbmQgbm9uLWZ1bmN0aW9uYWwgb24gdGhlIFJLMzM5
+OSBwbGF0Zm9ybS4KPiA+ID4gCj4gPiA+IFRoZSBTYW1zdW5nIFNTRCB3YXMgZXZlbiB3b3JzZSB0
+aGFuIHRoZSBOSUMgLSBpdCB3b3VsZCBnZXQgc3R1Y2sgb24KPiA+ID4gRGV0ZWN0LkFjdGl2ZSBs
+aWtlIGEgYnJpY2tlZCBjYXJkLCBldmVuIHRob3VnaCBpdCB3YXMgZnVsbHkgZnVuY3Rpb25hbAo+
+ID4gPiB2aWEgVVNCIGFkYXB0ZXIuCj4gPiA+IAo+ID4gPiBJdCBzZWVtcyBib3RoIGRldmljZXMg
+YmVuZWZpdCBmcm9tIHJldHJ5aW5nIExpbmsgVHJhaW5pbmcgaWYgLSBiaWcgaWYKPiA+ID4gaGVy
+ZSAtIFBFUlNUIyBpcyBub3QgdG9nZ2xlZCBkdXJpbmcgcmV0cnkuCj4gPiA+IAo+ID4gPiBGb3Ig
+cmV0cnkgdG8gd29yaywgZmxvdyBtdXN0IGJlIGV4YWN0bHkgYXMgaGFuZGxlZCBieSBwcmVzZW50
+IHBhdGNoLAo+ID4gPiB0aGF0IGlzLCB3ZSBtdXN0IGN1dCBwb3dlciwgZGlzYWJsZSB0aGUgY2xv
+Y2tzLCB0aGVuIHJlLWVuYWJsZQo+ID4gPiBib3RoIGNsb2NrcyBhbmQgcG93ZXIgcmVndWxhdG9y
+cyBhbmQgZ28gdGhyb3VnaCBpbml0aWFsaXphdGlvbgo+ID4gPiB3aXRob3V0IHRvdWNoaW5nIFBF
+UlNUIy4gVGhlbiBxdWlya3kgZGV2aWNlcyBhcmUgYWJsZSB0byBzdWNlc3NmdWxseQo+ID4gPiBl
+bnVtZXJhdGUuCj4gPiA+IAo+ID4gCj4gPiBUaGlzIHNvdW5kcyB3ZWlyZC4gUEVSU1QjIGlzIGp1
+c3QgYW4gaW5kaWNhdGlvbiB0byB0aGUgZGV2aWNlIHRoYXQgdGhlIHBvd2VyIGFuZAo+ID4gcmVm
+Y2xrIGFyZSBhcHBsaWVkIG9yIGdvaW5nIHRvIGJlIHJlbW92ZWQuIFRoZSBkZXZpY2VzIHVzZXMg
+UEVSU1QjIHRvIHByZXBhcmUKPiA+IGZvciB0aGUgcG93ZXIgcmVtb3ZhbCBkdXJpbmcgYXNzZXJ0
+IGFuZCBzdGFydCBmdW5jdGlvbmluZyBhZnRlciBkZWFzc2VydC4KPiAKPiBIaSBNYW5pISBUaGFu
+ayB5b3UgZm9yIGxvb2tpbmcgaW50byB0aGlzLgo+IAo+IFllYWgsIHRlbGwgbWUgYWJvdXQgaXQs
+IGl0IGlzIGJleW9uZCB3ZWlyZC4gSSBwb3N0ZWQgUkZDIFBhdGNoIGluIHRoZQo+IGhvcGVzIHNv
+bWVvbmUgd2l0aCBhY2Nlc3MgdG8gUENJZSBBbmFseXplciBjb3VsZCBoYXZlIGRlZXBlciBsb29r
+Cj4gYXQgd2hhdCB0aGUgaGVjayBpcyBnb2luZyBvbiBoZXJlIC0gYmVjYXVzZSBpdCBkb2VzIHdv
+cmssIGJ1dCBJIGRvbid0Cj4gY2xhaW0gdG8gdW5kZXJzdGFuZCBob3cuCj4gCgpJIHdhcyBob3Bp
+bmcgdGhhdCB0aGUgUm9ja2NoaXAgZm9sa3Mgd291bGQgY2hpbWUgaW4sIGJ1dCBubyByZXBseSBm
+cm9tIHRoZW0gc28KZmFyLgoKQFNoYXduOiBDb3VsZCB5b3UgcGxlYXNlIHNoZWQgc29tZSBsaWdo
+dCBoZXJlPwoKPiA+IAo+ID4gSXQgbG9va3MgbGlrZSB0aGUgUEVSU1QjIHBvbGFyaXR5IGlzIGlu
+dmVydGVkIGluIHlvdXIgY2FzZS4gQ291bGQgeW91IHBsZWFzZQo+ID4gY2hhbmdlIHRoZSAnZXAt
+Z3Bpb3MnIHBvbGFyaXR5IHRvIEdQSU9fQUNUSVZFX0xPVyBhbmQgc2VlIGlmIGl0IGZpeGVzIHRo
+ZSBpc3N1ZQo+ID4gd2l0aG91dCB0aGlzIHBhdGNoPwo+ID4gCj4gPiBJZiB0aGF0IGRpZG4ndCB3
+b3JrLCBjb3VsZCB5b3UgcGxlYXNlIGRyb3AgdGhlICdlcC1ncGlvcycgcHJvcGVydHkgYW5kIGNo
+ZWNrPwo+IAo+IFNvcnJ5IHRvIGRlY2xpbmUgeW91ciByZXF1ZXN0LCBidXQgSSBhc3N1cmUgeW91
+IEkgaGF2ZSB0cmllZCBtYW55Cj4gb3RoZXIgY29tYmluYXRpb25zIGJlZm9yZSByZWFjaGluZyBw
+cmVzZW50IHBhdGNoLCBpbmNsdWRpbmcgeW91cgo+IHN1Z2dlc3Rpb24uIEl0IHdpbGwgZG8gbm90
+aGluZy4gSXQgd29uJ3Qgd29yaywgd29uJ3QgbWFrZSBTU0QgdGhhdAo+IHJlZnVzZSB0byB3b3Jr
+IHdpdGggUkszMzk5LCB3b3JraW5nLiBOb3RlIHRoYXQgdGhpcyBpc24ndCBzcGVjaWZpYwo+IHRv
+IG15IGJvYXJkIC0gUkszMzk5IGlzIGluZmFtb3VzIGZvciBiZWluZyBwaWNreSBhYm91dCBkZXZp
+Y2VzLgo+IAo+ID4gCj4gPiA+IE5vIGZ1bmN0aW9uYWwgY2hhbmdlIGludGVuZGVkIGZvciBhbHJl
+YWR5IHdvcmtpbmcgZGV2aWNlcy4KPiA+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6IEdlcmFsZG8g
+TmFzY2ltZW50byA8Z2VyYWxkb2dhYnJpZWxAZ21haWwuY29tPgo+ID4gPiAtLS0KPiA+ID4gIGRy
+aXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1ob3N0LmMgfCA0NyArKysrKysrKysr
+KysrKysrKystLS0KPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCA0MCBpbnNlcnRpb25zKCspLCA3IGRl
+bGV0aW9ucygtKQo+ID4gPiAKPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xs
+ZXIvcGNpZS1yb2NrY2hpcC1ob3N0LmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9j
+a2NoaXAtaG9zdC5jCj4gPiA+IGluZGV4IDJhMTA3MWNkMzI0MS4uNjdiM2IzNzlkMjc3IDEwMDY0
+NAo+ID4gPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAtaG9zdC5j
+Cj4gPiA+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1ob3N0LmMK
+PiA+ID4gQEAgLTMzOCwxMSArMzM4LDE0IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV9zZXRf
+dnBjaWUoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwKQo+ID4gPiAgc3RhdGljIGludCBy
+b2NrY2hpcF9wY2llX2hvc3RfaW5pdF9wb3J0KHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hp
+cCkKPiA+ID4gIHsKPiA+ID4gIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSByb2NrY2hpcC0+ZGV2Owo+
+ID4gPiAtCWludCBlcnIsIGkgPSBNQVhfTEFORV9OVU07Cj4gPiA+ICsJaW50IGVyciwgaSA9IE1B
+WF9MQU5FX05VTSwgaXNfcmVpbml0ID0gMDsKPiA+ID4gIAl1MzIgc3RhdHVzOwo+ID4gPiAgCj4g
+PiA+IC0JZ3Bpb2Rfc2V0X3ZhbHVlX2NhbnNsZWVwKHJvY2tjaGlwLT5wZXJzdF9ncGlvLCAwKTsK
+PiA+ID4gKwlpZiAoIWlzX3JlaW5pdCkgewo+ID4gPiArCQlncGlvZF9zZXRfdmFsdWVfY2Fuc2xl
+ZXAocm9ja2NoaXAtPnBlcnN0X2dwaW8sIDApOwo+ID4gPiArCX0KPiA+ID4gIAo+ID4gPiArcmVp
+bml0Ogo+ID4gCj4gPiBTbyB0aGlzIHJlaW5pdCBwYXJ0IG9ubHkgc2tpcHMgdGhlIFBFUlNUIyBh
+c3NlcnQsIGJ1dCBjYWxscwo+ID4gcm9ja2NoaXBfcGNpZV9pbml0X3BvcnQoKSB3aGljaCByZXNl
+dHMgdGhlIFJvb3QgUG9ydCBpbmNsdWRpbmcgUEhZLiBJIGRvbid0Cj4gPiB0aGluayBpdCBpcyBz
+YWZlIHRvIGRvIGl0IGlmIFBFUlNUIyBpcyB3aXJlZC4KPiAKPiBJIGRvbid0IHVuZGVyc3RhbmQs
+IGNvdWxkIHlvdSBiZSBhIGJpdCBtb3JlIHZlcmJvc2Ugb24gd2h5IGRvIHlvdQo+IHRoaW5rIHRo
+aXMgaXMgZGFuZ2Vyb3VzPwo+IAoKV2hlbiB0aGUgUm9vdCBQb3J0IGFuZCBQSFkgZ2V0cyByZXNl
+dCwgdGhlcmUgaXMgYSBnb29kIGNoYW5jZSB0aGF0IHRoZSByZWZjbGsKd291bGQgYWxzbyBiZSBj
+dXRvZmYuIFNvIGlmIHRoYXQgaGFwcGVucyB3aXRob3V0IFBFUlNUIyBhc3NlcnQsIHRoZW4gdGhl
+IGRldmljZQpoYXMgbm8gY2hhbmNlIHRvIGNsZWFuIGl0cyBzdGF0ZSBtYWNoaW5lLiBJZiB0aGUg
+ZGV2aWNlIGdldHMgaXRzIG93biByZWZjbGssCnRoZW4gaXQgaXMgYSBkaWZmZXJlbnQgc3Rvcnks
+IGJ1dCB3ZSBzaG91bGQgbm90IG1ha2UgYXNzdW1wdGlvbnMuCgotIE1hbmkKCi0tIArgrq7grqPg
+rr/grrXgrqPgr43grqPgrqngr40g4K6a4K6k4K6+4K6a4K6/4K614K6u4K+NCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
