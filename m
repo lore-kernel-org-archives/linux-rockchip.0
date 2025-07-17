@@ -4,156 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E84E5C83F34
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Jul 2025 18:32:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BC9FC83F34
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Jul 2025 18:43:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zyZ2ngEcMFtHWwCdy7EH76D9QMWv6PM2jpSXciSxFYc=; b=lQMRW0Q42HHPsT
-	RNAMMM98d/C4b6naycDE2gQlAiAa40bLMRVV84iNMAJ0EvCPMY8mA3HoNZ80FZtRM/GsgIa8sTuex
-	DmJs5MlR0oIi85Y3/ssjw9GrYQJ/hc0QS9UZ6/wrvy2sVBe+3eFaDqmMy8KSsog7NqC23ZyxEbv0b
-	lx3DPwQSO4UHYsyRXQzMI09V3sw+A+jUxYY1m6sl5lW5fwsLsqv+FaoevB2/+BhFyehXNk+LyLBoS
-	hoDncxu9HOB0s9bb8T2nv79K20VZkwXjNTw5ruiXLdQnNJ6Qcr+FfY74awTWUNMeND89WAw4CTqMW
-	f8r8HucjdJCll5jeYviQ==;
+	List-Owner; bh=8tts3kenwHFG4JoFGfqdj6mYQiVJ8sKZkjbyaGWkM98=; b=cgmHLHHJbEduRh
+	YviEpLhSxAPXwugGCJ2VNCdVOaUDIWkU8n4iGtG4B+alyZ2fXMrgYvDcjsNeEPnzJrjduX77ZTMZO
+	d+B+2Poqv7pS3tS1Un8JM1jx8/xXOQdRSG7AUziExKGrjXIv7vGDCSVm3n8RUcRstMHC3/pklRW6H
+	ibbiBvZxVDi15gpoPMT2cGOZyr61Q+afwlCETqPrST5mIm8LNI/tT82IlTE0eBXFP6pGviGOWlgLu
+	h+oyzo1ALbID49/7k4WTYAM3fKKKUdfY6SagWWNMS188TaIuidTOZjFmrpRnzxy7qHMXgHrAT965l
+	v/VcZmAndP/Rzg+DIFOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucTOm-0000000AsrM-2YWQ;
-	Thu, 17 Jul 2025 18:32:04 +0000
-Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
+	id 1ucTa0-0000000AuQB-2FUC;
+	Thu, 17 Jul 2025 18:43:40 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucTOk-0000000AsnZ-0qsk;
-	Thu, 17 Jul 2025 18:32:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=SuPd5TIn6maiUwmu8FMooDJ4h4lUTbmdcelce6V6gBkrer9cZ1he8HjajNVyl168PZ7XZcZ/jnFqf+OL7q7MlkaPAuPYmGZXr7P1ACt2q25jsPj4bKnLWS9ErKOUVIn2l/0wsinGaOzMvTm1djL6uXtOB4FfIqqDoFDBiZw9WcG8/Nqt7MqQH7XL0i+k9h4qwQ8sMNaVlQ9vxOrthLFF1j2jEVLG07XjX+ktij0wH78FJfZ/waNoYSPTvwsQ+43egxrA19jHhmuTtWcHQbDNyEuQFwWEHooBd82mqsPNbynr2S0QVvN2LTq3eeb3ar2/dDkIPNem457XnP14ugAO2A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6D0L7dRD3X0aKxCfSUgowc2ATkrbBsTIgo1OEyWclvk=;
- b=EvQcVrkyjy821j4cXCKfZ/A/YyJm240mTPoYrduKoBFOX3BIm2lxrbLsxy4ld1wIQs7hqQq67vtmnB6agDPUIkZ8SqC3+UxUHHllPUnlndf0KGDFIZckzRp9s/6iFu8LKcqf2GM2qOfN3WfyBSlwkJ0yCVM8auTFfXZmQ4eurdYcpnP9+zkJp32+57ifv4Pzf+ZEBZkLX40NDgISvmF0KONSyJ4Wh715AWbFIkia8519AFGNWBN9juCfYdrGwh3ZKdwzQVGoMN87brpS4zqDiOfua7rBEqnViejRiFj5SWlrXtzip4h/DU7Yf2r4MqmPFJWuGWjyPjB9PxKqJu78jg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6D0L7dRD3X0aKxCfSUgowc2ATkrbBsTIgo1OEyWclvk=;
- b=EaA6jdv0YAYRaQL8mVC/GpW8I3dVrwNwLig1cCXdZpN1V+vo2YL5+1m/CcqcYaPqLn2ylfJyELP5fJdFry7WnOHIADQCArh2uXx+XyKRxQBivxxB7lIhLOGkLZvo9KIA7xxT+/HcvXmTdWSL/Qd/TbkEIOBIdWQ73bdmlV3780IZz1mvy9H7wz/lz/w9Zh8Ejrepvbbg5Q0CeEULkKke0tDRmSjjnpQ4jooLYLkS97ak41TBFqDErChBENJSqFUOKqxT6F1vjqqSPIuUhVufL2HIzPtBI0OjmSBLx9tudkkhY1OaYqs5xtLhPUOaW0O8NvBE1+Wlv/ovL96NxYOPnA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from PAXPR04MB9642.eurprd04.prod.outlook.com (2603:10a6:102:240::14)
- by VE1PR04MB7216.eurprd04.prod.outlook.com (2603:10a6:800:1b0::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.32; Thu, 17 Jul
- 2025 18:31:32 +0000
-Received: from PAXPR04MB9642.eurprd04.prod.outlook.com
- ([fe80::9126:a61e:341d:4b06]) by PAXPR04MB9642.eurprd04.prod.outlook.com
- ([fe80::9126:a61e:341d:4b06%5]) with mapi id 15.20.8922.037; Thu, 17 Jul 2025
- 18:31:32 +0000
-Date: Thu, 17 Jul 2025 14:31:26 -0400
-From: Frank Li <Frank.li@nxp.com>
-To: manivannan.sadhasivam@oss.qualcomm.com
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
-	Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Niklas Cassel <cassel@kernel.org>,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>,
-	Lukas Wunner <lukas@wunner.de>
-Subject: Re: [PATCH v6 2/4] PCI: host-common: Add link down handling for Root
- Portsy
-Message-ID: <aHlBfhYvNNOfqoq1@lizhi-Precision-Tower-5810>
-References: <20250715-pci-port-reset-v6-0-6f9cce94e7bb@oss.qualcomm.com>
- <20250715-pci-port-reset-v6-2-6f9cce94e7bb@oss.qualcomm.com>
-Content-Disposition: inline
-In-Reply-To: <20250715-pci-port-reset-v6-2-6f9cce94e7bb@oss.qualcomm.com>
-X-ClientProxiedBy: AM9P193CA0028.EURP193.PROD.OUTLOOK.COM
- (2603:10a6:20b:21e::33) To PAXPR04MB9642.eurprd04.prod.outlook.com
- (2603:10a6:102:240::14)
+	id 1ucTXU-0000000AtwC-1gTj;
+	Thu, 17 Jul 2025 18:41:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=z8+rI+enL4BSqLq2MJbBJbkJP0/8ld0NpkqpPbeKKVc=; b=msRlLmCiHmUcDmop9bQYx2XvJT
+	0aucsQ8fV2s9REhSuLOn1834b3FxtUmsBDVtsgREcF2UKJsxMqDiiSJ9wPhkIRIdd99HeUoyyAhHc
+	iFFVB/uZM6InObn2gGsXFDwwN1PBDUZC2swKuq2ooJYQ05LYkAJz+WvV3GG/9ZDXTYB44cFhIW/vz
+	qjMxkon24v6lOrlp0xOM2kB0mxsRdT1SksUV4bGJlIy2hgpSWpxY66eGz7ugirPW5kmncyY2Oz54h
+	TA3bXG/er6NFMZriVtHfoUqhsZELemb3ctbcmK3wbwX5xFOoynoueu2grFS/dtI1KE2XOy+beRYgN
+	MatY/ONg==;
+Received: from cst-prg-35-241.cust.vodafone.cz ([46.135.35.241] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1ucTXR-0005fE-9W; Thu, 17 Jul 2025 20:41:01 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Quentin Schulz <quentin.schulz@cherry.de>
+Cc: robh@kernel.org, krzk+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, damon.ding@rock-chips.com,
+ Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add RK3588 DP carrier from Theobroma
+ Systems
+Date: Thu, 17 Jul 2025 20:40:59 +0200
+Message-ID: <11143499.CDJkKcVGEf@phil>
+In-Reply-To: <470dc543-9619-419c-9ea3-6671f4d52326@cherry.de>
+References: <20250716185027.2762175-1-heiko@sntech.de>
+ <20250716185027.2762175-3-heiko@sntech.de>
+ <470dc543-9619-419c-9ea3-6671f4d52326@cherry.de>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PAXPR04MB9642:EE_|VE1PR04MB7216:EE_
-X-MS-Office365-Filtering-Correlation-Id: ac29f30d-dd70-4bca-4f3b-08ddc560273d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|366016|1800799024|376014|19092799006|7416014|38350700014|7053199007;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?TpgGkWvkg5cC1Dy5q3kWidZjMLPWfhOJXLlghvcgFUAcjrSre+z5x+aYDnsd?=
- =?us-ascii?Q?BZdyRijKJ1VlQD5XCxIWkXz0Lf6bIqIxGaHFwYCJKM/IbZZKVfMPqeaab0f2?=
- =?us-ascii?Q?1ieWQPjuNNhKVY6lAGqfTav811gjaaU84//Vr+AeSnUToYs+ut4DVz/kttDF?=
- =?us-ascii?Q?1+9RzWV3jwklqzuQQC48tSRBXrjtidA4Cx9FBzUvQkyb8ZJ7YT61AqOWnfbB?=
- =?us-ascii?Q?1ZuInCh8RKzd7ry1lgbIrL3tv6tv4f3q5B41IrwJWbRdbHfx9h/SkYqcJ4KD?=
- =?us-ascii?Q?fZv4DqHuIJ1t94rfkxLzDQW7yg6kn+SvSQU3lr+w1eWnED3dwbBu5UggiOUu?=
- =?us-ascii?Q?z+9nnn9AIf0gyJwUByfPPiIa1P8rmoRtdTk7uBIaKPEHP9xGFbVV0eiVq+JS?=
- =?us-ascii?Q?0aVT50+v7gTUKeLvVAUw9SGX/H/rNPovL730ONOE7kBKD6w58Xn338DMo6cc?=
- =?us-ascii?Q?EvdQuAGTv6ijWsNzEMLcrjpHPu9gmJik/z8WRKU5HLIjICGYaywLhI3Wmkr/?=
- =?us-ascii?Q?gBUb8YzAo1e4F3jo9vHABg7ww682f2uUy3Gs7auzjIMqcD+xMa56jQWtevaw?=
- =?us-ascii?Q?HewfC/oqVH9bUkvaoVbUyHOW/qmVvFNkO0Yz03jPhRdQCDz4b/kToTUP5m/d?=
- =?us-ascii?Q?Lbae1VI1OeBtJwGt+GhE9HJqSAqvU5t/vXovndhGl5Pl9d1iPynPQ/14kCL2?=
- =?us-ascii?Q?che+YVHeVJWZ9KcTrD2YZmVGNybYatT/Hjy0fRBlE8/hH4MpnldRaKHtQcr1?=
- =?us-ascii?Q?LOSQ3aKyZddz8mrJdGQCeRq29zvNjTHQHMRkWx06i37WBTXoyZWr8BqtVOAA?=
- =?us-ascii?Q?8DFIvZrSK7tmrOafTIfBOSRkzKpBZVCrTF+hzEGg70+mUSMCFPgAUvWWf0I+?=
- =?us-ascii?Q?S3zL+3deMWGFxkFGnOfNq8XSANgDqQ/RA97Mq4AuW+J1ULyjp1QQfRSH4Xmf?=
- =?us-ascii?Q?+WhjTG5PJEl271m+48Piw4YMeLrkMz+cRGMsUCcEID9QgKk9FOg3nGMcXs3o?=
- =?us-ascii?Q?ZeU3DmEDqWSetKc3whNGITtZgpNU/68l7zr06TFAWiY/+GDdo6S0iOMYN8qt?=
- =?us-ascii?Q?kSGqLWUiyvcVc1zP1dvt6aZJ9v1kKePPaCossZUa5ZR0wwGvRFnv57fywXzY?=
- =?us-ascii?Q?MpVcQm+5LKGrf6mVW/Jv60TluJmlef8liZQ4nbbAmgVSvcPHW9L6jKQ+WOOY?=
- =?us-ascii?Q?v60aBISHTWeNidwTpr6e93eFQAgdtU42/imGS1oqz4C9Q/qst6quigZiz6rE?=
- =?us-ascii?Q?9bcgfg6/DBpxoY0knznJdFMbHmA7kVx5Ui5ncj473QH+uzJPrKjiNU1aEjPU?=
- =?us-ascii?Q?8R+plgOlhrvhrgRhdIInLP21Qt5ywdViOwQ72WuZ/k6Ql+XgQI0d0lX23zum?=
- =?us-ascii?Q?FIqhbo4g7rykLHKYl9J4yGAPklftaXDg3Dk1d+Ahgh1H+XyQGeiOCXuV5xTW?=
- =?us-ascii?Q?c6SALK1ODSa2WJU+zrK3QJElmzvQbu3F/G7ZiajLVArM+8OzzCCIEw=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXPR04MB9642.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(366016)(1800799024)(376014)(19092799006)(7416014)(38350700014)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?afiABw8oPuRL6mgY0utr9OFQ8WLLnIXnBHuDBp/0W16hVWEUDAilGlJFAyHy?=
- =?us-ascii?Q?++oh3+rsGEMjpPK0t6v/Trg14P7QRj2CA6b14kjvX6gMVeqiNnOK9jXLhnud?=
- =?us-ascii?Q?+0Riz2nMOSbm+PqNnvWoOLiEyPsrcRCE36gAt5Uob9SbKQyGSKk1gRjOvFy7?=
- =?us-ascii?Q?YknVbWI8knl4SIai0NCq9FN7WLB6ERDpmegP2IlYWFwcF2x6cXUARemvmIIq?=
- =?us-ascii?Q?HI/a3iCCEXBMnHWcxXnQa+uN4eEERdT2YGgR+rPr9vimoltKt5B949Pmoe3v?=
- =?us-ascii?Q?rn3X2v2VZBLwIW3ai59Fh6b561u3hMx/TMKS3E/YJotddaMxL52BXMhMv6FJ?=
- =?us-ascii?Q?DFkK4PiZ27f7yNtQiTNKCnmsZjIY6TPWBzSUPpN0+mjVz8M8hmwudbC41Daj?=
- =?us-ascii?Q?tPE/bKvi6snB92BYZcD8D1ZKGFOwng+KgAROqfQP5PrJ2di2nIhGPrBu4KeJ?=
- =?us-ascii?Q?8S7qjiq+dljB4FqI3Jcw0wt4eW08i9ScyLclGesBhwlCDUsfWQpv/WLBUF9S?=
- =?us-ascii?Q?AVVA0hhxy44h17Zgcqg862JMuNRWDh0d5kIyARf77WKvYNhPmMJvYf03k5jr?=
- =?us-ascii?Q?1Gsr6VOxBYmYP7Tq6oWbFWJi3SBuYcyPDCu/MiTcSZpK6o8XfFbNyKgqMUOa?=
- =?us-ascii?Q?C4qA3cPgJ1MZBDVXAhXjP9mw2mjBR8L45vbb9ymmx98i8ezHRR1UlITQJXkU?=
- =?us-ascii?Q?ZbYES1qhgDSD+j2nN0Qex+jD51S+uIEnW4mNlCNF8V2Iaa5McSKXoXI8/mxX?=
- =?us-ascii?Q?UNaZTIGZYFLWgbJgJ6YBPs131qS+XxidjctPuGu0XObTjx7CQgc+QQc4lX58?=
- =?us-ascii?Q?rguDrHH4/hiFy+fMCW6Gobk6tdEFoQCotW3JleIEwHD7bwII8cQA624XZTco?=
- =?us-ascii?Q?/9osikpDVBt5Qn/j85jxGCu8yPo78J2RWQ2AQagjLknrkY/9dU94GSyRXdbN?=
- =?us-ascii?Q?Tgiy0sjMfzMI4H2TWL8P8eKcUn7VOwJ6WJstodFzISyR55Qub9aD2SMAfO74?=
- =?us-ascii?Q?ivXOnhW37FpsY8j054u9zkv2AtlvAzdC2fXmtZZo4U20tIDxEIMzJl7A5EiD?=
- =?us-ascii?Q?binUq71qEKCybjh6XYsNFQZj319FBAlbtY7bKxDnz3UGQJZQwboOiQK9njh+?=
- =?us-ascii?Q?2lsRrobl/jbRxwmPaZsqblr2V0V/qXkFRgBR8vpaRUAbAVreqHId7M2U3GjM?=
- =?us-ascii?Q?mpMnLh5oZ4FxWKgjKmTFBwo2AIwIFJIiax+oS6F6LGKWsuNV3PhA2sIPiSMP?=
- =?us-ascii?Q?RmiWkYkbbq6zRoTu6T4LjKD1LQ0/zoOr609I3ixOSp49xtvE5A4cnt6577+F?=
- =?us-ascii?Q?VLTq9BAhc1PbEvL2NAiKlivnHEhxEjw54UOdkzKETZYhsBFmzsvcM10UzPq+?=
- =?us-ascii?Q?uTApYXPx4NnI5F/aQNfPwRQOqCdKD3ECf79NWerFz1ZdmSsPolosElFgdodZ?=
- =?us-ascii?Q?uXYAyWoL05lRSyMN1m7Nez79qfyLY+YWkTbTYmX7E4R7S4oLmuY7w1z0EUyX?=
- =?us-ascii?Q?07PaJtmtpAefaPO41Tr3nPtwCejaIhTg0f6XlRNopKqHoaRs0rPYycYPZDtw?=
- =?us-ascii?Q?+njtOtM1jvaS6Yi8W2/nlOapkJWCYUKrhSMNnf3n?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ac29f30d-dd70-4bca-4f3b-08ddc560273d
-X-MS-Exchange-CrossTenant-AuthSource: PAXPR04MB9642.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jul 2025 18:31:32.3669
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: sDTtbB2mCr5oT6jxmUbFaqDq88t7kHLcSWeFJGsngSxr9LLvCyx2uUqBflRQy9bzvNi0ojj3k2zqm1MjgXwHcw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VE1PR04MB7216
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250717_113202_396773_464F476A 
-X-CRM114-Status: GOOD (  29.84  )
+X-CRM114-CacheID: sfid-20250717_114104_471799_3717EDA4 
+X-CRM114-Status: GOOD (  33.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,141 +69,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 15, 2025 at 07:51:05PM +0530, Manivannan Sadhasivam via B4 Relay wrote:
-> From: Manivannan Sadhasivam <mani@kernel.org>
->
-> The PCI link, when down, needs to be recovered to bring it back. But on
-> some platforms, that cannot be done in a generic way as link recovery
-> procedure is platform specific. So add a new API
-> pci_host_handle_link_down() that could be called by the host bridge drivers
-> for a specific Root Port when the link goes down.
->
-> The API accepts the 'pci_dev' corresponding to the Root Port which observed
-> the link down event. If CONFIG_PCIEAER is enabled, the API calls
-> pcie_do_recovery() function with 'pci_channel_io_frozen' as the state. This
-> will result in the execution of the AER Fatal error handling code. Since
-> the link down recovery is pretty much the same as AER Fatal error handling,
-> pcie_do_recovery() helper is reused here. First, the AER error_detected()
-> callback will be triggered for the bridge and then for the downstream
-> devices. Finally, pci_host_reset_root_port() will be called for the Root
-> Port, which will reset the Root Port using 'reset_root_port' callback to
-> recover the link. Once that's done, resume message will be broadcasted to
-> the bridge and the downstream devices, indicating successful link recovery.
->
-> But if CONFIG_PCIEAER is not enabled in the kernel, only
-> pci_host_reset_root_port() API will be called, which will in turn call
-> pci_bus_error_reset() to just reset the Root Port as there is no way we
-> could inform the drivers about link recovery.
->
-> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
-
-> ---
->  drivers/pci/controller/pci-host-common.c | 33 ++++++++++++++++++++++++++++++++
->  drivers/pci/controller/pci-host-common.h |  1 +
->  drivers/pci/pci.c                        |  1 +
->  drivers/pci/pcie/err.c                   |  1 +
->  4 files changed, 36 insertions(+)
->
-> diff --git a/drivers/pci/controller/pci-host-common.c b/drivers/pci/controller/pci-host-common.c
-> index b0992325dd65f0da8e216ec8a2153af365225d1d..51eacb6cb57443338e995f17afd3b2564bbd1f83 100644
-> --- a/drivers/pci/controller/pci-host-common.c
-> +++ b/drivers/pci/controller/pci-host-common.c
-> @@ -12,9 +12,11 @@
->  #include <linux/of.h>
->  #include <linux/of_address.h>
->  #include <linux/of_pci.h>
-> +#include <linux/pci.h>
->  #include <linux/pci-ecam.h>
->  #include <linux/platform_device.h>
->
-> +#include "../pci.h"
->  #include "pci-host-common.h"
->
->  static void gen_pci_unmap_cfg(void *ptr)
-> @@ -104,5 +106,36 @@ void pci_host_common_remove(struct platform_device *pdev)
->  }
->  EXPORT_SYMBOL_GPL(pci_host_common_remove);
->
-> +static pci_ers_result_t pci_host_reset_root_port(struct pci_dev *dev)
-> +{
-> +	int ret;
-> +
-> +	ret = pci_bus_error_reset(dev);
-> +	if (ret) {
-> +		pci_err(dev, "Failed to reset Root Port: %d\n", ret);
-> +		return PCI_ERS_RESULT_DISCONNECT;
-> +	}
-> +
-> +	pci_info(dev, "Root Port has been reset\n");
-> +
-> +	return PCI_ERS_RESULT_RECOVERED;
-> +}
-> +
-> +static void pci_host_recover_root_port(struct pci_dev *port)
-> +{
-> +#if IS_ENABLED(CONFIG_PCIEAER)
-> +	pcie_do_recovery(port, pci_channel_io_frozen, pci_host_reset_root_port);
-> +#else
-> +	pci_host_reset_root_port(port);
-> +#endif
-> +}
-> +
-> +void pci_host_handle_link_down(struct pci_dev *port)
-> +{
-> +	pci_info(port, "Recovering Root Port due to Link Down\n");
-> +	pci_host_recover_root_port(port);
-> +}
-> +EXPORT_SYMBOL_GPL(pci_host_handle_link_down);
-> +
->  MODULE_DESCRIPTION("Common library for PCI host controller drivers");
->  MODULE_LICENSE("GPL v2");
-> diff --git a/drivers/pci/controller/pci-host-common.h b/drivers/pci/controller/pci-host-common.h
-> index 65bd9e032353827221a6af59858c46fdbe5916bf..cb0a07c8773ec87838164e994b34a62d2c8118be 100644
-> --- a/drivers/pci/controller/pci-host-common.h
-> +++ b/drivers/pci/controller/pci-host-common.h
-> @@ -16,5 +16,6 @@ int pci_host_common_probe(struct platform_device *pdev);
->  int pci_host_common_init(struct platform_device *pdev,
->  			 const struct pci_ecam_ops *ops);
->  void pci_host_common_remove(struct platform_device *pdev);
-> +void pci_host_handle_link_down(struct pci_dev *port);
->
->  #endif
-> diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-> index b29264aa2be33b18a58b3b3db1d1fb0f6483e5e8..39310422634a9551efc8aded565b7cc30f4989d0 100644
-> --- a/drivers/pci/pci.c
-> +++ b/drivers/pci/pci.c
-> @@ -5768,6 +5768,7 @@ int pci_bus_error_reset(struct pci_dev *bridge)
->  	mutex_unlock(&pci_slot_mutex);
->  	return pci_bus_reset(bridge->subordinate, PCI_RESET_DO_RESET);
->  }
-> +EXPORT_SYMBOL_GPL(pci_bus_error_reset);
->
->  /**
->   * pci_probe_reset_bus - probe whether a PCI bus can be reset
-> diff --git a/drivers/pci/pcie/err.c b/drivers/pci/pcie/err.c
-> index b834fc0d705938540d3d7d3d8739770c09fe7cf1..3e3084bb7cb7fa06b526e6fab60e77927aba0ad0 100644
-> --- a/drivers/pci/pcie/err.c
-> +++ b/drivers/pci/pcie/err.c
-> @@ -270,3 +270,4 @@ pci_ers_result_t pcie_do_recovery(struct pci_dev *dev,
->
->  	return status;
->  }
-> +EXPORT_SYMBOL_GPL(pcie_do_recovery);
->
-> --
-> 2.45.2
->
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgUXVlbnRpbiwKCkFtIERvbm5lcnN0YWcsIDE3LiBKdWxpIDIwMjUsIDE0OjIxOjIyIE1pdHRl
+bGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgUXVlbnRpbiBTY2h1bHo6Cj4gT24gNy8x
+Ni8yNSA4OjUwIFBNLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPiA+IEZyb206IEhlaWtvIFN0dWVi
+bmVyIDxoZWlrby5zdHVlYm5lckBjaGVycnkuZGU+Cj4gPiAKPiA+IFRoZSBEaXNwbGF5UG9ydCBj
+YXJyaWVyIGlzIGEgdmVyeSBzaW1wbGUgYmFzZWJvYXJkIG9ubHkgcHJvdmlkaW5nIHNlcmlhbCwK
+PiA+IGV0aGVybmV0IGFuZCBhIGRpc3BsYXlwb3J0IG91dHB1dC4KPiA+IAo+ID4gQnV0IGl0cyBt
+YWluIGZ1bmN0aW9uYWxpdHkgaXMgdGhhdCBpdCByb3V0ZXMgdGhlIEFuYWxvZ2l4IGVEUCBjb250
+cm9sbGVyCj4gPiB0byB0aGlzIERpc3BsYXlQb3J0IG91dHB1dCwgd2hpY2ggYWxsb3dzIHRvIHRl
+c3QgdGhhdCBjb250cm9sbGVyIHNpbXBseQo+ID4gYnkgaG9va2luZyBpdCB1cCB0byBhIHN1aXRh
+YmxlIG1vbml0b3IuCj4gPiAKPiA+IFRoZSBBbmFsb2dpeC1EUCBjb250cm9sbGVyIHN1cHBvcnRz
+IGVEUCAxLjMgYW5kIERQIDEuMiwgc28gY2FuIGRyaXZlCj4gPiBib3RoIGVEUCBkaXNwbGF5cyBh
+cyB3ZWxsIGFzIGZ1bGwgRFAgbW9uaXRvcnMuIEl0IGRvZXMgbm90IHN1cHBvcnQgRFArCj4gPiBz
+byBwYXNzaXZlIERQLXRvLUhETUkgYWRhcHRlcnMgd29uJ3Qgd29yay4KPiA+IAo+ID4gU2lnbmVk
+LW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvLnN0dWVibmVyQGNoZXJyeS5kZT4KPiA+IC0t
+LQoKPiA+ICsmZWRwMCB7Cj4gPiArCS8qCj4gPiArCSAqIE5vdGUgdGhhdCB0aGlzIGJvYXJkIGRv
+ZXNuJ3QgcmVzcGVjdCBRNyBzdGFuZGFyZCBhcyBRNyBoYXMKPiA+ICsJICogbGFuZSAyIG9mIEhE
+TUkgb24gdGhlIHNhbWUgcGluIGFzIGxhbmUgMCBvZiBEUCBhbmQgbGFuZSAwIG9mIEhETUkKPiA+
+ICsJICogb24gbGFuZSAyIG9mIERQIGJ1dCB0aGlzIGJvYXJkIHVzZXMgSERNSSBsYW5lIG51bWJl
+cmluZyBpbnN0ZWFkIG9mCj4gPiArCSAqIERQIGxhbmUgbnVtYmVyaW5nIGZvciBpdHMgRFAgbGFu
+ZXMuCj4gPiArCSAqCj4gPiArCSAqIEl0IHNob3VsZCBiZSBwb3NzaWJsZSB0byBtYXRjaCBRNyBz
+dGFuZGFyZCBpZiByZXF1aXJlZCBieSByZXF1ZXN0aW5nCj4gPiArCSAqIHRoZSBlRFBUWCBjb250
+cm9sbGVyIHRvIHN3YXAgbGFuZXMgd2l0aDoKPiA+ICsJICoKPiA+ICsJICogZGF0YS1sYW5lcyA9
+IDwyIDEgMCAzPjsKPiAKPiBJIGRvbid0IHRoaW5rIHRoYXQncyB0cnVlIGN1cnJlbnRseT8KPiAK
+PiBUaGUgZHJpdmVyIG9ubHkgc2VlbXMgdG8gYmUgc3VwcG9ydGluZyBzd2FwcGluZyB0aGUgbGFu
+ZXMsIGMuZi4gCj4gYW5hbG9naXhfZHBfbGFuZV9zd2FwKCkgd2hpY2ggcm91dGVzIGl0IHRvIGVp
+dGhlciAwIDEgMiAzIG9yIDMgMiAxIDAgYnV0IAo+IG5vIG1peCBsaWtlIHRoZSBvbmUgd2Ugd291
+bGQgbmVlZC4gQWxzbywgdGhpcyBmdW5jdGlvbiBpcyBuZXZlciBjYWxsZWQgCj4gd2l0aCBhbnl0
+aGluZyBidXQgImRvIG5vdCBzd2FwIiBhcmd1bWVudC4gU28gd2Ugd291bGQgbmVlZCB0byBmaXgg
+dGhlIAo+IGRyaXZlciB0byBzdXBwb3J0IHRoYXQuCj4gCj4gQWxzbywgdGhpcyBpcyB0aGUga2lu
+ZCBvZiBpbmZvcm1hdGlvbiB3ZSBzaG91bGQgaGF2ZSBpbiBUaWdlciBEVFNJIGFuZCAKPiBub3Qg
+c29tZSAicmFuZG9tIiBiYXNlYm9hcmQgRFRTIHdoaWNoIHdpbGwgYWN0dWFsbHkgbm90IG1ha2Ug
+dXNlIG9mIGl0LiAKPiBXZSBzaG91bGQgaGF2ZSBkYXRhLWxhbmVzID0gPDIgMSAwIDM+OyBpbiBU
+aWdlciBEVFNJIGFjdHVhbGx5IGJ1dCAKPiBjb25zaWRlcmluZyAxKSB0aGUgZHJpdmVyIGRvZXNu
+J3Qgc3VwcG9ydCB0aGF0LCAyKSB3ZSBkb24ndCBoYXZlIEhXIHRvIAo+IHZhbGlkYXRlIGl0IHdv
+cmtzOyBJIGd1ZXNzIHdlJ2xsIGp1c3QgbGVhdmUgaXQgYXQgdGhhdC4KPiAKPiA+ICsJICovCj4g
+PiArCj4gCj4gQXJlbid0IHdlIG1pc3NpbmcgdGhlIGRhdGEtbGFuZXMgcHJvcGVydHkgaGVyZT8g
+SSBkb24ndCBzZWUgYSBkZWZhdWx0IAo+IGFuZCBJIHdvdWxkIGFzc3VtZSB3ZSBzaG91bGQgYmUg
+cHJvdmlkaW5nIG9uZT8KClRoZSBhbmFsb2dpeC1kcCBjb250cm9sbGVyIGJpbmRpbmcgZG9lcyBu
+b3Qgc3BlY2lmeSBkYXRhLWxhbmVzIGF0IGFsbAphbmQgdGhlIGN1cnJlbnQgZHJpdmVyIGFsc28g
+ZG9lcyBub3QgcmVhZCBpdCwgb3IgdXNlIGFueXRoaW5nCnJlZ2FyZGluZyBpdC4KCgo+IERvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS92aWRlby1pbnRlcmZhY2VzLnlhbWwg
+c3BlY2lmaWVzIAo+IGl0IGVpdGhlciBzdGFydHMgYXQgMCBvciAxLCBkZXBlbmRpbmcgaWYgdGhl
+cmUncyBhIGNsb2NrIGxhbmUgb3Igbm90LiBBcyAKPiBmYXIgYXMgSSBjb3VsZCB0ZWxsLCBEUCBo
+YXMgNCBkYXRhIGxhbmVzIGFuZCB0aGUgQVVYIGxhbmUgYXMgd2VsbCwgYnV0IAo+IG5vdGhpbmcg
+Y2xvY2stc3BlY2lmaWMgc28gSSBhc3N1bWUgc3RhcnRpbmcgYXQgMCB3b3VsZCBiZSBjb3JyZWN0
+PwoKTG9va3MgbGlrZSBpdC4gSSBsb29rZWQgYXQgdGhlIHZlbmRvci1rZXJuZWwgd2hpY2ggZG9l
+cyBhbGxvdyBkYXRhLWxhbmUKc2V0dGluZ3MgYW5kIHNwZWNpZmllcyB0aGUgZGVmYXVsdCBhcyA8
+MCAxIDIgMz4gLgoKU28gZm9yIG5vdywgSSdsbCBqdXN0IGRyb3AgdGhlIGNvbW1lbnQuCgoKPiBP
+biBhIHNpZGUgbm90ZSwgaXMgdGhlIGF1ZGlvIG91dHB1dCBvbiBlRFAgVFggY29udHJvbGxlciBh
+bHJlYWR5IAo+IHN1cHBvcnRlZCBsaWtlIG9uIEhETUk/IElmIHNvLCB3ZSBzaG91bGQgYWRkIHRo
+ZSBlZHAwLXNvdW5kIG5vZGUgbGlrZSBpbiAKPiBvdXIgZG93bnN0cmVhbSBmb3JrLiBCdXQgbG9v
+a2luZyBhdCB0aGUgZHJpdmVyLCBJIGRvbid0IHRoaW5rIHdlIAo+IGltcGxlbWVudCBhbnkgZHBf
+YXVkaW9fKiBjYWxsYmFja3MgZnJvbSBkcm1fYnJpZGdlX2Z1bmNzIHdoaWNoIEkgYXNzdW1lIAo+
+IHdvdWxkIGJlIHRoZSB3YXkgdG8gaW1wbGVtZW50IHRoYXQuCgpIZWlrbwoKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
