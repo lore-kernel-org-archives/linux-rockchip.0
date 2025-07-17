@@ -4,67 +4,165 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91B19C83F1A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Jul 2025 13:14:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F73C83F22
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Jul 2025 13:29:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=7G7+CeXxW7nfatEW3yaW8RCackWbCKXHLJzFWgYgMdE=; b=URFi5utHSSrISp
-	0OKsm/wr9JMjUw5/fELPMRZjdHV5CIDrLmxVNlxdJVOJQvXWY0OzRiVur1vqB61rQHZzs9+JvnxAu
-	/Qb1TV4NJtMMsrNbmb4w5okqvIJap5ieJ9XVhxgHfuq9qLTjRvJZn5lTQlIXeMKRQyPYSDuiy3y1O
-	zDVSqVVCEIiGIFmskEV7MMhi94ptlu8WkCmFLk5eOZPO85giTwBu2iuCDL8nZLlUd9fhNUqvxhbYa
-	bGG1aX3+Ws0BexQiMamhR7NONFfpDxZNged4gDvhTdndTrWYvYUTMcuu0s9RvF2VCQheNVjs8CxSF
-	8Z6osS73YaRBz6e6XNzg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qNZzxgKzl0PB4qFrbRr+BLjWQI8TY7n8GT6kwOglosU=; b=IBJQTXTq61oQ7XFfMGKWgkpGZO
+	7o31niO7vgCLayyElUiSP874XX1aHdYywpsLZEL5YVnOEKmsJl9V92eLOz+CVpdp3WOSzey48PP1x
+	hZFCPqHEuJqrY7j30zQrYKa4b669hoDw4FSP5a/Fjs0Gd1McC9TMR77ik7AEX4uaDBcefdQe8tK2l
+	BTEtszW3Oc7Uhv5P2BxEc0pysptXaesAkPaTFcCkMp/oH3SERnJw/lqhFYLafTEaV0mk8zjRRvlIp
+	qWLN/UVTBjT9IeO1zDgeageilMYQB2nbl5CX77GOGdoti7ePq3abqqCwhxecqcRhDiZkaQr0/0VVM
+	PFrAdVXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucORf-0000000AE45-3FOc;
-	Thu, 17 Jul 2025 13:14:43 +0000
-Received: from out-177.mta0.migadu.com ([2001:41d0:1004:224b::b1])
+	id 1ucOgA-0000000AGDh-3vnH;
+	Thu, 17 Jul 2025 13:29:42 +0000
+Received: from mail-norwayeastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20f::7] helo=OSPPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucNG8-0000000A2yH-2gGc
-	for linux-rockchip@lists.infradead.org;
-	Thu, 17 Jul 2025 11:58:46 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1752753501;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=xA00jKif1Xuf/U1rsSjs5Phuq/bmyeN3v9XfSiZkCX0=;
-	b=Hp8awFxxYJS44VzcWpL9s0NNCpc4wJENQzB7wswBrKcAaKncIeFm7UkWaHc97p3N9uB/XL
-	k7X+Pj7r0RD1hY/pyh2D6F+IqsJbFy2WZL6Npyl/tgVjIFK7Y1ab8xrO2ao6IE50B7vtmo
-	qtHcX7uXNdK8x7JjAvwwa/D979GnoMQ=
-From: Troy Mitchell <troy.mitchell@linux.dev>
-Date: Thu, 17 Jul 2025 19:58:01 +0800
-Subject: [PATCH v2] ASoC: rockchip: i2s: simplify clock handling and error
- cleanup in probe
+	id 1ucNc9-0000000A6O3-1QTX;
+	Thu, 17 Jul 2025 12:21:30 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=R0v6SnB2Owf8FbcRDJp1xrpXQBHIv+Cv4c+GRUgsptDqKRZFcQh+bYhhGgil5JeZ1zGNL4EqkbWS6cG/y3O+9veRdAKjNtUKGa6pHEuFeJJQrG8nFBgY36v7aa28XtqldTFHT1xYRwhHrUq0Qrf8XS+d/6bgFchFfpE66MqTNoR+VZl9QMvVh6IbqUphbJm4tFmySZHhAEP5OQWfpHnf4CU9L1vrsTCiu85LkryuTN4K4r3bnUN2jbTLamXL9bcDWm2lkXAoFv3q6U91ICuY7KnpnllaUKwTffvqQm+NT7wzG0x2UXIn7l65i8NhKKeGxpuuJnOarJj28qMFPb1VRw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=H7ewydCkaWbY70NTSgS2/SowvSDW7glWGukpgLQ/s18=;
+ b=xq3uc6DcFE9q6aksm6WaVaz16/SANX0wJoG3Xd0fkbfDvpiBUwIAqyYNQWrkCmB+6CRWqh15a+rw4PXszQ9qmtveMjDuRkKVjFaGOFn4FnYUfr8fYvpF3utg8oV6HJKSTKExKiJMt5cbGDZtWfKRhP7UQKrxtDpKkkga9OCXGZtBywQJEoZyB/lK0PSK80iEE7wEBlNy+jnCycGGp7qIy0emhwlUEGi+ANHg9jay8ddPH/UVLth7Cl5l7xapd5NAlo1jwBg0mAhPcg7UFcb8Rn7DNp5o2lRDz7Tyxry9Y62nmYczA2IMHvf3ZcUDdfkai5itjX/wZ2vcuwXPIUCxVw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=H7ewydCkaWbY70NTSgS2/SowvSDW7glWGukpgLQ/s18=;
+ b=G3p40X7OOHg5hKg/CvKXO/VE+3f5YTk36oashr/zXo2jit2g8t1LHkf2RUb0cS9PRj1KDllhLVzIac8IA/LUamI/iLCXuuVSi6rryB3XBioo0HHdFuqVyuhw9AdK/hQq6afs6bNWEFvIYtuFbRPZdRDN78MOwYgr3e9qsUXLoeA=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
+ by PA2PR04MB10347.eurprd04.prod.outlook.com (2603:10a6:102:424::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.39; Thu, 17 Jul
+ 2025 12:21:23 +0000
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::5ee:7297:93b4:a8d1]) by AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::5ee:7297:93b4:a8d1%4]) with mapi id 15.20.8922.037; Thu, 17 Jul 2025
+ 12:21:23 +0000
+Message-ID: <470dc543-9619-419c-9ea3-6671f4d52326@cherry.de>
+Date: Thu, 17 Jul 2025 14:21:22 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add RK3588 DP carrier from
+ Theobroma Systems
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: robh@kernel.org, krzk+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, damon.ding@rock-chips.com,
+ Heiko Stuebner <heiko.stuebner@cherry.de>
+References: <20250716185027.2762175-1-heiko@sntech.de>
+ <20250716185027.2762175-3-heiko@sntech.de>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <20250716185027.2762175-3-heiko@sntech.de>
+X-ClientProxiedBy: VI1PR09CA0185.eurprd09.prod.outlook.com
+ (2603:10a6:800:120::39) To AS8PR04MB8897.eurprd04.prod.outlook.com
+ (2603:10a6:20b:42c::20)
 MIME-Version: 1.0
-Message-Id: <20250717-rockchip-i2s-simplify-clk-v2-1-b697542a7c32@linux.dev>
-X-B4-Tracking: v=1; b=H4sIAEjleGgC/42NQQ6CMBBFr0Jm7Zh2KpK48h6EhbRTmYBAWm0gh
- LtbOYHL95L//gaRg3CEW7FB4CRRpjEDnQqw3WN8MorLDKSoVJUmDJPtbSczCkWM8poH8SvaoUd
- WlbqUlXet0ZD3c2Avy9Gum8ydxPcU1uMq6Z/9p5o0ajQtGe90a5iu90HGz3J2nKDZ9/0LrI/EU
- 8IAAAA=
-X-Change-ID: 20250712-rockchip-i2s-simplify-clk-e070457fdb31
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Troy Mitchell <troy.mitchell@linux.dev>
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1752753489; l=4356;
- i=troy.mitchell@linux.dev; s=20250712; h=from:subject:message-id;
- bh=5U5+oKM9TS56skKvfyBUuonPmWf8aGSQ+l3JH2CKHPI=;
- b=H3hkHMXg+LJmKavNAJi6r6t4igwPotof77JG4whPYAh5YKQkdHsjFaSDCELs6RIYLtRrQpeke
- aK/5osgdscRDVYT5GW9fb2mt9rGyqmXcehKlwzBOhMHud0Y+c6hEvEE
-X-Developer-Key: i=troy.mitchell@linux.dev; a=ed25519;
- pk=zhRP1xE0bftrurqSWI+SzcSdJGIZ0BTTY9Id0ESzqlI=
-X-Migadu-Flow: FLOW_OUT
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|PA2PR04MB10347:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4bdf07d6-bbbf-4dc5-0d50-08ddc52c719f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?bnQrTHNmZnh5VExMQ2pDMUMvNVRsYU93MmVVTVpvc3l6V3VzVW1hSzhKMmhq?=
+ =?utf-8?B?UXRheExjNTd2cXBPazNlQmZwdGNjQ3dDVGg4RHd2Wk9NT2xJZ2tDdDMyU1JB?=
+ =?utf-8?B?RW5UTVZVc3JsZEtWaVFPTG9JNDFBV3VRa2RxUjNVQVJJOTAyNVRRYjdubjd2?=
+ =?utf-8?B?dXg3aGlRaHFBd1JycUkzMEFHekNkMEhWS1E2WGEzVWpwZGdHMmZYN013RTNN?=
+ =?utf-8?B?MTR5VHVtaFRUem4xUEZCamg3b01hK2VyNnRxcDdoWFJXWWNhOHB4b3NVQ096?=
+ =?utf-8?B?ZEZhcGljcjhHTmdvREJVbTh0eWpMeEtCWmROVmNiM2VPeDJBeWptWFVNdkRY?=
+ =?utf-8?B?cmhXVEtTMFJkM0Nza2JEdkNNV01adkZ0R3g0WklQNlhkbUpzTUNyTll6N0kr?=
+ =?utf-8?B?QXZXNGV3eXFCQmZpUU0vR2pzTk00a3prZ3MxM3FnYUVqblk5WWpUTmxsZDNy?=
+ =?utf-8?B?cTVKNEN2Q29QVGVzcnFtTlFEamZnNy9kbGJPM25GM3pROUJiak9Kbkx0Y2VO?=
+ =?utf-8?B?R0JvZzlIc3F6bDZSQkFUQ2Z0UHphM28vK2lqTW5yWlE0VlROVTFEdkVWZmZn?=
+ =?utf-8?B?U3JlODA2SkJpSlJQM3QxSWQ0YlB0d3VuVWV5YzhhdG1sMURYbW1OVUd4T3cz?=
+ =?utf-8?B?Rmh5ZVF0SFovVnltdHpYS0lhdnk1OUJYTjB5ZjVKT2Fqc1FOQ013Rm8yYWpj?=
+ =?utf-8?B?U1ZrOFFPMmxLVWFJNmtKS0RMZ2lqSXZFZndhTmdRZGZQR2hkZWlYRmlrVjFm?=
+ =?utf-8?B?SjQ3azN6Vk8xa2VGMXU5QUduSTREa3k2eEpYK0cwYk9pdHVrVTlzdEtLOEhQ?=
+ =?utf-8?B?OEdtOHhHMXFEY21sRExwbklRbS9lZXZRZG5uTW1GNXp1Uk9NU0FTZUdpMWVk?=
+ =?utf-8?B?MGtNVG5FOEhyY0duMGp3UzUzdUZyb3BIaVNWNDIwbFcxU2preXZCeURNY3hS?=
+ =?utf-8?B?RnBEMG5tWklBclhVVjY3NEU4QmdiVmpDaGFYTGpuUUVEMGNZbUZ6SXkzWXR5?=
+ =?utf-8?B?UWFEdS80aXh3a1Q2em1yVDJVdFhCMHB1bnVPaFdSNlNCdks1QUNDVXY4Y2hC?=
+ =?utf-8?B?amtUdXNsOUpQRFhoMWZ0SkJvMk1XN3A4d290eU9KQWMyZGNsZU43V05nOVVI?=
+ =?utf-8?B?V0Q3ZG14MTBiNEpqZVVLektzZU5PazNVTHQ5TGc1bmhSWlMzVjcrQjYrNFdB?=
+ =?utf-8?B?RG9rcHk1Y1l0SWlKWEpKY2dXUW4zU1h6bnlIa210R2kwY2s5SmtUTlJZNndZ?=
+ =?utf-8?B?Q0t1K2krRzdZN012V1BZUE92V0tIR2oza1dPTG5pWEtpWEZwNDB3eHh6dHY3?=
+ =?utf-8?B?dTF5Y2g0bmJHWFVOaTljdE9SbEVhWjNwMGRJOHpRbFJiSjBaZWFmSC85YUpr?=
+ =?utf-8?B?WS9ZQndsTi9odG03K1V6WkN5Z1dhTzFqb3owZ1E2NjV0SzVWNEduQzRoRGFV?=
+ =?utf-8?B?MllORE13T0hLd21XbGVzaXJaMmt1ajhQK0JKS1BXODMwRzI1Ty90WmFRVjZw?=
+ =?utf-8?B?eUc4cnE1UHNoK1BYazJvajYxT2lSUXBYOHVzYysvOW5odERMdUlxUjIxTWdB?=
+ =?utf-8?B?dm1RbW9DSG1hQ3BuU21xTTdNRHVRNFA1WXJCL3BXVnpJWEZQVmFQV0UzY3lZ?=
+ =?utf-8?B?L3B4bnJDcGxmbW91Y2NzVWZQUm1aaXpYRVpLVm9kVVYyeUh6U1hmaXdBTUYx?=
+ =?utf-8?B?Z2t3cTNGR1FKdEZTUEdMTWxQM3VGUThKckpRdmFoMGRtNEk1UmVEWnhpSjlT?=
+ =?utf-8?B?S3h2cjBVY3lqQ2dHRUNxeVNnYW95VjFQUXVNVFJvREpDWmpLRlFYV0RQcUpE?=
+ =?utf-8?B?cVpFcUJhZTlrTVVWOGg4NThsdGRkSDhnOFU4c0VMa0pSTXE5T3E1RDlUa05x?=
+ =?utf-8?B?L3lhZUF4cmliQkN4dmFXbllvUnU3eVdlTEx2SEdZTi9GNEhVZUxOSERxZW9l?=
+ =?utf-8?Q?qw/zo4au9Bs=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?U2RCVmtaVGJ5QjRKTFJJb25hb2ZVS2hmbmw4ZjVVUmdMQVV4NTJSNENRcFBl?=
+ =?utf-8?B?L291TnB5TmNQZnFaUXpTVXAwYkFuMWNuNHZrTE9MWWFLQi92YVVjQ0M2dlZ5?=
+ =?utf-8?B?R3FML0QxRitzNkwvSVVCbFRKRFB4MGxkbHR0SXpUZWFZYnhET3hNZ2N4MG9J?=
+ =?utf-8?B?SXVEQXVvQUZOd2VCaHQrNnh3L2ZnanFzYkJBVnlOWElyT3gvcDF2RW9yeEZV?=
+ =?utf-8?B?aHJLbVJMSVVTTTJIZThSam9CSHNqenppRVlMYzd4T3cxUCtaeFVtR3MvZUlz?=
+ =?utf-8?B?MnloUDJzRlFSWllYQ3hyVGJlZ1Q5REZkM2ZNaEliaGRkRk9lQjlmbWJnM2tr?=
+ =?utf-8?B?Ty9rQmx3dHFSOERDUm5YMFhRWTZyWDdvUkxHNDAvenZVeDQzS3ZMNVpQYzAz?=
+ =?utf-8?B?WVd0eXZaMXBtNklUaE1pRWtDYS82NERnNUZTOGpLTmtzQXBKR3Q0TFdUWk9B?=
+ =?utf-8?B?VENvMkZIcEE0TlA0U0pQU0FKU2NlM3UzaUh5eGx6MVRtQnB3cDZqSzZWbEpB?=
+ =?utf-8?B?RlBZOWFxd0JrTHBnaS81Z3lrbUtpV2N4VWhwMXlWclV6L2FzVm0vZkQ1TGNJ?=
+ =?utf-8?B?VEVIUWF6b3VVRW1yMlN6QUVDT1AxMEQyTm5Mb0xkaXNNeDV4TWFBeHA5VFBT?=
+ =?utf-8?B?V2Fjd080d0w5Vkp2YlB5Qm5TOXRNT2RIYkFoVUNPYUVOQUVaZkFicWJpVjNT?=
+ =?utf-8?B?d3FqWkh1N3I4U2VtT2ZSejhoNGl3SFJpOGhuMXpNODEyT3VCeGZQSnJrbXQ0?=
+ =?utf-8?B?ajBsZzdPbU52bEp1NmIza3hCMmlOYXFFV1IzRHhGVVh6b1NpYnFKcXM5dFFP?=
+ =?utf-8?B?UVVZY2JGL2g0Q0FsTGdaalFHckcwOGRrWEVVTlBoOUtzNGpaR0VBTnNtamt4?=
+ =?utf-8?B?TFJUcmk5M293dG1sQWZnVnlya09Jc0gyN05tQkkwZ2dqZVZMS2VzV1dPNDJi?=
+ =?utf-8?B?QmxOTGN5SnFLYVE1aktoSU5CRXY1SzNSYkNKNDBGUUxxRmRONTREUWhySm9i?=
+ =?utf-8?B?Ym9ZWURnbE12VEhEOXE0bWIydXRQWWJ1RU1HU2hPRm1pWThadDZEd3BGQXpG?=
+ =?utf-8?B?b243bzNsTXVhL1dpa2ZRaGtjTHBPcm9wUjRiazk0Tkt1QTBzcmlzK1J4dHRo?=
+ =?utf-8?B?MkNPYjRqWmsvRnRSRkc0NFdka1FlRDkxTnZIblZGNjg3TjZYQkI2OUFKcjY4?=
+ =?utf-8?B?V3l6QVF5RmhmVENOSnhrK1VyN0lRREFtT2R3WkQyVnFKUng1NXhrMnlKK0ly?=
+ =?utf-8?B?SkhPb0Vkd0I3UWQ1Y2Zoa3JScW9XMXA5bklPN000NEF6OVFhMHdONjNSZTNN?=
+ =?utf-8?B?a0VVdjJsdWt5ejNPYUFYdFJmMjZDd2xSRVYzVWJ1ZDJWdWlZekJaQjNKb3FJ?=
+ =?utf-8?B?U2luZyt0Ym9sR080bm9DbHo5QUtvMjFORjA4ZDI5bnhVb2Mzb2ZrRklCbTV5?=
+ =?utf-8?B?NDNsRUM5RnY5K1BQU2ZVZCtUdVY0U1BVKzluVXRERmgvWnQ3YWRFOVNWbk41?=
+ =?utf-8?B?WEQ2cTdGd2x2Q3JEOGY5czlVeng2UzlEQnNtVEFXK2pLNFc3NkE1dnZCOTEw?=
+ =?utf-8?B?ZklLQm5IbG9xMWh3WkMzeWlTWnYxb3dEaVNkMmh5M0ZxS1NTZytwOFN4cjVQ?=
+ =?utf-8?B?YVFzVzlKeHVuMWcyNHdzVjRpM0pEL3VMRUpsNGNkMlVKOHNENGg5cTJkN2JX?=
+ =?utf-8?B?NVJNSW9iTFI3YXV3QkNaUlVMdDBOTFZlekNjeHRscS9SbTdqMS9FNzNUSkVw?=
+ =?utf-8?B?SDRsbWpLSzczbXlLaWN5NWI5dTJEYU93SGE4VnNpeU1DNTUzZElXelIvSkNw?=
+ =?utf-8?B?QlRjS09qK013TmtMUlA0Si9aK1dxSnhhd1U0cGFmWmpqT1FaaUpwVTVlQlJR?=
+ =?utf-8?B?WU8rQmQxWWx0TTdvdlUxSklRU3M3WjJuaEJ2WU1ab0pxbFJMcldsUWRJZUc2?=
+ =?utf-8?B?dG04NHNta1Q4dnBQT1BKSGk0WXZ2MnBDU0NPZngvdlVXVDlxenNpSkNlUDFr?=
+ =?utf-8?B?K2RVcElVOWp6QU1XNUFvWGNsWEdjbExhaUlKdW5WenIybURmSS9ka3hPR3ls?=
+ =?utf-8?B?ejVjOEN3LzhOOS9DV3NUc2xoRzFITG5GMlBVRk9JTlJmQ2RwQ3ltU1BpMHh6?=
+ =?utf-8?B?bHEyWkFRV09uRVRnSDVVUmtXQ3VXWWYrOGFiUDJoZy82ZVNmTjNyVk1YQXJj?=
+ =?utf-8?B?YXc9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4bdf07d6-bbbf-4dc5-0d50-08ddc52c719f
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jul 2025 12:21:23.4001
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 6MHtSICGH1Csf2Pr/K1Am2r4QXYN/dFUlEpQIJ5seChsYRBnfnEmbFv6MB2LV789siz/PSrPuMiGxesJ1pFi5FMPzh9Z4dEXbHg5WiLwQjc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA2PR04MB10347
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250717_045844_959319_A8BDBC3D 
-X-CRM114-Status: GOOD (  12.92  )
+X-CRM114-CacheID: sfid-20250717_052129_546283_BA69FDFD 
+X-CRM114-Status: GOOD (  31.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,141 +174,161 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace devm_clk_get + clk_prepare_enable with devm_clk_get_enabled
-to simplify clock acquisition and enabling.
+Hi Heiko,
 
-Use dev_err_probe for concise error logging and return handling,
-reducing boilerplate code and improving readability.
+On 7/16/25 8:50 PM, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> The DisplayPort carrier is a very simple baseboard only providing serial,
+> ethernet and a displayport output.
+> 
+> But its main functionality is that it routes the Analogix eDP controller
+> to this DisplayPort output, which allows to test that controller simply
+> by hooking it up to a suitable monitor.
+> 
+> The Analogix-DP controller supports eDP 1.3 and DP 1.2, so can drive
+> both eDP displays as well as full DP monitors. It does not support DP+
+> so passive DP-to-HDMI adapters won't work.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> ---
+>   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>   .../rk3588-tiger-displayport-carrier.dts      | 118 ++++++++++++++++++
+>   2 files changed, 119 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index 7946bec10670..0c915679fde6 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -178,6 +178,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-video-demo.dtbo
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-displayport-carrier.dtb
 
-Signed-off-by: Troy Mitchell <troy.mitchell@linux.dev>
----
-Changes in v2:
-- Fix return value of regmap resource(robot's warning)
-- Link to v1: https://lore.kernel.org/r/20250712-rockchip-i2s-simplify-clk-v1-1-3b23fd1b3e26@linux.dev
----
- sound/soc/rockchip/rockchip_i2s.c | 52 +++++++++++----------------------------
- 1 file changed, 15 insertions(+), 37 deletions(-)
+Please sort this alphabetically.
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 0a0a95b4f5204701b52ca924683d51c29992015d..1dba2d9b2241860a9d87dd4319b135dc249d8e17 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -31,7 +31,6 @@ struct rk_i2s_pins {
- struct rk_i2s_dev {
- 	struct device *dev;
- 
--	struct clk *hclk;
- 	struct clk *mclk;
- 
- 	struct snd_dmaengine_dai_dma_data capture_dma_data;
-@@ -739,6 +738,7 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 	struct snd_soc_dai_driver *dai;
- 	struct resource *res;
- 	void __iomem *regs;
-+	struct clk *clk;
- 	int ret;
- 
- 	i2s = devm_kzalloc(&pdev->dev, sizeof(*i2s), GFP_KERNEL);
-@@ -757,38 +757,24 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 	}
- 
- 	/* try to prepare related clocks */
--	i2s->hclk = devm_clk_get(&pdev->dev, "i2s_hclk");
--	if (IS_ERR(i2s->hclk)) {
--		dev_err(&pdev->dev, "Can't retrieve i2s bus clock\n");
--		return PTR_ERR(i2s->hclk);
--	}
--	ret = clk_prepare_enable(i2s->hclk);
--	if (ret) {
--		dev_err(i2s->dev, "hclock enable failed %d\n", ret);
--		return ret;
--	}
-+	clk = devm_clk_get_enabled(&pdev->dev, "i2s_hclk");
-+	if (IS_ERR(clk))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(clk), "hclock enable failed");
- 
- 	i2s->mclk = devm_clk_get(&pdev->dev, "i2s_clk");
--	if (IS_ERR(i2s->mclk)) {
--		dev_err(&pdev->dev, "Can't retrieve i2s master clock\n");
--		ret = PTR_ERR(i2s->mclk);
--		goto err_clk;
--	}
-+	if (IS_ERR(i2s->mclk))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(i2s->mclk),
-+				     "Can't retrieve i2s master clock");
- 
- 	regs = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
--	if (IS_ERR(regs)) {
--		ret = PTR_ERR(regs);
--		goto err_clk;
--	}
-+	if (IS_ERR(regs))
-+		dev_err_probe(&pdev->dev, PTR_ERR(regs), "Can't ioremap registers");
- 
- 	i2s->regmap = devm_regmap_init_mmio(&pdev->dev, regs,
- 					    &rockchip_i2s_regmap_config);
--	if (IS_ERR(i2s->regmap)) {
--		dev_err(&pdev->dev,
--			"Failed to initialise managed register map\n");
--		ret = PTR_ERR(i2s->regmap);
--		goto err_clk;
--	}
-+	if (IS_ERR(i2s->regmap))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(i2s->regmap),
-+				     "Failed to initialise managed register map");
- 
- 	i2s->bclk_ratio = 64;
- 	i2s->pinctrl = devm_pinctrl_get(&pdev->dev);
-@@ -796,11 +782,9 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 		i2s->bclk_on = pinctrl_lookup_state(i2s->pinctrl, "bclk_on");
- 		if (!IS_ERR_OR_NULL(i2s->bclk_on)) {
- 			i2s->bclk_off = pinctrl_lookup_state(i2s->pinctrl, "bclk_off");
--			if (IS_ERR_OR_NULL(i2s->bclk_off)) {
--				dev_err(&pdev->dev, "failed to find i2s bclk_off\n");
--				ret = -EINVAL;
--				goto err_clk;
--			}
-+			if (IS_ERR_OR_NULL(i2s->bclk_off))
-+				return dev_err_probe(&pdev->dev, -EINVAL,
-+						     "failed to find i2s bclk_off");
- 		}
- 	} else {
- 		dev_dbg(&pdev->dev, "failed to find i2s pinctrl\n");
-@@ -843,20 +827,14 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 		i2s_runtime_suspend(&pdev->dev);
- err_pm_disable:
- 	pm_runtime_disable(&pdev->dev);
--err_clk:
--	clk_disable_unprepare(i2s->hclk);
- 	return ret;
- }
- 
- static void rockchip_i2s_remove(struct platform_device *pdev)
- {
--	struct rk_i2s_dev *i2s = dev_get_drvdata(&pdev->dev);
--
- 	pm_runtime_disable(&pdev->dev);
- 	if (!pm_runtime_status_suspended(&pdev->dev))
- 		i2s_runtime_suspend(&pdev->dev);
--
--	clk_disable_unprepare(i2s->hclk);
- }
- 
- static const struct dev_pm_ops rockchip_i2s_pm_ops = {
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-turing-rk1.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-coolpi-4b.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
+> new file mode 100644
+> index 000000000000..5bd79877194a
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
+> @@ -0,0 +1,118 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2024 Cherry Embedded Solutions GmbH
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/soc/rockchip,vop2.h>
+> +#include "rk3588-tiger.dtsi"
+> +
+> +/ {
+> +	model = "Theobroma Systems RK3588-Q7 SoM on Tiger Displayport Carrier v1";
+> +	compatible = "tsd,rk3588-tiger-displayport-carrier", "tsd,rk3588-tiger", "rockchip,rk3588";
+> +
 
----
-base-commit: 733923397fd95405a48f165c9b1fbc8c4b0a4681
-change-id: 20250712-rockchip-i2s-simplify-clk-e070457fdb31
+Please add ethernet0 to /aliases?
 
-Best regards,
--- 
-Troy Mitchell <troy.mitchell@linux.dev>
+> +	chosen {
+> +		stdout-path = "serial2:115200n8";
+> +	};
+> +
+> +	dp-connector {
+> +		compatible = "dp-connector";
+> +		dp-pwr-supply = <&vcc3v3_baseboard>;
+> +		label = "dp0";
+> +		type = "full-size";
 
+Please order alphabetically the two properties above.
+
+> +
+> +		/* Q7_DP_HPD# but Q7_HDMI_HPD# could be used too */
+> +		hpd-gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_LOW>;
+> +		pinctrl-0 = <&edp0_hpd_l>;
+> +		pinctrl-names = "default";
+> +
+> +		port {
+> +			dp_con_in: endpoint {
+> +				remote-endpoint = <&edp0_out_con>;
+> +			};
+> +		};
+> +	};
+> +
+> +	vcc3v3_baseboard: regulator-vcc3v3-baseboard {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc3v3_baseboard";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		vin-supply = <&vcc5v0_baseboard>;
+> +	};
+> +
+> +	vcc5v0_baseboard: regulator-vcc5v0-baseboard {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc5v0_baseboard";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +	};
+> +};
+> +
+> +&edp0 {
+> +	/*
+> +	 * Note that this board doesn't respect Q7 standard as Q7 has
+> +	 * lane 2 of HDMI on the same pin as lane 0 of DP and lane 0 of HDMI
+> +	 * on lane 2 of DP but this board uses HDMI lane numbering instead of
+> +	 * DP lane numbering for its DP lanes.
+> +	 *
+> +	 * It should be possible to match Q7 standard if required by requesting
+> +	 * the eDPTX controller to swap lanes with:
+> +	 *
+> +	 * data-lanes = <2 1 0 3>;
+
+I don't think that's true currently?
+
+The driver only seems to be supporting swapping the lanes, c.f. 
+analogix_dp_lane_swap() which routes it to either 0 1 2 3 or 3 2 1 0 but 
+no mix like the one we would need. Also, this function is never called 
+with anything but "do not swap" argument. So we would need to fix the 
+driver to support that.
+
+Also, this is the kind of information we should have in Tiger DTSI and 
+not some "random" baseboard DTS which will actually not make use of it. 
+We should have data-lanes = <2 1 0 3>; in Tiger DTSI actually but 
+considering 1) the driver doesn't support that, 2) we don't have HW to 
+validate it works; I guess we'll just leave it at that.
+
+> +	 */
+> +
+
+Aren't we missing the data-lanes property here? I don't see a default 
+and I would assume we should be providing one?
+
+Documentation/devicetree/bindings/media/video-interfaces.yaml specifies 
+it either starts at 0 or 1, depending if there's a clock lane or not. As 
+far as I could tell, DP has 4 data lanes and the AUX lane as well, but 
+nothing clock-specific so I assume starting at 0 would be correct?
+
+On a side note, is the audio output on eDP TX controller already 
+supported like on HDMI? If so, we should add the edp0-sound node like in 
+our downstream fork. But looking at the driver, I don't think we 
+implement any dp_audio_* callbacks from drm_bridge_funcs which I assume 
+would be the way to implement that.
+
+Cheers,
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
