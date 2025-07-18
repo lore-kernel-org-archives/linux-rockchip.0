@@ -4,60 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 198E1C83F17
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 06:55:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0280C83F1A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 08:01:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=n8yIAQWifmhBb8z08q/IlPtwiCWXx9X/GfKpWqWCyeA=; b=irvgmhDuPCETXG
-	V+edosbF/EdgZpQ+lxwbQYkZaYs37LNvhqqBPDr/o32zKuHiU7Em+G3EE76dKj/jHDbd4QCncf1O8
-	tJYkIOTRQ/u1EyECXpo8T2ZaFifHaIhcp56TMtnNB1gdl9L/1iqyn3iM+JjHkm84zvwHVutXl0GFX
-	jjDuA2j0dbATdI2kjPKynsx+MrUfLh8oKt6+KhILu+ty+Rqi8M+0/C0+0fR2hm3D4aR6DnqQcBdJ+
-	qEPJa92ZWwRTM7wqZ2duOWs/vU4Ayl7VqfTBmQPxrc+M80Fy+KoPkr99XKhgIA82ZQoR3uR1pBRoA
-	JSHfUpdU7VjZp2ZRRJFQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KkitkSxmWGxvNsHkKOr0+ZTmpL6LKrRa+1N52VIDRT4=; b=YWbmsmkiMFBw+a
+	YERhSqHD23LK49/jjqbDVRqn2+aulqBBNnDOR/8jjBGxh/g+MrSZ5tMZYNgZ9Jrvh75mkBJQxbg0r
+	IBcLLU6BjX765ZLHV8ivKytTy5mqKnHQXDNt5z85DM8ENfTpyLkjbRcyZzzCeQmuQu3WNjfq97Rcy
+	FSSnaYXtPN87mjusBPrsQ3GCrQ4QUHvEcsIadOoO6DiC1dNDuRAXaLtxgXVIfFAAHJRkmLtvnQE8K
+	R5MQ6M1l0QgIVMpxmvb41fuVcUIX+1X8FxkVXe6tQ0qKEefffQ5NnUZs82Ka5P73g2wpyDH29gh0G
+	AKo8ITAnTDDfyqufQxXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucf0I-0000000Boqz-3PNW;
-	Fri, 18 Jul 2025 06:55:34 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucemm-0000000BnPr-10AB;
-	Fri, 18 Jul 2025 06:41:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=I5
-	N1yFgSMKSP+yKcbwHy28RLjBgi4tDP/QpC0dPcGt8=; b=ki+en/rFRoCuGDoc9o
-	jj5icWfNYuhgFscJfdlQOsyh8LJDuKh1mdo4qsx2swDaz57tsHTSz+EMB/vi9Xk5
-	b+5LFHS9zy3gESIYW+wTyyA8JJzF/Cr290qDCSm/S+UY+k5LEbNTex2E+mykwF1k
-	SdO6u4W1zZqhqeFcV2eBfL8Bo=
-Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wCHvgSR7HloFskiFg--.22270S2;
-	Fri, 18 Jul 2025 14:41:26 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: hjc@rock-chips.com,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1ucg1y-0000000Bxk6-0MM2;
+	Fri, 18 Jul 2025 08:01:22 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ucfxK-0000000BwZg-11i5
+	for linux-rockchip@lists.infradead.org;
+	Fri, 18 Jul 2025 07:56:36 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-3a54690d369so1446228f8f.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 18 Jul 2025 00:56:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1752825393; x=1753430193; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=yIkRard6W+E126nlrFH68FBbJJING0uBmwMIZSswXsA=;
+        b=ESsFpS+gfaJ7LYwX2UJrgLRCdvwdIJBni/LoQDwflaHPRze5RRMhg7CirBYVxisl8i
+         BLi7i1KFwn2n/f7xdCkCTNcRTCwbmSbru3pjMTHTAMlibiWmqlnzn0+xTdtrUq4MVu5V
+         Hjuy4hG+Yx5ONAxuGYutUnRO26lhuE8D3BytdBntAqsCdTXv22QwO5VNu/K6CnzV0Hot
+         KBhNXFKYaHu7RMV7Kshz48le+DPA5OCi/M+JfvyauayA5ZEuQkJJ+7x5jLe3GeWKL2Jl
+         d7HVV63f0fMYdlyUg2ckOsWcORx7SIZ8QM9GVnK/P12GwHKeS/0JG7j/OlWSj8Se+HDc
+         ZjAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752825393; x=1753430193;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=yIkRard6W+E126nlrFH68FBbJJING0uBmwMIZSswXsA=;
+        b=JK7VDr2InP18iSjxffEPkZdbLyGgCCPDu2GWYhbdXRXUT9U2KKxmj6hZJEeuueJHKb
+         imi/pllK3VR0+Znnelxw7Bbo43CigOg34KS4H/LqaBdzpORq8IH1P+6WOwUWEEVI8Eys
+         h0bqiVD2QsMegPCgDn85zajnaaKiagIgnRunF8x94WZsXCUiJSbNn24Jj5E7onyXscLP
+         Kv2JIXL+9BBLv4fcT9B2i/FDEbRNTDxcHCDR13b3njkANCed6nqiWlz3bEwM0/16EdP8
+         YNjmvBJl1Quo5XjXebwyUY5EfGHCdm/BfvYOPEpizjQIyOKGjOediv2LV+G2Ov+bJHF4
+         yYRQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWnf4I2n0PlYNDKvT8NGtloCapR6L8JYb/5rgjprrwxDwnEcedqSpU+2avNOUTTqp/+o/bLR7D0NlrA4x48Lw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyx1Tpn0q5Ak61a4MECoM7QrrR1Gqf73RmhU1XFvPcI+Tr8d4rt
+	vH97+rpFa7TyUoppswNmwoL8gO3GzLmcZ0oQSFT/Y3tJlAZYDsvVXfjctOFT7Um2Lb8=
+X-Gm-Gg: ASbGncsiAwMcKGBmnujauLcM3KkM2hoUiNyJPkqrh+5DE+DMdN7WiAsbMN9ABuBMt1j
+	CyjvtwBIo1+0qkbeBfVlQ2wNIrPUIHOGh6okp0Si6AHQbdiyWFVzGLk0IALxc5gCuWvSmkgDL08
+	vALlU9NdwB6p0FGLEpfN5eyss+PSgSC4FEnriVe3JA54W2gMKgIhOrwEoNZv4D+nbytlF3Tez9I
+	+RVb0OVJI6hy1gh9ClHJJgVLQ8ojb7WyrnC+uzinlbHWscfaITbcleHC8vRBH00Vf969when3yY
+	1CCUhPG2baeqfWd0xDX//mSNQhrOGaXH97hiDIahnnH/Hs6sqj201j5fsC7KoRIHATUm2IRwaUf
+	LxzkQ+iW2C8CWpnnqVyVM
+X-Google-Smtp-Source: AGHT+IFR7z0xrtW7kV+L/PWsVn19Mve34KO13llGmq0De9UTBvi6IEowVSVAnjHLfBTTi45HhGu+EQ==
+X-Received: by 2002:a05:6000:1a85:b0:3a4:ef36:1f4d with SMTP id ffacd0b85a97d-3b60e4f2c6amr7520566f8f.38.1752825392621;
+        Fri, 18 Jul 2025 00:56:32 -0700 (PDT)
+Received: from brgl-uxlite.home ([2a01:cb1d:dc:7e00:be63:a233:df8:a223])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b61ca48a23sm1080851f8f.54.2025.07.18.00.56.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 18 Jul 2025 00:56:32 -0700 (PDT)
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+To: Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Lee Jones <lee@kernel.org>,
+	Madhavan Srinivasan <maddy@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	"Rob Herring (Arm)" <robh@kernel.org>
+Cc: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	linux-mips@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH 1/2] drm/rockchip: vop2: Add delay between poll registers
-Date: Fri, 18 Jul 2025 14:41:13 +0800
-Message-ID: <20250718064120.8811-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
+	linuxppc-dev@lists.ozlabs.org
+Subject: Re: [PATCH v2] dt-bindings: gpio: Create a trivial GPIO schema
+Date: Fri, 18 Jul 2025 09:56:01 +0200
+Message-ID: <175282531516.45055.8482528409833116992.b4-ty@linaro.org>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250714201959.2983482-1-robh@kernel.org>
+References: <20250714201959.2983482-1-robh@kernel.org>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wCHvgSR7HloFskiFg--.22270S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7tr4UWrW3KFW5tF48AF1rXrb_yoW8Zr17pw
-	4jgF12gF97Ga1jvr1xtr4DZw4Yyan7Aay7Gws7t3s7Gr98Kw1DJ3sI93ZYyFyUJ3Z7ArWj
-	vw47J39rAF4q9r7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jweOJUUUUU=
-X-Originating-IP: [103.29.142.67]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEgSOXmh56BWTowAAsa
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250717_234136_598245_C7B74902 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20250718_005634_293187_A3C3B99B 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,46 +117,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-According to the implementation of read_poll_timeout_atomic, if the
-delay time is 0, it will only use a simple loop based on timeout_us to
-decrement the count. Therefore, the final timeout time will differ
-significantly from the setted timteout time. So, here we set a specific
-delay time to ensure that the calculation of the timeout duration is accurate.
 
-Fixes: 3e89a8c68354 ("drm/rockchip: vop2: Fix the update of LAYER/PORT select registers when there are multi display output on rk3588/rk3568")
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
+On Mon, 14 Jul 2025 15:19:51 -0500, Rob Herring (Arm) wrote:
+> Many simple GPIO controllers without interrupt capability have the same
+> schema other than their compatible value. Combine all these bindings
+> into a single schema. The criteria to be included here is must use 2
+> cells, have no interrupt capability, have 0 or 1 "reg" entries, and
+> have no other resources (like clocks).
+> 
+> Note that "ngpios" is now allowed in some cases it wasn't before and
+> constraints on it have been dropped.
+> 
+> [...]
 
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Applied, thanks!
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index 45c5e39878133..d712c5b6b50e3 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -2066,7 +2066,7 @@ static void rk3568_vop2_wait_for_port_mux_done(struct vop2 *vop2)
- 	 * Spin until the previous port_mux figuration is done.
- 	 */
- 	ret = readx_poll_timeout_atomic(rk3568_vop2_read_port_mux, vop2, port_mux_sel,
--					port_mux_sel == vop2->old_port_sel, 0, 50 * 1000);
-+					port_mux_sel == vop2->old_port_sel, 10, 50 * 1000);
- 	if (ret)
- 		DRM_DEV_ERROR(vop2->dev, "wait port_mux done timeout: 0x%x--0x%x\n",
- 			      port_mux_sel, vop2->old_port_sel);
-@@ -2086,7 +2086,7 @@ static void rk3568_vop2_wait_for_layer_cfg_done(struct vop2 *vop2, u32 cfg)
- 	 * Spin until the previous layer configuration is done.
- 	 */
- 	ret = readx_poll_timeout_atomic(rk3568_vop2_read_layer_cfg, vop2, atv_layer_cfg,
--					atv_layer_cfg == cfg, 0, 50 * 1000);
-+					atv_layer_cfg == cfg, 10, 50 * 1000);
- 	if (ret)
- 		DRM_DEV_ERROR(vop2->dev, "wait layer cfg done timeout: 0x%x--0x%x\n",
- 			      atv_layer_cfg, cfg);
+[1/1] dt-bindings: gpio: Create a trivial GPIO schema
+      https://git.kernel.org/brgl/linux/c/2ace85b5bbd065a4e037970154854dc2b41d7b31
+
+Best regards,
 -- 
-2.43.0
-
+Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
