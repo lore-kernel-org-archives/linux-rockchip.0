@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43DADC83F1A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 11:27:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D5FBC87FC3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 11:27:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+AVnKlNBtVpU4Sf2ZwUPO2rGK7XsBYXfH7jaJOnz+0o=; b=0ubd6Q0TfN97dG
-	er3pgfUJQvkC8ywUMAED33UtdqXu6q8UJ/aAOLfaLWXRZnQq9sIgMQraPSevm1XfCRtA+eitB1jtA
-	56S/27WvIwI06t6qRjoG7J1v6+A6nxXd1bq9vcP13ofva9c5/LvPBQPh7jUQnGvM1iWxCwGctyvZN
-	dzH+PZgoMvsjM83jCGeNroytlhT+XTLRVubZBoDaWSCx3pfG4HPmG17QloRoi8DMNxH+2MXrSCHDH
-	HUNMIcJ/uJWWdRXMrBBlBBEHvLJvbuoMcz2E/kQDXuO1u9iSuKHoUfNa6QzHGX9GKa2Q3GpRQ0Ar6
-	b42yis9whWu6jmwTJMgw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HN5KbPfGVhWlEBbD1JxTb/11LGLhM9MvoaeJtfVXjnA=; b=Xsulerd6H+9wVa
+	aGD/Tw42vrF2CJhzAJx5qMRUM7auX4XjxmQZqBz9eb0O8mZhNoXowwUOz7WWcTskHlIaBfG+DrmlV
+	ArSzZcjsYPSPDLD0zkUsMj14r0lmBX1QAL84RtumsMi6bpojsC41CH7YjO86yJMOofZfZ46W/BUd2
+	zpy/97S4ll0HAm8JhWOYgwAYF4IJjTuHkzlg8nrnZxQMjrne5Dz67CylxfmZXh08WpixQZH01cfso
+	s+F9olMXntKNh3JI4SlBlhn9cRIew5/apv6D0GxTyGPpHth5FacwahH6ZB75BoWPz7jZvZ08kGbS1
+	Ck8uwM15b+gMKJMG7yrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucjFK-0000000CQoV-1m4m;
-	Fri, 18 Jul 2025 11:27:22 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1ucjFJ-0000000CQn8-0sbX;
+	Fri, 18 Jul 2025 11:27:21 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucijR-0000000CMI1-06e5;
-	Fri, 18 Jul 2025 10:54:26 +0000
+	id 1ucijN-0000000CMH0-4AVu;
+	Fri, 18 Jul 2025 10:54:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752836063;
-	bh=k7CAZOnVX3McTF9rA6EaJjI3tqH2gxRiw0k5BhFfu+k=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Sjynf/u+D9SjkEYOCSDJrxhLi8UWPgyv13WkmDPUqBdHSgA888JhJLdg2oy4ObMt9
-	 KYovrzdWiDYVeLa6c/50qDU4SmZUkqP4hdwseHAWYqUiWl9/DLSMkdg/eHjqBXq3V0
-	 76icLc08zdr3iH8cQQnP3A3TndrdxnqI6Cmnqdkyh8Y5BRBOLwHTMH0bacvHfMhe6u
-	 IMFfDQ7HPmWFgWTe9AEcT9oOMstEHna+guZKMatkjZkjXJJq9RA01Zr/bWQ7IOaSeV
-	 dwZJdK6I2M1V9A4pWQ7OUaRAJxUnSC/SMxapeKOdL1pFzZPKZ3IBVSK0VJoykx9kOd
-	 sz9xgKfJK5huw==
+	s=mail; t=1752836059;
+	bh=L6w5YicZ+2uJKRKkkVqi5nSVRQuaPvJWVKRWUN4W6i0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=mBcI985sxjmZ0g1gAq9+isfWxrxF8FJ4PIwmiBbenOAMcNN02eCxnNKJPOnfrAKjj
+	 1cvmygrWTvd96UaDJzMRSctEZUobKQTHWXVAQST6HZefkc1Ub3c4mJYqfwBqznsEJi
+	 gx/FIehGqRVftwOK7TeUcSk4ZXwHn1K6PsAgVYEbD3LoQ3hqqeq7apfc2xzzi4xa7h
+	 HwY6WrV5Vhdl3ODsJadnTAxysi8wg0RXvma50oRYaJ9hEXaFHxOFZjkFjGmKhuOCbR
+	 12SPzJLycIPgV6eSIkvVfzT1HyP+CsVcrccu/oH3fq859lEiRedW95p/xUqa7/oaaQ
+	 TE3UkY23/Uimg==
 Received: from debian.. (unknown [171.76.80.183])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C2D9217E156C;
-	Fri, 18 Jul 2025 12:54:19 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D4DC417E1522;
+	Fri, 18 Jul 2025 12:54:15 +0200 (CEST)
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: dri-devel@lists.freedesktop.org
 Cc: daniels@collabora.com,
@@ -62,17 +62,14 @@ Cc: daniels@collabora.com,
 	intel-gfx@lists.freedesktop.org,
 	virtualization@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 1/7] drm/ci: disable apq8016 and apq8096 bare-metal jobs
-Date: Fri, 18 Jul 2025 16:23:53 +0530
-Message-ID: <20250718105407.32878-2-vignesh.raman@collabora.com>
+Subject: [PATCH v1 0/7] drm/ci: add new jobs, uprev IGT and mesa
+Date: Fri, 18 Jul 2025 16:23:52 +0530
+Message-ID: <20250718105407.32878-1-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250718105407.32878-1-vignesh.raman@collabora.com>
-References: <20250718105407.32878-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250718_035425_206368_6D922972 
-X-CRM114-Status: UNSURE (   8.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250718_035422_184492_A91B1B9C 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,38 +86,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-These devices are being moved to LAVA. The jobs will be enabled and the
-job definitions will be updated once the move is complete.
+This series introduces new jobs to drm-ci for testing the following
+devices:
+- rk3588-rock-5b
+- mt8192-asurada-spherion-r0
 
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
- drivers/gpu/drm/ci/test.yml | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Other updates include:
+- Uprev IGT and updating test expectations accordingly.
+- Adapting to recent changes in Mesa CI, such as:
+   - LAVA overlay-based firmware handling
+   - Container/job rule separation
+   - Removal of the python-artifacts job
+   - Use of the Alpine container for LAVA jobs
+   - Various other CI improvements
+- Disabling bare-metal jobs for apq8016 and apq8096, as these devices
+  are being migrated to LAVA.
+- Updating the runner tag for i915: cml (switching from hatch to puff)
+  to improve device availability.
+- Adjusting parallelism in jobs (sm8350-hdk, amly) to better utilize
+  test resources.
 
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index 81147e86bfd0..53d19ffaaf61 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -148,7 +148,9 @@ msm:sc7180-trogdor-kingoftown:
-     GPU_VERSION: ${DEVICE_TYPE}
-     RUNNER_TAG: mesa-ci-x86-64-lava-sc7180-trogdor-kingoftown
- 
--msm:apq8016:
-+# FIXME: Disable the bare-metal jobs. These devices are being moved to LAVA.
-+# Once the move is complete, update the job definitions accordingly.
-+.msm:apq8016:
-   extends:
-     - .baremetal-igt-arm64
-   stage: msm
-@@ -165,7 +167,7 @@ msm:apq8016:
-   script:
-     - ./install/bare-metal/fastboot.sh || exit $?
- 
--msm:apq8096:
-+.msm:apq8096:
-   extends:
-     - .baremetal-igt-arm64
-   stage: msm
+Pipeline: https://gitlab.freedesktop.org/vigneshraman/msm/-/pipelines/1473405
+MR: https://gitlab.freedesktop.org/drm/msm/-/merge_requests/180 
+
+Vignesh Raman (7):
+  drm/ci: disable apq8016 and apq8096 bare-metal jobs
+  drm/ci: reduce sm8350-hdk parallel jobs from 4 to 2
+  drm/ci: i915: cml: update runner tag
+  drm/ci: uprev mesa
+  drm/ci: uprev IGT
+  drm/ci: add rk3588-rock-5b
+  drm/ci: add mt8192
+
+ MAINTAINERS                                   |   1 +
+ drivers/gpu/drm/ci/arm64.config               |   9 ++
+ drivers/gpu/drm/ci/build.sh                   |   1 +
+ drivers/gpu/drm/ci/build.yml                  |  23 ++--
+ drivers/gpu/drm/ci/container.yml              |  12 +-
+ drivers/gpu/drm/ci/gitlab-ci.yml              |  95 +++++++++++---
+ drivers/gpu/drm/ci/igt_runner.sh              |   6 +-
+ drivers/gpu/drm/ci/image-tags.yml             |  14 ++-
+ drivers/gpu/drm/ci/lava-submit.sh             |  99 +++++++--------
+ drivers/gpu/drm/ci/static-checks.yml          |   1 +
+ drivers/gpu/drm/ci/test.yml                   |  73 +++++++++--
+ .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   2 +
+ .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |   7 ++
+ drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |  11 +-
+ drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   2 +
+ drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |  29 +----
+ drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |   7 ++
+ drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   8 +-
+ drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |  83 ++++++++++++
+ drivers/gpu/drm/ci/xfails/i915-jsl-fails.txt  |  10 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   3 +
+ drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   5 +-
+ drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt |   6 +
+ drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   7 +-
+ .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   5 +-
+ .../drm/ci/xfails/mediatek-mt8173-flakes.txt  | 119 ++++++++++++++++++
+ .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   7 +-
+ .../drm/ci/xfails/mediatek-mt8192-fails.txt   |  34 +++++
+ .../drm/ci/xfails/mediatek-mt8192-skips.txt   |  14 +++
+ .../msm-sc7180-trogdor-kingoftown-fails.txt   |   1 +
+ ...sm-sc7180-trogdor-lazor-limozeen-fails.txt |   1 +
+ .../drm/ci/xfails/msm-sm8350-hdk-fails.txt    |   1 +
+ .../drm/ci/xfails/msm-sm8350-hdk-skips.txt    |  73 +++++++++++
+ .../drm/ci/xfails/panfrost-mt8183-fails.txt   |   1 +
+ .../drm/ci/xfails/panfrost-mt8192-fails.txt   |   9 ++
+ .../drm/ci/xfails/panfrost-mt8192-skips.txt   |  20 +++
+ .../drm/ci/xfails/panfrost-rk3288-fails.txt   |   1 +
+ .../drm/ci/xfails/panfrost-rk3399-fails.txt   |   1 +
+ .../drm/ci/xfails/panthor-rk3588-fails.txt    |   5 +
+ .../drm/ci/xfails/panthor-rk3588-skips.txt    |  20 +++
+ .../drm/ci/xfails/rockchip-rk3288-fails.txt   |  12 +-
+ .../drm/ci/xfails/rockchip-rk3288-flakes.txt  |  21 ++++
+ .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   9 +-
+ .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |  35 ++++++
+ .../drm/ci/xfails/rockchip-rk3588-fails.txt   |  10 ++
+ .../drm/ci/xfails/rockchip-rk3588-skips.txt   |  14 +++
+ .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   4 +
+ drivers/gpu/drm/ci/xfails/vkms-none-fails.txt |   3 +
+ drivers/gpu/drm/ci/xfails/vkms-none-skips.txt |   3 +
+ 49 files changed, 771 insertions(+), 166 deletions(-)
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8192-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8192-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-mt8192-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-mt8192-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/panthor-rk3588-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/panthor-rk3588-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3588-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3588-skips.txt
+
 -- 
 2.47.2
 
