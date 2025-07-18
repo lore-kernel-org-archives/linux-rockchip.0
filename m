@@ -4,52 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDFB2C83F1A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 08:26:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F172CC83F34
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 08:39:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CH3McfqeoQkJart9lpJY9ytl0U8LUAco4K6XbNec7dg=; b=P3mrEREldQYtwI
-	2VOqAxo8laddkUqBQktjLPv5VL2HBMbqh9oMxrkq/qgck0r3JNMAZy8Ourj/cQoUnE2jT+qhwqzo4
-	6hyGSAovcBv4AS0wvzHsiYG4HAXmBin7HFlXRaKEBkhSJIjxs5sx+mnYcwpAwySEuNqvyLQtC5jBB
-	ci945OggSdXaIjs3m1ORmdcJnCDckFZYAvHF6uDY9ANdq+Pvvf/MTCHsuJP9wxXSHFtKlzC4hQRrr
-	7N/0CsBhRQt3dxbVTziD2wbq53IfN3LjOKqliYJjF6ewDgTnMe7bhbziGcDL3c5BdC2ESOaXSspx4
-	MfKC9Gk62gnmCCk+bX6g==;
+	List-Owner; bh=m3KqbApz2OzsMSZRsiy9we/GP06NXCVGAM2x7XliqV4=; b=miXC0q8gYlNF2C
+	B8+vY1JGvy8JUxZcdHAkpAXDDDPOK75QMZyM2gw7KJjIOSwB/VMT53nwRfapu7lUonZ1e4Y/e/mud
+	4xwGcqXXdWI2EMzer8xsQd84vcq8rL7YXQanTNA/3c7203bm8+RG5ls9iaBq/KV8qkm55Bpx8vEJ5
+	GfMpULWRN91iXvdR40EqTn64THa9TFVkl0yAP5MrnwzxtFlMaMi4PiSI8JHjEHU4NRQwSbnZs2Otd
+	7PqmREbZ4NPTE3zCW1PmhuT1h+6SBgSek0/YsYzuHq4B/kJszf5EAVj9R32OgStdM+YR/u5S2xMz2
+	4D/NfrdHdKFQe5sLANbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucgQZ-0000000C1i3-1l5t;
-	Fri, 18 Jul 2025 08:26:47 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ucgcl-0000000C4AI-2lXT;
+	Fri, 18 Jul 2025 08:39:23 +0000
+Received: from mail-m1973189.qiye.163.com ([220.197.31.89])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucgFC-0000000BzqY-1CAC;
-	Fri, 18 Jul 2025 08:15:03 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6DD34A4EDDC;
-	Fri, 18 Jul 2025 08:15:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DBD53C4CEEB;
-	Fri, 18 Jul 2025 08:14:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752826501;
-	bh=a1VHiYig2tcCBF/qnEVeRZwRbUaQmriCu4Wwqc44OpY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mGzi81tPM04nWK2+LRQLytTu69FIv4oYRxTfCiNCu9Q/ABQ3cK3lZQpVP9dnOwonR
-	 uhQ0Utshv1nQ9cRXW7J224yLgtG2846/EO1e8nxCVPtgcrykXewafSarYEqfH7kEMT
-	 I9qIjR95/y5iaduHAfRXS6NFvPOY5mBq+S92nY0+ug9XB496BDAcCUo0PWmopNaok1
-	 g6rjtLl6ObF2eDqEYtb67rNzTslwCsUL09vMHbDWlbCtblRDbpU3W6xka71Ui02tiG
-	 GUYCsXs3apBac5PiMwkI6Z4kUqtTVVzxmymtzp3dKWIqg9jH8PPhNkdJbXIXjv/JIC
-	 MDXIdDT/PJLRg==
-Message-ID: <2691a1ca-7325-4129-999d-61d883d1bac4@kernel.org>
-Date: Fri, 18 Jul 2025 10:14:51 +0200
+	id 1ucgUK-0000000C2pW-1Qhj;
+	Fri, 18 Jul 2025 08:30:42 +0000
+Received: from [172.16.12.153] (gy-adaptive-ssl-proxy-2-entmail-virt205.gy.ntes [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1c79131e1;
+	Fri, 18 Jul 2025 16:30:22 +0800 (GMT+08:00)
+Message-ID: <71251cf5-edf9-489f-94db-9eb74791ea54@rock-chips.com>
+Date: Fri, 18 Jul 2025 16:29:42 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 5/5] arm64: dts: rockchip: rk3399-evb-ind: Add support
  for DisplayPort
-To: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+To: Krzysztof Kozlowski <krzk@kernel.org>, Chaoyi Chen <kernel@airkyi.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
  Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
  <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
  Andy Yan <andy.yan@rock-chips.com>,
@@ -60,63 +48,30 @@ To: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
  Amit Sunil Dhamne <amitsd@google.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>,
- Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
+ Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+ Diederik de Haas <didi.debian@cknow.org>,
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 References: <20250718062619.99-1-kernel@airkyi.com>
  <20250718062619.99-6-kernel@airkyi.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250718062619.99-6-kernel@airkyi.com>
+ <2691a1ca-7325-4129-999d-61d883d1bac4@kernel.org>
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <2691a1ca-7325-4129-999d-61d883d1bac4@kernel.org>
+X-HM-Tid: 0a981ca7e66903abkunmc03baa52123841
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ08eQlYaHUoZHkNKGkIfSE5WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpPSE
+	xVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=f4elrr2yrukBrG0T2pA0xg2Zn1ijyeEtt36iL+JwKtzWgjhTbohQ23NYc1T1ISuHDdevrv8P9aJ3mpWCaVJoFWB7OQROrbmrnQL4wZlgOFRUZWKj+O1waTPK+7R2e25Wvg5cVr54ZTu5LSLmbzlhMbczTTFaqdZiBsqUs8mHr9o=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=3qLZheDap41+YH7RXHcCPq8E9eTIuAxIIHxzGTMVwQE=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250718_011502_464026_38AC894F 
-X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-CacheID: sfid-20250718_013040_566360_12447E6F 
+X-CRM114-Status: UNSURE (   9.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -129,46 +84,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 18/07/2025 08:26, Chaoyi Chen wrote:
-> +			altmodes {
-> +				displayport {
-> +					svid = /bits/ 16 <0xff01>;
-> +					vdo = <0xffffffff>;
-> +				};
-> +			};
-> +
-> +			ports {
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +
-> +				port@0 {
-> +					reg = <0>;
-> +
-> +					usbc0_orien_sw: endpoint {
-> +						remote-endpoint = <&tcphy0_orientation_switch>;
+Hi Krzysztof,
 
-How did you address feedback given here? I don't see any replies.
+On 2025/7/18 16:14, Krzysztof Kozlowski wrote:
+> On 18/07/2025 08:26, Chaoyi Chen wrote:
+>> +			altmodes {
+>> +				displayport {
+>> +					svid = /bits/ 16 <0xff01>;
+>> +					vdo = <0xffffffff>;
+>> +				};
+>> +			};
+>> +
+>> +			ports {
+>> +				#address-cells = <1>;
+>> +				#size-cells = <0>;
+>> +
+>> +				port@0 {
+>> +					reg = <0>;
+>> +
+>> +					usbc0_orien_sw: endpoint {
+>> +						remote-endpoint = <&tcphy0_orientation_switch>;
+> How did you address feedback given here? I don't see any replies.
 
-> +					};
-> +				};
-> +
-> +				port@1 {
-> +					reg = <1>;
-> +
-> +					dp_mode_sw: endpoint {
-> +						remote-endpoint = <&tcphy_dp_altmode_switch>;
-> +					};
-> +				};
+Sorry, I miss it. The port@0 should be used for USB HS. Will fix in v3.
 
 
-
-Best regards,
-Krzysztof
+>
+>> +					};
+>> +				};
+>> +
+>> +				port@1 {
+>> +					reg = <1>;
+>> +
+>> +					dp_mode_sw: endpoint {
+>> +						remote-endpoint = <&tcphy_dp_altmode_switch>;
+>> +					};
+>> +				};
+>
+>
+> Best regards,
+> Krzysztof
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
