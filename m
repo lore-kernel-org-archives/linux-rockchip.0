@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC5BC83F17
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 11:02:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43DADC83F1A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 11:27:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X+2p5nGmgXSieSBpyC3xR5SJJZNCcdprhJWIV6pEVNQ=; b=V4DN3C4LM0OaMf
-	fEDhu1rlNm/3UAs/+PX1G20+SkL7lutZjDRRYg6rqdMF6IOxiXsZG3L+AVzJs8FC0Sp4DETNGvD+x
-	wlBoSRnvYp68PhMI09S45vscv6l0pAO1MNtdhlt7+wrQaawLOA2y+JNqm/hGpCh5PfJS30BdLC0eX
-	LbiggMm3/cUfmvLJZBY6lnZhszRGxUjNYgpz28BHGMEgoanSVfJ+edZ6sPWhq+My6L4/SPk1mYXVm
-	Bb9R1cRUmflSZPaPEccw3w5lu7OdxvZ4kqmtzzRl+CGmMuPEfCnQMa0q6UVzdZ9tSeyE5p+/gUTC3
-	IAoOEuNyxF0y86zRsi+w==;
+	List-Owner; bh=+AVnKlNBtVpU4Sf2ZwUPO2rGK7XsBYXfH7jaJOnz+0o=; b=0ubd6Q0TfN97dG
+	er3pgfUJQvkC8ywUMAED33UtdqXu6q8UJ/aAOLfaLWXRZnQq9sIgMQraPSevm1XfCRtA+eitB1jtA
+	56S/27WvIwI06t6qRjoG7J1v6+A6nxXd1bq9vcP13ofva9c5/LvPBQPh7jUQnGvM1iWxCwGctyvZN
+	dzH+PZgoMvsjM83jCGeNroytlhT+XTLRVubZBoDaWSCx3pfG4HPmG17QloRoi8DMNxH+2MXrSCHDH
+	HUNMIcJ/uJWWdRXMrBBlBBEHvLJvbuoMcz2E/kQDXuO1u9iSuKHoUfNa6QzHGX9GKa2Q3GpRQ0Ar6
+	b42yis9whWu6jmwTJMgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uciqv-0000000CO4D-1o6h;
-	Fri, 18 Jul 2025 11:02:09 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ucjFK-0000000CQoV-1m4m;
+	Fri, 18 Jul 2025 11:27:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uciVR-0000000CKGD-3WB2;
-	Fri, 18 Jul 2025 10:39:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5234E5C5C60;
-	Fri, 18 Jul 2025 10:39:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 161EFC4CEF0;
-	Fri, 18 Jul 2025 10:39:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752835197;
-	bh=J3EdFx6SeghEC/3QrFs16mdw3ziovg04wubMBc5qbUM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IPlrFQBtvUlZfA7a+pVin1pFTP7wye2etea45L0KxgzvuN5VA5/XYu1MyW3Xtw9BX
-	 cXL2kXR7CiYeUQP0DsONWFLp7zbJ9zl7KUXlq5LI945F+NGunAFWedcpd57Nt4nS+B
-	 DO/r/Cx19XXM7KfS03jieyFoNUBzNpU8bbxrw2L511QVxGAr98ZXWB2uYjftwZ5dnD
-	 4YDpEFwUNh03TE5Ar8Vq6XqGAlWb5aflWRTH/TOH7rLvuWOPgTv+CLF6liQVsvP2ah
-	 yveNKo3QRKnzR2f/ScmBsawG2qE80GXNLSf3orq5fHbG8Mrq+dAmRyfBuGAtgXeiOq
-	 s1uZKCsgGIvXg==
-Date: Fri, 18 Jul 2025 12:39:50 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: manivannan.sadhasivam@oss.qualcomm.com
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
-	Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	id 1ucijR-0000000CMI1-06e5;
+	Fri, 18 Jul 2025 10:54:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1752836063;
+	bh=k7CAZOnVX3McTF9rA6EaJjI3tqH2gxRiw0k5BhFfu+k=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Sjynf/u+D9SjkEYOCSDJrxhLi8UWPgyv13WkmDPUqBdHSgA888JhJLdg2oy4ObMt9
+	 KYovrzdWiDYVeLa6c/50qDU4SmZUkqP4hdwseHAWYqUiWl9/DLSMkdg/eHjqBXq3V0
+	 76icLc08zdr3iH8cQQnP3A3TndrdxnqI6Cmnqdkyh8Y5BRBOLwHTMH0bacvHfMhe6u
+	 IMFfDQ7HPmWFgWTe9AEcT9oOMstEHna+guZKMatkjZkjXJJq9RA01Zr/bWQ7IOaSeV
+	 dwZJdK6I2M1V9A4pWQ7OUaRAJxUnSC/SMxapeKOdL1pFzZPKZ3IBVSK0VJoykx9kOd
+	 sz9xgKfJK5huw==
+Received: from debian.. (unknown [171.76.80.183])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C2D9217E156C;
+	Fri, 18 Jul 2025 12:54:19 +0200 (CEST)
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com,
+	helen.fornazier@gmail.com,
+	airlied@gmail.com,
+	simona.vetter@ffwll.ch,
+	robdclark@gmail.com,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	valentine.burley@collabora.com,
+	lumag@kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>,
-	Lukas Wunner <lukas@wunner.de>
-Subject: Re: [PATCH v6 0/4] PCI: Add support for resetting the Root Ports in
- a platform specific way
-Message-ID: <aHokdhpJUhSZ5FSp@ryzen>
-References: <20250715-pci-port-reset-v6-0-6f9cce94e7bb@oss.qualcomm.com>
- <aHoh1XfhR8EB_5yY@ryzen>
+	amd-gfx@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	virtualization@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1 1/7] drm/ci: disable apq8016 and apq8096 bare-metal jobs
+Date: Fri, 18 Jul 2025 16:23:53 +0530
+Message-ID: <20250718105407.32878-2-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250718105407.32878-1-vignesh.raman@collabora.com>
+References: <20250718105407.32878-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aHoh1XfhR8EB_5yY@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250718_033957_960345_996654B5 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20250718_035425_206368_6D922972 
+X-CRM114-Status: UNSURE (   8.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,53 +89,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 18, 2025 at 12:28:44PM +0200, Niklas Cassel wrote:
-> On Tue, Jul 15, 2025 at 07:51:03PM +0530, Manivannan Sadhasivam via B4 Relay wrote:
-> 2) Testing link down reset:
-> 
-> selftests before link down reset:
-> # FAILED: 14 / 16 tests passed.
-> 
-> ## On EP side:
-> # echo 0 > /sys/kernel/config/pci_ep/controllers/a40000000.pcie-ep/start && \
->   sleep 0.1 && echo 1 > /sys/kernel/config/pci_ep/controllers/a40000000.pcie-ep/start
-> 
-> 
-> [  111.137162] rockchip-dw-pcie a40000000.pcie: PCIE_CLIENT_INTR_STATUS_MISC: 0x4
-> [  111.137881] rockchip-dw-pcie a40000000.pcie: LTSSM_STATUS: 0x0
-> [  111.138432] rockchip-dw-pcie a40000000.pcie: hot reset or link-down reset
-> [  111.139067] pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-> [  111.139686] pci-endpoint-test 0000:01:00.0: AER: can't recover (no error_detected callback)
-> [  111.255407] rockchip-dw-pcie a40000000.pcie: PCIe Gen.3 x4 link up
-> [  111.256019] rockchip-dw-pcie a40000000.pcie: Root Port reset completed
-> [  111.383401] pcieport 0000:00:00.0: Root Port has been reset
-> [  111.384060] pcieport 0000:00:00.0: AER: device recovery failed
-> [  111.384582] rockchip-dw-pcie a40000000.pcie: PCIE_CLIENT_INTR_STATUS_MISC: 0x3
-> [  111.385218] rockchip-dw-pcie a40000000.pcie: LTSSM_STATUS: 0x230011
-> [  111.385771] rockchip-dw-pcie a40000000.pcie: Received Link up event. Starting enumeration!
-> [  111.390866] pcieport 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
-> [  111.391650] pci_bus 0000:01: busn_res: [bus 01-ff] end is updated to 01
-> 
-> Basically all tests timeout
-> # FAILED: 1 / 16 tests passed.
-> 
-> Which is the same as before this patch series.
+These devices are being moved to LAVA. The jobs will be enabled and the
+job definitions will be updated once the move is complete.
 
-The above was with CONFIG_PCIEAER=y
+Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+---
+ drivers/gpu/drm/ci/test.yml | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-Wilfred suggested that I tried without this config set.
+diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+index 81147e86bfd0..53d19ffaaf61 100644
+--- a/drivers/gpu/drm/ci/test.yml
++++ b/drivers/gpu/drm/ci/test.yml
+@@ -148,7 +148,9 @@ msm:sc7180-trogdor-kingoftown:
+     GPU_VERSION: ${DEVICE_TYPE}
+     RUNNER_TAG: mesa-ci-x86-64-lava-sc7180-trogdor-kingoftown
+ 
+-msm:apq8016:
++# FIXME: Disable the bare-metal jobs. These devices are being moved to LAVA.
++# Once the move is complete, update the job definitions accordingly.
++.msm:apq8016:
+   extends:
+     - .baremetal-igt-arm64
+   stage: msm
+@@ -165,7 +167,7 @@ msm:apq8016:
+   script:
+     - ./install/bare-metal/fastboot.sh || exit $?
+ 
+-msm:apq8096:
++.msm:apq8096:
+   extends:
+     - .baremetal-igt-arm64
+   stage: msm
+-- 
+2.47.2
 
-However, doing so, I got the exact same result:
-# FAILED: 1 / 16 tests passed.
-
-
-For the record, the test that passes is not actually passing either,
-it is the BAR4 test, which is skipped, since BAR4 is reserved on rock5b:
-ok 5 pci_ep_bar.BAR4.BAR_TEST # SKIP BAR is disabled
-
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
