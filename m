@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26065C83F1A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 08:19:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7769C83F1A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 08:24:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yM2RESzD1eHlrg6CRJjbJ+bb7wlRAhj/FoF8Wx4TlPs=; b=cLe6do/bpp8t85
-	PonLUwreQvt8JfXU9pCNVTONP44ADf5+h/hpg22ymHi0y4fLe+lJ1ajEbSvMbwgCuI8/BiB4AF6i8
-	nBr1ln2HXbF9Sl7u+XpT7GRVkQ801appQK2A6KzpHzy3SIBUlcSeVkFJSlxUEUyo7jUaAc+wL6ka2
-	NhnxvaDV7WqN9vIBM5qS/4VppLQFBxQiflnNuow+dzGPp3lPawS1Rd5AEoEHqVeAeiDaguG/D45nF
-	T62/n0n45cv8FTgWA1S1s+UEVKZINTfr/jVncSf9eCmiqVuWl9uYARrrdF9CDTP0M+lgvnsUVq5H+
-	fCb7VwouFtITZbVfaFXQ==;
+	List-Owner; bh=NDqqmey46tfvWOpp4Q9i4XbMYz4PaPYFC/Q5+/U8Fjc=; b=OtG1n0v6wB9JED
+	H6DbeRIlzF06NHH1tD7O5sbFPC7fGvICaplEyfcNq/jmecdHMwq/X6JPSqI9UjkL9Opv7fXVKYhpc
+	T5jEvyB8c4SmReo/y8mUx8w2StTjiDUGnVpypihDs5WcWtSBtP4CKbx9B1l9zHfMsnaSoRnCWoDIb
+	Y/6qlHD30bDD5raaCyczqpdSb/YM3JoADoa3riF4J+Hw0ED7CnMuFHrgJM7kzI8F9WI+0Ty5Cm81v
+	OhC22+cDgvLfDnHO6NgnbXcCjifpiR13oZXzQHVFx0IIIotkWcdQWli9JtW4XFQf/yctBvVocTSaN
+	CR1WFLAoCVR+0iQzODwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucgJH-0000000C0Zr-0Aup;
-	Fri, 18 Jul 2025 08:19:15 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1ucgO8-0000000C1I5-38vv;
+	Fri, 18 Jul 2025 08:24:16 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucgAW-0000000Bz46-1sxI;
-	Fri, 18 Jul 2025 08:10:13 +0000
+	id 1ucgD2-0000000BzT4-03rH;
+	Fri, 18 Jul 2025 08:12:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2861D41A4C;
-	Fri, 18 Jul 2025 08:10:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 719E1C4CEEB;
-	Fri, 18 Jul 2025 08:10:11 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1796C5C667F;
+	Fri, 18 Jul 2025 08:12:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A87FC4CEED;
+	Fri, 18 Jul 2025 08:12:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752826212;
-	bh=pYKJJ2hQUpdG2dVQ13Xx5f+NtvuXuDTByPwbcBUy+ao=;
+	s=k20201202; t=1752826366;
+	bh=nPyCE4EJ89fmwm9m6eHxfXIrYOe/RLqv1W0KQKVxAu0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qhKKMwFU7zuaBUi4JjVCyKOTLven1T/f3a8B6gZ+ti4Ac0/5uaHiXKYRdjUuz5R8q
-	 FVep+nERjFceG9fK8v6gAZYFXdfix9YEmlIlfo1+3Sk9Ivro9aDG/boJh6UbFBr+mV
-	 f01GQ8YGzYPvh7ZP2c6mx+CzPlqCrRq1m3fmBV5qzHoMoJY3scMszEhYD2RQzzK+NE
-	 xeitHBg5OWV5ZXrYnEGIkqZlvxHBL9CQoNJp9fvaozaZN4zW1tdNynssq9DUuIGXn8
-	 oxDiTm1Id5woKqn8v1cT1OLl45daF+yZXV5Bz1goNQyl1rJvNHV/MJY6gRmAhhKRzV
-	 yhsxyywjg6bFg==
-Date: Fri, 18 Jul 2025 10:10:09 +0200
+	b=UCWKQrxw4hIODjx81BJaPQA1xlN9NoK/jrwxR0cWdL8KNYM8LvVSrFrn33nkd6z6F
+	 yj7aPIuc0tbkZ+I91hx+UPI1sg+lArTAf4dxbhvCaMdOwUciDadpm5IazwRPXtbXVh
+	 ujM4oMGWxrzFa88FYYol01kUuVnL32p8DXs8dIktVYtxiM+5UWRay6CVKfDSW8tXiQ
+	 WaRICnboRxwj/j5jxN7Ij+p5IHtu4Dz4ltalgTPV4dTzztudxnEG05IBUbSuH+s0d3
+	 aePvPs1xX8y3JHI1Pf4mJlvhkZi1Fw6msIumCYut5LKIpzMGk3cEmjOOuU8ZQBLGGb
+	 66Zdz9jt6mORQ==
+Date: Fri, 18 Jul 2025 10:12:44 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Chaoyi Chen <kernel@airkyi.com>
 Cc: Rob Herring <robh@kernel.org>, 
@@ -58,17 +58,18 @@ Cc: Rob Herring <robh@kernel.org>,
 	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v2 1/5] dt-bindings: phy: rockchip: rk3399-typec-phy:
- Support mode-switch
-Message-ID: <20250718-psychedelic-panda-of-defiance-ef6aac@kuoka>
+Subject: Re: [PATCH v2 5/5] arm64: dts: rockchip: rk3399-evb-ind: Add support
+ for DisplayPort
+Message-ID: <20250718-serious-earwig-of-current-18fad5@kuoka>
 References: <20250718062619.99-1-kernel@airkyi.com>
- <20250718062619.99-2-kernel@airkyi.com>
+ <20250718062619.99-6-kernel@airkyi.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250718062619.99-2-kernel@airkyi.com>
+In-Reply-To: <20250718062619.99-6-kernel@airkyi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250718_011012_517386_9424ECE1 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20250718_011248_093951_89905FC8 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,26 +86,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 18, 2025 at 02:26:15PM +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> The RK3399 has two USB/DP combo PHY. With the help of external Type-C
-> controller, the PHY can switch altmode between USB and DP.
-> 
-> Their connection diagram is shown below:
-> 
-> external Type-C Chip0 ---> USB/DP PHY0 ---+
->                                           | <----> CDN-DP controller
-> external Type-C Chip1 ---> USB/DP PHY1 ---+
+On Fri, Jul 18, 2025 at 02:26:19PM +0800, Chaoyi Chen wrote:
+> +&i2c4 {
+> +	i2c-scl-rising-time-ns = <475>;
+> +	i2c-scl-falling-time-ns = <26>;
+> +	status = "okay";
+> +
+> +	usbc0: typec-portc@22 {
+> +		compatible = "fcs,fusb302";
 
-It looks like your "external" controller is not described. Look at your
-port property - "Connection to USB Type-C connector". Lack of proper
-hardware description leads you to claim that the PHY is the mode switch.
-I have doubts on that.
+Look at your binding - it said you don't have fcs,fusb302 - but directly
+port plugged to the PHY...
 
-You already received the comments that you need to come with rationale
-why making PHY a USB switch is correct. I don't see the arguments for
-that.
+Plus this looks like the switch. I don't think you really addressed
+previous comments. Please give it a time.
 
 Best regards,
 Krzysztof
