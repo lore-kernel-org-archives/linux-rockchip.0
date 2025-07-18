@@ -4,74 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E01C83F1A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 11:27:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F826C83F1A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 11:28:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NbiykQ9q0TYXHVcyVWLEd/D+4e9EAp3xil5rGviUDQ8=; b=RKYFK49nTtCIWA
-	YP9cQVp1h+6qF1Y+oqOR9mU73D2FoaVuuRjQ+Bda71qEa0hOfHBUPhoA5H3Xcgy/zzYw2yIHHIHmV
-	qBv5S9N1CAaEQBNaTZfL83Id67ZPsxHS4P6nllAKUi+GYT/ByDq+tD3edSLPKPQ4VJVPBdySZLY7M
-	UaN6mMOxDGLCtM/6vRtf5ccuHJaWAoN3hbz23pnduNWEKcLUihD9SfYhWS+sRLYLiDJ+6w8WTPgkr
-	OoR+/1ecwCjd8COijp7sAFBKUYWnJkCkwL8kwjZACk2JIDioxCGsDZVQleljTjTxUhydAcNtQx+cf
-	DGNOzIuiOrjlogfJvm5Q==;
+	List-Owner; bh=df5D/IUMdcFW3F067KlP79NxDSiE+OJdKQa8mupOHgE=; b=Uoj2/2QMu4V4b3
+	zMsLyt57VMbqSA9xuwRFTBucuqHiXB+BbPipWJo6Bz+Wv0uuogJ62zUvGu3iDDAj6ExIYmzY58hDh
+	izUvXbRN8U7J9Mejk0znlvi4cwVf8jDCIl3mdavabLOtTWz78n6SdEgJtHoR3211+JJbM/RIFMlZv
+	WfVfmw7+lrCNFXXkVrEv5yQtyDUMzInwsQ+0hwipWStSI1tb8VhdHJgdoEkJSRD6pPxoyzEz1nsQL
+	3rvhieL99y0PdMi3bQpkfjh6RS8up/zhQRROKalapBWqCuEQr/ZoK378G/uunjn8gQi1Kf0TVzljc
+	oGvpXOmFAEQeF+TuMTCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucjFT-0000000CR3g-1clH;
-	Fri, 18 Jul 2025 11:27:31 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ucjG0-0000000CRNj-1I3Y;
+	Fri, 18 Jul 2025 11:28:04 +0000
+Received: from abb.hmeau.com ([180.181.231.80])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucijo-0000000CMWF-0hxJ;
-	Fri, 18 Jul 2025 10:54:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752836086;
-	bh=zAFyDkIf9qCUhBZe8gnx6U8C2dwmN1Ikbn0/wkc7YvU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=qTl+/PNwgT4pQnJiv0dRTS0wCfOw5K0VqkHPHmswV3uS26vgK96Bl2lt7jN4pdurW
-	 +lLQcQ4vUxqBodZrP5pFnHjF60LbRTLo0qHUH1yzwa7wdalGQXMUig7sS559dhO7fY
-	 /UakIWIXeP0TxDWU7o0/AFU6cJ6nYFq6lF1NoxGRMfZTQXXSc4YvwqEz/9Mnz9lfx+
-	 a39eRszxJAvOcbWHUeNeHgoMzErBxD/mGCBRtPwEW5VOtkusmUEqKk5oMHiCIkPAPY
-	 I7PFLsY82pI+QjSoMMUeCv1nbc8WiFZZU7/G5ej+ZLnrxnLm3hemaFMS5rmj/UQ+pk
-	 2EKYvXymLrxcQ==
-Received: from debian.. (unknown [171.76.80.183])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3538517E1560;
-	Fri, 18 Jul 2025 12:54:43 +0200 (CEST)
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com,
-	helen.fornazier@gmail.com,
-	airlied@gmail.com,
-	simona.vetter@ffwll.ch,
-	robdclark@gmail.com,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	valentine.burley@collabora.com,
-	lumag@kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	amd-gfx@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org,
-	intel-gfx@lists.freedesktop.org,
-	virtualization@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 7/7] drm/ci: add mt8192
-Date: Fri, 18 Jul 2025 16:23:59 +0530
-Message-ID: <20250718105407.32878-8-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250718105407.32878-1-vignesh.raman@collabora.com>
-References: <20250718105407.32878-1-vignesh.raman@collabora.com>
+	id 1ucioj-0000000CNcl-2QmG;
+	Fri, 18 Jul 2025 10:59:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hmeau.com;
+	s=formenos; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=ZAzXiiY/YIuQ/9uY0l8462fgPlzoh4f7KxWN0ebvqKE=; b=gl6/Zd5HCQjexfoJQ5QZ7wWbAN
+	hbTSGnGqU1GFUKmrbFD5jj5vmYPGtEhp2sd/JvCtZM6Ey182276LgB1rE6/Y4aUV+YP9bKd8D1GaR
+	zFO93R0YQ/tC9nTkcRMnuZTdZ9Df6EvDXbhwS0lu+KiAp/tqI1sLtvSsK9OUIfEHv9h1Zgc9fUTSy
+	FhsdvvJ9w0SYBxvit/U5QBdoDkz+FyLZGvo+Wpy+Ut0aSr8T8A7G2SLLgJJQxnRDa/M20K8u0rMGO
+	zTuIwFdckQDDn1z7Fu0M5YEidFHCWP3HUT1OuutOK5JjiGBlgmO95iGw2o9kaSi+0Jbt6qJZK+hZB
+	84nBPNsA==;
+Received: from loth.rohan.me.apana.org.au ([192.168.167.2])
+	by formenos.hmeau.com with smtp (Exim 4.96 #2 (Debian))
+	id 1uciYM-007yZr-27;
+	Fri, 18 Jul 2025 18:58:56 +0800
+Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Fri, 18 Jul 2025 20:58:55 +1000
+Date: Fri, 18 Jul 2025 20:58:55 +1000
+From: Herbert Xu <herbert@gondor.apana.org.au>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Subject: Re: [PATCH 05/80] hwrng: Remove redundant
+ pm_runtime_mark_last_busy() calls
+Message-ID: <aHoo71TbepQD2Nsd@gondor.apana.org.au>
+References: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
+ <20250704075359.3217036-1-sakari.ailus@linux.intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250704075359.3217036-1-sakari.ailus@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250718_035448_381327_63BC509B 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20250718_035953_623828_3DAB2CF9 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,175 +68,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Tomer Maimon <tmaimon77@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Olivia Mackall <olivia@selenic.com>, linux-stm32@st-md-mailman.stormreply.com, Heiko Stuebner <heiko@sntech.de>, Marek Vasut <marex@denx.de>, Benjamin Fair <benjaminfair@google.com>, linux-rockchip@lists.infradead.org, openbmc@lists.ozlabs.org, Daniel Golle <daniel@makrotopia.org>, Nancy Yuen <yuenn@google.com>, Hadar Gat <hadar.gat@arm.com>, Sean Wang <sean.wang@mediatek.com>, Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Tali Perry <tali.perry1@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Avi Fishman <avifishman70@gmail.com>, Patrick Venture <venture@google.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, linux-mediatek@lists.infradead.org, Gatien Chevallier <gatien.chevallier@foss.st.com>, Aurelien Jarno <aurelien@aurel32.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add job that executes the IGT test suite for mt8192-asurada-spherion-r0.
+On Fri, Jul 04, 2025 at 10:53:59AM +0300, Sakari Ailus wrote:
+> pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
+> pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
+> to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
+> pm_runtime_mark_last_busy().
+> 
+> Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> ---
+> The cover letter of the set can be found here
+> <URL:https://lore.kernel.org/linux-pm/20250704075225.3212486-1-sakari.ailus@linux.intel.com>.
+> 
+> In brief, this patch depends on PM runtime patches adding marking the last
+> busy timestamp in autosuspend related functions. The patches are here, on
+> rc2:
+> 
+>         git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git \
+>                 pm-runtime-6.17-rc1
+> 
+>  drivers/char/hw_random/atmel-rng.c     | 1 -
+>  drivers/char/hw_random/cctrng.c        | 1 -
+>  drivers/char/hw_random/mtk-rng.c       | 1 -
+>  drivers/char/hw_random/npcm-rng.c      | 1 -
+>  drivers/char/hw_random/omap3-rom-rng.c | 1 -
+>  drivers/char/hw_random/rockchip-rng.c  | 3 ---
+>  drivers/char/hw_random/stm32-rng.c     | 1 -
+>  7 files changed, 9 deletions(-)
 
-Signed-off-by: Deborah Brouwer <deborah.brouwer@collabora.com>
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
- drivers/gpu/drm/ci/arm64.config               |  4 +++
- drivers/gpu/drm/ci/test.yml                   | 13 +++++--
- .../drm/ci/xfails/mediatek-mt8192-fails.txt   | 34 +++++++++++++++++++
- .../drm/ci/xfails/mediatek-mt8192-skips.txt   | 14 ++++++++
- .../drm/ci/xfails/panfrost-mt8192-fails.txt   |  9 +++++
- .../drm/ci/xfails/panfrost-mt8192-skips.txt   | 20 +++++++++++
- 6 files changed, 92 insertions(+), 2 deletions(-)
- create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8192-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8192-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-mt8192-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-mt8192-skips.txt
-
-diff --git a/drivers/gpu/drm/ci/arm64.config b/drivers/gpu/drm/ci/arm64.config
-index 7cd6d9d612fc..bae0175df556 100644
---- a/drivers/gpu/drm/ci/arm64.config
-+++ b/drivers/gpu/drm/ci/arm64.config
-@@ -213,3 +213,7 @@ CONFIG_PWM_TEGRA=y
- CONFIG_DRM_PANTHOR=m
- CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=y
- CONFIG_PHY_ROCKCHIP_SAMSUNG_HDPTX=y
-+
-+# For Mediatek mt8192
-+CONFIG_SPMI_MTK_PMIF=y
-+CONFIG_REGULATOR_MT6315=y
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index dbd582442776..3d871c4bb5b9 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -451,8 +451,7 @@ panfrost:mt8183:
-     - .mt8183
-     - .panfrost-gpu
- 
--# drm-mtk doesn't even probe yet in mainline for mt8192
--.mediatek:mt8192:
-+.mt8192:
-   extends:
-     - .mediatek-device
-   parallel: 3
-@@ -461,6 +460,16 @@ panfrost:mt8183:
-     GPU_VERSION: mt8192
-     RUNNER_TAG: mesa-ci-x86-64-lava-mt8192-asurada-spherion-r0
- 
-+mediatek:mt8192:
-+  extends:
-+    - .mt8192
-+    - .mediatek-display
-+
-+panfrost:mt8192:
-+  extends:
-+    - .mt8192
-+    - .panfrost-gpu
-+
- .meson-device:
-   extends:
-     - .lava-igt:arm64
-diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8192-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8192-fails.txt
-new file mode 100644
-index 000000000000..4b4f1b594c23
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8192-fails.txt
-@@ -0,0 +1,34 @@
-+core_setmaster@master-drop-set-user,Fail
-+dumb_buffer@create-clear,Crash
-+kms_bw@connected-linear-tiling-1-displays-1920x1080p,Fail
-+kms_bw@connected-linear-tiling-1-displays-2160x1440p,Fail
-+kms_bw@connected-linear-tiling-1-displays-2560x1440p,Fail
-+kms_bw@connected-linear-tiling-1-displays-3840x2160p,Fail
-+kms_bw@linear-tiling-1-displays-1920x1080p,Fail
-+kms_bw@linear-tiling-1-displays-2160x1440p,Fail
-+kms_bw@linear-tiling-1-displays-2560x1440p,Fail
-+kms_bw@linear-tiling-1-displays-3840x2160p,Fail
-+kms_color@invalid-gamma-lut-sizes,Fail
-+kms_cursor_legacy@cursor-vs-flip-atomic,Fail
-+kms_cursor_legacy@cursor-vs-flip-legacy,Fail
-+kms_flip@basic-plain-flip,Fail
-+kms_flip@dpms-off-confusion,Fail
-+kms_flip@dpms-off-confusion-interruptible,Fail
-+kms_flip@flip-vs-blocking-wf-vblank,Fail
-+kms_flip@flip-vs-dpms-on-nop,Fail
-+kms_flip@flip-vs-dpms-on-nop-interruptible,Fail
-+kms_flip@flip-vs-expired-vblank,Fail
-+kms_flip@flip-vs-expired-vblank-interruptible,Fail
-+kms_flip@flip-vs-modeset-vs-hang,Fail
-+kms_flip@flip-vs-panning,Fail
-+kms_flip@flip-vs-panning-interruptible,Fail
-+kms_flip@flip-vs-panning-vs-hang,Fail
-+kms_flip@flip-vs-suspend,Fail
-+kms_flip@flip-vs-suspend-interruptible,Fail
-+kms_flip@plain-flip-fb-recreate,Fail
-+kms_flip@plain-flip-fb-recreate-interruptible,Fail
-+kms_flip@plain-flip-interruptible,Fail
-+kms_flip@plain-flip-ts-check,Fail
-+kms_flip@plain-flip-ts-check-interruptible,Fail
-+kms_invalid_mode@overflow-vrefresh,Fail
-+kms_lease@lease-uevent,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8192-skips.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8192-skips.txt
-new file mode 100644
-index 000000000000..a165fccd8a93
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8192-skips.txt
-@@ -0,0 +1,14 @@
-+# Skip driver specific tests
-+^amdgpu.*
-+^msm.*
-+nouveau_.*
-+^panfrost.*
-+^v3d.*
-+^vc4.*
-+^vmwgfx*
-+
-+# Skip intel specific tests
-+gem_.*
-+i915_.*
-+tools_test.*
-+kms_dp_link_training.*
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-mt8192-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-mt8192-fails.txt
-new file mode 100644
-index 000000000000..6589d194323f
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-mt8192-fails.txt
-@@ -0,0 +1,9 @@
-+core_hotunplug@hotreplug,Fail
-+core_hotunplug@hotreplug-lateclose,Fail
-+core_hotunplug@hotunplug-rescan,Fail
-+core_hotunplug@unplug-rescan,Fail
-+core_setmaster@master-drop-set-user,Fail
-+panfrost/panfrost_prime@gem-prime-import,Fail
-+panfrost/panfrost_submit@pan-reset,Fail
-+panfrost/panfrost_submit@pan-submit-error-bad-requirements,Fail
-+panfrost/panfrost_submit@pan-unhandled-pagefault,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-mt8192-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-mt8192-skips.txt
-new file mode 100644
-index 000000000000..b724cf04e3b3
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-mt8192-skips.txt
-@@ -0,0 +1,20 @@
-+# Skip driver specific tests
-+^amdgpu.*
-+^msm.*
-+nouveau_.*
-+^v3d.*
-+^vc4.*
-+^vmwgfx*
-+
-+# Skip intel specific tests
-+gem_.*
-+i915_.*
-+tools_test.*
-+kms_dp_link_training.*
-+
-+# Panfrost is not a KMS driver, so skip the KMS tests
-+kms_.*
-+
-+# Skip display functionality tests for GPU-only drivers
-+dumb_buffer.*
-+fbdev.*
+Patch applied.  Thanks.
 -- 
-2.47.2
-
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
 
 _______________________________________________
 Linux-rockchip mailing list
