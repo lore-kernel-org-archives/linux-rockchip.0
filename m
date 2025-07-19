@@ -4,54 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9AB9C83F17
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jul 2025 21:10:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2C36C83F34
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Jul 2025 07:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5gzk2I7vln/WTZB3v0ictqkL0/VHvgrcfg9pFkJLiYs=; b=w3a0H8zpgWDNQG
-	thvUypWtyNVl7BGVLGl0Kw5q3ZBPTs5V1NFTD7jZ805GnTvnGcfXhSo6CG9kt+quxXy01iqdeRu1V
-	JO9KfYBOlihBsTi761aS5wHyYNzvIpYyMZCzO9oSRqMhyG28jIo3WKk+fFDkmnV5On1NHkOvbjCJz
-	8QdgI11HXZZ0YPV0BnbGZjB+AeNKx0lbOXZsWQzOB9BDf9vz5RFUWHg1S2CqyLqcndoFpU3fkGgiZ
-	703o4I3ZXQreFhaGxepCiP16mZ8g96qEf/SYHS4s/NfXmL3Dxwsl5hiIILPO7R3bnktrFNtvYuAC/
-	q4MQGK53EzMCwBH6011A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XZwGV08PIRGcxw25pfLhHa2x7hzJU/X62YNTf1S1aHo=; b=nsPa3xuKgkcnIm
+	Ug+npUeFzINySwyZyBCylcdpyRJhDKIgcmW+u4I3SqeSRjbV/U9DzpZBDTPhyDjvE4sjcv2/esdzL
+	wuPZJG1obW1z9qPLxdB6meKPguFNh9tqGaEswtRbsStM/fpbMamwEbB5Knmz0+BjHCH1E205yR2sh
+	JTDiuTHZbQmi7Gn6SEcFsigaRbPiQdNU/dppxi3+Mf64Q1Lu0f4rDKEIFhlUnlvtD7HDKzJnI7Bg3
+	cbrRfu1lUrCQ4YJulnCAbIxZAg/NoNlTIp1mVsx81+GEP7CJ5iF4JHlzpPJ3cHCPU92uKvRwjdugy
+	+a46PBJMQKYydITK6+yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucsM1-0000000DSRo-3ccd;
-	Fri, 18 Jul 2025 21:10:53 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1ud2H9-0000000E0G8-0Lyp;
+	Sat, 19 Jul 2025 07:46:31 +0000
+Received: from mgamail.intel.com ([198.175.65.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ucsJa-0000000DSEj-3oIz
-	for linux-rockchip@lists.infradead.org;
-	Fri, 18 Jul 2025 21:08:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=54k6sFdGBp4s1YIJqMzamAxw5U+YBLgP6C9de7yVWBE=; b=nCDInpQG/1vSCl1B60HljDWF8r
-	Jxm9bop/KWP7tarNjK93x7WyDvcMv2Zj3B5xTyPx91yRVJzXSdDFukOLFOxP+8uRypUkp7VxctxK3
-	qMWqvRtNC1VUF/M4LJPIVZGPFJ4HUtlRamSDX+2DV6K5EvVEziY2Ld5uao8UHXtaEu9QQzK+eiTp7
-	JJul6vhn90SfZMe+jiglq8lwTILlkHPYqwbZ33HN7wTUfqd4WDwKa8ukUiIEuAZjOim/7Y/puSIf7
-	Xy4ODb5ei0/XVcRCr25SLNjZg7ubDniMRpFqroPdEthvOVrUGjmgGYU/tmghvbzpjGi1YKMBuMybg
-	/2ijqBrw==;
-Received: from cst-prg-35-241.cust.vodafone.cz ([46.135.35.241] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1ucsJW-0007H3-3H; Fri, 18 Jul 2025 23:08:18 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [GIT PULL] Rockchip clock changes for 6.17 #1
-Date: Fri, 18 Jul 2025 23:08:17 +0200
-Message-ID: <6515302.QJadu78ljV@phil>
+	id 1ud2Ef-0000000E07w-1ExO;
+	Sat, 19 Jul 2025 07:43:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1752911038; x=1784447038;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=ExeIcKQFSS1qmlfLTGq6NdRwBIsy7m51VTTE43vJJ1A=;
+  b=hQygZU5tfLpDltmJrTpad/U6IAmiAz+DvKCavjUQ2a2VvFvj5yHGCKcs
+   iiNd2MHHUsPoWZnMSr8Pzd/jsHnDrQJZp0Fr8IVMZplGqtd/1j8QLq8Iq
+   UGO2l56d1ShnyC/Eq1bCd8U09nfhR8UY8aPxMV+1NXzIONRyEP3CD6dMI
+   sJTaARrqJ63cvSzidPQBQVuoi2+3QZHBwl8yov4om5yXzs5u4/GdL5fAh
+   aeqBGyBjYcU8p1TdlYq3w+QAl4OsvtkfZ9ibXM+WQ0JwUYfC2Qd4zbL6x
+   stqk3UeRANE3E4QgzO9BLcHRQZOzSCPiCkIZAd6gq06UowCjCboa48QEt
+   A==;
+X-CSE-ConnectionGUID: Du2UTKlvT8Gc5NiNn+6Qkw==
+X-CSE-MsgGUID: mE82KjWXRMuWcXjSteENmA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11496"; a="72651136"
+X-IronPort-AV: E=Sophos;i="6.16,323,1744095600"; 
+   d="scan'208";a="72651136"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jul 2025 00:43:54 -0700
+X-CSE-ConnectionGUID: iaIxP5gRQweAL56B3D2Alw==
+X-CSE-MsgGUID: X3Qv0Y49S/O0oDqks2wQNg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,323,1744095600"; 
+   d="scan'208";a="158517427"
+Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
+  by orviesa007.jf.intel.com with ESMTP; 19 Jul 2025 00:43:46 -0700
+Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1ud2ER-000FJj-1P;
+	Sat, 19 Jul 2025 07:43:43 +0000
+Date: Sat, 19 Jul 2025 15:42:49 +0800
+From: kernel test robot <lkp@intel.com>
+To: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Amit Sunil Dhamne <amitsd@google.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Dmitry Baryshkov <lumag@kernel.org>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v2 2/5] phy: rockchip: phy-rockchip-typec: Add
+ typec_mux/typec_switch support
+Message-ID: <202507191526.Ts6qTQJj-lkp@intel.com>
+References: <20250718062619.99-3-kernel@airkyi.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250718062619.99-3-kernel@airkyi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250718_140822_956277_12354943 
-X-CRM114-Status: UNSURE (   7.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250719_004357_374538_93E77969 
+X-CRM114-Status: GOOD (  12.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,42 +107,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mike, Stephen,
+Hi Chaoyi,
 
-please find below a pull-request with Rockchip clock change for 6.17
-Just a single new PLL rate for rk3588 this time.
+kernel test robot noticed the following build errors:
 
+[auto build test ERROR on next-20250717]
+[also build test ERROR on linus/master v6.16-rc6]
+[cannot apply to robh/for-next rockchip/for-next krzk/for-next krzk-dt/for-next v6.16-rc6 v6.16-rc5 v6.16-rc4]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Please pull.
+url:    https://github.com/intel-lab-lkp/linux/commits/Chaoyi-Chen/dt-bindings-phy-rockchip-rk3399-typec-phy-Support-mode-switch/20250718-142814
+base:   next-20250717
+patch link:    https://lore.kernel.org/r/20250718062619.99-3-kernel%40airkyi.com
+patch subject: [PATCH v2 2/5] phy: rockchip: phy-rockchip-typec: Add typec_mux/typec_switch support
+config: arm64-randconfig-004-20250719 (https://download.01.org/0day-ci/archive/20250719/202507191526.Ts6qTQJj-lkp@intel.com/config)
+compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250719/202507191526.Ts6qTQJj-lkp@intel.com/reproduce)
 
-Thanks
-Heiko
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202507191526.Ts6qTQJj-lkp@intel.com/
 
+All errors (new ones prefixed by >>):
 
-The following changes since commit 19272b37aa4f83ca52bdf9c16d5d81bdd1354494:
+>> ld.lld: error: undefined symbol: typec_mux_register
+   >>> referenced by phy-rockchip-typec.c
+   >>>               drivers/phy/rockchip/phy-rockchip-typec.o:(rockchip_typec_phy_probe) in archive vmlinux.a
+--
+>> ld.lld: error: undefined symbol: typec_mux_unregister
+   >>> referenced by phy-rockchip-typec.c
+   >>>               drivers/phy/rockchip/phy-rockchip-typec.o:(rockchip_typec_phy_probe) in archive vmlinux.a
+   >>> referenced by phy-rockchip-typec.c
+   >>>               drivers/phy/rockchip/phy-rockchip-typec.o:(tcphy_typec_mux_unregister) in archive vmlinux.a
+--
+>> ld.lld: error: undefined symbol: typec_mux_get_drvdata
+   >>> referenced by phy-rockchip-typec.c
+   >>>               drivers/phy/rockchip/phy-rockchip-typec.o:(tcphy_typec_mux_set) in archive vmlinux.a
 
-  Linux 6.16-rc1 (2025-06-08 13:44:43 -0700)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.17-rockchip-clk1
-
-for you to fetch changes up to 132b62280a9dbe38c627183ae7f1611de3ee0d9a:
-
-  clk: rockchip: rk3568: Add PLL rate for 132MHz (2025-07-10 13:47:36 +0200)
-
-----------------------------------------------------------------
-Just a 132MHz PLL rate for rk3588.
-
-----------------------------------------------------------------
-Andy Yan (1):
-      clk: rockchip: rk3568: Add PLL rate for 132MHz
-
- drivers/clk/rockchip/clk-rk3568.c | 1 +
- 1 file changed, 1 insertion(+)
-
-
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
