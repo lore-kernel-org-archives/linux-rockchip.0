@@ -4,60 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F501C83F1A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Jul 2025 14:00:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8140C83F22
+	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Jul 2025 15:54:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=128VZQ0VSxercKXgISD6c3NXjjUczcq/5um8dZjkM6o=; b=KlLJKQ1nwW/N40
-	0EcFUoypDjKoGNN8ZbN3jT2jPwgZmNyJXpZwO6r48R7BWErpKLMD7oLOSMmmVJMvZmRF2mTnzOuC1
-	woiowRY6mSL/ADQF/IqHf9bew0I32IzyaSfLlq/Tcet2TKDzBuhfM7wAS+xkGA3AUcFBDpVaPyb6J
-	X9g+czXpnHOhyJ3Ngbk8u230jmD52PzkfhbMf3A/rf/fVo8asuccCcD9uFPBcaiwI3nNcho9DtP4t
-	pHfWvZhcocZLABgDjTmjMWqYqM9oS64iEwIOnyKVf8LhFjavgwuMNw7PXvnSoukG/FEhB0PXjGc4C
-	cFE6Jl666U2lFTYx4XWQ==;
+	List-Owner; bh=cmyc7CvGjj7qukRpEI1IYpxdyMbETHiciINanV2XpxA=; b=yDEUFKCPXjKX0/
+	Vq1Wk4FVrsxptwbeJJOBRnvDxoxN8+t8hL7olCWMMUkIpTlP/pRpvfTsh3kPqmmx+MHFkh79LUJFt
+	Nr1tA40H+uOoj1ACUxrzp3q0uNCeynY3vyFJsfMAtEzC6/Qae/PB8SesRE6OpSvodP2F4AhgLUF2c
+	6zptKqNTz92VVfz/n2mrDNDzXYANVnUk5E8PhrHfecJNG8FOxpAS41nt3BObg1ss+NtXWYbK3lWuA
+	hsq8rnVdxjlP10QOdjW8tZPvf0AfFS9VzudfoBCebhB8Tgo8c4PClSDZD9Gw63liTGZnv41GFjoqI
+	NKsRvd8jA+epikEJ0iHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udUaZ-0000000FLjq-0YGF;
-	Sun, 20 Jul 2025 14:00:27 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1udWMQ-0000000FTZ7-28Ol;
+	Sun, 20 Jul 2025 15:53:58 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udUaW-0000000FLjO-3k5D;
-	Sun, 20 Jul 2025 14:00:26 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [119.122.214.181])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1c9e8d0e9;
-	Sun, 20 Jul 2025 22:00:21 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: alchark@gmail.com
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	jonas@kwiboo.se,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	ziyao@disroot.org
-Subject: Re: [PATCH v2 1/1] arm64: dts: rockchip: rk3528: Add CPU frequency scaling support
-Date: Sun, 20 Jul 2025 22:00:10 +0800
-Message-Id: <20250720140010.218235-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <CABjd4YzLaAgd-5Cg9fMSAgCS6Wt6=uC8K3WRhcAtnjjg1je87Q@mail.gmail.com>
-References: <CABjd4YzLaAgd-5Cg9fMSAgCS6Wt6=uC8K3WRhcAtnjjg1je87Q@mail.gmail.com>
+	id 1udWJy-0000000FTSs-1a0b;
+	Sun, 20 Jul 2025 15:51:27 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4561514c7f0so37035675e9.0;
+        Sun, 20 Jul 2025 08:51:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1753026684; x=1753631484; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ZhSlIzB6MVuqbW9qSicrU8zQ+g68g+LUEKaipuQGk8g=;
+        b=PRQfJFcsfUGNXobt4efQzaOPUMEwIkjNmdlzdaCN11/DnmT7U8vgv/5bITdjVbjtmh
+         dpjrBOo2GZ+UumUy1RozJE0MYSl58OLNr38nxAG0ntJDvWcV2I1PSQ7eIQ/ei3gO/h3I
+         rISk66ZqGEIzYJK01RJHi7rVOP6kd7nSM3rLIRtCN4uUMuMJH5UyPRn3H7+zq0Lv7vkJ
+         uhK53wmDYhKPr5sCErZ3kHn0AuuPm45Avcx7rcM6DLPPIv0CFECTOBSpv+7RJZ8V8dji
+         prynNONfswSfDokGC3mbWPzOoBidt8o2XAL5Q2hs9+XMxdzMwz5TmjW0ums+uCvYg1ug
+         PUTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753026684; x=1753631484;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZhSlIzB6MVuqbW9qSicrU8zQ+g68g+LUEKaipuQGk8g=;
+        b=IklnOJ+MC8JXkLvI7dYG+rGigzOlR8kVeA17CXozuJ4u4/Mjaq5KqUl1YOrJbiDD2f
+         Y3RtLlnSKT28yNcDjkeD9hU2tT/vMEUFFtpsJ5yEdKZUPqzaR4noJxS4nJz4J8O+A9jU
+         Z5hTsjRB9hNMdC5wo1ET/JAeYicxEbzLj0IOjncNAZxoXNWokxz9esfNFdHTIhPgdhGI
+         daLj3I7miOv1bkUI8CYzyAXc42iZlKWLuHu6WZrC4SPPD8eD43jp73YeT8VN8YZIE3FV
+         X0SIgVd04mxoF4g98gyfeImBbVeWJ3YEL+Y4qDCqzEQ+5qdNsb/a8MkdvHVook5thgwY
+         vGJQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUKFtAgkoNvVO0t2tGmnT+I5KeKXif8VFgk8ZnAT44NyLd72ITmy/Pv5gXBpVorAp6S1q8SFhOtmabYefRi+heo@lists.infradead.org, AJvYcCV8iDjIQrMTiPQIj2JjejHF9tP4JJh3BgEOrCfwF340/1ZMp8c7kWGa2O1NZ/LYujNbqKeZYT+YAchGjxw53Yc=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxi5GqwErvKgLS0lOIqc0bT2HkmL5fREgkuPl9kcqxysQYdMWEr
+	pHXCTG9mYkWiiLZhuepXc9MzdIuw1hW764Qxfj2TxUjMCpYvHTHjOrw=
+X-Gm-Gg: ASbGncsdpeC+0jnMrI8vAyQIjlVp95rctRFZCUmtIEZpL/r4Fq5hiNb9L+HnyEE6tLr
+	7HVKTpU3vrU2431X2ZkIpQLXLSnkCNh1wqxlyz/zr7CUFQIRNJSl9ikDLPLaBu5BfiE1LPzHcKZ
+	AxA90TbXhLi4L51xGQgnTFRYasonzCpCBMEXDzlFXIGZccr8YRCEIL3OXTLuGmhUXyH8+bbhgBp
+	13qVMVieh9z8jF0jvZJICsu7ALaBukp9NcQTTAAkJ4s3RjcNfyp7fIA2yxMsmbHzRZgK+JPvyUg
+	yYUEE36e0zujbfYqOxerxKrIiJPd/NbEPwnY6yjGrMUTvBuxO1Y6SPuwq9eZVRmyB4+u7fMzn2g
+	A0nYfcOqDiWovRKMIH5yZv8xzR5lIVpE4luAbNv8CBc9gb40u5IqqLP8egwZW0XPv5WTc
+X-Google-Smtp-Source: AGHT+IG+5w27E9q1sMLm5Y1WlTy33FG/bBzJqXE6w27xvGt5x1K2hO4i0gkfmLaVrTrtj/ZKRMJ/bA==
+X-Received: by 2002:adf:e195:0:b0:3a4:ed62:c7e1 with SMTP id ffacd0b85a97d-3b60e4bf986mr13518949f8f.12.1753026684061;
+        Sun, 20 Jul 2025 08:51:24 -0700 (PDT)
+Received: from ?IPV6:2a02:810b:f13:8500:8b91:8a7e:bd07:2736? ([2a02:810b:f13:8500:8b91:8a7e:bd07:2736])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4562e7f2e8csm135189035e9.5.2025.07.20.08.51.23
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 20 Jul 2025 08:51:23 -0700 (PDT)
+Message-ID: <3c83e8cc-9ef0-4560-b6d7-127abab50541@gmail.com>
+Date: Sun, 20 Jul 2025 17:51:22 +0200
 MIME-Version: 1.0
-X-HM-Tid: 0a982822b92903a2kunmf6523c78f9cde
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaHh5LVhpOT0MdSRpNTUoaQ1YeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VKQ0pZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0tVSktLVU
-	tZBg++
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/6] arm64: dts: rockchip: Add ROCK 2A/2F, Sige1 and
+ NanoPi Zero2
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: devicetree@vger.kernel.org, heiko@sntech.de, jonas@kwiboo.se,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, ziyao@disroot.org
+References: <86814bf6-5d1b-47f3-ad1d-962cae4a543f@gmail.com>
+ <20250720134005.215346-1-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: Alex Bee <knaerzche@gmail.com>
+In-Reply-To: <20250720134005.215346-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250720_070025_095825_D6E829DD 
-X-CRM114-Status: UNSURE (   7.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250720_085126_424689_3429314E 
+X-CRM114-Status: GOOD (  14.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,33 +97,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+
 Hi,
-
-> > Because the actual frequency generated by 850mV is closer to 1008MHz.
+> Hi,
 >
-> Which likely means that you have an -L5 chip. It will be different on
-> other chips - it's a lottery of silicon quality.
+>> Just for the record: There actually is a non-A version of the
+>> RK3528, which I actually own (but forgot about - perhaps my subconscious
+>> made me reply to this thread). It's on the Mango Pi M28K board [0][1][2] -
+>> which, to my knowledge, is one of the first RK3528-based SBCs.
+> Thanks for sharing this. M28S is an engineering test board, and the official
+> version was later renamed M28K. The MangoPi M28K board uses the RK3528A SoC.
 
-The rk3528 board I have has -L3 and -L5 levels.
--L3 level tested at 850mV (mainline kernel) actual frequency is 1055MHz.
+I'm not sure where you are getting your information from, but as I told
+before I actually *own* this board in the non-development version and it
+has an RK3528 SoC/silkscreen - I just was too lazy to photograph it my own -
+but I did now [0]
 
-Frankly speaking, I have always doubted whether the voltage value of BSP
-is correct. The voltage of BSP kernel at 1800MHz and 2016MHz is too low,
-and no board can reach the corresponding actual frequency.
-For example, if we set the CPU frequency to 2016MHz when running the BSP
-kernel, the actual frequency can only reach 1800MHz.
+[0] https://imgur.com/a/6jwx4dC
 
-Thanks,
-Chukun
-
---
-2.25.1
-
+> As for the M28S board, the silkscreen of SoC is indeed RK3528. [1]
+> But then the interesting thing comes, uboot reports it is RK3528A:
+>
+> U-Boot 2025.07-rc1-OpenWrt-r30114-9b777547be (Jun 18 2025 - 18:35:23 +0000)
+>
+> Model: Generic RK3528
+> SoC:   RK3528A
+> DRAM:  2 GiB
+> Core:  130 devices, 20 uclasses, devicetree: separate
+> MMC:   mmc@ffbf0000: 0, mmc@ffc30000: 1
+> Loading Environment from nowhere... OK
+> In:    serial@ff9f0000
+> Out:   serial@ff9f0000
+> Err:   serial@ff9f0000
+> Hit any key to stop autoboot:  0
+>
+> [1] https://imgur.com/a/ddLsnmt
+>
+> Thanks,
+> Chukun
+>
+> --
+> 2.25.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
