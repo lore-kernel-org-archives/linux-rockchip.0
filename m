@@ -4,57 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E04EC83F1A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jul 2025 16:42:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2426C83F25
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jul 2025 16:43:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YyfbySmbLHimNZlUWVylUgCvEYhuF0O7pHiNv8l2ngw=; b=WcIbZnoM9szjsG
-	9ARmVqeiZkQWvskNwaAsK97mcGjsvdMv7dDjLKREVpizDKxLKwYvCPdr99gdsXvXTyvs26Cw0f73j
-	hyL7mBMLPVfQNX//zk4Mg3zNN9oUyiiE3oPMSTHZE0EAsn0AF9sDN848txebsiHkT1ZJMVAek7phI
-	ikUBQ3k/IQNCS6MR3XPLRV5si745luej331s/zJB0Nr7amMBJK/JDK5sWN9jZnMaZ7ig3sZa5Acjz
-	rm78FU9BzD8QEOJb8DPSi4iuYV4z2q3I7kYU+MqxoGUsls3e2ltsZv+SZboFBt3PILM+G053zyeqn
-	7pjATezFXL7tOLU353ug==;
+	List-Owner; bh=l/uj6aa2HEtOo+uFSokcjCgczv9qbTt9+A1Vlq+d7qo=; b=x9vh//GqcgHyZ4
+	ZeKw79ULXvA29SAgNmtCvirz6UPmUU88e7URIa3B+aPv4x2sIb4+S68zeYK+8cx+Bo7DVBrEnRDwj
+	IePmMviTkAhx5oj8UHRAYLB4abN93poXhwbw/hHOhzhOFOv1uS6LYF7Xq0am+IuhyuDkv5/A6rJ+Y
+	una+X4+IQqXUOOnDu8wlRCJcb6qOjL0Fbucxp3ivZXUbJaxiUMJp5Mp1xxkDmSyCNTb0B2wu8tYPV
+	/5NKs/r8JTHkw98bRUaRjSRJ2IUy/lLIhjM9HQHbIQIuLlTfvPuPGRG+zQNRtIxCfO91cu95TFduI
+	zdyLgu1xIbjxcuJR4mGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udtaz-00000000Bp7-38fp;
-	Mon, 21 Jul 2025 16:42:33 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1udtbY-00000000Cdb-1n61;
+	Mon, 21 Jul 2025 16:43:08 +0000
+Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udr4I-0000000HS2A-3zeG;
-	Mon, 21 Jul 2025 14:00:40 +0000
-Received: from localhost.localdomain (unknown [119.122.214.181])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1cbe85dcb;
-	Mon, 21 Jul 2025 22:00:22 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: knaerzche@gmail.com
-Cc: amadeus@jmu.edu.cn,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	jonas@kwiboo.se,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	ziyao@disroot.org
-Subject: Re: [PATCH v3 0/6] arm64: dts: rockchip: Add ROCK 2A/2F, Sige1 and NanoPi Zero2
-Date: Mon, 21 Jul 2025 22:00:16 +0800
-Message-Id: <20250721140016.308800-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <3c83e8cc-9ef0-4560-b6d7-127abab50541@gmail.com>
-References: <3c83e8cc-9ef0-4560-b6d7-127abab50541@gmail.com>
+	id 1udrsL-0000000006z-0D4m;
+	Mon, 21 Jul 2025 14:52:22 +0000
+Received: by mail-ua1-x929.google.com with SMTP id a1e0cc1a2514c-87f4c8e9cdcso2515866241.2;
+        Mon, 21 Jul 2025 07:52:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1753109539; x=1753714339; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=h9pKFUGnES5BOvIgz7OhSqjKvwg3RjLuuOEjVJ2EOIQ=;
+        b=Cc5KaId5Ysygss5xwOhIBggn6cktbcILeTzudFSqWnERcYDcb6J4UkaD/x8Stx6qpY
+         H5lbrXzRAowDNaCq+8PBIuCE7rc41UVguW9PGfcAzqkyiD7lBVfpDOjxEfGPEsjxVULc
+         5lYacWN9DBQfnxH409Mca33W3SJ3PLAc6eDIhth1pRik5Mj926Cvu6b3N2mXTh7hhheA
+         e1oMYn4kYH/EKNxq0I05y4o9T8oqtwdRVi2FKFqInXIXRqXVUiGiCHLYR6krv9bTSRCt
+         B3jl2H7r6yY9IW1Xa8JvVLHkLKOyrlEh82ocm7TvPYYf6+Vy8PMm6mECzH8ggINlvd7y
+         OYxw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753109539; x=1753714339;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=h9pKFUGnES5BOvIgz7OhSqjKvwg3RjLuuOEjVJ2EOIQ=;
+        b=ETnkPKJguO7MVDDjaBbROmmKHelnp4Kn7QcUpPRhcCv49HZJQTDKabgFBnAOFk2Jmz
+         uqPmxpjQ5tfMkVbTI07pMigKbQzhvV9OwiTFWNxcahDrCykU8nQF0Jm+XjAJy9w21UYk
+         TbOS1HX2lfjaGdqn9jCoIaVHHkVb2JF2lHNHsqfxnTqwKl7SkzYZfc1IPBR3/flYUbwT
+         EioOTGn002GNziJc/gPEhwAFVfw9HuJZGOP+ffJEf2T9hKmPSqqB6CeOiQJQY07770/9
+         luMrisfXh18HtfBc/besDb6NZv6DO2KbVxckoaJsqojylXXv+RDcf7IfOa/wQrHTLhK/
+         4EYQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVgbH5jIEoBAFX9z881JoW47YYgAbUtdzGCOGhERPfyz73hLrjbWDA2bjzYepM1mfpmpLu067yC7TcjeJQY4bbo@lists.infradead.org, AJvYcCWUQkJiD952RE9rpaOKAb+zKXfLNQT4I6NDeruptzWHh3znwF+rHjruqDHPXoFovuWcgckzgfMxJVGg@lists.infradead.org
+X-Gm-Message-State: AOJu0YycbpN7qniJeBCQelxkXZw5yXfh4CDn6fkZcPRPTJXa+GGs1Bx6
+	idvFJWfn7eomgM+agFsSi9ICLH+RqSa4edHNUj1HFEtsCNTOqBQ3Lz87
+X-Gm-Gg: ASbGncvRFf8djR0Guy3nDKIUqWDDRpRNQyvDXinK5phqiASIpxnTnYO5IgsOjTNlLey
+	Z/V3SzfogjqpU6ZCUPh37H4mVB0/5C4skq2iK1cWKtBd6Y4DZmjH73FCiaZAqPYSn8oJanCI2gf
+	sW0JKSoQKyEciDYNZMq4aAnX+HmoGVpMuMhnB8WBOR1yxhYBal0cUl/L0SJbL71gf4rgNTwXbTu
+	RKrb2TQSIJDXB/hz7hYgwC0mmnfiFSHlXahv81K+rbjDmRKW2LhhMdqGGM3vCRXH4EToXVca67G
+	WX6buFf/BujiTYgnqWqQ01POqvLW/boFWxa0xEEJ5YK2rv01BvvdDLWNkuwUSi8l8jf2eWcc6l6
+	XtbfrZs9Siw==
+X-Google-Smtp-Source: AGHT+IGmd9k2a2Hbn8hJD4fenPYbM7kP6VlkdwpccXej9YWy59eUsaAV2qcil8B3QUVuuNtyCfMeoA==
+X-Received: by 2002:a05:6122:1d56:b0:529:f50:7904 with SMTP id 71dfb90a1353d-5374f6b4ddemr7449549e0c.9.1753109539382;
+        Mon, 21 Jul 2025 07:52:19 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:6584::dead:c001])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-53764f2bd69sm2823702e0c.14.2025.07.21.07.52.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 21 Jul 2025 07:52:18 -0700 (PDT)
+Date: Mon, 21 Jul 2025 11:52:12 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: linux-rockchip@lists.infradead.org,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rick wertenbroek <rick.wertenbroek@gmail.com>,
+	linux-phy@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v7 3/4] phy: rockchip-pcie: Enable all four lanes if
+ required
+Message-ID: <aH5UHPAtAVb2snSK@geday>
+References: <cover.1751200382.git.geraldogabriel@gmail.com>
+ <b203b067e369411b029039f96cfeae300874b4c7.1751200382.git.geraldogabriel@gmail.com>
+ <2affed16-f3c4-47d3-9ca6-e4f48e875367@arm.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a982d491b8e03a2kunm89436e991815c0
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZQ0IaVkseGRgYTksZTU8ZTlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VKQ0pZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0tVSktLVU
-	tZBg++
+Content-Disposition: inline
+In-Reply-To: <2affed16-f3c4-47d3-9ca6-e4f48e875367@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_070039_184481_139D6AE3 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20250721_075221_088300_87D34E99 
+X-CRM114-Status: GOOD (  14.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,36 +110,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mon, Jun 30, 2025 at 02:48:25PM +0100, Robin Murphy wrote:
+> On 29/06/2025 9:58 pm, Geraldo Nascimento wrote:
+> > Current code enables only Lane 0 because pwr_cnt will be incremented on
+> > first call to the function. Let's reorder the enablement code to enable
+> > all 4 lanes through GRF.
+> 
+> As usual the TRM isn't very clear, but the way it describes the 
+> GRF_SOC_CON_5_PCIE bits does suggest they're driving external input 
+> signals of the phy block, so it seems reasonable that it could be OK to 
+> update the register itself without worrying about releasing the phy from 
+> reset first. In that case I'd agree this seems the cleanest fix, and if 
+> it works empirically then I think I'm now sufficiently convinced too;
+> 
+> Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 
-> I'm not sure where you are getting your information from, but as I told
-> before I actually *own* this board in the non-development version and it
-> has an RK3528 SoC/silkscreen - I just was too lazy to photograph it my own
-> but I did now [0]
+Hi everyone,
 
-I have the MangoPi M28S, M28K and M28C boards.
-The M28K board does have a silkscreen of RK3528A. [2]
-Regardless of whether the silkscreen is RK3528 or RK3528A,
-U-Boot reports that the SoC on these boards is RK3528A. (via OTP [1])
-So one possibility is that Rockchip forgot to update the silkscreen.
+Patches 1 and 2 of this series were merged thhrough pci git but patches
+3 and 4 of present series got R-b's but were completely ignored by phy
+maintainers.
 
-Comparison chip block diagram:
-1. Earlier version: https://docs.armsom.org/img/sige/rk3528.png
-2. Final   version: https://docs.radxa.com/img/e/e20c/radxa-e20c-chip-diagram.webp
+Do you think it's fair if I resend these ones with a new, phy only, cover
+letter but keep the R-b tags?
 
-The difference seems to be that RK3528 uses I2S while RK3528A uses SAI.
-But from the updated diagram here [3], RK3528 also uses the SAI interface.
-
-Rockchip BSP does not make any distinction between RK3528 and RK3528A,
-so it is meaningless to continue to worry about non-A versions.
-
-[1] https://github.com/u-boot/u-boot/blob/master/arch/arm/mach-rockchip/rk3528/rk3528.c#L131
-[2] https://x.com/mangopi_sbc/status/1847851624804602316?t=5hwScxgwCAAid0eCJgrP5w&s=19
-[3] https://x.com/mangopi_sbc/status/1785115827437760769?t=H5PXRDwbjOfBYa7QotjIZw&s=19
-
---
-2.25.1
-
+Thank you,
+Geraldo Nascimento
 
 _______________________________________________
 Linux-rockchip mailing list
