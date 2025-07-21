@@ -4,139 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DFB1C83F26
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jul 2025 11:44:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1CCCC83F25
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jul 2025 12:57:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NminNSr0yBg0gk4N7m9+NzYhMqkfDXtIV0kIsF9mZRg=; b=NB7BIxLiFteim2
-	LdgVxXbSMd3e69iHbQYRKaU4Yzk3eSCh9AL37abh4fdjXDWw5WiNYeuV0uDtMNwst15yZFjPaxr0a
-	RLGtwMPKxyEbdiu1aIbac9Kjfpt2VV0dObPpPqxXU6xE7O0vX90t8bdBxcCItpIwqAcsZCq99GBBs
-	E9BgkxiLG7rH01fJYnVuO614Ue3R0f2wLz61Juqnnsi4XKkSi758tSO8hfH6nQdtJpw04Cc3mSeYn
-	nyIJR/en63/0YBEYMGJzx/30KsOEB0ROEmYOw1Gs9S7+xbewYPy1DsTREGxURPblthS2VqLFepvym
-	0uy6qP8jTaWW9WH8Y+Yg==;
+	List-Owner; bh=mj5zzovZHiS9uhz5Ana0e0RIY/a3mAbgZ4Xc6T6G/xQ=; b=n9Gv0m8HdsJ/PA
+	Mc/ddKR9Apy9Z3LDjMbpTy8XGJcMAfyMmQf8WVRSV42EDkyKCpmRfBFyETnxEgN+RS+AaAOh/ndK+
+	iNZtgvGY/7xPmDbBXRiU+zMjPiZcP6KhQfqyAzm+XTxXcUEM9tFHOlU3mcOPJR3lZJ4H5d1EGIEYA
+	9xs8AIajLKtvmslU2c4Rnp3aAfu4NGsaZ2ayvi2aSqgUKQCrrrPoemG2xiBxnk+XuJDRzlVwHKpvJ
+	dmMkmggkQ1Xi9Tn0RnOYU/xKVpOBxSPxA0HvjkC0cuQffeQI4AL5Pd4HVF6lPU7U0dfI+LtMI8+Jq
+	o0klLeVn8rvTd2PHKflA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udowV-0000000HAay-2RoZ;
-	Mon, 21 Jul 2025 11:44:27 +0000
-Received: from mx07-00178001.pphosted.com ([185.132.182.106])
+	id 1udq5C-0000000HJWg-35D8;
+	Mon, 21 Jul 2025 12:57:30 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udoNo-0000000H2SZ-3Doj;
-	Mon, 21 Jul 2025 11:08:38 +0000
-Received: from pps.filterd (m0241204.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56LAiMm0014072;
-	Mon, 21 Jul 2025 13:07:23 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=selector1; bh=
-	ZesZJAirQ8C1ohHkcmwk/SZqiKf5CT9QYrZbudr96z0=; b=CzmeFdsk3HJI57lf
-	VLKGmGmQh3HC0LKkNuWaKOM3l+4NgchhLNiXV1T8nRre05AknyQJpS7M5wJO9wOm
-	XuV1k2bu1IAf90lIDHIllg989ZrLgbM//VIbAEB3C8CVmGZ1d6PXtQjK8WQyEY5m
-	LsrRFkiefZARVmwg9N/2WMFwuMBkMOQvNN6UGxBgdturUrOqlLPFtM6UfXoFVwgj
-	D8f/bAv0oktn4xffXnsWJJg0khrsCm0nR7tb6Z23OBIbk8dOgTKidpDU07lpa67O
-	4a4ELDPBB/W8hNiDKbVLlz6q5YiYEroFt4A8MU30eFbNqlv4XdWBb0licHEpeeyU
-	4p57+A==
-Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 4802q20j57-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 21 Jul 2025 13:07:23 +0200 (MEST)
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 3D3E1400A9;
-	Mon, 21 Jul 2025 13:04:18 +0200 (CEST)
-Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 26B8B7A321F;
-	Mon, 21 Jul 2025 13:03:59 +0200 (CEST)
-Received: from [10.130.78.67] (10.130.78.67) by SHFDAG1NODE1.st.com
- (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Mon, 21 Jul
- 2025 13:03:57 +0200
-Message-ID: <fa07f01b-1e06-48c1-b380-c41a52f741bc@foss.st.com>
-Date: Mon, 21 Jul 2025 13:03:57 +0200
+	id 1udoTg-0000000H3Nm-0C4K;
+	Mon, 21 Jul 2025 11:14:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1753096461; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=jYDbMhT8vW1zZ55sI4R7g1B58Oih9oqWj6/OHCkN7i3soW0oBjrysLGZCIOIwKpbi/S4R9R6I9DzaB3/a/jfCHc0jge426lJOeXddipzWya2vUv9BJR51q/V5Ym2hd6Xn9XhbIccR0vCC1hhPJZp8pixppyUATKFwpUQMuTxQx4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1753096461; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=apcXxEnb0qJg1v9Cl7JQ6npH3CzfQYbUnRtZrZ2JRQo=; 
+	b=DtIObIS9tuE0ada0VjeUzVrB6+WAlE06f1oeU6I4KkV87vFL40WUPjQkWn0Qvkk+z/tZ+6ikJFy0J8KzcQ5xIFLHApyCEqyFnQQKMzI3t6NyqUtKahukCqEiCOiFghfwduWM2LKZhq6e47wNS9VpVwcFtxfkHF+Am+V/Z49XFrg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=benjamin.gaignard@collabora.com;
+	dmarc=pass header.from=<benjamin.gaignard@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1753096461;
+	s=zohomail; d=collabora.com; i=benjamin.gaignard@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=apcXxEnb0qJg1v9Cl7JQ6npH3CzfQYbUnRtZrZ2JRQo=;
+	b=Ng8qHnwKp0kseIgsBGNF47L3UKdRF5Gn/rEgrTYuEvTl8P3sWznvC3DDRjddwmj/
+	MrPA+UxXE8ZA3+nMRDuFpZDlOLPlg8RZ57XhLM8Pjv+PN+NFaBihL/2tuYAEDBCTEsB
+	N3aDH1R05bBv2dMGMnp79lTpx9sLG7SNaiWUlAz4=
+Received: by mx.zohomail.com with SMTPS id 1753096458959568.7003735740404;
+	Mon, 21 Jul 2025 04:14:18 -0700 (PDT)
+Message-ID: <e96b1d2f-bff8-4b79-9995-6929648a810b@collabora.com>
+Date: Mon, 21 Jul 2025 13:14:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/1] media: Remove redundant
- pm_runtime_mark_last_busy() calls
-To: Sakari Ailus <sakari.ailus@linux.intel.com>,
-        Tommaso Merciai
-	<tomm.merciai@gmail.com>,
-        Martin Hecht <mhecht73@gmail.com>,
-        Mauro Carvalho
- Chehab <mchehab@kernel.org>,
-        Sebastian Reichel <sre@kernel.org>,
-        Alain Volmat
-	<alain.volmat@foss.st.com>,
-        Dave Stevenson <dave.stevenson@raspberrypi.com>,
-        Kieran Bingham <kieran.bingham@ideasonboard.com>,
-        Umang Jain
-	<umang.jain@ideasonboard.com>,
-        Manivannan Sadhasivam <mani@kernel.org>,
-        Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-        Michael Riesch
-	<michael.riesch@collabora.com>,
-        Mikhail Rudenko <mike.rudenko@gmail.com>,
-        Steve Longerbeam <slongerbeam@gmail.com>,
-        Jacopo Mondi
-	<jacopo.mondi@ideasonboard.com>,
-        Nicholas Roth <nicholas@rothemail.net>,
-        Sylvain Petinot <sylvain.petinot@foss.st.com>,
-        Paul Elder
-	<paul.elder@ideasonboard.com>,
-        Matt Ranostay <matt@ranostay.sg>,
-        Nas Chung
-	<nas.chung@chipsnmedia.com>,
-        Jackson Lee <jackson.lee@chipsnmedia.com>,
-        Dmitry Osipenko <digetx@gmail.com>,
-        Thierry Reding
-	<thierry.reding@gmail.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Vikash
- Garodia <quic_vgarodia@quicinc.com>,
-        Dikshita Agarwal
-	<quic_dikshita@quicinc.com>,
-        Abhinav Kumar <abhinav.kumar@linux.dev>,
-        Bryan
- O'Donoghue <bryan.odonoghue@linaro.org>,
-        Raspberry Pi Kernel Maintenance
-	<kernel-list@raspberrypi.com>,
-        Florian Fainelli
-	<florian.fainelli@broadcom.com>,
-        Broadcom internal kernel review list
-	<bcm-kernel-feedback-list@broadcom.com>,
-        Nicolas Dufresne
-	<nicolas.dufresne@collabora.com>,
-        Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>,
-        Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
-        Hans Verkuil <hverkuil@xs4all.nl>,
-        Matthias Fend
-	<matthias.fend@emfend.at>,
-        Marco Felsch <m.felsch@pengutronix.de>,
-        Tomi
- Valkeinen <tomi.valkeinen@ideasonboard.com>,
-        Ricardo Ribalda
-	<ribalda@chromium.org>
-CC: <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-tegra@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-rpi-kernel@lists.infradead.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>
-References: <20250709195348.973873-1-sakari.ailus@linux.intel.com>
+Subject: Re: [PATCH v6 3/5] iommu: Add verisilicon IOMMU driver
+To: Jason Gunthorpe <jgg@ziepe.ca>, Will Deacon <will@kernel.org>
+Cc: Robin Murphy <robin.murphy@arm.com>, joro@8bytes.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+ nicolas.dufresne@collabora.com, iommu@lists.linux.dev,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com
+References: <20250710082450.125585-1-benjamin.gaignard@collabora.com>
+ <20250710082450.125585-4-benjamin.gaignard@collabora.com>
+ <aHTzPwTob8_5rtBS@willie-the-truck>
+ <baa1fcde-f167-4a1b-afca-0a2957a688cc@collabora.com>
+ <aHozv0NG1OBlAH6c@willie-the-truck>
+ <b4169471-fcd0-4415-8281-c5bd722e5f2b@arm.com>
+ <aHpQXy-bnwW56rCn@willie-the-truck> <20250718141401.GD2206214@ziepe.ca>
 Content-Language: en-US
-From: Benjamin Mugnier <benjamin.mugnier@foss.st.com>
-In-Reply-To: <20250709195348.973873-1-sakari.ailus@linux.intel.com>
-X-Originating-IP: [10.130.78.67]
-X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
- (10.75.129.69)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-07-21_03,2025-07-21_01,2025-03-28_01
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <20250718141401.GD2206214@ziepe.ca>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_040837_091787_E0FEC522 
-X-CRM114-Status: UNSURE (   9.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250721_041440_157791_366C40EA 
+X-CRM114-Status: GOOD (  19.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,52 +82,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sakari,
-
-On 7/9/25 21:53, Sakari Ailus wrote:
-> pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
-> pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
-> to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
-> pm_runtime_mark_last_busy().
-> 
-> Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Acked-by: Thierry Reding <treding@nvidia.com> (tegra-vde/h264.c)
-> Acked-by: Tommaso Merciai <tommaso.merciai.xr@bp.renesas.com> (alvium-csi2.c)
-> Reviewed-by: Dikshita Agarwal <quic_dikshita@quicinc.com> (iris_hfi_queue.c)
-> Reviewed-by: Sean Young <sean@mess.org>
-> Acked-by: Dave Stevenson <dave.stevenson@raspberrypi.com> (imx219.c)
-> ---
-> since v1:
-> 
-> - Remove now-redundant braces from ccs-core.c, ov64a40.c and gpio-ir-recv.c.
-> 
-> v1 is <20250704075431.3220262-1-sakari.ailus@linux.intel.com> on LMML.
-> 
-
-[...]
-
->  drivers/media/i2c/st-mipid02.c                           | 2 --
-
-[...]
-
->  drivers/media/i2c/vd55g1.c                               | 4 ----
->  drivers/media/i2c/vd56g3.c                               | 4 ----
-
-[...]
-
-Acked-by: Benjamin Mugnier <benjamin.mugnier@foss.st.com>
-
--- 
-Regards,
-Benjamin
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDE4LzA3LzIwMjUgw6AgMTY6MTQsIEphc29uIEd1bnRob3JwZSBhIMOpY3JpdMKgOgo+IE9u
+IEZyaSwgSnVsIDE4LCAyMDI1IGF0IDAyOjQ3OjExUE0gKzAxMDAsIFdpbGwgRGVhY29uIHdyb3Rl
+Ogo+Cj4+IEp1c3QgYmVjYXVzZSB0aGUgZXhpc3RpbmcgZHJpdmVycyBhcmUgYSBtZXNzIGRvZXNu
+J3QgbWVhbiB3ZSBzaG91bGQKPj4gcHJvbGlmZXJhdGUgaXQhCj4gSWYgeW91IHdhbnQgdG8gaW5z
+aXN0IG9uIHNvbWV0aGluZyBoZXJlIGl0IHNob3VsZCBiZSBmb3IgdGhpcyBkcml2ZXIKPiB0byB1
+c2UgdGhlIG5ldyBnZW5lcmljIHBhZ2UgdGFibGUgY29kZSBJJ3ZlIHdyaXR0ZW4uCj4KPiBPdGhl
+cndpc2UgSSBkb24ndCBzZWUgdGhlIHBvaW50IGluIHRyeWluZyB0byBpbXByb3ZlIHRoaXMgaW4g
+c29tZQo+IGxlc3NlciB3YXkuCj4KPiBJZiB0aGlzIGhhZCBjb21lIGluIGEgeWVhcnMgdGltZSBJ
+IHdvdWxkIHByb2JhYmx5IGluc2lzdCBvbiB0aGF0LCBidXQKPiByaWdodCBub3cgaXQgaXNuJ3Qg
+bWVyZ2VkIHlldCBhbmQgaXQgd2lsbCBzdGlsbCBiZSBhIGxpdHRsZSBiaXQgYmVmb3JlCj4gcGVv
+cGxlIGhhdmUgdGltZSB0byByZXZpZXcgaXQuCj4KPiBQZXJoYXBzIGEgY29tcHJvbWlzZSB3aGVy
+ZSBCZW5qYW1pbiBjb21lcyB3aXRoIGFuIGlvbW11cHQgZm9ybWF0Cj4gaGVhZGVyIHRoYXQgd29y
+a3MgZm9yIHRoaXMgYW5kIHdlIGNhbiBwcm9ncmVzcyB0aGlzIHNlcmllcyBhbmQgYmUKPiByZWFk
+eSB0byBzd2FwIGl0IG91dCBkb3duIHRoZSByb2FkPwoKSSBoYXZlIHRha2Ugc29tZSB0aW1lIHRv
+IHRyeSB0byB1bmRlcnN0YW5kIHRoaXMgbmV3IGZyYW1ld29yayBhbmQgSSBoYXZlCnRvIGFkbWl0
+IGl0IGlzbid0IHN1cGVyIGNsZWFyIGluIG15IG1pbmQgaG93IHRvIHVzZSBpdCByaWdodCBub3cu
+CkkgZG9uJ3QgaGF2ZSBjYXRjaCB0aGUgYmVuZWZpdCBiZWhpbmQgdGhlIG1hY3JvIGFuZCB0aGUg
+bmVzdGVkIHN0cnVjdHVyZXMuCgpBbnl3YXksIGlmIFZTSSBkcml2ZXIgbmVlZCB0byBiZSB1cGRh
+dGVkIEkgY291bGQsIGF0IGxlYXN0LCB2YWxpZGF0ZSB0aGUKY2hhbmdlcyBvbiBteSBib2FyZCBv
+ciBtYWtlIHRoZSBmaXggbWFrZSBzZWxmIChidXQgSSB3aWxsIG5lZWQgdG8gc2VlCm1vcmUgZXhh
+bXBsZSBvZiBkcml2ZXJzIHVzaW5nIHRoaXMgbmV3IGZlYXR1cmUuCgpCZW5qYW1pbgoKPgo+IEph
+c29uCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
