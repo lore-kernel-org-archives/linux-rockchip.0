@@ -4,68 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6C5DC87FCA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jul 2025 16:42:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E04EC83F1A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jul 2025 16:42:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x7a83tEfLT7fzBIYNZvETFW5XFUDNNXhnhzAg97uUCo=; b=vZaYRGL2z7ycU5
-	z8E3hJyCWLT32hoCEBca8cNpQa1SKi/maniDKvnLj+VOgjwOAgVlpu16JuHD2yBiiHUM9R2MyK2JF
-	yk0tM+9N3avgITRUYrLDaKsKieAQ0tXqBYDvsoAoJfOUJf5W2PX4M/+vK95iEPYZA13MTCdIuAHcW
-	rtCT7UT0sBJJLe5EAVsy8CjTf9Isunb7QkurbBA3XEHSF63muSJp20O0rFCpxx2jRD2PmwQ71zB+F
-	ot3a45gwhz0qfHrh8X1quzTX+NuTCZ0KFkW5YPwJZsZXmeZjrJLpwLq60tFoj3nF92C8v81F6XBBb
-	VRSStf+4c5uGVl6h/qfA==;
+	List-Owner; bh=YyfbySmbLHimNZlUWVylUgCvEYhuF0O7pHiNv8l2ngw=; b=WcIbZnoM9szjsG
+	9ARmVqeiZkQWvskNwaAsK97mcGjsvdMv7dDjLKREVpizDKxLKwYvCPdr99gdsXvXTyvs26Cw0f73j
+	hyL7mBMLPVfQNX//zk4Mg3zNN9oUyiiE3oPMSTHZE0EAsn0AF9sDN848txebsiHkT1ZJMVAek7phI
+	ikUBQ3k/IQNCS6MR3XPLRV5si745luej331s/zJB0Nr7amMBJK/JDK5sWN9jZnMaZ7ig3sZa5Acjz
+	rm78FU9BzD8QEOJb8DPSi4iuYV4z2q3I7kYU+MqxoGUsls3e2ltsZv+SZboFBt3PILM+G053zyeqn
+	7pjATezFXL7tOLU353ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udtb1-00000000Bqt-3JUI;
-	Mon, 21 Jul 2025 16:42:35 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1udtaz-00000000Bp7-38fp;
+	Mon, 21 Jul 2025 16:42:33 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udrBi-0000000HSw1-45Mq
-	for linux-rockchip@lists.infradead.org;
-	Mon, 21 Jul 2025 14:08:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1753106889; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Z59vGM/4C6HeCkGkpTGlXB/INooxTGTCbMXlVKrKnXCzYTgMLU1rufxW22HSGRc9v8c8iuDKMUfprp3da72GnPAku7gGTij3Bm5s6lPNLDmuwzw1DROb8sLE+WkP7v+awCypwBrSCPCNNxcqxm5tMK1eEYRxjI96zDnGf20o7is=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1753106889; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=iUwGYLVqI6Xet0Y6yYXId8OhAeexUPWui/BWydgtxjc=; 
-	b=XFMi09ggTPwIeka28tO2P/9v65WtMvNUHgWd6CrO28mYZ10fSUVAoceyZKJzy0RZ05Hl5DcJuf2tgv/lnb52ozIejBKm/DS0Fy6VgFHJT1Q6oMy/1/CH9BuxqumRG42c2Y/IY9eXEBz36denos92wRamjZZ/RTZQwJ+CTJ1eXok=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1753106889;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=iUwGYLVqI6Xet0Y6yYXId8OhAeexUPWui/BWydgtxjc=;
-	b=O1/OT2JS33uLJgy6z/cS/tvpgWhtZPC+kVwWlYfZ3Q2P/tDCOTkJrKTdjeFcwFJX
-	Q0Az0saTpCz2ZbJ6YqiL4gfo42cNWX6fS6wE+FBuv58OqMpewlGvmPf3IGx95wZ3t4p
-	iwpd8EUhPHMOeOO9ZOkSVNKHzLo8DhR4ufMeL1nc=
-Received: by mx.zohomail.com with SMTPS id 1753106885694476.02518889834164;
-	Mon, 21 Jul 2025 07:08:05 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
-Subject: Re: [PATCH] media: rkvdec: Fix a NULL vs IS_ERR() bug in probe()
-Date: Mon, 21 Jul 2025 10:08:03 -0400
-Message-ID: <6175873.lOV4Wx5bFT@trenzalore>
-In-Reply-To: <696219e9-a1c7-4c87-b15c-1ffd42c95d58@sabinyo.mountain>
-References: <696219e9-a1c7-4c87-b15c-1ffd42c95d58@sabinyo.mountain>
+	id 1udr4I-0000000HS2A-3zeG;
+	Mon, 21 Jul 2025 14:00:40 +0000
+Received: from localhost.localdomain (unknown [119.122.214.181])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1cbe85dcb;
+	Mon, 21 Jul 2025 22:00:22 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: knaerzche@gmail.com
+Cc: amadeus@jmu.edu.cn,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	jonas@kwiboo.se,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	ziyao@disroot.org
+Subject: Re: [PATCH v3 0/6] arm64: dts: rockchip: Add ROCK 2A/2F, Sige1 and NanoPi Zero2
+Date: Mon, 21 Jul 2025 22:00:16 +0800
+Message-Id: <20250721140016.308800-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <3c83e8cc-9ef0-4560-b6d7-127abab50541@gmail.com>
+References: <3c83e8cc-9ef0-4560-b6d7-127abab50541@gmail.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+X-HM-Tid: 0a982d491b8e03a2kunm89436e991815c0
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZQ0IaVkseGRgYTksZTU8ZTlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VKQ0pZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0tVSktLVU
+	tZBg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250721_070819_087192_B21A9833 
-X-CRM114-Status: GOOD (  18.00  )
+X-CRM114-CacheID: sfid-20250721_070039_184481_139D6AE3 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,46 +71,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dan,
+Hi,
 
-On Wednesday, 25 June 2025 11:23:10 EDT Dan Carpenter wrote:
-> The iommu_paging_domain_alloc() function doesn't return NULL on error it
-> returns error pointers.  Update the check and then set ->empty_domain to
-> NULL because the rest of the driver assumes it can be NULL.
-> 
-> Fixes: ff8c5622f9f7 ("media: rkvdec: Restore iommu addresses on errors")
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
-> ---
->  drivers/staging/media/rkvdec/rkvdec.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/media/rkvdec/rkvdec.c
-> b/drivers/staging/media/rkvdec/rkvdec.c index d707088ec0dc..1b7f27e4d961
-> 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec.c
-> @@ -1162,8 +1162,10 @@ static int rkvdec_probe(struct platform_device *pdev)
-> if (iommu_get_domain_for_dev(&pdev->dev)) {
->  		rkvdec->empty_domain = 
-iommu_paging_domain_alloc(rkvdec->dev);
-> 
-> -		if (!rkvdec->empty_domain)
-> +		if (IS_ERR(rkvdec->empty_domain)) {
-> +			rkvdec->empty_domain = NULL;
->  			dev_warn(rkvdec->dev, "cannot alloc new 
-empty domain\n");
-> +		}
->  	}
-> 
->  	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+> I'm not sure where you are getting your information from, but as I told
+> before I actually *own* this board in the non-development version and it
+> has an RK3528 SoC/silkscreen - I just was too lazy to photograph it my own
+> but I did now [0]
 
-Thank you for finding this one. I tested it on rock 5b and all is good. 
+I have the MangoPi M28S, M28K and M28C boards.
+The M28K board does have a silkscreen of RK3528A. [2]
+Regardless of whether the silkscreen is RK3528 or RK3528A,
+U-Boot reports that the SoC on these boards is RK3528A. (via OTP [1])
+So one possibility is that Rockchip forgot to update the silkscreen.
 
-Tested-by: Detlev Casanova <detlev.casanova@collabora.com>
+Comparison chip block diagram:
+1. Earlier version: https://docs.armsom.org/img/sige/rk3528.png
+2. Final   version: https://docs.radxa.com/img/e/e20c/radxa-e20c-chip-diagram.webp
 
-Regards,
-Detlev.
+The difference seems to be that RK3528 uses I2S while RK3528A uses SAI.
+But from the updated diagram here [3], RK3528 also uses the SAI interface.
 
+Rockchip BSP does not make any distinction between RK3528 and RK3528A,
+so it is meaningless to continue to worry about non-A versions.
+
+[1] https://github.com/u-boot/u-boot/blob/master/arch/arm/mach-rockchip/rk3528/rk3528.c#L131
+[2] https://x.com/mangopi_sbc/status/1847851624804602316?t=5hwScxgwCAAid0eCJgrP5w&s=19
+[3] https://x.com/mangopi_sbc/status/1785115827437760769?t=H5PXRDwbjOfBYa7QotjIZw&s=19
+
+--
+2.25.1
 
 
 _______________________________________________
