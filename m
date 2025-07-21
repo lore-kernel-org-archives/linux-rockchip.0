@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0333C87FC5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jul 2025 05:47:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31319C83F1A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jul 2025 07:39:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L5f0rgyK2GO5mAtZew5JK5ducatapQ2zS4Iaq1UAwRo=; b=KUuuoZLd6k9Pi/
-	F6Mp+NWzjXc0WLJu3Ng/o5MbTF3bXUeyBK8AuBFrqTBnVmgvkl1bB8oqXGLehI6/Y9ylJV70K8gwz
-	5MyQfPqGX4MQcoz3Mlb7+B0ACq8uT2fPfIHuEEmB7lSclPhfxTmxF3t0jhkndChBQWNO/RPsIYmJ0
-	zNnhoSYG8v6hp4drnfJHk0bmps15kjFnHxqWhCu40hfx/cVSYbJnOqyWGfhkufCwZa3+4nJ0rUsJh
-	jbLGlDKzG+x8eckTMmavxYu7CbAG4+c+ckzsGpYrdOebKsPJaKFKWmE164ihS/bh+0iIQOr2hYgQU
-	g8dQvymnmRaAPiP5rFiQ==;
+	List-Owner; bh=PYkoBGWJ1PnVv8iesA95Qaw6/CtKRvSR0N5p3cfB4Xs=; b=aq1iOf7SKTN6Eg
+	IGyrR0sHf0aHvj3y5h1px0EjXDql7IhNYXcww+BmrH4+hmp/nuw0yKv3wVF4+hVOFr7bFlzqKmI4h
+	5PLeI6cWFY7VzNkEsCb0VEy5No91LzKU89u3cVuGmlNEQ4AOkttBuhyR3kypv0OKxfZSZBc7eGPGy
+	daY9gFfzrRjyk4VQbYYBPupKrwSONpoi9PoDx4SMwTM8yAeOalsmZcumaHEe2LOpwy0rb7e+IFCsG
+	SLIlDOSEYKQZH/K/k4QN8wQb968DxK2V6KDOjzsyc3qxwd2vO14pTperwpj3JVPCHO0MtzxJCy0aq
+	27nIhS57i2Vqj3fCqFuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udjN4-0000000GI5v-0lV9;
-	Mon, 21 Jul 2025 05:47:30 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1udl75-0000000GVtZ-3MF6;
+	Mon, 21 Jul 2025 07:39:07 +0000
+Received: from mail-m49195.qiye.163.com ([45.254.49.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1udjN0-0000000GI4v-0DZZ;
-	Mon, 21 Jul 2025 05:47:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753076842;
-	bh=Y6O1LeXawfH6jqCiha75wKFY04tLvXmKtw8IkQsRZzE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=R6sgbtT1j4PydMnb9LKCtJbvY/h+dBwoJCRjJfAknzIQNRrlcOiG3Rk7yOIjryhEo
-	 oT7IdyLx4C46fpqYi16JO1SXk+maA3prPGcpfO41dZKiPy/jt/7nmEClDczTMthbjO
-	 f5rn1uQfLT9p/KaXVj+L7P7QFkUwyCRq8fB7KJnD12SvtbzJDgF6K2DqpC6eNNMXSc
-	 R4tdiCX2+c7lD3XeADrFBiihDgbCH+kYyNMl57OF7K1/z6GCmvW19PSFZ3/ayya0Kj
-	 Sl9U4R7JPUywoq3uTD9VyR8AzQ3zrX9cT/8qIK4KOr7oEry2iagdrQ+7cmqWFkzuq2
-	 qyC1Q3wjkaoUw==
-Received: from [192.168.50.250] (unknown [171.76.80.183])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B508E17E0F66;
-	Mon, 21 Jul 2025 07:47:19 +0200 (CEST)
-Message-ID: <bcff3bed-0695-45fa-8f62-453878b6075f@collabora.com>
-Date: Mon, 21 Jul 2025 11:17:02 +0530
+	id 1udl50-0000000GVRi-29Qk;
+	Mon, 21 Jul 2025 07:37:00 +0000
+Received: from [172.16.12.26] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1cb3df4bc;
+	Mon, 21 Jul 2025 15:36:41 +0800 (GMT+08:00)
+Message-ID: <f122492f-7f2a-4d3f-af74-3b807c9cd742@rock-chips.com>
+Date: Mon, 21 Jul 2025 15:36:40 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 5/7] drm/ci: uprev IGT
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.fornazier@gmail.com, airlied@gmail.com, simona.vetter@ffwll.ch,
- robdclark@gmail.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, valentine.burley@collabora.com,
- lumag@kernel.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
- amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev,
- linux-kernel@vger.kernel.org
-References: <20250718105407.32878-1-vignesh.raman@collabora.com>
- <20250718105407.32878-6-vignesh.raman@collabora.com>
- <7c6suvc6quwwxni2nsos65btzim2lbv7f2u6mz5qbupzpmpzgb@g46wg63ubr6l>
+Subject: Re: [PATCH v2 07/12] drm/bridge: analogix_dp: Add support to find
+ panel or bridge
+From: Damon Ding <damon.ding@rock-chips.com>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org
+Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
+ hjc@rock-chips.com, andy.yan@rock-chips.com,
+ dmitry.baryshkov@oss.qualcomm.com, l.stach@pengutronix.de,
+ dianders@chromium.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20250709070139.3130635-1-damon.ding@rock-chips.com>
+ <20250709070139.3130635-8-damon.ding@rock-chips.com>
+ <4555084.IFkqi6BYcA@diego>
+ <0a4d5e97-a143-4293-987c-5682be60023d@rock-chips.com>
 Content-Language: en-US
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <7c6suvc6quwwxni2nsos65btzim2lbv7f2u6mz5qbupzpmpzgb@g46wg63ubr6l>
+In-Reply-To: <0a4d5e97-a143-4293-987c-5682be60023d@rock-chips.com>
+X-HM-Tid: 0a982be9d47603a3kunmf0036496274134
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0pOGFZOTh5JQ0IfGU8fTk5WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=EMNzdqeOdDlKBOOh7gKY5lvBoJzZz8n2CRLGROufJnK6PLGQKvzZoO0aFgSUCAW00tzdnoo7j+vy+8rJ7RfLspNoAWLHoCr2AgqbinG5qPCrWGgeqQ7CpYYZ/bGGjDJsSsuLR9okEiHEnpoMW5W6Ka27Wl13J3KRAMUp2Bm0hto=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=BcqKufxdH6F7LtnCk0e0JkGxUW+ENO9nSfoURV4nsTs=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250720_224726_288847_04238993 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20250721_003658_775905_B4581AFE 
+X-CRM114-Status: GOOD (  21.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,181 +78,138 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On 18/07/25 18:24, Dmitry Baryshkov wrote:
-> On Fri, Jul 18, 2025 at 04:23:57PM +0530, Vignesh Raman wrote:
->> Uprev IGT to the latest version and update expectation files.
->>
->> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->> ---
->>   drivers/gpu/drm/ci/gitlab-ci.yml              |   2 +-
->>   .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   2 +
->>   .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |   7 ++
->>   drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |  11 +-
->>   drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   2 +
->>   drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |  29 +----
->>   drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |   7 ++
->>   drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   8 +-
->>   drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |  83 ++++++++++++
->>   drivers/gpu/drm/ci/xfails/i915-jsl-fails.txt  |  10 +-
->>   drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   3 +
->>   drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   5 +-
->>   drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt |   6 +
->>   drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   7 +-
->>   .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   5 +-
->>   .../drm/ci/xfails/mediatek-mt8173-flakes.txt  | 119 ++++++++++++++++++
->>   .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   7 +-
->>   .../msm-sc7180-trogdor-kingoftown-fails.txt   |   1 +
->>   ...sm-sc7180-trogdor-lazor-limozeen-fails.txt |   1 +
->>   .../drm/ci/xfails/msm-sm8350-hdk-fails.txt    |   1 +
->>   .../drm/ci/xfails/msm-sm8350-hdk-skips.txt    |  73 +++++++++++
->>   .../drm/ci/xfails/panfrost-mt8183-fails.txt   |   1 +
->>   .../drm/ci/xfails/panfrost-rk3288-fails.txt   |   1 +
->>   .../drm/ci/xfails/panfrost-rk3399-fails.txt   |   1 +
->>   .../drm/ci/xfails/rockchip-rk3288-fails.txt   |  12 +-
->>   .../drm/ci/xfails/rockchip-rk3288-flakes.txt  |  21 ++++
->>   .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   9 +-
->>   .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |  35 ++++++
->>   .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   4 +
->>   drivers/gpu/drm/ci/xfails/vkms-none-fails.txt |   3 +
->>   drivers/gpu/drm/ci/xfails/vkms-none-skips.txt |   3 +
->>   31 files changed, 416 insertions(+), 63 deletions(-)
->>   create mode 100644 drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt
->>
->> diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
->> index e4a8f8352cd6..9bf38c077f8e 100644
->> --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
->> +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
->> @@ -15,3 +15,4 @@ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
->>   kms_plane_alpha_blend@alpha-7efc,Fail
->>   kms_plane_alpha_blend@coverage-7efc,Fail
->>   kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
->> +core_setmaster@master-drop-set-user,Fail
-> 
-> Could you please point out the issue / failure log?
-
-Please see the pipeline logs,
-https://gitlab.freedesktop.org/vigneshraman/msm/-/jobs/79793740
-https://gitlab.freedesktop.org/vigneshraman/msm/-/jobs/79793742
-
-Let me know if you want me to raise an issue.
-
-Regards,
-Vignesh
-
-> 
->> diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
->> index e4a8f8352cd6..7441b363efae 100644
->> --- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
->> +++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
->> @@ -1,3 +1,4 @@
->> +core_setmaster@master-drop-set-user,Fail
->>   kms_color@ctm-0-25,Fail
->>   kms_color@ctm-0-50,Fail
->>   kms_color@ctm-0-75,Fail
->> diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
->> index 8d26b23133aa..f387c73193c6 100644
->> --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
->> +++ b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-fails.txt
->> @@ -1,3 +1,4 @@
->> +core_setmaster@master-drop-set-user,Fail
->>   kms_3d,Fail
->>   kms_cursor_legacy@forked-bo,Fail
->>   kms_cursor_legacy@forked-move,Fail
->> diff --git a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
->> index 9450f2a002fd..84ffbe0981ea 100644
->> --- a/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
->> +++ b/drivers/gpu/drm/ci/xfails/msm-sm8350-hdk-skips.txt
->> @@ -210,3 +210,76 @@ msm/msm_mapping@ring
->>   # [  229.752499] CPU features: 0x18,00000017,00200928,4200720b
->>   # [  229.758095] Memory Limit: none
->>   # [  229.761291] ---[ end Kernel panic - not syncing: softlockup: hung tasks ]---
->> +
->> +msm/msm_recovery@gpu-fault
-> 
-> Hmm. I thought this should have been fixed...
-> 
->> +# DEBUG - Begin test msm/msm_recovery@gpu-fault
->> +# [  153.288652] [IGT] msm_recovery: executing
->> +# [  153.295317] [IGT] msm_recovery: starting subtest gpu-fault
->> +# [  153.317588] adreno 3d00000.gpu: CP | opcode error | possible opcode=0xDEADDEAD
->> +# [  153.367412] adreno 3d00000.gpu: [drm:a6xx_irq] *ERROR* gpu fault ring 0 fence 814 status 00800005 rb 016b/0215 ib1 000000010000B000/0000 ib2 0000000000000000/0000
->> +# [  153.383449] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: hangcheck recover!
->> +# [  153.393296] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: offending task: msm_recovery (/igt/libexec/igt-gpu-tools/msm/msm_recovery --run-subtest gpu-fault)
->> +# [  153.436085] revision: 660 (6.6.0.1)
->> +# [  153.439702] rb 0: fence:    2063/2068
->> +# [  153.443659] rptr:     360
->> +# [  153.446389] rb wptr:  533
->> +# [  153.449103] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG0: 0
->> +# [  153.455746] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG1: 0
->> +# [  153.462387] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG2: 2062
->> +# [  153.469293] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG3: 0
->> +# [  153.475680] adreno 3d00000.gpu: [drm:a6xx_irq] *ERROR* gpu fault ring 0 fence 814 status 00800005 rb 016b/0215 ib1 000000010000B000/0000 ib2 0000000000000000/0000
->> +# [  153.475919] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG4: 0
->> +# [  153.475925] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG5: 0
->> +# [  153.475928] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG6: 0
->> +# [  153.475930] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG7: 1
->> +# [  153.529587] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
->> +# [  153.539837] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: hangcheck recover!
->> +# [  153.549597] msm_dpu ae01000.display-controller: [drm:recover_worker] *ERROR* 6.6.0.1: offending task: msm_recovery (/igt/libexec/igt-gpu-tools/msm/msm_recovery --run-subtest gpu-fault)
->> +# [  153.566489] revision: 660 (6.6.0.1)
->> +# [  153.570099] rb 0: fence:    2064/2068
->> +# [  153.573878] rptr:     0
->> +# [  153.576411] rb wptr:  688
->> +# [  153.579134] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG0: 0
->> +# [  153.585775] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG1: 0
->> +# [  153.592410] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG2: 0
->> +# [  153.597308] [IGT] msm_recovery: finished subtest gpu-fault, FAIL
->> +# [  153.599039] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG3: 0
->> +# [  153.611856] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG4: 0
->> +# [  153.618498] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG5: 0
->> +# [  153.625132] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG6: 0
->> +# [  153.631766] adreno 3d00000.gpu: [drm:a6xx_recover] CP_SCRATCH_REG7: 0
->> +# [  153.639162] *** gpu fault: ttbr0=00000001042fc000 iova=0000000000000000 dir=READ type=TRANSLATION source=CP (0,0,0,0)
->> +# [  153.648502] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
->> +# [  153.650144] *** gpu fault: ttbr0=00000001042fc000 iova=0000000000000020 dir=READ type=TRANSLATION source=CP (0,0,0,0)
->> +# [  153.650241] adreno 3d00000.gpu: CP illegal instruction error
->> +# [  153.671006] platform 3d6a000.gmu: [drm:a6xx_rpmh_start] *ERROR* Unable to power on the GPU RSC
->> +# [  153.687278] platform 3d6a000.gmu: [drm:a6xx_gmu_set_oob] *ERROR* Timeout waiting for GMU OOB set GPU_SET: 0x0
->> +# [  363.495437] INFO: task msm_recovery:876 blocked for more than 120 seconds.
->> +# [  363.503070]       Not tainted 6.16.0-rc2-g0594d0b01a7c #1
->> +# [  363.508838] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
->> +# [  363.517142] task:msm_recovery    state:D stack:0     pid:876   tgid:876   ppid:274    task_flags:0x400100 flags:0x00000009
->> +# [  363.528876] Call trace:
->> +# [  363.531554]  __switch_to+0xf8/0x1a8 (T)
->> +# [  363.535703]  __schedule+0x418/0xee0
->> +# [  363.539486]  schedule+0x4c/0x164
->> +# [  363.542986]  schedule_timeout+0x11c/0x128
->> +# [  363.547281]  dma_fence_default_wait+0x13c/0x234
->> +# [  363.552123]  dma_fence_wait_timeout+0x160/0x45c
->> +# [  363.556947]  dma_resv_wait_timeout+0x70/0x11c
->> +# [  363.561582]  msm_gem_close+0xac/0xe4
->> +# [  363.565405]  drm_gem_handle_delete+0x74/0xe8
->> +# [  363.569951]  drm_gem_close_ioctl+0x38/0x44
->> +# [  363.574297]  drm_ioctl_kernel+0xc4/0x134
->> +# [  363.578442]  drm_ioctl+0x224/0x4f0
->> +# [  363.582050]  __arm64_sys_ioctl+0xac/0x104
->> +# [  363.586292]  invoke_syscall+0x48/0x110
->> +# [  363.590254]  el0_svc_common.constprop.0+0x40/0xe0
->> +# [  363.595197]  do_el0_svc+0x1c/0x28
->> +# [  363.598705]  el0_svc+0x4c/0x158
->> +# [  363.602035]  el0t_64_sync_handler+0x10c/0x138
->> +# [  363.606601]  el0t_64_sync+0x198/0x19c
->> +# [  363.610465] Showing all locks held in the system:
->> +# [  363.620406]  #0: ffff0000840200a0 (&tty->ldisc_sem){++++}-{0:0}, at: ldsem_down_read+0x18/0x24
->> +# [  363.629412]  #1: ffff800080d7c2f0 (&ldata->atomic_read_lock){+.+.}-{4:4}, at: n_tty_read+0x15c/0x57c
->> +# [  363.643169]  #0: ffffbd9c0475d920 (rcu_read_lock){....}-{1:3}, at: debug_show_all_locks+0x18/0x1c0
->> +# [  363.654158] =============================================
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAyNS83LzExIDE1OjQxLCBEYW1vbiBEaW5nIHdyb3RlOgo+IEhpIEhlaWtvLAo+IAo+IE9u
+IDIwMjUvNy8xMCA0OjA3LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4gSGkgRGFtb24sCj4+Cj4+
+IEFtIE1pdHR3b2NoLCA5LiBKdWxpIDIwMjUsIDA5OjAxOjM0IE1pdHRlbGV1cm9ww6Rpc2NoZSBT
+b21tZXJ6ZWl0IAo+PiBzY2hyaWViIERhbW9uIERpbmc6Cj4+PiBTaW5jZSB0aGUgcGFuZWwvYnJp
+ZGdlIHNob3VsZCBsb2dpY2FsbHkgYmUgcG9zaXRpb25lZCBiZWhpbmQgdGhlCj4+PiBBbmFsb2dp
+eCBicmlkZ2UgaW4gdGhlIGRpc3BsYXkgcGlwZWxpbmUsIGl0IG1ha2VzIHNlbnNlIHRvIGhhbmRs
+ZQo+Pj4gdGhlIHBhbmVsL2JyaWRnZSBwYXJzaW5nIG9uIHRoZSBBbmFsb2dpeCBzaWRlLgo+Pj4K
+Pj4+IFNpZ25lZC1vZmYtYnk6IERhbW9uIERpbmcgPGRhbW9uLmRpbmdAcm9jay1jaGlwcy5jb20+
+Cj4+PiAtLS0KPj4+IMKgIC4uLi9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUu
+Y8KgwqDCoCB8IDQ4ICsrKysrKysrKysrKysrKysrKysKPj4+IMKgIGluY2x1ZGUvZHJtL2JyaWRn
+ZS9hbmFsb2dpeF9kcC5owqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDIgKwo+Pj4gwqAg
+MiBmaWxlcyBjaGFuZ2VkLCA1MCBpbnNlcnRpb25zKCspCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jIGIvIAo+Pj4g
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPj4+IGlu
+ZGV4IDc4ZDY4MzEwZTRmNi4uNjYwZjk1ZTkwNDkwIDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPj4+ICsrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4+PiBAQCAtMTks
+MTIgKzE5LDE0IEBACj4+PiDCoCAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4+
+PiDCoCAjaW5jbHVkZSA8ZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oPgo+Pj4gKyNpbmNsdWRlIDxk
+cm0vZGlzcGxheS9kcm1fZHBfYXV4X2J1cy5oPgo+Pj4gwqAgI2luY2x1ZGUgPGRybS9kcm1fYXRv
+bWljLmg+Cj4+PiDCoCAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNfaGVscGVyLmg+Cj4+PiDCoCAj
+aW5jbHVkZSA8ZHJtL2RybV9icmlkZ2UuaD4KPj4+IMKgICNpbmNsdWRlIDxkcm0vZHJtX2NydGMu
+aD4KPj4+IMKgICNpbmNsdWRlIDxkcm0vZHJtX2RldmljZS5oPgo+Pj4gwqAgI2luY2x1ZGUgPGRy
+bS9kcm1fZWRpZC5oPgo+Pj4gKyNpbmNsdWRlIDxkcm0vZHJtX29mLmg+Cj4+PiDCoCAjaW5jbHVk
+ZSA8ZHJtL2RybV9wYW5lbC5oPgo+Pj4gwqAgI2luY2x1ZGUgPGRybS9kcm1fcHJpbnQuaD4KPj4+
+IMKgICNpbmNsdWRlIDxkcm0vZHJtX3Byb2JlX2hlbHBlci5oPgo+Pj4gQEAgLTE3MDcsNiArMTcw
+OSw1MiBAQCBzdHJ1Y3QgZHJtX2RwX2F1eCAqYW5hbG9naXhfZHBfZ2V0X2F1eChzdHJ1Y3QgCj4+
+PiBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQo+Pj4gwqAgfQo+Pj4gwqAgRVhQT1JUX1NZTUJPTF9H
+UEwoYW5hbG9naXhfZHBfZ2V0X2F1eCk7Cj4+PiArc3RhdGljIGludCBhbmFsb2dpeF9kcF9hdXhf
+ZG9uZV9wcm9iaW5nKHN0cnVjdCBkcm1fZHBfYXV4ICphdXgpCj4+PiArewo+Pj4gK8KgwqDCoCBz
+dHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCA9IHRvX2RwKGF1eCk7Cj4+PiArwqDCoMKgIHN0
+cnVjdCBhbmFsb2dpeF9kcF9wbGF0X2RhdGEgKnBsYXRfZGF0YSA9IGRwLT5wbGF0X2RhdGE7Cj4+
+PiArwqDCoMKgIGludCBwb3J0ID0gcGxhdF9kYXRhLT5kZXZfdHlwZSA9PSBFWFlOT1NfRFAgPyAw
+IDogMTsKPj4+ICvCoMKgwqAgaW50IHJldDsKPj4+ICsKPj4+ICvCoMKgwqAgLyoKPj4+ICvCoMKg
+wqDCoCAqIElmIGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZSgpIHJldHVybnMgLUVOT0RFViwg
+dGhlcmUgbWF5IAo+Pj4gYmUgbm8gdmFsaWQgcGFuZWwKPj4+ICvCoMKgwqDCoCAqIG9yIGJyaWRn
+ZSBub2Rlcy4gVGhlIGRyaXZlciBzaG91bGQgZ28gb24gZm9yIHRoZSBkcml2ZXItZnJlZSAKPj4+
+IGJyaWRnZSBvciB0aGUgRFAKPj4+ICvCoMKgwqDCoCAqIG1vZGUgYXBwbGljYXRpb25zLgo+Pj4g
+K8KgwqDCoMKgICovCj4+PiArwqDCoMKgIHJldCA9IGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRn
+ZShkcC0+ZGV2LT5vZl9ub2RlLCBwb3J0LCAwLAo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoCAmcGxhdF9kYXRhLT5wYW5lbCwgJnBsYXRfZGF0YS0+YnJpZGdl
+KTsKPj4KPj4gQ291bGQgeW91IGNoZWNrIGlmIHRoaXMgY2FuIHVzZSBhIHBhbmVsLWJyaWRnZT8K
+Pj4gU2VlIGZvciBleGFtcGxlCj4+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51
+eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC8gCj4+IHRyZWUvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX3JnYi5jI24xMzgKPj4gb3IgYSBsb3Qgb2Ygb3RoZXIgcGxhY2Vz
+IGZvciBkcm1fcGFuZWxfYnJpZGdlX2FkZCgpCj4+Cj4+IFNvIGlmIGRybV9vZl9maW5kX3BhbmVs
+X29yX2JyaWRnZSgpIGZpbmRzIGEgYnJpZGdlLCBqdXN0IHVzZSBpdDsgaWYgaXQKPj4gZmluZHMg
+YSBwYW5lbCwgZHJtX3BhbmVsX2JyaWRnZV9hZGQoKSBqdXN0IHdyYXBzIGEgYnJpZGdlIGFyb3Vu
+ZCBpdAo+PiBhbmQgYWxsIHRoZSBjb2RlIGNhbiBqdXN0IGFzc3VtZSBldmVyeXRoaW5nIGlzIGJy
+aWRnZSBhZnRlciB0aGF0Lgo+Pgo+Pgo+IAo+IFllcywgdGhhdCBpcyBhIGdvb2QgYXBwcm9hY2gu
+IFVzaW5nIHRoZSBwYW5lbC1icmlkZ2Ugd2lsbCBtYWtlIHRoZSAKPiByZWxhdGVkIGNoZWNrcyBt
+b3JlIGNvbmNpc2UuCj4gCj4+Cj4+PiArwqDCoMKgIGlmIChyZXQgJiYgcmV0ICE9IC1FTk9ERVYp
+Cj4+PiArwqDCoMKgwqDCoMKgwqAgcmV0dXJuIHJldDsKPj4+ICsKPj4+ICvCoMKgwqAgcmV0dXJu
+IGNvbXBvbmVudF9hZGQoZHAtPmRldiwgcGxhdF9kYXRhLT5vcHMpOwo+Pj4gK30KPj4+ICsKPj4+
+ICtpbnQgYW5hbG9naXhfZHBfZmluZF9wYW5lbF9vcl9icmlkZ2Uoc3RydWN0IGFuYWxvZ2l4X2Rw
+X2RldmljZSAqZHApCj4+PiArewo+Pj4gK8KgwqDCoCBpbnQgcmV0Owo+Pj4gKwo+Pj4gK8KgwqDC
+oCByZXQgPSBkZXZtX29mX2RwX2F1eF9wb3B1bGF0ZV9idXMoJmRwLT5hdXgsIAo+Pj4gYW5hbG9n
+aXhfZHBfYXV4X2RvbmVfcHJvYmluZyk7Cj4+PiArwqDCoMKgIGlmIChyZXQpIHsKPj4+ICvCoMKg
+wqDCoMKgwqDCoCAvKgo+Pj4gK8KgwqDCoMKgwqDCoMKgwqAgKiBJZiBkZXZtX29mX2RwX2F1eF9w
+b3B1bGF0ZV9idXMoKSByZXR1cm5zIC1FTk9ERVYsIHRoZSAKPj4+IGRvbmVfcHJvYmluZygpIHdp
+bGwKPj4+ICvCoMKgwqDCoMKgwqDCoMKgICogbm90IGJlIGNhbGxlZCBiZWNhdXNlIHRoZXJlIGFy
+ZSBubyBFUCBkZXZpY2VzLiBUaGVuIHRoZSAKPj4+IGNhbGxiYWNrIGZ1bmN0aW9uCj4+PiArwqDC
+oMKgwqDCoMKgwqDCoCAqIGFuYWxvZ2l4X2RwX2F1eF9kb25lX3Byb2JpbmcoKSB3aWxsIGJlIGNh
+bGxlZCBkaXJlY3RseSBpbiAKPj4+IG9yZGVyIHRvIHN1cHBvcnQKPj4+ICvCoMKgwqDCoMKgwqDC
+oMKgICogdGhlIG90aGVyIHZhbGlkIERUIGNvbmZpZ3VyYXRpb25zLgo+Pj4gK8KgwqDCoMKgwqDC
+oMKgwqAgKgo+Pj4gK8KgwqDCoMKgwqDCoMKgwqAgKiBOT1RFOiBUaGUgZGV2bV9vZl9kcF9hdXhf
+cG9wdWxhdGVfYnVzKCkgaXMgYWxsb3dlZCB0byAKPj4+IHJldHVybiAtRVBST0JFX0RFRkVSLgo+
+Pj4gK8KgwqDCoMKgwqDCoMKgwqAgKi8KPj4+ICvCoMKgwqDCoMKgwqDCoCBpZiAocmV0ICE9IC1F
+Tk9ERVYpIHsKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGRldl9lcnIoZHAtPmRldiwgImZh
+aWxlZCB0byBwb3B1bGF0ZSBhdXggYnVzXG4iKTsKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IHJldHVybiByZXQ7Cj4+PiArwqDCoMKgwqDCoMKgwqAgfQo+Pj4gKwo+Pj4gK8KgwqDCoMKgwqDC
+oMKgIHJldHVybiBhbmFsb2dpeF9kcF9hdXhfZG9uZV9wcm9iaW5nKCZkcC0+YXV4KTsKPj4+ICvC
+oMKgwqAgfQo+Pj4gKwo+Pj4gK8KgwqDCoCByZXR1cm4gMDsKPj4+ICt9Cj4+PiArRVhQT1JUX1NZ
+TUJPTF9HUEwoYW5hbG9naXhfZHBfZmluZF9wYW5lbF9vcl9icmlkZ2UpOwo+Pj4gKwo+Pj4gwqAg
+TU9EVUxFX0FVVEhPUigiSmluZ29vIEhhbiA8amcxLmhhbkBzYW1zdW5nLmNvbT4iKTsKPj4+IMKg
+IE1PRFVMRV9ERVNDUklQVElPTigiQW5hbG9naXggRFAgQ29yZSBEcml2ZXIiKTsKPj4+IMKgIE1P
+RFVMRV9MSUNFTlNFKCJHUEwgdjIiKTsKPj4+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9icmlk
+Z2UvYW5hbG9naXhfZHAuaCBiL2luY2x1ZGUvZHJtL2JyaWRnZS8gCj4+PiBhbmFsb2dpeF9kcC5o
+Cj4+PiBpbmRleCAyMDJlNWVhZmIyY2MuLjBiNmQ4NWYxOTI0ZSAxMDA2NDQKPj4+IC0tLSBhL2lu
+Y2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oCj4+PiArKysgYi9pbmNsdWRlL2RybS9icmlk
+Z2UvYW5hbG9naXhfZHAuaAo+Pj4gQEAgLTMwLDYgKzMwLDcgQEAgc3RydWN0IGFuYWxvZ2l4X2Rw
+X3BsYXRfZGF0YSB7Cj4+PiDCoMKgwqDCoMKgIHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2U7Cj4+
+PiDCoMKgwqDCoMKgIHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcjsKPj4+IMKgwqDCoMKgwqAg
+c3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcjsKPj4+ICvCoMKgwqAgY29uc3Qgc3RydWN0
+IGNvbXBvbmVudF9vcHMgKm9wczsKPj4+IMKgwqDCoMKgwqAgaW50ICgqcG93ZXJfb24pKHN0cnVj
+dCBhbmFsb2dpeF9kcF9wbGF0X2RhdGEgKik7Cj4+PiDCoMKgwqDCoMKgIGludCAoKnBvd2VyX29m
+Zikoc3RydWN0IGFuYWxvZ2l4X2RwX3BsYXRfZGF0YSAqKTsKPj4+IEBAIC01Miw1ICs1Myw2IEBA
+IGludCBhbmFsb2dpeF9kcF9zdG9wX2NyYyhzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAKPj4+ICpjb25u
+ZWN0b3IpOwo+Pj4gwqAgc3RydWN0IGFuYWxvZ2l4X2RwX3BsYXRfZGF0YSAqYW5hbG9naXhfZHBf
+YXV4X3RvX3BsYXRfZGF0YShzdHJ1Y3QgCj4+PiBkcm1fZHBfYXV4ICphdXgpOwo+Pj4gwqAgc3Ry
+dWN0IGRybV9kcF9hdXggKmFuYWxvZ2l4X2RwX2dldF9hdXgoc3RydWN0IGFuYWxvZ2l4X2RwX2Rl
+dmljZSAqZHApOwo+Pj4gK2ludCBhbmFsb2dpeF9kcF9maW5kX3BhbmVsX29yX2JyaWRnZShzdHJ1
+Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCk7Cj4+PiDCoCAjZW5kaWYgLyogX0FOQUxPR0lYX0RQ
+X0hfICovCj4+Pgo+Pgo+IAoKV2hpbGUgcHJlcGFyaW5nIHRoZSB2MyBwYXRjaCBzZXJpZXMsIEkg
+ZW5jb3VudGVyZWQgYSBxdWVzdGlvbiByZWdhcmRpbmcgCnRoZSBtb2RlIHJldHJpZXZhbCBwcm9j
+ZXNzLiBUaGUgcmVsZXZhbnQgY29kZSBpbiAKZHJpdmVycy9ncHUvZHJtL2Rpc3BsYXkvZHJtX2Jy
+aWRnZV9jb25uZWN0b3IuYyBpcyBhcyBmb2xsb3dzOgoKc3RhdGljIGludCBkcm1fYnJpZGdlX2Nv
+bm5lY3Rvcl9nZXRfbW9kZXMoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcikKewouLi4u
+Li4KCS8qCgkgKiBJZiBkaXNwbGF5IGV4cG9zZXMgRURJRCwgdGhlbiB3ZSBwYXJzZSB0aGF0IGlu
+IHRoZSBub3JtYWwgd2F5IHRvCgkgKiBidWlsZCB0YWJsZSBvZiBzdXBwb3J0ZWQgbW9kZXMuCgkg
+Ki8KCWJyaWRnZSA9IGJyaWRnZV9jb25uZWN0b3ItPmJyaWRnZV9lZGlkOwoJaWYgKGJyaWRnZSkK
+CQlyZXR1cm4gZHJtX2JyaWRnZV9jb25uZWN0b3JfZ2V0X21vZGVzX2VkaWQoY29ubmVjdG9yLCBi
+cmlkZ2UpOwoKCS8qCgkgKiBPdGhlcndpc2UgaWYgdGhlIGRpc3BsYXkgcGlwZWxpbmUgcmVwb3J0
+cyBtb2RlcyAoZS5nLiB3aXRoIGEgZml4ZWQKCSAqIHJlc29sdXRpb24gcGFuZWwgb3IgYW4gYW5h
+bG9nIFRWIG91dHB1dCksIHF1ZXJ5IGl0LgoJICovCglicmlkZ2UgPSBicmlkZ2VfY29ubmVjdG9y
+LT5icmlkZ2VfbW9kZXM7CglpZiAoYnJpZGdlKQoJCXJldHVybiBicmlkZ2UtPmZ1bmNzLT5nZXRf
+bW9kZXMoYnJpZGdlLCBjb25uZWN0b3IpOwouLi4uLi4KfQoKVGhlICZkcm1fYnJpZGdlX2Z1bmNz
+LmdldF9tb2RlcygpIHdpbGwgbmV2ZXIgYmUgY2FsbGVkIGlmIHRoZSAKYnJpZGdlX2Nvbm5lY3Rv
+ciBzdXBwb3J0cyBEUk1fQlJJREdFX09QX0VESUQuIFRoaXMgc3VnZ2VzdHMgdGhhdCAKRFJNX0JS
+SURHRV9PUF9FRElEIGFuZCBEUk1fQlJJREdFX09QX01PREVTIG1pZ2h0IGJlIG11dHVhbGx5IGV4
+Y2x1c2l2ZS4KQW5kIHRoZSBmb2xsb3dpbmcgY29tbWVudHMgYWxzbyDigItjb25maXJtIGl0KGlu
+Y2x1ZGUvZHJtL2RybV9icmlkZ2UuaCk6CgouLi4uLi4KCS8qKgoJICogQGdldF9tb2RlczoKCSAq
+CgkgKiBGaWxsIGFsbCBtb2RlcyBjdXJyZW50bHkgdmFsaWQgZm9yIHRoZSBzaW5rIGludG8gdGhl
+ICZkcm1fY29ubmVjdG9yCgkgKiB3aXRoIGRybV9tb2RlX3Byb2JlZF9hZGQoKS4KCSAqCgkgKiBU
+aGUgQGdldF9tb2RlcyBjYWxsYmFjayBpcyBtb3N0bHkgaW50ZW5kZWQgdG8gc3VwcG9ydCBub24t
+cHJvYmVhYmxlCgkgKiBkaXNwbGF5cyBzdWNoIGFzIG1hbnkgZml4ZWQgcGFuZWxzLiBCcmlkZ2Vz
+IHRoYXQgc3VwcG9ydCByZWFkaW5nCgkgKiBFRElEIHNoYWxsIGxlYXZlIEBnZXRfbW9kZXMgdW5p
+bXBsZW1lbnRlZCBhbmQgaW1wbGVtZW50IHRoZQoJICogJmRybV9icmlkZ2VfZnVuY3MtPmVkaWRf
+cmVhZCBjYWxsYmFjayBpbnN0ZWFkLgoJICoKLi4uLi4uCgpJIHdhbnQgdG8gdXNlIGRybV9wYW5l
+bF9nZXRfbW9kZXMoKS9kcm1fYnJpZGdlX2dldF9tb2RlcygpIGFzIGEgZmFsbGJhY2sgCndoZW4g
+ZHJtX2JyaWRnZV9jb25uZWN0b3JfZ2V0X21vZGVzX2VkaWQoKSByZXR1cm5zIG5vIG1vZGVzLCBj
+b21wYXRpYmxlIAp3aXRoIHRoZSBoaXN0b3JpY2FsIGJlaGF2aW9yLiBTaG91bGQgSSBhcHBseSB0
+aGUgcmVsYXRlZCBjb2RlIHdpdGggCiZkcm1fYnJpZGdlX2Z1bmNzLmVkaWRfcmVhZCgpIHRoZW4g
+YWJhbmRvbiB0aGUgCiZkcm1fYnJpZGdlX2Z1bmNzLmdldF9tb2RlcygpPyBvciB0aGUgb3Bwb3Np
+dGU/CgpPciBtYXliZSB0aGUgRFJNX0JSSURHRV9PUF9NT0RFUyBjYW4gYmUgYSBjZXJ0YWluIGZh
+bGxiYWNrIG9mIApEUk1fQlJJREdFX09QX0VESUQgZm9yIHRoZSBicmlkZ2VfY29ubmVjdG9yPwoK
+QmVzdCByZWdhcmRzLApEYW1vbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtcm9ja2NoaXAK
