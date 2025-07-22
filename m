@@ -4,91 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 249AAC83F1A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jul 2025 13:36:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCAD1C83F27
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jul 2025 13:36:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=IAdhcohkf0bmf7O//z13Siu4RtsKJT27oQbYnDk3MXY=; b=tzjrWCk9p26bv/
-	rwCUJdvAgxGB5dBdH/USgFnkqr6XEcmVvqOxgcQUdEWnyYStBB/5ik4IkTcX2cuA2mc91o4ogQQSh
-	JgkxNHiRoNVvXnHoVtgB9nDLJ+eGy4uz16s0SlKW9iv5i2PMnYLEH6q6b5WGCankn8EEdvUQvbL0s
-	IulpWHKRGsUddBQbizxUMEEOZI38iVLlf/mr1hEKwGlqgwNGsUPQEstQ4VWvmFKboEJ9dSYvh71N0
-	kv1rWGIa6zIQEjLu+bhI1Er9QjlUbeLB+pRxhCzqFv1tx2+LZ/KWHuvkr2lnNoMNm07uAHBzdnEHO
-	PAZxsjdR4xj3HCgvF2CA==;
+	List-Owner; bh=TzYDFj9TP22+zF/WIGSXMxXIv9fVLfhvMFOCQiUDTpM=; b=C8/JpCSR0QxXxW
+	+i3/4LrzOeEVTdMpspZQhkTJk2dT4d8CxGk6oBujD5mBZidikJN7qXwfIghVZIH3uclv76j/aPMfk
+	VKvKgESA0I2nNpYCLqGYTzLO/KTe41YtiYIs1FNcxPabgy7AU480mloS2K5avqxZ7U0nvEdjP5uw4
+	DNIn8w6ypA0A4ALq4ZK4y958GMT3ad9DkzkxbTzAx/NXogUSCPcKDt6Z1qzHMJxY65BPvG1BUzYr7
+	PA/xHle36R3o6hQqba1aSIj2l6RxCoju4eYeTbvR1pqUrKsre7WujS4HVyRVPXqh9AO/DyzaF6d0T
+	SP8irPrJprx7NwGBuw3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueDAq-00000002Z6k-41ub;
+	id 1ueDAq-00000002Z6Y-2WBK;
 	Tue, 22 Jul 2025 13:36:52 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+Received: from out-179.mta0.migadu.com ([2001:41d0:1004:224b::b3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueCGh-00000002SFf-20uV;
-	Tue, 22 Jul 2025 12:38:52 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-3a522224582so2673461f8f.3;
-        Tue, 22 Jul 2025 05:38:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1753187929; x=1753792729; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=iA+c5Pv9/CEehwhoCiWsw+/fTrurkwoLP7xmk75QXCk=;
-        b=OAZnUMh6Of5QA7ltbn96jnH4pL7V5LkWit+fcZS3s6af4HGJYQFqnC1HTqwcsKjrlM
-         YLe8Z7ZccefcZIE0ObXN3h99HzgRmk8olhE7T4MwqZ9cdt72DhzZzlvcZh8VJfowdBJP
-         QtadmBH5cCwUWwDFSjyWb/3gmBqlkt9h2fsbcsMmz4466hsTStlXi/mhro6ZEnIHkraA
-         mClX4kr6YBoi6q6GtSszA6b1UaXWQSLwyOQmEWDCDBmi842cGKhJmPVWS1OmlSLkUrHh
-         BLODCfRhSqGSnguPIvnafJNMdIpu+2RPL9//esBMihBPDwl2xj154OL7yX4VhOZuXTzV
-         M/Yw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753187929; x=1753792729;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=iA+c5Pv9/CEehwhoCiWsw+/fTrurkwoLP7xmk75QXCk=;
-        b=lXqfQ4ixNWXWLeayI2Qh/8RCzQ9cukA6agPKOvLYs6cNf3OncnwXTYHKrJRMIfCB1p
-         q9qq5t1vea/i0vn0AAnjfzVbITwNxov75kpeHSn6TPfmZFnpTMqSg7EWaKgv+5UUjw7k
-         z8+aBIO7ii5zjSPSyQa/puKpEnOpnbOQ6kwT7DcnLbJI5piekf44+RkFy37ye4ZYIuiK
-         5npS7jxo5gHABRak5sxuhaUUNmIbOMQQhS4KF+6mF2WTRflmn9gN2FMfNN7HmsuA+TlE
-         HUY52zOr3/9jZUYXMWRUImDRyGTqzqD7ftCeUkyGU8o4FMAjFMjbJb3Nbw/IXME6HTE1
-         yOiw==
-X-Forwarded-Encrypted: i=1; AJvYcCWURF/PwCxP8UBP35Ydx5BuG81s6nhCYry3nSLwlS2/NMhTLITRFoz5ilFimrdrtG+8eQ4SUfZ57M4BZPt5HKqT@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw59HdyylvDqCla0n3TD3Ej6XY3j661yhhnU1OgAUtom/ZVsoFF
-	e8FFQsK01rbTqNnPTvSlZTN1i4JNm1m+vUrZZTIHcUqMn5KriAaHizAJuUTsqkhg/HKrEQ==
-X-Gm-Gg: ASbGnctaW3RyCwmpDGu+IKLCR4dJqq43V8MV4KqAEe0FvG/x+4uETWbw+D6IuPW7gy1
-	VtcNkfuzul87RXgE+2YO5slDxwKSXflQSj93mJfmyHai2Vbkj/3Y8SeqJb4e8cIFJklNMdfF6Fo
-	LC3LaIWUHxB2Uc2u+U3e33Ozmby7e8PEe3Z5bY1CEx6y3eGnRvkIoThIaJLJ1RogZi4l31x7jaZ
-	62/r/jfiDHoF6YxLNahIcV3ggmtK7zMkHNLuMlKfVsS5gDezI5586s2xErcFeV2zYW8OQfUYgHy
-	k0lOGI3SKv71r6RmVJCNnoycjh+y8VvjbxWI31uQ230tf5gSFVTL1mbmLDoibK4JLAs7QjwmFwh
-	xNVEh2iIHCdxcn2zcLklRLH0VUgk=
-X-Google-Smtp-Source: AGHT+IFGeyK+QeZM1N0c07OjUQkxi0BPV4rB9krjYHbqPUETa+tP2IlFN/9f5P/Sb+JdAB4YU44LxA==
-X-Received: by 2002:a05:6000:2c06:b0:3a4:ee40:6c85 with SMTP id ffacd0b85a97d-3b60ddc61d8mr19147649f8f.54.1753187928796;
-        Tue, 22 Jul 2025 05:38:48 -0700 (PDT)
-Received: from tearch ([46.104.48.188])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b61ca48c40sm13525197f8f.58.2025.07.22.05.38.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Jul 2025 05:38:48 -0700 (PDT)
-From: muhammed.efecetin.67@gmail.com
-X-Google-Original-From: muhammed.efecetin67@gmail.com
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
+	id 1ueCEv-00000002RwS-32P3
+	for linux-rockchip@lists.infradead.org;
+	Tue, 22 Jul 2025 12:37:02 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1753187808;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=v6IZ779T9bBNZba26eex0KrT9vXsFUEO7FzK3vtGhiY=;
+	b=NePw5Gy4EHSJ+3t7aQNISH7CzV3OlBtxnMOpkL4s4XfJMDCqPo9GCv8ebVueKR/U5+6laR
+	sdP+1XgfpMUD3EUu2o2bszQK2OkBUbVBWyBqM+wgSrNAMDiwDcXwFa0/LdcGAAlnEg6WiI
+	A4OfuBz7ecwTdwYSNAcTWvVQjA1wAO/UTITRdNZjKn/2nCpHm/xIc39SmE+j0HBqDrlNjt
+	LC4hV6w0QEpLz1WmGOzeRaJv85vN76Aa6R0yr/6rDEt8Sl/wI4Qp3llWCb7Si4mxO5+oOy
+	9M5xZ6MmN32ny0+sdVdsdXyvfaI4BhcEdYQTGGrj04VVwtp+61LMyLhodBOgGw==
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Dragan Simic <dsimic@manjaro.org>,
+	Vasily Khoruzhick <anarsoul@gmail.com>,
+	Tianling Shen <cnsztl@gmail.com>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	heiko@sntech.de,
-	neil.armstrong@linaro.org,
-	lee@kernel.org,
-	rafael@kernel.org,
-	efectn@protonmail.com,
-	daniel.lezcano@linaro.org
-Subject: [PATCH v2 0/5] Add Khadas MCU and fan control support for Khadas Edge 2
-Date: Tue, 22 Jul 2025 15:38:10 +0300
-Message-ID: <cover.1753179491.git.efectn@protonmail.com>
-X-Mailer: git-send-email 2.50.1
+	Diederik de Haas <didi.debian@cknow.org>,
+	Robin Murphy <robin.murphy@arm.com>
+Subject: [PATCH] arm64: dts: rockchip: Drop netdev triggers on NanoPi R5S
+Date: Tue, 22 Jul 2025 14:35:33 +0200
+Message-ID: <20250722123628.25660-1-didi.debian@cknow.org>
 MIME-Version: 1.0
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_053851_521371_10FF829A 
-X-CRM114-Status: GOOD (  13.99  )
+X-CRM114-CacheID: sfid-20250722_053701_898647_44C4F2B3 
+X-CRM114-Status: UNSURE (   7.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,36 +78,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Muhammed Efe Cetin <efectn@protonmail.com>
+Sometimes the netdev triggers causes tasks to get blocked for more then
+120 seconds, which in turn makes the (WAN) network port on the NanoPi
+R5S fail to come up.
+This results in the following (partial) trace:
 
-This patch series adds support for the Khadas MCU and fan control for Khadas Edge 2 board.
+  INFO: task kworker/0:1:11 blocked for more than 120 seconds.
+        Not tainted 6.16-rc6+unreleased-arm64-cknow #1 Debian 6.16~rc6-1~exp1
+  "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+  task:kworker/0:1     state:D stack:0     pid:11    tgid:11    ppid:2      task_flags:0x4208060 flags:0x00000010
+  Workqueue: events_power_efficient reg_check_chans_work [cfg80211]
+  Call trace:
+   __switch_to+0xf8/0x168 (T)
+   __schedule+0x3f8/0xda8
+   schedule+0x3c/0x120
+   schedule_preempt_disabled+0x2c/0x58
+   __mutex_lock.constprop.0+0x4d0/0xab8
+   __mutex_lock_slowpath+0x1c/0x30
+   mutex_lock+0x50/0x68
+   rtnl_lock+0x20/0x38
+   reg_check_chans_work+0x40/0x478 [cfg80211]
+   process_one_work+0x178/0x3e0
+   worker_thread+0x260/0x390
+   kthread+0x150/0x250
+   ret_from_fork+0x10/0x20
+  INFO: task kworker/0:1:11 is blocked on a mutex likely owned by task dhcpcd:615.
+  task:dhcpcd          state:D stack:0     pid:615   tgid:615   ppid:614    task_flags:0x400140 flags:0x00000018
+  Call trace:
+   __switch_to+0xf8/0x168 (T)
+   __schedule+0x3f8/0xda8
+   schedule+0x3c/0x120
+   schedule_preempt_disabled+0x2c/0x58
+   rwsem_down_write_slowpath+0x1e4/0x750
+   down_write+0x98/0xb0
+   led_trigger_register+0x134/0x1c0
+   phy_led_triggers_register+0xf4/0x258 [libphy]
+   phy_attach_direct+0x30c/0x390 [libphy]
+   phylink_fwnode_phy_connect+0xb0/0x138 [phylink]
+   __stmmac_open+0xec/0x520 [stmmac]
+   stmmac_open+0x4c/0xe8 [stmmac]
+   __dev_open+0x130/0x2e0
+   __dev_change_flags+0x1c4/0x248
+   netif_change_flags+0x2c/0x80
+   dev_change_flags+0x88/0xc8
+   devinet_ioctl+0x35c/0x610
+   inet_ioctl+0x204/0x260
+   sock_do_ioctl+0x6c/0x140
+   sock_ioctl+0x2e4/0x388
+   __arm64_sys_ioctl+0xb4/0x120
+   invoke_syscall+0x6c/0x100
+   el0_svc_common.constprop.0+0x48/0xf0
+   do_el0_svc+0x24/0x38
+   el0_svc+0x3c/0x188
+   el0t_64_sync_handler+0x10c/0x140
+   el0t_64_sync+0x198/0x1a0
 
-The first patch updates the device tree bindings to add new "khadas,mcu-v2" compatible for Khadas Edge 2.
-The second mfd patch removes unused nvmem code.
-The third patch adds the Khadas Edge 2 registers to the mfd driver.
-The fourth patch adds support for Khadas Edge 2's new fan control registers to MCU thermal driver and the last one adds the Khadas Edge 2 device tree node for the MCU and fan control.
-And the final patch adds the Khadas Edge 2 device tree node for the MCU and fan control.
+In order to not introduce a regression with kernel 6.16, drop the netdev
+triggers for now while the problem is being investigated further.
 
-Changes in v2:
-- Added a new compatible "khadas,mcu-v2" for Khadas Edge 2 instead of cooling-levels property in old variant.
-- Added Khadas Edge 2 registers with KHADAS_MCU_V2 prefix.
+Fixes: 1631cbdb8089 ("arm64: dts: rockchip: Improve LED config for NanoPi R5S")
+Helped-by: Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts | 3 ---
+ 1 file changed, 3 deletions(-)
 
-Muhammed Efe Cetin (5):
-  dt-bindings: mfd: khadas-mcu: add new compatible for Khadas Edge 2
-  mfd: khadas-mcu: drop unused nvmem code
-  mfd: add Khadas Edge 2 registers to khadas-mcu.
-  thermal: khadas_mcu_fan: add support for Khadas Edge 2
-  arm64: dts: rockchip: add Khadas MCU and fan control nodes
-
- .../devicetree/bindings/mfd/khadas,mcu.yaml   |  5 +-
- .../dts/rockchip/rk3588s-khadas-edge2.dts     | 58 +++++++++++++++++++
- drivers/mfd/khadas-mcu.c                      | 56 +++++++++++++-----
- drivers/thermal/khadas_mcu_fan.c              | 20 +++++--
- include/linux/mfd/khadas-mcu.h                | 32 ++++++++++
- 5 files changed, 152 insertions(+), 19 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+index 3b31f0dd8f3b..539edc3c535f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+@@ -29,7 +29,6 @@ led-lan1 {
+ 			function-enumerator = <1>;
+ 			gpios = <&gpio3 RK_PD6 GPIO_ACTIVE_HIGH>;
+ 			label = "LAN-1";
+-			linux,default-trigger = "netdev";
+ 		};
+ 
+ 		led-lan2 {
+@@ -39,7 +38,6 @@ led-lan2 {
+ 			function-enumerator = <2>;
+ 			gpios = <&gpio3 RK_PD7 GPIO_ACTIVE_HIGH>;
+ 			label = "LAN-2";
+-			linux,default-trigger = "netdev";
+ 		};
+ 
+ 		power_led: led-sys {
+@@ -56,7 +54,6 @@ led-wan {
+ 			function = LED_FUNCTION_WAN;
+ 			gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
+ 			label = "WAN";
+-			linux,default-trigger = "netdev";
+ 		};
+ 	};
+ };
 -- 
-2.50.1
+2.50.0
 
 
 _______________________________________________
