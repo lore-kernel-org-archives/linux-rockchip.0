@@ -4,94 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C159BC83F27
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jul 2025 17:00:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD8B7C83F1A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jul 2025 18:34:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nXoNrn15/oZkzPw3yctINj0egzDdfDDCOTTNuuztmQc=; b=safAlWvWiz4iT3
-	blJvUIfbOyj1rLAi6zX/8EB6gE4Ouh/VRvA2XKsmGYH2yZ178gBe+ZTZbxs5kG5f+f0zoP2NNx8Iu
-	5McqIWDuu+4cHMAOTn2fbYn7cJGF6cHFlU2IE5m88dpJV5ULEEWaxKTIeUpDgmQhWhVgYjqdEXZmT
-	t4R1KYE8ZsvCTSvLrcSQtsuNNgaDNO5SxWWbI5SkgSYtMnN3qs/lgnWcGjRl50tAZ+waa3SWvLTKi
-	xDTtEqLdoYKZlq7dkTUCuoorWrzi4ESa07U+FMtNzaBHSnBAdbLv8g6JPG9prZFr9b77XpwPrgmH2
-	DE+kBFXTNSMG5MMzh93w==;
+	List-Owner; bh=Q9ngYz7P1WNKqfkekMvUpshIzGo+IWhtZJ8pBih+PXY=; b=H4XlM/7tiJx8Bl
+	FkCovXw2cZv00+5+qoc8+jioFdsDepPeBP/iNJa3wJfA+beZCukr58QqpbP6KiNx/4jzfpUvuWp2N
+	FkdnetVl+jHAgFhsdh6XC6JwpRvLolwWufK3zXBHCE53wiDR4AlQorj7ds3TQYlIXsodyS8j2Qa8M
+	Z10D6s2f/zBYsX97h6Nvc1Od2xyKmhBOeHqEN8BxZuLuoDnglEa0PA2mI9Hx7D6/ugno7NDLeQeu+
+	kogm1joSS05NZq2NcMvfKw7CENSev7NHj4+WMyjBuPsJv9tMF4p99RJkUgj8STm8iay/3roOo59Ce
+	d5cx14WbE/5ciWZNHT8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueGLf-000000034ws-1Qai;
-	Tue, 22 Jul 2025 17:00:15 +0000
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueGCL-0000000342s-3X7g
-	for linux-rockchip@lists.infradead.org;
-	Tue, 22 Jul 2025 16:50:39 +0000
-Received: by mail-ot1-x336.google.com with SMTP id 46e09a7af769-72c47631b4cso4192664a34.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 22 Jul 2025 09:50:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1753203037; x=1753807837; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9a9Jk+vOMvVx0BnxTyEuby9NcTo1TaK4G2C5CMSCa6E=;
-        b=gb55L+BLZxq3/uPE7DUqGMAQHXhPewDmh0IDEkEjO0EENBK0Ja9e3HWey9DaY+YhK3
-         GTwFLE4sdOFuvuZJVqFuOtNxjkUDrDrjsoj3Ib5XM+UwCs23mCkuNrP4HGExAIep5LN+
-         mtHxxWF76yEkwEONk7I38dPemCiM35i3u9X4P1+uBY1ugrT0Rc3O5mIZWt7EIOYb3CFc
-         DRSU+AFCZAhgCxdNZmEhzb3pE+CfIJSIPw75GgkmERwCnGrmDcTsS2In55Z4Ldj+La0a
-         5bYklUGTlOYUqgtByyGeGrk0DIaJgdwICPib+Fwf+f8VVSlJtM1gQrbVt/aQOsIiU5hj
-         MZfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753203037; x=1753807837;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9a9Jk+vOMvVx0BnxTyEuby9NcTo1TaK4G2C5CMSCa6E=;
-        b=u8jFMueSiaqFCP/9lyukGU6GHMTCQjB+/bb5NtQbL4+y9uD7pFr2U+M2/cWTElMMhO
-         WU8bwJ3rlLOLPfB0y9u6obE6tlN3MO/G3DsqPOWv/g1QqbBN+dkz7LG0sr+mIzB4NMmd
-         zMDl0fgLeBdJaC8V/xEJEANua9kYK0HF2rcsaa0tL7NK5YoYeaPwVTUYBT8JCj5d5a9M
-         YCb40/MRoyLJmOUOpn8hJ+hcL095Bkg/meDXpv32o/NcvJK71Kg4UVkRvCr3etNOVvFy
-         CwAVQ9B5EM2qutGYqZiVyu0e/LwmHb8QIxp2628D/mfnx7oO6LwbnJfLPg4RksOCLVf0
-         w25Q==
-X-Gm-Message-State: AOJu0YzlVSEy/aUK8BeiaEIpVqZiOpV/XWJZDvYUbM0Ki3R8C8FCaGle
-	C0vV82i+/oZinaCfPrcbZQBTGRosFtnppYbbyX4P2MjJwyVn2mF3l99m
-X-Gm-Gg: ASbGncunJglGkd78yUJNs09PhCA55hP/RFNczjBxXgcPoMJ5aeQYQaE79Rz3WXVI4zV
-	eGp8i/lSCp1dpMIDw48eLuPv1zW/l2jKeYUcn7SSMudRLJIWr5fMIY2EIv4VEIXv96mXDRyYAuG
-	mZmwG19vasiyuuONmm8wIQi9n85Cxvfhq29aSVCqvtanrvIfFsWMyXzEeZwLedILIR9X92p3dZG
-	f3PAblWX4HN6uNlhkiS6/e1ART4asJKMU8aLpScog+0ibxSGELhQLcT9XCM8tjX+oNQlp5dFRPv
-	Ew5SCn4oPmy0OjO4zEjuferW5nFiukevWyAWRPSbtlw7yoaeyIu5mhfokyTJpjv36RApDchHZ9f
-	LlGq2xQpijJc6jrdrYlkqP/rNqwSgm48nqp3q/iWGXA==
-X-Google-Smtp-Source: AGHT+IFIZEAKigzvHX2YVGvGqkRBpxE4AmHN+1zh9M4r2jHkbZeZXXSM1URaKw/fh4Ts8cg1kyAKxA==
-X-Received: by 2002:a05:6808:250a:b0:400:32b9:7926 with SMTP id 5614622812f47-41d032fc802mr15432099b6e.6.1753203036733;
-        Tue, 22 Jul 2025 09:50:36 -0700 (PDT)
-Received: from localhost.localdomain ([2600:1700:fb0:1bc0:a130:f3a0:d203:abc8])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-41fd59531d8sm2935217b6e.42.2025.07.22.09.50.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Jul 2025 09:50:36 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-pm@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	broonie@kernel.org,
-	lgirdwood@gmail.com,
-	sre@kernel.org,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	lee@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v5 2/5] mfd: bq257xx: Add support for BQ25703A core driver
-Date: Tue, 22 Jul 2025 11:48:09 -0500
-Message-ID: <20250722164813.2110874-3-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250722164813.2110874-1-macroalpha82@gmail.com>
-References: <20250722164813.2110874-1-macroalpha82@gmail.com>
+	id 1ueHoJ-00000003FtQ-13QZ;
+	Tue, 22 Jul 2025 18:33:55 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ueHoG-00000003FsY-0oHC;
+	Tue, 22 Jul 2025 18:33:53 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 34B9E106F;
+	Tue, 22 Jul 2025 11:33:45 -0700 (PDT)
+Received: from [10.57.0.201] (unknown [10.57.0.201])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D2F513F5A1;
+	Tue, 22 Jul 2025 11:33:46 -0700 (PDT)
+Message-ID: <f81b88df-9959-4968-a60a-b7efd3d5ea24@arm.com>
+Date: Tue, 22 Jul 2025 19:33:43 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 1/8] mmc: sdhci-of-dwcmshc: add common bulk optional
+ clocks support
+To: Chen Wang <unicornxw@gmail.com>, adrian.hunter@intel.com,
+ aou@eecs.berkeley.edu, conor+dt@kernel.org, guoren@kernel.org,
+ inochiama@outlook.com, jszhang@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, palmer@dabbelt.com,
+ paul.walmsley@sifive.com, robh@kernel.org, ulf.hansson@linaro.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-riscv@lists.infradead.org,
+ chao.wei@sophgo.com, haijiao.liu@sophgo.com, xiaoguang.xing@sophgo.com,
+ tingzhu.wang@sophgo.com
+Cc: Chen Wang <unicorn_wang@outlook.com>, Drew Fustini <drew@pdp7.com>,
+ Diederik de Haas <didi.debian@cknow.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+References: <cover.1722847198.git.unicorn_wang@outlook.com>
+ <e57e8c51da81f176b49608269a884f840903e78e.1722847198.git.unicorn_wang@outlook.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <e57e8c51da81f176b49608269a884f840903e78e.1722847198.git.unicorn_wang@outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_095037_888067_01A92B34 
-X-CRM114-Status: GOOD (  20.31  )
+X-CRM114-CacheID: sfid-20250722_113352_330687_43AEE23D 
+X-CRM114-Status: GOOD (  18.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,284 +69,142 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+A bit late for a "review", but Diederik and I have just been
+IRC-debugging a crash on RK3568 which by inspection seems to be caused
+by this patch:
 
-The Texas Instruments BQ25703A is an integrated charger manager and
-boost converter.
+On 2024-08-05 10:17 am, Chen Wang wrote:
+> From: Chen Wang <unicorn_wang@outlook.com>
+> 
+> In addition to the required core clock and optional
+> bus clock, the soc will expand its own clocks, so
+> the bulk clock mechanism is abstracted.
+> 
+> Note, I call the bulk clocks as "other clocks" due
+> to the bus clock has been called as "optional".
+> 
+> Signed-off-by: Chen Wang <unicorn_wang@outlook.com>
+> Tested-by: Drew Fustini <drew@pdp7.com> # TH1520
+> Tested-by: Inochi Amaoto <inochiama@outlook.com> # Duo and Huashan Pi
+> ---
+[...]
+> +static int dwcmshc_get_enable_other_clks(struct device *dev,
+> +					 struct dwcmshc_priv *priv,
+> +					 int num_clks,
+> +					 const char * const clk_ids[])
+> +{
+> +	int err;
+> +
+> +	if (num_clks > DWCMSHC_MAX_OTHER_CLKS)
+> +		return -EINVAL;
+> +
+> +	for (int i = 0; i < num_clks; i++)
+> +		priv->other_clks[i].id = clk_ids[i];
+> +
+> +	err = devm_clk_bulk_get_optional(dev, num_clks, priv->other_clks);
 
-The MFD driver initalizes the device for the regulator driver
-and power supply driver.
+This leaves a pointer into "priv" in the devres list...
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- drivers/mfd/Kconfig         |  11 ++++
- drivers/mfd/Makefile        |   1 +
- drivers/mfd/bq257xx.c       |  97 ++++++++++++++++++++++++++++++++
- include/linux/mfd/bq257xx.h | 108 ++++++++++++++++++++++++++++++++++++
- 4 files changed, 217 insertions(+)
- create mode 100644 drivers/mfd/bq257xx.c
- create mode 100644 include/linux/mfd/bq257xx.h
+> +	if (err) {
+> +		dev_err(dev, "failed to get clocks %d\n", err);
+> +		return err;
+> +	}
+> +
+> +	err = clk_bulk_prepare_enable(num_clks, priv->other_clks);
+> +	if (err)
+> +		dev_err(dev, "failed to enable clocks %d\n", err);
+> +
+> +	priv->num_other_clks = num_clks;
+> +
+> +	return err;
+> +}
+> +
+>   /*
+>    * If DMA addr spans 128MB boundary, we split the DMA transfer into two
+>    * so that each DMA transfer doesn't exceed the boundary.
+[...]
+> @@ -1280,9 +1300,7 @@ static int dwcmshc_probe(struct platform_device *pdev)
+>   err_clk:
+>   	clk_disable_unprepare(pltfm_host->clk);
+>   	clk_disable_unprepare(priv->bus_clk);
+> -	if (rk_priv)
+> -		clk_bulk_disable_unprepare(RK35xx_MAX_CLKS,
+> -					   rk_priv->rockchip_clks);
+> +	clk_bulk_disable_unprepare(priv->num_other_clks, priv->other_clks);
+>   free_pltfm:
+>   	sdhci_pltfm_free(pdev);
 
-diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-index 6fb3768e3d71..d8b39e8a8a17 100644
---- a/drivers/mfd/Kconfig
-+++ b/drivers/mfd/Kconfig
-@@ -1585,6 +1585,17 @@ config MFD_TI_LMU
- 	  LM36274.  It consists of backlight, LED and regulator driver.
- 	  It provides consistent device controls for lighting functions.
- 
-+config MFD_BQ257XX
-+	tristate "TI BQ257XX Buck/Boost Charge Controller"
-+	depends on I2C
-+	select MFD_CORE
-+	select REGMAP_I2C
-+	help
-+	  Support Texas Instruments BQ25703 Buck/Boost converter with
-+	  charge controller. It consists of regulators that provide
-+	  system voltage and OTG voltage, and a charger manager for
-+	  batteries containing one or more cells.
-+
- config MFD_OMAP_USB_HOST
- 	bool "TI OMAP USBHS core and TLL driver"
- 	depends on USB_EHCI_HCD_OMAP || USB_OHCI_HCD_OMAP3
-diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
-index 79495f9f3457..06da932cce5d 100644
---- a/drivers/mfd/Makefile
-+++ b/drivers/mfd/Makefile
-@@ -13,6 +13,7 @@ obj-$(CONFIG_MFD_SM501)		+= sm501.o
- obj-$(CONFIG_ARCH_BCM2835)	+= bcm2835-pm.o
- obj-$(CONFIG_MFD_BCM590XX)	+= bcm590xx.o
- obj-$(CONFIG_MFD_BD9571MWV)	+= bd9571mwv.o
-+obj-$(CONFIG_MFD_BQ257XX)	+= bq257xx.o
- obj-$(CONFIG_MFD_CGBC)		+= cgbc-core.o
- obj-$(CONFIG_MFD_CROS_EC_DEV)	+= cros_ec_dev.o
- obj-$(CONFIG_MFD_CS42L43)	+= cs42l43.o
-diff --git a/drivers/mfd/bq257xx.c b/drivers/mfd/bq257xx.c
-new file mode 100644
-index 000000000000..03325a04d44b
---- /dev/null
-+++ b/drivers/mfd/bq257xx.c
-@@ -0,0 +1,97 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * BQ257XX Core Driver
-+ * Copyright (C) 2025 Chris Morgan <macromorgan@hotmail.com>
-+ */
-+
-+#include <linux/device.h>
-+#include <linux/i2c.h>
-+#include <linux/mfd/bq257xx.h>
-+#include <linux/mfd/core.h>
-+#include <linux/regmap.h>
-+
-+static const struct regmap_range bq25703_readonly_reg_ranges[] = {
-+	regmap_reg_range(BQ25703_CHARGER_STATUS, BQ25703_MANUFACT_DEV_ID),
-+};
-+
-+static const struct regmap_access_table bq25703_writeable_regs = {
-+	.no_ranges = bq25703_readonly_reg_ranges,
-+	.n_no_ranges = ARRAY_SIZE(bq25703_readonly_reg_ranges),
-+};
-+
-+static const struct regmap_range bq25703_volatile_reg_ranges[] = {
-+	regmap_reg_range(BQ25703_CHARGE_OPTION_0, BQ25703_IIN_HOST),
-+	regmap_reg_range(BQ25703_CHARGER_STATUS, BQ25703_ADC_OPTION),
-+};
-+
-+static const struct regmap_access_table bq25703_volatile_regs = {
-+	.yes_ranges = bq25703_volatile_reg_ranges,
-+	.n_yes_ranges = ARRAY_SIZE(bq25703_volatile_reg_ranges),
-+};
-+
-+static const struct regmap_config bq25703_regmap_config = {
-+	.reg_bits = 8,
-+	.val_bits = 16,
-+	.max_register = BQ25703_ADC_OPTION,
-+	.cache_type = REGCACHE_RBTREE,
-+	.wr_table = &bq25703_writeable_regs,
-+	.volatile_table = &bq25703_volatile_regs,
-+	.val_format_endian = REGMAP_ENDIAN_LITTLE,
-+};
-+
-+static int bq257xx_probe(struct i2c_client *client)
-+{
-+	struct bq257xx_device *ddata;
-+	struct mfd_cell cells[] = {
-+		MFD_CELL_NAME("bq257xx-regulator"),
-+		MFD_CELL_NAME("bq257xx-charger"),
-+	};
-+	int ret;
-+
-+	ddata = devm_kzalloc(&client->dev, sizeof(*ddata), GFP_KERNEL);
-+	if (!ddata)
-+		return -ENOMEM;
-+
-+	ddata->client = client;
-+	ddata->regmap = devm_regmap_init_i2c(client, &bq25703_regmap_config);
-+	if (IS_ERR(ddata->regmap)) {
-+		return dev_err_probe(&client->dev, PTR_ERR(ddata->regmap),
-+				     "Failed to allocate register map\n");
-+	}
-+
-+	i2c_set_clientdata(client, ddata);
-+
-+	ret = devm_mfd_add_devices(&client->dev, PLATFORM_DEVID_AUTO,
-+				   cells, ARRAY_SIZE(cells), NULL, 0, NULL);
-+	if (ret)
-+		return dev_err_probe(&client->dev, ret,
-+				     "Failed to register child devices\n");
-+
-+	return ret;
-+}
-+
-+static const struct i2c_device_id bq257xx_i2c_ids[] = {
-+	{ "bq25703a" },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(i2c, bq257xx_i2c_ids);
-+
-+static const struct of_device_id bq257xx_of_match[] = {
-+	{ .compatible = "ti,bq25703a" },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, bq257xx_of_match);
-+
-+static struct i2c_driver bq257xx_driver = {
-+	.driver = {
-+		.name = "bq257xx",
-+		.of_match_table = bq257xx_of_match,
-+	},
-+	.probe = bq257xx_probe,
-+	.id_table = bq257xx_i2c_ids,
-+};
-+module_i2c_driver(bq257xx_driver);
-+
-+MODULE_DESCRIPTION("bq257xx buck/boost/charger driver");
-+MODULE_AUTHOR("Chris Morgan <macromorgan@hotmail.com>");
-+MODULE_LICENSE("GPL");
-diff --git a/include/linux/mfd/bq257xx.h b/include/linux/mfd/bq257xx.h
-new file mode 100644
-index 000000000000..153a96248f32
---- /dev/null
-+++ b/include/linux/mfd/bq257xx.h
-@@ -0,0 +1,108 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Register definitions for TI BQ257XX
-+ * Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/
-+ */
-+
-+#define BQ25703_CHARGE_OPTION_0			0x00
-+#define BQ25703_CHARGE_CURRENT			0x02
-+#define BQ25703_MAX_CHARGE_VOLT			0x04
-+#define BQ25703_OTG_VOLT			0x06
-+#define BQ25703_OTG_CURRENT			0x08
-+#define BQ25703_INPUT_VOLTAGE			0x0a
-+#define BQ25703_MIN_VSYS			0x0c
-+#define BQ25703_IIN_HOST			0x0e
-+#define BQ25703_CHARGER_STATUS			0x20
-+#define BQ25703_PROCHOT_STATUS			0x22
-+#define BQ25703_IIN_DPM				0x24
-+#define BQ25703_ADCIBAT_CHG			0x28
-+#define BQ25703_ADCIINCMPIN			0x2a
-+#define BQ25703_ADCVSYSVBAT			0x2c
-+#define BQ25703_MANUFACT_DEV_ID			0x2e
-+#define BQ25703_CHARGE_OPTION_1			0x30
-+#define BQ25703_CHARGE_OPTION_2			0x32
-+#define BQ25703_CHARGE_OPTION_3			0x34
-+#define BQ25703_ADC_OPTION			0x3a
-+
-+#define BQ25703_EN_LWPWR			BIT(15)
-+#define BQ25703_WDTMR_ADJ_MASK			GENMASK(14, 13)
-+#define BQ25703_WDTMR_DISABLE			0
-+#define BQ25703_WDTMR_5_SEC			1
-+#define BQ25703_WDTMR_88_SEC			2
-+#define BQ25703_WDTMR_175_SEC			3
-+
-+#define BQ25703_ICHG_MASK			GENMASK(12, 6)
-+#define BQ25703_ICHG_STEP_UA			64000
-+#define BQ25703_ICHG_MIN_UA			64000
-+#define BQ25703_ICHG_MAX_UA			8128000
-+
-+#define BQ25703_MAX_CHARGE_VOLT_MASK		GENMASK(15, 4)
-+#define BQ25703_VBATREG_STEP_UV			16000
-+#define BQ25703_VBATREG_MIN_UV			1024000
-+#define BQ25703_VBATREG_MAX_UV			19200000
-+
-+#define BQ25703_OTG_VOLT_MASK			GENMASK(13, 6)
-+#define BQ25703_OTG_VOLT_STEP_UV		64000
-+#define BQ25703_OTG_VOLT_MIN_UV			4480000
-+#define BQ25703_OTG_VOLT_MAX_UV			20800000
-+#define BQ25703_OTG_VOLT_NUM_VOLT		256
-+
-+#define BQ25703_OTG_CUR_MASK			GENMASK(14, 8)
-+#define BQ25703_OTG_CUR_STEP_UA			50000
-+#define BQ25703_OTG_CUR_MAX_UA			6350000
-+
-+#define BQ25703_MINVSYS_MASK			GENMASK(13, 8)
-+#define BQ25703_MINVSYS_STEP_UV			256000
-+#define BQ25703_MINVSYS_MIN_UV			1024000
-+#define BQ25703_MINVSYS_MAX_UV			16128000
-+
-+#define BQ25703_STS_AC_STAT			BIT(15)
-+#define BQ25703_STS_IN_FCHRG			BIT(10)
-+#define BQ25703_STS_IN_PCHRG			BIT(9)
-+#define BQ25703_STS_FAULT_ACOV			BIT(7)
-+#define BQ25703_STS_FAULT_BATOC			BIT(6)
-+#define BQ25703_STS_FAULT_ACOC			BIT(5)
-+
-+#define BQ25703_IINDPM_MASK			GENMASK(14, 8)
-+#define BQ25703_IINDPM_STEP_UA			50000
-+#define BQ25703_IINDPM_MIN_UA			50000
-+#define BQ25703_IINDPM_MAX_UA			6400000
-+#define BQ25703_IINDPM_DEFAULT_UA		3300000
-+#define BQ25703_IINDPM_OFFSET_UA		50000
-+
-+#define BQ25703_ADCIBAT_DISCHG_MASK		GENMASK(6, 0)
-+#define BQ25703_ADCIBAT_CHG_MASK		GENMASK(14, 8)
-+#define BQ25703_ADCIBAT_CHG_STEP_UA		64000
-+#define BQ25703_ADCIBAT_DIS_STEP_UA		256000
-+
-+#define BQ25703_ADCIIN				GENMASK(15, 8)
-+#define BQ25703_ADCIINCMPIN_STEP		50000
-+
-+#define BQ25703_ADCVSYS_MASK			GENMASK(15, 8)
-+#define BQ25703_ADCVBAT_MASK			GENMASK(7, 0)
-+#define BQ25703_ADCVSYSVBAT_OFFSET_UV		2880000
-+#define BQ25703_ADCVSYSVBAT_STEP		64000
-+
-+#define BQ25703_ADC_CH_MASK			GENMASK(7, 0)
-+#define BQ25703_ADC_CONV_EN			BIT(15)
-+#define BQ25703_ADC_START			BIT(14)
-+#define BQ25703_ADC_FULL_SCALE			BIT(13)
-+#define BQ25703_ADC_CMPIN_EN			BIT(7)
-+#define BQ25703_ADC_VBUS_EN			BIT(6)
-+#define BQ25703_ADC_PSYS_EN			BIT(5)
-+#define BQ25703_ADC_IIN_EN			BIT(4)
-+#define BQ25703_ADC_IDCHG_EN			BIT(3)
-+#define BQ25703_ADC_ICHG_EN			BIT(2)
-+#define BQ25703_ADC_VSYS_EN			BIT(1)
-+#define BQ25703_ADC_VBAT_EN			BIT(0)
-+
-+#define BQ25703_EN_OTG_MASK			BIT(12)
-+
-+enum bq257xx_id {
-+	BQ25703A,
-+};
-+
-+struct bq257xx_device {
-+	struct i2c_client *client;
-+	struct regmap *regmap;
-+};
--- 
-2.43.0
+...but upon, say, -EPROBE_DEFER from sdhci_setup_host() because a
+regulator isn't ready yet, that "priv" is freed here, so by the time the
+devres callbacks eventually run, that "devres->clks" pointer which used
+to represent "priv->other_clocks" points to who knows what, and this
+sort of thing happens:
 
+[   12.470827] Unable to handle kernel paging request at virtual address 002df7b378917664
+[   12.472104] Mem abort info:
+[   12.472471]   ESR = 0x0000000096000004
+[   12.475991]   EC = 0x25: DABT (current EL), IL = 32 bits
+[   12.476657]   SET = 0, FnV = 0
+[   12.477146]   EA = 0, S1PTW = 0
+[   12.477547]   FSC = 0x04: level 0 translation fault
+[   12.478127] Data abort info:
+[   12.478126] rockchip-gpio fdd60000.gpio: probed /pinctrl/gpio@fdd60000
+[   12.478413]   ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
+[   12.479826]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
+[   12.480418]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
+[   12.481282] [002df7b378917664] address between user and kernel address ranges
+[   12.482421] Internal error: Oops: 0000000096000004 [#1]  SMP
+[   12.482980] Modules linked in: sdhci_of_dwcmshc drm_dp_aux_bus gpio_rockchip(+) drm_display_helper dw_mmc_rockchip drm_client_lib sdhci_pltfm drm_dma_helper fwnode_mdio sdhci dw_mmc_pltf
+m libphy fixed rockchip_dfi drm_kms_helper cqhci pl330(+) phy_rockchip_naneng_combphy dw_wdt phy_rockchip_snps_pcie3 phy_rockchip_inno_usb2 dw_mmc mdio_bus dwc3 ehci_platform ohci_platform
+ehci_hcd drm ohci_hcd udc_core io_domain i2c_rk3x usbcore ulpi usb_common
+[   12.486871] CPU: 0 UID: 0 PID: 64 Comm: kworker/u16:3 Not tainted 6.16-rc7-arm64-cknow #1 PREEMPTLAZY  Debian 6.16~rc7-1
+[   12.487901] Hardware name: FriendlyElec NanoPi R5S (DT)
+[   12.488412] Workqueue: async async_run_entry_fn
+[   12.488879] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   12.489539] pc : __clk_put+0x2c/0x138
+[   12.489913] lr : __clk_put+0x2c/0x138
+[   12.490281] sp : ffff800080713b10
+[   12.490607] x29: ffff800080713b10 x28: ffff0001f001a120 x27: 0000000000000000
+[   12.491302] x26: ffff0001f98e01a0 x25: 0000000000000000 x24: ffff0001f0f35408
+[   12.491995] x23: ffffa8da199b4b40 x22: ffff800080713bb0 x21: ffff0001f0f35010
+[   12.492689] x20: ffff0001f94aafd0 x19: 0a2df7b378917634 x18: 00000000ffffffff
+[   12.493381] x17: 3d4d455453595342 x16: 555300307075656b x15: ffff0001f4885650
+[   12.494075] x14: 0000000000000000 x13: ffff0001f025b810 x12: 0000000000008000
+[   12.494765] x11: ffffa8da1a73ef98 x10: ffffa8da1a460000 x9 : 0000000000000078
+[   12.495454] x8 : 0000000000000049 x7 : ffffa8da18c2fbe0 x6 : 0000000000000001
+[   12.496145] x5 : 0000000000000004 x4 : 000000006cb6bb63 x3 : 0000000000000000
+[   12.496833] x2 : 0000000000000000 x1 : ffff0001f1365ac0 x0 : 0000000000000001
+[   12.497524] Call trace:
+[   12.497776]  __clk_put+0x2c/0x138 (P)
+[   12.498154]  clk_put+0x18/0x30
+[   12.498471]  clk_bulk_put+0x40/0x68
+[   12.498825]  devm_clk_bulk_release+0x24/0x40
+[   12.499248]  release_nodes+0x64/0xa0
+[   12.499608]  devres_release_all+0x98/0xf8
+[   12.500004]  device_unbind_cleanup+0x20/0x70
+[   12.500426]  really_probe+0x1e8/0x3a0
+[   12.500793]  __driver_probe_device+0x84/0x160
+[   12.501225]  driver_probe_device+0x44/0x128
+[   12.501640]  __driver_attach_async_helper+0x5c/0x108
+[   12.502125]  async_run_entry_fn+0x40/0x180
+[   12.502535]  process_one_work+0x23c/0x640
+[   12.502939]  worker_thread+0x1b4/0x360
+[   12.503315]  kthread+0x150/0x250
+[   12.503646]  ret_from_fork+0x10/0x20
+[   12.504015] Code: aa0003f3 b140041f 540006c8 97ffd9c4 (b9403260)
+[   12.504598] ---[ end trace 0000000000000000 ]---
+
+
+TBH I'm not sure what to do as a straight revert seems impractical by
+now, so we hope someone else might have a good idea.
+
+Thanks,
+Robin.
 
 _______________________________________________
 Linux-rockchip mailing list
