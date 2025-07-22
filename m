@@ -4,165 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77CA7C87FCA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80914C87FCC
 	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jul 2025 15:58:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TZO8dE6RF493nArOzkhAzIuEdUXCnw/aun3P2CS1g2E=; b=WoDn3UFBb5RMUU
-	GAV4jB12RRxJr5MOWyNplSDagHbKBjZN6qq+n9N0cy+y8d8WwCxZOexqMhi7U/NQjs/MFaU7mXMHy
-	Qm+hZ45A844oYattFW3JHek/yFrBplo5lHLLjLGc+27BURQjWItaDTMf0/I8siF9eiEGBBaZYbjlp
-	3KBUwI6CIFy1eUePWrUkd03K1czttbq8SW0aKQiQ1U7uuBJKtltNgT7aWJSxzQT3UT/xRVZ3utuNl
-	X5Wc3eBVu2KMq/TGy2g0fKlQynB7fMlzTrdsghRePQ8H9aghO6S+ME0eRrdz/d0LicHP7JmoPrJIu
-	j+gQhYRxPSkjYCxbm3GA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iWQhxRIIMmBl5ngJv9/88agbV6fang2XxlZe4yJnHkU=; b=WQ17JyerixAZML
+	lIiYW8lb3OwJ9oAPMcUeQEjjzvIGXq4M5IqAHcqKj8/ccjtOcgTwICGHpnISqS/gcXf3nJluK7pQl
+	OCY+m60s1kX/aTk4h6aXuQJisnxjHxEjYA+mk3BUAig++q+ortY2295mPzZoxMKLeMfhqj4/RSJaU
+	G1gXKDkkxzU19bHC+Iku27tW874UNtBLIGFIeeKmOoa53wi/x4sbRae3eGj7enFC+J09+uMpsOQFi
+	r41EdsCVtOmclIT5wRMo4UZWQIDr1l6bcbt0IAIn1xo4+ad0/FGlkp1vGy28QWJ0NPi/MsN3fGFxn
+	i92VRZUqsNM/ug7STfIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueFNz-00000002vyT-3lXe;
-	Tue, 22 Jul 2025 15:58:35 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1ueFNw-00000002vv9-2egu;
+	Tue, 22 Jul 2025 15:58:32 +0000
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueE6l-00000002jFw-0jpW
+	id 1ueDzg-00000002hw8-1MGw
 	for linux-rockchip@lists.infradead.org;
-	Tue, 22 Jul 2025 14:36:45 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 78A45211CF;
-	Tue, 22 Jul 2025 14:36:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1753195001; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=AYaGKdibHtzw4fA/0MfIQrIP4w9AF7TLkj3JQ1iP4C4=;
-	b=HkNAr99tGIBqUgCRhmCW9rD1j50SonENlFbfH0MtJBJHTKkCeFuUhsQE1jolCxWHzSKIQc
-	4eKVstQcJwVsADzWHRSSbhmRrMPzOGnGpUBQlVzffTitT64t7PcJHW18/gszLGMllbC+Om
-	aRtF/BkDKNjhdrHtc5Z0FPNIg/p+yLg=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1753195001;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=AYaGKdibHtzw4fA/0MfIQrIP4w9AF7TLkj3JQ1iP4C4=;
-	b=xjaK24uYmPjCkFM0ssUCyZJ6kBuqE835ky/2krTcOOWZMPec3/BHPdPNyLWF41Z0kLvsYa
-	TlbwdTSzzKPcOnAQ==
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=HkNAr99t;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=xjaK24uY
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1753195001; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=AYaGKdibHtzw4fA/0MfIQrIP4w9AF7TLkj3JQ1iP4C4=;
-	b=HkNAr99tGIBqUgCRhmCW9rD1j50SonENlFbfH0MtJBJHTKkCeFuUhsQE1jolCxWHzSKIQc
-	4eKVstQcJwVsADzWHRSSbhmRrMPzOGnGpUBQlVzffTitT64t7PcJHW18/gszLGMllbC+Om
-	aRtF/BkDKNjhdrHtc5Z0FPNIg/p+yLg=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1753195001;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=AYaGKdibHtzw4fA/0MfIQrIP4w9AF7TLkj3JQ1iP4C4=;
-	b=xjaK24uYmPjCkFM0ssUCyZJ6kBuqE835ky/2krTcOOWZMPec3/BHPdPNyLWF41Z0kLvsYa
-	TlbwdTSzzKPcOnAQ==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 2D574132EA;
-	Tue, 22 Jul 2025 14:36:32 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id ED+DKPChf2jxKQAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Tue, 22 Jul 2025 14:36:32 +0000
-Message-ID: <638111c1-454a-40c6-b3ce-6842a76ae11e@suse.de>
-Date: Tue, 22 Jul 2025 16:36:23 +0200
+	Tue, 22 Jul 2025 14:29:25 +0000
+Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-b34ab678931so4046004a12.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 22 Jul 2025 07:29:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1753194563; x=1753799363; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=w4j/dqB0FEJVP++msFICUJGBS7c5vIhwDliD0r1Ztug=;
+        b=v8bOqbzCC/qOSdQhmwVSzPKJqRt2OArTJyvUuvDL1xuDvd8+B0YMqh39jL5tFIvJfX
+         vdMRT/e6RVnsDw2AYHaSVIOtL512T4rFDuQDz6/zyH98WxIwGndvPqPttUpeC24mBiLK
+         PQtIe1RdjGAM4wFzbMEjQsXd91R5faoL0f9ieIy4UQ8jOQMlkdEM9zT7vfQh9U/aCZ76
+         ne4LYtCUZgULdPbjIhNpKXCK5c9aHBELddDbQ61Ljjzeh3sY2mHbTglIdT9QxIk2KH7H
+         1WS3YNpnGlNtwrCXnEqP+WwtqX0bOXY35lodP2WewOIL0ZyCFVoBpHqd35aeOPVdJ9Nu
+         MoIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753194563; x=1753799363;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=w4j/dqB0FEJVP++msFICUJGBS7c5vIhwDliD0r1Ztug=;
+        b=ZxSVmL2ji5sxkoTommB2iyA6n/jnJoCx3cLeva4p0SM7bhE0KpW1LPbN2fFbO78Izs
+         qItesCNWSdpvePQqdkI7dR4jLL6Qa6SvAJS+GXjhxXfO79jVH+n4DaxuZMWo4DWcEqMt
+         HZJpuuaqbRjE2YtSPE9LF/WZHi1qF7hLMhRVBvst5rK8iK2kXj0lBtJs4mCLC8khl0iE
+         qWk2BNipKQtSlAqKflSmqM/o8W1JBg4fvrJGyCIs/VF8GPYplqtNLc5Fj6kB6jgHNI4g
+         KizmKw26yoKFrfdH80BZZqDqRxkiHwR6U9ncP7achOqsvTxNrmtrFwyjEiF0VPaEmRDV
+         bW7Q==
+X-Gm-Message-State: AOJu0YxzKK8HnVDzILOqxkkVw4SQ6cp8m1EmrKgGMxtUronuKbX62roW
+	f4HdrRtjt1MBFpGlpyAV875BOGQ6ef5KyvGq8HS/P42BzF3c+ezynps133pjPe/NXc64xECur2A
+	G5QZjLsG1TMqlzcuBPG2QPdL8P4ZfmzOWfSLKq8apsn/j4z0gG461W9s=
+X-Gm-Gg: ASbGnct0j+7nSlLpm3xgONyd7wgOMaPf/YhlaTxdp75DjzIzD3s2+vKsq6yMKwbWZ3c
+	sFAFAzsOIBSjVEItD3Gaki6LlSp5bQ5hl0mylkk5Yti56Scg5nvqNNXWqeyWhpO4rX3kFD4SNnA
+	pHusNDW1TpafYnHfj5dn8uup/SN785vHdUURBCMe3hfLtdH/KvYBiPmX+oUEJ2RkR4k0/nf/uY4
+	rx9mgr+p1d4dPzUKqnF01pCHo9phXqxaSgjW0K1
+X-Google-Smtp-Source: AGHT+IGViVGo30JiX8Iobzc1nz2CMFoTAV0xD2CPDCL3v8RSJq2399IbiFlY9qPHicdWf4XFVuhv/Tq4f+y6dIWOKcQ=
+X-Received: by 2002:a17:90b:2710:b0:311:fde5:c4c2 with SMTP id
+ 98e67ed59e1d1-31cc2512f33mr21973154a91.1.1753194562844; Tue, 22 Jul 2025
+ 07:29:22 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 00/25] drm/dumb-buffers: Fix and improve buffer-size
- calculation
-To: simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
- maarten.lankhorst@linux.intel.com, geert@linux-m68k.org,
- tomi.valkeinen@ideasonboard.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
- nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org
-References: <20250613090431.127087-1-tzimmermann@suse.de>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <20250613090431.127087-1-tzimmermann@suse.de>
-X-Spamd-Result: default: False [-3.01 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	URIBL_BLOCKED(0.00)[suse.de:mid,suse.de:dkim,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FREEMAIL_TO(0.00)[ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
-	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	RCPT_COUNT_TWELVE(0.00)[20];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	RCVD_TLS_ALL(0.00)[];
-	DKIM_TRACE(0.00)[suse.de:+];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_DN_NONE(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	DNSWL_BLOCKED(0.00)[2a07:de40:b281:104:10:150:64:97:from,2a07:de40:b281:106:10:150:64:167:received];
-	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
-	MID_RHS_MATCH_FROM(0.00)[];
-	R_RATELIMIT(0.00)[to_ip_from(RLqtkr6cif1ebgurukgmwdm7xc)];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,suse.de:dkim,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns]
-X-Rspamd-Queue-Id: 78A45211CF
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Rspamd-Action: no action
+From: Naresh Kamboju <naresh.kamboju@linaro.org>
+Date: Tue, 22 Jul 2025 19:59:11 +0530
+X-Gm-Features: Ac12FXy-ZjVvt-T4i3MttzsHoSjov0ZMbtIf-x7c-wsH5Vg-oeIRD3f4bfuDeLg
+Message-ID: <CA+G9fYupPsQoBrtF=-WT0nSy6m+yG1p9m68Z18Bp-Y=QMFD_tQ@mail.gmail.com>
+Subject: next-20250717: arm64: rk3399-rock-pi-4b: NFS mount failure with 64K
+ page size
+To: linux-rockchip@lists.infradead.org, linux-mm <linux-mm@kvack.org>, 
+	Netdev <netdev@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
+	lkft-triage@lists.linaro.org, Linux Regressions <regressions@lists.linux.dev>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Morton <akpm@linux-foundation.org>, 
+	"David S. Miller" <davem@davemloft.net>, Arnd Bergmann <arnd@arndb.de>, 
+	Dan Carpenter <dan.carpenter@linaro.org>, Anders Roxell <anders.roxell@linaro.org>, 
+	Ben Copeland <benjamin.copeland@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250722_073643_585117_1AE93CE9 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20250722_072924_374666_C851CF38 
+X-CRM114-Status: UNSURE (   7.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,122 +91,167 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ping for additional reviews. Especially patches 3, 4, and 5, which cover 
-a wide range of drivers..
+The rk3399-rock-pi-4b device fails to mount the root filesystem over
+NFS when the kernel is built with 64K page size.
+CONFIG_ARM64_64K_PAGES=y
 
-Am 13.06.25 um 11:00 schrieb Thomas Zimmermann:
-> Dumb-buffer pitch and size is specified by width, height, bits-per-pixel
-> plus various hardware-specific alignments. The calculation of these
-> values is inconsistent and duplicated among drivers. The results for
-> formats with bpp < 8 are sometimes incorrect.
->
-> This series fixes this for most drivers. Default scanline pitch and
-> buffer size are now calculated with the existing 4CC helpers. There is
-> a new helper drm_mode_size_dumb() that calculates scanline pitch and
-> buffer size according to driver requirements.
->
-> The series fixes the common GEM implementations for DMA, SHMEM and
-> VRAM. It further changes most implementations of dumb_create to use
-> the new helper. A small number of drivers has more complicated
-> calculations and will be updated by a later patches.
->
-> v5:
-> - use check_mul_overflow() for overflow test (Tomi)
-> - imx: fix intermediate code (Tomi)
-> - rz-du: include dumb-buffers header
-> v4:
-> - improve UAPI documentation
-> - document bpp special cases
-> - use drm_warn_once()
-> - add TODO lists
-> - armada: fix pitch alignment
-> v3:
-> - document UAPI semantics
-> - fall back to bpp-based allocation for unknown color modes
-> - cleanups
-> v2:
-> - rewrite series
-> - convert many individual drivers besides the shared GEM helpers
->
-> Thomas Zimmermann (25):
->    drm/dumb-buffers: Sanitize output on errors
->    drm/dumb-buffers: Provide helper to set pitch and size
->    drm/gem-dma: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/gem-shmem: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/gem-vram: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/armada: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/gma500: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/hibmc: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/imx/ipuv3: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/loongson: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/mediatek: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/msm: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/nouveau: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/omapdrm: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/qxl: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/renesas/rcar-du: Compute dumb-buffer sizes with
->      drm_mode_size_dumb()
->    drm/renesas/rz-du: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/rockchip: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/tegra: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/virtio: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/vmwgfx: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/xe: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/xen: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
->
->   Documentation/gpu/todo.rst                    |  27 +++
->   drivers/gpu/drm/armada/armada_gem.c           |  16 +-
->   drivers/gpu/drm/drm_dumb_buffers.c            | 170 ++++++++++++++++--
->   drivers/gpu/drm/drm_gem_dma_helper.c          |   7 +-
->   drivers/gpu/drm/drm_gem_shmem_helper.c        |  16 +-
->   drivers/gpu/drm/drm_gem_vram_helper.c         |  89 +++------
->   drivers/gpu/drm/exynos/exynos_drm_gem.c       |   8 +-
->   drivers/gpu/drm/gma500/gem.c                  |  21 +--
->   .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   |  25 ++-
->   drivers/gpu/drm/imx/ipuv3/imx-drm-core.c      |  29 ++-
->   drivers/gpu/drm/loongson/lsdc_gem.c           |  29 +--
->   drivers/gpu/drm/mediatek/mtk_gem.c            |  13 +-
->   drivers/gpu/drm/msm/msm_gem.c                 |  27 ++-
->   drivers/gpu/drm/nouveau/nouveau_display.c     |   7 +-
->   drivers/gpu/drm/omapdrm/omap_gem.c            |  15 +-
->   drivers/gpu/drm/qxl/qxl_dumb.c                |  17 +-
->   drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c |   7 +-
->   drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c  |   8 +-
->   drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |  12 +-
->   drivers/gpu/drm/tegra/gem.c                   |   8 +-
->   drivers/gpu/drm/virtio/virtgpu_gem.c          |  11 +-
->   drivers/gpu/drm/vmwgfx/vmwgfx_surface.c       |  21 +--
->   drivers/gpu/drm/xe/xe_bo.c                    |   8 +-
->   drivers/gpu/drm/xen/xen_drm_front.c           |   7 +-
->   drivers/gpu/drm/xlnx/zynqmp_kms.c             |   7 +-
->   include/drm/drm_dumb_buffers.h                |  14 ++
->   include/drm/drm_gem_vram_helper.h             |   6 -
->   include/uapi/drm/drm_mode.h                   |  50 +++++-
->   28 files changed, 447 insertions(+), 228 deletions(-)
->   create mode 100644 include/drm/drm_dumb_buffers.h
->
->
-> base-commit: 75238c32deae15ee4120b42a5be556ec36807a84
-> prerequisite-patch-id: c67e5d886a47b7d0266d81100837557fda34cb24
-> prerequisite-patch-id: a5a973e527c88a5b47053d7a72aefe0b550197cb
-> prerequisite-patch-id: 719d09751d38f5da743beed6266585ee063e1e29
+This regression was first observed with the Linux next-20250717 tag
+and continues to persist through next-20250722.
 
--- 
+Device: rk3399-rock-pi-4b
+Build Configuration: lkftconfig-64k_page_size
+
+Regression Window:
+
+ Good: next-20250716
+ Bad: next-20250717.. Still Bad: next-20250722
+
+Kernel Config Impact:
+CONFIG_ARM64_64K_PAGES=y  - NFS mount fails
+CONFIG_ARM64_4K_PAGES=y  - NFS mount works as expected
+
+Regression Analysis:
+- New regression? Yes
+- Reproducibility? Yes
+
+Boot regression:  next-20250717 arm64 rk3399-rock-pi-4b NFS mount
+failure with 64K page size
+
+Reported-by: Linux Kernel Functional Testing <lkft@linaro.org>
+
+## Boot log
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 6.16.0-rc6-next-20250717
+(tuxmake@tuxmake) (aarch64-linux-gnu-gcc (Debian 13.3.0-16) 13.3.0,
+GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT @1752747461
+[    0.000000] KASLR disabled due to lack of seed
+[    0.000000] Machine model: Radxa ROCK Pi 4B
+[    0.000000] efi: UEFI not found.
+[    0.000000] earlycon: uart0 at MMIO32 0x00000000ff1a0000 (options
+'1500000n8')
+[    0.000000] printk: legacy bootconsole [uart0] enabled
+[    0.000000] OF: reserved mem: Reserved memory: No reserved-memory
+node in the DT
+[    0.000000] NUMA: Faking a node at [mem
+0x0000000000200000-0x00000000f7ffffff]
+
+<trim>
+
+[    6.520442] Sending DHCP requests ..
+[   13.295867] platform sdio-pwrseq: deferred probe pending:
+pwrseq_simple: reset control not ready
+[   13.295887] dwmmc_rockchip fe310000.mmc: IDMAC supports 32-bit address mode.
+[   13.296260] rockchip-pm-domain
+ff310000.power-management:power-controller: sync_state() pending due
+to fe310000.mmc
+[   13.296278] rockchip-pm-domain
+ff310000.power-management:power-controller: sync_state() pending due
+to ff650000.video-codec
+[   13.297085] dwmmc_rockchip fe310000.mmc: Using internal DMA controller.
+[   13.297660] rockchip-pm-domain
+ff310000.power-management:power-controller: sync_state() pending due
+to ff660000.video-codec
+[   13.298653] dwmmc_rockchip fe310000.mmc: Version ID is 270a
+[   13.299536] rockchip-pm-domain
+ff310000.power-management:power-controller: sync_state() pending due
+to ff680000.rga
+[   13.300164] dwmmc_rockchip fe310000.mmc: DW MMC controller at irq
+49,32 bit host data width,256 deep fifo
+[   13.301117] rockchip-pm-domain
+ff310000.power-management:power-controller: sync_state() pending due
+to ff880000.i2s
+[   13.304227] rockchip-pm-domain
+ff310000.power-management:power-controller: sync_state() pending due
+to ff8a0000.i2s
+[   13.305148] rockchip-pm-domain
+ff310000.power-management:power-controller: sync_state() pending due
+to ff8f0000.vop
+[   13.306071] rockchip-pm-domain
+ff310000.power-management:power-controller: sync_state() pending due
+to ff900000.vop
+[   13.307009] rockchip-pm-domain
+ff310000.power-management:power-controller: sync_state() pending due
+to ff940000.hdmi
+[   13.307937] rockchip-pm-domain
+ff310000.power-management:power-controller: sync_state() pending due
+to ff9a0000.gpu
+[   14.620509] ., OK
+[   14.636949] IP-Config: Got DHCP answer from 10.66.16.15, my address
+is 10.66.30.7
+[   14.637647] IP-Config: Complete:
+[   14.637955]      device=eth0, hwaddr=0a:fb:82:cd:ed:a8,
+ipaddr=10.66.30.7, mask=255.255.240.0, gw=10.66.16.1
+[   14.638845]      host=10.66.30.7, domain=lkftlab, nis-domain=(none)
+[   14.639417]      bootserver=0.0.0.0, rootserver=10.66.16.116, rootpath=
+[   14.639440]      nameserver0=10.66.16.15
+[   14.641679] clk: Disabling unused clocks
+[   14.646347] dw-apb-uart ff1a0000.serial: forbid DMA for kernel console
+[   14.647091] check access for rdinit=/init failed: -2, ignoring
+[   14.762496] VFS: Mounted root (nfs filesystem) on device 0:22.
+[   14.763768] devtmpfs: mounted
+[   14.775761] Freeing unused kernel memory: 4928K
+[   14.776566] Run /sbin/init as init process
+[   95.816464] random: crng init done
+[  195.556677] nfs: server 10.66.16.116 not responding, still trying
+..
+[  195.556703] nfs: server 10.66.16.116 not responding, still trying
+[  195.556869] nfs: server 10.66.16.116 not responding, still trying
+[  195.557010] nfs: server 10.66.16.116 not responding, still trying
+[  195.557055] nfs: server 10.66.16.116 not responding, still trying
+[  195.557114] nfs: server 10.66.16.116 not responding, still trying
+[  195.557166] nfs: server 10.66.16.116 not responding, still trying
+[  195.557217] nfs: server 10.66.16.116 not responding, still trying
+[  195.557269] nfs: server 10.66.16.116 not responding, still trying
+[  195.557304] nfs: server 10.66.16.116 not responding, still trying
+[  227.459759] nfs: server 10.66.16.116 OK
+[  227.459868] nfs: server 10.66.16.116 OK
+[  227.681008] nfs: server 10.66.16.116 OK
+[  319.645474] nfs: server 10.66.16.116 OK
+[  407.677657] nfs: server 10.66.16.116 OK
+[  499.834818] nfs: server 10.66.16.116 OK
+[  587.895692] nfs: server 10.66.16.116 OK
+[  680.052774] nfs: server 10.66.16.116 OK
+[  768.113810] nfs: server 10.66.16.116 OK
+[  860.270785] nfs: server 10.66.16.116 OK
+#
+[  948.331418] nfs: server 10.66.16.116 OK
+#
+[ 1096.679211] nfs: server 10.66.16.116 OK
+#
+[ 1274.856436] nfs: server 10.66.16.116 OK
+#
+[ 1488.985700] nfs: server 10.66.16.116 OK
+
+
+## Source
+* Git tree: https://kernel.googlesource.com/pub/scm/linux/kernel/git/next/linux-next.git
+* Project: https://qa-reports.linaro.org/lkft/linux-next-master/build/next-20250717/
+* Git sha: 024e09e444bd2b06aee9d1f3fe7b313c7a2df1bb
+* Git describe: 6.16.0-rc6-next-20250717
+* kernel version: next-20250717
+* Architectures: arm64 (rock-pi-4b)
+* Toolchains: gcc-13
+* Kconfigs: defconfig+64K page size
+
+## Test
+* Test log: https://qa-reports.linaro.org/api/testruns/29168904/log_file/
+* Test LAVA: https://lkft.validation.linaro.org/scheduler/job/8364278#L924
+* Test run: https://regressions.linaro.org/lkft/linux-next-master/next-20250717/testruns/1662101/
+* Test plan: https://tuxapi.tuxsuite.com/v1/groups/linaro/projects/lkft/tests/2zzwHDuV3xvZBKkAtqlmroSxuIS
+* Build link: https://storage.tuxsuite.com/public/linaro/lkft/builds/2zzwEbz0aS3AtluE2oRQ9gMvFTY/
+* Kernel config:
+https://storage.tuxsuite.com/public/linaro/lkft/builds/2zzwEbz0aS3AtluE2oRQ9gMvFTY/config
+
+
 --
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
-
+Linaro LKFT
+https://lkft.linaro.org
 
 _______________________________________________
 Linux-rockchip mailing list
