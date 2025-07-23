@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91B80C83F34
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23049C83F17
 	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jul 2025 09:17:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tZUdqye0j9fTtjLhIu5skFlFG42gX4kPi7jP0fqM4/4=; b=sTQqDxEaA+issQ
-	PrGzye0ABnXmL0scRtlBCGadS5v9Z75FlFbXTg2VWbGrsEEq8ozarT7zr2d/t9b7m8xkvUs8vk0xq
-	FbSjPaNx4ayFxw0ZBKKL8+NjK5nX9/lGagikXJCSsGXvxj+s3KPzVFhrItRfrmSeGMJxbWxI4xi2o
-	6FV+X4TBewhoTgPaBrWkzsjeNxqFRYJrMF+hiba+9uO/X1OSMtR3t3pHGI/DAsRR/WdO3R8VQdcAx
-	uPfLWBrdrQpAZxhg28iSyBnno4vYsn3y5wfqhJZ9av+CWxiLjFznMH20YPwzGoK1uPmJql+p/3IGT
-	v/4TURV2EHTIyWzzIL8w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7AwHIJX/zWccNZKxyUWOGOhyyqq4FJA0BXduPMBM2SU=; b=C3L2rfypyKe20P
+	mMwybDKTcPKHw8t8UziLD8MPY3xmUWZcgF65dZwwWGStKDNery6fvPK/3Mvws0yq+jANYZNKNzsnM
+	uXjZErXrjPUO62Ehc7aqoO3uSy0WwY5KndGvZFfrhfcWkJPTOuhHG+1LYZ8YW/aQzBaRhw8tK5mB8
+	3J32LyxQ+MXtXhgkpW5LsaYAjgS+z9IOZbRDinzmOSTUryUiQTmtjnhJKb5tLRehnh7KCoUl10FBE
+	FFDhw24aojLN2wJQMpy0fnk96xU2daHsWzwZbd4Q752m+Zscd0oBSf7D44Ie7VKO6viNLuDWqN9qI
+	jfPMWux02OTMHFP4IgsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueVay-00000004TqY-0jOJ;
-	Wed, 23 Jul 2025 09:17:04 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1ueVax-00000004TqS-3Vzh;
+	Wed, 23 Jul 2025 09:17:03 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueVHj-00000004Qlf-41bV
+	id 1ueVHj-00000004Qlg-3rJe
 	for linux-rockchip@lists.infradead.org;
 	Wed, 23 Jul 2025 08:57:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1753261030;
- bh=QS4I3+me3Jqc+8KXuQkWvNUcvS5LmPT5tRhG2NxNXzU=;
- b=PskPsK5M2v8b/s3vvbBUvcu3DeCPeJc2IozfHpCh2OHSVIPqoQB/o9JA8AwvuSCV18FT7TTMo
- jxgnLKIxfPfgRg9F6XEpecNuAAve/h+tXUO5rqzs5j43HuBNMUPcWkTa8gI2UGlnsiEjNXfK5cF
- 0eQb/bY00fpibPiqonGLxSgDvhKolXxjezFo+WBU3TXkn2ePRMOvPjDOAcrXoWcQVDOzMh2tfYy
- OeRXNqVc3wv+Yv68Pcu7X41kHqNLB4Kdn19iWhqWWZBLlhJuonw+zO0kzTw95aDZvDK+3EIqlry
- FopYri8EOIgbXpV92KSsuM7eBspUplzgPcMuRhhRxadg==
-X-Forward-Email-ID: 6880a3dc144dc4a5e5baedef
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1753261031; bh=ojRNLV8OGHzHzDmR9JJH6f4y0n4OGFprTOnH0ezBpQs=;
+ b=sZOxCwyZiPgBYbdaRSQLz1kLBGsE5TFQxGCt2ilp3mNUmIwYGzcOIGG/BBXFTW7BdEHXKf2cJ
+ KdxmHjjRVQn6lPqDS8K6ihxr4biKcmg01oH4YcLqhLhxOh0xePu2gsE8HUbbYt8uSY+DrUwQDYa
+ LQQBF7UDxPGZBpOYgXhrjMtaPWyXD65AZma/O9rJcobjWbeAo91ypebw+lNR2d8XV8lRbg/KHDs
+ uRWRWUeaSazCsEvA0gzxZ74P9cjjWT0qVVYpWtYVj0a25tc9YE2gNO0ffSbouQUGmrmefgP0DuR
+ 9yUmUg8J1/LZ8uUJwi3oC5TRVOjyFhYUp8Zs9HPHWkew==
+X-Forward-Email-ID: 6880a3e4144dc4a5e5baee1b
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
+ 121.127.44.73
 X-Forward-Email-Version: 1.1.6
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -48,22 +48,26 @@ From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
+	Conor Dooley <conor+dt@kernel.org>,
+	Andi Shyti <andi.shyti@kernel.org>
 Cc: Yao Zi <ziyao@disroot.org>,
 	Chukun Pan <amadeus@jmu.edu.cn>,
 	devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 0/5] rockchip: Add power controller support for RK3528
-Date: Wed, 23 Jul 2025 08:56:42 +0000
-Message-ID: <20250723085654.2273324-1-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>,
+	linux-i2c@vger.kernel.org
+Subject: [PATCH v2 2/5] dt-bindings: i2c: i2c-rk3x: Allow use of a power-domain
+Date: Wed, 23 Jul 2025 08:56:44 +0000
+Message-ID: <20250723085654.2273324-3-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20250723085654.2273324-1-jonas@kwiboo.se>
+References: <20250723085654.2273324-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250723_015712_287310_297DE5E3 
-X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-CacheID: sfid-20250723_015712_285366_055789CC 
+X-CRM114-Status: UNSURE (   9.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,61 +85,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip RK3528 support multiple power domains, one PD_GPU that can
-fully be powered down, and other that can be idle requested.
+The I2C controllers in most Rockchip SoCs are part of power domains that
+are always powered on, i.e. PD_BUS or PD_PMU. These always powered
+on power domains have typically not been described in the device tree.
 
-Vendor kernel flag all power domains on RK3528 as always-on, this takes
-a different route and instead tries to describe all devices power-domain
-in the device tree, even for controllers with unsupported runtime status.
+Because these power domains have been left out of the device tree there
+has not been any real need to properly describe the I2C controllers
+power domain.
 
-The PD_RKVDEC is used by RKVDEC and DDRPHY CRU, and is kept disabled to
-prevent a full system reset when trying to read current rate of the
-SCMI_CLK_DDR clock.
+On RK3528 the I2C controllers are spread out among the described
+PD_RKVENC, PD_VO and PD_VPU power domains. However, one I2C controller
+belong to an undescribed always powered on power domain.
 
-pm_genpd_summary on a Radxa E20C after this:
+Add support to describe an optional power-domains for the I2C
+controllers in Rockchip SoCs.
 
-  domain                          status          children        performance
-      /device                         runtime status                  managed by
-  ------------------------------------------------------------------------------
-  vpu                             on                              0
-      ffaf0000.gpio                   unsupported                 0           SW
-      ffb10000.gpio                   unsupported                 0           SW
-      ffbe0000.ethernet               active                      0           SW
-      ffae0000.adc                    unsupported                 0           SW
-      ffbf0000.mmc                    suspended                   0           SW
-  vo                              on                              0
-      ffb00000.gpio                   unsupported                 0           SW
-      ffc30000.mmc                    suspended                   0           SW
-  venc                            on                              0
-      ffb20000.gpio                   unsupported                 0           SW
-      ffa58000.i2c                    unsupported                 0           SW
-  gpu                             off-0                           0
-      ff700000.gpu                    suspended                   0           SW
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+v2: Update commit message
+---
+ Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Changes in v2:
-- Drop already applied patches
-- Add snps-dw-apb-uart dt-bindings patch
-- Update commit messages
-
-This series depend on the patch "arm64: dts: rockchip: convert rk3528
-power-domains to dt-binding constants" [1] for a clean apply.
-
-[1] https://lore.kernel.org/r/20250620201715.1572609-1-heiko@sntech.de
-
-Jonas Karlman (5):
-  dt-bindings: gpio: rockchip: Allow use of a power-domain
-  dt-bindings: i2c: i2c-rk3x: Allow use of a power-domain
-  dt-bindings: iio: adc: rockchip-saradc: Allow use of a power-domain
-  dt-bindings: serial: snps-dw-apb-uart: Allow use of a power-domain
-  arm64: dts: rockchip: Enable more power domains for RK3528
-
- .../bindings/gpio/rockchip,gpio-bank.yaml     |  3 ++
- .../devicetree/bindings/i2c/i2c-rk3x.yaml     |  3 ++
- .../bindings/iio/adc/rockchip-saradc.yaml     |  3 ++
- .../bindings/serial/snps-dw-apb-uart.yaml     |  3 ++
- arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 30 +++++++++++++++++--
- 5 files changed, 39 insertions(+), 3 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+index 2f1e97969c3f..4ac5a40a3886 100644
+--- a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
++++ b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+@@ -105,6 +105,9 @@ properties:
+       (t(f) in the I2C specification). If not specified we will use the SCL
+       value since they are the same in nearly all cases.
+ 
++  power-domains:
++    maxItems: 1
++
+ required:
+   - compatible
+   - reg
 -- 
 2.50.1
 
