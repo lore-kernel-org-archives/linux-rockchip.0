@@ -4,65 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 718B4C83F25
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jul 2025 07:23:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E70ADC83F25
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jul 2025 08:04:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gI0zYU4y/8HDv6bxAvjzfAm7TkfgTX/3hSBpWl4qW58=; b=rzThl7+dRI4+td
-	JTN+GlX5ruKs+BF1ujnUXsrQDS40Wo7q+fxo9tZLx2klClCNnJd6VsOwrAp/bOYgn9VK8Tfny+Tlc
-	Npm2H0q+XX+SAW8csKnksLv2MSiIgfL2QoHT5+U30nIfZl/EAOHWxbPvzwU1XfP8pUXNuzTJo2h3T
-	+0CksY3hCmAYZOr5OAezrPr/1FzBWgDkVyhK6/iFc5CKTXiEYpJLtPBQuF/KkDlnuNuvKhf4e8vBJ
-	SIFotmO9+bfAB9DiR9IFPR7lDXv9Hu7YcTnV0coDiFIiKftpGQbK1cDeIvxuB6sNpJPaFpH++2P4A
-	bQq3KGb6tkiqb7UgrXFg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=r2/a2cMBw9FCzWY2tkVpEfhdhliKGWo2f2BnsTlVwOo=; b=uYqB7P1UPq+Ego
+	BrbKLZqnZOAaOPjp37tLwPhLPu+CwzHdtgBx+zNiCFMkOz0PeXYwKDQDZrp6+LRNgEu7BjFNk8ox1
+	xebXQu1t5Mqzh8yogVdX3b/jgAiK8xD9H1neO3ivfTpiXmHsPoNnCHF7Si4eIL4pBeKy3tcXS1z/2
+	Fb01VOTPlNcWkFJAxadZQihnqw15p7eloWs54fUZjovw687Q8tYUVacrYz52at5pPSP7G488YvlPD
+	dbEDbgC7dYlULqz/R+Vz068zLtWjPpvuOlDGedJ/AgaFk8NVBhEU0U3YBfd4eGsYEmOUXQ/jtRTEK
+	l2suRZU7HIZ8+1iLJijA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueTpD-00000004EbB-2uGA;
-	Wed, 23 Jul 2025 07:23:39 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1ueUSC-00000004Jnt-1fCP;
+	Wed, 23 Jul 2025 08:03:56 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueTpA-00000004EZI-10vO
-	for linux-rockchip@lists.infradead.org;
-	Wed, 23 Jul 2025 07:23:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1753255416;
- bh=0C0aN8MLHW4J4HYuVSaQCCwJddLZcpEJzicpIxJWh/Y=;
- b=rbeHNk8WhPXHajluZpWAX0hSTAtyuozNaRVl85QqWomwWSx4g/dvkGcxkgI2GHjrsWh4uy5Oy
- pW2Ad0iRIMZjysuYgAFL8u3onPbAnLrUxI/Y729/dAPBGvkx3Szf8LeKG6p+LcAPg+DoVjFyJrj
- XSFK24ZOzZCwC0HMPScMtZ3FjfGo6rvuY4PPSunn+WaL7S+Q+ZgBOn7zxq1h+lcr654KWFMM2li
- WV9cnpm+7W3MZnltA3Rb4DCHWF65EA1ckompGA6vGDmZtlrbnJi71e/72T2wsnk3qErRUa9V8bD
- c0dmkzLaVU9nJGcsONxMNAP+6kyRs8dx4o0H0/RKTWDw==
-X-Forward-Email-ID: 68808df2a1f2afba60dd694c
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 1.1.6
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-	Johan Jonker <jbx6244@gmail.com>
-Cc: Jonas Karlman <jonas@kwiboo.se>,
-	linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] phy: rockchip: naneng-combphy: Enable U3 OTG port for RK3568
-Date: Wed, 23 Jul 2025 07:23:22 +0000
-Message-ID: <20250723072324.2246498-1-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.50.1
+	id 1ueUBy-00000004HcY-3QFX;
+	Wed, 23 Jul 2025 07:47:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 381FA66923;
+	Wed, 23 Jul 2025 07:46:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 494B6C4CEE7;
+	Wed, 23 Jul 2025 07:46:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753256799;
+	bh=LP5FBzh1zsHXLLxQPPXTOQl5iCOBwGRUaADi3MQxQGY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ab3jZzZVJdtEWMpCDrKwNfxkq7ZqlEImWWlKllK/RsP2knhmTsb7vTvJcmrL4/W7h
+	 X9OPO/Q4dgR6Qo/r3RssC3vkuZSmyN1Z7NW3Z71ru7AIgPGNJQKTwvd3WQqiT63oMp
+	 1A/3SC1eXsNyJ5AtYnrBKNPP7liUqAp5etIRDYIl9qWJrpqL13kPH5blNheRSXE87z
+	 7MbPw9RaduJ8HI6wlsjkOwyMdPsFkYqcHe11mgOEz7zxE0c36vZ/rsmKwFSUjKG+EY
+	 oQXPvQd6dW4/+ytwXGReWwZEXwbbRy7ThAnWCNsJ10GYjjZgS3qz7Gqc0dfhu3qj65
+	 7UOR/fLLdTxQQ==
+Date: Wed, 23 Jul 2025 09:46:37 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: muhammed.efecetin.67@gmail.com
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, neil.armstrong@linaro.org, lee@kernel.org, 
+	rafael@kernel.org, efectn@protonmail.com, daniel.lezcano@linaro.org
+Subject: Re: [PATCH v2 1/5] dt-bindings: mfd: khadas-mcu: add new compatible
+ for Khadas Edge 2
+Message-ID: <20250723-skinny-spectral-zebu-eeaad1@kuoka>
+References: <cover.1753179491.git.efectn@protonmail.com>
+ <385b22d3f1d30e559cfdc08616812de0f958e5af.1753179491.git.efectn@protonmail.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250723_002336_357996_C182C06E 
-X-CRM114-Status: GOOD (  13.26  )
+Content-Disposition: inline
+In-Reply-To: <385b22d3f1d30e559cfdc08616812de0f958e5af.1753179491.git.efectn@protonmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,70 +72,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The boot firmware may disable the U3 port early during boot and leave it
-up to the controller or PHY driver to re-enable U3 when needed.
+On Tue, Jul 22, 2025 at 03:38:11PM +0300, muhammed.efecetin.67@gmail.com wrote:
+> From: Muhammed Efe Cetin <efectn@protonmail.com>
+> 
+> Add new khadas,mcu-v2 compatible which is going to be used with Khadas
+> Edge 2 and potantially new Khadas boards like Vim4, using the same fan
+> control register.
+> 
+> Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
+> ---
+>  Documentation/devicetree/bindings/mfd/khadas,mcu.yaml | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/khadas,mcu.yaml b/Documentation/devicetree/bindings/mfd/khadas,mcu.yaml
+> index 084960fd5..fd57ed92c 100644
+> --- a/Documentation/devicetree/bindings/mfd/khadas,mcu.yaml
+> +++ b/Documentation/devicetree/bindings/mfd/khadas,mcu.yaml
+> @@ -11,13 +11,14 @@ maintainers:
+>  
+>  description: |
+>    Khadas embeds a microcontroller on their VIM and Edge boards adding some
+> -  system feature as PWM Fan control (for VIM2 rev14 or VIM3), User memory
+> +  system feature as PWM Fan control (for VIM2 rev14, VIM3, Edge2), User memory
+>    storage, IR/Key resume control, system power LED control and more.
+>  
+>  properties:
+>    compatible:
+>      enum:
+> -      - khadas,mcu # MCU revision is discoverable
+> +      - khadas,mcu    # Used by VIM2 rev14, VIM3
+> +      - khadas,mcu-v2 # Used by Edge2
 
-The Rockchip USBDP PHY driver currently does this for RK3576 and RK3588,
-something the Rockchip Naneng Combo PHY driver never does for RK3568.
-This may result in USB 3.0 ports being limited to only using USB 2.0 or
-in special cases not working at all on RK3568.
+You need documented versioning (provide a link/datasheet). Otherwise you
+should use compatibles specific to the hardware, e.g. edge2
 
-Write to PIPE_GRF USB3OTGx_CON1 reg to ensure the U3 port is enabled
-when a PHY with PHY_TYPE_USB3 mode is used.
-
-Fixes: 7160820d742a ("phy: rockchip: add naneng combo phy for RK3568")
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
-Mainline U-Boot currently do not disable the U3 ports early, something
-that possibly may change in a future release of U-Boot.
-
-A pending U-Boot series will likely include a patch similar to
-("rockchip: rk3588: Disable USB3OTG U3 ports early") [1] for RK3568.
-
-[1] http://https//lore.kernel.org/r/20250721220734.1617117-9-jonas@kwiboo.se/
----
- drivers/phy/rockchip/phy-rockchip-naneng-combphy.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-index bf00a85a113b..66fd0f59c21a 100644
---- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-+++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-@@ -178,6 +178,8 @@ struct rockchip_combphy_grfcfg {
- 	struct combphy_reg pipe_xpcs_phy_ready;
- 	struct combphy_reg pipe_pcie1l0_sel;
- 	struct combphy_reg pipe_pcie1l1_sel;
-+	struct combphy_reg u3otg0_port_en;
-+	struct combphy_reg u3otg1_port_en;
- };
- 
- struct rockchip_combphy_cfg {
-@@ -777,6 +779,14 @@ static int rk3568_combphy_cfg(struct rockchip_combphy_priv *priv)
- 		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_txcomp_sel, false);
- 		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_txelec_sel, false);
- 		rockchip_combphy_param_write(priv->phy_grf, &cfg->usb_mode_set, true);
-+		switch (priv->id) {
-+		case 0:
-+			rockchip_combphy_param_write(priv->pipe_grf, &cfg->u3otg0_port_en, true);
-+			break;
-+		case 1:
-+			rockchip_combphy_param_write(priv->pipe_grf, &cfg->u3otg1_port_en, true);
-+			break;
-+		}
- 		break;
- 
- 	case PHY_TYPE_SATA:
-@@ -923,6 +933,8 @@ static const struct rockchip_combphy_grfcfg rk3568_combphy_grfcfgs = {
- 	/* pipe-grf */
- 	.pipe_con0_for_sata	= { 0x0000, 15, 0, 0x00, 0x2220 },
- 	.pipe_xpcs_phy_ready	= { 0x0040, 2, 2, 0x00, 0x01 },
-+	.u3otg0_port_en		= { 0x0104, 15, 0, 0x0181, 0x1100 },
-+	.u3otg1_port_en		= { 0x0144, 15, 0, 0x0181, 0x1100 },
- };
- 
- static const struct rockchip_combphy_cfg rk3568_combphy_cfgs = {
--- 
-2.50.1
+Best regards,
+Krzysztof
 
 
 _______________________________________________
