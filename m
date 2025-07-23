@@ -4,57 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85961C83F25
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jul 2025 08:09:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62E06C83F25
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jul 2025 08:11:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dt1QCIXZP4jzep8C+vWmn8mvEMisFu5sWL23NJaPAFI=; b=yiy+6rA/iGSq7J
-	g5vOMZlUJ0t7464QmPBJCMmgYlUokVwUTz0Efjpp2u5Ywq2Zki1G557Tabwstr4ULwZYoam2rxM/1
-	WwEFGzl7lIlhyj185Q86vvtP30RYVvLCbapBdlDjkK2dkHyxXGcUHUlDEdrDWZclz8pkGhiSqcbmB
-	0DoCVCvWJOkQCZ2h17zLgTWuvAUGZ4ba1jA0ccwKet99acQWljXL99PX9lwOc34ALq/6UKwWByf9I
-	p0+ph/+XunP7UVvKBXfRB+VVjDmyqspOe1/cqw34k8hS9HjLtlYgb/FDRoSsYgybtwxeK7NdU2zkE
-	ZiNd+KR/g7u2grNbsd2w==;
+	List-Owner; bh=atibPTNz5zJaRtjnxxNQAJ8DwFM9YFVdRvpEHlJBodc=; b=h0F7RwSRUauy/A
+	iJ8ZHvBgNtEHBxhAa8CPSRKnBky4fvxF8iWh5EgzvY556IPJguvGPccZ334qv4q1W6ogMpFPC05cz
+	gE3oCZx30L6ktb0KWYYStRpkgU1R9tug9rTdvm3CvRk/sL/RAOYXEc1zUcaNvVU8JNC4xV03Ie0QK
+	a5WDr3xpBqJDycrq1Sm3gh5/O0q5vZAaunat2AjY/Oghn5G9AMNLaIQIEQ+bTboaFPUAtVxZZHav0
+	HR+zi3tK85b8JVlfEffGrvdai+mkhM2HCudNhgTyARMBpgsr6DsTRtzuPvFDTMUQJllOZR0NvcvFe
+	9MR2vknDpOV8EIYB0daA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueUX6-00000004KqN-1SeF;
-	Wed, 23 Jul 2025 08:09:00 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1ueUZY-00000004LH5-2Atu;
+	Wed, 23 Jul 2025 08:11:32 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueUCm-00000004Hm5-2vJ2;
-	Wed, 23 Jul 2025 07:48:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C528A66923;
-	Wed, 23 Jul 2025 07:47:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15CF4C4CEE7;
-	Wed, 23 Jul 2025 07:47:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753256879;
-	bh=KKn1BH2pU5ZMIp/brMQbOxv6/eE2JB3+FPK/EVwTJEU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pqmUo9BC2wb+EIBkEj8YcSNMz6GCFUmCrc/X+6TbLnXqwuG2OKYA8oFA15SguPS+j
-	 MAVtyLPjoQZJmRYejaeYEXCPsiCL5JLtfD/GtS/gGyTrJtH0Rabg72Mheklyh750PG
-	 6f97AynZ9MvkAXWSYEiVjEa9Z7lSNgRxjA5AG1nTmnuBmR3vek8kVlBFkmkJPSvE1j
-	 Ii2/ZCsl0Rqnr2yayr3BX7b/8wAr/DEj4Tq/5Mw7a53di50DSTJfs/nzLRgcYOacU7
-	 ozH30cEGU4Xmy+4bocX68Nvanhfcwwlsn2mLtgNZ9R88YAojlIg2zLFqveVFZAn243
-	 eWi48zyMYS2xQ==
-Date: Wed, 23 Jul 2025 09:47:56 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: muhammed.efecetin.67@gmail.com
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, neil.armstrong@linaro.org, lee@kernel.org, 
-	rafael@kernel.org, efectn@protonmail.com, daniel.lezcano@linaro.org
-Subject: Re: [PATCH v2 3/5] mfd: add Khadas Edge 2 registers to khadas-mcu.
-Message-ID: <20250723-adamant-smiling-markhor-a8ebee@kuoka>
-References: <cover.1753179491.git.efectn@protonmail.com>
- <41993cb8130fc206ee6820866154baef7db804e8.1753179491.git.efectn@protonmail.com>
+	id 1ueUDW-00000004HrV-1bKk
+	for linux-rockchip@lists.infradead.org;
+	Wed, 23 Jul 2025 07:48:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1753256925;
+ bh=tlysNIUHkG+ajpgUu28U9v0znvVFpOUQJKOU6I0mE1w=;
+ b=bbNqCsmQeozZjmgl0HL4SufvnfKLO7ldo/P8dtWW9pDV/1Z/e+L0MtuLwko3ciac72JXNqcJv
+ 2+FK18VX8VfIa+gH2CK6suj2NeKkrmwIVj2EwOC/AanGcI5kZp2H8cHGbOnu+jDzdj67bGCZlLD
+ F4GD+5dgvrPaTLcyw0we+6XDjs8KdLUPcp2/hRwmj+1L/46G9poa8zzLCqbLigbCUyDOqTi5tga
+ SnsoCL5BWVUidI8tPsUq1APX7f2jQ299k+mPFZbNH9Y+9vsSNY21LbSRPcqJNrMAqFYpGzVO0YU
+ SRK2DYw3mh/qkIHuS4f5NiCIQUtaflco6ugNuQDR90Tw==
+X-Forward-Email-ID: 688093da144dc4a5e5badcbf
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 1.1.6
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <5ce75920-1b2e-4cc6-8e7b-e26f40089c7c@kwiboo.se>
+Date: Wed, 23 Jul 2025 09:48:39 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <41993cb8130fc206ee6820866154baef7db804e8.1753179491.git.efectn@protonmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] arm64: dts: rockchip: convert rk3528 power-domains to
+ dt-binding constants
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: ziyao@disroot.org, amadeus@jmu.edu.cn,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+References: <20250620201715.1572609-1-heiko@sntech.de>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20250620201715.1572609-1-heiko@sntech.de>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250723_004846_707955_47CCE5E2 
+X-CRM114-Status: UNSURE (   8.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,35 +78,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 22, 2025 at 03:38:13PM +0300, muhammed.efecetin.67@gmail.com wrote:
->  	ddata = devm_kzalloc(dev, sizeof(*ddata), GFP_KERNEL);
-> @@ -94,7 +130,11 @@ static int khadas_mcu_probe(struct i2c_client *client)
->  
->  	ddata->dev = dev;
->  
-> -	ddata->regmap = devm_regmap_init_i2c(client, &khadas_mcu_regmap_config);
-> +	if (of_device_is_compatible(dev->of_node, "khadas,mcu-v2"))
+On 6/20/2025 10:17 PM, Heiko Stuebner wrote:
+> Now that the binding head has been merged, convert the power-domain ids
+> back to these constants for easier handling.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-This does not scale. Use device match data for exactly this purpose.
+This matches the state in my original patches, so this is:
 
-> +		regmap_config = &khadas_mcu_regmap_config_v2;
-> +	else
-> +		regmap_config = &khadas_mcu_regmap_config;
-> +	ddata->regmap = devm_regmap_init_i2c(client, regmap_config);
->  	if (IS_ERR(ddata->regmap)) {
->  		ret = PTR_ERR(ddata->regmap);
->  		dev_err(dev, "Failed to allocate register map: %d\n", ret);
-> @@ -113,6 +153,7 @@ static int khadas_mcu_probe(struct i2c_client *client)
->  #ifdef CONFIG_OF
->  static const struct of_device_id khadas_mcu_of_match[] = {
->  	{ .compatible = "khadas,mcu", },
-> +	{ .compatible = "khadas,mcu-v2", },
+Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
 
-So devices are 100% compatible? Empty match data suggests that...
+Regards,
+Jonas
 
-Best regards,
-Krzysztof
+> ---
+> changes in v2:
+> - add conversion in newly added gpu node
+> 
+>  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 23 ++++++++++++-----------
+>  1 file changed, 12 insertions(+), 11 deletions(-)
 
+[snip]
 
 _______________________________________________
 Linux-rockchip mailing list
