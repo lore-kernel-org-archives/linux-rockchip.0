@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5596C83F17
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jul 2025 14:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CBCAC83F34
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jul 2025 14:35:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1lx3OzMt5iBdvbU9hkgMAQJ3OGt0jS5PKwpP/Zp7MgQ=; b=V5bi1Iu4vlFGeE
-	Hhoi8x4uyjqF92qwnRFwhWp2nk1fis8YUMhmspHratfSceHzCA/ovSk5A+NbHfuBo9Y0wh2NS5brE
-	DtF9nSCFtLE5zilpPtHypUiD9qySsdNQ6uaSWMnYAB/KndnAXo3t5iC8cQIanQK6F/WEFj/Ndqul6
-	GnnZsK4ePnc6uJ6p8xpG+6w1KJpr1DRdlZfUXD4A2J1LLeVQKdDcXW/wHL0WqjK3TUWp5k6udc7M2
-	2ikctv0WwuG1BW8Ob5uPElKBIE5gS8fPEhXTpcJgz+q2iW3VA3EUiH2AeqnhwKwHSoP+wKCTAmAXt
-	yAxlL8nniuWKWxShStTQ==;
+	List-Owner; bh=vTVbStgjzOuFm1zLwkc5k3zZDJMy89G7Lx0AN1+62zA=; b=34mZhTX8sePauK
+	nXg8M/Y8lRpgWJdYt3G0GdlBQbsX8SCH+wc0skAxnbVYgHcmC26OP4vNa+z9kmurGzd6e8sPxeVka
+	i0t5n32EztKk79rXBif0/7LfmbHLQEjAJLuobpZq4u4chh0ATb07fw77AkO+WI8vtkOPoXMxWV3c3
+	Rb9AcPbAkMrZPRZRKWp6jr9kQcjp77BPNBN3REwqDdO5vQLLJYG/IQsSuWDJUx3xwCXagEBSgdZQp
+	PzFx6XyNUgMamVzJPDwnkRg0jVAfoI1Z+7Xw8CrHDYk6uiUW8NSSbzNsBTRBwOGq+fOH5KrLXnSg8
+	klIZ16DrRtNnb/HBHtiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueaPK-00000005CCa-3Ezn;
-	Wed, 23 Jul 2025 14:25:22 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1ueaZD-00000005DWl-087F;
+	Wed, 23 Jul 2025 14:35:35 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueZi3-000000055KH-2k9A;
-	Wed, 23 Jul 2025 13:40:41 +0000
-Received: from localhost.localdomain (unknown [119.122.214.181])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1d028433b;
-	Wed, 23 Jul 2025 21:40:24 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: knaerzche@gmail.com
-Cc: amadeus@jmu.edu.cn,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	jonas@kwiboo.se,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	ziyao@disroot.org
-Subject: Re: [PATCH v3 0/6] arm64: dts: rockchip: Add ROCK 2A/2F, Sige1 and NanoPi Zero2
-Date: Wed, 23 Jul 2025 21:40:19 +0800
-Message-Id: <20250723134019.1076352-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <6d93c92d-2bba-4247-960d-5f2e5e12b594@gmail.com>
-References: <6d93c92d-2bba-4247-960d-5f2e5e12b594@gmail.com>
+	id 1ueZoJ-0000000567J-2fk2;
+	Wed, 23 Jul 2025 13:47:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id A8A93601D7;
+	Wed, 23 Jul 2025 13:47:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35A99C4CEF1;
+	Wed, 23 Jul 2025 13:47:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753278426;
+	bh=Px8gBix96tpJXZzdaFnoa/DdcC+iaCFv0QakGJFoD4g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JwamNn4BoaqZcQV4LZoAtTCdgd5OPftSTu2rR5gNkOGdFAdazCFAgmaZfxl6+Jxv6
+	 VYWmsNhSJtG56LNFRz3TCG/19X+dJk0aSwN3fr4jUFL0qqx+EhN1G/RYBBOrd11N1C
+	 DSJ9pSzZoseMtHdTzFGzgHo30nyO65+6UyPEpgaflDwHFyTlDcOpi9CcJjvNmajc+T
+	 6JGc2OdvDG1Y/3Ma7536Ke6KLNXQuqXnkuRzfdeZbjFoE478L2gmCtdbGsEXcHNe1l
+	 xvRZECH4gaaf7SNbTi/RtIcpos463/CzivhfAikaRiaFauEP3Gma4JoKbwNGp/VJXz
+	 u1Qx2NtfDr0BQ==
+Date: Wed, 23 Jul 2025 08:47:05 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: linux-arm-kernel@lists.infradead.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Yao Zi <ziyao@disroot.org>, Chukun Pan <amadeus@jmu.edu.cn>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-gpio@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH v2 1/5] dt-bindings: gpio: rockchip: Allow use of a
+ power-domain
+Message-ID: <175327842469.2144459.7995862129200440475.robh@kernel.org>
+References: <20250723085654.2273324-1-jonas@kwiboo.se>
+ <20250723085654.2273324-2-jonas@kwiboo.se>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDHR8eVh8dGh9DGUxITkwdHVYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VKQ0pZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0tVSktLVU
-	tZBg++
-X-HM-Tid: 0a9837838c6c03a2kunm45ceffd2fb6d7
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NhA6ATo4OTEdSTIsTCwhCw8Z
-	KBQaFDRVSlVKTE5ISUxDS0lOTEhCVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
-	QlVKSUlVSUpPVUpDSllXWQgBWUFKTEJMNwY+
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250723_064039_885750_5B270208 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20250723085654.2273324-2-jonas@kwiboo.se>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,47 +76,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-> Nope.
->
-> Are you really questioning my picture? Ridiculous ... see [0]
+On Wed, 23 Jul 2025 08:56:43 +0000, Jonas Karlman wrote:
+> The GPIO controllers in most Rockchip SoCs are part of power domains
+> that are always powered on, i.e. PD_BUS or PD_PMU. These always powered
+> on power domains have typically not been described in the device tree.
+> 
+> Because these power domains have been left out of the device tree there
+> has not been any real need to properly describe the GPIO controllers
+> power domain.
+> 
+> On RK3528 the GPIO controllers are spread out among the described
+> PD_RKVENC, PD_VO and PD_VPU power domains. However, one GPIO controller
+> belong to an undescribed always powered on power domain.
+> 
+> Add support to describe an optional power-domains for the GPIO
+> controllers in Rockchip SoCs.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+> v2: Update commit message
+> ---
+>  Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
 
-No, I mean some boards of this model have SoC silkscreen RK3528 and
-others have RK3528A. The same is true for another Hinlink H28K SBC.
-
-> I'm sort of impressed on with which conviction you continue to claim
-> plain wrong things: [1], [2], [3].
-
-If you spend a few minutes running mainline u-boot or BSP kernel
-on your RK3528 board before blaming me:
-
-BL31:
-INFO:    rk_otp_init finish!
-INFO:    RK3528 SoC (0x101)
-
-mainline u-boot:
-------
-U-Boot 2025.07-...
-
-Model: Generic RK3528
-SoC:   RK3528A
-------
-
-BSP kernel:
-[    0.768514] rockchip-cpuinfo cpuinfo: SoC            : 35281000
-[    0.768990] rockchip-cpuinfo cpuinfo: Serial         : ...
-
-> I'm fine if upstream decides not to care. But it is and remains wrong
-> to claim that the other version does not exist
-
-Unless Rockchip says they fused the wrong OTP during production.
-Regardless of the SoC silkscreen, the chip type on OTP is the same,
-so how does Rockchip distinguish these chips?
-
---
-2.25.1
-
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
