@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DBEFC83F17
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jul 2025 15:31:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B95B0C83F1A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jul 2025 15:53:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aO6uPuXEIoYhSI7d9phnYQi290df0AjFG1JfFHcvOSY=; b=sHrMLFQ1JN1e9u
-	yNGDftp5prCRcTa02SjRbHJ9QLXaTy1ialudnlYI+lx/W6rvV2cdOaJ9qakchPQ3ieuHm5AUFzVK+
-	mhhi2/m6yZkuHnDUSDIpcoeMZBRIksCspj68t4Byy+phDbiDmHKOVcBEtHo+CRu6SYQQZur5nfCrv
-	zjLbfI7NOk9o0lkNk6/LArOeqzPbYO1nCuN7OdWgyQreUiZHU3ERW6IqdDGMi4H0n/FZKjfV/0F9D
-	2okX9LKloZrKFvsXa5od+kq/QRwxVj0/AFi2dnzFq8pAATBW7pETGYSq5QlpTQC/FyolYa0yXY3Aw
-	x6VLxHMOzX6zExILczpw==;
+	List-Owner; bh=jSsdAC56smUgGShAkpmDpI48PwUOR8mVo+TVlPUrhWQ=; b=t8MAlzNvrtr0Ue
+	XwRMSQdf1rL7ATaYxweMyCtd6Kssp2tjJaqfBhMlporBIBfUT0nqqgYTyYbv+ok8BYJAJOcMhI3JO
+	8w4nMq3nLhKhy+KypHRgim7gbK6X7UFNitOH7YPt2B1OmOC+CodO0w7aSaEnTLXvAJKAVlJH5cBTL
+	Nw855Na0PWRiove+5YriFLeaIBV/bxtKxNE8xQeKZJuAELO6nzpssT3r27DRe1K6Q7/dPbASYdsH9
+	ZM3CVUPK1h9L9kGSzVuVgG+3QH6/SNEmmcEciOscXoGLwRYI6hX3AMBZQp8lODQTOkfEcaLKVCbQ3
+	osJN8nFWm7DcB4Q/CtRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uebRT-00000005O9w-3eHJ;
-	Wed, 23 Jul 2025 15:31:39 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1uebmC-00000005RO8-207F;
+	Wed, 23 Jul 2025 15:53:04 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uebQe-00000005O5t-1KDG
-	for linux-rockchip@lists.infradead.org;
-	Wed, 23 Jul 2025 15:30:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1753284646;
- bh=FhP6rOtQvB4VYIXnnNpu3xwHjjjJTBlHfuZIWCxLQIE=;
- b=QFDGo4B5m0tg9VX0Vj0FuilN2HlsgI0r0Ha641c1fVx6BGQFOaIjZAwrzsI7E2IE9xsmsTuPc
- QerK7pHvynk5/jYbuTmrAgnxEXNY1fodmzhlUpn40xzfrsBxigAgehrXFvgPtawCn8FTAZkMbih
- 0fpAT9+jM/cC3ZNIvfSQW46wZkxDMPfWWhJdj4whOTuzIg89W3InMVBlKoGwk1aIqPfZwfsvNvB
- jF07mGBZhrFz/E/SSW1M+5Qiv6uP73UFmZF6XVHr8TS5mmVc6nAZxHgLsC8gGHO6zaUCgoUK3Jo
- zAnI96Npk1k1c3gO58MGzbXqI6pdG+KJKYW0e0FBasMw==
-X-Forward-Email-ID: 68810025cb0ee86f9731e6c0
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 1.1.6
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <94357eb2-d8aa-4928-8816-9f6529530170@kwiboo.se>
-Date: Wed, 23 Jul 2025 17:30:39 +0200
+	id 1uebjj-00000005QxZ-3Sr7;
+	Wed, 23 Jul 2025 15:50:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1340945A2C;
+	Wed, 23 Jul 2025 15:50:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51412C4CEE7;
+	Wed, 23 Jul 2025 15:50:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753285830;
+	bh=q0RdIwl2onvcmCTOyNGzyc8T7XKOzlJKJ3pq4M0YgrQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=SmBKNNWav95G3vsgJvAXo6iiufNuKUnjGCOlLlJ6awlSazcT+GVpf/l5k87yZbNFn
+	 K3w14Y242PXRz3nw78+h6Bohl6wG5U54VpWGUqdcp902wpdo/m8CZ9QcdbAXqoUkC/
+	 E88MH/T5icJwck0NvRSwhX42ciMp0O4yRqq3ubK7dtAfV0yROA1MpfN0wepLgWQH2p
+	 pyIZKgqzA8UmZShrY5ukSSCQS83TLa3qcZKjZhtLj10JUjMMS6eHuhtoAd7S5qsi3k
+	 g6OXWs2k+9kN0XPOPyAYmdCVHrVdoerUCnEJG5Zsw9QA9QM5ruBrYV7+OvfkZZJipn
+	 G9io2fsDkj9ZA==
+Date: Wed, 23 Jul 2025 16:50:21 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, David Lechner <dlechner@baylibre.com>, Nuno
+ =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
+ Yao Zi <ziyao@disroot.org>, Chukun Pan <amadeus@jmu.edu.cn>,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-iio@vger.kernel.org
+Subject: Re: [PATCH v2 3/5] dt-bindings: iio: adc: rockchip-saradc: Allow
+ use of a power-domain
+Message-ID: <20250723165021.4e2dd324@jic23-huawei>
+In-Reply-To: <20250723085654.2273324-4-jonas@kwiboo.se>
+References: <20250723085654.2273324-1-jonas@kwiboo.se>
+	<20250723085654.2273324-4-jonas@kwiboo.se>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/11] arm64: dts: rockchip: Add USB nodes for RK3528
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
- kishon@kernel.org, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-rockchip@lists.infradead.org, robh@kernel.org, vkoul@kernel.org,
- ziyao@disroot.org
-References: <20250723122323.2344916-8-jonas@kwiboo.se>
- <20250723143006.1083489-1-amadeus@jmu.edu.cn>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250723143006.1083489-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250723_083048_423147_94C8A68F 
-X-CRM114-Status: GOOD (  20.48  )
+X-CRM114-CacheID: sfid-20250723_085031_897929_2892CC12 
+X-CRM114-Status: GOOD (  19.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,101 +79,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chukun,
+On Wed, 23 Jul 2025 08:56:45 +0000
+Jonas Karlman <jonas@kwiboo.se> wrote:
 
-On 7/23/2025 4:30 PM, Chukun Pan wrote:
-> Hi,
+> The SARADC controller in most Rockchip SoCs are part of power domains
+> that are always powered on, i.e. PD_BUS or PD_PERI. These always powered
+> on power domains have typically not been described in the device tree.
 > 
->> The DWC3 node does not contain any default phys because out of current
->> and pending supported boards only one board, ROCK 2A, can use USB3.
->> Remaining boards use the Naneng Combo PHY for PCIe instead of USB3.
+> Because these power domains have been left out of the device tree there
+> has not been any real need to properly describe the power domain of the
+> SARADC controller.
 > 
-> I have other RK3528 boards with USB3 and can test this in a few days.
-> Or do you think that usb3-phy should be added in the dts of the device?
-
-That is what I did for ROCK 2A testing I added the usb3-phy to the board
-dts. Mostly for two reasons, first because I did not want to make this
-series fully depend on the naneng-combphy series. And secondly because
-the ROCK 2A also have some sort of GPIO controlled mux for USB3 and PCIe
-signals that may affect how usb3 support is described in the device tree.
-
-I am open to ideas on how or what default phys to include in soc dtsi.
-
-For the ROCK 2A usb3-phy example, please see the commit "arm64: dts:
-rockchip: Enable USB 3.0 port on ROCK 2A" at [1].
-
-[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20250722-rk3528/
-
+> On RK3528 the SARADC controller is part of the PD_VPU power domain.
 > 
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
->> index 85bc3f5aa2c7..3e51a3f51e05 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
->> @@ -243,6 +243,29 @@ soc {
->>  		#address-cells = <2>;
->>  		#size-cells = <2>;
->>
->> +		usb_host0_xhci: usb@fe500000 {
->> +			compatible = "rockchip,rk3528-dwc3", "snps,dwc3";
->> +			reg = <0x0 0xfe500000 0x0 0x400000>;
->> +			clocks = <&cru CLK_REF_USB3OTG>,
->> +				 <&cru CLK_SUSPEND_USB3OTG>,
->> +				 <&cru ACLK_USB3OTG>;
->> +			clock-names = "ref_clk", "suspend_clk", "bus_clk";
->> +			interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_HIGH>;
->> +			power-domains = <&power RK3528_PD_VPU>;
->> +			resets = <&cru SRST_A_USB3OTG>;
->> +			dr_mode = "otg";
->> +			phy_type = "utmi_wide";
->> +			snps,dis_enblslpm_quirk;
->> +			snps,dis-del-phy-power-chg-quirk;
->> +			snps,dis-tx-ipgap-linecheck-quirk;
->> +			snps,dis-u1-entry-quirk;
->> +			snps,dis-u2-entry-quirk;
->> +			snps,dis-u2-freeclk-exists-quirk;
->> +			snps,parkmode-disable-hs-quirk;
->> +			snps,parkmode-disable-ss-quirk;
+> Add support to describe an optional power-domains for the SARADC
+> controller in Rockchip SoCs.
 > 
-> Maybe "snps,dis_u2_susphy_quirk" is needed?
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Applied to the testing branch of iio.git.
 
-Maybe, it did not seem to be needed when I tested USB2.0 only or USB3.0,
-will run some more tests on my boards.
+I'll be rebasing on rc1 once available.
 
-Any issues you know that snps,dis_u2_susphy_quirk would help fix?
+Thanks,
 
-For my latest USB testing I have included a few USB related changes in
-U-Boot, e.g. early disable of U3 port. Will push and updated rk3528
-branch [2] once source.denx.de is fully back online again.
+Jonathan
 
-[2] https://source.denx.de/u-boot/contributors/kwiboo/u-boot/-/commits/rk3528
-
-> Downstream kernels add this on USB2.0 only devices:
-> https://github.com/rockchip-linux/kernel/blob/develop-5.10/arch/arm64/boot/dts/rockchip/rk3528-demo.dtsi#L474
+> ---
+> v2: Update commit message
+> ---
+>  Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
->> +		u2phy: usb2phy@ffdf0000 {
->> +			u2phy_otg: otg-port {
->> +			u2phy_host: host-port {
-> 
-> I think it would be better to call it usb2phy, usb2phy0_otg and usb2phy0_host?
-> In this way, we can put these USB nodes close together in the device's dts.
-
-From what I could see these nodes are named u2phy for 8 other Rockchip
-SoCs and only named usb2phy for 3. So I went with what the majority seem
-to be calling them.
-
-I fully understand wanting to sort them closer, however we also have the
-forthcoming combphy for USB3 that also will be sorted away from the usb
-controller nodes. Hopefully someone more can chime in on node naming
-suggestions :-)
-
-Regards,
-Jonas
-
-> 
-> --
-> 2.25.1
-> 
-> 
+> diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+> index 41e0c56ef8e3..f776041fd08f 100644
+> --- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+> +++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+> @@ -47,6 +47,9 @@ properties:
+>        - const: saradc
+>        - const: apb_pclk
+>  
+> +  power-domains:
+> +    maxItems: 1
+> +
+>    resets:
+>      maxItems: 1
+>  
 
 
 _______________________________________________
