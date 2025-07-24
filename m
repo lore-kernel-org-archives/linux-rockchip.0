@@ -4,57 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C370BC87FD4
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jul 2025 15:25:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 290C0C87FD2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jul 2025 17:05:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rRTiNp147pszazp1aBgJAOtz848MTWnFrPqpgped+aA=; b=pAiuJAseHOe6aK
-	6mg+MQ7V4g++7FVOgD747NAmDR5zN5uEv+/vXoRsyweTs3nNZEgM1zlKRO/oij4dxNdv2zlU5dhiM
-	kb+Islpe7Q+ir9+qyrX6EgjZoZR4TmwfNjG2LQN0slTQLWs49x8w8mgECrCnR8NPUbskESQ26J4s2
-	qqIhj8jBxNqMg7eQgqs7BRZAnx6Txg7lQw346k4SohYIk6ARecGQ4vo/XjJunoYAkKiHd3vPt4FQ9
-	3HuBopL/U7cb+ZjSj9h8253F9zQeE6SwjNYjFWpKzIew0TdUSVlQ6u+ppc/axBp8KdTwbpaPwgFRc
-	besZEyDTRzOyvzVI5dLQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cuiUkBUb1YVqeZy2Pa6vwLhOQUYrCKfW55aCpDhwNzA=; b=EcobMIoQuZVSMG
+	lhI+dEkKayp9L9UHYstYcT639vdsBNGP15WUxDGaQ0qdhPeHROSt+8n7UeuOErQ2csNLV9QP7VwRv
+	uawFStpcF2yk2Sw//N6AHuIhWv5bfDmqchtD7ivZ0XeQuJ9zTFsQLM6BrWw2hRZ8c1ERgxNEOk3sq
+	ymDUvDX5bcBbvvK52CPDXNyYl1wX9mMoCDejCCrx+f+80mrMnVtFEvu7t5U+VvFH8uEayZyYC0Mbc
+	zkBZX1lTlq+aaHVPu0pVCEnM9CMrga1QLhbQNpvLvj6fQFArwSNEA4Oa1wxV16XQLqUMERYq38K4h
+	sVh4uRzFtT7Gh/I2iABw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uexpA-00000007qJ7-39hG;
-	Thu, 24 Jul 2025 15:25:36 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueucw-00000007NkL-26yR;
-	Thu, 24 Jul 2025 12:00:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=0sHiDwJliauha+2ZqYLG22+5Mn4RxXcnn7wzkYD5rxw=; b=R
-	SV9t1fr1yKy0AfQU48621iWwaFqxmsJwJmlGIA0XrCTF3nSF02C2a9iUpJJC0Fo6
-	Rj/IMsWnqp01xaZi1+38bno/9mCEO2+TD6/kYtcmG44XYKnuRzK+ydw4Zc7hgHB1
-	mNXUkAzZ3IuoLYUrMF9B4xyu73BBQ6h1Tq6Z1dtHdY=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-106 (Coremail) ; Thu, 24 Jul 2025 20:00:05 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Thu, 24 Jul 2025 20:00:05 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: dmitry.baryshkov@oss.qualcomm.com, heiko@sntech.de
-Subject: Re:[PATCH v5 00/10] Add support for RK3588 DisplayPort Controller
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20250519(9504565a)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <20250716100440.816351-1-andyshrk@163.com>
-References: <20250716100440.816351-1-andyshrk@163.com>
-X-NTES-SC: AL_Qu2eAf+et0wr4ymQZekfmUkTh+o2Xca5uf0j3YBWOZh+jCDp+QI/WUd7PHfV+c6FAj2WqyCvXhFv2v9ITLdpdJIwy+P6kRHwohgDB5b8O/wqyA==
+	id 1uezNg-0000000837o-1YFS;
+	Thu, 24 Jul 2025 17:05:20 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uewyt-00000007l1F-1upd;
+	Thu, 24 Jul 2025 14:31:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1753367493;
+	bh=u9PdAYuALXEVozae3RfJMx3RFx6T5Oe/vgBOyHiZLK8=;
+	h=From:Date:Subject:To:Cc:From;
+	b=lSMuodqp7YZ23b38WJ2oV1WBi/fZCKhs4ma5VVLSiqYHgwSS0IYRYWhNg8xEu9vKv
+	 nT0U1beQPVNKE2vHcuzK7w63mbpITTrT9m7Isp1RE57o00oCk0yx9uslrBaYeStGYo
+	 tmBQSgqbR6UuoQXt3xiQIbALojBr6qlGBmrWH1U1ixxfRqWuo+8tIjqmyPeXKuxUrr
+	 ZlriQmuVFgYsImJ5jAA9v11QpPyZvsGDSg5hlaUeWCq5QZQNngzZZO9XFYAClYFVjA
+	 RD0uW4jl68BclIwhFNNsRD09gw0p9yySbMl9ND/InXNzt28GWYtiuW/QcBQ7Api17G
+	 OsQ7a+70z1xvw==
+Received: from jupiter.universe (dyndsl-091-248-210-114.ewe-ip-backbone.de [91.248.210.114])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5C15917E0B72;
+	Thu, 24 Jul 2025 16:31:33 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 07205480039; Thu, 24 Jul 2025 16:31:33 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Thu, 24 Jul 2025 16:31:25 +0200
+Subject: [PATCH] arm64: dts: rockchip: use MAC TX delay for ROCK 4D
 MIME-Version: 1.0
-Message-ID: <3eeb9150.90fb.1983c4e1163.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: aigvCgD3_1hGIIJoZ_QFAA--.53340W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEhaUXmiCGCWvpgACsS
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Message-Id: <20250724-rk3576-rock4d-phy-timings-v1-1-1cdce2b4aca4@kernel.org>
+X-B4-Tracking: v=1; b=H4sIALxDgmgC/x3MTQ5AMBBA4avIrE1C1U9cRSzaGkxEyVSEiLtrL
+ L/Few8EEqYAbfKA0MmBNx+Rpwm42fiJkIdoUJkqs1pplKUo6wplc4secJ9vPHhlPwWsrCarrWn
+ U6CD2u9DI1//u+vf9AMmpQXtrAAAA
+X-Change-ID: 20250724-rk3576-rock4d-phy-timings-6b4eb4ba82fc
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Andrew Lunn <andrew@lunn.ch>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2874; i=sre@kernel.org;
+ h=from:subject:message-id; bh=u9PdAYuALXEVozae3RfJMx3RFx6T5Oe/vgBOyHiZLK8=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGiCQ8ROUfuRfo4mNRUGEaWZbqk0Wkbt8RBEL
+ w3/ULol4z1cW4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJogkPEAAoJENju1/PI
+ O/qaMSUP/13LhvhKXd0+OszgpGriuOkZE/79bCvrU1METdH/ofIq1UZMuht+thZw7M2dZejhYhB
+ LNgFfxK3ci+Ffmrt+Wl+m3ZG3fZ4itWPPRtmbS2Lpy3XZk9zsjw4TBZmwoELGT2A7RwQFC+iINr
+ gJMEHVDY5UlsnyonFSt8qu5Cy0vymNH+FqIDypFTP6uA6EX6PbpF17QqGlfGCrp2TppxBBKL8X1
+ sb9AFtoGFfrBUHwxVvCVPepWzOQdrS3CUHZ5oktAIS+eK6wO2fZoxHKPYwcFS+TxaN1RcJnM5kA
+ +M4FbuhevnUybNLdvxvoFevajz5bXo9J9PajrIlGnwXI3sPnVUioeymlPI9q7LLOhXAKMMIyVN2
+ kPMyjqTTW8Onfp4akskSaC0mNSNBPmvvvxvFjVdyPf7gJOGrEMuuA4ur9xUxObr4eQrtAuwoCBS
+ z/GMx1hWtvPnRZxVpeJXU6ZUNSwQYLyxhnZ/42vKgJjD4NQKzNgsTmldR9w5eoJAJmtZmktunQz
+ vfcT1zXSPNC3EuraiEKcS3p1RxUwnJlyCbgOiHhYyNBHmGwRCzeF+4toNmA+YfDRY5SWEcgfbel
+ OyF07/JiK8f7u31M2BgdHFbqhXdiHMHMEzHBae8QepHDNONnUWn5P1QbyoQAyxNcykXPVBUmjrl
+ GewoN3r2NJh5VXpayUnctgQ==
+X-Developer-Key: i=sre@kernel.org; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_050046_912682_F3DA0A4F 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20250724_073135_677905_FF9C2B3D 
+X-CRM114-Status: GOOD (  20.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,123 +91,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+According to the Ethernet controller device tree binding "rgmii-id"
+means, that the PCB does not have extra long lines to add the required
+delays. This is indeed the case for the ROCK 4D.
 
-Hello Dmitry,
-    Could you please continue to review this patch series at your convenience?
-    Thank you!
+The problem is, that the Rockchip MAC Linux driver interprets the
+interface type differently and abuses the information to configure
+RX and TX delays in the MAC using (vendor) properties 'rx_delay' and
+'tx_delay'.
 
-At 2025-07-16 18:04:27, "Andy Yan" <andyshrk@163.com> wrote:
->From: Andy Yan <andy.yan@rock-chips.com>
->
->
->There are two DW DPTX based DisplayPort Controller on rk3588 which
->are compliant with the DisplayPort Specification Version 1.4 with
->the following features:
->
->* DisplayPort 1.4a
->* Main Link: 1/2/4 lanes
->* Main Link Support 1.62Gbps, 2.7Gbps, 5.4Gbps and 8.1Gbps
->* AUX channel 1Mbps
->* Single Stream Transport(SST)
->* Multistream Transport (MST)
->* Type-C support (alternate mode)
->* HDCP 2.2, HDCP 1.3
->* Supports up to 8/10 bits per color component
->* Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
->* Pixel clock up to 594MHz
->* I2S, SPDIF audio interface
->
->The current version of this patch series only supports basic display outputs.
->I conducted tests with DP0 in 1080p and 4K@60 YCbCr4:2:0 modes; the ALT/Type-C
->mode was tested on Rock 5B, DP1 was tested on Rock 5 ITX by Stephen and Piotr.
->HDCP and audio features remain unimplemented.
->For RK3588, it's only support SST, while in the upcoming RK3576, it can support
->MST output.
->
->
->Changes in v5:
->- Use drm_dp_read_sink_count_cap instead of the private implementation.
->- Add MAINTAINERS entry.
->- Link to v4: https://lore.kernel.org/linux-rockchip/20250619063900.700491-1-andyshrk@163.com/
->
->Changes in v4:
->- Drop unnecessary header files
->- Switch to devm_drm_bridge_alloc
->- Drop unused function
->- Add platform_set_drvdata
->- Link to v3: https://lore.kernel.org/linux-rockchip/20250403033748.245007-1-andyshrk@163.com/
->
->Changes in v3:
->- Rebase on drm-misc-next
->- Switch to common helpers to power up/down dp link
->- Only pass parameters to phy that should be set
->- First introduced in this version.
->- First introduced in this version.
->- Add RA620 into bridge chain.
->- Link to v2: https://lore.kernel.org/linux-rockchip/20250312104214.525242-1-andyshrk@163.com/
->
->Changes in v2:
->- Link to V1: https://lore.kernel.org/linux-rockchip/20250223113036.74252-1-andyshrk@163.com/
->- Fix a character encoding issue
->- Fix compile error when build as module
->- Add phy init
->- Only use one dw_dp_link_train_set
->- inline dw_dp_phy_update_vs_emph
->- Use dp_sdp
->- Check return value of drm_modeset_lock
->- Merge code in atomic_pre_enable/mode_fixup to atomic_check
->- Return NULL if can't find a supported output format
->- Fix max_link_rate from plat_data
->- no include uapi path
->- switch to drmm_encoder_init
->- Sort in alphabetical order
->
->Andy Yan (10):
->  dt-bindings: display: rockchip: Add schema for RK3588 DPTX Controller
->  drm/bridge: synopsys: Add DW DPTX Controller support library
->  drm/rockchip: Add RK3588 DPTX output support
->  MAINTAINERS: Add entry for DW DPTX Controller bridge
->  dt-bindings: display: simple-bridge: Add ra620 compatible
->  drm/birdge: simple-bridge: Add support for radxa ra620
->  arm64: dts: rockchip: Add DP0 for rk3588
->  arm64: dts: rockchip: Add DP1 for rk3588
->  arm64: dts: rockchip: Enable DisplayPort for rk3588s Cool Pi 4B
->  arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX
->
-> .../display/bridge/simple-bridge.yaml         |    1 +
-> .../display/rockchip/rockchip,dw-dp.yaml      |  150 ++
-> MAINTAINERS                                   |    8 +
-> arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   30 +
-> .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |   30 +
-> .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |   59 +
-> .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   37 +
-> drivers/gpu/drm/bridge/simple-bridge.c        |    5 +
-> drivers/gpu/drm/bridge/synopsys/Kconfig       |    7 +
-> drivers/gpu/drm/bridge/synopsys/Makefile      |    1 +
-> drivers/gpu/drm/bridge/synopsys/dw-dp.c       | 2044 +++++++++++++++++
-> drivers/gpu/drm/rockchip/Kconfig              |    9 +
-> drivers/gpu/drm/rockchip/Makefile             |    1 +
-> drivers/gpu/drm/rockchip/dw_dp-rockchip.c     |  150 ++
-> drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |    1 +
-> drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |    1 +
-> include/drm/bridge/dw_dp.h                    |   20 +
-> 17 files changed, 2554 insertions(+)
-> create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
-> create mode 100644 drivers/gpu/drm/bridge/synopsys/dw-dp.c
-> create mode 100644 drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-> create mode 100644 include/drm/bridge/dw_dp.h
->
->-- 
->2.43.0
->
->base-commit: 6085a45a069d2aeab6bb3e5f3fdd32e259703106
->branch: rk3588-dp-upstream-v5
+When Detlev Casanova upstreamed the ROCK 4D device tree, he used the
+correct description for the board ("rgmii-id"). This results in no delays
+being configured in the MAC. At the same time the PHY will provide
+some delays.
+
+This works to some degree, but is not a stable configuration. All five
+ROCK 4D production boards, which have recently been added to the Collabora
+LAVA lab for CI purposes have trouble with data not getting through
+after a connection has been established.
+
+Using the same delay setup as the vendor device tree fixes the
+functionality (at the cost of not properly following the DT binding).
+As we cannot fix the driver behavior for RK3576 (some other boards
+already depend on this), let's update the ROCK 4D DT instead.
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+There is an additional problem, that the link does not come up in the
+first place. This has been handled by the recently merged (and less
+questionable) DT changes [0] combined with a PHY driver patch to trigger
+a PHY reset after the clock has been enabled [1] (I will send a new
+version of that patch after this one). Stable network support on the
+ROCK 4D requires all patches.
+
+[0] https://lore.kernel.org/linux-rockchip/20250704-rk3576-rock4d-phy-handling-fixes-v1-1-1d64130c4139@kernel.org/
+[1] https://lore.kernel.org/netdev/20250704-phy-realtek-clock-fix-v1-1-63b33d204537@kernel.org/
+---
+ arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+index 0388d72076bf79ee4f20ac1d3bc04fe1859f857b..f105ed675d3671e93916c830a9a17dc240ca5fda 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+@@ -237,7 +237,7 @@ &cpu_l3 {
+ &gmac0 {
+ 	clock_in_out = "output";
+ 	phy-handle = <&rgmii_phy0>;
+-	phy-mode = "rgmii-id";
++	phy-mode = "rgmii-rxid";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&eth0m0_miim
+ 		     &eth0m0_tx_bus2
+@@ -246,6 +246,8 @@ &eth0m0_rgmii_clk
+ 		     &eth0m0_rgmii_bus
+ 		     &ethm0_clk0_25m_out>;
+ 	status = "okay";
++	tx_delay = <0x20>;
++	rx_delay = <0x00>;
+ };
+ 
+ &gpu {
+
+---
+base-commit: e05818ef75bee755fc56811cb54febf4174d7cf2
+change-id: 20250724-rk3576-rock4d-phy-timings-6b4eb4ba82fc
+
+Best regards,
+-- 
+Sebastian Reichel <sre@kernel.org>
+
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
