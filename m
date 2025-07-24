@@ -4,57 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4C3CC83F26
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jul 2025 17:19:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 203A4C87FCF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jul 2025 18:36:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lSNllXOVwvA8EFMc17XKVWjBJcJ6bo8ffHBLM0hzfFQ=; b=2FLvOqeSsqVS7x
-	6zKpX8cp0HxWRg1PiU8DN39Ck+e1XrIwCs4F4EZAn1QXBs7pKBDweMDFtZPKD8Zju7+oYTlgQsAaJ
-	MKb8O9AN3R7UjB+1ybvtVJM24wJkAlES5g46iCDN1rfCCDCQp5fZ8eGYHAY/0Mh6HzhgtPlOdc/Xt
-	PXAlSNchB1WKfyiFAXb358gTT8HThhhCZTVA8x2N9cAtmy2d61pXLbhF1m9gMlP9+FiFW61QLaC0j
-	kz9rzjvGe1TTSPcES6B7p++ksnXzgoUo6+iGB9cIqfBe955gYiRyDIjhP320SiMi43KGBatiqipqt
-	NMT1/UFXxjHg5NG07Siw==;
+	List-Owner; bh=pEfzmo4vBCHGVsEOs6G35fU+KDMIzMXfgfBV7CTuFYU=; b=gQWgwhDLTcI6H1
+	3v1yhGAP3KFTnbUmFHU4jDUK6FJ2vKznIIceGMJi0YCeF/glsAou//jQzLEypKwOPANYZj7tIttOD
+	WkefyLMiVPF0lwGPl0DnUjWburNcBNcoSm0SWxILE3c2izW0rQpUsCTNC3dBxMsiP7nTora9EHfXp
+	EJja2OnJaYZRKmcd8t7BmjxBRgxUjCWwHRnvtSSF7vjJK86Jh7lrphEToihVspYFRMWf7CSNH1E02
+	U1HrVxe/YAsS3xJw9IoLQxDXGWb34uE6vAhHtQTjDSW/j2QiLKXlE6MANyK1vZUcytLLbiJxVmtn9
+	4wNjl1ZeKxwqZ5ZzLPHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uezba-000000087US-1aDB;
-	Thu, 24 Jul 2025 17:19:42 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1uf0oB-00000008DwK-3iMf;
+	Thu, 24 Jul 2025 18:36:47 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ueyE5-00000007vja-1OrP;
-	Thu, 24 Jul 2025 15:51:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=841zC2Csr85cTavsucPR9yszjss8BCSvwiJmornsOZ4=; b=dipFsxOLF+O/7PNONN9fA+tmfI
-	r0/k1NhJR56ETFx7iQNjhzYFKwuZY70M8OWlq8vE4SVINnqQfqQK3xeRjp695GEIjkT69sMhR0ljG
-	baoKhaI4VDTne5f/s6cXGs0jQ+e2ANtioX1VshDhrut4dAfhOOWfqFEQNebN1s+aQQdw=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1ueyE0-002mMX-Op; Thu, 24 Jul 2025 17:51:16 +0200
-Date: Thu, 24 Jul 2025 17:51:16 +0200
-From: Andrew Lunn <andrew@lunn.ch>
+	id 1uf0V7-00000008Bxp-0FBh;
+	Thu, 24 Jul 2025 18:17:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=pEENey2w1cevs1tsnGhBook0OChKHoGcDIcOjH49bFg=; b=avBZvZL1MdJUmnRVPUQVLk5c1y
+	WnCZeQ5XDg46LFMptIFRUSvqaHiOB7dg+AaSfB13F6iJUMFVLVFcsRvTnpXOk9+dOXeAMvMURNeKW
+	rN0QXkDD7Smay2gdCecIvRSTA4a2fW+VCRcXjXZKF+fO4LA3Mc5BuQYDhfUesfazbL4FyD1feGoaZ
+	GNUzgGtt6aa4+byLy9PEhgHifFi8lgmNg+OMyhzzSpzl8SAQcc4JI3YC8GPD+S3az5BWMAL/s9HIc
+	C3wGAeGY80Aia4gni0S4mmJlxczAQHR3J+7V7jdCO0ZYYRJ3QTp+dGcQ7xor+o2vyuGeY54I6Y1lr
+	p3k5STpA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:59298)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1uf0Uy-0003f4-0Q;
+	Thu, 24 Jul 2025 19:16:56 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1uf0Uv-0000ww-2a;
+	Thu, 24 Jul 2025 19:16:53 +0100
+Date: Thu, 24 Jul 2025 19:16:53 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew@lunn.ch>,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
 	kernel@collabora.com
 Subject: Re: [PATCH] arm64: dts: rockchip: use MAC TX delay for ROCK 4D
-Message-ID: <f22243f5-759a-4ff2-8d14-6edb49d87c52@lunn.ch>
+Message-ID: <aIJ4lZgfTiNmHaXF@shell.armlinux.org.uk>
 References: <20250724-rk3576-rock4d-phy-timings-v1-1-1cdce2b4aca4@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20250724-rk3576-rock4d-phy-timings-v1-1-1cdce2b4aca4@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_085121_381624_358410A8 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20250724_111705_097876_31268076 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,34 +82,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
->  &gmac0 {
->  	clock_in_out = "output";
->  	phy-handle = <&rgmii_phy0>;
-> -	phy-mode = "rgmii-id";
-> +	phy-mode = "rgmii-rxid";
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&eth0m0_miim
->  		     &eth0m0_tx_bus2
-> @@ -246,6 +246,8 @@ &eth0m0_rgmii_clk
->  		     &eth0m0_rgmii_bus
->  		     &ethm0_clk0_25m_out>;
->  	status = "okay";
-> +	tx_delay = <0x20>;
-> +	rx_delay = <0x00>;
+On Thu, Jul 24, 2025 at 04:31:25PM +0200, Sebastian Reichel wrote:
+> According to the Ethernet controller device tree binding "rgmii-id"
+> means, that the PCB does not have extra long lines to add the required
+> delays. This is indeed the case for the ROCK 4D.
+> 
+> The problem is, that the Rockchip MAC Linux driver interprets the
+> interface type differently and abuses the information to configure
+> RX and TX delays in the MAC using (vendor) properties 'rx_delay' and
+> 'tx_delay'.
+> 
+> When Detlev Casanova upstreamed the ROCK 4D device tree, he used the
+> correct description for the board ("rgmii-id"). This results in no delays
+> being configured in the MAC. At the same time the PHY will provide
+> some delays.
 
-What does 0x20 mean? Is it less than 2ns, or greater than 2ns?
+So why can't the MAC be fixed to conform to the requirements that are
+well documented for RGMII?
 
-Have you tried "rgmii-id" and small values for tx_delay? If the
-hardware needs 2.1ns, for example, the MAC could add 0.1ns and the PHY
-adds the default 2ns. That would allow you to conform to the DT
-binding.
-
-What PHY is this? Have you looked it you can control the delays the
-PHY adds? If you actually need a delay of 1.9ns, maybe the PHY can be
-configured to do this? That would also allow you to conform to the DT
-binding.
-
-	Andrew
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
