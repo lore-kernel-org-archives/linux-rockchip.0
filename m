@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 203A4C87FCF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jul 2025 18:36:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86D21C87FCA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jul 2025 21:43:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pEfzmo4vBCHGVsEOs6G35fU+KDMIzMXfgfBV7CTuFYU=; b=gQWgwhDLTcI6H1
-	3v1yhGAP3KFTnbUmFHU4jDUK6FJ2vKznIIceGMJi0YCeF/glsAou//jQzLEypKwOPANYZj7tIttOD
-	WkefyLMiVPF0lwGPl0DnUjWburNcBNcoSm0SWxILE3c2izW0rQpUsCTNC3dBxMsiP7nTora9EHfXp
-	EJja2OnJaYZRKmcd8t7BmjxBRgxUjCWwHRnvtSSF7vjJK86Jh7lrphEToihVspYFRMWf7CSNH1E02
-	U1HrVxe/YAsS3xJw9IoLQxDXGWb34uE6vAhHtQTjDSW/j2QiLKXlE6MANyK1vZUcytLLbiJxVmtn9
-	4wNjl1ZeKxwqZ5ZzLPHQ==;
+	List-Owner; bh=DLqTYDMlFrGw5csGcwozMmCyfXGZ2Mjc0VTY88j3VT4=; b=nSPXlZeKVHIMK5
+	TWGJa/oISa166jn8TvVjzuTZQ48bw2HYSmKrfLV/KErG6G425w58PP69T8H8GRHv16Xd2mgl7Gfv1
+	jFT20kdPHIUGh3oJsMqCPMZnxerqOqyT59okgqFr/IOnk3ISo+hPgBWwlWnTJS33y0AtDqnLMcZJv
+	tRZ6HN/bsiXtSapMhjOrxH78ass0mDXsZ+ApgcmXvWCSXth4m/IKBramr8Hwr583iJTNm/JMht+DY
+	dDZI60GOAisXGOA5KKcDwHJpjHUc+CVS2iNuTOrKI4aaDy/Roru6iDt1sTOv28OEvpX3l/4uFdBmV
+	k/rMBnZ8j2kp9muoU/rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uf0oB-00000008DwK-3iMf;
-	Thu, 24 Jul 2025 18:36:47 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1uf3iI-00000008WSJ-47CW;
+	Thu, 24 Jul 2025 21:42:54 +0000
+Received: from chumsalmon.baetis.net ([2001:19f0:5:5b58:5400:5ff:fe17:97e8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uf0V7-00000008Bxp-0FBh;
-	Thu, 24 Jul 2025 18:17:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=pEENey2w1cevs1tsnGhBook0OChKHoGcDIcOjH49bFg=; b=avBZvZL1MdJUmnRVPUQVLk5c1y
-	WnCZeQ5XDg46LFMptIFRUSvqaHiOB7dg+AaSfB13F6iJUMFVLVFcsRvTnpXOk9+dOXeAMvMURNeKW
-	rN0QXkDD7Smay2gdCecIvRSTA4a2fW+VCRcXjXZKF+fO4LA3Mc5BuQYDhfUesfazbL4FyD1feGoaZ
-	GNUzgGtt6aa4+byLy9PEhgHifFi8lgmNg+OMyhzzSpzl8SAQcc4JI3YC8GPD+S3az5BWMAL/s9HIc
-	C3wGAeGY80Aia4gni0S4mmJlxczAQHR3J+7V7jdCO0ZYYRJ3QTp+dGcQ7xor+o2vyuGeY54I6Y1lr
-	p3k5STpA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:59298)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1uf0Uy-0003f4-0Q;
-	Thu, 24 Jul 2025 19:16:56 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1uf0Uv-0000ww-2a;
-	Thu, 24 Jul 2025 19:16:53 +0100
-Date: Thu, 24 Jul 2025 19:16:53 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew@lunn.ch>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH] arm64: dts: rockchip: use MAC TX delay for ROCK 4D
-Message-ID: <aIJ4lZgfTiNmHaXF@shell.armlinux.org.uk>
-References: <20250724-rk3576-rock4d-phy-timings-v1-1-1cdce2b4aca4@kernel.org>
+	id 1uf3dm-00000008W4o-2rnS;
+	Thu, 24 Jul 2025 21:38:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tahomasoft.com;
+	s=default; t=1753393092;
+	bh=WmdTK/AB2VM5/OZjks9WgJ5l/8tXDjMaW1u8BvINtFg=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=HvvIfrmYoYlH9yoieEQofHj7TsHjb8v4HtFBh30ZiegwSbYbnIBKvVYwopvjAnSiZ
+	 dbpDkM6aFYhodRsaLFJT3BRaPlB3l/mKsFaECpNTa/s3FTd+jmQKohV0SNE2Jmzj01
+	 AghKNwLQxA2HXfVX1aUzG2N+NdW8CIq8CTMOsRnfs1TQu+oeYzniGXrFluNOMVfAvC
+	 b/hCfw95U/kpPuAY7DxRui00LzFVfIgRQIw6/8og7vZjus2TL81vGWHJOIuFZiPzXP
+	 J47x0tNmllcJcLYrhivFxQ7vgsGG3eyiKzXGXaptMBCL4CR9hLmas6aVbn1eAWL5SB
+	 P2RgvKy0212lQ==
+Received: from localhost (unknown [IPv6:2600:4040:50b7:b604:ee41:bd43:23a9:712b])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by chumsalmon.baetis.net (Postfix) with ESMTPSA id B61F927E484;
+	Thu, 24 Jul 2025 21:38:12 +0000 (UTC)
+From: Erik Beck <xunil@tahomasoft.com>
+Date: Thu, 24 Jul 2025 17:37:58 -0400
+Subject: [PATCH v3 1/2] dt-bindings: arm: rockchip: add
+ LinkStar-H68k-1432v1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250724-rk3576-rock4d-phy-timings-v1-1-1cdce2b4aca4@kernel.org>
+Message-Id: <20250724-linkstar-h68k-patchv3-v3-1-b9f87b7306e5@tahomasoft.com>
+References: <20250724-linkstar-h68k-patchv3-v3-0-b9f87b7306e5@tahomasoft.com>
+In-Reply-To: <20250724-linkstar-h68k-patchv3-v3-0-b9f87b7306e5@tahomasoft.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Erik Beck <xunil@tahomasoft.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1753393091; l=1069;
+ i=xunil@tahomasoft.com; s=20250724; h=from:subject:message-id;
+ bh=WmdTK/AB2VM5/OZjks9WgJ5l/8tXDjMaW1u8BvINtFg=;
+ b=2gEi+SQPPYMw9OaZLtSzmV5+H3ashzJ1sh/xmsOhkEz0UvWtQsyH2QFFrlvysBeZLVa4cJUxk
+ W1afdC/2m+FBeb+psyC50MqviraxT/XgQITDIUWG2zppp5NV3Unilu3
+X-Developer-Key: i=xunil@tahomasoft.com; a=ed25519;
+ pk=FTZVGUexvkWb4j8v0wbtm7CtJLijIAaa5x0XV72WWC0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_111705_097876_31268076 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20250724_143814_810536_44751618 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +83,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 24, 2025 at 04:31:25PM +0200, Sebastian Reichel wrote:
-> According to the Ethernet controller device tree binding "rgmii-id"
-> means, that the PCB does not have extra long lines to add the required
-> delays. This is indeed the case for the ROCK 4D.
-> 
-> The problem is, that the Rockchip MAC Linux driver interprets the
-> interface type differently and abuses the information to configure
-> RX and TX delays in the MAC using (vendor) properties 'rx_delay' and
-> 'tx_delay'.
-> 
-> When Detlev Casanova upstreamed the ROCK 4D device tree, he used the
-> correct description for the board ("rgmii-id"). This results in no delays
-> being configured in the MAC. At the same time the PHY will provide
-> some delays.
+This patch adds a section for the LinkStar-H68K-1432v1 board to
+dt-bindings.
 
-So why can't the MAC be fixed to conform to the requirements that are
-well documented for RGMII?
+The Seeed LinkStar-H68K-1432v1 is a travel router using an rk3568.
+
+Signed-off-by: Erik Beck <xunil@tahomasoft.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 5772d905f390e53b44f9093d32b869a7e0655db6..7f3904b69293f31fdd4f6080fab5ce054c1abee2 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -1109,6 +1109,11 @@ properties:
+           - const: rockchip,rk3588-toybrick-x0
+           - const: rockchip,rk3588
+ 
++      - description: Seeed LinkStar H68K-1432v1 RK3568
++        items:
++          - const: seeed,rk3568-linkstar-h68k-1432v1
++          - const: rockchip,rk3568
++
+       - description: Sinovoip RK3308 Banana Pi P2 Pro
+         items:
+           - const: sinovoip,rk3308-bpi-p2pro
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
