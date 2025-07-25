@@ -4,69 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1887C83F26
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jul 2025 02:15:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF477C87FCC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jul 2025 02:30:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VEJnJ27MO+28sPMmw3diNjL7qQTGMXlLnf6IfTt+ZMM=; b=Zc2rUvkVi8NS6L
-	E0ID5D/VBPapuSCbNH9ovtsRRKopA46NuJ1FH3pkojHr09Dz/v7yJLEAp9ghrETCePPZb4dmz9P3m
-	DvzMHggahe0X6ulcqOLjliNJRY+jJSykwXGUBGQ+1f6VRXqbYtvYBsoZq3mvGzYoJibtj2uG9jBbf
-	bcbZaeNOW/udPoav5ncJ1PO4/9XiTDCcRFmORko9TwBoM/lafgR05ZPJUah2Zj9rTLGwVAZFIGgzL
-	OF0sfIlw3T2+lViHZ6GePOrtjQg2DRhfEU3s42IOcJbOz7OI9pFpyLptmQw0AbgyQoT9Is3LCS0ex
-	MmsL9WD5ktof/48Ky4XA==;
+	List-Owner; bh=0xfVYAdbmXNEtLhQdzTfbZKvled6CPV1qLO5jGdktCo=; b=O+X03SyxlET9EV
+	P9Gu9iGY9LwkGFVV9cCAKVyK4FtlK3ONVF+LPZDigtzxGIUUkXqApiezRIVOIncviMLCoi4e6HjuA
+	zv9r4bEPsJ7zPePvy+UkUNojn+0ZBm/sVIblZaIBuDhmsKD97n6yqLelTycC3s7zEOlUKoJaqpqPQ
+	LcdL4D8gzWh5+juTXhgn0n9RDN1zD7KZdYFbx2T1bUvpwsclh8X4stoi3uHl5Vh8nN/VgzGiX+OwN
+	U5fHwRcXPhXKCtVNij2LwDblCDTny7YJ69S/haifXn9CxYE4Bog41OHoCQr51iFS6QLn7TJQ95ieG
+	f6Cx/G7GfISk8hMwxMIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uf7xs-00000008sl2-2eZB;
-	Fri, 25 Jul 2025 02:15:16 +0000
-Received: from mail-m32117.qiye.163.com ([220.197.32.117])
+	id 1uf8CK-00000008twP-0o2Q;
+	Fri, 25 Jul 2025 02:30:12 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uf7xp-00000008sjE-22PW;
-	Fri, 25 Jul 2025 02:15:15 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1d30daf98;
-	Fri, 25 Jul 2025 10:15:07 +0800 (GMT+08:00)
-Message-ID: <b0ce0d8d-4ceb-419e-a892-d39b8633aa13@rock-chips.com>
-Date: Fri, 25 Jul 2025 10:15:06 +0800
+	id 1uf89r-00000008tlV-3gPD;
+	Fri, 25 Jul 2025 02:27:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1753410460; x=1784946460;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Khfr6GJFMEPyxoF5TtbNyRQfS0y6Twazz2yM+2molDY=;
+  b=SB5tsRuWT2P4eb2jQZqakjx3RMakfz0TfVF5fAfyPv9q0+e6YiMziF+h
+   O7krGDVhtrcTAcEZy1aQfNtYDIPM4gBKdMRwMBD0tLlhN5OwTuuCNqalB
+   jPJgtgljLqKlIP7vNwqmBfkd0fPOu4phgEoX0R/dlfqHLMGfSmdnf+0QP
+   oj6N4cft1zFWzSyMWw0n6rEXG6H8DbZ96Pr7KS2u0d1Bw+JWuJyWDAbu+
+   NE7eX78mHZn2x9STHS5C+jJiWhJaZU8Kzx2lCW4nviyRujFfHGsypHmZ/
+   g2DwYzuieKOCOuuLmbr4TWKMmUVOf4x5frUHEW8PdDQ42Rcq/2Ze1Yhkn
+   g==;
+X-CSE-ConnectionGUID: i1h/c+WhSTC5CSc+siQzfw==
+X-CSE-MsgGUID: GluG7s9qRkScEh+RIzAOKg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11501"; a="43352933"
+X-IronPort-AV: E=Sophos;i="6.16,338,1744095600"; 
+   d="scan'208";a="43352933"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jul 2025 19:27:39 -0700
+X-CSE-ConnectionGUID: bLSRn50RQC6VQhsJrY0bkA==
+X-CSE-MsgGUID: qPdZrQ5FRW2cHtvxPARCvw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,338,1744095600"; 
+   d="scan'208";a="164883627"
+Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
+  by fmviesa005.fm.intel.com with ESMTP; 24 Jul 2025 19:27:33 -0700
+Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uf89i-000KzD-0K;
+	Fri, 25 Jul 2025 02:27:30 +0000
+Date: Fri, 25 Jul 2025 10:26:54 +0800
+From: kernel test robot <lkp@intel.com>
+To: Damon Ding <damon.ding@rock-chips.com>, andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org, rfoss@kernel.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+	jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com,
+	simona@ffwll.ch, jingoohan1@gmail.com, inki.dae@samsung.com,
+	sw0312.kim@samsung.com, kyungmin.park@samsung.com, krzk@kernel.org,
+	alim.akhtar@samsung.com, hjc@rock-chips.com, heiko@sntech.de,
+	andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
+	l.stach@pengutronix.de, dianders@chromium.org,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v3 08/14] drm/bridge: analogix_dp: Apply
+ drm_bridge_connector helper
+Message-ID: <202507251021.A6WmQ4di-lkp@intel.com>
+References: <20250724080304.3572457-9-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 00/14] Apply drm_bridge_connector and panel_bridge
- helper for the Analogix DP driver
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
- hjc@rock-chips.com, andy.yan@rock-chips.com,
- dmitry.baryshkov@oss.qualcomm.com, l.stach@pengutronix.de,
- dianders@chromium.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20250724080304.3572457-1-damon.ding@rock-chips.com>
- <3890785.kQq0lBPeGt@diego>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <3890785.kQq0lBPeGt@diego>
-X-HM-Tid: 0a983f5cdd0d03a3kunm18dd1a7ad70d9
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGk8YSlYYQxpJTUhCQk1PSBlWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=KMKARJPJW06jkInizHjvIBa2f9dBzLMKkAMK563pYRj3p2h0dxgKuirrWh301Xv0TuGwm0OOTALQT9/UErJ0HweSyG88BuTMnkDSZTAH9b5AoJC+/+Dzp6HROoAHvz1cWYDn25PVnk/mD/yU9OE2aag4cqZ10fbbzaXH1xMcwh4=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=DLYgWqNIFGd0r4HW5nV9IESqFa9QNfwIUAHcBOdrhMg=;
-	h=date:mime-version:subject:message-id:from;
-X-HMAIL-Slblob-Mailprops: v1_neYYFWAlZzU6u2dlJ0lhZxxW3LNr/WCm4T/Zs27CXRucL5kMTeaK3zjPaPc3+xDf0VaycF59W9UbzOeqsUypy93IvVGAp7EIBubMTc/Nt06gB9UeYFfpG7JNT+Y5puW4OW+6FkYrGV5kMDJPKhRndEU3OQhP/OI1WD0ctb7/jZaQ+vCyokORdz2Ph+0uw0sli3ZylNUMyRtRolfNPJgkc0QR8fyHosI9qk9ISzsXHYewwFeVLwmP+cPu7IpelpBm834g3VVGqhmDqG9rXq1NrA==
+Content-Disposition: inline
+In-Reply-To: <20250724080304.3572457-9-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_191514_003985_EBE55B85 
-X-CRM114-Status: UNSURE (   8.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250724_192739_985261_9F558B98 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,31 +96,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpPbiAyMDI1LzcvMjQgMjE6MTAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEFt
-IERvbm5lcnN0YWcsIDI0LiBKdWxpIDIwMjUsIDEwOjAyOjUwIE1pdHRlbGV1cm9ww6Rpc2NoZSBT
-b21tZXJ6ZWl0IHNjaHJpZWIgRGFtb24gRGluZzoKPj4gUEFUQ0ggMSBpcyBhIHNtYWxsIGZvcm1h
-dCBvcHRpbWl6YXRpb24gZm9yIHN0cnVjdCBhbmFsb2dpZF9kcF9kZXZpY2UuCj4+IFBBVENIIDIg
-aXMgdG8gcGVyZm9ybSBtb2RlIHNldHRpbmcgaW4gJmRybV9icmlkZ2VfZnVuY3MuYXRvbWljX2Vu
-YWJsZS4KPj4gUEFUQ0ggMyBpcyB0byBhcHBseSBhIGJldHRlciBBUEkgZm9yIHRoZSBlbmNvZGVy
-IGluaXRpYWxpemF0aW9uLgo+PiBQQVRDSCA0LTcgYXJlIHByZXBhcmF0aW9ucyBmb3IgYXBwbHkg
-ZHJtX2JyaWRnZV9jb25uZWN0b3IgaGVscGVyLgo+PiBQQVRDSCA4IGlzIHRvIGFwcGx5IHRoZSBk
-cm1fYnJpZGdlX2Nvbm5lY3RvciBoZWxwZXIuCj4+IFBBVENIIDktMTEgYXJlIHRvIG1vdmUgdGhl
-IHBhbmVsL2JyaWRnZSBwYXJzaW5nIHRvIHRoZSBBbmFsb2dpeCBzaWRlLgo+PiBQQVRDSCAxMi0x
-MyBhcmUgcHJlcGFyYXRpb25zIGZvciBhcHBseSBwYW5lbF9icmlkZ2UgaGVscGVyLgo+PiBQQVRD
-SCAxNCBpcyB0byBhcHBseSB0aGUgcGFuZWxfYnJpZGdlIGhlbHBlci4KPiAKPiBmb3IgZnV0dXJl
-IHJldmlzaW9ucywgcGxlYXNlIHByb3ZpZGUgYSBjaGFuZ2Vsb2cgb24gd2hhdCBjaGFuZ2VkIHNp
-bmNlCj4gdGhlIHByZXZpb3VzIHZlcnNpb24sIEkgZ3Vlc3MgaWRlYWxseSBoZXJlIGluIHRoZSBj
-b3Zlci1sZXR0ZXIuCj4gCj4gCj4gT24gbXkgcmszNTg4LXRpZ2VyLWRpc3BsYXlwb3J0LWNhcnJp
-ZXIgdGhpcyB3b3JrcyBsaWtlIGEgY2hhcm0KPiBUZXN0ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxo
-ZWlrb0BzbnRlY2guZGU+Cj4gCj4gCj4gCj4gCgpHbGFkIHRvIHNlZSB5b3VyIHJldmlldyBhbmQg
-dGVzdC4gOi0pCgpJIHdpbGwgaW5jbHVkZSB0aGUgdmVyc2lvbi10by12ZXJzaW9uIGNoYW5nZWxv
-Z3MgKHYyIC0+IHYzIGFuZCB2MyAtPiB2NCkgCmluIHRoZSBuZXh0IGl0ZXJhdGlvbi4KCkJlc3Qg
-cmVnYXJkcywKRGFtb24KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+Hi Damon,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on drm-misc/drm-misc-next]
+[also build test ERROR on next-20250724]
+[cannot apply to drm-exynos/exynos-drm-next rockchip/for-next linus/master v6.16-rc7]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Damon-Ding/drm-bridge-analogix_dp-Formalize-the-struct-analogix_dp_device/20250724-160804
+base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
+patch link:    https://lore.kernel.org/r/20250724080304.3572457-9-damon.ding%40rock-chips.com
+patch subject: [PATCH v3 08/14] drm/bridge: analogix_dp: Apply drm_bridge_connector helper
+config: x86_64-buildonly-randconfig-003-20250725 (https://download.01.org/0day-ci/archive/20250725/202507251021.A6WmQ4di-lkp@intel.com/config)
+compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250725/202507251021.A6WmQ4di-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202507251021.A6WmQ4di-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/gpu/drm/bridge/analogix/analogix_dp_core.c:1346:12: error: incompatible function pointer types initializing 'enum drm_connector_status (*)(struct drm_bridge *, struct drm_connector *)' with an expression of type 'enum drm_connector_status (struct drm_bridge *)' [-Wincompatible-function-pointer-types]
+    1346 |         .detect = analogix_dp_bridge_detect,
+         |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+
+
+vim +1346 drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+
+  1333	
+  1334	static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
+  1335		.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
+  1336		.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+  1337		.atomic_reset = drm_atomic_helper_bridge_reset,
+  1338		.atomic_pre_enable = analogix_dp_bridge_atomic_pre_enable,
+  1339		.atomic_enable = analogix_dp_bridge_atomic_enable,
+  1340		.atomic_disable = analogix_dp_bridge_atomic_disable,
+  1341		.atomic_post_disable = analogix_dp_bridge_atomic_post_disable,
+  1342		.atomic_check = analogix_dp_bridge_atomic_check,
+  1343		.attach = analogix_dp_bridge_attach,
+  1344		.get_modes = analogix_dp_bridge_get_modes,
+  1345		.edid_read = analogix_dp_bridge_edid_read,
+> 1346		.detect = analogix_dp_bridge_detect,
+  1347	};
+  1348	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
