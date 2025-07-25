@@ -4,63 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19399C87FCA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jul 2025 23:13:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E42CEC87FCA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jul 2025 23:48:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jMo59asTJjkivElFj4xsO9OlGxxJiEH/yqQhEssE3hc=; b=hasfRGC9ZPOiwL
-	nwmuw/DKa7blUi1B4f9yqpqI1xwTuIpFb/7iSaGnImTwdd9ncE4OXc5nKQabR5ktSda/JmGXuJDxK
-	827RZ9CcHcwMd3L+zZNh24XLvZXukwhC/EzCB02EH8sizi2h7rGA3yMTgyqjUncX/Kwg7jYU7veKx
-	YgS3aCz04sscPiWfs1ACll23v6omVY5AeFZuuYiikCYLQms1mmQAIBxqMW+0DDJIforxse/bKHh8X
-	2WRK0Orfqk1qBU01S2iFSrsA2RYX9el04aVSLEKXUyycox7XOq4ED0vvZOYXLKw6zAyoVqb1xLdbh
-	RmINgC29UuSzMBI/g2/g==;
+	List-Owner; bh=kbb0XkiMWu5s+XZgH9/bt+eoQsC1VM0jAv93NuWb0q0=; b=DFvfoqgXnJk0LP
+	2xkoD798+pm6VgLhfC0xYycIZvqMS01m5eFTqX6AbfpIT0uZijg58uFagY3f8VIaBtFBVq8PksrHF
+	vYxco6ddHCt4gGVEfZNRupYTZ8o+LYfDYDEWL48B88U5GPxLVQkJu1Xn7Eqqi22wQG1dtuDQatyp3
+	KV5lrS4tfzbfjg4duYjFb5lRv1ycRkdsnYpvO6JH6xwgazv29cAJyEEEE0IiCAlT4QhOColZUZnig
+	Pt4YWHycyMlOGsIjNXCM0LI6ZsplwQWwIs9efEieJ6WiWC51a0nRcN8Fh5ra9oCNF2bPtvZmbFWea
+	yuUUMi87ohYgqd7XjrEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufRbt-0000000Aq5f-4BMW;
-	Fri, 25 Jul 2025 23:13:54 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ufS9g-0000000Atiz-2tjE;
+	Fri, 25 Jul 2025 23:48:48 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufRUV-0000000ApMl-2zYg;
-	Fri, 25 Jul 2025 23:06:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EDB85601DC;
-	Fri, 25 Jul 2025 23:06:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6392AC4CEE7;
-	Fri, 25 Jul 2025 23:06:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753484773;
-	bh=8vnCCU3LPQGo53C05dFuO3MKjV+pOSMNfVK636KtS6E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=djIISh6YSRnwbypyxmMrAcPIUUF5v68Wdiwz93/UgTP6WNGlSue6F0OcCzQrZG/Zu
-	 sxV/iPajbiXLYwfkki0R/DK9I/KVRQXo0WqgVHJjKoLhQxf3hQZxLs715FLHVQBuPm
-	 crPoWpACcui6Im2dZ5mc+qrKo1XDtXvUhg9ExD8DgK+RVldhB2w6d4xkZlr3GTEvPz
-	 zmeE5b71gF1tNqmZWVZY9GykFDPmPtcjhvZFveml/6vCq7nGZE7EYsShbqNBoEULL4
-	 LzAZkEB6gHsWfNWNJRBItw2Oj7UXsWz/+xvKkNl0N387AaMtBHlfN/qcz1nncI8DnS
-	 yKgoA+adJ0F+g==
-Date: Fri, 25 Jul 2025 18:06:12 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: linux-usb@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	devicetree@vger.kernel.org, Chukun Pan <amadeus@jmu.edu.cn>,
-	Yao Zi <ziyao@disroot.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 06/11] dt-bindings: usb: dwc3: Add compatible for RK3528
-Message-ID: <175348477194.2001313.779930445119740224.robh@kernel.org>
-References: <20250723122323.2344916-1-jonas@kwiboo.se>
- <20250723122323.2344916-7-jonas@kwiboo.se>
+	id 1ufS7m-0000000AtVW-3wBf
+	for linux-rockchip@lists.infradead.org;
+	Fri, 25 Jul 2025 23:46:52 +0000
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56PKxg5q001048
+	for <linux-rockchip@lists.infradead.org>; Fri, 25 Jul 2025 23:46:50 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=qXBSNgzMClCengYCrY3ivBRG
+	Uf8cHDHLLWL7h/aBi7U=; b=Hu5O37cKi+LOw4ou7TZht2o5Iti4N/xAEKBfdnri
+	rPJ0pSuvxhfWnZzJhgd8+BsqVUCmPp5FIo4HkakQ7uvvVy8QgTc3NC2eDCGbfTkT
+	OL2YhsX6sVT7pnuMTNIHT/qzvk5+vZCvWWeCiINhxYPOXHbFcplIT7T+wO9hRQG5
+	GfCHWtfw6H/EMYm7ZDrOiWaLut5DhotLT/hiHUO0h153pKmRzvP/Otr/h6uIWNdS
+	PPhUVTR4m9tlJPXCkv8+9x6fyyaL6ut1w7yKuN2byo/itXCPNxVK1fRfi+jkcPUC
+	1pc/lZRdOcyfLERglKA3u2n5TpXCOAIw7VpHy9uVC2vnPA==
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com [209.85.219.71])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48489720j3-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Fri, 25 Jul 2025 23:46:49 +0000 (GMT)
+Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-706f8cac6edso42414576d6.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 25 Jul 2025 16:46:49 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753487209; x=1754092009;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qXBSNgzMClCengYCrY3ivBRGUf8cHDHLLWL7h/aBi7U=;
+        b=BG5OySR23D6FKuwOcRZZdeXVWaYHB3ltz8mw03KumjwymRPQ8UCVHu1a3e5e/iiP+h
+         fP5MI1odJes6Smlo8mmksE5j/INyqE5/yorIPfN5LP58u2KtTsmR5WytMY0l65OcD7HL
+         RVL2gxTD+dHAGnqCiuyeqSJD9XTzSBsI5I78U7w20d5C9UfKoQt/GHF8ezZpu/oYO6e3
+         2k7HArwk0tkGOjCm7YsL7Q+51EDWjfUg0nfpel9IRYs+4sKbY+qPyckb6RfTeh01zsQC
+         lYkfYsTdwj3/6F0T5EBLulugJws4y2Db43sMa0xHdUrYcadjEj/Tag08gRstm7WBikYQ
+         kbrg==
+X-Forwarded-Encrypted: i=1; AJvYcCVzLQ8qmbNHG4pGZSCpif9Jg5rLbFOTXVXryNynHtR1ErOgsziCRX6+E5iLWzQzIjJKryC0RTa/A0Qj1qOyWw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyGEuGnCBrxJRxBCbpYLGuh2X1xTBrndyz9mACiExcNnJ9E07Y3
+	xYx0U/RhHK6zkj+Et7KSMLo27thvh+APjUvZ6mixUNxnEujm4+k9GMW6Clkm0qfAMPT2Zff3/7L
+	3lzWePQWvuiZ/ccWUNsTT7YSoQjreD/NQCpv60TTbyxITjWNi1h9WNCZ6+oICEbpsmD9FpVXqfN
+	Q=
+X-Gm-Gg: ASbGnctLMLqB90cunVn5e9rwaafEVo8YAYtylyUq+PA3uDa04AaJkCvPyMH4dLV7Cxj
+	GqelI06nL0hoCr0+ZIdVmKKDlXvOhI51wpuPNeUCqTVtBScjFWK9UJwz3Q8Fbqxg8FDdl1bNpOu
+	hiItpwTT34IzB13dNquO6gVKuS2Jf1j9RTeiYL8yVTJT/G2Il+4UNGA7pDuz0rX6WMXVnyk+rW4
+	lFpDK0ucdlqGvhr4FNnlQaAEQSUKgdghnwAgz2P0RqpTh2LSbW8nghZRrDTVmNctKm9QKIiMcuJ
+	ahM19SImG3lPhYQIW5rEdk93YDQB9pXtiTmcDbHAYHXHGazNOiHRP/k6dTXilLih81zEghzTjyJ
+	ahnB8NiVrG5yjasqmZdfLKmn7fQ8p+B/6UJgFneiabzqL5/UndirZ
+X-Received: by 2002:ad4:5963:0:b0:702:d60b:c048 with SMTP id 6a1803df08f44-7071ff0f2cbmr58647266d6.19.1753487209116;
+        Fri, 25 Jul 2025 16:46:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFy1NIdFUiy+LkfIlb0Nij2OXe6qkzDF3xYJLssxlfhKaFVl8cSqppGR61z2kIummysPqIbXA==
+X-Received: by 2002:ad4:5963:0:b0:702:d60b:c048 with SMTP id 6a1803df08f44-7071ff0f2cbmr58646876d6.19.1753487208652;
+        Fri, 25 Jul 2025 16:46:48 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-331f40b5323sm2034501fa.37.2025.07.25.16.46.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Jul 2025 16:46:46 -0700 (PDT)
+Date: Sat, 26 Jul 2025 02:46:43 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH v5 10/10] arm64: dts: rockchip: Enable DP2HDMI for ROCK 5
+ ITX
+Message-ID: <vncck2eqkvfr7tbnuffopc5pysdct3az744lnc4xesyublfwyr@jz3hyvz3kg7g>
+References: <20250716100440.816351-1-andyshrk@163.com>
+ <20250716100440.816351-11-andyshrk@163.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250723122323.2344916-7-jonas@kwiboo.se>
+In-Reply-To: <20250716100440.816351-11-andyshrk@163.com>
+X-Proofpoint-GUID: 1_7l1gTAmvb5K3ktKEOaOjlwwkd8hXT_
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI1MDIwNCBTYWx0ZWRfXyeJrVYRQajyr
+ B+FD/gAUlrFX9VF6dNbpMfDG7u6vSShEn9dFf5nk4OUE6DMVULisyfmRp4wYwMc4NTGIbh2dqNI
+ 7BUo9lij94dlonNyIEC9BU/ASijaJg1eTjtqC7GtCqKwtaL5xbm5b3QB1ucgjrh2tCWS3iFSh7D
+ 3fc5sQqXewwewzHbdYQ954zCCrDcfk9yXEW4FwrN0Rh73sAGfiVIaHr39YiOSlL37V+kzN32J1b
+ bijg055CVCU5jOOIifiJmr1/FOO6EYc3kftMUu4H0yG14ykZI6StOBukGioAdD2iALKv0sZnYK6
+ YyzhCUEOVOA2lNtJTquuxc0gz8m6BPH96XUA8btU/HZm474cgvci8+fuCWuHIhF4+3nNKmyB6T5
+ RetN2Qm5FlvdXnSkx5pa5c2RN3vNcjuFY6RIX1C2Ait3XJ7UvHx9tnZk6vK3x93Y0eGSZ6xE
+X-Authority-Analysis: v=2.4 cv=VJjdn8PX c=1 sm=1 tr=0 ts=68841769 cx=c_pps
+ a=UgVkIMxJMSkC9lv97toC5g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=Wb1JkmetP80A:10 a=s8YR1HE3AAAA:8 a=EUspDBNiAAAA:8 a=mMkY4CccI6nGLkDSWykA:9
+ a=CjuIK1q_8ugA:10 a=1HOtulTD9v-eNWfpl4qZ:22 a=jGH_LyMDp9YhSvY-UuyI:22
+X-Proofpoint-ORIG-GUID: 1_7l1gTAmvb5K3ktKEOaOjlwwkd8hXT_
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-07-25_06,2025-07-24_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 clxscore=1015 suspectscore=0 lowpriorityscore=0
+ priorityscore=1501 spamscore=0 malwarescore=0 adultscore=0 mlxscore=0
+ bulkscore=0 phishscore=0 mlxlogscore=742 classifier=spam authscore=0
+ authtc=n/a authcc= route=outbound adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2505280000 definitions=main-2507250204
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250725_164651_095780_05149966 
+X-CRM114-Status: GOOD (  14.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,26 +124,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, heiko@sntech.de, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 23 Jul 2025 12:23:04 +0000, Jonas Karlman wrote:
-> The USB dwc3 core on Rockchip RK3528 is the same as the one already
-> described by the generic snps,dwc3 schema.
+On Wed, Jul 16, 2025 at 06:04:37PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
 > 
-> Add the compatible for the Rockchip RK3528 variant.
+> The HDMI0(Port next to Headphone Jack) is drived by DP1 on rk3588
+> via RA620(a dp2hdmi converter).
 > 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> Add related dt nodes to enable it.
+> 
+> Note: ROCKCHIP_VOP2_EP_DP1 is defined as 11 in dt-binding header,
+> but it will trigger a dtc warning like "graph node unit address
+> error, expected "b"" if we use it directly after endpoint, so we
+> use "b" instead here.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> 
 > ---
->  Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml | 3 +++
->  1 file changed, 3 insertions(+)
+> 
+> (no changes since v3)
 > 
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 
+
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
