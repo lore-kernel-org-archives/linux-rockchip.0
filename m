@@ -4,163 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5849C87FCA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jul 2025 12:29:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A1D6C87FCE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jul 2025 15:23:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xzU9HA/jFIKiuBm+HU8uoQQvcyxg2Iy9VdLnt9+5Tyg=; b=Pn/+Wi6ZlIwaq1mfveeFwK8A+O
-	2/VUGXo01OBWT6p2aUyui694WDyT7rpn+phPSNRYVV9avqecme89Zlwh4uvLaNPFkAuJG2Oyi1IXc
-	lYv45mR6ZYr0eCr/ctYEBvq5ABeujNpvzR/J15Mc+1xzHuRlEdr70phKKBmfkdkTGfcl8DKIx3qWU
-	gByqnRiFyHv+BTAddYIw2p/R2BKnunoaw5WAWuGoVJMwsVumK775+7lkyoEx4SAdyNlvnyHwmE5cv
-	ZzG69ut9TiEmbP+vUaJC5b2QPxLOuua2Sp26b5YYF4xpdYQI9OyFDDyKLy0WRweYgHZKcUWhQ5dJS
-	s6lrULdQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+Tqhb7UtadTlao/D1KHmeYt/31mULlM9HSadSPUlgsg=; b=ZkM8SKmu8swhYY
+	LWMOA1fxmhdt7A20H/4Sa6WXSf582ZJqy6IOuYwByVtA36iaj/Em5NqMQ/iELSD+I31VoICodhod5
+	bTZkmb27P+f20y3mZ38j/yAK16PV+ZcI3yHGwJLmsgNsG1Z1zTpqKWk1d7eplC/7EXwe45GEc8F1r
+	AM5YwFW00Zt7PBzYgraQpR/3OmeqYPtXr7xctGbhmTVBNf5DRSnMY2enXW0gbXoiU34CkN1lJnuVB
+	9b08XCch3WjVGqu/P7eikrMpleLonnX27eiRsImapdtT4QI/CGdhQZZ0CX/a7+n7q57EC4WS3Z78h
+	2Wr4sT2NLOUVzkzQZNqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufHYO-00000009pQZ-38uq;
-	Fri, 25 Jul 2025 12:29:36 +0000
-Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
+	id 1ufKGI-0000000A5qd-11rH;
+	Fri, 25 Jul 2025 15:23:06 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufHYB-00000009pNF-1F6W;
-	Fri, 25 Jul 2025 12:29:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=HZyQkYOOTfn8BpNW784jBWx0Zl96BJzyjwgE8Zea03CifiFrM1zE9TLlAYOVLcIgDyovBmx7e2rXcZxKU/mtnJEnQoazWgdBjT/1c85QbJJbWKW5v72apz8+WmOFAvu3n9wdqiolzgxilXLcphfvFhzEU25PUBLp+/QUaUIW+lxvNU1RpxGhwAPOG+StrGXmoc6+0ZycqJBqGrlw3fuyIvMH/S/IcfqdsYL0rd4EqC4NUtow83Hmgm/MOd65JdP+24R+WJSGlwgXetNLzgb5rL0iWD8lXE4/v9TO2hcsFI17U4Un1VO5pXhherUfBHqsn7WVbrOZj8Ra+UdC9PH/kQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mO1UNy8vi1mO9ds9anWXtvrzcU7wpwwaqlPc84srTFs=;
- b=qY29Lgpmen3fUdHZzbt5GNDFXDCZue5PTHvgELt+BeuMGUa9EdAMob4ksf7XFGMEM5+Oa0JzG1/A1+j5m4DhJPxlN2nK4F7zbSWaLHLtaI9Cf/xAVSJKsq/SPE8WO2/yvi3YWEuaX3/XhO/RGPrB/2nLsHXRCA1cb9o/dNSo9RH+2Ujp/osp0/ZLrSCTqBt/eQdVhTgvgcJWKtHMRfaJfdoeOX8Lm/GQOuMy+QGfeBpKtS+TpNtF4S6FWYOUd5w4e9Ux7c3ZtuHbae3RP//dzEd9lcP10ojwOIy5J8JLn/d445AmUI6Rs4rqCQzVKOzgV9+bhRWjuI20lohzJWs8bQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mO1UNy8vi1mO9ds9anWXtvrzcU7wpwwaqlPc84srTFs=;
- b=elK6DmuER9Hhk4lkgv0SMgrNpSNBFEE3y478PUdqFlmJNwxHnt1T8aAWU2zbD7kc4AxsvWUhtvUXIqdVjMv1JqGTbyA+SmYze43K/yGyT4POYXLp/3rUHM29TI0+lIJpjPPU+VcXyZf9su8mHsThVYyESsXVSwpTrr5vHVfWkK4=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by VI2PR04MB10147.eurprd04.prod.outlook.com (2603:10a6:800:21e::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8964.22; Fri, 25 Jul
- 2025 12:29:14 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::5ee:7297:93b4:a8d1]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::5ee:7297:93b4:a8d1%4]) with mapi id 15.20.8964.023; Fri, 25 Jul 2025
- 12:29:14 +0000
-Message-ID: <0582b7bc-e5b2-4b5e-821e-8d2c4301579f@cherry.de>
-Date: Fri, 25 Jul 2025 14:29:12 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: add RK3588 DP carrier from
- Theobroma Systems
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- damon.ding@rock-chips.com, Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20250723190904.37792-1-heiko@sntech.de>
- <20250723190904.37792-3-heiko@sntech.de>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20250723190904.37792-3-heiko@sntech.de>
-X-ClientProxiedBy: FR3P281CA0126.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:94::16) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
+	id 1ufKGG-0000000A5oc-00f6
+	for linux-rockchip@lists.infradead.org;
+	Fri, 25 Jul 2025 15:23:05 +0000
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56PAXssC001302
+	for <linux-rockchip@lists.infradead.org>; Fri, 25 Jul 2025 15:23:02 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=eTjMO6ThCzwsibq1lFHZiZoZ
+	coN7Cs449c4GQQHgyao=; b=ATzB3/mcmVV/zkia8P/vSXPv93q3nC5wTBFv+1r/
+	5uWPW6GrxvL87y7HUByOa2Ttbk4hL7YBaSfy+DxR6b6lUfj0hX5m1kZvmc5AvxO0
+	AMpk2yriLI+GTqVwMWwKvaLrL9SlYgnNF8fnqP85/fwYXqQM2c9y+m0xSD27g1mf
+	qn4ZuW6BvJd25PDtjqTvkXpYWx1twdBna5bVHpx/j7zs+shz3AksF8RMdWsOFnFS
+	YA5sstgBn4/XGQR4x7ZwuLRDg/bKcxtdrpcybdIgzboAZ3w17aki59yy5mP/qni2
+	EalIrVPMU2SqA1ni43Fo7HJRtYrOo/20XSu3gg/hmb1jNw==
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4848970sp3-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Fri, 25 Jul 2025 15:23:01 +0000 (GMT)
+Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-4ab44642abeso42893871cf.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 25 Jul 2025 08:23:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753456981; x=1754061781;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eTjMO6ThCzwsibq1lFHZiZoZcoN7Cs449c4GQQHgyao=;
+        b=xVeeYdUZSXKjgZ/qXhEZYfA/9rFWm5WqE1ex3I8AeFwRm5G0GM+gZxICcjYZ0BRQ9H
+         7skXqjv0z1ZnE9h9KeCYT/ge2idV7ozW6CnHFmtVY2YONyOQFiGBJ19n2ISjKs8P4Kcr
+         WEh0Rqj+pHP10DZyP7cwsHq9Kly9IYZiUZwpzjfcam365vdvgt4l2H4MnJHcWxw8lru2
+         r2jcPlp21VZIX3Amye59MLEbqqnUseYwrauCo922qRKjmvV+d9ivjR6bmaWv1RNG7zxJ
+         c+YEZMaJHB2rTHXIyX1TulJd8TzwosYq049tGrHKTQomCBrSwjgdgKCSQFJPUo68rsV+
+         M7UQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXn1atuvbmT8xQcQGy11/jIntI1/IoCLSavspots9MdZfGZ0FFKuJeCskrIUngqe6r+2lQwBULnIrvKDCGrWQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw5JK1f5OURkHyj98aGKRf28FgILZjvBD++YBWplxO5MFUdkKsa
+	7bbQUuea2TT5Ivb9r7idVx+PZqcqz+/xD/AUoXJMAg66lKPuxK8ICfaru10V8cMI5whEn/8JNSP
+	iCqT0hucF4kzf1X0VuzxBMTMgKevU4v7PxGaO834809ugC/75ks52O6sLZQFHdObzAPTNqJ+y8h
+	Q=
+X-Gm-Gg: ASbGnctMZGAzrdO9jJ6pctozHHC3rO1+PG/3HpB1gTh0ERBAfxznapJZ5f4Owtsf29b
+	Pj+bWsUvOw2WmC8ZCk+sHfl7ZrDrzefo4IiNINche5L/duqkU03LrcXZf6lAKxrMZIQk1rH0D+R
+	N7TnskZHaChoeOUH5c5STJ9IgXy0xY7oPQYt4fvKr5eM591ejEbKJveKhyTQdyvI3oBCB03pwL0
+	8jziErLb4JNa/0cvSQi/K3ITsRqFZbxs4GUXYyNaOdrsT+16afU/mrYKWWOY8TV/dF8tpz4vBL+
+	IjVFCdFPrTZ0iDyrUm4gFMi7jaJGrb8VRzGZ4Kcs1r7JfQQKpccyEiKavFxjQIWkJ/53WsZnUdd
+	W3X09huWLj923uB+6aG4QFGlMJvr16Gn58IcriP8h/A8ASco3YL46
+X-Received: by 2002:a05:6214:1cc9:b0:705:538:65ab with SMTP id 6a1803df08f44-707205ea86cmr34752146d6.39.1753456980750;
+        Fri, 25 Jul 2025 08:23:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHK5LDQ3JiR87dSBEdbMLaQa7N1rf2mWwVfPEnOCbZ2F/UBqPcJrWvG8vZus18ZIxSK6RRVlQ==
+X-Received: by 2002:a05:6214:1cc9:b0:705:538:65ab with SMTP id 6a1803df08f44-707205ea86cmr34751036d6.39.1753456979758;
+        Fri, 25 Jul 2025 08:22:59 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55b6336355dsm8672e87.86.2025.07.25.08.22.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Jul 2025 08:22:57 -0700 (PDT)
+Date: Fri, 25 Jul 2025 18:22:55 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH v5 02/10] drm/bridge: synopsys: Add DW DPTX Controller
+ support library
+Message-ID: <svn2p46qguxrpn6fhqnjffqpgv7keabwgld53uw6ckkn4piu47@gedy4t22cqfx>
+References: <20250716100440.816351-1-andyshrk@163.com>
+ <20250716100440.816351-3-andyshrk@163.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|VI2PR04MB10147:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4aaefa72-38cc-4928-3794-08ddcb76dd88
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?STl2QXFtbnNxOFliVnNBU0MvdXB1UG9DSDlWRldMTlZrVU5zUitkU3RvajIv?=
- =?utf-8?B?UkhiYm0wRWtPT0toUmwxakpzVnVWRDQ2N1RraldtWmdEU2RHY1lLUVU4TlBG?=
- =?utf-8?B?eU1CQm96ZlJjNUNUVFNVOSt2OHNYR0d1UkhCSHQyMzRHcElXMlBRTkc5dllM?=
- =?utf-8?B?ZFB4djViTFZoSEZqYnYzY0ZvMVdRZXlZM1g4MHNVZ3l2LzFaeXdUeFVKalZW?=
- =?utf-8?B?S3l6RDNXRDFBVjVtcWYrdHN6OUJhNHppOTdBS3hGOThqQkwzdVl0bDJlV3Jx?=
- =?utf-8?B?OUVoa0RjUzRmcHR2VlNUVXFQbVNLeVJLeWV1cGw5RitqQ0NNdzB6emVwalpF?=
- =?utf-8?B?RGNrMTZoTi8wa2xkaTMrVDZzUzdrSHloZlhWT3hoS2NzN1BndmdORW44aHZa?=
- =?utf-8?B?NUg3eVQvTHVoZVhHczA1NDhLQlNBOXBVMW9sTDhabkVJWFZRM1B1M01tTS9Y?=
- =?utf-8?B?ZUdPajNCRS9aUTZ2Y3MrNVJUaVo5V0E5cExEWTM0N3ZIbW40dFpDSzI0UHkw?=
- =?utf-8?B?MnQvOE1wWE8rRTU2ZURhUEIzUTBEbTJvL3hJRGtxbWkyOS9aL0FRQ0tMU1Vm?=
- =?utf-8?B?Mm91RExlVzJwdi9Fd1RKYXIyS0ZGN09DTGpDQlNpL0ljNitSNExhRnpEcm0x?=
- =?utf-8?B?SVBOWi94MFB5YmNUYmxYdnB2VGtzMmRiNkFROHhOeEdjRVBWVmFiU21zeFoz?=
- =?utf-8?B?cHpIbEMwNktBay9EWjBYeUhpSUVnczlSeGw5c2RJcHYrV21NNVk2UjFBbmFh?=
- =?utf-8?B?dlZ6Sjc2VS80OGVnZitwaVJzY0dQZklUMkwrTTlpSWZtNjhQL3h3M2QyUUpO?=
- =?utf-8?B?UkdDSklsUW9lMVZHenp6VjhLYXBUNFZvbFIrTGxTb3VXdjdVZWxBQm1mWVd0?=
- =?utf-8?B?dVJkeXBZKytwdTA0VnRjZUl5di9IbkNsYmk0U1R4RnNMRjBOdHZUZ0FMNytz?=
- =?utf-8?B?ZC8rVXlBNEllUm9zTk4xa0dEUHd5alJXcmVmSnA5eE9UelhRUEVJVGpxS2dq?=
- =?utf-8?B?L1crOWE3akJFMFJkTDhVMERSMklMd2pIRDB6R0VtSVpMQ1p3cWhmT0dTaXNK?=
- =?utf-8?B?dEYwWmlIdVN2MFdRTTlvNjNrL3lJU3BwOTN0Z0dGS2UzZGlyWTdZUW1PV1My?=
- =?utf-8?B?RWdaM2puQVA1WDRkUUxvRHREWTRkQTBSTTZpamNhTElhc3pLOG5yRi9ieXN4?=
- =?utf-8?B?WXZvZ3VyYndPYW5kT2Rhb3g1cWpyVmd1WFp1LzVEWllSUmxkQ2hlbDVJSE1N?=
- =?utf-8?B?aXoyQzlxcEZqSWVLMGZZSFNmUlJhaW0yZFZKVTRnNWEvaTFxbW5EcWcyVnJu?=
- =?utf-8?B?U0hOaUFPU2ZsYW9BK2VhWm0yVkFIUE5zSDZjT1JySnNZZFQ0UXBCWk5WeDRY?=
- =?utf-8?B?T2RPOE1PQmNTY01vUHh5VEc4YnAwaW1SK3hUZnl0aS8xUTRBN3BqWnhCN2dl?=
- =?utf-8?B?bEhmVVVnVTFJTUN0emIzSENMUncyWFY0SFp6dWhUNmdYcjgvamxWUCtxSEFm?=
- =?utf-8?B?VHduV3lKRUZja3dwcmtTZkJFVExkZlVVakcyWFpjakFiWStLWFNSbEw5cURT?=
- =?utf-8?B?QldDemMwS2t5bTd4cmxvaEZvdmh3TmgyNm5zamdtREZvcTI5bnZlREFZVG13?=
- =?utf-8?B?WG94R1RzQW0rUTJabm5jSUVYWFZuUHk0MHFlTzYvbkdTblVSVFJXNS80VUJt?=
- =?utf-8?B?M2d3bkNLcHMwMEYwMnlCZXlsUXdlaUtqaS94ZG1xUk9yOWVKVXB5aWZsQWtZ?=
- =?utf-8?B?cVR5S1FhNVRtMnlsUWg3b0p1NVVGTkdtaDVLUmEycC9YT3NOTWJocWUwRkI1?=
- =?utf-8?Q?5hEHQxFNQRXZj7XO+f4bsB3UBNWzOtIYELnCM=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NlBNZCtPdWtBQURVNWtEbkhVRVdENStkdEM4ZWw3eEtQTWQzZm9Tc0VpelB6?=
- =?utf-8?B?WWtabzJMM0l1cHp1UmJhQVBRMjBBbHBGbGoyQWV4Y0Z2ZlIyQ1ZaMzVudS9F?=
- =?utf-8?B?ays0eVRKc0hLWkltRFNORUlzeHQraCtkOWJrWGQwRjlpRnRTemowd25nclVY?=
- =?utf-8?B?OThxUnVyMFI3bTBqS0o0TFZ4UUFxcmpUOFVaY1lVejhVai9qdDBlN2thUHhn?=
- =?utf-8?B?VUdDSkJEL1MzNmRSQWdtT2xad0o4TTlUVWc3SHF5ZytIdE5Kb3FkVkcvUGpM?=
- =?utf-8?B?bXpkb1BnOTltb2ppMGdaZ21rL3cySnY3Nit3S29zVWNwakJMOVdpMGdTblZp?=
- =?utf-8?B?SXVoeGZUVHY1UDQxSXA3UmF0cjEybHFSaHc3TmFlMXBNdTYwSzlCempsUCt1?=
- =?utf-8?B?czl6MnZQcmtKdmhzWHY5T3BtalJKRW1wZFFLUmYxdnpmZTczWnhnZHI0dWlr?=
- =?utf-8?B?YThHRjMzYUd4anFxWUM1NFBmbVYvbnduVXFpeGg1WUt3WE9FZ1hvWXc3ZlVy?=
- =?utf-8?B?d09GOVNSNzdLS3JSVzhNd1FOcGJZbWZwVGdZWFdsM20wZnVkVWtnUkdIcTY2?=
- =?utf-8?B?c2trZjc1YmpjZE9vc0pMYW5GWFZHUFhVNFV4OHhkSUc0ZmtwVUcxTmJqRlhm?=
- =?utf-8?B?bXluc09qNzJvNm80R1NtWEU2YWRmMWpPUWhUdXQ0VUtWRFltSEZzY1hLZWVw?=
- =?utf-8?B?ZmlWR0pMNHNUWm45ZzdpOVlDRDE5NEltcFBacy9vRzNQUFlJdUN0K2UwYWNw?=
- =?utf-8?B?azFscm9PZkZYVG9aRjFaOWNrcldNRVdycDU1MzBtQTFpaFVKSGhHZjdoYmtP?=
- =?utf-8?B?d1BHTzJaRzlkaEFxY2VYNmFNam8zSExObEJZZXNvYWJhcisvVFV1ZHJtbUNp?=
- =?utf-8?B?K01LY2svZWhVSEVwNUZKQ2JZUkZWMnduOUNpSHd6VHlqYUpIOXR3WEpUVzBQ?=
- =?utf-8?B?ekplcmxsVVVJS1hCb0c0bUNzaUxxSDkyNW1CMHdlQVRONjNCU2k1dnhDUmli?=
- =?utf-8?B?SDJnUXVKSmFaYWFWUDYrL2R3SVlrUWF1VUgyWnZBeWJkbitxdzIzeEZUVlAr?=
- =?utf-8?B?WVN5UlpMN2JMY21TMndoOE1DVjVqcXZNZXoydGdOaHBZTnpYZnp0a3htRWls?=
- =?utf-8?B?VWtvWTBONkI3ejdPWVgxWCt5Tk0zT21iQmVXYWhGZHhuanlCbHE4Z0UvQ2Jt?=
- =?utf-8?B?U0ZnMlU4cmpsT0t4bENidlBxRDhaUzd2MXBzV2ZDSUp2UGdmMDl5VGdIbkRl?=
- =?utf-8?B?VXVBRCtxc2FwK0tDdTgwdURQQnozTnVESG1zZHJZOVdTbVNOMHZuZEhUUmhm?=
- =?utf-8?B?Q1U3SC9pK3pONDNlVURJa0cxWEEyTEtrUGIxVGQvV3U0d3hEM2hTRXl5K0FD?=
- =?utf-8?B?aXBMdkk3Rk03SXFDU0JEWGg1MlZmS3h4eThSVG5JUWgyVHYwYXJUVzJCcVd2?=
- =?utf-8?B?MS9jK2ZRbEtGQm5RS05LdnNiTkJIdURXeENlMjJBdkpPYStpb0hmR2F5eTVv?=
- =?utf-8?B?VFFWWnlWYlptMFBwWWN6SlhJQzB1MXVycDdDY2wrbVljSmNyQTJSenNXNGZ6?=
- =?utf-8?B?d2U2VlAxOEZEdjVUcGdJK2lMZjFUaWhjZkpzNE1nLzFsZ2RzYkdOR3dFdWVu?=
- =?utf-8?B?b2VOa2VpNnBVdzdIY1JxaVczOWZuTHJycG9MWk5odDM3bkhsMFc5UXVybWJB?=
- =?utf-8?B?ZXZ4aGhGRjRXTHFUT2EwcUJUM3NWaXVnQ2Nra1h0dXpoRzV3UnRSOVN0TWRa?=
- =?utf-8?B?YmZlVThINk44VW5FUVFDWTAyOTIrOU9VYkdINUNiREgzQXhjUzl4dFYwUkZ5?=
- =?utf-8?B?ZkRxWitVVDVxVW9Za295Mk9WNzhSbmxja2ZnVUI2YWtHYUE1ZUUzZWJzQmhC?=
- =?utf-8?B?QlZhd3NuWExYclkrQTAzMGhsakR4V1BNTkdkSVgrNUVZZVgxaE5wK1Rzd3pw?=
- =?utf-8?B?ZjBUdDlmcDRNcTJsOFdlcEhBcVZYM2w0TG5rWXNxbS95eDh3ZGl3aDNoNUJN?=
- =?utf-8?B?VmR5N3hOUjY3eG9OaS9ncmFRaE5lc3NTTXdOSkxLaHJzRHZ1QUtQc2k0ZUw3?=
- =?utf-8?B?NC9BQ1FCeGRWS2xpYlUxOW1tUUhMZXRHVVNXRDlYeHVBMDVEbkhYY1k0cEZh?=
- =?utf-8?B?K2t4ZitjajNlVURXTTg4enlUdmF1WlpTUWt1a05hY202K2VnaFRHZUdBWlpP?=
- =?utf-8?B?TlE9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4aaefa72-38cc-4928-3794-08ddcb76dd88
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jul 2025 12:29:14.1453
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ld6K8U/f4AIhNYAqA+DH8dWnoNwe6LFk9rV8/VY9b/rQc7qyR0VcW6Vgqu6nKVRtsug84ViKCSiU+rkaHVCoqKkHCSDo3hbXxgjffWogBLI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI2PR04MB10147
+Content-Disposition: inline
+In-Reply-To: <20250716100440.816351-3-andyshrk@163.com>
+X-Proofpoint-GUID: j00rkcGapD3BB8ZyQfOHx3_cv6MZNM8v
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzI1MDEzMiBTYWx0ZWRfXzLxJ4FzpWKxs
+ ETlgTe89XMpz/tkpq2Io4Zl/pluBm7c9mKwMy8LB8LK/+yPc6TgZLWba8GrZ1oHkH8GpnA4RJ9b
+ T4tnlgIshntHjKp5F0Mj6Vx/ophSB8dq9SbXkaHG/3o7pA5V4etNVJp2V6LLllObOPzXiHQbh8Y
+ R5pyezRU0WJfjnfTuRLnwkudjyqKXPecHBEj6wojM6cW0JZURbA1JboSc7eacF6FFKWe2fP9geh
+ VZpLqZmSvHcmtIJpeDAjrgu+CEjJSRfVPYYUR3JxgPO07rg7Tl7GcbNybESV/zyvkIv2XtopwzF
+ cWQwvefWIQU7gc98cTV0Rj9rIaKvGJ8ymR0l5USjZPvc9mkvil/SfilpqQto9ZWpziSTb/RlVul
+ hxaUy0/Vkow0MxSwyLppMybv39JrQj2vkHsAxVKsoE0q7EBodYKK6A02M9Nz8EVdKvLuuWLS
+X-Authority-Analysis: v=2.4 cv=VJjdn8PX c=1 sm=1 tr=0 ts=6883a155 cx=c_pps
+ a=JbAStetqSzwMeJznSMzCyw==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=Wb1JkmetP80A:10 a=s8YR1HE3AAAA:8 a=w3-XvOWwJNVOjCSRI-QA:9 a=CjuIK1q_8ugA:10
+ a=uxP6HrT_eTzRwkO_Te1X:22 a=jGH_LyMDp9YhSvY-UuyI:22
+X-Proofpoint-ORIG-GUID: j00rkcGapD3BB8ZyQfOHx3_cv6MZNM8v
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-07-25_04,2025-07-24_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 clxscore=1015 suspectscore=0 lowpriorityscore=0
+ priorityscore=1501 spamscore=0 malwarescore=0 adultscore=0 mlxscore=0
+ bulkscore=0 phishscore=0 mlxlogscore=999 classifier=spam authscore=0
+ authtc=n/a authcc= route=outbound adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2505280000 definitions=main-2507250132
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250725_052923_342745_1B4E6DD2 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20250725_082304_157639_ED4E594C 
+X-CRM114-Status: GOOD (  27.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,57 +124,126 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, heiko@sntech.de, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
-
-On 7/23/25 9:09 PM, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+On Wed, Jul 16, 2025 at 06:04:29PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
 > 
-> The DisplayPort carrier is a very simple baseboard only providing serial,
-> ethernet and a displayport output.
+> The DW DP TX Controller is compliant with the DisplayPort Specification
+> Version 1.4 with the following features:
 > 
-> But its main functionality is that it routes the Analogix eDP controller
-> to this DisplayPort output, which allows to test that controller simply
-> by hooking it up to a suitable monitor.
+> * DisplayPort 1.4a
+> * Main Link: 1/2/4 lanes
+> * Main Link Support 1.62Gbps, 2.7Gbps, 5.4Gbps and 8.1Gbps
+> * AUX channel 1Mbps
+> * Single Stream Transport(SST)
+> * Multistream Transport (MST)
+> * Type-C support (alternate mode)
+> * HDCP 2.2, HDCP 1.3
+> * Supports up to 8/10 bits per color component
+> * Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
+> * Pixel clock up to 594MHz
+> * I2S, SPDIF audio interface
 > 
-> The Analogix-DP controller supports eDP 1.3 and DP 1.2, so can drive
-> both eDP displays as well as full DP monitors. It does not support DP+
-> so passive DP-to-HDMI adapters won't work.
+> Add library with common helpers to make it can be shared with
+> other SoC.
 > 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v5:
+> - Use drm_dp_read_sink_count_cap instead of the private implementation.
+> 
+> Changes in v4:
+> - Drop unnecessary header files
+> - Switch to devm_drm_bridge_alloc
+> 
+> Changes in v3:
+> - Rebase on drm-misc-next
+> - Switch to common helpers to power up/down dp link
+> - Only pass parameters to phy that should be set
+> 
+> Changes in v2:
+> - Fix compile error when build as module
+> - Add phy init
+> - Only use one dw_dp_link_train_set
+> - inline dw_dp_phy_update_vs_emph
+> - Use dp_sdp
+> - Check return value of drm_modeset_lock
+> - Merge code in atomic_pre_enable/mode_fixup to atomic_check
+> - Return NULL if can't find a supported output format
+> - Fix max_link_rate from plat_data
+> 
+>  drivers/gpu/drm/bridge/synopsys/Kconfig  |    7 +
+>  drivers/gpu/drm/bridge/synopsys/Makefile |    1 +
+>  drivers/gpu/drm/bridge/synopsys/dw-dp.c  | 2044 ++++++++++++++++++++++
+>  include/drm/bridge/dw_dp.h               |   20 +
+>  4 files changed, 2072 insertions(+)
+>  create mode 100644 drivers/gpu/drm/bridge/synopsys/dw-dp.c
+>  create mode 100644 include/drm/bridge/dw_dp.h
+> +
+> +static int dw_dp_link_parse(struct dw_dp *dp, struct drm_connector *connector)
+> +{
+> +	struct dw_dp_link *link = &dp->link;
+> +	u8 dpcd;
+> +	int ret;
+> +
+> +	dw_dp_link_reset(link);
+> +
+> +	ret = drm_dp_read_dpcd_caps(&dp->aux, link->dpcd);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	drm_dp_read_desc(&dp->aux, &link->desc, drm_dp_is_branch(link->dpcd));
+> +
+> +	if (drm_dp_read_sink_count_cap(connector, link->dpcd, &link->desc)) {
+> +		ret = drm_dp_read_sink_count(&dp->aux);
+> +		if (ret < 0)
+> +			return ret;
+> +
+> +		link->sink_count = ret;
+> +
+> +		/* Dongle connected, but no display */
+> +		if (!link->sink_count)
+> +			return -ENODEV;
+> +	}
+> +
+> +	ret = drm_dp_dpcd_readb(&dp->aux, DP_DPRX_FEATURE_ENUMERATION_LIST, &dpcd);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	link->vsc_sdp_supported = !!(dpcd & DP_VSC_SDP_EXT_FOR_COLORIMETRY_SUPPORTED);
 
-I tested this on master (2942242dde896) + v2 of the eDP driver as listed 
-in the cover letter, or with v3 of the eDP driver + 
-48f05c3b4b701ae7687fd44d462c88b7ac67e952 and in both cases I have weird 
-behaviors.
 
-First, `reboot` is stuck for a very long time before actually rebooting. 
-I think you have a stacktrace when you tried yourself, I don't so cannot 
-send one.
+drm_dp_vsc_sdp_supported()
 
-Also, I tested on two different DP displays, one has a green tint, the 
-other one purple. When trying out other resolutions with modetest, the 
-kernel would often crash (no trace, just nothing on console, SSH dead). 
-Note that the same HW setup with downstream kernel from 
-https://git.theobroma-systems.com/tiger-linux.git/log/?h=linux-6.1-stan-rkr3.2-tiger 
-works just fine. I would assume this has nothing to do with this Device 
-Tree patch here but rather the eDP patches missing some bits maybe?
+> +
+> +	link->revision = link->dpcd[DP_DPCD_REV];
+> +	link->rate = min_t(u32, min(dp->plat_data.max_link_rate,
+> +				    dp->phy->attrs.max_link_rate * 100),
+> +			   drm_dp_max_link_rate(link->dpcd));
+> +	link->lanes = min_t(u8, phy_get_bus_width(dp->phy),
+> +			    drm_dp_max_lane_count(link->dpcd));
+> +
+> +	link->caps.enhanced_framing = drm_dp_enhanced_frame_cap(link->dpcd);
+> +	link->caps.tps3_supported = drm_dp_tps3_supported(link->dpcd);
+> +	link->caps.tps4_supported = drm_dp_tps4_supported(link->dpcd);
+> +	link->caps.fast_training = drm_dp_fast_training_cap(link->dpcd);
+> +	link->caps.channel_coding = drm_dp_channel_coding_supported(link->dpcd);
+> +	link->caps.ssc = !!(link->dpcd[DP_MAX_DOWNSPREAD] & DP_MAX_DOWNSPREAD_0_5);
+> +
+> +	return 0;
+> +}
+> +
 
-@Damon do you have some idea?
-
-The display with green tint is a Iiyama ProLite XU2294HSU and the one 
-with the purple tint is a Dell P2319H if that helps.
-
-modetest output: https://paste.debian.net/1387797/.
-modetest output with downstream kernel: https://paste.debian.net/1387798/
-
-The Device Tree looks good to me otherwise.
-
-Cheers,
-Quentin
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
