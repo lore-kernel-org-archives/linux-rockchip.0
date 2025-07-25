@@ -4,87 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF477C87FCC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jul 2025 02:30:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3F6AC83F27
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jul 2025 05:27:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0xfVYAdbmXNEtLhQdzTfbZKvled6CPV1qLO5jGdktCo=; b=O+X03SyxlET9EV
-	P9Gu9iGY9LwkGFVV9cCAKVyK4FtlK3ONVF+LPZDigtzxGIUUkXqApiezRIVOIncviMLCoi4e6HjuA
-	zv9r4bEPsJ7zPePvy+UkUNojn+0ZBm/sVIblZaIBuDhmsKD97n6yqLelTycC3s7zEOlUKoJaqpqPQ
-	LcdL4D8gzWh5+juTXhgn0n9RDN1zD7KZdYFbx2T1bUvpwsclh8X4stoi3uHl5Vh8nN/VgzGiX+OwN
-	U5fHwRcXPhXKCtVNij2LwDblCDTny7YJ69S/haifXn9CxYE4Bog41OHoCQr51iFS6QLn7TJQ95ieG
-	f6Cx/G7GfISk8hMwxMIQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Y92JiUD723ed2mw3Uj/O5pjaqNyUoLM8K++lVhMm4RE=; b=AtCWwgF416VxV1GPWfxaswonxK
+	DPa7X1L8frTaeNv4cJ4mfyX8B87g4kFNR10cn0qslIpzfgxquU1FwbM+9HVZR9LrnLT4H701DZEDw
+	JloP8QjvOMzRa8OChRVPikTVf5V5GkTQSzVs2XY4Pao9zsHJjLLnkiX7Z7+HeyY67qHs5myCPImtm
+	RvoXV+fFNAYuksVE4aMl1/fkaxVeXjiOrgtwf33J766byRx15e6dWpCIIze6RP9sLaspZ2lOIMGtb
+	B/X08EVg3vz5RRRCGHaiejGlQ06/jS83OsZ1J0j+AuZ6eQOQGxqDtj2ZxuMaqLNywXBkDUaZGoDqQ
+	scIVPy/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uf8CK-00000008twP-0o2Q;
-	Fri, 25 Jul 2025 02:30:12 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1ufAxX-000000095YI-1gXi;
+	Fri, 25 Jul 2025 05:27:07 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uf89r-00000008tlV-3gPD;
-	Fri, 25 Jul 2025 02:27:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1753410460; x=1784946460;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Khfr6GJFMEPyxoF5TtbNyRQfS0y6Twazz2yM+2molDY=;
-  b=SB5tsRuWT2P4eb2jQZqakjx3RMakfz0TfVF5fAfyPv9q0+e6YiMziF+h
-   O7krGDVhtrcTAcEZy1aQfNtYDIPM4gBKdMRwMBD0tLlhN5OwTuuCNqalB
-   jPJgtgljLqKlIP7vNwqmBfkd0fPOu4phgEoX0R/dlfqHLMGfSmdnf+0QP
-   oj6N4cft1zFWzSyMWw0n6rEXG6H8DbZ96Pr7KS2u0d1Bw+JWuJyWDAbu+
-   NE7eX78mHZn2x9STHS5C+jJiWhJaZU8Kzx2lCW4nviyRujFfHGsypHmZ/
-   g2DwYzuieKOCOuuLmbr4TWKMmUVOf4x5frUHEW8PdDQ42Rcq/2Ze1Yhkn
-   g==;
-X-CSE-ConnectionGUID: i1h/c+WhSTC5CSc+siQzfw==
-X-CSE-MsgGUID: GluG7s9qRkScEh+RIzAOKg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11501"; a="43352933"
-X-IronPort-AV: E=Sophos;i="6.16,338,1744095600"; 
-   d="scan'208";a="43352933"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jul 2025 19:27:39 -0700
-X-CSE-ConnectionGUID: bLSRn50RQC6VQhsJrY0bkA==
-X-CSE-MsgGUID: qPdZrQ5FRW2cHtvxPARCvw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,338,1744095600"; 
-   d="scan'208";a="164883627"
-Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
-  by fmviesa005.fm.intel.com with ESMTP; 24 Jul 2025 19:27:33 -0700
-Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uf89i-000KzD-0K;
-	Fri, 25 Jul 2025 02:27:30 +0000
-Date: Fri, 25 Jul 2025 10:26:54 +0800
-From: kernel test robot <lkp@intel.com>
-To: Damon Ding <damon.ding@rock-chips.com>, andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org, rfoss@kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
-	jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com,
-	simona@ffwll.ch, jingoohan1@gmail.com, inki.dae@samsung.com,
-	sw0312.kim@samsung.com, kyungmin.park@samsung.com, krzk@kernel.org,
-	alim.akhtar@samsung.com, hjc@rock-chips.com, heiko@sntech.de,
-	andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
-	l.stach@pengutronix.de, dianders@chromium.org,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v3 08/14] drm/bridge: analogix_dp: Apply
- drm_bridge_connector helper
-Message-ID: <202507251021.A6WmQ4di-lkp@intel.com>
-References: <20250724080304.3572457-9-damon.ding@rock-chips.com>
+	id 1ufAut-000000095No-3HKj;
+	Fri, 25 Jul 2025 05:24:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1753421048; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=NsjT7+WyV/RRNWTCvMJ8Qpu2MdfXsJDsFfmjL2wTNSEI1mCDkSyjB0IT4a8jKa6n5z3VJ6VZa1705fql5CkKJsS0OPP5FJ5AbXkUlmuyjuJ6BfGQZR/xz+RvILylpiINR1RT9rzLf5iHI6h8audGDpe1CNTyJPmpfG1eXLunIxQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1753421048; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=y4ldkYpDBhe6MUIxmYmjLmmqHNKj9PN8JQgOOK2ZTr4=; 
+	b=NCuYY47R5Mz5/snraIWehHM+mW3mCkPDjC4nSyxWwmbYl9izIkm5bFj73PH28VKENXbe16r+z4RpOW1PRF0oxy/++ysxC5+xKVYzm0CPBIJiSAWRBsk6Ol98AhdXUqhksbiOjdipj+chedHKBKYTxV1HeSk6XCHiDSkWSm3O8HM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1753421048;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=y4ldkYpDBhe6MUIxmYmjLmmqHNKj9PN8JQgOOK2ZTr4=;
+	b=e1L/4KHBQPvUM5BedDKyxbfKjxEZGHnyyCPgf5MMX4m1R71qRhOPgWKzSATlVJHV
+	/nJP05RXDTW5rMq4feV4ZXR8vXBouEQuvidaNPphnqO+fAWxQ9jGkJDBSISmRgysc3L
+	PR7UrRahCBwx5iSiZKO4WUgMzveXbP/sWiHo1yJs=
+Received: by mx.zohomail.com with SMTPS id 1753421046615566.1010844319203;
+	Thu, 24 Jul 2025 22:24:06 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id CE23A180761; Fri, 25 Jul 2025 07:24:01 +0200 (CEST)
+Date: Fri, 25 Jul 2025 07:24:01 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH] arm64: dts: rockchip: use MAC TX delay for ROCK 4D
+Message-ID: <mqoyjn7mnq6tmt6n6oev4wa3herjaxlupml2fmcampwiajvj4a@r5zs4d3jdm5p>
+References: <20250724-rk3576-rock4d-phy-timings-v1-1-1cdce2b4aca4@kernel.org>
+ <f22243f5-759a-4ff2-8d14-6edb49d87c52@lunn.ch>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250724080304.3572457-9-damon.ding@rock-chips.com>
+In-Reply-To: <f22243f5-759a-4ff2-8d14-6edb49d87c52@lunn.ch>
+X-Zoho-Virus-Status: 1
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.4.2/253.413.66
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250724_192739_985261_9F558B98 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20250724_222423_871055_0AC69F28 
+X-CRM114-Status: GOOD (  20.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,67 +79,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6605036699225036789=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Damon,
 
-kernel test robot noticed the following build errors:
-
-[auto build test ERROR on drm-misc/drm-misc-next]
-[also build test ERROR on next-20250724]
-[cannot apply to drm-exynos/exynos-drm-next rockchip/for-next linus/master v6.16-rc7]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Damon-Ding/drm-bridge-analogix_dp-Formalize-the-struct-analogix_dp_device/20250724-160804
-base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
-patch link:    https://lore.kernel.org/r/20250724080304.3572457-9-damon.ding%40rock-chips.com
-patch subject: [PATCH v3 08/14] drm/bridge: analogix_dp: Apply drm_bridge_connector helper
-config: x86_64-buildonly-randconfig-003-20250725 (https://download.01.org/0day-ci/archive/20250725/202507251021.A6WmQ4di-lkp@intel.com/config)
-compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250725/202507251021.A6WmQ4di-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202507251021.A6WmQ4di-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/gpu/drm/bridge/analogix/analogix_dp_core.c:1346:12: error: incompatible function pointer types initializing 'enum drm_connector_status (*)(struct drm_bridge *, struct drm_connector *)' with an expression of type 'enum drm_connector_status (struct drm_bridge *)' [-Wincompatible-function-pointer-types]
-    1346 |         .detect = analogix_dp_bridge_detect,
-         |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
-   1 error generated.
+--===============6605036699225036789==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="lntxnw2zm2xvrrvo"
+Content-Disposition: inline
 
 
-vim +1346 drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+--lntxnw2zm2xvrrvo
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] arm64: dts: rockchip: use MAC TX delay for ROCK 4D
+MIME-Version: 1.0
 
-  1333	
-  1334	static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
-  1335		.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
-  1336		.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-  1337		.atomic_reset = drm_atomic_helper_bridge_reset,
-  1338		.atomic_pre_enable = analogix_dp_bridge_atomic_pre_enable,
-  1339		.atomic_enable = analogix_dp_bridge_atomic_enable,
-  1340		.atomic_disable = analogix_dp_bridge_atomic_disable,
-  1341		.atomic_post_disable = analogix_dp_bridge_atomic_post_disable,
-  1342		.atomic_check = analogix_dp_bridge_atomic_check,
-  1343		.attach = analogix_dp_bridge_attach,
-  1344		.get_modes = analogix_dp_bridge_get_modes,
-  1345		.edid_read = analogix_dp_bridge_edid_read,
-> 1346		.detect = analogix_dp_bridge_detect,
-  1347	};
-  1348	
+Hi,
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+On Thu, Jul 24, 2025 at 05:51:16PM +0200, Andrew Lunn wrote:
+> >  &gmac0 {
+> >  	clock_in_out =3D "output";
+> >  	phy-handle =3D <&rgmii_phy0>;
+> > -	phy-mode =3D "rgmii-id";
+> > +	phy-mode =3D "rgmii-rxid";
+> >  	pinctrl-names =3D "default";
+> >  	pinctrl-0 =3D <&eth0m0_miim
+> >  		     &eth0m0_tx_bus2
+> > @@ -246,6 +246,8 @@ &eth0m0_rgmii_clk
+> >  		     &eth0m0_rgmii_bus
+> >  		     &ethm0_clk0_25m_out>;
+> >  	status =3D "okay";
+> > +	tx_delay =3D <0x20>;
+> > +	rx_delay =3D <0x00>;
+>=20
+> What does 0x20 mean? Is it less than 2ns, or greater than 2ns?
+
+Unfortunately I don't know. This part is not documented in the TRM I
+have access to. Also my scope is not good enough for measuring
+delays in the pico-second range. Previous measurements for RK3588
+(RK3576 uses most of its IP and probably shared most of its quirks)
+suggested, that mapping this to the standard properties may not
+easily be possible:
+
+https://lore.kernel.org/all/bb3486c6-93df-4453-acc6-deba3c8f7f0e@lunn.ch/
+
+> Have you tried "rgmii-id" and small values for tx_delay? If the
+> hardware needs 2.1ns, for example, the MAC could add 0.1ns and the PHY
+> adds the default 2ns. That would allow you to conform to the DT
+> binding.
+
+The MAC code (drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c) looks
+like this, so "rgmii-id" results in no MAC delays being applied:
+
+	case PHY_INTERFACE_MODE_RGMII:
+		bsp_priv->ops->set_to_rgmii(bsp_priv, bsp_priv->tx_delay,
+					    bsp_priv->rx_delay);
+		break;
+	case PHY_INTERFACE_MODE_RGMII_ID:
+		bsp_priv->ops->set_to_rgmii(bsp_priv, 0, 0);
+		break;
+	case PHY_INTERFACE_MODE_RGMII_RXID:
+		bsp_priv->ops->set_to_rgmii(bsp_priv, bsp_priv->tx_delay, 0);
+		break;
+	case PHY_INTERFACE_MODE_RGMII_TXID:
+		bsp_priv->ops->set_to_rgmii(bsp_priv, 0, bsp_priv->rx_delay);
+		break;
+    ...
+
+Also the default values (if properties are missing in DT) are
+rx_delay=3D0x10 and tx_delay=3D0x30, so changing this logic risks
+breaking some boards :(
+
+> What PHY is this? Have you looked it you can control the delays the
+> PHY adds? If you actually need a delay of 1.9ns, maybe the PHY can be
+> configured to do this? That would also allow you to conform to the DT
+> binding.
+
+The Rock 4D uses a RTL8211F. As far as I can see that just offers
+one delay control knob.
+
+Greetings,
+
+-- Sebastian
+
+--lntxnw2zm2xvrrvo
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmiDFOkACgkQ2O7X88g7
++pocqRAAmG8r6935rknghxbjS85/wcBLgwi1SELzeDaLTBoAT+ib7M19APbWAXm1
+GOmjHBN09+TXbygKfHNoch5ot3dcMOBkhWaody16bZHFf9ViNkYwSIccs4BeVNEO
+l6EONSCdAjDt1LRB3AFPR9fG3bcaXvzpcLq9rHaBZ5keaEESGQpw5ACAcoJFGVYh
+gvwWya6PHgMol5zGWIkn7IYucKPTKWPmsp4NfyznEhe11UGW43uok9CisTN1SD0t
+JmWpg7WL4xhJ9Pno+gG+Bw70p5ZXZAeS+37dSj5HtL0+jn4KG53KEx2pNon9Bwcy
+C+I/IxAfL5xm8T4oxOO7eHCg/+GoMPSBqtsb0dEI7iwzMgA0Nxo1bFHvV337U9ma
+6CNa2abaZWRtp6qEEP1PP4bfFV5fSxK5bP5q/6OYYGa4vASAKUhfTxiJt41G0hXv
+1SrkEl36Ln/XponneBBiBT7LzGFE72UdHiKhD5O4wqWkRJm/vPRg0J93J89zqeu7
+B4MvRFXyUe8Roid2T+WFL2/+OZeWpmiGiwtPrNjbs7EKLRUb1jnUvsxUo+pMSp3q
+BCmQeUGNxYpI1i4JYD3CzHjHbbgSYT26C4nkgowTCSmY3O1Db2k0PqHl7xCmKVw7
+RCGSAhGauMbV28A50kgORuQXD/UiUqdl4QU6K5aA6EWFxuGWYSg=
+=XuMz
+-----END PGP SIGNATURE-----
+
+--lntxnw2zm2xvrrvo--
+
+
+--===============6605036699225036789==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6605036699225036789==--
+
