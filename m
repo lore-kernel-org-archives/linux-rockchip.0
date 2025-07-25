@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BF63C87FCA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jul 2025 23:11:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19399C87FCA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jul 2025 23:13:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o8K3Hh8tqOmuDSSiyaghaYQ9WgjQ3Ow6fa028uFXDxo=; b=EB1WXsFHtPLZyh
-	0X9hnEM1gsRRAtUrden3BhCPTNAvetskPf997ib3wt1e9ytB8BAwXGdFFHs1S87Nh/5r1qcdHXs7+
-	EgyuPVQTwh2x6bbhk4UZlzUjflicrl3GVbQ52xoOlvTAIYwDpl2zllNGkcWW4mkPlWtHdEZHiqhpK
-	YLE2Nd/oPXD72pFFADpRhuQqDHgyhMRvgJXoXatW9eRVAW8uZtsM10PpEGs4MV+s9gfXj81gMyCHS
-	3Y+R0oe6TSsjDN3r6B0t1YWQsb4dT4HRkql4Tx644WC/Zgk66gAyO1hbdQMgYvZjhNjr8wqxH0MAO
-	yUEzrluhi6dFWdd37SIg==;
+	List-Owner; bh=jMo59asTJjkivElFj4xsO9OlGxxJiEH/yqQhEssE3hc=; b=hasfRGC9ZPOiwL
+	nwmuw/DKa7blUi1B4f9yqpqI1xwTuIpFb/7iSaGnImTwdd9ncE4OXc5nKQabR5ktSda/JmGXuJDxK
+	827RZ9CcHcwMd3L+zZNh24XLvZXukwhC/EzCB02EH8sizi2h7rGA3yMTgyqjUncX/Kwg7jYU7veKx
+	YgS3aCz04sscPiWfs1ACll23v6omVY5AeFZuuYiikCYLQms1mmQAIBxqMW+0DDJIforxse/bKHh8X
+	2WRK0Orfqk1qBU01S2iFSrsA2RYX9el04aVSLEKXUyycox7XOq4ED0vvZOYXLKw6zAyoVqb1xLdbh
+	RmINgC29UuSzMBI/g2/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufRZT-0000000Apnr-2Ap8;
-	Fri, 25 Jul 2025 23:11:23 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1ufRbt-0000000Aq5f-4BMW;
+	Fri, 25 Jul 2025 23:13:54 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufRSo-0000000ApGX-17Fu;
-	Fri, 25 Jul 2025 23:04:31 +0000
+	id 1ufRUV-0000000ApMl-2zYg;
+	Fri, 25 Jul 2025 23:06:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 49039A5663D;
-	Fri, 25 Jul 2025 23:04:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3B9AC4CEE7;
-	Fri, 25 Jul 2025 23:04:28 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id EDB85601DC;
+	Fri, 25 Jul 2025 23:06:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6392AC4CEE7;
+	Fri, 25 Jul 2025 23:06:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753484668;
-	bh=rv/KgJ71TJlmcVVZvmym0sY0RHiUoLRxlEzbvqHPDzg=;
+	s=k20201202; t=1753484773;
+	bh=8vnCCU3LPQGo53C05dFuO3MKjV+pOSMNfVK636KtS6E=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FKK8R2+AK6f9Y0S/zn5et8FKdDTW9z3REceWUn7v3RynP03t6TI55PPkjxBQJ/tXN
-	 REhiNH333o/cGCi8/Hej65aWWULcZl/u0NhRx/hI0XYVrj9uKhKrf/FoOv2sTcxGUS
-	 K4q1MQAZJ9OuH5CyQlEaaDgmje0Qfc2XczLRc397vBzXFKdY2RxK2z+jVUuMrIMy05
-	 5BOoY15ETn2UlO1B8PwGh9q6DKOYACOqNl1dPy1TQ/gaSestfQv/woqON2QUYEK0nS
-	 ODD34BiNpcqrxJRd71tIebYHtjlLaEE5gvafAleNw3KbirckCggEB+sVdcbeX4Giu4
-	 jej/+NXgXlftw==
-Date: Fri, 25 Jul 2025 18:04:28 -0500
+	b=djIISh6YSRnwbypyxmMrAcPIUUF5v68Wdiwz93/UgTP6WNGlSue6F0OcCzQrZG/Zu
+	 sxV/iPajbiXLYwfkki0R/DK9I/KVRQXo0WqgVHJjKoLhQxf3hQZxLs715FLHVQBuPm
+	 crPoWpACcui6Im2dZ5mc+qrKo1XDtXvUhg9ExD8DgK+RVldhB2w6d4xkZlr3GTEvPz
+	 zmeE5b71gF1tNqmZWVZY9GykFDPmPtcjhvZFveml/6vCq7nGZE7EYsShbqNBoEULL4
+	 LzAZkEB6gHsWfNWNJRBItw2Oj7UXsWz/+xvKkNl0N387AaMtBHlfN/qcz1nncI8DnS
+	 yKgoA+adJ0F+g==
+Date: Fri, 25 Jul 2025 18:06:12 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+Cc: linux-usb@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Yao Zi <ziyao@disroot.org>, Vinod Koul <vkoul@kernel.org>,
-	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	linux-phy@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 03/11] dt-bindings: phy: rockchip,inno-usb2phy: Add
- compatible for RK3528
-Message-ID: <20250725230428.GC1993803-robh@kernel.org>
+	devicetree@vger.kernel.org, Chukun Pan <amadeus@jmu.edu.cn>,
+	Yao Zi <ziyao@disroot.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 06/11] dt-bindings: usb: dwc3: Add compatible for RK3528
+Message-ID: <175348477194.2001313.779930445119740224.robh@kernel.org>
 References: <20250723122323.2344916-1-jonas@kwiboo.se>
- <20250723122323.2344916-4-jonas@kwiboo.se>
+ <20250723122323.2344916-7-jonas@kwiboo.se>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250723122323.2344916-4-jonas@kwiboo.se>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250725_160430_366366_CB3CAEA3 
-X-CRM114-Status: GOOD (  10.57  )
+In-Reply-To: <20250723122323.2344916-7-jonas@kwiboo.se>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,19 +78,19 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 23 Jul 2025 12:23:01 +0000, Jonas Karlman wrote:
-> The embedded USB2 PHY on RK3528 is very similar to the one in RK3568,
-> the main difference being that it only uses two clocks instead of three.
+On Wed, 23 Jul 2025 12:23:04 +0000, Jonas Karlman wrote:
+> The USB dwc3 core on Rockchip RK3528 is the same as the one already
+> described by the generic snps,dwc3 schema.
 > 
-> Add compatible to support the USB2 PHY in RK3528.
+> Add the compatible for the Rockchip RK3528 variant.
 > 
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
->  .../bindings/phy/rockchip,inno-usb2phy.yaml   | 30 ++++++++++++++++---
->  1 file changed, 26 insertions(+), 4 deletions(-)
+>  Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
