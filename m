@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2E57C87FCE
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Jul 2025 18:08:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49E65C87FCE
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Jul 2025 18:14:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xeYLNKyDgDGYFeM3sKVbRx4HiRj9iEjytWiMNIr4P/I=; b=a/iOfh9p9HL8/v
-	Vq5rPdwNKjkaR+Bxmn4yywubErCQsUbyhcAZ58+9+5ofUHi5/b1Kcmlf6KsDgh1efX1XIo7I1+peA
-	lhc/qr/qTAU4qYAofSpKHyxUBRFulQXYn+HBKZ8mbtAf1l3hq3CNG1KNBz788LZslkVU5NBRYyQ3J
-	ifQ1YDab+CQTcsmr7PCEAhAbK9K3Qkq+QuM89diES+ItFBa0BK9a7kwd83scRpMozUE7fzenEGIy+
-	WRisWc07rRif5vG7iZZyYI9fvXjqN6nZRI4efMyeJJubw+QrAmBreKk6VvnlDW7yUMH9JAS9jQ1Ji
-	BLmvya5ActdjbZ9bKVDA==;
+	List-Owner; bh=ZcIgVR4uxUgA3SF4STR6/4i6D7ZDIsJLGA9yrwvTWsQ=; b=esyTvBvJntM7nd
+	JYwn7Iw7ucedH2fq76g6Au73hM1DZcJKrxmmB9jqZFk/ie5n0/evFvIRMg3X1AE0uJJAyXiBTOA2h
+	gCpN/Rqot5O4yOtnlGFvZcNukJ/6gSkGfaPBU/ee42Ud3nHpp3yrO4bP0qVk+P4azjbd3FWOUTEGx
+	XO9Um/8DWluHe1s2Gz0riLW7T4y2hpuigGEFGWmTFONp5p6vo5AqVD5Tcf7mflE4OarBfaLVFU730
+	tyMIZPQX2/rYzsbzEJPtDwSFcKZWHtrs/Hd0wyCxgdBug3JL8aN0Ms8Gzwu9l79C3xHd95zxqJs9/
+	WhhRwlEkC6FhbpW+67Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ug5nc-0000000D2zO-1Q18;
-	Sun, 27 Jul 2025 18:08:40 +0000
+	id 1ug5sk-0000000D3MV-2GKA;
+	Sun, 27 Jul 2025 18:13:58 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ug5ic-0000000D2RN-1RmA
+	id 1ug5ij-0000000D2Tn-3bzd
 	for linux-rockchip@lists.infradead.org;
-	Sun, 27 Jul 2025 18:03:31 +0000
+	Sun, 27 Jul 2025 18:03:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1753639410; bh=YWL3aOX28KQzuVWsTQMiXAVfLLtLJhYtG+UmgpEGycA=;
- b=taU8otBZC0BXYC6G5DxybVDcjgeae/gqtiXIHORfBbo0ucEfcwvAf+xc8ndKBGXoJpS0zTc7Z
- pREDLOn381JWF2wUIinVgAXIJmiFlile5j9AlkICe3Qje5piQtc4IBPyxrwt4epznI+6g73DWH/
- hgu6qq7V4zUHCiUDpsBj/g/7gYiNzI1BlExocbhZhtsrp7qV4n9DPKuhd/BZ96FBoFff6NfRNaF
- xrpn7IKHxIoWS0jxq3G4x4ZA27+PsHynXMFRRUo9bRxogWgrPPFWOF/Mu/IqfSrcpB9DlwxCLou
- QM0pvv6WdW7pVSO353ovghor/gS9uKGH87U39D3WwjPg==
-X-Forward-Email-ID: 688669e9c509b9ee169cf326
+ t=1753639417; bh=EeTBhSz8vgF+IOB9tNLiutH2dTp1nA31ocl9xEGhTRc=;
+ b=qVxk37QdsFmyBwsPmVVVTu+fQV7SbbUF8wKX93RzN9NQQxtJPxLIHUrLdmxynuaGdG9uFy52z
+ WQbM9H+U07PPr7/Mx4qXb8bm5QcKbTMnhLWcDXV4w9LzrS9DnyiSuDfAcwSxZ2AQdv7zRnkQlOb
+ ht4lQ/LxI6BL6MCoFXYD3VZqflal/nWN9rv+BN9L96o9qQhx/Hq9usfSZpIkc5nibUbABC6RC3E
+ b5Dz5HQ7gUgoL2LJk/hMYnHkWYmAs/kpyT2L8F/MOw+ZA6U0gSLrlQ42/tC/YpNHvuao5op5b1r
+ 8iNiHV3S1/kpoC8yH+CGptcs3JOV3gesLJSZUd347IKQ==
+X-Forward-Email-ID: 688669eec509b9ee169cf33b
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
 X-Forward-Email-Version: 1.1.7
@@ -49,28 +49,32 @@ To: Linus Walleij <linus.walleij@linaro.org>,
 	=?UTF-8?q?Alvin=20=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
 	Andrew Lunn <andrew@lunn.ch>,
 	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: "David S . Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>
-Cc: Yao Zi <ziyao@disroot.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Yao Zi <ziyao@disroot.org>,
 	Chukun Pan <amadeus@jmu.edu.cn>,
-	Heiko Stuebner <heiko@sntech.de>,
 	netdev@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH net-next 2/3] net: dsa: realtek: Add support for use of an optional mdio node
-Date: Sun, 27 Jul 2025 18:02:59 +0000
-Message-ID: <20250727180305.381483-3-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>,
+	devicetree@vger.kernel.org
+Subject: [PATCH 3/3] arm64: dts: rockchip: Add RTL8367RB-VB switch to Radxa E24C
+Date: Sun, 27 Jul 2025 18:03:00 +0000
+Message-ID: <20250727180305.381483-4-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250727180305.381483-1-jonas@kwiboo.se>
 References: <20250727180305.381483-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250727_110330_429237_EF39D218 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20250727_110337_941767_15F09A05 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,91 +91,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The dt-bindings schema for Realtek switches for unmanaged switches
-contains a restriction on use of a mdio child OF node for MDIO-connected
-switches, i.e.:
+The Radxa E24C has a Realtek RTL8367RB-VB switch with four usable ports
+and is connected using a fixed-link to GMAC1 on the RK3528 SoC.
 
-  if:
-    required:
-      - reg
-  then:
-    not:
-      required:
-        - mdio
-    properties:
-      mdio: false
-
-However, the driver currently requires the existence of a mdio child OF
-node to successfully probe and properly function.
-
-Relax the requirement of a mdio child OF node and assign the dsa_switch
-user_mii_bus to allow a MDIO-connected switch to probe and function
-when a mdio child OF node is missing.
+Add an ethernet-switch node to describe the RTL8367RB-VB switch.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/net/dsa/realtek/rtl83xx.c | 26 ++++++++++++++++++++++----
- 1 file changed, 22 insertions(+), 4 deletions(-)
+Initial testing with iperf3 showed ~930-940 Mbits/sec in one direction
+and only around ~1-2 Mbits/sec in the other direction.
 
-diff --git a/drivers/net/dsa/realtek/rtl83xx.c b/drivers/net/dsa/realtek/rtl83xx.c
-index 9a05616acea8..47a09b27c4fa 100644
---- a/drivers/net/dsa/realtek/rtl83xx.c
-+++ b/drivers/net/dsa/realtek/rtl83xx.c
-@@ -1,5 +1,6 @@
- // SPDX-License-Identifier: GPL-2.0+
+The RK3528 hardware design guide recommends that timing between TXCLK
+and data is controlled by MAC, and timing between RXCLK and data is
+controlled by PHY.
+
+Any mix of MAC (rx/tx delay) and switch (rx/tx internal delay) did not
+seem to resolve this speed issue, however dropping snps,tso seems to fix
+that issue.
+
+Unsure what is best here, should MAC or switch add the delays? Here I
+just followed DT from vendor downstream tree and added rx/tx internal
+delay to switch.
+
+Vendor downstream DT also adds 'pause' to the fixed-link nodes, and this
+may be something that should be added here. However, during testing flow
+control always ended up being disabled so I skipped 'pause' here.
+
+Schematics: https://dl.radxa.com/e/e24c/docs/radxa_e24c_v1200_schematic.pdf
+---
+ .../boot/dts/rockchip/rk3528-radxa-e24c.dts   | 55 +++++++++++++++++++
+ 1 file changed, 55 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e24c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e24c.dts
+index 225f2b0c5339..26754ff7f4ef 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e24c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e24c.dts
+@@ -196,6 +196,7 @@ &cpu3 {
+ };
  
-+#include <linux/irqdomain.h>
- #include <linux/module.h>
- #include <linux/regmap.h>
- #include <linux/of_mdio.h>
-@@ -64,7 +65,7 @@ static int rtl83xx_user_mdio_write(struct mii_bus *bus, int addr, int regnum,
-  * @ds: DSA switch associated with this user_mii_bus
-  *
-  * Registers the MDIO bus for built-in Ethernet PHYs, and associates it with
-- * the mandatory 'mdio' child OF node of the switch.
-+ * the optional 'mdio' child OF node of the switch.
-  *
-  * Context: Can sleep.
-  * Return: 0 on success, negative value for failure.
-@@ -75,11 +76,14 @@ int rtl83xx_setup_user_mdio(struct dsa_switch *ds)
- 	struct device_node *mdio_np;
- 	struct mii_bus *bus;
- 	int ret = 0;
-+	int irq;
-+	int i;
- 
- 	mdio_np = of_get_child_by_name(priv->dev->of_node, "mdio");
--	if (!mdio_np) {
--		dev_err(priv->dev, "no MDIO bus node\n");
--		return -ENODEV;
-+	if (mdio_np && !of_device_is_available(mdio_np)) {
-+		dev_err(priv->dev, "no available MDIO bus node\n");
-+		ret = -ENODEV;
-+		goto err_put_node;
- 	}
- 
- 	bus = devm_mdiobus_alloc(priv->dev);
-@@ -95,6 +99,20 @@ int rtl83xx_setup_user_mdio(struct dsa_switch *ds)
- 	snprintf(bus->id, MII_BUS_ID_SIZE, "%s:user_mii", dev_name(priv->dev));
- 	bus->parent = priv->dev;
- 
-+	if (!mdio_np) {
-+		ds->user_mii_bus = bus;
-+		bus->phy_mask = ~ds->phys_mii_mask;
+ &gmac1 {
++	/delete-property/ snps,tso;
+ 	clock_in_out = "output";
+ 	phy-mode = "rgmii-id";
+ 	phy-supply = <&avdd_rtl8367rb>;
+@@ -368,6 +369,60 @@ &mdio1 {
+ 	reset-delay-us = <25000>;
+ 	reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
+ 	reset-post-delay-us = <100000>;
 +
-+		if (priv->irqdomain) {
-+			for (i = 0; i < priv->num_ports; i++) {
-+				irq = irq_find_mapping(priv->irqdomain, i);
-+				if (irq < 0)
-+					continue;
-+				bus->irq[i] = irq;
-+			}
-+		}
-+	}
++	ethernet-switch@1d {
++		compatible = "realtek,rtl8365mb";
++		reg = <0x1d>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&rtl8367rb_eint>;
 +
- 	ret = devm_of_mdiobus_register(priv->dev, bus, mdio_np);
- 	if (ret) {
- 		dev_err(priv->dev, "unable to register MDIO bus %s\n",
++		ethernet-ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			ethernet-port@0 {
++				reg = <0>;
++				label = "wan";
++			};
++
++			ethernet-port@1 {
++				reg = <1>;
++				label = "lan1";
++			};
++
++			ethernet-port@2 {
++				reg = <2>;
++				label = "lan2";
++			};
++
++			ethernet-port@3 {
++				reg = <3>;
++				label = "lan3";
++			};
++
++			ethernet-port@6 {
++				reg = <6>;
++				ethernet = <&gmac1>;
++				label = "cpu";
++				phy-mode = "rgmii-id";
++				rx-internal-delay-ps = <2000>;
++				tx-internal-delay-ps = <2000>;
++
++				fixed-link {
++					speed = <1000>;
++					full-duplex;
++				};
++			};
++		};
++
++		interrupt-controller {
++			interrupt-parent = <&gpio1>;
++			interrupts = <RK_PC2 IRQ_TYPE_LEVEL_LOW>;
++			interrupt-controller;
++			#address-cells = <0>;
++			#interrupt-cells = <1>;
++		};
++	};
+ };
+ 
+ &pinctrl {
 -- 
 2.50.1
 
