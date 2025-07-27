@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC01C87FCE
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Jul 2025 10:38:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E85B7C87FCE
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Jul 2025 15:02:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fV7jDnzrAruW2uKzdq80W6M/c7o5jVIYEu5XyX28qRE=; b=fKk/u0bSSWA0he
-	qJLpLVcn0ADBDrFipXnrdRFIiFSbwteP+Xu+4qcNU4KJnEQ+C0QT4R/ND/axIgqHsGIScbKVd9xw4
-	9KHsV6fM4uynDBl17OnDISLWtMnRPxqW1/xm5WZn8YH6Us3bszfmwgfWiLzeyb8kHCQp7eRGmQbMp
-	/kfrdA0C6y9fBOsplrU/5WVd/Vwj/MurKEUTRP1MwtRjcgPnEMg2d5l4jxSdrbysVbUrEgLTJc0ST
-	fmB2HqxOeuke32lfjcI6S0y5PMHHP3ApWqgqNLTZbxjlxoogQ2tllQqtleP7zJKPSIpIHTUwX9ASc
-	Uvh5Mc5ajT12/1gX0NFQ==;
+	List-Owner; bh=myQgXEwTbgH9BlPxAgyGeKq6XkJ4bzsEfw1atH8O5h0=; b=N/sPGfq/5/x17B
+	5TRIr9YUAUu6OHD2AySVi/SiNPhOdCV/GFmSBlmWSWwUIMbhK2zrVDKfkl54uuqvlE29GvK4YDwts
+	mpXTe6QthrvCbSt6fG8vbv79SGZRdQaK3ZUL9WcBqWUjbAmnFTzWzrDTEuMYyxQZ7uhztPaDfcsOr
+	TWrWLFMz6H9slln2D/KM1X8p0PbfaYXJgsnG5p7ITUDduxsb0NEwP/OCUi7MY8jozEXTo1TuIBLPy
+	y2v6QZf2OUBWdwz6I6KFIA1J+woQfkSjM9bfED40p3GgKlwq4nIHNEYfwTWWlhYIkmiu8034I6i6G
+	yYiKP9lRA0qyWClxlTQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufyle-0000000CcWe-3xaO;
-	Sun, 27 Jul 2025 10:38:10 +0000
-Received: from smtp-19.smtpout.orange.fr ([80.12.242.19] helo=smtp.smtpout.orange.fr)
+	id 1ug2t1-0000000ComZ-1V32;
+	Sun, 27 Jul 2025 15:02:03 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ufyDH-0000000CZlm-1oyV;
-	Sun, 27 Jul 2025 10:02:43 +0000
-Received: from fedora.home ([IPv6:2a01:cb10:785:b00:8347:f260:7456:7662])
-	by smtp.orange.fr with ESMTPA
-	id fyD9uBnh5hOKjfyD9uuogC; Sun, 27 Jul 2025 12:02:32 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1753610552;
-	bh=ycw+FwEwMNFwepsTT4M/3aAYYVR3er1gB6c9vBitnyw=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=lg1guOokmw5lhfHrRRpWCP0dJeZtL6mXaidGHd/V/nZamffVp842m+eWMZoh95c3w
-	 hs14scpjDjfaXy1sw5B1j61aojWkm0NpkQ1JpxWvYdZXBD+TklBedyxlXxHU8Y98Ll
-	 uunPw5SyFo+uBKaLmgJZIlwPvZ2jwUC/MvENklEdw0kYleHw5PL7N3ZhJ2lsSMT+CG
-	 EdYp5dJLOiBktvX1WextfW02JqoRp7vc4KHHJOS0H1jALq3gh5gmF+OZ7zzTIWfSIt
-	 NY7Y6FRdpYU9y34t4VDOkfrQ253gM42AZvCLAGHO0mcpZy3BuwGEESx/OgHqgmOmLi
-	 CbrpjNfY63IgA==
-X-ME-Helo: fedora.home
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sun, 27 Jul 2025 12:02:32 +0200
-X-ME-IP: 2a01:cb10:785:b00:8347:f260:7456:7662
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Detlev Casanova <detlev.casanova@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	linux-media@vger.kernel.org,
+	id 1ug2bt-0000000Cn6s-2KcQ
+	for linux-rockchip@lists.infradead.org;
+	Sun, 27 Jul 2025 14:44:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1753627459;
+ bh=cHbYnH0ztRM4vrUIrRVJUpu82xoEnhr6aNYoNap29Zs=;
+ b=gYXjzAoKEdGATAUVnUKfmGtN/6HPTqoPil1XJfL2LuFLSxYq0an+dK2+jyCkyEYxMnR+z6jDH
+ 5DyqnPJ69GM8jyGisdunAhycK+0W/7YZQHfHtXw+QO6IKQlxw9dbAFL+8KqB2qoEtdcWjOLaVED
+ 9ONArJuNZD5jgnQey8SJxxNbgcr7E1sps6HtejKG38dHoyQgex4USRGaFKN1q6JEsF93dMuXbzQ
+ rNRdMI0sXsV6S7eiY/F+H3ynTJ6WOJd1WKRQK4ToFHOh63zebDFIWD+zdn8Z7QeItjcoSOoHCWR
+ 0bOJkWoCPzamX0mBGkxr8vxmA5DQlg7OwpDpupVz15qg==
+X-Forward-Email-ID: 68863b3fc752737c6c097854
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 1.1.7
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Yao Zi <ziyao@disroot.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] media: rkvdec: Fix an error handling path in rkvdec_probe()
-Date: Sun, 27 Jul 2025 12:02:21 +0200
-Message-ID: <b69c20783a7b6f7964ab636679d3da80fc48372e.1753610517.git.christophe.jaillet@wanadoo.fr>
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH 0/3] arm64: dts: rockchip: Add Radxa E24C
+Date: Sun, 27 Jul 2025 14:44:00 +0000
+Message-ID: <20250727144409.327740-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250727_030239_878919_C9378CBB 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20250727_074421_928961_F31B2A34 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,53 +80,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If an error occurs after a successful iommu_paging_domain_alloc() call, it
-should be undone by a corresponding iommu_domain_free() call, as already
-done in the remove function.
+This series adds dt-bindings and initial device tree for the Radxa E24C.
 
-Fixes: ff8c5622f9f7 ("media: rkvdec: Restore iommu addresses on errors")
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-Compile tested only
----
- drivers/media/platform/rockchip/rkvdec/rkvdec.c | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
+The product page for E24C mentions that onboard eMMC is optional and the
+model I have come with SPI flash instead of eMMC.
 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-index d707088ec0dc..eb0d41f85d89 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-@@ -1169,15 +1169,17 @@ static int rkvdec_probe(struct platform_device *pdev)
- 	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
- 
- 	irq = platform_get_irq(pdev, 0);
--	if (irq <= 0)
--		return -ENXIO;
-+	if (irq <= 0) {
-+		ret = -ENXIO;
-+		goto err_free_domain;
-+	}
- 
- 	ret = devm_request_threaded_irq(&pdev->dev, irq, NULL,
- 					rkvdec_irq_handler, IRQF_ONESHOT,
- 					dev_name(&pdev->dev), rkvdec);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Could not request vdec IRQ\n");
--		return ret;
-+		goto err_free_domain;
- 	}
- 
- 	pm_runtime_set_autosuspend_delay(&pdev->dev, 100);
-@@ -1193,6 +1195,9 @@ static int rkvdec_probe(struct platform_device *pdev)
- err_disable_runtime_pm:
- 	pm_runtime_dont_use_autosuspend(&pdev->dev);
- 	pm_runtime_disable(&pdev->dev);
-+err_free_domain:
-+	if (rkvdec->empty_domain)
-+		iommu_domain_free(rkvdec->empty_domain);
- 	return ret;
- }
- 
+On RK3528 the eMMC and SPI flash is muxed so only one of them can work.
+
+I have included both SPI flash and eMMC nodes in the device tree,
+however the sdhci node has been marked with status=fail. Something that
+possible could be enabled using a DTBO or FDT fixup by the bootloader.
+
+This also leaves out describing the RTL8367RB-VB switch as support for
+the switch requires dt-binding and/or driver changes to make it work,
+something that will be handled in a separate follow-up series.
+
+This board can be booted from SD-card using the U-Boot 2025.07
+generic-rk3528 target or preferably using work-in-progress patches [1].
+
+This series depends on following series for a clean apply:
+- arm64: dts: rockchip: Add ROCK 2A/2F, Sige1 and NanoPi Zero2 [2]
+- rockchip: Add power controller support for RK3528 [3]
+- rockchip: Add USB 2.0 support for RK3528 [4]
+
+A branch with all these (and some more) patches can be found at [5].
+
+[1] https://source.denx.de/u-boot/contributors/kwiboo/u-boot/-/commits/rk3528
+[2] https://lore.kernel.org/r/20250717103720.2853031-1-jonas@kwiboo.se
+[3] https://lore.kernel.org/r/20250723085654.2273324-1-jonas@kwiboo.se
+[4] https://lore.kernel.org/r/20250723122323.2344916-1-jonas@kwiboo.se
+[5] https://github.com/Kwiboo/linux-rockchip/commits/next-20250722-rk3528/
+
+Jonas Karlman (3):
+  arm64: dts: rockchip: Add SFC node for RK3528
+  dt-bindings: arm: rockchip: Add Radxa E24C
+  arm64: dts: rockchip: Add Radxa E24C
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   6 +-
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3528-radxa-e24c.dts   | 519 ++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi      |  12 +
+ 4 files changed, 536 insertions(+), 2 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-radxa-e24c.dts
+
 -- 
 2.50.1
 
