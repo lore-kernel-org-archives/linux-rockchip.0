@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A107C87FCE
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Jul 2025 15:02:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85E4CC87FCC
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Jul 2025 15:02:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cZ9f1Lzfhp3Cb178tRhMW487nDMl4iUgIn9lXU2Vl1w=; b=P5JTO8w3IWRb/Z
-	qP+ModfTG5A886G60kC4/siPlW+9G089IEgDiAMq9cLOx0+kcVd/mj88oT1g2ahuZnM7hRwGt7u1Z
-	deiWojH6UaAN1y3zX9hYw92mzKR7GSZhc2BrJvDUSHQYQrMo31ZTVG7haBve9huvXjTy60M/10aK6
-	rvfeAWGP6WZJnH7oVq1sArp98dk96V7b0h+vfY51vT0ei4kH9zi0bPvZXTXwkCIMiRppJaLRQ6KR8
-	hJn7wooLl9eEisD294bne5wW3E0XtVzpJohYruk1qHVgZnqWvWodENoYomyBz0giBgeOcume0zC6N
-	gqWgrUWbdOy9kGTsbggA==;
+	List-Owner; bh=pd+oeCMrKM7OwysjF1w1Z9+Te7ZEmmkZBh1uDqzydgA=; b=FTKF5RRfqNtZXi
+	nRopg4GaTZAvdAxGCO7O3keVMXwNoJk7rfXPWbwPHhyy+UK/4tJ7Ii0WiEQPKjZ7YaLh2xXw/z0VS
+	oVjfqzQAIgnoocIrAOojlQxhnl1Jrgsb8uMEMurPjjo5W1fDNbM7IzQWgn1pRJN4aTP55LAZg7DR/
+	z+2yBbAUfZ5HoreOIchDO/ty/SHP5rdFuOp3fmAZ17WDpWiENxx2JckyAfH4jsVgSR2/ToV1hOXfk
+	r11ASvweX+rhoMorpPZv3hq5whzqmY5zBjq1W3vdpRmq+X1ILQe4uSeltj2wTUdcXOErQ5hEY6JjJ
+	wqkkeE3aKFUhXa7AQSXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ug2tC-0000000Coqi-0YZV;
+	id 1ug2tC-0000000Cor1-1zlx;
 	Sun, 27 Jul 2025 15:02:14 +0000
 Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ug2bv-0000000Cn7d-13Oi
+	id 1ug2c0-0000000Cn8i-1RIb
 	for linux-rockchip@lists.infradead.org;
-	Sun, 27 Jul 2025 14:44:24 +0000
+	Sun, 27 Jul 2025 14:44:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1753627462; bh=3ETGr9nGI2JrVhT/rXZdTDhtjuBKP4m13iSkZEx+nqA=;
- b=tDrLTID3o2FTuhtEQ/otmm53YgIPq6gL/pYVY9ViOVe6wbs6FkVtJKcYuOaDdc5kGW9MQ44zj
- MfjXzTwE4VBUE9ukwUK9QzhBTiguBv4GwJ9nNhBAvfnQZyWnbuhq1uifwkrr+VHKCxVQbFZYTSP
- p4e/Otc4ER0uAV8eMOPf+pB4GYunQ9MTtC2zmYo9f39Bs/VH0iFUhtqhONYP5B3FL/T8Gws3gt7
- cVUsy+HRSlRvt6AVToseur9fcy7RzkdpfXZvzMsHIloTacgwSWuoNtuxiW49LHnrB6Y6Ii212Lf
- 7O5QKcGoTHYwwJPOLai9OAXu/yKJoAGU34Ch84ewL7Lw==
-X-Forward-Email-ID: 68863b43c752737c6c097874
+ t=1753627467; bh=5KkCjLGin8VBSyRUFqdEAC5Ls5N/o8F13r5OT8O7IgI=;
+ b=FMvMNvkOLUppX9yRr0Qhh6ag3WCLIoob45kasFLHVRwBrmIQ6aCUeER7wDZgnIyZ7V17/Epnn
+ RFqd2hmw6VmSXE+an6SjYY5x+/Svha1ISbVGzgP2e7vOaa1d0sU4blsApakuYON2Op7Rhdjnj4w
+ EJEolzDpGz71JvqInHvX0yVNWKRufxBiUVgtvPtz623QF0VcRAITzD++gkUZ88YkszLI1MVSfC0
+ eFpDzUQBzCTYFQht0ltv1RMmcK0WzIR+sh4LyRj6kiiiK1mIjXrlcTYpHf27Z2VMejKDDhiC5Hl
+ YnHJe0yxOZZQtBhzj5rXwonQlvemUgmi+vEegoGA3ceQ==
+X-Forward-Email-ID: 68863b46c752737c6c09788e
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  121.127.44.73
 X-Forward-Email-Version: 1.1.7
@@ -56,16 +56,16 @@ Cc: Yao Zi <ziyao@disroot.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 1/3] arm64: dts: rockchip: Add SFC node for RK3528
-Date: Sun, 27 Jul 2025 14:44:01 +0000
-Message-ID: <20250727144409.327740-2-jonas@kwiboo.se>
+Subject: [PATCH 2/3] dt-bindings: arm: rockchip: Add Radxa E24C
+Date: Sun, 27 Jul 2025 14:44:02 +0000
+Message-ID: <20250727144409.327740-3-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250727144409.327740-1-jonas@kwiboo.se>
 References: <20250727144409.327740-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250727_074423_383474_7C163517 
-X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-CacheID: sfid-20250727_074428_479158_14EA8A6A 
+X-CRM114-Status: UNSURE (   8.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,40 +83,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Flexible Serial Flash Interface (FSPI) controller in Rockchip RK3528
-is similar to the one included in e.g. RK3568 and RK3588.
+The Radxa E24C is a compact, high-performance network computer
+developed by Radxa, based on the Rockchip RK3528A SoC.
 
-Add device tree node for the Flexible Serial Flash Interface (FSPI)
-controller in RK3528.
+Add devicetree binding documentation for the Radxa E24C.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- arch/arm64/boot/dts/rockchip/rk3528.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-index 3e51a3f51e05..49886a4b58f1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-@@ -1077,6 +1077,18 @@ sdhci: mmc@ffbf0000 {
- 			status = "disabled";
- 		};
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index e3d3d483de4a..15b019caefbf 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -875,9 +875,11 @@ properties:
+           - const: radxa,cm3i
+           - const: rockchip,rk3568
  
-+		sfc: spi@ffc00000 {
-+			compatible = "rockchip,sfc";
-+			reg = <0x0 0xffc00000 0x0 0x4000>;
-+			interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
-+			clock-names = "clk_sfc", "hclk_sfc";
-+			power-domains = <&power RK3528_PD_VPU>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
- 		sdio0: mmc@ffc10000 {
- 			compatible = "rockchip,rk3528-dw-mshc",
- 				     "rockchip,rk3288-dw-mshc";
+-      - description: Radxa E20C
++      - description: Radxa E20C/E24C
+         items:
+-          - const: radxa,e20c
++          - enum:
++              - radxa,e20c
++              - radxa,e24c
+           - const: rockchip,rk3528
+ 
+       - description: Radxa E52C
 -- 
 2.50.1
 
