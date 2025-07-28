@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4D4EC83F17
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 15:25:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56F8AC83F26
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 16:36:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hWD6Gwk4GxgqSbjBhcVuWnkN1XnH2zIwh86FP17RnZY=; b=OPdMV+W9pZ57Z1
-	2d/KIiYXwM9gDHy6HBlCxNzZqlMQDiaYOlFSFJq4TaNWLwJWlyxNLCrCIlhSaRuDSDuzqtGbQqKLk
-	8YsELFASp0MNYyhJYp+Wa+kXwA+myNyDLQbPqAkfWoKsIHi1G7IAoM7jpKQRiyYGCxrwlznjQFzV2
-	f+RP1GSMaD3QlSzNU+l4I9FAPxtkNXDjgjT9kNTzcdqHm5RNCMfWTBmSbAQm5Z/38iphViVU0IQzN
-	TqLBKX3Wc5V6VB4Ub50SaSk3fXSJMmYCmVnMe4Hv2pB7XIaGtqPbizCNPXeM+W2QSW/Kw9DmUMusG
-	Qm2+ZIgzgdWX/O5j3Xrw==;
+	List-Owner; bh=6ctrCFFD5yC0pJCaE65dbhOMOleqF1dnIlNDZ6ehJsM=; b=zMqQyscZT1l54I
+	maJZFbUVZLuogVnqESQEDBunErhsgdT8V+mhhuyCkg2fHRj2zQ9vGsK57dRE+66QXuR4gL5nYIKPy
+	iODnUQPfQyyU9rvWgkN/wEHBVSEHCpE+o5RJxm8MCL8L49MVdehH4yHirNj2FwD94XtUU60ieXPm2
+	DepgY+i28uz2DrpTynm3Myb4K2OYXyp54nk2ms62d3akakyheG69+834wqgMLC5BkyJwnXnJZ3Myi
+	sm1GTSO2xWtNWntBtlJydft01VYJJPn+pXXXtlrftYd0MsmPN9eQ4OMqmQFn5mHVRA/QPf48DKeKw
+	jXYFfqJKgS2gWqkwacYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugPiy-0000000Enha-0HW6;
-	Mon, 28 Jul 2025 15:25:12 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1ugQq3-0000000EzoF-1ERc;
+	Mon, 28 Jul 2025 16:36:35 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugPiv-0000000Engo-3Cdd
-	for linux-rockchip@lists.infradead.org;
-	Mon, 28 Jul 2025 15:25:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1753716308;
- bh=jd6WXK9KVAKuAai0Rlvgq64nX1IBqeA40jOYWtgY/NM=;
- b=Ht7kIXTrzAxJ2XqdF69wQwLZgJrBtlTk7yG8eIu3q5XwBmRbFwIkNNsjuqdiXpzFRALbsl06r
- 4yLLtXEzlevfBCzVIjm09v8JB2deuQQuvdqlT+mebKsMxWfJwPybzFY+jBa/1n2K3hGX7NjG9X8
- IiLjZbwEn2uZv/FldnlrIC6KrMeK/cdc+V166IM9kkzV5RbOc/tcyce4x/qNYKPzF0Ft9US4McL
- kN+1crFXN8NtCQe+6v6bkF6TlbWP6ae9aYd8Y/FYEt4tTiayST8h5W+TA4rDcczjyntmr3iZ9x7
- sQd3YVgZ3VJbqCX9hL6NJhVdwjV+AxLxxECrWhHU0soQ==
-X-Forward-Email-ID: 68879630351ec66b15a1c462
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 1.1.8
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <1c639c62-cc07-4b3d-a18b-77f93668b88f@kwiboo.se>
-Date: Mon, 28 Jul 2025 17:24:27 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 2/3] net: dsa: realtek: Add support for use of an
- optional mdio node
-To: Andrew Lunn <andrew@lunn.ch>
+	id 1ugPxc-0000000Er3Z-3Kaz;
+	Mon, 28 Jul 2025 15:40:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=q0NF0L3kcXAIrlIUaY/JZCJLHtTs0ZlzHcUdeIHuQes=; b=YFdULwoBKH8lALuAaM6Ubz8QzV
+	wjHrW0iCk5dDulWWurBeJg99G/q/tLpP0xi4V1TdN1kxGQPBiH6PR6QynS+fdE64dxYcbN7TwhsTR
+	4f6sktlQnJnkvbKz846r+1LMZsditTsUH3f7N9H6w1yeviP3WbpZBLT6jX1CZ9c27kSc=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1ugPxO-0036Tn-0m; Mon, 28 Jul 2025 17:40:06 +0200
+Date: Mon, 28 Jul 2025 17:40:06 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Jonas Karlman <jonas@kwiboo.se>
 Cc: Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Yao Zi <ziyao@disroot.org>, Chukun Pan <amadeus@jmu.edu.cn>,
- Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Yao Zi <ziyao@disroot.org>, Chukun Pan <amadeus@jmu.edu.cn>,
+	Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net-next 2/3] net: dsa: realtek: Add support for use of
+ an optional mdio node
+Message-ID: <2f942223-8683-4808-8f7a-4f46e18f402d@lunn.ch>
 References: <20250727180305.381483-1-jonas@kwiboo.se>
  <20250727180305.381483-3-jonas@kwiboo.se>
  <2504b605-24e7-4573-bec0-78f55688a482@lunn.ch>
  <badef015-22ff-4232-a4d0-80d2034113ca@kwiboo.se>
  <9702f3da-f755-4392-bf2b-28814ee0a8c7@lunn.ch>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <9702f3da-f755-4392-bf2b-28814ee0a8c7@lunn.ch>
+ <1c639c62-cc07-4b3d-a18b-77f93668b88f@kwiboo.se>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1c639c62-cc07-4b3d-a18b-77f93668b88f@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_082509_867165_4FBD50E5 
-X-CRM114-Status: GOOD (  20.23  )
+X-CRM114-CacheID: sfid-20250728_084020_828564_39886910 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,65 +81,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
+> When it comes to having the switch being described as an interrupt
+> controller in the DT is also very wrong, the switch only consume a
+> single HW interrupt. The fact that the driver creates virtual irq for
+> each port is purely a software construct and is not something that
+> should be reflected in the DT.
 
-On 7/28/2025 12:09 AM, Andrew Lunn wrote:
->> Something like above does not seem to work, I get following:
->>
->>   mdio_bus stmmac-0: MDIO device at address 0 is missing.
->>   mdio_bus stmmac-0: MDIO device at address 1 is missing.
->>   mdio_bus stmmac-0: MDIO device at address 2 is missing.
->>   mdio_bus stmmac-0: MDIO device at address 3 is missing.
-> 
-> O.K, So i was wrong.
-> 
->> And without an explicit 'mdio' child node the driver currently fails to
->> load and the switch is never registered:
->>
->>   rtl8365mb-mdio stmmac-0:1d: found an RTL8367RB-VB switch
->>   rtl8365mb-mdio stmmac-0:1d: no MDIO bus node
->>   rtl8365mb-mdio stmmac-0:1d: could not set up MDIO bus
->>   rtl8365mb-mdio stmmac-0:1d: error -ENODEV: unable to register switch
-> 
-> So, not having an MDIO node was a long time ago seen as a short cut
-> for when there was a clear 1:1 mapping between port number and PHY bus
-> address. It still works, but it is somewhat deprecated. It also seems
-> like it is become more normal to need additional properties, like what
-> interrupt the PHY is using, the LEDs it has, etc.
+I think that is not always clear cut. Switches can be considered SoC
+of their own. They have multiple hardware blocks, which can be
+described independent, just like a traditional SoC and its .dtsi
+file. The switch blocks can then be connected together in the same way
+SoCs are.
 
-Sure, no problem to change to a more verbose DT even when there is a
-clear 1:1 mapping between port, phy and interrupt here.
+I've not looked at this particular switch driver, but the Marvell
+switches have a similar single interrupt output pin connected to the
+host SoC. Within the switch, there are at least two cascaded interrupt
+controllers. We implement standard Linux interrupt controllers for
+these. That allows us to use standard DT properties to link the
+internal PHY interrupts to these interrupt controllers.
 
-When it comes to having the switch being described as an interrupt
-controller in the DT is also very wrong, the switch only consume a
-single HW interrupt. The fact that the driver creates virtual irq for
-each port is purely a software construct and is not something that
-should be reflected in the DT.
-
-Possible something for a future series to clean up.
-
-> 
->>
->> With a 'mdio' child node 'make CHECK_DTBS=y' report something like:
->>
->>   rockchip/rk3528-radxa-e24c.dtb: ethernet-switch@1d (realtek,rtl8365mb): mdio: False schema does not allow { [snip] }
->>         from schema $id: http://devicetree.org/schemas/net/dsa/realtek.yaml#
->>
->> So something should probably be changed, the driver, dt-bindings or
->> possible both.
-> 
-> I think you should allow an MDIO node in DT. This is the only DSA
-> driver that i know of which does not allow it.
-
-Sure, I will drop this driver change and instead update the dt-binding
-to allow use of a mdio node when the reg prop is defined.
-
-Regards,
-Jonas
-
-> 
-> 	Andrew
-
+	 Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
