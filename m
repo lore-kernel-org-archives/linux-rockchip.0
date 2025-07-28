@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 706F3C87FCB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 17:21:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E270C83F17
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 17:35:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I/OV6uYHDNri5074BrsgtlsoMM2fTQxCKjTYIZxTLP4=; b=P39fFs3k5pd0i2
-	jCXHCNH73nrP73AcqV/mqg8aRT/hY9AB4XRRwPOG2ueuhPcz5WbtnAHK2Sarkv+UGCqm8F1qmh877
-	K8McsrE8/NH7r8WHu6kGVqSLVP9SThbqM+3QOmjin17LmqGaN5tPfAiPDpr6krj/LxzXdlZOsqE3d
-	WOluufSBJGXyssAueE3uS06gzV8wrr9y4s1ReQTK8POtr2O0TE3QceS6q3M1kqKqxRlVvbqdcSmEw
-	YdstCjlurhr/thr3nRv4qiNFbuPUw/aCrobVQA0/gGDPx33dUXCnyQFkfIviF2gEsWm566xIXmLmu
-	2rq/PRhIecxwXosJL3+A==;
+	List-Owner; bh=oZCBshYHnIuPqqpX2Dp+BGEwmTX0ksAsdhmk62H93kE=; b=rbMguX43at62BT
+	DF7gldqrr+4tCfblUNu4Z4TXW1ElMqN1M9Xj43rILmVf5oxG9nBUAb8jV2MVVlIQz0rowOQ92nHmp
+	LSrAA2SEPO/i5bfeSrm9rCCqnFPBGzxlkjs8BpIo/rjkmXJyuSdHeBnRfxtCypUsjUgFy6CQYBcq8
+	N+NK55Pc3SYC1I3PPTCNi3+oX1vc6BA4lWonmsay5PE/FqadcdBzHkRFhwsq0+D7tmjEOJJVwqILL
+	cMkkLL+KEqrse0llOri6QZxBjNLjm3iRZ01bnu++CrjoArjjZQlsfUNraq6/AaIzfbW7ysSpFwkTk
+	QnpkDsYpPFHw2iNAvR5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugRXj-0000000F5eM-3bp8;
-	Mon, 28 Jul 2025 17:21:43 +0000
+	id 1ugRkh-0000000F7BQ-2xCn;
+	Mon, 28 Jul 2025 17:35:07 +0000
 Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugQYf-0000000ExQZ-0lbs
+	id 1ugRM5-0000000F4PW-3C2N
 	for linux-rockchip@lists.infradead.org;
-	Mon, 28 Jul 2025 16:18:38 +0000
+	Mon, 28 Jul 2025 17:09:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
  Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1753719516;
- bh=YyHnFzhHfGPVWYtWBHmq/4Wb5XjJqFHdWikvdnddpqs=;
- b=WaQKzh3hOSXdXdy5mQgnvyjJb0Na4DnOT1Wz3QITFXm88IPAvrmFyp079cdykUeDZUrRtjVJx
- ZSENRiJNdjJYe4JXICI05YwRKHO9kT+5OVG4ZHd3+dyWRSPLh1VLm8AGfn8s2fBXl40MEV8sH+u
- SVclwYB+Wy90wVx5pyFEBtaxN9ACi9sWvA/1KIzhKRgKL45vOnseXPB2SGTlrPHqdjS2XIIVzSR
- HYpB6ilfBisjD8xYkBrf8iabN/AeVxx7qzKl/kH8QA9DZ9KtKJCGiDzGrTuXPpP2OzCIp0xZO1v
- OlvspV4AuAzSXANiqfp5KQPC4+2AYEmKyAeL2hURatyQ==
-X-Forward-Email-ID: 6887a2d9351ec66b15a23cb7
+ s=fe-e1b5cab7be; t=1753722580;
+ bh=o1SAkKfZM3NhF3wZAPT2jfOda4w4lWqHgHvXSycv5Gc=;
+ b=apYcas1zRvWrusiROXe1jSQkmSJA5WYX12wDbJ5QxExI3w/CDIgBbp/Pu9MscBV9Y4HtVV7My
+ Uwz/+//yfpq5I0Etpl4q+3fpE2ZpvyNuuVnX/VTCnaqKHOmYN49XrHCaXEDYeNWTm/+NIGBad1N
+ 2lM6IMe+eWbjMHKZYbmctoBzOimZRKSyuLUVYSNkIYjJsKU5eG0RlIaEAxQCt3AceGHnRumoO9H
+ LoL07U4xuP8ShO+pp4WLlBeu4G+kVUcjCQru7E6bGvGrqvbSoBRtvjI7/v8p5nGATGHo9Np+XVd
+ B9BLIazpP6cVTe3lHFeFJlNY4YzhxiXR/MxOrIU/1ApQ==
+X-Forward-Email-ID: 6887aebc351ec66b15a29e9b
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  121.127.44.73
 X-Forward-Email-Version: 1.1.8
@@ -45,28 +45,24 @@ X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <bd253ee7-742b-4fdb-8ce2-4976d4578a3a@kwiboo.se>
-Date: Mon, 28 Jul 2025 18:18:29 +0200
+Message-ID: <e2fd11db-543a-43eb-b118-9f246ff149b5@kwiboo.se>
+Date: Mon, 28 Jul 2025 19:09:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Add SFC node for RK3528
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add Radxa E24C
 To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "heiko@sntech.de" <heiko@sntech.de>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "ziyao@disroot.org" <ziyao@disroot.org>
-References: <20250727144409.327740-2-jonas@kwiboo.se>
- <20250728070038.174726-1-amadeus@jmu.edu.cn>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
+ krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh@kernel.org, ziyao@disroot.org
+References: <20250727144409.327740-4-jonas@kwiboo.se>
+ <20250728125015.988357-1-amadeus@jmu.edu.cn>
 Content-Language: en-US
 From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250728070038.174726-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20250728125015.988357-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_091837_308044_9A37D3D0 
-X-CRM114-Status: UNSURE (   9.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250728_100941_900848_EDA0AACB 
+X-CRM114-Status: GOOD (  25.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,27 +81,110 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Chukun,
 
-On 7/28/2025 9:00 AM, Chukun Pan wrote:
+On 7/28/2025 2:50 PM, Chukun Pan wrote:
 > Hi,
 > 
->> +		sfc: spi@ffc00000 {
->> +			compatible = "rockchip,sfc";
->> +			reg = <0x0 0xffc00000 0x0 0x4000>;
->> +			interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH>;
->> +			clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
->> +			clock-names = "clk_sfc", "hclk_sfc";
+>> +	avddl_1v1: avddh_3v3: avdd_rtl8367rb: regulator-avdd-rtl8367rb {
+>> +		compatible = "regulator-fixed";
+>> +		enable-active-high;
+>> +		gpios = <&gpio1 RK_PC3 GPIO_ACTIVE_HIGH>;
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&gpio_8367_en>;
+>> +		regulator-name = "avdd_rtl8367rb";
 > 
-> The clock* should be placed before interrupts.
+> I don't see the avdd_rtl8367rb regulator in the schematics. It looks like
+> DVDDIO (RTL8367RB power) is connected to AVDDH_3V3 via a magnetic bead.
 
-Thanks for catching this, will fix in v2.
+Both avddl_1v1 and avddh_3v3 are controlled by the same gpio, I do not
+remember if using two regulators with same gpios is supported, can only
+remember it being an issue in the past, so I opted to just describe it
+as a single regulator and gave it a new name and added labels for the
+name used in schematic.
 
-> BTW, doesn't the sfc node need to configure pinctrl?
+Would calling it vdd_8367 (after gpio_8367_en) be better or do you have
+any other suggestion on how to describe these?
 
-Not sure if it make sense to have a default here. fspi_pins is most
-likely always used, however fspi_csn0 and/or fspi_csn1 is probably board
-specific.
+I will at least add a comment related to this regulator for v2.
 
-On the Radxa E24C only fspi_csn0 and fspi_pins are used.
+> 
+>> +&gmac1 {
+>> +	clock_in_out = "output";
+>> +	phy-mode = "rgmii-id";
+>> +	phy-supply = <&avdd_rtl8367rb>;
+>> +	pinctrl-names = "default";
+>> +	pinctrl-0 = <&rgmii_miim>, <&rgmii_tx_bus2>, <&rgmii_rx_bus2>,
+>> +		    <&rgmii_rgmii_clk>, <&rgmii_rgmii_bus>, <&gmac1_rstn_l>;
+> 
+> Should the pinctrl of gmac1_rstn_l be written together with the
+> reset-gpios of the rtl8367rb switch?
+
+When defining pinctrl to the mdio1 node they are not applied, and there
+was issues probing the switch when using reset-gpios of the switch.
+So I opted to describe the switch reset as the mdio bus reset.
+
+I guess we should describe the HW and not work around SW issues, will
+change in v2.
+
+> 
+> ```
+> reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
+> pinctrl-0 = <&gmac1_rstn_l>;
+> ```
+> 
+>> +&i2c0 {
+>> +	pinctrl-names = "default";
+>> +	pinctrl-0 = <&i2c0m0_xfer>;
+>> +	status = "okay";
+>> +
+>> +	rk805: pmic@18 {
+>> +		compatible = "rockchip,rk805";
+>> +		reg = <0x18>;
+>> +		interrupt-parent = <&gpio4>;
+>> +		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
+>> +		#clock-cells = <1>;
+>> +		clock-output-names = "rk805-clkout1", "rk805-clkout2";
+> 
+> The clkout pin is not connected, but the dt-bindings require it.
+> Maybe clock-output-names could be made optional?
+
+Seem the using just #clock-cells = <0> is valid without
+clock-output-names, will use that in v2, thanks.
+
+> 
+> +&mdio1 {
+> +	reset-delay-us = <25000>;
+> +	reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
+> +	reset-post-delay-us = <100000>;
+> +};
+> 
+> I don't think this is correct, reset-gpios should be written on the
+> rtl8365mb switch node. The switch driver has defined the reset time.
+
+See above, I had issues using the reset-gpios of the switch, because the
+switch was probed twice, once deferred by gmac, and by the second probe
+failed with -BUSY because of the reset-gpios still being claimd by the
+first probe.
+
+I can change to describe the reset pin in the switch, however that will
+likely mean Ethernet is unusable until the issue in devres/gpiolib is
+tracked down and fixed by someone.
+
+> 
+> ```
+> &mdio1 {
+> 	switch@29 {
+> 		compatible = "realtek,rtl8365mb";
+> 		reg = <29>;
+> 		reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
+> ```
+
+As mentioned above, this caused probe issues and an unusable switch.
+I would rather skip describing this reset pin as it does not seem to be
+needed it self reset when the regulator is powered on.
+
+Any thoughts on what is better of the two? Skip describing the reset pin
+or describe it and leave the switch possible unusable? Probing gmac
+before the switch should leave it in a working state.
 
 Regards,
 Jonas
