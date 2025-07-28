@@ -4,82 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F76DC83F17
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 10:25:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 875C4C87FC9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 10:33:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hLPASgBuvJXrSD6lXMXoO9cqonzKtIuBHkBGFxkoFxw=; b=r968ouaoGYUgW9
-	FAXOhl0Q0JEHI/JiXd90EH+rg6GvznXmrw+Uam2mIHU4esWagpIJcIRsL7pYSF6WuAi05YsBvypFn
-	Y00Sx68D0+Bhj5hmdbY0mGgc5N3+S8utZjGZlcRaP9HrG0HE7uhixoSY6xUMiKGe96inmFA9B+nsB
-	7Iq/hzf8p7KOEQ5/v6LDQqdRQ1L12ciLi78k6GRte71Mym0UYRAzxsX+gatQA4GUE+HRd8bVtFm5g
-	mUKfYkklwag8qqprm2aNNdPcDC+I5s9L6DsWY6hvGDx5z1rFsqkVz0xwWSPAICAZKZ5Ttj2TBel3y
-	UzkR25lADcgI6PFcnQJQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=th4cz1ZG3zn8UldGMAKkXhDE7OF1iZQfqZ6hWV2NugY=; b=CdlQIQ86HXGEdl
+	CWayckrqp99VWIT+lzJSNhX/I+o9+i12yj1OMELtXlcj8449zDujbZ8iRY/0m30sn7aBNdjfH3Y5k
+	Kj1o8e361jNrw910u82ty69hjc8yqOD/NfjZVh4VRKsrhxD6uONVvrzYKeom3hZCRBk/Ir/jmphZn
+	6ckwInJPf6HiuqS+hVvgQ5UFSQRH4Jit2QYL20G/hchQ7jFTemfqaHaHtTVYAQzG1hVbZccBbyjvL
+	WObSJycZAFhABG3ju1UnqSPmbUl+nLuMh/miS4cpS3M1+hAj+AtPTULhc2bYMod7kNGyba7JU3mzd
+	hFlOChQl/lVN7M3sNNzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugL2J-0000000EDqI-2cVD;
-	Mon, 28 Jul 2025 10:24:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ugLAL-0000000EF3R-3fmy;
+	Mon, 28 Jul 2025 10:33:09 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugKv3-0000000ECXg-1XS0;
-	Mon, 28 Jul 2025 10:17:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=ke/PcRqDTW/FMp/3ob8XCd3S2uQ0KPzfCYd8FTbMaV8=; b=UwYK0bVLPy1JGuvbQa8MY8igmE
-	tj0GERnptCfOFS4kjNGY4a90DEcJcrzuuX6JLQCv7Ox25iwndBBTva+q68TdtU4FDvg0XYmE/NTqo
-	M30uagWK59vvaRVz8Sp0xwjbFX6NEPVyRQRY+84HNGeS++iJoDi3nSYCD5+iSV/qzZrGW2/P5+vim
-	TBAUKfA9152xK/nXgS5WIyJ97Sf8s6yJVqI3bEVuaUqjnmLBoaHd6VLvo8Kcq+RT0SJld+hH37l+a
-	4BtEZPliVYjc+uyZG8uZD7zIa9XJIEL8gV2RPXE7vogU3dK1toYoxDisn739IqIg6L6/Cw5WtLQYb
-	BsoNTr6g==;
-Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugKus-0000000CQxC-00Wk;
-	Mon, 28 Jul 2025 10:17:17 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id CA56143292;
-	Mon, 28 Jul 2025 10:17:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1753697827;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ke/PcRqDTW/FMp/3ob8XCd3S2uQ0KPzfCYd8FTbMaV8=;
-	b=DMrEeugyTNMXGKe1CzbreCKWjokenAc8UxJeIvfsxDVtEzNl5HnTdUD/B1HSBTdFQbfjPx
-	P54fmXSzxO9JNTSKsmBchXcE2W1TKHalp8XfoIdmP1VDl3p1xjT3LnC530DFefdYihPyxY
-	IQa2PJ7mH72uV6k2I7cjE5zjT6gXQlv4UexV94XQmbHuatogHWUtssVcsXMDCIo60ye4wZ
-	XPd4RuBLGVIOofanoAO+aajL+GCpNFnwbOQjPFg1Xdn45yBBgiD4QrtAu/NR8sN02G8Pfa
-	zXHcfOvGH+JuHOMZW5uvrKBz6fw2DA6M+0tPwdXSwu3zHjgwHB0/rn+oJATrXA==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Thomas Fourier <fourier.thomas@gmail.com>
-Cc: Richard Weinberger <richard@nod.at>, 
- Vignesh Raghavendra <vigneshr@ti.com>, Heiko Stuebner <heiko@sntech.de>, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
- Jinjie Ruan <ruanjinjie@huawei.com>, 
- Yifeng Zhao <yifeng.zhao@rock-chips.com>, linux-mtd@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20250707071555.17704-2-fourier.thomas@gmail.com>
-References: <20250707071555.17704-2-fourier.thomas@gmail.com>
-Subject: Re: [PATCH] mtd: rawnand: rockchip: Add missing check after DMA
- map
-Message-Id: <175369782677.102528.4677825344596689403.b4-ty@bootlin.com>
-Date: Mon, 28 Jul 2025 12:17:06 +0200
+	id 1ugL7o-0000000EEh6-3Pk4;
+	Mon, 28 Jul 2025 10:30:34 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id D60E42072F;
+	Mon, 28 Jul 2025 12:30:29 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hQED-crO9Jye; Mon, 28 Jul 2025 12:30:28 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1753698628; bh=jSpz3ZqNo1DKtrmKgUQO2U/uGqVFys+hvUVK/NIUdzI=;
+	h=From:To:Cc:Subject:Date;
+	b=dHDeHco/I06vbOKOHf9r4qBuYKA+HL6FmDa+OWPx+LnVskHS9RjpRbPO+GvM/aqOg
+	 Iz14cNCW/uyV3J0UDEsvnSCWyc5ee0YjrlmWCFADoyz66AiMFCwAT9iizw4/u1aZIz
+	 wdn1WgcEjZSp3qj2p8BGuyFu3Kxl6R26a57OtzkahrzTo+qt3BvR88Qk7sWRZ2Qd1K
+	 c88yC4OO0TtjIHPuiLIEtJsvWZOy7SyiwoP+y9pGE92FgJtWvvDXBhrwWMhRsdSKJo
+	 rEsRNYSom8RO+gaE8rHrCIgAWJrZpPc056xbwOg1jnP8KHSj0X2yTGj6s9zDMFzPO+
+	 m5Cc3kT/1DzWw==
+From: Yao Zi <ziyao@disroot.org>
+To: Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Yao Zi <ziyao@disroot.org>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Shresth Prasad <shresthprasad7@gmail.com>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Jonas Karlman <jonas@kwiboo.se>
+Cc: linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v5 0/6] Support RK3528 variant of Rockchip naneng-combphy
+Date: Mon, 28 Jul 2025 10:29:42 +0000
+Message-ID: <20250728102947.38984-2-ziyao@disroot.org>
 MIME-Version: 1.0
-X-Mailer: b4 0.14.2
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgdeludeludcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvvegjfhfukfffgggtgffosehtkeertdertdejnecuhfhrohhmpefoihhquhgvlhcutfgrhihnrghluceomhhiqhhuvghlrdhrrgihnhgrlhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepheeifffhueelgfdtleetgfelvefggfehudelvdehuddulefgheelgfehieevvdegnecukfhppeeltddrkeelrdduieefrdduvdejnecuvehluhhsthgvrhfuihiivgepvdenucfrrghrrghmpehinhgvthepledtrdekledrudeifedruddvjedphhgvlhhopegludelvddrudeikedrgedvrdegiegnpdhmrghilhhfrhhomhepmhhiqhhuvghlrdhrrgihnhgrlhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepuddupdhrtghpthhtoheplhhinhhugidqrghrmhdqkhgvrhhnvghlsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtoheprhhurghnjhhinhhjihgvsehhuhgrfigvihdrtghomhdprhgtphhtthhopehurdhklhgvihhnvgdqkhhovghnihhgsegsrgihlhhisghrvgdrtghomhdprhgtphhtthhopehhvghikhhosehsnhhtvggthhdruggvpdhrtghpthhtoheplhhinhhug
- idqrhhotghktghhihhpsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtoheprhhitghhrghrugesnhhougdrrghtpdhrtghpthhtohephihifhgvnhhgrdiihhgrohesrhhotghkqdgthhhiphhsrdgtohhmpdhrtghpthhtohepfhhouhhrihgvrhdrthhhohhmrghssehgmhgrihhlrdgtohhm
-X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_111714_383773_C8AAD837 
-X-CRM114-Status: UNSURE (   5.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250728_033033_280374_7CA0CF09 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,19 +80,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAwNyBKdWwgMjAyNSAwOToxNTo1MCArMDIwMCwgVGhvbWFzIEZvdXJpZXIgd3JvdGU6
-Cj4gVGhlIERNQSBtYXAgZnVuY3Rpb25zIGNhbiBmYWlsIGFuZCBzaG91bGQgYmUgdGVzdGVkIGZv
-ciBlcnJvcnMuCj4gCj4gCgpBcHBsaWVkIHRvIG5hbmQvbmV4dCwgdGhhbmtzIQoKWzEvMV0gbXRk
-OiByYXduYW5kOiByb2NrY2hpcDogQWRkIG1pc3NpbmcgY2hlY2sgYWZ0ZXIgRE1BIG1hcAogICAg
-ICBjb21taXQ6IGZkMjc3NTMyYTg0ZjRjOWQ5MTI5YTg3ZTczZGRlNmE2ZDlmMzQyMDAKClBhdGNo
-ZShzKSBzaG91bGQgYmUgYXZhaWxhYmxlIG9uIG10ZC9saW51eC5naXQgYW5kIHdpbGwgYmUKcGFy
-dCBvZiB0aGUgbmV4dCBQUiAocHJvdmlkZWQgdGhhdCBubyByb2JvdCBjb21wbGFpbnMgYnkgdGhl
-bikuCgpLaW5kIHJlZ2FyZHMsCk1pcXXDqGwKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Rockchip RK3528 ships a naneng-combphy that operates in either PCIe or
+USB 3.0 mode. It has a similar control logic to previous generations of
+naneng-combphy but an apparently different register layout.
+
+This series prepares phy-rockchip-naneng-combphy.c for variants with a
+different register layout and add RK3528 support.
+
+Testing is done on both Radxa E20C and Radxa Rock 2A with downstream           devicetree changes, both USB 3 and PCIe modes are verified with mainline
+driver, and reach a reasonable speed.
+
+This series depends on patch "phy: rockchip: naneng-combphy: Enable U3
+OTG port for RK3568"[1], and the dts patch depends on v2 of patch
+"arm64: dts: rockchip: convert rk3528 power-domains to dt-binding
+constants"[2] to build.
+
+[1]: https://lore.kernel.org/all/20250723072324.2246498-1-jonas@kwiboo.se/
+[2]: https://lore.kernel.org/all/20250620201715.1572609-1-heiko@sntech.de/
+
+Changed from v4
+- Collect review tags
+- Add extra handling of USB3OTG_CON1 when operating in USB3 mode
+- Link to v4: https://lore.kernel.org/all/20250624033733.50197-1-ziyao@disroot.org/
+Changed from v3
+- Add a dt-binding patch to allow power-domains property when describing
+  Rockchip naneng combphys
+- devicetree patch
+  - Break down long lines
+  - Sort properties to keep the style consistent
+  - Add power-domains property to the combphy node
+- Link to v3: https://lore.kernel.org/linux-rockchip/20250519161612.14261-1-ziyao@disroot.org/
+Changed from v2
+- phy binding patch
+  - Fix format issue
+  - drop review tags
+- Link to v2: https://lore.kernel.org/all/20250509004121.36058-2-ziyao@disroot.
+org/
+Changed from v1
+- Collect review tags
+- Restyle RK3528 register definitions in the combphy driver
+- Drop unused include of phy.h in SoC devicetree
+- Link to v1: https://lore.kernel.org/all/20250508134332.14668-2-ziyao@disroo
+t.org/
+
+Yao Zi (6):
+  dt-bindings: soc: rockchip: Add RK3528 pipe-phy GRF syscon
+  dt-bindings: phy: rockchip: naneng-combphy: Add power-domains property
+  dt-bindings: phy: rockchip: naneng-combphy: Add RK3528 variant
+  phy: rockchip: naneng-combphy: Add SoC prefix to register definitions
+  phy: rockchip: naneng-combphy: Add RK3528 support
+  arm64: dts: rockchip: Add naneng-combphy for RK3528
+
+ .../phy/phy-rockchip-naneng-combphy.yaml      |   8 +-
+ .../devicetree/bindings/soc/rockchip/grf.yaml |   1 +
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi      |  24 +
+ .../rockchip/phy-rockchip-naneng-combphy.c    | 749 +++++++++++-------
+ 4 files changed, 508 insertions(+), 274 deletions(-)
+
+-- 
+2.50.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
