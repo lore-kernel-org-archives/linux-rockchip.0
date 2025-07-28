@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D80B2C87FCE
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Jul 2025 22:10:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D1BFC87FCE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 00:06:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bxGASPwDV/yrGfGzaWoUt6IR8GLa4SKG63U3N+K8qj0=; b=xFGi6a4cwyX9/4
-	dNku9uLxrrNCWVNEkNcTB7oYfIFE4ipAS+rqC5CnIpUs/5tl17472PTecx92+2pmkgRvXy0ACsUKd
-	SQFFswLH3+VGYgdF9iLQhoFuoccLTcmSJVRJB2u40rN8KB7oG4hb6/Ws5hJvokZxswt8Np56Mqi6a
-	Y3WBMnBX19WY9O9ViZjy9uSJ9yBuFo0jxD0eoJzAErWMAcH2ITYW14TxstEmHs9ZvKuORNXGd3GdG
-	gX7aqfH//Rl01/z61jY2bzdNiQ8/DJZLPQXHkfaRIG0dyzYYJeAPVPrhbV/gS4NVV5d46fLgIQ4B/
-	xkQxF81lXpgHmeFpHcTA==;
+	List-Owner; bh=/x3aK+0pKSkpzitqqtdy6wFXYm/z/mbHqWlgLR1j/yw=; b=mNnKTkVz3eTbGT
+	cDWeeZ7ao+J6aAvtXsReiBIjiWQx2EA6Er0pBjaT4DTRqbItbTbeHPN3DhcRGkGosAfROOcU7Mv3a
+	uBC3YmSebTTAk06JpFKggAU3yhSqE+q/A46vgn4JyPbewj3btRe1WmZVsWMHWGdQ/WXg1aamv/wKE
+	Ih0jTL5rykVgI2TfTzzcIOaEsejz1ZIstvfK9sFiFSBOiqgHoae3tg+7guiFJnYnhItIV50IKppjU
+	34s8Bl6sni93ZIyfFyJD+BsvqbzEV6Cy2RZw9TJz30IB5AAF6f8dtiL/mlCgb+P4a6f7z4lDmsaAS
+	cZSLDGHExHRiswdLdY8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ug9ZN-0000000DHxN-2TIf;
-	Sun, 27 Jul 2025 22:10:13 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1ugBNV-0000000DMrE-05td;
+	Mon, 28 Jul 2025 00:06:05 +0000
+Received: from chumsalmon.baetis.net ([2001:19f0:5:5b58:5400:5ff:fe17:97e8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ug9ZK-0000000DHwq-21HH;
-	Sun, 27 Jul 2025 22:10:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=t/jnNvXwMwP/wlxBr4uBLC+uY9MAFOThnol22yK/3c8=; b=a3JWWBbg9YFowWswUBsk6pUvX3
-	Rh4dPuNeU9H5G40l+UPMxX00OBxVa3l9v4CiBzUGLb93SYCbfPUecKsarml8MMQT9W7QZxzC+KgCv
-	Ab9aWaBJCc8YLWUEXDhdfAIQuMwCNpV+U7Q/RvZ+q52cuWMKzmOFh9HsSZAG1JAUGlwk=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1ug9Yw-0031rJ-Aq; Mon, 28 Jul 2025 00:09:46 +0200
-Date: Mon, 28 Jul 2025 00:09:46 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Yao Zi <ziyao@disroot.org>, Chukun Pan <amadeus@jmu.edu.cn>,
-	Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net-next 2/3] net: dsa: realtek: Add support for use of
- an optional mdio node
-Message-ID: <9702f3da-f755-4392-bf2b-28814ee0a8c7@lunn.ch>
-References: <20250727180305.381483-1-jonas@kwiboo.se>
- <20250727180305.381483-3-jonas@kwiboo.se>
- <2504b605-24e7-4573-bec0-78f55688a482@lunn.ch>
- <badef015-22ff-4232-a4d0-80d2034113ca@kwiboo.se>
+	id 1ugBKx-0000000DMbj-2Xum;
+	Mon, 28 Jul 2025 00:03:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tahomasoft.com;
+	s=default; t=1753661002;
+	bh=oODfbwD2M9LRfRSx+G6gwNJz5Pq3D3zQJ6ch91Hwclo=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=gGpvm/7LrQ8RaFTeyu9E95mixZcVTrVDUye1AvXNwWR3cJ/S/ezgI/Yri0OsJDbZf
+	 gpvafuZKzfHNqq4q9pjSachzleCa6rygOr+k+fIXj/T7WNrM3veFKyw6S/zz6YVVqR
+	 r/jvQWlv5aiu6l+JdSSG5/m57/MwOFeq2vJ246t0Mc5DoFLzldKKJKmarOUvowDkLc
+	 GXrhfogXk8xb8jkSIPukK7pS53LNqqGVu2dIeTyhb545HRV4FwsUIOGfasLbwaqjNj
+	 biJivnQAv3UuQfnS0tJvkLwQTICVrs/uI1g6eJ7zPZ5YV1NoyxCncPzUNwkqAo+EvP
+	 nRfrCQLfWtQew==
+Received: from localhost (unknown [IPv6:2600:4040:50b7:b604:6c1:3a28:af02:372c])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by chumsalmon.baetis.net (Postfix) with ESMTPSA id B7CB627E83A;
+	Mon, 28 Jul 2025 00:03:22 +0000 (UTC)
+From: Erik Beck <xunil@tahomasoft.com>
+Date: Sun, 27 Jul 2025 20:03:19 -0400
+Subject: [PATCH v4 1/2] dt-bindings: arm: rockchip: add
+ LinkStar-H68k-1432v1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <badef015-22ff-4232-a4d0-80d2034113ca@kwiboo.se>
+Message-Id: <20250727-linkstarpatch_v4_6-16-rc1-v4-1-0dfa7aa06ec9@tahomasoft.com>
+References: <20250727-linkstarpatch_v4_6-16-rc1-v4-0-0dfa7aa06ec9@tahomasoft.com>
+In-Reply-To: <20250727-linkstarpatch_v4_6-16-rc1-v4-0-0dfa7aa06ec9@tahomasoft.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Erik Beck <xunil@tahomasoft.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1753661001; l=1378;
+ i=xunil@tahomasoft.com; s=20250724; h=from:subject:message-id;
+ bh=oODfbwD2M9LRfRSx+G6gwNJz5Pq3D3zQJ6ch91Hwclo=;
+ b=NYgTz1WgCDVt8YO6RJjV7v/Sk8tQAajRAXFx9G5Z4PduehuDyW+obAO12lzrsx9CKYEvTziqf
+ mTXlKnwdQxfAGLEOOjqKsmx/m1wuPP7neewknIfeFdKIGL5g2GY7RCc
+X-Developer-Key: i=xunil@tahomasoft.com; a=ed25519;
+ pk=FTZVGUexvkWb4j8v0wbtm7CtJLijIAaa5x0XV72WWC0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250727_151010_523836_CCA8C867 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20250727_170327_852845_7A8A8BCC 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,42 +84,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> Something like above does not seem to work, I get following:
-> 
->   mdio_bus stmmac-0: MDIO device at address 0 is missing.
->   mdio_bus stmmac-0: MDIO device at address 1 is missing.
->   mdio_bus stmmac-0: MDIO device at address 2 is missing.
->   mdio_bus stmmac-0: MDIO device at address 3 is missing.
+Add device tree bindings.
 
-O.K, So i was wrong.
+This device:
+  - Has not been supported previously in the mainline Linux kernel;
+  - Is a single board travel router made by Seeed, using an rk3568;
+  - Has four ethernet ports;
+  - Has four USB ports;
+  - Has WiFi (MediaTek MT7921e);
+  - Has a real-time clock (rk809)
 
-> And without an explicit 'mdio' child node the driver currently fails to
-> load and the switch is never registered:
-> 
->   rtl8365mb-mdio stmmac-0:1d: found an RTL8367RB-VB switch
->   rtl8365mb-mdio stmmac-0:1d: no MDIO bus node
->   rtl8365mb-mdio stmmac-0:1d: could not set up MDIO bus
->   rtl8365mb-mdio stmmac-0:1d: error -ENODEV: unable to register switch
+Base commit:
+  - commit 19272b37aa4f83ca52bdf9c16d5d81bdd1354494 ("tag: v6.16-rc1");
 
-So, not having an MDIO node was a long time ago seen as a short cut
-for when there was a clear 1:1 mapping between port number and PHY bus
-address. It still works, but it is somewhat deprecated. It also seems
-like it is become more normal to need additional properties, like what
-interrupt the PHY is using, the LEDs it has, etc.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Erik Beck <xunil@tahomasoft.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-> 
-> With a 'mdio' child node 'make CHECK_DTBS=y' report something like:
-> 
->   rockchip/rk3528-radxa-e24c.dtb: ethernet-switch@1d (realtek,rtl8365mb): mdio: False schema does not allow { [snip] }
->         from schema $id: http://devicetree.org/schemas/net/dsa/realtek.yaml#
-> 
-> So something should probably be changed, the driver, dt-bindings or
-> possible both.
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 5772d905f390e53b44f9093d32b869a7e0655db6..7f3904b69293f31fdd4f6080fab5ce054c1abee2 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -1109,6 +1109,11 @@ properties:
+           - const: rockchip,rk3588-toybrick-x0
+           - const: rockchip,rk3588
+ 
++      - description: Seeed LinkStar H68K-1432v1 RK3568
++        items:
++          - const: seeed,rk3568-linkstar-h68k-1432v1
++          - const: rockchip,rk3568
++
+       - description: Sinovoip RK3308 Banana Pi P2 Pro
+         items:
+           - const: sinovoip,rk3308-bpi-p2pro
 
-I think you should allow an MDIO node in DT. This is the only DSA
-driver that i know of which does not allow it.
+-- 
+2.43.0
 
-	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
