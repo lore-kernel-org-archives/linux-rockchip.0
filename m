@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB7CC83F17
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 15:03:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 852C8C83F17
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 15:10:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R6DBqVj847OIPrn9lBimYAYqhcdUunU12DFtF5Y7xPQ=; b=PzxR7oUvcdYGv6
-	ZnpHxaXY8yfH2Zo3us67C5AUpWK5pigbHcQB5Ui7bUcLfPxFgkbI/KvF9m7WD/CM4TnY+8zb3G51y
-	TWNxPUE/FeRtkOrwfxG6ub4x1ybg43krpDi8UlvtHDx6Uevlfh7Rw/VCzDGIvblMjVUW3SRUFNVDP
-	94NIq++l0WNpqvUaP0ccTVCYjxMi3/8n1DCIpE2iAoveAkXr6vkP15Pv6aNee0h/Np1Mk2gesn2NW
-	Syty7JwgiwLCpAQZJujQpfH17SoPpRmYth9F4Zj6Rs5xOroPQ2hzeIx/Kdss57+7pm88iBjKei1pT
-	oX3wK7e7fSQ9pT8gt9AQ==;
+	List-Owner; bh=1qqfgNh0NBeomxNR2LlIFQ4dVjeK46mYrM0+54cTnuU=; b=Djw85iN9t+7C7m
+	vQnDHHUerzLIeFe8NUvEt4v5Vg4+l1Qjp/tVc3S58TIjxlHYexBcJDRMtcorX60TdE2iY+itiqLFG
+	X96C/XhNVEfhFyxre8bl0pkyXbNlQjt2bzXLBflRpG2xIwiIpk1XA/+sSCS0fpDbE+2QW3jtr26Zd
+	JfsK4LrkXN4A6sSapUJJ2IQj4zYFZ7Pr9lEmS8+1/OdyaLVBs97qByOW2dwj49p0Tei2SbASeeQD5
+	cA+YeZLhe50p4frFeqkbSSRoaD648fWjpXuhL0lg5HwGvRMNrTvJWva64yMqvsYe7AuQAh/Xt4Y1Z
+	l24KnMDhUzuNy3WlJcqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugPNO-0000000Ekci-2MAY;
-	Mon, 28 Jul 2025 15:02:54 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1ugPUe-0000000ElqC-1GEm;
+	Mon, 28 Jul 2025 15:10:24 +0000
+Received: from chumsalmon.baetis.net ([209.222.21.150])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugPJY-0000000Ek6s-1qNP
-	for linux-rockchip@lists.infradead.org;
-	Mon, 28 Jul 2025 14:58:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1753714734;
- bh=rYuD7fR6ip+mX8V23wp9elDHlgpDSMqOrMV6oJH+6ZI=;
- b=zstZJNSsEPTCWZNwghBIPPOC1SLbjLBwGWDoIsGtEin4gOEXLmDxLJDSNhJJOlYBNrH80ttOb
- RhEC/gkTKTqWerg10fs0N8bHlVofF+si1s6IQFvb66SWCiebDUh3yWI/Cg7OWrXyhJGPprji6p+
- prNpuOADqKM68Zy7q0yClW0jhW+uJp8VVjctVoHjrqxwhdbhQG1t4euxYspnmlwHsNqtk8RJ8gB
- X/9eRdybNNyqHQV6q3KW0Yn/FJZLSZ86rrEVSaP74YcD8ga8t2xRD8zKy3cQnA908Lnw7ueCvr1
- aFyIu1IEWTjef7gQxuE8OMHmW8yIXEleStqOROjMwNHg==
-X-Forward-Email-ID: 68878ff5351ec66b15a194ff
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.1.8
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <65023e38-0f90-4d12-8615-a595e399b516@kwiboo.se>
-Date: Mon, 28 Jul 2025 16:57:50 +0200
+	id 1ugPRz-0000000ElM8-17yn;
+	Mon, 28 Jul 2025 15:07:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tahomasoft.com;
+	s=default; t=1753715258;
+	bh=uvTHoWDfs2EDKcTU/ctS/fdFesLbnoOsjLa1+Mgz95M=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=B1p6GydTvvV9IUlpvSF7BW+R/jZiJLDJk1X1ho3uJX91QeIXLtHkm2SOWG/BbP152
+	 QVSm2nEzgp0cygItof5QokKepy/Jr/fbhGeGaSH4AN96S0GLoQ7ZU7qUAsQSm7y1+z
+	 uc8x0xjOjv+mdqGXlm1WeSvR9A+Wk1md4bPfrrQdaj1zxtgi7RhGNQ/fAYw0s71GMU
+	 KHH5RQ1G6UnMrLqVFr37jTzAKendrQdZkPrJoChDMTIhugh0THUQJKQkuC0l/lNQR8
+	 7vRz6JQjMFxBdumHfY8Roak1PvqFA2mbOwyq9LzfHaDt7yxGzOhhZGI2AKAe/jRSZd
+	 izplVda2lQRZQ==
+Received: from localhost (unknown [IPv6:2600:4040:50b7:b604:31ee:da95:eea2:34e])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by chumsalmon.baetis.net (Postfix) with ESMTPSA id 89C9C27E83B;
+	Mon, 28 Jul 2025 15:07:38 +0000 (UTC)
+From: Erik Beck <xunil@tahomasoft.com>
+Date: Mon, 28 Jul 2025 11:07:37 -0400
+Subject: [PATCH v5 2/2] dt-bindings: arm: rockchip: add
+ LinkStar-H68k-1432v1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add RTL8367RB-VB switch to
- Radxa E24C
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Yao Zi <ziyao@disroot.org>,
- Chukun Pan <amadeus@jmu.edu.cn>, netdev@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-References: <20250727180305.381483-1-jonas@kwiboo.se>
- <20250727180305.381483-4-jonas@kwiboo.se>
- <be508398-9188-4713-800a-4d2cd630d247@lunn.ch>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <be508398-9188-4713-800a-4d2cd630d247@lunn.ch>
+Message-Id: <20250728-linkstarpatch_v5-v5-2-b4ebfeaca652@tahomasoft.com>
+References: <20250728-linkstarpatch_v5-v5-0-b4ebfeaca652@tahomasoft.com>
+In-Reply-To: <20250728-linkstarpatch_v5-v5-0-b4ebfeaca652@tahomasoft.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Erik Beck <xunil@tahomasoft.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1753715257; l=1156;
+ i=xunil@tahomasoft.com; s=20250724; h=from:subject:message-id;
+ bh=uvTHoWDfs2EDKcTU/ctS/fdFesLbnoOsjLa1+Mgz95M=;
+ b=jS97AuXubreofn2GtbncJNoEvjWPnHULAnjzCIRTJUVzrXRw9PovBHcnUMte3OHu7lrCE5xGy
+ fiSEuxE9MBCANt9dIS6FOxBWnR2t3mw7teMzKH/HlgtZaD33TY7IVlY
+X-Developer-Key: i=xunil@tahomasoft.com; a=ed25519;
+ pk=FTZVGUexvkWb4j8v0wbtm7CtJLijIAaa5x0XV72WWC0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_075856_825938_322DED46 
-X-CRM114-Status: GOOD (  19.57  )
+X-CRM114-CacheID: sfid-20250728_080739_428325_AB73A702 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,50 +83,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
+Add device tree bindings.
 
-On 7/27/2025 9:16 PM, Andrew Lunn wrote:
-> On Sun, Jul 27, 2025 at 06:03:00PM +0000, Jonas Karlman wrote:
->> The Radxa E24C has a Realtek RTL8367RB-VB switch with four usable ports
->> and is connected using a fixed-link to GMAC1 on the RK3528 SoC.
->>
->> Add an ethernet-switch node to describe the RTL8367RB-VB switch.
->>
->> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
->> ---
->> Initial testing with iperf3 showed ~930-940 Mbits/sec in one direction
->> and only around ~1-2 Mbits/sec in the other direction.
->>
->> The RK3528 hardware design guide recommends that timing between TXCLK
->> and data is controlled by MAC, and timing between RXCLK and data is
->> controlled by PHY.
->>
->> Any mix of MAC (rx/tx delay) and switch (rx/tx internal delay) did not
->> seem to resolve this speed issue, however dropping snps,tso seems to fix
->> that issue.
-> 
-> It could well be that the Synopsis TSO code does not understand the
-> DSA headers. When it takes a big block to TCP data and segments it,
-> you need to have the DSA header on each segment. If it does not do
-> that, only the first segment has the DSA header, the switch is going
-> to be dropping all the other segments, causes TCP to do a lot of
-> retries.
+This device:
+  - Is a single board travel router made by Seeed, using an rk3568;
+  - Has four ethernet ports;
+  - Has four USB ports;
+  - Has WiFi (MediaTek MT7921e);
+  - Has a real-time clock (rk809)
 
-Thanks for your insights!
+Signed-off-by: Erik Beck <xunil@tahomasoft.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-I can confirm that disable of TSO and RX checksum offload on the conduit
-interface help fix any TCP speed issue and reduced UDP packet loss to a
-minimum.
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 5772d905f390e53b44f9093d32b869a7e0655db6..7f3904b69293f31fdd4f6080fab5ce054c1abee2 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -1109,6 +1109,11 @@ properties:
+           - const: rockchip,rk3588-toybrick-x0
+           - const: rockchip,rk3588
+ 
++      - description: Seeed LinkStar H68K-1432v1 RK3568
++        items:
++          - const: seeed,rk3568-linkstar-h68k-1432v1
++          - const: rockchip,rk3568
++
+       - description: Sinovoip RK3308 Banana Pi P2 Pro
+         items:
+           - const: sinovoip,rk3308-bpi-p2pro
 
-Regards,
-Jonas
-
-> 
->> Unsure what is best here, should MAC or switch add the delays?
-> 
-> It should not matter. 2ns is 2ns...
-> 
-> 	Andrew
+-- 
+2.43.0
 
 
 _______________________________________________
