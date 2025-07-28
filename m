@@ -4,58 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BFBFC83F17
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 10:38:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6005FC83F17
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 10:43:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pPYOwrVg5N2k29ncQnxhrjhirzU2uijAzVl7l4Oxqdg=; b=KMKIyjmdOL+8/O
-	pz6Lb39c2QrE9871AbIEiUTG+FN50JRuSYGxnWrFDnUlBBOmm+xDd4rVOPvTRod8JJZC1ra/c2mkY
-	j5uTVl00KEDkcgQBWJa3X5mEesCFUzE2z+zPkeXQmDOZMN/dVy0Pye19oOZwoZS0+R1/mKk2P2Y9o
-	/f4vSOa4Aeg0hpzZ3NkMnHYMDqsCBisp0oSKtO1kCqvovMSeeCQhIeN0u3kurzNkFDxsNOqwpZoFc
-	KliTJy9cBurAlxyGl6XYq8vAgZVxxy7t65jXiaBY+si2UNKbjPhifYWKyf5h6szeuV/3ntHXsVd0A
-	44r69SuQkAjWywOKMl+A==;
+	List-Owner; bh=mORCLXSQUHkKAItX+9IsuU3r3TT2YA05gdF3cIS1oo0=; b=xhBZN8W+J+6ADz
+	I7FSwZubYCDBOhhtKiU7IkAs4yt1gNFmEGgdI2H5QmObic2esqbxLkC+riGN+764bZ9K63pXseNZQ
+	lNNExOySwttc61oVZj1TtUr++cL+wlMl8hvq+C0vUm+JMcZS8r1u8IKnb8ejyuKrUyGhlurVgL9i/
+	jdcPNAlpH3+tjupFoTnuH2jU0PpCLRMIUCvrYtsumtOubST4mW9unXobMh++xr7apvYHjvsvMhXrD
+	VCEjwMH7Qq4eSnrtXv3UO1CIdbag6pZjQVTOPCmkQ4Gexifm+EsJxZvW4amkLoAdmmhKzkMk/oim9
+	N0+tmJYfaHP2dEodLfpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugLF8-0000000EFX3-2a5s;
-	Mon, 28 Jul 2025 10:38:06 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugL86-0000000EEkI-09yR;
-	Mon, 28 Jul 2025 10:30:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=bFS8WLhu5nncxHWvLqslWdzfrwNohIejybeTSzxXKkQ=; b=JQzc0bFMOfnO6l1+CzHOC8xVRn
-	v+XSxrO9tDZ5uabEGqBBOIPRhTGqZ9PCYmSRXlySGGlzywLj/Ppx8uJ3prW6RhydUaHaPqw0B6f+x
-	pTC6s7zXitHftqVQK1pUvKTTlDqkFSitlYhFMNp29i66CVkcU8b1GCVsnF9PlP5d6F5Adk7/iiZsT
-	U2JybX1JT7c31A/3pY5hPy/iYU2iQU2Aw5xwWbOkLgm+7z2gIkE6aiPd76Luc4vWgl2Cmpx5SnmWt
-	tNyCKHzNLGNViYkE+nSPxJGZNX+RG1yLwLuvoSnoiC6FbYcTVYEhBw18S8lPREK6N3WCSMMhQPXdB
-	elVY0nvg==;
+	id 1ugLJy-0000000EG8S-05HM;
+	Mon, 28 Jul 2025 10:43:06 +0000
 Received: from layka.disroot.org ([178.21.23.139])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugL82-0000000CRUs-0iN6;
-	Mon, 28 Jul 2025 10:30:48 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ugL8p-0000000EEoo-46Cj;
+	Mon, 28 Jul 2025 10:31:37 +0000
 Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 7F4A420543;
-	Mon, 28 Jul 2025 12:30:44 +0200 (CEST)
+	by disroot.org (Postfix) with ESMTP id 94C6B20937;
+	Mon, 28 Jul 2025 12:31:34 +0200 (CEST)
 X-Virus-Scanned: SPAM Filter at disroot.org
 Received: from layka.disroot.org ([127.0.0.1])
  by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Gwt0ajRAJT6O; Mon, 28 Jul 2025 12:30:43 +0200 (CEST)
+ id oeKHiVJoWaZv; Mon, 28 Jul 2025 12:31:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1753698643; bh=qBq1mAbqPGcYbgpJSKXM1JGiaWrzbRbM/TI0PBE0xY0=;
+	t=1753698691; bh=71Nflu6ZSpSla06ibWGymwe/vOoXdf0KH4ceGapV22M=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=TUchOU/SQEB9L4HSGKdfTXHX2uvc99PVC0fxVj0a+JJIdSxcTldtffVCTJCs9RrDR
-	 mIajvxVZ9IRcn0Lwwle3hMQP0Vtc4Oo+Dpe4nAnunD8BKTV3Ekc6d6/Wl7uEwSdc0L
-	 Hzq9xapTQwd3XnVaHLtFWoPaW/dfVkaF5QZh4RDbkCVyJmssQCHpSzK2lzBBTWnR3w
-	 xMVTIFSmV3t3s+OXhASb1HDuEu1uI7bja8wX5Quq4nuqjcIwUF5x8zl9qPPxg4AnLQ
-	 /6eFhhX5rRbJgKsjtJkbvnQ6KuTjOlHb/4IiJvg5r1K9d0hRF5tutOWzWoMYKBjDOQ
-	 NWeh9mz4Rlw1A==
+	b=AN3F9qHU7kxzi0BCj8fvL5CbV0+7N/rLjp0497l7VSsSd1BUNN3/98Dd8nuCqww+K
+	 U3y4k5eW6XPqw9/yQfmuE0/Ql+eh1jvDm/DdbNMFruRn6bQvOU/yDLjFQHd+x0fsdO
+	 gTKkuop+/qpc2+aKlG3RZgxPwk85eoVcLwO4lZI48YnJyX71w1ijgkxfmRqP+hMUJI
+	 eWpK3DogH+Mi8dREBvX/z8VRt2IQsex1634ZRBKarCIW9O6ssmVlqP4w6z1cRM6kT0
+	 zBNof9+S1JJPJWpLLBrXrinAVDUAbZ2sE9QW1VSON28D4Yws4l+kDMfanZN7bLmLxh
+	 SuqvoEOEREcgQ==
 From: Yao Zi <ziyao@disroot.org>
 To: Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -76,16 +62,16 @@ Cc: linux-phy@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v5 2/6] dt-bindings: phy: rockchip: naneng-combphy: Add power-domains property
-Date: Mon, 28 Jul 2025 10:29:44 +0000
-Message-ID: <20250728102947.38984-4-ziyao@disroot.org>
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v5 3/6] dt-bindings: phy: rockchip: naneng-combphy: Add RK3528 variant
+Date: Mon, 28 Jul 2025 10:29:45 +0000
+Message-ID: <20250728102947.38984-5-ziyao@disroot.org>
 In-Reply-To: <20250728102947.38984-2-ziyao@disroot.org>
 References: <20250728102947.38984-2-ziyao@disroot.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_113046_399355_732468FD 
-X-CRM114-Status: UNSURE (   6.62  )
+X-CRM114-CacheID: sfid-20250728_033136_156922_A8C3721A 
+X-CRM114-Status: UNSURE (   7.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,32 +89,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Though isn't described in existing devicetrees, most Rockchip combphys
-belong to a specific power-domain of the SoC. Taking RK3588 as example,
-combphy 0 and combphy 2 belong to the PD_BUS domain. Document the
-power-domains property to allow describing the information correctly
-in devicetree.
+Rockchip RK3528 ships one naneng-combphy which operates in either PCIe
+or USB 3 mode. Document its compatible string.
 
 Signed-off-by: Yao Zi <ziyao@disroot.org>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- .../devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml   | 3 +++
- 1 file changed, 3 insertions(+)
+ .../devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
-index 3e101c3c5ea9..db293d2fbf1a 100644
+index db293d2fbf1a..379b08bd9e97 100644
 --- a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
 +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
-@@ -45,6 +45,9 @@ properties:
-   phy-supply:
-     description: Single PHY regulator
- 
-+  power-domains:
-+    maxItems: 1
-+
-   rockchip,enable-ssc:
-     type: boolean
-     description:
+@@ -12,6 +12,7 @@ maintainers:
+ properties:
+   compatible:
+     enum:
++      - rockchip,rk3528-naneng-combphy
+       - rockchip,rk3562-naneng-combphy
+       - rockchip,rk3568-naneng-combphy
+       - rockchip,rk3576-naneng-combphy
+@@ -108,7 +109,9 @@ allOf:
+       properties:
+         compatible:
+           contains:
+-            const: rockchip,rk3588-naneng-combphy
++            enum:
++              - rockchip,rk3528-naneng-combphy
++              - rockchip,rk3588-naneng-combphy
+     then:
+       properties:
+         resets:
 -- 
 2.50.1
 
