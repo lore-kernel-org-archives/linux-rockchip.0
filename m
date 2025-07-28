@@ -4,53 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48032C83F17
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 20:25:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8883BC83F17
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 22:53:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZLnixHRtPITkz0B5r9FjyGxttzwJ/rDI7zIYd/JhNS4=; b=VLv/VxZMpllXPnjY+q3JO77Dv0
-	UsOxNlUnjPQoTpeO2cnzfFoFdytHYkji8bNjVoQhrsyCnDeRY8sUXEryVgHvXLi88WqGqCLG377d7
-	H5mx93/zEywYJ6XW3JQ3iRJjm1eUFjHYUmfA4WhvN0oKkpjbC162K7CMObZ5GinSldDqhI5lPS9er
-	T9AxoUtv2YklCKgs+D8V/l0w6US3WXlyODu26OvHuyhRJZ0QnysoE/a/dQldnetW3hbZvKfuzvZhr
-	RsTeSwmdR3PvY9l370f3tvDfyIg/BLffaW58vc9JcifTM8saj0CyEaCOPiSQWgLVaQcJGMn5sysSv
-	I7JH28fA==;
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PR0FClYgomkXYuH2vaJHNGvJn1lBQOPvQ1ABpeGrtLU=; b=gKP9RFBhWBMmJxkgjs9bL2JK/7
+	xYb6oyWUGIi3ck69FztVkJmnfA3zqaigsfmYaz/n+1zDYFwDwg6REGExENYIc8AEJo2bbNccMb4vC
+	Me0VBSJzr5tKOXYY6C2ofn5stWkc4OUTIAubfZDBnFLkU7rs0ZcJddHiIQ9KebmOIwfZ8kO5inoOy
+	PWLHxp+5sfECDd8Cfcuyo0iOvyoS9bNrQQ67aqdb7X2uhjTI2MuwjW4GRj4vZw331ELJgeYHegKLA
+	OOL68OtmVgzWpd2BF8JTWiT9squTpfTTwkypo74PZZXBiriTmWEGluL1gmrBXd/HqQTVRqtYgp8FP
+	0fWDRTgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugUPI-0000000FMsD-40GA;
-	Mon, 28 Jul 2025 20:25:12 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1ugWiZ-0000000FYAr-0hRK;
+	Mon, 28 Jul 2025 22:53:15 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugUMp-0000000FMhW-3CES;
-	Mon, 28 Jul 2025 20:22:42 +0000
+	id 1ugWg5-0000000FY4S-42aI;
+	Mon, 28 Jul 2025 22:50:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753734156;
-	bh=kHf9urtE6dhy3OGMYKIpupIQffnnwOTxLGJgRdWr7OU=;
+	s=mail; t=1753743040;
+	bh=aUFYEhrBDCMb4rwh/p3Q8a9jltXCwz63SKfYeyEBQ9c=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=Xk+exa4KMs7J1kipivohRSl/HGbJ2fsmhK/R+5H3q0OE7nxir3RDNDP0z4adNx5l2
-	 dcqvXXQv6GARnoKnpZpSpIhdy2J2NT8ujdBxvh+iSWYtfi59GbVOs23a0k5odlkFbX
-	 EvLgws3tlGfTpM0cqWM9r8124VqsFl0iPeFu9tZdQKhYwT/gH6WTIoMCGbHXBXiZmc
-	 k+8r0M4KIppVWWUz0nGeeoIxpbGrQWTMyxnn/M6Y62R7RhJOC+UoB+lp/HKvQ9VDwt
-	 Ol1D9+RYptCF75n2qAwgv+nWKfR9sOxDemIipoZri+9V02fsggOQY1xreRQEXjy+Jm
-	 HKTqG9WWpXH2w==
+	b=jz3AhKYXHiMcXAa5/TA6plvdh9o27whoXtIwBXldnVh6kY0wZbIFp7Bd0PdmUBkhV
+	 JrSb5Qui32vWAwBDerTapR7pJhoeT4wXj4fJJeWefITauKHpqg2AL5Yh1h1qhWqiA/
+	 wM7TRDt5Yt7gVJdy1ohMmrHfFyjdZgWcBbjnGzzVGZwIG/+Ov+oZSBVsGyGCGyH3bu
+	 LVjpw2IRptw6sFa87JZKElLRc5vpiGkiMDbSo/1tftTGTjrO/+3QLoLvRSDC63Va6a
+	 gr5bYx9CTVwRQujAPVn1n4NYndKo7cQ6lZHX3c40SKA2+yKYme+4aZV2jJWgWjJd18
+	 7NAzEwERFL0iQ==
 Received: from [IPv6:2606:6d00:11:5a76::5ac] (unknown [IPv6:2606:6d00:11:5a76::5ac])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E513817E11FE;
-	Mon, 28 Jul 2025 22:22:34 +0200 (CEST)
-Message-ID: <75207b49155acaa83e2ed0182fd1a78a9242aab7.camel@collabora.com>
-Subject: Re: [PATCH 00/12] media: rkvdec: Add support for VDPU381 and VDPU383
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E982017E0FA8;
+	Tue, 29 Jul 2025 00:50:38 +0200 (CEST)
+Message-ID: <0a8391cb368653b91ea73a51e2c0dee35cceb128.camel@collabora.com>
+Subject: Re: [PATCH] media: rkvdec: Fix an error handling path in
+ rkvdec_probe()
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Jianfeng Liu <liujianfeng1994@gmail.com>
-Date: Mon, 28 Jul 2025 16:22:32 -0400
-In-Reply-To: <20250718093746.631072-1-liujianfeng1994@gmail.com>
-References: <20250714144610.258372-1-liujianfeng1994@gmail.com>
-	 <20250718093746.631072-1-liujianfeng1994@gmail.com>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, Detlev Casanova	
+ <detlev.casanova@collabora.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>,  Heiko Stuebner	 <heiko@sntech.de>, Hans Verkuil
+ <hverkuil@kernel.org>
+Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Date: Mon, 28 Jul 2025 18:50:36 -0400
+In-Reply-To: <b69c20783a7b6f7964ab636679d3da80fc48372e.1753610517.git.christophe.jaillet@wanadoo.fr>
+References: <b69c20783a7b6f7964ab636679d3da80fc48372e.1753610517.git.christophe.jaillet@wanadoo.fr>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
  oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
@@ -78,8 +84,8 @@ Organization: Collabora Canada
 User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_132240_178986_2363D42B 
-X-CRM114-Status: GOOD (  25.23  )
+X-CRM114-CacheID: sfid-20250728_155042_158965_84AE2769 
+X-CRM114-Status: GOOD (  17.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,107 +97,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: detlev.casanova@collabora.com, mchehab@kernel.org, benjamin.gaignard@collabora.com, heiko@sntech.de, jonas@kwiboo.se, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============8651962397384112871=="
+Content-Type: multipart/mixed; boundary="===============7233344936274224901=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============8651962397384112871==
+--===============7233344936274224901==
 Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-JxB+zX8IA3mywv/uYbEy"
+	boundary="=-HBQA1dSSAY++JW3+CEB6"
 
 
---=-JxB+zX8IA3mywv/uYbEy
+--=-HBQA1dSSAY++JW3+CEB6
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le vendredi 18 juillet 2025 =C3=A0 17:37 +0800, Jianfeng Liu a =C3=A9crit=
-=C2=A0:
-> Hi,
+Hi,
+
+Le dimanche 27 juillet 2025 =C3=A0 12:02 +0200, Christophe JAILLET a =C3=A9=
+crit=C2=A0:
+> If an error occurs after a successful iommu_paging_domain_alloc() call, i=
+t
+> should be undone by a corresponding iommu_domain_free() call, as already
+> done in the remove function.
 >=20
-> On Mon, 14 Jul 2025 22:46:10 +0800, Jianfeng Liu wrote:
-> > You are right, the code of chromium should be fixed for frame size type
-> > V4L2_FRMSIZE_TYPE_CONTINUOUS.
->=20
-> I have just sent a cr at chromium[1] to fix this.
->=20
-> > I have checked that this issue is not introduced by your series. After
-> > reverting this commit[2] which adds Support High 10 and 4:2:2 profiles,
-> > chromium can play video well on rk3399. I will investigate further.
->=20
-> I found that this issue is caused by this code block[2]. Before adding
-> .get_image_fmt, rkvdec_s_ctrl will just return 0. But now when detecting
-> image format change(usually from RKVDEC_IMG_FMT_ANY to real video format
-> like RKVDEC_IMG_FMT_420_8BIT), it will return -EBUSY, then I get green
-> frame at chromium.
->=20
-> After taking a look at hantro's code, I find that it is not necessary to
-> let .s_ctrl return -EBUSY when format changes, here is a commit[3]
-> disabling this check in hantro_set_fmt_cap. I have written a patch that
-> can fix my issue with chromium, you can see it at the bottom of my mail.
->=20
-> [1] https://chromium-review.googlesource.com/c/chromium/src/+/6767118
-> [2]
-> https://github.com/torvalds/linux/blob/v6.16-rc6/drivers/staging/media/rk=
-vdec/rkvdec.c#L143-L146
-> [3]
-> https://github.com/torvalds/linux/commit/bbd267daf4fc831f58bf4a2530a8b648=
-81779e6a
+> Fixes: ff8c5622f9f7 ("media: rkvdec: Restore iommu addresses on errors")
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> ---
+> Compile tested only
+> ---
+> =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.c | 11 ++++++++---
+> =C2=A01 file changed, 8 insertions(+), 3 deletions(-)
 >=20
 > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
 > b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> index 5d86fb7cdd6..7800d159fad 100644
+> index d707088ec0dc..eb0d41f85d89 100644
 > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
 > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -185,7 +185,6 @@ static int rkvdec_s_ctrl(struct v4l2_ctrl *ctrl)
-> =C2=A0	struct rkvdec_ctx *ctx =3D container_of(ctrl->handler, struct
-> rkvdec_ctx, ctrl_hdl);
-> =C2=A0	const struct rkvdec_coded_fmt_desc *desc =3D ctx->coded_fmt_desc;
-> =C2=A0	enum rkvdec_image_fmt image_fmt;
-> -	struct vb2_queue *vq;
+> @@ -1169,15 +1169,17 @@ static int rkvdec_probe(struct platform_device *p=
+dev)
+> =C2=A0	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
 > =C2=A0
-> =C2=A0	/* Check if this change requires a capture format reset */
-> =C2=A0	if (!desc->ops->get_image_fmt)
-> @@ -193,11 +192,6 @@ static int rkvdec_s_ctrl(struct v4l2_ctrl *ctrl)
+> =C2=A0	irq =3D platform_get_irq(pdev, 0);
+> -	if (irq <=3D 0)
+> -		return -ENXIO;
+> +	if (irq <=3D 0) {
+> +		ret =3D -ENXIO;
+> +		goto err_free_domain;
+> +	}
 > =C2=A0
-> =C2=A0	image_fmt =3D desc->ops->get_image_fmt(ctx, ctrl);
-> =C2=A0	if (rkvdec_image_fmt_changed(ctx, image_fmt)) {
-> -		vq =3D v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
-> -				=C2=A0=C2=A0=C2=A0=C2=A0 V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-> -		if (vb2_is_busy(vq))
-> -			return -EBUSY;
-> -
+> =C2=A0	ret =3D devm_request_threaded_irq(&pdev->dev, irq, NULL,
+> =C2=A0					rkvdec_irq_handler, IRQF_ONESHOT,
+> =C2=A0					dev_name(&pdev->dev), rkvdec);
+> =C2=A0	if (ret) {
+> =C2=A0		dev_err(&pdev->dev, "Could not request vdec IRQ\n");
+> -		return ret;
+> +		goto err_free_domain;
+> =C2=A0	}
+> =C2=A0
+> =C2=A0	pm_runtime_set_autosuspend_delay(&pdev->dev, 100);
 
-Hantro driver have extra code to protect against the fact that the queue fo=
-rmat
-may not match the currently allocated buffer size. This change alone seems
-unsafe and may allow tricking the driver into buffer overflow. It believe s=
-ome
-further thought and care need to be put into this.
+Have you considered moving the allocation of the domain right above the abo=
+ve
+line instead ? The empty domain can't possibly be used unless the probe hav=
+e
+fully completed.
 
 Nicolas
 
-> =C2=A0		ctx->image_fmt =3D image_fmt;
-> =C2=A0		rkvdec_reset_decoded_fmt(ctx);
-> =C2=A0	}
+> @@ -1193,6 +1195,9 @@ static int rkvdec_probe(struct platform_device *pde=
+v)
+> =C2=A0err_disable_runtime_pm:
+> =C2=A0	pm_runtime_dont_use_autosuspend(&pdev->dev);
+> =C2=A0	pm_runtime_disable(&pdev->dev);
+> +err_free_domain:
+> +	if (rkvdec->empty_domain)
+> +		iommu_domain_free(rkvdec->empty_domain);
+> =C2=A0	return ret;
+> =C2=A0}
+> =C2=A0
 
---=-JxB+zX8IA3mywv/uYbEy
+--=-HBQA1dSSAY++JW3+CEB6
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaIfcCAAKCRBxUwItrAao
-HKJ9AJ9lIeksQ/frtYIbyb7342kuZLSytQCeIu9nWl2kX0opPHtm8enN8Fx5jFo=
-=1i09
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaIf+vAAKCRBxUwItrAao
+HIh7AJ9siqERzUwFpo03WB/ccY47zYm2BwCcDeERz+YrhGQaSfBNmTmJ7h2Kxgw=
+=gy7Q
 -----END PGP SIGNATURE-----
 
---=-JxB+zX8IA3mywv/uYbEy--
+--=-HBQA1dSSAY++JW3+CEB6--
 
 
---===============8651962397384112871==
+--===============7233344936274224901==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -202,5 +202,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8651962397384112871==--
+--===============7233344936274224901==--
 
