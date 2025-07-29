@@ -4,67 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B095C87FC9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 17:15:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CC26C87FCA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 19:01:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GWlBL6DXMAW+FDVJ6c4vsRFQW6D+Rih1cgZbFUU58MM=; b=MMc76LuX99qTSh0qDu6rcLW3ek
-	/fYBtwV+gS/+UlduRujvxoHHLg+dPV6Q1tlE5pBN7BvlO1/fWBPCliX3TKtACaf5iaZQjOQ8Hb5kp
-	3DHHbID/cAtnrSjdYuVZfJcbD7WuC2LfjEdGPCjH6+VbZ/8eJa8goqvcL+uKNzfTO4z625rp4QbMe
-	D7WxZJT5oFUL19z2YwBkuRa8seIJXlm4srrYpvFAvC9a1GjH+GH8CvopUqX2EFrfrOb6ZXKt9tMRz
-	cPOs6Fs7NwxBtpe3gsnKH+uwSPYBufQJzGEVfcjz0v0cQszcwPn2ojvGGRccgpASp7if6JTi6Bh8U
-	b6Ljfllw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XIxAwSCLHwl9p22vGILuYx0I1cQcFeOfaMQ4/X20VD4=; b=g5+s8PXw/pOjdY
+	s3bBeTEgqMWEZrIkj/n9eDDiGjhy0X/PG2MFiIhXDcOCMV1jzjXNVD6VdLW2QDMax8xWykQIpydjT
+	oarxw8rA2YH8jHejvLkAvj6CQ8iGJV6sjsIDiLyYT01iKigML8qYr6PDw+NGZnv3OnfP4zmKwXlAh
+	84s61KXppzcu0dghEQh6eg4QPLeHE6wsTraq+MwXY+r/zJYgHVZbDhSh3+BxAGFIhuT8uKKTZUKt5
+	Q+F111opJ8GLHKTnALnEWLgyNrihbRQtdBheqwxoH61m9xndlTQDhGs581+0Aqxft0IFYRUrnbKhe
+	54PWJsu6o3QUyzb6Oovw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugnun-0000000HLJz-0ulk;
-	Tue, 29 Jul 2025 17:15:01 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1ugpZT-0000000HW3x-3MHO;
+	Tue, 29 Jul 2025 19:01:07 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugnq2-0000000HKm3-1O46;
-	Tue, 29 Jul 2025 17:10:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1753808989; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=SfxG9oyq7Xh8cTqP4vj/WMBsAVKKyJGE+kgbDuj9GfiznmFzbYCU1RFKYuJ1+PkM/MHnJiWt4bUh+cZ2fl7/Vzrszw8deKQciSfQL+emFjSlk4R2wePdVXx+SvXdQqh6KibmQVXeJDS0iZE0ib3d/Ih697a0bi1Fvx8rFrqYn/c=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1753808989; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=TxY+JKrWeGH0H6xo56T1MRsEGuU0255fEPWJ+EHkpqA=; 
-	b=jGKxLA38fK+Wa5kjzUZSZGRREuV//fN3TzV9QTPyK7DUAWUQgT6VVXQKS9RxRi1xfGvQ2nPhPkcOM1ujZdFRb3zSbmPCczj4CAWDz/5rbOyx00C8vaoSWqdio5MCz0mWu3WiC07ESQL7lgfcxqfgKmTNbSPCKhmfH7mUX6sDhOo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1753808989;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=TxY+JKrWeGH0H6xo56T1MRsEGuU0255fEPWJ+EHkpqA=;
-	b=flWQIz7djxGg2eW+E94jqszUeQMWJ/YoZmfNOdOHpqLbst6uitu0W/kUVagoSK7D
-	ySTx3VwmZNGjMoVB7EmCXZZoBMqq3MB7PrJQ1vJ6JqZpBhPGWG9FF3zgSI7BX4aBwul
-	jr7++GN4QedV8dLVHczmIrWPdqIhoF3uLhSdL610=
-Received: by mx.zohomail.com with SMTPS id 1753808986669159.71490156758534;
-	Tue, 29 Jul 2025 10:09:46 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 669AE180F0B; Tue, 29 Jul 2025 19:09:41 +0200 (CEST)
-Date: Tue, 29 Jul 2025 19:09:41 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH v6 09/10] arm64: dts: rockchip: Enable DisplayPort for
- rk3588s Cool Pi 4B
-Message-ID: <hbvwlucm5mnjpve6hb6h7dusgrokvdxzbpq5zrwib4yesrdakp@v77ofq7u2vv2>
-References: <20250728082846.3811429-1-andyshrk@163.com>
- <20250728082846.3811429-10-andyshrk@163.com>
+	id 1ugpWz-0000000HVk7-0lUP;
+	Tue, 29 Jul 2025 18:58:34 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-45618ddd62fso58581275e9.3;
+        Tue, 29 Jul 2025 11:58:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1753815511; x=1754420311; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=dlG7PNdMEgQfJKLs4yxVqtBUK7MC8lUUbumEET1hUqc=;
+        b=MDN8KeJO2ZWp0PVBOH5HBJixgwaHKC6l+0lo6a3SHy5BMPU+ACe4r8j6Z/9I5z756O
+         sJSysWNSfzR/6x8vU8Skk7+30UmMo6A5i0XUVRC9c7VEw6MYOSdRs++yYQHXI0uiiWyU
+         LNfAWH9AePYaCjkc8ZuJI9qvs9YxkQmGyG8LOXz3uP6vF4pFMrnooI77Gxg3C/a5bNQR
+         07vZN+3hqakeuwvVLW+F9DyP9CESKHobPRVPL6mXYRKsaq1xYjD/TElSkuk9ZOj6+uaL
+         wBZqjT6Xbod/+3N4svOaMUivfI+qN3ZxURw/HepgHKLAKJghDd+ckJY+PqOOqbO3Rogl
+         3Dww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753815511; x=1754420311;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=dlG7PNdMEgQfJKLs4yxVqtBUK7MC8lUUbumEET1hUqc=;
+        b=me7DAALER+3yx5Gk2WNBlLLJFY/7rHL1ezKTaEjHJi/E4T6Nwyr/nz34w65paWJZ18
+         lWgFKEFHo7JsNdj9Z0VqveYhgBfXUrBu+xqB7BtwDtvKatGxTpoWAwdfLWUg9mZloKK1
+         Apw0D1aqKZAgdOS+emNHXkt+kDTlCCxjmHojOTYwiPLlGL9y2cQa7CHte1CvuQ2/4lCT
+         Jooqye30qB0jRS9HV368ddZUcsovFEs4VZ8jBImsSrRREk2LAV+DMAQ0Xi/mgZ72rJep
+         Z+NHiphTSA/hP/KVhdl6ahkVZ6HjFO9b/kBBb4oUYF2ASmsa3dXIA9c/Svmcv/oI6etQ
+         JU6A==
+X-Forwarded-Encrypted: i=1; AJvYcCUbEsps7cC0jP8TxW65q8pCvDEIGa02m7RGxc3Sf/LkSsDxbK4K0sSaARNylnuUgD5uOJQoCKEj8sg1AaeQE8fg@lists.infradead.org, AJvYcCXfpv09nQzFKb7YZehzFu0U24D8V/K2n44SsojuL1H/JoKKZYxgSYpx9D6qMr2eGAR2agZpeRJIMoBx5dDwb4U=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz5EWLSzuFO8dVj9S+Lt6oQWiJfzw+s1oqqu/dvjKh0EbDIZXbw
+	V0997DMgA9zvVA5GAzLr8hK2BVF+ngiR0aoePC5eUNn4bEXLRrN8Br0xyE8lMA==
+X-Gm-Gg: ASbGncuwAuCJmeBhhbUpJKQiKUJhuLb1rgpMBNu/NBiJ49KlLe9wvcgaqcVhWGDZm0F
+	bmSi47wTm9oY31oDInfN11D8Pjghc5XkoqiBqont+Ra1ZNxCYqA+jYtya0+RI5tWYaTEUhaWdoE
+	vLwFifnS+lxd+JpTTiBTfFVX9xYCRwUe0W+JLHjzd6nBvSapRbaMdah0hIF1uC+FIuSCaOEKwbr
+	hJc8G1ZXK7lQc5hwiFgIbbu8ywQVU+BjNl3pJFND3n7W4PHjpxME8g93rK6Qo/8ooX68K50AaZd
+	XOnlDiuoG4AIt5LZ0kDRx1pabO5RPnh7fdUrm14NuZm+46EG6rA0y6ZPiRbUjUta1xgcA1uOSQ9
+	3tVPYoblOUAw1bJq1+AUiXNMToxZ1efvoXgSSNS/W0/oANu7FvwUHhbV+X752SDAhIL2kU6z3eD
+	hxmrr0ro6rSuSbhmETx85dfE499cinYLI64P9OndlpQ/QbBWyIsTWHQUJ+Tw==
+X-Google-Smtp-Source: AGHT+IFVG8MCSeJi/dYjm7QHZUG4zDJVV2W82Q1iLkHB7zROK/tyX/U1h+UQx958znyjGSXuSvF1YQ==
+X-Received: by 2002:a05:6000:1a88:b0:3b7:8832:fdcc with SMTP id ffacd0b85a97d-3b7950093b6mr668686f8f.38.1753815510813;
+        Tue, 29 Jul 2025 11:58:30 -0700 (PDT)
+Received: from cypher.home.roving-it.com (2.c.4.1.7.3.6.4.2.a.a.3.0.f.c.2.1.8.6.2.1.1.b.f.0.b.8.0.1.0.0.2.ip6.arpa. [2001:8b0:fb11:2681:2cf0:3aa2:4637:14c2])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3b794a9d6a1sm880387f8f.16.2025.07.29.11.58.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Jul 2025 11:58:30 -0700 (PDT)
+From: Peter Robinson <pbrobinson@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Cc: Peter Robinson <pbrobinson@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Pinebook Pro: Update WiFi
+Date: Tue, 29 Jul 2025 19:58:17 +0100
+Message-ID: <20250729185827.144547-1-pbrobinson@gmail.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-In-Reply-To: <20250728082846.3811429-10-andyshrk@163.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.4.3/253.35.66
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250729_101006_437470_943057F9 
-X-CRM114-Status: GOOD (  21.30  )
+X-CRM114-CacheID: sfid-20250729_115833_219706_FB382F5B 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,167 +98,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, heiko@sntech.de, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============1404972945098891059=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Update the WiFi configuration to include the wake-up
+pin and add an ethernet alias to allow assignment of
+a mac-address from the firmware.
 
---===============1404972945098891059==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="iihpr7ffgjlj4iks"
-Content-Disposition: inline
+Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+---
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+index 5a8551d9ffe47..05c48cb09df6f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+@@ -19,6 +19,7 @@ / {
+ 	chassis-type = "laptop";
+ 
+ 	aliases {
++		ethernet0 = &brcmf;
+ 		mmc0 = &sdio0;
+ 		mmc1 = &sdmmc;
+ 		mmc2 = &sdhci;
+@@ -883,6 +884,12 @@ vcc5v0_host_en_pin: vcc5v0-host-en-pin {
+ 		};
+ 	};
+ 
++	wifi {
++		wifi_host_wake_l: wifi-host-wake-l {
++			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	wireless-bluetooth {
+ 		bt_wake_pin: bt-wake-pin {
+ 			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -940,7 +947,19 @@ &sdio0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+ 	sd-uhs-sdr104;
++	#address-cells = <1>;
++	#size-cells = <0>;
+ 	status = "okay";
++
++	brcmf: wifi@1 {
++		reg = <1>;
++		compatible = "brcm,bcm4329-fmac";
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "host-wake";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_host_wake_l>;
++	};
+ };
+ 
+ &sdhci {
+-- 
+2.50.1
 
---iihpr7ffgjlj4iks
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v6 09/10] arm64: dts: rockchip: Enable DisplayPort for
- rk3588s Cool Pi 4B
-MIME-Version: 1.0
-
-Hi,
-
-On Mon, Jul 28, 2025 at 04:28:34PM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
->=20
-> Enable the Mini DisplayPort on this board.
-> Note that ROCKCHIP_VOP2_EP_DP0 is defined as 10 in dt-binding header,
-> but it will trigger a dtc warning like "graph node unit address error,
-> expected "a"" if we use it directly after endpoint, so we use "a"
-> instead here.
->=20
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-> ---
-
-The graph currently looks like this:
-
-VOP <-> DP controller <-> DP Connector
-
-IIUIC this does not work for USB-C and needs to look like this,
-because the USBDP PHY handles the lane muxing and thus must be
-the thing connected to the USB-C controller/connector:
-
-VOP <-> DP controller <-> USBDP PHY <-> USB-C Connector
-
-I wonder if the simple case not involving USB-C should also have
-the USBDP PHY described in the graph as a transparent bridge?
-Note, that the USBDP PHY DT binding is currently not ready for
-this (this also affects the next patch, but should be enough to
-discuss this once :)).
-
-Greetings,
-
--- Sebastian
-
->=20
-> (no changes since v2)
->=20
-> Changes in v2:
-> - Sort in alphabetical order
->=20
->  .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   | 37 +++++++++++++++++++
->  1 file changed, 37 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts b/arch/ar=
-m64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-> index 8b717c4017a46..5393c6cc493c3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-> @@ -39,6 +39,18 @@ chosen {
->  		stdout-path =3D "serial2:1500000n8";
->  	};
-> =20
-> +	dp-con {
-> +		compatible =3D "dp-connector";
-> +		label =3D "DP OUT";
-> +		type =3D "mini";
-> +
-> +		port {
-> +			dp_con_in: endpoint {
-> +				remote-endpoint =3D <&dp0_out_con>;
-> +			};
-> +		};
-> +	};
-> +
->  	hdmi-con {
->  		compatible =3D "hdmi-connector";
->  		type =3D "d";
-> @@ -215,6 +227,24 @@ &cpu_b2 {
->  	cpu-supply =3D <&vdd_cpu_big1_s0>;
->  };
-> =20
-> +&dp0 {
-> +	status =3D "okay";
-> +	pinctrl-0 =3D <&dp0m0_pins>;
-> +	pinctrl-names =3D "default";
-> +};
-> +
-> +&dp0_in {
-> +	dp0_in_vp2: endpoint {
-> +		remote-endpoint =3D <&vp2_out_dp0>;
-> +	};
-> +};
-> +
-> +&dp0_out {
-> +	dp0_out_con: endpoint {
-> +		remote-endpoint =3D <&dp_con_in>;
-> +	};
-> +};
-> +
->  &gpu {
->  	mali-supply =3D <&vdd_gpu_s0>;
->  	status =3D "okay";
-> @@ -889,3 +919,10 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
->  		remote-endpoint =3D <&hdmi0_in_vp0>;
->  	};
->  };
-> +
-> +&vp2 {
-> +	vp2_out_dp0: endpoint@a {
-> +		reg =3D <ROCKCHIP_VOP2_EP_DP0>;
-> +		remote-endpoint =3D <&dp0_in_vp2>;
-> +	};
-> +};
-> --=20
-> 2.43.0
->=20
-
---iihpr7ffgjlj4iks
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmiJAEsACgkQ2O7X88g7
-+prNtg//bsKKMAA8eaI9O6lXTAxHpG5/NO6poWY5y1hlAapvyZeYfdlPRJFAPnV4
-vu3UUT2mwRQOeAE6SzjKI2DOvtKU3vDQJgf8a9OrHM3OuS3+ioutmpyhX2YyeANt
-GjC0tX7gfv7dOTzp9L3j2pEGN7bQNQLZh9doIjM1f+wdCBvgKB7pMbwDeoPoHzf0
-UwhUQ2eB4EgVZn7XNd5NnF5eL7/JosLDNrYkek0M/rfrgkV7Hfq6HmvPSTnd0w57
-sAl/zZ66VAAnEukJ2PDyZOR5vCM1qlEn4Bux919MB0ltGyHuHXBB8MLosIFVNRBA
-aesK52/wn7w4EhE4Jg+iEggmk6kqMu67wOEdWyfPZ8gL/xrFi7j7u1CYAWpaTI5R
-dBxq55fS9o/pcTQ41HDEyX4TfV+11c5TnxPGo+0NQlucZqDEO7UcddXl76IuVIUO
-pgqREMW9l9Y8+vozkUXmgTQrqk6wde/3R2i7kBSFnj1FAGsHWkO1rY9ESy+uyghZ
-PMu8pPQuNKTdX8vMI1ejrbPbbNawsMvpLhHVN1S72qK3sSy4U9BUnEjrHR5bjJor
-fmYq+pk3URBT3tsaubEmvV1TGNZnrs+8E6U8Ls6ewDEZ8OG1IezkiR2DHnj/oi4x
-I+c7X3YmyfDiEUX11MpjNVy3ROss+0q83O5mc6tmJAR7CaongWs=
-=0LrM
------END PGP SIGNATURE-----
-
---iihpr7ffgjlj4iks--
-
-
---===============1404972945098891059==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1404972945098891059==--
-
