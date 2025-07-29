@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C992C87FC9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 21:02:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6A51C87FCA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 21:16:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cF2qWniXf/VBOSzQbQ83RQIU5pozPRc2yPJW33dSMaw=; b=xkUB8zg4zcP/6I
-	oj8tdM7zeBn0PGyvxKfWfYQXD6oTp5MEEwiA12ptYpdrCORzAaBAdMbXrdiKFXSwtG1V8V1prM0AS
-	NkfYEpQy2ao22RIPL9i+y7jwPmcvH3pnbJM3HcPiKzfhIQ7W0OBn8dyIsmChNLdRBJk+SnSbOhyXG
-	TzmCFISiEYFWGLzwdSsWoBNX/fVmEL/N8mQfHLI49Mz+YvqC/kgceux+7J3TSSFxS99iJCU94Yk2M
-	nDUwI8j/f9gFT4T2dYwvhog2v0fO7jte5uYE3JbcY3m9TOzHohbqJI97U8X0eU4Y9ecU/5GAVQ+94
-	akIc1QVvyYl1Jgi4yKFg==;
+	List-Owner; bh=zDcVSYVbalLU9qYZ+XevdQjq0E3CEqx7pTfgVWgxGvE=; b=UtOTsjQjFWFMET
+	J3UK1sBFlPxLA9aktlR+6CopsYmMQQJUzZ85ZMXzoDIKodjZNqf72dBI/tX69g3gm71P4ZMbKevZG
+	k1Cn4RBxDKDqk0R/lW9xrKdF/kDyOFSHLg/a8TviBLjM4fljCO24ZiWNYZQd683WILbsX89KszYH9
+	wo6UbmdiPlVHgF14mo1waCRDb5T68DcMkViEbUW8bMU3Ix326nZJs6M+m6nZ0uq7JOhbEJX81oRN1
+	aNm2DSlM8h00CGtsJPPeTiKXs59qpOuRdadj+wI6gLUat57+yCiXCdZBDc5C+EodIOrUxa+/BL2m3
+	sduMUzvKqnB3/lyr+1ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugrT9-000000005og-2Jt1;
-	Tue, 29 Jul 2025 21:02:43 +0000
+	id 1ugrgA-000000006r7-1VR2;
+	Tue, 29 Jul 2025 21:16:10 +0000
 Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugrN5-0000000059S-188h
+	id 1ugrg3-000000006qK-2IOx
 	for linux-rockchip@lists.infradead.org;
-	Tue, 29 Jul 2025 20:56:28 +0000
+	Tue, 29 Jul 2025 21:16:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
  Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1753822585;
- bh=v+EFRhrySWl3zLJ7XlS9rNLMc1j/yRIrm57mAagtY1s=;
- b=mJrbyA1ble6/nphYpMi34e8bAqPqrjQGgsPeFyY4KyRAgI1tkIn7eAuGDYeB+82rC/vHjZFrA
- yN/GVOlAu/RqrLUeumdgzkvC6O/lwisuWV41gJvfdfXNnTwxdg9SID9GNKgrOVKGz1/DIEIpwEn
- DRmDLVGfO1Q5YhzCafBn6qsT6pUDqgPV1/7LHWeghQLe32BioUnJRwfTE/kyaz+ikdan3KQ3bzU
- CGZOJBnpvI9g9IzgoiRkyRcLhRXW04FZA0bXNoHYhdKDfL8yoY+L26roMGpGtdLLNcTHrhXl5u0
- QPzN1HBsHOup9caWsgaferOETO1mQ2qgLx8KcQxVfAXQ==
-X-Forward-Email-ID: 688935605983c8a2f4b4a751
+ s=fe-e1b5cab7be; t=1753823762;
+ bh=e76LF6aEcRNEARMGNURIVQyVQToNTotfPN3MrqTtWjs=;
+ b=fCd4wtJf/CjpclsjDkr1C14Wr7l/o7bz45ikC9e6R+LWRI/4JhxUCxmZy5oiAolFkGa/MF0CS
+ 0MrK6L0xzrr/UZT6t3RZgm1UEWdnXioTr+lvVkbGn9wXgsKlMMSClSsOpfI6PEQG3VSqICADuoM
+ HaV0T0y+KqmhrCo6k1uXF09ugOuMMGHiNdqqNagplb7pdLb6/7+A1RktNE91S9eH2Uo27+KyvO0
+ 5rjdFPxYy8m8djA8st9s7p4efFqTK4bWUuiMEWFTBrU1P+k1FJmyo6WZ1HlnWwcjJw4I5CscU6g
+ v8iklTjTiAE/tg/dNc+dGZ94IscQLMWagvVTB03oxTpw==
+X-Forward-Email-ID: 688939dd5983c8a2f4b4c57a
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  121.127.44.73
 X-Forward-Email-Version: 1.1.8
@@ -45,37 +45,24 @@ X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <db1f42c3-c8bb-43ef-a605-12bfc8cd0d46@kwiboo.se>
-Date: Tue, 29 Jul 2025 22:55:53 +0200
+Message-ID: <dcbc1c43-748b-479a-878f-569428e09f45@kwiboo.se>
+Date: Tue, 29 Jul 2025 23:15:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add RTL8367RB-VB switch to
- Radxa E24C
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add Radxa E24C
 To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: "alsi@bang-olufsen.dk" <alsi@bang-olufsen.dk>,
- "andrew@lunn.ch" <andrew@lunn.ch>, "conor+dt@kernel.org"
- <conor+dt@kernel.org>, "davem@davemloft.net" <davem@davemloft.net>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "edumazet@google.com" <edumazet@google.com>,
- "heiko@sntech.de" <heiko@sntech.de>, "krzk+dt@kernel.org"
- <krzk+dt@kernel.org>, "kuba@kernel.org" <kuba@kernel.org>,
- "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "olteanv@gmail.com" <olteanv@gmail.com>,
- "pabeni@redhat.com" <pabeni@redhat.com>, "robh@kernel.org"
- <robh@kernel.org>, "ziyao@disroot.org" <ziyao@disroot.org>
-References: <5bdd0009-589f-49bc-914f-62e5dc4469e9@kwiboo.se>
- <20250729115009.2158019-1-amadeus@jmu.edu.cn>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
+ krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ ziyao@disroot.org
+References: <e2fd11db-543a-43eb-b118-9f246ff149b5@kwiboo.se>
+ <20250729132025.2359761-1-amadeus@jmu.edu.cn>
 Content-Language: en-US
 From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250729115009.2158019-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20250729132025.2359761-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250729_135627_356529_C6B61DC4 
-X-CRM114-Status: GOOD (  20.73  )
+X-CRM114-CacheID: sfid-20250729_141603_688435_33F46D1A 
+X-CRM114-Status: GOOD (  23.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,50 +79,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chukun,
-
-On 7/29/2025 1:50 PM, Chukun Pan wrote:
+On 7/29/2025 3:20 PM, Chukun Pan wrote:
 > Hi,
 > 
->> The issue is with TSO and RX checksum offload, with those disabled on
->> the conduit interface (gmac1/eth0) my issues disappeared.
-> 
-> I did a test today and the same problem occurred when running the new
-> kernel on my rk3568 + rtl8367s board. This problem does not exist on
-> older kernels (6.1 and 6.6). Not sure where the problem is.
-
-I had only tested on a next-20250722 based kernel and on a vendor 6.1
-based kernel. And similar to your findings, on 6.1 based kernel there
-was no issue only on the newer kernel.
-
-I will probably drop the use of "/delete-property/ snps,tso" and include
-a note in commit message about the TSO and RX checksum issue for v2.
-
-> 
->> With a 'mdio' child node 'make CHECK_DTBS=y' report something like:
+>> Both avddl_1v1 and avddh_3v3 are controlled by the same gpio, I do not
+>> remember if using two regulators with same gpios is supported, can only
+>> remember it being an issue in the past, so I opted to just describe it
+>> as a single regulator and gave it a new name and added labels for the
+>> name used in schematic.
 >>
->>    rockchip/rk3528-radxa-e24c.dtb: ethernet-switch@1d (realtek,rtl8365mb): mdio: False schema does not allow { [snip] }
->>          from schema $id: http://devicetree.org/schemas/net/dsa/realtek.yaml#
->>
->> With a mdio node the driver is happy and dtschema is sad, and without
->> the mdio node it was the other way around.
+>> Would calling it vdd_8367 (after gpio_8367_en) be better or do you have
+>> any other suggestion on how to describe these?
 > 
-> On older kernels (6.1/6.6) only realtek-smi requires mdio child OF node.
-> Commit bba140a566ed ("net: dsa: realtek: use the same mii bus driver for both interfaces")
-> changed this behavior, both MDIO interface and SMI interface need it
-> (rtl83xx_setup_user_mdio), but the dt-bindings has not been updated.
-> I think this needs a Fixes tag.
+> Would it be better to just call it avddh_3v3 and add a comment?
+> This makes it easier to find in the schematics and match phy-supply.
 
-Thanks for finding this, and yes I can see that commit bba140a566ed
-changed the behavior of the driver and probably broke out-of-tree users.
+It already had a label for avddh_3v3, I am currently thinking something
+like following, includes the names from schematic and a name for humans:
 
-My current plan for a v2 is to:
-- include a new dt-bindings patch to allow use of a mdio node
-- include a mdio node in the switch node
-- add a Fixes tag to the driver patch
+	/* Common enable line for the avdd rails mentioned in the labels */
+	vdd_switch: avddl_1v1: avddh_3v3: regulator-vdd-switch {
+		compatible = "regulator-fixed";
+		enable-active-high;
+		gpios = <&gpio1 RK_PC3 GPIO_ACTIVE_HIGH>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&gpio_8367_en>;
+		regulator-name = "vdd_switch";
+		startup-delay-us = <10000>;
+		vin-supply = <&vcc5v0_sys>;
+	};
 
-Then leave up to maintainers to decide if they want to accept this patch
-or not.
+> 
+>> See above, I had issues using the reset-gpios of the switch, because the
+>> switch was probed twice, once deferred by gmac, and by the second probe
+>> failed with -BUSY because of the reset-gpios still being claimd by the
+>> first probe.
+>>
+>> I can change to describe the reset pin in the switch, however that will
+>> likely mean Ethernet is unusable until the issue in devres/gpiolib is
+>> tracked down and fixed by someone.
+> 
+> I don't think it's a devres/gpiolib issue.
+> It looks like these two resets are competing:
+> 
+>   priv->reset_ctl = devm_reset_control_get_optional(dev, NULL);
+>   priv->reset = devm_gpiod_get_optional(dev, "reset", GPIOD_OUT_LOW);
+> 
+> reset-gpios works if reset-names is specified:
+> 
+> -	priv->reset_ctl = devm_reset_control_get_optional(dev, NULL);
+> +	priv->reset_ctl = devm_reset_control_get_optional(dev, "switch");
+> 
+> Or just remove the reset controller, I'm not sure if it's really needed:
+> 
+> -	priv->reset_ctl = devm_reset_control_get_optional(dev, NULL);
+> -	if (IS_ERR(priv->reset_ctl))
+> -		return dev_err_cast_probe(dev, priv->reset_ctl,
+> -					  "failed to get reset control\n");
+
+Very interesting, my initial testing was to include a call to
+devm_gpiod_put() in rtl83xx_remove() but was afraid it could result in a
+WARN_ON in case driver was properly unloaded/removed.
+
+  void rtl83xx_remove(struct realtek_priv *priv)
+  {
+	if (priv->reset)
+		devm_gpiod_put(priv-dev, priv->reset);
+  }
+
+With reset_control_get using a gpio fallback, this complicates things a
+little bit, will run some more tests and probably include a driver patch
+for v2, thanks for finding this!
 
 Regards,
 Jonas
