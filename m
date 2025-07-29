@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD0FFC83F26
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 08:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19E46C83F26
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 08:53:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1Xi5pP5wUZFbrmQjEc1L8zKlyXvtL6S4UhItHUDiD/s=; b=DU0viuzT2ie+kn
-	eMOXxiCT4l7swkWO8lZw2lH3H/yx9JTw3iKlk0QXUCUtSz93i8rWxRB3VowdD30BdtdF4uyK8AUoT
-	aTU3XzTxBIhm3kcW2HhpPKQGR08QC2oL6xnWMJiiy4TK7Q06ws3HcbsFxAQlhiYW2/HOBDNsNSJGQ
-	HvktwBp9Xs0EEn1Szjcx0Oty8ufBgX2+KUb73Aej9iTtvPebDmGymIKLL8Ysb3Tqjf5JOeo7gb079
-	sAH9KSZ5E5xa7Uh4q/UcxaSeyw2blesJfUCF0BBuvYJgyHbaKdvhx34un5RzCFZ6UjU/VB/IBFcdz
-	fY5ehYzXc5kPSdRhpCXA==;
+	List-Owner; bh=hi69YTRzoYWNUOoPVyO8Isj9E+Q6tprAAskWcI4HLjU=; b=LtzT6AAylDFwRY
+	bwuI3Pk8+qevYt4b4ms8u2gRCAcvMK4WIW/CzBk/PEDNLH8X1orRzKBzY0syVVXXEGtUQDsVYHM9s
+	RFMH2P6488i/OtJVDt9y7KS1RKg4WOgGGshUZh7ROniyDAdWmLhdyyng2UeqKmKS1AsCy8rR8WA5x
+	EEYaQwnqYJxx9OK5rwzBM/JE1eSYbdfCPOxpseOH2ZYselNHbrGui8+gFsQ2E1d65vIBqI2qW8Pnc
+	5AUqGKFbgxVP0JZz3Gjn32oDvnLkgLl0RrHBeFX2NVdSdLHi2/kO50iXSJnxz2ASCi1ADhgw6KX2h
+	YXWE1MUEOc+9coqt+fxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugfkK-0000000GGFa-2XDm;
-	Tue, 29 Jul 2025 08:31:40 +0000
-Received: from mail-m19731116.qiye.163.com ([220.197.31.116])
+	id 1ugg5m-0000000GIqz-0j50;
+	Tue, 29 Jul 2025 08:53:50 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugfkG-0000000GGDz-04fp;
-	Tue, 29 Jul 2025 08:31:39 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1d9827a9b;
-	Tue, 29 Jul 2025 16:31:28 +0800 (GMT+08:00)
-Message-ID: <7445b3d4-0e88-40e5-bcbd-8ea60c35d5bb@rock-chips.com>
-Date: Tue, 29 Jul 2025 16:31:27 +0800
+	id 1ugg0U-0000000GI5w-3xM1;
+	Tue, 29 Jul 2025 08:48:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6F1055C60F6;
+	Tue, 29 Jul 2025 08:48:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B402FC4CEF5;
+	Tue, 29 Jul 2025 08:48:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753778902;
+	bh=2JhJ23PKDGh0rNTPf4+9GEhrGZZAPJDZKUqvEUJMYfY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mNAAoGpN/YY4FI3E9IjMxHdPD0kk9XalVNVAzKrpsR5O3jdpDjrcpf1gyFV00y2b+
+	 2kB3X6Wel/4P8A52a5+S/oPsWTptQrti7af0fojd+r7RIbsKtdq88TkGOmzleDfftC
+	 L40j/hPxabP0hFKIdZLm2X6p6yf72JrwFd8QtgDCyKk82X/DMB0yYdRYlVp4i4bQke
+	 jcz/YOD2N3EAKJfUi/Em2gF1rdVg9hEiivzvzcflPhLz48zsBTV4nrqO5zfoX43Os1
+	 ucB0/ejIRjdvNv4Tsg7bUCcNi3OJT/EKp/cgomKb2rc0ITUC+7p8/MjUXvy2JWrBMt
+	 Ou+p1ZXShTW0w==
+Date: Tue, 29 Jul 2025 10:48:19 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Erik Beck <xunil@tahomasoft.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 2/2] dt-bindings: arm: rockchip: add
+ LinkStar-H68k-1432v1
+Message-ID: <20250729-passionate-jerboa-of-superiority-c7aff5@kuoka>
+References: <20250728-linkstarpatch_v5-v5-0-b4ebfeaca652@tahomasoft.com>
+ <20250728-linkstarpatch_v5-v5-2-b4ebfeaca652@tahomasoft.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v3 04/14] drm/bridge: analogix_dp: Add
- &analogix_dp_plat_data.bridge
-To: Maxime Ripard <mripard@kernel.org>
-Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
- Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
- hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
- dmitry.baryshkov@oss.qualcomm.com, l.stach@pengutronix.de,
- dianders@chromium.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20250724080304.3572457-1-damon.ding@rock-chips.com>
- <20250724080304.3572457-5-damon.ding@rock-chips.com>
- <20250729-wooden-opalescent-baboon-f24fa2@houat>
-Content-Language: en-US
-In-Reply-To: <20250729-wooden-opalescent-baboon-f24fa2@houat>
-X-HM-Tid: 0a98554edd1703a3kunma08ba3a841d6e7
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkNMGlYaGh1JSElDSR5MTBhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=Q80s3a/tV4F2URBBklVXAzRfnVtfBo4yEdM/EZTEwDhDT0yBlKMCM/g4YkEMUHGcQZuzRB36AwgHJagRlvr2/emhFxN1gxf3dbNEzpE1/e+oHBfC3qFnlFMNZKoKPzivDTWL1SsMk8EJefvVkEZjqfv+ae5P4YR/7x2BVNQkl2g=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=hy5UWCAEJ8QpZLBQjuKhMArV1bapCPsMjvUUWG3LcSY=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <20250728-linkstarpatch_v5-v5-2-b4ebfeaca652@tahomasoft.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250729_013136_538795_BCCD87E7 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20250729_014823_020816_07A372DE 
+X-CRM114-Status: UNSURE (   7.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,55 +71,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+On Mon, Jul 28, 2025 at 11:07:37AM -0400, Erik Beck wrote:
+> Add device tree bindings.
 
-On 2025/7/29 15:30, Maxime Ripard wrote:
-> Hi,
-> 
-> On Thu, Jul 24, 2025 at 04:02:54PM +0800, Damon Ding wrote:
->> In order to move the parnel/bridge parsing and attachmenet to the
->> Analogix side, add component struct drm_bridge *bridge to platform
->> data struct analogix_dp_plat_data.
->>
->> The movemenet makes sense because the panel/bridge should logically
->> be positioned behind the Analogix bridge in the display pipeline.
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->> ---
->>   include/drm/bridge/analogix_dp.h | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
->> index cf17646c1310..15cb6b706e9f 100644
->> --- a/include/drm/bridge/analogix_dp.h
->> +++ b/include/drm/bridge/analogix_dp.h
->> @@ -27,6 +27,7 @@ static inline bool is_rockchip(enum analogix_dp_devtype type)
->>   struct analogix_dp_plat_data {
->>   	enum analogix_dp_devtype dev_type;
->>   	struct drm_panel *panel;
->> +	struct drm_bridge *bridge;
->>   	struct drm_encoder *encoder;
->>   	struct drm_connector *connector;
->>   	bool skip_connector;
-> 
-> So it's not the analogix_dp bridge, but the bridge after that if any?
-> 
-> You should probably change it to next_bridge to avoid any confusion.
-> 
+I don't understand why correct patch order was changed to incorrect.
 
-Yes, &analogix_dp_plat_data.bridge is intended to be the next bridge 
-after analogix_dp bridge.
-
-I will rename it to &analogix_dp_plat_data.next_bridge as suggested and 
-update it in the next version.
+See submitting patches in DT bindings dir.
 
 Best regards,
-Damon
+Krzysztof
 
 
 _______________________________________________
