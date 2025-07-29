@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB11DC87FC9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 09:45:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 627DCC87FC9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 11:50:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:Cc:References:Message-Id
-	:Date:Subject:Mime-Version:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MmL9bSQrPZmrK3fyu2r5BDKnJ3kK34k8wU7KzRQkvFk=; b=paVp0Ml794v27z
-	92AtMThotNW69IFi0FSGnlXf355GQ9igBMrf+9r7yFIAdnXR7Tx+sQJIuHFUG+mwvwa+/8FPAoL7N
-	u9U6ihDdinpjupVU+D8HJERKvZ0xdNSHhDkDUulXkmONPnOYbnGCltqaudKrxLdm/kZ8jqflF3Nbt
-	sItp6JBsagkT7i925bLMCqUlPm1zT3hkbopjmcsBCtSKsH4MaI+x8u0EOAug9CInqHOwJQzu9d02C
-	VOb9gFRH5P2VI+SLSWXD25dxSpKBezIcKe7fpW5nWrjXfLAUC4Z4yVA82/BhyEWgN4xaX56nRJg5Y
-	ZgRGW+i1qzS5PCKaUSdg==;
+	List-Owner; bh=N6m9XRBqLx1NpA8jFgOx0MJX6YZhhrc1N6I5bMk1Mxo=; b=z6wmlX43qYOAI+
+	Jf34DIuJs2jHbtEEHOxcgWLxPbRdv5JPs1W0vuRIsBEa/5offt5s3c++/qEte5n2DNFKbsYUtOyKd
+	MlCjOl6NvGPCujDIzLe8W5dk+PB/l/0kqH6YTB575n8Kh4RmQl4U6qE7LAhbAOuaW1DQwKCQcyKHS
+	tMMA1wKZxYEGEsIEQf/UNGrVmHhZBLINngxtArNnRKXKuExdDwK5AaZFN8ntHnpgng1GRNgUhQ0Sm
+	Xtk165hqj03WvACADMVPw732MbybRL1ccUm2mXfVp9kor1cQ+yKa//u04GKlrmnKx0khOrGBxtK0H
+	VWqndDN2HTS8GYHdffdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uggtI-0000000GQrT-0Bg8;
-	Tue, 29 Jul 2025 09:45:00 +0000
-Received: from chumsalmon.baetis.net ([209.222.21.150])
+	id 1ugiqg-0000000GepP-3VBu;
+	Tue, 29 Jul 2025 11:50:26 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uggZQ-0000000GO86-20qT;
-	Tue, 29 Jul 2025 09:24:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tahomasoft.com;
-	s=default; t=1753781067;
-	bh=5f4BpgvVmzCRmDHsN/VvJBuhhWIHDaaAjfV2HvJvoOs=;
-	h=From:Subject:Date:References:Cc:In-Reply-To:To:From;
-	b=hpFXhVh8LgP8dqnxcUgwPNo6gTpGwmpdL+3iJuNNFBFpBGjzSvPtenKS/Y9H3jdWH
-	 X/4iWVa8l+2IL96OuJShAyeJHPCwqh9Az2ub+A/Lz7JxMoqm7K6rcDGD83j+lxa/Wd
-	 uCSHnl91sS97i1Z1IKre75KtOgyk60OGoIBsWv8CethiTw8QEXtyiKcypi+037gNuF
-	 /O6DkkSV8Nz6N/EjDY0V+hUNQibAfE6UCubpHFlaulVS+D+YlWbKbsmPcWSl1JdwBR
-	 ZNvHDBz00pwgPYLzjmGSYtT64gVmO8CyajtRGjwVfBKTZ4kg4Onc6if6XGliWFxR/P
-	 jEp2aIU1uWMpQ==
-Received: from smtpclient.apple (unknown [IPv6:2600:4040:50b7:b604:2ca9:1ceb:f1ef:b736])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by chumsalmon.baetis.net (Postfix) with ESMTPSA id 629C327E434;
-	Tue, 29 Jul 2025 09:24:27 +0000 (UTC)
-From: Erik Beck <xunil@tahomasoft.com>
-Mime-Version: 1.0 (1.0)
-Subject: Re: [PATCH v5 2/2] dt-bindings: arm: rockchip: add LinkStar-H68k-1432v1
-Date: Tue, 29 Jul 2025 05:24:17 -0400
-Message-Id: <9E402294-53BD-4BA7-9E0A-EE4B287DF038@tahomasoft.com>
-References: <20250729-passionate-jerboa-of-superiority-c7aff5@kuoka>
-Cc: Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20250729-passionate-jerboa-of-superiority-c7aff5@kuoka>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-X-Mailer: iPhone Mail (22F76)
+	id 1ugiqd-0000000GeoC-2bCW;
+	Tue, 29 Jul 2025 11:50:25 +0000
+Received: from localhost.localdomain (unknown [119.122.213.139])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1d9d0f96f;
+	Tue, 29 Jul 2025 19:50:14 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: jonas@kwiboo.se
+Cc: alsi@bang-olufsen.dk,
+	amadeus@jmu.edu.cn,
+	andrew@lunn.ch,
+	conor+dt@kernel.org,
+	davem@davemloft.net,
+	devicetree@vger.kernel.org,
+	edumazet@google.com,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	kuba@kernel.org,
+	linus.walleij@linaro.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	netdev@vger.kernel.org,
+	olteanv@gmail.com,
+	pabeni@redhat.com,
+	robh@kernel.org,
+	ziyao@disroot.org
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add RTL8367RB-VB switch to Radxa E24C
+Date: Tue, 29 Jul 2025 19:50:09 +0800
+Message-Id: <20250729115009.2158019-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <5bdd0009-589f-49bc-914f-62e5dc4469e9@kwiboo.se>
+References: <5bdd0009-589f-49bc-914f-62e5dc4469e9@kwiboo.se>
+MIME-Version: 1.0
+X-HM-Tid: 0a985604d4c503a2kunm15728bea1d0da6
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaGktDVkhNSxkYQx4fT0JNSVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSFVKSEJZV1kWGg8SFR0UWUFZT0tIVUpLSUJNS0pVSktLVU
+	tZBg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250729_022428_574965_DDFD83FB 
-X-CRM114-Status: UNSURE (   8.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250729_045023_842989_463AD9CB 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,19 +77,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cgo+IE9uIEp1bCAyOSwgMjAyNSwgYXQgMDQ6NTQsIEtyenlzenRvZiBLb3psb3dza2kgPGtyemtA
-a2VybmVsLm9yZz4gd3JvdGU6Cj4gCj4g77u/T24gTW9uLCBKdWwgMjgsIDIwMjUgYXQgMTE6MDc6
-MzdBTSAtMDQwMCwgRXJpayBCZWNrIHdyb3RlOgo+PiBBZGQgZGV2aWNlIHRyZWUgYmluZGluZ3Mu
-Cj4gCj4gSSBkb24ndCB1bmRlcnN0YW5kIHdoeSBjb3JyZWN0IHBhdGNoIG9yZGVyIHdhcyBjaGFu
-Z2VkIHRvIGluY29ycmVjdC4KCk15IGVycm9yLiBUaGFuayB5b3UsIGFuZCBJJ2xsIGJlIHJlb3Jk
-ZXJpbmcgdGhlbSBzaG9ydGx5LgoKUmVnYXJkcywKCkVyaWsKPiAKPiBTZWUgc3VibWl0dGluZyBw
-YXRjaGVzIGluIERUIGJpbmRpbmdzIGRpci4KPiAKPiBCZXN0IHJlZ2FyZHMsCj4gS3J6eXN6dG9m
-Cj4gCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+Hi,
+
+> The issue is with TSO and RX checksum offload, with those disabled on
+> the conduit interface (gmac1/eth0) my issues disappeared.
+
+I did a test today and the same problem occurred when running the new
+kernel on my rk3568 + rtl8367s board. This problem does not exist on
+older kernels (6.1 and 6.6). Not sure where the problem is.
+
+> With a 'mdio' child node 'make CHECK_DTBS=y' report something like:
+>
+>    rockchip/rk3528-radxa-e24c.dtb: ethernet-switch@1d (realtek,rtl8365mb): mdio: False schema does not allow { [snip] }
+>          from schema $id: http://devicetree.org/schemas/net/dsa/realtek.yaml#
+>
+> With a mdio node the driver is happy and dtschema is sad, and without
+> the mdio node it was the other way around.
+
+On older kernels (6.1/6.6) only realtek-smi requires mdio child OF node.
+Commit bba140a566ed ("net: dsa: realtek: use the same mii bus driver for both interfaces")
+changed this behavior, both MDIO interface and SMI interface need it
+(rtl83xx_setup_user_mdio), but the dt-bindings has not been updated.
+I think this needs a Fixes tag.
+
+Thanks,
+Chukun
+
+--
+2.25.1
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
