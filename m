@@ -4,59 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAC87C87FCA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 19:26:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6D53C87FC9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 19:36:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GNTmGd4PnG1RVEjoed6uDI/jHYfb6XvLpqIpzL8eGak=; b=MrjeDMxbtFDHxL1/iZQE2dVs4X
-	dmVUufJkzNwHzDtg9AW1gioHZEbecqFJ/znIjGn/JlOhscbi/XMagmmMykvup1KUS8pqMIX8IJQqg
-	hBIVtOFfQzBblqnGp9FhcCAEogdMT+M/xmO9R2LNFBl8Rh1qMWvVzYnX2cay+z9Y0ZC5wf+HXskMA
-	iEsAiETN4xvxOwWEWn7yMUJuHzYa9Jl3ROulLk+gvpAFOctCRfJdmYnM+etLVYkU9un7zjlzWyccq
-	O73VGa6Bf6MrU91UB1A0k+BbanlsJIAm9eJoUDj7bRvMjJFqIBAEYM3VMSDGD6+kSKhVQEJQjiyBu
-	AUI17wvQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=g6pHBIdrPZ4g0Of3KTy+Ag4OyBXGxFg1Oj0Q+b4jBeg=; b=Tu+lpwHujWJnGM
+	TqJR4UUdRZck3yPk3KPYExgj5HML/7dYN9n15G/hQ8Gv6DituY3j1raQFiNSuJJR7z2txuBQn1h6w
+	W35cRItptWlLnLgBVlyKOEoSRc3ZI3naHk56WdLM6eb5I0sB7osYogMtUSHvLP2yBd+ZYPuXO6qch
+	BfGhw+FUQ8vfNZb4LDgYDUH8q2YEmzxaDXGlPb5y89lppH7iWdFH/KztbgAC52MQNZOgL7TAL4MM5
+	32IB3aHfIzU4FmdFxDcHatPh1kzkNqO2t8E7eOiNfvq+R0l6vea9N/8qfaUQLFBgFLOiRzfR2XvCx
+	o7X7w8s0jE9mg+vaP31A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugpyJ-0000000HYQV-1K6w;
-	Tue, 29 Jul 2025 19:26:47 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1ugq7P-0000000HZQe-0RYc;
+	Tue, 29 Jul 2025 19:36:11 +0000
+Received: from smtp-70.smtpout.orange.fr ([80.12.242.70] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugpvn-0000000HYJC-149R;
-	Tue, 29 Jul 2025 19:24:15 +0000
+	id 1ugq4u-0000000HYsr-49TK;
+	Tue, 29 Jul 2025 19:33:38 +0000
+Received: from [IPV6:2a01:cb10:785:b00:8347:f260:7456:7662]
+ ([IPv6:2a01:cb10:785:b00:8347:f260:7456:7662])
+	by smtp.orange.fr with ESMTPA
+	id gq4ru80ArUD3Ugq4ru4oqm; Tue, 29 Jul 2025 21:33:34 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1753817614;
+	bh=z+SRRL3rRltS4sAuSdLWbFetbEgJEuFio4WE2T9Xyb4=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From;
+	b=p8PaVsrZqWeFVlslirJenx5xHw0FCGjNcLzugJozH3WTmqHGn5fi/qsz9EKnhlDK9
+	 8JnMXrCM24Qd8qHpbd0v82eiHrGWsWvz67yHCkwUIeW/kpFRRXZesPKDtGtsm0o9HR
+	 XPKiEtHRSaO5ZA/9LCOSS/bpEo60rz9OyhO5hbNKUR3Dw3vnDrf0x3hfIOjB5y66dj
+	 3uLSIJutYRHOBiP3Og5JMCsFgPFW7+jrjnxXIKOAiXhIwVrClRFn9ueI1gApEyuyfq
+	 bL9Nf8wuWKX293f2HmS2HmQAFpz10J0/bwqDv7uI1lCkcz61PMaOxB04RQek127Hfo
+	 ZsoBmEp7pBInA==
+X-ME-Helo: [IPV6:2a01:cb10:785:b00:8347:f260:7456:7662]
+X-ME-Auth: bWFyaW9uLmphaWxsZXRAd2FuYWRvby5mcg==
+X-ME-Date: Tue, 29 Jul 2025 21:33:34 +0200
+X-ME-IP: 2a01:cb10:785:b00:8347:f260:7456:7662
+Message-ID: <884293c1-f6f4-48b3-a5d9-9b41fa8614a5@wanadoo.fr>
+Date: Tue, 29 Jul 2025 21:33:32 +0200
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1753817048;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=45b7+iFHqq41vN2poZPExRuxtRpUIdHR17dsbMnjiIQ=;
-	b=A0BCxyrnYyclR+WVu3Wj43vGJTqP0k11ahIrdKi5DyWe4f+5DjKoxKPijRoi+LlX7ZI3yr
-	CG6/zPkzOmq4O2kjcihAop6JTDB64bDn/rm4zYVZfs07ceOTgBmI65qhNWEjBLe5tp+KYB
-	6g1cjW8wPVvZfWuvtfNPYMJYryln3+dV2+4v9WVc00v6tzY0pi1jAhPjBr1yNtliUazcDb
-	kOwjIwvdqEodc+4CDb2qeVYwoKastrAmMEjUElS142nXc053pjZPhO8xROckBWvUuzoVJj
-	6ECRDcFe/BInJPA/Jkgm/HNxgy0Lt5G8yO8h+y5gpeab+NPFni8MyUJw4wZGwg==
-Date: Tue, 29 Jul 2025 21:24:08 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Peter Robinson <pbrobinson@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Geert
- Uytterhoeven <geert+renesas@glider.be>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Pinebook Pro: Update WiFi
-In-Reply-To: <6948463c8ca90bd9c72fb34178ddb029@manjaro.org>
-References: <20250729185827.144547-1-pbrobinson@gmail.com>
- <6948463c8ca90bd9c72fb34178ddb029@manjaro.org>
-Message-ID: <5c3a62a678f6d86e81913700c05e0286@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] media: rkvdec: Fix an error handling path in
+ rkvdec_probe()
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Hans Verkuil <hverkuil@kernel.org>
+Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <b69c20783a7b6f7964ab636679d3da80fc48372e.1753610517.git.christophe.jaillet@wanadoo.fr>
+ <0a8391cb368653b91ea73a51e2c0dee35cceb128.camel@collabora.com>
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Content-Language: en-US, fr-FR
+In-Reply-To: <0a8391cb368653b91ea73a51e2c0dee35cceb128.camel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250729_122411_637907_6764D705 
-X-CRM114-Status: GOOD (  17.35  )
+X-CRM114-CacheID: sfid-20250729_123337_162439_2FACFA1B 
+X-CRM114-Status: GOOD (  22.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,96 +76,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2025-07-29 21:10, Dragan Simic wrote:
-> Hello Peter,
-
-Sorry, somehow I managed to forget suggesting that the patch
-summary should be made a bit more self-descriptive.  At the same
-time, including "Pinebook Pro:" as one of the summary prefixes
-isn't common, so perhaps this would be a good candidate for the
-revised patch summary:
-
-   arm64: dts: rockchip: Describe WiFi wake-up pin for the Pinebook Pro
-
-Obviously, this applies to your PinePhone Pro patch [1] as well.
-As a nitpick, please note that the second "p" in "PinePhone" is
-actually an uppercase "P".
-
-[1] 
-https://lore.kernel.org/linux-rockchip/20250729190712.145817-1-pbrobinson@gmail.com/T/#u
-
-> On 2025-07-29 20:58, Peter Robinson wrote:
->> Update the WiFi configuration to include the wake-up
->> pin and add an ethernet alias to allow assignment of
->> a mac-address from the firmware.
->> 
->> Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
->> ---
->>  .../boot/dts/rockchip/rk3399-pinebook-pro.dts | 19 
->> +++++++++++++++++++
->>  1 file changed, 19 insertions(+)
->> 
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
->> b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
->> index 5a8551d9ffe47..05c48cb09df6f 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
->> @@ -19,6 +19,7 @@ / {
->>  	chassis-type = "laptop";
->> 
->>  	aliases {
->> +		ethernet0 = &brcmf;
-> 
-> I'm sorry, but this alias isn't acceptable.  In a few words, this
-> simply isn't an Ethernet interface.
-> 
-> We're already stretching a bit the dynamic nature of, well, everything
-> with the aliases in the Rockchip DT files, and an alias like this one
-> would be stretching the whole thing beyond the breaking point.
-> 
->>  		mmc0 = &sdio0;
->>  		mmc1 = &sdmmc;
->>  		mmc2 = &sdhci;
->> @@ -883,6 +884,12 @@ vcc5v0_host_en_pin: vcc5v0-host-en-pin {
->>  		};
->>  	};
->> 
->> +	wifi {
->> +		wifi_host_wake_l: wifi-host-wake-l {
->> +			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
->> +		};
->> +	};
->> +
->>  	wireless-bluetooth {
->>  		bt_wake_pin: bt-wake-pin {
->>  			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
->> @@ -940,7 +947,19 @@ &sdio0 {
->>  	pinctrl-names = "default";
->>  	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
->>  	sd-uhs-sdr104;
->> +	#address-cells = <1>;
->> +	#size-cells = <0>;
->>  	status = "okay";
->> +
->> +	brcmf: wifi@1 {
->> +		reg = <1>;
->> +		compatible = "brcm,bcm4329-fmac";
->> +		interrupt-parent = <&gpio0>;
->> +		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_HIGH>;
->> +		interrupt-names = "host-wake";
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&wifi_host_wake_l>;
->> +	};
->>  };
->> 
->>  &sdhci {
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+TGUgMjkvMDcvMjAyNSDDoCAwMDo1MCwgTmljb2xhcyBEdWZyZXNuZSBhIMOpY3JpdMKgOgo+IEhp
+LAo+IAo+IExlIGRpbWFuY2hlIDI3IGp1aWxsZXQgMjAyNSDDoCAxMjowMiArMDIwMCwgQ2hyaXN0
+b3BoZSBKQUlMTEVUIGEgw6ljcml0wqA6Cj4+IElmIGFuIGVycm9yIG9jY3VycyBhZnRlciBhIHN1
+Y2Nlc3NmdWwgaW9tbXVfcGFnaW5nX2RvbWFpbl9hbGxvYygpIGNhbGwsIGl0Cj4+IHNob3VsZCBi
+ZSB1bmRvbmUgYnkgYSBjb3JyZXNwb25kaW5nIGlvbW11X2RvbWFpbl9mcmVlKCkgY2FsbCwgYXMg
+YWxyZWFkeQo+PiBkb25lIGluIHRoZSByZW1vdmUgZnVuY3Rpb24uCj4+Cj4+IEZpeGVzOiBmZjhj
+NTYyMmY5ZjcgKCJtZWRpYTogcmt2ZGVjOiBSZXN0b3JlIGlvbW11IGFkZHJlc3NlcyBvbiBlcnJv
+cnMiKQo+PiBTaWduZWQtb2ZmLWJ5OiBDaHJpc3RvcGhlIEpBSUxMRVQgPGNocmlzdG9waGUuamFp
+bGxldEB3YW5hZG9vLmZyPgo+PiAtLS0KPj4gQ29tcGlsZSB0ZXN0ZWQgb25seQo+PiAtLS0KPj4g
+IMKgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZkZWMvcmt2ZGVjLmMgfCAxMSAr
+KysrKysrKy0tLQo+PiAgwqAxIGZpbGUgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCAzIGRlbGV0
+aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hp
+cC9ya3ZkZWMvcmt2ZGVjLmMKPj4gYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3Jr
+dmRlYy9ya3ZkZWMuYwo+PiBpbmRleCBkNzA3MDg4ZWMwZGMuLmViMGQ0MWY4NWQ4OSAxMDA2NDQK
+Pj4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZkZWMvcmt2ZGVjLmMK
+Pj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZkZWMvcmt2ZGVjLmMK
+Pj4gQEAgLTExNjksMTUgKzExNjksMTcgQEAgc3RhdGljIGludCBya3ZkZWNfcHJvYmUoc3RydWN0
+IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4gIMKgCXZiMl9kbWFfY29udGlnX3NldF9tYXhfc2Vn
+X3NpemUoJnBkZXYtPmRldiwgRE1BX0JJVF9NQVNLKDMyKSk7Cj4+ICAgCj4+ICDCoAlpcnEgPSBw
+bGF0Zm9ybV9nZXRfaXJxKHBkZXYsIDApOwo+PiAtCWlmIChpcnEgPD0gMCkKPj4gLQkJcmV0dXJu
+IC1FTlhJTzsKPj4gKwlpZiAoaXJxIDw9IDApIHsKPj4gKwkJcmV0ID0gLUVOWElPOwo+PiArCQln
+b3RvIGVycl9mcmVlX2RvbWFpbjsKPj4gKwl9Cj4+ICAgCj4+ICDCoAlyZXQgPSBkZXZtX3JlcXVl
+c3RfdGhyZWFkZWRfaXJxKCZwZGV2LT5kZXYsIGlycSwgTlVMTCwKPj4gIMKgCQkJCQlya3ZkZWNf
+aXJxX2hhbmRsZXIsIElSUUZfT05FU0hPVCwKPj4gIMKgCQkJCQlkZXZfbmFtZSgmcGRldi0+ZGV2
+KSwgcmt2ZGVjKTsKPj4gIMKgCWlmIChyZXQpIHsKPj4gIMKgCQlkZXZfZXJyKCZwZGV2LT5kZXYs
+ICJDb3VsZCBub3QgcmVxdWVzdCB2ZGVjIElSUVxuIik7Cj4+IC0JCXJldHVybiByZXQ7Cj4+ICsJ
+CWdvdG8gZXJyX2ZyZWVfZG9tYWluOwo+PiAgwqAJfQo+PiAgIAo+PiAgwqAJcG1fcnVudGltZV9z
+ZXRfYXV0b3N1c3BlbmRfZGVsYXkoJnBkZXYtPmRldiwgMTAwKTsKPiAKPiBIYXZlIHlvdSBjb25z
+aWRlcmVkIG1vdmluZyB0aGUgYWxsb2NhdGlvbiBvZiB0aGUgZG9tYWluIHJpZ2h0IGFib3ZlIHRo
+ZSBhYm92ZQo+IGxpbmUgaW5zdGVhZCA/IFRoZSBlbXB0eSBkb21haW4gY2FuJ3QgcG9zc2libHkg
+YmUgdXNlZCB1bmxlc3MgdGhlIHByb2JlIGhhdmUKPiBmdWxseSBjb21wbGV0ZWQuCgpUaGF0IHdv
+dWxkIG5vdCBjaGFuZ2UgdGhpbmdzIG11Y2guIFdlIHN0aWxsIG5lZWQgdG8gaGFuZGxlIApya3Zk
+ZWNfdjRsMl9pbml0KCkgZmFpbHVyZSBhIGZldyBsaW5lcyBiZWxvdy4KCklmIGl0IGlzIGNvcnJl
+Y3QgdG8gbW92ZSBpdCBhdCB0aGUgdmVyeSBlbmQgb2YgdGhlIGZ1bmN0aW9uLCBhZnRlciAKcmt2
+ZGVjX3Y0bDJfaW5pdCgpLCB0aGVuIHRoZSBwYXRjaCB3b3VsZCBiZSBzaW1wbGVyLgoKCkhvbmVz
+dGx5LCBJJ20gbm90IHZlcnkgY29uZmlkZW50IHdpdGggaXQuIHJlcXVlc3RfdGhyZWFkZWRfaXJx
+KCkgCmRvY3VtZW50YXRpb24gc3RhdGVzIHRoYXQgIkZyb20gdGhlIHBvaW50IHRoaXMgY2FsbCBp
+cyBtYWRlIHlvdXIgaGFuZGxlciAKZnVuY3Rpb24gbWF5IGJlIGludm9rZWQuIgpBbmQgcmt2ZGVj
+X2lycV9oYW5kbGVyKCkgbWF5IGNhbGwgcmt2ZGVjX2lvbW11X3Jlc3RvcmUoKSB3aGljaCB1c2Vz
+IAplbXB0eV9kb21haW4uCgpOb3Qgc3VyZSBpZiBJJ20gcmlnaHQgYW5kIGlmIHRoaXMgY2FuIGhh
+cHBlbiwgYnV0IHRoZSBleGlzdGluZyBvcmRlciAKbG9va3Mgc2FmZXIgdG8gbWUuCgoKVGhhdCBz
+YWlkLCBpZiBpdCBpcyBmaW5lIGZvciB5b3UsIEkgY2FuIHNlbmQgYSB2Mi4KCgpUaGlzIHdvdWxk
+IGJlOgoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVj
+L3JrdmRlYy5jIApiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRl
+Yy5jCmluZGV4IGQ3MDcwODhlYzBkYy4uNmVhZTEwZTE2YzczIDEwMDY0NAotLS0gYS9kcml2ZXJz
+L21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JrdmRlYy9ya3ZkZWMuYworKysgYi9kcml2ZXJzL21l
+ZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JrdmRlYy9ya3ZkZWMuYwpAQCAtMTE1OSwxMyArMTE1OSw2
+IEBAIHN0YXRpYyBpbnQgcmt2ZGVjX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYp
+CiAgICAgICAgICAgICAgICAgcmV0dXJuIHJldDsKICAgICAgICAgfQoKLSAgICAgICBpZiAoaW9t
+bXVfZ2V0X2RvbWFpbl9mb3JfZGV2KCZwZGV2LT5kZXYpKSB7Ci0gICAgICAgICAgICAgICBya3Zk
+ZWMtPmVtcHR5X2RvbWFpbiA9IAppb21tdV9wYWdpbmdfZG9tYWluX2FsbG9jKHJrdmRlYy0+ZGV2
+KTsKLQotICAgICAgICAgICAgICAgaWYgKCFya3ZkZWMtPmVtcHR5X2RvbWFpbikKLSAgICAgICAg
+ICAgICAgICAgICAgICAgZGV2X3dhcm4ocmt2ZGVjLT5kZXYsICJjYW5ub3QgYWxsb2MgbmV3IGVt
+cHR5IApkb21haW5cbiIpOwotICAgICAgIH0KLQogICAgICAgICB2YjJfZG1hX2NvbnRpZ19zZXRf
+bWF4X3NlZ19zaXplKCZwZGV2LT5kZXYsIERNQV9CSVRfTUFTSygzMikpOwoKICAgICAgICAgaXJx
+ID0gcGxhdGZvcm1fZ2V0X2lycShwZGV2LCAwKTsKQEAgLTExODgsNiArMTE4MSwxMyBAQCBzdGF0
+aWMgaW50IHJrdmRlY19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogICAgICAg
+ICBpZiAocmV0KQogICAgICAgICAgICAgICAgIGdvdG8gZXJyX2Rpc2FibGVfcnVudGltZV9wbTsK
+CisgICAgICAgaWYgKGlvbW11X2dldF9kb21haW5fZm9yX2RldigmcGRldi0+ZGV2KSkgeworICAg
+ICAgICAgICAgICAgcmt2ZGVjLT5lbXB0eV9kb21haW4gPSAKaW9tbXVfcGFnaW5nX2RvbWFpbl9h
+bGxvYyhya3ZkZWMtPmRldik7CisKKyAgICAgICAgICAgICAgIGlmICghcmt2ZGVjLT5lbXB0eV9k
+b21haW4pCisgICAgICAgICAgICAgICAgICAgICAgIGRldl93YXJuKHJrdmRlYy0+ZGV2LCAiY2Fu
+bm90IGFsbG9jIG5ldyBlbXB0eSAKZG9tYWluXG4iKTsKKyAgICAgICB9CisKICAgICAgICAgcmV0
+dXJuIDA7CgogIGVycl9kaXNhYmxlX3J1bnRpbWVfcG06CgoKQ0oKCj4gCj4gTmljb2xhcwo+IAo+
+PiBAQCAtMTE5Myw2ICsxMTk1LDkgQEAgc3RhdGljIGludCBya3ZkZWNfcHJvYmUoc3RydWN0IHBs
+YXRmb3JtX2RldmljZSAqcGRldikKPj4gIMKgZXJyX2Rpc2FibGVfcnVudGltZV9wbToKPj4gIMKg
+CXBtX3J1bnRpbWVfZG9udF91c2VfYXV0b3N1c3BlbmQoJnBkZXYtPmRldik7Cj4+ICDCoAlwbV9y
+dW50aW1lX2Rpc2FibGUoJnBkZXYtPmRldik7Cj4+ICtlcnJfZnJlZV9kb21haW46Cj4+ICsJaWYg
+KHJrdmRlYy0+ZW1wdHlfZG9tYWluKQo+PiArCQlpb21tdV9kb21haW5fZnJlZShya3ZkZWMtPmVt
+cHR5X2RvbWFpbik7Cj4+ICDCoAlyZXR1cm4gcmV0Owo+PiAgwqB9Cj4+ICAgCgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
