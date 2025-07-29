@@ -4,72 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9773C87FCA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 20:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D93FC87FCA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 20:12:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eRUtrmAQKcUPw5y/0JZ2GPwoTdbkSFZeHvCNYM0YmcY=; b=S2Sw1A66ZbHEhe5KS6EKdhy1Xf
-	l+RoRE2R9Nam3QYXT+DRlYINnR4ZScOqQrN2vrMcF93sXRUA1asb1DAUxoDm9K3vEvfMcXI1YTbdD
-	8ftF5oigaVI0zDj6m2ihH/TtoQbzIOTkXyDiC6i70VLSF4fpX9SYVKoNMP383btSTHg4Rymp4ZphB
-	p3TWcuXUhblZLJni606RWSlb3Jx2CoixmLOhs+A6WRyDuUsTKDIZry92SCz59inkWctQ+/LrBN8lk
-	3haElwDtNQ7LAlLMCuwcGgM/oQLA3KCsfAKq7C4syPgnP+YLvYWKpcp+hulK7RjDfqpePtQNVE8tD
-	jnjsYasQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vRvAc71kQxEUiChcmaLAXYk2Kvw9RLB2AKiNooHsXPc=; b=Lsc8DEtsXL3YVs
+	At4fFinfrnZoDiVLlJrDgTVRrNv1R9sEYw//Mk63L0Gm3KjYV4xrW6Xo7+g+AoQf7FciEGsrr9i71
+	4tW3+0E+PUn1mDL1KJlYrM/echr1QwdNhB4RzSnBhmBe5/+suY74PKqruIjfOeesmiWNMg2+HZ5BN
+	kqtqhS8h/n1+P1hexrc7cAbV9Yfli66OqIQTUAdU/b9t4fAgY4mDKd8ZoipKK/lVMqLfhV3KpWbKh
+	mHjrc+yiON/eBsS2QXqFxFDAVqwnI2jocYh+8zbqIh9ShvD8b2EfFGKYZ1zYUkmUTiwJa5A4f+Z1u
+	d0PZNIal+J8tywcaW0NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugqWR-000000001Sb-0x9l;
-	Tue, 29 Jul 2025 20:02:03 +0000
-Received: from out-181.mta0.migadu.com ([91.218.175.181])
+	id 1ugqgd-000000002Bd-0jsK;
+	Tue, 29 Jul 2025 20:12:35 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugqTy-000000001Au-266X
-	for linux-rockchip@lists.infradead.org;
-	Tue, 29 Jul 2025 19:59:32 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1753819157;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=OcthrL0Xe+fdbwJ+7ct553yzhsg4eVUVDzsOcSB6eAI=;
-	b=xH6bv/Vl6xdZ1vLDAdzZn5s3YjOUgRr+1aTVe6G+zr84L6yRGGOVX8FLfWGaUOvAUNnlE8
-	OkJnIsxTPLgZPwebAIBIXU7JOWLjxBeLZadQnyYcyV+Y2Vfgkp+aCcSlX7UpwqmPpScSHw
-	YNl6ErX0r7qmEXJMigEFrzj+eF52Z8nbqK4AhrYbWaMXjiGQpixAa5p5AkJXzTjPk2TNKY
-	3CwvGNBQZyVzE5aSpvyt8P+KqlQRTV4IXH3fqrGTUEFoluwLKK8OInxSTONR6iuXkLLqf3
-	hlc1zw9l4s/WOFJWkT9fyDHI25o1uymTqosLMs6a2gIyxx6PNBl6s7qtaftYpA==
-Date: Tue, 29 Jul 2025 21:59:02 +0200
-Message-Id: <DBOSZZ7TMD2P.U0MGKUR3DXN@cknow.org>
-Cc: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-phy@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <dri-devel@lists.freedesktop.org>
-Subject: Re: [PATCH v3 4/5] arm64: dts: rockchip: Add missing dp_out port
- for RK3399 CDN-DP
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Chaoyi Chen" <kernel@airkyi.com>, "Rob Herring" <robh@kernel.org>,
- "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
- <conor+dt@kernel.org>, "Vinod Koul" <vkoul@kernel.org>, "Kishon Vijay
- Abraham I" <kishon@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Sandy
- Huang" <hjc@rock-chips.com>, "Andy Yan" <andy.yan@rock-chips.com>, "Yubing
- Zhang" <yubing.zhang@rock-chips.com>, "Frank Wang"
- <frank.wang@rock-chips.com>, "Maarten Lankhorst"
- <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
- <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Amit Sunil Dhamne"
- <amitsd@google.com>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>,
- "Chaoyi Chen" <chaoyi.chen@rock-chips.com>, "Dragan Simic"
- <dsimic@manjaro.org>, "Johan Jonker" <jbx6244@gmail.com>, "Dmitry
- Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>, "Peter Robinson"
- <pbrobinson@gmail.com>
-References: <20250729090032.97-1-kernel@airkyi.com>
- <20250729090032.97-5-kernel@airkyi.com>
-In-Reply-To: <20250729090032.97-5-kernel@airkyi.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1ugqe4-000000001uP-0fJI;
+	Tue, 29 Jul 2025 20:10:01 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-6154d14d6b7so2640782a12.2;
+        Tue, 29 Jul 2025 13:09:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1753819793; x=1754424593; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=GsF9xa5Mt5eWvFYvP4ppl+lpx7xROA4dI7ZLgi/IK7c=;
+        b=GldTIyfWbGUcIEZgOKOds+quxdGwQauCt5aEr6UvfVjJ/mwIzsj96VEpRjbJj4OuPa
+         oURTBz2/Bvk5rWrcVTVlbf4tEGT2T7TSF8QOxD98L1Uuv8TWdgrIDmJ/TpW/piDULyw0
+         op8rHeh0dbzOBgXUnCYuyjRoNNb/Cg52gxsZlRRTqWthUpqckTEWnIcTLNIEzfvjZIO4
+         Bw5u/xet0iZj/xNVLl8wYzoa6MmI2WwFwBwowkxgkOPwE7PU+PqhNXqIGQqFLHTcRsAe
+         5amCeYG4p675O9ZwFyb0FiqespYSGkfZGS2iXjoCLVsQhUEV+qsctEoE3o9FIN3zwF3c
+         XQCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1753819793; x=1754424593;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=GsF9xa5Mt5eWvFYvP4ppl+lpx7xROA4dI7ZLgi/IK7c=;
+        b=e5ItwBX+jagS3yH4GUUA8MA7e6Nc3ZZhvZEz7ikZQd9YC+fcWfgBkCPZp5WdyD4Agb
+         ffiBPYaCkjxq01kAdCN7RjmwKpXnFbJ40CbN8+NfRMiY3k2FKCzhUQ6wsAaBxE9u/cSg
+         8dkEDjPJngl04LKBZ+7OMOjUJdZyzPWaLJ3NI2TLdiO9AliEnn1v2BkJkqz5zLVOSzxQ
+         EKC5m43RKCLlljK1q0R0x1vSjupnXLtUqafDhazIcc+f0Lv80dWrPN/aUAkTpLuPiSKN
+         6K/QVqjA82a60ghCU8w23WRGx8PLW1y1PNhZIgnBGYSkPppFwMQMS0rHHXiciLP2+oqH
+         56tQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVJEzYf3HqmkYMwAfpm6EHAUWRCzcVoQOcbsGLazdBCyPWJ8yOVbFBUyIV4LfBHHA1SWV7En7z1+47pTIZNlZw=@lists.infradead.org, AJvYcCWXP5NwH0W3fdjfNJ1tdLxa2/92w9g3d/+hM2KMH2kwTxTQf60JYuJR/igLxGKTR22mJ8D+oSpkavMwl0NWop2G@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw3PByKyTOHn4IP7lp6Ln2PtZ54TgnYXifQwUMBWYZBnzK+wzlu
+	xKW/Mr4BMXySn9a5xSo5+3n+J6hg0j89QA67qrPX057f0n950FJ3qFtfGjaWKpEbyZL9/cAfH3q
+	ZZzpr1WFLP0rU3qWJwXbNQc33jsbmSmhP2RTC
+X-Gm-Gg: ASbGncuSzBwVyr1hxZ8N/h1aJxKAen1Eaxg6xof0LGLHGKM7fno8/Byi808QAoxgHoh
+	HcfiDXQ4Paks6FFfe0LqXHi8jfxxeSQkya0UP0UUo43/z+vaOLJi6y2OurVdWt2CwKFfdgcL2ig
+	3KSO+hL/rUQZDeb9aCUC0a2zX2eaqDACO48ufh3z8w+xVI+WLKwe0DUubwIbtmy1ewdG5wzoUrB
+	7y/zsYT1sSYI+VC1JWe7PpBQWgbZx/nmxLcAOnX
+X-Google-Smtp-Source: AGHT+IHp08a+dqAcG2SqZdg/Q/IaPZikdzCFE1YVv3PwaCR2cMYRBTvpJ0sMCJoMk8buiVXu2JvpXqMV1MUNd/Qb36s=
+X-Received: by 2002:a17:907:3d0e:b0:ad8:ae51:d16 with SMTP id
+ a640c23a62f3a-af8fda55064mr88607166b.55.1753819793020; Tue, 29 Jul 2025
+ 13:09:53 -0700 (PDT)
+MIME-Version: 1.0
+References: <20250729185827.144547-1-pbrobinson@gmail.com> <6948463c8ca90bd9c72fb34178ddb029@manjaro.org>
+In-Reply-To: <6948463c8ca90bd9c72fb34178ddb029@manjaro.org>
+From: Peter Robinson <pbrobinson@gmail.com>
+Date: Tue, 29 Jul 2025 21:09:41 +0100
+X-Gm-Features: Ac12FXyxfZWg8J34PdCYZFxIOQsYsTBJ_0Qnm0fc0wOJNc5kZopjCpZIel3xgKc
+Message-ID: <CALeDE9PBnfu9Oxo4xc8O+uJW8p+_=43Y-goe0i3=VmT0SsovNg@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Pinebook Pro: Update WiFi
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250729_125930_678738_F23FA157 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20250729_130956_268183_572D7BED 
+X-CRM114-Status: GOOD (  22.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,96 +90,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2640458390174820919=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2640458390174820919==
-Content-Type: multipart/signed;
- boundary=2fd07b92180be8290edbe889ada7baa056994820fa28317a2cadcfeab9c7;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+Hi Dragan,
 
---2fd07b92180be8290edbe889ada7baa056994820fa28317a2cadcfeab9c7
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-
-On Tue Jul 29, 2025 at 11:00 AM CEST, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> On 2025-07-29 20:58, Peter Robinson wrote:
+> > Update the WiFi configuration to include the wake-up
+> > pin and add an ethernet alias to allow assignment of
+> > a mac-address from the firmware.
+> >
+> > Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+> > ---
+> >  .../boot/dts/rockchip/rk3399-pinebook-pro.dts | 19 +++++++++++++++++++
+> >  1 file changed, 19 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> > b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> > index 5a8551d9ffe47..05c48cb09df6f 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> > @@ -19,6 +19,7 @@ / {
+> >       chassis-type = "laptop";
+> >
+> >       aliases {
+> > +             ethernet0 = &brcmf;
 >
-> Let's make the ports nodes of cdn_dp in the same style as the other
-> display interface, and match the style of ports's yaml.
->
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-base.dtsi | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi b/arch/arm64/b=
-oot/dts/rockchip/rk3399-base.dtsi
-> index 9d5f5b083e3c..edeb177bc433 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-> @@ -618,7 +618,11 @@ cdn_dp: dp@fec00000 {
->  		status =3D "disabled";
-> =20
->  		ports {
-> -			dp_in: port {
-> +			#address-cells =3D <1>;
-> +			#size-cells =3D <0>;
-> +
-> +			dp_in: port@0 {
-> +				reg =3D <0>;
->  				#address-cells =3D <1>;
->  				#size-cells =3D <0>;
-> =20
-> @@ -632,6 +636,12 @@ dp_in_vopl: endpoint@1 {
->  					remote-endpoint =3D <&vopl_out_dp>;
->  				};
->  			};
-> +
-> +			dp_out: port@1 {
-> +				reg =3D <1>;
-> +				#address-cells =3D <1>;
-> +				#size-cells =3D <0>;
-> +			};
+> I'm sorry, but this alias isn't acceptable.  In a few words, this
+> simply isn't an Ethernet interface.
 
-Patch 5 adds a single endpoint to dp_out (without a reg property), so it
-seems that #address/#size-cells is not needed?
-If you run ``make CHECK_DTBS=3Dy W=3D1 rockchip/rk3399-evb-ind.dtb`` it
-should spit out a warning about that.
+Can you explain why? It's a wireless ethernet interface with a MAC
+address, there's other example in the kernel doing this so there's
+already a precedent, can you explain how else to do this or give me an
+example?
 
-Cheers,
-  Diederik
+> We're already stretching a bit the dynamic nature of, well, everything
+> with the aliases in the Rockchip DT files, and an alias like this one
+> would be stretching the whole thing beyond the breaking point.
 
->  		};
->  	};
-> =20
+Why? If you look through DT outside of rockchip there's even more
+stretching and I don't see how using this goes beyond breaking, I
+think this is a bit of an exaggeration. Rather than saying no how
+about explaining an alternative solution?
 
-
---2fd07b92180be8290edbe889ada7baa056994820fa28317a2cadcfeab9c7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaIkoCgAKCRDXblvOeH7b
-brfGAP91vbmzqtSHHq487babaTkFfCZ5yunCKjR4z8ny048RbAEAionq5YOmCJoU
-pi+lTvFwVYBJkyoMcr/Yv7tpfvlC2w0=
-=ePLo
------END PGP SIGNATURE-----
-
---2fd07b92180be8290edbe889ada7baa056994820fa28317a2cadcfeab9c7--
-
-
---===============2640458390174820919==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> >               mmc0 = &sdio0;
+> >               mmc1 = &sdmmc;
+> >               mmc2 = &sdhci;
+> > @@ -883,6 +884,12 @@ vcc5v0_host_en_pin: vcc5v0-host-en-pin {
+> >               };
+> >       };
+> >
+> > +     wifi {
+> > +             wifi_host_wake_l: wifi-host-wake-l {
+> > +                     rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +             };
+> > +     };
+> > +
+> >       wireless-bluetooth {
+> >               bt_wake_pin: bt-wake-pin {
+> >                       rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
+> > @@ -940,7 +947,19 @@ &sdio0 {
+> >       pinctrl-names = "default";
+> >       pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+> >       sd-uhs-sdr104;
+> > +     #address-cells = <1>;
+> > +     #size-cells = <0>;
+> >       status = "okay";
+> > +
+> > +     brcmf: wifi@1 {
+> > +             reg = <1>;
+> > +             compatible = "brcm,bcm4329-fmac";
+> > +             interrupt-parent = <&gpio0>;
+> > +             interrupts = <RK_PA3 IRQ_TYPE_LEVEL_HIGH>;
+> > +             interrupt-names = "host-wake";
+> > +             pinctrl-names = "default";
+> > +             pinctrl-0 = <&wifi_host_wake_l>;
+> > +     };
+> >  };
+> >
+> >  &sdhci {
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2640458390174820919==--
-
