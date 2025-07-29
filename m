@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6A51C87FCA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 21:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA32AC87FCC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 21:47:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zDcVSYVbalLU9qYZ+XevdQjq0E3CEqx7pTfgVWgxGvE=; b=UtOTsjQjFWFMET
-	J3UK1sBFlPxLA9aktlR+6CopsYmMQQJUzZ85ZMXzoDIKodjZNqf72dBI/tX69g3gm71P4ZMbKevZG
-	k1Cn4RBxDKDqk0R/lW9xrKdF/kDyOFSHLg/a8TviBLjM4fljCO24ZiWNYZQd683WILbsX89KszYH9
-	wo6UbmdiPlVHgF14mo1waCRDb5T68DcMkViEbUW8bMU3Ix326nZJs6M+m6nZ0uq7JOhbEJX81oRN1
-	aNm2DSlM8h00CGtsJPPeTiKXs59qpOuRdadj+wI6gLUat57+yCiXCdZBDc5C+EodIOrUxa+/BL2m3
-	sduMUzvKqnB3/lyr+1ww==;
+	List-Owner; bh=PpNQ4TvzuntQD55BQq6ezc2Tgc29IBs8VmAgeWv53hk=; b=WRPk1U5QruPXFO
+	HSTBHde4UXPvYe0pVeBkqi/9Rjtm8c9rnsPU+1z/vUCJtjCRYw3jRUbpKSiRnJcgJue1L1+CJ4nhX
+	nhIM6Tk/9+HZnllqCGO3VyruqnIt2+bi5S0Hy7mpbS8uUXawPRfZJuBtQsUyDFfC4j6Xvb9RT3x3H
+	STaEIfjENN0sWtt0kj3qVo+wWleq7JVkCBVh8Y/nxVmhCKA82UUpinOHAeXkxQZxggbNV99S9WWnP
+	UQs6gYu4NNGvEqDF5A/Pilg0IRBTbP7csR2Jrt3Q7zmx+amgoYL5LqRl14Os50tJjMHxI9E9yr/la
+	V+4kKuLkodyNGLNrxNvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugrgA-000000006r7-1VR2;
-	Tue, 29 Jul 2025 21:16:10 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1ugsAo-000000008c9-0bCh;
+	Tue, 29 Jul 2025 21:47:50 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugrg3-000000006qK-2IOx
-	for linux-rockchip@lists.infradead.org;
-	Tue, 29 Jul 2025 21:16:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1753823762;
- bh=e76LF6aEcRNEARMGNURIVQyVQToNTotfPN3MrqTtWjs=;
- b=fCd4wtJf/CjpclsjDkr1C14Wr7l/o7bz45ikC9e6R+LWRI/4JhxUCxmZy5oiAolFkGa/MF0CS
- 0MrK6L0xzrr/UZT6t3RZgm1UEWdnXioTr+lvVkbGn9wXgsKlMMSClSsOpfI6PEQG3VSqICADuoM
- HaV0T0y+KqmhrCo6k1uXF09ugOuMMGHiNdqqNagplb7pdLb6/7+A1RktNE91S9eH2Uo27+KyvO0
- 5rjdFPxYy8m8djA8st9s7p4efFqTK4bWUuiMEWFTBrU1P+k1FJmyo6WZ1HlnWwcjJw4I5CscU6g
- v8iklTjTiAE/tg/dNc+dGZ94IscQLMWagvVTB03oxTpw==
-X-Forward-Email-ID: 688939dd5983c8a2f4b4c57a
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 1.1.8
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <dcbc1c43-748b-479a-878f-569428e09f45@kwiboo.se>
-Date: Tue, 29 Jul 2025 23:15:04 +0200
+	id 1ugs8J-000000008UR-3PSP;
+	Tue, 29 Jul 2025 21:45:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=Wf/0uZWB4TN7Fbn1MCE47FdY12dXgDlIhEUAvFCkfX8=; b=Yk5kOHIl0CLrboS9EJbYvPpeSc
+	k6mNYiPGw10mcTYl2R0LlVmtxGn6x5Ib1V3bCdw6TsAlDfC4vlv30lP1XUPv5+IrbZSfm14BCVv0b
+	TsgH1A5agj+hZV6Oymoe5FrNPRb1l0UkIbuoCJKR5oDNaOWZl0YLLio6sfkxKRAyJ1YY=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1ugs82-003EPg-Ro; Tue, 29 Jul 2025 23:44:58 +0200
+Date: Tue, 29 Jul 2025 23:44:58 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Chukun Pan <amadeus@jmu.edu.cn>,
+	"alsi@bang-olufsen.dk" <alsi@bang-olufsen.dk>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"edumazet@google.com" <edumazet@google.com>,
+	"heiko@sntech.de" <heiko@sntech.de>,
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	"kuba@kernel.org" <kuba@kernel.org>,
+	"linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"olteanv@gmail.com" <olteanv@gmail.com>,
+	"pabeni@redhat.com" <pabeni@redhat.com>,
+	"robh@kernel.org" <robh@kernel.org>,
+	"ziyao@disroot.org" <ziyao@disroot.org>
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add RTL8367RB-VB switch to
+ Radxa E24C
+Message-ID: <fdb2e6f0-3732-49ee-b11d-e82f9a9cb2e9@lunn.ch>
+References: <5bdd0009-589f-49bc-914f-62e5dc4469e9@kwiboo.se>
+ <20250729115009.2158019-1-amadeus@jmu.edu.cn>
+ <db1f42c3-c8bb-43ef-a605-12bfc8cd0d46@kwiboo.se>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add Radxa E24C
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
- krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- ziyao@disroot.org
-References: <e2fd11db-543a-43eb-b118-9f246ff149b5@kwiboo.se>
- <20250729132025.2359761-1-amadeus@jmu.edu.cn>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250729132025.2359761-1-amadeus@jmu.edu.cn>
+Content-Disposition: inline
+In-Reply-To: <db1f42c3-c8bb-43ef-a605-12bfc8cd0d46@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250729_141603_688435_33F46D1A 
-X-CRM114-Status: GOOD (  23.98  )
+X-CRM114-CacheID: sfid-20250729_144516_006022_E880051E 
+X-CRM114-Status: GOOD (  14.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,90 +86,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 7/29/2025 3:20 PM, Chukun Pan wrote:
-> Hi,
+> > I did a test today and the same problem occurred when running the new
+> > kernel on my rk3568 + rtl8367s board. This problem does not exist on
+> > older kernels (6.1 and 6.6). Not sure where the problem is.
 > 
->> Both avddl_1v1 and avddh_3v3 are controlled by the same gpio, I do not
->> remember if using two regulators with same gpios is supported, can only
->> remember it being an issue in the past, so I opted to just describe it
->> as a single regulator and gave it a new name and added labels for the
->> name used in schematic.
->>
->> Would calling it vdd_8367 (after gpio_8367_en) be better or do you have
->> any other suggestion on how to describe these?
+> I had only tested on a next-20250722 based kernel and on a vendor 6.1
+> based kernel. And similar to your findings, on 6.1 based kernel there
+> was no issue only on the newer kernel.
 > 
-> Would it be better to just call it avddh_3v3 and add a comment?
-> This makes it easier to find in the schematics and match phy-supply.
+> I will probably drop the use of "/delete-property/ snps,tso" and include
+> a note in commit message about the TSO and RX checksum issue for v2.
 
-It already had a label for avddh_3v3, I am currently thinking something
-like following, includes the names from schematic and a name for humans:
+You are submitting a patch for todays kernel, not a historic
+kernel. If todays kernel needs this property to work, please include
+it.
 
-	/* Common enable line for the avdd rails mentioned in the labels */
-	vdd_switch: avddl_1v1: avddh_3v3: regulator-vdd-switch {
-		compatible = "regulator-fixed";
-		enable-active-high;
-		gpios = <&gpio1 RK_PC3 GPIO_ACTIVE_HIGH>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&gpio_8367_en>;
-		regulator-name = "vdd_switch";
-		startup-delay-us = <10000>;
-		vin-supply = <&vcc5v0_sys>;
-	};
+You can always remove it when you have done a git bisect and find what
+changed, and submit a fix.
 
-> 
->> See above, I had issues using the reset-gpios of the switch, because the
->> switch was probed twice, once deferred by gmac, and by the second probe
->> failed with -BUSY because of the reset-gpios still being claimd by the
->> first probe.
->>
->> I can change to describe the reset pin in the switch, however that will
->> likely mean Ethernet is unusable until the issue in devres/gpiolib is
->> tracked down and fixed by someone.
-> 
-> I don't think it's a devres/gpiolib issue.
-> It looks like these two resets are competing:
-> 
->   priv->reset_ctl = devm_reset_control_get_optional(dev, NULL);
->   priv->reset = devm_gpiod_get_optional(dev, "reset", GPIOD_OUT_LOW);
-> 
-> reset-gpios works if reset-names is specified:
-> 
-> -	priv->reset_ctl = devm_reset_control_get_optional(dev, NULL);
-> +	priv->reset_ctl = devm_reset_control_get_optional(dev, "switch");
-> 
-> Or just remove the reset controller, I'm not sure if it's really needed:
-> 
-> -	priv->reset_ctl = devm_reset_control_get_optional(dev, NULL);
-> -	if (IS_ERR(priv->reset_ctl))
-> -		return dev_err_cast_probe(dev, priv->reset_ctl,
-> -					  "failed to get reset control\n");
-
-Very interesting, my initial testing was to include a call to
-devm_gpiod_put() in rtl83xx_remove() but was afraid it could result in a
-WARN_ON in case driver was properly unloaded/removed.
-
-  void rtl83xx_remove(struct realtek_priv *priv)
-  {
-	if (priv->reset)
-		devm_gpiod_put(priv-dev, priv->reset);
-  }
-
-With reset_control_get using a gpio fallback, this complicates things a
-little bit, will run some more tests and probably include a driver patch
-for v2, thanks for finding this!
-
-Regards,
-Jonas
-
-> 
-> Thanks,
-> Chukun
-> 
-> --
-> 2.25.1
-> 
-> 
-
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
