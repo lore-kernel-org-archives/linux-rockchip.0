@@ -4,101 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18DABC83F26
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 09:17:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 290E3C87FC9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 09:40:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:Cc:References:Message-Id
+	:Date:Subject:Mime-Version:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F15j9VOJz/ZpbWP+aOjQmtOGpXZ/x9TbbQlPKXeVkE4=; b=YBNh2WNDIFkCy6
-	DjiSWY1Z97C8qoq3Fo75fq6vQOzDWp0GmZwHTfhugJtKKdqF1xmn1LA4sQX2S/0IiJBr1Zuz7eAaB
-	RalM1vKg3E5b6Wh450URGPA5EztstY9aF+2J5Eko+eqxSTqeQBMv53apg5OUTCEeiDdWiQwkXVQ5F
-	PouxNinj9EIQplEjrFkyhIxh8RpWRHn/55n9kvfY8XUflZUEkQHERM5XFQYQPwN6EybnfJsE84LBV
-	hw/IlmU4gFJ7cABHPQY0oB+CdF7mddhFz+pFc4s5RlEgjVqMiMonIF3npGuyRzEF9cHUdLqX+OpZT
-	nTw66Unl7yrrvzRXqdyw==;
+	List-Owner; bh=niKADzZp/AMSRkioK2+L0+FmNmmSbHvUC1HE6WqPWtU=; b=il2cYAean+6YVV
+	4n4z121YfZKoeBkPyeeaFikO83IaIyvVhZ42yfZjTOaYwVTeObcCVvBw0KX081GchInIVG0g91SgB
+	FzmO9oYokrzf/CiZHT8AHP0xYF7oarCDw1XlnPpiZwfeMydLHo/Ar5pdy5Srv5R6u8mhfQglM//ZV
+	HbisI7/NDZkTJ0mpX4xxf62gMF5nCp5wrjyD3xLAwRtPqKLngG2Xqg6HeFKgtZQ/DkzIM0G8sgQz1
+	+UiMbFJHaXWdCmHXzhn53CA5Hvr352KmKwocHrkDQrucr6GTWYv3pn/O7zMbco9S9swa/K4DDzCix
+	4smZqPOMyvzCDqw/xLgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uggSR-0000000GMtM-4100;
-	Tue, 29 Jul 2025 09:17:15 +0000
-Received: from smtpbguseast2.qq.com ([54.204.34.130])
+	id 1uggoO-0000000GQ7l-3sYy;
+	Tue, 29 Jul 2025 09:39:56 +0000
+Received: from chumsalmon.baetis.net ([209.222.21.150])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uggDj-0000000GK7B-110w;
-	Tue, 29 Jul 2025 09:02:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1753779652;
-	bh=q6Q48lBZu83JxJ63QhH8HxOwFpopi36sswkLOu+jOhU=;
-	h=From:To:Subject:Date:Message-Id;
-	b=f3vxZF3sBb2F/tOX8chU38Wz+P8+cALBHdASqXt+vCvkAmbyzM+gfKqrqSSFA0UkI
-	 eB4lFIhLMJJVdDwZB2JmPdN9451ZyQsUcpQ1Ju3D70+SVFO7O47gKctJqzfJaclMxU
-	 kc6RdiaNzV9CrxtkYsUu54WWBiIFoSjrRzbCvTt4=
-X-QQ-mid: zesmtpgz1t1753779643t83ca4cf2
-X-QQ-Originating-IP: GNy0TVRpqK5gjjPPYnOaHZTZmyoTUAn1duABOXp26z8=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 29 Jul 2025 17:00:40 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 17940541300271697831
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Yubing Zhang <yubing.zhang@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Amit Sunil Dhamne <amitsd@google.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Peter Robinson <pbrobinson@gmail.com>
-Cc: devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Subject: [PATCH v3 1/5] dt-bindings: phy: rockchip: rk3399-typec-phy: Support mode-switch
-Date: Tue, 29 Jul 2025 17:00:28 +0800
-Message-Id: <20250729090032.97-2-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20250729090032.97-1-kernel@airkyi.com>
-References: <20250729090032.97-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpgz:airkyi.com:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: OalYlZRf2lKLUAeMCXjbGYP9HGcj2M+CKDdxhvxk+HFKFElrocLT7229
-	NLtxF+eL1Yd573caTx2KKo6gYzFiG5NNdUkCn5c8a/nd1jhp3VP/DRTnI5PJ8Bg8GEyFoi4
-	4c/vO7dDCwluAY4xnrgGB+fd3fBaJv6O7dimFgc0WPuFeEw/TiqaggTM10GBLv6ou/+INU7
-	ThRXdM+btSp1L+2XtTzOoFXfQvD5nkbeH/4iVA/2+ysN71kvw3IV9NSiRLeV3ClEJlcKyNg
-	6y+oJthG+YITV8qI8mZs7suZvjhxc3yolWA1nyygHB47iaJvSckv9i0k44s1MtaDj75oYGL
-	9s3e75G5xxFE77820n00LBMPQvkwauajVidxj2Iry95YnQJHy4UoDjCS6msrbwjTbBtahTN
-	KKShl3i1KwDA974X+LxecziikLqAh1AG2MD4nJnjVtvAsW6m/KBPPjTMWfGsAu4OGF5J+pN
-	iA/eo+KD0F2jW+HZwGAQ3cOR3/w+l6mV7pmKYQcGLlvY3xFF9eA1/giFcT0vTK2FzYhNyxs
-	kOZDaKcV20vPjVL8MibJbUridntmoR+EUGNUkQmae3IRWo4BLlZgN5QyDWBemNVlL5EnQMH
-	WfJIcAvxUwDSYFLbAofAL6g0u1EVXYYjvSCvQyx0DK4CsKSJsVh8xW9CzPzs/T+lvzz61e5
-	ngkawO2KUeIK4IFaVkFXqUNosTKpd9ZHzqjVv5ZH+FXcV9bbLz/JeicZW5z8lMSrbJ5LDKc
-	511gyVLoxehnbGBUS3Hals3WxPrkL+CFm4AUaIJvBTzgsd3seh+sJNJP89mmM4CuW6ZL04V
-	dyLm3SeaEvuf5fL1evtYt5VihY4ZmBI1pUeGqR41YsCoIsaoZHRknQkg+ldk+ZLQT0KLYvR
-	lCexgwZcBa5mYh46Wp7MAIyeF5nFkEe6JypaUTJuL6xjz9/ShSxz/rlkA8DpcfYrceK6FBR
-	fy1F0Ni2HLRjmuEPQfkQhdEjOOyPAnYW7ZV0=
-X-QQ-XMRINFO: MSVp+SPm3vtS1Vd6Y4Mggwc=
-X-QQ-RECHKSPAM: 0
+	id 1uggVL-0000000GNRR-1Zue;
+	Tue, 29 Jul 2025 09:20:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tahomasoft.com;
+	s=default; t=1753780813;
+	bh=SL47x8RSPgb9O9GPSLVDnHkRq6js7JXYM272pZ+IYJ4=;
+	h=From:Subject:Date:References:Cc:In-Reply-To:To:From;
+	b=EFcSmrnQQ8ni8XA9Or5AqCO4mhm5tLNtScnVIinhQinQ1XeA23f2/+eyTbEe1U0zO
+	 fTBXZqqfAfaIofhZnpPu2L8zkC5Oql8rxLJMgtbNqvmn6AZRey5ipVsIaIkxmTxSWX
+	 htcc33V1Hv51luA9appWghQ35Jj5d9GiExox+S8CKh501JJDfKuhjYq4+kgtAIHYec
+	 fSL0GeLljntcRhfnx4iAG4ATtjAFkKZKlnXuHa0slY7Y2If4AUf2q9p28fcQ85vOrE
+	 aUyLf9k5r3cwBgDlaoy5PoXbcrcFKFTVfqbjyBjvsJptI8cMMB54g+mbYbmgY80fcS
+	 nuJtonwhT7IGg==
+Received: from smtpclient.apple (unknown [IPv6:2600:4040:50b7:b604:2ca9:1ceb:f1ef:b736])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by chumsalmon.baetis.net (Postfix) with ESMTPSA id 4C83B27E434;
+	Tue, 29 Jul 2025 09:20:13 +0000 (UTC)
+From: Erik Beck <xunil@tahomasoft.com>
+Mime-Version: 1.0 (1.0)
+Subject: Re: [PATCH v5 0/2] Add Support for LinkStar H68K board: ARM64 and RK3568: dts and dt-bindings.
+Date: Tue, 29 Jul 2025 05:20:02 -0400
+Message-Id: <1283435E-EC3D-492E-8369-E51CBFE5E636@tahomasoft.com>
+References: <20250729-poised-proud-ibex-5ab838@kuoka>
+Cc: Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20250729-poised-proud-ibex-5ab838@kuoka>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+X-Mailer: iPhone Mail (22F76)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250729_020203_840103_ADE7FE91 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20250729_022015_607375_4DC4108C 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,65 +70,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-
-The RK3399 SoC integrates two USB/DP combo PHYs, each of which
-supports software-configurable pin mapping and DisplayPort lane
-assignment. These capabilities enable the PHY itself to handle both
-mode switching and orientation switching, based on the Type-C plug
-orientation and USB PD negotiation results.
-
-While an external Type-C controller is still required to detect cable
-attachment and report USB PD events, the actual mode and orientation
-switching is performed internally by the PHY through software
-configuration. This allows the PHY to act as a Type-C multiplexer for
-both data role and DP altmode configuration.
-
-To reflect this hardware design, this patch introduces a new
-"mode-switch" property for the dp-port node in the device tree bindings.
-This property indicates that the connected PHY is capable of handling
-Type-C mode switching itself.
-
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
-
-Changes in v3:
-- Add more descriptions to clarify the role of the PHY in switching.
-
-Changes in v2:
-- Reuse dp-port/usb3-port in rk3399-typec-phy binding.
-
- .../devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml  | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml
-index 91c011f68cd0..ccbe1c9cb0bf 100644
---- a/Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml
-+++ b/Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml
-@@ -51,6 +51,12 @@ properties:
-       '#phy-cells':
-         const: 0
- 
-+      mode-switch:
-+        description: |
-+          Indicates the PHY can handle altmode switching. In this case,
-+          requires an external USB Type-C controller to report USB PD message.
-+        type: boolean
-+
-       port:
-         $ref: /schemas/graph.yaml#/properties/port
-         description: Connection to USB Type-C connector
--- 
-2.49.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cgo+IE9uIEp1bCAyOSwgMjAyNSwgYXQgMDQ6NTYsIEtyenlzenRvZiBLb3psb3dza2kgPGtyemtA
+a2VybmVsLm9yZz4gd3JvdGU6Cj4gCj4g77u/T24gTW9uLCBKdWwgMjgsIDIwMjUgYXQgMTE6MDc6
+MzVBTSAtMDQwMCwgRXJpayBCZWNrIHdyb3RlOgo+IHY1Ogo+PiAgLSBSZXNwb25zaXZlIHRvIGNv
+bW1lbnRzIHJlY2VpdmVkIGZyb20gIEtyenlzenRvZiBLb3psb3dza2kgPGtyemsrZHRAa2VybmVs
+Lm9yZz4KPj4gICAgLSBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyNTA3MjgtZGFzaGlu
+Zy1kaXNjZXJuaW5nLXJvYWRydW5uZXItYmM4Yjg3QGt1b2thLwo+PiAgICAtIGh0dHBzOi8vbG9y
+ZS5rZXJuZWwub3JnL2FsbC85M2MzOWIzNi0wN2M4LTQ4ODMtYmQyMy03ZDAxOTRjNTBhN2FAa2Vy
+bmVsLm9yZy8KPj4gICAgLSBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvNjQyZGYxZWUtNWU5
+Mi00ZjBhLWJjZGYtN2UxMGRiYzBkNTliQGtlcm5lbC5vcmcvCj4+ICAgIC0gaHR0cHM6Ly9sb3Jl
+Lmtlcm5lbC5vcmcvYWxsLzllYmQ5Nzk3LThkOTItNDc5OS1iYjhkLTU5YTc5NmU2MDQzY0BsaW5h
+cm8ub3JnLwo+PiAKPj4gIC0gQ2hhbmdlcyBtYWRlIGFyZToKPj4gICAgLSBSZXZpc2lvbnMgdG8g
+Y29tbWl0IG1lc3NhZ2VzOgo+PiAgICAgICAgLSBSZW1vdmVkIG5vdGVzIG9uIGJhc2UgY29tbWl0
+Owo+PiAgICAtIEZpeGVkIGNoZWNrcGF0Y2ggd2FybmluZzsKPj4gICAgLSBSZW1vdmVkIG5vdGVz
+IG9uIGRldmljZSBoaXN0b3J5Owo+PiAgICAtIEZsZXNoZWQgb3V0IHRoZSB0b3AtbGluZSBzdW1t
+YXJ5IG9mIHRoZSBkdHMgcGF0Y2g7Cj4gCj4gWW91IGRpZCBtb3JlIC0gYWxzbyBjaGFuZ2VkIG9y
+ZGVyIG9mIHBhdGNoZXMuCgoKT29wcywgc29ycnkgYWJvdXQgdGhhdDsgSSBzdHJ1Z2dsZWQgYSBi
+aXQgd2l0aCBiNC4KCldoaWNoIG9yZGVyIGRvIHlvdSBwcmVmZXI/CgpUaGFua3MsCgpFcmlrCgoK
+PiAKPiBCZXN0IHJlZ2FyZHMsCj4gS3J6eXN6dG9mCj4gCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
