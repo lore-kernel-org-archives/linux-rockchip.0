@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6C6BC87FCC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 03:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB1BC87FC9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 07:33:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cgAedh3ke2Gdc9SnjUMdEnO3ca1Wf/KeRdM3qpYETVw=; b=F4Y5Yv/4FbzTtC
-	o1P/G8hgvpEo6AA33gNpaJuYS9U+vcxWjBCYz7uSFzMy0vaQnjc/offaC7tePEzXvv4/JyRHnCkXj
-	BsEXzyOErq0hvzHmJ3G4oKicaXDI+9wo+sJcuJdwVQkE3w558EGFBmLzMSXqpixl5dQdBuy3Xs7gF
-	MaHR2kzyBAwJAUbscXE6CeKU8FYTkw4ZGURAbWrVfRHCf1eP2AhErMJRwUqikjNYLKMtm9JxHOkDx
-	c4rZDSTDz6LJwjyahTc529p4NPXCTcKQJ3/IWxTsa8M4ytExbdjUwoszP6zZG7w5odz5NDNEz+Awf
-	wNW3glgiHBDBApSXZUsw==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hbbYB+5nrRP1mAX/Eq7rwlvMkSgsX7gP3XHKpFPoFZo=; b=tvRTKdCRSgme6cnRfBRrUbV00i
+	baRf/13n1UsRowM7O3NV/FKqDVG2I0uFRyW2eld4jzEc5HcQ1PXrJswPrnu+Xh1h2w/V0w2KBS4bZ
+	gn5lQpUovP3eSbVBmZ0fDxc3mGEg9YHCpUKjBnqOVw/Mj4STt8Ldvn7O+AXTUlvB7UBtcKk7KdiU0
+	F9c+9HVyQTdl1ApSGbVmd0qgqqAaHuk6J51rc8s+99trmLV88t/rPCzt3N0ZmElEuOaMpg8uGJiEt
+	rVS483vsfCt0bp8Atkkhv1H7Zc6/w4hF7sArzapV9heFyYyaioxM6PHK7ml/eUV7hlysmgVDwHnjq
+	HM+hLTBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugaxx-0000000FqBm-2OEJ;
-	Tue, 29 Jul 2025 03:25:25 +0000
-Received: from mail-m158216.netease.com ([47.251.158.216])
+	id 1ugepX-0000000G81s-1QXr;
+	Tue, 29 Jul 2025 07:32:59 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugavY-0000000Fq0Y-2TCV;
-	Tue, 29 Jul 2025 03:22:59 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1d8de167e;
-	Tue, 29 Jul 2025 11:22:50 +0800 (GMT+08:00)
-Message-ID: <63226b37-1dec-4998-b2b6-e969ca786f37@rock-chips.com>
-Date: Tue, 29 Jul 2025 11:22:49 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 03/14] drm/rockchip: analogix_dp: Apply
- drmm_encoder_init() instead of drm_simple_encoder_init()
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
- Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
- hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
- l.stach@pengutronix.de, dianders@chromium.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org
+	id 1ugenN-0000000G7jE-3qFJ;
+	Tue, 29 Jul 2025 07:30:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1D7E5601EC;
+	Tue, 29 Jul 2025 07:30:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F4FEC4CEF5;
+	Tue, 29 Jul 2025 07:30:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753774244;
+	bh=coKTsMLVDBf6r0VF8A4W9McCs0iZm5oFPtW97NBjROg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hn+DvuJy941T5WWhLwdlgRzqUOzSLP9y1hoWzClJzJ5vVihcN4mAJ/fDyXYHjI/EM
+	 ht9c+CGHWAofkr9umRMI3SCH5yrzYfr3SU5OTs1MZLiNkFu3gLShgdDjHKBohYn3X3
+	 1brGoebiG7IwHSs1sCsh0KjiPQ/4q8cTf6bjbvK6gQUiVx1C0zw7tXMKJVyc/FtYCd
+	 bS4XOIOpcq2rVSvaWSYwA13aZnPRnxrKCPwvN2ta1SbuAaDubmbDMtvSogLtT4e+w/
+	 zjaLgc6oMH6pwaCByx64pQrnRVGEBkRh+AcvIR7Q9iHvpu4ZoQUWp+OmtsjYB3MnO5
+	 aT0k8AE/UEYkA==
+Date: Tue, 29 Jul 2025 09:30:42 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org, 
+	Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se, jernej.skrabec@gmail.com, 
+	maarten.lankhorst@linux.intel.com, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, 
+	jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com, 
+	kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com, hjc@rock-chips.com, 
+	heiko@sntech.de, andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com, 
+	l.stach@pengutronix.de, dianders@chromium.org, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 04/14] drm/bridge: analogix_dp: Add
+ &analogix_dp_plat_data.bridge
+Message-ID: <20250729-wooden-opalescent-baboon-f24fa2@houat>
 References: <20250724080304.3572457-1-damon.ding@rock-chips.com>
- <20250724080304.3572457-4-damon.ding@rock-chips.com>
- <6psjcrhbnk7czdrdtxh65kr6qvygkwogvert75dg2svbm2cqd3@uhffyfdxqpec>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <6psjcrhbnk7czdrdtxh65kr6qvygkwogvert75dg2svbm2cqd3@uhffyfdxqpec>
-X-HM-Tid: 0a9854344c1803a3kunmbc6d5ef53b5bbd
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGklKGlZIHx1LHkkeSx9DH09WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=LiMF/V4rH3QqRzk0VLBeqKLCLbx/NP1Emxe528xmhWl9Zye0NFzYX4UPlWJWn/fBxk/znUKcFCVyqFWK/urEAE3LRP6IEmQNllUopbTDUvA9KZ7BnHHZB1R5zzAf8eLa+eIeuBYiAe2DouhqA3FKqaEfD9JHKsZvXXMvHM6RQTY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=n/oZwA3AlTNfmx4P7C3GWExCuKTHEtbzFqxGSx8S9/k=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_202257_454704_B758156D 
-X-CRM114-Status: GOOD (  14.56  )
+ <20250724080304.3572457-5-damon.ding@rock-chips.com>
+MIME-Version: 1.0
+In-Reply-To: <20250724080304.3572457-5-damon.ding@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,66 +71,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============2473446402317815923=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
 
-On 2025/7/26 8:12, Dmitry Baryshkov wrote:
-> On Thu, Jul 24, 2025 at 04:02:53PM +0800, Damon Ding wrote:
->> Compared with drm_simple_encoder_init(), drmm_encoder_init() can handle
->> the cleanup automatically through registering drm_encoder_cleanup() with
->> drmm_add_action().
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->> ---
->>   drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 4 +---
->>   1 file changed, 1 insertion(+), 3 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> index d30f0983a53a..4ed6bf9e5377 100644
->> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> @@ -29,7 +29,6 @@
->>   #include <drm/drm_of.h>
->>   #include <drm/drm_panel.h>
->>   #include <drm/drm_probe_helper.h>
->> -#include <drm/drm_simple_kms_helper.h>
->>   
->>   #include "rockchip_drm_drv.h"
->>   
->> @@ -377,8 +376,7 @@ static int rockchip_dp_drm_create_encoder(struct rockchip_dp_device *dp)
->>   							     dev->of_node);
->>   	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
->>   
->> -	ret = drm_simple_encoder_init(drm_dev, encoder,
->> -				      DRM_MODE_ENCODER_TMDS);
->> +	ret = drmm_encoder_init(drm_dev, encoder, NULL, DRM_MODE_ENCODER_TMDS, NULL);
-> 
-> It's not possible to use drmm_encoder_init() here. Per the documentation
-> the encoder data structure should be allocated by drmm_kzalloc().
-> However this drm_encoder is a part of struct rockchip_dp_device. It's
-> allocated by rockchip_dp_probe() via devm_kzalloc(). This means that it
-> can potentially be freed before the drm device is completely released,
-> creating a use-after-free error.
-> 
->>   	if (ret) {
->>   		DRM_ERROR("failed to initialize encoder with drm\n");
->>   		return ret;
->> -- 
->> 2.34.1
->>
-> 
+--===============2473446402317815923==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="oafxeh4vinfkct5o"
+Content-Disposition: inline
 
-Got it. This patch will be dropped in the next version.
 
-Best regards,
-Damon
+--oafxeh4vinfkct5o
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 04/14] drm/bridge: analogix_dp: Add
+ &analogix_dp_plat_data.bridge
+MIME-Version: 1.0
 
+Hi,
+
+On Thu, Jul 24, 2025 at 04:02:54PM +0800, Damon Ding wrote:
+> In order to move the parnel/bridge parsing and attachmenet to the
+> Analogix side, add component struct drm_bridge *bridge to platform
+> data struct analogix_dp_plat_data.
+>=20
+> The movemenet makes sense because the panel/bridge should logically
+> be positioned behind the Analogix bridge in the display pipeline.
+>=20
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> ---
+>  include/drm/bridge/analogix_dp.h | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analog=
+ix_dp.h
+> index cf17646c1310..15cb6b706e9f 100644
+> --- a/include/drm/bridge/analogix_dp.h
+> +++ b/include/drm/bridge/analogix_dp.h
+> @@ -27,6 +27,7 @@ static inline bool is_rockchip(enum analogix_dp_devtype=
+ type)
+>  struct analogix_dp_plat_data {
+>  	enum analogix_dp_devtype dev_type;
+>  	struct drm_panel *panel;
+> +	struct drm_bridge *bridge;
+>  	struct drm_encoder *encoder;
+>  	struct drm_connector *connector;
+>  	bool skip_connector;
+
+So it's not the analogix_dp bridge, but the bridge after that if any?
+
+You should probably change it to next_bridge to avoid any confusion.
+
+Maxime
+
+--oafxeh4vinfkct5o
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaIh4oQAKCRAnX84Zoj2+
+dny6AX4lOggIEb8lQNPrxNej+S0dVv7qskx+vSl0C36fU5HUiF0+6CBKZiz3el7U
+6s5d/OkBfjGyQ7uwq5vKT0ASCi71FHRzNGynDjVQB1ShScAr+kp4qhm/0+swkWfl
+/Qwui0BIPw==
+=5MI3
+-----END PGP SIGNATURE-----
+
+--oafxeh4vinfkct5o--
+
+
+--===============2473446402317815923==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2473446402317815923==--
+
