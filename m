@@ -4,88 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8883BC83F17
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jul 2025 22:53:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CCC9C83F26
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jul 2025 03:03:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PR0FClYgomkXYuH2vaJHNGvJn1lBQOPvQ1ABpeGrtLU=; b=gKP9RFBhWBMmJxkgjs9bL2JK/7
-	xYb6oyWUGIi3ck69FztVkJmnfA3zqaigsfmYaz/n+1zDYFwDwg6REGExENYIc8AEJo2bbNccMb4vC
-	Me0VBSJzr5tKOXYY6C2ofn5stWkc4OUTIAubfZDBnFLkU7rs0ZcJddHiIQ9KebmOIwfZ8kO5inoOy
-	PWLHxp+5sfECDd8Cfcuyo0iOvyoS9bNrQQ67aqdb7X2uhjTI2MuwjW4GRj4vZw331ELJgeYHegKLA
-	OOL68OtmVgzWpd2BF8JTWiT9squTpfTTwkypo74PZZXBiriTmWEGluL1gmrBXd/HqQTVRqtYgp8FP
-	0fWDRTgA==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sV0mvAYrwfwkF25JZK9V4gFUukM81Jljrixkj+OZ0sw=; b=oQAiC3yxbBtwC+
+	5IFzJ9U7a734HYidQGoM5MFvyF61SflU03FfT60xt5MjVq9mQP4/I0dai4EKVq/zNFN3bm84pzKSY
+	y7hlIARgxBUdzbBB95LkT1eQ9PXpbj0+l4Nci4wUZ5dZGx/GcGFwOmshweBmCUMX/Iw9OKkfesefi
+	5aFwCNPsEZaiqXcLXQy30m8MyqaiPH0tXnBRpai+EFmwoZkGMtvxpaZVNgIHjw1qWrBDq6yEctda+
+	feBiYJ+0VLUrRbeTzT4jTfQKRSJQqciJWJZqcIN6K2+xx6gLFdH1EkpvhEODxtysNkTQvHsgOnwRA
+	UAJB6g4IV6Cuv+yFg9SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugWiZ-0000000FYAr-0hRK;
-	Mon, 28 Jul 2025 22:53:15 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ugac9-0000000FoT5-3EtP;
+	Tue, 29 Jul 2025 03:02:53 +0000
+Received: from mail-m3269.qiye.163.com ([220.197.32.69])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ugWg5-0000000FY4S-42aI;
-	Mon, 28 Jul 2025 22:50:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1753743040;
-	bh=aUFYEhrBDCMb4rwh/p3Q8a9jltXCwz63SKfYeyEBQ9c=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=jz3AhKYXHiMcXAa5/TA6plvdh9o27whoXtIwBXldnVh6kY0wZbIFp7Bd0PdmUBkhV
-	 JrSb5Qui32vWAwBDerTapR7pJhoeT4wXj4fJJeWefITauKHpqg2AL5Yh1h1qhWqiA/
-	 wM7TRDt5Yt7gVJdy1ohMmrHfFyjdZgWcBbjnGzzVGZwIG/+Ov+oZSBVsGyGCGyH3bu
-	 LVjpw2IRptw6sFa87JZKElLRc5vpiGkiMDbSo/1tftTGTjrO/+3QLoLvRSDC63Va6a
-	 gr5bYx9CTVwRQujAPVn1n4NYndKo7cQ6lZHX3c40SKA2+yKYme+4aZV2jJWgWjJd18
-	 7NAzEwERFL0iQ==
-Received: from [IPv6:2606:6d00:11:5a76::5ac] (unknown [IPv6:2606:6d00:11:5a76::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E982017E0FA8;
-	Tue, 29 Jul 2025 00:50:38 +0200 (CEST)
-Message-ID: <0a8391cb368653b91ea73a51e2c0dee35cceb128.camel@collabora.com>
-Subject: Re: [PATCH] media: rkvdec: Fix an error handling path in
- rkvdec_probe()
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, Detlev Casanova	
- <detlev.casanova@collabora.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>,  Heiko Stuebner	 <heiko@sntech.de>, Hans Verkuil
- <hverkuil@kernel.org>
-Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org
-Date: Mon, 28 Jul 2025 18:50:36 -0400
-In-Reply-To: <b69c20783a7b6f7964ab636679d3da80fc48372e.1753610517.git.christophe.jaillet@wanadoo.fr>
-References: <b69c20783a7b6f7964ab636679d3da80fc48372e.1753610517.git.christophe.jaillet@wanadoo.fr>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
- oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
- zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
- TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
- 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
- 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
- cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
- tHYWTDxBOP5peztyc2PqeKsLsLWzAr7QnTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVz
- bmUuY2E+iGIEExECACIFAlXA3CACGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sB
- qgcJngAnRDBTr8bhzuH0KQwFP1nEYtfgpKdAKCrQ/sJfuG/8zsd7J8wVl7y3e8ARbRDTmljb2xhcy
- BEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29
- tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCg
- zYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc
- 25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udW
- s+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8
- An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZy
- ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJC
- AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypw
- CfWKc9DorA9f5pyYlD5pQo6SgSoiC0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF
- 1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkI
- BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr
- +E7ItOqZEHAs+xabBgknYZIFPU=
-Organization: Collabora Canada
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1ugac7-0000000FoQe-2wfH;
+	Tue, 29 Jul 2025 03:02:53 +0000
+Received: from [172.16.12.26] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1d8d1d917;
+	Tue, 29 Jul 2025 11:02:36 +0800 (GMT+08:00)
+Message-ID: <c73fa024-fdd0-4f62-9c8a-11e7eee3c475@rock-chips.com>
+Date: Tue, 29 Jul 2025 11:02:35 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 00/14] Apply drm_bridge_connector and panel_bridge
+ helper for the Analogix DP driver
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org
+Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
+ hjc@rock-chips.com, andy.yan@rock-chips.com,
+ dmitry.baryshkov@oss.qualcomm.com, l.stach@pengutronix.de,
+ dianders@chromium.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20250724080304.3572457-1-damon.ding@rock-chips.com>
+ <3890785.kQq0lBPeGt@diego>
+ <b0ce0d8d-4ceb-419e-a892-d39b8633aa13@rock-chips.com>
+ <6070443.MhkbZ0Pkbq@diego>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <6070443.MhkbZ0Pkbq@diego>
+X-HM-Tid: 0a985421c7f003a3kunmfdedbf933ad983
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ09JS1YaSkxCT0tOTE9NTk1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=Z0t5SR8B0vNhWrIok1/FmCtBb+MTf4osUwhrg8hT1btBuvXhnXOGGjVTAQgW39ozpyvLP5Q97tYO5BKW2/6juag1AJ0ZQrSFHBf4lVoR4JhL4AzzBGqbv7v4FVFPC/44dOfHwmC+/7dor0OH9WnhILMXY+7qat0tS0i7c5Oxedo=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=MM2qm6q8mkhokguSCCLMixLY0zbxDFkGmL61vvZn9Nc=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250728_155042_158965_84AE2769 
-X-CRM114-Status: GOOD (  17.37  )
+X-CRM114-CacheID: sfid-20250728_200251_888372_6D904AB7 
+X-CRM114-Status: GOOD (  14.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,110 +78,157 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7233344936274224901=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============7233344936274224901==
-Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-HBQA1dSSAY++JW3+CEB6"
-
-
---=-HBQA1dSSAY++JW3+CEB6
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-Le dimanche 27 juillet 2025 =C3=A0 12:02 +0200, Christophe JAILLET a =C3=A9=
-crit=C2=A0:
-> If an error occurs after a successful iommu_paging_domain_alloc() call, i=
-t
-> should be undone by a corresponding iommu_domain_free() call, as already
-> done in the remove function.
->=20
-> Fixes: ff8c5622f9f7 ("media: rkvdec: Restore iommu addresses on errors")
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> ---
-> Compile tested only
-> ---
-> =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.c | 11 ++++++++---
-> =C2=A01 file changed, 8 insertions(+), 3 deletions(-)
->=20
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> index d707088ec0dc..eb0d41f85d89 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -1169,15 +1169,17 @@ static int rkvdec_probe(struct platform_device *p=
-dev)
-> =C2=A0	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
-> =C2=A0
-> =C2=A0	irq =3D platform_get_irq(pdev, 0);
-> -	if (irq <=3D 0)
-> -		return -ENXIO;
-> +	if (irq <=3D 0) {
-> +		ret =3D -ENXIO;
-> +		goto err_free_domain;
-> +	}
-> =C2=A0
-> =C2=A0	ret =3D devm_request_threaded_irq(&pdev->dev, irq, NULL,
-> =C2=A0					rkvdec_irq_handler, IRQF_ONESHOT,
-> =C2=A0					dev_name(&pdev->dev), rkvdec);
-> =C2=A0	if (ret) {
-> =C2=A0		dev_err(&pdev->dev, "Could not request vdec IRQ\n");
-> -		return ret;
-> +		goto err_free_domain;
-> =C2=A0	}
-> =C2=A0
-> =C2=A0	pm_runtime_set_autosuspend_delay(&pdev->dev, 100);
-
-Have you considered moving the allocation of the domain right above the abo=
-ve
-line instead ? The empty domain can't possibly be used unless the probe hav=
-e
-fully completed.
-
-Nicolas
-
-> @@ -1193,6 +1195,9 @@ static int rkvdec_probe(struct platform_device *pde=
-v)
-> =C2=A0err_disable_runtime_pm:
-> =C2=A0	pm_runtime_dont_use_autosuspend(&pdev->dev);
-> =C2=A0	pm_runtime_disable(&pdev->dev);
-> +err_free_domain:
-> +	if (rkvdec->empty_domain)
-> +		iommu_domain_free(rkvdec->empty_domain);
-> =C2=A0	return ret;
-> =C2=A0}
-> =C2=A0
-
---=-HBQA1dSSAY++JW3+CEB6
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaIf+vAAKCRBxUwItrAao
-HIh7AJ9siqERzUwFpo03WB/ccY47zYm2BwCcDeERz+YrhGQaSfBNmTmJ7h2Kxgw=
-=gy7Q
------END PGP SIGNATURE-----
-
---=-HBQA1dSSAY++JW3+CEB6--
-
-
---===============7233344936274224901==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7233344936274224901==--
-
+SGkgSGVpa28sCgpPbiAyMDI1LzcvMjYgMzo0NSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gSGkg
+RGFtb24sCj4gQW0gRnJlaXRhZywgMjUuIEp1bGkgMjAyNSwgMDQ6MTU6MDYgTWl0dGVsZXVyb3DD
+pGlzY2hlIFNvbW1lcnplaXQgc2NocmllYiBEYW1vbiBEaW5nOgo+PiBPbiAyMDI1LzcvMjQgMjE6
+MTAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+Pj4gQW0gRG9ubmVyc3RhZywgMjQuIEp1bGkgMjAy
+NSwgMTA6MDI6NTAgTWl0dGVsZXVyb3DDpGlzY2hlIFNvbW1lcnplaXQgc2NocmllYiBEYW1vbiBE
+aW5nOgo+Pj4+IFBBVENIIDEgaXMgYSBzbWFsbCBmb3JtYXQgb3B0aW1pemF0aW9uIGZvciBzdHJ1
+Y3QgYW5hbG9naWRfZHBfZGV2aWNlLgo+Pj4+IFBBVENIIDIgaXMgdG8gcGVyZm9ybSBtb2RlIHNl
+dHRpbmcgaW4gJmRybV9icmlkZ2VfZnVuY3MuYXRvbWljX2VuYWJsZS4KPj4+PiBQQVRDSCAzIGlz
+IHRvIGFwcGx5IGEgYmV0dGVyIEFQSSBmb3IgdGhlIGVuY29kZXIgaW5pdGlhbGl6YXRpb24uCj4+
+Pj4gUEFUQ0ggNC03IGFyZSBwcmVwYXJhdGlvbnMgZm9yIGFwcGx5IGRybV9icmlkZ2VfY29ubmVj
+dG9yIGhlbHBlci4KPj4+PiBQQVRDSCA4IGlzIHRvIGFwcGx5IHRoZSBkcm1fYnJpZGdlX2Nvbm5l
+Y3RvciBoZWxwZXIuCj4+Pj4gUEFUQ0ggOS0xMSBhcmUgdG8gbW92ZSB0aGUgcGFuZWwvYnJpZGdl
+IHBhcnNpbmcgdG8gdGhlIEFuYWxvZ2l4IHNpZGUuCj4+Pj4gUEFUQ0ggMTItMTMgYXJlIHByZXBh
+cmF0aW9ucyBmb3IgYXBwbHkgcGFuZWxfYnJpZGdlIGhlbHBlci4KPj4+PiBQQVRDSCAxNCBpcyB0
+byBhcHBseSB0aGUgcGFuZWxfYnJpZGdlIGhlbHBlci4KPj4+Cj4+PiBmb3IgZnV0dXJlIHJldmlz
+aW9ucywgcGxlYXNlIHByb3ZpZGUgYSBjaGFuZ2Vsb2cgb24gd2hhdCBjaGFuZ2VkIHNpbmNlCj4+
+PiB0aGUgcHJldmlvdXMgdmVyc2lvbiwgSSBndWVzcyBpZGVhbGx5IGhlcmUgaW4gdGhlIGNvdmVy
+LWxldHRlci4KPj4+Cj4+Pgo+Pj4gT24gbXkgcmszNTg4LXRpZ2VyLWRpc3BsYXlwb3J0LWNhcnJp
+ZXIgdGhpcyB3b3JrcyBsaWtlIGEgY2hhcm0KPj4+IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXIg
+PGhlaWtvQHNudGVjaC5kZT4KPj4+Cj4+Pgo+Pj4KPj4+Cj4+Cj4+IEdsYWQgdG8gc2VlIHlvdXIg
+cmV2aWV3IGFuZCB0ZXN0LiA6LSkKPj4KPj4gSSB3aWxsIGluY2x1ZGUgdGhlIHZlcnNpb24tdG8t
+dmVyc2lvbiBjaGFuZ2Vsb2dzICh2MiAtPiB2MyBhbmQgdjMgLT4gdjQpCj4+IGluIHRoZSBuZXh0
+IGl0ZXJhdGlvbi4KPiAKPiBJIGhhdmUgdG8gYW1lbmQgdGhhdCBhIGJpdCwgc2FkbHkuIFdoZW4g
+ZG9pbmcgYSByZWJvb3Qgd2l0aCB0aGUgZWRwCj4gcnVubmluZywgSSBzZWUgbG9ncyBsaWtlOgo+
+IAo+IFsuLi5dCj4gWyAgMTM5LjYxNDc0OV0gc3lzdGVtZC1zaHV0ZG93blsxXTogU3luY2luZyBm
+aWxlc3lzdGVtcyBhbmQgYmxvY2sgZGV2aWNlcy4KPiBbICAxMzkuNjIyMjAxXSBzeXN0ZW1kLXNo
+dXRkb3duWzFdOiBSZWJvb3RpbmcuCj4gWyAgMTM5LjY4NDg0NV0gLS0tLS0tLS0tLS0tWyBjdXQg
+aGVyZSBdLS0tLS0tLS0tLS0tCj4gWyAgMTM5LjY5MDA1MF0gV0FSTklORzogQ1BVOiAwIFBJRDog
+MTEwIGF0IGRyaXZlcnMvaW9tbXUvcm9ja2NoaXAtaW9tbXUuYzo5ODkgcmtfaW9tbXVfaWRlbnRp
+dHlfYXR0YWNoKzB4YWMvMHhiYwo+IFsgIDEzOS43MDExNzVdIE1vZHVsZXMgbGlua2VkIGluOiBw
+YW50aG9yIHJvY2tjaGlwX3ZkZWMgcm9ja2V0IGRybV9ncHV2bSB2NGwyX3ZwOSB2NGwyX2gyNjQg
+ZHJtX2V4ZWMgcm9ja2NoaXBfcm5nIGRybV9zaG1lbV9oZWxwZXIgdjRsMl9tZW0ybWVtIGdwdV9z
+Y2hlZCBybmdfY29yZSBmdXNlCj4gWyAgMTM5LjcxNzY4NV0gQ1BVOiAwIFVJRDogMCBQSUQ6IDEx
+MCBDb21tOiBpcnEvNTgtSFBEIE5vdCB0YWludGVkIDYuMTYuMC1yYzctMDAxODMtZ2Q0MzZjYmU4
+ZTRiMyAjMTU0MSBQUkVFTVBUCj4gWyAgMTM5LjcyODc5OV0gSGFyZHdhcmUgbmFtZTogVGhlb2Jy
+b21hIFN5c3RlbXMgUkszNTg4LVE3IFNvTSBvbiBUaWdlciBEaXNwbGF5cG9ydCBDYXJyaWVyIHYx
+IChEVCkKPiBbICAxMzkuNzM4NTQ4XSBwc3RhdGU6IGEwNDAwMDA5IChOekN2IGRhaWYgK1BBTiAt
+VUFPIC1UQ08gLURJVCAtU1NCUyBCVFlQRT0tLSkKPiBbICAxMzkuNzQ2MzUxXSBwYyA6IHJrX2lv
+bW11X2lkZW50aXR5X2F0dGFjaCsweGFjLzB4YmMKPiBbICAxMzkuNzUxODIxXSBsciA6IHJrX2lv
+bW11X2lkZW50aXR5X2F0dGFjaCsweDcwLzB4YmMKPiBbICAxMzkuNzU3MjkwXSBzcCA6IGZmZmY4
+MDAwODBlNGI3YzAKPiBbICAxMzkuNzYxMDAxXSB4Mjk6IGZmZmY4MDAwODBlNGI3YzAgeDI4OiBm
+ZmZmMDAwMWY2Zjk4MDgwIHgyNzogZmZmZjAwMDFmMGE0YjAxMAo+IFsgIDEzOS43NjkwMDZdIHgy
+NjogZmZmZjAwMDFmNmY5OGU1OCB4MjU6IDAwMDAwMDAwMDAwMDAwMDAgeDI0OiAwMDAwMDAwMDAw
+MDAwMDAwCj4gWyAgMTM5Ljc3NzAxMF0geDIzOiAwMDAwMDAwMDAwMDAwMDAwIHgyMjogZmZmZmRi
+ZjIzYzA0ODVlMCB4MjE6IGZmZmYwMDAxZjBlOWNjMTAKPiBbICAxMzkuNzg1MDE0XSB4MjA6IGZm
+ZmYwMDAxZjBkZjE3YTAgeDE5OiBmZmZmMDAwMWYwZTJjYjgwIHgxODogMDAwMDAwMDAwMDAwMDAz
+OAo+IFsgIDEzOS43OTMwMThdIHgxNzogMDAwMjU1MDgwMDAwMDAwOSB4MTY6IDAwMDAwNDZjMDQ0
+NjA0M2UgeDE1OiAwNDM4MDAwMDA4Y2EwODBjCj4gWyAgMTM5LjgwMTAyMV0geDE0OiAwN2QwMDhj
+YTA3ODAwNzgwIHgxMzogMDQzODAwMDAwOGNhMDgwYyB4MTI6IDA3ZDAwNzgwMDAwMjU1MDgKPiBb
+ICAxMzkuODA5MDI0XSB4MTE6IDAwMDI1NTA4MDAwMDAwMDkgeDEwOiAwMDAwMDQ2YzA0NDYwNDNl
+IHg5IDogZmZmZmRiZjIzYzEzNzAwMAo+IFsgIDEzOS44MTcwMzFdIHg4IDogMDAwMDAwMDAwMDAw
+MDQzOCB4NyA6IDAwMDAwMDAwMDAwMDAwMDAgeDYgOiAwMDAwMDAwMDAwMDAwMDAwCj4gWyAgMTM5
+LjgyNTAzNF0geDUgOiBmZmZmZGJmMjNhZGJiOWMwIHg0IDogZmZmZjAwMDFmMGRmMTc4MCB4MyA6
+IGZmZmYwMDAxZjBkZjE3ODAKPiBbICAxMzkuODMzMDM4XSB4MiA6IDAwMDAwMDAwMDAwMDAwODEg
+eDEgOiBmZmZmMDAwMWY2ZmFkNTAwIHgwIDogMDAwMDAwMDBmZmZmZmZlYQo+IFsgIDEzOS44NDEw
+NDJdIENhbGwgdHJhY2U6Cj4gWyAgMTM5Ljg0Mzc4MF0gIHJrX2lvbW11X2lkZW50aXR5X2F0dGFj
+aCsweGFjLzB4YmMgKFApCj4gWyAgMTM5Ljg0OTI1Ml0gIHJrX2lvbW11X2F0dGFjaF9kZXZpY2Ur
+MHg1NC8weDEzNAo+IFsgIDEzOS44NTQyMzZdICBfX2lvbW11X2RldmljZV9zZXRfZG9tYWluKzB4
+N2MvMHgxMTAKPiBbICAxMzkuODU5NTEwXSAgX19pb21tdV9ncm91cF9zZXRfZG9tYWluX2ludGVy
+bmFsKzB4NjAvMHgxMzQKPiBbICAxMzkuODY1NTYxXSAgX19pb21tdV9hdHRhY2hfZ3JvdXArMHg4
+OC8weDljCj4gWyAgMTM5Ljg3MDI1MF0gIGlvbW11X2F0dGFjaF9kZXZpY2UrMHg2OC8weGEwCj4g
+WyAgMTM5Ljg3NDg0MV0gIHJvY2tjaGlwX2RybV9kbWFfYXR0YWNoX2RldmljZSsweDI4LzB4N2MK
+PiBbICAxMzkuODgwNTA4XSAgdm9wMl9jcnRjX2F0b21pY19lbmFibGUrMHg2MjAvMHhhYTAKPiBb
+ICAxMzkuODg1Njc4XSAgZHJtX2F0b21pY19oZWxwZXJfY29tbWl0X21vZGVzZXRfZW5hYmxlcysw
+eGFjLzB4MjZjCj4gWyAgMTM5Ljg5MjQxM10gIGRybV9hdG9taWNfaGVscGVyX2NvbW1pdF90YWls
+X3JwbSsweDUwLzB4YTAKPiBbICAxMzkuODk4MzY5XSAgY29tbWl0X3RhaWwrMHhhMC8weDFhMAo+
+IFsgIDEzOS45MDIyNzldICBkcm1fYXRvbWljX2hlbHBlcl9jb21taXQrMHgxN2MvMHgxYjAKPiBb
+ICAxMzkuOTA3NTUyXSAgZHJtX2F0b21pY19jb21taXQrMHg4Yy8weGNjCj4gWyAgMTM5LjkxMTk1
+MV0gIGRybV9jbGllbnRfbW9kZXNldF9jb21taXRfYXRvbWljKzB4MjI4LzB4Mjk4Cj4gWyAgMTM5
+LjkxODAwNV0gIGRybV9jbGllbnRfbW9kZXNldF9jb21taXRfbG9ja2VkKzB4NWMvMHgxODgKPiBb
+ICAxMzkuOTIzOTYwXSAgZHJtX2NsaWVudF9tb2Rlc2V0X2NvbW1pdCsweDJjLzB4NTgKPiBbICAx
+MzkuOTI5MTM3XSAgX19kcm1fZmJfaGVscGVyX3Jlc3RvcmVfZmJkZXZfbW9kZV91bmxvY2tlZCsw
+eGI0LzB4MTAwCj4gWyAgMTM5LjkzNjE2NF0gIGRybV9mYl9oZWxwZXJfaG90cGx1Z19ldmVudCsw
+eGU4LzB4ZjgKPiBbICAxMzkuOTQxNTI2XSAgZHJtX2ZiZGV2X2NsaWVudF9ob3RwbHVnKzB4MjQv
+MHhlMAo+IFsgIDEzOS45NDY2MDVdICBkcm1fY2xpZW50X2hvdHBsdWcrMHg0OC8weGM0Cj4gWyAg
+MTM5Ljk1MTEwMF0gIGRybV9jbGllbnRfZGV2X2hvdHBsdWcrMHg5Yy8weGQ0Cj4gWyAgMTM5Ljk1
+NTk4NF0gIGRybV9rbXNfaGVscGVyX2Nvbm5lY3Rvcl9ob3RwbHVnX2V2ZW50KzB4MjAvMHgzMAo+
+IFsgIDEzOS45NjI0MjZdICBkcm1fYnJpZGdlX2Nvbm5lY3Rvcl9ocGRfY2IrMHg4OC8weGEwCj4g
+WyAgMTM5Ljk2Nzc5MF0gIGRybV9icmlkZ2VfaHBkX25vdGlmeSsweDNjLzB4NjAKPiBbICAxMzku
+OTcyNTc3XSAgZGlzcGxheV9jb25uZWN0b3JfaHBkX2lycSsweDMwLzB4YTQKPiBbICAxMzkuOTc4
+ODM1XSAgaXJxX3RocmVhZF9mbisweDJjLzB4YjAKPiBbICAxMzkuOTgzODk0XSAgaXJxX3RocmVh
+ZCsweDE3MC8weDMwNAo+IFsgIDEzOS45ODg4MzNdICBrdGhyZWFkKzB4MTJjLzB4MjA0Cj4gWyAg
+MTM5Ljk5MzQ2OF0gIHJldF9mcm9tX2ZvcmsrMHgxMC8weDIwCj4gWyAgMTM5Ljk5ODQ4Nl0gLS0t
+WyBlbmQgdHJhY2UgMDAwMDAwMDAwMDAwMDAwMCBdLS0tCj4gWyAgMTQwLjAwNDczN10gLS0tLS0t
+LS0tLS0tWyBjdXQgaGVyZSBdLS0tLS0tLS0tLS0tCj4gWyAgMTQwLjAxMDg4NF0gV0FSTklORzog
+Q1BVOiAwIFBJRDogMTEwIGF0IGRyaXZlcnMvaW9tbXUvcm9ja2NoaXAtaW9tbXUuYzoxMDQwIHJr
+X2lvbW11X2F0dGFjaF9kZXZpY2UrMHgxMTQvMHgxMzQKPiBbICAxNDAuMDIzMDc5XSBNb2R1bGVz
+IGxpbmtlZCBpbjogcGFudGhvciByb2NrY2hpcF92ZGVjIHJvY2tldCBkcm1fZ3B1dm0gdjRsMl92
+cDkgdjRsMl9oMjY0IGRybV9leGVjIHJvY2tjaGlwX3JuZyBkcm1fc2htZW1faGVscGVyIHY0bDJf
+bWVtMm1lbSBncHVfc2NoZWQgcm5nX2NvcmUgZnVzZQo+IFsgIDE0MC4wNDA1NzddIENQVTogMCBV
+SUQ6IDAgUElEOiAxMTAgQ29tbTogaXJxLzU4LUhQRCBUYWludGVkOiBHICAgICAgICBXICAgICAg
+ICAgICA2LjE2LjAtcmM3LTAwMTgzLWdkNDM2Y2JlOGU0YjMgIzE1NDEgUFJFRU1QVAo+IFsgIDE0
+MC4wNTQ0NTddIFRhaW50ZWQ6IFtXXT1XQVJOCj4gWyAgMTQwLjA1ODgwNF0gSGFyZHdhcmUgbmFt
+ZTogVGhlb2Jyb21hIFN5c3RlbXMgUkszNTg4LVE3IFNvTSBvbiBUaWdlciBEaXNwbGF5cG9ydCBD
+YXJyaWVyIHYxIChEVCkKPiBbICAxNDAuMDY5NTk1XSBwc3RhdGU6IGEwNDAwMDA5IChOekN2IGRh
+aWYgK1BBTiAtVUFPIC1UQ08gLURJVCAtU1NCUyBCVFlQRT0tLSkKPiBbICAxNDAuMDc4NDU0XSBw
+YyA6IHJrX2lvbW11X2F0dGFjaF9kZXZpY2UrMHgxMTQvMHgxMzQKPiBbICAxNDAuMDg0OTg5XSBs
+ciA6IHJrX2lvbW11X2F0dGFjaF9kZXZpY2UrMHg5OC8weDEzNAo+IFsgIDE0MC4wOTE0MjNdIHNw
+IDogZmZmZjgwMDA4MGU0YjdlMAo+IFsgIDE0MC4wOTYxOTddIHgyOTogZmZmZjgwMDA4MGU0Yjdl
+MCB4Mjg6IGZmZmYwMDAxZjZmOTgwODAgeDI3OiBmZmZmMDAwMWYwYTRiMDEwCj4gWyAgMTQwLjEw
+NTI3MF0geDI2OiBmZmZmMDAwMWY2Zjk4ZTU4IHgyNTogMDAwMDAwMDAwMDAwMDAwMCB4MjQ6IDAw
+MDAwMDAwMDAwMDAwMDAKPiBbICAxNDAuMTE0MzUxXSB4MjM6IGZmZmYwMDAxZjZmODQzZTAgeDIy
+OiBmZmZmZGJmMjNjMDQ4NWUwIHgyMTogZmZmZjAwMDFmMGU5Y2MxMAo+IFsgIDE0MC4xMjM0MjVd
+IHgyMDogZmZmZjAwMDFmMGUyY2I4MCB4MTk6IGZmZmYwMDAxZjZmODQzYzAgeDE4OiAwMDAwMDAw
+MDAwMDAwMDM4Cj4gWyAgMTQwLjEzMjQ4OV0geDE3OiAwMDAyNTUwODAwMDAwMDA5IHgxNjogMDAw
+MDA0NmMwNDQ2MDQzZSB4MTU6IDA0MzgwMDAwMDhjYTA4MGMKPiBbICAxNDAuMTQxNTUyXSB4MTQ6
+IDA3ZDAwOGNhMDc4MDA3ODAgeDEzOiAwNDM4MDAwMDA4Y2EwODBjIHgxMjogMDdkMDA3ODAwMDAy
+NTUwOAo+IFsgIDE0MC4xNTA2MjNdIHgxMTogMDAwMjU1MDgwMDAwMDAwOSB4MTA6IDAwMDAwNDZj
+MDQ0NjA0M2UgeDkgOiBmZmZmZGJmMjNjMTM3MDAwCj4gWyAgMTQwLjE1OTcwMV0geDggOiAwMDAw
+MDAwMDAwMDAwNDM4IHg3IDogMDAwMDAwMDAwMDAwMDAwMCB4NiA6IDAwMDAwMDAwMDAwMDAwMDAK
+PiBbICAxNDAuMTY4NzcyXSB4NSA6IGZmZmZkYmYyM2FkYmI5YzAgeDQgOiBmZmZmMDAwMWYwZGYx
+NzgwIHgzIDogZmZmZjAwMDFmMGUyY2JlMAo+IFsgIDE0MC4xNzc4MjVdIHgyIDogMDAwMDAwMDAw
+MDAwMDA4MSB4MSA6IGZmZmYwMDAxZjZmYWQ1MDAgeDAgOiAwMDAwMDAwMGZmZmZmZmVhCj4gWyAg
+MTQwLjE4Njg1OF0gQ2FsbCB0cmFjZToKPiBbICAxNDAuMTkwNjI3XSAgcmtfaW9tbXVfYXR0YWNo
+X2RldmljZSsweDExNC8weDEzNCAoUCkKPiBbICAxNDAuMTk3MTI0XSAgX19pb21tdV9kZXZpY2Vf
+c2V0X2RvbWFpbisweDdjLzB4MTEwCj4gWyAgMTQwLjIwMzQxN10gIF9faW9tbXVfZ3JvdXBfc2V0
+X2RvbWFpbl9pbnRlcm5hbCsweDYwLzB4MTM0Cj4gWyAgMTQwLjIxMDQ5Ml0gIF9faW9tbXVfYXR0
+YWNoX2dyb3VwKzB4ODgvMHg5Ywo+IFsgIDE0MC4yMTYyMDNdICBpb21tdV9hdHRhY2hfZGV2aWNl
+KzB4NjgvMHhhMAo+IFsgIDE0MC4yMjE4MDJdICByb2NrY2hpcF9kcm1fZG1hX2F0dGFjaF9kZXZp
+Y2UrMHgyOC8weDdjCj4gWyAgMTQwLjIyODQ3OV0gIHZvcDJfY3J0Y19hdG9taWNfZW5hYmxlKzB4
+NjIwLzB4YWEwCj4gWyAgMTQwLjIzNDY2NF0gIGRybV9hdG9taWNfaGVscGVyX2NvbW1pdF9tb2Rl
+c2V0X2VuYWJsZXMrMHhhYy8weDI2Ywo+IFsgIDE0MC4yNDI0MDBdICBkcm1fYXRvbWljX2hlbHBl
+cl9jb21taXRfdGFpbF9ycG0rMHg1MC8weGEwCj4gWyAgMTQwLjI0OTM0OV0gIGNvbW1pdF90YWls
+KzB4YTAvMHgxYTAKPiBbICAxNDAuMjU0MjQ2XSAgZHJtX2F0b21pY19oZWxwZXJfY29tbWl0KzB4
+MTdjLzB4MWIwCj4gWyAgMTQwLjI2MDQ5Nl0gIGRybV9hdG9taWNfY29tbWl0KzB4OGMvMHhjYwo+
+IFsgIDE0MC4yNjU4NjZdICBkcm1fY2xpZW50X21vZGVzZXRfY29tbWl0X2F0b21pYysweDIyOC8w
+eDI5OAo+IFsgIDE0MC4yNzI4ODVdICBkcm1fY2xpZW50X21vZGVzZXRfY29tbWl0X2xvY2tlZCsw
+eDVjLzB4MTg4Cj4gWyAgMTQwLjI3OTc5MV0gIGRybV9jbGllbnRfbW9kZXNldF9jb21taXQrMHgy
+Yy8weDU4Cj4gWyAgMTQwLjI4NTkxNF0gIF9fZHJtX2ZiX2hlbHBlcl9yZXN0b3JlX2ZiZGV2X21v
+ZGVfdW5sb2NrZWQrMHhiNC8weDEwMAo+IFsgIDE0MC4yOTM4ODldICBkcm1fZmJfaGVscGVyX2hv
+dHBsdWdfZXZlbnQrMHhlOC8weGY4Cj4gWyAgMTQwLjMwMDIxNF0gIGRybV9mYmRldl9jbGllbnRf
+aG90cGx1ZysweDI0LzB4ZTAKPiBbICAxNDAuMzA2MjQ4XSAgZHJtX2NsaWVudF9ob3RwbHVnKzB4
+NDgvMHhjNAo+IFsgIDE0MC4zMTE2OTVdICBkcm1fY2xpZW50X2Rldl9ob3RwbHVnKzB4OWMvMHhk
+NAo+IFsgIDE0MC4zMTc1MzFdICBkcm1fa21zX2hlbHBlcl9jb25uZWN0b3JfaG90cGx1Z19ldmVu
+dCsweDIwLzB4MzAKPiBbICAxNDAuMzI0OTMwXSAgZHJtX2JyaWRnZV9jb25uZWN0b3JfaHBkX2Ni
+KzB4ODgvMHhhMAo+IFsgIDE0MC4zMzEyNDhdICBkcm1fYnJpZGdlX2hwZF9ub3RpZnkrMHgzYy8w
+eDYwCj4gWyAgMTQwLjMzNjk5MF0gIGRpc3BsYXlfY29ubmVjdG9yX2hwZF9pcnErMHgzMC8weGE0
+Cj4gWyAgMTQwLjM0MzEyMF0gIGlycV90aHJlYWRfZm4rMHgyYy8weGIwCj4gWyAgMTQwLjM0ODA4
+MV0gIGlycV90aHJlYWQrMHgxNzAvMHgzMDQKPiBbICAxNDAuMzUyOTM3XSAga3RocmVhZCsweDEy
+Yy8weDIwNAo+IFsgIDE0MC4zNTc1MDFdICByZXRfZnJvbV9mb3JrKzB4MTAvMHgyMAo+IFsgIDE0
+MC4zNjI0NTNdIC0tLVsgZW5kIHRyYWNlIDAwMDAwMDAwMDAwMDAwMDAgXS0tLQo+IAo+IAo+IEFm
+dGVyIHNvbWUgbWludXRlcyBvZiBoYW5naW5nIGl0IGRvZXMgcmVib290IGFmdGVyYWxsLgo+IAo+
+IEhlaWtvCj4gCj4gCgpDb3VsZCB5b3UgcGxlYXNlIGhlbHAgY29uZmlybSB3aGV0aGVyIHRoZSBz
+YW1lIGVycm9yIHN0aWxsIG9jY3VycyB3aXRoIAp0aGlzIHBhdGNoIHNlcmllcyB1bmRlciB0aGUg
+c2FtZSBjb25kaXRpb25zPwoKQW5kIEkgd2lsbCBhbHNvIHBlcmZvcm0gYWRkaXRpb25hbCB2ZXJp
+ZmljYXRpb24gb24gbXkgUkszNTg4UyBFVkIxIGJvYXJkLgoKQmVzdCByZWdhcmRzLApEYW1vbgoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
