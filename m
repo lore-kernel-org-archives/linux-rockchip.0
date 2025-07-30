@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACCD8C87FC9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 12:39:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B526C83F26
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 13:20:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FKlYghtIZx//wkHiFAgtI5aeeAjhhUnfxH9mfWnMtuI=; b=YiiUqJP0ZP8Jx9
-	7nlVkf1H6QJPQcuylbfOUB8NM6srGRcLrRerwx3bptP6t30Bs+//EDslKnCQ8aO5Wf/QLE9qi8v/R
-	eXlZ0K6g73kEXC3oBD6jfM87f6wJWEefaO2MCLKvXvVtQRJxDId2dc6ounzzpGLprvgRxXvhSVkHp
-	uRU66BFjGe8xA4XUW+kp0Yq8NAS05VOauKOsZXPN2PZk03iQvjWSd2WnB7vBQuFaGa3CDx9v8cw+5
-	YVgaM1H/VfbJOulBRNIKo3BYhbZ8UXBbujvultXM1+X51WIO8b2nD2BIVIjjnrdg17yVFJF3N8Wih
-	tWyM4e12/a1J/iIZn+Tg==;
+	List-Owner; bh=Azz7iuupLKmL3H5IUtRMqrWmFcW1fm4TsK1tINuWpjo=; b=Y149i3QjIkvxpX
+	uhLlUU6IQJvs6hhlp3oyWFxD2QLNkDpNAqO6uAphMV8Z6NgDL/pl4Lfv65FxBGiJpZn/d5ZtZeJWw
+	gPPO27rnrqExuoLQ0vme0uWX4PEmLGXyFqC155fK3V7fRFtOPDx2ihlOIrwZ4jI/sciSemZNHsjYY
+	YHqRMGhC4EAxtFaYe5xjfquUXbILTmaJ60TPYnM51ueV4dNu9SkLy478+pm5l3+G2wl+XnkDlEvE9
+	yk/zkU4nKooLHJ3hWXlo9KkSx+Kj5YXHUDkCifoZTKVyc2eNFdtgoIyggXH4QEUNB13Pl3h9USbp7
+	3zhKfwHC4fS8+fqWsv4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh65l-00000001UFn-1Zr8;
-	Wed, 30 Jul 2025 12:39:33 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh5je-00000001QZg-0q5i;
-	Wed, 30 Jul 2025 12:16:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=ElSFpxyOTNVE1T0z8YDlqpPg0MdkDgeazT0leojoLgA=; b=J
-	8VTz1+HWGwyksH1/J3ahk6RCPqjfMpSDLn90iaX6A8LonsefGzYkgdwZyg/S2Iv/
-	244T//fOex0i3VyLcvwv+LMGmgcIywmvr/lx2eMlJ5WZURL8yWd4dAdyj4hoNAw6
-	iggBi2/1NoI1spucI2nYfSxdcoxI/xXByO6kNAO4SI=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-100 (Coremail) ; Wed, 30 Jul 2025 20:15:44 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Wed, 30 Jul 2025 20:15:44 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Sebastian Reichel" <sebastian.reichel@collabora.com>
-Subject: Re:Re: [PATCH v6 09/10] arm64: dts: rockchip: Enable DisplayPort
- for rk3588s Cool Pi 4B
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20250519(9504565a)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <hbvwlucm5mnjpve6hb6h7dusgrokvdxzbpq5zrwib4yesrdakp@v77ofq7u2vv2>
-References: <20250728082846.3811429-1-andyshrk@163.com>
- <20250728082846.3811429-10-andyshrk@163.com>
- <hbvwlucm5mnjpve6hb6h7dusgrokvdxzbpq5zrwib4yesrdakp@v77ofq7u2vv2>
-X-NTES-SC: AL_Qu2eAfScuE8v4iOQZOkfmkcVgOw9UcO5v/Qk3oZXOJF8jCrp+T8Sd2ZaF1DE/tCJOQeHiwGOexp84/ZoY4N9R58oIPqZyitgPF4yMudd86PcBQ==
+	id 1uh6jZ-00000001ae8-1jIr;
+	Wed, 30 Jul 2025 13:20:41 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uh6jW-00000001ad4-3NHw;
+	Wed, 30 Jul 2025 13:20:40 +0000
+Received: from localhost.localdomain (unknown [119.122.213.139])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1dc0b97fb;
+	Wed, 30 Jul 2025 21:20:29 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: w@1wt.eu
+Cc: alchark@gmail.com,
+	amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	jonas@kwiboo.se,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	ziyao@disroot.org
+Subject: Re: [PATCH v2 1/1] arm64: dts: rockchip: rk3528: Add CPU frequency scaling support
+Date: Wed, 30 Jul 2025 21:20:26 +0800
+Message-Id: <20250730132026.214754-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250730071145.GA26734@1wt.eu>
+References: <20250730071145.GA26734@1wt.eu>
 MIME-Version: 1.0
-Message-ID: <5deac95c.8ec2.1985b428b0b.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: ZCgvCgDnTyHwDIpok+cJAA--.18121W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMwqaXmiKBmCJrQACsf
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-HM-Tid: 0a985b7dd39f03a2kunm09ab435824e847
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDQktMVh9IHk9CHxlITEsZTlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSFVKSEJZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE5VSktLVU
+	pCS0tZBg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250730_051642_563899_F59385F2 
-X-CRM114-Status: GOOD (  17.44  )
+X-CRM114-CacheID: sfid-20250730_062039_000691_70D4747B 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,75 +69,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, heiko@sntech.de, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpIZWxsbyBTZWJhc3RpYW7vvIwKCkF0IDIwMjUtMDctMzAgMDE6MDk6NDEsICJTZWJhc3RpYW4g
-UmVpY2hlbCIgPHNlYmFzdGlhbi5yZWljaGVsQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+SGksCj4K
-Pk9uIE1vbiwgSnVsIDI4LCAyMDI1IGF0IDA0OjI4OjM0UE0gKzA4MDAsIEFuZHkgWWFuIHdyb3Rl
-Ogo+PiBGcm9tOiBBbmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cj4+IAo+PiBFbmFi
-bGUgdGhlIE1pbmkgRGlzcGxheVBvcnQgb24gdGhpcyBib2FyZC4KPj4gTm90ZSB0aGF0IFJPQ0tD
-SElQX1ZPUDJfRVBfRFAwIGlzIGRlZmluZWQgYXMgMTAgaW4gZHQtYmluZGluZyBoZWFkZXIsCj4+
-IGJ1dCBpdCB3aWxsIHRyaWdnZXIgYSBkdGMgd2FybmluZyBsaWtlICJncmFwaCBub2RlIHVuaXQg
-YWRkcmVzcyBlcnJvciwKPj4gZXhwZWN0ZWQgImEiIiBpZiB3ZSB1c2UgaXQgZGlyZWN0bHkgYWZ0
-ZXIgZW5kcG9pbnQsIHNvIHdlIHVzZSAiYSIKPj4gaW5zdGVhZCBoZXJlLgo+PiAKPj4gU2lnbmVk
-LW9mZi1ieTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgo+PiBSZXZpZXdlZC1i
-eTogRG1pdHJ5IEJhcnlzaGtvdiA8ZG1pdHJ5LmJhcnlzaGtvdkBvc3MucXVhbGNvbW0uY29tPgo+
-PiAtLS0KPgo+VGhlIGdyYXBoIGN1cnJlbnRseSBsb29rcyBsaWtlIHRoaXM6Cj4KPlZPUCA8LT4g
-RFAgY29udHJvbGxlciA8LT4gRFAgQ29ubmVjdG9yCj4KPklJVUlDIHRoaXMgZG9lcyBub3Qgd29y
-ayBmb3IgVVNCLUMgYW5kIG5lZWRzIHRvIGxvb2sgbGlrZSB0aGlzLAo+YmVjYXVzZSB0aGUgVVNC
-RFAgUEhZIGhhbmRsZXMgdGhlIGxhbmUgbXV4aW5nIGFuZCB0aHVzIG11c3QgYmUKPnRoZSB0aGlu
-ZyBjb25uZWN0ZWQgdG8gdGhlIFVTQi1DIGNvbnRyb2xsZXIvY29ubmVjdG9yOgoKSSBwcmV2aW91
-c2x5IHRlc3RzIFVTQi1DIEFsdG1vZGUgb24gTGludXggNS4xNSB1c2luZyBSb2NrIDViLCAgdGhp
-cyBmdW5jdGlvbiB3b3JrcyB3ZWxsLiAKSG93ZXZlciwgd2hlbiB0aGUgc2FtZSBkdHMgY29uZmln
-dXJhdGlvbiBpcyB1c2VkIG9uIExpbnV4IDYuMTYgYW5kIHRlc3RlZCB3aXRoIFJvY2sgNWIgaW4g
-VVNCLUMgQWx0bW9kZSwgCnRoZSBIUEQgaW50ZXJydXB0IG9mIERQIGNhbm5vdCBiZSB0cmlnZ2Vy
-ZWQuIEknbSBub3Qgc3VyZSB5ZXQgd2hhdCBjaGFuZ2VzIGhhdmUgb2NjdXJyZWQgYmV0d2VlbiB0
-aGVtLgpNb3Jlb3ZlciwgSSBub3RpY2VkIHRoYXQgb24geW91ciB0ZXN0IGJyYW5jaFsxXSwgdGhl
-IERUUyBjb25maWd1cmF0aW9uIGhhcyBhbHNvIGNoYW5nZWQgY29tcGFyZWQgdG8gYmVmb3JlLgpJ
-IHdvdWxkIGdyZWF0bHkgYXBwcmVjaWF0ZSBpdCBpZiB5b3UgY291bGQgc2hhcmUgc29tZSBkZXRh
-aWxzLgoKCgpbMF1odHRwczovL2dpdGh1Yi5jb20vYW5keXNocmsvbGludXgvY29tbWl0L2I5Zjg3
-YTU2MmQ0MzFmYjU5YjY2NGI3YWVkNDE4NjlhOGYxODRkZTMKWzFdaHR0cHM6Ly9naXRsYWIuY29s
-bGFib3JhLmNvbS9oYXJkd2FyZS1lbmFibGVtZW50L3JvY2tjaGlwLTM1ODgvbGludXgvLS9jb21t
-aXQvMGU3ZTkwNDk0NDgyY2Y3N2Q1YmIwNThhNDc1ODNiNjc0N2IxNDBmNAo+Cj5WT1AgPC0+IERQ
-IGNvbnRyb2xsZXIgPC0+IFVTQkRQIFBIWSA8LT4gVVNCLUMgQ29ubmVjdG9yCj4KPkkgd29uZGVy
-IGlmIHRoZSBzaW1wbGUgY2FzZSBub3QgaW52b2x2aW5nIFVTQi1DIHNob3VsZCBhbHNvIGhhdmUK
-PnRoZSBVU0JEUCBQSFkgZGVzY3JpYmVkIGluIHRoZSBncmFwaCBhcyBhIHRyYW5zcGFyZW50IGJy
-aWRnZT8KPk5vdGUsIHRoYXQgdGhlIFVTQkRQIFBIWSBEVCBiaW5kaW5nIGlzIGN1cnJlbnRseSBu
-b3QgcmVhZHkgZm9yCj50aGlzICh0aGlzIGFsc28gYWZmZWN0cyB0aGUgbmV4dCBwYXRjaCwgYnV0
-IHNob3VsZCBiZSBlbm91Z2ggdG8KPmRpc2N1c3MgdGhpcyBvbmNlIDopKS4KPgo+R3JlZXRpbmdz
-LAo+Cj4tLSBTZWJhc3RpYW4KPgo+PiAKPj4gKG5vIGNoYW5nZXMgc2luY2UgdjIpCj4+IAo+PiBD
-aGFuZ2VzIGluIHYyOgo+PiAtIFNvcnQgaW4gYWxwaGFiZXRpY2FsIG9yZGVyCj4+IAo+PiAgLi4u
-L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtY29vbHBpLTRiLmR0cyAgIHwgMzcgKysrKysrKysr
-KysrKysrKysrKwo+PiAgMSBmaWxlIGNoYW5nZWQsIDM3IGluc2VydGlvbnMoKykKPj4gCj4+IGRp
-ZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtY29vbHBpLTRi
-LmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1jb29scGktNGIuZHRz
-Cj4+IGluZGV4IDhiNzE3YzQwMTdhNDYuLjUzOTNjNmNjNDkzYzMgMTAwNjQ0Cj4+IC0tLSBhL2Fy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1jb29scGktNGIuZHRzCj4+ICsrKyBi
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1jb29scGktNGIuZHRzCj4+IEBA
-IC0zOSw2ICszOSwxOCBAQCBjaG9zZW4gewo+PiAgCQlzdGRvdXQtcGF0aCA9ICJzZXJpYWwyOjE1
-MDAwMDBuOCI7Cj4+ICAJfTsKPj4gIAo+PiArCWRwLWNvbiB7Cj4+ICsJCWNvbXBhdGlibGUgPSAi
-ZHAtY29ubmVjdG9yIjsKPj4gKwkJbGFiZWwgPSAiRFAgT1VUIjsKPj4gKwkJdHlwZSA9ICJtaW5p
-IjsKPj4gKwo+PiArCQlwb3J0IHsKPj4gKwkJCWRwX2Nvbl9pbjogZW5kcG9pbnQgewo+PiArCQkJ
-CXJlbW90ZS1lbmRwb2ludCA9IDwmZHAwX291dF9jb24+Owo+PiArCQkJfTsKPj4gKwkJfTsKPj4g
-Kwl9Owo+PiArCj4+ICAJaGRtaS1jb24gewo+PiAgCQljb21wYXRpYmxlID0gImhkbWktY29ubmVj
-dG9yIjsKPj4gIAkJdHlwZSA9ICJkIjsKPj4gQEAgLTIxNSw2ICsyMjcsMjQgQEAgJmNwdV9iMiB7
-Cj4+ICAJY3B1LXN1cHBseSA9IDwmdmRkX2NwdV9iaWcxX3MwPjsKPj4gIH07Cj4+ICAKPj4gKyZk
-cDAgewo+PiArCXN0YXR1cyA9ICJva2F5IjsKPj4gKwlwaW5jdHJsLTAgPSA8JmRwMG0wX3BpbnM+
-Owo+PiArCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+ICt9Owo+PiArCj4+ICsmZHAwX2lu
-IHsKPj4gKwlkcDBfaW5fdnAyOiBlbmRwb2ludCB7Cj4+ICsJCXJlbW90ZS1lbmRwb2ludCA9IDwm
-dnAyX291dF9kcDA+Owo+PiArCX07Cj4+ICt9Owo+PiArCj4+ICsmZHAwX291dCB7Cj4+ICsJZHAw
-X291dF9jb246IGVuZHBvaW50IHsKPj4gKwkJcmVtb3RlLWVuZHBvaW50ID0gPCZkcF9jb25faW4+
-Owo+PiArCX07Cj4+ICt9Owo+PiArCj4+ICAmZ3B1IHsKPj4gIAltYWxpLXN1cHBseSA9IDwmdmRk
-X2dwdV9zMD47Cj4+ICAJc3RhdHVzID0gIm9rYXkiOwo+PiBAQCAtODg5LDMgKzkxOSwxMCBAQCB2
-cDBfb3V0X2hkbWkwOiBlbmRwb2ludEBST0NLQ0hJUF9WT1AyX0VQX0hETUkwIHsKPj4gIAkJcmVt
-b3RlLWVuZHBvaW50ID0gPCZoZG1pMF9pbl92cDA+Owo+PiAgCX07Cj4+ICB9Owo+PiArCj4+ICsm
-dnAyIHsKPj4gKwl2cDJfb3V0X2RwMDogZW5kcG9pbnRAYSB7Cj4+ICsJCXJlZyA9IDxST0NLQ0hJ
-UF9WT1AyX0VQX0RQMD47Cj4+ICsJCXJlbW90ZS1lbmRwb2ludCA9IDwmZHAwX2luX3ZwMj47Cj4+
-ICsJfTsKPj4gK307Cj4+IC0tIAo+PiAyLjQzLjAKPj4gCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi,
+
+> My point is that if you disable cpufreq, the CPU is running at 1.2V, which
+> is even higher. I don't know why it's running at this voltage, maybe as
+> the result of initializing some regulators, but that's what we're getting.
+> So the question about safety of running between 1.13-1.15 resolves to
+> "it's at least safer than running without cpufreq" in the current state.
+>
+> And as I mentioned it's clearly linux and not u-boot that is setting 1.2V,
+> because under u-boot and during kernel selection and image loading, my
+> board is at 0.95V. It's only once the kernel starts to boot that it bumps
+> to 1.2V.
+
+If opp-table is not configured, kernel will initialize the pwm-regulator
+to maximum microvolts. This can be solved by configuring the pwm-regulator
+in U-Boot (waiting for U-Boot to synchronize the DT of kernel 6.16):
+
+```
+&vdd_arm {
+	regulator-init-microvolt = <953000>;
+};
+
+&vdd_logic {
+	regulator-init-microvolt = <900000>;
+};
+```
+
+Thanks,
+Chukun
+
+--
+2.25.1
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
