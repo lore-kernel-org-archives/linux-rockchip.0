@@ -4,50 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77084C87FCB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 07:12:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F3DFC87FC9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 07:22:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tOMQvPTbfWeXdvbefx32UZXN17pk5NOz+p46/gBmS2c=; b=tAbSgixf+egtP/
-	rOAljJH5zIz6VH+SrOWKqY9Z6FYsaYW/SXTFkWWE6q1oI5cCHtQNT3qwkk66W8CiD5Ou9c6vqVjz6
-	eNrbIvgvG6KLt/KVdSKxFTrOKmV+D3UpjnhYTqCS6A+Msz89K29LZDjpjalbErVv50rRR8doCEXjm
-	t51Nt9VBh72fbhcqg3DQy/V+lRySZe+vUPBr8WYrDIOxmlf9qYXjo3P6qCI28P91x122U6nMsDVa0
-	qibMDUSNdJLoKV+3coxqv+pTawg9A9wWc495hw4ztZJvVP7ovk2qfv/382SH71QJPPvftMmmEXWiv
-	e7+FrB9Tgk3DpF3IYYjg==;
+	List-Owner; bh=/CMO3pd4f284dlh1U4Gwk9dGYS6wsUNH5tDeejINaOs=; b=z28YdyjJd6OUBt
+	ztyzBdsmVkidi7oshJTNCmXhQwQGf1uJ/fTGe3bp3wjpw7b1isdydJQEiZA4Dk7uqXtuBqiCN1Tdm
+	lB/Itsp4bpUjla0Ru1pm3AyqwSBJXAM/X4W1/rg/xpPS3v2DMNGp9ilSU610Hrx+zZwF9g7w1935l
+	/q1f4qL3JDuDxeXcGEvWkA7gUsubHbupSvXpBuUgjS49ubKtfD0zgH88xx4oaRy6ixfvRH6GFbz+e
+	v0M8qrb8+jbE2hZzTaGUNrCutj70uEVHEiWsnKWvPe6Am0ApCxWDh0x17I2p/awwINUl92m85FVwY
+	OIyFxhMe2MLhCZQT0zQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh0yy-00000000rEu-3HoU;
-	Wed, 30 Jul 2025 07:12:12 +0000
-Received: from ded1.1wt.eu ([163.172.96.212] helo=1wt.eu)
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh0yv-00000000rET-1RXb;
-	Wed, 30 Jul 2025 07:12:11 +0000
-Received: (from willy@localhost)
-	by pcw.home.local (8.15.2/8.15.2/Submit) id 56U7BjvR026741;
-	Wed, 30 Jul 2025 09:11:45 +0200
-Date: Wed, 30 Jul 2025 09:11:45 +0200
-From: Willy Tarreau <w@1wt.eu>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: alchark@gmail.com, conor+dt@kernel.org, devicetree@vger.kernel.org,
-        heiko@sntech.de, jonas@kwiboo.se, krzk+dt@kernel.org,
-        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-        linux-rockchip@lists.infradead.org, ziyao@disroot.org
-Subject: Re: [PATCH v2 1/1] arm64: dts: rockchip: rk3528: Add CPU frequency
- scaling support
-Message-ID: <20250730071145.GA26734@1wt.eu>
-References: <20250727170947.GA19379@1wt.eu>
- <20250730070026.60109-1-amadeus@jmu.edu.cn>
+	id 1uh199-00000000sGI-0qqQ;
+	Wed, 30 Jul 2025 07:22:43 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uh16e-00000000s4Y-4AAr;
+	Wed, 30 Jul 2025 07:20:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 0D85C60007;
+	Wed, 30 Jul 2025 07:20:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BCCFC4CEE7;
+	Wed, 30 Jul 2025 07:20:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1753860007;
+	bh=ZJ5KakVI3HlglpXpnj7PJjouu2V6gLi5SHJJuOLVQJQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lEthc5gpAfD5sKwhZzLwp2DAXzt68A8NXzPDqHqtF+WDdNrr5UuDlpPiTKVcl+Drt
+	 2NRIy3M9BHDpnr2pk582cvs/3SG7F2X6P+sbu+W32D0yFCpMjMpR4nWX8U0X4A4+AX
+	 qFQoSJ83vOMp4Z0JxU8Xt/+/vvLArIhEymHxvPyKUi6WPBK63qsM3HZRkNTM7iU+i5
+	 vXDZoDTeJOOAgKNwHT+0eLUJM8FQvTUvpvEOBuwJANBw2Yk5Auas9ShQG2vzg2sq+Q
+	 peyUxSycvNfa/E1hS3IRNZRLNVsU+u/LiHa44qbzw3RP56K8I/MmWRk0y9ZmHj8CQC
+	 NKokdBISBo4uw==
+Date: Wed, 30 Jul 2025 09:20:05 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Chaoyi Chen <kernel@airkyi.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, 
+	Andy Yan <andy.yan@rock-chips.com>, Yubing Zhang <yubing.zhang@rock-chips.com>, 
+	Frank Wang <frank.wang@rock-chips.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Amit Sunil Dhamne <amitsd@google.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>, 
+	Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>, 
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Peter Robinson <pbrobinson@gmail.com>, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v3 1/5] dt-bindings: phy: rockchip: rk3399-typec-phy:
+ Support mode-switch
+Message-ID: <20250730-glistening-fractal-macaque-ff1aaa@kuoka>
+References: <20250729090032.97-1-kernel@airkyi.com>
+ <20250729090032.97-2-kernel@airkyi.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250730070026.60109-1-amadeus@jmu.edu.cn>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250730_001209_808550_E69F4781 
-X-CRM114-Status: GOOD (  26.91  )
+In-Reply-To: <20250729090032.97-2-kernel@airkyi.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,69 +83,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi!
-
-On Wed, Jul 30, 2025 at 03:00:26PM +0800, Chukun Pan wrote:
-> Hi,
+On Tue, Jul 29, 2025 at 05:00:28PM +0800, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 > 
-> > It's interesting to note that 816, 1008 and 1200 MHz result in a higher
-> > frequency than configured, but upper ones result in slightly smaller
-> > frequencies (~2%, might just be a measurement error), particularly for
-> > the last one which is 6% lower.
+> The RK3399 SoC integrates two USB/DP combo PHYs, each of which
+> supports software-configurable pin mapping and DisplayPort lane
+> assignment. These capabilities enable the PHY itself to handle both
+> mode switching and orientation switching, based on the Type-C plug
+> orientation and USB PD negotiation results.
 > 
-> Please refer to the description of this series:
-> https://lore.kernel.org/lkml/20250320100002.332720-1-amadeus@jmu.edu.cn/
-
-Yes I had read this one. I'm just getting higher differences on my
-device here.
-
-> During the discussion, it was considered that the minimum voltage should
-> be 875mV to maintain stability, so there is a deviation in the frequency
-> between 816MHz and 1200MHz.
-
-I tend to agree, especially on low voltages, where the gain in stability
-is important while the difference in consumptionis barely noticeable.
-
-> > I noticed a missing entry for 2 GHz in clk-rk3528.c so I've added it,
-> > expecting that it would solve the problem:
-> >
-> > +       RK3036_PLL_RATE(2016000000, 1, 84, 1, 1, 1, 0),
-> >
-> > But it had no effect at all, the frequency remains limited to 1896 MHz.
+> While an external Type-C controller is still required to detect cable
+> attachment and report USB PD events, the actual mode and orientation
+> switching is performed internally by the PHY through software
+> configuration. This allows the PHY to act as a Type-C multiplexer for
+> both data role and DP altmode configuration.
 > 
-> There is a comment in the bsp kernel:
-> https://github.com/rockchip-linux/kernel/blob/develop-5.10/drivers/clk/rockchip/clk-rk3528.c#L101
+> To reflect this hardware design, this patch introduces a new
+> "mode-switch" property for the dp-port node in the device tree bindings.
+> This property indicates that the connected PHY is capable of handling
+> Type-C mode switching itself.
 > 
-> Only 408MHz and 600MHz are generated by normal PLL, the rest of the
-> CPU frequency is controlled by TF-A via SCMI.
-
-OK!
-
-> > Or maybe we could simply raise the voltage a little bit. The table above
-> > shows that at 1.15V we're close to the configured OPP and still below the
-> > stock voltage. This is not critical, but I find it a bit annoying that
-> > enabling cpufreq results in lower performance than without!
+> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> ---
 > 
-> I also mentioned this in the cover letter. The actual frequency of 2016MHz
-> requires 1.13V ~ 1.15V. Not sure if this is safe for the rk3528 SoC.
+> Changes in v3:
+> - Add more descriptions to clarify the role of the PHY in switching.
+> 
+> Changes in v2:
+> - Reuse dp-port/usb3-port in rk3399-typec-phy binding.
+> 
+>  .../devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml  | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml
+> index 91c011f68cd0..ccbe1c9cb0bf 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml
+> @@ -51,6 +51,12 @@ properties:
+>        '#phy-cells':
+>          const: 0
+>  
+> +      mode-switch:
+> +        description: |
 
-My point is that if you disable cpufreq, the CPU is running at 1.2V, which
-is even higher. I don't know why it's running at this voltage, maybe as
-the result of initializing some regulators, but that's what we're getting.
-So the question about safety of running between 1.13-1.15 resolves to
-"it's at least safer than running without cpufreq" in the current state.
+Do not need '|' unless you need to preserve formatting.
 
-And as I mentioned it's clearly linux and not u-boot that is setting 1.2V,
-because under u-boot and during kernel selection and image loading, my
-board is at 0.95V. It's only once the kernel starts to boot that it bumps
-to 1.2V.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-So there's something to fix somewhere, either by lowering the default
-setting or by increasing the voltages in OPP, but as it is right now the
-situation is inconsistent.
+Best regards,
+Krzysztof
 
-Regards,
-Willy
 
 _______________________________________________
 Linux-rockchip mailing list
