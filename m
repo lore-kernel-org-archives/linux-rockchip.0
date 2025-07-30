@@ -4,55 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41792C87FCC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 10:35:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A6E4C87FCB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 12:32:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gailDgJKESkyKG8AIyehlGccx/HVQg5HZGRAeNxXuS8=; b=Uvukia+Tx2ZKJu
-	JfTqR+Bwg9SCmMldy2SBxVxjdt3u1m5Hf3mxcVxO7i1Fdtrzqi3ydwivKBFlm/2GeToDpqMibRg58
-	70H9TyoVDd9CGLdOyssOk6vyaAtCRZRDHkXmesxoMbczRAaCPMBOyKHf5m7QPucRodXu5EmwlXRIO
-	Y38TXZ8HlCzzJR/RJzFFs6QrkKVG8L4zLQQEDvTCnTM5F6Es+osIEr8RjNxXXB2rwsSLJklFKDxPN
-	8Lm5YdVCgSUd98IIUIBk9P0nc6tTO1cwCGXMU+qbxwlfxJcwiDSDRmDc/C28r568aGJquMFfgsayr
-	0Wcu/QmgUAsSmGnbybHg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y/ZwfcCabsxr+HWEJy2q+8Uiy0pwDQX0UqANaIYv25k=; b=hCJdYaIF6brbXHy/fw9lQDD+tb
+	8Abh4jmAcjg1CnjFW8IaPlp5Ak2l8wQqP9rXGDOJU4sD8rG7GIlfovfYXTZvephHp3+eXF+Fkl2K5
+	GkGsWDCYGLCizkb9dDKk1dJfTw7UevK7ijSxNI2m8B8TwXlwAm4SlKz4cdtkS2c2mCZlcuIc5bTFw
+	qLr2E4csXE2Su7nOXbLj06nRScyUMwEd8U7XRz621VpcscBsbzm20w3oxahnJnc1PkQ8jjHpC1L9/
+	rAhI3XkfngG78fXrQFu1eFnRcBWzKQjukTjIXpI6+jfjiDuhIv155MzQDIGfObz4cnxjqkqgbvUWr
+	t7qieWpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh49F-00000001Ev6-2qiv;
-	Wed, 30 Jul 2025 10:35:01 +0000
-Received: from ni.piap.pl ([195.187.100.5])
+	id 1uh5yO-00000001TLo-0asv;
+	Wed, 30 Jul 2025 12:31:56 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh44t-00000001EXe-18X8;
-	Wed, 30 Jul 2025 10:30:33 +0000
-Received: from t19.piap.pl (OSB1819.piap.pl [10.0.9.19])
-	by ni.piap.pl (Postfix) with ESMTPS id 2C134C3EEAC9;
-	Wed, 30 Jul 2025 12:30:24 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 ni.piap.pl 2C134C3EEAC9
-From: =?utf-8?Q?Krzysztof_Ha=C5=82asa?= <khalasa@piap.pl>
-To: Stefan Klug <stefan.klug@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>,  Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>,  Heiko Stuebner <heiko@sntech.de>,
-  Paul Elder <paul.elder@ideasonboard.com>,  Jacopo Mondi
- <jacopo.mondi@ideasonboard.com>,  Ondrej Jirman <megi@xff.cz>,
-  linux-media@vger.kernel.org,  linux-rockchip@lists.infradead.org,
-  linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org
-Subject: Re: FYI: i.MX8MP ISP (RKISP1) MI registers corruption
-In-Reply-To: <175344176070.2811177.10693943493658922992@localhost> (Stefan
-	Klug's message of "Fri, 25 Jul 2025 13:09:20 +0200")
-References: <m3h5zbxkc6.fsf@t19.piap.pl> <m38qknx939.fsf@t19.piap.pl>
-	<175308758352.3134829.9472501038683860006@localhost>
-	<m31pq9y98z.fsf@t19.piap.pl>
-	<175326599663.2811177.16620980968274114885@localhost>
-	<m3h5z2vw12.fsf@t19.piap.pl>
-	<175344176070.2811177.10693943493658922992@localhost>
-Date: Wed, 30 Jul 2025 12:30:23 +0200
-Message-ID: <m3qzxyug1s.fsf@t19.piap.pl>
+	id 1uh5Q0-00000001Oby-27Ns;
+	Wed, 30 Jul 2025 11:56:26 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1753876582;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8y4m2oNhStesOsdExay51x41WEAVR6u+DkhtiZRBVUk=;
+	b=y6DRBdhiu+qSIxoztA1GbGn7XPYsEK7g2k1hOC00eGsYENYlg6RYiRkQXZZ1dN6HRHmjb8
+	r20mMm1Vd8dfXhse/2jZIyNAjyfffkUllQaIIqv6ODYbDg1nljJnCCbbHqn8ay6piFIL1d
+	8IGCVGpUcS3662UB/Flj6b1AeDS1NzraYij7U9RHoU5KXTH+3Mu1nrUbFxjDCAfHCi76EL
+	OdxzcuE+OAX06M3KGSgKOifnZZ+A58w3QdW1bffsX0M/BmnfFxuUFHaQ/o+Brmx9i4mDy+
+	CKXTRVdlG9yLSN+alCp9ioBBvsJI3kbxVmFxjbck1CGqjlKL6jkgfAlzC1irzg==
+Date: Wed, 30 Jul 2025 13:56:19 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Peter Robinson <pbrobinson@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Diederik de Haas <didi.debian@cknow.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add vcc-supply to SPI flash on
+ rk3399-pinebook-pro
+In-Reply-To: <20250730102129.224468-1-pbrobinson@gmail.com>
+References: <20250730102129.224468-1-pbrobinson@gmail.com>
+Message-ID: <2d4974a72a1a5910f2770528bcb8b997@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250730_033031_468368_AAE7A2FF 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20250730_045624_779393_8F41D560 
+X-CRM114-Status: GOOD (  19.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,76 +68,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpzdGlsbCBpbnZlc3RpZ2F0aW5nIHRoZSBwcm9ibGVtLCBidXQgSSBjYW4ndCBzZWUgYSBz
-aW1wbGUgd2F5IHRvIHdvcmsKYXJvdW5kIGl0LgoKSXQgaGFwcGVucyB3aXRoIHRoZSBzZWNvbmQg
-SVNQIG9ubHksIHNvIHRoZSBzaW5nbGUgY2FtZXJhIHNldHVwcyAodXNpbmcKaXNwMCkgYXJlIGlt
-bXVuZS4KClRoZSBJU1AgTUkgKG1lbW9yeSBpbnRlcmZhY2UpIHJlZ2lzdGVyIHJlYWQgb3BlcmF0
-aW9ucyBhcmUgbm90CmEgcHJvYmxlbSwgdGhlIHdvcmthcm91bmQgdXNlcyBMRFAgaW5zdHJ1Y3Rp
-b25zIChmb3IgcmVnaXN0ZXJzIGxvY2F0ZWQKYXQgYWRkcmVzc2VzIG5vdCBvbiAzMi1ieXRlIGJv
-dW5kYXJ5KSBvciByZWFkIG11bHRpcGxlIHRpbWVzIGFuZCByZXR1cm4KdGhlIG1vc3QgZnJlcXVl
-bnQgcmVzdWx0IChmb3J0dW5hdGVseSB0aGUgTUkgcmVhZHMgaGF2ZSBubyBzaWRlCmVmZmVjdHMp
-LgoKVGhlIHdyaXRlcyBhcmUgYSBwcm9ibGVtLCB0aG91Z2guIEVzcGVjaWFsbHkgd3JpdGluZyB0
-bwpSS0lTUDFfQ0lGX01JX0lDUiByZWdpc3RlciAoYWRkcmVzcyAweDMyRTIxNTA0KSBjYW4gKGFu
-ZCBkb2VzKSBjb3JydXB0Cm90aGVyIE1JIHJlZ2lzdGVycywgbGlrZSBSS0lTUDFfQ0lGX01JX0NU
-UkwgKDB4MzJFMjE0MDApOgoKQ2FtZXJhIGFwcHMganVzdCBzdGFydGVkOgozMkUyMTQwMDogICA3
-QTIwMDEgICAgICAgMjAgM0MxODAwMDAgICAxRkE0MDAKMzJFMjE0MTA6ICAgICAgICAwICAgICAg
-ICAwICAgICAgICAwIDNDMjAwMDAwCjMyRTIxNDIwOiAgICBGRDIwMCAgICAgICAgMCAgICAgICAg
-MCAgICAgICAgMAozMkUyMTQ3MDogICAgICAgIDAgICAgMTAwMDEgM0MwQzAwMDAgICAxRkE0MDAK
-MzJFMjE0ODA6ICAgICAgICAwICAgICAgICAwIDNDMTQwMDAwICAgIEZEMjAwCjMyRTIxNEYwOiAg
-ICAgICAgMCAgICAgICAgMCAgICAgICAgMSAgICAgICAzQwozMkUyMTU0MDogICAgICAgIDAgICAg
-ICAgIDAgICAgICAgIDAgIDIwMDAwMDAKMzJFMjE1NTA6ICAgICAgNzgwICAgICAgICAwICAgICAg
-ICAwICAgICAgICAxCjMyRTIxNTYwOiAgICAgICAgMCAgICAgIDc4MCAgICAgIDQzOCAgIDFGQTQw
-MAozMkUyMTU3MDogICAgICAgIDAgMUUxRTAwRUYgMUUyMjAwRTAgICAgICAgIDAKClZpZGVvIHN0
-cmVhbSBoYWx0ZWQ6CjMyRTIxNDAwOiAgMTAwMDAwNyAgICAgICAyMCAzQzI0MDAwMCAgIDFGQTQw
-MAozMkUyMTQxMDogICAgICAgIDAgICAgICAgIDAgICAgICAgIDAgM0MyQzAwMDAKMzJFMjE0MjA6
-ICAgIEZEMjAwICAgICAgICAwICAgICAgICAwICAgICAgICAwCjMyRTIxNDcwOiAgICAgICAgMCAg
-ICAgICAgMCAzQzBDMDAwMCAgIDFGQTQwMAozMkUyMTQ4MDogICAgICAgIDAgICAgICAgIDAgM0Mx
-NDAwMDAgICAgRkQyMDAKMzJFMjE0OTA6ICAgIDdFOTAwICAgICAgICAwICAgICAgICAwICAgICAg
-ICAwCjMyRTIxNEYwOiAgICAgICAgMCAgICAgICAgMCAgICAgICAgMSAgICAgICA3QwozMkUyMTUw
-MDogICAgICAgIDAgICAgICAgIDAgICAgICAgIDAgICAgICAgIDcKMzJFMjE1NDA6ICAgICAgICAw
-ICAgICAgICAwICAgICAgICAwICAyMDAwMDAwCjMyRTIxNTUwOiAgICAgIDc4MCAgICAgICAgMCAg
-ICAgICAgMCAgICAgICAgMQozMkUyMTU2MDogICAgICAgIDAgICAgICA3ODAgICAgICA0MzggICAx
-RkE0MDAKMzJFMjE1NzA6ICAgICAgICAwIDFFMDYwMDAwIDFFMEEwMDAwICAgICAgIDc3CgpOb3Rl
-IHRoYXQgZS5nLiB0aGUgMHgzMkUyMTQwMCByZWdpc3RlciwgTUlfQ1RSTCwgaGFzIGNoYW5nZWQg
-dmFsdWUgZnJvbQp0aGUgdmFsaWQgb25lICgweDdBMjAwMSkgdG8gMHgxMDAwMDA3LCB3aGljaCBw
-cm9iYWJseSBvcmlnaW5hdGVkIGluCk1JX01JUyAoYW5kIHdhcyB0byBiZSB3cml0dGVuIHRvIE1J
-X0lDUikuCgoKSXQgYXBwZWFycyB0aGUgcHJvYmxlbXMgYXJlIG5vdCBjb25zdGFudCwgdGhleSBt
-YW5pZmVzdCB0aGVtc2VsdmVzIGluCm1heWJlIDEwJSBvZiBzeXN0ZW0gYm9vdHMuIE9uY2UgYSBz
-eXN0ZW0gYm9vdHMsIHRoZSBwcm9ibGVtcyBhcmUgZWl0aGVyCnByZXNlbnQgKGFuZCBkb24ndCBn
-byBhd2F5KSBvciBub3QuCgpJdCBhcHBlYXJzIHRoZSBJU1AgdXNlcyAzIGNsb2NrcyAoKzIgdXNl
-ZCBieSBDU0kgcmVjZWl2ZXIpIC0gZHVtcCBvZgp0aGVpciBDQ00gcmVnaXN0ZXJzIChDbG9jayBD
-b250cm9sIE1vZHVsZSwgSU1YOE1QUk0gcGFnZSAyMjcgYW5kIHNvIG9uKToKTUVESUFfSVNQICAg
-ICAgICAgICBFTiBtdXggNyAgICAgICBwb3N0IDAgU1lTVEVNX1BMTDJfRElWMiA9IDUwMCBNSHoK
-TUVESUFfQVhJICAgICAgICAgICBFTiBtdXggMSBwcmUgMSBwb3N0IDAgU1lTVEVNX1BMTDJfQ0xL
-IC8gMiA9IDUwMCBNSHoKTUVESUFfQVBCICAgICAgICAgICBFTiBtdXggMiBwcmUgMyBwb3N0IDAg
-U1lTVEVNX1BMTDFfQ0xLIC8gNCA9IDIwMCBNSHoKTUVESUFfTUlQSV9QSFkxX1JFRiBFTiBtdXgg
-MCBwcmUgMCBwb3N0IDAgMjRNX1JFRl9DTEsgPSAyNCBNSHoKTUVESUFfQ0FNMl9QSVggICAgICBF
-TiBtdXggMiBwcmUgMCBwb3N0IDAgU1lTVEVNX1BMTDJfRElWNCA9IDI1MCBNSHoKCk5vdywgaXQg
-YXBwZWFycyB0aGF0IGluIGNlcnRhaW4gY2FzZXMgY2hhbmdpbmcgdGhlIE1FRElBX0FQQgooTUVE
-SUFfQVBCX0NMT0NLX1JPT1QpICJmaXhlcyIgdGhlIHByb2JsZW0gKGZvciBjdXJyZW50IGJvb3Qg
-b25seSksIG9yCm1ha2UgaXQgbGVzcyAob3IgbW9yZSkgdmlzaWJsZS4gSSdtIGNoYW5naW5nIHRo
-ZSBQT1NUIGRpdmlkZXIgaW4KQ0NNX1BPU1RfUk9PVDIxX1NFVCByZWdpc3RlciBkaXJlY3RseSAo
-dGhlIE1FRElBX0FQQiBmcmVxdWVuY3kgaXMgdGhlbgoxMDAgTUh6KToKCjB4MzAzODhBODAgTUVE
-SUFfQVBCIEVOIG11eCAyIHByZSAzIHBvc3QgMCBTWVNURU1fUExMMV9DTEsgLyA0ID0gMjAwIE1I
-egojIGRldm1lbSB3cml0ZTMyIDB4MzAzODhBQTQgMQoweDMwMzg4QTgwIE1FRElBX0FQQiBFTiBt
-dXggMiBwcmUgMyBwb3N0IDEgU1lTVEVNX1BMTDFfQ0xLIC8gOCA9IDEwMCBNSHoKCkV4YW1wbGVz
-IC0gYmFkIHJlYWQgY291bnRzIGZyb20gcmVnaXN0ZXIgMHgzMkUyMTQwMCAobWlfY3RybCkKcGVy
-IDEwIG1pbGxpb25zIG9mIHJlYWQgb3BlcmF0aW9uczoKUE9TVD0wIChkZWZhdWx0KSAgd2l0aCBQ
-T1NUPTEKOTQ1ICAgICAgICAgICAgICAgMQoxNDQ4ICAgICAgICAgICAgICAyMzYxCjEwODggICAg
-ICAgICAgICAgIDI0MTkKMTg0MiAgICAgICAgICAgICAgMjQ1MQoxMzMzICAgICAgICAgICAgICAw
-CjY3ICAgICAgICAgICAgICAgIDUKMjAzMyAgICAgICAgICAgICAgMAoxICAgICAgICAgICAgICAg
-ICA4CjEzICAgICAgICAgICAgICAgIDE2CjIgICAgICAgICAgICAgICAgIDQKNyAgICAgICAgICAg
-ICAgICAgMAoxICAgICAgICAgICAgICAgICAwCjUzOSAgICAgICAgICAgICAgIDAKMjYwNSAgICAg
-ICAgICAgICAgMAoxICAgICAgICAgICAgICAgICAwCjE3MjMgICAgICAgICAgICAgIDEKCkknbSBz
-dGFydGluZyB0byBydW4gb3V0IG9mIGlkZWFzLgotLSAKS3J6eXN6dG9mICJDaHJpcyIgSGHFgmFz
-YQoKU2llxIcgQmFkYXdjemEgxYF1a2FzaWV3aWN6ClByemVteXPFgm93eSBJbnN0eXR1dCBBdXRv
-bWF0eWtpIGkgUG9taWFyw7N3IFBJQVAKQWwuIEplcm96b2xpbXNraWUgMjAyLCAwMi00ODYgV2Fy
-c3phd2EKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+Hello Peter,
+
+On 2025-07-30 12:21, Peter Robinson wrote:
+> As described in the pinebookpro_v2.1_mainboard_schematic.pdf page 10,
+> he SPI Flash's VCC connector is connected to VCC_3V0 power source.
+> 
+> This fixes the following warning:
+> 
+>   spi-nor spi1.0: supply vcc not found, using dummy regulator
+> 
+> Fixes: 5a65505a69884 ("arm64: dts: rockchip: Add initial support for
+> Pinebook Pro")
+> Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> index 05c48cb09df6f..ee0e6c1947acb 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> @@ -978,6 +978,7 @@ spiflash: flash@0 {
+>  		reg = <0>;
+>  		m25p,fast-read;
+>  		spi-max-frequency = <10000000>;
+> +		vcc-supply = <&vcc_3v0>;
+>  	};
+>  };
+
+Thanks for the patch!  This addition to the Pinebook Pro device dts
+file is looking good to me.  I just checked the schematics of both
+Pinebook Pro production versions, i.e. v2.1 and v2.1a, to verify
+the addition.
+
+I've got a couple of nitpicks, though.  First, using "Pinebook Pro"
+instead of "rk3399-pinebook-pro" in the patch summary would be a bit
+more readable.  Second, it would be better to mention the existence
+of the second production version, i.e. v2.1, in the patch description,
+to clarify that the DT addition applies to both versions, with both
+schematics mentioned as references. [1][2]
+
+Anyway, please feel free to include:
+
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+
+[1] 
+https://files.pine64.org/doc/PinebookPro/pinebookpro_v2.1_mainboard_schematic.pdf
+[2] 
+https://files.pine64.org/doc/PinebookPro/pinebookpro_schematic_v21a_20220419.pdf
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
