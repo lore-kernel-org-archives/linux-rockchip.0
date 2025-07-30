@@ -4,133 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB72FC87FCB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 19:14:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4510DC87FCC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 19:53:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZloyBWjQSa9scy97BOht+k+m1DCvP6saMjO/Pa+BVVo=; b=dUjmhU/C9ZbfJx
-	Qytob/8BsqnK6e7j9NKZYaa2mG4NorLL2ri/3iwgQvXBFcuP5Hckd9EaqACyMZBqPtPwPyQka3Xta
-	ZpiEh+Gy4lZbGMyg+fBwKMJsatq5hc7+IdUDaQEyKSZPCiBDY1mzzUMNhKa4MVWAkSbqpM1Jvq5Ml
-	rUeLowiQv9K1J6oyfT0o1Yoon1hExBD85zrW1vaDw2m+8QUfXuMbYDNe4irvYOGv/lXkdodt+U5H9
-	e5dMv0+LS9NJMRMPMis/y3QvURwHSrkxqSHuE4fhmKcbEBRgeWcpqfRnMRu7jexvbbU6a4BEp7rGH
-	rJmz21DaCPDUfLoeS45Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FgdN8FN2Afw/1XB/R7Pg/OPzPi41q51nx+pKgoCWfWk=; b=Wm/Cm/FmIF5y/DlhSuzGo5l8FJ
+	IfwIxw/vILhWcDLwFCnPr49VgObvIGP8LUGScaS5UkpvhnvKgFtmNtJll05Kce1TVahVjNPo5cnnW
+	dnbCdSK7bkvgxoBnoK3U8piGt42nYE8YOwjB5e/dHXSqX3nUuLOmnjrK2V0IA8JEmclIobZAcW58B
+	Y3gg7+Z4srhNwFXxXj71LmuidAXvbdnbAV7W/oeti7O47vV7ieJybzuKDx/61Wj7Xw6PBAoqifPio
+	G9A2gbUQUTJ0QNXPT6zjgayyWNyWQzBN2oLKAu06WgtvZWzPBPO+2/QEpJ/67XjnHNozVNsNwljNh
+	Vkk9NYAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhCFR-00000002GT7-3pxd;
-	Wed, 30 Jul 2025 19:13:57 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1uhCrL-00000002Jb1-3qSX;
+	Wed, 30 Jul 2025 19:53:07 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhCFO-00000002GRb-2zNX
-	for linux-rockchip@lists.infradead.org;
-	Wed, 30 Jul 2025 19:13:56 +0000
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 56UCb9Lr017607
-	for <linux-rockchip@lists.infradead.org>; Wed, 30 Jul 2025 19:13:53 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=aMpNvFPvt2cMAKNRFOUnF1jA
-	yCuM7WFPijqR+Ei2D/0=; b=F+tBuQT8LTVPb4S5M+db3HHjBSYUucF1a7lRQtWt
-	MIR9SkRhya+99V5V8/lCkZ69XUEV/WfkivHNugmXANg0r1P28+MM2JyoH76OU4yp
-	TbYNkbUDeC8lxyKLRmncSo/Tv1OzyRPECGa70SVC/QkPzqjCCixFMMjhKsCehjac
-	v6FVx4Zb6O92UC3KAD68jRCtmr0WCwmlFwoCXAxa4yeU+J5q+N+SCJ2WJzwgkUTJ
-	5hQZ4/5/16sA898jwCJ0JuaW4Xj1h+vRzRlEpLuCQbQINUwExDgOnUdfHc5Bt08t
-	NCt1x7voA+9p6OoZX9Znl7ZxSX4iMQYdS7hIjKYGKz1RDg==
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com [209.85.219.71])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 484qda4ymh-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 30 Jul 2025 19:13:53 +0000 (GMT)
-Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-7073b4fb53eso2025086d6.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 30 Jul 2025 12:13:53 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1753902832; x=1754507632;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aMpNvFPvt2cMAKNRFOUnF1jAyCuM7WFPijqR+Ei2D/0=;
-        b=izC8I3iyfDabd4wQZKPa6OLLk6Uk3XO4fj9FAUz+O2UgNhPr2IzHyn2ZuZvRXV7ZRi
-         KNhAbibRI2VmSbSG+CHkT/D8zL/IBL3ZSUBr1ApQJ09pwEjyE8sOCjV6jTEVssC52x34
-         jEJLMz+aQ1S7Iw0/1LkJUf5pMz9uASFxfonEuYtXCVieTI1dVDEM95H6ch4WEoVmlMsP
-         FoiqDPc0wqLfPHQdcDaVUQ84cBIGq2W8uUhcABh7/owkWS9CDw7OUujdUVl+P+aYtNvz
-         J2OxuPO7Tf0ADIRtS+dxzKhre7pYNNm493Fef1pjTfCzzaaZIKNEa2IeAddrV8kpbKvv
-         GyWQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWcZf3q0Ldw0fm8qTckS1I0J8W68dwqf/hDmj+B8JA67fR2j+Nn3f4W5r/CWyzUJ02VUtXbM4ZWH/9QM8vVOg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzywiMEM/zXxKYe7DUsNIpWeqjbzT1KrjEyNh/t3kGsR0x7IdCH
-	oMdyGif07aCjIYowGbnzN5pxEidXjdhWSVzQ2abz1LkWKI6VWYDO1OIgSvjxsulihwbYPrWfHn4
-	UW/kt2EVscw3BTGTf57bwCOMPUM/UwhlHDO4M125RxUtqzmdsxreH4QnMPb5KefHyGFJj/jFFjk
-	g=
-X-Gm-Gg: ASbGnctQ3E+n/w1Y97NS4ndmZICNkCMoSblzKQ43MwQ/gDaU8pABiX20r4gRIWNmU8E
-	jwWTTDR5WUcdZM8FYcQgSOJQsGzwvh2pTF/XCWdkIy6ibTFQpxYwmOxOJRgecZURrnVH4vTAG5G
-	JCOfsl78Yt2rj38gsy41ab85Z8IyjCJDXudJAh1dVav2qxfGrFw7WaqXmciboFfymJa3JOMy9t7
-	yYVdnrkC43wFs/9yWzDeDA/aRwRwTxUi2CXRQubMmjlkgnRv7i0ov0CoEqm5e3aQF9Eq2e0OJ1D
-	chzkBTDgqOyHU6pwA+owWOXz6qCoFSMh4kEYOS+88wFdQJwXUdYu+HSwSKCRgF1PK/ceJpra7Zr
-	/5MrJeYQy+a67xEfhfjPyTkQMm0OIlslDxbwn7gbPHQu+yojWJrNF
-X-Received: by 2002:a05:6214:5010:b0:707:3891:a072 with SMTP id 6a1803df08f44-707669f8c80mr67431856d6.0.1753902831541;
-        Wed, 30 Jul 2025 12:13:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGHgmYSqHWL1JQSbQgLX/lTKYei8dv1aftQo53r3fvUDU06KrOX+cc9BvRo4AKOH1ZPMuJ35Q==
-X-Received: by 2002:a05:6214:5010:b0:707:3891:a072 with SMTP id 6a1803df08f44-707669f8c80mr67430436d6.0.1753902830418;
-        Wed, 30 Jul 2025 12:13:50 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-331f427c501sm21257541fa.77.2025.07.30.12.13.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Jul 2025 12:13:49 -0700 (PDT)
-Date: Wed, 30 Jul 2025 22:13:47 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-        Kishon Vijay Abraham I <kishon@kernel.org>,
-        Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
-        Andy Yan <andy.yan@rock-chips.com>,
-        Yubing Zhang <yubing.zhang@rock-chips.com>,
-        Frank Wang <frank.wang@rock-chips.com>,
-        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Amit Sunil Dhamne <amitsd@google.com>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-        Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
-        Diederik de Haas <didi.debian@cknow.org>,
-        Peter Robinson <pbrobinson@gmail.com>, devicetree@vger.kernel.org,
-        linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v3 0/5] Add Type-C DP support for RK3399 EVB IND board
-Message-ID: <3kefqzjewmsyzfvyi33kvlgjd6jphjg3fsnixb3of7yb3xkgs2@hgi6xfkgd653>
-References: <20250729090032.97-1-kernel@airkyi.com>
+	id 1uhCoq-00000002JGP-2Dhk;
+	Wed, 30 Jul 2025 19:50:34 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250729090032.97-1-kernel@airkyi.com>
-X-Proofpoint-ORIG-GUID: M7Cdl8jfzuId3BUBRtaqz9LD4n7Tdr03
-X-Authority-Analysis: v=2.4 cv=Pfv/hjhd c=1 sm=1 tr=0 ts=688a6ef1 cx=c_pps
- a=UgVkIMxJMSkC9lv97toC5g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=Wb1JkmetP80A:10 a=s8YR1HE3AAAA:8 a=14ipHPXA7Wsnq1XJWM0A:9 a=CjuIK1q_8ugA:10
- a=1HOtulTD9v-eNWfpl4qZ:22 a=jGH_LyMDp9YhSvY-UuyI:22
-X-Proofpoint-GUID: M7Cdl8jfzuId3BUBRtaqz9LD4n7Tdr03
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzMwMDE0MCBTYWx0ZWRfX6RSX5uLwI6hW
- SThQH3dGvUPLZVj4SlNYoGUn2m0qq7X+z0Z6HBbi7whP7lmoUJbCfEF9uakEluZ2iED3oQSjMvV
- lTGjc35QVqZHpiD+yOEedsawS9FIKDAJ8K5txVmgNM/9JYKuCRW/C84CR17IwFasTWzx2LGovjD
- ta4Q4jQ2v15tUd5b8UxqokY0LsHGnFyXv7NA14ldX0+SCT9iS2afTfti8oeijyKWoUTi76sImPH
- 52UdtrYXsRtd5l8AC/Wbk0Ejf45fSwS2ybnpFxJFojO5AwzHeWXAfEQePN5LhbyJcQQY0vZfKZr
- zHLWJNj7KekhFYg+DbB6MVUNbA6T6pm9S2Eyd/T//FRrT1MhaZwPDBBj8q2FwA1Q72Yr+U1IH6i
- SZ8MnvIqG/Z/9xEExvup5Wc1sQUGMr+L5X3FEmotOWw/Fdl7ifgVnfLvrtBAsjmBuP1KeIX/
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-07-30_05,2025-07-30_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=909 clxscore=1015 adultscore=0 priorityscore=1501 mlxscore=0
- spamscore=0 suspectscore=0 phishscore=0 lowpriorityscore=0 malwarescore=0
- impostorscore=0 bulkscore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
- definitions=main-2507300140
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1753905027;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/q1/ijPw1e2Q92rioAtt4ZINjgooInrMuTW/Z/Sz9xE=;
+	b=jQg5miRR+84MPUTRh150aKHGLt4ikOIhQHFH9fpBqN92Q6FOwIUw3Uo0o19lX/IChB8Z6I
+	bmj40z2X4yv5x2/EPMGEtL7ZNuMzB1W3lxHps+kfmN6D/ivH4AIUanLXcFqRNuQj8dyDHw
+	AXK6VtpREotTOM8pqEMRgI0HHwDgvmdUHHOuMoH9WfFfs3jBdnzYnMUDqvix3dBASvJ4lo
+	QL+OtiBvzy4slFX8bG4+Hk/TKaAG5QnNZaoAJJJQvkZkEQ4UrV7Ojb77GCdxKzFT9Hb8LG
+	twq1w8QfXiGt72yotjLeokmNVrDGR7xPczBTKy5w9y4+FQ844zVBCyNXSNWxlA==
+Date: Wed, 30 Jul 2025 21:50:25 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Diederik de Haas <didi.debian@cknow.org>, Lee Jones <lee@kernel.org>,
+ Pavel Machek <pavel@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ linux-leds@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: BUG: Circular locking dependency on netdev led trigger on NanoPi
+ R5S
+In-Reply-To: <6817efe1-f2c2-4686-bdf1-fca11f066e3a@arm.com>
+References: <DBLBPIBKFCJV.36AVW8JY88L7H@cknow.org>
+ <6817efe1-f2c2-4686-bdf1-fca11f066e3a@arm.com>
+Message-ID: <475ee9ae8cdca5ce86b708fe0ade7c9d@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250730_121354_896880_19A05963 
-X-CRM114-Status: GOOD (  24.26  )
+X-CRM114-CacheID: sfid-20250730_125033_017921_15C136E9 
+X-CRM114-Status: GOOD (  17.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,68 +72,218 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 29, 2025 at 05:00:27PM +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> This series focuses on adding Type-C DP support for USBDP PHY and DP
-> driver. The USBDP PHY and DP will perceive the changes in cable status
-> based on the USB PD and Type-C state machines provided by TCPM. Before
-> this, the USBDP PHY and DP controller of RK3399 sensed cable state
-> changes through extcon, and devices such as the RK3399 Gru-Chromebook
-> rely on them. This series should not break them.
-> 
+Hello Robin and Diederik,
 
-[....]
+On 2025-07-25 20:12, Robin Murphy wrote:
+> On 2025-07-25 6:48 pm, Diederik de Haas wrote:
+>> I have a FriendlyELEC NanoPi R5S (with rk3568 SoC) and in commit
+>> 1631cbdb8089 ("arm64: dts: rockchip: Improve LED config for NanoPi 
+>> R5S")
+>> 
+>> I tried to improve its LED configuration and that included
+>> ``linux,default-trigger = "netdev"``
+>> 
+>> Problem: sometimes I got a 'hung task' error which resulted in the WAN
+>> port not to come up (that's the only one I use) and logging in via
+>> serial also didn't work, so pulling the plug was the only remedy.
+>> 
+>> Robin Murphy quickly identified that it likely had to do with led
+>> triggers and removing those netdev triggers made the problem go 
+>> away[1].
+>> To find out what actually caused it, I built a kernel with 
+>> PROOF_LOCKING
+>> and PRINTK_CALLER enabled, which after adding a patch which fixed an
+>> OOPS [2], showed the underlaying problem:
+> 
+> For the record, I think the actual deadlock condition Diederik's
+> system hits in practice is a shorter cycle, wherein immediately after
+> acquiring pernet_ops_rwsem, thread #0 then tries to take rtnl_mutex,
+> which forms a straight inversion against thread #2 (which holds
+> rtnl_mutex from devinet_ioctl()).
 
-> ====
-> 2. DP HPD event notify
-> 
-> The RK3399 has two USB/DP combo PHY and one CDN-DP controller. And
-> the CDN-DP can be switched to output to one of the PHYs.
-> 
-> USB/DP PHY0 ---+
->                | <----> CDN-DP controller
-> USB/DP PHY1 ---+
+Thanks for the bug report and for the additional insights!
 
-Could you please clarify this, can you switch DP stream between two
-USB-C outputs? What happens if user plugs in DP dongles in both USB-C
-ports?
+I've spent some time digging through the LED subsystem, which I'm
+already somewhat familiar with, and I think I've narrowed down the
+root cause of this deadlock.
 
-> 
-> BTW, one of the important things to do is to implement extcon-like
-> notifications. I found include/drm/bridge/aux-bridge.h , but if the
-> aux-bridge is used, the bridge chain would look like this:
-> 
-> PHY0 aux-bridge ---+
->                    | ----> CDN-DP bridge
-> PHY1 aux-bridge ---+
-> 
-> Oh, CDN-DP bridge has two previous aux-bridge!
-> 
-> Now, I try to use drm_connector_oob_hotplug_event() to notify HPD
-> state between PHY and CDN-DP controller.
+I'll send a preliminary patch soon, after I make sure that the root
+cause is identified correctly, and I hope Diederik will be willing
+to test the patch.  If so, and if the patch checks out to be the
+cure, I'll prepare and submit a proper patch, of course.
 
-Does it actually work? The OOB HPD event will be repoted for the usb-c
-connector's fwnode, but the DP controller isn't connected to that node
-anyhow. If I'm not mistaken, the HPD signal will not reach DP driver in
-this case.
-
-> 
-> Patch1 add new Type-C mode switch for RK3399 USBDP phy binding.
-> Patch2 add typec_mux and typec_switch for RK3399 USBDP PHY.
-> Patch3 drops CDN-DP's extcon dependency when Type-C is present.
-> Patch4 add missing dp_out port for RK3399 CDN-DP.
-> Patch5 add Type-C DP support for RK3399 EVB IND board.
-> 
-
--- 
-With best wishes
-Dmitry
+>>     ======================================================
+>>     WARNING: possible circular locking dependency detected
+>>     6.16-rc7+unreleased-arm64-cknow #1 Not tainted
+>>     ------------------------------------------------------
+>>     modprobe/936 is trying to acquire lock:
+>>     ffffc943e0edc3b0 (pernet_ops_rwsem){++++}-{4:4}, at: 
+>> register_netdevice_notifier+0x38/0x148
+>> 
+>>     but task is already holding lock:
+>>     ffff0001f2762248 (&led_cdev->trigger_lock){+.+.}-{4:4}, at: 
+>> led_trigger_register+0x14c/0x1e0
+>> 
+>>     which lock already depends on the new lock.
+>> 
+>>     the existing dependency chain (in reverse order) is:
+>> 
+>>     -> #3 (&led_cdev->trigger_lock){+.+.}-{4:4}:
+>>            lock_acquire+0x1cc/0x348
+>>            down_write+0x40/0xd8
+>>            led_trigger_set_default+0x5c/0x170
+>>            led_classdev_register_ext+0x340/0x488
+>>            __sdhci_add_host+0x190/0x368 [sdhci]
+>>            dwcmshc_probe+0x2b8/0x6b0 [sdhci_of_dwcmshc]
+>>            platform_probe+0x70/0xe8
+>>            really_probe+0xc8/0x3a0
+>>            __driver_probe_device+0x84/0x160
+>>            driver_probe_device+0x44/0x128
+>>            __device_attach_driver+0xc4/0x170
+>>            bus_for_each_drv+0x90/0xf8
+>>            __device_attach_async_helper+0xc0/0x120
+>>            async_run_entry_fn+0x40/0x180
+>>            process_one_work+0x23c/0x640
+>>            worker_thread+0x1b4/0x360
+>>            kthread+0x150/0x250
+>>            ret_from_fork+0x10/0x20
+>> 
+>>     -> #2 (triggers_list_lock){++++}-{4:4}:
+>>            lock_acquire+0x1cc/0x348
+>>            down_write+0x40/0xd8
+>>            led_trigger_register+0x58/0x1e0
+>>            phy_led_triggers_register+0xf4/0x258 [libphy]
+>>            phy_attach_direct+0x328/0x3a8 [libphy]
+>>            phylink_fwnode_phy_connect+0xb0/0x138 [phylink]
+>>            __stmmac_open+0xec/0x520 [stmmac]
+>>            stmmac_open+0x4c/0xe8 [stmmac]
+>>            __dev_open+0x13c/0x310
+>>            __dev_change_flags+0x1d4/0x260
+>>            netif_change_flags+0x2c/0x80
+>>            dev_change_flags+0x90/0xd0
+>>            devinet_ioctl+0x55c/0x730
+>>            inet_ioctl+0x1e4/0x200
+>>            sock_do_ioctl+0x6c/0x140
+>>            sock_ioctl+0x328/0x3c0
+>>            __arm64_sys_ioctl+0xb4/0x118
+>>            invoke_syscall+0x6c/0x100
+>>            el0_svc_common.constprop.0+0x48/0xf0
+>>            do_el0_svc+0x24/0x38
+>>            el0_svc+0x54/0x1e0
+>>            el0t_64_sync_handler+0x10c/0x140
+>>            el0t_64_sync+0x198/0x1a0
+>> 
+>>     -> #1 (rtnl_mutex){+.+.}-{4:4}:
+>>            lock_acquire+0x1cc/0x348
+>>            __mutex_lock+0xac/0x590
+>>            mutex_lock_nested+0x2c/0x40
+>>            rtnl_lock+0x24/0x38
+>>            register_netdevice_notifier+0x40/0x148
+>>            rtnetlink_init+0x40/0x68
+>>            netlink_proto_init+0x120/0x158
+>>            do_one_initcall+0x88/0x3b8
+>>            kernel_init_freeable+0x2d0/0x340
+>>            kernel_init+0x28/0x160
+>>            ret_from_fork+0x10/0x20
+>> 
+>>     -> #0 (pernet_ops_rwsem){++++}-{4:4}:
+>>            check_prev_add+0x114/0xcb8
+>>            __lock_acquire+0x12e8/0x15f0
+>>            lock_acquire+0x1cc/0x348
+>>            down_write+0x40/0xd8
+>>            register_netdevice_notifier+0x38/0x148
+>>            netdev_trig_activate+0x18c/0x1e8 [ledtrig_netdev]
+>>            led_trigger_set+0x1d4/0x328
+>>            led_trigger_register+0x194/0x1e0
+>>            netdev_led_trigger_init+0x20/0xff8 [ledtrig_netdev]
+>>            do_one_initcall+0x88/0x3b8
+>>            do_init_module+0x5c/0x270
+>>            load_module+0x1ed8/0x2608
+>>            init_module_from_file+0x94/0x100
+>>            idempotent_init_module+0x1e8/0x2f0
+>>            __arm64_sys_finit_module+0x70/0xe8
+>>            invoke_syscall+0x6c/0x100
+>>            el0_svc_common.constprop.0+0x48/0xf0
+>>            do_el0_svc+0x24/0x38
+>>            el0_svc+0x54/0x1e0
+>>            el0t_64_sync_handler+0x10c/0x140
+>>            el0t_64_sync+0x198/0x1a0
+>> 
+>>     other info that might help us debug this:
+>> 
+>>     Chain exists of:
+>>       pernet_ops_rwsem --> triggers_list_lock --> 
+>> &led_cdev->trigger_lock
+>> 
+>>      Possible unsafe locking scenario:
+>> 
+>>            CPU0                    CPU1
+>>            ----                    ----
+>>       lock(&led_cdev->trigger_lock);
+>>                                    lock(triggers_list_lock);
+>>                                    lock(&led_cdev->trigger_lock);
+>>       lock(pernet_ops_rwsem);
+>> 
+>>      *** DEADLOCK ***
+>> 
+>>     2 locks held by modprobe/936:
+>>      #0: ffffc943e0d2baa8 (leds_list_lock){++++}-{4:4}, at: 
+>> led_trigger_register+0x10c/0x1e0
+>>      #1: ffff0001f2762248 (&led_cdev->trigger_lock){+.+.}-{4:4}, at: 
+>> led_trigger_register+0x14c/0x1e0
+>> 
+>>     stack backtrace:
+>>     CPU: 0 UID: 0 PID: 936 Comm: modprobe Not tainted 
+>> 6.16-rc7+unreleased-arm64-cknow #1 PREEMPTLAZY  Debian 6.16~rc7-2~exp1
+>>     Hardware name: FriendlyElec NanoPi R5S (DT)
+>>     Call trace:
+>>      show_stack+0x34/0xa0 (C)
+>>      dump_stack_lvl+0x70/0x98
+>>      dump_stack+0x18/0x24
+>>      print_circular_bug+0x230/0x280
+>>      check_noncircular+0x174/0x188
+>>      check_prev_add+0x114/0xcb8
+>>      __lock_acquire+0x12e8/0x15f0
+>>      lock_acquire+0x1cc/0x348
+>>      down_write+0x40/0xd8
+>>      register_netdevice_notifier+0x38/0x148
+>>      netdev_trig_activate+0x18c/0x1e8 [ledtrig_netdev]
+>>      led_trigger_set+0x1d4/0x328
+>>      led_trigger_register+0x194/0x1e0
+>>      netdev_led_trigger_init+0x20/0xff8 [ledtrig_netdev]
+>>      do_one_initcall+0x88/0x3b8
+>>      do_init_module+0x5c/0x270
+>>      load_module+0x1ed8/0x2608
+>>      init_module_from_file+0x94/0x100
+>>      idempotent_init_module+0x1e8/0x2f0
+>>      __arm64_sys_finit_module+0x70/0xe8
+>>      invoke_syscall+0x6c/0x100
+>>      el0_svc_common.constprop.0+0x48/0xf0
+>>      do_el0_svc+0x24/0x38
+>>      el0_svc+0x54/0x1e0
+>>      el0t_64_sync_handler+0x10c/0x140
+>>      el0t_64_sync+0x198/0x1a0
+>>     leds-gpio gpio-leds: bus: 'platform': really_probe: bound device 
+>> to driver leds-gpio
+>> 
+>> Full serial log can be found at [3] which is quite verbose and the 
+>> boot
+>> took way longer then normal as the following was added to cmdline:
+>> ``dyndbg="file dd.c func really_probe +p" maxcpus=1``
+>> 
+>> Free free to ask for additional info and/or to run tests.
+>> 
+>> [1] 
+>> https://git.kernel.org/pub/scm/linux/kernel/git/soc/soc.git/commit/?h=arm/fixes&id=912b1f2a796ec73530a709b11821cb0c249fb23e
+>> [2] 
+>> https://lore.kernel.org/linux-rockchip/f81b88df-9959-4968-a60a-b7efd3d5ea24@arm.com/
+>> [3] 
+>> https://paste.sr.ht/~diederik/142e92bfb29bbb58bca18a74cdffc5e0ba79081c
 
 _______________________________________________
 Linux-rockchip mailing list
