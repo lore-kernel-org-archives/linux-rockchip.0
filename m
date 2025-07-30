@@ -4,60 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B526C83F26
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 13:20:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2879EC83F26
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 13:34:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Azz7iuupLKmL3H5IUtRMqrWmFcW1fm4TsK1tINuWpjo=; b=Y149i3QjIkvxpX
-	uhLlUU6IQJvs6hhlp3oyWFxD2QLNkDpNAqO6uAphMV8Z6NgDL/pl4Lfv65FxBGiJpZn/d5ZtZeJWw
-	gPPO27rnrqExuoLQ0vme0uWX4PEmLGXyFqC155fK3V7fRFtOPDx2ihlOIrwZ4jI/sciSemZNHsjYY
-	YHqRMGhC4EAxtFaYe5xjfquUXbILTmaJ60TPYnM51ueV4dNu9SkLy478+pm5l3+G2wl+XnkDlEvE9
-	yk/zkU4nKooLHJ3hWXlo9KkSx+Kj5YXHUDkCifoZTKVyc2eNFdtgoIyggXH4QEUNB13Pl3h9USbp7
-	3zhKfwHC4fS8+fqWsv4Q==;
+	List-Owner; bh=Lhct8bjH/61cyPR2ygyeoEBrWdKor4ceoSl/c8oCIyA=; b=J2beMN2AvxgXGT
+	toCt/CLA4cgI8k3Xcj6kKSVI9QSr9X+RjY1vorZnYsaoMaEriaWIm/yGnsOGl+PeQPn2HmxHWjF1d
+	b9TBblmzacDogSxxAkQAAEQBzHJBjxScZn+seX7ao0gXQiPJBr2cfGCJnYj0uTaug9axDcFHnFUuj
+	M+e38Fr/e2LZvQCaBu1p8Kcykj51WkJsX9WoBujhIOfYiM6ht+fEc+BBtqWl9E6TosNHjmLafYVFp
+	cHA9pr+Fj75S/jBsoP827KVakh7CIx6x7JcWq4FnsDzGrV4Oqss2wzpZUglbmC1mG2BUQrGycTmWq
+	8NsKXUZx/sRDIlTB3E4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh6jZ-00000001ae8-1jIr;
-	Wed, 30 Jul 2025 13:20:41 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh6jW-00000001ad4-3NHw;
-	Wed, 30 Jul 2025 13:20:40 +0000
-Received: from localhost.localdomain (unknown [119.122.213.139])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1dc0b97fb;
-	Wed, 30 Jul 2025 21:20:29 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: w@1wt.eu
-Cc: alchark@gmail.com,
-	amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	jonas@kwiboo.se,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	ziyao@disroot.org
-Subject: Re: [PATCH v2 1/1] arm64: dts: rockchip: rk3528: Add CPU frequency scaling support
-Date: Wed, 30 Jul 2025 21:20:26 +0800
-Message-Id: <20250730132026.214754-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250730071145.GA26734@1wt.eu>
+	id 1uh6wU-00000001cHd-3D7m;
+	Wed, 30 Jul 2025 13:34:02 +0000
+Received: from ded1.1wt.eu ([163.172.96.212] helo=1wt.eu)
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uh6wR-00000001cH1-3sD7;
+	Wed, 30 Jul 2025 13:34:01 +0000
+Received: (from willy@localhost)
+	by pcw.home.local (8.15.2/8.15.2/Submit) id 56UDXhIe027054;
+	Wed, 30 Jul 2025 15:33:43 +0200
+Date: Wed, 30 Jul 2025 15:33:43 +0200
+From: Willy Tarreau <w@1wt.eu>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: alchark@gmail.com, conor+dt@kernel.org, devicetree@vger.kernel.org,
+        heiko@sntech.de, jonas@kwiboo.se, krzk+dt@kernel.org,
+        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+        linux-rockchip@lists.infradead.org, ziyao@disroot.org
+Subject: Re: [PATCH v2 1/1] arm64: dts: rockchip: rk3528: Add CPU frequency
+ scaling support
+Message-ID: <20250730133343.GC26787@1wt.eu>
 References: <20250730071145.GA26734@1wt.eu>
+ <20250730132026.214754-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-X-HM-Tid: 0a985b7dd39f03a2kunm09ab435824e847
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDQktMVh9IHk9CHxlITEsZTlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSFVKSEJZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE5VSktLVU
-	pCS0tZBg++
+Content-Disposition: inline
+In-Reply-To: <20250730132026.214754-1-amadeus@jmu.edu.cn>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250730_062039_000691_70D4747B 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20250730_063400_387092_A477EA5E 
+X-CRM114-Status: GOOD (  21.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,38 +66,41 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-> My point is that if you disable cpufreq, the CPU is running at 1.2V, which
-> is even higher. I don't know why it's running at this voltage, maybe as
-> the result of initializing some regulators, but that's what we're getting.
-> So the question about safety of running between 1.13-1.15 resolves to
-> "it's at least safer than running without cpufreq" in the current state.
->
-> And as I mentioned it's clearly linux and not u-boot that is setting 1.2V,
-> because under u-boot and during kernel selection and image loading, my
-> board is at 0.95V. It's only once the kernel starts to boot that it bumps
-> to 1.2V.
+On Wed, Jul 30, 2025 at 09:20:26PM +0800, Chukun Pan wrote:
+> Hi,
+> 
+> > My point is that if you disable cpufreq, the CPU is running at 1.2V, which
+> > is even higher. I don't know why it's running at this voltage, maybe as
+> > the result of initializing some regulators, but that's what we're getting.
+> > So the question about safety of running between 1.13-1.15 resolves to
+> > "it's at least safer than running without cpufreq" in the current state.
+> >
+> > And as I mentioned it's clearly linux and not u-boot that is setting 1.2V,
+> > because under u-boot and during kernel selection and image loading, my
+> > board is at 0.95V. It's only once the kernel starts to boot that it bumps
+> > to 1.2V.
+> 
+> If opp-table is not configured, kernel will initialize the pwm-regulator
+> to maximum microvolts. This can be solved by configuring the pwm-regulator
+> in U-Boot (waiting for U-Boot to synchronize the DT of kernel 6.16):
+> 
+> ```
+> &vdd_arm {
+> 	regulator-init-microvolt = <953000>;
+> };
 
-If opp-table is not configured, kernel will initialize the pwm-regulator
-to maximum microvolts. This can be solved by configuring the pwm-regulator
-in U-Boot (waiting for U-Boot to synchronize the DT of kernel 6.16):
+OK thanks for the explanation, but will be stable at highest frequency, or
+do we expect the TF-A or PVTM mechanism to automatically reduce the
+frequency enough to keep everything stable ? I'm asking because right now
+I'm booting at 2 GHz, and I don't imagine 2 GHz to work fine at 953mV.
 
-```
-&vdd_arm {
-	regulator-init-microvolt = <953000>;
-};
+Also, if we'd set this to a low enough voltage that it results in throttling
+the CPU, it could significantly slow down the boot for no reason. If we
+consider that the configured max-microvolt is valid, then better continue
+to use it. And if it's not valid, then maybe just fix it without going
+full throttle to a lower value either. Just my two cents.
 
-&vdd_logic {
-	regulator-init-microvolt = <900000>;
-};
-```
-
-Thanks,
-Chukun
-
---
-2.25.1
-
-
+Willy
 
 _______________________________________________
 Linux-rockchip mailing list
