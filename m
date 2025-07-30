@@ -4,61 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56692C87FCC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 07:01:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77084C87FCB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Jul 2025 07:12:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G29j/LusZtteQyyDqc5BR8VBDzSgqD3xmhUdN+odcfQ=; b=koOiluysvsjYIm
-	gDVKmWk6cvZ51xLHhc8wDFoaf9BK8gXMTsFUUOQXBFxsDoFC4Sle27laqhJu11FRuT8Ek+X5ufooB
-	GiXEbL4vA4WUBMR2rB/eSfz9xSdil81G2ATHOUzouYEy4I9NRrsPLahUgbztMa2JW2m+Zho8gKT6c
-	HdMqV1rf/MIE/0ZYXkNE/g1QaedxsG+gbVafUpBV0E73SDcDlCg66U14mG/eHBy++7L70t4J022M9
-	AKZ3rMq3T2W9PknVOgOq4cny/b0oWBrVDI7RrHJa03Q2pVnoVHP2EZuxSaC3Zd/yUdn08HUaDXow3
-	XBfXaQ/SkRuBp0pljzlQ==;
+	List-Owner; bh=tOMQvPTbfWeXdvbefx32UZXN17pk5NOz+p46/gBmS2c=; b=tAbSgixf+egtP/
+	rOAljJH5zIz6VH+SrOWKqY9Z6FYsaYW/SXTFkWWE6q1oI5cCHtQNT3qwkk66W8CiD5Ou9c6vqVjz6
+	eNrbIvgvG6KLt/KVdSKxFTrOKmV+D3UpjnhYTqCS6A+Msz89K29LZDjpjalbErVv50rRR8doCEXjm
+	t51Nt9VBh72fbhcqg3DQy/V+lRySZe+vUPBr8WYrDIOxmlf9qYXjo3P6qCI28P91x122U6nMsDVa0
+	qibMDUSNdJLoKV+3coxqv+pTawg9A9wWc495hw4ztZJvVP7ovk2qfv/382SH71QJPPvftMmmEXWiv
+	e7+FrB9Tgk3DpF3IYYjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh0o4-00000000pxW-1J62;
-	Wed, 30 Jul 2025 07:00:56 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uh0la-00000000pfA-0lI9;
-	Wed, 30 Jul 2025 06:58:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D806A4612F;
-	Wed, 30 Jul 2025 06:58:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 243A1C4CEE7;
-	Wed, 30 Jul 2025 06:58:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1753858701;
-	bh=GHNJMzDwHia/VawDKRP28HqC/Lt9R5Ms0U30Km18fGs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uJROmsAnlyyJu0kjxDwgser2yC+n3hiMjZJ8H3L6sG9cmLRjyg6bHBzhGRYmH53zo
-	 D8u69619Yr6ASNj7gnLXesZHWVHR+KiOaHPDXdMJv9Zv7MFwZADyoQnwxpV2OLkt30
-	 T43LtK1YgvedGFSbZLh9n8QscuvP0d2CZCSdxwZQMgcFoyl8heoRtV7ztJVvE3c+VW
-	 yDTN2HML4OydjFXGVS77nFzefavnUbuSkznZp9rTWGZe8592Xu4I8caE6c9NH1N/q3
-	 NSEOX1POOcdU96THVgzxGz6hldBXruMBSTjyUcE58FFx0aQcuG2Y9MzigdfQnSmMLj
-	 dL0EmUQiXfeCA==
-Date: Wed, 30 Jul 2025 08:58:19 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Erik Beck <xunil@tahomasoft.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 2/2] arm64: dts: rockchip: add LinkStar-H68k-1432v1
-Message-ID: <20250730-striped-free-lionfish-826b70@kuoka>
-References: <20250729-linkstar-6-16-rc1-v6-v6-0-92307f465835@tahomasoft.com>
- <20250729-linkstar-6-16-rc1-v6-v6-2-92307f465835@tahomasoft.com>
- <8ef3e1f4-4658-408f-8f46-ee9fc48d7a8d@kwiboo.se>
+	id 1uh0yy-00000000rEu-3HoU;
+	Wed, 30 Jul 2025 07:12:12 +0000
+Received: from ded1.1wt.eu ([163.172.96.212] helo=1wt.eu)
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uh0yv-00000000rET-1RXb;
+	Wed, 30 Jul 2025 07:12:11 +0000
+Received: (from willy@localhost)
+	by pcw.home.local (8.15.2/8.15.2/Submit) id 56U7BjvR026741;
+	Wed, 30 Jul 2025 09:11:45 +0200
+Date: Wed, 30 Jul 2025 09:11:45 +0200
+From: Willy Tarreau <w@1wt.eu>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: alchark@gmail.com, conor+dt@kernel.org, devicetree@vger.kernel.org,
+        heiko@sntech.de, jonas@kwiboo.se, krzk+dt@kernel.org,
+        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+        linux-rockchip@lists.infradead.org, ziyao@disroot.org
+Subject: Re: [PATCH v2 1/1] arm64: dts: rockchip: rk3528: Add CPU frequency
+ scaling support
+Message-ID: <20250730071145.GA26734@1wt.eu>
+References: <20250727170947.GA19379@1wt.eu>
+ <20250730070026.60109-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <8ef3e1f4-4658-408f-8f46-ee9fc48d7a8d@kwiboo.se>
+In-Reply-To: <20250730070026.60109-1-amadeus@jmu.edu.cn>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250729_235822_243696_362C937F 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20250730_001209_808550_E69F4781 
+X-CRM114-Status: GOOD (  26.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,43 +64,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 29, 2025 at 10:30:35PM +0200, Jonas Karlman wrote:
-> > +
-> > +		/* Middle inset/recessed button,
-> > +		 * marked by clockwise arrow/circle
-> > +		 */
-> > +
-> > +		button-reset {
-> > +			label = "button:system:reset";
-> > +			gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_LOW>;
-> > +			linux,code = <KEY_RESTART>;
-> > +			debounce-interval = <50>;
+Hi!
+
+On Wed, Jul 30, 2025 at 03:00:26PM +0800, Chukun Pan wrote:
+> Hi,
 > 
-> Please order props alphabetically.
-
-Why the least important property - debounce-interval - would be first?
-This is not a readable style.
-
+> > It's interesting to note that 816, 1008 and 1200 MHz result in a higher
+> > frequency than configured, but upper ones result in slightly smaller
+> > frequencies (~2%, might just be a measurement error), particularly for
+> > the last one which is 6% lower.
 > 
-> > +		};
-> > +	};
-> > +
-> > +	gpio-leds {
-> > +		compatible = "gpio-leds";
-> > +		pinctrl-names = "default";
-> > +		pinctrl-0 = <&led_white_pin>, <&led_green_pin>,
-> > +			<&led_amber_pin>, <&led_blue_pin>;
+> Please refer to the description of this series:
+> https://lore.kernel.org/lkml/20250320100002.332720-1-amadeus@jmu.edu.cn/
+
+Yes I had read this one. I'm just getting higher differences on my
+device here.
+
+> During the discussion, it was considered that the minimum voltage should
+> be 875mV to maintain stability, so there is a deviation in the frequency
+> between 816MHz and 1200MHz.
+
+I tend to agree, especially on low voltages, where the gain in stability
+is important while the difference in consumptionis barely noticeable.
+
+> > I noticed a missing entry for 2 GHz in clk-rk3528.c so I've added it,
+> > expecting that it would solve the problem:
+> >
+> > +       RK3036_PLL_RATE(2016000000, 1, 84, 1, 1, 1, 0),
+> >
+> > But it had no effect at all, the frequency remains limited to 1896 MHz.
 > 
-> And here pinctrl-names comes before the pins, this is my personal
-> preferred ordering for pinctrl-* props, I will settle for being
-> consistent.
+> There is a comment in the bsp kernel:
+> https://github.com/rockchip-linux/kernel/blob/develop-5.10/drivers/clk/rockchip/clk-rk3528.c#L101
+> 
+> Only 408MHz and 600MHz are generated by normal PLL, the rest of the
+> CPU frequency is controlled by TF-A via SCMI.
 
-This is not the recommended order. Names always are supposed to follow
-the property with actual values.
+OK!
 
-Best regards,
-Krzysztof
+> > Or maybe we could simply raise the voltage a little bit. The table above
+> > shows that at 1.15V we're close to the configured OPP and still below the
+> > stock voltage. This is not critical, but I find it a bit annoying that
+> > enabling cpufreq results in lower performance than without!
+> 
+> I also mentioned this in the cover letter. The actual frequency of 2016MHz
+> requires 1.13V ~ 1.15V. Not sure if this is safe for the rk3528 SoC.
 
+My point is that if you disable cpufreq, the CPU is running at 1.2V, which
+is even higher. I don't know why it's running at this voltage, maybe as
+the result of initializing some regulators, but that's what we're getting.
+So the question about safety of running between 1.13-1.15 resolves to
+"it's at least safer than running without cpufreq" in the current state.
+
+And as I mentioned it's clearly linux and not u-boot that is setting 1.2V,
+because under u-boot and during kernel selection and image loading, my
+board is at 0.95V. It's only once the kernel starts to boot that it bumps
+to 1.2V.
+
+So there's something to fix somewhere, either by lowering the default
+setting or by increasing the voltages in OPP, but as it is right now the
+situation is inconsistent.
+
+Regards,
+Willy
 
 _______________________________________________
 Linux-rockchip mailing list
