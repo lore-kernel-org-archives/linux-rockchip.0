@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E169CCD1AD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E0A9CCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N+kR2NFldI6VWai33QHabh89EIbjvvHYRvRaIhBNDfk=; b=4qTLKFqaCy2TLt
-	xrvcqL0XREFvYI2yRc3VdL4kZxWukqdHlxYwavboxbVilgNydN1MrZVEuDhAUqEpHSJxT6ekO1P77
-	glDvu9RYgmO/7+rTN+KInpMrHVD+x/2VeQmuZ/QTighKZ0tjAXC+8t8U5MUewz3aQvjSFS6orWC8n
-	syzGL/hX+EKedC/aB/A7512VD5pq33aIVfpCWcTEed5twYmQ8b4VKvSrH/gdbYeaMqnOqKK81d0T4
-	UhEHSS4ipODPXADGN9QjYqSM0MVOCGJmVOTtui3ibwOtLt/CEo+PjFy1WMDvC3XDa6yhSUMmTz0UF
-	vGES/PDPUq1p9H8tETmQ==;
+	List-Owner; bh=ABtzfbOOlqkAsQsM2ToVT0yMG3nBVwLScZ6IugAemYA=; b=cjV/+mPr99VlqT
+	7RPlYLC03+kJTih2ng1gqvJZwihbSRdSKib/MFLs1bREyx832mqaFeq3/vegbKDWxQn8i51Z7LZFq
+	eYufcnaN5otCH9XfD5rIOo28J37n4OXFc2fBvdTryxJg2Ryxu2Gy4KzCVq/P5QjuiA8UkI3oPLSil
+	9IWE/eYXbx/yiY/aAKjiURjwCCusljo9FpOFkkiAIH821hFNoaQQTmZw3HHxB71UHc0tm5wpAuNZ2
+	QmTEtYCbdpJDPFRnubgIY2/l5f4rzGd/j4Ejwr/Z3zT9twIdjSqJDqJFIt/Z8ULJAEjP3wQ0waGet
+	/BlqN6Nm8yPHi+Zv90Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoWu-0000000DAjg-2shL;
-	Mon, 20 Oct 2025 11:58:24 +0000
+	id 1vAoWv-0000000DAmS-41OL;
+	Mon, 20 Oct 2025 11:58:25 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8YV-00000007QJ9-3hts;
-	Sat, 02 Aug 2025 09:29:33 +0000
+	id 1ui8Yn-00000007QRU-0sSw;
+	Sat, 02 Aug 2025 09:29:50 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0FD193C9F;
-	Sat,  2 Aug 2025 11:28:32 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 395973E43;
+	Sat,  2 Aug 2025 11:28:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126925;
-	bh=SiP0pV3uc5ehXCmjBOQ+pI87XyOKqpx8plOTytPDacg=;
+	s=mail; t=1754126942;
+	bh=MthwYUOLpqBn0ba6jZYKpMy9cQjcqOQkTUKOiMmYskY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=San+pDECzI88V7mT/YALl0VxYF7B/l+IylhbNl1u7nEBfG63br+nLorQpng0+of/H
-	 WTXMeTOHHqH/KLsDJsMUnPmBrIWFB50jsfcJVQlhTNjhjMVd+X1TGdiHQmF+LBAlb9
-	 aR7UsSdVcYen71YQY8NoGVoCRLGdVOINtcFEVK8M=
+	b=WrzWKhJzGGme5zOuQKXcQS/gNGIUjt+o1Z00R2tij+Qj4M9aA/SV+y5Z26X7R3HR1
+	 nYV72q1Za8zMTe1MdtszLQQRIrdrEHwMHomB/rG6zrt8mk52l3LNAcujKID2JmXYOv
+	 3WD21E56BSQ+HYPkYABpAkGGxFx8a7Yv2PLlaV8g=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:22:58 +0200
-Subject: [PATCH 36/65] media: mtk: mdp3: Access v4l2_fh from file
+Date: Sat, 02 Aug 2025 11:23:00 +0200
+Subject: [PATCH 38/65] media: tegra-vde: Access v4l2_fh from file
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-36-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-38-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -129,26 +129,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3371;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4867;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=SiP0pV3uc5ehXCmjBOQ+pI87XyOKqpx8plOTytPDacg=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj7rzoS7q8iiibhw66Yirn2/oG1c8uoKKblm
- P50PaQA172JAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y+wAKCRByNAaPFqFW
- POLLD/40E/BbhBjjzsyc19BPpJfqJe0r65dUiQbnbXZ3LgvyF1h2ul+hKU/fqvksQk1bq1ZbsfN
- 6owSmRIx4H0FnCJBIhSgnO120esGna89Qtmsbx2qEFYRY09ZPg2yWkDozlFtrbhEPBqjwSj0v4p
- +43Y1catQVyppG3ZzUQaykBE4yjxkA1JbGM8Jz2QJ0wrUAl8uqF2ym5gpe4AyaPYbCGa01o+oOa
- LCvsjzHHZmmAGik2wIMae4UpHiLycx5R+3yRgjVTN7dUb9JNdAHSVfgJB8G/6gqOrDWX4XFcQw0
- VByW7JksnjYBsU38s+2e5Fp0sOfYn+pPVNRDX1vVcM3MwAi6TCIY3YVfLoCwo8qFOkZNqX2osFZ
- NbFvecCKIBzhz1NJKPoCKKQ0+XFWKm9QhILFXei++xKR2oQlgmIfNnsZ9c+wzNvMJkh+HcrMn3L
- nPlrbBu8DrN2SdKfUTodgpl1Iu/DDXveB9WDlgZogU3csDxHBscgBgTm728lJG7CnY9DNAjGwai
- 2Rru7p4yZIHRHUg8wCdEef7swc6/d1tboP38PG3y1Q8mQwC/uUOQa0RRJXPTT4xtAKJ10xWnw/U
- UIcJgH+LwN5mUoFyiSCqIoe23/Xrax2pXFhoMrTwNDPZiATmoTxP0B2QBeTXbq+FfTpkqu0SDec
- 2l1n9uL3CHjcg6A==
+ bh=MthwYUOLpqBn0ba6jZYKpMy9cQjcqOQkTUKOiMmYskY=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj8TQAFq4EkLSez561K0ZCn/vn/BBJTmiqEC
+ bdHNw8gzSWJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/AAKCRByNAaPFqFW
+ PJFxD/0TIoksJkRESbXqmBqgUb3qo3kiE82eWw0Z6Q17TElBpWIw99pBtQOEfWrjRc99I2UNoAc
+ mCWz87rZyt3b6rGydUaLt9eHY90h2RMG8ZuGxvsCjUqNu2QgiOXjLWK+BThZ6GSsaJU/obfD58m
+ M5vJxlycDcFVA5yj4c9cYo9gOkSEthg2q7w+YAK5woOn3Vhbu23YWdJCoZpSNqcddOpyHsiqnEZ
+ avPs8NZ686jUTHS/YnHe3ZYCI/gQcUffV4SXamBdh+FkxWa0WALMw86oWkcaFkX5WXmX9wNfith
+ /kP9lim1JndmUQqWhp2EC7h7aowy/H3g4BtOWW9Z00CDQZ+3e4LiZ7Kqddsxq0uE5QNF7jPETC1
+ hJybOhHs6dvry1LAO5LFktHgr2lIdVTZQs9thfuO2XeQoqVM6z4bBjwLozzZsiN6urjUYoUz1XC
+ iYuPhRgfbhwGyHjeVLsCHuXYR6JmLQXWLDCs6ZamO1AxcA1+VIjV3MS9lbcssLjGWrs++h+MJbD
+ KljduZoHMhOINt+uFXu/pPJDBZ/AC/9qe73RGy3LvPoTSfbm+fTyCcLaqIn3INSuce3gG9VafpX
+ 3OWHslj9R1uowlyL4FDQTnn2sNB+gM5WCqNDA5Sjx3AwLtjkJT1LApcSPeOOfKoBM/c3R1RVeVD
+ u4zEl7mhyZWHBtw==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_022932_075338_2BF00792 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20250802_022949_533652_5C626330 
+X-CRM114-Status: GOOD (  13.88  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:56 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -172,83 +172,119 @@ to be available in file->private_data, initialised by v4l2_fh_add().
 Access the v4l2_fh, and from there the driver-specific structure,
 from the file * in all ioctl handlers.
 
-While at it, remove the now unused fh_to_ctx() macro.
-
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c | 17 ++++++-----------
- 1 file changed, 6 insertions(+), 11 deletions(-)
+ drivers/media/platform/nvidia/tegra-vde/v4l2.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-index 2e0619542d2a9ad73457853e4f5008e6eb130cdd..9ef956b565a791429a477dc96567453cb189d817 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-@@ -10,11 +10,6 @@
- #include <media/videobuf2-dma-contig.h>
- #include "mtk-mdp3-m2m.h"
+diff --git a/drivers/media/platform/nvidia/tegra-vde/v4l2.c b/drivers/media/platform/nvidia/tegra-vde/v4l2.c
+index 0c50f4ff82e0a8f4935325d00691c58072182926..d94978ae2baf3394206ad7c3eb7a400aeee47cf7 100644
+--- a/drivers/media/platform/nvidia/tegra-vde/v4l2.c
++++ b/drivers/media/platform/nvidia/tegra-vde/v4l2.c
+@@ -46,9 +46,9 @@ static const struct v4l2_ctrl_config ctrl_cfgs[] = {
+ 	},
+ };
  
--static inline struct mdp_m2m_ctx *fh_to_ctx(struct v4l2_fh *fh)
--{
--	return container_of(fh, struct mdp_m2m_ctx, fh);
--}
--
- static inline struct mdp_m2m_ctx *file_to_ctx(struct file *filp)
+-static inline struct tegra_ctx *fh_to_tegra_ctx(struct v4l2_fh *fh)
++static inline struct tegra_ctx *file_to_tegra_ctx(struct file *file)
  {
- 	return container_of(file_to_v4l2_fh(filp), struct mdp_m2m_ctx, fh);
-@@ -290,7 +285,7 @@ static int mdp_m2m_querycap(struct file *file, void *fh,
- static int mdp_m2m_enum_fmt_mplane(struct file *file, void *fh,
- 				   struct v4l2_fmtdesc *f)
- {
--	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
-+	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
- 
- 	return mdp_enum_fmt_mplane(ctx->mdp_dev, f);
+-	return container_of(fh, struct tegra_ctx, fh);
++	return container_of(file_to_v4l2_fh(file), struct tegra_ctx, fh);
  }
-@@ -298,7 +293,7 @@ static int mdp_m2m_enum_fmt_mplane(struct file *file, void *fh,
- static int mdp_m2m_g_fmt_mplane(struct file *file, void *fh,
- 				struct v4l2_format *f)
- {
--	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
-+	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
- 	struct mdp_frame *frame;
- 	struct v4l2_pix_format_mplane *pix_mp;
  
-@@ -316,7 +311,7 @@ static int mdp_m2m_g_fmt_mplane(struct file *file, void *fh,
- static int mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
- 				struct v4l2_format *f)
+ static void tegra_set_control_data(struct tegra_ctx *ctx, void *data, u32 id)
+@@ -506,7 +506,7 @@ static int tegra_querycap(struct file *file, void *priv,
+ static int tegra_enum_decoded_fmt(struct file *file, void *priv,
+ 				  struct v4l2_fmtdesc *f)
  {
--	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
-+	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
- 	struct mdp_frame *frame = ctx_get_frame(ctx, f->type);
- 	struct mdp_frame *capture;
- 	const struct mdp_format *fmt;
-@@ -359,7 +354,7 @@ static int mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
- static int mdp_m2m_try_fmt_mplane(struct file *file, void *fh,
- 				  struct v4l2_format *f)
- {
--	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
-+	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
+-	struct tegra_ctx *ctx = fh_to_tegra_ctx(priv);
++	struct tegra_ctx *ctx = file_to_tegra_ctx(file);
  
- 	if (!mdp_try_fmt_mplane(ctx->mdp_dev, f, &ctx->curr_param, ctx->id))
+ 	if (WARN_ON(!ctx->coded_fmt_desc))
  		return -EINVAL;
-@@ -370,7 +365,7 @@ static int mdp_m2m_try_fmt_mplane(struct file *file, void *fh,
- static int mdp_m2m_g_selection(struct file *file, void *fh,
- 			       struct v4l2_selection *s)
+@@ -522,7 +522,7 @@ static int tegra_enum_decoded_fmt(struct file *file, void *priv,
+ static int tegra_g_decoded_fmt(struct file *file, void *priv,
+ 			       struct v4l2_format *f)
  {
--	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
-+	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
- 	struct mdp_frame *frame;
- 	bool valid = false;
+-	struct tegra_ctx *ctx = fh_to_tegra_ctx(priv);
++	struct tegra_ctx *ctx = file_to_tegra_ctx(file);
  
-@@ -422,7 +417,7 @@ static int mdp_m2m_g_selection(struct file *file, void *fh,
- static int mdp_m2m_s_selection(struct file *file, void *fh,
- 			       struct v4l2_selection *s)
+ 	*f = ctx->decoded_fmt;
+ 	return 0;
+@@ -531,8 +531,8 @@ static int tegra_g_decoded_fmt(struct file *file, void *priv,
+ static int tegra_try_decoded_fmt(struct file *file, void *priv,
+ 				 struct v4l2_format *f)
  {
--	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
-+	struct mdp_m2m_ctx *ctx = file_to_ctx(file);
- 	struct mdp_frame *frame = ctx_get_frame(ctx, s->type);
- 	struct mdp_frame *capture;
- 	struct v4l2_rect r;
++	struct tegra_ctx *ctx = file_to_tegra_ctx(file);
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+-	struct tegra_ctx *ctx = fh_to_tegra_ctx(priv);
+ 	const struct tegra_coded_fmt_desc *coded_desc;
+ 	unsigned int i;
+ 
+@@ -571,7 +571,7 @@ static int tegra_try_decoded_fmt(struct file *file, void *priv,
+ static int tegra_s_decoded_fmt(struct file *file, void *priv,
+ 			       struct v4l2_format *f)
+ {
+-	struct tegra_ctx *ctx = fh_to_tegra_ctx(priv);
++	struct tegra_ctx *ctx = file_to_tegra_ctx(file);
+ 	struct vb2_queue *vq;
+ 	int err;
+ 
+@@ -593,7 +593,7 @@ static int tegra_s_decoded_fmt(struct file *file, void *priv,
+ static int tegra_enum_coded_fmt(struct file *file, void *priv,
+ 				struct v4l2_fmtdesc *f)
+ {
+-	struct tegra_ctx *ctx = fh_to_tegra_ctx(priv);
++	struct tegra_ctx *ctx = file_to_tegra_ctx(file);
+ 	const struct tegra_vde_soc *soc = ctx->vde->soc;
+ 
+ 	if (f->index >= soc->num_coded_fmts)
+@@ -607,7 +607,7 @@ static int tegra_enum_coded_fmt(struct file *file, void *priv,
+ static int tegra_g_coded_fmt(struct file *file, void *priv,
+ 			     struct v4l2_format *f)
+ {
+-	struct tegra_ctx *ctx = fh_to_tegra_ctx(priv);
++	struct tegra_ctx *ctx = file_to_tegra_ctx(file);
+ 
+ 	*f = ctx->coded_fmt;
+ 	return 0;
+@@ -631,7 +631,7 @@ static int tegra_try_coded_fmt(struct file *file, void *priv,
+ 			       struct v4l2_format *f)
+ {
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+-	struct tegra_ctx *ctx = fh_to_tegra_ctx(priv);
++	struct tegra_ctx *ctx = file_to_tegra_ctx(file);
+ 	const struct tegra_vde_soc *soc = ctx->vde->soc;
+ 	int size = pix_mp->plane_fmt[0].sizeimage;
+ 	const struct tegra_coded_fmt_desc *desc;
+@@ -656,7 +656,7 @@ static int tegra_try_coded_fmt(struct file *file, void *priv,
+ static int tegra_s_coded_fmt(struct file *file, void *priv,
+ 			     struct v4l2_format *f)
+ {
+-	struct tegra_ctx *ctx = fh_to_tegra_ctx(priv);
++	struct tegra_ctx *ctx = file_to_tegra_ctx(file);
+ 	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
+ 	const struct tegra_coded_fmt_desc *desc;
+ 	struct vb2_queue *peer_vq, *vq;
+@@ -718,7 +718,7 @@ static int tegra_s_coded_fmt(struct file *file, void *priv,
+ static int tegra_enum_framesizes(struct file *file, void *priv,
+ 				 struct v4l2_frmsizeenum *fsize)
+ {
+-	struct tegra_ctx *ctx = fh_to_tegra_ctx(priv);
++	struct tegra_ctx *ctx = file_to_tegra_ctx(file);
+ 	const struct tegra_coded_fmt_desc *fmt;
+ 
+ 	if (fsize->index)
+@@ -852,8 +852,8 @@ static int tegra_open(struct file *file)
+ 
+ static int tegra_release(struct file *file)
+ {
++	struct tegra_ctx *ctx = file_to_tegra_ctx(file);
+ 	struct v4l2_fh *fh = file_to_v4l2_fh(file);
+-	struct tegra_ctx *ctx = fh_to_tegra_ctx(fh);
+ 	struct tegra_vde *vde = ctx->vde;
+ 
+ 	v4l2_fh_del(fh, file);
 
 -- 
 2.49.0
