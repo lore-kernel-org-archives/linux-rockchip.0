@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F28EDCCD199
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1105BCCD193
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/DK032NKuO4/uXvM9oAQCK4UExXHZakvGeawAU/3bCs=; b=YHQKeEZ/Nv7QTA
-	xnz7CEX3qrZnsaCbfWbtp1HeINTzS+QYFpsMLqTp0MsReITTwzMuaVg/V365gZyDgpHCN/IfMYoUw
-	AobtkfT+p0vO7/+U8psRLX2YaLFXbBKwkIcbkeuwavYsx88b+/Lad7xSx3JZlIGSCoGNhMrj77wHG
-	+ZVX8bVjFaD222y5W8TGNgAcNeTcACAfiA5KZV2BfLJOVvVtO3m0CHavPhmMviJorbrT3JacMz3nG
-	1h/habAnxwzcWhfxDDub1lrXGtIBMCdVLDtCFhbLF+CVKKX5oo92gBmgO1StpzqppYC4L4/asQTWX
-	ZJdsdElAsb2T/cLrZtlA==;
+	List-Owner; bh=dFi3qvuNBOBgyT0VWb7DAaxBaCrDGsrWpMFkjuPeUjE=; b=RRRP8YMw0V3dwz
+	xDJlh9BfyofeiF7JprLVkkbdOi7wfgG3Xk4GiavyqIweoutahBA/JKUsysFlnJIWUWFglXU40940H
+	w8Qij8weO8ro57O09OxXnieaVFabStqRVzheAN0KEw1QAMv1lIivXPyeOtQBGq/kdBYUNMgvnb1ti
+	sJA8gtVdHzGszpZtV6jMGwKWBi/lznp3lt30bKFgDbUwpLa2DiY1fVWPK1EyTRMJMEBR7GMehHHjs
+	ba+RbVY4l/P0XW4UgmBTEAp/RT6Vvyc0ZW13qPakB+mtbblEBbBynouLSOy0W0jzJIRjnv3AKtdhp
+	XleV8Yw2zF4jaZIj4srA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoWx-0000000DAnq-0HXn;
-	Mon, 20 Oct 2025 11:58:27 +0000
+	id 1vAoX0-0000000DAwI-3eMd;
+	Mon, 20 Oct 2025 11:58:30 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8Yv-00000007QVc-0UBS;
-	Sat, 02 Aug 2025 09:29:58 +0000
+	id 1ui8Zg-00000007Qwu-1QOX;
+	Sat, 02 Aug 2025 09:30:45 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D13D93EE9;
-	Sat,  2 Aug 2025 11:29:02 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1F3D640D7;
+	Sat,  2 Aug 2025 11:29:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126950;
-	bh=QMXN795g4JQ02dbn34MUgI1SrXfUXWeSvy7JvnRGT/4=;
+	s=mail; t=1754126997;
+	bh=N/+SmX8uCSElsoQI/Kb0w5aCmhV7erqVc0DGwURG/AA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=a6yKtLO3p3dptqs8nDpC4CTqf6f17ThWt2kAQ1RtjLbHys7ZhKQtBaxqQGSFM14hJ
-	 lo2so0O2XgjC9oyqujkhkQVVJ41fDYV4TE+DbxU0VOqJKvsFvw9M/9U/KkF7+/glzq
-	 Xda2N5WbvBrVab8G1DXb+S/ilReE23HpnougskVQ=
+	b=O2ythKO2VLeSyaJW1M/PqCX/Mkk5kckpbF0P3b/mXShykQUmZpyRwP7cnS0GIDbL/
+	 1DUlZhDvcIq3FFW01jGr4U4d4DEVv0toEN/a34f1d+8i68oIA7/0jOonpdg6HBRSO7
+	 wRvxI6vA7eAfOnezFzDfnkMhxtBedOLidMjxv5pM=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:23:01 +0200
-Subject: [PATCH 39/65] media: imx-jpeg: Access v4l2_fh from file
+Date: Sat, 02 Aug 2025 11:23:06 +0200
+Subject: [PATCH 44/65] media: rockchip: rkvdec: Access v4l2_fh from file
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-39-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-44-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -129,27 +129,27 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6555;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4093;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=QMXN795g4JQ02dbn34MUgI1SrXfUXWeSvy7JvnRGT/4=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj8/oWIIARD+dfkmFv/taMUYIiUf/KYJk9vV
- f7+9cr+2++JAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/AAKCRByNAaPFqFW
- PKtxD/0WLPIL/mL1eF89kxSMM9GwOxEKdo8GLGfT13RWpduaSJTQpP/edD44lwWuTCc/Ppgs83F
- u9bd6x4dOVwYfaPQIN5wij1VrkrZ6Bukd6h598tHgoKq0LmK6g9AS6SSJyKCVG8ETu/fpF0ARpW
- 1oq1soPH+lkWm2YsCf88hjEAeLKuLe6T2CZB8MolKhAQOKNFewTMquWE8SfXrpMELAUh97npU/h
- GzVOcyJRfI+Me9QDMgov6AQRy+qGdm2K6R0aK8XaHuDSUkdPw4breQtXzbxvHJujLsZ3Ylt4IrG
- 5pTN90+UngJ1pYigkyC8u8WI8bF5BcOxKx+gjGXuO+zcdr++UiIKHU/iOzkeJvdSnBPE6XjtZEW
- DBYFVMgrlvKkBQ9pjwJIsek4GgkDSCUoTnyXtR5YpjSZLIOP2Hkxg/MYLR1K00HzGwNykLZfmwU
- gvHiAygX/esogRpR/rFyA6SnjaCLLoy/9Dak8v/a15IEWnRsw8DD6LGJGELTh5E3YGkkeFfBkWQ
- nk9hYsCX5zLegyyQZ6tjuv6HJc53gqm0Mq3KtJl8V5t46D4VXt+WsPiGrcRHyyYD8ibuJBlaHs2
- ocOq1NEyVZ4BCdDoTWV7kqUn46e9u4uWM6Owwwggr8iOtxOn3o1mz5KuPz3wd7z2Oc1LrqSZ3Ry
- yexlpARHGjG1bXg==
+ bh=N/+SmX8uCSElsoQI/Kb0w5aCmhV7erqVc0DGwURG/AA=;
+ b=owEBbAKT/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj8GhGRoLbVmqgvZIfiBugvAzZbpSmTSf59f
+ 8yjByt2IQaJAjIEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/AAKCRByNAaPFqFW
+ PHoxD/dZpPaC6C0cHgs+6v+St9wjgRkVaZQPtX28YtuVqRe+UWHscNIwGphLs9NBDuLq0g5atP1
+ LlhxmW2GY0FLrU4ODHwmd2p6qM2Z/1jKYgj7s1BQO2pqpNekk0WFWK/1MBsyFftm2KbE6oxHHb3
+ MjzTehWud6ey9ZZ/xS0hq47jkIbh6C5rPk0jX8ArRlL/YT7DyODiZjLZ8k+HfWKXGaqHpCLH03e
+ k/ubxOnY0OApTrAZHcAFipujf6N9fp7vOhuJC9xF14G7CDyfWpB9prIJmN0KTo0HIYmkwXijHZ7
+ 4hZq9Q6YOdfcUTg4V9X6r7bqBaPLXLGiqhMscoH26A1VxzfD8nW80Pdh81jYWLRnGY36eA+vI5l
+ ifXsoAohqQtUSZNhDJVW7R4RAw4hSqkoQMRaDZp4V0oE6bE8IPS/MYKYYk6DB4BCctHM4IoY4p9
+ YIuYtS8UzM4mMzVTAekk4U0uJPhk48PVxf6M62ZzNCIMVW/6zKhpm/neqruVAO8i+MvPzeIxTvs
+ OgqunbBOS20rPOU/kLg7qxZXeDBSf2bxjfnD+vNmdF4d8meyw+aAL9iesbcUAUnh7p8+K1IXNXs
+ wkwZ3h4Awk9cg/sCpbpXDN22PLzLj8gBJQ1zdSBXuK34VXa2RLneYzBhWuyXvnhKBo7xKyVWcy6
+ m59/g+/Cysrlb
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_022957_301708_3C62B66A 
-X-CRM114-Status: GOOD (  13.98  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:56 -0700
+X-CRM114-CacheID: sfid-20250802_023044_533618_66CDB645 
+X-CRM114-Status: GOOD (  12.72  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:57 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,152 +172,97 @@ to be available in file->private_data, initialised by v4l2_fh_add().
 Access the v4l2_fh, and from there the driver-specific structure,
 from the file * in all ioctl handlers.
 
-While at it, remove the now unused mxc_jpeg_fh_to_ctx() macro.
+While at it, remove the now unused fh_to_rkvdec_ctx() macro.
 
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c | 33 +++++++++++---------------
- 1 file changed, 14 insertions(+), 19 deletions(-)
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c | 14 +++++++-------
+ drivers/media/platform/rockchip/rkvdec/rkvdec.h |  5 -----
+ 2 files changed, 7 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c b/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
-index fa7d74d8c1aabd3bf74482e214165d8c1a7e89da..df3ccdf767baf0bf6687808e2c017063181a7220 100644
---- a/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
-+++ b/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
-@@ -644,11 +644,6 @@ static void print_mxc_buf(struct mxc_jpeg_dev *jpeg, struct vb2_buffer *buf,
- 	}
- }
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+index 481c2488f9ac64e70869ed21e5053cfbc4ed6e0e..9fa80ab3c62b7753e6c992aefd106ee99ed375e4 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+@@ -354,7 +354,7 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+ 				  struct v4l2_format *f)
+ {
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+-	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
++	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
+ 	const struct rkvdec_coded_fmt_desc *coded_desc;
  
--static inline struct mxc_jpeg_ctx *mxc_jpeg_fh_to_ctx(struct v4l2_fh *fh)
+ 	/*
+@@ -387,7 +387,7 @@ static int rkvdec_try_output_fmt(struct file *file, void *priv,
+ 				 struct v4l2_format *f)
+ {
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+-	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
++	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
+ 	const struct rkvdec_coded_fmt_desc *desc;
+ 
+ 	desc = rkvdec_find_coded_fmt_desc(pix_mp->pixelformat);
+@@ -418,7 +418,7 @@ static int rkvdec_try_output_fmt(struct file *file, void *priv,
+ static int rkvdec_s_capture_fmt(struct file *file, void *priv,
+ 				struct v4l2_format *f)
+ {
+-	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
++	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
+ 	struct vb2_queue *vq;
+ 	int ret;
+ 
+@@ -439,7 +439,7 @@ static int rkvdec_s_capture_fmt(struct file *file, void *priv,
+ static int rkvdec_s_output_fmt(struct file *file, void *priv,
+ 			       struct v4l2_format *f)
+ {
+-	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
++	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
+ 	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
+ 	const struct rkvdec_coded_fmt_desc *desc;
+ 	struct v4l2_format *cap_fmt;
+@@ -504,7 +504,7 @@ static int rkvdec_s_output_fmt(struct file *file, void *priv,
+ static int rkvdec_g_output_fmt(struct file *file, void *priv,
+ 			       struct v4l2_format *f)
+ {
+-	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
++	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
+ 
+ 	*f = ctx->coded_fmt;
+ 	return 0;
+@@ -513,7 +513,7 @@ static int rkvdec_g_output_fmt(struct file *file, void *priv,
+ static int rkvdec_g_capture_fmt(struct file *file, void *priv,
+ 				struct v4l2_format *f)
+ {
+-	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
++	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
+ 
+ 	*f = ctx->decoded_fmt;
+ 	return 0;
+@@ -532,7 +532,7 @@ static int rkvdec_enum_output_fmt(struct file *file, void *priv,
+ static int rkvdec_enum_capture_fmt(struct file *file, void *priv,
+ 				   struct v4l2_fmtdesc *f)
+ {
+-	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
++	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
+ 	u32 fourcc;
+ 
+ 	fourcc = rkvdec_enum_decoded_fmt(ctx, f->index, ctx->image_fmt);
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+index 35effe9467845fdfc4ffea432211d1d2e75a08b0..481aaa4bffe975fa106fb22e78bef90ade86a6cf 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+@@ -124,11 +124,6 @@ struct rkvdec_ctx {
+ 	void *priv;
+ };
+ 
+-static inline struct rkvdec_ctx *fh_to_rkvdec_ctx(struct v4l2_fh *fh)
 -{
--	return container_of(fh, struct mxc_jpeg_ctx, fh);
+-	return container_of(fh, struct rkvdec_ctx, fh);
 -}
 -
- static inline struct mxc_jpeg_ctx *mxc_jpeg_file_to_ctx(struct file *filp)
+ static inline struct rkvdec_ctx *file_to_rkvdec_ctx(struct file *filp)
  {
- 	return container_of(file_to_v4l2_fh(filp), struct mxc_jpeg_ctx, fh);
-@@ -1610,7 +1605,7 @@ static int mxc_jpeg_decoder_cmd(struct file *file, void *priv,
- 				struct v4l2_decoder_cmd *cmd)
- {
- 	struct v4l2_fh *fh = file_to_v4l2_fh(file);
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 	unsigned long flags;
- 	int ret;
- 
-@@ -1643,7 +1638,7 @@ static int mxc_jpeg_encoder_cmd(struct file *file, void *priv,
- 				struct v4l2_encoder_cmd *cmd)
- {
- 	struct v4l2_fh *fh = file_to_v4l2_fh(file);
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 	unsigned long flags;
- 	int ret;
- 
-@@ -2260,7 +2255,7 @@ static int mxc_jpeg_querycap(struct file *file, void *priv,
- static int mxc_jpeg_enum_fmt_vid_cap(struct file *file, void *priv,
- 				     struct v4l2_fmtdesc *f)
- {
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 	struct mxc_jpeg_q_data *q_data = mxc_jpeg_get_q_data(ctx, f->type);
- 
- 	if (ctx->mxc_jpeg->mode == MXC_JPEG_ENCODE) {
-@@ -2300,7 +2295,7 @@ static int mxc_jpeg_enum_fmt_vid_cap(struct file *file, void *priv,
- static int mxc_jpeg_enum_fmt_vid_out(struct file *file, void *priv,
- 				     struct v4l2_fmtdesc *f)
- {
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 	u32 type = ctx->mxc_jpeg->mode == MXC_JPEG_DECODE ?  MXC_JPEG_FMT_TYPE_ENC :
- 							     MXC_JPEG_FMT_TYPE_RAW;
- 	int ret;
-@@ -2441,7 +2436,7 @@ static int mxc_jpeg_try_fmt(struct v4l2_format *f,
- static int mxc_jpeg_try_fmt_vid_cap(struct file *file, void *priv,
- 				    struct v4l2_format *f)
- {
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 	struct mxc_jpeg_dev *jpeg = ctx->mxc_jpeg;
- 	struct device *dev = jpeg->dev;
- 	struct mxc_jpeg_q_data tmp_q;
-@@ -2460,7 +2455,7 @@ static int mxc_jpeg_try_fmt_vid_cap(struct file *file, void *priv,
- static int mxc_jpeg_try_fmt_vid_out(struct file *file, void *priv,
- 				    struct v4l2_format *f)
- {
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 	struct mxc_jpeg_dev *jpeg = ctx->mxc_jpeg;
- 	struct device *dev = jpeg->dev;
- 	struct mxc_jpeg_q_data tmp_q;
-@@ -2512,20 +2507,20 @@ static int mxc_jpeg_s_fmt(struct mxc_jpeg_ctx *ctx,
- static int mxc_jpeg_s_fmt_vid_cap(struct file *file, void *priv,
- 				  struct v4l2_format *f)
- {
--	return mxc_jpeg_s_fmt(mxc_jpeg_fh_to_ctx(priv), f);
-+	return mxc_jpeg_s_fmt(mxc_jpeg_file_to_ctx(file), f);
- }
- 
- static int mxc_jpeg_s_fmt_vid_out(struct file *file, void *priv,
- 				  struct v4l2_format *f)
- {
- 	int ret;
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 	struct vb2_queue *dst_vq;
- 	struct mxc_jpeg_q_data *q_data_cap;
- 	enum v4l2_buf_type cap_type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
- 	struct v4l2_format fc;
- 
--	ret = mxc_jpeg_s_fmt(mxc_jpeg_fh_to_ctx(priv), f);
-+	ret = mxc_jpeg_s_fmt(ctx, f);
- 	if (ret)
- 		return ret;
- 
-@@ -2554,7 +2549,7 @@ static int mxc_jpeg_s_fmt_vid_out(struct file *file, void *priv,
- static int mxc_jpeg_g_fmt_vid(struct file *file, void *priv,
- 			      struct v4l2_format *f)
- {
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 	struct mxc_jpeg_dev *jpeg = ctx->mxc_jpeg;
- 	struct device *dev = jpeg->dev;
- 	struct v4l2_pix_format_mplane   *pix_mp = &f->fmt.pix_mp;
-@@ -2592,7 +2587,7 @@ static int mxc_jpeg_g_fmt_vid(struct file *file, void *priv,
- 
- static int mxc_jpeg_dec_g_selection(struct file *file, void *fh, struct v4l2_selection *s)
- {
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 	struct mxc_jpeg_q_data *q_data_cap;
- 
- 	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE && s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE)
-@@ -2621,7 +2616,7 @@ static int mxc_jpeg_dec_g_selection(struct file *file, void *fh, struct v4l2_sel
- 
- static int mxc_jpeg_enc_g_selection(struct file *file, void *fh, struct v4l2_selection *s)
- {
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 	struct mxc_jpeg_q_data *q_data_out;
- 
- 	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT && s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
-@@ -2649,7 +2644,7 @@ static int mxc_jpeg_enc_g_selection(struct file *file, void *fh, struct v4l2_sel
- 
- static int mxc_jpeg_g_selection(struct file *file, void *fh, struct v4l2_selection *s)
- {
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 
- 	if (ctx->mxc_jpeg->mode == MXC_JPEG_DECODE)
- 		return mxc_jpeg_dec_g_selection(file, fh, s);
-@@ -2659,7 +2654,7 @@ static int mxc_jpeg_g_selection(struct file *file, void *fh, struct v4l2_selecti
- 
- static int mxc_jpeg_s_selection(struct file *file, void *fh, struct v4l2_selection *s)
- {
--	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
-+	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
- 	struct mxc_jpeg_q_data *q_data_out;
- 
- 	if (ctx->mxc_jpeg->mode != MXC_JPEG_ENCODE)
+ 	return container_of(file_to_v4l2_fh(filp), struct rkvdec_ctx, fh);
 
 -- 
 2.49.0
