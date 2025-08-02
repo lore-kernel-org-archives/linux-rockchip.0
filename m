@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FCC3CCD199
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4D1CCCD193
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,36 +12,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DrC0oImYhqz7yPqSFTY5LAJy/STPbr68Carf6s2t5AY=; b=0VkRSPoCm758sX
-	qTwHVrZgLPTTg/ek1ptran035dwMJAakNWodn2NCxxNPDNU5BLltV3e8jLDfCF80WQjOybZM+Ul8b
-	rj3jqeRaLrlEDOw1j7KmzCaq5Rerd+6pIV+D8NnBSK9GnHe5nlT25/0bUrzJz3CJEK6CWrfGHDXmA
-	GcjkSJk8yeMOfbzYkWRQ5FRFdI9CLY5Q2ToF2xDy7sbaGni8A3HJ989x9vvqZ9bkPgiqdW9eo7hxj
-	aGV8HPU2dKFpdwzBdvH9OfBam1+YfftaWTc+8pT+J1mib9cxdC1X/P16MqmgXYeVE5f1MPYQvex+S
-	6d9Ft9rO/IHPlGPJ9glA==;
+	List-Owner; bh=02EnD+Mm0xJ4XDLXx5AMhH8S5Hw7vVLLEe2gHdRP7Lk=; b=2YZHRd5MyhpCDp
+	hiisOQTglPF35rKTlZsV5RdExjSKu/iW++BDHmg5t+vX+gwtIIfTQQZqfjBIoWY+YgAkDAyBp9Yp1
+	pOGv626X1J6FUUk6gb8XqWPDWDlixE6jPuYtIYdzlA8waIiayA6pFMkYfHwzKi5QV8rwDlLLR2s1R
+	8cq1cvtOj7aC1qtu/SEZDQAHaz7/aoxUAaXUMuNh6Xud7M0Pp/594YAYonS7LS1lQCVDztkk8KYPU
+	DupcJ/fsIBukjvx1JXIc6USwNSDXAjFIpRkPtZT7YZMWKQ77I/DGE4r8e0Q6wADbkdtc9x8KgBRoZ
+	FPW1j82XDLCluGU+h56w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoWs-0000000DAgt-3qvX;
-	Mon, 20 Oct 2025 11:58:22 +0000
+	id 1vAoWr-0000000DAdk-2DUe;
+	Mon, 20 Oct 2025 11:58:21 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8Y9-00000007Q8x-01jp;
-	Sat, 02 Aug 2025 09:29:10 +0000
+	id 1ui8Xi-00000007Pvy-29R8;
+	Sat, 02 Aug 2025 09:28:43 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8D5B13C64;
-	Sat,  2 Aug 2025 11:28:13 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 645743C5B;
+	Sat,  2 Aug 2025 11:27:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126902;
-	bh=L0ZUzNfnoLjztZUAFo8LD82f1tvHxDD9diPSRFvNFG8=;
+	s=mail; t=1754126876;
+	bh=TlJ3vfBE6eOXaSzRlSNwTu3lbTFE43IxxanDcdfmWg0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=YgNxCbbV4Lu9nSUDHOLXb+Khn3iTG7uca8DR8oTYu966wM689OJhwdvHajbpALfe7
-	 SobfPhefVv+UXuwNOm8AUrwSyV4o5pUIWPMqBB8HNh+YKTlUKsjnNpHfDd0JY4HgnM
-	 2ljjhNlRhMYivAPRG+3MQuqEA4D06LL5zLT0b0+Y=
+	b=duA3dJ50CGqSubEiUb6tH6brol9dIsXMNSvO5O1wlKHkbM+t1cYXYoYHvBjqEVQAU
+	 6T1vr8defZLDQwNlsGvBZefSOJNBplJQwBGAtvnWmJFpJVKgGIuG4A95kPSRxfhFj0
+	 VVyGPA3wQV5hmg0owRykgfvRnsuwd0UOntPRaAk0=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:22:56 +0200
-Subject: [PATCH 34/65] media: mtk: jpeg: Access v4l2_fh from
- file->private_data
+Date: Sat, 02 Aug 2025 11:22:53 +0200
+Subject: [PATCH 31/65] media: coda: Access v4l2_fh from file
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-34-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-31-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -130,26 +129,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5473;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=7087;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=L0ZUzNfnoLjztZUAFo8LD82f1tvHxDD9diPSRFvNFG8=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj7gvp1bn79ddqFVF08lQxDnSWTM0Yzt2fgT
- Quste8pkyOJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y+wAKCRByNAaPFqFW
- PAUHD/9/Mn8W2TWnpnF5jCtc9S3BNAZMttSJxyX+rR5RRe6S8x/I8d8N3U+ykOsqQyM3NIWlHt0
- C0myb3twn6+97X7lRzosteZ2DCTbU2QWnjIcTCpAiC5uJ9saBPoaf2KxxZERdg3yWqYKvAVsua7
- VKVqQwfE565lqKpZOqPSLhA5VTIGbTuooNI1HFqoeXpPp9jAhn7wWfGfkH8vE1NaSOA1BxrlRhR
- QVWvVysYhH/lafXj4XSniCcqUfwh4oL4MfFDIACucn0RFellTnptdo/gTgMD2Y04sHl1ljGBgYU
- jsCiRvcCJDg1zGLsSMdbHlB4R+5GJtxaIfkNRG090P5o1m/8e7Q/RxhaKbK5ml9QAPaWR65nOjr
- Xj60Z0XEKbTo/fTrLy+jRwmDXGxvQAm9qqisXrgZPPsxfwFnWCzSPbu4WosZZQbm3+ZiU6m+TcW
- apyakcWCNeVbV7xLZBKnIdSerEsIGn+SVC/p74Jw9H1nCbaWkZPcaZBEJK2Oc5kZZr5eGZyJmLe
- dZr9DrtDSNvB6WaMD/8C45rV3JqAyV8ogmJLOzSgjIGvt520pPa9mhqd6uIeSFfYpn2CCzteEz3
- 8lRJcdt5+Yu1wdlhYyOIKbtlfg0jX/CKb1rMpjtwpxx96U+3vwC7VG/MzM+mDutHW/YgrZnAebP
- XCCbyjTWWZJHYzQ==
+ bh=TlJ3vfBE6eOXaSzRlSNwTu3lbTFE43IxxanDcdfmWg0=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj7+KFlHPr1a0isCkNZoxK5D1IytunS6QznA
+ Xx0PkUP/LeJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y+wAKCRByNAaPFqFW
+ PMEgD/4oWPtUHoRU6cbURgatIsy/ggO5IP5Eby7JaGzgNGqFvbfVZBfBsvDvSk0XId2Yf6AKLaS
+ +FnRBa487AwS51rHE8fKzm3XDGnBJoVM4HfBTvt7MRRtyjJtWkwz9n6drkQCgqwHre/wM1QeZ7g
+ CKdpnv3dwheDBseF0afNkwkXfaSuK5Zxhv3bQDQjEmA+LcxstpnzmxIrDVGnjzIx2ny3t1jXc5d
+ iWlUbuGhe76FyZFlBx1AwZxWRWGDXCdZWYPgaSJl4uK2nyOufJh+11XC3vPJ1ZOJiEd+MU3Kwa9
+ uqKFs4IJYj5LqufRjjiFOJI2vh8LGRztTEiMrIZtpBAIYFffQeJvrqX/OYHA62UPzzhHZNOcNQn
+ ihlqj30ly755JApJzOsKzNqHKR8R5O+L6btO4Os2yfBAHOc8hRP7ixaXaizgcAyUiTzH9h2qoBO
+ P5vnAw3fGKJzlvn0KLjeBwFS5Ns/r3FlUap2KSGwjVPs6IWAn7xuSwiDhbHpvhDRvcn/6yMyB4U
+ Q+VLMIRK/oMhvdkTNeQ+c/w4rvt7rnFpwlVIoMHlmQST3eR+hUSY6reLy4f2bShB6sCRz2CFyDC
+ Jz5Z1jNqk3XX477veKLSaJth6f34LbD8yLZ9w5wn/6+xHIh56leHJqnoJ7OLe8iwOqOAIny23Ow
+ KRl8vbIQCATC15A==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_022909_199798_E4051555 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20250802_022842_702495_3844A3B7 
+X-CRM114-Status: GOOD (  13.65  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:56 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -173,128 +172,177 @@ to be available in file->private_data, initialised by v4l2_fh_add().
 Access the v4l2_fh, and from there the driver-specific structure,
 from the file * in all ioctl handlers.
 
-While at it, remove the now unused mtk_jpeg_fh_to_ctx() macro.
-
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- .../media/platform/mediatek/jpeg/mtk_jpeg_core.c   | 27 +++++++++-------------
- 1 file changed, 11 insertions(+), 16 deletions(-)
+ .../media/platform/chips-media/coda/coda-common.c  | 36 +++++++++++-----------
+ 1 file changed, 18 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 8e1883d034f5c67d418f5607c593c60f5d6ddbee..6268d651bdcfd212b58bf686c55660d64b659dfe 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -119,11 +119,6 @@ static inline struct mtk_jpeg_ctx *ctrl_to_ctx(struct v4l2_ctrl *ctrl)
- 	return container_of(ctrl->handler, struct mtk_jpeg_ctx, ctrl_hdl);
- }
- 
--static inline struct mtk_jpeg_ctx *mtk_jpeg_fh_to_ctx(struct v4l2_fh *fh)
--{
--	return container_of(fh, struct mtk_jpeg_ctx, fh);
--}
--
- static inline struct mtk_jpeg_ctx *mtk_jpeg_file_to_ctx(struct file *filp)
+diff --git a/drivers/media/platform/chips-media/coda/coda-common.c b/drivers/media/platform/chips-media/coda/coda-common.c
+index a27d5a261a27fb78d4c7ca008146780698386333..a10576f702127ba6014799e7d3190c2785afd2a2 100644
+--- a/drivers/media/platform/chips-media/coda/coda-common.c
++++ b/drivers/media/platform/chips-media/coda/coda-common.c
+@@ -427,7 +427,7 @@ static struct vdoa_data *coda_get_vdoa_data(void)
+ static int coda_querycap(struct file *file, void *priv,
+ 			 struct v4l2_capability *cap)
  {
- 	return container_of(file_to_v4l2_fh(filp), struct mtk_jpeg_ctx, fh);
-@@ -217,7 +212,7 @@ static int mtk_jpeg_enum_fmt(struct mtk_jpeg_fmt *mtk_jpeg_formats, int n,
- static int mtk_jpeg_enum_fmt_vid_cap(struct file *file, void *priv,
- 				     struct v4l2_fmtdesc *f)
+-	struct coda_ctx *ctx = fh_to_ctx(priv);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 
+ 	strscpy(cap->driver, CODA_NAME, sizeof(cap->driver));
+ 	strscpy(cap->card, coda_product_name(ctx->dev->devtype->product),
+@@ -447,7 +447,7 @@ static int coda_enum_fmt(struct file *file, void *priv,
  {
--	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-+	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
- 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+ 	struct video_device *vdev = video_devdata(file);
+ 	const struct coda_video_device *cvd = to_coda_video_device(vdev);
+-	struct coda_ctx *ctx = fh_to_ctx(priv);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	const u32 *formats;
  
- 	return mtk_jpeg_enum_fmt(jpeg->variant->formats,
-@@ -228,7 +223,7 @@ static int mtk_jpeg_enum_fmt_vid_cap(struct file *file, void *priv,
- static int mtk_jpeg_enum_fmt_vid_out(struct file *file, void *priv,
- 				     struct v4l2_fmtdesc *f)
+ 	if (f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT)
+@@ -497,7 +497,7 @@ static int coda_g_fmt(struct file *file, void *priv,
+ 		      struct v4l2_format *f)
  {
--	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-+	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
- 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+ 	struct coda_q_data *q_data;
+-	struct coda_ctx *ctx = fh_to_ctx(priv);
++	struct coda_ctx *ctx = file_to_ctx(file);
  
- 	return mtk_jpeg_enum_fmt(jpeg->variant->formats,
-@@ -310,7 +305,7 @@ static int mtk_jpeg_g_fmt_vid_mplane(struct file *file, void *priv,
- 	struct vb2_queue *vq;
- 	struct mtk_jpeg_q_data *q_data = NULL;
- 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
--	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-+	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
- 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
- 	int i;
- 
-@@ -356,7 +351,7 @@ static int mtk_jpeg_g_fmt_vid_mplane(struct file *file, void *priv,
- static int mtk_jpeg_try_fmt_vid_cap_mplane(struct file *file, void *priv,
- 					   struct v4l2_format *f)
+ 	q_data = get_q_data(ctx, f->type);
+ 	if (!q_data)
+@@ -658,7 +658,7 @@ static int coda_try_fmt(struct coda_ctx *ctx, const struct coda_codec *codec,
+ static int coda_try_fmt_vid_cap(struct file *file, void *priv,
+ 				struct v4l2_format *f)
  {
--	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-+	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
- 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
- 	struct mtk_jpeg_fmt *fmt;
- 
-@@ -385,7 +380,7 @@ static int mtk_jpeg_try_fmt_vid_cap_mplane(struct file *file, void *priv,
- static int mtk_jpeg_try_fmt_vid_out_mplane(struct file *file, void *priv,
- 					   struct v4l2_format *f)
+-	struct coda_ctx *ctx = fh_to_ctx(priv);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	const struct coda_q_data *q_data_src;
+ 	const struct coda_codec *codec;
+ 	struct vb2_queue *src_vq;
+@@ -764,7 +764,7 @@ static void coda_set_default_colorspace(struct v4l2_pix_format *fmt)
+ static int coda_try_fmt_vid_out(struct file *file, void *priv,
+ 				struct v4l2_format *f)
  {
--	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-+	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
- 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
- 	struct mtk_jpeg_fmt *fmt;
- 
-@@ -475,7 +470,7 @@ static int mtk_jpeg_s_fmt_vid_out_mplane(struct file *file, void *priv,
- 	if (ret)
- 		return ret;
- 
--	return mtk_jpeg_s_fmt_mplane(mtk_jpeg_fh_to_ctx(priv), f,
-+	return mtk_jpeg_s_fmt_mplane(mtk_jpeg_file_to_ctx(file), f,
- 				     MTK_JPEG_FMT_FLAG_OUTPUT);
- }
- 
-@@ -488,7 +483,7 @@ static int mtk_jpeg_s_fmt_vid_cap_mplane(struct file *file, void *priv,
- 	if (ret)
- 		return ret;
- 
--	return mtk_jpeg_s_fmt_mplane(mtk_jpeg_fh_to_ctx(priv), f,
-+	return mtk_jpeg_s_fmt_mplane(mtk_jpeg_file_to_ctx(file), f,
- 				     MTK_JPEG_FMT_FLAG_CAPTURE);
- }
- 
-@@ -517,7 +512,7 @@ static int mtk_jpeg_subscribe_event(struct v4l2_fh *fh,
- static int mtk_jpeg_enc_g_selection(struct file *file, void *priv,
- 				    struct v4l2_selection *s)
+-	struct coda_ctx *ctx = fh_to_ctx(priv);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	struct coda_dev *dev = ctx->dev;
+ 	const struct coda_q_data *q_data_dst;
+ 	const struct coda_codec *codec;
+@@ -858,7 +858,7 @@ static int coda_s_fmt(struct coda_ctx *ctx, struct v4l2_format *f,
+ static int coda_s_fmt_vid_cap(struct file *file, void *priv,
+ 			      struct v4l2_format *f)
  {
--	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-+	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
- 
- 	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
- 		return -EINVAL;
-@@ -542,7 +537,7 @@ static int mtk_jpeg_enc_g_selection(struct file *file, void *priv,
- static int mtk_jpeg_dec_g_selection(struct file *file, void *priv,
- 				    struct v4l2_selection *s)
+-	struct coda_ctx *ctx = fh_to_ctx(priv);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	struct coda_q_data *q_data_src;
+ 	const struct coda_codec *codec;
+ 	struct v4l2_rect r;
+@@ -910,7 +910,7 @@ static int coda_s_fmt_vid_cap(struct file *file, void *priv,
+ static int coda_s_fmt_vid_out(struct file *file, void *priv,
+ 			      struct v4l2_format *f)
  {
--	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-+	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
- 
- 	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
- 		return -EINVAL;
-@@ -571,7 +566,7 @@ static int mtk_jpeg_dec_g_selection(struct file *file, void *priv,
- static int mtk_jpeg_enc_s_selection(struct file *file, void *priv,
- 				    struct v4l2_selection *s)
+-	struct coda_ctx *ctx = fh_to_ctx(priv);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	const struct coda_codec *codec;
+ 	struct v4l2_format f_cap;
+ 	struct vb2_queue *dst_vq;
+@@ -966,7 +966,7 @@ static int coda_s_fmt_vid_out(struct file *file, void *priv,
+ static int coda_reqbufs(struct file *file, void *priv,
+ 			struct v4l2_requestbuffers *rb)
  {
--	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-+	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
+-	struct coda_ctx *ctx = fh_to_ctx(priv);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	int ret;
  
- 	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
- 		return -EINVAL;
-@@ -594,7 +589,7 @@ static int mtk_jpeg_enc_s_selection(struct file *file, void *priv,
- static int mtk_jpeg_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+ 	ret = v4l2_m2m_reqbufs(file, ctx->fh.m2m_ctx, rb);
+@@ -986,7 +986,7 @@ static int coda_reqbufs(struct file *file, void *priv,
+ static int coda_qbuf(struct file *file, void *priv,
+ 		     struct v4l2_buffer *buf)
  {
- 	struct v4l2_fh *fh = file_to_v4l2_fh(file);
--	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-+	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
- 	struct vb2_queue *vq;
- 	struct vb2_buffer *vb;
- 	struct mtk_jpeg_src_buf *jpeg_src_buf;
+-	struct coda_ctx *ctx = fh_to_ctx(priv);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 
+ 	if (ctx->inst_type == CODA_INST_DECODER &&
+ 	    buf->type == V4L2_BUF_TYPE_VIDEO_OUTPUT)
+@@ -997,7 +997,7 @@ static int coda_qbuf(struct file *file, void *priv,
+ 
+ static int coda_dqbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+ {
+-	struct coda_ctx *ctx = fh_to_ctx(priv);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	int ret;
+ 
+ 	ret = v4l2_m2m_dqbuf(file, ctx->fh.m2m_ctx, buf);
+@@ -1025,7 +1025,7 @@ void coda_m2m_buf_done(struct coda_ctx *ctx, struct vb2_v4l2_buffer *buf,
+ static int coda_g_selection(struct file *file, void *fh,
+ 			    struct v4l2_selection *s)
+ {
+-	struct coda_ctx *ctx = fh_to_ctx(fh);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	struct coda_q_data *q_data;
+ 	struct v4l2_rect r, *rsel;
+ 
+@@ -1071,7 +1071,7 @@ static int coda_g_selection(struct file *file, void *fh,
+ static int coda_s_selection(struct file *file, void *fh,
+ 			    struct v4l2_selection *s)
+ {
+-	struct coda_ctx *ctx = fh_to_ctx(fh);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	struct coda_q_data *q_data;
+ 
+ 	switch (s->target) {
+@@ -1126,7 +1126,7 @@ static void coda_wake_up_capture_queue(struct coda_ctx *ctx)
+ static int coda_encoder_cmd(struct file *file, void *fh,
+ 			    struct v4l2_encoder_cmd *ec)
+ {
+-	struct coda_ctx *ctx = fh_to_ctx(fh);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	struct vb2_v4l2_buffer *buf;
+ 	int ret;
+ 
+@@ -1207,7 +1207,7 @@ static bool coda_mark_last_dst_buf(struct coda_ctx *ctx)
+ static int coda_decoder_cmd(struct file *file, void *fh,
+ 			    struct v4l2_decoder_cmd *dc)
+ {
+-	struct coda_ctx *ctx = fh_to_ctx(fh);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	struct coda_dev *dev = ctx->dev;
+ 	struct vb2_v4l2_buffer *buf;
+ 	struct vb2_queue *dst_vq;
+@@ -1286,7 +1286,7 @@ static int coda_decoder_cmd(struct file *file, void *fh,
+ static int coda_enum_framesizes(struct file *file, void *fh,
+ 				struct v4l2_frmsizeenum *fsize)
+ {
+-	struct coda_ctx *ctx = fh_to_ctx(fh);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	struct coda_q_data *q_data_dst;
+ 	const struct coda_codec *codec;
+ 
+@@ -1319,7 +1319,7 @@ static int coda_enum_framesizes(struct file *file, void *fh,
+ static int coda_enum_frameintervals(struct file *file, void *fh,
+ 				    struct v4l2_frmivalenum *f)
+ {
+-	struct coda_ctx *ctx = fh_to_ctx(fh);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	struct coda_q_data *q_data;
+ 	const struct coda_codec *codec;
+ 
+@@ -1358,7 +1358,7 @@ static int coda_enum_frameintervals(struct file *file, void *fh,
+ 
+ static int coda_g_parm(struct file *file, void *fh, struct v4l2_streamparm *a)
+ {
+-	struct coda_ctx *ctx = fh_to_ctx(fh);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	struct v4l2_fract *tpf;
+ 
+ 	if (a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
+@@ -1441,7 +1441,7 @@ static uint32_t coda_timeperframe_to_frate(struct v4l2_fract *timeperframe)
+ 
+ static int coda_s_parm(struct file *file, void *fh, struct v4l2_streamparm *a)
+ {
+-	struct coda_ctx *ctx = fh_to_ctx(fh);
++	struct coda_ctx *ctx = file_to_ctx(file);
+ 	struct v4l2_fract *tpf;
+ 
+ 	if (a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
 
 -- 
 2.49.0
