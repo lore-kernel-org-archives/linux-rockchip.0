@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C207CCD1A7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C13C2CCD193
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,36 +12,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yt0eEWD+bSgADGDxxvYjt3Ny2CzxbA57h93c2Yv2WTQ=; b=bqrLzfdIU2YJXU
-	YcKAn/G5kpaLNEjawtWOhKEOxQU6oYmYf0FIdBNO4Dm+cRUyDRIJ+Ym9Dfg5cUa6MhXH442KSsY5s
-	Gv4/f3HSDw0JLvIxlZSgCaZOvbq9is7luTPr06JRBc91c6mc5E4MuQNQPWDzUjSjPhi+sQ8pkLApX
-	7DPjGntux0C3NetrEOFvXsZxzmgshflgEPCI9E3QQEnK+ZiTZJ3aWCsO8b/+1YqJ8SrHYMZlE5PZr
-	k+kEbh9cI4nza1osBFtQPEdqpc9lb+RdSDsiq+nDUSY4ydY9bjIWSzWoOL1EyehM8H+oiusmj9rdi
-	VWeKr4J0/o0eAmP1dHlA==;
+	List-Owner; bh=2fnFuPd5wleyTUGD8jZ5r46GFIzgOlXmQCBCsK4tuwI=; b=0NntUQ1pzL/voQ
+	VtM1olVvzIi9pbyyhv6HK4GRdFNZH+ugux7MyinBXp/C/HyffkBpY7FvnE1ndh21CXzKy7O3LoK2B
+	fa0//9ILzFFv+B474FvoE7v6Sxtbnhzsa9bsjAQDHJbu70Z234XzZdHwQ6OpI4za0oyB9/VMTq5Lo
+	jL5b+XbG2yW81+JVZ4ahjnJPzcSL/m4KFXPVt8nyyU3mye8wz8lHQgdjie1t4gt5oXvRjpm6wLywL
+	CnzeYkuoZVX6qTfaven+P/cnCvEDu0jbJeeDax/VD+nxGxOBELXSL/R0LMVKg9h7wXJaBg4CRi9NB
+	aBa+wksRJtcmOJBhUiCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoXO-0000000DBYs-1KK1;
-	Mon, 20 Oct 2025 11:58:54 +0000
+	id 1vAoXM-0000000DBVW-2ilf;
+	Mon, 20 Oct 2025 11:58:52 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8dD-00000007SXg-428q;
-	Sat, 02 Aug 2025 09:34:25 +0000
+	id 1ui8d2-00000007SQy-0UoT;
+	Sat, 02 Aug 2025 09:34:13 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 022AA467C;
-	Sat,  2 Aug 2025 11:33:25 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 01DB643F7;
+	Sat,  2 Aug 2025 11:33:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754127217;
-	bh=STH9snK10gtXsl0Tkj6PDu+gh4QvT10JOLkLT1jU1Tk=;
+	s=mail; t=1754127205;
+	bh=ugZh/KFY5LMHBtI9abTRXe3/VfduYxDNcYofd35iW9A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=GWqhxXE8irHZjTwzjw01vy/67LkCfP0pfmdBF7ezLwvyg/uNIQNc+TtMFG9aSke3p
-	 NZulEiSKLMd11OqQyyXrX5YsDoHpqfjgzaGJIRoJ7eNeumumTzNYN1CzR1Eil0nkY6
-	 WuWgQcq2WLxWmfoETRaKF36owSar3DypycTneFaU=
+	b=EczlcoJFbDCzor1UJYwkUixhGK8xZeYVEQgf2zjsTBoG5f3rAGBr7ZW1udpXzsSw+
+	 PaCYNja9CGEUBK6a+A2RNVXvzoKvVL32iD4f04zH888Qbzd4RYSYDndijzhdNMtOLt
+	 NZnCMhc90PQkjsXpC98MWxGN6mqpLpHHRq5RnIBc=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:23:26 +0200
-Subject: [PATCH 64/65] media: staging: ipu7: isys: Don't set
- V4L2_FL_USES_V4L2_FH manually
+Date: Sat, 02 Aug 2025 11:23:25 +0200
+Subject: [PATCH 63/65] media: ipu6: isys: Don't set V4L2_FL_USES_V4L2_FH
+ manually
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-64-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-63-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -130,27 +130,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1003;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1027;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=p6i7vq6AGF+FzCieEq6uikbi372+gaeFOto0fi3HS6o=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj/W2cYpWyQz48RU91dp2DTutVfBmqMPGp+b
- WBa4MAGzGaJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/wAKCRByNAaPFqFW
- PMUSD/9KnL/eRvaIxpn9zFQhhB4f8NrjuBZWdfgaHkoDnaAqP1i19guBgcJE3f9tcOMNs3VJfDZ
- OWLWtP5TybilDpd3yyvSJo01d7v5vEUDoelSS6krxhp9p/0AJQxZOiZiXAokVzbF5Zfkdsp7TPk
- luOqefJFbETRJilJyM58wla5jNWMaffzAtHKLBChcvUofPfW1oYsgglGuzmEBcafZThzNqQZK3t
- F5Ma3lrVztWQBboT/QKUGXHnZ1d/2e0t6D3OEU8ZIE7CN/6ZGKOY7bNX6vBKkKOUaPlVh20SzvX
- L6P+QGDBoKq1oI8I3lx0eyIwfS5JeqysXHFE/oMB6LuRHFBqQoIwYdnZyDSmnIan9MrD7XwsSZq
- zrB3YBSb6Z5E2lPzqUYVE/sVJMz0QvQNwNmWm4fLdlSDl7Dwz/5cszF4QFIXWtydcVyJ4l5fOSK
- JKIB7XSb1c2qXe2TIQSCd8yEMmS3h8AouJat8td4arP/Pdi8mb5boQRMOgpeEe9EVCuNCfAkQO4
- EX/HxyD0IWJ4n6tjJ8mzv/SAqJeqI1ZoHooJK7O9bWT5KbqDxQlhL9sUDB7JppOc3Cwct7bRRlB
- 2Tycx4bL9LvT1T3yAc/ni3fuaDQxyS6awmAgRZPFb1L3CUZDflx8hBAi8ITTNdMyYqaPij5mAw/
- rRmA9IGOhm6GMYw==
+ bh=JegptJK/Wh+Y3waXfEoaG6eqZD0SkxAIytfm8Tqanf8=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj/rV2onUyAj1Ve0S8AEhrBpSnCKsJ7/mmH6
+ Rix8TpQ+3qJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/wAKCRByNAaPFqFW
+ PMNMD/sFA/FTtUQGAqxj6hcVIegtJidGsIWt+OwDUeT5SttZ1yGE+mxy2mXyIdarbOQRkDlWrMz
+ B3b0dcbhFM4O+ag1TuALQllprFLcTPBkpxlhhWFyJykxUpkFgS1xtTSAd3OtI0g6WSnJbzxDCa0
+ C9cO3jGU0z8et+LJRu+rRi4ArnjZjaupgMEge5SBvFM89JAWolUppy8FnADTJtXrxOtgkO85LGj
+ Hz0R4ns95HNI772/U/Q8VLX9xYHRe/uCOmhT54PffiApIqBNBR9o2GDX6ztDGTlvoT9hIK+PXdP
+ eaa6kiu+1gExaMU7Aah5FJb57ikuODm3RKJ6XU7BZCul4E06C9JqYLCSCibSI+hSpiFe+HKe/Mb
+ 3Rf8vrJXbkAmPOl1xZ9AmjJZxX9rqKaZfZJIM1cHRyD8D+GY84dqNby5rdwSvWCbp4MRCUq3Hgd
+ GhhNicEEatld6fs7qLN4+BWYAuHCmAlTRAC6J63J+0Hq+aVAxo8M6vGGJbzJH2sFw4UWFO8WonQ
+ JqhqQPdO/rK7VQd+3mnogYjsUfLjUF2J6M4D8sQrRcYJm1QTvq1ZAwhDmWWw0wW5fdT/AZUrem4
+ V6ryoP66+qtsLSW3sfdCkUEvbEq+eSSy9izUSKGe8I0631Q/ugWwMQ6GLbyuDYhoS5q8+3BajEh
+ Q+6reTO4wHR944A==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_023424_149044_2154C43B 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250802_023412_303775_50756B5D 
+X-CRM114-Status: GOOD (  10.05  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:57 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -171,21 +170,21 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
 The V4L2_FL_USES_V4L2_FH flag is set by v4l2_fh_init(). It is not meant
-to be set manually by drivers. Drop it from the ipu7-isys driver.
+to be set manually by drivers. Drop it from the ipu6-isys driver.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/staging/media/ipu7/ipu7-isys-video.c | 1 -
+ drivers/media/pci/intel/ipu6/ipu6-isys-video.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/media/ipu7/ipu7-isys-video.c b/drivers/staging/media/ipu7/ipu7-isys-video.c
-index 8756da3a8fb0bfaf88da199b4608c7850888e6a2..6b31c766bc5835f8b6e28ad75efead918934349b 100644
---- a/drivers/staging/media/ipu7/ipu7-isys-video.c
-+++ b/drivers/staging/media/ipu7/ipu7-isys-video.c
-@@ -1082,7 +1082,6 @@ int ipu7_isys_video_init(struct ipu7_isys_video *av)
- 	__ipu_isys_vidioc_try_fmt_vid_cap(av, &format);
- 	av->pix_fmt = format.fmt.pix;
+diff --git a/drivers/media/pci/intel/ipu6/ipu6-isys-video.c b/drivers/media/pci/intel/ipu6/ipu6-isys-video.c
+index 24a2ef93474cc400f64eb1d50bc760ee66124d1b..f3f3bc0615e5dc698be5c479dfed8ef2eb49cbfb 100644
+--- a/drivers/media/pci/intel/ipu6/ipu6-isys-video.c
++++ b/drivers/media/pci/intel/ipu6/ipu6-isys-video.c
+@@ -1306,7 +1306,6 @@ int ipu6_isys_video_init(struct ipu6_isys_video *av)
+ 	__ipu6_isys_vidioc_try_fmt_meta_cap(av, &format_meta);
+ 	av->meta_fmt = format_meta.fmt.meta;
  
 -	set_bit(V4L2_FL_USES_V4L2_FH, &av->vdev.flags);
  	video_set_drvdata(&av->vdev, av);
