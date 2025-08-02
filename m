@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D51B2CCD1AA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B31D5CCD1A5
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,35 +12,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y6+5oT9Yv/rYVE5+H9YwUcAT6Z0b9A4op7e8XJGQMI8=; b=p27PdftZy8mOd3
-	sQWI6GXsjvKxSdTzm/UPa/KQY/UapwygRNqypIbS29Q7O8L+wzCBcCMJW8pT+k4rOzVDW4aSaYAvS
-	Emnd7ljQZ70Zinrh44RtTHm0WWbbfF88LyfYxh1+zN6+oHoMBTQTBdYqNg3m5IKonR5i5WllKAmGw
-	EFJk7Uc1r7Y/wN4cQ2NdCvBIXzK5bmhiqt9IBvq6NQjTnleX44kAM7waZJCUb+0x6mM2fUZyP6TH/
-	eDZnsN8ifXMmhjLS4tZJJsrlbLqoQnUgt7BymABOLOz0aq+LHclr1cJF/GMc3lR+X5alYbuAONzPN
-	I9RG4MQLkyBkWtJai8BQ==;
+	List-Owner; bh=3M/covaDps2sTzOumkiIuqgt8zE8nS11lNVCK7wHfCg=; b=hVn6VW4bTuWiBM
+	W+OYHVPHmP2VT0WUUZHuhluQiQm2DNx9IAdQN1DVX+v/KdGE/uo/+fjpSQyFCWq+Y4SK9Agam1cSg
+	2ZGkQgXRV9ApmVE2bREe+AXNQygAhG8i63KWEc6le64fTIgCe9yZlAEk64uJw7mq7tIT8CqYibYlI
+	AofKDx9A47bHTkaBP1o4uiRv1tvW4zjNNXnKWiX6dyfFWTdT13xlNbh3OFcNZr1KERxaSbBX1vdZN
+	279V78bZjjzhA8n0w8AH2hvD51mS1NfzmL15ud11ZuChNaMA+yW1ToT/HKGUS3N6XDvyisUsHBIxe
+	ZDWru+bjdPKqQloL6BfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoX2-0000000DAzY-2wYy;
-	Mon, 20 Oct 2025 11:58:32 +0000
+	id 1vAoX4-0000000DB31-0cu4;
+	Mon, 20 Oct 2025 11:58:34 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8Zw-00000007R5n-3kaH;
-	Sat, 02 Aug 2025 09:31:02 +0000
+	id 1ui8aG-00000007REf-3hFB;
+	Sat, 02 Aug 2025 09:31:22 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1273442A8;
-	Sat,  2 Aug 2025 11:30:06 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B3C5940D8;
+	Sat,  2 Aug 2025 11:30:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754127014;
-	bh=Zf/YF3LmVEiKTVMxhxN0Gc3jRXrBb3FeFalAScFj6mo=;
+	s=mail; t=1754127034;
+	bh=P+AdXovkDs72ySz3QReqGKxKqBANHR4M/z/Qnx0Et0A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=YPXEsqU+w5BHs2YjAiEdi9Om4cBHZlvX9Eujp4q56v0+VTiJPEhylI/ND2mDx+g56
-	 HaO3XrJCv0FpZqsUki4cZrhfVPyfjn/UI5Xx7uqpalKNp5RiY75mnWGs+tk1l/zFK6
-	 zopdbV1n9Z7K07TR/Ze4XWK1UeA0MeTKcHg4DeUY=
+	b=TYEMJ1NQIn2AHami8rz14vK1JzGQigVifiRoyt6QHmF3Iu7LxEUWe+myT+degFzvr
+	 js1GxPK6uXfvuzkK5py81gAkb/ClqJxrx4Q9yB2nZNuMAdOJCd1ZQz6ex+ZmHLpccd
+	 Mvkz9iIBZ12ifbUQkccgBT6ah7Ey34/3qfhaou9E=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:23:08 +0200
-Subject: [PATCH 46/65] media: exynos4-is: Access v4l2_fh from file
+Date: Sat, 02 Aug 2025 11:23:10 +0200
+Subject: [PATCH 48/65] media: s5p-g2d: Access v4l2_fh from file
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-46-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-48-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -129,26 +129,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3270;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2354;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=Zf/YF3LmVEiKTVMxhxN0Gc3jRXrBb3FeFalAScFj6mo=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj99+qGA9flCQyC0++cheYFVG3MraszyTga5
- d8jaXvn40aJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/QAKCRByNAaPFqFW
- PD+MEACYV0w7+ed4A0+Uo+tBCjNKgzmO9oF6JqADv7iHNudn42HhFykLdXyiqpLvzF6gyhoDnB6
- 6L2bJ5NdgwQhQU8kd6jXjAuWCDD47AvAWGJ3V/J9MR/iMk6KHBQiOj33HbBhyX2KMn2y6tdms2C
- RoOvQGhJm1b0dqHD0Zr/wD5YXKZwADh+Q56rqQDe/qe+lPFPG5Ninkbw9tgYRok43YSUF1fX0c+
- ZTGz+YOlqi0Mq+8u/Bbp+svfhyL/JE5OHosRFcPyIAbNsfb3bojLWbIA3ge6yVBS00hhwNGgmDK
- LNUaCOcL0tyYkJwna8zv4df3i9FYGaLKabR50yMu59Db0iRnsKVetY3Q72r9opleDRyQmhPTFHE
- HvugiIJ9lmcjKuZpRjJRUcLU/8rdoNTUgj2UUYTT7bkQb5F98sUeexN04EySlWp49oElL+aSqM8
- Q4ZMmB2m0fOmdEStlAcqGQ9FBO/Uxy8698vqbNX7y5Qbz33JwsdbCN25DkUi+YSVBtexCKevBqB
- wBXQyyP6iqnuvCUsn8ujdk6JitPJkPQWrD+/LRKVBS0T7EsM1p9DCk6qMzNMzbtqQIX9aL9Ezy2
- 823yvwOJotRBYc7vRV6EDSHmodGV0Kaq5g4JTSF4z1rw0Dyh5gPW2Xezvyr4ppe7lXloMWmVpDo
- lNwfgwGbMF+bYTA==
+ bh=P+AdXovkDs72ySz3QReqGKxKqBANHR4M/z/Qnx0Et0A=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj9QjDArsCCpetRJypejE9fiKxkH/6QF97H/
+ V7Va6UoY5qJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/QAKCRByNAaPFqFW
+ PC37EACiB4t1ueWIIp+xm9SL1tP9bPd4oIx6m58tUtufzqv2UhhlQY2uIeweEcdjDrnmK6wlPFf
+ Zh67AxZib08g3DhnLVPtuf6zyFFx9glCJg6E37kf4tO0Cbjk2b7Wo0XqOtvRvL0mrbcFdm10XOQ
+ u48ojoafbcLDoihcjqYmZZQA517dhFRTPQq0ewLAWh1vRHp5r3u6zxmRYWXvtvn07t8yRHYo1yy
+ pTIdGY05xvfVpm2AwuDef2uLWLTO0ecyx5rhZzPNUGXD+b+hBJfXTGV2aZuhzrLZFz4q/HnJ3x0
+ BYQRN2rUU0mfRw6XAJg2vcYskCk4xE1oHXWcvGmeORkGTZqWQquB4DHbQxT1ITU7vwv3iRSKx36
+ fCognK5a0c4ZW//QBYFwwlv9k74VAtnxKtNiBK6Vbuhbjdsu+YafF0wxxd0bwQ7mVD56iAeaLTZ
+ aP2D2Iy/3E+BdZ4DzVXCbcj9E+jTxZfxbaXg3u5ARjUZb/cQaha4H5DW+a/bxwe6Dc0pyaf8hr7
+ jlWtg1P74osSQLocQSEkYZA+LkuSwrf7AjDO/49ylXeeTtmSe4k4UQHi0XpMZYOYBqHYmyW7gGE
+ ppnTGZndhnM4xWgtUrd4XxDQx4HNaUV59HsflvBoP9BCtbJ8eruyG9ddj+y0d1cNTq36z2Yf78+
+ 2X3qjhfFmyd527g==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_023101_080566_7D24F820 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20250802_023121_065124_937462E0 
+X-CRM114-Status: GOOD (  12.46  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:57 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -172,76 +172,60 @@ to be available in file->private_data, initialised by v4l2_fh_add().
 Access the v4l2_fh, and from there the driver-specific structure,
 from the file * in all ioctl handlers.
 
-While at it, remove the now unused fh_to_ctx() macro.
-
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/platform/samsung/exynos4-is/fimc-core.h |  2 --
- drivers/media/platform/samsung/exynos4-is/fimc-m2m.c  | 10 +++++-----
- 2 files changed, 5 insertions(+), 7 deletions(-)
+ drivers/media/platform/samsung/s5p-g2d/g2d.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/platform/samsung/exynos4-is/fimc-core.h b/drivers/media/platform/samsung/exynos4-is/fimc-core.h
-index 25711df062e79eb2066f0f6eab1c1733f16c9c2d..c23cbdee7afcdfedf1a2ef0433b98af6b4478eef 100644
---- a/drivers/media/platform/samsung/exynos4-is/fimc-core.h
-+++ b/drivers/media/platform/samsung/exynos4-is/fimc-core.h
-@@ -496,8 +496,6 @@ struct fimc_ctx {
- 	struct fimc_ctrls	ctrls;
- };
+diff --git a/drivers/media/platform/samsung/s5p-g2d/g2d.c b/drivers/media/platform/samsung/s5p-g2d/g2d.c
+index 922262f61e7b53baf1b5840d35149bf5b4b2e7ad..55f5130156b7e8690bd0eb204630a730d9f84bd6 100644
+--- a/drivers/media/platform/samsung/s5p-g2d/g2d.c
++++ b/drivers/media/platform/samsung/s5p-g2d/g2d.c
+@@ -307,7 +307,7 @@ static int vidioc_enum_fmt(struct file *file, void *prv, struct v4l2_fmtdesc *f)
  
--#define fh_to_ctx(__fh) container_of(__fh, struct fimc_ctx, fh)
--
- static inline struct fimc_ctx *file_to_ctx(struct file *filp)
+ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
  {
- 	return container_of(file_to_v4l2_fh(filp), struct fimc_ctx, fh);
-diff --git a/drivers/media/platform/samsung/exynos4-is/fimc-m2m.c b/drivers/media/platform/samsung/exynos4-is/fimc-m2m.c
-index 609fd84f89d4ad189d0f367bb37693f15f3a618e..562c57f186c61546175b4f902f1da18fbb2f25fe 100644
---- a/drivers/media/platform/samsung/exynos4-is/fimc-m2m.c
-+++ b/drivers/media/platform/samsung/exynos4-is/fimc-m2m.c
-@@ -249,7 +249,7 @@ static int fimc_m2m_enum_fmt(struct file *file, void *priv,
- static int fimc_m2m_g_fmt_mplane(struct file *file, void *fh,
- 				 struct v4l2_format *f)
- {
--	struct fimc_ctx *ctx = fh_to_ctx(fh);
-+	struct fimc_ctx *ctx = file_to_ctx(file);
- 	const struct fimc_frame *frame = ctx_get_frame(ctx, f->type);
- 
- 	if (IS_ERR(frame))
-@@ -308,7 +308,7 @@ static int fimc_try_fmt_mplane(struct fimc_ctx *ctx, struct v4l2_format *f)
- static int fimc_m2m_try_fmt_mplane(struct file *file, void *fh,
- 				   struct v4l2_format *f)
- {
--	struct fimc_ctx *ctx = fh_to_ctx(fh);
-+	struct fimc_ctx *ctx = file_to_ctx(file);
- 	return fimc_try_fmt_mplane(ctx, f);
- }
- 
-@@ -337,7 +337,7 @@ static void __set_frame_format(struct fimc_frame *frame,
- static int fimc_m2m_s_fmt_mplane(struct file *file, void *fh,
- 				 struct v4l2_format *f)
- {
--	struct fimc_ctx *ctx = fh_to_ctx(fh);
-+	struct fimc_ctx *ctx = file_to_ctx(file);
- 	struct fimc_dev *fimc = ctx->fimc_dev;
- 	const struct fimc_fmt *fmt;
+-	struct g2d_ctx *ctx = prv;
++	struct g2d_ctx *ctx = file2ctx(file);
  	struct vb2_queue *vq;
-@@ -376,7 +376,7 @@ static int fimc_m2m_s_fmt_mplane(struct file *file, void *fh,
- static int fimc_m2m_g_selection(struct file *file, void *fh,
- 				struct v4l2_selection *s)
- {
--	struct fimc_ctx *ctx = fh_to_ctx(fh);
-+	struct fimc_ctx *ctx = file_to_ctx(file);
- 	const struct fimc_frame *frame;
+ 	struct g2d_frame *frm;
  
- 	frame = ctx_get_frame(ctx, s->type);
-@@ -484,7 +484,7 @@ static int fimc_m2m_try_selection(struct fimc_ctx *ctx,
- static int fimc_m2m_s_selection(struct file *file, void *fh,
- 				struct v4l2_selection *s)
+@@ -359,7 +359,7 @@ static int vidioc_try_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ 
+ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
  {
--	struct fimc_ctx *ctx = fh_to_ctx(fh);
-+	struct fimc_ctx *ctx = file_to_ctx(file);
- 	struct fimc_dev *fimc = ctx->fimc_dev;
- 	struct fimc_frame *f;
+-	struct g2d_ctx *ctx = prv;
++	struct g2d_ctx *ctx = file2ctx(file);
+ 	struct g2d_dev *dev = ctx->dev;
+ 	struct vb2_queue *vq;
+ 	struct g2d_frame *frm;
+@@ -400,7 +400,7 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ static int vidioc_g_selection(struct file *file, void *prv,
+ 			      struct v4l2_selection *s)
+ {
+-	struct g2d_ctx *ctx = prv;
++	struct g2d_ctx *ctx = file2ctx(file);
+ 	struct g2d_frame *f;
+ 
+ 	f = get_frame(ctx, s->type);
+@@ -450,7 +450,7 @@ static int vidioc_g_selection(struct file *file, void *prv,
+ static int vidioc_try_selection(struct file *file, void *prv,
+ 				const struct v4l2_selection *s)
+ {
+-	struct g2d_ctx *ctx = prv;
++	struct g2d_ctx *ctx = file2ctx(file);
+ 	struct g2d_dev *dev = ctx->dev;
+ 	struct g2d_frame *f;
+ 
+@@ -478,7 +478,7 @@ static int vidioc_try_selection(struct file *file, void *prv,
+ static int vidioc_s_selection(struct file *file, void *prv,
+ 			      struct v4l2_selection *s)
+ {
+-	struct g2d_ctx *ctx = prv;
++	struct g2d_ctx *ctx = file2ctx(file);
+ 	struct g2d_frame *f;
  	int ret;
+ 
 
 -- 
 2.49.0
