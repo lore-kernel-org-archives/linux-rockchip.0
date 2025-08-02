@@ -4,51 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D86E6C87FD2
-	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Aug 2025 08:59:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D0CC87FC9
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Aug 2025 09:59:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6TGlF7dSQ5pgeCic4fAm3ilEQwoqWhU/vp7iQjCm+xc=; b=g6lNB/u5uNyBNJ
-	qmjg0ze/1cb0R5yTCztG3ZXyt3BSxEetPLJvrMfydWhj2lrphLlufVczQYcB9r9irMnWJsGfxoDlb
-	p25oOwuKO7c2viv1JC8u83+TWA505D8Q1E9RWYr1N2PknO/bv24OLlonMW2rNulvcZ6ut8mLYR4nE
-	LNelLBnKiGVBdB8RQptfCLD3Zbvh8sMMIUtKWib9URZAJ32WHL/whpf3JsBV4CvfZYNg0J35YTCDf
-	QTERy0RM7povhXDIM2E6EMoGqtjGYUXVXQZtSVm739kUgWNZ6C70FlA2xpCVaI04Li4V8eNYgxmop
-	NRr013BAl+NRIcUvoCRg==;
+	List-Owner; bh=GDXvm99A/7F9mWcgUmP/+zlhx3iMLcKT4PV34vByWpg=; b=Evo/IcmGSloYcg
+	WkEhbJfwIcx4X5xZUz1vz2mOb2QOubpNihgb994C8SUM3tnS3JdS7H+xR5t+SDKwFIZgFO0GCRXec
+	7M3L6+4FZ4YTcopyp1tRTlKgnCrEK/EiqMeho6ic4QzYC/XCvA0X6UQmEZ2QjjbSgWIrniW4X8oj0
+	az0VF6+lMN+c8p++oMY/QjhWt9yIKIvaHAHLT6WIKbD1GVuDbOlFGdKwa/wFdeEqs13Qsaga39iNj
+	dOY3+1Mojj+0KbeSh0tgVS0NOQ5K1ZoZwiBx238n8+QWqdWgo3/yC5QN/EJ6nLlBeb5KQjCFw6cd6
+	hYZ6456H5WKnk1GkldOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui85i-00000007MZu-2H1n;
-	Sat, 02 Aug 2025 08:59:46 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1ui90u-00000007WFi-0noI;
+	Sat, 02 Aug 2025 09:58:52 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui838-00000007MRr-1XcF;
-	Sat, 02 Aug 2025 08:57:07 +0000
-Received: from pendragon.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 661F0502;
-	Sat,  2 Aug 2025 10:56:18 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754124978;
-	bh=nYyvKl0CCeHVhdWP/3yUc4IrMDXtOnmfVsMdPgrXqD0=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=fcajHu4Gpl2WoahZXhLXnKeXUcKyJyz/+9ecDFnjbT/ZlJlJ+o5UJHsxrv8Pxk4X/
-	 10n35WQDUv+MoBex2HWytBMVzLzb66NG2rwXLabr9VZtamhshELjRj2slDfbA5jKfU
-	 6eCS4hNcBciQwSWDhSk954o9VzjbA4orMcKUkw80=
+	id 1ui8yG-00000007W3A-0w9o
+	for linux-rockchip@lists.infradead.org;
+	Sat, 02 Aug 2025 09:56:13 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5725fdLQ026102
+	for <linux-rockchip@lists.infradead.org>; Sat, 2 Aug 2025 09:56:06 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	Asqzu24OO8UYIDi9bC459VXzWsN/7IVQ4DWi2UawXoM=; b=RrMHPVM73DxKGGJg
+	qqsIWm2Q/ZTftd8Fup41iicv4JvJklA/4eAeX7aUHbhLxKYR8ZmnvoSWb1utRHaa
+	gj8mIJXbltj2Qkz7gEnelSrogPSjtGN6M+uXFhKRM1oaxxxKMCLYCnaVAL01LFhk
+	YgK4QaldVVykklAyWbWn+2u9imuUvi4/ZooQeCHIbN/1AdnkMgXEX2bWgu0ts4Q1
+	hf+mEcYNDhM5BWjVCLDRFiYxVCuxJGMOrpkU2GAums6U8H0OFxriXG5/2W9oTjuI
+	x5OlK/Tf2KXh4u/eXDYp6X8OF/fCQrLcvyI0JZuQxznMb3WYdTAUTACFlOcannvI
+	HQ79zg==
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com [209.85.219.70])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4898cjgt76-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Sat, 02 Aug 2025 09:56:05 +0000 (GMT)
+Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-7074bad051fso43002396d6.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 02 Aug 2025 02:56:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754128564; x=1754733364;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Asqzu24OO8UYIDi9bC459VXzWsN/7IVQ4DWi2UawXoM=;
+        b=Ewv8eTOGW9nRC+0WgNgcHpQKgGiTv2shqneNFLq9XyXI2wuz6DjL5L9/pb+OPfo+2v
+         QaUl7ariS595NeVSIL1t06CB/M803w1a+mUO9LZ4MZioK7JPGPgiJ2hxM4IM7IcR5mqx
+         jSLprcd7H1xRSQQW5LkQmHWzZJYGXMGKfy1ymL6hhy828TeDIUhb//a/bUkEFz/Bdx/R
+         qbCmH8v9DM9RPg3k5594P5a967o6QG93Afvx3Hmm0hUQyGFXlbFhJrjlua61tbU/+oVb
+         LU0zQsuzFhKqd4nEdIThiYe7XP7xuDAOb9041gEqOaCzM7l/jRKs4NrSCcicelVgi0/Y
+         PKLw==
+X-Forwarded-Encrypted: i=1; AJvYcCVDVd8WJvtldT9235TAu1YsApTtafjzq2+XfvTsYZvCJu2fVvHsTliatqHdARvYOa+wH/2F/cA2Y8Kx3ifv/w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwjwfUIdP1jBHLHWsDfY3hwehZVpQmg4mCWk10fEYQTR/EYCIci
+	PiTxzCiUl5S6ud0pFEs7Y4NYPy5k7tVPvAzrZzllcRqLZALD3BOpjjLWTQYPImocFW5YN8HDv6O
+	/OsVRvxWyBJ+43wvRrJT+pktHDcH/UdnZzfW27dXcJh3onF8nmAPW/F3G52O0ndo8JjUPR2InWs
+	w=
+X-Gm-Gg: ASbGnct8mKCwR5hiu5dMIamgR7MvatTH5Oj2mSr7kUCCwO3vr90Hsj4/oQpF0wp6xYc
+	wVbvRxq/T5UpH4p3cJrZ02fhCaAa2JRXXPfobn9dvW2OskWisAye7mI6Pr02Ulm+AeUnXUJeNCB
+	5I9wano/eO6KUeLan8ZdHj1Xy1dQROQVJaAa3VBPdrzVsOZLAF9BDsLn8F9rdPQt4GLnuhsl2zY
+	OjfEIgA3n9CV0SIZoKKV5EcjvYjjtnT51wAPMPUYjR7SQLF98lA7ZApu0d120qPtGFYBW32FCoz
+	lkwjyU5JBcsibupiglGLGxceoawld2SZ+PXUUHoaqrOJYZtuj63NC11fKZl8HmrH579fAsmepRk
+	eO+4p2QX4qIGp4zZA5qiCZNolXPUhnAFaH/xsrS3iLAysQQmKhgi0
+X-Received: by 2002:a05:6214:400b:b0:705:8d7:a0c3 with SMTP id 6a1803df08f44-7093630075cmr37002456d6.34.1754128564359;
+        Sat, 02 Aug 2025 02:56:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGOTdM2Iczyvgl46yWDi8GTyzV7HP8tA/9iXZHl881FgxKm6LV0IC4YJNQAmmZo1HrO7zCu2w==
+X-Received: by 2002:a05:6214:400b:b0:705:8d7:a0c3 with SMTP id 6a1803df08f44-7093630075cmr37002056d6.34.1754128563864;
+        Sat, 02 Aug 2025 02:56:03 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-332388d8ca4sm10105271fa.45.2025.08.02.02.56.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 02 Aug 2025 02:56:01 -0700 (PDT)
+Date: Sat, 2 Aug 2025 12:55:59 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+        Kishon Vijay Abraham I <kishon@kernel.org>,
+        Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+        Andy Yan <andy.yan@rock-chips.com>,
+        Yubing Zhang <yubing.zhang@rock-chips.com>,
+        Frank Wang <frank.wang@rock-chips.com>,
+        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Maxime Ripard <mripard@kernel.org>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Amit Sunil Dhamne <amitsd@google.com>,
+        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+        Diederik de Haas <didi.debian@cknow.org>,
+        Peter Robinson <pbrobinson@gmail.com>, devicetree@vger.kernel.org,
+        linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v3 0/5] Add Type-C DP support for RK3399 EVB IND board
+Message-ID: <pk5wecbbpxn7v4bdwtghhdnm76fmrmglelytljwfb4cgvpu2i6@rk5turgyt5xq>
+References: <20250729090032.97-1-kernel@airkyi.com>
+ <3kefqzjewmsyzfvyi33kvlgjd6jphjg3fsnixb3of7yb3xkgs2@hgi6xfkgd653>
+ <63ec11cf-7927-431a-995e-a5fc35ef1ba7@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <175412405784.2356345.13601254650114566601@ping.linuxembedded.co.uk>
-References: <20250620-camera-v4-0-0201a8ed5fae@bootlin.com> <20250620-camera-v4-3-0201a8ed5fae@bootlin.com> <175412405784.2356345.13601254650114566601@ping.linuxembedded.co.uk>
-Subject: Re: [PATCH v4 3/4] arm64: dts: rockchip: describe I2c Bus 1 and IMX258 world camera on PinePhone Pro
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, imx@lists.linux.dev, Olivier Benjamin <olivier.benjamin@bootlin.com>, ~diederik/pine64-discuss@lists.sr.ht, Dragan Simic <dsimic@manjaro.org>, Ondrej Jirman <megi@xff.cz>
-To: Conor Dooley <conor+dt@kernel.org>, Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Nicholas Roth <nicholas@rothemail.net>, Olivier Benjamin <olivier.benjamin@bootlin.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Rob Herring <robh@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>
-Date: Sat, 02 Aug 2025 09:57:00 +0100
-Message-ID: <175412502069.2356345.9219250797238353702@ping.linuxembedded.co.uk>
-User-Agent: alot/0.9.1
+Content-Disposition: inline
+In-Reply-To: <63ec11cf-7927-431a-995e-a5fc35ef1ba7@rock-chips.com>
+X-Authority-Analysis: v=2.4 cv=MNBgmNZl c=1 sm=1 tr=0 ts=688de0b5 cx=c_pps
+ a=oc9J++0uMp73DTRD5QyR2A==:117 a=xqWC_Br6kY4A:10 a=8nJEP1OIZ-IA:10
+ a=2OwXVqhp2XgA:10 a=JfrnYn6hAAAA:8 a=s8YR1HE3AAAA:8 a=GTOoGQlhK9DRF86BnBwA:9
+ a=3ZKOabzyN94A:10 a=wPNLvfGTeEIA:10 a=iYH6xdkBrDN1Jqds4HTS:22
+ a=1CNFftbPRP8L7MoqJWF3:22 a=jGH_LyMDp9YhSvY-UuyI:22
+X-Proofpoint-ORIG-GUID: rkSqTS6rquWFfncoPWwhgMY1jDWenxBD
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODAyMDA3NCBTYWx0ZWRfXyfYBoxpS38YO
+ nE7vBgsnBzM9WY7zr1pyuhpMFjZr8tK3OGnxJMkVCRpnbmekwUwGCuHvuxh8bgmHi0xv+TB8grA
+ 7Ozb51msZtu6eGWBKE/dvVjHDWXxA7qqyxYI1elfs/haV/HnetyK6Fm6OLG42cnIHnaWmWIBXcP
+ puiu5pAyjAovufsEIqZyDKxqUVC+BgU9KGRDDXKcu/nvp4lJsF6QZTchvpL4OzLirtuEJAlOi6y
+ oEGDx+gSnbqlmEd9oPA1E8iVGRFwkx17blEt5BgwnjFPgh3zsHUyZJ8mthS1cWRQiWppvYjLnMo
+ yY7/cu19fzl9QtHVGIO9twRlaQLIhZd/m1w7aTwNxFb1Koq2pMzTzAQDTLSJtUCdI3cX6WKQxC8
+ Wq7jqMGHwMekMl+lAwKlRNoLJc1PcoTUz0yhuIPrl+Rc9pFxCkQ52DQ0Bx/iHC3XOPU1ZvEj
+X-Proofpoint-GUID: rkSqTS6rquWFfncoPWwhgMY1jDWenxBD
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-01_08,2025-08-01_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 malwarescore=0 phishscore=0 mlxlogscore=999 suspectscore=0
+ spamscore=0 mlxscore=0 priorityscore=1501 clxscore=1015 adultscore=0
+ lowpriorityscore=0 bulkscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
+ definitions=main-2508020074
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_015706_560225_F49D2AB5 
-X-CRM114-Status: GOOD (  30.87  )
+X-CRM114-CacheID: sfid-20250802_025608_283454_1CF5D48B 
+X-CRM114-Status: GOOD (  42.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,241 +145,133 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Kieran Bingham (2025-08-02 09:40:57)
-> Hi Olivier,
-> 
-> I'm very pleased to see this support getting upstreamed!
-> 
-> Quoting Olivier Benjamin (2025-06-20 16:21:34)
-> > Add the description of the rear/world camera (IMX258) on the PinePhone Pro
-> > to the device dts file.
-> > It receives commands on the I2C Bus 1 at address 0x1a and transmits data
-> > over CSI-MIPI.
-> > 
-> > The I2C address for IMX258 can be found in the IMX258-0AQH5 Software
-> > Reference Manual, page 24, section 2.3.1: 0b0011010 = 0x1a.
-> > Section 3 indicates the module has 4 pairs of data lines. While 4-lane
-> > mode is nominal, 2-lane mode should also be supported.
-> > 
-> > The pin muxing info was extracted from the PinePhone Pro schematic v1.0
-> > as well as the RK3399 datasheet revision 1.8.
-> > 
-> > Table 2-3 in section 2.8 of the RK3399 datasheet contains the mapping
-> > of IO functions for the SoC pins. Page 52 shows GPIO1_A0, page 54 shows
-> > GPIO2_D4.
-> > 
-> > For I2C power, the PinePhone Pro schematic page 11 quadrants A4 and A5:
-> > RK3399_J.AA8 and RK3399_J.Y8 get power from vcaa1v8_codec, so turn it on
-> > 
-> > The IMX258 also uses the following regulators, expected by its driver:
-> >  - vana (2.8V analog), called AVDD2V8_DVP on P.18 q.C1 and derived from
-> >    VCC1V8_S3 on P.13 q.B2
-> >  - vdig (1.2V digital core), called DVDD_DVP on P.18 q.C1 and shown on
-> >    P.18 q.D3 to be equivalent to VCC1V2_DVP derived from VCC3V3_SYS on
-> >    P.13 q.B3. Note that this regulator's voltage is inconsistently
-> >    labeled either 1.2V or 1.5V
-> > 
-> > RK3399_J.AG1 is GPIO4_A1/I2C1_SDA, RK3399_J.Y6 is GPIO4_A2/I2C1_SCL
-> > This is the default pinctrl "i2c1_xfer" for i2c1 from rk3399-base.
-> > 
-> > For the reset (RESET) signal:
-> > page 11 quadrant D2             | p.18 q.C3-4 | p.18 q.C2
-> > RK3399_E.R25 -> GPIO1_A0 -> Camera_RST -> MIPI_RST0 -> IMX258.12
-> > 
-> > For the powerdown (PWDN) signal:
-> > page 11 quadrants B4-5          | p.18 q.C2
-> > RK3399_G.AF8 -> GPIO2_D4 -> DVP_PDN1_H -> IMX258.14
-> > 
-> > Helped-by: Dragan Simic <dsimic@manjaro.org>
-> > Co-developed-by: Ondrej Jirman <megi@xff.cz>
-> > Signed-off-by: Ondrej Jirman <megi@xff.cz>
-> > Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
-> > ---
-> >  .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 93 ++++++++++++++++++++++
-> >  1 file changed, 93 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> > index 04ba4c4565d0a205e2e46d7535c6a3190993621d..b335d044138b413359ba54269ab646142254a55f 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> > @@ -114,6 +114,16 @@ vcc3v3_sys: regulator-vcc3v3-sys {
-> >                 vin-supply = <&vcc_sys>;
-> >         };
-> >  
-> > +       avdd2v8_dvp: regulator-avdd2v8-dvp {
-> > +               compatible = "regulator-fixed";
-> > +               regulator-name = "avdd2v8_dvp";
-> > +               regulator-always-on;
-> > +               regulator-boot-on;
-> > +               regulator-min-microvolt = <2800000>;
-> > +               regulator-max-microvolt = <2800000>;
-> > +               vin-supply = <&vcc3v3_sys>;
-> > +       };
-> > +
-> >         vcca1v8_s3: regulator-vcc1v8-s3 {
-> >                 compatible = "regulator-fixed";
-> >                 regulator-name = "vcca1v8_s3";
-> > @@ -136,6 +146,16 @@ vcc1v8_codec: regulator-vcc1v8-codec {
-> >                 vin-supply = <&vcc3v3_sys>;
-> >         };
-> >  
-> > +       vcc1v2_dvp: regulator-vcc1v2-dvp {
-> > +               compatible = "regulator-fixed";
-> > +               regulator-name = "vcc1v2_dvp";
-> > +               regulator-always-on;
-> > +               regulator-boot-on;
-> > +               regulator-min-microvolt = <1200000>;
-> > +               regulator-max-microvolt = <1200000>;
-> > +               vin-supply = <&vcca1v8_s3>;
-> > +       };
-> > +
-> >         wifi_pwrseq: sdio-wifi-pwrseq {
-> >                 compatible = "mmc-pwrseq-simple";
-> >                 clocks = <&rk818 1>;
-> > @@ -312,6 +332,8 @@ vcc3v0_touch: LDO_REG2 {
-> >  
-> >                         vcca1v8_codec: LDO_REG3 {
-> >                                 regulator-name = "vcca1v8_codec";
-> > +                               regulator-always-on;
-> > +                               regulator-boot-on;
-> 
-> Is regulator-boot-on needed when regulator-always-on is set? Doesn't
-> -always-on take precedence and ensure it's enabled if it's not on
-> anyway?
-> 
-> It seems odd to have (need?) both ...? but I'm no DT expert on this part
-> - it just stands out to me.
-> 
-> 
-> >                                 regulator-min-microvolt = <1800000>;
-> >                                 regulator-max-microvolt = <1800000>;
-> >                         };
-> > @@ -420,6 +442,45 @@ regulator-state-mem {
-> >         };
-> >  };
-> >  
-> > +&i2c1 {
-> > +       clock-frequency = <400000>;
-> > +       pinctrl-0 = <&i2c1_xfer &cif_clkouta>;
-> > +       assigned-clocks = <&cru SCLK_CIF_OUT>;
-> > +       assigned-clock-rates = <24000000>;
-> > +       status = "okay";
-> > +
-> > +       wcam: camera@1a {
-> > +               compatible = "sony,imx258";
-> > +               reg = <0x1a>;
-> > +               clocks = <&cru SCLK_CIF_OUT>; /* MIPI_MCLK0, derived from CIF_CLKO */
-> > +               pinctrl-names = "default";
-> > +               pinctrl-0 = <&camera_rst>;
-> > +               /* Note: both cameras also depend on vcca1v8_codec to power the I2C bus. */
-> 
-> Should that be represented by the i2c1 bus then?
-> 
-> > +               vif-supply = <&vcc1v8_dvp>;
-> > +               vana-supply = <&avdd2v8_dvp>;
-> > +               vdig-supply = <&vcc1v2_dvp>; /* DVDD_DVP is the same as VCC1V2_DVP */
-> > +               reset-gpios = <&gpio1 RK_PA0 GPIO_ACTIVE_LOW>;
-> > +               orientation = <1>; /* V4L2_CAMERA_ORIENTATION_BACK */
-> > +               rotation = <270>;
-> > +               lens-focus = <&wcam_lens>;
-> > +
-> > +               port {
-> > +                       wcam_out: endpoint {
-> > +                               remote-endpoint = <&mipi_in_wcam>;
-> > +                               data-lanes = <1 2 3 4>;
-> > +                               link-frequencies = /bits/ 64 <636000000>;
-> > +                       };
-> > +               };
-> > +       };
-> > +
-> > +       wcam_lens: camera-lens@c {
-> > +               compatible = "dongwoon,dw9714";
-> > +               reg = <0x0c>;
-> > +               /* Same I2c bus as both cameras, depends on vcca1v8_codec for power. */
-> > +               vcc-supply = <&vcc1v8_dvp>;
-> > +       };
-> > +};
-> > +
-> >  &i2c3 {
-> >         i2c-scl-rising-time-ns = <450>;
-> >         i2c-scl-falling-time-ns = <15>;
-> > @@ -462,6 +523,28 @@ &io_domains {
-> >         status = "okay";
-> >  };
-> >  
-> > +&isp1 {
-> > +       status = "okay";
-> > +
-> > +       ports {
-> > +               port@0 {
-> > +                       mipi_in_wcam: endpoint@0 {
-> > +                               reg = <0>;
-> > +                               remote-endpoint = <&wcam_out>;
-> > +                               data-lanes = <1 2 3 4>;
-> > +                       };
-> > +               };
-> > +       };
-> > +};
-> > +
-> > +&mipi_dphy_rx0 {
-> > +       status = "okay";
-> > +};
-> > +
-> > +&isp1_mmu {
-> > +       status = "okay";
-> > +};
-> > +
-> >  &mipi_dsi {
-> >         status = "okay";
-> >         clock-master;
-> > @@ -495,6 +578,10 @@ mipi_in_panel: endpoint {
-> >         };
-> >  };
-> >  
-> > +&mipi_dsi1 {
-> > +       status = "okay";
-> > +};
-> > +
-> 
-> Is this an unrelated change? The Camera should be on CSI - not DSI?
+On Thu, Jul 31, 2025 at 10:19:49AM +0800, Chaoyi Chen wrote:
+> Hi Dmitry,
+> =
 
-Never mind - it seems these are probably already applied ;-)
+> On 7/31/2025 3:13 AM, Dmitry Baryshkov wrote:
+> > On Tue, Jul 29, 2025 at 05:00:27PM +0800, Chaoyi Chen wrote:
+> > > From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> > > =
 
---
-Kieran
+> > > This series focuses on adding Type-C DP support for USBDP PHY and DP
+> > > driver. The USBDP PHY and DP will perceive the changes in cable status
+> > > based on the USB PD and Type-C state machines provided by TCPM. Before
+> > > this, the USBDP PHY and DP controller of RK3399 sensed cable state
+> > > changes through extcon, and devices such as the RK3399 Gru-Chromebook
+> > > rely on them. This series should not break them.
+> > > =
+
+> > [....]
+> > =
+
+> > > =3D=3D=3D=3D
+> > > 2. DP HPD event notify
+> > > =
+
+> > > The RK3399 has two USB/DP combo PHY and one CDN-DP controller. And
+> > > the CDN-DP can be switched to output to one of the PHYs.
+> > > =
+
+> > > USB/DP PHY0 ---+
+> > >                 | <----> CDN-DP controller
+> > > USB/DP PHY1 ---+
+> > Could you please clarify this, can you switch DP stream between two
+> > USB-C outputs? What happens if user plugs in DP dongles in both USB-C
+> > ports?
+> =
+
+> Currently, the software simply selects the first available port. So if us=
+er
+> plugs in DP dongles in both USB-C ports, the DP driver will select the fi=
+rst
+> port. This process is implemented in cdn_dp_connected_port() .
+> =
 
 
-> 
-> >  &pmu_io_domains {
-> >         pmu1830-supply = <&vcc_1v8>;
-> >         status = "okay";
-> > @@ -507,6 +594,12 @@ pwrbtn_pin: pwrbtn-pin {
-> >                 };
-> >         };
-> >  
-> > +       camera {
-> > +               camera_rst_l: camera-rst-l {
-> > +                       rockchip,pins = <1 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-> > +               };
-> > +       };
-> > +
-> >         leds {
-> >                 red_led_pin: red-led-pin {
-> >                         rockchip,pins = <4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-> > 
-> > -- 
-> > 2.49.0
-> > 
-> > 
-> > _______________________________________________
-> > Linux-rockchip mailing list
-> > Linux-rockchip@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+I think Stephen Boyd has been looking on similar issues for Chromebooks,
+which were sharing DP controller between several USB-C ports. I don't
+remember what was his last status. I think there it was easier since the
+bifurcation point was the EC.
+
+I think, CDN-DP needs to register up to two encoders and up to two
+connectors, having a separate drm_bridge chain for each of the DP
+signals paths (in the end, you can not guarantee that both branches will
+have the same simple CDN-DP -> PHY -> USB-C configuration: there can be
+different retimers, etc).
+
+Both encoders should list the same CRTC in possible_crtcs, etc. Of
+course, it should not be possible to enable both of them.
+
+This way if the user plugs in two DP dongles, it would be possible to
+select, which output actually gets a signal.
+
+> =
+
+> =
+
+> > =
+
+> > > BTW, one of the important things to do is to implement extcon-like
+> > > notifications. I found include/drm/bridge/aux-bridge.h , but if the
+> > > aux-bridge is used, the bridge chain would look like this:
+> > > =
+
+> > > PHY0 aux-bridge ---+
+> > >                     | ----> CDN-DP bridge
+> > > PHY1 aux-bridge ---+
+> > > =
+
+> > > Oh, CDN-DP bridge has two previous aux-bridge!
+> > > =
+
+> > > Now, I try to use drm_connector_oob_hotplug_event() to notify HPD
+> > > state between PHY and CDN-DP controller.
+> > Does it actually work? The OOB HPD event will be repoted for the usb-c
+> > connector's fwnode, but the DP controller isn't connected to that node
+> > anyhow. If I'm not mistaken, the HPD signal will not reach DP driver in
+> > this case.
+> =
+
+> Yes.=A0 What you mentioned is the case in
+> drivers/usb/typec/altmodes/displayport.c . I have also added a new OOB ev=
+ent
+> notify in the PHY driver in Patch 3, where the expected fwnode is used in
+> the PHY. So now we have two OOB HPD events, one from altmodes/displayport=
+.c
+> and the other from PHY. Only the HPD from PHY is eventually passed to the=
+ DP
+> driver.
+
+This way you will loose IRQ_HPD pulse events from the DP. They are used
+by DPRX (aka DP Sink) to signal to DPTX (DP Source) that there was a
+change on the DPRX side and the DPTX should reread link params and maybe
+retrain the link.
+
+> > > Patch1 add new Type-C mode switch for RK3399 USBDP phy binding.
+> > > Patch2 add typec_mux and typec_switch for RK3399 USBDP PHY.
+> > > Patch3 drops CDN-DP's extcon dependency when Type-C is present.
+> > > Patch4 add missing dp_out port for RK3399 CDN-DP.
+> > > Patch5 add Type-C DP support for RK3399 EVB IND board.
+> > > =
+
+> =
+
+> -- =
+
+> linux-phy mailing list
+> linux-phy@lists.infradead.org
+> https://lists.infradead.org/mailman/listinfo/linux-phy
+
+-- =
+
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
