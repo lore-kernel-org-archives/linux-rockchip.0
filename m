@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA435CCD193
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38509CCD199
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,35 +12,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sZX/gDpsfNvpQCz5cwp72QBx7JQfWKbmrwp1HAe+etY=; b=3vAetZi3k/OH3T
-	qIK9cJeG00UG02ggJ6g0RzGNXerBA9B/Wi2AJDz59pa6qMLMu+0QjORuc6wMFUVOg+fN7mzV8NpAn
-	tN8FxHaA52vKc6VAMsZpLSw2ncZ6xowHqsUIFKDvwmKJuQVSLCQ35RqaDypxByiVU9DXbr4XZuaNz
-	IBAFLr6M8FDfAGjw8/EmyREdaWtRVX++1bbAN+8o3Kb0R+BOvVPRoL4KlWcQbMt+cVlIf/TNYpmuj
-	dxkzwVMN3iFbF48KgJbFloZQc4AZLwI4jglaqEIQXpx2eUyEwszfi6aJMD6dQC+kBUZEJ0Kke5/Yn
-	o0m+7j6OCQ3GyObBNFEA==;
+	List-Owner; bh=IW6ngTKGGFlbR3tBHW+B7rzZtRfLqOY/KRBosHaz6jI=; b=vFwHJCMqN4KCJ9
+	G3mjU6Fbj7lrrs7PixdFqls8pPpzL4taWaKs06SvqHQnWE+wydzxJn3Aw6V7Zi/c++Px1C3khY2Jx
+	fujgWxo+MEBVxh++irM+sCNk5wQdbbcjwRSWprFJYSqnqw2eEeOBUD+Vq87n8PjABbebRuly1+Xgk
+	Wu8qdNkr/NmPw4ko4qZAVjcMO6Umyj66KXsjlpn3HQROvffTJlRWFOyCLF/p+lSn7yWAxFSI63ZEY
+	4rZwfDLGd1GJwQX1lBJv1Adj9zkWnHUpzxinyIW4qh8030wt5+hY6oVbrOfyq1CDP5vDI49CWaqKf
+	p3koFHbCfiBnxDw2dfgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoXJ-0000000DBOy-2DrL;
-	Mon, 20 Oct 2025 11:58:49 +0000
+	id 1vAoXF-0000000DBIj-2W4F;
+	Mon, 20 Oct 2025 11:58:45 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8cM-00000007S6b-3hNs;
-	Sat, 02 Aug 2025 09:33:32 +0000
+	id 1ui8bt-00000007RrO-0WGt;
+	Sat, 02 Aug 2025 09:33:02 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 65B522F8B;
-	Sat,  2 Aug 2025 11:32:32 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 730FA4334;
+	Sat,  2 Aug 2025 11:32:06 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754127164;
-	bh=K/dzfOS0dkV05E8cvQoG7rwz6dZ9ZnnXvqtKDs2t7xo=;
+	s=mail; t=1754127134;
+	bh=66BEglrdeD2FnJRtm4kSgXnN6HNo5xlbirCCT8rWe5c=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=WzvZ2DuTeTr9GaZYJYqUZ0wzA/oeg6yvYX0wZsUJFGdjrfZamwqsW67ol38XV9gwp
-	 kdyl8dDrLlE/F0D5V9Xqi/vjReFJX7jg/lwbTcK7TvBh541QqyFa7LeywALRlK5zzV
-	 hXdFNW5LxfxIjbogRPihvL8rs0OoosH5yzwzMaD0=
+	b=p5R3K+CeygVp1bnLJzVyIkEJ5l/7ByRskXoCAOaCf3ToWRKzFMbhQXQYpLw6nhHEa
+	 FFMFIGTMmqDaVfCCeQNnIPyfyBVXEpak3bs4wQI1Vj6+oQvfkvg6kSNo1BWYeTIb6x
+	 IaNd+uNpROhN3ds5QUTW0OfEJilYLfuyEFzGg+cs=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:23:20 +0200
-Subject: [PATCH 58/65] media: zoran: Remove access to __fh
+Date: Sat, 02 Aug 2025 11:23:17 +0200
+Subject: [PATCH 55/65] media: omap3isp: Access v4l2_fh from file
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-58-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-55-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -129,26 +129,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1617;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5850;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=K/dzfOS0dkV05E8cvQoG7rwz6dZ9ZnnXvqtKDs2t7xo=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj+SsmP6BGofKCY4QKrL2701OyUXD717ITDG
- 7Ik2h8or36JAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/gAKCRByNAaPFqFW
- PEGYEAC/vc5ffxbdnceLM5+KLumODTQTA1neOKuNhgMT8YpOzMtlVK+dF5JMoJu9D11t01DCqCo
- JkYJbGM3IjxD6odRWgYWcOW+XVJN9coQUv+6MDOKDpPZibuaZt2nrGJlvwFK2cwh8/pye7jMGwo
- EYlMCweT91Pwu/glbdctNofWZQH0kCBURg0VbT8s2bzOgqlD+483+LVSSl5VIYBXRRnGLXEh6qP
- E0rNx7KliVie3Bo7yRmkedmcWuHOuro9Ypu/3L3g3rR31ONnmHdjNK22QUJinRjV5dvHgL4bJl4
- nxl9NA0ktz4tYk/PruS0Zwv05qMJtpsdgkbBD3JJ8CO7bUQbgPcqH2BbiO9lKUDzqVKVIjLh0Hi
- vgL7W9cg2DZ7x1p6ou9TOx5FS9UOxR5rHnYBLPRwbDo1skp/TvQK+dTgNxyN7+5eqz8Hcq4Ks09
- NOSTRHu44Vn7RPSdf4RUbC0OqccCCL/UUnAvRYtKl/yrnOGuV/jCUq+R6wt/5nBSwWqDCV1mBr4
- h5/1HqY2L6B0ZD6KOnflHG8B9JOJGt+luOyaRDGG3IGyQ4wqHChbDw/qd2YgwrjNwVJc+SAg05p
- 7HUKO0Tdh3VYf0edLQc7zgVxc1VzQcptntmErcuywAlnyBp0N3Tv0ND51Gg+L8W3gwhQ4RecDfW
- JboSxoPNrKexePw==
+ bh=66BEglrdeD2FnJRtm4kSgXnN6HNo5xlbirCCT8rWe5c=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj+uQ6AVm7vuiTX095tLRMegUIn5F62kjDrQ
+ 0psRthrsRWJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/gAKCRByNAaPFqFW
+ PHIiD/4uYOsKvXm2CPF0UtRBkVwC9+EC4KyRliMfJRXvQmbWJkIh7DYXOESnZ4bBTa8c3UEZDk4
+ fjo44DHrjN7BD+1T3lRuHTQVA95aQyol1CygcjtqDw9uInfUeNmKfaHpTBlVtV2/RLdafLyKR09
+ g2Yx/R5hn9YMAdNI+jFWGTQf/AYD/xHm2kJnIhlSLvV7FyY/fzKOcuEB5j2t4Om3l2OHeSp4EU6
+ Q+KWZGIHhdgucc1721ryoG34r1nIP3BM2fe72cGri7jjkmA0wi3T9lEsLVv6+9LlX44JY56gzkU
+ U1paLPSLsLgXpzDIGT9vv9ZaGEFuA0ZtB/2yRm/8CjX3mfN6cKH9FpJjOxwLvSqva/yl1KBCF+r
+ +YsqNA0ii2zHxXje8LUuxGiHVglCrpYeX+TeQfsKA0/+gdHQZILwKUx8rPRZ5nTBKi2xz0AZ7Di
+ QFeqJ+7yYr9VU4Dff5V4PrmbEE8slWWFfpNdddD+WenrrrP7ol8VG+uOynol37PqJ4SsXoBRx1R
+ mo/hAXX2A3Zcll+A0qXPwSskXV7rmPeOWUNTblTB4B1uaCgS0/eCzkBbuCdYLjQtUlnOky0ryWc
+ ZWvkhrmk/NaRbd+2VrJI1ccq0/eWhrhe1WN0mQtzSAq1DT5C8vNb4TRENSMHWTjGQvkI8MPRwlJ
+ PAyInkkQkAcd1DQ==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_023331_065335_B1918AE8 
-X-CRM114-Status: GOOD (  13.32  )
+X-CRM114-CacheID: sfid-20250802_023301_311101_BA0EADA4 
+X-CRM114-Status: GOOD (  14.20  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:57 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -166,50 +166,137 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The __fh parameter is assigned to an unsued variable. Remove it
-and remove the unused struct zoran_fh type.
+The v4l2_fh associated with an open file handle is now guaranteed
+to be available in file->private_data, initialised by v4l2_fh_add().
+
+Access the v4l2_fh, and from there the driver-specific structure,
+from the file * in all ioctl handlers.
+
+While at it remove the only left user of to_isp_video_fh() and remove
+the macro completely.
 
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/pci/zoran/zoran.h        | 6 ------
- drivers/media/pci/zoran/zoran_driver.c | 3 +--
- 2 files changed, 1 insertion(+), 8 deletions(-)
+ drivers/media/platform/ti/omap3isp/ispvideo.c | 22 +++++++++++-----------
+ drivers/media/platform/ti/omap3isp/ispvideo.h |  2 --
+ 2 files changed, 11 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/media/pci/zoran/zoran.h b/drivers/media/pci/zoran/zoran.h
-index 1cd990468d3de9db8b14b72483972041c57bfee2..d05e222b392156bf1b3b4c83c6591db642c3c377 100644
---- a/drivers/media/pci/zoran/zoran.h
-+++ b/drivers/media/pci/zoran/zoran.h
-@@ -154,12 +154,6 @@ struct zoran_jpg_settings {
- 
- struct zoran;
- 
--/* zoran_fh contains per-open() settings */
--struct zoran_fh {
--	struct v4l2_fh fh;
--	struct zoran *zr;
--};
--
- struct card_info {
- 	enum card_type type;
- 	char name[32];
-diff --git a/drivers/media/pci/zoran/zoran_driver.c b/drivers/media/pci/zoran/zoran_driver.c
-index f42f596d3e6295e31e3b33cd83c5f7243911bd30..ec7fc1da4cc02f5a344cb49bb9a783c41c758195 100644
---- a/drivers/media/pci/zoran/zoran_driver.c
-+++ b/drivers/media/pci/zoran/zoran_driver.c
-@@ -511,12 +511,11 @@ static int zoran_s_fmt_vid_cap(struct file *file, void *__fh,
- 			       struct v4l2_format *fmt)
+diff --git a/drivers/media/platform/ti/omap3isp/ispvideo.c b/drivers/media/platform/ti/omap3isp/ispvideo.c
+index 2c0008444b7e2b532c9af061760e7399cdf3e45d..0e7f0bf2b3463b7ef6678f7bd836a952e0b707a7 100644
+--- a/drivers/media/platform/ti/omap3isp/ispvideo.c
++++ b/drivers/media/platform/ti/omap3isp/ispvideo.c
+@@ -657,7 +657,7 @@ isp_video_querycap(struct file *file, void *fh, struct v4l2_capability *cap)
+ static int
+ isp_video_get_format(struct file *file, void *fh, struct v4l2_format *format)
  {
- 	struct zoran *zr = video_drvdata(file);
--	struct zoran_fh *fh = __fh;
- 	int i;
- 	int res = 0;
+-	struct isp_video_fh *vfh = to_isp_video_fh(fh);
++	struct isp_video_fh *vfh = file_to_isp_video_fh(file);
+ 	struct isp_video *video = video_drvdata(file);
  
- 	if (fmt->fmt.pix.pixelformat == V4L2_PIX_FMT_MJPEG)
--		return zoran_s_fmt_vid_out(file, fh, fmt);
-+		return zoran_s_fmt_vid_out(file, __fh, fmt);
+ 	if (format->type != video->type)
+@@ -673,7 +673,7 @@ isp_video_get_format(struct file *file, void *fh, struct v4l2_format *format)
+ static int
+ isp_video_set_format(struct file *file, void *fh, struct v4l2_format *format)
+ {
+-	struct isp_video_fh *vfh = to_isp_video_fh(fh);
++	struct isp_video_fh *vfh = file_to_isp_video_fh(file);
+ 	struct isp_video *video = video_drvdata(file);
+ 	struct v4l2_mbus_framefmt fmt;
  
- 	for (i = 0; i < NUM_FORMATS; i++)
- 		if (fmt->fmt.pix.pixelformat == zoran_formats[i].fourcc)
+@@ -858,7 +858,7 @@ isp_video_set_selection(struct file *file, void *fh, struct v4l2_selection *sel)
+ static int
+ isp_video_get_param(struct file *file, void *fh, struct v4l2_streamparm *a)
+ {
+-	struct isp_video_fh *vfh = to_isp_video_fh(fh);
++	struct isp_video_fh *vfh = file_to_isp_video_fh(file);
+ 	struct isp_video *video = video_drvdata(file);
+ 
+ 	if (video->type != V4L2_BUF_TYPE_VIDEO_OUTPUT ||
+@@ -876,7 +876,7 @@ isp_video_get_param(struct file *file, void *fh, struct v4l2_streamparm *a)
+ static int
+ isp_video_set_param(struct file *file, void *fh, struct v4l2_streamparm *a)
+ {
+-	struct isp_video_fh *vfh = to_isp_video_fh(fh);
++	struct isp_video_fh *vfh = file_to_isp_video_fh(file);
+ 	struct isp_video *video = video_drvdata(file);
+ 
+ 	if (video->type != V4L2_BUF_TYPE_VIDEO_OUTPUT ||
+@@ -894,7 +894,7 @@ isp_video_set_param(struct file *file, void *fh, struct v4l2_streamparm *a)
+ static int
+ isp_video_reqbufs(struct file *file, void *fh, struct v4l2_requestbuffers *rb)
+ {
+-	struct isp_video_fh *vfh = to_isp_video_fh(fh);
++	struct isp_video_fh *vfh = file_to_isp_video_fh(file);
+ 	struct isp_video *video = video_drvdata(file);
+ 	int ret;
+ 
+@@ -908,7 +908,7 @@ isp_video_reqbufs(struct file *file, void *fh, struct v4l2_requestbuffers *rb)
+ static int
+ isp_video_querybuf(struct file *file, void *fh, struct v4l2_buffer *b)
+ {
+-	struct isp_video_fh *vfh = to_isp_video_fh(fh);
++	struct isp_video_fh *vfh = file_to_isp_video_fh(file);
+ 	struct isp_video *video = video_drvdata(file);
+ 	int ret;
+ 
+@@ -922,7 +922,7 @@ isp_video_querybuf(struct file *file, void *fh, struct v4l2_buffer *b)
+ static int
+ isp_video_qbuf(struct file *file, void *fh, struct v4l2_buffer *b)
+ {
+-	struct isp_video_fh *vfh = to_isp_video_fh(fh);
++	struct isp_video_fh *vfh = file_to_isp_video_fh(file);
+ 	struct isp_video *video = video_drvdata(file);
+ 	int ret;
+ 
+@@ -936,7 +936,7 @@ isp_video_qbuf(struct file *file, void *fh, struct v4l2_buffer *b)
+ static int
+ isp_video_dqbuf(struct file *file, void *fh, struct v4l2_buffer *b)
+ {
+-	struct isp_video_fh *vfh = to_isp_video_fh(fh);
++	struct isp_video_fh *vfh = file_to_isp_video_fh(file);
+ 	struct isp_video *video = video_drvdata(file);
+ 	int ret;
+ 
+@@ -1074,7 +1074,7 @@ static int isp_video_check_external_subdevs(struct isp_video *video,
+ static int
+ isp_video_streamon(struct file *file, void *fh, enum v4l2_buf_type type)
+ {
+-	struct isp_video_fh *vfh = to_isp_video_fh(fh);
++	struct isp_video_fh *vfh = file_to_isp_video_fh(file);
+ 	struct isp_video *video = video_drvdata(file);
+ 	enum isp_pipeline_state state;
+ 	struct isp_pipeline *pipe;
+@@ -1180,7 +1180,7 @@ isp_video_streamon(struct file *file, void *fh, enum v4l2_buf_type type)
+ static int
+ isp_video_streamoff(struct file *file, void *fh, enum v4l2_buf_type type)
+ {
+-	struct isp_video_fh *vfh = to_isp_video_fh(fh);
++	struct isp_video_fh *vfh = file_to_isp_video_fh(file);
+ 	struct isp_video *video = video_drvdata(file);
+ 	struct isp_pipeline *pipe = to_isp_pipeline(&video->video.entity);
+ 	enum isp_pipeline_state state;
+@@ -1348,7 +1348,7 @@ static int isp_video_release(struct file *file)
+ {
+ 	struct isp_video *video = video_drvdata(file);
+ 	struct v4l2_fh *vfh = file_to_v4l2_fh(file);
+-	struct isp_video_fh *handle = to_isp_video_fh(vfh);
++	struct isp_video_fh *handle = file_to_isp_video_fh(file);
+ 
+ 	/* Disable streaming and free the buffers queue resources. */
+ 	isp_video_streamoff(file, vfh, video->type);
+diff --git a/drivers/media/platform/ti/omap3isp/ispvideo.h b/drivers/media/platform/ti/omap3isp/ispvideo.h
+index 355812770e18ef5353ac68e65426a3180a6d91ab..537da59cff6258cb66ff4eac6ad2739c3f9465c4 100644
+--- a/drivers/media/platform/ti/omap3isp/ispvideo.h
++++ b/drivers/media/platform/ti/omap3isp/ispvideo.h
+@@ -194,8 +194,6 @@ struct isp_video_fh {
+ 	struct v4l2_fract timeperframe;
+ };
+ 
+-#define to_isp_video_fh(fh)	container_of(fh, struct isp_video_fh, vfh)
+-
+ static inline struct isp_video_fh *file_to_isp_video_fh(struct file *filp)
+ {
+ 	return container_of(file_to_v4l2_fh(filp), struct isp_video_fh, vfh);
 
 -- 
 2.49.0
