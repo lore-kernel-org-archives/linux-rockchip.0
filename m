@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC99BCCD1A5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE5C2CCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z5h8E8nkNAbT+xoXc7nxVxEH6P2Y2cjVXQdhSTnEo5I=; b=kO4P9GXEsvrdBc
-	1/qmOV2GR18vkn+ROEL5HXcvM8cOkWT0uaCe0RAnQWgBE5DWQhveVSllApUOdndZ4572/R773hv0t
-	v7yskgr+IYM4MoQufHba7qNr3Q9of5m5ULtj0qSh+IwOlNakjOxIz2w2u93/E3niYv4ncr2UPCA2T
-	7CZw4otGnTrmXkmjpqKZpjsvJ05t4FtVRWyvnv9dGkpn9iRokoUVJ2Isqjd5uWRhaL424wMn8dtsl
-	RNJDW6y6HatkRnKIZoL6HbKg2Xgjvqmb+52OsXCv4PH7E5JBfBUWm8Zu8colIhJjFM0BTaxSTBtKP
-	ix7NQAuSqNQrRCxqnGhw==;
+	List-Owner; bh=a5NWptXsTJs5p5d1Ya5WhDB31dkDV+ZIwnJxOa9AAzk=; b=BKjPU9Hblx+wjp
+	D/ujg/ZAGtGYIq6LhlpTlRfQLOq4IWIVYf/UUrxg/cxIkb/SEMcLOZ3zSzLK+IZLwObrAgV1iJw0I
+	lwjJPwf8D2A8ArHB5bB0yU14Ikz1MS+xHAnDPQUxBVuRz48QJkIHXc7zVxOK+yRo9RLwfkjOtSN9K
+	QyNagjLGBao+uXizUB9DrnpS7hoZwKGY9bMxTiO81wH0FqiFBEviVw7Pu8XLY5YIqpFCqPylJq/nU
+	SCrfyXNZyL8dDoxuSnZqU+cnkTeucK3LUgl6fiyk8kgE6STLD+1ktcYX3lN4HlhfrQOIUGzC0Mq20
+	QsjYta/AdDaur2VG+SSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoVv-0000000D9U5-3rBZ;
-	Mon, 20 Oct 2025 11:57:23 +0000
+	id 1vAoW5-0000000D9fY-2K1v;
+	Mon, 20 Oct 2025 11:57:38 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8Sm-00000007NaD-1rLu;
-	Sat, 02 Aug 2025 09:23:37 +0000
+	id 1ui8TF-00000007NpH-10zN;
+	Sat, 02 Aug 2025 09:24:06 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 11CC83DA;
-	Sat,  2 Aug 2025 11:22:40 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 03757502;
+	Sat,  2 Aug 2025 11:23:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126570;
-	bh=uc+e4D121XpcsbBTsetI8Y/3AlX9Hz46SjF1XOt24QQ=;
+	s=mail; t=1754126598;
+	bh=631Jp9Q9HtN9dP9KUd1m/USa3iWCujlx3YtZUAdIf8E=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=V5iDpcEspRPnvHfAwmOr99+IOUj9lDyUHdxF6w3FWnwGAO1+33nGVL7N9XM5qQJqa
-	 zG/eRFBKfgJFJiJ1JPZ3l47lLiuJfgv5GQ7AvAEbP6KtwH3xGSQXtSsVwcwTytnmGT
-	 2HukJ/5pnKY6Jk6oBPJzo8ZfDbDuVBmWfAaONPC8=
+	b=FeVm5O500dAmHc2FksbxPqgQmgW5GMwIICmDuqzmrqW1P+fvOYimsBC2slbLUqXrT
+	 UZ3uSbVeYpxuIDXjRKJglyXn/I65Mk5wCu91MEMoXSdfCsaEXVLON2seHpotu5RwP7
+	 4sV78CbR0Tx7kMmKq3k42zHLANw0S2gHetQnb24A=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:22:23 +0200
-Subject: [PATCH 01/65] media: pci: saa7164: Store v4l2_fh pointer in
+Date: Sat, 02 Aug 2025 11:22:26 +0200
+Subject: [PATCH 04/65] media: usb: hdpvr: Store v4l2_fh pointer in
  file->private_data
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-1-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-4-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -130,27 +130,27 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=10416;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1433;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=4KYc+fAfF5XAqGdIeu1Z3mk2YUK/u81xqaNfmxJ3Ufs=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj3RHqWTU3HuCd37ITdQdY7tRmUtJ6lQQYz0
- KMrHWu85E+JAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y9wAKCRByNAaPFqFW
- PEKcD/98jLHB4HokFvLEJrxTaXM/Serb/l7Ex/Uds/UYB8jQLGOeF/4nWiAMeE9ljn9idNeoexQ
- YzY6l5ipNXYKt8SpqjiNJ0WO/2Yu6CvTgBB7URe02gA2bJNnXjlBGXmaquBHBzvqaJLaz4cn8eu
- 9624b/9DQMRo0VVg4uAyclXwBLHSlBzZ5jUbAOIB1iqi1oSuzh5AhiboRs+OAb7yk3xRj+F2ew0
- GfBOXE7qHxtzXyt2mHc+evzBcTOScHKEZDy/ZcwqAFCkR0x/up3I3ICsyrfPCZKQ13BrHEtjmGP
- zZnYt/jFmUjMiHVUFG+JBSOGkZAXEEW/I6lvsFLYnWvOBrGQS6TiLo+44PBa9V8XRzp8pddAr/+
- ejretpCpgosNlOQhdUuxxMedmu2B7Duot57BIAfx6kWQEkqwr3/3UY2eenTgITzQwFfBNyJ9QmR
- VTwgKdM0gzy6KGahbRc2ln1oaGCZyGoQNRvwjH2BCKZnuqyzzKhd03K2v43qHXtOJjwKoaSRkvl
- wrtb2LZ6gJ/2U2diVU9sidMTAUioUH0zt7e4AsxR/3MKBafy/+lXdohYJWdFBpW/qXgLjqJVlvh
- tS0iQ5SoNtCBJlRnbw0ak+o40Le5sVvkLGvfdWa0pE8ENPBX2N8vVjRt8dpKg+3XN/7Bxq/cRzj
- wzQUMrJx6Nx3rng==
+ bh=U3ev2gHGjMj8nv+N40Llo7W3J8u/K6ZbwlVUowvWkPY=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj3IH8fOMbXUtz0tvCIWrGh/p06iInRR+vXC
+ v8mXTbAB3CJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y9wAKCRByNAaPFqFW
+ PMxMD/9xdPurBF8VH9kd+ouOYLKov7Q5+LoHrIxqJ1UmDxRqFU3cO2MMwZir0jLofAtJI5rkUR3
+ V/NT8hmtjI3UXxxJnEpD+ZLVGI8qtV5fTPhrqUA0Cqsou7Z1ZgYlXxaois9AatHd0k8fKXD0nGV
+ WU5MTu7++Qlpxc3Colj8npAsI+74hEi7EVtryKMKExVO95DbQz8ZvFb4gN+9r8zWpNTuTkVk0Ke
+ KJNA+SL0fju2ltzBe8i2SQ7BjApa2Z6059yEyxr2yJLTEfc4t0JpV/uvlW0KsiAnB2lTdFlt3T6
+ FzlvYChBMTK9kTeCxaeoQwyzdAzhjXDqed3+BggT4OVG1MfcrjjGDOg89bfW1FZhaaiLIxHsIpF
+ g/t2ipysNOfmIpKA92HLCwhXD3SDVxFys7fS7BZD9Za4Fad7qVXbZmC7VBViUZKhL2YE2oYRtkl
+ Zrt7aTUMq+RQqNTyGuETmZjBztDsa/sRSGt6h7Nqtm4uvcZzzzQle2M1PrmN5w4zI2ruGtdtl1q
+ KSbYZ3jrn7KwZ2Blc3ZvdCnk+3ve5t26EsLWgug6iwjcfsdJ3gww59pmjztFYyHyVRCaVvmbh2T
+ 92VnFLQpUlDOLSaq3tzbDu3xtgyD/a7vHtT5QgPR3/f83oXPm985F2rNinVeA5rDqLEQ4hlk80q
+ 2F2/YsprDujyjMw==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_022336_778241_959E3D90 
-X-CRM114-Status: GOOD (  15.04  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:37 -0700
+X-CRM114-CacheID: sfid-20250802_022405_427611_F8DA30AF 
+X-CRM114-Status: GOOD (  14.73  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:39 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,270 +170,36 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
 Most V4L2 drivers store the v4l2_fh pointer in file->private_data. The
-saa7164 instead stores the pointer to the driver-specific structure that
-embeds the v4l2_fh. Switch to storing the v4l2_fh pointer itself to
+hdpvr driver instead stores the pointer to the driver-specific structure
+that embeds the v4l2_fh. Switch to storing the v4l2_fh pointer itself to
 standardize behaviour across drivers. This also prepares for future
 refactoring that depends on v4l2_fh being stored in private_data.
 
-This also fixes a bug in the vidioc_g_std() in saa7164-vbi.c that casts
-the private_data void pointer to a saa7164_encoder_fh instead of a
-saa7164_vbi_fh. The bug has no practical consequence as the two
-structures are identical.
+No extensive driver refactoring is required, as file->private_data is
+only used to check if a file handle is the owner of the device by
+comparing pointer values. The private_data pointer is actually compared
+to a struct v4l2_fh pointer, which happens to be the first field of the
+hdpvr_fh structure.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/pci/saa7164/saa7164-encoder.c | 27 +++++++++++++--------------
- drivers/media/pci/saa7164/saa7164-vbi.c     | 22 +++++++++++-----------
- drivers/media/pci/saa7164/saa7164.h         | 10 ++++++++++
- 3 files changed, 34 insertions(+), 25 deletions(-)
+ drivers/media/usb/hdpvr/hdpvr-video.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/pci/saa7164/saa7164-encoder.c b/drivers/media/pci/saa7164/saa7164-encoder.c
-index bf73e9e83f52324ca494816f7d9fa2fae7de6774..296f50b6b8d38e0ab617f0990d8f697ba96b0016 100644
---- a/drivers/media/pci/saa7164/saa7164-encoder.c
-+++ b/drivers/media/pci/saa7164/saa7164-encoder.c
-@@ -219,7 +219,7 @@ int saa7164_s_std(struct saa7164_port *port, v4l2_std_id id)
- 
- static int vidioc_s_std(struct file *file, void *priv, v4l2_std_id id)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 
- 	return saa7164_s_std(fh->port, id);
- }
-@@ -232,7 +232,7 @@ int saa7164_g_std(struct saa7164_port *port, v4l2_std_id *id)
- 
- static int vidioc_g_std(struct file *file, void *priv, v4l2_std_id *id)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 
- 	return saa7164_g_std(fh->port, id);
- }
-@@ -277,7 +277,7 @@ int saa7164_g_input(struct saa7164_port *port, unsigned int *i)
- 
- static int vidioc_g_input(struct file *file, void *priv, unsigned int *i)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 
- 	return saa7164_g_input(fh->port, i);
- }
-@@ -301,14 +301,14 @@ int saa7164_s_input(struct saa7164_port *port, unsigned int i)
- 
- static int vidioc_s_input(struct file *file, void *priv, unsigned int i)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 
- 	return saa7164_s_input(fh->port, i);
- }
- 
- int saa7164_g_tuner(struct file *file, void *priv, struct v4l2_tuner *t)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 	struct saa7164_port *port = fh->port;
- 	struct saa7164_dev *dev = port->dev;
- 
-@@ -347,7 +347,7 @@ int saa7164_g_frequency(struct saa7164_port *port, struct v4l2_frequency *f)
- static int vidioc_g_frequency(struct file *file, void *priv,
- 	struct v4l2_frequency *f)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 
- 	return saa7164_g_frequency(fh->port, f);
- }
-@@ -400,7 +400,7 @@ int saa7164_s_frequency(struct saa7164_port *port,
- static int vidioc_s_frequency(struct file *file, void *priv,
- 			      const struct v4l2_frequency *f)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 
- 	return saa7164_s_frequency(fh->port, f);
- }
-@@ -483,7 +483,7 @@ static int saa7164_s_ctrl(struct v4l2_ctrl *ctrl)
- static int vidioc_querycap(struct file *file, void  *priv,
- 	struct v4l2_capability *cap)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 	struct saa7164_port *port = fh->port;
- 	struct saa7164_dev *dev = port->dev;
- 
-@@ -510,7 +510,7 @@ static int vidioc_enum_fmt_vid_cap(struct file *file, void  *priv,
- static int vidioc_fmt_vid_cap(struct file *file, void *priv,
- 				struct v4l2_format *f)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 	struct saa7164_port *port = fh->port;
- 
- 	f->fmt.pix.pixelformat  = V4L2_PIX_FMT_MPEG;
-@@ -726,14 +726,14 @@ static int fops_open(struct file *file)
- 	fh->port = port;
+diff --git a/drivers/media/usb/hdpvr/hdpvr-video.c b/drivers/media/usb/hdpvr/hdpvr-video.c
+index fd7d2a9d0449ab9ba68ddfa148a167797ea243fc..4c431bd9b50352ed1bd3da3e62625c9cff6c149d 100644
+--- a/drivers/media/usb/hdpvr/hdpvr-video.c
++++ b/drivers/media/usb/hdpvr/hdpvr-video.c
+@@ -381,7 +381,7 @@ static int hdpvr_open(struct file *file)
+ 	fh->legacy_mode = true;
  	v4l2_fh_init(&fh->fh, video_devdata(file));
  	v4l2_fh_add(&fh->fh);
 -	file->private_data = fh;
 +	file->private_data = &fh->fh;
- 
  	return 0;
  }
  
- static int fops_release(struct file *file)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 	struct saa7164_port *port = fh->port;
- 	struct saa7164_dev *dev = port->dev;
- 
-@@ -787,7 +787,7 @@ saa7164_user_buffer *saa7164_enc_next_buf(struct saa7164_port *port)
- static ssize_t fops_read(struct file *file, char __user *buffer,
- 	size_t count, loff_t *pos)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 	struct saa7164_port *port = fh->port;
- 	struct saa7164_user_buffer *ubuf = NULL;
- 	struct saa7164_dev *dev = port->dev;
-@@ -893,8 +893,7 @@ static ssize_t fops_read(struct file *file, char __user *buffer,
- static __poll_t fops_poll(struct file *file, poll_table *wait)
- {
- 	__poll_t req_events = poll_requested_events(wait);
--	struct saa7164_encoder_fh *fh =
--		(struct saa7164_encoder_fh *)file->private_data;
-+	struct saa7164_encoder_fh *fh = to_saa7164_encoder_fh(file);
- 	struct saa7164_port *port = fh->port;
- 	__poll_t mask = v4l2_ctrl_poll(file, wait);
- 
-diff --git a/drivers/media/pci/saa7164/saa7164-vbi.c b/drivers/media/pci/saa7164/saa7164-vbi.c
-index ac958a5fca78e5094d7befd8c125fa4233bb6999..a7e398f304725c7fa5aa4cf1edf0deb0df059641 100644
---- a/drivers/media/pci/saa7164/saa7164-vbi.c
-+++ b/drivers/media/pci/saa7164/saa7164-vbi.c
-@@ -144,28 +144,28 @@ static int saa7164_vbi_initialize(struct saa7164_port *port)
- /* -- V4L2 --------------------------------------------------------- */
- static int vidioc_s_std(struct file *file, void *priv, v4l2_std_id id)
- {
--	struct saa7164_vbi_fh *fh = file->private_data;
-+	struct saa7164_vbi_fh *fh = to_saa7164_vbi_fh(file);
- 
- 	return saa7164_s_std(fh->port->enc_port, id);
- }
- 
- static int vidioc_g_std(struct file *file, void *priv, v4l2_std_id *id)
- {
--	struct saa7164_encoder_fh *fh = file->private_data;
-+	struct saa7164_vbi_fh *fh = to_saa7164_vbi_fh(file);
- 
- 	return saa7164_g_std(fh->port->enc_port, id);
- }
- 
- static int vidioc_g_input(struct file *file, void *priv, unsigned int *i)
- {
--	struct saa7164_vbi_fh *fh = file->private_data;
-+	struct saa7164_vbi_fh *fh = to_saa7164_vbi_fh(file);
- 
- 	return saa7164_g_input(fh->port->enc_port, i);
- }
- 
- static int vidioc_s_input(struct file *file, void *priv, unsigned int i)
- {
--	struct saa7164_vbi_fh *fh = file->private_data;
-+	struct saa7164_vbi_fh *fh = to_saa7164_vbi_fh(file);
- 
- 	return saa7164_s_input(fh->port->enc_port, i);
- }
-@@ -173,7 +173,7 @@ static int vidioc_s_input(struct file *file, void *priv, unsigned int i)
- static int vidioc_g_frequency(struct file *file, void *priv,
- 	struct v4l2_frequency *f)
- {
--	struct saa7164_vbi_fh *fh = file->private_data;
-+	struct saa7164_vbi_fh *fh = to_saa7164_vbi_fh(file);
- 
- 	return saa7164_g_frequency(fh->port->enc_port, f);
- }
-@@ -181,7 +181,7 @@ static int vidioc_g_frequency(struct file *file, void *priv,
- static int vidioc_s_frequency(struct file *file, void *priv,
- 	const struct v4l2_frequency *f)
- {
--	struct saa7164_vbi_fh *fh = file->private_data;
-+	struct saa7164_vbi_fh *fh = to_saa7164_vbi_fh(file);
- 	int ret = saa7164_s_frequency(fh->port->enc_port, f);
- 
- 	if (ret == 0)
-@@ -192,7 +192,7 @@ static int vidioc_s_frequency(struct file *file, void *priv,
- static int vidioc_querycap(struct file *file, void  *priv,
- 	struct v4l2_capability *cap)
- {
--	struct saa7164_vbi_fh *fh = file->private_data;
-+	struct saa7164_vbi_fh *fh = to_saa7164_vbi_fh(file);
- 	struct saa7164_port *port = fh->port;
- 	struct saa7164_dev *dev = port->dev;
- 
-@@ -429,14 +429,14 @@ static int fops_open(struct file *file)
- 	fh->port = port;
- 	v4l2_fh_init(&fh->fh, video_devdata(file));
- 	v4l2_fh_add(&fh->fh);
--	file->private_data = fh;
-+	file->private_data = &fh->fh;
- 
- 	return 0;
- }
- 
- static int fops_release(struct file *file)
- {
--	struct saa7164_vbi_fh *fh = file->private_data;
-+	struct saa7164_vbi_fh *fh = to_saa7164_vbi_fh(file);
- 	struct saa7164_port *port = fh->port;
- 	struct saa7164_dev *dev = port->dev;
- 
-@@ -489,7 +489,7 @@ saa7164_user_buffer *saa7164_vbi_next_buf(struct saa7164_port *port)
- static ssize_t fops_read(struct file *file, char __user *buffer,
- 	size_t count, loff_t *pos)
- {
--	struct saa7164_vbi_fh *fh = file->private_data;
-+	struct saa7164_vbi_fh *fh = to_saa7164_vbi_fh(file);
- 	struct saa7164_port *port = fh->port;
- 	struct saa7164_user_buffer *ubuf = NULL;
- 	struct saa7164_dev *dev = port->dev;
-@@ -596,7 +596,7 @@ static ssize_t fops_read(struct file *file, char __user *buffer,
- 
- static __poll_t fops_poll(struct file *file, poll_table *wait)
- {
--	struct saa7164_vbi_fh *fh = (struct saa7164_vbi_fh *)file->private_data;
-+	struct saa7164_vbi_fh *fh = to_saa7164_vbi_fh(file);
- 	struct saa7164_port *port = fh->port;
- 	__poll_t mask = 0;
- 
-diff --git a/drivers/media/pci/saa7164/saa7164.h b/drivers/media/pci/saa7164/saa7164.h
-index e1bac1fe19d3098792b2051b537857e3f13054d5..7b511f7f1cfc305a9ffe60722b9ebe093163787d 100644
---- a/drivers/media/pci/saa7164/saa7164.h
-+++ b/drivers/media/pci/saa7164/saa7164.h
-@@ -180,12 +180,22 @@ struct saa7164_encoder_fh {
- 	atomic_t v4l_reading;
- };
- 
-+static inline struct saa7164_encoder_fh *to_saa7164_encoder_fh(struct file *filp)
-+{
-+	return container_of(filp->private_data, struct saa7164_encoder_fh, fh);
-+}
-+
- struct saa7164_vbi_fh {
- 	struct v4l2_fh fh;
- 	struct saa7164_port *port;
- 	atomic_t v4l_reading;
- };
- 
-+static inline struct saa7164_vbi_fh *to_saa7164_vbi_fh(struct file *filp)
-+{
-+	return container_of(filp->private_data, struct saa7164_vbi_fh, fh);
-+}
-+
- struct saa7164_histogram_bucket {
- 	u32 val;
- 	u32 count;
 
 -- 
 2.49.0
