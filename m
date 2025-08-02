@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32873CCD1A5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9F48CCD1A7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z46DQ4NUFZUQXrPqrLmf7t+FMQWNCIYxfzdTeWO29pI=; b=RFsjivICjE3tCG
-	3QS41Y3oBKX41q4BcVuj0GKHz1KHuLB7oCoTTP3ukn0B8PECLNRK70uPpFeaBBLqYcTak0K73GOig
-	wuOG/YsiHo2UDCyr9ta+PIihI6/KXRSc/VZ0lkyDN/YYrsQPmqhk/upI2qpuFbOci3JZxNS2w82/k
-	DJ7N5lvAvxGOMargxbtLI3djtvYgocqOjp75aWJ8pW5V61YCl8PobysmoGrQdnJzHqatrVgejdHe5
-	IAvyCRRNfoKZMbE0p4HeopWiYDeo94g8ZsJLPdJl/sIfHjmm4TqKhMCNJBn6MZJToJOtwL8dTQHom
-	7MoElMBWGYZnbGhNu2Ag==;
+	List-Owner; bh=zVirNN9daOu3bcWhheRJFrLFZVo5eSgxrmkPhKd0wNs=; b=t5V4P/8qx5ERc5
+	Otb8tVXc/hYKKQqVe/emsMAkktbLqFGFfOsfPHjNE+E40OX6PV1NhT/vruotay0SDEyvaZtoCxQ0G
+	JZjFVaHEYPdIhGHLJa4LJJATzrjfnZOy9P5LqANJ1eheHHx5jUaR7NXXU8B06ofPNSGiKS/XoAFyl
+	UzyaDkGVkHH1niYw0/pzTS7viU1AxkIUx4Y+F8Zn9iJyvrQaqw6rR4Wj2n602fn4QESZbrUX7MVhq
+	VkFzy9arUkjoqB+uH+Uzk5P9bIPhJgh9/4rZJpCY9oRJFYIHA7P/+rsLldfnNDmrgpAXBT6i1SRZJ
+	qGMppn5ioURGqGFfQWQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoWa-0000000DAHQ-2Pas;
-	Mon, 20 Oct 2025 11:58:04 +0000
+	id 1vAoWd-0000000DALQ-27B6;
+	Mon, 20 Oct 2025 11:58:07 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8Vm-00000007P0v-2lP5;
-	Sat, 02 Aug 2025 09:26:43 +0000
+	id 1ui8W4-00000007P99-45lp;
+	Sat, 02 Aug 2025 09:27:02 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 92F0C3484;
-	Sat,  2 Aug 2025 11:25:45 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 4C35D330E;
+	Sat,  2 Aug 2025 11:26:06 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126756;
-	bh=W7Xf+mYBvYt6o9va9RI60UvIC8rElGReU++HhnCmVfg=;
+	s=mail; t=1754126774;
+	bh=YeeZiet6PqHm7IlGh7t3GZOdydEI6jy4AdesJo+UFJ8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FmxGWJBO4E5gfmQ58+RSnlUN52ZRP+BEdoqkKtsfvQR6jjDAnirS/9gNoOYc57lfI
-	 RexzJSryXfalvYWYRWKmdwZ8L2tq10eTyRsJFwKGBOzBN7fqkrTHkfy8UsCflim1KR
-	 F/nX+wFryQEtYqk1VrqnVMHTDoDHwqd89mcMY3hM=
+	b=efEEkJTnS1kS5gUzaXOmI/yYslA+2pJMaHIkGKProANNbr8dxKaCBtqnVHS7MQhUm
+	 5O2inCnrkmxZUR7Sb/afzgyTKrbaPNf/CC1zw3zEX7ePOorKxhty47n27+ZtwThhbW
+	 xJ9x9IaW2d+ETCWGrE3pPgiKenybAl/eZ+xNKYmQ=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:22:41 +0200
-Subject: [PATCH 19/65] media: camss: Replace .open() file operation with
- v4l2_fh_open()
+Date: Sat, 02 Aug 2025 11:22:43 +0200
+Subject: [PATCH 21/65] media: chips-media: wave5: Pass file pointer to
+ wave5_cleanup_instance()
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-19-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-21-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -130,26 +130,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2008;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3292;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=UzWhpz4xRfaNWR/lEJP22EOtdoViE3HjL6eKhJD+k4E=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj5QI9RGxRjTZ4i0/Oxsr0jsuAyLpLtzBDRp
- lLra/Ptx/+JAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y+QAKCRByNAaPFqFW
- PLxcD/9DQ1eh+7ORvSewCGfbUsdvwcusgLEdfimWMtixIHeb8GHjJBgZDHWANs4tzRhizZXc00D
- eB14EgzGTuYSfBh+SeiIQc2W821bIB4AF47VJ7paLr+6Ehpkjta3Z9R8684aE4hVEiozkIjYbTm
- YDe7CD5rgm8Jxkr6rX3dnXVv3MwvobNjhi4ZLVj6k9GQi4Knz4hcfrM/vftFhzLuQJ7iO0z72Pt
- kNNyNzwedzcS25WOSLeBekAuKEUA5on008vbsIrI+w6ZkD1g3nPmRoK0ak2y8wZBKOFoxpWVg41
- hHb++Y41ZeyaCZqGPftDkbkZiTaN/mlWTMoxSmxYGEQK98fuyUmJlocZW7DqkRmRr+0QaBXBuUX
- 2P/KOa1ID1yyoeGLNOtc/IJoi0NMW/2fxW504y5sisWA36Esidq6GNT+5Brx9IwS98eXy8ujgHC
- OeQ9v8xXeq/kiAy1xvlranHBEXkvrjxMJrC+Mh8Q075Ps5z2MIKmHxhkZ3hp3a0UEtZOHnSr1w3
- e++lQSZIhkz5edb0mFzoBAz4eZuAcMxacVvDKu6o0H//a5qBlxcGCrWKfBGmMCamzv5ClbFVnOg
- WvJO6KxSYl0EQPtZIbie3YGK/346Ea3AjdRLlWbUUCy1XZ+IuhfreqtwvYzPbTByCucwYBv86xb
- RdlrEzhdk+VnUcg==
+ bh=sFLeSeZ18AiPz7TNtzZuErYTeuXEDyYERBW9KVUCez8=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj5Ab8WMNqTk1vrNJmzEF9fusCZ5AJs5tg8p
+ ikoDaHa4TGJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y+QAKCRByNAaPFqFW
+ PIGXD/9X1mdSs4tmw4s1JTfYvMbuDI1kxi3A97kXvrt+El+sQRTisOHlSxLE9USoyAGm9PnoFPY
+ icrGza2HD8EwUhtANb4EwK4SX8gRpvg5DXsHiY+BzBm4ZVvbrn4YKQ8EspQAqrqPqNpRCC3jLzn
+ 0GRaHqxDXvUIkwHB48fJQ6GV3QDhI0wZH4KOeyPYnI+UAT/tN3QLKewQVSIxCvc+x44Uz1UIfYt
+ kdVvO1fp4phNaCAUHr+TNYEglxeQRmyTjF7EFg8glg2DIQvarhZjR2idgNmJRc32RfKKlrWhLLG
+ qsc3G5XT4rTHdpVwmtUQZodlMjwJIMrLeeq3gmQLcuVkPx7WrqJFWrykMYjVSJW9boC6wQNseOL
+ g/jwwARgjsbT4VVBTM34U4UGM25/qXegXPcvFArnizqPHj2jNKsfNiwqCk9hQvsaZb0hejeg2C6
+ PIHxrsXkFRQdQNuT5CuoeTdUazuF9Y8PozrVwKktzkTD3iCYWR6uVAZwa5j/+W0fWDzMJe3etdR
+ iL0DtcbzUnBRXuciDmUfTXXz4QqjEoF7LYYGV9gHpobdDmtnG6aN+YRDMpFr8/cXnc76JpLWK1O
+ iZ4WMJ6IpVenQcUxz2evwcVueKdYxxj8eIkzeEvX3GLQmspDOksNr43SNDrl2k/d9vKpDQ7djH2
+ UWeorQDKZwyuLsQ==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_022642_847071_002197F0 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20250802_022701_163594_0BE05E75 
+X-CRM114-Status: GOOD (  13.26  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:51 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -169,68 +169,81 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-The custom video_open() function in the camss driver open-codes the
-v4l2_fh_open() helper, with an additional mutex that protects the whole
-function. Given that the function does not modify any data guarded by
-the lock, there's no need for using the mutex and the function can be
-replaced by v4l2_fh_open().
+In preparation for a tree-wide rework automated with coccinelle that
+will need to access a struct file pointer in the
+wave5_cleanup_instance() function, pass it from the callers. There is
+not functional change yet.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/platform/qcom/camss/camss-video.c | 32 +------------------------
- 1 file changed, 1 insertion(+), 31 deletions(-)
+ drivers/media/platform/chips-media/wave5/wave5-helper.c  | 4 ++--
+ drivers/media/platform/chips-media/wave5/wave5-helper.h  | 2 +-
+ drivers/media/platform/chips-media/wave5/wave5-vpu-dec.c | 2 +-
+ drivers/media/platform/chips-media/wave5/wave5-vpu-enc.c | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/platform/qcom/camss/camss-video.c b/drivers/media/platform/qcom/camss/camss-video.c
-index 8d05802d1735a35cb1a1a0a81c6666b1517dd2e6..c5d02f9ebc6aa9bfd6910944f3d40a2e5f0a908f 100644
---- a/drivers/media/platform/qcom/camss/camss-video.c
-+++ b/drivers/media/platform/qcom/camss/camss-video.c
-@@ -604,36 +604,6 @@ static const struct v4l2_ioctl_ops msm_vid_ioctl_ops = {
-  * V4L2 file operations
-  */
+diff --git a/drivers/media/platform/chips-media/wave5/wave5-helper.c b/drivers/media/platform/chips-media/wave5/wave5-helper.c
+index 031dea0ee61c6c5afddf7ff47d67d85826f16d8d..ed8ff04a899da0a3c9e0f037dac2c9548c98920f 100644
+--- a/drivers/media/platform/chips-media/wave5/wave5-helper.c
++++ b/drivers/media/platform/chips-media/wave5/wave5-helper.c
+@@ -27,7 +27,7 @@ const char *state_to_str(enum vpu_instance_state state)
+ 	}
+ }
  
--static int video_open(struct file *file)
--{
--	struct video_device *vdev = video_devdata(file);
--	struct camss_video *video = video_drvdata(file);
--	struct v4l2_fh *vfh;
--	int ret;
--
--	mutex_lock(&video->lock);
--
--	vfh = kzalloc(sizeof(*vfh), GFP_KERNEL);
--	if (vfh == NULL) {
--		ret = -ENOMEM;
--		goto error_alloc;
--	}
--
--	v4l2_fh_init(vfh, vdev);
--	v4l2_fh_add(vfh);
--
--	file->private_data = vfh;
--
--	mutex_unlock(&video->lock);
--
--	return 0;
--
--error_alloc:
--	mutex_unlock(&video->lock);
--
--	return ret;
--}
--
- static int video_release(struct file *file)
+-void wave5_cleanup_instance(struct vpu_instance *inst)
++void wave5_cleanup_instance(struct vpu_instance *inst, struct file *filp)
  {
- 	vb2_fop_release(file);
-@@ -646,7 +616,7 @@ static int video_release(struct file *file)
- static const struct v4l2_file_operations msm_vid_fops = {
- 	.owner          = THIS_MODULE,
- 	.unlocked_ioctl = video_ioctl2,
--	.open           = video_open,
-+	.open           = v4l2_fh_open,
- 	.release        = video_release,
- 	.poll           = vb2_fop_poll,
- 	.mmap		= vb2_fop_mmap,
+ 	int i;
+ 
+@@ -78,7 +78,7 @@ int wave5_vpu_release_device(struct file *filp,
+ 		}
+ 	}
+ 
+-	wave5_cleanup_instance(inst);
++	wave5_cleanup_instance(inst, filp);
+ 
+ 	return ret;
+ }
+diff --git a/drivers/media/platform/chips-media/wave5/wave5-helper.h b/drivers/media/platform/chips-media/wave5/wave5-helper.h
+index 9937fce553fc33000bd31abcfc6d7345f6f7e485..976a402e426ff329490717925a08a76d777cbe3e 100644
+--- a/drivers/media/platform/chips-media/wave5/wave5-helper.h
++++ b/drivers/media/platform/chips-media/wave5/wave5-helper.h
+@@ -14,7 +14,7 @@
+ #define MAX_FMTS	12
+ 
+ const char *state_to_str(enum vpu_instance_state state);
+-void wave5_cleanup_instance(struct vpu_instance *inst);
++void wave5_cleanup_instance(struct vpu_instance *inst, struct file *filp);
+ int wave5_vpu_release_device(struct file *filp,
+ 			     int (*close_func)(struct vpu_instance *inst, u32 *fail_res),
+ 			     char *name);
+diff --git a/drivers/media/platform/chips-media/wave5/wave5-vpu-dec.c b/drivers/media/platform/chips-media/wave5/wave5-vpu-dec.c
+index fd71f0c43ac37a0bb56f669d4b89d6054cb181d5..f3188d720ed3e183f3400816a9c939014213711d 100644
+--- a/drivers/media/platform/chips-media/wave5/wave5-vpu-dec.c
++++ b/drivers/media/platform/chips-media/wave5/wave5-vpu-dec.c
+@@ -1840,7 +1840,7 @@ static int wave5_vpu_open_dec(struct file *filp)
+ 	return 0;
+ 
+ cleanup_inst:
+-	wave5_cleanup_instance(inst);
++	wave5_cleanup_instance(inst, filp);
+ 	return ret;
+ }
+ 
+diff --git a/drivers/media/platform/chips-media/wave5/wave5-vpu-enc.c b/drivers/media/platform/chips-media/wave5/wave5-vpu-enc.c
+index 1e5fc5f8b856c5329b2c6007649285a28749b6aa..b69a1206fa12c2ff5f3a32d269b8fd3b80a597aa 100644
+--- a/drivers/media/platform/chips-media/wave5/wave5-vpu-enc.c
++++ b/drivers/media/platform/chips-media/wave5/wave5-vpu-enc.c
+@@ -1784,7 +1784,7 @@ static int wave5_vpu_open_enc(struct file *filp)
+ 	return 0;
+ 
+ cleanup_inst:
+-	wave5_cleanup_instance(inst);
++	wave5_cleanup_instance(inst, filp);
+ 	return ret;
+ }
+ 
 
 -- 
 2.49.0
