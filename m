@@ -4,58 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C51FC87FCB
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Aug 2025 12:34:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF992C87FC9
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Aug 2025 08:44:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3NJo1/K5xzgsC82PgVqnNPzijpv3AWatJupnz/XPqoE=; b=EYDZ+c4dyVJeqy
-	6QceTqINS2/1XT6e/bf6vxtZ+Ox6NgzL8mSmTkQb3Z4N0xVqX62x3kZya2HRA8Ma9HOyoCfnm6ivz
-	6CLIlegNyL/NwTwrvUtLkb7FZfIeNoqm9bVwsxrC+yKfDcQirPeAfjqJrZnyp4639u3OBf4NzbROh
-	t0mZvlLXLy+xxE8fsLGayQAXlqjh5EUlhdVPiUVK3mLoxBwKXCP8D3k2Ny3VybN5tWwMhCQxTmwFJ
-	QLK19/14aITU63St0pyZeX0Stbc/MI9RE1ymr9gSNXjh59xmbfIGUc4cF8TZxN6uT7IPh3f2pqO2A
-	XC0cKVuYaN97hF/BafkQ==;
+	List-Owner; bh=NhyG/NNiY/F8WWcbkizWEvX3HOylEWeo/ME9FpnQye8=; b=NiYQ16hKgyUvsa
+	Io4fJRL7BGN6+CyWEknUcvnAAbpyTseFT3NW6uWhRADa5RExsl5n50xF7GjiRSBgSpe6fwd6d/WJh
+	NjeMVI29sn/tkm8jiY22yJBzQqIz3ZDp00NER4oz002BfHFfqNlBp23SCaRe1AL1ti3UuoiTTRtsk
+	78UwElDVJtoua/ooruM91U+D3BoBR0DCGftxFMK+TewRVL4vLW60/BxDr3VgXVBRMLyMDTWCWWB4A
+	fUlVDrQIM8f3rLhX9060nmp6WcG5xku/oljEryzeuyef89Q4GUGTJ/b4MP9RcaFLv2CY8nkHFCoUI
+	dSALfw4tfwg9ET01BXrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhoy0-00000005z8r-2eam;
-	Fri, 01 Aug 2025 12:34:32 +0000
-Received: from ni.piap.pl ([195.187.100.5])
+	id 1ui7qD-00000007Lca-1xfz;
+	Sat, 02 Aug 2025 08:43:45 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uhojz-00000005o6t-3QhM;
-	Fri, 01 Aug 2025 12:20:05 +0000
-Received: from t19.piap.pl (OSB1819.piap.pl [10.0.9.19])
-	by ni.piap.pl (Postfix) with ESMTPS id 8E5C3C3EEAC9;
-	Fri,  1 Aug 2025 14:19:56 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 ni.piap.pl 8E5C3C3EEAC9
-From: =?utf-8?Q?Krzysztof_Ha=C5=82asa?= <khalasa@piap.pl>
-To: Stefan Klug <stefan.klug@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>,  Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>,  Heiko Stuebner <heiko@sntech.de>,
-  Paul Elder <paul.elder@ideasonboard.com>,  Jacopo Mondi
- <jacopo.mondi@ideasonboard.com>,  Ondrej Jirman <megi@xff.cz>,
-  linux-media@vger.kernel.org,  linux-rockchip@lists.infradead.org,
-  linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org
-Subject: Re: FYI: i.MX8MP ISP (RKISP1) MI registers corruption
-In-Reply-To: <m3qzxyug1s.fsf@t19.piap.pl> ("Krzysztof =?utf-8?Q?Ha=C5=82as?=
- =?utf-8?Q?a=22's?= message of
-	"Wed, 30 Jul 2025 12:30:23 +0200")
-References: <m3h5zbxkc6.fsf@t19.piap.pl> <m38qknx939.fsf@t19.piap.pl>
-	<175308758352.3134829.9472501038683860006@localhost>
-	<m31pq9y98z.fsf@t19.piap.pl>
-	<175326599663.2811177.16620980968274114885@localhost>
-	<m3h5z2vw12.fsf@t19.piap.pl>
-	<175344176070.2811177.10693943493658922992@localhost>
-	<m3qzxyug1s.fsf@t19.piap.pl>
-Date: Fri, 01 Aug 2025 14:19:56 +0200
-Message-ID: <m3cy9futcj.fsf@t19.piap.pl>
+	id 1ui7nd-00000007LSO-00Ax;
+	Sat, 02 Aug 2025 08:41:06 +0000
+Received: from pendragon.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id BF8443DA;
+	Sat,  2 Aug 2025 10:40:15 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1754124015;
+	bh=oU87yynY9OkNgePab14EjtA/FIdmNPBXak8v0Yc3ONw=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=Sq0wK0UZ1/OTJRLm9pXvJu54D1dPk8BwkywGBb+UMvI+mhZPlDYatUsOGJIOIE60y
+	 ejjM1AmPtIgKuJlf0nn5fcldd2VyDVXdxAd8aTEy5pi6yFvWV6kKToQUBFdGWVhq99
+	 FtF8A3AQmeHrwBoa5ua618nv+FmlJB/z8rGx1hOk=
 MIME-Version: 1.0
+In-Reply-To: <20250620-camera-v4-3-0201a8ed5fae@bootlin.com>
+References: <20250620-camera-v4-0-0201a8ed5fae@bootlin.com> <20250620-camera-v4-3-0201a8ed5fae@bootlin.com>
+Subject: Re: [PATCH v4 3/4] arm64: dts: rockchip: describe I2c Bus 1 and IMX258 world camera on PinePhone Pro
+From: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, imx@lists.linux.dev, Olivier Benjamin <olivier.benjamin@bootlin.com>, ~diederik/pine64-discuss@lists.sr.ht, Dragan Simic <dsimic@manjaro.org>, Ondrej Jirman <megi@xff.cz>
+To: Conor Dooley <conor+dt@kernel.org>, Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Nicholas Roth <nicholas@rothemail.net>, Olivier Benjamin <olivier.benjamin@bootlin.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Rob Herring <robh@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>
+Date: Sat, 02 Aug 2025 09:40:57 +0100
+Message-ID: <175412405784.2356345.13601254650114566601@ping.linuxembedded.co.uk>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250801_052004_024624_BEABD8D9 
-X-CRM114-Status: UNSURE (   6.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250802_014105_189632_14DEDA2C 
+X-CRM114-Status: GOOD (  26.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,139 +60,235 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpyZXBvcnRpbmcgZnJvbSB0aGUgZmllbGQgOi0pCgpBdCB0aGlzIHBvaW50IEkndmUgc29t
-ZXRoaW5nIGxpa2UgdGhlIGZvbGxvd2luZzoKLSBydW4gY2FtZXJhIGFwcHMgaW4gYmFja2dyb3Vu
-ZCAoc28gdGhlIGNsb2NrcyBldGMuIGFyZSB1cCkKLSB3aGlsZSAoYW5hbHl6ZV9taSAtbTEgLXMx
-MDAwMDAwMCAtciAtYSAweDMyRTIxNDAwIHNob3dzIGVycm9ycykgewoJY2hhbmdlX2Nsb2NrIDB4
-MzAzODhBODAgMyAzICMgNTAgTUh6CiAgICAgICAgY2hhbmdlX2Nsb2NrIDB4MzAzODhBODAgMCAz
-ICMgMjAwIE1IeiAtIHRoZSBvcmlnaW5hbCBzZXR0aW5ncwp9CgpJdCBhbGwgdGFrZXMgYSBjb3Vw
-bGUgb2Ygc2Vjb25kcy4KSSBndWVzcyBJIG1hZGUgc29tZSBtaW5vciBjaGFuZ2VzIHRvIGFuYWx5
-emVfbWkuYywgY2FuIHBvc3QgaXQKaWYgbmVlZGVkLgoKd2hlcmUgY2hhbmdlX2Nsb2NrIHdyaXRl
-cyBkaXJlY3RseSBkbyB0aGUgQ0NNIHJlZ2lzdGVycwooTUVESUFfQVBCX1JPT1RfQ0xLKSBhbmQg
-c2V0cyAiUFJFIiBhbmQgIlBPU1QiIGRpdmlkZXJzICgzIGFuZCAzID0KODAwIE1IeiAvICgzICsg
-MSkgLyAoMyArIDEpID0gNTAgTWh6IGFuZCB0aGUgc2FtZSBmb3IgMjAwIE1oei4KCkl0IGFwcGVh
-cnMgdG8gd29yay4gSSdtIGdldHRpbmcgKENvbm5lY3Rpb24gY2xvc2VkID0gcmVib290KToKCk1F
-RElBX0FQQiBFTiBtdXggMiBwcmUgMyBTWVNURU1fUExMMV9DTEsgLyA0ID0gMjAwIE1IegpSZWdp
-c3RlciAweDMyRTIxNDAwIG1pX2N0cmwgdmFsdWUgMHgwMDdBMjAwMSBjb3VudCAxMCwwMDAsMDAw
-CgpGb3VuZCBwb3NzaWJseSBzdGFibGUgY29uZGl0aW9uCgpDb25uZWN0aW9uIHRvIDEwLjAuOS4x
-MjMgY2xvc2VkIGJ5IHJlbW90ZSBob3N0LgpNRURJQV9BUEIgRU4gbXV4IDIgcHJlIDMgU1lTVEVN
-X1BMTDFfQ0xLIC8gNCA9IDIwMCBNSHoKUmVnaXN0ZXIgMHgzMkUyMTQwMCBtaV9jdHJsIHZhbHVl
-IDB4MDA3QTIwMDEgY291bnQgOSw5OTksOTk5ClJlZ2lzdGVyIDB4MzJFMjE0MDAgbWlfY3RybCB2
-YWx1ZSAgICAgICAgICAwIGNvdW50IDEKCk1FRElBX0FQQiBFTiBtdXggMiBwcmUgMyBTWVNURU1f
-UExMMV9DTEsgLyAxNiA9IDUwIE1IegpNRURJQV9BUEIgRU4gbXV4IDIgcHJlIDAgU1lTVEVNX1BM
-TDFfQ0xLIC8gNCA9IDIwMCBNSHoKUmVnaXN0ZXIgMHgzMkUyMTQwMCBtaV9jdHJsIHZhbHVlIDB4
-MDA3QTIwMDEgY291bnQgOSw5OTksOTk4ClJlZ2lzdGVyIDB4MzJFMjE0MDAgbWlfY3RybCB2YWx1
-ZSAgICAgICAgICAwIGNvdW50IDEKUmVnaXN0ZXIgMHgzMkUyMTQwMCBtaV9jdHJsIHZhbHVlIDB4
-MDAwMTAwMDEgY291bnQgMQoKTUVESUFfQVBCIEVOIG11eCAyIHByZSAzIFNZU1RFTV9QTEwxX0NM
-SyAvIDE2ID0gNTAgTUh6Ck1FRElBX0FQQiBFTiBtdXggMiBwcmUgMCBTWVNURU1fUExMMV9DTEsg
-LyA0ID0gMjAwIE1IegpSZWdpc3RlciAweDMyRTIxNDAwIG1pX2N0cmwgdmFsdWUgMHgwMDdBMjAw
-MSBjb3VudCAxMCwwMDAsMDAwCgpGb3VuZCBwb3NzaWJseSBzdGFibGUgY29uZGl0aW9uCgpDb25u
-ZWN0aW9uIHRvIDEwLjAuOS4xMjMgY2xvc2VkIGJ5IHJlbW90ZSBob3N0LgpNRURJQV9BUEIgRU4g
-bXV4IDIgcHJlIDMgU1lTVEVNX1BMTDFfQ0xLIC8gNCA9IDIwMCBNSHoKUmVnaXN0ZXIgMHgzMkUy
-MTQwMCBtaV9jdHJsIHZhbHVlIDB4MDA3QTIwMDEgY291bnQgOSw5OTksOTg4ClJlZ2lzdGVyIDB4
-MzJFMjE0MDAgbWlfY3RybCB2YWx1ZSAgICAgICAgICAwIGNvdW50IDEyCgpNRURJQV9BUEIgRU4g
-bXV4IDIgcHJlIDMgU1lTVEVNX1BMTDFfQ0xLIC8gMTYgPSA1MCBNSHoKTUVESUFfQVBCIEVOIG11
-eCAyIHByZSAwIFNZU1RFTV9QTEwxX0NMSyAvIDQgPSAyMDAgTUh6ClJlZ2lzdGVyIDB4MzJFMjE0
-MDAgbWlfY3RybCB2YWx1ZSAweDAwN0EyMDAxIGNvdW50IDEwLDAwMCwwMDAKCkZvdW5kIHBvc3Np
-Ymx5IHN0YWJsZSBjb25kaXRpb24KCkNvbm5lY3Rpb24gdG8gMTAuMC45LjEyMyBjbG9zZWQgYnkg
-cmVtb3RlIGhvc3QuCk1FRElBX0FQQiBFTiBtdXggMiBwcmUgMyBTWVNURU1fUExMMV9DTEsgLyA0
-ID0gMjAwIE1IegpSZWdpc3RlciAweDMyRTIxNDAwIG1pX2N0cmwgdmFsdWUgMHgwMDdBMjAwMSBj
-b3VudCAxMCwwMDAsMDAwCgpGb3VuZCBwb3NzaWJseSBzdGFibGUgY29uZGl0aW9uCgpDb25uZWN0
-aW9uIHRvIDEwLjAuOS4xMjMgY2xvc2VkIGJ5IHJlbW90ZSBob3N0LgpNRURJQV9BUEIgRU4gbXV4
-IDIgcHJlIDMgU1lTVEVNX1BMTDFfQ0xLIC8gNCA9IDIwMCBNSHoKUmVnaXN0ZXIgMHgzMkUyMTQw
-MCBtaV9jdHJsIHZhbHVlIDB4MDA3QTIwMDEgY291bnQgMTAsMDAwLDAwMAoKRm91bmQgcG9zc2li
-bHkgc3RhYmxlIGNvbmRpdGlvbgoKQ29ubmVjdGlvbiB0byAxMC4wLjkuMTIzIGNsb3NlZCBieSBy
-ZW1vdGUgaG9zdC4KTUVESUFfQVBCIEVOIG11eCAyIHByZSAzIFNZU1RFTV9QTEwxX0NMSyAvIDQg
-PSAyMDAgTUh6ClJlZ2lzdGVyIDB4MzJFMjE0MDAgbWlfY3RybCB2YWx1ZSAweDAwN0EyMDAxIGNv
-dW50IDEwLDAwMCwwMDAKCkZvdW5kIHBvc3NpYmx5IHN0YWJsZSBjb25kaXRpb24KCkNvbm5lY3Rp
-b24gdG8gMTAuMC45LjEyMyBjbG9zZWQgYnkgcmVtb3RlIGhvc3QuCk1FRElBX0FQQiBFTiBtdXgg
-MiBwcmUgMyBTWVNURU1fUExMMV9DTEsgLyA0ID0gMjAwIE1IegpSZWdpc3RlciAweDMyRTIxNDAw
-IG1pX2N0cmwgdmFsdWUgMHgwMDdBMjAwMSBjb3VudCAxMCwwMDAsMDAwCgpGb3VuZCBwb3NzaWJs
-eSBzdGFibGUgY29uZGl0aW9uCgpDb25uZWN0aW9uIHRvIDEwLjAuOS4xMjMgY2xvc2VkIGJ5IHJl
-bW90ZSBob3N0LgpNRURJQV9BUEIgRU4gbXV4IDIgcHJlIDMgU1lTVEVNX1BMTDFfQ0xLIC8gNCA9
-IDIwMCBNSHoKUmVnaXN0ZXIgMHgzMkUyMTQwMCBtaV9jdHJsIHZhbHVlIDB4MDA3QTIwMDEgY291
-bnQgMTAsMDAwLDAwMAoKRm91bmQgcG9zc2libHkgc3RhYmxlIGNvbmRpdGlvbgoKQ29ubmVjdGlv
-biB0byAxMC4wLjkuMTIzIGNsb3NlZCBieSByZW1vdGUgaG9zdC4KTUVESUFfQVBCIEVOIG11eCAy
-IHByZSAzIFNZU1RFTV9QTEwxX0NMSyAvIDQgPSAyMDAgTUh6ClJlZ2lzdGVyIDB4MzJFMjE0MDAg
-bWlfY3RybCB2YWx1ZSAweDAwN0EyMDAxIGNvdW50IDksOTk5LDc4MQpSZWdpc3RlciAweDMyRTIx
-NDAwIG1pX2N0cmwgdmFsdWUgICAgICAgICAgMCBjb3VudCAyMDYKUmVnaXN0ZXIgMHgzMkUyMTQw
-MCBtaV9jdHJsIHZhbHVlIDB4M0MzODAwMDAgY291bnQgMwpSZWdpc3RlciAweDMyRTIxNDAwIG1p
-X2N0cmwgdmFsdWUgMHgwMDBGRDIwMCBjb3VudCA1ClJlZ2lzdGVyIDB4MzJFMjE0MDAgbWlfY3Ry
-bCB2YWx1ZSAweDNDNDQwMDAwIGNvdW50IDMKUmVnaXN0ZXIgMHgzMkUyMTQwMCBtaV9jdHJsIHZh
-bHVlIDB4M0MxNDAwMDAgY291bnQgMgoKTUVESUFfQVBCIEVOIG11eCAyIHByZSAzIFNZU1RFTV9Q
-TEwxX0NMSyAvIDE2ID0gNTAgTUh6Ck1FRElBX0FQQiBFTiBtdXggMiBwcmUgMCBTWVNURU1fUExM
-MV9DTEsgLyA0ID0gMjAwIE1IegpSZWdpc3RlciAweDMyRTIxNDAwIG1pX2N0cmwgdmFsdWUgMHgw
-MDdBMjAwMSBjb3VudCAxMCwwMDAsMDAwCgpGb3VuZCBwb3NzaWJseSBzdGFibGUgY29uZGl0aW9u
-CgpDb25uZWN0aW9uIHRvIDEwLjAuOS4xMjMgY2xvc2VkIGJ5IHJlbW90ZSBob3N0LgpNRURJQV9B
-UEIgRU4gbXV4IDIgcHJlIDMgU1lTVEVNX1BMTDFfQ0xLIC8gNCA9IDIwMCBNSHoKUmVnaXN0ZXIg
-MHgzMkUyMTQwMCBtaV9jdHJsIHZhbHVlIDB4MDA3QTIwMDEgY291bnQgMTAsMDAwLDAwMAoKRm91
-bmQgcG9zc2libHkgc3RhYmxlIGNvbmRpdGlvbgoKQ29ubmVjdGlvbiB0byAxMC4wLjkuMTIzIGNs
-b3NlZCBieSByZW1vdGUgaG9zdC4KTUVESUFfQVBCIEVOIG11eCAyIHByZSAzIFNZU1RFTV9QTEwx
-X0NMSyAvIDQgPSAyMDAgTUh6ClJlZ2lzdGVyIDB4MzJFMjE0MDAgbWlfY3RybCB2YWx1ZSAweDAw
-N0EyMDAxIGNvdW50IDEwLDAwMCwwMDAKCkZvdW5kIHBvc3NpYmx5IHN0YWJsZSBjb25kaXRpb24K
-CkNvbm5lY3Rpb24gdG8gMTAuMC45LjEyMyBjbG9zZWQgYnkgcmVtb3RlIGhvc3QuCk1FRElBX0FQ
-QiBFTiBtdXggMiBwcmUgMyBTWVNURU1fUExMMV9DTEsgLyA0ID0gMjAwIE1IegpSZWdpc3RlciAw
-eDMyRTIxNDAwIG1pX2N0cmwgdmFsdWUgMHgwMDdBMjAwMSBjb3VudCAxMCwwMDAsMDAwCgpGb3Vu
-ZCBwb3NzaWJseSBzdGFibGUgY29uZGl0aW9uCgpDb25uZWN0aW9uIHRvIDEwLjAuOS4xMjMgY2xv
-c2VkIGJ5IHJlbW90ZSBob3N0LgpNRURJQV9BUEIgRU4gbXV4IDIgcHJlIDMgU1lTVEVNX1BMTDFf
-Q0xLIC8gNCA9IDIwMCBNSHoKUmVnaXN0ZXIgMHgzMkUyMTQwMCBtaV9jdHJsIHZhbHVlIDB4MDA3
-QTIwMDEgY291bnQgMTAsMDAwLDAwMAoKRm91bmQgcG9zc2libHkgc3RhYmxlIGNvbmRpdGlvbgoK
-Q29ubmVjdGlvbiB0byAxMC4wLjkuMTIzIGNsb3NlZCBieSByZW1vdGUgaG9zdC4KTUVESUFfQVBC
-IEVOIG11eCAyIHByZSAzIFNZU1RFTV9QTEwxX0NMSyAvIDQgPSAyMDAgTUh6ClJlZ2lzdGVyIDB4
-MzJFMjE0MDAgbWlfY3RybCB2YWx1ZSAweDAwN0EyMDAxIGNvdW50IDEwLDAwMCwwMDAKCkZvdW5k
-IHBvc3NpYmx5IHN0YWJsZSBjb25kaXRpb24KCkNvbm5lY3Rpb24gdG8gMTAuMC45LjEyMyBjbG9z
-ZWQgYnkgcmVtb3RlIGhvc3QuCk1FRElBX0FQQiBFTiBtdXggMiBwcmUgMyBTWVNURU1fUExMMV9D
-TEsgLyA0ID0gMjAwIE1IegpSZWdpc3RlciAweDMyRTIxNDAwIG1pX2N0cmwgdmFsdWUgMHgwMDdB
-MjAwMSBjb3VudCA5LDk5OSw5OTkKUmVnaXN0ZXIgMHgzMkUyMTQwMCBtaV9jdHJsIHZhbHVlICAg
-ICAgICAgIDAgY291bnQgMQoKTUVESUFfQVBCIEVOIG11eCAyIHByZSAzIFNZU1RFTV9QTEwxX0NM
-SyAvIDE2ID0gNTAgTUh6Ck1FRElBX0FQQiBFTiBtdXggMiBwcmUgMCBTWVNURU1fUExMMV9DTEsg
-LyA0ID0gMjAwIE1IegpSZWdpc3RlciAweDMyRTIxNDAwIG1pX2N0cmwgdmFsdWUgMHgwMDdBMjAw
-MSBjb3VudCAxMCwwMDAsMDAwCgpGb3VuZCBwb3NzaWJseSBzdGFibGUgY29uZGl0aW9uCgpDb25u
-ZWN0aW9uIHRvIDEwLjAuOS4xMjMgY2xvc2VkIGJ5IHJlbW90ZSBob3N0LgpNRURJQV9BUEIgRU4g
-bXV4IDIgcHJlIDMgU1lTVEVNX1BMTDFfQ0xLIC8gNCA9IDIwMCBNSHoKUmVnaXN0ZXIgMHgzMkUy
-MTQwMCBtaV9jdHJsIHZhbHVlIDB4MDA3QTIwMDEgY291bnQgMTAsMDAwLDAwMAoKRm91bmQgcG9z
-c2libHkgc3RhYmxlIGNvbmRpdGlvbgoKQ29ubmVjdGlvbiB0byAxMC4wLjkuMTIzIGNsb3NlZCBi
-eSByZW1vdGUgaG9zdC4KTUVESUFfQVBCIEVOIG11eCAyIHByZSAzIFNZU1RFTV9QTEwxX0NMSyAv
-IDQgPSAyMDAgTUh6ClJlZ2lzdGVyIDB4MzJFMjE0MDAgbWlfY3RybCB2YWx1ZSAweDAwN0EyMDAx
-IGNvdW50IDEwLDAwMCwwMDAKCkZvdW5kIHBvc3NpYmx5IHN0YWJsZSBjb25kaXRpb24KCkNvbm5l
-Y3Rpb24gdG8gMTAuMC45LjEyMyBjbG9zZWQgYnkgcmVtb3RlIGhvc3QuCk1FRElBX0FQQiBFTiBt
-dXggMiBwcmUgMyBTWVNURU1fUExMMV9DTEsgLyA0ID0gMjAwIE1IegpSZWdpc3RlciAweDMyRTIx
-NDAwIG1pX2N0cmwgdmFsdWUgMHgwMDdBMjAwMSBjb3VudCAxMCwwMDAsMDAwCgpGb3VuZCBwb3Nz
-aWJseSBzdGFibGUgY29uZGl0aW9uCgpDb25uZWN0aW9uIHRvIDEwLjAuOS4xMjMgY2xvc2VkIGJ5
-IHJlbW90ZSBob3N0LgpNRURJQV9BUEIgRU4gbXV4IDIgcHJlIDMgU1lTVEVNX1BMTDFfQ0xLIC8g
-NCA9IDIwMCBNSHoKUmVnaXN0ZXIgMHgzMkUyMTQwMCBtaV9jdHJsIHZhbHVlIDB4MDA3QTIwMDEg
-Y291bnQgMTAsMDAwLDAwMAoKRm91bmQgcG9zc2libHkgc3RhYmxlIGNvbmRpdGlvbgoKQ29ubmVj
-dGlvbiB0byAxMC4wLjkuMTIzIGNsb3NlZCBieSByZW1vdGUgaG9zdC4KTUVESUFfQVBCIEVOIG11
-eCAyIHByZSAzIFNZU1RFTV9QTEwxX0NMSyAvIDQgPSAyMDAgTUh6ClJlZ2lzdGVyIDB4MzJFMjE0
-MDAgbWlfY3RybCB2YWx1ZSAweDAwN0EyMDAxIGNvdW50IDEwLDAwMCwwMDAKCkZvdW5kIHBvc3Np
-Ymx5IHN0YWJsZSBjb25kaXRpb24KCkNvbm5lY3Rpb24gdG8gMTAuMC45LjEyMyBjbG9zZWQgYnkg
-cmVtb3RlIGhvc3QuCk1FRElBX0FQQiBFTiBtdXggMiBwcmUgMyBTWVNURU1fUExMMV9DTEsgLyA0
-ID0gMjAwIE1IegpSZWdpc3RlciAweDMyRTIxNDAwIG1pX2N0cmwgdmFsdWUgMHgwMDdBMjAwMSBj
-b3VudCAxMCwwMDAsMDAwCgpGb3VuZCBwb3NzaWJseSBzdGFibGUgY29uZGl0aW9uCgpDb25uZWN0
-aW9uIHRvIDEwLjAuOS4xMjMgY2xvc2VkIGJ5IHJlbW90ZSBob3N0LgpNRURJQV9BUEIgRU4gbXV4
-IDIgcHJlIDMgU1lTVEVNX1BMTDFfQ0xLIC8gNCA9IDIwMCBNSHoKUmVnaXN0ZXIgMHgzMkUyMTQw
-MCBtaV9jdHJsIHZhbHVlIDB4MDA3QTIwMDEgY291bnQgOSw5OTksNzUyClJlZ2lzdGVyIDB4MzJF
-MjE0MDAgbWlfY3RybCB2YWx1ZSAgICAgICAgICAwIGNvdW50IDIzNwpSZWdpc3RlciAweDMyRTIx
-NDAwIG1pX2N0cmwgdmFsdWUgMHgzQzE0MDAwMCBjb3VudCAyClJlZ2lzdGVyIDB4MzJFMjE0MDAg
-bWlfY3RybCB2YWx1ZSAweDAwMEZEMjAwIGNvdW50IDQKUmVnaXN0ZXIgMHgzMkUyMTQwMCBtaV9j
-dHJsIHZhbHVlIDB4M0MzODAwMDAgY291bnQgMQpSZWdpc3RlciAweDMyRTIxNDAwIG1pX2N0cmwg
-dmFsdWUgMHgzQzQ0MDAwMCBjb3VudCAyClJlZ2lzdGVyIDB4MzJFMjE0MDAgbWlfY3RybCB2YWx1
-ZSAweDNDMkMwMDAwIGNvdW50IDIKCk1FRElBX0FQQiBFTiBtdXggMiBwcmUgMyBTWVNURU1fUExM
-MV9DTEsgLyAxNiA9IDUwIE1IegpNRURJQV9BUEIgRU4gbXV4IDIgcHJlIDAgU1lTVEVNX1BMTDFf
-Q0xLIC8gNCA9IDIwMCBNSHoKUmVnaXN0ZXIgMHgzMkUyMTQwMCBtaV9jdHJsIHZhbHVlIDB4MDA3
-QTIwMDEgY291bnQgMTAsMDAwLDAwMAoKRm91bmQgcG9zc2libHkgc3RhYmxlIGNvbmRpdGlvbgoK
-Q29ubmVjdGlvbiB0byAxMC4wLjkuMTIzIGNsb3NlZCBieSByZW1vdGUgaG9zdC4KTUVESUFfQVBC
-IEVOIG11eCAyIHByZSAzIFNZU1RFTV9QTEwxX0NMSyAvIDQgPSAyMDAgTUh6ClJlZ2lzdGVyIDB4
-MzJFMjE0MDAgbWlfY3RybCB2YWx1ZSAweDAwN0EyMDAxIGNvdW50IDEwLDAwMCwwMDAKCkZvdW5k
-IHBvc3NpYmx5IHN0YWJsZSBjb25kaXRpb24KLS0gCktyenlzenRvZiAiQ2hyaXMiIEhhxYJhc2EK
-ClNpZcSHIEJhZGF3Y3phIMWBdWthc2lld2ljegpQcnplbXlzxYJvd3kgSW5zdHl0dXQgQXV0b21h
-dHlraSBpIFBvbWlhcsOzdyBQSUFQCkFsLiBKZXJvem9saW1za2llIDIwMiwgMDItNDg2IFdhcnN6
-YXdhCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+Hi Olivier,
+
+I'm very pleased to see this support getting upstreamed!
+
+Quoting Olivier Benjamin (2025-06-20 16:21:34)
+> Add the description of the rear/world camera (IMX258) on the PinePhone Pro
+> to the device dts file.
+> It receives commands on the I2C Bus 1 at address 0x1a and transmits data
+> over CSI-MIPI.
+> 
+> The I2C address for IMX258 can be found in the IMX258-0AQH5 Software
+> Reference Manual, page 24, section 2.3.1: 0b0011010 = 0x1a.
+> Section 3 indicates the module has 4 pairs of data lines. While 4-lane
+> mode is nominal, 2-lane mode should also be supported.
+> 
+> The pin muxing info was extracted from the PinePhone Pro schematic v1.0
+> as well as the RK3399 datasheet revision 1.8.
+> 
+> Table 2-3 in section 2.8 of the RK3399 datasheet contains the mapping
+> of IO functions for the SoC pins. Page 52 shows GPIO1_A0, page 54 shows
+> GPIO2_D4.
+> 
+> For I2C power, the PinePhone Pro schematic page 11 quadrants A4 and A5:
+> RK3399_J.AA8 and RK3399_J.Y8 get power from vcaa1v8_codec, so turn it on
+> 
+> The IMX258 also uses the following regulators, expected by its driver:
+>  - vana (2.8V analog), called AVDD2V8_DVP on P.18 q.C1 and derived from
+>    VCC1V8_S3 on P.13 q.B2
+>  - vdig (1.2V digital core), called DVDD_DVP on P.18 q.C1 and shown on
+>    P.18 q.D3 to be equivalent to VCC1V2_DVP derived from VCC3V3_SYS on
+>    P.13 q.B3. Note that this regulator's voltage is inconsistently
+>    labeled either 1.2V or 1.5V
+> 
+> RK3399_J.AG1 is GPIO4_A1/I2C1_SDA, RK3399_J.Y6 is GPIO4_A2/I2C1_SCL
+> This is the default pinctrl "i2c1_xfer" for i2c1 from rk3399-base.
+> 
+> For the reset (RESET) signal:
+> page 11 quadrant D2             | p.18 q.C3-4 | p.18 q.C2
+> RK3399_E.R25 -> GPIO1_A0 -> Camera_RST -> MIPI_RST0 -> IMX258.12
+> 
+> For the powerdown (PWDN) signal:
+> page 11 quadrants B4-5          | p.18 q.C2
+> RK3399_G.AF8 -> GPIO2_D4 -> DVP_PDN1_H -> IMX258.14
+> 
+> Helped-by: Dragan Simic <dsimic@manjaro.org>
+> Co-developed-by: Ondrej Jirman <megi@xff.cz>
+> Signed-off-by: Ondrej Jirman <megi@xff.cz>
+> Signed-off-by: Olivier Benjamin <olivier.benjamin@bootlin.com>
+> ---
+>  .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 93 ++++++++++++++++++++++
+>  1 file changed, 93 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> index 04ba4c4565d0a205e2e46d7535c6a3190993621d..b335d044138b413359ba54269ab646142254a55f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> @@ -114,6 +114,16 @@ vcc3v3_sys: regulator-vcc3v3-sys {
+>                 vin-supply = <&vcc_sys>;
+>         };
+>  
+> +       avdd2v8_dvp: regulator-avdd2v8-dvp {
+> +               compatible = "regulator-fixed";
+> +               regulator-name = "avdd2v8_dvp";
+> +               regulator-always-on;
+> +               regulator-boot-on;
+> +               regulator-min-microvolt = <2800000>;
+> +               regulator-max-microvolt = <2800000>;
+> +               vin-supply = <&vcc3v3_sys>;
+> +       };
+> +
+>         vcca1v8_s3: regulator-vcc1v8-s3 {
+>                 compatible = "regulator-fixed";
+>                 regulator-name = "vcca1v8_s3";
+> @@ -136,6 +146,16 @@ vcc1v8_codec: regulator-vcc1v8-codec {
+>                 vin-supply = <&vcc3v3_sys>;
+>         };
+>  
+> +       vcc1v2_dvp: regulator-vcc1v2-dvp {
+> +               compatible = "regulator-fixed";
+> +               regulator-name = "vcc1v2_dvp";
+> +               regulator-always-on;
+> +               regulator-boot-on;
+> +               regulator-min-microvolt = <1200000>;
+> +               regulator-max-microvolt = <1200000>;
+> +               vin-supply = <&vcca1v8_s3>;
+> +       };
+> +
+>         wifi_pwrseq: sdio-wifi-pwrseq {
+>                 compatible = "mmc-pwrseq-simple";
+>                 clocks = <&rk818 1>;
+> @@ -312,6 +332,8 @@ vcc3v0_touch: LDO_REG2 {
+>  
+>                         vcca1v8_codec: LDO_REG3 {
+>                                 regulator-name = "vcca1v8_codec";
+> +                               regulator-always-on;
+> +                               regulator-boot-on;
+
+Is regulator-boot-on needed when regulator-always-on is set? Doesn't
+-always-on take precedence and ensure it's enabled if it's not on
+anyway?
+
+It seems odd to have (need?) both ...? but I'm no DT expert on this part
+- it just stands out to me.
+
+
+>                                 regulator-min-microvolt = <1800000>;
+>                                 regulator-max-microvolt = <1800000>;
+>                         };
+> @@ -420,6 +442,45 @@ regulator-state-mem {
+>         };
+>  };
+>  
+> +&i2c1 {
+> +       clock-frequency = <400000>;
+> +       pinctrl-0 = <&i2c1_xfer &cif_clkouta>;
+> +       assigned-clocks = <&cru SCLK_CIF_OUT>;
+> +       assigned-clock-rates = <24000000>;
+> +       status = "okay";
+> +
+> +       wcam: camera@1a {
+> +               compatible = "sony,imx258";
+> +               reg = <0x1a>;
+> +               clocks = <&cru SCLK_CIF_OUT>; /* MIPI_MCLK0, derived from CIF_CLKO */
+> +               pinctrl-names = "default";
+> +               pinctrl-0 = <&camera_rst>;
+> +               /* Note: both cameras also depend on vcca1v8_codec to power the I2C bus. */
+
+Should that be represented by the i2c1 bus then?
+
+> +               vif-supply = <&vcc1v8_dvp>;
+> +               vana-supply = <&avdd2v8_dvp>;
+> +               vdig-supply = <&vcc1v2_dvp>; /* DVDD_DVP is the same as VCC1V2_DVP */
+> +               reset-gpios = <&gpio1 RK_PA0 GPIO_ACTIVE_LOW>;
+> +               orientation = <1>; /* V4L2_CAMERA_ORIENTATION_BACK */
+> +               rotation = <270>;
+> +               lens-focus = <&wcam_lens>;
+> +
+> +               port {
+> +                       wcam_out: endpoint {
+> +                               remote-endpoint = <&mipi_in_wcam>;
+> +                               data-lanes = <1 2 3 4>;
+> +                               link-frequencies = /bits/ 64 <636000000>;
+> +                       };
+> +               };
+> +       };
+> +
+> +       wcam_lens: camera-lens@c {
+> +               compatible = "dongwoon,dw9714";
+> +               reg = <0x0c>;
+> +               /* Same I2c bus as both cameras, depends on vcca1v8_codec for power. */
+> +               vcc-supply = <&vcc1v8_dvp>;
+> +       };
+> +};
+> +
+>  &i2c3 {
+>         i2c-scl-rising-time-ns = <450>;
+>         i2c-scl-falling-time-ns = <15>;
+> @@ -462,6 +523,28 @@ &io_domains {
+>         status = "okay";
+>  };
+>  
+> +&isp1 {
+> +       status = "okay";
+> +
+> +       ports {
+> +               port@0 {
+> +                       mipi_in_wcam: endpoint@0 {
+> +                               reg = <0>;
+> +                               remote-endpoint = <&wcam_out>;
+> +                               data-lanes = <1 2 3 4>;
+> +                       };
+> +               };
+> +       };
+> +};
+> +
+> +&mipi_dphy_rx0 {
+> +       status = "okay";
+> +};
+> +
+> +&isp1_mmu {
+> +       status = "okay";
+> +};
+> +
+>  &mipi_dsi {
+>         status = "okay";
+>         clock-master;
+> @@ -495,6 +578,10 @@ mipi_in_panel: endpoint {
+>         };
+>  };
+>  
+> +&mipi_dsi1 {
+> +       status = "okay";
+> +};
+> +
+
+Is this an unrelated change? The Camera should be on CSI - not DSI?
+
+>  &pmu_io_domains {
+>         pmu1830-supply = <&vcc_1v8>;
+>         status = "okay";
+> @@ -507,6 +594,12 @@ pwrbtn_pin: pwrbtn-pin {
+>                 };
+>         };
+>  
+> +       camera {
+> +               camera_rst_l: camera-rst-l {
+> +                       rockchip,pins = <1 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
+> +               };
+> +       };
+> +
+>         leds {
+>                 red_led_pin: red-led-pin {
+>                         rockchip,pins = <4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+> 
+> -- 
+> 2.49.0
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
