@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54B26CCD1A7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9243BCCD1AA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9nQL9AUYTB27zvxLDVuKQLCSzoWQUJyWvj9sWUlPxN0=; b=AIQySYS3vyQoUW
-	20mnE7m5tnaBLf7/QU/R7Mj6WG7/QGH/ARtUEwFoNE2nXu0YzOarbD8L1tyh3XzY1CuFoxZuFJN7/
-	7vUD4rJv18obYUm29QerDJsBragFuCvwgsLNf9vqtPuhHIzqJ0jE7rb0mxoAwThr3WVG0iWuqqmpH
-	ZMvBOUTJDiZR1UhbJEbal8I91cJc+EMxj3KIahVqZy2UinTsoKSg0mfcFNfdLYnvNo7LzaQjoLPoX
-	Ed3v4YfJEvtwMbbVfTumgY0IZNWP8hrTPoKEvNPadBl46/BdRoRe5UwKTrJKR2bdwCiFp5IeeNwmO
-	CJ+mbUkYELZqLn9wsceg==;
+	List-Owner; bh=PlkUFAWn1mzv4fjPax9Q7DA3MWIuI4KWL6LfATeh7bs=; b=G0ktXQlAhCd1m+
+	Badv5wcVsn8XgvmMhodCooAsQNOTNJ2A4Qcm5XzVjUDzlCg9NpFAnViUCsCLbZFavk+0PlP0mQOXh
+	hO8lFEdgE6n2V1v4D5mIj0YUDQIslXKovu4HqkN4f3NetltJFnjF/OeW9VfQoyHPJwndPppvHAAYQ
+	Yb/WvusMGot6T6tgXiN4u+dRK6RaMYaZBIALBbuTVseUPsgrh3X/uWzc0pf9TO/BOakTt2G1jBM+0
+	eEbv/afkAy0tgZxDaVBgvBXaf3BR/d9MH4EeqDTf0e2NWrB4+C9XRODACQ6bHnXaYobC/Rlupt7yM
+	A7bjI1zmxx2P+JXmveOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoWt-0000000DAi0-2E4f;
-	Mon, 20 Oct 2025 11:58:24 +0000
+	id 1vAoWy-0000000DAqY-0HTI;
+	Mon, 20 Oct 2025 11:58:28 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8YJ-00000007QDK-0Evq;
-	Sat, 02 Aug 2025 09:29:20 +0000
+	id 1ui8Z4-00000007Qay-0iBs;
+	Sat, 02 Aug 2025 09:30:07 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CC5683C6D;
-	Sat,  2 Aug 2025 11:28:22 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id EDA0D3C97;
+	Sat,  2 Aug 2025 11:29:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126912;
-	bh=Yp1jjNiETSRS2rD3cxKSnrkZYfH6FttVwhmOY8Rcezk=;
+	s=mail; t=1754126959;
+	bh=DR8H5PIAc8L4JOzfoP4xWpCxebhDCEnaJqqWhPBFy+0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=oK65F9MO8UcjP/6hNhgPAYoZhlvkq+dE7764WQSpH/hkcjX6Rb/KkkY+fdKSTjt/w
-	 vphJVC/FyJaBkl11e29u1Z0eoaSgGKTIkW1Jj3s18ZoJGyaAy73X9YcFntU/aVGsMH
-	 /iZO1twyf28r7e1D1UCrv+Y0xTXqjwXq+IpXKl2Q=
+	b=hT8Gx6BmOM76bDFeML8LExuJPTAnht6Wvn57/qJhB7+ZhlNMqfXhEkASH3NW3RuyW
+	 UZTqUXH/j8H6xn9lPsNIuJ1E2Ht2wzHcwFHMec6ZTXX4zFnaK3T8vOqZ9UuNg86A45
+	 wLsnMm4kFRwPqYJBTI/nmtZ/BWbP+cVS1qJzP4Mw=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:22:57 +0200
-Subject: [PATCH 35/65] media: mtk_mdp_m2m: Access v4l2_fh from file
+Date: Sat, 02 Aug 2025 11:23:02 +0200
+Subject: [PATCH 40/65] media: imx-isi: Access v4l2_fh from file
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-35-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-40-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -129,26 +129,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4214;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3477;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=Yp1jjNiETSRS2rD3cxKSnrkZYfH6FttVwhmOY8Rcezk=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj7JJ72BFggMdAsaEou9LTKKektiwy1ugItg
- 8aerb8YmN2JAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y+wAKCRByNAaPFqFW
- PJHtD/9WyqYuwWJOfh5g1VWiGjbVTpkIX1b5Uy2x8MLlx18cgSLdj6+x0f3DRopLkV84ATY/RtQ
- SK5fk+ANG0EEnfKcLyRzCTvwxZxWeHrA1GEK3tL8oLQ2K4D8Wdagi+UKvyGctv1Bf3dWz6/yEB/
- +w5HKX+Lzcu05OXTc/1vscZyEtMlghlNRqXnUAHnqNpPHfGIce5jL35BdelLLgMnkrBGHR3KmVD
- 4kMad1YfWVBYAHWYaQ67XSrnW+gBZfVJ7wARnBFv7ty6GzdLgLaWTg4j26wUUScYyIoDmVRwiw5
- nu0iMGSqrJVJQoKr6v/RQLJKnzG61raDiylsrMrnqyc/J9WaqyvraNo4aqlu2UMFJwZgKFKXDtV
- R9oYbRdEIMmkD6MOkJO9E54OrbDgACoNAPBbpqOu3YUxs0aaSGh1Yk+qlV4uF517fqQ+CnUj1Qo
- OYwd67H7yXEFNYBtND7I79bBFukORypozZATF7RHkA8N/cI4aR1f6hKGdPxpqDN0J5sZKTeA601
- uKd/AtqDWuNgOmlehluKCWwIuJDAHQZWX/YAXbsZAMVRWOHNuazhbs9VRgk0s3Csk6g956oz/oP
- w95XKEOp39XUgt08MC/mLmzTY/mCwS1I5rOl5p4mDsb2Y2OpI11ZzG8bidnmbz6do8Q57zSEqKH
- htnfly2T+xeCKBQ==
+ bh=DR8H5PIAc8L4JOzfoP4xWpCxebhDCEnaJqqWhPBFy+0=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj8EoZgkMCHL3+wASHVhjTV75Orj6SKgaDZA
+ 6AcS4LUd4KJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/AAKCRByNAaPFqFW
+ POVpD/9a3Ls6bK9algAcZ2oeiBjNz7tRIjEIwEqB46qB5Bq/kQDbriurqxVTCwNigHT9yYh0mXP
+ 7cACNJ33RBJeyO9365kZBXs/wmIKGs/p4y+dJ8d2bdWddvcupEtgqZNitoozeu7ESiwRcXbm3y+
+ BoqB1V1jDTE11ypab29+vcaKo4qzSBIP3Hrtk4YeBKLn7gvYgaFBrNEonU6NKD9ODA/LIQulZRe
+ 73jR/l7r+PYcnZ7Rx2T3rwKBgs8D83nyaNr0oEZik56YfleC18XsXP3MSfruSvbfjD6GZWeNrgd
+ 712W4aBRF81a+B6kH5V8Aovltk00OUqLELIBHSUZ7El7W4Me1pXr/QPd6vAC1H+DRpxf2j40+RN
+ TDxqmDHi3YGoi8kJ0PnEMVgSCBCaLXRuhS8dGLvwvkIDAcuHVFiPB8byYSwpkGOYBKB7luuYB7H
+ 4xIhq9bAWnGPh09Xfuwcd9HL+8K5DLRYr1sqRYZZ55yszHbxWsYKKm4yD7EKfvDRiOMJb3LBBrX
+ Z35HmnmFMEe15m2PWocAX01Sgl4eA0YFESsMERAWjZQgueknFQDoJGsL4JOMUxeaYI6kcUScc+3
+ RYuRDI3FkGlEJpgXEYQ+q+gim7m/X5v4sL1NiwSpLY259tUn9RHwSBlkYDikigIZORsM45vlmyz
+ zSJL01P1ffA0xNA==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_022919_241931_516A6A9A 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20250802_023006_356996_E5231000 
+X-CRM114-Status: GOOD (  11.27  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:56 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -172,103 +172,74 @@ to be available in file->private_data, initialised by v4l2_fh_add().
 Access the v4l2_fh, and from there the driver-specific structure,
 from the file * in all ioctl handlers.
 
-While at it, remove the now unused fh_to_ctx() macro.
+While at it, remove the now unused to_isi_m2m_ctx() macro.
 
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c | 21 ++++++++-------------
- 1 file changed, 8 insertions(+), 13 deletions(-)
+ drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-index 3d836b5efa3807e4dc882956040014e244eeb660..03c07948dfdd07c6395c391ccad1788b08b1a867 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-@@ -348,11 +348,6 @@ static int mtk_mdp_try_crop(struct mtk_mdp_ctx *ctx, u32 type,
- 	return 0;
+diff --git a/drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c b/drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c
+index 850dd8ae95841d4470ac6bd7cb1e54a7510d6d5e..5501214cc6c0ce3e0188ae6d4ff4ae277b975911 100644
+--- a/drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c
++++ b/drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c
+@@ -74,11 +74,6 @@ to_isi_m2m_buffer(struct vb2_v4l2_buffer *buf)
+ 	return container_of(buf, struct mxc_isi_m2m_buffer, buf.vb);
  }
  
--static inline struct mtk_mdp_ctx *fh_to_ctx(struct v4l2_fh *fh)
+-static inline struct mxc_isi_m2m_ctx *to_isi_m2m_ctx(struct v4l2_fh *fh)
 -{
--	return container_of(fh, struct mtk_mdp_ctx, fh);
+-	return container_of(fh, struct mxc_isi_m2m_ctx, fh);
 -}
 -
- static inline struct mtk_mdp_ctx *file_to_ctx(struct file *filp)
+ static inline struct mxc_isi_m2m_ctx *file_to_isi_m2m_ctx(struct file *filp)
  {
- 	return container_of(file_to_v4l2_fh(filp), struct mtk_mdp_ctx, fh);
-@@ -594,7 +589,7 @@ static const struct vb2_ops mtk_mdp_m2m_qops = {
- static int mtk_mdp_m2m_querycap(struct file *file, void *fh,
- 				struct v4l2_capability *cap)
- {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 	struct mtk_mdp_dev *mdp = ctx->mdp_dev;
+ 	return container_of(file_to_v4l2_fh(filp), struct mxc_isi_m2m_ctx, fh);
+@@ -432,7 +427,7 @@ static int mxc_isi_m2m_try_fmt_vid(struct file *file, void *fh,
+ 	const enum mxc_isi_video_type type =
+ 		f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE ?
+ 		MXC_ISI_VIDEO_M2M_OUT : MXC_ISI_VIDEO_M2M_CAP;
+-	struct mxc_isi_m2m_ctx *ctx = to_isi_m2m_ctx(fh);
++	struct mxc_isi_m2m_ctx *ctx = file_to_isi_m2m_ctx(file);
  
- 	strscpy(cap->driver, MTK_MDP_MODULE_NAME, sizeof(cap->driver));
-@@ -632,7 +627,7 @@ static int mtk_mdp_m2m_enum_fmt_vid_out(struct file *file, void *priv,
- static int mtk_mdp_m2m_g_fmt_mplane(struct file *file, void *fh,
- 				    struct v4l2_format *f)
- {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 	struct mtk_mdp_frame *frame;
- 	struct v4l2_pix_format_mplane *pix_mp;
- 	int i;
-@@ -671,7 +666,7 @@ static int mtk_mdp_m2m_g_fmt_mplane(struct file *file, void *fh,
- static int mtk_mdp_m2m_try_fmt_mplane(struct file *file, void *fh,
- 				      struct v4l2_format *f)
- {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
+ 	__mxc_isi_m2m_try_fmt_vid(ctx, &f->fmt.pix_mp, type);
  
- 	if (!mtk_mdp_try_fmt_mplane(ctx, f))
- 		return -EINVAL;
-@@ -681,7 +676,7 @@ static int mtk_mdp_m2m_try_fmt_mplane(struct file *file, void *fh,
- static int mtk_mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
- 				    struct v4l2_format *f)
+@@ -442,7 +437,7 @@ static int mxc_isi_m2m_try_fmt_vid(struct file *file, void *fh,
+ static int mxc_isi_m2m_g_fmt_vid(struct file *file, void *fh,
+ 				 struct v4l2_format *f)
  {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
+-	struct mxc_isi_m2m_ctx *ctx = to_isi_m2m_ctx(fh);
++	struct mxc_isi_m2m_ctx *ctx = file_to_isi_m2m_ctx(file);
+ 	const struct mxc_isi_m2m_ctx_queue_data *qdata =
+ 		mxc_isi_m2m_ctx_qdata(ctx, f->type);
+ 
+@@ -457,7 +452,7 @@ static int mxc_isi_m2m_s_fmt_vid(struct file *file, void *fh,
+ 	const enum mxc_isi_video_type type =
+ 		f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE ?
+ 		MXC_ISI_VIDEO_M2M_OUT : MXC_ISI_VIDEO_M2M_CAP;
+-	struct mxc_isi_m2m_ctx *ctx = to_isi_m2m_ctx(fh);
++	struct mxc_isi_m2m_ctx *ctx = file_to_isi_m2m_ctx(file);
+ 	struct v4l2_pix_format_mplane *pix = &f->fmt.pix_mp;
+ 	const struct mxc_isi_format_info *info;
  	struct vb2_queue *vq;
- 	struct mtk_mdp_frame *frame;
- 	struct v4l2_pix_format_mplane *pix_mp;
-@@ -727,7 +722,7 @@ static int mtk_mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
- static int mtk_mdp_m2m_reqbufs(struct file *file, void *fh,
- 			       struct v4l2_requestbuffers *reqbufs)
- {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 
- 	return v4l2_m2m_reqbufs(file, ctx->m2m_ctx, reqbufs);
- }
-@@ -735,7 +730,7 @@ static int mtk_mdp_m2m_reqbufs(struct file *file, void *fh,
- static int mtk_mdp_m2m_streamon(struct file *file, void *fh,
+@@ -489,7 +484,7 @@ static int mxc_isi_m2m_s_fmt_vid(struct file *file, void *fh,
+ static int mxc_isi_m2m_streamon(struct file *file, void *fh,
  				enum v4l2_buf_type type)
  {
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 	int ret;
- 
- 	if (!mtk_mdp_ctx_state_is_set(ctx, MTK_MDP_VPU_INIT)) {
-@@ -773,8 +768,8 @@ static inline bool mtk_mdp_is_target_crop(u32 target)
- static int mtk_mdp_m2m_g_selection(struct file *file, void *fh,
- 				       struct v4l2_selection *s)
+-	struct mxc_isi_m2m_ctx *ctx = to_isi_m2m_ctx(fh);
++	struct mxc_isi_m2m_ctx *ctx = file_to_isi_m2m_ctx(file);
+ 	struct mxc_isi_m2m_ctx_queue_data *q = mxc_isi_m2m_ctx_qdata(ctx, type);
+ 	const struct v4l2_pix_format_mplane *out_pix = &ctx->queues.out.format;
+ 	const struct v4l2_pix_format_mplane *cap_pix = &ctx->queues.cap.format;
+@@ -577,7 +572,7 @@ static int mxc_isi_m2m_streamon(struct file *file, void *fh,
+ static int mxc_isi_m2m_streamoff(struct file *file, void *fh,
+ 				 enum v4l2_buf_type type)
  {
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 	struct mtk_mdp_frame *frame;
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
- 	bool valid = false;
+-	struct mxc_isi_m2m_ctx *ctx = to_isi_m2m_ctx(fh);
++	struct mxc_isi_m2m_ctx *ctx = file_to_isi_m2m_ctx(file);
+ 	struct mxc_isi_m2m_ctx_queue_data *q = mxc_isi_m2m_ctx_qdata(ctx, type);
+ 	struct mxc_isi_m2m *m2m = ctx->m2m;
  
- 	if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
-@@ -840,8 +835,8 @@ static int mtk_mdp_check_scaler_ratio(struct mtk_mdp_variant *var, int src_w,
- static int mtk_mdp_m2m_s_selection(struct file *file, void *fh,
- 				   struct v4l2_selection *s)
- {
-+	struct mtk_mdp_ctx *ctx = file_to_ctx(file);
- 	struct mtk_mdp_frame *frame;
--	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
- 	struct v4l2_rect new_r;
- 	struct mtk_mdp_variant *variant = ctx->mdp_dev->variant;
- 	int ret;
 
 -- 
 2.49.0
