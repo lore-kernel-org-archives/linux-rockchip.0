@@ -4,43 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52641CCD1A5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C207CCD1A7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+UIqoYB6kIRlU0b9z40QP99ISFWOPljRgPzoTN8OpWQ=; b=EFr0XIIiXPd00/
-	eehHG9JmjQHIxhArbuPXAsbxsYvfknju3jAOL/D/JSyQps2+ZTZYKarZhh/6AxasgqSNFdeKy1HPv
-	QtCXgxa0WBdFE+DRPfZ3SSyeBOusucClq90RMblFD70TvyOAIoRokXnTNvgB1EFNOqvpzg1n3l0G+
-	UWYM8I/hnI2EpyXrIhieDJ4OvhyTWZn7LtFajV2iya0icECPrWErDd0/K2HYIIc8m7Ap4tnII/rS9
-	CMqhObV+rRVuyl+HR3e6r13TfaREZzgW7y2zr1eozLifFqXCNu6EE2GGsoKAijynRC/Qfaila6CBx
-	zZjeyxfD+JTdyTBTOPSA==;
+	List-Owner; bh=yt0eEWD+bSgADGDxxvYjt3Ny2CzxbA57h93c2Yv2WTQ=; b=bqrLzfdIU2YJXU
+	YcKAn/G5kpaLNEjawtWOhKEOxQU6oYmYf0FIdBNO4Dm+cRUyDRIJ+Ym9Dfg5cUa6MhXH442KSsY5s
+	Gv4/f3HSDw0JLvIxlZSgCaZOvbq9is7luTPr06JRBc91c6mc5E4MuQNQPWDzUjSjPhi+sQ8pkLApX
+	7DPjGntux0C3NetrEOFvXsZxzmgshflgEPCI9E3QQEnK+ZiTZJ3aWCsO8b/+1YqJ8SrHYMZlE5PZr
+	k+kEbh9cI4nza1osBFtQPEdqpc9lb+RdSDsiq+nDUSY4ydY9bjIWSzWoOL1EyehM8H+oiusmj9rdi
+	VWeKr4J0/o0eAmP1dHlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoXL-0000000DBTH-1klD;
-	Mon, 20 Oct 2025 11:58:51 +0000
+	id 1vAoXO-0000000DBYs-1KK1;
+	Mon, 20 Oct 2025 11:58:54 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8cm-00000007SJJ-0jNN;
-	Sat, 02 Aug 2025 09:33:57 +0000
+	id 1ui8dD-00000007SXg-428q;
+	Sat, 02 Aug 2025 09:34:25 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8FDB1434B;
-	Sat,  2 Aug 2025 11:33:01 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 022AA467C;
+	Sat,  2 Aug 2025 11:33:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754127189;
-	bh=HJZkrhFG+jzm747g4Ehf7uDDScTqxfq9NHQKM9RJ9+c=;
+	s=mail; t=1754127217;
+	bh=STH9snK10gtXsl0Tkj6PDu+gh4QvT10JOLkLT1jU1Tk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=drO4QQ4w5C/9gxSKad/aI2GIngo7vFtEHIHzrGgn7kZAWSwLR5wrEh4HQvq6Jm6OI
-	 ZusDu7tyhzItb/PJ3UgESd1YUquS1Fmh3fVSitOAj7wJomAczSa4RbhwDqiVZJfF3B
-	 Qtx/E4NpY2guxQIm3G7R7AMgxzqza3IQPTFKsu6c=
+	b=GWqhxXE8irHZjTwzjw01vy/67LkCfP0pfmdBF7ezLwvyg/uNIQNc+TtMFG9aSke3p
+	 NZulEiSKLMd11OqQyyXrX5YsDoHpqfjgzaGJIRoJ7eNeumumTzNYN1CzR1Eil0nkY6
+	 WuWgQcq2WLxWmfoETRaKF36owSar3DypycTneFaU=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:23:23 +0200
-Subject: [PATCH 61/65] media: staging: imx: Access v4l2_fh from file
+Date: Sat, 02 Aug 2025 11:23:26 +0200
+Subject: [PATCH 64/65] media: staging: ipu7: isys: Don't set
+ V4L2_FL_USES_V4L2_FH manually
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-61-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-64-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -129,26 +130,27 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2886;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1003;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=HJZkrhFG+jzm747g4Ehf7uDDScTqxfq9NHQKM9RJ9+c=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj/LYqcTTKP5IO38I6jRkZtnPsad4yNU/BBM
- LhZkqOCQmyJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/wAKCRByNAaPFqFW
- PBUoD/9IzXwsCQmzZriXZwyHxu8ZbHSG9GOn5AFJ5yuxmyL+uefno6h2zKTZMm8PDQQEMO/jVe0
- WSC2PXgtp2l2beUGIlkrSqMAWd2ooWmRvUskEkWBmBzeG506UdTZjbx/418DFC8Z8zaeB0nVCdc
- /wGf0Gy1y1swBI602aZLOtqjRfjKcD5vu9ozAisDD4RHfMWfPbDX7hndsvy/b185ErMEK6rG3SI
- Ux1cGTjjJ4rFaeg9XyTreQ3dPyg7tPSoaubiZa2cunxMtK5RPQmbqJkWG2EF56aX6LYWLUshWQm
- 1+WDzhvT0criVSZX0gp0EGUYaemxF1Gcd13bOgQ6l5Cmlq3KeKDlns0Q17hjXxdnwz6revxZAGl
- FrTVFgF3IyThahVOUI6yq/UMj0LI82p9bgOwi4Mu4aUOoLzz09jWVkYPdh+Jma4I3Ker4Qw8XYW
- mPuw1AHdEAi8T2Ygj8ksbEaFPQkxSNfmMk1ocWww69os41oVrZ0VF6a+r8xmZe/EudJmIWtW9Rb
- 4S+lSn8e7w2Jt7CcII/wZZJqnFDuYyP/Ty87GGVE8d7K9g7Bx4Z4dOZNVB1u2OPb+8W/gcu4E/5
- TYrxi33Ung3k9TQRPV8LyxI/8QGtcQZubSmmlE2e7kjnp6Rzuo/gnwA9C0Ba04DByNeihtvEVG2
- QGndJvaTcNt3y7g==
+ bh=p6i7vq6AGF+FzCieEq6uikbi372+gaeFOto0fi3HS6o=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj/W2cYpWyQz48RU91dp2DTutVfBmqMPGp+b
+ WBa4MAGzGaJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/wAKCRByNAaPFqFW
+ PMUSD/9KnL/eRvaIxpn9zFQhhB4f8NrjuBZWdfgaHkoDnaAqP1i19guBgcJE3f9tcOMNs3VJfDZ
+ OWLWtP5TybilDpd3yyvSJo01d7v5vEUDoelSS6krxhp9p/0AJQxZOiZiXAokVzbF5Zfkdsp7TPk
+ luOqefJFbETRJilJyM58wla5jNWMaffzAtHKLBChcvUofPfW1oYsgglGuzmEBcafZThzNqQZK3t
+ F5Ma3lrVztWQBboT/QKUGXHnZ1d/2e0t6D3OEU8ZIE7CN/6ZGKOY7bNX6vBKkKOUaPlVh20SzvX
+ L6P+QGDBoKq1oI8I3lx0eyIwfS5JeqysXHFE/oMB6LuRHFBqQoIwYdnZyDSmnIan9MrD7XwsSZq
+ zrB3YBSb6Z5E2lPzqUYVE/sVJMz0QvQNwNmWm4fLdlSDl7Dwz/5cszF4QFIXWtydcVyJ4l5fOSK
+ JKIB7XSb1c2qXe2TIQSCd8yEMmS3h8AouJat8td4arP/Pdi8mb5boQRMOgpeEe9EVCuNCfAkQO4
+ EX/HxyD0IWJ4n6tjJ8mzv/SAqJeqI1ZoHooJK7O9bWT5KbqDxQlhL9sUDB7JppOc3Cwct7bRRlB
+ 2Tycx4bL9LvT1T3yAc/ni3fuaDQxyS6awmAgRZPFb1L3CUZDflx8hBAi8ITTNdMyYqaPij5mAw/
+ rRmA9IGOhm6GMYw==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_023356_359752_850A474E 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20250802_023424_149044_2154C43B 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:57 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -166,76 +168,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The v4l2_fh associated with an open file handle is now guaranteed
-to be available in file->private_data, initialised by v4l2_fh_add().
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-Access the v4l2_fh, and from there the driver-specific structure,
-from the file * in all ioctl handlers.
+The V4L2_FL_USES_V4L2_FH flag is set by v4l2_fh_init(). It is not meant
+to be set manually by drivers. Drop it from the ipu7-isys driver.
 
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/staging/media/imx/imx-media-csc-scaler.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+ drivers/staging/media/ipu7/ipu7-isys-video.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/media/imx/imx-media-csc-scaler.c b/drivers/staging/media/imx/imx-media-csc-scaler.c
-index c4ee0eebb3730e709c3d4a95935d0047a645e411..1869c5792ecb46682491ecbf33674c6044915261 100644
---- a/drivers/staging/media/imx/imx-media-csc-scaler.c
-+++ b/drivers/staging/media/imx/imx-media-csc-scaler.c
-@@ -23,8 +23,6 @@
+diff --git a/drivers/staging/media/ipu7/ipu7-isys-video.c b/drivers/staging/media/ipu7/ipu7-isys-video.c
+index 8756da3a8fb0bfaf88da199b4608c7850888e6a2..6b31c766bc5835f8b6e28ad75efead918934349b 100644
+--- a/drivers/staging/media/ipu7/ipu7-isys-video.c
++++ b/drivers/staging/media/ipu7/ipu7-isys-video.c
+@@ -1082,7 +1082,6 @@ int ipu7_isys_video_init(struct ipu7_isys_video *av)
+ 	__ipu_isys_vidioc_try_fmt_vid_cap(av, &format);
+ 	av->pix_fmt = format.fmt.pix;
  
- #include "imx-media.h"
+-	set_bit(V4L2_FL_USES_V4L2_FH, &av->vdev.flags);
+ 	video_set_drvdata(&av->vdev, av);
  
--#define fh_to_ctx(__fh)	container_of(__fh, struct ipu_csc_scaler_ctx, fh)
--
- #define IMX_CSC_SCALER_NAME "imx-csc-scaler"
- 
- enum {
-@@ -184,7 +182,7 @@ static int ipu_csc_scaler_enum_fmt(struct file *file, void *fh,
- static int ipu_csc_scaler_g_fmt(struct file *file, void *priv,
- 				struct v4l2_format *f)
- {
--	struct ipu_csc_scaler_ctx *ctx = fh_to_ctx(priv);
-+	struct ipu_csc_scaler_ctx *ctx = file_to_ctx(file);
- 	struct ipu_csc_scaler_q_data *q_data;
- 
- 	q_data = get_q_data(ctx, f->type);
-@@ -197,7 +195,7 @@ static int ipu_csc_scaler_g_fmt(struct file *file, void *priv,
- static int ipu_csc_scaler_try_fmt(struct file *file, void *priv,
- 				  struct v4l2_format *f)
- {
--	struct ipu_csc_scaler_ctx *ctx = fh_to_ctx(priv);
-+	struct ipu_csc_scaler_ctx *ctx = file_to_ctx(file);
- 	struct ipu_csc_scaler_q_data *q_data = get_q_data(ctx, f->type);
- 	struct ipu_image test_in, test_out;
- 	enum v4l2_field field;
-@@ -245,8 +243,8 @@ static int ipu_csc_scaler_try_fmt(struct file *file, void *priv,
- static int ipu_csc_scaler_s_fmt(struct file *file, void *priv,
- 				struct v4l2_format *f)
- {
-+	struct ipu_csc_scaler_ctx *ctx = file_to_ctx(file);
- 	struct ipu_csc_scaler_q_data *q_data;
--	struct ipu_csc_scaler_ctx *ctx = fh_to_ctx(priv);
- 	struct vb2_queue *vq;
- 	int ret;
- 
-@@ -301,7 +299,7 @@ static int ipu_csc_scaler_s_fmt(struct file *file, void *priv,
- static int ipu_csc_scaler_g_selection(struct file *file, void *priv,
- 				      struct v4l2_selection *s)
- {
--	struct ipu_csc_scaler_ctx *ctx = fh_to_ctx(priv);
-+	struct ipu_csc_scaler_ctx *ctx = file_to_ctx(file);
- 	struct ipu_csc_scaler_q_data *q_data;
- 
- 	switch (s->target) {
-@@ -339,7 +337,7 @@ static int ipu_csc_scaler_g_selection(struct file *file, void *priv,
- static int ipu_csc_scaler_s_selection(struct file *file, void *priv,
- 				      struct v4l2_selection *s)
- {
--	struct ipu_csc_scaler_ctx *ctx = fh_to_ctx(priv);
-+	struct ipu_csc_scaler_ctx *ctx = file_to_ctx(file);
- 	struct ipu_csc_scaler_q_data *q_data;
- 
- 	switch (s->target) {
+ 	ret = video_register_device(&av->vdev, VFL_TYPE_VIDEO, -1);
 
 -- 
 2.49.0
