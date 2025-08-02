@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A33FECCD199
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BE32CCD1AB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CyzwwnALm62ZHU7TXsu6jXHOG6IHJreEJURQWuAE2Hk=; b=nT4ZsaWNwXQGkD
-	K6zfppTpodr0nS8YyrrQaXAsu2T4djcwUiKegpUkbsxE30KPLCNBvlL5llwA+knA/YiDNa4g1K2d3
-	jbd6o0yboGShxTaPcVMsZiXmPJ7UzLx9J3AtWx1oQ/Fu6OtB9FWItpbAD1oKVeMLvpHP+6hdbs40f
-	5gPjNdqOrnioWqNa1hQIH+9T1Jirn2y6fjlgnNr3FJmzBuCr8YoDnQcNtkyoLsB6yqQtlOFqsGLh7
-	mBoNmyJ0czRjzYo5QEiTpVKLLsQ1gNGXNu5QnYRCxBNGOmSsLPd6vsAvULY2LXk4i+x8JttiP8668
-	EBlzD+li917LSSKUWigg==;
+	List-Owner; bh=jErXNYLlu4Tvowfr/d3k4D/FsHv/GX6KrxLKFC7c3XU=; b=ZylJ089ISloOX+
+	kUDAgPeVn+i76MTuhZxoxQlLKziB+yriocwFGahWHcSZ5wGSs8Z/+MzZ/mKp5IgwkxJ+p7ePHnFXI
+	tLYnO6jbfehd6kKqriIV07bVYPBdcGGmOGIIlHaZ30GxDAw2XDv9wH4/mSGygBH+BJO4ycnWuIXW+
+	65EP+a7EGbSpukGKOgy7cXxqRAPi4pxYB/6cAcjpZZuFoSEpa76vLEFIWzXcyusS3gcoMUYOAXVV5
+	77EdpIFNf5Hk/BTbUd1MjQPFC1AZYCwCmLddc/BrJadmGcQ26nZ5jaBggHr4oXU/VIoGWWCkNlcHc
+	yxuwOfWzLZC37qkCzVxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoX7-0000000DB8V-1mwy;
-	Mon, 20 Oct 2025 11:58:37 +0000
+	id 1vAoX4-0000000DB3r-2orl;
+	Mon, 20 Oct 2025 11:58:35 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8bS-00000007Reo-42KB;
-	Sat, 02 Aug 2025 09:32:36 +0000
+	id 1ui8aZ-00000007RLN-0sVJ;
+	Sat, 02 Aug 2025 09:31:40 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id ACBF54335;
-	Sat,  2 Aug 2025 11:31:38 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B88723FCE;
+	Sat,  2 Aug 2025 11:30:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754127108;
-	bh=Gv9lbTXbRA6yPchkZ3lS+TOW5kUSmV4lOuM2BHAl6rc=;
+	s=mail; t=1754127052;
+	bh=e9spn0Wp0nY1lMfXntKTb/kLvwEFE4ID3yslOAjGdJI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=prjR2qMEqDFUpRAMyRMQie2Nv0psrCvqJct/SVaw4UJ1ZnQGtwemB81zuwIxfhYmA
-	 UT5xqYwRWk4pliCkOwyDtOZIWgQ02ealWQ9qhJOwpXw0HYOuCGUOVZSW9E4Olza9D9
-	 1kBxLlAAFwfvVJtSUCBdG3fkfFioLN9du/EPH7ao=
+	b=HpX5BDdVS3j+pTsNcwI1BeCJShWH8n9M85Z1l5akK04RGo19pEFRLt6X/IxG5rJOl
+	 poLl3ecPsVXrhmA1hnnbF5A0Kjc6WhMdGf1Q0Y9vJ8ijF78krqD2t5L4pCzXJojnGU
+	 PJ/ijYO2i6nQmjKqqWUzB4vwpkcHyzab7qcD1niw=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:23:14 +0200
-Subject: [PATCH 52/65] media: st: delta: Access v4l2_fh from file
+Date: Sat, 02 Aug 2025 11:23:11 +0200
+Subject: [PATCH 49/65] media: s5p-jpeg: Access v4l2_fh from file
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-52-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-49-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -129,26 +129,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2303;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4867;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=Gv9lbTXbRA6yPchkZ3lS+TOW5kUSmV4lOuM2BHAl6rc=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj9vdOmSnLOUwNwZy60z/PGCExXr86n8sWQN
- A1xKQtQDdiJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/QAKCRByNAaPFqFW
- PM7LEADD+AAAj6JZRdP++0YsTAt4fObDpya+EVPh0Cb6TnbK5FzsF4T3lKA6HhvS/ZooVnw7Qt6
- ZpWIDwjI5j7u+vUeC1Do3HIjmUMHE7dy6rPcFFFYJ8i/gRomOvyDoOZs+iBbQp/jNPmks7dD1/0
- XvAOPjC8OwzdASEGKKnYyY7Nlx9vpxlhz/1PlG7c69xJu7QXyP6Oh14W7IEpbixZCSduafhQWDy
- anWvYa0l/kB3kjG0SvbpfqoyCoYyS7dOmtMccsrqvkN6Jg/P3cMEXaqjm7u+YPuwI6hbNbNzThW
- 2A6reQ1Ppsheu3gX/KTOuV1GbuBoEtugJuj2SYYrN2tkIwcs+b070nlaGrUjnaCjBR6vrl5rgg9
- 3r/tBLDf4cYBpghzvw9pWiNuxfaYcPmGta1lFZvZD6EvNKv7qpCJeubCbOY7+y4fSXliKRWunTv
- A6ghHNWLKUjZeIEG/SB9kODMGrjXog5eevGf8bg3APXdUQewvBQ5wtPLBJ5hDKa/nrrOpatS+73
- S33mhSyYAbGnXk/FvdKW0CyYkhKhFYpAJD/G4PEFPl/KfH0FgL98LWJRailHu0zYoRvIN47ABBk
- A+HmZuJVgKFOB0gKqfCbqdNp9mK0h6YBD2sX8h0jI/O1LvaFppcRnZAMDdydv7fRr+pji3KSqGE
- /UkNMoMG/NlhRdg==
+ bh=e9spn0Wp0nY1lMfXntKTb/kLvwEFE4ID3yslOAjGdJI=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj99eZoQBrrRU8HwZCp/lEmCC2AHXC6KN4bo
+ 5sTBWh+2PmJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/QAKCRByNAaPFqFW
+ POKlEACwPh0PROmzVn8vNI8tmgzbJ3MnsT1OqXi7X6rM2NINFWzgSBIn68R5SI9nExICwVvZOcg
+ C/VU+1NnSJmzepB4eugrvkN8R/ohZPC931mfV5qnxmgqlfzIqhHFxL/yTAzB38rIMy6W79Iz0wz
+ /2vu83MetiFDnqHirzlPi971oztZDB3goYVIWsVt2VHSjdxv84OLJy4k4K+uH28ZQLSzDtDuF+e
+ rmvsS0NnkAcB00aYRXJBygz6VJc6NX4UXXRUr2k7t7nBGdyypfMnT6wCCnfVl2D/ZJqtPwIqOA+
+ lqCYjutFAd2rqSrAH8+p49h8x6tUkSX8D/2pbGQE4XlqNLqfEqHEB9wDFguUkoTgcP63SiSTVDt
+ cjEzihdAXBLo/FZvYtllF3pzk/CygB7kQbuCX+65CBD3mA4hFxTgMUVs06EWPuGYuMMCxMYznc6
+ rJYKEUEZ83mM/c0/rdTHpa9zf4l25/nJ+N+88J4jWdYjdfgt0oihZQRHC8B9km3bomn1Chf4EMt
+ FGW4aMoIugkEgb0C7vNcfkDdTLQQQzhiK9hFvThH8lAwJAfV/9danxqiMj/hrf2T9JXXicqycZ0
+ NYKJ31e5gDAGyuFSX3Cpfv5NBB7pUKfd0az1qZiKNEJWanS9nhV99GPNis9HU370KDk2gE5jOLF
+ os4dXx+4t0F7obw==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_023235_149725_9AE89D23 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20250802_023139_395108_ADC8AF20 
+X-CRM114-Status: GOOD (  12.72  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:57 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -176,57 +176,116 @@ While at it, remove the now unused fh_to_ctx() macro.
 
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/platform/st/sti/delta/delta-v4l2.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ .../media/platform/samsung/s5p-jpeg/jpeg-core.c    | 25 +++++++++-------------
+ 1 file changed, 10 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/media/platform/st/sti/delta/delta-v4l2.c b/drivers/media/platform/st/sti/delta/delta-v4l2.c
-index adff43271b2dc059abbbf82d90cd13482f6bca30..6c1a53c771f746813a6062cb3ffc139250ff7146 100644
---- a/drivers/media/platform/st/sti/delta/delta-v4l2.c
-+++ b/drivers/media/platform/st/sti/delta/delta-v4l2.c
-@@ -24,8 +24,6 @@
- 
- #define DELTA_PREFIX "[---:----]"
- 
--#define to_ctx(__fh) container_of(__fh, struct delta_ctx, fh)
--
- static inline struct delta_ctx *file_to_ctx(struct file *filp)
- {
- 	return container_of(file_to_v4l2_fh(filp), struct delta_ctx, fh);
-@@ -727,7 +725,7 @@ static int delta_s_fmt_frame(struct file *file, void *fh, struct v4l2_format *f)
- static int delta_g_selection(struct file *file, void *fh,
- 			     struct v4l2_selection *s)
- {
--	struct delta_ctx *ctx = to_ctx(fh);
-+	struct delta_ctx *ctx = file_to_ctx(file);
- 	struct delta_frameinfo *frameinfo = &ctx->frameinfo;
- 	struct v4l2_rect crop;
- 
-@@ -809,7 +807,7 @@ static int delta_try_decoder_cmd(struct file *file, void *fh,
- 	return 0;
+diff --git a/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.c b/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.c
+index 2a57efd181540183e7d2b66d51f9f2f274ddd100..81792f7f8b1671dba2023f99b2779784d9a14b8c 100644
+--- a/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.c
++++ b/drivers/media/platform/samsung/s5p-jpeg/jpeg-core.c
+@@ -580,11 +580,6 @@ static inline struct s5p_jpeg_ctx *ctrl_to_ctx(struct v4l2_ctrl *c)
+ 	return container_of(c->handler, struct s5p_jpeg_ctx, ctrl_handler);
  }
  
--static int delta_decoder_stop_cmd(struct delta_ctx *ctx, void *fh)
-+static int delta_decoder_stop_cmd(struct delta_ctx *ctx)
+-static inline struct s5p_jpeg_ctx *fh_to_ctx(struct v4l2_fh *fh)
+-{
+-	return container_of(fh, struct s5p_jpeg_ctx, fh);
+-}
+-
+ static inline struct s5p_jpeg_ctx *file_to_ctx(struct file *filp)
  {
- 	const struct delta_dec *dec = ctx->dec;
- 	struct delta_dev *delta = ctx->dev;
-@@ -872,14 +870,14 @@ static int delta_decoder_stop_cmd(struct delta_ctx *ctx, void *fh)
- static int delta_decoder_cmd(struct file *file, void *fh,
- 			     struct v4l2_decoder_cmd *cmd)
- {
--	struct delta_ctx *ctx = to_ctx(fh);
-+	struct delta_ctx *ctx = file_to_ctx(file);
- 	int ret = 0;
+ 	return container_of(file_to_v4l2_fh(filp), struct s5p_jpeg_ctx, fh);
+@@ -1015,8 +1010,8 @@ static int s5p_jpeg_open(struct file *file)
  
- 	ret = delta_try_decoder_cmd(file, fh, cmd);
+ static int s5p_jpeg_release(struct file *file)
+ {
+-	struct s5p_jpeg *jpeg = video_drvdata(file);
+ 	struct s5p_jpeg_ctx *ctx = file_to_ctx(file);
++	struct s5p_jpeg *jpeg = video_drvdata(file);
+ 
+ 	mutex_lock(&jpeg->lock);
+ 	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+@@ -1253,7 +1248,7 @@ static bool s5p_jpeg_parse_hdr(struct s5p_jpeg_q_data *result,
+ static int s5p_jpeg_querycap(struct file *file, void *priv,
+ 			   struct v4l2_capability *cap)
+ {
+-	struct s5p_jpeg_ctx *ctx = fh_to_ctx(priv);
++	struct s5p_jpeg_ctx *ctx = file_to_ctx(file);
+ 
+ 	if (ctx->mode == S5P_JPEG_ENCODE) {
+ 		strscpy(cap->driver, S5P_JPEG_M2M_NAME,
+@@ -1301,7 +1296,7 @@ static int enum_fmt(struct s5p_jpeg_ctx *ctx,
+ static int s5p_jpeg_enum_fmt_vid_cap(struct file *file, void *priv,
+ 				   struct v4l2_fmtdesc *f)
+ {
+-	struct s5p_jpeg_ctx *ctx = fh_to_ctx(priv);
++	struct s5p_jpeg_ctx *ctx = file_to_ctx(file);
+ 
+ 	if (ctx->mode == S5P_JPEG_ENCODE)
+ 		return enum_fmt(ctx, sjpeg_formats, SJPEG_NUM_FORMATS, f,
+@@ -1314,7 +1309,7 @@ static int s5p_jpeg_enum_fmt_vid_cap(struct file *file, void *priv,
+ static int s5p_jpeg_enum_fmt_vid_out(struct file *file, void *priv,
+ 				   struct v4l2_fmtdesc *f)
+ {
+-	struct s5p_jpeg_ctx *ctx = fh_to_ctx(priv);
++	struct s5p_jpeg_ctx *ctx = file_to_ctx(file);
+ 
+ 	if (ctx->mode == S5P_JPEG_ENCODE)
+ 		return enum_fmt(ctx, sjpeg_formats, SJPEG_NUM_FORMATS, f,
+@@ -1340,7 +1335,7 @@ static int s5p_jpeg_g_fmt(struct file *file, void *priv, struct v4l2_format *f)
+ 	struct vb2_queue *vq;
+ 	struct s5p_jpeg_q_data *q_data = NULL;
+ 	struct v4l2_pix_format *pix = &f->fmt.pix;
+-	struct s5p_jpeg_ctx *ct = fh_to_ctx(priv);
++	struct s5p_jpeg_ctx *ct = file_to_ctx(file);
+ 
+ 	vq = v4l2_m2m_get_vq(ct->fh.m2m_ctx, f->type);
+ 	if (!vq)
+@@ -1480,7 +1475,7 @@ static int vidioc_try_fmt(struct v4l2_format *f, struct s5p_jpeg_fmt *fmt,
+ static int s5p_jpeg_try_fmt_vid_cap(struct file *file, void *priv,
+ 				  struct v4l2_format *f)
+ {
+-	struct s5p_jpeg_ctx *ctx = fh_to_ctx(priv);
++	struct s5p_jpeg_ctx *ctx = file_to_ctx(file);
+ 	struct v4l2_pix_format *pix = &f->fmt.pix;
+ 	struct s5p_jpeg_fmt *fmt;
+ 	int ret;
+@@ -1539,7 +1534,7 @@ static int s5p_jpeg_try_fmt_vid_cap(struct file *file, void *priv,
+ static int s5p_jpeg_try_fmt_vid_out(struct file *file, void *priv,
+ 				  struct v4l2_format *f)
+ {
+-	struct s5p_jpeg_ctx *ctx = fh_to_ctx(priv);
++	struct s5p_jpeg_ctx *ctx = file_to_ctx(file);
+ 	struct s5p_jpeg_fmt *fmt;
+ 
+ 	fmt = s5p_jpeg_find_format(ctx, f->fmt.pix.pixelformat,
+@@ -1686,7 +1681,7 @@ static int s5p_jpeg_s_fmt_vid_cap(struct file *file, void *priv,
  	if (ret)
  		return ret;
  
--	return delta_decoder_stop_cmd(ctx, fh);
-+	return delta_decoder_stop_cmd(ctx);
+-	return s5p_jpeg_s_fmt(fh_to_ctx(priv), f);
++	return s5p_jpeg_s_fmt(file_to_ctx(file), f);
  }
  
- static int delta_subscribe_event(struct v4l2_fh *fh,
+ static int s5p_jpeg_s_fmt_vid_out(struct file *file, void *priv,
+@@ -1698,7 +1693,7 @@ static int s5p_jpeg_s_fmt_vid_out(struct file *file, void *priv,
+ 	if (ret)
+ 		return ret;
+ 
+-	return s5p_jpeg_s_fmt(fh_to_ctx(priv), f);
++	return s5p_jpeg_s_fmt(file_to_ctx(file), f);
+ }
+ 
+ static int s5p_jpeg_subscribe_event(struct v4l2_fh *fh,
+@@ -1795,7 +1790,7 @@ static int exynos3250_jpeg_try_crop(struct s5p_jpeg_ctx *ctx,
+ static int s5p_jpeg_g_selection(struct file *file, void *priv,
+ 			 struct v4l2_selection *s)
+ {
+-	struct s5p_jpeg_ctx *ctx = fh_to_ctx(priv);
++	struct s5p_jpeg_ctx *ctx = file_to_ctx(file);
+ 
+ 	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT &&
+ 	    s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
 
 -- 
 2.49.0
