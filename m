@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0928CCD1A5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D3E6CCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fw/yG1EW6etSpGorWVQoh0N1QA2kN0sqR9fLvqs1u0g=; b=iPYwUwfz5DBoq7
-	TUCtwVWjyK2QKJPILzTe9jyOmqxwnPMbOOXi5dYErSBv+kBbeIdD49xJfUTHUmATUXt3+zEpbBCma
-	F1YAJjJLpzcPFElkhaGfTopRlwPbKKxcffU+95kWfNCKyJIMBaf/mYTgiGUkfMtg0+tyB/Axho3ZW
-	ncY8H6KYmQf5l2aj+nlcpuxcDlJ4N2atlzbrxYBlJIQUMnV+XvuiKMdmHZHdAEzO5wH1+2O0usi8A
-	0/DbopiObyIDApAeNTqGmNteXDBfolfTEECRjTAIbxx50fax8KvWJYQF0mfKw1Nbs/EegGWQP8L7C
-	nWgI2oB/MtBSBbevHVyA==;
+	List-Owner; bh=IIIsQ4lRSjPDIQ5MTPXyqT7hzkoWiIj+m21S32zNMDE=; b=Ku74IMPKS6Cv0b
+	g1XomVFWqiXk7xIefT9qUMOdu8vGiQ2efDOA3G0gKGhUakG0a0b9hKVg5TDsTNjYCKYSL1JtkuhHl
+	gRRftWZ2c/TiwgiKW3Iq63BDrITi+iBirgS3ymv2afAw4uB8UvWkwba2knucoAqAi9v2VClFu1ejU
+	cXtxPCHGWsbwh4Zdn59E2U0gejhysGIuDiSSbIP6v8TLPu8rsYwx6l4Kin6v5ZRMdtNPjzxp+P4Cx
+	sEaqUc5T964+/1kHY9a+/ijeIpmBQxngA8yfUPZnpXzp7vKaDVJwid47Ki0aJotyx/5iilsUZ7C2J
+	GgqQ4h3vHOe2vUhOIr6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoX0-0000000DAvJ-1WAZ;
-	Mon, 20 Oct 2025 11:58:30 +0000
+	id 1vAoX3-0000000DB1W-2Xo0;
+	Mon, 20 Oct 2025 11:58:33 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8ZY-00000007Qsf-1DfR;
-	Sat, 02 Aug 2025 09:30:37 +0000
+	id 1ui8a5-00000007RAZ-2xBH;
+	Sat, 02 Aug 2025 09:31:11 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id ECBE63C6E;
-	Sat,  2 Aug 2025 11:29:41 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7DE8F4176;
+	Sat,  2 Aug 2025 11:30:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126989;
-	bh=myVmSWYpHXIiztgrX4Nbrz2tt4YIb4c7beKoOCYKNI8=;
+	s=mail; t=1754127023;
+	bh=Eczg8ECb72+TCEnmOt8zTT17kJTYh4uwIayf3SmW1JY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=QbRPXMxClSG+25IAt4oxV96cFHKcviPLixdfqrSDzLcPwvWgGgvIRo50l5ww6D3IK
-	 Kmv9Ks6g/gci/i2jR1Ii5hzUnPUR3QYANiVjpHd5IsdNJWzE+5wygun8SqKXIHhqCi
-	 xz+TVzEYqOd0uNepbZV7dK/LW9Ec3RfJXm4/uk2I=
+	b=Vxlu84YDp7Jd4jfVvLAsxFy34pgccx9f3xa0paw8IVe29SHPH8VpJZNnUMsWiYUHR
+	 CVAa+3L3e1L2pJwimqcrq6hgVVAwuh3wbs1CibLsfxSfHpoZiR4VCfYxo3Keoo0n2z
+	 jKyrW2ft8hyaVFcJL9t+p6SpGIothGx1EIXMmAGs=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:23:05 +0200
-Subject: [PATCH 43/65] media: rockhip: rga: Access v4l2_fh from file
+Date: Sat, 02 Aug 2025 11:23:09 +0200
+Subject: [PATCH 47/65] media: s3c-camif: Set queue owner using file
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-43-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-47-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -129,26 +129,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2197;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3613;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=myVmSWYpHXIiztgrX4Nbrz2tt4YIb4c7beKoOCYKNI8=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj8bCtcXrZDq0XjKLnfeb21Qxsw9vktTvwYZ
- I8b1Ve5FRiJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/AAKCRByNAaPFqFW
- PJerD/wPNsB4FoQmDjS+Q2bgvOYg1HMkC42KAS+62lqBwK9OjkMw5wdywbBTFVeAO7/aoTCDScD
- yaUKSkF5RIqchlj+RO4Fa3fXWvdbRYfYpEFp0EnPQxkJDfsd9xAIXoVxPIaEasZ77ZQWuXrwfn5
- 9EnPq+6b9yaVDD6W0KF2Cm5V7S9Zbm8l7NrJRBO79plfdkHjIux7O67NnUg2I+6yfQIPw/lP5Ka
- zdWfiKBOmgWFRUQm4sI/0lHkPp+KThqrCq9CAMoxKILayA4NNC4JtPrP7ungcho77BKXBKL5mXW
- h1EoMrBYp+mRVweuy/YfN5F7wCaS7v1moLkiVEAY0S45X685QTspJhlewfsMyDIOJUCNTCPejJV
- biw7C0PdiRlREDEAwu5Ek1ACd09LU9uov8HmE5kki5FRUIRJHNqNI+gquFNumbhuRwfLpCneuLY
- u2i4QhmC/EJ2NVmyQFGPJthMLMjeAD1fNVa8a0W+AosRLcgV164/Zzk41RNSGleeJSKNbEj8mvy
- 2JhIDecUDT+kETEC5GSA2UJElubl0KSPWDHdrDa7P+fnFfWsX3DYhIxPU+4ZB5gXoHiCWoxYBSq
- yFlTXFLCz9RCU7s879GUKIUTEZIvGggHd9u7cMgyh5Bc2/9Cm+qwEvi0fAgKJ+fGwx0ZxFRIrSn
- mpL2fgUgHW/KBvA==
+ bh=Eczg8ECb72+TCEnmOt8zTT17kJTYh4uwIayf3SmW1JY=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj9+KKN9ybzE3g+ZGFi3JToB55y8XEuI2gwH
+ zGCFuhA0OaJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/QAKCRByNAaPFqFW
+ PK7OD/9WLUC3p8SXYZRT43b0K+nuWhWGgtGSBt4/ElOwk1n834rKblsRtgx7mkJ5VuJ4K5EQne2
+ BF+d4Tb8DowDc+0OGKbKv5JsSZEhB585l9MaqLEuOf2fk//TGgpX4Nca+xgE0zwVLfF70GO6MwS
+ +02OV5Z1/vzKbiRBFF1QYTr/uNe5E+fp6DzAimCXUzHjJgioOH6sB6N/SAh6RenycGWdl9pf/Ed
+ iXUQYCbjRdKXpqFHpvrx7g7xwfdtHWu2toSHl6zfBIXn7MScpWqxIPGLsPJwP+8sJsXlTXlBdEw
+ cBS7biGwPdh0BKeqXIY6uvCr4s6/yFy43FpmZBa7XPCxVWWfsVSDNkPpXcMyPEMAwg+mTX2/uPb
+ uLCmk86pOQVWNfm7auaVF11/tqG3d161P5E1UfnGuqKOxd+h9E4s+2ChkF4PSmBGtOGxna/6vFM
+ +KwSnv7523PD5w/Jd3jz/TXYgI1nItgpGbCd3Cn08d1NHBaDy7Gvqd8Hfpv1pkYGUYMwGWPczt8
+ WTBgBFLE9pkdsp2SvyM2jnTtf3yWZYu6279qfF4CJ2byI/AT3TglvJv9FnXxp8PHMsIiXTKyzQO
+ 826gtpZOi9+L67vdX/KwzWvmaFFUJEWqOMK67CHgq9IUcDDgY2PhDr4GsAqzTTaAmmvt0MAXtN7
+ C6/29ZoK3kBsz0A==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_023036_479998_6CAFC582 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20250802_023110_029537_2D4735DC 
+X-CRM114-Status: GOOD (  13.09  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:57 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -166,57 +166,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The v4l2_fh associated with an open file handle is now guaranteed
-to be available in file->private_data, initialised by v4l2_fh_add().
+The s3c-camif driver keeps track of which user owns the vb2 queue
+by using the 'void *priv' argument passed to ioctl handlers.
 
-Access the v4l2_fh, and from there the driver-specific structure,
-from the file * in all ioctl handlers.
+As the driver uses v4l2_fh_open() the priv argument points to the
+v4l2_fh handle associated with the open file.
+
+Use file_to_v4l2_fh(file) instead of the raw 'priv' argument for better
+consistency.
 
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/platform/rockchip/rga/rga.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ .../media/platform/samsung/s3c-camif/camif-capture.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 45c42c7ad846fab985e573ef7acf4a5bc1a4cac1..7c657df623f2897cd1ce2b6fa4c4b4de369f1c64 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -462,7 +462,7 @@ static int vidioc_enum_fmt(struct file *file, void *prv, struct v4l2_fmtdesc *f)
- static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
- {
- 	struct v4l2_pix_format_mplane *pix_fmt = &f->fmt.pix_mp;
--	struct rga_ctx *ctx = prv;
-+	struct rga_ctx *ctx = file_to_rga_ctx(file);
- 	struct vb2_queue *vq;
- 	struct rga_frame *frm;
+diff --git a/drivers/media/platform/samsung/s3c-camif/camif-capture.c b/drivers/media/platform/samsung/s3c-camif/camif-capture.c
+index cae15a4ce5fd83f00ced8b2dfbb5f5a6f7483ca4..ed1a1d693293b33d8da3190ac8ee6dd212a64b88 100644
+--- a/drivers/media/platform/samsung/s3c-camif/camif-capture.c
++++ b/drivers/media/platform/samsung/s3c-camif/camif-capture.c
+@@ -791,7 +791,7 @@ static int s3c_camif_vidioc_s_fmt(struct file *file, void *priv,
+ 	out_frame->rect.top = 0;
  
-@@ -504,7 +504,7 @@ static int vidioc_try_fmt(struct file *file, void *prv, struct v4l2_format *f)
- static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
- {
- 	struct v4l2_pix_format_mplane *pix_fmt = &f->fmt.pix_mp;
--	struct rga_ctx *ctx = prv;
-+	struct rga_ctx *ctx = file_to_rga_ctx(file);
- 	struct rockchip_rga *rga = ctx->rga;
- 	struct vb2_queue *vq;
- 	struct rga_frame *frm;
-@@ -561,7 +561,7 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
- static int vidioc_g_selection(struct file *file, void *prv,
- 			      struct v4l2_selection *s)
- {
--	struct rga_ctx *ctx = prv;
-+	struct rga_ctx *ctx = file_to_rga_ctx(file);
- 	struct rga_frame *f;
- 	bool use_frame = false;
+ 	if (vp->owner == NULL)
+-		vp->owner = priv;
++		vp->owner = file_to_v4l2_fh(file);
  
-@@ -609,7 +609,7 @@ static int vidioc_g_selection(struct file *file, void *prv,
- static int vidioc_s_selection(struct file *file, void *prv,
- 			      struct v4l2_selection *s)
- {
--	struct rga_ctx *ctx = prv;
-+	struct rga_ctx *ctx = file_to_rga_ctx(file);
- 	struct rockchip_rga *rga = ctx->rga;
- 	struct rga_frame *f;
- 	int ret = 0;
+ 	pr_debug("%ux%u. payload: %u. fmt: 0x%08x. %d %d. sizeimage: %d. bpl: %d\n",
+ 		 out_frame->f_width, out_frame->f_height, vp->payload,
+@@ -841,7 +841,7 @@ static int s3c_camif_streamon(struct file *file, void *priv,
+ 	if (type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+ 		return -EINVAL;
+ 
+-	if (vp->owner && vp->owner != priv)
++	if (vp->owner && vp->owner != file_to_v4l2_fh(file))
+ 		return -EBUSY;
+ 
+ 	if (s3c_vp_active(vp))
+@@ -872,7 +872,7 @@ static int s3c_camif_streamoff(struct file *file, void *priv,
+ 	if (type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+ 		return -EINVAL;
+ 
+-	if (vp->owner && vp->owner != priv)
++	if (vp->owner && vp->owner != file_to_v4l2_fh(file))
+ 		return -EBUSY;
+ 
+ 	ret = vb2_streamoff(&vp->vb_queue, type);
+@@ -888,9 +888,9 @@ static int s3c_camif_reqbufs(struct file *file, void *priv,
+ 	int ret;
+ 
+ 	pr_debug("[vp%d] rb count: %d, owner: %p, priv: %p\n",
+-		 vp->id, rb->count, vp->owner, priv);
++		 vp->id, rb->count, vp->owner, file_to_v4l2_fh(file));
+ 
+-	if (vp->owner && vp->owner != priv)
++	if (vp->owner && vp->owner != file_to_v4l2_fh(file))
+ 		return -EBUSY;
+ 
+ 	if (rb->count)
+@@ -910,7 +910,7 @@ static int s3c_camif_reqbufs(struct file *file, void *priv,
+ 
+ 	vp->reqbufs_count = rb->count;
+ 	if (vp->owner == NULL && rb->count > 0)
+-		vp->owner = priv;
++		vp->owner = file_to_v4l2_fh(file);
+ 
+ 	return ret;
+ }
+@@ -929,7 +929,7 @@ static int s3c_camif_qbuf(struct file *file, void *priv,
+ 
+ 	pr_debug("[vp%d]\n", vp->id);
+ 
+-	if (vp->owner && vp->owner != priv)
++	if (vp->owner && vp->owner != file_to_v4l2_fh(file))
+ 		return -EBUSY;
+ 
+ 	return vb2_qbuf(&vp->vb_queue, vp->vdev.v4l2_dev->mdev, buf);
+@@ -942,7 +942,7 @@ static int s3c_camif_dqbuf(struct file *file, void *priv,
+ 
+ 	pr_debug("[vp%d] sequence: %d\n", vp->id, vp->frame_sequence);
+ 
+-	if (vp->owner && vp->owner != priv)
++	if (vp->owner && vp->owner != file_to_v4l2_fh(file))
+ 		return -EBUSY;
+ 
+ 	return vb2_dqbuf(&vp->vb_queue, buf, file->f_flags & O_NONBLOCK);
+@@ -954,14 +954,14 @@ static int s3c_camif_create_bufs(struct file *file, void *priv,
+ 	struct camif_vp *vp = video_drvdata(file);
+ 	int ret;
+ 
+-	if (vp->owner && vp->owner != priv)
++	if (vp->owner && vp->owner != file_to_v4l2_fh(file))
+ 		return -EBUSY;
+ 
+ 	create->count = max_t(u32, 1, create->count);
+ 	ret = vb2_create_bufs(&vp->vb_queue, create);
+ 
+ 	if (!ret && vp->owner == NULL)
+-		vp->owner = priv;
++		vp->owner = file_to_v4l2_fh(file);
+ 
+ 	return ret;
+ }
 
 -- 
 2.49.0
