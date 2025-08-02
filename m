@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5375ACCD1A7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 911ACCCD1AB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BYZRpW7A1MwC5UfqZeSsKyUcaOd86tEf3RJXC9CYA2E=; b=ERPi0f3NmB9o0J
-	bTb95cqU22uC9jVHFe8a/ssFpYmYFKEOGtHnTQU7LzYhXfku886n1ZJx7CK0l8KMJslYCPyUFblUx
-	NpvgwkoDlAnmd5KBxdcUuWTBGUImw3Jz4HHxT/gQBa6E8q8bjQvVlYL3Ej0ZSf8MibPjOkGMM6u4/
-	IRudBRjThm5CxYDfCiLhEXulW87W+jNTMCoTpxpcQLbPidepW5Vr2wHU1gzURQqUThdY2fOGU7Gof
-	MOtejpiNt+eiYqiqeMBb3aJu6PyyzHNYwxKkzkpG8JvSwA1kT955QS43RFKNhzFX92cwpYZonzxNx
-	TAAa5QSMjcTf3T3fEiaQ==;
+	List-Owner; bh=NKhg+BRCM1kC5B4zBkAwyBwS4jB9B6vEsAocolFJmPI=; b=jVrjHwCuIdOVMp
+	GvlnThb8dw8sJcmMz3oDpXDZywGRcpQS0sPfTflBzlL9rV8yRiQ4qN5MRaOxfh1I+I6G4y+c4w+eu
+	vyKiHPv0Ws21z8Lt4xDdVuo/KzJG7HXb2kILtWQf+XvVWLrFLa5P7WHmY/SwClL7XxzwOmc3OrbSv
+	H49GJvld0ZTe+hpAltShdoppZ4FSv41tjTJJgakPhhVqvavnBc39afOrPu+krDqOVYlC+5uK5KH+2
+	HIcUnprE9/rfFGGpihRi0P6v7UnBXNlVC1sZPMQezV78pbqYoYfSIEYHqaANFds+lr4nUv2E8qeJ4
+	SRTHgf0ML+nDZGhAdeiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoWp-0000000DAZX-25XP;
-	Mon, 20 Oct 2025 11:58:19 +0000
+	id 1vAoWr-0000000DAep-3wiY;
+	Mon, 20 Oct 2025 11:58:21 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8XD-00000007PgF-3W9R;
-	Sat, 02 Aug 2025 09:28:13 +0000
+	id 1ui8Xq-00000007Q0U-2xE6;
+	Sat, 02 Aug 2025 09:28:52 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id AE6443B8B;
-	Sat,  2 Aug 2025 11:27:16 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 526283C59;
+	Sat,  2 Aug 2025 11:27:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126845;
-	bh=50vYXEGhZeTzddTpY4VW3qqWt6o/oRzLVr9heRBb344=;
+	s=mail; t=1754126884;
+	bh=uvJNgedmjfRxRB2KK4uHDM5CEa3owfvsuNtv/dXg1mo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=bO9ZV45xEGgF6pwv4xOp/UHbDpRuyn3tsM5Ps8cKLkUxOwstVyEmE52BbRzyaxnPi
-	 RejLuvxRjfRvLuJdJHjNNrN9exsHVyD1VwXr3a55aLgI0Cc7LVsjh6E6VonxeaDjK6
-	 ZFCSwB7kkcd7rfn+xRvUFNpPtTnXo2hQg3lcZ0EU=
+	b=OBeOdY71KXuivBYjHPJgVimqGpuOLlDp9yx3lDomohHUG5a7oNWQ0hvXoW69O0kNS
+	 NYAx54HROgkP695bPQtJ6+Ecd/T7MLt4bvONc/Y0dZA46ll9Mm2L78xgrOkpmJ6k0A
+	 8PHaFKCiNki5tve7zAVZ45WyVeGD7Vm3ILrEKz8E=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:22:50 +0200
-Subject: [PATCH 28/65] media: v4l2-ioctl: Access v4l2_fh from private_data
+Date: Sat, 02 Aug 2025 11:22:54 +0200
+Subject: [PATCH 32/65] media: wave5: Access v4l2_fh from file
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-28-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-32-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -129,26 +129,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6102;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=10324;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=50vYXEGhZeTzddTpY4VW3qqWt6o/oRzLVr9heRBb344=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj6BS2OkLRIRXzaVdf/zNJM4Q4XKjnvniijd
- fboQzcTYIyJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y+gAKCRByNAaPFqFW
- PFmQD/wOSAarhR1JioG20KiYPWKE7F1VDzwex19iOgZ3opz7/FURvUVDym7b666cyh2qCgiZgwH
- UptIgDpZRKRd949B8/ze4g0rQq9lEcIFAoTG6ELQzVXKlE4Xo1A1AywpEIuSDOqss2HguWiclXD
- xlkbmtDShmuRY8o79e9VNxhlDzDuYGgkXYcwTWTuYiKYmp1/x9HQq8XxdkJmIsB4jlkVIxsv+En
- Vys4x++KRGGfLo8TcaE48yyO7w/avATN3ZsZhHaEJ32Kp/0USpuNsgrNSrrH4BOvF88Ut3gVBVS
- 6wrvQqkiePkw95y4c7bN6bCoWdAsWxEvV91DhkHXO1q8K3q8hISLyJc8HKtlCruwfZmJJg44jQo
- T5ClGMTBO0xYbiL2e+Y/5zdGRR31dIKoS6ptm3CvqlQ/CbrguuS/Rfz/4Tb/36mMr/+fe9AyuZu
- x9BchltjTcciuZHQChHl+P+qI7bQTTo9EZJgoIw+xWyffKaCxVvRJGPuWtGslIb+dqcqJGY4f8q
- 8o42ieKDM8ILzrxk+neDKYp2tkMbesSWcUwpwP3kG084u+8ei9qJCbrkg1qBrLBgxloK9IuPKE0
- yvbsJLuB1QptIUH2eYuA9guw/0Lr5vX6S9RUldh4Ki7dAAt7pk3mVT4S6neF9Fmhq5AlYtN/4Kr
- CkVxUsTH44vt4mg==
+ bh=uvJNgedmjfRxRB2KK4uHDM5CEa3owfvsuNtv/dXg1mo=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj7S/3Fw9ygciMykqOxZ3oq/ihDfFUViWqKi
+ 5ekTs5Vd8+JAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y+wAKCRByNAaPFqFW
+ POEiEAC74ewm4UwRerFfJAL8tK4Q4dfsUPWoOIltfCRNJ1oWZqybDtlPV8YdYeLQyI11uX/Y0Qd
+ 3gtrtoMmI8vcaJUptDw6CuyJeboT6CzFR2Tt2KELXHeOLzjUIh8ZT+teCZq9OZcrjtWXHjkD2Ny
+ 4vwfiGJ1pPmbrsNVWLGrxqn8cxwJGATdHC3ErwAUIJ3avwjcBz0yoGnAjGaMA+D5DXNmLEZZWzb
+ 3R3Ud12Gqonq3xtBR8CGHFcBvZeNcPORqEEzJJza4FalTw2nGr65CohPNq3D0VZDOkRHir+qYTX
+ XG23CyC/G4jYE1NDrbeTkGYe/iodpC+m6up/5gupugz/DlzBunaRa+tcXzKtfQ+sNZaZx2lpFq2
+ 5pY45Vh2WLgNv1Xr+q76rvA3O1/Bn/Io4Zv+A7C5j8wXQNQfWpK2j8GKyCJ8aW3e2jR/irOrLF6
+ dARDLFGe3XP6LFU5Y4XqKwPczmTfxyHekKMxO0DssGbUttMuqE1qMGb0s336UeYPtPRyWcy7KDk
+ T3uhKRB6h6VVTLmxsyaCUwh3KJlVjLNUcVQWzZ2c9xMlt5mHgGTH7Up6OYnBtk9UCjyv/PDbF8Q
+ 1ETZeraVs8AOHlUnD6RRH7+nlH6yptXdMTIVT5IwSeOOFouJa78kh1G9qXzpu8F3CmG3mrdVdAT
+ co8wEuknSM/h/VA==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_022812_175726_4CDF774A 
-X-CRM114-Status: GOOD (  15.37  )
+X-CRM114-CacheID: sfid-20250802_022851_032962_F3A4E3A6 
+X-CRM114-Status: GOOD (  11.86  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:56 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -166,163 +166,229 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Now that it is guaranteed that file->private_data is set to point to the
-'struct v4l2_fh' initialised by v4l2_fh_add() the v4l2-ioctl layer can
-be modified to retrieve the v4l2_fh pointer from the file *.
+The v4l2_fh associated with an open file handle is now guaranteed
+to be available in file->private_data, initialised by v4l2_fh_add().
 
-As the __video_do_ioctl() function, that calls all the handlers modified
-by this patch goes as:
+Access the v4l2_fh, and from there the driver-specific structure,
+from the file * in all ioctl handlers.
 
-static long __video_do_ioctl(struct file *file,
-		unsigned int cmd, void *arg)
-{
-	void *fh = file->private_data;
-
-	...
-
-	ret = info->func(ops, file, fh, arg);
-
-}
-
-This patch introduces no functional changes and makes it possible to
-remove in future the 'fh' argument to all ioctl handlers.
-
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/v4l2-core/v4l2-ioctl.c | 46 ++++++++++++++++++++----------------
- 1 file changed, 26 insertions(+), 20 deletions(-)
+ .../platform/chips-media/wave5/wave5-helper.c      |  2 +-
+ .../platform/chips-media/wave5/wave5-vpu-dec.c     | 18 ++++++++--------
+ .../platform/chips-media/wave5/wave5-vpu-enc.c     | 24 +++++++++++-----------
+ 3 files changed, 22 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index 8c81852c30466865eca36fd41923f6d05dbf9293..44c2f5ef3dae407d9786c5278d13efc982be2ff0 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -2297,8 +2297,8 @@ static int v4l_queryctrl(const struct v4l2_ioctl_ops *ops,
- 	struct video_device *vfd = video_devdata(file);
- 	struct v4l2_query_ext_ctrl qec = {};
- 	struct v4l2_queryctrl *p = arg;
--	struct v4l2_fh *vfh =
--		test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ? fh : NULL;
-+	struct v4l2_fh *vfh = test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ?
-+			      file_to_v4l2_fh(file) : NULL;
+diff --git a/drivers/media/platform/chips-media/wave5/wave5-helper.c b/drivers/media/platform/chips-media/wave5/wave5-helper.c
+index 0bce62f0c03902ae367182ee04774c79accc4712..f03ad9c0de2215794b2456c39652785fff236966 100644
+--- a/drivers/media/platform/chips-media/wave5/wave5-helper.c
++++ b/drivers/media/platform/chips-media/wave5/wave5-helper.c
+@@ -142,7 +142,7 @@ int wave5_vpu_subscribe_event(struct v4l2_fh *fh, const struct v4l2_event_subscr
+ 
+ int wave5_vpu_g_fmt_out(struct file *file, void *fh, struct v4l2_format *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	int i;
+ 
+ 	f->fmt.pix_mp.width = inst->src_fmt.width;
+diff --git a/drivers/media/platform/chips-media/wave5/wave5-vpu-dec.c b/drivers/media/platform/chips-media/wave5/wave5-vpu-dec.c
+index 88eb933a51448788373775e423ae2ac5042cf8b6..72af0faa3ef2e6fb83749044eb91a58f39a3a986 100644
+--- a/drivers/media/platform/chips-media/wave5/wave5-vpu-dec.c
++++ b/drivers/media/platform/chips-media/wave5/wave5-vpu-dec.c
+@@ -506,7 +506,7 @@ static int wave5_vpu_dec_enum_fmt_cap(struct file *file, void *fh, struct v4l2_f
+ 
+ static int wave5_vpu_dec_try_fmt_cap(struct file *file, void *fh, struct v4l2_format *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	struct dec_info *p_dec_info = &inst->codec_info->dec_info;
+ 	const struct v4l2_frmsize_stepwise *frmsize;
+ 	const struct vpu_format *vpu_fmt;
+@@ -547,7 +547,7 @@ static int wave5_vpu_dec_try_fmt_cap(struct file *file, void *fh, struct v4l2_fo
+ 
+ static int wave5_vpu_dec_s_fmt_cap(struct file *file, void *fh, struct v4l2_format *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	int i, ret;
+ 
+ 	dev_dbg(inst->dev->dev,
+@@ -606,7 +606,7 @@ static int wave5_vpu_dec_s_fmt_cap(struct file *file, void *fh, struct v4l2_form
+ 
+ static int wave5_vpu_dec_g_fmt_cap(struct file *file, void *fh, struct v4l2_format *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	int i;
+ 
+ 	f->fmt.pix_mp.width = inst->dst_fmt.width;
+@@ -630,7 +630,7 @@ static int wave5_vpu_dec_g_fmt_cap(struct file *file, void *fh, struct v4l2_form
+ 
+ static int wave5_vpu_dec_enum_fmt_out(struct file *file, void *fh, struct v4l2_fmtdesc *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	const struct vpu_format *vpu_fmt;
+ 
+ 	dev_dbg(inst->dev->dev, "%s: index: %u\n", __func__, f->index);
+@@ -647,7 +647,7 @@ static int wave5_vpu_dec_enum_fmt_out(struct file *file, void *fh, struct v4l2_f
+ 
+ static int wave5_vpu_dec_try_fmt_out(struct file *file, void *fh, struct v4l2_format *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	const struct v4l2_frmsize_stepwise *frmsize;
+ 	const struct vpu_format *vpu_fmt;
+ 	int width, height;
+@@ -678,7 +678,7 @@ static int wave5_vpu_dec_try_fmt_out(struct file *file, void *fh, struct v4l2_fo
+ 
+ static int wave5_vpu_dec_s_fmt_out(struct file *file, void *fh, struct v4l2_format *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	const struct vpu_format *vpu_fmt;
+ 	int i, ret;
+ 
+@@ -727,7 +727,7 @@ static int wave5_vpu_dec_s_fmt_out(struct file *file, void *fh, struct v4l2_form
+ 
+ static int wave5_vpu_dec_g_selection(struct file *file, void *fh, struct v4l2_selection *s)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 
+ 	dev_dbg(inst->dev->dev, "%s: type: %u | target: %u\n", __func__, s->type, s->target);
+ 
+@@ -761,7 +761,7 @@ static int wave5_vpu_dec_g_selection(struct file *file, void *fh, struct v4l2_se
+ 
+ static int wave5_vpu_dec_s_selection(struct file *file, void *fh, struct v4l2_selection *s)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 
+ 	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+ 		return -EINVAL;
+@@ -872,7 +872,7 @@ static int wave5_vpu_dec_start(struct vpu_instance *inst)
+ 
+ static int wave5_vpu_dec_decoder_cmd(struct file *file, void *fh, struct v4l2_decoder_cmd *dc)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	struct v4l2_m2m_ctx *m2m_ctx = inst->v4l2_fh.m2m_ctx;
  	int ret;
  
- 	if (vfh && vfh->ctrl_handler)
-@@ -2322,8 +2322,8 @@ static int v4l_query_ext_ctrl(const struct v4l2_ioctl_ops *ops,
- {
- 	struct video_device *vfd = video_devdata(file);
- 	struct v4l2_query_ext_ctrl *p = arg;
--	struct v4l2_fh *vfh =
--		test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ? fh : NULL;
-+	struct v4l2_fh *vfh = test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ?
-+			      file_to_v4l2_fh(file) : NULL;
+diff --git a/drivers/media/platform/chips-media/wave5/wave5-vpu-enc.c b/drivers/media/platform/chips-media/wave5/wave5-vpu-enc.c
+index 322c1498758a0a569eb94cab0d6612ce18cd4c7b..279f23e1304a9e47e31c9a0bdd0efbf4c18622e1 100644
+--- a/drivers/media/platform/chips-media/wave5/wave5-vpu-enc.c
++++ b/drivers/media/platform/chips-media/wave5/wave5-vpu-enc.c
+@@ -360,7 +360,7 @@ static int wave5_vpu_enc_enum_framesizes(struct file *f, void *fh, struct v4l2_f
  
- 	if (vfh && vfh->ctrl_handler)
- 		return v4l2_query_ext_ctrl(vfh->ctrl_handler, p);
-@@ -2339,8 +2339,8 @@ static int v4l_querymenu(const struct v4l2_ioctl_ops *ops,
+ static int wave5_vpu_enc_enum_fmt_cap(struct file *file, void *fh, struct v4l2_fmtdesc *f)
  {
- 	struct video_device *vfd = video_devdata(file);
- 	struct v4l2_querymenu *p = arg;
--	struct v4l2_fh *vfh =
--		test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ? fh : NULL;
-+	struct v4l2_fh *vfh = test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ?
-+			      file_to_v4l2_fh(file) : NULL;
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	const struct vpu_format *vpu_fmt;
  
- 	if (vfh && vfh->ctrl_handler)
- 		return v4l2_querymenu(vfh->ctrl_handler, p);
-@@ -2356,8 +2356,8 @@ static int v4l_g_ctrl(const struct v4l2_ioctl_ops *ops,
- {
- 	struct video_device *vfd = video_devdata(file);
- 	struct v4l2_control *p = arg;
--	struct v4l2_fh *vfh =
--		test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ? fh : NULL;
-+	struct v4l2_fh *vfh = test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ?
-+			      file_to_v4l2_fh(file) : NULL;
- 	struct v4l2_ext_controls ctrls;
- 	struct v4l2_ext_control ctrl;
+ 	dev_dbg(inst->dev->dev, "%s: index: %u\n", __func__, f->index);
+@@ -377,7 +377,7 @@ static int wave5_vpu_enc_enum_fmt_cap(struct file *file, void *fh, struct v4l2_f
  
-@@ -2388,8 +2388,8 @@ static int v4l_s_ctrl(const struct v4l2_ioctl_ops *ops,
+ static int wave5_vpu_enc_try_fmt_cap(struct file *file, void *fh, struct v4l2_format *f)
  {
- 	struct video_device *vfd = video_devdata(file);
- 	struct v4l2_control *p = arg;
--	struct v4l2_fh *vfh =
--		test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ? fh : NULL;
-+	struct v4l2_fh *vfh = test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ?
-+			      file_to_v4l2_fh(file) : NULL;
- 	struct v4l2_ext_controls ctrls;
- 	struct v4l2_ext_control ctrl;
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	const struct v4l2_frmsize_stepwise *frmsize;
+ 	const struct vpu_format *vpu_fmt;
+ 	int width, height;
+@@ -411,7 +411,7 @@ static int wave5_vpu_enc_try_fmt_cap(struct file *file, void *fh, struct v4l2_fo
+ 
+ static int wave5_vpu_enc_s_fmt_cap(struct file *file, void *fh, struct v4l2_format *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	int i, ret;
+ 
+ 	dev_dbg(inst->dev->dev, "%s: fourcc: %u width: %u height: %u num_planes: %u field: %u\n",
+@@ -445,7 +445,7 @@ static int wave5_vpu_enc_s_fmt_cap(struct file *file, void *fh, struct v4l2_form
+ 
+ static int wave5_vpu_enc_g_fmt_cap(struct file *file, void *fh, struct v4l2_format *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	int i;
+ 
+ 	f->fmt.pix_mp.width = inst->dst_fmt.width;
+@@ -469,7 +469,7 @@ static int wave5_vpu_enc_g_fmt_cap(struct file *file, void *fh, struct v4l2_form
+ 
+ static int wave5_vpu_enc_enum_fmt_out(struct file *file, void *fh, struct v4l2_fmtdesc *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	const struct vpu_format *vpu_fmt;
+ 
+ 	dev_dbg(inst->dev->dev, "%s: index: %u\n", __func__, f->index);
+@@ -486,7 +486,7 @@ static int wave5_vpu_enc_enum_fmt_out(struct file *file, void *fh, struct v4l2_f
+ 
+ static int wave5_vpu_enc_try_fmt_out(struct file *file, void *fh, struct v4l2_format *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	const struct v4l2_frmsize_stepwise *frmsize;
+ 	const struct vpu_format *vpu_fmt;
+ 	int width, height;
+@@ -515,7 +515,7 @@ static int wave5_vpu_enc_try_fmt_out(struct file *file, void *fh, struct v4l2_fo
+ 
+ static int wave5_vpu_enc_s_fmt_out(struct file *file, void *fh, struct v4l2_format *f)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	const struct vpu_format *vpu_fmt;
+ 	const struct v4l2_format_info *info;
+ 	int i, ret;
+@@ -576,7 +576,7 @@ static int wave5_vpu_enc_s_fmt_out(struct file *file, void *fh, struct v4l2_form
+ 
+ static int wave5_vpu_enc_g_selection(struct file *file, void *fh, struct v4l2_selection *s)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 
+ 	dev_dbg(inst->dev->dev, "%s: type: %u | target: %u\n", __func__, s->type, s->target);
+ 
+@@ -605,7 +605,7 @@ static int wave5_vpu_enc_g_selection(struct file *file, void *fh, struct v4l2_se
+ 
+ static int wave5_vpu_enc_s_selection(struct file *file, void *fh, struct v4l2_selection *s)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 
+ 	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
+ 		return -EINVAL;
+@@ -628,7 +628,7 @@ static int wave5_vpu_enc_s_selection(struct file *file, void *fh, struct v4l2_se
+ 
+ static int wave5_vpu_enc_encoder_cmd(struct file *file, void *fh, struct v4l2_encoder_cmd *ec)
+ {
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
+ 	struct v4l2_m2m_ctx *m2m_ctx = inst->v4l2_fh.m2m_ctx;
  	int ret;
-@@ -2418,8 +2418,8 @@ static int v4l_g_ext_ctrls(const struct v4l2_ioctl_ops *ops,
- {
- 	struct video_device *vfd = video_devdata(file);
- 	struct v4l2_ext_controls *p = arg;
--	struct v4l2_fh *vfh =
--		test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ? fh : NULL;
-+	struct v4l2_fh *vfh = test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ?
-+			      file_to_v4l2_fh(file) : NULL;
  
- 	p->error_idx = p->count;
- 	if (vfh && vfh->ctrl_handler)
-@@ -2439,8 +2439,8 @@ static int v4l_s_ext_ctrls(const struct v4l2_ioctl_ops *ops,
- {
- 	struct video_device *vfd = video_devdata(file);
- 	struct v4l2_ext_controls *p = arg;
--	struct v4l2_fh *vfh =
--		test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ? fh : NULL;
-+	struct v4l2_fh *vfh = test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ?
-+			      file_to_v4l2_fh(file) : NULL;
+@@ -661,7 +661,7 @@ static int wave5_vpu_enc_encoder_cmd(struct file *file, void *fh, struct v4l2_en
  
- 	p->error_idx = p->count;
- 	if (vfh && vfh->ctrl_handler)
-@@ -2460,8 +2460,8 @@ static int v4l_try_ext_ctrls(const struct v4l2_ioctl_ops *ops,
+ static int wave5_vpu_enc_g_parm(struct file *file, void *fh, struct v4l2_streamparm *a)
  {
- 	struct video_device *vfd = video_devdata(file);
- 	struct v4l2_ext_controls *p = arg;
--	struct v4l2_fh *vfh =
--		test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ? fh : NULL;
-+	struct v4l2_fh *vfh = test_bit(V4L2_FL_USES_V4L2_FH, &vfd->flags) ?
-+			      file_to_v4l2_fh(file) : NULL;
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
  
- 	p->error_idx = p->count;
- 	if (vfh && vfh->ctrl_handler)
-@@ -2756,19 +2756,25 @@ static int v4l_dbg_g_chip_info(const struct v4l2_ioctl_ops *ops,
- static int v4l_dqevent(const struct v4l2_ioctl_ops *ops,
- 				struct file *file, void *fh, void *arg)
+ 	dev_dbg(inst->dev->dev, "%s: type: %u\n", __func__, a->type);
+ 
+@@ -681,7 +681,7 @@ static int wave5_vpu_enc_g_parm(struct file *file, void *fh, struct v4l2_streamp
+ 
+ static int wave5_vpu_enc_s_parm(struct file *file, void *fh, struct v4l2_streamparm *a)
  {
--	return v4l2_event_dequeue(fh, arg, file->f_flags & O_NONBLOCK);
-+	struct v4l2_fh *vfh = file_to_v4l2_fh(file);
-+
-+	return v4l2_event_dequeue(vfh, arg, file->f_flags & O_NONBLOCK);
- }
+-	struct vpu_instance *inst = wave5_to_vpu_inst(fh);
++	struct vpu_instance *inst = file_to_vpu_inst(file);
  
- static int v4l_subscribe_event(const struct v4l2_ioctl_ops *ops,
- 				struct file *file, void *fh, void *arg)
- {
--	return ops->vidioc_subscribe_event(fh, arg);
-+	struct v4l2_fh *vfh = file_to_v4l2_fh(file);
-+
-+	return ops->vidioc_subscribe_event(vfh, arg);
- }
+ 	dev_dbg(inst->dev->dev, "%s: type: %u\n", __func__, a->type);
  
- static int v4l_unsubscribe_event(const struct v4l2_ioctl_ops *ops,
- 				struct file *file, void *fh, void *arg)
- {
--	return ops->vidioc_unsubscribe_event(fh, arg);
-+	struct v4l2_fh *vfh = file_to_v4l2_fh(file);
-+
-+	return ops->vidioc_unsubscribe_event(vfh, arg);
- }
- 
- static int v4l_g_sliced_vbi_cap(const struct v4l2_ioctl_ops *ops,
-@@ -3072,7 +3078,7 @@ static long __video_do_ioctl(struct file *file,
- 	bool write_only = false;
- 	struct v4l2_ioctl_info default_info;
- 	const struct v4l2_ioctl_info *info;
--	void *fh = file->private_data;
-+	void *fh = file_to_v4l2_fh(file);
- 	struct v4l2_fh *vfh = NULL;
- 	int dev_debug = vfd->dev_debug;
- 	long ret = -ENOTTY;
 
 -- 
 2.49.0
