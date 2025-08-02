@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DAA8CCD1A5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F28EDCCD199
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:58:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,35 +12,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R2mEH6sPZY4vBOD5HjXRcecWjhbsqpri8KXuQLzItdc=; b=eUWE9ZGRtCFFWT
-	lS/UM9R3wCR8vzvG2nFzlvSe6/JxGES9R0KcEcwQ3h0Q5VSy5X3jJQDcI3BAfFilMNqxkr1CoSMeF
-	smw01+srFvpjDL+2BWbT4o9vVay5Ph3BdSiZJxV1uQtCdiewt6I19yd/fDXaJXoS57T5Ub6vVLTr+
-	iAmHVooRLJU1VdswnBV965jhMGsU/tLATsJ+ZitJaHWLmwMH13ZzVkxZvpRU1GJtjzGgh6H4xoXn6
-	LZ2eubGvkaQ103fOK2LFvMwFIvwd6S8oztUfsJWigvWRwYw3PIT/t61GvEYwa+wVrJ+QsLN2NH/VY
-	jq+p0qS+JEmInShuu1jA==;
+	List-Owner; bh=/DK032NKuO4/uXvM9oAQCK4UExXHZakvGeawAU/3bCs=; b=YHQKeEZ/Nv7QTA
+	xnz7CEX3qrZnsaCbfWbtp1HeINTzS+QYFpsMLqTp0MsReITTwzMuaVg/V365gZyDgpHCN/IfMYoUw
+	AobtkfT+p0vO7/+U8psRLX2YaLFXbBKwkIcbkeuwavYsx88b+/Lad7xSx3JZlIGSCoGNhMrj77wHG
+	+ZVX8bVjFaD222y5W8TGNgAcNeTcACAfiA5KZV2BfLJOVvVtO3m0CHavPhmMviJorbrT3JacMz3nG
+	1h/habAnxwzcWhfxDDub1lrXGtIBMCdVLDtCFhbLF+CVKKX5oo92gBmgO1StpzqppYC4L4/asQTWX
+	ZJdsdElAsb2T/cLrZtlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoWv-0000000DAl3-1T5h;
-	Mon, 20 Oct 2025 11:58:25 +0000
+	id 1vAoWx-0000000DAnq-0HXn;
+	Mon, 20 Oct 2025 11:58:27 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ui8Ye-00000007QMc-1UD8;
-	Sat, 02 Aug 2025 09:29:41 +0000
+	id 1ui8Yv-00000007QVc-0UBS;
+	Sat, 02 Aug 2025 09:29:58 +0000
 Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B4CC23C6C;
-	Sat,  2 Aug 2025 11:28:45 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D13D93EE9;
+	Sat,  2 Aug 2025 11:29:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754126933;
-	bh=TREA8Gw7i9MWzaBdbk/QKhP4Ggubbbr1P2XTmejXLMg=;
+	s=mail; t=1754126950;
+	bh=QMXN795g4JQ02dbn34MUgI1SrXfUXWeSvy7JvnRGT/4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=jNijr26x5+M7V7u6frcDFOc1kw8nkayNoUX+tkfFN+81P3tAoLJU0zqTc4xceh+JS
-	 CcXmq6ErvT/tUMPRINb7C733Z753O0Kg4oUaHuaQtM+H3G/r9kIUq//VNa+n/wDzQx
-	 ZCPA5vqvcGKXQtSSlbt/9zBRQyOy0nPGCuzDVOHk=
+	b=a6yKtLO3p3dptqs8nDpC4CTqf6f17ThWt2kAQ1RtjLbHys7ZhKQtBaxqQGSFM14hJ
+	 lo2so0O2XgjC9oyqujkhkQVVJ41fDYV4TE+DbxU0VOqJKvsFvw9M/9U/KkF7+/glzq
+	 Xda2N5WbvBrVab8G1DXb+S/ilReE23HpnougskVQ=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 02 Aug 2025 11:22:59 +0200
-Subject: [PATCH 37/65] media: mtk: vcodec: Access v4l2_fh from file
+Date: Sat, 02 Aug 2025 11:23:01 +0200
+Subject: [PATCH 39/65] media: imx-jpeg: Access v4l2_fh from file
 MIME-Version: 1.0
-Message-Id: <20250802-media-private-data-v1-37-eb140ddd6a9d@ideasonboard.com>
+Message-Id: <20250802-media-private-data-v1-39-eb140ddd6a9d@ideasonboard.com>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 In-Reply-To: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -129,26 +129,26 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
  Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=15817;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6555;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=TREA8Gw7i9MWzaBdbk/QKhP4Ggubbbr1P2XTmejXLMg=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj7OFz+gN+wVUa5VrMIM4YwXqynriZsOLr8/
- lEjqmJBecSJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y+wAKCRByNAaPFqFW
- PDXFEACF7S0bzNNPSEx0ZGozCHIVTditcgtd3bjzpugZNSpCFcQL5RnblDMNXaTZ9JUxJojuT/y
- t7OKO86LZRZm2RaF2T/6UvtXUSmcunX6qFk8BFTn+mqubhxy+CO/Ex+SzTPlemYp9t/THLIcQhF
- OXvmdmnwpq1yYBHiGd7Bw5wLQ5Q/vHV4weIFVDAL5V/ORd+T/gUXFXg0ySeCUbaaYFVxXIaiSEm
- 7lReb8gjHZq2461gV6GQbUzU/jmKEyy8SBZXc2ND0v6I7ubcUYW1P63TQ7hPnmEiyNpJmK5C58l
- Uuw1V9L9I/1P6g6+n1/Ml523MwfsS2+dPX+KEElKiZlXqAlVc9HQRXZrrgen4CFJH3qP55z+464
- zGhiK5n7WozA50CkGjspJc+tAWCqThw78zGzqSNXIXvp1UT5FdprbpNvQjybL4/KaQyWhsPNcgC
- NxNPp4zJYrcrsFSwbfgsR6FaAijZ6DVcwq3ZH/likfl+LXm5/KTHjO2PDpbdL05tlYPkRpkO7/F
- CKCJBfmdL1z8l1M91mAgY3pgCBkMxOlUIVTgWWFM8hjvhrFE4Gm01woUGeD/JbRlN55KcosvY1H
- zB7VSNQY8qhwoExGJoDLy4EfRmxMZfIvdCO/eX+32eNNEYPOZVQsXYs6+Zm1CBonwBKKzxqMddf
- UeHloDAzu4agKiw==
+ bh=QMXN795g4JQ02dbn34MUgI1SrXfUXWeSvy7JvnRGT/4=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj8/oWIIARD+dfkmFv/taMUYIiUf/KYJk9vV
+ f7+9cr+2++JAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y/AAKCRByNAaPFqFW
+ PKtxD/0WLPIL/mL1eF89kxSMM9GwOxEKdo8GLGfT13RWpduaSJTQpP/edD44lwWuTCc/Ppgs83F
+ u9bd6x4dOVwYfaPQIN5wij1VrkrZ6Bukd6h598tHgoKq0LmK6g9AS6SSJyKCVG8ETu/fpF0ARpW
+ 1oq1soPH+lkWm2YsCf88hjEAeLKuLe6T2CZB8MolKhAQOKNFewTMquWE8SfXrpMELAUh97npU/h
+ GzVOcyJRfI+Me9QDMgov6AQRy+qGdm2K6R0aK8XaHuDSUkdPw4breQtXzbxvHJujLsZ3Ylt4IrG
+ 5pTN90+UngJ1pYigkyC8u8WI8bF5BcOxKx+gjGXuO+zcdr++UiIKHU/iOzkeJvdSnBPE6XjtZEW
+ DBYFVMgrlvKkBQ9pjwJIsek4GgkDSCUoTnyXtR5YpjSZLIOP2Hkxg/MYLR1K00HzGwNykLZfmwU
+ gvHiAygX/esogRpR/rFyA6SnjaCLLoy/9Dak8v/a15IEWnRsw8DD6LGJGELTh5E3YGkkeFfBkWQ
+ nk9hYsCX5zLegyyQZ6tjuv6HJc53gqm0Mq3KtJl8V5t46D4VXt+WsPiGrcRHyyYD8ibuJBlaHs2
+ ocOq1NEyVZ4BCdDoTWV7kqUn46e9u4uWM6Owwwggr8iOtxOn3o1mz5KuPz3wd7z2Oc1LrqSZ3Ry
+ yexlpARHGjG1bXg==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250802_022940_683108_C04D8EAE 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20250802_022957_301708_3C62B66A 
+X-CRM114-Status: GOOD (  13.98  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:56 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -172,351 +172,152 @@ to be available in file->private_data, initialised by v4l2_fh_add().
 Access the v4l2_fh, and from there the driver-specific structure,
 from the file * in all ioctl handlers.
 
-While at modify mtk_vcodec_enc_get_chip_name() to accept a ctx instead
-of a raw void *.
-
-While at it, remove the now unused fh_to_enc_ctx() macro.
+While at it, remove the now unused mxc_jpeg_fh_to_ctx() macro.
 
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c       | 36 ++++++++++-----------
- .../mediatek/vcodec/encoder/mtk_vcodec_enc.c       | 37 +++++++++++-----------
- .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h   |  5 ---
- 3 files changed, 36 insertions(+), 42 deletions(-)
+ drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c | 33 +++++++++++---------------
+ 1 file changed, 14 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-index 98838217b97d45ed2b5431fdf87c94e0ff79fc57..d691bd533103b100e7d1817e834696cc5b3990ce 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-@@ -87,7 +87,7 @@ static int stateful_try_decoder_cmd(struct file *file, void *priv, struct v4l2_d
- 
- static int stateful_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 	struct vb2_queue *src_vq, *dst_vq;
- 	int ret;
- 
-@@ -132,7 +132,7 @@ static int stateless_try_decoder_cmd(struct file *file, void *priv, struct v4l2_
- 
- static int stateless_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 	int ret;
- 
- 	ret = v4l2_m2m_ioctl_stateless_try_decoder_cmd(file, priv, cmd);
-@@ -158,7 +158,7 @@ static int stateless_decoder_cmd(struct file *file, void *priv, struct v4l2_deco
- 
- static int vidioc_try_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 
- 	if (ctx->dev->vdec_pdata->uses_stateless_api)
- 		return stateless_try_decoder_cmd(file, priv, cmd);
-@@ -168,7 +168,7 @@ static int vidioc_try_decoder_cmd(struct file *file, void *priv, struct v4l2_dec
- 
- static int vidioc_decoder_cmd(struct file *file, void *priv, struct v4l2_decoder_cmd *cmd)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 
- 	if (ctx->dev->vdec_pdata->uses_stateless_api)
- 		return stateless_decoder_cmd(file, priv, cmd);
-@@ -233,7 +233,7 @@ void mtk_vcodec_dec_set_default_params(struct mtk_vcodec_dec_ctx *ctx)
- static int vidioc_vdec_qbuf(struct file *file, void *priv,
- 			    struct v4l2_buffer *buf)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 
- 	if (ctx->state == MTK_STATE_ABORT) {
- 		mtk_v4l2_vdec_err(ctx, "[%d] Call on QBUF after unrecoverable error", ctx->id);
-@@ -246,7 +246,7 @@ static int vidioc_vdec_qbuf(struct file *file, void *priv,
- static int vidioc_vdec_dqbuf(struct file *file, void *priv,
- 			     struct v4l2_buffer *buf)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 
- 	if (ctx->state == MTK_STATE_ABORT) {
- 		mtk_v4l2_vdec_err(ctx, "[%d] Call on DQBUF after unrecoverable error", ctx->id);
-@@ -259,7 +259,7 @@ static int vidioc_vdec_dqbuf(struct file *file, void *priv,
- static int vidioc_vdec_querycap(struct file *file, void *priv,
- 				struct v4l2_capability *cap)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 	struct device *dev = &ctx->dev->plat_dev->dev;
- 
- 	strscpy(cap->driver, dev->driver->name, sizeof(cap->driver));
-@@ -354,7 +354,7 @@ static int vidioc_try_fmt_vid_cap_mplane(struct file *file, void *priv,
- 				struct v4l2_format *f)
- {
- 	const struct mtk_video_fmt *fmt;
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
- 
- 	fmt = mtk_vdec_find_format(f, dec_pdata);
-@@ -372,7 +372,7 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
- {
- 	struct v4l2_pix_format_mplane *pix_fmt_mp = &f->fmt.pix_mp;
- 	const struct mtk_video_fmt *fmt;
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
- 
- 	fmt = mtk_vdec_find_format(f, dec_pdata);
-@@ -393,7 +393,7 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
- static int vidioc_vdec_g_selection(struct file *file, void *priv,
- 			struct v4l2_selection *s)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 	struct mtk_q_data *q_data;
- 
- 	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
-@@ -442,7 +442,7 @@ static int vidioc_vdec_g_selection(struct file *file, void *priv,
- static int vidioc_vdec_s_selection(struct file *file, void *priv,
- 				struct v4l2_selection *s)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 
- 	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
- 		return -EINVAL;
-@@ -464,7 +464,7 @@ static int vidioc_vdec_s_selection(struct file *file, void *priv,
- static int vidioc_vdec_s_fmt(struct file *file, void *priv,
- 			     struct v4l2_format *f)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 	struct v4l2_pix_format_mplane *pix_mp;
- 	struct mtk_q_data *q_data;
- 	int ret = 0;
-@@ -594,7 +594,7 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
- 				struct v4l2_frmsizeenum *fsize)
- {
- 	int i = 0;
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
- 
- 	if (fsize->index != 0)
-@@ -623,10 +623,10 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
- 	return -EINVAL;
+diff --git a/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c b/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
+index fa7d74d8c1aabd3bf74482e214165d8c1a7e89da..df3ccdf767baf0bf6687808e2c017063181a7220 100644
+--- a/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
++++ b/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
+@@ -644,11 +644,6 @@ static void print_mxc_buf(struct mxc_jpeg_dev *jpeg, struct vb2_buffer *buf,
+ 	}
  }
  
--static int vidioc_enum_fmt(struct v4l2_fmtdesc *f, void *priv,
-+static int vidioc_enum_fmt(struct file *file, struct v4l2_fmtdesc *f,
- 			   bool output_queue)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
- 	const struct mtk_video_fmt *fmt;
- 	int i, j = 0;
-@@ -660,19 +660,19 @@ static int vidioc_enum_fmt(struct v4l2_fmtdesc *f, void *priv,
- static int vidioc_vdec_enum_fmt_vid_cap(struct file *file, void *priv,
- 					struct v4l2_fmtdesc *f)
- {
--	return vidioc_enum_fmt(f, priv, false);
-+	return vidioc_enum_fmt(file, f, false);
- }
- 
- static int vidioc_vdec_enum_fmt_vid_out(struct file *file, void *priv,
- 					struct v4l2_fmtdesc *f)
- {
--	return vidioc_enum_fmt(f, priv, true);
-+	return vidioc_enum_fmt(file, f, true);
- }
- 
- static int vidioc_vdec_g_fmt(struct file *file, void *priv,
- 			     struct v4l2_format *f)
- {
--	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(priv);
-+	struct mtk_vcodec_dec_ctx *ctx = file_to_dec_ctx(file);
- 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
- 	struct vb2_queue *vq;
- 	struct mtk_q_data *q_data;
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-index a01dc25a769911cd85a8d19c58e0c0a12b92ad50..d815e962ab8981c53000851e8f2bc61faf28056d 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-@@ -159,7 +159,7 @@ static int vidioc_enum_framesizes(struct file *file, void *fh,
- 				  struct v4l2_frmsizeenum *fsize)
- {
- 	const struct mtk_video_fmt *fmt;
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(fh);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 
- 	if (fsize->index != 0)
- 		return -EINVAL;
-@@ -183,7 +183,7 @@ static int vidioc_enum_fmt_vid_cap(struct file *file, void *priv,
- 				   struct v4l2_fmtdesc *f)
- {
- 	const struct mtk_vcodec_enc_pdata *pdata =
--		fh_to_enc_ctx(priv)->dev->venc_pdata;
-+		file_to_enc_ctx(file)->dev->venc_pdata;
- 
- 	return vidioc_enum_fmt(f, pdata->capture_formats,
- 			       pdata->num_capture_formats);
-@@ -193,15 +193,14 @@ static int vidioc_enum_fmt_vid_out(struct file *file, void *priv,
- 				   struct v4l2_fmtdesc *f)
- {
- 	const struct mtk_vcodec_enc_pdata *pdata =
--		fh_to_enc_ctx(priv)->dev->venc_pdata;
-+		file_to_enc_ctx(file)->dev->venc_pdata;
- 
- 	return vidioc_enum_fmt(f, pdata->output_formats,
- 			       pdata->num_output_formats);
- }
- 
--static int mtk_vcodec_enc_get_chip_name(void *priv)
-+static int mtk_vcodec_enc_get_chip_name(struct mtk_vcodec_enc_ctx *ctx)
- {
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
- 	struct device *dev = &ctx->dev->plat_dev->dev;
- 
- 	if (of_device_is_compatible(dev->of_node, "mediatek,mt8173-vcodec-enc"))
-@@ -221,9 +220,9 @@ static int mtk_vcodec_enc_get_chip_name(void *priv)
- static int vidioc_venc_querycap(struct file *file, void *priv,
- 				struct v4l2_capability *cap)
- {
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 	struct device *dev = &ctx->dev->plat_dev->dev;
--	int platform_name = mtk_vcodec_enc_get_chip_name(priv);
-+	int platform_name = mtk_vcodec_enc_get_chip_name(ctx);
- 
- 	strscpy(cap->driver, dev->driver->name, sizeof(cap->driver));
- 	snprintf(cap->card, sizeof(cap->card), "MT%d video encoder", platform_name);
-@@ -234,7 +233,7 @@ static int vidioc_venc_querycap(struct file *file, void *priv,
- static int vidioc_venc_s_parm(struct file *file, void *priv,
- 			      struct v4l2_streamparm *a)
- {
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 	struct v4l2_fract *timeperframe = &a->parm.output.timeperframe;
- 
- 	if (a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
-@@ -257,7 +256,7 @@ static int vidioc_venc_s_parm(struct file *file, void *priv,
- static int vidioc_venc_g_parm(struct file *file, void *priv,
- 			      struct v4l2_streamparm *a)
- {
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 
- 	if (a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
- 		return -EINVAL;
-@@ -414,7 +413,7 @@ static void mtk_venc_set_param(struct mtk_vcodec_enc_ctx *ctx,
- static int vidioc_venc_s_fmt_cap(struct file *file, void *priv,
- 			     struct v4l2_format *f)
- {
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 	const struct mtk_vcodec_enc_pdata *pdata = ctx->dev->venc_pdata;
- 	struct vb2_queue *vq;
- 	struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, f->type);
-@@ -469,7 +468,7 @@ static int vidioc_venc_s_fmt_cap(struct file *file, void *priv,
- static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
- 			     struct v4l2_format *f)
- {
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 	const struct mtk_vcodec_enc_pdata *pdata = ctx->dev->venc_pdata;
- 	struct vb2_queue *vq;
- 	struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, f->type);
-@@ -524,7 +523,7 @@ static int vidioc_venc_g_fmt(struct file *file, void *priv,
- 			     struct v4l2_format *f)
- {
- 	struct v4l2_pix_format_mplane *pix = &f->fmt.pix_mp;
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 	struct vb2_queue *vq;
- 	struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, f->type);
- 	int i;
-@@ -557,7 +556,7 @@ static int vidioc_try_fmt_vid_cap_mplane(struct file *file, void *priv,
- 					 struct v4l2_format *f)
- {
- 	const struct mtk_video_fmt *fmt;
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 	const struct mtk_vcodec_enc_pdata *pdata = ctx->dev->venc_pdata;
- 
- 	fmt = mtk_venc_find_format(f->fmt.pix.pixelformat, pdata);
-@@ -579,7 +578,7 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
- 					 struct v4l2_format *f)
- {
- 	const struct mtk_video_fmt *fmt;
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 	const struct mtk_vcodec_enc_pdata *pdata = ctx->dev->venc_pdata;
- 
- 	fmt = mtk_venc_find_format(f->fmt.pix.pixelformat, pdata);
-@@ -600,7 +599,7 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
- static int vidioc_venc_g_selection(struct file *file, void *priv,
- 				     struct v4l2_selection *s)
- {
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 	struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, s->type);
- 
- 	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
-@@ -630,7 +629,7 @@ static int vidioc_venc_g_selection(struct file *file, void *priv,
- static int vidioc_venc_s_selection(struct file *file, void *priv,
- 				     struct v4l2_selection *s)
- {
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 	struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, s->type);
- 
- 	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
-@@ -655,7 +654,7 @@ static int vidioc_venc_s_selection(struct file *file, void *priv,
- static int vidioc_venc_qbuf(struct file *file, void *priv,
- 			    struct v4l2_buffer *buf)
- {
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 
- 	if (ctx->state == MTK_STATE_ABORT) {
- 		mtk_v4l2_venc_err(ctx, "[%d] Call on QBUF after unrecoverable error",
-@@ -669,7 +668,7 @@ static int vidioc_venc_qbuf(struct file *file, void *priv,
- static int vidioc_venc_dqbuf(struct file *file, void *priv,
- 			     struct v4l2_buffer *buf)
- {
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 	int ret;
- 
- 	if (ctx->state == MTK_STATE_ABORT) {
-@@ -707,7 +706,7 @@ static int vidioc_venc_dqbuf(struct file *file, void *priv,
- static int vidioc_encoder_cmd(struct file *file, void *priv,
- 			      struct v4l2_encoder_cmd *cmd)
- {
--	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(priv);
-+	struct mtk_vcodec_enc_ctx *ctx = file_to_enc_ctx(file);
- 	struct vb2_queue *src_vq, *dst_vq;
- 	int ret;
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-index 402e7d31d03d1985ad5ff2831faffc5c31b63467..5b304a5512366ed7109469a3b8f90b240baf2a11 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-@@ -217,11 +217,6 @@ struct mtk_vcodec_enc_dev {
- 	struct mtk_vcodec_dbgfs dbgfs;
- };
- 
--static inline struct mtk_vcodec_enc_ctx *fh_to_enc_ctx(struct v4l2_fh *fh)
+-static inline struct mxc_jpeg_ctx *mxc_jpeg_fh_to_ctx(struct v4l2_fh *fh)
 -{
--	return container_of(fh, struct mtk_vcodec_enc_ctx, fh);
+-	return container_of(fh, struct mxc_jpeg_ctx, fh);
 -}
 -
- static inline struct mtk_vcodec_enc_ctx *file_to_enc_ctx(struct file *filp)
+ static inline struct mxc_jpeg_ctx *mxc_jpeg_file_to_ctx(struct file *filp)
  {
- 	return container_of(file_to_v4l2_fh(filp), struct mtk_vcodec_enc_ctx, fh);
+ 	return container_of(file_to_v4l2_fh(filp), struct mxc_jpeg_ctx, fh);
+@@ -1610,7 +1605,7 @@ static int mxc_jpeg_decoder_cmd(struct file *file, void *priv,
+ 				struct v4l2_decoder_cmd *cmd)
+ {
+ 	struct v4l2_fh *fh = file_to_v4l2_fh(file);
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 	unsigned long flags;
+ 	int ret;
+ 
+@@ -1643,7 +1638,7 @@ static int mxc_jpeg_encoder_cmd(struct file *file, void *priv,
+ 				struct v4l2_encoder_cmd *cmd)
+ {
+ 	struct v4l2_fh *fh = file_to_v4l2_fh(file);
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 	unsigned long flags;
+ 	int ret;
+ 
+@@ -2260,7 +2255,7 @@ static int mxc_jpeg_querycap(struct file *file, void *priv,
+ static int mxc_jpeg_enum_fmt_vid_cap(struct file *file, void *priv,
+ 				     struct v4l2_fmtdesc *f)
+ {
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 	struct mxc_jpeg_q_data *q_data = mxc_jpeg_get_q_data(ctx, f->type);
+ 
+ 	if (ctx->mxc_jpeg->mode == MXC_JPEG_ENCODE) {
+@@ -2300,7 +2295,7 @@ static int mxc_jpeg_enum_fmt_vid_cap(struct file *file, void *priv,
+ static int mxc_jpeg_enum_fmt_vid_out(struct file *file, void *priv,
+ 				     struct v4l2_fmtdesc *f)
+ {
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 	u32 type = ctx->mxc_jpeg->mode == MXC_JPEG_DECODE ?  MXC_JPEG_FMT_TYPE_ENC :
+ 							     MXC_JPEG_FMT_TYPE_RAW;
+ 	int ret;
+@@ -2441,7 +2436,7 @@ static int mxc_jpeg_try_fmt(struct v4l2_format *f,
+ static int mxc_jpeg_try_fmt_vid_cap(struct file *file, void *priv,
+ 				    struct v4l2_format *f)
+ {
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 	struct mxc_jpeg_dev *jpeg = ctx->mxc_jpeg;
+ 	struct device *dev = jpeg->dev;
+ 	struct mxc_jpeg_q_data tmp_q;
+@@ -2460,7 +2455,7 @@ static int mxc_jpeg_try_fmt_vid_cap(struct file *file, void *priv,
+ static int mxc_jpeg_try_fmt_vid_out(struct file *file, void *priv,
+ 				    struct v4l2_format *f)
+ {
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 	struct mxc_jpeg_dev *jpeg = ctx->mxc_jpeg;
+ 	struct device *dev = jpeg->dev;
+ 	struct mxc_jpeg_q_data tmp_q;
+@@ -2512,20 +2507,20 @@ static int mxc_jpeg_s_fmt(struct mxc_jpeg_ctx *ctx,
+ static int mxc_jpeg_s_fmt_vid_cap(struct file *file, void *priv,
+ 				  struct v4l2_format *f)
+ {
+-	return mxc_jpeg_s_fmt(mxc_jpeg_fh_to_ctx(priv), f);
++	return mxc_jpeg_s_fmt(mxc_jpeg_file_to_ctx(file), f);
+ }
+ 
+ static int mxc_jpeg_s_fmt_vid_out(struct file *file, void *priv,
+ 				  struct v4l2_format *f)
+ {
+ 	int ret;
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 	struct vb2_queue *dst_vq;
+ 	struct mxc_jpeg_q_data *q_data_cap;
+ 	enum v4l2_buf_type cap_type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+ 	struct v4l2_format fc;
+ 
+-	ret = mxc_jpeg_s_fmt(mxc_jpeg_fh_to_ctx(priv), f);
++	ret = mxc_jpeg_s_fmt(ctx, f);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -2554,7 +2549,7 @@ static int mxc_jpeg_s_fmt_vid_out(struct file *file, void *priv,
+ static int mxc_jpeg_g_fmt_vid(struct file *file, void *priv,
+ 			      struct v4l2_format *f)
+ {
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(priv);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 	struct mxc_jpeg_dev *jpeg = ctx->mxc_jpeg;
+ 	struct device *dev = jpeg->dev;
+ 	struct v4l2_pix_format_mplane   *pix_mp = &f->fmt.pix_mp;
+@@ -2592,7 +2587,7 @@ static int mxc_jpeg_g_fmt_vid(struct file *file, void *priv,
+ 
+ static int mxc_jpeg_dec_g_selection(struct file *file, void *fh, struct v4l2_selection *s)
+ {
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 	struct mxc_jpeg_q_data *q_data_cap;
+ 
+ 	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE && s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE)
+@@ -2621,7 +2616,7 @@ static int mxc_jpeg_dec_g_selection(struct file *file, void *fh, struct v4l2_sel
+ 
+ static int mxc_jpeg_enc_g_selection(struct file *file, void *fh, struct v4l2_selection *s)
+ {
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 	struct mxc_jpeg_q_data *q_data_out;
+ 
+ 	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT && s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
+@@ -2649,7 +2644,7 @@ static int mxc_jpeg_enc_g_selection(struct file *file, void *fh, struct v4l2_sel
+ 
+ static int mxc_jpeg_g_selection(struct file *file, void *fh, struct v4l2_selection *s)
+ {
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 
+ 	if (ctx->mxc_jpeg->mode == MXC_JPEG_DECODE)
+ 		return mxc_jpeg_dec_g_selection(file, fh, s);
+@@ -2659,7 +2654,7 @@ static int mxc_jpeg_g_selection(struct file *file, void *fh, struct v4l2_selecti
+ 
+ static int mxc_jpeg_s_selection(struct file *file, void *fh, struct v4l2_selection *s)
+ {
+-	struct mxc_jpeg_ctx *ctx = mxc_jpeg_fh_to_ctx(fh);
++	struct mxc_jpeg_ctx *ctx = mxc_jpeg_file_to_ctx(file);
+ 	struct mxc_jpeg_q_data *q_data_out;
+ 
+ 	if (ctx->mxc_jpeg->mode != MXC_JPEG_ENCODE)
 
 -- 
 2.49.0
