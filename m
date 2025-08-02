@@ -4,55 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 717BDCCD1AA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 331B3CCD193
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=sEfn2g2U9199aQehiBDFueDQ3D05O7Cw/qAObDD0mBQ=; b=1JAWWE6jvtw8MX
-	7rQLiZPNyrtOXIyo1x3Hqz4o0R+1/pDUuldiPfbzHpOHfKFZI0QKbRvKwJMA/84yldbS6i6jTBzzd
-	4OhOMAiHEDawZC93gaZ426b2TBkcd9lmStKBquwr0MuE5x6wTHom9LLnfeoZ3jfwnCbs+Mht8AVdU
-	8XM1jbVf1wm02weNKlBQ3w2OVSZZyg8otRA6O3udFy/KEgAqFixBixstadDrSLZwisvdExJsyfCdE
-	XonJ1TpkgKe+Vx0bot/3ErupT0AIb2IRnVgqzkAzU9KNxjpvJxHBOAGVygnLRAtcgGVGn7r7BIJTS
-	q2g9oZt7Cok142vgRs5Q==;
+	List-Owner; bh=DnpkUIZJK3Se0ffCPyC6Vtw8t5iESn4yDJLjkIX3Q3c=; b=yIw4vXZ9waUt1D
+	DZulJT0jmNq/8QE99IZ1FPfmMklKoeHc1aFLcNrUalRB2QBfMUO2RTaGktB3eHXjMAMc3qe885qT9
+	EOX7+2N3mO8Ce1rCiUHqMi34CVjM7ogI/XWagmbLzvEUyvoSkuOhlVk0ISbKYzoYdQ4mcI57JI23S
+	1zYQf9+sDwKoIy/y8AGVXKc0sTd6FIdwOlRQFL3IQEmvqxAh6B6ODgdFdrkhwSsPZUrzaX+xjsQrE
+	W3wa82Ru/hmrmGfr6d7Whn4gdWgREz2McneLMj6/XtcWpJE7G4EVWL0QW9+DnVWbZnFNSjhnF6UnQ
+	l9wxBAFYQox+2n4KSkRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoVp-0000000D9GO-2pad;
-	Mon, 20 Oct 2025 11:57:17 +0000
-Received: from mail-m49226.qiye.163.com ([45.254.49.226])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tOaOx-00000004bzM-0ESi;
-	Fri, 20 Dec 2024 10:38:36 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 656820ed;
-	Fri, 20 Dec 2024 18:38:26 +0800 (GMT+08:00)
-From: Kever Yang <kever.yang@rock-chips.com>
-To: heiko@sntech.de
-Subject: [PATCH 00/38] rockchip: Add rk3562 support
-Date: Fri, 20 Dec 2024 18:37:46 +0800
-Message-Id: <20241220103825.3509421-1-kever.yang@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
+	id 1vAoVu-0000000D9Rh-2qUC;
+	Mon, 20 Oct 2025 11:57:23 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ui8Sg-00000007NY8-07NR;
+	Sat, 02 Aug 2025 09:23:31 +0000
+Received: from [192.168.0.172] (mob-5-90-138-121.net.vodafone.it [5.90.138.121])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CDE1F379;
+	Sat,  2 Aug 2025 11:22:26 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1754126560;
+	bh=/CwucPoTSB8D3As+zjvoiuc4x93zR6gcvXt9/Ab/ivI=;
+	h=From:Subject:Date:To:Cc:From;
+	b=LZZyMdaFWHa6y26iE7y4JE05rPB8CXeZCDhhOcwCqussrJCfnIHsciuVBPN5t9jkg
+	 5kYEpgw+FbMmd9rb/1xghUjwPkrZH1/sEfUxVuWv05Fy889OkWsy4rpJClsTFCDOyE
+	 fwvaj0WUscP/5nbJH4GLQgdU54/9lq2NtkH9Kd6Y=
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Subject: [PATCH 00/65] media: Rationalise usage of v4l2_fh
+Date: Sat, 02 Aug 2025 11:22:22 +0200
+Message-Id: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh9LT1ZJGktPSElKGk8fQxhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEtNQk
-	tVSktLVUpCWQY+
-X-HM-Tid: 0a93e3a5af4003afkunm656820ed
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Nwg6Kxw6GTIRKggeThEUMR4h
-	P0gaCyxVSlVKTEhPTUJKSkpKTElJVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
-	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFOTUpJNwY+
-DKIM-Signature: a=rsa-sha256;
-	b=LXQtSCOj5PQ5rmMQS8JUHg+aVmzux+tnR5NnlpILS50US/QWv5VBCTHDsqEiVs5WhSa9UqWxWgKBEnSg0vucKhE8FyZdsUwbc5ZsdiUz76LZqHiim02ORqBuKb413jRYfReSUFy7jfbzAaPEA5wGkuukfoQqA957T+ZIIQC0lqE=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=RUJ3VBWN4hJZF+kjNTXL1lSb1odrwauQvfHGVuJDe90=;
-	h=date:mime-version:subject:message-id:from;
+X-B4-Tracking: v=1; b=H4sIAM/YjWgC/x3MSwqAMAxF0a1IxgYasShuRRwE+9QM/NCKCOLeL
+ Q7P4N6HEqIhUVc8FHFZsn3LkLKgcdFtBlvIpspV3rVOeEUw5SPapSc46Klce/GtFzSQQDk8Iia
+ 7/2k/vO8HBMBr1GQAAAA=
+X-Change-ID: 20250801-media-private-data-4515851e7e1d
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Devarsh Thakkar <devarsht@ti.com>, Benoit Parrot <bparrot@ti.com>, 
+ Hans Verkuil <hverkuil@kernel.org>, Mike Isely <isely@pobox.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Hans de Goede <hansg@kernel.org>, 
+ Parthiban Veerasooran <parthiban.veerasooran@microchip.com>, 
+ Christian Gromm <christian.gromm@microchip.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Alex Shi <alexs@kernel.org>, Yanteng Si <si.yanteng@linux.dev>, 
+ Dongliang Mu <dzm91@hust.edu.cn>, Jonathan Corbet <corbet@lwn.net>, 
+ Tomasz Figa <tfiga@chromium.org>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Andy Walls <awalls@md.metrocast.net>, 
+ Michael Tretter <m.tretter@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Dmitry Osipenko <digetx@gmail.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, 
+ Mirela Rabulea <mirela.rabulea@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ Michal Simek <michal.simek@amd.com>, Ming Qian <ming.qian@nxp.com>, 
+ Zhou Peng <eagle.zhou@nxp.com>, 
+ Xavier Roumegue <xavier.roumegue@oss.nxp.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Vikash Garodia <quic_vgarodia@quicinc.com>, 
+ Dikshita Agarwal <quic_dikshita@quicinc.com>, 
+ Abhinav Kumar <abhinav.kumar@linux.dev>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Sylwester Nawrocki <sylvester.nawrocki@gmail.com>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Daniel Almeida <daniel.almeida@collabora.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Nas Chung <nas.chung@chipsnmedia.com>, 
+ Jackson Lee <jackson.lee@chipsnmedia.com>, 
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, 
+ Houlong Wei <houlong.wei@mediatek.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Tiffany Lin <tiffany.lin@mediatek.com>, 
+ Yunfei Dong <yunfei.dong@mediatek.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, 
+ Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, 
+ Jacob Chen <jacob-chen@iotwrt.com>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Detlev Casanova <detlev.casanova@collabora.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, 
+ Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+ =?utf-8?q?=C5=81ukasz_Stelmach?= <l.stelmach@samsung.com>, 
+ Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, 
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Fabien Dessenne <fabien.dessenne@foss.st.com>, 
+ Hugues Fruchet <hugues.fruchet@foss.st.com>, 
+ Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Steve Longerbeam <slongerbeam@gmail.com>, 
+ Maxime Ripard <mripard@kernel.org>, Paul Kocialkowski <paulk@sys-base.io>, 
+ =?utf-8?q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
+ Robert Foss <rfoss@kernel.org>, Todor Tomov <todor.too@gmail.com>, 
+ Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, 
+ Corentin Labbe <clabbe@baylibre.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Bingbu Cao <bingbu.cao@intel.com>, Tianshu Qiu <tian.shu.qiu@intel.com>, 
+ Stanislaw Gruszka <stanislaw.gruszka@linux.intel.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-staging@lists.linux.dev, linux-doc@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-tegra@vger.kernel.org, imx@lists.linux.dev, 
+ linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+ linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+ linux-usb@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net, 
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=14022;
+ i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
+ bh=/CwucPoTSB8D3As+zjvoiuc4x93zR6gcvXt9/Ab/ivI=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBojdj3I2azCFFgaF5K6ecFezAiX2zQ8xa8jLP7u
+ NmvbEkTWUuJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaI3Y9wAKCRByNAaPFqFW
+ PHCVD/9zYdUbtLqCkT3NJEuFfmWvle2Q57iJBekEF2Do+o01RwzCVM2Iy8pzMjQgapnuAXhhEhb
+ FLamEfL0yAUFEGZSp5h/SMxm5G7f8dttq5rLwtAkkMSw+dUp2jcfyNyZeBBHEbCokFzHyzg4Ekb
+ fjGFdutDiZWm/ScUGv6aMFntJuhhB+Z37FWGlX3MjBpPo1VRW9vS92Dxz2RD+Bd5yqUWzO6i6N8
+ o+CE47nbf9zpN8LlJnVOm+nFy22mJOsd6e7Nlord9dmQeqEo4QjTWHtGn+9nKJUzJI3CoR6I+Jj
+ 7YE6H08QKJ9PwoD+mfEQKulTOukxsbjPCs5yy6FX+PXBEGN0irJIYmckSd0XhlIjeO4b6ZBw9en
+ ifZrtu1v0kemCQ+CGaHv3Dzddx1ZHVJiTEuBEDWj82rXYcReLNzeLZCk42ilo8t3rzdJne9Ss7H
+ nnk8y5QZxIMuyU+HpDcgw1zIgVDZ4qzjxslIajnCfmmDxJ5QbrDg8Lq2lacqfaUTcKlNiI77FWe
+ PQoxa9OQItgTzQTBWo34a3dq46YBNAkPlziZA4QMdfRQ45McDNw7+AVsGhVwmCTkFYtmTet9cRE
+ Bu2277ABCKu7ZaTuF/khVf02/5utDenATBy+PiKz6L8kO0TlD7g/x4dgvzYMysYiJHWVT6uwgqA
+ 68mU6u+20OC9CmQ==
+X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
+ fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241220_023835_630406_3984792C 
-X-CRM114-Status: GOOD (  15.74  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:05 -0700
+X-CRM114-CacheID: sfid-20250802_022330_358920_702A6E4F 
+X-CRM114-Status: GOOD (  19.22  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:37 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,132 +163,256 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Ulf Hansson <ulf.hansson@linaro.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pwm@vger.kernel.org, linux-iio@vger.kernel.org, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Dragan Simic <dsimic@manjaro.org>, linux-phy@lists.infradead.org, Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org, Finley Xiao <finley.xiao@rock-chips.com>, Michael Riesch <michael.riesch@wolfvision.net>, Jisheng Zhang <jszhang@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Shresth Prasad <shresthprasad7@gmail.com>, Jamie Iles <jamie@jamieiles.com>, David Airlie <airlied@gmail.com>, linux-clk@vger.kernel.org, linux-watchdog@vger.kernel.org, Simona Vetter <simona@ffwll.ch>, Detlev Casanova <detlev.casanova@collabora.com>, Lars-Peter Clausen <lars@metafoo.de>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Simon Xue <xxm@rock-chips.com>, devicetree@vger.kernel.org, Jiri Slaby <jirislaby@kernel.org>, Lee Jones <lee@kernel.org>, Andy Yan <andyshrk@163.com>, Tim Lunn <tim@feathertop.org>, linux-stm32@st-md-mailman.stormreply.com, Maxime Coquelin <mcoquelin.stm32@gmail.com>, linux-rockchip@lists.infradead.org, Jonas Karlman <jonas@kwiboo.se>, Jose Abreu <joabreu@synopsys.com>, linux-serial@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh@kernel.org>, Guenter Roeck <linux@roeck-us.net>, Kishon Vijay Abraham I <kishon@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andi Shyti <andi.shyti@kernel.org>, linux-pm@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Elaine Zhang <zhangqing@rock-chips.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, linux-gpio@vger.kernel.org, Mark Brown <broonie@kernel.org>, Chris Morgan <macromorgan@hotmail.com>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, linux-arm-kernel@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Stephen Boyd <sboyd@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, linux-spi@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, FUKAUMI Naoki <naoki@radxa.com>, Jonathan Cameron <jic23@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Wu <david.wu@rock-chips.com>, "Rafael J. Wysocki" <rafael@kernel.org>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Diederik de Haas <didi.debian@cknow.org>, "David S. Miller" <davem@davemloft.net>, Lukasz Luba <lukasz.luba@arm.com>, linux-i2c@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The v4l2_fh abstraction layer provides to drivers support to represent
+per-open file handle context and associate driver-specific data to them.
 
-This patch set adds rk3562 SoC and its evb support.
+Currently drivers that do not require custom per-file handle data can
+use the v4l2_fh_open() and v4l2_fh_release() helpers as handlers
+v4l2_file_operations open() and close() functions. The two helpers
+set the file->private_data pointer to the newly allocated v4l2_fh.
 
-The patch number is a little bit too big, some of them may need to split
-out for different maintainers, please let me know which patch need to
-split out.
+Drivers that instead store per-file handle data and represent them with
+driver-specific types that embed an instance of struct v4l2_fh have
+instead to use different helpers: v4l2_fh_init() and v4l2_fh_add() it's
+their responsibility to initialize file->private_data with what they
+consider more opportune.
 
-Test with GMAC, USB, PCIe, EMMC, SD Card.
+Unfortunately this leads to inconsistencies and slightly different
+implementations in drivers, which increase the maintenance burden.
 
-This patch set is base on the patche set for rk3576 evb1 support.
+The series starts with patches from Laurent to address some of
+these inconsistencies. Some drivers in-facts set the file->private_data
+pointer to their own driver-specific types that embed the v4l2_fh.
+As the driver-specific type can be accessed with a simple container_of
+we can make all drivers set file->private_data to point to the v4l2_fh
+to make all the code base use the same pattern.
 
+Once all drivers have been made consistent we can modify the framework
+to automate the file->private_data initialisation by modifying
+v4l2_fh_add() to set file->private_data to the v4l2_fh allocated by
+drivers as part of their private structures. Once that's done we can now
+remove all direct accesses to file->private_data by providing the
+file_to_v4l2_fh helper.
 
-David Wu (2):
-  ethernet: stmmac: dwmac-rk: Add gmac support for rk3562
-  ethernet: stmmac: dwmac-rk: Make the phy clock could be used for
-    external phy
+Now that all drivers that use v4l2_fh are guaranteed to have
+file->private_data initialised we can remove accesses to the 'void
+*priv' filed provided by v4l2-ioctl to drivers to make sure they always
+go through the file * and retrieve the driver specific type from the
+v4l2_fh there embedded. This guarantees a more robust data type layout
+and make usage of v4l2_fh more consistent and clear across the code
+base.
 
-Finley Xiao (7):
-  clk: rockchip: add dt-binding header for rk3562
-  clk: rockchip: Add clock controller for the RK3562
-  dt-bindings: add power-domain header for RK3562 SoC
-  nvmem: rockchip-otp: Add support for rk3568-otp
-  nvmem: rockchip-otp: Add support for rk3562
-  arm64: dts: rockchip: add core dtsi for RK3562 Soc
-  arm64: dts: rockchip: Add RK3562 evb2 devicetree
+Once that's done, the v4l2-ioctl layer can be modified to stop passing
+file->private_data as the second argument to all ioctl handlers, as it
+is not ideal to have access to the same data through two different entry
+point.
 
-Frank Wang (1):
-  phy: rockchip: inno-usb2: add usb2 phy support for rk3562
+As mentioned in the commit message of the last patch, there are plans to
+re-use the second ioctl argument to provide drivers a
+video_device_state. This patch series paves the way for that by making
+sure the argument can be re-used safely.
 
-Jon Lin (1):
-  phy: rockchip-naneng-combo: Support rk3562
+Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+---
+Jacopo Mondi (36):
+      media: rcar-vin: Do not set file->private_data
+      media: rzg2l-cru: Do not set file->private_data
+      media: camss: Remove custom .release fop()
+      media: v4l2-ioctl: Access v4l2_fh from private_data
+      media: allegro: Access v4l2_fh from file
+      media: meson-ge2d: Access v4l2_fh from file
+      media: coda: Access v4l2_fh from file
+      media: wave5: Access v4l2_fh from file
+      media: m2m-deinterlace: Access v4l2_fh from file
+      media: mtk: jpeg: Access v4l2_fh from file->private_data
+      media: mtk_mdp_m2m: Access v4l2_fh from file
+      media: mtk: mdp3: Access v4l2_fh from file
+      media: mtk: vcodec: Access v4l2_fh from file
+      media: tegra-vde: Access v4l2_fh from file
+      media: imx-jpeg: Access v4l2_fh from file
+      media: imx-isi: Access v4l2_fh from file
+      media: nxp: mx2: Access v4l2_fh from file
+      media: renesas: Access v4l2_fh from file
+      media: rockhip: rga: Access v4l2_fh from file
+      media: rockchip: rkvdec: Access v4l2_fh from file
+      media: exynos-gsc: Access v4l2_fh from file
+      media: exynos4-is: Access v4l2_fh from file
+      media: s3c-camif: Set queue owner using file
+      media: s5p-g2d: Access v4l2_fh from file
+      media: s5p-jpeg: Access v4l2_fh from file
+      media: s5p-mfc: Access v4l2_fh from file
+      media: bdisp: Access v4l2_fh from file
+      media: st: delta: Access v4l2_fh from file
+      media: stm32: dma2d: Access v4l2_fh from file
+      media: omap3isp: Access v4l2_fh from file
+      media: cx18:  Access v4l2_fh from file
+      media: ivtv: Access v4l2_fh from file
+      media: zoran: Remove access to __fh
+      media: usb: hdpvr: Access v4l2_fh from file
+      media: usb: uvc: Access v4l2_fh from file
+      media: staging: imx: Access v4l2_fh from file
 
-Kever Yang (24):
-  dt-bindings: clock: add rk3562 cru bindings
-  dt-bindings: pinctrl: Add rk3562 pinctrl support
-  soc: rockchip: power-domain: add power domain support for rk3562
-  dt-bindings: rockchip-thermal: Support the RK3562 SoC compatible
-  dt-bindings: iio: adc: Add rockchip,rk3562-saradc string
-  dt-bindings: net: Add support for rk3562 dwmac
-  dt-bindings: nvmem: rockchip,otp: Add support for rk3562 and rk3568
-  dt-bindings: phy: rockchip: Add rk3562 naneng-combophy compatible
-  dt-bindings: phy: rockchip,inno-usb2phy: add rk3562
-  dt-bindings: PCI: dwc: rockchip: Add rk3562 support
-  dt-bindings: mmc: Add support for rk3562 eMMC
-  dt-bindings: mmc: rockchip-dw-mshc: Add rk3562 compatible string
-  dt-bindings: power: rockchip: Add bindings for rk3562
-  dt-bindings: i2c: i2c-rk3x: Add rk3562 compatible
-  dt-bindings: gpu: Add rockchip,rk3562-mali compatible
-  dt-bindings: watchdog: Add rk3562 compatible
-  dt-bindings: spi: Add rockchip,rk3562-spi compatible
-  dt-bindings: serial: snps-dw-apb-uart: Add support for rk3562
-  dt-bindings: usb: dwc3: add compatible for rk3562
-  dt-bindings: pwm: rockchip: Add rockchip,rk3562-pwm
-  dt-bindings: rockchip: pmu: Add rk3562 compatible
-  dt-bindings: soc: rockchip: Add rk3562 syscon compatibles
-  dt-bindings: arm: rockchip: Add rk3562 evb2 board
-  dt-bindings: mfd: syscon: Add rk3562 QoS register compatible
+Laurent Pinchart (29):
+      media: pci: saa7164: Store v4l2_fh pointer in file->private_data
+      media: imagination: Store v4l2_fh pointer in file->private_data
+      media: ti: vpe: Store v4l2_fh pointer in file->private_data
+      media: usb: hdpvr: Store v4l2_fh pointer in file->private_data
+      media: usb: pvrusb2: Store v4l2_fh pointer in file->private_data
+      media: usb: uvcvideo: Store v4l2_fh pointer in file->private_data
+      media: staging: most: Store v4l2_fh pointer in file->private_data
+      media: Wrap file->private_data access with a helper function
+      media: Replace file->private_data access with file_to_v4l2_fh()
+      media: nvidia: tegra-vde: Replace file->private_data access
+      media: Replace file->private_data access with custom functions
+      media: pci: ivtv: Don't create fake v4l2_fh
+      media: amphion: Make some vpu_v4l2 functions static
+      media: amphion: Delete v4l2_fh synchronously in .release()
+      media: visl: Drop visl_v4l2fh_to_ctx() function
+      media: v4l2-fh: Move piece of documentation to correct function
+      media: camss: Replace .open() file operation with v4l2_fh_open()
+      media: chips-media: wave5: Pass file pointer to wave5_cleanup_instance()
+      media: qcom: iris: Pass file pointer to iris_v4l2_fh_(de)init()
+      media: qcom: iris: Set file->private_data in iris_v4l2_fh_(de)init()
+      media: qcom: iris: Drop unused argument to iris_get_inst()
+      media: qcom: venus: Pass file pointer to venus_close_common()
+      media: Set file->private_data in v4l2_fh_add()
+      media: Reset file->private_data to NULL in v4l2_fh_del()
+      media: hantro: Access v4l2_fh from file->private_data
+      media: v4l2-ctrls: Move v4l2_fh retrieval after V4L2_FL_USES_V4L2_FH check
+      media: ipu6: isys: Don't set V4L2_FL_USES_V4L2_FH manually
+      media: staging: ipu7: isys: Don't set V4L2_FL_USES_V4L2_FH manually
+      media: v4l2-ioctl: Stop passing fh pointer to ioctl handlers
 
-Shaohan Yao (1):
-  thermal: rockchip: Support the rk3562 SoC in thermal driver
+ Documentation/driver-api/media/v4l2-fh.rst         |  56 ++---
+ .../zh_CN/video4linux/v4l2-framework.txt           |  11 +-
+ drivers/media/common/videobuf2/videobuf2-v4l2.c    |   2 +-
+ drivers/media/pci/cx18/cx18-driver.h               |   2 +-
+ drivers/media/pci/cx18/cx18-fileops.c              |  11 +-
+ drivers/media/pci/cx18/cx18-ioctl.c                |  64 +++---
+ drivers/media/pci/intel/ipu6/ipu6-isys-video.c     |   1 -
+ drivers/media/pci/ivtv/ivtv-alsa-pcm.c             |   2 -
+ drivers/media/pci/ivtv/ivtv-driver.h               |   7 +-
+ drivers/media/pci/ivtv/ivtv-fileops.c              |  40 ++--
+ drivers/media/pci/ivtv/ivtv-ioctl.c                | 124 +++++------
+ drivers/media/pci/ivtv/ivtv-irq.c                  |   4 +-
+ drivers/media/pci/saa7164/saa7164-encoder.c        |  30 ++-
+ drivers/media/pci/saa7164/saa7164-vbi.c            |  25 ++-
+ drivers/media/pci/saa7164/saa7164.h                |  10 +
+ drivers/media/pci/zoran/zoran.h                    |   6 -
+ drivers/media/pci/zoran/zoran_driver.c             |   3 +-
+ drivers/media/platform/allegro-dvt/allegro-core.c  |  32 +--
+ drivers/media/platform/amlogic/meson-ge2d/ge2d.c   |  25 ++-
+ drivers/media/platform/amphion/vpu.h               |   2 +-
+ drivers/media/platform/amphion/vpu_v4l2.c          |  22 +-
+ drivers/media/platform/amphion/vpu_v4l2.h          |   8 -
+ .../media/platform/chips-media/coda/coda-common.c  |  50 +++--
+ .../platform/chips-media/wave5/wave5-helper.c      |  10 +-
+ .../platform/chips-media/wave5/wave5-helper.h      |   2 +-
+ .../platform/chips-media/wave5/wave5-vpu-dec.c     |  23 +-
+ .../platform/chips-media/wave5/wave5-vpu-enc.c     |  29 ++-
+ .../media/platform/chips-media/wave5/wave5-vpu.h   |   5 +
+ .../media/platform/imagination/e5010-jpeg-enc.c    |  23 +-
+ .../media/platform/imagination/e5010-jpeg-enc.h    |   5 +
+ drivers/media/platform/m2m-deinterlace.c           |  26 ++-
+ .../media/platform/mediatek/jpeg/mtk_jpeg_core.c   |  37 ++--
+ drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c  |  29 ++-
+ .../media/platform/mediatek/mdp3/mtk-mdp3-m2m.c    |  25 ++-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c       |  36 ++--
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c   |   9 +-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h   |   5 +
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c       |  37 ++--
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c   |   9 +-
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h   |   4 +-
+ drivers/media/platform/nvidia/tegra-vde/v4l2.c     |  35 ++-
+ drivers/media/platform/nxp/dw100/dw100.c           |   7 +-
+ drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c     |  45 ++--
+ drivers/media/platform/nxp/imx-pxp.c               |   7 +-
+ drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c |  21 +-
+ drivers/media/platform/nxp/mx2_emmaprp.c           |  24 ++-
+ drivers/media/platform/qcom/camss/camss-video.c    |  43 +---
+ drivers/media/platform/qcom/iris/iris_vidc.c       |  36 ++--
+ drivers/media/platform/qcom/venus/core.c           |   4 +-
+ drivers/media/platform/qcom/venus/core.h           |   4 +-
+ drivers/media/platform/qcom/venus/vdec.c           |   5 +-
+ drivers/media/platform/qcom/venus/venc.c           |   5 +-
+ .../media/platform/renesas/rcar-vin/rcar-v4l2.c    |   2 -
+ drivers/media/platform/renesas/rcar_fdp1.c         |  17 +-
+ drivers/media/platform/renesas/rcar_jpu.c          |  27 ++-
+ .../media/platform/renesas/rzg2l-cru/rzg2l-video.c |   1 -
+ drivers/media/platform/renesas/vsp1/vsp1_histo.c   |   6 +-
+ drivers/media/platform/renesas/vsp1/vsp1_video.c   |  18 +-
+ drivers/media/platform/rockchip/rga/rga.c          |  16 +-
+ drivers/media/platform/rockchip/rga/rga.h          |   5 +
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c    |  21 +-
+ drivers/media/platform/rockchip/rkvdec/rkvdec.h    |   4 +-
+ .../media/platform/samsung/exynos-gsc/gsc-core.h   |   6 +-
+ .../media/platform/samsung/exynos-gsc/gsc-m2m.c    |  37 ++--
+ .../media/platform/samsung/exynos4-is/fimc-core.h  |   5 +-
+ .../media/platform/samsung/exynos4-is/fimc-m2m.c   |  19 +-
+ .../platform/samsung/s3c-camif/camif-capture.c     |  26 +--
+ drivers/media/platform/samsung/s5p-g2d/g2d.c       |  22 +-
+ .../media/platform/samsung/s5p-jpeg/jpeg-core.c    |  33 ++-
+ drivers/media/platform/samsung/s5p-mfc/s5p_mfc.c   |  13 +-
+ .../platform/samsung/s5p-mfc/s5p_mfc_common.h      |   6 +
+ .../media/platform/samsung/s5p-mfc/s5p_mfc_dec.c   |  22 +-
+ .../media/platform/samsung/s5p-mfc/s5p_mfc_enc.c   |  24 +--
+ drivers/media/platform/st/sti/bdisp/bdisp-v4l2.c   |  30 +--
+ drivers/media/platform/st/sti/delta/delta-v4l2.c   |  41 ++--
+ drivers/media/platform/st/sti/hva/hva-v4l2.c       |  38 ++--
+ drivers/media/platform/st/sti/hva/hva.h            |   2 -
+ drivers/media/platform/st/stm32/dma2d/dma2d.c      |  18 +-
+ drivers/media/platform/sunxi/sun8i-di/sun8i-di.c   |  10 +-
+ .../platform/sunxi/sun8i-rotate/sun8i_rotate.c     |  10 +-
+ drivers/media/platform/ti/omap3isp/ispvideo.c      |  36 ++--
+ drivers/media/platform/ti/omap3isp/ispvideo.h      |   6 +-
+ drivers/media/platform/ti/vpe/vpe.c                |  21 +-
+ drivers/media/platform/verisilicon/hantro.h        |   4 +-
+ drivers/media/platform/verisilicon/hantro_drv.c    |  10 +-
+ drivers/media/platform/verisilicon/hantro_v4l2.c   |  22 +-
+ drivers/media/platform/xilinx/xilinx-dma.c         |  10 +-
+ drivers/media/test-drivers/vicodec/vicodec-core.c  |   7 +-
+ drivers/media/test-drivers/vim2m.c                 |   7 +-
+ drivers/media/test-drivers/visl/visl-core.c        |   5 +-
+ drivers/media/test-drivers/visl/visl.h             |   7 +-
+ drivers/media/test-drivers/vivid/vivid-core.c      |   4 +-
+ drivers/media/test-drivers/vivid/vivid-radio-rx.c  |   4 +-
+ drivers/media/test-drivers/vivid/vivid-radio-tx.c  |   4 +-
+ drivers/media/usb/hdpvr/hdpvr-video.c              |  39 ++--
+ drivers/media/usb/pvrusb2/pvrusb2-v4l2.c           |  69 +++---
+ drivers/media/usb/uvc/uvc_metadata.c               |  10 +-
+ drivers/media/usb/uvc/uvc_v4l2.c                   |  47 ++--
+ drivers/media/usb/uvc/uvcvideo.h                   |   5 +
+ drivers/media/v4l2-core/v4l2-compat-ioctl32.c      |   2 +-
+ drivers/media/v4l2-core/v4l2-ctrls-api.c           |   9 +-
+ drivers/media/v4l2-core/v4l2-fh.c                  |  16 +-
+ drivers/media/v4l2-core/v4l2-ioctl.c               |  53 ++---
+ drivers/media/v4l2-core/v4l2-mem2mem.c             |  34 +--
+ drivers/media/v4l2-core/v4l2-subdev.c              |  16 +-
+ drivers/staging/media/imx/imx-media-csc-scaler.c   |  26 +--
+ drivers/staging/media/ipu7/ipu7-isys-video.c       |   1 -
+ drivers/staging/media/meson/vdec/vdec.c            |  29 +--
+ drivers/staging/media/meson/vdec/vdec.h            |   5 +
+ drivers/staging/media/sunxi/cedrus/cedrus.c        |   8 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.h        |   5 +
+ drivers/staging/media/sunxi/cedrus/cedrus_video.c  |   5 -
+ drivers/staging/most/video/video.c                 |  19 +-
+ drivers/usb/gadget/function/uvc.h                  |   5 +
+ drivers/usb/gadget/function/uvc_v4l2.c             |   8 +-
+ include/media/v4l2-fh.h                            |  28 ++-
+ include/media/v4l2-ioctl.h                         | 236 ++++++++++-----------
+ 117 files changed, 1203 insertions(+), 1185 deletions(-)
+---
+base-commit: d968e50b5c26642754492dea23cbd3592bde62d8
+change-id: 20250801-media-private-data-4515851e7e1d
 
-Simon Xue (1):
-  iio: adc: rockchip_saradc: add rk3562
-
-Steven Liu (1):
-  pinctrl: rockchip: add rk3562 support
-
- .../devicetree/bindings/arm/rockchip.yaml     |    5 +
- .../devicetree/bindings/arm/rockchip/pmu.yaml |    2 +
- .../bindings/clock/rockchip,rk3562-cru.yaml   |   62 +
- .../bindings/gpu/arm,mali-bifrost.yaml        |    3 +-
- .../devicetree/bindings/i2c/i2c-rk3x.yaml     |    1 +
- .../bindings/iio/adc/rockchip-saradc.yaml     |    2 +
- .../devicetree/bindings/mfd/syscon.yaml       |    2 +
- .../bindings/mmc/rockchip-dw-mshc.yaml        |    1 +
- .../bindings/mmc/snps,dwcmshc-sdhci.yaml      |    9 +-
- .../bindings/net/rockchip-dwmac.yaml          |    5 +-
- .../bindings/nvmem/rockchip,otp.yaml          |   49 +-
- .../bindings/pci/rockchip-dw-pcie.yaml        |    1 +
- .../phy/phy-rockchip-naneng-combphy.yaml      |    1 +
- .../bindings/phy/rockchip,inno-usb2phy.yaml   |    3 +-
- .../bindings/pinctrl/rockchip,pinctrl.yaml    |    1 +
- .../power/rockchip,power-controller.yaml      |    1 +
- .../devicetree/bindings/pwm/pwm-rockchip.yaml |    1 +
- .../bindings/serial/snps-dw-apb-uart.yaml     |    1 +
- .../devicetree/bindings/soc/rockchip/grf.yaml |    7 +
- .../devicetree/bindings/spi/spi-rockchip.yaml |    1 +
- .../bindings/thermal/rockchip-thermal.yaml    |    1 +
- .../bindings/usb/rockchip,dwc3.yaml           |    3 +
- .../bindings/watchdog/snps,dw-wdt.yaml        |    1 +
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../boot/dts/rockchip/rk3562-evb2-v10.dts     |  520 ++++
- .../boot/dts/rockchip/rk3562-pinctrl.dtsi     | 2352 +++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3562.dtsi      | 1432 ++++++++++
- drivers/clk/rockchip/Kconfig                  |    7 +
- drivers/clk/rockchip/Makefile                 |    1 +
- drivers/clk/rockchip/clk-rk3562.c             | 1111 ++++++++
- drivers/clk/rockchip/clk.h                    |   39 +
- drivers/iio/adc/rockchip_saradc.c             |   24 +-
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    |  213 +-
- drivers/nvmem/rockchip-otp.c                  |   97 +
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c |   49 +
- .../rockchip/phy-rockchip-naneng-combphy.c    |  152 ++
- drivers/pinctrl/pinctrl-rockchip.c            |  199 +-
- drivers/pinctrl/pinctrl-rockchip.h            |    3 +-
- drivers/pmdomain/rockchip/pm-domains.c        |   48 +-
- drivers/thermal/rockchip_thermal.c            |  112 +-
- include/dt-bindings/clock/rk3562-cru.h        |  733 +++++
- include/dt-bindings/power/rk3562-power.h      |   35 +
- 42 files changed, 7269 insertions(+), 22 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3562-cru.yaml
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3562-evb2-v10.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3562-pinctrl.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3562.dtsi
- create mode 100644 drivers/clk/rockchip/clk-rk3562.c
- create mode 100644 include/dt-bindings/clock/rk3562-cru.h
- create mode 100644 include/dt-bindings/power/rk3562-power.h
-
+Best regards,
 -- 
-2.25.1
+Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 
 
 _______________________________________________
