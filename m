@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1CE6C87FCA
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Aug 2025 01:58:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14291C87FCA
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Aug 2025 02:59:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ecZNPR+Pm+cC2XS01CnaG/RRspqNqHsptnsAv0XKywM=; b=lui7Il7XRCT4Kz
-	4H4jFca3SJgtKniky8WItc3X/0CmgKzdNbg3efS4XpNjmcv0upiU3zX3g1hX0q2dncEei0ZdpfOf7
-	0vA1iCStHFzwZ4KyBd2sygMojfjXDgZ8xwrmeJR4K5q3/orhgvKnfUb1FEYzBNpdiB2ZbmdavRVUm
-	JSm/8dTvzewMo9BmVVXjRzYtbCYaU0rGvLX7+p+MR1fv8V9gAmsYIfRdTwl32j2odQQKINRyt2k+v
-	L0q1gYPRncu8gChkQiyRyaJFkoyWFR8cD3grG1uyYy6gSHCNu4fd7RSChw850NSEUEPTn7013dcwH
-	P7WNfRthkglE3bw/yPhg==;
+	List-Owner; bh=VXP0yE15+hlthohnFVZc1FGUvzXFjF4+U+H4/mV6HPs=; b=U8vMVeP6UstQgk
+	uHJ5ruFknmpqNeXtngeQKVd307RgPPmWVwEKt4lof2AWD+jhxGqFq5Caus7LSUAyQzjlZ0vsxLoqv
+	KXnlu6wkGRZzZaPcU73p9p+9XupOMC7+OnWdTr6Ayon6xJsF50GNtxAuVB9a9lDIQNjHr8HrmBJXC
+	V0gHprQAPkE/i/Qfo5BWSjU9rJDAt3HgrcfACasZLgYm7Iz8DYFw8G8Pia1lz2II4rbisskSVL2D+
+	t+PTseAqSNebcGHvLlMsRFb/sP5Uug5wPGmpeH0Q+Y00yBErWxIjOE9NwPRfauPkCmMZHwtSbA+sx
+	t/nJNIS94wLCUtSepBNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uikTV-00000009TCl-0EH6;
-	Mon, 04 Aug 2025 01:58:53 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uilQC-00000009WVu-2KKB;
+	Mon, 04 Aug 2025 02:59:32 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uijHt-00000009Mp1-1Umu;
-	Mon, 04 Aug 2025 00:42:50 +0000
+	id 1uijET-00000009MQe-2QYH;
+	Mon, 04 Aug 2025 00:39:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id AC20CA54F36;
-	Mon,  4 Aug 2025 00:42:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24D0AC4CEF8;
-	Mon,  4 Aug 2025 00:42:47 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4C4CB433A9;
+	Mon,  4 Aug 2025 00:39:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBBDAC4CEFA;
+	Mon,  4 Aug 2025 00:39:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754268168;
-	bh=rTsx42W5SiwWDpG7IMWgRXoMjBrRNUczQMcOZD6svUc=;
+	s=k20201202; t=1754267957;
+	bh=kEDFM1+saxL4i+9T7MBV1tuzA5+VObYzj4dtLR0QQbI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Zsx/CnUbtPwLxAkhPQzlURtkzd6GA9+ja62qfSHYOGBZFqVDx+s0NkOiDMjYBz7EC
-	 ru2kAewf+KNvJSfocUowoNTcT5BWC3Wx9uYDwAX7ikefl8FVUV1LY8AW2CJbKGUtx3
-	 Mc5cLmyiOIMocL+X+u/hBSOT47OmroLbZYk9XcKLY87Zg+Gcx09tzIHA7lmcH2ol2m
-	 y4qfp/AMzTdMXkKFDJOSyyUTMdEAhN1XSaM4mctKtsya+/0eKrAGKsl8+OKT+EUjlL
-	 LlMB1ogEG4B8IH8lHky7X0WV39pXSStGQyI9MkEKbBGJ0TsrGBuVXnBMAcoqR2ojZg
-	 +zJaw98+2THgg==
+	b=vMQBRgUyF2kFFfEId3O2b8vhtSvqjBr2Tpi4r8RlQsWgMDA0A9su7ha2V+AudJLOY
+	 HYsvXlxR6jA96vPwDIfowxP3wmWMYbDJp5oqXhyuzxVa44H8fq9aVaQViKkapHkm/g
+	 uCjYrPPmI9evvem+YyhtHy9HRXyIknu7wXpf2dEFeGFd00weG2LR6aJLjMx39LqJIH
+	 fXV0aeKWMK7ByfAmjl211F6S5dXOsB6/TJMzF++rFPZccliJFMyRtic4GCZugrFDPp
+	 Ox3VL2Z6zXwWVE6rxEPcrHaEcFx0vmlVuyPiozWBT2L9a2x6FNxrxH4/16/b8szgOL
+	 OTbEQtHQD3FTQ==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
@@ -49,18 +49,18 @@ Cc: Alexander Kochetkov <al.kochet@gmail.com>,
 	Sasha Levin <sashal@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 09/28] ARM: rockchip: fix kernel hang during smp initialization
-Date: Sun,  3 Aug 2025 20:42:08 -0400
-Message-Id: <20250804004227.3630243-9-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 11/44] ARM: rockchip: fix kernel hang during smp initialization
+Date: Sun,  3 Aug 2025 20:38:16 -0400
+Message-Id: <20250804003849.3627024-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250804004227.3630243-1-sashal@kernel.org>
-References: <20250804004227.3630243-1-sashal@kernel.org>
+In-Reply-To: <20250804003849.3627024-1-sashal@kernel.org>
+References: <20250804003849.3627024-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.4.296
+X-stable-base: Linux 5.15.189
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250803_174249_530923_31D1A821 
+X-CRM114-CacheID: sfid-20250803_173917_659948_574C8750 
 X-CRM114-Status: GOOD (  19.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -160,7 +160,7 @@ version), eliminating the race condition.
  1 file changed, 9 insertions(+), 6 deletions(-)
 
 diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index 649e0a54784c..246a525d1d26 100644
+index d60856898d97..17aee4701e81 100644
 --- a/arch/arm/mach-rockchip/platsmp.c
 +++ b/arch/arm/mach-rockchip/platsmp.c
 @@ -279,11 +279,6 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
