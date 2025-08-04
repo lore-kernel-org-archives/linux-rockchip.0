@@ -4,94 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8BDDC87FCF
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Aug 2025 15:36:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A84CC87FCB
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Aug 2025 15:42:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nfHcpTGpWCfqZ6FYwaPyVNedwI8aDMQY0005t57s/Yo=; b=CM4q9MVj87D5Lk
-	p4ZMUKbjTSkQGz4Yx8FbrArjx5NqEJfQgVW8hVtk5IxUa/A7famExHG5d+rSmnoDGE06dBGRUXqXB
-	2u3i+96rjYCQf+mJ3kRAc862fhhAlN+TcLNw/33K2kZOnl6SnM2CHpAQATCrUHFzjpSrQwc14q9Kd
-	4nuw49+4ZJU8zcHb8uJM5g7p0PazxQVyzsE3wu8GZbJaIG+GWa42XMTFCbpnVHaG0xr8NDQjAf0XJ
-	0jw4SS+xBytVMPAf8YN7h0Xq8Tv6xVFDtdJLd1w8xPacMK0kcxY+iiagfsVzCL4HCtQwxveZtipcO
-	otxxxXGg3ngxvHYLTBDQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:Reply-To:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:Subject:From:
+	MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ni2PPkNIOyOaAqq1AucWeyeG3n/FW5hShwSMvxLehKc=; b=QAQVESijBY5DcXmMXWuIRH8It9
+	RJAbZjptbLJfkxm2LPVvbEntqIdUp1HM3VCtkWIqu9YWBIvT07mUcQsiOy0aPZtPW4Z6hzgUbpjsz
+	aGvwHDSR12El/jTysmSzczFQ3pjdlDfywL3iItRDsdca5iEjK5M9fF1ZfN2GvUf7xJOmeIa6ncZcM
+	lYEiHGXXTYSC6Oyjk4xEuelHERCz/n/piVrfS02OUew40Xjv0IodMZgkI4aQVhaIXP2yElzuW7sw7
+	C1BQzB/isyQtkSSVH02SuRzWMtTnvWnP1wdFAfaEkot2kjiydZaVb/sjDchx9WAGFRwMhT93XuLDa
+	UUO539iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uixF0-0000000AqPM-3eEZ;
-	Mon, 04 Aug 2025 15:36:46 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1uixK6-0000000Ar21-2oSR;
+	Mon, 04 Aug 2025 15:42:02 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uiwcw-0000000Aj36-0pyT
+	id 1uiwuZ-0000000AlA6-2Ak5
 	for linux-rockchip@lists.infradead.org;
-	Mon, 04 Aug 2025 14:57:28 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-3b783d851e6so3915178f8f.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 04 Aug 2025 07:57:25 -0700 (PDT)
+	Mon, 04 Aug 2025 15:15:40 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-458b2d9dba5so17300975e9.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 04 Aug 2025 08:15:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1754319444; x=1754924244; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=DWy/dRkuyqHtMLkzo0aj79tMC2PsGztysX7VOS/VH8M=;
-        b=RnZPdFB/uK3F++q2P7sdG4iZPJeZAiZ1x8sKSWjNrO5aRcSmiJIgNhEBVeDJe7vvDq
-         +K/eILm+sZesfXrLw13K6AIJvyxLPFyFWp7b5x65Ekv+goCdbG0ABjUnDx6UZ7/pL+DI
-         xEGxtTAUQS8t6EcP3Wla7KePbV/7IS7sLQrIyMfqKilZ0PmTAKFQoLj9oetifGsmq2Su
-         fG3w45aFCYug5UWeY4GocKItuVvO2ibUV9T5hSdB5WaEXY3ZOT+0lL26e+GXT2poNuhn
-         fnagjp9eGiNuN1tWn8o0odFJjIBRLU9izvjT81uiALS4ABOP14yH+p3gKIIE4pFO0xvO
-         bFWw==
+        d=linaro.org; s=google; t=1754320537; x=1754925337; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=nJjeVcCtnXKnWhoVwXfMDE8hWmtcV5EpJXafPxt/CSU=;
+        b=JySwR2msVJDusrZR+bssA93c7xe/Wnh3XOcC992OlkOnSz4KQjp9iiDXkjmPArGj9K
+         Ew/CWvAn0AoiDH7LTpxpS50ilpyLULZbZkg/YF09NeXfH8F3zQsBgnk6prBwvmie2LzN
+         4ArFJRkFfo39vfP6mYTwo+VLMt8AQC2ULmdoIwTvki2v68g3q3xM29ukMcFKg1cYgo4M
+         JtKv+T8iQMCR9HB6TfsBv7w9BQ4e2B+oYlFgoD08TSdakug92PJVs+YVG+1+ggxbonXm
+         hQJ0Rc9HqZ15ekmgJurAJ29Bghj8RjxJ7MYlo8zd8jmcDINRgA30cH15QCESuCToQSEJ
+         Vr8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1754319445; x=1754924245;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DWy/dRkuyqHtMLkzo0aj79tMC2PsGztysX7VOS/VH8M=;
-        b=DnUEeqgr32HwG+pq3pW39GE+Nlb17hnvOcbqxzFOL9Lg9DMnadsjuTBxPVmTihT0AI
-         QUqlqKMBqGNSD+jUmThoC1kbuJ0Yj4KiUC5hmJH9OXdur0Kk1QvbA/gk98YC8vNLgAxT
-         oRkZ7x5sEthdkQtfE/K27zfsZvmsbVdvWO2kYsFvqPJSYsMzZgwqrp1VYlCQRT/4U00/
-         eyXsi8ORReQ/c2hIdWCgE3gr3hgTC9UDLNtQYQccfxEbFW9WFRi5/IGnFeyCAGBjDpg9
-         vEPhgSVYpiMfflC/RbbbW6MUkZkoK3W0S0BTStzywTov8zIv/a89kXVDQ5Kah262gOWD
-         04Ew==
-X-Gm-Message-State: AOJu0YxmHzORyM27HnFHTOBGNjxa/ibPk0yb9dd2FTl1J7pl5v6xixHB
-	HKFWTc4gxJXirdQ+5NKkjqCj6p0JEeTxv1aei62GFFPiGbZrSwQe54r3E37RWjgdtIg=
-X-Gm-Gg: ASbGncvRzs40RPTO8qMdBU/cENKjGfTgU/HQ4Yn/CH3EKynyRNrww2tA5okAs1oi+SI
-	A3HUFJUtpZxTSBiAKJ/gQhUirtSfTVcR6jWD7WGqS5aBSBbgPGal4lAPrni/0E7crPZIsC4NcMa
-	La9FU/8LfXKNudDOGq9WX9LEMvFIxRbAD7K9lkEp21bcgFgrRS/GGz+F4FCufdvNZnRv0G+5uFX
-	Db3KBrY0FchXE8fo/7BFfSKOL4eIwvoqiP5Hb6ULcNJngeGppDGAcx1nZGxGPivZB4tqTRm50mI
-	hjCwwXZxfu5DU6waBjBCOIePs0GytfzGPu9L8NYIYQd7IDJtMFcZt1WF2DPDSqnIgebSobBJVDl
-	x/OlTlF5NNn9anD0UQYJILpqtYho=
-X-Google-Smtp-Source: AGHT+IFBSQjd7GrN3vHaieQbp8tLemMW2ODmKLpx7Wr7bNzMiCgZpwNOOH29qiMwqvVsg4rJZoLGEA==
-X-Received: by 2002:a05:6000:22c2:b0:3b7:9141:f044 with SMTP id ffacd0b85a97d-3b8d947507bmr7576626f8f.21.1754319444497;
-        Mon, 04 Aug 2025 07:57:24 -0700 (PDT)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b79c470102sm15695200f8f.53.2025.08.04.07.57.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Aug 2025 07:57:23 -0700 (PDT)
-Date: Mon, 4 Aug 2025 17:57:21 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Naresh Kamboju <naresh.kamboju@linaro.org>, linux-nfs@vger.kernel.org,
-	linux-block@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-mm <linux-mm@kvack.org>,
-	Netdev <netdev@vger.kernel.org>,
-	open list <linux-kernel@vger.kernel.org>,
-	lkft-triage@lists.linaro.org,
-	Linux Regressions <regressions@lists.linux.dev>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Anders Roxell <anders.roxell@linaro.org>,
-	Ben Copeland <benjamin.copeland@linaro.org>
-Subject: Re: next-20250717: arm64: rk3399-rock-pi-4b: NFS mount failure with
- 64K page size
-Message-ID: <54178266-64e5-4869-8359-26f1c8cd14bc@suswa.mountain>
-References: <CA+G9fYupPsQoBrtF=-WT0nSy6m+yG1p9m68Z18Bp-Y=QMFD_tQ@mail.gmail.com>
+        d=1e100.net; s=20230601; t=1754320537; x=1754925337;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=nJjeVcCtnXKnWhoVwXfMDE8hWmtcV5EpJXafPxt/CSU=;
+        b=De+sUC+1/9Sf30xjb4EpjjkSYrarizgm6dqcCfbXzXBWldfq0JafX9+sFpRHegZBgO
+         /FxpdD2/b4hVFiyubJ585nU0ipfRoNZtaeuLdSR6qEe3ThUK+v1JtcDxDkM8/Irb92+A
+         baq0kxwIuvPZcraQUj7QPMmVR0nHW6aFvZeTjMNgsF5BuV3uXfqdO9FqvHqcnGB07csE
+         PpwqVjrngEIFkXnOqwdO/feLF2UBWD8/kBYzWoWa3EqGRISSKTdtWFX3HIAOWR+xiEed
+         50jQscx59GTBm0HHTu4fXZksNt5b/GixnTyLKUVfOAXXpplv8tYRwGB+hsT04jVgWcwJ
+         pWng==
+X-Forwarded-Encrypted: i=1; AJvYcCVcElHefR/jTYnClGuyTZGVNhUnCWMD+COhYvKic52vDbR4avoFD6XWVFc1Hu5eWKUGlAtts3/7rdKAL9YxvQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YysmoxJH0232UHip77XFPtbJKMXFHjKTOyPknzNpnaFyaNNd8mM
+	CXlJ31nm/AiEYzQvCVn491OqxOiwz4Mk6xfeLfeuyBEg/Nv5yA7NWvOinOyA0vWrcY0=
+X-Gm-Gg: ASbGnctJmx7HUzdQ1/wscztQiM7OAHei23kA6dkJXKnlpXMKL8DM/fur6lLL+9BBf7Y
+	Gz+PF7OM1CUTF7dHqsrJPYrstqeoPHlXMsM0lSjGhaH7SrCKZ9q9ZU/b2asJcQRJlmPe1O0FHxf
+	IS161vb5svknyHPDzoBVXmEKCitdaZF6/a5UL5jEo51AjwOsNlmB1GqocvcvQdrmt9PvWuratBc
+	ClwXZtAH/BkpLUc/c9swfGhylDRHB63YWyYBbupL7ISo7okGrU3V366dAhS38OOeGR2Wxh4JG6M
+	hfHVIAEhrPaY0dqiygqDJaHhrInRQKW+5lPEw1bA5DP0l/g8ymbike6idw+oMV5KQza86ooHFhS
+	lfWrwldD04ZhDgZo4lgx0wpXPkUM7WX/6zTpTF4aYTJ5jIwTVOS9sWnlZc8i84OgMgoni0h+4/s
+	Y=
+X-Google-Smtp-Source: AGHT+IEETbK5B9R4l4zfHSKM2IatUBsewiluok9u8cat8QEYDfF7e+N5lM3tAMhEwAekOpfuhYvQ+A==
+X-Received: by 2002:a05:600c:4ec6:b0:458:c059:7da0 with SMTP id 5b1f17b1804b1-458c0597f5bmr62093385e9.2.1754320537459;
+        Mon, 04 Aug 2025 08:15:37 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:3d9:2080:3030:f63e:fedd:700f? ([2a01:e0a:3d9:2080:3030:f63e:fedd:700f])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4589edf5638sm171780825e9.4.2025.08.04.08.15.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Aug 2025 08:15:37 -0700 (PDT)
+Message-ID: <0a2963df-59a7-45a8-a74e-e6f4ff1f9868@linaro.org>
+Date: Mon, 4 Aug 2025 17:15:36 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CA+G9fYupPsQoBrtF=-WT0nSy6m+yG1p9m68Z18Bp-Y=QMFD_tQ@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
+From: neil.armstrong@linaro.org
+Subject: Re: [PATCH 01/13] drm/panel: ilitek-ili9881c: turn off power-supply
+ when init fails
+To: Heiko Stuebner <heiko@sntech.de>
+References: <20250707164906.1445288-1-heiko@sntech.de>
+ <20250707164906.1445288-2-heiko@sntech.de>
+Content-Language: en-US, fr
+Autocrypt: addr=neil.armstrong@linaro.org; keydata=
+ xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
+ OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
+ Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
+ YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
+ GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
+ UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
+ GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
+ yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
+ QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
+ SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
+ 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
+ Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
+ oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
+ M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
+ 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
+ KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
+ 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
+ QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
+Organization: Linaro
+In-Reply-To: <20250707164906.1445288-2-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250804_075726_246741_7B8C303F 
-X-CRM114-Status: GOOD (  17.79  )
+X-CRM114-CacheID: sfid-20250804_081539_571039_E29E0BEE 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,180 +123,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: Neil Armstrong <neil.armstrong@linaro.org>
+Cc: robh@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, maarten.lankhorst@linux.intel.com, hjc@rock-chips.com, mripard@kernel.org, andyshrk@163.com, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, tzimmermann@suse.de, andy.yan@rock-chips.com, quic_jesszhan@quicinc.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an ongoing issue still in the latest linux-next.  It's
-quite a strange bug because why would it only affect rk3399-rock-pi-4b?
+On 07/07/2025 18:48, Heiko Stuebner wrote:
+> The prepare function turns on the power-supply regulator first, when
+> preparing the display. But in an error case, just returns the error
+> code, but does not power off the regulator again, fix that.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>   drivers/gpu/drm/panel/panel-ilitek-ili9881c.c | 12 ++++++++----
+>   1 file changed, 8 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c b/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
+> index 28cd7560e5db..d7a17dca2a9c 100644
+> --- a/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
+> +++ b/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
+> @@ -1292,7 +1292,7 @@ static int ili9881c_prepare(struct drm_panel *panel)
+>   						      instr->arg.cmd.data);
+>   
+>   		if (ret)
+> -			return ret;
+> +			goto disable_power;
+>   	}
+>   
+>   	ret = ili9881c_switch_page(ctx, 0);
+> @@ -1304,18 +1304,22 @@ static int ili9881c_prepare(struct drm_panel *panel)
+>   					 &ctx->address_mode,
+>   					 sizeof(ctx->address_mode));
+>   		if (ret < 0)
+> -			return ret;
+> +			goto disable_power;
+>   	}
+>   
+>   	ret = mipi_dsi_dcs_set_tear_on(ctx->dsi, MIPI_DSI_DCS_TEAR_MODE_VBLANK);
+>   	if (ret)
+> -		return ret;
+> +		goto disable_power;
+>   
+>   	ret = mipi_dsi_dcs_exit_sleep_mode(ctx->dsi);
+>   	if (ret)
+> -		return ret;
+> +		goto disable_power;
+>   
+>   	return 0;
+> +
+> +disable_power:
+> +	regulator_disable(ctx->power);
+> +	return ret;
+>   }
+>   
+>   static int ili9881c_enable(struct drm_panel *panel)
 
-The only thing I see which touched fs/nfs between next-20250716 and
-next-20250717 is commit e9d8e2bf2320 ("fs: change write_begin/write_end
-interface to take struct kiocb *").  That patch is pretty straight
-forward and wouldn't have caused something like this.  Let me add
-linux-block to the CC list as well to see if they have any ideas.
-
-regards,
-dan carpenter
-
-On Tue, Jul 22, 2025 at 07:59:11PM +0530, Naresh Kamboju wrote:
-> The rk3399-rock-pi-4b device fails to mount the root filesystem over
-> NFS when the kernel is built with 64K page size.
-> CONFIG_ARM64_64K_PAGES=y
-> 
-> This regression was first observed with the Linux next-20250717 tag
-> and continues to persist through next-20250722.
-> 
-> Device: rk3399-rock-pi-4b
-> Build Configuration: lkftconfig-64k_page_size
-> 
-> Regression Window:
-> 
->  Good: next-20250716
->  Bad: next-20250717.. Still Bad: next-20250722
-> 
-> Kernel Config Impact:
-> CONFIG_ARM64_64K_PAGES=y  - NFS mount fails
-> CONFIG_ARM64_4K_PAGES=y  - NFS mount works as expected
-> 
-> Regression Analysis:
-> - New regression? Yes
-> - Reproducibility? Yes
-> 
-> Boot regression:  next-20250717 arm64 rk3399-rock-pi-4b NFS mount
-> failure with 64K page size
-> 
-> Reported-by: Linux Kernel Functional Testing <lkft@linaro.org>
-> 
-> ## Boot log
-> 
-> [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
-> [    0.000000] Linux version 6.16.0-rc6-next-20250717
-> (tuxmake@tuxmake) (aarch64-linux-gnu-gcc (Debian 13.3.0-16) 13.3.0,
-> GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT @1752747461
-> [    0.000000] KASLR disabled due to lack of seed
-> [    0.000000] Machine model: Radxa ROCK Pi 4B
-> [    0.000000] efi: UEFI not found.
-> [    0.000000] earlycon: uart0 at MMIO32 0x00000000ff1a0000 (options
-> '1500000n8')
-> [    0.000000] printk: legacy bootconsole [uart0] enabled
-> [    0.000000] OF: reserved mem: Reserved memory: No reserved-memory
-> node in the DT
-> [    0.000000] NUMA: Faking a node at [mem
-> 0x0000000000200000-0x00000000f7ffffff]
-> 
-> <trim>
-> 
-> [    6.520442] Sending DHCP requests ..
-> [   13.295867] platform sdio-pwrseq: deferred probe pending:
-> pwrseq_simple: reset control not ready
-> [   13.295887] dwmmc_rockchip fe310000.mmc: IDMAC supports 32-bit address mode.
-> [   13.296260] rockchip-pm-domain
-> ff310000.power-management:power-controller: sync_state() pending due
-> to fe310000.mmc
-> [   13.296278] rockchip-pm-domain
-> ff310000.power-management:power-controller: sync_state() pending due
-> to ff650000.video-codec
-> [   13.297085] dwmmc_rockchip fe310000.mmc: Using internal DMA controller.
-> [   13.297660] rockchip-pm-domain
-> ff310000.power-management:power-controller: sync_state() pending due
-> to ff660000.video-codec
-> [   13.298653] dwmmc_rockchip fe310000.mmc: Version ID is 270a
-> [   13.299536] rockchip-pm-domain
-> ff310000.power-management:power-controller: sync_state() pending due
-> to ff680000.rga
-> [   13.300164] dwmmc_rockchip fe310000.mmc: DW MMC controller at irq
-> 49,32 bit host data width,256 deep fifo
-> [   13.301117] rockchip-pm-domain
-> ff310000.power-management:power-controller: sync_state() pending due
-> to ff880000.i2s
-> [   13.304227] rockchip-pm-domain
-> ff310000.power-management:power-controller: sync_state() pending due
-> to ff8a0000.i2s
-> [   13.305148] rockchip-pm-domain
-> ff310000.power-management:power-controller: sync_state() pending due
-> to ff8f0000.vop
-> [   13.306071] rockchip-pm-domain
-> ff310000.power-management:power-controller: sync_state() pending due
-> to ff900000.vop
-> [   13.307009] rockchip-pm-domain
-> ff310000.power-management:power-controller: sync_state() pending due
-> to ff940000.hdmi
-> [   13.307937] rockchip-pm-domain
-> ff310000.power-management:power-controller: sync_state() pending due
-> to ff9a0000.gpu
-> [   14.620509] ., OK
-> [   14.636949] IP-Config: Got DHCP answer from 10.66.16.15, my address
-> is 10.66.30.7
-> [   14.637647] IP-Config: Complete:
-> [   14.637955]      device=eth0, hwaddr=0a:fb:82:cd:ed:a8,
-> ipaddr=10.66.30.7, mask=255.255.240.0, gw=10.66.16.1
-> [   14.638845]      host=10.66.30.7, domain=lkftlab, nis-domain=(none)
-> [   14.639417]      bootserver=0.0.0.0, rootserver=10.66.16.116, rootpath=
-> [   14.639440]      nameserver0=10.66.16.15
-> [   14.641679] clk: Disabling unused clocks
-> [   14.646347] dw-apb-uart ff1a0000.serial: forbid DMA for kernel console
-> [   14.647091] check access for rdinit=/init failed: -2, ignoring
-> [   14.762496] VFS: Mounted root (nfs filesystem) on device 0:22.
-> [   14.763768] devtmpfs: mounted
-> [   14.775761] Freeing unused kernel memory: 4928K
-> [   14.776566] Run /sbin/init as init process
-> [   95.816464] random: crng init done
-> [  195.556677] nfs: server 10.66.16.116 not responding, still trying
-> ..
-> [  195.556703] nfs: server 10.66.16.116 not responding, still trying
-> [  195.556869] nfs: server 10.66.16.116 not responding, still trying
-> [  195.557010] nfs: server 10.66.16.116 not responding, still trying
-> [  195.557055] nfs: server 10.66.16.116 not responding, still trying
-> [  195.557114] nfs: server 10.66.16.116 not responding, still trying
-> [  195.557166] nfs: server 10.66.16.116 not responding, still trying
-> [  195.557217] nfs: server 10.66.16.116 not responding, still trying
-> [  195.557269] nfs: server 10.66.16.116 not responding, still trying
-> [  195.557304] nfs: server 10.66.16.116 not responding, still trying
-> [  227.459759] nfs: server 10.66.16.116 OK
-> [  227.459868] nfs: server 10.66.16.116 OK
-> [  227.681008] nfs: server 10.66.16.116 OK
-> [  319.645474] nfs: server 10.66.16.116 OK
-> [  407.677657] nfs: server 10.66.16.116 OK
-> [  499.834818] nfs: server 10.66.16.116 OK
-> [  587.895692] nfs: server 10.66.16.116 OK
-> [  680.052774] nfs: server 10.66.16.116 OK
-> [  768.113810] nfs: server 10.66.16.116 OK
-> [  860.270785] nfs: server 10.66.16.116 OK
-> #
-> [  948.331418] nfs: server 10.66.16.116 OK
-> #
-> [ 1096.679211] nfs: server 10.66.16.116 OK
-> #
-> [ 1274.856436] nfs: server 10.66.16.116 OK
-> #
-> [ 1488.985700] nfs: server 10.66.16.116 OK
-> 
-> 
-> ## Source
-> * Git tree: https://kernel.googlesource.com/pub/scm/linux/kernel/git/next/linux-next.git
-> * Project: https://qa-reports.linaro.org/lkft/linux-next-master/build/next-20250717/
-> * Git sha: 024e09e444bd2b06aee9d1f3fe7b313c7a2df1bb
-> * Git describe: 6.16.0-rc6-next-20250717
-> * kernel version: next-20250717
-> * Architectures: arm64 (rock-pi-4b)
-> * Toolchains: gcc-13
-> * Kconfigs: defconfig+64K page size
-> 
-> ## Test
-> * Test log: https://qa-reports.linaro.org/api/testruns/29168904/log_file/
-> * Test LAVA: https://lkft.validation.linaro.org/scheduler/job/8364278#L924
-> * Test run: https://regressions.linaro.org/lkft/linux-next-master/next-20250717/testruns/1662101/
-> * Test plan: https://tuxapi.tuxsuite.com/v1/groups/linaro/projects/lkft/tests/2zzwHDuV3xvZBKkAtqlmroSxuIS
-> * Build link: https://storage.tuxsuite.com/public/linaro/lkft/builds/2zzwEbz0aS3AtluE2oRQ9gMvFTY/
-> * Kernel config:
-> https://storage.tuxsuite.com/public/linaro/lkft/builds/2zzwEbz0aS3AtluE2oRQ9gMvFTY/config
-> 
-> 
-> --
-> Linaro LKFT
-> https://lkft.linaro.org
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
