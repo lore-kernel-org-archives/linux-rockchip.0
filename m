@@ -4,64 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14291C87FCA
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Aug 2025 02:59:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8BDDC87FCF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Aug 2025 15:36:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VXP0yE15+hlthohnFVZc1FGUvzXFjF4+U+H4/mV6HPs=; b=U8vMVeP6UstQgk
-	uHJ5ruFknmpqNeXtngeQKVd307RgPPmWVwEKt4lof2AWD+jhxGqFq5Caus7LSUAyQzjlZ0vsxLoqv
-	KXnlu6wkGRZzZaPcU73p9p+9XupOMC7+OnWdTr6Ayon6xJsF50GNtxAuVB9a9lDIQNjHr8HrmBJXC
-	V0gHprQAPkE/i/Qfo5BWSjU9rJDAt3HgrcfACasZLgYm7Iz8DYFw8G8Pia1lz2II4rbisskSVL2D+
-	t+PTseAqSNebcGHvLlMsRFb/sP5Uug5wPGmpeH0Q+Y00yBErWxIjOE9NwPRfauPkCmMZHwtSbA+sx
-	t/nJNIS94wLCUtSepBNg==;
+	List-Owner; bh=nfHcpTGpWCfqZ6FYwaPyVNedwI8aDMQY0005t57s/Yo=; b=CM4q9MVj87D5Lk
+	p4ZMUKbjTSkQGz4Yx8FbrArjx5NqEJfQgVW8hVtk5IxUa/A7famExHG5d+rSmnoDGE06dBGRUXqXB
+	2u3i+96rjYCQf+mJ3kRAc862fhhAlN+TcLNw/33K2kZOnl6SnM2CHpAQATCrUHFzjpSrQwc14q9Kd
+	4nuw49+4ZJU8zcHb8uJM5g7p0PazxQVyzsE3wu8GZbJaIG+GWa42XMTFCbpnVHaG0xr8NDQjAf0XJ
+	0jw4SS+xBytVMPAf8YN7h0Xq8Tv6xVFDtdJLd1w8xPacMK0kcxY+iiagfsVzCL4HCtQwxveZtipcO
+	otxxxXGg3ngxvHYLTBDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uilQC-00000009WVu-2KKB;
-	Mon, 04 Aug 2025 02:59:32 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uixF0-0000000AqPM-3eEZ;
+	Mon, 04 Aug 2025 15:36:46 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uijET-00000009MQe-2QYH;
-	Mon, 04 Aug 2025 00:39:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4C4CB433A9;
-	Mon,  4 Aug 2025 00:39:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBBDAC4CEFA;
-	Mon,  4 Aug 2025 00:39:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754267957;
-	bh=kEDFM1+saxL4i+9T7MBV1tuzA5+VObYzj4dtLR0QQbI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=vMQBRgUyF2kFFfEId3O2b8vhtSvqjBr2Tpi4r8RlQsWgMDA0A9su7ha2V+AudJLOY
-	 HYsvXlxR6jA96vPwDIfowxP3wmWMYbDJp5oqXhyuzxVa44H8fq9aVaQViKkapHkm/g
-	 uCjYrPPmI9evvem+YyhtHy9HRXyIknu7wXpf2dEFeGFd00weG2LR6aJLjMx39LqJIH
-	 fXV0aeKWMK7ByfAmjl211F6S5dXOsB6/TJMzF++rFPZccliJFMyRtic4GCZugrFDPp
-	 Ox3VL2Z6zXwWVE6rxEPcrHaEcFx0vmlVuyPiozWBT2L9a2x6FNxrxH4/16/b8szgOL
-	 OTbEQtHQD3FTQ==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Alexander Kochetkov <al.kochet@gmail.com>,
+	id 1uiwcw-0000000Aj36-0pyT
+	for linux-rockchip@lists.infradead.org;
+	Mon, 04 Aug 2025 14:57:28 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-3b783d851e6so3915178f8f.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 04 Aug 2025 07:57:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1754319444; x=1754924244; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=DWy/dRkuyqHtMLkzo0aj79tMC2PsGztysX7VOS/VH8M=;
+        b=RnZPdFB/uK3F++q2P7sdG4iZPJeZAiZ1x8sKSWjNrO5aRcSmiJIgNhEBVeDJe7vvDq
+         +K/eILm+sZesfXrLw13K6AIJvyxLPFyFWp7b5x65Ekv+goCdbG0ABjUnDx6UZ7/pL+DI
+         xEGxtTAUQS8t6EcP3Wla7KePbV/7IS7sLQrIyMfqKilZ0PmTAKFQoLj9oetifGsmq2Su
+         fG3w45aFCYug5UWeY4GocKItuVvO2ibUV9T5hSdB5WaEXY3ZOT+0lL26e+GXT2poNuhn
+         fnagjp9eGiNuN1tWn8o0odFJjIBRLU9izvjT81uiALS4ABOP14yH+p3gKIIE4pFO0xvO
+         bFWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754319445; x=1754924245;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DWy/dRkuyqHtMLkzo0aj79tMC2PsGztysX7VOS/VH8M=;
+        b=DnUEeqgr32HwG+pq3pW39GE+Nlb17hnvOcbqxzFOL9Lg9DMnadsjuTBxPVmTihT0AI
+         QUqlqKMBqGNSD+jUmThoC1kbuJ0Yj4KiUC5hmJH9OXdur0Kk1QvbA/gk98YC8vNLgAxT
+         oRkZ7x5sEthdkQtfE/K27zfsZvmsbVdvWO2kYsFvqPJSYsMzZgwqrp1VYlCQRT/4U00/
+         eyXsi8ORReQ/c2hIdWCgE3gr3hgTC9UDLNtQYQccfxEbFW9WFRi5/IGnFeyCAGBjDpg9
+         vEPhgSVYpiMfflC/RbbbW6MUkZkoK3W0S0BTStzywTov8zIv/a89kXVDQ5Kah262gOWD
+         04Ew==
+X-Gm-Message-State: AOJu0YxmHzORyM27HnFHTOBGNjxa/ibPk0yb9dd2FTl1J7pl5v6xixHB
+	HKFWTc4gxJXirdQ+5NKkjqCj6p0JEeTxv1aei62GFFPiGbZrSwQe54r3E37RWjgdtIg=
+X-Gm-Gg: ASbGncvRzs40RPTO8qMdBU/cENKjGfTgU/HQ4Yn/CH3EKynyRNrww2tA5okAs1oi+SI
+	A3HUFJUtpZxTSBiAKJ/gQhUirtSfTVcR6jWD7WGqS5aBSBbgPGal4lAPrni/0E7crPZIsC4NcMa
+	La9FU/8LfXKNudDOGq9WX9LEMvFIxRbAD7K9lkEp21bcgFgrRS/GGz+F4FCufdvNZnRv0G+5uFX
+	Db3KBrY0FchXE8fo/7BFfSKOL4eIwvoqiP5Hb6ULcNJngeGppDGAcx1nZGxGPivZB4tqTRm50mI
+	hjCwwXZxfu5DU6waBjBCOIePs0GytfzGPu9L8NYIYQd7IDJtMFcZt1WF2DPDSqnIgebSobBJVDl
+	x/OlTlF5NNn9anD0UQYJILpqtYho=
+X-Google-Smtp-Source: AGHT+IFBSQjd7GrN3vHaieQbp8tLemMW2ODmKLpx7Wr7bNzMiCgZpwNOOH29qiMwqvVsg4rJZoLGEA==
+X-Received: by 2002:a05:6000:22c2:b0:3b7:9141:f044 with SMTP id ffacd0b85a97d-3b8d947507bmr7576626f8f.21.1754319444497;
+        Mon, 04 Aug 2025 07:57:24 -0700 (PDT)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b79c470102sm15695200f8f.53.2025.08.04.07.57.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Aug 2025 07:57:23 -0700 (PDT)
+Date: Mon, 4 Aug 2025 17:57:21 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Naresh Kamboju <naresh.kamboju@linaro.org>, linux-nfs@vger.kernel.org,
+	linux-block@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-mm <linux-mm@kvack.org>,
+	Netdev <netdev@vger.kernel.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	lkft-triage@lists.linaro.org,
+	Linux Regressions <regressions@lists.linux.dev>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Sasha Levin <sashal@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 11/44] ARM: rockchip: fix kernel hang during smp initialization
-Date: Sun,  3 Aug 2025 20:38:16 -0400
-Message-Id: <20250804003849.3627024-11-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250804003849.3627024-1-sashal@kernel.org>
-References: <20250804003849.3627024-1-sashal@kernel.org>
+	Andrew Morton <akpm@linux-foundation.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Anders Roxell <anders.roxell@linaro.org>,
+	Ben Copeland <benjamin.copeland@linaro.org>
+Subject: Re: next-20250717: arm64: rk3399-rock-pi-4b: NFS mount failure with
+ 64K page size
+Message-ID: <54178266-64e5-4869-8359-26f1c8cd14bc@suswa.mountain>
+References: <CA+G9fYupPsQoBrtF=-WT0nSy6m+yG1p9m68Z18Bp-Y=QMFD_tQ@mail.gmail.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.15.189
+Content-Disposition: inline
+In-Reply-To: <CA+G9fYupPsQoBrtF=-WT0nSy6m+yG1p9m68Z18Bp-Y=QMFD_tQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250803_173917_659948_574C8750 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20250804_075726_246741_7B8C303F 
+X-CRM114-Status: GOOD (  17.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,127 +108,175 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Alexander Kochetkov <al.kochet@gmail.com>
+This is an ongoing issue still in the latest linux-next.  It's
+quite a strange bug because why would it only affect rk3399-rock-pi-4b?
 
-[ Upstream commit 7cdb433bb44cdc87dc5260cdf15bf03cc1cd1814 ]
+The only thing I see which touched fs/nfs between next-20250716 and
+next-20250717 is commit e9d8e2bf2320 ("fs: change write_begin/write_end
+interface to take struct kiocb *").  That patch is pretty straight
+forward and wouldn't have caused something like this.  Let me add
+linux-block to the CC list as well to see if they have any ideas.
 
-In order to bring up secondary CPUs main CPU write trampoline
-code to SRAM. The trampoline code is written while secondary
-CPUs are powered on (at least that true for RK3188 CPU).
-Sometimes that leads to kernel hang. Probably because secondary
-CPU execute trampoline code while kernel doesn't expect.
+regards,
+dan carpenter
 
-The patch moves SRAM initialization step to the point where all
-secondary CPUs are powered down.
-
-That fixes rarely hangs on RK3188:
-[    0.091568] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
-[    0.091996] rockchip_smp_prepare_cpus: ncores 4
-
-Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
-Link: https://lore.kernel.org/r/20250703140453.1273027-1-al.kochet@gmail.com
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
-
-LLM Generated explanations, may be completely bogus:
-
-Based on my analysis of the commit and the code context, here's my
-determination:
-
-**Backport Status: YES**
-
-This commit should be backported to stable kernel trees for the
-following reasons:
-
-1. **Fixes a real bug affecting users**: The commit explicitly mentions
-   that it "fixes rarely hangs on RK3188" during SMP initialization.
-   This is a critical boot-time issue that prevents the system from
-   functioning properly.
-
-2. **Small and contained fix**: The change is minimal - it only moves
-   the SRAM initialization code (`rockchip_smp_prepare_sram()`) to
-   execute after all secondary CPUs are powered down. The code movement
-   is straightforward:
-   - Lines 281-285 (old location) are moved to lines 321-325 (new
-     location)
-   - The fix is contained within a single function
-     (`rockchip_smp_prepare_cpus()`)
-
-3. **Clear root cause**: The commit message explains the race condition
-   clearly - secondary CPUs may execute trampoline code while it's being
-   written to SRAM, causing unpredictable behavior and hangs.
-
-4. **No architectural changes**: This is purely a timing/ordering fix
-   that doesn't introduce new features or change the architecture of the
-   code.
-
-5. **Critical subsystem**: SMP initialization is a critical kernel
-   subsystem. A hang during boot makes the system unusable, which is a
-   severe issue for affected users.
-
-6. **Platform-specific fix**: The change only affects Rockchip ARM
-   platforms (specifically those with Cortex-A9 CPUs like RK3188),
-   limiting the scope of potential regressions.
-
-7. **Follows stable tree rules**: The fix addresses an important bug
-   (boot hang), is small and self-contained, has minimal risk of
-   regression, and doesn't introduce new features.
-
-The key insight from the code analysis is that the original code had a
-clear race condition where:
-1. Secondary CPUs were powered on (lines 287-288 in the original)
-2. Trampoline code was written to SRAM (line 282 in the original)
-3. Secondary CPUs could potentially execute incomplete/corrupted
-   trampoline code
-
-The fix ensures all secondary CPUs are powered down (lines 321-323)
-before writing the trampoline code to SRAM (lines 321-325 in the new
-version), eliminating the race condition.
-
- arch/arm/mach-rockchip/platsmp.c | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
-
-diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index d60856898d97..17aee4701e81 100644
---- a/arch/arm/mach-rockchip/platsmp.c
-+++ b/arch/arm/mach-rockchip/platsmp.c
-@@ -279,11 +279,6 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
- 	}
- 
- 	if (read_cpuid_part() == ARM_CPU_PART_CORTEX_A9) {
--		if (rockchip_smp_prepare_sram(node)) {
--			of_node_put(node);
--			return;
--		}
--
- 		/* enable the SCU power domain */
- 		pmu_set_power_domain(PMU_PWRDN_SCU, true);
- 
-@@ -316,11 +311,19 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
- 		asm ("mrc p15, 1, %0, c9, c0, 2\n" : "=r" (l2ctlr));
- 		ncores = ((l2ctlr >> 24) & 0x3) + 1;
- 	}
--	of_node_put(node);
- 
- 	/* Make sure that all cores except the first are really off */
- 	for (i = 1; i < ncores; i++)
- 		pmu_set_power_domain(0 + i, false);
-+
-+	if (read_cpuid_part() == ARM_CPU_PART_CORTEX_A9) {
-+		if (rockchip_smp_prepare_sram(node)) {
-+			of_node_put(node);
-+			return;
-+		}
-+	}
-+
-+	of_node_put(node);
- }
- 
- static void __init rk3036_smp_prepare_cpus(unsigned int max_cpus)
--- 
-2.39.5
-
+On Tue, Jul 22, 2025 at 07:59:11PM +0530, Naresh Kamboju wrote:
+> The rk3399-rock-pi-4b device fails to mount the root filesystem over
+> NFS when the kernel is built with 64K page size.
+> CONFIG_ARM64_64K_PAGES=y
+> 
+> This regression was first observed with the Linux next-20250717 tag
+> and continues to persist through next-20250722.
+> 
+> Device: rk3399-rock-pi-4b
+> Build Configuration: lkftconfig-64k_page_size
+> 
+> Regression Window:
+> 
+>  Good: next-20250716
+>  Bad: next-20250717.. Still Bad: next-20250722
+> 
+> Kernel Config Impact:
+> CONFIG_ARM64_64K_PAGES=y  - NFS mount fails
+> CONFIG_ARM64_4K_PAGES=y  - NFS mount works as expected
+> 
+> Regression Analysis:
+> - New regression? Yes
+> - Reproducibility? Yes
+> 
+> Boot regression:  next-20250717 arm64 rk3399-rock-pi-4b NFS mount
+> failure with 64K page size
+> 
+> Reported-by: Linux Kernel Functional Testing <lkft@linaro.org>
+> 
+> ## Boot log
+> 
+> [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+> [    0.000000] Linux version 6.16.0-rc6-next-20250717
+> (tuxmake@tuxmake) (aarch64-linux-gnu-gcc (Debian 13.3.0-16) 13.3.0,
+> GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT @1752747461
+> [    0.000000] KASLR disabled due to lack of seed
+> [    0.000000] Machine model: Radxa ROCK Pi 4B
+> [    0.000000] efi: UEFI not found.
+> [    0.000000] earlycon: uart0 at MMIO32 0x00000000ff1a0000 (options
+> '1500000n8')
+> [    0.000000] printk: legacy bootconsole [uart0] enabled
+> [    0.000000] OF: reserved mem: Reserved memory: No reserved-memory
+> node in the DT
+> [    0.000000] NUMA: Faking a node at [mem
+> 0x0000000000200000-0x00000000f7ffffff]
+> 
+> <trim>
+> 
+> [    6.520442] Sending DHCP requests ..
+> [   13.295867] platform sdio-pwrseq: deferred probe pending:
+> pwrseq_simple: reset control not ready
+> [   13.295887] dwmmc_rockchip fe310000.mmc: IDMAC supports 32-bit address mode.
+> [   13.296260] rockchip-pm-domain
+> ff310000.power-management:power-controller: sync_state() pending due
+> to fe310000.mmc
+> [   13.296278] rockchip-pm-domain
+> ff310000.power-management:power-controller: sync_state() pending due
+> to ff650000.video-codec
+> [   13.297085] dwmmc_rockchip fe310000.mmc: Using internal DMA controller.
+> [   13.297660] rockchip-pm-domain
+> ff310000.power-management:power-controller: sync_state() pending due
+> to ff660000.video-codec
+> [   13.298653] dwmmc_rockchip fe310000.mmc: Version ID is 270a
+> [   13.299536] rockchip-pm-domain
+> ff310000.power-management:power-controller: sync_state() pending due
+> to ff680000.rga
+> [   13.300164] dwmmc_rockchip fe310000.mmc: DW MMC controller at irq
+> 49,32 bit host data width,256 deep fifo
+> [   13.301117] rockchip-pm-domain
+> ff310000.power-management:power-controller: sync_state() pending due
+> to ff880000.i2s
+> [   13.304227] rockchip-pm-domain
+> ff310000.power-management:power-controller: sync_state() pending due
+> to ff8a0000.i2s
+> [   13.305148] rockchip-pm-domain
+> ff310000.power-management:power-controller: sync_state() pending due
+> to ff8f0000.vop
+> [   13.306071] rockchip-pm-domain
+> ff310000.power-management:power-controller: sync_state() pending due
+> to ff900000.vop
+> [   13.307009] rockchip-pm-domain
+> ff310000.power-management:power-controller: sync_state() pending due
+> to ff940000.hdmi
+> [   13.307937] rockchip-pm-domain
+> ff310000.power-management:power-controller: sync_state() pending due
+> to ff9a0000.gpu
+> [   14.620509] ., OK
+> [   14.636949] IP-Config: Got DHCP answer from 10.66.16.15, my address
+> is 10.66.30.7
+> [   14.637647] IP-Config: Complete:
+> [   14.637955]      device=eth0, hwaddr=0a:fb:82:cd:ed:a8,
+> ipaddr=10.66.30.7, mask=255.255.240.0, gw=10.66.16.1
+> [   14.638845]      host=10.66.30.7, domain=lkftlab, nis-domain=(none)
+> [   14.639417]      bootserver=0.0.0.0, rootserver=10.66.16.116, rootpath=
+> [   14.639440]      nameserver0=10.66.16.15
+> [   14.641679] clk: Disabling unused clocks
+> [   14.646347] dw-apb-uart ff1a0000.serial: forbid DMA for kernel console
+> [   14.647091] check access for rdinit=/init failed: -2, ignoring
+> [   14.762496] VFS: Mounted root (nfs filesystem) on device 0:22.
+> [   14.763768] devtmpfs: mounted
+> [   14.775761] Freeing unused kernel memory: 4928K
+> [   14.776566] Run /sbin/init as init process
+> [   95.816464] random: crng init done
+> [  195.556677] nfs: server 10.66.16.116 not responding, still trying
+> ..
+> [  195.556703] nfs: server 10.66.16.116 not responding, still trying
+> [  195.556869] nfs: server 10.66.16.116 not responding, still trying
+> [  195.557010] nfs: server 10.66.16.116 not responding, still trying
+> [  195.557055] nfs: server 10.66.16.116 not responding, still trying
+> [  195.557114] nfs: server 10.66.16.116 not responding, still trying
+> [  195.557166] nfs: server 10.66.16.116 not responding, still trying
+> [  195.557217] nfs: server 10.66.16.116 not responding, still trying
+> [  195.557269] nfs: server 10.66.16.116 not responding, still trying
+> [  195.557304] nfs: server 10.66.16.116 not responding, still trying
+> [  227.459759] nfs: server 10.66.16.116 OK
+> [  227.459868] nfs: server 10.66.16.116 OK
+> [  227.681008] nfs: server 10.66.16.116 OK
+> [  319.645474] nfs: server 10.66.16.116 OK
+> [  407.677657] nfs: server 10.66.16.116 OK
+> [  499.834818] nfs: server 10.66.16.116 OK
+> [  587.895692] nfs: server 10.66.16.116 OK
+> [  680.052774] nfs: server 10.66.16.116 OK
+> [  768.113810] nfs: server 10.66.16.116 OK
+> [  860.270785] nfs: server 10.66.16.116 OK
+> #
+> [  948.331418] nfs: server 10.66.16.116 OK
+> #
+> [ 1096.679211] nfs: server 10.66.16.116 OK
+> #
+> [ 1274.856436] nfs: server 10.66.16.116 OK
+> #
+> [ 1488.985700] nfs: server 10.66.16.116 OK
+> 
+> 
+> ## Source
+> * Git tree: https://kernel.googlesource.com/pub/scm/linux/kernel/git/next/linux-next.git
+> * Project: https://qa-reports.linaro.org/lkft/linux-next-master/build/next-20250717/
+> * Git sha: 024e09e444bd2b06aee9d1f3fe7b313c7a2df1bb
+> * Git describe: 6.16.0-rc6-next-20250717
+> * kernel version: next-20250717
+> * Architectures: arm64 (rock-pi-4b)
+> * Toolchains: gcc-13
+> * Kconfigs: defconfig+64K page size
+> 
+> ## Test
+> * Test log: https://qa-reports.linaro.org/api/testruns/29168904/log_file/
+> * Test LAVA: https://lkft.validation.linaro.org/scheduler/job/8364278#L924
+> * Test run: https://regressions.linaro.org/lkft/linux-next-master/next-20250717/testruns/1662101/
+> * Test plan: https://tuxapi.tuxsuite.com/v1/groups/linaro/projects/lkft/tests/2zzwHDuV3xvZBKkAtqlmroSxuIS
+> * Build link: https://storage.tuxsuite.com/public/linaro/lkft/builds/2zzwEbz0aS3AtluE2oRQ9gMvFTY/
+> * Kernel config:
+> https://storage.tuxsuite.com/public/linaro/lkft/builds/2zzwEbz0aS3AtluE2oRQ9gMvFTY/config
+> 
+> 
+> --
+> Linaro LKFT
+> https://lkft.linaro.org
 
 _______________________________________________
 Linux-rockchip mailing list
