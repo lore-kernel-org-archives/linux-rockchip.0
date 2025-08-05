@@ -4,56 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74254C87FCB
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Aug 2025 13:20:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 533F1C87FCB
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Aug 2025 13:25:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4WFssRLXu5IKf1g3ICZcB4W6U5IkZnbC0Ygdr3v3xSM=; b=xTZXcgtoEIZpXy
-	AxpyKMu09wrhRQDN+pzvZkdbe8S2jm6xZxRNAq27wv7lDqUGw14ADmqvLLqdKS1wl9AVIu9FCxQWu
-	2SK2/CfcQwiV8GAAKaPC0ES3E/+OGREBNyNFqz1okXu6Cv16gAu+KtkTo1obUe4K9gnZfxufpY1xj
-	DiKvxJUoitQ8iZga8CG5KMKDIZCIuheNpK9yMnTEyemmRxpLt265jlVKNRtSXMlZewcdhlOClMVsE
-	HXsQHuaewte94AbM0t4Zv8/L2jyinPuA9EDWaUs+ZPc2WlzlvYa8YTRc+t25rT4Wzkt4GtjJlPMTa
-	yFcJjfyybwZP3uIQGN2Q==;
+	List-Owner; bh=MK4DnKUI4O2qyoh2l5PA332KGfUZDZLQR0XjBOz+XR4=; b=XfnYeuRug+ts/y
+	+In1jb2k0OeGaFRCNLT3vsCVmQhjtET2/iySj51FAv2yv9wfE+LcBV5K1IKoYEQWpejuQrO4SYqzA
+	i+q7ov9suusTmeNnMvr+Zy2LF4k2Fl7CaWgqDK+yTAPP0WkKFLxoN6kCEq0SSAJGmh0PWN+q8/e2j
+	5y4W6TZskHJ+ZTvSC/hwalDdbxcsKgXoxGqdGj3oW5xfcA7UYqlFUVdoskttqUZuShIy+Bs0tioNj
+	qxiODFQC4Asgsey1qZswSXoHdnfD0/j9pB0o4vS/ps4Upasj74L+YsKz0nPkTktcFjO9/fuEO/OyT
+	vQILuFf3nl2w6dzK+bMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujHaP-0000000Cp9N-23ah;
-	Tue, 05 Aug 2025 13:20:13 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ujHfc-0000000CpyG-0gXO;
+	Tue, 05 Aug 2025 13:25:36 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujHQa-0000000CnSW-2blq;
-	Tue, 05 Aug 2025 13:10:06 +0000
+	id 1ujHRU-0000000CnaT-1QYe;
+	Tue, 05 Aug 2025 13:11:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6902BA56373;
-	Tue,  5 Aug 2025 13:10:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F4F3C4CEF0;
-	Tue,  5 Aug 2025 13:10:01 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id AA2305C5F05;
+	Tue,  5 Aug 2025 13:10:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CE29C4CEFA;
+	Tue,  5 Aug 2025 13:10:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754399403;
-	bh=j7U811MvCczKTPp55NF7aXier6/JUb9EwI1J0Ri83Gg=;
+	s=k20201202; t=1754399459;
+	bh=QskGx90TLZ/5pqOHB+wiX359YHfKw0zfYQpYucfOY3o=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PXegbcCQ2G0703osutbs6z8KjMDuVP3o9t8QXaN1TjpoaRtfu6ilLPqDoZoqaZhow
-	 2IZmF6wdTwo6PImNx2GBRF/7QxLAg+0V7HIbR3uwtz5ivW0yYXQRaWf2yp6Kxev6JN
-	 FmgwuJirhWvg5Z+vxCcZS+YgtTKcrguOgyjn+3EXINm6bWV8aKDMnmkcMgj8LaiZFO
-	 9QIdOWFSgm5Vs1rYnexe0x6W2cytxJ/wq9BkB8Frx3IxsRvsn1ci7qzYSbniEFYpra
-	 GhddW1USILHWdqqvgeNtBRVNThtEEKnYlkRhNATxgnnIEJMlu6KWackTAS7C2CXZ8t
-	 8NoSnDthFgrmA==
+	b=LdwAM3bUC/15rEWjQoDUmbJuK+KflxbdIqjXlsNfiqDYT6wCimXaSI0QCmnVlcLzg
+	 TC7XWcNfjkklEy/XK5TZlc32stdgNY6CemK+pd3yU191eDrRSIXZ3leL0cvtSIuJdM
+	 HaQuLp5mvvlNjX5Szb0PKDe2jTCUBe5uOHiYCEuCI5McnWbVcHZfSMGdTNVSWY8Dnz
+	 44OsKu3793J2oOF6JdsRqXanvBbtT6CqXGp1vl7SJYPUwhOEt64jji4DOXTE7oJhbZ
+	 xPnTnOWbNm2RrrNCsjBlgWUbvtvOWRa4WVQNS8I2wH/0iYSjXEK+8vUInepixGo5e0
+	 skrUdcveMSv4Q==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Geraldo Nascimento <geraldogabriel@gmail.com>,
+Cc: Valmantas Paliksa <walmis@gmail.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Geraldo Nascimento <geraldogabriel@gmail.com>,
 	Vinod Koul <vkoul@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
 	heiko@sntech.de,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.16-6.6] phy: rockchip-pcie: Properly disable TEST_WRITE strobe signal
-Date: Tue,  5 Aug 2025 09:08:42 -0400
-Message-Id: <20250805130945.471732-7-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.16-6.15] phy: rockchip-pcie: Enable all four lanes if required
+Date: Tue,  5 Aug 2025 09:09:08 -0400
+Message-Id: <20250805130945.471732-33-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250805130945.471732-1-sashal@kernel.org>
 References: <20250805130945.471732-1-sashal@kernel.org>
@@ -62,8 +64,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.16
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250805_061004_800174_2099FBE9 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20250805_061100_463589_8A0E3DB2 
+X-CRM114-Status: GOOD (  15.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,88 +77,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogR2VyYWxkbyBOYXNjaW1lbnRvIDxnZXJhbGRvZ2FicmllbEBnbWFpbC5jb20+CgpbIFVw
-c3RyZWFtIGNvbW1pdCAyNWZhY2JhYmMzZmMzM2M3OTRhZDA5ZDczZjczMjY4YzBmOGNiYzdkIF0K
-CnBjaWVfY29uZiBpcyB1c2VkIHRvIHRvdWNoIFRFU1RfV1JJVEUgc3Ryb2JlIHNpZ25hbC4gVGhp
-cyBzaWduYWwgc2hvdWxkCmJlIGVuYWJsZWQsIGEgbGl0dGxlIHRpbWUgd2FpdGVkLCBhbmQgdGhl
-biBkaXNhYmxlZC4gQ3VycmVudCBjb2RlIGNsZWFybHkKd2FzIGNvcHktcGFzdGVkIGFuZCBuZXZl
-ciBkaXNhYmxlcyB0aGUgc3Ryb2JlIHNpZ25hbC4gQWRqdXN0IHRoZSBkZWZpbmUuCldoaWxlIGF0
-IGl0LCByZW1vdmUgUEhZX0NGR19SRF9NQVNLIHdoaWNoIGhhcyBiZWVuIHVudXNlZCBzaW5jZQo2
-NGNkYzAzNjA4MTEgKCJwaHk6IHJvY2tjaGlwLXBjaWU6IHJlbW92ZSB1bnVzZWQgcGh5X3JkX2Nm
-ZyBmdW5jdGlvbiIpLgoKUmV2aWV3ZWQtYnk6IE5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9u
-Z0BsaW5hcm8ub3JnPgpTaWduZWQtb2ZmLWJ5OiBHZXJhbGRvIE5hc2NpbWVudG8gPGdlcmFsZG9n
-YWJyaWVsQGdtYWlsLmNvbT4KTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci9kNTE0ZDVk
-NTYyNzY4MGNhYWZhOGI3NTQ4Y2JkZmVlNDMwN2Y1NDQwLjE3NTEzMjIwMTUuZ2l0LmdlcmFsZG9n
-YWJyaWVsQGdtYWlsLmNvbQpTaWduZWQtb2ZmLWJ5OiBWaW5vZCBLb3VsIDx2a291bEBrZXJuZWwu
-b3JnPgpTaWduZWQtb2ZmLWJ5OiBTYXNoYSBMZXZpbiA8c2FzaGFsQGtlcm5lbC5vcmc+Ci0tLQoK
-TExNIEdlbmVyYXRlZCBleHBsYW5hdGlvbnMsIG1heSBiZSBjb21wbGV0ZWx5IGJvZ3VzOgoKIyMg
-QmFja3BvcnQgU3RhdHVzOiBZRVMKClRoaXMgY29tbWl0IHNob3VsZCBiZSBiYWNrcG9ydGVkIHRv
-IHN0YWJsZSBrZXJuZWwgdHJlZXMgZm9yIHRoZQpmb2xsb3dpbmcgcmVhc29uczoKCiMjIyBCdWcg
-QW5hbHlzaXMKVGhlIGNvbW1pdCBmaXhlcyBhIGNsZWFyIHByb2dyYW1taW5nIGJ1ZyB3aGVyZSBg
-UEhZX0NGR19XUl9ESVNBQkxFYCB3YXMKaW5jb3JyZWN0bHkgZGVmaW5lZCBhcyBgMWAgaW5zdGVh
-ZCBvZiBgMGAuIExvb2tpbmcgYXQgdGhlIGNvZGUgaW4KYHBoeV93cl9jZmcoKWAgZnVuY3Rpb24g
-KGxpbmVzIDEwMC0xMjApLCB0aGUgc2VxdWVuY2UgaXM6CjEuIFdyaXRlIGRhdGEgYW5kIGFkZHJl
-c3MgdG8gdGhlIGNvbmZpZ3VyYXRpb24gcmVnaXN0ZXIKMi4gV2FpdCAxIG1pY3Jvc2Vjb25kCjMu
-IEVuYWJsZSB0aGUgVEVTVF9XUklURSBzdHJvYmUgc2lnbmFsIGJ5IHdyaXRpbmcgYFBIWV9DRkdf
-V1JfRU5BQkxFYAogICAodmFsdWUgMSkKNC4gV2FpdCAxIG1pY3Jvc2Vjb25kCjUuIEludGVuZGVk
-IHRvIGRpc2FibGUgdGhlIHN0cm9iZSBzaWduYWwgd2l0aCBgUEhZX0NGR19XUl9ESVNBQkxFYAoK
-SG93ZXZlciwgc2luY2UgYm90aCBgUEhZX0NGR19XUl9FTkFCTEVgIGFuZCBgUEhZX0NGR19XUl9E
-SVNBQkxFYCB3ZXJlCmRlZmluZWQgYXMgYDFgLCB0aGUgc3Ryb2JlIHNpZ25hbCB3YXMgbmV2ZXIg
-YWN0dWFsbHkgZGlzYWJsZWQuIFRoaXMKbWVhbnMgdGhlIFBIWSBjb25maWd1cmF0aW9uIHdyaXRl
-cyB3ZXJlIGxlYXZpbmcgdGhlIHN0cm9iZSBzaWduYWwKcGVybWFuZW50bHkgZW5hYmxlZCwgd2hp
-Y2ggaXMgaW5jb3JyZWN0IGhhcmR3YXJlIHByb2dyYW1taW5nLgoKIyMjIEltcGFjdCBBc3Nlc3Nt
-ZW50CjEuICoqUmVhbCBidWcgYWZmZWN0aW5nIHVzZXJzKio6IFRoaXMgaXMgYSBmdW5jdGlvbmFs
-IGJ1ZyB0aGF0IGFmZmVjdHMKICAgYWxsIFJvY2tjaGlwIFBDSWUgUEhZIG9wZXJhdGlvbnMuIFRo
-ZSBzdHJvYmUgc2lnbmFsIGJlaW5nIGxlZnQKICAgZW5hYmxlZCBjb3VsZCBjYXVzZToKICAgLSBJ
-bmNvcnJlY3QgUEhZIGNvbmZpZ3VyYXRpb24gYmVoYXZpb3IKICAgLSBQb3RlbnRpYWwgcG93ZXIg
-Y29uc3VtcHRpb24gaXNzdWVzCiAgIC0gUG9zc2libGUgaGFyZHdhcmUgc3RhdGUgY29ycnVwdGlv
-bgogICAtIFVucHJlZGljdGFibGUgUENJZSBsaW5rIGJlaGF2aW9yCgoyLiAqKlNtYWxsIGFuZCBj
-b250YWluZWQgZml4Kio6IFRoZSBjaGFuZ2UgaXMgbWluaW1hbCAtIGp1c3QgY2hhbmdpbmcKICAg
-b25lIGRlZmluZSBmcm9tIGAxYCB0byBgMGAuIFRoaXMgaXMgZXhhY3RseSB0aGUgdHlwZSBvZiB0
-YXJnZXRlZCBmaXgKICAgc3VpdGFibGUgZm9yIHN0YWJsZS4KCjMuICoqQ2xlYXIgY29ycmVjdG5l
-c3MqKjogVGhlIGZpeCBpcyBvYnZpb3VzbHkgY29ycmVjdCAtIGEgZGlzYWJsZQogICBvcGVyYXRp
-b24gc2hvdWxkIHVzZSB2YWx1ZSBgMGAsIG5vdCBgMWAuIFRoZSBidWcgYXBwZWFycyB0byBiZSBh
-CiAgIGNvcHktcGFzdGUgZXJyb3IgZnJvbSB0aGUgaW5pdGlhbCBkcml2ZXIgaW50cm9kdWN0aW9u
-IGluIDIwMTYgKGNvbW1pdAogICBmY2ZmZWUzZDU0ZmNhKS4KCjQuICoqTG9uZy1zdGFuZGluZyBp
-c3N1ZSoqOiBUaGlzIGJ1ZyBoYXMgZXhpc3RlZCBzaW5jZSB0aGUgZHJpdmVyIHdhcwogICBmaXJz
-dCBpbnRyb2R1Y2VkIGluIDIwMTYsIGFmZmVjdGluZyBhbGwga2VybmVsIHZlcnNpb25zIHdpdGgg
-dGhpcwogICBkcml2ZXIuCgo1LiAqKk5vIGFyY2hpdGVjdHVyYWwgY2hhbmdlcyoqOiBUaGUgZml4
-IGRvZXNuJ3QgaW50cm9kdWNlIG5ldyBmZWF0dXJlcwogICBvciBjaGFuZ2UgdGhlIGRyaXZlciBh
-cmNoaXRlY3R1cmUgLSBpdCBzaW1wbHkgY29ycmVjdHMgYW4gaW5jb3JyZWN0CiAgIGNvbnN0YW50
-IHZhbHVlLgoKNi4gKipMb3cgcmVncmVzc2lvbiByaXNrKio6IENoYW5naW5nIHRoZSBkaXNhYmxl
-IHZhbHVlIGZyb20gMSB0byAwIGlzCiAgIHRoZSBjb3JyZWN0IGJlaGF2aW9yIGFjY29yZGluZyB0
-byB0eXBpY2FsIGhhcmR3YXJlIHByb2dyYW1taW5nCiAgIHBhdHRlcm5zLiBUaGUgcmlzayBvZiBy
-ZWdyZXNzaW9uIGlzIG1pbmltYWwgc2luY2UgdGhpcyBmaXhlcwogICBpbmNvcnJlY3QgYmVoYXZp
-b3IgcmF0aGVyIHRoYW4gY2hhbmdpbmcgd29ya2luZyBmdW5jdGlvbmFsaXR5LgoKIyMjIEFkZGl0
-aW9uYWwgQ29udGV4dApUaGUgY29tbWl0IGFsc28gcmVtb3ZlcyB0aGUgdW51c2VkIGBQSFlfQ0ZH
-X1JEX01BU0tgIGRlZmluZSBhcyBjbGVhbnVwLAp3aGljaCB3YXMgbGVmdCBvdmVyIGZyb20gY29t
-bWl0IDY0Y2RjMDM2MDgxMS4gVGhpcyBpcyBoYXJtbGVzcyBjbGVhbnVwCnRoYXQgZG9lc24ndCBh
-ZmZlY3QgdGhlIGJhY2twb3J0IGRlY2lzaW9uLgoKVGhlIGNvbW1pdCBtZXNzYWdlIGNsZWFybHkg
-ZGVzY3JpYmVzIHRoZSBpc3N1ZTogdGhlIFRFU1RfV1JJVEUgc3Ryb2JlCnNpZ25hbCBzaG91bGQg
-Zm9sbG93IGEgcGF0dGVybiBvZiBlbmFibGXihpJ3YWl04oaSZGlzYWJsZSwgYnV0IHRoZSBjdXJy
-ZW50CmNvZGUgbmV2ZXIgYWN0dWFsbHkgZGlzYWJsZXMgaXQgZHVlIHRvIHRoZSBpbmNvcnJlY3Qg
-ZGVmaW5lIHZhbHVlLgoKVGhpcyBtZWV0cyBhbGwgdGhlIGNyaXRlcmlhIGZvciBzdGFibGUgYmFj
-a3BvcnRzOiBpdCBmaXhlcyBhIHJlYWwgYnVnLAppcyBzbWFsbCBhbmQgc2VsZi1jb250YWluZWQs
-IGhhcyBtaW5pbWFsIHJpc2ssIGFuZCBjb3JyZWN0cyBjbGVhcmx5CmluY29ycmVjdCBiZWhhdmlv
-ciB0aGF0IGhhcyBiZWVuIHByZXNlbnQgc2luY2UgZHJpdmVyIGludHJvZHVjdGlvbi4KCiBkcml2
-ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtcGNpZS5jIHwgMyArLS0KIDEgZmlsZSBjaGFu
-Z2VkLCAxIGluc2VydGlvbigrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJz
-L3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtcGNpZS5jIGIvZHJpdmVycy9waHkvcm9ja2NoaXAv
-cGh5LXJvY2tjaGlwLXBjaWUuYwppbmRleCBiZDQ0YWYzNmM2N2EuLjYzZTg4YWJjNjZjNiAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXBjaWUuYworKysgYi9k
-cml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtcGNpZS5jCkBAIC0zMCw5ICszMCw4IEBA
-CiAjZGVmaW5lIFBIWV9DRkdfQUREUl9TSElGVCAgICAxCiAjZGVmaW5lIFBIWV9DRkdfREFUQV9N
-QVNLICAgICAweGYKICNkZWZpbmUgUEhZX0NGR19BRERSX01BU0sgICAgIDB4M2YKLSNkZWZpbmUg
-UEhZX0NGR19SRF9NQVNLICAgICAgIDB4M2ZmCiAjZGVmaW5lIFBIWV9DRkdfV1JfRU5BQkxFICAg
-ICAxCi0jZGVmaW5lIFBIWV9DRkdfV1JfRElTQUJMRSAgICAxCisjZGVmaW5lIFBIWV9DRkdfV1Jf
-RElTQUJMRSAgICAwCiAjZGVmaW5lIFBIWV9DRkdfV1JfU0hJRlQgICAgICAwCiAjZGVmaW5lIFBI
-WV9DRkdfV1JfTUFTSyAgICAgICAxCiAjZGVmaW5lIFBIWV9DRkdfUExMX0xPQ0sgICAgICAweDEw
-Ci0tIAoyLjM5LjUKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+From: Valmantas Paliksa <walmis@gmail.com>
+
+[ Upstream commit c3fe7071e196e25789ecf90dbc9e8491a98884d7 ]
+
+Current code enables only Lane 0 because pwr_cnt will be incremented on
+first call to the function. Let's reorder the enablement code to enable
+all 4 lanes through GRF.
+
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+
+Signed-off-by: Valmantas Paliksa <walmis@gmail.com>
+Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+Link: https://lore.kernel.org/r/16b610aab34e069fd31d9f57260c10df2a968f80.1751322015.git.geraldogabriel@gmail.com
+Signed-off-by: Vinod Koul <vkoul@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+
+LLM Generated explanations, may be completely bogus:
+
+**Backport Status: YES**
+
+This commit fixes a significant bug in the Rockchip PCIe PHY driver
+where only Lane 0 was being enabled instead of all required lanes.
+Here's my detailed analysis:
+
+## Bug Description
+The original code had a critical logic error in
+`rockchip_pcie_phy_power_on()`. The lane enable operation (writing to
+`pcie_laneoff` register) was placed AFTER the `pwr_cnt++` check at line
+170. Since `pwr_cnt` is a reference counter that tracks how many times
+the PHY has been powered on, the first call would increment it from 0 to
+1 and continue with initialization. However, subsequent calls for other
+lanes (Lane 1, 2, 3) would hit the early return at line 171 (`goto
+err_out`), preventing those lanes from being enabled.
+
+## The Fix
+The commit moves the lane enable operation (lines 184-188 in original)
+to BEFORE the `pwr_cnt++` check. This ensures that each lane gets
+properly enabled through the GRF (General Register File) regardless of
+the power reference count state.
+
+## Why This Should Be Backported
+
+1. **Fixes a Real Bug**: This fixes a functional bug where PCIe devices
+   requiring multiple lanes (x2, x4 configurations) would only have Lane
+   0 enabled, severely impacting performance or causing complete failure
+   to operate.
+
+2. **Small and Contained Fix**: The change is minimal - just reordering
+   5 lines of code within a single function. No architectural changes or
+   new features are introduced.
+
+3. **Low Risk**: The fix simply ensures the lane enable register write
+   happens for all lanes, which was clearly the original intent. The
+   moved code block remains identical.
+
+4. **Hardware Functionality Impact**: PCIe lane configuration is
+   critical for proper hardware operation. Devices expecting x4 links
+   but only getting x1 would experience significant performance
+   degradation (75% bandwidth loss).
+
+5. **Clear Root Cause**: The bug mechanism is straightforward - the
+   reference counter was preventing lanes 1-3 from being configured due
+   to early return.
+
+6. **No Side Effects**: The change doesn't introduce new behavior, it
+   just fixes the existing broken behavior to work as originally
+   intended.
+
+This is exactly the type of bug fix that stable kernels should receive -
+it's a clear functional regression fix with minimal code changes and low
+risk of introducing new issues.
+
+ drivers/phy/rockchip/phy-rockchip-pcie.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
+index 63e88abc66c6..4e2dfd01adf2 100644
+--- a/drivers/phy/rockchip/phy-rockchip-pcie.c
++++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
+@@ -159,6 +159,12 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
+ 
+ 	guard(mutex)(&rk_phy->pcie_mutex);
+ 
++	regmap_write(rk_phy->reg_base,
++		     rk_phy->phy_data->pcie_laneoff,
++		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
++				   PHY_LANE_IDLE_MASK,
++				   PHY_LANE_IDLE_A_SHIFT + inst->index));
++
+ 	if (rk_phy->pwr_cnt++) {
+ 		return 0;
+ 	}
+@@ -175,12 +181,6 @@ static int rockchip_pcie_phy_power_on(struct phy *phy)
+ 				   PHY_CFG_ADDR_MASK,
+ 				   PHY_CFG_ADDR_SHIFT));
+ 
+-	regmap_write(rk_phy->reg_base,
+-		     rk_phy->phy_data->pcie_laneoff,
+-		     HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
+-				   PHY_LANE_IDLE_MASK,
+-				   PHY_LANE_IDLE_A_SHIFT + inst->index));
+-
+ 	/*
+ 	 * No documented timeout value for phy operation below,
+ 	 * so we make it large enough here. And we use loop-break
+-- 
+2.39.5
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
