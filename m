@@ -4,58 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F20CBC87FCB
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Aug 2025 11:20:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9E47C87FD1
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Aug 2025 12:02:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GMDTqbvr8XTiHFdJSuEp/3k6opVGvYLLxvwY5YlYxNI=; b=0i/4Lhw0LRqdhD
-	ratRqYP3tNEQzvMltVeLMlHXErCiTjZttVqtDmC41ssmmyTZo2n3EryXKfHFlDGIQnLE+kb+oVjHc
-	Ca5L6Xq3SsGt+ZfZ9xVZSEvJj6dUgTG9ciLs1hnIa+4UU/MQz2wKuMuJ6ycw05ZT/a4/2QFJUir6K
-	kJQ9vEv+WMXN8mVPk1dY/gLFxI0oj0pD5/2I5qdyim9oCcoC+gBfqb84yyANfO4GDMFP7Wnav60Ii
-	jbAztVn1uhsgVr7Vz0gh3cZg2wATRZhwNeLZ4GDJaIU/2byOx6qk5iTzzY8VvGyPrWRvqB4Zv8Wl0
-	aiC1nh62iST9sCT1/L6A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mJ2kXD7tk1o0zNXADDPnGduCPlRaeWTyu5H0jT80IS4=; b=vu8hV8TRTczC1V
+	6qncoo9H/IXPtfsx4CAvlNEep838JKU5LXVcZB61yS5tw1+rp6uGqrTuRWgPmirZ/JuSrBXfwM8ne
+	wVG6CKFsF4XDx/qyKpUrQhX3iPYcQ+5M67ZDUbgEFr5nR7XE+m44zjwsTDfYd911nEQJlBfZaRi7C
+	oK8TVOGzfdhV4Ym6pPw8iA4fYsfEoBTEvtTad4E1CkkOW+YDG76VwFDxQqzbAf9LMS2QlEcsnUIWq
+	m8dsGcL03Q1zTjl36NQQM5msr8eI2GT4duTKH2x3QzWx9YpYM3yYFdV/crWsIucmDQrL9l5qKwPFN
+	9uMHSLc5LxOUI/9wO5UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujFhy-0000000Cam6-1A3M;
-	Tue, 05 Aug 2025 11:19:54 +0000
-Received: from ni.piap.pl ([195.187.100.5])
+	id 1ujGN0-0000000Ceh1-2KDD;
+	Tue, 05 Aug 2025 12:02:18 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujFbS-0000000CZu0-2WNK;
-	Tue, 05 Aug 2025 11:13:11 +0000
-Received: from t19.piap.pl (OSB1819.piap.pl [10.0.9.19])
-	by ni.piap.pl (Postfix) with ESMTPS id C8DC9C3EEAC9;
-	Tue,  5 Aug 2025 13:13:08 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 ni.piap.pl C8DC9C3EEAC9
-From: =?utf-8?Q?Krzysztof_Ha=C5=82asa?= <khalasa@piap.pl>
-To: Stefan Klug <stefan.klug@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>,  Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>,  Heiko Stuebner <heiko@sntech.de>,
-  Paul Elder <paul.elder@ideasonboard.com>,  Jacopo Mondi
- <jacopo.mondi@ideasonboard.com>,  Ondrej Jirman <megi@xff.cz>,
-  linux-media@vger.kernel.org,  linux-rockchip@lists.infradead.org,
-  linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org
-Subject: Re: FYI: i.MX8MP ISP (RKISP1) MI registers corruption
-In-Reply-To: <m34iumujcs.fsf@t19.piap.pl> ("Krzysztof =?utf-8?Q?Ha=C5=82as?=
- =?utf-8?Q?a=22's?= message of
-	"Tue, 05 Aug 2025 12:57:07 +0200")
-References: <m3h5zbxkc6.fsf@t19.piap.pl> <m38qknx939.fsf@t19.piap.pl>
-	<175308758352.3134829.9472501038683860006@localhost>
-	<m31pq9y98z.fsf@t19.piap.pl>
-	<175326599663.2811177.16620980968274114885@localhost>
-	<m3h5z2vw12.fsf@t19.piap.pl>
-	<175344176070.2811177.10693943493658922992@localhost>
-	<m3qzxyug1s.fsf@t19.piap.pl> <m3cy9futcj.fsf@t19.piap.pl>
-	<m34iumujcs.fsf@t19.piap.pl>
-Date: Tue, 05 Aug 2025 13:13:08 +0200
-Message-ID: <m3zfcet41n.fsf@t19.piap.pl>
+	id 1ujGHg-0000000Cdd5-3q0M;
+	Tue, 05 Aug 2025 11:56:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1754395006;
+	bh=k1SsbcEubPLdbrG03mOUs1Bmt3XqU87WofwUgso3Gtc=;
+	h=From:Subject:Date:To:Cc:From;
+	b=F5GEecRf6Mfk4fSlMzpjcS80VspDpmMbvMLI9o5RmQTwNQyAndZgIjb7wQ+KHfDDR
+	 qyGZb6oBmdMkenMmAFmS85WaGC/AzZawf+eIpJTYGjnyMSHX2gIG3tvTZuj2jLitvf
+	 ybVVZsbLJO4cJvUgmSPB4zGXqQJcA4LCNujaYv0UYXDYw5zQbyTH97C+aDfii9YS+n
+	 pJh5I03XNEEuOAaS3BkrL7Jk38QS6pu6l88dPXSPdKYkPDidWBdLi/hPWbtUkFeKsM
+	 06HyzT3EYRJB3ArnKEQtum1Ius1gGRqmsiBSQSS4sk9y5Tv3PRJlwQLQz+GpM6qpWx
+	 SzTai64H5Av4Q==
+Received: from localhost (unknown [82.79.138.60])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 824E417E0202;
+	Tue,  5 Aug 2025 13:56:46 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH v2 00/14] Add HDMI 2.1 FRL support to
+ phy-rockchip-samsung-hdptx
+Date: Tue, 05 Aug 2025 14:56:42 +0300
+Message-Id: <20250805-phy-hdptx-frl-v2-0-d118bd4b6e0b@collabora.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAHrxkWgC/3XMQQ6CMBCF4auQWTumFLTCynsYFlCmdpJKm5YQC
+ OHuVvYu/5e8b4dEkSlBW+wQaeHEfsohLwVo209vQh5zgxTyJpR4YLAb2jHMK5ro0OiqUmocGiM
+ J8idEMrye3qvLbTnNPm4nv5S/9Z+0lChQGxLNnaSsTf3U3rl+8LG/av+B7jiOL2++RQiuAAAA
+X-Change-ID: 20250708-phy-hdptx-frl-fc3377db9f2e
+To: Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250805_041310_798998_DCF9B74B 
-X-CRM114-Status: UNSURE (   3.60  )
+X-CRM114-CacheID: sfid-20250805_045649_108248_B164782F 
+X-CRM114-Status: UNSURE (   9.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,17 +76,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-S3J6eXN6dG9mIEhhxYJhc2EgPGtoYWxhc2FAcGlhcC5wbD4gd3JpdGVzOgoKPiBTRXJyb3IgSW50
-ZXJydXB0IG9uIENQVTMsIGNvZGUgMHgwMDAwMDAwMGJmMDAwMDAyIC0tIFNFcnJvcgoKQ291bGQg
-aGF2ZSBiZWVuIFBFQktBQywgdGhvdWdoLgotLSAKS3J6eXN6dG9mICJDaHJpcyIgSGHFgmFzYQoK
-U2llxIcgQmFkYXdjemEgxYF1a2FzaWV3aWN6ClByemVteXPFgm93eSBJbnN0eXR1dCBBdXRvbWF0
-eWtpIGkgUG9taWFyw7N3IFBJQVAKQWwuIEplcm96b2xpbXNraWUgMjAyLCAwMi00ODYgV2Fyc3ph
-d2EKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+The Samsung HDMI/eDP Transmitter Combo PHY is capable of handling four
+HDMI 2.1 Fixed Rate Link (FRL) lanes, while each lane can operate at
+3Gbps, 6Gbps, 8Gbps, 10Gbps or 12Gbps.
+
+This patchset extends the HDMI PHY configuration API to manage the FRL
+mode and provides all the required HDMI driver changes to enable FRL in
+addition to the already supported TMDS mode.
+
+The series also contains a few driver fixes/improvements that are not
+directly related, but are not deemed critical enough to warrant separate
+submission.
+
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Changes in v2:
+- Added a couple of new patches:
+  * Fix reported clock rate in high bpc mode
+  * Drop hw_rate driver data
+- Applied several tweaks to the following patches:
+  * Compute clk rate from PLL config
+  * Switch to driver specific HDMI config
+  * Add HDMI 2.1 FRL support
+- Rebased series onto next-20250804
+- Link to v1: https://lore.kernel.org/r/20250708-phy-hdptx-frl-v1-0-cfe096e224f4@collabora.com
+
+---
+Cristian Ciocaltea (14):
+      phy: hdmi: Add HDMI 2.1 FRL configuration options
+      phy: rockchip: samsung-hdptx: Fix reported clock rate in high bpc mode
+      phy: rockchip: samsung-hdptx: Reduce ROPLL loop bandwidth
+      phy: rockchip: samsung-hdptx: Prevent Inter-Pair Skew from exceeding the limits
+      phy: rockchip: samsung-hdptx: Use usleep_range() instead of udelay()
+      phy: rockchip: samsung-hdptx: Fix coding style alignment
+      phy: rockchip: samsung-hdptx: Consistently use [rk_]hdptx_[tmds_] prefixes
+      phy: rockchip: samsung-hdptx: Enable lane output in common helper
+      phy: rockchip: samsung-hdptx: Cleanup *_cmn_init_seq lists
+      phy: rockchip: samsung-hdptx: Compute clk rate from PLL config
+      phy: rockchip: samsung-hdptx: Drop hw_rate driver data
+      phy: rockchip: samsung-hdptx: Switch to driver specific HDMI config
+      phy: rockchip: samsung-hdptx: Extend rk_hdptx_phy_verify_hdmi_config() helper
+      phy: rockchip: samsung-hdptx: Add HDMI 2.1 FRL support
+
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 670 ++++++++++++++++++----
+ include/linux/phy/phy-hdmi.h                      |  14 +-
+ include/linux/phy/phy.h                           |   3 +-
+ 3 files changed, 581 insertions(+), 106 deletions(-)
+---
+base-commit: 5c5a10f0be967a8950a2309ea965bae54251b50e
+change-id: 20250708-phy-hdptx-frl-fc3377db9f2e
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
