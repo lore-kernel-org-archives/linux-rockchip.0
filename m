@@ -4,93 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE916C87FCB
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Aug 2025 13:09:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CED61C87FCB
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Aug 2025 13:17:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u3A+dpOLgEY34Sr0h8SV1CubCIzQkzFyIz4nudD17nM=; b=3Rt0BEbE9BssS3
-	4b3/IC0Z/i4xgVFt4/19FGbZxm5MJZw09jCSPsopYB1u/D7DdG+Ioj1fE6vqubod1Vy4Rafq58QRY
-	A/vQM0gN9d2dSIEAIipep/HjVEiPG8Dl6Z4VrGFttWxbHm7KacC9xDZCPbtc7PlmRReB/5YvKTemP
-	S4wweAWNh/F+Uyrijndl0MZp2XN3KsWU6DbL+whDXwyyOeGBpyZ34S87bqEmWQyC2HMcs5brI9qp9
-	rzFu4V8r5gD5CNkT9iUoze4RwK5on+/pDEmt2EXRavAitoJo7wMh5sXZ52tAeBYYCSxudqCmwekAh
-	CAskgj0lU1QqwXOAsGcQ==;
+	List-Owner; bh=eyv/R+jap1keTBwzIPo7GQc8p5Yaxvf11kWbjwvR9t4=; b=pRYQGBEy/naE3f
+	B/staHAhV1LPQi9U5wpU+l2LVTdu6vqUAr/vyQTD1zRErzsMedGyaBricMZRSWpN9V1vO64TuYAgD
+	hDC/0F29/dW3QyIz0eU862NMf/7QII4HQ6SgUYVWIQFZbkdFpy9T/fl7DvoXseS1DS59kR2hQuPOw
+	3cdIsH22nKvaf/p6r27JyuV8QhxyEEHy0/2fXtgus+MzKJv7Qsuglm+NFBkKol1tVh8kIfy5XA+kc
+	OpyWs9QNgUXGfn9quUmBY+IODwnW1a1XkgKAMfgY7EmynINrpaZa/AdMrNM6VW5K28Qf6J7tHpsUa
+	4Dbqfi52Uc8Lve1oy1Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujHPy-0000000CnLf-2loj;
-	Tue, 05 Aug 2025 13:09:26 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1ujHXn-0000000CojN-46Pj;
+	Tue, 05 Aug 2025 13:17:31 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujHNJ-0000000Cn4G-1tRL;
-	Tue, 05 Aug 2025 13:06:42 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-af96d097df5so374750466b.3;
-        Tue, 05 Aug 2025 06:06:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1754399199; x=1755003999; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MAh02TkFyzgFFZr3oxHjXV6dZOI2X7cgUfbU3vh9k5M=;
-        b=em8+1WRhmPZPt4Y66SvlRUXXZiC8eAzU8UIvI2ZX3kc3lQMC839NOXMKpftsQ7zRmx
-         I4kIMZSqa4yxDGrM28akD5zc5bkprCMD1qWL7W9ezCrU+oFHsFEghEhU5hksSSaUHER8
-         iBk41YJAg/uHLigAvRuoZVhuvybLi57lTqeI83VBxHg+d05fEsg2bUU5gDoRK0Cj9RUE
-         M8RbxU76saHbxe2ImqItzf9blvD905PEMfIJdm4VlFvk33nG9S6ZjJMmjvkC15dVvIMT
-         bGF81yEA1DTxeSETCcM2h5zQPFlR+gDM7arMPq84laNNkmkQsbZqw2WRV9FY/NucBUV/
-         Pqrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1754399199; x=1755003999;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MAh02TkFyzgFFZr3oxHjXV6dZOI2X7cgUfbU3vh9k5M=;
-        b=TunhO/Ckb9aWRH/5Vw1uDUZdLR6R1bR9gj2wWeg8hWkcxf0YHr3bMisviSSa2ZNVzK
-         /KLw1kWV4ZMFvmZZU52gATKgJRYEuAsN/S1P62abW3ZUoO+hnAcpiigoYIOSLG03kIXL
-         4k+oTXte5fWX5zbn321VskPsVfE3QIR1CfA8/7MhCEJCxO4PcGpTXEVVTX4HtfLCTEdN
-         xCWTz4az6Y9381Jbl4M6cwiY30+noVb2GZ/AArpxV9ElQpf8LvuixlpY6i8AKyIM8yM9
-         Fjfgtxr7pool1qG6n4ZxAi7DR204obQP7S6ScY+b3wHMz8OT/yryCSV3+mFtn+C/RXwj
-         cEXg==
-X-Forwarded-Encrypted: i=1; AJvYcCUnYXvY1DibOrXLh5ShTuy64lhjgXX0WywtUdRtpteUb2UyKbaQgppWgO1TqOsdklEkRjEo7KyHBoZVR2BdziA=@lists.infradead.org, AJvYcCWgMjOItWwJm1TgWN1iuoPx3j7vr+zXZ0yECfKFUkRMvYhe0YuEpdCs4+bK0ewjbsalVKvoGWv2wyiTwfil2ilU@lists.infradead.org, AJvYcCWu6LnPxjN62XsOtlT9HG6esECOYMyMgkI1+b0N++AQTSLN3Myx9c7ZwGdlL2HQUfqzZTocbPkkFX8G8GruF3A=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwP61JizpLtx804Vo03LURnrRJfMNpjh5lLy4GYzGac9v0SXHkj
-	Cgwm4dAiJzbLn9njhQBJjr6pMH43qL9os8NdCNgOrF8QDxk2xRCn+vQbVoAN7TeuIn+f36JYlCT
-	roVN1M1UAI+W/WMWPBL99TWLPv8S2uj8=
-X-Gm-Gg: ASbGncvPJ876qndu8ADDXEJ2tQLzYAatplUmhTDDqRHKssd0L+167AlBS80DCMlLc5p
-	RVBzzjUy/j3QALkONs465qwLjJa/2n7ns/krJUh084F8ZmbrUpIkt+fkg4SXxQ2LBFdhgrzpxen
-	IHXzMg/fEEUmHSTxyHxKyXp6eWWGi82Nw9ppXq7H/aqwAN0tzehUm5i+0Zfa3mLFefta4tavqwW
-	YMVp+ST9Q==
-X-Google-Smtp-Source: AGHT+IG+UhvnR8PgL0a0Zufs5S7y3V5pfr4M4F2QIupH8Wrp93UHwXEqXJVmQMM5LOZynRuY87KMSNBR1QBwOUx0aD8=
-X-Received: by 2002:a17:907:6e8f:b0:af9:3a3a:227e with SMTP id
- a640c23a62f3a-af9401bb461mr1278298266b.38.1754399199235; Tue, 05 Aug 2025
- 06:06:39 -0700 (PDT)
-MIME-Version: 1.0
-References: <pndectqm7te.a.out@axis.com>
-In-Reply-To: <pndectqm7te.a.out@axis.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Tue, 5 Aug 2025 15:06:02 +0200
-X-Gm-Features: Ac12FXzfhgsKY1Z4mDhPlXC5tTUlolIHxAiCVq_7VMItomP-88jysmgI3xJFCTw
-Message-ID: <CAHp75VeGvgv6TAYRRtEySmESkjygW79ms-Yd64h08_+7JjJMJw@mail.gmail.com>
-Subject: Re: [PATCH v2] iio: Remove error prints for devm_add_action_or_reset()
-To: Waqar Hameed <waqar.hameed@axis.com>
-Cc: Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>, 
-	=?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, 
-	Andy Shevchenko <andy@kernel.org>, Cosmin Tanislav <cosmin.tanislav@analog.com>, 
-	Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matteo Martelli <matteomartelli3@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Francesco Dolcini <francesco@dolcini.it>, 
-	=?UTF-8?Q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>, 
-	Hugo Villeneuve <hvilleneuve@dimonoff.com>, Subhajit Ghosh <subhajit.ghosh@tweaklogic.com>, 
-	Mudit Sharma <muditsharma.info@gmail.com>, Gerald Loacker <gerald.loacker@wolfvision.net>, 
-	Song Qiang <songqiang1304521@gmail.com>, Crt Mori <cmo@melexis.com>, kernel@axis.com, 
-	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	id 1ujHQX-0000000CnRx-45tI;
+	Tue, 05 Aug 2025 13:10:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 56660601FC;
+	Tue,  5 Aug 2025 13:10:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B202C4CEF4;
+	Tue,  5 Aug 2025 13:09:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754399401;
+	bh=PDR9udD4+zShHPUvTwKjzJ4kWssWjHhepo+x0VPHa78=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=H7ifMCo4Rmb2Glx5yJy9yn+QDDYC541n4Ts8YkGZFEicAzDIEDqRPTT5s+6x+KrGs
+	 C26sUMrnTBnPq6nEOXtIpBGGUhAA2Q3G3HYI0WeSptKPxEhpsVPBcdJgkMDMUf31f6
+	 RbUvKUJ7jAn7mRUrT4F/oxgaAixyTvCT5V01hkAT/OsiYZuhVWkLOJKptuIJ2zpoc+
+	 jjwkjNWRc2EUwjgSaQgLDv79ckUFBmw3vZxnn1v1oYq00EuYkcLQ7lRJT3Z2+38Cl3
+	 VDv3oA2Fnf4p5n6licWisPvpsMbTwDMbpoTo66/DVrr9IJt1jgLb9wtrVJwKVPRubL
+	 eok/eCp7ddtrw==
+From: Sasha Levin <sashal@kernel.org>
+To: patches@lists.linux.dev,
+	stable@vger.kernel.org
+Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Niklas Cassel <cassel@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Sasha Levin <sashal@kernel.org>,
+	heiko@sntech.de,
+	kwilczynski@kernel.org,
+	shawn.lin@rock-chips.com,
+	18255117159@163.com,
+	jirislaby@kernel.org,
+	didi.debian@cknow.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250805_060641_492882_2BB0EE83 
-X-CRM114-Status: GOOD (  10.61  )
+Subject: [PATCH AUTOSEL 6.16] PCI: dw-rockchip: Delay link training after hot reset in EP mode
+Date: Tue,  5 Aug 2025 09:08:41 -0400
+Message-Id: <20250805130945.471732-6-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250805130945.471732-1-sashal@kernel.org>
+References: <20250805130945.471732-1-sashal@kernel.org>
+MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.16
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,22 +78,168 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBBdWcgNSwgMjAyNSBhdCAxMTozM+KAr0FNIFdhcWFyIEhhbWVlZCA8d2FxYXIuaGFt
-ZWVkQGF4aXMuY29tPiB3cm90ZToKPgo+IFdoZW4gYGRldm1fYWRkX2FjdGlvbl9vcl9yZXNldCgp
-YCBmYWlscywgaXQgaXMgZHVlIHRvIGEgZmFpbGVkIG1lbW9yeQo+IGFsbG9jYXRpb24gYW5kIHdp
-bGwgdGh1cyByZXR1cm4gYC1FTk9NRU1gLiBgZGV2X2Vycl9wcm9iZSgpYCBkb2Vzbid0IGRvCj4g
-YW55dGhpbmcgd2hlbiBlcnJvciBpcyBgLUVOT01FTWAuIFRoZXJlZm9yZSwgcmVtb3ZlIHRoZSB1
-c2VsZXNzIGNhbGwgdG8KPiBgZGV2X2Vycl9wcm9iZSgpYCB3aGVuIGBkZXZtX2FkZF9hY3Rpb25f
-b3JfcmVzZXQoKWAgZmFpbHMsIGFuZCBqdXN0Cj4gcmV0dXJuIHRoZSB2YWx1ZSBpbnN0ZWFkLgoK
-RXZlbiBtb3JlLCB0aGUgZGV2bSBoYXMgdHJhY2Vwb2ludHMgaW4gY2FzZSBzb21lYm9keSByZWFs
-bHkgd2FudHMgdG8KaW52ZXN0aWdhdGUgZmFpbHVyZXMuCgpGdWxseSBpbiBzdXBwb3J0IG9mIHRo
-aXMgY2hhbmdlLgpSZXZpZXdlZC1ieTogQW5keSBTaGV2Y2hlbmtvIDxhbmR5QGtlcm5lbC5vcmc+
-CgotLSAKV2l0aCBCZXN0IFJlZ2FyZHMsCkFuZHkgU2hldmNoZW5rbwoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+
+[ Upstream commit c0b93754547dde16c8370b8fdad5f396e7786647 ]
+
+RK3588 TRM, section "11.6.1.3.3 Hot Reset and Link-Down Reset" states that:
+
+  If you want to delay link re-establishment (after reset) so that you can
+  reprogram some registers through DBI, you must set app_ltssm_enable =0
+  immediately after core_rst_n as shown in above. This can be achieved by
+  enable the app_dly2_en, and end-up the delay by assert app_dly2_done.
+
+I.e. setting app_dly2_en will automatically deassert app_ltssm_enable on
+a hot reset, and setting app_dly2_done will re-assert app_ltssm_enable,
+re-enabling link training.
+
+When receiving a hot reset/link-down IRQ when running in EP mode, we will
+call dw_pcie_ep_linkdown(), which may update registers through DBI. Unless
+link training is inhibited, these register updates race with the link
+training.
+
+To avoid the race, set PCIE_LTSSM_APP_DLY2_EN so the controller never
+automatically trains the link after a link-down or hot reset interrupt.
+That way any DBI updates done in the dw_pcie_ep_linkdown() path will happen
+while the link is still down.  Then allow link training by setting
+PCIE_LTSSM_APP_DLY2_DONE
+
+Co-developed-by: Niklas Cassel <cassel@kernel.org>
+Signed-off-by: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
+Signed-off-by: Manivannan Sadhasivam <mani@kernel.org>
+[bhelgaas: commit log]
+Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+Link: https://patch.msgid.link/20250613101908.2182053-2-cassel@kernel.org
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+
+LLM Generated explanations, may be completely bogus:
+
+**Backport Status: YES**
+
+This commit should be backported to stable kernel trees for the
+following reasons:
+
+## 1. Fixes a Clear Race Condition Bug
+
+The commit fixes a race condition between link training and DBI register
+updates after a hot reset in EP mode. As stated in the commit message
+and evidenced by the code changes:
+
+- **Line 485-487** (original): When `PCIE_LINK_REQ_RST_NOT_INT`
+  interrupt occurs, `dw_pcie_ep_linkdown()` is called which updates
+  registers through DBI
+- Without this fix, these DBI updates race with automatic link re-
+  training after reset
+- The RK3588 TRM explicitly documents this race condition and the proper
+  mitigation
+
+## 2. Small and Contained Fix
+
+The changes are minimal and well-contained:
+- Adds only 2 new bit definitions (`PCIE_LTSSM_APP_DLY2_EN` and
+  `PCIE_LTSSM_APP_DLY2_DONE`)
+- Modifies 3 locations with simple bit operations:
+  - **Line 477**: Changes variable declaration to add `val`
+  - **Lines 488-491**: Adds 3 lines to re-enable link training after DBI
+    updates
+  - **Lines 574-577**: Modifies initialization to enable automatic delay
+
+## 3. Affects User-Visible Functionality
+
+Without this fix, EP mode operation can experience:
+- Corrupted register updates during hot reset scenarios
+- Unpredictable behavior when the host performs hot reset
+- Potential link training failures
+
+## 4. Recent Feature with Active Bug Fixes
+
+EP mode support was only added in commit e242f26f6320 (June 2024),
+making this a relatively new feature that's still being stabilized. The
+driver has seen multiple recent fixes:
+- 286ed198b899: Fixed PHY function call sequence
+- 7d9b5d611553: Fixed link up check
+- 28b8d7793b85: Fixed PERST# GPIO value
+
+## 5. Hardware-Documented Issue
+
+This isn't a theoretical bug - it's explicitly documented in the RK3588
+TRM section 11.6.1.3.3, providing clear hardware documentation that this
+sequence is required for correct operation.
+
+## 6. No Architectural Changes
+
+The fix:
+- Doesn't introduce new features
+- Doesn't change APIs or interfaces
+- Only ensures proper hardware sequencing per vendor documentation
+- Has minimal risk of regression (only affects RK3588 EP mode operation)
+
+The commit meets all criteria for stable backporting: it fixes a real
+bug that affects users, is small and contained, doesn't introduce
+features, and has minimal regression risk.
+
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 93171a392879..cd1e9352b21f 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -58,6 +58,8 @@
+ 
+ /* Hot Reset Control Register */
+ #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
++#define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
++#define  PCIE_LTSSM_APP_DLY2_DONE	BIT(3)
+ #define  PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
+ 
+ /* LTSSM Status Register */
+@@ -474,7 +476,7 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ 	struct rockchip_pcie *rockchip = arg;
+ 	struct dw_pcie *pci = &rockchip->pci;
+ 	struct device *dev = pci->dev;
+-	u32 reg;
++	u32 reg, val;
+ 
+ 	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
+ 	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
+@@ -485,6 +487,10 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ 	if (reg & PCIE_LINK_REQ_RST_NOT_INT) {
+ 		dev_dbg(dev, "hot reset or link-down reset\n");
+ 		dw_pcie_ep_linkdown(&pci->ep);
++		/* Stop delaying link training. */
++		val = HIWORD_UPDATE_BIT(PCIE_LTSSM_APP_DLY2_DONE);
++		rockchip_pcie_writel_apb(rockchip, val,
++					 PCIE_CLIENT_HOT_RESET_CTRL);
+ 	}
+ 
+ 	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
+@@ -566,8 +572,11 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+ 		return ret;
+ 	}
+ 
+-	/* LTSSM enable control mode */
+-	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
++	/*
++	 * LTSSM enable control mode, and automatically delay link training on
++	 * hot reset/link-down reset.
++	 */
++	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE | PCIE_LTSSM_APP_DLY2_EN);
+ 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+ 
+ 	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_EP_MODE,
+-- 
+2.39.5
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
