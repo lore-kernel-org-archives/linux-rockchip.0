@@ -4,56 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10618CCD1A7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 134FBCCD199
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:59:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/wfqkI4YriSc/sSgLLwcT2cPX9aAZodQLPGB37rOiM8=; b=cNAEZHeBoYR8WG
-	YFEDgqHR8v+/fdrIe4ZkbAFgBYNaUHjtd5pt2j/jzUY7NPRcTCRC+0O1Szrjm/4DmbX0BGNwNZrJw
-	Cr7669nh81TA+Ym0WVAo08lnITB/WuB0iPgYf0vNjB+YApb/uqRvzGN2Vz7xcfIqlKcrKslLGBY7l
-	ioT14moYjV4li6IwMIWWXsoLgBVnxg8t7iAl+7Du2xK1XYAs+SQrR5usuoKZAqtlCoh1bh+6FqU87
-	s7/8mf/gHPdCU6rC+AEmNSRLbpm/6eh+7G9EeTmSj6U83a9sEI9fLSJ+85rWxpbn8YWqgjJJZ4N6P
-	VKW+KQp2H2HbNzbnuAtg==;
+	List-Owner; bh=J6X76zDYxGNql12csHKS2ViIzag+yz89rAtgrHW0aRc=; b=U8DoymBpBQ5aOs
+	AE2tI8FHq5mB63NAEBg31mpQ9zp/j62dxvBlTI8bfpJ00/5WLwh3hU7xaOKa6ZMLM7/izE429eS0a
+	PhKoDoazwnQ+bqGA9QF6Nn/zAZJxcod5Z2b2QioE0l9WKd+1FwDzwbNhFE+taqHORMx+p+5yOrIIe
+	3qvEB/dMGrdx6v93arnl15LQlA0B1c5zTCiPhuLW9cw4gqKggyGtYcqs7qN3A0Armj40CaVIXXId7
+	pdQGZqy3Fau571WYTNcaq2VSKPeE9bOfa2JURF32Vy/z/JjQ380a9Dqd2sJFPCaM2+no9S+/D7HEt
+	7xggAMlTXncVzQffc45w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoXU-0000000DBlH-0q3O;
-	Mon, 20 Oct 2025 11:59:00 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1vAoXT-0000000DBk8-3LpE;
+	Mon, 20 Oct 2025 11:58:59 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujalF-0000000EoxS-4AFX;
-	Wed, 06 Aug 2025 09:48:43 +0000
-Received: from pendragon.ideasonboard.com (91-158-51-183.elisa-laajakaista.fi [91.158.51.183])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id AD44511EB;
-	Wed,  6 Aug 2025 11:47:48 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754473669;
-	bh=dBB2uil8xdYuqq7KSR4GUD8VnaNZFEk4RwnSQxJK8VA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BVgd+rZsh/ZxoGPA94UhjQapWLxk+gRiwJX2O0VIWWSiN8SZXjLCSOE6MZ8Brh1lv
-	 8XpLo+euerZ1zpRgloZxPxWGh/ChUK6DJKXc9a9m4Y+VmYiVxNuicDSagQBdkuQpE4
-	 LSv8nzfk6MdHfJRD3zCZIOhReZsK2sp0LHv5o6aI=
-Date: Wed, 6 Aug 2025 12:48:22 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Hans Verkuil <hverkuil+cisco@kernel.org>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Devarsh Thakkar <devarsht@ti.com>, Benoit Parrot <bparrot@ti.com>, Hans Verkuil <hverkuil@kernel.org>, Mike Isely <isely@pobox.com>, Hans de Goede <hansg@kernel.org>, Parthiban Veerasooran <parthiban.veerasooran@microchip.com>, Christian Gromm <christian.gromm@microchip.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Alex Shi <alexs@kernel.org>, Yanteng Si <si.yanteng@linux.dev>, Dongliang Mu <dzm91@hust.edu.cn>, Jonathan Corbet <corbet@lwn.net>, Tomasz Figa <tfiga@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Andy Walls <awalls@md.metrocast.net>, Michael Tretter <m.tretter@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Dmitry Osipenko <digetx@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Mirela Rabulea <mirela.rabulea@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Michal Simek <michal.simek@amd.com>, Ming Qian <ming.qian@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>, Xavier Roumegue <xavier.roumegue@oss.nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>, Vikash Garodia <quic_vgarodia@quicinc.com>, Dikshita Agarwal <quic_dikshita@quicinc.com>, Abhinav Kumar <abhinav.kumar@linux.dev>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Sylwester Nawrocki <sylvester.nawrocki@gmail.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>, Daniel Almeida <daniel.almeida@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Nas Chung <nas.chung@chipsnmedia.com>, Jackson Lee <jackson.lee@chipsnmedia.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, =?utf-8?Q?=C5=81ukasz?= Stelmach <l.stelmach@samsung.com>, Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Fabien Dessenne <fabien.dessenne@foss.st.com>, Hugues Fruchet <hugues.fruchet@foss.st.com>, Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Steve Longerbeam <slongerbeam@gmail.com>, Maxime Ripard <mripard@kernel.org>, Paul Kocialkowski <paulk@sys-base.io>, Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, Robert Foss <rfoss@kernel.org>, Todor Tomov <todor.too@gmail.com>, Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, Corentin Labbe <clabbe@baylibre.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>, Tianshu Qiu <tian.shu.qiu@intel.com>, Stanislaw Gruszka <stanislaw.gruszka@linux.intel.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev, linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, linux-usb@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net
+	id 1ujZKX-0000000EcIU-1fdY;
+	Wed, 06 Aug 2025 08:17:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 24059A56969;
+	Wed,  6 Aug 2025 08:17:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 657BBC4CEE7;
+	Wed,  6 Aug 2025 08:16:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754468219;
+	bh=mSezG6NRkxDtJlYf/ZFsHjMGCJmUaCUPnrgkbL+HJRE=;
+	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
+	b=mBlcnILQJQ8itwowSPTjPYWtbmq0X3J4O4tViHMM3acfOo0gkxWlN1i8bih8TRk/D
+	 QEK88TYFCCAgRdFf8N2vcHquOSOUzegVf8WhW/Lsok7t83wbntVOKbt/9YhJ0whgx3
+	 5Pw9TjucRRgCke06GxlfRg3jM6WSnxmB2mHB5KAF2EmEO8hgceOt4Z1OmiUmUg2AaV
+	 FwUr0faqAjE7o5R8MImS6WtgvVuPDjdbXIJiJkaVw/SZsYXDBQgOf6d9ctuBZbPmCU
+	 dj5qL0frPJSAHC86jkv/ZZcGOlf7y8hBVfvg5g40mjFEZISVqZUlox2uPFHVojc+hd
+	 jTKUIqp5zZJRg==
+Message-ID: <49e753f4-f626-49ae-bf23-d2aecfcc6282@kernel.org>
+Date: Wed, 6 Aug 2025 10:16:37 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: Hans Verkuil <hverkuil+cisco@kernel.org>
 Subject: Re: [PATCH 11/65] media: Replace file->private_data access with
  custom functions
-Message-ID: <20250806094822.GA24768@pendragon.ideasonboard.com>
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Devarsh Thakkar
+ <devarsht@ti.com>, Benoit Parrot <bparrot@ti.com>,
+ Hans Verkuil <hverkuil@kernel.org>, Mike Isely <isely@pobox.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Hans de Goede <hansg@kernel.org>,
+ Parthiban Veerasooran <parthiban.veerasooran@microchip.com>,
+ Christian Gromm <christian.gromm@microchip.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Alex Shi
+ <alexs@kernel.org>, Yanteng Si <si.yanteng@linux.dev>,
+ Dongliang Mu <dzm91@hust.edu.cn>, Jonathan Corbet <corbet@lwn.net>,
+ Tomasz Figa <tfiga@chromium.org>, Marek Szyprowski
+ <m.szyprowski@samsung.com>, Andy Walls <awalls@md.metrocast.net>,
+ Michael Tretter <m.tretter@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Dmitry Osipenko <digetx@gmail.com>, Thierry Reding
+ <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Mirela Rabulea <mirela.rabulea@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Michal Simek <michal.simek@amd.com>, Ming Qian <ming.qian@nxp.com>,
+ Zhou Peng <eagle.zhou@nxp.com>, Xavier Roumegue
+ <xavier.roumegue@oss.nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Vikash Garodia <quic_vgarodia@quicinc.com>,
+ Dikshita Agarwal <quic_dikshita@quicinc.com>,
+ Abhinav Kumar <abhinav.kumar@linux.dev>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Daniel Almeida <daniel.almeida@collabora.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Nas Chung <nas.chung@chipsnmedia.com>,
+ Jackson Lee <jackson.lee@chipsnmedia.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
+ Jacob Chen <jacob-chen@iotwrt.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ =?UTF-8?Q?=C5=81ukasz_Stelmach?= <l.stelmach@samsung.com>,
+ Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Fabien Dessenne <fabien.dessenne@foss.st.com>,
+ Hugues Fruchet <hugues.fruchet@foss.st.com>,
+ Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Steve Longerbeam <slongerbeam@gmail.com>, Maxime Ripard
+ <mripard@kernel.org>, Paul Kocialkowski <paulk@sys-base.io>,
+ =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+ Robert Foss <rfoss@kernel.org>, Todor Tomov <todor.too@gmail.com>,
+ Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>,
+ Corentin Labbe <clabbe@baylibre.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Bingbu Cao <bingbu.cao@intel.com>, Tianshu Qiu <tian.shu.qiu@intel.com>,
+ Stanislaw Gruszka <stanislaw.gruszka@linux.intel.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-staging@lists.linux.dev, linux-doc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-tegra@vger.kernel.org, imx@lists.linux.dev,
+ linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-usb@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
  <20250802-media-private-data-v1-11-eb140ddd6a9d@ideasonboard.com>
- <49e753f4-f626-49ae-bf23-d2aecfcc6282@kernel.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <49e753f4-f626-49ae-bf23-d2aecfcc6282@kernel.org>
+Content-Language: en-US, nl
+In-Reply-To: <20250802-media-private-data-v1-11-eb140ddd6a9d@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250806_024842_173971_86CC1AAF 
-X-CRM114-Status: GOOD (  32.44  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:19 -0700
+X-CRM114-CacheID: sfid-20250806_011701_564485_B584A865 
+X-CRM114-Status: GOOD (  24.57  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:29 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,159 +153,146 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Hans,
+On 02/08/2025 11:22, Jacopo Mondi wrote:
+> From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> 
+> Accessing file->private_data manually to retrieve the v4l2_fh pointer is
+> error-prone, as the field is a void * and will happily cast implicitly
+> to any pointer type.
+> 
+> Replace all remaining locations that read the v4l2_fh pointer directly
+> from file->private_data and cast it to driver-specific file handle
+> structures with driver-specific functions that use file_to_v4l2_fh() and
+> perform the same cast.
+> 
+> No functional change is intended, this only paves the way to remove
+> direct accesses to file->private_data and make V4L2 drivers safer.
+> Other accesses to the field will be addressed separately.
+> 
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> ---
+>  drivers/media/pci/ivtv/ivtv-driver.h               |  5 ++++
+>  drivers/media/pci/ivtv/ivtv-fileops.c              | 10 +++----
+>  drivers/media/pci/ivtv/ivtv-ioctl.c                |  8 +++---
+>  drivers/media/platform/allegro-dvt/allegro-core.c  |  7 ++++-
+>  drivers/media/platform/amlogic/meson-ge2d/ge2d.c   |  8 ++++--
+>  .../media/platform/chips-media/coda/coda-common.c  |  7 ++++-
+>  .../platform/chips-media/wave5/wave5-helper.c      |  2 +-
+>  .../media/platform/chips-media/wave5/wave5-vpu.h   |  5 ++++
+>  drivers/media/platform/m2m-deinterlace.c           |  7 ++++-
+>  .../media/platform/mediatek/jpeg/mtk_jpeg_core.c   |  7 ++++-
+>  drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c  |  7 ++++-
+>  .../media/platform/mediatek/mdp3/mtk-mdp3-m2m.c    |  7 ++++-
+>  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c   |  2 +-
+>  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h   |  5 ++++
+>  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c   |  2 +-
+>  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h   |  5 ++++
+>  drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c     |  7 ++++-
+>  drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c |  7 ++++-
+>  drivers/media/platform/nxp/mx2_emmaprp.c           |  7 ++++-
+>  drivers/media/platform/renesas/rcar_fdp1.c         |  7 ++++-
+>  drivers/media/platform/renesas/rcar_jpu.c          |  7 ++++-
+>  drivers/media/platform/rockchip/rga/rga.c          |  3 +--
+>  drivers/media/platform/rockchip/rga/rga.h          |  5 ++++
+>  drivers/media/platform/rockchip/rkvdec/rkvdec.c    |  2 +-
+>  drivers/media/platform/rockchip/rkvdec/rkvdec.h    |  5 ++++
+>  .../media/platform/samsung/exynos-gsc/gsc-core.h   |  6 +++++
+>  .../media/platform/samsung/exynos-gsc/gsc-m2m.c    |  6 ++---
+>  .../media/platform/samsung/exynos4-is/fimc-core.h  |  5 ++++
+>  .../media/platform/samsung/exynos4-is/fimc-m2m.c   |  2 +-
+>  drivers/media/platform/samsung/s5p-g2d/g2d.c       |  7 +++--
+>  .../media/platform/samsung/s5p-jpeg/jpeg-core.c    |  9 +++++--
+>  drivers/media/platform/samsung/s5p-mfc/s5p_mfc.c   |  6 ++---
+>  .../platform/samsung/s5p-mfc/s5p_mfc_common.h      |  6 +++++
+>  drivers/media/platform/st/sti/bdisp/bdisp-v4l2.c   |  7 ++++-
+>  drivers/media/platform/st/sti/delta/delta-v4l2.c   | 26 +++++++++++-------
+>  drivers/media/platform/st/sti/hva/hva-v4l2.c       | 31 ++++++++++++----------
+>  drivers/media/platform/st/sti/hva/hva.h            |  2 --
+>  drivers/media/platform/st/stm32/dma2d/dma2d.c      |  7 +++--
+>  drivers/media/platform/sunxi/sun8i-di/sun8i-di.c   |  3 +--
+>  .../platform/sunxi/sun8i-rotate/sun8i_rotate.c     |  3 +--
+>  drivers/media/platform/ti/omap3isp/ispvideo.c      |  4 +--
+>  drivers/media/platform/ti/omap3isp/ispvideo.h      |  6 +++++
+>  drivers/media/platform/verisilicon/hantro.h        |  5 ++++
+>  drivers/media/platform/verisilicon/hantro_drv.c    |  3 +--
+>  drivers/staging/media/imx/imx-media-csc-scaler.c   |  7 ++++-
+>  drivers/staging/media/meson/vdec/vdec.c            | 24 ++++++-----------
+>  drivers/staging/media/meson/vdec/vdec.h            |  5 ++++
+>  drivers/staging/media/sunxi/cedrus/cedrus.c        |  3 +--
+>  drivers/staging/media/sunxi/cedrus/cedrus.h        |  5 ++++
+>  drivers/staging/media/sunxi/cedrus/cedrus_video.c  |  5 ----
+>  50 files changed, 237 insertions(+), 100 deletions(-)
+> 
+> diff --git a/drivers/media/pci/ivtv/ivtv-driver.h b/drivers/media/pci/ivtv/ivtv-driver.h
+> index a6ffa99e16bc64a5b7d3e48c1ab32b49a7989242..cad548b28e360ecfe2bcb9fcb5d12cd8823c3727 100644
+> --- a/drivers/media/pci/ivtv/ivtv-driver.h
+> +++ b/drivers/media/pci/ivtv/ivtv-driver.h
+> @@ -388,6 +388,11 @@ static inline struct ivtv_open_id *fh2id(struct v4l2_fh *fh)
+>  	return container_of(fh, struct ivtv_open_id, fh);
+>  }
+>  
+> +static inline struct ivtv_open_id *file2id(struct file *filp)
+> +{
+> +	return container_of(file_to_v4l2_fh(filp), struct ivtv_open_id, fh);
 
-On Wed, Aug 06, 2025 at 10:16:37AM +0200, Hans Verkuil wrote:
-> On 02/08/2025 11:22, Jacopo Mondi wrote:
-> > From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > 
-> > Accessing file->private_data manually to retrieve the v4l2_fh pointer is
-> > error-prone, as the field is a void * and will happily cast implicitly
-> > to any pointer type.
-> > 
-> > Replace all remaining locations that read the v4l2_fh pointer directly
-> > from file->private_data and cast it to driver-specific file handle
-> > structures with driver-specific functions that use file_to_v4l2_fh() and
-> > perform the same cast.
-> > 
-> > No functional change is intended, this only paves the way to remove
-> > direct accesses to file->private_data and make V4L2 drivers safer.
-> > Other accesses to the field will be addressed separately.
-> > 
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > ---
-> >  drivers/media/pci/ivtv/ivtv-driver.h               |  5 ++++
-> >  drivers/media/pci/ivtv/ivtv-fileops.c              | 10 +++----
-> >  drivers/media/pci/ivtv/ivtv-ioctl.c                |  8 +++---
-> >  drivers/media/platform/allegro-dvt/allegro-core.c  |  7 ++++-
-> >  drivers/media/platform/amlogic/meson-ge2d/ge2d.c   |  8 ++++--
-> >  .../media/platform/chips-media/coda/coda-common.c  |  7 ++++-
-> >  .../platform/chips-media/wave5/wave5-helper.c      |  2 +-
-> >  .../media/platform/chips-media/wave5/wave5-vpu.h   |  5 ++++
-> >  drivers/media/platform/m2m-deinterlace.c           |  7 ++++-
-> >  .../media/platform/mediatek/jpeg/mtk_jpeg_core.c   |  7 ++++-
-> >  drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c  |  7 ++++-
-> >  .../media/platform/mediatek/mdp3/mtk-mdp3-m2m.c    |  7 ++++-
-> >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c   |  2 +-
-> >  .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h   |  5 ++++
-> >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c   |  2 +-
-> >  .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h   |  5 ++++
-> >  drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c     |  7 ++++-
-> >  drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c |  7 ++++-
-> >  drivers/media/platform/nxp/mx2_emmaprp.c           |  7 ++++-
-> >  drivers/media/platform/renesas/rcar_fdp1.c         |  7 ++++-
-> >  drivers/media/platform/renesas/rcar_jpu.c          |  7 ++++-
-> >  drivers/media/platform/rockchip/rga/rga.c          |  3 +--
-> >  drivers/media/platform/rockchip/rga/rga.h          |  5 ++++
-> >  drivers/media/platform/rockchip/rkvdec/rkvdec.c    |  2 +-
-> >  drivers/media/platform/rockchip/rkvdec/rkvdec.h    |  5 ++++
-> >  .../media/platform/samsung/exynos-gsc/gsc-core.h   |  6 +++++
-> >  .../media/platform/samsung/exynos-gsc/gsc-m2m.c    |  6 ++---
-> >  .../media/platform/samsung/exynos4-is/fimc-core.h  |  5 ++++
-> >  .../media/platform/samsung/exynos4-is/fimc-m2m.c   |  2 +-
-> >  drivers/media/platform/samsung/s5p-g2d/g2d.c       |  7 +++--
-> >  .../media/platform/samsung/s5p-jpeg/jpeg-core.c    |  9 +++++--
-> >  drivers/media/platform/samsung/s5p-mfc/s5p_mfc.c   |  6 ++---
-> >  .../platform/samsung/s5p-mfc/s5p_mfc_common.h      |  6 +++++
-> >  drivers/media/platform/st/sti/bdisp/bdisp-v4l2.c   |  7 ++++-
-> >  drivers/media/platform/st/sti/delta/delta-v4l2.c   | 26 +++++++++++-------
-> >  drivers/media/platform/st/sti/hva/hva-v4l2.c       | 31 ++++++++++++----------
-> >  drivers/media/platform/st/sti/hva/hva.h            |  2 --
-> >  drivers/media/platform/st/stm32/dma2d/dma2d.c      |  7 +++--
-> >  drivers/media/platform/sunxi/sun8i-di/sun8i-di.c   |  3 +--
-> >  .../platform/sunxi/sun8i-rotate/sun8i_rotate.c     |  3 +--
-> >  drivers/media/platform/ti/omap3isp/ispvideo.c      |  4 +--
-> >  drivers/media/platform/ti/omap3isp/ispvideo.h      |  6 +++++
-> >  drivers/media/platform/verisilicon/hantro.h        |  5 ++++
-> >  drivers/media/platform/verisilicon/hantro_drv.c    |  3 +--
-> >  drivers/staging/media/imx/imx-media-csc-scaler.c   |  7 ++++-
-> >  drivers/staging/media/meson/vdec/vdec.c            | 24 ++++++-----------
-> >  drivers/staging/media/meson/vdec/vdec.h            |  5 ++++
-> >  drivers/staging/media/sunxi/cedrus/cedrus.c        |  3 +--
-> >  drivers/staging/media/sunxi/cedrus/cedrus.h        |  5 ++++
-> >  drivers/staging/media/sunxi/cedrus/cedrus_video.c  |  5 ----
-> >  50 files changed, 237 insertions(+), 100 deletions(-)
-> > 
-> > diff --git a/drivers/media/pci/ivtv/ivtv-driver.h b/drivers/media/pci/ivtv/ivtv-driver.h
-> > index a6ffa99e16bc64a5b7d3e48c1ab32b49a7989242..cad548b28e360ecfe2bcb9fcb5d12cd8823c3727 100644
-> > --- a/drivers/media/pci/ivtv/ivtv-driver.h
-> > +++ b/drivers/media/pci/ivtv/ivtv-driver.h
-> > @@ -388,6 +388,11 @@ static inline struct ivtv_open_id *fh2id(struct v4l2_fh *fh)
-> >  	return container_of(fh, struct ivtv_open_id, fh);
-> >  }
-> >  
-> > +static inline struct ivtv_open_id *file2id(struct file *filp)
-> > +{
-> > +	return container_of(file_to_v4l2_fh(filp), struct ivtv_open_id, fh);
-> 
-> Why not write:
-> 
-> 	return fh2id(file_to_v4l2_fh(filp));
-> 
-> Same for all other drivers that do this. I prefer to have the contained_of()
-> in just one place.
+Why not write:
 
-Because fh2id gets removed in "[PATCH 57/65] media: ivtv: Access v4l2_fh
-from file". I can use it in this patch and drop it later, would you
-prefer that ?
+	return fh2id(file_to_v4l2_fh(filp));
 
-> > +}
-> > +
-> >  struct yuv_frame_info
-> >  {
-> >  	u32 update;
-> 
-> <snip>
-> 
-> > diff --git a/drivers/media/platform/allegro-dvt/allegro-core.c b/drivers/media/platform/allegro-dvt/allegro-core.c
-> > index 1f134e08923a528cc676f825da68951c97ac2f25..74977f3ae4844022c04de877f31b4fc6aaac0749 100644
-> > --- a/drivers/media/platform/allegro-dvt/allegro-core.c
-> > +++ b/drivers/media/platform/allegro-dvt/allegro-core.c
-> > @@ -302,6 +302,11 @@ struct allegro_channel {
-> >  	unsigned int error;
-> >  };
-> >  
-> > +static inline struct allegro_channel *file_to_channel(struct file *filp)
-> > +{
-> > +	return container_of(file_to_v4l2_fh(filp), struct allegro_channel, fh);
-> > +}
-> > +
-> >  static inline int
-> >  allegro_channel_get_i_frame_qp(struct allegro_channel *channel)
-> >  {
-> > @@ -3229,7 +3234,7 @@ static int allegro_open(struct file *file)
-> >  
-> >  static int allegro_release(struct file *file)
-> >  {
-> > -	struct allegro_channel *channel = fh_to_channel(file->private_data);
-> > +	struct allegro_channel *channel = file_to_channel(file);
-> 
-> So a file_to_channel inline function was added, but it is used in just one
-> place.
-> 
-> I would prefer to just drop the inline function and instead write:
-> 
-> 	struct allegro_channel *channel = fh_to_channel(file_to_v4l2_fh(file));
-> 
-> If this is needed in two or more places, then the extra inline makes sense,
-> but it is a fairly common pattern that it is only needed in the release function.
-> 
-> Adding a new inline just for that seems overkill to me.
+Same for all other drivers that do this. I prefer to have the contained_of()
+in just one place.
 
-file_to_channel() gets used in more places in "[PATCH 29/65] media:
-allegro: Access v4l2_fh from file", where fh_to_channel() is dropped.
-I'd rather keep it in this patch instead of having to modify the
-allegro_release() function in patch 29/65.
+> +}
+> +
+>  struct yuv_frame_info
+>  {
+>  	u32 update;
 
-> >  
-> >  	v4l2_m2m_ctx_release(channel->fh.m2m_ctx);
-> >  
+<snip>
 
--- 
+> diff --git a/drivers/media/platform/allegro-dvt/allegro-core.c b/drivers/media/platform/allegro-dvt/allegro-core.c
+> index 1f134e08923a528cc676f825da68951c97ac2f25..74977f3ae4844022c04de877f31b4fc6aaac0749 100644
+> --- a/drivers/media/platform/allegro-dvt/allegro-core.c
+> +++ b/drivers/media/platform/allegro-dvt/allegro-core.c
+> @@ -302,6 +302,11 @@ struct allegro_channel {
+>  	unsigned int error;
+>  };
+>  
+> +static inline struct allegro_channel *file_to_channel(struct file *filp)
+> +{
+> +	return container_of(file_to_v4l2_fh(filp), struct allegro_channel, fh);
+> +}
+> +
+>  static inline int
+>  allegro_channel_get_i_frame_qp(struct allegro_channel *channel)
+>  {
+> @@ -3229,7 +3234,7 @@ static int allegro_open(struct file *file)
+>  
+>  static int allegro_release(struct file *file)
+>  {
+> -	struct allegro_channel *channel = fh_to_channel(file->private_data);
+> +	struct allegro_channel *channel = file_to_channel(file);
+
+So a file_to_channel inline function was added, but it is used in just one
+place.
+
+I would prefer to just drop the inline function and instead write:
+
+	struct allegro_channel *channel = fh_to_channel(file_to_v4l2_fh(file));
+
+If this is needed in two or more places, then the extra inline makes sense,
+but it is a fairly common pattern that it is only needed in the release function.
+
+Adding a new inline just for that seems overkill to me.
+
+>  
+>  	v4l2_m2m_ctx_release(channel->fh.m2m_ctx);
+>  
+
 Regards,
 
-Laurent Pinchart
+	Hans
 
 _______________________________________________
 Linux-rockchip mailing list
