@@ -4,51 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8FE5CCD1AD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:15:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8704ACCD1B9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:15:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uAvrqP/iNiveHe2HglljSnZhF/zMSpBzj6yZNjY3EfI=; b=AgeyhC5MJMsYQTb1CTdH1p1IT9
-	RIwEw9Vow5CkAyBZZ0XmccGSjgoqTOsPF3KMlsKUTW/RZRjuJA0MGY2JXlhkXgCHS04BTVY8Um7hG
-	FSwJDrGFsIQDEDqi3ikltg09k/Fi55TR5k6suIhi6i3N1r1YawKca93NWd4vrzngNGHCLvCVPXNMu
-	sABgp8nOg6SH29BsK0TcughHVDuIiND0JCtpw0DVdX0ofT8iOi8aUmrnIcKeAgSa/PWJNF9fe+EP9
-	3cdutAOxn4il2S1CFvuiqjiIPF8UaEpgMAi0jf/g0Q1zDpsI18TgTNj4h4Eomn1OlJRd6LMLLBPP5
-	P4zNgJ1g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=o79SVJudL4xxsCEeUC/S3gTKTKr4LH5WIW/G0gt8W34=; b=1LS/SFoklSLuap
+	B7b7itLkKA9ArPxXUueuGfEGt0VBpmWy++apwrtok13mASJ+IuiDJGkhGhhp19o85VsWPTh5b9SRC
+	VT1PGzrsoYHCJ6OOKgAcncw656IsZPRR25hUIDVEoiWGTmZ5uF25tAtVIuCvkNhzr7IMgzuC0m/Au
+	PkjPBflzIPKBqblfhjPRLqAd/Z9yzZfbPaHijp9bpWG3gYaDl7UqLefZ2g74TnMmRfGsCIfnR9vH9
+	CQ/nVz1T7rJZlHM7W7U/w96uGWWvTCTKAlGWu7NUQWaz4CrF7uxHu9vD9roMqP80mtA5YkJZNaYnN
+	vyBve3EUi+32BA4sjVLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAonl-0000000DLtA-0GBf;
+	id 1vAonl-0000000DLtz-1eaK;
 	Mon, 20 Oct 2025 12:15:49 +0000
-Received: from leonov.paulk.fr ([185.233.101.22])
+Received: from mgamail.intel.com ([198.175.65.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uj3Dz-0000000BNE7-3qnC;
-	Mon, 04 Aug 2025 22:00:10 +0000
-Received: from laika.paulk.fr (12.234.24.109.rev.sfr.net [109.24.234.12])
-	by leonov.paulk.fr (Postfix) with ESMTPS id 2D7001F00060;
-	Mon,  4 Aug 2025 21:59:41 +0000 (UTC)
-Received: by laika.paulk.fr (Postfix, from userid 65534)
-	id 3CE7AB01183; Mon,  4 Aug 2025 21:59:37 +0000 (UTC)
-Received: from shepard (unknown [192.168.1.1])
-	by laika.paulk.fr (Postfix) with ESMTPSA id 02B54B01170;
-	Mon,  4 Aug 2025 21:59:27 +0000 (UTC)
-Date: Mon, 4 Aug 2025 23:59:25 +0200
-From: Paul Kocialkowski <paulk@sys-base.io>
+	id 1ujwau-000000003O0-3Db4;
+	Thu, 07 Aug 2025 09:07:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1754557649; x=1786093649;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=LdyIokBuO7Un8obo21ibvQiKDOlr/VJXcK2c42DetEE=;
+  b=c/1178wsQp/pZGtp8HnId2EpOEp4rGqlRAT3Nr8d1l2PvI1EE3itvd6p
+   VlRykkidRLkUn4i9keymGKP1WuhsMZwiL2ekPnpRkFgO7GB81PGJgCf/7
+   jyURRIf7J0lJ5rO9wZZBSbmI3AoakQwbTol2PIPBM23Kjg51cxrK7KaLr
+   WWrj/OUWqKXachNuk+7gZcZ1e/Vk8TD8XOuWPTHw4vciDN3HQwHbhk7ZT
+   w/vW0cxPn+x0/wwJ6J/faKM96iBw0TIpEMSyPDOEZ0HcbM60DXA9p4l5y
+   WvXNh4Q5po5zVDu0v9OAKlhKWDu8NfOtUPfhOBsHWVwn0pndqX1qNVQC0
+   Q==;
+X-CSE-ConnectionGUID: Wt5J1ZdqTWGdbyC0PS3aQA==
+X-CSE-MsgGUID: XZrcR/gAStaxd28EoEcILg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11514"; a="68340103"
+X-IronPort-AV: E=Sophos;i="6.17,271,1747724400"; 
+   d="scan'208";a="68340103"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Aug 2025 02:07:27 -0700
+X-CSE-ConnectionGUID: HkVbQkL0THy+UJOo9yzC6A==
+X-CSE-MsgGUID: KJ6iZxlSSOyomEAi+j3fxw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.17,271,1747724400"; 
+   d="scan'208";a="169473134"
+Received: from mjarzebo-mobl1.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.244.255])
+  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Aug 2025 02:07:16 -0700
+Received: from kekkonen.localdomain (localhost [127.0.0.1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id 79BBB11FC45;
+	Thu,  7 Aug 2025 12:07:13 +0300 (EEST)
+Date: Thu, 7 Aug 2025 09:07:13 +0000
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
 To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Devarsh Thakkar <devarsht@ti.com>, Benoit Parrot <bparrot@ti.com>, Hans Verkuil <hverkuil@kernel.org>, Mike Isely <isely@pobox.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Hans de Goede <hansg@kernel.org>, Parthiban Veerasooran <parthiban.veerasooran@microchip.com>, Christian Gromm <christian.gromm@microchip.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Alex Shi <alexs@kernel.org>, Yanteng Si <si.yanteng@linux.dev>, Dongliang Mu <dzm91@hust.edu.cn>, Jonathan Corbet <corbet@lwn.net>, Tomasz Figa <tfiga@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Andy Walls <awalls@md.metrocast.net>, Michael Tretter <m.tretter@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Dmitry Osipenko <digetx@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Mirela Rabulea <mirela.rabulea@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Michal Simek <michal.simek@amd.com>, Ming Qian <ming.qian@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>, Xavier Roumegue <xavier.roumegue@oss.nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>, Vikash Garodia <quic_vgarodia@quicinc.com>, Dikshita Agarwal <quic_dikshita@quicinc.com>, Abhinav Kumar <abhinav.kumar@linux.dev>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Sylwester Nawrocki <sylvester.nawrocki@gmail.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>, Daniel Almeida <daniel.almeida@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Nas Chung <nas.chung@chipsnmedia.com>, Jackson Lee <jackson.lee@chipsnmedia.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, =?utf-8?Q?=C5=81ukasz?= Stelmach <l.stelmach@samsung.com>, Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Fabien Dessenne <fabien.dessenne@foss.st.com>, Hugues Fruchet <hugues.fruchet@foss.st.com>, Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Steve Longerbeam <slongerbeam@gmail.com>, Maxime Ripard <mripard@kernel.org>, Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, Robert Foss <rfoss@kernel.org>, Todor Tomov <todor.too@gmail.com>, Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, Corentin Labbe <clabbe@baylibre.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Bingbu Cao <bingbu.cao@intel.com>, Tianshu Qiu <tian.shu.qiu@intel.com>, Stanislaw Gruszka <stanislaw.gruszka@linux.intel.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev, linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Devarsh Thakkar <devarsht@ti.com>, Benoit Parrot <bparrot@ti.com>, Hans Verkuil <hverkuil@kernel.org>, Mike Isely <isely@pobox.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Hans de Goede <hansg@kernel.org>, Parthiban Veerasooran <parthiban.veerasooran@microchip.com>, Christian Gromm <christian.gromm@microchip.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Alex Shi <alexs@kernel.org>, Yanteng Si <si.yanteng@linux.dev>, Dongliang Mu <dzm91@hust.edu.cn>, Jonathan Corbet <corbet@lwn.net>, Tomasz Figa <tfiga@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Andy Walls <awalls@md.metrocast.net>, Michael Tretter <m.tretter@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Dmitry Osipenko <digetx@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Mirela Rabulea <mirela.rabulea@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Michal Simek <michal.simek@amd.com>, Ming Qian <ming.qian@nxp.com>, Zhou Peng <eagle.zhou@nxp.com>, Xavier Roumegue <xavier.roumegue@oss.nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>, Vikash Garodia <quic_vgarodia@quicinc.com>, Dikshita Agarwal <quic_dikshita@quicinc.com>, Abhinav Kumar <abhinav.kumar@linux.dev>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Sylwester Nawrocki <sylvester.nawrocki@gmail.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>, Daniel Almeida <daniel.almeida@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Nas Chung <nas.chung@chipsnmedia.com>, Jackson Lee <jackson.lee@chipsnmedia.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, =?utf-8?Q?=C5=81ukasz?= Stelmach <l.stelmach@samsung.com>, Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Fabien Dessenne <fabien.dessenne@foss.st.com>, Hugues Fruchet <hugues.fruchet@foss.st.com>, Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Steve Longerbeam <slongerbeam@gmail.com>, Maxime Ripard <mripard@kernel.org>, Paul Kocialkowski <paulk@sys-base.io>, Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>, Robert Foss <rfoss@kernel.org>, Todor Tomov <todor.too@gmail.com>, Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, Corentin Labbe <clabbe@baylibre.com>, Bingbu Cao <bingbu.cao@intel.com>, Tianshu Qiu <tian.shu.qiu@intel.com>, Stanislaw Gruszka <stanislaw.gruszka@linux.intel.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev, linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-usb@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, mjpeg-users@lists.sourceforge.net
-Subject: Re: [PATCH 54/65] media: hantro: Access v4l2_fh from
- file->private_data
-Message-ID: <aJEtPd_-IzQZVBfl@shepard>
+Subject: Re: [PATCH 64/65] media: staging: ipu7: isys: Don't set
+ V4L2_FL_USES_V4L2_FH manually
+Message-ID: <aJRswZIVKCuzqCpr@kekkonen.localdomain>
 References: <20250802-media-private-data-v1-0-eb140ddd6a9d@ideasonboard.com>
- <20250802-media-private-data-v1-54-eb140ddd6a9d@ideasonboard.com>
+ <20250802-media-private-data-v1-64-eb140ddd6a9d@ideasonboard.com>
 MIME-Version: 1.0
-In-Reply-To: <20250802-media-private-data-v1-54-eb140ddd6a9d@ideasonboard.com>
+Content-Disposition: inline
+In-Reply-To: <20250802-media-private-data-v1-64-eb140ddd6a9d@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250804_150008_279346_7B349473 
-X-CRM114-Status: GOOD (  27.34  )
+X-CRM114-CacheID: sfid-20250807_020728_846149_A3CC99F9 
+X-CRM114-Status: GOOD (  11.14  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 05:15:44 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -61,228 +85,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5941574532804230270=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============5941574532804230270==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="/6X2y1A/1uo421sv"
-Content-Disposition: inline
-
-
---/6X2y1A/1uo421sv
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-Very nice cleanup, glad to see this abstracted away from drivers!
-
-Reviewed-by: Paul Kocialkowski <paulk@sys-base.io>
-
-All the best,
-
-Paul
-
-On Sat 02 Aug 25, 11:23, Jacopo Mondi wrote:
+On Sat, Aug 02, 2025 at 11:23:26AM +0200, Jacopo Mondi wrote:
 > From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->=20
-> To prepare for the introduction of video_device_state as second argument
-> of the v4l2_ioctl_ops handler, access the v4l2_fh from
-> file->private_data instead of using void *priv.
->=20
-> The file->private_data is initialized to point to the v4l2_fh
-> by the usage of v4l2_fh_init() in the v4l2_file_operations.open()
-> handler.
->=20
-> While at it remove the only left user of fh_to_ctx() and remove
-> the macro completely.
->=20
+> 
+> The V4L2_FL_USES_V4L2_FH flag is set by v4l2_fh_init(). It is not meant
+> to be set manually by drivers. Drop it from the ipu7-isys driver.
+> 
 > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> ---
->  drivers/media/platform/verisilicon/hantro.h      |  5 -----
->  drivers/media/platform/verisilicon/hantro_v4l2.c | 22 +++++++++++-------=
-----
->  2 files changed, 11 insertions(+), 16 deletions(-)
->=20
-> diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/=
-platform/verisilicon/hantro.h
-> index 0f10714f1953945472e11d8c8ad87f8ec009b39f..e0fdc4535b2d73c5260057b0a=
-89aee67a4732dd2 100644
-> --- a/drivers/media/platform/verisilicon/hantro.h
-> +++ b/drivers/media/platform/verisilicon/hantro.h
-> @@ -382,11 +382,6 @@ extern int hantro_debug;
->  	pr_err("%s:%d: " fmt, __func__, __LINE__, ##args)
-> =20
->  /* Structure access helpers. */
-> -static __always_inline struct hantro_ctx *fh_to_ctx(struct v4l2_fh *fh)
-> -{
-> -	return container_of(fh, struct hantro_ctx, fh);
-> -}
-> -
->  static __always_inline struct hantro_ctx *file_to_ctx(struct file *filp)
->  {
->  	return container_of(file_to_v4l2_fh(filp), struct hantro_ctx, fh);
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/m=
-edia/platform/verisilicon/hantro_v4l2.c
-> index 7c3515cf7d64a090adfb8d8aff368f9a617f8c8a..6bcd892e7bb49c654aae58416=
-64d68c1692064bd 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> @@ -185,7 +185,7 @@ static int vidioc_querycap(struct file *file, void *p=
-riv,
->  static int vidioc_enum_framesizes(struct file *file, void *priv,
->  				  struct v4l2_frmsizeenum *fsize)
->  {
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
->  	const struct hantro_fmt *fmt;
-> =20
->  	fmt =3D hantro_find_format(ctx, fsize->pixel_format);
-> @@ -217,7 +217,7 @@ static int vidioc_enum_fmt(struct file *file, void *p=
-riv,
->  			   struct v4l2_fmtdesc *f, bool capture)
-> =20
->  {
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
->  	const struct hantro_fmt *fmt, *formats;
->  	unsigned int num_fmts, i, j =3D 0;
->  	bool skip_mode_none, enum_all_formats;
-> @@ -297,7 +297,7 @@ static int vidioc_g_fmt_out_mplane(struct file *file,=
- void *priv,
->  				   struct v4l2_format *f)
->  {
->  	struct v4l2_pix_format_mplane *pix_mp =3D &f->fmt.pix_mp;
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
-> =20
->  	vpu_debug(4, "f->type =3D %d\n", f->type);
-> =20
-> @@ -310,7 +310,7 @@ static int vidioc_g_fmt_cap_mplane(struct file *file,=
- void *priv,
->  				   struct v4l2_format *f)
->  {
->  	struct v4l2_pix_format_mplane *pix_mp =3D &f->fmt.pix_mp;
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
-> =20
->  	vpu_debug(4, "f->type =3D %d\n", f->type);
-> =20
-> @@ -398,13 +398,13 @@ static int hantro_try_fmt(const struct hantro_ctx *=
-ctx,
->  static int vidioc_try_fmt_cap_mplane(struct file *file, void *priv,
->  				     struct v4l2_format *f)
->  {
-> -	return hantro_try_fmt(fh_to_ctx(priv), &f->fmt.pix_mp, f->type);
-> +	return hantro_try_fmt(file_to_ctx(file), &f->fmt.pix_mp, f->type);
->  }
-> =20
->  static int vidioc_try_fmt_out_mplane(struct file *file, void *priv,
->  				     struct v4l2_format *f)
->  {
-> -	return hantro_try_fmt(fh_to_ctx(priv), &f->fmt.pix_mp, f->type);
-> +	return hantro_try_fmt(file_to_ctx(file), &f->fmt.pix_mp, f->type);
->  }
-> =20
->  static void
-> @@ -648,19 +648,19 @@ static int hantro_set_fmt_cap(struct hantro_ctx *ct=
-x,
->  static int
->  vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_forma=
-t *f)
->  {
-> -	return hantro_set_fmt_out(fh_to_ctx(priv), &f->fmt.pix_mp, HANTRO_AUTO_=
-POSTPROC);
-> +	return hantro_set_fmt_out(file_to_ctx(file), &f->fmt.pix_mp, HANTRO_AUT=
-O_POSTPROC);
->  }
-> =20
->  static int
->  vidioc_s_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_forma=
-t *f)
->  {
-> -	return hantro_set_fmt_cap(fh_to_ctx(priv), &f->fmt.pix_mp);
-> +	return hantro_set_fmt_cap(file_to_ctx(file), &f->fmt.pix_mp);
->  }
-> =20
->  static int vidioc_g_selection(struct file *file, void *priv,
->  			      struct v4l2_selection *sel)
->  {
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
-> =20
->  	/* Crop only supported on source. */
->  	if (!ctx->is_encoder ||
-> @@ -691,7 +691,7 @@ static int vidioc_g_selection(struct file *file, void=
- *priv,
->  static int vidioc_s_selection(struct file *file, void *priv,
->  			      struct v4l2_selection *sel)
->  {
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
->  	struct v4l2_rect *rect =3D &sel->r;
->  	struct vb2_queue *vq;
-> =20
-> @@ -738,7 +738,7 @@ static const struct v4l2_event hantro_eos_event =3D {
->  static int vidioc_encoder_cmd(struct file *file, void *priv,
->  			      struct v4l2_encoder_cmd *ec)
->  {
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
->  	int ret;
-> =20
->  	ret =3D v4l2_m2m_ioctl_try_encoder_cmd(file, priv, ec);
->=20
-> --=20
-> 2.49.0
->=20
 
---=20
-Paul Kocialkowski,
+Thanks, Jacopo!
 
-Independent contractor - sys-base - https://www.sys-base.io/
-Free software developer - https://www.paulk.fr/
+Reviewed-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 
-Expert in multimedia, graphics and embedded hardware support with Linux.
-
---/6X2y1A/1uo421sv
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEEAbcMXZQMtj1fphLChP3B6o/ulQwFAmiRLT0ACgkQhP3B6o/u
-lQzrNQ//exzkeWe4akWNjtSBn1Bl653EfO7v/aMS3Y3CCAKwErQrOulake7C7uWp
-FWmge5iMC9U/bJjnJn6lW9WfRnVUXmp5akqOeWHMSQNTJOKjpKKu2vbmpqvYuw8/
-EZ2UXBGtg72QjRVuzMJ+SE6pK4JPFM8d4TgJxzk49W5ABja+ipgEbdccHOOiSC6+
-uFVnPmJI1kOcxLhh4CLeJsq2rbT56LiAWFj/BcsoRnz0+2o3/E8FL3f2KG5T4/Hj
-6hZjsZySX3X+bwDVFBhMXv1d/ecgXPjUrdhj2kM+v50DMAu1jbz9aNM1kFzxA01q
-9uh4AeSC65gQ8YnjC8mUo9BH/9JWzvf8SsGLTqLfDxkaHZcs5dIfqvNkmTs+sAM9
-syJ2hplhAYUk20Pn/AAda2drxoqYYnUjt6R+UOaVcaJMLIr2z8CS60rWr2+Uwhpd
-njA1mv/Zih/rq8uNN8l+j4DAQabNh8g/LPeroTO0/eF5WsPTvZM/BKtKrJgoy3Rv
-E+C0EwaEiCNxZH9vUSmqw/DkWRX2CBe6NoDzUGwjWGJeSAjSCgbklwdyUuhKaJq0
-MTDz/VZ2xLIMFm8RRFfYBjKohUK+RXA2OHHst4bQGq0rvjqtJo9yd3UzIFz+ww+L
-VpD0vh+lndjqAQHcpftyzMcgB6AVADDZydaRUFdLGm9OHaeZA5k=
-=4/Uq
------END PGP SIGNATURE-----
-
---/6X2y1A/1uo421sv--
-
-
---===============5941574532804230270==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5941574532804230270==--
-
