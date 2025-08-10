@@ -4,61 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7AD3C87FCA
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Aug 2025 15:19:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33BB6C87FCA
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Aug 2025 16:52:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gD0oGhXpkSLgFLiUkh+OlIB++4fuWpbHukVQGV90els=; b=aXdvLwru/Y0o71
-	NriBQ9tCpSL1hXnSu/aZjxdO2xqliolNvV20W+ATBBocd5q3E+ZdyMewer1oPuhL+0hlSP7yU6/CH
-	7hTaq1hM6v2NoSdY9EQQDaxXsrxPOtcLA7fZMjVdIT7dyzGGWXFGwDjUvFZG+MoGxF9DVEbNDr7p5
-	BsK4FRJXy7av56viFw6Do93nJYoMXqz7Q5KOmEKKUnGMmbQIAaOoqfrq3XXxEJK3EJEUHT/4rh8+n
-	DcgFlDpQVQGNcH3fps5l995dRFdOPRjDssNE//Pujh90nd7qQty+8jIpjnG63rmDBOJWqMh27NmTn
-	Nj1kN1XN5zxb6MjvsGnQ==;
+	List-Owner; bh=lAnDrgjdKaqgLOobBI815e5PmRzF7VYh9rQJbltaOr0=; b=kt4a9XyeLgz+i1
+	LdeI6N3OokAzZbYzozMGJmDEJ0RvwcrbKev4GvREFJi/zyTgE0YAdhQroxEMUDjndZTjgTGGU19PG
+	rVQptW5DHR23v9mlQg0B81IR+p4SsHH0SzYG7jXrYsBYT9r8uvuVUxJrQPVNPoMNyD11CDbtG7Ker
+	jyHeNc5rU8MsBx7kzkWc52gtLxR8T8/VazQctCpkVw22rReI73n3LJ4UfzE9uaYb3nKAG0VJ1MMY9
+	LUCVWAzphGnLJ1MWrwCYTfvr+H+Cd+kerUH1XY0V8kLhTJUCt8jgk+FZnI63j5JTqoVN7zCN5SkTv
+	pkzGg0Gl7g7LIOyBh75g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ul7oz-00000005k56-2Ljx;
-	Sun, 10 Aug 2025 15:18:53 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1ul9HU-00000005nVE-0M5H;
+	Sun, 10 Aug 2025 16:52:24 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ul7mR-00000005jt1-3Ykd;
-	Sun, 10 Aug 2025 15:16:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=EUPUnoEBAZfqIDY+8Nh2cj2EKAuWKbwsRCUV0UW5AoQ=; b=L4H2zlPio+LxDuUxZereeQXnZc
-	B3QZXrgzoFR6bTsfCEYwckhqPmrMjg300hzGQ1dt3EkhCvNjJ9gkPQB0uEJPsgSBArk7SLOcw6ZX5
-	7ZxsRaveVC/PBTTdiYsJXy6NH7nHMrfQwXZH+O4WQ3nPUYt7HGfePlvQ2YvmlgpX1qyk=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1ul7mB-004EAx-FO; Sun, 10 Aug 2025 17:15:59 +0200
-Date: Sun, 10 Aug 2025 17:15:59 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: jonas@kwiboo.se, alsi@bang-olufsen.dk, conor+dt@kernel.org,
-	davem@davemloft.net, devicetree@vger.kernel.org,
-	edumazet@google.com, heiko@sntech.de, krzk+dt@kernel.org,
-	kuba@kernel.org, linus.walleij@linaro.org,
+	id 1ul9Ex-00000005nLG-0yG3;
+	Sun, 10 Aug 2025 16:49:48 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-3b78ae64756so426989f8f.2;
+        Sun, 10 Aug 2025 09:49:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1754844585; x=1755449385; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=1O7Ir2JV9F3FRquanCEG57N9yilLJmRdcXyWCErqjXM=;
+        b=Xu3/xra9fJo5AGKlyAJvsw502GJ1+ex5dVQsXp5L1h9WlibG1Ru25fFS5pkjaEfAxw
+         o17rH1kG30ljn8ihavkSl8gdHXecAX+SDGcwFwAGvi9x9xMhDEG7ttRNReiqorP/S0m6
+         EMzL0oyPnBQ33hVN3kUDm20LtBTzLYe188+1Dr6NrbCMzoS9adqfVmrD4ZswE5MO0/EZ
+         sUv/SwyotroNjl40rJLXoUGXKw1MpX81xhCjjtRPkVAAWeWZh0Xd+KZPz1Bat8FAjOio
+         HDQRLzCykmOL3XqiBFZplFk/77a2Fo8vQ5+Da6BvVslw/tUn+h2O1ibatX/BLVz5D2C6
+         s5kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754844585; x=1755449385;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1O7Ir2JV9F3FRquanCEG57N9yilLJmRdcXyWCErqjXM=;
+        b=eP96vS6f5B3JzazJgUvAcBYoVHpN1y9qQ2iRP4/mqyDg27Bd5CdPTBdIxjeTXtHeF2
+         ZhS86g2i08HXhJ/x5UDkmn0S0upDVnWffyehQyp1y2oKfJKp4yUI7ivoPh2PAmSYrO+H
+         1Py0GFLX9tF3rbvhg0L7ebJMeF8Jj4j4Cz1zPZvrZbAql/QQw/8dZOoGudTTB88xFbMa
+         BU2lETEJRgQ+tzvaMGT0PSS2+PEktXdvMOoh/T6EzBvhGf2WCFyL9ZjNcXYkAHSlFJf4
+         FAzT+h0gkUG/AeIwVhxEH3Oefsg8wqeOluNOKUBu4ZLTAvyq5jP7YsK9AEh81GTO1abA
+         1mKw==
+X-Forwarded-Encrypted: i=1; AJvYcCVblNV5GwYtJQzZ+BtXbW/wz3H04owcXG/GkuOwMXrU7Fyir1cIsffNtq57svgyd/QWAIZoAJIXoDhkPWdODKx/@lists.infradead.org, AJvYcCXi0FA/YutVO4jFlUc19pCrTS4q7U2piABL9SLvWEJgcy8HLXeGQsyxxvZU6ZkdLcACigITJGxxHo68Lv4fG4k=@lists.infradead.org
+X-Gm-Message-State: AOJu0YytuSEdJdCwf3znOfUw85gz3NLsuZX05pXWvwKXeJwNOg/vayxq
+	vXt3ZlSGyjGcZ2AQfgiV1GaCMXbJKxG7zol7lDUQuXMuVp/MrBAwjl+T
+X-Gm-Gg: ASbGncsnzF1a/UpCHBWmPWE1gv5kmq7PHsQ39v8QzbnDcyHBETbCH9Mv3VSxbtUBwZv
+	t1eDfBc+7hUBEJM9tbkza3Qh5oGbkjmGjAtAvIPsRBki7ZBVsXfeW/jcPhAhrbRU3thNHLmLI2u
+	yvrzfkWo/+e3k6AYeuEH3YTvd2fPeedeS7ALDZK5MPzz88PmO4b7XXkFOwa0OG3mts5KgsUVy4Z
+	uGSnWItadkz5y55Q8JGfsSUMJJc8zOLKjmRFl2xjAQ+PlwoQAUdAswtMG/cJN/n5cEKBveXUzDj
+	yFa4ig/9PEbi4NuQtgClNjlbGpGnb3Oc69QovwI5VLPJx+4XtMC3UVoP7xyOT0zh3HK/J4QFShc
+	jj09qUYsn3eMyYRo=
+X-Google-Smtp-Source: AGHT+IF3CiPbtmzEifmcmnCZ6v8i8GbiWTGaqS99ZpLMhFYLskKAThOPIcEoj6BjqGlkH2y/M2FuGw==
+X-Received: by 2002:a05:600c:820a:b0:456:1a00:c745 with SMTP id 5b1f17b1804b1-459fd04c3e9mr22165455e9.3.1754844584509;
+        Sun, 10 Aug 2025 09:49:44 -0700 (PDT)
+Received: from skbuf ([2a02:2f04:d005:3b00:f9ef:f5a3:456e:8480])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b79c3bc12csm38395980f8f.28.2025.08.10.09.49.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 10 Aug 2025 09:49:43 -0700 (PDT)
+Date: Sun, 10 Aug 2025 19:49:41 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Chukun Pan <amadeus@jmu.edu.cn>, jonas@kwiboo.se, alsi@bang-olufsen.dk,
+	conor+dt@kernel.org, davem@davemloft.net,
+	devicetree@vger.kernel.org, edumazet@google.com, heiko@sntech.de,
+	krzk+dt@kernel.org, kuba@kernel.org, linus.walleij@linaro.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org, netdev@vger.kernel.org,
-	olteanv@gmail.com, pabeni@redhat.com, robh@kernel.org,
-	ziyao@disroot.org
+	pabeni@redhat.com, robh@kernel.org, ziyao@disroot.org
 Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add RTL8367RB-VB switch to
  Radxa E24C
-Message-ID: <1f2f8eda-3056-48bd-9c86-3fb699f043f3@lunn.ch>
+Message-ID: <20250810164941.4oezju3c4vhnunrx@skbuf>
 References: <db1f42c3-c8bb-43ef-a605-12bfc8cd0d46@kwiboo.se>
  <20250810140115.661635-1-amadeus@jmu.edu.cn>
+ <1f2f8eda-3056-48bd-9c86-3fb699f043f3@lunn.ch>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250810140115.661635-1-amadeus@jmu.edu.cn>
+In-Reply-To: <1f2f8eda-3056-48bd-9c86-3fb699f043f3@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250810_081615_887961_CD7E71D0 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20250810_094947_270400_8BC0ED64 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,39 +105,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Aug 10, 2025 at 10:01:15PM +0800, Chukun Pan wrote:
-> Hi,
-> 
-> > I had only tested on a next-20250722 based kernel and on a vendor 6.1
-> > based kernel. And similar to your findings, on 6.1 based kernel there
-> > was no issue only on the newer kernel.
-> >
-> > I will probably drop the use of "/delete-property/ snps,tso" and include
-> > a note in commit message about the TSO and RX checksum issue for v2.
-> 
-> After my test, this problem is caused by commit 041cc86 ("net: stmmac: Enable TSO on VLANs")
-> https://github.com/torvalds/linux/commit/041cc86b3653cbcdf6ab96c2f2ae34f3d0a99b0a
-> 
-> It seems that this commit just exposed the TSO problem (with VLANs).
+On Sun, Aug 10, 2025 at 05:15:59PM +0200, Andrew Lunn wrote:
+> Just a guess, but maybe it is a DSA tagger bug? Maybe the user frame
+> is a VLAN frame. The tagger is placing the VLAN tag into the DSA
+> header, so in effect, the frame is no longer a VLAN frame. But it is
+> not calling __vlan_hwaccel_clear_tag() to indicate the skbuf no longer
+> needs VLAN processing?
 
-I'm not sure that is correct. What this patch does is enable TSO for
-VLANs by adding the VLAN header to the packet in software before
-transmitting it, rather than asking the hardware to insert the VLAN
-header as it transmits.
-
-What i don't understand yet, is what has VLANs got to do with DSA?
-Does the DSA tagger being used not actually insert a switch specific
-header, but is using VLAN overlays? Why is the VLAN path in the stmmac
-transmit function being used?
-
-Just a guess, but maybe it is a DSA tagger bug? Maybe the user frame
-is a VLAN frame. The tagger is placing the VLAN tag into the DSA
-header, so in effect, the frame is no longer a VLAN frame. But it is
-not calling __vlan_hwaccel_clear_tag() to indicate the skbuf no longer
-needs VLAN processing?
-
-	Andrew
-
+For the original skb to have had a VLAN hwaccel tag, validate_xmit_vlan()
+would have had to not push it inside, so vlan_hw_offload_capable() must
+have been true for DSA user ports. But we advertise neither the
+NETIF_F_HW_VLAN_CTAG_TX nor the NETIF_F_HW_VLAN_STAG_TX netdev feature.
+So the VLAN tags in skbs transmitted through DSA user ports should all
+be in the skb head.
 
 _______________________________________________
 Linux-rockchip mailing list
