@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7448C87FCB
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Aug 2025 02:00:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C8A5C87FCB
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Aug 2025 02:18:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3+UOkCHo1CWi/6QMTRfQ53Og8EcYksPFeXnwU9dYN3Q=; b=oArP+MP1JSFJHT
-	SKvaBVGjlTpYoKy3IqoMoTr94aJMYVnzGxUpnJpE5gEr9kUowrDdtjWfh04H+qX8Ewb7j7KxPOHvs
-	gGHeHE+hWSRSluax3NHVu/mFHzt0r6hZ6C4D+kGcG7hJCX8bEQbN8QESSGlzLNkdh74LsjqKnPNbQ
-	F8BmozwqYj3kwq6PEB1GYtIrVIXn7HrriitE/0jDdU2UsdPR7I/gMtzASFYn2MzLbBKJD+ZChZjhD
-	COv81PdadVTKIvVGNmG24nsRsZ7dw+5byORlAQlule02jvIbEZhJ/lxOrDx0aXPMDAPeOyn3JeGi0
-	zDJf7tZaxvQ/eUGLAxdA==;
+	List-Owner; bh=uycB9NCMAzoQJGtcZra7JINZDESoPTaSnB4ftuN2RXw=; b=lZxxchmdNZxJLP
+	YQ9/DTw8xDvsDJbzKn8QC2IRbQyuIYpqSVrGP8RY7TTIjeBHNvaMm4NKNGgDaq+grV3AeDfnliunS
+	4EVjQcDvi9cjNSdqvBL1uF3E7/6QYgPqeM1l3g5qSPTfL99b13iIuYHFYcNAtS0H4aFmrh3IL9dxd
+	XBhZlHzxyL/aWzoFRUy+JixCwPAR0lnyNThQf1UlJSymGsBpR3BtjnNpKUHUpOQnauyHippOFqDD/
+	8oI1goofdWgGDthsgFONSRhPFLIWATYaQUrNNexjhqIwQeVw8unCe135OD4oAV8Z8RDyUEr8UkxGP
+	tDUZElbl2oxNwUlY4hOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ukvLv-00000005A3T-24MD;
-	Sun, 10 Aug 2025 02:00:03 +0000
+	id 1ukvdH-00000005B9O-1SBA;
+	Sun, 10 Aug 2025 02:17:59 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ukuvX-000000057h3-02t9;
-	Sun, 10 Aug 2025 01:32:48 +0000
+	id 1ukuvo-000000057ne-36pL
+	for linux-rockchip@lists.infradead.org;
+	Sun, 10 Aug 2025 01:33:05 +0000
 Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id E6FD318B9;
-	Sun, 10 Aug 2025 03:31:54 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id A64BF8CB;
+	Sun, 10 Aug 2025 03:32:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1754789515;
-	bh=+d8HCAd9saeFQoG/BxnHXNphCksZ/kk7HrgRZCzeUlI=;
+	s=mail; t=1754789532;
+	bh=MXwXJUqSFCMx/R0Hx2yrA/Mx80khhyVD4JDFTW7a4tg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BE2WN99Pbmg4PiFm9GSb31ByiP+ZPpRHpsrjdd5dVmVwV0bWNo6tflveTuRp39/qo
-	 uViqvYuqXKvRdXl3miMwjdpxBJn/7o+w6kT45ge08Ko9abFW3z6WLqX5ir6ZDJHUGX
-	 kmmAbW4Aegcq11oV3FqF0ZribKHGiNDNMyOzcQBk=
+	b=TGeUftN+0MzSSidg+4Em3tNucLWO3IE2WXJFGyFR/7oeiGyUVdVOpnRZbNZ89F1u4
+	 FJyPnSZ+xChONaPVeNDfNwG2OLthTpM9nunK/i53A7fcWT/rUbBK6y8h4u9dA+sBmY
+	 ULhPVA8UVsl+ON4loX3Arkl9HY3FuFogKvVNq67M=
 From: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
 	Hans Verkuil <hans@jjverkuil.nl>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3 51/76] media: rockchip: rkvdec: Access v4l2_fh from file
-Date: Sun, 10 Aug 2025 04:30:33 +0300
-Message-ID: <20250810013100.29776-52-laurent.pinchart+renesas@ideasonboard.com>
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v3 62/76] media: hantro: Access v4l2_fh from file->private_data
+Date: Sun, 10 Aug 2025 04:30:44 +0300
+Message-ID: <20250810013100.29776-63-laurent.pinchart+renesas@ideasonboard.com>
 X-Mailer: git-send-email 2.49.1
 In-Reply-To: <20250810013100.29776-1-laurent.pinchart+renesas@ideasonboard.com>
 References: <20250810013100.29776-1-laurent.pinchart+renesas@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250809_183247_331099_22B2E4FC 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20250809_183304_914181_5A914C91 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,114 +72,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+To prepare for the introduction of video_device_state as second argument
+of the v4l2_ioctl_ops handler, access the v4l2_fh from
+file->private_data instead of using void *priv.
 
-The v4l2_fh associated with an open file handle is now guaranteed
-to be available in file->private_data, initialised by v4l2_fh_add().
+The file->private_data is initialized to point to the v4l2_fh
+by the usage of v4l2_fh_init() in the v4l2_file_operations.open()
+handler.
 
-Access the v4l2_fh, and from there the driver-specific structure,
-from the file * in all ioctl handlers.
-
-Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Reviewed-by: Detlev Casanova <detlev.casanova@collabora.com>
-Co-developed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 Signed-off-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+Reviewed-by: Paul Kocialkowski <paulk@sys-base.io>
 ---
 Changes since v1:
 
 - Update file-to-ctx macro due to removal of fh-to-ctx macro
 ---
- drivers/media/platform/rockchip/rkvdec/rkvdec.c | 14 +++++++-------
- drivers/media/platform/rockchip/rkvdec/rkvdec.h |  7 +------
- 2 files changed, 8 insertions(+), 13 deletions(-)
+ drivers/media/platform/verisilicon/hantro.h   |  7 +-----
+ .../media/platform/verisilicon/hantro_v4l2.c  | 22 +++++++++----------
+ 2 files changed, 12 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-index 481c2488f9ac..9fa80ab3c62b 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-@@ -354,7 +354,7 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
- 				  struct v4l2_format *f)
- {
- 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
--	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-+	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
- 	const struct rkvdec_coded_fmt_desc *coded_desc;
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 5b85c8a44706..e0fdc4535b2d 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -382,14 +382,9 @@ extern int hantro_debug;
+ 	pr_err("%s:%d: " fmt, __func__, __LINE__, ##args)
  
- 	/*
-@@ -387,7 +387,7 @@ static int rkvdec_try_output_fmt(struct file *file, void *priv,
- 				 struct v4l2_format *f)
- {
- 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
--	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-+	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
- 	const struct rkvdec_coded_fmt_desc *desc;
- 
- 	desc = rkvdec_find_coded_fmt_desc(pix_mp->pixelformat);
-@@ -418,7 +418,7 @@ static int rkvdec_try_output_fmt(struct file *file, void *priv,
- static int rkvdec_s_capture_fmt(struct file *file, void *priv,
- 				struct v4l2_format *f)
- {
--	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-+	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
- 	struct vb2_queue *vq;
- 	int ret;
- 
-@@ -439,7 +439,7 @@ static int rkvdec_s_capture_fmt(struct file *file, void *priv,
- static int rkvdec_s_output_fmt(struct file *file, void *priv,
- 			       struct v4l2_format *f)
- {
--	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-+	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
- 	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
- 	const struct rkvdec_coded_fmt_desc *desc;
- 	struct v4l2_format *cap_fmt;
-@@ -504,7 +504,7 @@ static int rkvdec_s_output_fmt(struct file *file, void *priv,
- static int rkvdec_g_output_fmt(struct file *file, void *priv,
- 			       struct v4l2_format *f)
- {
--	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-+	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
- 
- 	*f = ctx->coded_fmt;
- 	return 0;
-@@ -513,7 +513,7 @@ static int rkvdec_g_output_fmt(struct file *file, void *priv,
- static int rkvdec_g_capture_fmt(struct file *file, void *priv,
- 				struct v4l2_format *f)
- {
--	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-+	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
- 
- 	*f = ctx->decoded_fmt;
- 	return 0;
-@@ -532,7 +532,7 @@ static int rkvdec_enum_output_fmt(struct file *file, void *priv,
- static int rkvdec_enum_capture_fmt(struct file *file, void *priv,
- 				   struct v4l2_fmtdesc *f)
- {
--	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-+	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
- 	u32 fourcc;
- 
- 	fourcc = rkvdec_enum_decoded_fmt(ctx, f->index, ctx->image_fmt);
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-index 3a6322d42b26..481aaa4bffe9 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-@@ -124,14 +124,9 @@ struct rkvdec_ctx {
- 	void *priv;
- };
- 
--static inline struct rkvdec_ctx *fh_to_rkvdec_ctx(struct v4l2_fh *fh)
+ /* Structure access helpers. */
+-static __always_inline struct hantro_ctx *fh_to_ctx(struct v4l2_fh *fh)
 -{
--	return container_of(fh, struct rkvdec_ctx, fh);
+-	return container_of(fh, struct hantro_ctx, fh);
 -}
 -
- static inline struct rkvdec_ctx *file_to_rkvdec_ctx(struct file *filp)
+ static __always_inline struct hantro_ctx *file_to_ctx(struct file *filp)
  {
--	return fh_to_rkvdec_ctx(file_to_v4l2_fh(filp));
-+	return container_of(file_to_v4l2_fh(filp), struct rkvdec_ctx, fh);
+-	return fh_to_ctx(file_to_v4l2_fh(filp));
++	return container_of(file_to_v4l2_fh(filp), struct hantro_ctx, fh);
  }
  
- struct rkvdec_aux_buf {
+ /* Register accessors. */
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 7c3515cf7d64..6bcd892e7bb4 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -185,7 +185,7 @@ static int vidioc_querycap(struct file *file, void *priv,
+ static int vidioc_enum_framesizes(struct file *file, void *priv,
+ 				  struct v4l2_frmsizeenum *fsize)
+ {
+-	struct hantro_ctx *ctx = fh_to_ctx(priv);
++	struct hantro_ctx *ctx = file_to_ctx(file);
+ 	const struct hantro_fmt *fmt;
+ 
+ 	fmt = hantro_find_format(ctx, fsize->pixel_format);
+@@ -217,7 +217,7 @@ static int vidioc_enum_fmt(struct file *file, void *priv,
+ 			   struct v4l2_fmtdesc *f, bool capture)
+ 
+ {
+-	struct hantro_ctx *ctx = fh_to_ctx(priv);
++	struct hantro_ctx *ctx = file_to_ctx(file);
+ 	const struct hantro_fmt *fmt, *formats;
+ 	unsigned int num_fmts, i, j = 0;
+ 	bool skip_mode_none, enum_all_formats;
+@@ -297,7 +297,7 @@ static int vidioc_g_fmt_out_mplane(struct file *file, void *priv,
+ 				   struct v4l2_format *f)
+ {
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+-	struct hantro_ctx *ctx = fh_to_ctx(priv);
++	struct hantro_ctx *ctx = file_to_ctx(file);
+ 
+ 	vpu_debug(4, "f->type = %d\n", f->type);
+ 
+@@ -310,7 +310,7 @@ static int vidioc_g_fmt_cap_mplane(struct file *file, void *priv,
+ 				   struct v4l2_format *f)
+ {
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+-	struct hantro_ctx *ctx = fh_to_ctx(priv);
++	struct hantro_ctx *ctx = file_to_ctx(file);
+ 
+ 	vpu_debug(4, "f->type = %d\n", f->type);
+ 
+@@ -398,13 +398,13 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+ static int vidioc_try_fmt_cap_mplane(struct file *file, void *priv,
+ 				     struct v4l2_format *f)
+ {
+-	return hantro_try_fmt(fh_to_ctx(priv), &f->fmt.pix_mp, f->type);
++	return hantro_try_fmt(file_to_ctx(file), &f->fmt.pix_mp, f->type);
+ }
+ 
+ static int vidioc_try_fmt_out_mplane(struct file *file, void *priv,
+ 				     struct v4l2_format *f)
+ {
+-	return hantro_try_fmt(fh_to_ctx(priv), &f->fmt.pix_mp, f->type);
++	return hantro_try_fmt(file_to_ctx(file), &f->fmt.pix_mp, f->type);
+ }
+ 
+ static void
+@@ -648,19 +648,19 @@ static int hantro_set_fmt_cap(struct hantro_ctx *ctx,
+ static int
+ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ {
+-	return hantro_set_fmt_out(fh_to_ctx(priv), &f->fmt.pix_mp, HANTRO_AUTO_POSTPROC);
++	return hantro_set_fmt_out(file_to_ctx(file), &f->fmt.pix_mp, HANTRO_AUTO_POSTPROC);
+ }
+ 
+ static int
+ vidioc_s_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ {
+-	return hantro_set_fmt_cap(fh_to_ctx(priv), &f->fmt.pix_mp);
++	return hantro_set_fmt_cap(file_to_ctx(file), &f->fmt.pix_mp);
+ }
+ 
+ static int vidioc_g_selection(struct file *file, void *priv,
+ 			      struct v4l2_selection *sel)
+ {
+-	struct hantro_ctx *ctx = fh_to_ctx(priv);
++	struct hantro_ctx *ctx = file_to_ctx(file);
+ 
+ 	/* Crop only supported on source. */
+ 	if (!ctx->is_encoder ||
+@@ -691,7 +691,7 @@ static int vidioc_g_selection(struct file *file, void *priv,
+ static int vidioc_s_selection(struct file *file, void *priv,
+ 			      struct v4l2_selection *sel)
+ {
+-	struct hantro_ctx *ctx = fh_to_ctx(priv);
++	struct hantro_ctx *ctx = file_to_ctx(file);
+ 	struct v4l2_rect *rect = &sel->r;
+ 	struct vb2_queue *vq;
+ 
+@@ -738,7 +738,7 @@ static const struct v4l2_event hantro_eos_event = {
+ static int vidioc_encoder_cmd(struct file *file, void *priv,
+ 			      struct v4l2_encoder_cmd *ec)
+ {
+-	struct hantro_ctx *ctx = fh_to_ctx(priv);
++	struct hantro_ctx *ctx = file_to_ctx(file);
+ 	int ret;
+ 
+ 	ret = v4l2_m2m_ioctl_try_encoder_cmd(file, priv, ec);
 -- 
 Regards,
 
