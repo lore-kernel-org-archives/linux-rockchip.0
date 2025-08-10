@@ -4,45 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67758C87FDA
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Aug 2025 19:25:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C573CA0EC0
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Aug 2025 21:41:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZbdmpvTYA4SnN9Z4ZWAxLddR6He3vhDjn0RF3uTIZJk=; b=xOwzP3sj5NULmS
-	l/nF5SoiqFbYGeNUuU30YC3MGb7n2FC7kAAXtGxK5VE607U74SzyPqIE9V8Rt+66iyvX2dNRZmt96
-	pxkj9FALIHfURZz9PpKwK+LE4vLyOg2Pg/rc7afbCq4630uKj3sfkwBySbCHY7QGbAzBkAYc+Qoud
-	DAkMl3CqPjIV7/IWHWhL8aEOtigHTbEW8em2Ikyc2gWKaeaHU43pKH83sB8igrILzpUTtfn4Z5Z6a
-	1A0Wu89XudN3jOhtT1w8sXBxyThfnFH9EzvJP7bDlNHf3gyPkGQj+a2BRn6PSAANogw2dh9tvPkqY
-	CLRQ4vyPGLFANkoVZ0eA==;
+	List-Owner; bh=5xmiHxi2s5EP+AapWivhinvjfzKb462jo+7dlkencSk=; b=ei+wr2EhpFO5CP
+	0DSXBgDciJ0tvbdRXxdM4N6dhcA5YOuYLDLGelsSOKIai+RO1ue0HhMw9GK+fqHgXugxUAfU+VsHy
+	2j3y4egqHkcdHEyoUeX85r/nDLp+BzRx2B96ednzEFN7n7fWDuU4vgXIqy4Lr1yzRMAo5i7ICV5Uc
+	9kmi1GFLquOr0eP3nTU6y3wq7dk45GgAHIsqKQtQLW0F6/2nadC6kG9HQ4OHw94/4VT5PM27kPv2/
+	GDt0PHo7ece+q5nfsfblcvGuzuhuXbACS6MT2FA3m2pRTwrZJ+avu5wIiTQXcIgbIs8C5eUOHQn/t
+	LU8Uv8sLrK2LAYmvjxrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulBfq-00000005vGi-1R3b;
-	Sun, 10 Aug 2025 19:25:42 +0000
-Received: from luna.linkmauve.fr ([82.65.109.163])
+	id 1ulDmz-000000063VF-22jU;
+	Sun, 10 Aug 2025 21:41:13 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulBdE-00000005v9v-12yX;
-	Sun, 10 Aug 2025 19:23:03 +0000
-Received: by luna.linkmauve.fr (Postfix, from userid 1000)
-	id 019474955FE8; Sun, 10 Aug 2025 21:22:54 +0200 (CEST)
-Date: Sun, 10 Aug 2025 21:22:54 +0200
-From: Link Mauve <linkmauve@linkmauve.fr>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: Add the vdpu381 Video
- Decoders on RK3588
-Message-ID: <aJjxjgG1gEaKBVwE@desktop>
-References: <20250808193602.142527-1-detlev.casanova@collabora.com>
- <20250808193602.142527-2-detlev.casanova@collabora.com>
+	id 1ulDYW-0000000629G-1s3L
+	for linux-rockchip@lists.infradead.org;
+	Sun, 10 Aug 2025 21:26:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1754861175; bh=+VzcJ1IEVCXH+ZaLujNTdec9bYkNu+r+vgyiKcJcdgY=;
+ b=Er6MjEwAK7RkMn+vP8dCCsgDjVUJd6DnIxKKPwXrYS+B9qlJmK0YKP22bxTiz7NyShmqHsA76
+ PjOtwpe2XWS+wxtSYk6w2pV/ZAx7qn8coV42L+sHgQ50HNv5KIZwnvSLz7Dl0TKKe5u/McGrWmN
+ bDhjpueRtTruF6d+nG7KYV4exP5AtEmiRbbTPmlryhI5BPrSBbKktyuAIWh+gi1xhUdelKaWHZ5
+ OrEMyoMnWOWY3I6nmUYfCIYtPxtylYxMSKz0U0G1/dBej4ZTFuF9iE3uHu6nrnfNDdaIIjiMP5P
+ KWDRU23ND87SPslKVcRE4Yg4GCfDw+F6NlEFyFfraHbA==
+X-Forward-Email-ID: 68990e74797ab89627792492
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 1.2.4
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Alex Bee <knaerzche@gmail.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v2 7/7] ARM: dts: rockchip: Add vdec node for RK3288
+Date: Sun, 10 Aug 2025 21:24:37 +0000
+Message-ID: <20250810212454.3237486-8-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20250810212454.3237486-1-jonas@kwiboo.se>
+References: <20250810212454.3237486-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250808193602.142527-2-detlev.casanova@collabora.com>
-Jabber-ID: linkmauve@linkmauve.fr
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250810_122300_434625_666956A0 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20250810_142616_582462_685803FF 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -54,41 +82,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, Niklas Cassel <cassel@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>, kernel@collabora.com, Dragan Simic <dsimic@manjaro.org>, Rob Herring <robh@kernel.org>, Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, Chris Morgan <macromorgan@hotmail.com>, linux-arm-kernel@lists.infradead.org, Patrick Wildt <patrick@blueri.se>, linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>, Diederik de Haas <didi.debian@cknow.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Alex Bee <knaerzche@gmail.com>
 
-On Fri, Aug 08, 2025 at 03:36:01PM -0400, Detlev Casanova wrote:
-> Add the vdpu381 Video Decoders to the rk3588-base devicetree.
-> 
-> The RK3588 based SoCs all embed 2 vdpu381 decoders.
-> This also adds the dedicated IOMMU controllers.
+RK3288 contains a Rockchip VDEC block that only support HEVC
+decoding. Add a vdec node for this.
 
-Back in the VEPU121 enablement series[1] it had been decided to not
-expose multiple identical cores yet, because there is no infrastructure
-yet in the kernel to schedule multiple userland processes on multiple
-cores, or (more relevant for your usecase) to even combine two cores to
-reach 8K support.
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+Changes in v2:
+- No change
+---
+ arch/arm/boot/dts/rockchip/rk3288.dtsi | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
 
-> 
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 74 +++++++++++++++++++
->  1 file changed, 74 insertions(+)
-> 
-
-[snip]
-
-Thanks,
-
-[1] https://lore.kernel.org/all/20240618183816.77597-1-sebastian.reichel@collabora.com/
-
+diff --git a/arch/arm/boot/dts/rockchip/rk3288.dtsi b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+index 42d705b544ec..eab0c9a2d482 100644
+--- a/arch/arm/boot/dts/rockchip/rk3288.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+@@ -1293,6 +1293,21 @@ vpu_mmu: iommu@ff9a0800 {
+ 		power-domains = <&power RK3288_PD_VIDEO>;
+ 	};
+ 
++	hevc: video-codec@ff9c0000 {
++		compatible = "rockchip,rk3288-vdec";
++		reg = <0x0 0xff9c0000 0x0 0x440>;
++		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_HEVC>, <&cru HCLK_HEVC>,
++			 <&cru SCLK_HEVC_CABAC>, <&cru SCLK_HEVC_CORE>;
++		clock-names = "axi", "ahb", "cabac", "core";
++		assigned-clocks = <&cru ACLK_HEVC>, <&cru HCLK_HEVC>,
++				  <&cru SCLK_HEVC_CABAC>, <&cru SCLK_HEVC_CORE>;
++		assigned-clock-rates = <400000000>, <100000000>,
++				       <300000000>, <300000000>;
++		iommus = <&hevc_mmu>;
++		power-domains = <&power RK3288_PD_HEVC>;
++	};
++
+ 	hevc_mmu: iommu@ff9c0440 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff9c0440 0x0 0x40>, <0x0 0xff9c0480 0x0 0x40>;
+@@ -1300,7 +1315,7 @@ hevc_mmu: iommu@ff9c0440 {
+ 		clocks = <&cru ACLK_HEVC>, <&cru HCLK_HEVC>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
+-		status = "disabled";
++		power-domains = <&power RK3288_PD_HEVC>;
+ 	};
+ 
+ 	gpu: gpu@ffa30000 {
 -- 
-Link Mauve
+2.50.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
