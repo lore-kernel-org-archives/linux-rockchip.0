@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4DB9CCD1AB
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80BFACCD193
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:59:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eAFi0jp6eYR3zHQcGCkiQBgntSmGQEXSIrgkx/bTk5E=; b=prWZBaYTfpIi3B
-	LiiZ4ZviSo7SdGInY99a8LyJJMlvQjS1nYg1ggrbCQ0Z3nK3YZCsViC5ntINdw66Rp+aH+2taHsOi
-	NkVtWl3pKH8O+oVJpX6MzcYR3XeH7VqAcR2fY2ZCgLTqM2kgo5/H6wHIJLekof/rC5i4e5S47D8RY
-	CQn6eZyj+06QzUB3miUBa+Y2HMA4+j7AvQSp7B9vVLhJEdexSFNgjEMItUFdldTm3DGsoEHl8MDYs
-	IZGO7oECm9udRh+efc0EvKFJnc1Q8TZXmt+2LjsCx63D8t8M+16wXHXnDnyn41vcXdB6toGgDXO1M
-	EHjkXYEOQ0TAFITB6zcg==;
+	List-Owner; bh=tQfvhL3gOPmH9xht2fxunRy9/yXI7WOjssAtEoE0Rco=; b=MEblcdcC6+5pz8
+	VDx68SA9utLrH1wlPOWVkAjvmA+oqdSYcMNYzLQoWocxuxF1eHBUA7WuVkAfN4myjjQo9WxPde17c
+	EXAIZIF98Aq6iPl9kN6XgkcmqtpWFsihoo0l9yFjNkhAqFNpjlzdHqDN5pWSZ8dU88F3zoFsENE8z
+	flcjMGWrhuqtJrtbHPBFdj+vMRpbYqneI8iXoimwESheO3V6mPdag4JjMODf7RblUWWXsP9nusEmb
+	u/XgLxl3jdNDYj1EgQDT56LX04acFbSFyMm9GAths0mwwmh0hfJ9ihmkcgkGBUFCmeAvtaySaijfV
+	Gzhp2plHnYUv1fgHM++A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoYB-0000000DCYW-0LF6;
-	Mon, 20 Oct 2025 11:59:43 +0000
+	id 1vAoYA-0000000DCWn-0tvZ;
+	Mon, 20 Oct 2025 11:59:42 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUI8-00000008AYp-42LH;
-	Mon, 11 Aug 2025 15:18:29 +0000
+	id 1ulUI8-00000008AYL-2dCD;
+	Mon, 11 Aug 2025 15:18:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id DE6136144D;
+	by tor.source.kernel.org (Postfix) with ESMTP id 5C32F6143B;
 	Mon, 11 Aug 2025 15:18:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id CA82BC2BCFA;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 41308C4AF10;
 	Mon, 11 Aug 2025 15:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1754925505;
-	bh=e8HujlMpFGG0hdZmw2N8en6ukTSj2mtOycpd4S4Vwf4=;
+	bh=J0gMA2rTgX9RR4Jzc/dNgMlT2l0jGAgJZes96XdKuOI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=J02en6UE9b/Rvb3KTli9PVbkozXdoSR2v0zmMTskHL4vFcRHkeKhxUJTPksyieya7
-	 INF0CbE8fQFyM1AHBt/ncUlQCYbbO+B7fQwfAuUBq/730crE0F71frshNttXehOKLF
-	 5RsAL7/OdTT+RDqE3sJn3z+i2F1AAvzuHgkc2YTARakabm0YYRW4OIFVMdSsTQCmh6
-	 tSQRwRhLNQfCNmLvWkeVut4zqxj/It1wP7wa5eXsBmZUnF6lcVsf7nmIkf0PGzR4hg
-	 FhV9AqpyVQgJhalFias28+QZXBTeioLL+zINtrKNc+AeaDvLgQWknFbDmi14Ec8dUj
-	 0gGrz8y84NWXw==
+	b=dExTdR0Y5GcsQXGL/wL9dJKL/rQx5p+0pfy5nbyXCoD/mMLSlUn8gXrk3WBR8ErX5
+	 ItcfjKGMMTttPucAFJwPnKEhoIiThrKFLlSXRWgJHErXccAT6Mk8eTBwojt+eF13Lc
+	 SZnLG5f7ZgcCQx1viQLhGUqnNfq8lHJgQX3l1nNyHXy/bQnrFYJ1SFH1xLgGcAyvrS
+	 eqfPQberiVqhKf+Aq+uUpmzhTvJxSRNcMgWAhnRKEA8OEBx4tPdLjbFQL5u4R4LKcR
+	 /bpoUrPmp3tBdgVEu6A5kJQ8pATJcUwdjXHdZZI8j6nwOGeLXaYJNjQXiG7Y0rZ7cx
+	 HamfrqEKepktQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B850BCA0EC4;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31CA1CA0EC1;
 	Mon, 11 Aug 2025 15:18:25 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:18:01 -0400
-Subject: [PATCH 009/114] clk: at91: usb: convert from round_rate() to
- determine_rate()
+Date: Mon, 11 Aug 2025 11:17:55 -0400
+Subject: [PATCH 003/114] clk: fixed-factor: add determine_rate() ops
 MIME-Version: 1.0
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-9-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-3-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -115,11 +114,11 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925497; l=2365;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925497; l=2113;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=CkFMBEvlwfAF/1cEEy4Ux9bAaDiae91CQftu/7tBiVg=;
- b=vpTO7eOQYukHmLekMXIJSVYs3w9GG4/WssMKC/2mI2HAxwcIzMt0GCj6VUqJnxzFixBn/JvKm
- Esu7k+ZiHvXDrtocEhKF/UU1z0pLz8UQpLpHbc07PNiXyK8vJhCFEyF
+ bh=7PH3+pRyHnddbrDJQ0bcAhmIGm7Oj/VBAAy/Pv37KC4=;
+ b=tS3orDL5b8BLWJwAHCJG5hkf3pPUlBoJuOUtFcgrqztBsvVHA38h4r+XCr0UUBqnTPgRGg5zs
+ KvJ5edeP10qBpAwZTanj1INXR/2jf4h8jBNcWr8hLUfuKtLDj0K6tTu
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
@@ -145,73 +144,62 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Brian Masney <bmasney@redhat.com>
 
-The round_rate() clk ops is deprecated, so migrate this driver from
-round_rate() to determine_rate() using the Coccinelle semantic patch
-on the cover letter of this series.
+The round_rate() clk ops is deprecated, and determine_rate() should be
+used instead. We can't just simply convert this driver over initially
+since other drivers depend on this. So let's go ahead and add a
+determine_rate() clk ops. Once all of the drivers have been converted,
+then the round_rate() clk ops can be dropped.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/at91/clk-usb.c | 20 +++++++++++---------
- 1 file changed, 11 insertions(+), 9 deletions(-)
+ drivers/clk/clk-fixed-factor.c | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/at91/clk-usb.c b/drivers/clk/at91/clk-usb.c
-index b0696a928aa98d6fd75c3f2e1911aa9b6d1827e6..e906928cfbf05143a1fa4fc69cd7004a30824b6b 100644
---- a/drivers/clk/at91/clk-usb.c
-+++ b/drivers/clk/at91/clk-usb.c
-@@ -319,8 +319,8 @@ static unsigned long at91rm9200_clk_usb_recalc_rate(struct clk_hw *hw,
- 	return 0;
+diff --git a/drivers/clk/clk-fixed-factor.c b/drivers/clk/clk-fixed-factor.c
+index e62ae8794d445f685156276d5135448f340fca3f..79b9a8c57d4b84be990955d8bc3159b818f38d50 100644
+--- a/drivers/clk/clk-fixed-factor.c
++++ b/drivers/clk/clk-fixed-factor.c
+@@ -30,6 +30,23 @@ static unsigned long clk_factor_recalc_rate(struct clk_hw *hw,
+ 	return (unsigned long)rate;
  }
  
--static long at91rm9200_clk_usb_round_rate(struct clk_hw *hw, unsigned long rate,
--					  unsigned long *parent_rate)
-+static int at91rm9200_clk_usb_determine_rate(struct clk_hw *hw,
-+					     struct clk_rate_request *req)
- {
- 	struct at91rm9200_clk_usb *usb = to_at91rm9200_clk_usb(hw);
- 	struct clk_hw *parent = clk_hw_get_parent(hw);
-@@ -336,25 +336,27 @@ static long at91rm9200_clk_usb_round_rate(struct clk_hw *hw, unsigned long rate,
- 		if (!usb->divisors[i])
- 			continue;
- 
--		tmp_parent_rate = rate * usb->divisors[i];
-+		tmp_parent_rate = req->rate * usb->divisors[i];
- 		tmp_parent_rate = clk_hw_round_rate(parent, tmp_parent_rate);
- 		tmprate = DIV_ROUND_CLOSEST(tmp_parent_rate, usb->divisors[i]);
--		if (tmprate < rate)
--			tmpdiff = rate - tmprate;
-+		if (tmprate < req->rate)
-+			tmpdiff = req->rate - tmprate;
- 		else
--			tmpdiff = tmprate - rate;
-+			tmpdiff = tmprate - req->rate;
- 
- 		if (bestdiff < 0 || bestdiff > tmpdiff) {
- 			bestrate = tmprate;
- 			bestdiff = tmpdiff;
--			*parent_rate = tmp_parent_rate;
-+			req->best_parent_rate = tmp_parent_rate;
- 		}
- 
- 		if (!bestdiff)
- 			break;
- 	}
- 
--	return bestrate;
-+	req->rate = bestrate;
++static int clk_factor_determine_rate(struct clk_hw *hw,
++				     struct clk_rate_request *req)
++{
++	struct clk_fixed_factor *fix = to_clk_fixed_factor(hw);
++
++	if (clk_hw_get_flags(hw) & CLK_SET_RATE_PARENT) {
++		unsigned long best_parent;
++
++		best_parent = (req->rate / fix->mult) * fix->div;
++		req->best_parent_rate = clk_hw_round_rate(clk_hw_get_parent(hw), best_parent);
++	}
++
++	req->rate = (req->best_parent_rate / fix->div) * fix->mult;
 +
 +	return 0;
++}
++
+ static long clk_factor_round_rate(struct clk_hw *hw, unsigned long rate,
+ 				unsigned long *prate)
+ {
+@@ -50,7 +67,7 @@ static int clk_factor_set_rate(struct clk_hw *hw, unsigned long rate,
+ {
+ 	/*
+ 	 * We must report success but we can do so unconditionally because
+-	 * clk_factor_round_rate returns values that ensure this call is a
++	 * clk_factor_determine_rate returns values that ensure this call is a
+ 	 * nop.
+ 	 */
+ 
+@@ -69,6 +86,7 @@ static unsigned long clk_factor_recalc_accuracy(struct clk_hw *hw,
  }
  
- static int at91rm9200_clk_usb_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -384,7 +386,7 @@ static int at91rm9200_clk_usb_set_rate(struct clk_hw *hw, unsigned long rate,
- 
- static const struct clk_ops at91rm9200_usb_ops = {
- 	.recalc_rate = at91rm9200_clk_usb_recalc_rate,
--	.round_rate = at91rm9200_clk_usb_round_rate,
-+	.determine_rate = at91rm9200_clk_usb_determine_rate,
- 	.set_rate = at91rm9200_clk_usb_set_rate,
- };
- 
+ const struct clk_ops clk_fixed_factor_ops = {
++	.determine_rate = clk_factor_determine_rate,
+ 	.round_rate = clk_factor_round_rate,
+ 	.set_rate = clk_factor_set_rate,
+ 	.recalc_rate = clk_factor_recalc_rate,
 
 -- 
 2.50.1
