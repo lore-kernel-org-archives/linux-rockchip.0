@@ -4,58 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB36C87FD2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 09:56:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28C40C88CB9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 12:47:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DiuE0DaWSGn2BPwJbR3pf3ycdWU95UHaujuamIxP074=; b=vzwWrwFKwp69dR
-	L3oahZaeojc8h9LQhA4i8g2GvoKWPXHuMjh0K55ehI7qSDYy8V9ysJ8ClORml4wKURJZUdfPqI/6S
-	fVpT7bwKZW8qeOW38xCvVDF08SlSxLb06SokI+S1h2L8T//LrVkFrDcZm2KihVNfTQvqFsmLBq6Vi
-	PgEFBhjjrrVBd6NlmfzV4Y+VYqZV8UDsUaPYe21606KPGMpZbmTIyt1v1uSDhHkbhSh/hehyNJxel
-	yQOWed5aqDlmOAVAi6W6RRD2+p82m4iwl7DpSz437i2P02qpME7nDjwhn6gvcGlDUTvrUs6iQ5Klu
-	IbuL6gs1U8NPgB4tJhSg==;
+	List-Owner; bh=H3tD8FgKK4j8/dRqthA2unz2Tl6LyfW/LkSIXWpTfH8=; b=hwLf0gwiHLmq+h
+	1rNlW4Jm7SS0Mn18thC+Ulj7HNhMzKI5O6MWC8xhzicsry3cUV/ZC1kDGwJ6g0E3baTU26ITMrDIH
+	JHiaYciHpwMaZqSSASZqRXe3vwo8pOPh3S/DhCPDL5roo/MEglLZ0LCjspQQwKzirkN5Z8xsdLCgH
+	+vWehde+V/tb4cneoCUHpD2gpARxGpNKRT0gtQwvp6wZJqXEof7Gm6H+rawJ53TCtQE1i01us9e5c
+	i0JIvTlC3X7I+Ej7gGKGDxjPd207QPQSDYvwi1sCf+lBsFzQsuAafLyTA9dCcpjoGA9ndIK3gOXom
+	auPHzIpa16AofT7wvltA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulPGH-00000007FB7-0yAp;
-	Mon, 11 Aug 2025 09:56:13 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1ulRvR-00000007iDI-3MeE;
+	Mon, 11 Aug 2025 12:46:53 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulPGB-00000007F9Z-2QkY;
-	Mon, 11 Aug 2025 09:56:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=Xdzi6B8uhEDOjcvSLgClkb9Tis7D4GnuKNk7eRpcdEE=; b=S+j3TNnDepfKpc5RHT5HClyO0C
-	cCSH2YmsWGanIkopeLLLkp0ShOHzxQx8IfLHUcz/EOgnHVAaC96bSTouLa2SsLbtl8N3wzBXFZUkU
-	Wd/QHZKQkbgt8yx5xFEJ73aGqbrfo/PoOUjfsXABqV66uq8DjtjO6T3jUGNxQS0s2vW8wF4EuWS9T
-	8yoVS9Xc48BN8Q0U745K8yzX4fIA397RvihK2z8VxHCTEG/GWqXpVwZ//jl4m91etWMPNqmirxjxk
-	8U1gAGMRG5NF5wxNiJMUbXtz7ndq3QQ/vnz/Zo4ZUV8hj7OR5JUAUyZ/Xu31neZtS2Q+palkdFA4h
-	9wSiwbWw==;
-Received: from i53875a0c.versanet.de ([83.135.90.12] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1ulPG5-0008OT-Hr; Mon, 11 Aug 2025 11:56:01 +0200
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
- Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com
-Subject: Re: [PATCH v2 00/12] media: rkvdec: Add support for VDPU381 and VDPU383
-Date: Mon, 11 Aug 2025 11:56:00 +0200
-Message-ID: <11040209.aFP6jjVeTY@diego>
-In-Reply-To: <20250808200340.156393-1-detlev.casanova@collabora.com>
-References: <20250808200340.156393-1-detlev.casanova@collabora.com>
+	id 1ulRpf-00000007hOo-23YX;
+	Mon, 11 Aug 2025 12:40:56 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1754916021; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=hteRfCRvkd67/Dx+dfT1KUe3zys+bioiMiINKAoqpiTvtPDlOOPKcNB/4tVKwVwFvHMX+zLzcvvN8ipbV5MQRiobOr64LC+LtReoaHmoo8FIaaicTy36wtcJ3j88Dxzd3G+4Uy6pQ12JiteUW9OgU0u5XMKeMWuH/5ZDs4BwGTA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1754916021; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=4iGM2ITegptFt/GB57XpVHMLcIR82cp74UJOaNlV0sw=; 
+	b=VcAWintDg6coTqlLrgPMr08CdjQAmkSsel+lKpq6Kh8IF21WYFLkuRKepDSDUD0T9aN9C5rVcu7rKoVqRt7JdTvX3VNtS1etNT5Df0aW3kz0XwsIDOJmw9+H77SZwdWzUjr3CdXD0lmxRPnbCLMGS7dgvUUk4n2dGelta4xYlWU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1754916021;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=4iGM2ITegptFt/GB57XpVHMLcIR82cp74UJOaNlV0sw=;
+	b=gX/CWJyQm5KR7h1N2KyiPRq8MQNw2pzdjNaWcZe8wF+RXthtgRjx22s8MqNdJdiz
+	bJJPv4dtcLip+KRMuOEv1uYh6uOFoWtkGR9PW9gofTrl+kAMhB4SA0YLWH2lO20DIsW
+	qMX4h73cw6RxpBErFYkaYYQ4PmiEOWRenASXbqns=
+Received: by mx.zohomail.com with SMTPS id 1754916019156141.85896495716338;
+	Mon, 11 Aug 2025 05:40:19 -0700 (PDT)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: Link Mauve <linkmauve@linkmauve.fr>
+Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: Add the vdpu381 Video Decoders on
+ RK3588
+Date: Mon, 11 Aug 2025 08:40:16 -0400
+Message-ID: <2793168.mvXUDI8C0e@trenzalore>
+In-Reply-To: <aJjxjgG1gEaKBVwE@desktop>
+References: <20250808193602.142527-1-detlev.casanova@collabora.com>
+ <20250808193602.142527-2-detlev.casanova@collabora.com>
+ <aJjxjgG1gEaKBVwE@desktop>
 MIME-Version: 1.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_025607_638798_0ED76580 
-X-CRM114-Status: GOOD (  19.95  )
+X-CRM114-CacheID: sfid-20250811_054055_591987_1EEAFF7D 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,66 +72,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, Niklas Cassel <cassel@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>, kernel@collabora.com, Dragan Simic <dsimic@manjaro.org>, Rob Herring <robh@kernel.org>, Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, Chris Morgan <macromorgan@hotmail.com>, linux-arm-kernel@lists.infradead.org, Patrick Wildt <patrick@blueri.se>, linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>, Diederik de Haas <didi.debian@cknow.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgRGV0bGV2LAoKQW0gRnJlaXRhZywgOC4gQXVndXN0IDIwMjUsIDIyOjAzOjIyIE1pdHRlbGV1
-cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgRGV0bGV2IENhc2Fub3ZhOgo+IFRoZXNlIHZh
-cmlhbnRzIGFyZSBmb3VuZCByZXNwZWN0aXZlbHkgaW4gdGhlIFJLMzU4OCBhbmQgUkszNTc2IFNv
-Q3MuCj4gVGhpcyBwYXRjaCBvbmx5IGFkZHMgc3VwcG9ydCBmb3IgSDI2NCBhbmQgSDI2NSBpbiBi
-b3RoIHZhcmlhbnRzLgo+IAo+IEFzIHRoZXJlIGlzIGEgY29uc2lkZXJhYmxlIHBhcnQgb2YgdGhl
-IGNvZGUgdGhhdCBjYW4gYmUgc2hhcmVkIHdpdGggdGhlCj4gYWxyZWFkeSBzdXBwb3J0ZWQgcmt2
-ZGVjIGRlY29kZXIgZHJpdmVyLCB0aGUgc3VwcG9ydCBmb3IgdGhlc2UgdmFyaWFudHMKPiBpcyBh
-ZGRlZCBoZXJlIHJhdGhlciB0aGFuIHdyaXRpbmcgYSBuZXcgZHJpdmVyLgo+IAo+IFRoaXMgcGF0
-Y2ggc2V0IHVzZXMgdGhlIG5ld2x5IGludHJvZHVjZWQgaGV2Y19leHRfc3BzX1tsc110X3JwcyB2
-NGwyCj4gY29udHJvbHMgZm9yIEhFVkMgWzFdLgo+IFRoZXJlZm9yZSwgYSBwYXRjaGVkIHZlcnNp
-b24gb2YgdXNlcnBhY2UgdG9vbHMgaXMgbmVlZGVkIGZvciBIRVZDCj4gc3VwcG9ydCAoYWRkZWQg
-Zm9yIEdTdHJlYW1lclsyXSBhbmQgaW4gYW4gZWFybHkgc3RhZ2UgZm9yIEZGbXBlZ1szXSkuCj4g
-Cj4gVGhpcyBwYXRjaCBzZXQgYWxzbyBkZXBlbmRzIG9uIHRoZSBwcmVwYXJhdGlvbiBwYXRjaCBz
-ZXQgc2VudCBlYXJsaWVyIFs0XQo+IGFzIHdlbGwgYXMgdGhlIGlvbW11IHJlc3RvcmUgZml4IFs1
-XSAoYWxyZWFkeSBtZXJnZWQgaW4gbGludXgtbWVkaWEpIGFuZAo+IE5pY29sYXMgRnJhdHRhcm9s
-aSdzIGJpdG1hcCBwYXRjaCBbNl0gdG8gc3VwcG9ydCBzZXR0aW5nIHJlZ2lzdGVycyB0aGF0Cj4g
-dXNlcyB1cHBlciAxNiBiaXRzIGFzIG1hc2tzLgo+IAo+IFsxXTogaHR0cHM6Ly9sb3JlLmtlcm5l
-bC5vcmcvYWxsLzIwMjUwODA3MTk0MzI3LjY5OTAwLTEtZGV0bGV2LmNhc2Fub3ZhQGNvbGxhYm9y
-YS5jb20vCj4gWzJdOiBodHRwczovL2dpdGxhYi5mcmVlZGVza3RvcC5vcmcvZ3N0cmVhbWVyL2dz
-dHJlYW1lci8tL21lcmdlX3JlcXVlc3RzLzkzNTUKPiBbM106IGh0dHBzOi8vZ2l0bGFiLmNvbGxh
-Ym9yYS5jb20vZGV0bGV2L2ZmbXBlZwo+IFs0XTogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxs
-LzIwMjUwNjIzMTYwNzIyLjU1OTM4LTEtZGV0bGV2LmNhc2Fub3ZhQGNvbGxhYm9yYS5jb20vCj4g
-WzVdOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyNTA1MDgtcmt2ZGVjLWlvbW11LXJl
-c2V0LXYxLTEtYzQ2YjZlZmE2ZTliQGNvbGxhYm9yYS5jb20vCj4gWzZdOiBodHRwczovL2xvcmUu
-a2VybmVsLm9yZy9hbGwvMjAyNTA2MjMtYnlld29yZC11cGRhdGUtdjItMS1jZjFmYzA4YTJlMWZA
-Y29sbGFib3JhLmNvbS8KPiAKPiBDaGFuZ2VzIHNpbmNlIHYxOgo+ICAtIEFkZCBwYXJzaW5nIG9m
-IHRoZSBzaG9ydCBhbmQgbG9uZyB0ZXJtIHJlZiBmcmFtZSBzZXRzIGZyb20gdGhlIG5ldyB2NGwy
-Cj4gICAgY29udHJvbHMKPiAgLSBBZGQgUlBTIGNhY2hlIHRvIGF2b2lkIHBhcnNpbmcgdGhlIHNh
-bWUgZGF0YSBhZ2Fpbgo+ICAtIEZpeCBIRVZDIHBpeGVsIGZvcm1hdHMgc2VsZWN0aW9uCj4gIC0g
-Rml4IG11bHRpcGxlIGluZGVudGF0aW9uIGVycm9ycwoKd2hlbiBhcHBseWluZyB0aGUgc2VyaWVz
-LCBnaXQgd2FzIGEgYml0IHVuaGFwcHkgYWJvdXQgc29tZSB3aGl0ZXNwYWNlczoKCgo+IERldGxl
-diBDYXNhbm92YSAoMTIpOgo+ICAgbWVkaWE6IHJrdmRlYzogU3dpdGNoIHRvIHVzaW5nIHN0cnVj
-dHMgaW5zdGVhZCBvZiB3cml0ZWwKPiAgIG1lZGlhOiBya3ZkZWM6IE1vdmUgY2FiYWMgdGFibGUg
-dG8gaXRzIG93biBzb3VyY2UgZmlsZQoKQXBwbHlpbmc6IG1lZGlhOiBya3ZkZWM6IE1vdmUgY2Fi
-YWMgdGFibGUgdG8gaXRzIG93biBzb3VyY2UgZmlsZQouZ2l0L3JlYmFzZS1hcHBseS9wYXRjaDo1
-MzU6IG5ldyBibGFuayBsaW5lIGF0IEVPRi4KKwpXYXJudW5nOiAxIFplaWxlIGbDvGd0IFdoaXRl
-c3BhY2UtRmVobGVyIGhpbnp1LgoKCj4gICBtZWRpYTogcmt2ZGVjOiBVc2Ugc3RydWN0cyB0byBy
-ZXByZXNlbnQgdGhlIEhXIFJQUwo+ICAgbWVkaWE6IHJrdmRlYzogTW92ZSBoMjY0IGZ1bmN0aW9u
-cyB0byBjb21tb24gZmlsZQoKQXBwbHlpbmc6IG1lZGlhOiBya3ZkZWM6IE1vdmUgaDI2NCBmdW5j
-dGlvbnMgdG8gY29tbW9uIGZpbGUKLmdpdC9yZWJhc2UtYXBwbHkvcGF0Y2g6Mjc4OiBuZXcgYmxh
-bmsgbGluZSBhdCBFT0YuCisKV2FybnVuZzogMSBaZWlsZSBmw7xndCBXaGl0ZXNwYWNlLUZlaGxl
-ciBoaW56dS4KCgo+ICAgbWVkaWE6IHJrdmRlYzogQWRkIHBlciB2YXJpYW50IGNvbmZpZ3VyYXRp
-b24KPiAgIG1lZGlhOiBya3ZkZWM6IEFkZCBSQ0IgYW5kIFNSQU0gc3VwcG9ydAoKQXBwbHlpbmc6
-IG1lZGlhOiBya3ZkZWM6IEFkZCBSQ0IgYW5kIFNSQU0gc3VwcG9ydAouZ2l0L3JlYmFzZS1hcHBs
-eS9wYXRjaDoyMDA6IG5ldyBibGFuayBsaW5lIGF0IEVPRi4KKwpXYXJudW5nOiAxIFplaWxlIGbD
-vGd0IFdoaXRlc3BhY2UtRmVobGVyIGhpbnp1LgoKCj4gICBtZWRpYTogcmt2ZGVjOiBTdXBwb3J0
-IHBlci12YXJpYW50IGludGVycnVwdCBoYW5kbGVyCj4gICBtZWRpYTogcmt2ZGVjOiBFbmFibGUg
-YWxsIGNsb2NrcyB3aXRob3V0IG5hbWluZyB0aGVtCj4gICBtZWRpYTogcmt2ZGVjOiBBZGQgSDI2
-NCBzdXBwb3J0IGZvciB0aGUgVkRQVTM4MSB2YXJpYW50Cj4gICBtZWRpYTogcmt2ZGVjOiBBZGQg
-SDI2NCBzdXBwb3J0IGZvciB0aGUgVkRQVTM4MyB2YXJpYW50Cj4gICBtZWRpYTogcmt2ZGVjOiBB
-ZGQgSEVWQyBzdXBwb3J0IGZvciB0aGUgVkRQVTM4MSB2YXJpYW50CgpBcHBseWluZzogbWVkaWE6
-IHJrdmRlYzogQWRkIEhFVkMgc3VwcG9ydCBmb3IgdGhlIFZEUFUzODEgdmFyaWFudAouZ2l0L3Jl
-YmFzZS1hcHBseS9wYXRjaDozNDgzOiBuZXcgYmxhbmsgbGluZSBhdCBFT0YuCisKLmdpdC9yZWJh
-c2UtYXBwbHkvcGF0Y2g6NDAzNTogbmV3IGJsYW5rIGxpbmUgYXQgRU9GLgorCldhcm51bmc6IDIg
-WmVpbGVuIGbDvGdlbiBXaGl0ZXNwYWNlLUZlaGxlciBoaW56dS4KCgpIZWlrbwoKCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi,
+
+On Sunday, 10 August 2025 15:22:54 EDT Link Mauve wrote:
+> Hi,
+> 
+> On Fri, Aug 08, 2025 at 03:36:01PM -0400, Detlev Casanova wrote:
+> > Add the vdpu381 Video Decoders to the rk3588-base devicetree.
+> > 
+> > The RK3588 based SoCs all embed 2 vdpu381 decoders.
+> > This also adds the dedicated IOMMU controllers.
+> 
+> Back in the VEPU121 enablement series[1] it had been decided to not
+> expose multiple identical cores yet, because there is no infrastructure
+> yet in the kernel to schedule multiple userland processes on multiple
+> cores, or (more relevant for your usecase) to even combine two cores to
+> reach 8K support.
+
+That's right, but the device tree still defines the hardware as it is. The 
+driver, however, will  make sure that each instance after the first one is 
+ignored (at least for now).
+
+> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > ---
+> > 
+> >  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 74 +++++++++++++++++++
+> >  1 file changed, 74 insertions(+)
+> 
+> [snip]
+> 
+> Thanks,
+> 
+> [1]
+> https://lore.kernel.org/all/20240618183816.77597-1-sebastian.reichel@collab
+> ora.com/
+
+Detlev.
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
