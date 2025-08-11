@@ -4,66 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 538BDC87FD2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 14:41:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BC0ECA0ECD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 15:45:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WDjIyTw+yRcDuHWR+ikMcXHD0tEyEaS522eYWz+Rwz4=; b=Q+9i4qUI7FTKyX
-	EVyDt0MR2vKTsntcy2DI3s3xHJBmST7hol8XX45uEtpPGA/WqweFYq2wH6wSX7qO/RHjUjCw2kwih
-	mXbzhRFtHUt9LBJ9vchUZnOsW/kR+i902g4nHixi+4EyFo4oAdx6Zvms48gNCquggYlSw6dvWKlia
-	BDBdMDD7uXz3N/aTNfwDp4AosFFkeE2t7FHQ7jZHT8arn62rr+eg6esBZ0PEOG6+fCsg4+XAfylNg
-	f9rixKE1+i2RtS07F81qCYu+I8VKxf12okM437s12rzO34JWe9htCI2xrT0nr2HhkVmWDEoJ7u8i+
-	wFQoLTwecJpqTapLBTEw==;
+	List-Owner; bh=3OXaHUWIwt59iDqhErb0F4tqz/8pYsR8GNQ1NPahrB4=; b=lukB0mVQDhuZ+V
+	dv31Eny8YWny5LJTt0OZSG2w7iIKDNF0dHEY/dzQrOu7uGeK5kI+FO275MisDia/Dw8mFdJqoHd05
+	A5kZu++IFm7joWQUFzSK7jE9tgQd56xPYpfy0ihTfSIlSZi2ckIEpSq4I75gUd7cagnfFTPfGdlZ8
+	aEuMaAj0PEW9nKs3q8kICNOFjfBiv8v31mM+H6y8wQwF1xfTH0+zaI25U3NJF6+n6x7/ZsXnolQzg
+	cgbil18aNkAfuLRfCfhIICYNywW8IBti5mzDzl309s97dUA83a+5SgdHYPKnvUBerviFMWyaQCC4I
+	duDjKR7uIOM6nGaYJ3kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulTi7-0000000846j-0JJM;
-	Mon, 11 Aug 2025 14:41:15 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1ulUiK-00000008FX5-1PN7;
+	Mon, 11 Aug 2025 15:45:32 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulSyx-00000007tlY-3ABk;
-	Mon, 11 Aug 2025 13:54:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1754920461; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=V0bRZFgU/x4fCifmcfkC8/92g3rLVnGoJU100JXU3FH3bd1wPaizA22pWv1TEKU8Of5p6MRZD95e/xMPOngqWd6SrKmuuZ+JPxNgQia3KgKqGOpogMbmvnbrPhjGI6jpi1qsj+OHsQDkmoDFagv8c/uqIeHg8oX6GcJTZf7doQ8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1754920461; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=lk+7uH5ULw993iOk2rMCszBT5TLvgX93elDnnsS9OhQ=; 
-	b=D/lqdrCOjRYu6BArMpaHNf0VtWJUZV59bvYt8vVjSTm70+zA92TXrNcDEQDO/TUKYJIgpeJhaigANSvkFw76nePnBaAfu/THa/+gkkDsomYwGa8RQVhNCdn5peml69jbwQg9qI0hzug+6j6Lz7o3F+RqOw+tT9GdlXWEVtG9HZo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1754920461;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=lk+7uH5ULw993iOk2rMCszBT5TLvgX93elDnnsS9OhQ=;
-	b=R/QEnEmEfVw3riAD1p4eIR4YL+vp9qoQYshiLENUZMzO5CLhPqlW54H6b1gT+Gjm
-	yLzi+g8g8ldNqrrn428Hq0acu4kuBfZLlsZJZjtod7d7RBp9NwC6jp/bwcEfjrDNE6d
-	8y1FHRRwTcBlvUcQWyC+qLiE6iWibOACNnq/pGDw=
-Received: by mx.zohomail.com with SMTPS id 1754920460001181.5866401293647;
-	Mon, 11 Aug 2025 06:54:20 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>
+	id 1ulT6C-00000007vmy-19Lq;
+	Mon, 11 Aug 2025 14:02:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5CF5D61407;
+	Mon, 11 Aug 2025 14:02:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F285EC4CEED;
+	Mon, 11 Aug 2025 14:02:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754920923;
+	bh=jBu5ET7UWz2lpYAuqzzB+hooN/nBF4oWUeYMv6DVVko=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZKz6rPGe9qnQwJm0oLM7K0/IUxEpmtvD9k5M2ZJ7L0guadZ7BDWUJikKhYACbuz+V
+	 iQGoCL/6EBoJz5xbtwy3Svt0qCtrHdmaT9BFNu8eELOtVIZmohCIfNjnjFy2kVOc20
+	 vBShqF1FYndVxYt5j1wkyfYj/AmXdefzme3BVNK8F0HIhjs1rQBQb9mOCEOsiObeLv
+	 qQi37FEDRPb6VMmMRHaj/w/fQ3AznUWZjq9ElkusZPHD3vHiP7EXqn0/WRCzGYGMrs
+	 xllO3dWOJx83We66CFUGYz0ZAmd20y4WEX8E7XcW3OLblV4uND8dmyZhrKnDiJXiKz
+	 lMJyKhJGL/lsA==
+Message-ID: <ae6a9c48-85d5-479f-b230-187a06995553@kernel.org>
+Date: Mon, 11 Aug 2025 16:01:59 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 06/12] media: rkvdec: Add RCB and SRAM support
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-kernel@vger.kernel.org
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
  Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  kernel@collabora.com
-Subject: Re: [PATCH v2 06/12] media: rkvdec: Add RCB and SRAM support
-Date: Mon, 11 Aug 2025 09:54:18 -0400
-Message-ID: <5031584.31r3eYUQgx@trenzalore>
-In-Reply-To: <5c7767d1-1f28-48e0-bf8b-a224151fb007@kernel.org>
 References: <20250808200340.156393-1-detlev.casanova@collabora.com>
  <20250808200340.156393-7-detlev.casanova@collabora.com>
  <5c7767d1-1f28-48e0-bf8b-a224151fb007@kernel.org>
-MIME-Version: 1.0
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_065435_851970_511F7AF4 
-X-CRM114-Status: GOOD (  12.68  )
+ <5031584.31r3eYUQgx@trenzalore>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <5031584.31r3eYUQgx@trenzalore>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,39 +118,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Monday, 11 August 2025 02:13:42 EDT Krzysztof Kozlowski wrote:
-> On 08/08/2025 22:03, Detlev Casanova wrote:
-> > -	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
-> > -
-> > 
-> >  	irq = platform_get_irq(pdev, 0);
-> >  	if (irq <= 0)
-> >  	
-> >  		return -ENXIO;
-> > 
-> > @@ -1204,6 +1217,10 @@ static int rkvdec_probe(struct platform_device
-> > *pdev)> 
-> >  		return ret;
-> >  	
-> >  	}
-> > 
-> > +	rkvdec->sram_pool = of_gen_pool_get(pdev->dev.of_node, "sram", 0);
+On 11/08/2025 15:54, Detlev Casanova wrote:
+> On Monday, 11 August 2025 02:13:42 EDT Krzysztof Kozlowski wrote:
+>> On 08/08/2025 22:03, Detlev Casanova wrote:
+>>> -	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+>>> -
+>>>
+>>>  	irq = platform_get_irq(pdev, 0);
+>>>  	if (irq <= 0)
+>>>  	
+>>>  		return -ENXIO;
+>>>
+>>> @@ -1204,6 +1217,10 @@ static int rkvdec_probe(struct platform_device
+>>> *pdev)> 
+>>>  		return ret;
+>>>  	
+>>>  	}
+>>>
+>>> +	rkvdec->sram_pool = of_gen_pool_get(pdev->dev.of_node, "sram", 0);
+>>
+>> Didn't you just add new ABI?
 > 
-> Didn't you just add new ABI?
-
-Oh do you mean rkvdec_rcb_buf_count() ? I could indeed use that instead here.
-
-> > +	if (!rkvdec->sram_pool && rkvdec->config->rcb_num > 0)
-> > +		dev_info(&pdev->dev, "No sram node, RCB will be stored 
-in RAM\n");
-> > +
-> 
-> Best regards,
-> Krzysztof
+> Oh do you mean rkvdec_rcb_buf_count() ? I could indeed use that instead here.
 
 
+No, I meant DT/OF ABI for "sram".
 
 
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
