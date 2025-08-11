@@ -4,42 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CED35CA0EC1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 07:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13485C87FD2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 08:03:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ZAhuQD9KVYGvR9VmWCQDVjixn+RIgve1wg7C7ZRiNok=; b=sGGjBK2Pej5iQH
-	7xjMDi/fahz1csLuLecw7S4y3r7QTN3Mt6+3jlZxiKiDlhHgq796DzzM1TFDfHWqF3AsAFqfZ2sY5
-	yN9rYQYMCf8K0lRQ16lyzjEMLxwl8I+ZBggwOC8/Xk/ms8dbvd2KQ1G6KTgSthT+2ypWWLkqm9mso
-	j/rMBvnT0RSSwXoSzaeYa6my4t4JUWIk1AMP+Vx7fAQJ622htIEWg0A3ka0EjCZOVBzNrKJvwjeRa
-	cW9tQlqNFZ4Z2/giyg+/N0eSTFrmWOvKhxYUjCyUglOC2ovMRQw+6O9E2arAMujNyrDoHiD6y7Ael
-	ftUMttXtBjJwOnh3VoYQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=W7AaVZHxIOnBIPw9p5qZroFNx8q86H+TnELQ+ubxNek=; b=wZQ7322Io0+Hd1
+	NQVQ64Jc7Ji2ap6gTDYqxDU6dzhJ34NdleCx7TjuQbkuAkoZTE1jLV9dNG4IrumHI49jdRbiSMhbq
+	VxQKAalvON14yI1Y11pJTPmNAcnwEzDzqTKdVwqvcvo7XcIlJkE8ynH3ACeAOz/dEA2ctC89ldzw1
+	BnACSYsq+d7HD3At9I+ZxJRWM4aGIY9auowyEwi9oDa6kakT598GAcrZE2tTv9qy0jVPhlcVWECzs
+	nal2E4cU+7pkjf82GJ6fg6JLWy6T/whmcKEghCYpcefY94Wcx/z3lLEwoS1tYA0vkauvQFPM+JNF9
+	jtMnIa/DoDdIuxlnn5kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulN8h-00000006jU5-31aH;
-	Mon, 11 Aug 2025 07:40:15 +0000
-Received: from mail.ventrazo.pl ([162.19.155.125])
+	id 1ulNUd-00000006n9U-1PPA;
+	Mon, 11 Aug 2025 08:02:55 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulN1y-00000006iW8-41Um
-	for linux-rockchip@lists.infradead.org;
-	Mon, 11 Aug 2025 07:33:20 +0000
-Received: by mail.ventrazo.pl (Postfix, from userid 1002)
-	id 287BC22D8A; Mon, 11 Aug 2025 09:33:15 +0200 (CEST)
-Received: by mail.ventrazo.pl for <linux-rockchip@lists.infradead.org>; Mon, 11 Aug 2025 07:31:12 GMT
-Message-ID: <20250811084501-0.1.kb.52ce3.0.123eitpqq5@OriginatePro.pl>
-Date: Mon, 11 Aug 2025 07:31:12 GMT
-From: "Marcin Wojciechowski" <marcin.wojciechowski@ventrazo.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: Zapytanie ofertowe 
-X-Mailer: mail.OriginatePro.pl
+	id 1ulNKM-00000006lGM-2dqO;
+	Mon, 11 Aug 2025 07:52:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=1KiC4N41/KHigU06qv8He7zylxzTPNYQyWifnaopVfQ=; b=CgnpbDDnSRDZtTYOR777mqH/Y8
+	B/6E0EA7JUyq61MEu6+3YVYd0rs3JGriIs7mFCD+4JZ09sRdB6PNgCUgPVGekA9KwrKmm+u73RceM
+	lwxX4Y4Xv/l6JhtG3Iw86Izy6kEEgEenvBWHhUNVctzKyXTE31BnNWut4srzL0oV/clR1flUtsN2k
+	9uiVzh/7rqBzsikonyA8VZsh+oQi4xFYBT4oktGgptjNXOwCELp5dKpUKnGuE+F4yBz6U1GHize3a
+	6H8zY9SKzgqawBE4TRGq0StTPDc92r9/WNA8CMoRV52+0Es/6667CU1WaV2Dg4ldaI2o2MK/gFQxx
+	+PLn3beQ==;
+Received: from i53875a0c.versanet.de ([83.135.90.12] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1ulNKK-0007Ro-PA; Mon, 11 Aug 2025 09:52:16 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: anton.kirilov@arm.com
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	nd@arm.com
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable HDMI audio output for NanoPi R6C/R6S
+Date: Mon, 11 Aug 2025 09:52:01 +0200
+Message-ID: <175489870459.808197.8017772403276802011.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250807170012.88178-1-anton.kirilov@arm.com>
+References: <20250807170012.88178-1-anton.kirilov@arm.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_003319_145906_B426BE6C 
-X-CRM114-Status: UNSURE (   1.05  )
+X-CRM114-CacheID: sfid-20250811_005218_699906_3CDCCDD9 
+X-CRM114-Status: UNSURE (   9.70  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -52,17 +70,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKUG96d29sacWCZW0gc29iaWUgbmEga29udGFrdCwgcG9uaWV3YcW8IGpl
-c3RlbSB6YWludGVyZXNvd2FueSB3ZXJ5ZmlrYWNqxIUgbW/FvGxpd2/Fm2NpIG5hd2nEhXphbmlh
-IHdzcMOzxYJwcmFjeS4KCldzcGllcmFteSBmaXJteSB3IHBvenlza2l3YW5pdSBub3d5Y2gga2xp
-ZW50w7N3IGJpem5lc293eWNoLgoKQ3p5IG1vxbxlbXkgcG9yb3ptYXdpYcSHIHcgY2VsdSBwcnpl
-ZHN0YXdpZW5pYSBzemN6ZWfDs8WCb3d5Y2ggaW5mb3JtYWNqaT8gCiAKClBvemRyYXdpYW0gc2Vy
-ZGVjem5pZQpNYXJjaW4gV29qY2llY2hvd3NraQoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+On Thu, 07 Aug 2025 18:00:11 +0100, anton.kirilov@arm.com wrote:
+> Enable HDMI audio output for FriendlyElec NanoPi R6C/R6S boards.
+> 
+> 
+
+Applied, thanks!
+
+[1/1] arm64: dts: rockchip: Enable HDMI audio output for NanoPi R6C/R6S
+      commit: 91ec67fa33250059a0c52bbf3148302f364a6e99
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
