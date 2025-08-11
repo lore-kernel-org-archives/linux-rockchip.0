@@ -4,86 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02BF5CA0ED1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 17:03:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12F46CA0ED3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 17:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FjDTJBx268fYnINTAYLcMF/BrgGiV5RiR9Hl9FO97co=; b=bbygDfY/EimM/KDBvxjpa2B/+P
-	6aEbj2T6Yiaq5wOOnXmFIZVeeTJ9xPuC3AJDZiaPKMnupSX1nDNGOMqOXy7tEguep26ubFRsNS8QF
-	lYFCPxfdGszLFVyzS7xfMqOtNe0W4lzRo3gu7bOzli1idmELWISh+PH9zgZV7AO9f0YgoOfCPXz+X
-	By6LD2igko8WM/z55OyjLE8XUNh/s+BGXw/MQHBjmOpVrZ0lhD7+pWjOMyESPMgawvdMsnSWd7paC
-	LEdZ4d+SYMv0mwOMYJg08E8k9BwVdLyiwuI1XJVwlR/zU6BAqyc6uxMG8np1U0dFw/la2s2FS9L78
-	PazaNJiQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=uyguZTgsIp6pPhH4CkMk7qGUpzlHmPysCDwzSG9U2yw=; b=FhQs6nopnhws49
+	Op4gOkiT9ns2IPldQ44K3ew6K27La27LltZe5AVoPmZidIoe8cYHK/ZYFRHNGAuqdE35jzWoaPKNq
+	CNgWJIWz96lxXbUl6rbnUZfWa/i77xV8GeuFK2CYIsLn1Py8LINHoBxtm8y5yGDHMlbVSdkbaCd2i
+	DlODdzTUGi9hNZ6QnZ/eaxzTDsBskPmNVwrABW/kRreP3a4uEKtCflE0XNcGHdz9M3OfcQ/5Vst0X
+	Ht65xZ+0FAUSE36aF9sPpWynv27ROGV1xCOWkuk4QbeE8KHF0X8Bb/yWeEsuPJeci2CNHk8nLHWXD
+	UBc+JZFMZBJlCSLxDnsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulVve-00000008UsE-3eOi;
-	Mon, 11 Aug 2025 17:03:22 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1ulW8d-00000008WzH-2cBz;
+	Mon, 11 Aug 2025 17:16:47 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulToo-000000085Zz-3Nsr;
-	Mon, 11 Aug 2025 14:48:12 +0000
+	id 1ulU0l-000000087W2-0OZB;
+	Mon, 11 Aug 2025 15:00:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754923689;
-	bh=2ttNFHfmj4mQE2B7+cFN9UQXOG4qR8BI6Y3f2gvJkYw=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=gABWQOEkM52WLAnQuEi3mba8WkBHcmbi3GuxKe3B3aclcUGyMpyYa5PwKKjscmOeP
-	 3+byGipQrdmOj724lMOW3pXGmWeYmLdbDLZQabzSaNX1GnawmF0X0OlopyOxlOf4St
-	 KyNcRgBSYOJ6Smk7p5oBYMN0cxONcXINdyE+t5MLcVkpNexZy18o/JjFojWS8zrUfj
-	 0YK7OtlXS7CqhEXXnfFrPj6Fe7dkgfjFbBCSgItka0z7Vkks7lHsw3GxwLF2ixWX8v
-	 GpUwUpQU1RaC4AMFoIL3NlaAWEHJQ2/AdTi3zD73f8cm3pnmbpuHVKLECIwXhfrFPz
-	 YxtLTRnw43/Kw==
-Received: from [IPv6:2606:6d00:11:5a76::c41] (unknown [IPv6:2606:6d00:11:5a76::c41])
+	s=mail; t=1754924429;
+	bh=OfPaJwF2NqvhsMpHh+C8FnHDDOXI3HxcuuTEUJ1zXTM=;
+	h=From:Date:Subject:To:Cc:From;
+	b=WLFemwymTxFHpSqaFjYDh8D4g5Z3AnRmxJciNjevR87X6QsbJZ6iCmw+PzQs39ILt
+	 v/LKs0B8c/HQhagBjBmPAtHOayWquww6fdEYFwpyTBt+bYyi32vtbNK5H7z1pVlqG0
+	 TkkjdS9BDD7SUwirT9x6S8pi44qdoP362J19TYICTL1vwoXNTuER5WUndWxwDS8dUs
+	 fk1+HktTyU2wWZlt1Hou7brv5fhw5ra4E1ZWDjVEuFK/AzHnq6VEJlH4FgsSREAOQ/
+	 KJflIRPFVwGYs+trnI7V7olwXcC/xreTTLlo5P4QTpJlgeMEdzd1pqUicpRbQwQEMm
+	 w9q0bOsmJ/zLQ==
+Received: from [192.168.13.180] (unknown [IPv6:2606:6d00:11:5a76::c41])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6064B17E1014;
-	Mon, 11 Aug 2025 16:48:08 +0200 (CEST)
-Message-ID: <1adf4bb9717def1b98d75344b8b888e8d1a8526a.camel@collabora.com>
-Subject: Re: [PATCH v2] media: rkvdec: Remove redundant
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3D16917E00AC;
+	Mon, 11 Aug 2025 17:00:28 +0200 (CEST)
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Detlev Casanova	
- <detlev.casanova@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sakari
- Ailus	 <sakari.ailus@linux.intel.com>
-Date: Mon, 11 Aug 2025 10:48:07 -0400
-In-Reply-To: <1894144.QZUTf85G27@diego>
-References: <20250811-rkvdec-redundant-pm-rebase-v2-1-90c47213fbbe@collabora.com>
-	 <1894144.QZUTf85G27@diego>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
- oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
- zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
- TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
- 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
- 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
- cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
- tHYWTDxBOP5peztyc2PqeKsLsLWzAr7QnTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVz
- bmUuY2E+iGIEExECACIFAlXA3CACGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sB
- qgcJngAnRDBTr8bhzuH0KQwFP1nEYtfgpKdAKCrQ/sJfuG/8zsd7J8wVl7y3e8ARbRDTmljb2xhcy
- BEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29
- tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCg
- zYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc
- 25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udW
- s+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8
- An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZy
- ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJC
- AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypw
- CfWKc9DorA9f5pyYlD5pQo6SgSoiC0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF
- 1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkI
- BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr
- +E7ItOqZEHAs+xabBgknYZIFPU=
-Organization: Collabora Canada
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+Date: Mon, 11 Aug 2025 11:00:19 -0400
+Subject: [PATCH v3] media: rkvdec: Remove redundant
+ pm_runtime_mark_last_busy() calls
 MIME-Version: 1.0
+Message-Id: <20250811-rkvdec-redundant-pm-rebase-v3-1-7cb5eea621a9@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAIIFmmgC/43NQQ6CMBCF4auQWVtDi0RwxT0Mi7YzSCO0ZIqNh
+ nB3Kydw+b3F/zaIxI4i3IoNmJKLLviM6lSAHbV/kHCYDapUddlIKfiZkKxgwpdH7VexzBlGRxK
+ ErWmamkgjQg4sTIN7H/F7nz26uAb+HF9J/da/skkJKdrSXq5KVoMx1NkwTdoE1mcbZuj3ff8Cc
+ C/l/MgAAAA=
+X-Change-ID: 20250811-rkvdec-redundant-pm-rebase-ed9b885eeadd
+To: Detlev Casanova <detlev.casanova@collabora.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_074811_002994_1519E726 
-X-CRM114-Status: GOOD (  18.71  )
+X-CRM114-CacheID: sfid-20250811_080031_327120_F52DBB25 
+X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,122 +77,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0886486089400111047=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
 
---===============0886486089400111047==
-Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-uaMjjumv7IKMmvZZiIOJ"
+pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
+pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
+to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
+pm_runtime_mark_last_busy().
 
+Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+Changes in v3:
+- Fixed truncated subject line
+- Added Heiko Rb
+- Link to v2: https://lore.kernel.org/r/20250811-rkvdec-redundant-pm-rebase-v2-1-90c47213fbbe@collabora.com
 
---=-uaMjjumv7IKMmvZZiIOJ
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Changes in v2:
+- Re-applied since the driver have been moved out of staging
+- Link to v1: https://lore.kernel.org/all/20250704075450.3221972-1-sakari.ailus@linux.intel.com
+---
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Le lundi 11 ao=C3=BBt 2025 =C3=A0 16:37 +0200, Heiko St=C3=BCbner a =C3=A9c=
-rit=C2=A0:
-> Am Montag, 11. August 2025, 16:03:45 Mitteleurop=C3=A4ische Sommerzeit sc=
-hrieb
-> Nicolas Dufresne:
-> > From: Sakari Ailus <sakari.ailus@linux.intel.com>
-> >=20
-> > pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
-> > pm_runtime_autosuspend() and pm_request_autosuspend() now include a cal=
-l
-> > to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call =
-to
-> > pm_runtime_mark_last_busy().
-> >=20
-> > Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> > Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
->=20
-> verif=C3=ADed the (new) definition of=C2=A0 pm_runtime_put_autosuspend()
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
->=20
-> But the subject could use some work, I only got
-> 	"[PATCH v2] media: rkvdec: Remove redundant"
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+index d707088ec0dc1f6a18b2d168ebdf20b443f2240e..445f7c92eee34f7d6f885bb519d9eb24313da548 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+@@ -765,7 +765,6 @@ static void rkvdec_job_finish(struct rkvdec_ctx *ctx,
+ {
+ 	struct rkvdec_dev *rkvdec = ctx->dev;
+ 
+-	pm_runtime_mark_last_busy(rkvdec->dev);
+ 	pm_runtime_put_autosuspend(rkvdec->dev);
+ 	rkvdec_job_finish_no_pm(ctx, result);
+ }
 
-Thanks for catching this, good thing I posted the V2 here, I broke it while
-porting.
->=20
-> so maybe make that
-> "media: rkvdec: Remove redundant pm_runtime_mark_last_busy"
+---
+base-commit: 8f5ae30d69d7543eee0d70083daf4de8fe15d585
+change-id: 20250811-rkvdec-redundant-pm-rebase-ed9b885eeadd
 
-Will set it back to its original name:
+Best regards,
+-- 
+Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
-	media: rkvdec: Remove redundant pm_runtime_mark_last_busy() calls
-
-I'm missing a link to the original too.
-
-Nicolas
-
->=20
->=20
-> Heiko
->=20
-> > ---
-> > Changes since V1:
-> > =C2=A0 - Re-applied since the driver have been moved out of staging
-> > ---
-> > =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.c | 1 -
-> > =C2=A01 file changed, 1 deletion(-)
-> >=20
-> > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> > b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> > index
-> > d707088ec0dc1f6a18b2d168ebdf20b443f2240e..445f7c92eee34f7d6f885bb519d9e=
-b2431
-> > 3da548 100644
-> > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> > @@ -765,7 +765,6 @@ static void rkvdec_job_finish(struct rkvdec_ctx *ct=
-x,
-> > =C2=A0{
-> > =C2=A0	struct rkvdec_dev *rkvdec =3D ctx->dev;
-> > =C2=A0
-> > -	pm_runtime_mark_last_busy(rkvdec->dev);
-> > =C2=A0	pm_runtime_put_autosuspend(rkvdec->dev);
-> > =C2=A0	rkvdec_job_finish_no_pm(ctx, result);
-> > =C2=A0}
-> >=20
-> > ---
-> > base-commit: 8f5ae30d69d7543eee0d70083daf4de8fe15d585
-> > change-id: 20250811-rkvdec-redundant-pm-rebase-ed9b885eeadd
-> >=20
-> > Best regards,
-> >=20
->=20
->=20
->=20
-
---=-uaMjjumv7IKMmvZZiIOJ
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJoCpwAKCRBxUwItrAao
-HClfAJ0YxRFweEQwk5MRl6kYLms9oInvSQCfXdPl7BQb7JncFkBHCaoRIILSUEc=
-=NYOu
------END PGP SIGNATURE-----
-
---=-uaMjjumv7IKMmvZZiIOJ--
-
-
---===============0886486089400111047==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0886486089400111047==--
-
