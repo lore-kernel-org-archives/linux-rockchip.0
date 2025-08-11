@@ -4,62 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2928CA0EDA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 23:16:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E55CA0EDB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 23:16:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ulINkVSBTZg8ctW6MOLlgigfI5/2dK6tj6WFozXs1GQ=; b=gi1rgTLcyjjFpJysamhd0zOEBU
-	fuaWK/0yqwZuu0lhQVy/ez1L6PIyocBeqEnrtkByq75T99kmnj6nIfd3QvhUJcSLq1jHH8D17CQhB
-	jhBGLOediorf7rIAkJXb9dRHPEnFMxkUQ72Bp/bhZ8ilqpZstkgZy4KUN3pOQHqj4Cn4yp1E0yQA+
-	L0xae/9spNN4LocilvfJX9uEtSpiESLElIbh/lWCYSc4Rw+Ivk5n3t6M/o0GF8xoNBnWaeiMDhCb9
-	3ci5WpOoj2T0LED4uWbujbN5WNSwSBwSCsbxlMaCOdSXshji0vxL3W2bqoh+5EcaY1HnLTPH4Wb7q
-	vQ/WqBlQ==;
+	bh=sxeJ5TQKmvJ3RxplQfyNI/YjvTawf7T6lmxxFaqBUWA=; b=DXWmIKUhjN/lJ8gib2lpp9V8DW
+	eDlBFmK1M5eOIJcUCEEwmvWV6SQWkQE7ScGPyWiCxOLSLUmOJSa4RR6VhAPtB5sj4K+u9hQ5DHKnw
+	8UUpissLHPp//gmXeXiXzr04io1gyyEOzlkAO1IrgUyVHxbn8QUmBqiOw+jaWrfRskSJJCV3miHUF
+	D1h6Z4dbIAMl+FhcYOSsASZH1o2jqdiuBEc3oiGceIC1MEBRoZYazdvbL9IuHu7l9CdwHNaiJtMJG
+	wOcUuM7ivp5EOMKMxZpE57clpjs4S3W6fJaRlcJtQDlrCoHFiEHDtlA0uMIz4VBFwvmi7sF1meqfe
+	qZUcMpWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulbkz-00000009MOA-1ngF;
-	Mon, 11 Aug 2025 23:16:45 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ulbl5-00000009MZi-3pMz;
+	Mon, 11 Aug 2025 23:16:51 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulZ7H-000000090vy-1PVJ;
-	Mon, 11 Aug 2025 20:27:36 +0000
+	id 1ulZtV-000000094Qj-1jq7;
+	Mon, 11 Aug 2025 21:17:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:References:
+	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=KTHOzHuH/OUYRQt+fJsVLAyMUCubD4Mkl8PUofqnPdY=; b=Ly+GxV93u1KZk2vFVzdyKE9DZ3
+	uq4EiWkDX2RSipaV/DZfo16leHZaSnqjarqHtvK223jbe1sJQkHJ36ABrrNjzXILfVYSRuasgSJU7
+	FG6HoxuA4okX6j9uKM0/kNcC086DakRpU8lieIbdtLONKQbCXOTp8Jd4PslM6J6nQ6CRQnyKt96RQ
+	8vZ3stkmwoL4BS62fojlkBB0u1N4mT3LemNwlzBxWUYIhZkhrX9Miws/KKcUDu6kQOMqC7VctR+jU
+	k5qDtWjTGVB9UVLKweFd80rc95pmqvdEO+CldznIyF0NK5TdnWk8+1RqocpTXnKZVcfP5sZf0ulqV
+	ycCcm6kQ==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1ulZtR-0000000FXmK-3LPM;
+	Mon, 11 Aug 2025 21:17:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754944053;
-	bh=97/FktGL1WOXce4gBvBtsbBUHJjxPvrKCEWOXUD7x0A=;
+	s=mail; t=1754947035;
+	bh=raW5g/LV8GRTMwkoKNboyFHz5L/VYuTT0dEoV8anao8=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=V7mApP9gHD2h8fQ/FCG0mp2/K5QdXJNnbdr4X1Dm5Ny53ABy3jt6WwcwFdGDJ0AG+
-	 9oaiI43faZxshCNzTAgHMDzGGfiHkRctvSaoBwDaL7YU76QCHPxICQTuT9jWxScDvw
-	 D/ujR0cMQCRBhUEr8R7v5D0XpEKfCm1LSkYg94fIe3L3reaq/zybv0JZEtPym8BxdX
-	 Czx3xfeLm4LthxppoH4sdImmoHGyPuJOgqPBullyVQ6/P9nG0NYHl+4+6UuGLCtSw0
-	 VPKgmDPiKuWwYD6pDNwq7vIzd51BwzsHVkANfL7BeQESSudlXTg1BnHk8R0xVUNyhe
-	 uXUT5iUdP13LA==
+	b=Qr9AdoN8zECuc23K+vkrLvUlmvybTlzWqs1bZrqXrfvPtamis/qCY9KkBvjLNyA54
+	 pD1gToT97PtdLTJAxpTzKifthtpY/wSQ/H/j1+KiRYzDkfH00wWJQArPXNVr8tlIJu
+	 0pd9Yf8WtC37EMcvQ1t6jv9ySRaC9zpJvgXcyk7Ge2BtO1pQwvB4jxon2KuyJ5fgjj
+	 GlkrW6IFhk9Gv2rY9hNMi+DiktckEHN6t4d0g4d6Ishh/1X9dAQkSr7IMefoWg3E22
+	 hzq5kanEdfaOE392Ry3OULmWQ/bdm3RMm6pJO4fbZaeGfLGIpTWzK7JOkENSoROg8Q
+	 9Wr6TKN3g6ElA==
 Received: from [IPv6:2606:6d00:11:5a76::c41] (unknown [IPv6:2606:6d00:11:5a76::c41])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CA64817E0C87;
-	Mon, 11 Aug 2025 22:27:31 +0200 (CEST)
-Message-ID: <017fee1a5aa36205430d0e32c84629375523f5ff.camel@collabora.com>
-Subject: Re: [PATCH v2 1/7] media: rkvdec: Add HEVC backend
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4D79C17E0286;
+	Mon, 11 Aug 2025 23:17:14 +0200 (CEST)
+Message-ID: <a08b45fe17a0374230f300f30d344252b6d597da.camel@collabora.com>
+Subject: Re: [PATCH v2 3/7] media: rkvdec: Implement capability filtering
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Detlev Casanova	
- <detlev.casanova@collabora.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>,  Heiko Stuebner	 <heiko@sntech.de>, Alex Bee
- <knaerzche@gmail.com>, Sebastian Fricke	 <sebastian.fricke@collabora.com>,
- linux-media@vger.kernel.org, 	linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Date: Mon, 11 Aug 2025 16:27:29 -0400
-In-Reply-To: <d0d50da8-f8bb-4a6f-bd44-5199d26b7a86@kwiboo.se>
+To: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia	
+ <ezequiel@vanguardiasur.com.ar>, Detlev Casanova
+ <detlev.casanova@collabora.com>,  Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Alex Bee <knaerzche@gmail.com>, Sebastian Fricke
+	 <sebastian.fricke@collabora.com>, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Date: Mon, 11 Aug 2025 17:17:12 -0400
+In-Reply-To: <20250810212454.3237486-4-jonas@kwiboo.se>
 References: <20250810212454.3237486-1-jonas@kwiboo.se>
-	 <20250810212454.3237486-2-jonas@kwiboo.se>
-	 <9c8cb837d10d3cdd54fe34dedfe40c10e848f648.camel@collabora.com>
-	 <d0d50da8-f8bb-4a6f-bd44-5199d26b7a86@kwiboo.se>
+	 <20250810212454.3237486-4-jonas@kwiboo.se>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
  oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
@@ -87,8 +99,8 @@ Organization: Collabora Canada
 User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_132735_545899_6DA8AA57 
-X-CRM114-Status: GOOD (  33.63  )
+X-CRM114-CacheID: sfid-20250811_221721_997644_261328B6 
+X-CRM114-Status: GOOD (  19.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,168 +112,208 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2965990975784024890=="
+Content-Type: multipart/mixed; boundary="===============8456138032436969046=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============2965990975784024890==
+--===============8456138032436969046==
 Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-i9Oq4aZo3lZiAeIGW3ru"
+	boundary="=-+plCxMyBS08v/1oHFlUB"
 
 
---=-i9Oq4aZo3lZiAeIGW3ru
+--=-+plCxMyBS08v/1oHFlUB
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le lundi 11 ao=C3=BBt 2025 =C3=A0 21:46 +0200, Jonas Karlman a =C3=A9crit=
-=C2=A0:
-> Hi Nicolas,
+Le dimanche 10 ao=C3=BBt 2025 =C3=A0 21:24 +0000, Jonas Karlman a =C3=A9cri=
+t=C2=A0:
+> Add filtering of coded formats and controls depending on a variant
+> capabilities.
 >=20
-> On 8/11/2025 9:12 PM, Nicolas Dufresne wrote:
-> > Le dimanche 10 ao=C3=BBt 2025 =C3=A0 21:24 +0000, Jonas Karlman a =C3=
-=A9crit=C2=A0:
-> > > The Rockchip VDEC supports the HEVC codec with the Main and Main10
-> > > Profile up to Level 5.1 High tier: 4096x2304@60 fps.
-> > >=20
-> > > Add the backend for HEVC format to the decoder.
-> > >=20
-> > > Signed-off-by: Alex Bee <knaerzche@gmail.com>
-> > > Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> > > Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
-> > > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> > > ---
-> > > Changes in v2:
-> > > - Use new_value in transpose_and_flatten_matrices()
-> > > - Add NULL check for ctrl->new_elems in rkvdec_hevc_run_preamble()
-> > > - Set RKVDEC_WR_DDR_ALIGN_EN for RK3328
-> > > ---
-> > > =C2=A0.../media/platform/rockchip/rkvdec/Makefile=C2=A0=C2=A0 |=C2=A0=
-=C2=A0=C2=A0 2 +-
-> > > =C2=A0.../rockchip/rkvdec/rkvdec-hevc-data.c=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 | 1848 +++++++++++++++++
-> > > =C2=A0.../platform/rockchip/rkvdec/rkvdec-hevc.c=C2=A0=C2=A0=C2=A0 |=
-=C2=A0 817 ++++++++
-> > > =C2=A0.../platform/rockchip/rkvdec/rkvdec-regs.h=C2=A0=C2=A0=C2=A0 |=
-=C2=A0=C2=A0=C2=A0 2 +
-> > > =C2=A0.../media/platform/rockchip/rkvdec/rkvdec.c=C2=A0=C2=A0 |=C2=A0=
-=C2=A0 76 +
-> > > =C2=A0.../media/platform/rockchip/rkvdec/rkvdec.h=C2=A0=C2=A0 |=C2=A0=
-=C2=A0=C2=A0 1 +
-> > > =C2=A06 files changed, 2745 insertions(+), 1 deletion(-)
-> > > =C2=A0create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvde=
-c-hevc-
-> > > data.c
-> > > =C2=A0create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvde=
-c-hevc.c
-> > >=20
-> > > diff --git a/drivers/media/platform/rockchip/rkvdec/Makefile
-> > > b/drivers/media/platform/rockchip/rkvdec/Makefile
-> > > index cb86b429cfaa..a77122641d14 100644
-> > > --- a/drivers/media/platform/rockchip/rkvdec/Makefile
-> > > +++ b/drivers/media/platform/rockchip/rkvdec/Makefile
-> > > @@ -1,3 +1,3 @@
-> > > =C2=A0obj-$(CONFIG_VIDEO_ROCKCHIP_VDEC) +=3D rockchip-vdec.o
-> > > =C2=A0
-> > > -rockchip-vdec-y +=3D rkvdec.o rkvdec-h264.o rkvdec-vp9.o
-> > > +rockchip-vdec-y +=3D rkvdec.o rkvdec-h264.o rkvdec-hevc.o rkvdec-vp9=
-.o
-> > > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-data.=
-c
-> > > b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-data.c
-> > > new file mode 100644
-> > > index 000000000000..eac4ea604949
-> > > --- /dev/null
-> > > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-data.c
-> > > @@ -0,0 +1,1848 @@
-> > > +// SPDX-License-Identifier: GPL-2.0
-> > > +/*
-> > > + * Rockchip Video Decoder driver
-> > > + *
-> > > + * Copyright (C) 2023 Collabora, Ltd.
-> > > + *	Sebastian Fricke <sebastian.fricke@collabora.com>
-> > > + */
-> > > +
-> > > +#include <linux/types.h>
-> > > +
-> > > +#define RKV_CABAC_TABLE_SIZE		27456
-> > > +
-> > > +/*
-> > > + * This file is #include from rkvdec-hevc.c and not compiled.
-> > > + */
-> > > +static const u8 rkvdec_hevc_cabac_table[RKV_CABAC_TABLE_SIZE] =3D {
-> > > +	0x07, 0x0f, 0x48, 0x58, 0x58, 0x40, 0x40, 0x40, 0x40, 0x40, 0x0f,
-> > > 0x40, 0x40, 0x40, 0x0f,
-> >=20
-> > Nit, in H.264 case, we managed to fill the CABAC based on the spect wit=
-h
-> > macros,
-> > didn't we figure-out this one ? I didn't check in Detlev tree, I'm just
-> > asking
-> > here.
+> Signed-off-by: Alex Bee <knaerzche@gmail.com>
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+> Changes in v2:
+> - Adjust code style in rkvdec_enum_coded_fmt_desc()
+> ---
+> =C2=A0.../media/platform/rockchip/rkvdec/rkvdec.c=C2=A0=C2=A0 | 67 ++++++=
+++++++++-----
+> =C2=A01 file changed, 49 insertions(+), 18 deletions(-)
 >=20
-> As hinted at in the cover letter: in the initial implementation used for
-> LibreELEC I just shamelessly copied the cabac data 1:1 from the Rockchip
-> mpp library, for this series it was replaced with the cabac table from
-> Sebastian Fricke prior series to add a HEVC backend [1]. Sebastian
-> mentioned following regarding the cabac table:
->=20
-> """
-> Notable design decisions:
-> - The giant static array of cabac values is moved to a separate c file,
-> I did so because a separate .h file would be incorrect as it doesn't
-> expose anything of any value for any other file than the rkvdec-hevc.c
-> file. Other options were:
-> =C2=A0 - Calculating the values instead of storing the results (No clear =
-pattern
-> =C2=A0=C2=A0=C2=A0 found for the calculation using the static array and t=
-he formulas from the
-> =C2=A0=C2=A0=C2=A0 specification)
-> =C2=A0 - Supply them via firmware (Adding firmware makes the whole softwa=
-re
-> =C2=A0=C2=A0=C2=A0 way more complicated and the usage of the driver less =
-obvious)
-> """
->=20
-> I have not explored any other way to handle the cabac table based on
-> these design decisions.
->=20
-> [1]
-> https://lore.kernel.org/linux-media/20230101-patch-series-v2-6-2-rc1-v2-0=
--fa1897efac14@collabora.com/
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/me=
+dia/platform/rockchip/rkvdec/rkvdec.c
+> index e7b9dfc2d1ab..56807122720e 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> @@ -365,13 +365,36 @@ static const struct rkvdec_coded_fmt_desc rkvdec_co=
+ded_fmts[] =3D {
+> =C2=A0	}
+> =C2=A0};
+> =C2=A0
+> +static bool rkvdec_is_capable(struct rkvdec_ctx *ctx, unsigned int capab=
+ility)
+> +{
+> +	return (ctx->dev->capabilities & capability) =3D=3D capability;
+> +}
+> +
+> =C2=A0static const struct rkvdec_coded_fmt_desc *
+> -rkvdec_find_coded_fmt_desc(u32 fourcc)
+> +rkvdec_enum_coded_fmt_desc(struct rkvdec_ctx *ctx, int index)
+> =C2=A0{
+> +	int fmt_idx =3D -1;
+> =C2=A0	unsigned int i;
+> =C2=A0
+> =C2=A0	for (i =3D 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+> -		if (rkvdec_coded_fmts[i].fourcc =3D=3D fourcc)
+> +		if (!rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability))
+> +			continue;
+> +		fmt_idx++;
+> +		if (index =3D=3D fmt_idx)
+> +			return &rkvdec_coded_fmts[i];
+> +	}
+> +
+> +	return NULL;
+> +}
+> +
+> +static const struct rkvdec_coded_fmt_desc *
+> +rkvdec_find_coded_fmt_desc(struct rkvdec_ctx *ctx, u32 fourcc)
+> +{
+> +	unsigned int i;
+> +
+> +	for (i =3D 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+> +		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability) &&
+> +		=C2=A0=C2=A0=C2=A0 rkvdec_coded_fmts[i].fourcc =3D=3D fourcc)
+> =C2=A0			return &rkvdec_coded_fmts[i];
+> =C2=A0	}
+> =C2=A0
+> @@ -382,7 +405,7 @@ static void rkvdec_reset_coded_fmt(struct rkvdec_ctx =
+*ctx)
+> =C2=A0{
+> =C2=A0	struct v4l2_format *f =3D &ctx->coded_fmt;
+> =C2=A0
+> -	ctx->coded_fmt_desc =3D &rkvdec_coded_fmts[0];
+> +	ctx->coded_fmt_desc =3D rkvdec_enum_coded_fmt_desc(ctx, 0);
+> =C2=A0	rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->fourcc);
+> =C2=A0
+> =C2=A0	f->type =3D V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+> @@ -396,21 +419,22 @@ static void rkvdec_reset_coded_fmt(struct rkvdec_ct=
+x *ctx)
+> =C2=A0static int rkvdec_enum_framesizes(struct file *file, void *priv,
+> =C2=A0				=C2=A0 struct v4l2_frmsizeenum *fsize)
+> =C2=A0{
+> -	const struct rkvdec_coded_fmt_desc *fmt;
+> +	struct rkvdec_ctx *ctx =3D fh_to_rkvdec_ctx(priv);
+> +	const struct rkvdec_coded_fmt_desc *desc;
+> =C2=A0
+> =C2=A0	if (fsize->index !=3D 0)
+> =C2=A0		return -EINVAL;
+> =C2=A0
+> -	fmt =3D rkvdec_find_coded_fmt_desc(fsize->pixel_format);
+> -	if (!fmt)
+> +	desc =3D rkvdec_find_coded_fmt_desc(ctx, fsize->pixel_format);
+> +	if (!desc)
+> =C2=A0		return -EINVAL;
+> =C2=A0
+> =C2=A0	fsize->type =3D V4L2_FRMSIZE_TYPE_CONTINUOUS;
+> =C2=A0	fsize->stepwise.min_width =3D 1;
+> -	fsize->stepwise.max_width =3D fmt->frmsize.max_width;
+> +	fsize->stepwise.max_width =3D desc->frmsize.max_width;
+> =C2=A0	fsize->stepwise.step_width =3D 1;
+> =C2=A0	fsize->stepwise.min_height =3D 1;
+> -	fsize->stepwise.max_height =3D fmt->frmsize.max_height;
+> +	fsize->stepwise.max_height =3D desc->frmsize.max_height;
+> =C2=A0	fsize->stepwise.step_height =3D 1;
+> =C2=A0
+> =C2=A0	return 0;
+> @@ -470,10 +494,10 @@ static int rkvdec_try_output_fmt(struct file *file,=
+ void *priv,
+> =C2=A0	struct rkvdec_ctx *ctx =3D fh_to_rkvdec_ctx(priv);
+> =C2=A0	const struct rkvdec_coded_fmt_desc *desc;
+> =C2=A0
+> -	desc =3D rkvdec_find_coded_fmt_desc(pix_mp->pixelformat);
+> +	desc =3D rkvdec_find_coded_fmt_desc(ctx, pix_mp->pixelformat);
+> =C2=A0	if (!desc) {
+> -		pix_mp->pixelformat =3D rkvdec_coded_fmts[0].fourcc;
+> -		desc =3D &rkvdec_coded_fmts[0];
+> +		desc =3D rkvdec_enum_coded_fmt_desc(ctx, 0);
+> +		pix_mp->pixelformat =3D desc->fourcc;
+> =C2=A0	}
+> =C2=A0
+> =C2=A0	v4l2_apply_frmsize_constraints(&pix_mp->width,
+> @@ -550,7 +574,7 @@ static int rkvdec_s_output_fmt(struct file *file, voi=
+d *priv,
+> =C2=A0	if (ret)
+> =C2=A0		return ret;
+> =C2=A0
+> -	desc =3D rkvdec_find_coded_fmt_desc(f->fmt.pix_mp.pixelformat);
+> +	desc =3D rkvdec_find_coded_fmt_desc(ctx, f->fmt.pix_mp.pixelformat);
+> =C2=A0	if (!desc)
+> =C2=A0		return -EINVAL;
+> =C2=A0	ctx->coded_fmt_desc =3D desc;
+> @@ -602,10 +626,14 @@ static int rkvdec_g_capture_fmt(struct file *file, =
+void *priv,
+> =C2=A0static int rkvdec_enum_output_fmt(struct file *file, void *priv,
+> =C2=A0				=C2=A0 struct v4l2_fmtdesc *f)
+> =C2=A0{
+> -	if (f->index >=3D ARRAY_SIZE(rkvdec_coded_fmts))
+> +	struct rkvdec_ctx *ctx =3D fh_to_rkvdec_ctx(priv);
+> +	const struct rkvdec_coded_fmt_desc *desc;
+> +
+> +	desc =3D rkvdec_enum_coded_fmt_desc(ctx, f->index);
+> +	if (!desc)
+> =C2=A0		return -EINVAL;
+> =C2=A0
+> -	f->pixelformat =3D rkvdec_coded_fmts[f->index].fourcc;
+> +	f->pixelformat =3D desc->fourcc;
+> =C2=A0	return 0;
+> =C2=A0}
+> =C2=A0
+> @@ -970,14 +998,17 @@ static int rkvdec_init_ctrls(struct rkvdec_ctx *ctx=
+)
+> =C2=A0	int ret;
+> =C2=A0
+> =C2=A0	for (i =3D 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++)
+> -		nctrls +=3D rkvdec_coded_fmts[i].ctrls->num_ctrls;
+> +		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability))
+> +			nctrls +=3D rkvdec_coded_fmts[i].ctrls->num_ctrls;
+> =C2=A0
+> =C2=A0	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, nctrls);
+> =C2=A0
+> =C2=A0	for (i =3D 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+> -		ret =3D rkvdec_add_ctrls(ctx, rkvdec_coded_fmts[i].ctrls);
+> -		if (ret)
+> -			goto err_free_handler;
+> +		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability)) {
+> +			ret =3D rkvdec_add_ctrls(ctx, rkvdec_coded_fmts[i].ctrls);
+> +			if (ret)
+> +				goto err_free_handler;
+> +		}
+> =C2=A0	}
+> =C2=A0
+> =C2=A0	ret =3D v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
 
-I see, I guess if we don't know how it was generated, there isn't much we c=
-an do
-about it.
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
 cheers,
 Nicolas
 
->=20
-> Regards,
-> Jonas
->=20
-> >=20
-> > Nicolas
->=20
-> [snip]
-
---=-i9Oq4aZo3lZiAeIGW3ru
+--=-+plCxMyBS08v/1oHFlUB
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJpSMQAKCRBxUwItrAao
-HOTrAKChQb418dF5D1psffW41seij+dvEgCgmJmwxhVAqiRs4EdF46/syDW1+7w=
-=5k7o
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJpd2AAKCRBxUwItrAao
+HFagAJ9kpySvBjaNAzNBLEMtnAbxTfaYngCfcZh2egLoFBDVztkKTSFbUTpixT8=
+=akP1
 -----END PGP SIGNATURE-----
 
---=-i9Oq4aZo3lZiAeIGW3ru--
+--=-+plCxMyBS08v/1oHFlUB--
 
 
---===============2965990975784024890==
+--===============8456138032436969046==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -272,5 +324,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============2965990975784024890==--
+--===============8456138032436969046==--
 
