@@ -4,128 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 015CDCCD1AA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDAB0CCD1A5
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:02:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F+cRpxqeLgMYoC18hRJxnSn4CaCuT7SGvJ4yVYYEsxw=; b=LURKU/fJ2/NobG
-	YWIVy2cjztAKiOQknqYIbaJUfLGi4I2nqMeV09RfOEsXHwP4J8kOnpK1h80962CjgQjQul2LozWJ5
-	yfyMxTfo8TL5HsSgVtzLl1i0G620uEEe7PQ1mUQ2lA6slyOELtcwU8Dx6sVW+w/nChkFcw0HX3jV1
-	B0B739ZGwiFVIpAHhfy6wL/TYi9xI7r2WFdvpNlqGkcm+TDbl77QnMMtkmWryJMtK0gfbG0Yt/CQV
-	0DbRJCY4ZLvpCqfp0ZwizPd1/Z1Bske5VpMWhJ7WXYN3XOQHadRQlDENdyA+AKY1HU2BNQMupAHtJ
-	bajrwJDq+yGBmYzOiPXA==;
+	List-Owner; bh=cKmGt5CeJY9psrspm5AEMSiOuGnN5Z8ujYLYmftA1sQ=; b=EsPuJk63Ljygsr
+	H7wyDy2+im2PVBwMabym+8/yiHLsNO3eV3l+ztWUqPCJoAY870ZgGHwQsyLxxJxwCA7Fq4eMOcsAu
+	clrEOuDs/auUrEENtpgUQLmLWyMg4GRdMWyZHIOSg8GSpVF+3iy6bvxHc7lGKvyHpSZX/d46R5S3Y
+	0nrxm1cRBNHPb4x7WlQqP7x/iarKMiTdG/gVY3QzDFY2YIVWcsK3MZBzkbcXd/7e4aWauYH+thPyS
+	Qz7ll+d4dsxZUObTEWO9/ZRv70xefa7rbpijov5NRvA+DeEuQIEd325SQQr2FuYhyLeJ9B/kovjRz
+	AywIbbV1E/YjzvN7No3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoas-0000000DG1R-1LnF;
-	Mon, 20 Oct 2025 12:02:30 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vAoav-0000000DG46-0IWA;
+	Mon, 20 Oct 2025 12:02:33 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIo-00000008BFu-2Vpr;
-	Mon, 11 Aug 2025 15:19:10 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4C8C4669EC;
-	Mon, 11 Aug 2025 15:18:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 936D1C568CB;
-	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754925516;
-	bh=5YrRyj+0l65qf0GYc/imj37EkrSq2Vv8MkzPE4BVHbs=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=orKlLAW0QCqRMF078wZyzDmlVWzXyhkXjKmbJtg9GL6BGXrW2dFDctLMacW/Ii36w
-	 jHvI0QtbdA5gQ/RfIlyNfOznoizLEVCkJFgOgm2lW5UEO/6zzMD63/sm4I7fwV6xcZ
-	 scjkM/ARRB9pbykEZ+IjbP8kk1Ydr7KWKXefolSrnIx/PX4HUuaJZUHH5Zf7rs8TTp
-	 4akOQSfzxXtob16WGKY1RrnfOSulRWmmk5gk+HGIzEA/+40M/eYvZMxJ/I7cEZLjb0
-	 Arh47ZwKC80Vq5kGbCcCPCSdqk6v81jLOTn/kT37r/wbRS7C+YH8DvDMpFTNr35EVj
-	 uBGPyXQdW3G4g==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A778CA0ED1;
-	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
-From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:19:44 -0400
-Subject: [PATCH 112/114] clk: scmi: remove round_rate() in favor of
- determine_rate()
-MIME-Version: 1.0
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-112-b3bf97b038dc@redhat.com>
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
-In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
-To: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>, 
- Cristian Marussi <cristian.marussi@arm.com>, 
- Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
- Paul Cercueil <paul@crapouillou.net>, 
- Keguang Zhang <keguang.zhang@gmail.com>, 
- Taichi Sugaya <sugaya.taichi@socionext.com>, 
- Takao Orito <orito.takao@socionext.com>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>, 
- Shan-Chun Hung <schung@nuvoton.com>, Vladimir Zapolskiy <vz@mleia.com>, 
- Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
- Paul Walmsley <paul.walmsley@sifive.com>, 
- Samuel Holland <samuel.holland@sifive.com>, Yixun Lan <dlan@gentoo.org>, 
- Steen Hegelund <Steen.Hegelund@microchip.com>, 
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
- Orson Zhai <orsonzhai@gmail.com>, 
- Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Michal Simek <michal.simek@amd.com>, Maxime Ripard <mripard@kernel.org>, 
- =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
- Manivannan Sadhasivam <mani@kernel.org>, Sven Peter <sven@kernel.org>, 
- Janne Grunau <j@jannau.net>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
- Neal Gompa <neal@gompa.dev>, Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, 
- Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
- Max Filippov <jcmvbkbc@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Daniel Palmer <daniel@thingy.jp>, Romain Perier <romain.perier@gmail.com>, 
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, 
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
- Bjorn Andersson <andersson@kernel.org>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Andrea della Porta <andrea.porta@suse.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Sylwester Nawrocki <s.nawrocki@samsung.com>, 
- Chanwoo Choi <cw00.choi@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
- Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>, 
- Ulf Hansson <ulf.hansson@linaro.org>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Alex Helms <alexander.helms.jy@renesas.com>, 
- Linus Walleij <linus.walleij@linaro.org>, Liviu Dudau <liviu.dudau@arm.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
+	id 1ulUb6-00000008E09-0fPO;
+	Mon, 11 Aug 2025 15:38:05 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-af9a25f091fso603819666b.0;
+        Mon, 11 Aug 2025 08:38:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1754926683; x=1755531483; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=2HmgB4i0ef6G9gBd9c3iPtpa4z8Vmw9rM+uJkjjYMMg=;
+        b=m1hZ6leXpACCmUxqIu4P8B9d9f/0pktLEvqQUWWBzVvp9n343KZU3w8pBG7+D4OECg
+         Ji4TPlLBHifgdp/kJziMolq8rASbKqpvcoTGxXn+lBe21fnbUYGRZkauD8uYm2ksHQRE
+         zQnzG9EDNSj5qd3XQRkh7uXcwF1CSEKVMNOhjvYGXHOgidG9xaJr1h1y0lzwl6ND7smn
+         KFhdrntKu3G1HUC/WFSJx68A5Zc0wzo83uNqHSmI4lqO7kS6Ul+KGmJ8/eZzS3wOokTS
+         d9+m0+lFoRn5oHvWHt2E47D6WPF+8e5nYaxwkfzqpRJ39aynKCfEukScUJrW2yjsl67d
+         UGwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754926683; x=1755531483;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=2HmgB4i0ef6G9gBd9c3iPtpa4z8Vmw9rM+uJkjjYMMg=;
+        b=ioYMuV0DMzhuMuAZNT27BNb+lWS90cs2DzNIppvB9tT/VQhV1bcn6gpAmHo6K28GSr
+         w++++Y6TKpz5wA2sOLO5/nLqwApyzYPwKvE7ekzyEgEHyMUr2/Kh84HTskX75r1IRu5K
+         8wViPqIWjt0uh2Nh9y26OcmqRO8dCzWZukzwtm8uEkn3Lekh9MUVIOXR5Pm0qTGjENh5
+         OZH7ZqHSQGAqeBlNQ2uUQ2CMRihemn6hwLs6VqiWmBn8BDgItqUJb+8qum0VsKokIlMA
+         3z0SB/wYD1ckIyty9P+tz6OdAf+TB4L+0xHCeL31Brxu83TlwViHkVRjeT6TYJFMuJi6
+         ofgw==
+X-Forwarded-Encrypted: i=1; AJvYcCUkeO+NayxBPrMFRv4XAAv2zjKfXqEnQvTsycNGbzAZdm5nt/LvGMvtlEWTm/JFrgMidnTvObpC1vcPIro=@lists.infradead.org, AJvYcCUn7Cj8pDpb18us7UzWjkymz1t/9zqs+t8qtBcvZnWJLzior4PGgV+fn0939bFYq7/LNYVBiwi7YXeeNoqBMUo=@lists.infradead.org, AJvYcCVfiHzDdRK/+fpNobhC0MaFqHJK7UEDBksex0QQR1vhi2bP5ikLZS2GdztfiX5Kj/rYWdb09vSLaX2A9BGiscVVyQ==@lists.infradead.org, AJvYcCWhrX7vqZ/zxb1m2IZ3so6OOi/yo0zFetyOD8ssTd0/gnrwIIdcUqjkbxBE3nV4dxbmRAMS8RvZ/jwId8vucqI=@lists.infradead.org, AJvYcCXlOzYV9iLtQXGiHdUMs9NI0K9KzMPspnzUySnfBuTL4EJlM/+ipAZPk+dtXrT2YTRVP4s5C9sBRnSFHq6N@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy29rh+CEEtNxNN1lmQMiOD4+d96/TzazPsfNgIHIrgOCS/XfKk
+	KjG7Tr1GjNQmkViKna/tv9tSgyOVc7n+r5zDhuXodaAJA53/4hPsK8f/
+X-Gm-Gg: ASbGncvsiua9U4FoBmwypiJHN1Zy6ruXkPcIiGe4BD4BWq8gYQJWPKfQYjsNfR17e8R
+	bjR8EQkI+y2/vrWaS4KF6N1uHaM5WS+PNknjz8V7MzH+9YIYUF9NNyjElJGwQ415rTWzOgB8P4K
+	AHCt3lC9kEPfB9UDcBElqNCuRbZ+qEQsBTXrIIvLXPHHsUzM1sWXM3przH+iUGgWjv4dR4JH484
+	6qLG9G0zdFZIB4Bm4NCVEMr+oU6/3fiLAefr/LoTCCVMefJlA818MLhaOUlF8B9S+W/DMicn8qQ
+	TZS2ykIK3t/zccBb116ioZIySlom5iTd1KAaJrv36WKoSJSM36Yy8PKbCEQwz4zevPzOiJLXUB/
+	ON7QnY/Wh1wcCGV5HJWFzrg29MSkV79wuDpsNULA=
+X-Google-Smtp-Source: AGHT+IHSK7yv3/D8orY0Pvy2Zzp8DcIZ6EslOLXmLH2atPhWs8y14U6F2aebL6rKGw4mDoY3DumHmw==
+X-Received: by 2002:a17:907:7ea8:b0:af9:8c1c:b9be with SMTP id a640c23a62f3a-af9c645d565mr1274686466b.14.1754926682117;
+        Mon, 11 Aug 2025 08:38:02 -0700 (PDT)
+Received: from giga-mm.home ([2a02:1210:8642:2b00:82ee:73ff:feb8:99e3])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-af91a21c0afsm2032301266b.117.2025.08.11.08.37.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Aug 2025 08:38:01 -0700 (PDT)
+Message-ID: <84788b3be1d340f7a085c0d2a5903fd1032dd9eb.camel@gmail.com>
+Subject: Re: [PATCH 114/114] clk: fixed-factor: drop round_rate() clk ops
+From: Alexander Sverdlin <alexander.sverdlin@gmail.com>
+To: bmasney@redhat.com, Michael Turquette <mturquette@baylibre.com>, Stephen
+ Boyd <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>, Cristian
+ Marussi	 <cristian.marussi@arm.com>, Chen Wang <unicorn_wang@outlook.com>,
+ Inochi Amaoto	 <inochiama@gmail.com>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>,  Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Paul Cercueil	 <paul@crapouillou.net>, Keguang Zhang
+ <keguang.zhang@gmail.com>, Taichi Sugaya	 <sugaya.taichi@socionext.com>,
+ Takao Orito <orito.takao@socionext.com>,  Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team	
+ <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Jacky Huang	
+ <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, Vladimir
+ Zapolskiy	 <vz@mleia.com>, Piotr Wojtaszczyk
+ <piotr.wojtaszczyk@timesys.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Samuel Holland <samuel.holland@sifive.com>, Yixun Lan	 <dlan@gentoo.org>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>, Daniel Machon	
+ <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, Orson Zhai	
+ <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan
+ Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue	 <alexandre.torgue@foss.st.com>, Michal Simek
+ <michal.simek@amd.com>, Maxime Ripard <mripard@kernel.org>, Andreas
+ =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>,  Manivannan Sadhasivam	
+ <mani@kernel.org>, Sven Peter <sven@kernel.org>, Janne Grunau
+ <j@jannau.net>,  Alyssa Rosenzweig <alyssa@rosenzweig.io>, Neal Gompa
+ <neal@gompa.dev>, Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,  Ray Jui
+ <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Broadcom
+ internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Max
+ Filippov <jcmvbkbc@gmail.com>, Matthias Brugger	 <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>,
+ Daniel Palmer <daniel@thingy.jp>,  Romain Perier <romain.perier@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement	
+ <gregory.clement@bootlin.com>, Sebastian Hesselbarth	
+ <sebastian.hesselbarth@gmail.com>, Bjorn Andersson <andersson@kernel.org>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner
+ <heiko@sntech.de>, Andrea della Porta <andrea.porta@suse.com>,  Krzysztof
+ Kozlowski	 <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Chanwoo Choi	 <cw00.choi@samsung.com>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Qin Jian	 <qinjian@cqplus1.com>, Viresh Kumar
+ <vireshk@kernel.org>, Ulf Hansson	 <ulf.hansson@linaro.org>, Luca Ceresoli
+ <luca.ceresoli@bootlin.com>, Alex Helms	 <alexander.helms.jy@renesas.com>,
+ Linus Walleij <linus.walleij@linaro.org>,  Liviu Dudau
+ <liviu.dudau@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Nobuhiro
+ Iwamatsu	 <nobuhiro1.iwamatsu@toshiba.co.jp>
 Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
- arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- sophgo@lists.linux.dev, linux-mips@vger.kernel.org, imx@lists.linux.dev, 
- linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
- linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com, 
- linux-actions@lists.infradead.org, asahi@lists.linux.dev, 
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
- Brian Masney <bmasney@redhat.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=2063;
- i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=zZPy/VQuXPb4ErTr6RHlPvCDkU/aIn0KlEdetDNPWuc=;
- b=RbVBCL4Yb1c1v4HxaBdoa/kYbRkOS2Y6t/+bUny/+2wf4rLkx4p0bZdhgkd0UiaREXOUg1KBe
- 1pW7ayR0qpkC4jyB+yADVFuwFQhWffG3muvex6OgDsSZjfM1zfF6tC0
-X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
- pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
-X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
- auth_id=472
-X-Original-From: Brian Masney <bmasney@redhat.com>
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:18 -0700
+	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	sophgo@lists.linux.dev, linux-mips@vger.kernel.org, imx@lists.linux.dev, 
+	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
+	linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com, 
+	linux-actions@lists.infradead.org, asahi@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
+Date: Mon, 11 Aug 2025 17:37:58 +0200
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-114-b3bf97b038dc@redhat.com>
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
+	 <20250811-clk-for-stephen-round-rate-v1-114-b3bf97b038dc@redhat.com>
+User-Agent: Evolution 3.56.1 
+MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250811_083804_198763_CE7F4187 
+X-CRM114-Status: GOOD (  17.47  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:04 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,80 +144,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: bmasney@redhat.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Brian Masney <bmasney@redhat.com>
-
-This driver implements both the determine_rate() and round_rate() clk
-ops, and the round_rate() clk ops is deprecated. When both are defined,
-clk_core_determine_round_nolock() from the clk core will only use the
-determine_rate() clk ops, so let's remove the round_rate() clk ops since
-it's unused.
-
-Signed-off-by: Brian Masney <bmasney@redhat.com>
----
- drivers/clk/clk-scmi.c | 30 ------------------------------
- 1 file changed, 30 deletions(-)
-
-diff --git a/drivers/clk/clk-scmi.c b/drivers/clk/clk-scmi.c
-index d2408403283fc72f0cf902e65f4c08bcbc7b4b0b..6c6ddb92e7cf6a0cfac2c7e19c0f15f777bb8c51 100644
---- a/drivers/clk/clk-scmi.c
-+++ b/drivers/clk/clk-scmi.c
-@@ -54,35 +54,6 @@ static unsigned long scmi_clk_recalc_rate(struct clk_hw *hw,
- 	return rate;
- }
- 
--static long scmi_clk_round_rate(struct clk_hw *hw, unsigned long rate,
--				unsigned long *parent_rate)
--{
--	u64 fmin, fmax, ftmp;
--	struct scmi_clk *clk = to_scmi_clk(hw);
--
--	/*
--	 * We can't figure out what rate it will be, so just return the
--	 * rate back to the caller. scmi_clk_recalc_rate() will be called
--	 * after the rate is set and we'll know what rate the clock is
--	 * running at then.
--	 */
--	if (clk->info->rate_discrete)
--		return rate;
--
--	fmin = clk->info->range.min_rate;
--	fmax = clk->info->range.max_rate;
--	if (rate <= fmin)
--		return fmin;
--	else if (rate >= fmax)
--		return fmax;
--
--	ftmp = rate - fmin;
--	ftmp += clk->info->range.step_size - 1; /* to round up */
--	do_div(ftmp, clk->info->range.step_size);
--
--	return ftmp * clk->info->range.step_size + fmin;
--}
--
- static int scmi_clk_set_rate(struct clk_hw *hw, unsigned long rate,
- 			     unsigned long parent_rate)
- {
-@@ -300,7 +271,6 @@ scmi_clk_ops_alloc(struct device *dev, unsigned long feats_key)
- 
- 	/* Rate ops */
- 	ops->recalc_rate = scmi_clk_recalc_rate;
--	ops->round_rate = scmi_clk_round_rate;
- 	ops->determine_rate = scmi_clk_determine_rate;
- 	if (feats_key & BIT(SCMI_CLK_RATE_CTRL_SUPPORTED))
- 		ops->set_rate = scmi_clk_set_rate;
-
--- 
-2.50.1
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQnJpYW4hCgpPbiBNb24sIDIwMjUtMDgtMTEgYXQgMTE6MTkgLTA0MDAsIEJyaWFuIE1hc25l
+eSB2aWEgQjQgUmVsYXkgd3JvdGU6Cj4gRnJvbTogQnJpYW4gTWFzbmV5IDxibWFzbmV5QHJlZGhh
+dC5jb20+Cj4gCj4gVGhpcyBkcml2ZXIgaW1wbGVtZW50cyBib3RoIHRoZSBkZXRlcm1pbmVfcmF0
+ZSgpIGFuZCByb3VuZF9yYXRlKCkgY2xrCj4gb3BzLCBhbmQgdGhlIHJvdW5kX3JhdGUoKSBjbGsg
+b3BzIGlzIGRlcHJlY2F0ZWQuIFdoZW4gYm90aCBhcmUgZGVmaW5lZCwKPiBjbGtfY29yZV9kZXRl
+cm1pbmVfcm91bmRfbm9sb2NrKCkgZnJvbSB0aGUgY2xrIGNvcmUgd2lsbCBvbmx5IHVzZSB0aGUK
+PiBkZXRlcm1pbmVfcmF0ZSgpIGNsayBvcHMuIEFsc28gYWxsIGNsayBkcml2ZXJzIHRoYXQgZGly
+ZWN0bHkgY2FsbHMKPiBmaXhlZC1mYWN0b3IncyByb3VuZF9yYXRlKCkgaGF2ZSBiZWVuIG1pZ3Jh
+dGVkIG92ZXIgdG8gZGV0ZXJtaW5lX3JhdGUoKS4KPiBTbyBsZXQncyByZW1vdmUgdGhlIHJvdW5k
+X3JhdGUoKSBjbGsgb3BzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEJyaWFuIE1hc25leSA8Ym1hc25l
+eUByZWRoYXQuY29tPgoKUmV2aWV3ZWQtYnk6IEFsZXhhbmRlciBTdmVyZGxpbiA8YWxleGFuZGVy
+LnN2ZXJkbGluQGdtYWlsLmNvbT4KCj4gLS0tCj4gwqBkcml2ZXJzL2Nsay9jbGstZml4ZWQtZmFj
+dG9yLmMgfCAxNiAtLS0tLS0tLS0tLS0tLS0tCj4gwqAxIGZpbGUgY2hhbmdlZCwgMTYgZGVsZXRp
+b25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvY2xrL2Nsay1maXhlZC1mYWN0b3IuYyBi
+L2RyaXZlcnMvY2xrL2Nsay1maXhlZC1mYWN0b3IuYwo+IGluZGV4IDc5YjlhOGM1N2Q0Yjg0YmU5
+OTA5NTVkOGJjMzE1OWI4MThmMzhkNTAuLmRlNjU4YzllNGM1Mzg2YTdhOGQyMjA3NDMyMjU3N2Uw
+ZTllZmQyYjggMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9jbGsvY2xrLWZpeGVkLWZhY3Rvci5jCj4g
+KysrIGIvZHJpdmVycy9jbGsvY2xrLWZpeGVkLWZhY3Rvci5jCj4gQEAgLTQ3LDIxICs0Nyw2IEBA
+IHN0YXRpYyBpbnQgY2xrX2ZhY3Rvcl9kZXRlcm1pbmVfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywK
+PiDCoAlyZXR1cm4gMDsKPiDCoH0KPiDCoAo+IC1zdGF0aWMgbG9uZyBjbGtfZmFjdG9yX3JvdW5k
+X3JhdGUoc3RydWN0IGNsa19odyAqaHcsIHVuc2lnbmVkIGxvbmcgcmF0ZSwKPiAtCQkJCXVuc2ln
+bmVkIGxvbmcgKnByYXRlKQo+IC17Cj4gLQlzdHJ1Y3QgY2xrX2ZpeGVkX2ZhY3RvciAqZml4ID0g
+dG9fY2xrX2ZpeGVkX2ZhY3Rvcihodyk7Cj4gLQo+IC0JaWYgKGNsa19od19nZXRfZmxhZ3MoaHcp
+ICYgQ0xLX1NFVF9SQVRFX1BBUkVOVCkgewo+IC0JCXVuc2lnbmVkIGxvbmcgYmVzdF9wYXJlbnQ7
+Cj4gLQo+IC0JCWJlc3RfcGFyZW50ID0gKHJhdGUgLyBmaXgtPm11bHQpICogZml4LT5kaXY7Cj4g
+LQkJKnByYXRlID0gY2xrX2h3X3JvdW5kX3JhdGUoY2xrX2h3X2dldF9wYXJlbnQoaHcpLCBiZXN0
+X3BhcmVudCk7Cj4gLQl9Cj4gLQo+IC0JcmV0dXJuICgqcHJhdGUgLyBmaXgtPmRpdikgKiBmaXgt
+Pm11bHQ7Cj4gLX0KPiAtCj4gwqBzdGF0aWMgaW50IGNsa19mYWN0b3Jfc2V0X3JhdGUoc3RydWN0
+IGNsa19odyAqaHcsIHVuc2lnbmVkIGxvbmcgcmF0ZSwKPiDCoAkJCQl1bnNpZ25lZCBsb25nIHBh
+cmVudF9yYXRlKQo+IMKgewo+IEBAIC04Nyw3ICs3Miw2IEBAIHN0YXRpYyB1bnNpZ25lZCBsb25n
+IGNsa19mYWN0b3JfcmVjYWxjX2FjY3VyYWN5KHN0cnVjdCBjbGtfaHcgKmh3LAo+IMKgCj4gwqBj
+b25zdCBzdHJ1Y3QgY2xrX29wcyBjbGtfZml4ZWRfZmFjdG9yX29wcyA9IHsKPiDCoAkuZGV0ZXJt
+aW5lX3JhdGUgPSBjbGtfZmFjdG9yX2RldGVybWluZV9yYXRlLAo+IC0JLnJvdW5kX3JhdGUgPSBj
+bGtfZmFjdG9yX3JvdW5kX3JhdGUsCj4gwqAJLnNldF9yYXRlID0gY2xrX2ZhY3Rvcl9zZXRfcmF0
+ZSwKPiDCoAkucmVjYWxjX3JhdGUgPSBjbGtfZmFjdG9yX3JlY2FsY19yYXRlLAo+IMKgCS5yZWNh
+bGNfYWNjdXJhY3kgPSBjbGtfZmFjdG9yX3JlY2FsY19hY2N1cmFjeSwKCi0tIApBbGV4YW5kZXIg
+U3ZlcmRsaW4uCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
