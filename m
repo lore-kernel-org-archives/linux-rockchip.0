@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E917CCCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:02:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D31ECCD1A5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:02:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CbQX/PGtp7QGvsryhPRMTgOTEWtz+X5WYtfCGBri3Uw=; b=RvvNS/4iU2oaeT
-	HR7RtVrc90yQPWQN7fQomaIgfkP4GFrZqlN7j+ZMaoMSp705tuuPSeNudg2at2hnAZoMCFJv1YkJ7
-	jtYP/UtP5D5aEg8Nr2+ctk8n0I+AyPxtPIR8VXZ5D2GI2O3jL0nf3I9J0X66J2kMeAQbdZFQte6mL
-	XczHCjK/ZkrFiATIVIfw3AaBMfD78gWwBqKxRwJFpjlS0yfReDqHjvT0Fn2zjo+SVP+TjXJdI/Kn0
-	zIBVQ+nmias6WrzslJJLgMPzRdSCgi15lOtjbQ09v3IJ/bbjeY7LT6GHvLUpRFx25RJqRk/CB63mV
-	P+WCy/z33MpCy/QXpp9g==;
+	List-Owner; bh=0Awg6fEu5pf0n2GILLPdoAU9hbOESbwoBqehqd1hbYI=; b=UyxShDtyv5a4W9
+	5nX/hSh38D2kL1ooTI+7HGrrTIS+StSbBFimEKzk2GNF0rTAwQ2rI1pUxVKbZf4h6PmBDybNDvmKz
+	fBGjgye1aRr/0cm6C2n8UdpWnFOtVofTaVykUAuTmnjNwGuwF9A4IYtwPZ7JHEUcSdTEUcz9sXLu6
+	02IyypIRvmlyv6mh1RLTgms03cWjrlrgHn8m7pIUdJ2+3DhmK9JRIDWXLmbwXMzPozYHiJZrze1jd
+	7mUROST1d+CeXLNFDSDtbljwAa2dhk75cMczC0Norl439lZY7eV/OZHjE2WpOOK+Fg8oTG61JoR14
+	rXjw0wz20GePj/xBY7+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoaE-0000000DFDU-2NTm;
+	id 1vAoaE-0000000DFEL-3gIX;
 	Mon, 20 Oct 2025 12:01:50 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIS-00000008Ay3-0rUY;
-	Mon, 11 Aug 2025 15:18:48 +0000
+	id 1ulUIY-00000008Apz-0uUE;
+	Mon, 11 Aug 2025 15:18:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 83AED6691C;
-	Mon, 11 Aug 2025 15:18:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 0FA41C2BC86;
-	Mon, 11 Aug 2025 15:18:32 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 21CA166961;
+	Mon, 11 Aug 2025 15:18:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 42AA8C4FDE8;
+	Mon, 11 Aug 2025 15:18:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754925512;
-	bh=udEcZLLxyWYeqzWha0rjrze3r3ePmpoplHJgawnLqRY=;
+	s=k20201202; t=1754925515;
+	bh=uWr8f50WYVoQV7Ccl1uBbME03HF6scdVafmMAIIh/BY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=ZSpnFM8TuHg3H+yFA7fdIJrN66SWAwmbic2OnwQv+bjrA+/XC+zRB7Brmfh9M90Vr
-	 j3z8yOWkbs3XwbBcIwOBWYnXp/POyRjZhglNsQHqgWpJm1k+hVXcxEpfLbmcHtQWVD
-	 quxgqGHRimklsFOC3kpSoJc8IwrYI0ozOlD0hSN3NoK8wHQaNKh1Y2fh3wkHrYxKBM
-	 C0nZqHnqtd/OBbJW/kDAWHJ7eOz+qI6jmQIDcRyR/xoD/oTnRgB6n7HABYeO87VY9t
-	 v9PcoMoO0sKlFvP3t177OamA5k2EOeODg5wSAzitxoEKGjx09Zp4pmvM3pdpPajwkA
-	 QFNB6xC+sHjcQ==
+	b=eAzC2oTWYDS441ObEBuaT04xUZasg4T1J0+xaQtxRzfh4/5H26IdDqKI6LC+hpvy3
+	 wqQN9AuC3p8wCCzRm5h7yL4jA5eD5VG0LRaSjZiiLhWrd9ZTrOoczb0MHd2veDXE+R
+	 GDO9FWVjujeylCq5jSbM7r+mMRtcQQ1MXl+P59mD0C1XjVDxVPnxgS8DzFr7lDoQT/
+	 C01IzSOXVO/4MApsipeRGz9Ok1L0sAODGSO7T+Mpp73l8+KzMxXRXGTh3AfPzFVTCZ
+	 +IsoYOKUexM6U3Hsq65PxR2lo69ZCFiErnZJVn3Pqo6dzV7dzrGeYFM0LNMtfJKKkZ
+	 wi+NC8AQwseXg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2982CA0ED3;
-	Mon, 11 Aug 2025 15:18:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 21FC3CA0EC4;
+	Mon, 11 Aug 2025 15:18:35 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:18:59 -0400
-Subject: [PATCH 067/114] clk: xilinx: xlnx_vcu: convert from round_rate()
- to determine_rate()
+Date: Mon, 11 Aug 2025 11:19:30 -0400
+Subject: [PATCH 098/114] clk: samsung: cpu: convert from round_rate() to
+ determine_rate()
 MIME-Version: 1.0
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-67-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-98-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -115,11 +115,11 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1864;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1677;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=82qR/ZRJSeYXbGnr0soHZMhXD3A3PwOES4maoFV30vY=;
- b=4jol9sapsSWNpZQnMHZgNxJnIWie1Lf+ASszpOwTPb8maLgVdzwNCJLnNjrPrjUaEcQPmqeNe
- wqWkD0ziSEsDs2R71hWmkSKjy/0GDB5nHX3k9i30q4oR/mDUJlH7PKn
+ bh=AN0ZkbVaUA8tTGFU3Eedcp5VCTSIYinCM4zH/lp4X78=;
+ b=RwUb+yzBQLB+WhHb6DN83KgnRynAOTouCccpnzeigffDx2MvdwSsrfb0Vh3mRKT/FE0BRBfYn
+ IcUx/VLPXc3DmbtsVLaXc9AOM1IUOIEBSv3DRIAvouKcG5+tKABo2of
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
@@ -151,49 +151,41 @@ on the cover letter of this series.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/xilinx/xlnx_vcu.c | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+ drivers/clk/samsung/clk-cpu.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/clk/xilinx/xlnx_vcu.c b/drivers/clk/xilinx/xlnx_vcu.c
-index 1ded67bee06c3903b14bd32af36238ee02661b07..02699bc0f82c6b37d7d373a90160a63aa5df52a2 100644
---- a/drivers/clk/xilinx/xlnx_vcu.c
-+++ b/drivers/clk/xilinx/xlnx_vcu.c
-@@ -311,18 +311,21 @@ static int xvcu_pll_set_div(struct vcu_pll *pll, int div)
- 	return 0;
- }
+diff --git a/drivers/clk/samsung/clk-cpu.c b/drivers/clk/samsung/clk-cpu.c
+index 4e1ebd8a30b1b422e33a4bb4527006e36c41666f..300f8d5d3c48d8c08fa599aad74526cd9dd822c7 100644
+--- a/drivers/clk/samsung/clk-cpu.c
++++ b/drivers/clk/samsung/clk-cpu.c
+@@ -567,12 +567,14 @@ static int exynos850_cpuclk_post_rate_change(struct clk_notifier_data *ndata,
+ /* -------------------------------------------------------------------------- */
  
--static long xvcu_pll_round_rate(struct clk_hw *hw,
--				unsigned long rate, unsigned long *parent_rate)
-+static int xvcu_pll_determine_rate(struct clk_hw *hw,
-+				   struct clk_rate_request *req)
+ /* Common round rate callback usable for all types of CPU clocks */
+-static long exynos_cpuclk_round_rate(struct clk_hw *hw, unsigned long drate,
+-				     unsigned long *prate)
++static int exynos_cpuclk_determine_rate(struct clk_hw *hw,
++					struct clk_rate_request *req)
  {
- 	struct vcu_pll *pll = to_vcu_pll(hw);
- 	unsigned int feedback_div;
- 
--	rate = clamp_t(unsigned long, rate, pll->fvco_min, pll->fvco_max);
-+	req->rate = clamp_t(unsigned long, req->rate, pll->fvco_min,
-+			    pll->fvco_max);
- 
--	feedback_div = DIV_ROUND_CLOSEST_ULL(rate, *parent_rate);
-+	feedback_div = DIV_ROUND_CLOSEST_ULL(req->rate, req->best_parent_rate);
- 	feedback_div = clamp_t(unsigned int, feedback_div, 25, 125);
- 
--	return *parent_rate * feedback_div;
-+	req->rate = req->best_parent_rate * feedback_div;
+ 	struct clk_hw *parent = clk_hw_get_parent(hw);
+-	*prate = clk_hw_round_rate(parent, drate);
+-	return *prate;
++	req->best_parent_rate = clk_hw_round_rate(parent, req->rate);
++	req->rate = req->best_parent_rate;
 +
 +	return 0;
  }
  
- static unsigned long xvcu_pll_recalc_rate(struct clk_hw *hw,
-@@ -394,7 +397,7 @@ static void xvcu_pll_disable(struct clk_hw *hw)
- static const struct clk_ops vcu_pll_ops = {
- 	.enable = xvcu_pll_enable,
- 	.disable = xvcu_pll_disable,
--	.round_rate = xvcu_pll_round_rate,
-+	.determine_rate = xvcu_pll_determine_rate,
- 	.recalc_rate = xvcu_pll_recalc_rate,
- 	.set_rate = xvcu_pll_set_rate,
+ /* Common recalc rate callback usable for all types of CPU clocks */
+@@ -591,7 +593,7 @@ static unsigned long exynos_cpuclk_recalc_rate(struct clk_hw *hw,
+ 
+ static const struct clk_ops exynos_cpuclk_clk_ops = {
+ 	.recalc_rate = exynos_cpuclk_recalc_rate,
+-	.round_rate = exynos_cpuclk_round_rate,
++	.determine_rate = exynos_cpuclk_determine_rate,
  };
+ 
+ /*
 
 -- 
 2.50.1
