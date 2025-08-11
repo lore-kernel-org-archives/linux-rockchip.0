@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A81A3CCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:02:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C31D1CCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:02:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n/3BtMjX7ONGKMIDnWNYYarTTzHJjH9tX5pJqCLcjGg=; b=ot4v/iLLJ/7FVt
-	QrdYwJOiKBbmjYLPTbmOImoO1oeIoZx4UysSCR1nyb6QL2wUg204feS5NuSGjpiG+oa7BGZfoJXcX
-	sXvMhXVnQkf5TmUScAnOUZLHzNB1Tj+ODjUXg6dlW5t6xVXyHq2YIzSEBNs7xL0w8ZW/hlzcCHquG
-	4DdBUvrxXP8j/L5p5MeyWmTtZKjBmujBO1AudrZW2FAIFHwE6ffzH71LCSjDR31VxoITK2La36XZ4
-	NC/vMb5av8NRNsI/Pdw+XjVUYSLlcli3KdtIHgh0/g0sk2n9JPkMty15P/DvodgFBF3i0J3SfFvSH
-	gtXSq7/iHbGhThcrAnig==;
+	List-Owner; bh=HG6NdjgYDSXcT9/2eDiwq++DSaYj9x4BnDLLCLCM9nw=; b=MoHsIDRF02Vpb3
+	wUTRK+i2ozfUBOCa0rHKh7Gmb7omT4h5c2iifxz7yZA/hRh4I2BhI9jMRiJr11QA1WO51UipQo03m
+	/cN+f9cCu/NsIxZY2xsuZJpZQePnsA4DjcY300OVKGkCmV+oYyV+wn1JtGkGM4WIHrUGWW23PalO9
+	pVACVFE0JV8YANG7jvrUip0x0rkc1kC1qwmkBV2Dh4wXqQiShoT+rR3LjBoewpkgD3tX07QvH9Z/u
+	u3NeqZv32Gt+OyNO3oqI+/q4RDyfXiEs+qQC/G3dw3qll+pm0Nat2mNJyic3/oL8X9NbS4dPcKcU3
+	tTPLnq++2NlZPkTmldbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoaS-0000000DFVS-0gIk;
-	Mon, 20 Oct 2025 12:02:04 +0000
+	id 1vAoaR-0000000DFTb-0Fdb;
+	Mon, 20 Oct 2025 12:02:03 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUId-00000008BDB-2b4J;
-	Mon, 11 Aug 2025 15:18:59 +0000
+	id 1ulUIX-00000008B4e-2w8X;
+	Mon, 11 Aug 2025 15:18:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 45C2866971;
-	Mon, 11 Aug 2025 15:18:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id BE671C567E4;
-	Mon, 11 Aug 2025 15:18:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B4BA966958;
+	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id AAED5C567C4;
+	Mon, 11 Aug 2025 15:18:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754925515;
-	bh=TOt8GAW42gcWftLZfgpNK288oaPz0ia79bN+vRjbPyw=;
+	s=k20201202; t=1754925514;
+	bh=rms1xtlsadqT0awQHjctVrlANVA+fIB3QPcLnfCSi6g=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=MQ8koQTxrhR+jIyZnNhvtDolUxdWryNLV22iyyTCS8GpfcsvaVmV9Lshrq6sTGN5g
-	 JFmoeHq6cvEFUeJhPN/qyamJYdQlels9VewMsG8/7oRxgllLAqte8ImVlfzzaS6Xas
-	 rG+8qRE8zVUjUz5ARryVxfsJiBptmj+Ax5ZxeZL2Ah93y2ZcqRElhyeH1vzY63Nqgy
-	 yS/LL6+liWxp+5xeCnQBDYfLL1xQ6FIUA4bNRwYYBZu2dsoKvoZVzi4f1S4omBo2vx
-	 kfV7ZJKP0FYznJHJRT8t5a2zxhhaXybNRabO7W89qVcTilnN8txN/J3lnguDeQLzCD
-	 s40tMbjcGxgTA==
+	b=rjdaF+UKmFgXPDzdOJnQVOXnJ4lwVcLtXfrCgAsF3FzFwfCN8w01KtqpnrF9asqDC
+	 Joi/yE6EzfxU77AiEyzjM5XoOCpF60AJkleUNZ79P7/bPfoIiL7GpYtytaAjK1TMcG
+	 Gb8k5hwuqpb6D9uEExMD/Elk2FDsi+2DINskSkxnX3Ejl/YR/es+68NTWI2iFY4Qr2
+	 wX6q3KGLRHRxz4z7SZi/lsCmfWX4d2HIm0w37HnWWuWHZZx3axvApUHri64LyptFBo
+	 jOuEo/GJ4a//e9wtp/zTRsF/tkkwizcd5RapkT+iFFuY0yzBP23qJ2AdrHJsIPlfpI
+	 JoP6/WiB/FV8w==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8907CCA0ED9;
-	Mon, 11 Aug 2025 15:18:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8968DCA0ED1;
+	Mon, 11 Aug 2025 15:18:34 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:19:35 -0400
-Subject: [PATCH 103/114] clk: spear: gpt-synth: convert from round_rate()
- to determine_rate()
+Date: Mon, 11 Aug 2025 11:19:25 -0400
+Subject: [PATCH 093/114] clk: renesas: rzv2h-cpg: remove round_rate() in
+ favor of determine_rate()
 MIME-Version: 1.0
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-103-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-93-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -115,11 +115,11 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1594;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1554;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=3EPhFpUbwwIaXQRHOGCwBMvdxScReadCJMAlA8s3U9w=;
- b=eHgF5npubAkVlGRQbb/9b8jxvdvlrqbhFOe9oQL+YIv/fPqzK/8SMk8YX1Ii95v2t6diuOQ9p
- JPc+NNMe9v0AM8cVWkBCEdzdWMitEknsfAEt3b9wzqc3m9aFYvO8Hv1
+ bh=APn7O7zMPX6aeEUA+RAPdR2wRd1vkjrFD49a6YMzPV4=;
+ b=MJL8aeF4D/4kz5WhunkiOL7Dpp+qwONXwdncq6aBmbuXWI5Y1ZAcFa/06fJpmb/J1uLFTyqxP
+ 35qRmO9rw8SC/cRzaiV+HbjMDrXRZhTRH6uyk5C+6oN1t64dqODhpxJ
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
@@ -145,49 +145,45 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Brian Masney <bmasney@redhat.com>
 
-The round_rate() clk ops is deprecated, so migrate this driver from
-round_rate() to determine_rate() using the Coccinelle semantic patch
-on the cover letter of this series.
+This driver implements both the determine_rate() and round_rate() clk
+ops, and the round_rate() clk ops is deprecated. When both are defined,
+clk_core_determine_round_nolock() from the clk core will only use the
+determine_rate() clk ops, so let's remove the round_rate() clk ops since
+it's unused.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/spear/clk-gpt-synth.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ drivers/clk/renesas/rzv2h-cpg.c | 10 ----------
+ 1 file changed, 10 deletions(-)
 
-diff --git a/drivers/clk/spear/clk-gpt-synth.c b/drivers/clk/spear/clk-gpt-synth.c
-index 4ef747c2abbb0374bec6d6541fa6b8b8904e6c08..cf9659dc9073cba903a0e2a9cef9629ae7f97022 100644
---- a/drivers/clk/spear/clk-gpt-synth.c
-+++ b/drivers/clk/spear/clk-gpt-synth.c
-@@ -39,14 +39,16 @@ static unsigned long gpt_calc_rate(struct clk_hw *hw, unsigned long prate,
- 	return prate;
+diff --git a/drivers/clk/renesas/rzv2h-cpg.c b/drivers/clk/renesas/rzv2h-cpg.c
+index f468afbb54e2d192c094e0048a698664ae99bd00..58ccbae0f9046388e568f7da0b8a890dfa001c47 100644
+--- a/drivers/clk/renesas/rzv2h-cpg.c
++++ b/drivers/clk/renesas/rzv2h-cpg.c
+@@ -294,15 +294,6 @@ static unsigned long rzv2h_ddiv_recalc_rate(struct clk_hw *hw,
+ 				   divider->flags, divider->width);
  }
  
--static long clk_gpt_round_rate(struct clk_hw *hw, unsigned long drate,
--		unsigned long *prate)
-+static int clk_gpt_determine_rate(struct clk_hw *hw,
-+				  struct clk_rate_request *req)
+-static long rzv2h_ddiv_round_rate(struct clk_hw *hw, unsigned long rate,
+-				  unsigned long *prate)
+-{
+-	struct clk_divider *divider = to_clk_divider(hw);
+-
+-	return divider_round_rate(hw, rate, prate, divider->table,
+-				  divider->width, divider->flags);
+-}
+-
+ static int rzv2h_ddiv_determine_rate(struct clk_hw *hw,
+ 				     struct clk_rate_request *req)
  {
- 	struct clk_gpt *gpt = to_clk_gpt(hw);
- 	int unused;
+@@ -359,7 +350,6 @@ static int rzv2h_ddiv_set_rate(struct clk_hw *hw, unsigned long rate,
  
--	return clk_round_rate_index(hw, drate, *prate, gpt_calc_rate,
--			gpt->rtbl_cnt, &unused);
-+	req->rate = clk_round_rate_index(hw, req->rate, req->best_parent_rate,
-+					 gpt_calc_rate, gpt->rtbl_cnt, &unused);
-+
-+	return 0;
- }
- 
- static unsigned long clk_gpt_recalc_rate(struct clk_hw *hw,
-@@ -104,7 +106,7 @@ static int clk_gpt_set_rate(struct clk_hw *hw, unsigned long drate,
- 
- static const struct clk_ops clk_gpt_ops = {
- 	.recalc_rate = clk_gpt_recalc_rate,
--	.round_rate = clk_gpt_round_rate,
-+	.determine_rate = clk_gpt_determine_rate,
- 	.set_rate = clk_gpt_set_rate,
+ static const struct clk_ops rzv2h_ddiv_clk_divider_ops = {
+ 	.recalc_rate = rzv2h_ddiv_recalc_rate,
+-	.round_rate = rzv2h_ddiv_round_rate,
+ 	.determine_rate = rzv2h_ddiv_determine_rate,
+ 	.set_rate = rzv2h_ddiv_set_rate,
  };
- 
 
 -- 
 2.50.1
