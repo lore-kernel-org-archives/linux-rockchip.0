@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C75FCCD193
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18571CCD1A7
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:00:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oELPkpALZ6GR/01xAgamAPr3uIztb7lDG/dvls/99HQ=; b=ArF0OF+JpX+WDm
-	uJtdOTA/SUmhU4NsUgtFRd4a0Z5TDkkXBSY99y8yshJ6BePOHII4BGvaGnY4VbyLmfNJCMwo7kBmV
-	jk2T7Dbz7oz6LOEgAWn6rtCYRudkgkSyKInfLD7T/uJMRP5YBnjNDM7A70ASKftk99/Vwev9/08ho
-	tr3/aACBHxK3NqCEu0s9MKaqh9LPgW2AXsrGyBBnM6OlJXbNQ0GyX6fFezEMSbAwCQ/e/iwDMrh6K
-	uSHwmKoZSCwGXMF/0rJlqD12DxsOeePIznbid7bhvz0gITrbxkOozgjSoYc86NT0fiX2oV5QoA0yI
-	gHFNhRfC/V09DkOgWEEg==;
+	List-Owner; bh=p3SFBQ4/sdAxsaZUW5S+MH+IBrSjCX4oyzDcMfoU1uU=; b=qVB8ZM4F1WKDmb
+	RDVIBHREz6NdeG7+gR61HLprrCqq1uZvY2ZdN1izuVROFE+VcadelDOBrXszrx+LnSjlDU+iVVtFT
+	DhAMQmoUgb2EvRw5UAajfQoDywLVtrA9sVG0jA8ZKf+VaQ0L+lKYSFWjv/LKBp3SPMjo+ZIKxVNO+
+	DSXwjzFE3SE+RBcZEiSp4LdKA8wFvL1Ldfcxr0+Zd67kf3UoELZUBJ7SdUD6Y3hQK2EWEhvknRFYZ
+	dGtyAjreXro7RQdY30UL6FAknN93PVmxRvFBKWEwE8Xvehdo5c2O8j4GIQiLIkgllOvYYBAXq288u
+	xDl5sod6EpJdFKIyXO5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoZ8-0000000DDpY-14fT;
-	Mon, 20 Oct 2025 12:00:42 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vAoZ8-0000000DDrd-48qk;
+	Mon, 20 Oct 2025 12:00:43 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIH-00000008AbU-0VpH;
-	Mon, 11 Aug 2025 15:18:40 +0000
+	id 1ulUIH-00000008AYp-3RZV;
+	Mon, 11 Aug 2025 15:18:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 31C60460A3;
+	by tor.source.kernel.org (Postfix) with ESMTP id 8F18561471;
+	Mon, 11 Aug 2025 15:18:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B6C19C4AF0D;
 	Mon, 11 Aug 2025 15:18:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id E95EFC4CEFD;
-	Mon, 11 Aug 2025 15:18:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1754925509;
-	bh=queKsTtKB32N7EPjQSUCR/4rTC/5USNoziJ/hkh36Do=;
+	bh=Apc2qzNpfS9aAHI8h/9ad7fvCKlHY8Hm4ds5yDJuMxY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=bwbkkkP+OMzrmN2zvbzl0YBE6XTdLHAmS2lmkMVTWvPIYvv5K4Yqza+skGrE3oX16
-	 2vMgt+Fhaq+x+EFXjNO8B5J36wRJk9kAVOYkjb+opELAhGNSsvcfUoYxBHfretsRLA
-	 4zGYB5tubX4WobBHSnJRtGTymUt8CicVtWsuICL0bLiyPac5LO2rYcrQConJ79ktsn
-	 cfngnHp2yfE0Bp52S/e06c8odvWOupl48duxmmDzvnnMWG4XzbU2DJU07yEnk/VXlt
-	 SXI0dxcK7qVuM0OFyrwEcR2ttGb4de7yPovU0ccJvJqqKfC4opbxfTo00zUqY69v8N
-	 pSC7//Tk5wYuA==
+	b=Pc2y+ckBwV6Rdu49pgbnKxX8piZe7F+BV9WP5MLfbHVH9rYb3qLklc2ucy3MxIrpo
+	 Ez8CA8oE1fk0yFR1LgKKedg8trPwICBnZsEhl2IgwFt234xrsj49yEv5hX56Iq1uD1
+	 F2o0UQ7o1zBc6v8INWCZvtQ4emAbXpiDRhX9cRER0+VfVSzRPLc8fgP+psn+W1O5OP
+	 xuv8nMzO7ym+lDgJBQe8UIVtUgf9PigsaNLs3f8EGfEy5+l7gT5a8aJr51mKVmN3wG
+	 2SraZuhAlNj+AcxdWycxr/btBCZOM7mY2+5QhqPP7xDxbBR01mOk2938UL41QbFmXh
+	 KgiaTMhfUfQzQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D6325C87FDA;
-	Mon, 11 Aug 2025 15:18:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9657DC87FDA;
+	Mon, 11 Aug 2025 15:18:29 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:18:28 -0400
-Subject: [PATCH 036/114] clk: nuvoton: ma35d1-pll: convert from
- round_rate() to determine_rate()
+Date: Mon, 11 Aug 2025 11:18:35 -0400
+Subject: [PATCH 043/114] clk: si5341: convert from round_rate() to
+ determine_rate()
 MIME-Version: 1.0
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-36-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-43-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -115,19 +115,16 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925497; l=2856;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1946;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=le7opsxs0SynMMO1WbjAmxEq9McwQ2/93Evsw++xuwQ=;
- b=Kxhwjvdno7BQdbPOQ6FQwluBNf+pBvM1qs5Lxn/nxYkyMDPwVqnZbrDrRrQRloIFcBfsoB6Fk
- Ue2Yz4cZOJrAE4dZQ3/gEwhrcGfLfhaNTnBzchHnHAV2J+2OfHmaoFG
+ bh=VSclFs7R89Y+Lsm61Wi5Kzy/FJb3iOqfzn5aANhegPc=;
+ b=flWSSXi6CEENtdFwyXcyp3r9Kub5eRxDOAYKZ/Npi1LtbV7xxzxgOYvzm2I3AsyOaNwIt8AHw
+ esev6EsAl3zCadBDavASsob5DvzObWhBdDc6yl/uXR7h9oJCiYxZi60
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
  auth_id=472
 X-Original-From: Brian Masney <bmasney@redhat.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_081837_285568_C0161DFE 
-X-CRM114-Status: GOOD (  15.86  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:14 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -154,80 +151,60 @@ on the cover letter of this series.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/nuvoton/clk-ma35d1-pll.c | 28 ++++++++++++++++++----------
- 1 file changed, 18 insertions(+), 10 deletions(-)
+ drivers/clk/clk-si5341.c | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/clk/nuvoton/clk-ma35d1-pll.c b/drivers/clk/nuvoton/clk-ma35d1-pll.c
-index ff3fb8b87c24b0fc0823cbd2e3cf311137fa56db..4620acfe47e85f7982325bb5610a23888c7a9cf2 100644
---- a/drivers/clk/nuvoton/clk-ma35d1-pll.c
-+++ b/drivers/clk/nuvoton/clk-ma35d1-pll.c
-@@ -244,35 +244,43 @@ static unsigned long ma35d1_clk_pll_recalc_rate(struct clk_hw *hw, unsigned long
- 	return 0;
+diff --git a/drivers/clk/clk-si5341.c b/drivers/clk/clk-si5341.c
+index 5004888c7eca5f85a444ec6de684b8dd79635622..2499b771cd83e313eafd83cb0519b1b94da73a61 100644
+--- a/drivers/clk/clk-si5341.c
++++ b/drivers/clk/clk-si5341.c
+@@ -663,8 +663,8 @@ static unsigned long si5341_synth_clk_recalc_rate(struct clk_hw *hw,
+ 	return f;
  }
  
--static long ma35d1_clk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
--				      unsigned long *parent_rate)
-+static int ma35d1_clk_pll_determine_rate(struct clk_hw *hw,
-+					 struct clk_rate_request *req)
+-static long si5341_synth_clk_round_rate(struct clk_hw *hw, unsigned long rate,
+-		unsigned long *parent_rate)
++static int si5341_synth_clk_determine_rate(struct clk_hw *hw,
++					   struct clk_rate_request *req)
  {
- 	struct ma35d1_clk_pll *pll = to_ma35d1_clk_pll(hw);
- 	u32 reg_ctl[3] = { 0 };
- 	unsigned long pll_freq;
- 	long ret;
- 
--	if (*parent_rate < PLL_FREF_MIN_FREQ || *parent_rate > PLL_FREF_MAX_FREQ)
-+	if (req->best_parent_rate < PLL_FREF_MIN_FREQ || req->best_parent_rate > PLL_FREF_MAX_FREQ)
- 		return -EINVAL;
- 
--	ret = ma35d1_pll_find_closest(pll, rate, *parent_rate, reg_ctl, &pll_freq);
-+	ret = ma35d1_pll_find_closest(pll, req->rate, req->best_parent_rate,
-+				      reg_ctl, &pll_freq);
- 	if (ret < 0)
- 		return ret;
- 
- 	switch (pll->id) {
- 	case CAPLL:
- 		reg_ctl[0] = readl_relaxed(pll->ctl0_base);
--		pll_freq = ma35d1_calc_smic_pll_freq(reg_ctl[0], *parent_rate);
--		return pll_freq;
-+		pll_freq = ma35d1_calc_smic_pll_freq(reg_ctl[0], req->best_parent_rate);
-+		req->rate = pll_freq;
+ 	struct clk_si5341_synth *synth = to_clk_si5341_synth(hw);
+ 	u64 f;
+@@ -672,15 +672,21 @@ static long si5341_synth_clk_round_rate(struct clk_hw *hw, unsigned long rate,
+ 	/* The synthesizer accuracy is such that anything in range will work */
+ 	f = synth->data->freq_vco;
+ 	do_div(f, SI5341_SYNTH_N_MAX);
+-	if (rate < f)
+-		return f;
++	if (req->rate < f) {
++		req->rate = f;
 +
 +		return 0;
- 	case DDRPLL:
- 	case APLL:
- 	case EPLL:
- 	case VPLL:
- 		reg_ctl[0] = readl_relaxed(pll->ctl0_base);
- 		reg_ctl[1] = readl_relaxed(pll->ctl1_base);
--		pll_freq = ma35d1_calc_pll_freq(pll->mode, reg_ctl, *parent_rate);
--		return pll_freq;
-+		pll_freq = ma35d1_calc_pll_freq(pll->mode, reg_ctl, req->best_parent_rate);
-+		req->rate = pll_freq;
-+
++	}
+ 
+ 	f = synth->data->freq_vco;
+ 	do_div(f, SI5341_SYNTH_N_MIN);
+-	if (rate > f)
+-		return f;
++	if (req->rate > f) {
++		req->rate = f;
+ 
+-	return rate;
 +		return 0;
- 	}
++	}
 +
-+	req->rate = 0;
-+
- 	return 0;
++	return 0;
  }
  
-@@ -311,12 +319,12 @@ static const struct clk_ops ma35d1_clk_pll_ops = {
- 	.unprepare = ma35d1_clk_pll_unprepare,
- 	.set_rate = ma35d1_clk_pll_set_rate,
- 	.recalc_rate = ma35d1_clk_pll_recalc_rate,
--	.round_rate = ma35d1_clk_pll_round_rate,
-+	.determine_rate = ma35d1_clk_pll_determine_rate,
+ static int si5341_synth_program(struct clk_si5341_synth *synth,
+@@ -741,7 +747,7 @@ static const struct clk_ops si5341_synth_clk_ops = {
+ 	.prepare = si5341_synth_clk_prepare,
+ 	.unprepare = si5341_synth_clk_unprepare,
+ 	.recalc_rate = si5341_synth_clk_recalc_rate,
+-	.round_rate = si5341_synth_clk_round_rate,
++	.determine_rate = si5341_synth_clk_determine_rate,
+ 	.set_rate = si5341_synth_clk_set_rate,
  };
  
- static const struct clk_ops ma35d1_clk_fixed_pll_ops = {
- 	.recalc_rate = ma35d1_clk_pll_recalc_rate,
--	.round_rate = ma35d1_clk_pll_round_rate,
-+	.determine_rate = ma35d1_clk_pll_determine_rate,
- };
- 
- struct clk_hw *ma35d1_reg_clk_pll(struct device *dev, u32 id, u8 u8mode, const char *name,
 
 -- 
 2.50.1
