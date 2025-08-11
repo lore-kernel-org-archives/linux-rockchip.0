@@ -4,97 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD9C8C87FD2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 13:49:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2914C87FDB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 14:19:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pDPyEzonf3jkRtUmO1T8Cw6Q/A6fHeZ9jxAGWWfO1XI=; b=K4WbtqWB9BMr6AesuoUeTqOIux
-	eT7UswNKnJU9i9BKuLo6r2Cfi/rNCgpc5tnz0UVIlrQ+rcaUGARdx5EkIUcOuKj7/InOCvUjEgRwq
-	N5cy3SmrvYn9gX+PFgXJGUySpEgsk5+QEqVQqa2RybZ36t/nDRu2Zvq18vdRc1OAHAbb3QLOREENx
-	i7KznJd0g6SSbdPI89tRZgzGNK0g4YC3ymOaMJvW0pxJJmCksezRJVIB+AslgSRdyGJFaIELiN9Eh
-	aeo4aCJR2vNZOkMFzC+U/NBBDHHUdH3OwnMdzLXmmvEj9MqrBo5GGBBWsGtm+qoM+kf7MXYRfE8px
-	Uv5caVDw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pKYDp6xkjZuIZf70A61/sZT2zzLucjhBCKlIFTTkhuA=; b=fnz0SapfaEmTIR
+	TgKvSQEX0iNf8fNEQqzNeqkwpFHZYP9h4XQWRFlSTPHGc1gR4ZzkDfvwbgVCs+vxvmQXX5ZrYmiQK
+	9E1dnFm/+ATNU5TsE9vyndJyKP1klPf1n24/RWV/qFEGVfcJdQ+aInSQjpCAhPDXT2bb7FXcK3NVw
+	YC2zeFvNYJErABG9IHZidDgE0VO5KxkVjcWOKEGpARNS3200DmzF98UN2rs7qBk9Seel58U8dJYnZ
+	TkdbLnJumhODUDN2wUeZGsdJ/RJbkiIsNvzK7LQeBptuv7xEOpmN4Y+VmDSL2rcJ24/klnFc1Bkwd
+	rsO3Z6YIi9w8gm7p+4hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulStV-00000007sW2-3M1R;
-	Mon, 11 Aug 2025 13:48:57 +0000
-Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
+	id 1ulTNQ-000000080IK-0jAg;
+	Mon, 11 Aug 2025 14:19:52 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulStT-00000007sVd-1x8g
-	for linux-rockchip@lists.infradead.org;
-	Mon, 11 Aug 2025 13:48:57 +0000
-Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-7076eaa5febso18120996d6.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 11 Aug 2025 06:48:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1754920133; x=1755524933; darn=lists.infradead.org;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=VWV2hjLplr0Slgw9ppK6HuD7SF+ufb5rfXPdExiThcw=;
-        b=SvIHKXfUWoHA0cNtKIpQx6x4ZFxWxmO1hUfK8PkwCb1ykSl5Xr22PWRzmsbbzOiP7E
-         sq80etWV3ezdHAyggIR2LqhgmlBggOTjtjxnPOBhDwNYn6j8PYGCB2YbVCMle59b0ftP
-         ovaKM4ZtK8lDt7ZXpbCdA+1AVcYsH1CQABJM9bchoUfDELTcgpc+BnfpXP8uUUBhQBmJ
-         cF0Z972oee4A2opzGVnm1yfgnX8+pT+fHl9VUz46o6U2KxXHm4ynUvjF2XSOtLhwX3Pu
-         9QsqeYRBzI8Hng2bDQdV9jZ1KbfrSDglgxD7AJ/7oELCqMYAViDBa/fVdTuDUtPvjtGi
-         skiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1754920133; x=1755524933;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VWV2hjLplr0Slgw9ppK6HuD7SF+ufb5rfXPdExiThcw=;
-        b=UzIIEbl3HS3KkAwBGflgsOUrmDOU1Sbw0UYbRl0djffSXbN4Shzf51ta03H5eWH6Et
-         R7/V5xQWJ9pLgHeIaTMGo+hZrdDPEGI4dtxi/Zi8BDVp5Q2HYKEHAspyY9Dkf2D33X4G
-         1MnZfaYgQYLmJ02xx8kK2dgm9fZ0CPunpaDmWT3ytqUDMIVV/myAXCeBscl6PqjW8KwZ
-         9p3/1tpLc5HknHG9/MIy6pKjoV6/kkYSm/LLrCKNx3QAcTsgpiFFrlE55RcamNn8M9b4
-         wPbP9OnAkpojBtApReBYDI5mP3bXb7w7i3benOSaV15IO1tzpDk9C1Be/kSoYQ0qZHT9
-         jVEA==
-X-Forwarded-Encrypted: i=1; AJvYcCXE2fMrT2get2goowq7lydLc6lihrkBce45ZABWxAgcADzw1VF/cab/226qHqi40kCBad6k1/JDPMGOrm7hWQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw99NLWhaVtzk/yXmwf1Yg5I9UAjHxk/vDn0gZtTn3ZlM0AtWdw
-	UNownne0lqnzRdseKo8g8MpubpY6RhQ4xIbo0KBWai9Yx5GN47mXiX5wKnBv6+jURhs=
-X-Gm-Gg: ASbGnctZtO5s2HsQYqMt4FBiINHnc+Rfx/CWPZMSzIe5Qi9YDwcOEjYhhSEo1lE1oWT
-	abI54lGGegE3r22NeOJaxEiSufJNsgYR1SVo5JIRAD+QLIErOLsWfwExjIZxOvNoaMkyEFQK2YC
-	/WrkXielLij3xfFkunNCUylvfTZCGiE2k/3nFF57+NcQVsB2g8mQjxAeaNwS8pCovvDLe2FN8/f
-	Lf1sbR/J+Yv/SQl0ZmLZpNoZK8Z3si0HxgkCKKDZMKqAOFMq4JLlhazidlc3QodV6RJa1xLD4v7
-	54U57K2xBwByQs6N/TbPgmcGkiWJphka357iC1aE1+mr27wOa5k93ad4M7tHRPCWRg+XGHk+XYf
-	odaeU3ido6VsiO+uKRc0Fi/BUj/w=
-X-Google-Smtp-Source: AGHT+IGWo1UxGtBJWVYSzxpvE5ZF5/dBz2Is5MsjfG1C/pxYl+/rzztidkfAyi1zkWZdsKT8xJCVpw==
-X-Received: by 2002:a05:6214:2466:b0:6fb:1c3:f527 with SMTP id 6a1803df08f44-7099a4833a2mr205043136d6.39.1754920132919;
-        Mon, 11 Aug 2025 06:48:52 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:11:5a76::c41? ([2606:6d00:11:5a76::c41])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-7077cd89d8dsm156083316d6.53.2025.08.11.06.48.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 Aug 2025 06:48:51 -0700 (PDT)
-Message-ID: <9b86fb9ac5b9cfdb773fef2db33fc13d011f53f4.camel@ndufresne.ca>
-Subject: Re: [PATCH 64/80] media: rkvdec: Remove redundant
- pm_runtime_mark_last_busy() calls
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>, Ezequiel Garcia	
- <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>,  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Date: Mon, 11 Aug 2025 09:48:50 -0400
-In-Reply-To: <20250704075450.3221972-1-sakari.ailus@linux.intel.com>
-References: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
-	 <20250704075450.3221972-1-sakari.ailus@linux.intel.com>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0MU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT6ImQQTFg
- oAQQIbAwULCQgHAgIiAgYVCgkICwIEFgIDAQIeBwIXgBYhBO8NUoEVxMPCGgRvEtlBlFEpYHL0BQJ
- oLLLGBQkJZfd1AAoJENlBlFEpYHL0BEkA/3qkWYt99myYFSmTJUF8UB/7OroEm3vr1HRqXeQe9Qp2
- AP0bsoAe6KjEPa/pJfuJ2khrOPPHxvyt/PBNbI5BYcIABLQnTmljb2xhcyBEdWZyZXNuZSA8bmljb
- 2xhc0BuZHVmcmVzbmUuY2E+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AWIQ
- TvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyy+AUJCWX3dQAKCRDZQZRRKWBy9FJ5AQCNy8SX8DpHbLa
- cy58vgDwyIpB89mok9eWGGejY9mqpRwEAhHzs+/n5xlVlM3bqy1yHnAzJqVwqBE1D0jG0a9V6VQI=
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1ulSx1-00000007tE6-2I3A;
+	Mon, 11 Aug 2025 13:52:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1754920340; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=CaqPVfLpXcf6B3O12hrTnSBLjueivtQ2cS9H7Od1BEg7ajGWiBFa9Kj4kYSKP9SnBiOJZrTfLe8xsTKVMcRq9a+wrFmAwjROCNmcvq9eQhB1W0M2zbayrVS18vqxb0kiMa9zZe/8jAYfN91vbuMUUsLU/0REhplvyUxv44xGAr4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1754920340; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=1ekrnY8bS2wg8D8B4NCNKhUtGyKfpA7Tqmni8Tj9DMM=; 
+	b=T/PvQ64xlProZ9xS9pl4ZV2yYQ5nxGLPQqE8JeS1ukafk63rv2FWFT00C7Bt95P92U0TZfTim6zQ2NtzxGlYsnANP0bJhododQ+6bZMv4f9JUfm7rmYzjLFDpJc8eMxYHpdiknTcKUzIiVBaJ0CLo1nFNf789wYOEiQ6qmu6QKs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1754920340;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=1ekrnY8bS2wg8D8B4NCNKhUtGyKfpA7Tqmni8Tj9DMM=;
+	b=M4Xglp6eh7wYhZIOFhxuU2u93kfh4IuyjPWi2ovC/ABS/TriM8O4Tx1hjE/DqTsU
+	kMNHmXxE0jC3XliupwVsZ3pxPX/Ho81gAjbyasLtVxdXRhgRjaZ7Pn7ez6g+g9gz3BW
+	LKjw4MlOlUuY4Gf+hMeiGNxFFw3022udiSodcooQ=
+Received: by mx.zohomail.com with SMTPS id 175492033739913.395742187955989;
+	Mon, 11 Aug 2025 06:52:17 -0700 (PDT)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+Subject: Re: [PATCH v2 05/12] media: rkvdec: Add per variant configuration
+Date: Mon, 11 Aug 2025 09:52:15 -0400
+Message-ID: <5911981.DvuYhMxLoT@trenzalore>
+In-Reply-To: <9fbc63d4-a12b-420e-8c99-f2f5fca5a9eb@kernel.org>
+References: <20250808200340.156393-1-detlev.casanova@collabora.com>
+ <20250808200340.156393-6-detlev.casanova@collabora.com>
+ <9fbc63d4-a12b-420e-8c99-f2f5fca5a9eb@kernel.org>
 MIME-Version: 1.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_064855_707153_EEC3C4FD 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20250811_065235_654157_36536B1B 
+X-CRM114-Status: GOOD (  19.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,94 +75,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5521902325590268011=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof,
 
---===============5521902325590268011==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-mWE7/NTeJOJLJAFXEhhw"
+On Monday, 11 August 2025 02:13:04 EDT Krzysztof Kozlowski wrote:
+> On 08/08/2025 22:03, Detlev Casanova wrote:
+> > This is to prepare for adding different variants of the decoder and
+> 
+> Prepare for...
+
+Sounds better indeed.
+
+> > support specific formats and ops.
+> > 
+> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > ---
+> 
+> ...
+> 
+> >  static int rkvdec_init_ctrls(struct rkvdec_ctx *ctx)
+> >  {
+> > 
+> > +	struct rkvdec_config *cfg = ctx->dev->config;
+> > 
+> >  	unsigned int i, nctrls = 0;
+> >  	int ret;
+> > 
+> > -	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++)
+> > -		nctrls += rkvdec_coded_fmts[i].ctrls->num_ctrls;
+> > +	for (i = 0; i < cfg->coded_fmts_num; i++)
+> > +		nctrls += cfg->coded_fmts[i].ctrls->num_ctrls;
+> > 
+> >  	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, nctrls);
+> > 
+> > -	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+> > -		ret = rkvdec_add_ctrls(ctx, 
+rkvdec_coded_fmts[i].ctrls);
+> > +	for (i = 0; i < cfg->coded_fmts_num; i++) {
+> > +		ret = rkvdec_add_ctrls(ctx, cfg->coded_fmts[i].ctrls);
+> > 
+> >  		if (ret)
+> >  		
+> >  			goto err_free_handler;
+> >  	
+> >  	}
+> > 
+> > @@ -1119,8 +1127,13 @@ static void rkvdec_watchdog_func(struct work_struct
+> > *work)> 
+> >  	}
+> >  
+> >  }
+> > 
+> > +const struct rkvdec_config config_rkvdec = {
+> 
+> Why isn't this static?
+> 
+> > +	.coded_fmts = (struct rkvdec_coded_fmt_desc *)rkvdec_coded_fmts,
+> > +	.coded_fmts_num = ARRAY_SIZE(rkvdec_coded_fmts),
+> > +};
+> > +
+> > 
+> >  static const struct of_device_id of_rkvdec_match[] = {
+> > 
+> > -	{ .compatible = "rockchip,rk3399-vdec" },
+> > +	{ .compatible = "rockchip,rk3399-vdec", .data = &config_rkvdec },
+> > 
+> >  	{ /* sentinel */ }
+> >  
+> >  };
+> >  MODULE_DEVICE_TABLE(of, of_rkvdec_match);
+> > 
+> > @@ -1144,6 +1157,9 @@ static int rkvdec_probe(struct platform_device
+> > *pdev)
+> > 
+> >  	mutex_init(&rkvdec->vdev_lock);
+> >  	INIT_DELAYED_WORK(&rkvdec->watchdog_work, rkvdec_watchdog_func);
+> > 
+> > +	rkvdec->config =
+> > +		(struct rkvdec_config *)of_device_get_match_data(rkvdec-
+>dev);
+> 
+> If you need a cast, your code is wrong.
+
+Right, some const/static addition is needed. I'll fix that :)
+
+Detlev.
 
 
---=-mWE7/NTeJOJLJAFXEhhw
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi Sakari,
-
-Le vendredi 04 juillet 2025 =C3=A0 10:54 +0300, Sakari Ailus a =C3=A9crit=
-=C2=A0:
-> pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
-> pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
-> to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
-> pm_runtime_mark_last_busy().
->=20
-> Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> ---
-> The cover letter of the set can be found here
-> <URL:
-> https://lore.kernel.org/linux-pm/20250704075225.3212486-1-sakari.ailus@li=
-nux.i
-> ntel.com>.
->=20
-> In brief, this patch depends on PM runtime patches adding marking the las=
-t
-> busy timestamp in autosuspend related functions. The patches are here, on
-> rc2:
->=20
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 git://git.kernel.org/pub/scm/l=
-inux/kernel/git/rafael/linux-pm.git \
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 pm-runtime-6.17-rc1
->=20
-> =C2=A0drivers/staging/media/rkvdec/rkvdec.c | 1 -
-
-This driver was de-stage during 6.17, I will port it, no action required.
-
-Nicolas
-
-> =C2=A01 file changed, 1 deletion(-)
->=20
-> diff --git a/drivers/staging/media/rkvdec/rkvdec.c
-> b/drivers/staging/media/rkvdec/rkvdec.c
-> index d707088ec0dc..445f7c92eee3 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec.c
-> @@ -765,7 +765,6 @@ static void rkvdec_job_finish(struct rkvdec_ctx *ctx,
-> =C2=A0{
-> =C2=A0	struct rkvdec_dev *rkvdec =3D ctx->dev;
-> =C2=A0
-> -	pm_runtime_mark_last_busy(rkvdec->dev);
-> =C2=A0	pm_runtime_put_autosuspend(rkvdec->dev);
-> =C2=A0	rkvdec_job_finish_no_pm(ctx, result);
-> =C2=A0}
-
---=-mWE7/NTeJOJLJAFXEhhw
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaJn0wgAKCRDZQZRRKWBy
-9DLPAQCqPt0lXZfnbdVvPntu1sqxcp/kkdwbjcqoHkgLxA145AD+NS/iRHqsrNt9
-OFMoxaM4XZImGCGuuAnhiF3H/IWu/AM=
-=SIv5
------END PGP SIGNATURE-----
-
---=-mWE7/NTeJOJLJAFXEhhw--
 
 
---===============5521902325590268011==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5521902325590268011==--
-
