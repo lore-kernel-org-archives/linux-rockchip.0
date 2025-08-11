@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80BFACCD193
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACD71CCD1AF
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:59:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tQfvhL3gOPmH9xht2fxunRy9/yXI7WOjssAtEoE0Rco=; b=MEblcdcC6+5pz8
-	VDx68SA9utLrH1wlPOWVkAjvmA+oqdSYcMNYzLQoWocxuxF1eHBUA7WuVkAfN4myjjQo9WxPde17c
-	EXAIZIF98Aq6iPl9kN6XgkcmqtpWFsihoo0l9yFjNkhAqFNpjlzdHqDN5pWSZ8dU88F3zoFsENE8z
-	flcjMGWrhuqtJrtbHPBFdj+vMRpbYqneI8iXoimwESheO3V6mPdag4JjMODf7RblUWWXsP9nusEmb
-	u/XgLxl3jdNDYj1EgQDT56LX04acFbSFyMm9GAths0mwwmh0hfJ9ihmkcgkGBUFCmeAvtaySaijfV
-	Gzhp2plHnYUv1fgHM++A==;
+	List-Owner; bh=Z3kKsS6sIp5qZKoLckYa2t4OVkEAkfTrP4JQrD0gdis=; b=U9i0uNMRsBsGbI
+	F9PpEckwpVBZZVMSoYQl23OKfLl1U501/J6+2VNRD8hZCjMizTe5xT9xTh84do14T+Vmk3ARJgWpb
+	Vk5acV6Y6fTyyYJ8jmDK99jDl4SNwVbDrtKJe/UHBYWlblBZjAAc2wsCyWh5U+NegBYChprSyG26q
+	tVLEJ8T6/W5McbHgYF5jMkp0srFWM5GEpIdhX/2+qwtrH4vwgyzuWZeHlRuFHvUPnP8WvUq1fv48o
+	xF3GSeKDUovd9xfY7Jue92ULKAr71sRDjFsslSaGHVDUWtwe9z0paUAWXdzGORo42IF1JtrdgvcxJ
+	t7uHH6h6hkIIc400KxoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoYA-0000000DCWn-0tvZ;
-	Mon, 20 Oct 2025 11:59:42 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vAoY9-0000000DCW2-31OI;
+	Mon, 20 Oct 2025 11:59:41 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUI8-00000008AYL-2dCD;
+	id 1ulUI7-00000008AWW-0GlZ;
 	Mon, 11 Aug 2025 15:18:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5C32F6143B;
-	Mon, 11 Aug 2025 15:18:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 41308C4AF10;
+	by sea.source.kernel.org (Postfix) with ESMTP id E92AC459EC;
+	Mon, 11 Aug 2025 15:18:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 2A805C4CEFC;
 	Mon, 11 Aug 2025 15:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1754925505;
-	bh=J0gMA2rTgX9RR4Jzc/dNgMlT2l0jGAgJZes96XdKuOI=;
+	bh=TdaQSq8mvIeYrNZnjdupEaO4ED3EgZ0Ms8W6bgzfct0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=dExTdR0Y5GcsQXGL/wL9dJKL/rQx5p+0pfy5nbyXCoD/mMLSlUn8gXrk3WBR8ErX5
-	 ItcfjKGMMTttPucAFJwPnKEhoIiThrKFLlSXRWgJHErXccAT6Mk8eTBwojt+eF13Lc
-	 SZnLG5f7ZgcCQx1viQLhGUqnNfq8lHJgQX3l1nNyHXy/bQnrFYJ1SFH1xLgGcAyvrS
-	 eqfPQberiVqhKf+Aq+uUpmzhTvJxSRNcMgWAhnRKEA8OEBx4tPdLjbFQL5u4R4LKcR
-	 /bpoUrPmp3tBdgVEu6A5kJQ8pATJcUwdjXHdZZI8j6nwOGeLXaYJNjQXiG7Y0rZ7cx
-	 HamfrqEKepktQ==
+	b=LnqqTvDalOStN3eWhPvsFIj0dHDBnnBxTeyPZlz1jBgoOxDPmsKpnYji5IAXr0DIW
+	 Q5G8ZsfG3kvUbL5HWfRXbcjTza8++Mggep0+I12ldkzovgbBoL6SD3n3e1u65QJFv5
+	 RD+GV9B5eWmLEyB/JChnPMBIkr5ScHjHkXP0C+Z3/jhGjBY+nc+jByMSjiRe2WlOZz
+	 6CietEbHp//Mjr1WLJPdxcwDStKM3MyYTc17+h+qYl7/Y7tdAAKdnCFYByAFJDaUXz
+	 yHm1f9m3Umk0lP0OXKrxHeen7wUlghgUR0n85HUK1XzBqO41RRNSZ3CJoAGIx6kXX5
+	 mIVs7hu4d++vA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 31CA1CA0EC1;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1BA60C88CB9;
 	Mon, 11 Aug 2025 15:18:25 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:17:55 -0400
-Subject: [PATCH 003/114] clk: fixed-factor: add determine_rate() ops
+Date: Mon, 11 Aug 2025 11:17:54 -0400
+Subject: [PATCH 002/114] clk: at91: peripheral: convert from round_rate()
+ to determine_rate()
 MIME-Version: 1.0
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-3-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-2-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -114,16 +115,19 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925497; l=2113;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925497; l=3764;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=7PH3+pRyHnddbrDJQ0bcAhmIGm7Oj/VBAAy/Pv37KC4=;
- b=tS3orDL5b8BLWJwAHCJG5hkf3pPUlBoJuOUtFcgrqztBsvVHA38h4r+XCr0UUBqnTPgRGg5zs
- KvJ5edeP10qBpAwZTanj1INXR/2jf4h8jBNcWr8hLUfuKtLDj0K6tTu
+ bh=zyirca0yClNWaEsyA4yRgSm6IFANUNOLKtijue+IPEE=;
+ b=xHxpbiLsoHOJfs6e9F9K2fRn+qjwW0kTAOujiN6+xnAyQ/u85/MgOQbCfuxXUqagPg+DhuFsi
+ tjlaNX3CkRnDuZ/BhKkfkxulkwqkrNMislS7D8M4mmchajF/BU1U3yg
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
  auth_id=472
 X-Original-From: Brian Masney <bmasney@redhat.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250811_081827_159429_36D622DF 
+X-CRM114-Status: GOOD (  20.02  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:05 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -144,62 +148,113 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Brian Masney <bmasney@redhat.com>
 
-The round_rate() clk ops is deprecated, and determine_rate() should be
-used instead. We can't just simply convert this driver over initially
-since other drivers depend on this. So let's go ahead and add a
-determine_rate() clk ops. Once all of the drivers have been converted,
-then the round_rate() clk ops can be dropped.
+The round_rate() clk ops is deprecated, so migrate this driver from
+round_rate() to determine_rate() using the Coccinelle semantic patch
+on the cover letter of this series.
+
+This driver already has a clk_sam9x5_peripheral_determine_rate()
+implementation, however it can change the parent rate. The existing
+round rate does not have this functionality. I could add a check
+for CLK_SET_RATE_PARENT, and combine the two functions, however there
+are some other minor differences in the two implementations. I don't
+have access to this particular hardware. I believe that they could
+be combined, however it would need to be tested on real hardware.
+So, let's play it safe and convert the existing round rate
+implementation to ensure that the driver keeps the same functionality
+as before.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/clk-fixed-factor.c | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
+ drivers/clk/at91/clk-peripheral.c | 41 +++++++++++++++++++++++----------------
+ 1 file changed, 24 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/clk/clk-fixed-factor.c b/drivers/clk/clk-fixed-factor.c
-index e62ae8794d445f685156276d5135448f340fca3f..79b9a8c57d4b84be990955d8bc3159b818f38d50 100644
---- a/drivers/clk/clk-fixed-factor.c
-+++ b/drivers/clk/clk-fixed-factor.c
-@@ -30,6 +30,23 @@ static unsigned long clk_factor_recalc_rate(struct clk_hw *hw,
- 	return (unsigned long)rate;
+diff --git a/drivers/clk/at91/clk-peripheral.c b/drivers/clk/at91/clk-peripheral.c
+index 629f050a855aaebfd1a03ff87c2b016cd2284a5a..e700f40fd87f9327365f250366f7f7bde01f5987 100644
+--- a/drivers/clk/at91/clk-peripheral.c
++++ b/drivers/clk/at91/clk-peripheral.c
+@@ -335,50 +335,57 @@ static int clk_sam9x5_peripheral_determine_rate(struct clk_hw *hw,
+ 	return 0;
  }
  
-+static int clk_factor_determine_rate(struct clk_hw *hw,
-+				     struct clk_rate_request *req)
-+{
-+	struct clk_fixed_factor *fix = to_clk_fixed_factor(hw);
+-static long clk_sam9x5_peripheral_round_rate(struct clk_hw *hw,
+-					     unsigned long rate,
+-					     unsigned long *parent_rate)
++static int clk_sam9x5_peripheral_no_parent_determine_rate(struct clk_hw *hw,
++							  struct clk_rate_request *req)
+ {
+ 	int shift = 0;
+ 	unsigned long best_rate;
+ 	unsigned long best_diff;
+-	unsigned long cur_rate = *parent_rate;
++	unsigned long cur_rate = req->best_parent_rate;
+ 	unsigned long cur_diff;
+ 	struct clk_sam9x5_peripheral *periph = to_clk_sam9x5_peripheral(hw);
+ 
+-	if (periph->id < PERIPHERAL_ID_MIN || !periph->range.max)
+-		return *parent_rate;
++	if (periph->id < PERIPHERAL_ID_MIN || !periph->range.max) {
++		req->rate = req->best_parent_rate;
 +
-+	if (clk_hw_get_flags(hw) & CLK_SET_RATE_PARENT) {
-+		unsigned long best_parent;
-+
-+		best_parent = (req->rate / fix->mult) * fix->div;
-+		req->best_parent_rate = clk_hw_round_rate(clk_hw_get_parent(hw), best_parent);
++		return 0;
 +	}
+ 
+ 	if (periph->range.max) {
+ 		for (; shift <= PERIPHERAL_MAX_SHIFT; shift++) {
+-			cur_rate = *parent_rate >> shift;
++			cur_rate = req->best_parent_rate >> shift;
+ 			if (cur_rate <= periph->range.max)
+ 				break;
+ 		}
+ 	}
+ 
+-	if (rate >= cur_rate)
+-		return cur_rate;
++	if (req->rate >= cur_rate) {
++		req->rate = cur_rate;
 +
-+	req->rate = (req->best_parent_rate / fix->div) * fix->mult;
++		return 0;
++	}
+ 
+-	best_diff = cur_rate - rate;
++	best_diff = cur_rate - req->rate;
+ 	best_rate = cur_rate;
+ 	for (; shift <= PERIPHERAL_MAX_SHIFT; shift++) {
+-		cur_rate = *parent_rate >> shift;
+-		if (cur_rate < rate)
+-			cur_diff = rate - cur_rate;
++		cur_rate = req->best_parent_rate >> shift;
++		if (cur_rate < req->rate)
++			cur_diff = req->rate - cur_rate;
+ 		else
+-			cur_diff = cur_rate - rate;
++			cur_diff = cur_rate - req->rate;
+ 
+ 		if (cur_diff < best_diff) {
+ 			best_diff = cur_diff;
+ 			best_rate = cur_rate;
+ 		}
+ 
+-		if (!best_diff || cur_rate < rate)
++		if (!best_diff || cur_rate < req->rate)
+ 			break;
+ 	}
+ 
+-	return best_rate;
++	req->rate = best_rate;
 +
 +	return 0;
-+}
-+
- static long clk_factor_round_rate(struct clk_hw *hw, unsigned long rate,
- 				unsigned long *prate)
- {
-@@ -50,7 +67,7 @@ static int clk_factor_set_rate(struct clk_hw *hw, unsigned long rate,
- {
- 	/*
- 	 * We must report success but we can do so unconditionally because
--	 * clk_factor_round_rate returns values that ensure this call is a
-+	 * clk_factor_determine_rate returns values that ensure this call is a
- 	 * nop.
- 	 */
- 
-@@ -69,6 +86,7 @@ static unsigned long clk_factor_recalc_accuracy(struct clk_hw *hw,
  }
  
- const struct clk_ops clk_fixed_factor_ops = {
-+	.determine_rate = clk_factor_determine_rate,
- 	.round_rate = clk_factor_round_rate,
- 	.set_rate = clk_factor_set_rate,
- 	.recalc_rate = clk_factor_recalc_rate,
+ static int clk_sam9x5_peripheral_set_rate(struct clk_hw *hw,
+@@ -430,7 +437,7 @@ static const struct clk_ops sam9x5_peripheral_ops = {
+ 	.disable = clk_sam9x5_peripheral_disable,
+ 	.is_enabled = clk_sam9x5_peripheral_is_enabled,
+ 	.recalc_rate = clk_sam9x5_peripheral_recalc_rate,
+-	.round_rate = clk_sam9x5_peripheral_round_rate,
++	.determine_rate = clk_sam9x5_peripheral_no_parent_determine_rate,
+ 	.set_rate = clk_sam9x5_peripheral_set_rate,
+ 	.save_context = clk_sam9x5_peripheral_save_context,
+ 	.restore_context = clk_sam9x5_peripheral_restore_context,
 
 -- 
 2.50.1
