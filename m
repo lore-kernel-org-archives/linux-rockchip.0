@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 030B9CCD1A7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 061B9CCD193
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:01:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MaTQxaHosvOl901iM7/5sf7sq87TKl9Bt2ULXUMfofE=; b=Yt9X+x3aZfvVih
-	7ZZ5iwbzvcpffWNWzA/QGfA+04LMUbbbmsmrv+EU95TVWSSFiji7y31UL7dKaOYt5XbDfno/ok1LN
-	etVqOJBU+NN6Rk1G5poYQfpTTVrhFD0nRXpAUsWjsQ+zmwmC6ZuOsSu9T9DR6NE2Pim5iNxlu7BgD
-	8EeYYlybfVeslOkerMYPbGt8phN7gf4/qWJ23xbH14dkPnyDZtUcE8AYnKpQFJWxderRZ6+wwvFCa
-	2Ia7xRdpxX7d/KPKnX2fqaCZZIu+oIGHCyPmTK8jkjcliErVaKXOuV10UBZOCBfb2xQ4HIafUMVHd
-	K59JzsaxmshEWi5zIOVA==;
+	List-Owner; bh=15nVFbImbJDFYXL1XsNP/qK5B1+uxtwdcGblf3ae8jA=; b=phVX16zZUvrHUE
+	iW31qitgcMEjRGZ9/8/04aAHnZYGk2LPoLPYetowMD1sqOuW7KQagk7ZGGFp9tG1lATsL9HrCm4pN
+	ezlr0e+TUbUDRiBD+A6Uxeb7cYfbGfEGYkDgD+DH1tOhxUIIR2IWLGE2RWtS5AsbX/1zxydp0lZcz
+	0zU75IIrOO+OOevBQM5YSyZJk48Xc6f3UKC1ssS99ZeZIexiUH57T82fVTzxvTYuhCr6RHnWswFzb
+	2te/KMg/NCAOZ00juBPt1joJSD25bhAGptdYjWEf/+oO1Skror0h5vv68tJf7EjmjtyFCl7xqO6lW
+	mvnTEbc8RAvQ7L9fLWFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoZS-0000000DEGI-3x88;
-	Mon, 20 Oct 2025 12:01:02 +0000
+	id 1vAoZT-0000000DEGt-0q3U;
+	Mon, 20 Oct 2025 12:01:03 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIJ-00000008AYp-3tRs;
-	Mon, 11 Aug 2025 15:18:40 +0000
+	id 1ulUIL-00000008AYp-2MHi;
+	Mon, 11 Aug 2025 15:18:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E1A4F668C4;
-	Mon, 11 Aug 2025 15:18:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 77A3AC4DE0B;
+	by tor.source.kernel.org (Postfix) with ESMTP id 18051668CE;
+	Mon, 11 Aug 2025 15:18:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 40B4EC4DDEF;
 	Mon, 11 Aug 2025 15:18:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1754925510;
-	bh=nNd8nWnbBfSWCuY5v6Jqah5ZuPH8MeROmp09ygHhFT0=;
+	bh=ywCyF0Fa0lC0l5tJthglyiv60OzMev7/HUUbrLMS3sw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=nM+l/Pt6CpTl5ekww5CPutDxjwAIDT6ow3SApaCRzBOXQPZTk+8YwRu3QHrWczV+n
-	 v8SEcG6CDYhmQEvMuWm0gFkHswCrqdohb0Sr+ancbgaGKeVMBiBdbLtM+2yJDWVGD4
-	 /jG8GlI7877ye+9Dh8di3CRg+nHKoaUsJ7o8iAeIy86eikAC3/VLxVmUGqmwx8QVlV
-	 ldqtp4NVgQaAOim3aooPiGg17NnKnotQ/Ik86nAkFtG4UNyDD47Uz0xXgftozRdsYm
-	 ANqbEZDpbPqan5LsZstdfI8svp5ecqpwAJJbXt2f9JrSAlAOhu6qb6Tgzf2DbRUTvK
-	 EOJOBdR/k4bRQ==
+	b=PN/I5lZrQKpJHta8Yq7isPOBgKDXGI3BrfIr9j59kQJ6RRSQgebjB3WrBSZR4RDIE
+	 FEZ0Rna2SfhWuz/tGHhg8lKDN0pPKzf3Krii/cAII9qAKJwUk3OlRyWJpQYKdI4k8Z
+	 bN8EPrJ/dIiyFRDV6yUbwMtafSkmIgc0LMNGXYO9nawzz1zYDXK/YEL+xniZ23RkgX
+	 jJ+GlXX0/WeSr+bj2rvW3zofRG+j0OQMrvMTASZX8K8TFov8BLcdW//wo/8C2xoWiR
+	 IR8WXFEUwq+RblI4UOonh9y4UMcBTpXoMeCSFbAmBod7NdlV3FyonKNuE+iecF6O3T
+	 Gjc2IHL5sgDaA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D349CA0ED1;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30B74C87FDA;
 	Mon, 11 Aug 2025 15:18:30 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:18:42 -0400
-Subject: [PATCH 050/114] clk: spacemit: ccu_mix: convert from round_rate()
+Date: Mon, 11 Aug 2025 11:18:41 -0400
+Subject: [PATCH 049/114] clk: spacemit: ccu_ddn: convert from round_rate()
  to determine_rate()
 MIME-Version: 1.0
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-50-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-49-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -115,11 +115,11 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1744;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1586;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=4hdyJ1mvA5b4yc2QdieijDDxAcJJ/+4zhEd431sykbw=;
- b=6ODQ5IcqI9WyCjasxtM1xkk/JmIS3nwvhlKiVNiAgL5GgGXqsyE1dIXDVSGrQed73P5R9S/fT
- EkByeRZdDptAGUDuFBG7Tj0gswr0Fhnb0VliQ3N2hTZpxNF7MVzVKRq
+ bh=Q2TuaoklcZpxwcaXojiI5t4NGNrEeEdgmVBgrmJhVoo=;
+ b=PJESzC7zwJTPxAWi59umkEjGox9k8SghWrpUziPgrvvgJLmU6njNduTEeZHXqgqKzmL3XJOhM
+ H+0tDIV6owLA/chXmcJqQ20NX5XfXbHNP0+91x81NinnEilxb8LnTjt
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
@@ -151,46 +151,40 @@ on the cover letter of this series.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/spacemit/ccu_mix.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ drivers/clk/spacemit/ccu_ddn.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/spacemit/ccu_mix.c b/drivers/clk/spacemit/ccu_mix.c
-index 9b852aa61f78aed5256bfe6fc3b01932d6db6256..7b7990875372314dce131295af7f40267d0a127a 100644
---- a/drivers/clk/spacemit/ccu_mix.c
-+++ b/drivers/clk/spacemit/ccu_mix.c
-@@ -80,10 +80,12 @@ static int ccu_mix_trigger_fc(struct clk_hw *hw)
- 					       MIX_FC_TIMEOUT_US);
+diff --git a/drivers/clk/spacemit/ccu_ddn.c b/drivers/clk/spacemit/ccu_ddn.c
+index be311b045698e95a688a35858a8ac1bcfbffd2c7..02b68ea84db9bd3ecdde41f8013c48263edbd917 100644
+--- a/drivers/clk/spacemit/ccu_ddn.c
++++ b/drivers/clk/spacemit/ccu_ddn.c
+@@ -39,13 +39,16 @@ static unsigned long ccu_ddn_calc_best_rate(struct ccu_ddn *ddn,
+ 	return ccu_ddn_calc_rate(prate, *num, *den);
  }
  
--static long ccu_factor_round_rate(struct clk_hw *hw, unsigned long rate,
--				  unsigned long *prate)
-+static int ccu_factor_determine_rate(struct clk_hw *hw,
-+				     struct clk_rate_request *req)
+-static long ccu_ddn_round_rate(struct clk_hw *hw, unsigned long rate,
+-			       unsigned long *prate)
++static int ccu_ddn_determine_rate(struct clk_hw *hw,
++				  struct clk_rate_request *req)
  {
--	return ccu_factor_recalc_rate(hw, *prate);
-+	req->rate = ccu_factor_recalc_rate(hw, req->best_parent_rate);
+ 	struct ccu_ddn *ddn = hw_to_ccu_ddn(hw);
+ 	unsigned long num, den;
+ 
+-	return ccu_ddn_calc_best_rate(ddn, rate, *prate, &num, &den);
++	req->rate = ccu_ddn_calc_best_rate(ddn, req->rate,
++					   req->best_parent_rate, &num, &den);
 +
 +	return 0;
  }
  
- static int ccu_factor_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -198,7 +200,7 @@ const struct clk_ops spacemit_ccu_gate_ops = {
- };
+ static unsigned long ccu_ddn_recalc_rate(struct clk_hw *hw, unsigned long prate)
+@@ -78,6 +81,6 @@ static int ccu_ddn_set_rate(struct clk_hw *hw, unsigned long rate,
  
- const struct clk_ops spacemit_ccu_factor_ops = {
--	.round_rate	= ccu_factor_round_rate,
-+	.determine_rate = ccu_factor_determine_rate,
- 	.recalc_rate	= ccu_factor_recalc_rate,
- 	.set_rate	= ccu_factor_set_rate,
- };
-@@ -220,7 +222,7 @@ const struct clk_ops spacemit_ccu_factor_gate_ops = {
- 	.enable		= ccu_gate_enable,
- 	.is_enabled	= ccu_gate_is_enabled,
- 
--	.round_rate	= ccu_factor_round_rate,
-+	.determine_rate = ccu_factor_determine_rate,
- 	.recalc_rate	= ccu_factor_recalc_rate,
- 	.set_rate	= ccu_factor_set_rate,
+ const struct clk_ops spacemit_ccu_ddn_ops = {
+ 	.recalc_rate	= ccu_ddn_recalc_rate,
+-	.round_rate	= ccu_ddn_round_rate,
++	.determine_rate = ccu_ddn_determine_rate,
+ 	.set_rate	= ccu_ddn_set_rate,
  };
 
 -- 
