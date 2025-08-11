@@ -4,60 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97914CA0EDA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 16:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02BF5CA0ED1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 17:03:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C6BzkdNQ6JQ5nzeM5cqhfzLPeDCSW2GBjYogV/UZmBA=; b=PvKKa7LbPa8OGzz46tCEy2SDeZ
-	oEasN9BZIm+NR0nyivny4u5/24W0be1GMTDBtKpqV3p5isVB32x2e5o0fmdtSjxIweitXXMfn8Jw9
-	25XleqRDQHV70/prQa4NYUA8dNtuULBLIi4yN/SyyrUYUWs5Sfc8bCph+OMN970TaB8R+zLLOS//e
-	2Dxtu/0tHy88HKYAZHwUGs/mc4FWT20fag6oEQZkxtwCurC/hdJiymJQwbE67hKcMoJJmhzoaFAhB
-	if+1Sfu2Eeuyr4XGGLR6hXMtELA03hqSFzZNvF460ZTywYqGyP5iXlnhFZF4y31g7tdoSkwwDS1ox
-	qZX6xF8w==;
+	bh=FjDTJBx268fYnINTAYLcMF/BrgGiV5RiR9Hl9FO97co=; b=bbygDfY/EimM/KDBvxjpa2B/+P
+	6aEbj2T6Yiaq5wOOnXmFIZVeeTJ9xPuC3AJDZiaPKMnupSX1nDNGOMqOXy7tEguep26ubFRsNS8QF
+	lYFCPxfdGszLFVyzS7xfMqOtNe0W4lzRo3gu7bOzli1idmELWISh+PH9zgZV7AO9f0YgoOfCPXz+X
+	By6LD2igko8WM/z55OyjLE8XUNh/s+BGXw/MQHBjmOpVrZ0lhD7+pWjOMyESPMgawvdMsnSWd7paC
+	LEdZ4d+SYMv0mwOMYJg08E8k9BwVdLyiwuI1XJVwlR/zU6BAqyc6uxMG8np1U0dFw/la2s2FS9L78
+	PazaNJiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulVaz-00000008Rm8-47NR;
-	Mon, 11 Aug 2025 16:42:01 +0000
+	id 1ulVve-00000008UsE-3eOi;
+	Mon, 11 Aug 2025 17:03:22 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulTdn-000000083EC-0B4l
-	for linux-rockchip@lists.infradead.org;
-	Mon, 11 Aug 2025 14:36:48 +0000
+	id 1ulToo-000000085Zz-3Nsr;
+	Mon, 11 Aug 2025 14:48:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754923005;
-	bh=76iwY8ZuIgwxFmVF2Z9+bPEyNiUKqcaNH5/RH6UKYug=;
+	s=mail; t=1754923689;
+	bh=2ttNFHfmj4mQE2B7+cFN9UQXOG4qR8BI6Y3f2gvJkYw=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=qejlhNE+RoBfYnA+8m4TKo3/rc7kBrqMUfSLeIPFYyd1fCE8lE9h4NBYPa/50TJQw
-	 VOlnrcN9BITvUCmUTZpK84IgXf291DpJkpf3c1JOMPWAn9PBO0kKjhXLIFym9ftIM6
-	 556f5yXc411dNnqIAL1jyPm1zOl/Fb2GpS9GEmYvCjEKlnfHAo/5Z8FM1+OpszE7G/
-	 J9P43a0X1ZwI7NdK6z3oY8ZRIZV/2SJnEUdUm9DdhoJJL4k7naeVwEs1KwwAwgughg
-	 lEjRteox28w6FlU6UgNrFhMHVYyNYxAMEnCQOjQ9d3jmSWypHkvY+dqFBOlyjT7edy
-	 jkOk+vp2E7H6w==
+	b=gABWQOEkM52WLAnQuEi3mba8WkBHcmbi3GuxKe3B3aclcUGyMpyYa5PwKKjscmOeP
+	 3+byGipQrdmOj724lMOW3pXGmWeYmLdbDLZQabzSaNX1GnawmF0X0OlopyOxlOf4St
+	 KyNcRgBSYOJ6Smk7p5oBYMN0cxONcXINdyE+t5MLcVkpNexZy18o/JjFojWS8zrUfj
+	 0YK7OtlXS7CqhEXXnfFrPj6Fe7dkgfjFbBCSgItka0z7Vkks7lHsw3GxwLF2ixWX8v
+	 GpUwUpQU1RaC4AMFoIL3NlaAWEHJQ2/AdTi3zD73f8cm3pnmbpuHVKLECIwXhfrFPz
+	 YxtLTRnw43/Kw==
 Received: from [IPv6:2606:6d00:11:5a76::c41] (unknown [IPv6:2606:6d00:11:5a76::c41])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4689417E0C87;
-	Mon, 11 Aug 2025 16:36:44 +0200 (CEST)
-Message-ID: <ab8d8470e9bcc9532d48ccd3287cf242e790dcad.camel@collabora.com>
-Subject: Re: [PATCH v3 62/76] media: hantro: Access v4l2_fh from
- file->private_data
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6064B17E1014;
+	Mon, 11 Aug 2025 16:48:08 +0200 (CEST)
+Message-ID: <1adf4bb9717def1b98d75344b8b888e8d1a8526a.camel@collabora.com>
+Subject: Re: [PATCH v2] media: rkvdec: Remove redundant
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
-	linux-media@vger.kernel.org
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Hans Verkuil	
- <hans@jjverkuil.nl>, Mauro Carvalho Chehab <mchehab@kernel.org>, Benjamin
- Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, 	linux-rockchip@lists.infradead.org
-Date: Mon, 11 Aug 2025 10:36:43 -0400
-In-Reply-To: <20250810013100.29776-63-laurent.pinchart+renesas@ideasonboard.com>
-References: <20250810013100.29776-1-laurent.pinchart+renesas@ideasonboard.com>
-	 <20250810013100.29776-63-laurent.pinchart+renesas@ideasonboard.com>
+To: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Detlev Casanova	
+ <detlev.casanova@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sakari
+ Ailus	 <sakari.ailus@linux.intel.com>
+Date: Mon, 11 Aug 2025 10:48:07 -0400
+In-Reply-To: <1894144.QZUTf85G27@diego>
+References: <20250811-rkvdec-redundant-pm-rebase-v2-1-90c47213fbbe@collabora.com>
+	 <1894144.QZUTf85G27@diego>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
  oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
@@ -85,8 +82,8 @@ Organization: Collabora Canada
 User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_073647_229863_967C873F 
-X-CRM114-Status: GOOD (  16.78  )
+X-CRM114-CacheID: sfid-20250811_074811_002994_1519E726 
+X-CRM114-Status: GOOD (  18.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,198 +95,113 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7455004553148607860=="
+Content-Type: multipart/mixed; boundary="===============0886486089400111047=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============7455004553148607860==
+--===============0886486089400111047==
 Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-OXBfOomi8BZGUmxwnrx0"
+	boundary="=-uaMjjumv7IKMmvZZiIOJ"
 
 
---=-OXBfOomi8BZGUmxwnrx0
+--=-uaMjjumv7IKMmvZZiIOJ
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le dimanche 10 ao=C3=BBt 2025 =C3=A0 04:30 +0300, Laurent Pinchart a =C3=A9=
-crit=C2=A0:
-> To prepare for the introduction of video_device_state as second argument
-> of the v4l2_ioctl_ops handler, access the v4l2_fh from
-> file->private_data instead of using void *priv.
+Le lundi 11 ao=C3=BBt 2025 =C3=A0 16:37 +0200, Heiko St=C3=BCbner a =C3=A9c=
+rit=C2=A0:
+> Am Montag, 11. August 2025, 16:03:45 Mitteleurop=C3=A4ische Sommerzeit sc=
+hrieb
+> Nicolas Dufresne:
+> > From: Sakari Ailus <sakari.ailus@linux.intel.com>
+> >=20
+> > pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
+> > pm_runtime_autosuspend() and pm_request_autosuspend() now include a cal=
+l
+> > to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call =
+to
+> > pm_runtime_mark_last_busy().
+> >=20
+> > Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> > Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 >=20
-> The file->private_data is initialized to point to the v4l2_fh
-> by the usage of v4l2_fh_init() in the v4l2_file_operations.open()
-> handler.
+> verif=C3=ADed the (new) definition of=C2=A0 pm_runtime_put_autosuspend()
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 >=20
-> Signed-off-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.co=
-m>
-> Reviewed-by: Paul Kocialkowski <paulk@sys-base.io>
+> But the subject could use some work, I only got
+> 	"[PATCH v2] media: rkvdec: Remove redundant"
 
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
-
-> ---
-> Changes since v1:
+Thanks for catching this, good thing I posted the V2 here, I broke it while
+porting.
 >=20
-> - Update file-to-ctx macro due to removal of fh-to-ctx macro
-> ---
-> =C2=A0drivers/media/platform/verisilicon/hantro.h=C2=A0=C2=A0 |=C2=A0 7 +=
------
-> =C2=A0.../media/platform/verisilicon/hantro_v4l2.c=C2=A0 | 22 +++++++++--=
---------
-> =C2=A02 files changed, 12 insertions(+), 17 deletions(-)
+> so maybe make that
+> "media: rkvdec: Remove redundant pm_runtime_mark_last_busy"
+
+Will set it back to its original name:
+
+	media: rkvdec: Remove redundant pm_runtime_mark_last_busy() calls
+
+I'm missing a link to the original too.
+
+Nicolas
+
 >=20
-> diff --git a/drivers/media/platform/verisilicon/hantro.h
-> b/drivers/media/platform/verisilicon/hantro.h
-> index 5b85c8a44706..e0fdc4535b2d 100644
-> --- a/drivers/media/platform/verisilicon/hantro.h
-> +++ b/drivers/media/platform/verisilicon/hantro.h
-> @@ -382,14 +382,9 @@ extern int hantro_debug;
-> =C2=A0	pr_err("%s:%d: " fmt, __func__, __LINE__, ##args)
-> =C2=A0
-> =C2=A0/* Structure access helpers. */
-> -static __always_inline struct hantro_ctx *fh_to_ctx(struct v4l2_fh *fh)
-> -{
-> -	return container_of(fh, struct hantro_ctx, fh);
-> -}
-> -
-> =C2=A0static __always_inline struct hantro_ctx *file_to_ctx(struct file *=
-filp)
-> =C2=A0{
-> -	return fh_to_ctx(file_to_v4l2_fh(filp));
-> +	return container_of(file_to_v4l2_fh(filp), struct hantro_ctx, fh);
-> =C2=A0}
-> =C2=A0
-> =C2=A0/* Register accessors. */
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> index 7c3515cf7d64..6bcd892e7bb4 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> @@ -185,7 +185,7 @@ static int vidioc_querycap(struct file *file, void *p=
-riv,
-> =C2=A0static int vidioc_enum_framesizes(struct file *file, void *priv,
-> =C2=A0				=C2=A0 struct v4l2_frmsizeenum *fsize)
-> =C2=A0{
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
-> =C2=A0	const struct hantro_fmt *fmt;
-> =C2=A0
-> =C2=A0	fmt =3D hantro_find_format(ctx, fsize->pixel_format);
-> @@ -217,7 +217,7 @@ static int vidioc_enum_fmt(struct file *file, void *p=
-riv,
-> =C2=A0			=C2=A0=C2=A0 struct v4l2_fmtdesc *f, bool capture)
-> =C2=A0
-> =C2=A0{
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
-> =C2=A0	const struct hantro_fmt *fmt, *formats;
-> =C2=A0	unsigned int num_fmts, i, j =3D 0;
-> =C2=A0	bool skip_mode_none, enum_all_formats;
-> @@ -297,7 +297,7 @@ static int vidioc_g_fmt_out_mplane(struct file *file,=
- void
-> *priv,
-> =C2=A0				=C2=A0=C2=A0 struct v4l2_format *f)
-> =C2=A0{
-> =C2=A0	struct v4l2_pix_format_mplane *pix_mp =3D &f->fmt.pix_mp;
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
-> =C2=A0
-> =C2=A0	vpu_debug(4, "f->type =3D %d\n", f->type);
-> =C2=A0
-> @@ -310,7 +310,7 @@ static int vidioc_g_fmt_cap_mplane(struct file *file,=
- void
-> *priv,
-> =C2=A0				=C2=A0=C2=A0 struct v4l2_format *f)
-> =C2=A0{
-> =C2=A0	struct v4l2_pix_format_mplane *pix_mp =3D &f->fmt.pix_mp;
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
-> =C2=A0
-> =C2=A0	vpu_debug(4, "f->type =3D %d\n", f->type);
-> =C2=A0
-> @@ -398,13 +398,13 @@ static int hantro_try_fmt(const struct hantro_ctx *=
-ctx,
-> =C2=A0static int vidioc_try_fmt_cap_mplane(struct file *file, void *priv,
-> =C2=A0				=C2=A0=C2=A0=C2=A0=C2=A0 struct v4l2_format *f)
-> =C2=A0{
-> -	return hantro_try_fmt(fh_to_ctx(priv), &f->fmt.pix_mp, f->type);
-> +	return hantro_try_fmt(file_to_ctx(file), &f->fmt.pix_mp, f->type);
-> =C2=A0}
-> =C2=A0
-> =C2=A0static int vidioc_try_fmt_out_mplane(struct file *file, void *priv,
-> =C2=A0				=C2=A0=C2=A0=C2=A0=C2=A0 struct v4l2_format *f)
-> =C2=A0{
-> -	return hantro_try_fmt(fh_to_ctx(priv), &f->fmt.pix_mp, f->type);
-> +	return hantro_try_fmt(file_to_ctx(file), &f->fmt.pix_mp, f->type);
-> =C2=A0}
-> =C2=A0
-> =C2=A0static void
-> @@ -648,19 +648,19 @@ static int hantro_set_fmt_cap(struct hantro_ctx *ct=
+>=20
+> Heiko
+>=20
+> > ---
+> > Changes since V1:
+> > =C2=A0 - Re-applied since the driver have been moved out of staging
+> > ---
+> > =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.c | 1 -
+> > =C2=A01 file changed, 1 deletion(-)
+> >=20
+> > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> > b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> > index
+> > d707088ec0dc1f6a18b2d168ebdf20b443f2240e..445f7c92eee34f7d6f885bb519d9e=
+b2431
+> > 3da548 100644
+> > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> > @@ -765,7 +765,6 @@ static void rkvdec_job_finish(struct rkvdec_ctx *ct=
 x,
-> =C2=A0static int
-> =C2=A0vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_=
-format *f)
-> =C2=A0{
-> -	return hantro_set_fmt_out(fh_to_ctx(priv), &f->fmt.pix_mp,
-> HANTRO_AUTO_POSTPROC);
-> +	return hantro_set_fmt_out(file_to_ctx(file), &f->fmt.pix_mp,
-> HANTRO_AUTO_POSTPROC);
-> =C2=A0}
-> =C2=A0
-> =C2=A0static int
-> =C2=A0vidioc_s_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_=
-format *f)
-> =C2=A0{
-> -	return hantro_set_fmt_cap(fh_to_ctx(priv), &f->fmt.pix_mp);
-> +	return hantro_set_fmt_cap(file_to_ctx(file), &f->fmt.pix_mp);
-> =C2=A0}
-> =C2=A0
-> =C2=A0static int vidioc_g_selection(struct file *file, void *priv,
-> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct v4l2_selection *sel)
-> =C2=A0{
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
-> =C2=A0
-> =C2=A0	/* Crop only supported on source. */
-> =C2=A0	if (!ctx->is_encoder ||
-> @@ -691,7 +691,7 @@ static int vidioc_g_selection(struct file *file, void
-> *priv,
-> =C2=A0static int vidioc_s_selection(struct file *file, void *priv,
-> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct v4l2_selection *sel)
-> =C2=A0{
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
-> =C2=A0	struct v4l2_rect *rect =3D &sel->r;
-> =C2=A0	struct vb2_queue *vq;
-> =C2=A0
-> @@ -738,7 +738,7 @@ static const struct v4l2_event hantro_eos_event =3D {
-> =C2=A0static int vidioc_encoder_cmd(struct file *file, void *priv,
-> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct v4l2_encoder_cmd *ec)
-> =C2=A0{
-> -	struct hantro_ctx *ctx =3D fh_to_ctx(priv);
-> +	struct hantro_ctx *ctx =3D file_to_ctx(file);
-> =C2=A0	int ret;
-> =C2=A0
-> =C2=A0	ret =3D v4l2_m2m_ioctl_try_encoder_cmd(file, priv, ec);
+> > =C2=A0{
+> > =C2=A0	struct rkvdec_dev *rkvdec =3D ctx->dev;
+> > =C2=A0
+> > -	pm_runtime_mark_last_busy(rkvdec->dev);
+> > =C2=A0	pm_runtime_put_autosuspend(rkvdec->dev);
+> > =C2=A0	rkvdec_job_finish_no_pm(ctx, result);
+> > =C2=A0}
+> >=20
+> > ---
+> > base-commit: 8f5ae30d69d7543eee0d70083daf4de8fe15d585
+> > change-id: 20250811-rkvdec-redundant-pm-rebase-ed9b885eeadd
+> >=20
+> > Best regards,
+> >=20
+>=20
+>=20
+>=20
 
---=-OXBfOomi8BZGUmxwnrx0
+--=-uaMjjumv7IKMmvZZiIOJ
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJn/+wAKCRBxUwItrAao
-HEv2AJ0WNpp8XKQutm5U36TvGiQp1CyIvQCgonsta1h8f3lgUQ3RZ/9DLy0ob5E=
-=P6MX
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJoCpwAKCRBxUwItrAao
+HClfAJ0YxRFweEQwk5MRl6kYLms9oInvSQCfXdPl7BQb7JncFkBHCaoRIILSUEc=
+=NYOu
 -----END PGP SIGNATURE-----
 
---=-OXBfOomi8BZGUmxwnrx0--
+--=-uaMjjumv7IKMmvZZiIOJ--
 
 
---===============7455004553148607860==
+--===============0886486089400111047==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -300,5 +212,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7455004553148607860==--
+--===============0886486089400111047==--
 
