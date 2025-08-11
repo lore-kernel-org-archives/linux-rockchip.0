@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B89D4CCD1A5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC76FCCD1AA
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:01:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8s9x6E0kRH1CaLWs/De8rqG3u3hKJvVvbEVK0A84m4M=; b=uZb7nbeCDiNuz7
-	lKDYFvqJE2tJVQaKbQk27n1v9Pu6pI8QYow3dmIdE0qMp7Hi4iOziGnlJob8SO10cj8l+zH0VfPkl
-	mBosR4rO0YAKU58nghkfdyha25KXaQob1q6I8TgCt4/+ILX//5s+icCwy4FXieSNvikSJUUV2Ltgq
-	siZ1hn6nihm8fhCW3N0z0eoXgBAkDaqWstZ42L5V5KITsMIkfmBWF9ZO171KuvzwcExUzEW55/+j7
-	ZnwztqMQOvIfA9IvnxEJdy7GUVmLF9fhpuLhVcJ7Kb3dapKHWj84m5ESJ1RQU0mi525/CQYX4jClC
-	rfYt+Kz8JxJtPfd6S53g==;
+	List-Owner; bh=d/qu0XtZlWNfsg5ys5pGPvOGm9ipq76o7r8b9tMcF+I=; b=D6swwGbu+DZB0o
+	g6ubw6ir3hglwmULn6gWoJk3RTfdOXg7mRSfzp0OKsJg5ggtm9U8eNoXp5NNsXPkTfk/ybX3ccIAC
+	CWmnJ0v74VFMa/FNUgp5icKOn7tSewnHwGMXO86vuOH5oX6fYn50xUvzrSXHmcJAvQV8WsgGVBMa+
+	uwkMDs9E2twyaQxfttKR6WMLJDkrMk83nwoJA6+BGgve2yFfnYR3jFB9CKCDx7za2/5dA4tYPexxd
+	vTtb0uu7WtZ/jmUCHBBAJu7u02gWc0vyFm8hfKMN83EzVwJvOGsO7lIq/x4lBArNpzU8qvmxs7E2y
+	/MdB/d5ZY9oB5ZxaJDiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoaB-0000000DF6W-2Gej;
-	Mon, 20 Oct 2025 12:01:47 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1vAoaC-0000000DF8j-1dLp;
+	Mon, 20 Oct 2025 12:01:48 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIL-00000008Apm-1kun;
-	Mon, 11 Aug 2025 15:18:49 +0000
+	id 1ulUIV-00000008Apz-3R2P;
+	Mon, 11 Aug 2025 15:18:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C7664A5729A;
-	Mon, 11 Aug 2025 15:18:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id CF4D1C4CEFA;
-	Mon, 11 Aug 2025 15:18:34 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B4BC266959;
+	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 42576C4FEE9;
+	Mon, 11 Aug 2025 15:18:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754925515;
-	bh=zw9hWSN5n+Kpeh+wodQ5uxYPF57I3p/MhkkzEzCZbeE=;
+	s=k20201202; t=1754925513;
+	bh=vMxiWtigAF5QvOfYOj7TR7ZTP/9LfXcZLoVmR5ZZDoM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=p0a51hvQGztCYL0wHK44Wc6VmQe5U3b4raQo6ILX1+TmGkv0V5qH8ByiHcRTBlnzL
-	 Uwwer6YhApqIeYZv7APj2adpJlSGy4byALHvdHzGfwDCPrtr8H89miaeryEj44l7EG
-	 RXmdo+1E+1Cga28dzidjJP/aVDoO4T9ZDoH71iwIt9wqOjhgvgokZWsFCUmiNFLQ6x
-	 OF7P+c0yIN5K2XgF/r/qt7mvoF2zfoyjVDsfjCQC9yzXCree6PZ+lFErDAA64P/HID
-	 4HZ2TfHuRtLPb6gIjkhzTLI1wJ8sDrLnxMkC924PJVTfajiXH4/sWSxorEnEIhpVEY
-	 ABpKqSRW+1bJw==
+	b=HWeAtLxBm8VoK10I+pWp09wvv8KAbCMbRioY7CFkcg+yQuoNPJxQCROV8vBTM/uHv
+	 hgC7S9pCubpOlu5nKpbtSaCE033JVnsRziumm7wK+a7GRhRiSsq277O3377ihL8Z0S
+	 qqZRaZeLIpYdnvFTfJ4ll//nCEF8UYROkt3ZZz3yfgP6LksmK2V7CV7H29fmLmRNph
+	 Ur5nnd9PAqFDIkLcYVapUiwkCCG50tF1cJPjsynpt7+oCTMfgVSLb065Lvtm6in8D0
+	 Rg4MVAjHMj/P1X2v4clUtA53wciYHrHi5fA1aZbWsn1zLXpwXgnrgcvK3wdOVpSISj
+	 1YJsQ/jFdJBow==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A09FACA0EC8;
-	Mon, 11 Aug 2025 15:18:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27316CA0ED5;
+	Mon, 11 Aug 2025 15:18:33 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:19:26 -0400
-Subject: [PATCH 094/114] clk: rockchip: ddr: convert from round_rate() to
+Date: Mon, 11 Aug 2025 11:19:11 -0400
+Subject: [PATCH 079/114] clk: bm1880: convert from round_rate() to
  determine_rate()
 MIME-Version: 1.0
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-94-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-79-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -115,19 +115,16 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1666;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=2146;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=+mTNNaA/Rw26i0WQAx+OIQblwc90KAUsuFHwu0lEWj8=;
- b=rTl0OqGx+j74m+r7f4wrHisEEDRwWTntvTo+iCDJVcKHw2awCwJ9lKPHIWuR7jm5OOl41r7C+
- ghPrb9Sfv2NDz2WVpcs21qKgRU7FQnBQSxyD5/9wqvK9Fd71FNgBTUA
+ bh=i4/zUwvMmSNXthJvzQxhg+vS/kwTrhaPDh6vzaYBr/Y=;
+ b=R+e0rJ26ayqoVsrbB80+wdnnEe+4dIQYa/IcZLbwrsXzdPK+R+VX4dAXHJbr5Hhl2egxnKejt
+ HsnRyFQazBNC+2TZhSPqsBcma/hpbZwiz4PdxTAPM1chEOBtUaxmNG3
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
  auth_id=472
 X-Original-From: Brian Masney <bmasney@redhat.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_081841_792683_33D81786 
-X-CRM114-Status: GOOD (  14.55  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:18 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -154,44 +151,55 @@ on the cover letter of this series.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/rockchip/clk-ddr.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ drivers/clk/clk-bm1880.c | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-ddr.c b/drivers/clk/rockchip/clk-ddr.c
-index 86718c54e56b3ff52ee6ea9f209159de91e9da39..8866a65982a0489f1aacd546bda60af1d30278ee 100644
---- a/drivers/clk/rockchip/clk-ddr.c
-+++ b/drivers/clk/rockchip/clk-ddr.c
-@@ -55,17 +55,18 @@ rockchip_ddrclk_sip_recalc_rate(struct clk_hw *hw,
- 	return res.a0;
+diff --git a/drivers/clk/clk-bm1880.c b/drivers/clk/clk-bm1880.c
+index 002f7360b1c6c6e3058606a0808115b48fd3147a..dac190bc6e19a6dd4be413ea52d41f74934a1aa9 100644
+--- a/drivers/clk/clk-bm1880.c
++++ b/drivers/clk/clk-bm1880.c
+@@ -608,8 +608,8 @@ static unsigned long bm1880_clk_div_recalc_rate(struct clk_hw *hw,
+ 	return rate;
  }
  
--static long rockchip_ddrclk_sip_round_rate(struct clk_hw *hw,
--					   unsigned long rate,
--					   unsigned long *prate)
-+static int rockchip_ddrclk_sip_determine_rate(struct clk_hw *hw,
-+					      struct clk_rate_request *req)
+-static long bm1880_clk_div_round_rate(struct clk_hw *hw, unsigned long rate,
+-				      unsigned long *prate)
++static int bm1880_clk_div_determine_rate(struct clk_hw *hw,
++					 struct clk_rate_request *req)
  {
- 	struct arm_smccc_res res;
+ 	struct bm1880_div_hw_clock *div_hw = to_bm1880_div_clk(hw);
+ 	struct bm1880_div_clock *div = &div_hw->div;
+@@ -621,13 +621,18 @@ static long bm1880_clk_div_round_rate(struct clk_hw *hw, unsigned long rate,
+ 		val = readl(reg_addr) >> div->shift;
+ 		val &= clk_div_mask(div->width);
  
--	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, rate, 0,
-+	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, req->rate, 0,
- 		      ROCKCHIP_SIP_CONFIG_DRAM_ROUND_RATE,
- 		      0, 0, 0, 0, &res);
+-		return divider_ro_round_rate(hw, rate, prate, div->table,
+-					     div->width, div->flags,
+-					     val);
++		req->rate = divider_ro_round_rate(hw, req->rate,
++						  &req->best_parent_rate,
++						  div->table,
++						  div->width, div->flags, val);
++
++		return 0;
+ 	}
  
--	return res.a0;
-+	req->rate = res.a0;
+-	return divider_round_rate(hw, rate, prate, div->table,
+-				  div->width, div->flags);
++	req->rate = divider_round_rate(hw, req->rate, &req->best_parent_rate,
++				       div->table, div->width, div->flags);
 +
 +	return 0;
  }
  
- static u8 rockchip_ddrclk_get_parent(struct clk_hw *hw)
-@@ -83,7 +84,7 @@ static u8 rockchip_ddrclk_get_parent(struct clk_hw *hw)
- static const struct clk_ops rockchip_ddrclk_sip_ops = {
- 	.recalc_rate = rockchip_ddrclk_sip_recalc_rate,
- 	.set_rate = rockchip_ddrclk_sip_set_rate,
--	.round_rate = rockchip_ddrclk_sip_round_rate,
-+	.determine_rate = rockchip_ddrclk_sip_determine_rate,
- 	.get_parent = rockchip_ddrclk_get_parent,
+ static int bm1880_clk_div_set_rate(struct clk_hw *hw, unsigned long rate,
+@@ -665,7 +670,7 @@ static int bm1880_clk_div_set_rate(struct clk_hw *hw, unsigned long rate,
+ 
+ static const struct clk_ops bm1880_clk_div_ops = {
+ 	.recalc_rate = bm1880_clk_div_recalc_rate,
+-	.round_rate = bm1880_clk_div_round_rate,
++	.determine_rate = bm1880_clk_div_determine_rate,
+ 	.set_rate = bm1880_clk_div_set_rate,
  };
  
 
