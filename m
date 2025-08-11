@@ -4,63 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28C40C88CB9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 12:47:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43912C87FDB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 13:02:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H3tD8FgKK4j8/dRqthA2unz2Tl6LyfW/LkSIXWpTfH8=; b=hwLf0gwiHLmq+h
-	1rNlW4Jm7SS0Mn18thC+Ulj7HNhMzKI5O6MWC8xhzicsry3cUV/ZC1kDGwJ6g0E3baTU26ITMrDIH
-	JHiaYciHpwMaZqSSASZqRXe3vwo8pOPh3S/DhCPDL5roo/MEglLZ0LCjspQQwKzirkN5Z8xsdLCgH
-	+vWehde+V/tb4cneoCUHpD2gpARxGpNKRT0gtQwvp6wZJqXEof7Gm6H+rawJ53TCtQE1i01us9e5c
-	i0JIvTlC3X7I+Ej7gGKGDxjPd207QPQSDYvwi1sCf+lBsFzQsuAafLyTA9dCcpjoGA9ndIK3gOXom
-	auPHzIpa16AofT7wvltA==;
+	List-Owner; bh=NJRD1i+fwBDsOmlEzBsAAyENI1EiWIx7QL0f8hLj+YU=; b=qm78P8/MAVSRt0
+	PLOhLc+0Zop5Z0dZH1W7YwLIAB1gMLXJOi7LycgYMnW+C+fQyLjflo88alxBIccqFpN6XoMihIcqQ
+	lgbedzNwK8nMsSdz4OxDEzQtp1iS7ogEAGIYqRRgxupBOfWBj1Cvjg/Vp5qxcgzKccInPX9peWReu
+	Untr1iqhMLFCAsZY0h0OvW/kaovsIX9ToxBORSDNh8RHip21nDk0l4RmILLHe1GUysPkOQdajIt17
+	Ui4QwYamT1JNTe6CN65DEb8pbUh4T+QfJgTpzCy8yayH6ba3l+u37/1GxFCVfxyQC3ccIxjCwgVKl
+	xmJJyq/G7WHUiUxpj//Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulRvR-00000007iDI-3MeE;
-	Mon, 11 Aug 2025 12:46:53 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1ulSA0-00000007keG-44EF;
+	Mon, 11 Aug 2025 13:01:56 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulRpf-00000007hOo-23YX;
-	Mon, 11 Aug 2025 12:40:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1754916021; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=hteRfCRvkd67/Dx+dfT1KUe3zys+bioiMiINKAoqpiTvtPDlOOPKcNB/4tVKwVwFvHMX+zLzcvvN8ipbV5MQRiobOr64LC+LtReoaHmoo8FIaaicTy36wtcJ3j88Dxzd3G+4Uy6pQ12JiteUW9OgU0u5XMKeMWuH/5ZDs4BwGTA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1754916021; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=4iGM2ITegptFt/GB57XpVHMLcIR82cp74UJOaNlV0sw=; 
-	b=VcAWintDg6coTqlLrgPMr08CdjQAmkSsel+lKpq6Kh8IF21WYFLkuRKepDSDUD0T9aN9C5rVcu7rKoVqRt7JdTvX3VNtS1etNT5Df0aW3kz0XwsIDOJmw9+H77SZwdWzUjr3CdXD0lmxRPnbCLMGS7dgvUUk4n2dGelta4xYlWU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1754916021;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=4iGM2ITegptFt/GB57XpVHMLcIR82cp74UJOaNlV0sw=;
-	b=gX/CWJyQm5KR7h1N2KyiPRq8MQNw2pzdjNaWcZe8wF+RXthtgRjx22s8MqNdJdiz
-	bJJPv4dtcLip+KRMuOEv1uYh6uOFoWtkGR9PW9gofTrl+kAMhB4SA0YLWH2lO20DIsW
-	qMX4h73cw6RxpBErFYkaYYQ4PmiEOWRenASXbqns=
-Received: by mx.zohomail.com with SMTPS id 1754916019156141.85896495716338;
-	Mon, 11 Aug 2025 05:40:19 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Link Mauve <linkmauve@linkmauve.fr>
-Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: Add the vdpu381 Video Decoders on
- RK3588
-Date: Mon, 11 Aug 2025 08:40:16 -0400
-Message-ID: <2793168.mvXUDI8C0e@trenzalore>
-In-Reply-To: <aJjxjgG1gEaKBVwE@desktop>
-References: <20250808193602.142527-1-detlev.casanova@collabora.com>
- <20250808193602.142527-2-detlev.casanova@collabora.com>
- <aJjxjgG1gEaKBVwE@desktop>
+	id 1ulS9X-00000007kYj-3ZAj;
+	Mon, 11 Aug 2025 13:01:29 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [119.122.215.209])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1eff292fb;
+	Mon, 11 Aug 2025 21:01:16 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: heiko@sntech.de
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	naoki@radxa.com,
+	robh@kernel.org
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: disable display subsystem for Radxa E52C
+Date: Mon, 11 Aug 2025 21:01:08 +0800
+Message-Id: <20250811130108.462673-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <3125650.687JKscXgg@diego>
+References: <3125650.687JKscXgg@diego>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+X-HM-Tid: 0a9899388b3703a2kunm7ec5851e6449
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZGUodVk0eGkpPQ0MYHh5OH1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVJS0JZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE5VSktLVU
+	pCS0tZBg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_054055_591987_1EEAFF7D 
-X-CRM114-Status: GOOD (  16.98  )
+X-CRM114-CacheID: sfid-20250811_060128_071069_E56F0259 
+X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,7 +68,6 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, Niklas Cassel <cassel@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>, kernel@collabora.com, Dragan Simic <dsimic@manjaro.org>, Rob Herring <robh@kernel.org>, Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, Chris Morgan <macromorgan@hotmail.com>, linux-arm-kernel@lists.infradead.org, Patrick Wildt <patrick@blueri.se>, linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>, Diederik de Haas <didi.debian@cknow.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -80,41 +75,26 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Sunday, 10 August 2025 15:22:54 EDT Link Mauve wrote:
-> Hi,
-> 
-> On Fri, Aug 08, 2025 at 03:36:01PM -0400, Detlev Casanova wrote:
-> > Add the vdpu381 Video Decoders to the rk3588-base devicetree.
-> > 
-> > The RK3588 based SoCs all embed 2 vdpu381 decoders.
-> > This also adds the dedicated IOMMU controllers.
-> 
-> Back in the VEPU121 enablement series[1] it had been decided to not
-> expose multiple identical cores yet, because there is no infrastructure
-> yet in the kernel to schedule multiple userland processes on multiple
-> cores, or (more relevant for your usecase) to even combine two cores to
-> reach 8K support.
+> What actual problem does this fix?
+>
+> For example we also enable on-soc iommus all the time, because they're
+> on the soc and don't need board-level properties.
+>
+> The "display-subsystem" without users looks mostly in the same spot.
+>
+> So I do expect a description of what problem gets fixed that this needs
+> to be disabled.
 
-That's right, but the device tree still defines the hardware as it is. The 
-driver, however, will  make sure that each instance after the first one is 
-ignored (at least for now).
+Disable the display-subsystem to remove this error log:
+[    1.382440] rockchip-drm display-subsystem: [drm:0xffffa3985873555c] *ERROR* No available vop found for display-subsystem.
 
-> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> > ---
-> > 
-> >  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 74 +++++++++++++++++++
-> >  1 file changed, 74 insertions(+)
-> 
-> [snip]
-> 
-> Thanks,
-> 
-> [1]
-> https://lore.kernel.org/all/20240618183816.77597-1-sebastian.reichel@collab
-> ora.com/
+I will improve the commit message in v2. Do I need to remove the Fixes tag?
 
-Detlev.
+Thanks,
+Chukun
 
+--
+2.25.1
 
 
 
