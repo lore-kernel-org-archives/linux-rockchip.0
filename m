@@ -4,58 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06233C88CB9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 13:12:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD9C8C87FD2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 13:49:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CTx6RWGDBaL5GYxNH6sJXUTgj0Opkl9dn2SqjKfH0yw=; b=q+H8cpwbAUHCYx
-	P22o1ZT1vLA03xMRiujST7yQm0xiuweHx/ssuBecElJssQugTpcUhlqirPTXfmDvGxTgqPxhtuP79
-	tj/FayvHMF8R22PDFybhgYl9oSn4B0oxaDU2Qe6oMWmQ8Dbq36btxWiwIaQIY8l7q88iYm8KIp/CQ
-	dvxe2EkzxeHejGN6TbYi00Eu+hRzSznVhBT9gVqI0G2qcp0gpw7SAVc0RQa97wUphSpHvCe69Bu3r
-	9lAQAV674GISZfBP+Z5pZeCnd8pGBTjJEUHJX7cTBwrKQfMdkOJjSZOBTouR0wuPe3YA7yfaGB7yF
-	17hyL9NtUMPy1Nn45Naw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pDPyEzonf3jkRtUmO1T8Cw6Q/A6fHeZ9jxAGWWfO1XI=; b=K4WbtqWB9BMr6AesuoUeTqOIux
+	eT7UswNKnJU9i9BKuLo6r2Cfi/rNCgpc5tnz0UVIlrQ+rcaUGARdx5EkIUcOuKj7/InOCvUjEgRwq
+	N5cy3SmrvYn9gX+PFgXJGUySpEgsk5+QEqVQqa2RybZ36t/nDRu2Zvq18vdRc1OAHAbb3QLOREENx
+	i7KznJd0g6SSbdPI89tRZgzGNK0g4YC3ymOaMJvW0pxJJmCksezRJVIB+AslgSRdyGJFaIELiN9Eh
+	aeo4aCJR2vNZOkMFzC+U/NBBDHHUdH3OwnMdzLXmmvEj9MqrBo5GGBBWsGtm+qoM+kf7MXYRfE8px
+	Uv5caVDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulSKJ-00000007mEY-2F9p;
-	Mon, 11 Aug 2025 13:12:35 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1ulStV-00000007sW2-3M1R;
+	Mon, 11 Aug 2025 13:48:57 +0000
+Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulSBo-00000007kxn-2NTc;
-	Mon, 11 Aug 2025 13:03:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=zqifTpDaQhWEUMpUlGKro4a6sMf2oQed5RETrkmaP4A=; b=jB7ocoBy0jyhkKMHmY6LE+HubP
-	c4Mr/18h967h9VLLwinMbOjQI4AVp+uWE3NZ3O/7k4HjyrqN050E+B3EXHuRkACnGbqvtr1goE0VR
-	LqGupZiZbYisc6eOX21769LVJR25mbO93JBN5rgDOi/r1AddDoIDaBhtXwk9nfaeR8+fGFmDnZkkb
-	iqxW0Opt8IQUCQtx4IdlPlyOlbsb1Fbs+8pivjENBioDb7ou2lQDMHWKBVq7poKkdVDRL2wuIPLTw
-	pGzD+4n2F2cx6HNx+IpxM4UcG9sd1uG584j+G3t5cGrFp7ON3y2rJhVySpEfaCBEG7fly0we3ofo6
-	NLvsSDTw==;
-Received: from i53875a0c.versanet.de ([83.135.90.12] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1ulSBb-0001JS-NF; Mon, 11 Aug 2025 15:03:35 +0200
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: amadeus@jmu.edu.cn, conor+dt@kernel.org, devicetree@vger.kernel.org,
- krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- naoki@radxa.com, robh@kernel.org
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: disable display subsystem for Radxa
- E52C
-Date: Mon, 11 Aug 2025 15:03:34 +0200
-Message-ID: <2784232.uZKlY2gecq@diego>
-In-Reply-To: <20250811130108.462673-1-amadeus@jmu.edu.cn>
-References: <3125650.687JKscXgg@diego> <20250811130108.462673-1-amadeus@jmu.edu.cn>
+	id 1ulStT-00000007sVd-1x8g
+	for linux-rockchip@lists.infradead.org;
+	Mon, 11 Aug 2025 13:48:57 +0000
+Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-7076eaa5febso18120996d6.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 11 Aug 2025 06:48:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1754920133; x=1755524933; darn=lists.infradead.org;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=VWV2hjLplr0Slgw9ppK6HuD7SF+ufb5rfXPdExiThcw=;
+        b=SvIHKXfUWoHA0cNtKIpQx6x4ZFxWxmO1hUfK8PkwCb1ykSl5Xr22PWRzmsbbzOiP7E
+         sq80etWV3ezdHAyggIR2LqhgmlBggOTjtjxnPOBhDwNYn6j8PYGCB2YbVCMle59b0ftP
+         ovaKM4ZtK8lDt7ZXpbCdA+1AVcYsH1CQABJM9bchoUfDELTcgpc+BnfpXP8uUUBhQBmJ
+         cF0Z972oee4A2opzGVnm1yfgnX8+pT+fHl9VUz46o6U2KxXHm4ynUvjF2XSOtLhwX3Pu
+         9QsqeYRBzI8Hng2bDQdV9jZ1KbfrSDglgxD7AJ/7oELCqMYAViDBa/fVdTuDUtPvjtGi
+         skiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754920133; x=1755524933;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VWV2hjLplr0Slgw9ppK6HuD7SF+ufb5rfXPdExiThcw=;
+        b=UzIIEbl3HS3KkAwBGflgsOUrmDOU1Sbw0UYbRl0djffSXbN4Shzf51ta03H5eWH6Et
+         R7/V5xQWJ9pLgHeIaTMGo+hZrdDPEGI4dtxi/Zi8BDVp5Q2HYKEHAspyY9Dkf2D33X4G
+         1MnZfaYgQYLmJ02xx8kK2dgm9fZ0CPunpaDmWT3ytqUDMIVV/myAXCeBscl6PqjW8KwZ
+         9p3/1tpLc5HknHG9/MIy6pKjoV6/kkYSm/LLrCKNx3QAcTsgpiFFrlE55RcamNn8M9b4
+         wPbP9OnAkpojBtApReBYDI5mP3bXb7w7i3benOSaV15IO1tzpDk9C1Be/kSoYQ0qZHT9
+         jVEA==
+X-Forwarded-Encrypted: i=1; AJvYcCXE2fMrT2get2goowq7lydLc6lihrkBce45ZABWxAgcADzw1VF/cab/226qHqi40kCBad6k1/JDPMGOrm7hWQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw99NLWhaVtzk/yXmwf1Yg5I9UAjHxk/vDn0gZtTn3ZlM0AtWdw
+	UNownne0lqnzRdseKo8g8MpubpY6RhQ4xIbo0KBWai9Yx5GN47mXiX5wKnBv6+jURhs=
+X-Gm-Gg: ASbGnctZtO5s2HsQYqMt4FBiINHnc+Rfx/CWPZMSzIe5Qi9YDwcOEjYhhSEo1lE1oWT
+	abI54lGGegE3r22NeOJaxEiSufJNsgYR1SVo5JIRAD+QLIErOLsWfwExjIZxOvNoaMkyEFQK2YC
+	/WrkXielLij3xfFkunNCUylvfTZCGiE2k/3nFF57+NcQVsB2g8mQjxAeaNwS8pCovvDLe2FN8/f
+	Lf1sbR/J+Yv/SQl0ZmLZpNoZK8Z3si0HxgkCKKDZMKqAOFMq4JLlhazidlc3QodV6RJa1xLD4v7
+	54U57K2xBwByQs6N/TbPgmcGkiWJphka357iC1aE1+mr27wOa5k93ad4M7tHRPCWRg+XGHk+XYf
+	odaeU3ido6VsiO+uKRc0Fi/BUj/w=
+X-Google-Smtp-Source: AGHT+IGWo1UxGtBJWVYSzxpvE5ZF5/dBz2Is5MsjfG1C/pxYl+/rzztidkfAyi1zkWZdsKT8xJCVpw==
+X-Received: by 2002:a05:6214:2466:b0:6fb:1c3:f527 with SMTP id 6a1803df08f44-7099a4833a2mr205043136d6.39.1754920132919;
+        Mon, 11 Aug 2025 06:48:52 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:11:5a76::c41? ([2606:6d00:11:5a76::c41])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-7077cd89d8dsm156083316d6.53.2025.08.11.06.48.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Aug 2025 06:48:51 -0700 (PDT)
+Message-ID: <9b86fb9ac5b9cfdb773fef2db33fc13d011f53f4.camel@ndufresne.ca>
+Subject: Re: [PATCH 64/80] media: rkvdec: Remove redundant
+ pm_runtime_mark_last_busy() calls
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>, Ezequiel Garcia	
+ <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>,  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Date: Mon, 11 Aug 2025 09:48:50 -0400
+In-Reply-To: <20250704075450.3221972-1-sakari.ailus@linux.intel.com>
+References: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
+	 <20250704075450.3221972-1-sakari.ailus@linux.intel.com>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0MU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT6ImQQTFg
+ oAQQIbAwULCQgHAgIiAgYVCgkICwIEFgIDAQIeBwIXgBYhBO8NUoEVxMPCGgRvEtlBlFEpYHL0BQJ
+ oLLLGBQkJZfd1AAoJENlBlFEpYHL0BEkA/3qkWYt99myYFSmTJUF8UB/7OroEm3vr1HRqXeQe9Qp2
+ AP0bsoAe6KjEPa/pJfuJ2khrOPPHxvyt/PBNbI5BYcIABLQnTmljb2xhcyBEdWZyZXNuZSA8bmljb
+ 2xhc0BuZHVmcmVzbmUuY2E+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AWIQ
+ TvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyy+AUJCWX3dQAKCRDZQZRRKWBy9FJ5AQCNy8SX8DpHbLa
+ cy58vgDwyIpB89mok9eWGGejY9mqpRwEAhHzs+/n5xlVlM3bqy1yHnAzJqVwqBE1D0jG0a9V6VQI=
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_060348_627563_467236B6 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20250811_064855_707153_EEC3C4FD 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,25 +106,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============5521902325590268011=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpBbSBNb250YWcsIDExLiBBdWd1c3QgMjAyNSwgMTU6MDE6MDggTWl0dGVsZXVyb3DDpGlz
-Y2hlIFNvbW1lcnplaXQgc2NocmllYiBDaHVrdW4gUGFuOgo+ID4gV2hhdCBhY3R1YWwgcHJvYmxl
-bSBkb2VzIHRoaXMgZml4Pwo+ID4KPiA+IEZvciBleGFtcGxlIHdlIGFsc28gZW5hYmxlIG9uLXNv
-YyBpb21tdXMgYWxsIHRoZSB0aW1lLCBiZWNhdXNlIHRoZXkncmUKPiA+IG9uIHRoZSBzb2MgYW5k
-IGRvbid0IG5lZWQgYm9hcmQtbGV2ZWwgcHJvcGVydGllcy4KPiA+Cj4gPiBUaGUgImRpc3BsYXkt
-c3Vic3lzdGVtIiB3aXRob3V0IHVzZXJzIGxvb2tzIG1vc3RseSBpbiB0aGUgc2FtZSBzcG90Lgo+
-ID4KPiA+IFNvIEkgZG8gZXhwZWN0IGEgZGVzY3JpcHRpb24gb2Ygd2hhdCBwcm9ibGVtIGdldHMg
-Zml4ZWQgdGhhdCB0aGlzIG5lZWRzCj4gPiB0byBiZSBkaXNhYmxlZC4KPiAKPiBEaXNhYmxlIHRo
-ZSBkaXNwbGF5LXN1YnN5c3RlbSB0byByZW1vdmUgdGhpcyBlcnJvciBsb2c6Cj4gWyAgICAxLjM4
-MjQ0MF0gcm9ja2NoaXAtZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBbZHJtOjB4ZmZmZmEzOTg1ODcz
-NTU1Y10gKkVSUk9SKiBObyBhdmFpbGFibGUgdm9wIGZvdW5kIGZvciBkaXNwbGF5LXN1YnN5c3Rl
-bS4KCm9rLCB0aGF0IG1ha2VzIHNlbnNlIHRoZW4KCj4gSSB3aWxsIGltcHJvdmUgdGhlIGNvbW1p
-dCBtZXNzYWdlIGluIHYyLiBEbyBJIG5lZWQgdG8gcmVtb3ZlIHRoZSBGaXhlcyB0YWc/CgpOb3Bl
-LCBwbGVhc2Uga2VlcCB0aGUgZml4ZXMgdGFnCgpUaGFua3MKSGVpa28KCgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+--===============5521902325590268011==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-mWE7/NTeJOJLJAFXEhhw"
+
+
+--=-mWE7/NTeJOJLJAFXEhhw
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Sakari,
+
+Le vendredi 04 juillet 2025 =C3=A0 10:54 +0300, Sakari Ailus a =C3=A9crit=
+=C2=A0:
+> pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
+> pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
+> to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
+> pm_runtime_mark_last_busy().
+>=20
+> Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> ---
+> The cover letter of the set can be found here
+> <URL:
+> https://lore.kernel.org/linux-pm/20250704075225.3212486-1-sakari.ailus@li=
+nux.i
+> ntel.com>.
+>=20
+> In brief, this patch depends on PM runtime patches adding marking the las=
+t
+> busy timestamp in autosuspend related functions. The patches are here, on
+> rc2:
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 git://git.kernel.org/pub/scm/l=
+inux/kernel/git/rafael/linux-pm.git \
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 pm-runtime-6.17-rc1
+>=20
+> =C2=A0drivers/staging/media/rkvdec/rkvdec.c | 1 -
+
+This driver was de-stage during 6.17, I will port it, no action required.
+
+Nicolas
+
+> =C2=A01 file changed, 1 deletion(-)
+>=20
+> diff --git a/drivers/staging/media/rkvdec/rkvdec.c
+> b/drivers/staging/media/rkvdec/rkvdec.c
+> index d707088ec0dc..445f7c92eee3 100644
+> --- a/drivers/staging/media/rkvdec/rkvdec.c
+> +++ b/drivers/staging/media/rkvdec/rkvdec.c
+> @@ -765,7 +765,6 @@ static void rkvdec_job_finish(struct rkvdec_ctx *ctx,
+> =C2=A0{
+> =C2=A0	struct rkvdec_dev *rkvdec =3D ctx->dev;
+> =C2=A0
+> -	pm_runtime_mark_last_busy(rkvdec->dev);
+> =C2=A0	pm_runtime_put_autosuspend(rkvdec->dev);
+> =C2=A0	rkvdec_job_finish_no_pm(ctx, result);
+> =C2=A0}
+
+--=-mWE7/NTeJOJLJAFXEhhw
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaJn0wgAKCRDZQZRRKWBy
+9DLPAQCqPt0lXZfnbdVvPntu1sqxcp/kkdwbjcqoHkgLxA145AD+NS/iRHqsrNt9
+OFMoxaM4XZImGCGuuAnhiF3H/IWu/AM=
+=SIv5
+-----END PGP SIGNATURE-----
+
+--=-mWE7/NTeJOJLJAFXEhhw--
+
+
+--===============5521902325590268011==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5521902325590268011==--
+
