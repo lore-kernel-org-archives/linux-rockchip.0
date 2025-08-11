@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5298CCD199
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:02:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92A82CCD1A5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:02:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IatHvkCDO8wFqUVu2CmtPo7c+7Ag7opaSevhrvZA+gk=; b=XB207o1xA5gwKd
-	v3Z6aRMiiqfgHLF0ONbkTGKlaWenV9fCB82djZe9LzUKruvzGutt0+vuBdYso4cOa2KT/s/IZipUy
-	DmHQRtPIWFm/blQREXOJ1ac7Ybeo8xOwFWTQ68/r3Hxko9J8+vM7+fqNbIp+acuKeASl6oO3Rxb4f
-	/4Y4h5m3W/YbYumQLXoDiCioPDLDM+CYzJ+p9pq8M68SZhsz/x7i6NRaZogbQ3nMVLPPj0iJ5sFsj
-	BDi17leczGuCne9EUkLI8hke8jf5XyYAzafJXF6JMrntRlGzJKKMn05FRrgU6q6LTa+BSeBtnjmYX
-	DGPpiGcqGGFgQ7LLRlXA==;
+	List-Owner; bh=VLxyShIPyrzGYJjvuE32XayPkgwppvbBq7hzleX9sxI=; b=IJFBU4xjPAEb+u
+	/QaCaBAbyquueRNPeLRFPzeDjvSgUi2qgw3RUYh48AZCPiLNN00sjkXJSTzJZnRoDykyHFpC09HfU
+	ksbQyK3yMmlZMQSKwo5iuZn+C9+2wgrN2sOm6imk8tYuCDmvianCRRGISqBZBRePv6V99RkHlyqLG
+	YNeb1VSa8iP38NDsnJbpAs0UawQhgm+JzSqCnj1UJsx+UWbBXB/bLHEyuQonyp/s33wTbLzRdDqKy
+	M/pOaC3fKpI2jkLa4uIt3wwKJ/24Wl+sxD0zrl/c7j3RLbGHHwPUjR3IMX28Put0V6T6Wu8Zbzgpv
+	UVRaqobRU6oLWS85Y/BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoar-0000000DG07-1Qqc;
-	Mon, 20 Oct 2025 12:02:29 +0000
+	id 1vAoal-0000000DFvF-1d73;
+	Mon, 20 Oct 2025 12:02:23 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIo-00000008BFu-1Giy;
-	Mon, 11 Aug 2025 15:19:10 +0000
+	id 1ulUIl-00000008BFu-3cEf;
+	Mon, 11 Aug 2025 15:19:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3A0F9669E0;
-	Mon, 11 Aug 2025 15:18:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 5DE75C4FF56;
+	by tor.source.kernel.org (Postfix) with ESMTP id E950D669C9;
+	Mon, 11 Aug 2025 15:18:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 234EEC2BCB6;
 	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1754925516;
-	bh=rzpBZkYghAZcxtF48aK2WAxgo7EwTwU3cUAFCTDtOyY=;
+	bh=I06g9EZ+WeE9wpMdXbgUNj6cuTI+vnV/N4MiCLjBRto=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Wkvzqek+eZ2j6dfM5MIuXiSdorEkJB21qNzYKi8aL9xhvlmuaYskZP+qA8rCAZBZT
-	 x6m5Tcqhin1B2YoMlRPhWcyyyJwZl8UafAMMYeyq7XAECSNPI8PhMrOOvib2yGoPDC
-	 btrBdDazbZUf7YpgYhRdUC+7YzUGekFF+iWR/+0YGj81g4hWIL+0E6E61HrK0Ph5I5
-	 udTYJkCqmmaYO3mXm7FnzOxvPTdLHaQr+QiWd7LtQKgpWc3ZNBxfGkCAJxt9u2k4nJ
-	 MWFbv+4OcOj1FRZk7Ia0fPyL59w5YQfeOS2owc9jXE/DZhEx8pkCirrg49xjQt3f3r
-	 z8xGExFXm+79A==
+	b=muXlH9I12xudI1gel43aCQiNXldBaYO92+fpo+deer1eYA+4PlBbVjrbo2tjk3OR/
+	 32k3HwoanF4BrW2/Jgdx+E/GCQifGj83wRm3+dlt0O08zO0kU3osha3vowrnGesSXa
+	 KH+fcCiZKrtwotho5j7Dz+jZmbhMOsNygrJXw2xpjwBefljTfL0goVnOeJN1H+yVtw
+	 atj9gVbqosDL5GEq5X0jviMCtdNJIYEKQ1jH203gIl7+COrVZKwwATn4A7P6VSiaoT
+	 Ak+n9Uvtgs/kfxSukJYgfEUZIVtnjb5XPhoxXywbPNwd5vxyIVFKmfr87UeGhayu50
+	 49Oc0JXirtPvg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 468DDCA0EC4;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 03D5ACA0ED3;
 	Mon, 11 Aug 2025 15:18:36 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:19:42 -0400
-Subject: [PATCH 110/114] clk: visconti: pll: convert from round_rate() to
+Date: Mon, 11 Aug 2025 11:19:40 -0400
+Subject: [PATCH 108/114] clk: versatile: icst: convert from round_rate() to
  determine_rate()
 MIME-Version: 1.0
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-110-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-108-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -115,11 +115,11 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1976;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=3737;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=r0wZpG3a0OGoiWWOr5otP68Bbfx3lAgII/aJOFlzSdg=;
- b=k8KX5ycT4h+UD6Ldn+nVMm4CPQVIS/kfEwZv0cAIgiTd/uDJjAfgTwd1RRiqR3Paz0ywOWfvw
- Ps307wc4OEfBYUcvIzgQljpxLU2s8HVxlxD56X2u8DKuTuSP9uNJRuh
+ bh=s6RrIFratukpDYKqOi9KzbyMVPMeFX+Sv4XuD3QoLpU=;
+ b=u+oEBWc/MchojuVxUSN0tz+lCPTO3tXOYo+ZzRrOF/c29BFEP2K2uZuXAcj8p7GUxOUfw7pDI
+ LHL7LIH8TfNAi3s/C2jJXayNi/tsw7YnWMh8Xvmo0uF0O2HJvTdYhBb
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
@@ -151,53 +151,121 @@ on the cover letter of this series.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/visconti/pll.c | 17 +++++++++++------
- 1 file changed, 11 insertions(+), 6 deletions(-)
+ drivers/clk/versatile/clk-icst.c | 72 +++++++++++++++++++++++++---------------
+ 1 file changed, 45 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/clk/visconti/pll.c b/drivers/clk/visconti/pll.c
-index 8ca1bad61864204027b7aff9020f1cb9e7d198d3..681721d8503203de9ac49ac3207e121bb5bf2163 100644
---- a/drivers/clk/visconti/pll.c
-+++ b/drivers/clk/visconti/pll.c
-@@ -100,8 +100,8 @@ static unsigned long visconti_get_pll_rate_from_data(struct visconti_pll *pll,
- 	return rate_table[0].rate;
+diff --git a/drivers/clk/versatile/clk-icst.c b/drivers/clk/versatile/clk-icst.c
+index b69c3fbdfbce66876d5b1d4faaf4050759e44561..86ca04ad9fab0334f7b051377db709338a1f7244 100644
+--- a/drivers/clk/versatile/clk-icst.c
++++ b/drivers/clk/versatile/clk-icst.c
+@@ -234,39 +234,51 @@ static unsigned long icst_recalc_rate(struct clk_hw *hw,
+ 	return icst->rate;
  }
  
--static long visconti_pll_round_rate(struct clk_hw *hw,
--				    unsigned long rate, unsigned long *prate)
-+static int visconti_pll_determine_rate(struct clk_hw *hw,
-+				       struct clk_rate_request *req)
+-static long icst_round_rate(struct clk_hw *hw, unsigned long rate,
+-			    unsigned long *prate)
++static int icst_determine_rate(struct clk_hw *hw,
++			       struct clk_rate_request *req)
  {
- 	struct visconti_pll *pll = to_visconti_pll(hw);
- 	const struct visconti_pll_rate_table *rate_table = pll->rate_table;
-@@ -109,11 +109,16 @@ static long visconti_pll_round_rate(struct clk_hw *hw,
+ 	struct clk_icst *icst = to_icst(hw);
+ 	struct icst_vco vco;
  
- 	/* Assuming rate_table is in descending order */
- 	for (i = 0; i < pll->rate_count; i++)
--		if (rate >= rate_table[i].rate)
--			return rate_table[i].rate;
-+		if (req->rate >= rate_table[i].rate) {
-+			req->rate = rate_table[i].rate;
-+
-+			return 0;
+ 	if (icst->ctype == ICST_INTEGRATOR_AP_CM ||
+ 	    icst->ctype == ICST_INTEGRATOR_CP_CM_CORE) {
+-		if (rate <= 12000000)
+-			return 12000000;
+-		if (rate >= 160000000)
+-			return 160000000;
+-		/* Slam to closest megahertz */
+-		return DIV_ROUND_CLOSEST(rate, 1000000) * 1000000;
++		if (req->rate <= 12000000)
++			req->rate = 12000000;
++		else if (req->rate >= 160000000)
++			req->rate = 160000000;
++		else {
++			/* Slam to closest megahertz */
++			req->rate = DIV_ROUND_CLOSEST(req->rate, 1000000) * 1000000;
 +		}
++
++		return 0;
+ 	}
  
- 	/* return minimum supported value */
--	return rate_table[i - 1].rate;
-+	req->rate = rate_table[i - 1].rate;
+ 	if (icst->ctype == ICST_INTEGRATOR_CP_CM_MEM) {
+-		if (rate <= 6000000)
+-			return 6000000;
+-		if (rate >= 66000000)
+-			return 66000000;
+-		/* Slam to closest 0.5 megahertz */
+-		return DIV_ROUND_CLOSEST(rate, 500000) * 500000;
++		if (req->rate <= 6000000)
++			req->rate = 6000000;
++		else if (req->rate >= 66000000)
++			req->rate = 66000000;
++		else {
++			/* Slam to closest 0.5 megahertz */
++			req->rate = DIV_ROUND_CLOSEST(req->rate, 500000) * 500000;
++		}
++
++		return 0;
+ 	}
+ 
+ 	if (icst->ctype == ICST_INTEGRATOR_AP_SYS) {
+ 		/* Divides between 3 and 50 MHz in steps of 0.25 MHz */
+-		if (rate <= 3000000)
+-			return 3000000;
+-		if (rate >= 50000000)
+-			return 5000000;
+-		/* Slam to closest 0.25 MHz */
+-		return DIV_ROUND_CLOSEST(rate, 250000) * 250000;
++		if (req->rate <= 3000000)
++			req->rate = 3000000;
++		else if (req->rate >= 50000000)
++			req->rate = 5000000;
++		else {
++			/* Slam to closest 0.25 MHz */
++			req->rate = DIV_ROUND_CLOSEST(req->rate, 250000) * 250000;
++		}
++
++		return 0;
+ 	}
+ 
+ 	if (icst->ctype == ICST_INTEGRATOR_AP_PCI) {
+@@ -274,14 +286,20 @@ static long icst_round_rate(struct clk_hw *hw, unsigned long rate,
+ 		 * If we're below or less than halfway from 25 to 33 MHz
+ 		 * select 25 MHz
+ 		 */
+-		if (rate <= 25000000 || rate < 29000000)
+-			return 25000000;
+-		/* Else just return the default frequency */
+-		return 33000000;
++		if (req->rate <= 25000000 || req->rate < 29000000)
++			req->rate = 25000000;
++		else {
++			/* Else just return the default frequency */
++			req->rate = 33000000;
++		}
++
++		return 0;
+ 	}
+ 
+-	vco = icst_hz_to_vco(icst->params, rate);
+-	return icst_hz(icst->params, vco);
++	vco = icst_hz_to_vco(icst->params, req->rate);
++	req->rate = icst_hz(icst->params, vco);
 +
 +	return 0;
  }
  
- static unsigned long visconti_pll_recalc_rate(struct clk_hw *hw,
-@@ -232,7 +237,7 @@ static const struct clk_ops visconti_pll_ops = {
- 	.enable = visconti_pll_enable,
- 	.disable = visconti_pll_disable,
- 	.is_enabled = visconti_pll_is_enabled,
--	.round_rate = visconti_pll_round_rate,
-+	.determine_rate = visconti_pll_determine_rate,
- 	.recalc_rate = visconti_pll_recalc_rate,
- 	.set_rate = visconti_pll_set_rate,
+ static int icst_set_rate(struct clk_hw *hw, unsigned long rate,
+@@ -329,7 +347,7 @@ static int icst_set_rate(struct clk_hw *hw, unsigned long rate,
+ 
+ static const struct clk_ops icst_ops = {
+ 	.recalc_rate = icst_recalc_rate,
+-	.round_rate = icst_round_rate,
++	.determine_rate = icst_determine_rate,
+ 	.set_rate = icst_set_rate,
  };
+ 
 
 -- 
 2.50.1
