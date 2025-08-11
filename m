@@ -4,47 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC137CA0EC4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 22:05:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 357DACA0EDA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 22:05:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LgC+pf4VK/FNp0a/1AcsmMuq6vNxDDmRvGdByymsNaY=; b=nC+aJaoG7cYQNsvRyAOLFBmEos
-	/ajnOCa0rT6H24ANOUAAX6gKQNBEk531PF/PNRkg67HqfXfa9E22D3G/uvfXjDxph05msGnLg05ym
-	TzjtymNnSEq9rx/Q+UvaYuldV901Ox3qd8JscO5AkrlC1NG6bP/rBUG28H31tVdcktHnygrj8sTQP
-	yTbyGnd0G1enymrez0KqsVMpe78xzybZfHSXHNquotxrhbyJdgKhipKd0XerOWdDWFYwCHVy1dWSZ
-	x5s62e3ODdC89l5Hes6pe/OJcf+dMdUaMvIAx/BXhZMgq9DnZH5Jw070MCjiYhQ3ryB+4un4PqgX3
-	SdNYnyzg==;
+	bh=8ZfWoi2GEK2FcM3J7mj/ZyFkMoWuYdUMl4lfGjhCM3M=; b=bikmobJA7i/mACITMVTATHOzHj
+	CrST+R/10YtnckqYPxsooNaKEsr0dCZHKrD6HSRpAnq4b8qJapjCQsmCLLM3QmKl0NyWq+i080Sbk
+	J8c9wFdvlXB+lhka+jevjovJIDY0bMcewghdsybII8xVyXaycgwaibM/UMTJL9c12LlJy+nUD50Yb
+	eN97Zjo0tngijlj2ufYDv4nuHvT9pAfJdKr+GS4WLgTV7Ks2oqOHk5m2YXLMZSWaZxRoWPu82onXe
+	IU8pKhOskp9uRtD9SqFexpl/40nzZYsGbYT2Qj9B4Mhlyy4fPl1nDHu3rw/vzpIbYUdAwGpBodWeV
+	mEs0l6tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uladf-00000009EeT-13Cl;
-	Mon, 11 Aug 2025 22:05:07 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uladn-00000009Ewu-3JZk;
+	Mon, 11 Aug 2025 22:05:15 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulZno-0000000942U-3O93;
-	Mon, 11 Aug 2025 21:11:34 +0000
+	id 1ula1B-000000094xi-3oaZ;
+	Mon, 11 Aug 2025 21:25:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754946691;
-	bh=LgOkvZy4JmT2XJ6YFz694QT5mtVOi6c/DJaxwgVLUNw=;
+	s=mail; t=1754947520;
+	bh=Se/XuCy4Kpgqy/Lsz9lRmsfQvSwyPuBPc1dOKtWoRHY=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=FsxeIC3DANqd5ZhfTMLHr/vLeY0MIAQfNU7+CtbmzFj5LaHXkVd4prVLWTE74NGI6
-	 /VHTEvOAzPacNDcpcxoAocx6v/u38AKc/LcKxLaoWe8yaNPTG30wJ+zQI+wG2MtsUX
-	 w2r9ySOw9k8W73YDavKJB0W5Cb99rkGbSTwCCIVN847cpzkHc7r6CL7pfxsddDmGy1
-	 1+9BBbJyO4cHR2ok5UnpvrFb2uj+AWEyIA4vEEqDAuH42r2E0P57moOOV0Bm0bOZN6
-	 cA7PLx1YAHHgE/cHPwHuOQwbn3/AzszYVgm9Rfj+Wps9HQTImwQvMkdHjNza4IfUWp
-	 By9FyqA7/ZSxg==
+	b=jgBRvlzzdsOk+nRTCAoFVfNBWHejCyBDoMfmnzydtgbaKzQE9nVRBUcluLx0TVEdd
+	 Im0M0I20QY6NBOpTKmm9otMYtILpQX6NiYhubmICYnhwRBLLUPINZMtkwN+hRIgkL4
+	 zBp2y7TDRR4YBglKkk55NETZdOif6lOafGLDRJev+tqTLbLP5Pt72vayKMXAhWSWLJ
+	 WG+d6z72yG5s96p/tpuPORauqOhBDgRuSZkkFmOjOVrhfMJs1w3qORV7mbM/x0RWgq
+	 XpLEYLal23sxUrgvO8XorKVJyC5nqwdjtOduHe+zeA4UaqMHlmvnYIZjiiJYjmqVc8
+	 3/mC18CD8k+iQ==
 Received: from [IPv6:2606:6d00:11:5a76::c41] (unknown [IPv6:2606:6d00:11:5a76::c41])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id ABEDC17E00A6;
-	Mon, 11 Aug 2025 23:11:29 +0200 (CEST)
-Message-ID: <6476a0906402a5b6ea51801c7d7de1be13aa753c.camel@collabora.com>
-Subject: Re: [PATCH v2 2/7] media: rkvdec: Add variants support
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CF70217E090E;
+	Mon, 11 Aug 2025 23:25:18 +0200 (CEST)
+Message-ID: <3cf31d3b89a66b1bec57486c54c3df31393335e5.camel@collabora.com>
+Subject: Re: [PATCH v2 5/7] media: rkvdec: Disable QoS for HEVC and VP9 on
+ RK3328
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia	
  <ezequiel@vanguardiasur.com.ar>, Detlev Casanova
@@ -54,10 +55,10 @@ Cc: Alex Bee <knaerzche@gmail.com>, Sebastian Fricke
 	 <sebastian.fricke@collabora.com>, linux-media@vger.kernel.org, 
 	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Date: Mon, 11 Aug 2025 17:11:28 -0400
-In-Reply-To: <20250810212454.3237486-3-jonas@kwiboo.se>
+Date: Mon, 11 Aug 2025 17:25:17 -0400
+In-Reply-To: <20250810212454.3237486-6-jonas@kwiboo.se>
 References: <20250810212454.3237486-1-jonas@kwiboo.se>
-	 <20250810212454.3237486-3-jonas@kwiboo.se>
+	 <20250810212454.3237486-6-jonas@kwiboo.se>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
  oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
@@ -85,8 +86,8 @@ Organization: Collabora Canada
 User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_141132_999464_1185F6B0 
-X-CRM114-Status: GOOD (  22.05  )
+X-CRM114-CacheID: sfid-20250811_142522_104096_F1AE321B 
+X-CRM114-Status: GOOD (  22.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,17 +99,17 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0151924408091607178=="
+Content-Type: multipart/mixed; boundary="===============6439113396483170866=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0151924408091607178==
+--===============6439113396483170866==
 Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-4ob5lfPBWiqj644CEky9"
+	boundary="=-XgQKcifX1OiDVJb6s0rw"
 
 
---=-4ob5lfPBWiqj644CEky9
+--=-XgQKcifX1OiDVJb6s0rw
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -116,11 +117,11 @@ Le dimanche 10 ao=C3=BBt 2025 =C3=A0 21:24 +0000, Jonas Karlman a =C3=A9cri=
 t=C2=A0:
 > From: Alex Bee <knaerzche@gmail.com>
 >=20
-> Different versions of the Rockchip VDEC IP exists and one way they can
-> differ is what decoding formats are supported.
+> The RK3328 VDEC has a HW quirk that require QoS to be disabled when HEVC
+> or VP9 is decoded, otherwise the decoded picture may become corrupted.
 >=20
-> Add a variant implementation in order to support flagging different
-> capabilities.
+> Add a RK3328 variant with a quirk flag to disable QoS when before
+> decoding is started.
 >=20
 > Signed-off-by: Alex Bee <knaerzche@gmail.com>
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
@@ -128,163 +129,181 @@ t=C2=A0:
 > Changes in v2:
 > - No change
 > ---
-> =C2=A0.../media/platform/rockchip/rkvdec/rkvdec.c=C2=A0=C2=A0 | 21 ++++++=
-++++++++++++-
-> =C2=A0.../media/platform/rockchip/rkvdec/rkvdec.h=C2=A0=C2=A0 | 10 ++++++=
-+++
-> =C2=A02 files changed, 30 insertions(+), 1 deletion(-)
+> =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c |=C2=A0 9 ++++=
++++++
+> =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h |=C2=A0 2 ++
+> =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c=C2=A0 | 10 ++++=
+++++++
+> =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.c=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 | 12 ++++++++++++
+> =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.h=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 |=C2=A0 4 ++++
+> =C2=A05 files changed, 37 insertions(+)
 >=20
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+> b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+> index 1994ea24f0be..f8bb8c4264f7 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+> @@ -789,6 +789,15 @@ static int rkvdec_hevc_run(struct rkvdec_ctx *ctx)
+> =C2=A0	writel(1, rkvdec->regs + RKVDEC_REG_PREF_LUMA_CACHE_COMMAND);
+> =C2=A0	writel(1, rkvdec->regs + RKVDEC_REG_PREF_CHR_CACHE_COMMAND);
+> =C2=A0
+> +	if (rkvdec->quirks & RKVDEC_QUIRK_DISABLE_QOS) {
+> +		u32 reg;
+> +
+> +		reg =3D readl(rkvdec->regs + RKVDEC_REG_QOS_CTRL);
+> +		reg |=3D 0xFFFF;
+> +		reg &=3D ~BIT(12);
+
+I wonder if there is a better way to express that, if not, a comment for fu=
+ture
+readers would be nice. If read it will, we keep the upper 16bit, and replac=
+ed
+the lower bits with 0xEFFF (all bits set except 12) ? I'd rather not spend =
+time
+thinking if I walk by this code again.
+
+> +		writel(reg, rkvdec->regs + RKVDEC_REG_QOS_CTRL);
+> +	}
+> +
+> =C2=A0	/* Start decoding! */
+> =C2=A0	reg =3D (run.pps->flags & V4L2_HEVC_PPS_FLAG_TILES_ENABLED) ?
+> =C2=A0		0 : RKVDEC_WR_DDR_ALIGN_EN;
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h
+> b/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h
+> index 540c8bdf24e4..c627b6b6f53a 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h
+> @@ -219,6 +219,8 @@
+> =C2=A0#define RKVDEC_REG_H264_ERR_E				0x134
+> =C2=A0#define RKVDEC_H264_ERR_EN_HIGHBITS(x)			((x) & 0x3fffffff)
+> =C2=A0
+> +#define RKVDEC_REG_QOS_CTRL				0x18C
+> +
+> =C2=A0#define RKVDEC_REG_PREF_LUMA_CACHE_COMMAND		0x410
+> =C2=A0#define RKVDEC_REG_PREF_CHR_CACHE_COMMAND		0x450
+> =C2=A0
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+> b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+> index 0e7e16f20eeb..cadb9d592308 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+> @@ -824,6 +824,16 @@ static int rkvdec_vp9_run(struct rkvdec_ctx *ctx)
+> =C2=A0	writel(1, rkvdec->regs + RKVDEC_REG_PREF_CHR_CACHE_COMMAND);
+> =C2=A0
+> =C2=A0	writel(0xe, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
+> +
+> +	if (rkvdec->quirks & RKVDEC_QUIRK_DISABLE_QOS) {
+> +		u32 reg;
+> +
+> +		reg =3D readl(rkvdec->regs + RKVDEC_REG_QOS_CTRL);
+> +		reg |=3D 0xFFFF;
+> +		reg &=3D ~BIT(12);
+> +		writel(reg, rkvdec->regs + RKVDEC_REG_QOS_CTRL);
+
+Can we deduplicate that ?
+
+> +	}
+> +
+> =C2=A0	/* Start decoding! */
+> =C2=A0	writel(RKVDEC_INTERRUPT_DEC_E | RKVDEC_CONFIG_DEC_CLK_GATE_E |
+> =C2=A0	=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 RKVDEC_TIMEOUT_E | RKVDEC_BUF=
+_EMPTY_E,
 > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
 > b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> index cfb326600a2d..e7b9dfc2d1ab 100644
+> index c20e046205fe..d61d4c419992 100644
 > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
 > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -14,6 +14,7 @@
-> =C2=A0#include <linux/iommu.h>
-> =C2=A0#include <linux/module.h>
-> =C2=A0#include <linux/of.h>
-> +#include <linux/of_device.h>
-> =C2=A0#include <linux/platform_device.h>
-> =C2=A0#include <linux/pm.h>
-> =C2=A0#include <linux/pm_runtime.h>
-> @@ -327,6 +328,7 @@ static const struct rkvdec_coded_fmt_desc
-> rkvdec_coded_fmts[] =3D {
-> =C2=A0		.ops =3D &rkvdec_hevc_fmt_ops,
-> =C2=A0		.num_decoded_fmts =3D ARRAY_SIZE(rkvdec_hevc_decoded_fmts),
-> =C2=A0		.decoded_fmts =3D rkvdec_hevc_decoded_fmts,
-> +		.capability =3D RKVDEC_CAPABILITY_HEVC,
-> =C2=A0	},
-> =C2=A0	{
-> =C2=A0		.fourcc =3D V4L2_PIX_FMT_H264_SLICE,
-> @@ -343,6 +345,7 @@ static const struct rkvdec_coded_fmt_desc
-> rkvdec_coded_fmts[] =3D {
-> =C2=A0		.num_decoded_fmts =3D ARRAY_SIZE(rkvdec_h264_decoded_fmts),
-> =C2=A0		.decoded_fmts =3D rkvdec_h264_decoded_fmts,
-> =C2=A0		.subsystem_flags =3D VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
-> +		.capability =3D RKVDEC_CAPABILITY_H264,
-> =C2=A0	},
-> =C2=A0	{
-> =C2=A0		.fourcc =3D V4L2_PIX_FMT_VP9_FRAME,
-> @@ -358,6 +361,7 @@ static const struct rkvdec_coded_fmt_desc
-> rkvdec_coded_fmts[] =3D {
-> =C2=A0		.ops =3D &rkvdec_vp9_fmt_ops,
-> =C2=A0		.num_decoded_fmts =3D ARRAY_SIZE(rkvdec_vp9_decoded_fmts),
-> =C2=A0		.decoded_fmts =3D rkvdec_vp9_decoded_fmts,
-> +		.capability =3D RKVDEC_CAPABILITY_VP9,
-> =C2=A0	}
+> @@ -1226,6 +1226,13 @@ static const struct rkvdec_variant
+> rk3288_rkvdec_variant =3D {
+> =C2=A0	.capabilities =3D RKVDEC_CAPABILITY_HEVC,
 > =C2=A0};
 > =C2=A0
-> @@ -1187,8 +1191,17 @@ static void rkvdec_watchdog_func(struct work_struc=
-t
-> *work)
-> =C2=A0	}
-> =C2=A0}
-> =C2=A0
-> +static const struct rkvdec_variant rk3399_rkvdec_variant =3D {
+> +static const struct rkvdec_variant rk3328_rkvdec_variant =3D {
 > +	.capabilities =3D RKVDEC_CAPABILITY_HEVC |
 > +			RKVDEC_CAPABILITY_H264 |
 > +			RKVDEC_CAPABILITY_VP9,
+> +	.quirks =3D RKVDEC_QUIRK_DISABLE_QOS,
 > +};
 > +
-> =C2=A0static const struct of_device_id of_rkvdec_match[] =3D {
-> -	{ .compatible =3D "rockchip,rk3399-vdec" },
+> =C2=A0static const struct rkvdec_variant rk3399_rkvdec_variant =3D {
+> =C2=A0	.capabilities =3D RKVDEC_CAPABILITY_HEVC |
+> =C2=A0			RKVDEC_CAPABILITY_H264 |
+> @@ -1237,6 +1244,10 @@ static const struct of_device_id of_rkvdec_match[]=
+ =3D {
+> =C2=A0		.compatible =3D "rockchip,rk3288-vdec",
+> =C2=A0		.data =3D &rk3288_rkvdec_variant,
+> =C2=A0	},
 > +	{
-> +		.compatible =3D "rockchip,rk3399-vdec",
-> +		.data =3D &rk3399_rkvdec_variant,
+> +		.compatible =3D "rockchip,rk3328-vdec",
+> +		.data =3D &rk3328_rkvdec_variant,
 > +	},
-> =C2=A0	{ /* sentinel */ }
-> =C2=A0};
-> =C2=A0MODULE_DEVICE_TABLE(of, of_rkvdec_match);
-> @@ -1199,16 +1212,22 @@ static const char * const rkvdec_clk_names[] =3D =
-{
-> =C2=A0
-> =C2=A0static int rkvdec_probe(struct platform_device *pdev)
-> =C2=A0{
-> +	const struct rkvdec_variant *variant;
-> =C2=A0	struct rkvdec_dev *rkvdec;
-> =C2=A0	unsigned int i;
-> =C2=A0	int ret, irq;
-> =C2=A0
-> +	variant =3D of_device_get_match_data(&pdev->dev);
-> +	if (!variant)
-> +		return -EINVAL;
-> +
-> =C2=A0	rkvdec =3D devm_kzalloc(&pdev->dev, sizeof(*rkvdec), GFP_KERNEL);
-> =C2=A0	if (!rkvdec)
-> =C2=A0		return -ENOMEM;
-> =C2=A0
+> =C2=A0	{
+> =C2=A0		.compatible =3D "rockchip,rk3399-vdec",
+> =C2=A0		.data =3D &rk3399_rkvdec_variant,
+> @@ -1267,6 +1278,7 @@ static int rkvdec_probe(struct platform_device *pde=
+v)
 > =C2=A0	platform_set_drvdata(pdev, rkvdec);
 > =C2=A0	rkvdec->dev =3D &pdev->dev;
-> +	rkvdec->capabilities =3D variant->capabilities;
+> =C2=A0	rkvdec->capabilities =3D variant->capabilities;
+> +	rkvdec->quirks =3D variant->quirks;
 > =C2=A0	mutex_init(&rkvdec->vdev_lock);
 > =C2=A0	INIT_DELAYED_WORK(&rkvdec->watchdog_work, rkvdec_watchdog_func);
 > =C2=A0
 > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
 > b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-> index c062c5c5bbb2..8e1f8548eae4 100644
+> index 8e1f8548eae4..e633a879e9bf 100644
 > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
 > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-> @@ -22,6 +22,10 @@
-> =C2=A0#include <media/videobuf2-core.h>
-> =C2=A0#include <media/videobuf2-dma-contig.h>
+> @@ -26,6 +26,8 @@
+> =C2=A0#define RKVDEC_CAPABILITY_H264		BIT(1)
+> =C2=A0#define RKVDEC_CAPABILITY_VP9		BIT(2)
 > =C2=A0
-> +#define RKVDEC_CAPABILITY_HEVC		BIT(0)
-> +#define RKVDEC_CAPABILITY_H264		BIT(1)
-> +#define RKVDEC_CAPABILITY_VP9		BIT(2)
+> +#define RKVDEC_QUIRK_DISABLE_QOS	BIT(0)
+
+Can you go back in the series, get H264 into bit 0, VP9 into bit 1, and set
+quirks from bit 16 ? Just worried the whole finding can becomes a mess in m=
+any
+years from now.
+
 > +
 > =C2=A0struct rkvdec_ctx;
 > =C2=A0
 > =C2=A0struct rkvdec_ctrl_desc {
-> @@ -63,6 +67,10 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
-> =C2=A0			=C2=A0=C2=A0=C2=A0 base.vb.vb2_buf);
-> =C2=A0}
+> @@ -69,6 +71,7 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
 > =C2=A0
-> +struct rkvdec_variant {
-> +	unsigned int capabilities;
-> +};
-> +
-> =C2=A0struct rkvdec_coded_fmt_ops {
-> =C2=A0	int (*adjust_fmt)(struct rkvdec_ctx *ctx,
-> =C2=A0			=C2=A0 struct v4l2_format *f);
-> @@ -98,6 +106,7 @@ struct rkvdec_coded_fmt_desc {
-> =C2=A0	unsigned int num_decoded_fmts;
-> =C2=A0	const struct rkvdec_decoded_fmt_desc *decoded_fmts;
-> =C2=A0	u32 subsystem_flags;
-> +	unsigned int capability;
+> =C2=A0struct rkvdec_variant {
+> =C2=A0	unsigned int capabilities;
+> +	unsigned int quirks;
 > =C2=A0};
 > =C2=A0
-> =C2=A0struct rkvdec_dev {
-> @@ -111,6 +120,7 @@ struct rkvdec_dev {
-> =C2=A0	struct mutex vdev_lock; /* serializes ioctls */
+> =C2=A0struct rkvdec_coded_fmt_ops {
+> @@ -121,6 +124,7 @@ struct rkvdec_dev {
 > =C2=A0	struct delayed_work watchdog_work;
 > =C2=A0	struct iommu_domain *empty_domain;
-> +	unsigned int capabilities;
+> =C2=A0	unsigned int capabilities;
+> +	unsigned int quirks;
 > =C2=A0};
 > =C2=A0
 > =C2=A0struct rkvdec_ctx {
 
-Should be simple to rebase Detlev branch on this.
-
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
-Nicolas
-
---=-4ob5lfPBWiqj644CEky9
+--=-XgQKcifX1OiDVJb6s0rw
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJpcgAAKCRBxUwItrAao
-HPOFAKCT39k8uSPBOkbzm22+zC2Ifh3IzwCgqcFkqJtyeg5Pg6Y2Zx9LHpHaAWQ=
-=rO8P
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJpfvQAKCRBxUwItrAao
+HLVgAJsH8oUucLfcANkIKv4oo/Vz0zJLBwCeI2+6leJHXw15GvEeMoCS91Q9L84=
+=9eMj
 -----END PGP SIGNATURE-----
 
---=-4ob5lfPBWiqj644CEky9--
+--=-XgQKcifX1OiDVJb6s0rw--
 
 
---===============0151924408091607178==
+--===============6439113396483170866==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -295,5 +314,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0151924408091607178==--
+--===============6439113396483170866==--
 
