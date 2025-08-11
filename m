@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFD4FCCD1AB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:01:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F7B0CCD1A5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:01:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C2cQKQ7Y4MbrTTpBemkWP6krKNQ16XcPdtE4awdaQCw=; b=N+c+i9r4gYLBs/
-	IyXlsD7nmtPYUgP/nBtEu/z09OAh/bXa520LnAsZD+P+Pwez0tetn6CenGkAa6U2Alem8JESB7U67
-	8VnAw7ZsofNXvzDCaWcPAW0NV0QecnGnszYDfout/6hO0hqD3aqtzpYLKbb+4/Tv7SHK4URWZAp2a
-	N1vmFjvjoVTZZjyP/Pr/arNlXZfq58/k6I6hjKb7Q1gqB2UFVbRHIBsp1UOImqSQJ/DZrpZ9b6j7o
-	GHGwaKpToRSisHu/0Y0eVwQG3LMwCoKzvDBDEPIzKRLIAjY6oxoVNs4JIdHqTf9Wf8ZO0+rBChr/+
-	7rGUCbQMHc//kiflRchw==;
+	List-Owner; bh=Q5UHE8MNpGGCPq1WB3ZIJo9g1AG9nnQ2ujIXbSfHo7M=; b=y9LxTsEjPpAZme
+	grxvnvqyVnGkc9Aq+genNzTIhO94+icpT/ihkUmTT5XZ9Lf5bQHkFuhdi+52LNQ0TVM6kvseODgQh
+	IYBuLTz5OpWH3Tm+aC4vCs53ROmcpIeuMLWzSLo6apwz92vrg1MHp3z17ue9Op9921ZCQm9xnMPBb
+	2kGEm4iGCEezzyiNJnLA/+ryP0sS22gxjJo1M8otGam+Iy72QoruBMjcfti0+TpCqBiO3g8s6dceD
+	co5f4LsRJRNlVOb6QZswNKiYs3F7gm0R/KzxHM2jNCOkJe2b4bgXXuqFoH64pqjaXltYOZH961Sj4
+	4fypx5MzqlBMbzqwrwEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoZv-0000000DEfR-0Npm;
-	Mon, 20 Oct 2025 12:01:34 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vAoa2-0000000DEnz-28G4;
+	Mon, 20 Oct 2025 12:01:38 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUIL-00000008Apz-3sOb;
+	id 1ulUII-00000008Am6-1CuQ;
 	Mon, 11 Aug 2025 15:18:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 229C162A37;
-	Mon, 11 Aug 2025 15:18:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id BD360C4FDF5;
-	Mon, 11 Aug 2025 15:18:30 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 81114460B4;
+	Mon, 11 Aug 2025 15:18:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 3CE7AC16AAE;
+	Mon, 11 Aug 2025 15:18:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1754925510;
-	bh=vYA80ZelHu2ZuRxqrvuEPthKFA7gwtWe5SoG73umt/A=;
+	s=k20201202; t=1754925509;
+	bh=Ni7iMR/gcMs2MBpdzBDwa4mllZNv//irbxhFfI1KYnA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=VgIUQqf+Qd7taIQZQMW26jfUke6DJqv4FIHCOhEifXcAltqki2SHIaoMq2rwL2bC6
-	 q06tiudYjR3WLdLAcgcByhPQ9/Q/NG46wMvR7f2c2H5DcomcAkqH19nyfgCqHMxB/v
-	 PWARrw7MPw5xTEhSQwMc6Vgm3Se8m4tmyaZLkHhHHJjf/KEKEqbWp5rwTVVao9gXpB
-	 qR5H/w4aL3FIAv3O1xe6EBwnVn6L4kPXGfQIhdOqeAaHmpVVvdjfyRVzFb6PgPr83K
-	 akZ/WCSnmQzrX101fLZ6GAEDGoLTX3gOJOQUsX2ADnZqt91HU2HB2kSsrs9ENQA70G
-	 wcLiatpmpLTZg==
+	b=M2riG3oRhKGNUD2LZBa1fjbXgn/fjlUk2AhLKngKAUcEifxVaBKYRPEzEEWtvYhqZ
+	 L+l9ClgKQv5soxFJva1eaxJ+Rg4L16A4kn7Ed7zQVwGn/42/PA5RLWs7Mlq8piP/1R
+	 jotuQ6ZqhZ7B2nPe6EwdxmRzOTnBEL+oEEuI71qf0N8mlo+PASJRTVeg+P/LeimKYu
+	 iQ695YKZmPMa6Xar2NA+EgDSbNv1wk53+ngyAPG17A/7pf9DHfcHDjv86cL32cLtK6
+	 v6/k06l5UXVj/7YYX00C1ooM57AtiKfRjSw1Fx1Lz6JxZLf9jjVLBJFRKy0nHLyDtx
+	 wiNA/4FFaksRw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E9B7CA0EC4;
-	Mon, 11 Aug 2025 15:18:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 249D0C87FDA;
+	Mon, 11 Aug 2025 15:18:29 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:18:45 -0400
-Subject: [PATCH 053/114] clk: sprd: div: convert from round_rate() to
+Date: Mon, 11 Aug 2025 11:18:30 -0400
+Subject: [PATCH 038/114] clk: nxp: lpc32xx: convert from round_rate() to
  determine_rate()
 MIME-Version: 1.0
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-53-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-38-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -115,16 +115,19 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=1521;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925498; l=6059;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=k3pms/XRU1mNa9tg+/+IC7mp+Tyl74X/Bc0zkHgzvtw=;
- b=drK9ZeTSL+Vu3bHNx/1pSM4otvnZZYtWL6bsGu4xhHMdQqdlnpChUHORtZCT/l06o2OkC7d0u
- OMP27NgZZU9AoN8xV+PrHOmeH5vox/A6KvfYR2l5Gc4hlWJ2WzxVxk3
+ bh=YxynVzkyPZRrZ82G9A83/RABd7O8AIkJ8pb4WFyD5hw=;
+ b=PGO7la2BB8ew31Vs/bwIlzD2D0ymX1Q1+3u1m0r5eZkYODY7SUcVTAdbIeJLQKiY/Jb3tvW6T
+ 6KaOJUyUzoUAlcq+gW8KJdYX5NoT3nKQRp+KUcYc9WNfrCsVXwdqCWp
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
  auth_id=472
 X-Original-From: Brian Masney <bmasney@redhat.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250811_081838_554436_C73881D6 
+X-CRM114-Status: GOOD (  16.94  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:17 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -149,45 +152,170 @@ The round_rate() clk ops is deprecated, so migrate this driver from
 round_rate() to determine_rate() using the Coccinelle semantic patch
 on the cover letter of this series.
 
+Note that the changes involving LPC32XX_DEFINE_PLL_OPS were done
+by hand.
+
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/sprd/div.c | 13 ++++++++-----
- 1 file changed, 8 insertions(+), 5 deletions(-)
+ drivers/clk/nxp/clk-lpc32xx.c | 59 ++++++++++++++++++++++++-------------------
+ 1 file changed, 33 insertions(+), 26 deletions(-)
 
-diff --git a/drivers/clk/sprd/div.c b/drivers/clk/sprd/div.c
-index 936782c241271832c0a1957c99cbecc287351d1b..013423881968002d29c4e9536e7cd7b944779196 100644
---- a/drivers/clk/sprd/div.c
-+++ b/drivers/clk/sprd/div.c
-@@ -9,13 +9,16 @@
+diff --git a/drivers/clk/nxp/clk-lpc32xx.c b/drivers/clk/nxp/clk-lpc32xx.c
+index e00f270bc6aa813b395d9fddb15c6bcb2ded0936..9df8183cf24972fda3aea30166c628880af7f474 100644
+--- a/drivers/clk/nxp/clk-lpc32xx.c
++++ b/drivers/clk/nxp/clk-lpc32xx.c
+@@ -579,17 +579,17 @@ static int clk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 	return regmap_update_bits(clk_regmap, clk->reg, 0x1FFFF, val);
+ }
  
- #include "div.h"
- 
--static long sprd_div_round_rate(struct clk_hw *hw, unsigned long rate,
--				unsigned long *parent_rate)
-+static int sprd_div_determine_rate(struct clk_hw *hw,
-+				   struct clk_rate_request *req)
+-static long clk_hclk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+-				    unsigned long *parent_rate)
++static int clk_hclk_pll_determine_rate(struct clk_hw *hw,
++				       struct clk_rate_request *req)
  {
- 	struct sprd_div *cd = hw_to_sprd_div(hw);
+ 	struct lpc32xx_pll_clk *clk = to_lpc32xx_pll_clk(hw);
+-	u64 m_i, o = rate, i = *parent_rate, d = (u64)rate << 6;
++	u64 m_i, o = req->rate, i = req->best_parent_rate, d = (u64) req->rate << 6;
+ 	u64 m = 0, n = 0, p = 0;
+ 	int p_i, n_i;
  
--	return divider_round_rate(&cd->common.hw, rate, parent_rate, NULL,
--				  cd->div.width, 0);
-+	req->rate = divider_round_rate(&cd->common.hw, req->rate,
-+				       &req->best_parent_rate,
-+				       NULL, cd->div.width, 0);
+-	pr_debug("%s: %lu/%lu\n", clk_hw_get_name(hw), *parent_rate, rate);
++	pr_debug("%s: %lu/%lu\n", clk_hw_get_name(hw), req->best_parent_rate, req->rate);
+ 
+-	if (rate > 266500000)
++	if (req->rate > 266500000)
+ 		return -EINVAL;
+ 
+ 	/* Have to check all 20 possibilities to find the minimal M */
+@@ -614,9 +614,9 @@ static long clk_hclk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+ 		}
+ 	}
+ 
+-	if (d == (u64)rate << 6) {
++	if (d == (u64) req->rate << 6) {
+ 		pr_err("%s: %lu: no valid PLL parameters are found\n",
+-		       clk_hw_get_name(hw), rate);
++		       clk_hw_get_name(hw), req->rate);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -634,22 +634,25 @@ static long clk_hclk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+ 
+ 	if (!d)
+ 		pr_debug("%s: %lu: found exact match: %llu/%llu/%llu\n",
+-			 clk_hw_get_name(hw), rate, m, n, p);
++			 clk_hw_get_name(hw), req->rate, m, n, p);
+ 	else
+ 		pr_debug("%s: %lu: found closest: %llu/%llu/%llu - %llu\n",
+-			 clk_hw_get_name(hw), rate, m, n, p, o);
++			 clk_hw_get_name(hw), req->rate, m, n, p, o);
+ 
+-	return o;
++	req->rate = o;
 +
 +	return 0;
  }
  
- unsigned long sprd_div_helper_recalc_rate(struct sprd_clk_common *common,
-@@ -75,7 +78,7 @@ static int sprd_div_set_rate(struct clk_hw *hw, unsigned long rate,
+-static long clk_usb_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+-				   unsigned long *parent_rate)
++static int clk_usb_pll_determine_rate(struct clk_hw *hw,
++				      struct clk_rate_request *req)
+ {
+ 	struct lpc32xx_pll_clk *clk = to_lpc32xx_pll_clk(hw);
+ 	struct clk_hw *usb_div_hw, *osc_hw;
+ 	u64 d_i, n_i, m, o;
  
- const struct clk_ops sprd_div_ops = {
- 	.recalc_rate = sprd_div_recalc_rate,
--	.round_rate = sprd_div_round_rate,
-+	.determine_rate = sprd_div_determine_rate,
- 	.set_rate = sprd_div_set_rate,
+-	pr_debug("%s: %lu/%lu\n", clk_hw_get_name(hw), *parent_rate, rate);
++	pr_debug("%s: %lu/%lu\n", clk_hw_get_name(hw), req->best_parent_rate,
++		 req->rate);
+ 
+ 	/*
+ 	 * The only supported USB clock is 48MHz, with PLL internal constraints
+@@ -657,7 +660,7 @@ static long clk_usb_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+ 	 * and post-divider must be 4, this slightly simplifies calculation of
+ 	 * USB divider, USB PLL N and M parameters.
+ 	 */
+-	if (rate != 48000000)
++	if (req->rate != 48000000)
+ 		return -EINVAL;
+ 
+ 	/* USB divider clock */
+@@ -685,30 +688,30 @@ static long clk_usb_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+ 			clk->m_div = m;
+ 			clk->p_div = 2;
+ 			clk->mode = PLL_NON_INTEGER;
+-			*parent_rate = div64_u64(o, d_i);
++			req->best_parent_rate = div64_u64(o, d_i);
+ 
+-			return rate;
++			return 0;
+ 		}
+ 	}
+ 
+ 	return -EINVAL;
+ }
+ 
+-#define LPC32XX_DEFINE_PLL_OPS(_name, _rc, _sr, _rr)			\
++#define LPC32XX_DEFINE_PLL_OPS(_name, _rc, _sr, _dr)			\
+ 	static const struct clk_ops clk_ ##_name ## _ops = {		\
+ 		.enable = clk_pll_enable,				\
+ 		.disable = clk_pll_disable,				\
+ 		.is_enabled = clk_pll_is_enabled,			\
+ 		.recalc_rate = _rc,					\
+ 		.set_rate = _sr,					\
+-		.round_rate = _rr,					\
++		.determine_rate = _dr,					\
+ 	}
+ 
+ LPC32XX_DEFINE_PLL_OPS(pll_397x, clk_pll_397x_recalc_rate, NULL, NULL);
+ LPC32XX_DEFINE_PLL_OPS(hclk_pll, clk_pll_recalc_rate,
+-		       clk_pll_set_rate, clk_hclk_pll_round_rate);
++		       clk_pll_set_rate, clk_hclk_pll_determine_rate);
+ LPC32XX_DEFINE_PLL_OPS(usb_pll,  clk_pll_recalc_rate,
+-		       clk_pll_set_rate, clk_usb_pll_round_rate);
++		       clk_pll_set_rate, clk_usb_pll_determine_rate);
+ 
+ static int clk_ddram_is_enabled(struct clk_hw *hw)
+ {
+@@ -955,8 +958,8 @@ static unsigned long clk_divider_recalc_rate(struct clk_hw *hw,
+ 				   divider->flags, divider->width);
+ }
+ 
+-static long clk_divider_round_rate(struct clk_hw *hw, unsigned long rate,
+-				unsigned long *prate)
++static int clk_divider_determine_rate(struct clk_hw *hw,
++				      struct clk_rate_request *req)
+ {
+ 	struct lpc32xx_clk_div *divider = to_lpc32xx_div(hw);
+ 	unsigned int bestdiv;
+@@ -968,11 +971,15 @@ static long clk_divider_round_rate(struct clk_hw *hw, unsigned long rate,
+ 		bestdiv &= div_mask(divider->width);
+ 		bestdiv = _get_div(divider->table, bestdiv, divider->flags,
+ 			divider->width);
+-		return DIV_ROUND_UP(*prate, bestdiv);
++		req->rate = DIV_ROUND_UP(req->best_parent_rate, bestdiv);
++
++		return 0;
+ 	}
+ 
+-	return divider_round_rate(hw, rate, prate, divider->table,
+-				  divider->width, divider->flags);
++	req->rate = divider_round_rate(hw, req->rate, &req->best_parent_rate,
++				       divider->table, divider->width, divider->flags);
++
++	return 0;
+ }
+ 
+ static int clk_divider_set_rate(struct clk_hw *hw, unsigned long rate,
+@@ -991,7 +998,7 @@ static int clk_divider_set_rate(struct clk_hw *hw, unsigned long rate,
+ 
+ static const struct clk_ops lpc32xx_clk_divider_ops = {
+ 	.recalc_rate = clk_divider_recalc_rate,
+-	.round_rate = clk_divider_round_rate,
++	.determine_rate = clk_divider_determine_rate,
+ 	.set_rate = clk_divider_set_rate,
  };
- EXPORT_SYMBOL_GPL(sprd_div_ops);
+ 
 
 -- 
 2.50.1
