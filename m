@@ -4,66 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65704CA0ECD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 15:48:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96D01CA0ED1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Aug 2025 16:36:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=frCiTAMNjsdP1MFHF990CCSVcVFUSFsyD8FxM12tlok=; b=2f63AoE/ohKZLv
-	79TCWuN7qgt6KgEsenmlV+dpeJXyYxR4kenmZ1SLB4CQKw0vsSlPaT22AyeDHdo0YPsETAN21fQab
-	/Hvhv1gWYcc3eBlYIg9h7xZn0YJPlxAVkW7sejy/mGHXtU5qYnEvNHC4dtWIIkcsvVoOgA2uVIGa9
-	2QcONl/dymIfy6sXGVJcIg+lvwKIA5ObPKVestsz08rp32BL3gH+/tUMYxnBYx663S5L6lHoFgWOw
-	hOUzJ3SBHtAenmCuUMLTNbgx/ZWSg7KoNBWR8lOk17Wl8OSv+pD6tCCjWZyIWNolg0eSNFg2xFhs0
-	AejmeSwyD06hv90gIG+w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZRurQJFSdft3Di51eAn74nws8L+V1z6iNHIOwvoBl7g=; b=wrkW4PqzL8e5MRkU0eyQcta4Ya
+	IaBhznJT1GJvazySC7XGEi+kAAUqXLl6TFHJcHM6xFTSHVC97hO0jgdpdaGqtWQVAiyK1LYnLK+41
+	aP4LB9K+wQGpDbshvCJV0v69EpdAu0beF+C7dAbPHNTnSp3A/Dwk4pI98ADb+37CWN1VePpPZmzOy
+	hH1lyRYTMZruy5K5EBRJDHr4vQlQZbePGp5s60Dd1pt0SpDI/A4FzG9niBt6WTBj6ilronxt0G+Y2
+	jPMFyhlLGqwdKnRssBbTUQ1GfSnI8kyrgRPu3ZDrlsy1D+SrEnVgINhnmNPDGWqlqJOkotopNbrUY
+	sPpn36Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUkv-00000008G11-2Jqr;
-	Mon, 11 Aug 2025 15:48:13 +0000
+	id 1ulVVm-00000008Qf2-0qxa;
+	Mon, 11 Aug 2025 16:36:38 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulT8L-00000007wPC-1VbG;
-	Mon, 11 Aug 2025 14:04:19 +0000
+	id 1ulTO8-000000080ZD-0H3l
+	for linux-rockchip@lists.infradead.org;
+	Mon, 11 Aug 2025 14:20:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1754921054;
-	bh=mObt81GrRK+X8Psfo4s7r7KxlJhLpHXzeRP0v136YbQ=;
-	h=From:Date:Subject:To:Cc:From;
-	b=Ar/QfdpGhFIgKMPfBQO6fOB56tqH0MPqFO8JMMXqRnBSNjkwyWOD1Yh1qX/ju19JC
-	 rmdiulGZIjBK/SS0YIVy0DXOlADWSiLaqMsylywhF73t2rFeEUmyVt/rXCLfhccO69
-	 s7bCVd5cRefWnJmNHD/yACf4U0QW2upDYWx0sF00GB+/XoP2KIzQhQG+d4Oauk/Rdf
-	 twEzz35wD9UTw61EqVsV+LPfa4cAuzAWv7UMCmvJ9b/PepGwOfjQ5OyBG+PlzgIQGo
-	 mVrjjcImbfWv5/HMzchdcQTo0QvZrS+k19YmZP9Xkv0L0Trou73S279JOrsvVLZt8/
-	 jcjcwiEP0dMoA==
-Received: from [192.168.13.180] (unknown [IPv6:2606:6d00:11:5a76::c41])
+	s=mail; t=1754922034;
+	bh=vEIDG6maACRIeiu15+qMeYtnTf+etWbiNRijwscZcks=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=Dt+boeMRuEDjhLpS6TPx5pKodwyAD8lvIjdJ4FjrvbyC4WEp4qbN8o7qNGNX+8faf
+	 ZNsDPw5VQJx40hnZcUAn9BaBGiwYIy+vnUeqXq8rsIej4T5RTmHZoTNnqp3K5b/F+E
+	 gVtYKR0GGVkB0chU/DbAXvfZveSA0eoUTKIV3yxQJvhEnUSkPoOBAmdrJ+2f7ba+Gp
+	 c1b7x+GTWYp8Mfg7Fp1KcOwKpVxpq8vQz8DGUTJ5oxD1jn3gL0JO4rNHsVlG/11eD1
+	 adF+OOGxDQordLntdCafZAYXn+5XE+o3HJayKFM19+ZS774YKEnQOpcHQu/D1C9tYm
+	 RO2hg9Up98F0w==
+Received: from [IPv6:2606:6d00:11:5a76::c41] (unknown [IPv6:2606:6d00:11:5a76::c41])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2866A17E0FA8;
-	Mon, 11 Aug 2025 16:04:13 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0636317E090E;
+	Mon, 11 Aug 2025 16:20:32 +0200 (CEST)
+Message-ID: <0a0834d23f3d6d339bc26b73e2af6fe038e7deab.camel@collabora.com>
+Subject: Re: [PATCH] media: rkvdec: Fix a NULL vs IS_ERR() bug in probe()
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Date: Mon, 11 Aug 2025 10:03:45 -0400
-Subject: [PATCH v2] media: rkvdec: Remove redundant
+To: Dan Carpenter <dan.carpenter@linaro.org>, Ezequiel Garcia
+	 <ezequiel@vanguardiasur.com.ar>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman
+	 <gregkh@linuxfoundation.org>, Hans Verkuil <hverkuil@xs4all.nl>, Detlev
+ Casanova <detlev.casanova@collabora.com>, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
+Date: Mon, 11 Aug 2025 10:20:31 -0400
+In-Reply-To: <696219e9-a1c7-4c87-b15c-1ffd42c95d58@sabinyo.mountain>
+References: <696219e9-a1c7-4c87-b15c-1ffd42c95d58@sabinyo.mountain>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
+ oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
+ zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
+ TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
+ 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
+ 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
+ cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
+ tHYWTDxBOP5peztyc2PqeKsLsLWzAr7QnTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVz
+ bmUuY2E+iGIEExECACIFAlXA3CACGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sB
+ qgcJngAnRDBTr8bhzuH0KQwFP1nEYtfgpKdAKCrQ/sJfuG/8zsd7J8wVl7y3e8ARbRDTmljb2xhcy
+ BEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29
+ tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCg
+ zYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc
+ 25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udW
+ s+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8
+ An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZy
+ ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJC
+ AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypw
+ CfWKc9DorA9f5pyYlD5pQo6SgSoiC0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF
+ 1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkI
+ BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr
+ +E7ItOqZEHAs+xabBgknYZIFPU=
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-Message-Id: <20250811-rkvdec-redundant-pm-rebase-v2-1-90c47213fbbe@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAED4mWgC/x3MQQqDMBAF0KvIrDsQA0L0KqWL6Hx1EFOZtFII3
- r3B5du8QhmmyDQ0hQynZn2nCv9oaFpjWsAq1eSd71xoW7btFExskG+SmD587BVjzGBIP4bQAVG
- EanAYZv3d+fN1XX81p9RAbAAAAA==
-X-Change-ID: 20250811-rkvdec-redundant-pm-rebase-ed9b885eeadd
-To: Detlev Casanova <detlev.casanova@collabora.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_070417_562687_D023DEBB 
-X-CRM114-Status: UNSURE (   9.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250811_072036_261388_BFE54B51 
+X-CRM114-Status: GOOD (  16.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,51 +97,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0471873108360042238=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
 
-pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
-pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
-to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
-pm_runtime_mark_last_busy().
+--===============0471873108360042238==
+Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
+	boundary="=-zVq3E96LLIkOM0QvJy4y"
 
-Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
-Changes since V1:
-  - Re-applied since the driver have been moved out of staging
----
- drivers/media/platform/rockchip/rkvdec/rkvdec.c | 1 -
- 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-index d707088ec0dc1f6a18b2d168ebdf20b443f2240e..445f7c92eee34f7d6f885bb519d9eb24313da548 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-@@ -765,7 +765,6 @@ static void rkvdec_job_finish(struct rkvdec_ctx *ctx,
- {
- 	struct rkvdec_dev *rkvdec = ctx->dev;
- 
--	pm_runtime_mark_last_busy(rkvdec->dev);
- 	pm_runtime_put_autosuspend(rkvdec->dev);
- 	rkvdec_job_finish_no_pm(ctx, result);
- }
+--=-zVq3E96LLIkOM0QvJy4y
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
----
-base-commit: 8f5ae30d69d7543eee0d70083daf4de8fe15d585
-change-id: 20250811-rkvdec-redundant-pm-rebase-ed9b885eeadd
+Hi Dan,
 
-Best regards,
--- 
-Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Le mercredi 25 juin 2025 =C3=A0 10:23 -0500, Dan Carpenter a =C3=A9crit=C2=
+=A0:
+> The iommu_paging_domain_alloc() function doesn't return NULL on error it
+> returns error pointers.=C2=A0 Update the check and then set ->empty_domai=
+n to
+> NULL because the rest of the driver assumes it can be NULL.
+>=20
+> Fixes: ff8c5622f9f7 ("media: rkvdec: Restore iommu addresses on errors")
+> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+> ---
+> =C2=A0drivers/staging/media/rkvdec/rkvdec.c | 4 +++-
 
+I've re-applied to the now de-staged driver, and will send that as fixes fo=
+r
+6.17.
+
+thanks,
+Nicolas
+
+> =C2=A01 file changed, 3 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/staging/media/rkvdec/rkvdec.c
+> b/drivers/staging/media/rkvdec/rkvdec.c
+> index d707088ec0dc..1b7f27e4d961 100644
+> --- a/drivers/staging/media/rkvdec/rkvdec.c
+> +++ b/drivers/staging/media/rkvdec/rkvdec.c
+> @@ -1162,8 +1162,10 @@ static int rkvdec_probe(struct platform_device *pd=
+ev)
+> =C2=A0	if (iommu_get_domain_for_dev(&pdev->dev)) {
+> =C2=A0		rkvdec->empty_domain =3D iommu_paging_domain_alloc(rkvdec-
+> >dev);
+> =C2=A0
+> -		if (!rkvdec->empty_domain)
+> +		if (IS_ERR(rkvdec->empty_domain)) {
+> +			rkvdec->empty_domain =3D NULL;
+> =C2=A0			dev_warn(rkvdec->dev, "cannot alloc new empty
+> domain\n");
+> +		}
+> =C2=A0	}
+> =C2=A0
+> =C2=A0	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+
+--=-zVq3E96LLIkOM0QvJy4y
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJn8LwAKCRBxUwItrAao
+HJkYAKCtvUQZ5z1RoybjCWS8gUg8D6MFYgCgljilOqw9QLf/xqvyixDpZsUTlyk=
+=K30S
+-----END PGP SIGNATURE-----
+
+--=-zVq3E96LLIkOM0QvJy4y--
+
+
+--===============0471873108360042238==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0471873108360042238==--
+
