@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DD44CCD1AA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:00:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EA10CCD1A7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:00:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AnKl+XgdLdZNV44xO1SPD+FNLwehLg1iSEKwpi3kjaM=; b=ByOHNY4V7AHZDA
-	hitrydXMDmpX0RAtSRELiZwLY5Yol5nqJ+qIZO6sZcDZapP7Yn4JRg/SjL7Xtv7SGLhJcR/oLTc0m
-	GHICgIcgCLW69ROYx5/ZFtMquG4QpKufm6nuDN/SDDIOt0R1eqkJmF4a1A60MDYoSWX/QMyNXA85B
-	Skq5DeFLmAUrNDteSUcakEs92BBOhI69atLKW07SUcn2byBtISdUDmN29bvymtK9GWW0FAO/l5jCG
-	gBOx3z0Az9yKq+TiOecMdNWFuxWRPKCqokF1Tt5zrzWWZqv2J/ZdYx2h39PAmLZQIt1R6J3ioVOij
-	fhUTbmvyqsVGOiw87UKg==;
+	List-Owner; bh=RiW6xHn+gBN/kn+m4GdAYuW5nC7YVdFwoNR8fka3KuE=; b=muT9/3+cQ0AEdh
+	gAUwR8828COTVzLlTvFWaX0cBzvOp6fYr/GtfursNMt7Zm4sLrkBTNeOBWFR+rjzLH0Bur1BHhp4f
+	bb7qwnmkwWtxF8w2rfgYTOtV2pxGjC3x6Fl6jaNA6cGhX5FTTjgs8JfvANzV2n84ekW4ue3WhgX+R
+	JTu4NYNN8pnL4tvXosMKxtsXPP+3BO2YoKKIDGYHcAZvDOfQ7jJWk3C3M7l2b1SmBPXUpyWOSHsMh
+	EKLfuFDmo9SPF7W+YANhuKa+EmBVyoiWws5zMNNytu6/Vs8yzWafyivXMLdOe27yYiqMj0hgRjoQV
+	IaD2z1TrdNm6Gl4oX7TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoYV-0000000DCus-3Tmm;
-	Mon, 20 Oct 2025 12:00:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1vAoYX-0000000DCyf-1t9r;
+	Mon, 20 Oct 2025 12:00:06 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulUI9-00000008AYu-019p;
-	Mon, 11 Aug 2025 15:18:31 +0000
+	id 1ulUI9-00000008AYk-01CF;
+	Mon, 11 Aug 2025 15:18:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2E2235C5550;
-	Mon, 11 Aug 2025 15:18:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id D865FC113CF;
+	by nyc.source.kernel.org (Postfix) with ESMTP id 97B58A57275;
+	Mon, 11 Aug 2025 15:18:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 03ACFC4CEF8;
 	Mon, 11 Aug 2025 15:18:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1754925507;
-	bh=MzHLgVmKNa5PIg7HU99Xpn5O/IxxNAFjxoNdOfTPe98=;
+	bh=pMSzs+LLQG/nV8KzlANIdjdPWA+TqzqMKv3U3QB7ebM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=g/k/KnWEmB9PBwfARWiW5NjmKibxW1st9m8CTiJwkFTbMCjCTcbf2tAWcxlRgc4ZP
-	 gxWxpNQKoLQDuhaLorUGFqbSFCF0Il876eLiktJp/qOGeT1J5e0Nk7JkeVLDuedMkr
-	 zHACDoxjTFYPkW310PUEjmv+qs9eJdtD4C+kfjttqf4Hv0mLtcTatr5hLqHP8v8Por
-	 3o4DTOM0M7/WxFApLoNxqBZbURyWRtyuZGekIZWTqm8tzrYtEO3kyhKqA9KWP2IqiC
-	 U12RGV6z/E66Udn0abi7TcWWNjHyivElaxYltn9ICxYcprWZQiy8QKAe1Ee226o6qp
-	 T+EnAD1AYgcKA==
+	b=plhY4fja1ygSEJLSTJG8dQiEYHuFNFBe4XitmxVdlN7Ea1SuHiLQ69WnavKsQJ17V
+	 oRz+pZtQZyJ3ejlPs/TLItv9IDYszXPdXxvG+N/ebx470Ps3J+xuJmcjf5I4xNWWc/
+	 Y2Kuz/5C7Aaz2wVTfkTeB/Lbirhp90Y53kVE17p3ie7YryF4BQcPdgdfGHKQ85D3/p
+	 q8hKOKXeismBM7HQT1kZBfc2BkgmrzcI0wWIck82/rRtq30qKXnGRZ0bfCKH7hqUYj
+	 lU/Ew8qxiTgMOXcEhRpD1C+m/5hGGcZWgaEKcmyjB8O3XIJd3TbsR1T3toNrrwmkmC
+	 It0oL8UEH64Fw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B1AC1C87FDA;
-	Mon, 11 Aug 2025 15:18:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E66AEC87FD2;
+	Mon, 11 Aug 2025 15:18:26 +0000 (UTC)
 From: Brian Masney via B4 Relay <devnull+bmasney.redhat.com@kernel.org>
-Date: Mon, 11 Aug 2025 11:18:17 -0400
-Subject: [PATCH 025/114] clk: lmk04832: convert from round_rate() to
- determine_rate()
+Date: Mon, 11 Aug 2025 11:18:11 -0400
+Subject: [PATCH 019/114] clk: hisilicon: hi3660-stub: move comma from
+ declaration of DEFINE_CLK_STUB()
 MIME-Version: 1.0
-Message-Id: <20250811-clk-for-stephen-round-rate-v1-25-b3bf97b038dc@redhat.com>
+Message-Id: <20250811-clk-for-stephen-round-rate-v1-19-b3bf97b038dc@redhat.com>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -115,20 +115,20 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
  Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925497; l=4980;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1754925497; l=1857;
  i=bmasney@redhat.com; s=20250528; h=from:subject:message-id;
- bh=9O7D+PzW9sSLSVVFExkKFtyqAN3GMPP9N1Dgoo8gkGE=;
- b=aTysmohN1diC+9F+HZIE9SMH2yR9uD+qUQYPgc/TmgS71HgDgduLFTAqtgB5vPpvM7xP6sPqI
- /yX/An0BW1gDNQTvoe0ZtjY60AtJ1VWZrDIcLQpk/BNuOK1JQWH2xOW
+ bh=pA5mClIAqWRD8xr23+LW8paHRk4bx6Ip6j+lR6gsEH4=;
+ b=/4xa+9ZPbf1YpEA8q63RlWiisStSIhIqYd5eTHQrEvH3tDR3ww5drLjmHYBPoDFxS5vVEOwzG
+ iA8xPx+82hLBFeEgQKvF4kjQtv0Kp39kEqcfrO9GEkgnniXf6kRNkKx
 X-Developer-Key: i=bmasney@redhat.com; a=ed25519;
  pk=x20f2BQYftANnik+wvlm4HqLqAlNs/npfVcbhHPOK2U=
 X-Endpoint-Received: by B4 Relay for bmasney@redhat.com/20250528 with
  auth_id=472
 X-Original-From: Brian Masney <bmasney@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_081829_301583_861C8C34 
-X-CRM114-Status: GOOD (  14.99  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:08 -0700
+X-CRM114-CacheID: sfid-20250811_081829_341278_74F76011 
+X-CRM114-Status: GOOD (  14.81  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:10 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,156 +148,46 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Brian Masney <bmasney@redhat.com>
 
-The round_rate() clk ops is deprecated, so migrate this driver from
-round_rate() to determine_rate() using the Coccinelle semantic patch
-on the cover letter of this series.
+When trying to use Coccinelle to make changes inside drivers/clk/, it
+really does not like the trailing comma at the end of the declaration
+of DEFINE_CLK_STUB, and fails to process this file. It also looks weird
+to not have commas to separate the various array members of
+hi3660_stub_clks. Let's move the trailing comma out of the define so
+that Coccinelle can be ran against this source file.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/clk/clk-lmk04832.c | 53 +++++++++++++++++++++++++++-------------------
- 1 file changed, 31 insertions(+), 22 deletions(-)
+ drivers/clk/hisilicon/clk-hi3660-stub.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/clk/clk-lmk04832.c b/drivers/clk/clk-lmk04832.c
-index 2bcf422f0b04e6789993849b1d80123872978418..b2107b31efa28ee93e83639d220a8bcaaeab49e4 100644
---- a/drivers/clk/clk-lmk04832.c
-+++ b/drivers/clk/clk-lmk04832.c
-@@ -491,28 +491,33 @@ static long lmk04832_calc_pll2_params(unsigned long prate, unsigned long rate,
- 	return DIV_ROUND_CLOSEST(prate * 2 * pll2_p * pll2_n, pll2_r);
- }
+diff --git a/drivers/clk/hisilicon/clk-hi3660-stub.c b/drivers/clk/hisilicon/clk-hi3660-stub.c
+index 3a653d54bee0562d26d0de1dd31525786d05d40d..b0a996385301af7bcce231be9e7d5092dd21c3ac 100644
+--- a/drivers/clk/hisilicon/clk-hi3660-stub.c
++++ b/drivers/clk/hisilicon/clk-hi3660-stub.c
+@@ -34,7 +34,7 @@
+ 			.num_parents = 0,			\
+ 			.flags = CLK_GET_RATE_NOCACHE,		\
+ 		},						\
+-	},
++	}
  
--static long lmk04832_vco_round_rate(struct clk_hw *hw, unsigned long rate,
--				    unsigned long *prate)
-+static int lmk04832_vco_determine_rate(struct clk_hw *hw,
-+				       struct clk_rate_request *req)
- {
- 	struct lmk04832 *lmk = container_of(hw, struct lmk04832, vco);
- 	unsigned int n, p, r;
- 	long vco_rate;
- 	int ret;
+ #define to_stub_clk(_hw) container_of(_hw, struct hi3660_stub_clk, hw)
  
--	ret = lmk04832_check_vco_ranges(lmk, rate);
-+	ret = lmk04832_check_vco_ranges(lmk, req->rate);
- 	if (ret < 0)
- 		return ret;
- 
--	vco_rate = lmk04832_calc_pll2_params(*prate, rate, &n, &p, &r);
-+	vco_rate = lmk04832_calc_pll2_params(req->best_parent_rate, req->rate,
-+					     &n, &p, &r);
- 	if (vco_rate < 0) {
- 		dev_err(lmk->dev, "PLL2 parameters out of range\n");
--		return vco_rate;
-+		req->rate = vco_rate;
-+
-+		return 0;
- 	}
- 
--	if (rate != vco_rate)
-+	if (req->rate != vco_rate)
- 		return -EINVAL;
- 
--	return vco_rate;
-+	req->rate = vco_rate;
-+
-+	return 0;
- }
- 
- static int lmk04832_vco_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -579,7 +584,7 @@ static const struct clk_ops lmk04832_vco_ops = {
- 	.prepare = lmk04832_vco_prepare,
- 	.unprepare = lmk04832_vco_unprepare,
- 	.recalc_rate = lmk04832_vco_recalc_rate,
--	.round_rate = lmk04832_vco_round_rate,
-+	.determine_rate = lmk04832_vco_determine_rate,
- 	.set_rate = lmk04832_vco_set_rate,
+@@ -102,10 +102,10 @@ static const struct clk_ops hi3660_stub_clk_ops = {
  };
  
-@@ -888,25 +893,27 @@ static unsigned long lmk04832_sclk_recalc_rate(struct clk_hw *hw,
- 	return DIV_ROUND_CLOSEST(prate, sysref_div);
- }
- 
--static long lmk04832_sclk_round_rate(struct clk_hw *hw, unsigned long rate,
--				     unsigned long *prate)
-+static int lmk04832_sclk_determine_rate(struct clk_hw *hw,
-+					struct clk_rate_request *req)
- {
- 	struct lmk04832 *lmk = container_of(hw, struct lmk04832, sclk);
- 	unsigned long sclk_rate;
- 	unsigned int sysref_div;
- 
--	sysref_div = DIV_ROUND_CLOSEST(*prate, rate);
--	sclk_rate = DIV_ROUND_CLOSEST(*prate, sysref_div);
-+	sysref_div = DIV_ROUND_CLOSEST(req->best_parent_rate, req->rate);
-+	sclk_rate = DIV_ROUND_CLOSEST(req->best_parent_rate, sysref_div);
- 
- 	if (sysref_div < 0x07 || sysref_div > 0x1fff) {
- 		dev_err(lmk->dev, "SYSREF divider out of range\n");
- 		return -EINVAL;
- 	}
- 
--	if (rate != sclk_rate)
-+	if (req->rate != sclk_rate)
- 		return -EINVAL;
- 
--	return sclk_rate;
-+	req->rate = sclk_rate;
-+
-+	return 0;
- }
- 
- static int lmk04832_sclk_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -945,7 +952,7 @@ static const struct clk_ops lmk04832_sclk_ops = {
- 	.prepare = lmk04832_sclk_prepare,
- 	.unprepare = lmk04832_sclk_unprepare,
- 	.recalc_rate = lmk04832_sclk_recalc_rate,
--	.round_rate = lmk04832_sclk_round_rate,
-+	.determine_rate = lmk04832_sclk_determine_rate,
- 	.set_rate = lmk04832_sclk_set_rate,
+ static struct hi3660_stub_clk hi3660_stub_clks[HI3660_CLK_STUB_NUM] = {
+-	DEFINE_CLK_STUB(HI3660_CLK_STUB_CLUSTER0, 0x0001030A, "cpu-cluster.0")
+-	DEFINE_CLK_STUB(HI3660_CLK_STUB_CLUSTER1, 0x0002030A, "cpu-cluster.1")
+-	DEFINE_CLK_STUB(HI3660_CLK_STUB_GPU, 0x0003030A, "clk-g3d")
+-	DEFINE_CLK_STUB(HI3660_CLK_STUB_DDR, 0x00040309, "clk-ddrc")
++	DEFINE_CLK_STUB(HI3660_CLK_STUB_CLUSTER0, 0x0001030A, "cpu-cluster.0"),
++	DEFINE_CLK_STUB(HI3660_CLK_STUB_CLUSTER1, 0x0002030A, "cpu-cluster.1"),
++	DEFINE_CLK_STUB(HI3660_CLK_STUB_GPU, 0x0003030A, "clk-g3d"),
++	DEFINE_CLK_STUB(HI3660_CLK_STUB_DDR, 0x00040309, "clk-ddrc"),
  };
  
-@@ -1069,26 +1076,28 @@ static unsigned long lmk04832_dclk_recalc_rate(struct clk_hw *hw,
- 	return rate;
- }
- 
--static long lmk04832_dclk_round_rate(struct clk_hw *hw, unsigned long rate,
--				     unsigned long *prate)
-+static int lmk04832_dclk_determine_rate(struct clk_hw *hw,
-+					struct clk_rate_request *req)
- {
- 	struct lmk_dclk *dclk = container_of(hw, struct lmk_dclk, hw);
- 	struct lmk04832 *lmk = dclk->lmk;
- 	unsigned long dclk_rate;
- 	unsigned int dclk_div;
- 
--	dclk_div = DIV_ROUND_CLOSEST(*prate, rate);
--	dclk_rate = DIV_ROUND_CLOSEST(*prate, dclk_div);
-+	dclk_div = DIV_ROUND_CLOSEST(req->best_parent_rate, req->rate);
-+	dclk_rate = DIV_ROUND_CLOSEST(req->best_parent_rate, dclk_div);
- 
- 	if (dclk_div < 1 || dclk_div > 0x3ff) {
- 		dev_err(lmk->dev, "%s_div out of range\n", clk_hw_get_name(hw));
- 		return -EINVAL;
- 	}
- 
--	if (rate != dclk_rate)
-+	if (req->rate != dclk_rate)
- 		return -EINVAL;
- 
--	return dclk_rate;
-+	req->rate = dclk_rate;
-+
-+	return 0;
- }
- 
- static int lmk04832_dclk_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -1158,7 +1167,7 @@ static const struct clk_ops lmk04832_dclk_ops = {
- 	.prepare = lmk04832_dclk_prepare,
- 	.unprepare = lmk04832_dclk_unprepare,
- 	.recalc_rate = lmk04832_dclk_recalc_rate,
--	.round_rate = lmk04832_dclk_round_rate,
-+	.determine_rate = lmk04832_dclk_determine_rate,
- 	.set_rate = lmk04832_dclk_set_rate,
- };
- 
+ static struct clk_hw *hi3660_stub_clk_hw_get(struct of_phandle_args *clkspec,
 
 -- 
 2.50.1
