@@ -4,46 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DADD8CA0EC4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 16:23:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8E58CA0EC4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 16:28:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TkhSRORjWkpamC4CMGPavMUs7USuBsNgNbrFPpwz9No=; b=f+ZuW5KEZfTVHED+/2nB01oMnQ
-	aKIEEmMsJJcZGzdithIUFkauQ4yrMNo8YcJoGOxMruCoHDn6Jvhrgzfx/LObfHb2ATivbUGv6pmZX
-	2Tyke+JomjyJ7UTfszcg2jyvlu2fJFIkUKl767ZC15RFBosBfTzOnPylW4jMP3tb9W7Mjr+p2+oyR
-	Z7XnWOUIORtfhzYMsgBvkISnxZbNWZEaq9MonJ1Wd5JE1y6icdJWFvJrgv7P7JN4T7Wf3hs6S2a9Q
-	HCToVSdoUeaHR+Mti8V9ecoepuV8iGfHHdrymsM/hmYAQJfAP+dC+co86/A3dvt1NvG3Jif474psr
-	LqX3NuZQ==;
+	bh=TOurunOX/DC6AxsY0J5MKLEAGtvpS31U4kar6fT5asE=; b=B7IjVyyC1wVWmLw4ExLlWPg7pL
+	hrQ2VC2vaBYcTtoC8qe3OrZrm6BYLZAXaE6iM4dvJumal/FzXFnKus0eAkG7/V/P5tsVR8WQpuAjv
+	mH76YhgaLboPeZjIhjFnbMVDlh9x5wgDUPB/us5f6D87f6T6DRH+awCXhTxcEDzOynpAYlYRJLdAq
+	uDu4EmC8TXvjKaVY3TLlRn/bosTctOWBznWbkEJTETPblcFe4/y+/Yr5kxOdQzSIy5JJc3MS1n+ir
+	uy72Bfrfj/EF8DL3GXL/9n27Dl6Cm6EBC/AQ89xefZZQHPqUA3RVWCkhHj0P0XvQFLBSJ8mJLlpBi
+	jG0vDD3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulrmC-0000000BNnh-0bUk;
-	Tue, 12 Aug 2025 16:23:04 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ulrr8-0000000BPaF-3GPC;
+	Tue, 12 Aug 2025 16:28:10 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uloPH-0000000ApjR-04RL;
-	Tue, 12 Aug 2025 12:47:12 +0000
+	id 1uloc6-0000000ArFH-0NzC;
+	Tue, 12 Aug 2025 13:00:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:References:
+	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=QhxNwBLURE+vww7KiNLQnWr2U3x4Oum0L5j9e8N0Yrg=; b=gXY7PRWesbGfpUh6lPA4yEThGx
+	vm4QBz+kPLAd/eyTzr7A8bs+u4c/JLJH8X0m9XkMSabpHDqifFshzFQljHZlHU/6bMUMV5QqcxUex
+	A554SOjYYBSF0RdacbxgWy5EjCOE82hEdjB8lxRCGtvAc5N3drdZwgTraE/OOV6Nk/zuVWK3JlgGb
+	Q6R3EjcoiErETgp+COvqjvgwvqzGmCjfW3VFp3yMPEH1pLj/QeBT3SozV4a0H/+eTrVH8JEQjA0GK
+	o33eHH/6yaCYqmXmtdkJM66ooJjCeZHv2qUAlaSR+pAKXB3v+dbjWf+uIcUubOnBOwMTPzyLkEQyw
+	5hh6xPrw==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uloc2-0000000FoMS-0WLg;
+	Tue, 12 Aug 2025 13:00:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1755002829;
-	bh=ERWKORs2n46stDicTaXrMgAPtBSFdyQVArt3xOQkj04=;
+	s=mail; t=1755003619;
+	bh=BPZhi1cYHWPs10d8aw+eUuAT4jQOgOOanuDWooHD66M=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=A4PqcADtUyRQOuNi7uq97iSKyBEk1BNe2ThYZkA4gDMwAAx0iWkRJg7KP5m9V9FHn
-	 b0hdlt7cqYvGzeIQH7MDWEIvT003uysYrYPw42EMKMUksCkCeGhuAqCT9jgOV8v1Uh
-	 4uwQIIOlGn+u1zu4py3/+ZfdM7lRXo4RWN7zt/hXgHEYNx2fa0fKrCkxsjYki7ZgVr
-	 3IherwPBDosyzslFkHaHREZf2JvbZSVjxH/sWk4tLxelPIZzI157CxSMHf+pmBoc4H
-	 ZnP9XoOSL457sxhsK/R/ziJQNGZiDTE/HTmYDMPJ5cAO+OQwL8VMgB6hnXZvYEUvpg
-	 rXgU8bLGhfKgQ==
+	b=oSvgX2of80L02E0fcdOtjkRdCDV4W2cJtF0VNyeDf7vjjydxLjB5DamTHdsrGAIT2
+	 cy6fVuTM6Rh5ao6b3R8HQKvqZAT4t71qjg7sk4xB76Z0Wr5AvXbuutFT4TMO93mva1
+	 nW+tgKKfU/5EVJobEPLS18jDbotTUzhEtTOimDI/3bfffrRUVZO72qClzwOZwHSqTf
+	 yQ1AbYoT7OQHWwYpHOkh1gEP2Z/CCiSUbjvHfLyyRmrDPzVN6P1OJxrIzYWCOBIdxq
+	 isrZ5ygEstVzItRUu8B4KssVP8vJtRjHTLv/1lz5Rqrr/1gFRv6C7AUkOIDG2topIQ
+	 hv3ctCcBhWyog==
 Received: from [IPv6:2606:6d00:11:5a76::c41] (unknown [IPv6:2606:6d00:11:5a76::c41])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 23E5A17E00AC;
-	Tue, 12 Aug 2025 14:47:08 +0200 (CEST)
-Message-ID: <dc95a2e6283badfd03bc9b0cb1b1f4ff2a0558dc.camel@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 19A3217E04C0;
+	Tue, 12 Aug 2025 15:00:18 +0200 (CEST)
+Message-ID: <f2908b2d35671e70e6a8b295de623e3a3ffe2212.camel@collabora.com>
 Subject: Re: [PATCH v2 5/7] media: rkvdec: Disable QoS for HEVC and VP9 on
  RK3328
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
@@ -55,12 +69,12 @@ Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Detlev Casanova
  linux-media@vger.kernel.org, 	linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Date: Tue, 12 Aug 2025 08:47:07 -0400
-In-Reply-To: <16b67aec-8675-45a2-b6df-380bd5f3bf4c@kwiboo.se>
+Date: Tue, 12 Aug 2025 09:00:15 -0400
+In-Reply-To: <9dce97a9-92e6-4803-9e06-b2938e3c4999@kwiboo.se>
 References: <20250810212454.3237486-1-jonas@kwiboo.se>
 	 <20250810212454.3237486-6-jonas@kwiboo.se>
 	 <3cf31d3b89a66b1bec57486c54c3df31393335e5.camel@collabora.com>
-	 <16b67aec-8675-45a2-b6df-380bd5f3bf4c@kwiboo.se>
+	 <9dce97a9-92e6-4803-9e06-b2938e3c4999@kwiboo.se>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
  oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
@@ -88,8 +102,8 @@ Organization: Collabora Canada
 User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_054711_201028_78E945D5 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20250812_140022_330969_DCE7CF8C 
+X-CRM114-Status: GOOD (  33.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,64 +115,198 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7197130208458976640=="
+Content-Type: multipart/mixed; boundary="===============8910485499986081540=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============7197130208458976640==
+--===============8910485499986081540==
 Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-JkhzomEQU9Ai9eDvywYJ"
+	boundary="=-JAuicq2EIvWHvsvtmtAs"
 
 
---=-JkhzomEQU9Ai9eDvywYJ
+--=-JAuicq2EIvWHvsvtmtAs
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le mardi 12 ao=C3=BBt 2025 =C3=A0 00:22 +0200, Jonas Karlman a =C3=A9crit=
+Le mardi 12 ao=C3=BBt 2025 =C3=A0 01:08 +0200, Jonas Karlman a =C3=A9crit=
 =C2=A0:
-> > > =C2=A0#define RKVDEC_CAPABILITY_H264		BIT(1)
-> > > =C2=A0#define RKVDEC_CAPABILITY_VP9		BIT(2)
+> Hi Nicolas,
+>=20
+> Missed some comments in my last mail.
+>=20
+> On 8/11/2025 11:25 PM, Nicolas Dufresne wrote:
+> > Le dimanche 10 ao=C3=BBt 2025 =C3=A0 21:24 +0000, Jonas Karlman a =C3=
+=A9crit=C2=A0:
+> > > From: Alex Bee <knaerzche@gmail.com>
+> > >=20
+> > > The RK3328 VDEC has a HW quirk that require QoS to be disabled when H=
+EVC
+> > > or VP9 is decoded, otherwise the decoded picture may become corrupted=
+.
+> > >=20
+> > > Add a RK3328 variant with a quirk flag to disable QoS when before
+> > > decoding is started.
+> > >=20
+> > > Signed-off-by: Alex Bee <knaerzche@gmail.com>
+> > > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> > > ---
+> > > Changes in v2:
+> > > - No change
+> > > ---
+> > > =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c |=C2=A0 9 =
++++++++++
+> > > =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h |=C2=A0 2 =
+++
+> > > =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c=C2=A0 | 10 =
+++++++++++
+> > > =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.c=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 | 12 ++++++++++++
+> > > =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.h=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 |=C2=A0 4 ++++
+> > > =C2=A05 files changed, 37 insertions(+)
+> > >=20
+> > > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+> > > b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+> > > index 1994ea24f0be..f8bb8c4264f7 100644
+> > > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+> > > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+> > > @@ -789,6 +789,15 @@ static int rkvdec_hevc_run(struct rkvdec_ctx *ct=
+x)
+> > > =C2=A0	writel(1, rkvdec->regs + RKVDEC_REG_PREF_LUMA_CACHE_COMMAND);
+> > > =C2=A0	writel(1, rkvdec->regs + RKVDEC_REG_PREF_CHR_CACHE_COMMAND);
 > > > =C2=A0
-> > > +#define RKVDEC_QUIRK_DISABLE_QOS	BIT(0)
+> > > +	if (rkvdec->quirks & RKVDEC_QUIRK_DISABLE_QOS) {
+> > > +		u32 reg;
+> > > +
+> > > +		reg =3D readl(rkvdec->regs + RKVDEC_REG_QOS_CTRL);
+> > > +		reg |=3D 0xFFFF;
+> > > +		reg &=3D ~BIT(12);
 > >=20
-> > Can you go back in the series, get H264 into bit 0, VP9 into bit 1, and=
- set
-> > quirks from bit 16 ? Just worried the whole finding can becomes a mess =
-in
-> > many
-> > years from now.
+> > I wonder if there is a better way to express that, if not, a comment fo=
+r
+> > future
+> > readers would be nice. If read it will, we keep the upper 16bit, and
+> > replaced
+> > the lower bits with 0xEFFF (all bits set except 12) ? I'd rather not sp=
+end
+> > time
+> > thinking if I walk by this code again.
 >=20
-> The reason for HEVC in bit 0 is mainly because the first generation was
-> HEVC only, this also matches the mode reg values (0=3Dhevc, 1=3Dh264, 2=
-=3Dvp9).
+> Vendor kernel use following comment to describe the purpose of this [1]:
 >=20
-> I can start quirk at bit 16 if you like, not really sure I understand
-> why? Do you want to combine capabilities and quirks into one?
+> =C2=A0 HW defeat workaround: VP9 and H.265 power save optimization cause
+> =C2=A0 decoding corruption, disable optimization here.
+>=20
+> From the TRM we can see following for rkvdec_swreg99_qos_ctrl:
+>=20
+> =C2=A0 27:26 sw_axi_wr_hurry_level
+> =C2=A0=C2=A0=C2=A0 00: hurry off=20
+> =C2=A0=C2=A0=C2=A0 01~11: hurry level=20
+> =C2=A0 25:24 sw_axi_rd_hurry_level
+> =C2=A0=C2=A0=C2=A0 00: hurry off=20
+> =C2=A0=C2=A0=C2=A0 01~11: hurry level=20
+> =C2=A0 23:16 sw_bus2mc_buffer_qos_level
+> =C2=A0=C2=A0=C2=A0 range is: 0~255
+> =C2=A0=C2=A0=C2=A0 the value is means that left space <=3D
+> =C2=A0=C2=A0=C2=A0 sw_bus2mc_buffer_qos_level, it will give hurry
+> =C2=A0 15:0 swreg_block_gating_e
+>=20
+> So yes this set swreg_block_gating_e to 0xEFFF. Possible this configure
+> hw to not auto gate most internal clocks?
+>=20
+> Could add a comment and possible use something like following:
+>=20
+> =C2=A0 reg &=3D GENMASK(31, 16);
+> =C2=A0 reg |=3D 0xEFFF;
 
-My bad, I miss-understood the code. The Quirk bits are seperate, not fillin=
-g a
-gap.
+Thanks for the information, I think this form is somewhat nicer indeed, and=
+ a
+little comment, its fine to say that the QOS bits are undocumented.
 
-cheers,
 Nicolas
 
---=-JkhzomEQU9Ai9eDvywYJ
+>=20
+> [1]
+> https://github.com/Kwiboo/linux-rockchip/blob/linux-6.1-stan-rkr6.1/drive=
+rs/video/rockchip/mpp/mpp_rkvdec.c#L857-L867
+>=20
+> >=20
+> > > +		writel(reg, rkvdec->regs + RKVDEC_REG_QOS_CTRL);
+> > > +	}
+> > > +
+> > > =C2=A0	/* Start decoding! */
+> > > =C2=A0	reg =3D (run.pps->flags & V4L2_HEVC_PPS_FLAG_TILES_ENABLED) ?
+> > > =C2=A0		0 : RKVDEC_WR_DDR_ALIGN_EN;
+> > > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h
+> > > b/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h
+> > > index 540c8bdf24e4..c627b6b6f53a 100644
+> > > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h
+> > > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h
+> > > @@ -219,6 +219,8 @@
+> > > =C2=A0#define RKVDEC_REG_H264_ERR_E				0x134
+> > > =C2=A0#define RKVDEC_H264_ERR_EN_HIGHBITS(x)			((x) &
+> > > 0x3fffffff)
+> > > =C2=A0
+> > > +#define RKVDEC_REG_QOS_CTRL				0x18C
+> > > +
+> > > =C2=A0#define RKVDEC_REG_PREF_LUMA_CACHE_COMMAND		0x410
+> > > =C2=A0#define RKVDEC_REG_PREF_CHR_CACHE_COMMAND		0x450
+> > > =C2=A0
+> > > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+> > > b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+> > > index 0e7e16f20eeb..cadb9d592308 100644
+> > > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+> > > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+> > > @@ -824,6 +824,16 @@ static int rkvdec_vp9_run(struct rkvdec_ctx *ctx=
+)
+> > > =C2=A0	writel(1, rkvdec->regs + RKVDEC_REG_PREF_CHR_CACHE_COMMAND);
+> > > =C2=A0
+> > > =C2=A0	writel(0xe, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
+> > > +
+> > > +	if (rkvdec->quirks & RKVDEC_QUIRK_DISABLE_QOS) {
+> > > +		u32 reg;
+> > > +
+> > > +		reg =3D readl(rkvdec->regs + RKVDEC_REG_QOS_CTRL);
+> > > +		reg |=3D 0xFFFF;
+> > > +		reg &=3D ~BIT(12);
+> > > +		writel(reg, rkvdec->regs + RKVDEC_REG_QOS_CTRL);
+> >=20
+> > Can we deduplicate that ?
+>=20
+> Guess so, any suggestion on how to best do that?
+>=20
+> One possible way that comes to mind:
+>=20
+> =C2=A0 if (rkvdec->quirks & RKVDEC_QUIRK_DISABLE_QOS)
+> 	rkvdec_quirk_disable_qos(rkvdec);
+>=20
+> >=20
+> > > +	}
+> > > +
+> > > =C2=A0	/* Start decoding! */
+> > > =C2=A0	writel(RKVDEC_INTERRUPT_DEC_E | RKVDEC_CONFIG_DEC_CLK_GATE_E |
+> > > =C2=A0	=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 RKVDEC_TIMEOUT_E | RKVDEC=
+_BUF_EMPTY_E,
+>=20
+> [snip]
+
+--=-JAuicq2EIvWHvsvtmtAs
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJs3ywAKCRBxUwItrAao
-HOD9AJ9FLMLZr+wAyTdVnuLBxPgipVjrBgCeMkq4dW74TDzq3fyI7bQkjfme3Ug=
-=uAZK
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJs63wAKCRBxUwItrAao
+HAUsAKC1sBxNA1+yEIFCnD/e1Ljvs4W7zQCgkzXoEfYGmIbzQwoE/GL67jAV2K8=
+=/EUA
 -----END PGP SIGNATURE-----
 
---=-JkhzomEQU9Ai9eDvywYJ--
+--=-JAuicq2EIvWHvsvtmtAs--
 
 
---===============7197130208458976640==
+--===============8910485499986081540==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -169,5 +317,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7197130208458976640==--
+--===============8910485499986081540==--
 
