@@ -4,64 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 800A1CA0EDB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 20:33:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E26FECA0EDB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 20:34:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ikkoNYIAlBG5EOLgkeMmFFgkMRcg/nya6jRG/nnUFlA=; b=1gsMU1NcitCMlEelgENNijRyzI
-	FuuAo2sVXGI/JVOlqhPTBrGWf6ai8f2fUA8P+l64iiN+be/i6RZnnCKj6nXeKQAV006xbyU6lF8sa
-	IbW0xWL/xBUHqapVd65rUXJUqkGjq6EUIvw0slXzy9u7mm/yGLR9noJ2D/yuq9MVchX2HZqVsMF5/
-	MYgf1b28D41oSlPFZzcQkhpfF8QJO1uljXBkWqFyyHPLonwT4qX17A7fR66u9H6Zb36uDV81jZ/up
-	Qo54O9HH4JIxXuDFKqxIL9cQmbn564pu9kHhMeG8xxRFrMnjwNPy7bmuVtfY7sw2Pu/m7a/QXGzIO
-	RgP/Aiew==;
+	bh=8qHpsYc9EMbDRqSejQPsBZWDzivcZPrRcTBPCBZ6OI8=; b=pNUu5Ld1q9UKE41Z4N0WIyTjyj
+	mkynAnygcXAXjBRD7AfjgwlIcjcm/uHnCWLwlrYjAvAsM6ZGGu5qG3ja7BoBC/bf3Ri65ZKhMJR6j
+	NvbZ9BbVLsnWUGU/8LMTGyKpaBD2NNmFZSL7chleY0G1koUCZzKfl/TRuS1zjgfUK199LNN31WXwj
+	JkbJFoF/1nBaBr3JV+t8jrnr135yg0mWJVxdsh/GlKWAFlhpUeo6PfDX1A+mQVo+6BGvRe1hpNkNr
+	reE/5Tf+CtCKiDoPygFYFsFqhKwRNpqEFHnR2rAkw7LKEy20xBij+eUVvEd/PWmVBjL26J97uCVbk
+	z28Y4mXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulvgm-0000000BxKK-2Hll;
-	Tue, 12 Aug 2025 20:33:44 +0000
-Received: from out-181.mta0.migadu.com ([2001:41d0:1004:224b::b5])
+	id 1ulvh5-0000000BxsB-32aR;
+	Tue, 12 Aug 2025 20:34:03 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ultk2-0000000BiAC-1NXm
-	for linux-rockchip@lists.infradead.org;
-	Tue, 12 Aug 2025 18:29:00 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1755023335;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Dpt2q1VVawx7RN3DHXgKomnidZFs0KWZ5Y4PeN/MWV8=;
-	b=XNhSR2c6W5vbltKeZ64FCBmBbLFbku0Fv+4E0E+qN/OhvaO8m5hvk7zJxeYa8n403i8XWB
-	X2npk6mQILoQQcl8PffQjcNzQev2Pysg9gEEml3fgjge2SN2rvIbKIQhDF5Ca+vWwm7GqT
-	5Vu0BBf1n2kA/5c7qsfuwo6MdXFi/+X2E66L264EaNacskzXeYNoVBeJ622AIubk9eoztp
-	xy5OEceRLk75dV9b4S3QHK8DRSeVLLZiS39A3LXR71DP2kHJxGBJRV/YaCCiQxuZEWvnYO
-	JF/VU1W0jmmwENfUiErOF4TEHm/liX9rE9KtqSQg2G6nWhNTKC3kIYuGa3Vknw==
-Date: Tue, 12 Aug 2025 20:28:43 +0200
-Message-Id: <DC0NUGDTCUYD.QT1BLJEGXYFG@cknow.org>
-Cc: "Ezequiel Garcia" <ezequiel@vanguardiasur.com.ar>, "Detlev Casanova"
- <detlev.casanova@collabora.com>, "Mauro Carvalho Chehab"
- <mchehab@kernel.org>, "Alex Bee" <knaerzche@gmail.com>, "Nicolas Dufresne"
- <nicolas.dufresne@collabora.com>, "linux-media@vger.kernel.org"
- <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
- <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org"
- <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>
+	id 1ulu7I-0000000BkLp-0t7B;
+	Tue, 12 Aug 2025 18:53:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1755024777;
+	bh=Ic2cMEzLYnTGEnpc9cdCn2OYt4fnwN/t6PR88zxT2T0=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=aXZUkDKP8INt/Zpw/e6KcFneQehLtDBgtR4Q7eTiEVl5XoEA/5tytgl33kz4VPnoz
+	 Cf4Pi+EchYoVg2n9hYjFzMo3Ms5a4StIswbIcBeDPKUBhfz6/4EHzCubzsXl4t3xYT
+	 d/QTwzQ676/V4aCS3fx3QPYfYivo6rK8VE3jWelqDkBcgcGPx5SC+BF53v5bjhK7te
+	 BniZG4wiPyEp4AX9hflFEIx7/8MsJIXRDuqSyz+TKcgqGXvV4ydEeXAkVmqFufRXbn
+	 IARVDGtzAwQWmQDv2/dsS17HWajtwgGji8T4fJdlyq6yMs/wCIi8KvSJJN7WebWIFR
+	 98OL5swfPIC0g==
+Received: from [IPv6:2606:6d00:11:5a76::c41] (unknown [IPv6:2606:6d00:11:5a76::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5351C17E0147;
+	Tue, 12 Aug 2025 20:52:56 +0200 (CEST)
+Message-ID: <be4c31cf8f37d599012ad9d7aa68468a0d307a2c.camel@collabora.com>
 Subject: Re: [PATCH v2 0/7] media: rkvdec: Add HEVC backend
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Jonas Karlman" <jonas@kwiboo.se>
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Detlev Casanova	
+ <detlev.casanova@collabora.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>,  Alex Bee <knaerzche@gmail.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Date: Tue, 12 Aug 2025 14:52:54 -0400
+In-Reply-To: <25ce30446e8e8d038273fcdfb398c90995c242db.camel@collabora.com>
 References: <20250810212454.3237486-1-jonas@kwiboo.se>
- <DC0FTXJNW0KB.3I8DLNHJVL21O@cknow.org>
- <64d551d7-924a-48af-96ca-224fa94543d8@kwiboo.se>
-In-Reply-To: <64d551d7-924a-48af-96ca-224fa94543d8@kwiboo.se>
-X-Migadu-Flow: FLOW_OUT
+		 <50162371fd54fc976a84fcf57c9b69112a892c46.camel@collabora.com>
+		 <1dd29158-0660-4254-ac00-1316768d9b82@kwiboo.se>
+		 <91864a1c047d2bdfce202b070716a694ede47d5e.camel@collabora.com>
+		 <a66feb89fa02f05b187e5603ffc3b1501ef3cbd5.camel@collabora.com>
+		 <efdf8c99-d166-4b78-afc5-d4a6eb5ac046@kwiboo.se>
+	 <25ce30446e8e8d038273fcdfb398c90995c242db.camel@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
+ oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
+ zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
+ TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
+ 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
+ 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
+ cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
+ tHYWTDxBOP5peztyc2PqeKsLsLWzAr7QnTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVz
+ bmUuY2E+iGIEExECACIFAlXA3CACGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sB
+ qgcJngAnRDBTr8bhzuH0KQwFP1nEYtfgpKdAKCrQ/sJfuG/8zsd7J8wVl7y3e8ARbRDTmljb2xhcy
+ BEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29
+ tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCg
+ zYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc
+ 25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udW
+ s+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8
+ An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZy
+ ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJC
+ AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypw
+ CfWKc9DorA9f5pyYlD5pQo6SgSoiC0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF
+ 1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkI
+ BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr
+ +E7ItOqZEHAs+xabBgknYZIFPW0RE5pY29sYXMgRHVmcmVzbmUgKEIuIFNjLiBJbmZvcm1hdGlxdW
+ UpIDxuaWNvbGFzZEBibHVlc3RyZWFrdGVjaC5jb20+iGAEExECACAFAkZjGzoCGwMGCwkIBwMCBBU
+ CCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHBl7AJ0d2lrzshMmJaik/EaDEakzEwqgxQCg0JVZMZm9
+ gRfEou1FvinuZxwf/ms=
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_112858_648519_6C64FED0 
-X-CRM114-Status: GOOD (  24.50  )
+X-CRM114-CacheID: sfid-20250812_115300_610935_63D097E0 
+X-CRM114-Status: GOOD (  27.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,107 +105,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7876619151829329095=="
+Content-Type: multipart/mixed; boundary="===============4102873071235717781=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============7876619151829329095==
-Content-Type: multipart/signed;
- boundary=617e8f59b1ff50d429dd9df48218ad6990c7a2b892c3d1eddd6a2f382fbe;
- micalg=pgp-sha512; protocol="application/pgp-signature"
 
---617e8f59b1ff50d429dd9df48218ad6990c7a2b892c3d1eddd6a2f382fbe
+--===============4102873071235717781==
+Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
+	boundary="=-YV/OT7n0OwYiMsbw93e1"
+
+
+--=-YV/OT7n0OwYiMsbw93e1
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
 
-Hi Jonas,
+Le mardi 12 ao=C3=BBt 2025 =C3=A0 14:26 -0400, Nicolas Dufresne a =C3=A9cri=
+t=C2=A0:
+> Hi Jonas,
+>=20
+> Le mardi 12 ao=C3=BBt 2025 =C3=A0 19:31 +0200, Jonas Karlman a =C3=A9crit=
+=C2=A0:
+> > On 8/12/2025 2:44 PM, Nicolas Dufresne wrote:
+> > > I forgot,=20
+> > >=20
+> > > Le mardi 12 ao=C3=BBt 2025 =C3=A0 08:38 -0400, Nicolas Dufresne a =C3=
+=A9crit=C2=A0:
+> > > > > JCT-VC-HEVC_V1 on GStreamer-H.265-V4L2SL-Gst1.0:
+> > > > >=20
+> > > > > - DBLK_D_VIXS_2 (fail)
+> > > > > - DSLICE_A_HHI_5 (fail)
+> > > > > - EXT_A_ericsson_4 (fail)
+> > > > > - PICSIZE_A_Bossen_1 (error)
+> > > > > - PICSIZE_B_Bossen_1 (error)
+> > > > > - PICSIZE_C_Bossen_1 (error)
+> > > > > - PICSIZE_D_Bossen_1 (error)
+> > > > > - SAODBLK_A_MainConcept_4 (fail)
+> > > > > - SAODBLK_B_MainConcept_4 (fail)
+> > > > > - TSUNEQBD_A_MAIN10_Technicolor_2 (error)
+> > >=20
+> > > I'me getting the same result if I force a single job in fluster. The =
+test
+> > > I
+> > > posted was with 2 jobs. Detlev found that the iommu reset is required=
+ in
+> > > more
+> > > cases on RK3588/3576, perhaps the HEVC decoder in older hardware need=
+s the
+> > > same,
+> > > I will try and report.
+> >=20
+> > Vendor kernel [1] check following bits from RKVDEC_REG_INTERRUPT reg to
+> > decide if a full HW reset should be done.
+> >=20
+> > =C2=A0 err_mask =3D RKVDEC_BUF_EMPTY_STA
+> > =C2=A0=C2=A0	=C2=A0=C2=A0 | RKVDEC_BUS_STA
+> > =C2=A0=C2=A0	=C2=A0=C2=A0 | RKVDEC_COLMV_REF_ERR_STA
+> > =C2=A0=C2=A0	=C2=A0=C2=A0 | RKVDEC_ERR_STA
+> > =C2=A0=C2=A0	=C2=A0=C2=A0 | RKVDEC_TIMEOUT_STA;
+> >=20
+> > Adding proper reset support can be rather involved and main reason why
+> > this series does not handle it, better suited for a separate future
+> > series.
+> >=20
+> > Proper HW reset will require e.g. dt-bindings, DT updates, pmu idle
+> > request integration and for rk3328 vendor even moved VPU reset to TF-A.
+> >=20
+> > Doing the iommu detach/attach dance not only on RKVDEC_SOFTRESET_RDY
+> > could possible improve some cases, until full reset can be implemented.
+>=20
+> Rockchip is following VSI design of "self reset" on error. But since the =
+iommu
+> is part of the device, it also gets reset, which imply having to reprogra=
+m it.
+> This showed to be very reliable logic, despite RK doing a hard reset.
+>=20
+> Since self reset is documented for RKVDEC_BUS_STA, RKVDEC_ERR_STA,
+> RKVDEC_TIMEOUT_STA, it would seem that RKVDEC_BUF_EMPTY_STA is redundant,
+> unless
+> its asynchronous operation that need to be polled. Possibly something to
+> investigate. RKVDEC_BUF_EMPTY_STA and RKVDEC_COLMV_REF_ERR_STA are not
+> documented a such, so its not quite logical to reprogram the iommu.
+>=20
+> I don't immediately trust reference software for these type of things, we
+> should
+> find what works best and have a rationale for. The hard reset is every
+> expensive, and hard to upstream.
 
-On Tue Aug 12, 2025 at 7:11 PM CEST, Jonas Karlman wrote:
-> On 8/12/2025 2:11 PM, Diederik de Haas wrote:
->> On Sun Aug 10, 2025 at 11:24 PM CEST, Jonas Karlman wrote:
->>> This series add a HEVC backend to the Rockchip Video Decoder driver.
->>>
->>> With the dependent H.264 High 10 and 4:2:2 profile support series
->>> finally merged there is finally time to send a v2 with minor changes an=
-d
->>> a suggested code style fix of this series. v1 of this series has been
->>> fully functional up until recent unstaging of the rkvdec driver.
->>>
->>> Patch 1 add the new HEVC backend.
->>> Patch 2-3 add variants support to the driver.
->>> Patch 4 add support for a rk3288 variant.
->>> Patch 5 add a rk3328 variant to work around hw quirks.
->>> Patch 6-7 add device tree node for rk3288.
->>=20
->> It looks like I had a previous version of linuxtv-rkvdec-hevc-v2 branch
->> locally and that also had this commit:
->> - media: rkvdec: Keep decoder clocks gated
->>=20
->> Is that one no longer needed/useful/etc ?
->
-> I do not think it is, could possible be to keep power consumption at
-> minimum while decoding. Some parts enable auto gating and then we
-> disable it when decoding is complete. With auto-suspend the entire block
-> is disabled anyway so this probably did not make any noticeable
-> difference and could instead introduce new possible issues.
+I did the test, and its not that. There is no error in fact, just corrupted
+image. The more parallelism, the more failure. Another important key point,=
+ no
+mmu faults, so its not that. You also reported flakyness, and rerunning mak=
+ing
+it work.
 
-Makes sense, thanks.
-=20
->> And 'chewitt' also had a commit to fix 8/10-bit selection:
->> https://github.com/chewitt/linux/commit/4b93b05d2ca608bc23f1d52bcc32df92=
-6d435c7c
->> "WIP: media: rkvdec: fix 8-bit/10-bit format selection"
->>=20
->> I haven't tried that one (yet), but did  try an other variant with
->> changing the ordering in rkvdec_hevc_decoded_fmts but that didn't work
->> in my tests. (Can ofc be PEBKAC)
->
-> The format selection in kernel for this series should be correct,
-> however to ensure 10-bit works you need following for ffmpeg-v4l2request
-> to select and use 10-bit pixel formats:
->
-> libdrm 2.4.104+ (NV15) / 2.4.118+ (NV20)
-> - 10-bit drm formats, ffmpeg v4l2request test with a #ifdef
->
-> linux headers v6.16-rc1+ (NV15/NV20)
-> - 10-bit v4l2 pix fmt, ffmpeg v4l2request test with a #ifdef
->
-> FFmpeg v4l2request will not negotiate use of 10-bit formats without
-> DRM_FORMAT_NV15/NV20 and V4L2_PIX_FMT_NV15/NV20 defined when ffmpeg was
-> compiled.
->
-> That would be the most likely issue if only 8-bit formats is working.
+The problem is likely due to some register left to its previous value,
+forgotten. If you let it sit, it will PM suspend, and a proper reset happen=
+s.
+The stream then decodes fine. If you run it concurrently with another, it
+decodes from dirt and fails. I think that theory fits a lot better, and is =
+a
+very common issue. Adding a hard reset would not fix this one.
 
-Thanks so much for the detailed explanation with which I can check where
-my stack wasn't doing what I hoped it would :-)
+Porting to in-ram register is the easiest way to fix that. It really remind=
+s me
+of:
 
->> Would that be useful? I do/did have consistent problems with playing
->> 10-bit encoded video files.
->
-> Looking quickly at the 'fix 8/10-bit selection' commit the issue is that
-> rkvdec_hevc_get_image_fmt() was incomplete to begin with. The
-> rkvdec_hevc_get_image_fmt() in this series has been correct since v1.
+  7fcb42b3835e9 media: verisilicon: HEVC: Initialize start_bit field
 
-Thanks :)
+Which tool quite some time to find.
 
-Cheers,
-  Diederik
+Nicolas
 
---617e8f59b1ff50d429dd9df48218ad6990c7a2b892c3d1eddd6a2f382fbe
+>=20
+> Nicolas
+>=20
+> >=20
+> > [1]
+> > https://github.com/Kwiboo/linux-rockchip/blob/linux-6.1-stan-rkr6.1/dri=
+vers/video/rockchip/mpp/mpp_rkvdec.c#L924-L931
+> >=20
+> > Regards,
+> > Jonas
+> >=20
+> > >=20
+> > > Nicolas
+
+--=-YV/OT7n0OwYiMsbw93e1
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaJuH3gAKCRDXblvOeH7b
-bvUTAQDzWJwxbYcSqq4djUea9n1kNb8PO3n1pspIxNcYxUolOAEApwmwMbrefnCW
-t0RHEpbTOmEqnCD4VF5oaIZ5BmWQbgM=
-=QdkM
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJuNhgAKCRBxUwItrAao
+HPL9AJ9DPFwlqN8nGQHull+oUB6FkI2c4gCgvkKpHSiCr5Y/01T36HS7z8yJ9i0=
+=sG3Y
 -----END PGP SIGNATURE-----
 
---617e8f59b1ff50d429dd9df48218ad6990c7a2b892c3d1eddd6a2f382fbe--
+--=-YV/OT7n0OwYiMsbw93e1--
 
 
---===============7876619151829329095==
+--===============4102873071235717781==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -184,5 +256,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7876619151829329095==--
+--===============4102873071235717781==--
 
