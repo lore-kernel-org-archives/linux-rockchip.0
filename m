@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E882CA0EE4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFC41CA0EE6
 	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 21:12:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ui0SrpWdTs8xefT0+wdgqnOl9nmtrnsniQjk7ce73hU=; b=bTs3sUAegm47Ee
-	oNWPsfWCrI+7jOhFl8i9m33PtA/Lvo1jVu46mxclYjWCj8SvSpqjiC04lzNi0HgIuK8KcvSQIic3x
-	LBmyi3Wi/Dr5NU59DWf1g1HbQ8dWv6oDCpiMynhqwAPpcB9YmxGClk43GnWVFZzC+/t9xC6K02R6m
-	R+TKS/sGKQBq1n6AobvDKNXMC2wcYak8NgVMzsCd0nGF/f002nzONIkn14yhWT8LKomfqO4x3C8fv
-	z57+NDhkPCSBFsq/qQvsY1mTsH83T47sL57UPmkR4v7uEHajfSlmAxJrQxVjwUeYZ0/PZcsm9Vube
-	W2KVpnj6Uw5sxxE1TyNw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6JECtbBtl7U2W90rANxaKlzwVpJ+07Ev89DDio+oUOc=; b=ow0nx9EL26KQu+
+	OwfG3bi3smAQ3KnLUX6z6malVm9DYcx1y26LP1ew/iwxcN7L/mTdc1ECoca0wTJMCjQe/i0+QhWeI
+	7BfJfd7N6kj3Z5NQNbwTX+CDZyA1YlJ3XdI+mfQW6I+I3EJNEJCB4JfWCTqdnRPOMe/zFAi6Fq6Dn
+	ZjGIvQGDGx6y+TG8I7bT45U/DVu9rZBCYuHzgRUrP2bZwFU54g7EdOv6ZWBfo3bjKxCJW3wY+Grt+
+	lL6awqAYIiI/4RPf70taPB7LwYuNb/TS5hFfRmFTeyK+K5mw4gTU2EVfPl+SETLXPU371N/T4e9XJ
+	GTuQqYSWc5QbIHkFNP/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulwHv-0000000C1hN-1eRO;
-	Tue, 12 Aug 2025 21:12:07 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1ulwHt-0000000C1fp-1dFN;
+	Tue, 12 Aug 2025 21:12:05 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulvdi-0000000BwQV-3fZU;
-	Tue, 12 Aug 2025 20:30:35 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-adfb562266cso805741466b.0;
-        Tue, 12 Aug 2025 13:30:34 -0700 (PDT)
+	id 1ulvde-0000000BwPT-2THM;
+	Tue, 12 Aug 2025 20:30:31 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-af91a6b7a06so994826666b.2;
+        Tue, 12 Aug 2025 13:30:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1755030633; x=1755635433; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ktvIjfxMrOnrAIQuJF/SowoEVNisSucGrU6MG81QF/M=;
-        b=i/T2agpMaprEvV8XQix27pcsIuI5fpsqNNH9wncXXn6dRIPRfUEYmchGDxLl09LRJ+
-         gkX4TWroHkNbrKmtZ1X4Tiq3252czdLp8jS1EWn85PRWqxs0yuvXPw/nrEouOgPU8556
-         0/SksVom2ahYgMF18Ot5xmUc6/M2Lu9c1UWBR/zsBfZyIwZDC9oLN+I3MkFjj9KMLsU/
-         VQweqOqlXzE7AoVGX7E81LXAblzl6Kh2Fq/VSsfEASLj+SeECicTSSFYUoDXieqOO+rm
-         z/tU/2RAYICEqyh1itU8G1egGtzexXDsIHZIHjWcDqrsZAJa9oB5nDIyL3IxhQFf3nil
-         FnuA==
+        d=gmail.com; s=20230601; t=1755030628; x=1755635428; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=UDpZ/uLV4xgn4kCXyhg6m1oHwpXbM6/gIBFZ0zY+grE=;
+        b=Xpc2gyFgplVLLj52ruZp0SsjdoWK8yc6gEQRxhryHJdQkv0GTsfa7IVAop1/R0O8qn
+         onmk965qJCSENHROv7ZXXg4vFgb3eqKyPBvlUkvQzrIOj3HM23sdDGkUZF3W3I1kw0CC
+         bpmyGRTwguJoF17fgw9sf5t5Jjf6G0F4ygvdI281xrxX6fsuw3jAadY7WgaqkuHwuuG9
+         7nodFWGkCKAE3CAwfPRd+3Py6X6YXFsGgLFpjC2of1+qrZ6b77vJeqRJ0Sjrh3mXkaQe
+         YD+hbW5AGWg2NiNzglKWZEZFCCwMkASA/ITwt1jmDbnXt6TTnnEEl949EgIgua89q4Do
+         FHUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755030633; x=1755635433;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ktvIjfxMrOnrAIQuJF/SowoEVNisSucGrU6MG81QF/M=;
-        b=CGWb9TgYLHiAry6CFM15W4pYB+k/8BNR837eAseSVNRYt3h79bUa26SS3N6ZzxSP1X
-         bzMmPmpydol/hDtqADUpr6GoGFpF3zNR9L54NJ8f+NRmHsX6+tq6vnFz5Ss2IEKyW1ba
-         MMSJ5Lqag1qt+fsTKGcRbiIb4SzDYgxCdA3qAo/v/nfaeHVknLFV0kLlfw0fjjmcWAnD
-         uo3dfmDP+MWshAykmMTNq3gcPztAiVkjWj2cyIx2zcbsyu7LKJWJx00vDiZ5u7yHsLq9
-         n74p5YNxivskxeI5C84gVU3j6XxORDrvdCJ2J/bF+NdOUOKGPwEKBztZVVK+Q4f2yKhM
-         ulzg==
-X-Forwarded-Encrypted: i=1; AJvYcCUXfTclGAbpkzGWyqGzFFXltg1T9P/8hee5msUO2RK/5FrcbmPo/5VUkssL2Mk7rfkSxjgT1BMBT5tiiBHzNkE4@lists.infradead.org, AJvYcCXmyGSuqBgMR8m/K7CMrZQUf21nJZUq+r/XRUbas/ZMZRZZMrxHR8stH/r11scYZfmZbnA9fYKVfNr1TEWqlc4=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyzfmsDbu4ffrlevImlvcGsUiRoCyq1W4ruhGST+px2awAYxUHI
-	MwGyyf2ixHdReF7oO8VTEbhCaURnfKbQOwvID5WN/nV44vOaFhZssLbSiqf4lPBVVak=
-X-Gm-Gg: ASbGncuf9xa4TuX8GauhHqcSoWya+0uYxFonaBtJs2cRlcJwUhF3WyurADJ5CCdu6S/
-	qHbnyH4B0Z+dErvaRyQkUu/7WqTPTL915j+rChyefRL+HcRDLKs4dK2DDNc0wGK6bg2VyR6akFD
-	AC6Hwj0x6LajDyJI/rmoHqBGM9e9jAmzg1sUT5c59SdEURV2lBSr7x/cMNYDy+/gV9bJ7vdOjtp
-	eevJcDUshjkRnY5s04SGik22WuT1SrQnYRgjzoVIkmR+JX5xk2g0pqz5aeHMGEKiRr8mnt+irwf
-	lahin7ifu1CL1E9/38v/ye4d5CZZriy6TPmBQTCBKI/8pdY+hPipi1Imffou+jc4yii9WPAwnWk
-	GWari5w+Hae1l3U/kMBvQ/26YJzsup3Q/KikPZ1sZ
-X-Google-Smtp-Source: AGHT+IEhBN23fHYD9HD9rJNv5eHIc3wxMe2qLfcYv9cCJJBHEGKutPk282chDrY0GVVVd+6ScJRb3g==
-X-Received: by 2002:a17:907:7b89:b0:af2:5a26:b32a with SMTP id a640c23a62f3a-afca4e01f03mr58694466b.30.1755030632925;
-        Tue, 12 Aug 2025 13:30:32 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1755030628; x=1755635428;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UDpZ/uLV4xgn4kCXyhg6m1oHwpXbM6/gIBFZ0zY+grE=;
+        b=IfmJ2s+WU84aYul/D8K6ZF/w5wntAVQdi+Ja0tSOkivq5YDlHHsyy/IVYePAeiW1y9
+         /s3G+PoU3l+RhYZ5fM1EuIzaI+gKiCEM9YiWOgPphxhWmQz3nSH845dd5EWk1BdV9hUd
+         bE+PcxkNYvo40Zb+etWhL/zbzjVbQOglGyCMv44081xCrOs9XcagWUwfZWaIsYocXWDg
+         d83hYg2CY5LeHA0LTBrrSmYpkdQ0uHwDyWe8rfr4YU8oYxhFNJPryyeW/YhcQEK+hwde
+         Nii7TPN75rKtAqAET45K0/m/BwehffsAZMGCkeFmNCf9oga8gih1e2HR9ctmtWbVzAgf
+         na4w==
+X-Forwarded-Encrypted: i=1; AJvYcCUhORUyuIevZDUNrH6QJWFIttkVgzNU6FurP066IW9owNkJH1v6wgFWm4OZkVOvoFGEIh4JSwXAuhiN7PiO+gE=@lists.infradead.org, AJvYcCXyd38pRZ10eaIGhMafiMp/TAwtqyIDj0IqmmN3QvEqyg0IvAbZ1SX3Kpo2pw/qjQi3FR7HeQtExltr9sIg+/Hx@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzf3/N9z8h8OHqcP3eb5w8+iToSMOkG4qQnq+WRwaH4dBdW30ul
+	Cqv5tDtJ7uENwGHWgNg4aevxhUoEOjXiX3+zRvX+3bSohoEj+Fq+SRrL1oYbMnTa8/c=
+X-Gm-Gg: ASbGncu+dkztT340hMEeWqOrvq8PhbOGMXqbA3XW69udTGQKkP44yhVWJjjhh0jAWT+
+	gTKG/I4+waVNzmdGUYiKdhIWOovRSbcnxJuLHJFdN7FoCgs3DmwXmxEzl1PHqjQZkVZPoziJ6Bf
+	nXJuaN8wbckcVklnHv1zJO71bGGfTRvZpoQyua0koPL63KTuzt4M8vK7eToXZMnI5LTucJWVDvC
+	o+Nt+oFc24k1asvEh5XeD2MWRhH/xSAiJk8L3cJFlS1c3yrSsxsLhapqhYSwPkTVMErl74EF3Y8
+	a2n7I527hpRASt8MvLmXuXlFwSDxzxSLKmqIV8sf1621ZWqLABUNKl+ElC5mRQMKhgz/njyqPUw
+	YowayLp2bhnDqULDJJknIQ/+AwREpjsj5zUBp/K1XAP2bAZtTM6o=
+X-Google-Smtp-Source: AGHT+IE8qPYJK5nv9hP6mJhBYPJdtTcVBRcIuezef0tNEf/XrB7lXj0liRGKyKHHW8hVebGuWOnP2g==
+X-Received: by 2002:a17:907:1b13:b0:afa:1a67:c046 with SMTP id a640c23a62f3a-afca4cbb1c0mr54830066b.11.1755030627838;
+        Tue, 12 Aug 2025 13:30:27 -0700 (PDT)
 Received: from alchark-surface.localdomain ([185.213.155.230])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-af91a0a3b58sm2266073166b.58.2025.08.12.13.30.30
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-af91a0a3b58sm2266073166b.58.2025.08.12.13.30.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Aug 2025 13:30:32 -0700 (PDT)
+        Tue, 12 Aug 2025 13:30:27 -0700 (PDT)
 From: Alexey Charkov <alchark@gmail.com>
-Date: Wed, 13 Aug 2025 00:30:24 +0400
-Subject: [PATCH 2/3] arm64: dts: rockchip: Add WiFi on rk3576-evb1-v10
+Subject: [PATCH 0/3] arm64: dts: rockchip: Enable RTC, WiFi and Bluetooth
+ on RK3576 EVB1
+Date: Wed, 13 Aug 2025 00:30:22 +0400
+Message-Id: <20250813-evb1-rtcwifibt-v1-0-d13c83422971@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20250813-evb1-rtcwifibt-v1-2-d13c83422971@gmail.com>
-References: <20250813-evb1-rtcwifibt-v1-0-d13c83422971@gmail.com>
-In-Reply-To: <20250813-evb1-rtcwifibt-v1-0-d13c83422971@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAF+km2gC/x3MQQqAIBBA0avIrBPU0qSrRAutsWZjoVJBdPek5
+ Vv8/0DGRJhhYA8kPCnTHitkw2DeXFyR01INSigtrDAcTy95KvNFgXzhru2kFr3RdtFQoyNhoPs
+ fjtP7fqGDmURgAAAA
+X-Change-ID: 20250806-evb1-rtcwifibt-a341507658d5
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
@@ -82,16 +84,17 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Pavel Zhovner <pavel@flipperdevices.com>, 
  Alexey Charkov <alchark@gmail.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1755030626; l=2878;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1755030626; l=1045;
  i=alchark@gmail.com; s=20250416; h=from:subject:message-id;
- bh=9DqcJtTzlqb1sSS7J90kHNHmzcXcp/6yYNEDD9Y/4d4=;
- b=ZEYpBvII7kSWRyvS+kKlecvScuKWTqUQ49vogugzgI47oBWYhuLAI2pMP+g7Vh8G14THuG116
- Tc2LrzMOkrJCFGqxp06jHZ7m2Wufydr19hT+JuqwQuOvBvcPk6zqW7J
+ bh=DPUg/AoorRxu3yhwbYOhHRtH0CbbSLCxMzRYqdsDRVU=;
+ b=olIxr2X1rvA6OPvIHjWNujq7kqoN3cBugQA6uDhbvCgzXX49DIhFHYGpp25HJaliyfIbItPBh
+ 9GeZmMsbRDNAsn+459X9Obgn6qN1H6ZX9a+K5vr0zTjK5oFDsVtaNMo
 X-Developer-Key: i=alchark@gmail.com; a=ed25519;
  pk=ltKbQzKLTJPiDgPtcHxdo+dzFthCCMtC3V9qf7+0rkc=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_133034_917044_213A487E 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20250812_133030_629405_22846CC2 
+X-CRM114-Status: UNSURE (   8.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,119 +111,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add device tree nodes to enable the onboard Ampak AP6275P WiFi chip
-connected over a PCIe link on Rockchip RK3576 EVB1.
+Rockchip RK3576 EVB1 boards follow the usual Rockchip design pattern
+with the I2C connected RTC chip feeding a 32 kHz LPO clock to the
+onboard Ampak AP6275P combo WiFi/BT module. In this case the WiFi
+part is connected by a PCIe link and BT over UART.
 
-It takes an external 32 kHz clock from the RTC chip and requires the
-WIFI_REG_ON signal to be enabled before the bus is enumerated to
-initialize properly.
+Add required DT nodes to enable them.
 
-Tested-by: Pavel Zhovner <pavel@flipperdevices.com>
+The board also has a connector for an external WiFi/BT module, which
+is out of scope for this series. There is also a PCM connection from
+SAI2 M0 to the Bluetooth module, which is also left out for now.
+
 Signed-off-by: Alexey Charkov <alchark@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts | 58 ++++++++++++++++++++++++
- 1 file changed, 58 insertions(+)
+Alexey Charkov (3):
+      arm64: dts: rockchip: Add RTC on rk3576-evb1-v10
+      arm64: dts: rockchip: Add WiFi on rk3576-evb1-v10
+      arm64: dts: rockchip: Add Bluetooth on rk3576-evb1-v10
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-index bfefd37a1ab8c67a17aba0cdb80980102d66bb76..100ca2e23c6093ae517d741fcd047e2a8172f457 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-@@ -232,6 +232,20 @@ vcc_ufs_s0: regulator-vcc-ufs-s0 {
- 		regulator-max-microvolt = <3300000>;
- 		vin-supply = <&vcc_sys>;
- 	};
-+
-+	vcc_wifi_reg_on: regulator-wifi-reg-on {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&wifi_reg_on>;
-+		pinctrl-names = "default";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-name = "wifi_reg_on";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc_1v8_s3>;
-+	};
- };
- 
- &cpu_l0 {
-@@ -242,6 +256,10 @@ &cpu_b0 {
- 	cpu-supply = <&vdd_cpu_big_s0>;
- };
- 
-+&combphy0_ps {
-+	status = "okay";
-+};
-+
- &combphy1_psu {
- 	status = "okay";
- };
-@@ -712,6 +730,30 @@ rgmii_phy1: phy@1 {
- 	};
- };
- 
-+&pcie0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie0_rst>;
-+	reset-gpios = <&gpio2 RK_PB4 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc_3v3_s3>;
-+	status = "okay";
-+
-+	pcie@0,0 {
-+		reg = <0x0 0 0 0 0>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x0 0xf>;
-+		device_type = "pci";
-+		ranges;
-+
-+		wifi: wifi@0,0 {
-+			compatible = "pci14e4,449d";
-+			reg = <0x10000 0 0 0 0>;
-+			clocks = <&hym8563>;
-+			clock-names = "lpo";
-+		};
-+	};
-+};
-+
- &pcie1 {
- 	reset-gpios = <&gpio4 RK_PC4 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc3v3_pcie1>;
-@@ -730,6 +772,12 @@ rtc_int: rtc-int {
- 		};
- 	};
- 
-+	pcie0 {
-+		pcie0_rst: pcie0-rst {
-+			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	usb {
- 		usb_host_pwren: usb-host-pwren {
- 			rockchip,pins = <0 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
-@@ -743,6 +791,16 @@ usbc0_int: usbc0-int {
- 			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
-+
-+	wifi {
-+		wifi_reg_on: wifi-reg-on {
-+			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		wifi_wake_host: wifi-wake-host {
-+			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
- };
- 
- &sdmmc {
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts | 115 +++++++++++++++++++++++
+ 1 file changed, 115 insertions(+)
+---
+base-commit: 8f5ae30d69d7543eee0d70083daf4de8fe15d585
+change-id: 20250806-evb1-rtcwifibt-a341507658d5
 
+Best regards,
 -- 
-2.49.1
+Alexey Charkov <alchark@gmail.com>
 
 
 _______________________________________________
