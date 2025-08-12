@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92152CA0EDB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 19:31:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 230DCCA0EDB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 20:33:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CzMMCjKRHi4G4Hps5Y1kp36jqz/7fF/NTK/y5xWocfo=; b=U3YRWTyV4l2fA7
-	fqTERwKyoD/v6F+gLHknwNnIpx5tFJTzsWL12FAQqZG8iVU2TZBL7JzN/nVz7L4U3QD6YI3lDP07b
-	FskB7IuHNov8kR9ngoJ95X1HYYUO62WBsFNo7LK+rhYING/X0uzCa3pNl1vDKJvfMtYBSkFWEA8n9
-	h2Jg6Ljwy9teDnzkIZhErrTQ7YszLSFmSn9wRsmuayt8wKaAAvYAfRVx/Vk8a91XujvmDYHBwg0M5
-	K+MXpw3iQwIxkJbnkBeGrQGYij9ONN76109TE02uFQR76khDRu3remHSAg6I8Zr/8YbNxlVyXGmyW
-	jWAQ6VgN9tb52Ic1bpwA==;
+	List-Owner; bh=acYBYN+bMdlOmPtQkWV1D/1wnAFqJmaxBgF1/6UL+Fs=; b=xvnLggqb/T/yrU
+	MzIUt4g9ZU6/gSyjAlmfcF9SDiVf7WgaBZP98GH+SDrnu5LK7P9zMdbqNSboL1F/nx8ay8XrpsvUq
+	tDpnRdMBYXQ5svWvzUDTvvZwgy91O/P3XMcgrD1OvkjCdKOcwyHa3AqNVhoGDzoNdgWgkam51aXXV
+	R16qMpO9rU4yDu3n2wjuStQKuZwsgtbcrMelMrsz/DISDp5HKLFpzQ/UzN0CuWS3AcSfOdy0JLd8D
+	NJh4vjd/9Is4QwolbYCnCEosBBlIgO/nLgJh4Ee0AE7qvO149XaBrsn/kvBNPsgCwvpsE3zPbzP+L
+	X/iffqghIV2xm5v1w8CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uluiV-0000000BrRg-0O6W;
-	Tue, 12 Aug 2025 19:31:27 +0000
+	id 1ulvgU-0000000Bwrc-0t1d;
+	Tue, 12 Aug 2025 20:33:26 +0000
 Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulsqm-0000000BaTa-0z89
+	id 1ulsXn-0000000BWMf-43Wo
 	for linux-rockchip@lists.infradead.org;
-	Tue, 12 Aug 2025 17:31:53 +0000
+	Tue, 12 Aug 2025 17:12:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
  Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1755019909;
- bh=lLNl7MI8X4M5cxrMR25hGPEYfSQVqkkWhNzJlEstFA0=;
- b=c/A+57ABEc86qFRkbT3YxSoUTbk1suErG6+UYUEVudmnMctx2i3e+4mauZi7y5BuVtasDxxmK
- dmkb6agWunYlH+g7vP1xsLY5VxFRnRYHMiW2F8UuAv2hrX+3rXOjXZsnKBLWBWxWBJtiiMCS8Ke
- MBZGTCMeD5YgtZqjk4GCGRMTsJWyZHBke4KsWjqAdZN3qwToof8kme/gPXzu5pT3LSmkcTUBO05
- C9RkclPkmcta6oV9mG95nZEkEPUKIIfo5UHWYcj6VwUBdR9n7fGWmp16/WFg1zg7/5ahC3C1+IA
- mavOTTFDqHfNwJdyjAyvfLvHpKENsPslfoL02B6Eq0kw==
-X-Forward-Email-ID: 689b7a6df092412ac2631c2f
+ s=fe-e1b5cab7be; t=1755018733;
+ bh=cdeSFqQnzEBtE1cji6fpW5bK8huqaFlZYcJ7e7uALrE=;
+ b=R93pjl1ZZ75pMZc2by7v1hRq+D3BHYcg6Bpqis2cMw0DpZKCniTjhHf0I7U0zAFogZ9PFmGgp
+ 3knqf1bXc4HAv1K6kmDIW1aEZOkFEauIDexJ9ZEcZsqTNkUlTzr2Yj5wDdYrjmeYSpVBmO5qnMI
+ 1BvKG1MirGuMLNdWmRqh+pmuBmiza1MslPSyF8l/G08B0bGIoWk1+Heg+bFCf/sr7qgZhbWsz/z
+ vczMVX/S9T1IBHPIW6T8FpPZ0cDsyOQA6NGcUpTSjD3T/fRFwvDgdaQfksWmYGfRZu7QdaNqUp3
+ UEe2zonY8paIojmRU4REBTB53mJc+gQIMzYKO+Iz1/XQ==
+X-Forward-Email-ID: 689b75bff092412ac26312e8
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  121.127.44.73
 X-Forward-Email-Version: 1.2.4
@@ -45,30 +45,31 @@ X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <efdf8c99-d166-4b78-afc5-d4a6eb5ac046@kwiboo.se>
-Date: Tue, 12 Aug 2025 19:31:20 +0200
+Message-ID: <64d551d7-924a-48af-96ca-224fa94543d8@kwiboo.se>
+Date: Tue, 12 Aug 2025 19:11:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 0/7] media: rkvdec: Add HEVC backend
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Diederik de Haas <didi.debian@cknow.org>
 Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Detlev Casanova <detlev.casanova@collabora.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Alex Bee <knaerzche@gmail.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
  Sebastian Fricke <sebastian.fricke@collabora.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 References: <20250810212454.3237486-1-jonas@kwiboo.se>
- <50162371fd54fc976a84fcf57c9b69112a892c46.camel@collabora.com>
- <1dd29158-0660-4254-ac00-1316768d9b82@kwiboo.se>
- <91864a1c047d2bdfce202b070716a694ede47d5e.camel@collabora.com>
- <a66feb89fa02f05b187e5603ffc3b1501ef3cbd5.camel@collabora.com>
+ <DC0FTXJNW0KB.3I8DLNHJVL21O@cknow.org>
 Content-Language: en-US
 From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <a66feb89fa02f05b187e5603ffc3b1501ef3cbd5.camel@collabora.com>
+In-Reply-To: <DC0FTXJNW0KB.3I8DLNHJVL21O@cknow.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_103152_396953_8C9F278B 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20250812_101216_428480_D1ECFD00 
+X-CRM114-Status: GOOD (  31.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,40 +81,141 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gOC8xMi8yMDI1IDI6NDQgUE0sIE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6Cj4gSSBmb3Jnb3Qs
-IAo+IAo+IExlIG1hcmRpIDEyIGFvw7t0IDIwMjUgw6AgMDg6MzggLTA0MDAsIE5pY29sYXMgRHVm
-cmVzbmUgYSDDqWNyaXTCoDoKPj4+IEpDVC1WQy1IRVZDX1YxIG9uIEdTdHJlYW1lci1ILjI2NS1W
-NEwyU0wtR3N0MS4wOgo+Pj4KPj4+IC0gREJMS19EX1ZJWFNfMiAoZmFpbCkKPj4+IC0gRFNMSUNF
-X0FfSEhJXzUgKGZhaWwpCj4+PiAtIEVYVF9BX2VyaWNzc29uXzQgKGZhaWwpCj4+PiAtIFBJQ1NJ
-WkVfQV9Cb3NzZW5fMSAoZXJyb3IpCj4+PiAtIFBJQ1NJWkVfQl9Cb3NzZW5fMSAoZXJyb3IpCj4+
-PiAtIFBJQ1NJWkVfQ19Cb3NzZW5fMSAoZXJyb3IpCj4+PiAtIFBJQ1NJWkVfRF9Cb3NzZW5fMSAo
-ZXJyb3IpCj4+PiAtIFNBT0RCTEtfQV9NYWluQ29uY2VwdF80IChmYWlsKQo+Pj4gLSBTQU9EQkxL
-X0JfTWFpbkNvbmNlcHRfNCAoZmFpbCkKPj4+IC0gVFNVTkVRQkRfQV9NQUlOMTBfVGVjaG5pY29s
-b3JfMiAoZXJyb3IpCj4gCj4gSSdtZSBnZXR0aW5nIHRoZSBzYW1lIHJlc3VsdCBpZiBJIGZvcmNl
-IGEgc2luZ2xlIGpvYiBpbiBmbHVzdGVyLiBUaGUgdGVzdCBJCj4gcG9zdGVkIHdhcyB3aXRoIDIg
-am9icy4gRGV0bGV2IGZvdW5kIHRoYXQgdGhlIGlvbW11IHJlc2V0IGlzIHJlcXVpcmVkIGluIG1v
-cmUKPiBjYXNlcyBvbiBSSzM1ODgvMzU3NiwgcGVyaGFwcyB0aGUgSEVWQyBkZWNvZGVyIGluIG9s
-ZGVyIGhhcmR3YXJlIG5lZWRzIHRoZSBzYW1lLAo+IEkgd2lsbCB0cnkgYW5kIHJlcG9ydC4KClZl
-bmRvciBrZXJuZWwgWzFdIGNoZWNrIGZvbGxvd2luZyBiaXRzIGZyb20gUktWREVDX1JFR19JTlRF
-UlJVUFQgcmVnIHRvCmRlY2lkZSBpZiBhIGZ1bGwgSFcgcmVzZXQgc2hvdWxkIGJlIGRvbmUuCgog
-IGVycl9tYXNrID0gUktWREVDX0JVRl9FTVBUWV9TVEEKICAJICAgfCBSS1ZERUNfQlVTX1NUQQog
-IAkgICB8IFJLVkRFQ19DT0xNVl9SRUZfRVJSX1NUQQogIAkgICB8IFJLVkRFQ19FUlJfU1RBCiAg
-CSAgIHwgUktWREVDX1RJTUVPVVRfU1RBOwoKQWRkaW5nIHByb3BlciByZXNldCBzdXBwb3J0IGNh
-biBiZSByYXRoZXIgaW52b2x2ZWQgYW5kIG1haW4gcmVhc29uIHdoeQp0aGlzIHNlcmllcyBkb2Vz
-IG5vdCBoYW5kbGUgaXQsIGJldHRlciBzdWl0ZWQgZm9yIGEgc2VwYXJhdGUgZnV0dXJlCnNlcmll
-cy4KClByb3BlciBIVyByZXNldCB3aWxsIHJlcXVpcmUgZS5nLiBkdC1iaW5kaW5ncywgRFQgdXBk
-YXRlcywgcG11IGlkbGUKcmVxdWVzdCBpbnRlZ3JhdGlvbiBhbmQgZm9yIHJrMzMyOCB2ZW5kb3Ig
-ZXZlbiBtb3ZlZCBWUFUgcmVzZXQgdG8gVEYtQS4KCkRvaW5nIHRoZSBpb21tdSBkZXRhY2gvYXR0
-YWNoIGRhbmNlIG5vdCBvbmx5IG9uIFJLVkRFQ19TT0ZUUkVTRVRfUkRZCmNvdWxkIHBvc3NpYmxl
-IGltcHJvdmUgc29tZSBjYXNlcywgdW50aWwgZnVsbCByZXNldCBjYW4gYmUgaW1wbGVtZW50ZWQu
-CgpbMV0gaHR0cHM6Ly9naXRodWIuY29tL0t3aWJvby9saW51eC1yb2NrY2hpcC9ibG9iL2xpbnV4
-LTYuMS1zdGFuLXJrcjYuMS9kcml2ZXJzL3ZpZGVvL3JvY2tjaGlwL21wcC9tcHBfcmt2ZGVjLmMj
-TDkyNC1MOTMxCgpSZWdhcmRzLApKb25hcwoKPiAKPiBOaWNvbGFzCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Diederik,
+
+On 8/12/2025 2:11 PM, Diederik de Haas wrote:
+> Hi Jonas,
+> 
+> On Sun Aug 10, 2025 at 11:24 PM CEST, Jonas Karlman wrote:
+>> This series add a HEVC backend to the Rockchip Video Decoder driver.
+>>
+>> With the dependent H.264 High 10 and 4:2:2 profile support series
+>> finally merged there is finally time to send a v2 with minor changes and
+>> a suggested code style fix of this series. v1 of this series has been
+>> fully functional up until recent unstaging of the rkvdec driver.
+>>
+>> A version of this HEVC backend has been in use by the LibreELEC distro
+>> for the past 5+ years [1]. It was initially created based on a copy of
+>> the H264 backend, unstable HEVC uAPI controls and a cabac table + scaling
+>> matrix functions shamelessly copied 1:1 from the Rockchip mpp library.
+>>
+>> It has since then been extended to use the stable HEVC uAPI controls and
+>> improved opon e.g. to include support for rk3288 and fix decoding issues
+>> by Alex Bee and Nicolas Dufresne.
+>>
+>> The version submitted in this series is based on the code currently used
+>> by the LibreELEC distro, excluding hard/soft reset, and with cabac table
+>> and scaling matrix functions picked from Sebastian Fricke prior series
+>> to add a HEVC backend [2].
+>>
+>> Big thanks to Alex Bee, Nicolas Dufresne and Sebastian Fricke for making
+>> this series possible!
+>>
+>> Patch 1 add the new HEVC backend.
+>> Patch 2-3 add variants support to the driver.
+>> Patch 4 add support for a rk3288 variant.
+>> Patch 5 add a rk3328 variant to work around hw quirks.
+>> Patch 6-7 add device tree node for rk3288.
+> 
+> It looks like I had a previous version of linuxtv-rkvdec-hevc-v2 branch
+> locally and that also had this commit:
+> - media: rkvdec: Keep decoder clocks gated
+> 
+> Is that one no longer needed/useful/etc ?
+
+I do not think it is, could possible be to keep power consumption at
+minimum while decoding. Some parts enable auto gating and then we
+disable it when decoding is complete. With auto-suspend the entire block
+is disabled anyway so this probably did not make any noticeable
+difference and could instead introduce new possible issues.
+
+> 
+> And 'chewitt' also had a commit to fix 8/10-bit selection:
+> https://github.com/chewitt/linux/commit/4b93b05d2ca608bc23f1d52bcc32df926d435c7c
+> "WIP: media: rkvdec: fix 8-bit/10-bit format selection"
+> 
+> I haven't tried that one (yet), but did  try an other variant with
+> changing the ordering in rkvdec_hevc_decoded_fmts but that didn't work
+> in my tests. (Can ofc be PEBKAC)
+
+The format selection in kernel for this series should be correct,
+however to ensure 10-bit works you need following for ffmpeg-v4l2request
+to select and use 10-bit pixel formats:
+
+libdrm 2.4.104+ (NV15) / 2.4.118+ (NV20)
+- 10-bit drm formats, ffmpeg v4l2request test with a #ifdef
+
+linux headers v6.16-rc1+ (NV15/NV20)
+- 10-bit v4l2 pix fmt, ffmpeg v4l2request test with a #ifdef
+
+FFmpeg v4l2request will not negotiate use of 10-bit formats without
+DRM_FORMAT_NV15/NV20 and V4L2_PIX_FMT_NV15/NV20 defined when ffmpeg was
+compiled.
+
+That would be the most likely issue if only 8-bit formats is working.
+
+> 
+> Would that be useful? I do/did have consistent problems with playing
+> 10-bit encoded video files.
+
+Looking quickly at the 'fix 8/10-bit selection' commit the issue is that
+rkvdec_hevc_get_image_fmt() was incomplete to begin with. The
+rkvdec_hevc_get_image_fmt() in this series has been correct since v1.
+
+> 
+>> This was tested on a ROCK Pi 4 (RK3399) and Rock64 (RK3328):
+>> <snip>
+>>
+>> Please note that there is a known issue with concurrent decoding,
+>> decoding errors in one decode session may affect a separate session.
+>> The only known mitigation to this is to pause decoding for some time
+>> and/or do a full HW reset, something to handle in future series.
+> 
+> Or would that be (potential) material for a future series as well?
+
+Yes, adding proper HW reset support is something for a future series.
+
+Regards,
+Jonas
+
+> 
+> Cheers,
+>   Diederik
+>>
+>> <snip>
+>>
+>> Alex Bee (4):
+>>   media: rkvdec: Add variants support
+>>   media: rkvdec: Add RK3288 variant
+>>   media: rkvdec: Disable QoS for HEVC and VP9 on RK3328
+>>   ARM: dts: rockchip: Add vdec node for RK3288
+>>
+>> Jonas Karlman (3):
+>>   media: rkvdec: Add HEVC backend
+>>   media: rkvdec: Implement capability filtering
+>>   media: dt-bindings: rockchip,vdec: Add RK3288 compatible
+>>
+>>  .../bindings/media/rockchip,vdec.yaml         |    1 +
+>>  arch/arm/boot/dts/rockchip/rk3288.dtsi        |   17 +-
+>>  .../media/platform/rockchip/rkvdec/Makefile   |    2 +-
+>>  .../rockchip/rkvdec/rkvdec-hevc-data.c        | 1848 +++++++++++++++++
+>>  .../platform/rockchip/rkvdec/rkvdec-hevc.c    |  826 ++++++++
+>>  .../platform/rockchip/rkvdec/rkvdec-regs.h    |    4 +
+>>  .../platform/rockchip/rkvdec/rkvdec-vp9.c     |   10 +
+>>  .../media/platform/rockchip/rkvdec/rkvdec.c   |  184 +-
+>>  .../media/platform/rockchip/rkvdec/rkvdec.h   |   15 +
+>>  9 files changed, 2886 insertions(+), 21 deletions(-)
+>>  create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-data.c
+>>  create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+> 
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
