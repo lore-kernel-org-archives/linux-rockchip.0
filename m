@@ -4,58 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F403CCA0EDC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 16:22:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1F6DC87FCB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 16:23:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d323HHt8luGFhu5FKFgW1MggVrXzzlWPKhgvfBulHkU=; b=uP91rpCgKOuaUI
-	hDwmaCGI2SYSRJA3NaZ7oDTGoI4cMohMJA2a9yogaZN0/DoXrJYS9Spon86TBPLeymLaIWB690/Rv
-	ZNfWodAYDy9rdv4k58Kjk3s5lWjFx77fQYuFyOnmYY5m5luVgsmoscL5chG7GUR30G+xONTYrTaCr
-	4CGI61M4FzCCJkvgrNKrg0BxGZ5Q8Cm5CapISmWZ9+V7BD1TbKe09WRfiNECZOjuogopOt1oqUusA
-	Pwx7oTXxBITMwHpHh2CRj3vvZjAibrRDqYrDuyymyqtg+HIeS+TRBGFZ4LXtTWrW76Qg2dwipxBtN
-	aAtDdWgXkpdfICZKaAVQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ajMcBvjiVv94I5nhc083Ge7QLJLaBaL6HjUJCkPqXSQ=; b=uqc2Nq8DFnVwJC8YvFUFKfY3j0
+	qn32X39LnI/Q6DAOCGPe6k7zRiLCF5+VVN6SFuY9sw59MVct/EZIK7dJaHE0obyTXXdsdHgV+hi52
+	lQrxbUryA+6v4j+paEAh84cr02PHKzwWR+WVD3kma0QIZeTsez2xzHClAXQNhdaMM/aofNvnGjTWf
+	v2KmOO81tyLeuZGBNDRRxJRdiNNCRiUmTvbE7CaQl7dfhhfRxGZ3GrxKl2g2YBglfk46B/SQePjH0
+	v+P9X2RXqXVPs0lv38j3mFZlEDC85EEIRwEPAED64bJridtZWSSe5OXji9jknZ4+P1OODnO3wR55p
+	ccbA8Pqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulrld-0000000BMwy-3kZ7;
-	Tue, 12 Aug 2025 16:22:29 +0000
-Received: from ni.piap.pl ([195.187.100.5])
+	id 1ulrmA-0000000BNlF-34su;
+	Tue, 12 Aug 2025 16:23:02 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulo6y-0000000AgYW-1IgD;
-	Tue, 12 Aug 2025 12:28:18 +0000
-Received: from t19.piap.pl (OSB1819.piap.pl [10.0.9.19])
-	by ni.piap.pl (Postfix) with ESMTPS id 2EB4CC3E4DE9;
-	Tue, 12 Aug 2025 14:28:08 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 ni.piap.pl 2EB4CC3E4DE9
-From: =?utf-8?Q?Krzysztof_Ha=C5=82asa?= <khalasa@piap.pl>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Stefan Klug <stefan.klug@ideasonboard.com>,  Dafna Hirschfeld
- <dafna@fastmail.com>,  Heiko Stuebner <heiko@sntech.de>,  Paul Elder
- <paul.elder@ideasonboard.com>,  Jacopo Mondi
- <jacopo.mondi@ideasonboard.com>,  Ondrej Jirman <megi@xff.cz>,
-  linux-media@vger.kernel.org,  linux-rockchip@lists.infradead.org,
-  linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org
-Subject: Re: FYI: i.MX8MP ISP (RKISP1) MI registers corruption: resolved
-In-Reply-To: <20250812103243.GK30054@pendragon.ideasonboard.com> (Laurent
-	Pinchart's message of "Tue, 12 Aug 2025 13:32:43 +0300")
-References: <175308758352.3134829.9472501038683860006@localhost>
-	<m31pq9y98z.fsf@t19.piap.pl>
-	<175326599663.2811177.16620980968274114885@localhost>
-	<m3h5z2vw12.fsf@t19.piap.pl>
-	<175344176070.2811177.10693943493658922992@localhost>
-	<m3qzxyug1s.fsf@t19.piap.pl> <m3cy9futcj.fsf@t19.piap.pl>
-	<m34iumujcs.fsf@t19.piap.pl> <m3zfcet41n.fsf@t19.piap.pl>
-	<m3a545t789.fsf@t19.piap.pl>
-	<20250812103243.GK30054@pendragon.ideasonboard.com>
-Date: Tue, 12 Aug 2025 14:28:07 +0200
-Message-ID: <m3zfc4sp0o.fsf@t19.piap.pl>
+	id 1uloN1-0000000ApQt-0eQW;
+	Tue, 12 Aug 2025 12:44:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1755002689;
+	bh=zMiRV+p+DUcdpzuTRwPcyJNdY52FdWHiETIA/GgW848=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=VYlGXz1hiPGGu1TBTb2QI72OdiYPHXlCYWNxCdy6xpdu/HKnD74CDfQgSt9VgmyYf
+	 TylHrl3NC+EFCO4C9GoOVmibBiaDdwiN2rzbgC9ENXuEGN5V4/Yl5lMV2QFV3BtLiE
+	 X7N+Ff+Fd0GdMm3zSzN/1GTAfgF/wYBOiLXbTZQV1ZnrcVrUllN80vH61by23Y9x+O
+	 fqn7yJvwm/Xfgi1+7qgJNif1EzpVB7LIPAWnjEUfb9uVYHbeAZXd9joP4nipfLn1Cb
+	 cLs1aFozax3A9mbZo1gx4Zpd2IIn51u+/zJEKW20JYvGHXl1OsqHCj6CMODtxu3JSu
+	 WENTFidEoBo9Q==
+Received: from [IPv6:2606:6d00:11:5a76::c41] (unknown [IPv6:2606:6d00:11:5a76::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5B8BB17E107A;
+	Tue, 12 Aug 2025 14:44:48 +0200 (CEST)
+Message-ID: <a66feb89fa02f05b187e5603ffc3b1501ef3cbd5.camel@collabora.com>
+Subject: Re: [PATCH v2 0/7] media: rkvdec: Add HEVC backend
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Detlev Casanova	
+ <detlev.casanova@collabora.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>,  Alex Bee <knaerzche@gmail.com>, Sebastian Fricke
+ <sebastian.fricke@collabora.com>, 	linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, 	devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-kernel@vger.kernel.org
+Date: Tue, 12 Aug 2025 08:44:46 -0400
+In-Reply-To: <91864a1c047d2bdfce202b070716a694ede47d5e.camel@collabora.com>
+References: <20250810212454.3237486-1-jonas@kwiboo.se>
+		 <50162371fd54fc976a84fcf57c9b69112a892c46.camel@collabora.com>
+		 <1dd29158-0660-4254-ac00-1316768d9b82@kwiboo.se>
+	 <91864a1c047d2bdfce202b070716a694ede47d5e.camel@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mQGiBEUQN0MRBACQYceNSezSdMjx7sx6gwKkMghrrODgl3B0eXBTgNp6c431IfOOEsdvk
+ oOh1kwoYcQgbg4MXw6beOltysX4e8fFWsiRkc2nvvRW9ir9kHDm49MkBLqaDjTqOkYKNMiurFW+go
+ zpr/lUW15QqT6v68RYe0zRdtwGZqeLzX2LVuukGwCg4AISzswrrYHNV7vQLcbaUhPgIl0D+gILYT9
+ TJgAEK4YHW+bFRcY+cgUFoLQqQayECMlctKoLOE69nIYOc/hDr9uih1wxrQ/yL0NJvQCohSPyoyLF
+ 9b2EuIGhQVp05XP7FzlTxhYvGO/DtO08ec85+bTfVBMV6eeY4MS3ZU+1z7ObD7Pf29YjyTehN2Dan
+ 6w1g2rBk5MoA/9nDocSlk4pbFpsYSFmVHsDiAOFje3+iY4ftVDKunKYWMhwRVBjAREOByBagmRau0
+ cLEcElpf4hX5f978GoxSGIsiKoDAlXX+ICDOWC1/EXhEEmBR1gL0QJgiVviNyLfGJlZWnPjw6xhhm
+ tHYWTDxBOP5peztyc2PqeKsLsLWzAr7QnTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhc0BuZHVmcmVz
+ bmUuY2E+iGIEExECACIFAlXA3CACGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sB
+ qgcJngAnRDBTr8bhzuH0KQwFP1nEYtfgpKdAKCrQ/sJfuG/8zsd7J8wVl7y3e8ARbRDTmljb2xhcy
+ BEdWZyZXNuZSAoQi4gU2MuIEluZm9ybWF0aXF1ZSkgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29
+ tPohgBBMRAgAgBQJFlCyOAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQcVMCLawGqBwhLQCg
+ zYlrLBj6KIAZ4gmsfjXD6ZtddT8AoIeGDicVq5WvMHNWign6ApQcZUihtElOaWNvbGFzIER1ZnJlc
+ 25lIChCLiBTYy4gSW5mb3JtYXRpcXVlKSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY28udW
+ s+iGIEExECACIFAkuzca8CGwMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFTAi2sBqgcQX8
+ An2By6LDEeMxi4B9hUbpvRnzaaeNqAJ9Rox8rfqHZnSErw9bCHiBwvwJZ77QxTmljb2xhcyBEdWZy
+ ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPohiBBMRAgAiBQJNzZzPAhsDBgsJC
+ AcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRBxUwItrAaoHLlxAKCYAGf4JL7DYDLs/188CPMGuwLypw
+ CfWKc9DorA9f5pyYlD5pQo6SgSoiC0R05pY29sYXMgRHVmcmVzbmUgKEIgU2MuIEluZm9ybWF0aXF
+ 1ZSkgPG5pY29sYXMuZHVmcmVzbmVAdXNoZXJicm9va2UuY2E+iGAEExECACAFAkUQN0MCGwMGCwkI
+ BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRBxUwItrAaoHPTnAJ0WGgJJVspoctAvEcI00mtp5WAFGgCgr
+ +E7ItOqZEHAs+xabBgknYZIFPU=
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_052816_511475_997CA90C 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20250812_054451_345551_5F904701 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,48 +99,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============5153695969466995627=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTGF1cmVudCwKCj4+IC0gYW55d2F5LCBsb3dlcmluZyB0aGUgZnJlcXVlbmNpZXMgb2YgSVNQ
-IGFuZCBNRURJQSByb290IGNsb2NrcyBmaXhlcwo+PiAgIHRoZSBJU1AyIE1JIGNvcnJ1cHRpb24u
-IEknbSBjdXJyZW50bHkgaW52ZXN0aWdhdGluZyBQTUlDIHNldHRpbmdzCj4+ICAgKGJvdGggbXkg
-Q29tcHVsYWIgYW5kIFNvbGlkUnVuIG1vZHVsZXMgdXNlIFBDQTk0NTBDIFBNSUNzKSwgc28gcGVy
-aGFwcwo+PiAgIEknbGwgYmUgYWJsZSB0byB1c2UgdGhlIGhpZ2hlciA1MDAgTUh6IGNsb2Nrcy4g
-SXQgZG9lc24ndCBtYXR0ZXIgbXVjaCwKPj4gICB0aG91Z2guCgpXZWxsLCBhcHBhcmVudGx5IG15
-IENvbXB1bGFiIFVDTSBtb2R1bGUgcHJvdmlkZXMgb3ZlcmRyaXZlIHBvd2VyLiBBdApsZWFzdCB0
-aGUgUE1JQyBkcml2ZXIgc2F5cyBzbyAoaW4gL3N5cyBwc2V1ZG9maWxlcykuIEkgZ3Vlc3MgU29s
-aWRSdW4Kd29uJ3QgYmUgZGlmZmVyZW50LgoKMS4gQXQgbGVhc3QgdHdvIGRpZmZlcmVudCBkZXNp
-Z25zIGFyZSBhZmZlY3RlZCAoQ29tcHVsYWIgYW5kIFNvbGlkUnVuKSwKMi4gdGhlIFBDQTk0NTBD
-IGlzIFRIRSBpLk1YOE1QIFBNSUMsIG1vc3QgcHJvYmFibHkgY29ubmVjdGVkIHRvIHRoZSBDUFUK
-ICAgZXhhY3RseSBhcyBpbiB0aGUgZGF0YXNoZWV0IChhdCBsZWFzdCBXUlQgVkREX1NPQyBwb3dl
-ciBsaW5lcyksCjMuIE5YUCBwZW9wbGUgZXhwZXJpZW5jZWQgdGhlIHByb2JsZW0gb24gdGhlaXIg
-KHdoaWNoIG9uZXM/KSBib2FyZHMsIHRvbwoKV2VsbC4uLiBUaGV5IHNwZWNpZnkgKElNWDhNUElF
-QyA9IHRoZSBkYXRhc2hlZXQpOgoKIlR3byBpbnN0YW5jZXMgb2YgNC1sYW5lIE1JUEkgQ1NJIGlu
-dGVyZmFjZSBhbmQgSERSIElTUArigKIgRm9yIHNpbmdsZSBDYW1lcmEsIE1JUEkgQ1NJIDEgY2Fu
-IHN1cHBvcnQgdXAgdG8gNDAwLzUwMCBNSHogcGl4ZWwKICBjbG9jayBpbiB0aGUgTm9taW5hbC9P
-dmVyZHJpdmUgbW9kZS4K4oCiIEZvciBzaW5nbGUgQ2FtZXJhLCBNSVBJIENTSSAyIGNhbiBzdXBw
-b3J0IHVwIHRvIDI3NyBNSHogcGl4ZWwgY2xvY2suCuKAoiBGb3IgZHVhbCBDYW1lcmEsIGJvdGgg
-TUlQSSBDU0kgY2FuIHN1cHBvcnQgdXAgdG8gMjY2IE1IeiBwaXhlbCBjbG9jay4K4oCiIDJ4IElT
-UCBzdXBwb3J0aW5nIDM3NSBNcGl4ZWwvcyBhZ2dyZWdhdGUgcGVyZm9ybWFuY2UgYW5kIHVwIHRv
-CiAgMy1leHBvc3VyZSBIRFIgcHJvY2Vzc2luZy4KICAgIOKAoldoZW4gb25lIGNhbWVyYSBpcyB1
-c2VkLCBzdXBwb3J0IHVwIHRvIDEyTVBAMzBmcHMgb3IgNGtwNDUKICAgIOKAoldoZW4gdHdvIGNh
-bWVyYXMgYXJlIHVzZWQsIGVhY2ggc3VwcG9ydHMgdXAgdG8gMTA4MHA4MCIKClNvLCB3aGlsZSBJ
-U1AgY2xvY2sgaXMgbm90IGV4YWN0bHkgcGl4ZWwgY2xvY2ssIHBlcmhhcHMgdGhleSBtZWFuIHRo
-YXQKdGhlIElTUCBjbG9jayBpcyB0byBiZSBsaW1pdGVkIGFzIHdlbGwuCgpJU1AyIGF0IDQwMCBN
-SHogKHNpbmdsZSBjYW1lcmEpIHdvcmtzIGZvciBtZSAod2l0aCBhIDEwODBwNjAgMTItYml0CklN
-WDQ2MiBzZW5zb3IpLCBidXQgSSBoYXZlbid0IHRlc3RlZCBpbiBleHRyZW1lIGNvbmRpdGlvbnMg
-ZXRjLgoKPiBJIHRoaW5rIGl0IHdvdWxkIG1ha2Ugc2Vuc2UgdG8gbG93ZXIgdGhlIGRlZmF1bHQg
-Y2xvY2sgZnJlcXVlbmNpZXMsIGFuZAo+IHByb3ZpZGUgYW4gb3ZlcmxheSB0byBlbmFibGUgb3Zl
-cmRyaXZlIG1vZGUuCj4KPiBJdCdzIGFsc28gaW50ZXJlc3RpbmcgdGhhdCB0aGUgaXNzdWUgb25s
-eSBhZmZlY3RlZCB0aGUgc2Vjb25kIElTUCwgYXMKPiB0aGUgZmlyc3Qgb25lIHNob3VsZCBhbHNv
-IGJlIGxpbWl0ZWQgdG8gNDAwIE1IeiBpbiBub3JtYWwgbW9kZS4KClJpZ2h0LiBNYXliZSBpdCdz
-IG5vdCB0aGUgb3ZlcmRyaXZlIG1vZGUgYWZ0ZXIgYWxsLiBJIHdpbGwgZG8gbW9yZSB0ZXN0cwpz
-b29uLgotLSAKS3J6eXN6dG9mICJDaHJpcyIgSGHFgmFzYQoKU2llxIcgQmFkYXdjemEgxYF1a2Fz
-aWV3aWN6ClByemVteXPFgm93eSBJbnN0eXR1dCBBdXRvbWF0eWtpIGkgUG9taWFyw7N3IFBJQVAK
-QWwuIEplcm96b2xpbXNraWUgMjAyLCAwMi00ODYgV2Fyc3phd2EKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============5153695969466995627==
+Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
+	boundary="=-Y2sl7uZiPmx/2tINlSGb"
+
+
+--=-Y2sl7uZiPmx/2tINlSGb
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+I forgot,=20
+
+Le mardi 12 ao=C3=BBt 2025 =C3=A0 08:38 -0400, Nicolas Dufresne a =C3=A9cri=
+t=C2=A0:
+> > JCT-VC-HEVC_V1 on GStreamer-H.265-V4L2SL-Gst1.0:
+> >=20
+> > - DBLK_D_VIXS_2 (fail)
+> > - DSLICE_A_HHI_5 (fail)
+> > - EXT_A_ericsson_4 (fail)
+> > - PICSIZE_A_Bossen_1 (error)
+> > - PICSIZE_B_Bossen_1 (error)
+> > - PICSIZE_C_Bossen_1 (error)
+> > - PICSIZE_D_Bossen_1 (error)
+> > - SAODBLK_A_MainConcept_4 (fail)
+> > - SAODBLK_B_MainConcept_4 (fail)
+> > - TSUNEQBD_A_MAIN10_Technicolor_2 (error)
+
+I'me getting the same result if I force a single job in fluster. The test I
+posted was with 2 jobs. Detlev found that the iommu reset is required in mo=
+re
+cases on RK3588/3576, perhaps the HEVC decoder in older hardware needs the =
+same,
+I will try and report.
+
+Nicolas
+
+--=-Y2sl7uZiPmx/2tINlSGb
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCaJs3PwAKCRBxUwItrAao
+HF5IAJ9I+Gxb7MlBwyEmKIXw1+qOngNv3QCgtFeTxOPKSG0sAWm3UYeR1QhlsMQ=
+=9ofb
+-----END PGP SIGNATURE-----
+
+--=-Y2sl7uZiPmx/2tINlSGb--
+
+
+--===============5153695969466995627==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5153695969466995627==--
+
