@@ -4,64 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAF52C87FCB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 12:38:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96788C87FCB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 12:39:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qRfY1nxn8p0/PzhJWG2LI+6IUeuyyO+baPF+okFI/L0=; b=sL40SSvNefAKcU
-	bbj2JjfcDYzEXPuiziAzgDhsp9h1ipDjIn/l1qTYWSrnG+dJOox2ULhTV8xi6hKAZe/gQAtv9VD5O
-	lLpD/VvJWhXjt4ZoK8u++eUfAjAW5Z+h/LNyXl6cVd/fKk1HwplFHYaLeudbL24tNnrechKPbHi9H
-	2tvwAKR0VHRNp5/Emuw8ZEATc0+JJR7DZ5iVjGcB/+jXEg/gPw1hfNB1Ae3UEM3mz0vsyzJZsfl38
-	axpv6XYleA6yU1rUZ2SXfRz3O0DN/L+j2eobsAlD00ocIePsfLRAszsSBkDmw/XFnZ9h7Ld3Dxdvu
-	QKXpg/j9wz7o23EU7DXA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MYUxndOlwh9BBkRr+pU3AUxUXTUgKPr3VX/Zg5Z1Wx0=; b=ZRXD2RjosB9sEZ
+	i5ueyEIxhq4xHO+6KPP7LTI7NdHIp4zFUt6qO6BznAWj5zphYayf9hovVt0nqyYcXOBNIHMR9R+hO
+	k4B8u6IwIcnYnTfTiwLbQHJppNSGQJw+/hHNGmBqxuBYpFR70hCplk72t1uZdLbU4eftGLw5BWlPa
+	Efjsq7ld8nuHQqwn2v8eTD1tWII+6xwqpy1nglCJLdMcnVcUu0woYwId0XzTN8lmO3qKe+0x6OhGB
+	n1wQ0TBIEyePo4B7hRRxA8GcmEIA3gOZOA5e5IrHj4YTiH10RKWRGZ0QOakQk1YeChRKiUTsErRtq
+	EhRaDFOp0oCbzX8O62UA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uloGP-0000000Ak4h-24v7;
-	Tue, 12 Aug 2025 12:38:01 +0000
+	id 1uloHo-0000000Alod-0LZn;
+	Tue, 12 Aug 2025 12:39:28 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulkQi-0000000AFXu-1Gkf;
-	Tue, 12 Aug 2025 08:32:26 +0000
+	id 1ulkmx-0000000AJCF-2m8o;
+	Tue, 12 Aug 2025 08:55:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=5sA4dfKRcs1u8Zv8Pe6M7llEqKk9gbfBbVfZyNB4Iq8=; b=RQHPB42FZvWoOlXTI2UMPwTDWN
-	HYrds2/cZTw0iYeHQLkTV8GEQubS5aBOCyMp8wWVtwDjOpkJb+sLDNKxRdMyFFN+aLo0zoXs054xT
-	gyfm/PshlmV6DnkaDy3uCNUimbcdCWaH7s688GkQ83nf1vu1xpWR8DbPPiVWG1rsP0b+LqGZexhRG
-	v1oF7cq/WhIFeU+iFK2vmA9azigV6XAWLFvmbJpsGjrJvqNykLddSMBKk54oGSCWl3CoHjVyFIb7i
-	9h6ncTerlRixtHg9McUHeOxGbcw1M5q+IqlKa294oyL9Gf+YjtJGKNjQMddF8cPb4C8gg7K6hU45U
-	I32Q0u+g==;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
+	bh=MhHZW6hthHOTqU5AnSY9eoFzl6RVNxZgiD/4xqHXVpw=; b=V4R976l1wwKKMirfxSg0Mc4Pyd
+	otyYTmHGz3rGhVvNMOBE5COmPZ1UcFpa740mnlWxWuTM89cox0QhocY4SQJnRNlTuAi696BJOSztZ
+	zY3gtRiEVKSbeGGQIjc5+qVNsBU3+jWgzDMPt+9LfYujk9rWLuTT/8joVSt9vaEqakVj/Lu+AL9+F
+	vt+cXoKuDt5N/0BHVDKfmQdvFFXGr4BtzQaR9uAtE6GYfz0breOB4kLUwM5pmu55RQiPO4hxKWblg
+	F5Hatcd4p2PNzjoJYR/qd8A3T63iFZCeN6SbQmXTvey8hOdk2ZE3TWY2kYIEB3qYx58acClhwx8rQ
+	Nl9DQRVg==;
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1ulkQf-0001tw-6u; Tue, 12 Aug 2025 10:32:21 +0200
+	id 1ulkmw-000228-6W; Tue, 12 Aug 2025 10:55:22 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	quentin.schulz@cherry.de,
-	devicetree@vger.kernel.org,
+Cc: quentin.schulz@cherry.de,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	damon.ding@rock-chips.com,
 	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH v3 2/2] arm64: dts: rockchip: add RK3588 DP carrier from Theobroma Systems
-Date: Tue, 12 Aug 2025 10:32:17 +0200
-Message-ID: <20250812083217.1064185-3-heiko@sntech.de>
+Subject: [PATCH 1/2] arm64: dts: rockchip: enable NPU on rk3588-tiger
+Date: Tue, 12 Aug 2025 10:52:12 +0200
+Message-ID: <20250812085213.1071106-1-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250812083217.1064185-1-heiko@sntech.de>
-References: <20250812083217.1064185-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_013224_377859_C86283C4 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20250812_015523_721067_2E4C01B4 
+X-CRM114-Status: GOOD (  13.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,151 +73,75 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-The DisplayPort carrier is a very simple baseboard only providing serial,
-ethernet and a displayport output.
-
-But its main functionality is that it routes the Analogix eDP controller
-to this DisplayPort output, which allows to test that controller simply
-by hooking it up to a suitable monitor.
-
-The Analogix-DP controller supports eDP 1.3 and DP 1.2, so can drive
-both eDP displays as well as full DP monitors. It does not support DP+
-so passive DP-to-HDMI adapters won't work.
+Enable the NPU cores and their mmus and wire up the supply-regulator.
+The regulator itself was already defined, but it does not need to be
+always on - the npu can control it.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../rk3588-tiger-displayport-carrier.dts      | 109 ++++++++++++++++++
- 2 files changed, 110 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
+ .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi | 35 ++++++++++++++++++-
+ 1 file changed, 34 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 099520962ffb..271f372e36e9 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -181,6 +181,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5t.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-displayport-carrier.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-video-demo.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
-new file mode 100644
-index 000000000000..025b2853c708
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
-@@ -0,0 +1,109 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2024 Cherry Embedded Solutions GmbH
-+ */
-+
-+/dts-v1/;
-+#include <dt-bindings/soc/rockchip,vop2.h>
-+#include "rk3588-tiger.dtsi"
-+
-+/ {
-+	model = "Theobroma Systems RK3588-Q7 SoM on Tiger Displayport Carrier v1";
-+	compatible = "tsd,rk3588-tiger-displayport-carrier", "tsd,rk3588-tiger", "rockchip,rk3588";
-+
-+	aliases {
-+		ethernet0 = &gmac0;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:115200n8";
-+	};
-+
-+	dp-connector {
-+		compatible = "dp-connector";
-+		dp-pwr-supply = <&vcc3v3_baseboard>;
-+		/* Q7_DP_HPD# but Q7_HDMI_HPD# could be used too */
-+		hpd-gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_LOW>;
-+		label = "dp0";
-+		pinctrl-0 = <&edp0_hpd_l>;
-+		pinctrl-names = "default";
-+		type = "full-size";
-+
-+		port {
-+			dp_con_in: endpoint {
-+				remote-endpoint = <&edp0_out_con>;
-+			};
-+		};
-+	};
-+
-+	vcc3v3_baseboard: regulator-vcc3v3-baseboard {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_baseboard";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_baseboard>;
-+	};
-+
-+	vcc5v0_baseboard: regulator-vcc5v0-baseboard {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_baseboard";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+index f4bebd25e938..9859f31d2894 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+@@ -194,7 +194,6 @@ vdd_npu_s0: regulator@42 {
+ 		reg = <0x42>;
+ 		fcs,suspend-voltage-selector = <1>;
+ 		regulator-name = "vdd_npu_s0";
+-		regulator-always-on;
+ 		regulator-boot-on;
+ 		regulator-min-microvolt = <550000>;
+ 		regulator-max-microvolt = <950000>;
+@@ -337,6 +336,10 @@ &pd_gpu {
+ 	domain-supply = <&vdd_gpu_s0>;
+ };
+ 
++&pd_npu {
++	domain-supply = <&vdd_npu_s0>;
 +};
 +
-+&edp0 {
+ &pinctrl {
+ 	emmc {
+ 		emmc_reset: emmc-reset {
+@@ -375,6 +378,36 @@ &pwm0 {
+ 	pinctrl-names = "default";
+ };
+ 
++&rknn_core_0 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
 +	status = "okay";
 +};
 +
-+&edp0_in {
-+	edp0_in_vp2: endpoint {
-+		remote-endpoint = <&vp2_out_edp0>;
-+	};
-+};
-+
-+&edp0_out {
-+	edp0_out_con: endpoint {
-+		remote-endpoint = <&dp_con_in>;
-+	};
-+};
-+
-+&gmac0 {
++&rknn_core_1 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
 +	status = "okay";
 +};
 +
-+&hdptxphy0 {
++&rknn_core_2 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
 +	status = "okay";
 +};
 +
-+&pinctrl {
-+	edp0 {
-+		edp0_hpd_l: edp0-hpd-l-pin {
-+			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&uart2 {
-+	pinctrl-0 = <&uart2m2_xfer>;
++&rknn_mmu_0 {
 +	status = "okay";
 +};
 +
-+&vop {
++&rknn_mmu_1 {
 +	status = "okay";
 +};
 +
-+&vop_mmu {
++&rknn_mmu_2 {
 +	status = "okay";
 +};
 +
-+&vp2 {
-+	vp2_out_edp0: endpoint@ROCKCHIP_VOP2_EP_EDP0 {
-+		reg = <ROCKCHIP_VOP2_EP_EDP0>;
-+		remote-endpoint = <&edp0_in_vp2>;
-+	};
-+};
+ &saradc {
+ 	vref-supply = <&vcc_1v8_s0>;
+ 	status = "okay";
 -- 
 2.47.2
 
