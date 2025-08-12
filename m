@@ -4,97 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFC41CA0EE6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 21:12:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1D4ACA0EDB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 21:20:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6JECtbBtl7U2W90rANxaKlzwVpJ+07Ev89DDio+oUOc=; b=ow0nx9EL26KQu+
-	OwfG3bi3smAQ3KnLUX6z6malVm9DYcx1y26LP1ew/iwxcN7L/mTdc1ECoca0wTJMCjQe/i0+QhWeI
-	7BfJfd7N6kj3Z5NQNbwTX+CDZyA1YlJ3XdI+mfQW6I+I3EJNEJCB4JfWCTqdnRPOMe/zFAi6Fq6Dn
-	ZjGIvQGDGx6y+TG8I7bT45U/DVu9rZBCYuHzgRUrP2bZwFU54g7EdOv6ZWBfo3bjKxCJW3wY+Grt+
-	lL6awqAYIiI/4RPf70taPB7LwYuNb/TS5hFfRmFTeyK+K5mw4gTU2EVfPl+SETLXPU371N/T4e9XJ
-	GTuQqYSWc5QbIHkFNP/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c20vlLAXFafyBnQpU6fqSMibp2mwsxg/NnXVzDf3PKU=; b=ix7n04Nmtyvcazu+3k9QEdRWGb
+	suJYoL2TNGSQRjwU3yKYB27MfnvAXGCE4EGjgeTryB1jG7bNowHAfo4CoOXFi2OvRWU2nWsEdhLGn
+	lB3Zd2LljiT01DOt4/bppbREDnUfcX+EUuLr1tiSxS6DWJb+yXW8+KsF9N7W/M24lZcNu3/zSMfSV
+	NhUSk7mbvMsXjm0yoN++u6kXWfUm2O2dyRhUUXNIwIvCQDt90lqHuzIg2UWZiHEW3u3Fe9Z04rghB
+	tLvGWKdHAg9kxE3T0vxFBmXR9Zlu8hYxcE6WyRuEX5jB30U7vTpOXYbHlP00UyIYumUal4aLsHIq8
+	2+kuZWBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulwHt-0000000C1fp-1dFN;
-	Tue, 12 Aug 2025 21:12:05 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1ulwPb-0000000C2mD-06Yu;
+	Tue, 12 Aug 2025 21:20:03 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulvde-0000000BwPT-2THM;
-	Tue, 12 Aug 2025 20:30:31 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-af91a6b7a06so994826666b.2;
-        Tue, 12 Aug 2025 13:30:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1755030628; x=1755635428; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=UDpZ/uLV4xgn4kCXyhg6m1oHwpXbM6/gIBFZ0zY+grE=;
-        b=Xpc2gyFgplVLLj52ruZp0SsjdoWK8yc6gEQRxhryHJdQkv0GTsfa7IVAop1/R0O8qn
-         onmk965qJCSENHROv7ZXXg4vFgb3eqKyPBvlUkvQzrIOj3HM23sdDGkUZF3W3I1kw0CC
-         bpmyGRTwguJoF17fgw9sf5t5Jjf6G0F4ygvdI281xrxX6fsuw3jAadY7WgaqkuHwuuG9
-         7nodFWGkCKAE3CAwfPRd+3Py6X6YXFsGgLFpjC2of1+qrZ6b77vJeqRJ0Sjrh3mXkaQe
-         YD+hbW5AGWg2NiNzglKWZEZFCCwMkASA/ITwt1jmDbnXt6TTnnEEl949EgIgua89q4Do
-         FHUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755030628; x=1755635428;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=UDpZ/uLV4xgn4kCXyhg6m1oHwpXbM6/gIBFZ0zY+grE=;
-        b=IfmJ2s+WU84aYul/D8K6ZF/w5wntAVQdi+Ja0tSOkivq5YDlHHsyy/IVYePAeiW1y9
-         /s3G+PoU3l+RhYZ5fM1EuIzaI+gKiCEM9YiWOgPphxhWmQz3nSH845dd5EWk1BdV9hUd
-         bE+PcxkNYvo40Zb+etWhL/zbzjVbQOglGyCMv44081xCrOs9XcagWUwfZWaIsYocXWDg
-         d83hYg2CY5LeHA0LTBrrSmYpkdQ0uHwDyWe8rfr4YU8oYxhFNJPryyeW/YhcQEK+hwde
-         Nii7TPN75rKtAqAET45K0/m/BwehffsAZMGCkeFmNCf9oga8gih1e2HR9ctmtWbVzAgf
-         na4w==
-X-Forwarded-Encrypted: i=1; AJvYcCUhORUyuIevZDUNrH6QJWFIttkVgzNU6FurP066IW9owNkJH1v6wgFWm4OZkVOvoFGEIh4JSwXAuhiN7PiO+gE=@lists.infradead.org, AJvYcCXyd38pRZ10eaIGhMafiMp/TAwtqyIDj0IqmmN3QvEqyg0IvAbZ1SX3Kpo2pw/qjQi3FR7HeQtExltr9sIg+/Hx@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzf3/N9z8h8OHqcP3eb5w8+iToSMOkG4qQnq+WRwaH4dBdW30ul
-	Cqv5tDtJ7uENwGHWgNg4aevxhUoEOjXiX3+zRvX+3bSohoEj+Fq+SRrL1oYbMnTa8/c=
-X-Gm-Gg: ASbGncu+dkztT340hMEeWqOrvq8PhbOGMXqbA3XW69udTGQKkP44yhVWJjjhh0jAWT+
-	gTKG/I4+waVNzmdGUYiKdhIWOovRSbcnxJuLHJFdN7FoCgs3DmwXmxEzl1PHqjQZkVZPoziJ6Bf
-	nXJuaN8wbckcVklnHv1zJO71bGGfTRvZpoQyua0koPL63KTuzt4M8vK7eToXZMnI5LTucJWVDvC
-	o+Nt+oFc24k1asvEh5XeD2MWRhH/xSAiJk8L3cJFlS1c3yrSsxsLhapqhYSwPkTVMErl74EF3Y8
-	a2n7I527hpRASt8MvLmXuXlFwSDxzxSLKmqIV8sf1621ZWqLABUNKl+ElC5mRQMKhgz/njyqPUw
-	YowayLp2bhnDqULDJJknIQ/+AwREpjsj5zUBp/K1XAP2bAZtTM6o=
-X-Google-Smtp-Source: AGHT+IE8qPYJK5nv9hP6mJhBYPJdtTcVBRcIuezef0tNEf/XrB7lXj0liRGKyKHHW8hVebGuWOnP2g==
-X-Received: by 2002:a17:907:1b13:b0:afa:1a67:c046 with SMTP id a640c23a62f3a-afca4cbb1c0mr54830066b.11.1755030627838;
-        Tue, 12 Aug 2025 13:30:27 -0700 (PDT)
-Received: from alchark-surface.localdomain ([185.213.155.230])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-af91a0a3b58sm2266073166b.58.2025.08.12.13.30.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Aug 2025 13:30:27 -0700 (PDT)
-From: Alexey Charkov <alchark@gmail.com>
-Subject: [PATCH 0/3] arm64: dts: rockchip: Enable RTC, WiFi and Bluetooth
- on RK3576 EVB1
-Date: Wed, 13 Aug 2025 00:30:22 +0400
-Message-Id: <20250813-evb1-rtcwifibt-v1-0-d13c83422971@gmail.com>
+	id 1ulwH8-0000000C1b2-0Xof;
+	Tue, 12 Aug 2025 21:11:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1755033076;
+	bh=ptw9LWjwcshgBavY2yDU/Ee+H+KyvQTD0coZYZFxVfw=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=iPMgSUEkfNJiAjaNCg4fHebUfF9p4iwEMZYSQwgT3Wag8oCvrrorR82Bq+flfOcAA
+	 tJE/Yoicrzw8NxpJCIWPPwA8lhSY3QDThCFfZS0af2JKOocxNwJNPGGFvi52DpWIPR
+	 rfp96b9bk+frqd/JoscI7HeslPOnw24WS16oaArSS9knnpRp6StIjNe34jMttiQ/N2
+	 PwrCFWxH28cc2bJhESkMhUuieD/1bwztCE2rL1oY3n/B+JDdgpUVuXdnVPPctJe1Nr
+	 ggH7Sftmy6AqFFgE9khGPbHMDitLVejnKoL1yJUUDLXdN1bGzQpQ754p+334Mxdt/W
+	 JLqzujFi6Sk4A==
+Received: from [IPv6:2606:6d00:11:5a76::c41] (unknown [IPv6:2606:6d00:11:5a76::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A839717E0237;
+	Tue, 12 Aug 2025 23:11:14 +0200 (CEST)
+Message-ID: <d4f53de2dabce333e9f24fe0036d91b8d60af628.camel@collabora.com>
+Subject: Re: [PATCH v2 0/7] media: rkvdec: Add HEVC backend
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>, Jonas Karlman
+	 <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>
+Cc: Alex Bee <knaerzche@gmail.com>, Sebastian Fricke
+	 <sebastian.fricke@collabora.com>, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Date: Tue, 12 Aug 2025 17:11:12 -0400
+In-Reply-To: <3547812.44csPzL39Z@earth>
+References: <20250810212454.3237486-1-jonas@kwiboo.se>
+	 <50162371fd54fc976a84fcf57c9b69112a892c46.camel@collabora.com>
+	 <3547812.44csPzL39Z@earth>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoiZBBMWCgBBAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheAFiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmgssvgFCQll93U
+ ACgkQ2UGUUSlgcvRSeQEAjcvEl/A6R2y2nMufL4A8MiKQfPZqJPXlhhno2PZqqUcBAIR87Pv5+cZV
+ ZTN26stch5wMyalcKgRNQ9IxtGvVelUCtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1ZnJlc
+ 25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AWIQ
+ TvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZsmBU
+ pkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHCAAS0
+ LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBFiEE7
+ w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAwECHg
+ cCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8bRLv
+ 9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAF+km2gC/x3MQQqAIBBA0avIrBPU0qSrRAutsWZjoVJBdPek5
- Vv8/0DGRJhhYA8kPCnTHitkw2DeXFyR01INSigtrDAcTy95KvNFgXzhru2kFr3RdtFQoyNhoPs
- fjtP7fqGDmURgAAAA
-X-Change-ID: 20250806-evb1-rtcwifibt-a341507658d5
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Pavel Zhovner <pavel@flipperdevices.com>, 
- Alexey Charkov <alchark@gmail.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1755030626; l=1045;
- i=alchark@gmail.com; s=20250416; h=from:subject:message-id;
- bh=DPUg/AoorRxu3yhwbYOhHRtH0CbbSLCxMzRYqdsDRVU=;
- b=olIxr2X1rvA6OPvIHjWNujq7kqoN3cBugQA6uDhbvCgzXX49DIhFHYGpp25HJaliyfIbItPBh
- 9GeZmMsbRDNAsn+459X9Obgn6qN1H6ZX9a+K5vr0zTjK5oFDsVtaNMo
-X-Developer-Key: i=alchark@gmail.com; a=ed25519;
- pk=ltKbQzKLTJPiDgPtcHxdo+dzFthCCMtC3V9qf7+0rkc=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_133030_629405_22846CC2 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250812_141118_317152_3270D7ED 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,41 +88,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5094851966914935196=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RK3576 EVB1 boards follow the usual Rockchip design pattern
-with the I2C connected RTC chip feeding a 32 kHz LPO clock to the
-onboard Ampak AP6275P combo WiFi/BT module. In this case the WiFi
-part is connected by a PCIe link and BT over UART.
 
-Add required DT nodes to enable them.
+--===============5094851966914935196==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-3mQpTUvxe3+s5ASJnZMy"
 
-The board also has a connector for an external WiFi/BT module, which
-is out of scope for this series. There is also a PCM connection from
-SAI2 M0 to the Bluetooth module, which is also left out for now.
 
-Signed-off-by: Alexey Charkov <alchark@gmail.com>
----
-Alexey Charkov (3):
-      arm64: dts: rockchip: Add RTC on rk3576-evb1-v10
-      arm64: dts: rockchip: Add WiFi on rk3576-evb1-v10
-      arm64: dts: rockchip: Add Bluetooth on rk3576-evb1-v10
+--=-3mQpTUvxe3+s5ASJnZMy
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
- arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts | 115 +++++++++++++++++++++++
- 1 file changed, 115 insertions(+)
----
-base-commit: 8f5ae30d69d7543eee0d70083daf4de8fe15d585
-change-id: 20250806-evb1-rtcwifibt-a341507658d5
+Hi,
 
-Best regards,
--- 
-Alexey Charkov <alchark@gmail.com>
+Le mardi 12 ao=C3=BBt 2025 =C3=A0 15:57 -0400, Detlev Casanova a =C3=A9crit=
+=C2=A0:
+> > Detlev reports 146/147 on newer hardware using GStreamer, failing
+> > TSUNEQBD_A_MAIN10_Technicolor_2 (9bit chroma) only. On Detlev side, it =
+will
+> > we important to check why 8K videos (PICSIZE*) passes with a single cor=
+e,
+> > perhaps we accidently use both cores ?
+>=20
+> 1 core can do 8K. In theory, it can do up to close to 65535x65535... It i=
+s=20
+> only a speed issue, so you can do 8K but you won't be able to get to 8K@6=
+0=20
+> with only one core on rk3588.
 
+now that makes me wonder if that means we can reach speed such as 240Hz 4K =
+by
+slaving the cores, of if that only works for 8K. If this is the case, perha=
+ps
+the decoder will need to be target performance aware to make the best
+scheduling.
+
+Nicolas
+
+--=-3mQpTUvxe3+s5ASJnZMy
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaJut8AAKCRDZQZRRKWBy
+9Ih8AQDKyfk0G5x1w5UjIb06h+rwgbK7YR0Lu+0CgbaCFrUrCwEAtl6TV9GOaFhe
+Ubqzqi3x44DC0qxKWNjsJ9wdHUCpbAM=
+=ANNJ
+-----END PGP SIGNATURE-----
+
+--=-3mQpTUvxe3+s5ASJnZMy--
+
+
+--===============5094851966914935196==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5094851966914935196==--
+
