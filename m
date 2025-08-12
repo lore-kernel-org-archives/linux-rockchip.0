@@ -4,58 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F5F0CA0EDA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 05:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D31BCA0EC4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 06:58:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AWywTQUAKwZGImbgW1ClT5Sy26a91MPiInIAgIuJTTA=; b=zrTLSjG0VkZd+t
-	BIH0UyupO77JCXvjbZaENHbACGKr9S1pglHdl3niadI6Dk+L4I/2dphoF3bhYEOF01KXZ4r4NyS0K
-	64vHmULtejd7uG5Qzmn9aekFn6xn+6eG0oNEv6kSH3cl1IutJgxSyWmJ4ve65GAqsfsuYzEho6+Ye
-	uZEdDth7fpQT/J3xlrCcaVw7DQCSdwDktm7ZwvUEvwJGiY5A8V2WG4qgVimgp3S3fgIHJm9u43tdf
-	PGk4l+CC4YKSX1omBmVvQt2BtyChXuib7gH8mfTO8mqq2+r9BdRc+Bx9Q0UBP5mnrEPPEseCDk8Jj
-	KdHSJTyPrCiJOu0gzbcQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=m5oYavjQKQm0hEab1WvokpcwjlneVVmeczHjDKdlUfI=; b=JDgyh3aIp8Ral3
+	R795BL93Y3SQvWWoLN/4O9JOADtPQ/e0iUBoDd1nMsRsSDD1UpyWxzRAL6w9guqHtzN7Dwy5FUM4R
+	BmvV7ji8vUVKqeSbviA8M0rz1sWkLnAT7w6rEFiG2GBX86m/m6KNnn6RmasRAIAPx4EFw526wguSB
+	90wkLx9t+hVBsd24nCz0RKV3EO7KOEYaSVsR/k4jXscWHqYIFihVK4+18/kbz7GOsNy1UK4Iu6u1H
+	pWiqve/0RjSB55Qg4dVLXUsMJ7PfHgjrtM4GE6AWBmUrv76Eer0eGiHk1A0Onrv/sl6h9ZX6FJWjC
+	+C3IK0oBjsFLEReBtMeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uli1s-00000009yRH-3ZA2;
-	Tue, 12 Aug 2025 05:58:36 +0000
-Received: from [195.187.100.5] (helo=ni.piap.pl)
+	id 1ulixW-0000000A4oP-135s;
+	Tue, 12 Aug 2025 06:58:10 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulhyH-00000009xwK-23GT;
-	Tue, 12 Aug 2025 05:54:55 +0000
-Received: from t19.piap.pl (OSB1819.piap.pl [10.0.9.19])
-	by ni.piap.pl (Postfix) with ESMTPS id 8C855C3E4DEA;
-	Tue, 12 Aug 2025 07:54:46 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 ni.piap.pl 8C855C3E4DEA
-From: =?utf-8?Q?Krzysztof_Ha=C5=82asa?= <khalasa@piap.pl>
-To: Stefan Klug <stefan.klug@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>,  Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>,  Heiko Stuebner <heiko@sntech.de>,
-  Paul Elder <paul.elder@ideasonboard.com>,  Jacopo Mondi
- <jacopo.mondi@ideasonboard.com>,  Ondrej Jirman <megi@xff.cz>,
-  linux-media@vger.kernel.org,  linux-rockchip@lists.infradead.org,
-  linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org
-Subject: Re: FYI: i.MX8MP ISP (RKISP1) MI registers corruption: resolved
-In-Reply-To: <m3zfcet41n.fsf@t19.piap.pl> ("Krzysztof =?utf-8?Q?Ha=C5=82as?=
- =?utf-8?Q?a=22's?= message of
-	"Tue, 05 Aug 2025 13:13:08 +0200")
-References: <m3h5zbxkc6.fsf@t19.piap.pl> <m38qknx939.fsf@t19.piap.pl>
-	<175308758352.3134829.9472501038683860006@localhost>
-	<m31pq9y98z.fsf@t19.piap.pl>
-	<175326599663.2811177.16620980968274114885@localhost>
-	<m3h5z2vw12.fsf@t19.piap.pl>
-	<175344176070.2811177.10693943493658922992@localhost>
-	<m3qzxyug1s.fsf@t19.piap.pl> <m3cy9futcj.fsf@t19.piap.pl>
-	<m34iumujcs.fsf@t19.piap.pl> <m3zfcet41n.fsf@t19.piap.pl>
-Date: Tue, 12 Aug 2025 07:54:46 +0200
-Message-ID: <m3a545t789.fsf@t19.piap.pl>
+	id 1uliuv-0000000A4cu-24xG
+	for linux-rockchip@bombadil.infradead.org;
+	Tue, 12 Aug 2025 06:55:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=gQpilYnt4FgOjs5+1tewTfyxrC4VggVjH4vFHfgXSYI=; b=oQJN3OIUEm1TQvEbje04jqlzlD
+	pR6NB2fdl2t/XVi/uXQt+KQ0gq9oiMSTYqsg4P/Cvmk4Rs+L1DT6n17IwRpy/0R5dNCSrelS6stQN
+	jBjRKDTYHf2lBkyVA014X41qQKj1+RyNEolCC6Qbui8zuyhmhfCRLVAzzZ/S6GVdqecnzVFMeqcL+
+	WfuwqlfOgK7suztDq4UNr76lWXfy6OeuG/NeAkCjz562rXmDAUkePCjUA5+mNQtrFJo8bHzjZWDZK
+	mH1HuY06et5Gl80XVm3nc1Rb9lILyUQpz4++6POiP6d9NL/M3ogUf2OaXWWeWRwKZRPmnRp9p6ZQB
+	0mAT0xLQ==;
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uliur-0000000Fieq-1HiG
+	for linux-rockchip@lists.infradead.org;
+	Tue, 12 Aug 2025 06:55:28 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-242ff06b130so3306295ad.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 11 Aug 2025 23:55:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=heitbaum.com; s=google; t=1754981722; x=1755586522; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=gQpilYnt4FgOjs5+1tewTfyxrC4VggVjH4vFHfgXSYI=;
+        b=dnjc2umO7jgv0nLo/9obmfjmWg0n7YaH5GY7Q8jbaC3+kSm8lDhg3u4O4otT/0O+JP
+         Qnkezbqg98iEHN/CXsAuytbMEAhDiUGwth8gpBSQY4momkLrUym2UQwXlYK31KLNFUxD
+         KflXZx7lP3SOu9pAnRXOdckx9MmJa74LUBpUM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1754981722; x=1755586522;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=gQpilYnt4FgOjs5+1tewTfyxrC4VggVjH4vFHfgXSYI=;
+        b=ns0ksczb223/hyWTVt5uE4s7NFqpRiJDrFomuDbHrb+n0/d/wHzKPaVorDNeCThGPl
+         2GhLeA1r/MjVIJG9AUQ6jgT6T4/qyzAA5A/KOkVJH2+jbcoW5JBb5wrPmd9ZANMHjvrr
+         dwistZ8FC37+ev0DKE5knA0a6lrdX+n9OyPhsqcZsR3GBMvP0MZKfWC8Cb/wI6i0hcQT
+         asCVMuKbQe1ZYw836YkxQs5f2XpYB9YeC2XydVJzTZv/OGZPiYVGDcFCfDC7sGY+6A+4
+         yL2J+oixrDY+PDXzKrQxSOA1lyrOrG9/ZDtqcgz21fSEP6uQZuci5/Uj3Xj0kxw+mg5Z
+         lvtg==
+X-Forwarded-Encrypted: i=1; AJvYcCV7WKQhM741UzLP67X6KRzzAtCv64vWFwAxU5xjLBxdb8JVOxInZuG48P1NTTx79+WQ5f3ZuHKue3tmRpnjdA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxz4/FQtgSGvgToCQgjfWj+xtXmxjkaKv7MIt784bGyzzLIDnRv
+	hWZTWTjyIC/Oq1jb9pLUVdYruvPPYFWKk4yALOy+TcQpRurlmRmIOd6bCStUcZBHCUs=
+X-Gm-Gg: ASbGncuWYwLN65UmJegHiucXud6dEPGav7oEVSX0ga1wsAbe7bMYD+0eV9OXj6x7/jd
+	p7tf4N1K8fh2xIH7LzpaIp3Jqjq50uO01Kb004jkZhhJ/PN9dAL8LLm5BqlWOyueQ5mJxGp8yd3
+	Cl7Arqc5bX/EpudiwIF/xJfcRIKqVzy+yAevjxTqm5rdMEbOAQOAp+DE9er8NxCChTC5o58SMbH
+	l8yEA3g/Utp3WrLXE53zAwy2SwGPIDzhVhmopXp7DWxIWj55MrNPIPnwpPJOsEKRq4qpP2shJNA
+	cO1SzAPNXho0DWpF8i9kLP7wKFG7qdcpOKUnYxbDWsStVXR6IYDLVMIhb/OK4afMJNeS4C4klOe
+	v04GxomEwEshQFWz/IpeX211noO9NHvvsNSrAE2rWznPioKwZudBf9D0=
+X-Google-Smtp-Source: AGHT+IGZE5ejnVJXLy+u8D+y8H3N4C4rUcjtSocvHp94fOPiHgfZuivNo0dcelQy8UmjKn8/qCY+Yg==
+X-Received: by 2002:a17:903:124b:b0:240:11cd:8502 with SMTP id d9443c01a7336-242c203d160mr209522875ad.13.1754981722075;
+        Mon, 11 Aug 2025 23:55:22 -0700 (PDT)
+Received: from 8eba3d7b3083 (122-199-11-121.ip4.superloop.au. [122.199.11.121])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-24300f8ca2asm7538825ad.141.2025.08.11.23.55.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Aug 2025 23:55:21 -0700 (PDT)
+Date: Tue, 12 Aug 2025 06:55:15 +0000
+From: Rudi Heitbaum <rudi@heitbaum.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: rudi@heitbaum.com
+Subject: [PATCH] drm/rockchip: cdn-dp: select bridge for cdp-dp
+Message-ID: <aJrlUzV1u4i65NRe@8eba3d7b3083>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250811_225453_729424_771DE058 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20250812_075525_693187_C24DF8A1 
+X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,35 +111,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgU3RlZmFuIGV0IGFsLAoKQlRXIEkndmUgYWRkZWQgTHVjYXMgU3RhY2ggYW5kIFNoYXduIEd1
-byB0byAiQ2MiIGxpc3QuCgpUaGUgcHJvYmxlbSBpcyB0aGUgQ1BVIGNvcmUgcG93ZXIgc3VwcGx5
-IHZvbHRhZ2UgOi0pCgotIHdoaWxlIHRoZSByZWZlcmVuY2UgbWFudWFsIHNwZWNpZmllcyB0aGUg
-bWF4IElTUCBhbmQgTUVESUEgY2xvY2tzIGF0CiAgNTAwIE1IeiwgdGhlIGRhdGFzaGVldHMgc2hv
-dyB0aGlzIHJlcXVpcmVzIHRoZSAib3ZlcmRyaXZlIiBtb2RlID0KICBpbmNyZWFzZWQgQ1BVIHBv
-d2VyIHN1cHBseSB2b2x0YWdlLiBJbiAibm9ybWFsIiBtb2RlIHRoZSBJU1BzIGFyZQogIGxpbWl0
-ZWQgdG8gNDAwIE1IeiAodGhlcmUgYXJlIG90aGVyIGxpbWl0cywgdG9vKS4KCi0gSSd2ZSB0cmll
-ZCBsb3dlcmluZyB0aGUgY2xvY2sgcmF0ZSBhZnRlciBib290aW5nIHRoZSBzeXN0ZW1zICh3aXRo
-CiAgYSBDQ00gcmVnaXN0ZXIgd3JpdGUpLCBidXQgaXQgZGlkbid0IGZpeCB0aGUgcHJvYmxlbS4g
-SSBndWVzcyBzb21lCiAgcmVzZXQgbG9naWMgaXMgYWZmZWN0ZWQgaGVyZSwgYW5kIHRoZSAobG93
-ZXIpIGNsb2NrIHJhdGUgbXVzdCBiZSBzZXQKICByaWdodCBmcm9tIHRoZSBzdGFydCwgaW4gdGhl
-IERULgoKLSBhbnl3YXksIGxvd2VyaW5nIHRoZSBmcmVxdWVuY2llcyBvZiBJU1AgYW5kIE1FRElB
-IHJvb3QgY2xvY2tzIGZpeGVzCiAgdGhlIElTUDIgTUkgY29ycnVwdGlvbi4gSSdtIGN1cnJlbnRs
-eSBpbnZlc3RpZ2F0aW5nIFBNSUMgc2V0dGluZ3MKICAoYm90aCBteSBDb21wdWxhYiBhbmQgU29s
-aWRSdW4gbW9kdWxlcyB1c2UgUENBOTQ1MEMgUE1JQ3MpLCBzbyBwZXJoYXBzCiAgSSdsbCBiZSBh
-YmxlIHRvIHVzZSB0aGUgaGlnaGVyIDUwMCBNSHogY2xvY2tzLiBJdCBkb2Vzbid0IG1hdHRlciBt
-dWNoLAogIHRob3VnaC4KCi0gdGhlIHF1ZXN0aW9uIGlzIGlmIHdlIHNob3VsZCBsb3dlciB0aGUg
-Y2xvY2tzIGluIHRoZSBtYWluIGlteDhtcC5kdHNpCiAgRFQgZmlsZSwgb3IgdGhlIG92ZXJkcml2
-ZSBtb2RlIHNob3VsZCBzdGF5IHRoZXJlLCBhbmQgdGhlIGNoYW5nZXMKICBzaG91bGQgYmUgbWFk
-ZSB0byB0aGUgaW5kaXZpZHVhbCBib2FyZCBmaWxlcywgb3IgbWF5YmUgdGhlIFUtQm9vdAogIGNv
-bmZpZ3MgKFBNSUMgb3V0cHV0IHZvbHRhZ2VzKSBzaG91bGQgYmUgY2hhbmdlZCBldGMuCi0tIApL
-cnp5c3p0b2YgIkNocmlzIiBIYUJhc2EKClNpZcSHIEJhZGF3Y3phIEF1a2FzaWV3aWN6ClByemVt
-eXPFgm93eSBJbnN0eXR1dCBBdXRvbWF0eWtpIGkgUG9taWFyw7N3IFBJQVAKQWwuIEplcm96b2xp
-bXNraWUgMjAyLCAwMi00ODYgV2Fyc3phd2EKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Select drm bridge connector when building cdp-dp.
+This was missed in previous commit causing build failure.
+
+Fixes: Commit afbbca25d06e ("drm/rockchip: cdn-dp: Convert to drm bridge")
+Signed-off-by: Rudi Heitbaum <rudi@heitbaum.com>
+---
+ drivers/gpu/drm/rockchip/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+index ab525668939a..faf50d872be3 100644
+--- a/drivers/gpu/drm/rockchip/Kconfig
++++ b/drivers/gpu/drm/rockchip/Kconfig
+@@ -53,6 +53,7 @@ config ROCKCHIP_CDN_DP
+ 	bool "Rockchip cdn DP"
+ 	depends on EXTCON=y || (EXTCON=m && DRM_ROCKCHIP=m)
+ 	select DRM_DISPLAY_HELPER
++	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_DISPLAY_DP_HELPER
+ 	help
+ 	  This selects support for Rockchip SoC specific extensions
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
