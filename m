@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B324FCA0EDF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 16:21:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F403CCA0EDC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Aug 2025 16:22:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:Subject:Cc:To:From:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dBQWBzk0thUbxEPO/4JtSblVUidGIUXBjfaB43HAI/Y=; b=RwpPLOO/ghwFnzK4Up/LWEOq/6
-	NGIDP/LK6mUmok/PJEXxmfBPEYwLN+cynzoIPQhFkLUiH/z6lLFppknN9oA9ftXARl/mTnQkCrIUx
-	20fuKm/lJoLX24IXlc0GcsamCAqKMSHgnuZLCJ9+VcI4WyAhjPJef0loPkRO9NBmvZIRuqVXl7vhn
-	Hex5AGll4HmJNUpzOpanj7BAMBnrm21qlmOp4A1BKRgIYqKMj/PDIybL+72SpJkAB62lebqkWiCdN
-	ZzcfHv4kAECh0ok39DwnwrDp5+jkVhYOqSM8gk/JEkAqCuTdWqTe9t7knWtbvPNJQ1Tathk6gmJwl
-	Ah19rGew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=d323HHt8luGFhu5FKFgW1MggVrXzzlWPKhgvfBulHkU=; b=uP91rpCgKOuaUI
+	hDwmaCGI2SYSRJA3NaZ7oDTGoI4cMohMJA2a9yogaZN0/DoXrJYS9Spon86TBPLeymLaIWB690/Rv
+	ZNfWodAYDy9rdv4k58Kjk3s5lWjFx77fQYuFyOnmYY5m5luVgsmoscL5chG7GUR30G+xONTYrTaCr
+	4CGI61M4FzCCJkvgrNKrg0BxGZ5Q8Cm5CapISmWZ9+V7BD1TbKe09WRfiNECZOjuogopOt1oqUusA
+	Pwx7oTXxBITMwHpHh2CRj3vvZjAibrRDqYrDuyymyqtg+HIeS+TRBGFZ4LXtTWrW76Qg2dwipxBtN
+	aAtDdWgXkpdfICZKaAVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulrl2-0000000BLy4-0Dz3;
-	Tue, 12 Aug 2025 16:21:52 +0000
-Received: from out-178.mta0.migadu.com ([91.218.175.178])
+	id 1ulrld-0000000BMwy-3kZ7;
+	Tue, 12 Aug 2025 16:22:29 +0000
+Received: from ni.piap.pl ([195.187.100.5])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ulnrV-0000000AesM-3YoH
-	for linux-rockchip@lists.infradead.org;
-	Tue, 12 Aug 2025 12:12:20 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1755000733;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=scirrqqI4lOboEI3/AWvPAjONsAeNM4rjx3UmgFrhBA=;
-	b=GWG+XfFZJGWUBXR2DfX9RM0RidgE3PuHgnxhkGyBvKors9KleZT7/IFPmBWTCyAYyO1h7Z
-	tFXdiAm9r0QWnc1NIsiCMGGvSlmXhznINjn0zezrvbNJsZfL1/xQBcNDPtZlFryDOBZrt6
-	XNGW7qqjaYw44iIX1jduDbF/B+CMkLl9RrjYQXpIC3bbgDQA4ihegz1XfJ7BvLhEfMgT4O
-	fH7O7CjZDiklMuprfB+uvjJYxaPBONP/Si4D8AXmDl+JPzIk7LqLf0oMEgULu9Nsula/L1
-	Nkt4akKX5hcwlK0S9arlLblv1EpoVuzUPkuHNSWPdaZDQ+0pok8FCMpwfe04Tg==
-Date: Tue, 12 Aug 2025 14:11:53 +0200
-Message-Id: <DC0FTXJNW0KB.3I8DLNHJVL21O@cknow.org>
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Jonas Karlman" <jonas@kwiboo.se>, "Ezequiel Garcia"
- <ezequiel@vanguardiasur.com.ar>, "Detlev Casanova"
- <detlev.casanova@collabora.com>, "Mauro Carvalho Chehab"
- <mchehab@kernel.org>
-Cc: "Alex Bee" <knaerzche@gmail.com>, "Nicolas Dufresne"
- <nicolas.dufresne@collabora.com>, "Sebastian Fricke"
- <sebastian.fricke@collabora.com>, <linux-media@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2 0/7] media: rkvdec: Add HEVC backend
-References: <20250810212454.3237486-1-jonas@kwiboo.se>
-In-Reply-To: <20250810212454.3237486-1-jonas@kwiboo.se>
-X-Migadu-Flow: FLOW_OUT
+	id 1ulo6y-0000000AgYW-1IgD;
+	Tue, 12 Aug 2025 12:28:18 +0000
+Received: from t19.piap.pl (OSB1819.piap.pl [10.0.9.19])
+	by ni.piap.pl (Postfix) with ESMTPS id 2EB4CC3E4DE9;
+	Tue, 12 Aug 2025 14:28:08 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 ni.piap.pl 2EB4CC3E4DE9
+From: =?utf-8?Q?Krzysztof_Ha=C5=82asa?= <khalasa@piap.pl>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Stefan Klug <stefan.klug@ideasonboard.com>,  Dafna Hirschfeld
+ <dafna@fastmail.com>,  Heiko Stuebner <heiko@sntech.de>,  Paul Elder
+ <paul.elder@ideasonboard.com>,  Jacopo Mondi
+ <jacopo.mondi@ideasonboard.com>,  Ondrej Jirman <megi@xff.cz>,
+  linux-media@vger.kernel.org,  linux-rockchip@lists.infradead.org,
+  linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org
+Subject: Re: FYI: i.MX8MP ISP (RKISP1) MI registers corruption: resolved
+In-Reply-To: <20250812103243.GK30054@pendragon.ideasonboard.com> (Laurent
+	Pinchart's message of "Tue, 12 Aug 2025 13:32:43 +0300")
+References: <175308758352.3134829.9472501038683860006@localhost>
+	<m31pq9y98z.fsf@t19.piap.pl>
+	<175326599663.2811177.16620980968274114885@localhost>
+	<m3h5z2vw12.fsf@t19.piap.pl>
+	<175344176070.2811177.10693943493658922992@localhost>
+	<m3qzxyug1s.fsf@t19.piap.pl> <m3cy9futcj.fsf@t19.piap.pl>
+	<m34iumujcs.fsf@t19.piap.pl> <m3zfcet41n.fsf@t19.piap.pl>
+	<m3a545t789.fsf@t19.piap.pl>
+	<20250812103243.GK30054@pendragon.ideasonboard.com>
+Date: Tue, 12 Aug 2025 14:28:07 +0200
+Message-ID: <m3zfc4sp0o.fsf@t19.piap.pl>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250812_051218_628740_BE8CB7CA 
-X-CRM114-Status: GOOD (  26.59  )
+X-CRM114-CacheID: sfid-20250812_052816_511475_997CA90C 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,135 +67,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2816308487966738716=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2816308487966738716==
-Content-Type: multipart/signed;
- boundary=6590abcb8affc04b8dd77226ffd5bce0d727acb00dbbc61bdd0f9c164e53;
- micalg=pgp-sha512; protocol="application/pgp-signature"
-
---6590abcb8affc04b8dd77226ffd5bce0d727acb00dbbc61bdd0f9c164e53
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-
-Hi Jonas,
-
-On Sun Aug 10, 2025 at 11:24 PM CEST, Jonas Karlman wrote:
-> This series add a HEVC backend to the Rockchip Video Decoder driver.
->
-> With the dependent H.264 High 10 and 4:2:2 profile support series
-> finally merged there is finally time to send a v2 with minor changes and
-> a suggested code style fix of this series. v1 of this series has been
-> fully functional up until recent unstaging of the rkvdec driver.
->
-> A version of this HEVC backend has been in use by the LibreELEC distro
-> for the past 5+ years [1]. It was initially created based on a copy of
-> the H264 backend, unstable HEVC uAPI controls and a cabac table + scaling
-> matrix functions shamelessly copied 1:1 from the Rockchip mpp library.
->
-> It has since then been extended to use the stable HEVC uAPI controls and
-> improved opon e.g. to include support for rk3288 and fix decoding issues
-> by Alex Bee and Nicolas Dufresne.
->
-> The version submitted in this series is based on the code currently used
-> by the LibreELEC distro, excluding hard/soft reset, and with cabac table
-> and scaling matrix functions picked from Sebastian Fricke prior series
-> to add a HEVC backend [2].
->
-> Big thanks to Alex Bee, Nicolas Dufresne and Sebastian Fricke for making
-> this series possible!
->
-> Patch 1 add the new HEVC backend.
-> Patch 2-3 add variants support to the driver.
-> Patch 4 add support for a rk3288 variant.
-> Patch 5 add a rk3328 variant to work around hw quirks.
-> Patch 6-7 add device tree node for rk3288.
-
-It looks like I had a previous version of linuxtv-rkvdec-hevc-v2 branch
-locally and that also had this commit:
-- media: rkvdec: Keep decoder clocks gated
-
-Is that one no longer needed/useful/etc ?
-
-And 'chewitt' also had a commit to fix 8/10-bit selection:
-https://github.com/chewitt/linux/commit/4b93b05d2ca608bc23f1d52bcc32df926d4=
-35c7c
-"WIP: media: rkvdec: fix 8-bit/10-bit format selection"
-
-I haven't tried that one (yet), but did  try an other variant with
-changing the ordering in rkvdec_hevc_decoded_fmts but that didn't work
-in my tests. (Can ofc be PEBKAC)
-
-Would that be useful? I do/did have consistent problems with playing
-10-bit encoded video files.
-
-> This was tested on a ROCK Pi 4 (RK3399) and Rock64 (RK3328):
-> <snip>
->
-> Please note that there is a known issue with concurrent decoding,
-> decoding errors in one decode session may affect a separate session.
-> The only known mitigation to this is to pause decoding for some time
-> and/or do a full HW reset, something to handle in future series.
-
-Or would that be (potential) material for a future series as well?
-
-Cheers,
-  Diederik
->
-> <snip>
->
-> Alex Bee (4):
->   media: rkvdec: Add variants support
->   media: rkvdec: Add RK3288 variant
->   media: rkvdec: Disable QoS for HEVC and VP9 on RK3328
->   ARM: dts: rockchip: Add vdec node for RK3288
->
-> Jonas Karlman (3):
->   media: rkvdec: Add HEVC backend
->   media: rkvdec: Implement capability filtering
->   media: dt-bindings: rockchip,vdec: Add RK3288 compatible
->
->  .../bindings/media/rockchip,vdec.yaml         |    1 +
->  arch/arm/boot/dts/rockchip/rk3288.dtsi        |   17 +-
->  .../media/platform/rockchip/rkvdec/Makefile   |    2 +-
->  .../rockchip/rkvdec/rkvdec-hevc-data.c        | 1848 +++++++++++++++++
->  .../platform/rockchip/rkvdec/rkvdec-hevc.c    |  826 ++++++++
->  .../platform/rockchip/rkvdec/rkvdec-regs.h    |    4 +
->  .../platform/rockchip/rkvdec/rkvdec-vp9.c     |   10 +
->  .../media/platform/rockchip/rkvdec/rkvdec.c   |  184 +-
->  .../media/platform/rockchip/rkvdec/rkvdec.h   |   15 +
->  9 files changed, 2886 insertions(+), 21 deletions(-)
->  create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-da=
-ta.c
->  create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
-
-
---6590abcb8affc04b8dd77226ffd5bce0d727acb00dbbc61bdd0f9c164e53
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaJsvjAAKCRDXblvOeH7b
-bhf6AP0cQaPbNeNKgdBGzdSYqHMMSX3Ix/IZm7QpHlM11Q7PWgEAw2HCwp3ojWFd
-ALwV+Z8FasxZfkOfjYJmcHhJyZdW3gk=
-=zJRQ
------END PGP SIGNATURE-----
-
---6590abcb8affc04b8dd77226ffd5bce0d727acb00dbbc61bdd0f9c164e53--
-
-
---===============2816308487966738716==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2816308487966738716==--
-
+SGkgTGF1cmVudCwKCj4+IC0gYW55d2F5LCBsb3dlcmluZyB0aGUgZnJlcXVlbmNpZXMgb2YgSVNQ
+IGFuZCBNRURJQSByb290IGNsb2NrcyBmaXhlcwo+PiAgIHRoZSBJU1AyIE1JIGNvcnJ1cHRpb24u
+IEknbSBjdXJyZW50bHkgaW52ZXN0aWdhdGluZyBQTUlDIHNldHRpbmdzCj4+ICAgKGJvdGggbXkg
+Q29tcHVsYWIgYW5kIFNvbGlkUnVuIG1vZHVsZXMgdXNlIFBDQTk0NTBDIFBNSUNzKSwgc28gcGVy
+aGFwcwo+PiAgIEknbGwgYmUgYWJsZSB0byB1c2UgdGhlIGhpZ2hlciA1MDAgTUh6IGNsb2Nrcy4g
+SXQgZG9lc24ndCBtYXR0ZXIgbXVjaCwKPj4gICB0aG91Z2guCgpXZWxsLCBhcHBhcmVudGx5IG15
+IENvbXB1bGFiIFVDTSBtb2R1bGUgcHJvdmlkZXMgb3ZlcmRyaXZlIHBvd2VyLiBBdApsZWFzdCB0
+aGUgUE1JQyBkcml2ZXIgc2F5cyBzbyAoaW4gL3N5cyBwc2V1ZG9maWxlcykuIEkgZ3Vlc3MgU29s
+aWRSdW4Kd29uJ3QgYmUgZGlmZmVyZW50LgoKMS4gQXQgbGVhc3QgdHdvIGRpZmZlcmVudCBkZXNp
+Z25zIGFyZSBhZmZlY3RlZCAoQ29tcHVsYWIgYW5kIFNvbGlkUnVuKSwKMi4gdGhlIFBDQTk0NTBD
+IGlzIFRIRSBpLk1YOE1QIFBNSUMsIG1vc3QgcHJvYmFibHkgY29ubmVjdGVkIHRvIHRoZSBDUFUK
+ICAgZXhhY3RseSBhcyBpbiB0aGUgZGF0YXNoZWV0IChhdCBsZWFzdCBXUlQgVkREX1NPQyBwb3dl
+ciBsaW5lcyksCjMuIE5YUCBwZW9wbGUgZXhwZXJpZW5jZWQgdGhlIHByb2JsZW0gb24gdGhlaXIg
+KHdoaWNoIG9uZXM/KSBib2FyZHMsIHRvbwoKV2VsbC4uLiBUaGV5IHNwZWNpZnkgKElNWDhNUElF
+QyA9IHRoZSBkYXRhc2hlZXQpOgoKIlR3byBpbnN0YW5jZXMgb2YgNC1sYW5lIE1JUEkgQ1NJIGlu
+dGVyZmFjZSBhbmQgSERSIElTUArigKIgRm9yIHNpbmdsZSBDYW1lcmEsIE1JUEkgQ1NJIDEgY2Fu
+IHN1cHBvcnQgdXAgdG8gNDAwLzUwMCBNSHogcGl4ZWwKICBjbG9jayBpbiB0aGUgTm9taW5hbC9P
+dmVyZHJpdmUgbW9kZS4K4oCiIEZvciBzaW5nbGUgQ2FtZXJhLCBNSVBJIENTSSAyIGNhbiBzdXBw
+b3J0IHVwIHRvIDI3NyBNSHogcGl4ZWwgY2xvY2suCuKAoiBGb3IgZHVhbCBDYW1lcmEsIGJvdGgg
+TUlQSSBDU0kgY2FuIHN1cHBvcnQgdXAgdG8gMjY2IE1IeiBwaXhlbCBjbG9jay4K4oCiIDJ4IElT
+UCBzdXBwb3J0aW5nIDM3NSBNcGl4ZWwvcyBhZ2dyZWdhdGUgcGVyZm9ybWFuY2UgYW5kIHVwIHRv
+CiAgMy1leHBvc3VyZSBIRFIgcHJvY2Vzc2luZy4KICAgIOKAoldoZW4gb25lIGNhbWVyYSBpcyB1
+c2VkLCBzdXBwb3J0IHVwIHRvIDEyTVBAMzBmcHMgb3IgNGtwNDUKICAgIOKAoldoZW4gdHdvIGNh
+bWVyYXMgYXJlIHVzZWQsIGVhY2ggc3VwcG9ydHMgdXAgdG8gMTA4MHA4MCIKClNvLCB3aGlsZSBJ
+U1AgY2xvY2sgaXMgbm90IGV4YWN0bHkgcGl4ZWwgY2xvY2ssIHBlcmhhcHMgdGhleSBtZWFuIHRo
+YXQKdGhlIElTUCBjbG9jayBpcyB0byBiZSBsaW1pdGVkIGFzIHdlbGwuCgpJU1AyIGF0IDQwMCBN
+SHogKHNpbmdsZSBjYW1lcmEpIHdvcmtzIGZvciBtZSAod2l0aCBhIDEwODBwNjAgMTItYml0CklN
+WDQ2MiBzZW5zb3IpLCBidXQgSSBoYXZlbid0IHRlc3RlZCBpbiBleHRyZW1lIGNvbmRpdGlvbnMg
+ZXRjLgoKPiBJIHRoaW5rIGl0IHdvdWxkIG1ha2Ugc2Vuc2UgdG8gbG93ZXIgdGhlIGRlZmF1bHQg
+Y2xvY2sgZnJlcXVlbmNpZXMsIGFuZAo+IHByb3ZpZGUgYW4gb3ZlcmxheSB0byBlbmFibGUgb3Zl
+cmRyaXZlIG1vZGUuCj4KPiBJdCdzIGFsc28gaW50ZXJlc3RpbmcgdGhhdCB0aGUgaXNzdWUgb25s
+eSBhZmZlY3RlZCB0aGUgc2Vjb25kIElTUCwgYXMKPiB0aGUgZmlyc3Qgb25lIHNob3VsZCBhbHNv
+IGJlIGxpbWl0ZWQgdG8gNDAwIE1IeiBpbiBub3JtYWwgbW9kZS4KClJpZ2h0LiBNYXliZSBpdCdz
+IG5vdCB0aGUgb3ZlcmRyaXZlIG1vZGUgYWZ0ZXIgYWxsLiBJIHdpbGwgZG8gbW9yZSB0ZXN0cwpz
+b29uLgotLSAKS3J6eXN6dG9mICJDaHJpcyIgSGHFgmFzYQoKU2llxIcgQmFkYXdjemEgxYF1a2Fz
+aWV3aWN6ClByemVteXPFgm93eSBJbnN0eXR1dCBBdXRvbWF0eWtpIGkgUG9taWFyw7N3IFBJQVAK
+QWwuIEplcm96b2xpbXNraWUgMjAyLCAwMi00ODYgV2Fyc3phd2EKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
