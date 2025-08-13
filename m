@@ -4,63 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE49FCA0EE0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Aug 2025 16:53:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 951F0CA0EE6
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Aug 2025 18:06:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/uT1LIbTOouNXQpapOzSJAi21VOulBpvErBtAGiSqlA=; b=Cbuby7N1KQBW1z
-	YHeNmBbBN0zxaK6d8bYnCY7ZYPjj7JAsmSFOqWgB9YPitE0GCaQpRXguZ7VWS+O9lUALLnWPBJbvT
-	kusn3ChEuYrKYZ2Ct3XuI4ODzMaKJvtxjZ2HbszaNPLdtDTNnFON5GLLdKnUP1B/4FEfqJsVMm7ZK
-	4ny5kzDLUb0K5A1mTHTndfbaKmAsfALWWjtgzum3gsKZdu0Wc0ATJ0fJfvXR2VYP/1tqO0Y2xFOhM
-	WCKgH9NXer4HsYgZe/AeyKDvsaMVUilapiWwTCsYzplfpEURqpCHn7R/qr5I4oKvPeqmxbVzNX4vu
-	tdK9kE5tP5CIxw8yzWnQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XpnmLNOut9bX9GO0RjssJuY5+1gAy0yEmyebd7blq04=; b=gZiZrSl6a3ylOs
+	Gryc1RXFsFf7ztPepIC9KIYOlN7LCfDR6cfwXQqWAscMEigNd7eKAmDJCIl/xRnkoRT+0DdXaxemc
+	oBdXjQXa/Z94lW99RerJ/gUPcP+xLxkeWtolSiGkyFQ7MofWIpJbGsEQWDaiqYDNIJnnk75QQ52AB
+	tiVhAfbXDDHbCBLi/Ay9fHRqEKzkgZpZGdcGKK1wzo/jpZJy7HrSlV2IPbKYJcl34MfVnWRT4H8RO
+	92XqXrKpvZcTrf4NKrofP7+qvE0PTnc4sEJoUtFyArxTIxCOXOQ3y6gTcyNPDGA4P9lnIsMaSSrwm
+	CbuQtv8nsumqfy1ggIMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umEjL-0000000ETiK-4Bv0;
-	Wed, 13 Aug 2025 16:53:40 +0000
-Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umE9Q-0000000ELid-12QK
-	for linux-rockchip@lists.infradead.org;
-	Wed, 13 Aug 2025 16:16:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	 s=k1; bh=JM9SpV/fnrsLvvM+Go1VUM4DNlcYiERXiLNTjdx9OJo=; b=Bl4jGz
-	19fCVHEkw3GF9z/XPPvj6W0oFoFPA4oyVLyTay1YOjYq/cUbOU0gz2M9cv/StJt5
-	sYW/iA+17QUVaXMeCgsb4sRxA18MUEqjh6qY3z/cbwKNlRbkGIyujiz+1I4D1sLq
-	4DSoO25xGzEBl7sAK8DKuVviOi2QncDrj6cgtzaUjjqwXHGlCLxNFww69Xuh6WG3
-	4g2ibSfe63bjqBj/aVosx4tQH8z1d3UhPmKkwoDvcX0li5f0gjfFYJj6xlif6vLh
-	BIrNJN8cBzoGFA2QuLwCB7LcO32aWRqp+xNwHBl/MiATlnMP2h1O83iqOm+hmI1c
-	XJjkX/jq6h4NAOdA==
-Received: (qmail 695217 invoked from network); 13 Aug 2025 18:16:19 +0200
-Received: by mail.zeus03.de with UTF8SMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 13 Aug 2025 18:16:19 +0200
-X-UD-Smtp-Session: l3s3148p1@EGQLekE8npFtKLKq
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: linux-kernel@vger.kernel.org
-Cc: Mark Brown <broonie@kernel.org>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-phy@lists.infradead.org,
+	id 1umFrQ-0000000Eekv-3ODq;
+	Wed, 13 Aug 2025 18:06:04 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1umEqu-0000000EVGt-0CiP;
+	Wed, 13 Aug 2025 17:01:29 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0CD3A12FC;
+	Wed, 13 Aug 2025 10:01:17 -0700 (PDT)
+Received: from e121345-lin.cambridge.arm.com (e121345-lin.cambridge.arm.com [10.1.196.50])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id E4DF23F738;
+	Wed, 13 Aug 2025 10:01:20 -0700 (PDT)
+From: Robin Murphy <robin.murphy@arm.com>
+To: peterz@infradead.org,
+	mingo@redhat.com,
+	will@kernel.org,
+	mark.rutland@arm.com,
+	acme@kernel.org,
+	namhyung@kernel.org,
+	alexander.shishkin@linux.intel.com,
+	jolsa@kernel.org,
+	irogers@google.com,
+	adrian.hunter@intel.com,
+	kan.liang@linux.intel.com
+Cc: linux-perf-users@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-alpha@vger.kernel.org,
+	linux-snps-arc@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 12/21] phy: remove unneeded 'fast_io' parameter in regmap_config
-Date: Wed, 13 Aug 2025 18:14:58 +0200
-Message-ID: <20250813161517.4746-13-wsa+renesas@sang-engineering.com>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250813161517.4746-1-wsa+renesas@sang-engineering.com>
-References: <20250813161517.4746-1-wsa+renesas@sang-engineering.com>
+	imx@lists.linux.dev,
+	linux-csky@vger.kernel.org,
+	loongarch@lists.linux.dev,
+	linux-mips@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-s390@vger.kernel.org,
+	linux-sh@vger.kernel.org,
+	sparclinux@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	dmaengine@vger.kernel.org,
+	linux-fpga@vger.kernel.org,
+	amd-gfx@lists.freedesktop.org,
+	dri-devel@lists.freedesktop.org,
+	intel-gfx@lists.freedesktop.org,
+	intel-xe@lists.freedesktop.org,
+	coresight@lists.linaro.org,
+	iommu@lists.linux.dev,
+	linux-amlogic@lists.infradead.org,
+	linux-cxl@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-riscv@lists.infradead.org
+Subject: [PATCH 00/19] perf: Rework event_init checks
+Date: Wed, 13 Aug 2025 18:00:52 +0100
+Message-Id: <cover.1755096883.git.robin.murphy@arm.com>
+X-Mailer: git-send-email 2.39.2.101.g768bb238c484.dirty
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250813_091632_564132_F8835E67 
-X-CRM114-Status: UNSURE (   9.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250813_100128_165970_0F557D5E 
+X-CRM114-Status: GOOD (  15.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,70 +95,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When using MMIO with regmap, fast_io is implied. No need to set it
-again.
+Hi all,
 
-Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
----
-No dependencies, can be applied directly to the subsystem tree. Buildbot is
-happy, too.
+[ Note I'm only CC'ing lists for now to avoid spamming nearly 100 
+  individual maintainers/reviewers while we work out the basics ]
 
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 1 -
- drivers/phy/rockchip/phy-rockchip-usbdp.c         | 1 -
- drivers/phy/ti/phy-am654-serdes.c                 | 1 -
- drivers/phy/ti/phy-j721e-wiz.c                    | 1 -
- 4 files changed, 4 deletions(-)
+Reviving my idea from a few years back, the aim here is to minimise
+the amount of event_init boilerplate that most new drivers have to
+implement (and so many get wrong), while also trying to establish
+some more consistent and easy-to-follow patterns for the things that
+drivers should still care about (mostly group validation).
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index 79db57ee90d1..01bbf668e05e 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -795,7 +795,6 @@ static const struct regmap_config rk_hdptx_phy_regmap_config = {
- 	.val_bits = 32,
- 	.writeable_reg = rk_hdptx_phy_is_rw_reg,
- 	.readable_reg = rk_hdptx_phy_is_rw_reg,
--	.fast_io = true,
- 	.max_register = 0x18b4,
- };
- 
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index c066cc0a7b4f..010e9d2d6fac 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -1430,7 +1430,6 @@ static const struct regmap_config rk_udphy_pma_regmap_cfg = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.max_register = 0x20dc,
- };
- 
-diff --git a/drivers/phy/ti/phy-am654-serdes.c b/drivers/phy/ti/phy-am654-serdes.c
-index 431b223996e0..5b6c27aa7e8b 100644
---- a/drivers/phy/ti/phy-am654-serdes.c
-+++ b/drivers/phy/ti/phy-am654-serdes.c
-@@ -99,7 +99,6 @@ static const struct regmap_config serdes_am654_regmap_config = {
- 	.reg_bits = 32,
- 	.val_bits = 32,
- 	.reg_stride = 4,
--	.fast_io = true,
- 	.max_register = 0x1ffc,
- };
- 
-diff --git a/drivers/phy/ti/phy-j721e-wiz.c b/drivers/phy/ti/phy-j721e-wiz.c
-index ab2a4f2c0a5b..a8b440c6c46b 100644
---- a/drivers/phy/ti/phy-j721e-wiz.c
-+++ b/drivers/phy/ti/phy-j721e-wiz.c
-@@ -1319,7 +1319,6 @@ static const struct regmap_config wiz_regmap_config = {
- 	.reg_bits = 32,
- 	.val_bits = 32,
- 	.reg_stride = 4,
--	.fast_io = true,
- };
- 
- static struct wiz_data j721e_16g_data = {
+It's ended up somewhat big and ugly, so to start with I've tried to
+optimise for ease of review - based on the typical "fixes, cleanup,
+new development" order the split of the current patches is like so:
+
+* Group validation rework (patches #1-#15)
+  - Specific drivers with functional issues by inspection (#1-#7)
+  - Specific drivers where cleanup changes were non-trivial (#8-#11)
+  - Common patterns across remaining drivers (#12-#15)
+* Capabilities rework (patches #16-#18)
+* Giant bonfire of remaining boilerplate! (patch #19)
+
+If the overall idea is acceptable then a more relaxed merge strategy
+might be to look at landing the common parts first (#16-#18 and maybe
+#13), then rearrange the rest into per-driver patches, but I'm sure
+nobody wants a ~70-patch series out of the gate :)
+
+Thanks,
+Robin.
+
+
+Robin Murphy (19):
+  perf/arm-cmn: Fix event validation
+  perf/hisilicon: Fix group validation
+  perf/imx8_ddr: Fix group validation
+  perf/starfive: Fix group validation
+  iommu/vt-d: Fix perfmon group validation
+  ARM: l2x0: Fix group validation
+  ARM: imx: Fix MMDC PMU group validation
+  perf/arm_smmu_v3: Improve group validation
+  perf/qcom: Improve group validation
+  perf/arm-ni: Improve event validation
+  perf/arm-cci: Tidy up event validation
+  perf: Ignore event state for group validation
+  perf: Add helper for checking grouped events
+  perf: Clean up redundant group validation
+  perf: Simplify group validation
+  perf: Introduce positive capability for sampling
+  perf: Retire PERF_PMU_CAP_NO_INTERRUPT
+  perf: Introduce positive capability for raw events
+  perf: Garbage-collect event_init checks
+
+ arch/alpha/kernel/perf_event.c                |  5 +-
+ arch/arc/kernel/perf_event.c                  |  4 +-
+ arch/arm/mach-imx/mmdc.c                      | 29 ++----
+ arch/arm/mm/cache-l2x0-pmu.c                  | 19 +---
+ arch/csky/kernel/perf_event.c                 |  3 +-
+ arch/loongarch/kernel/perf_event.c            |  1 +
+ arch/mips/kernel/perf_event_mipsxx.c          |  1 +
+ arch/powerpc/perf/8xx-pmu.c                   |  3 +-
+ arch/powerpc/perf/core-book3s.c               |  4 +-
+ arch/powerpc/perf/core-fsl-emb.c              |  4 +-
+ arch/powerpc/perf/hv-24x7.c                   | 11 ---
+ arch/powerpc/perf/hv-gpci.c                   | 11 ---
+ arch/powerpc/perf/imc-pmu.c                   | 31 +-----
+ arch/powerpc/perf/kvm-hv-pmu.c                |  5 +-
+ arch/powerpc/perf/vpa-pmu.c                   | 13 +--
+ arch/powerpc/platforms/pseries/papr_scm.c     | 18 +---
+ arch/s390/kernel/perf_cpum_cf.c               |  8 +-
+ arch/s390/kernel/perf_cpum_sf.c               |  2 +
+ arch/s390/kernel/perf_pai_crypto.c            |  1 +
+ arch/s390/kernel/perf_pai_ext.c               |  1 +
+ arch/sh/kernel/perf_event.c                   |  1 -
+ arch/sparc/kernel/perf_event.c                |  4 +-
+ arch/x86/events/amd/ibs.c                     | 32 ++-----
+ arch/x86/events/amd/iommu.c                   | 15 ---
+ arch/x86/events/amd/power.c                   |  7 --
+ arch/x86/events/amd/uncore.c                  | 12 +--
+ arch/x86/events/core.c                        |  7 +-
+ arch/x86/events/intel/bts.c                   |  3 -
+ arch/x86/events/intel/cstate.c                | 16 +---
+ arch/x86/events/intel/pt.c                    |  3 -
+ arch/x86/events/intel/uncore.c                | 16 +---
+ arch/x86/events/intel/uncore_snb.c            | 18 ----
+ arch/x86/events/msr.c                         |  8 +-
+ arch/x86/events/rapl.c                        | 11 ---
+ arch/xtensa/kernel/perf_event.c               |  1 +
+ drivers/devfreq/event/rockchip-dfi.c          | 13 +--
+ drivers/dma/idxd/perfmon.c                    | 17 +---
+ drivers/fpga/dfl-fme-perf.c                   | 18 +---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_pmu.c       |  4 -
+ drivers/gpu/drm/i915/i915_pmu.c               | 13 ---
+ drivers/gpu/drm/xe/xe_pmu.c                   | 13 ---
+ .../hwtracing/coresight/coresight-etm-perf.c  |  5 -
+ drivers/hwtracing/ptt/hisi_ptt.c              |  8 --
+ drivers/iommu/intel/perfmon.c                 | 28 +++---
+ drivers/perf/alibaba_uncore_drw_pmu.c         | 28 +-----
+ drivers/perf/amlogic/meson_ddr_pmu_core.c     |  9 --
+ drivers/perf/arm-cci.c                        | 56 +++--------
+ drivers/perf/arm-ccn.c                        | 34 -------
+ drivers/perf/arm-cmn.c                        | 15 +--
+ drivers/perf/arm-ni.c                         | 35 +++----
+ drivers/perf/arm_cspmu/arm_cspmu.c            | 34 +------
+ drivers/perf/arm_dmc620_pmu.c                 | 28 +-----
+ drivers/perf/arm_dsu_pmu.c                    | 26 +----
+ drivers/perf/arm_pmu.c                        | 19 +---
+ drivers/perf/arm_pmu_platform.c               |  2 +-
+ drivers/perf/arm_smmuv3_pmu.c                 | 35 ++-----
+ drivers/perf/arm_spe_pmu.c                    |  7 +-
+ drivers/perf/cxl_pmu.c                        |  6 --
+ drivers/perf/dwc_pcie_pmu.c                   | 21 +---
+ drivers/perf/fsl_imx8_ddr_perf.c              | 32 +------
+ drivers/perf/fsl_imx9_ddr_perf.c              | 27 ------
+ drivers/perf/hisilicon/hisi_pcie_pmu.c        | 25 ++---
+ drivers/perf/hisilicon/hisi_uncore_pmu.c      | 41 ++------
+ drivers/perf/hisilicon/hns3_pmu.c             | 24 ++---
+ drivers/perf/marvell_cn10k_ddr_pmu.c          | 18 ----
+ drivers/perf/marvell_cn10k_tad_pmu.c          | 12 +--
+ drivers/perf/marvell_pem_pmu.c                | 22 +----
+ drivers/perf/qcom_l2_pmu.c                    | 96 ++++++-------------
+ drivers/perf/qcom_l3_pmu.c                    | 33 ++-----
+ drivers/perf/riscv_pmu_legacy.c               |  1 -
+ drivers/perf/riscv_pmu_sbi.c                  |  3 +-
+ drivers/perf/starfive_starlink_pmu.c          | 32 ++-----
+ drivers/perf/thunderx2_pmu.c                  | 45 ++-------
+ drivers/perf/xgene_pmu.c                      | 29 ------
+ drivers/powercap/intel_rapl_common.c          |  9 +-
+ include/linux/perf_event.h                    | 10 +-
+ kernel/events/core.c                          | 35 +++++--
+ kernel/events/hw_breakpoint.c                 |  1 +
+ 78 files changed, 244 insertions(+), 1053 deletions(-)
+
 -- 
-2.47.2
+2.39.2.101.g768bb238c484.dirty
 
 
 _______________________________________________
