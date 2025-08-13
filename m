@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FFFBCCD193
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF0A1CCD1A7
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:03:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,35 +12,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HA6wTqH0DHmBwZL1QjaHV6tua910WOawurQ1bTU5U/4=; b=fxvuQpjwBlkedv
-	nwl0eRzCmKGNkXBnbF4+Vzcp03CFwwTQvrdI82KHUUPlhZEn2t4Qz60C2Ig+KdQ6/MFN5Ih44pH23
-	9zt72dbKSi4UjzwDRJFh+PQ+NzblseXk78Jp/E03PPlTnUyjLfWxofd1XrIWHrqxrJ8Mx640BPh4N
-	n+oZZb8Nc8qkoId2a7FPlmOlaNLFi1o07nGXm8ZQ1MuCzeGGw0iy/6QxCpwvR14iqa+GzDdxw5clF
-	ka1bSPUqL7Jmo1QB+epZ61nBvBfmJ68U6pmPymbSGDMWrya86KRbY67Gv5WNBgIVRSUjzbV+9/tKL
-	6EBxJZge36uzG3bltZyQ==;
+	List-Owner; bh=McLdEBfQpMvGhlzxCtbATrx1kGZRb9oA/NeVSqutvks=; b=dhtsx3bCvTtGjt
+	zvKO7YAl0o66itshpaDZhBZiQwOWv1bWVeTiikZGaQF4v0qK0t/VZzXRrgZK0UM/ewW14Iby8gxsf
+	7XMV6iu5iNykQzGQkoBlVA7FPU/ukrjQGJK5wsOp8k2kfAfoTbJPvz6jf4taWLuTID8GJRSjt7SiT
+	TnCcNkHiCNXelVu/LDlulYwGgnSfpUfPZcayP+B7xNIigFthycxgQyAqMRN0+swB7oIcrdNXS9HK6
+	+RdD+bgwsqCQ/o2tizc+Cf9iD5SQDEQb/Cmw7Dih2EKpurH0YCcNwJ7E8AHtpD9UNgQK4xcYBOXun
+	wUbAlx6BOD9dgfotNp7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAobZ-0000000DGe3-20SJ;
-	Mon, 20 Oct 2025 12:03:13 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vAobX-0000000DGbN-1gA7;
+	Mon, 20 Oct 2025 12:03:12 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umVuQ-0000000GidO-1oQy;
-	Thu, 14 Aug 2025 11:14:14 +0000
+	id 1umJ1c-0000000F1V0-3Czz;
+	Wed, 13 Aug 2025 21:28:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A50FF6020E;
-	Thu, 14 Aug 2025 11:14:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CBF02C4CEED;
-	Thu, 14 Aug 2025 11:13:54 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0F0895C62BA;
+	Wed, 13 Aug 2025 21:28:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 038F0C4CEEB;
+	Wed, 13 Aug 2025 21:28:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755170053;
-	bh=tEQmYgzbbnDyqDEJWRtGvNd+F5EzBR/vQBdSyaJQhYo=;
+	s=k20201202; t=1755120527;
+	bh=w6o+Mcmx0kfk0qJVojOnLq3WRRaroXEK6NqPwh8WeEA=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=nNpjrfeQtIacQG0WEX7mhSYTd7hQlnB7xgoGgJ3v0sCDCZTw/gWywOLfqOYZY4LEw
-	 5E1vCRzlD1L7yPW24oE8hMcbLDvBgKF7UglcpNWQtk+d21igAN/jkLiw4vfw95mmaO
-	 Wy7Aqpr6pD43wwMPVYuuHLtW+Bl/6xetkfjwBZUQFNWFgaJ0eeIdJk6JAFWM+nmE53
-	 +kHohC9FP8zxW9RrnA7dkwqqcgSuN4MKh4R6jlzu+aBiOCgoS1PQtvycwFenFDAKSf
-	 8NGwtU+raJOCaLGmFHJD4RvJXWWS3gsAOxCpMzRtcOJrdMPkcN8DQ2NiQbSAuAjRLj
-	 ccmAEOd0wNzVg==
+	b=tW0weATX4jZ11jXl3He1Ule5FSJuMatBGd51oT3bMN01eb3cT3/18BB0KpS64oSbV
+	 6A4QDHJDbE2i5JqtnfsyVBALsh6Bm5ABrlcwIeEaVVJKF8Ys4lmXD08V4Cf547I5mm
+	 6sCZgBGCfMRs6QPVrGxU4nTnD7f31+rWw2qkW80zdobtK+0W0QNMcTpZiJJZuxp3e3
+	 f72jB75x9bqVrnObcwmG+vOT476m4B3xoHJM2Tk0dvct2jHtt8v2WNoP/JeukhjYFa
+	 P4b7UnXzBQig+oKbLe5NjU5NaUCh5y3uOUysgIl6JhmCWTjHv+RyKuGvEMG/hhDxtg
+	 oUrRFt19OPnjQ==
 From: Mark Brown <broonie@kernel.org>
 To: linux-kernel@vger.kernel.org, 
  Wolfram Sang <wsa+renesas@sang-engineering.com>
@@ -49,10 +49,13 @@ In-Reply-To: <20250813161517.4746-1-wsa+renesas@sang-engineering.com>
 References: <20250813161517.4746-1-wsa+renesas@sang-engineering.com>
 Subject: Re: (subset) [PATCH 00/21] treewide: remove unneeded 'fast_io'
  parameter in regmap_config
-Message-Id: <175517003454.17441.365944262533574232.b4-ty@kernel.org>
-Date: Thu, 14 Aug 2025 12:13:54 +0100
+Message-Id: <175512050873.352044.97744864083041762.b4-ty@kernel.org>
+Date: Wed, 13 Aug 2025 22:28:28 +0100
 MIME-Version: 1.0
 X-Mailer: b4 0.15-dev-cff91
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250813_142848_885629_CD3A1203 
+X-CRM114-Status: GOOD (  17.14  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:28 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,12 +86,12 @@ On Wed, 13 Aug 2025 18:14:46 +0200, Wolfram Sang wrote:
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
 Thanks!
 
-[19/21] spi: remove unneeded 'fast_io' parameter in regmap_config
-        commit: 48124569bbc6bfda1df3e9ee17b19d559f4b1aa3
+[15/21] regulator: remove unneeded 'fast_io' parameter in regmap_config
+        commit: 37533933bfe92cd5a99ef4743f31dac62ccc8de0
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
