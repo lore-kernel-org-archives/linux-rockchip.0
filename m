@@ -4,80 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF12AC87FCF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Aug 2025 16:40:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE49FCA0EE0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Aug 2025 16:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=igB2FOSy1Xc8vtW0jaiCcuH7o0kmY4/JIhWEx3B7uv0=; b=LDNt6MEf0t8bw9
-	kfhbojnleZBJW/wz7ZOh8jSgR/H1TPkYsOsH2IAdg/JCRskyLnPJG2qhoIiHc5WmjEenzhRCE0apN
-	pNS+M5VH4U5UeXxEK3ue0iAHAb1dYNvf7nPc6IMPSvoyO5po5XhzYpVovgbznbS55KasxpcbnRMsq
-	qRpgjCTtbZ2fovT0xQzlKEiEJLbto7wTf+aeb0CZW4zSRAxZyfncZffREdPwlZv/3JWTkIEZ0LpLg
-	dztJkjnZ7KPBImeO99Es+403ZuQIqHoAsDqwkuO8whU9YrzxZCKJ+mnxAvuG7hlN2Gdlxn+igsC66
-	x9mb/VQyE0AEXm1ZFsYw==;
+	List-Owner; bh=/uT1LIbTOouNXQpapOzSJAi21VOulBpvErBtAGiSqlA=; b=Cbuby7N1KQBW1z
+	YHeNmBbBN0zxaK6d8bYnCY7ZYPjj7JAsmSFOqWgB9YPitE0GCaQpRXguZ7VWS+O9lUALLnWPBJbvT
+	kusn3ChEuYrKYZ2Ct3XuI4ODzMaKJvtxjZ2HbszaNPLdtDTNnFON5GLLdKnUP1B/4FEfqJsVMm7ZK
+	4ny5kzDLUb0K5A1mTHTndfbaKmAsfALWWjtgzum3gsKZdu0Wc0ATJ0fJfvXR2VYP/1tqO0Y2xFOhM
+	WCKgH9NXer4HsYgZe/AeyKDvsaMVUilapiWwTCsYzplfpEURqpCHn7R/qr5I4oKvPeqmxbVzNX4vu
+	tdK9kE5tP5CIxw8yzWnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umEWZ-0000000ERqX-3ckH;
-	Wed, 13 Aug 2025 16:40:27 +0000
+	id 1umEjL-0000000ETiK-4Bv0;
+	Wed, 13 Aug 2025 16:53:40 +0000
 Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umE9G-0000000ELf3-1WBI
+	id 1umE9Q-0000000ELid-12QK
 	for linux-rockchip@lists.infradead.org;
-	Wed, 13 Aug 2025 16:16:23 +0000
+	Wed, 13 Aug 2025 16:16:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	sang-engineering.com; h=from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	 s=k1; bh=rscZdjzTgJUz3a4ulIohYT16Ky1iRHb8vU8CbuiEAr8=; b=chhraY
-	uh/3c4VVm9mVdF1HCsLk4fzgNFY07jnXOJdMstzCTZsjz21F3ZHHwvIT1geOTMP4
-	rvs500bmH5X/qcdPN+qshRgTGQx9pkBt2/6zdZ8xxD42gCZd7UbXybBtAvDNVLNR
-	hwS/eOPhraUjsS/ikE9c7cpxHL48h4HDSLJK3xPsEBCDs/6FdFeTbF/iCfsU1CK3
-	TA21zQ0qpuWZ+o9DRfDQrld8xA/mHWksgxBrRCv/BLbwt1akZoiA0/bTRAQxQFQc
-	CMzzG/k8dDrjb8wirxizHSJtgK7/vr/B07cRRWLcnRHe2nx60V+/RYMYCmGZh7Vr
-	nQ/2YhnvWDglODYA==
-Received: (qmail 694707 invoked from network); 13 Aug 2025 18:16:04 +0200
-Received: by mail.zeus03.de with UTF8SMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 13 Aug 2025 18:16:04 +0200
-X-UD-Smtp-Session: l3s3148p1@VvoxeUE8JpVtKLKq
+	 s=k1; bh=JM9SpV/fnrsLvvM+Go1VUM4DNlcYiERXiLNTjdx9OJo=; b=Bl4jGz
+	19fCVHEkw3GF9z/XPPvj6W0oFoFPA4oyVLyTay1YOjYq/cUbOU0gz2M9cv/StJt5
+	sYW/iA+17QUVaXMeCgsb4sRxA18MUEqjh6qY3z/cbwKNlRbkGIyujiz+1I4D1sLq
+	4DSoO25xGzEBl7sAK8DKuVviOi2QncDrj6cgtzaUjjqwXHGlCLxNFww69Xuh6WG3
+	4g2ibSfe63bjqBj/aVosx4tQH8z1d3UhPmKkwoDvcX0li5f0gjfFYJj6xlif6vLh
+	BIrNJN8cBzoGFA2QuLwCB7LcO32aWRqp+xNwHBl/MiATlnMP2h1O83iqOm+hmI1c
+	XJjkX/jq6h4NAOdA==
+Received: (qmail 695217 invoked from network); 13 Aug 2025 18:16:19 +0200
+Received: by mail.zeus03.de with UTF8SMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 13 Aug 2025 18:16:19 +0200
+X-UD-Smtp-Session: l3s3148p1@EGQLekE8npFtKLKq
 From: Wolfram Sang <wsa+renesas@sang-engineering.com>
 To: linux-kernel@vger.kernel.org
 Cc: Mark Brown <broonie@kernel.org>,
 	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Liu Ying <victor.liu@nxp.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	dri-devel@lists.freedesktop.org,
-	imx@lists.linux.dev,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-phy@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 04/21] drm: remove unneeded 'fast_io' parameter in regmap_config
-Date: Wed, 13 Aug 2025 18:14:50 +0200
-Message-ID: <20250813161517.4746-5-wsa+renesas@sang-engineering.com>
+Subject: [PATCH 12/21] phy: remove unneeded 'fast_io' parameter in regmap_config
+Date: Wed, 13 Aug 2025 18:14:58 +0200
+Message-ID: <20250813161517.4746-13-wsa+renesas@sang-engineering.com>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250813161517.4746-1-wsa+renesas@sang-engineering.com>
 References: <20250813161517.4746-1-wsa+renesas@sang-engineering.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250813_091622_672718_FF6138F7 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20250813_091632_564132_F8835E67 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,189 +85,60 @@ Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
 No dependencies, can be applied directly to the subsystem tree. Buildbot is
 happy, too.
 
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c   | 1 -
- drivers/gpu/drm/imx/dc/dc-cf.c                   | 1 -
- drivers/gpu/drm/imx/dc/dc-de.c                   | 1 -
- drivers/gpu/drm/imx/dc/dc-ed.c                   | 2 --
- drivers/gpu/drm/imx/dc/dc-fg.c                   | 1 -
- drivers/gpu/drm/imx/dc/dc-fl.c                   | 1 -
- drivers/gpu/drm/imx/dc/dc-fw.c                   | 2 --
- drivers/gpu/drm/imx/dc/dc-ic.c                   | 1 -
- drivers/gpu/drm/imx/dc/dc-lb.c                   | 2 --
- drivers/gpu/drm/imx/dc/dc-tc.c                   | 1 -
- drivers/gpu/drm/imx/ipuv3/imx-tve.c              | 2 --
- drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c | 1 -
- 12 files changed, 16 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 1 -
+ drivers/phy/rockchip/phy-rockchip-usbdp.c         | 1 -
+ drivers/phy/ti/phy-am654-serdes.c                 | 1 -
+ drivers/phy/ti/phy-j721e-wiz.c                    | 1 -
+ 4 files changed, 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
-index 5926a3a05d79..d046740a1d57 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
-@@ -903,7 +903,6 @@ static const struct regmap_config dw_mipi_dsi2_regmap_config = {
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index 79db57ee90d1..01bbf668e05e 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -795,7 +795,6 @@ static const struct regmap_config rk_hdptx_phy_regmap_config = {
+ 	.val_bits = 32,
+ 	.writeable_reg = rk_hdptx_phy_is_rw_reg,
+ 	.readable_reg = rk_hdptx_phy_is_rw_reg,
+-	.fast_io = true,
+ 	.max_register = 0x18b4,
+ };
+ 
+diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+index c066cc0a7b4f..010e9d2d6fac 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
++++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+@@ -1430,7 +1430,6 @@ static const struct regmap_config rk_udphy_pma_regmap_cfg = {
+ 	.reg_bits = 32,
+ 	.reg_stride = 4,
+ 	.val_bits = 32,
+-	.fast_io = true,
+ 	.max_register = 0x20dc,
+ };
+ 
+diff --git a/drivers/phy/ti/phy-am654-serdes.c b/drivers/phy/ti/phy-am654-serdes.c
+index 431b223996e0..5b6c27aa7e8b 100644
+--- a/drivers/phy/ti/phy-am654-serdes.c
++++ b/drivers/phy/ti/phy-am654-serdes.c
+@@ -99,7 +99,6 @@ static const struct regmap_config serdes_am654_regmap_config = {
+ 	.reg_bits = 32,
+ 	.val_bits = 32,
+ 	.reg_stride = 4,
+-	.fast_io = true,
+ 	.max_register = 0x1ffc,
+ };
+ 
+diff --git a/drivers/phy/ti/phy-j721e-wiz.c b/drivers/phy/ti/phy-j721e-wiz.c
+index ab2a4f2c0a5b..a8b440c6c46b 100644
+--- a/drivers/phy/ti/phy-j721e-wiz.c
++++ b/drivers/phy/ti/phy-j721e-wiz.c
+@@ -1319,7 +1319,6 @@ static const struct regmap_config wiz_regmap_config = {
  	.reg_bits = 32,
  	.val_bits = 32,
  	.reg_stride = 4,
 -	.fast_io = true,
  };
  
- static struct dw_mipi_dsi2 *
-diff --git a/drivers/gpu/drm/imx/dc/dc-cf.c b/drivers/gpu/drm/imx/dc/dc-cf.c
-index 2f077161e912..6431ecd442c9 100644
---- a/drivers/gpu/drm/imx/dc/dc-cf.c
-+++ b/drivers/gpu/drm/imx/dc/dc-cf.c
-@@ -45,7 +45,6 @@ static const struct regmap_config dc_cf_cfg_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_cf_regmap_access_table,
- 	.rd_table = &dc_cf_regmap_access_table,
- 	.max_register = CONSTANTCOLOR,
-diff --git a/drivers/gpu/drm/imx/dc/dc-de.c b/drivers/gpu/drm/imx/dc/dc-de.c
-index 5a3125596fdf..7a93dda20c59 100644
---- a/drivers/gpu/drm/imx/dc/dc-de.c
-+++ b/drivers/gpu/drm/imx/dc/dc-de.c
-@@ -37,7 +37,6 @@ static const struct regmap_config dc_de_top_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_de_regmap_access_table,
- 	.rd_table = &dc_de_regmap_access_table,
- 	.max_register = POLARITYCTRL,
-diff --git a/drivers/gpu/drm/imx/dc/dc-ed.c b/drivers/gpu/drm/imx/dc/dc-ed.c
-index 86ecc22d0a55..4d86a886d47e 100644
---- a/drivers/gpu/drm/imx/dc/dc-ed.c
-+++ b/drivers/gpu/drm/imx/dc/dc-ed.c
-@@ -77,7 +77,6 @@ static const struct regmap_config dc_ed_pec_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_ed_pec_regmap_write_table,
- 	.rd_table = &dc_ed_pec_regmap_read_table,
- 	.volatile_table = &dc_ed_pec_regmap_volatile_table,
-@@ -99,7 +98,6 @@ static const struct regmap_config dc_ed_cfg_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_ed_regmap_access_table,
- 	.rd_table = &dc_ed_regmap_access_table,
- 	.max_register = CONTROL,
-diff --git a/drivers/gpu/drm/imx/dc/dc-fg.c b/drivers/gpu/drm/imx/dc/dc-fg.c
-index 7f6c1852bf72..24826d676c5c 100644
---- a/drivers/gpu/drm/imx/dc/dc-fg.c
-+++ b/drivers/gpu/drm/imx/dc/dc-fg.c
-@@ -122,7 +122,6 @@ static const struct regmap_config dc_fg_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_fg_regmap_write_table,
- 	.rd_table = &dc_fg_regmap_read_table,
- 	.max_register = FGCHSTATCLR,
-diff --git a/drivers/gpu/drm/imx/dc/dc-fl.c b/drivers/gpu/drm/imx/dc/dc-fl.c
-index 3ce24c72aa13..003476ac2fa1 100644
---- a/drivers/gpu/drm/imx/dc/dc-fl.c
-+++ b/drivers/gpu/drm/imx/dc/dc-fl.c
-@@ -49,7 +49,6 @@ static const struct regmap_config dc_fl_cfg_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_fl_regmap_access_table,
- 	.rd_table = &dc_fl_regmap_access_table,
- 	.max_register = FRAMEDIMENSIONS,
-diff --git a/drivers/gpu/drm/imx/dc/dc-fw.c b/drivers/gpu/drm/imx/dc/dc-fw.c
-index acb2d4d9e2ec..96bc3c7c8f9b 100644
---- a/drivers/gpu/drm/imx/dc/dc-fw.c
-+++ b/drivers/gpu/drm/imx/dc/dc-fw.c
-@@ -51,7 +51,6 @@ static const struct regmap_config dc_fw_pec_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_fw_pec_regmap_access_table,
- 	.rd_table = &dc_fw_pec_regmap_access_table,
- 	.max_register = PIXENGCFG_DYNAMIC,
-@@ -72,7 +71,6 @@ static const struct regmap_config dc_fw_cfg_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_fw_regmap_access_table,
- 	.rd_table = &dc_fw_regmap_access_table,
- 	.max_register = CONTROL,
-diff --git a/drivers/gpu/drm/imx/dc/dc-ic.c b/drivers/gpu/drm/imx/dc/dc-ic.c
-index a270ae4030cd..f1c371a95cae 100644
---- a/drivers/gpu/drm/imx/dc/dc-ic.c
-+++ b/drivers/gpu/drm/imx/dc/dc-ic.c
-@@ -76,7 +76,6 @@ static const struct regmap_config dc_ic_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_ic_regmap_write_table,
- 	.rd_table = &dc_ic_regmap_read_table,
- 	.volatile_table = &dc_ic_regmap_volatile_table,
-diff --git a/drivers/gpu/drm/imx/dc/dc-lb.c b/drivers/gpu/drm/imx/dc/dc-lb.c
-index 38f966625d38..9fd39f824f11 100644
---- a/drivers/gpu/drm/imx/dc/dc-lb.c
-+++ b/drivers/gpu/drm/imx/dc/dc-lb.c
-@@ -92,7 +92,6 @@ static const struct regmap_config dc_lb_pec_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_lb_pec_regmap_access_table,
- 	.rd_table = &dc_lb_pec_regmap_access_table,
- 	.max_register = PIXENGCFG_DYNAMIC,
-@@ -112,7 +111,6 @@ static const struct regmap_config dc_lb_cfg_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_lb_regmap_access_table,
- 	.rd_table = &dc_lb_regmap_access_table,
- 	.max_register = POSITION,
-diff --git a/drivers/gpu/drm/imx/dc/dc-tc.c b/drivers/gpu/drm/imx/dc/dc-tc.c
-index 0bfd381b2cea..54b56dadbe36 100644
---- a/drivers/gpu/drm/imx/dc/dc-tc.c
-+++ b/drivers/gpu/drm/imx/dc/dc-tc.c
-@@ -44,7 +44,6 @@ static const struct regmap_config dc_tc_regmap_config = {
- 	.reg_bits = 32,
- 	.reg_stride = 4,
- 	.val_bits = 32,
--	.fast_io = true,
- 	.wr_table = &dc_tc_regmap_access_table,
- 	.rd_table = &dc_tc_regmap_access_table,
- 	.max_register = MAPBIT31_28,
-diff --git a/drivers/gpu/drm/imx/ipuv3/imx-tve.c b/drivers/gpu/drm/imx/ipuv3/imx-tve.c
-index c5629e155d25..b34037d0d7a8 100644
---- a/drivers/gpu/drm/imx/ipuv3/imx-tve.c
-+++ b/drivers/gpu/drm/imx/ipuv3/imx-tve.c
-@@ -457,8 +457,6 @@ static struct regmap_config tve_regmap_config = {
- 
- 	.readable_reg = imx_tve_readable_reg,
- 
--	.fast_io = true,
--
- 	.max_register = 0xdc,
- };
- 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
-index cdd490778756..a30d973f925f 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
-@@ -368,7 +368,6 @@ static const struct regmap_config dw_mipi_dsi2_rockchip_regmap_config = {
- 	.reg_bits = 32,
- 	.val_bits = 32,
- 	.reg_stride = 4,
--	.fast_io = true,
- };
- 
- static int dw_mipi_dsi2_rockchip_probe(struct platform_device *pdev)
+ static struct wiz_data j721e_16g_data = {
 -- 
 2.47.2
 
