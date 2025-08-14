@@ -4,210 +4,201 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8346CCFA1B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:28:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1242CD1297
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:28:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UP9ZXx0pRXimg+DplVTePPTGFOZKO4IoydfxZGVDCnU=; b=LxAvJEvPbIb6nK
-	wfjc3c1Ww7fuRuHz7znMmIEJg4Mv/1yYFEqMB78BZsljt/m93jVfDWmaadobs4+ACHxJ267qU2D7z
-	680smqNvHTxppBmPK1GfQaeBADgBACQR0mzv34GZUVd4xioXJFCtv2HbjBPWeIoXOxtgkWbXocZr8
-	kaUo9TdzFl/oObf1xXVOFvseRcqOW6ZRMP/dpR66/+mz4v4FdLJBgxiCybz8r0RHap//74JDnsW/P
-	EcuJWCBMChOoq23l3sQT+fsrojtneoACNDuzHBYDOcsaeWiyI5AONR7k963AJuSnzdULNh+z1oFnV
-	mJFxJpueEzn7YeFk3ntQ==;
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sWHfo0XTNdo4/SYdGMW+HM4MDDLBiEi5/584MNT5irM=; b=Rd5R7v0XVUvqhEWlVWPI760VAc
+	ZjeK5ZhBkEub/V6wL1xNbvD9deN1dZfgibrdXXM+P0HFLGYCYmKxsXxFBY5o72/UJt4VjoFmTLu5J
+	+lqz1yILUPwLPT0X0ngKiA1cCfAajvrSYiu4gr+/OP+sodRU1y5rdHkaFJlQ3Fv1lFc6uiL1H0gKV
+	x0GYBeXOuBB4De4NV4jPZas/eC4DPsp4aWvcGpx4vV5tFMeJpmFMc+HOVwweyHYtXJuea2OOHY6to
+	v/z767v9kyfSg74JZ4QUcMlcJA2swnLYS4RAt6PSaKHa6qZ8faAFZ7KmjG3nHrElWT+8+VlnJ466q
+	w+c/q4Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGz6W-0000000FRO0-3aCz;
-	Thu, 06 Nov 2025 12:28:40 +0000
-Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tUizE-00000000aUJ-37Z1;
-	Mon, 06 Jan 2025 09:01:26 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id DA3C01F399;
-	Mon,  6 Jan 2025 09:01:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736154081; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=L9eo9eLrGZ8kbAkajy2+fQREdfqGj9Khgjn/UA2FQ4E=;
-	b=2WoCnwwapqN+n2bKEuOpX6LKFaYfAfnzRg4Wq1OxpCAs9RyJD0Eop+PDb5LuytEsUGaZte
-	EA45ojWGt7xc/1Iqh7kvLG2kUOFNFjCSkyEbvU1Sj9CKtO/mOMhg6ojPGH6IOIB9DNTxVU
-	QV+3xiE9zNWgIK9N9n3J9bfjXFS/mDc=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736154081;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=L9eo9eLrGZ8kbAkajy2+fQREdfqGj9Khgjn/UA2FQ4E=;
-	b=KIBzDEyxpGeRt3gZkCEmUyIwCNglEAZWwqBuYD8sloE1dbuaS95LBiPf7fCW16HIS2e9IH
-	94SPkhdy2HZ3hmCQ==
-Authentication-Results: smtp-out2.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=0qA4+zGF;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=Aey7PDWT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1736154079; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=L9eo9eLrGZ8kbAkajy2+fQREdfqGj9Khgjn/UA2FQ4E=;
-	b=0qA4+zGFPAj6fwkN1pZRgu7xN6NttKaiS05UlWQcpBUR6iU67stKlm01IMgKhMJgvEyXgn
-	vOz8GwNljIyF4eQ/7nQmQ6LpZekr9v+o+xR00NUJGLE0gqoMqnumRSCbc+ABje62uBXur6
-	XaNDRghs0t5OUX45eqEWtypKHK2zhW4=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1736154079;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=L9eo9eLrGZ8kbAkajy2+fQREdfqGj9Khgjn/UA2FQ4E=;
-	b=Aey7PDWT6welzplhPVwpQXyTo3mFttIrV9GWNhahjddiAJD6zB5xHz94dPFeEB6pM9e85i
-	GK3bWMMEbBTlCACQ==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 00D36139AB;
-	Mon,  6 Jan 2025 09:01:17 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id HdNLOt2be2cHZwAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Mon, 06 Jan 2025 09:01:17 +0000
-Message-ID: <8f137bc5-6b65-4792-949f-7bec5bd115fb@suse.de>
-Date: Mon, 6 Jan 2025 10:01:17 +0100
-MIME-Version: 1.0
+	id 1vGz6b-0000000FRWR-2XkD;
+	Thu, 06 Nov 2025 12:28:45 +0000
+Received: from mail-centralindiaazolkn190100000.outbound.protection.outlook.com ([2a01:111:f403:d409::] helo=PNYPR01CU001.outbound.protection.outlook.com)
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1umTdK-0000000GIdM-3rao;
+	Thu, 14 Aug 2025 08:48:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=V05/rQYhjgXKvtCU/4f5QAbDxj03OeC7sNYSE2y9W++Mgh8IlfcxNNBuPYFVotnc32QvOQKu8KCg4UyHhRbfPeQE2oMgJnS42h88cDLaOjlsEkvugADy0HV+OhFhPFE8GouGfUZvJS1w9VHxmlSsIMemVOhRh+6tMjT913TOXqqr/DFCdos4zHpxTItpl0C+whLUshrOsUQN+kcYCdeCRrNZyW+hX2qrYnyPDEGmrPeQ37xAJJbimIawHXSdWOH73Ac/IRGBogdoPuBGAVp5vqrOgMdROjzF3XSE+gUgA8fjI07u8+FivHW0DI5lWTxe1wigffbAD5wTR/oZbGhw1g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=2ACe8AHuhmUm8RQCLguFaLp80YsDyGpX5pwpLxKQtfU=;
+ b=YmW6fV+mf1zXe8Cd3u3j6/fmlPq0iXwPAtjrkEA1uekK0jfBzScUxOIeHvUK/9WHtn8Xg1kmYvvcd9IAap4HRj9jns3OrkLScsVasUzkU+9dEUyCQplByVqZIBTc5z8nLFxHPVIvXFiDSkZRCy7wM91rK8Xk8Cr/zWPpB3VICmKePgIhRONhTdx2aRrjVTpFquxZiwRmJ5RYqKmHLADGlkFDruYkwy17+KHH+cHY+haohoO59cQ2dJWqR0tIB8YAWf97ewuedVCGm1txtP3AzzXbXzMG29uW7mEHSzXN/GP6ItxzrevMkYmvFu1+EFpehEDYYkosBu8NI+7q8H25Mg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2ACe8AHuhmUm8RQCLguFaLp80YsDyGpX5pwpLxKQtfU=;
+ b=bkUq5WZYQPuSVfLcJzwnBmDWZKX5ZHUakDxhDVK7l7ga3HbKfRk/h+ugHwFkaDqxHOonxD1UmUVMwJXHqLgHAcz/oPTnzjBTlAr/ItL7wSPWcfBqHWQEyejZVOVoQfFE7r5G1LMKlitCNZFQ1sHBDyPP/Gd0RV67CnV2wzMqF5w0XMLdAX026oAfGfs2h+10glRS9u0fLas/FCutDY972svRSG0F3VdAObrDQntKxnvVT6UWFSqwZDNyupNhTo4nbeoFLEXp1ipjiDkwANgICutrw3LavvR7hzaxfJHABmjf5XRcwFo/K7vBoN5ei1p1fJGeUlqY7w0p1ALZCm3hZA==
+Received: from MAUPR01MB11072.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:a01:16f::16) by MAYPR01MB10650.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:a01:158::7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9031.17; Thu, 14 Aug
+ 2025 08:47:53 +0000
+Received: from MAUPR01MB11072.INDPRD01.PROD.OUTLOOK.COM
+ ([fe80::5dff:3ee7:86ee:6e4b]) by MAUPR01MB11072.INDPRD01.PROD.OUTLOOK.COM
+ ([fe80::5dff:3ee7:86ee:6e4b%4]) with mapi id 15.20.9031.014; Thu, 14 Aug 2025
+ 08:47:53 +0000
+Message-ID: <MAUPR01MB110724C32BF11045318A6AE0EFE35A@MAUPR01MB11072.INDPRD01.PROD.OUTLOOK.COM>
+Date: Thu, 14 Aug 2025 16:47:35 +0800
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/5] drm/connector: make mode_valid() callback accept
- const mode pointer
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Tvrtko Ursulin <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Karol Herbst <kherbst@redhat.com>,
- Lyude Paul <lyude@redhat.com>, Danilo Krummrich <dakr@redhat.com>,
- Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Xinhui Pan <Xinhui.Pan@amd.com>, Alain Volmat <alain.volmat@foss.st.com>,
- Raphael Gallais-Pou <rgallaispou@gmail.com>,
- Liviu Dudau <liviu.dudau@arm.com>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Peter Senna Tschudin <peter.senna@gmail.com>, Ian Ray <ian.ray@ge.com>,
- Martyn Welch <martyn.welch@collabora.co.uk>, Inki Dae
- <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
- <alim.akhtar@samsung.com>, Stefan Agner <stefan@agner.ch>,
- Alison Wang <alison.wang@nxp.com>,
- Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+Subject: Re: [PATCH 048/114] clk: sophgo: sg2042-clkgen: convert from
+ round_rate() to determine_rate()
+To: bmasney@redhat.com, Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
+ Cristian Marussi <cristian.marussi@arm.com>,
+ Inochi Amaoto <inochiama@gmail.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Paul Cercueil <paul@crapouillou.net>, Keguang Zhang
+ <keguang.zhang@gmail.com>, Taichi Sugaya <sugaya.taichi@socionext.com>,
+ Takao Orito <orito.takao@socionext.com>, Shawn Guo <shawnguo@kernel.org>,
  Sascha Hauer <s.hauer@pengutronix.de>,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Rob Clark <robdclark@gmail.com>,
- Abhinav Kumar <quic_abhinavk@quicinc.com>, Sean Paul <sean@poorly.run>,
- Marijn Suijten <marijn.suijten@somainline.org>,
- Dave Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Mikko Perttunen <mperttunen@nvidia.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Gurchetan Singh <gurchetansingh@chromium.org>, Chia-I Wu
- <olvaffe@gmail.com>, Zack Rusin <zack.rusin@broadcom.com>,
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>
-Cc: intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- nouveau@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- imx@lists.linux.dev, linux-arm-msm@vger.kernel.org,
- freedreno@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
- Jani Nikula <jani.nikula@intel.com>
-References: <20241214-drm-connector-mode-valid-const-v2-0-4f9498a4c822@linaro.org>
- <76ho36jqcraehnsgpjralpye52w7ryshhgizekn4qqfsikiojd@3yyorbvjkc7b>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <76ho36jqcraehnsgpjralpye52w7ryshhgizekn4qqfsikiojd@3yyorbvjkc7b>
-X-Rspamd-Queue-Id: DA3C01F399
-X-Rspamd-Action: no action
-X-Spamd-Result: default: False [-3.01 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	TO_DN_SOME(0.00)[];
-	FREEMAIL_TO(0.00)[linaro.org,linux.intel.com,intel.com,ursulin.net,gmail.com,ffwll.ch,kernel.org,redhat.com,amd.com,foss.st.com,arm.com,ideasonboard.com,kwiboo.se,ge.com,collabora.co.uk,samsung.com,agner.ch,nxp.com,pengutronix.de,quicinc.com,poorly.run,somainline.org,rock-chips.com,sntech.de,csie.org,sholland.org,nvidia.com,raspberrypi.com,igalia.com,chromium.org,broadcom.com];
-	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
-	RCVD_TLS_ALL(0.00)[];
-	DKIM_TRACE(0.00)[suse.de:+];
-	R_RATELIMIT(0.00)[to_ip_from(RL5qdohruh175rhiw1bqi96ifb)];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_SOME(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	RCPT_COUNT_GT_50(0.00)[82];
-	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[renesas];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:dkim,suse.de:mid,suse.de:email,linaro.org:email,imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo]
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
+ Fabio Estevam <festevam@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>,
+ Shan-Chun Hung <schung@nuvoton.com>, Vladimir Zapolskiy <vz@mleia.com>,
+ Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Samuel Holland <samuel.holland@sifive.com>, Yixun Lan <dlan@gentoo.org>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Michal Simek <michal.simek@amd.com>, Maxime Ripard <mripard@kernel.org>,
+ =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>, Sven Peter <sven@kernel.org>,
+ Janne Grunau <j@jannau.net>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ Neal Gompa <neal@gompa.dev>, Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daniel Palmer <daniel@thingy.jp>, Romain Perier <romain.perier@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Heiko Stuebner <heiko@sntech.de>, Andrea della Porta
+ <andrea.porta@suse.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Alex Helms <alexander.helms.jy@renesas.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Liviu Dudau <liviu.dudau@arm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ sophgo@lists.linux.dev, linux-mips@vger.kernel.org, imx@lists.linux.dev,
+ linux-riscv@lists.infradead.org, spacemit@lists.linux.dev,
+ linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com,
+ linux-actions@lists.infradead.org, asahi@lists.linux.dev,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
+ <20250811-clk-for-stephen-round-rate-v1-48-b3bf97b038dc@redhat.com>
+From: Chen Wang <unicorn_wang@outlook.com>
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-48-b3bf97b038dc@redhat.com>
+X-ClientProxiedBy: TYCP286CA0179.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:400:3c6::7) To MAUPR01MB11072.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:a01:16f::16)
+X-Microsoft-Original-Message-ID: <9fa46633-da56-4a5e-9abc-0445c3799b12@outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MAUPR01MB11072:EE_|MAYPR01MB10650:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6142f3f4-d83e-4fe3-de5e-08dddb0f4186
+X-Microsoft-Antispam: BCL:0;ARA:14566002|15080799012|6090799003|41001999006|23021999003|19110799012|8060799015|461199028|5072599009|440099028|51005399003|40105399003|41105399003|3412199025;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?QzMzS1lYbFNxeExQWUNGb0VpN3V1bUkvbFlpbU03WFd4QTZNS0JNRVFKb1I1?=
+ =?utf-8?B?WVFNaFRCWGxOVDhZdkRwUlhzaGsyQTE0S1JJUlQydlcyeGdHOEZpeGNJYVln?=
+ =?utf-8?B?dVdTd3JnZXVWRC9EN2psNEtGdTRFYThkeDEySWZnT2Q3U1doc0NVRzZIQi81?=
+ =?utf-8?B?VkFWU0JJVjNRMVJxLzVjdXpqZ0JBdDBscVF4S2RITlllNUM5UWtEYStkY2Nv?=
+ =?utf-8?B?ejdNNzRxcWRUdlBLYS8rZTNSNjFicG1rMGxEMG8vWnpWSFVxempFaVhleVQy?=
+ =?utf-8?B?ZWxWUG5KS2s1Yk5aZmxYaDE3QnYxRTE1ZEp3aUJqYXVENUpNWHBSalM0SjFF?=
+ =?utf-8?B?ay80dnJwVjA3Vm1oSjVvVW0xYWNNenp3ZnY5eTQ0Skl0ZW5Xay9maC9OWGpQ?=
+ =?utf-8?B?MXZqZS9WN0lmMVh1OUI5OGN5UnRHUHRqNXlieWwyYklmVlRObDVyWjRNczJI?=
+ =?utf-8?B?eHhxYXpYcUNtR3cvT3EvQ2RycG1MZ09pUXpTaWllbTZ2TDQ4aXlObVlzS0hW?=
+ =?utf-8?B?bnhTT0cvRlgvKzI0cGVwWEVRZ2l1NFgrRHJ6QmZaWWdyNHU1ZDVObTNxZVJL?=
+ =?utf-8?B?VzE3MUhBR3kvbmFGTUNOZWk2M3ArTXdaY0l4UWxNb3NJekdwSk0rZEtVdXFn?=
+ =?utf-8?B?ZTNlakd4OWN6WG9KOEU0WkdWWXdZSlU5b05TU3Nlc3RlUEhDS3hpVGVRb05m?=
+ =?utf-8?B?Q1dBVi8xOEZESXp5UWN3REhlUnUrV1dwdno0U0RGV01nZTFmWU5zM05YY2Zx?=
+ =?utf-8?B?RGsrNmR5amZzcDBNYVEvSGNjNVRZaUF0YlRteUVqMVFmNjVzd2h1c0NEVW1n?=
+ =?utf-8?B?RVdNU0NJcm1GSDc3ZFdrTDJyeDBDZDNRNkV1aTZXV0RSNzRTZC9Id2toRHc2?=
+ =?utf-8?B?cVNPOU1BMlJMd01PeWxZM3BLN284cXRuMUlQME4yVDRyaTM4Tm45ZkErSjZi?=
+ =?utf-8?B?ZVFMS29jeXJ5Q3lvSjlCUEQ0YlBGZzN2dk5sTytWUFFWS0hHU3NqQzNwUUhn?=
+ =?utf-8?B?SmlZTXRmK3pmV2lTM0YwcFNLUFMrWVpjcjJZOUxuYnhVUnZDQnR4NWhpUVFo?=
+ =?utf-8?B?ZnBFdW5taEJJTkd3eVg2NGxXWGw3UzE4bkkycjVUdW5qQTZPOVJZUGZPMUwz?=
+ =?utf-8?B?RXE5SmFOaEgzR0hwVFE2dytzZ212V1BJSjJCTUFDQXQzV3F6bUpNdWpQanZo?=
+ =?utf-8?B?a0NwU0QreWdjUndsMXRBTVNnMzVaam9wTUk2aDAxT0ZPd2RaN3lYeU5HeldN?=
+ =?utf-8?B?Sk96TU5MSHFlQ2gybC9FQm5zejVmRXNFb0xBU1l5bFJldlpQOGRmZk8vYmdq?=
+ =?utf-8?B?ZHZORWpHUGFjK0FGU1p3VkpXdEYreUMvU1ZTR0YvUG1wUW1KYVpIclc4MkJs?=
+ =?utf-8?B?b1JLOXpjOHJZNkV6bzR6OEdzbndCdFN4T1l2QndQNHRaVmNOTG15cHQ3RnAx?=
+ =?utf-8?B?SGUwa2tOVllvTTk0cEY1UXdNUFVvMEJnNVdBUW5qNzVyV0RSd0puTTJldm5C?=
+ =?utf-8?B?a1o0RnBRaHhtcDNwM1VGWVU3WnRMWUNOaEJIVXd1ODRmZURXcVY0RGNRZFk0?=
+ =?utf-8?B?RUZ0a2ZvcUJJZi9lUUVrN1JYTnYxMzJ4amk5REFRVVNrTmpNNlJMTXBpdTlF?=
+ =?utf-8?B?YUc5UFZxUHFxZWhEa3VGL1VFSythLzNvUXlzM2VjazRDb1FYQ2JqdEVqcmJX?=
+ =?utf-8?B?TlNrcklxaTJBVTM5OG0wNjRWT0FzcFc5czZkbm1nL0FXVzlhbVhUTEpRPT0=?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Q0hnaDliZjRKZmRxbnhPR2xlR1BVRnZPUTl1dUtxeENGSXhRU05zdGF1aWhL?=
+ =?utf-8?B?VnlXRGRTNzNHdlRMWmxWNk9XK1VaUGxKcTE2Q1V6UFIxMUxjTWhsbFMyTTg4?=
+ =?utf-8?B?RmhqMElETG0yc1NsQTFVZ09JN1VINklmUFJ2TXM0SGVQRW9BdDRCMkRyRGpF?=
+ =?utf-8?B?QTJOSU1VN0lJNzViTk16Vko0aVZhY1ZVb09RN2F5T1lKakR3TDNPVDJZdlJ0?=
+ =?utf-8?B?TjlHb0EyNkk0dm04UEM5MFozQ1V0QlpraXhiaVZnRmVjZkhBemhZZjVxWjky?=
+ =?utf-8?B?bVcvMTlUeFRFMHAvY2NPcEJsTFhudk9zQUtmbTBRWVppdkdtaTRpZmV2Z3hV?=
+ =?utf-8?B?dVY4OG1xeFlQekVnNkI1bFRyeHJZd1VhTk5jN3BkNmtCZFFsV2g5Vnk5dWhI?=
+ =?utf-8?B?T0tGT0FVMVVXdXNKVjI0OEhEWkNmOENpYkpUSWtrODRSU0lLN2k3dXYvSUN0?=
+ =?utf-8?B?OWxYK1JDeGZYZytLenRQbWdYZnRpUVl0TUhjaHY0c0NVWGxyQ3p1dmM0M2Jz?=
+ =?utf-8?B?ZGMyZXdQTFQvN3Z6MU1LbGNjNWUvSy9YZldVTHJUYkpLTXR5eFkzTFN5dEVU?=
+ =?utf-8?B?SzY2NW5hN1dmYU94WVk4cklXVDRlTVY2QzZveGNucDNkeVA0TFplOGlNOWxF?=
+ =?utf-8?B?aEE1dlNBbE40eUI0bHhjVFdIMTVyMXZlWVpaYnhrVEJ4SXJDVTB4MkF1OG0r?=
+ =?utf-8?B?WG1Wd1p2K0QzWTlBQnI2bGI5OEZnQWt4bHRDTXdsWHp4Zk03dHhsSXpTbUFv?=
+ =?utf-8?B?ZkxkWmd4ZUpLZlAxdFJrRG1YemgyaGE4NXA5Nkl1YlJuaUZKSnhnN1o3SjNh?=
+ =?utf-8?B?MURsc2hyWlZHM3hNYS9Vd0F2c2RTcUNHWDY1OVloMzN6VDV0NGVOZFk1YVdq?=
+ =?utf-8?B?L1IyQU5oNEVKTEZxZjZ5MUUwYzRZbms0VU9waEpPbVd1M3VTUnUxT2VYcUdB?=
+ =?utf-8?B?cW0vSUR3cWc0Q1RaSmZLcTM5b2N1MHZFYzFQaGVGZ2U5alhzSHJIcHRwY3Vm?=
+ =?utf-8?B?U0F3RUREUFVUeVMyYytmV0puOVdBOG1ZQk14N0VjS0JwQ1Roc2dnUWFJekhv?=
+ =?utf-8?B?WTZzbGNDT3JTdGkyVVM0WlZteDUzVm15WkRlU25naW42cWxXZGpPT1JqbG1O?=
+ =?utf-8?B?S1hoY2hvcFVENDEyL0didUsybXdORlJXbk5zTlMzdkF3NTVYNWtDUzVOamhz?=
+ =?utf-8?B?Q3lhMmU5MVM5enlaOW41S0NnNkk1MUY4cmIwNXFsVkVvbXR6dnYvb3hsaTFq?=
+ =?utf-8?B?K05hejdEZnorcGFMdFh0eGtSTFFjdlBoQThvd1NJaWJsN2tRdm9vejMwekl2?=
+ =?utf-8?B?MXYvSmpzSDFzMW1rUU5xd0E2Mlo4TXRDVDlueFM4YWh0NUNCWEppb1EvVHRP?=
+ =?utf-8?B?OGg0RjlMZVhjdzRmTlltQjJPMUg5QzR6UG03VVhCQ1Z3NGxsRXZ5TzVmNklu?=
+ =?utf-8?B?cHptQThBQnlSY2NGbjM4NXF3UHRQUjJVaXVzVEdKK3RjMWJTS3hUYXlFWFlQ?=
+ =?utf-8?B?VGFCSWU4SU1CR0xtdEk2bit1Ylg5SnZPa1VobDVLQlNCeWtCaXU3UzBnZ1JC?=
+ =?utf-8?B?YjB5VTdoSWdNcjFaVUt3aXJnTG9Hc2xDS3VRdVVNS1F5ZUJQbnFEQnk1eTVi?=
+ =?utf-8?B?ak1YcVRjQWExckRqaFdHdExvT3R1c1F0TndSemxiYVNyK3BDWWRQbnljeVFL?=
+ =?utf-8?B?bUdjNnVONFMrRXRuWCtFTGVhcGllNW5jZzFHbGVmVFNaZHMxY2RNTG9mSllt?=
+ =?utf-8?Q?HiiQSi6qSTmGr3VZ35sO2PUgCofgcMYgFPTtdlA?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6142f3f4-d83e-4fe3-de5e-08dddb0f4186
+X-MS-Exchange-CrossTenant-AuthSource: MAUPR01MB11072.INDPRD01.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Aug 2025 08:47:53.7093
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MAYPR01MB10650
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250106_010125_079313_5CDC6AEA 
-X-CRM114-Status: GOOD (  19.84  )
+X-CRM114-CacheID: sfid-20250814_014827_188681_C5CCDB87 
+X-CRM114-Status: GOOD (  18.91  )
 X-Mailman-Approved-At: Thu, 06 Nov 2025 04:28:36 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -225,146 +216,82 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi
 
-
-Am 05.01.25 um 23:47 schrieb Dmitry Baryshkov:
-> On Sat, Dec 14, 2024 at 03:37:04PM +0200, Dmitry Baryshkov wrote:
->> While working on the generic mode_valid() implementation for the HDMI
->> Connector framework I noticed that unlike other DRM objects
->> drm_connector accepts non-const pointer to struct drm_display_mode,
->> while obviously mode_valid() isn't expected to modify the argument.
->>
->> Mass-change the DRM framework code to pass const argument to that
->> callback.
->>
->> The series has been compile-tested with defconfig for x86-64, arm and
->> arm64.
->>
->> Note: yes, I understand that this change might be hard to review and
->> merge. The only viable option that I foresee is to add new callback,
->> having the const argument and migrate drivers into using it one by one.
-> Colleagues, I'd like to graciously ping regarding this series. Should it
-> be merged as is (possibly requiring more R-B's)? Or should I rework it
-> adding something like .mode_valid_new() callback which takes const
-> argument?
-
-Please merge as-is. No need to complicate things. For the whole series:
-
-Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
-
-Thanks for doing this.
-
-Best regards
-Thomas
-
+On 8/11/2025 11:18 PM, Brian Masney via B4 Relay wrote:
+> From: Brian Masney <bmasney@redhat.com>
 >
->> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
->> ---
->> Changes in v2:
->> - Rebased on top of linux-next
->> - Replaced 'accept const argument' with 'take a const arugment'
->>    (Laurent)
->> - Link to v1: https://lore.kernel.org/r/20241115-drm-connector-mode-valid-const-v1-0-b1b523156f71@linaro.org
->>
->> ---
->> Dmitry Baryshkov (5):
->>        drm/encoder_slave: make mode_valid accept const struct drm_display_mode
->>        drm/amdgpu: don't change mode in amdgpu_dm_connector_mode_valid()
->>        drm/sti: hda: pass const struct drm_display_mode* to hda_get_mode_idx()
->>        drm/connector: make mode_valid_ctx take a const struct drm_display_mode
->>        drm/connector: make mode_valid take a const struct drm_display_mode
->>
->>   drivers/gpu/drm/amd/amdgpu/amdgpu_connectors.c           |  8 ++++----
->>   drivers/gpu/drm/amd/amdgpu/atombios_dp.c                 |  2 +-
->>   drivers/gpu/drm/amd/amdgpu/atombios_dp.h                 |  2 +-
->>   drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c        | 12 +++++++++---
->>   drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.h        |  2 +-
->>   drivers/gpu/drm/arm/display/komeda/komeda_wb_connector.c |  2 +-
->>   drivers/gpu/drm/arm/malidp_mw.c                          |  2 +-
->>   drivers/gpu/drm/bridge/adv7511/adv7511_drv.c             |  2 +-
->>   drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c      |  2 +-
->>   drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c |  7 -------
->>   drivers/gpu/drm/display/drm_bridge_connector.c           |  2 +-
->>   drivers/gpu/drm/display/drm_hdmi_state_helper.c          |  2 +-
->>   drivers/gpu/drm/drm_crtc_helper_internal.h               |  2 +-
->>   drivers/gpu/drm/drm_probe_helper.c                       |  2 +-
->>   drivers/gpu/drm/exynos/exynos_hdmi.c                     |  2 +-
->>   drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c                |  2 +-
->>   drivers/gpu/drm/gma500/cdv_intel_crt.c                   |  2 +-
->>   drivers/gpu/drm/gma500/cdv_intel_dp.c                    |  2 +-
->>   drivers/gpu/drm/gma500/cdv_intel_hdmi.c                  |  2 +-
->>   drivers/gpu/drm/gma500/cdv_intel_lvds.c                  |  2 +-
->>   drivers/gpu/drm/gma500/oaktrail_hdmi.c                   |  2 +-
->>   drivers/gpu/drm/gma500/psb_intel_drv.h                   |  2 +-
->>   drivers/gpu/drm/gma500/psb_intel_lvds.c                  |  2 +-
->>   drivers/gpu/drm/gma500/psb_intel_sdvo.c                  |  2 +-
->>   drivers/gpu/drm/i2c/ch7006_drv.c                         |  2 +-
->>   drivers/gpu/drm/i2c/sil164_drv.c                         |  2 +-
->>   drivers/gpu/drm/i915/display/dvo_ch7017.c                |  2 +-
->>   drivers/gpu/drm/i915/display/dvo_ch7xxx.c                |  2 +-
->>   drivers/gpu/drm/i915/display/dvo_ivch.c                  |  2 +-
->>   drivers/gpu/drm/i915/display/dvo_ns2501.c                |  2 +-
->>   drivers/gpu/drm/i915/display/dvo_sil164.c                |  2 +-
->>   drivers/gpu/drm/i915/display/dvo_tfp410.c                |  2 +-
->>   drivers/gpu/drm/i915/display/icl_dsi.c                   |  2 +-
->>   drivers/gpu/drm/i915/display/intel_crt.c                 |  2 +-
->>   drivers/gpu/drm/i915/display/intel_dp.c                  |  2 +-
->>   drivers/gpu/drm/i915/display/intel_dp_mst.c              |  2 +-
->>   drivers/gpu/drm/i915/display/intel_dsi.c                 |  2 +-
->>   drivers/gpu/drm/i915/display/intel_dsi.h                 |  2 +-
->>   drivers/gpu/drm/i915/display/intel_dvo.c                 |  2 +-
->>   drivers/gpu/drm/i915/display/intel_dvo_dev.h             |  2 +-
->>   drivers/gpu/drm/i915/display/intel_hdmi.c                |  2 +-
->>   drivers/gpu/drm/i915/display/intel_lvds.c                |  2 +-
->>   drivers/gpu/drm/i915/display/intel_sdvo.c                |  2 +-
->>   drivers/gpu/drm/i915/display/intel_tv.c                  |  2 +-
->>   drivers/gpu/drm/i915/display/vlv_dsi.c                   |  2 +-
->>   drivers/gpu/drm/imx/ipuv3/imx-tve.c                      |  2 +-
->>   drivers/gpu/drm/msm/disp/mdp4/mdp4_lvds_connector.c      |  2 +-
->>   drivers/gpu/drm/nouveau/dispnv04/tvnv17.c                |  2 +-
->>   drivers/gpu/drm/nouveau/dispnv50/disp.c                  |  2 +-
->>   drivers/gpu/drm/nouveau/nouveau_connector.c              |  2 +-
->>   drivers/gpu/drm/qxl/qxl_display.c                        |  2 +-
->>   drivers/gpu/drm/radeon/atombios_dp.c                     |  2 +-
->>   drivers/gpu/drm/radeon/radeon_connectors.c               | 10 +++++-----
->>   drivers/gpu/drm/radeon/radeon_mode.h                     |  2 +-
->>   drivers/gpu/drm/rockchip/cdn-dp-core.c                   |  2 +-
->>   drivers/gpu/drm/rockchip/inno_hdmi.c                     |  4 ++--
->>   drivers/gpu/drm/rockchip/rk3066_hdmi.c                   |  2 +-
->>   drivers/gpu/drm/sti/sti_dvo.c                            |  2 +-
->>   drivers/gpu/drm/sti/sti_hda.c                            | 12 ++++++------
->>   drivers/gpu/drm/sti/sti_hdmi.c                           |  2 +-
->>   drivers/gpu/drm/tegra/dsi.c                              |  2 +-
->>   drivers/gpu/drm/tegra/hdmi.c                             |  2 +-
->>   drivers/gpu/drm/tegra/sor.c                              |  2 +-
->>   drivers/gpu/drm/vc4/vc4_txp.c                            |  2 +-
->>   drivers/gpu/drm/virtio/virtgpu_display.c                 |  2 +-
->>   drivers/gpu/drm/vmwgfx/vmwgfx_kms.c                      |  2 +-
->>   drivers/gpu/drm/vmwgfx/vmwgfx_kms.h                      |  2 +-
->>   drivers/gpu/drm/vmwgfx/vmwgfx_stdu.c                     |  2 +-
->>   include/drm/display/drm_hdmi_state_helper.h              |  2 +-
->>   include/drm/drm_encoder_slave.h                          |  2 +-
->>   include/drm/drm_modeset_helper_vtables.h                 |  4 ++--
->>   71 files changed, 92 insertions(+), 93 deletions(-)
->> ---
->> base-commit: 4176cf5c5651c33769de83bb61b0287f4ec7719f
->> change-id: 20241115-drm-connector-mode-valid-const-ae3db0ef6cb7
->>
->> Best regards,
->> -- 
->> Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
->>
+> The round_rate() clk ops is deprecated, so migrate this driver from
+> round_rate() to determine_rate() using the Coccinelle semantic patch
+> on the cover letter of this series.
+>
+> Signed-off-by: Brian Masney <bmasney@redhat.com>
 
--- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
+Reviewed-by: Chen Wang <unicorn_wang@outlook.com>
 
+Same comment as Alex. I will test this out after you send out v2.
+
+Thanks,
+
+Chen
+
+> ---
+>   drivers/clk/sophgo/clk-sg2042-clkgen.c | 17 +++++++++--------
+>   1 file changed, 9 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/clk/sophgo/clk-sg2042-clkgen.c b/drivers/clk/sophgo/clk-sg2042-clkgen.c
+> index 9e61288d34f3757315702c355f2669577b29676f..1d3b1656bcf2e6655e0299e68ab39f32189744dc 100644
+> --- a/drivers/clk/sophgo/clk-sg2042-clkgen.c
+> +++ b/drivers/clk/sophgo/clk-sg2042-clkgen.c
+> @@ -176,9 +176,8 @@ static unsigned long sg2042_clk_divider_recalc_rate(struct clk_hw *hw,
+>   	return ret_rate;
+>   }
+>   
+> -static long sg2042_clk_divider_round_rate(struct clk_hw *hw,
+> -					  unsigned long rate,
+> -					  unsigned long *prate)
+> +static int sg2042_clk_divider_determine_rate(struct clk_hw *hw,
+> +					     struct clk_rate_request *req)
+>   {
+>   	struct sg2042_divider_clock *divider = to_sg2042_clk_divider(hw);
+>   	unsigned long ret_rate;
+> @@ -192,15 +191,17 @@ static long sg2042_clk_divider_round_rate(struct clk_hw *hw,
+>   			bestdiv = readl(divider->reg) >> divider->shift;
+>   			bestdiv &= clk_div_mask(divider->width);
+>   		}
+> -		ret_rate = DIV_ROUND_UP_ULL((u64)*prate, bestdiv);
+> +		ret_rate = DIV_ROUND_UP_ULL((u64)*&req->best_parent_rate, bestdiv);
+>   	} else {
+> -		ret_rate = divider_round_rate(hw, rate, prate, NULL,
+> +		ret_rate = divider_round_rate(hw, req->rate, &req->best_parent_rate, NULL,
+>   					      divider->width, divider->div_flags);
+>   	}
+>   
+>   	pr_debug("--> %s: divider_round_rate: val = %ld\n",
+>   		 clk_hw_get_name(hw), ret_rate);
+> -	return ret_rate;
+> +	req->rate = ret_rate;
+> +
+> +	return 0;
+>   }
+>   
+>   static int sg2042_clk_divider_set_rate(struct clk_hw *hw,
+> @@ -258,13 +259,13 @@ static int sg2042_clk_divider_set_rate(struct clk_hw *hw,
+>   
+>   static const struct clk_ops sg2042_clk_divider_ops = {
+>   	.recalc_rate = sg2042_clk_divider_recalc_rate,
+> -	.round_rate = sg2042_clk_divider_round_rate,
+> +	.determine_rate = sg2042_clk_divider_determine_rate,
+>   	.set_rate = sg2042_clk_divider_set_rate,
+>   };
+>   
+>   static const struct clk_ops sg2042_clk_divider_ro_ops = {
+>   	.recalc_rate = sg2042_clk_divider_recalc_rate,
+> -	.round_rate = sg2042_clk_divider_round_rate,
+> +	.determine_rate = sg2042_clk_divider_determine_rate,
+>   };
+>   
+>   /*
+>
 
 _______________________________________________
 Linux-rockchip mailing list
