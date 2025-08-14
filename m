@@ -4,81 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C3E3CA0EE9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 15:36:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11340CA0EDC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 15:42:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9vt1o/SV2rBWPF2tI/YSvZMqA5bIl8zKSSNnTPJNQtU=; b=a1RRLsKYPvRlSy
-	HUvOsZxirRShBLdtTmETZhkWFCAJrYZzxVGKq2pSYOdUsF473Iu7//qz8uHSlGJQZhCGZmgRmJ08F
-	dJvX+SDy1ICBWdHgBvm4M2RvOOH4k9KuRyUbhbDgrPog7WtKs5G+8rTILnDLZRh+eTaTSOQQpYjM3
-	sL3l4DLdNHswm/edUFEozvaO9B23E1CRN6B1/foT5Zr1x44mIHRMXHRdcAvURKOQjFXynZUYQYf9+
-	gR0cD9zx1zCyCg0sQTN6g7QA8V0bjZ9XYkQN4CjYvTZbF0iCETgioSppNIK06ATi8frl0Tspwsvm6
-	LImKDFh8Q3ekx6SHBQug==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EI5MygNyJtcq4n+1lIwoVvIB4ET3uVuqMzicNN9PcPo=; b=GomODkVMGUEwoh
+	8BYkqVEFO1PqzFVka4gwj9Loh5QCalQtJ8PEUekXUNblyqVfrlZoFBc89CVoJJI6aHJFYeDiEbi3V
+	/FNmKQJHXEIxyT6tyP0Ff/3UuXhbrLCm1QCOOrc+BnZR9LRQScvhUSawlGst1Ak87gMiNGC2Iv+76
+	EVWe5dKeecL53o4WoiNMx0JSCf910GehjVOInUyw+grpenW/LICuyDw+1DDrWDAWgBBYeoIBHAEJJ
+	pRwDWJZ7Hkem/Os8J9SmxfPZu/wXYiud5Bn4HMb71/H59jsmani7LaSPlAgMrhFBzvxbmdnPffK4q
+	IccvvB2RUhgZrLkQh5kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uma0Y-0000000HT2R-2rWV;
-	Thu, 14 Aug 2025 15:36:50 +0000
-Received: from mail-m49241.qiye.163.com ([45.254.49.241])
+	id 1uma5h-0000000HVwx-3ZU0;
+	Thu, 14 Aug 2025 15:42:09 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umVVV-0000000GeX5-3z9F;
-	Thu, 14 Aug 2025 10:48:31 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1f63a9a45;
-	Thu, 14 Aug 2025 18:48:25 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com,
-	jonas@kwiboo.se,
-	jernej.skrabec@gmail.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	jingoohan1@gmail.com,
-	inki.dae@samsung.com,
-	sw0312.kim@samsung.com,
-	kyungmin.park@samsung.com,
-	krzk@kernel.org,
-	alim.akhtar@samsung.com,
-	hjc@rock-chips.com,
-	heiko@sntech.de,
-	andy.yan@rock-chips.com,
-	dmitry.baryshkov@oss.qualcomm.com,
-	l.stach@pengutronix.de,
-	dianders@chromium.org,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
+	id 1umZm1-0000000HQ3F-2g65;
+	Thu, 14 Aug 2025 15:21:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6E644601D8;
+	Thu, 14 Aug 2025 15:21:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7CBDC4CEED;
+	Thu, 14 Aug 2025 15:21:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755184908;
+	bh=BxH6frzEx2Nl3V2ClnA48ry3Dd7sJkgks2idYBbkBRI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=iNWpmuQKfgFHOHkXVDC2foQTi3+J+peXo2P1+gHRDe4BfU1c99GqsNMzEY/U6LPvH
+	 50j+Wm0cqy3iul7p7cdbh9W/VRa220LYzlGK/JGMnJU2p65iwV+8Y2TJcocMZqYT/y
+	 CbuMvlQWDwQmzyQJvQm1uNz/fo9Sbz5j4/mPSIMjdrbHf4UnKCAbH1TF8yqAtB2Ckd
+	 1k16TQ4se2ILx02IeaOKovaGBCaWbFJ8/fGmCudak3Q6z1MpiZVgE8pIgCabCYJQbo
+	 0jG10pkamtAmu/qxmbaKY7kfqDCjaPS8Tgns41D5X1Yfljr2OMr/40zY/QZL2hijLS
+	 TyPbFNyxu1orw==
+From: Niklas Cassel <cassel@kernel.org>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Siddharth Vadapalli <s-vadapalli@ti.com>,
+	Richard Zhu <hongxing.zhu@nxp.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Jesper Nilsson <jesper.nilsson@axis.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Srikanth Thokala <srikanth.thokala@intel.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-omap@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@axis.com,
 	linux-rockchip@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v4 13/13] drm/bridge: analogix_dp: Apply panel_bridge helper
-Date: Thu, 14 Aug 2025 18:47:53 +0800
-Message-Id: <20250814104753.195255-14-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250814104753.195255-1-damon.ding@rock-chips.com>
-References: <20250814104753.195255-1-damon.ding@rock-chips.com>
+	linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-tegra@vger.kernel.org
+Subject: [PATCH 00/13] PCI: Drop superfluous pci_epc_features initialization
+Date: Thu, 14 Aug 2025 17:21:19 +0200
+Message-ID: <20250814152119.1562063-15-cassel@kernel.org>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-X-HM-Tid: 0a98a831ffba03a3kunm254826283f235e
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk0eSFZOHU5PQ0IYSB8ZSElWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=bOuKMXQg8Rup1J2MedckZ+VVvhF64MypXOqwvZq3mdJxdovCpPjMuBEIoLIh/lX5uYxdzOrkdv6bQg0HBk7AEMMGHGlle06d2eTBpcX8bM9QQsBDu5/Ylo5qPtns4ddU8C8KDVkc6O5/P6FZcJfp5Qt1VGT6Y05WcylFm3n6hIU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=H01zn369l1+d16Y17AfT9LhhX/ISoHIVQEH1hZMV2AU=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_034830_175993_0FC14425 
-X-CRM114-Status: GOOD (  13.66  )
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2026; i=cassel@kernel.org; h=from:subject; bh=BxH6frzEx2Nl3V2ClnA48ry3Dd7sJkgks2idYBbkBRI=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDLm/vvApNE/bZPy/8YKh26Pres/ct7tSfT5wTUv13x/f 99CNZ1vHaUsDGJcDLJiiiy+P1z2F3e7TzmueMcGZg4rE8gQBi5OAZiIJR8jw/ZnrL9lb2jOOcXT LTbpfry0xJMNyfXGl2/+3bF76tk7VtsZGZ4cq779xajRP4xPaPftGJbfzr+WH3wo5bTo2sEIvbs LfvIBAA==
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,112 +99,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In order to unify the handling of the panel and bridge, apply
-panel_bridge helpers for Analogix DP driver. With this patch, the
-bridge support will also become available.
+Hello all,
 
-The following changes have ben made:
-- Apply plane_bridge helper to wrap the panel as the bridge.
-- Remove the explicit panel APIs calls, which can be replaced with
-  the automic bridge APIs calls wrapped by the panel.
-- Unify the API of getting modes to drm_bridge_get_modes().
+struct pci_epc_features has static storage duration, so all struct members
+are zero initialized implicitly. Thus, remove explicit zero initialization
+of struct members.
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+Series is based on pci/next.
 
----
+Feel free to squash to a single commit if that is preferable.
 
-Changes in v4:
-- Rename the &analogix_dp_plat_data.bridge to
-  &analogix_dp_plat_data.next_bridge.
----
- .../drm/bridge/analogix/analogix_dp_core.c    | 31 +++++++++++--------
- 1 file changed, 18 insertions(+), 13 deletions(-)
+Kind regards,
+Niklas
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index a14c065254fa..0529bfb02884 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -948,11 +948,7 @@ static int analogix_dp_bridge_get_modes(struct drm_bridge *bridge, struct drm_co
- 	struct analogix_dp_device *dp = to_dp(bridge);
- 	int num_modes = 0;
- 
--	if (dp->plat_data->panel)
--		num_modes += drm_panel_get_modes(dp->plat_data->panel, connector);
--
--	if (dp->plat_data->next_bridge)
--		num_modes += drm_bridge_get_modes(dp->plat_data->next_bridge, connector);
-+	num_modes += drm_bridge_get_modes(dp->plat_data->next_bridge, connector);
- 
- 	if (dp->plat_data->get_modes)
- 		num_modes += dp->plat_data->get_modes(dp->plat_data, connector);
-@@ -995,7 +991,7 @@ analogix_dp_bridge_detect(struct drm_bridge *bridge, struct drm_connector *conne
- 	struct analogix_dp_device *dp = to_dp(bridge);
- 	enum drm_connector_status status = connector_status_disconnected;
- 
--	if (dp->plat_data->panel)
-+	if (drm_bridge_is_panel(dp->plat_data->next_bridge))
- 		return connector_status_connected;
- 
- 	if (!analogix_dp_detect_hpd(dp))
-@@ -1080,8 +1076,6 @@ static void analogix_dp_bridge_atomic_pre_enable(struct drm_bridge *bridge,
- 	/* Don't touch the panel if we're coming back from PSR */
- 	if (old_crtc_state && old_crtc_state->self_refresh_active)
- 		return;
--
--	drm_panel_prepare(dp->plat_data->panel);
- }
- 
- static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
-@@ -1236,7 +1230,6 @@ static void analogix_dp_bridge_atomic_enable(struct drm_bridge *bridge,
- 	while (timeout_loop < MAX_PLL_LOCK_LOOP) {
- 		if (analogix_dp_set_bridge(dp) == 0) {
- 			dp->dpms_mode = DRM_MODE_DPMS_ON;
--			drm_panel_enable(dp->plat_data->panel);
- 			return;
- 		}
- 		dev_err(dp->dev, "failed to set bridge, retry: %d\n",
-@@ -1254,16 +1247,12 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
- 	if (dp->dpms_mode != DRM_MODE_DPMS_ON)
- 		return;
- 
--	drm_panel_disable(dp->plat_data->panel);
--
- 	disable_irq(dp->irq);
- 
- 	analogix_dp_set_analog_power_down(dp, POWER_ALL, 1);
- 
- 	pm_runtime_put_sync(dp->dev);
- 
--	drm_panel_unprepare(dp->plat_data->panel);
--
- 	dp->fast_train_enable = false;
- 	dp->psr_supported = false;
- 	dp->dpms_mode = DRM_MODE_DPMS_OFF;
-@@ -1599,6 +1588,22 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
- 		goto err_unregister_aux;
- 	}
- 
-+	if (dp->plat_data->panel) {
-+		dp->plat_data->next_bridge = devm_drm_panel_bridge_add(dp->dev,
-+								       dp->plat_data->panel);
-+		if (IS_ERR(dp->plat_data->next_bridge)) {
-+			ret = PTR_ERR(bridge);
-+			goto err_unregister_aux;
-+		}
-+	}
-+
-+	ret = drm_bridge_attach(dp->encoder, dp->plat_data->next_bridge, bridge,
-+				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-+	if (ret) {
-+		dev_err(dp->dev, "failed to attach following panel or bridge (%d)\n", ret);
-+		goto err_unregister_aux;
-+	}
-+
- 	return 0;
- 
- err_unregister_aux:
+
+Niklas Cassel (13):
+  PCI: cadence-ep: Drop superfluous pci_epc_features initialization
+  PCI: rcar-ep: Drop superfluous pci_epc_features initialization
+  PCI: rockchip-ep: Drop superfluous pci_epc_features initialization
+  PCI: dra7xx: Drop superfluous pci_epc_features initialization
+  PCI: imx6: Drop superfluous pci_epc_features initialization
+  PCI: keystone: Drop superfluous pci_epc_features initialization
+  PCI: artpec6: Drop superfluous pci_epc_features initialization
+  PCI: designware-plat: Drop superfluous pci_epc_features initialization
+  PCI: dw-rockchip: Drop superfluous pci_epc_features initialization
+  PCI: keembay: Drop superfluous pci_epc_features initialization
+  PCI: qcom-ep: Drop superfluous pci_epc_features initialization
+  PCI: rcar-gen4: Drop superfluous pci_epc_features initialization
+  PCI: tegra194: Drop superfluous pci_epc_features initialization
+
+ drivers/pci/controller/cadence/pcie-cadence-ep.c  | 2 --
+ drivers/pci/controller/dwc/pci-dra7xx.c           | 1 -
+ drivers/pci/controller/dwc/pci-imx6.c             | 4 ----
+ drivers/pci/controller/dwc/pci-keystone.c         | 1 -
+ drivers/pci/controller/dwc/pcie-artpec6.c         | 2 --
+ drivers/pci/controller/dwc/pcie-designware-plat.c | 1 -
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c     | 2 --
+ drivers/pci/controller/dwc/pcie-keembay.c         | 1 -
+ drivers/pci/controller/dwc/pcie-qcom-ep.c         | 1 -
+ drivers/pci/controller/dwc/pcie-rcar-gen4.c       | 2 --
+ drivers/pci/controller/dwc/pcie-tegra194.c        | 2 --
+ drivers/pci/controller/pcie-rcar-ep.c             | 2 --
+ drivers/pci/controller/pcie-rockchip-ep.c         | 1 -
+ 13 files changed, 22 deletions(-)
+
 -- 
-2.34.1
+2.50.1
 
 
 _______________________________________________
