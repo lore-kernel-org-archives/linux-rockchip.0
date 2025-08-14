@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FA45CA0EE9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 15:36:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ED85CA0EEB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 15:36:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hUDeHj07qrXlsRJnEw1+QopoqH6HelGPhvzZqKH3xks=; b=XOpCibTjdqVKms
-	7pDMMwVzdUTCyNeuDH7RRu2lvZ8Bg8VWCaeq9KUl+Fnq/WTf/JSCc+LfOHvOjs4kp68H28hAi0qiY
-	sz4RYYT539QFX/3QOXelF52O7UnuTeIY9W7dKveX5mtalDeCKN7F9igHbNdrk2nGQwSIh1ECkxrhT
-	mJc5zS7Yqr/gokum5hVDE+EAkMbtF0VXhVN9T8cDi1jq1eI4hm/DjNhZl7eFFIpI1EIFJ3ZxFKJci
-	esRD1wEQSyX29qcWXjYzXPi3+COnOVZOe/GEMi+Jx8+Aec2yasG+hh0ujXxwzLfV6n2FToVJehLsk
-	WtO5gjoCE1YLABUnQNoA==;
+	List-Owner; bh=AFBcPx6VHs78fhkeAI5TjzWg5BYbwwYodLY3TfuGbd8=; b=gVeUzcMMdx0P+a
+	JYI0qaz/BI/WOYSt+zS2aH4AGAT6rO5a/P9rWbsephShHgvg2PX2usZYKUVGWGxV97lhZkhJ6ep42
+	4S3o5fTDqk0vHP5VAYK1S2WiBUTPwFHH7KsN8ebiX5xOnHS7FJ27xjSS5uOccmrjkDZ8XQVLpNjez
+	2vvkvktxmiR5UQhLowxhqrQBvMM1iHVgKZJ6ZjxSfrTRsEQAXGss3aOiL3rbUAV3dAKthKqbIBXm0
+	7WEkdQWtwK0EW6r/tEvqYavfe3pIKLnP73oExHpICzDBlRDjszxjSlhajf4Nlr9raPKGoaj78eKhH
+	uWjqpDc6zRnJAli0ss4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uma0Q-0000000HSp1-3UNP;
-	Thu, 14 Aug 2025 15:36:42 +0000
-Received: from mail-m49210.qiye.163.com ([45.254.49.210])
+	id 1uma0S-0000000HSqx-04lk;
+	Thu, 14 Aug 2025 15:36:44 +0000
+Received: from mail-m49236.qiye.163.com ([45.254.49.236])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umVVB-0000000GeIy-2zKV;
-	Thu, 14 Aug 2025 10:48:11 +0000
+	id 1umVVD-0000000GeL6-3q1v;
+	Thu, 14 Aug 2025 10:48:13 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1f637429d;
-	Thu, 14 Aug 2025 18:48:05 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1f63742a2;
+	Thu, 14 Aug 2025 18:48:07 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: andrzej.hajda@intel.com,
 	neil.armstrong@linaro.org,
@@ -59,26 +59,27 @@ Cc: Laurent.pinchart@ideasonboard.com,
 	linux-samsung-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v4 04/13] drm/exynos: exynos_dp: Remove &exynos_dp_device.ptn_bridge
-Date: Thu, 14 Aug 2025 18:47:44 +0800
-Message-Id: <20250814104753.195255-5-damon.ding@rock-chips.com>
+Subject: [PATCH v4 05/13] drm/bridge: exynos_dp: Remove unused &exynos_dp_device.connector
+Date: Thu, 14 Aug 2025 18:47:45 +0800
+Message-Id: <20250814104753.195255-6-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250814104753.195255-1-damon.ding@rock-chips.com>
 References: <20250814104753.195255-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a98a831b07103a3kunm254826283f222b
+X-HM-Tid: 0a98a831b8e303a3kunm254826283f2248
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhoaSlZJSkpPS0tIS0kaSxpWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh9CQlZMHU8eSR8dTUxOSR9WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=iQQ76WNA7+Tyqxdp7IG85iOpC+RdziYUHKbHlDw2vIRPevA4IJXuZZsJxAps4urtHTykGYKUjVBOx9CDd02UJgxwwElinCBX3YGAi6VIC7fRZXPVHj5elTg50APoN+Lauxmgc6L8XCmhttVTZIQ+xbzNrZhKiD0A0EC4QcM8XDY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=JeEm8m69W13KznEoDs77RvcikH57SqygZ8T41UBHVqw=;
+	b=UWzkhzG1A/77ILxmK++V+efNrrG97qGEpK9lgNueTtNeCbV85nkJC6k6kNSMPf8KSyCO7qOJngeQLhQtGhSUlKNrR74SQRAQeMJMbH4Im4WJD4iSI/GOsGe/P+Cx9yEZEm4+omcoPyQw54dR/i0Vtpauwdui7yu519sMONkwd4w=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=WYQG3rMOARn6e8FXTNF061oPhhBOqd+NVL7TsVsGsic=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_034809_912851_80981BE7 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20250814_034812_114432_2424D54D 
+X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,73 +96,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use &analogix_dp_plat_data.bridge instead of &exynos_dp_device.ptn_bridge
-directly.
+The &exynos_dp_device.connector is assigned in exynos_dp_bridge_attach()
+but never used. It should make sense to remove it.
 
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-
-------
-
-Changes in v3:
-- Fix the typographical error for &dp->plat_data.bridge.
-
-Changes in v4:
-- Rename the &analogix_dp_plat_data.bridge to
-  &analogix_dp_plat_data.next_bridge.
 ---
- drivers/gpu/drm/exynos/exynos_dp.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/exynos/exynos_dp.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index 5bcf41e0bd04..f469ac5b3c2a 100644
+index f469ac5b3c2a..e20513164032 100644
 --- a/drivers/gpu/drm/exynos/exynos_dp.c
 +++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -36,7 +36,6 @@
+@@ -35,7 +35,6 @@
+ 
  struct exynos_dp_device {
  	struct drm_encoder         encoder;
- 	struct drm_connector       *connector;
--	struct drm_bridge          *ptn_bridge;
+-	struct drm_connector       *connector;
  	struct drm_device          *drm_dev;
  	struct device              *dev;
  
-@@ -106,8 +105,8 @@ static int exynos_dp_bridge_attach(struct analogix_dp_plat_data *plat_data,
- 	dp->connector = connector;
+@@ -102,8 +101,6 @@ static int exynos_dp_bridge_attach(struct analogix_dp_plat_data *plat_data,
+ 	struct exynos_dp_device *dp = to_dp(plat_data);
+ 	int ret;
  
- 	/* Pre-empt DP connector creation if there's a bridge */
--	if (dp->ptn_bridge) {
--		ret = drm_bridge_attach(&dp->encoder, dp->ptn_bridge, bridge,
-+	if (plat_data->next_bridge) {
-+		ret = drm_bridge_attach(&dp->encoder, plat_data->next_bridge, bridge,
- 					0);
- 		if (ret)
- 			return ret;
-@@ -155,7 +154,7 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
- 
- 	dp->drm_dev = drm_dev;
- 
--	if (!dp->plat_data.panel && !dp->ptn_bridge) {
-+	if (!dp->plat_data.panel && !dp->plat_data.next_bridge) {
- 		ret = exynos_dp_dt_parse_panel(dp);
- 		if (ret)
- 			return ret;
-@@ -232,6 +231,7 @@ static int exynos_dp_probe(struct platform_device *pdev)
- 
- 	/* The remote port can be either a panel or a bridge */
- 	dp->plat_data.panel = panel;
-+	dp->plat_data.next_bridge = bridge;
- 	dp->plat_data.dev_type = EXYNOS_DP;
- 	dp->plat_data.power_on = exynos_dp_poweron;
- 	dp->plat_data.power_off = exynos_dp_poweroff;
-@@ -239,8 +239,6 @@ static int exynos_dp_probe(struct platform_device *pdev)
- 	dp->plat_data.get_modes = exynos_dp_get_modes;
- 	dp->plat_data.skip_connector = !!bridge;
- 
--	dp->ptn_bridge = bridge;
+-	dp->connector = connector;
 -
- out:
- 	dp->adp = analogix_dp_probe(dev, &dp->plat_data);
- 	if (IS_ERR(dp->adp))
+ 	/* Pre-empt DP connector creation if there's a bridge */
+ 	if (plat_data->next_bridge) {
+ 		ret = drm_bridge_attach(&dp->encoder, plat_data->next_bridge, bridge,
 -- 
 2.34.1
 
