@@ -4,86 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77310CA0ED1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 05:47:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5852BCA0EDC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 06:19:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mv5s/7kj2z1RaWkf8E/z631HGVIo4Mg/JKX0GgzbBPY=; b=x+qpMTErmREzSo
-	b6eKyfaozZ52VrrTeI7q3Gv2wGCcNdTkmwfv+WDpmLRwkTmygqXSRKRMVk4tBM8AYQwYK3tYLECwY
-	w70+EkJquCRa6gnhNbCSWh9JXeYYx3Lw0Yd56oz1+bmVq/LSdg930VN82lgVtU9Nknbl0hH2TjMYj
-	i36wyvnsIfWvHrQcijKvtMjwzZZRhmVT2SiRH3V9Q27N6DFsg80lnr0wRx9L89DjGtYiq9pH5TNbX
-	iEdEjvWIx2oS11ph0GsMB98MGV0OKTXpuGa3MEefCzxJW+FkLWTy6S7tHQuIvtAV1v4VEBIVIs4NM
-	UJXecSzvEvbpo8H0k+0g==;
+	List-Owner; bh=6+ONDmIWtzCZHxIfyh5aBp0xIsXFUgQdSqVO9wyAy1A=; b=u5FRmQtLCCO32s
+	+A4BMdEmtbw0gmzJ2hk9jMB7AmX4C/MTd9qHr+b07e5qt/vjb6rLZTpNAAJcx5VLN5rB66RX92OIL
+	cwCvr1WWbL2G4o7Yh762FrBbq30gY/qyU2FwrNhW8ByVOwN7mauKe9h8dlFuRpjgmoU71alKtzj9X
+	YtFFUMWu9fPoQg3aQ0/66QQzNQLoWLvAHnYclomWlJ80ywEyhprEWLfoPLZoifI6GZ8/1NIbAQ9QO
+	h5sGoeOJFM+qBMBQv8LfazFbR/HQ5MJgQu9Cq9z6hbbJlpQaOpChCqau5Q21hEOhn/KMIv1K8pICn
+	wUzunkIqTc1aOXBNwzBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umQnn-0000000Fr6k-3wS0;
-	Thu, 14 Aug 2025 05:47:03 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1umRJU-0000000FvQ0-48Ck;
+	Thu, 14 Aug 2025 06:19:48 +0000
+Received: from mout.web.de ([212.227.15.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umQlD-0000000FqXk-0iYr;
-	Thu, 14 Aug 2025 05:44:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1755150263; x=1786686263;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=g6R08dRtzi78aEFReCyHEuWUNRmsPZO1Bp8+EA825f0=;
-  b=dGR1nc5b0tPjgKO1DkYSW0gExhCfJTGxu+stADZZboVTjI+a2E/jHniz
-   Qdj/CpDsLeIhTiQBeYLaN+fJHvKuLqBJ/rf4CTjErfjp35BxEQglgrUbK
-   x+9cNfvNnxZUZr7b1ql+N9umMFZbvBD95beh/qnayf6kKDPnVM49k3PTo
-   31DMNXaYWmOs33v9cBUt3wsV5uQ5ahUD66TaGqzb4HXeo1QGF5BAnY4gO
-   +4NIrc8zYikUhyLxSeOpVYBZVfJt3JnJPdBwKduIRuYlNzfyUWxz+lgOe
-   wOZXZlrP0AFKAwOw5p6ADrAOdfsmODIjQ7MDC4mK3soDeRQEIYb4MihIa
-   A==;
-X-CSE-ConnectionGUID: cdUKLeswT8qpzfXIK73MSw==
-X-CSE-MsgGUID: VX3jq3adR9mwEJpoZ6oT6w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11520"; a="68063297"
-X-IronPort-AV: E=Sophos;i="6.17,287,1747724400"; 
-   d="scan'208";a="68063297"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2025 22:44:20 -0700
-X-CSE-ConnectionGUID: EW+xK8OMTcegzO0PV9/IwQ==
-X-CSE-MsgGUID: DyMXdD5CQGikV6ws5RD5Og==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,287,1747724400"; 
-   d="scan'208";a="170876883"
-Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
-  by fmviesa005.fm.intel.com with ESMTP; 13 Aug 2025 22:44:14 -0700
-Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1umQkr-000AcW-2Z;
-	Thu, 14 Aug 2025 05:44:08 +0000
-Date: Thu, 14 Aug 2025 13:43:14 +0800
-From: kernel test robot <lkp@intel.com>
-To: Robin Murphy <robin.murphy@arm.com>, mingo@redhat.com, will@kernel.org,
-	mark.rutland@arm.com, acme@kernel.org, namhyung@kernel.org,
-	alexander.shishkin@linux.intel.com, jolsa@kernel.org,
-	irogers@google.com, adrian.hunter@intel.com,
-	kan.liang@linux.intel.com
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-perf-users@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-alpha@vger.kernel.org, linux-snps-arc@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
-	linux-csky@vger.kernel.org, loongarch@lists.linux.dev,
-	linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-s390@vger.kernel.org, linux-sh@vger.kernel.org,
-	sparclinux@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, dmaengine@vger.kernel.org,
-	linux-fpga@vger.kernel.org, amd-gfx@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH 13/19] perf: Add helper for checking grouped events
-Message-ID: <202508141353.JZWHsrYP-lkp@intel.com>
-References: <b05607c3ce0d3ce52de1784823ef9f6de324283c.1755096883.git.robin.murphy@arm.com>
+	id 1umRJS-0000000FvOX-01bf;
+	Thu, 14 Aug 2025 06:19:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1755152381; x=1755757181; i=markus.elfring@web.de;
+	bh=dkXFOVtKNI21Dx8zQrVRNgj44PMQKR+Ep4pir8zV+fo=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
+	 References:From:In-Reply-To:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=XFsU9rOhiwoWxv8LvgZTflJEU+fUPSyQ6NFBv97Jz3A/PmdXe2SvNpqNvHJen25n
+	 Ew9UCmZ+AS2Wb2NKAg/W3foUjqlWRlkM0x7l/pV7H2jlOeGFumu509HKX3bSLwQ8m
+	 FOUofHSecV0KqaLYFnsiZm9cYd6TJMfU2PfA+cDgkfxcviPvUYk8aKZUm+oKfR/Np
+	 IB47fyYCq3e+9kCzm9EtiJfAFzwF9NMHo/dhB9Ood2WNYhWMpXzaaA8cLx5jqy8eG
+	 tZbUDQG+PzJGBbEzOLkC9WJImt4DVFpi/14fez5dcB1fmLkDf97qFU+t7NfB8Bk/v
+	 nvbaXceQhTKwAk1I6A==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.29] ([94.31.92.224]) by smtp.web.de (mrweb005
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1MGQGH-1unCNc3Hw5-00ARR6; Thu, 14
+ Aug 2025 08:19:41 +0200
+Message-ID: <1ea4b4f2-99cc-40f6-b369-c6c4746705c4@web.de>
+Date: Thu, 14 Aug 2025 08:19:26 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <b05607c3ce0d3ce52de1784823ef9f6de324283c.1755096883.git.robin.murphy@arm.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: accel/rocket: Fix usages of kfree() and sizeof()
+To: Brigham Campbell <me@brighamcampbell.com>,
+ dri-devel@lists.freedesktop.org, lkp@intel.com,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: LKML <linux-kernel@vger.kernel.org>, Julia Lawall
+ <julia.lawall@inria.fr>, Oded Gabbay <ogabbay@kernel.org>,
+ Tomeu Vizoso <tomeu@tomeuvizoso.net>
+References: <20250813-rocket-free-fix-v1-1-51f00a7a1271@brighamcampbell.com>
+ <65769f0a-af9f-4e96-93d4-8594e76d8e73@web.de>
+ <DC1UJQKMO63Z.1ZLS5VS0OXZAE@brighamcampbell.com>
+Content-Language: en-GB, de-DE
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <DC1UJQKMO63Z.1ZLS5VS0OXZAE@brighamcampbell.com>
+X-Provags-ID: V03:K1:m0N0IqqCvQQawbnD06H7Su0xoGeTSpf3E2qGklQwk/khHIK4urE
+ As89PjxImSl8+Mjv07W1ZZWhT89DwTBrp6TSzYaqYaoS0uhOj5ciE8LvDQvboHP03UZZMO5
+ xRLMBq8zSrZGRlORBou1Y0MNsuKE6Kva+nmd4Qg6rmbDQ8NH0PXGqkWTuuKrixgjWXUTCr6
+ u0z17o/i63BRjvbWcxh4g==
+UI-OutboundReport: notjunk:1;M01:P0:q396eo0uxWA=;1vpGYYYWKeX/X4JQfuPOfzdkkdI
+ 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
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250813_224423_233177_CDDB6911 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20250813_231946_416039_D979AE87 
+X-CRM114-Status: UNSURE (   4.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,143 +134,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Robin,
+> I had considered splitting it into two patches, but the changes were so
+> minor that I figured it wasn't worth it. Please let me know if you
+> prefer separate patches and I'll gladly prep another revision.
 
-kernel test robot noticed the following build warnings:
+You can distinguish mentioned change possibilities better also according to
+their severity, can't you?
 
-[auto build test WARNING on linus/master]
-[also build test WARNING on v6.17-rc1 next-20250814]
-[cannot apply to perf-tools-next/perf-tools-next tip/perf/core perf-tools/perf-tools acme/perf/core]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Robin-Murphy/perf-arm-cmn-Fix-event-validation/20250814-010626
-base:   linus/master
-patch link:    https://lore.kernel.org/r/b05607c3ce0d3ce52de1784823ef9f6de324283c.1755096883.git.robin.murphy%40arm.com
-patch subject: [PATCH 13/19] perf: Add helper for checking grouped events
-config: i386-randconfig-003-20250814 (https://download.01.org/0day-ci/archive/20250814/202508141353.JZWHsrYP-lkp@intel.com/config)
-compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250814/202508141353.JZWHsrYP-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202508141353.JZWHsrYP-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> arch/x86/events/amd/ibs.c:264:6: warning: unused variable 'ret' [-Wunused-variable]
-     264 |         int ret;
-         |             ^~~
-   1 warning generated.
-
-
-vim +/ret +264 arch/x86/events/amd/ibs.c
-
-d20610c19b4a22 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-02-05  258  
-b716916679e720 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-09-21  259  static int perf_ibs_init(struct perf_event *event)
-b716916679e720 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-09-21  260  {
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  261  	struct hw_perf_event *hwc = &event->hw;
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  262  	struct perf_ibs *perf_ibs;
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  263  	u64 config;
-7c2128235eff99 arch/x86/events/amd/ibs.c                Ravi Bangoria  2023-06-20 @264  	int ret;
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  265  
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  266  	perf_ibs = get_ibs_pmu(event->attr.type);
-2fad201fe38ff9 arch/x86/events/amd/ibs.c                Ravi Bangoria  2023-05-04  267  	if (!perf_ibs)
-2fad201fe38ff9 arch/x86/events/amd/ibs.c                Ravi Bangoria  2023-05-04  268  		return -ENOENT;
-2fad201fe38ff9 arch/x86/events/amd/ibs.c                Ravi Bangoria  2023-05-04  269  
-450bbd493d436f arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2012-03-12  270  	config = event->attr.config;
-450bbd493d436f arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2012-03-12  271  
-450bbd493d436f arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2012-03-12  272  	if (event->pmu != &perf_ibs->pmu)
-b716916679e720 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-09-21  273  		return -ENOENT;
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  274  
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  275  	if (config & ~perf_ibs->config_mask)
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  276  		return -EINVAL;
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  277  
-0f9e0d7928d8e8 arch/x86/events/amd/ibs.c                Namhyung Kim   2023-11-30  278  	if (has_branch_stack(event))
-0f9e0d7928d8e8 arch/x86/events/amd/ibs.c                Namhyung Kim   2023-11-30  279  		return -EOPNOTSUPP;
-0f9e0d7928d8e8 arch/x86/events/amd/ibs.c                Namhyung Kim   2023-11-30  280  
-d29e744c71673a arch/x86/events/amd/ibs.c                Namhyung Kim   2024-12-03  281  	/* handle exclude_{user,kernel} in the IRQ handler */
-d29e744c71673a arch/x86/events/amd/ibs.c                Namhyung Kim   2024-12-03  282  	if (event->attr.exclude_host || event->attr.exclude_guest ||
-d29e744c71673a arch/x86/events/amd/ibs.c                Namhyung Kim   2024-12-03  283  	    event->attr.exclude_idle)
-d29e744c71673a arch/x86/events/amd/ibs.c                Namhyung Kim   2024-12-03  284  		return -EINVAL;
-d29e744c71673a arch/x86/events/amd/ibs.c                Namhyung Kim   2024-12-03  285  
-d29e744c71673a arch/x86/events/amd/ibs.c                Namhyung Kim   2024-12-03  286  	if (!(event->attr.config2 & IBS_SW_FILTER_MASK) &&
-d29e744c71673a arch/x86/events/amd/ibs.c                Namhyung Kim   2024-12-03  287  	    (event->attr.exclude_kernel || event->attr.exclude_user ||
-d29e744c71673a arch/x86/events/amd/ibs.c                Namhyung Kim   2024-12-03  288  	     event->attr.exclude_hv))
-d29e744c71673a arch/x86/events/amd/ibs.c                Namhyung Kim   2024-12-03  289  		return -EINVAL;
-d29e744c71673a arch/x86/events/amd/ibs.c                Namhyung Kim   2024-12-03  290  
-ccec93f5de464b arch/x86/events/amd/ibs.c                Robin Murphy   2025-08-13  291  	/*
-ccec93f5de464b arch/x86/events/amd/ibs.c                Robin Murphy   2025-08-13  292  	 * Grouping of IBS events is not possible since IBS can have only
-ccec93f5de464b arch/x86/events/amd/ibs.c                Robin Murphy   2025-08-13  293  	 * one event active at any point in time.
-ccec93f5de464b arch/x86/events/amd/ibs.c                Robin Murphy   2025-08-13  294  	 */
-ccec93f5de464b arch/x86/events/amd/ibs.c                Robin Murphy   2025-08-13  295  	if (in_hardware_group(event))
-ccec93f5de464b arch/x86/events/amd/ibs.c                Robin Murphy   2025-08-13  296  		return -EINVAL;
-7c2128235eff99 arch/x86/events/amd/ibs.c                Ravi Bangoria  2023-06-20  297  
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  298  	if (hwc->sample_period) {
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  299  		if (config & perf_ibs->cnt_mask)
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  300  			/* raw max_cnt may not be set */
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  301  			return -EINVAL;
-88c7bcad71c83f arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  302  
-b2fc7b282bf7c1 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  303  		if (event->attr.freq) {
-b2fc7b282bf7c1 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  304  			hwc->sample_period = perf_ibs->min_period;
-b2fc7b282bf7c1 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  305  		} else {
-88c7bcad71c83f arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  306  			/* Silently mask off lower nibble. IBS hw mandates it. */
-6accb9cf760804 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2012-04-02  307  			hwc->sample_period &= ~0x0FULL;
-b2fc7b282bf7c1 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  308  			if (hwc->sample_period < perf_ibs->min_period)
-b2fc7b282bf7c1 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  309  				return -EINVAL;
-b2fc7b282bf7c1 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  310  		}
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  311  	} else {
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  312  		u64 period = 0;
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  313  
-e1e7844ced88f9 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  314  		if (event->attr.freq)
-e1e7844ced88f9 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  315  			return -EINVAL;
-e1e7844ced88f9 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  316  
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  317  		if (perf_ibs == &perf_ibs_op) {
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  318  			period = (config & IBS_OP_MAX_CNT) << 4;
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  319  			if (ibs_caps & IBS_CAPS_OPCNTEXT)
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  320  				period |= config & IBS_OP_MAX_CNT_EXT_MASK;
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  321  		} else {
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  322  			period = (config & IBS_FETCH_MAX_CNT) << 4;
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  323  		}
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  324  
-db98c5faf8cb35 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  325  		config &= ~perf_ibs->cnt_mask;
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  326  		event->attr.sample_period = period;
-598bdf4fefff5a arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  327  		hwc->sample_period = period;
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  328  
-b2fc7b282bf7c1 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-01-15  329  		if (hwc->sample_period < perf_ibs->min_period)
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  330  			return -EINVAL;
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  331  	}
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  332  
-d20610c19b4a22 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-02-05  333  	if (perf_ibs_ldlat_event(perf_ibs, event)) {
-d20610c19b4a22 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-02-05  334  		u64 ldlat = event->attr.config1 & 0xFFF;
-d20610c19b4a22 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-02-05  335  
-d20610c19b4a22 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-02-05  336  		if (ldlat < 128 || ldlat > 2048)
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  337  			return -EINVAL;
-d20610c19b4a22 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-02-05  338  		ldlat >>= 7;
-d20610c19b4a22 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-02-05  339  
-d20610c19b4a22 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-02-05  340  		config |= (ldlat - 1) << 59;
-d20610c19b4a22 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-02-05  341  		config |= IBS_OP_L3MISSONLY | IBS_OP_LDLAT_EN;
-d20610c19b4a22 arch/x86/events/amd/ibs.c                Ravi Bangoria  2025-02-05  342  	}
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  343  
-6accb9cf760804 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2012-04-02  344  	/*
-6accb9cf760804 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2012-04-02  345  	 * If we modify hwc->sample_period, we also need to update
-6accb9cf760804 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2012-04-02  346  	 * hwc->last_period and hwc->period_left.
-6accb9cf760804 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2012-04-02  347  	 */
-6accb9cf760804 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2012-04-02  348  	hwc->last_period = hwc->sample_period;
-6accb9cf760804 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2012-04-02  349  	local64_set(&hwc->period_left, hwc->sample_period);
-6accb9cf760804 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2012-04-02  350  
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  351  	hwc->config_base = perf_ibs->msr;
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  352  	hwc->config = config;
-510419435c6948 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-12-15  353  
-b716916679e720 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-09-21  354  	return 0;
-b716916679e720 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-09-21  355  }
-b716916679e720 arch/x86/kernel/cpu/perf_event_amd_ibs.c Robert Richter 2011-09-21  356  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Regards,
+Markus
 
 _______________________________________________
 Linux-rockchip mailing list
