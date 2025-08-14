@@ -4,76 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1A4DCCD199
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:08:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 420DCCCD193
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/ZUuuqgOC/1yeV/JSbii9ac+9wyd4SshQVOC2oSQGLo=; b=bNXufg7XLT0grE
-	aGkWQWAoDKP41cg/XYJUJz9Fd2u24i4mx4IYh45ZQQoOl96S19bo4Ck741KfxeHLr3yUmM9Npc8RX
-	Qy4wgB/BfIUIwAKqweTBlVYBoCI5NHggn6MjKFcRZAOxMLVPgNu7hcm9IkWfO+BuCs/Eh8V2x58rJ
-	1s2+EVecFfSRpswqzaC/atSIHLHjROE+EurdVQIXYDovjiJ6WSmU6P1DeGBDikzw4JgJXwDWNbUOo
-	+Z6FxhEbi3rQftQe1S8ITjk/Wm4vq3VX7gqegwblwQ5tZbX6n6ClnTtARWvUTu8/gjC00Pc3mZ3LT
-	qeh0Zvasa/ITXWM6FQbA==;
+	List-Owner; bh=dm2u5AYfyAPdmM+KDs7EcFQj8rIwX0af2QAVg2A9xyE=; b=Zj/PsUFRA9VyDz
+	NM8Vr3TaOdm/GJFLptmmjHboxUERTZhUZH7+xUndJfZzubMdH9XQUOA7zTBatKlN92o/7eiYZ2oQi
+	lRXl6DLQYTncF1mYsA01dRpz/WBBpStsBs4xKGkuqBBDiV3e8fo2RuoDXVtcX6fpw0tuybCfn1g6K
+	fW8GXg1sJJVjXotOmonRhCeHmhvt4/i0uWnFTSUQPjST92I1z7I1XSqvwxpqpBPm1ckCLmMnmJA8/
+	jEZVSGrE6q37WX4VdGJUdvu1YVgLf/9iUisN5Wmnj5POFfDEXXo7fQiSFXO1ItFJAOuUSP2J23Nzp
+	IYZHP8V6l4kGlVlnwPcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAnkC-0000000D0K1-0KHO;
-	Mon, 20 Oct 2025 11:08:04 +0000
-Received: from mail-m1973177.qiye.163.com ([220.197.31.77])
+	id 1vAoVX-0000000D8t7-0UCx;
+	Mon, 20 Oct 2025 11:56:59 +0000
+Received: from mail-oa1-f48.google.com ([209.85.160.48])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAnk8-0000000D0HR-2sbv;
-	Mon, 20 Oct 2025 11:08:02 +0000
-Received: from [172.16.12.149] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 268423cdc;
-	Mon, 20 Oct 2025 19:07:48 +0800 (GMT+08:00)
-Message-ID: <954a67d1-1759-4e18-8eef-3fa14fb3cef5@rock-chips.com>
-Date: Mon, 20 Oct 2025 19:07:46 +0800
+	id 1umZek-0000000HOFH-2ziy;
+	Thu, 14 Aug 2025 15:14:19 +0000
+Received: by mail-oa1-f48.google.com with SMTP id 586e51a60fabf-30cce50b75aso665314fac.0;
+        Thu, 14 Aug 2025 08:14:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755184457; x=1755789257;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=n9du/Bs1Vwkuk15qOOpl62+YeIchI37tbTZ/WdEUy2s=;
+        b=ehxfjeKqfUnirCTJFjX07Qqqw42WzJLN8EIiN0cXmlOp+EmmIOM95xCGmeR4zQmmmH
+         2MOZcMdFCqB2doOJjUVTyuzuL56ZF+82lL8xekdwiyTxmWXUGoinyrRc7rh2PS4ujt2/
+         uP1gBmEGvPrvobbHSKWccK3kYtYZ4YayQutrFrnhoV6kh9AE3XKmSLZNLpQn0G6JfHEz
+         /AHAXCAx3E4djNqOWyQR8YQLWfOIOsjpfKgmDTSc/2RNSzIiKIt028wpg7YRyX7DUdyl
+         dzHobNC1f5secRUyZdznjN+LevtYXuh/szIKim1uX8ppapIoidD8F5bI09o6Brde30Dy
+         LLrQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUVnZ+nY0jLw+0hfs+ULOmwNY8QHEVyr6xm4Sba3LRHnwHMCp9TE/M33Hw195hF4tpLp3OdBlrIpsu37CPP@lists.infradead.org, AJvYcCUus1JfLmHTfaQmcbJ9pp99QkFqWws85ffmPp+HSQhG16IfebtmT21mxTcGBDqYo8Aqd4yevMb89QHhmlw=@lists.infradead.org, AJvYcCWipWvhBLWGqq0Sbz4HSqaO6mOMdERfsUQ8gBRldLAq5mwOBmqh1mgEJwzzIC2hfa+qeZeLrSkn6Y5TOHno94n8IQ==@lists.infradead.org, AJvYcCXQfERhic02+v/n7AUZC1xqEGInB631K8LGOYepgF52F42LieeUK9jU5sZDr204yiQNF18M85t9BOq2z7Z9AZU=@lists.infradead.org, AJvYcCXnKzbnl34Wa5uAYLDRlltpJmZm4oNdNfIDdfENYKS36HkKdoCvFWBe0pkXLw7vgjQSOUBJAimz/eIE8IUboRQ=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx+CbZ7SsEhXz0CM2FzgDPpOaooYcZwkB0x4KE1dHsHHLNUJcGo
+	HpqeTantbwRWSBtw4pXQd8DWdOaCS/UDdkpkBlgXmOCqGuOowuz8gV28kTFICgkd
+X-Gm-Gg: ASbGncspr/jYG2BX5RodqZ94WiqisMWtXPEGyMlwqaSLjqjLbYSdV8DVtxIqKjtLTjJ
+	C7XPoeq77a+em/BAF3kkIvGnC1C/J0bLUmHDUgFtpCpAbXBSresvGC+tIbL5MLHBAHcbz1tixrz
+	2z3ysikuFSabB+N14Mc/gVzbRQrlrzUxu3NG8gCUAy8jL6kzEdUvQQtpCZZkjRO4l+O+2Uh1AK2
+	QoCkZvlPq5KzjPFwEKPC7EjBbl5KXatzrQG5L0q8FYx7OsvJMe+LCf3N5WyTILHcZzwEIQan+Gk
+	ievpV/KY92MSpOcO+SK/kZNlYzdE7wlF/fIUYUw15KQ2f1DqiKxNxBkIPfrunlOZ/vVd7yR6r2y
+	fUs8EOKraPuOU+nFZuoFNK7slM3uMh7bEh5MaGbPt8bwWVH83OYaLBk/AoBar
+X-Google-Smtp-Source: AGHT+IGWoPGS/6f8pgeTTjf2kUW+tcSf9U+DzKtuPfrSKz/w/T4nNHnfryGCv3Az+kE6+Hsw4aAoug==
+X-Received: by 2002:a05:6870:a102:b0:2d4:ce45:698d with SMTP id 586e51a60fabf-30cd0da6088mr2210703fac.4.1755184456860;
+        Thu, 14 Aug 2025 08:14:16 -0700 (PDT)
+Received: from mail-oo1-f48.google.com (mail-oo1-f48.google.com. [209.85.161.48])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-30cd018d614sm702907fac.33.2025.08.14.08.14.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 14 Aug 2025 08:14:16 -0700 (PDT)
+Received: by mail-oo1-f48.google.com with SMTP id 006d021491bc7-61bd4c45957so503690eaf.1;
+        Thu, 14 Aug 2025 08:14:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCU9YxrS8t+qgNJ7aSA3AlKRfJHYNzOmxXILRw3oWJzDHHpohQN9IMhjsj2SzOfRt5KG6IdDYhZs1AKddbAlSgw=@lists.infradead.org, AJvYcCU9ugBWno7+8c2sCf98rhYl3JEeNNVBnD+6mhUMCZhUN4WhN5loWOPs2aikGSjS37IsWU8c1R7EkSJJmFw=@lists.infradead.org, AJvYcCUXhfPUg1GxAufU4n5X+WNLniy5Tmx9Su//OtPOoQQ62wGkrw4Op1oHrEtWz3mxdVBFGOVmss5Dtx3ErdZG@lists.infradead.org, AJvYcCWe3oUYihW6P7Dn7UxGuYye4FrRVKAwWPq6QkqZTvjqLjExO//S16F7hN2TGCCSkAIvndSDNbtKYyKcDRvNgzA=@lists.infradead.org, AJvYcCX64wx163eWTP/vDz3Sek+/qJszCycl6fd2/EnbKdgHfABK66ENQP+DML542fLo/yILwcHnEssm7k8K3obzF8qEow==@lists.infradead.org
+X-Received: by 2002:a05:690c:700b:b0:719:f582:be17 with SMTP id
+ 00721157ae682-71d635fe81bmr48846567b3.35.1755183986689; Thu, 14 Aug 2025
+ 08:06:26 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 1/8] usb: typec: Add default HPD device when register
- DisplayPort altmode
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Chaoyi Chen <kernel@airkyi.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Yubing Zhang <yubing.zhang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Amit Sunil Dhamne <amitsd@google.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
- Diederik de Haas <didi.debian@cknow.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-References: <20251016022741.91-1-kernel@airkyi.com>
- <20251016022741.91-2-kernel@airkyi.com> <aPYImGmesrZWwyqh@kuha.fi.intel.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <aPYImGmesrZWwyqh@kuha.fi.intel.com>
-X-HM-Tid: 0a9a014dd00203abkunm40e5dafaa0fcfb
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQxlKGVZPGB1KQx1CSU5CSUJWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
-	9VSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=dXqj5NkZfi6RdQnKgqMUg8BCh/n152sPRHim3KgJLTuoqkgUqNXBIJ1AlymydVKUpz8pF6HwyNm2AetRmBbh9s5l+IGGlsVFCOmPNAyFWUBGqpTYSkwmiZ3vxoKGCHQdHSj3aXmc2X4h5qhyffGPX+Ek0rtr7mj99qONbKoltJ8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=PW2Gb3KgS1lxfff0TLl++nMBLOL4Uug61XDZnqG+onc=;
-	h=date:mime-version:subject:message-id:from;
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com> <20250811-clk-for-stephen-round-rate-v1-92-b3bf97b038dc@redhat.com>
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-92-b3bf97b038dc@redhat.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Thu, 14 Aug 2025 17:06:14 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdUR9phiPyhi9=f3gdA_f5oRmaX=ucj8SUquXQEq7bUTkg@mail.gmail.com>
+X-Gm-Features: Ac12FXzt8_e3pGt50aBSDpwDZhCGVBhDLrUDheSmsSXHpMoy_pb5BR_R7aHtEdE
+Message-ID: <CAMuHMdUR9phiPyhi9=f3gdA_f5oRmaX=ucj8SUquXQEq7bUTkg@mail.gmail.com>
+Subject: Re: [PATCH 092/114] clk: renesas: rzg2l-cpg: convert from
+ round_rate() to determine_rate()
+To: bmasney@redhat.com
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Sudeep Holla <sudeep.holla@arm.com>, Cristian Marussi <cristian.marussi@arm.com>, 
+	Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Paul Cercueil <paul@crapouillou.net>, Keguang Zhang <keguang.zhang@gmail.com>, 
+	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
+	Paul Walmsley <paul.walmsley@sifive.com>, Samuel Holland <samuel.holland@sifive.com>, 
+	Yixun Lan <dlan@gentoo.org>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
+	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Michal Simek <michal.simek@amd.com>, 
+	Maxime Ripard <mripard@kernel.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Neal Gompa <neal@gompa.dev>, 
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Max Filippov <jcmvbkbc@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Daniel Palmer <daniel@thingy.jp>, 
+	Romain Perier <romain.perier@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Bjorn Andersson <andersson@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Andrea della Porta <andrea.porta@suse.com>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+	Chanwoo Choi <cw00.choi@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>, 
+	Ulf Hansson <ulf.hansson@linaro.org>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Alex Helms <alexander.helms.jy@renesas.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Liviu Dudau <liviu.dudau@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, linux-clk@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, arm-scmi@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, sophgo@lists.linux.dev, 
+	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
+	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
+	linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com, 
+	linux-actions@lists.infradead.org, asahi@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_040800_876229_9881EDC2 
-X-CRM114-Status: GOOD (  23.00  )
+X-CRM114-CacheID: sfid-20250814_081418_752980_89A5C118 
+X-CRM114-Status: GOOD (  19.20  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:03 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,149 +133,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heikki,
-
-On 10/20/2025 6:02 PM, Heikki Krogerus wrote:
-> On Thu, Oct 16, 2025 at 10:27:34AM +0800, Chaoyi Chen wrote:
->> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->>
->> Add default DRM AUX HPD bridge device when register DisplayPort
->> altmode. That makes it redundant for each Type-C driver to implement
->> a similar registration process in embedded scenarios.
->>
->> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->> ---
->>
->> Changes in v6:
->> - Fix depend in Kconfig.
->>
->> Changes in v5:
->> - Remove the calls related to `drm_aux_hpd_bridge_notify()`.
->> - Place the helper functions in the same compilation unit.
->> - Add more comments about parent device.
->>
->>   drivers/usb/typec/Kconfig         |  2 ++
->>   drivers/usb/typec/class.c         | 26 ++++++++++++++++++++++++++
->>   include/linux/usb/typec_altmode.h |  2 ++
->>   3 files changed, 30 insertions(+)
->>
->> diff --git a/drivers/usb/typec/Kconfig b/drivers/usb/typec/Kconfig
->> index 2f80c2792dbd..a6730fbb576b 100644
->> --- a/drivers/usb/typec/Kconfig
->> +++ b/drivers/usb/typec/Kconfig
->> @@ -2,6 +2,8 @@
->>   
->>   menuconfig TYPEC
->>   	tristate "USB Type-C Support"
->> +	depends on DRM || DRM=n
->> +	select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
-> This is wrong. DRM should not dictate how this entire subsystem core
-> is configured. The dependency needs to be on the DRM bridge side.
+On Mon, 11 Aug 2025 at 17:19, Brian Masney via B4 Relay
+<devnull+bmasney.redhat.com@kernel.org> wrote:
+> From: Brian Masney <bmasney@redhat.com>
 >
-> You can for example use the bus notification there to see when a new
-> alternate mode is being registered, or use some other notification
-> mechanism.
-
-Is it a good idea to implement notification functions like drivers/usb/core/notify.c in TCPM, and then let other subsystems (such as DRM) listen to these notifications?
-
-
+> The round_rate() clk ops is deprecated, so migrate this driver from
+> round_rate() to determine_rate() using the Coccinelle semantic patch
+> on the cover letter of this series.
 >
-> thanks,
->
->>   	help
->>   	  USB Type-C Specification defines a cable and connector for USB where
->>   	  only one type of plug is supported on both ends, i.e. there will not
->> diff --git a/drivers/usb/typec/class.c b/drivers/usb/typec/class.c
->> index 67a533e35150..e9d7772d1a8f 100644
->> --- a/drivers/usb/typec/class.c
->> +++ b/drivers/usb/typec/class.c
->> @@ -8,14 +8,18 @@
->>   
->>   #include <linux/module.h>
->>   #include <linux/mutex.h>
->> +#include <linux/of.h>
->>   #include <linux/property.h>
->>   #include <linux/slab.h>
->>   #include <linux/string_choices.h>
->>   #include <linux/usb/pd_vdo.h>
->> +#include <linux/usb/typec_dp.h>
->>   #include <linux/usb/typec_mux.h>
->>   #include <linux/usb/typec_retimer.h>
->>   #include <linux/usb.h>
->>   
->> +#include <drm/bridge/aux-bridge.h>
->> +
->>   #include "bus.h"
->>   #include "class.h"
->>   #include "pd.h"
->> @@ -538,6 +542,21 @@ const struct device_type typec_altmode_dev_type = {
->>   	.release = typec_altmode_release,
->>   };
->>   
->> +static void dp_altmode_hpd_device_register(struct typec_altmode *alt)
->> +{
->> +	if (alt->svid != USB_TYPEC_DP_SID)
->> +		return;
->> +
->> +	/*
->> +	 * alt->dev.parent->parent : USB-C controller device
->> +	 * alt->dev.parent         : USB-C connector device
->> +	 */
->> +	alt->hpd_dev = drm_dp_hpd_bridge_register(alt->dev.parent->parent,
->> +						  to_of_node(alt->dev.parent->fwnode));
->> +	if (IS_ERR(alt->hpd_dev))
->> +		alt->hpd_dev = NULL;
->> +}
->> +
->>   static struct typec_altmode *
->>   typec_register_altmode(struct device *parent,
->>   		       const struct typec_altmode_desc *desc)
->> @@ -600,6 +619,13 @@ typec_register_altmode(struct device *parent,
->>   		return ERR_PTR(ret);
->>   	}
->>   
->> +	/*
->> +	 * It is too late to register the HPD device when the DisplayPort
->> +	 * altmode device becomes ready. If the current altmode is DP,
->> +	 * register a static HPD device.
->> +	 */
->> +	dp_altmode_hpd_device_register(&alt->adev);
->> +
->>   	return &alt->adev;
->>   }
->>   
->> diff --git a/include/linux/usb/typec_altmode.h b/include/linux/usb/typec_altmode.h
->> index b3c0866ea70f..acb0af1b9d5d 100644
->> --- a/include/linux/usb/typec_altmode.h
->> +++ b/include/linux/usb/typec_altmode.h
->> @@ -21,6 +21,7 @@ struct typec_altmode_ops;
->>    * @desc: Optional human readable description of the mode
->>    * @ops: Operations vector from the driver
->>    * @cable_ops: Cable operations vector from the driver.
->> + * @hpd_dev: HPD device for DisplayPort
->>    */
->>   struct typec_altmode {
->>   	struct device			dev;
->> @@ -32,6 +33,7 @@ struct typec_altmode {
->>   	char				*desc;
->>   	const struct typec_altmode_ops	*ops;
->>   	const struct typec_cable_ops	*cable_ops;
->> +	struct device			*hpd_dev;
->>   };
->>   
->>   #define to_typec_altmode(d) container_of(d, struct typec_altmode, dev)
->> -- 
->> 2.49.0
+> Signed-off-by: Brian Masney <bmasney@redhat.com>
+
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+i.e. will queue in renesas-clk for v6.18.
+
+Gr{oetje,eeting}s,
+
+                        Geert
 
 -- 
-Best,
-Chaoyi
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
 
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 Linux-rockchip mailing list
