@@ -4,119 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5852BCA0EDC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 06:19:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7261CCA0EE3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 07:26:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6+ONDmIWtzCZHxIfyh5aBp0xIsXFUgQdSqVO9wyAy1A=; b=u5FRmQtLCCO32s
-	+A4BMdEmtbw0gmzJ2hk9jMB7AmX4C/MTd9qHr+b07e5qt/vjb6rLZTpNAAJcx5VLN5rB66RX92OIL
-	cwCvr1WWbL2G4o7Yh762FrBbq30gY/qyU2FwrNhW8ByVOwN7mauKe9h8dlFuRpjgmoU71alKtzj9X
-	YtFFUMWu9fPoQg3aQ0/66QQzNQLoWLvAHnYclomWlJ80ywEyhprEWLfoPLZoifI6GZ8/1NIbAQ9QO
-	h5sGoeOJFM+qBMBQv8LfazFbR/HQ5MJgQu9Cq9z6hbbJlpQaOpChCqau5Q21hEOhn/KMIv1K8pICn
-	wUzunkIqTc1aOXBNwzBA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=j+3ZsCdNmkmrfU/7fWmLEWAb9Fk9pueRM9viAbmo8Rc=; b=kTIqxcCzfAR11J
+	rjkR7rd+S0sGLjog1ZnQDZN2ZpBHroy56rNG3bmttCgyI1PdaCI/dwS88+oKzjUK+aZR3P6Z5FQRz
+	zh9xwz/W68oFJf17D6s4IC1QANae93Zf51zxl26JFDkl1Ixu5HhOYU7H3ZjUazf6jFac0y6UBeSml
+	PN9dfpC2F6KsP0g8/TB0W2dGgsnAEMcFQ4iwVi9fnMlKLYffFMIgwgcAkaciTUbDSe4OIMId3DAHd
+	duNEEOw1XBrslYTnxEX3P5pwJRch/vvsRtxUtNbj0hkn59KdWEWyuurn0Pt0tnhR74K6HM6nsWxcT
+	24zB71UKAyaQAE3e0uXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umRJU-0000000FvQ0-48Ck;
-	Thu, 14 Aug 2025 06:19:48 +0000
-Received: from mout.web.de ([212.227.15.4])
+	id 1umSLv-0000000G4pt-0Hvj;
+	Thu, 14 Aug 2025 07:26:23 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umRJS-0000000FvOX-01bf;
-	Thu, 14 Aug 2025 06:19:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1755152381; x=1755757181; i=markus.elfring@web.de;
-	bh=dkXFOVtKNI21Dx8zQrVRNgj44PMQKR+Ep4pir8zV+fo=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
-	 References:From:In-Reply-To:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=XFsU9rOhiwoWxv8LvgZTflJEU+fUPSyQ6NFBv97Jz3A/PmdXe2SvNpqNvHJen25n
-	 Ew9UCmZ+AS2Wb2NKAg/W3foUjqlWRlkM0x7l/pV7H2jlOeGFumu509HKX3bSLwQ8m
-	 FOUofHSecV0KqaLYFnsiZm9cYd6TJMfU2PfA+cDgkfxcviPvUYk8aKZUm+oKfR/Np
-	 IB47fyYCq3e+9kCzm9EtiJfAFzwF9NMHo/dhB9Ood2WNYhWMpXzaaA8cLx5jqy8eG
-	 tZbUDQG+PzJGBbEzOLkC9WJImt4DVFpi/14fez5dcB1fmLkDf97qFU+t7NfB8Bk/v
-	 nvbaXceQhTKwAk1I6A==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.29] ([94.31.92.224]) by smtp.web.de (mrweb005
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1MGQGH-1unCNc3Hw5-00ARR6; Thu, 14
- Aug 2025 08:19:41 +0200
-Message-ID: <1ea4b4f2-99cc-40f6-b369-c6c4746705c4@web.de>
-Date: Thu, 14 Aug 2025 08:19:26 +0200
+	id 1umS9z-0000000G3L0-1Ph1
+	for linux-rockchip@lists.infradead.org;
+	Thu, 14 Aug 2025 07:14:04 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-45a1b0cd668so2740775e9.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 14 Aug 2025 00:14:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1755155641; x=1755760441; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=t9E3NrCTEwbCDabEtVeBf62CMBWNpRfAcIAwAy7HrVc=;
+        b=wS9WnUDi9zJ8zMQUjHcZnDGGByuTBDvAbvo0n7lBgWRRWRJfrhbCZD6oTUY2z8EVjw
+         46Gp3+W0yQTwRTcYCSXnti/4bHCbxBn7hR0H1qYiMfo1gFoz/eKZRlgF6VkYVyDdVwBy
+         HP83xn4TcpGQJ1YKG67wOiMwQWt3EjNcTn3u6JNmTLifdEvw1OocdG/9q7TueHODO23I
+         CcGks02kG31qLiG21OTwzAt2H8QkvvsyEuZ62FsK2kWtiqxXuvIgjCLa5ZKKezX4Kmd6
+         /3JgtXjiYP13Juoq0JfFN/a5yVfssShByiwPOrkGb+ypfX8bi8X5me5AeNmC1isc0092
+         hxPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755155641; x=1755760441;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=t9E3NrCTEwbCDabEtVeBf62CMBWNpRfAcIAwAy7HrVc=;
+        b=nFQwX03P5BUfZPl9CPx6BNcoN9ojQuAXFNY2B7QmXZwMyUkQkJMWnrBDlYBRqMOK3s
+         Z4GX9DkemuCKRwJ9cc6tvz5E6lIrwaKigvtkAXYwIiZHA+ezeswym3DvCG+VqF0viuXM
+         8KO0tSgpO7GxFrjLOh0Llf3A+nbQp2t1G94IS/o41a+4NPSiHbMQJwmF8JcEO9lZgtDo
+         yWpY2jTOEb6Fc25CvJ7RFltUUROgxqi4H6139Vte7uiHeiIPF7dTLI0g1eMnvm3quEFO
+         5wIonUhqRirgmf0SYOpHXh9LlqjORf61T8MRJpsyB69PVuQlGUS0b7CNwSK9i5827MmN
+         bkNA==
+X-Forwarded-Encrypted: i=1; AJvYcCUxPoAPj9+1Kbf4T27AnEIGgn1j6AiCdApMWBNb9EMvbe/zlgCxB6llGrEI+PDU+5FKVQ/wrt1LybwEN3NaDg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwmZj37TIWSJm/NTWPpaU30AeL0rmN1iYZfwCOPRjaJ2vcrhhEr
+	8kx0t3G7m4IleVUWhrbNXx0Pe3JXW2Q59tCcMY/Ye3y0XFGWny8S/uhum1dxv+DxIm4=
+X-Gm-Gg: ASbGncshrW0tXZHfn8D0wwJeX1lveZEbt0Q0772FvI0jhbIAXlnAcfAQveedVl2y7Uv
+	lrfgegq1nar05apa/W607jyRgg/+wuEFSkLlRhJWerkoGJSYdeJwNuhfQRpUYT2xFwZ8PJP/sjW
+	/2MEWcQlvM61RDdS4gm4YoMH/BG9IoW2OgEXrL6cZnIyJSiUnmBjqbm1UDPi9HqfV8hODyLfsfE
+	OlykhtAVksuOV5MX6I8rJV6BeitZ0kGZWqnvS+PJARrhM9BnkhCPTRXzAPg5MsrFUP9v6WAAJVy
+	wVBfxONMc85P2qkZ+Uj+720Ha7wRPf6q8K5+QbyuI6btEYhm3xNl/aOvU9SfJVMrzow3gs8KUSW
+	6vS006e8YhSLqc8Okpvrkg9hMVTA=
+X-Google-Smtp-Source: AGHT+IFP9kiDc1q1dkQQRBUhr400gKrEB0WYTXwapO4qVV4879GgEBYYtEyy7MjPdh+h9soCzQb3KQ==
+X-Received: by 2002:a05:6000:2089:b0:3a4:eed9:755d with SMTP id ffacd0b85a97d-3b9edfd196emr1313673f8f.3.1755155641197;
+        Thu, 14 Aug 2025 00:14:01 -0700 (PDT)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-45a1c70acc7sm9647105e9.25.2025.08.14.00.14.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 14 Aug 2025 00:14:00 -0700 (PDT)
+Date: Thu, 14 Aug 2025 10:13:56 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: oe-kbuild@lists.linux.dev, Chris Morgan <macroalpha82@gmail.com>,
+	linux-rockchip@lists.infradead.org
+Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev, linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org, broonie@kernel.org, lee@kernel.org,
+	lgirdwood@gmail.com, sre@kernel.org, heiko@sntech.de,
+	conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V6 4/5] regulator: bq257xx: Add bq257xx boost regulator
+ driver
+Message-ID: <202508141051.hwl2Erq6-lkp@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: accel/rocket: Fix usages of kfree() and sizeof()
-To: Brigham Campbell <me@brighamcampbell.com>,
- dri-devel@lists.freedesktop.org, lkp@intel.com,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Cc: LKML <linux-kernel@vger.kernel.org>, Julia Lawall
- <julia.lawall@inria.fr>, Oded Gabbay <ogabbay@kernel.org>,
- Tomeu Vizoso <tomeu@tomeuvizoso.net>
-References: <20250813-rocket-free-fix-v1-1-51f00a7a1271@brighamcampbell.com>
- <65769f0a-af9f-4e96-93d4-8594e76d8e73@web.de>
- <DC1UJQKMO63Z.1ZLS5VS0OXZAE@brighamcampbell.com>
-Content-Language: en-GB, de-DE
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <DC1UJQKMO63Z.1ZLS5VS0OXZAE@brighamcampbell.com>
-X-Provags-ID: V03:K1:m0N0IqqCvQQawbnD06H7Su0xoGeTSpf3E2qGklQwk/khHIK4urE
- As89PjxImSl8+Mjv07W1ZZWhT89DwTBrp6TSzYaqYaoS0uhOj5ciE8LvDQvboHP03UZZMO5
- xRLMBq8zSrZGRlORBou1Y0MNsuKE6Kva+nmd4Qg6rmbDQ8NH0PXGqkWTuuKrixgjWXUTCr6
- u0z17o/i63BRjvbWcxh4g==
-UI-OutboundReport: notjunk:1;M01:P0:q396eo0uxWA=;1vpGYYYWKeX/X4JQfuPOfzdkkdI
- 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
+Content-Disposition: inline
+In-Reply-To: <20250812214300.123129-5-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250813_231946_416039_D979AE87 
-X-CRM114-Status: UNSURE (   4.72  )
+X-CRM114-CacheID: sfid-20250814_001403_378986_AE72FF2E 
+X-CRM114-Status: UNSURE (   7.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -134,15 +103,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> I had considered splitting it into two patches, but the changes were so
-> minor that I figured it wasn't worth it. Please let me know if you
-> prefer separate patches and I'll gladly prep another revision.
+Hi Chris,
 
-You can distinguish mentioned change possibilities better also according to
-their severity, can't you?
+kernel test robot noticed the following build warnings:
 
-Regards,
-Markus
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Chris-Morgan/dt-bindings-mfd-ti-bq25703a-Add-TI-BQ25703A-Charger/20250813-054704
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+patch link:    https://lore.kernel.org/r/20250812214300.123129-5-macroalpha82%40gmail.com
+patch subject: [PATCH V6 4/5] regulator: bq257xx: Add bq257xx boost regulator driver
+config: m68k-randconfig-r073-20250814 (https://download.01.org/0day-ci/archive/20250814/202508141051.hwl2Erq6-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 15.1.0
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+| Closes: https://lore.kernel.org/r/202508141051.hwl2Erq6-lkp@intel.com/
+
+smatch warnings:
+drivers/regulator/bq257xx-regulator.c:161 bq257xx_regulator_probe() error: uninitialized symbol 'init_data'.
+
+vim +/init_data +161 drivers/regulator/bq257xx-regulator.c
+
+d6db7dce7cd965 Chris Morgan 2025-08-12  138  static int bq257xx_regulator_probe(struct platform_device *pdev)
+d6db7dce7cd965 Chris Morgan 2025-08-12  139  {
+d6db7dce7cd965 Chris Morgan 2025-08-12  140  	struct device *dev = &pdev->dev;
+d6db7dce7cd965 Chris Morgan 2025-08-12  141  	struct bq257xx_device *bq = dev_get_drvdata(pdev->dev.parent);
+d6db7dce7cd965 Chris Morgan 2025-08-12  142  	struct bq257xx_reg_data *pdata;
+d6db7dce7cd965 Chris Morgan 2025-08-12  143  	struct device_node *np = dev->of_node;
+d6db7dce7cd965 Chris Morgan 2025-08-12  144  	struct regulator_init_data *init_data;
+d6db7dce7cd965 Chris Morgan 2025-08-12  145  	struct regulator_config cfg = {};
+d6db7dce7cd965 Chris Morgan 2025-08-12  146  
+d6db7dce7cd965 Chris Morgan 2025-08-12  147  	pdev->dev.of_node = pdev->dev.parent->of_node;
+d6db7dce7cd965 Chris Morgan 2025-08-12  148  	pdev->dev.of_node_reused = true;
+d6db7dce7cd965 Chris Morgan 2025-08-12  149  
+d6db7dce7cd965 Chris Morgan 2025-08-12  150  	pdata = devm_kzalloc(&pdev->dev, sizeof(struct bq257xx_reg_data), GFP_KERNEL);
+d6db7dce7cd965 Chris Morgan 2025-08-12  151  	if (!pdata)
+d6db7dce7cd965 Chris Morgan 2025-08-12  152  		return -ENOMEM;
+d6db7dce7cd965 Chris Morgan 2025-08-12  153  
+d6db7dce7cd965 Chris Morgan 2025-08-12  154  	pdata->bq = bq;
+d6db7dce7cd965 Chris Morgan 2025-08-12  155  	pdata->desc = bq25703_vbus_desc;
+d6db7dce7cd965 Chris Morgan 2025-08-12  156  
+d6db7dce7cd965 Chris Morgan 2025-08-12  157  	platform_set_drvdata(pdev, pdata);
+d6db7dce7cd965 Chris Morgan 2025-08-12  158  	bq257xx_reg_dt_parse_gpio(pdev);
+d6db7dce7cd965 Chris Morgan 2025-08-12  159  
+d6db7dce7cd965 Chris Morgan 2025-08-12  160  	cfg.dev = &pdev->dev;
+d6db7dce7cd965 Chris Morgan 2025-08-12 @161  	cfg.init_data = init_data;
+                                                                ^^^^^^^^^
+Uninitialized.
+
+d6db7dce7cd965 Chris Morgan 2025-08-12  162  	cfg.driver_data = pdata;
+d6db7dce7cd965 Chris Morgan 2025-08-12  163  	cfg.of_node = np;
+d6db7dce7cd965 Chris Morgan 2025-08-12  164  	cfg.regmap = dev_get_regmap(pdev->dev.parent, NULL);
+d6db7dce7cd965 Chris Morgan 2025-08-12  165  	if (!cfg.regmap)
+d6db7dce7cd965 Chris Morgan 2025-08-12  166  		return -ENODEV;
+d6db7dce7cd965 Chris Morgan 2025-08-12  167  
+d6db7dce7cd965 Chris Morgan 2025-08-12  168  	pdata->bq257xx_reg = devm_regulator_register(dev, &pdata->desc, &cfg);
+d6db7dce7cd965 Chris Morgan 2025-08-12  169  	if (IS_ERR(pdata->bq257xx_reg)) {
+d6db7dce7cd965 Chris Morgan 2025-08-12  170  		return dev_err_probe(&pdev->dev, PTR_ERR(pdata->bq257xx_reg),
+d6db7dce7cd965 Chris Morgan 2025-08-12  171  				     "error registering bq257xx regulator");
+d6db7dce7cd965 Chris Morgan 2025-08-12  172  	}
+d6db7dce7cd965 Chris Morgan 2025-08-12  173  
+d6db7dce7cd965 Chris Morgan 2025-08-12  174  	return 0;
+d6db7dce7cd965 Chris Morgan 2025-08-12  175  }
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
 
 _______________________________________________
 Linux-rockchip mailing list
