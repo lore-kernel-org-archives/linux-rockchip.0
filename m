@@ -4,67 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF7B9C87FCF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 01:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5127CA0ED1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 04:37:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JGeCiMRSUsbOQ8r2/vxP0ugK+I1w3+Iudq1NCBdvi9M=; b=z3uQkq8b8vUtUh
-	wMFc9mALNU9dEw/wXfeAa+Rze3YMiHsfPFE1L17ewEQG77brFKoOCMnBCl3tyPrrDyEqN6qJP8S8E
-	+wih53WMWcPK/Y0aeLtM+X0bc5BL3MPtDbSmHRRMZmTt7lRBVSfvTDL1vlVCBACVy4Vu893oC5Y1M
-	5sOOMCC68pnyag2fnmdHkgN/XmnI9Kufqu3Qh2Oc37XHdhsJSWWAV2U0w0YSkLpslXFAYVTAVM95z
-	p0LdYMPi9KVszlsonk4YG+kc8qdpd3owq9UaQyIPEG8QDXGZY5nzV9WoMUEj1l3WC28cSUi8l3o18
-	4L3JjEgSBG7rz+wELN7Q==;
+	List-Owner; bh=CabDz7SqdpaHVcshw5E3Qr5XRDe6JzfjunNtPfmYtxg=; b=Nejh8WtJb8lSy2
+	OpdMKytBgOV5DZ1ULak81mPCxPgIxJsEq3na1DkDbKzojvAAdhHi7fb1hy/qWGyK7W3A1qCDd72Nw
+	9CczKjfDnM0K6GhtA6OcEiloXoHGTXLMpuouslUdxoncrxtogyBjXpTFiLr/ZRuplgvfN9nZvEDBc
+	Ru7bMCx2w4AQCyIVUzpjT2E1DybiZS0f3Bpzpif5MZNnn1a9jKS6C9K0ZYqczqMXOHGE4xC0xFFyL
+	N6jR+93nr5p1eWfful+zHNj2v4duy6ya/pTFkJKCedF7DNnIpBeo16hGdYJ+Df1LXwhiEEyXnq26s
+	4zz3s2Hej8EVEIx5H+2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umNEI-0000000FXto-418Y;
-	Thu, 14 Aug 2025 01:58:10 +0000
-Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
+	id 1umPiT-0000000FlKd-2fSN;
+	Thu, 14 Aug 2025 04:37:29 +0000
+Received: from smtpbgbr2.qq.com ([54.207.22.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umN1i-0000000FWq0-2nt1;
-	Thu, 14 Aug 2025 01:45:12 +0000
-Received: from localhost (unknown [124.16.138.129])
-	by APP-03 (Coremail) with SMTP id rQCowAAngIGhP51oZJGTCw--.10867S2;
-	Thu, 14 Aug 2025 09:45:05 +0800 (CST)
-From: Chen Ni <nichen@iscas.ac.cn>
-To: vkoul@kernel.org,
-	kishon@kernel.org,
+	id 1umPfr-0000000Fl71-2IxI;
+	Thu, 14 Aug 2025 04:34:49 +0000
+X-QQ-mid: esmtpsz20t1755146002teef8830e
+X-QQ-Originating-IP: Peg8pNWex+cqhVtTMZ0ezMqa3HAUy9biynpsprY/6KQ=
+Received: from localhost.localdomain ( [183.51.121.135])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Thu, 14 Aug 2025 12:33:20 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 6940595432327476163
+EX-QQ-RecipientCnt: 15
+From: Kaison Deng <dkx@t-chip.com.cn>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
 	heiko@sntech.de
-Cc: linux-phy@lists.infradead.org,
+Cc: honyuenkwun@gmail.com,
+	cenk.uluisik@googlemail.com,
+	i@chainsx.cn,
+	damon.ding@rock-chips.com,
+	jbx6244@gmail.com,
+	sebastian.reichel@collabora.com,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Chen Ni <nichen@iscas.ac.cn>
-Subject: [PATCH] phy: rockchip: naneng-combphy: Convert comma to semicolon
-Date: Thu, 14 Aug 2025 09:39:43 +0800
-Message-Id: <20250814013943.2905307-1-nichen@iscas.ac.cn>
+	Kaison Deng <dkx@t-chip.com.cn>
+Subject: [PATCH] arm64: dts: rockchip: fix es8388 address on rk3588s-roc-pc
+Date: Thu, 14 Aug 2025 12:32:30 +0800
+Message-Id: <20250814043230.2774813-1-dkx@t-chip.com.cn>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-CM-TRANSID: rQCowAAngIGhP51oZJGTCw--.10867S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7Gr4rCw4kuw4kuw1xGrW3ZFb_yoW8JrW7pw
-	s2yayqvr97G398uws3tFs8CF1Fkan8Kw47CFnrA343XasFvF1DG3s29FyDJr47Jr17Za15
-	Wa9xta43Gr43ZrJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUvq14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
-	6F4UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVWxJr
-	0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
-	2Ix0cI8IcVAFwI0_JrI_JrylYx0Ex4A2jsIE14v26r4j6F4UMcvjeVCFs4IE7xkEbVWUJV
-	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lc7CjxVAaw2AFwI0_
-	Jw0_GFylc2xSY4AK67AK6w4l42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr
-	1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE
-	14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7
-	IYx2IY6xkF7I0E14v26r1j6r4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E
-	87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r1j6r4UYxBIdaVFxhVjvjDU0x
-	ZFpf9x0JUmNtsUUUUU=
-X-Originating-IP: [124.16.138.129]
-X-CM-SenderInfo: xqlfxv3q6l2u1dvotugofq/
+X-QQ-SENDSIZE: 520
+Feedback-ID: esmtpsz:t-chip.com.cn:qybglogicsvrsz:qybglogicsvrsz4a-0
+X-QQ-XMAILINFO: OcFnI1CoIwQYoSw/arj5+ha4qGFv7aIhaNFHPWWztBoa6o8lJmp6Czjr
+	ONbRUAgWKFMPVTNDVxFw0khZZ7zmTRyTBCNv0HII4mRQlPt24Po60hhbS5t5LTJAbEXSXQy
+	rcyW/CWrGgBSwc3ajymZgkrRt8RbwrdJM4lJqYMA1Yx/PrvI8weuhnSvZrPDBGC0O4skzZK
+	jjKY1r9t7YlxsR6/3NTpoJrUBz+LJFD+LpOBO/Iy2lZt3zr67C39s3/afftfDfQni4YvNbD
+	1+VU7U3woXsjYTuCUoN4P7glNsrLrOumkLqMDk9hl6nXPzqUOFv3qSTQ8NxjiedEj3o/rrj
+	RulqJucQIf1ahJTwMe+s2ZwAW/xi/pVQJ/yQ4qANHjOt5rA9w4hfoKl9vuLKwzBmSPer2Sj
+	9EKbs+8vrJJDid6XvwRJXzcYY/KOSKLqskfUfuthLsXcGGFOKJVJ64Tgo5kygfA1MGFaCWc
+	Llrio3Dkaxit10QSQb+LjdM2a67pBoiE2AaNTYCHOWjl8Ii6iCtM+mpRuPl8/0Gp4dgrNkg
+	CUWw0H4U5xKkXthyhBouzvFemaBIzrdg+aAJwV6JnAXDQpLzdq+JQ9du5i3fzrLw5XfGcsw
+	n45wEWai0g87XUwQSFhJulRoEjHlK/Zdp3n/am1GWgOWDBhItdWAb6XFYUhsqTmgeK6nZKG
+	Z4u83zsZi6H0MuW8+B6kEvkm+YUlTkUJ4wwWSZHzE5nvDrrlzzhaCinc/0EXkLth9nKTTwv
+	xup2uSNjCvRFso7BumNHK6Ywyywh4xqrhGdBnhIQb07IEQTILKvYjPo/hC3PKbHoitr6tuV
+	xRikKu8HlYhE4ZxMjGiMZYCKoNQjub0ISpSOY/p5AqbPpc3gA5WtQpmHBsGUNd4W4Qtp/9e
+	XJTW5j6RyneLfVvfHTlepGd7MuvDW7L8b6LZZEWmxLHZB4ZwWFLd90rUGOp/1y9FAmzxu6h
+	pvivAPN/s3VKyTJ2dy8cwG7mq6yWAtzjtS3TnoerSysRgRVDbhH26b2MVMNnNU1jJgDZhxV
+	zPwna3uRl+PpZW2GzC3yKoZsdg73Kmt5FBkwySOP1CKN560RpAGrongY8DB//6h3wHHfa5u
+	g==
+X-QQ-XMRINFO: OD9hHCdaPRBwq3WW+NvGbIU=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250813_184511_073552_F8F3EB68 
-X-CRM114-Status: UNSURE (   8.37  )
+X-CRM114-CacheID: sfid-20250813_213448_434863_500152E1 
+X-CRM114-Status: UNSURE (   9.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,34 +97,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace comma between expressions with semicolons.
+Use the correct es8388 address for rk3588s-roc-ps
 
-Using a ',' in place of a ';' can have unintended side effects.
-Although that is not the case here, it is seems best to use ';'
-unless ',' is intended.
-
-Found by inspection.
-No functional change intended.
-Compile tested only.
-
-Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
+Signed-off-by: Kaison Deng <dkx@t-chip.com.cn>
 ---
- drivers/phy/rockchip/phy-rockchip-naneng-combphy.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-index 0d25872e6712..a3ef19807b9e 100644
---- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-+++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-@@ -1252,7 +1252,7 @@ static int rk3588_combphy_cfg(struct rockchip_combphy_priv *priv)
- 		writel(val, priv->mmio + RK3568_PHYREG15);
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
+index 7434ac39246f..7e179862da6e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
+@@ -320,9 +320,9 @@ hym8563: rtc@51 {
+ &i2c3 {
+ 	status = "okay";
  
- 		/* Set PLL KVCO fine tuning signals. */
--		val = RK3568_PHYREG33_PLL_KVCO_VALUE << RK3568_PHYREG33_PLL_KVCO_SHIFT,
-+		val = RK3568_PHYREG33_PLL_KVCO_VALUE << RK3568_PHYREG33_PLL_KVCO_SHIFT;
- 		rockchip_combphy_updatel(priv, RK3568_PHYREG33_PLL_KVCO_MASK, val, RK3568_PHYREG33);
- 
- 		/* Enable controlling random jitter. */
+-	es8388: audio-codec@10 {
++	es8388: audio-codec@11 {
+ 		compatible = "everest,es8388", "everest,es8328";
+-		reg = <0x10>;
++		reg = <0x11>;
+ 		clocks = <&cru I2S1_8CH_MCLKOUT>;
+ 		AVDD-supply = <&vcc_3v3_s0>;
+ 		DVDD-supply = <&vcc_1v8_s0>;
+
+base-commit: 7f0817eee7ba40b48e956955d6fd8ba14750168c
 -- 
 2.25.1
 
