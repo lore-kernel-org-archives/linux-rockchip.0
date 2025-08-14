@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE3D1CA0EDC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 15:36:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D3CCA0EE8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 15:36:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ENMJqAkW2MMOAKLnsJU8AX2jJ0ixNHI7za2W3fPsBFQ=; b=MvpPTg3SuHs/1/
-	weyoCHmGMjiMMXCOhN3y3+vX5qTvaEFr9rlGKKcavzoI4YT9IciZpO19hwVvYcLox6v4rCKwnrrlS
-	8OXCTqnRFd2VbGnlBTImtc7yF1YYbWlAQpmFcoLtp0bQAqScL9ZnBXiJWzVXkmz4247vRjZKFZK93
-	DTKuDnJqHW4ecxKL7psGbFqIIL/06yq4HtoAb+hI4o4QKP9kFGEKRR38OybAHdDIanMW73mxGN2Eh
-	rapvbicGdkGVWBv7pPfIouQijttS6zLY7WL5s8pT6hR8/e50emKDXj6zxLVa6ASKlhn/lvdKTuNPl
-	P8YebicKPVgVRzCMblhA==;
+	List-Owner; bh=jvoo7embcqVgfF0XD3kFE/bGuGg6Y348VIPoQhbh2kQ=; b=nrc8RI2FwksE8k
+	VbG2tl0bBiRgfcxbm062Fkg367YbjRwy30Mocej6sZlZyXJZx8vJBW2AKEpNzpdGh6wbjh+EX3qil
+	DXvQIeHuZItjpDvbw2C7QN3kDZ0CBecdPBUlo6UUllKxZPyXrnCEYxGIWPfAI5sCCBs+cY8FY/5AM
+	a3Hw8EaCYSpnxBMzfn5mJxfUf9Bckcc8sUXvrNmdzj1/DB04/mf+WM7T24tZgA7/xKZROYqyDRElV
+	B77sY3lBit3ZuE4cDUi7hQbCV5uFuLnJSwMqTMaNX3VZlD4oS0gzxLGPzSzZs4U1BTQ1/iwVqpvMd
+	X7kafXbQBOpg+wBhKU5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uma0S-0000000HSs2-2YW7;
-	Thu, 14 Aug 2025 15:36:44 +0000
-Received: from mail-m155100.qiye.163.com ([101.71.155.100])
+	id 1uma0U-0000000HSvg-3KR3;
+	Thu, 14 Aug 2025 15:36:46 +0000
+Received: from mail-m49194.qiye.163.com ([45.254.49.194])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umVVG-0000000GeMb-0Y4p;
-	Thu, 14 Aug 2025 10:48:15 +0000
+	id 1umVVR-0000000GeTs-2Eb2;
+	Thu, 14 Aug 2025 10:48:27 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1f63742a9;
-	Thu, 14 Aug 2025 18:48:09 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1f63a9a3e;
+	Thu, 14 Aug 2025 18:48:21 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: andrzej.hajda@intel.com,
 	neil.armstrong@linaro.org,
@@ -59,26 +59,26 @@ Cc: Laurent.pinchart@ideasonboard.com,
 	linux-samsung-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v4 06/13] drm/bridge: analogix_dp: Remove redundant &analogix_dp_plat_data.skip_connector
-Date: Thu, 14 Aug 2025 18:47:46 +0800
-Message-Id: <20250814104753.195255-7-damon.ding@rock-chips.com>
+Subject: [PATCH v4 11/13] drm/bridge: analogix_dp: Remove panel disabling and enabling in analogix_dp_set_bridge()
+Date: Thu, 14 Aug 2025 18:47:51 +0800
+Message-Id: <20250814104753.195255-12-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250814104753.195255-1-damon.ding@rock-chips.com>
 References: <20250814104753.195255-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a98a831c1c803a3kunm254826283f2261
+X-HM-Tid: 0a98a831ee1603a3kunm254826283f231c
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGktMSFYZH0pPGUkdQhoeSE1WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkhJTFZNGkkeTE4aQk5NHkNWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=DU6Fic49RX2rHxU/RExxowDAWmGraHEp5sv/EtphjdSNKa3fMzkRm/gT69n9t+CXuPslQVKENeJOb7nr0Yqxk9W51a/0F6N7aHECBRbfHNW/fJDKSVGnbwP24J0ydu6AWN7kp/BlhMB8lZXH3wRq4nV4P+cmnGZvY92bmcGjN3k=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=0Sz719zWUmDOvnpzpXvej+PohzYcEMoPtBCAptCoxeA=;
+	b=A8PJRmizdGZSNeaM+eeA/IVHBRk6YpZ9DGXrJXfPDL8/2fKJxC+68H7df/id++2R/FI3d3RuPsd7UKlF3+dhNhEdK5scLUhltjMgXVnMHSuG492Ul+Cp5CwRIGFTB1PnbAvASh+kzGdMtA04pgQp3EYLXHUTPN+0eLCbvybKe2o=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=Huwtfl/4DY7+Ye0RBesZOhBs/hvliM0EJhdOv++XHys=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_034814_329207_FD06A472 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20250814_034825_737730_3A4D92CA 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,63 +95,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The &analogix_dp_plat_data.skip_connector related check can be replaced
-by &analogix_dp_plat_data.bridge.
+The &drm_panel_funcs.enable() and &drm_panel_funcs.disable() mainly
+help turn on/off the backlight to make the image visible, and the
+backlight operations are even needless if drm_panel_of_backlight() or
+drm_panel_dp_aux_backlight() is applied, in which case the enabling
+and disabling process just add necessary delays.
+
+Therefore, it should make sense to remove panel disabling and move
+panel enabling after analogix_dp_set_bridge() finished.
 
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-
-------
-
-Changes in v3:
-- Squash the Exynos side commit and the Analogix side commit together.
-
-Changes in v4:
-- Rename the &analogix_dp_plat_data.bridge to
-  &analogix_dp_plat_data.next_bridge.
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 2 +-
- drivers/gpu/drm/exynos/exynos_dp.c                 | 1 -
- include/drm/bridge/analogix_dp.h                   | 1 -
- 3 files changed, 1 insertion(+), 3 deletions(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 0106e7e0f093..7876b310aaed 100644
+index 3e76a7b7d227..3c518106b896 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1050,7 +1050,7 @@ static int analogix_dp_bridge_attach(struct drm_bridge *bridge,
- 		return -EINVAL;
+@@ -840,9 +840,6 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
+ {
+ 	int ret;
+ 
+-	/* Keep the panel disabled while we configure video */
+-	drm_panel_disable(dp->plat_data->panel);
+-
+ 	ret = analogix_dp_train_link(dp);
+ 	if (ret) {
+ 		dev_err(dp->dev, "unable to do link train, ret=%d\n", ret);
+@@ -862,9 +859,6 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
+ 		return ret;
  	}
  
--	if (!dp->plat_data->skip_connector) {
-+	if (!dp->plat_data->next_bridge) {
- 		connector = &dp->connector;
- 		connector->polled = DRM_CONNECTOR_POLL_HPD;
- 
-diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index e20513164032..702128d76ae3 100644
---- a/drivers/gpu/drm/exynos/exynos_dp.c
-+++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -234,7 +234,6 @@ static int exynos_dp_probe(struct platform_device *pdev)
- 	dp->plat_data.power_off = exynos_dp_poweroff;
- 	dp->plat_data.attach = exynos_dp_bridge_attach;
- 	dp->plat_data.get_modes = exynos_dp_get_modes;
--	dp->plat_data.skip_connector = !!bridge;
- 
- out:
- 	dp->adp = analogix_dp_probe(dev, &dp->plat_data);
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index 582357c20640..f06da105d8f2 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -30,7 +30,6 @@ struct analogix_dp_plat_data {
- 	struct drm_bridge *next_bridge;
- 	struct drm_encoder *encoder;
- 	struct drm_connector *connector;
--	bool skip_connector;
- 
- 	int (*power_on)(struct analogix_dp_plat_data *);
- 	int (*power_off)(struct analogix_dp_plat_data *);
+-	/* Safe to enable the panel now */
+-	drm_panel_enable(dp->plat_data->panel);
+-
+ 	/* Check whether panel supports fast training */
+ 	ret = analogix_dp_fast_link_train_detection(dp);
+ 	if (ret)
+@@ -1242,6 +1236,7 @@ static void analogix_dp_bridge_atomic_enable(struct drm_bridge *bridge,
+ 	while (timeout_loop < MAX_PLL_LOCK_LOOP) {
+ 		if (analogix_dp_set_bridge(dp) == 0) {
+ 			dp->dpms_mode = DRM_MODE_DPMS_ON;
++			drm_panel_enable(dp->plat_data->panel);
+ 			return;
+ 		}
+ 		dev_err(dp->dev, "failed to set bridge, retry: %d\n",
 -- 
 2.34.1
 
