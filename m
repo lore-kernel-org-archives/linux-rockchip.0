@@ -4,46 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE2F1CA0EE4
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 15:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA74BCA0EE8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Aug 2025 16:16:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DXCZIhqFTiQvOhXtap9pI/61+1T1TBpFaYrLdVhMOlk=; b=bGjgsLWp2DXcH1
-	CrwDJpGe/NIXfzkg5I06jYibnRa+e6yNsVcoUtNytc1quhFQbtJhkj5FYN/Xgkmfl40j7v7i3hgJy
-	xaoS8uZQrc5tmvDd8Vog9VcWdsjSCCFjBfUQqnn8X1y9iocqcHE3ihmt31k3cuGPGob4ukBPw92x9
-	lWv/gqnEwU8UinYP5wtFmdaJ9DvGzY7Jz5LHPERxvy/0AZopUUIgVx0g1SMNWhSjNF+o81bhzjRtc
-	ppypM9cqbNCV+D6hxG3qLVaMaonf/duYhtPsEhmS1OTtd5E5qR9GvQQ07kTSx3rBVrN+sTpXjO9Nf
-	wDQMFAvmmGDZTbxqOWmg==;
+	List-Owner; bh=PDR8qPyCjMYbbyf4YXA4XwoBMIXZTrSFqgNkrRwhc94=; b=BfbGGSZqAcWelr
+	5U3UUm9iLayIO4hQ0ju5jQfjWhGxoP0V63MXOx1PwmDmt8zR3KJo/sCAR69zMPMNsLq9H8d03HnNH
+	2KFvrQ1VdxHLsNq8kIfcB1TxBJngpO/AKgTsQ0OgTCKnhss8res1xfpRv5tbHvo8FT+wEBhMufK2e
+	2iIvSnwaDFiTC6AilpTov1uONSZ0AR/nbAl7/VgUdMtssERWqM85gyhqiIqoIB4Wq+n1zZPi21d/y
+	nmI4BeIkFWiX+8QNNgRZw4uu77DgAVHTXDmOaKBu+ZUUwvf8dXPdUua80wtgcHpednJaqcjy5kdos
+	PWTlvrZ37pf8awf5kDFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uma8E-0000000HWND-4BYm;
-	Thu, 14 Aug 2025 15:44:46 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1umaca-000000000Y6-25Da;
+	Thu, 14 Aug 2025 16:16:08 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umZmB-0000000HQ4P-2vNA;
-	Thu, 14 Aug 2025 15:21:59 +0000
+	id 1umZmR-0000000HQ6y-0pHf;
+	Thu, 14 Aug 2025 15:22:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 04469601E0;
-	Thu, 14 Aug 2025 15:21:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C7BCC4CEED;
-	Thu, 14 Aug 2025 15:21:54 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 86E765C6FE0;
+	Thu, 14 Aug 2025 15:22:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0289EC4CEF6;
+	Thu, 14 Aug 2025 15:22:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755184916;
-	bh=bnwImDFP8yprdZXpvaKvJiFlBgbcOtPQck+heCkeftQ=;
+	s=k20201202; t=1755184934;
+	bh=74Vt3a6n4teThZfYp3RaKUgXovIDf9PomEewqYdyFlM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PhTbI8+NO0IIFwKPy7fVDrmaYPg/p5Xad/MBUrPF556R+eUA/2I9z1+uyKCjFcckg
-	 y8E+W5FnEtfQZpS+nYRnaAqWCHsrPsEmb2mqykDGimVeWj/5uc4rnQPH50+ohNhcUg
-	 XtE4LZG9Ts6xZXyUk2Aw1DZLYZ6Qk2CCasFvbVRpuR3dqslLFQZjND2Cz19vLc+EVr
-	 n7pxQeno98873Hn6H5OPtPqmFFDuM2Uhk5BNK1Y4nbX+/2dj3EB3UN46dPRGvysthW
-	 dq3zG3e1pq0/cWwoCFIm4a3iCUjKrUQi6XqkKZD5mqI9ZC+YrXuiZFqN9Z0k7hxy/f
-	 ZGPFTeA4Urcgg==
+	b=B8G/nwgTbuZmIIfx/MYu0RtWPSsH57qPusFyf5ZmNv7b+96E/7doIjPukmMRRsqFB
+	 pxVUgittAXpitSSA0/z+oGVVBR8yeKqRLeQcogrNrslyxnAInrc+coC0lscy7uOxk8
+	 Y7zPK2aWd07X6vKhr8PHW1xVgye1pqaGgtQpdG6WrPOjmUbWXup8K/R1C2OGZ9Pvu0
+	 lVOXBYVzg+Z8Ok3tZ77VBMOz4vqy/foFIUlz10SRQp9unRJkFJI89DeOzTppdrbdmZ
+	 geqAva12zeV9GbVShDLdSZXQivQnDR1JPmn8QS90BOQvHlfBA6AUxN65Ei1H29fjrq
+	 btV2jPKWYHHJA==
 From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -51,17 +50,21 @@ To: Shawn Lin <shawn.lin@rock-chips.com>,
 	Heiko Stuebner <heiko@sntech.de>
 Cc: Niklas Cassel <cassel@kernel.org>,
 	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 03/13] PCI: rockchip-ep: Drop superfluous pci_epc_features initialization
-Date: Thu, 14 Aug 2025 17:21:22 +0200
-Message-ID: <20250814152119.1562063-18-cassel@kernel.org>
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH 09/13] PCI: dw-rockchip: Drop superfluous pci_epc_features initialization
+Date: Thu, 14 Aug 2025 17:21:28 +0200
+Message-ID: <20250814152119.1562063-24-cassel@kernel.org>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250814152119.1562063-15-cassel@kernel.org>
 References: <20250814152119.1562063-15-cassel@kernel.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=864; i=cassel@kernel.org; h=from:subject; bh=bnwImDFP8yprdZXpvaKvJiFlBgbcOtPQck+heCkeftQ=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDLm/vsW1JF8eq6k5e/8m3mzeWexPv6SkKLdXvEq5d/ax slTFqS/7ihlYRDjYpAVU2Tx/eGyv7jbfcpxxTs2MHNYmUCGMHBxCsBEngszMnybnpNoXtm3rvNM byDX69dKXd3mYSrm+/Mbr8YsTvdRvMLI8Dhte0rJ5f9nTpx4XR50MPTdzKD5nyIuOIurL6nbryk WyAkA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1205; i=cassel@kernel.org; h=from:subject; bh=74Vt3a6n4teThZfYp3RaKUgXovIDf9PomEewqYdyFlM=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDLm/vvx5hjvPTPNraVXuW0sWZZZJd53YGf3thbwMZnT5 iNvceplRykLgxgXg6yYIovvD5f9xd3uU44r3rGBmcPKBDKEgYtTACZS+oXhn42x7c2bm+ZkMnyZ HDC/unNqVnOnX8YZoxBL3jzL0ze4lRj++xeuXfpx4a4fbledVpxQeGujk/hwQheD2F1fV9a7gpq /WQE=
 X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250814_082215_274261_E31F04CE 
+X-CRM114-Status: UNSURE (   8.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,21 +87,29 @@ of struct members.
 
 Signed-off-by: Niklas Cassel <cassel@kernel.org>
 ---
- drivers/pci/controller/pcie-rockchip-ep.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index 300cd85fa035..799461335762 100644
---- a/drivers/pci/controller/pcie-rockchip-ep.c
-+++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -694,7 +694,6 @@ static int rockchip_pcie_ep_setup_irq(struct pci_epc *epc)
- static const struct pci_epc_features rockchip_pcie_epc_features = {
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index b5f5eee5a50e..c045353fa493 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -325,7 +325,6 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3568 = {
  	.linkup_notifier = true,
  	.msi_capable = true,
--	.msix_capable = false,
- 	.intx_capable = true,
- 	.align = ROCKCHIP_PCIE_AT_SIZE_ALIGN,
- };
+ 	.msix_capable = true,
+-	.intx_capable = false,
+ 	.align = SZ_64K,
+ 	.bar[BAR_0] = { .type = BAR_RESIZABLE, },
+ 	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
+@@ -346,7 +345,6 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3588 = {
+ 	.linkup_notifier = true,
+ 	.msi_capable = true,
+ 	.msix_capable = true,
+-	.intx_capable = false,
+ 	.align = SZ_64K,
+ 	.bar[BAR_0] = { .type = BAR_RESIZABLE, },
+ 	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
 -- 
 2.50.1
 
