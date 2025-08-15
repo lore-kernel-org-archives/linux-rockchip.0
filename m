@@ -4,68 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E42EFCA0EDC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Aug 2025 02:04:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3BF9CA0ED1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Aug 2025 02:42:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eC3PngdcwcwuczrYjKV0B6Xxn7aKU1femRxScZzv8IQ=; b=VqKVa0jjJ067FX
-	HviHpipURB5JeAyiNoHMI49gJbD6YuXxijPgZZT5QcU35OdZaqtCKcKDENDbPZ0NaJUOyprLroSiW
-	kF0BnDFtQNjHwE74Vfm538znRp+KWzRhABrJcveHiP4MP1l+mIIx23eLIS1SHLPXY7/VI/GjFKtVz
-	qpPiXkt5ScIWekomDNbxnbe0pyH5VW70xEsEiiODZCfeLZnGjA1HgVAJL9p4H0+wfReHVu73ihRsy
-	3n+SDQOcvDCrVN+7Kb1rqvd9TjufKUVdb44+OV5RQeIJSdpBFZXDjzhk+8ecakYv5WBEGHt9SfLZV
-	puTGfCBTGq38EPAms2CQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LmfBweCrrKR4N/TV2WCmkz9qCH/Hftq/IGcprF0FwVs=; b=WR0bQb1qwOMJfm
+	H8Y3H2zDxHGjm/l4iGv08SXjXh96w1KY6d5kW/jkrtvwSekH85CwHUwAcWL9uKod/NE9YYqTmuWj/
+	DVY9vfBBa5a2ZRMuxLN1VXP+B6OMdn5l9cIpQowt9Q3TDKBBOJ/LBomxSr4WRdtw2jnXGl/4JUwH8
+	LDX4OqPEyySzISZ/Tcq/5/mP7NGzEGwrmsukq6OacYV1a3EtmIrC8ReTpy19bcao144ETBSCvyXmY
+	UsWeEAlodpBG90TaQRE5vZSP8kaaGM8BCz6hAlS7/d8SLBuPLqljjTS8UqaZM7jb5UOXra6et9Cp3
+	G3LqvZP7+QiWGp0ad/MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umjnm-000000016yW-3m1B;
-	Fri, 15 Aug 2025 02:04:18 +0000
-Received: from mail-m1973197.qiye.163.com ([220.197.31.97])
+	id 1umkOX-00000001Cs6-45gj;
+	Fri, 15 Aug 2025 02:42:17 +0000
+Received: from smtpbg154.qq.com ([15.184.224.54])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umjnj-000000016wk-1acx;
-	Fri, 15 Aug 2025 02:04:16 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1f727517b;
-	Fri, 15 Aug 2025 10:04:05 +0800 (GMT+08:00)
-Message-ID: <6ec86839-2d81-491b-a9fa-b44bb6db8fbf@rock-chips.com>
-Date: Fri, 15 Aug 2025 10:04:05 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 00/13] Apply drm_bridge_connector and panel_bridge
- helper for the Analogix DP driver
-To: Marek Szyprowski <m.szyprowski@samsung.com>, andrzej.hajda@intel.com,
- neil.armstrong@linaro.org, rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
- hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
- dmitry.baryshkov@oss.qualcomm.com, l.stach@pengutronix.de,
- dianders@chromium.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <CGME20250814104818eucas1p2c5029f6d5997f4fafd6370f9e7fb2264@eucas1p2.samsung.com>
- <20250814104753.195255-1-damon.ding@rock-chips.com>
- <a3a2f8be-2c3c-49e7-b27a-72364ea48b06@samsung.com>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <a3a2f8be-2c3c-49e7-b27a-72364ea48b06@samsung.com>
-X-HM-Tid: 0a98ab784e4f03a3kunm0571d7eb485c79
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0sfSFZDTU1KSh1OTBpMQxlWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=hfZpv8zW2uys6mdORyNcGO+jdR1oTSbgWly42v2Rwxejwtr8GjoEWt+bKnpVT5e1nF9OU25agMwG6zgxwEy5aXBeJJbfAWzI1hPnuAIXyKEeGphMhrobsGe4y0AoA1OiKSEHNipCW+hLlPA5j66L+lShxrMP06AecHT8i7KL0uc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=DFpzt96SH7zrjIwGrhgfwPhUMLgjWOGWlrIeC6OmdkA=;
-	h=date:mime-version:subject:message-id:from;
+	id 1umkJa-00000001BeL-0rFB;
+	Fri, 15 Aug 2025 02:37:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1755225324;
+	bh=18Y2FqPHGv9yTsq2i+bvrkK1Nwx8p+K4AcbHDTl42W4=;
+	h=From:To:Subject:Date:Message-Id;
+	b=PETpp5hCLUcbcER3obgNFK4HJ4dRfaiQY5neZxAyGWT9oHS6C7TNOk8NGLY3YwNm2
+	 WrgWK6Xu5ak/FzdeixmMXUoY9bgcZsjX+CvwnnWAaG3ycTlY77pHz0ofnlrdtFu+Zz
+	 vk6GXv5IWZPTCjMsLxl+xFTyEhsJkQt/Nv8kFHkI=
+X-QQ-mid: zesmtpgz1t1755225322taec13901
+X-QQ-Originating-IP: EIRDYySQ/vTVoXNlfnhjpk64A+oYYEctZ9g7jsLXhaQ=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Fri, 15 Aug 2025 10:35:19 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 7637992239138858937
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	David Wu <david.wu@rock-chips.com>
+Cc: netdev@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Subject: [PATCH net-next v3] net: ethernet: stmmac: dwmac-rk: Make the clk_phy could be used for external phy
+Date: Fri, 15 Aug 2025 10:35:15 +0800
+Message-Id: <20250815023515.114-1-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpgz:airkyi.com:qybglogicsvrsz:qybglogicsvrsz4a-0
+X-QQ-XMAILINFO: MACXe2l6e7j9tHvQXME93TKuhbr1DWEBKVr6kPuKBNVbXJSTkZ+/mvNz
+	FTuSXoReifaDWkVW/3Ceh7Zo7x1UgzyfwMB3F1sV6c1hFfa365Xz4qc9rKBNpnbWqmmy28x
+	InABhI8CvjAupL16kqYCtSW1DuQnbq/F7FXUieBfn3u8WvT4OGayKdxG4OBaZ/vZK2dc/cN
+	AB7Y2K2geRvldtryWJxvgXKyZ5dm4ndOgE/qx+pp1jgpDaFiy36aVnZS4JgMru1HjbG8X4j
+	TWnEJLxmRA7RiPWuxZAQKBYHCDlyr/XgqODOdy8DtPHYFcOFsWETgSTB8PbffbeGzMkr2Zn
+	HZoMnDZXQtU+GlWswzJe5JnIDzJ6eL+RVzK1zaHvzpUrkgR/jdSbtuEvNX2VC+JFbuUT29s
+	dU10zw11d8FIr7gcYkzyqc1UtlVAQHEfcKlcR8a2iN/MDKu5mpCqKyB9nwNkarrwjlKaU6b
+	gxtDEY6lSd4AdbZ4NcWkZG4cfCz7nTaafUAhtWBgCUlXL8dH23Z7iGnqpXKDo4YRJuifz1v
+	vB0gMoajL4nNwmPnG1NdzT8wAlXXY3fDGyVEAMNThTcssfx0RFJ5IaAhzPtVuYS5WjEB1iG
+	KDIZvYJWL9MFMqNlI/Jay6gyJngEtdGQsLzPISKVFx6cszM/7OiFx+brfX/n3jqIvoQUW9S
+	VdLjcYEbfe9/xhiJ/zrFbw1tzZCd0wbEmA8KrmANDFjk8aXRgz671qhW7KtBfIk4t4p4DOK
+	i/0UBuW7BOFOG13TG6n2RnB8m9tTxLSD5VeQR2MGM/gwFc9aL0pLnrNjThMsB9kYojfzY3t
+	zLoZkIbq+Bbeq5Ir3XYE5c5xfw20LHUqu3xCdtw7hVcABP3LX4fMCofh8ZqI1/FfGeGIU9+
+	qxOiu8TnWKqqb23iq6qW3vCvfLtNRnaFbBW4fPEAVGPfmSKCzcD7uxrcQ8uJBa92wLLPgsC
+	PHdnMiyg5xdjFmNDrXQ4WswPE0vf2/Kdh/GJvhHnRKQul1K4V2TlC0sgc
+X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_190415_564984_BFE56461 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20250814_193710_913719_7F27B2B7 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,85 +95,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTWFyZWssCgpPbiAyMDI1LzgvMTQgMjI6MzMsIE1hcmVrIFN6eXByb3dza2kgd3JvdGU6Cj4g
-T24gMTQuMDguMjAyNSAxMjo0NywgRGFtb24gRGluZyB3cm90ZToKPj4gUEFUQ0ggMSBpcyBhIHNt
-YWxsIGZvcm1hdCBvcHRpbWl6YXRpb24gZm9yIHN0cnVjdCBhbmFsb2dpZF9kcF9kZXZpY2UuCj4+
-IFBBVENIIDIgaXMgdG8gcGVyZm9ybSBtb2RlIHNldHRpbmcgaW4gJmRybV9icmlkZ2VfZnVuY3Mu
-YXRvbWljX2VuYWJsZS4KPj4gUEFUQ0ggMy02IGFyZSBwcmVwYXJhdGlvbnMgZm9yIGFwcGx5IGRy
-bV9icmlkZ2VfY29ubmVjdG9yIGhlbHBlci4KPj4gUEFUQ0ggNyBpcyB0byBhcHBseSB0aGUgZHJt
-X2JyaWRnZV9jb25uZWN0b3IgaGVscGVyLgo+PiBQQVRDSCA4LTEwIGFyZSB0byBtb3ZlIHRoZSBw
-YW5lbC9icmlkZ2UgcGFyc2luZyB0byB0aGUgQW5hbG9naXggc2lkZS4KPj4gUEFUQ0ggMTEtMTIg
-YXJlIHByZXBhcmF0aW9ucyBmb3IgYXBwbHkgcGFuZWxfYnJpZGdlIGhlbHBlci4KPj4gUEFUQ0gg
-MTMgaXMgdG8gYXBwbHkgdGhlIHBhbmVsX2JyaWRnZSBoZWxwZXIuCj4gCj4gVGhpcyBzZXJpZXMg
-bGFja3MgJ3NlbGVjdMKgRFJNX0JSSURHRV9DT05ORUNUT1InIGluIEV4eW5vc0RQJ3MgS2NvbmZp
-ZywKPiBzbyBpdCBjYXVzZXMgYnVpbGQgYnJlYWs6Cj4gCgo+IGRyaXZlcnMvZ3B1L2RybS9leHlu
-b3MvZXh5bm9zX2RwLmM6MTc3OiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvCj4gYGRybV9icmlkZ2Vf
-Y29ubmVjdG9yX2luaXQnCj4gbWFrZVsyXTogKioqIFtzY3JpcHRzL01ha2VmaWxlLnZtbGludXg6
-OTE6IHZtbGludXhdIEVycm9yIDEKPiAKPiBBZnRlciBhZGRpbmcgdGhpcyBkZXBlbmRlbmN5LCB0
-aGUgRXh5bm9zIERQIGRyaXZlciBzdG9wcyB3b3JraW5nLiBPbgo+IFNhbXN1bmcgU25vdyBDaHJv
-bWVib29rIEkgb2JzZXJ2ZWQgZm9sbG93aW5nIGlzc3VlOgo+IAo+IFsgwqDCoMKgNC41MzQyMjBd
-IGV4eW5vcy1kcCAxNDViMDAwMC5kcC1jb250cm9sbGVyOiBmYWlsZWQgdG8gYXR0YWNoCj4gZm9s
-bG93aW5nIHBhbmVsIG9yIGJyaWRnZSAoLTE2KQo+IFsgwqDCoMKgNC41NDM0MjhdIGV4eW5vcy1k
-cm0gZXh5bm9zLWRybTogZmFpbGVkIHRvIGJpbmQKPiAxNDViMDAwMC5kcC1jb250cm9sbGVyIChv
-cHMgZXh5bm9zX2RwX29wcyk6IC0xNgo+IFsgwqDCoMKgNC41NTE3NzVdIGV4eW5vcy1kcm0gZXh5
-bm9zLWRybTogYWRldiBiaW5kIGZhaWxlZDogLTE2Cj4gWyDCoMKgwqA0LjU1NjU1OV0gZXh5bm9z
-LWRwIDE0NWIwMDAwLmRwLWNvbnRyb2xsZXI6IHByb2JlIHdpdGggZHJpdmVyCj4gZXh5bm9zLWRw
-IGZhaWxlZCB3aXRoIGVycm9yIC0xNgo+IAo+IEkgd2lsbCBpbnZlc3RpZ2F0ZSBkZXRhaWxzIGxh
-dGVyIGluIHRoZSBldmVuaW5nLgo+IAoKVGhhbmtzIGZvciB5b3VyIHJldmlldyBhbmQgdGVzdC4g
-Oi0pCgpJIGZvdW5kIHRoZSBSb2NrY2hpcCBzaWRlIGFsc28gbGFja3MgJ3NlbGVjdCBEUk1fQlJJ
-REdFX0NPTk5FQ1RPUicgaW4gClJPQ0tDSElQX0FOQUxPR0lYX0RQJ3MgS2NvbmZpZy4gSSB3aWxs
-IGFkZCB0aGUgRFJNX0JSSURHRV9DT05ORUNUT1IgCnNlbGVjdGlvbiBmb3IgYm90aCBvZiB0aGVt
-IGluIHRoZSBuZXh0IHZlcnNpb24uCgo+PiBEYW1vbiBEaW5nICgxMyk6Cj4+ICAgICBkcm0vYnJp
-ZGdlOiBhbmFsb2dpeF9kcDogRm9ybWFsaXplIHRoZSBzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNl
-Cj4+ICAgICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogTW92ZSAmZHJtX2JyaWRnZV9mdW5jcy5t
-b2RlX3NldCB0bwo+PiAgICAgICAmZHJtX2JyaWRnZV9mdW5jcy5hdG9taWNfZW5hYmxlCj4+ICAg
-ICBkcm0vYnJpZGdlOiBhbmFsb2dpeF9kcDogQWRkICZhbmFsb2dpeF9kcF9wbGF0X2RhdGEubmV4
-dF9icmlkZ2UKPj4gICAgIGRybS9leHlub3M6IGV4eW5vc19kcDogUmVtb3ZlICZleHlub3NfZHBf
-ZGV2aWNlLnB0bl9icmlkZ2UKPj4gICAgIGRybS9icmlkZ2U6IGV4eW5vc19kcDogUmVtb3ZlIHVu
-dXNlZCAmZXh5bm9zX2RwX2RldmljZS5jb25uZWN0b3IKPj4gICAgIGRybS9icmlkZ2U6IGFuYWxv
-Z2l4X2RwOiBSZW1vdmUgcmVkdW5kYW50Cj4+ICAgICAgICZhbmFsb2dpeF9kcF9wbGF0X2RhdGEu
-c2tpcF9jb25uZWN0b3IKPj4gICAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBBcHBseSBkcm1f
-YnJpZGdlX2Nvbm5lY3RvciBoZWxwZXIKPj4gICAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBB
-ZGQgbmV3IEFQSSBhbmFsb2dpeF9kcF9maW5pc2hfcHJvYmUoKQo+PiAgICAgZHJtL3JvY2tjaGlw
-OiBhbmFsb2dpeF9kcDogQXBwbHkgYW5hbG9naXhfZHBfZmluaXNoX3Byb2JlKCkKPj4gICAgIGRy
-bS9leHlub3M6IGV4eW5vc19kcDogQXBwbHkgYW5hbG9naXhfZHBfZmluaXNoX3Byb2JlKCkKPj4g
-ICAgIGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBSZW1vdmUgcGFuZWwgZGlzYWJsaW5nIGFuZCBl
-bmFibGluZyBpbgo+PiAgICAgICBhbmFsb2dpeF9kcF9zZXRfYnJpZGdlKCkKPj4gICAgIGRybS9i
-cmlkZ2U6IGFuYWxvZ2l4X2RwOiBSZW1vdmUgYnJpZGdlIGRpc2FiaW5nIGFuZCBwYW5lbCB1bnBy
-ZXBhcmluZwo+PiAgICAgICBpbiBhbmFsb2dpeF9kcF91bmJpbmQoKQo+PiAgICAgZHJtL2JyaWRn
-ZTogYW5hbG9naXhfZHA6IEFwcGx5IHBhbmVsX2JyaWRnZSBoZWxwZXIKPj4KPj4gICAgLi4uL2Ry
-bS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jICAgIHwgMzg0ICsrKysrKysrKyst
-LS0tLS0tLQo+PiAgICAuLi4vZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgg
-ICAgfCAgIDUgKy0KPj4gICAgZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHAuYyAgICAg
-ICAgICAgIHwgIDQ4ICstLQo+PiAgICAuLi4vZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1y
-b2NrY2hpcC5jICAgfCAgNDkgKy0tCj4+ICAgIGluY2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9k
-cC5oICAgICAgICAgICAgICB8ICAgNyArLQo+PiAgICA1IGZpbGVzIGNoYW5nZWQsIDI0OCBpbnNl
-cnRpb25zKCspLCAyNDUgZGVsZXRpb25zKC0pCj4+Cj4+IC0tLQo+Pgo+PiBDaGFuZ2VzIGluIHYy
-Ogo+PiAtIFVwZGF0ZSBFeHlub3MgRFAgZHJpdmVyIHN5bmNocm9ub3VzbHkuCj4+IC0gTW92ZSB0
-aGUgcGFuZWwvYnJpZGdlIHBhcnNpbmcgdG8gdGhlIEFuYWxvZ2l4IHNpZGUuCj4+Cj4+IENoYW5n
-ZXMgaW4gdjM6Cj4+IC0gUmViYXNlIGZvciB0aGUgZXhpc3RpbmcgZGV2bV9kcm1fYnJpZGdlX2Fs
-bG9jKCkgYXBwbHlpbmcgY29tbWl0Lgo+PiAtIEZpeCB0aGUgdHlwb2dyYXBoaWNhbCBlcnJvciBv
-ZiBwYW5lbC9icmlkZ2UgY2hlY2sgaW4gZXh5bm9zX2RwX2JpbmQoKS4KPj4gLSBTcXVhc2ggYWxs
-IGNvbW1pdHMgcmVsYXRlZCB0byBza2lwX2Nvbm5lY3RvciBkZWxldGlvbiBpbiBib3RoIEV4eW5v
-cyBhbmQKPj4gICAgIEFuYWxvZ2l4IGNvZGUgaW50byBvbmUuCj4+IC0gQXBwbHkgcGFuZWxfYnJp
-ZGdlIGhlbHBlciB0byBtYWtlIHRoZSBjb2RlcyBtb3JlIGNvbmNpc2UuCj4+IC0gRml4IHRoZSBo
-YW5kaW5nIG9mIGJyaWRnZSBpbiBhbmFsb2dpeF9kcF9icmlkZ2VfZ2V0X21vZGVzKCkuCj4+IC0g
-UmVtb3ZlIHVubmVjZXNzYXJ5IHBhcmFtZXRlciBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciogZm9yIGNh
-bGxiYWNrCj4+ICAgICAmYW5hbG9naXhfZHBfcGxhdF9kYXRhLmF0dGFjaCgpLgo+PiAtIEluIG9y
-ZGVyIHRvIGRlY291cGxlIHRoZSBjb25uZWN0b3IgZHJpdmVyIGFuZCB0aGUgYnJpZGdlIGRyaXZl
-ciwgbW92ZQo+PiAgICAgdGhlIGJyaWRnZSBjb25uZWN0b3IgaW5pdGlsaXphdGlvbiB0byB0aGUg
-Um9ja2NoaXAgYW5kIEV4eW5vcyBzaWRlcy4KPj4KPj4gQ2hhbmdlcyBpbiB2NDoKPj4gLSBSZWJh
-c2UgZm9yIHRoZSBhcHBsaWVkICZkcm1fYnJpZGdlX2Z1bmNzLmRldGVjdCgpIG1vZGlmaWNhdGlv
-biBjb21taXQuCj4+IC0gUmVuYW1lIGFuYWxvZ2l4X2RwX2ZpbmRfcGFuZWxfb3JfYnJpZGdlKCkg
-dG8gYW5hbG9naXhfZHBfZmluaXNoX3Byb2JlKCkuCj4+IC0gRHJvcCB0aGUgZHJtbV9lbmNvZGVy
-X2luaXQoKSBtb2RpZmljYXRpb24gY29tbWl0Lgo+PiAtIFJlbmFtZSB0aGUgJmFuYWxvZ2l4X2Rw
-X3BsYXRfZGF0YS5icmlkZ2UgdG8KPj4gICAgICZhbmFsb2dpeF9kcF9wbGF0X2RhdGEubmV4dF9i
-cmlkZ2UuCj4+Cj4gQmVzdCByZWdhcmRzCgpCZXN0IHJlZ2FyZHMsCkRhbW9uCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
+For external phy, clk_phy should be optional, and some external phy
+need the clock input from clk_phy. This patch adds support for setting
+clk_phy for external phy.
+
+Signed-off-by: David Wu <david.wu@rock-chips.com>
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+---
+
+Changes in v3:
+- Link to V2: https://lore.kernel.org/netdev/20250812012127.197-1-kernel@airkyi.com/
+- Rebase to net-next/main
+
+Changes in v2:
+- Link to V1: https://lore.kernel.org/netdev/20250806011405.115-1-kernel@airkyi.com/
+- Remove get clock frequency from DT prop
+
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index ac8288301994..5d921e62c2f5 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -1412,12 +1412,15 @@ static int rk_gmac_clk_init(struct plat_stmmacenet_data *plat)
+ 		clk_set_rate(plat->stmmac_clk, 50000000);
+ 	}
+ 
+-	if (plat->phy_node && bsp_priv->integrated_phy) {
++	if (plat->phy_node) {
+ 		bsp_priv->clk_phy = of_clk_get(plat->phy_node, 0);
+ 		ret = PTR_ERR_OR_ZERO(bsp_priv->clk_phy);
+-		if (ret)
+-			return dev_err_probe(dev, ret, "Cannot get PHY clock\n");
+-		clk_set_rate(bsp_priv->clk_phy, 50000000);
++		/* If it is not integrated_phy, clk_phy is optional */
++		if (bsp_priv->integrated_phy) {
++			if (ret)
++				return dev_err_probe(dev, ret, "Cannot get PHY clock\n");
++			clk_set_rate(bsp_priv->clk_phy, 50000000);
++		}
+ 	}
+ 
+ 	return 0;
+-- 
+2.49.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
