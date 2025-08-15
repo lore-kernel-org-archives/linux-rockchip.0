@@ -4,62 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9216CA0EE4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Aug 2025 13:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB117CA0EE4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Aug 2025 13:29:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pS2pI0kiD2rQwfbKqvz5c5oEhNQpzHhvdGuS1fag7Jw=; b=nUe19xBWlzTYJj
-	gtUWbVZMJfKEJrIwt4iSu3jYVld6R6I4+ZsNaLPafHhRYHiN5E+MaT2ttAmBOOzasrtuawZiW5GFf
-	YOyDk8FiWemblFOPrRCnmM/ZyFEa6/tU+6rOtUh78OACGZmbqeymCrTV46mdtLarSyVYOQkQ7tDQP
-	68opy5MnmKMmQpXUYxDpEn/fbkgTSZDMEkjjvDjWkHp7ct8XUGxEevhiFZaSYcsqMk4uocR6ns53R
-	uRTWnPBmCAzDYrRlcVxgDyWZfUvlxbBMyhYoILr6/DUJEFSrgBVqDOdAuXAesTht8OSr6YzKL4YUI
-	p4USb4FdsUd6bHX0ImuA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HAel3VCGqyD/kLsRqU+qSdeqI/f3TRz7+tQMwc5iFfU=; b=K+OZIJqXOhH5Qc
+	KjnUU6OIbJEb4pu3O1fWDKW6KSpOcpmCBZioa6bhbffHGk9S5gM4eTJjkqNoouknO0+bQ28KZ88Q0
+	ESR13cp3jirIvjalA8q/4LYkDA/2kiZPF8DSNeIGjO/adhBgCpgKjbs7qIp8blU3ukGdvotLvtCh0
+	iKA8e2Pg0I60GXEgc9PaUEvQYhXRR5twy6zWiWQNwib2o7JxVl588sZ69/f7CeI0RkfGKw/T4eIrw
+	SktOGWpu4/8mQRqp2LH9kly/9P9pPo24efpS99fM5vK0k0OrmKEYX2DyN6zSOBI3cl8hCKQql1V9Q
+	mvss/097N76cq970Kclg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umuPQ-00000002a2Q-1VFT;
-	Fri, 15 Aug 2025 13:23:52 +0000
-Received: from out-183.mta1.migadu.com ([95.215.58.183])
+	id 1umuUa-00000002aXl-3AUk;
+	Fri, 15 Aug 2025 13:29:12 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umryv-00000002FbX-2D8Q
+	id 1umsB1-00000002HXz-2p4q
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 Aug 2025 10:48:23 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1755254898;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=PJd4mKAX6RdUpjrrwmUXazuqsCN2PZfrowEzcn0Hg5M=;
-	b=GRcUo7e8ncadhrPZPmqSKbQBPcnbagqMUaNukDVPLohMx/EgcWoP+S1SAmrw3ZH7wJlwxq
-	/x7+9s/aIOlalGm/ZFhCDNbV/I4dHZzxxE4uz0NKFjotzvv/6iGtkSA3wuav+M5Ssf6z5G
-	rcJY7MdOL6jbSRN5BW9CwquNsFPaZwc1mFLsumV/xOLzglLjTa5RGJyo/jKy3e6ptyinG5
-	eDJe31rFJ2ev/mjNnNs46LBrjXH+/s6uw1yRaztJZUG4ukNK9LzNJN9FV+qe8FrvAPorRC
-	tV71LF7msadNyAmRpiXbdDN/l0tsS/KQVzhSwQ9ktUjimUir8J+Ki/Ykm3DCCw==
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Lee Jones <lee@kernel.org>,
-	Pavel Machek <pavel@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH] dt-bindings: leds: Clearly mark label property as deprecated
-Date: Fri, 15 Aug 2025 12:47:46 +0200
-Message-ID: <20250815104805.405009-1-didi.debian@cknow.org>
+	Fri, 15 Aug 2025 11:00:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id CA68E6115D;
+	Fri, 15 Aug 2025 11:00:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D761EC4CEEB;
+	Fri, 15 Aug 2025 11:00:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755255649;
+	bh=7Be7o3PALtINeyh/3FWdMdKncJEV6RKJP/fqpEFc0N8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nY4TAH0CqypvOQ3YvR5ZUF85meuK5at3CfcdO12nGQfl+7RCZKQzN19vqALnOjlnJ
+	 AiWVAsNvoVIo7VP21bDV31oXw485xzCYUuvTtMB/MaLB38ilibs2uAtRhaJlBc+hMe
+	 YnuB8IfnU9SekuC3baBs7aIDx7oN79JfQsGovN9uNH1PEsli6EFaWjGyZsOy7zImBX
+	 C5cvTlNSU5ksrUB+tu0ltjY9VHxT6pvx0ef9rh+jQbqPlSHU0nuIPq1yFZ1wj7n88d
+	 xS1AtzWPslNmZwQaR91pC1dQhjCOfHK7eOID/prcsIXIu+9hNHvNlkzpG/CZMmd0zQ
+	 Bc7j5jl6lA+Kg==
+Message-ID: <b30905fa-6bd1-47dd-8371-f609d418387b@kernel.org>
+Date: Fri, 15 Aug 2025 13:00:45 +0200
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250815_034822_195195_63495AD1 
-X-CRM114-Status: UNSURE (   5.98  )
-X-CRM114-Notice: Please train this message.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] dt-bindings: leds: Clearly mark label property as
+ deprecated
+To: Diederik de Haas <didi.debian@cknow.org>, Lee Jones <lee@kernel.org>,
+ Pavel Machek <pavel@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Cc: Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250815104805.405009-1-didi.debian@cknow.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
+ QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
+ +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
+ ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
+ 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
+ hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
+ tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
+ 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
+ naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
+ hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
+ whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
+ qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
+ RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
+ Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
+ H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
+ dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
+ AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
+ jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
+ zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
+ XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
+In-Reply-To: <20250815104805.405009-1-didi.debian@cknow.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,30 +117,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The text description already mentioned the label property was
-deprecated, but using the 'deprecated' property makes is clearer and
-more explicit.
+On 15/08/2025 12:47, Diederik de Haas wrote:
+> The text description already mentioned the label property was
+> deprecated, but using the 'deprecated' property makes is clearer and
+> more explicit.
+> 
+> Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+> ---
+>  Documentation/devicetree/bindings/leds/common.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
----
- Documentation/devicetree/bindings/leds/common.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Please first read previous discussions:
+https://lore.kernel.org/all/20240509110545.49889-1-linux@fw-web.de/
 
-diff --git a/Documentation/devicetree/bindings/leds/common.yaml b/Documentation/devicetree/bindings/leds/common.yaml
-index 3e8319e44339..45ce9e13c7ff 100644
---- a/Documentation/devicetree/bindings/leds/common.yaml
-+++ b/Documentation/devicetree/bindings/leds/common.yaml
-@@ -58,6 +58,7 @@ properties:
-       no other LED class device can be assigned the same label. This property is
-       deprecated - use 'function' and 'color' properties instead.
-       function-enumerator has no effect when this property is present.
-+    deprecated: true
- 
-   default-state:
-     description:
--- 
-2.50.1
+https://lore.kernel.org/all/20221122111124.6828-1-cniedermaier@dh-electronics.com/
 
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
