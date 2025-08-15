@@ -4,61 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3FA8CA0EE4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Aug 2025 14:41:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1341CA0EE6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Aug 2025 17:01:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:Subject:Cc:To:From:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zsJBL28wwZ65SI77hdN+FPDTDcth0nJoMTJojoOkk/0=; b=JeiMk0XH0OiP6t3FL9k3j61IEm
-	vMDokhCd+++ycT3TJazhTQ/mA51PKG3GNdqe4/dfIwDXglD67lcywhSPNB1kolm+q2RNIQpTSbzrz
-	SMgW+lMXAn5Nf4yIKhvav+H6GcyHH4T3Fy9/5XN3FSAIMHLI4yVZMepfFsiPFLlHDqdIh9dbpoeeV
-	kK71bT6znWS+iX2z+kIKmNxkYjm2xUUsBKffGp9kLd/d6dpxUNB4uhydyNDDzzzwgYiwUnTFMsDJn
-	aEG2pNykzdOz9MZHhfD7jnItzKtkC4Vi+rozQMFULDx5ee64tUwM7A9+rWxEv1M829bYsnLN5Fdi3
-	ocpmThEQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4QvT+gtB7A1ZF2Y2SKdC72QInDXNnpT/LDMWNX9lHjk=; b=36UX/Vkf+zrUYm
+	YPSnVFfL+EKDikDLFha/O75DNRSKEhAhHCEZ5nAd+JgRTQqAueEpLZsubugmvUSJqjEbRI2KUlMdt
+	E3dB32F9rBtOOKG1x0m/YQFxh+BOUPdhfIFfYzYacYxLPPkibcsIE46r7Enr9gBsahzcgVBShPocv
+	hRQrrVqeOl3YPE5+wdb1XYh4uaNWqetG91b+sj9DOuoq5lPmH/PxHixnM+dE04dlbzV0GbD7RTUbz
+	EC1S2AaGCGCMKe/hSN8X5v8oSrKppMT1BEASK8yHd7v8YpSBH5d+4vAVIDkLaK1lNjuo0nOhQ16wf
+	ggBmg6z0udmoR6UaiDJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umvcU-00000002kQb-0cUs;
-	Fri, 15 Aug 2025 14:41:26 +0000
-Received: from out-170.mta1.migadu.com ([2001:41d0:203:375::aa])
+	id 1umxo7-0000000347C-2kSP;
+	Fri, 15 Aug 2025 17:01:35 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umtDH-00000002PkE-2hhf
+	id 1umw1i-00000002o3y-0qWV
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 Aug 2025 12:07:18 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1755259632;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=S1snjcKnr5T+gZaU0t/7csMoaxio2O5nUXuj8A3C7QA=;
-	b=obpPn8MQaE6sEdep1Ia26ok2jP1igFkswh5NXhZgsIanDEcTwThXpGlEMMPSaTT+CGYP/t
-	/M+yOmjHMlDJbTfcTKnZKuntmX8kH707C+2MHeoi/kkI2KECDn7E/bJaXxQ9Ivbv2w5Eyr
-	JnDtDhjtP7iu5QIpL5TxkJ3cjuR/ZiY6wqtRwKtza77rNlliSC4PErDNS1IjBLPdmcu+e0
-	8wNP7N3rWxVHBPRR1J+PuFQe9tuO2NcDq7SFRYCVs0NaC2X1In0rLqbOyfN4XDWq3Ar/CP
-	ZRTBl6G3hY8XCXXzoiHvnIhk7T7DMIU7eFRLvRNs2fYjEiWBZVJUke/+tPvDGQ==
-Date: Fri, 15 Aug 2025 14:06:49 +0200
-Message-Id: <DC2ZLORG11W0.1CS78L6F2OV4Q@cknow.org>
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Krzysztof Kozlowski" <krzk@kernel.org>, "Lee Jones" <lee@kernel.org>,
- "Pavel Machek" <pavel@kernel.org>, "Rob Herring" <robh@kernel.org>,
- "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
- <conor+dt@kernel.org>
-Cc: "Jacek Anaszewski" <jacek.anaszewski@gmail.com>,
- <linux-leds@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH] dt-bindings: leds: Clearly mark label property as
- deprecated
-References: <20250815104805.405009-1-didi.debian@cknow.org>
- <b30905fa-6bd1-47dd-8371-f609d418387b@kernel.org>
-In-Reply-To: <b30905fa-6bd1-47dd-8371-f609d418387b@kernel.org>
-X-Migadu-Flow: FLOW_OUT
+	Fri, 15 Aug 2025 15:07:31 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1umw10-0004t6-6g; Fri, 15 Aug 2025 17:06:46 +0200
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1umw0x-000R8g-1i;
+	Fri, 15 Aug 2025 17:06:43 +0200
+Received: from pza by lupine with local (Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1umw0x-000PY3-1L;
+	Fri, 15 Aug 2025 17:06:43 +0200
+Message-ID: <93025d4cb696f06228e1c84a7c22dbcede6e77a3.camel@pengutronix.de>
+Subject: Re: [PATCH 04/21] drm: remove unneeded 'fast_io' parameter in
+ regmap_config
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+	linux-kernel@vger.kernel.org
+Cc: Mark Brown <broonie@kernel.org>, Andrzej Hajda
+ <andrzej.hajda@intel.com>,  Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Foss <rfoss@kernel.org>, Laurent Pinchart
+ <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>,  Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Liu Ying <victor.liu@nxp.com>, Shawn Guo
+ <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
+ Kernel Team <kernel@pengutronix.de>,  Fabio Estevam <festevam@gmail.com>,
+ Sandy Huang <hjc@rock-chips.com>, Heiko =?ISO-8859-1?Q?St=FCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+ dri-devel@lists.freedesktop.org, imx@lists.linux.dev, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Date: Fri, 15 Aug 2025 17:06:43 +0200
+In-Reply-To: <20250813161517.4746-5-wsa+renesas@sang-engineering.com>
+References: <20250813161517.4746-1-wsa+renesas@sang-engineering.com>
+	 <20250813161517.4746-5-wsa+renesas@sang-engineering.com>
+User-Agent: Evolution 3.46.4-2 
+MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250815_050716_405215_593C0CD3 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20250815_080730_232046_5FBA4536 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,98 +86,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8385897212502574828=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============8385897212502574828==
-Content-Type: multipart/signed;
- boundary=8624ee546faf8c26b2a96c7cf02ab2c1b94682b15dc888f8a0edb7954318;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+On Mi, 2025-08-13 at 18:14 +0200, Wolfram Sang wrote:
+> When using MMIO with regmap, fast_io is implied. No need to set it
+> again.
+> 
+> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+> ---
+> No dependencies, can be applied directly to the subsystem tree. Buildbot is
+> happy, too.
+> 
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-cf.c                   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-de.c                   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-ed.c                   | 2 --
+>  drivers/gpu/drm/imx/dc/dc-fg.c                   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-fl.c                   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-fw.c                   | 2 --
+>  drivers/gpu/drm/imx/dc/dc-ic.c                   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-lb.c                   | 2 --
+>  drivers/gpu/drm/imx/dc/dc-tc.c                   | 1 -
+>  drivers/gpu/drm/imx/ipuv3/imx-tve.c              | 2 --
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c | 1 -
+>  12 files changed, 16 deletions(-)
+> 
+[...]
+> diff --git a/drivers/gpu/drm/imx/ipuv3/imx-tve.c b/drivers/gpu/drm/imx/ipuv3/imx-tve.c
+> index c5629e155d25..b34037d0d7a8 100644
+> --- a/drivers/gpu/drm/imx/ipuv3/imx-tve.c
+> +++ b/drivers/gpu/drm/imx/ipuv3/imx-tve.c
+> @@ -457,8 +457,6 @@ static struct regmap_config tve_regmap_config = {
+>  
+>  	.readable_reg = imx_tve_readable_reg,
+>  
+> -	.fast_io = true,
+> -
+>  	.max_register = 0xdc,
+>  };
+>  
 
---8624ee546faf8c26b2a96c7cf02ab2c1b94682b15dc888f8a0edb7954318
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+Acked-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-On Fri Aug 15, 2025 at 1:00 PM CEST, Krzysztof Kozlowski wrote:
-> On 15/08/2025 12:47, Diederik de Haas wrote:
->> The text description already mentioned the label property was
->> deprecated, but using the 'deprecated' property makes is clearer and
->> more explicit.
->>=20
->> Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
->> ---
->>  Documentation/devicetree/bindings/leds/common.yaml | 1 +
->>  1 file changed, 1 insertion(+)
->>=20
->
-> Please first read previous discussions:
-
-[I reversed the order of the links so the oldest is first]
-
-> https://lore.kernel.org/all/20221122111124.6828-1-cniedermaier@dh-electro=
-nics.com/
-
-Rob: "They ['function' and 'label'] serve 2 different purposes."
-
-> https://lore.kernel.org/all/20240509110545.49889-1-linux@fw-web.de/
-
-Krzysztof: "I don't think there was conclusion to make it deprecated on
-last attempt"
-
-I agree.
-What I don't understand: Why wasn't the text updated to correct the
-incorrect statement about deprecation (that's how I interpret it now)?
-Or some other conclusion being made and that that will be reflected in
-the text and/or a deprecated property.
-
-Otherwise the confusion remains and then it's just a matter of time
-before a 4th person comes along proposing the same patch.
-And possibly even more harmful: people use it incorrectly.
-
-There's also this line:
-"function-enumerator has no effect when this property is present."
-
-if that is true, and I would assume so as that's what the binding says,
-then I messed up even bigger then I already think I did in commit
-1631cbdb8089 ("arm64: dts: rockchip: Improve LED config for NanoPi R5S")
-resulting in commit
-912b1f2a796e ("arm64: dts: rockchip: Drop netdev led-triggers on NanoPi R5S=
-")
-
-... but I'd have expected that to be pointed out in the review.
-
-I can understand that function-enumerator is used in an automatically
-generated label when a label doesn't exist, but I'm inclined to think
-the same "They serve 2 different purposes" applies here too.
-
-Cheers,
-  Diederik
-
---8624ee546faf8c26b2a96c7cf02ab2c1b94682b15dc888f8a0edb7954318
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaJ8i5gAKCRDXblvOeH7b
-blHPAP47IybHAz/ehXhdDv8uUzgLK6trTHIF4sa580pxeE3YkQD+IT7PvgXPS4r7
-s6gjTNa7I7J78T4OjK79J1SWdXcrgQg=
-=JWsI
------END PGP SIGNATURE-----
-
---8624ee546faf8c26b2a96c7cf02ab2c1b94682b15dc888f8a0edb7954318--
-
-
---===============8385897212502574828==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8385897212502574828==--
-
