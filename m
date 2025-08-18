@@ -4,90 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34FFECA0ED1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 13:37:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D64FCA0EE4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 13:39:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=F6ke3wFFJb/YQO/P7fMrr2p+e/ubHKo/jHmvHlkKT5s=; b=y8ainZ2SC8C/t6
-	XrBl9TJBLPbGwaq2MzhgRSZ3XkTQ9VpfHuBBR5HKwiW5hpO0YUmrRbfNb474LcXFa6fqBwAtLjym+
-	JN8b4eR6JcxHjZU37rz1A/VLLn8YBe6beZY73oETlZf6ClXV82KnM2sjKnZfC8U4ROlK9TEdS/jQd
-	wTv7hSdDs79irPYAoLkLs2AkRrnhTzMKdMyBs/B2KwLxBsLoTITDYDetgg47H8lNOrCJgl5aWoqUi
-	C0WwyPD/AHHPiSMGccz1HwcnMJKr1E8l+io2qMG+3XqWefOHqivoJnG1TYcmXoi2MeMDHQRuvivX7
-	+DCAa2X1TkHMv8NX/KCg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ba9BtOxPxF3io3vwcTdJQpFVHXJXJVxYrR3R96z7vA0=; b=sbwXB205OnLJHz
+	KL/g+xhIeZ3ve1MXrduUWmCbGmwvzbD6uzJH0w0LShGzV3kBcB/HxTN90CtcSJFxD0ExeUuExZrrz
+	RCMLhL3P/PgcHlKpTFRJK09QC3BxIzTMrGygPiuA7rIegi2Ye+KLTDZYLmCy7EXov1uW+cKw/579T
+	AjlPXETHWsGZLxnxz32DJucuKav1namUiGaFmdWFCs/BPmMrloHz1UUOxn1Bh59lBfMhfU3zvFEug
+	F7HXcjfhecGCn37FmFsNNtGtHXwfQLtnI5tVbJlmTarjsKszp9wQyZaUfCzdDjwVXe9lCM7KvZlPX
+	8SxVCrhPa0KfvhuwzCWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo03K-00000007U5b-3XxQ;
-	Mon, 18 Aug 2025 13:37:34 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1uo05N-00000007Xdw-2AQq;
+	Mon, 18 Aug 2025 13:39:41 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1unv8a-00000006vkR-2IGY
+	id 1unvnQ-000000070eS-1420
 	for linux-rockchip@lists.infradead.org;
-	Mon, 18 Aug 2025 08:22:41 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-45a1ac7c066so21040175e9.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 18 Aug 2025 01:22:40 -0700 (PDT)
+	Mon, 18 Aug 2025 09:04:53 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-6188b72d690so446138a12.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 18 Aug 2025 02:04:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1755505359; x=1756110159; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=DfM3OUic4SP+kzMyP8kHHqITaKkedG37VBt2aK4wKj0=;
-        b=dbCoCiAeZD4Ja4KLxDZXDatDJSzx3v1y28oUQCf/BwtnGfrWOzeQ7JVRMeJryH575C
-         j9tJDC+6Mr6kBiRqXCpavzgvEV7zKmNjJfSgunLQrKpKDLJerx4ygtVDKcUAlMfUewFy
-         V0/y0dbr/lC+ArohaQlYOlHiK3PXwMaOVgWrYSWx8lbr4wFY05BgCpv5lRPIR1IyF0SE
-         lQ5FPcw/anZz1bMEvr6wJy8YPkM2KEFAUQViVpNoPov0Xs0LiPNNc28y1crpaSY8lgNB
-         gXta9wMmcqs6XBFOufiKQMDLJCN38zBcI69kjuL8sWU/uixbBVO0t/XWEq5yhkEyV796
-         bAsQ==
+        d=linaro.org; s=google; t=1755507891; x=1756112691; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=kup10a0B4002ciw0MPHAfZ8hDEDF45tuWf47ra3TKFg=;
+        b=KlDb7mZGcl1bG5bkEmizaY8zyR4zm+O28AckmYqstZ0Sa0gjOO9PH9amUkEfZ4lKv3
+         y0kJDk7CMraHD/601GTrXK6YF321JkDpnqVRxgXZ9fWBVU/I1igeVr2lVxRhplC46hrf
+         mNTnoMjLuKmhsdMleV6oQHfPmAxA8SgFUvA/pPPmmNmWqiqBE8XPFmCTq/8GBcnVjAHj
+         CJ421k+0vdNovDa4FgzWXu+rLPA/AtnphLsbNStVvY614j7Cq4nsrMMRwJw+jup6Jihm
+         ZfsDFzcXVLtw3RkMsJ99p9O85/37QhQUYAMIq7XyqnEcS3AglodJnLRUaXkiJHCHvX0+
+         OIGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755505359; x=1756110159;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1755507891; x=1756112691;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=DfM3OUic4SP+kzMyP8kHHqITaKkedG37VBt2aK4wKj0=;
-        b=cnhBVgpEd+q7Q2376uEn/4i+xy9+HwNekAgI1zPhkSEH0QAR0y17hc23hSjqd/yR7c
-         WdFwYw0cj6go1lc46YlzdFmVqzAvKQYPWSpeh+yaDdBKQQR1wgBniEU9/urBZL4QJGP9
-         hYHhKsQ5NmCSC+lRfDN8XYlkzFXPeeS8CznHEIIUv3nn4wiHodnv9k/v1z1ACX9V+ojj
-         LC0Etjg1+VBLDKg+DduXOXviejRJqasenI/tpB21SwusAP0YxGLC9/mLFfR+qYVHl29w
-         N8NYlOHnocXPnfE7axOqwLx/EpyQVrvvRBFObBFhKMwePo1lNoQRG2Xe/9YUQ91bGfqu
-         EpRw==
-X-Forwarded-Encrypted: i=1; AJvYcCWAcdQPlDZuCaCpSQe5x0hOLORCZFS1UoOefRxGq3cC9cDNRn07NSntTROVuFteBFyzBzQCP4G5FoHP8aXHMA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyFovVr7891/Dw6y+1dsdwemm9We0FWZ0YVZpdTwBJhqdnRlcAT
-	JkfRUEcVgcdL1bu9bbJHMoIOxcmZsvOkchXfODeipEiK1Z2oG0TbcBKLvEjeEAlxr4g=
-X-Gm-Gg: ASbGncuuCXk8c6VizIqH78cqJe5onJVHGDpNivjQZP3w7e5htQ9QYKCr4jRJA75vrhA
-	CvUXkqFpj7b0Qmc72NXbzfI0vCsWatYhnoQ2BWqiDyh5MvbFFP3/AHHPSMG5CCZA7ihEOj8nYbZ
-	rMygukLtlHowa7jT7ntlZ0E31dXAoyH7Mm26668oyedZqxsnMs1GLvnFqwAl9+GY/fBhICAuX3s
-	ICICzPS5r5DBbrxdkjVCN2kLQrU9uKw319rhteaXc0UM/M+6D6p6cPbZ3FWIBMQcum1vdCGLVPV
-	O9g61Fe487C9h7unT9GOmBxWK2q59sbVbdw4GMJ1KjgAQYoBC7DHKzBjm/AHXyYSgBFz4V1Phxy
-	Fw281WXZ+XNLP2kr9FzjTn1wo6mP7tljZAK+Nkfpbjvk=
-X-Google-Smtp-Source: AGHT+IGwnL7IszKslS4RMmOckl7pctBDP8Ycuqwcw2vG42+4+Q5iaY+TBsZa0MdI4VtsEKOZ6UKuug==
-X-Received: by 2002:a05:600c:35d3:b0:458:bf15:689c with SMTP id 5b1f17b1804b1-45a1b65c6c6mr115855795e9.2.1755505358701;
-        Mon, 18 Aug 2025 01:22:38 -0700 (PDT)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-45a22210ab4sm122737435e9.3.2025.08.18.01.22.37
+        bh=kup10a0B4002ciw0MPHAfZ8hDEDF45tuWf47ra3TKFg=;
+        b=amy1CWa1whyRNgaBxX5rL3jjhcgchQmGYRxzcDh+HUVmaZdVJIM69jQvGkP8u9G66r
+         eEXX+mOWmNXS+oUI/qjyVNnP/9CrIod+a2lSSAT/zTSdNZdMWs4HjgQeyRBWtQCUz6oR
+         LzulMnB1tmroqXTdle+FX6+B8ZePysxwrIgBcA+OvBx1SpQSLoIMqtZhzHsM/XP2qSsr
+         2mSsTOUYjhJ6NtPW2EOQ+/ymEOCLcvVkHUgUP3fRMHcn4LSlwf6NrM4Eo6tHd0KT+l5k
+         iRRv4ZJJqev7zI9FIkxTlszbrmRdFp8M7u0gKhbCoFIsvEszcYh0Ng+61uQeDGw4bysa
+         6qlA==
+X-Forwarded-Encrypted: i=1; AJvYcCWgZGK7BuQG1yhIbZDHHCHaQExeX1rDxGdQDxsugtQyaSyy5MEoqYE1QwSTQV5a/WWyNFOPyTSXe3s206i+qg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzbD61/NlyxBT6RszgMv9VAbmGiIwpu5qiPf38IKU0Ln/56yMOK
+	3MQBO7ZdXYOOlu5bJYuPGnyK6vvm98gkYaM+1+Wv/577yn48858EdxfBEw+01llnIP4=
+X-Gm-Gg: ASbGnctwCRvRkyxHWQBw5j7UJPd20grT8tRe9ckXaUmnW21hUUQVMSh6JOR8Y20bNp7
+	RFMu1bwZ9377kyPspZkrrCP+No6+Nk6IzhP6pbYBvzyx/trNyFzIgnsHa6h0yYVSzavLsXnCyPG
+	t/SuH9BXEmdIWjCWGgMNmMXKYY7OEp+C1VgcfyPEpAFJlvcjreVIxEe/F56fb5DE8eD1ZkpuSLp
+	/YI3KuNY0hOi6n/CopyvimXf3d78bdrUmXq0wjkHXYklXbq80wJcmtUJCCb85ewESuh7S0y+cx+
+	+Z/qwZOtXV2h5R5jfMQHTVAr8f+2BifOG/2aInVc6KU7ukfS0mDMZ0chi5xGoDuDrVdEXoT4acB
+	RMy1aHvlp9yiyiyoY+Jh3L9Xu+gaD8jCA/Q==
+X-Google-Smtp-Source: AGHT+IFtlmbtqJ9P827bEqJH7oW+ZRuoRFw5s2Zc7tNfSX268H1TDEG69wyd3EdhU80P29JLLkcWgA==
+X-Received: by 2002:a17:907:3fa7:b0:af8:fc60:5008 with SMTP id a640c23a62f3a-afcdc19d2bfmr422932066b.4.1755507890447;
+        Mon, 18 Aug 2025 02:04:50 -0700 (PDT)
+Received: from kuoka.. ([178.197.219.123])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afcdce72cbbsm767622966b.35.2025.08.18.02.04.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Aug 2025 01:22:38 -0700 (PDT)
-Date: Mon, 18 Aug 2025 11:22:35 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: oe-kbuild@lists.linux.dev, Chris Morgan <macroalpha82@gmail.com>,
-	linux-rockchip@lists.infradead.org
-Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, broonie@kernel.org, lee@kernel.org,
-	lgirdwood@gmail.com, sre@kernel.org, heiko@sntech.de,
-	conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH V6 3/5] power: supply: bq257xx: Add support for BQ257XX
- charger
-Message-ID: <202508181503.GrRD2T4C-lkp@intel.com>
+        Mon, 18 Aug 2025 02:04:49 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Hsun Lai <i@chainsx.cn>,
+	Alex Bee <knaerzche@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	stable+noautosel@kernel.org
+Subject: [PATCH 1/2] arm64: dts: rockchip: Fix wifi interrupts flag on Sakura Pi RK3308B
+Date: Mon, 18 Aug 2025 11:04:46 +0200
+Message-ID: <20250818090445.28112-3-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250812214300.123129-4-macroalpha82@gmail.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1506; i=krzysztof.kozlowski@linaro.org;
+ h=from:subject; bh=tum7sSZZcgm8+tBz1nemvGULPNRMPULQo3/wNINBH4o=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBoouytECvArfR0uDxlZkn/yM+6/pk9krgoVi2Ex
+ +KuIWr/tUqJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaKLsrQAKCRDBN2bmhouD
+ 14K0D/wPUzRE0762GdIlKZqVCw7QIJwhm6QQ7maC1A1pWP1kbGctVkv2gdC4IrGQzhVdVAcb+0o
+ IYw6rpxiobOFJiiE9S41uqR7We+z83ecxPJdkjmNkddMaZF2dpMysBcPOspzBpDV/ItDtRCVCLc
+ oUdQ525yCD74OLtL/s5kWlPK1EfxbPdLFhzSOj6CJIh5ct4LJ26xzgacvu6CjBpy2tyErI0AGVA
+ Rds7A1uNaiadSEcWxGCogOkANLHvBjW90M3IdrzYjk76faBpiGE8t9jirPcoxyCIu/94HT+PgJQ
+ 5hGjSAYC1sO2yUNK0HjshaOD4bGx+JzpRF02+UEe/h0Xic6AsmX0tnTEpskZ55v8Hqf7jfTEqGZ
+ 413KxCeLLXuEiX2OlGMqd4GMA40y77A7Me9UhbXuS2C0cx+7jYRQ6BpPGWSycQrtR5KTon2Y4Zb
+ AS4P5LT4QOi+q8sNcIR2npSkeY5Go69g169EvxairWf5ePkspzoW+lAlC3RAI0zRDjdFDykVnNM
+ MC6tch80y9G254Kf33rR8CMydlaltyp/fZCC4zIV47YfPkLkquhGRjprPUzDCKnuqN+skTL8hmP
+ 7NuAZrbBvDCiBGcB4rgeqHsNOE22A8/IHlUCfS5XbHFrZd/LJRO8qt4IEyP6Ym0UsseZUx1jTSE 3P8zVqN+3rRaErQ==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_012240_592432_32098C3C 
-X-CRM114-Status: UNSURE (   7.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250818_020452_291633_9A2EC3CF 
+X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,85 +119,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chris,
+GPIO_ACTIVE_x flags are not correct in the context of interrupt flags.
+These are simple defines so they could be used in DTS but they will not
+have the same meaning: GPIO_ACTIVE_HIGH = 0 = IRQ_TYPE_NONE.
 
-kernel test robot noticed the following build warnings:
+Correct the interrupt flags, assuming the author of the code wanted same
+logical behavior behind the name "ACTIVE_xxx", this is:
+  ACTIVE_HIGH  => IRQ_TYPE_LEVEL_HIGH
 
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Fixes: 79f2a1702441 ("arm64: dts: rockchip: add DTs for Sakura Pi RK3308B")
+Cc: <stable+noautosel@kernel.org> # Needs testing, because actual level is just a guess
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Chris-Morgan/dt-bindings-mfd-ti-bq25703a-Add-TI-BQ25703A-Charger/20250813-054704
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
-patch link:    https://lore.kernel.org/r/20250812214300.123129-4-macroalpha82%40gmail.com
-patch subject: [PATCH V6 3/5] power: supply: bq257xx: Add support for BQ257XX charger
-config: parisc-randconfig-r072-20250818 (https://download.01.org/0day-ci/archive/20250818/202508181503.GrRD2T4C-lkp@intel.com/config)
-compiler: hppa-linux-gcc (GCC) 8.5.0
+---
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
-| Closes: https://lore.kernel.org/r/202508181503.GrRD2T4C-lkp@intel.com/
+Please kindly test... Not cc-ing stable on purpose, because this might
+have impact, so needs actual testing.
+---
+ arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-smatch warnings:
-drivers/power/supply/bq257xx_charger.c:392 bq25703_hw_init() warn: potential ! vs ~ typo
-
-vim +392 drivers/power/supply/bq257xx_charger.c
-
-7f3b6f1e51a925 Chris Morgan 2025-08-12  365  static int bq25703_hw_init(struct bq257xx_chg *pdata)
-7f3b6f1e51a925 Chris Morgan 2025-08-12  366  {
-7f3b6f1e51a925 Chris Morgan 2025-08-12  367  	struct regmap *regmap = pdata->bq->regmap;
-7f3b6f1e51a925 Chris Morgan 2025-08-12  368  	int ret = 0;
-7f3b6f1e51a925 Chris Morgan 2025-08-12  369  
-7f3b6f1e51a925 Chris Morgan 2025-08-12  370  	regmap_update_bits(regmap, BQ25703_CHARGE_OPTION_0,
-7f3b6f1e51a925 Chris Morgan 2025-08-12  371  			   BQ25703_WDTMR_ADJ_MASK,
-7f3b6f1e51a925 Chris Morgan 2025-08-12  372  			   FIELD_PREP(BQ25703_WDTMR_ADJ_MASK,
-7f3b6f1e51a925 Chris Morgan 2025-08-12  373  			   BQ25703_WDTMR_DISABLE));
-7f3b6f1e51a925 Chris Morgan 2025-08-12  374  
-7f3b6f1e51a925 Chris Morgan 2025-08-12  375  	ret = pdata->chip->bq257xx_set_ichg(pdata, pdata->ichg_max);
-7f3b6f1e51a925 Chris Morgan 2025-08-12  376  	if (ret)
-7f3b6f1e51a925 Chris Morgan 2025-08-12  377  		return ret;
-7f3b6f1e51a925 Chris Morgan 2025-08-12  378  
-7f3b6f1e51a925 Chris Morgan 2025-08-12  379  	ret = pdata->chip->bq257xx_set_vbatreg(pdata, pdata->vbat_max);
-7f3b6f1e51a925 Chris Morgan 2025-08-12  380  	if (ret)
-7f3b6f1e51a925 Chris Morgan 2025-08-12  381  		return ret;
-7f3b6f1e51a925 Chris Morgan 2025-08-12  382  
-7f3b6f1e51a925 Chris Morgan 2025-08-12  383  	ret = bq25703_set_min_vsys(pdata, pdata->vsys_min);
-7f3b6f1e51a925 Chris Morgan 2025-08-12  384  	if (ret)
-7f3b6f1e51a925 Chris Morgan 2025-08-12  385  		return ret;
-7f3b6f1e51a925 Chris Morgan 2025-08-12  386  
-7f3b6f1e51a925 Chris Morgan 2025-08-12  387  	ret = pdata->chip->bq257xx_set_iindpm(pdata, pdata->iindpm_max);
-7f3b6f1e51a925 Chris Morgan 2025-08-12  388  	if (ret)
-7f3b6f1e51a925 Chris Morgan 2025-08-12  389  		return ret;
-7f3b6f1e51a925 Chris Morgan 2025-08-12  390  
-7f3b6f1e51a925 Chris Morgan 2025-08-12  391  	regmap_update_bits(regmap, BQ25703_CHARGE_OPTION_0,
-7f3b6f1e51a925 Chris Morgan 2025-08-12 @392  			   BQ25703_EN_LWPWR, !BQ25703_EN_LWPWR);
-
-Yeah.  This really looks like it should be bitwise negate ~ instead of
-logical negate !.
-
-7f3b6f1e51a925 Chris Morgan 2025-08-12  393  
-7f3b6f1e51a925 Chris Morgan 2025-08-12  394  	regmap_update_bits(regmap, BQ25703_ADC_OPTION,
-7f3b6f1e51a925 Chris Morgan 2025-08-12  395  			   BQ25703_ADC_CONV_EN, BQ25703_ADC_CONV_EN);
-7f3b6f1e51a925 Chris Morgan 2025-08-12  396  
-7f3b6f1e51a925 Chris Morgan 2025-08-12  397  	regmap_update_bits(regmap, BQ25703_ADC_OPTION,
-7f3b6f1e51a925 Chris Morgan 2025-08-12  398  			   BQ25703_ADC_START, BQ25703_ADC_START);
-7f3b6f1e51a925 Chris Morgan 2025-08-12  399  
-7f3b6f1e51a925 Chris Morgan 2025-08-12  400  	regmap_update_bits(regmap, BQ25703_ADC_OPTION,
-7f3b6f1e51a925 Chris Morgan 2025-08-12  401  			   BQ25703_ADC_FULL_SCALE, BQ25703_ADC_FULL_SCALE);
-7f3b6f1e51a925 Chris Morgan 2025-08-12  402  
-7f3b6f1e51a925 Chris Morgan 2025-08-12  403  	regmap_update_bits(regmap, BQ25703_ADC_OPTION,
-7f3b6f1e51a925 Chris Morgan 2025-08-12  404  			   BQ25703_ADC_CH_MASK,
-7f3b6f1e51a925 Chris Morgan 2025-08-12  405  			   (BQ25703_ADC_CMPIN_EN | BQ25703_ADC_VBUS_EN |
-7f3b6f1e51a925 Chris Morgan 2025-08-12  406  			   BQ25703_ADC_PSYS_EN | BQ25703_ADC_IIN_EN |
-7f3b6f1e51a925 Chris Morgan 2025-08-12  407  			   BQ25703_ADC_IDCHG_EN | BQ25703_ADC_ICHG_EN |
-7f3b6f1e51a925 Chris Morgan 2025-08-12  408  			   BQ25703_ADC_VSYS_EN | BQ25703_ADC_VBAT_EN));
-7f3b6f1e51a925 Chris Morgan 2025-08-12  409  
-7f3b6f1e51a925 Chris Morgan 2025-08-12  410  	return ret;
-7f3b6f1e51a925 Chris Morgan 2025-08-12  411  }
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts b/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
+index f9f633aebb64..aee6643e33ab 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
+@@ -199,7 +199,7 @@ brcmf: wifi@1 {
+ 		compatible = "brcm,bcm43455-fmac", "brcm,bcm4329-fmac";
+ 		reg = <1>;
+ 		interrupt-parent = <&gpio0>;
+-		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
++		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_HIGH>;
+ 		interrupt-names = "host-wake";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&wifi_host_wake>;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.48.1
 
 
 _______________________________________________
