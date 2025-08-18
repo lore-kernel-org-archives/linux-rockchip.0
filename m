@@ -4,84 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C388CA0EE4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 18:41:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCCDECA0ED1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 18:46:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WohTC2Lz4p4oJxLcBrJk2LycuWveVlF1pU09LC3B0P8=; b=TpzOEN8K9iHBap
-	vk8BlMyd0qLljgGDnk7nKHNQ/M4HtTUaER+4e9lPV9jeN5k6U2nAEw/ocrSCGd8cl9oG1qLl8axQ8
-	b/z2CbQYaM5lIz7MjtqbxSqJ4yt4VJvYp9ucK5FOn2JvpurAD6Uuff2ipd6G8TzCySHAZriGbYUFn
-	pdgSCTrZNstVaKCQ2RAxkvOkq5IAf5KkRkQiqigYrvvBCpodEpMBYlf6+isCmfisCfYye3gpucwDj
-	F+KqjtA5WNi380Og9KjxWc/WoWQYjLiPoXi6o+sc8M79ccI832pp/IUa9WDlb0fM3QJIDtt8zWrGi
-	YXY73CR3iax0Jggh1Qqg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yPZQ4hqCmAQ+aL2JwX1QyUxEBVAxsyZzRhCwf0+MguQ=; b=k9YuU/Vqm8RVMk
+	M9P3QYsckg0MRvQ8w4krLdTlG3/Q4LtI4UrOpMkjOyJvgK7NQ91q1AwOfrTXQDyHdnIL1sis0YggY
+	3qwQhxZRqmfrHQZ2Vw31pkFO+8y79YduaQk/QAnMysqAgRGO3XriJ1unCFWA31eC4dRCJF1WHCH3y
+	XGvrTOira1KviIisW2bDbhPhegqhbSilYrEPA6dI053XRtjXSZlC36yMOzpLe8xbPyb2a/MiNm+7+
+	8Brna0J1ZIX4y9q38MzJiV6RYPwLHmIi6FgSGyxtQaRMgqjAfcy5guySPLQH09CTDba7yfIpWzUnl
+	hfvodfzmpGAXgIURRX4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo4n0-00000008Npw-2ZCX;
-	Mon, 18 Aug 2025 18:41:02 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uo4s6-00000008ONh-3F6G;
+	Mon, 18 Aug 2025 18:46:18 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo4Mj-00000008IFo-0QJ2;
-	Mon, 18 Aug 2025 18:13:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1755540830;
-	bh=vNPbjyOpkG8XcByKMjTJekP9BZmb7pofH0G0rNFewM4=;
-	h=From:Date:Subject:To:Cc:From;
-	b=QfMhOErSf6V6FAROpst6qSfWmMfdEU2swDhhQpVeNZiJUCOG/0dLZd02RGwAcmT0I
-	 2Ik0VrA67saMdINlkItZAK5pq1bLbMoiEI+fkAnBSFSmTB4vMRjMb5zh/vOPao9KLa
-	 S0PfVOD/ecrFmZb7U/MbB3xcA3byycSJJNVVAhjC0kjUNJqKZCIf/VdyI8/lRMIEJK
-	 HHNpWZ/EDsrPl3qJap007HC2BE1CReq82Ps2OIU2OKDf1IYiPNgCxRDEjzRyfSz491
-	 iIjY+1ysVKYHZ1v+deKgZvldDtwVxTsRXRlMB4YSuidANMpX40bmO0XdK+195b1367
-	 mLN+6nmlTvzDg==
-Received: from jupiter.universe (dyndsl-091-248-210-167.ewe-ip-backbone.de [91.248.210.167])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C6BAC17E04C0;
-	Mon, 18 Aug 2025 20:13:50 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 8B3F4480044; Mon, 18 Aug 2025 20:13:50 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Mon, 18 Aug 2025 20:13:44 +0200
-Subject: [PATCH v3] arm64: dts: rockchip: add USB-C support for ROCK
- 5B/5B+/5T
+	id 1uo4Wq-00000008KBi-21jQ;
+	Mon, 18 Aug 2025 18:24:21 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-afcb7af30a5so733945066b.3;
+        Mon, 18 Aug 2025 11:24:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1755541459; x=1756146259; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=mpNFY2zr1VsygjGbzhz+uBinN58GcwWHwnpY7MGqkVs=;
+        b=mqQMZHk3/UVxsQfa+dO4+WNf/efYPzm2GKXSEfZHpUvsjYo0gZzK31T3RhgaE685t5
+         PHhTgenfUitxKigPx9iZWoBwfpfFMqKuARAZ29prCbGC34BppVj8iS045em5KB/3vd+k
+         KL5lYn7HAvNQ2e+EAcXMMB8MgXZb44moGeEsdwG6MHv+aH/dI54ZGMvZCtAYBlkJMCWH
+         ICT5TKxSSkrwgP7L6zfpbODh/H4vhzmmjGIVRtaQbGNzWyqulfzExxQX+ONnjILacgZf
+         Pb+FlDQ0PJNKw/W91Z56nxZ8/gX9qhiVRhx0RQYjeIkkh29zI/VuJMcLTtD5vIF4dnet
+         DDbw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755541459; x=1756146259;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=mpNFY2zr1VsygjGbzhz+uBinN58GcwWHwnpY7MGqkVs=;
+        b=hPfgkSnO9r8T5bu4MQBuQzb9KSOQ+CgD98xEwIRfvXYkVk/X7FQgathlI0kW6lrW3r
+         z3EW0bKLrUivDk4N4mhoRocvP5OUwGhQqJiNCTbhdGE2ZaMru5CSh7tDJH+xTaBT57xb
+         hKsRbMvfOdtc5+g0JofReu0FXEz+n+sGkRhPZ1ffyBc9AvEDpyJxkBKUNqO2ZUDwATVK
+         y2e0Iv9oo7106Wjs3OanIynIGbDlZ+Rx5Y2EP6bqtMpicXRgEpPlKAH3vrQLjJyZF+Uz
+         SjU17T2NP6go/ffXPDTwrLBc8d+O5dHUXyIwso5WcKKE3LDXS5dNjaKIM18vT9x6Rs6x
+         0bow==
+X-Forwarded-Encrypted: i=1; AJvYcCVy/U/T6zM4drcLtpWyvyzYSJcU44FW9+dh6Em0K9Yt/oUbdqQt7oB1eWaPdAs4hzlM0rH3HHlQB0eoaU90y2m2@lists.infradead.org, AJvYcCXcXbOZpbOgwJyxb0bG4npbMwi6Vy11bavcKskVeFMh6T3pmO3x0hKP/VmVAN0Zfqn9YJXQM27EhEMdi0kjCvQ=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxASmAjOsmHp9N3klZSwBnc9xc6W1y+dqruV/tpzW9lZS/TV4FT
+	Z6Nzm22/ePuIjYKEuEgaeC0U4Qh7A5njpOFNIVV8IgDgJkysibB4GtQ=
+X-Gm-Gg: ASbGncsLjosBWkbdOWIOdHFTUA5+pxMWMHXA7+Y6J4NAZZTipb2YeJxObugqcItddPP
+	vQLRi7veTC5/4Bj2UC8iAOTzSzfdxW6kTkQixK0m6hgBqEgTxR0iPdGV8CPJvPpXu0FZXVAb+Py
+	X2xWF2OAN+k7d5RrgUAXK6L/VGtYlnyvC0yY5OIdf1ANkjA93UvPrlK6xTfx+vq2JMTBAaX1JuM
+	h/a1EAXfcCqRBOd04infEVtME51MiAxthPThyaasr33ufIstn5HY28bCQS2m2bwTo+uC3dMlFHD
+	JYo9i6N2irQRg7RECnue5O101s7Fj+oqsb/bIthkLMLeWt4D92A4BcNsxgO2sJ/FRDlWC5ETrOj
+	Fo5amPaZuVri4/Dmf2gvRRIq0duTFLzR/aRvhYuvmMB3VtYMzS7UZLrxrMHNYxC6KQe0W
+X-Google-Smtp-Source: AGHT+IEP3Kjp2u2J+yPrgUCMTkqSRo7LZ5tDQMH0zZ3JdCM3es1AYojWLj3afepK7WSFanZwbTQU7g==
+X-Received: by 2002:a17:906:f5aa:b0:af9:71fc:726 with SMTP id a640c23a62f3a-afdd98e33c4mr44524866b.17.1755541458156;
+        Mon, 18 Aug 2025 11:24:18 -0700 (PDT)
+Received: from ?IPV6:2a02:810b:f13:8500:beb0:cc44:a532:3452? ([2a02:810b:f13:8500:beb0:cc44:a532:3452])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afcdcea0ebdsm851063466b.56.2025.08.18.11.24.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Aug 2025 11:24:17 -0700 (PDT)
+Message-ID: <5593866a-29b2-431b-891b-c15cb2da8361@gmail.com>
+Date: Mon, 18 Aug 2025 20:24:16 +0200
 MIME-Version: 1.0
-Message-Id: <20250818-rock5bp-for-upstream-v3-1-d13f3cdec86c@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAFdto2gC/4XNTQ6CMBCG4auQrq3pjxVw5T2MC1qm0KAtmWKjI
- dzdwsa4MC7fL5lnZhIBHURyKmaCkFx0weeQu4KYvvEdUNfmJoIJxaQ4UAxmUHqkNiB9jHFCaO7
- UtpXSjGlVS03y6Yhg3XNjL9fcvYtTwNf2JfF1/QMmThk9Cl5Ca7nSvD4PgB5u+4AdWcUkPopi1
- Q9FrEpZMimN4Y0RX8qyLG8fFqTz/wAAAA==
-X-Change-ID: 20250324-rock5bp-for-upstream-fd85b00b593b
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=9128; i=sre@kernel.org;
- h=from:subject:message-id; bh=vNPbjyOpkG8XcByKMjTJekP9BZmb7pofH0G0rNFewM4=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGijbV4+WI1l+7bVC6KJ4HiKS6TevtgAJywd+
- npkPm/xL6PMZYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJoo21eAAoJENju1/PI
- O/qa9q4QAJGTsa96GuiyzMyN31E/2sQDP1x+bwYt+E9lsFLANjPUptk3tNZI822UPoL6aacWZ4f
- eFOnmryrKoBhz4JiwSqPQoW7yTwOJSJHsHKL9dsIDrmO0FXJx4eFifZxoCQIGif/IeBWBEieMlG
- 7Vcur65mypXHoNtNqTUfXnmUZ6WgWoKDn+KK2zG0moHzWUXaDcFBpZpfZpbXeLWpTJ+Z7Oi3ola
- Yg58sSCv69UwdVJ9w9pZt50iDlq8As3i/vXqBsBewotPGCLHvqanKB9P4s6zijOK72GR1wd/F0D
- vqfptGnIHG9Qh9c0RLbGDL0OMagVIc3DI/r6SyULcC0/CWZmEk+OtbMQnnfuM9fEWVetSoOYZ2L
- BiJZ2IJ/L3WLVRbXA7wUaXrzcU0FLEcAqF4BU1jVO9Fl+hkzukf7KoEi7cQEdNWGqeK4Ynajw9x
- VdO6jwSTAAdgtP5NikpwDJ6T6DWWwU+zMTq3p1eZgLiU6ah12SfBE6EAN8RS46CEUIhMaMrjlzZ
- 2F/g1QA7aAtnbWuy7segbZZtAxnv6qGuMCa+DrHGxRBs3ysQqv5z2D1hAIzzoBf4HaOCqcyStnP
- EBAIG/itWjjVCjoaFlwL8RwRu2wZo67xjPDmZ8SLONduovtQsnT+kxNu46lVRiKEnTWg4ek9Fo3
- EIcjjiMDiL1rXNYsDSYkpmg==
-X-Developer-Key: i=sre@kernel.org; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Fix Bluetooth interrupts flag
+ on Neardi LBA3368
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Hsun Lai <i@chainsx.cn>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Cc: stable+noautosel@kernel.org
+References: <20250818090445.28112-3-krzysztof.kozlowski@linaro.org>
+ <20250818090445.28112-4-krzysztof.kozlowski@linaro.org>
+Content-Language: en-US
+From: Alex Bee <knaerzche@gmail.com>
+In-Reply-To: <20250818090445.28112-4-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_111353_301544_336FDD99 
-X-CRM114-Status: GOOD (  17.85  )
+X-CRM114-CacheID: sfid-20250818_112420_544317_280F8772 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,332 +100,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add hardware description for the USB-C port in the Radxa ROCK 5 Model B
-family. This describes the OHCI, EHCI and XHCI USB parts. The DisplayPort
-AltMode is only partially described, as bindings for the necessary
-DisplayPort controller are still being reviewed.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
-This series adds USB-C support for the ROCK 5B, ROCK 5B+ and ROCK 5T.
+Am 18.08.25 um 11:04 schrieb Krzysztof Kozlowski:
+> GPIO_ACTIVE_x flags are not correct in the context of interrupt flags.
+> These are simple defines so they could be used in DTS but they will not
+> have the same meaning: GPIO_ACTIVE_HIGH = 0 = IRQ_TYPE_NONE.
+>
+> Correct the interrupt flags, assuming the author of the code wanted same
+> logical behavior behind the name "ACTIVE_xxx", this is:
+>    ACTIVE_HIGH  => IRQ_TYPE_LEVEL_HIGH
+>
+> Fixes: 7b4a8097e58b ("arm64: dts: rockchip: Add Neardi LBA3368 board")
+> Cc: <stable+noautosel@kernel.org> # Needs testing, because actual level is just a guess
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>
+> ---
+>
+> Please kindly test... Not cc-ing stable on purpose, because this might
+> have impact, so needs actual testing.
 
-Now that [0] has been merged, this should finally work reasonably
-stable. Note, that there is a regression in 6.17-rc1, which breaks
-stable operation again. I've send a revert of that in [1]. I think
-it's time to enable the USB-C interface, so that we can claim further
-breaks as proper regressions :)
+Tested-By: Alex Bee <knaerzche@gmail.com>
 
-[0] https://lore.kernel.org/all/20250704-fusb302-race-condition-fix-v1-1-239012c0e27a@kernel.org/
-[1] https://lore.kernel.org/linux-usb/20250818-fusb302-unthreaded-irq-v1-1-3a9a11a9f56f@kernel.org/
+Thanks,
 
-Changes in PATCHv3:
- - Link to v2: https://lore.kernel.org/r/20250508-rock5bp-for-upstream-v2-0-677033cc1ac2@kernel.org
- - Rebased to latest for-next branch from Heiko
-   - Dropped merged patches for initial ROCK 5B+ support
- - Renamed series, since it just adds USB-C support now
- - Fix pinctrl for Rock 5B SBU DC pins
- - Also handle ROCK 5T
+Alex
 
-Changes in PATCHv2:
- - Link to v1: https://lore.kernel.org/r/20250324-rock5bp-for-upstream-v1-0-6217edf15b19@kernel.org
- - Replaced DT binding patch with the version from NAOKI
- - Dropped unused pinctrl for vcc5v0_host_en from the shared DT
- - Moved USB-C SBU DC pins to board specific files, since they differ
-   between Rock 5B and Rock 5B+
- - Added pinmux for SBU DC pins
- - Rebased to latest version of Heiko's for-next branch
- - Disable USB-C on Rock 5B for now
----
- .../boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi   | 136 +++++++++++++++++++++
- .../boot/dts/rockchip/rk3588-rock-5b-plus.dts      |  12 ++
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |  12 ++
- arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts    |  12 ++
- 4 files changed, 172 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-index 612808d2b4c5d4c0de998798a0ce3002f64b32e0..f138e8df511a45a3f3de83024f5ed0fb58f38be2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-@@ -5,6 +5,7 @@
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/leds/common.h>
- #include <dt-bindings/soc/rockchip,vop2.h>
-+#include <dt-bindings/usb/pd.h>
- #include "rk3588.dtsi"
- 
- / {
-@@ -55,6 +56,18 @@ rfkill-bt {
- 		shutdown-gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
- 	};
- 
-+	vbus5v0_typec: vbus5v0-typec {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio2 RK_PB6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vbus5v0_typec_en>;
-+		regulator-name = "vbus5v0_typec";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
- 	vcc3v3_pcie2x1l0: regulator-vcc3v3-pcie2x1l0 {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -291,6 +304,76 @@ regulator-state-mem {
- 	};
- };
- 
-+&i2c4 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c4m1_xfer>;
-+	status = "okay";
-+
-+	usbc0: usb-typec@22 {
-+		compatible = "fcs,fusb302";
-+		reg = <0x22>;
-+		interrupt-parent = <&gpio3>;
-+		interrupts = <RK_PB4 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usbc0_int>;
-+		vbus-supply = <&vbus5v0_typec>;
-+		/*
-+		 * When the board is starting to send power-delivery messages
-+		 * too late (5 seconds according to the specification), the
-+		 * power-supply reacts with a hard-reset. That removes the
-+		 * power from VBUS for some time, which resets te whole board.
-+		 */
-+		status = "fail";
-+
-+		usb_con: connector {
-+			compatible = "usb-c-connector";
-+			label = "USB-C";
-+			data-role = "dual";
-+			/* fusb302 supports PD Rev 2.0 Ver 1.2 */
-+			pd-revision = /bits/ 8 <0x2 0x0 0x1 0x2>;
-+			power-role = "sink";
-+			try-power-role = "sink";
-+			op-sink-microwatt = <1000000>;
-+			sink-pdos =
-+				<PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>,
-+				<PDO_VAR(5000, 20000, 5000)>;
-+
-+			altmodes {
-+				displayport {
-+					svid = /bits/ 16 <0xff01>;
-+					vdo = <0xffffffff>;
-+				};
-+			};
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+					usbc0_hs: endpoint {
-+						remote-endpoint = <&usb_host0_xhci_to_usbc0>;
-+					};
-+				};
-+
-+				port@1 {
-+					reg = <1>;
-+					usbc0_ss: endpoint {
-+						remote-endpoint = <&usbdp_phy0_ss>;
-+					};
-+				};
-+
-+				port@2 {
-+					reg = <2>;
-+					usbc0_sbu: endpoint {
-+						remote-endpoint = <&usbdp_phy0_sbu>;
-+					};
-+				};
-+			};
-+		};
-+	};
-+};
-+
- &i2c6 {
- 	status = "okay";
- 
-@@ -445,6 +528,16 @@ pcie3_vcc3v3_en: pcie3-vcc3v3-en {
- 			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-+
-+	usb {
-+		usbc0_int: usbc0-int {
-+			rockchip,pins = <3 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		vbus5v0_typec_en: vbus5v0-typec-en {
-+			rockchip,pins = <2 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
- };
- 
- &pwm1 {
-@@ -860,6 +953,14 @@ &uart2 {
- 	status = "okay";
- };
- 
-+&u2phy0 {
-+	status = "okay";
-+};
-+
-+&u2phy0_otg {
-+	status = "okay";
-+};
-+
- &u2phy1 {
- 	status = "okay";
- };
-@@ -887,6 +988,27 @@ &u2phy3_host {
- 	status = "okay";
- };
- 
-+&usbdp_phy0 {
-+	mode-switch;
-+	orientation-switch;
-+	status = "okay";
-+
-+	port {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		usbdp_phy0_ss: endpoint@0 {
-+			reg = <0>;
-+			remote-endpoint = <&usbc0_ss>;
-+		};
-+
-+		usbdp_phy0_sbu: endpoint@1 {
-+			reg = <1>;
-+			remote-endpoint = <&usbc0_sbu>;
-+		};
-+	};
-+};
-+
- &usbdp_phy1 {
- 	status = "okay";
- };
-@@ -899,6 +1021,20 @@ &usb_host0_ohci {
- 	status = "okay";
- };
- 
-+&usb_host0_xhci {
-+	usb-role-switch;
-+	status = "okay";
-+
-+	port {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		usb_host0_xhci_to_usbc0: endpoint {
-+			remote-endpoint = <&usbc0_hs>;
-+		};
-+	};
-+};
-+
- &usb_host1_ehci {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
-index 74c7b6502e4dda4b774f43c704ebaee350703c0d..5e984a44120e4086fce9e7b72b3db1feaa820275 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
-@@ -99,12 +99,24 @@ pcie3x2_rst: pcie3x2-rst {
- 	};
- 
- 	usb {
-+		usbc_sbu_dc: usbc-sbu-dc {
-+			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>,
-+					<0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
- 		vcc5v0_host_en: vcc5v0-host-en {
- 			rockchip,pins = <1 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- };
- 
-+&usbdp_phy0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&usbc_sbu_dc>;
-+	sbu1-dc-gpios = <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>;
-+	sbu2-dc-gpios = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
-+};
-+
- &vcc5v0_host {
- 	enable-active-high;
- 	gpio = <&gpio1 RK_PA1 GPIO_ACTIVE_HIGH>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 9407a7c9910ada1f6c803d2e15785a9cbd9bd655..8ef01010d985bab42db33f88e5e50a3e96053288 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -38,12 +38,24 @@ &uart6 {
- 
- &pinctrl {
- 	usb {
-+		usbc_sbu_dc: usbc-sbu-dc {
-+			rockchip,pins = <4 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>,
-+					<4 RK_PA7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
- 		vcc5v0_host_en: vcc5v0-host-en {
- 			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- };
- 
-+&usbdp_phy0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&usbc_sbu_dc>;
-+	sbu1-dc-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
-+	sbu2-dc-gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
-+};
-+
- &vcc5v0_host {
- 	enable-active-high;
- 	gpio = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-index 258c7400301d7f77517197ab433946bbfa39cf63..b91ef6389bb0e413b56b9618e8707957410d1285 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-@@ -95,6 +95,18 @@ hp_detect: hp-detect {
- 			rockchip,pins = <4 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-+
-+	usbc_sbu_dc: usbc-sbu-dc {
-+		rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>,
-+				<0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
-+	};
-+};
-+
-+&usbdp_phy0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&usbc_sbu_dc>;
-+	sbu1-dc-gpios = <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>;
-+	sbu2-dc-gpios = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
- };
- 
- &vcc3v3_pcie2x1l0 {
-
----
-base-commit: 7f0817eee7ba40b48e956955d6fd8ba14750168c
-change-id: 20250324-rock5bp-for-upstream-fd85b00b593b
-
-Best regards,
--- 
-Sebastian Reichel <sre@kernel.org>
-
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3368-lba3368.dts | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lba3368.dts b/arch/arm64/boot/dts/rockchip/rk3368-lba3368.dts
+> index b99bb0a5f900..b9801a691b48 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3368-lba3368.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368-lba3368.dts
+> @@ -609,7 +609,7 @@ &uart0 {
+>   
+>   	bluetooth {
+>   		compatible = "brcm,bcm4345c5";
+> -		interrupts-extended = <&gpio3 RK_PA7 GPIO_ACTIVE_HIGH>;
+> +		interrupts-extended = <&gpio3 RK_PA7 IRQ_TYPE_LEVEL_HIGH>;
+>   		interrupt-names = "host-wakeup";
+>   		clocks = <&rk808 RK808_CLKOUT1>;
+>   		clock-names = "lpo";
 
 _______________________________________________
 Linux-rockchip mailing list
