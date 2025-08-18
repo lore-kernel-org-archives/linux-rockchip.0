@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67BF1CA0EF1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEAD8CA0EE4
 	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 23:27:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oKKAmn32nvcQkKGbSG7Hz91ZqVLWbkcN33FTa5FDReM=; b=eO43wV/v+LrFVh
-	VNEPEQaENvkn46KpieRfwnFjAeFgm4qqspLp57j0opvXzmpqmkBGHh8Vlp5oLOairPSo65/9IoKQh
-	qtuJT0SXtpmgwEvEXJwlU1e3dxGxIeg15cF7ywf83IjhhLsy65S00m2+OervUCtfGbh/HFluHzNGb
-	kN/Ag+OFnNYqbfGx0k45Vfca0YYbDw/PRbTjO6ONv6fbVK4vtCPzhwW3uf0OtFc1fOe1C7k7dJFA+
-	rbOPxiTXBLXz5kEvsA4C3UBeEGcrWcq65rlg+B1jkDfvSpToAeUAhlxISy+a84CFGFEsxk5B9QvZG
-	NuYVh+TeQJce2zXglTDQ==;
+	List-Owner; bh=yHDMTztoncGqW2lJbNL0gNpKEK9n3ywCCsFUaOJsjkk=; b=PiKN8jQ/lGPpdT
+	eCw0zGouXoknoSMkpdgWRY108G2Hl0P+ioEYN4k+EAwGWZfbnsxa0JXYrqzNAI93nBtcNVCSJVD+1
+	9loclQTgfrab8rxhdB0NkiSq/ojgTBJEKpI6IJg+YEpqvgNqWG2Ri6WdXAKt2pIuwbr1HJWkYcY8p
+	veb5aVT7+L0H0st1blSs5Mv7rkqH+lhP1BmvEMyUFEdhATFRlBbTy193fH4PkD3nDHg5BfURdg4Iw
+	Fk9ICtBUb6OaEqHduondAZbvDbGd21LPGcGfzTTpjicPRTrrxPE6RfkzUnsLnAXSyi8X2b3NJGAss
+	LeaM+CGoORnAC+kjyArQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo9GQ-00000008ufJ-37X1;
-	Mon, 18 Aug 2025 23:27:42 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uo9GR-00000008ugM-42yE;
+	Mon, 18 Aug 2025 23:27:43 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo93i-00000008tSK-2Qmh;
+	id 1uo93j-00000008tTD-11Vz;
 	Mon, 18 Aug 2025 23:14:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C4EA446069;
+	by dfw.source.kernel.org (Postfix) with ESMTP id E5BE35C5EE1;
 	Mon, 18 Aug 2025 23:14:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 79E4FC19421;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 72660C116C6;
 	Mon, 18 Aug 2025 23:14:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1755558873;
-	bh=C8JbbdDqM8lge0snDOXhphGmPRbweJnkcQYl4O2Lpuk=;
+	bh=0xx0IJoMzOucP0haOQqdQWmzEebko4LTzBsDTQcA7Mo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=M8oa5Jd73CLwo3dCzUa7TgbVZrBH+pXaskBKXW5ypYFF9nD9xQu8MsIXmIiLBLBq/
-	 jPJh6p/yOiVu/Exxt8famo5syinIp1GfwLXgYa9SrIubDy5kkR0D7qULRKMinz2LLV
-	 MWxdJWjwPs697lCFUwLke8uYvZyXotSf/zP/sZ/CLqWrGiW8Qd1Z1IK845Jcr1jVNg
-	 nbFoJ/hP/1AFPUoaf+KLcFkwHxmfkquIQo3lpya79QxY7UTH8Lthyom7lj8rLPMAqi
-	 bS8ONHQ1U3MPPCtcVsllK7ct42SRFrAQWcCWRIGlIUq0PvT/ZQfF/ttsFD/2GIWwIF
-	 M9buD6BtQp6nA==
+	b=ERDuXmB5lB9maQtFAB+RIRVWamyRF2dRwA3I30HdV2xeolXCeNCZ/THEG+sROyiOL
+	 x7Qnnpxu9/Go3IMJ9HWrnJu+unEOOCRVx69UxFP6NSmLgEW/KFjC/6XKctPCoQ7R5n
+	 Hp8rwWz+QHSMhiPXOn2sQ64HaxLcJkw/9RpY4faz0/Gg7/aQn4MQyo4lgbEghQB7Ff
+	 V816OuOFvkiS1gR2AfwWrXHaa8izQfo0oR6vLpyJDzyCSQO7Gr9iM9GRGFZFbl5faN
+	 /QWcFoT3Wwz56BMAv8vWE5yh5Ki+oVyZbxGoHLnjl7oEhbTWeGg0gBnfUh3rL/5VMb
+	 03DNdJ0McfZSA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 70EB6CA0EF1;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 63104CA0EE4;
 	Mon, 18 Aug 2025 23:14:33 +0000 (UTC)
 From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Tue, 19 Aug 2025 01:00:37 +0200
-Subject: [PATCH v2 3/7] dt-bindings: phy: rockchip-inno-csi-dphy: add
- rk3588 variant
+Date: Tue, 19 Aug 2025 01:00:36 +0200
+Subject: [PATCH v2 2/7] dt-bindings: phy: rockchip-inno-csi-dphy: make
+ power-domains non-required
 MIME-Version: 1.0
-Message-Id: <20250616-rk3588-csi-dphy-v2-3-7a94f079b712@collabora.com>
+Message-Id: <20250616-rk3588-csi-dphy-v2-2-7a94f079b712@collabora.com>
 References: <20250616-rk3588-csi-dphy-v2-0-7a94f079b712@collabora.com>
 In-Reply-To: <20250616-rk3588-csi-dphy-v2-0-7a94f079b712@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -66,21 +66,21 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  linux-phy@lists.infradead.org, 
- Michael Riesch <michael.riesch@collabora.com>
+ Michael Riesch <michael.riesch@collabora.com>, stable@kernel.org
 X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1755558041; l=2827;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1755558041; l=1044;
  i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=PMDzlrQeY+NRmFqopM/ChR6/5pYbe3wSrubFJu+0sMU=;
- b=AEtLzU240l3giMFwyKl21EH9Gejgiu6qeYmvs3lvFhzWFKQ1tm7t0mCqCxz29QeDKQCU7vmKM
- w70rtAqj0rKAfrDEtilu6hzdb8YHSeHoMX79gE1BCU3lqkrWLYpYDVC
+ bh=Go0u6t1x/ipwgH+GR3AzJirmRWY+4+iYdBgXNBVJROU=;
+ b=LRvqcmRsfi+qNcFR50w3OSyZhd3H4xAWaGzAUW/3tRJeUk/K7JfpQIr3eEisnHF/HQXqwjwH2
+ 2yocIw/v3I4DPtSQxqHpr+kuwYNjhpQJIldjuwHWgLcUy3U7x7opAhA
 X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
  pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
 X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
  with auth_id=371
 X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_161434_665657_020FECB7 
-X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-CacheID: sfid-20250818_161435_366633_E1A1C26D 
+X-CRM114-Status: UNSURE (   8.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,104 +101,31 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Michael Riesch <michael.riesch@collabora.com>
 
-The Rockchip RK3588 variant of the CSI-2 DPHY features two reset lines.
-Add the variant and allow for the additional reset.
+There are variants of the Rockchip Innosilicon CSI DPHY (e.g., the RK3568
+variant) that are powered on by default as they are part of the ALIVE power
+domain.
+Remove 'power-domains' from the required properties in order to avoid false
+negatives.
 
+Fixes: 22c8e0a69b7f ("dt-bindings: phy: add compatible for rk356x to rockchip-inno-csi-dphy")
+Cc: stable@kernel.org
 Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 ---
- .../bindings/phy/rockchip-inno-csi-dphy.yaml       | 60 ++++++++++++++++++++--
- 1 file changed, 56 insertions(+), 4 deletions(-)
+ Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
-index 42da616ae2e3..10197cc9dc47 100644
+index 5ac994b3c0aa..42da616ae2e3 100644
 --- a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
 +++ b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
-@@ -21,6 +21,7 @@ properties:
-       - rockchip,rk3326-csi-dphy
-       - rockchip,rk3368-csi-dphy
-       - rockchip,rk3568-csi-dphy
-+      - rockchip,rk3588-csi-dphy
- 
-   reg:
-     maxItems: 1
-@@ -39,18 +40,50 @@ properties:
-     maxItems: 1
- 
-   resets:
--    items:
--      - description: exclusive PHY reset line
-+    minItems: 1
-+    maxItems: 2
- 
-   reset-names:
--    items:
--      - const: apb
-+    minItems: 1
-+    maxItems: 2
- 
-   rockchip,grf:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-       Some additional phy settings are access through GRF regs.
- 
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - rockchip,px30-csi-dphy
-+              - rockchip,rk1808-csi-dphy
-+              - rockchip,rk3326-csi-dphy
-+              - rockchip,rk3368-csi-dphy
-+              - rockchip,rk3568-csi-dphy
-+    then:
-+      properties:
-+        resets:
-+          items:
-+            - description: exclusive PHY reset line
-+
-+        reset-names:
-+          items:
-+            - const: apb
-+    else:
-+      properties:
-+        resets:
-+          items:
-+            - description: APB reset line
-+            - description: PHY reset line
-+
-+        reset-names:
-+          items:
-+            - const: apb
-+            - const: phy
-+
- required:
-   - compatible
-   - reg
-@@ -77,3 +110,22 @@ examples:
-         reset-names = "apb";
-         rockchip,grf = <&grf>;
-     };
-+  - |
-+    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
-+    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        phy@fedc0000 {
-+            compatible = "rockchip,rk3588-csi-dphy";
-+            reg = <0x0 0xfedc0000 0x0 0x8000>;
-+            clocks = <&cru PCLK_CSIPHY0>;
-+            clock-names = "pclk";
-+            #phy-cells = <0>;
-+            resets = <&cru SRST_P_CSIPHY0>, <&cru SRST_CSIPHY0>;
-+            reset-names = "apb", "phy";
-+            rockchip,grf = <&csidphy0_grf>;
-+        };
-+    };
+@@ -57,7 +57,6 @@ required:
+   - clocks
+   - clock-names
+   - '#phy-cells'
+-  - power-domains
+   - resets
+   - reset-names
+   - rockchip,grf
 
 -- 
 2.39.5
