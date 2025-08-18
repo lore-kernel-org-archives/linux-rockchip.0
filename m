@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED4BDCA0EF1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 23:35:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DDA3CA0EF2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 23:35:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n20DegSEnIAK9xGkRY+tDVAM3JreUjSo4G1/fulsSoM=; b=R/0dEuFQBg7TRt
-	gwF544fOlGrvOogOLHSFl4fnNL5wvVssn3I3ghANdW+sI7Gfq/k0WFWpijdiQDQ5xyy3Qe0iSuhhd
-	KKYMFBRE7skq65qiCQ6+n5swhDZUgonws2Yym+HER+v34NdmTEaSS653mJG55b+RkDEjusBAOu95M
-	WrfxGpElCneDG8HjOsGcsLyu1G8zKtD/Gs1VRC3wuGsuE1PYDdS9w2JtjAOuLEgcp9q2HHRemvAUR
-	vF60+gpRcNTWCnwn+cAHhnR1Mj4rVeeq8mcDCgyZHCYSNLDapLTksvrWBuX0oSzKXMKekbuxa6xFi
-	UjdfbzEqY1em+iZETPDQ==;
+	List-Owner; bh=vJvOXIIxWYR1gQmSpr2Mzo/1TcPubfWpGx3Y8A7YyKU=; b=hBmokAmoZ73iIH
+	qd5vty9aNPNs2Q5ybdTFK5+cmGNzW679Q1itJkkwGgbk/gJcy72ZJaBAs1Cq1yxb3D7cpnei5pMtQ
+	sBcIuyAYmGO6NAXP34WrbnPJEArMt2WVc6WhdLoy2q2G2hd7uqooXQ3+hhuWHP9JBMNMVixVQqxx+
+	ZFk3ZslDqqLMYYsKfy2czmV6t50EjZDoPGdWEeFI/dpFeim8Kd5wFse+a7JOmRfX4EF/OXiz7RvkM
+	9Fydn+4ReqtlAyAW24WbZjiReRGUZUUVHjJPc+OsVinuiseH4notx+GhAnBwohycEsaJXlfNEKdbl
+	CtuzPocwgwXRIPRLZ9Xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo9O2-00000008vGw-3wUx;
-	Mon, 18 Aug 2025 23:35:34 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uo9O3-00000008vHS-2MAT;
+	Mon, 18 Aug 2025 23:35:35 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo93o-00000008tUu-0TJe;
+	id 1uo93o-00000008tUx-1d16;
 	Mon, 18 Aug 2025 23:14:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7CC665C61D6;
+	by sea.source.kernel.org (Postfix) with ESMTP id 41D2F46087;
 	Mon, 18 Aug 2025 23:14:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 92DB9C19423;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 854FFC19422;
 	Mon, 18 Aug 2025 23:14:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1755558873;
-	bh=U9NS79r/yfxF2enN0dgFxeqELCwhpIKV/1W2Bi08Osk=;
+	bh=wzR4Qs8i+nZbzUbJH0z7ZvWkf0jeanCfOT0T/c8WVY0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=rxic9Bhp/Zc8FxqDitKaA5Wn2aSHA8bODubdPfVHZBBOpNG28hv+7uGFdp2uQc04/
-	 g0UaIvahBES+2ZZwbRTv/+yXx/Z4joKCGDYH3lIm8avB/OooAWAgq+EAQ76yNF+GUC
-	 SkUeE8e5+9RdMX+QnvtphhJAM3zi0SrrJDn9FiNjUVD7jwzibnyCL0YHF/ZoPQ2jp5
-	 BJQ4F9Sci1l/fj7qS6sMdy/VWvK9+uUS2ls6uulF1AYCJ0n8hxyZ/s5A5BDAo1sU/C
-	 JuXsLJleK5s7Uc/4VYs7MGhoKSU+fJZpmmX85DFkM+HMqghdiqWPe1yOuxGamN5Bx2
-	 FvgihdJUJoAOw==
+	b=L9ucp7Uc0m8SjWdcDmIQXxiOl51ybpRVUE07PHOWyBiCmBI0rRCH06d4EGEArP+6d
+	 1Sj1yIldLWSRSUONlREC6FYRwJgLL+k7xeiRO2bKsiX/dpu0ZUmzdEjm39MMYHmCbm
+	 r+ag05HrAk8COsjTfcYl4IgZCZg40XB2JAh6385czQsGEUxpWXGD65a2tSlCRUjlIp
+	 QLSqKJ9WNMuS1eK1IPGV7uTRgIC31Y/tUGlZZlBNOmC3aItamImegnP+o5Ak+tSWG0
+	 yaPllTB+wylW7Zt/q7FRN3P9LrmzjBGd4I53+/LyA8/ZkB2f/rHzsJsrVmAPXa7Mv9
+	 ti+E9E31Pf29g==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BD4BCA0EF3;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E4CECA0EEB;
 	Mon, 18 Aug 2025 23:14:33 +0000 (UTC)
 From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Tue, 19 Aug 2025 01:00:39 +0200
-Subject: [PATCH v2 5/7] phy: rockchip: phy-rockchip-inno-csidphy: allow for
- different reset lines
+Date: Tue, 19 Aug 2025 01:00:38 +0200
+Subject: [PATCH v2 4/7] phy: rockchip: phy-rockchip-inno-csidphy: allow
+ writes to grf register 0
 MIME-Version: 1.0
-Message-Id: <20250616-rk3588-csi-dphy-v2-5-7a94f079b712@collabora.com>
+Message-Id: <20250616-rk3588-csi-dphy-v2-4-7a94f079b712@collabora.com>
 References: <20250616-rk3588-csi-dphy-v2-0-7a94f079b712@collabora.com>
 In-Reply-To: <20250616-rk3588-csi-dphy-v2-0-7a94f079b712@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -68,19 +68,19 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-phy@lists.infradead.org, 
  Michael Riesch <michael.riesch@collabora.com>
 X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1755558041; l=4524;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1755558041; l=1635;
  i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=ouqlgbnwWSp9gE4kXLQdfgX4LelZawR0mUFaykrHL9U=;
- b=utUoFVHlrsr4EU8QIQaS8DXpH6Av+lCw93f/ogF5lB54RmpAC+ET7PyeB/kzafXJXO1Dg3t9a
- VdY27HlGRn2Cn8Ld1C9NaqszxaVUxo3dQlPp9sAgirtBHnvFKcZLHbC
+ bh=l+DL7hvrQb52Alb7OjVyKnZ7Z6pkTmglNXwtSvoPg4M=;
+ b=pXPJZwAy06i273TUpg9KStsF+R+c795F7yrhSxnbDxTPGjyeDidNQSJcylokou69ywyeFxbSe
+ DW2SJ7n2sj3C+8v1jwb9/XmlIWoeYc+HwLDA+foqYa9v4RP1NChfR7J
 X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
  pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
 X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
  with auth_id=371
 X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_161440_243275_B054FE43 
-X-CRM114-Status: GOOD (  18.88  )
+X-CRM114-CacheID: sfid-20250818_161440_471772_D76E7CA9 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,124 +100,45 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Michael Riesch <michael.riesch@collabora.com>
 
-The RK3588 MIPI CSI-2 DPHY variant requires two reset lines. Add support
-for different sets of reset lines to the phy-rockchip-inno-csidphy driver
-as preparation for the introduction of the RK3588 variant.
+The driver for the Rockchip MIPI CSI-2 DPHY uses GRF register offset
+value 0 to sort out undefined registers. However, the RK3588 CSIDPHY GRF
+this offset is perfectly fine (in fact, register 0 is the only one in
+this register file).
+Introduce a boolean variable to indicate valid registers and allow writes
+to register 0.
 
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-csidphy.c | 34 +++++++++++++++++++++---
- 1 file changed, 30 insertions(+), 4 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-inno-csidphy.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
-index 75533d071025..6c4ddcd7e5de 100644
+index 2ab99e1d47eb..75533d071025 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
-@@ -67,6 +67,8 @@
- #define RK1808_CSIDPHY_CLK_CALIB_EN		0x168
- #define RK3568_CSIDPHY_CLK_CALIB_EN		0x168
- 
-+#define RESETS_MAX				2
-+
- /*
-  * The higher 16-bit of this register is used for write protection
-  * only if BIT(x + 16) set to 1 the BIT(x) can be written.
-@@ -127,6 +129,8 @@ struct dphy_drv_data {
- 	const struct hsfreq_range *hsfreq_ranges;
- 	int num_hsfreq_ranges;
- 	const struct dphy_reg *grf_regs;
-+	const char *const *resets;
-+	unsigned int resets_num;
+@@ -87,10 +87,11 @@ struct dphy_reg {
+ 	u32 offset;
+ 	u32 mask;
+ 	u32 shift;
++	u8 valid;
  };
  
- struct rockchip_inno_csidphy {
-@@ -134,7 +138,8 @@ struct rockchip_inno_csidphy {
- 	void __iomem *phy_base;
- 	struct clk *pclk;
- 	struct regmap *grf;
--	struct reset_control *rst;
-+	struct reset_control_bulk_data resets[RESETS_MAX];
-+	unsigned int resets_num;
- 	const struct dphy_drv_data *drv_data;
- 	struct phy_configure_opts_mipi_dphy config;
- 	u8 hsfreq;
-@@ -174,6 +179,10 @@ static const struct hsfreq_range rk3368_mipidphy_hsfreq_ranges[] = {
- 	{1249, 0x0c}, {1349, 0x0d}, {1500, 0x0e}
- };
+ #define PHY_REG(_offset, _width, _shift) \
+-	{ .offset = _offset, .mask = BIT(_width) - 1, .shift = _shift, }
++	{ .offset = _offset, .mask = BIT(_width) - 1, .shift = _shift, .valid = 1, }
  
-+static const char *const rk3368_reset_names[] = {
-+	"apb"
-+};
-+
- static void rockchip_inno_csidphy_ths_settle(struct rockchip_inno_csidphy *priv,
- 					     int hsfreq, int offset)
- {
-@@ -344,6 +353,8 @@ static const struct dphy_drv_data rk1808_mipidphy_drv_data = {
- 	.hsfreq_ranges = rk1808_mipidphy_hsfreq_ranges,
- 	.num_hsfreq_ranges = ARRAY_SIZE(rk1808_mipidphy_hsfreq_ranges),
- 	.grf_regs = rk1808_grf_dphy_regs,
-+	.resets = rk3368_reset_names,
-+	.resets_num = ARRAY_SIZE(rk3368_reset_names),
- };
+ static const struct dphy_reg rk1808_grf_dphy_regs[] = {
+ 	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK1808_GRF_PD_VI_CON_OFFSET, 4, 0),
+@@ -145,7 +146,7 @@ static inline void write_grf_reg(struct rockchip_inno_csidphy *priv,
+ 	const struct dphy_drv_data *drv_data = priv->drv_data;
+ 	const struct dphy_reg *reg = &drv_data->grf_regs[index];
  
- static const struct dphy_drv_data rk3326_mipidphy_drv_data = {
-@@ -353,6 +364,8 @@ static const struct dphy_drv_data rk3326_mipidphy_drv_data = {
- 	.hsfreq_ranges = rk3326_mipidphy_hsfreq_ranges,
- 	.num_hsfreq_ranges = ARRAY_SIZE(rk3326_mipidphy_hsfreq_ranges),
- 	.grf_regs = rk3326_grf_dphy_regs,
-+	.resets = rk3368_reset_names,
-+	.resets_num = ARRAY_SIZE(rk3368_reset_names),
- };
- 
- static const struct dphy_drv_data rk3368_mipidphy_drv_data = {
-@@ -362,6 +375,8 @@ static const struct dphy_drv_data rk3368_mipidphy_drv_data = {
- 	.hsfreq_ranges = rk3368_mipidphy_hsfreq_ranges,
- 	.num_hsfreq_ranges = ARRAY_SIZE(rk3368_mipidphy_hsfreq_ranges),
- 	.grf_regs = rk3368_grf_dphy_regs,
-+	.resets = rk3368_reset_names,
-+	.resets_num = ARRAY_SIZE(rk3368_reset_names),
- };
- 
- static const struct dphy_drv_data rk3568_mipidphy_drv_data = {
-@@ -371,6 +386,8 @@ static const struct dphy_drv_data rk3568_mipidphy_drv_data = {
- 	.hsfreq_ranges = rk1808_mipidphy_hsfreq_ranges,
- 	.num_hsfreq_ranges = ARRAY_SIZE(rk1808_mipidphy_hsfreq_ranges),
- 	.grf_regs = rk3568_grf_dphy_regs,
-+	.resets = rk3368_reset_names,
-+	.resets_num = ARRAY_SIZE(rk3368_reset_names),
- };
- 
- static const struct of_device_id rockchip_inno_csidphy_match_id[] = {
-@@ -404,6 +421,7 @@ static int rockchip_inno_csidphy_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct phy_provider *phy_provider;
- 	struct phy *phy;
-+	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
-@@ -435,10 +453,18 @@ static int rockchip_inno_csidphy_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->pclk);
- 	}
- 
--	priv->rst = devm_reset_control_get(dev, "apb");
--	if (IS_ERR(priv->rst)) {
-+	if (priv->drv_data->resets_num > RESETS_MAX) {
-+		dev_err(dev, "invalid number of resets\n");
-+		return -EINVAL;
-+	}
-+	priv->resets_num = priv->drv_data->resets_num;
-+	for (unsigned int i = 0; i < priv->resets_num; i++)
-+		priv->resets[i].id = priv->drv_data->resets[i];
-+	ret = devm_reset_control_bulk_get_exclusive(dev, priv->resets_num,
-+						    priv->resets);
-+	if (ret) {
- 		dev_err(dev, "failed to get system reset control\n");
--		return PTR_ERR(priv->rst);
-+		return ret;
- 	}
- 
- 	phy = devm_phy_create(dev, NULL, &rockchip_inno_csidphy_ops);
+-	if (reg->offset)
++	if (reg->valid)
+ 		regmap_write(priv->grf, reg->offset,
+ 			     HIWORD_UPDATE(value, reg->mask, reg->shift));
+ }
 
 -- 
 2.39.5
