@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B750CA0ED1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 13:41:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64521CA0EEB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 13:41:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9NQgZE/zJWL9xBGdrXoyofBMkiH1wKUNqQz/TVtR7X8=; b=KDXe4guddBB4DF
-	oKRi5zJOr18X8UsITU8Fvrz0u3lAI4igmAFO0FztTUTpR+meWdFQJIMI2GLpC8B9o7iuL4m1G6HFj
-	pUMXZMcPQEQrlBvmsZLkchVv9pQO8qf7kaA6fy/zMUvZznVFb/lFA9jymMADkNhQKat2F2wM/+tH0
-	PD1om4XJMb8HfWen7zIAiX0z3+qF+NZEoPUUc8C0vNK6ZxKWovcHXSEOc17aGc3MTQ7oQJHaSpz1+
-	F17oqIP9AG3/w2W4LV6eBWBoR4s4G08SeNR7uxgqzgMRPxO/swS+Nd0wVLwZxXH12a1wuSBqlEv1A
-	fVVESAIYRc6DXS0aEZ5A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YOQ/0WPRYbYhiRrCY1koQIdEUbwh6suPc3J/fyDrJXM=; b=hM0zt+2orGaIyC
+	VjAZe3UBEtoumtExFycxKcP+uwEEpPo0s4Rm3bq7CK/+ng8V6fTjU/dcXKhXf/sJYdWI0Xypgw8qZ
+	ZXGaLPXs79dQFQbpqqxY6HuTfs892bHdZR8+rWCtG6LAMffxSLQey7+jlDXCp3di6p7Ri0sh6HJVN
+	0Ha6DcF8gapYmYzLy16OASuhObqaWwslDKBtINNMO61Of0VgzTgQN9zGiGN1Q6YqvwfFm186f7EDc
+	8dF31r4HPu4nbkxh9z/wWD0ITv4eF778OBePejPHKxDnv82INP6Sbw9pOpmo+tLpHch5lCR0lH3VS
+	/jW1w+T8oyhR0FCWp0ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo07E-00000007aUp-2WHm;
-	Mon, 18 Aug 2025 13:41:36 +0000
+	id 1uo07H-00000007aZW-0rww;
+	Mon, 18 Aug 2025 13:41:39 +0000
 Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1unwfA-000000076zP-48no;
-	Mon, 18 Aug 2025 10:00:26 +0000
+	id 1unwfA-000000076zQ-4BM0;
+	Mon, 18 Aug 2025 10:00:27 +0000
 Received: from localhost.localdomain (unknown [119.122.213.154])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1fbaa9cfa;
-	Mon, 18 Aug 2025 18:00:14 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1fbaa9d00;
+	Mon, 18 Aug 2025 18:00:17 +0800 (GMT+08:00)
 From: Chukun Pan <amadeus@jmu.edu.cn>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Chukun Pan <amadeus@jmu.edu.cn>,
@@ -39,20 +39,22 @@ Cc: Chukun Pan <amadeus@jmu.edu.cn>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH 0/4] arm64: dts: rockchip: Add HINLINK H66K/H68K
-Date: Mon, 18 Aug 2025 18:00:05 +0800
-Message-Id: <20250818100009.170202-1-amadeus@jmu.edu.cn>
+Subject: [PATCH 2/4] dt-bindings: arm: rockchip: Add HINLINK H66K / H68K
+Date: Mon, 18 Aug 2025 18:00:07 +0800
+Message-Id: <20250818100009.170202-3-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250818100009.170202-1-amadeus@jmu.edu.cn>
+References: <20250818100009.170202-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-X-HM-Tid: 0a98bc9f502103a2kunm3d9619f636a214
+X-HM-Tid: 0a98bc9f5efc03a2kunm3d9619f636a240
 X-HM-MType: 10
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDTUlJVhlOSxhJQ0lNGhlJGVYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSFVKTk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0tVSktLVU
-	tZBg++
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZHkIeVktCGkMdGkkdHUxKSFYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSFVKTk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE5VSktLVU
+	pCS0tZBg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_030025_194130_1EDAB835 
-X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-CacheID: sfid-20250818_030026_327873_6253CADB 
+X-CRM114-Status: UNSURE (   6.96  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,47 +72,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The HINLINK H66K and H68K are development boards with the Rockchip
-RK3568 SoC. These boards are all SoM plus expansion board structures.
+The HINLINK H66K/H68K are 2.5GbE SBC based on the RK3568 SoC.
+Add devicetree binding documentation for them.
 
-Both boards can be booted from eMMC or SD-card using the
-U-Boot 2025.07 generic-rk3568 target.
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-The SoM board has CPU, RAM, eMMC and RK809 PMIC.
-There is no schematic for this part.
-
-The rest of the schematic can be found here:
-https://www.hinlink.cn/wp-content/uploads/2024/03/20250329151432672651.pdf
-https://files.seeedstudio.com/wiki/LinkStar_V2/H68K_V2_Schematic.pdf
-
-It should be noted that there is a version of SeeedStudio called
-LinkStar H68K, which is different from HINLINK H68K only in the shell.
-
-The HINLINK H68K has two versions distinguished by the shell, and there
-is no actual difference. This series is tested on H68K and H68K-V2.
-
-difference |      H66K/H68K    |  H66K/H68K-V2
-           | 1x USB 3.0 Type-A | 1x USB 3.0 Type-A
-    USB    | 2x USB 2.0 Type-A | 1x USB 2.0 Type-A
-           |                   | 1x USB 2.0 (M.2 slot)
-
-Chukun Pan (4):
-  dt-bindings: vendor-prefixes: Add HINLINK
-  dt-bindings: arm: rockchip: Add HINLINK H66K / H68K
-  arm64: dts: rockchip: Add HINLINK H68K
-  arm64: dts: rockchip: Add HINLINK H66K
-
- .../devicetree/bindings/arm/rockchip.yaml     |   7 +
- .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
- arch/arm64/boot/dts/rockchip/Makefile         |   2 +
- .../boot/dts/rockchip/rk3568-hinlink-h66k.dts |  10 +
- .../boot/dts/rockchip/rk3568-hinlink-h68k.dts |  83 +++
- .../boot/dts/rockchip/rk3568-hinlink-opc.dtsi | 666 ++++++++++++++++++
- 6 files changed, 770 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-hinlink-h66k.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-hinlink-h68k.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-hinlink-opc.dtsi
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 28db6bd6aa5b..870c318fc8d4 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -683,6 +683,13 @@ properties:
+           - const: hardkernel,odroid-m2
+           - const: rockchip,rk3588s
+ 
++      - description: HINLINK H66K / H68K
++        items:
++          - enum:
++              - hinlink,h66k
++              - hinlink,h68k
++          - const: rockchip,rk3568
++
+       - description: Hugsun X99 TV Box
+         items:
+           - const: hugsun,x99
 -- 
 2.25.1
 
