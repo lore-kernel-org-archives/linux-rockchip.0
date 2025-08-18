@@ -4,57 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE3ECCA0EE4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 19:34:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF397CA0EE9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 19:37:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WkilnijqvMK5+XHAw8j2J9wgzCTCYEBrmI4iESIgGzc=; b=ydUV5OxylZ56MD
-	PMcNs1axu/hawXbK0wgW6o2uONe9a9F2SHpyaPUFtdEMXWV2CzbM+2Ve9bS5k1odG/MHxMuTGM23u
-	v0o3Vfx8nvYkYUl/BQYNLTf/FhnnMsLWsu/zJr+g7cQa4vbb453R0b/7dvQlbxccAQWsfQ4aaw3k+
-	b8OwY3u6cxaTaVIDkGKfwizC1QTYRytboYCbD4hCNufYGXpWWfwcnDoMPAAkVTexzkO9u5UXru9ZW
-	ArRriUOQeKONKNlTh5KlMAECfGJID7E/zjWNDT6JufHNiIRewAh2rhptvnxS2naTwKthnpQrK/6fz
-	Vz1y+0+5DCmhXbjXgD4Q==;
+	List-Owner; bh=WDABN6Yj3ULtEpI0qY0YTVhuIIBBv8LNsnGkgotQBuM=; b=r0p+6mO58G7QiU
+	BQ/o6qYY2xGl38ppOUF4cJhYBo3r96FT5NBgTCOk1dhpefiDgf50W2OpDYnuHIRaaxIAadjM87yAz
+	LXrShnl6F7vxoMu35vgLq82EykmY4avxYv8Te+FioI4hp/LfZTffO8pn4TaprARJlXk5UTln7xfrR
+	NI3F+WVkEaggXU4nmMgVhl3hkJq8ru708HyhA+iqdaTZTq7pojWE1amwv6Vvynm6vm6Q1OF2gKWQA
+	54RVnh1dC6tibVNQfjaq2iG3jttcMeRW2sZPv+hTV7FejZ0mwKOr9ZmEpX9jUt2Ws+4cS3OivzN3k
+	ehWiA+o4ho4atVNPxa0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo5cB-00000008WwX-27Ky;
-	Mon, 18 Aug 2025 19:33:55 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uo5fd-00000008XON-0nsP;
+	Mon, 18 Aug 2025 19:37:29 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo4zG-00000008QCw-1QuQ;
-	Mon, 18 Aug 2025 18:53:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=ZxfW0g9X+oPT/UxlWtvFfsT3/2mtKXs3JrOxnk3I7Ek=; b=j95NDIOa/mCgLPoh+oZgvtNCpO
-	FNHgTTgvGFcOxID5a45wUS9lzXuGAh4+NlPHyOdHhegSCSPnppJC9+lMtREVWrQfR6m4whLO0sINc
-	54ruiewHgQ8lSbE5EUPKvmD4qM/JlZKoR7N1kL/EExcjD4FtrZ7QniO1xc1rTb12s2Lla27EJETYt
-	7B60p7L/GTLtB4R7tImLvdhHNSAsbq6B9/xBXo87o/Bq5cHVvZopaFUiExBTEba7GFfMrSRHE5f6z
-	0+fDLseIsALw/nOslqEIut3gT7n3XeIQcaQitMwbKcr+wPujJdMHsgCvM3ZBlj/+cOw6kXKEIVbIb
-	C+oH0gKQ==;
-Received: from i53875ad4.versanet.de ([83.135.90.212] helo=phil..)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uo4zF-0000jH-30; Mon, 18 Aug 2025 20:53:41 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] arm64: dts: rockchip: describe mcu eeprom cells on rk3568-ts433
-Date: Mon, 18 Aug 2025 20:53:37 +0200
-Message-ID: <20250818185337.2584590-3-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250818185337.2584590-1-heiko@sntech.de>
-References: <20250818185337.2584590-1-heiko@sntech.de>
+	id 1uo54k-00000008QyU-11qi;
+	Mon, 18 Aug 2025 18:59:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1755543560;
+	bh=KCf8mGsR1gsCa0BBbnSNhtvNKeu0P1lUjsNkZEwyXIw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=qBdwTp1UmdtCTM/gTRlV/HAWeIePLu9Z/CsHMoAXn36HP3/5CCoRZr0WRc+AFkgKo
+	 2jfvO30/CxA2cUWZVnwTsltW4wzMS5IY6jSnIXPUmc3uEhx7Len/hIEUMZCzF2Gq5C
+	 JggHOykGcHWJBrTtFBP3jT9NgwIPPbgt3JGofd94xJ6m0jIM4SwwEsH1IaG5B49C+U
+	 e3zyFR5mMs8BbJpbRMq3qVrFfcPd0/8B39WT8N+BFnbfpH5vASj4RluVyD8LRQUUKs
+	 c+znXeVDzrcnTyYLTcAM40x8fSBs1ulyJ4cFvI771/BY2oNAZg1WnV/gEfgiN8gM/r
+	 NdABcdUc3oBmg==
+Received: from localhost (unknown [82.79.138.60])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 9EC5317E04C0;
+	Mon, 18 Aug 2025 20:59:20 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Mon, 18 Aug 2025 21:59:01 +0300
+Subject: [PATCH v3 01/14] phy: hdmi: Add HDMI 2.1 FRL configuration options
 MIME-Version: 1.0
+Message-Id: <20250818-phy-hdptx-frl-v3-1-c79997d8bb2b@collabora.com>
+References: <20250818-phy-hdptx-frl-v3-0-c79997d8bb2b@collabora.com>
+In-Reply-To: <20250818-phy-hdptx-frl-v3-0-c79997d8bb2b@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250818_115342_376694_C418553C 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20250818_115922_431927_C35CD943 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,95 +77,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The MCU's eeprom contains the unit's serial and a number of slots for
-mac-addresses. As the MCU seems to be used in different devices, up to
-8 mac addresses can live there and the unused slots are actually
-initialized with empty mac-address strings like 00:00:00:00:05:09 .
+The HDMI 2.1 specification introduced the Fixed Rate Link (FRL) mode,
+aiming to replace the older Transition-Minimized Differential Signaling
+(TMDS) mode used in previous HDMI versions to support much higher
+bandwidths (up to 48 Gbps) for modern video and audio formats.
 
-Interestingly on the TS-433, the PCIe ethernet adapter brings its own
-memory to hold its mac, and the gmac0 is supposed to get its mac from
-the second mac-slot, while the first one stays empty.
+FRL has been designed to support ultra high resolution formats at high
+refresh rates like 8K@60Hz or 4K@120Hz, and eliminates the need for
+dynamic bandwidth adjustments, which reduces latency.  It operates with
+3 or 4 lanes at different link rates: 3Gbps, 6Gbps, 8Gbps, 10Gbps or
+12Gbps.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Add support for configuring the FRL mode for HDMI PHYs.
+
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- .../boot/dts/rockchip/rk3568-qnap-ts433.dts   | 62 +++++++++++++++++++
- 1 file changed, 62 insertions(+)
+ include/linux/phy/phy-hdmi.h | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-index 5656554ca284..224db87973b2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-@@ -655,6 +655,68 @@ fan: fan-0 {
- 			#cooling-cells = <2>;
- 			cooling-levels = <0 64 89 128 166 204 221 238>;
- 		};
+diff --git a/include/linux/phy/phy-hdmi.h b/include/linux/phy/phy-hdmi.h
+index f0ec963c6e84f1b7728acafc824dff191c6b873d..83330d359e3ae345554f20429519da14506b8ab5 100644
+--- a/include/linux/phy/phy-hdmi.h
++++ b/include/linux/phy/phy-hdmi.h
+@@ -6,16 +6,31 @@
+ #ifndef __PHY_HDMI_H_
+ #define __PHY_HDMI_H_
+ 
++#include <linux/types.h>
 +
-+		nvmem-layout {
-+			compatible = "fixed-layout";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
++enum phy_mode_hdmi {
++	PHY_MODE_HDMI_TMDS,
++	PHY_MODE_HDMI_FRL,
++};
 +
-+			serial-number@0 {
-+				reg = <0x0 0x13>;
-+			};
-+
-+			ext-port@22 {
-+				reg = <0x22 0x2>;
-+			};
-+
-+			mac0: mac@24 {
-+				compatible = "mac-base";
-+				reg = <0x24 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac1: mac@35 {
-+				compatible = "mac-base";
-+				reg = <0x35 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac2: mac@46 {
-+				compatible = "mac-base";
-+				reg = <0x46 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac3: mac@57 {
-+				compatible = "mac-base";
-+				reg = <0x57 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac4: mac@68 {
-+				compatible = "mac-base";
-+				reg = <0x68 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac5: mac@79 {
-+				compatible = "mac-base";
-+				reg = <0x79 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac6: mac@8a {
-+				compatible = "mac-base";
-+				reg = <0x8a 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac7: mac@9b {
-+				compatible = "mac-base";
-+				reg = <0x9b 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+		};
- 	};
+ /**
+  * struct phy_configure_opts_hdmi - HDMI configuration set
+- * @tmds_char_rate: HDMI TMDS Character Rate in Hertz.
+  * @bpc: Bits per color channel.
++ * @tmds_char_rate: HDMI TMDS Character Rate in Hertz.
++ * @frl.rate_per_lane: HDMI FRL Rate per Lane in Gbps.
++ * @frl.lanes: HDMI FRL lanes count.
+  *
+  * This structure is used to represent the configuration state of a HDMI phy.
+  */
+ struct phy_configure_opts_hdmi {
+-	unsigned long long tmds_char_rate;
+ 	unsigned int bpc;
++	union {
++		unsigned long long tmds_char_rate;
++		struct {
++			u8 rate_per_lane;
++			u8 lanes;
++		} frl;
++	};
  };
  
+ #endif /* __PHY_HDMI_H_ */
+
 -- 
-2.47.2
+2.50.1
 
 
 _______________________________________________
