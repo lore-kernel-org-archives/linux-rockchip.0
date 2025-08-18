@@ -4,90 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 939CACA0EE4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 00:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82518CA0EF5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 00:33:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RqGl4bVYjYCQeH3L4bce6qjhp4aWY+nd2TLFzl/5Ewg=; b=edgc15B5dZwqbg
-	yFjd+F/a8s/3wJKtTFpbPCpf9zgUzzzSnth+CzU3h1AyLEugh5gO4v4NxzKYQw+mvh+xyfbLe6/8H
-	pmP0v2SG341al0qLNOMaNSrT3vz5XsASKq+nP+QZpV3rKboURV8pH/kwHba88ukGaJymARjiDEvtj
-	kKvJpaAuJsgav4nd0ZxybB+jSFrK/txh/fmCaQjUYresRrRloYOpab9y1iIglgDjaxh/TF57Z62xw
-	JtZKEj+IRxxotAkAnXOIy0KIuAluyX64gKFs3lQttsrCByZSMgaOqdAllOiYbVvGRao+tzaGlaO78
-	WiPNaqE4w5qs8Vl/v+eg==;
+	List-Owner; bh=NG0fVkYUFuZA2gTZQ/UymRfxeLP9CFrHVhsS59DTqjY=; b=GM6xn6vEJQRG/B
+	Ql/3puW5dwmXsXBBF8LlS2xEKgE1+bT8tgo/b1/9PQGqIwQx9gBSn0GbGyzcxq5B1bZ3+34GtsEIy
+	2gDgM1g6xr1RtvWknnRdeZBlB7L1b8+ok9coBR+Am3Zh2QeH3d8mQWjFd7QQyBj1vyAAiwvvefwXy
+	b3WJ1wJvRm4tlMDgvr+B/Ns9YhPUMpMf8lluKaPbQTcqcf43urENESbhXGtwD+IimlD8pQAOs4T7z
+	uk8uB0TBIazSApkQl7pv6hS+62vHeoMxB3Deo6xFiobHzY76cVQgHe5SjNBT962dBO2/n2MIxMPrO
+	dGbR98Nr3Qfy/gWfshGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo9x1-00000008yti-3HM9;
-	Tue, 19 Aug 2025 00:11:43 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uoAID-000000090WH-1TeV;
+	Tue, 19 Aug 2025 00:33:37 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uo9SL-00000008vhK-3s21;
-	Mon, 18 Aug 2025 23:40:02 +0000
+	id 1uo93k-00000008tSM-3aMW;
+	Mon, 18 Aug 2025 23:14:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 07FEE600AE;
-	Mon, 18 Aug 2025 23:40:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 1A823C4DDF5;
-	Mon, 18 Aug 2025 23:39:48 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id EFD8046081;
+	Mon, 18 Aug 2025 23:14:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id A3C1AC2BCB3;
+	Mon, 18 Aug 2025 23:14:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755560388;
-	bh=rZujrf8cJQS+I89btYoSUMkKofWIINtOzhrn5MbArYQ=;
+	s=k20201202; t=1755558873;
+	bh=Gc8hKhZmvez+1R7qBtxkfGOQDqE59bJ02H/Yc1b0Phs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=XK1pX03rLRYcRMpxhukRupNStyDu2FwYmK7K3b3JIyUWGYK1jOS3EuAMdOfcNfOJ6
-	 7WU5gHU6Ku9okGZQSG/gD+uNC0DZWhO1I3mf/CwEgQHAtblyauNc6I1rXVi7oDsyB9
-	 h38nWc+WQREdFGHzhwpMtYyc223mntq9gA51ykoHQ4tsUtMgiIms7o4JmJujRq7CR9
-	 rKrqLSQB/XAdU5JjdqzhKDdO/lXFVv9clKeVmpVRNXYX5Sfp+n1IPhGHaRPQ+a1ES2
-	 i9RoiRf3xho/JeCBNJlBLYF79EfWu38uY6kbtbfYH2rE3bHvvkLa/3lRmhp+38FCBg
-	 tHpZDUiJuy9uA==
+	b=uyNq0AkmfCPFMBDrCdDSyr3Dp6Pb2um+Swqwk+UV1CFrDr4CkRmQDQFYacF/GX+LV
+	 k4NcNfxY43PZNwFYI6b1rXQF/VDANj8aPAWadQTd3xbxpmj2j6aiX0+XCL90mC0y+V
+	 z9DxGaK1LXQhvgJLeXYxoRvd2URc2jIlYrRqQ9Mw1XYSiNyyJKmIOaI43sb931nM50
+	 d8R3rcI0FVDGv+KyM+4KLgG2ttPTg7h+cNh/8FMa9Bp3UnwaBkneD9Lqh+8NEOru8q
+	 IhfdJeZYe2Mhfy6cQfx0YSBD1zzxAcxAQg/Sdv1JTqHgwdKWX9W3p8UGwrRr8UIcAT
+	 sMdukROBS3OmA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 108E0CA0EF5;
-	Mon, 18 Aug 2025 23:39:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 992A9CA0EF1;
+	Mon, 18 Aug 2025 23:14:33 +0000 (UTC)
 From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Tue, 19 Aug 2025 01:26:05 +0200
-Subject: [PATCH v10 13/13] arm64: dts: rockchip: enable vicap dvp on
- wolfvision pf5 io expander
+Date: Tue, 19 Aug 2025 01:00:40 +0200
+Subject: [PATCH v2 6/7] phy: rockchip: phy-rockchip-inno-csidphy: add
+ support for rk3588 variant
 MIME-Version: 1.0
-Message-Id: <20240220-rk3568-vicap-v10-13-62d8a7b209b4@collabora.com>
-References: <20240220-rk3568-vicap-v10-0-62d8a7b209b4@collabora.com>
-In-Reply-To: <20240220-rk3568-vicap-v10-0-62d8a7b209b4@collabora.com>
-To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
- Maxime Chevallier <maxime.chevallier@bootlin.com>, 
- =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Gerald Loacker <gerald.loacker@wolfvision.net>, 
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
- Markus Elfring <Markus.Elfring@web.de>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+Message-Id: <20250616-rk3588-csi-dphy-v2-6-7a94f079b712@collabora.com>
+References: <20250616-rk3588-csi-dphy-v2-0-7a94f079b712@collabora.com>
+In-Reply-To: <20250616-rk3588-csi-dphy-v2-0-7a94f079b712@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Collabora Kernel Team <kernel@collabora.com>, 
- Paul Kocialkowski <paulk@sys-base.io>, 
- Alexander Shiyan <eagle.alexander923@gmail.com>, 
- Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
  Philipp Zabel <p.zabel@pengutronix.de>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Michael Riesch <michael.riesch@collabora.com>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Diederik de Haas <didi.debian@cknow.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Collabora Kernel Team <kernel@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-phy@lists.infradead.org, 
  Michael Riesch <michael.riesch@collabora.com>
 X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1755559554; l=1661;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1755558041; l=2783;
  i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=tkvGHWW1RXCremqXv1+qTo26zNWU0UHQFUaztf+p/DI=;
- b=j7qJwJlBp3s4+kXK3PuFrOiM+R/iCDEB6TlcYawUBljlPPawlDA1Zopg2v3jYZx4rFr2cv++X
- Mz+eZ2QuKJLAzjERg5Jahspc5+jStsww1EGia6J/crJ/+cYIUdiHDUo
+ bh=yeQXRqZNa57y0uWiIJSkXVpQ6zTLhd7z989yNwE9ju8=;
+ b=RAqZc+sTzvtEYxcjM95kNf/fWfwbUtNUOI2A4eF7RkP6L/dHfgQkU1m4ecM9kE8gKbmcJbXvI
+ 9+mrsrc9e/gCdjvGNQCt0+H+Hn6AeQ0LJUSBfgPoaPPGupnSKwk+tab
 X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
  pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
 X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
  with auth_id=371
 X-Original-From: Michael Riesch <michael.riesch@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250818_161436_980021_32B2160A 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,54 +100,84 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Michael Riesch <michael.riesch@collabora.com>
 
-The Digital Video Port (DVP, the 16-bit variant) of the RK3568 VICAP
-is broken out to the PF5 mainboard expansion header.
-Enable it in the device tree overlay for the WolfVision PF5 IO
-Expander board.
+The Rockchip RK3588 MIPI CSI-2 DPHY can be supported using the existing
+phy-rockchip-inno-csidphy driver, the notable differences being
+ - the control bits in the GRF
+ - the additional reset line
+Add support for this variant.
 
-Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-Reviewed-by: Gerald Loacker <gerald.loacker@wolfvision.net>
-Tested-by: Gerald Loacker <gerald.loacker@wolfvision.net>
 Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 ---
- .../rockchip/rk3568-wolfvision-pf5-io-expander.dtso  | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-inno-csidphy.c | 28 ++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
-index 048933de2943..8cfce71dd318 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
-@@ -11,6 +11,7 @@
- #include <dt-bindings/clock/rk3568-cru.h>
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/media/video-interfaces.h>
- #include <dt-bindings/pinctrl/rockchip.h>
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
+index 6c4ddcd7e5de..c79fb53d8ee5 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
+@@ -30,6 +30,8 @@
+ #define RK3568_GRF_VI_CON0		0x0340
+ #define RK3568_GRF_VI_CON1		0x0344
  
- &{/} {
-@@ -134,3 +135,22 @@ &usb2phy0_host {
- 	phy-supply = <&usb_host_vbus>;
- 	status = "okay";
++#define RK3588_CSIDPHY_GRF_CON0		0x0000
++
+ /* PHY */
+ #define CSIDPHY_CTRL_LANE_ENABLE		0x00
+ #define CSIDPHY_CTRL_LANE_ENABLE_CK		BIT(6)
+@@ -117,6 +119,12 @@ static const struct dphy_reg rk3568_grf_dphy_regs[] = {
+ 	[GRF_DPHY_CSIPHY_CLKLANE_EN] = PHY_REG(RK3568_GRF_VI_CON0, 1, 8),
  };
-+
-+&vicap {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&cif_clk &cif_dvp_clk &cif_dvp_bus16>;
-+	status = "okay";
+ 
++static const struct dphy_reg rk3588_grf_dphy_regs[] = {
++	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK3588_CSIDPHY_GRF_CON0, 4, 0),
++	[GRF_DPHY_CSIPHY_DATALANE_EN] = PHY_REG(RK3588_CSIDPHY_GRF_CON0, 4, 4),
++	[GRF_DPHY_CSIPHY_CLKLANE_EN] = PHY_REG(RK3588_CSIDPHY_GRF_CON0, 1, 8),
 +};
 +
-+&vicap_dvp {
-+	vicap_dvp_input: endpoint {
-+		bus-type = <MEDIA_BUS_TYPE_BT656>;
-+		bus-width = <16>;
-+		pclk-sample = <MEDIA_PCLK_SAMPLE_DUAL_EDGE>;
-+		rockchip,dvp-clk-delay = <10>;
-+	};
+ struct hsfreq_range {
+ 	u32 range_h;
+ 	u8 cfg_bit;
+@@ -183,6 +191,11 @@ static const char *const rk3368_reset_names[] = {
+ 	"apb"
+ };
+ 
++static const char *const rk3588_reset_names[] = {
++	"apb",
++	"phy"
 +};
 +
-+&vicap_mmu {
-+	status = "okay";
+ static void rockchip_inno_csidphy_ths_settle(struct rockchip_inno_csidphy *priv,
+ 					     int hsfreq, int offset)
+ {
+@@ -390,6 +403,17 @@ static const struct dphy_drv_data rk3568_mipidphy_drv_data = {
+ 	.resets_num = ARRAY_SIZE(rk3368_reset_names),
+ };
+ 
++static const struct dphy_drv_data rk3588_mipidphy_drv_data = {
++	.pwrctl_offset = -1,
++	.ths_settle_offset = RK3568_CSIDPHY_CLK_WR_THS_SETTLE,
++	.calib_offset = RK3568_CSIDPHY_CLK_CALIB_EN,
++	.hsfreq_ranges = rk1808_mipidphy_hsfreq_ranges,
++	.num_hsfreq_ranges = ARRAY_SIZE(rk1808_mipidphy_hsfreq_ranges),
++	.grf_regs = rk3588_grf_dphy_regs,
++	.resets = rk3588_reset_names,
++	.resets_num = ARRAY_SIZE(rk3588_reset_names),
 +};
++
+ static const struct of_device_id rockchip_inno_csidphy_match_id[] = {
+ 	{
+ 		.compatible = "rockchip,px30-csi-dphy",
+@@ -411,6 +435,10 @@ static const struct of_device_id rockchip_inno_csidphy_match_id[] = {
+ 		.compatible = "rockchip,rk3568-csi-dphy",
+ 		.data = &rk3568_mipidphy_drv_data,
+ 	},
++	{
++		.compatible = "rockchip,rk3588-csi-dphy",
++		.data = &rk3588_mipidphy_drv_data,
++	},
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, rockchip_inno_csidphy_match_id);
 
 -- 
 2.39.5
