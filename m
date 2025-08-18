@@ -4,163 +4,174 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47731CCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:03:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98F33CCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:03:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vdHmeT09UQxme15Yob0/6iI8EjlJa4xb+USY5u6yuSQ=; b=LNo7McCamllRio
-	fgzFPJprAyTzBjzu6ki2IN6uhVLuAMhI0vdHN0ef2P2akm1K6YFb0/k+NpH8RBD7PnBGfQ9t6WnJX
-	+6ZQdF7BW/K+sN0Rm+Q0JKjysOaaHvnNzpgS3XfFMGS40tJyQydjdz+bSbLINHEq6LBXuhNpkD5om
-	yJDSP2QOSMimaSq5oI+eY6z/jfcOxfS87mKwtVT5BZSWZ9ROM04MGnTM9fvjUPIsQgld9CsOsX32L
-	FTpcpY1zm4Fj/7ZGjBOeKgEHXxllpf0Q7VhzVovnlvbBQN1Tr1WRe6cWlx5lKN7zFuBtE/3QEzib+
-	lsAXWN8bXGCwj3I1GkQg==;
+	List-Owner; bh=BpsFSOm6sAvcw1wgLB+Nk8s0bmrMJ3uV3d8psuXgfmE=; b=zrUhv4L6saPVAK
+	zYwQkHKCirzFSecRaGzj0g+6cYmvja5j8DUtgBzRkAPVZzBuuvnHZyicItj68KGGTnFADqqDcmyZt
+	TtG1I7Gvhds+71izCxtuJJUlENZWm4/Kv2g6ARJHXdIPu0I757IhZaKEXltyvZEMVeIEHOj25156K
+	RZ7rW0jeZtThjdCccr0eeAnGMbavXsaXednS6c6mEMpxWQurLzkFv7m4NdLXn1W8Tm2PvhcI2vr4J
+	x00fVViijPUu/0xXMkKUsCmZGlM3IdxPQsAaCdfX+xJ+1YttRjbQlq8ygDrmRbSTOQJAHs2j4Hblf
+	dgM4u3Eh2h+3V8eUtNIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAobk-0000000DGmD-0zO1;
-	Mon, 20 Oct 2025 12:03:25 +0000
-Received: from flow-b4-smtp.messagingengine.com ([202.12.124.139])
+	id 1vAobo-0000000DGsF-2bmd;
+	Mon, 20 Oct 2025 12:03:28 +0000
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1umZtS-0000000HRPk-2qg9;
-	Thu, 14 Aug 2025 15:29:32 +0000
-Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
-	by mailflow.stl.internal (Postfix) with ESMTP id 105C21300304;
-	Thu, 14 Aug 2025 11:29:27 -0400 (EDT)
-Received: from phl-mailfrontend-01 ([10.202.2.162])
-  by phl-compute-06.internal (MEProxy); Thu, 14 Aug 2025 11:29:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jannau.net; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:subject
-	:subject:to:to; s=fm2; t=1755185366; x=1755192566; bh=rkWnl6reuM
-	6yvJ3xZDTKQK+EuArjQadhj3fE3KZMVRQ=; b=bk5vgVr1CLPZUpu/8yzDk9lb/A
-	tHVYzQv9hTbjQ5kwcym7VsHTp19WAkg0Hpqa0wD+CqZ1Nd+U4CYQUhklsxcsM+gf
-	+Z8ariB4+I6d0eYBWBqwN85t+DHDwDQ7fqbhoqiETlG6gco3KS7d4UK8VRBiyAAS
-	6uQ21llXN+4WgyvPXd92zlyXucFtCItZdyaRf6rM974aMV78YFLsf5bYqI0hfslp
-	WGrZ3W02q0h1GvDjIb47eJZZb/RoRsmrCwwgfK5H4wRRs0C8WqQHHYIrOMK0ZHVP
-	aDBjLclEdxOpupQdAWDgeTb1M/iK05Vsaa408ZFpj/IrPd9EETcasajpGZrQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:subject:subject:to
-	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
-	1755185366; x=1755192566; bh=rkWnl6reuM6yvJ3xZDTKQK+EuArjQadhj3f
-	E3KZMVRQ=; b=OgtRYyef+tMauOvZ4k9rGfwXDQPdj9klbG3t2P3cD1RmOS/9tKr
-	ofSSHcPOA4xPenVBOXiV5FhURDpUSMTCxAaCfaGDs8djlJNyu+CDw00HGUTHuZE7
-	iZZjz4ciUS7g9j3QlvnqXWnhLS9T0Hfr1vQzrZacIOAYqclBu7P8wHiQyBn3x1Tv
-	3IRsTGZTVlX0WWvOsiM9n8XZ6hNCPKGYNq9gwZN2kX8ko8IOuG4Q8FPM4sUswTeC
-	AgWkrih3zpy+BYFRHxDex0LNtVY1D6KtF6Lq5T4lYxyTSy86ct+fI6zX8qKxzdu/
-	3y8kkYasdpgKe+p3NAh/zboekg1+6r4CeXQ==
-X-ME-Sender: <xms:0ACeaPzCAtXgPuyqWluGHhM-MFgm73xya4MqxCsQTtBCktFBJqK7kg>
-    <xme:0ACeaMERX6gx9_hULngxnLQfekqkXc4lLgLYc32ut3v9CMFW_su7guEwNB2tie5mH
-    w5fawJBsHbwl2-YVLE>
-X-ME-Received: <xmr:0ACeaLVGQlU6CrqqKVJitR-Q-KYnw8sFF555-uv-1ZSx_gltuJRQBRXFJYSpweaBmMTG7ASMGOfysdY55ljMVadCgzU7C0B0G9o>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddugedugeegucetufdoteggodetrf
-    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
-    rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
-    gurhepfffhvfevuffkfhggtggujgesthdtredttddtjeenucfhrhhomheplfgrnhhnvgcu
-    ifhruhhnrghuuceojhesjhgrnhhnrghurdhnvghtqeenucggtffrrghtthgvrhhnpefgvd
-    ffveelgedujeeffeehheekheelheefgfejffeftedugeethfeuudefheefteenucevlhhu
-    shhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehjsehjrghnnhgruh
-    drnhgvthdpnhgspghrtghpthhtohepkeekpdhmohguvgepshhmthhpohhuthdprhgtphht
-    thhopegsmhgrshhnvgihsehrvgguhhgrthdrtghomhdprhgtphhtthhopehmthhurhhquh
-    gvthhtvgessggrhihlihgsrhgvrdgtohhmpdhrtghpthhtohepshgsohihugeskhgvrhhn
-    vghlrdhorhhgpdhrtghpthhtohepshhuuggvvghprdhhohhllhgrsegrrhhmrdgtohhmpd
-    hrtghpthhtoheptghrihhsthhirghnrdhmrghruhhsshhisegrrhhmrdgtohhmpdhrtghp
-    thhtohepuhhnihgtohhrnhgpfigrnhhgsehouhhtlhhoohhkrdgtohhmpdhrtghpthhtoh
-    epihhnohgthhhirghmrgesghhmrghilhdrtghomhdprhgtphhtthhopehnihgtohhlrghs
-    rdhfvghrrhgvsehmihgtrhhotghhihhprdgtohhmpdhrtghpthhtoheprghlvgigrghnug
-    hrvgdrsggvlhhlohhnihessghoohhtlhhinhdrtghomh
-X-ME-Proxy: <xmx:0QCeaCmil7BHYfOOKicsmHxn_e78pk70Rk65CyKWeasaaevmqI2c1w>
-    <xmx:0QCeaDoCeuybXqCAns088Q1xVlB3g1e970x8zyEDaKcok_TAC0lcKQ>
-    <xmx:0QCeaEVFJkoSfREyDcMyNqqo6Jw3DXglTgApYi_wACt6wsNooYRRBw>
-    <xmx:0QCeaBiIqVIoEzYCR8Pz3QPaA5HZY-DpDdZxQjhq8wajhutrO-oikw>
-    <xmx:1gCeaFTE4FSOg2ZAQsli0z35YCTwrTgdlOhrp7ge8wLAulQpy-Pb8Suw>
-Feedback-ID: i47b949f6:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 14 Aug 2025 11:29:19 -0400 (EDT)
-Date: Thu, 14 Aug 2025 17:29:18 +0200
-From: Janne Grunau <j@jannau.net>
-To: bmasney@redhat.com
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,	Sudeep Holla <sudeep.holla@arm.com>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	Chen Wang <unicorn_wang@outlook.com>,
-	Inochi Amaoto <inochiama@gmail.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Taichi Sugaya <sugaya.taichi@socionext.com>,
-	Takao Orito <orito.takao@socionext.com>,	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,	Jacky Huang <ychuang3@nuvoton.com>,
-	Shan-Chun Hung <schung@nuvoton.com>,	Vladimir Zapolskiy <vz@mleia.com>,
-	Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Samuel Holland <samuel.holland@sifive.com>,	Yixun Lan <dlan@gentoo.org>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	UNGLinuxDriver@microchip.com, Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Michal Simek <michal.simek@amd.com>,	Maxime Ripard <mripard@kernel.org>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,	Sven Peter <sven@kernel.org>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,	Neal Gompa <neal@gompa.dev>,
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Palmer <daniel@thingy.jp>,
-	Romain Perier <romain.perier@gmail.com>,	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andrea della Porta <andrea.porta@suse.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,	Qin Jian <qinjian@cqplus1.com>,
- Viresh Kumar <vireshk@kernel.org>,	Ulf Hansson <ulf.hansson@linaro.org>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Alex Helms <alexander.helms.jy@renesas.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
-	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
-	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	sophgo@lists.linux.dev, linux-mips@vger.kernel.org,	imx@lists.linux.dev,
- linux-riscv@lists.infradead.org,	spacemit@lists.linux.dev,
- linux-stm32@st-md-mailman.stormreply.com,	patches@opensource.cirrus.com,
- linux-actions@lists.infradead.org,	asahi@lists.linux.dev,
- linux-mediatek@lists.infradead.org,	linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org,	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
-Subject: Re: [PATCH 075/114] clk: apple-nco: convert from round_rate() to
- determine_rate()
-Message-ID: <20250814152918.GA854971@robin.jannau.net>
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
- <20250811-clk-for-stephen-round-rate-v1-75-b3bf97b038dc@redhat.com>
+	id 1unyl0-00000007JAm-0KQk;
+	Mon, 18 Aug 2025 12:14:36 +0000
+Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57IBp2wx008182;
+	Mon, 18 Aug 2025 14:13:21 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=selector1; bh=
+	vF8oVy6/ZMtowVhAnxsrKfpp6JXqFRBEiZTXs8imWKc=; b=PSxNhDdZaYr8EoNw
+	8aZMzG+HAc5zZ/G6iGzm7FWO+i9981Jvk6JfEpE+hG0VOKlKZPoIa46QiLFU4DYx
+	sUznRsmqgIiHeCSbPJoiisAuzQzZ6hgkO4CmmJIHG7kce+fJ4nFBIscnYKnoIKbX
+	3aYq4auNUAVqWfPNpND0uGOiy/LN0NcMei0rDbyUEd+d+AzIAj5hnYsC2UnS0xR7
+	owFelE/4Cju4Q5ND97wzWltji6xPXOGJ9DX+MuHSSWyyGgT9iyzcWsaxj1P2gIhN
+	ZoZAmieb/bp+Dh/tSZAo0g1gI8TJ7Cp2gxhDUWfG1cXNsAamFT96b+DTHpo8oG9Y
+	4YsXyw==
+Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 48jgvewyyw-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 18 Aug 2025 14:13:21 +0200 (MEST)
+Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
+	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 0A47540053;
+	Mon, 18 Aug 2025 14:10:12 +0200 (CEST)
+Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id CD98B6D4186;
+	Mon, 18 Aug 2025 14:08:47 +0200 (CEST)
+Received: from [10.48.87.121] (10.48.87.121) by SHFDAG1NODE1.st.com
+ (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Mon, 18 Aug
+ 2025 14:08:43 +0200
+Message-ID: <20437dbf-9d45-4a51-815f-ad1d1d15346e@foss.st.com>
+Date: Mon, 18 Aug 2025 14:08:25 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-75-b3bf97b038dc@redhat.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 058/114] clk: stm32: stm32-core: convert from round_rate()
+ to determine_rate()
+To: <bmasney@redhat.com>, Michael Turquette <mturquette@baylibre.com>,
+        "Stephen Boyd" <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
+        "Cristian Marussi" <cristian.marussi@arm.com>,
+        Chen Wang
+	<unicorn_wang@outlook.com>,
+        Inochi Amaoto <inochiama@gmail.com>,
+        Nicolas
+ Ferre <nicolas.ferre@microchip.com>,
+        Alexandre Belloni
+	<alexandre.belloni@bootlin.com>,
+        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+        Paul Cercueil <paul@crapouillou.net>,
+        Keguang Zhang
+	<keguang.zhang@gmail.com>,
+        Taichi Sugaya <sugaya.taichi@socionext.com>,
+        "Takao Orito" <orito.takao@socionext.com>,
+        Shawn Guo <shawnguo@kernel.org>,
+        "Sascha Hauer" <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team
+	<kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>,
+        Jacky Huang
+	<ychuang3@nuvoton.com>,
+        Shan-Chun Hung <schung@nuvoton.com>,
+        "Vladimir
+ Zapolskiy" <vz@mleia.com>,
+        Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
+        Paul Walmsley <paul.walmsley@sifive.com>,
+        Samuel Holland
+	<samuel.holland@sifive.com>,
+        Yixun Lan <dlan@gentoo.org>,
+        Steen Hegelund
+	<Steen.Hegelund@microchip.com>,
+        Daniel Machon <daniel.machon@microchip.com>,
+        <UNGLinuxDriver@microchip.com>, Orson Zhai <orsonzhai@gmail.com>,
+        Baolin Wang
+	<baolin.wang@linux.alibaba.com>,
+        Chunyan Zhang <zhang.lyra@gmail.com>,
+        "Maxime Coquelin" <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue
+	<alexandre.torgue@foss.st.com>,
+        Michal Simek <michal.simek@amd.com>,
+        "Maxime
+ Ripard" <mripard@kernel.org>,
+        =?UTF-8?Q?Andreas_F=C3=A4rber?=
+	<afaerber@suse.de>,
+        Manivannan Sadhasivam <mani@kernel.org>, Sven Peter
+	<sven@kernel.org>,
+        Janne Grunau <j@jannau.net>, Alyssa Rosenzweig
+	<alyssa@rosenzweig.io>,
+        Neal Gompa <neal@gompa.dev>,
+        Eugeniy Paltsev
+	<Eugeniy.Paltsev@synopsys.com>,
+        Ray Jui <rjui@broadcom.com>, Scott Branden
+	<sbranden@broadcom.com>,
+        Broadcom internal kernel review list
+	<bcm-kernel-feedback-list@broadcom.com>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        Daniel Palmer <daniel@thingy.jp>,
+        Romain Perier <romain.perier@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+        Gregory Clement <gregory.clement@bootlin.com>,
+        Sebastian Hesselbarth
+	<sebastian.hesselbarth@gmail.com>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Geert Uytterhoeven <geert+renesas@glider.be>,
+        Heiko Stuebner
+	<heiko@sntech.de>,
+        Andrea della Porta <andrea.porta@suse.com>,
+        "Krzysztof
+ Kozlowski" <krzk@kernel.org>,
+        Sylwester Nawrocki <s.nawrocki@samsung.com>,
+        Chanwoo Choi <cw00.choi@samsung.com>,
+        Alim Akhtar <alim.akhtar@samsung.com>, Qin Jian <qinjian@cqplus1.com>,
+        Viresh Kumar <vireshk@kernel.org>,
+        "Ulf
+ Hansson" <ulf.hansson@linaro.org>,
+        Luca Ceresoli <luca.ceresoli@bootlin.com>,
+        Alex Helms <alexander.helms.jy@renesas.com>,
+        Linus Walleij
+	<linus.walleij@linaro.org>,
+        Liviu Dudau <liviu.dudau@arm.com>,
+        "Lorenzo
+ Pieralisi" <lpieralisi@kernel.org>,
+        Nobuhiro Iwamatsu
+	<nobuhiro1.iwamatsu@toshiba.co.jp>
+CC: <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <arm-scmi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+        <sophgo@lists.linux.dev>, <linux-mips@vger.kernel.org>,
+        <imx@lists.linux.dev>, <linux-riscv@lists.infradead.org>,
+        <spacemit@lists.linux.dev>, <linux-stm32@st-md-mailman.stormreply.com>,
+        <patches@opensource.cirrus.com>, <linux-actions@lists.infradead.org>,
+        <asahi@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
+        <linux-rockchip@lists.infradead.org>,
+        <linux-samsung-soc@vger.kernel.org>, <soc@lists.linux.dev>
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
+ <20250811-clk-for-stephen-round-rate-v1-58-b3bf97b038dc@redhat.com>
+Content-Language: en-US
+From: Gabriel FERNANDEZ <gabriel.fernandez@foss.st.com>
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-58-b3bf97b038dc@redhat.com>
+X-Originating-IP: [10.48.87.121]
+X-ClientProxiedBy: EQNCAS1NODE3.st.com (10.75.129.80) To SHFDAG1NODE1.st.com
+ (10.75.129.69)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-18_05,2025-08-14_01,2025-03-28_01
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250814_082931_181413_24955B86 
-X-CRM114-Status: GOOD (  11.51  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:33 -0700
+X-CRM114-CacheID: sfid-20250818_051434_385832_7AF14858 
+X-CRM114-Status: GOOD (  17.43  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:05 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,24 +183,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 11, 2025 at 11:19:07AM -0400, Brian Masney via B4 Relay wrote:
+
+On 8/11/25 17:18, Brian Masney via B4 Relay wrote:
 > From: Brian Masney <bmasney@redhat.com>
-> 
+>
 > The round_rate() clk ops is deprecated, so migrate this driver from
 > round_rate() to determine_rate() using the Coccinelle semantic patch
 > on the cover letter of this series.
-> 
+>
 > Signed-off-by: Brian Masney <bmasney@redhat.com>
-> ---
->  drivers/clk/clk-apple-nco.c | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
+Reviewed-by: Gabriel Fernandez <gabriel.fernandez@foss.st.com>
 
-Reviewed-by: Janne Grunau <j@jannau.net>
+> ---
+>   drivers/clk/stm32/clk-stm32-core.c | 28 ++++++++++++++++++----------
+>   1 file changed, 18 insertions(+), 10 deletions(-)
+>
+> diff --git a/drivers/clk/stm32/clk-stm32-core.c b/drivers/clk/stm32/clk-stm32-core.c
+> index 933e3cde0795386c3e5e6902aa0989cf3dffc01e..72825b9c36a4d3b8ba3f7615b9026c09ffaf88d1 100644
+> --- a/drivers/clk/stm32/clk-stm32-core.c
+> +++ b/drivers/clk/stm32/clk-stm32-core.c
+> @@ -351,14 +351,14 @@ static int clk_stm32_divider_set_rate(struct clk_hw *hw, unsigned long rate,
+>   	return ret;
+>   }
+>   
+> -static long clk_stm32_divider_round_rate(struct clk_hw *hw, unsigned long rate,
+> -					 unsigned long *prate)
+> +static int clk_stm32_divider_determine_rate(struct clk_hw *hw,
+> +					    struct clk_rate_request *req)
+>   {
+>   	struct clk_stm32_div *div = to_clk_stm32_divider(hw);
+>   	const struct stm32_div_cfg *divider;
+>   
+>   	if (div->div_id == NO_STM32_DIV)
+> -		return rate;
+> +		return 0;
+>   
+>   	divider = &div->clock_data->dividers[div->div_id];
+>   
+> @@ -369,14 +369,22 @@ static long clk_stm32_divider_round_rate(struct clk_hw *hw, unsigned long rate,
+>   		val =  readl(div->base + divider->offset) >> divider->shift;
+>   		val &= clk_div_mask(divider->width);
+>   
+> -		return divider_ro_round_rate(hw, rate, prate, divider->table,
+> -				divider->width, divider->flags,
+> -				val);
+> +		req->rate = divider_ro_round_rate(hw, req->rate,
+> +						  &req->best_parent_rate,
+> +						  divider->table,
+> +						  divider->width,
+> +						  divider->flags, val);
+> +
+> +		return 0;
+>   	}
+>   
+> -	return divider_round_rate_parent(hw, clk_hw_get_parent(hw),
+> -					 rate, prate, divider->table,
+> -					 divider->width, divider->flags);
+> +	req->rate = divider_round_rate_parent(hw, clk_hw_get_parent(hw),
+> +					      req->rate,
+> +					      &req->best_parent_rate,
+> +					      divider->table,
+> +					      divider->width, divider->flags);
+> +
+> +	return 0;
+>   }
+>   
+>   static unsigned long clk_stm32_divider_recalc_rate(struct clk_hw *hw,
+> @@ -392,7 +400,7 @@ static unsigned long clk_stm32_divider_recalc_rate(struct clk_hw *hw,
+>   
+>   const struct clk_ops clk_stm32_divider_ops = {
+>   	.recalc_rate	= clk_stm32_divider_recalc_rate,
+> -	.round_rate	= clk_stm32_divider_round_rate,
+> +	.determine_rate = clk_stm32_divider_determine_rate,
+>   	.set_rate	= clk_stm32_divider_set_rate,
+>   };
+>   
+>
 
 _______________________________________________
 Linux-rockchip mailing list
