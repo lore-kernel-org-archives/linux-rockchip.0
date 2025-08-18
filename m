@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F553CA0ED1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 06:21:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6231FCA0EF2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 07:51:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EwgduvNwvxjNekosxr6CoE1eHBtI3q4tArTHTIzXbQk=; b=zxHiYnPBq1CyAt
-	9dPJ9Pm0kfQVH9za3NDffbVfBSNeMNkGjjFeK2+bL8h4G7ZSg2tr4SL8B8PGh2T8JvA2CDPjG+LbM
-	2Yskflse2bCcFdfwlO4n/tHwPDGHYonRKpv9dFPessNuNLRIvCV1xJKUJI73hUyBwosDoRELCJlLu
-	oGaxj6qPzIF3+efqwLo7NBrnOm03TXwAshyyUXSGkPtXjxougttHNwc7fSKIQotwhECZqCpKl59px
-	NLtkvVXovr90WssIS27FBOsYaMdfJFYA5b6LRc/Be3eVQ5gBhZoOQ3dYwg14CHlKKE03zYRIJLtrR
-	G2spSTq1jyuVhmAqrsDg==;
+	List-Owner; bh=U6MPe+pfqWMuKVGyMT7fUKYQ7YyUc4nnhuC+BH3Tbf4=; b=sQecwWaRTnao9o
+	kk99P4Ra8uW0iqMr64qxa7XO41dT8+NaSnBzS1oWyQl6/hncdOEVEcY4UbzEMPvNoJW/WnGypmrz4
+	DDp/4px99Cqj2ea/ayqy17PhNz22+R4HrgJaIxqhioyV1iIToH1DSM2IETCE4F18Rky5l2Xdzxf0/
+	7iTgyo7ZjvtapEZuiPcEFwEOG1683ka37zVfPcVyn+ecdq7tjQGM2lvpXwXrVuHTrlt+vvChiK+QO
+	F27kSj0Kea3UCn+eEinlN6l+96prpdcOQBDij0+a1e3Z0QeOoQD4X+AVQVu2h6FbAzIlWZWn1/IbH
+	jSh2zvQMyF0kTMxcd6ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1untEf-00000006ciY-2DDe;
-	Mon, 18 Aug 2025 06:20:49 +0000
-Received: from bg1.exmail.qq.com ([114.132.79.153])
+	id 1unueM-00000006pPn-2Eja;
+	Mon, 18 Aug 2025 07:51:26 +0000
+Received: from smtpbgsg1.qq.com ([54.254.200.92])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1untC5-00000006cXE-0F22;
-	Mon, 18 Aug 2025 06:18:10 +0000
-X-QQ-mid: zesmtpip2t1755497838t1fd5a6b6
-X-QQ-Originating-IP: K5v4RAVWugn23UNjkoicspSCFboAu0bRGFTZhubq0CM=
+	id 1untoj-00000006jxa-0rEL;
+	Mon, 18 Aug 2025 06:58:06 +0000
+X-QQ-mid: zesmtpip4t1755500244t6fc68c41
+X-QQ-Originating-IP: sLmbQl3vBpNZ30bWX5N0sBTYr4LYaC7/m/aS7e2wyqY=
 Received: from [IPV6:240f:10b:7440:1:e696:3c18 ( [localhost])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 18 Aug 2025 14:17:08 +0800 (CST)
+	id ; Mon, 18 Aug 2025 14:57:21 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 3725019992298414931
-Message-ID: <F46196958466A8A7+60461f17-bd3a-4e17-be6e-b4f22dddcde5@radxa.com>
-Date: Mon, 18 Aug 2025 15:17:07 +0900
+X-BIZMAIL-ID: 1927108559509469176
+Message-ID: <BCD8E43E564BC334+1e45d36f-edc7-4c3c-90c9-7b0f2a52360f@radxa.com>
+Date: Mon, 18 Aug 2025 15:57:21 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add Radxa E24C
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
- jonas@kwiboo.se, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- robh@kernel.org, ziyao@disroot.org
-References: <058E04574291144B+66620590-b680-44b9-92c5-7dc4c43080e7@radxa.com>
- <20250815100110.1302357-1-amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: remove vcc_3v3_pmu regulator
+ for Radxa E52C
+To: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>
+Cc: Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+References: <20250816080030.183931-1-amadeus@jmu.edu.cn>
+ <20250816080030.183931-3-amadeus@jmu.edu.cn>
 Content-Language: en-US
 From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20250815100110.1302357-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20250816080030.183931-3-amadeus@jmu.edu.cn>
 X-QQ-SENDSIZE: 520
 Feedback-ID: zesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: MhFAoh6gmjppIABUC5Nr7UHdRf/PRmw0CsLmh7kyn1LFXlDeJUL+F7tx
-	zcvPEfG3jVlTRSFOYE9ETlGYW41Ak57STppNhCURMf4ZvYd3uzOGCNPEb535vSJ985qlQW7
-	E6TQqdNMlgQ6C7lWWqXq5+Hs0YgOz3OTrj6jxQyVD805kJhZSdOOJRZFSoqBQHYWQsv6BAU
-	HkGP2/dp7yzi9Yyg7eLZcC3kB4idAgxuZN+/pEv965vSgejW+6/ecdgoxdAgC1LAhsN5qoj
-	0ctBbn8zm7LkEauVLVRPnRrCspdMP2iuIC/M+Xz0ue1Ow3GzITVy1n9TXL3Wa6Vr36xn0ws
-	6CPeHR6Ma+Rx2ukHvxjh1Zu/hKMUeed2iJGKUzi+ZFibA3aYbTmSEEQdKNQlnDq01blJjf4
-	RkRxdjrFoa9rWNo0FfT45yB5zShYUF/OpOq34ZaPoKyLMkjPCZrw59V46ddS1VtF9YC4Ecq
-	khoIlMnfLNP8eXy8pAT1vYSA6vfjYMHZxNQkAtztXGAKr5GrbXCeX+/fUd7yzbubcbp14X0
-	nvJTuEkFSTPMq5ltKmLMTtoA+JPdh3EDKOvP/LDBgkv6vlDgBRCb1GF9wZLr3oZdRCrnXdp
-	5KwTXyLz0rtSA7bgb+81xOqJCutXJGsH136p90NZJEhxIBE3bWpndnE4yg8lWSiXoaw/BkV
-	bys+Su5ou3bfRCirxmwfG2VFRecRhf/YaVh6mAtVViAOuVUom5He7zsiRnqoZrVcZCklvfs
-	OTNF3xjw+2OBT7WXnrFiZ/Dr0EcWk/u8ur1zyy1RL5j3Sgel3A4EjOXTwW1hasavhoHR5XZ
-	m/O6cVo3cg4cGeL+0SHTJyAG71dmCh3RhGC6No7vXGkXaN4zQNm3lGsDLKu97RzmwAp/YIM
-	BHLu5vXDMJ8ZKay4HtD9mO6IGZ47/ftWE0GfdB0e4i/NfW58tXsThUDYONoMGIJtz+02TPV
-	wFg128RFydSKMTd9gzAaSrFU4
-X-QQ-XMRINFO: MSVp+SPm3vtS1Vd6Y4Mggwc=
+X-QQ-XMAILINFO: OBUGnm9pFasAcNPGHYEMAopgoh5OwK6sDVK9bpqjd4LE8UhdUNPQ9bKd
+	Eft9UalMA+yEWVadv5T6zu8vxV885J/dFccTojhVAHOFPp4bMUXBCPSVwxd/LFYHuOK47Dk
+	4Pf3qcgL8BXEGSElSYv/4M8iBjpN221bvXwzxf8nlQimUGPyLQFOc72o8jk3WWvQhwvyVJk
+	N++pAcPjMhGi6EZwh8mYFVZg8yybg6OL6jAIN7DcfscMlSpCA8Qm9BAnPvA/XkZcLkrF01P
+	cU83tt+n0jxG39QLqnam+jEniLdShLddKJpN7FbQ2IQRhhuJ2Ae7yC3JcwKiCT1KRbm4L1o
+	55uisvFusSs0snQ/pBidg1zdinBWowBbUbTp7c8FAiQ3SQBuQYY+nIhOCmHoVoOoDd/6qgj
+	UodG2CUSlHj/UxAcVPHDdRkZdBlyz6sAK4fqG9pvdQyfmyqzrqx3oUcWNhkOMSa17XUl/Hl
+	tw5v+HFbDJHUDLX7y4vkfJ8KD7h3qGV82mlWgSmYDhnD+Bx433C4H/vuMDSSlCygbJcAXYS
+	GnUuBjWqcKWV3RO4rzkM7+PZ/y31YoyU4/OE+PQjp36PmdLMnnYOx7ej8A6Rqy4uVBjZVju
+	mm1vqI8w1mdjpQ0tpi4GE+V7+7eotK1libg4gEWWS6MPlRetQn+mA3zAeuvXFrUy+u86pYG
+	g1Z8L0iK+doHUhhyvrAAPkOpsbObkDjS39ZocN/zY5mCTx9X/ryvHW6198iVAC+/Up8vsy9
+	+fVElV2mut9qi7JF001tr4iGW13YAvuTWAYMrXmCX24wgwq7UfcPTNaLwbjtdyveMt+4m1X
+	+TNSjx6dHnY53Sl57Uexu6tfzD9aYWezAGfdJukbeaqFefyzxG0b0yJvDyuT6aBdqJ7tFYx
+	dA8bU2U7pDMLx3DkNj7CWf2L6B0DHJ3aqhVAhfZeiGRmuJPZ8iLjsey9UFpnQUc42aadKSJ
+	H6FS267F7p60Ccr3jSDqVod3S4fvQq+gpNU3Ro0JRGPZmOyoQ/dCAxDiNy1xoW7jBvN4=
+X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250817_231809_455793_A334E5EC 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250817_235805_600053_071DA77F 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,20 +90,57 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Chukun,
 
-On 8/15/25 19:01, Chukun Pan wrote:
-> Hi,
+On 8/16/25 17:00, Chukun Pan wrote:
+> According to Radxa E52C Schematic V1.2 [1] page 5, vcc_3v3_pmu
+> is directly connected to vcc_3v3_s3 via a 0 ohm resistor.
+> The vcc_3v3_pmu is not a new regulator, so remove it.
 > 
->> "label" is deprecated. "color" and "function" should be enough to
->> explain what they are.
->>
->> (Personally, I prefer LED_FUNCTION_STATUS to LED_FUNCTION_HEARTBEAT)
+> [1] https://dl.radxa.com/e/e52c/hw/radxa_e52c_v1.2_schematic.pdf
 > 
-> BTW, will there be versions of Radxa E24C and Radxa E54C with
-> onboard eMMC? It seems that they are all onboard SPI instead
-> of eMMC. If there is no onboard eMMC version, we can remove
-> the sdhci node in dts.
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts | 12 +-----------
+>   1 file changed, 1 insertion(+), 11 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
+> index 1883bd183396..4a3ae95f122f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
+> @@ -98,16 +98,6 @@ vcc_1v1_nldo_s3: regulator-1v1 {
+>   		vin-supply = <&vcc_sysin>;
+>   	};
+>   
+> -	vcc_3v3_pmu: regulator-3v3-0 {
+> -		compatible = "regulator-fixed";
+> -		regulator-name = "vcc_3v3_pmu";
+> -		regulator-always-on;
+> -		regulator-boot-on;
+> -		regulator-min-microvolt = <3300000>;
+> -		regulator-max-microvolt = <3300000>;
+> -		vin-supply = <&vcc_3v3_s3>;
+> -	};
+> -
+>   	vcc_3v3_s0: regulator-3v3-1 {
+>   		compatible = "regulator-fixed";
+>   		regulator-name = "vcc_3v3_s0";
+> @@ -255,7 +245,7 @@ eeprom@50 {
+>   		reg = <0x50>;
+>   		pagesize = <16>;
+>   		read-only;
+> -		vcc-supply = <&vcc_3v3_pmu>;
+> +		vcc-supply = <&vcc_3v3_s3>;
 
-Although optional, there are also E24C/E54C versions with eMMC.
+How about the following instead?
+
+@@ -538,7 +538,7 @@ regulator-state-mem {
+  				};
+  			};
+
+-			vcc_3v3_s3: dcdc-reg8 {
++			vcc_3v3_pmu: vcc_3v3_s3: dcdc-reg8 {
+  				regulator-name = "vcc_3v3_s3";
+  				regulator-always-on;
+  				regulator-boot-on;
 
 Best regards,
 
@@ -111,14 +148,9 @@ Best regards,
 FUKAUMI Naoki
 Radxa Computer (Shenzhen) Co., Ltd.
 
-> Thanks,
-> Chukun
-> 
-> --
-> 2.25.1
-> 
-> 
-> 
+>   	};
+>   };
+>   
 
 
 _______________________________________________
