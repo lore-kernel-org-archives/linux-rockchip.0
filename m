@@ -4,69 +4,176 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F236CA0EE4
-	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Aug 2025 16:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFB74CA0EDC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 02:04:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zn9/kT3s+TC2I2gtkXLID0zTNTVEzO0GbjejVLO7kRU=; b=010BQbqh8FT9gq
-	arOoat5TsYzf1GXnp6sn+Uyr0DjsYRkDICFPhoOlpJIHmjLqQC1RerDe0o3dVpn+wrGY4gaJUV49c
-	uoLm4Iw6ciBG8n3PPFSPB9svRUZm4Dnu1U/j5jSJ9zM9RjDbfChpp3GcclkbHtAsuYDEFrfrJzMXF
-	LXrethBjz4vytXhCdF2350tDU2wnerpDX035OF2ZY5AOUmaJJJElTLx2L+oHwJ0Dhk39V8kkRxlJ1
-	20W71/VgFZf0zlVtcZgm75zmTCXZ2HvtDQI4SGX6FTTK503/gNL8wurCLP98WGTJLVLlfh6wxVZBY
-	R7JkUipVZ2zO96WDBYwA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=iBSCEvrzMFBy8wR3ztCk3v/gbS7rMi6GcPvi1sx4RX0=; b=eiauASpZNdMvVuGy9hxVzjgoMa
+	776j56sM8c8hi3PonqadzTu7dA8EC8TqpG3d3z7JlKGQGdfJ9fxArzYirZJJ3Tfw4ywf0k305WtZL
+	rIdDs4SgrfKB3AcpNSjBW5idtFbhw+7UXjHYp9/7GUJg0Eq3Cg4sLPFKFiQAKX71N7oY8ubJgIpEN
+	v00xVkxemf3B6KkC2g084dMe/0f76Tew3S6OWXoFzLWh1uLuJ5Epiy4sbsPW6icVVTJwdp3WkCLdF
+	TjXlxHf8ZnrdBoyYNZQS6Nd1buSrElESmYFr+MMZQXP7jFk/Hd4/3SpexfrDO/zeuVZ8GlGqeTOPy
+	EYApZdDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ungWx-00000005rgT-0DWJ;
-	Sun, 17 Aug 2025 16:46:51 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1unpEu-00000006IkW-2U2d;
+	Mon, 18 Aug 2025 02:04:48 +0000
+Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ungWv-00000005rep-1RqL
-	for linux-rockchip@lists.infradead.org;
-	Sun, 17 Aug 2025 16:46:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1755449208;
- bh=V0JgX9niK/jrh4YSavrLzHuTfEZE1FFWTu/eobrzLTk=;
- b=Sayp2sr7ACsvw8CnhuK71MfnNoHK2w+HgeroUX5Ju0r3GJOeJuvTaMXKKwlmAVn8KpZGj7UW3
- 16Z5OlXdI8IwdGtKIAGa55m5KdzT5e0rQ7oZa4FXOHzHG2/6NE5poOKka7cI7QBoneXwgwp2pZs
- 9JENLeiqsYBJMGw9DLrUT7dnEwlBvk8sl4MfhwwDiz6tb1bOsUQAxW0whXjHidN2PikmTtD4IY/
- sMSmZLKaWmtYBSWOizv7RGyiioHfqeb8C0qG+A6mEgOi1c4ROslVwzaJXRbcU70fO0Qko8ocyde
- HP0LvHPth28vIbZdCOk6FnWD2bBytuRM39Aqvenf+LaQ==
-X-Forward-Email-ID: 68a207649a82a81f459cfa06
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 1.2.4
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <c0573db5-17df-4c8a-abfb-af7163f6b1b3@kwiboo.se>
-Date: Sun, 17 Aug 2025 18:46:24 +0200
-MIME-Version: 1.0
+	id 1unpCK-00000006IMJ-1AXH;
+	Mon, 18 Aug 2025 02:02:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Qs5zLnGUb1Y42ujZm79Olg+5vqMxPgHcgoQGo31au69rERKbXadweZVInjVmlw5vPcD12KwNpxb4/zUMSsAqDdGfykrSSjL9ezVrx0aW4VJ42gZs1ny0knPakZ9f7BLIqjDaUaJtYJ9NJtG2swqIuMqyJcMg/ahtjOg+5J6Bz37M5BguIago5lZIP3IXKxp20H0MQiXb8GmSy7NKDLikZb3DWPPB1vjNGXoPMIoKEthma1QDpI0juoNzFKy9oZfByo4dFf9/wzZEzVHR8jVTnMG2SHDYKnohL03VlOgJwvPva67I4IkpBYeIf/t5ig+sqDabujPCWTYwkl8/B0hzBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3OTUoQBXlLsINuLRLU8VhPBK9NrrtiyATUM7ScVea6g=;
+ b=g1IV/qXQGaotQjKX0zC6o4IsTjahRavpK22/v81oHDxUkYSuEZULxwloDCEBn5dGMZPYSSzmiTfldlA9mE8hBCta0rhyZfvDgEXLLKqUqOC9L0atqg266srucHxVjXzTTtwUfqGMgFgrFZP/yhL9UMl1FEjhlbKrtqCRKH72VMckEmp3xoGlYhPygBco71qhQX2wJ0MqVgmFlV9p0eNgh9gsY0Fq+sXhMyd/ZHJQKnwOp4LeQuSJC+f6tFEHE/xINgQ2cTmTl/BrqXgF2PldOGeTyrL0q9L8oacA1D1+R/AzILpTQMll1gcWmdEeqyCt2zEaPQfCmHTjaxRIAOt5AA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3OTUoQBXlLsINuLRLU8VhPBK9NrrtiyATUM7ScVea6g=;
+ b=hCeCz4t4eo/tJQ6vNuAguX3RwJtxEdA1DCGC9QRjVCbOXpu66rTMz2hxs48BoXcc3rtndm4eWxIG7mc64erWIeWvE5/OlpYiffssSIaufkg1rn0aA3Opc0lQDQlPSTWqOrXtZJnq+e39grH2EtuqShWBcYUlLSSsNhdEKZDYjWThXqucfXuZngTo+yKuwTRscFe9EwxiMT7zCLrJmS+UwpSb+yWvdHeUMoDEZDgJFyr91ey1j0C5zUTcz7Nr972Fcv2+jF8X+Y5VrMWkRSr+y3z8T6lmikZ2t00PNQYlgatuMNx4ipitjql4rq0V+k+GuP+UZcTFnf7fnY1ZYEdhKA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM7PR04MB7046.eurprd04.prod.outlook.com (2603:10a6:20b:113::22)
+ by DU4PR04MB10530.eurprd04.prod.outlook.com (2603:10a6:10:55a::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.12; Mon, 18 Aug
+ 2025 02:01:57 +0000
+Received: from AM7PR04MB7046.eurprd04.prod.outlook.com
+ ([fe80::d1ce:ea15:6648:6f90]) by AM7PR04MB7046.eurprd04.prod.outlook.com
+ ([fe80::d1ce:ea15:6648:6f90%5]) with mapi id 15.20.9052.011; Mon, 18 Aug 2025
+ 02:01:57 +0000
+Message-ID: <980a990e-ff7e-4de3-b40e-2a28b769cc73@nxp.com>
+Date: Mon, 18 Aug 2025 10:03:27 +0800
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/7] media: rkvdec: Add HEVC backend
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Alex Bee <knaerzche@gmail.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Sebastian Fricke <sebastian.fricke@collabora.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+Subject: Re: [PATCH 04/21] drm: remove unneeded 'fast_io' parameter in
+ regmap_config
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
  linux-kernel@vger.kernel.org
-References: <20250810212454.3237486-1-jonas@kwiboo.se>
- <20250810212454.3237486-2-jonas@kwiboo.se> <22971824.EfDdHjke4D@earth>
+Cc: Mark Brown <broonie@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ dri-devel@lists.freedesktop.org, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20250813161517.4746-1-wsa+renesas@sang-engineering.com>
+ <20250813161517.4746-5-wsa+renesas@sang-engineering.com>
+From: Liu Ying <victor.liu@nxp.com>
 Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <22971824.EfDdHjke4D@earth>
+In-Reply-To: <20250813161517.4746-5-wsa+renesas@sang-engineering.com>
+X-ClientProxiedBy: SI1PR02CA0052.apcprd02.prod.outlook.com
+ (2603:1096:4:1f5::20) To AM7PR04MB7046.eurprd04.prod.outlook.com
+ (2603:10a6:20b:113::22)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM7PR04MB7046:EE_|DU4PR04MB10530:EE_
+X-MS-Office365-Filtering-Correlation-Id: d85a219f-5f77-4e1a-2fd6-08ddddfb35eb
+X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014|19092799006|7053199007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?WWdjaGw2STRIR096NEVveENvVmpUQ3d6NWYrZVVjTFk3MENVOVI1WjNvMjQ0?=
+ =?utf-8?B?Qk5Qa3pWRWFNVC9GbDMwZmpFT0xENi83NHVxUHZDRTg1ZFZaMFo5R1JscDBU?=
+ =?utf-8?B?RTdueDNZY1BhaE1sbXltY3R6N21seVNlWkU1MGFGaE9VVy92SmpFQWhRUVZC?=
+ =?utf-8?B?QjBQbS9MUTEzVnNvU0Z5UUZZNUp1RzgyVTV3a29pYzZIYW13aXFlYi9CcklE?=
+ =?utf-8?B?WEFsZ29LcHJVWWJETzA0VjByRUdiVmllNUJBTEJ4bWV2NzcvZmZhV1dsUzBH?=
+ =?utf-8?B?MTNxTFJNdkpvTUZTc2NxYUZaMnVRKzhFSFd1ZlB4Zys1YW4xNGtvSkMyZDUy?=
+ =?utf-8?B?WXN3emppYjA1Umh1SEkyTWRLUXAwVGZhcllkTzdoSnpiYWVlMjdnOE1XMzJP?=
+ =?utf-8?B?czNMRmkwTE9uTlN0NjIzZ3BtRFZTSUVvemZLbVZXMWV2WDJzYnBrWE5Jb01s?=
+ =?utf-8?B?YVhlZWYwTjNESkg4RXltZmM5UzVDZGJNY2JaY0ZKa1M0YVpDc1BZVUd4VC9R?=
+ =?utf-8?B?TkpFM2dxaElKMG5udVlQMDlXcWdVZUU3RnM3MTI2Vnh2R3VPRVlQQzNOOUZK?=
+ =?utf-8?B?K3ExTy9wV2I5dFNwVXBDTHM4bEdrNFBvV3FzbFdLdGk2U0hXWFBOUjU1Rm5l?=
+ =?utf-8?B?aGhyQXpranczb3BDZFVzTlQwd3V6b0hJTHVXeTFpVWhubjdBaUNFNTZvbTg3?=
+ =?utf-8?B?QkZIdzVMSnhZRE80bE5sT3E5S0cxakhRMWtsZkxaaTEwYTZiNm10SzdWcXBK?=
+ =?utf-8?B?Qkp2MWI1RWNkVjFaVCtWcmpYazRmbTlxWmVpYmxqd0M1K2t4S3pySkxPMjZH?=
+ =?utf-8?B?N1pNSUI5YkU1VkFMNHlkUTJmK21lc0hNbUxBV0hycWVMUWhFTnJPYjJuZVNK?=
+ =?utf-8?B?RVk4NHNneTVjL3N4Y2pFSFgwM3JReGYwTmF1dGVISFdKUHV0NnBqYjJ1SHdV?=
+ =?utf-8?B?L2pOZmREOHVQWVRwN2JNcnQ1S2tyQ09qKzlWL2Q2R3Z4cC9iRHJibHQ4QVdp?=
+ =?utf-8?B?cEplSU84K0hQRHludmE0VHpVRm9CR0wzOU5aMEwyTWY5RVZ3SkkzV0lxcGxs?=
+ =?utf-8?B?OWMzOXEySDk0U2EraXhZL2VEUlpFR0ZLdEdGWkQ5VUZnMFE4WEVaNXRnRVhv?=
+ =?utf-8?B?Ky9LMm9qeW41aFEwZzlTMU4zbEVheGE3WUVGaUZqcVcvdGtDQXZWdEVpeDFk?=
+ =?utf-8?B?UmdoY21LbDFxR05COHgyM09RSXZuYVpRZ2FNUWE1ZVBVSE5DYzllaXFKZXhM?=
+ =?utf-8?B?SGtud3h5ZFdpSFNJZzVxU1VSM0ZqM0xGVmNDU2krYnJSWk9PWkpEQWNlM28y?=
+ =?utf-8?B?bEVsRkFISVY4Z0xvN2Q1djB4Sm5pY1JxR09sYzBHQUlkdVJvcXV6K0Z2VGhR?=
+ =?utf-8?B?VC9VdkJiWFpocFhjUlZROFl3NEJ3SWNQaFdSUThxWVQxZEFvZTF3L1cwMTh2?=
+ =?utf-8?B?Y0pOV3Q0ME5FWkZJcy9SdFZuTzJDOVJha1BncXA4N1FUN3lpYllkNm0wRlU5?=
+ =?utf-8?B?ZFJQL2VMZkZZdDhXSXdJcVNnbUdFakxpZXRqSGc5Z1F1RitvNmpWM1Z1MjZs?=
+ =?utf-8?B?cEw5Q3h2ZDRldkhGbElWQ2kxZlA2cmplM3lndWtINHNXU0tBTWIxTDJiKzdL?=
+ =?utf-8?B?ODRlbEVmcHl2NG9HZmdua2diWjJoTnZ6V2xIZWxVTGhhcEZIWUQwMEZsRXNR?=
+ =?utf-8?B?bStlcitPazllWkhKMEdhVlBnWTZEdEJuN3UrZ1YzMWtBOCtkNkRYQ2poeko2?=
+ =?utf-8?B?ZC9iUGRKSFAySGEvOWtsOUtUWkg1MmtBcXJCem9IWjdWYWt3OEMyS2NmYnhI?=
+ =?utf-8?B?KzFXYk5JSlhoSXZEcE0zVzJUNzAzc2dsU0k4RlZFYllDTkV4aytqUXlMMTRY?=
+ =?utf-8?B?eXhYQzRtY1FSN2VjbkxyRFQ5ekg4eHpVRFN2ZTBMWis0Z1dPRld5b1F2NGty?=
+ =?utf-8?Q?EaO9f7EOyKQ=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM7PR04MB7046.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(7416014)(376014)(19092799006)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Z1F3R3NWUU5xZ051Qm9mR0orbDhEaEQ1djBaM29iUEFIejNFazRacmoyQ0FQ?=
+ =?utf-8?B?RU1BNm1rRmlkUmhhOEY3WXAzNm56UGFBd2VZME03SXIybW01a1JlSGVuV2M2?=
+ =?utf-8?B?aGJhZ0NNRVJYNUwrZmthY3lBWVNhU1M0ZER1WjJSR3lmbFRWTkJGZSs4T2g5?=
+ =?utf-8?B?RzRjZlFFdFkzSHlVQlpjRlRleUxhMGgzTHVtb2dJa2cvMXQ1Njhzd1FidHdh?=
+ =?utf-8?B?N2hSYlAvOERWaUZaSWtJbzNPZG50cEpFT1lSM0xVdzBqeTNRZ21DdFNacVRM?=
+ =?utf-8?B?WndRRzBVV2xsMHhCcUxGeWFmdldlT1FpSWlZT1pOeGhDK0FmdWd3dG45RE5y?=
+ =?utf-8?B?S3dicWxBVS9VSit2ai9MaWQwQjdYY2NTWVllU3lMb0hacUFPMDVVeXVNL2xs?=
+ =?utf-8?B?anhlMXJVVVBjdDNOMlpQYWF0M1RlOE95YUY5S3Yydkl2eUpqeWdnS3lWOWw1?=
+ =?utf-8?B?SHBHcUR2UTJiZDR2M3ZMS2QrRjZ4KzlpSC9RZzV3R3hpbmNrR0RjMjZCelZ3?=
+ =?utf-8?B?MDVTemVlQTU3RlNJZ3MzOG1CWmptdkdILzUwcm5weHVhVDJvbjljZUpCekdp?=
+ =?utf-8?B?WHpKMVppOWJHaUZWNng5enA0d1l5MllpU3RCUUJvcFlHbnJoVXh4a08rQW1O?=
+ =?utf-8?B?LzVGUmNEcW9mV3Jrb25YaFJ1TDZ2VGVjOG9SYmcvZEx6cFpBV2J4dG9UM21o?=
+ =?utf-8?B?L2NkbTd1QVR1QXBaSlhwMDlBbFdMUkhiNkdrekNHdnFMVVh0NEI3NVpKUUFn?=
+ =?utf-8?B?OUlNdTdnanpWZlEwMnM2SFBoZ0pRZWVtTXhRWktMS2RoZ0lEbElhaUo3THdF?=
+ =?utf-8?B?WXQ1QWIyeVREbkZJa0kyYTFJc0lJakNkRFdVRXRWRkxFYmdVN09SMDB3cVMz?=
+ =?utf-8?B?bEFWSDlORm5iSzN0YTR0ZUI5dERhYmRHTDdCYVVXdkt0ZnVEaTdQY3VBYWhM?=
+ =?utf-8?B?VUFtcEtYNXBwSTZFWWJvWTlYdFdndHk1N0l6T2F0WVlMb2k1eml5NVp1Wi80?=
+ =?utf-8?B?TmRhZ28za2Z5K3YvTnZXaFpkN1lPMStGbFppZUVhSGV0a3ZQVm03SlBGT29T?=
+ =?utf-8?B?NFVjeXdxWXFka0xLZDVhZzVUTVkrVFJFTXVpczkvdVN2bThaZXJYcnZibGZ4?=
+ =?utf-8?B?bXNNMnJGSnk0bWpKWERDRGlZemNHTmhaMHdTMFY4WGZWd01Ua1FNVHlNOGpX?=
+ =?utf-8?B?L1p1Z0N0ZnM3eUxnYnd6Y1cyc3htNCtuNnVTU1libnpmNVpjeENXaWNpSFA4?=
+ =?utf-8?B?TDFXeFpkNEM2Wmlzc2xvR1VqK3ZwMkVXUnJCVVg1YkpvMnVGTng3dUtKWVpq?=
+ =?utf-8?B?d1VBMHU2d0xyZHdxL2VKV1J3SnZSajFHRXg4a1BFclJuT2IwcmRwNlZ1c01l?=
+ =?utf-8?B?VERjcEVpTzR6NzJ6ekNPYUJaQjcwYm5ISjZMSXAvMGVLZkRBS0tSMXhPL3JD?=
+ =?utf-8?B?ci9iNzU3RTNhaENwKzhMUHpvN0RpSGhoRCs1eDJlUUhlMUw2ZjlmcXFOSVl0?=
+ =?utf-8?B?UWtQY1R5bHh3SldHN2kyYllHTWNYLytGcmF5bmJjcDlrM3VCUFJzRFBtYkVS?=
+ =?utf-8?B?WjlYNVErQ0tlSVg1MXZ0eEZSaFpNa21QbDBhOEFtbTdNMU5hQjdkN2VZQXJo?=
+ =?utf-8?B?UFBIeDBTZXBsRlBSSHEwcUpnUTM0dkM5Q05odTZHdVlGd3ZnWDUwYUp6QXdD?=
+ =?utf-8?B?NGpKc08rR0JtdDA1VlloYnBQRVVjbVJ0RS9vU0VaUlFYa3BkMmF0MjF4U2ZS?=
+ =?utf-8?B?V1VZU0FxQy90eGxJK0tVOEVIaW1ERUwzY204QWNIWXI4SnQxZW41VXpLU1FZ?=
+ =?utf-8?B?RW1tNjYwTG1JdGsycGtMMnlXUUZFZmdJdFluV1NDL3lrNUkrWXFpczlJUHA1?=
+ =?utf-8?B?bE4xTGorZVNRYVBiMEJqZzdFL3Njdjd6NzlCQ21La2lvVS9SdW5ZQjM4aDQy?=
+ =?utf-8?B?aXU5ZnFqaDVMVUljYkZibExOSngvT2F5WG1GcnNySHZLaUllSHBjNnlpeXU1?=
+ =?utf-8?B?L2V6aXBMZDZSeUNWMStxamlsQm8zZnJlRWlUZEpkRGtXN0FnYnRzdUpWN0Ev?=
+ =?utf-8?B?MVJpU2ZVclVhekZMVExreDZBZ1ZqRkY5TnRlbk0rZVZQdUJPVHNBWmdadnky?=
+ =?utf-8?Q?3GXIU5jEqS2aHKh7Z/AudQdu+?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d85a219f-5f77-4e1a-2fd6-08ddddfb35eb
+X-MS-Exchange-CrossTenant-AuthSource: AM7PR04MB7046.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Aug 2025 02:01:56.9870
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: HreyWUyxPln4nE1rkoPDfpOS2PsFO+2QmV613OKvTyXJSSIuA0h8wHAdATc71je1vCPbsr3eT4mfh/ZAqFaE2A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU4PR04MB10530
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250817_094649_445484_740270B2 
-X-CRM114-Status: GOOD (  21.50  )
+X-CRM114-CacheID: sfid-20250817_190208_310656_F9641D7C 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,91 +190,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
+On 08/13/2025, Wolfram Sang wrote:
+> When using MMIO with regmap, fast_io is implied. No need to set it
+> again.
+> 
+> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+> ---
+> No dependencies, can be applied directly to the subsystem tree. Buildbot is
+> happy, too.
+> 
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-cf.c                   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-de.c                   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-ed.c                   | 2 --
+>  drivers/gpu/drm/imx/dc/dc-fg.c                   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-fl.c                   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-fw.c                   | 2 --
+>  drivers/gpu/drm/imx/dc/dc-ic.c                   | 1 -
+>  drivers/gpu/drm/imx/dc/dc-lb.c                   | 2 --
+>  drivers/gpu/drm/imx/dc/dc-tc.c                   | 1 -
+>  drivers/gpu/drm/imx/ipuv3/imx-tve.c              | 2 --
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c | 1 -
+>  12 files changed, 16 deletions(-)
 
-On 8/12/2025 10:10 PM, Detlev Casanova wrote:
-> Hi Jonas,
-> 
-> On Sunday, 10 August 2025 17:24:31 EDT Jonas Karlman wrote:
->> The Rockchip VDEC supports the HEVC codec with the Main and Main10
->> Profile up to Level 5.1 High tier: 4096x2304@60 fps.
->>
->> Add the backend for HEVC format to the decoder.
->>
->> Signed-off-by: Alex Bee <knaerzche@gmail.com>
->> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
->> Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
->> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
->> ---
->> Changes in v2:
->> - Use new_value in transpose_and_flatten_matrices()
->> - Add NULL check for ctrl->new_elems in rkvdec_hevc_run_preamble()
->> - Set RKVDEC_WR_DDR_ALIGN_EN for RK3328
->> ---
->>  .../media/platform/rockchip/rkvdec/Makefile   |    2 +-
->>  .../rockchip/rkvdec/rkvdec-hevc-data.c        | 1848 +++++++++++++++++
->>  .../platform/rockchip/rkvdec/rkvdec-hevc.c    |  817 ++++++++
->>  .../platform/rockchip/rkvdec/rkvdec-regs.h    |    2 +
->>  .../media/platform/rockchip/rkvdec/rkvdec.c   |   76 +
->>  .../media/platform/rockchip/rkvdec/rkvdec.h   |    1 +
->>  6 files changed, 2745 insertions(+), 1 deletion(-)
->>  create mode 100644
->> drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-data.c create mode
->> 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
->>
-> 
-> [snip]
-> 
->> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
->> b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c new file mode 100644
->> index 000000000000..1994ea24f0be
->> --- /dev/null
->> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
-> 
-> [snip]
-> 
->> +
->> +static enum rkvdec_image_fmt rkvdec_hevc_get_image_fmt(struct rkvdec_ctx
->> *ctx, +						       struct 
-> v4l2_ctrl *ctrl)
->> +{
->> +	const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
->> +
->> +	if (ctrl->id != V4L2_CID_STATELESS_HEVC_SPS)
->> +		return RKVDEC_IMG_FMT_ANY;
->> +
->> +	if (sps->bit_depth_luma_minus8 == 0) {
->> +		if (sps->chroma_format_idc == 2)
->> +			return RKVDEC_IMG_FMT_422_8BIT;
-> 
-> Is 4:2:2 really supported ? It is not on rk3588 and likely neither on rk3576.
-> You also mention later that Only 4:0:0 and 4:2:0 are supported.
-
-On the older rkvdec it is not, and I was unsure about the newer SoCs at
-the time of initial re-work of this. Regardless this is more correct
-when only looking at this function, it does not include 4:4:4 but is
-correct for all currently known RKVDEC_IMG_FMT. Also to keep this
-function in sync with the h264 variant for more easy compare and less
-confusion about the two down the line.
-
-Regards,
-Jonas
-
-> 
->> +		else
->> +			return RKVDEC_IMG_FMT_420_8BIT;
->> +	} else if (sps->bit_depth_luma_minus8 == 2) {
->> +		if (sps->chroma_format_idc == 2)
->> +			return RKVDEC_IMG_FMT_422_10BIT;
-> 
-> Same here.
-> 
-> --
-> Detlev.
-> 
-> 
-> 
-
+Reviewed-by: Liu Ying <victor.liu@nxp.com> # drivers/gpu/drm/imx/dc
 
 _______________________________________________
 Linux-rockchip mailing list
