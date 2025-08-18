@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6231FCA0EF2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 07:51:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA403CA0EE4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Aug 2025 07:51:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U6MPe+pfqWMuKVGyMT7fUKYQ7YyUc4nnhuC+BH3Tbf4=; b=sQecwWaRTnao9o
-	kk99P4Ra8uW0iqMr64qxa7XO41dT8+NaSnBzS1oWyQl6/hncdOEVEcY4UbzEMPvNoJW/WnGypmrz4
-	DDp/4px99Cqj2ea/ayqy17PhNz22+R4HrgJaIxqhioyV1iIToH1DSM2IETCE4F18Rky5l2Xdzxf0/
-	7iTgyo7ZjvtapEZuiPcEFwEOG1683ka37zVfPcVyn+ecdq7tjQGM2lvpXwXrVuHTrlt+vvChiK+QO
-	F27kSj0Kea3UCn+eEinlN6l+96prpdcOQBDij0+a1e3Z0QeOoQD4X+AVQVu2h6FbAzIlWZWn1/IbH
-	jSh2zvQMyF0kTMxcd6ag==;
+	List-Owner; bh=uzEnJfbLc2Kx6YOu8HF+7OI47/Fov9G1rFKasEWuKBs=; b=BSdVDwnv1Aea70
+	ZCR/XYbWaOa2wu5X+TWlptbsC+HJbfEpApjQB5DN/jmeIyl1khkwwuUGZwqiLmlXvMCUN043AlrS+
+	YRI0W279IDgWWHqtLAzAQC4DaAN6YzhO7j95GWZK0ZnxUmU/2VPsCtYXiYWI214X8QHVAs7F9tjO4
+	CBmnCwJl5XJVCG1Mgj9MW0ErLDFjNMfBjCmjKNJXxg8mgUiCCjJYUa41FSKnQs/n7uDI5jpzYGmUI
+	4P47+ShFFCHoTqWWLOJoCnoUqHcnp8PyJnNKKJC/caocOK/Sa+nyGxGTy40GFlilRIMs23HdDOckm
+	KXnyQSPH8hXXgL8xSmug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1unueM-00000006pPn-2Eja;
-	Mon, 18 Aug 2025 07:51:26 +0000
-Received: from smtpbgsg1.qq.com ([54.254.200.92])
+	id 1unueh-00000006pxn-0iwm;
+	Mon, 18 Aug 2025 07:51:47 +0000
+Received: from smtpbgau2.qq.com ([54.206.34.216])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1untoj-00000006jxa-0rEL;
-	Mon, 18 Aug 2025 06:58:06 +0000
-X-QQ-mid: zesmtpip4t1755500244t6fc68c41
-X-QQ-Originating-IP: sLmbQl3vBpNZ30bWX5N0sBTYr4LYaC7/m/aS7e2wyqY=
+	id 1unuGv-00000006mhG-38KE;
+	Mon, 18 Aug 2025 07:27:15 +0000
+X-QQ-mid: zesmtpip3t1755501983te195c171
+X-QQ-Originating-IP: Ed+ORawxXpZ6NA7jhmANWyut2oLJqIWX2Q7j4Aj9hhs=
 Received: from [IPV6:240f:10b:7440:1:e696:3c18 ( [localhost])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 18 Aug 2025 14:57:21 +0800 (CST)
+	id ; Mon, 18 Aug 2025 15:26:19 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 1927108559509469176
-Message-ID: <BCD8E43E564BC334+1e45d36f-edc7-4c3c-90c9-7b0f2a52360f@radxa.com>
-Date: Mon, 18 Aug 2025 15:57:21 +0900
+X-BIZMAIL-ID: 17431412545650112022
+Message-ID: <ABB74D9D1E3774F3+5a8c0d7d-fb7f-47c0-8308-e2b69f0628c1@radxa.com>
+Date: Mon, 18 Aug 2025 16:26:18 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: remove vcc_3v3_pmu regulator
- for Radxa E52C
+Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: update pinctrl names for
+ Radxa E52C
 To: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>
 Cc: Conor Dooley <conor+dt@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 References: <20250816080030.183931-1-amadeus@jmu.edu.cn>
- <20250816080030.183931-3-amadeus@jmu.edu.cn>
+ <20250816080030.183931-4-amadeus@jmu.edu.cn>
 Content-Language: en-US
 From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20250816080030.183931-3-amadeus@jmu.edu.cn>
+In-Reply-To: <20250816080030.183931-4-amadeus@jmu.edu.cn>
 X-QQ-SENDSIZE: 520
 Feedback-ID: zesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: OBUGnm9pFasAcNPGHYEMAopgoh5OwK6sDVK9bpqjd4LE8UhdUNPQ9bKd
-	Eft9UalMA+yEWVadv5T6zu8vxV885J/dFccTojhVAHOFPp4bMUXBCPSVwxd/LFYHuOK47Dk
-	4Pf3qcgL8BXEGSElSYv/4M8iBjpN221bvXwzxf8nlQimUGPyLQFOc72o8jk3WWvQhwvyVJk
-	N++pAcPjMhGi6EZwh8mYFVZg8yybg6OL6jAIN7DcfscMlSpCA8Qm9BAnPvA/XkZcLkrF01P
-	cU83tt+n0jxG39QLqnam+jEniLdShLddKJpN7FbQ2IQRhhuJ2Ae7yC3JcwKiCT1KRbm4L1o
-	55uisvFusSs0snQ/pBidg1zdinBWowBbUbTp7c8FAiQ3SQBuQYY+nIhOCmHoVoOoDd/6qgj
-	UodG2CUSlHj/UxAcVPHDdRkZdBlyz6sAK4fqG9pvdQyfmyqzrqx3oUcWNhkOMSa17XUl/Hl
-	tw5v+HFbDJHUDLX7y4vkfJ8KD7h3qGV82mlWgSmYDhnD+Bx433C4H/vuMDSSlCygbJcAXYS
-	GnUuBjWqcKWV3RO4rzkM7+PZ/y31YoyU4/OE+PQjp36PmdLMnnYOx7ej8A6Rqy4uVBjZVju
-	mm1vqI8w1mdjpQ0tpi4GE+V7+7eotK1libg4gEWWS6MPlRetQn+mA3zAeuvXFrUy+u86pYG
-	g1Z8L0iK+doHUhhyvrAAPkOpsbObkDjS39ZocN/zY5mCTx9X/ryvHW6198iVAC+/Up8vsy9
-	+fVElV2mut9qi7JF001tr4iGW13YAvuTWAYMrXmCX24wgwq7UfcPTNaLwbjtdyveMt+4m1X
-	+TNSjx6dHnY53Sl57Uexu6tfzD9aYWezAGfdJukbeaqFefyzxG0b0yJvDyuT6aBdqJ7tFYx
-	dA8bU2U7pDMLx3DkNj7CWf2L6B0DHJ3aqhVAhfZeiGRmuJPZ8iLjsey9UFpnQUc42aadKSJ
-	H6FS267F7p60Ccr3jSDqVod3S4fvQq+gpNU3Ro0JRGPZmOyoQ/dCAxDiNy1xoW7jBvN4=
-X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
+X-QQ-XMAILINFO: MKbpLBOB35npu3RU/ctuzE+hm7xbZHPJ2wwAbMbVT+X4X0iRIT8KoPyS
+	Pvzm5j3MytJCZS7iYJ6WNpiNxTZ45+aMDmsoekRu1lvOeuMnsJfKJt0QhwXSZFfHLJesg6J
+	a8wRVrcID52m3wa5jbefVboeaMnx/YN72hTF1Io5C9c9EGpJFTCG9JlUzZJ4lntXdUbXASj
+	cqclzqvBA/kaX5PCafgbXtiXboSbrYnk2zxDuAgnQeH6CZO2likKk1zF4udFQTobijzvJiE
+	iBCGynEU5t+6pLDTkw+tUKEXTQl32A4MJzZSDeRA8vONKNhYHFkTlIZ/IEzZ5JrSDy13uPV
+	yU56/2s/QUwnRKYw4GxUphVkmjy9nDglG8of3DvqUuid51eYpO35sd7+EhHnzmIaO/m0YbJ
+	kbQUnqUuQf+0zzGNIR4XEfcmrGSIZmhgA/+XQmoIRFALmgpHxSBso4eatJcXE05E09Bhycl
+	zUulg18Qn6j7pBtA9WCijuwVpfUDIDP0RChvNjlu2Hm0Qi/HlVDqaTqimAeYPOpo3XZUHw8
+	fa0i9xtXU8xBM6NW9M2GtwFdQsTcxgg48buVJGEpTmD1LLxkeih24YusB7Q7rwjZXra9ROc
+	5ZNkzsFzaK4ZZJ7IYMszExdmqbLmR8COnSDEsapzRB0nKv8+ZT8lObLZNSskjcU5DtqxEad
+	u+edAGZU6sK61Xnkjxy/WLhJtVhOuLpLbER6vv7eGmdXBsb3IxbcuapqXR2ZpJZouWg+Q6P
+	KAam6ZTLzIYB5mvEfbNRyMpUMKD4Aly4Qt15JRl0W6RxN/13buxvM9nA5iz8vLWn8KQuCG2
+	hWNYPXUEOtgmILxcady5xcTJKOMOUEGDt/9UbT7BY5A85ebNcV5M//h2KzWcyeNFTeWIRsB
+	3NLLCJHGxuBSE3TeEj4voAHA5vddDsTMP4xmcQa/zlO7fPQiNEIVFpnpoWRT0XY+C5n5AIj
+	HuZN07ZMMP2505AVLFw5ThiMUolpecARXI/Gt4pnZi1FhKw==
+X-QQ-XMRINFO: NI4Ajvh11aEj8Xl/2s1/T8w=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250817_235805_600053_071DA77F 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20250818_002714_159064_5D4A279F 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,56 +91,49 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Hi Chukun,
 
 On 8/16/25 17:00, Chukun Pan wrote:
-> According to Radxa E52C Schematic V1.2 [1] page 5, vcc_3v3_pmu
-> is directly connected to vcc_3v3_s3 via a 0 ohm resistor.
-> The vcc_3v3_pmu is not a new regulator, so remove it.
-> 
-> [1] https://dl.radxa.com/e/e52c/hw/radxa_e52c_v1.2_schematic.pdf
+> Updated the pinctrl names of the user key and power LED according
+> to the schematic. Also updated the nodenames of other pinctrls.
 > 
 > Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 > ---
->   arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts | 12 +-----------
->   1 file changed, 1 insertion(+), 11 deletions(-)
+>   arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts | 14 +++++++-------
+>   1 file changed, 7 insertions(+), 7 deletions(-)
 > 
 > diff --git a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-> index 1883bd183396..4a3ae95f122f 100644
+> index 4a3ae95f122f..f93b129a0032 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
 > +++ b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-> @@ -98,16 +98,6 @@ vcc_1v1_nldo_s3: regulator-1v1 {
->   		vin-supply = <&vcc_sysin>;
->   	};
+> @@ -42,7 +42,7 @@ button-0 {
+>   	keys-1 {
+>   		compatible = "gpio-keys";
+>   		pinctrl-names = "default";
+> -		pinctrl-0 = <&btn_0>;
+> +		pinctrl-0 = <&pwm15_ir_m1>;
 >   
-> -	vcc_3v3_pmu: regulator-3v3-0 {
-> -		compatible = "regulator-fixed";
-> -		regulator-name = "vcc_3v3_pmu";
-> -		regulator-always-on;
-> -		regulator-boot-on;
-> -		regulator-min-microvolt = <3300000>;
-> -		regulator-max-microvolt = <3300000>;
-> -		vin-supply = <&vcc_3v3_s3>;
-> -	};
-> -
->   	vcc_3v3_s0: regulator-3v3-1 {
->   		compatible = "regulator-fixed";
->   		regulator-name = "vcc_3v3_s0";
-> @@ -255,7 +245,7 @@ eeprom@50 {
->   		reg = <0x50>;
->   		pagesize = <16>;
->   		read-only;
-> -		vcc-supply = <&vcc_3v3_pmu>;
-> +		vcc-supply = <&vcc_3v3_s3>;
+>   		button-1 {
+>   			label = "User";
+> @@ -55,7 +55,7 @@ button-1 {
+>   	leds-0 {
+>   		compatible = "gpio-leds";
+>   		pinctrl-names = "default";
+> -		pinctrl-0 = <&led_0>;
+> +		pinctrl-0 = <&power_led>;
+>   
+>   		led-0 {
+>   			color = <LED_COLOR_ID_GREEN>;
+> @@ -306,13 +306,13 @@ &pcie2x1l2 {
+>   
+>   &pinctrl {
+>   	keys {
+> -		btn_0: button-0 {
+> +		pwm15_ir_m1: pwm15-ir-m1 {
 
-How about the following instead?
+"The name of a node should be somewhat generic".
 
-@@ -538,7 +538,7 @@ regulator-state-mem {
-  				};
-  			};
+  https://github.com/devicetree-org/devicetree-specification/blob/v0.4/source/chapter2-devicetree-basics.rst?plain=1#L193
+  https://lore.kernel.org/all/20241216113052.15696-1-naoki@radxa.com/T/#u
 
--			vcc_3v3_s3: dcdc-reg8 {
-+			vcc_3v3_pmu: vcc_3v3_s3: dcdc-reg8 {
-  				regulator-name = "vcc_3v3_s3";
-  				regulator-always-on;
-  				regulator-boot-on;
+(I don't understand why this only applies to me...)
 
 Best regards,
 
@@ -148,9 +141,39 @@ Best regards,
 FUKAUMI Naoki
 Radxa Computer (Shenzhen) Co., Ltd.
 
+>   			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+>   		};
 >   	};
->   };
 >   
+>   	leds {
+> -		led_0: led-0 {
+> +		power_led: power-led {
+>   			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
+>   		};
+>   	};
+> @@ -328,19 +328,19 @@ pcie20x1_2_perstn_m0: pcie-2 {
+>   	};
+>   
+>   	regulators {
+> -		vcc_5v0_pwren_h: regulator-5v0-1 {
+> +		vcc_5v0_pwren_h: vcc-5v0-pwren-h {
+>   			rockchip,pins = <4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
+>   		};
+>   	};
+>   
+>   	rtc {
+> -		rtc_int_l: rtc-0 {
+> +		rtc_int_l: rtc-int-l {
+>   			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+>   		};
+>   	};
+>   
+>   	usb {
+> -		usb_otg_pwren_h: regulator-5v0-0 {
+> +		usb_otg_pwren_h: usb-otg-pwren-h {
+>   			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+>   		};
+>   	};
 
 
 _______________________________________________
