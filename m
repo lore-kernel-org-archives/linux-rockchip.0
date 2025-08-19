@@ -4,65 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03684CA0EFC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 18:13:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04A55CA0EE6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 18:13:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/fc/tbbulX047HurDTCLz0gdKe6MppJPFi0QQkjaQBQ=; b=ssRhKyUGMABRc1
-	tuCIWMAabYgplpfSh7ubhvCFrJMV7QVvTJOW23evFb9YjNwNMLu1af6Y+i7g7MQSQtWKQ8OOyr3Hl
-	RaEyhZ2xF1O4VmVgkcvzKaVUk+zKP0IrcorHRqXpjeLdlsOsVpD7+pWlcDaBHSA8g+tzHQYjPa9Eh
-	RjtE0GB8KXlg16ec7q8NXFB9DhnL6alSw2s6TV5AD1LHfTZMml1EynVhGxfA68l3G6sIZ7PQ7Dcmp
-	9w4CqFX+bbAhnjX2RzJ1zDqcVRkAgNVKISHnNY9PiFGyLptBBAqtNSECqwH2wG9VoByo3xcXFL7pf
-	xnffP30MEKbKZCy/cGSw==;
+	List-Owner; bh=0tlHka9fZyJwHo4GU5OE4N2JbgZdhsC48yI5AnOZYyo=; b=WgqZ+kO5BqxnwU
+	MJ8vwQJM1nyhOV/9E05OigqzrgOp6t0HbGfPWsYjBOn9aUQPGzc4FfJJ92bMGEXu2p72Qml4iCHEv
+	nzwuwV7XCcP+22z6V0qjXj4TBWzkyRt3xiXCT9i4FCBNbq4ptzS96AWFvSPoqPDRc3x1+Gn3nAWCE
+	dLlrFnHNnbF21oAQG/99EL+NbWRIlv6eWInh8glRZHyYoPI13iUXRRqY+urap4BfIdr2EQkVlPGjV
+	neZa/6ARsMsgaGdIvm/CKJVZsrNf1QTREJ5TQ6s8uAhex4leJMvL0FgtQ+qoDteAk4/j86x2gXj4M
+	8RQzNN9UmV1T0wiql9gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoQpY-0000000BC1U-3CmX;
-	Tue, 19 Aug 2025 18:13:08 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoMBy-0000000AYtJ-1EuD;
-	Tue, 19 Aug 2025 13:15:59 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0830C16A3;
-	Tue, 19 Aug 2025 06:15:48 -0700 (PDT)
-Received: from [10.1.196.50] (e121345-lin.cambridge.arm.com [10.1.196.50])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 078263F58B;
-	Tue, 19 Aug 2025 06:15:51 -0700 (PDT)
-Message-ID: <67a0d778-6e2c-4955-a7ce-56a10043ae8d@arm.com>
-Date: Tue, 19 Aug 2025 14:15:50 +0100
+	id 1uoQpe-0000000BC5v-3Sau;
+	Tue, 19 Aug 2025 18:13:14 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uoMCG-0000000AYzf-3z7Z
+	for linux-rockchip@lists.infradead.org;
+	Tue, 19 Aug 2025 13:16:18 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-afcb7ab87ffso83173666b.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 19 Aug 2025 06:16:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1755609376; x=1756214176; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DPILFNpK7zCsqHWBHdQ9uG4ptTyRvqVrmGvIx37v5K4=;
+        b=ctJlD3QdBnhiKgh7l5s5QNn3sgOay2kk+HeL/kUNkHqDWtgcMWC8F7dpOi7G7sCGf+
+         GeMh+dI6OUb6G4BK49HZro1zMIj8JxNRyQ6rhay27nkFO20gL3m83n9BrsPNUBL8q5aH
+         wi2vIvtlH87uycHbP4BdsdWV1XHEzq+EhzJeSHKNuB74LaPflBAcO312OaARedkEAjdD
+         XQEjSB6WZjPOaRwojrN1HWkIqNCoYqvGM2IZhbfXiHy6DJAJDwAIW1nvZbfbhOr/xSzi
+         b0bmQey1OcgTUtwU4UVqkPwcNpfbTVhWqSJjnyyoZaKbPvsPSCaeG97tcq6HfhrDuvcH
+         CWAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755609376; x=1756214176;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=DPILFNpK7zCsqHWBHdQ9uG4ptTyRvqVrmGvIx37v5K4=;
+        b=bzpCfTLsiKDy2RI//DHXNgBBfP9+cpprdeyPVKpeD/UL31ZugcKFsOto/p+UDj4MLh
+         bv0D1s2y1U1A7Q7aiYviDqOpaOTjFhYl9AFHHrVHoHVqA86FffUA4JDw9nuFcXSl7VLQ
+         k5q49jPoPIT5A7fRqoYdE7p5BIifXCQaKYDtJX7pNNRgsnl6aLJEWZBZbfpj3PRErRqu
+         rsPTss322U/djRDGbkb/lQMnfp4l3ieYxXQnN8T6Z/KPOutkY1Oh2M03v9fw9TQcbZnu
+         esrEHhK4NVHVz5zHIp9H+zUwqBbI1lTSH1VNJiufgrkIhrZ1PPXrdri4uhmKi/tsZuif
+         sqxA==
+X-Forwarded-Encrypted: i=1; AJvYcCVWb+3WtgtyqV4VlBU9HHOPa2tz9w9hi1y8ODImx0KskAf6N+hZrBNjLGWN65BmsM6EX8MM8Fic1HPpXtfiKA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx6xItrL7Bq8Md/wwDlkc8+VMgYC/TcUc9FJrRL5lngS4qUs4yE
+	crvSyFBS4InFnkEoew2ihaSQz+p+N/uVnSEOsevJjJSOx2PbBbe+kQoTW7iTeWBfz04=
+X-Gm-Gg: ASbGnctYSylZC/K74uqlcxuq4Ei/hUfmhCvtfeRyMWRVXrQi5td7cdCyftf00TWv/ca
+	Ryf+ZUzsCGlrDJVerUEzuAkonB6fw9BLrMQxOJs/WnB7eG6x0GOg2T4PzGnrT5SOOy6OBHdUyCP
+	67ucpo5sRzeDdaQoNniV9RAt5sSDhlgVP4GFqJ1H68Gy4CjTElpMcybhZqEpRdFqHKoDaeFAKXF
+	M27w9gRWC3mXxEtEpc8s+1NOOTcgXFnNkEorDfG8aS+UQ8Ju8zOrx508zmaaYb4xGfbjw6aSK84
+	2sC59c75S2vHs62FdomP3jHtOHucA5EabkELtrGPFREW8qAAM6wSKXlNTae1IxbJ8ZxkbHxSZ9E
+	A1wgvspxa1ovtYuZcFkUZ/zUDiUrJ/dPDfoJcTLJM2bbn
+X-Google-Smtp-Source: AGHT+IFlSe6sbMbTSuOg6u2AFFHkncCf/aboZnrFBeb3plYt2M1g7caLrLJTlnNZL7b96zAaRKt4Pg==
+X-Received: by 2002:a17:907:969e:b0:af8:fc60:5008 with SMTP id a640c23a62f3a-afddcd113eemr121159066b.4.1755609375493;
+        Tue, 19 Aug 2025 06:16:15 -0700 (PDT)
+Received: from kuoka.. ([178.197.219.123])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afcdce53d60sm998744666b.20.2025.08.19.06.16.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 Aug 2025 06:16:14 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 2/2] arm64: dts: rockchip: Minor whitespace cleanup
+Date: Tue, 19 Aug 2025 15:16:09 +0200
+Message-ID: <20250819131607.86338-4-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250819131607.86338-3-krzysztof.kozlowski@linaro.org>
+References: <20250819131607.86338-3-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 18/19] perf: Introduce positive capability for raw events
-From: Robin Murphy <robin.murphy@arm.com>
-To: peterz@infradead.org, mingo@redhat.com, will@kernel.org,
- mark.rutland@arm.com, acme@kernel.org, namhyung@kernel.org,
- alexander.shishkin@linux.intel.com, jolsa@kernel.org, irogers@google.com,
- adrian.hunter@intel.com, kan.liang@linux.intel.com
-Cc: linux-perf-users@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-alpha@vger.kernel.org, linux-snps-arc@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
- linux-csky@vger.kernel.org, loongarch@lists.linux.dev,
- linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-s390@vger.kernel.org, linux-sh@vger.kernel.org,
- sparclinux@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, dmaengine@vger.kernel.org,
- linux-fpga@vger.kernel.org, amd-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- intel-xe@lists.freedesktop.org, coresight@lists.linaro.org,
- iommu@lists.linux.dev, linux-amlogic@lists.infradead.org,
- linux-cxl@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-riscv@lists.infradead.org
-References: <cover.1755096883.git.robin.murphy@arm.com>
- <542787fd188ea15ef41c53d557989c962ed44771.1755096883.git.robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <542787fd188ea15ef41c53d557989c962ed44771.1755096883.git.robin.murphy@arm.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6570; i=krzysztof.kozlowski@linaro.org;
+ h=from:subject; bh=63JgKqF3bc5t1TwNQeM5U464DiEpmWFQDp6CzuzSqJM=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBopHkYebIcahBFBqreRmNe33++dMlPkjj+8wJIZ
+ 2Hj40Y7qw6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaKR5GAAKCRDBN2bmhouD
+ 15l7EACPLhACEmtJ9t9YjD/9I0wca/SoRWGRlR0miHb8fOJJ/ZUdZ/TqYmuFbUZdIYkCRNryYeO
+ Ah3lx7QD+SfVtWmULtH8QaFr9yhHN4qXrmsfqUlDAYNILt3i0VBLjk+sFRM4bfSzGM+bsqbsvki
+ xGDBMtiSNy8RJDs+PbrhGjDkGjmOao5H1V6WYcmjlWQ54n9UbXgZWvQcHCBiggl0cAnIn2P6nk1
+ GZ1mJxgT0mdIz1AwoHLzRr6DUTJwHpf7LQScLxE3oNUN/QzqXsL7QSJyWcFWGgYj0Bltxi71UjL
+ 91LKtj8LKkaG/I1aavb1AWprGDlvw8dZ8LPTUlh/dm9nXTPAS2N/HgH63zOA8hEajXd55qPYjBs
+ tRz4BuME5cyCK2V8ygLSIGT0pbCeFaV4tckpgiQPVnz/lLZ+V6NxNNdvDEUfnaaz3hpWvJNERpW
+ n+LZDBATQT2QhPK/ciSfFfZtH3sunRKb6JTPRnfjemMV9CdxkSr92N0FV1/q/k6LcbMeIEbzbEz
+ DhYZ+kmQccoc1SOIX27IgL925+XNT8hfXmiGKDOkgqKUFzDje0o01PkRrxKWDZSDOAxvjRVJ7v3
+ MgeUWrS5Mo9/ANCZpbMFcmNRnTWLIeWvxlULSeQXODt3ChbQ08vwhyRoPwqZ9yeknpv1sSRi1Wl WaVtMluTg3SvWMg==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_061558_425100_3AA523B4 
-X-CRM114-Status: GOOD (  25.38  )
+X-CRM114-CacheID: sfid-20250819_061617_011660_8FCE3381 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,148 +114,184 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 13/08/2025 6:01 pm, Robin Murphy wrote:
-> Only a handful of CPU PMUs accept PERF_TYPE_{RAW,HARDWARE,HW_CACHE}
-> events without registering themselves as PERF_TYPE_RAW in the first
-> place. Add an explicit opt-in for these special cases, so that we can
-> make life easier for every other driver (and probably also speed up the
-> slow-path search) by having perf_try_init_event() do the basic type
-> checking to cover the majority of cases.
-> 
-> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
-> ---
-> 
-> A further possibility is to automatically add the cap to PERF_TYPE_RAW
-> PMUs in perf_pmu_register() to have a single point-of-use condition; I'm
-> undecided...
-> ---
->   arch/s390/kernel/perf_cpum_cf.c    |  1 +
->   arch/s390/kernel/perf_pai_crypto.c |  2 +-
->   arch/s390/kernel/perf_pai_ext.c    |  2 +-
->   arch/x86/events/core.c             |  2 +-
->   drivers/perf/arm_pmu.c             |  1 +
->   include/linux/perf_event.h         |  1 +
->   kernel/events/core.c               | 15 +++++++++++++++
->   7 files changed, 21 insertions(+), 3 deletions(-)
-> 
-> diff --git a/arch/s390/kernel/perf_cpum_cf.c b/arch/s390/kernel/perf_cpum_cf.c
-> index 1a94e0944bc5..782ab755ddd4 100644
-> --- a/arch/s390/kernel/perf_cpum_cf.c
-> +++ b/arch/s390/kernel/perf_cpum_cf.c
-> @@ -1054,6 +1054,7 @@ static void cpumf_pmu_del(struct perf_event *event, int flags)
->   /* Performance monitoring unit for s390x */
->   static struct pmu cpumf_pmu = {
->   	.task_ctx_nr  = perf_sw_context,
-> +	.capabilities = PERF_PMU_CAP_RAW_EVENTS,
->   	.pmu_enable   = cpumf_pmu_enable,
->   	.pmu_disable  = cpumf_pmu_disable,
->   	.event_init   = cpumf_pmu_event_init,
-> diff --git a/arch/s390/kernel/perf_pai_crypto.c b/arch/s390/kernel/perf_pai_crypto.c
-> index a64b6b056a21..b5b6d8b5d943 100644
-> --- a/arch/s390/kernel/perf_pai_crypto.c
-> +++ b/arch/s390/kernel/perf_pai_crypto.c
-> @@ -569,7 +569,7 @@ static const struct attribute_group *paicrypt_attr_groups[] = {
->   /* Performance monitoring unit for mapped counters */
->   static struct pmu paicrypt = {
->   	.task_ctx_nr  = perf_hw_context,
-> -	.capabilities = PERF_PMU_CAP_SAMPLING,
-> +	.capabilities = PERF_PMU_CAP_SAMPLING | PERF_PMU_CAP_RAW_EVENTS,
->   	.event_init   = paicrypt_event_init,
->   	.add	      = paicrypt_add,
->   	.del	      = paicrypt_del,
-> diff --git a/arch/s390/kernel/perf_pai_ext.c b/arch/s390/kernel/perf_pai_ext.c
-> index 1261f80c6d52..bcd28c38da70 100644
-> --- a/arch/s390/kernel/perf_pai_ext.c
-> +++ b/arch/s390/kernel/perf_pai_ext.c
-> @@ -595,7 +595,7 @@ static const struct attribute_group *paiext_attr_groups[] = {
->   /* Performance monitoring unit for mapped counters */
->   static struct pmu paiext = {
->   	.task_ctx_nr  = perf_hw_context,
-> -	.capabilities = PERF_PMU_CAP_SAMPLING,
-> +	.capabilities = PERF_PMU_CAP_SAMPLING | PERF_PMU_CAP_RAW_EVENTS,
->   	.event_init   = paiext_event_init,
->   	.add	      = paiext_add,
->   	.del	      = paiext_del,
-> diff --git a/arch/x86/events/core.c b/arch/x86/events/core.c
-> index 789dfca2fa67..764728bb80ae 100644
-> --- a/arch/x86/events/core.c
-> +++ b/arch/x86/events/core.c
-> @@ -2697,7 +2697,7 @@ static bool x86_pmu_filter(struct pmu *pmu, int cpu)
->   }
->   
->   static struct pmu pmu = {
-> -	.capabilities		= PERF_PMU_CAP_SAMPLING,
-> +	.capabilities		= PERF_PMU_CAP_SAMPLING | PERF_PMU_CAP_RAW_EVENTS,
->   
->   	.pmu_enable		= x86_pmu_enable,
->   	.pmu_disable		= x86_pmu_disable,
-> diff --git a/drivers/perf/arm_pmu.c b/drivers/perf/arm_pmu.c
-> index 72d8f38d0aa5..bc772a3bf411 100644
-> --- a/drivers/perf/arm_pmu.c
-> +++ b/drivers/perf/arm_pmu.c
-> @@ -877,6 +877,7 @@ struct arm_pmu *armpmu_alloc(void)
->   		 * specific PMU.
->   		 */
->   		.capabilities	= PERF_PMU_CAP_SAMPLING |
-> +				  PERF_PMU_CAP_RAW_EVENTS |
->   				  PERF_PMU_CAP_EXTENDED_REGS |
->   				  PERF_PMU_CAP_EXTENDED_HW_TYPE,
->   	};
-> diff --git a/include/linux/perf_event.h b/include/linux/perf_event.h
-> index 183b7c48b329..c6ad036c0037 100644
-> --- a/include/linux/perf_event.h
-> +++ b/include/linux/perf_event.h
-> @@ -305,6 +305,7 @@ struct perf_event_pmu_context;
->   #define PERF_PMU_CAP_EXTENDED_HW_TYPE	0x0100
->   #define PERF_PMU_CAP_AUX_PAUSE		0x0200
->   #define PERF_PMU_CAP_AUX_PREFER_LARGE	0x0400
-> +#define PERF_PMU_CAP_RAW_EVENTS		0x0800
->   
->   /**
->    * pmu::scope
-> diff --git a/kernel/events/core.c b/kernel/events/core.c
-> index 71b2a6730705..2ecee76d2ae2 100644
-> --- a/kernel/events/core.c
-> +++ b/kernel/events/core.c
-> @@ -12556,11 +12556,26 @@ static inline bool has_extended_regs(struct perf_event *event)
->   	       (event->attr.sample_regs_intr & PERF_REG_EXTENDED_MASK);
->   }
->   
-> +static bool is_raw_pmu(const struct pmu *pmu)
-> +{
-> +	return pmu->type == PERF_TYPE_RAW ||
-> +	       pmu->capabilities & PERF_PMU_CAP_RAW_EVENTS;
-> +}
-> +
->   static int perf_try_init_event(struct pmu *pmu, struct perf_event *event)
->   {
->   	struct perf_event_context *ctx = NULL;
->   	int ret;
->   
-> +	/*
-> +	 * Before touching anything, we can safely skip:
-> +	 * - any event for a specific PMU which is not this one
-> +	 * - any common event if this PMU doesn't support them
-> +	 */
-> +	if (event->attr.type != pmu->type &&
-> +	    (event->attr.type >= PERF_TYPE_MAX || is_raw_pmu(pmu)))
+The DTS code coding style expects exactly one space around '=' or '{'
+characters.
 
-Ah, that should be "!is_raw_pmu(pmu)" there (although it's not entirely 
-the cause of the LKP report on the final patch.)
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi             | 8 ++++----
+ .../dts/rockchip/px30-ringneck-haikou-video-demo.dtso     | 6 +++---
+ arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts  | 2 +-
+ .../boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso  | 6 +++---
+ arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi  | 4 ++--
+ arch/arm64/boot/dts/rockchip/rk3588j.dtsi                 | 4 ++--
+ 6 files changed, 15 insertions(+), 15 deletions(-)
 
-Thanks,
-Robin.
-
-> +		return -ENOENT;
-> +
->   	if (!try_module_get(pmu->module))
->   		return -ENODEV;
->   
+diff --git a/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi b/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
+index b4bd4e34747c..192791993f05 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
+@@ -72,7 +72,7 @@ vcc5v0_sys: regulator-vccsys {
+ 	};
+ 
+ 	vcc_cam_avdd: regulator-vcc-cam-avdd {
+-		compatible  = "regulator-fixed";
++		compatible = "regulator-fixed";
+ 		regulator-name = "vcc_cam_avdd";
+ 		gpio = <&gpio3 RK_PC0 GPIO_ACTIVE_LOW>;
+ 		pinctrl-names = "default";
+@@ -83,7 +83,7 @@ vcc_cam_avdd: regulator-vcc-cam-avdd {
+ 	};
+ 
+ 	vcc_cam_dovdd: regulator-vcc-cam-dovdd {
+-		compatible  = "regulator-fixed";
++		compatible = "regulator-fixed";
+ 		regulator-name = "vcc_cam_dovdd";
+ 		gpio = <&gpio3 RK_PC1 GPIO_ACTIVE_LOW>;
+ 		pinctrl-names = "default";
+@@ -94,7 +94,7 @@ vcc_cam_dovdd: regulator-vcc-cam-dovdd {
+ 	};
+ 
+ 	vcc_cam_dvdd: regulator-vcc-cam-dvdd {
+-		compatible  = "regulator-fixed";
++		compatible = "regulator-fixed";
+ 		regulator-name = "vcc_cam_dvdd";
+ 		gpio = <&gpio3 RK_PC5 GPIO_ACTIVE_HIGH>;
+ 		enable-active-high;
+@@ -106,7 +106,7 @@ vcc_cam_dvdd: regulator-vcc-cam-dvdd {
+ 	};
+ 
+ 	vcc_lens_afvdd: regulator-vcc-lens-afvdd {
+-		compatible  = "regulator-fixed";
++		compatible = "regulator-fixed";
+ 		regulator-name = "vcc_lens_afvdd";
+ 		gpio = <&gpio3 RK_PB2 GPIO_ACTIVE_LOW>;
+ 		pinctrl-names = "default";
+diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
+index ea5ce919984f..760d5139f95d 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
++++ b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
+@@ -26,7 +26,7 @@ backlight: backlight {
+ 	};
+ 
+ 	cam_afvdd_2v8: regulator-cam-afvdd-2v8 {
+-		compatible  = "regulator-fixed";
++		compatible = "regulator-fixed";
+ 		gpio = <&pca9670 2 GPIO_ACTIVE_LOW>;
+ 		regulator-max-microvolt = <2800000>;
+ 		regulator-min-microvolt = <2800000>;
+@@ -35,7 +35,7 @@ cam_afvdd_2v8: regulator-cam-afvdd-2v8 {
+ 	};
+ 
+ 	cam_avdd_2v8: regulator-cam-avdd-2v8 {
+-		compatible  = "regulator-fixed";
++		compatible = "regulator-fixed";
+ 		gpio = <&pca9670 4 GPIO_ACTIVE_LOW>;
+ 		regulator-max-microvolt = <2800000>;
+ 		regulator-min-microvolt = <2800000>;
+@@ -44,7 +44,7 @@ cam_avdd_2v8: regulator-cam-avdd-2v8 {
+ 	};
+ 
+ 	cam_dovdd_1v8: regulator-cam-dovdd-1v8 {
+-		compatible  = "regulator-fixed";
++		compatible = "regulator-fixed";
+ 	        gpio = <&pca9670 3 GPIO_ACTIVE_LOW>;
+ 	        regulator-max-microvolt = <1800000>;
+ 	        regulator-min-microvolt = <1800000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts b/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
+index aee6643e33ab..3473db08b9b2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
+@@ -260,6 +260,6 @@ &usb_host_ehci {
+ 	status = "okay";
+ };
+ 
+-&usb_host_ohci{
++&usb_host_ohci {
+ 	status = "okay";
+ };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
+index d28880b8dd44..5e8f729c2cf2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
+@@ -26,7 +26,7 @@ backlight: backlight {
+ 	};
+ 
+ 	cam_afvdd_2v8: regulator-cam-afvdd-2v8 {
+-		compatible  = "regulator-fixed";
++		compatible = "regulator-fixed";
+ 		gpio = <&pca9670 2 GPIO_ACTIVE_LOW>;
+ 		regulator-max-microvolt = <2800000>;
+ 		regulator-min-microvolt = <2800000>;
+@@ -35,7 +35,7 @@ cam_afvdd_2v8: regulator-cam-afvdd-2v8 {
+ 	};
+ 
+ 	cam_avdd_2v8: regulator-cam-avdd-2v8 {
+-		compatible  = "regulator-fixed";
++		compatible = "regulator-fixed";
+ 		gpio = <&pca9670 4 GPIO_ACTIVE_LOW>;
+ 		regulator-max-microvolt = <2800000>;
+ 		regulator-min-microvolt = <2800000>;
+@@ -44,7 +44,7 @@ cam_avdd_2v8: regulator-cam-avdd-2v8 {
+ 	};
+ 
+ 	cam_dovdd_1v8: regulator-cam-dovdd-1v8 {
+-		compatible  = "regulator-fixed";
++		compatible = "regulator-fixed";
+ 	        gpio = <&pca9670 3 GPIO_ACTIVE_LOW>;
+ 	        regulator-max-microvolt = <1800000>;
+ 	        regulator-min-microvolt = <1800000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
+index e7ba477e75f9..7f578c50b4ad 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
+@@ -53,7 +53,7 @@ led-0 {
+ 			gpios = <&gpio4 RK_PA1 GPIO_ACTIVE_LOW>;
+ 			linux,default-trigger = "default-on";
+ 			pinctrl-names = "default";
+-			pinctrl-0 =<&blue_led>;
++			pinctrl-0 = <&blue_led>;
+ 		};
+ 
+ 		led-1 {
+@@ -62,7 +62,7 @@ led-1 {
+ 			gpios = <&gpio0 RK_PB7 GPIO_ACTIVE_LOW>;
+ 			linux,default-trigger = "heartbeat";
+ 			pinctrl-names = "default";
+-			pinctrl-0 =<&heartbeat_led>;
++			pinctrl-0 = <&heartbeat_led>;
+ 		};
+ 	};
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588j.dtsi b/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
+index 3045cb3bd68c..9884a5df47df 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
+@@ -28,7 +28,7 @@ cluster1_opp_table: opp-table-cluster1 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 
+-		opp-1200000000{
++		opp-1200000000 {
+ 			opp-hz = /bits/ 64 <1200000000>;
+ 			opp-microvolt = <750000 750000 950000>;
+ 			clock-latency-ns = <40000>;
+@@ -49,7 +49,7 @@ cluster2_opp_table: opp-table-cluster2 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 
+-		opp-1200000000{
++		opp-1200000000 {
+ 			opp-hz = /bits/ 64 <1200000000>;
+ 			opp-microvolt = <750000 750000 950000>;
+ 			clock-latency-ns = <40000>;
+-- 
+2.48.1
 
 
 _______________________________________________
