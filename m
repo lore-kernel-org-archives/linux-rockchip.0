@@ -4,117 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82ACECCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4981FCCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OdKq5SuaSYoEm31sn+oCxbbFrpOnQzTMjhrlmnVrHWY=; b=l2HsddzL1NjORC
-	iP1/NW+JhIEFFVAYHA2LQUYJ7YcWUcufqBhKKRNRbqpbQrh4wGSg8K+LQkWQLgkqBeN6Z4aYsRlaI
-	jn0hg31gTibHzc5R6aMsiEsErcAhJ4kXNn3AJA9E0Ixnu2yuwdjRGcuzsS2Tbmz3BwDYMgQGy2DvL
-	pbYU//R9uCCuFlPOE7qd5tDVJCDAGA9yLEDqd4ATcwLA8pG+QzdhqxABOy4YxAVZwt6EqONVsqyR0
-	iR4e6TIZcRFdutAM5Q1GBk8Xe2GvZ2o5pjo9npcaoeLsHXBiAq7V7RbjEWvJFW8h7XJ4vJ/DCscqc
-	Zx9iOqoI42mBnNKQmH2g==;
+	List-Owner; bh=tOCNQi1kbmwoT9H+6zVU9kPWHNrZptxTC1nVi3SmsEc=; b=PW5k2DEkkB+3f4
+	d0EAhT3L9WTxS3UO1aPkg4+8RpEomJ9NNzxI67r7YwMtG51RqxK1CussNbY9ynCqIOjQ0xKYHt5U+
+	H3D3Y3LBZDub/UawW8bfWSyIgN65VBNvsskO0P3uT7+98VJUpCf7MrY0fsKOqRunMwo7wSdOKIbhK
+	D4pQjFIA447FqhrQ+iIc/hlzYTzhwvbsimOBZrkmQfcngbhYP1H6NpuZ/Ddfgio6Jg8benPGHCgAm
+	UGxGw+YzD8E5wObGOoO2XCsjfowVQrsbWMPyxJLhXQGmIFI0flxuR0j/ig1n5gAn4YDqIyBOBbIPO
+	n0rSLyVZ4u/MdCo6hhiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoVi-0000000D93g-2Pot;
-	Mon, 20 Oct 2025 11:57:10 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCmI6-00000007pEb-0t5l;
-	Sun, 17 Nov 2024 20:54:43 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 701F57FE;
-	Sun, 17 Nov 2024 21:54:19 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1731876859;
-	bh=w9SUo0onmIEsCbHLk8aWeLWWcw+C7sEI352gJsh+oTo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XZe5vUJIolLfMAXIsVhz7GffiGmYnhewBuHdpxEvyTaXOd4N0DgZ4tZSXv4c2lG6W
-	 P1rY+Y4mit0F7L7b6m1SfRmXQEUS7GNzudoX7LQ8FZPzyXf8+sXDu7C268CgkZxL7P
-	 /8QQwAwE2VSY81CTqI8e/nIrkb9w4cBk5Zd/KEKQ=
-Date: Sun, 17 Nov 2024 22:54:26 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
-	Tvrtko Ursulin <tursulin@ursulin.net>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Karol Herbst <kherbst@redhat.com>, Lyude Paul <lyude@redhat.com>,
-	Danilo Krummrich <dakr@redhat.com>,
-	Harry Wentland <harry.wentland@amd.com>,
-	Leo Li <sunpeng.li@amd.com>,
-	Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
-	Xinhui Pan <Xinhui.Pan@amd.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Raphael Gallais-Pou <rgallaispou@gmail.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Peter Senna Tschudin <peter.senna@gmail.com>,
-	Ian Ray <ian.ray@ge.com>,
-	Martyn Welch <martyn.welch@collabora.co.uk>,
-	Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>,
-	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Rob Clark <robdclark@gmail.com>,
-	Abhinav Kumar <quic_abhinavk@quicinc.com>,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Dave Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
-	Samuel Holland <samuel@sholland.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Mikko Perttunen <mperttunen@nvidia.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	Gurchetan Singh <gurchetansingh@chromium.org>,
-	Chia-I Wu <olvaffe@gmail.com>, Zack Rusin <zack.rusin@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	nouveau@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 1/5] drm/encoder_slave: make mode_valid accept const
- struct drm_display_mode
-Message-ID: <20241117205426.GE12409@pendragon.ideasonboard.com>
-References: <20241115-drm-connector-mode-valid-const-v1-0-b1b523156f71@linaro.org>
- <20241115-drm-connector-mode-valid-const-v1-1-b1b523156f71@linaro.org>
+	id 1vAoVY-0000000D8tX-1Dbx;
+	Mon, 20 Oct 2025 11:57:00 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uoIwJ-0000000A1Ew-0MGF
+	for linux-rockchip@lists.infradead.org;
+	Tue, 19 Aug 2025 09:47:37 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-333f8f0dd71so39477091fa.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 19 Aug 2025 02:47:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1755596853; x=1756201653; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RdTVW2acL3x4TY+q3fiwzcKJmZ14PXDkj8EpJokxAbo=;
+        b=dGXPqLjYlxrFgBbb+2jsShCZAA6/NN+IKaeiJ9q7bZNS3vy3AqUz1fSzHa5GUfx9Te
+         YJjyaCt65+2yAQuGdJ9djwOUDsC+SsHqIPc8/kdqV6+q5DlFPUF/coecNRZ60nzsyrmF
+         hMXXTOwl3hTWXs+eDhuh7RrkIO3AFbc0xorC1Pvt9ZVjdnPAFD8pPAnHiKavTnJglfiC
+         5u74FjQ2UkAcmBmWC3wrYjEL0/06I7BbUgqksaAMwXvxKqWknKWSWfgdyuAB1zKn3Fhx
+         mgXFzIeN4N0l0Sk8IRq+eJ1ZkiB2ygnlvzUZLcfUrU/Ic0Ki53Z3gfh5FI1rt4wQVqc8
+         eLPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755596853; x=1756201653;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=RdTVW2acL3x4TY+q3fiwzcKJmZ14PXDkj8EpJokxAbo=;
+        b=dC9SGZSDGX112kqVakvoN4GWlMUVb5cyXeajfi0n6tDJMBybCd/EKk9OQUxLP7zoOO
+         J00uCOaC/ixUhLH/mZhZhLvL2JDEKQreYv3mNZV/nEJyXxIKxQ00tQNI6qtFbebvj/qR
+         V4fQDCKmK0typWFsbhaiobKZt1zvkPqRsA0hFnuR1CmVbR61BcTVqT5mG5u66nLBSHpu
+         UdwXbtiZV7HUUXOxM7TzMwOit77grIaZqHwQPlK3gPlnDg6VkVCgsWc6PsSBFRXXZoAx
+         Et1U582WAnpjRf81me3bLt52pnGIV95GEpKIWRNLElraRK5oBOVXmoigTPcfcgvf3gg8
+         Jorw==
+X-Forwarded-Encrypted: i=1; AJvYcCWc9UAHz93RTCQ9xypBe0ActJnog3jqHdPDPqbFtLTc/10GDOn3/+niLlJyb5ey943DgZWyNVG+5W1rFUGOrA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyLSr0TFezrjZwVSdMS+IhPi9LyOFcortsqCCLf5SqHNeJFLwJi
+	wob9r8G6oVLDVfOlWLZZNQcJdXgtU0BPy2ds+gOjZbvuO3LV0AXmDWMEtPpNSoI2XvWO7cmfn/+
+	N4xvdHn7+vY4XiPN7ROHx6OM3vWS2/InAxcG7nPADjQ==
+X-Gm-Gg: ASbGncsp9fd58GnxYQtLtjSyBQ3YWuQxaswG5xJpcEvuPqsW5B6QX7JCxcaRdvFGIcj
+	OYvAZsLYJ8O/uvFOAbccOT9JwvEw+R5i6EYsNZ+GDVGuI2SBQhRgISP4ldWpAJva6RPmtDSFXSr
+	pHGXcNsFDPGjUnnq0OZaVYVIp/qrugo1W2dDO1SJJQvfetS6ee4GbxtlLu60IUyNmuCLcFQsQb3
+	8MhU28bnu+G
+X-Google-Smtp-Source: AGHT+IFaAkF1r4GWgj+j3Xeyk0sBgHgQuFXAyBRPToaJvqEtDi6Qt1cFt8RtILv6l5mltG8+0huqL2sCrZ81MI3EBAM=
+X-Received: by 2002:a05:651c:b2c:b0:333:ad0c:a44e with SMTP id
+ 38308e7fff4ca-335305347dbmr5252501fa.7.1755596852940; Tue, 19 Aug 2025
+ 02:47:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241115-drm-connector-mode-valid-const-v1-1-b1b523156f71@linaro.org>
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com> <20250811-clk-for-stephen-round-rate-v1-105-b3bf97b038dc@redhat.com>
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-105-b3bf97b038dc@redhat.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 19 Aug 2025 11:47:21 +0200
+X-Gm-Features: Ac12FXwQ8ZNlahHw5FRReJn3coSNBp0waFbtb0dR-jKWl_cQ9vhC2BCpFgBry0M
+Message-ID: <CACRpkdZ3M65bKzaHcKPRhEFCy+TvHUq8bZ-8Zr_7HSRKsk_TWQ@mail.gmail.com>
+Subject: Re: [PATCH 105/114] clk: ux500: prcmu: convert from round_rate() to determine_rate()
+To: bmasney@redhat.com
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Sudeep Holla <sudeep.holla@arm.com>, Cristian Marussi <cristian.marussi@arm.com>, 
+	Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Paul Cercueil <paul@crapouillou.net>, Keguang Zhang <keguang.zhang@gmail.com>, 
+	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
+	Paul Walmsley <paul.walmsley@sifive.com>, Samuel Holland <samuel.holland@sifive.com>, 
+	Yixun Lan <dlan@gentoo.org>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
+	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Michal Simek <michal.simek@amd.com>, 
+	Maxime Ripard <mripard@kernel.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Neal Gompa <neal@gompa.dev>, 
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Max Filippov <jcmvbkbc@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Daniel Palmer <daniel@thingy.jp>, 
+	Romain Perier <romain.perier@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Bjorn Andersson <andersson@kernel.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
+	Andrea della Porta <andrea.porta@suse.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Sylwester Nawrocki <s.nawrocki@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Qin Jian <qinjian@cqplus1.com>, 
+	Viresh Kumar <vireshk@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, 
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, Alex Helms <alexander.helms.jy@renesas.com>, 
+	Liviu Dudau <liviu.dudau@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, linux-clk@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, arm-scmi@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, sophgo@lists.linux.dev, 
+	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
+	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
+	linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com, 
+	linux-actions@lists.infradead.org, asahi@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241117_125442_400248_2C6A0388 
-X-CRM114-Status: GOOD (  21.56  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:19 -0700
+X-CRM114-CacheID: sfid-20250819_024735_156838_AD20CCA4 
+X-CRM114-Status: GOOD (  11.10  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:03 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,98 +134,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-Thank you for the patch.
-
-On Fri, Nov 15, 2024 at 11:09:26PM +0200, Dmitry Baryshkov wrote:
-> The mode_valid() callbacks of drm_encoder, drm_crtc and drm_bridge
-> accept const struct drm_display_mode argument. Change the mode_valid
-> callback of drm_encoder_slave to also accept const argument.
-> 
-> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-
-On a side note, there's only two I2C slave encoder drivers left... I
-wonder if we could so something about them. The ch7006 and sil164
-drivers seem to be used by nouveau only, could they be moved to
-drivers/gpu/drm/nouveau/ ? We would move the whole drm_encoder_slave
-implementation there too, and leave it to die (or get taken out of limbo
-and fixed) with dispnv04.
-
-> ---
->  drivers/gpu/drm/i2c/ch7006_drv.c          | 2 +-
->  drivers/gpu/drm/i2c/sil164_drv.c          | 2 +-
->  drivers/gpu/drm/nouveau/dispnv04/tvnv17.c | 2 +-
->  include/drm/drm_encoder_slave.h           | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/i2c/ch7006_drv.c b/drivers/gpu/drm/i2c/ch7006_drv.c
-> index 131512a5f3bd996ad1e2eb869ffa09837daba0c7..a57f0a41c1a9e2006142fe0bad2914b0c344c82a 100644
-> --- a/drivers/gpu/drm/i2c/ch7006_drv.c
-> +++ b/drivers/gpu/drm/i2c/ch7006_drv.c
-> @@ -104,7 +104,7 @@ static bool ch7006_encoder_mode_fixup(struct drm_encoder *encoder,
->  }
->  
->  static int ch7006_encoder_mode_valid(struct drm_encoder *encoder,
-> -				     struct drm_display_mode *mode)
-> +				     const struct drm_display_mode *mode)
->  {
->  	if (ch7006_lookup_mode(encoder, mode))
->  		return MODE_OK;
-> diff --git a/drivers/gpu/drm/i2c/sil164_drv.c b/drivers/gpu/drm/i2c/sil164_drv.c
-> index ff23422727fce290a188e495d343e32bc2c373ec..708e119072fcb50c31b5596b75dc341429b93697 100644
-> --- a/drivers/gpu/drm/i2c/sil164_drv.c
-> +++ b/drivers/gpu/drm/i2c/sil164_drv.c
-> @@ -255,7 +255,7 @@ sil164_encoder_restore(struct drm_encoder *encoder)
->  
->  static int
->  sil164_encoder_mode_valid(struct drm_encoder *encoder,
-> -			  struct drm_display_mode *mode)
-> +			  const struct drm_display_mode *mode)
->  {
->  	struct sil164_priv *priv = to_sil164_priv(encoder);
->  
-> diff --git a/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c b/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c
-> index 3ecb101d23e949b753b873d24eec01ad6fe7f5d6..35ad4e10d27323c87704a3ff35b7dc26462c82bd 100644
-> --- a/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c
-> +++ b/drivers/gpu/drm/nouveau/dispnv04/tvnv17.c
-> @@ -308,7 +308,7 @@ static int nv17_tv_get_modes(struct drm_encoder *encoder,
->  }
->  
->  static int nv17_tv_mode_valid(struct drm_encoder *encoder,
-> -			      struct drm_display_mode *mode)
-> +			      const struct drm_display_mode *mode)
->  {
->  	struct nv17_tv_norm_params *tv_norm = get_tv_norm(encoder);
->  
-> diff --git a/include/drm/drm_encoder_slave.h b/include/drm/drm_encoder_slave.h
-> index 49172166a164474f43e4afb2eeeb3cde8ae7c61a..b526643833dcf78bae29f9fbbe27de3f730b55d8 100644
-> --- a/include/drm/drm_encoder_slave.h
-> +++ b/include/drm/drm_encoder_slave.h
-> @@ -85,7 +85,7 @@ struct drm_encoder_slave_funcs {
->  	 * @mode_valid: Analogous to &drm_encoder_helper_funcs @mode_valid.
->  	 */
->  	int (*mode_valid)(struct drm_encoder *encoder,
-> -			  struct drm_display_mode *mode);
-> +			  const struct drm_display_mode *mode);
->  	/**
->  	 * @mode_set: Analogous to &drm_encoder_helper_funcs @mode_set
->  	 * callback. Wrapped by drm_i2c_encoder_mode_set().
-> 
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBBdWcgMTEsIDIwMjUgYXQgNToxOeKAr1BNIEJyaWFuIE1hc25leSB2aWEgQjQgUmVs
+YXkKPGRldm51bGwrYm1hc25leS5yZWRoYXQuY29tQGtlcm5lbC5vcmc+IHdyb3RlOgoKPiBGcm9t
+OiBCcmlhbiBNYXNuZXkgPGJtYXNuZXlAcmVkaGF0LmNvbT4KPgo+IFRoZSByb3VuZF9yYXRlKCkg
+Y2xrIG9wcyBpcyBkZXByZWNhdGVkLCBzbyBtaWdyYXRlIHRoaXMgZHJpdmVyIGZyb20KPiByb3Vu
+ZF9yYXRlKCkgdG8gZGV0ZXJtaW5lX3JhdGUoKSB1c2luZyB0aGUgQ29jY2luZWxsZSBzZW1hbnRp
+YyBwYXRjaAo+IG9uIHRoZSBjb3ZlciBsZXR0ZXIgb2YgdGhpcyBzZXJpZXMuCj4KPiBTaWduZWQt
+b2ZmLWJ5OiBCcmlhbiBNYXNuZXkgPGJtYXNuZXlAcmVkaGF0LmNvbT4KClJldmlld2VkLWJ5OiBM
+aW51cyBXYWxsZWlqIDxsaW51cy53YWxsZWlqQGxpbmFyby5vcmc+CgpZb3VycywKTGludXMgV2Fs
+bGVpagoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
