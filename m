@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04A55CA0EE6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3DA7CA0EEB
 	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 18:13:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0tlHka9fZyJwHo4GU5OE4N2JbgZdhsC48yI5AnOZYyo=; b=WgqZ+kO5BqxnwU
-	MJ8vwQJM1nyhOV/9E05OigqzrgOp6t0HbGfPWsYjBOn9aUQPGzc4FfJJ92bMGEXu2p72Qml4iCHEv
-	nzwuwV7XCcP+22z6V0qjXj4TBWzkyRt3xiXCT9i4FCBNbq4ptzS96AWFvSPoqPDRc3x1+Gn3nAWCE
-	dLlrFnHNnbF21oAQG/99EL+NbWRIlv6eWInh8glRZHyYoPI13iUXRRqY+urap4BfIdr2EQkVlPGjV
-	neZa/6ARsMsgaGdIvm/CKJVZsrNf1QTREJ5TQ6s8uAhex4leJMvL0FgtQ+qoDteAk4/j86x2gXj4M
-	8RQzNN9UmV1T0wiql9gw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JMZI/ODcGrui/Ro5viT3egARMfdrUqsR29P7uBTUR3c=; b=sLkme5IWbv+hEc
+	ODtMeJtLUjC5IYVufObna8UODuF2N9PsYU8ZX6rRKJnYLbczk7SCq2LW0+35N6LZ4FiegYgqQs4v8
+	FoDxgexfDWk3YVTWjFH52fe0WWsTcN7PABYEoLJWgZvUwaZLaGLTUVfbbMjwdcwP1+NmohQO1NAUe
+	pESNF1Ewlhwd4m00WvA7mIsK8Lf3phsMAMuTNrGflcz8Ovgwt8eC22YS96ZjO1dmYbMnYNTDm3OD1
+	usVyPIb8uZkk68aQjG4eKnjyZSzpk8W/FRljhwPxTlDCZdzWeohWw+qnkiux6EM1lHcsbXVGIdFT7
+	03a0Zcwt9fVivwhHgeeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoQpe-0000000BC5v-3Sau;
+	id 1uoQpe-0000000BC5H-1hzM;
 	Tue, 19 Aug 2025 18:13:14 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoMCG-0000000AYzf-3z7Z
+	id 1uoMCF-0000000AYz9-3OYl
 	for linux-rockchip@lists.infradead.org;
-	Tue, 19 Aug 2025 13:16:18 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-afcb7ab87ffso83173666b.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 19 Aug 2025 06:16:16 -0700 (PDT)
+	Tue, 19 Aug 2025 13:16:17 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-afcb78d1695so69630866b.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 19 Aug 2025 06:16:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1755609376; x=1756214176; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DPILFNpK7zCsqHWBHdQ9uG4ptTyRvqVrmGvIx37v5K4=;
-        b=ctJlD3QdBnhiKgh7l5s5QNn3sgOay2kk+HeL/kUNkHqDWtgcMWC8F7dpOi7G7sCGf+
-         GeMh+dI6OUb6G4BK49HZro1zMIj8JxNRyQ6rhay27nkFO20gL3m83n9BrsPNUBL8q5aH
-         wi2vIvtlH87uycHbP4BdsdWV1XHEzq+EhzJeSHKNuB74LaPflBAcO312OaARedkEAjdD
-         XQEjSB6WZjPOaRwojrN1HWkIqNCoYqvGM2IZhbfXiHy6DJAJDwAIW1nvZbfbhOr/xSzi
-         b0bmQey1OcgTUtwU4UVqkPwcNpfbTVhWqSJjnyyoZaKbPvsPSCaeG97tcq6HfhrDuvcH
-         CWAA==
+        d=linaro.org; s=google; t=1755609374; x=1756214174; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Xi518gsMPwf+xO6KMftj9HzM9h9TUyQOOtDZl1JTxQw=;
+        b=VwZhVT+x2kcBuzqZrSUfZ08fz1pT1WPi96TqWwY2XC7+HPzqdTJGtbYWx72LJYBfse
+         cJhPyFFoxD+NoZH9COwhFyPBo/TtN95aMptPZqqhKBaJx+fxBo9AeYCwVNZDE6rDIzp7
+         8pyGaUq57ThA81F8J2EIthv3KQoXUYVCij6n9svew2GGxB2pyJpNWOEOBBnAFzl3VXVe
+         3ZJEtJ1zPYI/Vyl3ci4q8/hhsmWn6UieCDlniIMkGECy06pJXyA+i2wi25egucHqJVVN
+         D/km7+hu7gDoCHlb/kexCPL9qkHrMrXaj50iTyBSrLp8JRE1QWzrncrWSBhRzmpaanx2
+         +8Dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755609376; x=1756214176;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=DPILFNpK7zCsqHWBHdQ9uG4ptTyRvqVrmGvIx37v5K4=;
-        b=bzpCfTLsiKDy2RI//DHXNgBBfP9+cpprdeyPVKpeD/UL31ZugcKFsOto/p+UDj4MLh
-         bv0D1s2y1U1A7Q7aiYviDqOpaOTjFhYl9AFHHrVHoHVqA86FffUA4JDw9nuFcXSl7VLQ
-         k5q49jPoPIT5A7fRqoYdE7p5BIifXCQaKYDtJX7pNNRgsnl6aLJEWZBZbfpj3PRErRqu
-         rsPTss322U/djRDGbkb/lQMnfp4l3ieYxXQnN8T6Z/KPOutkY1Oh2M03v9fw9TQcbZnu
-         esrEHhK4NVHVz5zHIp9H+zUwqBbI1lTSH1VNJiufgrkIhrZ1PPXrdri4uhmKi/tsZuif
-         sqxA==
-X-Forwarded-Encrypted: i=1; AJvYcCVWb+3WtgtyqV4VlBU9HHOPa2tz9w9hi1y8ODImx0KskAf6N+hZrBNjLGWN65BmsM6EX8MM8Fic1HPpXtfiKA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx6xItrL7Bq8Md/wwDlkc8+VMgYC/TcUc9FJrRL5lngS4qUs4yE
-	crvSyFBS4InFnkEoew2ihaSQz+p+N/uVnSEOsevJjJSOx2PbBbe+kQoTW7iTeWBfz04=
-X-Gm-Gg: ASbGnctYSylZC/K74uqlcxuq4Ei/hUfmhCvtfeRyMWRVXrQi5td7cdCyftf00TWv/ca
-	Ryf+ZUzsCGlrDJVerUEzuAkonB6fw9BLrMQxOJs/WnB7eG6x0GOg2T4PzGnrT5SOOy6OBHdUyCP
-	67ucpo5sRzeDdaQoNniV9RAt5sSDhlgVP4GFqJ1H68Gy4CjTElpMcybhZqEpRdFqHKoDaeFAKXF
-	M27w9gRWC3mXxEtEpc8s+1NOOTcgXFnNkEorDfG8aS+UQ8Ju8zOrx508zmaaYb4xGfbjw6aSK84
-	2sC59c75S2vHs62FdomP3jHtOHucA5EabkELtrGPFREW8qAAM6wSKXlNTae1IxbJ8ZxkbHxSZ9E
-	A1wgvspxa1ovtYuZcFkUZ/zUDiUrJ/dPDfoJcTLJM2bbn
-X-Google-Smtp-Source: AGHT+IFlSe6sbMbTSuOg6u2AFFHkncCf/aboZnrFBeb3plYt2M1g7caLrLJTlnNZL7b96zAaRKt4Pg==
-X-Received: by 2002:a17:907:969e:b0:af8:fc60:5008 with SMTP id a640c23a62f3a-afddcd113eemr121159066b.4.1755609375493;
-        Tue, 19 Aug 2025 06:16:15 -0700 (PDT)
-Received: from kuoka.. ([178.197.219.123])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afcdce53d60sm998744666b.20.2025.08.19.06.16.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        d=1e100.net; s=20230601; t=1755609374; x=1756214174;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Xi518gsMPwf+xO6KMftj9HzM9h9TUyQOOtDZl1JTxQw=;
+        b=PSYGUtICW3ALYlBskris6sWcoGEpLHX7LUJ/oX1QDydAe6sljnuzcea+iHoEhneheE
+         g8SxxT1beNOjn/VR/fp0O1waQAp28VSIUqETKlUI2XWP67ynjYASI+ENTsZJnvaDIRpw
+         3qqph7lUebc/gpKRq0vxirIrtw7CeNfcPcUGr5Pe7N56DjiDwDbNRZtGXhvN65Ig9Iop
+         mttKC7rjVp7mL1dxSufxkwYuLjaxICAiz0a1hRLp+YlP1wqpAnL+TeD+An/lwyPryfu5
+         nfMZQ70As9+PmgGfgRAO++Q5nl9xxFUb5xJebtNezelkVb323NICIXYUEvG6jUgs/MWQ
+         a+BQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVjA1Culg9nEybM9EK2FjcYBBHdbRB/Ms6JU6ZKo9VMPI1Me0FXbYkWj4uZ6Do+z7dg4eNuRAa0UTfhwom/iw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxy81z8wG7kB08pkIYpBPGJOI7wjedgxQvBQEUZaTflsUtF54Jj
+	Fikycbgg7VCygCMcWUamflz0oOkxHgk8Ct9RGTC1bfQRUpuXOxNCwKwISz0MBQrp2XN/EMUR9e7
+	vFHTk
+X-Gm-Gg: ASbGncuJrmKYAwEIo03K+oDxTa5770nzsxK0UC5ggvxWyH3wY2orXY2MVr2a/8dDoLZ
+	fEb3DwEJAZmrxcWmePOHcrUM5y+lGJ42DP+OVxVRbFpHYMMeiNx1ZSO2LFQbuiTE+0hSoA9DWV/
+	6sQQdlg5HY3cGryjusvw5TuIG+toed+VZwIbq1qADxl9wYuISO0h1R6sB5q3HcFmzC4fQ56xnw9
+	TtIy1joBoxAorbGmiCesL3TNkdS5ZKgVvi5D2Q2pzLKT00us58lIvojKlwau/RSc1to8U8zBbVy
+	RHtJbLlLhqmoX04jdOoU0/k42ecdK3xduTIVh2p4r2lBHsIsr3NIMVoikppg+rJy/EbmeY/8NvR
+	d1vfKgUthRMjj3AfFs5Jsxew879yxDeCcmBcPaPHqHcVh
+X-Google-Smtp-Source: AGHT+IHNAQts7Tkq0in4K3BOL40AEJDywoXmLp4e38sGlmKMwBIojenupdYVLaUyK7UVgv2eYoj8jg==
+X-Received: by 2002:a17:906:c112:b0:af9:5903:3696 with SMTP id a640c23a62f3a-afddcb4df7cmr81510466b.2.1755609374036;
         Tue, 19 Aug 2025 06:16:14 -0700 (PDT)
+Received: from kuoka.. ([178.197.219.123])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afcdce53d60sm998744666b.20.2025.08.19.06.16.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 Aug 2025 06:16:13 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -79,30 +79,28 @@ To: Rob Herring <robh@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Minor whitespace cleanup
-Date: Tue, 19 Aug 2025 15:16:09 +0200
-Message-ID: <20250819131607.86338-4-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/2] ARM: dts: rockchip: Minor whitespace cleanup
+Date: Tue, 19 Aug 2025 15:16:08 +0200
+Message-ID: <20250819131607.86338-3-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250819131607.86338-3-krzysztof.kozlowski@linaro.org>
-References: <20250819131607.86338-3-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6570; i=krzysztof.kozlowski@linaro.org;
- h=from:subject; bh=63JgKqF3bc5t1TwNQeM5U464DiEpmWFQDp6CzuzSqJM=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBopHkYebIcahBFBqreRmNe33++dMlPkjj+8wJIZ
- 2Hj40Y7qw6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaKR5GAAKCRDBN2bmhouD
- 15l7EACPLhACEmtJ9t9YjD/9I0wca/SoRWGRlR0miHb8fOJJ/ZUdZ/TqYmuFbUZdIYkCRNryYeO
- Ah3lx7QD+SfVtWmULtH8QaFr9yhHN4qXrmsfqUlDAYNILt3i0VBLjk+sFRM4bfSzGM+bsqbsvki
- xGDBMtiSNy8RJDs+PbrhGjDkGjmOao5H1V6WYcmjlWQ54n9UbXgZWvQcHCBiggl0cAnIn2P6nk1
- GZ1mJxgT0mdIz1AwoHLzRr6DUTJwHpf7LQScLxE3oNUN/QzqXsL7QSJyWcFWGgYj0Bltxi71UjL
- 91LKtj8LKkaG/I1aavb1AWprGDlvw8dZ8LPTUlh/dm9nXTPAS2N/HgH63zOA8hEajXd55qPYjBs
- tRz4BuME5cyCK2V8ygLSIGT0pbCeFaV4tckpgiQPVnz/lLZ+V6NxNNdvDEUfnaaz3hpWvJNERpW
- n+LZDBATQT2QhPK/ciSfFfZtH3sunRKb6JTPRnfjemMV9CdxkSr92N0FV1/q/k6LcbMeIEbzbEz
- DhYZ+kmQccoc1SOIX27IgL925+XNT8hfXmiGKDOkgqKUFzDje0o01PkRrxKWDZSDOAxvjRVJ7v3
- MgeUWrS5Mo9/ANCZpbMFcmNRnTWLIeWvxlULSeQXODt3ChbQ08vwhyRoPwqZ9yeknpv1sSRi1Wl WaVtMluTg3SvWMg==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1479; i=krzysztof.kozlowski@linaro.org;
+ h=from:subject; bh=zzJHbwP59FIAJRbh/laHlAqr7S4UlzgO8wkJUgyct7M=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBopHkX1WKSqJhvQcELKxO426h67ZTlpdrZBKf1M
+ 5oH0eMggemJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaKR5FwAKCRDBN2bmhouD
+ 1/bFD/4pTRoaumxN4qomkIs6yFeXrcTZBRmPV7OywqqKgE0NJ3WJviWn/dX3kiNForLEobrQSMA
+ 7i1yOWVOmKASx/uWgJIMy/Dfo6UbTYSCDfOlIHpIdW6TF7TyEIGbQRF88NP0ZHx6P3EqGh056/V
+ x4m3PTjiseJ1hWbmgE4fdcHlFyrRxo6QTnnOzhx82sdoQhpeRCM+zYe0iK7pkpo+Rn/+V2m8Y1V
+ bjV3p+u4+VT+lVfJhQZFpMvlZuyBD5ealdsJoFj9JE3/iB3DG+4eDqpywmkPWecdtsQcxC27K+O
+ x9T/J//KGtMnTguaOKQtB+rMAVPiq5H2lOGizXIhbikXopn+Woo5x+qW0Y59Q4PdzZW/IG5mDX9
+ Ej4CCCPSSbEsM0W6ch4fTN6ofGGWIkx3bw3SMI0WBEEHehrtPFRMCdR/o07DivyguWeJKcmkIws
+ 0NJcIH3Jn1JxBpHArx5tyAJ+nvB6c8Za5BX+IWOf1o/MQ7PzWgKRbtVUHouBAjwxfBABnNOvQxG
+ BeRbFi5dJSpKuph/cnHwj/9MxK9y+H4uK4/waTuAH8NkDRlZ37Zd/tA3sQlEcw7cKhMMDxgGwyV
+ f+VYKL+GDd5XIH2ft52QowEGKHBOhV/v+aBL+a0wWbuxlkoYAGyMcGi7E1lhu71rAHGAswuBucU BNVRX5amtmp0mqA==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_061617_011660_8FCE3381 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20250819_061615_849197_B7ED40AA 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,177 +117,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DTS code coding style expects exactly one space around '=' or '{'
-characters.
+The DTS code coding style expects exactly one space around '='
+character.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi             | 8 ++++----
- .../dts/rockchip/px30-ringneck-haikou-video-demo.dtso     | 6 +++---
- arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts  | 2 +-
- .../boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso  | 6 +++---
- arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi  | 4 ++--
- arch/arm64/boot/dts/rockchip/rk3588j.dtsi                 | 4 ++--
- 6 files changed, 15 insertions(+), 15 deletions(-)
+ arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts    | 2 +-
+ arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi b/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
-index b4bd4e34747c..192791993f05 100644
---- a/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
-@@ -72,7 +72,7 @@ vcc5v0_sys: regulator-vccsys {
- 	};
- 
- 	vcc_cam_avdd: regulator-vcc-cam-avdd {
--		compatible  = "regulator-fixed";
-+		compatible = "regulator-fixed";
- 		regulator-name = "vcc_cam_avdd";
- 		gpio = <&gpio3 RK_PC0 GPIO_ACTIVE_LOW>;
- 		pinctrl-names = "default";
-@@ -83,7 +83,7 @@ vcc_cam_avdd: regulator-vcc-cam-avdd {
- 	};
- 
- 	vcc_cam_dovdd: regulator-vcc-cam-dovdd {
--		compatible  = "regulator-fixed";
-+		compatible = "regulator-fixed";
- 		regulator-name = "vcc_cam_dovdd";
- 		gpio = <&gpio3 RK_PC1 GPIO_ACTIVE_LOW>;
- 		pinctrl-names = "default";
-@@ -94,7 +94,7 @@ vcc_cam_dovdd: regulator-vcc-cam-dovdd {
- 	};
- 
- 	vcc_cam_dvdd: regulator-vcc-cam-dvdd {
--		compatible  = "regulator-fixed";
-+		compatible = "regulator-fixed";
- 		regulator-name = "vcc_cam_dvdd";
- 		gpio = <&gpio3 RK_PC5 GPIO_ACTIVE_HIGH>;
- 		enable-active-high;
-@@ -106,7 +106,7 @@ vcc_cam_dvdd: regulator-vcc-cam-dvdd {
- 	};
- 
- 	vcc_lens_afvdd: regulator-vcc-lens-afvdd {
--		compatible  = "regulator-fixed";
-+		compatible = "regulator-fixed";
- 		regulator-name = "vcc_lens_afvdd";
- 		gpio = <&gpio3 RK_PB2 GPIO_ACTIVE_LOW>;
- 		pinctrl-names = "default";
-diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
-index ea5ce919984f..760d5139f95d 100644
---- a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
-+++ b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
-@@ -26,7 +26,7 @@ backlight: backlight {
- 	};
- 
- 	cam_afvdd_2v8: regulator-cam-afvdd-2v8 {
--		compatible  = "regulator-fixed";
-+		compatible = "regulator-fixed";
- 		gpio = <&pca9670 2 GPIO_ACTIVE_LOW>;
- 		regulator-max-microvolt = <2800000>;
- 		regulator-min-microvolt = <2800000>;
-@@ -35,7 +35,7 @@ cam_afvdd_2v8: regulator-cam-afvdd-2v8 {
- 	};
- 
- 	cam_avdd_2v8: regulator-cam-avdd-2v8 {
--		compatible  = "regulator-fixed";
-+		compatible = "regulator-fixed";
- 		gpio = <&pca9670 4 GPIO_ACTIVE_LOW>;
- 		regulator-max-microvolt = <2800000>;
- 		regulator-min-microvolt = <2800000>;
-@@ -44,7 +44,7 @@ cam_avdd_2v8: regulator-cam-avdd-2v8 {
- 	};
- 
- 	cam_dovdd_1v8: regulator-cam-dovdd-1v8 {
--		compatible  = "regulator-fixed";
-+		compatible = "regulator-fixed";
- 	        gpio = <&pca9670 3 GPIO_ACTIVE_LOW>;
- 	        regulator-max-microvolt = <1800000>;
- 	        regulator-min-microvolt = <1800000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts b/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
-index aee6643e33ab..3473db08b9b2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts
-@@ -260,6 +260,6 @@ &usb_host_ehci {
+diff --git a/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts b/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
+index 21f824b09191..decbf2726ec4 100644
+--- a/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
++++ b/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
+@@ -272,7 +272,7 @@ &gmac {
+ 	phy-mode = "rmii";
+ 	phy-handle = <&phy0>;
+ 	assigned-clocks = <&cru SCLK_MAC_SRC>;
+-	assigned-clock-rates= <50000000>;
++	assigned-clock-rates = <50000000>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rmii_pins>;
+ 	status = "okay";
+diff --git a/arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts b/arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts
+index c13829d32c32..8a92700349b4 100644
+--- a/arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts
++++ b/arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts
+@@ -250,9 +250,9 @@ rtc0: rtc@52 {
+ &i2s0 {
+ 	/delete-property/ pinctrl-0;
+ 	rockchip,trcm-sync-rx-only;
+-	pinctrl-0 =  <&i2s0m0_sclk_rx>,
+-		     <&i2s0m0_lrck_rx>,
+-		     <&i2s0m0_sdi0>;
++	pinctrl-0 = <&i2s0m0_sclk_rx>,
++		    <&i2s0m0_lrck_rx>,
++		    <&i2s0m0_sdi0>;
+ 	pinctrl-names = "default";
  	status = "okay";
  };
- 
--&usb_host_ohci{
-+&usb_host_ohci {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
-index d28880b8dd44..5e8f729c2cf2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
-@@ -26,7 +26,7 @@ backlight: backlight {
- 	};
- 
- 	cam_afvdd_2v8: regulator-cam-afvdd-2v8 {
--		compatible  = "regulator-fixed";
-+		compatible = "regulator-fixed";
- 		gpio = <&pca9670 2 GPIO_ACTIVE_LOW>;
- 		regulator-max-microvolt = <2800000>;
- 		regulator-min-microvolt = <2800000>;
-@@ -35,7 +35,7 @@ cam_afvdd_2v8: regulator-cam-afvdd-2v8 {
- 	};
- 
- 	cam_avdd_2v8: regulator-cam-avdd-2v8 {
--		compatible  = "regulator-fixed";
-+		compatible = "regulator-fixed";
- 		gpio = <&pca9670 4 GPIO_ACTIVE_LOW>;
- 		regulator-max-microvolt = <2800000>;
- 		regulator-min-microvolt = <2800000>;
-@@ -44,7 +44,7 @@ cam_avdd_2v8: regulator-cam-avdd-2v8 {
- 	};
- 
- 	cam_dovdd_1v8: regulator-cam-dovdd-1v8 {
--		compatible  = "regulator-fixed";
-+		compatible = "regulator-fixed";
- 	        gpio = <&pca9670 3 GPIO_ACTIVE_LOW>;
- 	        regulator-max-microvolt = <1800000>;
- 	        regulator-min-microvolt = <1800000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-index e7ba477e75f9..7f578c50b4ad 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-@@ -53,7 +53,7 @@ led-0 {
- 			gpios = <&gpio4 RK_PA1 GPIO_ACTIVE_LOW>;
- 			linux,default-trigger = "default-on";
- 			pinctrl-names = "default";
--			pinctrl-0 =<&blue_led>;
-+			pinctrl-0 = <&blue_led>;
- 		};
- 
- 		led-1 {
-@@ -62,7 +62,7 @@ led-1 {
- 			gpios = <&gpio0 RK_PB7 GPIO_ACTIVE_LOW>;
- 			linux,default-trigger = "heartbeat";
- 			pinctrl-names = "default";
--			pinctrl-0 =<&heartbeat_led>;
-+			pinctrl-0 = <&heartbeat_led>;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588j.dtsi b/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-index 3045cb3bd68c..9884a5df47df 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588j.dtsi
-@@ -28,7 +28,7 @@ cluster1_opp_table: opp-table-cluster1 {
- 		compatible = "operating-points-v2";
- 		opp-shared;
- 
--		opp-1200000000{
-+		opp-1200000000 {
- 			opp-hz = /bits/ 64 <1200000000>;
- 			opp-microvolt = <750000 750000 950000>;
- 			clock-latency-ns = <40000>;
-@@ -49,7 +49,7 @@ cluster2_opp_table: opp-table-cluster2 {
- 		compatible = "operating-points-v2";
- 		opp-shared;
- 
--		opp-1200000000{
-+		opp-1200000000 {
- 			opp-hz = /bits/ 64 <1200000000>;
- 			opp-microvolt = <750000 750000 950000>;
- 			clock-latency-ns = <40000>;
 -- 
 2.48.1
 
