@@ -4,65 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95764CA0EE6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 20:07:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90FEFCA0EE6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 20:43:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yM54R6rREBBsIhkHhBcKNJUzMKyNLDb7ZLY7WvU/D/E=; b=kTJbjfOwkVsLtM
-	Bq8aiSdN/KL73ouVEi93z1Spwx+bc47ut5a2rDQzB2EXk9iZqWX1zd63GhToK0D0jijOdkein7egP
-	TY56bE2Z7k+rua7WANx6oHsZ105uTJrys3eLnadW94DgjAGCu9s2BLfqsXfhjis7+hYuV6OFo/CJx
-	4deCgesa+VXw9ynOfud6d6RW5r02qEnBIGzslWUqHpUDDdEbLfU7P9Xbu8DlZ8/nzpVLnWKs/THJ2
-	0K4QXQNc/Hm/tGFYQyNo0wdSpvFYDcs0vlsxRvQ8dZw7i0qVLClCsCPPh8etOQ80IYwjsFVlos6e8
-	RmZsxj8cLFe18m0afukg==;
+	List-Owner; bh=dBgkG1IcmGvCQpxVes+kZlBqxo/iAnaDRL9Fb15/tWU=; b=G7Rm/XNzmoxCDS
+	P77+89Hz8MyokE+MyGekrvu7xj+wB/wh2PPVTJpCW0VSQiX017EBX9RydN3HvMGOX/ZlYkcoBqC7Y
+	pO0nqkq6B+fPRLKOzLBHVCWKuDjnqDNTKiuCliP+iAdKUVZwtxzXHcM9TPq5tyqLJJQy2DLbrnjuf
+	Ldaz8hZhvAeg/oTFkqRBxZqnq1uhUWtV+BZRA7nRYqSr4g0wF2ZhPBhBmNb/R/rkS3m2ZtnWnuRc9
+	v4B+daz+25zR2YJLc5W70Z+qwEZmx/FwbHHHFASWFSNQ3BYI6nFb/0zOdGQvqJGVN6cgnBAsP228+
+	X5Zo2/2/ow9jv3kHx+/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoScB-0000000BV9B-2VYx;
-	Tue, 19 Aug 2025 20:07:27 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoQST-0000000BA2Q-33lx;
-	Tue, 19 Aug 2025 17:49:19 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8E877152B;
-	Tue, 19 Aug 2025 10:49:06 -0700 (PDT)
-Received: from [10.1.196.50] (e121345-lin.cambridge.arm.com [10.1.196.50])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 475103F738;
-	Tue, 19 Aug 2025 10:49:10 -0700 (PDT)
-Message-ID: <cdb7b1e7-6e51-4c0e-bffb-b0d4b654a623@arm.com>
-Date: Tue, 19 Aug 2025 18:49:08 +0100
+	id 1uoTAT-0000000BYwo-3y4o;
+	Tue, 19 Aug 2025 20:42:53 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uoRJu-0000000BKU6-0JZL;
+	Tue, 19 Aug 2025 18:44:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=8l89w4bHTJH83H28ZxlWSCRMM0V8+br4qkqPy5/xjd0=; b=gcR8kMD9Q71A7ezSFp0EEPQhem
+	TJqW4ftDjs3qSqnC8AZ0XXhgHZn9wkOD+bwUNPMEn9JTbWOm4DsgbMES6CmD5dWREc3BFGop2eJBH
+	+TEB01ubMjD8uJ0/T1fiSq4Kz5l21rKXWIGHnvm7CgRquGhL6v9H3ZimHeWfL86D6drVCh++UxjGF
+	+dln30WIYeoic3imgQ0tnzjIhzqNBvTtJzfsn0kbKxQD0VKHwsevGtMvh9gsvX/jTdh5wiYHs1bO+
+	g4+6KZTKeWf93whbuJErQgPevIuN1gl77doOV9YB98XI5+YjJoVzD/v5nVw9he7hC0hMegIiAgzGU
+	pZuimlAQ==;
+Received: from i53875a31.versanet.de ([83.135.90.49] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uoRJq-0004Ru-TA; Tue, 19 Aug 2025 20:44:26 +0200
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Dongjin Kim <tobetter@gmail.com>, Andrew Lunn <andrew@lunn.ch>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Change ethernet TXD timing delay value
+Date: Tue, 19 Aug 2025 20:44:26 +0200
+Message-ID: <2821088.9PvXe5no7K@diego>
+In-Reply-To: <4d25c642-d457-4cb7-8bc1-587edd4f1d75@lunn.ch>
+References: <20250819045018.2094282-1-tobetter@gmail.com>
+ <4d25c642-d457-4cb7-8bc1-587edd4f1d75@lunn.ch>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 19/19] perf: Garbage-collect event_init checks
-To: kernel test robot <oliver.sang@intel.com>
-Cc: oe-lkp@lists.linux.dev, lkp@intel.com,
- linux-arm-kernel@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
- linux-s390@vger.kernel.org, linux-perf-users@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- dmaengine@vger.kernel.org, linux-fpga@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- intel-xe@lists.freedesktop.org, coresight@lists.linaro.org,
- iommu@lists.linux.dev, linux-amlogic@lists.infradead.org,
- linux-cxl@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-pm@vger.kernel.org, peterz@infradead.org, mingo@redhat.com,
- will@kernel.org, mark.rutland@arm.com, acme@kernel.org, namhyung@kernel.org,
- alexander.shishkin@linux.intel.com, jolsa@kernel.org, irogers@google.com,
- adrian.hunter@intel.com, kan.liang@linux.intel.com,
- linux-alpha@vger.kernel.org, linux-snps-arc@lists.infradead.org,
- imx@lists.linux.dev, linux-csky@vger.kernel.org, loongarch@lists.linux.dev,
- linux-mips@vger.kernel.org, linux-sh@vger.kernel.org,
- sparclinux@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-riscv@lists.infradead.org
-References: <202508190403.33c83ece-lkp@intel.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <202508190403.33c83ece-lkp@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_104917_878778_F810A49C 
-X-CRM114-Status: GOOD (  17.93  )
+X-CRM114-CacheID: sfid-20250819_114430_114653_0E194E8F 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,93 +67,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 19/08/2025 3:44 am, kernel test robot wrote:
-> 
-> 
-> Hello,
-> 
-> kernel test robot noticed "BUG:unable_to_handle_page_fault_for_address" on:
-> 
-> commit: 1ba20479196e5af3ebbedf9321de6b26f2a0cdd3 ("[PATCH 19/19] perf: Garbage-collect event_init checks")
-> url: https://github.com/intel-lab-lkp/linux/commits/Robin-Murphy/perf-arm-cmn-Fix-event-validation/20250814-010626
-> base: https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git 91325f31afc1026de28665cf1a7b6e157fa4d39d
-> patch link: https://lore.kernel.org/all/ace3532a8a438a96338bf349a27636d8294c7111.1755096883.git.robin.murphy@arm.com/
-> patch subject: [PATCH 19/19] perf: Garbage-collect event_init checks
-
-OK, after looking a bit more deeply at x86 and PowerPC, I think it
-probably is nicest to solve this commonly too. Below is what I've cooked
-up for a v2 (I'll save reposting the whole series this soon...)
-
-Thanks,
-Robin.
-
------>8-----
-Subject: [PATCH 18.5/19] perf: Add common uncore-CPU check
-
-Many uncore drivers depend on event->cpu being valid in order to look
-up various data in their event_init call. Since we've now factored out
-common PMU identification, we can factor out this check in the correct
-order too. While it might technically be possible to hoist the general
-task/cgroup check up here now, that would be horribly messy, so for
-clarity let's keep these as distinct (albeit related) concerns.
-
-Reported-by: kernel test robot <oliver.sang@intel.com>
-Closes: https://lore.kernel.org/oe-lkp/202508190403.33c83ece-lkp@intel.com
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
----
-  kernel/events/core.c | 12 +++++++++++-
-  1 file changed, 11 insertions(+), 1 deletion(-)
-
-diff --git a/kernel/events/core.c b/kernel/events/core.c
-index 5f7eb526d87c..ddf045ad4d83 100644
---- a/kernel/events/core.c
-+++ b/kernel/events/core.c
-@@ -12562,6 +12562,11 @@ static bool is_raw_pmu(const struct pmu *pmu)
-  	       pmu->capabilities & PERF_PMU_CAP_RAW_EVENTS;
-  }
-  
-+static bool is_uncore_pmu(const struct pmu *pmu)
-+{
-+	return pmu->task_ctx_nr == perf_invalid_context;
-+}
-+
-  static int perf_try_init_event(struct pmu *pmu, struct perf_event *event)
-  {
-  	struct perf_event_context *ctx = NULL;
-@@ -12571,11 +12576,16 @@ static int perf_try_init_event(struct pmu *pmu, struct perf_event *event)
-  	 * Before touching anything, we can safely skip:
-  	 * - any event for a specific PMU which is not this one
-  	 * - any common event if this PMU doesn't support them
-+	 * - non-CPU-bound uncore events (so drivers can assume event->cpu is
-+	 *   valid; we'll check the actual task/cgroup attach state later)
-  	 */
-  	if (event->attr.type != pmu->type &&
-  	    (event->attr.type >= PERF_TYPE_MAX || !is_raw_pmu(pmu)))
-  		return -ENOENT;
-  
-+	if (is_uncore_pmu(pmu) && event->cpu < 0)
-+		return -EINVAL;
-+
-  	if (!try_module_get(pmu->module))
-  		return -ENODEV;
-  
-@@ -12990,7 +13000,7 @@ perf_event_alloc(struct perf_event_attr *attr, int cpu,
-  	 * events (they don't make sense as the cgroup will be different
-  	 * on other CPUs in the uncore mask).
-  	 */
--	if (pmu->task_ctx_nr == perf_invalid_context && (task || cgroup_fd != -1))
-+	if (is_uncore_pmu(pmu) && (task || cgroup_fd != -1))
-  		return ERR_PTR(-EINVAL);
-  
-  	if (event->attr.aux_output &&
--- 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRGllbnN0YWcsIDE5LiBBdWd1c3QgMjAyNSwgMTg6MDM6NDcgTWl0dGVsZXVyb3DDpGlzY2hl
+IFNvbW1lcnplaXQgc2NocmllYiBBbmRyZXcgTHVubjoKPiBPbiBUdWUsIEF1ZyAxOSwgMjAyNSBh
+dCAwMTo1MDoxN1BNICswOTAwLCBEb25namluIEtpbSB3cm90ZToKPiA+IFZlcnkgcG9vciBuZXR3
+b3JrIHBlcmZvcm1hbmNlIGlzIG9ic2VydmVkIG9uIHRoZSBPRFJPSUQtTTEgQm9hcmQKPiA+IChS
+RVYgMS4wIDIwMjIwNjEzKSB3aGVuIHJ1bm5pbmcgaXBlcmYzICh1bmRlciAyMDBNYml0cy9zZWMp
+LCBhbmQKPiA+IHRoaXMgcHJvYmxlbSBjYW4gYmUgcmVzb2x2ZWQgYWZ0ZXIgY2hhbmdpbmcgdGhl
+IHZhbHVlIG9mIFRYRAo+ID4gdGltaW5nIHRvIDB4MzUgZnJvbSAweDRmLgo+IAo+IEhvdyBkaWQg
+eW91IGRlY2lkZSBvbiAweDM1PwoKanVzdCBiZWNhdXNlIEkgYWNjaWRlbnRpYWxseSBzdHVtYmxl
+ZCBvdmVyIHRoYXQgcmVjZW50bHksIFJvY2tjaGlwIGhhcwpzb21lIHNjYW5uaW5nIGZ1bmN0aW9u
+YWxpdHkgaW4gdGhlaXIgdmVuZG9yLWtlcm5lbCB0byBnZXQgcG9zc2libGUKZGVsYXkgdmFsdWVz
+IGZvciBhIGJvYXJkLgoKRGVzY3JpYmVkIGluIGEgZG9jdW1lbnQgY2FsbGVkICJSb2NrY2hpcCBH
+TUFDIFJHTUlJIERlbGF5bGluZSBHdWlkZSIgWzBdCmFuZCBvbmUgY29kZSBsb2NhdGlvbiBpcyBm
+b3IgZXhhbXBsZSB0aGUgYXJtYmlhbiB0cmVlIFsxXQoKQXQgbGVhc3QgdGhhdCBpcyBvbmUgcG9z
+c2libGUgc291cmNlIG9mIHBlci1ib2FyZCBkZWxheSB2YWx1ZXMgOi0pCgoKSGVpa28KCgpbMF0g
+aHR0cHM6Ly9sbzAxLmc3N2suY29tL2FlYi9kb2NzL2VuL0NvbW1vbi9HTUFDL1JvY2tjaGlwX0Rl
+dmVsb3Blcl9HdWlkZV9MaW51eF9HTUFDX1JHTUlJX0RlbGF5bGluZV9FTi5wZGYKKHJhbmRvbSBp
+bnRlcm5ldCBzb3VyY2UgR29vZ2xlIGZvdW5kIG1lKQpbMV0gaHR0cHM6Ly9naXRodWIuY29tL2Fy
+bWJpYW4vbGludXgtcm9ja2NoaXAvYmxvYi9yay02LjEtcmtyNS4xL2RyaXZlcnMvbmV0L2V0aGVy
+bmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLXJrLXRvb2wuYwoKCj4gCj4gfi9saW51eC9hcmNoL2Fy
+bTY0JCBncmVwIC1ociAidHhfZGVsYXkgPSAiIHwgc29ydCB8IHVuaXEgLWMKPiAgICAgICA0IAl0
+eF9kZWxheSA9IDwweDEwPjsKPiAgICAgICAxIAl0eF9kZWxheSA9IDwweDFhPjsKPiAgICAgICAx
+IAl0eF9kZWxheSA9IDwweDIxPjsKPiAgICAgICAyIAl0eF9kZWxheSA9IDwweDIyPjsKPiAgICAg
+ICA0IAl0eF9kZWxheSA9IDwweDI0PjsKPiAgICAgICAyIAl0eF9kZWxheSA9IDwweDI2PjsKPiAg
+ICAgIDE0IAl0eF9kZWxheSA9IDwweDI4PjsKPiAgICAgICAxIAl0eF9kZWxheSA9IDwweDJhPjsK
+PiAgICAgICA2IAl0eF9kZWxheSA9IDwweDMwPjsKPiAgICAgICAxIAl0eF9kZWxheSA9IDwweDNh
+PjsKPiAgICAgICAzIAl0eF9kZWxheSA9IDwweDNjPjsKPiAgICAgICAyIAl0eF9kZWxheSA9IDww
+eDQyPjsKPiAgICAgICA1IAl0eF9kZWxheSA9IDwweDQzPjsKPiAgICAgICAyIAl0eF9kZWxheSA9
+IDwweDQ0PjsKPiAgICAgICAxIAl0eF9kZWxheSA9IDwweDQ2PjsKPiAgICAgICA2IAl0eF9kZWxh
+eSA9IDwweDRmPjsKPiAKPiBUaGUgbnVtYmVycyBhcmUgYWxsIG92ZXIgdGhlIHBsYWNlLCBidXQg
+aXQgaXMgY2xlYXIgdGhhdCAweDI4IGlzIHRoZQo+IG1vc3QgcG9wdWxhciBmb3Igc29tZSByZWFz
+b24uIEJ1dCBzaW5jZSB0aGlzIGRlbGF5IHZhbHVlcyBhcmUgbWFnaWMsCj4gaSd2ZSBubyBpZGVh
+IHdoeS4KPiAKPiAgICAgIEFuZHJldwo+IAoKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
