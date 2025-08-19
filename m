@@ -4,97 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8DB7CA0EE6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 22:55:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF110CA0EEB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 23:26:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DiosZYFzIqcE64dXyUo3C1AwNfv8V9otzc1caVPnbOU=; b=p2Be2nr2YjsX1W
-	GXhcX/nszSlejPAgANBfZ34PAYHkMksSisKflAeIvlQY6ERMQTkjt3WrqMu/am8dDQuVdJirBNy17
-	kCJ9+BtkcUMqE5+UNXoZ3X4my5meUN3LeP1sKj4HonFPk+pUfK+qWa7U/qnkE0VD30T/A77XdG2KQ
-	jkg8PoLJWgpCoEAq08RdQz3KW8jqEKUwzGpCDefCOAX/m0/p0EbKOFr9stu/jB66f7+M4Du0U9kPX
-	ehx4wOWCAycrEDZoJpefGNzkvWOmXBckjy7i09E5dTu1N9ckjZc7j2H9Tx0KSRS0vXWGFIad7/OWs
-	m0oM+tRRWcqEE1uvDofw==;
+	List-Owner; bh=L4k62XKZiHerc9aXHpteNrmb7SXrt285HJIY5TsNi58=; b=sjD7Em3IKOLCNe
+	97h8FjM5GqB5FhCq9lsluRjfYodz5rRh3C2RLmAT33/HFPRaPOh/p1R/KqjOZWCCwm+2jnZcgY3t+
+	3iQ61XRIzh0Xwfi/bQYhK51LIDACrRgVAHKGtDp1BPPcbpsiaUjiCrL0Z02LJBeHX4uiCx9vDwWKA
+	4PlOUQW3mNhSM77t6LDCwXV0p8Lw58fn+IiXAeu4OoRXSMVIlsGl0AXE6Xj9LtX7o8tkAyXHKqRcq
+	5ykhGQBQgt8oHdtbc3J1LUt5OtSbJE5/vCap3/mrGBqi4SGOi2S3Be+zPDluMJv7dYWhWfcNKtH3J
+	+fYAOrzb/I9tjrT5gVVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoVEt-0000000Bncv-1bfJ;
-	Tue, 19 Aug 2025 22:55:35 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uoVj4-0000000BqnI-3DXn;
+	Tue, 19 Aug 2025 23:26:46 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoTlb-0000000Bd3a-0oPU
-	for linux-rockchip@bombadil.infradead.org;
-	Tue, 19 Aug 2025 21:21:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=References:Content-Type:
-	Content-Transfer-Encoding:In-Reply-To:From:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Sender:Reply-To:Content-ID:Content-Description;
-	bh=Rw3wVMolVT3ui9ni2jKtmMC3tGVqAxf5rPHe/2TBJ48=; b=bPFfMe2c1lzKt7ym1Sck92MNc9
-	2lTkxhTc4obBCDdIS78jqVXLTaOHQpsPlNz4XFMS2SesBVw1Fck35Yl9vIlUmSbGZJRv59YRftow6
-	ENJY5YXx5Afu/1BOvMfhXl8zmNJKgZ2sNX76iO1cgsN0+9KKoW4ZP51ZjI802o8/TON6RR7MGiClq
-	jzs5ST4y/Faca65wjgg6UdE+lmRQ9OzJOKWRhV5AcqQRXiP/WnKc+Z1P4Y2Svs9EkiiGJa54u2rRc
-	RqNKLVLor1nBoQkZqk70Zt7pkNPqJjhpTxOP2WaRQlD3hgwqTYKWyP+b7P/LTE0lXu+Cayizosg8w
-	ND9F2R7w==;
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoTlK-000000006j6-0ANy
-	for linux-rockchip@lists.infradead.org;
-	Tue, 19 Aug 2025 21:21:12 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20250819212047euoutp0225e9762b518385dd1b898979121a509c~dR922GwHs1442314423euoutp02E
-	for <linux-rockchip@lists.infradead.org>; Tue, 19 Aug 2025 21:20:47 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20250819212047euoutp0225e9762b518385dd1b898979121a509c~dR922GwHs1442314423euoutp02E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1755638447;
-	bh=Rw3wVMolVT3ui9ni2jKtmMC3tGVqAxf5rPHe/2TBJ48=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=C2oTnsXz3NNtg4L83Neo5ItQvYtcYZbfHWTjnOUOxEtQxVnGmnqkzCecAPocD9K+n
-	 OE8yoPaBy+RJxeAOlJqPYl/wDa+8UFtSjz/UIcVPA4MXpGUp6UY569T+uj2+msxTeo
-	 HqybRnpz6tLeHrOR6ieeM2yvY01Uj+X2ZOZeiRw8=
-Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20250819212046eucas1p1ebb750b120bc1374625b1d6265312380~dR92bX_yG3208332083eucas1p1m;
-	Tue, 19 Aug 2025 21:20:46 +0000 (GMT)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20250819212042eusmtip29da91ca4dc6562decd39eb09a7ac7296~dR9y0yEjY1577615776eusmtip2c;
-	Tue, 19 Aug 2025 21:20:42 +0000 (GMT)
-Message-ID: <f2ebfff1-08ab-4f26-98f3-6d6415d58a5e@samsung.com>
-Date: Tue, 19 Aug 2025 23:20:41 +0200
+	id 1uoUUw-0000000Bi2N-3VkY;
+	Tue, 19 Aug 2025 22:08:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1755641286; x=1787177286;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=IER2tH70jw4bUvxU7SJwvA7uocCmfea8E42TaoI/+JE=;
+  b=JmDUdDDOozwNs16Tljz0o8FBrcqObscN5mHgUfKLNFbGIH8MsiCaVpYu
+   WDCbaiFMusmpjNobl8035tzdW3LIxZDrYcm6BJMMlLzv4OcwAGinKy2Cx
+   u6RDY0QAyzqOWG2SuijJoQURSJOgM+FH/niVIWTCdBeOn4kCJvJEh5vK7
+   MoKY0HGWoEo7JkIkQOkLgH9jaadmLjQzYUopzI/KdLud73E1h/mK+/MQt
+   aSH3mWjM6WozmsaJDQ3Qf/C0xVgJCvINcX/WhXJynH6HMz3FqmHKtFGgz
+   C7LSXsh/pS6SA/Ha0cLihcQo4N41GWBEq6ZhRaOW+feExnCLmW1KGZJ6X
+   w==;
+X-CSE-ConnectionGUID: 1VVHyt97Qz+4hEcedgbHqA==
+X-CSE-MsgGUID: jNb6PeaoTHW2psZsiCEpIw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11527"; a="80491874"
+X-IronPort-AV: E=Sophos;i="6.17,302,1747724400"; 
+   d="scan'208";a="80491874"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Aug 2025 15:08:04 -0700
+X-CSE-ConnectionGUID: FnrUrLyiReypiU0rUAmo7A==
+X-CSE-MsgGUID: u5PAcqNEQROpMrxv+0NYTg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.17,302,1747724400"; 
+   d="scan'208";a="173324580"
+Received: from sschumil-mobl2.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.244.235])
+  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Aug 2025 15:08:02 -0700
+Received: from kekkonen.localdomain (localhost [IPv6:::1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id 4123511F8D4;
+	Wed, 20 Aug 2025 01:07:58 +0300 (EEST)
+Date: Wed, 20 Aug 2025 01:07:58 +0300
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Cc: Dafna Hirschfeld <dafna@fastmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Keke Li <keke.li@amlogic.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Dan Scally <dan.scally@ideasonboard.com>,
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 1/8] media: uapi: Introduce V4L2 extensible params
+Message-ID: <aKT1vgHkdc98zOyC@kekkonen.localdomain>
+References: <20250819-extensible-parameters-validation-v3-0-9dc008348b30@ideasonboard.com>
+ <20250819-extensible-parameters-validation-v3-1-9dc008348b30@ideasonboard.com>
 MIME-Version: 1.0
-User-Agent: Betterbird (Windows)
-Subject: Re: [PATCH v4 00/13] Apply drm_bridge_connector and panel_bridge
- helper for the Analogix DP driver
-To: Damon Ding <damon.ding@rock-chips.com>, andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org, rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
-	jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
-	jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
-	kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
-	hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
-	dmitry.baryshkov@oss.qualcomm.com, l.stach@pengutronix.de,
-	dianders@chromium.org, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Content-Language: en-US
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <1ccd3889-5f13-4609-9bd8-2c208e17fc96@rock-chips.com>
-X-CMS-MailID: 20250819212046eucas1p1ebb750b120bc1374625b1d6265312380
-X-Msg-Generator: CA
-X-RootMTR: 20250814104818eucas1p2c5029f6d5997f4fafd6370f9e7fb2264
-X-EPHeader: CA
-X-CMS-RootMailID: 20250814104818eucas1p2c5029f6d5997f4fafd6370f9e7fb2264
-References: <CGME20250814104818eucas1p2c5029f6d5997f4fafd6370f9e7fb2264@eucas1p2.samsung.com>
-	<20250814104753.195255-1-damon.ding@rock-chips.com>
-	<a3a2f8be-2c3c-49e7-b27a-72364ea48b06@samsung.com>
-	<7cb50c9c-ac41-43b6-8c69-5f184e7c94cf@samsung.com>
-	<1ccd3889-5f13-4609-9bd8-2c208e17fc96@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <20250819-extensible-parameters-validation-v3-1-9dc008348b30@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_222103_494736_8716496D 
-X-CRM114-Status: GOOD (  28.06  )
+X-CRM114-CacheID: sfid-20250819_150806_917528_DAF64213 
+X-CRM114-Status: GOOD (  48.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,189 +90,228 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTUuMDguMjAyNSAwNDo1OSwgRGFtb24gRGluZyB3cm90ZToKPiBPbiAyMDI1LzgvMTUgNTox
-NiwgTWFyZWsgU3p5cHJvd3NraSB3cm90ZToKPj4gT24gMTQuMDguMjAyNSAxNjozMywgTWFyZWsg
-U3p5cHJvd3NraSB3cm90ZToKPj4+IE9uIDE0LjA4LjIwMjUgMTI6NDcsIERhbW9uIERpbmcgd3Jv
-dGU6Cj4+Pj4gUEFUQ0ggMSBpcyBhIHNtYWxsIGZvcm1hdCBvcHRpbWl6YXRpb24gZm9yIHN0cnVj
-dCBhbmFsb2dpZF9kcF9kZXZpY2UuCj4+Pj4gUEFUQ0ggMiBpcyB0byBwZXJmb3JtIG1vZGUgc2V0
-dGluZyBpbiAmZHJtX2JyaWRnZV9mdW5jcy5hdG9taWNfZW5hYmxlLgo+Pj4+IFBBVENIIDMtNiBh
-cmUgcHJlcGFyYXRpb25zIGZvciBhcHBseSBkcm1fYnJpZGdlX2Nvbm5lY3RvciBoZWxwZXIuCj4+
-Pj4gUEFUQ0ggNyBpcyB0byBhcHBseSB0aGUgZHJtX2JyaWRnZV9jb25uZWN0b3IgaGVscGVyLgo+
-Pj4+IFBBVENIIDgtMTAgYXJlIHRvIG1vdmUgdGhlIHBhbmVsL2JyaWRnZSBwYXJzaW5nIHRvIHRo
-ZSBBbmFsb2dpeCBzaWRlLgo+Pj4+IFBBVENIIDExLTEyIGFyZSBwcmVwYXJhdGlvbnMgZm9yIGFw
-cGx5IHBhbmVsX2JyaWRnZSBoZWxwZXIuCj4+Pj4gUEFUQ0ggMTMgaXMgdG8gYXBwbHkgdGhlIHBh
-bmVsX2JyaWRnZSBoZWxwZXIuCj4+Pgo+Pj4gVGhpcyBzZXJpZXMgbGFja3MgJ3NlbGVjdMKgRFJN
-X0JSSURHRV9DT05ORUNUT1InIGluIEV4eW5vc0RQJ3MgS2NvbmZpZywKPj4+IHNvIGl0IGNhdXNl
-cyBidWlsZCBicmVhazoKPj4+Cj4+PiBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcC5j
-OjE3NzogdW5kZWZpbmVkIHJlZmVyZW5jZSB0bwo+Pj4gYGRybV9icmlkZ2VfY29ubmVjdG9yX2lu
-aXQnCj4+PiBtYWtlWzJdOiAqKiogW3NjcmlwdHMvTWFrZWZpbGUudm1saW51eDo5MTogdm1saW51
-eF0gRXJyb3IgMQo+Pj4KPj4+IEFmdGVyIGFkZGluZyB0aGlzIGRlcGVuZGVuY3ksIHRoZSBFeHlu
-b3MgRFAgZHJpdmVyIHN0b3BzIHdvcmtpbmcuIE9uCj4+PiBTYW1zdW5nIFNub3cgQ2hyb21lYm9v
-ayBJIG9ic2VydmVkIGZvbGxvd2luZyBpc3N1ZToKPj4+Cj4+PiBbIMKgwqDCoDQuNTM0MjIwXSBl
-eHlub3MtZHAgMTQ1YjAwMDAuZHAtY29udHJvbGxlcjogZmFpbGVkIHRvIGF0dGFjaAo+Pj4gZm9s
-bG93aW5nIHBhbmVsIG9yIGJyaWRnZSAoLTE2KQo+Pj4gWyDCoMKgwqA0LjU0MzQyOF0gZXh5bm9z
-LWRybSBleHlub3MtZHJtOiBmYWlsZWQgdG8gYmluZAo+Pj4gMTQ1YjAwMDAuZHAtY29udHJvbGxl
-ciAob3BzIGV4eW5vc19kcF9vcHMpOiAtMTYKPj4+IFsgwqDCoMKgNC41NTE3NzVdIGV4eW5vcy1k
-cm0gZXh5bm9zLWRybTogYWRldiBiaW5kIGZhaWxlZDogLTE2Cj4+PiBbIMKgwqDCoDQuNTU2NTU5
-XSBleHlub3MtZHAgMTQ1YjAwMDAuZHAtY29udHJvbGxlcjogcHJvYmUgd2l0aCBkcml2ZXIKPj4+
-IGV4eW5vcy1kcCBmYWlsZWQgd2l0aCBlcnJvciAtMTYKPj4+Cj4+PiBJIHdpbGwgaW52ZXN0aWdh
-dGUgZGV0YWlscyBsYXRlciBpbiB0aGUgZXZlbmluZy4KPj4KPj4gVGhlIGZhaWx1cmUgaXMgY2F1
-c2VkIGJ5IHRyeWluZyB0byBhZGQgcGxhdF9kYXRhLT5uZXh0X2JyaWRnZSB0d2ljZQo+PiAoZnJv
-bSBleHlub3NfZHAncyAuYXR0YWNoIGNhbGxiYWNrLCBhbmQgZnJvbSBhbmFsb2dpeCcgLT5iaW5k
-IGNhbGxiYWNrKS4KPj4KPj4KPj4gQmVzdCByZWdhcmRzCj4KPiBJIHNlZS4gVGhlIGJyaWRnZSBh
-dHRhY2htZW50IGZvciB0aGUgbmV4dCBicmlkZ2Ugd2FzIG5vdCB3ZWxsIHRob3VnaHQgCj4gb3V0
-LiBJdCBtYXkgYmUgYmV0dGVyIHRvIG1vdmUgcGFuZWxfYnJpZGdlIGFkZGl0aW9uIGEgbGl0dGxl
-IGZvcndhcmQgCj4gYW5kIHJlbW92ZSBuZXh0X2JyaWRnZSBhdHRhY2htZW50IG9uIHRoZSBBbmFs
-b2dpeCBzaWRlLiBUaGVuLCB0aGUgCj4gUm9ja2NoaXAgc2lkZSBhbmQgRXh5bm9zIHNpZGUgY2Fu
-IGRvIHRoZWlyIG93biBuZXh0X2JyaWRnZSBhdHRhY2htZW50IAo+IGluICZhbmFsb2dpeF9kcF9w
-bGF0X2RhdGEuYXR0YWNoKCkgYXMgdGhleSB3YW50Lgo+Cj4gQ291bGQgeW91IHBsZWFzZSBoZWxw
-IHRlc3QgdGhlIGZvbGxvd2luZyBtb2RpZmljYXRpb25zKHRoZXkgaGF2ZSBiZWVuIAo+IHRlc3Rl
-ZCBvbiBteSBSSzM1ODhTIEVWQjEgQm9hcmQpIG9uIHRoZSBTYW1zdW5nIFNub3cgQ2hyb21lYm9v
-az8gOy0pCgpBc3N1bWluZyB0aGF0IEkgcHJvcGVybHkgYXBwbGllZCB0aGUgbWFsZm9ybWVkIGRp
-ZmYsIGl0IGRvZXNuJ3Qgc29sdmUgCmFsbCB0aGUgaXNzdWVzLiBUaGVyZSBhcmUgbm8gZXJyb3Jz
-IHJlcG9ydGVkIHRob3VnaCwgYnV0IHRoZSBkaXNwbGF5IApjaGFpbiBkb2Vzbid0IHdvcmsgYW5k
-IG5vIHZhbGlkIG1vZGUgaXMgcmVwb3J0ZWQ6CgojIGRtZXNnIHwgZ3JlcCBkcm0KWyDCoMKgwqAz
-LjM4NDk5Ml0gW2RybV0gSW5pdGlhbGl6ZWQgcGFuZnJvc3QgMS40LjAgZm9yIDExODAwMDAwLmdw
-dSBvbiBtaW5vciAwClsgwqDCoMKgNC40ODc3MzldIFtkcm1dIEV4eW5vcyBEUk06IHVzaW5nIDE0
-NDAwMDAwLmZpbWQgZGV2aWNlIGZvciBETUEgCm1hcHBpbmcgb3BlcmF0aW9ucwpbIMKgwqDCoDQu
-NDk0MjAyXSBleHlub3MtZHJtIGV4eW5vcy1kcm06IGJvdW5kIDE0NDAwMDAwLmZpbWQgKG9wcyAK
-ZmltZF9jb21wb25lbnRfb3BzKQpbIMKgwqDCoDQuNTAyMzc0XSBleHlub3MtZHJtIGV4eW5vcy1k
-cm06IGJvdW5kIDE0NDUwMDAwLm1peGVyIChvcHMgCm1peGVyX2NvbXBvbmVudF9vcHMpClsgwqDC
-oMKgNC41MTE5MzBdIGV4eW5vcy1kcm0gZXh5bm9zLWRybTogYm91bmQgMTQ1YjAwMDAuZHAtY29u
-dHJvbGxlciAob3BzIApleHlub3NfZHBfb3BzKQpbIMKgwqDCoDQuNTE4NDExXSBleHlub3MtZHJt
-IGV4eW5vcy1kcm06IGJvdW5kIDE0NTMwMDAwLmhkbWkgKG9wcyAKaGRtaV9jb21wb25lbnRfb3Bz
-KQpbIMKgwqDCoDQuNTI5NjI4XSBbZHJtXSBJbml0aWFsaXplZCBleHlub3MgMS4xLjAgZm9yIGV4
-eW5vcy1kcm0gb24gbWlub3IgMQpbIMKgwqDCoDQuNjU3NDM0XSBleHlub3MtZHJtIGV4eW5vcy1k
-cm06IFtkcm1dIENhbm5vdCBmaW5kIGFueSBjcnRjIG9yIHNpemVzClsgwqDCoMKgNC45MjUwMjNd
-IGV4eW5vcy1kcm0gZXh5bm9zLWRybTogW2RybV0gQ2Fubm90IGZpbmQgYW55IGNydGMgb3Igc2l6
-ZXMKCiMgLi9tb2RldGVzdCAtYyAtTWV4eW5vcwpDb25uZWN0b3JzOgppZCDCoMKgwqDCoMKgZW5j
-b2RlciBzdGF0dXMgwqDCoMKgwqDCoMKgwqDCoMKgbmFtZSDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-c2l6ZSAobW0pIMKgwqDCoMKgwqDCoG1vZGVzIAogwqDCoGVuY29kZXJzCjY5IMKgwqDCoMKgwqAw
-IMKgwqDCoMKgwqDCoGRpc2Nvbm5lY3RlZCDCoMKgwqBMVkRTLTEgwqDCoMKgwqDCoMKgwqDCoMKg
-MHgwIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoDAgwqDCoMKgwqDCoMKgNjgKIMKgcHJvcHM6CiDC
-oMKgwqDCoMKgwqDCoDEgRURJRDoKIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGZsYWdz
-OiBpbW11dGFibGUgYmxvYgogwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgYmxvYnM6Cgog
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdmFsdWU6CiDCoMKgwqDCoMKgwqDCoDIgRFBN
-UzoKIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGZsYWdzOiBlbnVtCiDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqBlbnVtczogT249MCBTdGFuZGJ5PTEgU3VzcGVuZD0yIE9mZj0z
-CiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2YWx1ZTogMAogwqDCoMKgwqDCoMKgwqA1
-IGxpbmstc3RhdHVzOgogwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgZmxhZ3M6IGVudW0K
-IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGVudW1zOiBHb29kPTAgQmFkPTEKIMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHZhbHVlOiAwCiDCoMKgwqDCoMKgwqDCoDYgbm9uLWRl
-c2t0b3A6CiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBmbGFnczogaW1tdXRhYmxlIHJh
-bmdlCiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2YWx1ZXM6IDAgMQogwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgdmFsdWU6IDAKIMKgwqDCoMKgwqDCoMKgNCBUSUxFOgogwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgZmxhZ3M6IGltbXV0YWJsZSBibG9iCiDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBibG9iczoKCiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqB2YWx1ZToKNzEgwqDCoMKgwqDCoDAgwqDCoMKgwqDCoMKgZGlzY29ubmVjdGVkIMKgwqDC
-oEhETUktQS0xIMKgwqDCoMKgwqDCoMKgMHgwIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoDAgwqDC
-oMKgwqDCoMKgNzAKIMKgcHJvcHM6CiDCoMKgwqDCoMKgwqDCoDEgRURJRDoKIMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoGZsYWdzOiBpbW11dGFibGUgYmxvYgogwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgYmxvYnM6CgogwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdmFs
-dWU6CiDCoMKgwqDCoMKgwqDCoDIgRFBNUzoKIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oGZsYWdzOiBlbnVtCiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBlbnVtczogT249MCBT
-dGFuZGJ5PTEgU3VzcGVuZD0yIE9mZj0zCiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2
-YWx1ZTogMAogwqDCoMKgwqDCoMKgwqA1IGxpbmstc3RhdHVzOgogwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgZmxhZ3M6IGVudW0KIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGVu
-dW1zOiBHb29kPTAgQmFkPTEKIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHZhbHVlOiAw
-CiDCoMKgwqDCoMKgwqDCoDYgbm9uLWRlc2t0b3A6CiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqBmbGFnczogaW1tdXRhYmxlIHJhbmdlCiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqB2YWx1ZXM6IDAgMQogwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdmFsdWU6IDAKIMKg
-wqDCoMKgwqDCoMKgNCBUSUxFOgogwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgZmxhZ3M6
-IGltbXV0YWJsZSBibG9iCiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBibG9iczoKCiDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2YWx1ZToKCgpJIHdpbGwgaW52ZXN0aWdhdGUg
-ZGV0YWlscyBsYXRlciB0aGlzIHdlZWsuCgoKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyAKPiBiL2RyaXZlcnMvZ3B1L2Ry
-bS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4gaW5kZXggMDUyOWJmYjAyODg0
-Li44YTljZTFmMzE2NzggMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
-b2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Fu
-YWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+IEBAIC0xNTczLDYgKzE1NzMsMTUgQEAgaW50IGFu
-YWxvZ2l4X2RwX2JpbmQoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAKPiAqZHAsIHN0cnVjdCBk
-cm1fZGV2aWNlICpkcm1fZGV2KQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1
-cm4gcmV0Owo+IMKgwqDCoMKgwqDCoMKgIH0KPgo+ICvCoMKgwqDCoMKgwqAgaWYgKGRwLT5wbGF0
-X2RhdGEtPnBhbmVsKSB7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZHAtPnBsYXRf
-ZGF0YS0+bmV4dF9icmlkZ2UgPSAKPiBkZXZtX2RybV9wYW5lbF9icmlkZ2VfYWRkKGRwLT5kZXYs
-Cj4gKyBkcC0+cGxhdF9kYXRhLT5wYW5lbCk7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgaWYgKElTX0VSUihkcC0+cGxhdF9kYXRhLT5uZXh0X2JyaWRnZSkpIHsKPiArwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0ID0gUFRSX0VSUihicmlkZ2Up
-Owo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBnb3RvIGVy
-cl91bnJlZ2lzdGVyX2F1eDsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB9Cj4gK8Kg
-wqDCoMKgwqDCoCB9Cj4gKwo+IMKgwqDCoMKgwqDCoMKgIGJyaWRnZS0+b3BzID0gRFJNX0JSSURH
-RV9PUF9ERVRFQ1QgfAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCBEUk1fQlJJREdFX09QX0VESUQgfAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCBEUk1fQlJJREdFX09QX01PREVTOwo+IEBAIC0xNTg4LDIyICsxNTk3LDYgQEAg
-aW50IGFuYWxvZ2l4X2RwX2JpbmQoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAKPiAqZHAsIHN0
-cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2KQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCBnb3RvIGVycl91bnJlZ2lzdGVyX2F1eDsKPiDCoMKgwqDCoMKgwqDCoCB9Cj4KPiAtwqDCoMKg
-wqDCoMKgIGlmIChkcC0+cGxhdF9kYXRhLT5wYW5lbCkgewo+IC3CoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIGRwLT5wbGF0X2RhdGEtPm5leHRfYnJpZGdlID0gCj4gZGV2bV9kcm1fcGFuZWxf
-YnJpZGdlX2FkZChkcC0+ZGV2LAo+IC0gZHAtPnBsYXRfZGF0YS0+cGFuZWwpOwo+IC3CoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIGlmIChJU19FUlIoZHAtPnBsYXRfZGF0YS0+bmV4dF9icmlk
-Z2UpKSB7Cj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJl
-dCA9IFBUUl9FUlIoYnJpZGdlKTsKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgZ290byBlcnJfdW5yZWdpc3Rlcl9hdXg7Cj4gLcKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgfQo+IC3CoMKgwqDCoMKgwqAgfQo+IC0KPiAtwqDCoMKgwqDCoMKgIHJldCA9
-IGRybV9icmlkZ2VfYXR0YWNoKGRwLT5lbmNvZGVyLCAKPiBkcC0+cGxhdF9kYXRhLT5uZXh0X2Jy
-aWRnZSwgYnJpZGdlLAo+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgRFJNX0JSSURHRV9BVFRBQ0hfTk9fQ09OTkVDVE9SKTsKPiAt
-wqDCoMKgwqDCoMKgIGlmIChyZXQpIHsKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBk
-ZXZfZXJyKGRwLT5kZXYsICJmYWlsZWQgdG8gYXR0YWNoIGZvbGxvd2luZyBwYW5lbCBvciAKPiBi
-cmlkZ2UgKCVkKVxuIiwgcmV0KTsKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBnb3Rv
-IGVycl91bnJlZ2lzdGVyX2F1eDsKPiAtwqDCoMKgwqDCoMKgIH0KPiAtCj4gwqDCoMKgwqDCoMKg
-wqAgcmV0dXJuIDA7Cj4KPiDCoGVycl91bnJlZ2lzdGVyX2F1eDoKPiBkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHAuYyAKPiBiL2RyaXZlcnMvZ3B1L2RybS9leHlu
-b3MvZXh5bm9zX2RwLmMKPiBpbmRleCA4MGJhNzAwZDI5NjQuLmQwNDIyZjk0MDI0OSAxMDA2NDQK
-PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcC5jCj4gKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHAuYwo+IEBAIC0xMDQsNyArMTA0LDcgQEAgc3RhdGlj
-IGludCBleHlub3NfZHBfYnJpZGdlX2F0dGFjaChzdHJ1Y3QgCj4gYW5hbG9naXhfZHBfcGxhdF9k
-YXRhICpwbGF0X2RhdGEsCj4gwqDCoMKgwqDCoMKgwqAgLyogUHJlLWVtcHQgRFAgY29ubmVjdG9y
-IGNyZWF0aW9uIGlmIHRoZXJlJ3MgYSBicmlkZ2UgKi8KPiDCoMKgwqDCoMKgwqDCoCBpZiAocGxh
-dF9kYXRhLT5uZXh0X2JyaWRnZSkgewo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBy
-ZXQgPSBkcm1fYnJpZGdlX2F0dGFjaCgmZHAtPmVuY29kZXIsIAo+IHBsYXRfZGF0YS0+bmV4dF9i
-cmlkZ2UsIGJyaWRnZSwKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAwKTsKPiArIERSTV9CUklER0Vf
-QVRUQUNIX05PX0NPTk5FQ1RPUik7Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGlm
-IChyZXQpCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBy
-ZXR1cm4gcmV0Owo+IMKgwqDCoMKgwqDCoMKgIH0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgCj4gYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+IGluZGV4IDA4NjJiMDlhOGJlMi4uZGZk
-MzJhNzliOTRmIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dp
-eF9kcC1yb2NrY2hpcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4
-X2RwLXJvY2tjaGlwLmMKPiBAQCAtMTY0LDYgKzE2NCwyNCBAQCBzdGF0aWMgaW50IHJvY2tjaGlw
-X2RwX3Bvd2VyZG93bihzdHJ1Y3QgCj4gYW5hbG9naXhfZHBfcGxhdF9kYXRhICpwbGF0X2RhdGEp
-Cj4gwqDCoMKgwqDCoMKgwqAgcmV0dXJuIDA7Cj4gwqB9Cj4KPiArc3RhdGljIGludCByb2NrY2hp
-cF9kcF9hdHRhY2goc3RydWN0IGFuYWxvZ2l4X2RwX3BsYXRfZGF0YSAqcGxhdF9kYXRhLAo+ICvC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCj4gK3sKPiArwqDCoMKgwqDC
-oMKgIHN0cnVjdCByb2NrY2hpcF9kcF9kZXZpY2UgKmRwID0gcGRhdGFfZW5jb2Rlcl90b19kcChw
-bGF0X2RhdGEpOwo+ICvCoMKgwqDCoMKgwqAgaW50IHJldDsKPiArCj4gK8KgwqDCoMKgwqDCoCBp
-ZiAocGxhdF9kYXRhLT5uZXh0X2JyaWRnZSkgewo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIHJldCA9IGRybV9icmlkZ2VfYXR0YWNoKCZkcC0+ZW5jb2Rlci5lbmNvZGVyLCAKPiBwbGF0
-X2RhdGEtPm5leHRfYnJpZGdlLCBicmlkZ2UsCj4gKyBEUk1fQlJJREdFX0FUVEFDSF9OT19DT05O
-RUNUT1IpOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGlmIChyZXQpIHsKPiArwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZGV2X2VycihkcC0+ZGV2
-LCAiZmFpbGVkIHRvIGF0dGFjaCBmb2xsb3dpbmcgCj4gcGFuZWwgb3IgYnJpZGdlICglZClcbiIs
-IHJldCk7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJl
-dHVybiByZXQ7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfQo+ICvCoMKgwqDCoMKg
-wqAgfQo+ICsKPiArwqDCoMKgwqDCoMKgIHJldHVybiAwOwo+ICt9Cj4gKwo+IMKgc3RhdGljIGlu
-dCByb2NrY2hpcF9kcF9nZXRfbW9kZXMoc3RydWN0IGFuYWxvZ2l4X2RwX3BsYXRfZGF0YSAKPiAq
-cGxhdF9kYXRhLAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcikKPiDC
-oHsKPiBAQCAtNDc4LDYgKzQ5Niw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHBfcHJvYmUoc3Ry
-dWN0IAo+IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiDCoMKgwqDCoMKgwqDCoCBkcC0+cGxhdF9k
-YXRhLmRldl90eXBlID0gZHAtPmRhdGEtPmNoaXBfdHlwZTsKPiDCoMKgwqDCoMKgwqDCoCBkcC0+
-cGxhdF9kYXRhLnBvd2VyX29uID0gcm9ja2NoaXBfZHBfcG93ZXJvbjsKPiDCoMKgwqDCoMKgwqDC
-oCBkcC0+cGxhdF9kYXRhLnBvd2VyX29mZiA9IHJvY2tjaGlwX2RwX3Bvd2VyZG93bjsKPiArwqDC
-oMKgwqDCoMKgIGRwLT5wbGF0X2RhdGEuYXR0YWNoID0gcm9ja2NoaXBfZHBfYXR0YWNoOwo+IMKg
-wqDCoMKgwqDCoMKgIGRwLT5wbGF0X2RhdGEuZ2V0X21vZGVzID0gcm9ja2NoaXBfZHBfZ2V0X21v
-ZGVzOwo+IMKgwqDCoMKgwqDCoMKgIGRwLT5wbGF0X2RhdGEub3BzID0gJnJvY2tjaGlwX2RwX2Nv
-bXBvbmVudF9vcHM7Cj4KPgo+IEJlc3QgcmVnYXJkcywKPiBEYW1vbgo+Cj4KQmVzdCByZWdhcmRz
-Ci0tIApNYXJlayBTenlwcm93c2tpLCBQaEQKU2Ftc3VuZyBSJkQgSW5zdGl0dXRlIFBvbGFuZAoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Jacopo,
+
+Thank you for working on this.
+
+On Tue, Aug 19, 2025 at 04:54:42PM +0200, Jacopo Mondi wrote:
+> Introduce v4l2-extensible-params.h in the Linux kernel uAPI.
+> 
+> The header defines two types that all drivers that use the extensible
+> parameters format for ISP configuration shall use to build their own
+> format versions.
+> 
+> The newly introduce type v4l2_params_block represent the
+> header to be prepend to each ISP configuration block and the
+> v4l2_params_buffer type represent the base type for the configuration
+> parameters buffer.
+> 
+> The v4l2_params_buffer represents the container for the ISP
+> configuration data block. The generic type is defined with a 0-sized
+> data block that specific ISP implementation shall properly size
+> according to their capabilities.
+> 
+> [Add v4l2_params_buffer_size()]
+> 
+> Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
+> Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
+> Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> ---
+>  MAINTAINERS                                       |   6 +
+>  include/uapi/linux/media/v4l2-extensible-params.h | 144 ++++++++++++++++++++++
+>  2 files changed, 150 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index fe168477caa45799dfe07de2f54de6d6a1ce0615..67216d1e92d7ac81617bb3c4329e4096aa205706 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -26380,6 +26380,12 @@ F:	drivers/media/i2c/vd55g1.c
+>  F:	drivers/media/i2c/vd56g3.c
+>  F:	drivers/media/i2c/vgxy61.c
+>  
+> +V4L2 EXTENSIBLE PARAMETERS FORMAT
+> +M:	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> +L:	linux-media@vger.kernel.org
+> +S:	Maintained
+> +F:	include/uapi/linux/media/v4l2-extensible-params.h
+> +
+>  VF610 NAND DRIVER
+>  M:	Stefan Agner <stefan@agner.ch>
+>  L:	linux-mtd@lists.infradead.org
+> diff --git a/include/uapi/linux/media/v4l2-extensible-params.h b/include/uapi/linux/media/v4l2-extensible-params.h
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..ace89299a4b37e428c0bc9a72fbc079b1dcda91a
+> --- /dev/null
+> +++ b/include/uapi/linux/media/v4l2-extensible-params.h
+> @@ -0,0 +1,144 @@
+> +/* SPDX-License-Identifier: ((GPL-2.0+ WITH Linux-syscall-note) OR MIT) */
+> +/*
+> + * Video4Linux2 extensible configuration parameters base types
+> + *
+> + * Copyright (C) 2025 Ideas On Board Oy
+> + * Author: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> + */
+> +
+> +#ifndef _UAPI_V4L2_PARAMS_H_
+> +#define _UAPI_V4L2_PARAMS_H_
+> +
+> +#include <linux/types.h>
+> +
+> +#define V4L2_PARAMS_FL_BLOCK_DISABLE	(1U << 0)
+> +#define V4L2_PARAMS_FL_BLOCK_ENABLE	(1U << 1)
+> +
+> +/*
+> + * Reserve the first 8 bits for V4L2_PARAMS_FL_* flag. Platform-specific flags
+> + * should be defined as:
+> + * #define PLATFORM_SPECIFIC_FLAG0	((1U << V4L2_PARAMS_FL_PLATFORM_FLAGS(0))
+> + * #define PLATFORM_SPECIFIC_FLAG1	((1U << V4L2_PARAMS_FL_PLATFORM_FLAGS(1))
+
+How many bits are you shifting left here again?
+
+> + */
+> +#define V4L2_PARAMS_FL_PLATFORM_FLAGS(n)	((n) << 8)
+
+n really needs to be unsigned.
+
+> +
+> +/**
+> + * struct v4l2_params_block_header - V4L2 extensible parameters block header
+> + *
+> + * This structure represents the common part of all the ISP configuration
+> + * blocks. Each parameters block shall embed an instance of this structure type
+> + * as its first member, followed by the block-specific configuration data. The
+> + * driver inspects this common header to discern the block type and its size and
+> + * properly handle the block content by casting it to the correct block-specific
+> + * type.
+> + *
+> + * The @type field is one of the values enumerated by each platform-specific ISP
+> + * block types which specifies how the data should be interpreted by the driver.
+> + * The @size field specifies the size of the parameters block and is used by the
+> + * driver for validation purposes.
+> + *
+> + * The @flags field is a bitmask of per-block flags V4L2_PARAMS_FL_* and
+> + * platform-specific flags specified by the platform-specific header.
+> + *
+> + * Documentation of the platform-specific flags handling is specified by the
+> + * platform-specific block header type:
+> + *
+> + * - Rockchip RkISP1: :c:type:`rkisp1_ext_params_block_type`
+> + * - Amlogic C3: :c:type:`c3_isp_params_block_type`
+> + *
+> + * Userspace is responsible for correctly populating the parameters block header
+> + * fields (@type, @flags and @size) and the block-specific parameters.
+> + *
+> + * @type: The parameters block type (platform-specific)
+> + * @flags: A bitmask of block flags (platform-specific)
+> + * @size: Size (in bytes) of the parameters block, including this header
+> + */
+> +struct v4l2_params_block_header {
+> +	__u16 type;
+> +	__u16 flags;
+> +	__u32 size;
+> +} __attribute__((aligned(8)));
+> +
+> +/**
+> + * v4l2_params_buffer_size - Calculate size of v4l2_params_buffer for a platform
+> + *
+> + * Users of the v4l2 extensible parameters will have differing sized data arrays
+> + * depending on their specific parameter buffers. Drivers and userspace will
+> + * need to be able to calculate the appropriate size of the struct to
+> + * accommodate all ISP configuration blocks provided by the platform.
+> + * This macro provides a convenient tool for the calculation.
+> + *
+> + * Each driver shall provide a definition of their extensible parameters
+> + * implementation data buffer size. As an example:
+> + *
+> + * #define PLATFORM_BLOCKS_MAX_SIZE		\
+> + *	sizeof(platform_block_0)	+	\
+> + *	sizeof(platform_block_1)
+> + *
+> + * #define PLATFORM_BUFFER_SIZE			\
+> + *	v4l2_params_buffer_size(PLATFORM_BLOCKS_MAX_SIZE)
+> + *
+> + * Drivers are then responsible for allocating buffers of the proper size
+> + * by assigning PLATFORM_BUFFER_SIZE to the per-plane size of the videobuf2
+> + * .queue_setup() operation and userspace shall use PLATFORM_BUFFER_SIZE
+> + * when populating the ISP configuration data buffer.
+> + *
+> + * @max_params_size: The total size of the ISP configuration blocks
+> + */
+> +#define v4l2_params_buffer_size(max_params_size) \
+> +	(offsetof(struct v4l2_params_buffer, data) + (max_params_size))
+> +
+> +/**
+> + * struct v4l2_params_buffer - V4L2 extensible parameters configuration
+> + *
+> + * This struct contains the configuration parameters of the ISP algorithms,
+> + * serialized by userspace into a data buffer. Each configuration parameter
+> + * block is represented by a block-specific structure which contains a
+> + * :c:type:`v4l2_params_block_header` entry as first member. Userspace populates
+> + * the @data buffer with configuration parameters for the blocks that it intends
+> + * to configure. As a consequence, the data buffer effective size changes
+> + * according to the number of ISP blocks that userspace intends to configure and
+> + * is set by userspace in the @data_size field.
+> + *
+> + * The parameters buffer is versioned by the @version field to allow modifying
+> + * and extending its definition. Userspace shall populate the @version field to
+> + * inform the driver about the version it intends to use. The driver will parse
+> + * and handle the @data buffer according to the data layout specific to the
+> + * indicated version and return an error if the desired version is not
+> + * supported.
+> + *
+> + * For each ISP block that userspace wants to configure, a block-specific
+> + * structure is appended to the @data buffer, one after the other without gaps
+> + * in between nor overlaps. Userspace shall populate the @data_size field with
+> + * the effective size, in bytes, of the @data buffer.
+> + *
+> + * Drivers shall take care of properly sizing of the extensible parameters
+> + * buffer @data array. The v4l2_params_buffer type is defined with a
+> + * flexible-array-member at the end, which resolves to a size of 0 bytes when
+> + * inspected with sizeof(struct v4l2_params_buffer). This of course is not
+> + * suitable for neither buffer allocation in the kernel driver nor for proper
+> + * handling in userspace of the @data buffer it has to populate.
+> + *
+> + * Drivers using this type in their userspace API definition are responsible
+> + * for providing the exact definition of the @data buffer size using the
+> + * v4l2_params_buffer_size() macro. The size shall be used
+> + * by the driver for buffers allocation and by userspace for populating the
+> + * @data buffer before queueing it to the driver
+> + *
+> + * Drivers that were already using extensible-parameters before the introduction
+> + * of this file define their own type-convertible implementation of this
+> + * type, see:
+> + * - Rockchip RkISP1: :c:type:`rkisp1_ext_params_cfg`
+> + * - Amlogic C3: :c:type:`c3_isp_params_cfg`
+> + *
+> + * @version: The parameters buffer version (platform-specific)
+> + * @data_size: The configuration data effective size, excluding this header
+> + * @data: The configuration data
+> + */
+> +struct v4l2_params_buffer {
+> +	__u32 version;
+> +	__u32 data_size;
+> +	__u8 data[];
+
+Would __attribute__((__counted_by__(data_size))) be problematic here?
+
+Perhaps not now but it could be added later on?
+
+> +};
+> +
+> +#endif /* _UAPI_V4L2_PARAMS_H_ */
+> 
+
+-- 
+Kind regards,
+
+Sakari Ailus
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
