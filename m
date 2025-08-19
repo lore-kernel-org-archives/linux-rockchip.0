@@ -4,75 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37A4BCA0EEB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 18:16:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 909B0CA0EEB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 18:17:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8Rmbjm5pOw9ccNzO+oOq12ugSaWu51B08y9io/LfQGA=; b=weqJjyirzo9Shm
-	frZVS6JfebyVrsYPoH6PyRcCcUt5E2yS5AkJIOwI2h+hHHSiFAEPwXCPfuMsZA6j6GuUXjXRtyN7d
-	kkYBvNYUl0Yi7JN1AIfS2Lb3v0aJrA3aGdZwf6mrvCCnE5zDeWlXHEKI1m0UJv4MDm84q0lT6sHYd
-	E7VVpepZDBjZ7V/x3/tkTWfkTa53djRQnilfJRC6qROyF82zK9AWH3Y5Az9b60XTM5XUxxd+9rUy2
-	0Zt0Z/KcBAoCPrriJBgAOigDXjoIp5ozCNgyWxBlh1k6BgT+G0LtMvi/iFmVLpTwe6eFyA5vraSvE
-	RfigeQa5bUzu21vUYImQ==;
+	List-Owner; bh=Ogn4Ows906Uo0x7/RuF05f9C+pKgMH4SvtPhe9N+WE4=; b=Nq61BgqgzY6MRl
+	uQixEl/Jem5eSHlxFOFs2Srhs2rdTw3apXkunEHYBY/tWPJhXj/0QZOhcGs3sKJ3cYzD0vlZzTlTr
+	12bJWcog3LsovVVgu5yJ3I6sOthecBLey1SotsPded2p2G0YvFea6TQ7kkEUQEnQoSfw7haU57OGC
+	6Pa4yv5wkd36rqdaiYGOTcfNPPo+yEJYaAWFPNvg+2Mivho6GT20x1ogNJPUYH3M694eshZc2rZEZ
+	sf/SSaKp6GqFdiDq07fFMiue3gLhBVA7FfqV3PrLqaN2xySulQLAhtieMqulsL1FiMuGXJnya9voo
+	vBBnoClITSjLi4HLoKLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoQtC-0000000BGnf-1WQb;
-	Tue, 19 Aug 2025 18:16:54 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uoQu2-0000000BGzj-23LR;
+	Tue, 19 Aug 2025 18:17:46 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoNjx-0000000Aoj6-2uB7;
-	Tue, 19 Aug 2025 14:55:10 +0000
-Received: from [192.168.1.106] (mob-5-90-52-92.net.vodafone.it [5.90.52.92])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 156FD2F8A;
-	Tue, 19 Aug 2025 16:54:08 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1755615250;
-	bh=iH2fNzQ3ZFHpzPlJuJdqflptF90hlToFOvzIGy7xjpo=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=qIzZreWj1upqtNMA5gqVxqS0/JDbIE2EUrjY5Oe8RU/npsWqm1kYciR7qXcRq3Z9n
-	 qbK4fhp/gWwo21lhKk9cKMwL2/nedmbZXbx0bYm9XDZqpt8aUTKEnoKAgCnUZm3Mu9
-	 tAYLO7J0Wsce1FHHskSWy/QOTyAuRms/wgZ7cBHc=
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Tue, 19 Aug 2025 16:54:49 +0200
-Subject: [PATCH v3 8/8] media: Documentation: kapi: Add v4l2 extensible
- parameters
+	id 1uoNyk-0000000Ar7t-2nm1;
+	Tue, 19 Aug 2025 15:10:27 +0000
+Received: from localhost.localdomain (unknown [119.122.213.154])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 1fe57aa44;
+	Tue, 19 Aug 2025 23:10:23 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: tobetter@gmail.com
+Cc: conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Change ethernet TXD timing delay value
+Date: Tue, 19 Aug 2025 23:10:19 +0800
+Message-Id: <20250819151019.877709-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250819075522.2238643-1-tobetter@gmail.com>
+References: <20250819075522.2238643-1-tobetter@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20250819-extensible-parameters-validation-v3-8-9dc008348b30@ideasonboard.com>
-References: <20250819-extensible-parameters-validation-v3-0-9dc008348b30@ideasonboard.com>
-In-Reply-To: <20250819-extensible-parameters-validation-v3-0-9dc008348b30@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1847;
- i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=iH2fNzQ3ZFHpzPlJuJdqflptF90hlToFOvzIGy7xjpo=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBopJA7HthrV9FPEEFq/WvUsDHkN4su5F2GbYayv
- j9u4Yj779WJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaKSQOwAKCRByNAaPFqFW
- PIuRD/487NVywsuiC6cSTeBHNzqeEUPM+lYOX8MgCgjtfucq2L3g15QL1HJgXiRneteFi5eU2Sm
- A0lquhYAxjdMy544gjfSGXbzc2piZWmMzl47uOmHwJh8skaHGlw+Uh73b+IdA0u9FVxSC4sSW2o
- XTRdwaSYpCRMlTTmuGsF/HTh1MfbYo8+3Pu546pv5Rds2aXhREnl4NZMkHuYcwTso1x/JsqUaZs
- 5mz9PnaJZrGrZ/8wY9tvGE+4/A1mj/PPAgk470q7s7LwcxLwPWazePCJ3SIHM8l18Z1UMD+ZiKM
- 6WOdHuLt9x87UKKoINV8KWRipsoKnmlz12Z0IXrbmhdtnMTQ8EtkxUsAkAsYbXPjcFA2YVJ1CfN
- SsQg7p6I76QR0b6flmy6KYMtKoenrTt0789k+pP3isypXSgsntrLH5flFDQyxOCwM4MDRUne1vX
- maMdoawEPlPSZrcELgVChZIMjW1rBVWoglGnvSYwqaAscMYMA/p3sLDsgaDoEmQ89QQjJ9EqVLX
- WBmxhx/Fqr7dX279CKu9Tp2eYsWjnfos9WxZd5ZtrwP5knMM85fmih0TZ0r485cRR42ko6a1WsT
- 3s1ToeCvR+6TduLerJCCMwhPta68UsCqtZnHC9uYnUOH2X8E99zKBrSe+uRTbo19443GK8/Tc+E
- 2gh5gh/Ri4Rn/1A==
-X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
- fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
+X-HM-Tid: 0a98c2e1a08103a2kunm6470503c4070c2
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDSksaVh1MShoeSU8eTkgYTlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSFVKTk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE5VSktLVU
+	pCS0tZBg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_075509_876045_1955233A 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20250819_081026_907287_48F07A5E 
+X-CRM114-Status: UNSURE (   5.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,52 +73,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add to the driver-api documentation the v4l2-params.h types and
-helpers documentation.
+Hi,
 
-Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
-Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
----
- Documentation/driver-api/media/v4l2-core.rst   | 1 +
- Documentation/driver-api/media/v4l2-params.rst | 5 +++++
- MAINTAINERS                                    | 1 +
- 3 files changed, 7 insertions(+)
+> Very poor network performance is observed on the ODROID-M1 Board
+> (REV 1.0 20220613) when running iperf3 (under 200Mbits/sec), and
+> this problem can be resolved after changing the value of TXD
+> timing to 0x35 from 0x4f.
 
-diff --git a/Documentation/driver-api/media/v4l2-core.rst b/Documentation/driver-api/media/v4l2-core.rst
-index ad987c34ad2a8460bb95e97adc4d850d624e0b81..2d7793298c6a2046bdd59b185a411e092b659d52 100644
---- a/Documentation/driver-api/media/v4l2-core.rst
-+++ b/Documentation/driver-api/media/v4l2-core.rst
-@@ -27,3 +27,4 @@ Video4Linux devices
-     v4l2-common
-     v4l2-tveeprom
-     v4l2-jpeg
-+    v4l2-params
-diff --git a/Documentation/driver-api/media/v4l2-params.rst b/Documentation/driver-api/media/v4l2-params.rst
-new file mode 100644
-index 0000000000000000000000000000000000000000..8d2a5f004d21dfc3a81255cabbc6b7cce588db71
---- /dev/null
-+++ b/Documentation/driver-api/media/v4l2-params.rst
-@@ -0,0 +1,5 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+V4L2 extensible parameters kAPI
-+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+.. kernel-doc:: include/media/v4l2-params.h
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 008f984c0769691f6ddec8d8f0f461fde056ddb3..44598a823f084e98a9b2d2e21881665d1ab64908 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -26384,6 +26384,7 @@ V4L2 EXTENSIBLE PARAMETERS FORMAT
- M:	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
- L:	linux-media@vger.kernel.org
- S:	Maintained
-+F:	Documentation/driver-api/media/v4l2-params.rst
- F:	Documentation/userspace-api/media/v4l/extensible-parameters.rst
- F:	drivers/media/v4l2-core/v4l2-params.c
- F:	include/media/v4l2-params.h
+Can you try changing phy-mode to "rgmii-id" ?
 
--- 
-2.50.1
+```
+--- a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
+@@ -200,7 +200,7 @@ &gmac0 {
+ 	assigned-clock-rates = <0>, <125000000>;
+ 	clock_in_out = "output";
+ 	phy-handle = <&rgmii_phy0>;
+-	phy-mode = "rgmii";
++	phy-mode = "rgmii-id";
+ 	phy-supply = <&vcc3v3_sys>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&gmac0_miim
+@@ -209,9 +209,6 @@ &gmac0_rx_bus2
+ 		     &gmac0_rgmii_clk
+ 		     &gmac0_rgmii_bus>;
+ 	status = "okay";
+-
+-	tx_delay = <0x4f>;
+-	rx_delay = <0x2d>;
+ };
+ 
+ &gpu {
+```
+
+--
+2.25.1
+
 
 
 _______________________________________________
