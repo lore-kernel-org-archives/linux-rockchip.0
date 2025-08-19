@@ -4,59 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 909B0CA0EEB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 18:17:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8F46CA0EF5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 19:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ogn4Ows906Uo0x7/RuF05f9C+pKgMH4SvtPhe9N+WE4=; b=Nq61BgqgzY6MRl
-	uQixEl/Jem5eSHlxFOFs2Srhs2rdTw3apXkunEHYBY/tWPJhXj/0QZOhcGs3sKJ3cYzD0vlZzTlTr
-	12bJWcog3LsovVVgu5yJ3I6sOthecBLey1SotsPded2p2G0YvFea6TQ7kkEUQEnQoSfw7haU57OGC
-	6Pa4yv5wkd36rqdaiYGOTcfNPPo+yEJYaAWFPNvg+2Mivho6GT20x1ogNJPUYH3M694eshZc2rZEZ
-	sf/SSaKp6GqFdiDq07fFMiue3gLhBVA7FfqV3PrLqaN2xySulQLAhtieMqulsL1FiMuGXJnya9voo
-	vBBnoClITSjLi4HLoKLw==;
+	List-Owner; bh=QEcSqxxh1hTmNfGZAt4YTbR4nv1Ka1w6p9B1XkSjeI8=; b=iqcayDxRN5jS4G
+	8RcUmw3js8MHH9xFjscK0zxMvihIJag8NPYknXdHRbfBHE5mS4srYZ/SDVNxGlOBYFaXWol1HfNd/
+	B7KHngKRiF4qfAN8Zy4dTJ8Ff3t26KZ7o4EIgODFndsLzVLQEA8EVkV2m/LYaYJKSumIKPoRpEbPa
+	DvhmA1LGuQcuQKyC2ZFhV/e38+3uP0Pt4ALfmOwTqODe6V8jS2o6/maXuL1CAOVkm7eaBLneKWSb1
+	OLGjiO/Fa4Fe9PDsN1TRPiXyc8K6gDO5xLhXbQjNX5axJsJ4OygPAzUSotzE6XDirYzdB58jaYA0w
+	YX2d/wr+5PyWBs8o5FDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoQu2-0000000BGzj-23LR;
-	Tue, 19 Aug 2025 18:17:46 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1uoRup-0000000BONV-1KG5;
+	Tue, 19 Aug 2025 19:22:39 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoNyk-0000000Ar7t-2nm1;
-	Tue, 19 Aug 2025 15:10:27 +0000
-Received: from localhost.localdomain (unknown [119.122.213.154])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1fe57aa44;
-	Tue, 19 Aug 2025 23:10:23 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: tobetter@gmail.com
-Cc: conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	robh@kernel.org,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Change ethernet TXD timing delay value
-Date: Tue, 19 Aug 2025 23:10:19 +0800
-Message-Id: <20250819151019.877709-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250819075522.2238643-1-tobetter@gmail.com>
-References: <20250819075522.2238643-1-tobetter@gmail.com>
+	id 1uoN2D-0000000AiCH-1tT5;
+	Tue, 19 Aug 2025 14:09:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B87B65C6265;
+	Tue, 19 Aug 2025 14:09:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6344EC4CEF1;
+	Tue, 19 Aug 2025 14:09:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755612596;
+	bh=C9R2a3UImpDUwLItRbJv/q0jFqTxivYVJ3q07lWXyDI=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=apcXmVfafje+5HvFMjxEsJPOn0tFF4tPGhw+16QWPs9YoiW7GpcOluBCHsrNrvBRG
+	 bTE0og6J8sNXAkgXhPbt7zfNaUsrzssFfPn8ffER0/+EXGoTsq/ddbWaarIK6yA4Xb
+	 /LhNUMpMA8Mmz5J04vhLzSbQdXAEXfwNzAG97L8U7nl2Bvopemdu77tyXfpnMASV7h
+	 Cx59/ziGZ0FI2TRo8APi/jWQ+KruDxim9jvZ5QuCdR+DAWf+YYLHvVxK1Mldd7UtYH
+	 T11iBytdeNXR/ghlc3bmyeaTleuZ1TayMWmBZXv/prdaKy7hrDzp3XC1tgLs9h31Yp
+	 aC4LQzgR9fYFA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 71057383BF58;
+	Tue, 19 Aug 2025 14:10:07 +0000 (UTC)
 MIME-Version: 1.0
-X-HM-Tid: 0a98c2e1a08103a2kunm6470503c4070c2
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDSksaVh1MShoeSU8eTkgYTlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSFVKTk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE5VSktLVU
-	pCS0tZBg++
+Subject: Re: [PATCH net-next v3] net: ethernet: stmmac: dwmac-rk: Make the
+ clk_phy
+ could be used for external phy
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <175561260627.3565986.5334175865969423538.git-patchwork-notify@kernel.org>
+Date: Tue, 19 Aug 2025 14:10:06 +0000
+References: <20250815023515.114-1-kernel@airkyi.com>
+In-Reply-To: <20250815023515.114-1-kernel@airkyi.com>
+To: Chaoyi Chen <kernel@airkyi.com>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, rmk+kernel@armlinux.org.uk, jonas@kwiboo.se,
+ david.wu@rock-chips.com, netdev@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, chaoyi.chen@rock-chips.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_081026_907287_48F07A5E 
-X-CRM114-Status: UNSURE (   5.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250819_070957_527388_4DA5422D 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,41 +80,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello:
 
-> Very poor network performance is observed on the ODROID-M1 Board
-> (REV 1.0 20220613) when running iperf3 (under 200Mbits/sec), and
-> this problem can be resolved after changing the value of TXD
-> timing to 0x35 from 0x4f.
+This patch was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-Can you try changing phy-mode to "rgmii-id" ?
+On Fri, 15 Aug 2025 10:35:15 +0800 you wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> 
+> For external phy, clk_phy should be optional, and some external phy
+> need the clock input from clk_phy. This patch adds support for setting
+> clk_phy for external phy.
+> 
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> 
+> [...]
 
-```
---- a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-@@ -200,7 +200,7 @@ &gmac0 {
- 	assigned-clock-rates = <0>, <125000000>;
- 	clock_in_out = "output";
- 	phy-handle = <&rgmii_phy0>;
--	phy-mode = "rgmii";
-+	phy-mode = "rgmii-id";
- 	phy-supply = <&vcc3v3_sys>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&gmac0_miim
-@@ -209,9 +209,6 @@ &gmac0_rx_bus2
- 		     &gmac0_rgmii_clk
- 		     &gmac0_rgmii_bus>;
- 	status = "okay";
--
--	tx_delay = <0x4f>;
--	rx_delay = <0x2d>;
- };
- 
- &gpu {
-```
+Here is the summary with links:
+  - [net-next,v3] net: ethernet: stmmac: dwmac-rk: Make the clk_phy could be used for external phy
+    https://git.kernel.org/netdev/net-next/c/da114122b831
 
---
-2.25.1
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
 
