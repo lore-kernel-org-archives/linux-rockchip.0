@@ -4,82 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74A30CA0EF7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 19:23:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95764CA0EE6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 20:07:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wQnis5AXeSfPZ3oPOsHNnuKBtyDnUHuJBooPHjRQ4uU=; b=l0BQsVA/4EM2VW
-	MYqbzuux4DxNBcmqPtmEe5ZcGJerCG43UGnp68WwJLnpJ8Si5T+t5P3y6I32+hc/tSULgv2GGXKkZ
-	ypI8OfnY7WXdpKs/P9nTEH7/JhO8R+KKSWyUThMXeKCPw9/oNsQREZLn3iLJh92tnICcTtcMF3iDe
-	zjhKUqy7ndDjYWz2JTOLKjRG328rMFgU4/6Y1TVOE7asZQXZnMP2TGjXBMUaZ4UEb2ihKQ718IOKI
-	xOE0JjmrXe2PcbYlRACX+yd5nEU8cnLWI5tEN4gR83NowrpS+3zUeV/rue+FBLxhnC0JlAPxvpsNv
-	StUJDABgCoaTfzlIvnpg==;
+	List-Owner; bh=yM54R6rREBBsIhkHhBcKNJUzMKyNLDb7ZLY7WvU/D/E=; b=kTJbjfOwkVsLtM
+	Bq8aiSdN/KL73ouVEi93z1Spwx+bc47ut5a2rDQzB2EXk9iZqWX1zd63GhToK0D0jijOdkein7egP
+	TY56bE2Z7k+rua7WANx6oHsZ105uTJrys3eLnadW94DgjAGCu9s2BLfqsXfhjis7+hYuV6OFo/CJx
+	4deCgesa+VXw9ynOfud6d6RW5r02qEnBIGzslWUqHpUDDdEbLfU7P9Xbu8DlZ8/nzpVLnWKs/THJ2
+	0K4QXQNc/Hm/tGFYQyNo0wdSpvFYDcs0vlsxRvQ8dZw7i0qVLClCsCPPh8etOQ80IYwjsFVlos6e8
+	RmZsxj8cLFe18m0afukg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoRvF-0000000BOzF-3DWD;
-	Tue, 19 Aug 2025 19:23:05 +0000
-Received: from mgamail.intel.com ([198.175.65.14])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoPTy-0000000B35c-1UXA;
-	Tue, 19 Aug 2025 16:46:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1755622006; x=1787158006;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=gJlCbtML3/hYLPe1GeD4TuTAglGALBUIYnsjaTlV7b4=;
-  b=MAdNWRhJgCzsQJ5qgXpgKOYf9qNH98Y+Ofa/+rUqBg4DH4PtBd/208ld
-   w48YGwYunsCcmDZ8vJZV8TjNTIY6i8LIyLxNv4A8T2HeJojsnOwj+z/Qi
-   htJXfp2q9lbgwBWLVVCwcE+WxMmREpUBH+QAskJOTXUwD1JQCW+mzPZm4
-   YapiRcm2WjGHmBKQYTliLJgEoS2nfJWtW+8X0SY95zSP04ifwveqT0kUy
-   xMUDmosZVKsNGjKibuWHXtlGLU1Q+Ii2WxMb0qdlnnF/QF8zKh02T8oiG
-   bxdcWi1nB13jbygAjGad5Wql1RhaZKhh6P9byw0tVHPm7DM16XH2GJxSm
-   Q==;
-X-CSE-ConnectionGUID: YvClh5roQSGpMsGTIM5u8g==
-X-CSE-MsgGUID: VW7ZI3Q2SkG4673tYNJ2tw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11527"; a="61706174"
-X-IronPort-AV: E=Sophos;i="6.17,302,1747724400"; 
-   d="scan'208";a="61706174"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Aug 2025 09:46:43 -0700
-X-CSE-ConnectionGUID: R+JSMxuVTImX1WWpIWSi/A==
-X-CSE-MsgGUID: hNi8ogtaSYuLdJCpLMDC7g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,302,1747724400"; 
-   d="scan'208";a="205044336"
-Received: from johunt-mobl9.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.244.222])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Aug 2025 09:46:37 -0700
-Date: Tue, 19 Aug 2025 18:46:29 +0200
-From: Mehdi Djait <mehdi.djait@linux.intel.com>
-To: michael.riesch@collabora.com
-Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>, 
-	=?utf-8?B?VGjDqW8=?= Lebrun <theo.lebrun@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
-	Gerald Loacker <gerald.loacker@wolfvision.net>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
-	Markus Elfring <Markus.Elfring@web.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
-	Collabora Kernel Team <kernel@collabora.com>, Paul Kocialkowski <paulk@sys-base.io>, 
-	Alexander Shiyan <eagle.alexander923@gmail.com>, Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v10 08/13] media: rockchip: rkcif: add support for mipi
- csi-2 capture
-Message-ID: <rpaa2jspgmw3do5y367kq4pvvtpboeu7gjd4chmh6pgztmj6ar@ckh7jxvfuhlg>
-References: <20240220-rk3568-vicap-v10-0-62d8a7b209b4@collabora.com>
- <20240220-rk3568-vicap-v10-8-62d8a7b209b4@collabora.com>
+	id 1uoScB-0000000BV9B-2VYx;
+	Tue, 19 Aug 2025 20:07:27 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uoQST-0000000BA2Q-33lx;
+	Tue, 19 Aug 2025 17:49:19 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8E877152B;
+	Tue, 19 Aug 2025 10:49:06 -0700 (PDT)
+Received: from [10.1.196.50] (e121345-lin.cambridge.arm.com [10.1.196.50])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 475103F738;
+	Tue, 19 Aug 2025 10:49:10 -0700 (PDT)
+Message-ID: <cdb7b1e7-6e51-4c0e-bffb-b0d4b654a623@arm.com>
+Date: Tue, 19 Aug 2025 18:49:08 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240220-rk3568-vicap-v10-8-62d8a7b209b4@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 19/19] perf: Garbage-collect event_init checks
+To: kernel test robot <oliver.sang@intel.com>
+Cc: oe-lkp@lists.linux.dev, lkp@intel.com,
+ linux-arm-kernel@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
+ linux-s390@vger.kernel.org, linux-perf-users@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ dmaengine@vger.kernel.org, linux-fpga@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ intel-xe@lists.freedesktop.org, coresight@lists.linaro.org,
+ iommu@lists.linux.dev, linux-amlogic@lists.infradead.org,
+ linux-cxl@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-pm@vger.kernel.org, peterz@infradead.org, mingo@redhat.com,
+ will@kernel.org, mark.rutland@arm.com, acme@kernel.org, namhyung@kernel.org,
+ alexander.shishkin@linux.intel.com, jolsa@kernel.org, irogers@google.com,
+ adrian.hunter@intel.com, kan.liang@linux.intel.com,
+ linux-alpha@vger.kernel.org, linux-snps-arc@lists.infradead.org,
+ imx@lists.linux.dev, linux-csky@vger.kernel.org, loongarch@lists.linux.dev,
+ linux-mips@vger.kernel.org, linux-sh@vger.kernel.org,
+ sparclinux@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-riscv@lists.infradead.org
+References: <202508190403.33c83ece-lkp@intel.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <202508190403.33c83ece-lkp@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_094646_460357_A1CA266D 
-X-CRM114-Status: GOOD (  22.49  )
+X-CRM114-CacheID: sfid-20250819_104917_878778_F810A49C 
+X-CRM114-Status: GOOD (  17.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,119 +74,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
-
-I am seeing IOMMU page faults: See below.
-
-On Tue, Aug 19, 2025 at 01:26:00AM +0200, Michael Riesch via B4 Relay wrote:
-> From: Michael Riesch <michael.riesch@collabora.com>
+On 19/08/2025 3:44 am, kernel test robot wrote:
 > 
-> The RK3568 Video Capture (VICAP) unit features a MIPI CSI-2 capture
-> interface that can receive video data and write it into system memory
-> using the ping-pong scheme. Add support for it.
 > 
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> Hello,
+> 
+> kernel test robot noticed "BUG:unable_to_handle_page_fault_for_address" on:
+> 
+> commit: 1ba20479196e5af3ebbedf9321de6b26f2a0cdd3 ("[PATCH 19/19] perf: Garbage-collect event_init checks")
+> url: https://github.com/intel-lab-lkp/linux/commits/Robin-Murphy/perf-arm-cmn-Fix-event-validation/20250814-010626
+> base: https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git 91325f31afc1026de28665cf1a7b6e157fa4d39d
+> patch link: https://lore.kernel.org/all/ace3532a8a438a96338bf349a27636d8294c7111.1755096883.git.robin.murphy@arm.com/
+> patch subject: [PATCH 19/19] perf: Garbage-collect event_init checks
 
-[..]
+OK, after looking a bit more deeply at x86 and PowerPC, I think it
+probably is nicest to solve this commonly too. Below is what I've cooked
+up for a v2 (I'll save reposting the whole series this soon...)
 
->  irqreturn_t rkcif_mipi_isr(int irq, void *ctx)
->  {
-> +	struct device *dev = ctx;
-> +	struct rkcif_device *rkcif = dev_get_drvdata(dev);
->  	irqreturn_t ret = IRQ_NONE;
-> +	u32 intstat;
-> +
-> +	for (unsigned int i = 0; i < rkcif->match_data->mipi->mipi_num; i++) {
-> +		enum rkcif_interface_index index = RKCIF_MIPI_BASE + i;
-> +		struct rkcif_interface *interface = &rkcif->interfaces[index];
-> +
-> +		intstat = rkcif_mipi_read(interface, RKCIF_MIPI_INTSTAT);
-> +		rkcif_mipi_write(interface, RKCIF_MIPI_INTSTAT, intstat);
-> +
-> +		for (unsigned int j = 0; j < interface->streams_num; j++) {
-> +			struct rkcif_stream *stream = &interface->streams[j];
+Thanks,
+Robin.
 
-In the TRM you can see in the MIPI_INTSTAT interrupts to detect
-overflows: why not activate them ?
+----->8-----
+Subject: [PATCH 18.5/19] perf: Add common uncore-CPU check
 
-something like this:
+Many uncore drivers depend on event->cpu being valid in order to look
+up various data in their event_init call. Since we've now factored out
+common PMU identification, we can factor out this check in the correct
+order too. While it might technically be possible to hoist the general
+task/cgroup check up here now, that would be horribly messy, so for
+clarity let's keep these as distinct (albeit related) concerns.
 
-#define RKCIF_MIPI_INT_Y_OVERFLOW(id)          BIT(16)
-#define RKCIF_MIPI_INT_UV_OVERFLOW(id)         BIT(17)
-#define RKCIF_MIPI_INT_FIFO_OVERFLOW(id)       BIT(18)
-#define RKCIF_MIPI_INT_CSI2RX_FIFO_OVERFLOW(id)        BIT(20)
+Reported-by: kernel test robot <oliver.sang@intel.com>
+Closes: https://lore.kernel.org/oe-lkp/202508190403.33c83ece-lkp@intel.com
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+---
+  kernel/events/core.c | 12 +++++++++++-
+  1 file changed, 11 insertions(+), 1 deletion(-)
 
-and then OR them with the int_mask in rkcif_mipi_start_streaming()
-
-and then you can log the err if something happened ?
-
-> +
-> +			if (intstat & RKCIF_MIPI_INT_FRAME0_END(stream->id) ||
-> +			    intstat & RKCIF_MIPI_INT_FRAME1_END(stream->id)) {
-> +				ret = IRQ_HANDLED;
-> +
-> +				if (stream->stopping) {
-> +					rkcif_mipi_stop_streaming(stream);
-> +					wake_up(&stream->wq_stopped);
-> +					continue;
-> +				}
-> +
-> +				rkcif_stream_pingpong(stream);
-> +			}
-> +		}
-> +	}
->  
->  	return ret;
->  }
-
-Now to the IOMMU page faults:
-
-Camera Sensor: IMX219
-Frame Size: 1920x1080
-Format: SRGGB10P
-
-Packed SRGGB10
---> Every four consecutive samples are packed into 5 bytes
---> Stride = 2400 bytes (1920 * 5/4)
-
-So the imagesize = 1080 * 2400 = 2 592 000
-
-in __vb2_buf_mem_alloc() the size of the buf will be PAGE_ALIGNED in:
-PAGE_ALIGN(vb->planes[plane].length);
-
-So we allocate a buffer with the size: 2 592 768 -> hex = 0x297000
-
-In rkcif_mipi_queue_buffer():
-We will queue a total of two buffers to the HW (2 because of pingpong)
-The first buffer will have the address: 0x00000000ffc00000
-
-We start to capture and then this happens:
-
-rk_iommu fdfe0800.iommu: Page fault at 0x00000000ffe79000 of type write
-rk_iommu fdfe0800.iommu: iova = 0x00000000ffe79000: dte_index: 0x3ff pte_index: 0x279 page_offset: 0x0
-rk_iommu fdfe0800.iommu: mmu_dte_addr: 0x0000000012cc8000 dte@0x0000000012cc8ffc: 0x11a0d001 valid: 1 pte@0x0000000011a0d9e4: 0x31b79006 valid: 0 page@0x0000000000000000 flags: 0x0
-
-With:
-0xffe79000 = 0xffc00000 (buffer address) + 0x297000 (buffersize)
-
---> So the VICAP is overflowing the buffer even though everything was
-correctly configured ?! (If I understood everything correctly ofc.)
-
-I also see the same problem with the SRGGB8 format. It also happens in
-the downstream Radxa/Rockchip Kernel.
-
-Do you see the same problem ?
-
---
-Kind Regards
-Mehdi Djait
+diff --git a/kernel/events/core.c b/kernel/events/core.c
+index 5f7eb526d87c..ddf045ad4d83 100644
+--- a/kernel/events/core.c
++++ b/kernel/events/core.c
+@@ -12562,6 +12562,11 @@ static bool is_raw_pmu(const struct pmu *pmu)
+  	       pmu->capabilities & PERF_PMU_CAP_RAW_EVENTS;
+  }
+  
++static bool is_uncore_pmu(const struct pmu *pmu)
++{
++	return pmu->task_ctx_nr == perf_invalid_context;
++}
++
+  static int perf_try_init_event(struct pmu *pmu, struct perf_event *event)
+  {
+  	struct perf_event_context *ctx = NULL;
+@@ -12571,11 +12576,16 @@ static int perf_try_init_event(struct pmu *pmu, struct perf_event *event)
+  	 * Before touching anything, we can safely skip:
+  	 * - any event for a specific PMU which is not this one
+  	 * - any common event if this PMU doesn't support them
++	 * - non-CPU-bound uncore events (so drivers can assume event->cpu is
++	 *   valid; we'll check the actual task/cgroup attach state later)
+  	 */
+  	if (event->attr.type != pmu->type &&
+  	    (event->attr.type >= PERF_TYPE_MAX || !is_raw_pmu(pmu)))
+  		return -ENOENT;
+  
++	if (is_uncore_pmu(pmu) && event->cpu < 0)
++		return -EINVAL;
++
+  	if (!try_module_get(pmu->module))
+  		return -ENODEV;
+  
+@@ -12990,7 +13000,7 @@ perf_event_alloc(struct perf_event_attr *attr, int cpu,
+  	 * events (they don't make sense as the cgroup will be different
+  	 * on other CPUs in the uncore mask).
+  	 */
+-	if (pmu->task_ctx_nr == perf_invalid_context && (task || cgroup_fd != -1))
++	if (is_uncore_pmu(pmu) && (task || cgroup_fd != -1))
+  		return ERR_PTR(-EINVAL);
+  
+  	if (event->attr.aux_output &&
+-- 
 
 _______________________________________________
 Linux-rockchip mailing list
