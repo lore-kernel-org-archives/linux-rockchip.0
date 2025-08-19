@@ -4,117 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0F56CCD1AA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5F62CCD1AD
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:57:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r9kPUnU6bfSv+MVEXmdY8FUFVeT852uperq9f5Ujsgg=; b=HKit5DN5c9W4zw
-	ic3uaIcHXVyyumrshe4qvscdqDD1A6SvqaHe4L7hSPOuLQyY0HZU/C+A0O9fFaSbEvQjcq56Pl0VF
-	wHqmTarNQcC9Y+MPLptWlfNcaTPeMnPWLU4lVh7Ct44JnuMRw+hcW+pvQvb7ScL3denwiujIB+3cm
-	QS+gmvGSFaAWGNqcqAhoOEQPCqF5sd4VrcwwYZP2/ZLOEirpag06nIhFazxSwwPU1/RIMkOG4ACcZ
-	VGBkeWaHZpKTLOwbU5qYOd26dLf6cLSJ2WW99CcRGhlv2c+9kk89vGvmTux7TdkljaJ8Zp5wl5yvX
-	5+jh0Zxsm4gqesO/bclg==;
+	List-Owner; bh=NNITTScjc3sB2EYdBxbDPjm1LXu+hZ2tcA+idsUxpwg=; b=rWijxjoQ7uzTAL
+	1E+bEdcgFpM8nm2H+S5JmBYmn0taupEGIbdWAScCqGlzvl6O7THYdDAlwCsvefFBp1WIan0O/FeCn
+	iYbJeJaWgMBhrX/hL5kqdjHtAqlhLcJgBoiLEC9+EZIQCbLE7IvsrJN2NTUOfaQFQv3dY87tRvMTi
+	MEXvR9XaoPMebSGp3CilNyMtVmbkC35Y0N/cczKFG+bN4IohBiKvqdI2Bn6/18U1lX+Qkxt71owxf
+	KcdszGSfCW4g+trvcd3Zq8vK+obkNWpktVra5cu0aP47uf7XS91NmgLHOMR1GV07lDZySjj0/4la6
+	FsgwRvVdn4A6CGILuPEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoVk-0000000D95y-1XPE;
-	Mon, 20 Oct 2025 11:57:12 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCmgJ-00000007qWy-2nrZ;
-	Sun, 17 Nov 2024 21:19:45 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C67007CA;
-	Sun, 17 Nov 2024 22:19:25 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1731878366;
-	bh=LCxOYDveABxYci6xcGPLQzoY5X2ur4NiEvJHNv8MSqc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=i1ESlBtdKSP8T3VJsiyviRYpYYbIEmbGaQmDPwC+LZ2O7kjbwJns8m16yNh8iQgt0
-	 tJWzm+lcCtnLT6dw2MHxLrrP3j4E4ME5dwLNZw/bOqw3GIPpRMke3fcNRpRBPuYmsh
-	 pEOpUxNtWT/SrQqwxbZe8h+iAv0MPMGJe6JswldA=
-Date: Sun, 17 Nov 2024 23:19:33 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
-	Tvrtko Ursulin <tursulin@ursulin.net>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Karol Herbst <kherbst@redhat.com>, Lyude Paul <lyude@redhat.com>,
-	Danilo Krummrich <dakr@redhat.com>,
-	Harry Wentland <harry.wentland@amd.com>,
-	Leo Li <sunpeng.li@amd.com>,
-	Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
-	Xinhui Pan <Xinhui.Pan@amd.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Raphael Gallais-Pou <rgallaispou@gmail.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Peter Senna Tschudin <peter.senna@gmail.com>,
-	Ian Ray <ian.ray@ge.com>,
-	Martyn Welch <martyn.welch@collabora.co.uk>,
-	Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>,
-	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Rob Clark <robdclark@gmail.com>,
-	Abhinav Kumar <quic_abhinavk@quicinc.com>,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Dave Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
-	Samuel Holland <samuel@sholland.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Mikko Perttunen <mperttunen@nvidia.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	Gurchetan Singh <gurchetansingh@chromium.org>,
-	Chia-I Wu <olvaffe@gmail.com>, Zack Rusin <zack.rusin@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	nouveau@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 3/5] drm/sti: hda: pass const struct drm_display_mode* to
- hda_get_mode_idx()
-Message-ID: <20241117211933.GG12409@pendragon.ideasonboard.com>
-References: <20241115-drm-connector-mode-valid-const-v1-0-b1b523156f71@linaro.org>
- <20241115-drm-connector-mode-valid-const-v1-3-b1b523156f71@linaro.org>
+	id 1vAoVY-0000000D8u5-46yy;
+	Mon, 20 Oct 2025 11:57:01 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uoIyV-0000000A1ei-1kTT
+	for linux-rockchip@lists.infradead.org;
+	Tue, 19 Aug 2025 09:49:53 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-55ce5243f6dso5543705e87.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 19 Aug 2025 02:49:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1755596990; x=1756201790; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tV6Flkuo2P/+55L7Kh0T7daOZ9uv2yK47XAxZBt9LOQ=;
+        b=HAecnzSAYuktfEGhP0urncZsk2D7fsC1EROKXVJYciLQfJOtHZQ4jgThDqEg/5Mhbq
+         z709xmiNanVSgPpWL8h/aEZiGpvUXFEOg4jNlp8s8zmkY0xk2o0j5jJEebcb+rMI2L+6
+         G3u3Pp2pUuRoAF7H30JtOJVN5RVHtuVbe64yTd4314+NKaX1zpl8ckznY7L8eAA/INIG
+         fXr3snmVMWLkxCeB3mSeacNdAWHvqAeaaYPe0/DCc7IVFQpyuDSy3c/HqFszLWa2CLPZ
+         zaoE5BSzyJYuYkKW+7j0xnzQFNIbf0GAJ77iXeI6+Gp4ifSMDM4+1tw+LQH3RpASD5Pg
+         qvrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755596990; x=1756201790;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=tV6Flkuo2P/+55L7Kh0T7daOZ9uv2yK47XAxZBt9LOQ=;
+        b=iHwNjewg/NBP1QfHSPVP56lc5ppMmmFUw3DvgQc8QsWZKZXKwlQpgBoe29T4MahtUh
+         10ND2MUy9WDqKEoZeRavny1+zk8kIheo47ZORUHHdiH1vbpkwUr+545+fTPgWtHdPJ/C
+         06fV+NxqhQ9NXrkDjKC67jzeSkN3Jxjgjb6TCdYkgucU9mQZJ7Yly7tPHhsk3M97qCI3
+         gUcJ3aEF+8k5hr+2aCT/uf3woLBXceZloVdRqe3m2sTxe9tpVCokovPgRGh+A1H7CBp9
+         vs7Lav9anznY1plxO8dv5+Q9ieGW/fuE38LLZnBT21g1CqeHm8GBciJeDCNkri0WRbJu
+         ltBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXkII2CwiVFCE+UxKf10c9bri6mlu6HjNUqOntPUjVwhW6Ia8nkUoUu7y+LyX4ZP3GqZ58c3O1C8eK6uLtoww==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwL5kOXhmHxyKiJEUSyKQi52+6fv1B9yjw/JxuJP05LpCCmMq6G
+	Me/8K0v7Y8t+WbwboyusYGYi5f9ZatA+6Cd6CQWzmka46H13rshW6o9Yr9uylP45SWRpkKOmID8
+	atbwaYidaJDlUFefPw8vPbK4qTp/flg6cAKGcCp9UQg==
+X-Gm-Gg: ASbGncvNWq2KAFqp8OaX0adyKGezFzIpkNC+U0Di7BH4WOO0gRGMSWnvDmqpBJDBpsT
+	rJIV2z5NcArZ2pL4OcFOgPBrdZOiDrOT1Ju3u0Bm9o3SJIdZR6pRo29TjtYejFfOEPmRExWtAxn
+	9aVWHW7J/wqE3PncODU3idKnknpBcsO8WBiQeafpQWxy7sLMhi/zCGPf3FbSl2FO7tTTE6dEHd5
+	fGFmz8VFMXZ
+X-Google-Smtp-Source: AGHT+IEt8RlqWWvwC2uqrmb7EU75OBtpQ0q0kJ1zr3PFW1jsKW7QqgA/pBKXOLyxKfth/q0XXJuPhRlLhC58Y7ZaIjE=
+X-Received: by 2002:a05:6512:ac9:b0:553:51a2:4405 with SMTP id
+ 2adb3069b0e04-55e00850835mr590681e87.45.1755596989499; Tue, 19 Aug 2025
+ 02:49:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20241115-drm-connector-mode-valid-const-v1-3-b1b523156f71@linaro.org>
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com> <20250811-clk-for-stephen-round-rate-v1-109-b3bf97b038dc@redhat.com>
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-109-b3bf97b038dc@redhat.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 19 Aug 2025 11:49:38 +0200
+X-Gm-Features: Ac12FXyEOw7KCbkbFT2OqCP4TngpQPKLbvy9M6n90z-zmlM7tVP9PQNq8vVGJnI
+Message-ID: <CACRpkdaW=f7xm+rsD8XUUx-qhuh8sk1mCU-erve-_9S4uUpHbA@mail.gmail.com>
+Subject: Re: [PATCH 109/114] clk: versatile: vexpress-osc: convert from
+ round_rate() to determine_rate()
+To: bmasney@redhat.com
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Sudeep Holla <sudeep.holla@arm.com>, Cristian Marussi <cristian.marussi@arm.com>, 
+	Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Paul Cercueil <paul@crapouillou.net>, Keguang Zhang <keguang.zhang@gmail.com>, 
+	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
+	Paul Walmsley <paul.walmsley@sifive.com>, Samuel Holland <samuel.holland@sifive.com>, 
+	Yixun Lan <dlan@gentoo.org>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
+	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Michal Simek <michal.simek@amd.com>, 
+	Maxime Ripard <mripard@kernel.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Neal Gompa <neal@gompa.dev>, 
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Max Filippov <jcmvbkbc@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Daniel Palmer <daniel@thingy.jp>, 
+	Romain Perier <romain.perier@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Bjorn Andersson <andersson@kernel.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
+	Andrea della Porta <andrea.porta@suse.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Sylwester Nawrocki <s.nawrocki@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Qin Jian <qinjian@cqplus1.com>, 
+	Viresh Kumar <vireshk@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, 
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, Alex Helms <alexander.helms.jy@renesas.com>, 
+	Liviu Dudau <liviu.dudau@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, linux-clk@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, arm-scmi@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, sophgo@lists.linux.dev, 
+	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
+	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
+	linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com, 
+	linux-actions@lists.infradead.org, asahi@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241117_131944_073909_4DCD07E3 
-X-CRM114-Status: GOOD (  20.46  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:19 -0700
+X-CRM114-CacheID: sfid-20250819_024951_496630_AAD157A6 
+X-CRM114-Status: GOOD (  11.10  )
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:03 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,83 +135,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-Thank you for the patch.
-
-On Fri, Nov 15, 2024 at 11:09:28PM +0200, Dmitry Baryshkov wrote:
-> Make hda_get_mode_idx() accept const struct drm_display_mode pointer
-> instead of just raw struct drm_display_mode.  This is a preparation to
-> converting the mode_valid() callback of drm_connector to accept const
-> struct drm_display_mode argument.
-> 
-> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-
-> ---
->  drivers/gpu/drm/sti/sti_hda.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/sti/sti_hda.c b/drivers/gpu/drm/sti/sti_hda.c
-> index f18faad974aa2eda58c1e49537f8337db119d4b7..829dc4b034e8a79a908bda60485c2b94ef96890c 100644
-> --- a/drivers/gpu/drm/sti/sti_hda.c
-> +++ b/drivers/gpu/drm/sti/sti_hda.c
-> @@ -280,12 +280,12 @@ static void hda_write(struct sti_hda *hda, u32 val, int offset)
->   *
->   * Return true if mode is found
->   */
-> -static bool hda_get_mode_idx(struct drm_display_mode mode, int *idx)
-> +static bool hda_get_mode_idx(const struct drm_display_mode *mode, int *idx)
->  {
->  	unsigned int i;
->  
->  	for (i = 0; i < ARRAY_SIZE(hda_supported_modes); i++)
-> -		if (drm_mode_equal(&hda_supported_modes[i].mode, &mode)) {
-> +		if (drm_mode_equal(&hda_supported_modes[i].mode, mode)) {
->  			*idx = i;
->  			return true;
->  		}
-> @@ -443,7 +443,7 @@ static void sti_hda_pre_enable(struct drm_bridge *bridge)
->  	if (clk_prepare_enable(hda->clk_hddac))
->  		DRM_ERROR("Failed to prepare/enable hda_hddac clk\n");
->  
-> -	if (!hda_get_mode_idx(hda->mode, &mode_idx)) {
-> +	if (!hda_get_mode_idx(&hda->mode, &mode_idx)) {
->  		DRM_ERROR("Undefined mode\n");
->  		return;
->  	}
-> @@ -526,7 +526,7 @@ static void sti_hda_set_mode(struct drm_bridge *bridge,
->  
->  	drm_mode_copy(&hda->mode, mode);
->  
-> -	if (!hda_get_mode_idx(hda->mode, &mode_idx)) {
-> +	if (!hda_get_mode_idx(&hda->mode, &mode_idx)) {
->  		DRM_ERROR("Undefined mode\n");
->  		return;
->  	}
-> @@ -614,7 +614,7 @@ sti_hda_connector_mode_valid(struct drm_connector *connector,
->  		= to_sti_hda_connector(connector);
->  	struct sti_hda *hda = hda_connector->hda;
->  
-> -	if (!hda_get_mode_idx(*mode, &idx)) {
-> +	if (!hda_get_mode_idx(mode, &idx)) {
->  		return MODE_BAD;
->  	} else {
->  		result = clk_round_rate(hda->clk_pix, target);
-> 
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBBdWcgMTEsIDIwMjUgYXQgNToyMeKAr1BNIEJyaWFuIE1hc25leSB2aWEgQjQgUmVs
+YXkKPGRldm51bGwrYm1hc25leS5yZWRoYXQuY29tQGtlcm5lbC5vcmc+IHdyb3RlOgoKPiBGcm9t
+OiBCcmlhbiBNYXNuZXkgPGJtYXNuZXlAcmVkaGF0LmNvbT4KPgo+IFRoZSByb3VuZF9yYXRlKCkg
+Y2xrIG9wcyBpcyBkZXByZWNhdGVkLCBzbyBtaWdyYXRlIHRoaXMgZHJpdmVyIGZyb20KPiByb3Vu
+ZF9yYXRlKCkgdG8gZGV0ZXJtaW5lX3JhdGUoKSB1c2luZyB0aGUgQ29jY2luZWxsZSBzZW1hbnRp
+YyBwYXRjaAo+IG9uIHRoZSBjb3ZlciBsZXR0ZXIgb2YgdGhpcyBzZXJpZXMuCj4KPiBTaWduZWQt
+b2ZmLWJ5OiBCcmlhbiBNYXNuZXkgPGJtYXNuZXlAcmVkaGF0LmNvbT4KClJldmlld2VkLWJ5OiBM
+aW51cyBXYWxsZWlqIDxsaW51cy53YWxsZWlqQGxpbmFyby5vcmc+CgpZb3VycywKTGludXMgV2Fs
+bGVpagoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
