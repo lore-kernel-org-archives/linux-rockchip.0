@@ -4,88 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36609CA0EF5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 08:24:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94493CA0EED
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 08:37:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yELHTa0aEJ2M5ND7S5ruTm9ePX/f2Yd06GxmnJ7x3Oo=; b=vrgYVUlnjsCixA
-	N79+7KBSNUs5G/Isrq14L9DnuSiiURUCElC5TMqaKip6eDBrc73nLwpc/7X7qx1ACBJaN0nFbiMwG
-	72rFZsXNn0fLa3fm5zdu5/m9sRjIjuzTjKysAi2GWCmAgFODGLHWnR9qmDCAyj2d5bl4wMzUizr3f
-	dVDYbRYg0uYSJKQy81qz5lsKL4GYIMGdQgGY2Sv19pAHq025CD18Omn9nuRpabvmEkBV3Fz3+JpRg
-	72qTTE2X9FaWRAepk1kif1zREVIr1/pxUkcqKIZNRf3FhfvGTm7wdKTO+u8rASL09E+Lao1J/tRUS
-	II4xlJ80qiCAWBB+AE4Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4HdG+3tDthMoaAK/NpN1pTpA4MdFqlDQtpWwZhu5NNA=; b=jeR4woluszk0Us
+	MYLWJncZ5Hnwi2NAkOrxd2YVygh/vcnB023B+jjm5zrc2lJUf7dAFScqzjGVF7uHIuX7fgFZwoVdn
+	TzIH1zxv0FjxUPDfkrd1SYabJVZeoQcsZ/PnhwjKZ2b+l2OH30aAEUTsieC6D20PQn5DHAQ1KgTws
+	fSexwiI9L2j72m9+bxUiIpPFn6s37KL9X0EQf65RZJH270msOHl8H+cPiwHd2Cp+uSrDkCbRsER+F
+	zxAF7OAgdJpewNs7yVRBUj4tuhVVUM9sAINBk/0GIUJq1iQLu50Jo5t/Hz9a/bZGmrDCxsRuT6l/r
+	L2LcJtxFoIAlZ06BP0mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoHdo-00000009nMX-11DA;
-	Tue, 19 Aug 2025 08:24:24 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1uoHqj-00000009pIt-1Gvn;
+	Tue, 19 Aug 2025 08:37:45 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoH5U-00000009is1-1YYq;
-	Tue, 19 Aug 2025 07:48:57 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-76e2e60433eso3752144b3a.0;
-        Tue, 19 Aug 2025 00:48:55 -0700 (PDT)
+	id 1uoHBp-00000009jrS-0F7X;
+	Tue, 19 Aug 2025 07:55:30 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id 98e67ed59e1d1-32326e06496so5562345a91.2;
+        Tue, 19 Aug 2025 00:55:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1755589735; x=1756194535; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=+ht79aZIMlN7H9jxDjI1MTRwr0PcN1XBiR81e8sSRJw=;
-        b=jqG8tPyIHbxHTUn4322CtCZdH/NhlRq88DzR1fRPLB2XKHKmbtOuwOujql/0DPEWSL
-         ipeXKnSPpaxWTUHdeZPvGRcoQ4HrHavcCWyVo4AN2zIdSCPMSMnZBb8OQuIOGkMXuuAq
-         NepWPeFDragi3aF020PEh1UWcA/wSq7OfI70W5stXs82Z5kRb7HRjYFm5W9QyPk/UT9W
-         hU9aboqdeVqL1MskXD87TUjKE6W07O65rlZhjQmDXy5HhcGB2WW0oJKH0uwvOOxKtBra
-         XA4nHsiizt6VHANSYewm8qX5PjjHv8kPA/aoVpPwPfNex3BC6/ClSjIQ0nI+IbnF082J
-         wu9A==
+        d=gmail.com; s=20230601; t=1755590128; x=1756194928; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=N5Aq+ST5cYyv8tlu5A5YNOSa76L+WIXOA4kn5tBLtHw=;
+        b=HD9RfhX+MsPOz1i3fr8Ac8WfXNYzU9t2g7qYJAiuXWlMkO+1KURAim9so3fEPOgz6y
+         zCpjEjXae/PEcKrYfstXRCWPJ1wroUHfGgelvNLA5IAj3wVK4o3+Ey8khD2k8diX6FAJ
+         OMYMkOxxOoSLWAy8sLjRU40KkUqGbeFm1exOzX6BAqqizgAdIPcf39ZMvkbS7qGya9UK
+         jf1SPlnPaN0f3HD2wzwCfNZ/CzctQuE5eQY/ZAk2vqsAGjRox8LN//xltvIoy6Z/HSur
+         FoGhsoh8NG1HHp3Ec6/4p15l5+Rg2yxfygzj9qDbUgH4+SWpl/tUiVWTu/0IbvU/JzO+
+         QQHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755589735; x=1756194535;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+ht79aZIMlN7H9jxDjI1MTRwr0PcN1XBiR81e8sSRJw=;
-        b=tc9OFJebvwp/jvK3Dy4yfoTYrOOJ1WXD4ZHg6j57pu08tYwohq24t7UucJWiIaz3YI
-         TxieIh7teOlHyQjV7s9fA0gAqsAOV8IMrpicGNEXsso/tXtm3DCYqJRscPNma81uXIHn
-         7QAD2zFVz5qA+GgbkG3menpA0pa1eZuGOo48S7A75kO6EmLJ8kNGzgR8UF3gyJWfLFgx
-         9PZTD8BuD1JNzNA2cPQlAAlNPMAK8j1RdsszgTCrK21sr92Rf1esbA1/SKCDnKpG2qYr
-         w48aYb4UYKZKlJYv3Ee+CbnEUl8krITnc8ZuN0ABojTSZSP2KqKKsVmZrYzqfLdJXsnQ
-         SL6Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUMdCGc8a7pjBaLy4n49VyKi+cBMsOpiLVlzyH/H59HQZz0AkyAVdzTiZUU5Yh3+4sYBdYO428WzkmG0pxlcZVP@lists.infradead.org, AJvYcCX7/OJEaAWDNDrUv3CqFOPkrtFoEKxz69lq45R9MXKfh1zjMhmK+ZKtcMyMi09q2+iMwNrz4bJ6jwgPGOCOzgo=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyI9Ux32yTsLdLeAOWfVB6uWTxp/OgFdFeKJFZxcNqRYbwZfsPW
-	mqhOVoZuSNYV7DDN8CpablFkhgg2rI7XEINGh/hizE/AwYrOJewSKF3E
-X-Gm-Gg: ASbGncswCzJzI1B0HcGVYl7dVoLigErC4iaQJiOIJkeEPIOq7gzHDOkz5F/m0Xk38lY
-	lb/3jtkkLgUDCKnYJZwuSUNR2/hp57cU0AycH5VR9BUK4ZegFlxHpIkeIAl1gY7WKzF4l2n0XbY
-	TFZWSSZL7MJzxMTS8UJPyHJJ0fuwda6FcnLClMfhQX2/qnG2f1RXXWzyIKTMjjtVUc2knaUDKTZ
-	jgFof9ZNIJPmlbSxKc0S9eJ6KKNkubRZhAneME/9idJDDBfAVLt8KmZ+b0eFuHfYN9YLZNL6T6L
-	lsHKEfZqMwAZzPaYRnz7Z+AbXcarzwBN0I/T+HrQJP21mfQYFxVX97cstxUuTprMZWRQ+3GODHG
-	x2cWpcIEJqCT80s4=
-X-Google-Smtp-Source: AGHT+IFyS1pRC/nilFKVPJJNIWYZ8E/oqWs0FiyBi5MrOvkqeJATfICeqlfkAYPlPjxjgr2XEtay5g==
-X-Received: by 2002:a05:6a20:3d89:b0:23d:e568:e5ad with SMTP id adf61e73a8af0-2430d4753c4mr2069420637.28.1755589735214;
-        Tue, 19 Aug 2025 00:48:55 -0700 (PDT)
-Received: from anyang ([106.250.177.234])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-76e7d122ad7sm1684649b3a.36.2025.08.19.00.48.52
+        d=1e100.net; s=20230601; t=1755590128; x=1756194928;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=N5Aq+ST5cYyv8tlu5A5YNOSa76L+WIXOA4kn5tBLtHw=;
+        b=vSCrhAzwxmwbISawUeqDkhLauqOqLh9SVGYoeRn2G1k30+eRL7rgq30uXWOeJNlA7D
+         N21aLcXRw65wzZgKM1UhmnG68WrxTM95ARxcc+dqFiEiEYfmKklMl58fSK2bj9CgdunL
+         b1/y3p+TBc+UdOA4hYsPGjuyE4JFGDEHj5b95oqmhRXgZ87FH7mHDhLJDAhsITH/1iZR
+         qTph1nSs8vRb1qVJpff/6C+khqi+2tLflffN2YILJtt7tXkQuZ+OiGwEus6l+y7UsKaE
+         Iu9aZY4f0sUj72FgtB9IGDv3mptarINCbd69mQumJKI394DxouNwZpYhDOlPInbWgs2i
+         SNTA==
+X-Forwarded-Encrypted: i=1; AJvYcCU2CquuX3ylW8yfMrQsUHz950sflesykf9ntO1Xj/uIJUxLqMtiS/auIqbQ7LWKcWZsGTRbCqun3BpwQG00fv7w@lists.infradead.org, AJvYcCWYZxQ2JRYNOLIycRDGDgr/HNha7jRTrKbqP1jQ8s0hTDzJri42kfrW4blQE99yKADldEI9mw6f0HD10zYTuq4=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy8xN1fuq+7y7xYqMG7Ajsb+OKakSixQfoLYVM1dR1Z85sg80xP
+	Gz8txVs/puZOq88THH3/2huTRk4H8r/AlsRgu6ztr3uDWv2DXjZK9zoD
+X-Gm-Gg: ASbGncuYfJZlscSY/sFjjq3ZC9jX1rKV2l7QhNd/kVSR38HWCths+5RXVonQ6LI/ybv
+	t3l8qDSbJKm+1AeMZPXwWSb0XxMWvVTc3mbpM80pemOEp4AuaytaM6WCQuGKRoKfJeuVwAk0Gxc
+	iv+7iP5SKl3FNhFqDhCzJWQrnoaq0y81hrduRGyVg08+u0jUD27JL0lmRG+pmhCbs1xZ4gBSecD
+	sX2dLQgm9ntyu3rFiUoLZCIyQBUQcLinWxNp4Sw1/gJi/687oK6eM7yc7Uk7ABnSHVNBcaoV704
+	nh/rx/p5PSWqImC5+ycBeLY3OE0orA8BO2YHbV6bYFtyrdBDnWjHjoOA1qBeFm3oqlaZqQk1U/u
+	DrMSbSJEMVOC7VAwxeQ==
+X-Google-Smtp-Source: AGHT+IF1CAYew4CGA4v+u7+nVAa0yl7ZMPkqTWB83cnzs2wUTgdyhQO16uHY7uws+QlbrVRoF6b+qg==
+X-Received: by 2002:a17:90b:39cd:b0:31e:d929:5ca5 with SMTP id 98e67ed59e1d1-32476a132fbmr2297388a91.1.1755590128116;
+        Tue, 19 Aug 2025 00:55:28 -0700 (PDT)
+Received: from anyang.. ([106.250.177.234])
+        by smtp.googlemail.com with ESMTPSA id 98e67ed59e1d1-32330f8309asm13542871a91.4.2025.08.19.00.55.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Aug 2025 00:48:54 -0700 (PDT)
-Date: Tue, 19 Aug 2025 16:48:50 +0900
+        Tue, 19 Aug 2025 00:55:27 -0700 (PDT)
 From: Dongjin Kim <tobetter@gmail.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Change ethernet TXD timing delay
- value
-Message-ID: <aKQsYndrYStGTfoL@anyang>
-References: <20250819045018.2094282-1-tobetter@gmail.com>
- <380246b7-7e7a-4843-b82b-2e8d74e01ad5@linaro.org>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] arm64: dts: rockchip: Change ethernet TXD timing delay value
+Date: Tue, 19 Aug 2025 16:55:21 +0900
+Message-Id: <20250819075522.2238643-1-tobetter@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <380246b7-7e7a-4843-b82b-2e8d74e01ad5@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_004856_428537_45F29F49 
-X-CRM114-Status: GOOD (  21.65  )
+X-CRM114-CacheID: sfid-20250819_005529_110728_F1FB9B67 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,37 +100,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 19, 2025 at 08:42:55AM +0200, Krzysztof Kozlowski wrote:
-> On 19/08/2025 06:50, Dongjin Kim wrote:
-> > Very poor network performance is observed on the ODROID-M1 Board
-> > (REV 1.0 20220613) when running iperf3 (under 200Mbits/sec), and
-> > this problem can be resolved after changing the value of TXD
-> > timing to 0x35 from 0x4f.
-> > 
-> > Signed-off-by: Dongjin Kim <tobetter@gmail.com>
-> > Change-Id: Idecd246e3fe93447b6e3e9b165d077d2050bbd75
-> 
-> 
-> Please run scripts/checkpatch.pl on the patches and fix reported
-> warnings. After that, run also 'scripts/checkpatch.pl --strict' on the
-> patches and (probably) fix more warnings. Some warnings can be ignored,
-> especially from --strict run, but the code here looks like it needs a
-> fix. Feel free to get in touch if the warning is not clear.
+Very poor network performance is observed on the ODROID-M1 Board
+(REV 1.0 20220613) when running iperf3 (under 200Mbits/sec), and
+this problem can be resolved after changing the value of TXD
+timing to 0x35 from 0x4f.
 
-Thanks. I realized that I sent unmodified file that includes
-"Change-Id:".
+Signed-off-by: Dongjin Kim <tobetter@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> 
-> You CC-ed an address, which suggests you do not work on mainline kernel
-> or you do not use get_maintainers.pl/b4/patman. Please rebase and always
-> work on mainline or start using mentioned tools, so correct addresses
-> will be used.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
+index 0f844806ec542..e1a550a04498e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
+@@ -210,7 +210,7 @@ &gmac0_rgmii_clk
+ 		     &gmac0_rgmii_bus>;
+ 	status = "okay";
+ 
+-	tx_delay = <0x4f>;
++	tx_delay = <0x35>;
+ 	rx_delay = <0x2d>;
+ };
+ 
+-- 
+2.34.1
 
-I've rebased to the master branch, so let me send the patch again.
-
-> 
-> Best regards,
-> Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
