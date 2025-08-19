@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D57F5CA0EF7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 19:22:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 437DFCA0EF5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 19:22:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T2Gv0y7q9WeuDFjHkgVUeGqAKNwfsEWiuoC+43+jm4k=; b=vUjFq/z2axFtdV
-	H/2BF6xEuTFs5OyD1ngVy1Vm259UvFeYV/z2CrAHHp7zSZCzuTjDTxOJaqx28CdYLWgEGzZwWOUrs
-	499Sa1grY30EFrwiTV1CQMFO6C75xhn7s/ECwrMTk8DCEZKFnstlOhEZKvu0g2Ita8jDlQvA2sTPg
-	6I2gIHefFeFsEbZrXWdAYLsKqNkqBYRJ4jb8axAhogDh39pSPHVOlM2KQ9Ov1Dk/YFgYQxRZTDs0U
-	WkKWO8bVVHUqzYZ51hEajrvxvYBIlEx48eVmzUc5W7uQLiMcF/O+iroeMGvXUtBzPs4SBMcmTnpLR
-	akPD1RVkCKk2SWemJaoQ==;
+	List-Owner; bh=JEIyHZvHQrMAh4PsyYVklLrxWFKmg9ORjGMbZGvJHJw=; b=xUMse4hCOyp2E6
+	mhzdGTeW+xjGpfQbePqegLe/rhC6L9KOKyL9tjTocWmv2uGu9FNF58iEAhBq0kS5TGtBgofJGV4uN
+	FBJZKrHzPuyGBJOab5OGJndQdV3EnTR+E18mhucIlxbRC7L2OEqfPpKXWHGDIZd75fl0Mud14xXZK
+	IS0Y7jIkTsn8aK2JLv1Jj5qXQ31FnJrLvBcYIZSeme6LE5gsrr07NJK3arrupp7OUYUF9wvLpBdeR
+	TJ7L+5mMt+NdAHcEdZJP29huL252riLyfcFtBnL4VvCtVKaK8XP4Ekzl0+UGYlQHHCUoaadbt6kpq
+	UzNPvX9n588I+YkFZhAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoRuz-0000000BOY4-1ZCZ;
-	Tue, 19 Aug 2025 19:22:49 +0000
-Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	id 1uoRv0-0000000BOac-47Kr;
+	Tue, 19 Aug 2025 19:22:50 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoNpW-0000000Apa5-1ts8;
-	Tue, 19 Aug 2025 15:00:56 +0000
-Received: from localhost.localdomain (unknown [119.122.213.154])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 1fe57a9c0;
-	Tue, 19 Aug 2025 23:00:50 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: naoki@radxa.com
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
+	id 1uoOoW-0000000Axxs-2GtF;
+	Tue, 19 Aug 2025 16:03:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=N+7flFK2RUnxDqXCVUqXaa0V2OFkhUFUQMezuL5yE6g=; b=kGPqj6NClAqPHS8M/uA71K3oTt
+	5MMCYBEUXDle2yjsuFbQEh7VjoHgYOYDaXwJePFOVYZZXqpTboYge93ACdlVVY491QRd5gB5rXo+M
+	z+BLiNLxqgQmBq81fCsuRTOKUnm3EgA0wJQidIcDFfGfc/zg5NzLewgbUfN28Dv94Dsg=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uoOoN-005D7L-1y; Tue, 19 Aug 2025 18:03:47 +0200
+Date: Tue, 19 Aug 2025 18:03:47 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Dongjin Kim <tobetter@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: update pinctrl names for Radxa E52C
-Date: Tue, 19 Aug 2025 23:00:38 +0800
-Message-Id: <20250819150038.874297-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <ABB74D9D1E3774F3+5a8c0d7d-fb7f-47c0-8308-e2b69f0628c1@radxa.com>
-References: <ABB74D9D1E3774F3+5a8c0d7d-fb7f-47c0-8308-e2b69f0628c1@radxa.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Change ethernet TXD timing delay
+ value
+Message-ID: <4d25c642-d457-4cb7-8bc1-587edd4f1d75@lunn.ch>
+References: <20250819045018.2094282-1-tobetter@gmail.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a98c2d8e14303a2kunm2a21c9924065a4
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDTk5KVktPHUlPQkJLHkJNTlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSFVKTk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE5VSktLVU
-	pCS0tZBg++
+Content-Disposition: inline
+In-Reply-To: <20250819045018.2094282-1-tobetter@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_080054_679488_79F70143 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20250819_090356_577924_784D60FF 
+X-CRM114-Status: GOOD (  10.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,45 +71,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, Aug 19, 2025 at 01:50:17PM +0900, Dongjin Kim wrote:
+> Very poor network performance is observed on the ODROID-M1 Board
+> (REV 1.0 20220613) when running iperf3 (under 200Mbits/sec), and
+> this problem can be resolved after changing the value of TXD
+> timing to 0x35 from 0x4f.
 
-> "The name of a node should be somewhat generic".
->
->   https://github.com/devicetree-org/devicetree-specification/blob/v0.4/source/chapter2-devicetree-basics.rst?plain=1#L193
+How did you decide on 0x35?
 
-Usually we use the name on the schematic. For example, the patch for e24c:
+~/linux/arch/arm64$ grep -hr "tx_delay = " | sort | uniq -c
+      4 	tx_delay = <0x10>;
+      1 	tx_delay = <0x1a>;
+      1 	tx_delay = <0x21>;
+      2 	tx_delay = <0x22>;
+      4 	tx_delay = <0x24>;
+      2 	tx_delay = <0x26>;
+     14 	tx_delay = <0x28>;
+      1 	tx_delay = <0x2a>;
+      6 	tx_delay = <0x30>;
+      1 	tx_delay = <0x3a>;
+      3 	tx_delay = <0x3c>;
+      2 	tx_delay = <0x42>;
+      5 	tx_delay = <0x43>;
+      2 	tx_delay = <0x44>;
+      1 	tx_delay = <0x46>;
+      6 	tx_delay = <0x4f>;
 
-https://lore.kernel.org/lkml/20250727144409.327740-4-jonas@kwiboo.se/
+The numbers are all over the place, but it is clear that 0x28 is the
+most popular for some reason. But since this delay values are magic,
+i've no idea why.
 
-```
-+	gpio-keys {
-+		compatible = "gpio-keys";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&gpio0_a0_user>;
-```
-
-If this is incorrect, I will abandon the pinctrl changes for
-the user key and power LED.
-
-> > -		vcc_5v0_pwren_h: regulator-5v0-1 {
-> > -		usb_otg_pwren_h: regulator-5v0-0 {
-
-But I don't think the above is correct.
-
->   https://lore.kernel.org/all/20241216113052.15696-1-naoki@radxa.com/T/#u
->
-> (I don't understand why this only applies to me...)
-
-I don't know this. I thought the nodenames of pinctrl and regulator
-were a bit weird, so I changed the pinctrl's.
-
-Thanks,
-Chukun
-
---
-2.25.1
-
-
+     Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
