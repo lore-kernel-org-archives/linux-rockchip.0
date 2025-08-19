@@ -4,103 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3DA7CA0EEB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 18:13:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E08FCA0EEB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Aug 2025 18:13:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JMZI/ODcGrui/Ro5viT3egARMfdrUqsR29P7uBTUR3c=; b=sLkme5IWbv+hEc
-	ODtMeJtLUjC5IYVufObna8UODuF2N9PsYU8ZX6rRKJnYLbczk7SCq2LW0+35N6LZ4FiegYgqQs4v8
-	FoDxgexfDWk3YVTWjFH52fe0WWsTcN7PABYEoLJWgZvUwaZLaGLTUVfbbMjwdcwP1+NmohQO1NAUe
-	pESNF1Ewlhwd4m00WvA7mIsK8Lf3phsMAMuTNrGflcz8Ovgwt8eC22YS96ZjO1dmYbMnYNTDm3OD1
-	usVyPIb8uZkk68aQjG4eKnjyZSzpk8W/FRljhwPxTlDCZdzWeohWw+qnkiux6EM1lHcsbXVGIdFT7
-	03a0Zcwt9fVivwhHgeeg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NMykGkTOhZPWBjskiKLKnPBWnIonTWRCEO/vsSFlEfA=; b=Rh1u+vQeIx70FP
+	0XN6C/qYssVGBVasBANhRRPhYqhfVBdoP93XKNq0DyRWb3mBAeaVJwuL+ZejY+zzZ4b/fvwPG/rLO
+	zHN/n9FbgnhvwlaOhT0PH2F5P19MaN3VYAxNjTNSwSMIjufMl5kLdMxwZan7RMfefXcyrILAEtFPS
+	aeK8CE/ov3q2To/1HNBdVsRMk8N6bh5hhBCpvvhCA/WCSmDfQTvaXKZoBHX1qlHWBJCSYyC13A9a/
+	jZoJzvXWvjVX/IPpYhRM/bG6RixDPxTxcZqOMt5ToEV4Ht32RKEGWcwd8nYp/tssU+OhvDJopustv
+	zafhlfJrAvZaSChQFNNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoQpe-0000000BC5H-1hzM;
-	Tue, 19 Aug 2025 18:13:14 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoMCF-0000000AYz9-3OYl
-	for linux-rockchip@lists.infradead.org;
-	Tue, 19 Aug 2025 13:16:17 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-afcb78d1695so69630866b.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 19 Aug 2025 06:16:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1755609374; x=1756214174; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Xi518gsMPwf+xO6KMftj9HzM9h9TUyQOOtDZl1JTxQw=;
-        b=VwZhVT+x2kcBuzqZrSUfZ08fz1pT1WPi96TqWwY2XC7+HPzqdTJGtbYWx72LJYBfse
-         cJhPyFFoxD+NoZH9COwhFyPBo/TtN95aMptPZqqhKBaJx+fxBo9AeYCwVNZDE6rDIzp7
-         8pyGaUq57ThA81F8J2EIthv3KQoXUYVCij6n9svew2GGxB2pyJpNWOEOBBnAFzl3VXVe
-         3ZJEtJ1zPYI/Vyl3ci4q8/hhsmWn6UieCDlniIMkGECy06pJXyA+i2wi25egucHqJVVN
-         D/km7+hu7gDoCHlb/kexCPL9qkHrMrXaj50iTyBSrLp8JRE1QWzrncrWSBhRzmpaanx2
-         +8Dg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755609374; x=1756214174;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Xi518gsMPwf+xO6KMftj9HzM9h9TUyQOOtDZl1JTxQw=;
-        b=PSYGUtICW3ALYlBskris6sWcoGEpLHX7LUJ/oX1QDydAe6sljnuzcea+iHoEhneheE
-         g8SxxT1beNOjn/VR/fp0O1waQAp28VSIUqETKlUI2XWP67ynjYASI+ENTsZJnvaDIRpw
-         3qqph7lUebc/gpKRq0vxirIrtw7CeNfcPcUGr5Pe7N56DjiDwDbNRZtGXhvN65Ig9Iop
-         mttKC7rjVp7mL1dxSufxkwYuLjaxICAiz0a1hRLp+YlP1wqpAnL+TeD+An/lwyPryfu5
-         nfMZQ70As9+PmgGfgRAO++Q5nl9xxFUb5xJebtNezelkVb323NICIXYUEvG6jUgs/MWQ
-         a+BQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVjA1Culg9nEybM9EK2FjcYBBHdbRB/Ms6JU6ZKo9VMPI1Me0FXbYkWj4uZ6Do+z7dg4eNuRAa0UTfhwom/iw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxy81z8wG7kB08pkIYpBPGJOI7wjedgxQvBQEUZaTflsUtF54Jj
-	Fikycbgg7VCygCMcWUamflz0oOkxHgk8Ct9RGTC1bfQRUpuXOxNCwKwISz0MBQrp2XN/EMUR9e7
-	vFHTk
-X-Gm-Gg: ASbGncuJrmKYAwEIo03K+oDxTa5770nzsxK0UC5ggvxWyH3wY2orXY2MVr2a/8dDoLZ
-	fEb3DwEJAZmrxcWmePOHcrUM5y+lGJ42DP+OVxVRbFpHYMMeiNx1ZSO2LFQbuiTE+0hSoA9DWV/
-	6sQQdlg5HY3cGryjusvw5TuIG+toed+VZwIbq1qADxl9wYuISO0h1R6sB5q3HcFmzC4fQ56xnw9
-	TtIy1joBoxAorbGmiCesL3TNkdS5ZKgVvi5D2Q2pzLKT00us58lIvojKlwau/RSc1to8U8zBbVy
-	RHtJbLlLhqmoX04jdOoU0/k42ecdK3xduTIVh2p4r2lBHsIsr3NIMVoikppg+rJy/EbmeY/8NvR
-	d1vfKgUthRMjj3AfFs5Jsxew879yxDeCcmBcPaPHqHcVh
-X-Google-Smtp-Source: AGHT+IHNAQts7Tkq0in4K3BOL40AEJDywoXmLp4e38sGlmKMwBIojenupdYVLaUyK7UVgv2eYoj8jg==
-X-Received: by 2002:a17:906:c112:b0:af9:5903:3696 with SMTP id a640c23a62f3a-afddcb4df7cmr81510466b.2.1755609374036;
-        Tue, 19 Aug 2025 06:16:14 -0700 (PDT)
-Received: from kuoka.. ([178.197.219.123])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afcdce53d60sm998744666b.20.2025.08.19.06.16.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Aug 2025 06:16:13 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 1/2] ARM: dts: rockchip: Minor whitespace cleanup
-Date: Tue, 19 Aug 2025 15:16:08 +0200
-Message-ID: <20250819131607.86338-3-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.48.1
+	id 1uoQqE-0000000BD52-1mZT;
+	Tue, 19 Aug 2025 18:13:50 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uoMLX-0000000Aay7-2520;
+	Tue, 19 Aug 2025 13:25:52 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8CEF116A3;
+	Tue, 19 Aug 2025 06:25:42 -0700 (PDT)
+Received: from [10.1.196.50] (e121345-lin.cambridge.arm.com [10.1.196.50])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 884583F738;
+	Tue, 19 Aug 2025 06:25:46 -0700 (PDT)
+Message-ID: <271daf71-3c57-49a5-a65f-c58ac670864f@arm.com>
+Date: Tue, 19 Aug 2025 14:25:45 +0100
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1479; i=krzysztof.kozlowski@linaro.org;
- h=from:subject; bh=zzJHbwP59FIAJRbh/laHlAqr7S4UlzgO8wkJUgyct7M=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBopHkX1WKSqJhvQcELKxO426h67ZTlpdrZBKf1M
- 5oH0eMggemJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaKR5FwAKCRDBN2bmhouD
- 1/bFD/4pTRoaumxN4qomkIs6yFeXrcTZBRmPV7OywqqKgE0NJ3WJviWn/dX3kiNForLEobrQSMA
- 7i1yOWVOmKASx/uWgJIMy/Dfo6UbTYSCDfOlIHpIdW6TF7TyEIGbQRF88NP0ZHx6P3EqGh056/V
- x4m3PTjiseJ1hWbmgE4fdcHlFyrRxo6QTnnOzhx82sdoQhpeRCM+zYe0iK7pkpo+Rn/+V2m8Y1V
- bjV3p+u4+VT+lVfJhQZFpMvlZuyBD5ealdsJoFj9JE3/iB3DG+4eDqpywmkPWecdtsQcxC27K+O
- x9T/J//KGtMnTguaOKQtB+rMAVPiq5H2lOGizXIhbikXopn+Woo5x+qW0Y59Q4PdzZW/IG5mDX9
- Ej4CCCPSSbEsM0W6ch4fTN6ofGGWIkx3bw3SMI0WBEEHehrtPFRMCdR/o07DivyguWeJKcmkIws
- 0NJcIH3Jn1JxBpHArx5tyAJ+nvB6c8Za5BX+IWOf1o/MQ7PzWgKRbtVUHouBAjwxfBABnNOvQxG
- BeRbFi5dJSpKuph/cnHwj/9MxK9y+H4uK4/waTuAH8NkDRlZ37Zd/tA3sQlEcw7cKhMMDxgGwyV
- f+VYKL+GDd5XIH2ft52QowEGKHBOhV/v+aBL+a0wWbuxlkoYAGyMcGi7E1lhu71rAHGAswuBucU BNVRX5amtmp0mqA==
-X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 19/19] perf: Garbage-collect event_init checks
+From: Robin Murphy <robin.murphy@arm.com>
+To: peterz@infradead.org, mingo@redhat.com, will@kernel.org,
+ mark.rutland@arm.com, acme@kernel.org, namhyung@kernel.org,
+ alexander.shishkin@linux.intel.com, jolsa@kernel.org, irogers@google.com,
+ adrian.hunter@intel.com, kan.liang@linux.intel.com
+Cc: linux-perf-users@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-alpha@vger.kernel.org, linux-snps-arc@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
+ linux-csky@vger.kernel.org, loongarch@lists.linux.dev,
+ linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-s390@vger.kernel.org, linux-sh@vger.kernel.org,
+ sparclinux@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, dmaengine@vger.kernel.org,
+ linux-fpga@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ intel-xe@lists.freedesktop.org, coresight@lists.linaro.org,
+ iommu@lists.linux.dev, linux-amlogic@lists.infradead.org,
+ linux-cxl@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-riscv@lists.infradead.org
+References: <cover.1755096883.git.robin.murphy@arm.com>
+ <ace3532a8a438a96338bf349a27636d8294c7111.1755096883.git.robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <ace3532a8a438a96338bf349a27636d8294c7111.1755096883.git.robin.murphy@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_061615_849197_B7ED40AA 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20250819_062551_585873_0AA4631D 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,53 +74,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DTS code coding style expects exactly one space around '='
-character.
+On 13/08/2025 6:01 pm, Robin Murphy wrote:
+[...]
+> diff --git a/arch/x86/events/intel/uncore.c b/arch/x86/events/intel/uncore.c
+> index 297ff5adb667..98ffab403bb4 100644
+> --- a/arch/x86/events/intel/uncore.c
+> +++ b/arch/x86/events/intel/uncore.c
+> @@ -731,24 +731,11 @@ static int uncore_pmu_event_init(struct perf_event *event)
+>   	struct hw_perf_event *hwc = &event->hw;
+>   	int ret;
+>   
+> -	if (event->attr.type != event->pmu->type)
+> -		return -ENOENT;
+> -
+>   	pmu = uncore_event_to_pmu(event);
+>   	/* no device found for this pmu */
+>   	if (!pmu->registered)
+>   		return -ENOENT;
+>   
+> -	/* Sampling not supported yet */
+> -	if (hwc->sample_period)
+> -		return -EINVAL;
+> -
+> -	/*
+> -	 * Place all uncore events for a particular physical package
+> -	 * onto a single cpu
+> -	 */
+> -	if (event->cpu < 0)
+> -		return -EINVAL;
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts    | 2 +-
- arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts | 6 +++---
- 2 files changed, 4 insertions(+), 4 deletions(-)
+Oopsie, I missed that this isn't just the usual boilerplate as the 
+comment kind of implies, but is also necessary to prevent the 
+uncore_pmu_to_box() lookup going wrong (since the core code won't reject 
+a task-bound event until later). I'll put this back with an updated 
+comment for v2 (and double-check everything else again...), thanks LKP!
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts b/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
-index 21f824b09191..decbf2726ec4 100644
---- a/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
-+++ b/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
-@@ -272,7 +272,7 @@ &gmac {
- 	phy-mode = "rmii";
- 	phy-handle = <&phy0>;
- 	assigned-clocks = <&cru SCLK_MAC_SRC>;
--	assigned-clock-rates= <50000000>;
-+	assigned-clock-rates = <50000000>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&rmii_pins>;
- 	status = "okay";
-diff --git a/arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts b/arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts
-index c13829d32c32..8a92700349b4 100644
---- a/arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts
-+++ b/arch/arm/boot/dts/rockchip/rv1109-relfor-saib.dts
-@@ -250,9 +250,9 @@ rtc0: rtc@52 {
- &i2s0 {
- 	/delete-property/ pinctrl-0;
- 	rockchip,trcm-sync-rx-only;
--	pinctrl-0 =  <&i2s0m0_sclk_rx>,
--		     <&i2s0m0_lrck_rx>,
--		     <&i2s0m0_sdi0>;
-+	pinctrl-0 = <&i2s0m0_sclk_rx>,
-+		    <&i2s0m0_lrck_rx>,
-+		    <&i2s0m0_sdi0>;
- 	pinctrl-names = "default";
- 	status = "okay";
- };
--- 
-2.48.1
+Robin.
 
+
+>   	box = uncore_pmu_to_box(pmu, event->cpu);
+>   	if (!box || box->cpu < 0)
+>   		return -EINVAL;
 
 _______________________________________________
 Linux-rockchip mailing list
