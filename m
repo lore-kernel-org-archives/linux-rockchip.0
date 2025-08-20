@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05A4BCA0EF8
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9486BCA0EFD
 	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 09:05:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,53 +12,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9zjVYpNGzIFZCP05L6cc1pwXlm93rSa33/ElMmbnXEY=; b=4sJgQUP6M2O7xC
-	mVrDuE2OhXHryiuN7M4xd3cqztW1L5aIrPfrGoMiROEvV2ellR2ie8l0VRcDhDbjhusN639JKut8j
-	daTg91YAGKdINeByMt6DtH02AnM/WlJLuX2AVegHclnnNZm6LFejMFcbKr11vXENtgRkCFP01bFJX
-	dZYcEXBa0nAcih15I4DV18Zh0VL69ATViKral/3+Z+vNVRIrGghVOTIrBNTx6U5TdeE4wTCnH/pCy
-	+4hjYQglf4n5RJ2lAM6l7zIx+e6Nf6TrysDbFDZb8X0/pgnjvL6FKHmM3P7xMNbj8ynR15g9Dypwd
-	u8S9njZLR76thDh5wa2w==;
+	List-Owner; bh=35Dblr+VcXu2dWXE5MhdZScyCWLHgJIWWnPrglZ1Zns=; b=2J4JJDm9s2tydK
+	gSH0hdrlR2EoFQ8t3h4JtLcMuUwqQl4iwZaPC3QXE/V1u2zQfDoDOPu6MsY9mOPNO/B4wu/trWDHQ
+	kk253/Wv/6xXsV+vlqqhmcJuNL3F2pF7aGuZ2zfCm8IEs3PwrCPhHFpZwzFfZRx2C3ZA+dO4D31a4
+	IFQx/3NQ84BvXjbi1yiMkNtH5AdiXDlIVn4q5OzWNziM6xEMjlLdZ+tNWpLyvFfvuomxg7FiicqLS
+	uOOqw//l7KMsEH2YNJGQh5dTaln0ulfziEPkDiojqbpxdWUWQbRjj3FD3BCdc01teSEMwLrnG9nWo
+	2Pk0EzVW9mQNxg6GuLAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoekl-0000000Cq1G-2SWC;
+	id 1uoekl-0000000Cq1A-0vhR;
 	Wed, 20 Aug 2025 09:05:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uodxt-0000000ChCr-1IbD
-	for linux-rockchip@lists.infradead.org;
-	Wed, 20 Aug 2025 08:14:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A27C56113B;
-	Wed, 20 Aug 2025 08:14:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E08A0C113D0;
-	Wed, 20 Aug 2025 08:14:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755677676;
-	bh=Q0amB+FLN0DKHfucM8btGqFHkdrP29AlfTdO55mBX58=;
+	id 1uodxm-0000000ChAY-0EJq;
+	Wed, 20 Aug 2025 08:14:31 +0000
+Received: from ideasonboard.com (mob-5-90-62-213.net.vodafone.it [5.90.62.213])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 59AD9C1;
+	Wed, 20 Aug 2025 10:13:29 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1755677609;
+	bh=b6AtRuuA1TXkxxwL5R1M9uifXTiUHK8TAQNwC7mBoN4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cvcgfbvS6AsdIkvJMpDJNKGzo221HJZRMdcyFRDHWAMrBbTVX1tnPNSNsugIoaj7I
-	 v5vK2w3XllMb+jW38L1BUIgzU9Sg2va5GYCyRTEp88dH1zhat3N4Q8sKRWSkZCyPuk
-	 him2qQyqT9SmbJGhAq5gABuTTDg1qGJQx57Mjv426uOahFC+95JgcBpjHOWaXu1fVR
-	 ZnkjtM6XqbuiDkFLhF7mtPBb6oclYlJ8/RDPF4EewW2M7DSCtvizmMAcb4RXXja9lT
-	 MZGGnW+dp2TGAwyfuCNtBu3keCcn4LFrE6M8S58tjvAdSP8xOuqlp55UCCxHlydhob
-	 uYsYemGDsE8VA==
-Date: Wed, 20 Aug 2025 10:14:33 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Diederik de Haas <didi.debian@cknow.org>
-Cc: Lee Jones <lee@kernel.org>, Pavel Machek <pavel@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, 
-	linux-leds@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: leds: Clearly mark label property as
- deprecated
-Message-ID: <20250820-hairy-economic-wildebeest-ba25a1@kuoka>
-References: <20250815104805.405009-1-didi.debian@cknow.org>
- <b30905fa-6bd1-47dd-8371-f609d418387b@kernel.org>
- <DC2ZLORG11W0.1CS78L6F2OV4Q@cknow.org>
+	b=ckZCzp/V9Zn36VMtZYp5vwEAwqMfkfrpxJRMD7Z+sMU5U7Sc3h+gcaRLyLdlNthTA
+	 wzdeKzE2qC83ePNN/HsF+dnctQrC7g/mufBDPBFRmPN79hnJnVnttUmGOo4tNfxoTl
+	 QRY2ndvyOyRyUQR3McogTwKeK0YUEZrlyqsqJ/gE=
+Date: Wed, 20 Aug 2025 10:14:25 +0200
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+	Dafna Hirschfeld <dafna@fastmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 1/8] media: uapi: Introduce V4L2 extensible params
+Message-ID: <agdhonmdt65z64akognraphaikdjmqs4bi4hodrmeeyblrybmr@r4id3zou6ecz>
+References: <20250819-extensible-parameters-validation-v3-0-9dc008348b30@ideasonboard.com>
+ <20250819-extensible-parameters-validation-v3-1-9dc008348b30@ideasonboard.com>
+ <aKT1vgHkdc98zOyC@kekkonen.localdomain>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <DC2ZLORG11W0.1CS78L6F2OV4Q@cknow.org>
+In-Reply-To: <aKT1vgHkdc98zOyC@kekkonen.localdomain>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250820_011430_522891_45BAFCE5 
+X-CRM114-Status: GOOD (  59.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,49 +72,277 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 15, 2025 at 02:06:49PM +0200, Diederik de Haas wrote:
-> On Fri Aug 15, 2025 at 1:00 PM CEST, Krzysztof Kozlowski wrote:
-> > On 15/08/2025 12:47, Diederik de Haas wrote:
-> >> The text description already mentioned the label property was
-> >> deprecated, but using the 'deprecated' property makes is clearer and
-> >> more explicit.
-> >> 
-> >> Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
-> >> ---
-> >>  Documentation/devicetree/bindings/leds/common.yaml | 1 +
-> >>  1 file changed, 1 insertion(+)
-> >> 
+Hi Sakari
+
+On Wed, Aug 20, 2025 at 01:07:58AM +0300, Sakari Ailus wrote:
+> Hi Jacopo,
+>
+> Thank you for working on this.
+>
+
+Thanks for the quick review
+
+> On Tue, Aug 19, 2025 at 04:54:42PM +0200, Jacopo Mondi wrote:
+> > Introduce v4l2-extensible-params.h in the Linux kernel uAPI.
 > >
-> > Please first read previous discussions:
-> 
-> [I reversed the order of the links so the oldest is first]
-> 
-> > https://lore.kernel.org/all/20221122111124.6828-1-cniedermaier@dh-electronics.com/
-> 
-> Rob: "They ['function' and 'label'] serve 2 different purposes."
-> 
-> > https://lore.kernel.org/all/20240509110545.49889-1-linux@fw-web.de/
-> 
-> Krzysztof: "I don't think there was conclusion to make it deprecated on
-> last attempt"
-> 
-> I agree.
-> What I don't understand: Why wasn't the text updated to correct the
-> incorrect statement about deprecation (that's how I interpret it now)?
-> Or some other conclusion being made and that that will be reflected in
-> the text and/or a deprecated property.
-> 
-> Otherwise the confusion remains and then it's just a matter of time
-> before a 4th person comes along proposing the same patch.
-> And possibly even more harmful: people use it incorrectly.
+> > The header defines two types that all drivers that use the extensible
+> > parameters format for ISP configuration shall use to build their own
+> > format versions.
+> >
+> > The newly introduce type v4l2_params_block represent the
+> > header to be prepend to each ISP configuration block and the
+> > v4l2_params_buffer type represent the base type for the configuration
+> > parameters buffer.
+> >
+> > The v4l2_params_buffer represents the container for the ISP
+> > configuration data block. The generic type is defined with a 0-sized
+> > data block that specific ISP implementation shall properly size
+> > according to their capabilities.
+> >
+> > [Add v4l2_params_buffer_size()]
+> >
+> > Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
+> > Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
+> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> > ---
+> >  MAINTAINERS                                       |   6 +
+> >  include/uapi/linux/media/v4l2-extensible-params.h | 144 ++++++++++++++++++++++
+> >  2 files changed, 150 insertions(+)
+> >
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index fe168477caa45799dfe07de2f54de6d6a1ce0615..67216d1e92d7ac81617bb3c4329e4096aa205706 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -26380,6 +26380,12 @@ F:	drivers/media/i2c/vd55g1.c
+> >  F:	drivers/media/i2c/vd56g3.c
+> >  F:	drivers/media/i2c/vgxy61.c
+> >
+> > +V4L2 EXTENSIBLE PARAMETERS FORMAT
+> > +M:	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> > +L:	linux-media@vger.kernel.org
+> > +S:	Maintained
+> > +F:	include/uapi/linux/media/v4l2-extensible-params.h
+> > +
+> >  VF610 NAND DRIVER
+> >  M:	Stefan Agner <stefan@agner.ch>
+> >  L:	linux-mtd@lists.infradead.org
+> > diff --git a/include/uapi/linux/media/v4l2-extensible-params.h b/include/uapi/linux/media/v4l2-extensible-params.h
+> > new file mode 100644
+> > index 0000000000000000000000000000000000000000..ace89299a4b37e428c0bc9a72fbc079b1dcda91a
+> > --- /dev/null
+> > +++ b/include/uapi/linux/media/v4l2-extensible-params.h
+> > @@ -0,0 +1,144 @@
+> > +/* SPDX-License-Identifier: ((GPL-2.0+ WITH Linux-syscall-note) OR MIT) */
+> > +/*
+> > + * Video4Linux2 extensible configuration parameters base types
+> > + *
+> > + * Copyright (C) 2025 Ideas On Board Oy
+> > + * Author: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> > + */
+> > +
+> > +#ifndef _UAPI_V4L2_PARAMS_H_
+> > +#define _UAPI_V4L2_PARAMS_H_
+> > +
+> > +#include <linux/types.h>
+> > +
+> > +#define V4L2_PARAMS_FL_BLOCK_DISABLE	(1U << 0)
+> > +#define V4L2_PARAMS_FL_BLOCK_ENABLE	(1U << 1)
+> > +
+> > +/*
+> > + * Reserve the first 8 bits for V4L2_PARAMS_FL_* flag. Platform-specific flags
+> > + * should be defined as:
+> > + * #define PLATFORM_SPECIFIC_FLAG0	((1U << V4L2_PARAMS_FL_PLATFORM_FLAGS(0))
+> > + * #define PLATFORM_SPECIFIC_FLAG1	((1U << V4L2_PARAMS_FL_PLATFORM_FLAGS(1))
+>
+> How many bits are you shifting left here again?
 
-Whatever change you want to do here, I expect to address one way or
-another these previous discussions. If the code is confusing, refine the
-description. But not in a way which ignored previous feedbacks.
+More than what I wanted to
 
-Best regards,
-Krzysztof
+The shift in V4L2_PARAMS_FL_PLATFORM_FLAGS is a leftover from a
+previous version, sorry about that
 
+>
+> > + */
+> > +#define V4L2_PARAMS_FL_PLATFORM_FLAGS(n)	((n) << 8)
+>
+> n really needs to be unsigned.
+
+Any idea how to guarantee that ?
+
+I think I will:
+
+#define V4L2_PARAMS_FL_PLATFORM_FLAGS(n)	((n) + 8)
+
+So that users can:
+
+ * #define PLATFORM_SPECIFIC_FLAG0	((1U << V4L2_PARAMS_FL_PLATFORM_FLAGS(0))
+ * #define PLATFORM_SPECIFIC_FLAG1	((1U << V4L2_PARAMS_FL_PLATFORM_FLAGS(1))
+
+>
+> > +
+> > +/**
+> > + * struct v4l2_params_block_header - V4L2 extensible parameters block header
+> > + *
+> > + * This structure represents the common part of all the ISP configuration
+> > + * blocks. Each parameters block shall embed an instance of this structure type
+> > + * as its first member, followed by the block-specific configuration data. The
+> > + * driver inspects this common header to discern the block type and its size and
+> > + * properly handle the block content by casting it to the correct block-specific
+> > + * type.
+> > + *
+> > + * The @type field is one of the values enumerated by each platform-specific ISP
+> > + * block types which specifies how the data should be interpreted by the driver.
+> > + * The @size field specifies the size of the parameters block and is used by the
+> > + * driver for validation purposes.
+> > + *
+> > + * The @flags field is a bitmask of per-block flags V4L2_PARAMS_FL_* and
+> > + * platform-specific flags specified by the platform-specific header.
+> > + *
+> > + * Documentation of the platform-specific flags handling is specified by the
+> > + * platform-specific block header type:
+> > + *
+> > + * - Rockchip RkISP1: :c:type:`rkisp1_ext_params_block_type`
+> > + * - Amlogic C3: :c:type:`c3_isp_params_block_type`
+> > + *
+> > + * Userspace is responsible for correctly populating the parameters block header
+> > + * fields (@type, @flags and @size) and the block-specific parameters.
+> > + *
+> > + * @type: The parameters block type (platform-specific)
+> > + * @flags: A bitmask of block flags (platform-specific)
+> > + * @size: Size (in bytes) of the parameters block, including this header
+> > + */
+> > +struct v4l2_params_block_header {
+> > +	__u16 type;
+> > +	__u16 flags;
+> > +	__u32 size;
+> > +} __attribute__((aligned(8)));
+> > +
+> > +/**
+> > + * v4l2_params_buffer_size - Calculate size of v4l2_params_buffer for a platform
+> > + *
+> > + * Users of the v4l2 extensible parameters will have differing sized data arrays
+> > + * depending on their specific parameter buffers. Drivers and userspace will
+> > + * need to be able to calculate the appropriate size of the struct to
+> > + * accommodate all ISP configuration blocks provided by the platform.
+> > + * This macro provides a convenient tool for the calculation.
+> > + *
+> > + * Each driver shall provide a definition of their extensible parameters
+> > + * implementation data buffer size. As an example:
+> > + *
+> > + * #define PLATFORM_BLOCKS_MAX_SIZE		\
+> > + *	sizeof(platform_block_0)	+	\
+> > + *	sizeof(platform_block_1)
+> > + *
+> > + * #define PLATFORM_BUFFER_SIZE			\
+> > + *	v4l2_params_buffer_size(PLATFORM_BLOCKS_MAX_SIZE)
+> > + *
+> > + * Drivers are then responsible for allocating buffers of the proper size
+> > + * by assigning PLATFORM_BUFFER_SIZE to the per-plane size of the videobuf2
+> > + * .queue_setup() operation and userspace shall use PLATFORM_BUFFER_SIZE
+> > + * when populating the ISP configuration data buffer.
+> > + *
+> > + * @max_params_size: The total size of the ISP configuration blocks
+> > + */
+> > +#define v4l2_params_buffer_size(max_params_size) \
+> > +	(offsetof(struct v4l2_params_buffer, data) + (max_params_size))
+> > +
+> > +/**
+> > + * struct v4l2_params_buffer - V4L2 extensible parameters configuration
+> > + *
+> > + * This struct contains the configuration parameters of the ISP algorithms,
+> > + * serialized by userspace into a data buffer. Each configuration parameter
+> > + * block is represented by a block-specific structure which contains a
+> > + * :c:type:`v4l2_params_block_header` entry as first member. Userspace populates
+> > + * the @data buffer with configuration parameters for the blocks that it intends
+> > + * to configure. As a consequence, the data buffer effective size changes
+> > + * according to the number of ISP blocks that userspace intends to configure and
+> > + * is set by userspace in the @data_size field.
+> > + *
+> > + * The parameters buffer is versioned by the @version field to allow modifying
+> > + * and extending its definition. Userspace shall populate the @version field to
+> > + * inform the driver about the version it intends to use. The driver will parse
+> > + * and handle the @data buffer according to the data layout specific to the
+> > + * indicated version and return an error if the desired version is not
+> > + * supported.
+> > + *
+> > + * For each ISP block that userspace wants to configure, a block-specific
+> > + * structure is appended to the @data buffer, one after the other without gaps
+> > + * in between nor overlaps. Userspace shall populate the @data_size field with
+> > + * the effective size, in bytes, of the @data buffer.
+> > + *
+> > + * Drivers shall take care of properly sizing of the extensible parameters
+> > + * buffer @data array. The v4l2_params_buffer type is defined with a
+> > + * flexible-array-member at the end, which resolves to a size of 0 bytes when
+> > + * inspected with sizeof(struct v4l2_params_buffer). This of course is not
+> > + * suitable for neither buffer allocation in the kernel driver nor for proper
+> > + * handling in userspace of the @data buffer it has to populate.
+> > + *
+> > + * Drivers using this type in their userspace API definition are responsible
+> > + * for providing the exact definition of the @data buffer size using the
+> > + * v4l2_params_buffer_size() macro. The size shall be used
+> > + * by the driver for buffers allocation and by userspace for populating the
+> > + * @data buffer before queueing it to the driver
+> > + *
+> > + * Drivers that were already using extensible-parameters before the introduction
+> > + * of this file define their own type-convertible implementation of this
+> > + * type, see:
+> > + * - Rockchip RkISP1: :c:type:`rkisp1_ext_params_cfg`
+> > + * - Amlogic C3: :c:type:`c3_isp_params_cfg`
+> > + *
+> > + * @version: The parameters buffer version (platform-specific)
+> > + * @data_size: The configuration data effective size, excluding this header
+> > + * @data: The configuration data
+> > + */
+> > +struct v4l2_params_buffer {
+> > +	__u32 version;
+> > +	__u32 data_size;
+> > +	__u8 data[];
+>
+> Would __attribute__((__counted_by__(data_size))) be problematic here?
+
+Nice, didn't know about that. Read a bit through [1] and [2] and
+there's one thing that it is not clear to me:
+
+From [2]:
+
+* 'p->array' has _at least_ 'p->count' number of elements
+  available all the time.  This relationship must hold even
+  after any of these related objects are updated during the
+  program.
+
+I wonder what "number of elements available all the time" means. It is
+simply about the fact that the allocated space that follows the
+flexible array member should be larger that the p->count value ?
+
+I played a bit with __counted__by() and it seems to be the the case.
+
+[1] https://embeddedor.com/blog/2024/06/18/how-to-use-the-new-counted_by-attribute-in-c-and-linux/
+[2] https://gcc.gnu.org/pipermail/gcc-patches/2024-May/653123.html
+>
+> Perhaps not now but it could be added later on?
+
+I do expect applications in user-space that populates an extensible
+parameters buffer to:
+
+1) Operate on a large-enough data[] as the driver allocates the buffer
+on their behalf using the per-platform MAX_SIZE (see
+RKISP1_EXT_PARAMS_MAX_SIZE in example)
+
+2) Populate the data[] array one block at the time. They can update
+data_size easily before accessing data[]
+
+So I presume we could as well add it right away ?
+
+>
+> > +};
+> > +
+> > +#endif /* _UAPI_V4L2_PARAMS_H_ */
+> >
+>
+> --
+> Kind regards,
+>
+> Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
