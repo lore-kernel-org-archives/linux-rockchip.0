@@ -4,59 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8539CA0EEB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 02:33:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 073B5CA0EE6
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 02:44:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Cc:To:From:MIME-Version:Date
-	:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tUnI8G60u22q1p39lEmo6k+IWvboU8K6XC6HuTA8bIo=; b=F8ysjb4XKTWdDP
-	0rGX46BsXv6lCaKbsztoBwYNVUIw92Dv3zE9Fh1v87MXm7zxiwSTOa+K0LsJMVs/CThBgX9NrvG93
-	8RARoQKgVhAz6NYchbgTmyT4Di935IcWEE6i2NSwOtVILeOX2lZF2Lqq1Iqod4+m1iO8javwgEJSi
-	bxHONEQx2iyo17fID7rWVW33d1j/iBrDLDcoc2lHw2LkNN6quix50KkKfVP1XQbVyA7R6RJOotK6E
-	kayFLaCs8xgcpnHms/vJF1uab22yLnNu9cVzEfLZhc11/vllg4dq61JM3GulRobOsCwEje/s/X5ZW
-	Osw6GwjuWNqj7ctud8zA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nitW76nKZe3Avh7dx03gI36aeOBPM98lhUOaBg9NtKw=; b=IrMOSGhO69nMo3
+	C7oaJZL7xMCvzJZuWciGZgYAxozPNK9WbVypV1WZWm12L7MRvBdvygcTNNqn0AUCmUNOz+QRdGOF8
+	Jcx2iIDuRWhoQfrbpAXgxq/poxcraOq/1O/wszbQ/84KnCM4zHMfZ5f9ebIlAg2LSE47tQLS6s6Cf
+	EhDPB0qQ0mOlxvpLS5zTIfkMvObi54uJwHR2nTdkIFXrfmOBUDo+B2bC12HFgGygdrLaOONeFXFTJ
+	Ap3QSXtyk/a07bO4SV6kQSRE2vOjBFS5vyVuZKt838/LXXdXwxgD7mXIZDpxzDFrks/eVa9XWHZ1H
+	S8xlml1+wcMiocM6giQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoYdi-0000000CBM6-0lPw;
-	Wed, 20 Aug 2025 02:33:26 +0000
-Received: from mail-107163.simplelogin.co ([79.135.107.163])
+	id 1uoYoX-0000000CCWg-13ss;
+	Wed, 20 Aug 2025 02:44:37 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoYb3-0000000CAyP-3xkm
-	for linux-rockchip@lists.infradead.org;
-	Wed, 20 Aug 2025 02:30:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; d=simplelogin.co; s=arc-20230626; t=1755657037;
-	cv=none; b=hFs+mQlxgLBbdopKrhrtUMwXpK8cUhzNU0sPdtWxKJiBa0C8FgRlH9YjSV/oglpYwJn5VZJ4/qPlIK/8lcN46w4FL0tlt0KVYGm8jhUKnBJr55PZ0ViIFfLgF7nkYN0XDwIuDOn3m4+0A6lSOBK3TNri+mbewY8A/tSs9xlySa+1xU6XxsuwaHwAdKP0lnHJrzckoy8ev/0sJ/EBYTk5Dpn3ZDxgXcCXNKV+eTUc/kSey9iTOChdfo4Jmo7GcBVnNYL+r7shhXp7DDtzm0ULAkYVs23Vn2EXSWTDrXq2AfyPnRAp1wnyS+5EHVVeno33zTgV2pGFbZOghmH2EycXsw==
-ARC-Message-Signature: i=1; a=rsa-sha256; d=simplelogin.co; s=arc-20230626;
-	t=1755657037; c=relaxed/simple;
-	bh=mE/FNXHmnDkXlnsGAUPUvCmd7qH+niPGFcQKPxcn5Fk=;
-	h=Subject:Date:From:To:Cc; b=T5OSS3xG15zs0xt2HhfJVQDQqtFpM0JBQ4ComViM/+bEXcF3VSOwi1ncdWHs7D9heLZOl6hF/IT7MPqOD0wTh30B/QxOi24hx78acHljHiSc8KTdijnZe7o2dVtYtzUFVqP63Bo3HeFoGlz2fAKfMVb23HXZJoRAyXyNJOzQTeONBRG/EqfnQFKyg928eCtImJWq/jrvaqLUy9MXMzE7kRo2F2qUGOYnwNaFFsqz7aBoHt4kcv4FBUqrNfqvJ2dhunJE+MMrg895X6b4Y9bDIwy409DGMFhpm/qHRimubpWoeNmERwJoNTnO29+BFA9rixuigvft1ZpN4zPGcoi9cA==
-ARC-Authentication-Results: i=1; mail.protonmail.ch
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=projectinitiative.io;
-	s=dkim; t=1755657037;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=bro9JjGbbaJ8cSHnyXnMRJZOIgl4PR8uy7wdbmoDRHM=;
-	b=pmrRVYY58Q58irFZMMKFUaJtggwUH2A+WuewyrE9A/1xF06WPConJYRuUpZ1UBTnZg5s+b
-	Z36vpYN9Ly4u7pSQcPlstKfEH2a4RESSddVYI2d5iqAPbuGAg2XSC4LUsUgQeAQBkBwOKn
-	YZDHdnHClk5jYmfAZ+g1HJkiZmTvBGQ=
-Subject: [PATCH] arm64: dts: rockchip: rk3588s-rock-5a: Add green power LED
-Date: Tue, 19 Aug 2025 21:30:12 -0500
+	id 1uoYkt-0000000CCCQ-18rp;
+	Wed, 20 Aug 2025 02:40:52 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-245f2a8fa81so625925ad.0;
+        Tue, 19 Aug 2025 19:40:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1755657650; x=1756262450; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=5o8thSzIALN1uPBnoTvMoKA6rLfBMmP8vLMFrWtTp60=;
+        b=huIPOAZpoueoWSMjsW1mLDu1hvnZXyULTgkafVEiVi4Zy5BPZZIL/ZqOLXydA60mWJ
+         I02UIyxeZ0QIOCjjZ19kyNHJGo1XYQoJR1Bi+0WgTAqYXUQhLualH3ker+hW+Bwoxe8I
+         D6qJaa8VdXH5US/fjZolDuSXSTpKxHtf1yeb3iiD9q+50OrpLw3oAkWm2uiJvCXlvc/7
+         3A3+LpsSm3PXZZz2TTVQQdNFFhjNrpS8brkLa+OAsOl4wLFeXB786tr0bmLY9hoiZ0l2
+         /VIlRLqTBlkhGpzHbgpYzniOHaxMwz0fmKIVvq6jlt9/qN6Kd3wA0LJlb26YNEWqFOX2
+         oPcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755657650; x=1756262450;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5o8thSzIALN1uPBnoTvMoKA6rLfBMmP8vLMFrWtTp60=;
+        b=dbyHBxdOp9yf4HtxO8/MdU3Sg5DEHv+oU8xptURUibm2eEBh9DDAXNfs+49Bywtj5Y
+         WtLQmK3252B44mueRxzxrIf+H3THw88+eIuzg8cvwtE3JH8+JWWacTfi4teIVbJX3tic
+         bx5vuJwunTac3KYQmouzWnaCMsDyj5y3Zz1G6RBrMzdEkvlE3KrwBNBdISif6KjV715m
+         MsxRjKSmq7+tQG1O7VQnADJyaVtKcqPKS820dkXFpvclrFkJOU5AFqsbdWdDc0ccfY20
+         nrpJVWQf4Im3WU/wdLt9PE5m7RZI021fWkSc1XBZZzz/33nv9klXevKMLI0CpzV1uGDu
+         uHtQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVVxTVRXv01mOQtq4EKpRmJDFHk4rFV8b84dR0JukRzSvXBjF4TTt1MJagBrl3fVs3VXaIu5zbF3Rftxh0ItaSa@lists.infradead.org, AJvYcCWMq0bleMeOeIZjNNXfIHla41spjZBlcKzlanjrZSsBAx64LNLhTMv0TnlLilpmH1JiY27kjGG9zu5MENW2nHE=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx7Q5M04DWLSXzv4fQ16iGFoHPF7P6y+8ExwznVWC9IKqlqE9p+
+	KspyIkghzbsTj6ZZ2fCPRwI33p2uuQFbcGamKKnO2OYf3cgWphHG/WDZ
+X-Gm-Gg: ASbGnct9cvKJ35YQiChoIyZTVTBtfORb9bVmqZCil+TJnQtlsiwSPyl68zMI3Crszu1
+	4FBnEkIKf4L4zLNqlhXQ8d5V57v884gjaVCPJIcKqf3cmqjjphowKm/iSY9l5qN5UnLa9rgAfQR
+	g0OQk2y2uWU4kqT7N0WwewT+e0UB+Ln1DgcVKv4Ju4ro6dg7IkNuEQBMdYroCvzwjDoVB6CyHBp
+	QWP/kQb5mgaWq9hkWs74Sb06n7uMN5rYtrehcS6SaIkc1aAtQqi9TxPBO89s+5fJv8DTkK4hNma
+	SZld8gU5VffoK83w4ZLjhGKi31bi2qcyj8607TJv8GWceCtpQS/vD4c9iFnmaHC3qrchuYUPfUL
+	xVc7fcXpLZWlOGDQ=
+X-Google-Smtp-Source: AGHT+IHq6qOIwEilWM/BAT9k4oZ2UZBkL4UPMZyaTKIJz4HZq4C0Dc+kdcM0flbXi6E7TpzgZz7WIw==
+X-Received: by 2002:a17:903:90f:b0:237:e3bc:7691 with SMTP id d9443c01a7336-245ee117b55mr18310785ad.13.1755657650342;
+        Tue, 19 Aug 2025 19:40:50 -0700 (PDT)
+Received: from anyang ([106.250.177.234])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-245ed4ec0ddsm10880125ad.114.2025.08.19.19.40.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 Aug 2025 19:40:49 -0700 (PDT)
+Date: Wed, 20 Aug 2025 11:40:44 +0900
+From: Dongjin Kim <tobetter@gmail.com>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
+	krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	robh@kernel.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Change ethernet TXD timing
+ delay value
+Message-ID: <aKU1rJKzkkS4P+VT@anyang>
+References: <20250819075522.2238643-1-tobetter@gmail.com>
+ <20250819151019.877709-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-From: kylepzak@projectinitiative.io
-To: heiko@sntech.de
-Cc: devicetree@vger.kernel.org,linux-arm-kernel@lists.infradead.org,linux-rockchip@lists.infradead.org,conor+dt@kernel.org,krzk+dt@kernel.org,robh@kernel.org
-Message-ID: <175565703702.6.15498212790604388615.862782045@projectinitiative.io>
-X-SimpleLogin-Type: Reply
-X-SimpleLogin-EmailLog-ID: 862782049
-X-SimpleLogin-Want-Signing: yes
+Content-Disposition: inline
+In-Reply-To: <20250819151019.877709-1-amadeus@jmu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_193042_146993_3E4B5670 
-X-CRM114-Status: UNSURE (   9.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250819_194051_313826_8A991819 
+X-CRM114-Status: GOOD (  15.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,42 +101,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Radxa ROCK 5A board includes a green power LED that is defined in
-the vendor device tree but is missing from the upstream kernel DTS file.
+On Tue, Aug 19, 2025 at 11:10:19PM +0800, Chukun Pan wrote:
+> Hi,
+> 
+> > Very poor network performance is observed on the ODROID-M1 Board
+> > (REV 1.0 20220613) when running iperf3 (under 200Mbits/sec), and
+> > this problem can be resolved after changing the value of TXD
+> > timing to 0x35 from 0x4f.
+> 
+> Can you try changing phy-mode to "rgmii-id" ?
+> 
+> ```
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
+> @@ -200,7 +200,7 @@ &gmac0 {
+>  	assigned-clock-rates = <0>, <125000000>;
+>  	clock_in_out = "output";
+>  	phy-handle = <&rgmii_phy0>;
+> -	phy-mode = "rgmii";
+> +	phy-mode = "rgmii-id";
+>  	phy-supply = <&vcc3v3_sys>;
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&gmac0_miim
+> @@ -209,9 +209,6 @@ &gmac0_rx_bus2
+>  		     &gmac0_rgmii_clk
+>  		     &gmac0_rgmii_bus>;
+>  	status = "okay";
+> -
+> -	tx_delay = <0x4f>;
+> -	rx_delay = <0x2d>;
+>  };
+>  
+>  &gpu {
+> ```
+> 
+> --
+> 2.25.1
+> 
+> 
+Thank you for suggesting me to try 'rgmii-id' again.
 
-This causes the LED to be uncontrollable from the operating system, as no
-entry is created for it under /sys/class/leds.
+I'd remember that 'rgmii-id' didn't work with the very early version of
+the board, however your suggestion works. Let me test the change with
+more boards and submit the new patch when it's done.
 
-This patch adds the missing node to the leds block, creating a
-"green:power" device and allowing the LED to be controlled by the kernel.
-
-Signed-off-by: Kyle Petryszak <kylepzak@projectinitiative.io>
----
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index f894742b1ebe..f70b49d9361a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -52,6 +52,13 @@ leds {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&io_led>;
- 
-+		power-led {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_POWER;
-+			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "default-on";
-+		};
-+
- 		io-led {
- 			color = <LED_COLOR_ID_BLUE>;
- 			function = LED_FUNCTION_STATUS;
--- 
-2.49.0
-
-
+Thanks a lot.
+Dongjin Kim.
 
 _______________________________________________
 Linux-rockchip mailing list
