@@ -4,64 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E529CA0EE4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91CBCCA0EDC
 	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 11:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GNhSIZ2jY/NBIwGU9Q/E9KG6gwdGBwN9VzevePeIHdM=; b=20NsdPWawyvaMx
-	jG/3/rCX1Z5Ak57YvGqZbwtBkSRNIZ4M4ep6NaNoQfv4pppeyTPHTVJsrxoNdapVCL5657D+LCX/A
-	rr46uylnbk+uW/0w/U6VkoG6RUc51AR1B23+N+6AwFnt/c7/FupPmvGxf5hPbjFdebodCgQVgyYge
-	J3JtuH2Z5PnSP2YsF/eznVcG+/UmfUAcFXHytSVzmbUCn+Qqun3cS+bJLApTWP/fUSeIR4Yl2A7pf
-	USYxOgChbq0e829K4DWfyH5FqHi4BMWdXzUwbyEEKwm7RVUWwjHZT4pC/uDMKHgSY/sewwHZ0o8uc
-	VDxi1kM/5GKOZUswsPig==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qDDA2uv3rkHfUBiCM+bsG4acpJjCYqHqQDf+8NYplHk=; b=J5L2FZBCJM78gI
+	So/skdOk+bX448ysocBnVgrgMhPuW6/yfalf+T/TmhOWT2HZ60HU9BlHMXP2VZKUHEsNn8MsrJzlC
+	EB4amdvrgP6qhfUIl5HSR9Q83HzBQhxPtAwDoxOHjBUL4zjFOSkKKmC0IMYbG9MY6ueMDZvtfeVtl
+	x5jxCKIgNBwhAYQo6woDGysUpzTYJ/+X+QUSZvGpJVJYuootEKVA9DlJo4CRt/EqOis182YzUknax
+	uH8VfXBG/AneSL0nzgFce+0utC4PVa51scSCx8IceZmHiM7Ch1hukjJ+SQXo7lzZ+L9W1C/QrE/Vq
+	BqHBzv7izxHxRaNvZwyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uogwq-0000000DOI4-2hbk;
+	id 1uogwq-0000000DOHp-1A2D;
 	Wed, 20 Aug 2025 11:25:44 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uog7m-0000000DAwc-3cy7
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 20 Aug 2025 10:32:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=L/DY3w/dkX1JEnee89D1ni0qXzrMnWvJW71C4ROFh5o=; b=ULumkeOlQH7u9iV18FtrR93+Tx
-	uO2SdgB14gE7yktBs8AWMg0wGr14oROh2z2h2t65f8PzXqkIJ8b3YOxKCbALMfsSSN/iDPbDGNz+6
-	qBXUa5DATh27pgq5X5D/6GY7kqVFvRQ+Gvjk2wtfQrQKp83kfzTHvw1vhy68dqioH1JU5UP/I6I+y
-	lloI/gK9BQNtpWouTrjUuKQLQtm1Anf3Nqz8JSqY0zt5ojBEkNUkjA84eSNp5K6KosFYvi5gqvhgR
-	YomWmYK9iXtg1Z1jk2jG+s2Huqy3mO5w5yJxLnY+1mLZZqhltqd5rxH4ygF3FE9MFKpeUVCEQCPc1
-	zUqCIPpQ==;
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uog7j-00000000IMl-1zE1
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uog7k-0000000DAvE-25uL
 	for linux-rockchip@lists.infradead.org;
 	Wed, 20 Aug 2025 10:32:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1755685960; cv=none; 
+ARC-Seal: i=1; a=rsa-sha256; t=1755685964; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=OAvv+zFCpb/jM/M2C29e+J2X1pekKnt31HFBRH1I5gYpSYu0oKkTnDOQgeb+OCtgvry1tn53oSeGUwBU2No3oJH113NyXWP8bBSu1+inlx4Al+1M9HgG1kc8X2uTccqCxomlXe2DguVrboiJrYoAXA/huManVE1nu7TXkWu4jpU=
+	b=aWtPItNJt0nBMeetRrPmmjbxyGSVF9bGO0kIpyRp3SGnwaVSpsLKB5UIFjHEfbBA/03TYt+2QuWmECEG8jJsdtkYNjCQH7Yz0yJofoXWROQUjGyThHFBZg9x5bhopb+/Uv2n4Z1BMEXY/yrjVLpenwCxtZGjm68Z6m7EZqrwEts=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1755685960; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=L/DY3w/dkX1JEnee89D1ni0qXzrMnWvJW71C4ROFh5o=; 
-	b=TsQgr9Wbhsj/oWpPS6Td2/xjWI122Pq4MgNQr+xN7PRnHvoPlhBAKFXU1aOrA86N0C462qrAPoeN9B7oJbcVCgDLLJelDlrrw0kFM1EhfS62QgpNzfyNEbHruysnQEJOLMmSpxVbUGa6HDCp6weCYr3BzSEISeeeUueaIcKwRrE=
+	t=1755685964; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=UHE4xv6IMWn9xVuYe/yB5BmyxtdoVIMDD7/BwcD/9QY=; 
+	b=mMbhjEyDw5wcmyZWq3YIRNEM42wf46sfs5Qe/r9jrG3dUJuqUoA8kZh0M/uIv1Wr1ezAf54WLVnX36L0P5e9mMkEcgWAtE8jU7d7r5OuUjdWynBRgkpjvnaM7mPxwBqPiqm6to7UbroaGJb/JQ//gHkQimF8YeAf+VLL3kVT5pc=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
 	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1755685960;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1755685964;
 	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=L/DY3w/dkX1JEnee89D1ni0qXzrMnWvJW71C4ROFh5o=;
-	b=JkAjfh70HrHYkkYUzhqeOdM0OOhRk/E0lFcuJpnw841ib36p1ylUrbCiBVmFSwA0
-	mMDpwGw/IOR1D4glHoclGINZylSvTLqeQx16KQY5PReb+iAhjfrjtV6EwhvQCfu8Unv
-	A2xxiqnMXji9JLcsGXhsabGf5Ll5sm4lnC0NX73M=
-Received: by mx.zohomail.com with SMTPS id 1755685957040941.9859599941752;
-	Wed, 20 Aug 2025 03:32:37 -0700 (PDT)
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=UHE4xv6IMWn9xVuYe/yB5BmyxtdoVIMDD7/BwcD/9QY=;
+	b=GAiESyXkzIFmcFn5sOzZnfcvsq5I2Dtus47a5JDxac+sv8IopOguCtuS4zsbZrVp
+	bURPLN896N/2/asKPJnqZJypBZMhLxwArh/pZDM7ibzFvz3zglC6Lx54nCvy3pylsP8
+	HvPPyu9rYLrwiImNgpExvI7tcsVh4VJjXN0Yqk/I=
+Received: by mx.zohomail.com with SMTPS id 175568596154683.63382003069205;
+	Wed, 20 Aug 2025 03:32:41 -0700 (PDT)
 From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Hans Verkuil <hverkuil@xs4all.nl>,
@@ -79,15 +64,18 @@ Cc: kernel@collabora.com,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH v1 1/2] MAINTAINERS: Update Synopsys HDMI RX driver entry
-Date: Wed, 20 Aug 2025 13:30:58 +0300
-Message-ID: <20250820103059.342850-1-dmitry.osipenko@collabora.com>
+Subject: [PATCH v1 2/2] media: dt-bindings: snps,dw-hdmi-rx.yaml: Updated maintainers entry
+Date: Wed, 20 Aug 2025 13:30:59 +0300
+Message-ID: <20250820103059.342850-2-dmitry.osipenko@collabora.com>
 X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20250820103059.342850-1-dmitry.osipenko@collabora.com>
+References: <20250820103059.342850-1-dmitry.osipenko@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_113255_977702_AFF94070 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20250820_033256_600900_35F85A72 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,26 +93,26 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Shreeya no longer works at Collabora, set Dmitry as maintainer of
-the Synopsys HDMI RX driver.
+the Synopsys HDMI RX binding.
 
 Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 ---
- MAINTAINERS | 2 +-
+ Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e913c1edd1fd..e1db3cc859eb 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -24535,7 +24535,7 @@ F:	drivers/net/pcs/pcs-xpcs.h
- F:	include/linux/pcs/pcs-xpcs.h
+diff --git a/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+index 510e94e9ca3a..b7f6c87d0e06 100644
+--- a/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
++++ b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+@@ -8,7 +8,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ title: Synopsys DesignWare HDMI RX Controller
  
- SYNOPSYS DESIGNWARE HDMI RX CONTROLLER DRIVER
--M:	Shreeya Patel <shreeya.patel@collabora.com>
-+M:	Dmitry Osipenko <dmitry.osipenko@collabora.com>
- L:	linux-media@vger.kernel.org
- L:	kernel@collabora.com
- S:	Maintained
+ maintainers:
+-  - Shreeya Patel <shreeya.patel@collabora.com>
++  - Dmitry Osipenko <dmitry.osipenko@collabora.com>
+ 
+ description:
+   Synopsys DesignWare HDMI Input Controller preset on RK3588 SoCs
 -- 
 2.50.1
 
