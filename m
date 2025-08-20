@@ -4,119 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D951CA0EDC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 16:00:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC977CA0EED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 16:06:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BUfh/DlGGK4WqzkvxvQ4+gdP2uFmMP0c4jHnyg1ZFsA=; b=uOJtJp7lL2jKOW
-	6Q/28F01ZTUORfVOWHI+Kk4MMJ9RCRnWVXfZ+H7QpqRzBOWNR4JJjbvUiW6YjGre78AMLe5NHAOvY
-	yimk0GwUBtWdLd12vl6h0oYpHOzz6XCnOxSnGSrnT659UVyzRA3u0t/Fzy+TwHbRzCd4WGZZTHl4f
-	uO5RZKstmaaju+0aQ8vqr9R2fInhJ3ZOOd2BDmJ2/hNraTGeAsKZlsXH4b1mBFaL1bMJTTDlkiLY7
-	tNTzyZggMpsiM0vWnERBwAJEGRDr29nRCIVsuKygFpbTuk4yXILVbI9798UIGMKILpC3ARsP6Fg7N
-	odXc7gw/yrp6RHgtVzcA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:From:Subject:Cc:To:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dWvI4gFe2/SdHbb3P3yBVZY2j2yjyK33Pw3wfN1zysw=; b=Tt79+MTWmYoeo62cliJjdxFZ9M
+	B7mux5nMQe7WMXfjBxBOXkNDDl3pJeom0TljOCNTs/M0yoC1B5a7Em9ShbR8JU0NVFgZY6AUxQPN6
+	mD4D7khX2aeSDGaxv7typIc6JOIVqDmbylqdQuTMKqvA+jnO6ANMQ8lgnKPUGD1O5DougxYJbQRoY
+	jw7IO4AdzpE7o4rDqH617XGjt+69ALmu9s3LYduigGry24C7yf6b/IRM8EeQGUrbCpVUhEuIsSlqN
+	x3ahKTMGbg+tqSiRgNmK9n9sgZtuvXXroWN9yU0AdyuqJyfcala04+3Ts86zd390+1e4j6+/7hybn
+	vYBJOaMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uolF2-0000000EKSf-1Ucz;
-	Wed, 20 Aug 2025 16:00:48 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1uolKB-0000000ELJO-39Or;
+	Wed, 20 Aug 2025 16:06:07 +0000
+Received: from out-179.mta0.migadu.com ([91.218.175.179])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uojdQ-0000000Dzun-16jk
+	id 1uojij-0000000E1lS-1ud3
 	for linux-rockchip@lists.infradead.org;
-	Wed, 20 Aug 2025 14:17:53 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-afcb74bef86so117324166b.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 20 Aug 2025 07:17:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1755699471; x=1756304271; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=JYDyb1l+byMOiaJzKn+UnmmghGQhvpVn03tecEee7KM=;
-        b=NIXR/K1HfbUwtrV7NPXcPmMx1hrBPRw/n0eg+Ki04mLpOCYsgTwJ8voX7HYnTZw0oh
-         jFKiNWilCKhcN2xmuh8raBho9TwC579+hSm/QbtDCH0kR+d5HsgC4duGwhjhweJXfqX8
-         5pqGddAJQztLkTapecntkn8cOuKKd0MO93af+pUZaEvplUmplTLng/RARn6T9Dp1+Dz5
-         SS2POSg/aYzA/ZzU/l/LJd2+cG7mOVus3HDVPnCZjqo7om7vJpSksN+pJKwQQBn8nC6X
-         odUyGR8QCw9Ak9EbDrhagywDxVr1UTJ4Uh7rOMuHCOBPrex8oR1Bt9KaANbHaMeokQhe
-         4+sA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755699471; x=1756304271;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JYDyb1l+byMOiaJzKn+UnmmghGQhvpVn03tecEee7KM=;
-        b=ujqpfjsiInTAdHR7j4Lbq5NvsDdou6n/WbyasSrHPndqd92fmpiuB6SWcP7T41YBj8
-         axI+QP7EDU3mZRLlzwzhbMWLmTQtOHcLhnn1y7fLGAwCN4FMoVXq2Lnz9TkyFrthpuuc
-         uqke/FSo8EDuAYmwJVX6nEbfqh6B0eHbvg780lVJt9SQBcaF/bzrhz7YNXmkXQpb3I/A
-         rUdaRQZYqbherD8PtkDSVFJvdp9iBrGeW0WvYhZ47j87VXdefrVkNxZytDuKe3D4m69a
-         8wcahfSwmGrEQAdRt80wp7nC2+nrGHU1NFTHj+St1vjSSNju04NuUc6lJLLTasolMJAe
-         CSHg==
-X-Forwarded-Encrypted: i=1; AJvYcCWgJnRJbR/+SceMSIoUn8nEC30BntoZ7GOiy8iqhXhXOkf/q4uGGNo9/k7GlZ1BoiXqfGA/xVLa100RGdYRyA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzDeQBRL3ibadOMGRcSxAV9VUJyAAB56dJW46r6CWTC5k63i016
-	vR8TIa5sSPjJHdEnUgghFB1h0ztFdfFkz/E4Mkyi6qjWFOUipjWBUVuCOLs7J/F/Eic=
-X-Gm-Gg: ASbGncuIq2Th4qivRy0zVYTjj3cX0Gg774tH0mFm0ABA7U+fKHn04DvPO8s9FMdPp8M
-	aCwJr78z+JJjvgDiTt+pBhs6K+CS3V+K/wCkZJpRyDVdAmXUcRKrORatpHcG8ugMrdYCTGPRxor
-	fxu/YtmTkzrKMK3wyHwnJTbIlFdvM4rlio2H9+lmbz9oYy3YEpGt17GynX4XGS6E9HVb8saQsT3
-	hBfij5nlpbXLeYBOvNinasX920LFm03fIZsdAscVRCCU+xZAzHRT0yzYVAans7qmzmy12sogiRl
-	oDGQH8DDtgT9lktc5+clK/UYNIRJ+WKB9N5/0OcpVOZRW1jrGKhIV8qOEfsQasdkPBuz7g247Z2
-	Co9N5GGkUe0nqIqkd6GxtEE8OyOoRCZ8k1vdz7b8=
-X-Google-Smtp-Source: AGHT+IEmrLUelKKUOono3ov9GvjFbcW6q4Zw0ULLzvLJYEr2I6DZLLZrvFrkswdj/bNZgbWEgb8PUg==
-X-Received: by 2002:a17:907:1c12:b0:ae6:c555:8dbb with SMTP id a640c23a62f3a-afdf0256674mr142702866b.11.1755699470561;
-        Wed, 20 Aug 2025 07:17:50 -0700 (PDT)
-Received: from [127.0.1.1] ([178.197.219.123])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afded4796f3sm186541066b.61.2025.08.20.07.17.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 Aug 2025 07:17:50 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Wed, 20 Aug 2025 16:17:37 +0200
-Subject: [PATCH v2 2/3] dt-bindings: display: ti,tdp158: Add missing reg
- constraint
-MIME-Version: 1.0
-Message-Id: <20250820-dt-bindings-display-v2-2-91e2ccba3d4e@linaro.org>
-References: <20250820-dt-bindings-display-v2-0-91e2ccba3d4e@linaro.org>
-In-Reply-To: <20250820-dt-bindings-display-v2-0-91e2ccba3d4e@linaro.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- "H. Nikolaus Schaller" <hns@goldelico.com>, Arnaud Vrac <avrac@freebox.fr>, 
- Pierre-Hugues Husson <phhusson@freebox.fr>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=990;
- i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=AkV3VRQfJAkPuyGMV3zApyjndBmAsTYMa/X+l+hz0eY=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBopdkHTLdBz/9upwUfV9iV1nnV0fegXMDVGScJS
- +323M0dU0aJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaKXZBwAKCRDBN2bmhouD
- 12rlEACGX4EZLaWfGRRN8ipoGBIacbdpDdtXYFRu0zv6iVQbYo/Um8r7PYFUZQM/dehtOi6wewV
- Q7+E7dUwXKMF3wuZGjwQ0m2nXcHr7i8EXzrKcN27rlX5w/2qp2+9GMlwsZJp8YgMsUVs78qZ3dx
- f71D/9101SWQN6XQU/m5OF2Ar4lzohcm2vb4Lkl4nSf0j2t/oxG27/aZFBDvrRxFFFKS4HwCii1
- yxrYrkwvvrTjXvTxsawafd6ESN5uWS3lsAEBkFc/1SaarnsKPmznKyyapyv2hiX6OqeYEmdgvj9
- 32QnIY2KF39R5Y5eq/950VSdt078I36aG1vljAwfAPg0bnHx4zjksF3ToHCEGfaBhffoonrjPPE
- GA91+7wy1+262Ue8Dp70IEfYnPDB8byAmj2rZOTwQ7/uiZK2BkS/vXAHqm5FFXersWKWhhVgdAZ
- 7i8Vdf8NMJiwABhUKwH1HgqLLqtT+JvY/JDOLDDm6XJLwpbQMRHD5SqA1E6aMq6zgfPhU9hdLLj
- i60X6KTKsgXASFkbZfNR5zwJGyZLaOQWwsIR4EO86n7d4HYFJpHdIM/Z2F68KTezqAIJKi55v6P
- /e2J9tF+gLqLSjo2KD93r2bVnlCFTlBwzOpGT7rJlzdNy6w/4/zWTu/20KJaORbwEOX5apcLqy4
- ydTdZieF1pfoKyw==
-X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
- fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+	Wed, 20 Aug 2025 14:23:23 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1755699797;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=up1RSHC3bmjFdtojDRArO6p3YgGDPNjjN84qZWu2NY8=;
+	b=YxTp5PJawb9k0Hw6LVfv5aAhiNilnjc+DPn0rsU0/xrtQ3oMZLFm3T/eqyHbhwaquns2sB
+	HjDlw1zgpsHhqG9TGoTjN97n6XIIQ65WLIK32Oe9d9dT7Co27Rq+c3qUspGPgX8HmHPdn3
+	rFA5NhDKnJDiu6Gl1OVSiQ7yPwn6F5gtI47PHi/UpG8FrbqOOaZ5/YUhXUvJSZ/PKn0D31
+	W3zBWOpSZzolrvjDCzfWdwRPPUXihkT2xlbME9Fydx+UTTGnRpTljcoh9SQV4/StuEgsyU
+	LT2j+EdTzZxQOshziUzXx0An7kHYyuUbDLr2IIGBrhxLcpvBx8hpOQ3kwTsHqA==
+Date: Wed, 20 Aug 2025 16:23:06 +0200
+Message-Id: <DC7BMRFU4CZP.1R3PY4OJVGJHE@cknow.org>
+To: "Sebastian Reichel" <sebastian.reichel@collabora.com>, "Rafael J.
+ Wysocki" <rafael@kernel.org>, "Daniel Lezcano" <daniel.lezcano@linaro.org>,
+ "Zhang Rui" <rui.zhang@intel.com>, "Lukasz Luba" <lukasz.luba@arm.com>,
+ "Heiko Stuebner" <heiko@sntech.de>
+Cc: <linux-pm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <kernel@collabora.com>
+Subject: Re: [PATCH] thermal: rockchip: shut up GRF warning
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+References: <20250818-thermal-rockchip-grf-warning-v1-1-134152c97097@kernel.org>
+In-Reply-To: <20250818-thermal-rockchip-grf-warning-v1-1-134152c97097@kernel.org>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250820_071752_297972_2C20985E 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250820_072321_903907_C36D030D 
+X-CRM114-Status: GOOD (  22.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,37 +68,253 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2182082727406431239=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Device can be used over I2C bus, so it documents 'reg' property, however
-it misses to constrain it to actual I2C address.
+--===============2182082727406431239==
+Content-Type: multipart/signed;
+ boundary=698049d7621a3f79bb424488419fcc815111d0a5c6d83ffbae678ca86f50;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- Documentation/devicetree/bindings/display/bridge/ti,tdp158.yaml | 1 +
- 1 file changed, 1 insertion(+)
+--698049d7621a3f79bb424488419fcc815111d0a5c6d83ffbae678ca86f50
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-diff --git a/Documentation/devicetree/bindings/display/bridge/ti,tdp158.yaml b/Documentation/devicetree/bindings/display/bridge/ti,tdp158.yaml
-index 1c522f72c4bae3313930b5c76dd04dde1aef5151..721da44054e19ff04fe9d8c1dc31a9168e8f79f5 100644
---- a/Documentation/devicetree/bindings/display/bridge/ti,tdp158.yaml
-+++ b/Documentation/devicetree/bindings/display/bridge/ti,tdp158.yaml
-@@ -17,6 +17,7 @@ properties:
- # The reg property is required if and only if the device is connected
- # to an I2C bus. In pin strap mode, reg must not be specified.
-   reg:
-+    maxItems: 1
-     description: I2C address of the device
- 
- # Pin 36 = Operation Enable / Reset Pin
+Hi Sebastian,
 
--- 
-2.48.1
+On Mon Aug 18, 2025 at 7:26 PM CEST, Sebastian Reichel wrote:
+> Most of the recent Rockchip devices do not have a GRF associated
+> with the tsadc IP. Let's avoid printing a warning on those devices.
 
+Thanks for this patch :-)
+
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  drivers/thermal/rockchip_thermal.c | 53 ++++++++++++++++++++++++++++++++=
++-----
+>  1 file changed, 46 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchi=
+p_thermal.c
+> index 3beff9b6fac3abe8948b56132b618ff1bed57217..1e8091cebd6673ab39fa0c4de=
+e835c68aeb7e8b5 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -50,6 +50,18 @@ enum adc_sort_mode {
+>  	ADC_INCREMENT,
+>  };
+> =20
+> +/*
+> + * The GRF availability depends on the specific SoC
+> + * GRF_NONE: the SoC does not have a GRF associated with the tsadc
+> + * GRF_OPTIONAL: the SoC has a GRF, but the driver can work without it
+> + * GRF_MANDATORY: the SoC has a GRF and it is required for proper operat=
+ion
+> + */
+> +enum tsadc_grf_mode {
+> +	GRF_NONE,
+> +	GRF_OPTIONAL,
+> +	GRF_MANDATORY,
+> +};
+> +
+>  #include "thermal_hwmon.h"
+> =20
+>  /**
+> @@ -97,6 +109,9 @@ struct rockchip_tsadc_chip {
+>  	enum tshut_mode tshut_mode;
+>  	enum tshut_polarity tshut_polarity;
+> =20
+> +	/* GRF availability */
+> +	enum tsadc_grf_mode grf_mode;
+> +
+>  	/* Chip-wide methods */
+>  	void (*initialize)(struct regmap *grf,
+>  			   void __iomem *reg, enum tshut_polarity p);
+> @@ -1099,6 +1114,8 @@ static const struct rockchip_tsadc_chip px30_tsadc_=
+data =3D {
+>  	.chn_offset =3D 0,
+>  	.chn_num =3D 2, /* 2 channels for tsadc */
+> =20
+> +	.grf_mode =3D GRF_MANDATORY,
+> +
+>  	.tshut_mode =3D TSHUT_MODE_CRU, /* default TSHUT via CRU */
+>  	.tshut_temp =3D 95000,
+> =20
+> @@ -1123,6 +1140,8 @@ static const struct rockchip_tsadc_chip rv1108_tsad=
+c_data =3D {
+>  	.chn_offset =3D 0,
+>  	.chn_num =3D 1, /* one channel for tsadc */
+> =20
+> +	.grf_mode =3D GRF_NONE,
+> +
+>  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity =3D TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp =3D 95000,
+> @@ -1148,6 +1167,8 @@ static const struct rockchip_tsadc_chip rk3228_tsad=
+c_data =3D {
+>  	.chn_offset =3D 0,
+>  	.chn_num =3D 1, /* one channel for tsadc */
+> =20
+> +	.grf_mode =3D GRF_NONE,
+> +
+>  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity =3D TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp =3D 95000,
+> @@ -1173,6 +1194,8 @@ static const struct rockchip_tsadc_chip rk3288_tsad=
+c_data =3D {
+>  	.chn_offset =3D 1,
+>  	.chn_num =3D 2, /* two channels for tsadc */
+> =20
+> +	.grf_mode =3D GRF_NONE,
+> +
+>  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity =3D TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp =3D 95000,
+> @@ -1198,6 +1221,8 @@ static const struct rockchip_tsadc_chip rk3328_tsad=
+c_data =3D {
+>  	.chn_offset =3D 0,
+>  	.chn_num =3D 1, /* one channels for tsadc */
+> =20
+> +	.grf_mode =3D GRF_NONE,
+> +
+>  	.tshut_mode =3D TSHUT_MODE_CRU, /* default TSHUT via CRU */
+>  	.tshut_temp =3D 95000,
+> =20
+> @@ -1222,6 +1247,8 @@ static const struct rockchip_tsadc_chip rk3366_tsad=
+c_data =3D {
+>  	.chn_offset =3D 0,
+>  	.chn_num =3D 2, /* two channels for tsadc */
+> =20
+> +	.grf_mode =3D GRF_OPTIONAL,
+> +
+>  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity =3D TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp =3D 95000,
+> @@ -1247,6 +1274,8 @@ static const struct rockchip_tsadc_chip rk3368_tsad=
+c_data =3D {
+>  	.chn_offset =3D 0,
+>  	.chn_num =3D 2, /* two channels for tsadc */
+> =20
+> +	.grf_mode =3D GRF_NONE,
+> +
+>  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity =3D TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp =3D 95000,
+> @@ -1272,6 +1301,8 @@ static const struct rockchip_tsadc_chip rk3399_tsad=
+c_data =3D {
+>  	.chn_offset =3D 0,
+>  	.chn_num =3D 2, /* two channels for tsadc */
+> =20
+> +	.grf_mode =3D GRF_OPTIONAL,
+> +
+>  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity =3D TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp =3D 95000,
+> @@ -1297,6 +1328,8 @@ static const struct rockchip_tsadc_chip rk3568_tsad=
+c_data =3D {
+>  	.chn_offset =3D 0,
+>  	.chn_num =3D 2, /* two channels for tsadc */
+> =20
+> +	.grf_mode =3D GRF_OPTIONAL,
+> +
+>  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity =3D TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp =3D 95000,
+> @@ -1321,6 +1354,7 @@ static const struct rockchip_tsadc_chip rk3576_tsad=
+c_data =3D {
+>  	/* top, big_core, little_core, ddr, npu, gpu */
+>  	.chn_offset =3D 0,
+>  	.chn_num =3D 6, /* six channels for tsadc */
+> +	.grf_mode =3D GRF_NONE,
+>  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity =3D TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp =3D 95000,
+> @@ -1345,6 +1379,7 @@ static const struct rockchip_tsadc_chip rk3588_tsad=
+c_data =3D {
+>  	/* top, big_core0, big_core1, little_core, center, gpu, npu */
+>  	.chn_offset =3D 0,
+>  	.chn_num =3D 7, /* seven channels for tsadc */
+> +	.grf_mode =3D GRF_NONE,
+>  	.tshut_mode =3D TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity =3D TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp =3D 95000,
+> @@ -1572,7 +1607,7 @@ static int rockchip_configure_from_dt(struct device=
+ *dev,
+>  				      struct device_node *np,
+>  				      struct rockchip_thermal_data *thermal)
+>  {
+> -	u32 shut_temp, tshut_mode, tshut_polarity;
+> +	u32 shut_temp, tshut_mode, tshut_polarity, ret;
+> =20
+>  	if (of_property_read_u32(np, "rockchip,hw-tshut-temp", &shut_temp)) {
+>  		dev_warn(dev,
+> @@ -1621,12 +1656,16 @@ static int rockchip_configure_from_dt(struct devi=
+ce *dev,
+>  		return -EINVAL;
+>  	}
+> =20
+> -	/* The tsadc wont to handle the error in here since some SoCs didn't
+> -	 * need this property.
+> -	 */
+> -	thermal->grf =3D syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+> -	if (IS_ERR(thermal->grf))
+> -		dev_warn(dev, "Missing rockchip,grf property\n");
+> +	if (thermal->chip->grf_mode !=3D GRF_NONE) {
+> +		thermal->grf =3D syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+> +		if (IS_ERR(thermal->grf)) {
+> +			ret =3D PTR_ERR(thermal->grf);
+> +			if (thermal->chip->grf_mode =3D=3D GRF_OPTIONAL)
+> +				dev_warn(dev, "Missing rockchip,grf property\n");
+> +			else
+> +				return dev_err_probe(dev, ret, "Missing rockchip,grf property\n");
+> +		}
+> +	}
+> =20
+>  	rockchip_get_trim_configuration(dev, np, thermal);
+
+I tested this patch on the following devices and found no regressions:
+- Rock64 (rk3328)
+- RockPro64 (rk3399)
+- Quartz64 Model B (rk3566)
+- NanoPi R5S (rk3568)
+
+When tested on my Rock 5B (rk3588), I no longer saw this warning:
+ =20
+  rockchip-thermal fec00000.tsadc: Missing rockchip,grf property
+
+And found no regressions, so
+
+Tested-by: Diederik de Haas <didi.debian@cknow.org>
+
+Cheers,
+  Diederik
+
+
+--698049d7621a3f79bb424488419fcc815111d0a5c6d83ffbae678ca86f50
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaKXaTgAKCRDXblvOeH7b
+bqblAP4jPqaWdIPCDRsvkAv1AAHlOf1IltDXJI2S5FepeV2a9QD/fty5wxSUpUMf
+gIvJ32RXC5nU6+id1xZfkx099JFU0As=
+=74NQ
+-----END PGP SIGNATURE-----
+
+--698049d7621a3f79bb424488419fcc815111d0a5c6d83ffbae678ca86f50--
+
+
+--===============2182082727406431239==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2182082727406431239==--
+
