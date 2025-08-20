@@ -4,65 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2D17CA0EF8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 20:51:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B794FCA0EFC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 20:52:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gfa0ors05tJcdAkmH1HzMRNC+kSj2OFFSJ+bidQSuFo=; b=mvoNHQXHsoxz3e
-	U31n84Zf2pe0cgY7+/JVgizOhmzL6zArK2jvOznv9L+5h98VUCiMh61ltz2UvnqSb2q40oMN72Dk4
-	aNEGJRsoZb/ZTp0Tog58XICYxg5JM1mnqm9n1QnOLC8RVNbWT/ynzbYKozu7/WsCSB6oJVn4civx3
-	4z/Rrx6Mj6yaBv6kxtEttXXFYdLV5qRPZLA656F/e01RCa6Stq+3VPCJ0P01QxHRfnu4CVrX9RhfO
-	tevJJMEv6LDVuPW+ICQfvhYe15rAeQ9YaXgCsvkHlCPslMoYtD4ei6ivs9Nqp8Gu+XWvSxilUWQ13
-	7pzWV+v9d0OOx6f7S7qg==;
+	List-Owner; bh=W1e/1NYxPzk8VDqpPdPN3mR+G1eezSGnbDgL4Zt6LhQ=; b=4B2NrOK9+zFmKR
+	JkwyUcEXuvFPDqBIMV7H2O5I57PxgDcEgwvAgCYLBdEOfjbECyILAol+wsElAcEMoMYglJ+NdtqOb
+	O6uFHrhOGOZydGDt4Ugr8wJruvxSyMJipXSf2xnaNVSIGykQyNaDqzK82MNJPYIov0qoTkiEpbwge
+	vW2fOlCbfzYsr0AC6mnnK6jtIUpupZbbc1T3kYmmRq8l9kEiNVHg61qVg48UniotemVMskXdCp7C3
+	7DYl4ULbg2E1XQh95Tgf6/D3ZlUwwOWs78/34vaLat5cN6VsGRTl+KL1WYf3q5A7BecgMETVhwjIi
+	yzaVqrnksp69cXW4awXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uopmB-0000000EuKy-40XV;
-	Wed, 20 Aug 2025 20:51:19 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uopn8-0000000Ev5z-20MU;
+	Wed, 20 Aug 2025 20:52:18 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uolgp-0000000EOpt-0hxM;
-	Wed, 20 Aug 2025 16:29:31 +0000
+	id 1uomDH-0000000ETKP-2Qu1;
+	Wed, 20 Aug 2025 17:03:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 953CC601D7;
-	Wed, 20 Aug 2025 16:29:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AAF51C4CEE7;
-	Wed, 20 Aug 2025 16:29:29 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 187205C67E2;
+	Wed, 20 Aug 2025 17:03:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 404CBC113CF;
+	Wed, 20 Aug 2025 17:02:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755707370;
-	bh=Qzu3sAyj5y1ZHEYtAgX6Nl+Q7wQ4tl5rXdQK2r2hq9s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CbgkpQOOkJMnf7YOfm3L+2WNCbvN5KEBLTDdwMgR39opZMxwb3V5MK73vcbQHirnK
-	 WevPSToBA1Z2Bd1BJLSfJUjYuaTPfwrbFLBngxvVkBwusojgB7i28p0pf2CAjQGOTI
-	 OWGI4RYaIQWxIe4yHc/B2L9MU3Oc48+TlxaqVGOJ28GF/EveSvbMI88t5jJUz/4gdL
-	 nf1y1c9dXmjFaPj6ZVW4UfP4MnM2Kun7XmhFDsJkrQBpw2OmE8LzrNOto2vNhkkKLu
-	 UZiKOWNEGnG9LzNAeH6ukYhQHtK47/+VD6Z4TrSDqQmwMgcGIcapZ+oEPd9Sevi3CG
-	 OMAOYwUjQ3ETg==
-Date: Wed, 20 Aug 2025 21:59:25 +0530
+	s=k20201202; t=1755709382;
+	bh=SdAZlbYllqKMy/tSyr57ludQpWHmOjbfIk0uPZ7oZ1U=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=YGR4Kexb2xFARGCmFQe3PJsORfVP72Cp0pmXbqH7lj7YL0H7uHY2uIUOe6LPehI0K
+	 4NMDEBpG9LWwrQ7Amm89wPXBYyrWX6T3y7oak5MxavCws0azcd43kv6ZA+GZyzPURG
+	 XSvP1X/yaZwkq50nc7x9kTOPqgkFh30bfUykLKQ0/wEwisRy/Jha98n4AS54MieU+O
+	 IJVb4JNo056cE6zG+UQdTQrIuqQuqljl0yoCxOrnHKyf6879aG9821uO2/OvVheAQg
+	 FwHni0aMIzRWucS1dTvgRRXcb+g6u95JW5U0MdlI4dBm0LwhmnlXYBJaGVgyVmtXTd
+	 A1LY6+ydE5BWg==
 From: Vinod Koul <vkoul@kernel.org>
-To: Brian Masney <bmasney@redhat.com>
-Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 2/9] phy: mediatek: phy-mtk-hdmi-mt2701: convert from
- round_rate() to determine_rate()
-Message-ID: <aKX35U4jX55W3W61@vaman>
-References: <20250810-phy-clk-round-rate-v2-0-9162470bb9f2@redhat.com>
- <20250810-phy-clk-round-rate-v2-2-9162470bb9f2@redhat.com>
+To: kishon@kernel.org, heiko@sntech.de, Chen Ni <nichen@iscas.ac.cn>
+Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20250814013943.2905307-1-nichen@iscas.ac.cn>
+References: <20250814013943.2905307-1-nichen@iscas.ac.cn>
+Subject: Re: (subset) [PATCH] phy: rockchip: naneng-combphy: Convert comma
+ to semicolon
+Message-Id: <175570937971.66459.9785527061700801116.b4-ty@kernel.org>
+Date: Wed, 20 Aug 2025 22:32:59 +0530
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250810-phy-clk-round-rate-v2-2-9162470bb9f2@redhat.com>
+X-Mailer: b4 0.13.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250820_100303_661426_4024E355 
+X-CRM114-Status: UNSURE (   6.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,53 +73,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10-08-25, 18:45, Brian Masney wrote:
-> The round_rate() clk ops is deprecated, so migrate this driver from
-> round_rate() to determine_rate() using the Coccinelle semantic patch
-> on the cover letter of this series.
-> 
-> Signed-off-by: Brian Masney <bmasney@redhat.com>
-> ---
->  drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-> index e51b2d13eab473dddace48c75c2a8d73c8c65635..b0b6497e7eedcb6867541b573d22156ded29a4d5 100644
-> --- a/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-> +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-> @@ -90,10 +90,10 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
->  	usleep_range(80, 100);
->  }
->  
-> -static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-> -				    unsigned long *parent_rate)
-> +static int mtk_hdmi_pll_determine_rate(struct clk_hw *hw,
-> +				       struct clk_rate_request *req)
->  {
-> -	return rate;
-> +	return 0;
 
-This does not sound correct to me? should this not check the requested
-rate?
-
->  }
->  
->  static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
-> @@ -170,7 +170,7 @@ static const struct clk_ops mtk_hdmi_phy_pll_ops = {
->  	.prepare = mtk_hdmi_pll_prepare,
->  	.unprepare = mtk_hdmi_pll_unprepare,
->  	.set_rate = mtk_hdmi_pll_set_rate,
-> -	.round_rate = mtk_hdmi_pll_round_rate,
-> +	.determine_rate = mtk_hdmi_pll_determine_rate,
->  	.recalc_rate = mtk_hdmi_pll_recalc_rate,
->  };
->  
+On Thu, 14 Aug 2025 09:39:43 +0800, Chen Ni wrote:
+> Replace comma between expressions with semicolons.
 > 
-> -- 
-> 2.50.1
+> Using a ',' in place of a ';' can have unintended side effects.
+> Although that is not the case here, it is seems best to use ';'
+> unless ',' is intended.
+> 
+> Found by inspection.
+> No functional change intended.
+> Compile tested only.
+> 
+> [...]
 
+Applied, thanks!
+
+[1/1] phy: rockchip: naneng-combphy: Convert comma to semicolon
+      commit: a8f9de937dbf7bdabda72bd0c51e201e550129c2
+
+Best regards,
 -- 
 ~Vinod
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
