@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 073B5CA0EE6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 02:44:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ECB5CA0EE6
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 02:50:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nitW76nKZe3Avh7dx03gI36aeOBPM98lhUOaBg9NtKw=; b=IrMOSGhO69nMo3
-	C7oaJZL7xMCvzJZuWciGZgYAxozPNK9WbVypV1WZWm12L7MRvBdvygcTNNqn0AUCmUNOz+QRdGOF8
-	Jcx2iIDuRWhoQfrbpAXgxq/poxcraOq/1O/wszbQ/84KnCM4zHMfZ5f9ebIlAg2LSE47tQLS6s6Cf
-	EhDPB0qQ0mOlxvpLS5zTIfkMvObi54uJwHR2nTdkIFXrfmOBUDo+B2bC12HFgGygdrLaOONeFXFTJ
-	Ap3QSXtyk/a07bO4SV6kQSRE2vOjBFS5vyVuZKt838/LXXdXwxgD7mXIZDpxzDFrks/eVa9XWHZ1H
-	S8xlml1+wcMiocM6giQA==;
+	List-Owner; bh=UUxMXyEUcMIFkdWIS2bVXhnkYGfHSx1sfGjA3Q2FoAQ=; b=tdaq/JznHoK/DN
+	bzBTFXTj/H+Qxn2tUJWpsGHYKD0b+Gc4GZG0bMiLFb8UHHDuAUaU4dLqJKYjt9VXLtloRba8jhOh6
+	4N1KeafxybwEv1JKNdG3pAUbSwZNfv5IFev3m4lvitNkzI8N29vSXto2KbRgm5rn3JP9BI/zaco4R
+	MaQkwXlbILUijIRTxgHNqg8wiFg6casACGvVNicDEXhp32rllBKe96LfyBhEAHZiyIUgPBzymNRU4
+	t0eS/nQ5ldyEiPgIiWOgbFeIlQiZeGuMs6Iae2xjMsiICGIgOgRmuTjAOUBn0F7HF4LKRZLhyLjBS
+	2JJLXIxxIbTXGWnXTNWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoYoX-0000000CCWg-13ss;
-	Wed, 20 Aug 2025 02:44:37 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1uoYtj-0000000CCv5-0guz;
+	Wed, 20 Aug 2025 02:49:59 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoYkt-0000000CCCQ-18rp;
-	Wed, 20 Aug 2025 02:40:52 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-245f2a8fa81so625925ad.0;
-        Tue, 19 Aug 2025 19:40:51 -0700 (PDT)
+	id 1uoYpT-0000000CCcT-3AEF;
+	Wed, 20 Aug 2025 02:45:36 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-24458195495so38573635ad.2;
+        Tue, 19 Aug 2025 19:45:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1755657650; x=1756262450; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1755657935; x=1756262735; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=5o8thSzIALN1uPBnoTvMoKA6rLfBMmP8vLMFrWtTp60=;
-        b=huIPOAZpoueoWSMjsW1mLDu1hvnZXyULTgkafVEiVi4Zy5BPZZIL/ZqOLXydA60mWJ
-         I02UIyxeZ0QIOCjjZ19kyNHJGo1XYQoJR1Bi+0WgTAqYXUQhLualH3ker+hW+Bwoxe8I
-         D6qJaa8VdXH5US/fjZolDuSXSTpKxHtf1yeb3iiD9q+50OrpLw3oAkWm2uiJvCXlvc/7
-         3A3+LpsSm3PXZZz2TTVQQdNFFhjNrpS8brkLa+OAsOl4wLFeXB786tr0bmLY9hoiZ0l2
-         /VIlRLqTBlkhGpzHbgpYzniOHaxMwz0fmKIVvq6jlt9/qN6Kd3wA0LJlb26YNEWqFOX2
-         oPcQ==
+        bh=7QaH9gOttvajLUzldzEp6LSNgexNCpeIB1/EEz8zauI=;
+        b=lD2NZreDmVIwKRy2A6qCTnUbVHuFsxCyRSZ8yFW6Ehjhbo4dxetgu8nrrIpqgy4AZ3
+         iqL3V1F+WwjT6eUh4N3/+Y2IUOL01GskhsaOPQIIMw72XumZ2/EXD2adLcYxv1fWOuen
+         leiR7sa6UYdAYUlzCdoJURqAHhvJlj0ORDsE7S+21DpH72gy664dVlM66jCy1uR5qV0c
+         fd81L85/M050ETrKM6fa9Wd6qhTo8wnKP6m499iiVEUuCwqDGw+frIbUbrrQ9jeppKMU
+         aX3zLiyhSvwpx1BqxNKb8ZmmgiB/cMI651vLzDvZq/lM+ddHBHc6Ni30cSdKNpqYgCNc
+         rm4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755657650; x=1756262450;
+        d=1e100.net; s=20230601; t=1755657935; x=1756262735;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=5o8thSzIALN1uPBnoTvMoKA6rLfBMmP8vLMFrWtTp60=;
-        b=dbyHBxdOp9yf4HtxO8/MdU3Sg5DEHv+oU8xptURUibm2eEBh9DDAXNfs+49Bywtj5Y
-         WtLQmK3252B44mueRxzxrIf+H3THw88+eIuzg8cvwtE3JH8+JWWacTfi4teIVbJX3tic
-         bx5vuJwunTac3KYQmouzWnaCMsDyj5y3Zz1G6RBrMzdEkvlE3KrwBNBdISif6KjV715m
-         MsxRjKSmq7+tQG1O7VQnADJyaVtKcqPKS820dkXFpvclrFkJOU5AFqsbdWdDc0ccfY20
-         nrpJVWQf4Im3WU/wdLt9PE5m7RZI021fWkSc1XBZZzz/33nv9klXevKMLI0CpzV1uGDu
-         uHtQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVVxTVRXv01mOQtq4EKpRmJDFHk4rFV8b84dR0JukRzSvXBjF4TTt1MJagBrl3fVs3VXaIu5zbF3Rftxh0ItaSa@lists.infradead.org, AJvYcCWMq0bleMeOeIZjNNXfIHla41spjZBlcKzlanjrZSsBAx64LNLhTMv0TnlLilpmH1JiY27kjGG9zu5MENW2nHE=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx7Q5M04DWLSXzv4fQ16iGFoHPF7P6y+8ExwznVWC9IKqlqE9p+
-	KspyIkghzbsTj6ZZ2fCPRwI33p2uuQFbcGamKKnO2OYf3cgWphHG/WDZ
-X-Gm-Gg: ASbGnct9cvKJ35YQiChoIyZTVTBtfORb9bVmqZCil+TJnQtlsiwSPyl68zMI3Crszu1
-	4FBnEkIKf4L4zLNqlhXQ8d5V57v884gjaVCPJIcKqf3cmqjjphowKm/iSY9l5qN5UnLa9rgAfQR
-	g0OQk2y2uWU4kqT7N0WwewT+e0UB+Ln1DgcVKv4Ju4ro6dg7IkNuEQBMdYroCvzwjDoVB6CyHBp
-	QWP/kQb5mgaWq9hkWs74Sb06n7uMN5rYtrehcS6SaIkc1aAtQqi9TxPBO89s+5fJv8DTkK4hNma
-	SZld8gU5VffoK83w4ZLjhGKi31bi2qcyj8607TJv8GWceCtpQS/vD4c9iFnmaHC3qrchuYUPfUL
-	xVc7fcXpLZWlOGDQ=
-X-Google-Smtp-Source: AGHT+IHq6qOIwEilWM/BAT9k4oZ2UZBkL4UPMZyaTKIJz4HZq4C0Dc+kdcM0flbXi6E7TpzgZz7WIw==
-X-Received: by 2002:a17:903:90f:b0:237:e3bc:7691 with SMTP id d9443c01a7336-245ee117b55mr18310785ad.13.1755657650342;
-        Tue, 19 Aug 2025 19:40:50 -0700 (PDT)
+        bh=7QaH9gOttvajLUzldzEp6LSNgexNCpeIB1/EEz8zauI=;
+        b=v9TS/AJ6CbV5S+KT3SUOapCJ8qn03HZVQC15HGJ+VjNM2oC45Jnz9hiVMfTd8ppKE9
+         v6+Nwjz8O3pIOsP/KA7QEngy+APXR/b4pXTjwyAiOZiiLV/fYy9KK5th/rmV/J1QShZn
+         OaId5glMDC5ASVEpjCAF2xd8iRESqK6NzC+re5ZgPc4bXzaSUh2eAQ+byRyN7VvSPFiq
+         2Hy8sv9gE7UD6WU3dm1DjhDw4iSoQ9T+XDPH4XIxlfrzVmnEODBpTdTiJDF3Y5bHPiua
+         fa/HPluuVZdy6k40gSLanelDgbv9XFfZBQh1GIqSXuA5gPEq/j0bJKSRZt0qOef2/Ovq
+         XVRw==
+X-Forwarded-Encrypted: i=1; AJvYcCVVWCq26j4TSg70yzGkujnW7iaSTYBMWb9J24ihfFbB8dvv1FRS890QGiDrhkeDUdf0SsGf402livQ/E/M0stmK@lists.infradead.org, AJvYcCXJgn0NkzMMyOLVyLjLmuZytrlXGOVgoygOMksGu1lcqnKOsLiZki8/UYFMt5sfhpFBcJQI1F/arzRrhSEEqYI=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwfHrU65jMOCMXphzH8DqxbNAZD9cWNK65PWekgc/AGn/EoCDcC
+	+esf4w4pgkROXsynicX/AUJm4nYmPkKThRaim32Jd43Nubd9J2y6yBDa
+X-Gm-Gg: ASbGncuVyxoRRnnEPwfbV/k9SB0oJMC+vl82qyhSeIyVxrc0GRNq/vaX+3tHdBSKC+b
+	w+CXd+aucajluyNX3qP5I9rqMLdTEVDfL01xrIS4bEuuC7N1kM/rngJ5s8aVY8rok+vUvnauD7u
+	lETTNcozKjW4BiSvKQLPDLuAgBT4A1RT7rfWYTyBFkjwuGkd2DU9X+1NX89ZhiB08iOrJRnpVCh
+	/xC3dnLSFV5KpMZrUuH84uEjd9Kyagl14CX0a27MA0lBckSlHeMItwPdLMuHLQuSWvZfaWzVNgE
+	eXKeCODdv9XU9i8mXQCLABFiSnt0rK22CW7cGGHAtffHBO7GHC+y8EjEwIZZtNufiHb5LosG05y
+	B8CVwOgr01jQQ9Lo=
+X-Google-Smtp-Source: AGHT+IHwxOcb3R3sB65tyCI7pwggwURoMAYM1HBPUp9ovEhH+GgbxKXoonGNqzAn1beXMKz0JUdsAg==
+X-Received: by 2002:a17:903:b4e:b0:242:9bc5:31a0 with SMTP id d9443c01a7336-245ef268f98mr15307175ad.56.1755657934931;
+        Tue, 19 Aug 2025 19:45:34 -0700 (PDT)
 Received: from anyang ([106.250.177.234])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-245ed4ec0ddsm10880125ad.114.2025.08.19.19.40.46
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-245ed53caacsm10765625ad.159.2025.08.19.19.45.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Aug 2025 19:40:49 -0700 (PDT)
-Date: Wed, 20 Aug 2025 11:40:44 +0900
+        Tue, 19 Aug 2025 19:45:34 -0700 (PDT)
+Date: Wed, 20 Aug 2025 11:45:29 +0900
 From: Dongjin Kim <tobetter@gmail.com>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
-	krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	robh@kernel.org
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Change ethernet TXD timing
- delay value
-Message-ID: <aKU1rJKzkkS4P+VT@anyang>
-References: <20250819075522.2238643-1-tobetter@gmail.com>
- <20250819151019.877709-1-amadeus@jmu.edu.cn>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Change ethernet TXD timing delay
+ value
+Message-ID: <aKU2yYD+N2D1KuHk@anyang>
+References: <20250819045018.2094282-1-tobetter@gmail.com>
+ <4d25c642-d457-4cb7-8bc1-587edd4f1d75@lunn.ch>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250819151019.877709-1-amadeus@jmu.edu.cn>
+In-Reply-To: <4d25c642-d457-4cb7-8bc1-587edd4f1d75@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_194051_313826_8A991819 
-X-CRM114-Status: GOOD (  15.88  )
+X-CRM114-CacheID: sfid-20250819_194535_797111_7E626E1B 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,51 +102,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 19, 2025 at 11:10:19PM +0800, Chukun Pan wrote:
-> Hi,
-> 
+On Tue, Aug 19, 2025 at 06:03:47PM +0200, Andrew Lunn wrote:
+> On Tue, Aug 19, 2025 at 01:50:17PM +0900, Dongjin Kim wrote:
 > > Very poor network performance is observed on the ODROID-M1 Board
 > > (REV 1.0 20220613) when running iperf3 (under 200Mbits/sec), and
 > > this problem can be resolved after changing the value of TXD
 > > timing to 0x35 from 0x4f.
 > 
-> Can you try changing phy-mode to "rgmii-id" ?
+> How did you decide on 0x35?
 > 
-> ```
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-> @@ -200,7 +200,7 @@ &gmac0 {
->  	assigned-clock-rates = <0>, <125000000>;
->  	clock_in_out = "output";
->  	phy-handle = <&rgmii_phy0>;
-> -	phy-mode = "rgmii";
-> +	phy-mode = "rgmii-id";
->  	phy-supply = <&vcc3v3_sys>;
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&gmac0_miim
-> @@ -209,9 +209,6 @@ &gmac0_rx_bus2
->  		     &gmac0_rgmii_clk
->  		     &gmac0_rgmii_bus>;
->  	status = "okay";
-> -
-> -	tx_delay = <0x4f>;
-> -	rx_delay = <0x2d>;
->  };
->  
->  &gpu {
-> ```
+> ~/linux/arch/arm64$ grep -hr "tx_delay = " | sort | uniq -c
+>       4 	tx_delay = <0x10>;
+>       1 	tx_delay = <0x1a>;
+>       1 	tx_delay = <0x21>;
+>       2 	tx_delay = <0x22>;
+>       4 	tx_delay = <0x24>;
+>       2 	tx_delay = <0x26>;
+>      14 	tx_delay = <0x28>;
+>       1 	tx_delay = <0x2a>;
+>       6 	tx_delay = <0x30>;
+>       1 	tx_delay = <0x3a>;
+>       3 	tx_delay = <0x3c>;
+>       2 	tx_delay = <0x42>;
+>       5 	tx_delay = <0x43>;
+>       2 	tx_delay = <0x44>;
+>       1 	tx_delay = <0x46>;
+>       6 	tx_delay = <0x4f>;
 > 
-> --
-> 2.25.1
+> The numbers are all over the place, but it is clear that 0x28 is the
+> most popular for some reason. But since this delay values are magic,
+> i've no idea why.
 > 
-> 
-Thank you for suggesting me to try 'rgmii-id' again.
+>      Andrew
+I do have more numbers in the Rockchip BSP kernel, and 0x35 is from
+one of them that shows less retry counts when testing 'iperf3' while
+testing with the batch of ODROID-M1. :)
 
-I'd remember that 'rgmii-id' didn't work with the very early version of
-the board, however your suggestion works. Let me test the change with
-more boards and submit the new patch when it's done.
-
-Thanks a lot.
+Thanks,
 Dongjin Kim.
 
 _______________________________________________
