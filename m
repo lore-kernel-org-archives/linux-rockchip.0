@@ -4,88 +4,184 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ECB5CA0EE6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 02:50:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B3F2CA0EE4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Aug 2025 03:27:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UUxMXyEUcMIFkdWIS2bVXhnkYGfHSx1sfGjA3Q2FoAQ=; b=tdaq/JznHoK/DN
-	bzBTFXTj/H+Qxn2tUJWpsGHYKD0b+Gc4GZG0bMiLFb8UHHDuAUaU4dLqJKYjt9VXLtloRba8jhOh6
-	4N1KeafxybwEv1JKNdG3pAUbSwZNfv5IFev3m4lvitNkzI8N29vSXto2KbRgm5rn3JP9BI/zaco4R
-	MaQkwXlbILUijIRTxgHNqg8wiFg6casACGvVNicDEXhp32rllBKe96LfyBhEAHZiyIUgPBzymNRU4
-	t0eS/nQ5ldyEiPgIiWOgbFeIlQiZeGuMs6Iae2xjMsiICGIgOgRmuTjAOUBn0F7HF4LKRZLhyLjBS
-	2JJLXIxxIbTXGWnXTNWw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=jj/lDqkHyw2vE4B2XRWMYJ5ihKmr4kJ50/BoH6w4obQ=; b=kNHTHRfxTyF79EEvL9E3jTaihy
+	3ycJh3qR76b3+r8mAomBALOxRfwIII885AnnqJjqsJiz+uMqn+/gONmbl29IeiFnDaJrPjMqUqcGU
+	XKAFlmBgdrBZ44pHmbBzmvhWjqaKb7P+wfP9QDLLV5M2eQ7/IPbea7hEG2Cl1slSuJrOcdOuSUV9e
+	k1r2vZDS+X969V7tNkatolc6tZzVWDvGngBLrPKYrwys8Kjexe0mv+Gfyu3OO0GengQej2edYFRF1
+	5nz9CioJD2/DcXplps/cT3px8P4RUlUuKjdKSgccKp5dtlWdGv6WIOYHUz8sMbKJa8kDPFKrrau+w
+	9n05+nuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoYtj-0000000CCv5-0guz;
-	Wed, 20 Aug 2025 02:49:59 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1uoZTR-0000000CGk0-1vdB;
+	Wed, 20 Aug 2025 03:26:53 +0000
+Received: from mail-swedencentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c202::7] helo=GVXPR05CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uoYpT-0000000CCcT-3AEF;
-	Wed, 20 Aug 2025 02:45:36 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-24458195495so38573635ad.2;
-        Tue, 19 Aug 2025 19:45:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1755657935; x=1756262735; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=7QaH9gOttvajLUzldzEp6LSNgexNCpeIB1/EEz8zauI=;
-        b=lD2NZreDmVIwKRy2A6qCTnUbVHuFsxCyRSZ8yFW6Ehjhbo4dxetgu8nrrIpqgy4AZ3
-         iqL3V1F+WwjT6eUh4N3/+Y2IUOL01GskhsaOPQIIMw72XumZ2/EXD2adLcYxv1fWOuen
-         leiR7sa6UYdAYUlzCdoJURqAHhvJlj0ORDsE7S+21DpH72gy664dVlM66jCy1uR5qV0c
-         fd81L85/M050ETrKM6fa9Wd6qhTo8wnKP6m499iiVEUuCwqDGw+frIbUbrrQ9jeppKMU
-         aX3zLiyhSvwpx1BqxNKb8ZmmgiB/cMI651vLzDvZq/lM+ddHBHc6Ni30cSdKNpqYgCNc
-         rm4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755657935; x=1756262735;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7QaH9gOttvajLUzldzEp6LSNgexNCpeIB1/EEz8zauI=;
-        b=v9TS/AJ6CbV5S+KT3SUOapCJ8qn03HZVQC15HGJ+VjNM2oC45Jnz9hiVMfTd8ppKE9
-         v6+Nwjz8O3pIOsP/KA7QEngy+APXR/b4pXTjwyAiOZiiLV/fYy9KK5th/rmV/J1QShZn
-         OaId5glMDC5ASVEpjCAF2xd8iRESqK6NzC+re5ZgPc4bXzaSUh2eAQ+byRyN7VvSPFiq
-         2Hy8sv9gE7UD6WU3dm1DjhDw4iSoQ9T+XDPH4XIxlfrzVmnEODBpTdTiJDF3Y5bHPiua
-         fa/HPluuVZdy6k40gSLanelDgbv9XFfZBQh1GIqSXuA5gPEq/j0bJKSRZt0qOef2/Ovq
-         XVRw==
-X-Forwarded-Encrypted: i=1; AJvYcCVVWCq26j4TSg70yzGkujnW7iaSTYBMWb9J24ihfFbB8dvv1FRS890QGiDrhkeDUdf0SsGf402livQ/E/M0stmK@lists.infradead.org, AJvYcCXJgn0NkzMMyOLVyLjLmuZytrlXGOVgoygOMksGu1lcqnKOsLiZki8/UYFMt5sfhpFBcJQI1F/arzRrhSEEqYI=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwfHrU65jMOCMXphzH8DqxbNAZD9cWNK65PWekgc/AGn/EoCDcC
-	+esf4w4pgkROXsynicX/AUJm4nYmPkKThRaim32Jd43Nubd9J2y6yBDa
-X-Gm-Gg: ASbGncuVyxoRRnnEPwfbV/k9SB0oJMC+vl82qyhSeIyVxrc0GRNq/vaX+3tHdBSKC+b
-	w+CXd+aucajluyNX3qP5I9rqMLdTEVDfL01xrIS4bEuuC7N1kM/rngJ5s8aVY8rok+vUvnauD7u
-	lETTNcozKjW4BiSvKQLPDLuAgBT4A1RT7rfWYTyBFkjwuGkd2DU9X+1NX89ZhiB08iOrJRnpVCh
-	/xC3dnLSFV5KpMZrUuH84uEjd9Kyagl14CX0a27MA0lBckSlHeMItwPdLMuHLQuSWvZfaWzVNgE
-	eXKeCODdv9XU9i8mXQCLABFiSnt0rK22CW7cGGHAtffHBO7GHC+y8EjEwIZZtNufiHb5LosG05y
-	B8CVwOgr01jQQ9Lo=
-X-Google-Smtp-Source: AGHT+IHwxOcb3R3sB65tyCI7pwggwURoMAYM1HBPUp9ovEhH+GgbxKXoonGNqzAn1beXMKz0JUdsAg==
-X-Received: by 2002:a17:903:b4e:b0:242:9bc5:31a0 with SMTP id d9443c01a7336-245ef268f98mr15307175ad.56.1755657934931;
-        Tue, 19 Aug 2025 19:45:34 -0700 (PDT)
-Received: from anyang ([106.250.177.234])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-245ed53caacsm10765625ad.159.2025.08.19.19.45.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Aug 2025 19:45:34 -0700 (PDT)
-Date: Wed, 20 Aug 2025 11:45:29 +0900
-From: Dongjin Kim <tobetter@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Change ethernet TXD timing delay
- value
-Message-ID: <aKU2yYD+N2D1KuHk@anyang>
-References: <20250819045018.2094282-1-tobetter@gmail.com>
- <4d25c642-d457-4cb7-8bc1-587edd4f1d75@lunn.ch>
+	id 1uoZTP-0000000CGiy-2oIP;
+	Wed, 20 Aug 2025 03:26:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=rSM6iPE15TsJAPpiP6pxd+pOPZeIDya8crWsKGN5LMEnrJhkFKJUStdFBZIrChNT1ISLCIcnyYKQ0/7/0HDGl1SHoIGqkvxtYQtrU1Ki7bB9oz0mcS+rfHHmSn8mD/SQPVS0t8E1QGJNaewgMz4iFPGgZtRabqxa4mp2SUXFH6U9tuMmaC4Z5GzI6bOYxgp60iUJsLL1Wop9kKwv/V+a/VWs/IC5g+HbUfxI2OtX/Zpu5IlO82kb9yCi6WQZiD/Wq9FbkPO/z+OJOUSe4PcLgv9vnFADLzFz4yjRNYlIb8DnWZeAxsYqU2883/znF1xYWRmOXEfpTQ14SCCQEpe/gw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=odRY6BcYZ+8QVhNaKNFyX2Y8DrKA/CHzt8DcPqI5UoM=;
+ b=ErNRavjxEhF8cCtPQy1elvsDrSYReH+FvKMqr1OOP5phvr2cYXfoHucRIQe6Wxg+TGwECZqvG4+pqo3FZknzVzKkz1mdI+Fga8pHB1hEAtVc70gzIP8QLwZlhZiwz3pIqtauTYMN8QQjWOlSSTrVKyF4RMKblV9HARjgAraLNtvtRRS3gsdYhPLt9biiIkooA23MXM7P+CQZWo97zUHikJrNawBZC2uDIW4DnsqLB6mnLih9X+Ub8Q8tSc26cdqjAn9tzXAReL6qMZd1NRxAUaHf0AU0gmSadZhLeWdYjEbCbWlTpH7nosW1w7IFK1XmXtg21kAoRrm1Qy7ZJSiMKA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=odRY6BcYZ+8QVhNaKNFyX2Y8DrKA/CHzt8DcPqI5UoM=;
+ b=WEVgsAbSFRV+cjPtNNRf8PuCDUF1L/CUuJ0d+dJWQjDCXzTuPYaQOgrwVkikMlFD1vzVvkxZaTD5RkF7MI2c921+T77tCUg18dXuPuvFmSDgpPyrqixrHIl417tQYN485/pAsTXJBmzYarLN+UkAYqOFXKLU3szzEUZKZFdtgGyKK7tZzgNzhI6usPN6L3lo7j7u6L3095mhrlhOpPsVp8cu/rUvqmHfOEs5D845VobD79L3K/GZAKThXbIB5C4pWC/rbSmmowL14VjrO9zghwobgpfX9REQxplb4CaqChIsT5jsbqg3TNyBUvx+28NgDcCVawWiFRp6sITp8K5DYw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM7PR04MB7046.eurprd04.prod.outlook.com (2603:10a6:20b:113::22)
+ by PA1PR04MB11384.eurprd04.prod.outlook.com (2603:10a6:102:4f5::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.12; Wed, 20 Aug
+ 2025 03:26:44 +0000
+Received: from AM7PR04MB7046.eurprd04.prod.outlook.com
+ ([fe80::d1ce:ea15:6648:6f90]) by AM7PR04MB7046.eurprd04.prod.outlook.com
+ ([fe80::d1ce:ea15:6648:6f90%5]) with mapi id 15.20.9052.012; Wed, 20 Aug 2025
+ 03:26:43 +0000
+Message-ID: <185e3a1f-0d84-460f-a9b3-bc4bdc13e543@nxp.com>
+Date: Wed, 20 Aug 2025 11:28:14 +0800
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/7] drm/bridge: ite-it6232: declare supported infoframes
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ Rob Clark <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov
+ <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>,
+ Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>,
+ Marijn Suijten <marijn.suijten@somainline.org>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org
+References: <20250816-drm-limit-infoframes-v1-0-6dc17d5f07e9@oss.qualcomm.com>
+ <20250816-drm-limit-infoframes-v1-3-6dc17d5f07e9@oss.qualcomm.com>
+ <9e77615a-9d5b-4971-b1db-74d6bed39533@nxp.com>
+ <24392da1-02f4-4d57-a145-6285d46d3bad@oss.qualcomm.com>
+From: Liu Ying <victor.liu@nxp.com>
+Content-Language: en-US
+In-Reply-To: <24392da1-02f4-4d57-a145-6285d46d3bad@oss.qualcomm.com>
+X-ClientProxiedBy: SG2PR01CA0197.apcprd01.prod.exchangelabs.com
+ (2603:1096:4:189::8) To AM7PR04MB7046.eurprd04.prod.outlook.com
+ (2603:10a6:20b:113::22)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4d25c642-d457-4cb7-8bc1-587edd4f1d75@lunn.ch>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM7PR04MB7046:EE_|PA1PR04MB11384:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8d67fbb1-cff5-46f2-d518-08dddf9962bd
+X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|19092799006|7416014|376014|921020|7053199007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?TzlnR2ptVFlLR2tVc1VuYTd0OXkyb284dXlGZDVxbUlEWDFqemlJQnUrYWkw?=
+ =?utf-8?B?QjZmRHAxb3NiVklML01JZjBLVVBuQXNCWFI0bG5GZ1pXenpVWldWZFRmd3pR?=
+ =?utf-8?B?RS8weEp2VXpOUDNYci9YQ294QjNxZ0dxZFVlYUxKbktUeExrYVdPWThhV0xL?=
+ =?utf-8?B?Z3l1NnlJWVpWL2VSTXA3VHlXbHRsNVJhWjFTclFRdFBFYWJZNmxOaVZCUGJo?=
+ =?utf-8?B?dHVSaFBZNWlCQjdQTDZXWmdNWE9hajdDWE83ZDVHVGtxL1d1ZDZQYlZhaFA3?=
+ =?utf-8?B?M3Bkd2l3NkFIVUhSdEpYZDJ1NG9hQzFtTS9aNjlTbVBXblBHSERROUMxV0pz?=
+ =?utf-8?B?SlhCY0o2UnVKa0wrWUFBNFpZbVkzVzB5OVh6bS9DaWF4VG1WRW5rd1dRR09Q?=
+ =?utf-8?B?Qlp1RDVscENFRnVzT3dTVy9aellRcStvcjhpT1k1TVNUYkl5V2MybVZSeVk0?=
+ =?utf-8?B?VFVzdVZiaElXZE81bjRnYzZ3SlJxL29ncFZQM1Q3RlZXREl6akk4bTZiQ2Nh?=
+ =?utf-8?B?T1lvMWJjM1lVRFA2azBHVW5oTnQ4Vk1CdnkxcmgzaWVWMHZFcHNzYWY1Mk5D?=
+ =?utf-8?B?SW1TZFB4bEdYTlNzUmh1T2MxT1Q1SEI1cktWck5DZWEvNjJ2Z2Zwd3llZGxa?=
+ =?utf-8?B?Ym9OdWNIYWVkdmd1ZnhzWm5LRkhDYUVaRmc1TS9WaUFsb1FwRVhlV3hHTXFG?=
+ =?utf-8?B?QncyYnEyVFhVZEFmSk5qMmo3R0RoKzV3YjlvcnFJdEttZkdUaDkwYXhKQnRJ?=
+ =?utf-8?B?V3BBUk1Bb2crMkJBbzVQcWVsQ1ZyTE1LNHFMZmc1RDdzRXYwK0FsVUlQWXZT?=
+ =?utf-8?B?YTJVcmtVeXJ5Y3FOTUVBM1dyb3RKZkpKeEhFTTZKUFh1UnFPYnk4eUUwK1Iz?=
+ =?utf-8?B?REFMMWtaMDc1ZlZ4OVVJR3dkS3h1aGFoSmJ6OExKTjRrN0x3OWgvbmpyRUJY?=
+ =?utf-8?B?Sjg2Q210WEQ3UHVBR3E2c3V6ZFdQa0NCZUFFci8wL3lRTiswNDAwUGYyOVl2?=
+ =?utf-8?B?akU3Qnl4VHNuTXZUdUN2N1VEYjJiZnZTa01LSTlOMFRhU2QwcGZ5VlZYRXR4?=
+ =?utf-8?B?OWd3cTg5cHlkQWFIOVVYRHFMZklDYVk3OXlhb3owOUVYUnl6NWhDK0ZEZjVn?=
+ =?utf-8?B?YjF5d0J3Y0IwcUJEY3hNdHppbThVRGtkdUt6OUhKbldTNGFVSjgxN3RRNGZU?=
+ =?utf-8?B?dk1oMjZlTTlJdGRGTVJ1WktrcEJFWmN6emdJMDQ1TDlKNXZGeFovb3ZpUTBy?=
+ =?utf-8?B?SWQ4dTU5elNEd0Y0WlhMUFZZb0ZPK3VWNkZVdUVCc0RPRzdIOWtmV01SeHJ2?=
+ =?utf-8?B?bjNZNEp3NWt6R3NOQ2JvUzZjbEtGYmpJTUpwRVVsQVpCcW53Q3NaL29CaHlX?=
+ =?utf-8?B?eG1SRVlQeXlBZkcxSWV4aHJ6K0NvM3RIOHdrZnAvR200NFZzWXNrNURrWjdC?=
+ =?utf-8?B?RGFSR1JUNGJLdVpjdUJQOCtLWnZiTWE2Q3duM0FOcnkrZjVoOGZnSjBNc2t3?=
+ =?utf-8?B?WVkrbmN2TzZXQm1IaDh3SzFyUjU1Rm9DRGs4UjdyWUpKZXVJMDF1ZGdmQTZq?=
+ =?utf-8?B?eHUrNlVUZGlUUEtnK3V6VG42dEltMWU0ZGZHNHAwbUwvME5xWmhlRFRHTWpj?=
+ =?utf-8?B?WjlHVVBxOGpEakZJdWVsZGRUbmRQL1g5UVRUY3ROaHRGMXJtMVpyOGtxd3Mw?=
+ =?utf-8?B?bU8zR3VrU3VFbFhrYUNpYTgyeG9yWE9mZVBiZkdOdVBDdW51UldwaHg5cEly?=
+ =?utf-8?B?NHlLVHdkQXVlU0RJdjJvTld6N0RFZDJUREdlNEhMYmlxanhzUktUWnVmNTBu?=
+ =?utf-8?B?ZmkvaUg4Y21RZ1NyUkQvREdrTURZNjZVK3gyWC9vbWtueEdaMWhiQ1FFK2py?=
+ =?utf-8?B?OVZqdXpMVEU2eFNBekI2S2diTHV6cVUxUG1VeDNwaytSelJzRUU3emZBQ3RT?=
+ =?utf-8?B?RVRSbzVWMU1oY0E1SmhSUVM1eDUwdkxOcXZyTm5qOUxwOVdtOFFTQmIrQWc3?=
+ =?utf-8?B?NlNOemFWVjVnPT0=?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM7PR04MB7046.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(19092799006)(7416014)(376014)(921020)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZE9EUURGUFhCMnQ1cDdCR3hGTGRVU0N5YlZjNVY3Rkh3MHNDN1d0KzRWUFdv?=
+ =?utf-8?B?MzRhV3g2RVlrY3ZtdXVZaGd5bkVuc3o0Ykw1SWhYZFc0WWtPRUJOTEtjbUZX?=
+ =?utf-8?B?Z1E2M0Qwc1NQdXp2WVVub0pnMnIvdnhuakx3VStlemhiM1lOL3VQcy9vMEtW?=
+ =?utf-8?B?UmR3ZjArNjlueVVCbmRGRklBck0vZWVnYUt6bzR1ZDB5QTQ3SHlXdGg0dU5q?=
+ =?utf-8?B?Nmxrd3RWTkVkNWd3NFJ6VFlwVHFYK3ZNSXFET01mS0pMcTNxMDhTbnB2emZT?=
+ =?utf-8?B?WjdpTVU2blZ4cm9OMkVNNUhtREEvaXBWSUdnMHllSGdPUVBHQ01maW5UQ3BX?=
+ =?utf-8?B?RHNybEsybHRLeGI0clp3blV1NTd3M3gxQ3FaaGxONjlQVEFlcnFKckx6ZTZr?=
+ =?utf-8?B?UDEzU3ZhamgrQ0FyUzZpN2F6N0dNNnRGYm8rSHgzRitwYjUyb2g4K0gvWi9X?=
+ =?utf-8?B?NXBRMkZOeUIyZDdSTVY5eDBOTTNxenA0c0taUFhWNXBRMHpxQU5vRjB0d1Vy?=
+ =?utf-8?B?cUROM3RzZmI1RGpBVGpQelZZQ3lPTlFHTnQwdTVML21LN0FDdHROMWdQaUdN?=
+ =?utf-8?B?amZBbm8yTXF5WHc0b2tPYmVZRGhqSlh0bWRxOVkxSkR3d3NMMlpGY3hKZEdN?=
+ =?utf-8?B?aWpMVDAycmRtM0lqRWRrb0dGV05HVldkbG9uOUVTTTBFQkVkalk1cm1MTzJi?=
+ =?utf-8?B?RVBZQXk5czRHbUNYc052ejVtM2RsV0hYbEJkOFNtdHpZaUE4emQ1blNwSnMx?=
+ =?utf-8?B?OXlhWDdUMTVRUEpqVVNVUFNORDFoSXU4WWNmUGdqbEhFVlZadEtGelZEbm5w?=
+ =?utf-8?B?UisxbGs4dVpxQnkxdDdTOGhJMEZlMFRtTG5YTXpIUHQ0TG5aZEZxdDNHMW5q?=
+ =?utf-8?B?Y21XQnZTb1VQQUFyUXZyUG9tVDFqUGZFMFpqOVJyTlVLME5ESGN6RFhmWFlO?=
+ =?utf-8?B?ZWt0Y2JZOW1wZUNkZFlSQTlMaGxtQVRXK3kwTnZsV2hNc3FITUVlZzFZRjNF?=
+ =?utf-8?B?WUd6SitvOHNjTSt0VGJaaC9uS2YzMkZhQjFUT1RsbHJpZm5RYkEzeFdkelFH?=
+ =?utf-8?B?VXg3bEx4WXNoaHp6OTdGZFBqUmIvRVB3ZGMyeUFocG1lbjVWL0JuZGlNUGV0?=
+ =?utf-8?B?YXdHN3dsUU10cTgxYzlKNyt6R2lUMHJyMzN1SnNzeld0NDFzbCtMcFk0dE5k?=
+ =?utf-8?B?YTNrSVFNMXRPQWxlWVF3N01aUUIyRVcwakc0Y1ZjNjh5UHFZT1FjWGlDUUJy?=
+ =?utf-8?B?UGhEbnBKK1BFcGwxOWVZWW0rYkxTQUJ2ODJwcTI3NC8zSmo4ZGFDY2xqcEdB?=
+ =?utf-8?B?SEExdEpTVm5kRXF2VlEzanJGWGlqVitNWCt3cXluWEJlYXNsUEp2VWxEdDYz?=
+ =?utf-8?B?WCtRQnVXZm1LTVRYNUFnem5nU1BUZ0Rhc3hGUEpLb1dCTUZwbDB4QTJ0VkxC?=
+ =?utf-8?B?c1VVVGp0a1pBQlo0L2tubzV0MFJaa1UyMnlLTVFNdWtPUnR1b0llQU4xckVU?=
+ =?utf-8?B?YXE3SHoxNlprc2trdjNtK0phTnlhRFh2bmdZcnpwMU5wOGQrcGNxWmF2cU1P?=
+ =?utf-8?B?V21sdVdpU1Jjb3p2S1NDTHJZN0Vtb1RveEZxbUFCYUJlZW9CeVpyMDMvamYz?=
+ =?utf-8?B?RzBEaDk5VFZFa3ZVT0Z3dWRuRm1mejRuSEpNdjZoMG54SGdWMEFrQ3FDMkYx?=
+ =?utf-8?B?RW5ZWm03Y3p5WWxhY0dBdHdNVjNpR3JGcFVScjhpS3EwY1RnTUV3UlQwYXY3?=
+ =?utf-8?B?T0pzSGFVS01nMkFRNmF3SHAwQXRUS0gyN1ZsaGllRjU1dU5wZmJBOG9reHdp?=
+ =?utf-8?B?WkEwVXFXeWdmTktRUllCN1dUcFNnWlFFYjhpLzNSTjRsdmJtNWtkajZQcnpa?=
+ =?utf-8?B?by91M0xCbldWNkRDMThMejFwSEVxLzA1b2Naam9laHlXVXFBRUFtdGR6RFNV?=
+ =?utf-8?B?RmJVUVlYQ2JiV0xsQ00xNUJlclNPK0REQ2xQQ3JHdkpKd09sTnBFQlRUMSsx?=
+ =?utf-8?B?alN6MnI2ekpMMldpMzFWb3NFUTUzU2F1dCtzcHRqKy9wMVNyRmNScG1YR1o4?=
+ =?utf-8?B?YXAvRFJKdzlHM1JnUVM5Zk1FUmNaN040aFNTTHhwMjJkaENXeHZDZFU4QlRo?=
+ =?utf-8?Q?Ltt0GnM8CDIUPU3fdZIgRKfzc?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8d67fbb1-cff5-46f2-d518-08dddf9962bd
+X-MS-Exchange-CrossTenant-AuthSource: AM7PR04MB7046.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Aug 2025 03:26:43.8346
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qYBBkyvJ42WqfGFdFzXhdp+XKW0hdXFj+kQa5iP9VjXLiKAoDXuA7NLbaQ2t0LyzLMtsswtMBFSuY5hFmx3vqA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA1PR04MB11384
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250819_194535_797111_7E626E1B 
-X-CRM114-Status: GOOD (  17.52  )
+X-CRM114-CacheID: sfid-20250819_202651_711800_B6ECCADB 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,44 +198,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 19, 2025 at 06:03:47PM +0200, Andrew Lunn wrote:
-> On Tue, Aug 19, 2025 at 01:50:17PM +0900, Dongjin Kim wrote:
-> > Very poor network performance is observed on the ODROID-M1 Board
-> > (REV 1.0 20220613) when running iperf3 (under 200Mbits/sec), and
-> > this problem can be resolved after changing the value of TXD
-> > timing to 0x35 from 0x4f.
+On 08/19/2025, Dmitry Baryshkov wrote:
+> On 19/08/2025 12:49, Liu Ying wrote:
+>> Hi Dmitry,
+>>
+>> On 08/16/2025, Dmitry Baryshkov wrote:
+>>> Declare which infoframes are supported via the .hdmi_write_infoframe()
+>>> interface.
+>>>
+>>> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+>>> ---
+>>>   drivers/gpu/drm/bridge/ite-it6263.c | 1 +
+>>>   1 file changed, 1 insertion(+)
+>>
+>> For subject, s/it6232/it6263.
 > 
-> How did you decide on 0x35?
+> Ack
 > 
-> ~/linux/arch/arm64$ grep -hr "tx_delay = " | sort | uniq -c
->       4 	tx_delay = <0x10>;
->       1 	tx_delay = <0x1a>;
->       1 	tx_delay = <0x21>;
->       2 	tx_delay = <0x22>;
->       4 	tx_delay = <0x24>;
->       2 	tx_delay = <0x26>;
->      14 	tx_delay = <0x28>;
->       1 	tx_delay = <0x2a>;
->       6 	tx_delay = <0x30>;
->       1 	tx_delay = <0x3a>;
->       3 	tx_delay = <0x3c>;
->       2 	tx_delay = <0x42>;
->       5 	tx_delay = <0x43>;
->       2 	tx_delay = <0x44>;
->       1 	tx_delay = <0x46>;
->       6 	tx_delay = <0x4f>;
+>>
+>>>
+>>> diff --git a/drivers/gpu/drm/bridge/ite-it6263.c b/drivers/gpu/drm/bridge/ite-it6263.c
+>>> index cf813672b4ffb8ab5c524c6414ee7b414cebc018..b1956891a8388401c13cd2fc5c78f0779063adf4 100644
+>>> --- a/drivers/gpu/drm/bridge/ite-it6263.c
+>>> +++ b/drivers/gpu/drm/bridge/ite-it6263.c
+>>> @@ -875,6 +875,7 @@ static int it6263_probe(struct i2c_client *client)
+>>>       it->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
+>>>       it->bridge.vendor = "ITE";
+>>>       it->bridge.product = "IT6263";
+>>> +    it->bridge.supported_infoframes = DRM_CONNECTOR_INFOFRAME_AVI;
+>>
+>> With supported_infoframes set, the two lines setting vendor and product
+>> are dead code.  I think it's worth dropping them and updating kerneldoc
+>> for vendor and product members because they don't have to be required if
+>> DRM_BRIDGE_OP_HDMI is set.  But, this could be done with future patch(not
+>> in this patch series).
 > 
-> The numbers are all over the place, but it is clear that 0x28 is the
-> most popular for some reason. But since this delay values are magic,
-> i've no idea why.
-> 
->      Andrew
-I do have more numbers in the Rockchip BSP kernel, and 0x35 is from
-one of them that shows less retry counts when testing 'iperf3' while
-testing with the batch of ODROID-M1. :)
+> They are still required by the framework itself, see drmm_connector_hdmi_init().
 
-Thanks,
-Dongjin Kim.
+Yes.  But it's a bit too strict since SPD infoframe is optional according
+to CTA standard documentation.
+
+> 
+> BTW: I don't have ITE datasheet. Do you know if it really supports only the AVI frame?
+
+AFAICS, it seems that ITE6263 supports inforframes from 0x81 to 0x85, so
+including SPD inforframe.  Maybe, just keep those dead vendor&product
+settings for now and add SPD inforframe in future.
+
+> 
+> 
+>>
+>> Reviewed-by: Liu Ying <victor.liu@nxp.com>
+>>
+>>>         return devm_drm_bridge_add(dev, &it->bridge);
+>>>   }
+>>>
+>>
+>>
+> 
+> 
+
+
+-- 
+Regards,
+Liu Ying
 
 _______________________________________________
 Linux-rockchip mailing list
