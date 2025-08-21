@@ -4,62 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ADE6CA0EF8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Aug 2025 15:38:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C27ACA0EFC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Aug 2025 15:41:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oMTSAYe0neSw/RTqzOMSYQ3czykw33TeMUT+hPyC4jU=; b=PMYCGGZjvcW3bae5u7xYQiuJJ2
-	Q8+A59spGBn4xt+gWMVCskj3A7DFFoQuGlo6Wx0pzLsLNnUIOUDvJOO9Xc1eTD5J4negu+5bWh1ov
-	Gt+JGQSvA3Rsp3yqkzfRpeAJRsj6fG+hL5LXfEbZ64PzYXxxH5DadZS3mDLGhWIG+JeZeXxUujwAu
-	nPIRgP7dUc2i3ia17/gF1UmTak5WQJwY04tf5y+IFR12IQ7emqakNyN8frFcBiLy2yba1mtc9q80t
-	SCSQmptdhFtC8+oTEakMrxGa+7TVioxiKGisVwKcQoGagTDUWuCn7X8Uvh4gMNPaF8CJB3aALkzmk
-	QbZIydfQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rA2UUsmgAsI3jVQEe4yKgt52KmQU9OGqy0TYy0FA5z4=; b=uEeCbHhU7UqqpB
+	OzCQep9kXDiawrBC8zitHMp2hdsyjrpEV121Kl9J6I3wQGr7VDFZBvpvDqmsIKouwwRtAIHwY3y+M
+	eJkZk8K8wmesQPVdmv9yRvC063/LAIVX3RJlvTAp8sgpX3QSBKOFIZyIOZKluTxh0RkkreZrN8J4k
+	IuBafvQgGtfjecNuTH0YfdyWZxjuYj9rfG/QVj4DzQjmMbM2EiEaniImsCCVmyMzMwcvOnaPS0L6G
+	b2yyan3wQGvFcbcDdDU4Qw6P3AsxayUXOCHjkT07qPb4+J3VID/pwCs9grtyjSJTBO6ZY0b1ImJEF
+	nqmsYXJ9Xb9VD+aFAfDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up7Mu-0000000HQBU-2qGr;
-	Thu, 21 Aug 2025 15:38:24 +0000
-Received: from out-174.mta0.migadu.com ([91.218.175.174])
+	id 1up7PW-0000000HQrD-2CQz;
+	Thu, 21 Aug 2025 15:41:06 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up4cF-0000000GvpM-0Z5I
-	for linux-rockchip@lists.infradead.org;
-	Thu, 21 Aug 2025 12:42:05 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1755780117;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2qBXp2L6ghuaOFTwpw0VcF+lJn82b0iwLgdjpHusKRY=;
-	b=txzMEN3FKtz1olFZUVrErfLHlhVNtHZp9Kd/i2sWnJtnGBam8Rdp3Oaogr0G23n5z4Eehf
-	nGkZ9OB8Xo587f3LLNgNZFk6nWKx26GGOODXnDG6QmhwykAptAb4nKdWsxH5mY0lzf762R
-	v5ZuMJSkoNsbXkwH1yFunobZ3E4zLw9ecdcIjUIrrUWy3yPU3o8Radlqb5OGtBQjUE46wM
-	IzknYv9LHjnyR4g9tqA83ILR4aotfauXFfh970xI8ortZznliPacH7OK51v7hjHYF0jUKk
-	eCuIcurdewmlFv0qdyBGbByDQeQawkgA59EaxihTeqGqU8F1X+bMOwNtY3h9UA==
-Date: Thu, 21 Aug 2025 14:41:34 +0200
-Message-Id: <DC843K2CRBHH.1IUX1SB576TFZ@cknow.org>
-Cc: "Robin Murphy" <robin.murphy@arm.com>, <linux-pm@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <kernel@collabora.com>
-Subject: Re: [PATCH v2 2/3] thermal: rockchip: shut up GRF warning
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Sebastian Reichel" <sebastian.reichel@collabora.com>, "Rafael J.
- Wysocki" <rafael@kernel.org>, "Daniel Lezcano" <daniel.lezcano@linaro.org>,
- "Zhang Rui" <rui.zhang@intel.com>, "Lukasz Luba" <lukasz.luba@arm.com>,
- "Heiko Stuebner" <heiko@sntech.de>, "Rob Herring" <robh@kernel.org>,
- "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
- <conor+dt@kernel.org>
-References: <20250820-thermal-rockchip-grf-warning-v2-0-c7e2d35017b8@kernel.org> <20250820-thermal-rockchip-grf-warning-v2-2-c7e2d35017b8@kernel.org>
-In-Reply-To: <20250820-thermal-rockchip-grf-warning-v2-2-c7e2d35017b8@kernel.org>
-X-Migadu-Flow: FLOW_OUT
+	id 1up4hp-0000000Gwt3-0xli;
+	Thu, 21 Aug 2025 12:47:50 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-afcb7a3b3a9so129135366b.2;
+        Thu, 21 Aug 2025 05:47:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1755780467; x=1756385267; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Kww3Z8XQpKUqnrzv3IhCXTW3D/QqhIcasmUvK1+uYck=;
+        b=g7+8XQ9c+8WMrB24m5pfsg2NADeppZ2YTmwOad7RL8Lqz5z19Sq6r872C7BnQ3VdGi
+         1exetMVr2YivK/1lkoK3hUGQJv9ZBYG38QATQ76XPsulzqqFbf4Zk+cGSvsMu0r2ll5a
+         lBvauaMT1Go2tkuz1oPyRh1EBlvxUzHoo234mv83VagWH8FV6s/hK7/Y3fMZvziy0si6
+         6dc3bdjwozd5ayqf+++KCeXv6c6nSPsvkULgZzmBA8Alj6FOxpvhCqob11ZNwyavbEVU
+         yR6jvU8qYOTz4WgR/VRgT4E/BrCcDPjrZvw81mYgU58896ic0osNP0+VeH5loQoFVflo
+         5ouA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755780467; x=1756385267;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Kww3Z8XQpKUqnrzv3IhCXTW3D/QqhIcasmUvK1+uYck=;
+        b=Ssf9hF2OjHwu+EFbgaBn+Hs+6Qn38o/ixunGQLiua9oj0AEMb+3Ql6aX71Xmxw4yFo
+         63Y1HvybiprHStphR7dn5KkbBMI+jQ8qoNEBbywCcvMs/E9E6K0S2qNv+TNj3uwWkvcY
+         afQt7o6WiIt+CCddWKBOjQ4SBS+/h+dAvk04/kgYzTcsDGUAjNY7iZgaDsqFK9R/9Dar
+         epiDqdqr9J0p6zHftFtNBIrUzUlRcgqIB0M+AjmtrKljg+mEEWSgs7ac1D7//o4T7A7z
+         EDESOjYuysddMhVlgDceEMZ7vhC4zJx5N5KWnu5SRJVqY7L2xX4yAb+MoEE2U5fXyf3+
+         5c+A==
+X-Forwarded-Encrypted: i=1; AJvYcCVUiEXVCSNPuXGvNYHPLhZRD2rnw+HG2uXJzi08UecWWT3hsKvIZeT9sGuG4TQVwlYokZO71Ns7n5OzKMfoxRYqUQ==@lists.infradead.org, AJvYcCXB4B4JBgq81r+6nm5bM6nIOhXZpE8eJxtqEQ+pvNdkicQKHYYvKqoEiVzuGRmR39CddyxbAcFRKxvkPIqW@lists.infradead.org, AJvYcCXIcgZhy8L3sESp94jz8oyhCX/6yb+iqe1HWzyAyUWs9n49TF/019P9djy8oyGysGInB0Bm97lD789E1kwUqk4=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzyxwoteV7QYpCUD9y2aEa39fAxchh82fzVqhFq9slrOPmcj3hE
+	0G2bVk7z6YRn4dyxmaOI3UkQQ09hFSq0cAgKyb2iv56RcmltmgXRscMgNAQiRZMnOMPtCEmeMvJ
+	GImoj2p0KXpUoQeIKRt6fRHeBn8aXik4=
+X-Gm-Gg: ASbGncv/sUNhZkcrRVz1tyJa4Z/rn6pzSZUSVAltq78jTPXGH63cMJxmjJEi2ojcpgr
+	FPYYZ3JapQk09PuRVIZCx8DB5cPfb2Vrf8MDSrh5ujkOkDOStAbAlhzRN5+woNpA9462KQuX1ym
+	DcuXaUMHiWeqLfB0y5rTqOCNCL7XHYeE4+OS/qmjkAcva3vlU4GW1KerFEHIz4slWzfv324CY0w
+	M5WigUj7w==
+X-Google-Smtp-Source: AGHT+IEPEbjECYdBW0nd8xX8lWG/FeWz08nR/1JcSgRS+BCimYdArukTA+i3b9djOGPovIzmf+wskUZ5f9vMyM/jPZM=
+X-Received: by 2002:a17:907:9711:b0:ae3:5e27:8e66 with SMTP id
+ a640c23a62f3a-afe07a7efc8mr229517766b.27.1755780467264; Thu, 21 Aug 2025
+ 05:47:47 -0700 (PDT)
+MIME-Version: 1.0
+References: <20250821080723.525379-1-zhao.xichao@vivo.com> <CAHp75VeDvK8cOr=rVGj_hVX5YzXM-UqrWRBgUrhiA1wzYn7C_w@mail.gmail.com>
+ <CAKv63uvfHYATd7ZFweZ0LMfTLt-idHVgYJqOV8PvzaNeigbt9w@mail.gmail.com>
+In-Reply-To: <CAKv63uvfHYATd7ZFweZ0LMfTLt-idHVgYJqOV8PvzaNeigbt9w@mail.gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Thu, 21 Aug 2025 15:47:10 +0300
+X-Gm-Features: Ac12FXyAa-NWG2kjb3jWIL5sg7tG4bcy5ylXKO82itEKrqXswF6DvDsUv85LdDQ
+Message-ID: <CAHp75VdL9kV2fyi63zqPZnW4CaeYPmJ74tmGEgU=M7FSYBv0ww@mail.gmail.com>
+Subject: Re: [PATCH 0/7] iio: Remove dev_err_probe() if error is -ENOMEM
+To: Crt Mori <cmo@melexis.com>
+Cc: Xichao Zhao <zhao.xichao@vivo.com>, Jonathan Cameron <jic23@kernel.org>, 
+	David Lechner <dlechner@baylibre.com>, =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, 
+	Andy Shevchenko <andy@kernel.org>, Andreas Klinger <ak@it-klinger.de>, Haibo Chen <haibo.chen@nxp.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Marius Cristea <marius.cristea@microchip.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Francesco Dolcini <francesco@dolcini.it>, 
+	=?UTF-8?Q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>, 
+	Hugo Villeneuve <hvilleneuve@dimonoff.com>, Gustavo Silva <gustavograzs@gmail.com>, 
+	Tomasz Duszynski <tomasz.duszynski@octakon.com>, Jagath Jog J <jagathjog1996@gmail.com>, 
+	Per-Daniel Olsson <perdaniel.olsson@axis.com>, Waqar Hameed <waqar.hameed@axis.com>, 
+	Yasin Lee <yasin.lee.x@gmail.com>, Julien Stephan <jstephan@baylibre.com>, 
+	"open list:IIO SUBSYSTEM AND DRIVERS" <linux-iio@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
+	"open list:NXP i.MX 7D/6SX/6UL/93 AND VF610 ADC DRIVER" <imx@lists.linux.dev>, 
+	"moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:ARM/Amlogic Meson SoC support" <linux-amlogic@lists.infradead.org>, 
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_054203_317267_8695B479 
-X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-CacheID: sfid-20250821_054749_274782_B9038CE8 
+X-CRM114-Status: UNSURE (   6.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,67 +108,15 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5773288798994832390=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5773288798994832390==
-Content-Type: multipart/signed;
- boundary=3b571f17c3ddaedec092828a238ae966d2c316d9a762f9d2cf5b0d604e2a;
- micalg=pgp-sha512; protocol="application/pgp-signature"
-
---3b571f17c3ddaedec092828a238ae966d2c316d9a762f9d2cf5b0d604e2a
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-
-On Wed Aug 20, 2025 at 7:40 PM CEST, Sebastian Reichel wrote:
-> Most of the recent Rockchip devices do not have a GRF associated
-> with the tsadc IP. Let's avoid printing a warning on those devices.
-
-Retested with v2 of this patch (set) and there were still no regressions
-on Rock64 (rk3328), RockPro64 (rk3399) and Quartz64-B (rk3566).
-I skipped testing my NanoPi R5S (rk3568) this time.
-
-And on Rock 5B (rk3588) I (still) no longer see this warning:
-
-  rockchip-thermal fec00000.tsadc: Missing rockchip,grf property
-
-So also with v2:
-
-Tested-by: Diederik de Haas <didi.debian@cknow.org>
-
-Cheers,
-  Diederik
-
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  drivers/thermal/rockchip_thermal.c | 23 ++++++++++++++++++-----
->  1 file changed, 18 insertions(+), 5 deletions(-)
-
---3b571f17c3ddaedec092828a238ae966d2c316d9a762f9d2cf5b0d604e2a
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaKcUAwAKCRDXblvOeH7b
-bkU/AQCEUoGxVyVSNGRj6qG6NCl2nThKkgrDRtbsVWcAv4iiLQEA5qiGnnUdk7ma
-IuxRHRF24a7aweQEHZRYm58eco2GUQQ=
-=xzaV
------END PGP SIGNATURE-----
-
---3b571f17c3ddaedec092828a238ae966d2c316d9a762f9d2cf5b0d604e2a--
-
-
---===============5773288798994832390==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5773288798994832390==--
-
+T24gVGh1LCBBdWcgMjEsIDIwMjUgYXQgMjo1MOKAr1BNIENydCBNb3JpIDxjbW9AbWVsZXhpcy5j
+b20+IHdyb3RlOgo+Cj4gU29ycnkgZHVwbGljYXRlIC0gYXMgSSBjb21tZW50ZWQgb24gZHJpdmVy
+LgoKWWVwLCBhbnN3ZXJlZCB0aGVyZS4KCgotLSAKV2l0aCBCZXN0IFJlZ2FyZHMsCkFuZHkgU2hl
+dmNoZW5rbwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
