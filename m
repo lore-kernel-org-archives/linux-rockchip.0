@@ -4,200 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A9ECCA0FE1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Aug 2025 15:32:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ADE6CA0EF8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Aug 2025 15:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zd+oa4vPVQYwQNhvl0TKe3yH6ViYqf8mcDgKOS8UEGM=; b=2w4Vw6Ges3HVTe
-	EZYphc+9ppAfhjR5PYJpkOnPeA4C06VeOu87gKcHqbRMx/qdMI5gikdh3XciU6BoAAwRNWJqLDR9g
-	6ZcPLCd4WCtFjgyFPXI0sitg+BL2QOZL3EsWbWMNGC/CvHbBE1HzsoYEZLHadEnlDwtvQ72U7MBFi
-	517E1ih7s0QO/Dv9KdobVctlcAes9fGa/F9rnv0HeTkEs4bPfiIyt4aP8lDDu7IW2ABOynHwekJ1V
-	+Ipa2YxK5jJd/mqlvEmEM04XQR4gsZfGdiT4RrIzajMexwnNj+ulzAjIfe1hykQ6/1K/vbvHLQ8SL
-	DThz0i0qyt0cxvy/DRgQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oMTSAYe0neSw/RTqzOMSYQ3czykw33TeMUT+hPyC4jU=; b=PMYCGGZjvcW3bae5u7xYQiuJJ2
+	Q8+A59spGBn4xt+gWMVCskj3A7DFFoQuGlo6Wx0pzLsLNnUIOUDvJOO9Xc1eTD5J4negu+5bWh1ov
+	Gt+JGQSvA3Rsp3yqkzfRpeAJRsj6fG+hL5LXfEbZ64PzYXxxH5DadZS3mDLGhWIG+JeZeXxUujwAu
+	nPIRgP7dUc2i3ia17/gF1UmTak5WQJwY04tf5y+IFR12IQ7emqakNyN8frFcBiLy2yba1mtc9q80t
+	SCSQmptdhFtC8+oTEakMrxGa+7TVioxiKGisVwKcQoGagTDUWuCn7X8Uvh4gMNPaF8CJB3aALkzmk
+	QbZIydfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up7Gl-0000000HOs1-10oU;
-	Thu, 21 Aug 2025 15:32:03 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1up7Mu-0000000HQBU-2qGr;
+	Thu, 21 Aug 2025 15:38:24 +0000
+Received: from out-174.mta0.migadu.com ([91.218.175.174])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up4V4-0000000Guyy-1oXO;
-	Thu, 21 Aug 2025 12:34:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=+uwQkN8EY2x64KSncDN4LHHADme5IdWFatLYHbW8sHA=; b=HeE57fDUZFHMKSyv8yK88IPP0z
-	6BgiV9xXMGW1UU6XCgXlkvlFu0JXYSkitY405K9vuaixFxIciXCtOMuBros1zZentRjc520m+l7fW
-	UH8CM6tCEZ/sALOeyrBAb44SnO2lxsPokJsc0PsoJR0R+V26WF5tjVHFHWbsOwwtcsJ0/9FVW2X1H
-	YzZVAey8ny3Jg2UHL+TTaWO1Ii3xxigdvcVvAaq1d1RH2xmF7I1DedKa079M3O9U/OY9/90+dK3IT
-	Aeh3nfUbCHtLV2S64mMsvAPhdBq4/0PhYm9JVoUAlluFGdQBURaXo7AUrCTSvwGM89kW7S8ZC2qQt
-	axPjcSxA==;
-Received: from mail-japaneastazlp170110002.outbound.protection.outlook.com ([2a01:111:f403:c405::2] helo=TYVP286CU001.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up4Uy-00000000Xz2-1u3n;
-	Thu, 21 Aug 2025 12:34:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=STJto9blANpb2zUt4SEzb00tOkrDZ1BXLoTIVQ4ca8fJU4jgPr4gO4BXkom4FnL3V1wCSBsDi1OjaiOtihfmBSZYSBqvkS8qi+u1r4iFmPEfBafCF0xxBkA+kPCNkKR0jwqICHeh70wo98cVpo6jIgxCSUYrkv+MMTl1+UI4FWjEgq3ixBbkCVmToHlG3DVvvrA12BjOlhbIbccz5R12r3Al80DKwN+xKteUAvgkVwCEHycPSzGvkASFeWW7EhdPNQnhKFC7KnEaVFwvZHn50m4ujWTSyGu9OLkYwssGbQYP53oD8qcdMJQJX6NePbG6kiRnAZHorIWoKNJyCy2bfQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+uwQkN8EY2x64KSncDN4LHHADme5IdWFatLYHbW8sHA=;
- b=OLrZTf+p2CPlaGjbQUlSPGP1FKlan0tRU2RV091zd4umF9q8n4zEUgXpC9p2So3dY/gZVSMO41cxYgIBQFCwKg+ITV+me+FDcX7n72BE8FY/tPB1eZxjtTUh853SyUicFC2p8Ecv3cLLmdHhylerYdOyyP4zubJCf654JS1L4BwDIHDuVGOglqxeuuqOXYCqEf1VK9SFzT70Z7+DrJIb0XbO5MqaQTDMKEWglPY7nclqdMhia8kVPpgi9raE9oiWv5GXNNvkxf4Ml94Wwd8ufFXCkqBtyWFF7kbtFf7W8WBuGfayXY5XRAjrMoX0rMgPk7Mm2GRvDIs2T9YY8UK3Fg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=bp.renesas.com; dmarc=pass action=none
- header.from=bp.renesas.com; dkim=pass header.d=bp.renesas.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bp.renesas.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+uwQkN8EY2x64KSncDN4LHHADme5IdWFatLYHbW8sHA=;
- b=Ql6+yB/gEhJH/7Im1GVsdcqRoAUjWZ+0m50ApzitDHpnJNndiqcoGBdrYlvVvM1IKRN3JIbrKa6hWx+vQqBkmdsK04kpr391asg9lVzPijDYvNQDTtDfbQJy9PYPwJl16FwjYIqSMU8/U7H+ubajrmIonIziXD+/qhQOcxHzrEQ=
-Received: from TY3PR01MB11346.jpnprd01.prod.outlook.com (2603:1096:400:3d0::7)
- by TY4PR01MB15518.jpnprd01.prod.outlook.com (2603:1096:405:272::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.13; Thu, 21 Aug
- 2025 12:34:14 +0000
-Received: from TY3PR01MB11346.jpnprd01.prod.outlook.com
- ([fe80::86ef:ca98:234d:60e1]) by TY3PR01MB11346.jpnprd01.prod.outlook.com
- ([fe80::86ef:ca98:234d:60e1%7]) with mapi id 15.20.9052.013; Thu, 21 Aug 2025
- 12:34:14 +0000
-From: Biju Das <biju.das.jz@bp.renesas.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>, "simona@ffwll.ch"
-	<simona@ffwll.ch>, "airlied@gmail.com" <airlied@gmail.com>,
-	"mripard@kernel.org" <mripard@kernel.org>,
-	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
-	geert <geert@linux-m68k.org>, tomi.valkeinen
-	<tomi.valkeinen@ideasonboard.com>
-CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>,
-	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
-	"imx@lists.linux.dev" <imx@lists.linux.dev>,
-	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
-	"nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
-	"virtualization@lists.linux.dev" <virtualization@lists.linux.dev>,
-	"spice-devel@lists.freedesktop.org" <spice-devel@lists.freedesktop.org>,
-	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
-	"intel-xe@lists.freedesktop.org" <intel-xe@lists.freedesktop.org>,
-	"xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>
-Subject: RE: [PATCH v6 18/25] drm/renesas/rz-du: Compute dumb-buffer sizes
- with drm_mode_size_dumb()
-Thread-Topic: [PATCH v6 18/25] drm/renesas/rz-du: Compute dumb-buffer sizes
- with drm_mode_size_dumb()
-Thread-Index: AQHcEnS9RPzKheS8DUq4xJ6ExVmpC7Rs+CdAgAAIDYCAAAp/AA==
-Date: Thu, 21 Aug 2025 12:34:14 +0000
-Message-ID: <TY3PR01MB113464DACE314621FDF1BCECF8632A@TY3PR01MB11346.jpnprd01.prod.outlook.com>
-References: <20250821081918.79786-1-tzimmermann@suse.de>
- <20250821081918.79786-19-tzimmermann@suse.de>
- <TY3PR01MB11346A4F40CE555D24C093F278632A@TY3PR01MB11346.jpnprd01.prod.outlook.com>
- <7918ea7e-8914-4c0f-97be-d660043a4aab@suse.de>
-In-Reply-To: <7918ea7e-8914-4c0f-97be-d660043a4aab@suse.de>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=bp.renesas.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TY3PR01MB11346:EE_|TY4PR01MB15518:EE_
-x-ms-office365-filtering-correlation-id: 46f772d9-b98a-407e-fe32-08dde0af09ea
-x-ld-processed: 53d82571-da19-47e4-9cb4-625a166a4a2a,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?NFBzVGdNc0VjTnMwd1hzbEFuak9hSytLSjdsazdSdVNzd1B6c1N3YVZoZGhv?=
- =?utf-8?B?RXB5VFJMUVFJT2lEMSs5OStOZzVqQzZKMjRZOG1IR1I2VEpvRmsxWE5yeE1O?=
- =?utf-8?B?dHlmeXgvdFI5aG1PU1o0ZXFkWEtCVXJoSkw0MVZ5WC9BZXhUNWV5dldaUmZL?=
- =?utf-8?B?RExSVzhvTklLbk9NWUJxOG5OMUdabG92b3lsQUFCR0tFa2RDditGWXhkQmxK?=
- =?utf-8?B?a1Q5YUkvQ0ozbVErNFcySy9YWjE3alc2VzdWOXU3K0g0eFBWbXU0TTJuZDhz?=
- =?utf-8?B?TUpmM2VpUGdsUnZsUXNxY1hUUDhGZ1JHUjRNUjE2SnlEbkp4b0gyZkx2OE9a?=
- =?utf-8?B?Rndhd29VMDQvZGVQRjlFbitYSHdWcVM4Y3htRzE1NkJWZUkrbWtOdjNqWXBa?=
- =?utf-8?B?QS9vMXlpUmdiam1lRGhqRHpJZlp5M09RY2tLMXZwd1NkTFQ5YVpVdGpDZTFO?=
- =?utf-8?B?OWNjVkE5TEYwaUlPaUlQWWhVem5KOFV5amVBa2NSdnljY3pSVnUxODlFTHpW?=
- =?utf-8?B?bFJKTWt4bUI2RHA1NGJjMC9UR3llc3YvdVE4cUdCRkt6c1JVelpzenU4cnBT?=
- =?utf-8?B?VXlUYzM5cE1GKzJrUHpLYVBYSXQ5dE1nSHRrbFY2N1liZ3hEV3E2UmtsU2I2?=
- =?utf-8?B?Y1BCd3JqOGpEeWlvMlVWbi9rWU1iYldyZU52dUhXYTJKWWJJbTRyRUhvbDRM?=
- =?utf-8?B?Ui9RTXIwRWJJZlhEQUJhMER5d3dISlNVdFg4TnVNa3NYYnpOdm9zeE91MDNS?=
- =?utf-8?B?dkVMZmhEdTJLbWFNTWZOQW5VVnRTbmZab2YydUhyMDJqakg4VnE2b0VhQnNo?=
- =?utf-8?B?WnNBZW5kNkZPRjhIc3FvdjArMm44czRnUFlmaitlMlJSVVE0eThxMmhkRmk2?=
- =?utf-8?B?S2tMZ3haUlBPaFA0UWZOWmp4SmIyK0RWRHZ5Mmloc1dreFBXdXhkdStDcEVy?=
- =?utf-8?B?NElIVEtIRmx5amxlQ0d1WmJiRDFURFB3RlJOc2JHZTNscTJsZVpGa1dRaDlo?=
- =?utf-8?B?bWxxU2xQZis2anllMVZIUG5VM1F1aXZvbHZNZlZCcUdlNWRzZVFkcDhYTHlj?=
- =?utf-8?B?UlhyWGR1WnZTd1V6YVliNU9RTVdjN0FFdlFDM014WWxiT05MV0RwcWZTb0M0?=
- =?utf-8?B?eVlNMC9QLzFYYVEzckxuV0xyV1dnd2pjUTEwdThLenM3V2xRcThzRzUvWUpk?=
- =?utf-8?B?ZzhpRm1wWTRjZXM1c3gyZTl1NlQybTh4VWdwV0t3SGxYWTVXQ1k0N0pGVlVw?=
- =?utf-8?B?TUNyR1E4SnFNM0F5N25RaEovOWMvWjRFbXZRaWhlOUZmd2E1aDZCYit3S0ln?=
- =?utf-8?B?N3h2Yk9iZndYaHVMb2Z5THNITTJtOEhuMWlnOEM4Qk83NUpWQThERlhLSzZ2?=
- =?utf-8?B?RkJrMGZRcUdaYU9XaTFQNG1aZmhZTHBDRlVUbDF5c0JHMzVBSlFDRnEvYkZ1?=
- =?utf-8?B?dTlMLzdmVi96bnNyWXJJQ2FpcWNLUWxnWTZGSExNYUt6bHVwdGlVdUNMQllr?=
- =?utf-8?B?OElsZUJhZkJHRjVkaFdETlIzWmw4Zm9MRzZUTTlGSmJkQ05XaC8vUGJKZVJT?=
- =?utf-8?B?VzZzb01DVWZRYlNyaGFNOXMyWlpRK0l2MWxieUxVSnprM25RUFA0NlBTUlo1?=
- =?utf-8?B?NkplRHFTYndoR3lZZjYwYlRYdVlUREZzZ1VtZnRIZmRsdlpIYkF5R0ZyazU3?=
- =?utf-8?B?Wi9Za1NJS3pwZTlVcHhIbzQ4aTdzWDMxS0h2Mm9RSVBaZzNwcjhmVWZiZm1i?=
- =?utf-8?B?NHUzZ280a2QvcnBQaXR3Snk3eEVTWndVVFRJdkMreDJwRm9BY1E2ekZYWG1m?=
- =?utf-8?B?NnlleFFsMzU3ajlrUjN2RVlsSVVkNDF6cVZXcG1PV29WVDVHSmp2WE9lRVZ5?=
- =?utf-8?B?UUczYnJtWVRmZUxsSTJybVBnNm9YeGZTdVB6aTNCd2g3N0Z3WEpsYWcvY2Zy?=
- =?utf-8?B?WGUxQlVxc2pxVFpNeTZvc2p5T2piRGZzd0t1MHRVT2VzWWQ1b0Vpb2dXaUJL?=
- =?utf-8?B?N1B2Vzc2KzZ3PT0=?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY3PR01MB11346.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?akloL0RPcytxQTlZTFR6RkU2VGltRjdwamNJNW0ybGcvWmJldFFuQkwrL3Fx?=
- =?utf-8?B?TmR5WmVQOHBianFsMi8wQVJjMkdpb2VWblhGYUdsNzFDNnkvS0xlSjhlalBL?=
- =?utf-8?B?UGJTZUZJZlpEcDNRalh4MFk4bUtLN3l2SDZUY20xak1peWZFbmtLbGJ2bWQ2?=
- =?utf-8?B?cFQ3ZWRoUU12WjFwalhRVjY2TjQ0ZHdDRWFPdXhFalp5LzJnblFJZlZidTdS?=
- =?utf-8?B?VVRwYUVhMlJJVWcxbFdKWEQ3MUd1dTJ2YzRwclF6RWUwNzZqTGY5M0s3bnNr?=
- =?utf-8?B?bmFjdi9iRVBtd3VPWXE5a01XdGQrQkxSWlNOWEVvZ2l2ZjJGUHB1MmJtbCtH?=
- =?utf-8?B?RzZPOC9Bc2k4a2ZuZFI5RjVXWnA5eXdtZ1RsTkdBVDgrMFp0aFRQOVBreGRo?=
- =?utf-8?B?ZDJ5aG9UcFoyNGJGaWJwNW92ZktEdTAzZnN6YzVtTU43bzA5b2xhdThlN1Bj?=
- =?utf-8?B?L2o0RW5hcEU4alg1MTU5YkpZWU5odVcwVDJFZHFaM2FnOWw5QjZFbHEyVVp1?=
- =?utf-8?B?S3RmaHJodTMyREhqeGd4b09lYjMzK29JaHpFRjFIVU10TkpIQm5lK2ljL0d2?=
- =?utf-8?B?b3YzQnFlTmhtYXBpZ01wZFI5Q0VFdWpaNHltZ3FjRjhLYk5oSGpzMEovdjNq?=
- =?utf-8?B?YTk4SnZidk9qNDNRQkY3dW9tOVYrV1cxcGx3VlFlTmowOVJaTGR3V0Y2dUFp?=
- =?utf-8?B?WFVPNmU0TWxWSFZCbW1SRmQ3bTdaU2tuYlh4dWhqZWdNTkhMcVZpVXN1OXB0?=
- =?utf-8?B?YjNQaVBKMzRHT2d0eDMvcnVldmkwZDdzNnZnTEpGbnFTbXVHamRrZjRaOW8x?=
- =?utf-8?B?RkNWc2grbm5WKzNoQjgveHF0VFdHSU9rTGF1VlBNYkluSFQ5eXR4cXRNbkZJ?=
- =?utf-8?B?VW0rZ1k3TXdua0d1VXhJRWJ3aFVVYktaQ3ZxVnpYMGJhSHJySzdjRUN4WUlC?=
- =?utf-8?B?aDJVVWF0d1ZMeXdydlErNVBaVWYrdHh3Q09rMWljTGNSbGR5SUZTYTVPN3R3?=
- =?utf-8?B?ZmRWa0xyZGJDNlAvai96Tm1GS1E0YzExWmlJeXQwSEhuM3VlZkVONnhTOE9a?=
- =?utf-8?B?TXZjRFEza0hQNVZlMm80bFozblVsMm1zR1JXcUNrMEkvcUpNWndxcFMvdDFS?=
- =?utf-8?B?REt5UDV5VTNMTDdaWDBjak9ZeFBUc1VIaWhMSTEwVENSVHE0MEZRYUt6ZjVI?=
- =?utf-8?B?aUU2dklUcGZ5Vmp1L3YzSk1ZMlFtcGZkVU1zYWFGci96YVlLSFJUdUJTam5k?=
- =?utf-8?B?MURNYjVJVCtZY2N4M2V5NVpzVUtCeXhCeDVOTVd3MEJBMUJ4ZnFEMUsrT2Rl?=
- =?utf-8?B?ajZnZlc2RE5SZncrTzBnV21SMHUzcUE4c3lJQmVKemhRNjk4SlJOWDZZN3A0?=
- =?utf-8?B?WEpmWTRGeUdXK25KMnB2bzl6VVBySWdEMk5pUGRCUUhHREo0bnNoYlgrUHpv?=
- =?utf-8?B?THNRUkxWeFJzQXJiOE1vRUcwMUNYdUcydDFzNjZydVRpamJuUUNDUGkzNVhq?=
- =?utf-8?B?VlFrM2lqOFVFU296YjllK3BrcUtNUDAxa1B2ODBwYlZ2dEJEUjVRWVd1eitG?=
- =?utf-8?B?emdWZEUzbUJ5WGhGZEpIbnROdWhvYUhnQUxkQ2QvSVVaMUpaMGZjeEthcGdv?=
- =?utf-8?B?YUxpM1ErelBrQkk2eHdzNTlGWGx2K3hHTVVxd1NxNTgzalVBcTNGSGJmeHdl?=
- =?utf-8?B?c1FlWitjb1dxY3Z5VjN2SXgrV0lFbUlQU2NzL2hEZExZZHE1Kzk4VmQ1b09o?=
- =?utf-8?B?SjF6UWJ1dVU3NFA4dzM4Qk5JOWQ4YnAwTVZvQjBtNWdZMTdHcDBvTWQwemVY?=
- =?utf-8?B?cVI0Y1ptVlJvQVFkUTVpbGdNNGhtbDNBNEx2aW5BQW9HWlljNzFjU0RsRUtG?=
- =?utf-8?B?ajh5a3RMcG1hNG10Q1ZtK0xwNS8rS1RzSWttbEJOOUptNk9RNXNrb0FOSVdM?=
- =?utf-8?B?TTU0NkdaVnE1MEp1SGRSaWlLUUc4aks5SVNLalhaUkJLaGdEZEoxcGVqbWts?=
- =?utf-8?B?cjZKcC9KSVVLc1FoTnNCU3Vka1hCR1VNM0dwYUZNTlkwdjFtakJ1OFRnUm9X?=
- =?utf-8?B?SEJYQVY1TmsrRmpyS0lhTFkvaWFpbDkyQndaU0RxYklNWlY4YXppNVJaQXM2?=
- =?utf-8?B?ZEJXVC9JQzNTaDNibmZZemlCaUN2WWN0UFpQWkpJWTY3T3UrYURSdUJURUlL?=
- =?utf-8?B?ZGc9PQ==?=
-MIME-Version: 1.0
-X-OriginatorOrg: bp.renesas.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TY3PR01MB11346.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 46f772d9-b98a-407e-fe32-08dde0af09ea
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Aug 2025 12:34:14.6684
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 53d82571-da19-47e4-9cb4-625a166a4a2a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: S3p5zy4tFrWLWNGLwHjTD2CfJSSxCYOJtTKv/OPtuSpu9OGrTBCK/W1llSn5EipwI2SZuaKxY9nPGHTpmkHnUhyGVpOVY/9yzxgiI4pbfL0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY4PR01MB15518
+	id 1up4cF-0000000GvpM-0Z5I
+	for linux-rockchip@lists.infradead.org;
+	Thu, 21 Aug 2025 12:42:05 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1755780117;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=2qBXp2L6ghuaOFTwpw0VcF+lJn82b0iwLgdjpHusKRY=;
+	b=txzMEN3FKtz1olFZUVrErfLHlhVNtHZp9Kd/i2sWnJtnGBam8Rdp3Oaogr0G23n5z4Eehf
+	nGkZ9OB8Xo587f3LLNgNZFk6nWKx26GGOODXnDG6QmhwykAptAb4nKdWsxH5mY0lzf762R
+	v5ZuMJSkoNsbXkwH1yFunobZ3E4zLw9ecdcIjUIrrUWy3yPU3o8Radlqb5OGtBQjUE46wM
+	IzknYv9LHjnyR4g9tqA83ILR4aotfauXFfh970xI8ortZznliPacH7OK51v7hjHYF0jUKk
+	eCuIcurdewmlFv0qdyBGbByDQeQawkgA59EaxihTeqGqU8F1X+bMOwNtY3h9UA==
+Date: Thu, 21 Aug 2025 14:41:34 +0200
+Message-Id: <DC843K2CRBHH.1IUX1SB576TFZ@cknow.org>
+Cc: "Robin Murphy" <robin.murphy@arm.com>, <linux-pm@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <kernel@collabora.com>
+Subject: Re: [PATCH v2 2/3] thermal: rockchip: shut up GRF warning
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Sebastian Reichel" <sebastian.reichel@collabora.com>, "Rafael J.
+ Wysocki" <rafael@kernel.org>, "Daniel Lezcano" <daniel.lezcano@linaro.org>,
+ "Zhang Rui" <rui.zhang@intel.com>, "Lukasz Luba" <lukasz.luba@arm.com>,
+ "Heiko Stuebner" <heiko@sntech.de>, "Rob Herring" <robh@kernel.org>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
+ <conor+dt@kernel.org>
+References: <20250820-thermal-rockchip-grf-warning-v2-0-c7e2d35017b8@kernel.org> <20250820-thermal-rockchip-grf-warning-v2-2-c7e2d35017b8@kernel.org>
+In-Reply-To: <20250820-thermal-rockchip-grf-warning-v2-2-c7e2d35017b8@kernel.org>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_133432_602791_6EDE658F 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20250821_054203_317267_8695B479 
+X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -209,49 +72,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5773288798994832390=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Thomas,
+--===============5773288798994832390==
+Content-Type: multipart/signed;
+ boundary=3b571f17c3ddaedec092828a238ae966d2c316d9a762f9d2cf5b0d604e2a;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-> -----Original Message-----
-> From: Thomas Zimmermann <tzimmermann@suse.de>
-> Sent: 21 August 2025 12:56
-> Subject: Re: [PATCH v6 18/25] drm/renesas/rz-du: Compute dumb-buffer sizes with drm_mode_size_dumb()
-> 
-> Hi
-> 
-> Am 21.08.25 um 13:28 schrieb Biju Das:
-> > Hi Thomas Zimmermann,
-> >
-> > Thanks for the patch.
-> >
-> >> -----Original Message-----
-> >> From: Thomas Zimmermann <tzimmermann@suse.de>
-> >> Sent: 21 August 2025 09:17
-> >> Subject: [PATCH v6 18/25] drm/renesas/rz-du: Compute dumb-buffer
-> >> sizes with drm_mode_size_dumb()
-> >>
-> >> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-> >> buffer size. Align the pitch according to hardware requirements.
-> >>
-> >> v5:
-> >> - include dumb-buffers header for drm_mode_size_dumb() (kernel test
-> >> robot)
-> >>
-> >> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> >> Cc: Biju Das <biju.das.jz@bp.renesas.com>
-> > Tested-by: Biju Das <biju.das.jz@bp.renesas.com>
-> 
-> Thanks for testing. Could you also review the patch, please?
+--3b571f17c3ddaedec092828a238ae966d2c316d9a762f9d2cf5b0d604e2a
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Sure, will do.
+On Wed Aug 20, 2025 at 7:40 PM CEST, Sebastian Reichel wrote:
+> Most of the recent Rockchip devices do not have a GRF associated
+> with the tsadc IP. Let's avoid printing a warning on those devices.
+
+Retested with v2 of this patch (set) and there were still no regressions
+on Rock64 (rk3328), RockPro64 (rk3399) and Quartz64-B (rk3566).
+I skipped testing my NanoPi R5S (rk3568) this time.
+
+And on Rock 5B (rk3588) I (still) no longer see this warning:
+
+  rockchip-thermal fec00000.tsadc: Missing rockchip,grf property
+
+So also with v2:
+
+Tested-by: Diederik de Haas <didi.debian@cknow.org>
 
 Cheers,
-Biju
+  Diederik
+
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  drivers/thermal/rockchip_thermal.c | 23 ++++++++++++++++++-----
+>  1 file changed, 18 insertions(+), 5 deletions(-)
+
+--3b571f17c3ddaedec092828a238ae966d2c316d9a762f9d2cf5b0d604e2a
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaKcUAwAKCRDXblvOeH7b
+bkU/AQCEUoGxVyVSNGRj6qG6NCl2nThKkgrDRtbsVWcAv4iiLQEA5qiGnnUdk7ma
+IuxRHRF24a7aweQEHZRYm58eco2GUQQ=
+=xzaV
+-----END PGP SIGNATURE-----
+
+--3b571f17c3ddaedec092828a238ae966d2c316d9a762f9d2cf5b0d604e2a--
+
+
+--===============5773288798994832390==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5773288798994832390==--
+
