@@ -4,140 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48E8ACA0EEB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Aug 2025 10:26:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 482E5CA0EF8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Aug 2025 13:22:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H4kjd40Q+30XS1iPhJnWUFZtZ6OOZANehFvnUCleOh4=; b=D1hu0kK5fOyDvb
-	/XyUfT1g/w2oX7zMJKU/pLUA5wBCEt0N37I0wVkV2NbooKRaqD77XB1bxlkPbb3w57Ow/9n6iY7UA
-	drq1nMtdzJuP/w2fOSdM7WwDLSVSwnQqFZRFWSxBAYRBWYbDRjD/Lc5SdMhXUL+JY9FuVWSLjVydG
-	n7g2yv6Y8OezDoR7GdDLsJMeMXXkUIg0/i/7bwhnc0URCzDvvttXuMoCji93nAXM2+bSU2dkLZoaV
-	DzTtKUg2dl7wlvs0Yyg7HWCCrJ/Jc0eXpGE4Fw7pQn5TIhgUFW/zO+11B9xU18OmRdt26+4ED7fBg
-	jhnFPDYN6A2vCO6UI3XQ==;
+	List-Owner; bh=YtxwR6lJ23+IohiDw/iNMJo2uI4fCdG1ZgFEUBAguLE=; b=2z5k1OOieHSwvy
+	jBHZPLRHIZc1PPIv7xpXV9nVyiCUbwg/xtO7c6ZAG4cBPPgxC/cMs5B5TwaxPwnkuldF0yOtt9Esy
+	fmek+oLIR/Uo5vbTAqKsY64dYsbZWnRGyRlI/sEcHhMxT346EYb00BavkF7isf+sv/E9FfXyIUBVD
+	7MpCmU4tFGzAY1kYVXTv3wVbb8HqmbylUfV3RZ8RbhpnKgzLbpfxXLx25tr2UkR9gSX/Pc3dlvJtu
+	jyTdTym4aqGWt+rJq1f8uUinvx6kRMYIVoQZUFcmsDfOMXFG3lEfjr4t+Gym0gr+Y5AMbgzbkVi//
+	Axefv5ZhhTmWbUiJJGGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up2Uv-0000000GbL9-0yKW;
-	Thu, 21 Aug 2025 10:26:21 +0000
-Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1up0Zx-0000000GEg8-2sj5
-	for linux-rockchip@lists.infradead.org;
-	Thu, 21 Aug 2025 08:23:26 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 1F1B92186F;
-	Thu, 21 Aug 2025 08:22:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1755764547; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eU7TYaqJ6duBML6uqVqJigVOdQm0L8koItjVVhsfmDY=;
-	b=CYfqfqJht5lUOE4zN33sX1KK1JeKs87F5FxRoURqIJ2T5ShyZwV3g4qBgEZ+KqP8nTsFZf
-	nLT7rWhlvWkQDn7dQmdhdw/fdrlD1qNCwuZ8v/WulaOXUTCyiF16OT4nbbkwL8PZYvrsh9
-	hROe7QacKTe/RBk0/FyjaSo8QRb/I00=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1755764547;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eU7TYaqJ6duBML6uqVqJigVOdQm0L8koItjVVhsfmDY=;
-	b=+9vMn/zlV0/9G7plhgdmRfTkp3ACIUUvEf9Man6jSLLAQMGCg7LRLEpn6WXefo+gK4n8fz
-	c7w74sX7QUxboSCw==
-Authentication-Results: smtp-out1.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1755764547; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eU7TYaqJ6duBML6uqVqJigVOdQm0L8koItjVVhsfmDY=;
-	b=CYfqfqJht5lUOE4zN33sX1KK1JeKs87F5FxRoURqIJ2T5ShyZwV3g4qBgEZ+KqP8nTsFZf
-	nLT7rWhlvWkQDn7dQmdhdw/fdrlD1qNCwuZ8v/WulaOXUTCyiF16OT4nbbkwL8PZYvrsh9
-	hROe7QacKTe/RBk0/FyjaSo8QRb/I00=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1755764547;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eU7TYaqJ6duBML6uqVqJigVOdQm0L8koItjVVhsfmDY=;
-	b=+9vMn/zlV0/9G7plhgdmRfTkp3ACIUUvEf9Man6jSLLAQMGCg7LRLEpn6WXefo+gK4n8fz
-	c7w74sX7QUxboSCw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 90CBC139A8;
-	Thu, 21 Aug 2025 08:22:26 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id AO8bIkLXpmhzEwAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Thu, 21 Aug 2025 08:22:26 +0000
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: simona@ffwll.ch,
-	airlied@gmail.com,
-	mripard@kernel.org,
-	maarten.lankhorst@linux.intel.com,
-	geert@linux-m68k.org,
-	tomi.valkeinen@ideasonboard.com
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	freedreno@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-samsung-soc@vger.kernel.org,
-	nouveau@lists.freedesktop.org,
-	virtualization@lists.linux.dev,
-	spice-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	intel-xe@lists.freedesktop.org,
-	xen-devel@lists.xenproject.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: [PATCH v6 25/25] drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
-Date: Thu, 21 Aug 2025 10:17:32 +0200
-Message-ID: <20250821081918.79786-26-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250821081918.79786-1-tzimmermann@suse.de>
-References: <20250821081918.79786-1-tzimmermann@suse.de>
+	id 1up5FY-0000000H2dS-1H2K;
+	Thu, 21 Aug 2025 13:22:40 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1up2mw-0000000GeMN-1ijz;
+	Thu, 21 Aug 2025 10:45:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=FIdCM0oVeX0+VbSjoJSJjSjQuPULlX/MyyfwfgwFUpY=; b=Q
+	YQFW7xvR+nS7G15SXoslmE3ZHV8EwxMBWV04Vm1/yrVq0yVuJ+bBElyjNI4uLWUh
+	MAUL40RVl8TlIaVYLo83XUmycMq5nsBXs4lxoLK9dsFaLmobAeaiFHxkOTMk0z5k
+	hF0VPMukhrVrQWIZlLsKkfrtkZFSmIzET4v4yGLo+c=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-122 (Coremail) ; Thu, 21 Aug 2025 18:44:21 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Thu, 21 Aug 2025 18:44:21 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: dmitry.baryshkov@oss.qualcomm.com, heiko@sntech.de
+Subject: Re:[PATCH v6 00/10] Add support for RK3588 DisplayPort Controller
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20250519(9504565a)
+ Copyright (c) 2002-2025 www.mailtech.cn 163com
+In-Reply-To: <20250728082846.3811429-1-andyshrk@163.com>
+References: <20250728082846.3811429-1-andyshrk@163.com>
+X-NTES-SC: AL_Qu2eB/ucvEgt5yScYOkfmUgWjuw/WsG1v/Ul1YBSP556jDHp3AUhenRSH3TH8e60MAaUmgmGWx5szO5WeIlkc5MgoEaz4pLV5OhHt9PPWoNeWA==
 MIME-Version: 1.0
-X-Spamd-Result: default: False [-1.30 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	ARC_NA(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:mid];
-	RCPT_COUNT_TWELVE(0.00)[22];
-	MIME_TRACE(0.00)[0:+];
-	TO_DN_SOME(0.00)[];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	FROM_HAS_DN(0.00)[];
-	FREEMAIL_TO(0.00)[ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
-	RCVD_COUNT_TWO(0.00)[2];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	RCVD_TLS_ALL(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	R_RATELIMIT(0.00)[to_ip_from(RLqirfcw6gnbcr9a9yhi49fhi6),to(RLbwen1niosrcqbxsafh1)];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com]
+Message-ID: <1ebeae81.8b20.198cc3ac94a.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: eigvCgBHV0GF+KZo1BMfAA--.9984W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gmwXmim9ughywADsM
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_012325_873982_8591BBD1 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20250821_034458_819203_2F7F0554 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,54 +66,134 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
-buffer size. Align the pitch according to hardware requirements.
-
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
----
- drivers/gpu/drm/xlnx/zynqmp_kms.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/xlnx/zynqmp_kms.c b/drivers/gpu/drm/xlnx/zynqmp_kms.c
-index 2bee0a2275ed..02f3a7d78cf8 100644
---- a/drivers/gpu/drm/xlnx/zynqmp_kms.c
-+++ b/drivers/gpu/drm/xlnx/zynqmp_kms.c
-@@ -19,6 +19,7 @@
- #include <drm/drm_crtc.h>
- #include <drm/drm_device.h>
- #include <drm/drm_drv.h>
-+#include <drm/drm_dumb_buffers.h>
- #include <drm/drm_encoder.h>
- #include <drm/drm_fbdev_dma.h>
- #include <drm/drm_fourcc.h>
-@@ -363,10 +364,12 @@ static int zynqmp_dpsub_dumb_create(struct drm_file *file_priv,
- 				    struct drm_mode_create_dumb *args)
- {
- 	struct zynqmp_dpsub *dpsub = to_zynqmp_dpsub(drm);
--	unsigned int pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
-+	int ret;
- 
- 	/* Enforce the alignment constraints of the DMA engine. */
--	args->pitch = ALIGN(pitch, dpsub->dma_align);
-+	ret = drm_mode_size_dumb(drm, args, dpsub->dma_align, 0);
-+	if (ret)
-+		return ret;
- 
- 	return drm_gem_dma_dumb_create_internal(file_priv, drm, args);
- }
--- 
-2.50.1
 
 
+Hello Dmitry,
+    
+
+At 2025-07-28 16:28:25, "Andy Yan" <andyshrk@163.com> wrote:
+>From: Andy Yan <andy.yan@rock-chips.com>
+>
+>
+>There are two DW DPTX based DisplayPort Controller on rk3588 which
+>are compliant with the DisplayPort Specification Version 1.4 with
+>the following features:
+>
+>* DisplayPort 1.4a
+>* Main Link: 1/2/4 lanes
+>* Main Link Support 1.62Gbps, 2.7Gbps, 5.4Gbps and 8.1Gbps
+>* AUX channel 1Mbps
+>* Single Stream Transport(SST)
+>* Multistream Transport (MST)
+>* Type-C support (alternate mode)
+>* HDCP 2.2, HDCP 1.3
+>* Supports up to 8/10 bits per color component
+>* Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
+>* Pixel clock up to 594MHz
+>* I2S, SPDIF audio interface
+>
+>The current version of this patch series only supports basic display outputs.
+>I conducted tests with DP0 in 1080p and 4K@60 YCbCr4:2:0 modes; the ALT/Type-C
+>mode was tested on Rock 5B, DP1 was tested on Rock 5 ITX by Stephen and Piotr.
+>HDCP and audio features remain unimplemented.
+>For RK3588, it's only support SST, while in the upcoming RK3576, it can support
+>MST output.
+
+
+
+ Could you take this series? It would be nice if they could land Linux 6.18.
+
+
+>
+>
+>Changes in v6:
+>- Use drm_dp_vsc_sdp_supported
+>- Store bpc/bpp/color format in dw_dp_bridge_state
+>- Collect Reviewed-by tags
+>- Link to V5: https://lore.kernel.org/linux-rockchip/20250716100440.816351-1-andyshrk@163.com/
+>
+>Changes in v5:
+>- Use drm_dp_read_sink_count_cap instead of the private implementation.
+>- First included in this version.
+>- Link to V4: https://lore.kernel.org/linux-rockchip/20250619063900.700491-1-andyshrk@163.com/
+>
+>Changes in v4:
+>- Drop unnecessary header files
+>- Switch to devm_drm_bridge_alloc
+>- Drop unused function
+>- Add platform_set_drvdata
+>- Link to V3: https://lore.kernel.org/linux-rockchip/20250403033748.245007-1-andyshrk@163.com/
+>
+>
+>Changes in v3:
+>- Rebase on drm-misc-next
+>- Switch to common helpers to power up/down dp link
+>- Only pass parameters to phy that should be set
+>- First introduced in this version.
+>- First introduced in this version.
+>- Add RA620 into bridge chain.
+>- Link to V2: https://lore.kernel.org/linux-rockchip/20250312104214.525242-1-andyshrk@163.com/
+>
+>Changes in v2:
+>- Fix a character encoding issue
+>- Fix compile error when build as module
+>- Add phy init
+>- Only use one dw_dp_link_train_set
+>- inline dw_dp_phy_update_vs_emph
+>- Use dp_sdp
+>- Check return value of drm_modeset_lock
+>- Merge code in atomic_pre_enable/mode_fixup to atomic_check
+>- Return NULL if can't find a supported output format
+>- Fix max_link_rate from plat_data
+>- no include uapi path
+>- switch to drmm_encoder_init
+>- Sort in alphabetical order
+>- Link to V1: https://lore.kernel.org/linux-rockchip/20250223113036.74252-1-andyshrk@163.com/
+>
+>Andy Yan (10):
+>  dt-bindings: display: rockchip: Add schema for RK3588 DPTX Controller
+>  drm/bridge: synopsys: Add DW DPTX Controller support library
+>  drm/rockchip: Add RK3588 DPTX output support
+>  MAINTAINERS: Add entry for DW DPTX Controller bridge
+>  dt-bindings: display: simple-bridge: Add ra620 compatible
+>  drm/birdge: simple-bridge: Add support for radxa ra620
+>  arm64: dts: rockchip: Add DP0 for rk3588
+>  arm64: dts: rockchip: Add DP1 for rk3588
+>  arm64: dts: rockchip: Enable DisplayPort for rk3588s Cool Pi 4B
+>  arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX
+>
+> .../display/bridge/simple-bridge.yaml         |    1 +
+> .../display/rockchip/rockchip,dw-dp.yaml      |  150 ++
+> MAINTAINERS                                   |    8 +
+> arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   30 +
+> .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |   30 +
+> .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |   59 +
+> .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   37 +
+> drivers/gpu/drm/bridge/simple-bridge.c        |    5 +
+> drivers/gpu/drm/bridge/synopsys/Kconfig       |    7 +
+> drivers/gpu/drm/bridge/synopsys/Makefile      |    1 +
+> drivers/gpu/drm/bridge/synopsys/dw-dp.c       | 2094 +++++++++++++++++
+> drivers/gpu/drm/rockchip/Kconfig              |    9 +
+> drivers/gpu/drm/rockchip/Makefile             |    1 +
+> drivers/gpu/drm/rockchip/dw_dp-rockchip.c     |  150 ++
+> drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |    1 +
+> drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |    1 +
+> include/drm/bridge/dw_dp.h                    |   20 +
+> 17 files changed, 2604 insertions(+)
+> create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+> create mode 100644 drivers/gpu/drm/bridge/synopsys/dw-dp.c
+> create mode 100644 drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+> create mode 100644 include/drm/bridge/dw_dp.h
+>
+>-- 
+>2.43.0
+>
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
