@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C89AFCA0EFA
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Aug 2025 09:36:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F34AFCA0EE4
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Aug 2025 09:36:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YoMXADCd0aKDEKnBHcPK4QK3urUSXypVwXTCrt/IYDM=; b=4l0TuQwUdAoYsg
-	9ysgZq+87TUP6DototVhRdlxiw5nVtqO387f30vLOtV9dPVMbVgNmayBZdkcxGUVl4Cfq01MPFDfo
-	3e8Mk66cR7TYg/BJGLKzm4ml03UfCSnXx45C4yl18j9LkiMPfizCFCce/8g0fKVxrbTq73eeQFLTc
-	Ya0kLtpn4w2swxYhavgNlR94JckD+VpDlT+IA3oj6PSqIxaTpAMAknlv0ggx3YdcAvLFj687RM5Bh
-	ZoYeVumNDwv+eNlg+55mPKvv3Dk1JkDzM9HrM29gLTzSSPrW3OrEB20N6i9kBL9oQJYPWDP7mV9D2
-	pEr26unAUXsIMbiFwaWQ==;
+	List-Owner; bh=Psp8VThgtmT7tFQUJRujWWb4YVA4FmZz/FjnR9paeMk=; b=0ej4tAxeDPnUsK
+	7LDWIqwBgT/Yko7wDKI5WiTVJ04QC+AptgDamq/ccNLmC+qWS1go3JW/ZWd79fTCslu9pNYSxQBaM
+	aK8qYF1eir2RmKdqW56AkoG476ttxXElZvWU4uqrQe9mtuRdKj64s8/5F9MGQWT58aRdecX3LMW+D
+	gT8j+5LQzId86oEqWEP39wE/7m8giqFhOfW6iyI9XiTvL993/oYnA8y0eFC/1yvmWXEFSqkC9LzV9
+	gF0Weqqe5AYmPy6KRZbpA9FlyCxpKGk8//gG9K35Xf9hnQoDKYvCoSuAP3/u7uCTvHNbjYWy4k21N
+	HsZu3PTxSslvSenioRbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upkfw-00000004VcJ-3JUm;
-	Sat, 23 Aug 2025 09:36:40 +0000
+	id 1upkg0-00000004Vj5-3Fhv;
+	Sat, 23 Aug 2025 09:36:44 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upZ0O-00000003TQG-0oCx;
-	Fri, 22 Aug 2025 21:09:01 +0000
+	id 1upZ7I-00000003Ttq-05HN;
+	Fri, 22 Aug 2025 21:16:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=cypEHEpRR2kJqbcPVa7GjXp1ID7KVO6yBwZP58hpPu8=; b=m50fFHfFtMqgCcu9VSJ5v/1T6H
-	rXZjeTd4nbm4TotaElmywFPoV8XWbvuSL8GfaN6a0xWhFP1p1hlUN8ukE7DdXvkYtnaWjfoG4D0je
-	JC2lnZk/8KsCYsbU7QoRjO0hQVndHLLDaOe1i3U2ep9K0lAY7RWGhPeiEDWtCxbc+9se5lg8uEIxD
-	LMATyPUYvXPGh7wsS4XepSWRK68sUL0SfF70hBPSFw85dmzzccZSp629CltlOpyppucRM1bRNIUJq
-	DtYXKHHGXdselR2BtScg+0iTxTl/8apdFsRowbsNS1kCHLh2PbDTLr5VOOgZj+nmkxAlVGRVI3Yh3
-	ObWwOPog==;
+	bh=il8hQMyYfXw8Tzc5sMl2lQfGh5RbcWxWYW3ucD/cb6A=; b=fynZ0aC+YlzyqDD4FY9zewVQIF
+	56ZPhZCK4JrmqwCsIFYyjHXl4Gn5RzbWhahxobiC0G3VrpBzWVMLX84iQvYgLICQoi/N1nxs57xV6
+	Cs5buzQUXm/qj9j26+HWra+6mZL6k3nLJptNO+yZFZgXk4I8osr9fFBI8sufkxIB8dsE73RwJQiXs
+	dOzEnM6jM308RctZLplYa7BBArafztWwqvyxLGyXm4WgLykBfh5rvZqhCwXRntKD98+oECQT7aI9f
+	I64phKLZX8Y0ALyhm6/gB7/wYxp+5DAMiqMsQRkq1mOWXHBcu8oLjYOM7nnDx3ibZ+Wvilg/kanQc
+	LiaCQm9g==;
 Received: from i53875a83.versanet.de ([83.135.90.131] helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1upYzr-000415-Uo; Fri, 22 Aug 2025 23:08:28 +0200
+	id 1upZ6x-0004T7-IZ; Fri, 22 Aug 2025 23:15:47 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: Heiko Stuebner <heiko@sntech.de>
 Subject: Re: (subset) [PATCH 00/13] Support DSI output on rk3576 and roc-rk3576-pc board
-Date: Fri, 22 Aug 2025 23:08:25 +0200
-Message-ID: <175589689704.3303128.5679950731528883388.b4-ty@sntech.de>
+Date: Fri, 22 Aug 2025 23:15:44 +0200
+Message-ID: <175589734234.3314397.11816121357365151257.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250707164906.1445288-1-heiko@sntech.de>
 References: <20250707164906.1445288-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_140900_223857_EC4F927C 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20250822_141608_057053_FFB13163 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,18 +83,10 @@ On Mon, 07 Jul 2025 18:48:53 +0200, Heiko Stuebner wrote:
 
 Applied, thanks!
 
-[01/13] drm/panel: ilitek-ili9881c: turn off power-supply when init fails
-        commit: 6c66eba502709a78281333187c1add7b71f7201f
-[02/13] drm/panel: ilitek-ili9881c: move display_on/_off dcs calls to (un-)prepare
-        commit: 5efa82492066fcb32308210fb3f0b752af74334f
-[03/13] drm/panel: ilitek-ili9881c: convert (un-)prepare to mipi_dsi_multi_context
-        commit: 9002f55ee4480f23bd2ce91fb5fca536ce31717e
-[04/13] dt-bindings: vendor-prefixes: Add prefix for Shenzhen Bestar Electronic
-        commit: 8e484ff181b177ea2e86e537fd7a5c8f9d7532ad
-[05/13] dt-bindings: display: ili9881c: Add Bestar BSD1218-A101KL68 LCD panel
-        commit: 157ba8c6742931a617a34555c27dd10b36385cf3
-[06/13] drm/panel: ilitek-ili9881c: Add Bestar BSD1218-A101KL68 support
-        commit: 38dbbbb41c515d72b0a82fde3cec450d068f5e94
+[08/13] dt-bindings: display: rockchip: Add rk3576 to RK3588 DW DSI2 controller schema
+        commit: f05530bdaf42aa0e6bb4cde76ba6a081cf473d44
+[09/13] drm/rockchip: dsi2: add support rk3576
+        commit: b6f11f114759a088acf44e86b5cd72f24de85d44
 
 Best regards,
 -- 
