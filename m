@@ -4,58 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65064CA0EED
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Aug 2025 11:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44225CA0FEB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Aug 2025 11:48:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sO/Lqgrp8nD7YbIdtRzVF0/zklY4Tf9GGPtxWCYCaqs=; b=y3PtC2BwPd9lRI
-	jjAW6auLyG4ocW4quN4oEMEA+6zp+R7IGL6KskRyvsKhEIDN/Y9Yd3Z/m9nwMNwDdN8Zv0wE0ZXGi
-	X+mtR2W3Zjhyv1ZjgjvQGA0UH0hvEkMFR66SoVPtPkQybOpGfUeLUsNqmwuCruSAIyROoXXVyZqo5
-	OvCSopRfbx8Z/omz9Op23cwsOmK0hFi66pu3KbcYCuo/SOGR858uVXs64H0poYodQmvP5CGrq+Tbw
-	YmsT80aqhsbcI1OofdxrOgUBK/uEyki1bJ/NIFjRnZSM7GnlttUAELDXYL6MTXMjBLn/GqZnsLIbM
-	5sWhEmr/OVYgReza1Tag==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JynKC3CyHe4IitzLBQoOEIUWSjoswy7KNrWchwl27bU=; b=rQQ9LNnfjGEbr3
+	d35AxEg/XdvkyejhTtX+LmDPXC+dMRhne1XVyXJPKa5cnFvsnyQfeYIcY0nOayJ2xwcPoCePxlwHl
+	5yDEU7QTFRfK1oURP+rxBPRTd0NxQ2v8XyhKg4fGs6FReHXjVWoYd8XNcJEA7oNLiyNFhPL1n70HF
+	+sXcx86RXDFd/W3wGObwte9qkxeYnzGelH3YecJWFEkc6jKDhRoqqEJn5g9Pgi2uGanYq8Gm+tWR5
+	S30VH2mOMKXMDkTtNM3ljakuDdqOPiM3W6c8RvXzR5AKv5eY1V79JytuKUOU8xhKc108W7nuGSbtQ
+	viSW5UYT9zEASGDF55Uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upQGF-00000002NMZ-0Yhb;
-	Fri, 22 Aug 2025 11:48:47 +0000
+	id 1upQGE-00000002NL4-0JIF;
+	Fri, 22 Aug 2025 11:48:46 +0000
 Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upLS8-00000001iKf-1WeE;
-	Fri, 22 Aug 2025 06:40:46 +0000
+	id 1upLS7-00000001iJQ-2kcE;
+	Fri, 22 Aug 2025 06:40:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=R7
-	lVxMHBGqRXSFM3wkc9nmiY62qEr5W27qh0df8q1wc=; b=OyE6Pn5kjDPrTYHFiq
-	HQ+QIf94JAj9um1+9Eb97peJCCI9cny0v2c1bjEPFCucr+eDwrp5nN7RxL/+sole
-	M2ta5l5sC7WS4SJ0+fI/kDYPuapkm3Mfbs4TZ+IB+zfp5dvRQIxvEJ3KrIGDS2Qm
-	aQXUwD2ZW8rRUOHUoJARbV+GI=
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=wR
+	gLxWrPc104M1DlAk588ARdsB7OQyUqAiiW8tcp7I4=; b=WjDEA3g8KVlrOcE7Hj
+	k57boNbTn1wbqEMWINqqJcvMmBLa58GKZ01yIIERtXCMbSi7T/tt4/bASAEQpAWI
+	LnBQg5jxfxTrSPiIIKIJA47TSfuwG+pRLHId1mQ3tPbDqQtXTzN1b6VWMjGaqwoF
+	aN2B8ivkuIi4+zbmDsn5Hz0qw=
 Received: from ProDesk.. (unknown [])
-	by gzsmtp3 (Coremail) with SMTP id PigvCgAn9_zCEKhoYtibAA--.23257S9;
-	Fri, 22 Aug 2025 14:40:25 +0800 (CST)
+	by gzsmtp3 (Coremail) with SMTP id PigvCgAn9_zCEKhoYtibAA--.23257S2;
+	Fri, 22 Aug 2025 14:40:08 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: dmitry.baryshkov@oss.qualcomm.com,
 	heiko@sntech.de
-Subject: [PATCH v7 07/10] arm64: dts: rockchip: Add DP0 for rk3588
-Date: Fri, 22 Aug 2025 14:39:51 +0800
-Message-ID: <20250822063959.692098-8-andyshrk@163.com>
+Subject: [PATCH v7 00/10] Add support for RK3588 DisplayPort Controller
+Date: Fri, 22 Aug 2025 14:39:44 +0800
+Message-ID: <20250822063959.692098-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250822063959.692098-1-andyshrk@163.com>
-References: <20250822063959.692098-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: PigvCgAn9_zCEKhoYtibAA--.23257S9
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Kw18CFyUCFyxJF1kJw4DXFb_yoW8WrWrp3
-	ZrCrZ3XrW8uF12q39xK34ktrZ8Aan5CFZ5Kr17Gry0kr4Sqr9FkryfKr13C34DXr47ZwsF
-	vFs3tryxKF4DAaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jwvtZUUUUU=
+X-CM-TRANSID: PigvCgAn9_zCEKhoYtibAA--.23257S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxZrWUZrWxJr1fJF1xJFy8Grg_yoWrtw15pa
+	1UAry5JrWUWFW2qrs2k3Z7ursav3ZrA3yFgwn7J342vF12kF1UAwnI9FsxXr9rXF17AFW2
+	krnxXr1xKrWUZFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j4wZcUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEhSxXmioCP3PbgAAs9
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEhexXmioCP3NwgAAsQ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_234044_796068_8E1130DB 
-X-CRM114-Status: UNSURE (   7.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250821_234043_999334_410D1532 
+X-CRM114-Status: GOOD (  15.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,62 +72,120 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-The DP0 is compliant with the DisplayPort Specification
-Version 1.4, and share the USBDP combo PHY0 with USB 3.1
-HOST0 controller.
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
+There are two DW DPTX based DisplayPort Controller on rk3588 which
+are compliant with the DisplayPort Specification Version 1.4 with
+the following features:
 
-(no changes since v1)
+* DisplayPort 1.4a
+* Main Link: 1/2/4 lanes
+* Main Link Support 1.62Gbps, 2.7Gbps, 5.4Gbps and 8.1Gbps
+* AUX channel 1Mbps
+* Single Stream Transport(SST)
+* Multistream Transport (MST)
+* Type-C support (alternate mode)
+* HDCP 2.2, HDCP 1.3
+* Supports up to 8/10 bits per color component
+* Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
+* Pixel clock up to 594MHz
+* I2S, SPDIF audio interface
 
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 30 +++++++++++++++++++
- 1 file changed, 30 insertions(+)
+The current version of this patch series only supports basic display outputs.
+I conducted tests with DP0 in 1080p and 4K@60 YCbCr4:2:0 modes; the ALT/Type-C
+mode was tested on Rock 5B, DP1 was tested on Rock 5 ITX by Stephen and Piotr.
+HDCP and audio features remain unimplemented.
+For RK3588, it's only support SST, while in the upcoming RK3576, it can support
+MST output.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 70f03e68ba550..b8bcf450e9153 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1472,6 +1472,36 @@ dsi1_out: port@1 {
- 		};
- 	};
- 
-+	dp0: dp@fde50000 {
-+		compatible = "rockchip,rk3588-dp";
-+		reg = <0x0 0xfde50000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru PCLK_DP0>, <&cru CLK_AUX16M_0>,
-+			 <&cru CLK_DP0>, <&cru MCLK_I2S4_8CH_TX>,
-+			 <&cru MCLK_SPDIF2_DP0>;
-+		clock-names = "apb", "aux", "hdcp", "i2s", "spdif";
-+		assigned-clocks = <&cru CLK_AUX16M_0>;
-+		assigned-clock-rates = <16000000>;
-+		resets = <&cru SRST_DP0>;
-+		phys = <&usbdp_phy0 PHY_TYPE_DP>;
-+		power-domains = <&power RK3588_PD_VO0>;
-+		#sound-dai-cells = <0>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			dp0_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			dp0_out: port@1 {
-+				reg = <1>;
-+			};
-+		};
-+	};
-+
- 	hdmi0: hdmi@fde80000 {
- 		compatible = "rockchip,rk3588-dw-hdmi-qp";
- 		reg = <0x0 0xfde80000 0x0 0x20000>;
+
+Changes in v7:
+- Fix checkpatch warnings
+- Fix a typo in subject: s/birdge/bridge/
+- Collect Reviewed-by tags
+- Link to V6:https://lore.kernel.org/linux-rockchip/20250728082846.3811429-1-andyshrk@163.com/
+
+Changes in v6:
+- Use drm_dp_vsc_sdp_supported
+- Store bpc/bpp/color format in dw_dp_bridge_state
+- Link to V5: https://lore.kernel.org/linux-rockchip/20250716100440.816351-1-andyshrk@163.com/
+
+Changes in v5:
+- Use drm_dp_read_sink_count_cap instead of the private implementation.
+- First included in this version.
+- Link to V4: https://lore.kernel.org/linux-rockchip/20250619063900.700491-1-andyshrk@163.com/
+
+Changes in v4:
+- Drop unnecessary header files
+- Switch to devm_drm_bridge_alloc
+- Drop unused function
+- Add platform_set_drvdata
+- Link to V3: https://lore.kernel.org/linux-rockchip/20250403033748.245007-1-andyshrk@163.com/
+
+Changes in v3:
+- Rebase on drm-misc-next
+- Switch to common helpers to power up/down dp link
+- Only pass parameters to phy that should be set
+- First introduced in this version.
+- First introduced in this version.
+- Add RA620 into bridge chain.
+- Link to V2: https://lore.kernel.org/linux-rockchip/20250312104214.525242-1-andyshrk@163.com/
+
+Changes in v2:
+- Link to V1: https://lore.kernel.org/linux-rockchip/20250223113036.74252-1-andyshrk@163.com/
+- Fix a character encoding issue
+- Fix compile error when build as module
+- Add phy init
+- Only use one dw_dp_link_train_set
+- inline dw_dp_phy_update_vs_emph
+- Use dp_sdp
+- Check return value of drm_modeset_lock
+- Merge code in atomic_pre_enable/mode_fixup to atomic_check
+- Return NULL if can't find a supported output format
+- Fix max_link_rate from plat_data
+- no include uapi path
+- switch to drmm_encoder_init
+- Sort in alphabetical order
+
+Andy Yan (10):
+  dt-bindings: display: rockchip: Add schema for RK3588 DPTX Controller
+  drm/bridge: synopsys: Add DW DPTX Controller support library
+  drm/rockchip: Add RK3588 DPTX output support
+  MAINTAINERS: Add entry for DW DPTX Controller bridge
+  dt-bindings: display: simple-bridge: Add ra620 compatible
+  drm/bridge: simple-bridge: Add support for radxa ra620
+  arm64: dts: rockchip: Add DP0 for rk3588
+  arm64: dts: rockchip: Add DP1 for rk3588
+  arm64: dts: rockchip: Enable DisplayPort for rk3588s Cool Pi 4B
+  arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX
+
+ .../display/bridge/simple-bridge.yaml         |    1 +
+ .../display/rockchip/rockchip,dw-dp.yaml      |  150 ++
+ MAINTAINERS                                   |    8 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   30 +
+ .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |   30 +
+ .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |   59 +
+ .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   37 +
+ drivers/gpu/drm/bridge/simple-bridge.c        |    5 +
+ drivers/gpu/drm/bridge/synopsys/Kconfig       |    7 +
+ drivers/gpu/drm/bridge/synopsys/Makefile      |    1 +
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c       | 2095 +++++++++++++++++
+ drivers/gpu/drm/rockchip/Kconfig              |    9 +
+ drivers/gpu/drm/rockchip/Makefile             |    1 +
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c     |  150 ++
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |    1 +
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |    1 +
+ include/drm/bridge/dw_dp.h                    |   20 +
+ 17 files changed, 2605 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+ create mode 100644 drivers/gpu/drm/bridge/synopsys/dw-dp.c
+ create mode 100644 drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+ create mode 100644 include/drm/bridge/dw_dp.h
+
 -- 
 2.43.0
+
+base-commit: 18b8261b84ad5462d7261617fbfa49d85d396fd9
+branch: rk3588-dp-upstream-v7
 
 
 _______________________________________________
