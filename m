@@ -4,58 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1475CA0EEB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Aug 2025 21:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C85FDCA0EE4
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Aug 2025 06:31:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K06zhZbXeqSv064GLHHzIIro4L6UN976g3opoJ8WfnI=; b=C7h2D6Zh2vC+Tq
-	Yigz8Ed+BFPd5BLjm1cCxRlXymtRygLR4dcQ0T7EE3B765C0VQVmkg05LXcbQ08tPIKHcMiJGSvQW
-	NApJp5S/vgkqelMkfYvfVL65X/HYpPi/bYqAv/Tvp6/aTDSGanBchrYJMYPVz5kg3Qt/1ZlIXT7dx
-	nREP8CjgZoMA40x7qR7HKhmr0no8Qc3BhVX+uPsFIYrHHyrxt2WKrVWM2GDKmAJhJDXyvrB3z4ZiI
-	vzSq1+LVJwAlIHP56XltS/hHMqszdMdYOShy3GJagLREkLK9vAA/FAV3qHiVEZfdkKIZA8OOXo76D
-	QRIqzaG6XsmzTXw8slCA==;
+	List-Owner; bh=2fyA9VCTmaKhMSDiBs5TZFsp7YVcbdozNxIOvgVJalA=; b=oQM9+7UqNLSRLX
+	nBTNJrFcX4+4sqMlNU+SDdMbSlaeDo+3aahElGq5L89jPgh0Gso05sOFflj6MYMgNfdmHAMd1kwqX
+	RlDcQUYdUj/4B2APmkFyEAnzhtlz0QVIYP60VjVaNbBrcDAvsq9TVzX2+YXY30F19eyugs9WFWID1
+	YmY+DUY72c4llmzPb45qFM6VS3qEqLsU5XRJzCIo1tgv+YEl/LLfxEMGuO9Oyyp21VzqkazQoSjs5
+	0av+pd17/J3lMXY3mVj5iXMYDg1Xy0F5IYY/2/GWBUVH/mHNZKqVwldVoguqjDDLNwxBdiORMlDCO
+	/dZc3zSMqTEaesKlfdkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upZav-00000003X0E-1SpK;
-	Fri, 22 Aug 2025 21:46:45 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upLSB-00000001iNx-1wGV;
-	Fri, 22 Aug 2025 06:40:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=h8
-	8O4dZwxfFg63Pi6AQ85/YvjoNhwX4BJiQNP+yOVJw=; b=lX79IJznDtGZJ4/KpD
-	vjNxpE4Si3NCrcoLhVQ8OmEX9vUSC0NMQYC5Ady/j0P0BhWwtcTeUGfmlycHFh3d
-	mXQPTzVAlI3p7/BkUOLWC+n927tp+yrSX3mPdwLDKWTzcOl0njbhc+2AqWdBH3gk
-	h2KzYceg6UGaZmEJuJVJxM5Ck=
-Received: from ProDesk.. (unknown [])
-	by gzsmtp3 (Coremail) with SMTP id PigvCgAn9_zCEKhoYtibAA--.23257S12;
-	Fri, 22 Aug 2025 14:40:28 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: dmitry.baryshkov@oss.qualcomm.com,
-	heiko@sntech.de
-Subject: [PATCH v7 10/10] arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX
-Date: Fri, 22 Aug 2025 14:39:54 +0800
-Message-ID: <20250822063959.692098-11-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250822063959.692098-1-andyshrk@163.com>
-References: <20250822063959.692098-1-andyshrk@163.com>
+	id 1uphmq-000000040b2-1eNU;
+	Sat, 23 Aug 2025 06:31:36 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1upSgn-00000002oiN-46CN
+	for linux-rockchip@lists.infradead.org;
+	Fri, 22 Aug 2025 14:24:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 370E7A583B1;
+	Fri, 22 Aug 2025 14:24:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE016C4CEED;
+	Fri, 22 Aug 2025 14:24:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755872660;
+	bh=GHecUB/f6hF+l9nChS4AFiY+XY/E6xx0si6J6vs4S50=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dQhLwhwK9qrnQh0flYJggQka8E9ZJzmwlNyAz3bfl0zQfiwan5NF/9FvEXCkpfzG2
+	 UupBjYLXpTAxzPNfowHY8wR7FevmagLt8My5R2DRDtbh89GRxOWNmxWxoSHxRiuWRq
+	 Vo/k7FSAsf6Pk+xGvOF41pl0MkbnNsWqEZ49JWls1wxcthZveWEQhM+OaCijUyK06P
+	 /r7MpjTSsCvyJue9PKF6SCPgoLB5ah9QXKItaB0BZDPD7hOrkaYbN0la8fsaShRnmc
+	 DZsqAb946JMkf8qu9xNWWPGOST3sTqIf3kVJkrsUoqXnFEUqqZtInP5MYOnlZPXwnV
+	 Ee7I6aPWCj55Q==
+Date: Fri, 22 Aug 2025 09:24:20 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	jose.abreu@synopsys.com, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	kernel@collabora.com, nicolas.dufresne@collabora.com,
+	Heiko Stuebner <heiko@sntech.de>, nelson.costa@synopsys.com,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-media@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	shawn.wen@rock-chips.com, Hans Verkuil <hverkuil@xs4all.nl>,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 2/2] media: dt-bindings: snps,dw-hdmi-rx.yaml: Updated
+ maintainers entry
+Message-ID: <175587265951.3629173.15028167331028929815.robh@kernel.org>
+References: <20250820103059.342850-1-dmitry.osipenko@collabora.com>
+ <20250820103059.342850-2-dmitry.osipenko@collabora.com>
 MIME-Version: 1.0
-X-CM-TRANSID: PigvCgAn9_zCEKhoYtibAA--.23257S12
-X-Coremail-Antispam: 1Uf129KBjvJXoW7CrykKw18Xw43uF4kCrWkXrb_yoW8KrWrpF
-	nF9rs5GryxuryYqw1FvF1kZFs8Krs5ua93Jr1aqry0yFW7Xas5K3WrWr9YqFyjvF1xXw4a
-	yr4kXa4j93WDXFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j2iihUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiMxWxXmioB5f7BwAAsl
+Content-Disposition: inline
+In-Reply-To: <20250820103059.342850-2-dmitry.osipenko@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_234047_839154_641AB746 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250822_072422_070568_6BC0FC8E 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,127 +76,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
 
-The HDMI0(Port next to Headphone Jack) is drived by DP1 on rk3588
-via RA620(a dp2hdmi converter).
+On Wed, 20 Aug 2025 13:30:59 +0300, Dmitry Osipenko wrote:
+> Shreeya no longer works at Collabora, set Dmitry as maintainer of
+> the Synopsys HDMI RX binding.
+> 
+> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
 
-Add related dt nodes to enable it.
-
-Note: ROCKCHIP_VOP2_EP_DP1 is defined as 11 in dt-binding header,
-but it will trigger a dtc warning like "graph node unit address
-error, expected "b"" if we use it directly after endpoint, so we
-use "b" instead here.
-
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-
----
-
-(no changes since v3)
-
-Changes in v3:
-- Add RA620 into bridge chain.
-
- .../boot/dts/rockchip/rk3588-rock-5-itx.dts   | 59 +++++++++++++++++++
- 1 file changed, 59 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-index 7de17117df7ae..903ad42f97177 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-@@ -57,6 +57,29 @@ analog-sound {
- 			  "Headphone", "Headphones";
- 	};
- 
-+	bridge {
-+		compatible = "radxa,ra620";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			port@0 {
-+				reg = <0>;
-+				hdmi_bridge_in: endpoint {
-+					remote-endpoint = <&dp1_out_con>;
-+				};
-+			};
-+
-+			port@1 {
-+				reg = <1>;
-+
-+				hdmi_bridge_out: endpoint {
-+					remote-endpoint = <&hdmi_con_in>;
-+				};
-+			};
-+		};
-+	};
-+
- 	gpio-leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
-@@ -73,6 +96,17 @@ hdd-led2 {
- 		};
- 	};
- 
-+	hdmi0-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi_con_in: endpoint {
-+				remote-endpoint = <&hdmi_bridge_out>;
-+			};
-+		};
-+	};
-+
- 	hdmi1-con {
- 		compatible = "hdmi-connector";
- 		type = "a";
-@@ -268,6 +302,24 @@ &cpu_l3 {
- 	cpu-supply = <&vdd_cpu_lit_s0>;
- };
- 
-+&dp1 {
-+	status = "okay";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&dp1m0_pins>;
-+};
-+
-+&dp1_in {
-+	dp1_in_vp2: endpoint {
-+		remote-endpoint = <&vp2_out_dp1>;
-+	};
-+};
-+
-+&dp1_out {
-+	dp1_out_con: endpoint {
-+		remote-endpoint = <&hdmi_bridge_in>;
-+	};
-+};
-+
- &gpu {
- 	mali-supply = <&vdd_gpu_s0>;
- 	status = "okay";
-@@ -1261,3 +1313,10 @@ vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
- 		remote-endpoint = <&hdmi1_in_vp1>;
- 	};
- };
-+
-+&vp2 {
-+	vp2_out_dp1: endpoint@b {
-+		reg = <ROCKCHIP_VOP2_EP_DP1>;
-+		remote-endpoint = <&dp1_in_vp2>;
-+	};
-+};
--- 
-2.43.0
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
