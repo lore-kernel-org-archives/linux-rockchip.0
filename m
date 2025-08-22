@@ -4,113 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0052CA0EFA
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Aug 2025 06:42:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C89AFCA0EFA
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Aug 2025 09:36:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zvlHB0GJzCsv5h10YtsfDTa5RwyAmg2lFw0h1Q9Wxts=; b=p8Ih928dJ7Wh20
-	LLV1YTX1410KX1HhP+Tr3vxfUmjXaSVw5ZEfSPqi0ppEfGhPT2x3iVmkQZyuZzj+1QNuP8RKu/9pG
-	MIpPjsuLkb3JJfYCuSKWvmginQYOH19o6YgcGovF27pp3CfONi23PU54bPiVwKBkc7tNbNWydsyS2
-	FwfutCsRkYubetV0sg8JhuoZZ9Uo8SMTB5mx9aMsVp8qUvPWtq6zzflqlSNfPmFum6ibD0EwzqwYN
-	wEEXp+nW4C+8IqvWyYed4ZLwU+oQCvtNF0h5bgC31kcyqptQhw8ciPLULRjB7JWGuDlhALf4c/3DZ
-	+BHqOwiJ7fiyhlo5lHVw==;
+	List-Owner; bh=YoMXADCd0aKDEKnBHcPK4QK3urUSXypVwXTCrt/IYDM=; b=4l0TuQwUdAoYsg
+	9ysgZq+87TUP6DototVhRdlxiw5nVtqO387f30vLOtV9dPVMbVgNmayBZdkcxGUVl4Cfq01MPFDfo
+	3e8Mk66cR7TYg/BJGLKzm4ml03UfCSnXx45C4yl18j9LkiMPfizCFCce/8g0fKVxrbTq73eeQFLTc
+	Ya0kLtpn4w2swxYhavgNlR94JckD+VpDlT+IA3oj6PSqIxaTpAMAknlv0ggx3YdcAvLFj687RM5Bh
+	ZoYeVumNDwv+eNlg+55mPKvv3Dk1JkDzM9HrM29gLTzSSPrW3OrEB20N6i9kBL9oQJYPWDP7mV9D2
+	pEr26unAUXsIMbiFwaWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uphxH-00000004EUE-0ZB7;
-	Sat, 23 Aug 2025 06:42:23 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1upkfw-00000004VcJ-3JUm;
+	Sat, 23 Aug 2025 09:36:40 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upWFT-00000003IWY-0WSM
-	for linux-rockchip@lists.infradead.org;
-	Fri, 22 Aug 2025 18:12:24 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57MHVCxY019389
-	for <linux-rockchip@lists.infradead.org>; Fri, 22 Aug 2025 18:12:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	/9F4kF/0PG0gqpOGPryNaB+t1E6t5FiaNAX6DsaIWBY=; b=jIkIhtgdj5s0I7Db
-	TnMfmrdMghAf+6PpmRtcXHMhhLOut7gGkaK1ibTUkBVDIeBKf8d6RUWjayhKnX5h
-	bCKd2EWhQ0ZEw8TUbR3xmxsuoDuyYDlZHv+3nE5y1fb73/6lQYfqCBYc8/Y+kknX
-	oOEgAi7NKytojhlzZLvyKo/vxb1xZ/dTu8mBROnHUP3szxGUWlO3pLadCOXnWCLP
-	Y/H6d2K8O5zwsBE/P2m7osqazaEaulLzY2VpvXE9olmN7OkdcmPfKYdAXDysVH2h
-	+P8T4ECoUMgGVKoNdNn3eBJ2WgZECC2OOg9fV57FAVh3yc2yJC9E87jDJIfTIeH0
-	lCuJuw==
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com [209.85.219.71])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48pw10r44a-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Fri, 22 Aug 2025 18:12:21 +0000 (GMT)
-Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-70d9f5bdf67so20768496d6.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 22 Aug 2025 11:12:21 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755886340; x=1756491140;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/9F4kF/0PG0gqpOGPryNaB+t1E6t5FiaNAX6DsaIWBY=;
-        b=pAzPGLxzhODM6QCTVdEenBOh7W5a/FtvCPobeAOe8o2QppuhkojwuJ0Ae0RZSqTqeU
-         hbRq4iOAqHS7F3/G1QnyANbemmZZ2oz6eVJ2OQ5CqqzMfwag/pELS5BlKSGdFIFMl219
-         Ev94zs5gHSU6i6cT+eY8EkZdym0XOOuN9rd103Eqvk2pRmWUF+yI6W3GfDs/sLWThtXW
-         MvQvXJCJc26LNx4KR4tDoXD68CtnIqW4i5yN1sBFyNIFT1c0kH/PFcF8WkpQmqVqg5aA
-         ymad3dGkand2taLu2l71tVuL9viSNJ7gskf71rgGwsh7vwDRqtWnU8pUeV08fPOb99B5
-         721w==
-X-Forwarded-Encrypted: i=1; AJvYcCUBpJdBvK+KPNxjYZxp3SfcegtNiQ+MN2A+WEbii+xodW0XRu0fjWkmg+R6hiilK07wqJ0T9/g28sZY0EJQCA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw/SV43zLbDYSEqFesoM6UoF7qeM7NFoewP6vmldT7pq7mHV5qb
-	Q4Hhg3KYc+bYI73gD3b3yxGaBqhXjucF3dc8S4h1HZh46xzjPKz9NEZaWWU6w7pv02DXKigs36Q
-	U+3sprIgUkFSMctW5EjeWKE8KY175FmEQWaTfwWDEP85eJyigtQRlHDWPx8GfzhDKTUN98KXcr5
-	M=
-X-Gm-Gg: ASbGncsQ35XK2re5oeI1WwHmh6iY6qAKvTVU+IIzD+S8GC7+9nMGcImbCpxceNMIFKW
-	odG/QTi+QofFLAAAk099gd2p6poolDPQd32odCbZlJx9zjRvZsVCHisw9tPo8KVbwqAN7WH64Vd
-	nTpVfL7LScOJEAibkz6GcEk5YRhaslyrxMh8rL6FrR5ppJgZ5QB1DRM0ChsWJTtSK9tBQR3D0Da
-	FBQ71qqpSbPamERivsArmEZGNtT6izrvK/SPUPzkK1v19+G2sTMNgL9dolF+4GIa4xG8oKFI4h3
-	f4AKPIB5NMEHmrajdnzqVvZPViGVx/54G/mMDcaIRYATny65k/7Czt74g/JPN53LGvDyX22jRWH
-	vBRVCQfg/Ryaij3tlFUoys2VrKw2QF3EYxp6OfV8pZRMAi0Mulw4r
-X-Received: by 2002:a05:6214:2244:b0:70d:a4bf:66ae with SMTP id 6a1803df08f44-70da4bf69c5mr19413866d6.12.1755886340091;
-        Fri, 22 Aug 2025 11:12:20 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHZ9vrMkeP87y8XS1HYbM10ipCEtP2NQ/1/i89/UBtmnM3Uakd6ZPlSGQcOg+/ENSPZGgsjeA==
-X-Received: by 2002:a05:6214:2244:b0:70d:a4bf:66ae with SMTP id 6a1803df08f44-70da4bf69c5mr19413446d6.12.1755886339585;
-        Fri, 22 Aug 2025 11:12:19 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55f35c01e5asm89897e87.26.2025.08.22.11.12.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Aug 2025 11:12:18 -0700 (PDT)
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: heiko@sntech.de, Andy Yan <andyshrk@163.com>
-Subject: Re: (subset) [PATCH v7 00/10] Add support for RK3588 DisplayPort Controller
-Date: Fri, 22 Aug 2025 21:12:16 +0300
-Message-ID: <175588622226.771426.4504932000654632813.b4-ty@oss.qualcomm.com>
+	id 1upZ0O-00000003TQG-0oCx;
+	Fri, 22 Aug 2025 21:09:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=cypEHEpRR2kJqbcPVa7GjXp1ID7KVO6yBwZP58hpPu8=; b=m50fFHfFtMqgCcu9VSJ5v/1T6H
+	rXZjeTd4nbm4TotaElmywFPoV8XWbvuSL8GfaN6a0xWhFP1p1hlUN8ukE7DdXvkYtnaWjfoG4D0je
+	JC2lnZk/8KsCYsbU7QoRjO0hQVndHLLDaOe1i3U2ep9K0lAY7RWGhPeiEDWtCxbc+9se5lg8uEIxD
+	LMATyPUYvXPGh7wsS4XepSWRK68sUL0SfF70hBPSFw85dmzzccZSp629CltlOpyppucRM1bRNIUJq
+	DtYXKHHGXdselR2BtScg+0iTxTl/8apdFsRowbsNS1kCHLh2PbDTLr5VOOgZj+nmkxAlVGRVI3Yh3
+	ObWwOPog==;
+Received: from i53875a83.versanet.de ([83.135.90.131] helo=phil..)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1upYzr-000415-Uo; Fri, 22 Aug 2025 23:08:28 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: (subset) [PATCH 00/13] Support DSI output on rk3576 and roc-rk3576-pc board
+Date: Fri, 22 Aug 2025 23:08:25 +0200
+Message-ID: <175589689704.3303128.5679950731528883388.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250822063959.692098-1-andyshrk@163.com>
-References: <20250822063959.692098-1-andyshrk@163.com>
+In-Reply-To: <20250707164906.1445288-1-heiko@sntech.de>
+References: <20250707164906.1445288-1-heiko@sntech.de>
 MIME-Version: 1.0
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODIyMDE2MCBTYWx0ZWRfXyeGbTZYsoMot
- TCaN5y4NnmkWd+JNu2yI0FoyFSV2RM3LwlSE2ISrB9TyLpJgzCMrzrTTRDnOFZihM4Jr/30ANBE
- SnrPOeVZelai1Jx6YyIAPXCKH+P8QtDFKZiWfK1e0ijfdcZSi3BusqLyHhtv7iNGBQt2T+Rw1NR
- zesO/9+j2b9ve8kUJHUlwrYtTorVyqn2qhvaXgMpl0pMcfvxq7fkTtfbXsh4kkVZVRczzwB75MB
- vr0Ssk1qbfDE3it81aGRIVrrh67ns9xFE3r8CjW5xL/ms6mGam5yKowIGZF8+k41cSHaDgt8GiD
- zV58A6JjobtiDruKygKfugh/mucC/G98mLybaWbjLOFfoPO6nJ2+nsBv9xJ7QrOpP3Qls/RWfdK
- CR/ufiZn
-X-Authority-Analysis: v=2.4 cv=eaA9f6EH c=1 sm=1 tr=0 ts=68a8b306 cx=c_pps
- a=UgVkIMxJMSkC9lv97toC5g==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
- a=2OwXVqhp2XgA:10 a=s8YR1HE3AAAA:8 a=u1nK3qfxStItYws1ViEA:9 a=QEXdDO2ut3YA:10
- a=1HOtulTD9v-eNWfpl4qZ:22 a=jGH_LyMDp9YhSvY-UuyI:22
-X-Proofpoint-GUID: jDR8hRqe_rSM-jKIsxvDg4pDzu4UDWqc
-X-Proofpoint-ORIG-GUID: jDR8hRqe_rSM-jKIsxvDg4pDzu4UDWqc
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-22_04,2025-08-20_03,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 adultscore=0 suspectscore=0 impostorscore=0 malwarescore=0
- priorityscore=1501 phishscore=0 spamscore=0 bulkscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2508220160
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_111223_283899_46DAF3D5 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20250822_140900_223857_EC4F927C 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,35 +63,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: robh@kernel.org, conor+dt@kernel.org, neil.armstrong@linaro.org, linux-kernel@vger.kernel.org, maarten.lankhorst@linux.intel.com, hjc@rock-chips.com, mripard@kernel.org, andyshrk@163.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, tzimmermann@suse.de, andy.yan@rock-chips.com, quic_jesszhan@quicinc.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 22 Aug 2025 14:39:44 +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
+
+On Mon, 07 Jul 2025 18:48:53 +0200, Heiko Stuebner wrote:
+> This enables all the necesary bits and bindings to get display output
+> on the dm-m10r800-v3s addon module for the Firefly roc-rk3576-pc board.
 > 
-> 
-> There are two DW DPTX based DisplayPort Controller on rk3588 which
-> are compliant with the DisplayPort Specification Version 1.4 with
-> the following features:
+> A bit of cleanup of the ili9881c, because the driver was still trying
+> to send dcs commands when the underlying DSI driver might have already
+> switched to video-mode, which caused me quite a bit of headache until
+> I realized this being the culprit for my garbled display output :-) .
 > 
 > [...]
 
-Applied to drm-misc-next, thanks! I will wait for a few more days to apply the
-rest, maybe it gets some more R-b (especially the MAINTAINERS patch).
+Applied, thanks!
 
-[05/10] dt-bindings: display: simple-bridge: Add ra620 compatible
-        commit: 480a76c64f4f6a7f8d4aa2ac86cd2178687716b9
-[06/10] drm/bridge: simple-bridge: Add support for radxa ra620
-        commit: 73b81fcb12df1051bd169e488245f8bf4c37bc93
+[01/13] drm/panel: ilitek-ili9881c: turn off power-supply when init fails
+        commit: 6c66eba502709a78281333187c1add7b71f7201f
+[02/13] drm/panel: ilitek-ili9881c: move display_on/_off dcs calls to (un-)prepare
+        commit: 5efa82492066fcb32308210fb3f0b752af74334f
+[03/13] drm/panel: ilitek-ili9881c: convert (un-)prepare to mipi_dsi_multi_context
+        commit: 9002f55ee4480f23bd2ce91fb5fca536ce31717e
+[04/13] dt-bindings: vendor-prefixes: Add prefix for Shenzhen Bestar Electronic
+        commit: 8e484ff181b177ea2e86e537fd7a5c8f9d7532ad
+[05/13] dt-bindings: display: ili9881c: Add Bestar BSD1218-A101KL68 LCD panel
+        commit: 157ba8c6742931a617a34555c27dd10b36385cf3
+[06/13] drm/panel: ilitek-ili9881c: Add Bestar BSD1218-A101KL68 support
+        commit: 38dbbbb41c515d72b0a82fde3cec450d068f5e94
 
 Best regards,
 -- 
-With best wishes
-Dmitry
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
