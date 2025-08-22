@@ -4,83 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67988CA0EEB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Aug 2025 15:34:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D6F9CA0EEB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Aug 2025 15:35:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wkxlFGUyPoOb5V5jxdxFphgTMfQwZ2qxyGgHO9fiAZM=; b=hUq2x44hUfJhQW
-	wS2Oq5kILc2MRstoEzHvtibJKdn01vM9FjTWG1iEoRY0peDtIHdkNYDjlh2Gn+u5mqLLHi6Ks0hOc
-	lYQqAb5lRG1osxrXgm3RDgVX0th8+qGXUfkmtmVr1iPGt96d3XfpP6c2a9t39vrYvYiZosZCQR8ZL
-	wGkQifiKuq51VKxkqwSjSTwM6ZVvP9UhZKvb6hYSTd24NBcaRhbTJm0eQr3Zyv0/4dI6QxpDkVIIj
-	5ibz7cF2Vv0r854yapPz6CojmDgfhEa/Us5Hyn6SHYSz/MEUrImlh1petMBOtsGEZcJ7nzJZsZLPf
-	+fonXxxKeF1u3TuPUaMQ==;
+	List-Owner; bh=7PzFFNKLdHVFo61Ob6YRHpjFlqBs+kVPwsDBey/lcI4=; b=yLnH82HDqkeuuy
+	UUhBmKgmwAbgFOcyHVjZz99DN2Tddp3IT2QFfy9sbpP8YCu9+zE5N4MiVoxlXNbwPitR/5jMuSBeH
+	FzhhaMlPivQ1SpoXPhukfWjMba8eeygcuCHSylumjUk9uSzPp9q6j3yTUDIfLN6hGfEMloFOLvwi0
+	se3D50cdUaBQ+U4QH/ouBaU0HYo1bqBB05rr2EIeYUcv5lTvZRB+bb3Q/0L0zW/JFwH6JUxHyHryk
+	KUX1MockPkilVzuJatC27HHomvByXzXsJ194uo62G75TtXJI+NBKSJiLrjaBHgCjWa3T/XEng/+fV
+	5jt4biGe5zYrSvkGUbaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upTmS-0000000327G-3lWj;
-	Fri, 22 Aug 2025 15:34:16 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1upTnI-000000033Lc-18pA;
+	Fri, 22 Aug 2025 15:35:08 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upMPk-00000001qIz-0yCU;
-	Fri, 22 Aug 2025 07:42:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1755848540; x=1787384540;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Y4Ju8Ubc+V678E//72dW9Gb7LL72XIy9O0AWP8HbfuI=;
-  b=EisSpCkeE2QnIaiUg93sEmGM6zer5NXr8chbHFnGROUoQ+NbQOwj36rT
-   MVWMsxsE6A738V3Gux4l2wkBVKNjRCSZY/tOX7Ob8t6U6yXehnrI5fxIU
-   5MnJSK2UReJIjxoh2s53FZmoJSMmOc7IPEcKYBHTDQb4u0mkOty6C5PpG
-   MEsTX8OxzzsSSRf41GXaDxNvQgZ0sfsxW3z1cOizOSyyRwCJu2hbZ5Jlr
-   VvJC7qVB/nWsSPw6Zxw1GitJj+xgjjofmwQAnPEcOw+zbei+15Gf3smYa
-   yJPu+dR97hU5B49ZVzTme1nFb5zhIjyT79GxB5kCDYuhKf3+fpsMJqoBQ
-   Q==;
-X-CSE-ConnectionGUID: AT1dOoiJQ+2HB9wT2AG0Ug==
-X-CSE-MsgGUID: 6sm6YDnRQWOVkCRbNkgK+g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11529"; a="69524330"
-X-IronPort-AV: E=Sophos;i="6.17,309,1747724400"; 
-   d="scan'208";a="69524330"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Aug 2025 00:42:20 -0700
-X-CSE-ConnectionGUID: B2tTkImKSMCALA9i2pukwg==
-X-CSE-MsgGUID: MJ+xkVLBRmmCGp8LNMXqhA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,309,1747724400"; 
-   d="scan'208";a="173060037"
-Received: from cpetruta-mobl1.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.244.97])
-  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Aug 2025 00:42:17 -0700
-Received: from kekkonen.localdomain (localhost [IPv6:::1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id 16336121F7B;
-	Fri, 22 Aug 2025 10:42:14 +0300 (EEST)
-Date: Fri, 22 Aug 2025 10:42:14 +0300
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Keke Li <keke.li@amlogic.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Dan Scally <dan.scally@ideasonboard.com>,
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 5/8] media: v4l2-common: Introduce v4l2-params.c
-Message-ID: <aKgfVrbGGRuWS24i@kekkonen.localdomain>
-References: <20250819-extensible-parameters-validation-v3-0-9dc008348b30@ideasonboard.com>
- <20250819-extensible-parameters-validation-v3-5-9dc008348b30@ideasonboard.com>
- <aKT4vz-XeTgSo125@kekkonen.localdomain>
- <bl4xncjiy3b777xdni7kb22hwxgm5sqrpd2jrctmdi2valtrec@zr2bfen5drx5>
+	id 1upO9i-000000023l8-2KMS;
+	Fri, 22 Aug 2025 09:33:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 05D8C60263;
+	Fri, 22 Aug 2025 09:33:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 281C9C113D0;
+	Fri, 22 Aug 2025 09:33:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755855233;
+	bh=l/Mx1B8W3cmAkQuq0/d3MKrqsLFHRjyPr8nhD/OLtq0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qW8Dkhm50XyxlTPMvx55jL4RnR3x8r5pj34wFRwmGzkdty04mftV1GHHALpktBWG2
+	 JvRyRTQOGAAJlDnm0MPFfbM7RMiPv/E7bfGMlNFGqumhPqqYrOkG3Own1BOmnKdmhg
+	 jAKbQqlaOvj3kuJPTgubvk5Rm/pjYd5LOk7TP0fypKuRb20WXtHLkj7lyizx4n5Y/2
+	 jUUe29woLYmRD5K1NytUiu/O6GLVLwNQuoBlFqkqCguypfotlahlckKJiTTWac1XJX
+	 wcNXXq2KmnsXJjkSZx59ji1v+aaDLbwghzDGLD4vI/nxZKeM4CiCB9D18IUcxx9Yc1
+	 7GRLI4UbKJfJg==
+Date: Fri, 22 Aug 2025 11:33:51 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Kever Yang <kever.yang@rock-chips.com>, Jagan Teki <jagan@amarulasolutions.com>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Diederik de Haas <didi.debian@cknow.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Collabora Kernel Team <kernel@collabora.com>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
+	stable@kernel.org
+Subject: Re: [PATCH v2 2/7] dt-bindings: phy: rockchip-inno-csi-dphy: make
+ power-domains non-required
+Message-ID: <20250822-chirpy-capuchin-of-apotheosis-1133fc@kuoka>
+References: <20250616-rk3588-csi-dphy-v2-0-7a94f079b712@collabora.com>
+ <20250616-rk3588-csi-dphy-v2-2-7a94f079b712@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <bl4xncjiy3b777xdni7kb22hwxgm5sqrpd2jrctmdi2valtrec@zr2bfen5drx5>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_004220_286971_F7CF6A84 
-X-CRM114-Status: GOOD (  11.03  )
+In-Reply-To: <20250616-rk3588-csi-dphy-v2-2-7a94f079b712@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,28 +78,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jacopo,
-
-On Wed, Aug 20, 2025 at 09:11:06AM +0200, Jacopo Mondi wrote:
-> Hi Sakari
+On Tue, Aug 19, 2025 at 01:00:36AM +0200, Michael Riesch wrote:
+> There are variants of the Rockchip Innosilicon CSI DPHY (e.g., the RK3568
+> variant) that are powered on by default as they are part of the ALIVE power
+> domain.
+> Remove 'power-domains' from the required properties in order to avoid false
+> negatives.
 > 
-> On Wed, Aug 20, 2025 at 01:20:47AM +0300, Sakari Ailus wrote:
-> > Hi Jacopo,
-> >
-> > In the subject:
-> >
-> > s/common/params/
+> Fixes: 22c8e0a69b7f ("dt-bindings: phy: add compatible for rk356x to rockchip-inno-csi-dphy")
+> Cc: stable@kernel.org
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> I actually meant "media: v4l2-core:"
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+> index 5ac994b3c0aa..42da616ae2e3 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+> @@ -57,7 +57,6 @@ required:
+>    - clocks
+>    - clock-names
+>    - '#phy-cells'
+> -  - power-domains
 
-We've usually referred to the more specific part under
-drivers/media/v4l2-core if a patch is touching just one of them, e.g.
-v4l2-fwnode or v4l2-common.
+This could then be restricted per each variant in if:then:.
 
--- 
-Regards,
+Best regards,
+Krzysztof
 
-Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
