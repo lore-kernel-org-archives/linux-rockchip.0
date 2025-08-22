@@ -4,171 +4,156 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5E5BCCD1A7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C84E2CCD1AA
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:03:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WmQ7EfZ1C6Cp8FSRP34kcbrg3Or+eqp+176PVMkUXvg=; b=JriPuZUTX2wkq5
-	KIkwaUBKceqsLI5Gt1zSh+2FF+qWkBIWxGTly4hyyked5mv4XFFnCwBV/8SHZymiMEdL/TFYDiOZ8
-	0dAkSpj7eOwMRehWBMpQXFsfUMeNufnW9ZFpA7oLmPKYjDYORb0WKs5ChXg/DoW/u781jByjAbgW/
-	67HJujwlbnRM0CkPxIpJGBQ1r/IC0B+UJtFNr2ul1T6gaUIMFQuChRTZQmIHGXTfyX3VO/jzulqhu
-	rhuc1ebugprArP822vihLLGx2vn4gKvYvvjSkOvLoftVHd5a0YePAjGSYQQ21MCfYMngDcbpVSDpm
-	m85oacVNyhomIwpMJaCw==;
+	List-Owner; bh=Jrt+ux0m+LYp8Zv/Esahzg1Sl1wuQM5FJeI6SxINVsk=; b=QlFk+GqvV2XVq5
+	Q+owN9hZWjuNFPoyfnwmvFKOCHacnk2awQfpye45sNmEWjCESaRMZzD5SlQDgc2WGNQJbqnR/RQ09
+	R9b9gBu/VI0lW/pHuhbK4ygmjzylsCUSVFq315L+8RVplb2wJQ+oc1OSlj18KfzdsqbfCaF3oXx+u
+	e/AzhUPglf9Rrja/dFvyh3SaEvJRjfk7jEaTJ6UfR7sGfRetMslrIC9/+29e0jF4LsSCT8PjWEaYv
+	p4MPll6Sxo/wj6GSV3kwXVGTFHa4ckhf9esZuv8dEGsuMwidUU197KRt3lGX0w/Iooe+qKpIzHIcU
+	s3Tuvktqp76FPUMmSt3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAobv-0000000DGy3-1K6u;
-	Mon, 20 Oct 2025 12:03:35 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1vAobw-0000000DGzF-0Zuz;
+	Mon, 20 Oct 2025 12:03:36 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upQ0l-00000002LjN-2eNx
-	for linux-rockchip@lists.infradead.org;
-	Fri, 22 Aug 2025 11:32:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1755862366;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=szopGzlKxzQVjhy80Hyf8D8Trqw2L0U+tNPu86d0YYI=;
-	b=BE8CoLr/UTBBNqQsuYyg+Z7I5egLwLXk/zkjwbSJO9qn7gxAjQU3YYnoMeiSs4VtE76gCR
-	lWHeeyH8nptERunJscai8+z/TetKt2naz9dp4bGVEpWZUIpSqpO23Y/iyaSfuY7+0Cc8pG
-	IuCUBiPY6GnkPrVZ+TJxyHlRioBpPv0=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-460-BrpS563sO52kiXACuZuqRA-1; Fri, 22 Aug 2025 07:32:45 -0400
-X-MC-Unique: BrpS563sO52kiXACuZuqRA-1
-X-Mimecast-MFC-AGG-ID: BrpS563sO52kiXACuZuqRA_1755862365
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-7e870324a51so479799085a.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 22 Aug 2025 04:32:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1755862365; x=1756467165;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=szopGzlKxzQVjhy80Hyf8D8Trqw2L0U+tNPu86d0YYI=;
-        b=LezEp1zlXPHUzS2JzWcijqe6v6UYHttFTxZ9n3UXnqBibOcSbCpNzrBmAw6lU8enyf
-         fB4FcUcifAKJTwutIrbMyl5WoWJ023Hyruum8jAhlZDuSTs2TPLbb62je00DMESxmQJZ
-         tomxPT3FL/nGscvXhBhgAGwzrpjzF77I5hjnfDwG/yRc1+ErlRmAYiBhZyzFALluDg78
-         9z41dp77JAWIpaKgLIEbkFrRTI3mt5oe06Jlj2AvPiFdBsho6WNs36d2SDJ8jaKMzgXK
-         Gk+bBA6BTm/BmruEEGu5NNQxITujETI7E9AGLSjBnhIvRQ0re3OaOHdjZvhhmFYJZmdd
-         xWrw==
-X-Forwarded-Encrypted: i=1; AJvYcCXb+qNlTQv7nL89WoTCS7e3mlPiICprvfuP4vok4V/4pDQx/eYozGpIdNil49IknWlhNwZBaTKvlL5XmtRv9Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxzQIM4zRD2sLuC898tnpfb8MEepCEW8RO1Ga2JCxcIU981sFrG
-	zRMe+Ad67ytRjJZxnlOJqVPlVpKj+3BU/FBcRvg2WH8uccMOcGDpR+gJGoTRRiXadAD9KSFylax
-	m876hBquvGes5PPy9qUeBlzvhtfDbMlSYRGvFNrzuaL1mjLeQD4Wp0nmiuj3zgJ/xrivCNYkLtQ
-	==
-X-Gm-Gg: ASbGncseF7DwkTUth/KLKnC5N9s1Bwo2eisigCNeIKEbWqiaioPiFBsVAwCkipwpX4G
-	ioGfab2R3SN2iOQezihfy5pULGxFSjzt+obFywBBAaANNPHnJlj6cHBryCcVjIwD1zP99hGe3Zq
-	qagMgdDJ9zYtVVBsc2gNp2SawC64Vyd+IVJMDPEULvj5tV6AtPGEpgSLTuz9JL7Qombpcw/q/Kf
-	flQkTuDcklkGuveorXdz7LJpLEKy8v2otGbONVztK9rTN0EuP3StViayhguqc9JoLMWOD1IuNzt
-	2k074ePpfnrafSGLRROtJe55IThWyd82EOcU/haclUB/5/JbFOtEFf3SEGHElNJlfEnIcRIQu5c
-	FNQNtHs/CADxVNG2uI70=
-X-Received: by 2002:a05:620a:404c:b0:7e8:46ff:baac with SMTP id af79cd13be357-7ea10fc7a12mr283061885a.1.1755862364577;
-        Fri, 22 Aug 2025 04:32:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEmUibDYWQCc5l/mEz36xU/pWXO/c0soUOFhWHapUhi9osq4o9OwXIif6VsGjeizcb9uRTquQ==
-X-Received: by 2002:a05:620a:404c:b0:7e8:46ff:baac with SMTP id af79cd13be357-7ea10fc7a12mr283046685a.1.1755862363659;
-        Fri, 22 Aug 2025 04:32:43 -0700 (PDT)
-Received: from x1 (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7e87e1c186esm1319562485a.68.2025.08.22.04.32.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Aug 2025 04:32:42 -0700 (PDT)
-Date: Fri, 22 Aug 2025 07:32:36 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	Chen Wang <unicorn_wang@outlook.com>,
-	Inochi Amaoto <inochiama@gmail.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Taichi Sugaya <sugaya.taichi@socionext.com>,
-	Takao Orito <orito.takao@socionext.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Jacky Huang <ychuang3@nuvoton.com>,
-	Shan-Chun Hung <schung@nuvoton.com>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Yixun Lan <dlan@gentoo.org>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	UNGLinuxDriver@microchip.com, Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Neal Gompa <neal@gompa.dev>,
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Palmer <daniel@thingy.jp>,
-	Romain Perier <romain.perier@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andrea della Porta <andrea.porta@suse.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Alex Helms <alexander.helms.jy@renesas.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
-	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
-	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	sophgo@lists.linux.dev, linux-mips@vger.kernel.org,
-	imx@lists.linux.dev, linux-riscv@lists.infradead.org,
-	spacemit@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com,
-	patches@opensource.cirrus.com, linux-actions@lists.infradead.org,
-	asahi@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
-Subject: Re: [PATCH 000/114] clk: convert drivers from deprecated
- round_rate() to determine_rate()
-Message-ID: <aKhVVJPEPxCoKKjI@x1>
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
- <1907e1c7-2b15-4729-8497-a7e6f0526366@kernel.org>
+	id 1upQoW-00000002Tbu-1ird;
+	Fri, 22 Aug 2025 12:24:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 41AE060010;
+	Fri, 22 Aug 2025 12:24:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1A4BC4CEED;
+	Fri, 22 Aug 2025 12:23:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1755865451;
+	bh=mLeAMWSsn4iVdHA2aA84aTUB8QKMlhhT8JXX6dQuNPQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=fcpB/GZAsmBnGA/ZXo/UCMu1olcQfBfqlVKRoaI1amZ4bW1+EvmbI0yn1tYdhcF0M
+	 TjH+tGsg+lJNOBq9Uul/XrYzIVjjdjzS1eLfy5FR/tt+moM74912vyVYtEO74POO9X
+	 +gSFjaiCREATXI+OESdAL4wOTu8CD3PEpE7yS8dKcW+lR2kBv2PrNGQnry4bGkjo7t
+	 5RDpGggIe+qqueEE/2/BCXfLt4rJd8Y57zwkcFLYFZICaqLXTzwEFU2nZYHXYT6/Wb
+	 gb2H8CDOwtKvPtN4DcobS1WFke+0ZnuYiTy793mwJAJi+u3x75ysGEbsekUqzd/bja
+	 T7NkRWqrpT26g==
+Message-ID: <4d31df9e-62c9-4988-9301-2911ff7de229@kernel.org>
+Date: Fri, 22 Aug 2025 14:23:50 +0200
 MIME-Version: 1.0
-In-Reply-To: <1907e1c7-2b15-4729-8497-a7e6f0526366@kernel.org>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: WnKRvg_NS9_x06-mC7RuYK6jvswgOVFLVx28yqFC35Y_1755862365
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_043247_758061_12D46CB9 
-X-CRM114-Status: GOOD (  22.35  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:36 -0700
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 000/114] clk: convert drivers from deprecated round_rate()
+ to determine_rate()
+To: Brian Masney <bmasney@redhat.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
+ Cristian Marussi <cristian.marussi@arm.com>,
+ Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Paul Cercueil <paul@crapouillou.net>, Keguang Zhang
+ <keguang.zhang@gmail.com>, Taichi Sugaya <sugaya.taichi@socionext.com>,
+ Takao Orito <orito.takao@socionext.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>,
+ Shan-Chun Hung <schung@nuvoton.com>, Vladimir Zapolskiy <vz@mleia.com>,
+ Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Samuel Holland <samuel.holland@sifive.com>, Yixun Lan <dlan@gentoo.org>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Michal Simek <michal.simek@amd.com>, Maxime Ripard <mripard@kernel.org>,
+ =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>, Sven Peter <sven@kernel.org>,
+ Janne Grunau <j@jannau.net>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+ Neal Gompa <neal@gompa.dev>, Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daniel Palmer <daniel@thingy.jp>, Romain Perier <romain.perier@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Heiko Stuebner <heiko@sntech.de>, Andrea della Porta
+ <andrea.porta@suse.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Alex Helms <alexander.helms.jy@renesas.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Liviu Dudau <liviu.dudau@arm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ sophgo@lists.linux.dev, linux-mips@vger.kernel.org, imx@lists.linux.dev,
+ linux-riscv@lists.infradead.org, spacemit@lists.linux.dev,
+ linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com,
+ linux-actions@lists.infradead.org, asahi@lists.linux.dev,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
+References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
+ <1907e1c7-2b15-4729-8497-a7e6f0526366@kernel.org> <aKhVVJPEPxCoKKjI@x1>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <aKhVVJPEPxCoKKjI@x1>
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:25 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -185,53 +170,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof (and Stephen),
-
-On Fri, Aug 22, 2025 at 08:31:08AM +0200, Krzysztof Kozlowski wrote:
-> On 11/08/2025 17:17, Brian Masney via B4 Relay wrote:
-> > The round_rate() clk ops is deprecated in the clk framework in favor
-> > of the determine_rate() clk ops, so let's go ahead and convert the
-> > various clk drivers using the Coccinelle semantic patch posted below.
-> > I did a few minor cosmetic cleanups of the code in a few cases.
+On 22/08/2025 13:32, Brian Masney wrote:
+> 7 of the 114 patches in this series needs a v2 with a minor fix. I see
+> several paths forward to merging this. It's ultimately up to Stephen how
+> he wants to proceed.
 > 
-> This is going to create huge conflicts and I did not find here any
-> merging strategy.
+> - I send Stephen a PULL request with all of these patches with the minor
+>   cleanups to the 7 patches. Depending on the timing, Stephen can merge
+>   the other work first, and I deal with cleaning up the merge conflicts.
+>   Or he can if he prefers to instead.
 > 
-> What do you expect from us here?
+> - Stephen applies everyone else's work first to his tree, and then the
+>   good 107 patches in this series. He skips anything that doesn't apply
+>   due to other people's work and I follow up with a smaller series.
 
-That's a good question. You are right that there's a handful of drivers
-where this will create a merge conflict with some other work that's been
-posted this development cycle due to other unrelated changes. I suspect
-the majority of these will still apply cleanly.
+Both cause cross tree merge conflicts. Anyway, please document clearly
+the dependencies between patches.
 
-This series doesn't remove round_rate from the clk core, and I'll post
-that change once everything else has been merged across the tree. I've
-been trying to catch any new round_rate implementations that are posted
-in review.
 
-7 of the 114 patches in this series needs a v2 with a minor fix. I see
-several paths forward to merging this. It's ultimately up to Stephen how
-he wants to proceed.
-
-- I send Stephen a PULL request with all of these patches with the minor
-  cleanups to the 7 patches. Depending on the timing, Stephen can merge
-  the other work first, and I deal with cleaning up the merge conflicts.
-  Or he can if he prefers to instead.
-
-- Stephen applies everyone else's work first to his tree, and then the
-  good 107 patches in this series. He skips anything that doesn't apply
-  due to other people's work and I follow up with a smaller series.
-
-I would prefer to not to have to post a v2 114 patch series if
-possible.
-
-If I don't hear back from Stephen about how he wants to proceed, then
-I'm planning to send him a PULL request the week of Sep 1st.
-
-Does this sound good? I'm open to other suggestions.
-
-Brian
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
