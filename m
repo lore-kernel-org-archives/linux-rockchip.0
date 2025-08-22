@@ -4,42 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C355ECA0EED
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Aug 2025 11:22:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A89C9CA0FE1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Aug 2025 11:22:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LelFZchfFUvToidiEJIy5L0rDlqOf/djwykwqJZkwYo=; b=BYoJ8Set/6YnKmiwXFTQlxENIS
-	CP6O3ZWnzf44DGppYBqnxMJrLCW/4cTvjRC99PcJSdmAf7zGEfbPrWRmW7jSbTzKCrVH1THKo3at+
-	LjSzcOBZY44aoiGu0PApUNB+7tdxEwUQN5D2k2jY4LZY1xZKk425x3978EjlUc+HvI3mioPOGBcBv
-	qXozhMss/Vptbv4uwIGXIrXWpkhTawieNjXsoFXYno267Lqr9LDX4PSZDA4JxjP0TkJ5nzI3ydKom
-	imEFe0X2QDfSTEgIoQdtgP74QwycmXvbbSVNINozbybbpuGq/Xs4mG2ft9dDjePujlRvxdybC4URK
-	rH5napZQ==;
+	bh=cziwR2HKZXj7sZk9oS5Fz7HUg0tgJuvAj65Sf8ROXWU=; b=mA34N5XdsijVkXUKHmsbpWkLF0
+	wyKG9DCm1rbWqIJfHHSNV0pG0JD58D3eAIhKe7/Q0lfxRMQ6U0MrHMeElO0t6ZMk17CA6YqfbgCRe
+	xtKjIBjTMkJecY/HthR3nvYUCvJV8T+iblejFM+qjnaeWLtnAqOQ1Fv3bmkxQyMngUMyAk9vdxRTr
+	HMqp5TiwuU5wgDKTHa3Dv4IpyVZYscoXAH8MsfLNcP62+qANLpStiZlGwEU6JWKlfNcECMpdT+j9K
+	vEjEl4ebNObXpcqcJYJZryscamT+FdBl/3yUQybD2YwtCVmM3JYJpKvvfqKKewtbHAQRC+UJgV2qw
+	HHoLAx7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upPr7-00000002IYv-3cPy;
-	Fri, 22 Aug 2025 11:22:49 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1upPr2-00000002IPL-2jID;
+	Fri, 22 Aug 2025 11:22:44 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upIFS-00000001MF4-2ZqX;
-	Fri, 22 Aug 2025 03:15:28 +0000
+	id 1upIBf-00000001LxB-0C68;
+	Fri, 22 Aug 2025 03:11:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=h3v0SnafxKU18FwdsFkXkfhEoVhOWX6Xg3ytYgsgU7E=; b=JnGFbqu5Ndr8S9F320frIyc9hW
+	SxH2JFxRaSp/65JKR8YRAa3czIdj05h0VkOKXHewPe7zpHcGoR0cLFOevVQnkeoTCClDXNu88Yd9h
+	UMnEsRaIcBNsfJ3PZSL+62xGz0mrRb2wP1vxwo/UsBNiCQ5tsKOrXtMvvN93nCDPJnDq35Zgn0K7n
+	B94tI8iVZ04ZEZYQM3eW5nRc3cEm+7ws8sSavAiiyi4sl2GrAaT93I9b2djm4HPgpI8pDK8PbZ0Ae
+	mYsOI5mQkD//kiiaDubrRhkZHlYbnuAgcQfZ+S/yxwvfBas96gKL0MWdzd1RmlHBlGaSXnWU+2Yoi
+	IrOzZcRQ==;
+Received: from mail.manjaro.org ([116.203.91.91])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1upIBb-00000000mN1-0SDd;
+	Fri, 22 Aug 2025 03:11:29 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1755832522;
+	t=1755832276;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=FVNj7XuCRYzgakERnKLvBNWM2bucmEROJFI6LqjhvO4=;
-	b=LA8CP65OXnnR9gteh1dgRcomRR3qHjJm1l0KP+WuXv9Ef4pVYSQ+RBQwYmk+ZxAg+xQccJ
-	YtJ9i4GQobi6N8AJmrfSOt7M0iQpBRJcxx++tj2uGCtZ4078K8OBQ6T2tR1Mx6gJ8ALAqF
-	dJAfmbVPQMcwW36IWEjYUZjwJYQZvNp6qcCLzMofDMt6bpcyDJLO7YOHCrwN38IR3d3Xgi
-	3PdCAC7emnQwyNFo8JZGYGVxp6XTZ8j3e+0WXXfjSYIaFMTdYLnk/lwdfMHyLMnmDi0tXT
-	lrHVz6c0hGwphutvAe7xtpr40XnP+zyzH1U41r8Mq/wAf43Sj+VcDV6iGsreow==
-Date: Fri, 22 Aug 2025 05:15:22 +0200
+	bh=h3v0SnafxKU18FwdsFkXkfhEoVhOWX6Xg3ytYgsgU7E=;
+	b=m/iT3GelGjtSI/56+p2/pI2ZDBaFTJ7bOFtj2h4mIKJrOkKIsUixAMmImGhx58H6Kpom9P
+	0kjf7V9Cz4BvIQhdrME3LeVF1ug+pkOLdLLaK4h1xXJ1mnbgLZphRvhFolYEQZVdgXIDOZ
+	5YbIYKb2OETmV2JXYGzl4fWBWbbeLv9/WwhwfrXzd1xRAxj/xMwjp5EhTFUuTXm4vrJxi4
+	zkqKUSMvdUclVn77aLLOvXUCdkJae0rh0T/BCkJg3SkK+76Muj1wWdtRfASRRldKQAExq6
+	lUaTRuIYgIXsTAVu5rpJcQ4ugqB6Q0D9CDmguShjx1mXZm3bWHL8me4+HOScwg==
+Date: Fri, 22 Aug 2025 05:11:15 +0200
 From: Dragan Simic <dsimic@manjaro.org>
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
@@ -51,17 +65,18 @@ Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  kernel@collabora.com
-Subject: Re: [PATCH v2 2/3] thermal: rockchip: shut up GRF warning
-In-Reply-To: <20250820-thermal-rockchip-grf-warning-v2-2-c7e2d35017b8@kernel.org>
+Subject: Re: [PATCH v2 1/3] thermal: rockchip: unify struct
+ rockchip_tsadc_chip format
+In-Reply-To: <20250820-thermal-rockchip-grf-warning-v2-1-c7e2d35017b8@kernel.org>
 References: <20250820-thermal-rockchip-grf-warning-v2-0-c7e2d35017b8@kernel.org>
- <20250820-thermal-rockchip-grf-warning-v2-2-c7e2d35017b8@kernel.org>
-Message-ID: <2951de6ac036c7e8c62a940d2ed029ea@manjaro.org>
+ <20250820-thermal-rockchip-grf-warning-v2-1-c7e2d35017b8@kernel.org>
+Message-ID: <2bc3023e4b6e15b388f8765551018eed@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_201526_988187_4EB8DA50 
-X-CRM114-Status: GOOD (  19.00  )
+X-CRM114-CacheID: sfid-20250822_041127_484178_22FEFB3C 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,18 +96,16 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Hello Sebastian,
 
 On 2025-08-20 19:40, Sebastian Reichel wrote:
-> Most of the recent Rockchip devices do not have a GRF associated
-> with the tsadc IP. Let's avoid printing a warning on those devices.
+> Unify all chip descriptions to the version without any empty
+> lines.
 > 
+> Suggested-by: Heiko Stuebner <heiko@sntech.de>
 > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
->  drivers/thermal/rockchip_thermal.c | 23 ++++++++++++++++++-----
->  1 file changed, 18 insertions(+), 5 deletions(-)
+>  drivers/thermal/rockchip_thermal.c | 27 ---------------------------
+>  1 file changed, 27 deletions(-)
 
-Thanks for the patch!  It's looking good to me, and it's virtually
-identical to my rather old patch that I implemented a while ago, but
-never submitted to the mailing list(s).
-
+Thanks for the patch, it's perfectly reasonable and obviously correct.
 Please feel free to include
 
 Reviewed-by: Dragan Simic <dsimic@manjaro.org>
@@ -100,145 +113,206 @@ Reviewed-by: Dragan Simic <dsimic@manjaro.org>
 > diff --git a/drivers/thermal/rockchip_thermal.c
 > b/drivers/thermal/rockchip_thermal.c
 > index
-> 7b18a705dfade6fa7318b28c2b57544a4446c1cc..c49ddf70f86e7beaf0190b1b3e93f5e6b2f72b2c
+> 3beff9b6fac3abe8948b56132b618ff1bed57217..7b18a705dfade6fa7318b28c2b57544a4446c1cc
 > 100644
 > --- a/drivers/thermal/rockchip_thermal.c
 > +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -74,6 +74,7 @@ struct chip_tsadc_table {
->   * @tshut_temp: the hardware-controlled shutdown temperature value,
-> with no trim
->   * @tshut_mode: the hardware-controlled shutdown mode (0:CRU 1:GPIO)
->   * @tshut_polarity: the hardware-controlled active polarity (0:LOW 
-> 1:HIGH)
-> + * @grf_required: true, if a GRF is required for proper functionality
->   * @initialize: SoC special initialize tsadc controller method
->   * @irq_ack: clear the interrupt
->   * @control: enable/disable method for the tsadc controller
-> @@ -97,6 +98,9 @@ struct rockchip_tsadc_chip {
->  	enum tshut_mode tshut_mode;
->  	enum tshut_polarity tshut_polarity;
-> 
-> +	/* GRF availability */
-> +	bool grf_required;
-> +
->  	/* Chip-wide methods */
->  	void (*initialize)(struct regmap *grf,
->  			   void __iomem *reg, enum tshut_polarity p);
-> @@ -1098,6 +1102,7 @@ static const struct rockchip_tsadc_chip
+> @@ -1098,10 +1098,8 @@ static const struct rockchip_tsadc_chip
 > px30_tsadc_data = {
 >  	/* cpu, gpu */
 >  	.chn_offset = 0,
 >  	.chn_num = 2, /* 2 channels for tsadc */
-> +	.grf_required = true,
+> -
 >  	.tshut_mode = TSHUT_MODE_CRU, /* default TSHUT via CRU */
 >  	.tshut_temp = 95000,
+> -
 >  	.initialize = rk_tsadcv4_initialize,
-> @@ -1119,6 +1124,7 @@ static const struct rockchip_tsadc_chip
+>  	.irq_ack = rk_tsadcv3_irq_ack,
+>  	.control = rk_tsadcv3_control,
+> @@ -1109,7 +1107,6 @@ static const struct rockchip_tsadc_chip
+> px30_tsadc_data = {
+>  	.set_alarm_temp = rk_tsadcv2_alarm_temp,
+>  	.set_tshut_temp = rk_tsadcv2_tshut_temp,
+>  	.set_tshut_mode = rk_tsadcv2_tshut_mode,
+> -
+>  	.table = {
+>  		.id = rk3328_code_table,
+>  		.length = ARRAY_SIZE(rk3328_code_table),
+> @@ -1122,11 +1119,9 @@ static const struct rockchip_tsadc_chip
 > rv1108_tsadc_data = {
 >  	/* cpu */
 >  	.chn_offset = 0,
 >  	.chn_num = 1, /* one channel for tsadc */
-> +	.grf_required = false,
+> -
 >  	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
 >  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
 >  	.tshut_temp = 95000,
-> @@ -1141,6 +1147,7 @@ static const struct rockchip_tsadc_chip
+> -
+>  	.initialize = rk_tsadcv2_initialize,
+>  	.irq_ack = rk_tsadcv3_irq_ack,
+>  	.control = rk_tsadcv3_control,
+> @@ -1134,7 +1129,6 @@ static const struct rockchip_tsadc_chip
+> rv1108_tsadc_data = {
+>  	.set_alarm_temp = rk_tsadcv2_alarm_temp,
+>  	.set_tshut_temp = rk_tsadcv2_tshut_temp,
+>  	.set_tshut_mode = rk_tsadcv2_tshut_mode,
+> -
+>  	.table = {
+>  		.id = rv1108_table,
+>  		.length = ARRAY_SIZE(rv1108_table),
+> @@ -1147,11 +1141,9 @@ static const struct rockchip_tsadc_chip
 > rk3228_tsadc_data = {
 >  	/* cpu */
 >  	.chn_offset = 0,
 >  	.chn_num = 1, /* one channel for tsadc */
-> +	.grf_required = false,
+> -
 >  	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
 >  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
 >  	.tshut_temp = 95000,
-> @@ -1163,6 +1170,7 @@ static const struct rockchip_tsadc_chip
+> -
+>  	.initialize = rk_tsadcv2_initialize,
+>  	.irq_ack = rk_tsadcv3_irq_ack,
+>  	.control = rk_tsadcv3_control,
+> @@ -1159,7 +1151,6 @@ static const struct rockchip_tsadc_chip
+> rk3228_tsadc_data = {
+>  	.set_alarm_temp = rk_tsadcv2_alarm_temp,
+>  	.set_tshut_temp = rk_tsadcv2_tshut_temp,
+>  	.set_tshut_mode = rk_tsadcv2_tshut_mode,
+> -
+>  	.table = {
+>  		.id = rk3228_code_table,
+>  		.length = ARRAY_SIZE(rk3228_code_table),
+> @@ -1172,11 +1163,9 @@ static const struct rockchip_tsadc_chip
 > rk3288_tsadc_data = {
 >  	/* cpu, gpu */
 >  	.chn_offset = 1,
 >  	.chn_num = 2, /* two channels for tsadc */
-> +	.grf_required = false,
+> -
 >  	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
 >  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
 >  	.tshut_temp = 95000,
-> @@ -1185,6 +1193,7 @@ static const struct rockchip_tsadc_chip
+> -
+>  	.initialize = rk_tsadcv2_initialize,
+>  	.irq_ack = rk_tsadcv2_irq_ack,
+>  	.control = rk_tsadcv2_control,
+> @@ -1184,7 +1173,6 @@ static const struct rockchip_tsadc_chip
+> rk3288_tsadc_data = {
+>  	.set_alarm_temp = rk_tsadcv2_alarm_temp,
+>  	.set_tshut_temp = rk_tsadcv2_tshut_temp,
+>  	.set_tshut_mode = rk_tsadcv2_tshut_mode,
+> -
+>  	.table = {
+>  		.id = rk3288_code_table,
+>  		.length = ARRAY_SIZE(rk3288_code_table),
+> @@ -1197,10 +1185,8 @@ static const struct rockchip_tsadc_chip
 > rk3328_tsadc_data = {
 >  	/* cpu */
 >  	.chn_offset = 0,
 >  	.chn_num = 1, /* one channels for tsadc */
-> +	.grf_required = false,
+> -
 >  	.tshut_mode = TSHUT_MODE_CRU, /* default TSHUT via CRU */
 >  	.tshut_temp = 95000,
+> -
 >  	.initialize = rk_tsadcv2_initialize,
-> @@ -1206,6 +1215,7 @@ static const struct rockchip_tsadc_chip
+>  	.irq_ack = rk_tsadcv3_irq_ack,
+>  	.control = rk_tsadcv3_control,
+> @@ -1208,7 +1194,6 @@ static const struct rockchip_tsadc_chip
+> rk3328_tsadc_data = {
+>  	.set_alarm_temp = rk_tsadcv2_alarm_temp,
+>  	.set_tshut_temp = rk_tsadcv2_tshut_temp,
+>  	.set_tshut_mode = rk_tsadcv2_tshut_mode,
+> -
+>  	.table = {
+>  		.id = rk3328_code_table,
+>  		.length = ARRAY_SIZE(rk3328_code_table),
+> @@ -1221,11 +1206,9 @@ static const struct rockchip_tsadc_chip
 > rk3366_tsadc_data = {
 >  	/* cpu, gpu */
 >  	.chn_offset = 0,
 >  	.chn_num = 2, /* two channels for tsadc */
-> +	.grf_required = true,
+> -
 >  	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
 >  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
 >  	.tshut_temp = 95000,
-> @@ -1228,6 +1238,7 @@ static const struct rockchip_tsadc_chip
+> -
+>  	.initialize = rk_tsadcv3_initialize,
+>  	.irq_ack = rk_tsadcv3_irq_ack,
+>  	.control = rk_tsadcv3_control,
+> @@ -1233,7 +1216,6 @@ static const struct rockchip_tsadc_chip
+> rk3366_tsadc_data = {
+>  	.set_alarm_temp = rk_tsadcv2_alarm_temp,
+>  	.set_tshut_temp = rk_tsadcv2_tshut_temp,
+>  	.set_tshut_mode = rk_tsadcv2_tshut_mode,
+> -
+>  	.table = {
+>  		.id = rk3228_code_table,
+>  		.length = ARRAY_SIZE(rk3228_code_table),
+> @@ -1246,11 +1228,9 @@ static const struct rockchip_tsadc_chip
 > rk3368_tsadc_data = {
 >  	/* cpu, gpu */
 >  	.chn_offset = 0,
 >  	.chn_num = 2, /* two channels for tsadc */
-> +	.grf_required = false,
+> -
 >  	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
 >  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
 >  	.tshut_temp = 95000,
-> @@ -1250,6 +1261,7 @@ static const struct rockchip_tsadc_chip
+> -
+>  	.initialize = rk_tsadcv2_initialize,
+>  	.irq_ack = rk_tsadcv2_irq_ack,
+>  	.control = rk_tsadcv2_control,
+> @@ -1258,7 +1238,6 @@ static const struct rockchip_tsadc_chip
+> rk3368_tsadc_data = {
+>  	.set_alarm_temp = rk_tsadcv2_alarm_temp,
+>  	.set_tshut_temp = rk_tsadcv2_tshut_temp,
+>  	.set_tshut_mode = rk_tsadcv2_tshut_mode,
+> -
+>  	.table = {
+>  		.id = rk3368_code_table,
+>  		.length = ARRAY_SIZE(rk3368_code_table),
+> @@ -1271,11 +1250,9 @@ static const struct rockchip_tsadc_chip
 > rk3399_tsadc_data = {
 >  	/* cpu, gpu */
 >  	.chn_offset = 0,
 >  	.chn_num = 2, /* two channels for tsadc */
-> +	.grf_required = true,
+> -
 >  	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
 >  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
 >  	.tshut_temp = 95000,
-> @@ -1272,6 +1284,7 @@ static const struct rockchip_tsadc_chip
+> -
+>  	.initialize = rk_tsadcv3_initialize,
+>  	.irq_ack = rk_tsadcv3_irq_ack,
+>  	.control = rk_tsadcv3_control,
+> @@ -1283,7 +1260,6 @@ static const struct rockchip_tsadc_chip
+> rk3399_tsadc_data = {
+>  	.set_alarm_temp = rk_tsadcv2_alarm_temp,
+>  	.set_tshut_temp = rk_tsadcv2_tshut_temp,
+>  	.set_tshut_mode = rk_tsadcv2_tshut_mode,
+> -
+>  	.table = {
+>  		.id = rk3399_code_table,
+>  		.length = ARRAY_SIZE(rk3399_code_table),
+> @@ -1296,11 +1272,9 @@ static const struct rockchip_tsadc_chip
 > rk3568_tsadc_data = {
 >  	/* cpu, gpu */
 >  	.chn_offset = 0,
 >  	.chn_num = 2, /* two channels for tsadc */
-> +	.grf_required = true,
+> -
 >  	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
 >  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
 >  	.tshut_temp = 95000,
-> @@ -1294,6 +1307,7 @@ static const struct rockchip_tsadc_chip
-> rk3576_tsadc_data = {
->  	/* top, big_core, little_core, ddr, npu, gpu */
->  	.chn_offset = 0,
->  	.chn_num = 6, /* six channels for tsadc */
-> +	.grf_required = false,
->  	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
->  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
->  	.tshut_temp = 95000,
-> @@ -1318,6 +1332,7 @@ static const struct rockchip_tsadc_chip
-> rk3588_tsadc_data = {
->  	/* top, big_core0, big_core1, little_core, center, gpu, npu */
->  	.chn_offset = 0,
->  	.chn_num = 7, /* seven channels for tsadc */
-> +	.grf_required = false,
->  	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
->  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
->  	.tshut_temp = 95000,
-> @@ -1594,12 +1609,10 @@ static int rockchip_configure_from_dt(struct
-> device *dev,
->  		return -EINVAL;
->  	}
-> 
-> -	/* The tsadc wont to handle the error in here since some SoCs didn't
-> -	 * need this property.
-> -	 */
->  	thermal->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-> -	if (IS_ERR(thermal->grf))
-> -		dev_warn(dev, "Missing rockchip,grf property\n");
-> +	if (IS_ERR(thermal->grf) && thermal->chip->grf_required)
-> +		return dev_err_probe(dev, PTR_ERR(thermal->grf),
-> +				     "Missing rockchip,grf property\n");
-> 
->  	rockchip_get_trim_configuration(dev, np, thermal);
+> -
+>  	.initialize = rk_tsadcv7_initialize,
+>  	.irq_ack = rk_tsadcv3_irq_ack,
+>  	.control = rk_tsadcv3_control,
+> @@ -1308,7 +1282,6 @@ static const struct rockchip_tsadc_chip
+> rk3568_tsadc_data = {
+>  	.set_alarm_temp = rk_tsadcv2_alarm_temp,
+>  	.set_tshut_temp = rk_tsadcv2_tshut_temp,
+>  	.set_tshut_mode = rk_tsadcv2_tshut_mode,
+> -
+>  	.table = {
+>  		.id = rk3568_code_table,
+>  		.length = ARRAY_SIZE(rk3568_code_table),
 
 _______________________________________________
 Linux-rockchip mailing list
