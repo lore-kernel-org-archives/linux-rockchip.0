@@ -4,67 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C85FDCA0EE4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Aug 2025 06:31:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 609AACA0EE4
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Aug 2025 06:32:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2fyA9VCTmaKhMSDiBs5TZFsp7YVcbdozNxIOvgVJalA=; b=oQM9+7UqNLSRLX
-	nBTNJrFcX4+4sqMlNU+SDdMbSlaeDo+3aahElGq5L89jPgh0Gso05sOFflj6MYMgNfdmHAMd1kwqX
-	RlDcQUYdUj/4B2APmkFyEAnzhtlz0QVIYP60VjVaNbBrcDAvsq9TVzX2+YXY30F19eyugs9WFWID1
-	YmY+DUY72c4llmzPb45qFM6VS3qEqLsU5XRJzCIo1tgv+YEl/LLfxEMGuO9Oyyp21VzqkazQoSjs5
-	0av+pd17/J3lMXY3mVj5iXMYDg1Xy0F5IYY/2/GWBUVH/mHNZKqVwldVoguqjDDLNwxBdiORMlDCO
-	/dZc3zSMqTEaesKlfdkA==;
+	List-Owner; bh=2Ox7dnojxlbiy/ydndwdGG2QkCXplRFxqZj+5k7PiFo=; b=pg1Q8kVTjCP4DL
+	S4/s+w4Hr2yLLLXFvuxA343HoOg2qR/OZdLfvXdvv4fgcHMipToh6N9ozJX7XG4ayWaSay6MtlPzZ
+	Lnr6ofRQFpbeQ5Tv8XfG1CNG3OWUk5oiSMDO2zVA8YkO7C3yvRTYj7EscXSwVS3FwbkYSG3BWIl8m
+	lGKKsHiV3nijy650noBdq9P4+s9AURqAEILnHRdyxoAsubXj/8vi9WOSfyxvd83suiABYUYXdpDmH
+	BT66l4lmjk+6mAkjlNcGqlkd3zn+LqcVv6uYULYKUKSAeIuTmDaA3I3O6oE/C5JrhShis6HvyJmnb
+	7l35MqPETrTBeTwtiTxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uphmq-000000040b2-1eNU;
-	Sat, 23 Aug 2025 06:31:36 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uphno-000000041s8-35iz;
+	Sat, 23 Aug 2025 06:32:36 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upSgn-00000002oiN-46CN
-	for linux-rockchip@lists.infradead.org;
-	Fri, 22 Aug 2025 14:24:23 +0000
+	id 1upT3y-00000002t0v-1Fqu;
+	Fri, 22 Aug 2025 14:48:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 370E7A583B1;
-	Fri, 22 Aug 2025 14:24:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE016C4CEED;
-	Fri, 22 Aug 2025 14:24:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CF42D4461D;
+	Fri, 22 Aug 2025 14:48:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87789C4CEED;
+	Fri, 22 Aug 2025 14:48:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1755872660;
-	bh=GHecUB/f6hF+l9nChS4AFiY+XY/E6xx0si6J6vs4S50=;
+	s=k20201202; t=1755874097;
+	bh=n4JvEFi7K9Gnd4LcwTA0bUtIPMP+X5TsCejUHnwhR34=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dQhLwhwK9qrnQh0flYJggQka8E9ZJzmwlNyAz3bfl0zQfiwan5NF/9FvEXCkpfzG2
-	 UupBjYLXpTAxzPNfowHY8wR7FevmagLt8My5R2DRDtbh89GRxOWNmxWxoSHxRiuWRq
-	 Vo/k7FSAsf6Pk+xGvOF41pl0MkbnNsWqEZ49JWls1wxcthZveWEQhM+OaCijUyK06P
-	 /r7MpjTSsCvyJue9PKF6SCPgoLB5ah9QXKItaB0BZDPD7hOrkaYbN0la8fsaShRnmc
-	 DZsqAb946JMkf8qu9xNWWPGOST3sTqIf3kVJkrsUoqXnFEUqqZtInP5MYOnlZPXwnV
-	 Ee7I6aPWCj55Q==
-Date: Fri, 22 Aug 2025 09:24:20 -0500
+	b=BgQ4QtKN0Hrlp+tukqXWm1mhlAR7cmdX5V73Oyrmx/LUNmbGl7mcWKEc8K0JS3PnU
+	 cZsf1QxRdJYiqT/ljbvr2pdN3lqlaBFwrmaXY9/OTYKDRaFBEdkm4ee6gxhixeeX3Y
+	 SbwaSRu6YR6PW3QOwwIcYj+KxYEYIRorQUlLaTQ6f7ycze9l1TJ9fTVgauCJF6SrLR
+	 0kpHfu5WZqx4qRoy2M7MnF6/fC8KBVd7adWJ05/3hqBP4BhXQBTsHdseuAcO8dbQhs
+	 F5aNMKlX91su9yhj4W+inDZWQhuaIbLsWKeu6rBkRVK3GFyFhOzoxotW3hqt0BRZcM
+	 hud/qTNt6vaEQ==
+Date: Fri, 22 Aug 2025 09:48:16 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
-	jose.abreu@synopsys.com, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	kernel@collabora.com, nicolas.dufresne@collabora.com,
-	Heiko Stuebner <heiko@sntech.de>, nelson.costa@synopsys.com,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	shawn.wen@rock-chips.com, Hans Verkuil <hverkuil@xs4all.nl>,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 2/2] media: dt-bindings: snps,dw-hdmi-rx.yaml: Updated
- maintainers entry
-Message-ID: <175587265951.3629173.15028167331028929815.robh@kernel.org>
-References: <20250820103059.342850-1-dmitry.osipenko@collabora.com>
- <20250820103059.342850-2-dmitry.osipenko@collabora.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Simona Vetter <simona@ffwll.ch>,
+	"H. Nikolaus Schaller" <hns@goldelico.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>, devicetree@vger.kernel.org,
+	Arnaud Vrac <avrac@freebox.fr>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	David Airlie <airlied@gmail.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maxime Ripard <mripard@kernel.org>, Robert Foss <rfoss@kernel.org>,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, Jonas Karlman <jonas@kwiboo.se>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Pierre-Hugues Husson <phhusson@freebox.fr>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Subject: Re: [PATCH v2 1/3] dt-bindings: display: ingenic,jz4780-hdmi: Add
+ missing clock-names
+Message-ID: <175587409204.3789906.17191769934979803832.robh@kernel.org>
+References: <20250820-dt-bindings-display-v2-0-91e2ccba3d4e@linaro.org>
+ <20250820-dt-bindings-display-v2-1-91e2ccba3d4e@linaro.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250820103059.342850-2-dmitry.osipenko@collabora.com>
+In-Reply-To: <20250820-dt-bindings-display-v2-1-91e2ccba3d4e@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250822_072422_070568_6BC0FC8E 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20250822_074818_356686_0CCB58FB 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,17 +93,18 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 20 Aug 2025 13:30:59 +0300, Dmitry Osipenko wrote:
-> Shreeya no longer works at Collabora, set Dmitry as maintainer of
-> the Synopsys HDMI RX binding.
+On Wed, 20 Aug 2025 16:17:36 +0200, Krzysztof Kozlowski wrote:
+> The binding references synopsys,dw-hdmi.yaml schema which defines both
+> 'clocks' and 'clock-names' with variable length, therefore we need here
+> also same constraint for 'clock-names' as for 'clocks'.
 > 
-> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
->  Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  .../devicetree/bindings/display/bridge/ingenic,jz4780-hdmi.yaml        | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Applied, thanks!
 
 
 _______________________________________________
