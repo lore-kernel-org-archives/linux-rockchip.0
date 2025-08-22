@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2DACA0FE8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Aug 2025 11:23:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C57D3CA0EFC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Aug 2025 11:23:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UeLXsOSXYSRskyjHHEXFdTVPFJ4yQHKmWLCKoRcJEqM=; b=VD9FF61YgmJN3W9+pfxp8AUmRO
-	JW6MAVaXKRXj6do+MaglUQLEYlEwZ2vM/ws1gMV0CYsBWXmgWvlQ1UO4OadmIcbXMM8BU04mEGrB4
-	PGJG/n2iXXYtKt6K4Yu3G/SjxNtU8YTTuBqzm5cuehCfd/l/56FWK/9g1ZoGiWyjszR0jkS5C+1bW
-	u6y8B/GZETM+DEVQ4ki78P4k3m1X65a3wvgqaVjW5tdvN8YR9oIZKobbGeeCaYELscGapLK+C+GTd
-	Yea0Ht4sZDw61gc87WFDhwIVtTTUIdnIgoC3xtPQ623ccS6GrcRWiil4AhHvgcAFLT1KxMiJwdMiP
-	NQpMrCfA==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ISufk5NON2pIaRbpZRYpT+HZIN/l2O2JCQDViW8JNk8=; b=S/m+YDgRYk6XdL
+	PFFwXmzTYq2VYVHuT2Rz+a+R0w3/EqF9JaS9sU69x20oSGQJW3fvaJE8MTOT7OXjiv8gdTvCrJVrv
+	HNZ3vz0TXuXyx+ld/zN2S8YzSZ7nV0EXWWgcVppxBeVCcs1+NT3VZZ818JQrT5G4e+UikHw3cv3BA
+	qVwcsJb6hziwsAWJoe0wokS8TcHYeBiZBifVCW58TQ7qMnP3JwnVvuBH+MKkvAq1nKxgeNP7kYFms
+	p6961Lk7YQuVZpyc3f1PcURcI304porhFfd6QPEiU2nmIAy2T88CaASbFiplAJ9U1+9IecMrICDrt
+	9gcySztFE5hyPg05iLTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upPrF-00000002IoX-2feP;
-	Fri, 22 Aug 2025 11:22:57 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1upPrH-00000002IqW-0Xnk;
+	Fri, 22 Aug 2025 11:22:59 +0000
+Received: from smx-a.mailgw.jp ([210.171.6.215] helo=rmx-a.mailgw.jp)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upIKZ-00000001NMd-0fhU;
-	Fri, 22 Aug 2025 03:20:45 +0000
+	id 1upIKw-00000001NS0-0cJj;
+	Fri, 22 Aug 2025 03:21:08 +0000
+Received: from bccml.bai.ne.jp (bccml-a.bai.ne.jp [210.171.3.161])
+	by rmx-a.mailgw.jp  with ESMTP id 57M3KnEh030847-57M3KnEi030847;
+	Fri, 22 Aug 2025 12:20:49 +0900
+Received: from [192.168.11.11] (bai859bcd79.bai.ne.jp [133.155.205.121])
+	by bccml.bai.ne.jp (Postfix) with ESMTPA id 1624B8192A;
+	Fri, 22 Aug 2025 12:20:49 +0900 (JST)
+Message-ID: <d0d7fc7f-d3f5-4375-abc4-c194c5b78c03@bcc.bai.ne.jp>
+Date: Fri, 22 Aug 2025 12:20:48 +0900
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1755832841;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=r1MSjRRE6yUSWPMHEAUcp2VekQ/i3BRrfkltmpMLCjI=;
-	b=oEPWH/gzrsp0qyfpLjduleSsCJb5NJaDYPeQ5XRapK/9fSiqFDHXyoAUnFzYvmb7xO9/vQ
-	Lf4kmy4bIuCpsJUApQHN19NVC5u2P4dMDr9gXb3G0Rw/qZBHAvNb2uuEXxMDQoUjL4SK8C
-	QKd6jpXXxL30QWV3paSXwCV1xb98C8FbK1zxlUPuo2DLMQf7I4WmOjeDz+5swCz4hCne8y
-	OxLPVHTDuYPUqrf5Ere4y4rpId+jusXSoAjMyh06xH56khmJcCGUP3iC9QWLYNArR+fVFl
-	wvE/61iNjD3lqt/CkUCkdHwLI8LkON9qs1sUe1dMOnfo9ZQv5Z5JFJrsw/mpPA==
-Date: Fri, 22 Aug 2025 05:20:40 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
- <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
- <lukasz.luba@arm.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Diederik de Haas
- <didi.debian@cknow.org>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- kernel@collabora.com
-Subject: Re: [PATCH v2 3/3] dt-bindings: thermal: rockchip: tighten grf
- requirements
-In-Reply-To: <20250820-thermal-rockchip-grf-warning-v2-3-c7e2d35017b8@kernel.org>
-References: <20250820-thermal-rockchip-grf-warning-v2-0-c7e2d35017b8@kernel.org>
- <20250820-thermal-rockchip-grf-warning-v2-3-c7e2d35017b8@kernel.org>
-Message-ID: <9ca53c3ee08a0e1c25adf916376f9a65@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: Enables sound output from the audio
+ jack on OrangePI5 Plus
+To: Jimmy Hon <honyuenkwun@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-sound@vger.kernel.org
+References: <20250821041555.4781-2-opi5plus@bcc.bai.ne.jp>
+ <CALWfF7+rGDxtKDqYyazeh+8bndkyBb8LKe_gMq_EbNycD4mw3w@mail.gmail.com>
+Content-Language: en-US
+From: Hide Hako <opi5plus@bcc.bai.ne.jp>
+In-Reply-To: <CALWfF7+rGDxtKDqYyazeh+8bndkyBb8LKe_gMq_EbNycD4mw3w@mail.gmail.com>
+X-FE-Last-Public-Client-IP: 210.171.3.161
+X-FE-Policy-ID: 3:1:2:SYSTEM
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; d=bcc.bai.ne.jp; s=20240516; c=relaxed/relaxed;
+ h=message-id:date:mime-version:subject:to:cc:references:from:content-type;
+ bh=p9uP8cxjGLNlDC8IEuVAZKUw+9vO9WrsgXPNx2Qu4J8=;
+ b=bDbcWxBygFWyIUYXw912ssQ4jaYb80gXSXk3Hl+LEmN4HH1ZKhOKkhJUOaDtc07a7wukwvTKE13P
+	6oZOXVXfIa4E+/1Zm6IihOKSGAEagfxDQdU3xAZ3+zLxeYSeeVS97JCMO1vYUhPazKP8l+nVkj3V
+	7JRo8lTgW7yUjmgFrjqMUjOXBBaRko9DCSF0iqHoGf3Qa+zFEiQSCInR//d43cfWLFi3jDOYzWwJ
+	XRZjCELFZgbA46rJ7BraTB5ez6ylspMIGWypXImNQ/17Cb04VzIqeGNZlxcSWfTWPJfWFyCZNQsu
+	i9T/X26iZp9erO2/qNx0hmYC/3GbrypfEcMiiA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250821_202043_365092_B16B5DE0 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20250821_202106_752975_522E52CF 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,62 +73,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Sebastian,
-
-On 2025-08-20 19:40, Sebastian Reichel wrote:
-> Instead of having an optional rockchip,grf property, forbid using it on
-> platforms without registers in a GRF being needed for thermal 
-> monitoring
-> and make it mandatory on the platforms actually needing it.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  .../devicetree/bindings/thermal/rockchip-thermal.yaml     | 15 
-> +++++++++++++++
->  1 file changed, 15 insertions(+)
-
-Thanks for the patch!  It matches what's already presented in your
-patch 2/3, so it's looking good to me. Please feel free to include
-
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
-
-> diff --git
-> a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> index
-> 573f447cc26ed7100638277598b0e745d436fd01..9fa5c4c49d76e3a689f31797875124e7fb30d3df
-> 100644
-> --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> @@ -119,6 +119,21 @@ required:
->    - resets
-> 
->  allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,px30-tsadc
-> +              - rockchip,rk3366-tsadc
-> +              - rockchip,rk3399-tsadc
-> +              - rockchip,rk3568-tsadc
-> +    then:
-> +      required:
-> +        - rockchip,grf
-> +    else:
-> +      properties:
-> +        rockchip,grf: false
->    - if:
->        not:
->          properties:
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpPbiAyMDI1LzA4LzIyIDE6NDksIEppbW15IEhvbiB3cm90ZToKPiBOb3RlOiB0aGUgc3ViamVj
+dCBsb3N0IHRoZSAiYSIgaW4gYXJtNjQKU29ycnksIHR5cG8uCj4KPiBPbiBXZWQsIEF1ZyAyMCwg
+MjAyNSwgMjM6MTkgSGlkZSBIYWtvIDxvcGk1cGx1c0BiY2MuYmFpLm5lLmpwPiB3cm90ZToKPgo+
+PiBDdXJyZW50bHksIGFuYWxvZyBzb3VuZCBpcyBub3Qgb3V0cHV0IGZyb20gdGhlIGF1ZGlvIGph
+Y2suCj4+IFRoaXMgcGF0Y2ggYWxsb3dzIHlvdSB0byBzZWxlY3QgYW5hbG9nIGhlYWRwaG9uZXMg
+aW4gYWxzYW1peGVyLgo+PiBXb3JrcyB3aXRoIGtlcm5lbCA2LjE2LjEsIGJ1dCBub3QgNi4xNy4K
+Pj4KPj4gU2lnbmVkLW9mZi1ieTogSGlkZSBIYWtvIDxvcGk1cGx1c0BiY2MuYmFpLm5lLmpwPgo+
+PiAtLS0KPj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1vcmFuZ2VwaS01
+LmR0c2kgfCAxICsKPj4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPj4KPj4gZGlm
+ZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LW9yYW5nZXBpLTUu
+ZHRzaQo+PiBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LW9yYW5nZXBpLTUu
+ZHRzaQo+PiBpbmRleCA5MWQ1NmMzNGEuLjY1NmFhYzJkZiAxMDA2NDQKPj4gLS0tIGEvYXJjaC9h
+cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtb3JhbmdlcGktNS5kdHNpCj4+ICsrKyBiL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LW9yYW5nZXBpLTUuZHRzaQo+PiBAQCAt
+MTEzLDYgKzExMyw3IEBAIGFuYWxvZ19zb3VuZDogc291bmQgewo+PiAgICAgICAgICAgICAgICAg
+IHNpbXBsZS1hdWRpby1jYXJkLG1jbGstZnMgPSA8MjU2PjsKPj4gICAgICAgICAgICAgICAgICBz
+aW1wbGUtYXVkaW8tY2FyZCxiaXRjbG9jay1tYXN0ZXIgPSA8JmRhaWNwdT47Cj4+ICAgICAgICAg
+ICAgICAgICAgc2ltcGxlLWF1ZGlvLWNhcmQsZnJhbWUtbWFzdGVyID0gPCZkYWljcHU+Owo+PiAr
+ICAgICAgICAgICAgICAgc2ltcGxlLWF1ZGlvLWNhcmQscGluLXN3aXRjaGVzID0gIkhlYWRwaG9u
+ZXMiOwo+Pgo+IEZvciB0aGUgUGx1cywgaXQgaGFzIFNwZWFrZXIgYW5kIEhlYWRwaG9uZXMuCj4g
+Rm9yIHRoZSBNYXggYW5kIFVsdHJhLCB0aGV5IG9ubHkgaGF2ZSBIZWFkcGhvbmVzLgpGb3IgYm9h
+cmRzIHdpdGggYW4gYXVkaW8gamFjaywgdGhlIHN0YXRlbWVudCAKInNpbXBsZS1hdWRpby1jYXJk
+LHBpbi1zd2l0Y2hlcyA9ICJIZWFkcGhvbmVzIjsiIGlzIHByb2JhYmx5IHJlcXVpcmVkLgpXaXRo
+b3V0IHRoaXMgc3RhdGVtZW50LCB0aGUgIkhlYWRwaG9uZXMiIGl0ZW0gd2lsbCBub3QgYXBwZWFy
+IGluIGFsc2FtaXhlci4KPiBTbyB0aGlzIHByb3BlcnR5IHNob3VsZCBiZSBkZWZpbmVkIGluIHRo
+ZSAtcGx1cy5kdHMgYW5kIHRoZSAtY29tcGFjdC5kdHNpCj4gaW5zdGVhZCBvZiB0aGlzIGZpbGUg
+d2hpY2ggaXMgY29tbW9uIHRvIGFsbC4KIMKgVGhpcyBwYXRjaCB3YXMgY3JlYXRlZCB3aXRoIHJl
+ZmVyZW5jZSB0byByazM1ODhzLW9yYW5nZXBpLTUuZHRzaS4KCkhpZGUKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
