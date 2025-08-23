@@ -4,54 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7DA2CA0FE1
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Aug 2025 14:45:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A15BCA0EFA
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Aug 2025 23:17:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BPw65aOaHpzJbEgYpndp1cThqyZvF6wbqkwMsL2/b38=; b=vSSf8rebTHZHdT
-	6uARGcqwFgTv/Sg07mRVGT9fv8iT7S4UdN78pRg625HC5IDlieD63WdEVUEvRfmrPBe5Ao5fQaEXH
-	PEKU/lrcbwU57Fbxm40G8vPYSH0H1UFFXsb/V/eLvZwfHYZEacrOy0pSFfkcJIfj2HBOFe+XCoEyN
-	Ogvi1lzgpR9EIqbtD46JV1Wgm7mAsJq9tNUHJsuxVY83+OGurUDistx9KM3rt5mIF8pr2LoFZrFKU
-	mWj06eoG82Dxy/k9N4BlZRuIzCvEDC8kuQbT35RAiKbRvqXLNfg4AEso/ZxDU7q4c2mbfmpKte3Hs
-	omvMezFFV2L4IxjFxWvA==;
+	List-Owner; bh=aG1PBSms59VYOLiRtRGoOj7D/5C9XPuvBlzY1cRBrbI=; b=qyf8KCAF8GvC4i
+	Ad2XJVJup7BlBX/YWwiRIAgNw0VHfMktMNG7/OjivXi9BUJrNYcPBj+y+6aHSyNK2AaPS47y934Sg
+	sm6V8k4pomNjoBdo6UyaXpZQYmE4Wsd7mmp5WBCFn0WRf4bKQvCVwAmA9GSfMg62S8JXzVVYzRElY
+	yveM06jj5jRK+Ucny0ZfqRCOYfb6dLY4tEKzqeyqJvgYL10oj1HZsDukeI5kWlOJty3MJdBGZGJTO
+	oCK+u6UTKLo9tylTDt+33KcJVdHK++cllhuAL2NkdWPTEuXaCHTrJxLP7YFq47GVpL0NQeJDEbSYM
+	xzpBumozGALGb1UoktvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uppUQ-00000004sJg-0k4C;
-	Sat, 23 Aug 2025 14:45:06 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1upxUC-00000005SBt-2Fde;
+	Sat, 23 Aug 2025 23:17:24 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uppMN-00000004rNa-3gkq;
-	Sat, 23 Aug 2025 14:36:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=b4szslA7ZyoDYxRL5lU3Ry83YPf61pXDu12N9fYlNnU=; b=yjODS2TTZXqlklgLHaiMWcDNiQ
-	3h58mSclKn2EB8t/kPEwPboVfbiLiaNI1DsvIUWrQeJF8TIO935nUGCdEnaQXc80l6y43X1q7klkO
-	Hl1DVJ7H/bH6d7s0Mp9YI921h58yRV08oisb7YhIZER4JwC/dbjT8q+73mIGtUJUZkVmVHWjJoCiR
-	/rRszLMs/LBnxb6Loqq9EqqL7/QtBXWnEgVt9Y6n6zD/Pxg/FC8pcV5L2C4Jk19z92D/4l7Q79fvG
-	Sx9rVGFZ9g28SI9pnX77Fnx7edcRqwxO3W+jKsbziQ24WfQgHVQF2DKYoA3QwwX7p9N5/MOROvwnJ
-	V7MRdiCw==;
-Received: from i53875b90.versanet.de ([83.135.91.144] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uppMF-0000aK-Bv; Sat, 23 Aug 2025 16:36:39 +0200
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: dmitry.baryshkov@oss.qualcomm.com, Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH v7 03/10] drm/rockchip: Add RK3588 DPTX output support
-Date: Sat, 23 Aug 2025 16:36:38 +0200
-Message-ID: <3723317.0YcMNavOfZ@diego>
-In-Reply-To: <20250822063959.692098-4-andyshrk@163.com>
-References: <20250822063959.692098-1-andyshrk@163.com>
- <20250822063959.692098-4-andyshrk@163.com>
+	id 1upxUA-00000005SB8-13Fj;
+	Sat, 23 Aug 2025 23:17:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1755991042; x=1787527042;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=XtKM7eiCxZ0XFcJHdyLW+a+x0++34f9wWFWwximPqJI=;
+  b=VTqzzPEfoCCw3hYvku77Gk2d2HKZ2tb+T7uz44zmKK5i4kvrKRGyFfgN
+   LTbszpyON06L73UbVsJ7KXcIGz23ZltPR8VvHc1HfSArf2qNcnCUfZHtc
+   gJ9GdzD1MkBjY41EVdw7tTk3lg48r5DZIE9cOBWwVbnCwYe5i2WGINo6M
+   fCF0LRJk+YtXXjeIY2p98nzj/ovBpwK5oZf9T0znBiI3CZbcHJbJRhMjI
+   4GOIcLKpWUmsoriK+OZpBnjB0Qan9oqBRo8yvndnVe9znPcrYv/HY6Vpi
+   5NFUC6YqwEGGcQwLYsKk1GirsL3MsNpneE9kBLdraBO2EMPtBtKXfWsJ0
+   g==;
+X-CSE-ConnectionGUID: qL6GJKPcSNqcEwqnyaHW8A==
+X-CSE-MsgGUID: 01EJ05HgTWGGL6RBHjPkaw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="58320859"
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
+   d="scan'208";a="58320859"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Aug 2025 16:17:21 -0700
+X-CSE-ConnectionGUID: IhBAIPK8QTOmrL+ANuUlfQ==
+X-CSE-MsgGUID: wyxIHYRASsy7bwvCYPlLrw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
+   d="scan'208";a="173258707"
+Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
+  by fmviesa005.fm.intel.com with ESMTP; 23 Aug 2025 16:17:18 -0700
+Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1upxU3-000MeD-2L;
+	Sat, 23 Aug 2025 23:17:15 +0000
+Date: Sun, 24 Aug 2025 07:16:21 +0800
+From: kernel test robot <lkp@intel.com>
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Keke Li <keke.li@amlogic.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Dan Scally <dan.scally@ideasonboard.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Subject: Re: [PATCH v4 5/8] media: v4l2-core: Introduce v4l2-params.c
+Message-ID: <202508240704.AZwGXBaw-lkp@intel.com>
+References: <20250820-extensible-parameters-validation-v4-5-30fe5a99cb1f@ideasonboard.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250820-extensible-parameters-validation-v4-5-30fe5a99cb1f@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250823_073647_909839_CC467056 
-X-CRM114-Status: UNSURE (   7.00  )
+X-CRM114-CacheID: sfid-20250823_161722_328491_798FE9EB 
+X-CRM114-Status: UNSURE (   8.92  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -64,20 +92,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, Dmitry Baryshkov <lumag@kernel.org>, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRnJlaXRhZywgMjIuIEF1Z3VzdCAyMDI1LCAwODozOTo0NyBNaXR0ZWxldXJvcMOkaXNjaGUg
-U29tbWVyemVpdCBzY2hyaWViIEFuZHkgWWFuOgo+IEZyb206IEFuZHkgWWFuIDxhbmR5LnlhbkBy
-b2NrLWNoaXBzLmNvbT4KPiAKPiBBZGQgZHJpdmVyIGV4dGVuc2lvbiBmb3IgU3lub3BzeXMgRGVz
-aWduV2FyZSBEUFRYIElQIHVzZWQKPiBvbiBSb2NrY2hpcCBSSzM1ODggU29DLgo+IAo+IFNpZ25l
-ZC1vZmYtYnk6IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KPiBBY2tlZC1ieTog
-RG1pdHJ5IEJhcnlzaGtvdiA8bHVtYWdAa2VybmVsLm9yZz4KPiBUZXN0ZWQtYnk6IE5pY29sYXMg
-RnJhdHRhcm9saSA8bmljb2xhcy5mcmF0dGFyb2xpQGNvbGxhYm9yYS5jb20+CgpSZXZpZXdlZC1i
-eTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KCgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Jacopo,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on a75b8d198c55e9eb5feb6f6e155496305caba2dc]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Jacopo-Mondi/media-uapi-Introduce-V4L2-extensible-params/20250820-210503
+base:   a75b8d198c55e9eb5feb6f6e155496305caba2dc
+patch link:    https://lore.kernel.org/r/20250820-extensible-parameters-validation-v4-5-30fe5a99cb1f%40ideasonboard.com
+patch subject: [PATCH v4 5/8] media: v4l2-core: Introduce v4l2-params.c
+config: nios2-randconfig-002-20250824 (https://download.01.org/0day-ci/archive/20250824/202508240704.AZwGXBaw-lkp@intel.com/config)
+compiler: nios2-linux-gcc (GCC) 9.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250824/202508240704.AZwGXBaw-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202508240704.AZwGXBaw-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   nios2-linux-ld: drivers/media/v4l2-core/v4l2-params.o: in function `v4l2_params_buffer_validate':
+   v4l2-params.c:(.text+0x124): undefined reference to `vb2_plane_vaddr'
+>> v4l2-params.c:(.text+0x124): relocation truncated to fit: R_NIOS2_CALL26 against `vb2_plane_vaddr'
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
