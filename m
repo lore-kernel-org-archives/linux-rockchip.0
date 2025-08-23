@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02715CA0EE4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Aug 2025 12:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1801ECA0EED
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Aug 2025 12:54:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GI+J26cvR+XfoCO8fdv264xwFYqRavgwTAvY7OB1Usw=; b=MFoLSBSZB1ffQh
-	rexF0d+lK5ElyQyMnEv5Rjwmn0vP7Qe+csPUAO1W7DDf+zk4PPjAO9JD9lBYN7TYipFuds/Gzkrtj
-	GmL8xOe3xrCqWL/mFsQAKhih2vcVDm0W0O5C90s2uvY2ET4Jo2jdfkwbctevszC8Gxdl7UrBZMB5q
-	nUlBjOQX/3ckIh4hKiIn56ogLj+M4ZBcoaHP2KFB54Coj2r0ghgV22NyWmpi8oPhNezzfThHD1mpe
-	YVAr8A2dUTekid+b9606CVqRYRMFdfIE0jZ0P/cuPsra1euRt1Y2e9kXml8i2YGPkHgpXiCt4NRcZ
-	osqDLlORDkI77kggIXcQ==;
+	List-Owner; bh=8R+MxaFQnMZGHRVlUqb++TDfJldhxU8eqhPZcJHpHIs=; b=n59XTpcEmRdcTu
+	QOJ+UaVLT2JY6wAwnTmjyJI2yZK5CUXA1q3g+KrAbhsIhEl6iYCUPvC+qk6UeVEsY5mJWu+7kz+g8
+	LXB62vZi+fhv2H8GsBSCVtBlkdMLBbrfvwSBK+YG+ypGfWDddIkRRop5fLAiiIBvRN7MogYp0BxM1
+	wWJYnxFjEq6g1X4gmA8ALnB+dyd8RzNVRycOKr6gymK7gaOPftPcygttqhyyFabUmL7QQFD6eya/Z
+	4z90WkXdJRyK/Xh34dhnicI+PKbFPu5Byxu91T3QSpOfprCZhTzgADyT9ehDxKOYtW6QUZTriBonV
+	ootjjsPromBtmrMpYvYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upngV-00000004lr3-3c6h;
-	Sat, 23 Aug 2025 12:49:27 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1upnlh-00000004m7W-2y0x;
+	Sat, 23 Aug 2025 12:54:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1upnbH-00000004l3X-06dr;
-	Sat, 23 Aug 2025 12:44:04 +0000
+	id 1upnbH-00000004l3Z-1GiJ;
+	Sat, 23 Aug 2025 12:44:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B02F4A58C61;
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8A0EA5C4D0E;
 	Sat, 23 Aug 2025 12:44:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 4745EC4FDFB;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 543ECC4FDFC;
 	Sat, 23 Aug 2025 12:43:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1755953034;
-	bh=VQ1GUY2EiTPu4SjJoDzd70Xf1RpVnGqds8+QtYq8Q9Y=;
+	bh=2MvRqg6db2hlEoYeXL+KXE0Pz5fSjhUlKeSSolL4RgU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=p7/iZwHO+4c0Qb0P+5QUQ5TA0wgDTP6G2rce5VQdCw/C9BTLr8MbCQv3VmGD2OT7F
-	 eF2WVrgS4taBP2KxAdbbDmHT5APfPx8+llqBe2tsMpld+j/MDpTDNLl2ntMFpHbRuY
-	 XbTkIZUpFDFYRxDrT5uVoHkV8qsn8k0dX1nF01g+HqAjHxeNdmd9jQhTDy5bT+GkwW
-	 GCLtSyOLSFKjrkeY92RkCrXVofhX+14xoRoru6JKw2CIZpK9GeVrZXQax/z/FXl64S
-	 goXmyALOWC87O78hJKMIzwGiTSHZ7aQrmy6Av/DX7TbxWtE+7lD1tSEobVKonOP8oy
-	 1axpz28O0lhXA==
+	b=FKmQKVs6L26o+932W0nDgQ44U+tN24LtYqn1SnSO9Vj5UvsH41ERmOxKuRqFZvCnm
+	 1Y6xJWsgaEnYqnbpS/iH9A3RvC0n7JKTIyxes2F7r644I9EtJoHlRWcGe47Bz4zjKX
+	 dTQjUk+fv+PKBfopAkHkMX6OtJUly3jRJR2Cb47v2Mn9IXbJnYDkpzvDTXQBjIy+k8
+	 qBKXNvPJU4iM3XNlsRgFtqbEOUtF3wku/+unxpa002k0XbZHxKXZy56v3zfxIUl0eK
+	 nVxZH+p79Fd9pidQNPe6b/xlGhQ0UO4djMqmHyGIPB+0tLJgtKRhluhLNagIxtGXII
+	 ed6+b+177o0Vw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FB2ACA0EFA;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C314CA0EED;
 	Sat, 23 Aug 2025 12:43:54 +0000 (UTC)
 From: Maud Spierings via B4 Relay <devnull+maud_spierings.hotmail.com@kernel.org>
-Date: Sat, 23 Aug 2025 14:43:51 +0200
-Subject: [PATCH 2/3] arm64: dts: rockchip: Enable HDMI receiver on orangepi
- 5 plus
+Date: Sat, 23 Aug 2025 14:43:52 +0200
+Subject: [PATCH 3/3] arm64: dts: rockchip: Enable the NPU on the orangepi 5
+ boards
 MIME-Version: 1.0
-Message-Id: <20250823-orangepi5-v1-2-ae77dd0e06d7@hotmail.com>
+Message-Id: <20250823-orangepi5-v1-3-ae77dd0e06d7@hotmail.com>
 References: <20250823-orangepi5-v1-0-ae77dd0e06d7@hotmail.com>
 In-Reply-To: <20250823-orangepi5-v1-0-ae77dd0e06d7@hotmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -59,19 +59,19 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Maud Spierings <maud_spierings@hotmail.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1755953033; l=1303;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1755953033; l=1851;
  i=maud_spierings@hotmail.com; s=20241110; h=from:subject:message-id;
- bh=cqF8f43yoVXcmOBW/qzowTAQoqelusXMIpBTqWyFkKQ=;
- b=e5rk5j157Pc110tlG1qPb/JIPQGiDbO9A+GNioTHi5dwaS+OTK54zQBnVy9QTWCrJJXChDbbE
- zB+wprfpaOrDegEQmj7y2Tx7xMASdUtj1wQKs+BD9xCTVGonas1o07P
+ bh=oBmYWOYe78XM4Z0Bh7EdEdBYV/CCziVSeJYCFliWyGo=;
+ b=/HVPsjCoScbYi0ithXRZqLZtHuyD8mfp54LrdD+vPVXniIw1gI0zTG4LaPUiJycPh1IC4SjNU
+ foRZ8VAIYOFAIwm7Sq5U0k5/Jct24ObIRRPCJqd9hPim2awDBEjlIsc
 X-Developer-Key: i=maud_spierings@hotmail.com; a=ed25519;
  pk=CeFKVnZvRfX2QjB1DpdiAe2N+MEjwLEB9Yhx/OAcxRc=
 X-Endpoint-Received: by B4 Relay for maud_spierings@hotmail.com/20241110
  with auth_id=273
 X-Original-From: Maud Spierings <maud_spierings@hotmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250823_054403_134026_6863570A 
-X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-CacheID: sfid-20250823_054403_426964_5361C052 
+X-CRM114-Status: UNSURE (   9.55  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,48 +92,87 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Maud Spierings <maud_spierings@hotmail.com>
 
-Enable support for the HDMI input port found on the orangepi 5 plus.
+Enable the NPU and the PMIC that powers it.
 
 Signed-off-by: Maud Spierings <maud_spierings@hotmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ .../arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi | 56 ++++++++++++++++++++++
+ 1 file changed, 56 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-index 8222f1fae8fadc5cbb4ef16b3db5ed975ed43915..9950d1147e129dc866cfde62ddd636b082ae1926 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-@@ -160,6 +160,17 @@ &hdmi1_sound {
- 	status = "okay";
- };
- 
-+&hdmi_receiver_cma {
-+	status = "okay";
-+};
-+
-+&hdmi_receiver {
-+	hpd-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_LOW>;
-+	pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdmim1_rx_sda &hdmirx_hpd>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
- &hdptxphy0 {
- 	status = "okay";
- };
-@@ -279,6 +290,12 @@ blue_led_pin: blue-led {
- 		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi
+index 91d56c34a1e456e18db31e1bbe7252b7e4632588..ac1df223d6a25f3059ce33970953745e402ef695 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi
+@@ -258,6 +258,28 @@ regulator-state-mem {
  	};
+ };
  
-+	hdmirx {
-+		hdmirx_hpd: hdmirx-5v-detection {
-+			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
++&i2c1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c1m2_xfer>;
++	status = "okay";
++
++	vdd_npu_s0: regulator@42 {
++		compatible = "rockchip,rk8602";
++		reg = <0x42>;
++		fcs,suspend-voltage-selector = <1>;
++		regulator-name = "vdd_npu_s0";
++		regulator-boot-on;
++		regulator-min-microvolt = <550000>;
++		regulator-max-microvolt = <950000>;
++		regulator-ramp-delay = <2300>;
++		vin-supply = <&vcc5v0_sys>;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
 +		};
 +	};
++};
 +
- 	ir-receiver {
- 		ir_receiver_pin: ir-receiver-pin {
- 			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ &i2c6 {
+ 	clock-frequency = <400000>;
+ 	status = "okay";
+@@ -352,6 +374,40 @@ &pd_gpu {
+ 	domain-supply = <&vdd_gpu_s0>;
+ };
+ 
++&pd_npu {
++	domain-supply = <&vdd_npu_s0>;
++};
++
++&rknn_core_0 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_core_1 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_core_2 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_mmu_0 {
++	status = "okay";
++};
++
++&rknn_mmu_1 {
++	status = "okay";
++};
++
++&rknn_mmu_2 {
++	status = "okay";
++};
++
+ &saradc {
+ 	vref-supply = <&vcc_1v8_s0>;
+ 	status = "okay";
 
 -- 
 2.50.1
