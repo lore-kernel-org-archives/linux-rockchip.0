@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D508CA0EEB
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Aug 2025 11:00:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD5A8CA0EEB
+	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Aug 2025 11:03:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zgLkwEo2SvTMj77mtWjGWng4qZiI0nZ/pNf/oPEwLyY=; b=3A12YlDV5iar9h
-	4/PT+FKOq3UY6xlS1npOlRcHP/zOecb3nvq8Bwh8J++faQ+FFMr0F9TRZsIr6iU7dCp2rmb+8UxP7
-	t7ULr4gzOzQGB8A3Bea3draxsseDVgdxI/LwbblYu7UIifkLOFCt40VJIFWzYEF8slPhiI4SgAq5m
-	U4Bra1OrZ9gtA3ah5EVKSQrkryARQk418iYgvROzpcS9QA/BPNhan9skEb2ikVpOYvOxAMi8vWCw3
-	8kydgebCbukq2pbOfKv1d5zwqhBB3TUi2Buoh2QYw3rzqPMbczoVhcDaM09KWvvda9HgE/jYGybc3
-	BOJViasypmFIFcAGF3jA==;
+	List-Owner; bh=ZPRfb4Lt6bv+soqh+f7dEFCmCYvFziNOw/eVwuG+nzw=; b=vSzHG5Jpge7WsD
+	ENKZN9fhliu5R2urcbC/THXrk1IWKhEuIoY/akAeWA20d1KM5Yz0noHCheVRtszCabzx5IXqImMgH
+	kvAJeNBGPyFbsELtol82v6y+sWMcgPShoCZKE/sB7dU2ObjyhHI2FKr4yCJKBx29q08ER5uk3P/9R
+	4boNkgPm9OgEUuIG+8TeRSRg+v77cgsXZzb7NLJXbHPMOhRncGZzaQVwscbOBsv+XBH/NoZ3RG6kG
+	xmr4/SckyzQneQtduqXK7X3x5lYsontuTKrB1UNDW6pcWcl0BBLr/ekzTfLbk6CkSKQVjqmw2Ek8I
+	7rEppnWs3bjIr9fMSzFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uq8SM-0000000628i-41vV;
-	Sun, 24 Aug 2025 11:00:14 +0000
+	id 1uq8Ux-000000062VR-3ARY;
+	Sun, 24 Aug 2025 11:02:55 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uq8N8-000000061YN-1qcf;
-	Sun, 24 Aug 2025 10:54:51 +0000
+	id 1uq8N8-000000061YP-3IJB;
+	Sun, 24 Aug 2025 10:54:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=EwTgys468jql8rVpPk9a/paDP+nmzSD0YQvFFWl46ow=; b=ofw47oKNMMAVQYH3GBtMoOvqJk
-	GokgYOKqYabSnX/9F65crfkeNIdU558Yfi4SUxG19HW6uCh12I/pFOyNlv7tPEbXmWSE/c9hsZR2K
-	yFDAQozCUytnXBB9ZNTD6P4YCKBJo3jTgXvV5l2jQsJF/OjkLhrNzetQdSpOfFW9Tornpj0Sqesc/
-	MXSjv3j03tF/B/CSliwuYN9GJMmmjJg3Bv84kd/jhgo5sNSVRxwXWR+5Yc+Kish7k6OgkINoRqMM+
-	1iQY2VXS/fGtvH6FCan/NKwjDor+3sH016JEbSrtSpkhY0gNhJ477LoFgsARDwfhUltIT2Hdx7dwP
-	hE02SP9Q==;
+	bh=+uU9wpzyjFB7VA323aJSgGvIlksG/HNr+9V5PmNJ//0=; b=2H64JTKwWpwl5hM3JrLmGzynzr
+	vpsbTea4fR8mGpEFnQyOTh6x7EF1i/5FaDT8UUsFBcn1Y9y2X1flqHA7RcTs1MMRVQF6MnLavuu2I
+	sj3MIRmE1G5vdTHO1drrC8lVRz3ZA+5hb59S3dhLQWW2J7zeBtswFvYlOXgg8s0gGWuTi7Jntobc2
+	P7OivoDJAdt7kqhN15SdRdvwzV6+DEGCZ507hAJW/U4RtPnyHPDjA/OuQIduBQsfR/uLGoNkD3XDm
+	NX8Irpp/OQnKVVxm2Q0D/MBnP6JULhY4nBxI01acRTVkXkscMES2fkWQPiGikO/MPkZqJm6FYWAAb
+	rGOg5w0A==;
 Received: from [62.245.128.201] (helo=phil.wifi.munich-airport.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uq8N5-0005H4-W0; Sun, 24 Aug 2025 12:54:48 +0200
+	id 1uq8N7-0005H4-GZ; Sun, 24 Aug 2025 12:54:49 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Alexey Charkov <alchark@gmail.com>
+	Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Pavel Zhovner <pavel@flipperdevices.com>
-Subject: Re: [PATCH 0/3] arm64: dts: rockchip: Enable RTC, WiFi and Bluetooth on RK3576 EVB1
-Date: Sun, 24 Aug 2025 12:54:39 +0200
-Message-ID: <175603280232.3445205.16083508502929513202.b4-ty@sntech.de>
+	kernel@collabora.com
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable RK3576 watchdog
+Date: Sun, 24 Aug 2025 12:54:45 +0200
+Message-ID: <175603280226.3445205.13621939469481331344.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250813-evb1-rtcwifibt-v1-0-d13c83422971@gmail.com>
-References: <20250813-evb1-rtcwifibt-v1-0-d13c83422971@gmail.com>
+In-Reply-To: <20250818-rk3576-watchdog-v1-1-28f82e01029c@kernel.org>
+References: <20250818-rk3576-watchdog-v1-1-28f82e01029c@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250824_035450_502173_DDD07914 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250824_035450_819061_F20FA8C5 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,24 +78,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 13 Aug 2025 00:30:22 +0400, Alexey Charkov wrote:
-> Rockchip RK3576 EVB1 boards follow the usual Rockchip design pattern
-> with the I2C connected RTC chip feeding a 32 kHz LPO clock to the
-> onboard Ampak AP6275P combo WiFi/BT module. In this case the WiFi
-> part is connected by a PCIe link and BT over UART.
+On Mon, 18 Aug 2025 19:18:40 +0200, Sebastian Reichel wrote:
+> The RK3576 watchdog does not need any board specific resources, so
+> let's enable it by default just like we do for RK3588.
 > 
-> Add required DT nodes to enable them.
 > 
-> [...]
 
 Applied, thanks!
 
-[1/3] arm64: dts: rockchip: Add RTC on rk3576-evb1-v10
-      commit: 0adaae77862932a19cc14c086d7fd15ec0ef7703
-[2/3] arm64: dts: rockchip: Add WiFi on rk3576-evb1-v10
-      commit: ebf8183ad08afc4fcabe1379a5098354829d950d
-[3/3] arm64: dts: rockchip: Add Bluetooth on rk3576-evb1-v10
-      commit: 34f7620912bb0f881a23dfea529e69fd2e8fdcf2
+[1/1] arm64: dts: rockchip: Enable RK3576 watchdog
+      commit: 9c059700fee595142676a9bbaff6e40e3fcd9cbb
 
 Best regards,
 -- 
