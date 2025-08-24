@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21BB1CA0EEB
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Aug 2025 07:13:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D12DFCA0EEB
+	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Aug 2025 07:16:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j39UxRMPVlKugNH892fVrYboLllDGuKrUOth968UYww=; b=3aJNuv3fLoQQ1b
-	MrxecH4qx1t57CwSZBg5tSAJBKpWSbglZXv/19aN4Gcn56HS4wdN5/xD+AOqrTDtljKG6+bk4PJWc
-	5TjZT3+qwFjXxuiWaDjD8yCyAmFQjHxYWeCZTcqNSajY0BSOFrecO2OZXRKhppV4pTehnnXdRcv8q
-	62cGLtq3GgGQMf49UOSOk9aa6UQPxh/kGypkaDw7Vsc6Txj+c/S4Oh9Cju1EwrBxJNOjcLgdzIiCb
-	UkSZpmCmJ7cBBUWVetSR53Pbxf3MjDqqi3YzPhvs+K4uc1ZydOG7MJufKwVATrga4HrrXRUH/OguG
-	NlxUcZQ+Qr5C91T3bRZw==;
+	List-Owner; bh=BjSlD4Rlz/eMqImRdvj5H0Yte/coYIugwhyFgVwQwFw=; b=sI6f4yoC2j/+mh
+	+DkaE5m/F/zucJoLnd75anYzZ29kdV30all/0+/IpGz8dhvalRRq4hjvke5jI3KN+8hZKrBkoz4Di
+	uBMEKzjed2VNjhWHE5mt2YJim5zRDbBumAXxYkbUcKMy1d1Lra5rtXx3EEoUKPeHEb61l9D2XSGSH
+	7b1deVqMw7d/SWUWMtNWh9BW82c9u7OcAVW91I6tOiQIutf4TyqpsKfF41LIFYs2UcFHRmEITRf+D
+	Q3Bwe95a1x9X4lCh7KadEPUfj/ivnyWjikWd5PcmVUnemaf0SKr7zMwklB1HQ50UI7rYcAa61lLf9
+	nYUPNG5vyD7XA6XpBrdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uq4ur-00000005of6-1teX;
-	Sun, 24 Aug 2025 07:13:25 +0000
+	id 1uq4xT-00000005opK-2exz;
+	Sun, 24 Aug 2025 07:16:07 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uq4pd-00000005oH8-0xL3;
+	id 1uq4pd-00000005oHK-1uft;
 	Sun, 24 Aug 2025 07:08:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=P2HYgAFk+fXNwDssXlkE87hVakpkUk3GgjBSxwPzjyY=; b=21bRjTzDJ3J/NurIG6QVqhkUnn
-	hMibzK+pWe9y5cJZQZS1fXqKG6hMFNmXzpS5nRdX0N3aaVF3EZtrgiNliuamytoE19q3zzjgvbqc1
-	l4D95Ko71GI5nXKmMLepElUcT+T0w+sTVS7nuhYGehc4N7vw24J4dCIWdIA/ksFYwQh/OVZu4Axf2
-	vVPS8uY/4nQ7kezTsEOC68SBJAB1vDzozCHxLfQhVR2KXSDcFfa0HHabeexjHDPkyAqDEpt7A8bTf
-	ocYlxxPr81OfqUucV7wxqQ+HuOBKd6SKUORmGbAEPPnSFxaWbXlcVhPc/ont+ZuhT44LOglnN51b/
-	eeX74Njw==;
+	bh=HtiKJv/Y5OZYZLw+XrUHuMx2sdh2NKHMX5ykW3UdaY0=; b=OHYVko0Va9SwkRsggxfy+Vt+vE
+	6dw2jekzg41QyaAwq5D4LG4N7+1U4EVfrjfj+IZn73SwgRlOEYdwaZYkdx5D574SWm3S2NBNg62jr
+	HJ1nsWw0csydHuWgz/lA9x2tSws2wqgNpGOc45MQ/8CU69iV1dAwhSaGKNS/SANo9wzLV6XbSy/GE
+	8lrf7IbYiIVTV+PbJYFT8eBhT74+TUmSvTQeSEhjknlrZqMFuPw2d2+DvOKds3cX97wgYXXDcRHQF
+	K3bWazDWdrnkCxHGaOnyFIaOnKCOWh7ILyk8HKhQfHSCWTxFiroHLLKixhGoHoU4f5TCpzfWqGuah
+	8xa8QcvA==;
 Received: from [212.111.254.164] (helo=phil.aerolan.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uq4pb-0002Oo-GN; Sun, 24 Aug 2025 09:07:59 +0200
+	id 1uq4pa-0002Oo-VS; Sun, 24 Aug 2025 09:07:59 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: kylepzak@projectinitiative.io
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v4] arm64: dts: rockchip: add USB-C support for ROCK 5B/5B+/5T
-Date: Sun, 24 Aug 2025 09:07:53 +0200
-Message-ID: <175601920182.3425909.1200060972264006288.b4-ty@sntech.de>
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: rk3588s-rock-5a: Add green power LED
+Date: Sun, 24 Aug 2025 09:07:51 +0200
+Message-ID: <175601920181.3425909.2234398602548147657.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250819-rock5bp-for-upstream-v4-1-7a2365ce7176@kernel.org>
-References: <20250819-rock5bp-for-upstream-v4-1-7a2365ce7176@kernel.org>
+In-Reply-To: <175565703702.6.15498212790604388615.862782045@projectinitiative.io>
+References: <175565703702.6.15498212790604388615.862782045@projectinitiative.io>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250824_000801_263300_343E8238 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20250824_000801_495789_61FE4C51 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,25 +76,25 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 19 Aug 2025 16:50:13 +0200, Sebastian Reichel wrote:
-> Add hardware description for the USB-C port in the Radxa ROCK 5 Model B
-> family. This describes the OHCI, EHCI and XHCI USB parts. The DisplayPort
-> AltMode is only partially described, as bindings for the necessary
-> DisplayPort controller are still being reviewed.
+On Tue, 19 Aug 2025 21:30:12 -0500, kylepzak@projectinitiative.io wrote:
+> The Radxa ROCK 5A board includes a green power LED that is defined in
+> the vendor device tree but is missing from the upstream kernel DTS file.
 > 
+> This causes the LED to be uncontrollable from the operating system, as no
+> entry is created for it under /sys/class/leds.
 > 
+> This patch adds the missing node to the leds block, creating a
+> "green:power" device and allowing the LED to be controlled by the kernel.
+> 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: add USB-C support for ROCK 5B/5B+/5T
-      commit: 67b2c15d8fb3c1447a23358075e4f336d40d9797
+[1/1] arm64: dts: rockchip: rk3588s-rock-5a: Add green power LED
+      commit: 5487086c4dad869af0eeca0ee24d1ba5fe382b3c
 
-dropped the unnecessary #adress-cells, #size-cells from
-&usb_host0_xhci -> port node to prevent dtc warnings:
-
-  DTC     arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dtb
-../arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi:1028.7-1035.4: Warning (avoid_unnecessary_addr_size): /usb@fc000000/port: unnecessary #address-cells/#size-cells without "ranges", "dma-ranges" or child "reg" property
-../arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi:1028.7-1035.4: Warning (graph_child_address): /usb@fc000000/port: graph node has single child node 'endpoint', #address-cells/#size-cells are not necessary
+moved the "power-led" node behind the "io-led" node,
+please sort nodes alphabetically in future patches :-) .
 
 
 Best regards,
