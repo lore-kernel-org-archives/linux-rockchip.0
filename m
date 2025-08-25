@@ -4,79 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5EFBCA0FE7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 15:01:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C5DCA0FE8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 15:01:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sxi9UbEZs/aLfHJ2nrgHWV0k3ei0rAA+caNCt1igJ88=; b=KSPqyRPYHKIMpf
-	N57Mlq1rdqlM9xzNF1qGdnTTfnzB1HNf4UZLEfHr3Pdpv0rHgaF8Dk02XzO8mNARdXaj6rKiKVXEW
-	iIyTf27j/dakvI62zeom0JDHrohXEbtX26uLD6dM1kZn8OpynpfKlwjauoOE3tyqzjkntzHZaUmEd
-	4KuBYT894i7n9qi6SueU05eHlUZVZbySvMk88F2cp2Ua8pWTIPLf9cWq9rsmipUel15F7nFEX/hG7
-	9oDxgIw/KxoU1aVt4PL0sX6qPSBriW+KuTb1qXu4aLNF3NnqfwYi1AibiNLeYfQevbjprjmMQiYo5
-	jc8o4CToHzJgWx8Fbfeg==;
+	List-Owner; bh=I+ryE6O2UPj8cZSWbc0zQnJzLjxBti8npWaD3GIn/EY=; b=199YCD3dy72NG6
+	lGeI4X0ipUE2FcGtSj7ZdYdqjI45JtOI9QUeMY7fhqZBYaiJyda/Eb2084TwLXwH0n687FZkezJj/
+	0LykpBVF2zNYUyVZHVXtA8+GG1SIV6+VzpVJ2MZqpAWMQ4d8MENa4PLAMwjGgqYn5RxbQiowfw4TE
+	Gl1LjG9EqN/JKmdQNnRPQF1ICtyfo7fbHvZmH1cv/TM6Y+1BlkebEHqgNxThLq3ypHqjekkSi9ulP
+	++z6TqQMaSAw9PmN/D93WoLbr0eKe1gaT5jgNRvWldH2oON+gPs3XviRIGqVK098Tz2S2LYLmTP1I
+	B0ecmy3BSaS/ojTgOmZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqYgq-00000008Npz-3U3H;
-	Mon, 25 Aug 2025 15:00:56 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1uqYgv-00000008NyK-17XE;
+	Mon, 25 Aug 2025 15:01:01 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqXOd-000000086Zb-1i6y;
-	Mon, 25 Aug 2025 13:38:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=PVgYUvPT1vPM01I1nr9R+3H7BRFArSAfjzLQN6iJKvQ=; b=SCimNEDupFMkyQhB1L09lOvN6L
-	2R2NcLUFXj3aX6q1C9zMzhUzbva/YBhfegk7MxjDN9oyQchc03Y+e3j+lu0irp5X2jaAcQNfcLzkw
-	57qcs0A5jOaIq5wT7QANf9CQw6k4yxggPLKlR2yYU9Hywo3l9qD2g0f/WNHW+WeGYkILoDqzSx59i
-	64jBpaJd1/A5X2fUoTAm8taxCXd+syedJ0xfiDBwokuWNqMVpiwgI0EQCCMmjCy8MeQ3DEWfab/9z
-	P/l3yoCWe6alpUfHXrf9VaRE17B1xFYZ0brzJFjmu3wKvk3yrOAqMNfujbdN1WPD7tVxWtSF8RFUT
-	iH3woFiQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:53562)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1uqXOF-000000006XF-25Id;
-	Mon, 25 Aug 2025 14:37:39 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1uqXO9-0000000089m-0a0b;
-	Mon, 25 Aug 2025 14:37:33 +0100
-Date: Mon, 25 Aug 2025 14:37:32 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Marek Szyprowski <m.szyprowski@samsung.com>
-Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Chaoyi Chen <kernel@airkyi.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jonas Karlman <jonas@kwiboo.se>, David Wu <david.wu@rock-chips.com>,
-	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH net-next v3] net: ethernet: stmmac: dwmac-rk: Make the
- clk_phy could be used for external phy
-Message-ID: <aKxnHFSrVeM7Be5A@shell.armlinux.org.uk>
-References: <20250815023515.114-1-kernel@airkyi.com>
- <CGME20250825072312eucas1p2d4751199c0ea069c7938218be60e5e93@eucas1p2.samsung.com>
- <a30a8c97-6b96-45ba-bad7-8a40401babc2@samsung.com>
- <d0fe6d16-181f-4b38-9457-1099fb6419d0@rock-chips.com>
- <809848c9-2ffa-4743-adda-b8b714b404de@samsung.com>
+	id 1uqXU2-000000087Mr-2l9e;
+	Mon, 25 Aug 2025 13:43:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 156E25C5D9A;
+	Mon, 25 Aug 2025 13:43:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58E55C4CEF4;
+	Mon, 25 Aug 2025 13:43:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756129417;
+	bh=fRlvE8ePbEUQlPi4SftjLgiOk4WsYYC2DKU3UHlDcig=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=bFhidSqWZE3ksEZ1z+MAWokhw6hEwtnZJYHsDuCvvwHCmCjgjrwUAjKCJsYR5fbPS
+	 xCdlo4D+XzkxJFdL7sslS3OHoR75iVeXGAuJiQI1Stxvq1jIo1cBD6i4czSPKbW+J3
+	 h5Z290ucnaVwFVpFfUgaMjMH4onGvJR3T9lS0fDv/8LmWcD+P+R48f5H9mXkc0pxDu
+	 FF3c+SJWKGyS4aKsnwOWighFM04ce5URWGweE5X8ToKICKK1APpqA0kZwkdkSeCO1q
+	 WSO46lxARwlORpN8CWmKYJCh6QKzTagC7BTnWyErp2lvwRuiENe0AUd5ndJk9wRHFb
+	 McIcImPq0vuAA==
+From: Maxime Ripard <mripard@kernel.org>
+Date: Mon, 25 Aug 2025 15:43:06 +0200
+Subject: [PATCH 01/39] drm/atomic: Make drm_atomic_get_connector_state()
+ early return consistent
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <809848c9-2ffa-4743-adda-b8b714b404de@samsung.com>
+Message-Id: <20250825-drm-no-more-existing-state-v1-1-f08ccd9f85c9@kernel.org>
+References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
+In-Reply-To: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Louis Chauvet <louis.chauvet@bootlin.com>, 
+ Haneen Mohammed <hamohammed.sa@gmail.com>, 
+ Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Paul Cercueil <paul@crapouillou.net>, Liviu Dudau <liviu.dudau@arm.com>, 
+ Russell King <linux@armlinux.org.uk>, 
+ Manikandan Muralidharan <manikandan.m@microchip.com>, 
+ Dharma Balasubiramani <dharma.b@microchip.com>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, Inki Dae <inki.dae@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Liu Ying <victor.liu@nxp.com>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+ Edmund Dea <edmund.j.dea@intel.com>, Paul Kocialkowski <paulk@sys-base.io>, 
+ Sui Jingfeng <suijingfeng@loongson.cn>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Clark <robin.clark@oss.qualcomm.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Abhinav Kumar <abhinav.kumar@linux.dev>, 
+ Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, Hans de Goede <hansg@kernel.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev, 
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+ Maxime Ripard <mripard@kernel.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1821; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=fRlvE8ePbEUQlPi4SftjLgiOk4WsYYC2DKU3UHlDcig=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMooahIxPfue/4M0epeJXJWzrea18yz5v2d68hEtco
+ ZMP/Z7YMZWFQZiTQVZMkeWJTNjp5e2LqxzsV/6AmcPKBDKEgYtTACZyeR1jw08zid3vNn6/fNhl
+ 2ewjD1x7dqREfIg+KnPnm3Bh28/H7trn5R92pl07tFyM1ZzHOyeyhLGhX4O/5nvb/qWXzkuV5jO
+ wL+LYzvvD/JyIOZuDSNikXac95H9LMRs3BQpyWwQVW/QK7AEA
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_063803_446555_F9AA29FE 
-X-CRM114-Status: GOOD (  26.30  )
+X-CRM114-CacheID: sfid-20250825_064338_788005_7421CD76 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,116 +124,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 25, 2025 at 12:53:37PM +0200, Marek Szyprowski wrote:
-> On 25.08.2025 11:57, Chaoyi Chen wrote:
-> > On 8/25/2025 3:23 PM, Marek Szyprowski wrote:
-> >> On 15.08.2025 04:35, Chaoyi Chen wrote:
-> >>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> >>>
-> >>> For external phy, clk_phy should be optional, and some external phy
-> >>> need the clock input from clk_phy. This patch adds support for setting
-> >>> clk_phy for external phy.
-> >>>
-> >>> Signed-off-by: David Wu <david.wu@rock-chips.com>
-> >>> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> >>> ---
-> >>>
-> >>> Changes in v3:
-> >>> - Link to V2: =
+The drm_atomic_get_connector_state() tries to lookup if a connector
+state was already allocated in the global state to return early if it
+was the case. drm_atomic_get_plane_state() and
+drm_atomic_get_crtc_state() behave similarly.
 
-> >>> https://lore.kernel.org/netdev/20250812012127.197-1-kernel@airkyi.com/
-> >>> - Rebase to net-next/main
-> >>>
-> >>> Changes in v2:
-> >>> - Link to V1: =
+However, and unlike the other two, drm_atomic_get_connector_state() will
+do that lookup after having called drm_modeset_lock(), when the others
+will do it before.
 
-> >>> https://lore.kernel.org/netdev/20250806011405.115-1-kernel@airkyi.com/
-> >>> - Remove get clock frequency from DT prop
-> >>>
-> >>> =A0=A0 drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 11 +++++++----
-> >>> =A0=A0 1 file changed, 7 insertions(+), 4 deletions(-)
-> >>>
-> >>> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c =
+Let's move the early return before the lock to make it consistent.
 
-> >>> b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> >>> index ac8288301994..5d921e62c2f5 100644
-> >>> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> >>> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> >>> @@ -1412,12 +1412,15 @@ static int rk_gmac_clk_init(struct =
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+ drivers/gpu/drm/drm_atomic.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-> >>> plat_stmmacenet_data *plat)
-> >>> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 clk_set_rate(plat->stmmac_clk, 5000000=
-0);
-> >>> =A0=A0=A0=A0=A0=A0 }
-> >>> =A0=A0 -=A0=A0=A0 if (plat->phy_node && bsp_priv->integrated_phy) {
-> >>> +=A0=A0=A0 if (plat->phy_node) {
-> >>> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 bsp_priv->clk_phy =3D of_clk_get(plat-=
->phy_node, 0);
-> >>> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ret =3D PTR_ERR_OR_ZERO(bsp_priv->clk_=
-phy);
-> >>> -=A0=A0=A0=A0=A0=A0=A0 if (ret)
-> >>> -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return dev_err_probe(dev, ret, "Ca=
-nnot get PHY clock\n");
-> >>> -=A0=A0=A0=A0=A0=A0=A0 clk_set_rate(bsp_priv->clk_phy, 50000000);
-> >>> +=A0=A0=A0=A0=A0=A0=A0 /* If it is not integrated_phy, clk_phy is opt=
-ional */
-> >>> +=A0=A0=A0=A0=A0=A0=A0 if (bsp_priv->integrated_phy) {
-> >>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (ret)
-> >>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return dev_err_probe(d=
-ev, ret, "Cannot get PHY =
+diff --git a/drivers/gpu/drm/drm_atomic.c b/drivers/gpu/drm/drm_atomic.c
+index cd15cf52f0c9144711da5879da57884674aea9e4..fe21f154e0fa030f85fb3d6d35e2684adcf36e26 100644
+--- a/drivers/gpu/drm/drm_atomic.c
++++ b/drivers/gpu/drm/drm_atomic.c
+@@ -1128,10 +1128,13 @@ drm_atomic_get_connector_state(struct drm_atomic_state *state,
+ 	struct drm_mode_config *config = &connector->dev->mode_config;
+ 	struct drm_connector_state *connector_state;
+ 
+ 	WARN_ON(!state->acquire_ctx);
+ 
++	if (state->connectors[index].state)
++		return state->connectors[index].state;
++
+ 	ret = drm_modeset_lock(&config->connection_mutex, state->acquire_ctx);
+ 	if (ret)
+ 		return ERR_PTR(ret);
+ 
+ 	index = drm_connector_index(connector);
+@@ -1150,13 +1153,10 @@ drm_atomic_get_connector_state(struct drm_atomic_state *state,
+ 		       sizeof(*state->connectors) * (alloc - state->num_connector));
+ 
+ 		state->num_connector = alloc;
+ 	}
+ 
+-	if (state->connectors[index].state)
+-		return state->connectors[index].state;
+-
+ 	connector_state = connector->funcs->atomic_duplicate_state(connector);
+ 	if (!connector_state)
+ 		return ERR_PTR(-ENOMEM);
+ 
+ 	drm_connector_get(connector);
 
-> >>> clock\n");
-> >>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 clk_set_rate(bsp_priv->clk_phy, 50=
-000000);
-> >>> +=A0=A0=A0=A0=A0=A0=A0 }
-> >
-> > I think=A0 we should set bsp_priv->clk_phy to NULL here if we failed to =
+-- 
+2.50.1
 
-> > get the clock.
-> >
-> > Could you try this on your board? Thank you.
-> =
-
-> Right, the following change also fixes this issue:
-> =
-
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c =
-
-> b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> index 9fc41207cc45..2d19d48be01f 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> @@ -1415,6 +1415,8 @@ static int rk_gmac_clk_init(struct =
-
-> plat_stmmacenet_data *plat)
->  =A0=A0=A0=A0=A0=A0=A0 if (plat->phy_node) {
->  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 bsp_priv->clk_phy =3D of_c=
-lk_get(plat->phy_node, 0);
->  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ret =3D PTR_ERR_OR_ZERO(bs=
-p_priv->clk_phy);
-> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (ret)
-> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 bsp_p=
-riv->clk_phy =3D NULL;
-
-Or just:
-
-		clk =3D of_clk_get(plat->phy_node, 0);
-		if (clk =3D=3D ERR_PTR(-EPROBE_DEFER))
-			...
-		else if (!IS_ERR)
-			bsp_priv->clk_phy =3D clk;
-
-I don't have a free terminal to work out what "..." should be.
-
--- =
-
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
