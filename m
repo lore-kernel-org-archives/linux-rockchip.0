@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23CDCCA0EFA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 11:42:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77BD3CA0FEB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 11:42:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DxGjVW6fe/lTb+Kc1Jz59X4OV/1+nj4ltzB4huZai/I=; b=Z/m7/EG/RGXFuB
-	+74LwIidbtiHETLCVK9eRKJir8UtTShthyKKMCReULqa5iEVJBiHwdu3378wzhbKo75gdTczt38C8
-	zmtTRSwwO+2MHhTeRI2FH1XgNwDqCDkHhXD2FBgp1ZlHxgQ32BIroHi2yMgtWdu1CjXVIwVjSO6BA
-	SvZerx8jGVx5H72uAKlEY+hvmGQHhpCZnEhGC1RBeQJqDSK7Wsr5cVVkNYDcDq6A3N9KrjPwIpaCi
-	ltUzumpFUcAklkjydRBozgXreJGQrf6zLqHD5tnujAbcyuU5xzfdKlCdIbSb/W9wFHWZhCAaguDZV
-	yCwCkPDxQGQy+XxcjYZQ==;
+	List-Owner; bh=CwaTGllk+q09y8vS31kWRUNlh1VIM01sAFlZvS83F60=; b=wUw+0prEzG3+oN
+	jp7zt0UmXLeq4Jav0PbfIxLEcyHgemqcngv60dmZ9OI8onSYBkAsJfNv8MQHu5KRKrz2cPWVihyMm
+	BaJFkwwmssieSJFCsLzcl+idzlGTEqWsVmlgiFTYItfAn5fmSJJXPLO/lEYVvDABdRLYXgY9i2uyv
+	Ie+u4oxpQjpU7OnNLMgiPY0/Kx62UgnXHG5HhjW/CR/xNKNMX3LGsV+iEQ/3ImqIarliC8uYbhng1
+	bozH1NAtpA1ZxzmoW9ne4p5Rw0q2ws1M6H+2M+ys6GMXY8LUnSaUkvotWRpXlEcniikbEuAlm/Tvn
+	P+PGtyZia8uzQ2IN4WWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqVaP-00000007nLW-0lZj;
-	Mon, 25 Aug 2025 11:42:05 +0000
-Received: from mail-m1973192.qiye.163.com ([220.197.31.92])
+	id 1uqVaS-00000007nRa-0Ufh;
+	Mon, 25 Aug 2025 11:42:08 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqTxY-00000007Zso-3gTC;
-	Mon, 25 Aug 2025 09:57:54 +0000
-Received: from [172.16.12.153] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2082e1fe5;
-	Mon, 25 Aug 2025 17:57:46 +0800 (GMT+08:00)
-Message-ID: <d0fe6d16-181f-4b38-9457-1099fb6419d0@rock-chips.com>
-Date: Mon, 25 Aug 2025 17:57:45 +0800
+	id 1uqU85-00000007as8-3SkR;
+	Mon, 25 Aug 2025 10:08:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756116524;
+	bh=xRhWfS3GzLuu0hrFBIPELg5N4OvgD+riMqL2Fl9jd18=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=WPd41UW4AqZaWVrsYRNC47yN86rXILVX5hv/GZIUP2jQ8lO5U/vjgZjUfAZ95+LqG
+	 iY9ri7vWbbvbYdkk8oagRSPe9XaIaSrwvr/LowQ+SySS62L/AtW0YbyKr5ZZzSTg9c
+	 7YWhv00iP3cxYNdGeja2buDeBG3rin6HJaMuzgVU89j2M5CKNFoKHNBdYfZ5Nyj0SH
+	 gljoVg4jiCDKr3wwq0GLwf0nM7spK447K2W0UcTMoXTXwVBmZ3SSdJo4FbYrUOZUtA
+	 I4VpeZ9iTsIb61soKmzxgbtxPvFBJ9PWvUz3hjaRsGOL1iZSTpBxrUvEaosaOftqsB
+	 bNbY9maRqV9/Q==
+Received: from localhost (unknown [82.79.138.60])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 3B6C317E07F2;
+	Mon, 25 Aug 2025 12:08:44 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Mon, 25 Aug 2025 13:08:33 +0300
+Subject: [PATCH v2 2/5] drm/bridge: dw-hdmi-qp: Handle platform supported
+ formats and color depth
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v3] net: ethernet: stmmac: dwmac-rk: Make the
- clk_phy could be used for external phy
-To: Marek Szyprowski <m.szyprowski@samsung.com>,
- Chaoyi Chen <kernel@airkyi.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
- Jonas Karlman <jonas@kwiboo.se>, David Wu <david.wu@rock-chips.com>
-Cc: netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20250815023515.114-1-kernel@airkyi.com>
- <CGME20250825072312eucas1p2d4751199c0ea069c7938218be60e5e93@eucas1p2.samsung.com>
- <a30a8c97-6b96-45ba-bad7-8a40401babc2@samsung.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <a30a8c97-6b96-45ba-bad7-8a40401babc2@samsung.com>
-X-HM-Tid: 0a98e0a9922903abkunm8d311f8d115b06e
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk0ZSlYfTR1CGB8dSx9IS01WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=fX6zBgaTEeGN0mpna6Hvlzu9hPBOaJ7ysGmaTVSCNEshJ9NI0YvqT5dN41kV5vWU0MQxI0TSU8F7UxzWsQA9frFPm3X79taqass4ZUIJaPhcySrUKlvo3GWS8gfLxFa1RstO8YkKTk7RqkHJ2hQjZJeTm8Bl3jwoy9sEqJzh9HQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=EVpH2Wm83g8Rb+u3uT+a83bsfBledd8G1BDKOR8Jgq0=;
-	h=date:mime-version:subject:message-id:from;
+Message-Id: <20250825-rk3588-10bpc-v2-2-955622d16985@collabora.com>
+References: <20250825-rk3588-10bpc-v2-0-955622d16985@collabora.com>
+In-Reply-To: <20250825-rk3588-10bpc-v2-0-955622d16985@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_025753_068959_47D69F98 
-X-CRM114-Status: GOOD (  18.86  )
+X-CRM114-CacheID: sfid-20250825_030846_017699_607DAC8D 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,103 +79,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTWFyZWssCgpPbiA4LzI1LzIwMjUgMzoyMyBQTSwgTWFyZWsgU3p5cHJvd3NraSB3cm90ZToK
-PiBPbiAxNS4wOC4yMDI1IDA0OjM1LCBDaGFveWkgQ2hlbiB3cm90ZToKPj4gRnJvbTogQ2hhb3lp
-IENoZW4gPGNoYW95aS5jaGVuQHJvY2stY2hpcHMuY29tPgo+Pgo+PiBGb3IgZXh0ZXJuYWwgcGh5
-LCBjbGtfcGh5IHNob3VsZCBiZSBvcHRpb25hbCwgYW5kIHNvbWUgZXh0ZXJuYWwgcGh5Cj4+IG5l
-ZWQgdGhlIGNsb2NrIGlucHV0IGZyb20gY2xrX3BoeS4gVGhpcyBwYXRjaCBhZGRzIHN1cHBvcnQg
-Zm9yIHNldHRpbmcKPj4gY2xrX3BoeSBmb3IgZXh0ZXJuYWwgcGh5Lgo+Pgo+PiBTaWduZWQtb2Zm
-LWJ5OiBEYXZpZCBXdSA8ZGF2aWQud3VAcm9jay1jaGlwcy5jb20+Cj4+IFNpZ25lZC1vZmYtYnk6
-IENoYW95aSBDaGVuIDxjaGFveWkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+Cj4+IENo
-YW5nZXMgaW4gdjM6Cj4+IC0gTGluayB0byBWMjogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbmV0
-ZGV2LzIwMjUwODEyMDEyMTI3LjE5Ny0xLWtlcm5lbEBhaXJreWkuY29tLwo+PiAtIFJlYmFzZSB0
-byBuZXQtbmV4dC9tYWluCj4+Cj4+IENoYW5nZXMgaW4gdjI6Cj4+IC0gTGluayB0byBWMTogaHR0
-cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbmV0ZGV2LzIwMjUwODA2MDExNDA1LjExNS0xLWtlcm5lbEBh
-aXJreWkuY29tLwo+PiAtIFJlbW92ZSBnZXQgY2xvY2sgZnJlcXVlbmN5IGZyb20gRFQgcHJvcAo+
-Pgo+PiAgICBkcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1yay5jIHwg
-MTEgKysrKysrKy0tLS0KPj4gICAgMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgNCBk
-ZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWlj
-cm8vc3RtbWFjL2R3bWFjLXJrLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1h
-Yy9kd21hYy1yay5jCj4+IGluZGV4IGFjODI4ODMwMTk5NC4uNWQ5MjFlNjJjMmY1IDEwMDY0NAo+
-PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1yay5jCj4+
-ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLXJrLmMKPj4g
-QEAgLTE0MTIsMTIgKzE0MTIsMTUgQEAgc3RhdGljIGludCBya19nbWFjX2Nsa19pbml0KHN0cnVj
-dCBwbGF0X3N0bW1hY2VuZXRfZGF0YSAqcGxhdCkKPj4gICAgCQljbGtfc2V0X3JhdGUocGxhdC0+
-c3RtbWFjX2NsaywgNTAwMDAwMDApOwo+PiAgICAJfQo+PiAgICAKPj4gLQlpZiAocGxhdC0+cGh5
-X25vZGUgJiYgYnNwX3ByaXYtPmludGVncmF0ZWRfcGh5KSB7Cj4+ICsJaWYgKHBsYXQtPnBoeV9u
-b2RlKSB7Cj4+ICAgIAkJYnNwX3ByaXYtPmNsa19waHkgPSBvZl9jbGtfZ2V0KHBsYXQtPnBoeV9u
-b2RlLCAwKTsKPj4gICAgCQlyZXQgPSBQVFJfRVJSX09SX1pFUk8oYnNwX3ByaXYtPmNsa19waHkp
-Owo+PiAtCQlpZiAocmV0KQo+PiAtCQkJcmV0dXJuIGRldl9lcnJfcHJvYmUoZGV2LCByZXQsICJD
-YW5ub3QgZ2V0IFBIWSBjbG9ja1xuIik7Cj4+IC0JCWNsa19zZXRfcmF0ZShic3BfcHJpdi0+Y2xr
-X3BoeSwgNTAwMDAwMDApOwo+PiArCQkvKiBJZiBpdCBpcyBub3QgaW50ZWdyYXRlZF9waHksIGNs
-a19waHkgaXMgb3B0aW9uYWwgKi8KPj4gKwkJaWYgKGJzcF9wcml2LT5pbnRlZ3JhdGVkX3BoeSkg
-ewo+PiArCQkJaWYgKHJldCkKPj4gKwkJCQlyZXR1cm4gZGV2X2Vycl9wcm9iZShkZXYsIHJldCwg
-IkNhbm5vdCBnZXQgUEhZIGNsb2NrXG4iKTsKPj4gKwkJCWNsa19zZXRfcmF0ZShic3BfcHJpdi0+
-Y2xrX3BoeSwgNTAwMDAwMDApOwo+PiArCQl9CgpJIHRoaW5rwqAgd2Ugc2hvdWxkIHNldCBic3Bf
-cHJpdi0+Y2xrX3BoeSB0byBOVUxMIGhlcmUgaWYgd2UgZmFpbGVkIHRvIGdldCB0aGUgY2xvY2su
-CgpDb3VsZCB5b3UgdHJ5IHRoaXMgb24geW91ciBib2FyZD8gVGhhbmsgeW91LgoKPj4gICAgCX0K
-Pj4gICAgCj4+ICAgIAlyZXR1cm4gMDsKPiBUaGUgYWJvdmUgY2hhbmdlIGxhY2tzIHRoZSBmb2xs
-b3dpbmcgY2hlY2sgaW5nbWFjX2Nsa19lbmFibGUoKTogaWYgKCFic3BfcHJpdi0+aW50ZWdyYXRl
-ZF9waHkpIHJldHVybiAwOwo+Cj4gT3RoZXJ3aXNlIGl0IGJsb3dzIG9uIG1hY2hpbmVzIHdpdGgg
-aW50ZWdyYXRlZCBQSFksIGxpa2UgSGFyZGtlcm5lbCdzIE9kcm9pZC1NMSAoUkszNTY4IGJhc2Vk
-KToKPgo+IHJrX2dtYWMtZHdtYWMgZmUyYTAwMDAuZXRoZXJuZXQ6IElSUSBldGhfbHBpIG5vdCBm
-b3VuZAo+IHJrX2dtYWMtZHdtYWMgZmUyYTAwMDAuZXRoZXJuZXQ6IElSUSBzZnR5IG5vdCBmb3Vu
-ZAo+IHJrX2dtYWMtZHdtYWMgZmUyYTAwMDAuZXRoZXJuZXQ6IGNsb2NrIGlucHV0IG9yIG91dHB1
-dD8gKG91dHB1dCkuCj4gcmtfZ21hYy1kd21hYyBmZTJhMDAwMC5ldGhlcm5ldDogVFggZGVsYXko
-MHg0ZikuCj4gcmtfZ21hYy1kd21hYyBmZTJhMDAwMC5ldGhlcm5ldDogUlggZGVsYXkoMHgyZCku
-Cj4gcmtfZ21hYy1kd21hYyBmZTJhMDAwMC5ldGhlcm5ldDogaW50ZWdyYXRlZCBQSFk/IChubyku
-Cj4gVW5hYmxlIHRvIGhhbmRsZSBrZXJuZWwgcGFnaW5nIHJlcXVlc3QgYXQgdmlydHVhbCBhZGRy
-ZXNzIGZmZmZmZmZmZmZmZmZmZmUKPiBNZW0gYWJvcnQgaW5mbzoKPiAgICAgRVNSID0gMHgwMDAw
-MDAwMDk2MDAwMDA2Cj4gICAgIEVDID0gMHgyNTogREFCVCAoY3VycmVudCBFTCksIElMID0gMzIg
-Yml0cwo+ICAgICBTRVQgPSAwLCBGblYgPSAwCj4gICAgIEVBID0gMCwgUzFQVFcgPSAwCj4gICAg
-IEZTQyA9IDB4MDY6IGxldmVsIDIgdHJhbnNsYXRpb24gZmF1bHQKPiBEYXRhIGFib3J0IGluZm86
-Cj4gICAgIElTViA9IDAsIElTUyA9IDB4MDAwMDAwMDYsIElTUzIgPSAweDAwMDAwMDAwCj4gICAg
-IENNID0gMCwgV25SID0gMCwgVG5EID0gMCwgVGFnQWNjZXNzID0gMAo+ICAgICBHQ1MgPSAwLCBP
-dmVybGF5ID0gMCwgRGlydHlCaXQgPSAwLCBYcyA9IDAKPiBzd2FwcGVyIHBndGFibGU6IDRrIHBh
-Z2VzLCA0OC1iaXQgVkFzLCBwZ2RwPTAwMDAwMDAwMDI0OWUwMDAKPiBbZmZmZmZmZmZmZmZmZmZm
-ZV0gcGdkPTAwMDAwMDAwMDAwMDAwMDAsIHA0ZD0wMDAwMDAwMDAzNzZmNDAzLCBwdWQ9MDAwMDAw
-MDAwMzc3MDQwMywgcG1kPTAwMDAwMDAwMDAwMDAwMDAKPiBJbnRlcm5hbCBlcnJvcjogT29wczog
-MDAwMDAwMDA5NjAwMDAwNiBbIzFdICBTTVAKPiBNb2R1bGVzIGxpbmtlZCBpbjogc25kX3NvY19y
-b2NrY2hpcF9pMnNfdGRtIHNuZF9zb2Nfcms4MTcgc25kX3NvY19jb3JlIHNuZF9jb21wcmVzcyBz
-bmRfcGNtX2RtYWVuZ2luZSByb2NrY2hpcF90aGVybWFsIHNuZF9wY20gZHdtYWNfcmsoKykgaGFu
-dHJvX3ZwdSByb2NrY2hpcF9zYXJhZGMgaW5kdXN0cmlhbGlvX3RyaWdnZXJlZF9idWZmZXIga2Zp
-Zm9fYnVmIHN0bW1hY19wbGF0Zm9ybSByb2NrY2hpcF9yZ2EgdjRsMl92cDkgc3RtbWFjIHNwaV9y
-b2NrY2hpcF9zZmMoKykgdjRsMl9oMjY0IHNuZF90aW1lciBwY3NfeHBjcyByb2NrY2hpcGRybSgr
-KSB2aWRlb2J1ZjJfZG1hX3NnIHY0bDJfanBlZyByazgwNV9wd3JrZXkgdjRsMl9tZW0ybWVtIHZp
-ZGVvYnVmMl9kbWFfY29udGlnIGR3X2hkbWlfcXAgcm9ja2NoaXBfZGZpIHJrODE3X2NoYXJnZXIg
-dmlkZW9idWYyX21lbW9wcyBhbmFsb2dpeF9kcCB2aWRlb2J1ZjJfdjRsMiBkd19taXBpX2RzaSBw
-YW5mcm9zdCBzbmQgcnRjX3JrODA4IGRybV9kcF9hdXhfYnVzIHZpZGVvZGV2IGRybV9zaG1lbV9o
-ZWxwZXIgc291bmRjb3JlIGR3X2hkbWkgdmlkZW9idWYyX2NvbW1vbiBkcm1fZGlzcGxheV9oZWxw
-ZXIgbWMgZ3B1X3NjaGVkIGFoY2lfZHdjIGlwdjYKPiBDUFU6IDMgVUlEOiAwIFBJRDogMTU0IENv
-bW06IHN5c3RlbWQtdWRldmQgTm90IHRhaW50ZWQgNi4xNy4wLXJjMSsgIzEwODc1IFBSRUVNUFQK
-PiBIYXJkd2FyZSBuYW1lOiBIYXJka2VybmVsIE9EUk9JRC1NMSAoRFQpCj4gcHN0YXRlOiA2MDQw
-MDAwOSAoblpDdiBkYWlmICtQQU4gLVVBTyAtVENPIC1ESVQgLVNTQlMgQlRZUEU9LS0pCj4gcGMg
-OiBjbGtfcHJlcGFyZSsweDE4LzB4NDQKPiBsciA6IGdtYWNfY2xrX2VuYWJsZSsweGY4LzB4MTg4
-IFtkd21hY19ya10KPiAuLgo+IENhbGwgdHJhY2U6Cj4gICAgY2xrX3ByZXBhcmUrMHgxOC8weDQ0
-IChQKQo+ICAgIGdtYWNfY2xrX2VuYWJsZSsweGY4LzB4MTg4IFtkd21hY19ya10KPiAgICBya19n
-bWFjX3Bvd2VydXArMHg0Yy8weDFmMCBbZHdtYWNfcmtdCj4gICAgcmtfZ21hY19wcm9iZSsweDNi
-NC8weDVjOCBbZHdtYWNfcmtdCj4gICAgcGxhdGZvcm1fcHJvYmUrMHg1Yy8weGFjCj4gICAgcmVh
-bGx5X3Byb2JlKzB4YmMvMHgyOTgKPiAgICBfX2RyaXZlcl9wcm9iZV9kZXZpY2UrMHg3OC8weDEy
-Ywo+ICAgIGRyaXZlcl9wcm9iZV9kZXZpY2UrMHg0MC8weDE2NAo+ICAgIF9fZHJpdmVyX2F0dGFj
-aCsweDljLzB4MWFjCj4gICAgYnVzX2Zvcl9lYWNoX2RldisweDc0LzB4ZDAKPiAgICBkcml2ZXJf
-YXR0YWNoKzB4MjQvMHgzMAo+ICAgIGJ1c19hZGRfZHJpdmVyKzB4ZTQvMHgyMDgKPiAgICBkcml2
-ZXJfcmVnaXN0ZXIrMHg2MC8weDEyOAo+ICAgIF9fcGxhdGZvcm1fZHJpdmVyX3JlZ2lzdGVyKzB4
-MjQvMHgzMAo+ICAgIHJrX2dtYWNfZHdtYWNfZHJpdmVyX2luaXQrMHgyMC8weDEwMDAgW2R3bWFj
-X3JrXQo+ICAgIGRvX29uZV9pbml0Y2FsbCsweDY0LzB4MzA4Cj4gICAgZG9faW5pdF9tb2R1bGUr
-MHg1OC8weDIzYwo+ICAgIGxvYWRfbW9kdWxlKzB4MWI0OC8weDFkYzQKPiAgICBpbml0X21vZHVs
-ZV9mcm9tX2ZpbGUrMHg4NC8weGM0Cj4gICAgaWRlbXBvdGVudF9pbml0X21vZHVsZSsweDE4OC8w
-eDI4MAo+ICAgIF9fYXJtNjRfc3lzX2Zpbml0X21vZHVsZSsweDY4LzB4YWMKPiAgICBpbnZva2Vf
-c3lzY2FsbCsweDQ4LzB4MTEwCj4gICAgZWwwX3N2Y19jb21tb24uY29uc3Rwcm9wLjArMHhjOC8w
-eGU4Cj4gICAgZG9fZWwwX3N2YysweDIwLzB4MmMKPiAgICBlbDBfc3ZjKzB4NGMvMHgxNjAKPiAg
-ICBlbDB0XzY0X3N5bmNfaGFuZGxlcisweGEwLzB4ZTQKPiAgICBlbDB0XzY0X3N5bmMrMHgxOTgv
-MHgxOWMKPiBDb2RlOiA5MTAwMDNmZCBmOTAwMGJmMyA1MjgwMDAxMyBiNDAwMDBlMCAoZjk0MDAw
-MTMpCj4gLS0tWyBlbmQgdHJhY2UgMDAwMDAwMDAwMDAwMDAwMCBdLS0tCj4KPiBCZXN0IHJlZ2Fy
-ZHMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+Extend struct dw_hdmi_qp_plat_data to include the supported display
+output formats and maximum bits per color channel.  When provided by the
+platform driver, use them to setup the HDMI bridge accordingly.
+
+Additionally, improve debug logging in dw_hdmi_qp_bridge_atomic_enable()
+to also show the current HDMI output format and bpc.
+
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 11 +++++++++--
+ include/drm/bridge/dw_hdmi_qp.h              |  4 ++++
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index 42a90e0383061dad6c8416af21b27db7a3ba6d7d..8ff8ea8e0714ed6d6fa4b7865c86d04c32565d90 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -869,8 +869,9 @@ static void dw_hdmi_qp_bridge_atomic_enable(struct drm_bridge *bridge,
+ 		return;
+ 
+ 	if (connector->display_info.is_hdmi) {
+-		dev_dbg(hdmi->dev, "%s mode=HDMI rate=%llu\n",
+-			__func__, conn_state->hdmi.tmds_char_rate);
++		dev_dbg(hdmi->dev, "%s mode=HDMI %s rate=%llu bpc=%u\n", __func__,
++			drm_hdmi_connector_get_output_format_name(conn_state->hdmi.output_format),
++			conn_state->hdmi.tmds_char_rate, conn_state->hdmi.output_bpc);
+ 		op_mode = 0;
+ 		hdmi->tmds_char_rate = conn_state->hdmi.tmds_char_rate;
+ 	} else {
+@@ -1299,6 +1300,12 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+ 	hdmi->bridge.vendor = "Synopsys";
+ 	hdmi->bridge.product = "DW HDMI QP TX";
+ 
++	if (plat_data->supported_formats)
++		hdmi->bridge.supported_formats = plat_data->supported_formats;
++
++	if (plat_data->max_bpc)
++		hdmi->bridge.max_bpc = plat_data->max_bpc;
++
+ 	hdmi->bridge.ddc = dw_hdmi_qp_i2c_adapter(hdmi);
+ 	if (IS_ERR(hdmi->bridge.ddc))
+ 		return ERR_CAST(hdmi->bridge.ddc);
+diff --git a/include/drm/bridge/dw_hdmi_qp.h b/include/drm/bridge/dw_hdmi_qp.h
+index 76ecf31301997718604a05f70ce9eab8695e26b5..3f461f6b9bbfbf67934bf642452d3c6f9253c4f9 100644
+--- a/include/drm/bridge/dw_hdmi_qp.h
++++ b/include/drm/bridge/dw_hdmi_qp.h
+@@ -25,6 +25,10 @@ struct dw_hdmi_qp_plat_data {
+ 	int main_irq;
+ 	int cec_irq;
+ 	unsigned long ref_clk_rate;
++	/* Supported output formats: bitmask of @hdmi_colorspace */
++	unsigned int supported_formats;
++	/* Maximum bits per color channel: 8, 10 or 12 */
++	unsigned int max_bpc;
+ };
+ 
+ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+
+-- 
+2.50.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
