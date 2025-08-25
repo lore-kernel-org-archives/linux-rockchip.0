@@ -4,85 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF958CA0FED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 17:00:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD986C8303F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 17:56:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HXTGd6cI9HnPKB84X3kl79nV+rWWwp0qlfrWp+yGtHw=; b=dBHPPBkWcfO0LB
-	Ox0DU+d2yT1LqRFNGciPquYcBUOJ/MKkDLgOhwPYl8eRvPpXoIYYO48wOQgPatcYpwdtpwqZSRjuQ
-	+CEvAbK/vaT5cuMVLP9gv10Hn2UxYFuLr6MZoTjDLdmXm55tnYFm+tNSy5FF4vF9kpZj0lbqzx/oM
-	Brr+5DbjfmkK3WwWfSq/kTHfLrRkeNNPi48bARjNoiNFQjRYvM8FueDazrr1nCi+Gixz6aJNqFs7Z
-	EuiEEZ3Gc7ZvPWRp5TiQkPVy+ejAtTUvq7JKebU6cokQ9KER+VpVRSyVLERiJ1p9WTZ2eEXWSfmVY
-	Rn1SPd+hMo9CSZ572BeQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7gx0MmJ1HYDLoybgA1PtUQyfogEvARcXONPA720dQog=; b=ws5pOtqheTCv4PUyLio7SuPXPH
+	16PsVp0hTBesfBvdOWePnpEuSHrJoQn941HG23eOzyycEVoAyPBXBJrunm12xl+X7NB6ixAS85Q4V
+	azeKOCll+ROcqG2AvtsgXCRMMnRQ0D/LsV442XO2GSRDHgOTZqLOdvmj+m4Z2jd2Nd+GFIkinE0bp
+	2Kj0Cdag7jwFTGbXlD2IbPLZTA/xQwVELGPu5r9epSyzHBp6AXtfueAYHJXkIy2k2aKMA9z8hxton
+	SfhhVfhYuDZ0xFJMULtbF/pdp4uh3mzC4ScXB6vgeL88LjMKnNZdanEkTpVUu2OTLsyY1+To7xR5T
+	C6X2dFuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqaYr-00000008kUc-0lLl;
-	Mon, 25 Aug 2025 17:00:49 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uqbQK-00000008tlN-1B8f;
+	Mon, 25 Aug 2025 17:56:04 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqZnp-00000008crL-3PeM;
-	Mon, 25 Aug 2025 16:12:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 200436023C;
-	Mon, 25 Aug 2025 16:12:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68F2DC4CEED;
-	Mon, 25 Aug 2025 16:11:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756138321;
-	bh=lRmwIXXuuVxuUeGAauGH9Bx39v/B949+O0RVAstjSuk=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=cQ7VlgxHju8BEVWwXx8S5s9QO0VAGvXQFLrv/Uk7vG//TkWLtQ958x6s8s27sBA9K
-	 ZcC+Vqlxi7SLRsijcAT4VR40IpnOE02lPJoJxRdH4JLlfsembYa20HUZxxM4Ykvuhd
-	 gR9Ewz0C17+TNmcjSvn8rsyUEZ3eHGOfihpu+yQUtN2eQgqTq4UevTo4hW53DjKucR
-	 RcfXKEtkDNMjSmnffIYVrTmNpy0yJ+On9axRFVmIFarvx0PpkxtcTqBkLOK2JQ/CFW
-	 UV/FEDmGacDp6s4U8xtBgsmf+FYq4bHcugm4JlhafhGE0dBr3Z/OCxvHsJZPXPRon0
-	 vH/QeTkJt0PjQ==
-Date: Mon, 25 Aug 2025 09:11:58 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Yury Norov <yury.norov@gmail.com>, Rasmus Villemoes
- <linux@rasmusvillemoes.dk>, Jaehoon Chung <jh80.chung@samsung.com>, Ulf
- Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Shreeya
- Patel <shreeya.patel@collabora.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Andy Yan
- <andy.yan@rock-chips.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Vinod Koul <vkoul@kernel.org>, Kishon
- Vijay Abraham I <kishon@kernel.org>, Nicolas Frattaroli
- <frattaroli.nicolas@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark
- Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
- <tiwai@suse.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre
- Torgue <alexandre.torgue@foss.st.com>, Shawn Lin
- <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Krzysztof =?UTF-8?B?V2lsY3p5xYRza2k=?= <kwilczynski@kernel.org>, Manivannan
- Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
- <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham
- <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Qin
- Jian <qinjian@cqplus1.com>, Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, Bill Wendling
- <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
- kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-phy@lists.infradead.org,
- linux-sound@vger.kernel.org, netdev@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-pci@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-clk@vger.kernel.org, llvm@lists.linux.dev
-Subject: Re: [PATCH v3 15/20] net: stmmac: dwmac-rk: switch to
- FIELD_PREP_WM16 macro
-Message-ID: <20250825091158.07893b12@kernel.org>
-In-Reply-To: <20250825-byeword-update-v3-15-947b841cdb29@collabora.com>
-References: <20250825-byeword-update-v3-0-947b841cdb29@collabora.com>
-	<20250825-byeword-update-v3-15-947b841cdb29@collabora.com>
+	id 1uqbKp-00000008s8V-0PCZ;
+	Mon, 25 Aug 2025 17:50:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756144220;
+	bh=99QxpOa1hWDVJMREI3P/OOtPeeZsrilD0hyvIUZj/ko=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=TGjglqHAVky/nLbV8g0zk5XTTg0334cJVMNNqKelf9STnzVr5RRzk0kzX72wVe1q+
+	 8NBE4L1+kXsrKFexwTkVMZo0sjlWZhDnvKQPPDJCQDdYb7E8T7HBLs3zhAI0QWWFvu
+	 ZekyZ3vZINoyjUmX9CkLvTfVDwDYPqlzHimodlaVH1P5BubJA+kAjuge3LeaYx7hMg
+	 tj2gikWglVHr3moG7ZWEFN7P17Wga0mAn1gZbFdnUfGF5FPvB1+LDjcVBNVjs7vD+m
+	 jN/I0dTZINYAIKgYtVFghuBcGvlgV/BriJcaw5xm/a2TGgx723Dljz6ZztjVWbRBQ6
+	 FsU90aE2NNQ6A==
+Received: from [IPv6:2606:6d00:11:5a76::5ac] (unknown [IPv6:2606:6d00:11:5a76::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8942017E05F0;
+	Mon, 25 Aug 2025 19:50:18 +0200 (CEST)
+Message-ID: <01c327e8353bb5b986ef6fb1e7311437659aea4a.camel@collabora.com>
+Subject: Re: [PATCH v7 4/6] media: verisilicon: AV1: Restore IOMMU context
+ before decoding a frame
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Jason Gunthorpe <jgg@ziepe.ca>, Benjamin Gaignard
+	 <benjamin.gaignard@collabora.com>
+Cc: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
+ 	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+ p.zabel@pengutronix.de, 	mchehab@kernel.org, iommu@lists.linux.dev,
+ devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, 	linux-media@vger.kernel.org
+Date: Mon, 25 Aug 2025 13:50:16 -0400
+In-Reply-To: <20250825170531.GA1899851@ziepe.ca>
+References: <20250825153450.150071-1-benjamin.gaignard@collabora.com>
+	 <20250825153450.150071-5-benjamin.gaignard@collabora.com>
+	 <20250825170531.GA1899851@ziepe.ca>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250825_105023_301055_C0F62E9E 
+X-CRM114-Status: GOOD (  25.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,31 +90,123 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1798235097522629233=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 25 Aug 2025 10:28:35 +0200 Nicolas Frattaroli wrote:
-> The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
-> drivers that use constant masks.
-> 
-> Like many other Rockchip drivers, dwmac-rk has its own HIWORD_UPDATE
-> macro. Its semantics allow us to redefine it as a wrapper to the shared
-> hw_bitfield.h FIELD_PREP_WM16 macros though.
-> 
-> Replace the implementation of this driver's very own HIWORD_UPDATE macro
-> with an instance of FIELD_PREP_WM16 from hw_bitfield.h. This keeps the
-> diff easily reviewable, while giving us more compile-time error
-> checking.
-> 
-> The related GRF_BIT macro is left alone for now; any attempt to rework
-> the code to not use its own solution here would likely end up harder to
-> review and less pretty for the time being.
 
-Acked-by: Jakub Kicinski <kuba@kernel.org>
+--===============1798235097522629233==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-wovO2wwoxNj2XCpfZEwH"
+
+
+--=-wovO2wwoxNj2XCpfZEwH
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Benjmain, Jason,
+
+Le lundi 25 ao=C3=BBt 2025 =C3=A0 14:05 -0300, Jason Gunthorpe a =C3=A9crit=
+=C2=A0:
+> On Mon, Aug 25, 2025 at 05:34:43PM +0200, Benjamin Gaignard wrote:
+> > diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/medi=
+a/platform/verisilicon/hantro.h
+> > index 81328c63b796..a28a181013b9 100644
+> > --- a/drivers/media/platform/verisilicon/hantro.h
+> > +++ b/drivers/media/platform/verisilicon/hantro.h
+> > @@ -12,6 +12,9 @@
+> > =C2=A0#ifndef HANTRO_H_
+> > =C2=A0#define HANTRO_H_
+> > =C2=A0
+> > +#include <linux/dma-map-ops.h>
+> > +#include <linux/iommu.h>
+> > +#include <linux/iommu-dma.h>
+>=20
+> This is an internal header it should not be included in drivers.
+>=20
+> > +static void rockchip_vpu981_av1_restore_iommu(struct hantro_ctx *ctx)
+> > +{
+> > +	if (ctx->iommu_domain) {
+> > +		iommu_attach_device(ctx->iommu_domain, ctx->dev->v4l2_dev.dev);
+> > +		iommu_detach_device(ctx->iommu_domain, ctx->dev->v4l2_dev.dev);
+> > +	}
+> > +}
+>=20
+> What is this supposed to do? Put it back to the default domain? Who
+> changed it away from the default domain?
+
+If you rename the iommu_domain into empty_domain it adds a bit of sense. Wh=
+en
+you attach another domain (this one is empty, but it does not matter) and d=
+etach
+it, the default domain get restored. That effectively forces the reprogramm=
+ing
+(in the VSI case flushing) of the iommu configuration.
+
+>=20
+> Did some other driver change the attached domain (if so that's wild
+> and wrong)? The commit message hints at that but it should be
+> explained alot more.
+>=20
+> This just seems wrong and goofy. Driver shouldn't be changing their
+> iommu domains if they are using the default domain at all. We now have
+> APIs to allow you to allocate wide chunks of IOVA space and manage
+> them directly. Maybe these 'multiple stream's should be doing that
+> instead of mucking with iommu domains?
+
+This is seeking inspiration of what we do in rkvdec [0], the iommu-dma.h sh=
+ould
+not be needed.
+
+Jason, the point is that the iommu and the VPU are not separate devices, wh=
+ich
+comes with side effects. On RKVDec side, the iommu configuration get resets
+whenever a decoding error leads to a VPU "self reset". I can't remember who=
+ from
+the iommu subsystem suggested that, but the empty domain method was agreed =
+to be
+the least invasive way to workaround that issue. I believe Detlev tried mul=
+tiple
+time to add APIs for that before the discussion lead to this path.
+
+Benjamin, please improve the naming, comment and description, I agree with =
+Jason
+its not completely clear. I'm also surprised that you do that every frame, =
+seems
+excessive.
+
+regards,
+Nicolas
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/comm=
+it/?id=3Dff8c5622f9f7c644e995d013af320b59e4d61b93
+
+--=-wovO2wwoxNj2XCpfZEwH
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaKyiWAAKCRDZQZRRKWBy
+9JL7AP9R1VeW8rNgnuoZz8urKJxxEG6gWu6/kM7ge/SIZxuBcAD/SiNzSms3Po30
+iybuQvLYIS4MMJlWAyYz5eVQbcpO6AU=
+=XYWc
+-----END PGP SIGNATURE-----
+
+--=-wovO2wwoxNj2XCpfZEwH--
+
+
+--===============1798235097522629233==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1798235097522629233==--
+
