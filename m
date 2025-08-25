@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54D5DCA0FE8
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 15:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB157CA0FE8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 15:02:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bjQHCoKtIUIuXmNkvVJFh4rGYcS1qJwMGz6TofDH9RU=; b=PfA5PJUSwpC1nq
-	Lr/zGaswLDf6ZGBc04xPx1Fkc9oE5T241Cox/RSFD9k4XY8+7RorYMs2kbar4XfZQ6xFEwBPrWqqf
-	AAtm88v3Lw7itXWHCtLyRERRvQwRoO1Gmln61EgvBiV0vXZkp8V0fxzhlmQHGW5MH6ga21RRz4+mS
-	8ZpXByHfcD4NgyCRq5jXVMtsAdK4yw+MuNVdUb4x8BvtcCGtljRVkYXVRYbtI+3vqDrhf9HfLXBYt
-	VY6uIH7XU7/ZfdFsjyant53uhX6PccKjBnKKXZVkVDVuA1HZrByaS+0Lrvu/88Ybve4hnU2Gbf9Sa
-	KeYmbAvnjxyOqyrpbIDA==;
+	List-Owner; bh=FWi+jCcCgMn0mcc/Fw18jqTaC6Om543RSwYJL3ZR/Ys=; b=B585KkQdcrUOqP
+	wjgDGN5NIOY3YiRk8t43beUtSwI0cWVVzfRENUKuw+ZpmXQRpX4A43uy08DfYWqaTbtvaWbI1Etyv
+	+97+OTT5/JMSM6S8hZisN3zk+puG239lE6KeyVOC5fLAirftnpHuJ0Yke/ysp0ZDxx6vxeQz7tpSp
+	dDR+owtaVBMU+j90HA0SDndVKQg/3G++VRIpyKSIIvXhm6RXFuOT0sm7R5KW4AM6G/yllrEpZo9Cv
+	yH4vE9scvaB/LFDqsVunNho47JBvXscAkTQEHrwRbUFK4++DcXrc4itXGBv8Zle2PriSC9qAXwvR4
+	wo3FVLp5PkdCCltBbk6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqYib-00000008QCu-0HcT;
-	Mon, 25 Aug 2025 15:02:45 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uqYid-00000008QGr-1mmo;
+	Mon, 25 Aug 2025 15:02:47 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqXVL-0000000888H-2ifU;
-	Mon, 25 Aug 2025 13:45:00 +0000
+	id 1uqXVO-000000088AJ-3FVi;
+	Mon, 25 Aug 2025 13:45:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 50CC743CE9;
-	Mon, 25 Aug 2025 13:44:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC03EC16AAE;
-	Mon, 25 Aug 2025 13:44:58 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6CF714415F;
+	Mon, 25 Aug 2025 13:45:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A820C116D0;
+	Mon, 25 Aug 2025 13:45:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756129499;
-	bh=CjCSo+oPB1WlkfucnEtjtkaHt6K9iYh8hFc7Ed1HjPs=;
+	s=k20201202; t=1756129502;
+	bh=c0CdOMShkVXZZKjK+bbptCPCZqzOvjNz6ZMbDLQ9b1k=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fO6CEb6zlLXXcS9V8uEQdq4DKdfVd+BGxXbBa+C5ZAZREoFTYo/V2CvA9vvmti72y
-	 XScAXdCuuDGVIBUe1H6aU3jrkS0AQtisxHiH7e+GXWGMPDK/dHHyhizCIpDBo8/GTy
-	 P1+085c/oNew3SSU+STUoY2Z7NAWk/Yzdkc9pspNxU6TgEu4/qJLjcWMBmNmnUpCME
-	 /p5mdrLqpqPwBg9VL5oWSsbFdKwwj8NeP5GOdEjHnM5WERHiu7Yq9sv4tcOvWnBW73
-	 QSznIM45BIwOFiOTXXLZDO+m5qCkAafgBTTlZKxpw9rylyiVVroDur4MA+OuShBtvW
-	 KOeGvO/YlIgSA==
+	b=W9bbviJfe5pXPMc1R8qqNSWgesz/4yT0wMMjsz9lstmOloS4JAQk6AUW8OO92xrWz
+	 4jjPNZXIXpXcdSEO1ZJY1l1oO8sPBAyx3yqbynUIQymxySzjJJPs+6+mW4+GuL5uOx
+	 yRTLg0eEgixuC39N4D78lLTS8wFBKqqNyXSPzjoO1YMtrgzlp0W8irh2s8qtL57LQ6
+	 Gy03bIyxUMFwYN4MbjP8wfhqtE1NwJWy7cya6EAR+OFvYqsdsDl6TEjgTWR3NaAVMc
+	 YyrqR/8/SZN4wU0D3djNoychkVonj9sPgGs6jB38XLXJL4MHCN51g0kAxneWTQC5D0
+	 InMCOc+L8TrsQ==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 25 Aug 2025 15:43:36 +0200
-Subject: [PATCH 31/39] drm/tilcdc: Switch to
+Date: Mon, 25 Aug 2025 15:43:37 +0200
+Subject: [PATCH 32/39] drm/vboxvideo: Switch to
  drm_atomic_get_new_crtc_state()
 MIME-Version: 1.0
-Message-Id: <20250825-drm-no-more-existing-state-v1-31-f08ccd9f85c9@kernel.org>
+Message-Id: <20250825-drm-no-more-existing-state-v1-32-f08ccd9f85c9@kernel.org>
 References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
 In-Reply-To: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -102,17 +102,17 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1281; i=mripard@kernel.org;
- h=from:subject:message-id; bh=CjCSo+oPB1WlkfucnEtjtkaHt6K9iYh8hFc7Ed1HjPs=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMuqn9p+eJrogQYJnn9ea9FKhmS2hNxWLTtecLd9hJ
- rl5+aetHVNZGIQ5GWTFFFmeyISdXt6+uMrBfuUPmDmsTCBDGLg4BeAmxzHWZ3nWPuWbvHqx4KzV
- rXflLl1fsnv6a+WPNVonYkIbuSYd38hUaNX1/3FP4ekHETzb43rEGesz57fr//xwSVAi4IJ5RNj
- dOyeMqm4aiE3fJ3J0IqeCanOXftir3sfa1t4eC8yzc5vPWAIA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1817; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=c0CdOMShkVXZZKjK+bbptCPCZqzOvjNz6ZMbDLQ9b1k=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMhqmrD795O8U65qwmdo7X+wNall+T6phn/XR5A6OE
+ KmVqnuOdUxlYRDmZJAVU2R5IhN2enn74ioH+5U/YOawMoEMYeDiFICJtP5nbLi0XqDgkqjqvpIN
+ XWq9HMG/eKeZBCwx2NtgEJVp9zfk7RHdw7lOEaqTbhdW6f+42GrzmrE+TGXt3ZeGdo2XVV131wV
+ 7nAw/ozf95jVebtVJQV9NltQLLDwhF5pZx7N0vkxXo9Z8lkMA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_064459_733536_35A6BBC7 
-X-CRM114-Status: GOOD (  13.22  )
+X-CRM114-CacheID: sfid-20250825_064502_871111_062DB016 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,7 +129,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The tilcdc atomic_check implementation uses the deprecated
+The vboxvideo atomic_check implementation uses the deprecated
 drm_atomic_get_existing_crtc_state() helper.
 
 This hook is called as part of the global atomic_check, thus before the
@@ -138,27 +138,43 @@ we can use drm_atomic_get_new_crtc_state() instead.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/tilcdc/tilcdc_plane.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/gpu/drm/vboxvideo/vbox_mode.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/tilcdc/tilcdc_plane.c b/drivers/gpu/drm/tilcdc/tilcdc_plane.c
-index cf77a8ce7398040814ec20eeffc6da960e36dfc0..aa72ca679598b6617366e89ffb3838ed8b323f2f 100644
---- a/drivers/gpu/drm/tilcdc/tilcdc_plane.c
-+++ b/drivers/gpu/drm/tilcdc/tilcdc_plane.c
-@@ -40,12 +40,11 @@ static int tilcdc_plane_atomic_check(struct drm_plane *plane,
- 		dev_err(plane->dev->dev, "%s: crtc position must be zero.",
- 			__func__);
- 		return -EINVAL;
+diff --git a/drivers/gpu/drm/vboxvideo/vbox_mode.c b/drivers/gpu/drm/vboxvideo/vbox_mode.c
+index 9ff3bade979577df0bc2e6e9653b3fb8fd486062..aa0dded595b6e00a9aa2027b36ca11711ccc0439 100644
+--- a/drivers/gpu/drm/vboxvideo/vbox_mode.c
++++ b/drivers/gpu/drm/vboxvideo/vbox_mode.c
+@@ -260,12 +260,12 @@ static int vbox_primary_atomic_check(struct drm_plane *plane,
+ 	struct drm_plane_state *new_state = drm_atomic_get_new_plane_state(state,
+ 									   plane);
+ 	struct drm_crtc_state *crtc_state = NULL;
+ 
+ 	if (new_state->crtc) {
+-		crtc_state = drm_atomic_get_existing_crtc_state(state,
+-								new_state->crtc);
++		crtc_state = drm_atomic_get_new_crtc_state(state,
++							   new_state->crtc);
+ 		if (WARN_ON(!crtc_state))
+ 			return -EINVAL;
  	}
  
--	crtc_state = drm_atomic_get_existing_crtc_state(state,
--							new_state->crtc);
-+	crtc_state = drm_atomic_get_new_crtc_state(state, new_state->crtc);
- 	/* we should have a crtc state if the plane is attached to a crtc */
- 	if (WARN_ON(!crtc_state))
- 		return 0;
+ 	return drm_atomic_helper_check_plane_state(new_state, crtc_state,
+@@ -342,12 +342,12 @@ static int vbox_cursor_atomic_check(struct drm_plane *plane,
+ 	u32 width = new_state->crtc_w;
+ 	u32 height = new_state->crtc_h;
+ 	int ret;
  
- 	if (crtc_state->mode.hdisplay != new_state->crtc_w ||
+ 	if (new_state->crtc) {
+-		crtc_state = drm_atomic_get_existing_crtc_state(state,
+-								new_state->crtc);
++		crtc_state = drm_atomic_get_new_crtc_state(state,
++							   new_state->crtc);
+ 		if (WARN_ON(!crtc_state))
+ 			return -EINVAL;
+ 	}
+ 
+ 	ret = drm_atomic_helper_check_plane_state(new_state, crtc_state,
 
 -- 
 2.50.1
