@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9156CA0FE1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 11:42:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1909BCA0FE1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 11:43:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dVvMnsqA6YIG+kFjoXcLW1K7kQJ1tc0GzvxznfutX84=; b=NqyIZLxqDxR3fX
-	Qh38Io8xnO4l1oKi5lD/YhHqGG2dHeKkvPPZE4zOkxnqV9+g2aggq4dAFbUtQ86RIVK0lDVwVbp3M
-	VTp1VGqTz5J7mOMDWq6G5nKpVsCt4uh/jqXstJICP6SVllB+vy8TmiE96topS7Pe2DTWWq7FA6TuB
-	PnmsYRN/cCvZ4wh22OGF4ylS1on1bDr+depYiJnKHmS0W3DZWTu9Wg6jsqZ2zikK3ZBy+dZ56e3oG
-	XDVq/zEz1OiniYuucTFb08+IC65/rBoFfLbcu8tdxGLL0uzW5xd6bMqsFsoozTklvY8Ywjo591xkA
-	QNAUYHZlJeRyr0PPwLKg==;
+	List-Owner; bh=GhJkAUs49EP/x1TBcair/DvJjyLgTqOOSVeuFCUeBs4=; b=EV7ul+9zkqvTpj
+	2cvYZ18MQa14E6nUPy6VC6SWGv52GXzXsnrA2ON2mmIV6RcBHHoAOrSlwsNra1p6bbhLCwBy6FU3P
+	ecZCL0scdQZ5OwPg6XSFK67gxLnh+FNL1XZMOwxKYe1BVMAQOd9/L9fOwgYtNOxVy/ypJpdSSwuyz
+	Nf+PpY+XNxpX3T6sMM8u7X9K0W6KTeRmXLittSgXS6xuIbg2DuZ7Nidmsv1cMqMF14Tb9KUT5wpNc
+	E8ucWoXFC42WQR41CHothBYTbtmYdodKQyfv8qulznozIYpbfC5tKAkLK/+2QLRi0qOKbNHHvdfYA
+	SVSnsVOjf0OWBOLVX2mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqVaY-00000007nfS-2YVx;
-	Mon, 25 Aug 2025 11:42:14 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uqVbI-00000007oop-1gos;
+	Mon, 25 Aug 2025 11:43:00 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqU88-00000007atI-0N0t;
-	Mon, 25 Aug 2025 10:08:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756116526;
-	bh=qoxTFsHFIVAgWULug32Ze5NgiLmjo1jREPwaJJjIE5I=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Pi/oMYGfOTsn0Qm5Cz8h1nACTCYiwQNQV72Ua2K6W+Q774WFQhaimzIkTxY6y4Mj8
-	 uSsUQuyvEnv+AFrO3cyRr0MZWLca4rraGZmR5Dqwt4glZh8nKI1LnpbyppdACCosB7
-	 Xyvx3pHj67Z7wHKwkbBFqleyjMjlS2UUo0huU8NTLhSPEKiEKGFiQaZZC90rCJN1Tc
-	 djCNT5k0o82vlb1BU3lOBoheTlPOslkwPsZwdyYqo1I6TRecauuoMk5/nycqg4m91q
-	 ETA3rjwXIP3tcOm9seHv6tcn3BE1wNfr8fwxJI+T6pqENVzs8YI+oLVTlE6lBAdIYq
-	 IguWOFN6qAdQg==
-Received: from localhost (unknown [82.79.138.60])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 98EB517E0963;
-	Mon, 25 Aug 2025 12:08:46 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Mon, 25 Aug 2025 13:08:36 +0300
-Subject: [PATCH v2 5/5] drm/rockchip: dw_hdmi_qp: Add high color depth
- support
+	id 1uqUaP-00000007emC-2Ycs
+	for linux-rockchip@lists.infradead.org;
+	Mon, 25 Aug 2025 10:38:02 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1uqUZi-0001ab-FF; Mon, 25 Aug 2025 12:37:18 +0200
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1uqUZe-0023HK-2d;
+	Mon, 25 Aug 2025 12:37:14 +0200
+Received: from pza by lupine with local (Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1uqUZe-000M78-2I;
+	Mon, 25 Aug 2025 12:37:14 +0200
+Message-ID: <c5d8d527ca6194b606b5627e51abbb82ab6dd76c.camel@pengutronix.de>
+Subject: Re: [PATCH v10 07/13] media: rockchip: add driver for mipi csi-2
+ receiver
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: michael.riesch@collabora.com, Mehdi Djait <mehdi.djait@linux.intel.com>,
+  Maxime Chevallier <maxime.chevallier@bootlin.com>, =?ISO-8859-1?Q?Th=E9o?=
+ Lebrun <theo.lebrun@bootlin.com>,  Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>, Gerald Loacker
+ <gerald.loacker@wolfvision.net>, Bryan O'Donoghue
+ <bryan.odonoghue@linaro.org>, Markus Elfring <Markus.Elfring@web.de>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, Nicolas Dufresne
+ <nicolas.dufresne@collabora.com>,  Sebastian Reichel
+ <sebastian.reichel@collabora.com>, Collabora Kernel Team
+ <kernel@collabora.com>, Paul Kocialkowski <paulk@sys-base.io>, Alexander
+ Shiyan <eagle.alexander923@gmail.com>, Val Packett <val@packett.cool>, Rob
+ Herring <robh@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Date: Mon, 25 Aug 2025 12:37:14 +0200
+In-Reply-To: <20240220-rk3568-vicap-v10-7-62d8a7b209b4@collabora.com>
+References: <20240220-rk3568-vicap-v10-0-62d8a7b209b4@collabora.com>
+	 <20240220-rk3568-vicap-v10-7-62d8a7b209b4@collabora.com>
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-Message-Id: <20250825-rk3588-10bpc-v2-5-955622d16985@collabora.com>
-References: <20250825-rk3588-10bpc-v2-0-955622d16985@collabora.com>
-In-Reply-To: <20250825-rk3588-10bpc-v2-0-955622d16985@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-X-Mailer: b4 0.14.2
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_030848_281782_2BC3DB18 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20250825_033801_648612_7BD4BDE9 
+X-CRM114-Status: GOOD (  17.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,158 +93,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since both RK3576 and RK3588 SoCs are capable of handling 10 bpc color
-depth, introduce a pair of new helpers to program the necessary
-registers, as well as passing bpc at PHY configuration level.
+On Di, 2025-08-19 at 01:25 +0200, Michael Riesch via B4 Relay wrote:
+> From: Michael Riesch <michael.riesch@collabora.com>
+> 
+> The Rockchip RK3568 MIPI CSI-2 Receiver is a CSI-2 bridge with one
+> input port and one output port. It receives the data with the help
+> of an external MIPI PHY (C-PHY or D-PHY) and passes it to the
+> Rockchip RK3568 Video Capture (VICAP) block.
+> 
+> Add a V4L2 subdevice driver for this unit.
+> 
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> ---
+>  MAINTAINERS                                    |   1 +
+>  drivers/media/platform/rockchip/Kconfig        |   1 +
+>  drivers/media/platform/rockchip/Makefile       |   1 +
+>  drivers/media/platform/rockchip/rkcsi/Kconfig  |  16 +
+>  drivers/media/platform/rockchip/rkcsi/Makefile |   3 +
+>  drivers/media/platform/rockchip/rkcsi/rkcsi.c  | 741 +++++++++++++++++++++++++
+>  6 files changed, 763 insertions(+)
+> 
+[...]
+> diff --git a/drivers/media/platform/rockchip/rkcsi/rkcsi.c b/drivers/media/platform/rockchip/rkcsi/rkcsi.c
+> new file mode 100644
+> index 000000000000..5658ffb60769
+> --- /dev/null
+> +++ b/drivers/media/platform/rockchip/rkcsi/rkcsi.c
+> @@ -0,0 +1,741 @@
+[...]
+> +static int rkcsi_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct rkcsi_device *csi_dev;
+> +	int ret;
+> +
+> +	csi_dev = devm_kzalloc(dev, sizeof(*csi_dev), GFP_KERNEL);
+> +	if (!csi_dev)
+> +		return -ENOMEM;
+> +	csi_dev->dev = dev;
+> +	dev_set_drvdata(dev, csi_dev);
+> +
+> +	csi_dev->base_addr = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(csi_dev->base_addr))
+> +		return PTR_ERR(csi_dev->base_addr);
+> +
+> +	ret = devm_clk_bulk_get_all(dev, &csi_dev->clks);
+> +	if (ret != RKCSI_CLKS_MAX)
+> +		return dev_err_probe(dev, -ENODEV, "failed to get clocks\n");
+> +	csi_dev->clks_num = ret;
+> +
+> +	csi_dev->phy = devm_phy_get(dev, NULL);
+> +	if (IS_ERR(csi_dev->phy))
+> +		return dev_err_probe(dev, PTR_ERR(csi_dev->phy),
+> +				     "failed to get MIPI CSI PHY\n");
+> +
+> +	csi_dev->reset = devm_reset_control_array_get_exclusive(dev);
 
-Note max_bpc is unconditionally set to 10 before initializing the QP
-bridge library, as there is no need to adjust it dynamically, i.e. per
-SoC variant, for now.
+Why array? rockchip,rk3568-mipi-csi bindings specify a single reset.
 
-While setting up .enc_init() callbacks of rockchip_hdmi_qp_ctrl_ops,
-also replace the unnecessary whitespace chars before .irq_callback()
-assignments.
-
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 59 ++++++++++++++++++++++++--
- 1 file changed, 56 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 0f2b421134af9f935758266af45c5779407b4144..81f106ac7b561110b4be39d58e99a225af7786f2 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -7,6 +7,7 @@
-  * Author: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-  */
- 
-+#include <linux/bitfield.h>
- #include <linux/clk.h>
- #include <linux/gpio/consumer.h>
- #include <linux/mfd/syscon.h>
-@@ -68,6 +69,12 @@
- #define RK3588_HDMI1_LEVEL_INT		BIT(24)
- #define RK3588_GRF_VO1_CON3		0x000c
- #define RK3588_GRF_VO1_CON6		0x0018
-+#define RK3588_COLOR_DEPTH_MASK		GENMASK(7, 4)
-+#define RK3588_8BPC			0x0
-+#define RK3588_10BPC			0x6
-+#define RK3588_COLOR_FORMAT_MASK	GENMASK(3, 0)
-+#define RK3588_RGB			0x0
-+#define RK3588_YUV420			0x3
- #define RK3588_SCLIN_MASK		BIT(9)
- #define RK3588_SDAIN_MASK		BIT(10)
- #define RK3588_MODE_MASK		BIT(11)
-@@ -96,6 +103,7 @@ struct rockchip_hdmi_qp {
- 
- struct rockchip_hdmi_qp_ctrl_ops {
- 	void (*io_init)(struct rockchip_hdmi_qp *hdmi);
-+	void (*enc_init)(struct rockchip_hdmi_qp *hdmi, struct rockchip_crtc_state *state);
- 	irqreturn_t (*irq_callback)(int irq, void *dev_id);
- 	irqreturn_t (*hardirq_callback)(int irq, void *dev_id);
- };
-@@ -110,9 +118,16 @@ static struct rockchip_hdmi_qp *to_rockchip_hdmi_qp(struct drm_encoder *encoder)
- static void dw_hdmi_qp_rockchip_encoder_enable(struct drm_encoder *encoder)
- {
- 	struct rockchip_hdmi_qp *hdmi = to_rockchip_hdmi_qp(encoder);
-+	struct drm_crtc *crtc = encoder->crtc;
- 
- 	/* Unconditionally switch to TMDS as FRL is not yet supported */
- 	gpiod_set_value(hdmi->enable_gpio, 1);
-+
-+	if (!crtc || !crtc->state)
-+		return;
-+
-+	if (hdmi->ctrl_ops->enc_init)
-+		hdmi->ctrl_ops->enc_init(hdmi, to_rockchip_crtc_state(crtc->state));
- }
- 
- static int
-@@ -125,16 +140,19 @@ dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
- 	union phy_configure_opts phy_cfg = {};
- 	int ret;
- 
--	if (hdmi->tmds_char_rate == conn_state->hdmi.tmds_char_rate)
-+	if (hdmi->tmds_char_rate == conn_state->hdmi.tmds_char_rate &&
-+	    s->output_bpc == conn_state->hdmi.output_bpc)
- 		return 0;
- 
- 	phy_cfg.hdmi.tmds_char_rate = conn_state->hdmi.tmds_char_rate;
-+	phy_cfg.hdmi.bpc = conn_state->hdmi.output_bpc;
- 
- 	ret = phy_configure(hdmi->phy, &phy_cfg);
- 	if (!ret) {
- 		hdmi->tmds_char_rate = conn_state->hdmi.tmds_char_rate;
- 		s->output_mode = ROCKCHIP_OUT_MODE_AAAA;
- 		s->output_type = DRM_MODE_CONNECTOR_HDMIA;
-+		s->output_bpc = conn_state->hdmi.output_bpc;
- 	} else {
- 		dev_err(hdmi->dev, "Failed to configure phy: %d\n", ret);
- 	}
-@@ -373,15 +391,49 @@ static void dw_hdmi_qp_rk3588_io_init(struct rockchip_hdmi_qp *hdmi)
- 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
- }
- 
-+static void dw_hdmi_qp_rk3576_enc_init(struct rockchip_hdmi_qp *hdmi,
-+				       struct rockchip_crtc_state *state)
-+{
-+	u32 val;
-+
-+	if (state->output_bpc == 10)
-+		val = HIWORD_UPDATE(FIELD_PREP(RK3576_COLOR_DEPTH_MASK, RK3576_10BPC),
-+				    RK3576_COLOR_DEPTH_MASK);
-+	else
-+		val = HIWORD_UPDATE(FIELD_PREP(RK3576_COLOR_DEPTH_MASK, RK3576_8BPC),
-+				    RK3576_COLOR_DEPTH_MASK);
-+
-+	regmap_write(hdmi->vo_regmap, RK3576_VO0_GRF_SOC_CON8, val);
-+}
-+
-+static void dw_hdmi_qp_rk3588_enc_init(struct rockchip_hdmi_qp *hdmi,
-+				       struct rockchip_crtc_state *state)
-+{
-+	u32 val;
-+
-+	if (state->output_bpc == 10)
-+		val = HIWORD_UPDATE(FIELD_PREP(RK3588_COLOR_DEPTH_MASK, RK3588_10BPC),
-+				    RK3588_COLOR_DEPTH_MASK);
-+	else
-+		val = HIWORD_UPDATE(FIELD_PREP(RK3588_COLOR_DEPTH_MASK, RK3588_8BPC),
-+				    RK3588_COLOR_DEPTH_MASK);
-+
-+	regmap_write(hdmi->vo_regmap,
-+		     hdmi->port_id ? RK3588_GRF_VO1_CON6 : RK3588_GRF_VO1_CON3,
-+		     val);
-+}
-+
- static const struct rockchip_hdmi_qp_ctrl_ops rk3576_hdmi_ctrl_ops = {
- 	.io_init		= dw_hdmi_qp_rk3576_io_init,
--	.irq_callback	        = dw_hdmi_qp_rk3576_irq,
-+	.enc_init		= dw_hdmi_qp_rk3576_enc_init,
-+	.irq_callback		= dw_hdmi_qp_rk3576_irq,
- 	.hardirq_callback	= dw_hdmi_qp_rk3576_hardirq,
- };
- 
- static const struct rockchip_hdmi_qp_ctrl_ops rk3588_hdmi_ctrl_ops = {
- 	.io_init		= dw_hdmi_qp_rk3588_io_init,
--	.irq_callback	        = dw_hdmi_qp_rk3588_irq,
-+	.enc_init		= dw_hdmi_qp_rk3588_enc_init,
-+	.irq_callback		= dw_hdmi_qp_rk3588_irq,
- 	.hardirq_callback	= dw_hdmi_qp_rk3588_hardirq,
- };
- 
-@@ -474,6 +526,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 
- 	plat_data.phy_ops = cfg->phy_ops;
- 	plat_data.phy_data = hdmi;
-+	plat_data.max_bpc = 10;
- 
- 	encoder = &hdmi->encoder.encoder;
- 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
-
--- 
-2.50.1
-
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
