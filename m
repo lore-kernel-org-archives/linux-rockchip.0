@@ -4,79 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDEDFCA0FE9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 09:03:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15867CA0FE9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 09:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jTx6BjCp1jGdCXLL4QDYMhFIrNhmHRSUe21TIwSXqu0=; b=g/x6D3oMNBaeEs
-	F6W+9kRY0hcjhKz8a39qiXrkjAS++mSVmab1JsX1ksKBMnpWlBakXpoER+wOV+X7PuSaJsbiGZ5Ot
-	l5dTxUelWGx37Ep9ABFz1lsyACSatGX9SDBjHw008f7k9e6+KDwr3Wp1jtnEIpat/i1/i1R5HIXCi
-	uiWq+iKp9xNedWqsPnGxj4WkGERs+9poE8yygD+GA07BODLa8DXuSmKdJl3wMci1fGzikk1OErRXl
-	anZG2kKNMS68IuCMRHTroTgqvye6CnO+oYIBz9WcnBydyV6pi5jkHBBkQFT08s+sRdQurcsphRTQV
-	JtPoWQFrDQRZp1tz3dZw==;
+	List-Owner; bh=lxmvuJKTNMSbXiVGU2KBbQxA787TxsHJERK04Ak9c2A=; b=boYSg7WrQeMSFU
+	lZtNPqLiLIjsjwQcNeYecYTVaHZbsG/zb86qRVeE170kN6ndJFW+lzUzHIUYOAmf17HWxMZmUkTlk
+	iRqTVaUufbM1xFlPDbIxkJzKjx20EZ0BauE66r6Z7OtPNQFdWD5CuecBjsWVv5OND2ce/+56Gn6F/
+	3Mga1h5jKhbXI2gkZycVq9cEPH/qIYIXnorzIlFWGhLNtd28+EshxNcDActgweM2f3BTQNsaCn9U1
+	7FPdnYzbrFeGjBdXOhrwq+aabH70sDebR26QivSNsDgDLSGnjhsn72YFJV5xGf7qPZVW2rPVWrsKQ
+	Ji2GgVUPfCluIF4GLGjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqT7I-00000007R6b-0STs;
-	Mon, 25 Aug 2025 09:03:52 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uqTch-00000007W3H-1Kll;
+	Mon, 25 Aug 2025 09:36:19 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqSlt-00000007MNo-0dd5;
-	Mon, 25 Aug 2025 08:41:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B8C17404BD;
-	Mon, 25 Aug 2025 08:41:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E789C4CEED;
-	Mon, 25 Aug 2025 08:41:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756111304;
-	bh=K2j4Xg82+Ip2/lcscGXYAAN0FTOLzSOwafKLqgXQ6dA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=ZBAHoObexxJACm0CyT3rWXmTuEE3szQxoY+ur1d3YdWHQaypq84Bs3bw170XTdiJs
-	 Fbkj+dLEIluoQjMCiePR3+JYeu2vjM/kZ5FUo4gmjOAVjqhrIrxUIsYMfm0z55V5z/
-	 fs4QYjZqJi7rxJ5VxWWchq/yTvwSj7xStzfihEv9Y/SsfJc5slYpJUGrOf93HPIvFL
-	 a0e7q75do94CVIMGHOgJ/VpMIDC2D7nFQOtpeEnLr/Hwr8tUNlSMSo5UrwGktdFcu5
-	 gPtDrlIV1iPA+gG1UmsY6pAtRTF1+7Jm+owKUNZpYQ3OlNR15vKbyaHqY2irS2NWEi
-	 81EoJrJwx/hEw==
-Date: Mon, 25 Aug 2025 09:41:28 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Xichao Zhao <zhao.xichao@vivo.com>, David Lechner
- <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy
- Shevchenko <andy@kernel.org>, Andreas Klinger <ak@it-klinger.de>, Haibo
- Chen <haibo.chen@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Marius Cristea
- <marius.cristea@microchip.com>, Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Heiko Stuebner
- <heiko@sntech.de>, Francesco Dolcini <francesco@dolcini.it>,
- =?UTF-8?B?Sm/Do28=?= Paulo =?UTF-8?B?R29uw6dhbHZlcw==?=
- <jpaulo.silvagoncalves@gmail.com>, Hugo Villeneuve
- <hvilleneuve@dimonoff.com>, Gustavo Silva <gustavograzs@gmail.com>, Tomasz
- Duszynski <tomasz.duszynski@octakon.com>, Jagath Jog J
- <jagathjog1996@gmail.com>, Crt Mori <cmo@melexis.com>, Per-Daniel Olsson
- <perdaniel.olsson@axis.com>, Waqar Hameed <waqar.hameed@axis.com>, Yasin
- Lee <yasin.lee.x@gmail.com>, Julien Stephan <jstephan@baylibre.com>, "open
- list:IIO SUBSYSTEM AND DRIVERS" <linux-iio@vger.kernel.org>, open list
- <linux-kernel@vger.kernel.org>, "open list:NXP i.MX 7D/6SX/6UL/93 AND VF610
- ADC DRIVER" <imx@lists.linux.dev>, "moderated list:ARM/FREESCALE IMX / MXC
- ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open
- list:ARM/Amlogic Meson SoC support" <linux-amlogic@lists.infradead.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH 0/7] iio: Remove dev_err_probe() if error is -ENOMEM
-Message-ID: <20250825094128.7d2834fa@jic23-huawei>
-In-Reply-To: <CAHp75VeDvK8cOr=rVGj_hVX5YzXM-UqrWRBgUrhiA1wzYn7C_w@mail.gmail.com>
-References: <20250821080723.525379-1-zhao.xichao@vivo.com>
-	<CAHp75VeDvK8cOr=rVGj_hVX5YzXM-UqrWRBgUrhiA1wzYn7C_w@mail.gmail.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-pc-linux-gnu)
+	id 1uqT0p-00000007Psa-2rpJ;
+	Mon, 25 Aug 2025 08:57:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756112230;
+	bh=qZJVzvB3RYpOJBlaQE6hqE/Fp8nZMiJrz+TTlwmiAgM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=mLv63d/+/8+H3yf17N8H6yqChGhHVHwgC7VK3Q4XO+ioqw01iGN8jef7nujur1mrn
+	 JR08cMTTaVdOmADo+7ODNRXC2eNTvDG2iIFZYCDoCRgN5o6wnBGpT1Q1sNGgikXsCW
+	 qEMewjB7NYR/J14XXCK8g8h8rU+APjkTRrdnolYjRpfhyk/drWHB1kpHucNTKaQZL0
+	 PhxHiVNgR4cMPHVJUrdHi9RmNZITi77Q1hLz8m4LZ8fRQYnsBsIM5UPDiQpNrhvb+J
+	 LRVi36dC252sKCbZkduMWbRtosWI66aO8w7+KLwu4Ik6bPJh8KFuJPd0Ruj3fRm0Qn
+	 mujoaySQAtAqQ==
+Received: from localhost (unknown [82.79.138.60])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 2A72D17E0523;
+	Mon, 25 Aug 2025 10:57:10 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Mon, 25 Aug 2025 11:56:42 +0300
+Subject: [PATCH v3 2/6] drm/bridge: dw-hdmi-qp: Fixup timer base setup
 MIME-Version: 1.0
+Message-Id: <20250825-rk3588-hdmi-cec-v3-2-95324fb22592@collabora.com>
+References: <20250825-rk3588-hdmi-cec-v3-0-95324fb22592@collabora.com>
+In-Reply-To: <20250825-rk3588-hdmi-cec-v3-0-95324fb22592@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_014145_207555_ED392CBC 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20250825_015711_904795_4877E59C 
+X-CRM114-Status: GOOD (  13.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,21 +80,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMSBBdWcgMjAyNSAxMToxMzowMCArMDMwMApBbmR5IFNoZXZjaGVua28gPGFuZHku
-c2hldmNoZW5rb0BnbWFpbC5jb20+IHdyb3RlOgoKPiBPbiBUaHUsIEF1ZyAyMSwgMjAyNSBhdCAx
-MTowN+KAr0FNIFhpY2hhbyBaaGFvIDx6aGFvLnhpY2hhb0B2aXZvLmNvbT4gd3JvdGU6Cj4gPgo+
-ID4gVGhlIGRldl9lcnJfcHJvYmUoKSBkb2Vzbid0IGRvIGFueXRoaW5nIHdoZW4gZXJyb3IgaXMg
-Jy1FTk9NRU0nLiAgCj4gCj4gd2hlbiB0aGUgZXJyb3IKPiAKVHdlYWtlZCBhbmQgYXBwbGllZC4K
-Cj4gPiBUaGVyZWZvcmUsIHJlbW92ZSB0aGUgdXNlbGVzcyBjYWxsIHRvIGRldl9lcnJfcHJvYmUo
-KSwgYW5kIGp1c3QKPiA+IHJldHVybiB0aGUgdmFsdWUgaW5zdGVhZC4gIAo+IAo+IEluIGZhdm91
-ciBvZiB0aGlzIHNlcmllcywKPiBSZXZpZXdlZC1ieTogQW5keSBTaGV2Y2hlbmtvIDxhbmR5QGtl
-cm5lbC5vcmc+Cj4gKHllcywgSSBpbmRlZWQgbG9va2VkIGF0IGFsbCBwYXRjaGVzIGluIHRoaXMg
-b25lIDotKQo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+Currently the TIMER_BASE_CONFIG0 register gets initialized to a fixed
+value as initially found in vendor driver code supporting the RK3588
+SoC.  As a matter of fact the value matches the rate of the HDMI TX
+reference clock, which is roughly 428.57 MHz.
+
+However, on RK3576 SoC that rate is slightly lower, i.e. 396.00 MHz, and
+the incorrect register configuration breaks CEC functionality.
+
+Set the timer base according to the actual reference clock rate that
+shall be provided by the platform driver.
+
+While at it, also drop the unnecessary empty lines in
+dw_hdmi_qp_init_hw().
+
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 11 ++++++++---
+ include/drm/bridge/dw_hdmi_qp.h              |  1 +
+ 2 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index 96455b3bb7b6a3f6ad488d10bc9ba90a1b56e4c8..42a90e0383061dad6c8416af21b27db7a3ba6d7d 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -162,6 +162,7 @@ struct dw_hdmi_qp {
+ 		void *data;
+ 	} phy;
+ 
++	unsigned long ref_clk_rate;
+ 	struct regmap *regm;
+ 
+ 	unsigned long tmds_char_rate;
+@@ -1223,13 +1224,11 @@ static void dw_hdmi_qp_init_hw(struct dw_hdmi_qp *hdmi)
+ {
+ 	dw_hdmi_qp_write(hdmi, 0, MAINUNIT_0_INT_MASK_N);
+ 	dw_hdmi_qp_write(hdmi, 0, MAINUNIT_1_INT_MASK_N);
+-	dw_hdmi_qp_write(hdmi, 428571429, TIMER_BASE_CONFIG0);
++	dw_hdmi_qp_write(hdmi, hdmi->ref_clk_rate, TIMER_BASE_CONFIG0);
+ 
+ 	/* Software reset */
+ 	dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
+-
+ 	dw_hdmi_qp_write(hdmi, 0x085c085c, I2CM_FM_SCL_CONFIG0);
+-
+ 	dw_hdmi_qp_mod(hdmi, 0, I2CM_FM_EN, I2CM_INTERFACE_CONTROL0);
+ 
+ 	/* Clear DONE and ERROR interrupts */
+@@ -1255,6 +1254,11 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+ 		return ERR_PTR(-ENODEV);
+ 	}
+ 
++	if (!plat_data->ref_clk_rate) {
++		dev_err(dev, "Missing ref_clk rate\n");
++		return ERR_PTR(-ENODEV);
++	}
++
+ 	hdmi = devm_drm_bridge_alloc(dev, struct dw_hdmi_qp, bridge,
+ 				     &dw_hdmi_qp_bridge_funcs);
+ 	if (IS_ERR(hdmi))
+@@ -1274,6 +1278,7 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+ 
+ 	hdmi->phy.ops = plat_data->phy_ops;
+ 	hdmi->phy.data = plat_data->phy_data;
++	hdmi->ref_clk_rate = plat_data->ref_clk_rate;
+ 
+ 	dw_hdmi_qp_init_hw(hdmi);
+ 
+diff --git a/include/drm/bridge/dw_hdmi_qp.h b/include/drm/bridge/dw_hdmi_qp.h
+index b4a9b739734ec7b67013b683fe6017551aa19172..76ecf31301997718604a05f70ce9eab8695e26b5 100644
+--- a/include/drm/bridge/dw_hdmi_qp.h
++++ b/include/drm/bridge/dw_hdmi_qp.h
+@@ -24,6 +24,7 @@ struct dw_hdmi_qp_plat_data {
+ 	void *phy_data;
+ 	int main_irq;
+ 	int cec_irq;
++	unsigned long ref_clk_rate;
+ };
+ 
+ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+
+-- 
+2.50.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
