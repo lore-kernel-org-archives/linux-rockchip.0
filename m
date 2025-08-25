@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6D53CA0EFA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 11:28:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23CDCCA0EFA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 11:42:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yoWYhjOqdUnJUngi2+zxHhHfTyNFOhtS/mTptg9UecA=; b=hJ1DeP5s6/Fafh
-	j1lbxDbGn38ZCTCF3KqK89JK+OS35bxgMnLB1fUfzMGtItbaxRNnMu2hvjzg6nLkgVahMTAMzOIQe
-	RBhOhg+45OMm84j6TL1DWsg0Ep32MeTaz01O3eVCjkdDgVZ5bsOjn+ytVUVLsEwSkmEgIWXWGrxn+
-	XfA9TThIlVDOyPverQsXqFP1QMUAkcr61iMm3cMp2GatlsQxo5x6DBTiBvyyymJ3+kRs9sJ5jzL6L
-	U2jiJ8xHV4YdLXeYvq38JnKgMaEZ5vbo1REI94sJ7JLzAlrAVcAycg7romjV3ZyHlkbw1C09EAEJ6
-	dQik5MFw79KF2ZTizNcw==;
+	List-Owner; bh=DxGjVW6fe/lTb+Kc1Jz59X4OV/1+nj4ltzB4huZai/I=; b=Z/m7/EG/RGXFuB
+	+74LwIidbtiHETLCVK9eRKJir8UtTShthyKKMCReULqa5iEVJBiHwdu3378wzhbKo75gdTczt38C8
+	zmtTRSwwO+2MHhTeRI2FH1XgNwDqCDkHhXD2FBgp1ZlHxgQ32BIroHi2yMgtWdu1CjXVIwVjSO6BA
+	SvZerx8jGVx5H72uAKlEY+hvmGQHhpCZnEhGC1RBeQJqDSK7Wsr5cVVkNYDcDq6A3N9KrjPwIpaCi
+	ltUzumpFUcAklkjydRBozgXreJGQrf6zLqHD5tnujAbcyuU5xzfdKlCdIbSb/W9wFHWZhCAaguDZV
+	yCwCkPDxQGQy+XxcjYZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqVN8-00000007jr5-24Lf;
-	Mon, 25 Aug 2025 11:28:22 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uqVaP-00000007nLW-0lZj;
+	Mon, 25 Aug 2025 11:42:05 +0000
+Received: from mail-m1973192.qiye.163.com ([220.197.31.92])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqTF6-00000007RzY-34Sh;
-	Mon, 25 Aug 2025 09:11:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1756113100; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ec8cyEUwiNI3LFhu8Bjr6TA4Ifd4X3t9gH9QHQqcOXK5FOOElNUvv5JYceocSXO76UZHo3rRHHjwd8h/U5yHjJBua+x0EpRi6KWh2jNzCa7gDYs0/H5b0mcM+Lb3wmWa2Cc8pkXK40RQOBqFpFx9Icyhna1Cyl/tPt8Ti/1Wv6E=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1756113100; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=4zV5r8kLElpBRlahVoUG9dL32SfwaAS/peHVJEeTGgE=; 
-	b=lOKX1ACuePfLg2c3+K7V6XewlAr9NPK6aQIa+PiyZGEZu+FbNLcKFi49vlmzKNn78T9vJzkaNQ6Nm61ps1chz7JbJgTAhN+iLpkv6iLkvQIOMHxC0fPWt+WhrOs7hWB9QSniAL/bpVkzE+g797gn47L0KLEsZ7dWLBMEzIk/Qc8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756113100;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=4zV5r8kLElpBRlahVoUG9dL32SfwaAS/peHVJEeTGgE=;
-	b=YflggP6f4+3KqQMd0IzfGOdaBd89fbchQZvRAVp0mLKhEIKs53GprABEnKxJPcDh
-	wiokus9kcYMAMiiIHJ+ek6m1oeuUL0XkEHZwa85lcOdVJxbNHO7Eq3Nodlmj2fHWWzH
-	AZq4MRi5Ef45b3RLoZtGziyTi0o7e4d8t47xZDg0=
-Received: by mx.zohomail.com with SMTPS id 1756113097823724.7840177435801;
-	Mon, 25 Aug 2025 02:11:37 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: William Breathitt Gray <wbg@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <ukleinek@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Kever Yang <kever.yang@rock-chips.com>, Yury Norov <yury.norov@gmail.com>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dave Ertman <david.m.ertman@intel.com>, Ira Weiny <ira.weiny@intel.com>,
- Leon Romanovsky <leon@kernel.org>, Lee Jones <lee@kernel.org>,
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org,
- linux-iio@vger.kernel.org, kernel@collabora.com,
- Jonas Karlman <jonas@kwiboo.se>,
- Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH v2 6/7] counter: Add rockchip-pwm-capture driver
-Date: Mon, 25 Aug 2025 11:11:31 +0200
-Message-ID: <3367507.aeNJFYEL58@workhorse>
-In-Reply-To: <20250720002024.696040-1-wbg@kernel.org>
-References: <20250720002024.696040-1-wbg@kernel.org>
+	id 1uqTxY-00000007Zso-3gTC;
+	Mon, 25 Aug 2025 09:57:54 +0000
+Received: from [172.16.12.153] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2082e1fe5;
+	Mon, 25 Aug 2025 17:57:46 +0800 (GMT+08:00)
+Message-ID: <d0fe6d16-181f-4b38-9457-1099fb6419d0@rock-chips.com>
+Date: Mon, 25 Aug 2025 17:57:45 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v3] net: ethernet: stmmac: dwmac-rk: Make the
+ clk_phy could be used for external phy
+To: Marek Szyprowski <m.szyprowski@samsung.com>,
+ Chaoyi Chen <kernel@airkyi.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+ Jonas Karlman <jonas@kwiboo.se>, David Wu <david.wu@rock-chips.com>
+Cc: netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20250815023515.114-1-kernel@airkyi.com>
+ <CGME20250825072312eucas1p2d4751199c0ea069c7938218be60e5e93@eucas1p2.samsung.com>
+ <a30a8c97-6b96-45ba-bad7-8a40401babc2@samsung.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <a30a8c97-6b96-45ba-bad7-8a40401babc2@samsung.com>
+X-HM-Tid: 0a98e0a9922903abkunm8d311f8d115b06e
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk0ZSlYfTR1CGB8dSx9IS01WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=fX6zBgaTEeGN0mpna6Hvlzu9hPBOaJ7ysGmaTVSCNEshJ9NI0YvqT5dN41kV5vWU0MQxI0TSU8F7UxzWsQA9frFPm3X79taqass4ZUIJaPhcySrUKlvo3GWS8gfLxFa1RstO8YkKTk7RqkHJ2hQjZJeTm8Bl3jwoy9sEqJzh9HQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=EVpH2Wm83g8Rb+u3uT+a83bsfBledd8G1BDKOR8Jgq0=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_021156_827254_21406161 
-X-CRM114-Status: GOOD (  43.38  )
+X-CRM114-CacheID: sfid-20250825_025753_068959_47D69F98 
+X-CRM114-Status: GOOD (  18.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,131 +76,103 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sunday, 20 July 2025 02:20:15 Central European Summer Time William Breathitt Gray wrote:
-> On Mon, Jun 02, 2025 at 06:19:17PM +0200, Nicolas Frattaroli wrote:
-> > Among many other things, Rockchip's new PWMv4 IP in the RK3576 supports
-> > PWM capture functionality.
-> > 
-> > Add a basic driver for this that works to capture period and duty cycle
-> > values and return them as nanoseconds to the user. It's quite basic, but
-> > works well enough to demonstrate the device function exclusion stuff
-> > that mfpwm does, in order to eventually support all the functions of
-> > this device in drivers within their appropriate subsystems, without them
-> > interfering with each other.
-> > 
-> > Once enabled, the counter driver waits for enough high-to-low and
-> > low-to-high interrupt signals to arrive, and then writes the cycle count
-> > register values into some atomic members of the driver instance's state
-> > struct. The read callback can then do the conversion from cycle count to
-> > the more useful period and duty cycle nanosecond values, which require
-> > knowledge of the clock rate, which requires a call that the interrupt
-> > handler cannot make itself because said call may sleep.
-> > 
-> > To detect the condition of a PWM signal disappearing, i.e. turning off,
-> > we modify the delay value of a delayed worker whose job it is to simply
-> > set those atomic members to zero. Should the "timeout" so to speak be
-> > reached, we assume the PWM signal is off. This isn't perfect; it
-> > obviously introduces a latency between it being off and the counter
-> > reporting it as such. Because there isn't a way to reset the internal
-> > double-buffered cycle count in the hardware, we filter out unreliable
-> > periods above the timeout value in the counter read callback.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> 
-> Hi Nicolas,
-
-Hi William,
-
-> 
-> Would you help me understand the computations in this driver?
-> 
-> If I understand the purpose of this driver correctly, it's meant to
-> compute the period and duty cycle of a PWM signal. What do LPC and HPC
-> represent? I'm guessing they are the low period count (LPC) and the high
-> period count (HPC). So then you calculate the total period by adding
-> LPC and HPC, whereas the duty cycle derives from HPC.
-> 
-> Am I understanding the algorithm correctly? What are the units of HPC
-> and LPC; are they ticks from the core clock? Are PWMV4_INT_LPC and
-> PWM4_INT_HPC the change-of-state interrupts for LPC and HPC
-> respectively?
-
-HPC = High Polarity Cycles, LPC = Low Polarity Cycles. They are counted
-based on the pwm clock that the hardware runs at. PWMV4_INT_LPC and
-PWMV4_INT_HPC are one-bit flags that are raised in the interrupt register
-of this hardware when the interrupt is fired, to signal that LPC or HPC
-changed state.
-
-Your understanding of the algorithm appears to be correct, from my memory
-of when I wrote the code. The 4 captures left logic is because the
-hardware needs 4 level transitions before it can provide a useful
-number for those two counts; thinking about it more now, I'm surprised it
-can't do it in 3, so I'll need to double-check that next time I work on
-this.
-
-As an aside note, Rockchip has recently published the RK3506 Technical
-Reference Manual, and the RK3506 SoC uses the same PWM IP as the RK3576
-for which this driver is for. You can find it here in Chapter 31:
-
-https://opensource.rock-chips.com/images/3/36/Rockchip_RK3506_TRM_Part_1_V1.2-20250811.pdf
-
-This driver specifically implements "31.3.1 Capture Mode", later down
-the line I may want to add "31.3.4 Clock Counter", "31.3.5 Clock
-Frequency Meter" and "31.3.6 Biphasic Counter" but I lack a proper
-signal generator so didn't want to bite off more than I could test.
-
-> 
-> The Counter subsystem can be used to derive the period and duty cycle of
-> a signal, but I believe there's a more idiomatic way to implement this.
-> Existing counter drivers such as microchip-tcb-capture achieve this by
-> leveraging Counter events exposed via the Counter chrdev interface.
-> 
-> The basic idea would be:
->     * Expose LPC and HPC as count0 and count1;
->     * Push the PWMV4_INT_LPC and PWMV4_INT_HPC interrupts as
->       COUNTER_EVENT_CHANGE_OF_STATE events on channel 0 and channel 1
->       respectively;
->     * Register Counter watches in userspace to capture LPC and HPC on
->       each interrupt;
-> 
-> The Counter chrdev interface records a timestamp in nanoseconds with
-> each event capture. So to compute period and duty cycle, you would
-> subtract the difference between two HPC/LPC captures; the difference in
-> the timestamps gives you the elapsed time between the two captures in
-> nanoseconds.
-> 
-> Would that design work for your use case?
-
-Basically, any design would work for me. I've only implemented the
-counter driver to make sure the PWM reading part of the hardware works,
-and Uwe advised me that new PWM drivers should use the counter
-subsystem as opposed to implementing the PWM capture operation.
-
-So I think your design makes more sense; any user of this driver would
-likely want it to work like the other counter drivers, and exposing
-LPC and HPC directly would also let me get rid of the quirky "is the
-PWM actually off now" logic.
-
-I'll do this when I get the chance to work on this patch series again,
-as it needs a rewrite anyway to plug it into the MFD subsystem.
-
-> 
-> William Breathitt Gray
-> 
-
-Thank you for your review and suggestions!
-
-Kind regards,
-Nicolas Frattaroli
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTWFyZWssCgpPbiA4LzI1LzIwMjUgMzoyMyBQTSwgTWFyZWsgU3p5cHJvd3NraSB3cm90ZToK
+PiBPbiAxNS4wOC4yMDI1IDA0OjM1LCBDaGFveWkgQ2hlbiB3cm90ZToKPj4gRnJvbTogQ2hhb3lp
+IENoZW4gPGNoYW95aS5jaGVuQHJvY2stY2hpcHMuY29tPgo+Pgo+PiBGb3IgZXh0ZXJuYWwgcGh5
+LCBjbGtfcGh5IHNob3VsZCBiZSBvcHRpb25hbCwgYW5kIHNvbWUgZXh0ZXJuYWwgcGh5Cj4+IG5l
+ZWQgdGhlIGNsb2NrIGlucHV0IGZyb20gY2xrX3BoeS4gVGhpcyBwYXRjaCBhZGRzIHN1cHBvcnQg
+Zm9yIHNldHRpbmcKPj4gY2xrX3BoeSBmb3IgZXh0ZXJuYWwgcGh5Lgo+Pgo+PiBTaWduZWQtb2Zm
+LWJ5OiBEYXZpZCBXdSA8ZGF2aWQud3VAcm9jay1jaGlwcy5jb20+Cj4+IFNpZ25lZC1vZmYtYnk6
+IENoYW95aSBDaGVuIDxjaGFveWkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+Cj4+IENo
+YW5nZXMgaW4gdjM6Cj4+IC0gTGluayB0byBWMjogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbmV0
+ZGV2LzIwMjUwODEyMDEyMTI3LjE5Ny0xLWtlcm5lbEBhaXJreWkuY29tLwo+PiAtIFJlYmFzZSB0
+byBuZXQtbmV4dC9tYWluCj4+Cj4+IENoYW5nZXMgaW4gdjI6Cj4+IC0gTGluayB0byBWMTogaHR0
+cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbmV0ZGV2LzIwMjUwODA2MDExNDA1LjExNS0xLWtlcm5lbEBh
+aXJreWkuY29tLwo+PiAtIFJlbW92ZSBnZXQgY2xvY2sgZnJlcXVlbmN5IGZyb20gRFQgcHJvcAo+
+Pgo+PiAgICBkcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1yay5jIHwg
+MTEgKysrKysrKy0tLS0KPj4gICAgMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgNCBk
+ZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWlj
+cm8vc3RtbWFjL2R3bWFjLXJrLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1h
+Yy9kd21hYy1yay5jCj4+IGluZGV4IGFjODI4ODMwMTk5NC4uNWQ5MjFlNjJjMmY1IDEwMDY0NAo+
+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1yay5jCj4+
+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLXJrLmMKPj4g
+QEAgLTE0MTIsMTIgKzE0MTIsMTUgQEAgc3RhdGljIGludCBya19nbWFjX2Nsa19pbml0KHN0cnVj
+dCBwbGF0X3N0bW1hY2VuZXRfZGF0YSAqcGxhdCkKPj4gICAgCQljbGtfc2V0X3JhdGUocGxhdC0+
+c3RtbWFjX2NsaywgNTAwMDAwMDApOwo+PiAgICAJfQo+PiAgICAKPj4gLQlpZiAocGxhdC0+cGh5
+X25vZGUgJiYgYnNwX3ByaXYtPmludGVncmF0ZWRfcGh5KSB7Cj4+ICsJaWYgKHBsYXQtPnBoeV9u
+b2RlKSB7Cj4+ICAgIAkJYnNwX3ByaXYtPmNsa19waHkgPSBvZl9jbGtfZ2V0KHBsYXQtPnBoeV9u
+b2RlLCAwKTsKPj4gICAgCQlyZXQgPSBQVFJfRVJSX09SX1pFUk8oYnNwX3ByaXYtPmNsa19waHkp
+Owo+PiAtCQlpZiAocmV0KQo+PiAtCQkJcmV0dXJuIGRldl9lcnJfcHJvYmUoZGV2LCByZXQsICJD
+YW5ub3QgZ2V0IFBIWSBjbG9ja1xuIik7Cj4+IC0JCWNsa19zZXRfcmF0ZShic3BfcHJpdi0+Y2xr
+X3BoeSwgNTAwMDAwMDApOwo+PiArCQkvKiBJZiBpdCBpcyBub3QgaW50ZWdyYXRlZF9waHksIGNs
+a19waHkgaXMgb3B0aW9uYWwgKi8KPj4gKwkJaWYgKGJzcF9wcml2LT5pbnRlZ3JhdGVkX3BoeSkg
+ewo+PiArCQkJaWYgKHJldCkKPj4gKwkJCQlyZXR1cm4gZGV2X2Vycl9wcm9iZShkZXYsIHJldCwg
+IkNhbm5vdCBnZXQgUEhZIGNsb2NrXG4iKTsKPj4gKwkJCWNsa19zZXRfcmF0ZShic3BfcHJpdi0+
+Y2xrX3BoeSwgNTAwMDAwMDApOwo+PiArCQl9CgpJIHRoaW5rwqAgd2Ugc2hvdWxkIHNldCBic3Bf
+cHJpdi0+Y2xrX3BoeSB0byBOVUxMIGhlcmUgaWYgd2UgZmFpbGVkIHRvIGdldCB0aGUgY2xvY2su
+CgpDb3VsZCB5b3UgdHJ5IHRoaXMgb24geW91ciBib2FyZD8gVGhhbmsgeW91LgoKPj4gICAgCX0K
+Pj4gICAgCj4+ICAgIAlyZXR1cm4gMDsKPiBUaGUgYWJvdmUgY2hhbmdlIGxhY2tzIHRoZSBmb2xs
+b3dpbmcgY2hlY2sgaW5nbWFjX2Nsa19lbmFibGUoKTogaWYgKCFic3BfcHJpdi0+aW50ZWdyYXRl
+ZF9waHkpIHJldHVybiAwOwo+Cj4gT3RoZXJ3aXNlIGl0IGJsb3dzIG9uIG1hY2hpbmVzIHdpdGgg
+aW50ZWdyYXRlZCBQSFksIGxpa2UgSGFyZGtlcm5lbCdzIE9kcm9pZC1NMSAoUkszNTY4IGJhc2Vk
+KToKPgo+IHJrX2dtYWMtZHdtYWMgZmUyYTAwMDAuZXRoZXJuZXQ6IElSUSBldGhfbHBpIG5vdCBm
+b3VuZAo+IHJrX2dtYWMtZHdtYWMgZmUyYTAwMDAuZXRoZXJuZXQ6IElSUSBzZnR5IG5vdCBmb3Vu
+ZAo+IHJrX2dtYWMtZHdtYWMgZmUyYTAwMDAuZXRoZXJuZXQ6IGNsb2NrIGlucHV0IG9yIG91dHB1
+dD8gKG91dHB1dCkuCj4gcmtfZ21hYy1kd21hYyBmZTJhMDAwMC5ldGhlcm5ldDogVFggZGVsYXko
+MHg0ZikuCj4gcmtfZ21hYy1kd21hYyBmZTJhMDAwMC5ldGhlcm5ldDogUlggZGVsYXkoMHgyZCku
+Cj4gcmtfZ21hYy1kd21hYyBmZTJhMDAwMC5ldGhlcm5ldDogaW50ZWdyYXRlZCBQSFk/IChubyku
+Cj4gVW5hYmxlIHRvIGhhbmRsZSBrZXJuZWwgcGFnaW5nIHJlcXVlc3QgYXQgdmlydHVhbCBhZGRy
+ZXNzIGZmZmZmZmZmZmZmZmZmZmUKPiBNZW0gYWJvcnQgaW5mbzoKPiAgICAgRVNSID0gMHgwMDAw
+MDAwMDk2MDAwMDA2Cj4gICAgIEVDID0gMHgyNTogREFCVCAoY3VycmVudCBFTCksIElMID0gMzIg
+Yml0cwo+ICAgICBTRVQgPSAwLCBGblYgPSAwCj4gICAgIEVBID0gMCwgUzFQVFcgPSAwCj4gICAg
+IEZTQyA9IDB4MDY6IGxldmVsIDIgdHJhbnNsYXRpb24gZmF1bHQKPiBEYXRhIGFib3J0IGluZm86
+Cj4gICAgIElTViA9IDAsIElTUyA9IDB4MDAwMDAwMDYsIElTUzIgPSAweDAwMDAwMDAwCj4gICAg
+IENNID0gMCwgV25SID0gMCwgVG5EID0gMCwgVGFnQWNjZXNzID0gMAo+ICAgICBHQ1MgPSAwLCBP
+dmVybGF5ID0gMCwgRGlydHlCaXQgPSAwLCBYcyA9IDAKPiBzd2FwcGVyIHBndGFibGU6IDRrIHBh
+Z2VzLCA0OC1iaXQgVkFzLCBwZ2RwPTAwMDAwMDAwMDI0OWUwMDAKPiBbZmZmZmZmZmZmZmZmZmZm
+ZV0gcGdkPTAwMDAwMDAwMDAwMDAwMDAsIHA0ZD0wMDAwMDAwMDAzNzZmNDAzLCBwdWQ9MDAwMDAw
+MDAwMzc3MDQwMywgcG1kPTAwMDAwMDAwMDAwMDAwMDAKPiBJbnRlcm5hbCBlcnJvcjogT29wczog
+MDAwMDAwMDA5NjAwMDAwNiBbIzFdICBTTVAKPiBNb2R1bGVzIGxpbmtlZCBpbjogc25kX3NvY19y
+b2NrY2hpcF9pMnNfdGRtIHNuZF9zb2Nfcms4MTcgc25kX3NvY19jb3JlIHNuZF9jb21wcmVzcyBz
+bmRfcGNtX2RtYWVuZ2luZSByb2NrY2hpcF90aGVybWFsIHNuZF9wY20gZHdtYWNfcmsoKykgaGFu
+dHJvX3ZwdSByb2NrY2hpcF9zYXJhZGMgaW5kdXN0cmlhbGlvX3RyaWdnZXJlZF9idWZmZXIga2Zp
+Zm9fYnVmIHN0bW1hY19wbGF0Zm9ybSByb2NrY2hpcF9yZ2EgdjRsMl92cDkgc3RtbWFjIHNwaV9y
+b2NrY2hpcF9zZmMoKykgdjRsMl9oMjY0IHNuZF90aW1lciBwY3NfeHBjcyByb2NrY2hpcGRybSgr
+KSB2aWRlb2J1ZjJfZG1hX3NnIHY0bDJfanBlZyByazgwNV9wd3JrZXkgdjRsMl9tZW0ybWVtIHZp
+ZGVvYnVmMl9kbWFfY29udGlnIGR3X2hkbWlfcXAgcm9ja2NoaXBfZGZpIHJrODE3X2NoYXJnZXIg
+dmlkZW9idWYyX21lbW9wcyBhbmFsb2dpeF9kcCB2aWRlb2J1ZjJfdjRsMiBkd19taXBpX2RzaSBw
+YW5mcm9zdCBzbmQgcnRjX3JrODA4IGRybV9kcF9hdXhfYnVzIHZpZGVvZGV2IGRybV9zaG1lbV9o
+ZWxwZXIgc291bmRjb3JlIGR3X2hkbWkgdmlkZW9idWYyX2NvbW1vbiBkcm1fZGlzcGxheV9oZWxw
+ZXIgbWMgZ3B1X3NjaGVkIGFoY2lfZHdjIGlwdjYKPiBDUFU6IDMgVUlEOiAwIFBJRDogMTU0IENv
+bW06IHN5c3RlbWQtdWRldmQgTm90IHRhaW50ZWQgNi4xNy4wLXJjMSsgIzEwODc1IFBSRUVNUFQK
+PiBIYXJkd2FyZSBuYW1lOiBIYXJka2VybmVsIE9EUk9JRC1NMSAoRFQpCj4gcHN0YXRlOiA2MDQw
+MDAwOSAoblpDdiBkYWlmICtQQU4gLVVBTyAtVENPIC1ESVQgLVNTQlMgQlRZUEU9LS0pCj4gcGMg
+OiBjbGtfcHJlcGFyZSsweDE4LzB4NDQKPiBsciA6IGdtYWNfY2xrX2VuYWJsZSsweGY4LzB4MTg4
+IFtkd21hY19ya10KPiAuLgo+IENhbGwgdHJhY2U6Cj4gICAgY2xrX3ByZXBhcmUrMHgxOC8weDQ0
+IChQKQo+ICAgIGdtYWNfY2xrX2VuYWJsZSsweGY4LzB4MTg4IFtkd21hY19ya10KPiAgICBya19n
+bWFjX3Bvd2VydXArMHg0Yy8weDFmMCBbZHdtYWNfcmtdCj4gICAgcmtfZ21hY19wcm9iZSsweDNi
+NC8weDVjOCBbZHdtYWNfcmtdCj4gICAgcGxhdGZvcm1fcHJvYmUrMHg1Yy8weGFjCj4gICAgcmVh
+bGx5X3Byb2JlKzB4YmMvMHgyOTgKPiAgICBfX2RyaXZlcl9wcm9iZV9kZXZpY2UrMHg3OC8weDEy
+Ywo+ICAgIGRyaXZlcl9wcm9iZV9kZXZpY2UrMHg0MC8weDE2NAo+ICAgIF9fZHJpdmVyX2F0dGFj
+aCsweDljLzB4MWFjCj4gICAgYnVzX2Zvcl9lYWNoX2RldisweDc0LzB4ZDAKPiAgICBkcml2ZXJf
+YXR0YWNoKzB4MjQvMHgzMAo+ICAgIGJ1c19hZGRfZHJpdmVyKzB4ZTQvMHgyMDgKPiAgICBkcml2
+ZXJfcmVnaXN0ZXIrMHg2MC8weDEyOAo+ICAgIF9fcGxhdGZvcm1fZHJpdmVyX3JlZ2lzdGVyKzB4
+MjQvMHgzMAo+ICAgIHJrX2dtYWNfZHdtYWNfZHJpdmVyX2luaXQrMHgyMC8weDEwMDAgW2R3bWFj
+X3JrXQo+ICAgIGRvX29uZV9pbml0Y2FsbCsweDY0LzB4MzA4Cj4gICAgZG9faW5pdF9tb2R1bGUr
+MHg1OC8weDIzYwo+ICAgIGxvYWRfbW9kdWxlKzB4MWI0OC8weDFkYzQKPiAgICBpbml0X21vZHVs
+ZV9mcm9tX2ZpbGUrMHg4NC8weGM0Cj4gICAgaWRlbXBvdGVudF9pbml0X21vZHVsZSsweDE4OC8w
+eDI4MAo+ICAgIF9fYXJtNjRfc3lzX2Zpbml0X21vZHVsZSsweDY4LzB4YWMKPiAgICBpbnZva2Vf
+c3lzY2FsbCsweDQ4LzB4MTEwCj4gICAgZWwwX3N2Y19jb21tb24uY29uc3Rwcm9wLjArMHhjOC8w
+eGU4Cj4gICAgZG9fZWwwX3N2YysweDIwLzB4MmMKPiAgICBlbDBfc3ZjKzB4NGMvMHgxNjAKPiAg
+ICBlbDB0XzY0X3N5bmNfaGFuZGxlcisweGEwLzB4ZTQKPiAgICBlbDB0XzY0X3N5bmMrMHgxOTgv
+MHgxOWMKPiBDb2RlOiA5MTAwMDNmZCBmOTAwMGJmMyA1MjgwMDAxMyBiNDAwMDBlMCAoZjk0MDAw
+MTMpCj4gLS0tWyBlbmQgdHJhY2UgMDAwMDAwMDAwMDAwMDAwMCBdLS0tCj4KPiBCZXN0IHJlZ2Fy
+ZHMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
