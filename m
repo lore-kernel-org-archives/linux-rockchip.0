@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6D42CCD1A7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 968E6CCD1A5
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:03:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,53 +12,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KfnZJca2iZo0lktCSgxrd5ArURXpyPlA5WXDgHZX2Is=; b=YW7vDskfIdmEcs
-	IMYwUJMx1gJG+YmZKraktFnUuBNZo2U2gxZqMY/XynFk/snp1ki6PAcqZzfQBNUffVN10/miXr7L+
-	VHnvaUeqIrncDZX5D86gXhod4cZDw4wawSciDEsVH2+1zXuaTzWsdqfY4EJ8ox/3u5TXW9/gALBOV
-	mc9ttvV3AarK6W3ELSm0qIgiV1YWIuCb7UI5zBoRhQysSu/KKGbsQlogLPyKOEe6Blqp01zY0J1OI
-	ktpIqPZO2+X1hoWdGHiC3IxLCkfwMBYlCOsDKiTQQ52G8VvYDhb945V3i/Z+Pgu052a0DnAbh50DZ
-	/UjqDsXjz0pw4pVEHPVA==;
+	List-Owner; bh=rVzX+usiajfmz+ktfpKdVr95KBDyc8pSF9LjKBLossM=; b=CXwuLCVyqFaMbA
+	fusqSfpNj2F8zKNtjn04UAL5XyrVnJRBffoXD+IOjvU77MkQwrEWJsLbnV0o9gDc55f1pqvjQmtDe
+	Xj7988JsCa7kNYMOtjwRGaddLx3uBwAMBd9z6xuz+NcAQjF2OWFBPGFMhzJS4h0k+1pysEy95ge6x
+	Zow0yAvtICwtDs6yvKLjdm2Ja2Ssp6UKAjgI55Fj3Mg+ANLeMEmR11IHLqPWQCDjkjjFMz7NW66Sw
+	q1iz5ZLuBl8rt5VYTXt9UB523IZkdmQ1H7kYFHJs3cw5cAILn09sUPlRgiDY7c98mF1uzV1qDrosj
+	wwPcFZF+W0+HVsjx/q3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAoc5-0000000DHE1-1ThI;
-	Mon, 20 Oct 2025 12:03:45 +0000
+	id 1vAoc3-0000000DHAa-0fbN;
+	Mon, 20 Oct 2025 12:03:43 +0000
 Received: from bayard.4d2.org ([155.254.16.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqYyj-00000008UMr-3qTR;
-	Mon, 25 Aug 2025 15:19:27 +0000
+	id 1uqYyY-00000008UHR-1W2k;
+	Mon, 25 Aug 2025 15:19:16 +0000
 Received: from localhost (bayard.4d2.org [127.0.0.1])
-	by bayard.4d2.org (Postfix) with ESMTP id D81D812FB9E7;
-	Mon, 25 Aug 2025 08:19:24 -0700 (PDT)
+	by bayard.4d2.org (Postfix) with ESMTP id AB24612FB9E5;
+	Mon, 25 Aug 2025 08:19:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=4d2.org; s=mail;
-	t=1756135165; bh=A7Ok+6x0nz7G/NXQZolAaahGwavoIJocShJSVNv4IUY=;
+	t=1756135153; bh=sMV/r13xaDCOGwclCYrCYPx8JsEJQfAVbK0WWd0PfCk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VUpZlwhPxWL3ebw/nnirosxs3Rjd5L7t/60O/HEV9YxrNt2siHqrlZaZDter3XKN8
-	 PsYY/F+uuzOxMUIrMLBnzxR2QSneGnJk3Mzpjtjkmr2fNqiymcDPhdiYuRWqL4Ne7k
-	 Khi1pAOAQp1g6nHWSv6Qmp2sfIx+7NpAN0IBLMTPHCIWRkkKbZnJAKboONlp8zNsaH
-	 UJj/PiwGVbX5uQ74V1aqDseWL5Z+FWFENTfXDe5Sg/K82P6tNRrlpd+cPN9H4oudfz
-	 2rDKHuXmgj/vzunHquSVHpf1HL4WLRMLz47qThVFat1+9OveTtQQKe7f77Ne+L/Nw2
-	 7EUZh/J1K+4yg==
+	b=nFxpdDPHSSHrNvalxlfslavif8KN/XNBB6ikFGmr05Na754ayd8utbPQ9n0TiNW38
+	 BHHF79wQpnI3DnF8Ql/HFQ/nortgl322ZDUE5lpBEc3JGPb0wzBb8pehZa4hE7hDpz
+	 NhZ3DWQ1JaQkq4DE/JZHVN0uuWYB7/z3g8KJASmLdVPpEhftFCwMPcr+kYgz8wP7/K
+	 JLvvGjt9ghUNH2WXBYI3xzjMYJgdtuo16bHOu4OIraN9SMrsPeU9ofKiuobxvLSnxV
+	 /o90/BRiI2Uu82IrytH+h7rUCR0b0wc5Hep8A4b8ZYPBWAq8kaqc4n0guZJ9LvzEmj
+	 iSBkjf5TrBqsA==
 X-Virus-Scanned: amavis at 4d2.org
 Received: from bayard.4d2.org ([127.0.0.1])
  by localhost (bayard.4d2.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4Ty0wALkvtYN; Mon, 25 Aug 2025 08:19:23 -0700 (PDT)
+ id f_wPsIySFG5a; Mon, 25 Aug 2025 08:19:11 -0700 (PDT)
 Received: from ketchup (unknown [117.171.64.92])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: heylenay@4d2.org)
-	by bayard.4d2.org (Postfix) with ESMTPSA id 41E5A12FB9E3;
-	Mon, 25 Aug 2025 08:19:00 -0700 (PDT)
+	by bayard.4d2.org (Postfix) with ESMTPSA id 10EB112FB435;
+	Mon, 25 Aug 2025 08:18:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=4d2.org; s=mail;
-	t=1756135163; bh=A7Ok+6x0nz7G/NXQZolAaahGwavoIJocShJSVNv4IUY=;
+	t=1756135108; bh=sMV/r13xaDCOGwclCYrCYPx8JsEJQfAVbK0WWd0PfCk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=duEdRiVjwA2Ug0kAQ3mge4pcWDsoESpJ80SNf7IVWNzZZRpvm9evWQaowfkmCkZ+a
-	 oQWfjuZ+IzKzxlNrb09/4ZRdSpGOXBG+6YisKkS1cb/wksihSBhCJJk+lYXYFU6oxF
-	 QU4EAvZTzJ1PC9QsR6agnYj/+z7cC1L7x2Cd1zufggZRqATeTKyn2StZ/7c8atpREJ
-	 w5ronVaZKmRKyj14LxpKmy7ZO75UbpRAqllX4O/IomGBw8vJLF87Rs4pk9IwW+zy2D
-	 NLRc9ZoreAMYv1VcszhcTWaeSAmCBma/XwUAUK2WeCTsX+8xnzC7csZqc2FKwbuYL/
-	 P0JKnwjGbGeJg==
-Date: Mon, 25 Aug 2025 15:18:57 +0000
+	b=IrRd//3zvi/Xe7ZKmGPCo0Qo7oL9twAQW4yP6V/ajKSU8jvufzcK3JPGF+z+hZcKm
+	 ++Q94D6SultYJ8lvWKyvCXegESPdKdtWJCcSNJVGKuwpMn/Y3z1PKJpukDw/lbK7Xh
+	 LyNsb7Y4uYafp9bd+7+uP7BGV0kjsTtGI2o10xvfd96VVsD/6yBjBpZiFtcbmG/aQS
+	 zX51QF6IrHFZs4FrUQ43w42nbzhmzMZvH/XhjtqG6Ul26kuNYr7VuowAkaH81wardA
+	 R8K/dmy27Idr7nhcOCjaf80CTfywcJywGfHO700ptNzCL20BRirZ1y0kyWmO/5qYz5
+	 8f+DJCtT1p1lw==
+Date: Mon, 25 Aug 2025 15:18:04 +0000
 From: Haylen Chu <heylenay@4d2.org>
 To: bmasney@redhat.com, Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
@@ -135,17 +135,17 @@ Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
-Subject: Re: [PATCH 051/114] clk: spacemit: ccu_pll: convert from
+Subject: Re: [PATCH 050/114] clk: spacemit: ccu_mix: convert from
  round_rate() to determine_rate()
-Message-ID: <aKx-4bkkOeVi7j82@ketchup>
+Message-ID: <aKx-rDkmp5V-RVjZ@ketchup>
 References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
- <20250811-clk-for-stephen-round-rate-v1-51-b3bf97b038dc@redhat.com>
+ <20250811-clk-for-stephen-round-rate-v1-50-b3bf97b038dc@redhat.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-51-b3bf97b038dc@redhat.com>
+In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-50-b3bf97b038dc@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_081925_997426_F1625A79 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20250825_081914_438129_901CAF3B 
+X-CRM114-Status: GOOD (  13.50  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:19 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -163,7 +163,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 11, 2025 at 11:18:43AM -0400, Brian Masney via B4 Relay wrote:
+On Mon, Aug 11, 2025 at 11:18:42AM -0400, Brian Masney via B4 Relay wrote:
 > From: Brian Masney <bmasney@redhat.com>
 > 
 > The round_rate() clk ops is deprecated, so migrate this driver from
@@ -172,8 +172,8 @@ On Mon, Aug 11, 2025 at 11:18:43AM -0400, Brian Masney via B4 Relay wrote:
 > 
 > Signed-off-by: Brian Masney <bmasney@redhat.com>
 > ---
->  drivers/clk/spacemit/ccu_pll.c | 10 ++++++----
->  1 file changed, 6 insertions(+), 4 deletions(-)
+>  drivers/clk/spacemit/ccu_mix.c | 12 +++++++-----
+>  1 file changed, 7 insertions(+), 5 deletions(-)
 
 Reviewed-by: Haylen Chu <heylenay@4d2.org>
 
