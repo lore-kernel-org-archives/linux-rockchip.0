@@ -4,114 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45E3BCA0FE7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 19:08:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB149C8303F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 19:08:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HeBIcSECxBYLaLp5b8tLrrzVBoNz3CZVzyXFBYiQaEs=; b=Xnkvd+mPpXkMiz
-	83bzu/zRAF1NbSAHNM991nl/nrAqGEZC2B8SjUZZQhAEtTWlkXYbPwQ01VUWvk4IhQtwXjlGC2scR
-	OvLDLVopDbQUGXT7m62PF8QYdHv+HxTeckr5SuG82mdox/4JwWP8r+P2hOxMk64NgxkXTj2i63r1z
-	rvSVh0xS9fKyZk669+rZDwLgOkfOfaqF2dK9nfJo4jNkgzXq2O25IrO9T2yBI1wEFRMutIhG4PGEn
-	jiB5VQcI+W4UMSYMSJYkoUc6sLTH0UtTTK+kpzkG/QCT7MfbKx48lzQ/IMbq+gzZsOFExyseddu59
-	P4jZu2LmGCu+/1yI1RqA==;
+	List-Owner; bh=wwhWkC88EONgsaXmS7829Xko4xfCsFuy/ZLmRyMCEKc=; b=zuaBfTIcQiXznD
+	pLvyNL9kPtgh5zzhl/CTk7vGcBBcnhhm51vq7mOYr7m6AL3hjSyyidcdydSEMn/goL77WvX96vgEZ
+	PXJ19BaxU+8F8UmY7p6sYX5Yt/eDgZPHgqhXshQYERvdyzXFZ8D6G1048dBDXpQCFN1rw8L2tg7x3
+	/wk7EOBq5KmXGUFq9uHtb8QdPmIpnzmrl3FvcJWmBpRCNCe3tHoHojXxW4TcS5EqpqH36WL3hB23K
+	0ReDiHKKKV5fzN3nzZ3gLlaezjc34nmcyDwx5mBRTWzNuzLVAkXt4CS1BhtI1+D7jGf/9oKlH1Rb+
+	pkbCYKfbxS1R9PNCm4Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqcY5-00000009AfM-1n0p;
-	Mon, 25 Aug 2025 19:08:09 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uqcYI-00000009Axh-3tJ6;
+	Mon, 25 Aug 2025 19:08:22 +0000
+Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqXVR-000000088Bb-2ddB;
-	Mon, 25 Aug 2025 13:45:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4AC214368E;
-	Mon, 25 Aug 2025 13:45:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78C4CC116C6;
-	Mon, 25 Aug 2025 13:45:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756129505;
-	bh=GVCQVXgqlXIQqoFKKvRG4d8j+VMj99ulhE3PjHHUahc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=qqRxq6FuF6J6qzpaV4wO2Uzah4+ol8zsgdDB7soEAXzYTWjCBHd/VpODhx1JvOnSL
-	 8iCB5b0/ngm026gAElFp7jAcZu0miEKYYtq9u5bNBQUF4o7UnPIwUuDhtd2C4TY+/c
-	 I5ysyLNCkAeYwWkWLWCM5Wz5IXDvwqMlFqAHtPDmpXl8AeO/IHtZstLXpoN1jRNiS3
-	 o4DHysweEnhC+aYGiN1XXKsAHbXYM+Z/S4tZaAnv4A6ZLHyyJM0dWfy1j1ZbCw8VFR
-	 Z9FIQD85aYZ4ddVPobiMw2tMUQ8iNxMqAxGopVx7i4bGian99GNhb7+l9PMoRU3JnF
-	 Ma/LH3J6ES8Og==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 25 Aug 2025 15:43:38 +0200
-Subject: [PATCH 33/39] drm/vc4: Switch to drm_atomic_get_new_crtc_state()
+	id 1uqadT-00000008mf1-1rcT
+	for linux-rockchip@lists.infradead.org;
+	Mon, 25 Aug 2025 17:05:37 +0000
+Received: by mail-qv1-xf2a.google.com with SMTP id 6a1803df08f44-70bb007a821so60140196d6.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 25 Aug 2025 10:05:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ziepe.ca; s=google; t=1756141534; x=1756746334; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=z6KxvMDzVSOwTyVOOifum1zHj+Q1NMnnZSanrfOQhBQ=;
+        b=NmVlTBflaICm62z8NJu8Oh5uYxvKJ5DWcVdGc4TNElgBbprmIRc6cHb/L0cjFnDyJJ
+         FkcSdKxpJ1L8afrrTu+MGitiDYK2IE9b4ZT4/2Syb+nsXgTr/XTrKu8d/i3bgfI5yysf
+         KhdjMz1+pZYB5OUq5rRGIMdY4AP3drEEMpC6cs7lcaM5TSGh3bjoHsG/7PDQqD0hOk2y
+         3BFbk6jaGJU5phx34rtME4MTdKUBlZ+2gG8Kbo6GhodLXncHHY1pE/7cMqQEZvlV8r+J
+         2w+oDIq94ZxX/jENyPfWjCEz4lpci266TMXbOP1bTHNjjZHD6uyTnZY9WEdtlKSENLVa
+         hGoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756141534; x=1756746334;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=z6KxvMDzVSOwTyVOOifum1zHj+Q1NMnnZSanrfOQhBQ=;
+        b=RbBFoQYIcv1boEOr0IyDgIZ/Ds8XWhNFdi8UDOzYHJBjUXiiTrCz2Xlg9/ckadrK4M
+         XpBjLLYdKSIMoi2oBuLv9ItrTv9iln5RlDbiMbXJ0pwosDCgCCizgOLJb6J5zwTq99uT
+         ZH9yAlClQ2WQJ26H4vbW24pqScMJaFjj4smoxN9wSRvWXF6g5bGohgWFK4jGOmMnFVGP
+         CWsL4v8Au1eLEfvntHTZAMZwq4qij9mAi38ADKG8Ey1eBpLWlS4iT7xqp2NwXRG4TFyJ
+         ugQKsuRSoNBZFqJVAUYUKtyChx/oqNyFlgm4Ym1lYB1n5VDk53dsDFEGYFEScCwJTvi/
+         5AEQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUshcf0mb1gN9CItuoS93WZUCKncY+O7jX4o6dmMaAoad0WcRMzIh+YSkh5VZ0YxOOWSmMm38vA7QTEhgNuyQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxN7VYAHWW+IyqDyzs7Y3U5GqfPPaBm3Ty0qK1l+sZJ0ohae8cA
+	bme282MTsGRDSycQKlsg7QcMMD4OXkZrGOcx1fAHIDg7Ifcm9P4ve6mCANCz3gax8Ts=
+X-Gm-Gg: ASbGnctGB7MZLAX3DcbBrXy2+nVy3CBcMYnePirPBbDLatr5Pw3GxkKCcG0CBFYC6o5
+	44OJhrVEccO9JLqCOYDmtJsVwRbWNTuhBbVyU4ojTHx2gRIy+uVvJCzP3AeTw33xQDLXp32TRfi
+	5YoSnTHsb3TRVrtlHPwayHJs+StCKwEVJgcWR8lzfQ253ebYQjLydGaeyMv5dJaUFboYT0cjHYy
+	PH6xyHJ+q7erNwIHU9capA40F8yczN5ecwqZv0gPyfzCD1HlVwtmfyztNnua5VTNX57G8uDHkDb
+	ODlxqoIgtG9Pz95t//KWstaVZfIh4qYKSpGx2s67GQwOL6a6iIQiUeJN8uA9bTR8cNzmzhoimVd
+	Mh3loWSk9Irn6SmcWv4AYrpASUHskJlX9jN18F4loKIqC9i63/znqnIJYQHv5SZiQq3DJ
+X-Google-Smtp-Source: AGHT+IH8RaHjAylVQJBbbz2fVViy55MQyOlXslCXu2TNEUhwTy4uudrftYMxMziT/A2NjRI6tuUcow==
+X-Received: by 2002:a05:6214:2a83:b0:70d:be38:8ee8 with SMTP id 6a1803df08f44-70dbe3890e3mr56021826d6.63.1756141533729;
+        Mon, 25 Aug 2025 10:05:33 -0700 (PDT)
+Received: from ziepe.ca (hlfxns017vw-47-55-120-4.dhcp-dynamic.fibreop.ns.bellaliant.net. [47.55.120.4])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-70da714727csm48193006d6.13.2025.08.25.10.05.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Aug 2025 10:05:32 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.97)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1uqadP-00000008iJN-3bFh;
+	Mon, 25 Aug 2025 14:05:31 -0300
+Date: Mon, 25 Aug 2025 14:05:31 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+	nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
+	mchehab@kernel.org, iommu@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com,
+	linux-media@vger.kernel.org
+Subject: Re: [PATCH v7 4/6] media: verisilicon: AV1: Restore IOMMU context
+ before decoding a frame
+Message-ID: <20250825170531.GA1899851@ziepe.ca>
+References: <20250825153450.150071-1-benjamin.gaignard@collabora.com>
+ <20250825153450.150071-5-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20250825-drm-no-more-existing-state-v1-33-f08ccd9f85c9@kernel.org>
-References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
-In-Reply-To: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Louis Chauvet <louis.chauvet@bootlin.com>, 
- Haneen Mohammed <hamohammed.sa@gmail.com>, 
- Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
- Paul Cercueil <paul@crapouillou.net>, Liviu Dudau <liviu.dudau@arm.com>, 
- Russell King <linux@armlinux.org.uk>, 
- Manikandan Muralidharan <manikandan.m@microchip.com>, 
- Dharma Balasubiramani <dharma.b@microchip.com>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Inki Dae <inki.dae@samsung.com>, 
- Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, Liu Ying <victor.liu@nxp.com>, 
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, 
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
- Lucas Stach <l.stach@pengutronix.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
- Edmund Dea <edmund.j.dea@intel.com>, Paul Kocialkowski <paulk@sys-base.io>, 
- Sui Jingfeng <suijingfeng@loongson.cn>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Clark <robin.clark@oss.qualcomm.com>, 
- Dmitry Baryshkov <lumag@kernel.org>, 
- Abhinav Kumar <abhinav.kumar@linux.dev>, 
- Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
- Marijn Suijten <marijn.suijten@somainline.org>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>, 
- Thierry Reding <thierry.reding@gmail.com>, 
- Mikko Perttunen <mperttunen@nvidia.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, Hans de Goede <hansg@kernel.org>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev, 
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
- Maxime Ripard <mripard@kernel.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1861; i=mripard@kernel.org;
- h=from:subject:message-id; bh=GVCQVXgqlXIQqoFKKvRG4d8j+VMj99ulhE3PjHHUahc=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMhqYZAWqr5/UO2el8W236oc9BT/zt17UTj5mV/6Dx
- e+WCW9/x1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZiI/UvGOo21masFXIs3Fm39
- sPCaOmOY/OL/7i+Y1H/tbRS5c7rw7tfAYjdP6dWHlaP6JCfzdZj7MzZsannlv/YAc63K+dlxv5+
- fXq8W79YjES0YXNnaUXLC99vZW69ick/MOWvS9uLQkbePz8wHAA==
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+Content-Disposition: inline
+In-Reply-To: <20250825153450.150071-5-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_064505_725887_4B385537 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20250825_100535_602488_A0DBCE94 
+X-CRM114-Status: GOOD (  14.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,54 +110,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The vc4 atomic_check implementation uses the deprecated
-drm_atomic_get_existing_crtc_state() helper.
+On Mon, Aug 25, 2025 at 05:34:43PM +0200, Benjamin Gaignard wrote:
+> diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+> index 81328c63b796..a28a181013b9 100644
+> --- a/drivers/media/platform/verisilicon/hantro.h
+> +++ b/drivers/media/platform/verisilicon/hantro.h
+> @@ -12,6 +12,9 @@
+>  #ifndef HANTRO_H_
+>  #define HANTRO_H_
+>  
+> +#include <linux/dma-map-ops.h>
+> +#include <linux/iommu.h>
+> +#include <linux/iommu-dma.h>
 
-This hook is called as part of the global atomic_check, thus before the
-states are swapped. The existing state thus points to the new state, and
-we can use drm_atomic_get_new_crtc_state() instead.
+This is an internal header it should not be included in drivers.
 
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
- drivers/gpu/drm/vc4/vc4_plane.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+> +static void rockchip_vpu981_av1_restore_iommu(struct hantro_ctx *ctx)
+> +{
+> +	if (ctx->iommu_domain) {
+> +		iommu_attach_device(ctx->iommu_domain, ctx->dev->v4l2_dev.dev);
+> +		iommu_detach_device(ctx->iommu_domain, ctx->dev->v4l2_dev.dev);
+> +	}
+> +}
 
-diff --git a/drivers/gpu/drm/vc4/vc4_plane.c b/drivers/gpu/drm/vc4/vc4_plane.c
-index 056d344c5411db0eae975b0fa52c0de7418306f1..b4a53f68865bc18f6cb1fa92b1057890d3fe0382 100644
---- a/drivers/gpu/drm/vc4/vc4_plane.c
-+++ b/drivers/gpu/drm/vc4/vc4_plane.c
-@@ -495,12 +495,11 @@ static int vc4_plane_setup_clipping_and_scaling(struct drm_plane_state *state)
- 	struct drm_crtc_state *crtc_state;
- 	u32 h_subsample = fb->format->hsub;
- 	u32 v_subsample = fb->format->vsub;
- 	int ret;
- 
--	crtc_state = drm_atomic_get_existing_crtc_state(state->state,
--							state->crtc);
-+	crtc_state = drm_atomic_get_new_crtc_state(state->state, state->crtc);
- 	if (!crtc_state) {
- 		DRM_DEBUG_KMS("Invalid crtc state\n");
- 		return -EINVAL;
- 	}
- 
-@@ -873,12 +872,11 @@ static void vc4_plane_calc_load(struct drm_plane_state *state)
- 	struct vc4_plane_state *vc4_state;
- 	struct drm_crtc_state *crtc_state;
- 	unsigned int vscale_factor;
- 
- 	vc4_state = to_vc4_plane_state(state);
--	crtc_state = drm_atomic_get_existing_crtc_state(state->state,
--							state->crtc);
-+	crtc_state = drm_atomic_get_new_crtc_state(state->state, state->crtc);
- 	vrefresh = drm_mode_vrefresh(&crtc_state->adjusted_mode);
- 
- 	/* The HVS is able to process 2 pixels/cycle when scaling the source,
- 	 * 4 pixels/cycle otherwise.
- 	 * Alpha blending step seems to be pipelined and it's always operating
+What is this supposed to do? Put it back to the default domain? Who
+changed it away from the default domain?
 
--- 
-2.50.1
+Did some other driver change the attached domain (if so that's wild
+and wrong)? The commit message hints at that but it should be
+explained alot more.
 
+This just seems wrong and goofy. Driver shouldn't be changing their
+iommu domains if they are using the default domain at all. We now have
+APIs to allow you to allocate wide chunks of IOVA space and manage
+them directly. Maybe these 'multiple stream's should be doing that
+instead of mucking with iommu domains?
+
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
