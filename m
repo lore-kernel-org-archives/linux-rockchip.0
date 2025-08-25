@@ -4,68 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A011ACA0FEB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 08:50:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 959C7CA0FE9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 08:50:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MSqshxC6u5jwp/PhiM64CygwwXR/yUKBc1gI7WLJZDI=; b=JHpWnrHmQstVtX
-	MGwFyY3vBGsZ0FsZCCIY8D4ht3+Mfo28dy/vbhogQXk26eYn14ONpY7J8eGy948pnKMmx5fSfgNpj
-	PEGmyXsKcnDgrz5Is/ufM1MgNUkPp5g+1cgb6vrnvo1UMtBDcsI6euk4CTm3IlW0Wlr7rcAXXg4Xj
-	eX30sLEH+jZqqS4T7Ma3ufQXT5xOGZ9kfNrGYsAib6avRct0259SCW4DF1n+VozoRmmJJIbguz7PC
-	VV8nWS+MLHIznbwcqGUeL+z362hBM93YphkfBVd+8SDRC5eZ1wZObrtfng6nATUPCN1f4iDpsBm4T
-	Il2pM9BCqfHzKbOca3yw==;
+	List-Owner; bh=53RMO/sYU8TBH43ElGf6ZYvrY3abnjc5R6yU8UejBzE=; b=ZWfun2D3O6K6Qn
+	gOHopHw+rsT0pRT941OPZP6PbQXEuZ2DVJSS5W4jrWnyZNgzLvfAaFdhTDzpRkM/+ByPvyFsYsZ2R
+	irsnVawFh0RB4ScE7OSmU8hTBoWimvI/3DVFlZkHgt72FFTbD6Rsqtl2pblykbCHIpaquHlwilnhx
+	jipDC2zNBQ3oT83xMBhmedWpCR/aSdc1ujb5btk8GexTBOtIXeYEOjqJeuplG0trcLG8akaz4y9ey
+	7OiZbBrfYbZe60KB76W98E+2+y+P6qPkXRDKWNgpkJpXcKqAVlSr3JCBfm7bVEXRGe3Kg40kbnSkp
+	HkFmMOcKyGdLuceIkPWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqSuV-00000007O19-0Hqr;
-	Mon, 25 Aug 2025 08:50:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqSax-00000007J5v-1KCS;
-	Mon, 25 Aug 2025 08:30:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=PKR7mESpgMV/NfGr0ewpCIqUeLo4rrbrxSGN542lvi4=; b=m5fk2gIhz6mORXnZmdDOyHvaG5
-	BhpWwevSxqOQcCx8wEmDZJZlHbCIBcfON/rFeux/mhdmbBvzVMOnKtGg2nIOfMhfcqCmSGiGVvWp+
-	/rBJdJpEDMpJZeGuMVSZhxi8ZfMI1rxBm7nEFBVJZwv1q6ZTzy6mXn8bfkqyH4uuoIL0xuraV+utj
-	7cM3erHOpM1ypk6L8wjX0tdzZZYfFX/QkHMFMQqqoQpaeCRwJW4RzSzAVC5ZxGOKujCS1j/SoHjGt
-	KaFowliBLs7yvDWUPF/TOdV/P8KJBaorf8n2ouHLsU1p31Tct4B1pFA7iXh9Jr0D4i+RI6Gyk2nly
-	Jus/n9hw==;
+	id 1uqSuX-00000007O4I-13qu;
+	Mon, 25 Aug 2025 08:50:41 +0000
 Received: from sender4-op-o12.zoho.com ([136.143.188.12])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqSau-00000001mnI-0a4q;
-	Mon, 25 Aug 2025 08:30:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1756110578; cv=none; 
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uqSbN-00000007JCb-1NSW;
+	Mon, 25 Aug 2025 08:30:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1756110607; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=A7TdFi310I+eOSFN1WzvyMr9oryEC4Uqn+d+DRtfPl2sGifQrOl+q2fWjaPDWhTEilR/V+vUeN1wd1mRfGKrUduRvpX9je7AdxgBxqnTJNrzK3eB0Fffh87O4ueDIxyqFPSFdLeBezZiWOAYOEF3886l7FKvE1NpBwms9L0hTjk=
+	b=TLxFwVaj8qb9aW7PFlve2R3k7DbTCYp0G3jrqLIP+6Bu0sjpec21DPDTyrjr1ae/bdEXabrGJVdglsxy+VwsVk1+rX6p9zG+aplowR510MkL9LjnuKCxoxSDCQd5pxxJMI2WEVILq61nCfilafL3wmL50EFdL5OSSCV4s822igs=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1756110578; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=PKR7mESpgMV/NfGr0ewpCIqUeLo4rrbrxSGN542lvi4=; 
-	b=Mggy3P5XUBlS79rWknqbd4ZeDPqLKcp95UBZ5RPMEmJdt2CmYTTp6yr4+6M9+yfttLs9fA+Y/39jK12MNoU8u2AyFBVIz2wGxdIeLLsOc1Lbf44oiatjtpUAlvUXrqwt6f2bEMmpOf6LHcrCOL1Gh3eeAoPm8zUFflXSvGPopb4=
+	t=1756110607; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=E47wu1vDL9BRcTRXWq1Zz9FjP+DJiulR/q1Em8Nuy6M=; 
+	b=IeQF64QrqFpHh3NU5pdCrE216xXzNaqjCaWp/Q0kkutqj5dDDYTdxeQ1blM+q+fK0WrP291EDPGml8JjlUzy0J1W8CHSUTo8AiFQYOaPsH/+EPZcSjPsJLiAPzctnyeHoprYvVNydewrGapyHSVoviGQI8UI7WLVh75A3/X7bgQ=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756110578;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756110607;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=PKR7mESpgMV/NfGr0ewpCIqUeLo4rrbrxSGN542lvi4=;
-	b=kXag4U9RZtp9QkCG7BE+ufhfDTDVm4nDg2RYtT248r/2Gu8OwcI1J+Nh/VKUew62
-	qnTZg1KqADIVhFXvY/0vr604J+HPrvOXpG39G5I5eENuYn/bawhQYJyIHuauxM3Iqea
-	xRbRIbtr4k9zSJrjcbqhFnByDUYhZ1OY7miOLgjE=
-Received: by mx.zohomail.com with SMTPS id 1756110574075762.8618829218951;
-	Mon, 25 Aug 2025 01:29:34 -0700 (PDT)
+	bh=E47wu1vDL9BRcTRXWq1Zz9FjP+DJiulR/q1Em8Nuy6M=;
+	b=KpIwqbhXsPhJ0znCsONc9W1haxDMB6pyNH9F+3z4b8t0Jj3zU8m42TuSCH1nE9kz
+	tGWf/Lfw2skU8kl+Yfxo78DhtJNap5Vd4oZd6xHQRchWp6j3iW6MvdtZ1Ke5ZqPeHvS
+	enZ6uxG41QQ1AO4G4MewWDad80UzjXVuN7Gj77KA=
+Received: by mx.zohomail.com with SMTPS id 17561106058831017.1383627599512;
+	Mon, 25 Aug 2025 01:30:05 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 25 Aug 2025 10:28:23 +0200
-Subject: [PATCH v3 03/20] soc: rockchip: grf: switch to
- FIELD_PREP_WM16_CONST macro
+Date: Mon, 25 Aug 2025 10:28:25 +0200
+Subject: [PATCH v3 05/20] drm/rockchip: lvds: switch to FIELD_PREP_WM16
+ macro
 MIME-Version: 1.0
-Message-Id: <20250825-byeword-update-v3-3-947b841cdb29@collabora.com>
+Message-Id: <20250825-byeword-update-v3-5-947b841cdb29@collabora.com>
 References: <20250825-byeword-update-v3-0-947b841cdb29@collabora.com>
 In-Reply-To: <20250825-byeword-update-v3-0-947b841cdb29@collabora.com>
 To: Yury Norov <yury.norov@gmail.com>, 
@@ -100,8 +86,8 @@ To: Yury Norov <yury.norov@gmail.com>,
  Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_093024_627138_09499063 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20250825_013053_420100_6ACFC788 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,148 +108,60 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
 drivers that use constant masks.
 
-Switch the rockchip grf driver to the FIELD_PREP_WM16_CONST macro, which
-brings with it more error checking while still being able to be used in
-initializers.
+Remove rockchip_lvds.h's own HIWORD_UPDATE macro, and replace all
+instances of it with hw_bitfield.h's FIELD_PREP_WM16 macro, which gives
+us more error checking.
 
-All HIWORD_UPDATE instances and its definition are removed from the
-driver, as the conversion here is obvious, and static_asserts were used
-during development to make sure the ones greater than one bit in width
-were really equivalent.
+For the slightly-less-trivial case of the 2-bit width instance, the
+results were checked during development to match all possible input
+values (0 to 3, inclusive).
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/soc/rockchip/grf.c | 35 +++++++++++++++++------------------
- 1 file changed, 17 insertions(+), 18 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_lvds.h | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
-index 1eab4bb0eacffe19a8f0af0b71bdaa5c0b506629..344870da7675fcde38ef1d7d9dcf243fcb9711e4 100644
---- a/drivers/soc/rockchip/grf.c
-+++ b/drivers/soc/rockchip/grf.c
-@@ -6,13 +6,12 @@
-  */
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.h b/drivers/gpu/drm/rockchip/rockchip_lvds.h
+index ca83d7b6bea733588849d3ff379cf8540405462b..2d92447d819bed18adc99f84664c93c639c86a19 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.h
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.h
+@@ -9,6 +9,9 @@
+ #ifndef _ROCKCHIP_LVDS_
+ #define _ROCKCHIP_LVDS_
  
- #include <linux/err.h>
++#include <linux/bits.h>
 +#include <linux/hw_bitfield.h>
- #include <linux/mfd/syscon.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
++
+ #define RK3288_LVDS_CH0_REG0			0x00
+ #define RK3288_LVDS_CH0_REG0_LVDS_EN		BIT(7)
+ #define RK3288_LVDS_CH0_REG0_TTL_EN		BIT(6)
+@@ -106,18 +109,16 @@
+ #define LVDS_VESA_18				2
+ #define LVDS_JEIDA_18				3
  
--#define HIWORD_UPDATE(val, mask, shift) \
--		((val) << (shift) | (mask) << ((shift) + 16))
+-#define HIWORD_UPDATE(v, h, l)  ((GENMASK(h, l) << 16) | ((v) << (l)))
+-
+ #define PX30_LVDS_GRF_PD_VO_CON0		0x434
+-#define   PX30_LVDS_TIE_CLKS(val)		HIWORD_UPDATE(val,  8,  8)
+-#define   PX30_LVDS_INVERT_CLKS(val)		HIWORD_UPDATE(val,  9,  9)
+-#define   PX30_LVDS_INVERT_DCLK(val)		HIWORD_UPDATE(val,  5,  5)
++#define   PX30_LVDS_TIE_CLKS(val)		FIELD_PREP_WM16(BIT(8), (val))
++#define   PX30_LVDS_INVERT_CLKS(val)		FIELD_PREP_WM16(BIT(9), (val))
++#define   PX30_LVDS_INVERT_DCLK(val)		FIELD_PREP_WM16(BIT(5), (val))
  
- struct rockchip_grf_value {
- 	const char *desc;
-@@ -32,7 +31,7 @@ static const struct rockchip_grf_value rk3036_defaults[] __initconst = {
- 	 * Disable auto jtag/sdmmc switching that causes issues with the
- 	 * clock-framework and the mmc controllers making them unreliable.
- 	 */
--	{ "jtag switching", RK3036_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 11) },
-+	{ "jtag switching", RK3036_GRF_SOC_CON0, FIELD_PREP_WM16_CONST(BIT(11), 0) },
- };
+ #define PX30_LVDS_GRF_PD_VO_CON1		0x438
+-#define   PX30_LVDS_FORMAT(val)			HIWORD_UPDATE(val, 14, 13)
+-#define   PX30_LVDS_MODE_EN(val)		HIWORD_UPDATE(val, 12, 12)
+-#define   PX30_LVDS_MSBSEL(val)			HIWORD_UPDATE(val, 11, 11)
+-#define   PX30_LVDS_P2S_EN(val)			HIWORD_UPDATE(val,  6,  6)
+-#define   PX30_LVDS_VOP_SEL(val)		HIWORD_UPDATE(val,  1,  1)
++#define   PX30_LVDS_FORMAT(val)			FIELD_PREP_WM16(GENMASK(14, 13), (val))
++#define   PX30_LVDS_MODE_EN(val)		FIELD_PREP_WM16(BIT(12), (val))
++#define   PX30_LVDS_MSBSEL(val)			FIELD_PREP_WM16(BIT(11), (val))
++#define   PX30_LVDS_P2S_EN(val)			FIELD_PREP_WM16(BIT(6), (val))
++#define   PX30_LVDS_VOP_SEL(val)		FIELD_PREP_WM16(BIT(1), (val))
  
- static const struct rockchip_grf_info rk3036_grf __initconst = {
-@@ -44,8 +43,8 @@ static const struct rockchip_grf_info rk3036_grf __initconst = {
- #define RK3128_GRF_SOC_CON1		0x144
- 
- static const struct rockchip_grf_value rk3128_defaults[] __initconst = {
--	{ "jtag switching", RK3128_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 8) },
--	{ "vpu main clock", RK3128_GRF_SOC_CON1, HIWORD_UPDATE(0, 1, 10) },
-+	{ "jtag switching", RK3128_GRF_SOC_CON0, FIELD_PREP_WM16_CONST(BIT(8), 0) },
-+	{ "vpu main clock", RK3128_GRF_SOC_CON1, FIELD_PREP_WM16_CONST(BIT(10), 0) },
- };
- 
- static const struct rockchip_grf_info rk3128_grf __initconst = {
-@@ -56,7 +55,7 @@ static const struct rockchip_grf_info rk3128_grf __initconst = {
- #define RK3228_GRF_SOC_CON6		0x418
- 
- static const struct rockchip_grf_value rk3228_defaults[] __initconst = {
--	{ "jtag switching", RK3228_GRF_SOC_CON6, HIWORD_UPDATE(0, 1, 8) },
-+	{ "jtag switching", RK3228_GRF_SOC_CON6, FIELD_PREP_WM16_CONST(BIT(8), 0) },
- };
- 
- static const struct rockchip_grf_info rk3228_grf __initconst = {
-@@ -68,8 +67,8 @@ static const struct rockchip_grf_info rk3228_grf __initconst = {
- #define RK3288_GRF_SOC_CON2		0x24c
- 
- static const struct rockchip_grf_value rk3288_defaults[] __initconst = {
--	{ "jtag switching", RK3288_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 12) },
--	{ "pwm select", RK3288_GRF_SOC_CON2, HIWORD_UPDATE(1, 1, 0) },
-+	{ "jtag switching", RK3288_GRF_SOC_CON0, FIELD_PREP_WM16_CONST(BIT(12), 0) },
-+	{ "pwm select", RK3288_GRF_SOC_CON2, FIELD_PREP_WM16_CONST(BIT(0), 1) },
- };
- 
- static const struct rockchip_grf_info rk3288_grf __initconst = {
-@@ -80,7 +79,7 @@ static const struct rockchip_grf_info rk3288_grf __initconst = {
- #define RK3328_GRF_SOC_CON4		0x410
- 
- static const struct rockchip_grf_value rk3328_defaults[] __initconst = {
--	{ "jtag switching", RK3328_GRF_SOC_CON4, HIWORD_UPDATE(0, 1, 12) },
-+	{ "jtag switching", RK3328_GRF_SOC_CON4, FIELD_PREP_WM16_CONST(BIT(12), 0) },
- };
- 
- static const struct rockchip_grf_info rk3328_grf __initconst = {
-@@ -91,7 +90,7 @@ static const struct rockchip_grf_info rk3328_grf __initconst = {
- #define RK3368_GRF_SOC_CON15		0x43c
- 
- static const struct rockchip_grf_value rk3368_defaults[] __initconst = {
--	{ "jtag switching", RK3368_GRF_SOC_CON15, HIWORD_UPDATE(0, 1, 13) },
-+	{ "jtag switching", RK3368_GRF_SOC_CON15, FIELD_PREP_WM16_CONST(BIT(13), 0) },
- };
- 
- static const struct rockchip_grf_info rk3368_grf __initconst = {
-@@ -102,7 +101,7 @@ static const struct rockchip_grf_info rk3368_grf __initconst = {
- #define RK3399_GRF_SOC_CON7		0xe21c
- 
- static const struct rockchip_grf_value rk3399_defaults[] __initconst = {
--	{ "jtag switching", RK3399_GRF_SOC_CON7, HIWORD_UPDATE(0, 1, 12) },
-+	{ "jtag switching", RK3399_GRF_SOC_CON7, FIELD_PREP_WM16_CONST(BIT(12), 0) },
- };
- 
- static const struct rockchip_grf_info rk3399_grf __initconst = {
-@@ -113,9 +112,9 @@ static const struct rockchip_grf_info rk3399_grf __initconst = {
- #define RK3566_GRF_USB3OTG0_CON1	0x0104
- 
- static const struct rockchip_grf_value rk3566_defaults[] __initconst = {
--	{ "usb3otg port switch", RK3566_GRF_USB3OTG0_CON1, HIWORD_UPDATE(0, 1, 12) },
--	{ "usb3otg clock switch", RK3566_GRF_USB3OTG0_CON1, HIWORD_UPDATE(1, 1, 7) },
--	{ "usb3otg disable usb3", RK3566_GRF_USB3OTG0_CON1, HIWORD_UPDATE(1, 1, 0) },
-+	{ "usb3otg port switch", RK3566_GRF_USB3OTG0_CON1, FIELD_PREP_WM16_CONST(BIT(12), 0) },
-+	{ "usb3otg clock switch", RK3566_GRF_USB3OTG0_CON1, FIELD_PREP_WM16_CONST(BIT(7), 1) },
-+	{ "usb3otg disable usb3", RK3566_GRF_USB3OTG0_CON1, FIELD_PREP_WM16_CONST(BIT(0), 1) },
- };
- 
- static const struct rockchip_grf_info rk3566_pipegrf __initconst = {
-@@ -126,8 +125,8 @@ static const struct rockchip_grf_info rk3566_pipegrf __initconst = {
- #define RK3576_SYSGRF_SOC_CON1		0x0004
- 
- static const struct rockchip_grf_value rk3576_defaults_sys_grf[] __initconst = {
--	{ "i3c0 weakpull", RK3576_SYSGRF_SOC_CON1, HIWORD_UPDATE(3, 3, 6) },
--	{ "i3c1 weakpull", RK3576_SYSGRF_SOC_CON1, HIWORD_UPDATE(3, 3, 8) },
-+	{ "i3c0 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(GENMASK(7, 6), 3) },
-+	{ "i3c1 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(GENMASK(9, 8), 3) },
- };
- 
- static const struct rockchip_grf_info rk3576_sysgrf __initconst = {
-@@ -138,7 +137,7 @@ static const struct rockchip_grf_info rk3576_sysgrf __initconst = {
- #define RK3576_IOCGRF_MISC_CON		0x04F0
- 
- static const struct rockchip_grf_value rk3576_defaults_ioc_grf[] __initconst = {
--	{ "jtag switching", RK3576_IOCGRF_MISC_CON, HIWORD_UPDATE(0, 1, 1) },
-+	{ "jtag switching", RK3576_IOCGRF_MISC_CON, FIELD_PREP_WM16_CONST(BIT(1), 0) },
- };
- 
- static const struct rockchip_grf_info rk3576_iocgrf __initconst = {
-@@ -149,7 +148,7 @@ static const struct rockchip_grf_info rk3576_iocgrf __initconst = {
- #define RK3588_GRF_SOC_CON6		0x0318
- 
- static const struct rockchip_grf_value rk3588_defaults[] __initconst = {
--	{ "jtag switching", RK3588_GRF_SOC_CON6, HIWORD_UPDATE(0, 1, 14) },
-+	{ "jtag switching", RK3588_GRF_SOC_CON6, FIELD_PREP_WM16_CONST(BIT(14), 0) },
- };
- 
- static const struct rockchip_grf_info rk3588_sysgrf __initconst = {
+ #endif /* _ROCKCHIP_LVDS_ */
 
 -- 
 2.51.0
