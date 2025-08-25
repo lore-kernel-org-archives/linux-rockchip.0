@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F282DCA0FE7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 12:57:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5EFBCA0FE7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 15:01:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iN+bvCJvdW/CCKHubzUWeSzUnx0EVROTo+nQFUo7mIM=; b=ycGKb6c1pgbDRn
-	zvwnowfLi/pfQNeAeZX7z+rOR9iRIE05RAsWfOg65X4zHI4QqtFXNmI0K2e9syfyxODNHEBOY7205
-	f060Bmt3KNKxUqPJ2TRdUpZ2ceL2e+mQrPNcPr32fCYwi9YUNiUS58sED3d9Psl0j8oAgytk68bka
-	H7/u1+sFkvq0KaIGlQ89XGdjrSK9+gt8wlw9RFFGSWR93uVGSmmIrCmd5WYhlcxAuZXxkC+AHn3h6
-	VBYlW0DkfSPYh8amaQdEeQnD6BD28CZs6VhUihcJrsByuVJJin2Y1D9OcSv18Wh5GG6GZDx64wabI
-	4eUlcVAd5RjBtQi2LPdw==;
+	List-Owner; bh=sxi9UbEZs/aLfHJ2nrgHWV0k3ei0rAA+caNCt1igJ88=; b=KSPqyRPYHKIMpf
+	N57Mlq1rdqlM9xzNF1qGdnTTfnzB1HNf4UZLEfHr3Pdpv0rHgaF8Dk02XzO8mNARdXaj6rKiKVXEW
+	iIyTf27j/dakvI62zeom0JDHrohXEbtX26uLD6dM1kZn8OpynpfKlwjauoOE3tyqzjkntzHZaUmEd
+	4KuBYT894i7n9qi6SueU05eHlUZVZbySvMk88F2cp2Ua8pWTIPLf9cWq9rsmipUel15F7nFEX/hG7
+	9oDxgIw/KxoU1aVt4PL0sX6qPSBriW+KuTb1qXu4aLNF3NnqfwYi1AibiNLeYfQevbjprjmMQiYo5
+	jc8o4CToHzJgWx8Fbfeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqWlX-0000000817S-2BCD;
-	Mon, 25 Aug 2025 12:57:39 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uqYgq-00000008Npz-3U3H;
+	Mon, 25 Aug 2025 15:00:56 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqW6d-00000007tXW-2va0;
-	Mon, 25 Aug 2025 12:15:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6E61F443B8;
-	Mon, 25 Aug 2025 12:15:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44F4BC4CEED;
-	Mon, 25 Aug 2025 12:15:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756124123;
-	bh=FYacGFcvtziYaQU23dkF5qhnNiOq+YUOP4jCmJ/AMb8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=un5ESlkHE/jiWQ4E7w+MIAM9BFrs7ubsGv3bHkx9mxVJvkwmG0FHmZOydp0W/iSt1
-	 ZyDJ/xT+9FwjUymkV61Vt8c2kUlYCso7GjA59LPhV8503jRYJuJqHe8t6J411TZMod
-	 slufIfhAYejxpbmfnTPe1aGvMMHd1ZFkT+5gbsMSVi1n9bSWAa0qhHPbJq+hGQ8Iph
-	 ZiUE7lVH1fpuOn0Vjk094HIuDQ/tkqyJcBkOsbsfxXUYuLpj80dboesibKEjCEt6ia
-	 QeoS5R5UqXl+AGXnjA/u/aNpS5kpp0tFJ3A44ppfZxZAUag3xJ/9zypter6lYfBsIz
-	 94/9r4/4Liofw==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Piotr Zalewski <pZ010001011111@proton.me>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sasha Levin <sashal@kernel.org>,
-	hjc@rock-chips.com,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1uqXOd-000000086Zb-1i6y;
+	Mon, 25 Aug 2025 13:38:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=PVgYUvPT1vPM01I1nr9R+3H7BRFArSAfjzLQN6iJKvQ=; b=SCimNEDupFMkyQhB1L09lOvN6L
+	2R2NcLUFXj3aX6q1C9zMzhUzbva/YBhfegk7MxjDN9oyQchc03Y+e3j+lu0irp5X2jaAcQNfcLzkw
+	57qcs0A5jOaIq5wT7QANf9CQw6k4yxggPLKlR2yYU9Hywo3l9qD2g0f/WNHW+WeGYkILoDqzSx59i
+	64jBpaJd1/A5X2fUoTAm8taxCXd+syedJ0xfiDBwokuWNqMVpiwgI0EQCCMmjCy8MeQ3DEWfab/9z
+	P/l3yoCWe6alpUfHXrf9VaRE17B1xFYZ0brzJFjmu3wKvk3yrOAqMNfujbdN1WPD7tVxWtSF8RFUT
+	iH3woFiQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:53562)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1uqXOF-000000006XF-25Id;
+	Mon, 25 Aug 2025 14:37:39 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1uqXO9-0000000089m-0a0b;
+	Mon, 25 Aug 2025 14:37:33 +0100
+Date: Mon, 25 Aug 2025 14:37:32 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Chaoyi Chen <kernel@airkyi.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Jonas Karlman <jonas@kwiboo.se>, David Wu <david.wu@rock-chips.com>,
+	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.16-6.12] drm/rockchip: vop2: make vp registers nonvolatile
-Date: Mon, 25 Aug 2025 08:15:00 -0400
-Message-ID: <20250825121505.2983941-11-sashal@kernel.org>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250825121505.2983941-1-sashal@kernel.org>
-References: <20250825121505.2983941-1-sashal@kernel.org>
+Subject: Re: [PATCH net-next v3] net: ethernet: stmmac: dwmac-rk: Make the
+ clk_phy could be used for external phy
+Message-ID: <aKxnHFSrVeM7Be5A@shell.armlinux.org.uk>
+References: <20250815023515.114-1-kernel@airkyi.com>
+ <CGME20250825072312eucas1p2d4751199c0ea069c7938218be60e5e93@eucas1p2.samsung.com>
+ <a30a8c97-6b96-45ba-bad7-8a40401babc2@samsung.com>
+ <d0fe6d16-181f-4b38-9457-1099fb6419d0@rock-chips.com>
+ <809848c9-2ffa-4743-adda-b8b714b404de@samsung.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.16.3
+Content-Disposition: inline
+In-Reply-To: <809848c9-2ffa-4743-adda-b8b714b404de@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_051523_789171_F5D34CD1 
-X-CRM114-Status: GOOD (  23.58  )
+X-CRM114-CacheID: sfid-20250825_063803_446555_F9AA29FE 
+X-CRM114-Status: GOOD (  26.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,145 +88,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Piotr Zalewski <pZ010001011111@proton.me>
+On Mon, Aug 25, 2025 at 12:53:37PM +0200, Marek Szyprowski wrote:
+> On 25.08.2025 11:57, Chaoyi Chen wrote:
+> > On 8/25/2025 3:23 PM, Marek Szyprowski wrote:
+> >> On 15.08.2025 04:35, Chaoyi Chen wrote:
+> >>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> >>>
+> >>> For external phy, clk_phy should be optional, and some external phy
+> >>> need the clock input from clk_phy. This patch adds support for setting
+> >>> clk_phy for external phy.
+> >>>
+> >>> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> >>> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> >>> ---
+> >>>
+> >>> Changes in v3:
+> >>> - Link to V2: =
 
-[ Upstream commit a52dffaa46c2c5ff0b311c4dc1288581f7b9109e ]
+> >>> https://lore.kernel.org/netdev/20250812012127.197-1-kernel@airkyi.com/
+> >>> - Rebase to net-next/main
+> >>>
+> >>> Changes in v2:
+> >>> - Link to V1: =
 
-Make video port registers nonvolatile. As DSP_CTRL register is written
-to twice due to gamma LUT enable bit which is set outside of the main
-DSP_CTRL initialization within atomic_enable (for rk356x case it is also
-necessary to always disable gamma LUT before writing a new LUT) there is
-a chance that DSP_CTRL value read-out in gamma LUT init/update code is
-not the one which was written by the preceding DSP_CTRL initialization
-code within atomic_enable. This might result in misconfigured DSP_CTRL
-which leads to no visual output[1]. Since DSP_CTRL write takes effect
-after VSYNC[1] the issue is not always present. When tested on Pinetab2
-with kernel 6.14 it happenes only when DRM is compiled as a module[1].
-In order to confirm that it is a timing issue I inserted 18ms udelay
-before vop2_crtc_atomic_try_set_gamma in atomic enable and compiled DRM
-as module - this has also fixed the issue.
+> >>> https://lore.kernel.org/netdev/20250806011405.115-1-kernel@airkyi.com/
+> >>> - Remove get clock frequency from DT prop
+> >>>
+> >>> =A0=A0 drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 11 +++++++----
+> >>> =A0=A0 1 file changed, 7 insertions(+), 4 deletions(-)
+> >>>
+> >>> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c =
 
-[1] https://lore.kernel.org/linux-rockchip/562b38e5.a496.1975f09f983.Coremail.andyshrk@163.com/
+> >>> b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> >>> index ac8288301994..5d921e62c2f5 100644
+> >>> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> >>> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> >>> @@ -1412,12 +1412,15 @@ static int rk_gmac_clk_init(struct =
 
-Reported-by: Diederik de Haas <didi.debian@cknow.org>
-Closes: https://lore.kernel.org/linux-rockchip/DAEVDSTMWI1E.J454VZN0R9MA@cknow.org/
-Suggested-by: Andy Yan <andy.yan@rock-chips.com>
-Signed-off-by: Piotr Zalewski <pZ010001011111@proton.me>
-Tested-by: Diederik de Haas <didi.debian@cknow.org>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Link: https://lore.kernel.org/r/20250706083629.140332-2-pZ010001011111@proton.me
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
+> >>> plat_stmmacenet_data *plat)
+> >>> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 clk_set_rate(plat->stmmac_clk, 5000000=
+0);
+> >>> =A0=A0=A0=A0=A0=A0 }
+> >>> =A0=A0 -=A0=A0=A0 if (plat->phy_node && bsp_priv->integrated_phy) {
+> >>> +=A0=A0=A0 if (plat->phy_node) {
+> >>> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 bsp_priv->clk_phy =3D of_clk_get(plat-=
+>phy_node, 0);
+> >>> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ret =3D PTR_ERR_OR_ZERO(bsp_priv->clk_=
+phy);
+> >>> -=A0=A0=A0=A0=A0=A0=A0 if (ret)
+> >>> -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return dev_err_probe(dev, ret, "Ca=
+nnot get PHY clock\n");
+> >>> -=A0=A0=A0=A0=A0=A0=A0 clk_set_rate(bsp_priv->clk_phy, 50000000);
+> >>> +=A0=A0=A0=A0=A0=A0=A0 /* If it is not integrated_phy, clk_phy is opt=
+ional */
+> >>> +=A0=A0=A0=A0=A0=A0=A0 if (bsp_priv->integrated_phy) {
+> >>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (ret)
+> >>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return dev_err_probe(d=
+ev, ret, "Cannot get PHY =
 
-LLM Generated explanations, may be completely bogus:
+> >>> clock\n");
+> >>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 clk_set_rate(bsp_priv->clk_phy, 50=
+000000);
+> >>> +=A0=A0=A0=A0=A0=A0=A0 }
+> >
+> > I think=A0 we should set bsp_priv->clk_phy to NULL here if we failed to =
 
-Based on my analysis of the commit, let me provide my determination:
+> > get the clock.
+> >
+> > Could you try this on your board? Thank you.
+> =
 
-**Backport Status: YES**
+> Right, the following change also fixes this issue:
+> =
 
-## Extensive Analysis:
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c =
 
-This commit is a strong candidate for backporting to stable kernel trees
-for the following reasons:
+> b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> index 9fc41207cc45..2d19d48be01f 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> @@ -1415,6 +1415,8 @@ static int rk_gmac_clk_init(struct =
 
-### 1. **Bug Fix Nature**
-The commit fixes a real bug that causes **no visual output** on
-displays. This is a critical user-visible issue where the display driver
-fails to produce any image output. The commit message clearly describes
-this as fixing a situation where "misconfigured DSP_CTRL which leads to
-no visual output."
+> plat_stmmacenet_data *plat)
+>  =A0=A0=A0=A0=A0=A0=A0 if (plat->phy_node) {
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 bsp_priv->clk_phy =3D of_c=
+lk_get(plat->phy_node, 0);
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ret =3D PTR_ERR_OR_ZERO(bs=
+p_priv->clk_phy);
+> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (ret)
+> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 bsp_p=
+riv->clk_phy =3D NULL;
 
-### 2. **Race Condition Fix**
-The code changes address a race condition in register access patterns.
-The issue occurs because:
-- DSP_CTRL register is written twice during atomic_enable
-- The second write happens for gamma LUT configuration
-- Due to the register being volatile, read-modify-write operations can
-  read stale values
-- DSP_CTRL writes only take effect after VSYNC, creating a timing window
-  for the race
+Or just:
 
-### 3. **Small and Contained Change**
-The actual code change is minimal - just one line adding the VP register
-range to the nonvolatile list:
-```c
-+       regmap_reg_range(RK3568_VP0_CTRL_BASE, RK3588_VP3_CTRL_BASE +
-255),
-```
+		clk =3D of_clk_get(plat->phy_node, 0);
+		if (clk =3D=3D ERR_PTR(-EPROBE_DEFER))
+			...
+		else if (!IS_ERR)
+			bsp_priv->clk_phy =3D clk;
 
-This makes the video port registers (0xc00-0xeff based on the offsets)
-use the regmap cache instead of reading back from hardware, preventing
-the race condition.
+I don't have a free terminal to work out what "..." should be.
 
-### 4. **Hardware-Specific Fix**
-The fix is specific to Rockchip VOP2 hardware (RK3568/RK3588 SoCs) and
-doesn't affect other subsystems. It's confined to the DRM/Rockchip
-display driver.
+-- =
 
-### 5. **Tested and Confirmed**
-The commit includes:
-- A "Reported-by" tag indicating a real user issue
-- A "Tested-by" tag confirming the fix works
-- Clear reproduction details (happens on Pinetab2 with kernel 6.14 when
-  DRM is compiled as module)
-
-### 6. **Low Risk of Regression**
-The change only affects how registers are cached in the regmap
-framework. It doesn't change any functional logic, algorithms, or
-introduce new features. The comment update accurately reflects that both
-window AND video port registers are now marked as non-volatile for cache
-coherency.
-
-### 7. **Follows Stable Rules**
-This fix aligns with stable kernel rules:
-- Fixes a real bug that users are hitting
-- Small change (essentially 1 line of functional code)
-- Already tested by reporter
-- Fix is obvious once the problem is understood
-- No new features or architectural changes
-
-### 8. **Critical Display Functionality**
-Display output is fundamental functionality. A bug that causes "no
-visual output" severely impacts usability of devices using these SoCs,
-making this a high-priority fix for stable trees.
-
-The commit properly documents the issue with external references and
-follows good practices for a bug fix that should be backported to stable
-kernels.
-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 186f6452a7d3..b50927a824b4 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -2579,12 +2579,13 @@ static int vop2_win_init(struct vop2 *vop2)
- }
- 
- /*
-- * The window registers are only updated when config done is written.
-- * Until that they read back the old value. As we read-modify-write
-- * these registers mark them as non-volatile. This makes sure we read
-- * the new values from the regmap register cache.
-+ * The window and video port registers are only updated when config
-+ * done is written. Until that they read back the old value. As we
-+ * read-modify-write these registers mark them as non-volatile. This
-+ * makes sure we read the new values from the regmap register cache.
-  */
- static const struct regmap_range vop2_nonvolatile_range[] = {
-+	regmap_reg_range(RK3568_VP0_CTRL_BASE, RK3588_VP3_CTRL_BASE + 255),
- 	regmap_reg_range(0x1000, 0x23ff),
- };
- 
--- 
-2.50.1
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
