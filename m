@@ -4,90 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6686CA0FEF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 11:28:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6D53CA0EFA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 11:28:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7Yw7/dq/Y8H7gl8dxQQC863fcqZNd867lSDafLiy6Ck=; b=WSuDiBF+nnsn/v
-	e2/nM069M3VHONyl4D6udnFYfAOXKZ5bAfaqlcbAsOR70ZnnxSm2/TFaSGvflFYz/Sk9RbYZuGzzH
-	F+mJOdQWUz0D6p5XtI4BUtH4YXb9a9quZyT7Gyxz7ZSxtVUxlLqemoDXfItw5AQLQ/7AM6wSacUiQ
-	f+CHgcI4D5pXmMU25TxttWJ/vG7DS0PD4mHgud6G0HPWaUYu+aOZb0FWAvxHlnhivzKx/GHlsHgP/
-	hrpN+QWzE7SJsAg6Fu90vqz57FHnOurxRkBbKUZH9bAuVmjZKDgpGybHwkT39ZxW+a2PQTZ9C/f81
-	p5JapB1N3M+UeZ/SkCqA==;
+	List-Owner; bh=yoWYhjOqdUnJUngi2+zxHhHfTyNFOhtS/mTptg9UecA=; b=hJ1DeP5s6/Fafh
+	j1lbxDbGn38ZCTCF3KqK89JK+OS35bxgMnLB1fUfzMGtItbaxRNnMu2hvjzg6nLkgVahMTAMzOIQe
+	RBhOhg+45OMm84j6TL1DWsg0Ep32MeTaz01O3eVCjkdDgVZ5bsOjn+ytVUVLsEwSkmEgIWXWGrxn+
+	XfA9TThIlVDOyPverQsXqFP1QMUAkcr61iMm3cMp2GatlsQxo5x6DBTiBvyyymJ3+kRs9sJ5jzL6L
+	U2jiJ8xHV4YdLXeYvq38JnKgMaEZ5vbo1REI94sJ7JLzAlrAVcAycg7romjV3ZyHlkbw1C09EAEJ6
+	dQik5MFw79KF2ZTizNcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqVN2-00000007jlI-0VPu;
-	Mon, 25 Aug 2025 11:28:16 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1uqVN8-00000007jr5-24Lf;
+	Mon, 25 Aug 2025 11:28:22 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqScY-00000007JZX-0kVd;
-	Mon, 25 Aug 2025 08:32:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1756110679; cv=none; 
+	id 1uqTF6-00000007RzY-34Sh;
+	Mon, 25 Aug 2025 09:11:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1756113100; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Vx6gp429tq1Ox0cbTujtGfi9Tra51BhIxPnE5/htlFd0KhozMjos52HzY2XBygs9usBMImQ8j4ZIlu+vqGci5x//RooCJ+/wt97WZQMsCKFhAdpKYvhT1f+9qvmtPUleDKyKzumzUVpe/TrJESM983lYmXUqntPlhgHnhUyTdfQ=
+	b=ec8cyEUwiNI3LFhu8Bjr6TA4Ifd4X3t9gH9QHQqcOXK5FOOElNUvv5JYceocSXO76UZHo3rRHHjwd8h/U5yHjJBua+x0EpRi6KWh2jNzCa7gDYs0/H5b0mcM+Lb3wmWa2Cc8pkXK40RQOBqFpFx9Icyhna1Cyl/tPt8Ti/1Wv6E=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1756110679; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=DqxKvnqRhaZ5mQnV3ULLGjQxPfgB8cvi2k3VYfDnj1M=; 
-	b=M4WdU+gMawFwe3iLbMwc+uubuh6RVaty6WVBdK7WP/PHAS4NwEWHJq96jLnQgLjrbOF3L6BU9HVKzSX2DYZs1Xpw6KwPRYZrSKPwplgxqhXSvMegojLjIfKuqtl0vvYY3rw8md07WAR0fjW0WjH5zM18eBF015ptvRb84Ny9B4w=
+	t=1756113100; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=4zV5r8kLElpBRlahVoUG9dL32SfwaAS/peHVJEeTGgE=; 
+	b=lOKX1ACuePfLg2c3+K7V6XewlAr9NPK6aQIa+PiyZGEZu+FbNLcKFi49vlmzKNn78T9vJzkaNQ6Nm61ps1chz7JbJgTAhN+iLpkv6iLkvQIOMHxC0fPWt+WhrOs7hWB9QSniAL/bpVkzE+g797gn47L0KLEsZ7dWLBMEzIk/Qc8=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756110679;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756113100;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=DqxKvnqRhaZ5mQnV3ULLGjQxPfgB8cvi2k3VYfDnj1M=;
-	b=EQrsdJhHMN/8J8QE7YiBwhjTVrouB33ojbM30iNrD5mD8NRXcJ42NKoR2YO2yNAr
-	/gXFOP69mJNeE7Qkd6ToYd8rULYiofY6XCSnO3S4aSVEUmUlB3lsYjw0B2ZuWHLElhe
-	qn5KOr1OerYMNGdItQwhV1UIiaoOWW6UuAdGH25g=
-Received: by mx.zohomail.com with SMTPS id 1756110677273496.9828117708694;
-	Mon, 25 Aug 2025 01:31:17 -0700 (PDT)
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=4zV5r8kLElpBRlahVoUG9dL32SfwaAS/peHVJEeTGgE=;
+	b=YflggP6f4+3KqQMd0IzfGOdaBd89fbchQZvRAVp0mLKhEIKs53GprABEnKxJPcDh
+	wiokus9kcYMAMiiIHJ+ek6m1oeuUL0XkEHZwa85lcOdVJxbNHO7Eq3Nodlmj2fHWWzH
+	AZq4MRi5Ef45b3RLoZtGziyTi0o7e4d8t47xZDg0=
+Received: by mx.zohomail.com with SMTPS id 1756113097823724.7840177435801;
+	Mon, 25 Aug 2025 02:11:37 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 25 Aug 2025 10:28:30 +0200
-Subject: [PATCH v3 10/20] drm/rockchip: dw_hdmi_qp: switch to
- FIELD_PREP_WM16 macro
+To: William Breathitt Gray <wbg@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <ukleinek@kernel.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Kever Yang <kever.yang@rock-chips.com>, Yury Norov <yury.norov@gmail.com>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dave Ertman <david.m.ertman@intel.com>, Ira Weiny <ira.weiny@intel.com>,
+ Leon Romanovsky <leon@kernel.org>, Lee Jones <lee@kernel.org>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org,
+ linux-iio@vger.kernel.org, kernel@collabora.com,
+ Jonas Karlman <jonas@kwiboo.se>,
+ Detlev Casanova <detlev.casanova@collabora.com>
+Subject: Re: [PATCH v2 6/7] counter: Add rockchip-pwm-capture driver
+Date: Mon, 25 Aug 2025 11:11:31 +0200
+Message-ID: <3367507.aeNJFYEL58@workhorse>
+In-Reply-To: <20250720002024.696040-1-wbg@kernel.org>
+References: <20250720002024.696040-1-wbg@kernel.org>
 MIME-Version: 1.0
-Message-Id: <20250825-byeword-update-v3-10-947b841cdb29@collabora.com>
-References: <20250825-byeword-update-v3-0-947b841cdb29@collabora.com>
-In-Reply-To: <20250825-byeword-update-v3-0-947b841cdb29@collabora.com>
-To: Yury Norov <yury.norov@gmail.com>, 
- Rasmus Villemoes <linux@rasmusvillemoes.dk>, 
- Jaehoon Chung <jh80.chung@samsung.com>, 
- Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
- Shreeya Patel <shreeya.patel@collabora.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Shawn Lin <shawn.lin@rock-chips.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
- Bjorn Helgaas <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
- MyungJoo Ham <myungjoo.ham@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, Qin Jian <qinjian@cqplus1.com>, 
- Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Nathan Chancellor <nathan@kernel.org>, 
- Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, 
- Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_013206_274677_58336119 
-X-CRM114-Status: GOOD (  18.16  )
+X-CRM114-CacheID: sfid-20250825_021156_827254_21406161 
+X-CRM114-Status: GOOD (  43.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,214 +84,128 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pm@vger.kernel.org, netdev@vger.kernel.org, llvm@lists.linux.dev, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, linux-pci@vger.kernel.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
-drivers that use constant masks.
+On Sunday, 20 July 2025 02:20:15 Central European Summer Time William Breathitt Gray wrote:
+> On Mon, Jun 02, 2025 at 06:19:17PM +0200, Nicolas Frattaroli wrote:
+> > Among many other things, Rockchip's new PWMv4 IP in the RK3576 supports
+> > PWM capture functionality.
+> > 
+> > Add a basic driver for this that works to capture period and duty cycle
+> > values and return them as nanoseconds to the user. It's quite basic, but
+> > works well enough to demonstrate the device function exclusion stuff
+> > that mfpwm does, in order to eventually support all the functions of
+> > this device in drivers within their appropriate subsystems, without them
+> > interfering with each other.
+> > 
+> > Once enabled, the counter driver waits for enough high-to-low and
+> > low-to-high interrupt signals to arrive, and then writes the cycle count
+> > register values into some atomic members of the driver instance's state
+> > struct. The read callback can then do the conversion from cycle count to
+> > the more useful period and duty cycle nanosecond values, which require
+> > knowledge of the clock rate, which requires a call that the interrupt
+> > handler cannot make itself because said call may sleep.
+> > 
+> > To detect the condition of a PWM signal disappearing, i.e. turning off,
+> > we modify the delay value of a delayed worker whose job it is to simply
+> > set those atomic members to zero. Should the "timeout" so to speak be
+> > reached, we assume the PWM signal is off. This isn't perfect; it
+> > obviously introduces a latency between it being off and the counter
+> > reporting it as such. Because there isn't a way to reset the internal
+> > double-buffered cycle count in the hardware, we filter out unreliable
+> > periods above the timeout value in the counter read callback.
+> > 
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> 
+> Hi Nicolas,
 
-Replace this driver's HIWORD_UPDATE with the FIELD_PREP_WM16 macro from
-hw_bitfield.h. While at it, disambiguate the GRF write to SOC_CON7 by
-splitting the definition into the individual bitflags. This is done
-because FIELD_PREP_WM16 shifts the value for us according to the mask,
-so writing the mask to itself to enable two bits is no longer something
-that can be done. It should also not be done anyway because it hides the
-true meaning of those two individual bit flags.
+Hi William,
 
-HDMI output with this patch has been tested on both RK3588 and RK3576.
-On the former, with both present HDMI connectors.
+> 
+> Would you help me understand the computations in this driver?
+> 
+> If I understand the purpose of this driver correctly, it's meant to
+> compute the period and duty cycle of a PWM signal. What do LPC and HPC
+> represent? I'm guessing they are the low period count (LPC) and the high
+> period count (HPC). So then you calculate the total period by adding
+> LPC and HPC, whereas the duty cycle derives from HPC.
+> 
+> Am I understanding the algorithm correctly? What are the units of HPC
+> and LPC; are they ticks from the core clock? Are PWMV4_INT_LPC and
+> PWM4_INT_HPC the change-of-state interrupts for LPC and HPC
+> respectively?
 
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Tested-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 68 +++++++++++++-------------
- 1 file changed, 33 insertions(+), 35 deletions(-)
+HPC = High Polarity Cycles, LPC = Low Polarity Cycles. They are counted
+based on the pwm clock that the hardware runs at. PWMV4_INT_LPC and
+PWMV4_INT_HPC are one-bit flags that are raised in the interrupt register
+of this hardware when the interrupt is fired, to signal that LPC or HPC
+changed state.
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 7d531b6f4c098c6c548788dad487ce4613a2f32b..ed6e8f036f4b3d76425725c130394cedf039acd0 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -9,6 +9,7 @@
- 
- #include <linux/clk.h>
- #include <linux/gpio/consumer.h>
-+#include <linux/hw_bitfield.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/platform_device.h>
-@@ -66,7 +67,8 @@
- #define RK3588_HDMI1_HPD_INT_MSK	BIT(15)
- #define RK3588_HDMI1_HPD_INT_CLR	BIT(14)
- #define RK3588_GRF_SOC_CON7		0x031c
--#define RK3588_SET_HPD_PATH_MASK	GENMASK(13, 12)
-+#define RK3588_HPD_HDMI0_IO_EN_MASK	BIT(12)
-+#define RK3588_HPD_HDMI1_IO_EN_MASK	BIT(13)
- #define RK3588_GRF_SOC_STATUS1		0x0384
- #define RK3588_HDMI0_LEVEL_INT		BIT(16)
- #define RK3588_HDMI1_LEVEL_INT		BIT(24)
-@@ -80,7 +82,6 @@
- #define RK3588_HDMI0_GRANT_SEL		BIT(10)
- #define RK3588_HDMI1_GRANT_SEL		BIT(12)
- 
--#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
- #define HOTPLUG_DEBOUNCE_MS		150
- #define MAX_HDMI_PORT_NUM		2
- 
-@@ -185,11 +186,11 @@ static void dw_hdmi_qp_rk3588_setup_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
- 	u32 val;
- 
- 	if (hdmi->port_id)
--		val = HIWORD_UPDATE(RK3588_HDMI1_HPD_INT_CLR,
--				    RK3588_HDMI1_HPD_INT_CLR | RK3588_HDMI1_HPD_INT_MSK);
-+		val = (FIELD_PREP_WM16(RK3588_HDMI1_HPD_INT_CLR, 1) |
-+		       FIELD_PREP_WM16(RK3588_HDMI1_HPD_INT_MSK, 0));
- 	else
--		val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_CLR,
--				    RK3588_HDMI0_HPD_INT_CLR | RK3588_HDMI0_HPD_INT_MSK);
-+		val = (FIELD_PREP_WM16(RK3588_HDMI0_HPD_INT_CLR, 1) |
-+		       FIELD_PREP_WM16(RK3588_HDMI0_HPD_INT_MSK, 0));
- 
- 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
- }
-@@ -218,8 +219,8 @@ static void dw_hdmi_qp_rk3576_setup_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
- 	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
- 	u32 val;
- 
--	val = HIWORD_UPDATE(RK3576_HDMI_HPD_INT_CLR,
--			    RK3576_HDMI_HPD_INT_CLR | RK3576_HDMI_HPD_INT_MSK);
-+	val = (FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_CLR, 1) |
-+	       FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 0));
- 
- 	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
- 	regmap_write(hdmi->regmap, 0xa404, 0xffff0102);
-@@ -254,7 +255,7 @@ static irqreturn_t dw_hdmi_qp_rk3576_hardirq(int irq, void *dev_id)
- 
- 	regmap_read(hdmi->regmap, RK3576_IOC_HDMI_HPD_STATUS, &intr_stat);
- 	if (intr_stat) {
--		val = HIWORD_UPDATE(RK3576_HDMI_HPD_INT_MSK, RK3576_HDMI_HPD_INT_MSK);
-+		val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 1);
- 
- 		regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
- 		return IRQ_WAKE_THREAD;
-@@ -273,12 +274,12 @@ static irqreturn_t dw_hdmi_qp_rk3576_irq(int irq, void *dev_id)
- 	if (!intr_stat)
- 		return IRQ_NONE;
- 
--	val = HIWORD_UPDATE(RK3576_HDMI_HPD_INT_CLR, RK3576_HDMI_HPD_INT_CLR);
-+	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_CLR, 1);
- 	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
- 	mod_delayed_work(system_wq, &hdmi->hpd_work,
- 			 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
- 
--	val = HIWORD_UPDATE(0, RK3576_HDMI_HPD_INT_MSK);
-+	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 0);
- 	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
- 
- 	return IRQ_HANDLED;
-@@ -293,11 +294,9 @@ static irqreturn_t dw_hdmi_qp_rk3588_hardirq(int irq, void *dev_id)
- 
- 	if (intr_stat) {
- 		if (hdmi->port_id)
--			val = HIWORD_UPDATE(RK3588_HDMI1_HPD_INT_MSK,
--					    RK3588_HDMI1_HPD_INT_MSK);
-+			val = FIELD_PREP_WM16(RK3588_HDMI1_HPD_INT_MSK, 1);
- 		else
--			val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_MSK,
--					    RK3588_HDMI0_HPD_INT_MSK);
-+			val = FIELD_PREP_WM16(RK3588_HDMI0_HPD_INT_MSK, 1);
- 		regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
- 		return IRQ_WAKE_THREAD;
- 	}
-@@ -315,20 +314,18 @@ static irqreturn_t dw_hdmi_qp_rk3588_irq(int irq, void *dev_id)
- 		return IRQ_NONE;
- 
- 	if (hdmi->port_id)
--		val = HIWORD_UPDATE(RK3588_HDMI1_HPD_INT_CLR,
--				    RK3588_HDMI1_HPD_INT_CLR);
-+		val = FIELD_PREP_WM16(RK3588_HDMI1_HPD_INT_CLR, 1);
- 	else
--		val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_CLR,
--				    RK3588_HDMI0_HPD_INT_CLR);
-+		val = FIELD_PREP_WM16(RK3588_HDMI0_HPD_INT_CLR, 1);
- 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
- 
- 	mod_delayed_work(system_wq, &hdmi->hpd_work,
- 			 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
- 
- 	if (hdmi->port_id)
--		val |= HIWORD_UPDATE(0, RK3588_HDMI1_HPD_INT_MSK);
-+		val |= FIELD_PREP_WM16(RK3588_HDMI1_HPD_INT_MSK, 0);
- 	else
--		val |= HIWORD_UPDATE(0, RK3588_HDMI0_HPD_INT_MSK);
-+		val |= FIELD_PREP_WM16(RK3588_HDMI0_HPD_INT_MSK, 0);
- 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
- 
- 	return IRQ_HANDLED;
-@@ -338,14 +335,14 @@ static void dw_hdmi_qp_rk3576_io_init(struct rockchip_hdmi_qp *hdmi)
- {
- 	u32 val;
- 
--	val = HIWORD_UPDATE(RK3576_SCLIN_MASK, RK3576_SCLIN_MASK) |
--	      HIWORD_UPDATE(RK3576_SDAIN_MASK, RK3576_SDAIN_MASK) |
--	      HIWORD_UPDATE(RK3576_HDMI_GRANT_SEL, RK3576_HDMI_GRANT_SEL) |
--	      HIWORD_UPDATE(RK3576_I2S_SEL_MASK, RK3576_I2S_SEL_MASK);
-+	val = FIELD_PREP_WM16(RK3576_SCLIN_MASK, 1) |
-+	      FIELD_PREP_WM16(RK3576_SDAIN_MASK, 1) |
-+	      FIELD_PREP_WM16(RK3576_HDMI_GRANT_SEL, 1) |
-+	      FIELD_PREP_WM16(RK3576_I2S_SEL_MASK, 1);
- 
- 	regmap_write(hdmi->vo_regmap, RK3576_VO0_GRF_SOC_CON14, val);
- 
--	val = HIWORD_UPDATE(0, RK3576_HDMI_HPD_INT_MSK);
-+	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 0);
- 	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
- }
- 
-@@ -353,27 +350,28 @@ static void dw_hdmi_qp_rk3588_io_init(struct rockchip_hdmi_qp *hdmi)
- {
- 	u32 val;
- 
--	val = HIWORD_UPDATE(RK3588_SCLIN_MASK, RK3588_SCLIN_MASK) |
--	      HIWORD_UPDATE(RK3588_SDAIN_MASK, RK3588_SDAIN_MASK) |
--	      HIWORD_UPDATE(RK3588_MODE_MASK, RK3588_MODE_MASK) |
--	      HIWORD_UPDATE(RK3588_I2S_SEL_MASK, RK3588_I2S_SEL_MASK);
-+	val = FIELD_PREP_WM16(RK3588_SCLIN_MASK, 1) |
-+	      FIELD_PREP_WM16(RK3588_SDAIN_MASK, 1) |
-+	      FIELD_PREP_WM16(RK3588_MODE_MASK, 1) |
-+	      FIELD_PREP_WM16(RK3588_I2S_SEL_MASK, 1);
- 	regmap_write(hdmi->vo_regmap,
- 		     hdmi->port_id ? RK3588_GRF_VO1_CON6 : RK3588_GRF_VO1_CON3,
- 		     val);
- 
--	val = HIWORD_UPDATE(RK3588_SET_HPD_PATH_MASK, RK3588_SET_HPD_PATH_MASK);
-+	val = FIELD_PREP_WM16(RK3588_HPD_HDMI0_IO_EN_MASK, 1) |
-+	      FIELD_PREP_WM16(RK3588_HPD_HDMI1_IO_EN_MASK, 1);
- 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON7, val);
- 
- 	if (hdmi->port_id)
--		val = HIWORD_UPDATE(RK3588_HDMI1_GRANT_SEL, RK3588_HDMI1_GRANT_SEL);
-+		val = FIELD_PREP_WM16(RK3588_HDMI1_GRANT_SEL, 1);
- 	else
--		val = HIWORD_UPDATE(RK3588_HDMI0_GRANT_SEL, RK3588_HDMI0_GRANT_SEL);
-+		val = FIELD_PREP_WM16(RK3588_HDMI0_GRANT_SEL, 1);
- 	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON9, val);
- 
- 	if (hdmi->port_id)
--		val = HIWORD_UPDATE(RK3588_HDMI1_HPD_INT_MSK, RK3588_HDMI1_HPD_INT_MSK);
-+		val = FIELD_PREP_WM16(RK3588_HDMI1_HPD_INT_MSK, 1);
- 	else
--		val = HIWORD_UPDATE(RK3588_HDMI0_HPD_INT_MSK, RK3588_HDMI0_HPD_INT_MSK);
-+		val = FIELD_PREP_WM16(RK3588_HDMI0_HPD_INT_MSK, 1);
- 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
- }
- 
+Your understanding of the algorithm appears to be correct, from my memory
+of when I wrote the code. The 4 captures left logic is because the
+hardware needs 4 level transitions before it can provide a useful
+number for those two counts; thinking about it more now, I'm surprised it
+can't do it in 3, so I'll need to double-check that next time I work on
+this.
 
--- 
-2.51.0
+As an aside note, Rockchip has recently published the RK3506 Technical
+Reference Manual, and the RK3506 SoC uses the same PWM IP as the RK3576
+for which this driver is for. You can find it here in Chapter 31:
+
+https://opensource.rock-chips.com/images/3/36/Rockchip_RK3506_TRM_Part_1_V1.2-20250811.pdf
+
+This driver specifically implements "31.3.1 Capture Mode", later down
+the line I may want to add "31.3.4 Clock Counter", "31.3.5 Clock
+Frequency Meter" and "31.3.6 Biphasic Counter" but I lack a proper
+signal generator so didn't want to bite off more than I could test.
+
+> 
+> The Counter subsystem can be used to derive the period and duty cycle of
+> a signal, but I believe there's a more idiomatic way to implement this.
+> Existing counter drivers such as microchip-tcb-capture achieve this by
+> leveraging Counter events exposed via the Counter chrdev interface.
+> 
+> The basic idea would be:
+>     * Expose LPC and HPC as count0 and count1;
+>     * Push the PWMV4_INT_LPC and PWMV4_INT_HPC interrupts as
+>       COUNTER_EVENT_CHANGE_OF_STATE events on channel 0 and channel 1
+>       respectively;
+>     * Register Counter watches in userspace to capture LPC and HPC on
+>       each interrupt;
+> 
+> The Counter chrdev interface records a timestamp in nanoseconds with
+> each event capture. So to compute period and duty cycle, you would
+> subtract the difference between two HPC/LPC captures; the difference in
+> the timestamps gives you the elapsed time between the two captures in
+> nanoseconds.
+> 
+> Would that design work for your use case?
+
+Basically, any design would work for me. I've only implemented the
+counter driver to make sure the PWM reading part of the hardware works,
+and Uwe advised me that new PWM drivers should use the counter
+subsystem as opposed to implementing the PWM capture operation.
+
+So I think your design makes more sense; any user of this driver would
+likely want it to work like the other counter drivers, and exposing
+LPC and HPC directly would also let me get rid of the quirky "is the
+PWM actually off now" logic.
+
+I'll do this when I get the chance to work on this patch series again,
+as it needs a rewrite anyway to plug it into the MFD subsystem.
+
+> 
+> William Breathitt Gray
+> 
+
+Thank you for your review and suggestions!
+
+Kind regards,
+Nicolas Frattaroli
+
 
 
 _______________________________________________
