@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EBC6CA0EFA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 15:01:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E46ACA0FED
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 15:01:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yfrP2T9VjNxvGpMwDdVvhhqTIYSg7mgkYycdlsgCOks=; b=RIJcUpW4jC+7Ng
-	lx9qzf48BhmfFFAw1ubaIh2be+EIcXzluQZjSP7TXAW+hALnW16wJFT7MtBIVCUkXNiD/StcnW4EZ
-	6etAevhezyKUhHDIt1IbyRHqwLtmXWIxYRQsAyCTOlrdSa3weDshY+5YfK3gRtaCqCIiK2fLUJKN3
-	Lwlg0XeQPQsAE5lJ58SFmTkytK7IMTtkxULNxXYPftozmIo5JSLte3hP+0/ZSHVLyFvcfegYI3Jke
-	ya4+SXgujAUo4gax/dX1nJXWfiqzVStQUYjDlGUWO9XdQ048IVi1naxVy+v89lICXJls5SvtFGe12
-	OUGyvtZ2Oz3VjA0tT+1w==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5wCrz4R/V2JkVRt24+ySx71OozKU9SrZBr8ix5sEGW4=; b=213VXk+oH9Loj0
+	q0MlazhPfL+1J00e4dU00Ge2Zj+LZtQ4aK7Wqm9Mor2grfb2gPHT3Xw57X9VefCLrSPCDnEQkfdaw
+	i+y/TzZiPririvwpTHspY9U5cZWNEQhXJgnmx3VOlGmnk4XKPKVK2Qw07wh8uYpkeRbF7zCJ8f+vO
+	ZVUQdyGgWycoCBKVBxVQ/AUkCtgOOxHNvsPmDAykvBvDMt8kasbH2318IFs2PBCbIiNbdwUgCfJQD
+	0lT68E89NjTry/xeu28o9HMWiOjpVypphW+ffswLNHv80zDmHWy4VkCliqvM7nTkKvajFKiTs7rGZ
+	7YNMR9Dorppx7YNrvMVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqYgt-00000008NvJ-3p1b;
-	Mon, 25 Aug 2025 15:00:59 +0000
+	id 1uqYgw-00000008O17-2qdd;
+	Mon, 25 Aug 2025 15:01:02 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqXU0-000000087MG-16HJ;
-	Mon, 25 Aug 2025 13:43:37 +0000
+	id 1uqXU5-000000087Oi-3AMt;
+	Mon, 25 Aug 2025 13:43:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 12C985C5D69;
-	Mon, 25 Aug 2025 13:43:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38BB9C4CEED;
-	Mon, 25 Aug 2025 13:43:34 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2DB645C5DB4;
+	Mon, 25 Aug 2025 13:43:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7CD67C116C6;
+	Mon, 25 Aug 2025 13:43:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756129414;
-	bh=wsGg4o5rIk6iWnwj3c0e+ddrWYACRADM//93hdU20w4=;
-	h=From:Subject:Date:To:Cc:From;
-	b=sqFlSdR6wzioHCIWCTuXe4gIb398iawEGQ0noC6vq3qfSpKD/GhQbNFo/BZMPrL04
-	 fKiuK5wA+i9NFKyGHsjC/hJ22L6DxIOxsIDCQWlHDlbpVj4xLCLv/3e48GURiiSEpo
-	 CpRm/oIfhfcKqoepBNvwkntHaXlfSkrgtiWe3FtbOG2bPeTeDS1nsYCI+SbIpjF4oW
-	 nclGltUfOEK7eUrRlCc238qoG8MsuEdWy35bURpgLz+Tisfc/MMY954heq9Pnfqqmt
-	 RuDCuulMO26sW/CkrFyLalMIN8EiP3wn/2vWATpdOdqe7dd/1NPRg1OQrbh1TYYeIh
-	 wB6/rJBuExbaQ==
+	s=k20201202; t=1756129421;
+	bh=PvFz2tbovLUK8GLCCWdRDnXPX4fkTXJc0fftU/dIBLY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=Tr3F9Altbjhrs1x7p1Zk97B/11uNdPU11CbH4+eY0nYoE55PZD2t7HCbjBUjw+u4e
+	 gcaFB0Ugd+47dJLl8SdPpCAE66TW281L29vAxjNF9ItcwKxgvJ/XlC8VEeu75NT+hC
+	 y+VrKP5sn4D1nHn/tPvsOpojXAqnjUcjUsWdhsLovTqqyGDuFFMfEbweQi1D2OlrRt
+	 oSz2k0OtQxBgcHI8BQ2PT49cdFG4cb20aioGCdUUhx3FsqaQiSuV8G/D5bRiQX+oxV
+	 QD7EwIdjOxtcngg6EmAv84R6oVO1+Tri7zeuU2HsbC2SmCQb59BzIxDQ4eRVcRkfSH
+	 50w0wrutKkjLQ==
 From: Maxime Ripard <mripard@kernel.org>
-Subject: [PATCH 00/39] drm/atomic: Get rid of existing states (not really)
-Date: Mon, 25 Aug 2025 15:43:05 +0200
-Message-Id: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
+Date: Mon, 25 Aug 2025 15:43:07 +0200
+Subject: [PATCH 02/39] drm/atomic: Convert drm_atomic_get_connector_state()
+ to state accessor
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAGlorGgC/x3MwQqDMAwA0F+RnBeoKQW3XxEPrUaXg+1IyhCk/
- 76y47u8G4xV2OA13KD8FZOSO8bHAOs75oNRtm4gR8FNFHDTE3PBsygjX2JV8oFWY2V8Jk+B1jF
- 6n6AHH+Vdrn8+L639AIn9C4BsAAAA
-X-Change-ID: 20250825-drm-no-more-existing-state-9b3252c1a33b
+Message-Id: <20250825-drm-no-more-existing-state-v1-2-f08ccd9f85c9@kernel.org>
+References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
+In-Reply-To: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
  Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
  Simona Vetter <simona@ffwll.ch>, Louis Chauvet <louis.chauvet@bootlin.com>, 
@@ -103,17 +102,17 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5301; i=mripard@kernel.org;
- h=from:subject:message-id; bh=wsGg4o5rIk6iWnwj3c0e+ddrWYACRADM//93hdU20w4=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMoqmcab9SaxeoL8+8fGLztO2hw5uF8s7cXj22mXn5
- tepO9/r7ZjKwiDMySArpsjyRCbs9PL2xVUO9it/wMxhZQIZwsDFKQATuXKdsaHn3ankZUatfg2R
- r99tjDXavWHDnETW9lnXphXduWK1i3/PAUFhlmbnCXk1p2ez1uZ9qmBseF0nvzr8bH5d1fUWnkc
- 9/asdYqdWijaknuX6vvl6Q5LYkrt7xcpMPwdtYnle5sEVXLUIAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1302; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=PvFz2tbovLUK8GLCCWdRDnXPX4fkTXJc0fftU/dIBLY=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBlrMorri+d9DrAsKeHa9y+OcWHuko2W85tnLGXqnem3Q
+ 0SzQUOxYyoLgzAng6yYIssTmbDTy9sXVznYr/wBM4eVCWQIAxenAEzk/2HGhou2witn34m6Zno7
+ /9crnSsPlLlOip/6aPpbf43//oWmn9au6tBvviY2YfneCywB1soXZjI2vH11eYewphHbWrGz6gq
+ PuQUa/+1a46x/8fqppNdPr9xpEQ+y6suc/cymSzrrs+3PPjEZAA==
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_064336_383433_78BAEFBE 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20250825_064341_882253_A3D46181 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,107 +129,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The drm_atomic_get_existing_connector_state() looks up if a connector
+state was already allocated in the global state before trying to
+allocate a new one.
 
-Here's a series to get rid of the drm_atomic_helper_get_existing_*_state
-accessors.
-
-The initial intent was to remove the __drm_*_state->state pointer to
-only rely on old and new states, but we still need it now to know which
-of the two we need to free: if a state has not been committed (either
-dropped or checked only), then we need to free the new one, if it has
-been committed we need to free the old state. 
-
-Thus, the state pointer is kept (and documented) only to point to the
-state we should free eventually.
-
-All users have been converted to the relevant old or new state
-accessors.  
-
-This was build tested only.
-
-Let me know what you think,
-Maxime
+It does so using a hand-crafted version of
+drm_atomic_get_existing_connector_state(), so let's convert to that
+helper, even though it's currently deprecated.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
-Maxime Ripard (39):
-      drm/atomic: Make drm_atomic_get_connector_state() early return consistent
-      drm/atomic: Convert drm_atomic_get_connector_state() to state accessor
-      drm/atomic: Convert drm_atomic_get_connector_state() to use new connector state
-      drm/atomic: Remove unused drm_atomic_get_existing_connector_state()
-      drm/atomic: Document __drm_connectors_state state pointer
-      drm/atomic: Convert __drm_atomic_get_current_plane_state() to modern accessor
-      drm/atomic: Convert drm_atomic_get_plane_state() to use new plane state
-      drm/vkms: Convert vkms_crtc_atomic_check() to use new plane state
-      drm/tilcdc: crtc: Use drm_atomic_helper_check_crtc_primary_plane()
-      drm/atomic: Remove unused drm_atomic_get_existing_plane_state()
-      drm/atomic: Document __drm_planes_state state pointer
-      drm/atomic: Convert drm_atomic_get_crtc_state() to use new connector state
-      drm/ingenic: ipu: Switch to drm_atomic_get_new_crtc_state()
-      drm/arm/malidp: Switch to drm_atomic_get_new_crtc_state()
-      drm/armada: Switch to drm_atomic_get_new_crtc_state()
-      drm/atmel-hlcdc: Switch to drm_atomic_get_new_crtc_state()
-      drm/exynos: Switch to drm_atomic_get_new_crtc_state()
-      drm/imx-dc: Switch to drm_atomic_get_new_crtc_state()
-      drm/imx-dcss: Switch to drm_atomic_get_new_crtc_state()
-      drm/imx-ipuv3: Switch to drm_atomic_get_new_crtc_state()
-      drm/ingenic: Switch to drm_atomic_get_new_crtc_state()
-      drm/kmb: Switch to drm_atomic_get_new_crtc_state()
-      drm/logicvc: Switch to drm_atomic_get_new_crtc_state()
-      drm/loongson: Switch to drm_atomic_get_new_crtc_state()
-      drm/mediatek: Switch to drm_atomic_get_new_crtc_state()
-      drm/msm/mdp5: Switch to drm_atomic_get_new_crtc_state()
-      drm/omap: Switch to drm_atomic_get_new_crtc_state()
-      drm/rockchip: Switch to drm_atomic_get_new_crtc_state()
-      drm/sun4i: Switch to drm_atomic_get_new_crtc_state()
-      drm/tegra: Switch to drm_atomic_get_new_crtc_state()
-      drm/tilcdc: Switch to drm_atomic_get_new_crtc_state()
-      drm/vboxvideo: Switch to drm_atomic_get_new_crtc_state()
-      drm/vc4: Switch to drm_atomic_get_new_crtc_state()
-      drm/atomic: Switch to drm_atomic_get_new_crtc_state()
-      drm/framebuffer: Switch to drm_atomic_get_new_crtc_state()
-      drm/atomic: Remove unused drm_atomic_get_existing_crtc_state()
-      drm/atomic: Document __drm_crtcs_state state pointer
-      drm/atomic: Convert drm_atomic_get_private_obj_state() to use new plane state
-      drm/atomic: Document __drm_private_objs_state state pointer
+ drivers/gpu/drm/drm_atomic.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
- drivers/gpu/drm/arm/malidp_planes.c             |   2 +-
- drivers/gpu/drm/armada/armada_plane.c           |   3 +-
- drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c |   2 +-
- drivers/gpu/drm/drm_atomic.c                    |  23 ++--
- drivers/gpu/drm/drm_framebuffer.c               |   2 +-
- drivers/gpu/drm/exynos/exynos_drm_plane.c       |   2 +-
- drivers/gpu/drm/imx/dc/dc-plane.c               |   2 +-
- drivers/gpu/drm/imx/dcss/dcss-plane.c           |   4 +-
- drivers/gpu/drm/imx/ipuv3/ipuv3-plane.c         |   3 +-
- drivers/gpu/drm/ingenic/ingenic-drm-drv.c       |   3 +-
- drivers/gpu/drm/ingenic/ingenic-ipu.c           |   4 +-
- drivers/gpu/drm/kmb/kmb_plane.c                 |   3 +-
- drivers/gpu/drm/logicvc/logicvc_layer.c         |   4 +-
- drivers/gpu/drm/loongson/lsdc_plane.c           |   2 +-
- drivers/gpu/drm/mediatek/mtk_plane.c            |   3 +-
- drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c      |   7 +-
- drivers/gpu/drm/omapdrm/omap_plane.c            |   2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |   6 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c    |   2 +-
- drivers/gpu/drm/sun4i/sun8i_ui_layer.c          |   3 +-
- drivers/gpu/drm/sun4i/sun8i_vi_layer.c          |   3 +-
- drivers/gpu/drm/tegra/dc.c                      |   2 +-
- drivers/gpu/drm/tilcdc/tilcdc_crtc.c            |   9 +-
- drivers/gpu/drm/tilcdc/tilcdc_plane.c           |   3 +-
- drivers/gpu/drm/vboxvideo/vbox_mode.c           |   8 +-
- drivers/gpu/drm/vc4/vc4_plane.c                 |   6 +-
- drivers/gpu/drm/vkms/vkms_crtc.c                |   4 +-
- include/drm/drm_atomic.h                        | 144 ++++++++++++------------
- 28 files changed, 125 insertions(+), 136 deletions(-)
----
-base-commit: 7fa4d8dc380fbd81a9d702a855c50690c9c6442c
-change-id: 20250825-drm-no-more-existing-state-9b3252c1a33b
+diff --git a/drivers/gpu/drm/drm_atomic.c b/drivers/gpu/drm/drm_atomic.c
+index fe21f154e0fa030f85fb3d6d35e2684adcf36e26..660b081ff5d8c39061cebfb5ea122ac1e51677ad 100644
+--- a/drivers/gpu/drm/drm_atomic.c
++++ b/drivers/gpu/drm/drm_atomic.c
+@@ -1128,12 +1128,13 @@ drm_atomic_get_connector_state(struct drm_atomic_state *state,
+ 	struct drm_mode_config *config = &connector->dev->mode_config;
+ 	struct drm_connector_state *connector_state;
+ 
+ 	WARN_ON(!state->acquire_ctx);
+ 
+-	if (state->connectors[index].state)
+-		return state->connectors[index].state;
++	connector_state = drm_atomic_get_existing_connector_state(state, connector);
++	if (connector_state)
++		return connector_state;
+ 
+ 	ret = drm_modeset_lock(&config->connection_mutex, state->acquire_ctx);
+ 	if (ret)
+ 		return ERR_PTR(ret);
+ 
 
-Best regards,
 -- 
-Maxime Ripard <mripard@kernel.org>
+2.50.1
 
 
 _______________________________________________
