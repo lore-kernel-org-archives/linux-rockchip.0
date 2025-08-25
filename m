@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E6EACA0FEF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 08:50:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02E1CCA0FE1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 08:50:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cWDjVzBiXkPZySbp8cBYUKiHKSMJw3KnauTpmHE/NlQ=; b=MioeQ0gXmuLkEd
-	TJe/k+YBjNkcHD4otkt8paNPE7/7QtgeD1phYODh1ce39NBHTd+B5mE7grdSB3W+gspRaS+si+uZM
-	kdTUKttk4IFcOM2eEUQbGyQziKz3ytVYgMWlDoaL9Y7ItXeER+RLPkea0h6mCi0aWxNVZiv4itiZZ
-	MsaQquOT1r4w0VsxXycFtVh21X6gozA+lp9t+gELcf7VnaZfLDx4ZqP1OXwoWBGrueU74PcObOaVI
-	UXf9aoyYrumik+IYy247Bs0ay8rvH5VIosPRtiAq9O2HmoT/8zQzUe9oOEb7UGPcWivDgJMfznEz3
-	iem04DMoTGMYJ0Z1R8NA==;
+	List-Owner; bh=ZTL76UfYnziiq56py/rh/wb0tXeMpXQobYCpgVD0qkY=; b=Rozz0aYr1jb4KB
+	CyrA5+nmb1jz3ES4E5uEVmoCNu9A35CmryJNF7YEACYPW3Gby4Rn/5goo2YuEdLJ4pMx7wiu2vCPy
+	2kDFA4+9GZrf+FrUX+aZzhG9KNeihXX2HRNNe8aYblyQKvr2Q16vQy3xtUiQvqecR1oVf/+71SSQ8
+	h/HuXRrVqViAjc+3/aGk0AYeO+AiQ5SP5ooB5WRZijM3zkptYcxq3aYQSt5HqLQDiOHLw9kxpNupz
+	kylEilkk2gJGtR3vFjqQOD8EOBtWP5faDZf8l2rTDN2voSoQV1BimtVg+/xmZULBSYjFo5aVL927k
+	aZXRKcrLy9+SCqX88kvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqSuX-00000007O5e-47Kb;
-	Mon, 25 Aug 2025 08:50:42 +0000
+	id 1uqSua-00000007O8r-2UU9;
+	Mon, 25 Aug 2025 08:50:44 +0000
 Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqSbc-00000007JHm-1x8u;
-	Mon, 25 Aug 2025 08:31:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1756110621; cv=none; 
+	id 1uqSc5-00000007JQ6-3YBc;
+	Mon, 25 Aug 2025 08:31:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1756110651; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=N4o+tajm0SwPl/34dezaXRK4ci0j2WfehOVzunWVqK8gs5f4dHm7KU35tPKwrobXtiqeyyLCWp5s5YWF9ytHLBFgXS4QzHjv0kQsE4SMTAr0iZE5TTUeDqjlYfzmxs7hLLuDv7MrHDPcDxL4AW8tX8jx3FRMuNbP97DKsdKMeUo=
+	b=LLBZJNShM/scNbNd2FBGDgo/l8Vy6SGWp/z1oZFxe4pKUxxNm9W5Jsb3/QnmN6H0GxcDbNG0izhIDixr0s8yFI63AsdEFZHcE0WfetHT5IU7fLn7mtfCsGGIFzK9LlHdkWNEwQsFbUzt6T4zQvg/uC/1jhu3Cw7vwe5qAsGoO88=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1756110621; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=SZ8Ll2BtvAKyjioX3uAKtoiBp8d7NaHLutQ9mdvbmNs=; 
-	b=nSzYTMd9sk/kxJ6eE8MRfgyAG0QHypyEH32U5qpBqslZlrJUMEkD9jSWBePhcC5P4PNHrUiMQ5wjHgKgwiHIs/49I4ZMeZKAYphMXjGqjjKZn9o830CY3szDUeOrewkiphDAPsvrBqxnuJlOrfPVPtATKnueTx5FhsPmsGq6+yE=
+	t=1756110651; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Km6AYdZ3WI+Rp52C1yBfbDSZEmIVJgexAgpXKrteI14=; 
+	b=l7iCv194zYVQ20Y+MDFtkP5zVOvU6M8AwOMbev9sRh8kP67Q8qNUVdMgxrmpE5r6NF6zwrGX0j84/NFEdn1cgMIpj7Jd25nnePw8GkRdmJrWBpiWMSEKAK1uHEKFKtUIuOqnHIIfFlirLUOw+hhrKXaJJZ4rhwxMGsz4G4kaTxc=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756110621;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756110651;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=SZ8Ll2BtvAKyjioX3uAKtoiBp8d7NaHLutQ9mdvbmNs=;
-	b=HbJWq/TUSm2xMmd4mSk6BRTXIZSQAdV9TWVK/FerqxwO2i7Jejb2ivhLU58Nt0EB
-	wklZIZKI4hT2QXJatGKm8Qt8nM/UhUYsypArKKmCGcZ6W2iIVTLRSWJLKV6AL/H7ueS
-	hvq5TE9S9mL2XS4NSy3Ob4bchRfZdmXDCR1KrQfE=
-Received: by mx.zohomail.com with SMTPS id 1756110619942242.23716817600075;
-	Mon, 25 Aug 2025 01:30:19 -0700 (PDT)
+	bh=Km6AYdZ3WI+Rp52C1yBfbDSZEmIVJgexAgpXKrteI14=;
+	b=cWmepJ5/uJCSY2WSAzlcCM8KbtvbvnNTdkH+4qBIhXTVRp2wD2f8gOaEufHUbi4K
+	ruQLCt1bL/Y3M4kxOs6s7pD7aD5fdBSXrpCo1TT4sCIS0zyzc2HyuwaPDa+bb57k2zO
+	UYqi/MqDwRusj5Rny9+wmJbm72pV4S/Jan2PVVGg=
+Received: by mx.zohomail.com with SMTPS id 1756110648569933.3258387690506;
+	Mon, 25 Aug 2025 01:30:48 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 25 Aug 2025 10:28:26 +0200
-Subject: [PATCH v3 06/20] phy: rockchip-emmc: switch to FIELD_PREP_WM16
+Date: Mon, 25 Aug 2025 10:28:28 +0200
+Subject: [PATCH v3 08/20] drm/rockchip: vop2: switch to FIELD_PREP_WM16
  macro
 MIME-Version: 1.0
-Message-Id: <20250825-byeword-update-v3-6-947b841cdb29@collabora.com>
+Message-Id: <20250825-byeword-update-v3-8-947b841cdb29@collabora.com>
 References: <20250825-byeword-update-v3-0-947b841cdb29@collabora.com>
 In-Reply-To: <20250825-byeword-update-v3-0-947b841cdb29@collabora.com>
 To: Yury Norov <yury.norov@gmail.com>, 
@@ -86,8 +86,8 @@ To: Yury Norov <yury.norov@gmail.com>,
  Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_013108_557200_F647BF19 
-X-CRM114-Status: GOOD (  14.12  )
+X-CRM114-CacheID: sfid-20250825_013137_943484_1DEE80D5 
+X-CRM114-Status: GOOD (  14.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,36 +108,85 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
 drivers that use constant masks.
 
-Replace the implementation of the rockchip eMMC PHY driver's
-HIWORD_UPDATE macro with hw_bitfield.h's FIELD_PREP_WM16. This makes the
-change more easily reviewable.
+Remove VOP2's HIWORD_UPDATE macro from the vop2 header file, and replace
+all instances in rockchip_vop2_reg.c (the only user of this particular
+HIWORD_UPDATE definition) with equivalent FIELD_PREP_WM16 instances. This
+gives us better error checking.
 
+Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Tested-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-emmc.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  1 -
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 15 +++++++++------
+ 2 files changed, 9 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-index 20023f6eb9944eaab505101d57e806476ecfac71..5187983c58e5e9bc56e65c208122a3be7be00427 100644
---- a/drivers/phy/rockchip/phy-rockchip-emmc.c
-+++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
-@@ -8,6 +8,7 @@
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index fa5c56f16047e3493e82fbedaced221459696dcc..9124191899baca764e4e362f86bbc2bb1f319577 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -33,7 +33,6 @@
+ #define WIN_FEATURE_AFBDC		BIT(0)
+ #define WIN_FEATURE_CLUSTER		BIT(1)
  
- #include <linux/clk.h>
- #include <linux/delay.h>
-+#include <linux/hw_bitfield.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
-@@ -21,7 +22,7 @@
-  * only if BIT(x + 16) set to 1 the BIT(x) can be written.
+-#define HIWORD_UPDATE(v, h, l)  ((GENMASK(h, l) << 16) | ((v) << (l)))
+ /*
+  *  the delay number of a window in different mode.
   */
- #define HIWORD_UPDATE(val, mask, shift) \
--		((val) << (shift) | (mask) << ((shift) + 16))
-+		(FIELD_PREP_WM16((mask) << (shift), (val)))
- 
- /* Register definition */
- #define GRF_EMMCPHY_CON0		0x0
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index 45c5e39878133163ee05c25a6a99004313f5ed19..38c49030c7ab6416c4af6b5c7be7b241e3c9db18 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -7,6 +7,7 @@
+ #include <linux/bitfield.h>
+ #include <linux/kernel.h>
+ #include <linux/component.h>
++#include <linux/hw_bitfield.h>
+ #include <linux/mod_devicetable.h>
+ #include <linux/platform_device.h>
+ #include <linux/of.h>
+@@ -1695,8 +1696,9 @@ static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32
+ 		die |= RK3588_SYS_DSP_INFACE_EN_HDMI0 |
+ 			    FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX, vp->id);
+ 		val = rk3588_get_hdmi_pol(polflags);
+-		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, HIWORD_UPDATE(1, 1, 1));
+-		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0, HIWORD_UPDATE(val, 6, 5));
++		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, FIELD_PREP_WM16(BIT(1), 1));
++		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0,
++			     FIELD_PREP_WM16(GENMASK(6, 5), val));
+ 		break;
+ 	case ROCKCHIP_VOP2_EP_HDMI1:
+ 		div &= ~RK3588_DSP_IF_EDP_HDMI1_DCLK_DIV;
+@@ -1707,8 +1709,9 @@ static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32
+ 		die |= RK3588_SYS_DSP_INFACE_EN_HDMI1 |
+ 			    FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_EDP_HDMI1_MUX, vp->id);
+ 		val = rk3588_get_hdmi_pol(polflags);
+-		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, HIWORD_UPDATE(1, 4, 4));
+-		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0, HIWORD_UPDATE(val, 8, 7));
++		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, FIELD_PREP_WM16(BIT(4), 1));
++		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0,
++			     FIELD_PREP_WM16(GENMASK(8, 7), val));
+ 		break;
+ 	case ROCKCHIP_VOP2_EP_EDP0:
+ 		div &= ~RK3588_DSP_IF_EDP_HDMI0_DCLK_DIV;
+@@ -1718,7 +1721,7 @@ static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32
+ 		die &= ~RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX;
+ 		die |= RK3588_SYS_DSP_INFACE_EN_EDP0 |
+ 			   FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX, vp->id);
+-		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, HIWORD_UPDATE(1, 0, 0));
++		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, FIELD_PREP_WM16(BIT(0), 1));
+ 		break;
+ 	case ROCKCHIP_VOP2_EP_EDP1:
+ 		div &= ~RK3588_DSP_IF_EDP_HDMI1_DCLK_DIV;
+@@ -1728,7 +1731,7 @@ static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32
+ 		die &= ~RK3588_SYS_DSP_INFACE_EN_EDP_HDMI1_MUX;
+ 		die |= RK3588_SYS_DSP_INFACE_EN_EDP1 |
+ 			   FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_EDP_HDMI1_MUX, vp->id);
+-		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, HIWORD_UPDATE(1, 3, 3));
++		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, FIELD_PREP_WM16(BIT(3), 1));
+ 		break;
+ 	case ROCKCHIP_VOP2_EP_MIPI0:
+ 		div &= ~RK3588_DSP_IF_MIPI0_PCLK_DIV;
 
 -- 
 2.51.0
