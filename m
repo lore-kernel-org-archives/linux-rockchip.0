@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88C51CA0EED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 08:13:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D83F3CA0EFA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 08:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wgZrYc9K7gwI5/JTc1Nf1McOtVgzOuEVc5LNdwquQz4=; b=PuK5MyOMtmBTyQ
-	+fU05BiZQpb6sXsmxREYxRXWYOvMs5oeWrNc/7HsTIleR89ETn/hmrZbwoxmzBor3+WPpbGUxJilY
-	e4zxFYYkK/HWhcJ3aQrIT/+g2s4ty3BIUJvl0PURjnsKufs4FdaBUz1I8PO1nM1+kguFpxIxqPuq2
-	nEmSTLLwijG6mlqorUnspLSdPNUhLy5p8SxduCp/LoLFTwyke4ZR4Ozdtji6MWgmHEWg1qCxK2vao
-	SshGsyIhFrwQAm2gabrTgNDOdaSOx9aX9Oj4YryOMh1vODOc2fHIIggMq5+dhI2lLHCI74Cq9SKDk
-	PF3zbDqT42/uibhXKn0Q==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oe/nBYvo1S4ZmoO/o1i/G5wNS5HxVFsdVnQUp+ONc5w=; b=LPT7NfUjcouVZq
+	VQOMlppa3FgA/jh9XoANwQD+xF0X0XlA5Z2yEqpXXRAbCJnxo86SNj7YCz5ZYaAm96A29jMiFfWcb
+	PglDWxTuQ0l/mTpMpIttlhGprnNkEG9Vxfl5U18RMrLaT62ugmHXivPPVbLRhCYf5iGwOoQmJB8HA
+	zA7vg5TIKf7O4xU851kO0gQlWwX9PQR6mDP++hWG/UdXjfyJC4d2RcoTBEw/tgboBleavyJDtg+hn
+	WUoCu9kwVr/SBJhEzCoG5DjjqiWrYc4r9s8xA7YtG6pyygvegFHCZkrE93MVLd77rO1sgEDrgtjWW
+	GQqLWb/yo5AQ2nIv+PKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqSK3-00000007Gc9-43Tz;
-	Mon, 25 Aug 2025 08:12:59 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uqSeo-00000007KHp-2ImR;
+	Mon, 25 Aug 2025 08:34:26 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqRcK-00000007AJi-1wKL;
-	Mon, 25 Aug 2025 07:27:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1756106849; cv=none; 
+	id 1uqRwI-00000007D0r-0b9W;
+	Mon, 25 Aug 2025 07:48:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1756108093; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=mEPfe+LalKrrED4ZK5hjFQelQk78dSO66JLcyZz+RAmvLO3g8HM5Pm3SbGFXG4yOXX0/Rm7cmtOYhbujBqyAun+tKkJPoRckkoDxuUeNcbx4nnvdX25nKAu1Cqv2BY9PlDQS+onShisZ3icAiCmCL2EJDB/MDr9s+z0PS3w9Rbs=
+	b=Mif53jBa6MJhiFA3/aeaKEpanFEPOgAIH7H2ZuUdsrAtRPu/MgbOT3DP6FBY2rj6ePbMjSECj12yIiQqzo9EC3onYNcemMOPA7kexfcK9xKDYPuR6j4sRJVelnLZBLEQG0X38Apa47eBKSzmFFuNz9vrZ2uFGldXO/K346zQY/c=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1756106849; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=M/TwANByS8GbPPy4BtdqH5o/3ijPPSO7Y5K83ExNaD4=; 
-	b=VRMDlxMy6Ow3JvjULJlwASYl3/3F86yEo/usN9SjmdntDVkrDTuXlzJFwEUZ9lGn0SO7+cT/so7iiCRdaouujuyDCRcbCxc/nfptf9efCvtpWnkz7V1i7rdPnFqbcJ7p0lOdv9l4cz5J5qEaLvf7ihGk3PNoooMjpAzHTzZSeps=
+	t=1756108093; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=80dzrh8aYZfGg2XUHBNmSgUetz0wp59La7rrflIHLYk=; 
+	b=hTrQDB+vFRUoh2TzCLNct7ZH6mA+ZiLxyi08MHJ278n9kJefJSS8W0fZv6yV5vnJvzDAcQZhLzydoq1k/A5PczB6y4tbslyaC/qdgSZhpG/4L25+svqU468G3JXb+BZHKPSOMfmr/+kta3MYdiQArODPHxGvpuzc+7VGFRmUwYk=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756106849;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756108093;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=M/TwANByS8GbPPy4BtdqH5o/3ijPPSO7Y5K83ExNaD4=;
-	b=Idm4c4//UOrazztLZtVF9PkLSf/WuAxutdVS1v3bOR/RjiHPa2EHOZffvBd+fMPx
-	My2PtOpzd3oV12TdAHpylBo0CGEjrjW9fawJAi5FzPxPysZ86eABz47sj6Yhhm94Ii7
-	aPDtWeWom/MbM+6bfYIotPgU0XXTx9kPzqPYh+H4=
-Received: by mx.zohomail.com with SMTPS id 175610684796468.22818037101536;
-	Mon, 25 Aug 2025 00:27:27 -0700 (PDT)
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=80dzrh8aYZfGg2XUHBNmSgUetz0wp59La7rrflIHLYk=;
+	b=F+CZpcEHNCcVVD5E2eusUhfW3VOUS/ZWUIpDXxI5z5QeKjtOV9RCcGxyZ/bOxE14
+	x+XVoB1b6xaPLKM4peUQofBqgx8GIHy0CMMo5WJvpvX22tuJAS78545/+5x34SM4fh0
+	HU9zR45BRWmSNqHl8sXRyIGwQroD2o9wsHxVH/9U=
+Received: by mx.zohomail.com with SMTPS id 1756108090913704.2939268893988;
+	Mon, 25 Aug 2025 00:48:10 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 25 Aug 2025 09:27:08 +0200
-Subject: [PATCH] arm64: dts: rockchip: fix USB on RADXA ROCK 5T
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-phy@lists.infradead.org,
+ linux-sound@vger.kernel.org, netdev@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-pci@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-clk@vger.kernel.org, llvm@lists.linux.dev
+Subject: Re: [PATCH v2 19/20] clk: sp7021: switch to FIELD_PREP_WM16 macro
+Date: Mon, 25 Aug 2025 09:48:05 +0200
+Message-ID: <2795210.mvXUDI8C0e@workhorse>
+In-Reply-To: <175340605069.3513.18204498860033427106@lazor>
+References: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com>
+ <20250623-byeword-update-v2-19-cf1fc08a2e1f@collabora.com>
+ <175340605069.3513.18204498860033427106@lazor>
 MIME-Version: 1.0
-Message-Id: <20250825-rock5t-usb-fix-v1-1-de71954a1bb5@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAEsQrGgC/yWMQQ6CMBAAv9Ls2TVttWj4iuHQllU3BqrbQkwIf
- 6eB40wys0AmYcrQqgWEZs6cxgrmpCC+/fgi5L4yWG2dvluHkuLHFZxywCf/sQm611ey5MlAjb5
- CVe/DR3ew0G+q33JICD4TxjQMXFo1N2dzQ4kX6NZ1A18a/nONAAAA
-X-Change-ID: 20250825-rock5t-usb-fix-6b0d04e2eae1
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_002748_584361_F6A6C5BE 
-X-CRM114-Status: UNSURE (   9.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250825_004826_250656_47397A73 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,60 +77,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RADXA ROCK 5T board uses the same GPIO pin for controlling the USB
-host port regulator. This control pin was mistakenly left out of the
-ROCK 5T device tree.
+On Friday, 25 July 2025 03:14:10 Central European Summer Time Stephen Boyd wrote:
+> Quoting Nicolas Frattaroli (2025-06-23 09:05:47)
+> > The sp7021 clock driver has its own shifted high word mask macro,
+> > similar to the ones many Rockchip drivers have.
+> > 
+> > Remove it, and replace instances of it with hw_bitfield.h's
+> > FIELD_PREP_WM16 macro, which does the same thing except in a common
+> > macro that also does compile-time error checking.
+> > 
+> > This was compile-tested with 32-bit ARM with Clang, no runtime tests
+> > were performed as I lack the hardware. However, I verified that fix
+> > commit 5c667d5a5a3e ("clk: sp7021: Adjust width of _m in HWM_FIELD_PREP()")
+> > is not regressed. No warning is produced.
+> 
+> Does it generate the same code before and after?
+> 
 
-Reported-by: FUKAUMI Naoki <naoki@radxa.com>
-Closes: https://libera.catirclogs.org/linux-rockchip/2025-08-25#38609886;
-Fixes: 0ea651de9b79 ("arm64: dts: rockchip: add ROCK 5T device tree")
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+Yes, the generated machine code is exactly the same, at least with
+clang, and I'll assume it'll be the same for gcc.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-index 258c7400301d7f77517197ab433946bbfa39cf63..6acc7a8a5a12eee9cd3506910b40235813ec43b1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-@@ -95,6 +95,12 @@ hp_detect: hp-detect {
- 			rockchip,pins = <4 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-+
-+	usb {
-+		vcc5v0_host_en: vcc5v0-host-en {
-+			rockchip,pins = <1 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
- };
- 
- &vcc3v3_pcie2x1l0 {
-@@ -103,3 +109,10 @@ &vcc3v3_pcie2x1l0 {
- 	pinctrl-0 = <&pcie2_0_vcc3v3_en>;
- 	status = "okay";
- };
-+
-+&vcc5v0_host {
-+	enable-active-high;
-+	gpio = <&gpio1 RK_PA1 GPIO_ACTIVE_HIGH>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&vcc5v0_host_en>;
-+};
+Kind regards,
+Nicolas Frattaroli
 
----
-base-commit: 89d926fa53d0a6c257c4e8ac1c00c3d9a194ef31
-change-id: 20250825-rock5t-usb-fix-6b0d04e2eae1
-
-Best regards,
--- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
