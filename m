@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE5EACA0FE1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 08:53:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E774CA0EFA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 08:53:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EIjFgIXQ07CDV1HtZh1BV/bjHUSu9mvB6djFmtFJVn0=; b=Knq1Jz0xzVYO1O
-	+n9iGgeBloABKAVLeCuBQuIDv1ZiVnMBsN0gfnFyXWPFuTHhvvxRzyOcoBTlOS4sAFHezqzZ7mltN
-	G++8n8/cbQcxTegEEf0JA915LSjAR93b3ajWNDfApD6Z8q2f8wsvJzMhxU+UOBnPatyXvyMO9bv0A
-	GP+WvMn1L5SJtf9eVI/uHFQWz5izf2xITdMHJtIFS8ezLZGqeiYFeLR9l/vt7JJXPQ0eIdyONVYMc
-	+aRKhr+qUtxP7JCV+Pyo4RL2+857gjN8qO9z4ndmUhPChlvT4j5qbeCmqntrz7tTGJzdZUSqXwzSG
-	ybNJoSHAk9EKFes1cOzA==;
+	List-Owner; bh=ZBsvri22rKV8wEvkVK3RDvKtrX66f2Ygt3D7NFqxlVU=; b=CmcdKXJRKB2GAl
+	YDURaN74OGw1p8/m4ryqKPsMYC1zVloDLoI6PlAq8b/rVFPhs4xnqs2e5OcL5lEhRBrL7f122GO8S
+	3Eag1K9yDVvz9hHGrIJZJGpyL9oyS1aitDDesatm1i889dVto7sJUPdUsxp1JYPCY43wUjR/rj+tE
+	fHummiRM3HuYAut7UlRkzdka9IuU6ds9m74Yo7Q99doJzbtU/+hrAOJ1gMzQPNO81Z5cKFa+X1O2S
+	FwKPiBx1Gbat47tFZfItUAvoD+tWuFrJp36UMdVDOxS9HrKQZAVTXrDmAK9HtI41+C8kIVy2A0OCC
+	+vtBy+U1yvauqOGCSt8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqSxC-00000007OwU-3b48;
-	Mon, 25 Aug 2025 08:53:26 +0000
+	id 1uqSxF-00000007Ozj-0Hxa;
+	Mon, 25 Aug 2025 08:53:29 +0000
 Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqSdK-00000007Jpf-3Z8c;
-	Mon, 25 Aug 2025 08:32:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1756110721; cv=none; 
+	id 1uqSds-00000007Jzr-1rSb;
+	Mon, 25 Aug 2025 08:33:29 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1756110764; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=S/qYwqAroeOwjZxTFkyMJL1lKRarxkAcfng6zzbOXtD2MPcHkuc0U1se7rMMrCnqA6GFtiItIlWeH8Q5DwfwjGeayiMy/Mc5YTi3gAO34EuR71v4KjKaM7sO9oRnIk2fQNZI++eGTG81dsRD5tdMJLtGRZ9QngM8oQ1fVwoN4k0=
+	b=kTMmXLlHWeI675VeqekD7vXC+t4fMmn7jLk1NYxdGU5BC4uNsKOCfcSuXamUuxjfdjJYYAbLV/LwlooDWcYBQhlnLQdXke2eX5g3NXC4iYHlwmP2ehpyg0qE6dlxP+EVr3ES8ozjaXOOuCcW5fi1lBCel4ODwGryyJsyLDjrrvY=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1756110721; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=45P4ZQqWWcXm3x69i6ElPfbT5xuLW7ismv3ZTnU0kUI=; 
-	b=KoadQ07DHglNZZcHcYasmd/9fe5JAI+tfbg79YCGP5Zi/20RtsbxIaXhMwd+M8NHmpTpCoVQ8OQ+I2+JmZRY90stffreA/CHraVAjFUWaNSBshSyyZUzn892EOlQGFqWK5iF/tvcM1cCWEBZ3ohLDya6E3gjcP7VjGn3LnMD/C4=
+	t=1756110764; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ZsbXUJR6MfF1epvff0gLOK9X/43yG7Ki5VmTbs9QBuM=; 
+	b=V2Gvaf7zHZrvxMPGxT+e4IyRb5l/A6x2vs7jFDC1vGUeGVGiUm9m7kT/GNl2bBDXqnQUs4y7HTDeyAt4lA8HN2sLIYeHvUAzfDn/6uIZNFGnjVXKfshlsABmrt6T2sIIR5nKeOCrslCZ7G/1H6DEToKezhAC3ZXVaBKuDnEEV4U=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756110721;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756110764;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=45P4ZQqWWcXm3x69i6ElPfbT5xuLW7ismv3ZTnU0kUI=;
-	b=QQZ2Aza7UteQvzDMdqHAT1gtxifAfw3i6uEQDOsBTIZKjNmdHC9/fkiG7svPGGDT
-	eG/Ng73twmb3Wd8FHFbAZfSnD3EwWL+qFBmk9ik4I9WSlDA437XUA4dd2TY3mjeaPc6
-	kSB8AB+TZqq2hAJaAOzfpExNXKYIQVWmy4VkdU5U=
-Received: by mx.zohomail.com with SMTPS id 1756110720650992.2592873880604;
-	Mon, 25 Aug 2025 01:32:00 -0700 (PDT)
+	bh=ZsbXUJR6MfF1epvff0gLOK9X/43yG7Ki5VmTbs9QBuM=;
+	b=YFojpnysCPQhfARz6PrsrbJjbfmBu+rqnl+DB3m8Dgk2kYK97kTACquI7W6hY6dN
+	hPwyNGN0b7sKSRxVPqUjlBNeegTXTdQw8kDxN2eLYKDVldmBwbr/cVpbzV5iQEDdcMY
+	KTMZQ0w6J9EnoB0r517lNA2YGrwszAWuUUvCp7t0=
+Received: by mx.zohomail.com with SMTPS id 1756110762879601.7323474914235;
+	Mon, 25 Aug 2025 01:32:42 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 25 Aug 2025 10:28:33 +0200
-Subject: [PATCH v3 13/20] drm/rockchip: dw_hdmi: switch to FIELD_PREP_WM16*
- macros
+Date: Mon, 25 Aug 2025 10:28:36 +0200
+Subject: [PATCH v3 16/20] PCI: rockchip: Switch to FIELD_PREP_WM16* macros
 MIME-Version: 1.0
-Message-Id: <20250825-byeword-update-v3-13-947b841cdb29@collabora.com>
+Message-Id: <20250825-byeword-update-v3-16-947b841cdb29@collabora.com>
 References: <20250825-byeword-update-v3-0-947b841cdb29@collabora.com>
 In-Reply-To: <20250825-byeword-update-v3-0-947b841cdb29@collabora.com>
 To: Yury Norov <yury.norov@gmail.com>, 
@@ -86,8 +85,8 @@ To: Yury Norov <yury.norov@gmail.com>,
  Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_013254_943215_D110BCB5 
-X-CRM114-Status: GOOD (  18.25  )
+X-CRM114-CacheID: sfid-20250825_013328_538696_566E61D9 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,167 +107,92 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
 drivers that use constant masks.
 
-Remove this driver's very own HIWORD_UPDATE macro, and replace all
-instances of it with equivalent instantiations of FIELD_PREP_WM16 or
-FIELD_PREP_WM16_CONST, depending on whether it's in an initializer.
+The Rockchip PCI driver, like many other Rockchip drivers, has its very
+own definition of HIWORD_UPDATE.
 
-This gives us better error checking, and a centrally agreed upon
-signature for this macro, to ease in code comprehension.
+Remove it, and replace its usage with either FIELD_PREP_WM16, or two new
+header local macros for setting/clearing a bit with the high mask, which
+use FIELD_PREP_WM16_CONST internally. In the process, ENCODE_LANES
+needed to be adjusted, as FIELD_PREP_WM16* shifts the value for us.
 
-Because FIELD_PREP_WM16/FIELD_PREP_WM16_CONST shifts the value to the
-mask (like FIELD_PREP et al do), a lot of macro instantiations get
-easier to read.
+That this is equivalent was verified by first making all FIELD_PREP_WM16
+instances FIELD_PREP_WM16_CONST, then doing a static_assert() comparing
+it to the old macro (and for those with parameters, static_asserting for
+the full range of possible values with the old encode macro).
 
-This was tested on an RK3568 ODROID M1, as well as an RK3399 ROCKPro64.
+What we get out of this is compile time error checking to make sure the
+value actually fits in the mask, and that the mask fits in the register,
+and also generally less icky code that writes shifted values when it
+actually just meant to set and clear a handful of bits.
 
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Tested-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Acked-by: Bjorn Helgaas <bhelgaas@google.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 80 +++++++++++++----------------
- 1 file changed, 36 insertions(+), 44 deletions(-)
+ drivers/pci/controller/pcie-rockchip.h | 35 +++++++++++++++++-----------------
+ 1 file changed, 18 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index acb59b25d928946a604fb35706a523a76067163b..7b613997bb501bb2ee88c386b5ee1cbbfcae1c9d 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -4,6 +4,7 @@
-  */
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index 72a2c045f6fe95cb43f01a2841a5ca0f597c85d4..3e82a69b9c006e52d134278651c5a420a1f195c2 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -12,6 +12,7 @@
+ #define _PCIE_ROCKCHIP_H
  
  #include <linux/clk.h>
 +#include <linux/hw_bitfield.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/platform_device.h>
-@@ -54,8 +55,6 @@
- #define RK3568_HDMI_SDAIN_MSK		BIT(15)
- #define RK3568_HDMI_SCLIN_MSK		BIT(14)
+ #include <linux/kernel.h>
+ #include <linux/pci.h>
+ #include <linux/pci-ecam.h>
+@@ -21,10 +22,10 @@
+  * The upper 16 bits of PCIE_CLIENT_CONFIG are a write mask for the lower 16
+  * bits.  This allows atomic updates of the register without locking.
+  */
+-#define HIWORD_UPDATE(mask, val)	(((mask) << 16) | (val))
+-#define HIWORD_UPDATE_BIT(val)		HIWORD_UPDATE(val, val)
++#define HWORD_SET_BIT(val)		(FIELD_PREP_WM16_CONST((val), 1))
++#define HWORD_CLR_BIT(val)		(FIELD_PREP_WM16_CONST((val), 0))
  
--#define HIWORD_UPDATE(val, mask)	(val | (mask) << 16)
--
- /**
-  * struct rockchip_hdmi_chip_data - splite the grf setting of kind of chips
-  * @lcdsel_grf_reg: grf register offset of lcdc select
-@@ -355,17 +354,14 @@ static void dw_hdmi_rk3228_setup_hpd(struct dw_hdmi *dw_hdmi, void *data)
+-#define ENCODE_LANES(x)			((((x) >> 1) & 3) << 4)
++#define ENCODE_LANES(x)			((((x) >> 1) & 3))
+ #define MAX_LANE_NUM			4
+ #define MAX_REGION_LIMIT		32
+ #define MIN_EP_APERTURE			28
+@@ -32,21 +33,21 @@
  
- 	dw_hdmi_phy_setup_hpd(dw_hdmi, data);
- 
--	regmap_write(hdmi->regmap,
--		RK3228_GRF_SOC_CON6,
--		HIWORD_UPDATE(RK3228_HDMI_HPD_VSEL | RK3228_HDMI_SDA_VSEL |
--			      RK3228_HDMI_SCL_VSEL,
--			      RK3228_HDMI_HPD_VSEL | RK3228_HDMI_SDA_VSEL |
--			      RK3228_HDMI_SCL_VSEL));
--
--	regmap_write(hdmi->regmap,
--		RK3228_GRF_SOC_CON2,
--		HIWORD_UPDATE(RK3228_HDMI_SDAIN_MSK | RK3228_HDMI_SCLIN_MSK,
--			      RK3228_HDMI_SDAIN_MSK | RK3228_HDMI_SCLIN_MSK));
-+	regmap_write(hdmi->regmap, RK3228_GRF_SOC_CON6,
-+		     FIELD_PREP_WM16(RK3228_HDMI_HPD_VSEL, 1) |
-+		     FIELD_PREP_WM16(RK3228_HDMI_SDA_VSEL, 1) |
-+		     FIELD_PREP_WM16(RK3228_HDMI_SCL_VSEL, 1));
-+
-+	regmap_write(hdmi->regmap, RK3228_GRF_SOC_CON2,
-+		     FIELD_PREP_WM16(RK3228_HDMI_SDAIN_MSK, 1) |
-+		     FIELD_PREP_WM16(RK3328_HDMI_SCLIN_MSK, 1));
- }
- 
- static enum drm_connector_status
-@@ -377,15 +373,13 @@ dw_hdmi_rk3328_read_hpd(struct dw_hdmi *dw_hdmi, void *data)
- 	status = dw_hdmi_phy_read_hpd(dw_hdmi, data);
- 
- 	if (status == connector_status_connected)
--		regmap_write(hdmi->regmap,
--			RK3328_GRF_SOC_CON4,
--			HIWORD_UPDATE(RK3328_HDMI_SDA_5V | RK3328_HDMI_SCL_5V,
--				      RK3328_HDMI_SDA_5V | RK3328_HDMI_SCL_5V));
-+		regmap_write(hdmi->regmap, RK3328_GRF_SOC_CON4,
-+			     FIELD_PREP_WM16(RK3328_HDMI_SDA_5V, 1) |
-+			     FIELD_PREP_WM16(RK3328_HDMI_SCL_5V, 1));
- 	else
--		regmap_write(hdmi->regmap,
--			RK3328_GRF_SOC_CON4,
--			HIWORD_UPDATE(0, RK3328_HDMI_SDA_5V |
--					 RK3328_HDMI_SCL_5V));
-+		regmap_write(hdmi->regmap, RK3328_GRF_SOC_CON4,
-+			     FIELD_PREP_WM16(RK3328_HDMI_SDA_5V, 0) |
-+			     FIELD_PREP_WM16(RK3328_HDMI_SCL_5V, 0));
- 	return status;
- }
- 
-@@ -396,21 +390,21 @@ static void dw_hdmi_rk3328_setup_hpd(struct dw_hdmi *dw_hdmi, void *data)
- 	dw_hdmi_phy_setup_hpd(dw_hdmi, data);
- 
- 	/* Enable and map pins to 3V grf-controlled io-voltage */
--	regmap_write(hdmi->regmap,
--		RK3328_GRF_SOC_CON4,
--		HIWORD_UPDATE(0, RK3328_HDMI_HPD_SARADC | RK3328_HDMI_CEC_5V |
--				 RK3328_HDMI_SDA_5V | RK3328_HDMI_SCL_5V |
--				 RK3328_HDMI_HPD_5V));
--	regmap_write(hdmi->regmap,
--		RK3328_GRF_SOC_CON3,
--		HIWORD_UPDATE(0, RK3328_HDMI_SDA5V_GRF | RK3328_HDMI_SCL5V_GRF |
--				 RK3328_HDMI_HPD5V_GRF |
--				 RK3328_HDMI_CEC5V_GRF));
--	regmap_write(hdmi->regmap,
--		RK3328_GRF_SOC_CON2,
--		HIWORD_UPDATE(RK3328_HDMI_SDAIN_MSK | RK3328_HDMI_SCLIN_MSK,
--			      RK3328_HDMI_SDAIN_MSK | RK3328_HDMI_SCLIN_MSK |
--			      RK3328_HDMI_HPD_IOE));
-+	regmap_write(hdmi->regmap, RK3328_GRF_SOC_CON4,
-+		     FIELD_PREP_WM16(RK3328_HDMI_HPD_SARADC, 0) |
-+		     FIELD_PREP_WM16(RK3328_HDMI_CEC_5V, 0) |
-+		     FIELD_PREP_WM16(RK3328_HDMI_SDA_5V, 0) |
-+		     FIELD_PREP_WM16(RK3328_HDMI_SCL_5V, 0) |
-+		     FIELD_PREP_WM16(RK3328_HDMI_HPD_5V, 0));
-+	regmap_write(hdmi->regmap, RK3328_GRF_SOC_CON3,
-+		     FIELD_PREP_WM16(RK3328_HDMI_SDA5V_GRF, 0) |
-+		     FIELD_PREP_WM16(RK3328_HDMI_SCL5V_GRF, 0) |
-+		     FIELD_PREP_WM16(RK3328_HDMI_HPD5V_GRF, 0) |
-+		     FIELD_PREP_WM16(RK3328_HDMI_CEC5V_GRF, 0));
-+	regmap_write(hdmi->regmap, RK3328_GRF_SOC_CON2,
-+		     FIELD_PREP_WM16(RK3328_HDMI_SDAIN_MSK, 1) |
-+		     FIELD_PREP_WM16(RK3328_HDMI_SCLIN_MSK, 1) |
-+		     FIELD_PREP_WM16(RK3328_HDMI_HPD_IOE, 0));
- 
- 	dw_hdmi_rk3328_read_hpd(dw_hdmi, data);
- }
-@@ -438,8 +432,8 @@ static const struct dw_hdmi_plat_data rk3228_hdmi_drv_data = {
- 
- static struct rockchip_hdmi_chip_data rk3288_chip_data = {
- 	.lcdsel_grf_reg = RK3288_GRF_SOC_CON6,
--	.lcdsel_big = HIWORD_UPDATE(0, RK3288_HDMI_LCDC_SEL),
--	.lcdsel_lit = HIWORD_UPDATE(RK3288_HDMI_LCDC_SEL, RK3288_HDMI_LCDC_SEL),
-+	.lcdsel_big = FIELD_PREP_WM16_CONST(RK3288_HDMI_LCDC_SEL, 0),
-+	.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3288_HDMI_LCDC_SEL, 1),
- 	.max_tmds_clock = 340000,
- };
- 
-@@ -475,8 +469,8 @@ static const struct dw_hdmi_plat_data rk3328_hdmi_drv_data = {
- 
- static struct rockchip_hdmi_chip_data rk3399_chip_data = {
- 	.lcdsel_grf_reg = RK3399_GRF_SOC_CON20,
--	.lcdsel_big = HIWORD_UPDATE(0, RK3399_HDMI_LCDC_SEL),
--	.lcdsel_lit = HIWORD_UPDATE(RK3399_HDMI_LCDC_SEL, RK3399_HDMI_LCDC_SEL),
-+	.lcdsel_big = FIELD_PREP_WM16_CONST(RK3399_HDMI_LCDC_SEL, 0),
-+	.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3399_HDMI_LCDC_SEL, 1),
- 	.max_tmds_clock = 594000,
- };
- 
-@@ -589,10 +583,8 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 
- 	if (hdmi->chip_data == &rk3568_chip_data) {
- 		regmap_write(hdmi->regmap, RK3568_GRF_VO_CON1,
--			     HIWORD_UPDATE(RK3568_HDMI_SDAIN_MSK |
--					   RK3568_HDMI_SCLIN_MSK,
--					   RK3568_HDMI_SDAIN_MSK |
--					   RK3568_HDMI_SCLIN_MSK));
-+			     FIELD_PREP_WM16(RK3568_HDMI_SDAIN_MSK, 1) |
-+			     FIELD_PREP_WM16(RK3568_HDMI_SCLIN_MSK, 1));
- 	}
- 
- 	drm_encoder_helper_add(encoder, &dw_hdmi_rockchip_encoder_helper_funcs);
+ #define PCIE_CLIENT_BASE		0x0
+ #define PCIE_CLIENT_CONFIG		(PCIE_CLIENT_BASE + 0x00)
+-#define   PCIE_CLIENT_CONF_ENABLE	  HIWORD_UPDATE_BIT(0x0001)
+-#define   PCIE_CLIENT_CONF_DISABLE       HIWORD_UPDATE(0x0001, 0)
+-#define   PCIE_CLIENT_LINK_TRAIN_ENABLE	  HIWORD_UPDATE_BIT(0x0002)
+-#define   PCIE_CLIENT_LINK_TRAIN_DISABLE  HIWORD_UPDATE(0x0002, 0)
+-#define   PCIE_CLIENT_ARI_ENABLE	  HIWORD_UPDATE_BIT(0x0008)
+-#define   PCIE_CLIENT_CONF_LANE_NUM(x)	  HIWORD_UPDATE(0x0030, ENCODE_LANES(x))
+-#define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
+-#define   PCIE_CLIENT_MODE_EP            HIWORD_UPDATE(0x0040, 0)
+-#define   PCIE_CLIENT_GEN_SEL_1		  HIWORD_UPDATE(0x0080, 0)
+-#define   PCIE_CLIENT_GEN_SEL_2		  HIWORD_UPDATE_BIT(0x0080)
++#define   PCIE_CLIENT_CONF_ENABLE		HWORD_SET_BIT(0x0001)
++#define   PCIE_CLIENT_CONF_DISABLE		HWORD_CLR_BIT(0x0001)
++#define   PCIE_CLIENT_LINK_TRAIN_ENABLE		HWORD_SET_BIT(0x0002)
++#define   PCIE_CLIENT_LINK_TRAIN_DISABLE	HWORD_CLR_BIT(0x0002)
++#define   PCIE_CLIENT_ARI_ENABLE		HWORD_SET_BIT(0x0008)
++#define   PCIE_CLIENT_CONF_LANE_NUM(x)		FIELD_PREP_WM16(0x0030, ENCODE_LANES(x))
++#define   PCIE_CLIENT_MODE_RC			HWORD_SET_BIT(0x0040)
++#define   PCIE_CLIENT_MODE_EP			HWORD_CLR_BIT(0x0040)
++#define   PCIE_CLIENT_GEN_SEL_1			HWORD_CLR_BIT(0x0080)
++#define   PCIE_CLIENT_GEN_SEL_2			HWORD_SET_BIT(0x0080)
+ #define PCIE_CLIENT_LEGACY_INT_CTRL	(PCIE_CLIENT_BASE + 0x0c)
+-#define   PCIE_CLIENT_INT_IN_ASSERT		HIWORD_UPDATE_BIT(0x0002)
+-#define   PCIE_CLIENT_INT_IN_DEASSERT		HIWORD_UPDATE(0x0002, 0)
+-#define   PCIE_CLIENT_INT_PEND_ST_PEND		HIWORD_UPDATE_BIT(0x0001)
+-#define   PCIE_CLIENT_INT_PEND_ST_NORMAL	HIWORD_UPDATE(0x0001, 0)
++#define   PCIE_CLIENT_INT_IN_ASSERT		HWORD_SET_BIT(0x0002)
++#define   PCIE_CLIENT_INT_IN_DEASSERT		HWORD_CLR_BIT(0x0002)
++#define   PCIE_CLIENT_INT_PEND_ST_PEND		HWORD_SET_BIT(0x0001)
++#define   PCIE_CLIENT_INT_PEND_ST_NORMAL	HWORD_CLR_BIT(0x0001)
+ #define PCIE_CLIENT_SIDE_BAND_STATUS	(PCIE_CLIENT_BASE + 0x20)
+ #define   PCIE_CLIENT_PHY_ST			BIT(12)
+ #define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
 
 -- 
 2.51.0
