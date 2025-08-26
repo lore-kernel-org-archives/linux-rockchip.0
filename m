@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84B86C8303F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Aug 2025 22:44:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D28DDCA0EFA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Aug 2025 03:18:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZIPxVdOb/x6QNkdKifOtEYZOCRdHFs47USSzKrXAudI=; b=lMCS0vCrMVFdbd
-	kcXBSqkE8l/9ZkB7kyRHZchHvTYQzfb7xnh7prR0Qx7LuHkVUyaHIYy4iRoCV3Blr7Lj195RZBjD1
-	q1FSnAO6lPKdnethhArx+76xgMoniP1QymgxdzXhELTiUiW10dW5q74d4EbFDvFpsdIcBsjHyh4UD
-	p2b6vf9kxYPZqbM7rGpHY7qaEVEI5wqA6kIZFqu4nXG3obtJpWIDuQnUQj/uVGaI4MUBSfbU0Jnky
-	X/o1yHZiGPHlSmFoJQpfSEiZ76mhpaAMq8ky1sk7ibq294dVXAN04dXZJ7w665sczsoaGG/iSLaNM
-	PafkUPT/oh8PCVufdXTQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LDseZljaMcTHkb7s5uyMS5KmgwS+jCT67olD10k+Cj8=; b=wX9lJNjF/L8Gt3
+	Ok1Jzdh7m/B3eiS7txY2nfuDbzchw67Flp0nssfPtd0lKjlOqFW612wwLK8woe16wRuCWTj7zub5h
+	3oArOLevTBDVIwogEASvn/D2Fex0i7P/jQH8aichTCo+Bp/v6sVYxKhFV8RP491MHL5nP56KVwZyi
+	rLeTTsar1IFr63I6bUvvgbSxdqEq8WQav2TgijoqBHzk4vRxlfSUQW2g2IQwxF7ROGFhuex4c1bBE
+	0V3LlRPq+wu/xVnIHpoLckH1RtRUsRox2HKyazod2GoyYSKr0n858iL9nM3HhJUVw5EhhDlUuLc44
+	g03At4m0kWSuMk/u/Bqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqfux-0000000A0ob-467I;
-	Mon, 25 Aug 2025 22:43:59 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uqkCT-0000000AQqN-3I9F;
+	Tue, 26 Aug 2025 03:18:21 +0000
+Received: from smtpbg150.qq.com ([18.132.163.193])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqfsE-0000000A09M-0Vop;
-	Mon, 25 Aug 2025 22:41:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7B3375C6563;
-	Mon, 25 Aug 2025 22:41:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1F71C4CEED;
-	Mon, 25 Aug 2025 22:41:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756161669;
-	bh=hcgh5oqMsvEek9C9auiVRt+yT8DF3gRRdz8vIwAO460=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TuzhpasJSKONwmodl29hxEeu1B+jNP9tEnNDVUu5J+c2hP06IPu8smtAiAy/paA5D
-	 nQ7OpGab4minbAOsbjXXcQSkH/TI61SiMOxo7linJiZDbP6Jo2Fh2gtIHiIiZjiP/N
-	 mf9A26nzWQ+DOGu7DynGHvPP7N0ZHQU2sT68opCJns/zJBs6HWbEVSHmxXzvpyh5pp
-	 xl3cWCdgAOSNlciX9GaNuWSCTfhoxsI0v3bx0ke0VA8L3vRNHy/ALm9wKcVRs/LBDI
-	 Jfa0gF4IsoAKqhjqPYzyz0kQSIj32X8rbLnBzfg2E6cmQXIvI3A4c5qKxfv4HGvFMC
-	 zijfQ4ECgtsWA==
-Date: Mon, 25 Aug 2025 17:41:08 -0500
-From: Rob Herring <robh@kernel.org>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1uqk41-0000000AQBy-33l9;
+	Tue, 26 Aug 2025 03:09:39 +0000
+X-QQ-mid: zesmtpip4t1756177704t2fb025d3
+X-QQ-Originating-IP: kXz62wQIAgQ5fDoxb092TxXaej+6UJKZlmADOPHVy6k=
+Received: from chainsx-ubuntu-server.lan ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 26 Aug 2025 11:08:22 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 15050431008221731089
+EX-QQ-RecipientCnt: 11
+From: Hsun Lai <i@chainsx.cn>
+To: Fred Bloggs <f.blogs@napier.co.nz>
+Cc: Hsun Lai <i@chainsx.cn>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Collabora Kernel Team <kernel@collabora.com>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org
-Subject: Re: [PATCH v2 3/7] dt-bindings: phy: rockchip-inno-csi-dphy: add
- rk3588 variant
-Message-ID: <20250825224108.GA766877-robh@kernel.org>
-References: <20250616-rk3588-csi-dphy-v2-0-7a94f079b712@collabora.com>
- <20250616-rk3588-csi-dphy-v2-3-7a94f079b712@collabora.com>
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Stephen Rothwell <sfr@canb.auug.org.au>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v2 0/2] Add support for 100ASK DShanPi A1
+Date: Tue, 26 Aug 2025 11:08:15 +0800
+Message-Id: <20250826030818.3485927-1-i@chainsx.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250616-rk3588-csi-dphy-v2-3-7a94f079b712@collabora.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:chainsx.cn:qybglogicsvrsz:qybglogicsvrsz3a-0
+X-QQ-XMAILINFO: NSTsyPg8kQQYEWo4wIjbJseHhQwT0UXY7NtBwCn1y7wOdMfP2wp9QtJT
+	VW9udeaOBGlStOqxHWfmUaMi1W5AhERlNoEz46AMYu1b2+8Xh/Hs5jJ5fl2mhbdqESOHxad
+	/aJga6v6P2K1OdxkJAmMN587nVc7CPqpfAkWKgUjnJyeES+xyMTW2J3fcq7ZHWH82nfUSaT
+	Kwv+aNmxUsyNwouYMmqvFDh2JNQnaH90iEit+ygSnv6EE7xzHwiyVyVfUewii77SiGcqZd+
+	LuJW3YI6ih7RJKE1+XzQT834QLt+j0bJW79CdgM2Tx7uk125GrTv+pXtVd2kENJWz0lzQpo
+	GLcJfH3K6rKfLd76clGpF0pfqMh7mr5b944iulTPvnahX4mf69hg2q/fEiCIJ716SxVUUUG
+	hNUEMD+JGRGYMeLRwkPIslnEqlIz1ZpUaJkfZWDpNBiFFj6K9+Y8DTFmAOwUcBDqVlCjW6L
+	cDzi+70+4nlXJ0aSCv0F657uzg9HBFXaUNmnJPXBsuJANHsP9xi/CMfTElEPDTrEEpih1t4
+	eSM7ZRxzabP6cF6SQgxOMBUzhM8FG+ioqSGc4tFaBWU3MoWCEgJ6A41vX5BErzdUZNJYYl4
+	0KlEz1OIhpZhQFjykICZ6Fbh3ws7TX4AXuqI2bVGmWeIxa2yziQKdWvKUT52XC4dbzUa56t
+	fJ0CC2jV7IyWLhnt4Ph92En8xyQ+rGqc5W6uIkY3WtLWcNYaibEAUBpJxYd7oEN1ak+L4DQ
+	AbDnF7E45/7ZLTRdPi2n/PuHTkh4lyiA5w0NwA7twSdNysE36dA1JBfs2mhc04QUW7AUCOZ
+	iTQrHcLaBqfu2bBspVLLC9uc1ZkV4ZMwEgirk5LBIJWUVVrq7qB7CG/rbBoEFEkm44icZ6i
+	M9fRRi9TEJeCvHMRPMpjP5Sh34ixghP+K50Zc49r1btQtObTyoaPtwCo39sPQHRufQw6pi4
+	g+cDPk/G/L8JhTscZWxEoNhfjf4o/FWSzeGUnNYdk21fBpw5T+IhWaXntMAvZnxlqQ9RCjV
+	ZRa8S658WhsXJoFyMaz5hDxR3/NiWVJIW9VIC2exd45rEnVHcB
+X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250825_154110_249139_18B9AFA4 
-X-CRM114-Status: GOOD (  17.27  )
+X-CRM114-CacheID: sfid-20250825_200938_274615_8285CAC0 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,121 +91,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 19, 2025 at 01:00:37AM +0200, Michael Riesch wrote:
-> The Rockchip RK3588 variant of the CSI-2 DPHY features two reset lines.
-> Add the variant and allow for the additional reset.
-> 
-> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
-> ---
->  .../bindings/phy/rockchip-inno-csi-dphy.yaml       | 60 ++++++++++++++++++++--
->  1 file changed, 56 insertions(+), 4 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
-> index 42da616ae2e3..10197cc9dc47 100644
-> --- a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
-> @@ -21,6 +21,7 @@ properties:
->        - rockchip,rk3326-csi-dphy
->        - rockchip,rk3368-csi-dphy
->        - rockchip,rk3568-csi-dphy
-> +      - rockchip,rk3588-csi-dphy
->  
->    reg:
->      maxItems: 1
-> @@ -39,18 +40,50 @@ properties:
->      maxItems: 1
->  
->    resets:
-> -    items:
-> -      - description: exclusive PHY reset line
-> +    minItems: 1
-> +    maxItems: 2
+This series add support for 100ASK DShanPi A1.
 
-Add a description for the 2nd reset here.
+Info of device can be found at:
+https://wiki.dshanpi.org/en/docs/DshanPi-A1/intro/
 
->  
->    reset-names:
-> -    items:
-> -      - const: apb
-> +    minItems: 1
-> +    maxItems: 2
+Changes in v2:
+- Delete the pwm include file (Chukun Pan, v1)
+- Fix vcc3v3_pcie gpios (Chukun Pan, v1)
+- Adjust the order of some nodes (Chukun Pan, v1)
+- Fix sdmmc (Chukun Pan, v1)
+- Add phy-supply for u2phy0_otg (Chukun Pan, v1)
 
-Add 'phy' to the list here and just minItems.
+Changes in v1:
+- Add support for 100ASK DShanPi A1
 
->  
->    rockchip,grf:
->      $ref: /schemas/types.yaml#/definitions/phandle
->      description:
->        Some additional phy settings are access through GRF regs.
->  
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,px30-csi-dphy
-> +              - rockchip,rk1808-csi-dphy
-> +              - rockchip,rk3326-csi-dphy
-> +              - rockchip,rk3368-csi-dphy
-> +              - rockchip,rk3568-csi-dphy
-> +    then:
-> +      properties:
-> +        resets:
-> +          items:
-> +            - description: exclusive PHY reset line
-> +
-> +        reset-names:
-> +          items:
-> +            - const: apb
+Hsun Lai (2):
+  dt-bindings: arm: rockchip: Add 100ASK DShanPi A1
+  arm64: dts: rockchip: add DTs for 100ASK DShanPi A1
 
-Then just 'maxItems: 1' here.
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../dts/rockchip/rk3576-100ask-dshanpi-a1.dts | 838 ++++++++++++++++++
+ 3 files changed, 844 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dts
 
-> +    else:
-> +      properties:
-> +        resets:
-> +          items:
-> +            - description: APB reset line
-> +            - description: PHY reset line
-> +
-> +        reset-names:
-> +          items:
-> +            - const: apb
-> +            - const: phy
+-- 
+2.34.1
 
-And 'minItems: 2' here.
-
-> +
->  required:
->    - compatible
->    - reg
-> @@ -77,3 +110,22 @@ examples:
->          reset-names = "apb";
->          rockchip,grf = <&grf>;
->      };
-> +  - |
-> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
-> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        phy@fedc0000 {
-> +            compatible = "rockchip,rk3588-csi-dphy";
-> +            reg = <0x0 0xfedc0000 0x0 0x8000>;
-> +            clocks = <&cru PCLK_CSIPHY0>;
-> +            clock-names = "pclk";
-> +            #phy-cells = <0>;
-> +            resets = <&cru SRST_P_CSIPHY0>, <&cru SRST_CSIPHY0>;
-> +            reset-names = "apb", "phy";
-> +            rockchip,grf = <&csidphy0_grf>;
-> +        };
-> +    };
-> 
-> -- 
-> 2.39.5
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
