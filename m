@@ -4,71 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E0A6CA0FE9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81A92CA0FF0
 	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Aug 2025 10:43:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+acC2TIrSCRJwOVZFoU34kZwkx1cQky6d1zV0CspWso=; b=Et9J+kTBK/1LaX
-	ALpG0cDWRfYQIuF4wdx1m+q8Fi1O6O7vQ8VF1JcuiVKiDRUfgO4XdLQASFdUbZqmNkBBVtrhqLL8T
-	mT8NgGZxt03oDwreE0t25dTIxQTII9zI5q/IeUDiEWFlBu7hyuJBIBBn+teDjmRenDFRrBtT2YJm9
-	llXW4DgZk/SgqwQm2si8l+/QWmFy9aBxnk//LmwxfVyLAKvbhKjapgTb8boIXjr2VUaLQi7MoeAeF
-	Mq+XNiSxk5ZcwXitUVO9UkjKa8JBu9vUnTIyFkB9n/YI8uvLgiAdnuGoKMP0PcJe7PV9+ONl/1f/V
-	A/qnziLnd+wIpxQrudVg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iwLVKHwsA4zF+M6Yo3ygBlkDMpFW6WNLu9g3BwUJGGg=; b=4gs+RRyUdZEEd2
+	EGSPFCGSUYGm3E6jOG1+I6IQrNLPV2NjLvSPYpGFWAiUFi/38AQX2Hzy4NYbF89dyBeRTfJ8FeLkz
+	/PGM9ceTytBnS/HboA1oRPzk7A3VgcH7L60Xt5TAPF3OY5Rd+wJVPV/uGeViH7pAFL7QqOFuEC1t0
+	XL8IuFsFC5qpDy63wEB7/nugt08ParRWElz0xTOHWsi7VQDeM8Lz5SULorFvc9vZdHxFd75pQpFcU
+	TcMwhtqaCplxQWJzI6qIvpW5GleZG2gVd6RNOaV/JBapsmhDH+uNIk/zUdVOg4Hdbe/TZ/CRiJJvf
+	fuVifpA/Yfv6GF+RtLIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqr8n-0000000Bee6-1Fjj;
-	Tue, 26 Aug 2025 10:43:01 +0000
+	id 1uqr8k-0000000Becb-42TN;
+	Tue, 26 Aug 2025 10:42:58 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqqMw-0000000BVQg-3vk9;
-	Tue, 26 Aug 2025 09:53:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1756201998; cv=none; 
+	id 1uqojp-0000000AxoN-2OVX;
+	Tue, 26 Aug 2025 08:09:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1756195730; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=X3ygrqwUSuwx6dHiIGUQtLF1gLG8fJGjuWMLZdLv54TwSfNdJyatQRzdOHwg8IQikXjAJdmXu2WqkEn1IZA+JnLYycuq0OynB3qzLDRc/t+X2pFpIXOAoF83H/2ieIJGXBdX72EbHm5guOqMpviXNO6BK2zU/9ELbPeEe1pyi8g=
+	b=HQT7tDXC/yWwR8w6bz2TMYXR6rQDcAJexCzbhZsVebCfj85wkK5c3mZ3rbJEX/FjfBwowuPO3wIxnTdPhamDRigWpije91EZViPco6iyGcgOxowyy4QGkvm1jQ4nB4xgm/zeqrPJnBd6UMWJaZA+szvgV9N8iNMuPdvfDaAz0DA=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1756201998; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Dn3Jicl8olp9EaV0TqV4EBh3aYu+CRSHNFNRqLFHCz8=; 
-	b=NNnul6sK8D5SZXlwiOdk2Vo/2XiikXGdpMcK9jsQfThAUe78IoXcAFVswPcuX+vbd0O9b8k1xcXw9CWCkqJJOToJEBtxKviFge/LuvSpwCiMFXLX/qyCGA197jrsGey/MA0nAlXGlfdUpkFyJZl4oIsTvELgk4TJxsQ0gL4zcO0=
+	t=1756195730; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=PjionKT6OwbRK0J6AUKOW0mIzZnze/DXEyeszRo0i8U=; 
+	b=HzmJv0eSVmM8YX/NhQ9J9hvL8MyPfepRjKpKhV991yQsSbMAkyYsOS2jabB9Vkj4CvUgFU7EG11brpvOrZMQY/XQF3NX0frTyK0RO51sQo6LKRV5rX+KqOeBO/6DKlAQaNvzcrizUUEmIHD0H+VCKzFYM5ijKI6Iw1oV245Jx0Y=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=benjamin.gaignard@collabora.com;
-	dmarc=pass header.from=<benjamin.gaignard@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756201998;
-	s=zohomail; d=collabora.com; i=benjamin.gaignard@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=Dn3Jicl8olp9EaV0TqV4EBh3aYu+CRSHNFNRqLFHCz8=;
-	b=fTL3GjBlvFAwIZNuysAvG47xhYwqyFQ1DdN7snGwnhGRKREejSWnp4NRUPxtrwC6
-	7KTnFtpqBWhvVmVvz9hhmlF9hthuyMPDQnpDX8hY9cHYPtjGfr/N9OtCOEWjRm7ofmj
-	0uUOyEhks8tNqzhWrXXScbIoOhM0h8Z4Ci6OCW18=
-Received: by mx.zohomail.com with SMTPS id 1756201996213653.2470978174058;
-	Tue, 26 Aug 2025 02:53:16 -0700 (PDT)
-Message-ID: <002f164b-4296-428b-95ec-1ca10b979070@collabora.com>
-Date: Tue, 26 Aug 2025 11:53:11 +0200
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756195730;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=PjionKT6OwbRK0J6AUKOW0mIzZnze/DXEyeszRo0i8U=;
+	b=axxKgrpiEQTwmD048MbUk1jSWzdYLEB2NtX7ls5Q/aX8gtKFMR8+ffhqKkkKkhsy
+	D2YiMEz0zgRDEWilKSx6Rr6/0paNgItNWJ8Rg2o4YZ8QEqyTUA6pUlCx8ILpAuVhEdd
+	rsDVBcgr1BH5CIgHEp0MstCmtxzHj7dCshUAU+/g=
+Received: by mx.zohomail.com with SMTPS id 1756195727126157.99311646141769;
+	Tue, 26 Aug 2025 01:08:47 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Tue, 26 Aug 2025 10:08:36 +0200
+Subject: [PATCH] arm64: dts: rockchip: fix second M.2 slot on ROCK 5T
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 6/6] arm64: defconfig: enable Verisilicon IOMMU
-To: Krzysztof Kozlowski <krzk@kernel.org>, joro@8bytes.org, will@kernel.org,
- robin.murphy@arm.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, heiko@sntech.de, nicolas.dufresne@collabora.com,
- jgg@ziepe.ca, p.zabel@pengutronix.de, mchehab@kernel.org
-Cc: iommu@lists.linux.dev, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com,
- linux-media@vger.kernel.org
-References: <20250825153450.150071-1-benjamin.gaignard@collabora.com>
- <20250825153450.150071-7-benjamin.gaignard@collabora.com>
- <b7869ddb-f44b-4d1f-a6c3-393a28d3cb00@kernel.org>
-Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <b7869ddb-f44b-4d1f-a6c3-393a28d3cb00@kernel.org>
+Message-Id: <20250826-rock5t-second-m2-fix-v1-1-8252124f9cc8@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAINrrWgC/yWMQQrDIBAAvyJ77ha12Eq+UnJIdG2XorZqQiHk7
+ 5XmOAMzG1QqTBUGsUGhlSvn1EGdBLjnlB6E7DuDltpIqw2W7F6mYSWXk8eoMfAXVSDjzGyD9RJ
+ 6+i7U9X97Hw8u9Fn6vR0S5qkSuhwjt0Gs17O6YXEXGPf9B1vV+J6TAAAA
+X-Change-ID: 20250825-rock5t-second-m2-fix-1fe5c5b8f8d0
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_025335_036048_7E83BE61 
-X-CRM114-Status: UNSURE (   7.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250826_010905_697853_04C518A4 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,18 +72,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDI2LzA4LzIwMjUgw6AgMTA6MjUsIEtyenlzenRvZiBLb3psb3dza2kgYSDDqWNyaXTCoDoK
-PiBPbiAyNS8wOC8yMDI1IDE3OjM0LCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPj4gRW5hYmxl
-IFZlcmlzaWxpY29uIElPTU1VIHVzZWQgYnkgUkszNTg4IEFWMSBoYXJkd2FyZSBjb2RlYy4KPiBR
-dWFsY29tbSBSSzM1ODg/IFRoaXMgaXMgZGVmY29uZmlnIGZvciBhbGwgcGxhdGZvcm1zLCBzbyBi
-ZSBzcGVjaWZpYwo+IHdoaWNoIGJvYXJkIHVzZXMgaXQuCgpJdCBpcyBmb3Igcm9ja2NoaXAgcmsz
-NTg4IFNvQy4KClJlZ2FyZHMsCkJlbmphbWluCgo+Cj4KPgo+IEJlc3QgcmVnYXJkcywKPiBLcnp5
-c3p0b2YKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+The Radxa ROCK 5T has two M.2 slots, much like the Radxa Rock 5B+. As it
+stands, the board won't be able to use PCIe3 if the second M.2 slot is
+in use.
+
+Fix this by adding the necessary node enablement and data-lanes property
+to the ROCK 5T device tree, mirroring what's in the ROCK 5B+ device
+tree.
+
+Reported-by: FUKAUMI Naoki <naoki@radxa.com>
+Closes: https://libera.catirclogs.org/linux-rockchip/2025-08-25#38610630;
+Fixes: 0ea651de9b79 ("arm64: dts: rockchip: add ROCK 5T device tree")
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
+index 258c7400301d7f77517197ab433946bbfa39cf63..d061fbc897552401df1a73da12fc0614d7edc2d3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
+@@ -68,6 +68,22 @@ &pcie2x1l1 {
+ 	status = "okay";
+ };
+ 
++&pcie30phy {
++	data-lanes = <1 1 2 2>;
++};
++
++&pcie3x2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie3x2_rst>;
++	reset-gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
++	vpcie3v3-supply = <&vcc3v3_pcie30>;
++	status = "okay";
++};
++
++&pcie3x4 {
++	num-lanes = <2>;
++};
++
+ &pinctrl {
+ 	hdmirx {
+ 		hdmirx_hpd: hdmirx-5v-detection {
+@@ -90,6 +106,12 @@ pcie2_0_vcc3v3_en: pcie2-0-vcc-en {
+ 		};
+ 	};
+ 
++	pcie3 {
++		pcie3x2_rst: pcie3x2-rst {
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	sound {
+ 		hp_detect: hp-detect {
+ 			rockchip,pins = <4 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
+
+---
+base-commit: 89d926fa53d0a6c257c4e8ac1c00c3d9a194ef31
+change-id: 20250825-rock5t-second-m2-fix-1fe5c5b8f8d0
+
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
