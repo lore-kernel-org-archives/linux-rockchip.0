@@ -4,61 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1650FCA0EFA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Aug 2025 08:37:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59EAFCA0EFA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Aug 2025 09:34:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gEIQcZP4JKIJYKcdrZxw65FIRF9Gz6tSXhOxt8C+k1Q=; b=oLN6JjWDb6bqam
-	HQ2qUFshQjz9AQyaVj/Dw5BTIMpXFZH/471g1Sz7zlZ9icxiw/VACMAQkaOZE1Wbg/3dqhJ5eakmj
-	Dg6zzdYtz0+TxnN4T3zyGpqlxhrli6MrUzMDICQJJsycPk/t60Jvq9DY16Oe+AA0vwx87shQa9z1v
-	lDMnFs+5TKPOLasWubh5wybS8BYKesU56JikmoQMPJ4We7VC54dBueADxxwescILCoXituFFkPQZL
-	5csmY5wGGUPjclJU39kgJVmyLQ2S6PxEd8hTvb7147aeCQIM2M1IE7WueWR8Qn2ofde8CLUhdgTbI
-	dodYeHbPz151aLiuG63Q==;
+	List-Owner; bh=tCt76EsApjOWWGFDDksb28K+Dvo+/hCn8vFuh6Crc30=; b=Hnuug/Mp/5zM3T
+	LYDrt1DXQGgRFH3d2eGbEDeejL87nXBiHj/ZRNW3fpovz76kIgWFDnMnqpU8/3CsWEv1LiLLp9H08
+	6+iEayNaa6WzPQ1DUED9FtbwD14znLyR+iif3nO4X6E+QULSNKSMYKrEdzbM4azPnTDPwA8OFqwNz
+	Ga6G8TvpG9deCuAix9OKrkzp+qhenGaFu/bwWZzT3yfF+fES4DHLSn3zsMvh4jE2QJhELVndtpNf4
+	6jkhbtpej1Frh7fDnc273n5AyegNjJm/+m1A8XL5u8R24q9V3ePdq4Dcf/Pekjl5Fi12jBRnoRB82
+	dpPSjXPcb8TD+SyrnozQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqpB5-0000000B2qh-0EAp;
-	Tue, 26 Aug 2025 08:37:15 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1uqq4F-0000000BQY1-3TUa;
+	Tue, 26 Aug 2025 09:34:15 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqp5Q-0000000B1VQ-32HY
-	for linux-rockchip@lists.infradead.org;
-	Tue, 26 Aug 2025 08:31:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1756197082;
- bh=jA8sOFGvh2/p8iE2G4NAwGkJrUNoYidwOKdr2bvzY+s=;
- b=MJCPM6y5U3KzIbkXhXI44C4jJVSFJlgEmwe02IUgwNyvb2a0gDGd1p7xP+5N4bInxXps6KJiE
- q2cjDHFAJy7NJWbz6FO/YWi5+Hl3wAYElka5f5Eg0KLxlLkTkpZ8eK83CiUZjX539Wv88MmrtkI
- /1Oxv/AvCymSRvGIerkIBDstWjobQwnuVem22EpqiUGcewSi1ub3Xo2BgP+i56Ofcxd1cVErZ3c
- tFdR5KYOIri3GhpwEBqtNk19Ijk+XpenNgXc7tyhDpewJhGh+ikkZ2H80KO5ZPY6TdiAbSl4Uen
- 6mrG/ebNdElyVqOrBaSJ0wKE+lJzzwtddcvVvC9usx7g==
-X-Forward-Email-ID: 68ad70d0b1fda674b9411dcb
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.2.9
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <6cf1cf2d-50cb-413d-93c6-79ecd6b0788e@kwiboo.se>
-Date: Tue, 26 Aug 2025 10:31:07 +0200
+	id 1uqpvm-0000000BN1W-0w1c;
+	Tue, 26 Aug 2025 09:25:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=EZLmmxLsJLc5gk0wgGNitzJFT6rBOeESCPORDcRzzpg=; b=FRQv3YmSJgzipze9JFAMvq5qaC
+	V+BTLxR6lVRumi2AL350wCzKmYriTjqDERiPQ8fkSOaWtjnf96MWR9yPaq1moY8E4L25h9oVBja1U
+	4OBeidVNFkPVGjsDFObo2qaXiuW33nT3kXqrox3kqzJqf2cnlOVokin8LljE+xdW0idr0Q5GLpNn6
+	Arz2vEN6a0tlpRggAplvBJwn2GjUO6NHqyB23Ea/i3VgpCPO2VWnxbjiE3mMvrieDsXiZogBpRsBz
+	iXcGxvpU2GJPFL5VATHFIoU8FeqZlH7eknIg1AyGmF+esZcv8Q6re+A2HSTJb7ZhD1y51p9xyoiNP
+	VFhdIK0g==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51124)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1uqpvQ-000000007eE-0erY;
+	Tue, 26 Aug 2025 10:25:08 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1uqpvJ-0000000017V-3YDI;
+	Tue, 26 Aug 2025 10:25:01 +0100
+Date: Tue, 26 Aug 2025 10:25:01 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: Marek Szyprowski <m.szyprowski@samsung.com>,
+	Chaoyi Chen <kernel@airkyi.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Jonas Karlman <jonas@kwiboo.se>, David Wu <david.wu@rock-chips.com>,
+	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH net-next v3] net: ethernet: stmmac: dwmac-rk: Make the
+ clk_phy could be used for external phy
+Message-ID: <aK19bSmrbXjoVXdO@shell.armlinux.org.uk>
+References: <20250815023515.114-1-kernel@airkyi.com>
+ <CGME20250825072312eucas1p2d4751199c0ea069c7938218be60e5e93@eucas1p2.samsung.com>
+ <a30a8c97-6b96-45ba-bad7-8a40401babc2@samsung.com>
+ <d0fe6d16-181f-4b38-9457-1099fb6419d0@rock-chips.com>
+ <809848c9-2ffa-4743-adda-b8b714b404de@samsung.com>
+ <aKxnHFSrVeM7Be5A@shell.armlinux.org.uk>
+ <8240a3cc-aade-40d8-b2f4-09681f76be68@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/6] arm64: dts: rockchip: Add ROCK 2A/2F, Sige1 and
- NanoPi Zero2
-To: Heiko Stuebner <heiko@sntech.de>
-References: <20250717103720.2853031-1-jonas@kwiboo.se>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250717103720.2853031-1-jonas@kwiboo.se>
+Content-Disposition: inline
+In-Reply-To: <8240a3cc-aade-40d8-b2f4-09681f76be68@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_013124_949445_0F671116 
-X-CRM114-Status: GOOD (  16.43  )
+X-CRM114-CacheID: sfid-20250826_022530_542777_CEB3C831 
+X-CRM114-Status: GOOD (  32.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,82 +90,128 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Chukun Pan <amadeus@jmu.edu.cn>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+On Tue, Aug 26, 2025 at 04:08:40PM +0800, Chaoyi Chen wrote:
+> Hi Russell,
+> =
 
-On 7/17/2025 12:37 PM, Jonas Karlman wrote:
-> This series adds dt-bindings and initial device tree for the following
-> Rockchip RK3528A boards:
-> - Radxa ROCK 2A/2F
-> - ArmSoM Sige1
-> - FriendlyElec NanoPi Zero2
-> 
-> The bt/wifi_reg_on pins are described in the device tree using
-> rfkill-gpio nodes.
-> 
-> Changes in v4:
-> - Remove disable-wp prop from sdio0
-> - Collect r-b and t-b tags
-> 
-> Changes in v3:
-> - Rename led nodes to led-0/led-1
-> - Remove pinctrl* props from sdio0
-> - Collect a-b tags
-> 
-> Changes in v2:
-> - Limit sdmmc max-frequency to 100 MHz on ROCK 2A/2F
-> - Drop clock-output-names prop from rtc node on Sige1 and NanoPi Zero2
-> - Drop regulator-boot-on from usb 2.0 host regulators on Sige1
-> - Add bluetooth and wifi nodes on Sige1
-> - Collect t-b tag for NanoPi Zero2
-> 
-> These boards can be booted from emmc or sd-card using the U-Boot 2025.07
-> generic-rk3528 target or work-in-progress patches for these boards [1].
-> 
-> For working bluetooth on ArmSoM Sige1 the patch "arm64: dts: rockchip:
-> Fix UART DMA support for RK3528" [2] is required.
-> 
-> [1] https://source.denx.de/u-boot/contributors/kwiboo/u-boot/-/commits/rk3528
-> [2] https://lore.kernel.org/r/20250709210831.3170458-1-jonas@kwiboo.se
-> 
-> Jonas Karlman (6):
->   dt-bindings: arm: rockchip: Add Radxa ROCK 2A/2F
->   arm64: dts: rockchip: Add Radxa ROCK 2A/2F
->   dt-bindings: arm: rockchip: Add ArmSoM Sige1
->   arm64: dts: rockchip: Add ArmSoM Sige1
->   dt-bindings: arm: rockchip: Add FriendlyElec NanoPi Zero2
->   arm64: dts: rockchip: Add FriendlyElec NanoPi Zero2
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |  17 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   4 +
->  .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 464 ++++++++++++++++++
->  .../boot/dts/rockchip/rk3528-nanopi-zero2.dts | 340 +++++++++++++
->  .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 293 +++++++++++
->  .../boot/dts/rockchip/rk3528-rock-2a.dts      |  82 ++++
->  .../boot/dts/rockchip/rk3528-rock-2f.dts      |  10 +
->  7 files changed, 1210 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
+> On 8/25/2025 9:37 PM, Russell King (Oracle) wrote:
+> > On Mon, Aug 25, 2025 at 12:53:37PM +0200, Marek Szyprowski wrote:
+> > > On 25.08.2025 11:57, Chaoyi Chen wrote:
+> > > > On 8/25/2025 3:23 PM, Marek Szyprowski wrote:
+> > > > > On 15.08.2025 04:35, Chaoyi Chen wrote:
+> > > > > > From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> > > > > > =
 
-Any thoughts on this series? Rebased patches for a possible re-send v5
-contained no changes compared to this v4.
+> > > > > > For external phy, clk_phy should be optional, and some external=
+ phy
+> > > > > > need the clock input from clk_phy. This patch adds support for =
+setting
+> > > > > > clk_phy for external phy.
+> > > > > > =
 
-I would like to send a v2 on the follow up "rockchip: Add USB 2.0
-support for RK3528" [3] series and was unsure about the state of this
-series before sending that.
+> > > > > > Signed-off-by: David Wu <david.wu@rock-chips.com>
+> > > > > > Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> > > > > > ---
+> > > > > > =
 
-[3] https://lore.kernel.org/r/20250723122323.2344916-1-jonas@kwiboo.se
+> > > > > > Changes in v3:
+> > > > > > - Link to V2:
+> > > > > > https://lore.kernel.org/netdev/20250812012127.197-1-kernel@airk=
+yi.com/
+> > > > > > - Rebase to net-next/main
+> > > > > > =
 
-Regards,
-Jonas
+> > > > > > Changes in v2:
+> > > > > > - Link to V1:
+> > > > > > https://lore.kernel.org/netdev/20250806011405.115-1-kernel@airk=
+yi.com/
+> > > > > > - Remove get clock frequency from DT prop
+> > > > > > =
+
+> > > > > >  =A0=A0 drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 11 +++=
+++++----
+> > > > > >  =A0=A0 1 file changed, 7 insertions(+), 4 deletions(-)
+> > > > > > =
+
+> > > > > > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> > > > > > b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> > > > > > index ac8288301994..5d921e62c2f5 100644
+> > > > > > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> > > > > > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> > > > > > @@ -1412,12 +1412,15 @@ static int rk_gmac_clk_init(struct
+> > > > > > plat_stmmacenet_data *plat)
+> > > > > >  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 clk_set_rate(plat->stmmac_clk, =
+50000000);
+> > > > > >  =A0=A0=A0=A0=A0=A0 }
+> > > > > >  =A0=A0 -=A0=A0=A0 if (plat->phy_node && bsp_priv->integrated_p=
+hy) {
+> > > > > > +=A0=A0=A0 if (plat->phy_node) {
+> > > > > >  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 bsp_priv->clk_phy =3D of_clk_ge=
+t(plat->phy_node, 0);
+> > > > > >  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ret =3D PTR_ERR_OR_ZERO(bsp_pri=
+v->clk_phy);
+> > > > > > -=A0=A0=A0=A0=A0=A0=A0 if (ret)
+> > > > > > -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return dev_err_probe(dev, re=
+t, "Cannot get PHY clock\n");
+> > > > > > -=A0=A0=A0=A0=A0=A0=A0 clk_set_rate(bsp_priv->clk_phy, 50000000=
+);
+> > > > > > +=A0=A0=A0=A0=A0=A0=A0 /* If it is not integrated_phy, clk_phy =
+is optional */
+> > > > > > +=A0=A0=A0=A0=A0=A0=A0 if (bsp_priv->integrated_phy) {
+> > > > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (ret)
+> > > > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return dev_err_p=
+robe(dev, ret, "Cannot get PHY
+> > > > > > clock\n");
+> > > > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 clk_set_rate(bsp_priv->clk_p=
+hy, 50000000);
+> > > > > > +=A0=A0=A0=A0=A0=A0=A0 }
+> > > > I think=A0 we should set bsp_priv->clk_phy to NULL here if we faile=
+d to
+> > > > get the clock.
+> > > > =
+
+> > > > Could you try this on your board? Thank you.
+> > > Right, the following change also fixes this issue:
+> > > =
+
+> > > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> > > b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> > > index 9fc41207cc45..2d19d48be01f 100644
+> > > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> > > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> > > @@ -1415,6 +1415,8 @@ static int rk_gmac_clk_init(struct
+> > > plat_stmmacenet_data *plat)
+> > >   =A0=A0=A0=A0=A0=A0=A0 if (plat->phy_node) {
+> > >   =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 bsp_priv->clk_phy =3D=
+ of_clk_get(plat->phy_node, 0);
+> > >   =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ret =3D PTR_ERR_OR_ZE=
+RO(bsp_priv->clk_phy);
+> > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (ret)
+> > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 b=
+sp_priv->clk_phy =3D NULL;
+> > Or just:
+> > =
+
+> > 		clk =3D of_clk_get(plat->phy_node, 0);
+> > 		if (clk =3D=3D ERR_PTR(-EPROBE_DEFER))
+> =
+
+> Do we actually need this?=A0Maybe other devm_clk_get() before it would fa=
+il in advance.
+
+Is it the same clock as devm_clk_get()? If it is, what's the point of
+getting it a second time. If it isn't, then it could be a different
+clock which may be yet to probe.
+
+-- =
+
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
