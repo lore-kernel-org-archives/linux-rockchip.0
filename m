@@ -4,66 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A731CA0FE9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Aug 2025 11:45:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04429CA0FE9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Aug 2025 11:45:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+0qEMmZqpvc1BtfHjfGk8PBYujNxEMcbxP3mcazGzbI=; b=ARUQ8kxUPiKA+U
-	e99lRRUWEyd9YC6f3RyCmdUAR1oiVKQ4P7dGyUMR2371yVCQEmKKETqVuA95609ZRWx4/8IyptLv7
-	B8z9rvBImf+d2/U2BSeLSPZAxbQNE+JQ/LctWXOzutnIKqVTU4jN8cafoxJYjN88m0Q0AjJovgl/e
-	843z/adv21oGhczVnqcXWx6tjqBi49QxnN+qh9ccck/K8j3xWK4jAn1slLQKv9fromcvLx062K9n+
-	jnGpzZ4u4UI6s3UlKyD2e9jkiGcJxHU5VdRYnedKEcdvV6e2C9tSkqA0BZRFpXQZ8LYZYfBqgh5Hg
-	b0RAmaYXmfSq9V6/PzBA==;
+	List-Archive:List-Unsubscribe:List-Id:To:Date:Message-Id:Subject:Mime-Version
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eGJZBp53GtfjBR7abhHBujAvw+IqshKd6Tg8tYh5i6k=; b=iWp+8xrkmkF/3T
+	VxJ1DSJn/dlRo1qEtT80uI1mC7MgFre+Y7dvX8IaX46KC4DvQEjA/V9oq7pnuD5ZCW2LelDY8Sk2w
+	vBKfIHUMH+wZUTKExDqtIKn7d8CElp8DNYC7KeQ337HyLIAQWkZOluKhTLuJUnmrmskxgtt2S1liE
+	iaF60Xkn/9zyn1KAzWSwYKxcVq/p+JDenyys79ziP0DbLsOdKbkXdIEZBVioQ6SZ3LHZoGQ+nlSg0
+	0XWwRp8kgHp6VBLaXULhoE0O2WTEL5HbNNW4jIbtTn/SAeWcbOnOhwAErgn4zI4dPhp1pk1h1CVM+
+	saQo4PlyUjsocG7RNerg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqs6l-0000000Bpis-2gl4;
-	Tue, 26 Aug 2025 11:44:59 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqrC4-0000000BfNX-2FER;
-	Tue, 26 Aug 2025 10:46:25 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A06821A25;
-	Tue, 26 Aug 2025 03:46:15 -0700 (PDT)
-Received: from J2N7QTR9R3 (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8000D3F694;
-	Tue, 26 Aug 2025 03:46:14 -0700 (PDT)
-Date: Tue, 26 Aug 2025 11:46:10 +0100
-From: Mark Rutland <mark.rutland@arm.com>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: peterz@infradead.org, mingo@redhat.com, will@kernel.org,
-	acme@kernel.org, namhyung@kernel.org,
-	alexander.shishkin@linux.intel.com, jolsa@kernel.org,
-	irogers@google.com, adrian.hunter@intel.com,
-	kan.liang@linux.intel.com, linux-perf-users@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-alpha@vger.kernel.org,
-	linux-snps-arc@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
-	linux-csky@vger.kernel.org, loongarch@lists.linux.dev,
-	linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-s390@vger.kernel.org, linux-sh@vger.kernel.org,
-	sparclinux@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, dmaengine@vger.kernel.org,
-	linux-fpga@vger.kernel.org, amd-gfx@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
-	intel-xe@lists.freedesktop.org, coresight@lists.linaro.org,
-	iommu@lists.linux.dev, linux-amlogic@lists.infradead.org,
-	linux-cxl@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-	linux-riscv@lists.infradead.org
-Subject: Re: [PATCH 01/19] perf/arm-cmn: Fix event validation
-Message-ID: <aK2QclH4jlHJ28EJ@J2N7QTR9R3>
-References: <cover.1755096883.git.robin.murphy@arm.com>
- <0716da3e77065f005ef6ea0d10ddf67fc53e76cb.1755096883.git.robin.murphy@arm.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <0716da3e77065f005ef6ea0d10ddf67fc53e76cb.1755096883.git.robin.murphy@arm.com>
+	id 1uqs6x-0000000Bpq6-1vBg;
+	Tue, 26 Aug 2025 11:45:11 +0000
+Received: from mail-m49210.qiye.163.com ([45.254.49.210])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uqrMm-0000000BgvD-1ooo
+	for linux-rockchip@lists.infradead.org;
+	Tue, 26 Aug 2025 10:57:31 +0000
+Received: from smtpclient.apple (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 20a9019f2
+	for <linux-rockchip@lists.infradead.org>; Tue, 26 Aug 2025 18:57:20 +0800 (GMT+08:00)
+From: xuhf <xuhf@rock-chips.com>
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81\))
+Subject: lists-join
+Message-Id: <3FBBFBF7-84C4-4EEF-96F5-F461725F772F@rock-chips.com>
+Date: Tue, 26 Aug 2025 18:56:50 +0800
+To: linux-rockchip@lists.infradead.org
+X-Mailer: Apple Mail (2.3826.700.81)
+X-HM-Tid: 0a98e606795409cckunmb0f6bd7a883777
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUJITFZJSx8dHx0YSk0fTBhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=LiknbxLEs/OHAR/vz/6SkDcJNqmBz19t9n1FeHxGMjmunQ2q5SBUJESLBAeG9RB/iVwtlqANXA588KMbZfiKNryuuxP50ElFBPZRI78Mv2s/4HBsmUCPBSckbilP5egYGM2CZi0mX7W/uXFJed8bUMskNBJy3BmsP7LFs3oZnpo=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=Xl2FQZ4zqEb/LiQaggaq8ofBMIH3lev2dlEqLGhKFjA=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_034624_671755_815EEEF6 
-X-CRM114-Status: GOOD (  25.71  )
+X-CRM114-CacheID: sfid-20250826_035729_821976_0D404B20 
+X-CRM114-Status: UNSURE (   1.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,83 +67,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Robin,
+jon
 
-On Wed, Aug 13, 2025 at 06:00:53PM +0100, Robin Murphy wrote:
-> In the hypothetical case where a CMN event is opened with a software
-> group leader that already has some other hardware sibling, currently
-> arm_cmn_val_add_event() could try to interpret the other event's data
-> as an arm_cmn_hw_event, which is not great since we dereference a
-> pointer from there... Thankfully the way to be more robust is to be
-> less clever - stop trying to special-case software events and simply
-> skip any event that isn't for our PMU.
-
-I think this is missing some important context w.r.t. how the core perf
-code behaves (and hence why this change doesn't cause other problems).
-I'd suggest that we give the first few patches a common preamble:
-
-| When opening a new perf event, the core perf code calls
-| pmu::event_init() before checking whether the new event would cause an
-| event group to span multiple hardware PMUs. Considering this:
-| 
-| (1) Any pmu::event_init() callback needs to be robust to cases where
-|     a non-software group_leader or sibling event targets a distinct
-|     PMU.
-| 
-| (2) Any pmu::event_init() callback doesn't need to explicitly reject
-|     groups that span multiple hardware PMUs, as the core code will
-|     reject this later.
-
-... and then spell out the specific issues in the driver, e.g.
-
-| The logic in arm_cmn_validate_group() doesn't account for cases where
-| a non-software sibling event targets a distinct PMU. In such cases,
-| arm_cmn_val_add_event() will erroneously interpret the sibling's
-| event::hw as as struct arm_cmn_hw_event, including dereferencing
-| pointers from potentially user-controlled fields.
-|
-| Fix this by skipping any events for distinct PMUs, and leaving it to
-| the core code to reject event groups that span multiple hardware PMUs.
-
-With that context, the patch itself looks good to me.
-
-This will need a Cc stable. I'm not sure what Fixes tag is necessary;
-has this been broken since its introduction?
-
-Mark.
-
-> 
-> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
-> ---
->  drivers/perf/arm-cmn.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
-> 
-> diff --git a/drivers/perf/arm-cmn.c b/drivers/perf/arm-cmn.c
-> index 11fb2234b10f..f8c9be9fa6c0 100644
-> --- a/drivers/perf/arm-cmn.c
-> +++ b/drivers/perf/arm-cmn.c
-> @@ -1652,7 +1652,7 @@ static void arm_cmn_val_add_event(struct arm_cmn *cmn, struct arm_cmn_val *val,
->  	enum cmn_node_type type;
->  	int i;
->  
-> -	if (is_software_event(event))
-> +	if (event->pmu != &cmn->pmu)
->  		return;
->  
->  	type = CMN_EVENT_TYPE(event);
-> @@ -1693,9 +1693,6 @@ static int arm_cmn_validate_group(struct arm_cmn *cmn, struct perf_event *event)
->  	if (leader == event)
->  		return 0;
->  
-> -	if (event->pmu != leader->pmu && !is_software_event(leader))
-> -		return -EINVAL;
-> -
->  	val = kzalloc(sizeof(*val), GFP_KERNEL);
->  	if (!val)
->  		return -ENOMEM;
-> -- 
-> 2.39.2.101.g768bb238c484.dirty
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
