@@ -4,66 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11CF8CA0EFA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Aug 2025 11:45:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ED2ECA0EFA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Aug 2025 12:42:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cyJV/JcSc5z9/GaKh8Kr2lLUewpzSYN7Xobxh5HAzOQ=; b=gzUwDX1H88usOC
-	WeWLehvus2xz2BkYdUCfyg1xttwRjhT6uAyk7kotAR1ZRbUZlo17zND6FAvG9vXIRN9QDQBoOzOoc
-	iHf9YrHqf2pvJRree2jfM3j2B6reGE76z6loLcn5Ew0AVm5ZuV7mJfCsfBuoyugnDVgvEKGwpI7TS
-	K7wBSf4X9x3dUN7cE5bJuzj5g5k9PPqXYugqop8NWjcuwZahUJGLATY+mJoWwlqpw8qDhhrmv6N1t
-	z45x0Lhsnwzfj2RhowBz2BD+PFUA8Zkv1WPDsNFqq7coLcL71uAFTrbWLkJRQOvJ541VHsxlNpGVt
-	97HEZqrlZePUQPJBuIQw==;
+	List-Owner; bh=6jxmEfga1biaj7tcmFPrMn9+wqAuTBAw/xMCgfZPtO0=; b=dTJLaKrgpkvBi6
+	ShzIrIgtaVeSJXVFcDdtjFVcA1rn8U9L8ivhKZ3txHAdvvP3TNuekjbV50lGAUJl3yt1y2L/EnUP1
+	AWeXFL0nWNCnBf20+8psz2JdykMv5mpKSuYwWAU+Z4S+Wjmalk7qYTLrjBVTkVUZoCaLMKZEDpvBa
+	VMoEHJVFUnRlo0Q9HRH6knH61kM2kVwtUgJA5hr6DgBYsXcFS1Tzn5YsyUTaXMIhYsEBOXUdae6Fn
+	53qcW1vUJXb46tlFU9YTjZA3uozxQk3kSqAQ182XwvtwONQmv2yXwXI48Rhcx3xwNNGuRq5MIrtWn
+	tHIha1t26hIWkNwxTDNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqs7T-0000000Bq8t-06RN;
-	Tue, 26 Aug 2025 11:45:43 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uqreP-0000000BkGg-1ml9;
-	Tue, 26 Aug 2025 11:15:43 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0E7AF1A00;
-	Tue, 26 Aug 2025 04:15:32 -0700 (PDT)
-Received: from J2N7QTR9R3 (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 663C13F63F;
-	Tue, 26 Aug 2025 04:15:28 -0700 (PDT)
-Date: Tue, 26 Aug 2025 12:15:23 +0100
-From: Mark Rutland <mark.rutland@arm.com>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: peterz@infradead.org, mingo@redhat.com, will@kernel.org,
-	acme@kernel.org, namhyung@kernel.org,
-	alexander.shishkin@linux.intel.com, jolsa@kernel.org,
-	irogers@google.com, adrian.hunter@intel.com,
-	kan.liang@linux.intel.com, linux-perf-users@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-alpha@vger.kernel.org,
-	linux-snps-arc@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
-	linux-csky@vger.kernel.org, loongarch@lists.linux.dev,
-	linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-s390@vger.kernel.org, linux-sh@vger.kernel.org,
-	sparclinux@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, dmaengine@vger.kernel.org,
-	linux-fpga@vger.kernel.org, amd-gfx@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
-	intel-xe@lists.freedesktop.org, coresight@lists.linaro.org,
-	iommu@lists.linux.dev, linux-amlogic@lists.infradead.org,
-	linux-cxl@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-	linux-riscv@lists.infradead.org
-Subject: Re: [PATCH 02/19] perf/hisilicon: Fix group validation
-Message-ID: <aK2XS_GhLw1EQ2ml@J2N7QTR9R3>
-References: <cover.1755096883.git.robin.murphy@arm.com>
- <c7b877e66ba0d34d8558c5af8bbb620e8c0e47d9.1755096883.git.robin.murphy@arm.com>
+	id 1uqt0G-0000000ByZ1-27Rz;
+	Tue, 26 Aug 2025 12:42:20 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uqszt-0000000ByTi-34dc
+	for linux-rockchip@lists.infradead.org;
+	Tue, 26 Aug 2025 12:41:59 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-2465cb0e81bso23761595ad.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 26 Aug 2025 05:41:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ziepe.ca; s=google; t=1756212117; x=1756816917; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=T84fHSOjtH7H+COR+2RAmmEuuAs5zWdfFcbzGcITMW0=;
+        b=eMm9XPTfPH4Q687ncXBlzvAm4eRVL9gh2vaOvIgz6i1vDdeg5g28gzA5DjlmJ4Eibf
+         3YQwCXooMISDh9d7gJOOz/pLARVWBb/9Y0MQigVPMEdLy2tKOUThb/d5gO86yMRmsxUU
+         kqTb6vbmpHzoSPxzMrAcllpkI5ane+4nNggVQ/nu3DC7MdjJvBauwq97hYNOff+L0lLm
+         g/Ex6elv9LKaloYuGO1COEvmTkrypHEUnFlWrxDIMyMwPOGLBNpdDagSICp0xoGTYp6d
+         YccFSdkbge4+EKdyRkYWXBZqKgq4+WG1pAz40/BjqT+7HVvDQ3ljnD+iU81Llgnkg0Ty
+         gT4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756212117; x=1756816917;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=T84fHSOjtH7H+COR+2RAmmEuuAs5zWdfFcbzGcITMW0=;
+        b=n23l4VXMZNBXAbBJfih3Iwk7bfxMDhj5D009AfSMNa1Mu7fK68H8bzT9pE09yMHpHM
+         X1nTC9FVkXiGk7PXh8LGASzh6Ldwd8+M9wkOGk0H8kGq5C4H1cnMJ8QJIBvZhqZk0S2X
+         9kGMrO1GLjOmewxocIN3A7QAMHhCi20+xjBdY+LvYvrUJkIVueNz0DVjIF2fYRBT7QaF
+         HXflqWkc34lKfZWcpK5JO3qoGwBxNVfa2bcJqzx97t/jwcoXRPFUMazlE5RlGGRK6K/H
+         QeRkDU0fPHemygwbxhlUnLdSPunpIIZlNdWZL+4CzOWbPsG9qJfW7O71UX2ufRnDU2EM
+         qXxw==
+X-Forwarded-Encrypted: i=1; AJvYcCXjR8os4jQ6UxP/eZmkp8lVt6Y4Lu0jmws+fH/dWFBRNGHFVfajm2RlCrTdOh0+QNFE7O+h66lfJi3SyNTzTg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzR3R57ZD2f62c5WXV0z4g/Y5ksintadUuDM26syEQ3nafRo1od
+	d5xQnEdqhiRzUuWjyT1WccUjncKNo9zQ2pQLpmvURKGOnCW7Ti+uIFmZ+c/t3sQdiR0=
+X-Gm-Gg: ASbGncvPD3t1CtrfdEqaxOnA6BK2WQlIrM8HPg2ooYaz7C43W//80YESH4zwWIQnngI
+	9kxJ9JDLberSoJ0q1XQJ1YXGmwLHjJbBd1RzEYxpAQB/oZQmpEblYb8txUqOdaXLDojH2qMJikR
+	x9o1O84qPOb9f95OlRH09wbMp4xcLoxmavN0dwqo4RHdYjL1++9JAL0yBNykH/WaEGz68xcVyYO
+	C6cnArCSE0tqmIv5hA0WbJ9ojvHKicgGP5Krz5NVQUwRcs1jxCNgek2lNkXJm65Evhp1JNB1m17
+	bOCZLMnSTUxuw1FOCBEMAA8wIBseHGz2or5Xf2CtfC0CWJRmFkzeYFXLB/V5YtOHp+jQCTpo
+X-Google-Smtp-Source: AGHT+IEf2ObCWqklpLUBYBGCp1bYhdjq0lZf9FXkeM3wbZQ3D6NSnsFJXJkCjceBlS7IcS93bfZjTg==
+X-Received: by 2002:a17:902:d54e:b0:246:a8d7:5bc1 with SMTP id d9443c01a7336-246a8d75c90mr130116235ad.39.1756212116823;
+        Tue, 26 Aug 2025 05:41:56 -0700 (PDT)
+Received: from ziepe.ca ([130.41.10.202])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-246687b4577sm95940715ad.61.2025.08.26.05.41.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Aug 2025 05:41:56 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.97)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1uqszr-00000008tSp-1M5u;
+	Tue, 26 Aug 2025 09:41:55 -0300
+Date: Tue, 26 Aug 2025 09:41:55 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>, joro@8bytes.org,
+	will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+	p.zabel@pengutronix.de, mchehab@kernel.org, iommu@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, kernel@collabora.com,
+	linux-media@vger.kernel.org
+Subject: Re: [PATCH v7 4/6] media: verisilicon: AV1: Restore IOMMU context
+ before decoding a frame
+Message-ID: <20250826124155.GD1899851@ziepe.ca>
+References: <20250825153450.150071-1-benjamin.gaignard@collabora.com>
+ <20250825153450.150071-5-benjamin.gaignard@collabora.com>
+ <20250825170531.GA1899851@ziepe.ca>
+ <01c327e8353bb5b986ef6fb1e7311437659aea4a.camel@collabora.com>
+ <20250825183122.GB1899851@ziepe.ca>
+ <441df5ff-8ed4-45ed-8a52-b542c6e7d38c@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <c7b877e66ba0d34d8558c5af8bbb620e8c0e47d9.1755096883.git.robin.murphy@arm.com>
+In-Reply-To: <441df5ff-8ed4-45ed-8a52-b542c6e7d38c@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_041541_548312_553A09F7 
-X-CRM114-Status: GOOD (  25.96  )
+X-CRM114-CacheID: sfid-20250826_054157_772852_A18C7B60 
+X-CRM114-Status: GOOD (  24.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,163 +109,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 13, 2025 at 06:00:54PM +0100, Robin Murphy wrote:
-> The group validation logic shared by the HiSilicon HNS3/PCIe drivers is
-> a bit off, in that given a software group leader, it will consider that
-> event *in place of* the actual new event being opened. At worst this
-> could theoretically allow an unschedulable group if the software event
-> config happens to look like one of the hardware siblings.
-> 
-> The uncore framework avoids that particular issue,
-
-What is "the uncore framework"? I'm not sure exactly what you're
-referring to, nor how that composes with the problem described above.
-
-> but all 3 also share the common issue of not preventing racy access to
-> the sibling list,
-
-Can you please elaborate on this racy access to the silbing list? I'm
-not sure exactly what you're referring to.
-
-> and some redundant checks which can be cleaned up.
-> 
-> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
-> ---
->  drivers/perf/hisilicon/hisi_pcie_pmu.c   | 17 ++++++-----------
->  drivers/perf/hisilicon/hisi_uncore_pmu.c | 23 +++++++----------------
->  drivers/perf/hisilicon/hns3_pmu.c        | 17 ++++++-----------
->  3 files changed, 19 insertions(+), 38 deletions(-)
-> 
-> diff --git a/drivers/perf/hisilicon/hisi_pcie_pmu.c b/drivers/perf/hisilicon/hisi_pcie_pmu.c
-> index c5394d007b61..3b0b2f7197d0 100644
-> --- a/drivers/perf/hisilicon/hisi_pcie_pmu.c
-> +++ b/drivers/perf/hisilicon/hisi_pcie_pmu.c
-> @@ -338,21 +338,16 @@ static bool hisi_pcie_pmu_validate_event_group(struct perf_event *event)
->  	int counters = 1;
->  	int num;
->  
-> -	event_group[0] = leader;
-> -	if (!is_software_event(leader)) {
-> -		if (leader->pmu != event->pmu)
-> -			return false;
-> +	if (leader == event)
-> +		return true;
->  
-> -		if (leader != event && !hisi_pcie_pmu_cmp_event(leader, event))
-> -			event_group[counters++] = event;
-> -	}
-> +	event_group[0] = event;
-> +	if (leader->pmu == event->pmu && !hisi_pcie_pmu_cmp_event(leader, event))
-> +		event_group[counters++] = leader;
-
-Looking at this, the existing logic to share counters (which
-hisi_pcie_pmu_cmp_event() is trying to permit) looks to be bogus, given
-that the start/stop callbacks will reprogram the HW counters (and hence
-can fight with one another).
-
-I suspect that can be removed *entirely*, and this can be simplified
-down to allocating N counters, without a quadratic event comparison.  We
-don't try to share counters in other PMU drivers, and there was no
-rationale for trying to do this when this wa introduced in commit:
-
-  8404b0fbc7fbd42e ("drivers/perf: hisi: Add driver for HiSilicon PCIe PMU")
-
-The 'link' tag in that comment goes to v13, which doesn't link to prior
-postings, so I'm not going to dig further.
-
-Mark.
-
->  
->  	for_each_sibling_event(sibling, event->group_leader) {
-> -		if (is_software_event(sibling))
-> -			continue;
-> -
->  		if (sibling->pmu != event->pmu)
-> -			return false;
-> +			continue;
->  
->  		for (num = 0; num < counters; num++) {
->  			/*
-> diff --git a/drivers/perf/hisilicon/hisi_uncore_pmu.c b/drivers/perf/hisilicon/hisi_uncore_pmu.c
-> index a449651f79c9..3c531b36cf25 100644
-> --- a/drivers/perf/hisilicon/hisi_uncore_pmu.c
-> +++ b/drivers/perf/hisilicon/hisi_uncore_pmu.c
-> @@ -101,26 +101,17 @@ static bool hisi_validate_event_group(struct perf_event *event)
->  	/* Include count for the event */
->  	int counters = 1;
->  
-> -	if (!is_software_event(leader)) {
-> -		/*
-> -		 * We must NOT create groups containing mixed PMUs, although
-> -		 * software events are acceptable
-> -		 */
-> -		if (leader->pmu != event->pmu)
-> -			return false;
-> +	if (leader == event)
-> +		return true;
->  
-> -		/* Increment counter for the leader */
-> -		if (leader != event)
-> -			counters++;
-> -	}
-> +	/* Increment counter for the leader */
-> +	if (leader->pmu == event->pmu)
-> +		counters++;
->  
->  	for_each_sibling_event(sibling, event->group_leader) {
-> -		if (is_software_event(sibling))
-> -			continue;
-> -		if (sibling->pmu != event->pmu)
-> -			return false;
->  		/* Increment counter for each sibling */
-> -		counters++;
-> +		if (sibling->pmu == event->pmu)
-> +			counters++;
->  	}
->  
->  	/* The group can not count events more than the counters in the HW */
-> diff --git a/drivers/perf/hisilicon/hns3_pmu.c b/drivers/perf/hisilicon/hns3_pmu.c
-> index c157f3572cae..382e469257f9 100644
-> --- a/drivers/perf/hisilicon/hns3_pmu.c
-> +++ b/drivers/perf/hisilicon/hns3_pmu.c
-> @@ -1058,21 +1058,16 @@ static bool hns3_pmu_validate_event_group(struct perf_event *event)
->  	int counters = 1;
->  	int num;
->  
-> -	event_group[0] = leader;
-> -	if (!is_software_event(leader)) {
-> -		if (leader->pmu != event->pmu)
-> -			return false;
-> +	if (leader == event)
-> +		return true;
->  
-> -		if (leader != event && !hns3_pmu_cmp_event(leader, event))
-> -			event_group[counters++] = event;
-> -	}
-> +	event_group[0] = event;
-> +	if (leader->pmu == event->pmu && !hns3_pmu_cmp_event(leader, event))
-> +		event_group[counters++] = leader;
->  
->  	for_each_sibling_event(sibling, event->group_leader) {
-> -		if (is_software_event(sibling))
-> -			continue;
-> -
->  		if (sibling->pmu != event->pmu)
-> -			return false;
-> +			continue;
->  
->  		for (num = 0; num < counters; num++) {
->  			/*
-> -- 
-> 2.39.2.101.g768bb238c484.dirty
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBBdWcgMjYsIDIwMjUgYXQgMTE6NTI6MzdBTSArMDIwMCwgQmVuamFtaW4gR2FpZ25h
+cmQgd3JvdGU6Cj4gCj4gTGUgMjUvMDgvMjAyNSDDoCAyMDozMSwgSmFzb24gR3VudGhvcnBlIGEg
+w6ljcml0wqA6Cj4gPiBPbiBNb24sIEF1ZyAyNSwgMjAyNSBhdCAwMTo1MDoxNlBNIC0wNDAwLCBO
+aWNvbGFzIER1ZnJlc25lIHdyb3RlOgo+ID4gCj4gPiA+IEphc29uLCB0aGUgcG9pbnQgaXMgdGhh
+dCB0aGUgaW9tbXUgYW5kIHRoZSBWUFUgYXJlIG5vdCBzZXBhcmF0ZSBkZXZpY2VzLCB3aGljaAo+
+ID4gPiBjb21lcyB3aXRoIHNpZGUgZWZmZWN0cy4gT24gUktWRGVjIHNpZGUsIHRoZSBpb21tdSBj
+b25maWd1cmF0aW9uIGdldCByZXNldHMKPiA+ID4gd2hlbmV2ZXIgYSBkZWNvZGluZyBlcnJvciBs
+ZWFkcyB0byBhIFZQVSAic2VsZiByZXNldCIuIEkgY2FuJ3QgcmVtZW1iZXIgd2hvIGZyb20KPiA+
+ID4gdGhlIGlvbW11IHN1YnN5c3RlbSBzdWdnZXN0ZWQgdGhhdCwgYnV0IHRoZSBlbXB0eSBkb21h
+aW4gbWV0aG9kIHdhcyBhZ3JlZWQgdG8gYmUKPiA+IElESywgdGhhdCBzZWVtcyByZWFsbHkgZ29v
+ZnkgdG9vIG1lIGFuIGRlZmlhbnRseSBuZWVkcyB0byBiZQo+ID4gZXh0ZW5zaXZlbHkgZG9jdW1l
+bnRlZCB0aGlzIGlzIHJlc3RvcmluZyB0aGUgZGVmYXVsdCB3aXRoIHNvbWUgbG9yZQo+ID4gbGlu
+ayBvZiB0aGUgb3JpZ2luYWwgc3VnZ2VzdGlvbi4KPiA+IAo+ID4gPiB0aGUgbGVhc3QgaW52YXNp
+dmUgd2F5IHRvIHdvcmthcm91bmQgdGhhdCBpc3N1ZS4gSSBiZWxpZXZlIERldGxldiB0cmllZCBt
+dWx0aXBsZQo+ID4gPiB0aW1lIHRvIGFkZCBBUElzIGZvciB0aGF0IGJlZm9yZSB0aGUgZGlzY3Vz
+c2lvbiBsZWFkIHRvIHRoaXMgcGF0aC4KPiA+IFlvdSBtZWFuIHRoaXM6Cj4gPiAKPiA+IGh0dHBz
+Oi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LWlvbW11LzIwMjUwMzE4MTUyMDQ5LjE0NzgxLTEtZGV0
+bGV2LmNhc2Fub3ZhQGNvbGxhYm9yYS5jb20vCj4gPiAKPiA+IFdoaWNoIGNhbWUgYmFjayB3aXRo
+IHRoZSBzYW1lIHJlbWFyayBJIHdvdWxkIGdpdmU6Cj4gPiAKPiA+ICAgUGxlYXNlIGhhdmUgc29t
+ZSBraW5kIG9mIHByb3BlciByZXNldCBub3RpZmllciBtZWNoYW5pc20gLSBpbiBmYWN0Cj4gPiAg
+IHdpdGggcnVudGltZSBQTSBjb3VsZCB5b3Ugbm90IGFscmVhZHkgaW52b2tlIGEgc3VzcGVuZC9y
+ZXN1bWUgY3ljbGUKPiA+ICAgdmlhIHRoZSBkZXZpY2UgbGlua3M/Cj4gCj4gd2hlbiBkb2luZyBw
+YXJhbGxlbCBkZWNvZGUgc3VzcGVuZC9yZXN1bWUgYXJlIG5vdCBpbnZva2VkLgoKSXQgd2FzIGEg
+cHJvcG9zYWwgZm9yIGFuIGVycm9yIHJlY292ZXJ5IHBhdGguCgo+ID4gT3IgYW5vdGhlciByZWFz
+b25hYmxlIG9wdGlvbjoKPiA+IAo+ID4gICAgT3IgYXQgd29yc3QganVzdCBleHBvcnQgYSBwdWJs
+aWMgaW50ZXJmYWNlIGZvciB0aGUgb3RoZXIgZHJpdmVyIHRvCj4gPiAgICBpbnZva2UgcmtfaW9t
+bXVfcmVzdW1lKCkgZGlyZWN0bHkuCj4gPiAKPiA+IFNpZ2guCj4gCj4gQW4gb3RoZXIgc29sdXRp
+b24gd2hpY2ggaXMgd29ya2luZyBpcyB0byBjYWxsIGlvbW11X2ZsdXNoX2lvdGxiX2FsbCgpCj4g
+YmVmb3JlIGRlY29kaW5nIGVhY2ggZnJhbWUuCgpUaGF0IHdhcyBhbHJlYWR5IHByb3Bvc2VkIGFu
+ZCBzaG90IGRvd24sIGl0IG1ha2VzIG5vIHNlbnNlIGF0IGFsbCB1c2UKdG8gdXNlIGZsdXNoaW5n
+IHRvIHJlc2V0IHRoZSByZWdpc3RlcnMgYmVjYXVzZSB0aGUgSFcgd2VpcmRseSBsb3N0CnRoZW0s
+IGFuZCBmbHVzaGluZyBzaG91bGQgbmV2ZXIgaGFwcGVuIG91dHNpZGUgbWFwcGluZyBjb250ZXh0
+cy4KCklmIHRoZSBIVyBpcyByZWFsbHkgcmVzZXR0aW5nIHRoZSBpb21tdSByZWdpc3RlcnMgYWZ0
+ZXIgZXZlcnkgZnJhbWUKdGhhdCBpcyByZWFsbHkganVzdCBwYWluZnVsbHkgYnJva2VuLCBhbmQg
+bWFrZXMgbWUgd29uZGVyIGlmIGl0IHJlYWxseQpzaG91bGQgYmUgYW4gaW9tbXUgc3Vic3lzdGVt
+IGRyaXZlciBhdCBhbGwgaWYgaXQgaXMgc28gdGlnaHRseSBjb3VwbGVkCnRvIHRoZSBjb21wdXRp
+bmcgSFcuIDpcCgpMaWtlIHdlIHdvdWxkbid0IHRyeSB0byBwdXQgYSBHUFUgTU1VIGludG8gdGhl
+IGlvbW11IHN1YnN5c3RlbSB0aG91Z2gKdGhleSBkbyBmYWlybHkgc2ltaWxhciB0aGluZ3MuCgpK
+YXNvbgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
