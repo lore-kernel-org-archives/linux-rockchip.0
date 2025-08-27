@@ -4,69 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAE78CA0FF6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 08:36:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6A2CCA1002
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 11:07:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IUTOzDrC6AfbTOFsUDWZgqR1qsXiPp/6OPGUfzCg89g=; b=WGzH1+VuwgsaoF
-	rxnHw/2m6/o1QG0TAurlzhwMBM65Djz9XoENOoNR0nkktjGgyggPtBj5V+FNlJffLRGN7QVs5z/SX
-	ly5YbzgMVJU5lNk8AzLGQLhSzMlgRky95KlJApkzLYvlvTyzM4vlQtN10xogUNcTJ+6hJLvNVoC46
-	KQbWtYEUWyoTjpqBcK9GU+p3XdhHnwepifQ54MMx5KvJtSI4031oWTNe+bLfOYpkSpmnW0wRNqV7C
-	JvMzH//EnFaXdfUZ5HXCVKQA6108Eh5Uy+/ecFTLfGCmPOlwWZW2FerTMpByKJhLXldeRMZzLHTwi
-	24mMq4wTK1SqOoadM4ng==;
+	List-Owner; bh=QLQB7Kv0gbKtoMyr9WidGV0Cqub5NJAS7116xrga3VE=; b=YjJSbNLPyR3Q/3
+	O7uVca0Lf66i5+khw7PNn3DL3/KDI0LjMOIevhNs16xmGLPw4CIDI6NZ9gGCnS6hyjxK5pcPCDLoT
+	drYoQRXcod39rkp/Bp0Xdeqs6JxiY9lZBwSITuNmbJkuvk+n/mgenHgtGAEgIFz1UwqKXYqTvgeP/
+	5Qex07mN0veOSzNUy0nx+DPVSA2M/VC0ePUp79/nqHhqzTmv6d7cCZhmApzbHbJ7wtkzDMVZvQr3U
+	IUWWnOYuk3SENyOjt0DJn7yF/9T2FUwb/BwrETxT3yU9SIIP0arsSh8DS7R/yMK5vuKGcfa8I3aHB
+	+EpndVJOH9iKG8CEnJmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urBdS-0000000EgsH-30GO;
-	Wed, 27 Aug 2025 08:36:02 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urBMo-0000000EdBL-2niP;
-	Wed, 27 Aug 2025 08:18:51 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 875DD1515;
-	Wed, 27 Aug 2025 01:18:41 -0700 (PDT)
-Received: from J2N7QTR9R3 (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C8D1A3F694;
-	Wed, 27 Aug 2025 01:18:41 -0700 (PDT)
-Date: Wed, 27 Aug 2025 09:18:38 +0100
-From: Mark Rutland <mark.rutland@arm.com>
-To: Ian Rogers <irogers@google.com>
-Cc: Robin Murphy <robin.murphy@arm.com>,
-	Peter Zijlstra <peterz@infradead.org>, mingo@redhat.com,
-	will@kernel.org, acme@kernel.org, namhyung@kernel.org,
-	alexander.shishkin@linux.intel.com, jolsa@kernel.org,
-	adrian.hunter@intel.com, kan.liang@linux.intel.com,
-	linux-perf-users@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-alpha@vger.kernel.org, linux-snps-arc@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
-	linux-csky@vger.kernel.org, loongarch@lists.linux.dev,
-	linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-s390@vger.kernel.org, linux-sh@vger.kernel.org,
-	sparclinux@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, dmaengine@vger.kernel.org,
-	linux-fpga@vger.kernel.org, amd-gfx@lists.freedesktop.org,
-	dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
-	intel-xe@lists.freedesktop.org, coresight@lists.linaro.org,
-	iommu@lists.linux.dev, linux-amlogic@lists.infradead.org,
-	linux-cxl@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-	linux-riscv@lists.infradead.org
-Subject: Re: [PATCH 12/19] perf: Ignore event state for group validation
-Message-ID: <aK6_XrA_OaLnoFkr@J2N7QTR9R3>
-References: <cover.1755096883.git.robin.murphy@arm.com>
- <d6cda4e2999aba5794c8178f043c91068fa8080c.1755096883.git.robin.murphy@arm.com>
- <20250826130329.GX4067720@noisy.programming.kicks-ass.net>
- <6080e45d-032e-48c2-8efc-3d7e5734d705@arm.com>
- <CAP-5=fXF2x3hW4Sk+A362T-50cBbw6HVd7KY+QEUjFwT+JL37Q@mail.gmail.com>
+	id 1urDzg-0000000F9o2-37Io;
+	Wed, 27 Aug 2025 11:07:08 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1urC8h-0000000Emuf-3a3m;
+	Wed, 27 Aug 2025 09:08:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756285698;
+	bh=fSEDJQdHU1SuscOgEMkZ22GTdBhS9AvlLkV6KIF1DFA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=qiFIVQqccBmTMj7g0Qc1tuVme7cOdQGaqzDe+iL1rUuEMp75uOmDTuz3RUloFl6jB
+	 8ClcX+NUqm9bQ8IQr8EfFM1+Uhnn1qktAyQsqHX39IE7G41QfJdMFzsbrZsEqa2m8P
+	 di1U3LentnQTTwWq2/KcHeFihisXZ6wt7A0k3YXjYFF1hRbSEXrfY89+AD36rZiVHG
+	 N2Sn3zWLfti6BZRejws8sa0tTVsF/BvSe2x3vBON/3ARtNgb0r6FD1lGH0V6ipSTF/
+	 HTqlv9zqnAHKNBR1e04VaWMg54sKV39I+Pzm8ydzVq6ctDEAbKl7qVeNx8tJbgqCjD
+	 p2VHhxwkXLCgg==
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4be:99b9:5069:3bef])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DA8D017E0FC2;
+	Wed, 27 Aug 2025 11:08:17 +0200 (CEST)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	nicolas.dufresne@collabora.com,
+	jgg@ziepe.ca,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org
+Cc: iommu@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com,
+	linux-media@vger.kernel.org,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 5/7] media: verisilicon: AV1: Restore IOMMU context before decoding a frame
+Date: Wed, 27 Aug 2025 11:08:01 +0200
+Message-ID: <20250827090809.34555-6-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250827090809.34555-1-benjamin.gaignard@collabora.com>
+References: <20250827090809.34555-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAP-5=fXF2x3hW4Sk+A362T-50cBbw6HVd7KY+QEUjFwT+JL37Q@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_011850_786207_B56C2E3C 
-X-CRM114-Status: GOOD (  24.85  )
+X-CRM114-CacheID: sfid-20250827_020820_040672_77533615 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,46 +84,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBBdWcgMjYsIDIwMjUgYXQgMTE6NDg6NDhBTSAtMDcwMCwgSWFuIFJvZ2VycyB3cm90
-ZToKPiBPbiBUdWUsIEF1ZyAyNiwgMjAyNSBhdCA4OjMy4oCvQU0gUm9iaW4gTXVycGh5IDxyb2Jp
-bi5tdXJwaHlAYXJtLmNvbT4gd3JvdGU6Cj4gPgo+ID4gT24gMjAyNS0wOC0yNiAyOjAzIHBtLCBQ
-ZXRlciBaaWpsc3RyYSB3cm90ZToKPiA+ID4gT24gV2VkLCBBdWcgMTMsIDIwMjUgYXQgMDY6MDE6
-MDRQTSArMDEwMCwgUm9iaW4gTXVycGh5IHdyb3RlOgo+ID4gPj4gSXQgbWF5IGhhdmUgYmVlbiBk
-aWZmZXJlbnQgbG9uZyBhZ28sIGJ1dCB0b2RheSBpdCBzZWVtcyB3cm9uZyBmb3IgdGhlc2UKPiA+
-ID4+IGRyaXZlcnMgdG8gc2tpcCBjb3VudGluZyBkaXNhYmxlZCBzaWJsaW5nIGV2ZW50cyBpbiBn
-cm91cCB2YWxpZGF0aW9uLAo+ID4gPj4gZ2l2ZW4gdGhhdCBwZXJmX2V2ZW50X2VuYWJsZSgpIGNv
-dWxkIG1ha2UgdGhlbSBzY2hlZHVsYWJsZSBhZ2FpbiwgYW5kCj4gPiA+PiB0aHVzIGluY3JlYXNl
-IHRoZSBlZmZlY3RpdmUgc2l6ZSBvZiB0aGUgZ3JvdXAgbGF0ZXIuIENvbnZlcnNlbHksIGlmIGEK
-PiA+ID4+IHNpYmxpbmcgZXZlbnQgaXMgdHJ1bHkgZGVhZCB0aGVuIGl0IHN0YW5kcyB0byByZWFz
-b24gdGhhdCB0aGUgd2hvbGUKPiA+ID4+IGdyb3VwIGlzIGRlYWQsIHNvIGl0J3Mgbm90IHdvcnRo
-IGdvaW5nIHRvIGFueSBzcGVjaWFsIGVmZm9ydCB0byB0cnkgdG8KPiA+ID4+IHNxdWVlemUgaW4g
-YSBuZXcgZXZlbnQgdGhhdCdzIG5ldmVyIGdvaW5nIHRvIHJ1biBhbnl3YXkuIFRodXMsIHdlIGNh
-bgo+ID4gPj4gc2ltcGx5IHJlbW92ZSBhbGwgdGhlc2UgY2hlY2tzLgo+ID4gPgo+ID4gPiBTbyBj
-dXJyZW50bHkgeW91IGNhbiBkbyBzb3J0IG9mIGEgbWFudWFsIGV2ZW50IHJvdGF0aW9uIGluc2lk
-ZSBhbgo+ID4gPiBvdmVyLXNpemVkIGdyb3VwIGFuZCBoYXZlIGl0IHdvcmsuCj4gPiA+Cj4gPiA+
-IEknbSBub3Qgc3VyZSBpZiBhbnlib2R5IGFjdHVhbGx5IGRvZXMgdGhpcywgYnV0IGl0cyBwb3Nz
-aWJsZS4KPiA+ID4KPiA+ID4gRWcuIG9uIGEgUE1VIHRoYXQgc3VwcG9ydHMgb25seSA0IGNvdW50
-ZXJzLCBjcmVhdGUgYSBncm91cCBvZiA1IGFuZAo+ID4gPiBwZXJpb2RpY2FsbHkgY3ljbGUgd2hp
-Y2ggb2YgdGhlIDUgZXZlbnRzIGlzIG9mZi4KPiAKPiBJJ20gbm90IHN1cmUgdGhpcyBpcyB0cnVl
-LCBJIHRob3VnaHQgdGhpcyB3b3VsZCBmYWlsIGluIHRoZQo+IHBlcmZfZXZlbnRfb3BlbiB3aGVu
-IGFkZGluZyB0aGUgNXRoIGV2ZW50IGFuZCB0aGVyZSBiZWluZyBpbnN1ZmZpY2llbnQKPiBjb3Vu
-dGVycyBmb3IgdGhlIGdyb3VwLgoKV2UncmUgdGFsa2luZyBzcGVjaWZpY2FsbHkgYWJvdXQgY2Fz
-ZXMgd2hlcmUgdGhlIGxvZ2ljIGluIGEgcG11J3MKcG11OjpldmVudF9pbml0KCkgY2FsbGJhY2sg
-ZG9lc24ndCBjb3VudCBldmVudHMgaW4gc3BlY2lmaWMgc3RhdGVzLCBhbmQKaGVuY2UgdGhlIDV0
-aCBldmVuIGRvZXNuJ3QgZ2V0IHJlamVjdGVkIHdoZW4gaXQgaXMgaW5pdGlhbGlzZWQuCgpGb3Ig
-ZXhhbXBsZSwgaW4gYXJjaC94ODYvZXZlbnRzL2NvcmUuYywgdmFsaWRhdGVfZ3JvdXAoKSB1c2Vz
-CmNvbGxlY3RfZXZlbnRzKCksIHdoaWNoIGhhczoKCglmb3JfZWFjaF9zaWJsaW5nX2V2ZW50KGV2
-ZW50LCBsZWFkZXIpIHsKCQlpZiAoIWlzX3g4Nl9ldmVudChldmVudCkgfHwgZXZlbnQtPnN0YXRl
-IDw9IFBFUkZfRVZFTlRfU1RBVEVfT0ZGKQoJCQljb250aW51ZTsKCgkJaWYgKGNvbGxlY3RfZXZl
-bnQoY3B1YywgZXZlbnQsIG1heF9jb3VudCwgbikpCgkJCXJldHVybiAtRUlOVkFMOwoKCQluKys7
-Cgl9CgouLi4gYW5kIHNvIHdoZXJlIGFuIGV2ZW50J3Mgc3RhdGUgaXMgPD0gUEVSRl9FVkVOVF9T
-VEFURV9PRkYgYXQgaW5pdAp0aW1lLCB0aGF0IGV2ZW50IGlzIG5vdCBjb3VudGVkIHRvIHNlZSBp
-ZiBpdCBmaXRzIGludG8gSFcgY291bnRlcnMuCgpNYXJrLgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+AV1 is a stateless decoder which means multiple AV1 bitstreams could be
+decoded at the same time using the same hardware block. Before decoding
+a frame it is needed to restore the iommu tables to avoid mixing decode
+contexts.
+
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c       | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+index e4703bb6be7c..9e7a7d9ad58a 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+@@ -5,6 +5,9 @@
+  * Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+  */
+ 
++#include <linux/iommu.h>
++#include <linux/vsi-iommu.h>
++
+ #include <media/v4l2-mem2mem.h>
+ #include "hantro.h"
+ #include "hantro_v4l2.h"
+@@ -2095,12 +2098,23 @@ rockchip_vpu981_av1_dec_set_output_buffer(struct hantro_ctx *ctx)
+ 	hantro_write_addr(vpu, AV1_TILE_OUT_MV, mv_addr);
+ }
+ 
++static void rockchip_vpu981_av1_restore_iommu(struct hantro_ctx *ctx)
++{
++	struct iommu_domain *domain;
++
++	domain = iommu_get_domain_for_dev(ctx->dev->v4l2_dev.dev);
++	if (domain)
++		vsi_iommu_restore_ctx(domain);
++}
++
+ int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct vb2_v4l2_buffer *vb2_src;
+ 	int ret;
+ 
++	rockchip_vpu981_av1_restore_iommu(ctx);
++
+ 	hantro_start_prepare_run(ctx);
+ 
+ 	ret = rockchip_vpu981_av1_dec_prepare_run(ctx);
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
