@@ -4,82 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 132A5CA0EFF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 08:04:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB536C8303F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 08:08:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=urUP2P8jXrl9hHmc2kIP3nZ8EzUQes3lrNz7Iwo13U4=; b=Ayr959095C8IdI
-	K5AK+RG5RLKvfv4s4uUy7tE8YGRrgyiKIpYBKTe1L8eaI/0UEqDSDFvyU/Iu4n9koMhs0d/KuEPTe
-	E6S32c9XMqbiUgkMNJuJlyaEFnZ1Bh/u1jbrG2S1Pd/WJVVriRP/3xudXUSBG3qn8bedmDmwUO9YM
-	QayHin+5w132U1OYVAERUioq2Nd7OhRmNz2geIkIdCGTxZR/9sVFPvwRVRX7qA5VHWWUxfoTDuDZH
-	Ps9UqEPRZziSF5tkvGJZijJnyQe9XTADW9ybKD1lq44w80l5BitllmzSZMRs8U8/nWvYXY/Q94LI7
-	T15JbZdFe9eT8TAHGXcA==;
+	List-Owner; bh=vLD1JX+f2pMmNfq0UZF3eukBLnTFd03/luqlezZRfn0=; b=J942H99Ag3NLom
+	zxzS3mRktc7am0+kswS8TniOogslByVs73VA1igCE+u0CLurF84vuBFncvmbHFn1bGLZOlHMjYO3D
+	LfeXEwb48LrDPmJyFJVmXKZQolIZkRHgy17qQYn75Mk+N9UAlCvuE01rRjezIbFjAgnaQZ2AfDXfu
+	ODRW6iIu+vj1GWesLQ4QbnPxabSCHkdXDJinLlbTA3cRweh2ZL5NGDhkE8ojzIc9OfUnH3WotanhM
+	LDAlT5y1UQ2eoQap8MPMntz/EKNy/nymeLwLV+5GzctcHHIg2bmFweuntKC5dMwizg3g1WyRxPtGE
+	uXSqnZ+0+PDuSTjJ5i8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urB9I-0000000Ea3O-0g5W;
-	Wed, 27 Aug 2025 08:04:52 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urB9F-0000000Ea1O-34mQ;
-	Wed, 27 Aug 2025 08:04:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=H5XGGOqUvDfBDNoA9c9ChXTIWyKSBsmEcQMHpNsNPDE=; b=mtrPPwqaUs12AGu5L+ainiAjWo
-	LG0fGbIszK398JZ0KY0dLQFqHUEgpa78WPcICY29z9haXF2gu+qet2U9oar/B9EYUcWGS5mDVmVQ5
-	FfdRptzZ2FTbaPLUYUE/DLwXpS2IBNRzVirIN+r0eD9Vx3WLDIuiC+j04MoDiy8oiUvghbsyFgJl6
-	xhHxZtck6KVDZTQ637deyTTvZvoCndnNCfAUU1vzr/vdCDtsvL4+O1XywZZrjEQ3ksrhSd67FgZUX
-	o6tiItZt/sCBeB/pcYbqDQThCgSrW42QOZe/NgxaFzLAMuSytJPKBkiLAGsDanxEmkdVRs78asGSa
-	ZB48o00Q==;
-Received: from [213.244.170.152] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1urB8s-0007SN-IS; Wed, 27 Aug 2025 10:04:26 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Yury Norov <yury.norov@gmail.com>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- Shreeya Patel <shreeya.patel@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Shawn Lin <shawn.lin@rock-chips.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Krzysztof =?UTF-8?B?V2lsY3p5xYRza2k=?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>, Qin Jian <qinjian@cqplus1.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
- Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Subject: Re: [PATCH v3 20/20] phy: rockchip-pcie: switch to FIELD_PREP_WM16 macro
-Date: Wed, 27 Aug 2025 10:04:24 +0200
-Message-ID: <5143535.KlZ2vcFHjT@phil>
-In-Reply-To: <20250825-byeword-update-v3-20-947b841cdb29@collabora.com>
-References: <20250825-byeword-update-v3-0-947b841cdb29@collabora.com>
- <20250825-byeword-update-v3-20-947b841cdb29@collabora.com>
+	id 1urBCS-0000000Eb1Z-3aUm;
+	Wed, 27 Aug 2025 08:08:08 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1urB9i-0000000EaJ8-1x34;
+	Wed, 27 Aug 2025 08:05:19 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 3E3641691;
+	Wed, 27 Aug 2025 01:05:09 -0700 (PDT)
+Received: from J2N7QTR9R3 (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D650B3F694;
+	Wed, 27 Aug 2025 01:05:07 -0700 (PDT)
+Date: Wed, 27 Aug 2025 09:04:46 +0100
+From: Mark Rutland <mark.rutland@arm.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: peterz@infradead.org, mingo@redhat.com, will@kernel.org,
+	acme@kernel.org, namhyung@kernel.org,
+	alexander.shishkin@linux.intel.com, jolsa@kernel.org,
+	irogers@google.com, adrian.hunter@intel.com,
+	kan.liang@linux.intel.com, linux-perf-users@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-alpha@vger.kernel.org,
+	linux-snps-arc@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
+	linux-csky@vger.kernel.org, loongarch@lists.linux.dev,
+	linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+	linux-s390@vger.kernel.org, linux-sh@vger.kernel.org,
+	sparclinux@vger.kernel.org, linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, dmaengine@vger.kernel.org,
+	linux-fpga@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+	dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+	intel-xe@lists.freedesktop.org, coresight@lists.linaro.org,
+	iommu@lists.linux.dev, linux-amlogic@lists.infradead.org,
+	linux-cxl@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-riscv@lists.infradead.org
+Subject: Re: [PATCH 18/19] perf: Introduce positive capability for raw events
+Message-ID: <aK68Ht03vZ0G3Xpt@J2N7QTR9R3>
+References: <cover.1755096883.git.robin.murphy@arm.com>
+ <542787fd188ea15ef41c53d557989c962ed44771.1755096883.git.robin.murphy@arm.com>
+ <aK259PrpyxguQzdN@J2N7QTR9R3>
+ <015974a4-f129-4ae5-adf9-c94b29f0576a@arm.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <015974a4-f129-4ae5-adf9-c94b29f0576a@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_010449_763495_6606416B 
-X-CRM114-Status: GOOD (  15.89  )
+X-CRM114-CacheID: sfid-20250827_010518_583736_FA2FA692 
+X-CRM114-Status: GOOD (  38.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,33 +77,132 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pm@vger.kernel.org, netdev@vger.kernel.org, llvm@lists.linux.dev, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, linux-pci@vger.kernel.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTW9udGFnLCAyNS4gQXVndXN0IDIwMjUsIDEwOjI4OjQwIE1pdHRlbGV1cm9ww6Rpc2NoZSBT
-b21tZXJ6ZWl0IHNjaHJpZWIgTmljb2xhcyBGcmF0dGFyb2xpOgo+IFRoZSBlcmEgb2YgaGFuZC1y
-b2xsZWQgSElXT1JEX1VQREFURSBtYWNyb3MgaXMgb3ZlciwgYXQgbGVhc3QgZm9yIHRob3NlCj4g
-ZHJpdmVycyB0aGF0IHVzZSBjb25zdGFudCBtYXNrcy4KPiAKPiBUaGUgUm9ja2NoaXAgUENJZSBQ
-SFkgZHJpdmVyLCB1c2VkIG9uIHRoZSBSSzMzOTksIGhhcyBpdHMgb3duIGRlZmluaXRpb24KPiBv
-ZiBISVdPUkRfVVBEQVRFLgo+IAo+IFJlbW92ZSBpdCwgYW5kIHJlcGxhY2UgaW5zdGFuY2VzIG9m
-IGl0IHdpdGggaHdfYml0ZmllbGQuaCdzCj4gRklFTERfUFJFUF9XTTE2LiBUbyBhY2hpZXZlIHRo
-aXMsIHNvbWUgbWFzayBkZWZpbmVzIGFyZSByZXNodWZmbGVkLCBhcwo+IEZJRUxEX1BSRVBfV00x
-NiB1c2VzIHRoZSBtYXNrIGFzIGJvdGggdGhlIG1hc2sgb2YgYml0cyB0byB3cml0ZSBhbmQgdG8K
-PiBkZXJpdmUgdGhlIHNoaWZ0IGFtb3VudCBmcm9tIGluIG9yZGVyIHRvIHNoaWZ0IHRoZSB2YWx1
-ZS4KPiAKPiBJbiBvcmRlciB0byBlbnN1cmUgdGhhdCB0aGUgbWFzayBpcyBhbHdheXMgYSBjb25z
-dGFudCwgdGhlIGluc3QtPmluZGV4Cj4gc2hpZnQgaXMgcGVyZm9ybWVkIGFmdGVyIHRoZSBGSUVM
-RF9QUkVQX1dNMTYsIGFzIHRoaXMgaXMgYSBydW50aW1lCj4gdmFsdWUuCj4gCj4gRnJvbSB0aGlz
-LCB3ZSBnYWluIGNvbXBpbGUtdGltZSBlcnJvciBjaGVja2luZywgYW5kIGluIG15IGh1bWJsZSBv
-cGluaW9uCj4gbmljZXIgY29kZSwgYXMgd2VsbCBhcyBhIHNpbmdsZSBkZWZpbml0aW9uIG9mIHRo
-aXMgbWFjcm8gYWNyb3NzIHRoZQo+IGVudGlyZSBjb2RlYmFzZSB0byBhaWQgaW4gY29kZSBjb21w
-cmVoZW5zaW9uLgo+IAo+IFRlc3RlZCBvbiBhIFJLMzM5OSBST0NLUHJvNjQsIHdoZXJlIFBDSWUg
-c3RpbGwgd29ya3MgYXMgZXhwZWN0ZWQgd2hlbgo+IGFjY2Vzc2luZyBhbiBOVk1lIGRyaXZlLgo+
-IAo+IFNpZ25lZC1vZmYtYnk6IE5pY29sYXMgRnJhdHRhcm9saSA8bmljb2xhcy5mcmF0dGFyb2xp
-QGNvbGxhYm9yYS5jb20+CgoKUmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRl
-Y2guZGU+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+On Tue, Aug 26, 2025 at 11:46:02PM +0100, Robin Murphy wrote:
+> On 2025-08-26 2:43 pm, Mark Rutland wrote:
+> > On Wed, Aug 13, 2025 at 06:01:10PM +0100, Robin Murphy wrote:
+> > To bikeshed a little here, I'm not keen on the PERF_PMU_CAP_RAW_EVENTS
+> > name, because it's not clear what "RAW" really means, and people will
+> > definitely read that to mean something else.
+> > 
+> > Could we go with something like PERF_PMU_CAP_COMMON_CPU_EVENTS, to make
+> > it clear that this is about opting into CPU-PMU specific event types (of
+> > which PERF_TYPE_RAW is one of)?
+> 
+> Indeed I started with that very intention after our previous discussion, but
+> soon realised that in fact nowhere in the code is there any definition or
+> even established notion of what "common" means in this context, so it's
+> hardly immune to misinterpretation either.
+
+We can document that; it's everything less than PERF_TYPE_MAX:
+
+	enum perf_type_id {
+		PERF_TYPE_HARDWARE                      = 0, 
+		PERF_TYPE_SOFTWARE                      = 1, 
+		PERF_TYPE_TRACEPOINT                    = 2, 
+		PERF_TYPE_HW_CACHE                      = 3, 
+		PERF_TYPE_RAW                           = 4, 
+		PERF_TYPE_BREAKPOINT                    = 5, 
+
+		PERF_TYPE_MAX,                          /* non-ABI */
+	};
+
+... and maybe you could use "PERF_PMU_CAP_ABI_TYPES" to align with that
+comment?
+
+> Furthermore the semantics of the cap as it ended up are specifically
+> that the PMU wants the same behaviour as if it had registered as
+> PERF_TYPE_RAW, so having "raw" in the name started to look like the
+> more intuitive option after all (plus being nice and short helps.)
+
+I appreciate the shortness, but I think it's misleading to tie this to
+"RAW" specifically, when really this is a capabiltiy to say "please let
+me try to init any events for non-dynamic types, in addition to whatever
+specific type I am registered with".
+
+> If anything, it's "events" that carries the implication that's proving hard
+> to capture precisely and concisely here, so maybe the answer to avoid
+> ambiguity is to lean further away from a "what it represents" to a "what it
+> actually does" naming - PERF_PMU_CAP_TYPE_RAW, anyone?
+
+I'm happy with TYPE in the name; it's just RAW specifically that I'm
+objecting to.
+
+> > Likewise, s/is_raw_pmu()/pmu_supports_common_cpu_events()/.
+> 
+> Case in point: is it any more logical and expected that supporting common
+> CPU events implies a PMU should be offered software or breakpoint events as
+> well? Because that's what such a mere rename would currently mean :/
+
+Yes, I think it is.
+
+> > > ---
+> > > 
+> > > A further possibility is to automatically add the cap to PERF_TYPE_RAW
+> > > PMUs in perf_pmu_register() to have a single point-of-use condition; I'm
+> > > undecided...
+> > 
+> > I reckon we don't need to automagically do that, but I reckon that
+> > is_raw_pmu()/pmu_supports_common_cpu_events() should only check the cap,
+> > and we don't read anything special into any of
+> > PERF_TYPE_{RAW,HARDWARE,HW_CACHE}.
+> 
+> OK, but that would then necessitate having to explicitly add the cap to all
+> 15-odd other drivers which register as PERF_TYPE_RAW as well, at which point
+> it starts to look like a more general "I am a CPU PMU in terms of most
+> typical assumptions you might want to make about that" flag...
+> 
+> To clarify (and perhaps something for a v2 commit message), we currently
+> have 3 categories of PMU driver:
+> 
+> 1: (Older/simpler CPUs) Registers as PERF_TYPE_RAW, wants
+> PERF_TYPE_RAW/HARDWARE/HW_CACHE events
+> 2: (Heterogeneous CPUs) Registers as dynamic type, wants
+> PERF_TYPE_RAW/HARDWARE/HW_CACHE events plus events of its own type
+> 3: (Mostly uncore) Registers as dynamic type, only wants events of its own
+> type
+
+Sure, but I think that separating 1 and 2 is an artificial distinction,
+and what we really have is:
+
+(a) Wants to handle (some of) the non-dynamic/common/ABI types (in
+    addition to whatever specific type it was registered with). Needs to
+    have a switch statement somewhere in pmu::event_init().
+
+(b) Only wants to handle the specific type the PMU was registered with.
+
+> My vested interest is in making category 3 the default behaviour, given that
+> the growing majority of new drivers are uncore (and I keep having to write
+> them...) 
+
+Yes, we're aligned on that.
+
+> However unclear the type overlaps in category 1 might be, it's been
+> like that for 15 years, so I didn't feel compelled to churn fossils like
+> Alpha more than reasonably necessary. Category 2 is only these 5 drivers, so
+> a relatively small tweak to distinguish them from category 3 and let them
+> retain the effective category 1 behaviour (which remains the current one of
+> potentially still being offered software etc. events too) seemed like the
+> neatest way to make progress.
+
+I just think we should combine 1 and 2 (into categroy a as above), since
+that removes the need to treat RAW specially going forwards.
+
+> I'm not saying I'm necessarily against a general overhaul of CPU PMUs being
+> attempted too, just that it seems more like a whole other side-quest, and
+> I'd really like to slay the uncore-boilerplate dragon first.
+
+I think that adding the cap to those 15 PMUs would take less time than
+it has taken me to write this email, so I do not understand the
+objection.
+
+Mark.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
