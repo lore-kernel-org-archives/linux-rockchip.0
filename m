@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8750CA0EFF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 17:08:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58A76CA0EFF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 17:08:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kbPQRtidPOjVIaid80Gj9ZTH+dif595C70asjcDn934=; b=zXwIa5mELCyqCX
-	vc3pw3PMZ5Ol4h9OKH16qxzrv6gkvgLyw+bWmZ/F4DxrXMVOGLdN6KhVCJge9Bwogj6cuzYTOK7W9
-	i57zlV56vg4M76Xw4gilxep4zN92qqbex0Lc5FKeGP/ffCty4ewtlFXs7HMZttCC0uskfUM6rskmz
-	623Ro5WqNmIKVTi9rJHMMDHZgD0p2gYu7GtKpz9f8ZqlDTHSfszPmyyvqC+ri8+BjePYNvb5CFbUI
-	/UfFngCZGb5iuM81MDIccbemsyj8dm7sUymbtAFgj2IA/I8ongZEzC/hXFjyL81CKnYqw53HBzLqM
-	cjY11GeVX53vq05YNcXg==;
+	List-Owner; bh=GCP2d4xWWVx/Ju8OAnZk66R0ghQh3OZ/raz2uxrc7n0=; b=CPSJs17AYAtif/
+	5lwBxB02y8+YXAnX3LenyrxyMbMmcnIAuPoRJZExH0G+wh1sVLV0rzBXui1fGpRiCuTuutCtZSMUk
+	AmhmFgaZ04og3YhKLcBSVPcEPLDjSvA9WPdUEtA0Dku1kwyNOXSLXLZhN0d+wxd37auAs40IOu5GR
+	qBlyQCtpYf3Z1cBQzTK3xz3ipfOxWxCBbG29YRxapPCOlMBimqUN/Zg5E1YaNMtAyMKc592Er7jt9
+	5AwiZCO9lu1cPhxQV+ZdFhCC99hFObSHqafOKfO5ZHKufzQZgUhlQukqkRwyd0pXbUhvzxS8CZX3f
+	k+qrd5kMYGlBt7ZO7mig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urJdV-0000000GGG9-3jpQ;
-	Wed, 27 Aug 2025 17:08:37 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1urJdW-0000000GGGF-0eOM;
+	Wed, 27 Aug 2025 17:08:38 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urH7G-0000000Fl5G-1BPm;
-	Wed, 27 Aug 2025 14:27:11 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-45a1b0d224dso36720135e9.3;
-        Wed, 27 Aug 2025 07:27:09 -0700 (PDT)
+	id 1urHEv-0000000FmDl-1qP9;
+	Wed, 27 Aug 2025 14:35:06 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-3cd59c5a953so272494f8f.0;
+        Wed, 27 Aug 2025 07:35:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1756304828; x=1756909628; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1756305304; x=1756910104; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=OlWIdPkGg4S2fo5kB16i5sKgEKgxu7PrfmJLsX5dU8c=;
-        b=KnYva5N1V7XvUc3Ja1q+CY0KP8jIpL/HG4UHr+LkwimLlFFuI95fM2OqVQHd/fs8LU
-         OcFaLw4JEUvMSyu2NkCCzf8zs3IsfPh+wUPxW+w01Fwscs1iRxyALr+2cLMmlfVmUKZf
-         EBrwiseqOE7rb1bkv35/ETtiioYzU1VHahn33kuq+a8NxmzE0RyYobFISIvHQxPSdOw7
-         XQCDJhPfMR6br6AmQeFznl/t3OW8DzljBXgLgIpBFoJj8i2VuFrMD57fwMYL2aHclgGD
-         jsKmEUqsABFmGc5GzBx/4yn0EJTH7ciWiBaDvZZi0QlURG7kOCR7zc3Ha5zVo5KoyL1U
-         mkKw==
+        bh=F1BUyJVLso5e3sw9oVrEXxJTuPzZqZWk1jkcADSRdMY=;
+        b=BEQ3GAlg1EkatbT146T+cuIPoFEB2Y3cyzg5OeyS+zQIAIqpPzQ5GYgG61T/h35yIl
+         ypt0peXyN0apte80et6DNBywQ+dHHcfMPetq97d4vjZwkIm3dFaP7ooemHPt3iCluNsF
+         zw9guvGoXIxdEcp8Ia87F+yvxId18xOYiVL7LN9sQUGACyrT4C6VpvxIsaUzhgECzrJf
+         gWZ8UoCRdLLZ7IiAtVvvRRd7vTVCnpu4ApqNx/RptRj7TmLWXxh/DkbiJgCk2Rcpr3zf
+         iO6+31wHiRA/0JPenN7Ngz6E8HWOWPvJYyZe83LMUgSckNiYEs6oq92rK3FPyCADrC5N
+         6ORA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756304828; x=1756909628;
+        d=1e100.net; s=20230601; t=1756305304; x=1756910104;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=OlWIdPkGg4S2fo5kB16i5sKgEKgxu7PrfmJLsX5dU8c=;
-        b=qV1n6JHghrjApz3+mUvC1m9dnIJIY0vfpLI+FyyEN8MeE8lfYbIWAhZruTKACkvzJa
-         ItLVaiW9l0M+YcgK0Uip2e2jev5gnX16pt/8BSKHhhDev64dMETfzzHMf4LrfdQrZHXG
-         91fHELLSoXZkQLqLkf01qvfB9ffj13ulxlQ6/SFin/d4i7/XwgtSdEf47XG4PIaIVAm6
-         srBy95bzxNzidmYgmrkvOQN8HfkbE1YFZuH8Mu/xRMLc48EXibM+aL3wZpRMTw8xOHcD
-         4CNF2sakaRn9z2OqHyxSP52D2rewneVqgLxFLfvNGU0frQc73fKAgARpZ9Ayb2WG6gQT
-         VetA==
-X-Forwarded-Encrypted: i=1; AJvYcCUYbcrMt0GCnwy18V+39P6QZe4Q7DYL3L6Ju2sX1MW5fZj4Ju3F9hIJhGR1IGcSfAJTgGmyX04a7XL49NZoHGMG@lists.infradead.org, AJvYcCVBDkin7fM/m2jiTzMXIBmkS773IoazKKX4rfQkzJbMY/2xqPhiIPgNq7FC61bs3sd9awN29n6fsWEMVbh7R/c=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxINcR5463l49EXiNMJvPvljg4Zqwuja+fvl5rXhC9tUu8X98hL
-	vfBhJq3LL0WE5AlMYsf7ZdkfefzFavScJ7gFSoICmiDiuNEK2JWTy84Wu3rrQF6+
-X-Gm-Gg: ASbGnctP95pjQwAHRhPND84Dldt1tt/1QmYwlTspMrXNlxIzW4aa10op6ARK/3rT9eF
-	zlwlIDaKn2EvatQOon3m04xKjw5XtzcAb3IQzbF963liWzXN5NyAS/gGVl3ILCbDQ2qReZYwpGf
-	EFoRIH8BhXvKT/g3GzfZ+0/GOx2la4BhYph64Q0OVekttTgIRY25mJKUigFaTslUEpsqEKa1t+O
-	5d+bkOq0hI+Kq98q9peREdaFJZf0Qpl+GM0oMr8ey1V7S6Y12MOWhUWfX/sCD/IvbCYoKYRZPd3
-	69EgHjF0tkyC8t+P0WwPyi+ESeNYvyG7NKeOmblcR6POj+EUOFStHtu5f+JqQV+2vwbcyFaE1/F
-	urdrzJiC3SQw1J3GGkCPkUbVy0y91oZ8hANrPXtPtCkB9AgH8yQG3s6LmhLGaOLx+Ieoz0NAER6
-	ZKkjhs9aFvfM+UY3+nwHtqtt88eKOGsK/FGck7CHVSq6aCU+a3RsCh
-X-Google-Smtp-Source: AGHT+IFNCwrMfbz7LD21TXZtyQIGGdT67AQlxP0BxYWJyMfjYOfyk6JYYh10ZJLjj2OlUZIF5cWMxA==
-X-Received: by 2002:a05:600c:1f8f:b0:456:1a41:f932 with SMTP id 5b1f17b1804b1-45b517b9a7bmr143052535e9.22.1756304828087;
-        Wed, 27 Aug 2025 07:27:08 -0700 (PDT)
+        bh=F1BUyJVLso5e3sw9oVrEXxJTuPzZqZWk1jkcADSRdMY=;
+        b=vF0Nj0Ulz3Y3Sd2Y1gmtNIY1ggOl0ukZfhvF2gC8G0fLiseyY+rOYbA3hhmdAKka38
+         IH2pvr2pyekcZxfbC65XcSUJj0FyyPY5gPHm2qu8Yyzie1mrA6O6yt/xgq8AGp9NlkFu
+         wBeSHyMUfvrjd9aLTWt/z69o4HP87gL3MxvWrNd/FIq4SWwdZoa02SWnp7ykfhSQpaiU
+         1j4geIc0Vmdx8mlAMM/iDpq/DlQyBssqlkiwm/9aun4RgeCpLTkom5Pz/ehxkXPkYSOu
+         /B+xGwpObrmJbBO4hKRfl1dutpPxo+ulFiZkxvKRNyvIa2be6qm806F1VLyB7+dwthHz
+         NG7w==
+X-Forwarded-Encrypted: i=1; AJvYcCU90K7rt5C1/GW+KsSLnaCyvQf1TD9ID6j2mJQNaiAhpyaT63AY5kbkBEmRNJXrrcVu+YTDKONt34BRHQEwBuw=@lists.infradead.org, AJvYcCWvhQZpx/F2LQryfDjnvMXOvirxeHkg1QKuSP7W3pO2e635ILRfDIZBO2TwboAxeTFnFWPXPGdZoMk4ZatHvLqZ@lists.infradead.org
+X-Gm-Message-State: AOJu0YwHYbwzCByRnZbPAqRRuRd8OXaoMG6GNi/ssbQeWMFBRoJ01Tjv
+	oiWjgC5RAc91FOVGL4SWAtLLEUS+blUIUYf0hhUd0EkgqMNIJ6CKnWHw
+X-Gm-Gg: ASbGncsZSKm2DiW0qil62ClDmhm/68GjlJ8ZJX0ebbieAwueTpqZEt3XsOe+or4L5Lv
+	6Sa7E+fuJCvlHKPMOo06ODSwkDLKzPnrxOJUMSkLtJlYj/kO1VxZEiw3SwWfTnSCxm43XvTQEUr
+	usnYCPfJ4nTsKWR2eK5IwkbhpAZv2XPgQV/5PMrHj+j+w/SQnXgnLHs/czDl8LxjQbrjetuv9wF
+	XBePUK6LxxnmAJgf0uK5rE+3mpB+YlrxWV+kkCbFHP4/renj7W7dTQDs3qQkrp/LJ6A5zUn0dMe
+	63hGrqB9Ud+1t0hPRguttxAP5UWqppM21srPoA31BOB/wfwCiLlEV+rQF1S3AD9QLBq/AfNtKo8
+	OvBpjCXtsarVDWJ6P1Iz9KrEfxAY8wWW4XZ5TcthAR/rv+Klo5RdUhXegfZ0dSJryQeiBavIzn+
+	ppmGsk/RkcTpwDvZ5e0KYcmkEOjY6r1d3sKG1uJJeW68S+nJal1CnhObA+Xd1/L7E=
+X-Google-Smtp-Source: AGHT+IGkKJ1XhDqK4M+m0K4FkEys/uX4rfEbc6c/Gcwva4PyVBgFs99pGKTiljPLXjMWH46PmsM14Q==
+X-Received: by 2002:a5d:5d08:0:b0:3c5:20d3:6041 with SMTP id ffacd0b85a97d-3c5dc54071emr16944872f8f.41.1756305303612;
+        Wed, 27 Aug 2025 07:35:03 -0700 (PDT)
 Received: from cypher.home.roving-it.com (7.9.7.f.b.1.3.0.b.8.f.0.9.e.0.0.1.8.6.2.1.1.b.f.0.b.8.0.1.0.0.2.ip6.arpa. [2001:8b0:fb11:2681:e9:f8b:31b:f797])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3c70e4b9e1fsm22735499f8f.14.2025.08.27.07.27.07
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3c70e4ba046sm22750178f8f.1.2025.08.27.07.35.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Aug 2025 07:27:07 -0700 (PDT)
+        Wed, 27 Aug 2025 07:35:03 -0700 (PDT)
 From: Peter Robinson <pbrobinson@gmail.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -77,16 +77,18 @@ To: Rob Herring <robh@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
+	linux-kernel@vger.kernel.org,
+	Dragan Simic <dsimic@manjaro.org>,
+	Ondrej Jirman <megi@xff.cz>
 Cc: Peter Robinson <pbrobinson@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: Add vcc-supply to SPI flash on Pinebook Pro
-Date: Wed, 27 Aug 2025 15:26:57 +0100
-Message-ID: <20250827142705.1644267-1-pbrobinson@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Add vcc-supply to SPI flash on Pinephone Pro
+Date: Wed, 27 Aug 2025 15:34:58 +0100
+Message-ID: <20250827143501.1646163-1-pbrobinson@gmail.com>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_072710_332071_9F8E9A6F 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20250827_073505_476368_D36C882B 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,28 +105,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As described in the pinebookpro_v2.1_mainboard_schematic.pdf page 10,
-he SPI Flash's VCC connector is connected to VCC_3V0 power source.
-
-This fixes the following warning:
+As documented in the PinephonePro-Schematic-V1.0-20211127.pdf,
+page 11, the SPI Flash's VCC pin is connected to VCC_1V8 power
+source. This fixes the following warning:
 
   spi-nor spi1.0: supply vcc not found, using dummy regulator
 
-Fixes: 5a65505a69884 ("arm64: dts: rockchip: Add initial support for Pinebook Pro")
 Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index 5a8551d9ffe47..b33a1509a8e93 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -959,6 +959,7 @@ spiflash: flash@0 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+index be90e049a302c..24e4365a2e588 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+@@ -772,6 +772,7 @@ flash@0 {
+ 		compatible = "jedec,spi-nor";
  		reg = <0>;
- 		m25p,fast-read;
  		spi-max-frequency = <10000000>;
-+		vcc-supply = <&vcc_3v0>;
++		vcc-supply = <&vcc_1v8>;
  	};
  };
  
