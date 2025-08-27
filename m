@@ -4,186 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D0A0CA0FF7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEAD8CA0FFB
 	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Aug 2025 00:23:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dlIkKxGFPZfg3KeXBUIMFtbwf3EsOlPWS4c1bI3zwDM=; b=b3KuBtDqGqUQmU
-	9R7JVoZRrng6G/6t9pw7t8KKDI8rLTbEKU5EmyJ91LBCq8yqoi4yfDia9ZOHHVCc8JIQoiy2EDn6z
-	EKv50k/wiXsmDPujT3rGH66jdn6CiipIs2Chp5/RYwLJhYU7trTsFc4epawxBJgTz9Ry9QcNsCeue
-	MXnoFCBgHGPll9XX0yMRCL8qZ+D/BFv4PSuebj3EobnusNuQy8L5lkd3FjlWzRE3ZdrbeCEveBeaf
-	xSzdblSRmNn1Az+XNC6EAlvHKlGNu/CrUinc39C7VwqwzgBKWKbVqoWnI7pGNaQaxIRckv57q0lHO
-	7gQun//G4sb4zG8k98Uw==;
+	List-Owner; bh=mDMHMBIbiUBTs6qFKanhMUKBd/VaaaiyVb7UA8LtM88=; b=wPnqNQ29GFrMDM
+	+vO7MA4pWa9ApgMj+HZrLSISlHp+k7MFKYAcWbAiJbpJpjNmN+bzLTO6Tii3UVIUgKEkn8k0ldZ1P
+	DFzLVT5ITc2w+HFMi8zCkvGZzcmVMLDvtuCBUrd14ZOF+kHXmyaG7uiCKftPyju15mK98bsd/ynG9
+	SsGBQVaE3Otb3bwOkn2f40TtSmZmvipy3QJptHwqbS0Z9v+WYwT09Zi+m7hDGhgRuAa60UEAG/m4c
+	M+ty4yZNfpA1r4qWCcEbL1kXYbGPckI4qA5lcsiLseFhU54hMhRS1NepBPjXLhUVyhYFN4701Rsxs
+	rqMFYm4VyuOSxQYCqWeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urQQX-0000000HLdQ-1apO;
-	Thu, 28 Aug 2025 00:23:41 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1urQQV-0000000HLbH-192o;
+	Thu, 28 Aug 2025 00:23:39 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urOcR-0000000H66S-425S
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 27 Aug 2025 22:27:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=coI2WbZxINU7lzeYxnfoWTr2sAMMNa2PgUU+5RmzHvA=; b=OJDCZbkmdtBi12I4g82bIeu4md
-	XG11xVqKJUdtVsJagNbCobDYGvRht1Fk+MAcHayoQmgb8tICnlyKwWUBh8uZBOEd2KiX9nzvJpH8i
-	hoKBaIOvNl+JhTqVuMLK/0mgkjU1ONkkmDrnyI/eMYituQoOSHw9I89Jq543gqZakUKf5BLtnBImT
-	sP3uI9+N7ug/Sm7ZKfsjMGfLJowQcpTQb0sm3NU55/hAdektn1tA2vJzxVuSm4PdtE4aZ+9+Tys2o
-	Xqn/YhOKYuyItB8PpczqpWjoS+FIPiM4urEScJZY0ojpk7ta4cozaFqITkvMpW3yDMH2GVzWB5jrB
-	+vwXf1xg==;
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urOc6-00000002WZH-0CLm
+	id 1urOZg-0000000H5j7-1KB5
 	for linux-rockchip@lists.infradead.org;
-	Wed, 27 Aug 2025 22:27:33 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57RGDUpH029068
-	for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 22:27:25 GMT
+	Wed, 27 Aug 2025 22:25:01 +0000
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57RG6Jtx031409
+	for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 22:24:59 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=coI2WbZxINU7lzeYxnfoWTr2
-	sAMMNa2PgUU+5RmzHvA=; b=N3nSP7Gc5TMt+IIn+qZ9uGuYzVafaBp1ac2JStUp
-	K7rRbNrItFfkrE4pn3NSwfK3EJKU+G54f3mtlHj6FVmTiyk34UhAcW763bLSlDn6
-	lE8nZPvaSrrbDD1z8NV8GMsE+EejI9+PUuTSSHiKEagz9bQN6sfvpB5/sPOKcU3B
-	hixfH4Wr/PN3um5++i/3CX9NXOAeLZ9SXBULzqfYPbTbm7cJ0YT0lWqwC5hM7lYu
-	l1sOWd/H9mcZguQFv0ANnTeWef+C8qNF9wb0KmfE+GAKuhHp+eDVTrDi1PKjuj3Y
-	LyVxJjOjvzkfxEw8ajNN66YMc9YGBbuSSUh3zv0iLcgaEQ==
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48q5ume8ne-1
+	:references:subject:to; s=qcppdkim1; bh=wMabvnMiY6aI3QTnrZr9pq+N
+	RKVIz1RxP9V/JHunYhU=; b=gS4ZBzmCgDeh85coVTvtc5oGJFI2VEr0B4boNmF1
+	O3qPXL7qBbiAVuTr52jGhMBV2zit0RdQ5BLv12Fl+ToaZkvNk+/1F0xHIdrwbb1J
+	wmQxWz6cVISIN9+voNHKu43ytyrWMVYcVBM+BS0zM8uBNyiBQvJhoLQgZ5chaMi0
+	kNfVSdHggJV6j0kxpQnGhrU+rHeMZL+IDFphUzlfQdbC2LQ8TKO68RRBFZkn+mPM
+	vvZN+NnKqUQIHRSN5Yg5A6scSFSLnHBxfQFuoaKEnc5sx9unDcsxRS0YWurBvaQK
+	AtnOt25Q1gVPh0lff1ALoiyTYRPbFDQNtm0WgE6pb8HW2A==
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48q615p188-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 22:27:25 +0000 (GMT)
-Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-4b2a1344b36so6557621cf.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 15:27:25 -0700 (PDT)
+	for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 22:24:59 +0000 (GMT)
+Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-4b10990a1f0so9329651cf.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 15:24:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756333644; x=1756938444;
+        d=1e100.net; s=20230601; t=1756333498; x=1756938298;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=coI2WbZxINU7lzeYxnfoWTr2sAMMNa2PgUU+5RmzHvA=;
-        b=dr+XQuCrJhWXVVEsPMkxtZ6AZhbgfFYtr4COB5u1KiA6+Pwcx+EhuXHK/Wkopb9fbD
-         dxttOYxW2wsVbrKQnSQUWrGPqkV7yG/YnTATmU5+D5ktb5goschzJ1rw2hXex0kKM2sE
-         8lLbr0vb8iLYdwqTtF4UPv2ugsV60ckABJly6v9YQcZX4CMTBsm1K0MvBhpMCiAE6DPD
-         03Hn1Fz8CqNVDy3RuG1J0cblR9pGKd0Bj2TE96nhlqBFbG8eUO5CJ9hxzynjwBRdP5eS
-         K0AGIBMm3vzqpFic+rOGzo74snaItFHw0OqtJ12NHvyZbGUJa7yQ3Bak/VI8zu5WO4u3
-         mbhA==
-X-Forwarded-Encrypted: i=1; AJvYcCWF7mFc1notTQV+OEeCEYkQXZOnGzwlSXw12CbhCvcs7wt93u0rlWxsUltATOZNnJ+88UX5G5eWExmE+QNttA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxSCYCA47eZ2LZZQDn0mSbg7D0AIgpGjM7esyLc7EZC/E/1zbKx
-	XJ5EQc3Oxj3f9NXxsmjgIQxXF5+30vfm3cwo3GfiueMb5ulBnpsnpiJnR7QQqsZ//TuVT9azkrj
-	z5einoVrZiM2mdA10mCMwBJkyudiS01wWrY8BJx+nQPkCl9AklOBpIil1YhfUJG8j65Cu0ePlVt
-	0=
-X-Gm-Gg: ASbGnctP2xr2b1/APuiZxRA9OnQAVeePz/7wdAazVu8ivRv7uD+gJNY91AkJAV26xed
-	9olXghBmLYlLt4+egxDFPNMYg9RpxoUqKQ9sWffJaGMqkXaEQvWCnFDkB8uyHsucizPViO9zrQ4
-	lgc69+f9Brnt/m5kEs/jyUBvjnRRAAGI/bAG8R9EO059CddVQUC22iRWjb7TlJgm+ZJl/MOtQdc
-	b+lkDjqmoFpZUzCUmQ7h74/Duwf4Dv0sVQWPzRCqb0NK28L1nGZT1HqMKd4wRCmxokAsQJELbNH
-	6p6sFVjaWv9NtuK7g6Tw4x4JrZKgPC30bYQzOIlM0IuAaw3pML23SEjqRE5YN5eJBD7ObCT0D5q
-	DOomd9ktyvZds6pq+9lg7/LjtG2cKUZ3WdikGxkE0q+p5bGclyMdE
-X-Received: by 2002:a05:622a:4c8e:b0:4b0:8f6e:d70a with SMTP id d75a77b69052e-4b2de073d4amr102607011cf.22.1756333644062;
-        Wed, 27 Aug 2025 15:27:24 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGfGaJaSCsOEz0+c7R0GpHgMKXCo1cAu/f4pCkJRC2KgnMVotYeSkSM/eNVsc6qfr/OnO8xNw==
-X-Received: by 2002:a05:622a:4c8e:b0:4b0:8f6e:d70a with SMTP id d75a77b69052e-4b2de073d4amr102606571cf.22.1756333643552;
-        Wed, 27 Aug 2025 15:27:23 -0700 (PDT)
+        bh=wMabvnMiY6aI3QTnrZr9pq+NRKVIz1RxP9V/JHunYhU=;
+        b=owmer7Twg3O9QUBnSl9GCmezaMetzL+cTN80ddgBHUalPOJ61oTE9gfBTZoeyQ9Ebi
+         gz1ygdJG2xnpYJo5Mtzqaun61Et4IJMkbkABCO7UYyWBIAhwtpC1yk6AwrW63cYSrHto
+         0y0Xt/wprWoOQxdMVg1eVS8wBukXZeG4WczTL9YXrfv15QGeepf+Qv9bzw9C6z/sp6rq
+         Jp181mZfOot8aZZaqlPOfO/HrldgxmuLYQedEaynMHnPYIo3ILXlfVXkOQEmGNtBs/1X
+         xo9IS74WMzrc0p0vKUl5cuNteuYC2TXiAcQFGBB8UCZnLi3guV+KjvuL99p/y4eYFZJ1
+         uY5A==
+X-Forwarded-Encrypted: i=1; AJvYcCVOZauT38oeBVkEkpC1oo0iBTrFNfY6wvdLtYtvFih6HTsVI7Uy8LE8dr0q25zFtoL62x5weyZOxLDi4AYObA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyGafVmMqyp7Mhg1W1Xd922+ZY1eWVYR3Gutj0EZkwoZNd30CL1
+	uIXLy8ecyzLRsfqoeRrr7eI+sOHAzeScM629y3sF+2+khjj+NqSbsVS6z7MbQ9SJsCCLfvP9/Wd
+	9CDc2gIPSFh9uEFZO51/3+9h1piyL7B477Dws6OjRMrSJCKPVe6pwKtA/JiGvwx3fL1gPmO/8Cc
+	w=
+X-Gm-Gg: ASbGncvp3pB3nKnU2k8fpdHFTy1SMcVx0rYOdR2GlC9lNlFP4NzauK4xWe9pJkUdljr
+	2PnjhTgzUAr+WaBQ20xUoy/N1iYc6hI2RnXM8MNlqBu9m2nWgl0a2/XVeef82pEVukVg3bjDNCv
+	r9zq3hslToZFVZSqpLqKVVxXacnlvT7DCK36e4UpD2iiZCpBfVZtq1hF0iYQxotUb16xRnrPqY9
+	yfOspzYWHrJK3hkuPPagFmdO7GtK8VthfdEe2xoNVxuMRYVPln62d7952Mrs4PlIk25h1tUKMWR
+	PYCHZUWmYhl3nPTOuKscX4BlaJnGz2q1EjCvVFQpezjusLgcjxVWgQp3pHs8k6k/aJgtPNtMAtB
+	3ZFTagVnoMBc2oa4xu+Dnv0oL9iVu3/9xk5i5IH5Sjpj6LN3NgB8i
+X-Received: by 2002:a05:622a:5e1b:b0:4b2:b6dd:3f62 with SMTP id d75a77b69052e-4b2b6dd4850mr141574761cf.15.1756333498307;
+        Wed, 27 Aug 2025 15:24:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHWL5d3fRji5RjCf7oZDMHi6+hAavouE1mTTu18gEHtzIXVQqcCSxTkltVNvjDodB9v6M14nQ==
+X-Received: by 2002:a05:622a:5e1b:b0:4b2:b6dd:3f62 with SMTP id d75a77b69052e-4b2b6dd4850mr141574451cf.15.1756333497748;
+        Wed, 27 Aug 2025 15:24:57 -0700 (PDT)
 Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-336818f1d41sm14139131fa.51.2025.08.27.15.27.20
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55f35ca6af5sm2954613e87.138.2025.08.27.15.24.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Aug 2025 15:27:21 -0700 (PDT)
-Date: Thu, 28 Aug 2025 01:27:19 +0300
+        Wed, 27 Aug 2025 15:24:56 -0700 (PDT)
+Date: Thu, 28 Aug 2025 01:24:53 +0300
 From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Louis Chauvet <louis.chauvet@bootlin.com>,
-        Haneen Mohammed <hamohammed.sa@gmail.com>,
-        Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>,
-        Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-        Paul Cercueil <paul@crapouillou.net>,
-        Liviu Dudau <liviu.dudau@arm.com>,
-        Russell King <linux@armlinux.org.uk>,
-        Manikandan Muralidharan <manikandan.m@microchip.com>,
-        Dharma Balasubiramani <dharma.b@microchip.com>,
-        Nicolas Ferre <nicolas.ferre@microchip.com>,
-        Alexandre Belloni <alexandre.belloni@bootlin.com>,
-        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-        Inki Dae <inki.dae@samsung.com>,
-        Seung-Woo Kim <sw0312.kim@samsung.com>,
-        Kyungmin Park <kyungmin.park@samsung.com>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Alim Akhtar <alim.akhtar@samsung.com>, Liu Ying <victor.liu@nxp.com>,
-        Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
-        Lucas Stach <l.stach@pengutronix.de>,
-        Philipp Zabel <p.zabel@pengutronix.de>,
-        Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
-        Edmund Dea <edmund.j.dea@intel.com>,
-        Paul Kocialkowski <paulk@sys-base.io>,
-        Sui Jingfeng <suijingfeng@loongson.cn>,
-        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Rob Clark <robin.clark@oss.qualcomm.com>,
-        Dmitry Baryshkov <lumag@kernel.org>,
-        Abhinav Kumar <abhinav.kumar@linux.dev>,
-        Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
-        Sean Paul <sean@poorly.run>,
-        Marijn Suijten <marijn.suijten@somainline.org>,
-        Sandy Huang <hjc@rock-chips.com>,
-        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-        Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Mikko Perttunen <mperttunen@nvidia.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Hans de Goede <hansg@kernel.org>,
-        Dave Stevenson <dave.stevenson@raspberrypi.com>,
-        =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-        Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-        dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-        linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev,
-        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-        linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 03/39] drm/atomic: Convert
- drm_atomic_get_connector_state() to use new connector state
-Message-ID: <hab6s4wyauqiej5ankh3gppdqkm2ymlevhrnklfe76kqjmmjqy@fptmzxpqv5av>
-References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
- <20250825-drm-no-more-existing-state-v1-3-f08ccd9f85c9@kernel.org>
+To: Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH v7 00/10] Add support for RK3588 DisplayPort Controller
+Message-ID: <bochli5u37mhc6eup7h2oz3yeignofbbj4k5nrvm2k7zf6f4ov@t2sje4gmveqa>
+References: <20250822063959.692098-1-andyshrk@163.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250825-drm-no-more-existing-state-v1-3-f08ccd9f85c9@kernel.org>
-X-Authority-Analysis: v=2.4 cv=VtIjA/2n c=1 sm=1 tr=0 ts=68af864d cx=c_pps
- a=WeENfcodrlLV9YRTxbY/uA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=2OwXVqhp2XgA:10 a=VwQbUJbxAAAA:8 a=wpE8WlYdICmIRzy2dDcA:9 a=CjuIK1q_8ugA:10
- a=kacYvNCVWA4VmyqE58fU:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODIzMDAzMiBTYWx0ZWRfX+yKdaLvmrjr8
- qoghQ356N1pDXD5phZwmOjuDhzGdXy0+nznsSsMSt3CE5PUys5t09IqyDQvJTJfajaskfVpNnN4
- h/E4WBlLzorPz6BSURSfbisMRhVoExfWChNAyxeZ13U3TlPbyCEye4ToHqGAQG2IyTxq7GPMius
- wv+Wuvgcc0zmQYzH0wn7wT35vZMKMUsOcC5+8B49SkFwSfp5vDg8a10DBytnhLfm12PMn0AXfxj
- PcgbBD+0nILdwMD38y8hjgZjejbMVWRI3Vt0TYeQuChXtNiPRHrkOmQ0BnLNEORoqaSaLxiBw5U
- mecX4DNuuO1Koi+L2zbsF+0ezDgVjMx2I/ZOsU5A9jbIwetyeM8wfv8mhubXVEVfr1WbRiLD1f5
- vQDpwgUx
-X-Proofpoint-GUID: Kgio8CjyBmXcpjrb9Vu5N9SLb1w2-coy
-X-Proofpoint-ORIG-GUID: Kgio8CjyBmXcpjrb9Vu5N9SLb1w2-coy
+In-Reply-To: <20250822063959.692098-1-andyshrk@163.com>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODIzMDAzNCBTYWx0ZWRfX9peNMJCY6jYX
+ /LynB/RYYB3ckFJ9v0LdoS6qEjNePKWdvtb14ExnJ91nDMxYmN89l7FF9vkp2XBsxYCv4TZd6dj
+ NxlRXNG3gAvBwVXYHZ2xYabwDSRaaK7CEvLpuQTDiLwzsjvEi9UksplMh21/bHKiK+PjsUlJN+P
+ kpvjPwwk4Svy3x9SV71ySUYPo3DdN1tjKZv0pZ7YqeRfeju8hlxS6sfhGknz3VZiAF31VwQODuz
+ zOq9B6IcUPmWp59yW9Mrs5Pg4xast5GaOAK7AgvaZGFnbE8t1Pg0o0OfqLZ9hchTXH6Vp87HxVt
+ 0sKcNHEAS17hk1Y2pHEFDLUi01LCaa1lo2vmH2hJZmW4qdVwKkb3MhXYoMRHDE4c9UK5OlDtlLT
+ m4XtxrFF
+X-Proofpoint-GUID: M5N0Y-3S9FadbbDpmGTbpnenCHe2yZEM
+X-Authority-Analysis: v=2.4 cv=K+AiHzWI c=1 sm=1 tr=0 ts=68af85bb cx=c_pps
+ a=JbAStetqSzwMeJznSMzCyw==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=2OwXVqhp2XgA:10 a=s8YR1HE3AAAA:8 a=IMEu-sUR2OXSz8FBHAsA:9 a=CjuIK1q_8ugA:10
+ a=uxP6HrT_eTzRwkO_Te1X:22 a=jGH_LyMDp9YhSvY-UuyI:22
+X-Proofpoint-ORIG-GUID: M5N0Y-3S9FadbbDpmGTbpnenCHe2yZEM
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-08-27_04,2025-08-26_01,2025-03-28_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 phishscore=0 priorityscore=1501 impostorscore=0 bulkscore=0
- suspectscore=0 malwarescore=0 adultscore=0 spamscore=0 classifier=typeunknown
- authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2507300000 definitions=main-2508230032
+ malwarescore=0 suspectscore=0 bulkscore=0 clxscore=1015 adultscore=0
+ impostorscore=0 priorityscore=1501 phishscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2508230034
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_232731_154439_EDE5F919 
-X-CRM114-Status: GOOD (  25.45  )
+X-CRM114-CacheID: sfid-20250827_152500_505760_03D94CC4 
+X-CRM114-Status: GOOD (  25.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -195,50 +121,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, heiko@sntech.de, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 25, 2025 at 03:43:08PM +0200, Maxime Ripard wrote:
-> The drm_atomic_get_connector_state() function calls the deprecated
-> drm_atomic_get_existing_connector_state() helper to get find if a
-> connector state had already been allocated and was part of the given
-> drm_atomic_state.
+On Fri, Aug 22, 2025 at 02:39:44PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
 > 
-> At the point in time where drm_atomic_get_connector_state() can be
-> called (ie, during atomic_check), the existing state is the new state
-> and drm_atomic_get_existing_connector_state() can thus be replaced by
-> drm_atomic_get_new_connector_state().
 > 
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> ---
->  drivers/gpu/drm/drm_atomic.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> There are two DW DPTX based DisplayPort Controller on rk3588 which
+> are compliant with the DisplayPort Specification Version 1.4 with
+> the following features:
 > 
-> diff --git a/drivers/gpu/drm/drm_atomic.c b/drivers/gpu/drm/drm_atomic.c
-> index 660b081ff5d8c39061cebfb5ea122ac1e51677ad..30b7ec05a1af07075e40cd2822ecfd67df004ba2 100644
-> --- a/drivers/gpu/drm/drm_atomic.c
-> +++ b/drivers/gpu/drm/drm_atomic.c
-> @@ -1128,11 +1128,11 @@ drm_atomic_get_connector_state(struct drm_atomic_state *state,
->  	struct drm_mode_config *config = &connector->dev->mode_config;
->  	struct drm_connector_state *connector_state;
->  
->  	WARN_ON(!state->acquire_ctx);
->  
-> -	connector_state = drm_atomic_get_existing_connector_state(state, connector);
-> +	connector_state = drm_atomic_get_new_connector_state(state, connector);
+> * DisplayPort 1.4a
+> * Main Link: 1/2/4 lanes
+> * Main Link Support 1.62Gbps, 2.7Gbps, 5.4Gbps and 8.1Gbps
+> * AUX channel 1Mbps
+> * Single Stream Transport(SST)
+> * Multistream Transport (MST)
+> * Type-C support (alternate mode)
+> * HDCP 2.2, HDCP 1.3
+> * Supports up to 8/10 bits per color component
+> * Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
+> * Pixel clock up to 594MHz
+> * I2S, SPDIF audio interface
+> 
+> The current version of this patch series only supports basic display outputs.
+> I conducted tests with DP0 in 1080p and 4K@60 YCbCr4:2:0 modes; the ALT/Type-C
+> mode was tested on Rock 5B, DP1 was tested on Rock 5 ITX by Stephen and Piotr.
+> HDCP and audio features remain unimplemented.
+> For RK3588, it's only support SST, while in the upcoming RK3576, it can support
+> MST output.
+> 
 
-I'd say, drop patches 1-2 and use this function directly as is now.
+[skipped changelog]
 
->  	if (connector_state)
->  		return connector_state;
->  
->  	ret = drm_modeset_lock(&config->connection_mutex, state->acquire_ctx);
->  	if (ret)
+> 
+> Andy Yan (10):
+>   dt-bindings: display: rockchip: Add schema for RK3588 DPTX Controller
+>   drm/bridge: synopsys: Add DW DPTX Controller support library
+>   drm/rockchip: Add RK3588 DPTX output support
+>   MAINTAINERS: Add entry for DW DPTX Controller bridge
+
+I tried pushing patches 1-4, but got the following error:
+
+dim: ERROR: 5a68dcf5837a ("MAINTAINERS: Add entry for DW DPTX Controller bridge"): Mandatory Maintainer Acked-by missing., aborting
+
+I'm not sure how to handle MAINTAINERS changes (or whether it's fine for
+me or not), so I will probably push patches 1-3 in a few days, if nobody
+beats me (or unless somebody points out a correct process for
+MAINTAINERS changes).
+
+>   dt-bindings: display: simple-bridge: Add ra620 compatible
+>   drm/bridge: simple-bridge: Add support for radxa ra620
+>   arm64: dts: rockchip: Add DP0 for rk3588
+>   arm64: dts: rockchip: Add DP1 for rk3588
+>   arm64: dts: rockchip: Enable DisplayPort for rk3588s Cool Pi 4B
+>   arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX
+> 
+>  .../display/bridge/simple-bridge.yaml         |    1 +
+>  .../display/rockchip/rockchip,dw-dp.yaml      |  150 ++
+>  MAINTAINERS                                   |    8 +
+>  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   30 +
+>  .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |   30 +
+>  .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |   59 +
+>  .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   37 +
+>  drivers/gpu/drm/bridge/simple-bridge.c        |    5 +
+>  drivers/gpu/drm/bridge/synopsys/Kconfig       |    7 +
+>  drivers/gpu/drm/bridge/synopsys/Makefile      |    1 +
+>  drivers/gpu/drm/bridge/synopsys/dw-dp.c       | 2095 +++++++++++++++++
+>  drivers/gpu/drm/rockchip/Kconfig              |    9 +
+>  drivers/gpu/drm/rockchip/Makefile             |    1 +
+>  drivers/gpu/drm/rockchip/dw_dp-rockchip.c     |  150 ++
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |    1 +
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |    1 +
+>  include/drm/bridge/dw_dp.h                    |   20 +
+>  17 files changed, 2605 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+>  create mode 100644 drivers/gpu/drm/bridge/synopsys/dw-dp.c
+>  create mode 100644 drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+>  create mode 100644 include/drm/bridge/dw_dp.h
 > 
 > -- 
-> 2.50.1
+> 2.43.0
+> 
+> base-commit: 18b8261b84ad5462d7261617fbfa49d85d396fd9
+> branch: rk3588-dp-upstream-v7
 > 
 
 -- 
