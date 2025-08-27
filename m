@@ -4,171 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEFD4CA0FF0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 01:53:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53905CA0EFF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 05:32:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f+6BsldWRnNH6rU/gUE7/Uoz+uXgsjoPr/0u4D30nF8=; b=R2hqMBF+p+44J+
-	VYEy8ymfv5pr3gPhu6ZVufQ+XT5A5eXq/YWER6siRkGi329dJMRC746CSj2pNVbc/Zn4O0NnNMe3/
-	LP+REpSLdy1vu5OQlWn2oyPZORavGK2asJpAzAd3mmG+YNiqLre9dtD07iGPYesP6uwfN5rskrHeY
-	e8mkaAUBBMw/n+EH/NKdVzJDMd1nj0byv5d5WC0cSNmPSCE9SiGb+6x3bqR9mTRVR5DE5pwzgd2ze
-	KrQgxHDf1yKXfWpKcknitb5TyWRYDm/X202N7FtircmY13cb3RjOAyHIVdHqwWzER9fe9iWiPCreg
-	TLBcTt8DQpr46PjM2WlQ==;
+	List-Owner; bh=2U6A4qnTwYBgHC08ba356rWz/4tCygxRNaNgDBSNP9c=; b=kBOo0Eog/bcXGC
+	wcSzmH3/Hn5qs8aSHakZ8d+NmPJzHzOFgUwnP37qfW11RzK3kcOxYWbByxKpw/IhUCCYlvppZ1JFj
+	bAA55fJWWX+3A4sp06F53flijZRush8vRDdvgosgcrkSyQWxFaHEcb67FEgwFFRuFXtMMLWoOwZM0
+	fpcMW1kNZbPVu61d2oCh7VHoiwfCtwWAQYsBn1Q680HB6oH/wCboJuNZF+Uoiwr74MgoOc4DY2GPf
+	z+8mZdixl9zIQnTXy+9s/blr8p0IK8QEcw2dg1sMRrH36KQmkvgI65AoC9khN78FrIag+oKkAlKJy
+	4XLyX7UUtmrU4tVEW6UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur5Lo-0000000Dar7-2IKw;
-	Wed, 27 Aug 2025 01:53:24 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1ur8lh-0000000E8RK-0RZu;
+	Wed, 27 Aug 2025 05:32:21 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ur5JK-0000000Daeq-2DfL
-	for linux-rockchip@lists.infradead.org;
-	Wed, 27 Aug 2025 01:50:52 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57QHLGg1027994
-	for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 01:50:50 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=0laXQCaNkR8BdkTEIAIjvxkP
-	U6e+xAcI3sMZOZG++40=; b=RtohOwq/mGWF5aMn8hEPDpMx/rZR9xAALF19Kgyn
-	ABnotCfpABau8JwSOXOICFi9m0+JYeo5KRmxM7/PZXvfAVZ+xkORF/VXDwTNR3Ph
-	HPx+mTISivbCf4otlZINmlEZaKzFvdI6E4ajQHq9yVGAUfZo4nLChDdFD8U1iaE4
-	IS1qmtCDKjKe0bte0kvKERccexJ6lHl808lZOQbURByejcjFT3WTBN/nsM8JSd+g
-	k1B3AWzsQK6lbv1D9bzTVgUEmdbFOgAkV//+43Xv1+qkGLvzB6NM7Z7dZU1NecZ0
-	guNgLQYiFnm+R6mcteg49ubo9IpFgtLwxmbQpqJPkNbHbw==
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48sh8ah6hw-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 01:50:49 +0000 (GMT)
-Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-4b2dab82f70so62268291cf.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 26 Aug 2025 18:50:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756259448; x=1756864248;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0laXQCaNkR8BdkTEIAIjvxkPU6e+xAcI3sMZOZG++40=;
-        b=fSRWml6MrwHDu9pFjhVFqrdJprMxs1qmD9/u/2q+Sh8DvOsOgEOVntYCzdtjlch9hr
-         1xZQ0ThYQSQ4qphxDEYNX1h+zShXnVQHlDcGIwmnNOlimgfG9dG5xIIBjUSFMUzYcHQZ
-         fvzX2QGsTAaD5t37LwXs2YMx9MrEWUMhROFTqfRJFCQTS6R/w6CsXP7grYYN+IvdjV3P
-         tIt9LxPmkUbeBFnfqa8MVV1PSJDGDUY58tcrreITtZVRPz/ngSJsvDuAdNgdr9uDmKS0
-         p71OLQPFgRIRKnHKLqvhPDrV+1QyvGwmsTeAzRpJRNQW7P1kuhQ3eq1E/JlBSGMY8H/7
-         /Ymg==
-X-Forwarded-Encrypted: i=1; AJvYcCU8D68zHi/Y9ohUBRCqsbhbhGjMHr0PgzMnP+9dbhoWWU6Q5Uovjv9Pmy7BZpfzmY7JGOkJzNI5bMtpDCp/dw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxRNw3oMaVOqwRY8fCx6ZZZtFIaDG0HCZyZxGfXYLz65ZkxqZCT
-	HrnAephQ3fboG60V0MYqFW+Sl4fsCY6LhY1hHTFcSMHmc1QOL9f0yDNK+zgeVejA5RHMCP3N17w
-	0UklUkXvFwCvk4vO4a4k/S0UgXCItnD+GaVSrfznAx/IjpFju8IAb5YqoohKQVW96BSNkPhW8Ep
-	k=
-X-Gm-Gg: ASbGnctNgjjgO3F1kXWy57QeSYhBYan0xMh3VgodIGwUINwJY2Di3memqR76cV/ucOq
-	GgN0jEL8t040X4OHwm1GOuZeLhIoS7s5tkrttL7RDWRQRYcCmKaKKzQL5ikYa13PU0ZmM+dRlkK
-	sViyGx0KRjX4bT0JesiuWwENG+U7SyQJ5vdTrOcmZJ5crn9SJ6aCEkgKiKhnnhzJ74pneeI6FzY
-	0nKIVNbmHAEkVEFDd78pkAeIiqkQHOfprBfudPDRD7k7f/jZrBE5bA3ue4Syx+dfx0BDfvV6FNa
-	tJ1M3bjqNvKnEskcdBSHJ/ggaVt1FAbdujA2jN8PhAVkU4PfDELntBIX74W9D8iChXThXIaVjrP
-	SmSkBkNc/G849WCe8mN+AnLFLj3UR4yactDvZ+v3DLUQeHwBfcYtc
-X-Received: by 2002:ac8:5e12:0:b0:4ae:6b72:2ae2 with SMTP id d75a77b69052e-4b2aaacef55mr186156871cf.40.1756259448003;
-        Tue, 26 Aug 2025 18:50:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGMxKJaOrtRDBj0yHJf7PhiEmF+htiaol/DYqvG4rG8Xn2tdgOPzsKsBrI5J0XgVP0gDX2TkA==
-X-Received: by 2002:ac8:5e12:0:b0:4ae:6b72:2ae2 with SMTP id d75a77b69052e-4b2aaacef55mr186156351cf.40.1756259447377;
-        Tue, 26 Aug 2025 18:50:47 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55f4b46d050sm989200e87.150.2025.08.26.18.50.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Aug 2025 18:50:46 -0700 (PDT)
-Date: Wed, 27 Aug 2025 04:50:44 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Louis Chauvet <louis.chauvet@bootlin.com>,
-        Haneen Mohammed <hamohammed.sa@gmail.com>,
-        Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>,
-        Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-        Paul Cercueil <paul@crapouillou.net>,
-        Liviu Dudau <liviu.dudau@arm.com>,
-        Russell King <linux@armlinux.org.uk>,
-        Manikandan Muralidharan <manikandan.m@microchip.com>,
-        Dharma Balasubiramani <dharma.b@microchip.com>,
-        Nicolas Ferre <nicolas.ferre@microchip.com>,
-        Alexandre Belloni <alexandre.belloni@bootlin.com>,
-        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-        Inki Dae <inki.dae@samsung.com>,
-        Seung-Woo Kim <sw0312.kim@samsung.com>,
-        Kyungmin Park <kyungmin.park@samsung.com>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Alim Akhtar <alim.akhtar@samsung.com>, Liu Ying <victor.liu@nxp.com>,
-        Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
-        Lucas Stach <l.stach@pengutronix.de>,
-        Philipp Zabel <p.zabel@pengutronix.de>,
-        Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
-        Edmund Dea <edmund.j.dea@intel.com>,
-        Paul Kocialkowski <paulk@sys-base.io>,
-        Sui Jingfeng <suijingfeng@loongson.cn>,
-        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Rob Clark <robin.clark@oss.qualcomm.com>,
-        Dmitry Baryshkov <lumag@kernel.org>,
-        Abhinav Kumar <abhinav.kumar@linux.dev>,
-        Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
-        Sean Paul <sean@poorly.run>,
-        Marijn Suijten <marijn.suijten@somainline.org>,
-        Sandy Huang <hjc@rock-chips.com>,
-        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-        Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Mikko Perttunen <mperttunen@nvidia.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Hans de Goede <hansg@kernel.org>,
-        Dave Stevenson <dave.stevenson@raspberrypi.com>,
-        =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-        Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-        dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-        linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-samsung-soc@vger.kernel.org, imx@lists.linux.dev,
-        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-        linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 26/39] drm/msm/mdp5: Switch to
- drm_atomic_get_new_crtc_state()
-Message-ID: <dc2sfo6edj4w3qiwldoglaanbi2h7mmev7x4pklwbl7x6x6rah@kjyc52pv2xqy>
-References: <20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org>
- <20250825-drm-no-more-existing-state-v1-26-f08ccd9f85c9@kernel.org>
+	id 1ur8gr-0000000E7ZS-252b;
+	Wed, 27 Aug 2025 05:27:22 +0000
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57QJuQZo029875;
+	Wed, 27 Aug 2025 05:27:07 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=pp1; bh=jxijss
+	tmEiNGZJKG6yltOja4dBZKrqMyUi/HgZLz1Sk=; b=fFfa87uMu8acvDC8OVnLiF
+	3Gw7T94UM/oONEZ9FfO6ESJm9dykU5EYEWzJ6thKl8AEybeSnU7jVczC+OsbSmIg
+	U1DTm1ikvBxQhtMsBkqiirIjOSbWdtCJnpSDht3JKVzPoBOjH3KPPIjRZwjgIoz4
+	PIz+4T0pathmf8bjMQQcBo9Nngpp8r0YuSt99tds0+EviRwkVU+5p0dMPKzJ5SJZ
+	NqSby3CqAv1CiFuqsjN+UtUj0P6MofPcWemNISQn5nz/ZN8twBsE28xbYF1o/y5D
+	T+rxMTdyXFQiS1FQNk9wuoFsc0iqqXm08NakEBDb3JoIMWYZ+sB++DfGZXvYi8bQ
+	==
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 48q42j2cs9-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Aug 2025 05:27:07 +0000 (GMT)
+Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
+	by pps.reinject (8.18.1.12/8.18.0.8) with ESMTP id 57R5K8Rl017639;
+	Wed, 27 Aug 2025 05:27:06 GMT
+Received: from ppma23.wdc07v.mail.ibm.com (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 48q42j2cs6-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Aug 2025 05:27:06 +0000 (GMT)
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma23.wdc07v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 57R3lXEH029924;
+	Wed, 27 Aug 2025 05:27:05 GMT
+Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
+	by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 48qsfmpe9d-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 27 Aug 2025 05:27:05 +0000
+Received: from smtpav06.fra02v.mail.ibm.com (smtpav06.fra02v.mail.ibm.com [10.20.54.105])
+	by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 57R5R1oh53739874
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 27 Aug 2025 05:27:01 GMT
+Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 6821520049;
+	Wed, 27 Aug 2025 05:27:01 +0000 (GMT)
+Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id A772520040;
+	Wed, 27 Aug 2025 05:27:00 +0000 (GMT)
+Received: from [9.152.212.92] (unknown [9.152.212.92])
+	by smtpav06.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Wed, 27 Aug 2025 05:27:00 +0000 (GMT)
+Message-ID: <ac6dfaec-38ea-486d-89a0-ab02768cee42@linux.ibm.com>
+Date: Wed, 27 Aug 2025 07:27:00 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250825-drm-no-more-existing-state-v1-26-f08ccd9f85c9@kernel.org>
-X-Authority-Analysis: v=2.4 cv=cLDgskeN c=1 sm=1 tr=0 ts=68ae6479 cx=c_pps
- a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=2OwXVqhp2XgA:10 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=viL_tbrIvFpnGUkEXy0A:9
- a=CjuIK1q_8ugA:10 a=a_PwQJl-kcHnX1M80qC6:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODI2MDE1MyBTYWx0ZWRfX44VY6U47VGOJ
- I3cUcqM+wVehhxBe9h4nlkYxyMd6fVnDql7QGnsyFfiZSPVoeDL8mB37VeAgbQr5KmIy/sN/cPN
- WBI8pWofEpswkYe2k6V4MsZzBFsHMdqIIXgfcrL1uXfjMY1baksowV6qJNZGKcrkFThIhdgYeMW
- jezoC44LlrmTP9q4RWx91kPS78NUNdDck3WxAQwjHGB4nSfPjXsXHonI2h3U1Mt5Q1FBD4NmGnT
- UGlAh+dyB21Pu8TD2CJfcAmr9sH/3FfZzwsgX7zNn5VLWDxeIzYeGjtRliCf3/k6QMuvSNTt2YW
- uKIIX0c6ef86XkUxUxusmv02G+rbE2Meu8KD0NICMmeAH2lTSn6bVhSeha5ZBtIu4Gb7tSq1Rpi
- PVRnz4ig
-X-Proofpoint-GUID: ARhIZCuLz1br1q6X1tj-94XyVE8fzPkz
-X-Proofpoint-ORIG-GUID: ARhIZCuLz1br1q6X1tj-94XyVE8fzPkz
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 18/19] perf: Introduce positive capability for raw events
+To: Mark Rutland <mark.rutland@arm.com>, Robin Murphy <robin.murphy@arm.com>,
+        Sumanth Korikkar <sumanthk@linux.ibm.com>,
+        Jan Polensky <japo@linux.ibm.com>
+Cc: peterz@infradead.org, mingo@redhat.com, will@kernel.org, acme@kernel.org,
+        namhyung@kernel.org, alexander.shishkin@linux.intel.com,
+        jolsa@kernel.org, irogers@google.com, adrian.hunter@intel.com,
+        kan.liang@linux.intel.com, linux-perf-users@vger.kernel.org,
+        linux-kernel@vger.kernel.org, linux-alpha@vger.kernel.org,
+        linux-snps-arc@lists.infradead.org,
+        linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
+        linux-csky@vger.kernel.org, loongarch@lists.linux.dev,
+        linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+        linux-s390@vger.kernel.org, linux-sh@vger.kernel.org,
+        sparclinux@vger.kernel.org, linux-pm@vger.kernel.org,
+        linux-rockchip@lists.infradead.org, dmaengine@vger.kernel.org,
+        linux-fpga@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+        dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+        intel-xe@lists.freedesktop.org, coresight@lists.linaro.org,
+        iommu@lists.linux.dev, linux-amlogic@lists.infradead.org,
+        linux-cxl@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+        linux-riscv@lists.infradead.org
+References: <cover.1755096883.git.robin.murphy@arm.com>
+ <542787fd188ea15ef41c53d557989c962ed44771.1755096883.git.robin.murphy@arm.com>
+ <aK259PrpyxguQzdN@J2N7QTR9R3>
+Content-Language: en-US
+From: Thomas Richter <tmricht@linux.ibm.com>
+Organization: IBM
+In-Reply-To: <aK259PrpyxguQzdN@J2N7QTR9R3>
+X-TM-AS-GCONF: 00
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODIzMDAxMCBTYWx0ZWRfXx7bT3ieVYWZ1
+ FvRIJn/6odyl76gPtjq2fdUI3+ddgoyBguazv17xAc0h1PWPsciO7Io1+yf38004HJX48EZKQe4
+ jjqa2jsZ613Il7PEWWZLmHVXl0DVElauSgaXsW2jrn5unNTZZAgCkgP5ixkSnbssGkUA98RWoHK
+ 6CllyViFj8nmb4/kmZamtgDzlo/xirMdIPTqK1ytIy748E4TyQcONzfTAVM6cDoHbAMLdYuTHtD
+ UT6EmBwE8Tz6Ajw1M3OeNTbMk21jMwITf/ouwlMB6Q/Hm12FuudC6E2iwfSIPWm8nU5cvD4JBmw
+ ghpRUxLnbbdBrU5mCsCpBm2H2yjaVRWCqCxRNsBxe1xCwhV1Oev6PUoPQ5TLoGumXLZUFEfuXwo
+ /BJHYr+T
+X-Proofpoint-ORIG-GUID: Z1OBCqtS81HxjTSNcENNGRKeOQ0QzPO9
+X-Proofpoint-GUID: 4pnWswYamnTcgbcPVqCp3LQWR1ph9h16
+X-Authority-Analysis: v=2.4 cv=evffzppX c=1 sm=1 tr=0 ts=68ae972b cx=c_pps
+ a=3Bg1Hr4SwmMryq2xdFQyZA==:117 a=3Bg1Hr4SwmMryq2xdFQyZA==:17
+ a=IkcTkHD0fZMA:10 a=2OwXVqhp2XgA:10 a=7CQSdrXTAAAA:8 a=KByoUL483hSIROooWq4A:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=a-qgeE7W1pNrGK8U0ZQC:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-08-26_02,2025-08-26_01,2025-03-28_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 clxscore=1015 malwarescore=0 spamscore=0 adultscore=0
- impostorscore=0 suspectscore=0 priorityscore=1501 phishscore=0
+ suspectscore=0 adultscore=0 malwarescore=0 spamscore=0 bulkscore=0
+ impostorscore=0 clxscore=1015 priorityscore=1501 phishscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2508260153
+ reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2508230010
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250826_185050_592730_54EAD8BF 
-X-CRM114-Status: GOOD (  18.78  )
+X-CRM114-CacheID: sfid-20250826_222721_654115_E5DF9CDD 
+X-CRM114-Status: GOOD (  28.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -180,37 +139,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 25, 2025 at 03:43:31PM +0200, Maxime Ripard wrote:
-> The msm atomic_check implementation uses the deprecated
-> drm_atomic_get_existing_crtc_state() helper.
-> 
-> This hook is called as part of the global atomic_check, thus before the
-> states are swapped. The existing state thus points to the new state, and
-> we can use drm_atomic_get_new_crtc_state() instead.
-> 
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> ---
->  drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
-> 
-
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-
-To merge through drm-misc-next:
-
-Acked-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-
-
--- 
-With best wishes
-Dmitry
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gOC8yNi8yNSAxNTo0MywgTWFyayBSdXRsYW5kIHdyb3RlOgo+IE9uIFdlZCwgQXVnIDEzLCAy
+MDI1IGF0IDA2OjAxOjEwUE0gKzAxMDAsIFJvYmluIE11cnBoeSB3cm90ZToKPj4gT25seSBhIGhh
+bmRmdWwgb2YgQ1BVIFBNVXMgYWNjZXB0IFBFUkZfVFlQRV97UkFXLEhBUkRXQVJFLEhXX0NBQ0hF
+fQo+PiBldmVudHMgd2l0aG91dCByZWdpc3RlcmluZyB0aGVtc2VsdmVzIGFzIFBFUkZfVFlQRV9S
+QVcgaW4gdGhlIGZpcnN0Cj4+IHBsYWNlLiBBZGQgYW4gZXhwbGljaXQgb3B0LWluIGZvciB0aGVz
+ZSBzcGVjaWFsIGNhc2VzLCBzbyB0aGF0IHdlIGNhbgo+PiBtYWtlIGxpZmUgZWFzaWVyIGZvciBl
+dmVyeSBvdGhlciBkcml2ZXIgKGFuZCBwcm9iYWJseSBhbHNvIHNwZWVkIHVwIHRoZQo+PiBzbG93
+LXBhdGggc2VhcmNoKSBieSBoYXZpbmcgcGVyZl90cnlfaW5pdF9ldmVudCgpIGRvIHRoZSBiYXNp
+YyB0eXBlCj4+IGNoZWNraW5nIHRvIGNvdmVyIHRoZSBtYWpvcml0eSBvZiBjYXNlcy4KPj4KPj4g
+U2lnbmVkLW9mZi1ieTogUm9iaW4gTXVycGh5IDxyb2Jpbi5tdXJwaHlAYXJtLmNvbT4KPiAKPiAK
+PiBUbyBiaWtlc2hlZCBhIGxpdHRsZSBoZXJlLCBJJ20gbm90IGtlZW4gb24gdGhlIFBFUkZfUE1V
+X0NBUF9SQVdfRVZFTlRTCj4gbmFtZSwgYmVjYXVzZSBpdCdzIG5vdCBjbGVhciB3aGF0ICJSQVci
+IHJlYWxseSBtZWFucywgYW5kIHBlb3BsZSB3aWxsCj4gZGVmaW5pdGVseSByZWFkIHRoYXQgdG8g
+bWVhbiBzb21ldGhpbmcgZWxzZS4KPiAKPiBDb3VsZCB3ZSBnbyB3aXRoIHNvbWV0aGluZyBsaWtl
+IFBFUkZfUE1VX0NBUF9DT01NT05fQ1BVX0VWRU5UUywgdG8gbWFrZQo+IGl0IGNsZWFyIHRoYXQg
+dGhpcyBpcyBhYm91dCBvcHRpbmcgaW50byBDUFUtUE1VIHNwZWNpZmljIGV2ZW50IHR5cGVzIChv
+Zgo+IHdoaWNoIFBFUkZfVFlQRV9SQVcgaXMgb25lIG9mKT8KPiAKPiBMaWtld2lzZSwgcy9pc19y
+YXdfcG11KCkvcG11X3N1cHBvcnRzX2NvbW1vbl9jcHVfZXZlbnRzKCkvLgo+IAo+PiAtLS0KPj4K
+Pj4gQSBmdXJ0aGVyIHBvc3NpYmlsaXR5IGlzIHRvIGF1dG9tYXRpY2FsbHkgYWRkIHRoZSBjYXAg
+dG8gUEVSRl9UWVBFX1JBVwo+PiBQTVVzIGluIHBlcmZfcG11X3JlZ2lzdGVyKCkgdG8gaGF2ZSBh
+IHNpbmdsZSBwb2ludC1vZi11c2UgY29uZGl0aW9uOyBJJ20KPj4gdW5kZWNpZGVkLi4uCj4gCj4g
+SSByZWNrb24gd2UgZG9uJ3QgbmVlZCB0byBhdXRvbWFnaWNhbGx5IGRvIHRoYXQsIGJ1dCBJIHJl
+Y2tvbiB0aGF0Cj4gaXNfcmF3X3BtdSgpL3BtdV9zdXBwb3J0c19jb21tb25fY3B1X2V2ZW50cygp
+IHNob3VsZCBvbmx5IGNoZWNrIHRoZSBjYXAsCj4gYW5kIHdlIGRvbid0IHJlYWQgYW55dGhpbmcg
+c3BlY2lhbCBpbnRvIGFueSBvZgo+IFBFUkZfVFlQRV97UkFXLEhBUkRXQVJFLEhXX0NBQ0hFfS4K
+PiAKPj4gLS0tCj4+ICBhcmNoL3MzOTAva2VybmVsL3BlcmZfY3B1bV9jZi5jICAgIHwgIDEgKwo+
+PiAgYXJjaC9zMzkwL2tlcm5lbC9wZXJmX3BhaV9jcnlwdG8uYyB8ICAyICstCj4+ICBhcmNoL3Mz
+OTAva2VybmVsL3BlcmZfcGFpX2V4dC5jICAgIHwgIDIgKy0KPj4gIGFyY2gveDg2L2V2ZW50cy9j
+b3JlLmMgICAgICAgICAgICAgfCAgMiArLQo+PiAgZHJpdmVycy9wZXJmL2FybV9wbXUuYyAgICAg
+ICAgICAgICB8ICAxICsKPj4gIGluY2x1ZGUvbGludXgvcGVyZl9ldmVudC5oICAgICAgICAgfCAg
+MSArCj4+ICBrZXJuZWwvZXZlbnRzL2NvcmUuYyAgICAgICAgICAgICAgIHwgMTUgKysrKysrKysr
+KysrKysrCj4+ICA3IGZpbGVzIGNoYW5nZWQsIDIxIGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25z
+KC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9hcmNoL3MzOTAva2VybmVsL3BlcmZfY3B1bV9jZi5jIGIv
+YXJjaC9zMzkwL2tlcm5lbC9wZXJmX2NwdW1fY2YuYwo+PiBpbmRleCAxYTk0ZTA5NDRiYzUuLjc4
+MmFiNzU1ZGRkNCAxMDA2NDQKPj4gLS0tIGEvYXJjaC9zMzkwL2tlcm5lbC9wZXJmX2NwdW1fY2Yu
+Ywo+PiArKysgYi9hcmNoL3MzOTAva2VybmVsL3BlcmZfY3B1bV9jZi5jCj4+IEBAIC0xMDU0LDYg
+KzEwNTQsNyBAQCBzdGF0aWMgdm9pZCBjcHVtZl9wbXVfZGVsKHN0cnVjdCBwZXJmX2V2ZW50ICpl
+dmVudCwgaW50IGZsYWdzKQo+PiAgLyogUGVyZm9ybWFuY2UgbW9uaXRvcmluZyB1bml0IGZvciBz
+MzkweCAqLwo+PiAgc3RhdGljIHN0cnVjdCBwbXUgY3B1bWZfcG11ID0gewo+PiAgCS50YXNrX2N0
+eF9uciAgPSBwZXJmX3N3X2NvbnRleHQsCj4+ICsJLmNhcGFiaWxpdGllcyA9IFBFUkZfUE1VX0NB
+UF9SQVdfRVZFTlRTLAo+PiAgCS5wbXVfZW5hYmxlICAgPSBjcHVtZl9wbXVfZW5hYmxlLAo+PiAg
+CS5wbXVfZGlzYWJsZSAgPSBjcHVtZl9wbXVfZGlzYWJsZSwKPj4gIAkuZXZlbnRfaW5pdCAgID0g
+Y3B1bWZfcG11X2V2ZW50X2luaXQsCj4gCj4gVGFuZ2VudGlhbCwgYnV0IHVzZSBvZiBwZXJmX3N3
+X2NvbnRleHQgaGVyZSBsb29rcyBib2d1cy4KPiAKCkl0IG1pZ2h0IGxvb2sgc3RyYW5nZSwgYnV0
+IGl0IHdhcyBkb25lIG9uIHB1cnBvc2UuIEZvciBkZXRhaWxzIHNlZQpjb21taXQgOTI1NGU3MGM0
+ZWYxICgiczM5MC9jcHVtX2NmOiB1c2UgcGVyZiBzb2Z0d2FyZSBjb250ZXh0IGZvciBoYXJkd2Fy
+ZSBjb3VudGVycyIpCgpCYWNrZ3JvdW5kIHdhcyBhIFdBUk5fT04oKSBzdGF0ZW1lbnQgd2hpY2gg
+ZmlyZWQsIGJlY2F1c2Ugc2V2ZXJhbCBQTVUgZGV2aWNlIGRyaXZlcnMKZXhpc3RlZCBpbiBwYXJh
+bGxlbCBvbiBzMzkweCBwbGF0Zm9ybS4KTm90IHN1cmUgaWYgdGhpcyBjb25kaXRpb24gaXMgc3Rp
+bGwgdHJ1ZSBhZnRlciBhbGwgdGhlc2UgeWVhcnMuLi4KCi0tIApUaG9tYXMgUmljaHRlciwgRGVw
+dCAzMzAzLCBJQk0gczM5MCBMaW51eCBEZXZlbG9wbWVudCwgQm9lYmxpbmdlbiwgR2VybWFueQot
+LQpJQk0gRGV1dHNjaGxhbmQgUmVzZWFyY2ggJiBEZXZlbG9wbWVudCBHbWJICgpWb3JzaXR6ZW5k
+ZXIgZGVzIEF1ZnNpY2h0c3JhdHM6IFdvbGZnYW5nIFdlbmR0CgpHZXNjaMOkZnRzZsO8aHJ1bmc6
+IERhdmlkIEZhbGxlcgoKU2l0eiBkZXIgR2VzZWxsc2NoYWZ0OiBCw7ZibGluZ2VuIC8gUmVnaXN0
+ZXJnZXJpY2h0OiBBbXRzZ2VyaWNodCBTdHV0dGdhcnQsIEhSQiAyNDMyOTQKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
