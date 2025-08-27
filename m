@@ -4,144 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44ED9CA0FF9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 15:55:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF772CA0EFF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 15:55:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PX8BHYXB5AdRnhGqUDU9G/jdYAVeMStzQ0qIb7NEsI8=; b=fgKvaQaDO2d+Iq
-	G9hyCLfP/Vt9K9UlLkwzsLIFePfRn1cqKn7lt0mb8boqU+JO11MWSqgcyKjlaRLn7UKO7F7rK+VdJ
-	DaOadokmbnOldOFtAPCv85fKDZGsVT/hdqrLpipc4xRH4OqU9YUw/83tJ5QJUchyEqpX6BrQVL9ig
-	Ncwi55lY3k9JmryilYscL/vuFYASe3ENuhG+pRB6t4qpEasZHLFIA147jpUtfNbGT6XMdGZ2ZHTzJ
-	I96zlS14SpWjVi2GnmT0DfeA32hGb/RUN9FxYo2UNOw/eNlbvzjqRL8fr7R7wQ7w8m6NlWw85Wjje
-	20Fl1cIusM/jmkkvomdQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VR1jYrcqxQj9eauMfo/VR2PB6x3DtcavMK7ldSxExq8=; b=CPPuWS5m7DG87fIYxGdKsL359X
+	WhyFbJPafiGeTMATA9ztzWLDvNU3K9OsGFbu7kmVkwO04mZE+tHkrYBaC9m9wOevyhPoZge4ozxF4
+	oR6xa/rCicW134ZpcCWfe6lOYksk8WZvkFm2kZPvD6ONsb+ci1TYI5TBnXwDlKJWvfZy8RLLD1yDB
+	J4BrFwMLS4Qcd7x0m+JF8cTz19jIUkFr6tY0IibBXj6AbIs8TttJXuKGyqf6UHKyjCZ6Z/jk0LnbZ
+	cpw8DX1P8DlczZZX7ZJ9Y4PtalXPho91uvT4kBVlydKXVWiIfA0w/Bq1NwNKXqBu4ilEJf6mykE8j
+	5hEC7Kzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urIUl-0000000G5Gk-0JVn;
-	Wed, 27 Aug 2025 15:55:31 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1urIUs-0000000G5Qa-0Rij;
+	Wed, 27 Aug 2025 15:55:38 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urGlp-0000000FgQW-1ecc
+	id 1urHAj-0000000Flcl-2f3F
 	for linux-rockchip@lists.infradead.org;
-	Wed, 27 Aug 2025 14:05:02 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57R6kDHX008186
-	for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 14:05:00 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=3n2g0Y56LJ8V+gTCm6izqR6c
-	NmLrEHV5/R5UXj9u9s4=; b=H9ALsPMiECpSZnQXU2DW4FIqnnpUD94/ULdoZiy0
-	qN2lzn8VtL6uoNXZdnR2C+U1A1sUExlCx6MMlJrN4HKN3V6S8a7w07U238xpL4mb
-	y1qQ0jXaTUHWT/mm4aT5sztcNM0AQpow3HRi6R2SYZGgKC78TFHp/WYXicXa7BEi
-	JciTR8mHsb3HCI0x/eOnk6vF9lBZ16987ABMFpPF3ov4RJlGcgEZ45aO6720q+8o
-	YazMiJVLwznoljH6k+S9oQfFgOn1gD/1SFCRjT3up7GVWiVlBP05MBYGx7SONp//
-	yKrzgMxsvrKdmDYIT0tbeoaGU6i+Lh5zyKpk+ZsgzPfflg==
-Received: from mail-io1-f71.google.com (mail-io1-f71.google.com [209.85.166.71])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48sh8ak2rg-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 14:05:00 +0000 (GMT)
-Received: by mail-io1-f71.google.com with SMTP id ca18e2360f4ac-88432d8ddb1so683784839f.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 07:05:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756303499; x=1756908299;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3n2g0Y56LJ8V+gTCm6izqR6cNmLrEHV5/R5UXj9u9s4=;
-        b=uxoKjl0OWxiu21fN2nCRZVr+OyBTtLdX86rvZ5nt3BsP83rDFieopgutmviwNMA2SM
-         iEIEOVmc85XiJjVdrYd9pL96MuCD6GEus8MbNaiR/EoULZyolTGZie5mCTo24R7Lxcgn
-         SfapJ41BfoZO/V/u9a/5e5yj35Wmj1uG63GtX6uMfjIICnNTQ1zC744uTaIMkeUza3IT
-         kNE0E4TGJ6AAhAEhw7F5rmMhmKS1JBSS9z9vuRnZnI04FV3mopfkjOKKpFQ0aWY6Pr8K
-         HHyQi2aFV9VQcrYOLcIzAlwz7mUjCvVQloK0+Yf6XYgmiLRXEAvlt9Jhi4X4xX1Hkze/
-         Sxow==
-X-Forwarded-Encrypted: i=1; AJvYcCX+YiTbu4nuWMuoy3MAlQDdDwAC75xfngJhi4nunRuLjeEoyING5JRR3GeLZ9SwTHV9Lp20KM4re/3Ku0JjeA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzlNkdFRGhaVNW9irqC9ciS2L6dL5dZhDEwBC9FOoi54L7qzhZN
-	n0VPIrVpuFXr1rA0fZLX/ay+AUjQFpI3gHvt7VgodbEMEoZiodb9tpvs2Uz1oRX9DGqtZoP9ReH
-	ph19uNCvVRpTEOX9/t/QS4aCjqDP69TiF7bUZ8n1Kh+kR/KCyOeqj4C4ERfXFWde9MW1y8sMnKR
-	A=
-X-Gm-Gg: ASbGncvi3WANRxfXqp7r1hS5KquWR0v0suZ7hJSObkD+Ct2x2bX8pVteIsX2uHOw3Ax
-	fFCLVMt76pns8ouT3WcTWCj1ND6Su7aMSKSm8gP2QBwFZ9iBhbNgUSHOFOd9f/vQN8TGuB9aZIu
-	FawPMrWX1ktCBPVUrarjimT+uJcCkvW/zewZ21Ecdp2ktTql4f4Db9nfty1OaZ3lMAg9ANQwepu
-	PzHmZj+T2SkrBFLU+Ih6EqKBztLEtfRjHMyh+m69qAE0ikLCx/UHSKoBROlPizUVPLHkK1RfVZK
-	ryy+l2hMCc1dYAhakuDOE2nK1ltB7uK6F80eZLdtHb5odB+RI+zi6xXgBDRDTWKa1ZqTvAl4bUk
-	TLV/qwP/5Hj/2etw405GeGHX/QAQcrv19FN4Q96AmsF0SOJublNu8
-X-Received: by 2002:a05:6e02:1b0c:b0:3ef:1b56:c8ea with SMTP id e9e14a558f8ab-3ef1b56c9f9mr67415915ab.11.1756303498918;
-        Wed, 27 Aug 2025 07:04:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE/xsdrf+XrjtSQ2K8ar35ewr1T+sNBP+/hCqgRfZjcDR4oY8KJbZTP/1e4Kh/mCkfx80z06g==
-X-Received: by 2002:a05:6e02:1b0c:b0:3ef:1b56:c8ea with SMTP id e9e14a558f8ab-3ef1b56c9f9mr67415045ab.11.1756303498104;
-        Wed, 27 Aug 2025 07:04:58 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55f35c11ffesm2878362e87.40.2025.08.27.07.04.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Aug 2025 07:04:56 -0700 (PDT)
-Date: Wed, 27 Aug 2025 17:04:53 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Robert Foss <rfoss@kernel.org>,
-        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-        Jonas Karlman <jonas@kwiboo.se>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Sandy Huang <hjc@rock-chips.com>,
-        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-        Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
-        Samuel Holland <samuel@sholland.org>,
-        Dave Stevenson <dave.stevenson@raspberrypi.com>,
-        =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-        Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-        Liu Ying <victor.liu@nxp.com>,
-        Rob Clark <robin.clark@oss.qualcomm.com>,
-        Dmitry Baryshkov <lumag@kernel.org>,
-        Abhinav Kumar <abhinav.kumar@linux.dev>,
-        Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
-        Sean Paul <sean@poorly.run>,
-        Marijn Suijten <marijn.suijten@somainline.org>,
-        dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
-Subject: Re: [PATCH v2 1/8] drm/connector: let drivers declare infoframes as
- unsupported
-Message-ID: <jrvjvayhjczgb4yx3xshbv3e6ndzkmb7uu3ynoes2maniwjg37@hamxu5mzqmf7>
-References: <20250819-drm-limit-infoframes-v2-0-7595dda24fbd@oss.qualcomm.com>
- <20250819-drm-limit-infoframes-v2-1-7595dda24fbd@oss.qualcomm.com>
- <20250820-artichoke-silkworm-of-election-521b5e@houat>
- <v7w7xkefm6ap7delx7wsvxmc76fwptqhe4ehokzfh4baueb7hr@acrx36exv42v>
- <20250827-adorable-ocelot-of-adventure-ba88b7@houat>
+	Wed, 27 Aug 2025 14:30:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756305043;
+	bh=CWGN5QyW8aVzuD8JBXllBiTdxeWOyRl6ea0U+Z16DpI=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=cZ1SMbSd636b2ZoAm3iGxxvRLaIst6oNUWncvK1P88krSvUJSbxUPfBXJU7ThxPSj
+	 /d2wXNiEEyvcCO7NQ/6gHIy9BiO5++fOn0IrnUiw0SqmX+9CZplfYrUqZdJl4oP77t
+	 zWmV7TI7pjUgEtzmEyG9qeD4LWryovI5ZYTAFSzvWCLmeiNpbp65P65PI/UuVidSQM
+	 uPhRUVvbAaPEyfPZaAowE+xP6NQgdMh4n/bsnnNWuWQH5RJKXFG1JYl+mhZj2nFkGN
+	 zoEogniqlZ8J3BIpI7Wy+35bHhtjrnER/YFQnnBOUIPKrsS3ZNE6ioCghOKlgKA0Wf
+	 Rggff6S2EHA8g==
+Received: from [IPv6:2606:6d00:11:5a76::c41] (unknown [IPv6:2606:6d00:11:5a76::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 78E0617E0B85;
+	Wed, 27 Aug 2025 16:30:42 +0200 (CEST)
+Message-ID: <ee7416c9db2128ab1a8c1bbdc7cd231da21e5b53.camel@collabora.com>
+Subject: Re: [PATCH] media: verisilicon: Explicitly disable all encoder
+ ioctls for decoders
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Paul Kocialkowski <paulk@sys-base.io>, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel
+	 <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Date: Wed, 27 Aug 2025 10:30:40 -0400
+In-Reply-To: <20250826190416.1287089-1-paulk@sys-base.io>
+References: <20250826190416.1287089-1-paulk@sys-base.io>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250827-adorable-ocelot-of-adventure-ba88b7@houat>
-X-Authority-Analysis: v=2.4 cv=cLDgskeN c=1 sm=1 tr=0 ts=68af108c cx=c_pps
- a=WjJghted8nQMc6PJgwfwjA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=2OwXVqhp2XgA:10 a=EUspDBNiAAAA:8 a=WI-fMjCVXOxGoBDYoyYA:9 a=CjuIK1q_8ugA:10
- a=CtjknkDrmJZAHT7xvMyn:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODI2MDE1MyBTYWx0ZWRfXy1Be4PN9yIAE
- 28D+oVjaXa0VxFLZ/fqc810ZVhE22sFGjAhEJooji7NlmEkDR1YA+KrnCrbq0tBFOgjKYT4U1CT
- xI+KDzA8z85TQ9mwo5XCbuOnN7oe6RQVaYL2YR6mipWuq+wno50XGQ0VbbNAAKEcKiRIpWiVYFq
- pgBCX5MY2iE3QoeZSMBwsrkfBih9XeQuE+rOU0Rp8DGmkgBlRT9v533L1z9K20LmuDiG5Arh1st
- 22Nk/FlaYRYgV3N4UnblmLRg+Y+nOOO+EylRYkM8QLxuvX9vSXVR62UJqhLzYv40VoFkOFfxuFa
- KrgaTcRBQKcadVvCUEh9FinmZ6XL7LkEHiC1ua1hJaxSeS4AoInui47UXb+MyAGvav6eNjBGazw
- 1jXnQ1Uf
-X-Proofpoint-GUID: CUVLWxBJJeaOonmBm2P2Hql73rG7MOeO
-X-Proofpoint-ORIG-GUID: CUVLWxBJJeaOonmBm2P2Hql73rG7MOeO
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-27_03,2025-08-26_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 clxscore=1015 malwarescore=0 spamscore=0 adultscore=0
- impostorscore=0 suspectscore=0 priorityscore=1501 phishscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2508260153
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_070501_444501_E1FF78E1 
-X-CRM114-Status: GOOD (  49.47  )
+X-CRM114-CacheID: sfid-20250827_073045_979396_6515CB3A 
+X-CRM114-Status: GOOD (  17.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,127 +85,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============9087429247015993666=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 27, 2025 at 09:30:20AM +0200, Maxime Ripard wrote:
-> Hi,
-> 
-> On Wed, Aug 20, 2025 at 12:52:44PM +0300, Dmitry Baryshkov wrote:
-> > On Wed, Aug 20, 2025 at 09:15:36AM +0200, Maxime Ripard wrote:
-> > > Hi,
-> > > 
-> > > On Tue, Aug 19, 2025 at 09:57:30PM +0300, Dmitry Baryshkov wrote:
-> > > > Currently DRM framework expects that the HDMI connector driver supports
-> > > > all infoframe types: it generates the data as required and calls into
-> > > > the driver to program all of them, letting the driver to soft-fail if
-> > > > the infoframe is unsupported. This has a major drawback on userspace
-> > > > API: the framework also registers debugfs files for all Infoframe types,
-> > > > possibly surprising the users when infoframe is visible in the debugfs
-> > > > file, but it is not visible on the wire.
-> > > > 
-> > > > Let drivers declare that they support only a subset of infoframes,
-> > > > creating a more consistent interface.
-> > > > 
-> > > > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-> > > 
-> > > I'm not really convinced. Infoframes aren't really something you should
-> > > ignore, AVI is effectively mandatory, HDMI kind of is too, AUDIO is if
-> > > audio support is enabled, DRM is mandatory if HDR is used.
-> > 
-> > Nevertheless, sun4i, innohdmi, adv7511, it6263 and rk3066 drivers
-> > provide support only for the AVI infoframe.
-> 
-> Yes, but it's still something we shouldn't paper over. The spec mandates
-> it, if drivers want to deviate from it it's something we should warn
-> about, not silence.
-> 
-> sun4i is a good example, to me at least since I have the doc. The
-> hardware supports AVI, Audio, ACP, and SPD. HDR isn't supported, so DRM
-> isn't either. The only missing one is HDMI, but the documentation isn't
-> the best so it might still be supported. In short, it's a driver issue.
-> 
-> adv7511 supports AVI, Audio, ACP, SPD, ACP, and looks to have a
-> mechanism to send any infoframe as is. So, again, driver issue.
 
-I've send a patch, enabling SPD and VSI (HDMI) InfoFrames on ADV7511.
+--===============9087429247015993666==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-lds37cTVM1G5QNteAxvi"
 
-> 
-> I couldn't find the other datasheet, but I'd be very surprised if it
-> wasn't the case for these too.
-> 
-> > Some of them can be extended to support other infoframe kinds (e.g.
-> > ADV7511 has two spare infoframes which can be used for HDMI and SPD).
-> > 
-> > > SPD is indeed optional though.
-> > > 
-> > > So, it's really dynamic in essence, and not really something we should
-> > > expect drivers to ignore.
-> > > 
-> > > I do acknowledge that a lot of drivers just silently ignore the
-> > > infoframes they don't support at the moment, which isn't great either.
-> > > 
-> > > Maybe we should standardize and document what drivers should do when
-> > > they don't support a given infoframe type?
-> > 
-> > The chips might be generating infoframes internally. This series was
-> > triggered by LT9611UXC, which does all HDMI work under the hood in the
-> > firmware. See [1]. The series I posted hooks HDMI audio directly into
-> > the bridge driver, but I'd really prefer to be able to use
-> > drm_atomic_helper_connector_hdmi_hotplug(), especially if I ever get to
-> > implementing CEC support for it.
-> > 
-> > ADV7511 likewise generates audio infoframe without Linux
-> > help (audio-related fields are programmed, but it's not the
-> > infoframe itself).
-> 
-> Implementing the write_infoframe hooks as a nop with a comment in those
-> case is totally reasonable to me.
-> 
-> I'd still like to document that drivers should only return 0 if they
-> programmed the infoframe, and -ENOTSUPP (and the core logging a warning)
-> otherwise.
-> 
-> That way, we would be able to differentiate between the legimitate
-> LT9611UXC case, and the "driver is broken" sun4i (and others) case.
 
-I don't want to end up in a sitation where userspace has a different
-idea of the InfoFrame being sent than the actual one being present on
-the wire. It seems, we need several states per the infoframe:
+--=-lds37cTVM1G5QNteAxvi
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-- Not supported
-- Autogenerated
-- Generated by software
+Hi Paul,
 
-E.g. in case of ADV7511 we can declare that Audio InfofFrame is
-autogenerated, AVI, HDMI and SPD as 'software-generated' and DRM (HDR)
-as unsupported. LT9611UXC will declare all (need to check) frame types
-as auto.
+Le mardi 26 ao=C3=BBt 2025 =C3=A0 21:04 +0200, Paul Kocialkowski a =C3=A9cr=
+it=C2=A0:
+> Call the dedicated v4l2_disable_ioctl helper instead of manually
+> checking whether the current context is an encoder for the selection
+> ioctls.
+>=20
+> Signed-off-by: Paul Kocialkowski <paulk@sys-base.io>
+> ---
+> =C2=A0drivers/media/platform/verisilicon/hantro_drv.c=C2=A0 | 2 ++
+> =C2=A0drivers/media/platform/verisilicon/hantro_v4l2.c | 6 ++----
+> =C2=A02 files changed, 4 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c
+> b/drivers/media/platform/verisilicon/hantro_drv.c
+> index 4cc9d00fd293..6fb28a6293e7 100644
+> --- a/drivers/media/platform/verisilicon/hantro_drv.c
+> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
+> @@ -916,6 +916,8 @@ static int hantro_add_func(struct hantro_dev *vpu,
+> unsigned int funcid)
+> =C2=A0		vpu->decoder =3D func;
+> =C2=A0		v4l2_disable_ioctl(vfd, VIDIOC_TRY_ENCODER_CMD);
+> =C2=A0		v4l2_disable_ioctl(vfd, VIDIOC_ENCODER_CMD);
+> +		v4l2_disable_ioctl(vfd, VIDIOC_G_SELECTION);
+> +		v4l2_disable_ioctl(vfd, VIDIOC_S_SELECTION);
 
-This way we can implement the checks and still keep userspace from
-having irrelevant data in debugfs.
+Disabling this IOCTL for JPEG is fine, but for VP8, H.264, HEVC, VP9 and AV=
+1, it
+is pretty much mandatory. Otherwise your stream will advertise the padded
+dimentions and there would be no way to tell it that what is the cropping w=
+indow
+for bitstream generation purpose. Considering you are looking forward addin=
+g
+H.264 encoding, do you really want to apply this fix ?
 
-I will update my patchset to implement this, but I have another question
-beforehand: should we just declare VSI support or should it be more exact,
-specifying that the driver support HVS (00:0c:03), HVFS (c4:5d:d8), etc?
+Nicolas
 
-I'm asking, because e.g. MSM HDMI controller has hardware support for
-generating HVS frames (but only HVS, the OUI is not programmed, register
-format doesn't match 1:1 frame contents, etc). I instead ended up using
-GENERIC0, because it was more flexible (it's like SPARE packets on
-ADV7511, the contents is being sent as is). However if we ever need to
-send DRM infoframes, we might need to switch from GENERIC0 to HVS, for
-the price of being unable to send HVFS frames.
+> =C2=A0	}
+> =C2=A0
+> =C2=A0	video_set_drvdata(vfd, vpu);
+> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> index 6bcd892e7bb4..fcf3bd9bcda2 100644
+> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> @@ -663,8 +663,7 @@ static int vidioc_g_selection(struct file *file, void
+> *priv,
+> =C2=A0	struct hantro_ctx *ctx =3D file_to_ctx(file);
+> =C2=A0
+> =C2=A0	/* Crop only supported on source. */
+> -	if (!ctx->is_encoder ||
+> -	=C2=A0=C2=A0=C2=A0 sel->type !=3D V4L2_BUF_TYPE_VIDEO_OUTPUT)
+> +	if (sel->type !=3D V4L2_BUF_TYPE_VIDEO_OUTPUT)
+> =C2=A0		return -EINVAL;
+> =C2=A0
+> =C2=A0	switch (sel->target) {
+> @@ -696,8 +695,7 @@ static int vidioc_s_selection(struct file *file, void
+> *priv,
+> =C2=A0	struct vb2_queue *vq;
+> =C2=A0
+> =C2=A0	/* Crop only supported on source. */
+> -	if (!ctx->is_encoder ||
+> -	=C2=A0=C2=A0=C2=A0 sel->type !=3D V4L2_BUF_TYPE_VIDEO_OUTPUT)
+> +	if (sel->type !=3D V4L2_BUF_TYPE_VIDEO_OUTPUT)
+> =C2=A0		return -EINVAL;
+> =C2=A0
+> =C2=A0	/* Change not allowed if the queue is streaming. */
 
-WDYT?
+--=-lds37cTVM1G5QNteAxvi
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
--- 
-With best wishes
-Dmitry
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaK8WkAAKCRDZQZRRKWBy
+9Dy5AP9BlYKxmYz3Vh7ZeTTdQOGB/NmwSTfOJ6Fru/KbSjvVuAEAqEBrdJ8AYj/C
+xBY4IL6675kS8V2F/EWZbXTkg/jwtwg=
+=5Uaf
+-----END PGP SIGNATURE-----
+
+--=-lds37cTVM1G5QNteAxvi--
+
+
+--===============9087429247015993666==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============9087429247015993666==--
+
