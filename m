@@ -4,82 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C64ECA0EFF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 15:56:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8750CA0EFF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 17:08:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Zs66E0U2xp3la4aQsGYRdRF0kZw8Bp5AKV3Mmt0G1kg=; b=cRgTk6ncUC7LI5+nsPhclYu4z/
-	E3YC4iOVjciWhB9yb3LkgIJH8Gm19rXGCYXU10CyiW/TmUXjCdofXb4LLd2lJLiSsi6VXLcuL+oVN
-	0Q3RIJcuGzLvYGqNkX3yqgakKFq2aOH7RwM1qkkO5vQZcyWC0/vASZnE5Y4LWzYWWFNmBAD3FwZVM
-	y3ImUkBr7d9oucvB829aOI9ufdzGrwjXijijz9cDikJL3kcJ1hgxUabn6hU0NgVdQPI7lCE8OJI6u
-	VS2JKI31PVmda5teyrHlYuqKs3Gqf4RBIm/MzwiqktLnmPQ45ZjvyqTyM1SFZUSrI1j2dmT2W/nTB
-	PXrz9Rbw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kbPQRtidPOjVIaid80Gj9ZTH+dif595C70asjcDn934=; b=zXwIa5mELCyqCX
+	vc3pw3PMZ5Ol4h9OKH16qxzrv6gkvgLyw+bWmZ/F4DxrXMVOGLdN6KhVCJge9Bwogj6cuzYTOK7W9
+	i57zlV56vg4M76Xw4gilxep4zN92qqbex0Lc5FKeGP/ffCty4ewtlFXs7HMZttCC0uskfUM6rskmz
+	623Ro5WqNmIKVTi9rJHMMDHZgD0p2gYu7GtKpz9f8ZqlDTHSfszPmyyvqC+ri8+BjePYNvb5CFbUI
+	/UfFngCZGb5iuM81MDIccbemsyj8dm7sUymbtAFgj2IA/I8ongZEzC/hXFjyL81CKnYqw53HBzLqM
+	cjY11GeVX53vq05YNcXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urIVo-0000000G5wA-0e7x;
-	Wed, 27 Aug 2025 15:56:36 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1urJdV-0000000GGG9-3jpQ;
+	Wed, 27 Aug 2025 17:08:37 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urHRg-0000000FoBs-1WMx;
-	Wed, 27 Aug 2025 14:48:17 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-61c3b84df28so6579103a12.1;
-        Wed, 27 Aug 2025 07:48:16 -0700 (PDT)
+	id 1urH7G-0000000Fl5G-1BPm;
+	Wed, 27 Aug 2025 14:27:11 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-45a1b0d224dso36720135e9.3;
+        Wed, 27 Aug 2025 07:27:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1756306095; x=1756910895; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=f8Q+4WGdnzVSInxrR9e7vImmCQtyEK2zoJrrwmy0Jcg=;
-        b=RwPZ2mJfE1WvZIgXa7vJcIxVsGDGsZBwD/wgsegON1+L8fPb4w4RFSbDXe3fjW71YG
-         YO4BX224coM/K/hZTRP1wS26LxItVkNnInuxPbbSv4w3DMSlc7WdvD5r3xKbRttUVlKl
-         ndKC07UEbdJs9btT4yY636Fk2npLPDAi4x357inHwQUaO9XReSpq54m/d4w/93oAk1ky
-         Y/6Ayv3ARTIlxJ4b0wfJmgTt0EY5EczNFoxTmUOV4fu6tqWC7ksRYlSoHqJdc632NzW0
-         sDrgu/+vQFiBtxYU0uEIDbjJ76alsogtypuLkQHuo0FYMxKSOfeNAcbkpJVmaMkK/zEf
-         vSmA==
+        d=gmail.com; s=20230601; t=1756304828; x=1756909628; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=OlWIdPkGg4S2fo5kB16i5sKgEKgxu7PrfmJLsX5dU8c=;
+        b=KnYva5N1V7XvUc3Ja1q+CY0KP8jIpL/HG4UHr+LkwimLlFFuI95fM2OqVQHd/fs8LU
+         OcFaLw4JEUvMSyu2NkCCzf8zs3IsfPh+wUPxW+w01Fwscs1iRxyALr+2cLMmlfVmUKZf
+         EBrwiseqOE7rb1bkv35/ETtiioYzU1VHahn33kuq+a8NxmzE0RyYobFISIvHQxPSdOw7
+         XQCDJhPfMR6br6AmQeFznl/t3OW8DzljBXgLgIpBFoJj8i2VuFrMD57fwMYL2aHclgGD
+         jsKmEUqsABFmGc5GzBx/4yn0EJTH7ciWiBaDvZZi0QlURG7kOCR7zc3Ha5zVo5KoyL1U
+         mkKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756306095; x=1756910895;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=f8Q+4WGdnzVSInxrR9e7vImmCQtyEK2zoJrrwmy0Jcg=;
-        b=vv+sffDBst/RbGTmuYBSZ6z0igLpZpEHFMGacXd0JN2isusGxRPzATBYHB1kLelG6e
-         7ivF30XitgHSCsUbWwGIiKo+9y0HUIyBwBAAoiEqW1dvVrjxH61SUf9TbTT0xS3IvQwN
-         Sc+UhdG6gg4rylWkpAFk1SKLIN14UDQO1DgH8uj9SB2vovLtpMfl/6L8tTIjyPNUSqoO
-         e0wOrxeeqT69GRJUeg7Gr7sJpChmkJi5Y2kJrmN6IwjPt1XPOoFAE9IRnUQ6bJNPfgnj
-         EXlFUBWrKESbvZ0hdXDT82sJVjJ47qqRk0Xsy+Wrh9q+Up6Gw9+mk6kTbb2DCbZmdGFR
-         MpPA==
-X-Forwarded-Encrypted: i=1; AJvYcCW/xvVtvmbxCf6njNzDxlGkIiscvTfRcTxvJ/SIKqaz/mgKpegVm7L44boptVhht2rLJbmTyaDNjOjxjlOn9NqJ@lists.infradead.org, AJvYcCXcPZdglCMBuIfMtcDjKDOymDxlMejydkq1+fa8rkzejnqxNH/wG9Ip3gEtk9dQzRu+UoD5+7EBEaNFhwmVfAs=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwUH6yeUyBpXmVbuFwbM6OLBuvGLiT40lXezXbSJvYuDmR7WGVa
-	It7ilKFH7HxmyHBJNnVPTF/qnxbG0Qpbr5QN91aNS339h+z1osO444ZxO9LLj2ku6bjRkxU4NVw
-	ZDbPiKD+7cEjaaCMqoMQjJkhLm2lDCdI=
-X-Gm-Gg: ASbGncsBLQfd7ZqZ92FMcJNn+yNKYMB32rvOjikJ2+OkboH40h4KV+cOzdelX9bkbn+
-	vYdsOFcKJLg3ZDWbVsw955ycXgO/b/qQ3PopPTxh1f4jxu8TrGVI3sucbukQqFExkGQ6IrT7WMN
-	PfuwYXjmOZmGj8p7ysfvnlynLuLjNOH5BQxZT1spyOnfZAldT4zD0sk1QOf59NXJbi9l6Dn/Gnc
-	CKh2BHgetvIm6YaStahBD2xlQ9BBxbrNPQoF75qhFhrEA==
-X-Google-Smtp-Source: AGHT+IGSFBtc8BrDM7VUweQwXXMCtFRHX+kesW91DLtCc0fhgEwBQiuZn738srV9V3e9Izk4q+U6vcOlHWCa6GnVdTs=
-X-Received: by 2002:a05:6402:35d1:b0:61c:74fc:3291 with SMTP id
- 4fb4d7f45d1cf-61c74fc4143mr8418400a12.16.1756306094655; Wed, 27 Aug 2025
- 07:48:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250827142705.1644267-1-pbrobinson@gmail.com>
-In-Reply-To: <20250827142705.1644267-1-pbrobinson@gmail.com>
+        d=1e100.net; s=20230601; t=1756304828; x=1756909628;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OlWIdPkGg4S2fo5kB16i5sKgEKgxu7PrfmJLsX5dU8c=;
+        b=qV1n6JHghrjApz3+mUvC1m9dnIJIY0vfpLI+FyyEN8MeE8lfYbIWAhZruTKACkvzJa
+         ItLVaiW9l0M+YcgK0Uip2e2jev5gnX16pt/8BSKHhhDev64dMETfzzHMf4LrfdQrZHXG
+         91fHELLSoXZkQLqLkf01qvfB9ffj13ulxlQ6/SFin/d4i7/XwgtSdEf47XG4PIaIVAm6
+         srBy95bzxNzidmYgmrkvOQN8HfkbE1YFZuH8Mu/xRMLc48EXibM+aL3wZpRMTw8xOHcD
+         4CNF2sakaRn9z2OqHyxSP52D2rewneVqgLxFLfvNGU0frQc73fKAgARpZ9Ayb2WG6gQT
+         VetA==
+X-Forwarded-Encrypted: i=1; AJvYcCUYbcrMt0GCnwy18V+39P6QZe4Q7DYL3L6Ju2sX1MW5fZj4Ju3F9hIJhGR1IGcSfAJTgGmyX04a7XL49NZoHGMG@lists.infradead.org, AJvYcCVBDkin7fM/m2jiTzMXIBmkS773IoazKKX4rfQkzJbMY/2xqPhiIPgNq7FC61bs3sd9awN29n6fsWEMVbh7R/c=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxINcR5463l49EXiNMJvPvljg4Zqwuja+fvl5rXhC9tUu8X98hL
+	vfBhJq3LL0WE5AlMYsf7ZdkfefzFavScJ7gFSoICmiDiuNEK2JWTy84Wu3rrQF6+
+X-Gm-Gg: ASbGnctP95pjQwAHRhPND84Dldt1tt/1QmYwlTspMrXNlxIzW4aa10op6ARK/3rT9eF
+	zlwlIDaKn2EvatQOon3m04xKjw5XtzcAb3IQzbF963liWzXN5NyAS/gGVl3ILCbDQ2qReZYwpGf
+	EFoRIH8BhXvKT/g3GzfZ+0/GOx2la4BhYph64Q0OVekttTgIRY25mJKUigFaTslUEpsqEKa1t+O
+	5d+bkOq0hI+Kq98q9peREdaFJZf0Qpl+GM0oMr8ey1V7S6Y12MOWhUWfX/sCD/IvbCYoKYRZPd3
+	69EgHjF0tkyC8t+P0WwPyi+ESeNYvyG7NKeOmblcR6POj+EUOFStHtu5f+JqQV+2vwbcyFaE1/F
+	urdrzJiC3SQw1J3GGkCPkUbVy0y91oZ8hANrPXtPtCkB9AgH8yQG3s6LmhLGaOLx+Ieoz0NAER6
+	ZKkjhs9aFvfM+UY3+nwHtqtt88eKOGsK/FGck7CHVSq6aCU+a3RsCh
+X-Google-Smtp-Source: AGHT+IFNCwrMfbz7LD21TXZtyQIGGdT67AQlxP0BxYWJyMfjYOfyk6JYYh10ZJLjj2OlUZIF5cWMxA==
+X-Received: by 2002:a05:600c:1f8f:b0:456:1a41:f932 with SMTP id 5b1f17b1804b1-45b517b9a7bmr143052535e9.22.1756304828087;
+        Wed, 27 Aug 2025 07:27:08 -0700 (PDT)
+Received: from cypher.home.roving-it.com (7.9.7.f.b.1.3.0.b.8.f.0.9.e.0.0.1.8.6.2.1.1.b.f.0.b.8.0.1.0.0.2.ip6.arpa. [2001:8b0:fb11:2681:e9:f8b:31b:f797])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3c70e4b9e1fsm22735499f8f.14.2025.08.27.07.27.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 Aug 2025 07:27:07 -0700 (PDT)
 From: Peter Robinson <pbrobinson@gmail.com>
-Date: Wed, 27 Aug 2025 15:48:02 +0100
-X-Gm-Features: Ac12FXxM_9DtiKI9RRGn4o5JIdHybIk7XVWMWvt3g-3GgEvDpXvoAId_5kV4DWY
-Message-ID: <CALeDE9PY9+oAa=tv_D4ordJCaOE6b8+_eBAzeq7xwDZ9Gx6szg@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add vcc-supply to SPI flash on
- Pinebook Pro
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Diederik de Haas <didi.debian@cknow.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
+Cc: Peter Robinson <pbrobinson@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Add vcc-supply to SPI flash on Pinebook Pro
+Date: Wed, 27 Aug 2025 15:26:57 +0100
+Message-ID: <20250827142705.1644267-1-pbrobinson@gmail.com>
+X-Mailer: git-send-email 2.51.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_074816_401672_1F9C1013 
-X-CRM114-Status: GOOD (  18.57  )
+X-CRM114-CacheID: sfid-20250827_072710_332071_9F8E9A6F 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,38 +103,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Apologies, I believe I've already sent this and it's been applied.
+As described in the pinebookpro_v2.1_mainboard_schematic.pdf page 10,
+he SPI Flash's VCC connector is connected to VCC_3V0 power source.
 
-On Wed, 27 Aug 2025 at 15:27, Peter Robinson <pbrobinson@gmail.com> wrote:
->
-> As described in the pinebookpro_v2.1_mainboard_schematic.pdf page 10,
-> he SPI Flash's VCC connector is connected to VCC_3V0 power source.
->
-> This fixes the following warning:
->
->   spi-nor spi1.0: supply vcc not found, using dummy regulator
->
-> Fixes: 5a65505a69884 ("arm64: dts: rockchip: Add initial support for Pinebook Pro")
-> Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-> index 5a8551d9ffe47..b33a1509a8e93 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-> @@ -959,6 +959,7 @@ spiflash: flash@0 {
->                 reg = <0>;
->                 m25p,fast-read;
->                 spi-max-frequency = <10000000>;
-> +               vcc-supply = <&vcc_3v0>;
->         };
->  };
->
-> --
-> 2.51.0
->
+This fixes the following warning:
+
+  spi-nor spi1.0: supply vcc not found, using dummy regulator
+
+Fixes: 5a65505a69884 ("arm64: dts: rockchip: Add initial support for Pinebook Pro")
+Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+index 5a8551d9ffe47..b33a1509a8e93 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+@@ -959,6 +959,7 @@ spiflash: flash@0 {
+ 		reg = <0>;
+ 		m25p,fast-read;
+ 		spi-max-frequency = <10000000>;
++		vcc-supply = <&vcc_3v0>;
+ 	};
+ };
+ 
+-- 
+2.51.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
