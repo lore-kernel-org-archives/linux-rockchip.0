@@ -4,197 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00042CA0EFF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 15:55:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44ED9CA0FF9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 15:55:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JtTdnkIVD+zu63UY6KBSti8LbhbFaNKHJ3Aprbn9FyM=; b=svpEw7lPr2kJGa
-	xzrGrhJl+vvGZuNbllv2fce38j1qAFTIbmhkDfJrDAefjjhisMktV0Ue2N9fpMO6mVjory8lzqxkG
-	xEpzdqwfZt4gh6UM3V5DDd/CaqGfBGMEgv8Ph1Fyj7hjd5PLHQFT2T2BayYklb27/rQQVsv0yR957
-	PII27i8Xi1J7rAB1Xf/HBXHJLXYI+y2bwh+ya/fREslI6Iq+7OxopE32Z7kEOKH2ZKol4uKTg4jie
-	7zNRnNnaM77BlU48RxIXUxPd8II+K/TAtSksyYQDqlr/IzQu2aT/OTjJFFBzwqK0BNhlXTqf9Oi9f
-	rPB/kYrHzlPuv5zGUH6g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PX8BHYXB5AdRnhGqUDU9G/jdYAVeMStzQ0qIb7NEsI8=; b=fgKvaQaDO2d+Iq
+	G9hyCLfP/Vt9K9UlLkwzsLIFePfRn1cqKn7lt0mb8boqU+JO11MWSqgcyKjlaRLn7UKO7F7rK+VdJ
+	DaOadokmbnOldOFtAPCv85fKDZGsVT/hdqrLpipc4xRH4OqU9YUw/83tJ5QJUchyEqpX6BrQVL9ig
+	Ncwi55lY3k9JmryilYscL/vuFYASe3ENuhG+pRB6t4qpEasZHLFIA147jpUtfNbGT6XMdGZ2ZHTzJ
+	I96zlS14SpWjVi2GnmT0DfeA32hGb/RUN9FxYo2UNOw/eNlbvzjqRL8fr7R7wQ7w8m6NlWw85Wjje
+	20Fl1cIusM/jmkkvomdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urIUn-0000000G5Js-11hA;
-	Wed, 27 Aug 2025 15:55:33 +0000
-Received: from mail-swedencentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c202::7] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1urIUl-0000000G5Gk-0JVn;
+	Wed, 27 Aug 2025 15:55:31 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urH3i-0000000FkIe-3dIE;
-	Wed, 27 Aug 2025 14:23:32 +0000
-ARC-Seal: i=2; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
- b=l0l4DuK96lduUaEv82/Y/uuPyITH8zcw+/R2m4L7UVlrKoq0iZEXGzS77yQWTrfm0Vvn++jnNOl8D3N8QHePTrP4qSMj8cGc8XPv1LBy2SZ1NHu8ZXavbrgH+81e6lsKtV0mz46KJHs4681TvzwzrA4XpT+UN+jGvL06h8rW15vsw9wXCCpJDQjP9MPIF3KnEFqlO7Jb8vj2/5CmQL8xrv4iUonKcZ3kZ46FX2F2CEJJquuFU2oRJE9KwicpiKNK5+Ng+chMkCtUlO97mPeiY4oKihVQag4B4/t+ycgu0SelXw/lua5siwTNBbu0VkamqVPFZ+w21Ha/SxzLrYKCAw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yC8Rq4O13ul6tQEc+DZhi1maEyzDmQkAOPKUfpIO3eY=;
- b=K+K4b/W49Co48OSLc6aYFkv90ORfagO6QZ2fTDdBUGCFElp/0Dkvv8YZTzCrOYjB1kZ2ietQ2PnlQM4AO1mh1Mr2gHhjd/hcLu85Un7bjeMI5SThWBUZPEfxYZYKsnbvSpYPXaamAVfPDZ1cva2vzRRw3byjnsswaELcPHtXvRIGVOC/7PsIYgTiag4Oge6vfy0H1ylZffxfb5dyQYIB+PhJ+fTwDRh1rOTHVTvXv3NgvFt0Qu7ugQY8hTivVtyOhNg2uf3wWfhj4E1y/jbYo4oSR4X969j3uncp4lCc0xxAacE4EendnzzUq0+N3Ypb7XqyDrop8C7RkbhdR7DjRw==
-ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
- 4.158.2.129) smtp.rcpttodomain=sntech.de smtp.mailfrom=arm.com; dmarc=pass
- (p=none sp=none pct=100) action=none header.from=arm.com; dkim=pass
- (signature was verified) header.d=arm.com; arc=pass (0 oda=1 ltdi=1
- spf=[1,1,smtp.mailfrom=arm.com] dmarc=[1,1,header.from=arm.com])
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arm.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yC8Rq4O13ul6tQEc+DZhi1maEyzDmQkAOPKUfpIO3eY=;
- b=Tw8QaZdr41BnlQ7Hp4ML+I+ypOeXNdZT6d1x70Um28BGxmPpjVV9azPQVJ7po7EHWNdpXD5v9rWb8lKQCz1ylLS4OJpXyWgpy72kTucVp28F75rP0NHVo+fvDBxF6a8/ncoJOlK0mxP3xygoIWmqpzBc6piR1NwQ2OfV/13M68A=
-Received: from CWLP123CA0252.GBRP123.PROD.OUTLOOK.COM (2603:10a6:400:19e::21)
- by AS8PR08MB9388.eurprd08.prod.outlook.com (2603:10a6:20b:5ab::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9031.24; Wed, 27 Aug
- 2025 14:22:56 +0000
-Received: from AMS0EPF000001A4.eurprd05.prod.outlook.com
- (2603:10a6:400:19e:cafe::5d) by CWLP123CA0252.outlook.office365.com
- (2603:10a6:400:19e::21) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9073.13 via Frontend Transport; Wed,
- 27 Aug 2025 14:22:56 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 4.158.2.129)
- smtp.mailfrom=arm.com; dkim=pass (signature was verified)
- header.d=arm.com;dmarc=pass action=none header.from=arm.com;
-Received-SPF: Pass (protection.outlook.com: domain of arm.com designates
- 4.158.2.129 as permitted sender) receiver=protection.outlook.com;
- client-ip=4.158.2.129; helo=outbound-uk1.az.dlp.m.darktrace.com; pr=C
-Received: from outbound-uk1.az.dlp.m.darktrace.com (4.158.2.129) by
- AMS0EPF000001A4.mail.protection.outlook.com (10.167.16.229) with Microsoft
- SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9073.11
- via Frontend Transport; Wed, 27 Aug 2025 14:22:54 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=k12/1ovZeDcUQPqQOoXLzhXNQScCjZloHN2R/C5P6mk/zSbcGygmNLvPNf42BfLX40mHmqHLmPBgjFhqXIqXIR0hRTB6nxydgtixtiScf74N2PQH+VrVP6Kemhy3je0gHnwytIUYeR37OrY5RQ0N8J49OBLYXead84p3nlSh70ovDCMYJT+Ifbx1MtzgqP3UbPgRh2w3oztmBFriw6yjh6PbINcbo5Fvivyscyvw1jWbqmV5Q7CazxwEBYEvbdCQrjPBtUn4TPHytpQQ/kwqXDNzL2Za8z1FlCAUGSP5tFrdZtojZgWxuqiSTn/rptCr0vAuuri/7Ztmny4LWQ882Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yC8Rq4O13ul6tQEc+DZhi1maEyzDmQkAOPKUfpIO3eY=;
- b=usc/cRYLFVVS6uKyMBLhPNVugbm6dOsWITa5urIKECPw9ip4E0RlAYM08+LH/D+GI9z0NQPzVF3l/GA92bU4C4WadPpYgM+9eWxfczvxG0gmVC9bCjTseVNjb/iqXGBlpcQHUgpkafpsnRCMGu5GnIZ/rBoIoypZ4m36dgcJI28SYvoXlGq05TEktbrsfFizjJJhLfTg0SMfL0ZHcTATTxWSQGa0L+oMzebkqC621+H8NnjC9q+otfzwz/xS/apDZX4KZlkXM5/Oz4ibULg8h6bNwyiM+kLdJz6NqfyHc5tXqW4Yo7G5yF2JfxrcXCVjWDPItAMkRUZSihXvsZ6M1Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 172.205.89.229) smtp.rcpttodomain=sntech.de smtp.mailfrom=arm.com; dmarc=pass
- (p=none sp=none pct=100) action=none header.from=arm.com; dkim=none (message
- not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arm.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yC8Rq4O13ul6tQEc+DZhi1maEyzDmQkAOPKUfpIO3eY=;
- b=Tw8QaZdr41BnlQ7Hp4ML+I+ypOeXNdZT6d1x70Um28BGxmPpjVV9azPQVJ7po7EHWNdpXD5v9rWb8lKQCz1ylLS4OJpXyWgpy72kTucVp28F75rP0NHVo+fvDBxF6a8/ncoJOlK0mxP3xygoIWmqpzBc6piR1NwQ2OfV/13M68A=
-Received: from AM0PR10CA0027.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:208:17c::37)
- by AS8PR08MB10195.eurprd08.prod.outlook.com (2603:10a6:20b:629::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.17; Wed, 27 Aug
- 2025 14:22:21 +0000
-Received: from AM1PEPF000252DD.eurprd07.prod.outlook.com
- (2603:10a6:208:17c:cafe::a1) by AM0PR10CA0027.outlook.office365.com
- (2603:10a6:208:17c::37) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9073.16 via Frontend Transport; Wed,
- 27 Aug 2025 14:22:21 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 172.205.89.229)
- smtp.mailfrom=arm.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=arm.com;
-Received-SPF: Pass (protection.outlook.com: domain of arm.com designates
- 172.205.89.229 as permitted sender) receiver=protection.outlook.com;
- client-ip=172.205.89.229; helo=nebula.arm.com; pr=C
-Received: from nebula.arm.com (172.205.89.229) by
- AM1PEPF000252DD.mail.protection.outlook.com (10.167.16.55) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.9073.11 via Frontend Transport; Wed, 27 Aug 2025 14:22:21 +0000
-Received: from AZ-NEU-EX05.Arm.com (10.240.25.133) by AZ-NEU-EX05.Arm.com
- (10.240.25.133) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Wed, 27 Aug
- 2025 14:22:15 +0000
-Received: from e134992.cambridge.arm.com (10.1.196.71) by mail.arm.com
- (10.240.25.133) with Microsoft SMTP Server id 15.1.2507.39 via Frontend
- Transport; Wed, 27 Aug 2025 14:22:15 +0000
-From: <anton.kirilov@arm.com>
-To: Heiko Stuebner <heiko@sntech.de>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-	<nd@arm.com>, Anton Kirilov <anton.kirilov@arm.com>
-Subject: [PATCH] arm64: dts: rockchip: Enable the NPU on NanoPi R6C/R6S
-Date: Wed, 27 Aug 2025 15:22:10 +0100
-Message-ID: <20250827142210.2221606-1-anton.kirilov@arm.com>
-X-Mailer: git-send-email 2.43.0
+	id 1urGlp-0000000FgQW-1ecc
+	for linux-rockchip@lists.infradead.org;
+	Wed, 27 Aug 2025 14:05:02 +0000
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57R6kDHX008186
+	for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 14:05:00 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=3n2g0Y56LJ8V+gTCm6izqR6c
+	NmLrEHV5/R5UXj9u9s4=; b=H9ALsPMiECpSZnQXU2DW4FIqnnpUD94/ULdoZiy0
+	qN2lzn8VtL6uoNXZdnR2C+U1A1sUExlCx6MMlJrN4HKN3V6S8a7w07U238xpL4mb
+	y1qQ0jXaTUHWT/mm4aT5sztcNM0AQpow3HRi6R2SYZGgKC78TFHp/WYXicXa7BEi
+	JciTR8mHsb3HCI0x/eOnk6vF9lBZ16987ABMFpPF3ov4RJlGcgEZ45aO6720q+8o
+	YazMiJVLwznoljH6k+S9oQfFgOn1gD/1SFCRjT3up7GVWiVlBP05MBYGx7SONp//
+	yKrzgMxsvrKdmDYIT0tbeoaGU6i+Lh5zyKpk+ZsgzPfflg==
+Received: from mail-io1-f71.google.com (mail-io1-f71.google.com [209.85.166.71])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48sh8ak2rg-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 14:05:00 +0000 (GMT)
+Received: by mail-io1-f71.google.com with SMTP id ca18e2360f4ac-88432d8ddb1so683784839f.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 27 Aug 2025 07:05:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756303499; x=1756908299;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3n2g0Y56LJ8V+gTCm6izqR6cNmLrEHV5/R5UXj9u9s4=;
+        b=uxoKjl0OWxiu21fN2nCRZVr+OyBTtLdX86rvZ5nt3BsP83rDFieopgutmviwNMA2SM
+         iEIEOVmc85XiJjVdrYd9pL96MuCD6GEus8MbNaiR/EoULZyolTGZie5mCTo24R7Lxcgn
+         SfapJ41BfoZO/V/u9a/5e5yj35Wmj1uG63GtX6uMfjIICnNTQ1zC744uTaIMkeUza3IT
+         kNE0E4TGJ6AAhAEhw7F5rmMhmKS1JBSS9z9vuRnZnI04FV3mopfkjOKKpFQ0aWY6Pr8K
+         HHyQi2aFV9VQcrYOLcIzAlwz7mUjCvVQloK0+Yf6XYgmiLRXEAvlt9Jhi4X4xX1Hkze/
+         Sxow==
+X-Forwarded-Encrypted: i=1; AJvYcCX+YiTbu4nuWMuoy3MAlQDdDwAC75xfngJhi4nunRuLjeEoyING5JRR3GeLZ9SwTHV9Lp20KM4re/3Ku0JjeA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzlNkdFRGhaVNW9irqC9ciS2L6dL5dZhDEwBC9FOoi54L7qzhZN
+	n0VPIrVpuFXr1rA0fZLX/ay+AUjQFpI3gHvt7VgodbEMEoZiodb9tpvs2Uz1oRX9DGqtZoP9ReH
+	ph19uNCvVRpTEOX9/t/QS4aCjqDP69TiF7bUZ8n1Kh+kR/KCyOeqj4C4ERfXFWde9MW1y8sMnKR
+	A=
+X-Gm-Gg: ASbGncvi3WANRxfXqp7r1hS5KquWR0v0suZ7hJSObkD+Ct2x2bX8pVteIsX2uHOw3Ax
+	fFCLVMt76pns8ouT3WcTWCj1ND6Su7aMSKSm8gP2QBwFZ9iBhbNgUSHOFOd9f/vQN8TGuB9aZIu
+	FawPMrWX1ktCBPVUrarjimT+uJcCkvW/zewZ21Ecdp2ktTql4f4Db9nfty1OaZ3lMAg9ANQwepu
+	PzHmZj+T2SkrBFLU+Ih6EqKBztLEtfRjHMyh+m69qAE0ikLCx/UHSKoBROlPizUVPLHkK1RfVZK
+	ryy+l2hMCc1dYAhakuDOE2nK1ltB7uK6F80eZLdtHb5odB+RI+zi6xXgBDRDTWKa1ZqTvAl4bUk
+	TLV/qwP/5Hj/2etw405GeGHX/QAQcrv19FN4Q96AmsF0SOJublNu8
+X-Received: by 2002:a05:6e02:1b0c:b0:3ef:1b56:c8ea with SMTP id e9e14a558f8ab-3ef1b56c9f9mr67415915ab.11.1756303498918;
+        Wed, 27 Aug 2025 07:04:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE/xsdrf+XrjtSQ2K8ar35ewr1T+sNBP+/hCqgRfZjcDR4oY8KJbZTP/1e4Kh/mCkfx80z06g==
+X-Received: by 2002:a05:6e02:1b0c:b0:3ef:1b56:c8ea with SMTP id e9e14a558f8ab-3ef1b56c9f9mr67415045ab.11.1756303498104;
+        Wed, 27 Aug 2025 07:04:58 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55f35c11ffesm2878362e87.40.2025.08.27.07.04.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 Aug 2025 07:04:56 -0700 (PDT)
+Date: Wed, 27 Aug 2025 17:04:53 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Robert Foss <rfoss@kernel.org>,
+        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+        Jonas Karlman <jonas@kwiboo.se>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Sandy Huang <hjc@rock-chips.com>,
+        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+        Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
+        Samuel Holland <samuel@sholland.org>,
+        Dave Stevenson <dave.stevenson@raspberrypi.com>,
+        =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
+        Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+        Liu Ying <victor.liu@nxp.com>,
+        Rob Clark <robin.clark@oss.qualcomm.com>,
+        Dmitry Baryshkov <lumag@kernel.org>,
+        Abhinav Kumar <abhinav.kumar@linux.dev>,
+        Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
+        Sean Paul <sean@poorly.run>,
+        Marijn Suijten <marijn.suijten@somainline.org>,
+        dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
+Subject: Re: [PATCH v2 1/8] drm/connector: let drivers declare infoframes as
+ unsupported
+Message-ID: <jrvjvayhjczgb4yx3xshbv3e6ndzkmb7uu3ynoes2maniwjg37@hamxu5mzqmf7>
+References: <20250819-drm-limit-infoframes-v2-0-7595dda24fbd@oss.qualcomm.com>
+ <20250819-drm-limit-infoframes-v2-1-7595dda24fbd@oss.qualcomm.com>
+ <20250820-artichoke-silkworm-of-election-521b5e@houat>
+ <v7w7xkefm6ap7delx7wsvxmc76fwptqhe4ehokzfh4baueb7hr@acrx36exv42v>
+ <20250827-adorable-ocelot-of-adventure-ba88b7@houat>
 MIME-Version: 1.0
-X-EOPAttributedMessage: 1
-X-MS-TrafficTypeDiagnostic: AM1PEPF000252DD:EE_|AS8PR08MB10195:EE_|AMS0EPF000001A4:EE_|AS8PR08MB9388:EE_
-X-MS-Office365-Filtering-Correlation-Id: ba54543a-e464-454b-0b2f-08dde57536d2
-x-checkrecipientrouted: true
-NoDisclaimer: true
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam-Untrusted: BCL:0;ARA:13230040|82310400026|1800799024|36860700013|376014;
-X-Microsoft-Antispam-Message-Info-Original: =?us-ascii?Q?IsVClAKvZ3bAtBKBzc7S3TAsP/B4Ry6JrhBeSMSr/cB1BaBXN1pY4RCg1xpD?=
- =?us-ascii?Q?ohX5UCaqJ1dS5UE1AfCZj91mX7uBBfpmqmKK5BUNBFxRib5JZWJzeYhnzwNh?=
- =?us-ascii?Q?m8X8pre2+TaShOWVgp50h7eEnyNuqdw+C59gY+1d0NgTdI5FD/mJiH0xqBiW?=
- =?us-ascii?Q?qxv+T6uZQL4U3yeCMis4oAW0OWyTil0tOnPLNxA9YaRetlkiYh2RLK+ih0mL?=
- =?us-ascii?Q?xwaOqx2glr+wvB/m7VkIlNjd+C+VPD1OJJlQndr5O1MbUfDWf9hASbSQYqJa?=
- =?us-ascii?Q?LQ1cj+qPU6DTXu86QaytgWhZkCIKcUN2kkJi1ASEVx4U5P71STQWbtM275Ef?=
- =?us-ascii?Q?JWjMk24kqpWZL+EFs05kyUiHcAjhn1H+CyfjALBtJOOC3cTnfNwkwuSIR7tg?=
- =?us-ascii?Q?DlbqsQiza3TM4ebbJLiCqkiM+cCyNWfdpKPkRkWCh6m5Lfs56OMRer55Iuj1?=
- =?us-ascii?Q?qeuJ47E6zOK/f/prKEDjClFga5Ywx+qFyu3p7zBNKCXaQ8ij9NgIWw2Vj/dU?=
- =?us-ascii?Q?HFjLRPyJ0olOhR1Tt0LH/SeoHoWs17jcdWa/l7L8jmsWlsMBodEczKtlYsl8?=
- =?us-ascii?Q?VMYgMXn7IqkXW9T8YMEhffYkZKaCXSZFhCq20vkF7umgwj3SZ/rSy05in10W?=
- =?us-ascii?Q?uTSFe4gpInFYNpk1l2t5ekG3QY8mAmdphVvbrFE0I+c2hfNrpRJaS1/U01VO?=
- =?us-ascii?Q?I3ozJ71wtyewoKc5fM2NvGck/c5q0JKXvnGAT8ortV1kGclLX02HQFYnHoJw?=
- =?us-ascii?Q?imwpbcx1g+uB0qNWiFB7QTrHng8cY17YvLfGC/RjT6ukJEW3Hkiqx6moPN37?=
- =?us-ascii?Q?vn96PUeIICadBAcViecY7MdOxkPsM1C1XmGo4t54TS5YEVbrT48foRQvAJ9H?=
- =?us-ascii?Q?zp77SHBbxWGsLfok/7rLON37bTQj2hfnjbNNndTBM9HQoo9qndLlMtJJsRZ5?=
- =?us-ascii?Q?t4lrYvYjKMwN99XmAkSup8uA7elwN3Z/RLudAunztOgpGFCKpNKFbOTZjUwC?=
- =?us-ascii?Q?TNOI7nE/VcNdBNMvW4e1KQm3eE0amMHwQshDRKHecAjSv/eNNN+rUp+gEG8m?=
- =?us-ascii?Q?MqK/rB8I8vkZrcaGPiDMIw3HuJ+ZUmtjca4944ksqb1YG0J0Lm2+WDPph+cS?=
- =?us-ascii?Q?XJjwy8s3hSiKa4rCtelDoyJpEprZa6lQg7HoJdMTXR7Pws+zfunbNZhMg6mC?=
- =?us-ascii?Q?selwJriVkD3DuIqYyMHPEu4QNxLlgkJ/w0ZYeFPfGXzvROrRqQQB4xaveSv7?=
- =?us-ascii?Q?Obtho4CyY167OFPDQ0vf9Wr4p2agqwAhgtoHizS8e5XOvatBVtXlm3GaHeBL?=
- =?us-ascii?Q?Sh2g7HKZWXkXrdL+y8+HOLCK6oGtEoy9BI/hhz3l579Sg61Y9ZduWOGCIkWM?=
- =?us-ascii?Q?7s42rGKsP3lpWQ5vKwUYsIsAL/X6gdozg8gZaxjE0kuS95rLH98ARYREREXS?=
- =?us-ascii?Q?x2BQh6bET5zWsvHjfNlwlw5uax9RF0nrhPJwKQFA9vmji7qm8EPawK9xX5ZV?=
- =?us-ascii?Q?sGHMaI94VxM01raCpNccRHgzBME+PUUqtzt1?=
-X-Forefront-Antispam-Report-Untrusted: CIP:172.205.89.229;CTRY:IE;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:nebula.arm.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(82310400026)(1800799024)(36860700013)(376014);DIR:OUT;SFP:1101;
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB10195
-X-MS-Exchange-Transport-CrossTenantHeadersStripped: AMS0EPF000001A4.eurprd05.prod.outlook.com
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id-Prvs: 71193588-6351-47a7-85b4-08dde57522dc
-X-Microsoft-Antispam: BCL:0;ARA:13230040|14060799003|35042699022|376014|1800799024|82310400026|36860700013;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?8p93HmeSI1Dazy2HjoaSrhvSLiBeVtdbHaV9rdyPM0yw0yZ6mQxNdhsdDwRN?=
- =?us-ascii?Q?XeIO5K2SZQpKB53BBiNGKm7fRcApWIalGufdzSJ//viMEedddgn3VMtVLPzQ?=
- =?us-ascii?Q?l8jpmSa+DX+LlV0WC0VAiSYv3sxDaqIHEGfpyGdXwPA/GdRqUKxxZ+S1JymV?=
- =?us-ascii?Q?skhjw7kCnDkxZ0vO336uf+HjT+VWPpXiFm6j1uzF5Ye0YWUsdQ76wl5RdKMB?=
- =?us-ascii?Q?3ZsqrcqfK/7raNLdLS925oYaMh1WuFSxko4r1QdTxKWZjHasdt9rUWq08dkO?=
- =?us-ascii?Q?igaNFaCemLLxCOyFBw2MUE7PlRZsPZ4g4iWAoHQ97fZrYIXdgryo5dpiwsMO?=
- =?us-ascii?Q?YTpWgsYF7HgGUv7H7b2Mlq70IZNRGUpFb30+RVc+yfUd07sOgczalzyPjOCQ?=
- =?us-ascii?Q?So+3rDIGICHzJVtBvjbIff9AfU0k4iRaHmy1Mo2rLct6JBssFa/UQT3P9oA6?=
- =?us-ascii?Q?iXqpVPZN42jUyT2t3gmXOui5sJh6wiTbvQ/xe5cvV2GIbKLKFU/qwR/+9wmh?=
- =?us-ascii?Q?0dg3GfTg8taLdclksgdPPh7NfyZs/vjqtUj235tarS3577p6UTPLCpOuNbQJ?=
- =?us-ascii?Q?yyCVQDFx8jUmdgx6orV5kGvk5LhExuGUJ7YjUQJR6hSzjFiLcr6LzEHM+y8Y?=
- =?us-ascii?Q?0BvO6Zvl5XdW13Qzff8ta+kQr83PtrdLA7G31Q8EnFpwpGyYwXgXzZNDnZpH?=
- =?us-ascii?Q?g0k+y6GofFpbk2sfbsNVS2BwvUWlp6KIRf8dWx72Y9EovT0KOzi0azC8cdWw?=
- =?us-ascii?Q?7HdpI0IiFqX2AsddOPFsEkrQlQYQ4o2DvtVsPccPxOt7UERm/CNlHpgdEKLb?=
- =?us-ascii?Q?/luhM0h9Gs/qbon66LX417qGYNcsbT+Jylj50Q0fbsPVa9o4if5+wePBxrvC?=
- =?us-ascii?Q?I3vP2+9pNEvVp7BJPUVLSu579qho0RRxbfLF0W4vos5ZDo1Thyw2apvWVKyB?=
- =?us-ascii?Q?Xd4LLJ3Zt77WKMAEAOnIm9SoarkwDIngXq0ZIxcUHUG0qyDVX6oIaPPzmXTV?=
- =?us-ascii?Q?wcfv81qRlaxUVirnvjmmGh4sTWQJDzoeWzKxVkiLD2PoIjvv8iPnSOAA+AHk?=
- =?us-ascii?Q?yNyyNvGxtshoyh+/W8JH7BOVMbP9lfOEMTT3UDWi7aYRhoYhWtX2f/4gZq/1?=
- =?us-ascii?Q?wqma2gdrbgT52nRjFqa25gL2y7FX0nsW7do6t9oIDIxcQkaqHAhrrLd6E4cS?=
- =?us-ascii?Q?B6bb3yGuhdEZo4nOBFL7Ox69v0/sOlMA4PIV+RnStEWHK/ZJIjaTrHEYiIT4?=
- =?us-ascii?Q?uE/3xbKnGuQ+dLTQqd0SMtkZe5SCsjg6xXkUmH6pi9Rs9Y803W24nFJMv2n2?=
- =?us-ascii?Q?iCkr/VKaaF8bhrTaC6AQ8f6/09vIEzDYWddoBqTugVrb2ern2RRI7LnKiU5J?=
- =?us-ascii?Q?MLOPepVdrV2kY16kmK2nUspsA1Qw3he/TFCK4V33lWQ6WdZ+hbYHGYMYm/bz?=
- =?us-ascii?Q?Oy1WjpTq3QC6Ln5nzJNoyXuMTid1i1XrPtrTsX8LdoZzAZM69WnedkWxxPUw?=
- =?us-ascii?Q?sDteQu9yOKNNHjOlvtVafxP5gmjZoicpMBLO?=
-X-Forefront-Antispam-Report: CIP:4.158.2.129;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:outbound-uk1.az.dlp.m.darktrace.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(14060799003)(35042699022)(376014)(1800799024)(82310400026)(36860700013);DIR:OUT;SFP:1101;
-X-OriginatorOrg: arm.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Aug 2025 14:22:54.9338
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ba54543a-e464-454b-0b2f-08dde57536d2
-X-MS-Exchange-CrossTenant-Id: f34e5979-57d9-4aaa-ad4d-b122a662184d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=f34e5979-57d9-4aaa-ad4d-b122a662184d;Ip=[4.158.2.129];Helo=[outbound-uk1.az.dlp.m.darktrace.com]
-X-MS-Exchange-CrossTenant-AuthSource: AMS0EPF000001A4.eurprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB9388
+Content-Disposition: inline
+In-Reply-To: <20250827-adorable-ocelot-of-adventure-ba88b7@houat>
+X-Authority-Analysis: v=2.4 cv=cLDgskeN c=1 sm=1 tr=0 ts=68af108c cx=c_pps
+ a=WjJghted8nQMc6PJgwfwjA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=2OwXVqhp2XgA:10 a=EUspDBNiAAAA:8 a=WI-fMjCVXOxGoBDYoyYA:9 a=CjuIK1q_8ugA:10
+ a=CtjknkDrmJZAHT7xvMyn:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODI2MDE1MyBTYWx0ZWRfXy1Be4PN9yIAE
+ 28D+oVjaXa0VxFLZ/fqc810ZVhE22sFGjAhEJooji7NlmEkDR1YA+KrnCrbq0tBFOgjKYT4U1CT
+ xI+KDzA8z85TQ9mwo5XCbuOnN7oe6RQVaYL2YR6mipWuq+wno50XGQ0VbbNAAKEcKiRIpWiVYFq
+ pgBCX5MY2iE3QoeZSMBwsrkfBih9XeQuE+rOU0Rp8DGmkgBlRT9v533L1z9K20LmuDiG5Arh1st
+ 22Nk/FlaYRYgV3N4UnblmLRg+Y+nOOO+EylRYkM8QLxuvX9vSXVR62UJqhLzYv40VoFkOFfxuFa
+ KrgaTcRBQKcadVvCUEh9FinmZ6XL7LkEHiC1ua1hJaxSeS4AoInui47UXb+MyAGvav6eNjBGazw
+ 1jXnQ1Uf
+X-Proofpoint-GUID: CUVLWxBJJeaOonmBm2P2Hql73rG7MOeO
+X-Proofpoint-ORIG-GUID: CUVLWxBJJeaOonmBm2P2Hql73rG7MOeO
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-27_03,2025-08-26_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 clxscore=1015 malwarescore=0 spamscore=0 adultscore=0
+ impostorscore=0 suspectscore=0 priorityscore=1501 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2508260153
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_072330_907500_FD619845 
-X-CRM114-Status: UNSURE (   8.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250827_070501_444501_E1FF78E1 
+X-CRM114-Status: GOOD (  49.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -211,70 +158,120 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Anton Kirilov <anton.kirilov@arm.com>
+On Wed, Aug 27, 2025 at 09:30:20AM +0200, Maxime Ripard wrote:
+> Hi,
+> 
+> On Wed, Aug 20, 2025 at 12:52:44PM +0300, Dmitry Baryshkov wrote:
+> > On Wed, Aug 20, 2025 at 09:15:36AM +0200, Maxime Ripard wrote:
+> > > Hi,
+> > > 
+> > > On Tue, Aug 19, 2025 at 09:57:30PM +0300, Dmitry Baryshkov wrote:
+> > > > Currently DRM framework expects that the HDMI connector driver supports
+> > > > all infoframe types: it generates the data as required and calls into
+> > > > the driver to program all of them, letting the driver to soft-fail if
+> > > > the infoframe is unsupported. This has a major drawback on userspace
+> > > > API: the framework also registers debugfs files for all Infoframe types,
+> > > > possibly surprising the users when infoframe is visible in the debugfs
+> > > > file, but it is not visible on the wire.
+> > > > 
+> > > > Let drivers declare that they support only a subset of infoframes,
+> > > > creating a more consistent interface.
+> > > > 
+> > > > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+> > > 
+> > > I'm not really convinced. Infoframes aren't really something you should
+> > > ignore, AVI is effectively mandatory, HDMI kind of is too, AUDIO is if
+> > > audio support is enabled, DRM is mandatory if HDR is used.
+> > 
+> > Nevertheless, sun4i, innohdmi, adv7511, it6263 and rk3066 drivers
+> > provide support only for the AVI infoframe.
+> 
+> Yes, but it's still something we shouldn't paper over. The spec mandates
+> it, if drivers want to deviate from it it's something we should warn
+> about, not silence.
+> 
+> sun4i is a good example, to me at least since I have the doc. The
+> hardware supports AVI, Audio, ACP, and SPD. HDR isn't supported, so DRM
+> isn't either. The only missing one is HDMI, but the documentation isn't
+> the best so it might still be supported. In short, it's a driver issue.
+> 
+> adv7511 supports AVI, Audio, ACP, SPD, ACP, and looks to have a
+> mechanism to send any infoframe as is. So, again, driver issue.
 
-Enable the NPU on FriendlyElec NanoPi R6C/R6S boards.
+I've send a patch, enabling SPD and VSI (HDMI) InfoFrames on ADV7511.
 
-Signed-off-by: Anton Kirilov <anton.kirilov@arm.com>
----
- .../boot/dts/rockchip/rk3588s-nanopi-r6.dtsi  | 34 +++++++++++++++++++
- 1 file changed, 34 insertions(+)
+> 
+> I couldn't find the other datasheet, but I'd be very surprised if it
+> wasn't the case for these too.
+> 
+> > Some of them can be extended to support other infoframe kinds (e.g.
+> > ADV7511 has two spare infoframes which can be used for HDMI and SPD).
+> > 
+> > > SPD is indeed optional though.
+> > > 
+> > > So, it's really dynamic in essence, and not really something we should
+> > > expect drivers to ignore.
+> > > 
+> > > I do acknowledge that a lot of drivers just silently ignore the
+> > > infoframes they don't support at the moment, which isn't great either.
+> > > 
+> > > Maybe we should standardize and document what drivers should do when
+> > > they don't support a given infoframe type?
+> > 
+> > The chips might be generating infoframes internally. This series was
+> > triggered by LT9611UXC, which does all HDMI work under the hood in the
+> > firmware. See [1]. The series I posted hooks HDMI audio directly into
+> > the bridge driver, but I'd really prefer to be able to use
+> > drm_atomic_helper_connector_hdmi_hotplug(), especially if I ever get to
+> > implementing CEC support for it.
+> > 
+> > ADV7511 likewise generates audio infoframe without Linux
+> > help (audio-related fields are programmed, but it's not the
+> > infoframe itself).
+> 
+> Implementing the write_infoframe hooks as a nop with a comment in those
+> case is totally reasonable to me.
+> 
+> I'd still like to document that drivers should only return 0 if they
+> programmed the infoframe, and -ENOTSUPP (and the core logging a warning)
+> otherwise.
+> 
+> That way, we would be able to differentiate between the legimitate
+> LT9611UXC case, and the "driver is broken" sun4i (and others) case.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-index fbf062ec3bf1..5410fd35927d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-@@ -363,6 +363,10 @@ &pd_gpu {
- 	domain-supply = <&vdd_gpu_s0>;
- };
- 
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	gpio-key {
- 		key1_pin: key1-pin {
-@@ -421,6 +425,36 @@ rtl8211f_rst: rtl8211f-rst {
- 	};
- };
- 
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_1 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_2 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_1 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_2 {
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&avcc_1v8_s0>;
- 	status = "okay";
+I don't want to end up in a sitation where userspace has a different
+idea of the InfoFrame being sent than the actual one being present on
+the wire. It seems, we need several states per the infoframe:
+
+- Not supported
+- Autogenerated
+- Generated by software
+
+E.g. in case of ADV7511 we can declare that Audio InfofFrame is
+autogenerated, AVI, HDMI and SPD as 'software-generated' and DRM (HDR)
+as unsupported. LT9611UXC will declare all (need to check) frame types
+as auto.
+
+This way we can implement the checks and still keep userspace from
+having irrelevant data in debugfs.
+
+I will update my patchset to implement this, but I have another question
+beforehand: should we just declare VSI support or should it be more exact,
+specifying that the driver support HVS (00:0c:03), HVFS (c4:5d:d8), etc?
+
+I'm asking, because e.g. MSM HDMI controller has hardware support for
+generating HVS frames (but only HVS, the OUI is not programmed, register
+format doesn't match 1:1 frame contents, etc). I instead ended up using
+GENERIC0, because it was more flexible (it's like SPARE packets on
+ADV7511, the contents is being sent as is). However if we ever need to
+send DRM infoframes, we might need to switch from GENERIC0 to HVS, for
+the price of being unable to send HVFS frames.
+
+WDYT?
+
 -- 
-2.43.0
-
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
