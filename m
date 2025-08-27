@@ -4,76 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E495DCA0FF6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 11:07:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63F70CA0FED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 15:55:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UPeF2uT2zurSXv5NlOd27A5Qi5HW7qzqpb4Y5Z07s4o=; b=BwNa0WyFxQk+S7
-	+8FgtkHzovJ24fIGEZ/jjldpN9PlzxYH3I0b6Vf7K6OXOD7CdjLRXPYAh7TCLwbdT141Ig163jBXX
-	asQD3Xq4mP/+T5u/+OGyo1m1oTb5XnauisNlSgXg3oxRaNdsCgf/5LkWup0gu85IRId/uw5JR//T5
-	tycWqgzaXSKxUiO43U7zQlEkyzB+FQUNlzBz4tttw0Sj+NIFvxZo8wVIwVl1Fg8euqkSBwhn/qpzf
-	Jqw5FV1TjuPzneDVdRDXOqCQ8LvQhA38bn+x0WepGKE5FauKtyNKfEy6Qhgtl4Tj8z3mkUde5Teu2
-	a0Xp73JLU8duljV4PGAw==;
+	List-Owner; bh=dvQOCK42ujypLyLhMBDC5AxuaATvG/NN5mtDnF9ggAs=; b=eQmzrzL+WR+uYd
+	LQdbGgGdX8LZW8Yah+xvWRsBafjhHIbMOjI/5pyUqKNZ2xv6BSvz4ItEqqZGyNFR1YToWsokkGseS
+	9WUuS8Cj730Tk/6gMmhuWATSHtBcS5eEaFBBInE2cvVtM0HMzihcmRAOOKS0hjPv8IGEdXQ+GBqvO
+	sQmotPVtbCvuOp5IxnU9xk3wysMO5ty9khkPdPlQd0JN2kVdXYXpwOlBnXNXeibGwox4xkttJPa4k
+	jvPuyWkm1bahXnG3XVHGMb19RARkHL+poybje6y2UwqIm3m2m/QcWocOe8+iVh6/HDjLcZW6Z8EN9
+	MSBYaDPtIhBMSzTXAfYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urDzk-0000000F9rn-09DQ;
-	Wed, 27 Aug 2025 11:07:12 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urC8i-0000000EmvR-4BWq;
-	Wed, 27 Aug 2025 09:08:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756285699;
-	bh=7oF5B1NcfXS5Ejllve18Lu8CkCdO1s4cDKW0kAkJT9w=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BYls46lpujxTxM7N/tSNSzrIau2E1ZcS7Rlv2EV0UrWJl1zAnWsTF8Ru+y0rUPMC4
-	 LBWM1xfAQ3sJfEhKAuWjcXW+bb0BlVDBtMZaT5FAkU4f/1e6xZ10leiQ0N0InwHadA
-	 fWn8dpB8xlIJ8gGPgbxz7PR97zniRWXmzOpZiFWjFE9DcRrqrjSctqrft2vw2sCU5f
-	 hmME174if+hz7l14Wd2rp8ZMu1ZvlLUQ3wLrrlSy9ktWxF3wBm3w1rouyx7yGG7Zl/
-	 4YqH7CxlqFwvax2NjS9qzZMXYodnZiGJs0dnQQw7BRy99tbige2KcqmHcuZej1ocgJ
-	 FfDGmAUp5Fwpw==
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4be:99b9:5069:3bef])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 264D917E10F3;
-	Wed, 27 Aug 2025 11:08:19 +0200 (CEST)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	nicolas.dufresne@collabora.com,
-	jgg@ziepe.ca,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org
-Cc: iommu@lists.linux.dev,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com,
-	linux-media@vger.kernel.org,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 7/7] arm64: defconfig: enable Verisilicon IOMMU for Rockchip RK3588
-Date: Wed, 27 Aug 2025 11:08:03 +0200
-Message-ID: <20250827090809.34555-8-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250827090809.34555-1-benjamin.gaignard@collabora.com>
-References: <20250827090809.34555-1-benjamin.gaignard@collabora.com>
+	id 1urIUj-0000000G5FC-2lvJ;
+	Wed, 27 Aug 2025 15:55:29 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1urGkb-0000000FgDj-3N7s;
+	Wed, 27 Aug 2025 14:03:47 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 417AD2720;
+	Wed, 27 Aug 2025 07:03:36 -0700 (PDT)
+Received: from J2N7QTR9R3 (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 662DB3F738;
+	Wed, 27 Aug 2025 07:03:37 -0700 (PDT)
+Date: Wed, 27 Aug 2025 15:03:22 +0100
+From: Mark Rutland <mark.rutland@arm.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: peterz@infradead.org, mingo@redhat.com, will@kernel.org,
+	acme@kernel.org, namhyung@kernel.org,
+	alexander.shishkin@linux.intel.com, jolsa@kernel.org,
+	irogers@google.com, adrian.hunter@intel.com,
+	kan.liang@linux.intel.com, linux-perf-users@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-alpha@vger.kernel.org,
+	linux-snps-arc@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
+	linux-csky@vger.kernel.org, loongarch@lists.linux.dev,
+	linux-mips@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+	linux-s390@vger.kernel.org, linux-sh@vger.kernel.org,
+	sparclinux@vger.kernel.org, linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, dmaengine@vger.kernel.org,
+	linux-fpga@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+	dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+	intel-xe@lists.freedesktop.org, coresight@lists.linaro.org,
+	iommu@lists.linux.dev, linux-amlogic@lists.infradead.org,
+	linux-cxl@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-riscv@lists.infradead.org
+Subject: Re: [PATCH 02/19] perf/hisilicon: Fix group validation
+Message-ID: <aK8QKlGsjB4WWg2e@J2N7QTR9R3>
+References: <cover.1755096883.git.robin.murphy@arm.com>
+ <c7b877e66ba0d34d8558c5af8bbb620e8c0e47d9.1755096883.git.robin.murphy@arm.com>
+ <aK2XS_GhLw1EQ2ml@J2N7QTR9R3>
+ <ab80cb84-42b2-4ce8-aa6c-4ce6be7a12b7@arm.com>
+ <aK3TS3s5_Pczx1nu@J2N7QTR9R3>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <aK3TS3s5_Pczx1nu@J2N7QTR9R3>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_020821_177949_BF5DA764 
-X-CRM114-Status: UNSURE (   8.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250827_070345_932399_F976A552 
+X-CRM114-Status: GOOD (  31.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,32 +83,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable Verisilicon IOMMU used by Rockchip RK3588 AV1 hardware codec.
-This hardware block could be found in Radxa Rock 5B board.
+On Tue, Aug 26, 2025 at 04:31:23PM +0100, Mark Rutland wrote:
+> On Tue, Aug 26, 2025 at 03:35:48PM +0100, Robin Murphy wrote:
+> > On 2025-08-26 12:15 pm, Mark Rutland wrote:
+> > > On Wed, Aug 13, 2025 at 06:00:54PM +0100, Robin Murphy wrote:
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
-changes in version 8:
-- Include board name in defconfig patch commit message
+> > > > diff --git a/drivers/perf/hisilicon/hisi_pcie_pmu.c b/drivers/perf/hisilicon/hisi_pcie_pmu.c
+> > > > index c5394d007b61..3b0b2f7197d0 100644
+> > > > --- a/drivers/perf/hisilicon/hisi_pcie_pmu.c
+> > > > +++ b/drivers/perf/hisilicon/hisi_pcie_pmu.c
+> > > > @@ -338,21 +338,16 @@ static bool hisi_pcie_pmu_validate_event_group(struct perf_event *event)
+> > > >   	int counters = 1;
+> > > >   	int num;
+> > > > -	event_group[0] = leader;
+> > > > -	if (!is_software_event(leader)) {
+> > > > -		if (leader->pmu != event->pmu)
+> > > > -			return false;
+> > > > +	if (leader == event)
+> > > > +		return true;
+> > > > -		if (leader != event && !hisi_pcie_pmu_cmp_event(leader, event))
+> > > > -			event_group[counters++] = event;
+> > > > -	}
+> > > > +	event_group[0] = event;
+> > > > +	if (leader->pmu == event->pmu && !hisi_pcie_pmu_cmp_event(leader, event))
+> > > > +		event_group[counters++] = leader;
+> > > 
+> > > Looking at this, the existing logic to share counters (which
+> > > hisi_pcie_pmu_cmp_event() is trying to permit) looks to be bogus, given
+> > > that the start/stop callbacks will reprogram the HW counters (and hence
+> > > can fight with one another).
 
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+> > It does seem somewhat nonsensical to have multiple copies of the same event
+> > in the same group, but I imagine it could happen with some sort of scripted
+> > combination of metrics, and supporting it at this level saves needing
+> > explicit deduplication further up. So even though my initial instinct was to
+> > rip it out too, in the end I concluded that that doesn't seem justified.
+> 
+> As above, I think it's clearly bogus. I don't think we should have
+> merged it as-is and it's not something I'd like to see others copy.
+> Other PMUs don't do this sort of event deduplication, and in general it
+> should be up to the user or userspace software to do that rather than
+> doing that badly in the kernel.
+> 
+> Given it was implemented with no rationale I think we should rip it out.
+> If that breaks someone's scripting, then we can consider implementing
+> something that actually works.
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 58f87d09366c..04547bcc904b 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -1470,6 +1470,7 @@ CONFIG_ARM_SMMU=y
- CONFIG_ARM_SMMU_V3=y
- CONFIG_MTK_IOMMU=y
- CONFIG_QCOM_IOMMU=y
-+CONFIG_VSI_IOMMU=m
- CONFIG_REMOTEPROC=y
- CONFIG_IMX_REMOTEPROC=y
- CONFIG_MTK_SCP=m
--- 
-2.43.0
+Having dug some more, I see that this was intended to handle the way
+the hardware shares a single config register between pairs of counter
+and counter_ext registers, with the idea being that two related events
+could be allocated into the same counter pair (but would only occupy a
+single counter each).
 
+I still think the code is wrong, but it is more complex than I made it
+out to be, and you're right that we should leave it as-is for now. I can
+follow up after we've got this series in.
+
+Mark.
 
 _______________________________________________
 Linux-rockchip mailing list
