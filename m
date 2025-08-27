@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6A2CCA1002
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 11:07:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2DB1CA0FED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Aug 2025 11:07:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QLQB7Kv0gbKtoMyr9WidGV0Cqub5NJAS7116xrga3VE=; b=YjJSbNLPyR3Q/3
-	O7uVca0Lf66i5+khw7PNn3DL3/KDI0LjMOIevhNs16xmGLPw4CIDI6NZ9gGCnS6hyjxK5pcPCDLoT
-	drYoQRXcod39rkp/Bp0Xdeqs6JxiY9lZBwSITuNmbJkuvk+n/mgenHgtGAEgIFz1UwqKXYqTvgeP/
-	5Qex07mN0veOSzNUy0nx+DPVSA2M/VC0ePUp79/nqHhqzTmv6d7cCZhmApzbHbJ7wtkzDMVZvQr3U
-	IUWWnOYuk3SENyOjt0DJn7yF/9T2FUwb/BwrETxT3yU9SIIP0arsSh8DS7R/yMK5vuKGcfa8I3aHB
-	+EpndVJOH9iKG8CEnJmg==;
+	List-Owner; bh=lVFuEmuqSDI6WtcDISnC45w3cYnGxZYYmZHOfE8/YSo=; b=RA/YT19GyC5dzd
+	b5s3Aa6LvNppUGmyubvsOH+U6p35YmRvafr/lejMjDZ9ZCUWosQKceO16jfTsUPNyCfpLg0VgHLUG
+	HsdNpuliMIQlP8Xa5GR4Rbe1eoWMS8FbwOZPbi8gwyg47vMGcV1WfkRptuCqZxJse/39xEO+bmNky
+	u7B3Sd6E5GaP05yyycBKiWB5+EQ2CtwhUrWGjDF9EKJ8w9nvkhwV5ST/r+t0CPAx93gVki3rwYKZK
+	10Lo7ATQ8GPoXdsm4c+Oy53Vdob529VaS4GLj2pl6FcxgXwvX0aITqLwn4abWCqLTLKTj+7N9ytQv
+	1eFzg8gLcE6xwsKrOhsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urDzg-0000000F9o2-37Io;
-	Wed, 27 Aug 2025 11:07:08 +0000
+	id 1urDzf-0000000F9mx-33vv;
+	Wed, 27 Aug 2025 11:07:07 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urC8h-0000000Emuf-3a3m;
-	Wed, 27 Aug 2025 09:08:21 +0000
+	id 1urC8h-0000000EmuC-0CJB;
+	Wed, 27 Aug 2025 09:08:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756285698;
-	bh=fSEDJQdHU1SuscOgEMkZ22GTdBhS9AvlLkV6KIF1DFA=;
+	s=mail; t=1756285697;
+	bh=6V4Clbq308KQFAQTjTHjGV/TIZjO5G7JCGaqRh4tsCA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=qiFIVQqccBmTMj7g0Qc1tuVme7cOdQGaqzDe+iL1rUuEMp75uOmDTuz3RUloFl6jB
-	 8ClcX+NUqm9bQ8IQr8EfFM1+Uhnn1qktAyQsqHX39IE7G41QfJdMFzsbrZsEqa2m8P
-	 di1U3LentnQTTwWq2/KcHeFihisXZ6wt7A0k3YXjYFF1hRbSEXrfY89+AD36rZiVHG
-	 N2Sn3zWLfti6BZRejws8sa0tTVsF/BvSe2x3vBON/3ARtNgb0r6FD1lGH0V6ipSTF/
-	 HTqlv9zqnAHKNBR1e04VaWMg54sKV39I+Pzm8ydzVq6ctDEAbKl7qVeNx8tJbgqCjD
-	 p2VHhxwkXLCgg==
+	b=UC0QDwmQciOS85zNqIgcVmjxIIc40puwKRrJbQ2gRlfKqsZtzap6QIerr0dIP8hRt
+	 1cj/Ng45J5piv4JXIYPAyrKYd7z39vR6DV6RSxs0Haxha+cx2JiMq0zx+7eaLFVrGX
+	 4KCmhjMk6nsXyZpkfH3PKRnIOBisWtVebBlZgs5VJq5gVEgukItgL0jBE7XW5E2SUS
+	 SYDpwbNYb9QOzsjmHaB5DpCom6a0BX+7JecK/9ox0dhezCTVuZ0D9xzvMzk1tJXGCh
+	 pZL3FdbTe/XbzgfNtv3rCxeu5WFs8GWageba2l7lEkkKtIM9wDWHXxLwc/qqhzgmQB
+	 q3+Ss+DfBwYdg==
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4be:99b9:5069:3bef])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DA8D017E0FC2;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4167717E0EB8;
 	Wed, 27 Aug 2025 11:08:17 +0200 (CEST)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: joro@8bytes.org,
@@ -63,16 +63,17 @@ Cc: iommu@lists.linux.dev,
 	kernel@collabora.com,
 	linux-media@vger.kernel.org,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 5/7] media: verisilicon: AV1: Restore IOMMU context before decoding a frame
-Date: Wed, 27 Aug 2025 11:08:01 +0200
-Message-ID: <20250827090809.34555-6-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 4/7] MAINTAINERS: Add entry for Verisilicon IOMMU driver
+Date: Wed, 27 Aug 2025 11:08:00 +0200
+Message-ID: <20250827090809.34555-5-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250827090809.34555-1-benjamin.gaignard@collabora.com>
 References: <20250827090809.34555-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250827_020820_040672_77533615 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20250827_020819_235381_88FF167F 
+X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,54 +90,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-AV1 is a stateless decoder which means multiple AV1 bitstreams could be
-decoded at the same time using the same hardware block. Before decoding
-a frame it is needed to restore the iommu tables to avoid mixing decode
-contexts.
+Add maintainer for Verisilicon iommu driver.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../verisilicon/rockchip_vpu981_hw_av1_dec.c       | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+changes in version 8:
+- Add myself in MAINTAINERS file.
 
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-index e4703bb6be7c..9e7a7d9ad58a 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-@@ -5,6 +5,9 @@
-  * Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-  */
+ MAINTAINERS | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index fed6cd812d79..d32830f56add 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -26408,6 +26408,14 @@ F:	drivers/media/i2c/vd55g1.c
+ F:	drivers/media/i2c/vd56g3.c
+ F:	drivers/media/i2c/vgxy61.c
  
-+#include <linux/iommu.h>
-+#include <linux/vsi-iommu.h>
++VERISILICON IOMMU DRIVER
++M:	Benjamin Gaignard <benjamin.gaignard@collabora.com>
++L:	iommu@lists.linux.dev
++S:	Maintained
++F:	Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
++F:	drivers/iommu/vsi-iommu.c
++F:	include/linux/vsi-iommu.h
 +
- #include <media/v4l2-mem2mem.h>
- #include "hantro.h"
- #include "hantro_v4l2.h"
-@@ -2095,12 +2098,23 @@ rockchip_vpu981_av1_dec_set_output_buffer(struct hantro_ctx *ctx)
- 	hantro_write_addr(vpu, AV1_TILE_OUT_MV, mv_addr);
- }
- 
-+static void rockchip_vpu981_av1_restore_iommu(struct hantro_ctx *ctx)
-+{
-+	struct iommu_domain *domain;
-+
-+	domain = iommu_get_domain_for_dev(ctx->dev->v4l2_dev.dev);
-+	if (domain)
-+		vsi_iommu_restore_ctx(domain);
-+}
-+
- int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
- 	struct vb2_v4l2_buffer *vb2_src;
- 	int ret;
- 
-+	rockchip_vpu981_av1_restore_iommu(ctx);
-+
- 	hantro_start_prepare_run(ctx);
- 
- 	ret = rockchip_vpu981_av1_dec_prepare_run(ctx);
+ VF610 NAND DRIVER
+ M:	Stefan Agner <stefan@agner.ch>
+ L:	linux-mtd@lists.infradead.org
 -- 
 2.43.0
 
