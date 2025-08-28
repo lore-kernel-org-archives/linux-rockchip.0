@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7DC5CA0EED
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD107CA1000
 	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Aug 2025 18:38:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
@@ -12,69 +12,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EzD4LT0KakGKuED7ydKN6QdqnwGinK9ClEpYpp07K1U=; b=wvOiwvSbyRRV27
-	cALCscOJCKpXrq1CyEPh2aZvq0UGYK4dqSzCoC7w+jmpEeMDEIpF0ibSFrJRbK4QrfP5yWtQiSneC
-	+55LXSyx623GF9Jof0OpjTePrsTut3fMS7o5S6blCxv2XQw+EzKD1kW614OxjzEWKUv5avRPQMO3Q
-	FYJCOAaxidYi90OYqHu6iVitDQ+PuRZliYwAGLOIEuHRRDTBVy1ARp4ojBO1q1KM6zXKVk1+BD8OC
-	PxetsR0o7yqExJ4g4L3Eaygi7ZeMKm/X0g3TUQdWwx+1X7osEzZ526PKyRFoZlXnUsT9treK8teUW
-	xjrZMJ/VOu7xOdQIf68g==;
+	List-Owner; bh=MTp5Y0J0Pp1gqGxjaDwKaDSAtAp/dyZAKHrS67ejLB8=; b=C3+Y0EEfqAE8VF
+	d5CzBHTZnb+IQNyGTz9eOg1HpnREgAqfHCAnfMYYj1IO0k0Asgd9F6n530xbAuDLqK2EgCSU923ZL
+	wP5MYt4GSWuTBYKdDj+OK7s0plPQq5DmfY7vQwu5KHtamSKA30g5AHoqyliRgYLFQ+kEXLeEPJZQK
+	GV6wQQHG4++lbnublZx5LplLD3IuVaBlF5TFqTYU1bWmgq8CStVyZSpDpXgJ1SPjkDTqlolz3A2W7
+	fAb6t4qdndHwlKEMx6+uvzuUT0npcFzFTxlgwlQytYJVJq9iZ7mtgf+IgKLRBmiMS0aJf40292fW3
+	fIRlpx1/t4YH0Ovox/Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urhWJ-00000002oAI-2ETk;
-	Thu, 28 Aug 2025 18:38:47 +0000
+	id 1urhWM-00000002oDF-0fz6;
+	Thu, 28 Aug 2025 18:38:50 +0000
 Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urcZp-00000001iab-28UL
+	id 1urccl-00000001jGM-2Jlg
 	for linux-rockchip@lists.infradead.org;
-	Thu, 28 Aug 2025 13:22:06 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-afcb78ead12so147686966b.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 28 Aug 2025 06:22:05 -0700 (PDT)
+	Thu, 28 Aug 2025 13:25:09 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-afe84202bc2so128725966b.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 28 Aug 2025 06:25:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1756387324; x=1756992124; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1756387506; x=1756992306; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:content-language:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=0vejRaEijRO8+CORhQowxHuuY85LG5Du7ZSdJ6Jjs0g=;
-        b=QyGURqmW+lY6cxGEE0fxxjuY3jCZ7YoSmSxOYD7eCUZseRYDcDZwZvHZhim0V5HZmQ
-         lfQTINUiKwkgZfaSLmRrtxrWAXBIXZpZKxVIzj094kyV0Djvq7v1hsq96yjnjaOoQm33
-         xlu1/MrvaX92bK9kWuTUj4j8nJzJG7uaOfFhh4fMjjGGBXsiy1dkHAICyys96XU1DfkA
-         n/wYtq6E20HgdMgY3VO1q/4dLy7EqgauTU7Z3w4L8hdSjMvsqwynzlOg9Dj8dy10WKVZ
-         ecIRjq6DO7IdbBB+YG0t7iZn3d+YxFwtsLlOded8J6bFlCPMPznWfwTuFDcxZFO++LgA
-         UIKg==
+        bh=KP6GeI4QNlyVzRWNe4PL6HeP+siA3vt2wqk6FJm5c6M=;
+        b=fjGRryPNRdN2zZ2SI40/V0o8WL4hLj+ebeRnaotiWKdXVs+Z4owGWVi4GZDRpEfDQs
+         6xN5KT3zV6af7OIQ6hS7hDuR4bGEqgab6x9Ojh3JH7kX9Wvi6dokwa+HtVK37fzzgmae
+         pWYmjGSMb/8CEv3oti17C623B9qrXpARnL2GMo9LEPNO+iBGWHQCIQacHTP4Bd7lwf8H
+         6o5apKK9t0QRdgnALFIirKLpfTNqBlp2yrdvpAnQ/8UTXiBX4iOvLlIxXU5HU0VxhD8F
+         GLkHnbAABytpGe+iM9yis3zrdH3BZ/idAqPvcU80HuEGT701z3KcSSA+KQvgiwvBJsG4
+         Bnvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756387324; x=1756992124;
+        d=1e100.net; s=20230601; t=1756387506; x=1756992306;
         h=content-transfer-encoding:in-reply-to:content-language:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0vejRaEijRO8+CORhQowxHuuY85LG5Du7ZSdJ6Jjs0g=;
-        b=cCJGABuH/pu0eHL/6XVyvtamGX9YrOi35iITCxKxGTgElzvIBplRj/VU95nIMBoVew
-         vo9yxWilGjhjZ7BK1OR+09SPT/3rzippqUBnL+SxhxilpYOuD2PLVYQ1vb4ejmnMIINg
-         /IpRqLxy6tKCDR3lTMOAYatyrNsLdOJvZY0dhd3HkJINVQN1qvpzEt9zuBRuqwi/MvPL
-         qY/hdlnA78kgdHDPzkKfx3aspDr1ImOtY+U4MmnUhGmLjby4rP9hwPDb2V8W+B5uRG2D
-         stwHYcGqJ+UXXRhfbo2BVzRGieftaPIsRZrsL06+eoExtNlgidMjMb1qUcwI8nfrY1j0
-         3NNw==
-X-Forwarded-Encrypted: i=1; AJvYcCWf5EmFvRoG6Ubqjiz/lQTEy/BNt6jWW3epqBAF5wIrxE8LHsvAOQne1zYqt7Fby+qreI8/JST56pgF/kkipg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzBcGaSG693qfpMa6Ib/2Zp0L7PmRURKl+SEUZJxZOa/Nt9s6VV
-	nRh3u4cNwjRCMC83D2FUqpju/5yAKBB11ko/8FxFhY3PVl75GLWapFEsr9sWpZi1+64=
-X-Gm-Gg: ASbGnctJIA1kUMmJ2ZGVgksZwyG6jhO4CtjChoVobn95jGICGHr9EsiabOhRCClCKGK
-	PJD9ME48SvNSA9T732j1PiTpt/32nKfbPEYBNQgOLCZ/mgFKh2dkLqXBUmXhVEQ0IhYiu3o7Qte
-	/q8/oQOVT8pv/8ddgYpV7n2V70voCcKUr/VOp+rzIvAnMPqBsC7mdQuxqfyls1wAkYjI/jdhECj
-	6Ua9HCxe/jtRErta7D/jjpxd4V65Pqsjtn1O0aQUG/OWIoBcbnTgvIuwZL6ixWFx1C862xYkKjA
-	gP5S8UOuAG6TJkzWlHWNuZWLS/3YEXav2CPRItjvD5gk64QExU8DQzR4f/2BD1ynYN3h2O/Sxdt
-	5o4L2zcd4DciKr0FZt/fEQhl2kpUMJJvnkMvP+6FX0RRe2pBWxcgeDxXC40h3WybSp5KTkltCbq
-	yFuw==
-X-Google-Smtp-Source: AGHT+IEydpmL/CGGlYRxIOHwyq2SzsRVG+uSKGaJVOpWYTkFto5PXtB9f5EDZvVuQAcMg4VMfo+bpw==
-X-Received: by 2002:a17:906:398f:b0:afe:b7b5:555a with SMTP id a640c23a62f3a-afeb7b56482mr637165366b.63.1756387323855;
-        Thu, 28 Aug 2025 06:22:03 -0700 (PDT)
+        bh=KP6GeI4QNlyVzRWNe4PL6HeP+siA3vt2wqk6FJm5c6M=;
+        b=RqVeWLjhQOCL/3lHHAlpqqqugwHEd4xYx+2jk0KcUiGxkWDBqkJl1s2lEtNHuLB9fv
+         FHp+iXw8WZdiIdM16rIalmEjcBORkZo1IpFXfzMtsc14HDazD3YYrmwEoV9x0IdEb437
+         mH1oWubcWhJQBfVZSbnykCyaLYWGmJIAMQ3v0IzGN+9ymwq2+1WmWMFztvwPqHOvrJMm
+         /qb23FEQSeoQI/Sc4DO2AtiIHVV31Oz5Moxmjw/pyoanqzeSmUv0MHt0UPQ4Tuy/Fj5H
+         +GY4Q36b7Jam5BAM+c1wYq+uEzrSnHSDGn2aeaoDWvYijgs/GSXwxysgnDIFBaaHvHN7
+         IRdw==
+X-Forwarded-Encrypted: i=1; AJvYcCV8frLMOPkxzEldMM647zBG2iQkBoIL8qckxPqzdGdmxNqQ3iTECDrRA1doAcS5pzR2IY7znxDQefhg4++JSg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzI9s1XKD1+C9IgsOizzKO6rDE2GUE1lyMqfk+O1kfsC6ucBgCT
+	wOZjf2sCTZzLW8urH9MSxBPLKue6LiPwflKh3QT1Y9iS3xLwNLM94wgTAYDjfGOCfBI=
+X-Gm-Gg: ASbGncu/6o06SFqQ5KqPPgDo7ANeIzWXKcPrltxNCrqdutE5f/5TL+RW1pPWpfl67eb
+	+YafUMcnbHxoNo5LWMFltWpkSMfzMzsRgKon44Jx+AClTa/QxtOWlAJGeL8cTW/gt8XHK4QuHHa
+	NYa4lvib+Ea5+qSlloHrvt9XYDhGVXWprF9BE4233xHbLy9sGzMjp69lx2TDtAk1JVfiDY/kD0I
+	9jVSNZ6HorIEOWsgfvKia9IstvW/vHNqp6xWD8JouE39Ex8IMhVw85GA2LO7rhMNS/QGQ2YkxxX
+	7NZwHIsIqVWCPtTPo6+xCTTROYTo55d7FfK2Oajk/rzrRCThKwGY6TdV9E1XS94qVOC0z/2lLhb
+	//MeGlYb6iO0mDwNnK7A00PbYq2r/tHuYG7MOJsRwEcWMln93HD0h+tJIL8KRKQ3+WtxQ8iC+hr
+	WWNQ==
+X-Google-Smtp-Source: AGHT+IHnstlza8K9C5w6vOWcSWmYNQEhQr+qMHGXGhuf3pnVngAd6eVaQO3IZGsyPfF2zyp3aTQhtA==
+X-Received: by 2002:a17:907:968c:b0:afd:d9e4:51e7 with SMTP id a640c23a62f3a-afe296bceabmr2217290166b.63.1756387505863;
+        Thu, 28 Aug 2025 06:25:05 -0700 (PDT)
 Received: from [10.41.150.230] ([77.241.232.9])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afe849d7e6bsm850780866b.61.2025.08.28.06.22.02
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-afe79fba62dsm926560266b.100.2025.08.28.06.25.03
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 28 Aug 2025 06:22:03 -0700 (PDT)
-Message-ID: <45fa25b0-076e-4df5-a3e3-118b1034c71b@linaro.org>
-Date: Thu, 28 Aug 2025 15:22:02 +0200
+        Thu, 28 Aug 2025 06:25:04 -0700 (PDT)
+Message-ID: <ecbde2de-d08a-4951-82a4-fb73760de73e@linaro.org>
+Date: Thu, 28 Aug 2025 15:25:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 03/13] media: dt-bindings: add rockchip px30 vip
+Subject: Re: [PATCH v10 10/13] arm64: dts: rockchip: add the vip node to px30
 To: michael.riesch@collabora.com, Mehdi Djait <mehdi.djait@linux.intel.com>,
  Maxime Chevallier <maxime.chevallier@bootlin.com>,
  =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
@@ -98,13 +98,13 @@ Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, Mehdi Djait <mehdi.djait@bootlin.com>
 References: <20240220-rk3568-vicap-v10-0-62d8a7b209b4@collabora.com>
- <20240220-rk3568-vicap-v10-3-62d8a7b209b4@collabora.com>
+ <20240220-rk3568-vicap-v10-10-62d8a7b209b4@collabora.com>
 From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20240220-rk3568-vicap-v10-3-62d8a7b209b4@collabora.com>
+In-Reply-To: <20240220-rk3568-vicap-v10-10-62d8a7b209b4@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_062205_577059_22CDD917 
-X-CRM114-Status: GOOD (  17.91  )
+X-CRM114-CacheID: sfid-20250828_062507_598263_9BBE616D 
+X-CRM114-Status: GOOD (  14.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,167 +121,47 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 19/08/2025 01:25, Michael Riesch via B4 Relay wrote:
+On 19/08/2025 01:26, Michael Riesch via B4 Relay wrote:
 > From: Mehdi Djait <mehdi.djait@bootlin.com>
 > 
-> Add documentation for the Rockchip PX30 Video Input Processor (VIP).
+> Add the device tree node for the PX30 Video Input Processor (VIP).
 > 
 > Signed-off-by: Mehdi Djait <mehdi.djait@bootlin.com>
-> [revised description]
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> [added cosmetic changes]
 > Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 > Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 > ---
->   .../bindings/media/rockchip,px30-vip.yaml          | 122 +++++++++++++++++++++
->   MAINTAINERS                                        |   1 +
->   2 files changed, 123 insertions(+)
+>   arch/arm64/boot/dts/rockchip/px30.dtsi | 12 ++++++++++++
+>   1 file changed, 12 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,px30-vip.yaml b/Documentation/devicetree/bindings/media/rockchip,px30-vip.yaml
-> new file mode 100644
-> index 000000000000..9f7ab6965636
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/rockchip,px30-vip.yaml
-> @@ -0,0 +1,122 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/rockchip,px30-vip.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip PX30 Video Input Processor (VIP)
-> +
-> +maintainers:
-> +  - Mehdi Djait <mehdi.djait@linux.intel.com>
-> +  - Michael Riesch <michael.riesch@collabora.com>
-> +
-> +description:
-> +  The Rockchip PX30 Video Input Processor (VIP) receives the data from a camera
-> +  sensor or CCIR656 encoder and transfers it into system main memory by AXI bus.
-> +
-> +properties:
-> +  compatible:
-> +    const: rockchip,px30-vip
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: ACLK
-> +      - description: HCLK
-> +      - description: PCLK
-> +
-> +  clock-names:
-> +    items:
-> +      - const: aclk
-> +      - const: hclk
-> +      - const: pclk
-> +
-> +  resets:
-> +    items:
-> +      - description: AXI
-> +      - description: AHB
-> +      - description: PCLK IN
-> +
-> +  reset-names:
-> +    items:
-> +      - const: axi
-> +      - const: ahb
-> +      - const: pclkin
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  ports:
-> +    $ref: /schemas/graph.yaml#/properties/ports
-> +
-> +    properties:
-> +      port@0:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: input port on the parallel interface
-> +
-> +        properties:
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +            properties:
-> +              bus-type:
-> +                enum: [5, 6]
-> +
-> +            required:
-> +              - bus-type
-> +
-> +    required:
-> +      - port@0
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - ports
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/px30-cru.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/media/video-interfaces.h>
-> +    #include <dt-bindings/power/px30-power.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        video-capture@ff490000 {
-> +            compatible = "rockchip,px30-vip";
-> +            reg = <0x0 0xff490000 0x0 0x200>;
-> +            interrupts = <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
-> +            clocks = <&cru ACLK_CIF>, <&cru HCLK_CIF>, <&cru PCLK_CIF>;
-> +            clock-names = "aclk", "hclk", "pclk";
-> +            power-domains = <&power PX30_PD_VI>;
-> +            resets = <&cru SRST_CIF_A>, <&cru SRST_CIF_H>, <&cru SRST_CIF_PCLKIN>;
-> +            reset-names = "axi", "ahb", "pclkin";
-> +
-> +            ports {
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +
-> +                port@0 {
-> +                    reg = <0>;
-> +
-> +                    cif_in: endpoint {
-> +                        remote-endpoint = <&tw9900_out>;
-> +                        bus-type = <MEDIA_BUS_TYPE_BT656>;
-> +                    };
-> +                };
-> +            };
-> +        };
-> +    };
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 0d2adf483426..356679cfdcaa 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -21768,6 +21768,7 @@ M:	Michael Riesch <michael.riesch@collabora.com>
->   L:	linux-media@vger.kernel.org
->   S:	Maintained
->   F:	Documentation/admin-guide/media/rkcif*
-> +F:	Documentation/devicetree/bindings/media/rockchip,px30-vip.yaml
+> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+> index 46f64cd33b9b..ef52879d6a73 100644
+> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+> @@ -1280,6 +1280,18 @@ isp_mmu: iommu@ff4a8000 {
+>   		#iommu-cells = <0>;
+>   	};
 >   
->   ROCKCHIP CRYPTO DRIVERS
->   M:	Corentin Labbe <clabbe@baylibre.com>
+> +	cif: video-capture@ff490000 {
+> +		compatible = "rockchip,px30-vip";
+> +		reg = <0x0 0xff490000 0x0 0x200>;
+> +		interrupts = <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru ACLK_CIF>, <&cru HCLK_CIF>, <&cru PCLK_CIF>;
+> +		clock-names = "aclk", "hclk", "pclk";
+> +		power-domains = <&power PX30_PD_VI>;
+> +		resets = <&cru SRST_CIF_A>, <&cru SRST_CIF_H>, <&cru SRST_CIF_PCLKIN>;
+> +		reset-names = "axi", "ahb", "pclkin";
+> +		status = "disabled";
+> +	};
+> +
+>   	qos_gmac: qos@ff518000 {
+>   		compatible = "rockchip,px30-qos", "syscon";
+>   		reg = <0x0 0xff518000 0x0 0x20>;
 > 
 
-I think your example could use with some newlines per dtsi files in real 
-life, i.e. newline after the reg as an example.
-
-Other than that this looks fine to me, please consider incorporating.
+Now that I look at the rockchip dtsi it appears newline scarcity is the 
+norm, you can disregard my suggestion for your example in the previous 
+patch so.
 
 Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 
