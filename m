@@ -4,155 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5C87CA0FF2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Aug 2025 08:06:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04FCECA0EED
+	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Aug 2025 08:19:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DpXKS6qmTrruFogrxI3Zn3fuikz6kAhPLeg3zF7vlNc=; b=MlBcQo6drrYcUOHApA2qTr7jYN
-	bO/yXhLfmfluSODYjcoZBQtDvggkwBjwSGiFqGyRNfIFFVzTalpwoAxFtNmOmTnfnMT4yHoX06HWO
-	KSV8CUrYLHq1IW41TpDRhcJTrMd5pSexCGjKYf2V3Xa+7tcCTjIg+Ly41rFQiUijcuUl7EVqKHos0
-	1g9oSiVDIEWtx6ctplO92oeQhfWb3bW9FquaLX5ET9QleUiqagTkB3b5O30NZrjxhl3h+Wg4EJOse
-	1jC0KKg7YV1ZgU2bcnvqIdEiLnz28UaqaBEI++aSvML35zLHxs/sgkoj+BEAYkEZ8gA7h69Td44hQ
-	LatUOUTw==;
+	bh=r5DayB2pQTEt5+0t3YQ8TquP39oMKe8IepYIyTE4mC4=; b=c3cOG168I5oizlHePUkTWaeZKy
+	DnJBwBP/A2OjLZCMWW3l24gVY/aR4JJM1OE2txOzUS+LCpFF/BG5DsojMCnxe1JFWkXWxCULc1e92
+	T+5GpbJIL8Dj+n6n6IYqJholGmitFwgZwKxn6DJBTAXFPRqyr8be+Ddf5jxbPMwUA0B4QIak71fjQ
+	tauCINObhHYtEZ5Y5ipQrU4gkc+atOSuc/XuYvV+UZIdqgQd0S6woveOstNElxuCXUPHyZHYqcQrA
+	Mn98wV1HNe1M0SMTmZdJppvCYLTy47HWvnSsY45W17JvnUGeGLPdTcKL3QI3zjzT2io6EPUfqJ8c4
+	z6ZcZIhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urXdr-00000000iqS-2MGL;
-	Thu, 28 Aug 2025 08:05:55 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1urXrL-00000000m4M-3rdB;
+	Thu, 28 Aug 2025 08:19:51 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urXP4-00000000g6Q-3zJW
-	for linux-rockchip@lists.infradead.org;
-	Thu, 28 Aug 2025 07:50:40 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id B6B1733781;
-	Thu, 28 Aug 2025 07:50:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1756367435; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=Z5D6GoBD7lVN0aaWBxn658yNiz3/WqBdlchz7jbuifk=;
-	b=HWCY5Cs0jOs/jJuIKVhNACU9w5Gs5TWqMHHdo+HjejzC2ugZsWwEZSEUp6NRXANs/oTFPH
-	pmoLlRJDfXWuH86fsrfZJAh+rXItkRO65uJYobxAnlfvK8Mt6SxAQwQ9w+825r19uFgMwg
-	kPA/0BcKiQaVYjPT6hBWOrF0blq8XYM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1756367435;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=Z5D6GoBD7lVN0aaWBxn658yNiz3/WqBdlchz7jbuifk=;
-	b=tvHLRvH9Aqr60a2Nj5GpOV/Z51Ow2nJeOgFZNpCz88hDsPT9/q6iIs0jJ9OQfU8T1o+k7Y
-	Io4yL+T8M/N/pJBA==
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=HWCY5Cs0;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=tvHLRvH9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1756367435; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=Z5D6GoBD7lVN0aaWBxn658yNiz3/WqBdlchz7jbuifk=;
-	b=HWCY5Cs0jOs/jJuIKVhNACU9w5Gs5TWqMHHdo+HjejzC2ugZsWwEZSEUp6NRXANs/oTFPH
-	pmoLlRJDfXWuH86fsrfZJAh+rXItkRO65uJYobxAnlfvK8Mt6SxAQwQ9w+825r19uFgMwg
-	kPA/0BcKiQaVYjPT6hBWOrF0blq8XYM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1756367435;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=Z5D6GoBD7lVN0aaWBxn658yNiz3/WqBdlchz7jbuifk=;
-	b=tvHLRvH9Aqr60a2Nj5GpOV/Z51Ow2nJeOgFZNpCz88hDsPT9/q6iIs0jJ9OQfU8T1o+k7Y
-	Io4yL+T8M/N/pJBA==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 3545C13326;
-	Thu, 28 Aug 2025 07:50:35 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id CxcRC0sKsGiJHgAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Thu, 28 Aug 2025 07:50:35 +0000
-Message-ID: <d040da3e-501f-45d8-bcbb-95fa77e94a59@suse.de>
-Date: Thu, 28 Aug 2025 09:50:34 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1urXdW-00000000imG-0Ksy;
+	Thu, 28 Aug 2025 08:05:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id CD1C54027B;
+	Thu, 28 Aug 2025 08:05:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37569C4CEEB;
+	Thu, 28 Aug 2025 08:05:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756368331;
+	bh=Szqu3ISPHcSpDClnU/NQVEOhbXjcDa2CwfQfHM2oTVQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gMnagQH3MSE3OCmKYpRsd8lUsxpc8Ung8Xj9N13IShaXG1JpVQ17BGz/vZbJ8ayia
+	 JATXdShQIFwJtWM16pujBqztN/HTAHa1eI1ruO392vGQ5bcnBpM/XVuQPAhLb+epfg
+	 l+vq7JbmIEiI0o7x/Jv6L4M7n+VVeNbukGTI3/GpD9kQYUwecJAhxnypY82JF2OpgN
+	 OpDKH2Xbm6L24Rh++PCS5s0FIDKVW188ch6qzc0yfxjVB+EvXvlGjVysaI9/dnMl9w
+	 EBrj1g+TwpS5VfAtcAXeVX4ofcMrlcOTM6deJOEiGJCGib96kXayOKOspPBjlGlk7s
+	 hAB3OigOpxutA==
+Date: Thu, 28 Aug 2025 10:05:28 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Thomas Zimmermann <tzimmermann@suse.de>
 Subject: Re: [PATCH v7 00/10] Add support for RK3588 DisplayPort Controller
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Andy Yan <andyshrk@163.com>
+Message-ID: <20250828-tangible-wakeful-coati-ec27d1@houat>
 References: <20250822063959.692098-1-andyshrk@163.com>
  <bochli5u37mhc6eup7h2oz3yeignofbbj4k5nrvm2k7zf6f4ov@t2sje4gmveqa>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <bochli5u37mhc6eup7h2oz3yeignofbbj4k5nrvm2k7zf6f4ov@t2sje4gmveqa>
-X-Spamd-Result: default: False [-3.01 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FREEMAIL_TO(0.00)[oss.qualcomm.com,163.com];
-	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[20];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	MIME_TRACE(0.00)[0:+];
-	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	FREEMAIL_ENVRCPT(0.00)[163.com];
-	RCVD_TLS_ALL(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	TAGGED_RCPT(0.00)[dt];
-	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
-	DKIM_TRACE(0.00)[suse.de:+];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,suse.de:mid,suse.de:dkim]
-X-Rspamd-Queue-Id: B6B1733781
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Rspamd-Action: no action
+ <d040da3e-501f-45d8-bcbb-95fa77e94a59@suse.de>
+MIME-Version: 1.0
+In-Reply-To: <d040da3e-501f-45d8-bcbb-95fa77e94a59@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_005039_277635_9E6314A7 
-X-CRM114-Status: GOOD (  19.14  )
+X-CRM114-CacheID: sfid-20250828_010534_708298_F123635D 
+X-CRM114-Status: GOOD (  30.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -164,117 +65,123 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, heiko@sntech.de, stephen@radxa.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, neil.armstrong@linaro.org, sebastian.reichel@collabora.com, heiko@sntech.de, stephen@radxa.com, linux-kernel@vger.kernel.org, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, Andy Yan <andyshrk@163.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============1116465468141571772=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi
 
-Am 28.08.25 um 00:24 schrieb Dmitry Baryshkov:
-> On Fri, Aug 22, 2025 at 02:39:44PM +0800, Andy Yan wrote:
->> From: Andy Yan <andy.yan@rock-chips.com>
->>
->>
->> There are two DW DPTX based DisplayPort Controller on rk3588 which
->> are compliant with the DisplayPort Specification Version 1.4 with
->> the following features:
->>
->> * DisplayPort 1.4a
->> * Main Link: 1/2/4 lanes
->> * Main Link Support 1.62Gbps, 2.7Gbps, 5.4Gbps and 8.1Gbps
->> * AUX channel 1Mbps
->> * Single Stream Transport(SST)
->> * Multistream Transport (MST)
->> * Type-C support (alternate mode)
->> * HDCP 2.2, HDCP 1.3
->> * Supports up to 8/10 bits per color component
->> * Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
->> * Pixel clock up to 594MHz
->> * I2S, SPDIF audio interface
->>
->> The current version of this patch series only supports basic display outputs.
->> I conducted tests with DP0 in 1080p and 4K@60 YCbCr4:2:0 modes; the ALT/Type-C
->> mode was tested on Rock 5B, DP1 was tested on Rock 5 ITX by Stephen and Piotr.
->> HDCP and audio features remain unimplemented.
->> For RK3588, it's only support SST, while in the upcoming RK3576, it can support
->> MST output.
->>
-> [skipped changelog]
->
->> Andy Yan (10):
->>    dt-bindings: display: rockchip: Add schema for RK3588 DPTX Controller
->>    drm/bridge: synopsys: Add DW DPTX Controller support library
->>    drm/rockchip: Add RK3588 DPTX output support
->>    MAINTAINERS: Add entry for DW DPTX Controller bridge
-> I tried pushing patches 1-4, but got the following error:
->
-> dim: ERROR: 5a68dcf5837a ("MAINTAINERS: Add entry for DW DPTX Controller bridge"): Mandatory Maintainer Acked-by missing., aborting
->
-> I'm not sure how to handle MAINTAINERS changes (or whether it's fine for
-> me or not), so I will probably push patches 1-3 in a few days, if nobody
-> beats me (or unless somebody points out a correct process for
-> MAINTAINERS changes).
-
-That warning has been added recently to make sure that patches do not 
-get in without sufficient review. It's overly pedantic, though. If 
-you're confident that you have R-bs from enough relevant people, push 
-the patches with 'dim -f' to ignore the warning.
-
-Best regards
-Thomas
-
->
->>    dt-bindings: display: simple-bridge: Add ra620 compatible
->>    drm/bridge: simple-bridge: Add support for radxa ra620
->>    arm64: dts: rockchip: Add DP0 for rk3588
->>    arm64: dts: rockchip: Add DP1 for rk3588
->>    arm64: dts: rockchip: Enable DisplayPort for rk3588s Cool Pi 4B
->>    arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX
->>
->>   .../display/bridge/simple-bridge.yaml         |    1 +
->>   .../display/rockchip/rockchip,dw-dp.yaml      |  150 ++
->>   MAINTAINERS                                   |    8 +
->>   arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   30 +
->>   .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |   30 +
->>   .../boot/dts/rockchip/rk3588-rock-5-itx.dts   |   59 +
->>   .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   |   37 +
->>   drivers/gpu/drm/bridge/simple-bridge.c        |    5 +
->>   drivers/gpu/drm/bridge/synopsys/Kconfig       |    7 +
->>   drivers/gpu/drm/bridge/synopsys/Makefile      |    1 +
->>   drivers/gpu/drm/bridge/synopsys/dw-dp.c       | 2095 +++++++++++++++++
->>   drivers/gpu/drm/rockchip/Kconfig              |    9 +
->>   drivers/gpu/drm/rockchip/Makefile             |    1 +
->>   drivers/gpu/drm/rockchip/dw_dp-rockchip.c     |  150 ++
->>   drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |    1 +
->>   drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |    1 +
->>   include/drm/bridge/dw_dp.h                    |   20 +
->>   17 files changed, 2605 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
->>   create mode 100644 drivers/gpu/drm/bridge/synopsys/dw-dp.c
->>   create mode 100644 drivers/gpu/drm/rockchip/dw_dp-rockchip.c
->>   create mode 100644 include/drm/bridge/dw_dp.h
->>
->> -- 
->> 2.43.0
->>
->> base-commit: 18b8261b84ad5462d7261617fbfa49d85d396fd9
->> branch: rk3588-dp-upstream-v7
->>
-
--- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
+--===============1116465468141571772==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="ymx6junihpockhkm"
+Content-Disposition: inline
 
 
+--ymx6junihpockhkm
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v7 00/10] Add support for RK3588 DisplayPort Controller
+MIME-Version: 1.0
+
+On Thu, Aug 28, 2025 at 09:50:34AM +0200, Thomas Zimmermann wrote:
+> Hi
+>=20
+> Am 28.08.25 um 00:24 schrieb Dmitry Baryshkov:
+> > On Fri, Aug 22, 2025 at 02:39:44PM +0800, Andy Yan wrote:
+> > > From: Andy Yan <andy.yan@rock-chips.com>
+> > >=20
+> > >=20
+> > > There are two DW DPTX based DisplayPort Controller on rk3588 which
+> > > are compliant with the DisplayPort Specification Version 1.4 with
+> > > the following features:
+> > >=20
+> > > * DisplayPort 1.4a
+> > > * Main Link: 1/2/4 lanes
+> > > * Main Link Support 1.62Gbps, 2.7Gbps, 5.4Gbps and 8.1Gbps
+> > > * AUX channel 1Mbps
+> > > * Single Stream Transport(SST)
+> > > * Multistream Transport (MST)
+> > > * Type-C support (alternate mode)
+> > > * HDCP 2.2, HDCP 1.3
+> > > * Supports up to 8/10 bits per color component
+> > > * Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
+> > > * Pixel clock up to 594MHz
+> > > * I2S, SPDIF audio interface
+> > >=20
+> > > The current version of this patch series only supports basic display =
+outputs.
+> > > I conducted tests with DP0 in 1080p and 4K@60 YCbCr4:2:0 modes; the A=
+LT/Type-C
+> > > mode was tested on Rock 5B, DP1 was tested on Rock 5 ITX by Stephen a=
+nd Piotr.
+> > > HDCP and audio features remain unimplemented.
+> > > For RK3588, it's only support SST, while in the upcoming RK3576, it c=
+an support
+> > > MST output.
+> > >=20
+> > [skipped changelog]
+> >=20
+> > > Andy Yan (10):
+> > >    dt-bindings: display: rockchip: Add schema for RK3588 DPTX Control=
+ler
+> > >    drm/bridge: synopsys: Add DW DPTX Controller support library
+> > >    drm/rockchip: Add RK3588 DPTX output support
+> > >    MAINTAINERS: Add entry for DW DPTX Controller bridge
+> > I tried pushing patches 1-4, but got the following error:
+> >=20
+> > dim: ERROR: 5a68dcf5837a ("MAINTAINERS: Add entry for DW DPTX Controlle=
+r bridge"): Mandatory Maintainer Acked-by missing., aborting
+> >=20
+> > I'm not sure how to handle MAINTAINERS changes (or whether it's fine for
+> > me or not), so I will probably push patches 1-3 in a few days, if nobody
+> > beats me (or unless somebody points out a correct process for
+> > MAINTAINERS changes).
+>=20
+> That warning has been added recently to make sure that patches do not get=
+ in
+> without sufficient review. It's overly pedantic, though.
+
+It's not "overly pedantic", it follows the contribution rules. I'd argue
+that, if anything, we've been overly tolerant with that kind of
+practices.
+
+We do have a bug with handling MAINTAINERS changes at the moment. But
+everything else shouldn't be ignored: either patch MAINTAINERS to
+reflect the actual contribution path, or get the maintainers Ack.
+
+> If you're confident that you have R-bs from enough relevant people,
+> push the patches with 'dim -f' to ignore the warning.
+
+And let's not just advise that either.
+
+Maxime
+
+--ymx6junihpockhkm
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaLANyAAKCRAnX84Zoj2+
+dvcTAX9rZO7QwXxbtcVqDnn23mh2i9KEU6GCe3pKfMrxhyxr/xeu+2p/6ozBtwvy
+dnuUOUwBgO9N54kfuFqmTdfZIBhi2RTQ4iuHn4jAnfkBH1wkyB6OhyEze6gnXwEZ
+eUsIzifPzw==
+=bTVf
+-----END PGP SIGNATURE-----
+
+--ymx6junihpockhkm--
+
+
+--===============1116465468141571772==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1116465468141571772==--
+
