@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 936E8CA0FFE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Aug 2025 20:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A83ECA0EED
+	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Aug 2025 20:48:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=I0AWHhGdWs+lC/enkovZ0G78msbou5op8S+g3OpGKM4=; b=DQ1FJF9hJg18eh
-	y7VZmraU70X8Xjc6qZX22+hMsMWv7Bo0ZL4aSqNqqaAmQgxN0/1F8T/sfZfZJaCNKXVSMA3YAe6lX
-	woxgShQTvINi55nQRuNecMbTP4PlG7gqvH7tgznTr6dUKLh+pmQqOE6SJoVrWNUc0+rW+kl89h+RE
-	S61idpy40HL1b0DMP2LJO61LCXy1fBYIVwBLAqrs5AXEEXj6BOcc6NDGiNnDmJ8FKB3EOfwEoHOAw
-	7opjp34f43nye+35R8MJpYH6gVt2tsoDiJrmOhDiX3cNrrDgb39QZzy0B5OLIMp1jAm7/ucM2/SUq
-	wkn3MFqrRvOeb8NcqUsw==;
+	List-Owner; bh=GZ+6XiwEFsFUpu8ICZtRfKwAIDvcFGC8zGZCZF2pnkU=; b=NNSv+UjV48ZBbs
+	9Tnzlr7XpiFqC452dpNO7MaBLLeTBkTXw58GRfN8/lEy9+Z0rf4NfJut1ZseBFBXZ10CuFhT16OPo
+	kNkhPE1eNJ3d4a9TmDPvlhuU7ttRfIWibnvvKJHBHf3Dde3RpIkgWqjDMensmoA/RyzJQxi/sH8zC
+	AHffdWCLf7ecWNN7v/JtHJI4XSirF4HgsfpIF09hcEYZJJe/9jAVprf+/UduPI1XmFbZKJCc8ypWc
+	PuJpw/WEWOyWGEoS1fvNo+Z+FYjb++dwt+VyUHfvIcPfq214eO+DMZPL/ks9WtNuKyKSLKToWNBIr
+	O/Z4cmHEqwIGD999+wHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urjXH-00000003Djm-2jsZ;
-	Thu, 28 Aug 2025 20:47:55 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1urjXE-00000003Df7-2OjD;
+	Thu, 28 Aug 2025 20:47:52 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urfiM-00000002IXg-0J4S;
-	Thu, 28 Aug 2025 16:43:07 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-3ce47d1f1f8so625145f8f.2;
-        Thu, 28 Aug 2025 09:43:05 -0700 (PDT)
+	id 1urfad-00000002H3a-3yOS;
+	Thu, 28 Aug 2025 16:35:09 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-45a1b05fe23so7402655e9.1;
+        Thu, 28 Aug 2025 09:35:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1756399384; x=1757004184; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1756398906; x=1757003706; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=kmiVUhRavRhbmTQQVKaXaG+VoM+x59cj+sqorjef2E0=;
-        b=X8n4myXRC1ondWc0u70ZYMk4h+IkX4uCcfDgf+l8WvjhInh6VUgDPrJ/TyBBDDRKwl
-         xoZ/NcPekxakETRFRVEEgdLZtaZT9u4/h4iKnB+V6gHmGmhD2Z2YaEag+Iru9YaQlD6l
-         UH35SXY1CBKVxgSErdnoiNt6/wtvsAG2AeGJO3T6MOv8QyMFIUV7ZapvDsLW22OIU7fM
-         K/Ze2ptFamHIx+KEaqXYo77y/lAXxBGdySONrCRg5qTBvlPo/XRaLMzjSkoW5L5HyWNe
-         YxWsKf418nJt+pRbxOAodIc1v5rvcbnPXImXrKouFSi+uzRXGonK/RudC8XFySbx9jA6
-         2ZsQ==
+        bh=JfYQ5wQeWPqj3q6NX8K9M3CLRkWa1reIgFJFV3niqMA=;
+        b=biM0aznlFUKzOfuYLpgi1Wu+PGZBrZ0zgMh5mqipfTXUj1kGrleTbWwCeQ02uQRzqj
+         t+rKHTTzSh0XW/XaF6kzFNOMhcbHu+uI630f51HcAJQbLEeiNl03EnWciQY7g+dWg3pG
+         RLHyGX0IDdJ47CdsKPZxEV9Ee2i9jugc6hABonQGvB7SsN/5N6w0oEj4VRSBCAMiP9nX
+         20HZRGHl4I6nBPijR3mjMC54lp4XIC6QrdZXsx/X7AmDIm59v3oPr82DdUEg+V6OvM+T
+         XlnKDhJEs+Qvj1qczgkqhiCng1vc4onN1BdkfILgeYEjYHzuFXMCWUTOm41JX9nOa6fR
+         muhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756399384; x=1757004184;
+        d=1e100.net; s=20230601; t=1756398906; x=1757003706;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=kmiVUhRavRhbmTQQVKaXaG+VoM+x59cj+sqorjef2E0=;
-        b=a9K8fbiWpSB8irfRUkv4/3qcyshyMUqFYOI5GAxMapr2L2ldVFPsFsDUM9rbKaJMxb
-         q/pYs4GimaBVFg7Mn2qiZUXX3Rv4Ji2XRRdVIjObKE+n1lh+z54iahL4GmGrjNOYWMBm
-         t3PnFbWSQ7dQTbw537+WE2k4bz9oDYvjU9pWWW1fDtC2PvJ1S4RL4jXyQktEytIeCdvy
-         iu6BJa/BZFbK9GdOSY1yAwhi24xeNwbc/pZ2yASxiZC8tNTJ5+EOncSB9l9RO+oP+IIG
-         zdi1fHuhnWxVbzwX7wM24s1l2FOSA3qblIpSzXYN7ZMsjkdvMDk+fioht8eyyUrNQ+w9
-         7Ixw==
-X-Forwarded-Encrypted: i=1; AJvYcCUgmii7KG4uRdLqwxj+fHjifU74CBsuBtRboosc6HBu/j7z5ACz4vHHRxfwSPnP9WAHoss09d5X0NuN6hvr1NUj@lists.infradead.org, AJvYcCWfUoVeA4LsgHboK1xeP+uUbfnhdEwcBZZIdSsVN05yT/v+1wHbsmvj/yInVR5d8aMsf0ZA2cIiK/406Rr9Vew=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzMf/o+DpxqJzkRpLRO3EXpXVd7U8SQ03fovHim5cZ64RDb2weO
-	Dd6N54X+MfaXTN82xjtOwODV/qgvlZy77eo0+Su6w667oTEHA9Q8R2U0K97eEg==
-X-Gm-Gg: ASbGncvaI8Qyr3uCwS4alm/WjglVL23B32WfvC6qP2Mp9SvqIvCsClzsu5tRVmC5aee
-	0hqn9ZCSCTI8vI8eRMKvacMVM9bQJd6M5nRB0yzaP1Xb3IlmLPCU9PChGiVmBE2wA0y9n/bqojT
-	Qz4NntSm35DRj4l2z47KsFZBU8h26sd7qq+8n8Ty6zCXQHawaVth9SkWxJZIBQSvjDs+FAtrn5u
-	1i1w1WEnRxizzYqwjqfNzB2Z9Iw5cbGvcf3H09fRsJ4GRolrCshFP0kLHGqHa6/AsHICHd/FlZr
-	8p+u7pZOMa2VHn9XrqXjyHAF0rQfmMZnz0u4F86oy9qfAugH4UuWmxquSoDObAt0lPR2f4Kil/O
-	Fs3BuMvgXpITzLlozwmv+9XAUx/LfsDRhfzwlng==
-X-Google-Smtp-Source: AGHT+IGZ1oHvbw7/WV61DeDUCKQxNQm0uGXVNfsfYJqhufPLLEDZwzYCkoecNuE41vbu/p9STOdVJQ==
-X-Received: by 2002:a05:6000:18a6:b0:3c8:63bf:4681 with SMTP id ffacd0b85a97d-3c863bf489fmr14282744f8f.54.1756399384355;
-        Thu, 28 Aug 2025 09:43:04 -0700 (PDT)
+        bh=JfYQ5wQeWPqj3q6NX8K9M3CLRkWa1reIgFJFV3niqMA=;
+        b=mtHCDbkTpDQEskJNiMKlU3knKIjFYoN8FLy2HQolxGSKxvr/3/DLOzmNRiKGUA1OPS
+         t2M6CbK0wZQw9+abx79bIFi5WDVv+gQOot4nTq4rOrB+CmXaaHvAFvkjz00MhGWEYg1H
+         QpVBBHRLljj2Cs55wpLB2tMrfbTHd3PM8GZI6AnBgkDQY54BeDvZc6LWJ1WTaAvIBQQD
+         2vK1qUevri6ePS0CLcc280RSzO/K1nSnpd+aQ/QAddI2/vOneQlGFUzKGrXrrYVqO4Mw
+         Yu5AprUPg5UNh8yhcCYAVTfUhDmnayXhw+FvI4WMqmvzPhxatU+Ah8TXKP075WXzZJJn
+         F+uQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXBCK/6KwFCqR4ZBvpvEvF2Op5xnf0d1WbetWiTNlBGe+1A331eNII4zY8EuFFrMMS1o5PnHKmuFdKwU0xyZ2Y=@lists.infradead.org, AJvYcCXInvsJH/kuUYqSLRGNnufcbSCdBCbGfZN7j0Q79vwoQ4j64Yhg+gyLrmVL28Oc1G14/FWMX3k8+kiznxHhrV+J@lists.infradead.org
+X-Gm-Message-State: AOJu0YxP04bq4uFIecKxhSQZki4PBHIADvjemYTINUSqMb/sVShDGSEt
+	I+lZIYwlDjosiYjH8iFFWiAMZbZkIfQuGOxtzsXnSvnmv55/VY4UUMUYC+/hTA==
+X-Gm-Gg: ASbGncv+mp/+/kf81TTc3M09Ft2RGA6CvCOO45bCsjyB9Efeb7u7AyzUXfuePrgDYY+
+	UgABy9S9OsiVJChO/c2a2pk7gfAxCRWotLiIXql13MyfF86qW3xwlmeK/Qy5kgHuqk7SxO4oC+M
+	ZxAdstcF7uxso/MYqrb/JvvecEjBXEuIsriRZpGU13VxoVCVDn41i8KFtFm3JlvCgjEGh3UpZV7
+	LraMbMMVIfPB19f13REVSi8wT1WH5kb17RChts5J8UX1ZQwwdQRMjVAZaDuAIT4w6GKCTJEFZdP
+	ZmgNvCFrfUSqZH2z6hqyLO3pK3Xl4vCrWPoi0GVJlmo36G0YJwvCF071uklkbZbUaDaLZyEI6Oo
+	YiY1p77S/Pwtna4VoJGnRuwrYP47Q/s7yfmJs+Q==
+X-Google-Smtp-Source: AGHT+IHTw1bI2QA56HfNvV10B5zkkRdlJjRVGOQb4dNonItwDze8Jpvoj6Zs4dslyNbDt2NCzDeisQ==
+X-Received: by 2002:a05:600c:3583:b0:45b:7e68:c6a3 with SMTP id 5b1f17b1804b1-45b7e68c7admr2936725e9.16.1756398905752;
+        Thu, 28 Aug 2025 09:35:05 -0700 (PDT)
 Received: from toolbox.. ([87.200.95.144])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3c711211cabsm26033204f8f.32.2025.08.28.09.43.02
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45b66c383b1sm61069365e9.3.2025.08.28.09.35.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Aug 2025 09:43:03 -0700 (PDT)
+        Thu, 28 Aug 2025 09:35:05 -0700 (PDT)
 From: Christian Hewitt <christianshewitt@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -77,14 +77,14 @@ To: Rob Herring <robh+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
 Cc: Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: add SPDIF audio to Beelink A1
-Date: Thu, 28 Aug 2025 16:43:00 +0000
-Message-Id: <20250828164300.3829488-1-christianshewitt@gmail.com>
+Subject: [PATCH] ARM: dts: rockchip: add HDMI audio to rk3288-miqi
+Date: Thu, 28 Aug 2025 16:35:01 +0000
+Message-Id: <20250828163501.3829226-1-christianshewitt@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_094306_112312_A8172932 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20250828_093507_984273_8CA8F0B9 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,56 +103,53 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Alex Bee <knaerzche@gmail.com>
 
-Add the required nodes to enable SPDIF audio output on
-the Beelink A1 set-top-box.
+Add the sound and i2s nodes to enable HDMI audio output on
+the MiQi board.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3328-a1.dts | 23 ++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ arch/arm/boot/dts/rockchip/rk3288-miqi.dts | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-index f7c4578865c5..b276a29bdd85 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-@@ -58,6 +58,24 @@ ir-receiver {
- 		gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
- 		linux,rc-map-name = "rc-beelink-gs1";
+diff --git a/arch/arm/boot/dts/rockchip/rk3288-miqi.dts b/arch/arm/boot/dts/rockchip/rk3288-miqi.dts
+index dd42f8d31f70..20df626547bd 100644
+--- a/arch/arm/boot/dts/rockchip/rk3288-miqi.dts
++++ b/arch/arm/boot/dts/rockchip/rk3288-miqi.dts
+@@ -78,6 +78,21 @@ vcc_sys: regulator-vsys {
+ 		regulator-always-on;
+ 		regulator-boot-on;
  	};
 +
-+	spdif_sound: spdif-sound {
++	sound {
 +		compatible = "simple-audio-card";
-+		simple-audio-card,name = "SPDIF";
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&spdif>;
-+		};
++		simple-audio-card,format = "i2s";
++		simple-audio-card,name = "HDMI";
++		simple-audio-card,mclk-fs = <512>;
 +
 +		simple-audio-card,codec {
-+			sound-dai = <&spdif_dit>;
++			sound-dai = <&hdmi>;
 +		};
-+	};
 +
-+	spdif_dit: spdif-dit {
-+		compatible = "linux,spdif-dit";
-+		#sound-dai-cells = <0>;
++		simple-audio-card,cpu {
++			sound-dai = <&i2s>;
++		};
 +	};
  };
  
- &analog_sound {
-@@ -325,6 +343,11 @@ &sdmmc {
+ &cpu0 {
+@@ -283,6 +298,11 @@ &i2c5 {
  	status = "okay";
  };
  
-+&spdif {
-+	pinctrl-0 = <&spdifm0_tx>;
++&i2s {
++	#sound-dai-cells = <0>;
 +	status = "okay";
 +};
 +
- &tsadc {
- 	rockchip,hw-tshut-mode = <0>;
- 	rockchip,hw-tshut-polarity = <0>;
+ &io_domains {
+ 	status = "okay";
+ 
 -- 
 2.34.1
 
