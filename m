@@ -4,149 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD5AFCA0EED
-	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Aug 2025 10:53:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68FE0CA0EED
+	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Aug 2025 11:04:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:Subject:References:Cc:
-	To:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vynUHJtedPU2m9Rt9ceMHgfRpJ8p1FsfkecF60HZ7io=; b=N954sZSem2EcD7XMVxbmc82f90
-	L7OmSJnLfkEZbPT5FAwIv5Ym/kXazkQgAmFYGm55ii88sL+oVL90BzRXWyxOx9iPTwVls7b/VMu7U
-	plTLJSYP/tmak5fbTaGurKKA4hnsl1caCpwVxfWDVq9QGSZ8hAosThdqwchJLZ/BEAvK93yIwCsCO
-	kWqlNKr8dH1lzy3YgKpTib+IfcP2MYHV2G51o07a71Bqh8ITWd4hMTqj+qcp5/H4MZmU+vaXwoCHv
-	2ldCIay3oERq8AMNriCO/WgSXzV0vcM6HN+DysOzeSNWjICTPY3nY6oUPj6/25hK/gGWnNZysnRWw
-	iDkrWMbw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=g9+IORamwdp+D9ZM44JZ57el4W0+WdFmnPXOx7nQRuw=; b=dQ8rytRgKQjec+
+	Hvb1dq3mCIO6Qnc47OalBJi/PzZA+cqIlIoTXElSoo9z9jOpYuE33H1lMockO1/B/y44wCpBrf6+k
+	1U02pwUooT3Wq0AL04LgeWizSn2GMUWofIbZr9mWWSiEO8Lxh57Dg/3+wnZu5Hgc0vLpolJsrvC0M
+	UfINXtYTXnfolhuo03P6PEC726QU44XbrN8dRolG7227Aqc8l3NO8X8Wbuihkpok5CB2qL6hQF35s
+	ytbkrbvnXPU0UITTFPtMRnKlmSeCbIAlR9fwiL1dI/h+krFdzkEIuisvN4En2ZYvblgllwKashDdV
+	+oegSQ2l7biZcU4XXCkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uraGD-00000001EWs-0HP0;
-	Thu, 28 Aug 2025 10:53:41 +0000
-Received: from mail-norwayeastazolkn190130003.outbound.protection.outlook.com ([2a01:111:f403:d20f::3] helo=OSPPR02CU001.outbound.protection.outlook.com)
+	id 1uraQG-00000001H4L-0ttz;
+	Thu, 28 Aug 2025 11:04:04 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urYIg-00000000qse-0y5x;
-	Thu, 28 Aug 2025 08:48:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=wb21qGb4orLiAiO83wXsrytypEJkMLclK1vRV01rH5Ykap9YW1JzYpv4M6ipFjFHYsSzrIWsVTVe6SLbi2OkvYrskkMIsO5i2uAkMf/AiFD4S1m4dRHn4VziU7hr3hZEqes3joXK4XH7gTzCkSFUMy3F2CeiZPCw8RgaOvEr7SE8gGzA/qsZH67cb1M+qrQ0xFeDGC7sPROU5vDTIhcWQxD/JePRp8K3Zn0jAeEQJ9TGWuLdc7dqYYJHSO/+abKIJ1ARDgBOdfYRqqpZDTjD4EjXzC8820+vOvJL6vroDOkfInNOPmlz1Ex6QYS8CfnrZL97tDmPxrBubdPYgQJvJw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VV0JtfyD0a7o3NmY0oc0/E9UvWT2LBwGxVC2a39GFpc=;
- b=mmZvTx6TidjSlyARnzIMlM93jX0i35o1RNZ42BZp8xlOhGz1CJripX5bX7IIIbFTTAhAL3Dw/XohEuNkaKsxEfEiv3Mh8qapNlp0JbT3kl/bvgaNkhzF1uu/5+r5bxMovO/rnGM73cVQbAW2RkOBN2tMAbV8EZJ8IABUIPrs0SJe7GyZd+fxHSoWpi4W3R7y3JH5ZwND3JlsFB269MdmAJRHJ+EbaqP2XbkB+X+WlLr/iNarWfPRDH9IM2Lgba5+FRa8YFXf6F/li462x4vtXTK60t77fBOtmDj5n+RCVmfN4HFJCUbwtvb74cDUJV8KXPQtF63fqZ/fzB/fXK+dCQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VV0JtfyD0a7o3NmY0oc0/E9UvWT2LBwGxVC2a39GFpc=;
- b=AGJ/oxz4ml14hnyHZePW4Wm3a6tehL+olLZ6eH04SYV9hTyzj8xDDE7SquHUZqEG/ciMClWIerXt4ggW3ByzlEnkXZflhjPxBCY5DKSBECgIJ4z64+HJW88zAv+rb5DGj/mc6vco80UfkND63DBI7CdWYaTidwRonlC3y6xvMyb16ZA89MN2Koeh1uV5mYr+of84/6WOcd51Y4zzNffYQYHlVQitAshn9RPwjo4acQf9rsnawTJnCaJB5A5EdROnQZ7rlnHGbO39chq7n6WVYtyuVIVQubTRHWG/tF03sqZpdmNL1WPekoSch/j66XR0tWTJsXRjjFS8xJ6IpEkzDQ==
-Received: from AM7P189MB1009.EURP189.PROD.OUTLOOK.COM (2603:10a6:20b:175::17)
- by PR3P189MB0876.EURP189.PROD.OUTLOOK.COM (2603:10a6:102:4f::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9073.15; Thu, 28 Aug
- 2025 08:47:53 +0000
-Received: from AM7P189MB1009.EURP189.PROD.OUTLOOK.COM
- ([fe80::5756:694d:1641:3b13]) by AM7P189MB1009.EURP189.PROD.OUTLOOK.COM
- ([fe80::5756:694d:1641:3b13%4]) with mapi id 15.20.9052.014; Thu, 28 Aug 2025
- 08:47:53 +0000
-Message-ID: <AM7P189MB1009A67370CA029038DF2A69E33BA@AM7P189MB1009.EURP189.PROD.OUTLOOK.COM>
-Date: Thu, 28 Aug 2025 10:47:52 +0200
-User-Agent: Mozilla Thunderbird
-To: opi5plus@bcc.bai.ne.jp
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
- krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-sound@vger.kernel.org, robh@kernel.org
-References: <20250826134456.9636-2-opi5plus@bcc.bai.ne.jp>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Enables sound output from the
- audio jack on OrangePI5 Plus
-Content-Language: en-US
-From: Maud Spierings <maud_spierings@hotmail.com>
-In-Reply-To: <20250826134456.9636-2-opi5plus@bcc.bai.ne.jp>
-X-ClientProxiedBy: AS4P192CA0014.EURP192.PROD.OUTLOOK.COM
- (2603:10a6:20b:5da::14) To AM7P189MB1009.EURP189.PROD.OUTLOOK.COM
- (2603:10a6:20b:175::17)
-X-Microsoft-Original-Message-ID: <34ae1895-4bba-449f-bb4f-7c6c6ac34135@hotmail.com>
+	id 1urZQ5-000000013jH-0tE2;
+	Thu, 28 Aug 2025 09:59:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1756375184; bh=9xSK5wQebA1aqy7LgKNxVsJm9NVimwKAsxwFdofUyZo=;
+	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
+	b=Jpl9V0EnXS0hooV4AW2thMQ/BJNtdjxOk3uvnXwwmT4pP1pGH6nas3SOnUVQhucE1
+	 tjLA7D1ah1ADClJAPAK5fJfTPdDSf69icB7ShRkI1tJ5/VSREk24HjyIW961hLQhCD
+	 6n3CXMohR8IjNRfBFw0bii9/JAIwOvm9CVIDMsYs=
+Date: Thu, 28 Aug 2025 11:59:44 +0200
+From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
+To: Peter Robinson <pbrobinson@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Diederik de Haas <didi.debian@cknow.org>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Dragan Simic <dsimic@manjaro.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add vcc-supply to SPI flash on
+ Pinephone Pro
+Message-ID: <s4pqhvg542k4d3m4sosnugy5sdnqpw3dabv7cw4o33imvfyxje@yao7oufrhxn6>
+Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
+	Peter Robinson <pbrobinson@gmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Diederik de Haas <didi.debian@cknow.org>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Dragan Simic <dsimic@manjaro.org>
+X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
+ <https://xff.cz/key.txt>
+References: <20250827143501.1646163-1-pbrobinson@gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM7P189MB1009:EE_|PR3P189MB0876:EE_
-X-MS-Office365-Filtering-Correlation-Id: 553e713a-7ecf-408c-ede3-08dde60f9334
-X-Microsoft-Antispam: BCL:0;ARA:14566002|19110799012|461199028|6090799003|5072599009|23021999003|15080799012|8060799015|40105399003|440099028|3412199025|4302099013|10035399007|1602099012;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?Qk96aVZoWnpKVzZuWEMzd2s3UHdraUZyVDRGRmlaWEhNM0o4cG9jSjhZRGNt?=
- =?utf-8?B?QVNQZzlwdXhKMHBMaytaVjBOZldubmFPWmU5NldIZldwQ2xDWFFUblBjcDdG?=
- =?utf-8?B?TzVvZXFnYldRWEZXM3Q5cm9McjVodzloZWFtTjFsMDJscmVONXJHczZNRnlQ?=
- =?utf-8?B?TFBoUmVtalhTVkh6b2MwQnc0ZFpSV0E4QkRsbkdkWnlMYTJHaERWZGNUUVAv?=
- =?utf-8?B?VDFpQWpzM2h0TzhqOGkxNStEZXlGcWxDa1NuK2djdU1TU1VBNXI1bEtCL3VM?=
- =?utf-8?B?MzhCeEtJT1hxeExmV2daeVI0NWxNYlVBZ0FDVDlCQnA0dDUzZjh2NGg3SWh4?=
- =?utf-8?B?b2wzd0ZNa25ySFEvdWxnbWlPZVRJL1RlWG1wQy9DRU5yUGljVDVLR3VNa1lB?=
- =?utf-8?B?U2tXM3NNcU4zb1c5cWJWaTc0NXAzN0RaMkxQTUs2RXc4M2pobC90Zmt4VlND?=
- =?utf-8?B?MTFFb01zbXpLY1ArTVdlUTJadmNoMDVxUW1oSkVuQ2RsOXdaVkFtejRHRng4?=
- =?utf-8?B?bmRjRmFYcFQwQytMTTNHd0JTbGEra0d1WFQxSXpFTGFobm5DcllmdWFQcTZh?=
- =?utf-8?B?NlhpL0ZOODRMVUZMNnZNZzRJZGRqSEg1aWgvTzB6SkNpM2Z0TGZRaXFhYUlT?=
- =?utf-8?B?UEd2TlpMMGlFR2pOTkM3bjc3MFZOZFRrall4Zi91NzZSaGtNWitTb1hhbTFP?=
- =?utf-8?B?K2xuWnFyNG1ZdkZCWk9DdncxNzV6WUJwRUZ6a1JtYS9YU296RmIyajRaZENG?=
- =?utf-8?B?VG85UlNLVFpBQitSRU51bnpCZXFaNkZpeFBZYXIrcUhrcFg4Zk9aNXN3TFRU?=
- =?utf-8?B?d0ZrRDZlS2Y4UFNTSjk1RS9oM1l5eko3czZTbHVCNDVqRGpTdWFBbjdBMHFD?=
- =?utf-8?B?UVVFNXE2ODVqZTM0Y251d0dIOEExTzRqdkR6Uzdtc3EzWjhSU1E4cUg4cEg0?=
- =?utf-8?B?VDBnS0VYVm9ma3BLVHhMaCtFWFVWYWhBb3lPY2VSY3hCK3dyMURPbkJvR25t?=
- =?utf-8?B?dE5UMGR3U282UU5vSWhDbTdodStkM0MzOFRqZ0ZxVklLWnU0MzlWbGI5L3FM?=
- =?utf-8?B?V1EwM1ZNbERqeE9wUXhDaFY5MVp3Zm5VT2RLVUUvRnV0Ymg3Lyt1OCswQlFt?=
- =?utf-8?B?ZnVBYmF5eUZ1d3ZKMEdTZThPSVRBcGcxU2xDUXduL0tLWEhFcC8xQXhyVy9h?=
- =?utf-8?B?TStUYkxnenYwdlo2RkRMaHpIeE1JQit2Z3B3QVdPZnh5MHp3dXlXM3hnbzBU?=
- =?utf-8?B?ektwemRvOTNBNnZMN0dhNVJGTU1SdWlwU1NOZlkvOWwrbVZIZnZFeE51KzQ3?=
- =?utf-8?B?ays1cGg5WGdPT0orSFJOUis1Y1ZOa3NOa0RLRUU2M1ZieDNPQUt4YjE0bzFK?=
- =?utf-8?B?UmxmVEF1YTlOS3paeUNWY2E0cUZmNUFOZHYyaUV3bmdNUU10T3RQdU5jOHVo?=
- =?utf-8?B?Y3NkU0dIK0JYRmN6SmRQRm5qajIwcDNyTjhsdm9CRmFnMEk2OEpzVG5CODRN?=
- =?utf-8?B?UGc3WDZPWHBZZTlHaUhQYTh4TzRJVVdpdEh0bWl0ZmQ1aFRhVnk0WTlFT1Q4?=
- =?utf-8?B?ZGcyVzlKaXRnalhnaTBZK3lOaHhsWW9vVHI2VGRDaGJNNDNvOHY0ZXZYclJX?=
- =?utf-8?B?bGZsYWlnOUVTcE5lUFZCVjhwdVZNRzVndW16UXdMOFh4a0F2Y0ZaSEM1cHF2?=
- =?utf-8?B?Q3pTRGxrU1JhNEZQbXJVNUV0ekVHQVR5T08yVkZKdkcwQ2NHYXFpc2dhMVVB?=
- =?utf-8?Q?gKlJF1TUv88f7p6407fd5C30Vzylh/IkPFmVwnp?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aUhpM1daOERmRzhtYzFPOHVHVWh4NjVUTEgxS2tndFQ1Vmx2YnhzYllIbWZT?=
- =?utf-8?B?c1FsSGo4Tkxla281aDBMck5UNThiWmwwSlZrdkM3WE1RUEpsdUEzUEJ6cnVU?=
- =?utf-8?B?cEtsWkMxVjNrZlFqY2hJeWF4WVdjNDRQZ0FKZ2IxbTk1SU5heFl5ZXhkYTR0?=
- =?utf-8?B?T3VzZmdQRGRXSE5NbEJYRUp0MjR3U1BTZ0V5TE94blk3Nlgxbk9ydHNIS2Fi?=
- =?utf-8?B?N2YyaDBlVXBuTWxHcEg0TFYwSVgzUzhIOFpHRmJ0WFVRMkVCK2lvM2s1aTcr?=
- =?utf-8?B?VmhDMFNiemlMQjZXc0d3V0diZnU4citiQURtT2tpc3NDTWJyOWFDaHhxSFN1?=
- =?utf-8?B?cmtwZFl6UXdqcUpqZ1gwN0MyQXVLZ2JwY3FwR1dBb24vancyZHdyMjVzQnV6?=
- =?utf-8?B?Q2VMVDhkSzUyZFBIbEM1MHZEYThLNnFPL2RpVkRFK2FQaUcyOVAybC9FKzFI?=
- =?utf-8?B?eXg4RjA5NXoxU2ZqU09Jd2hBL2svZUg4VE84QzRzYWMyRUpiTStJTE44VFRI?=
- =?utf-8?B?UHJhQlZ3VVN6KzVBQmkvVlBxbThhTWt1WUVKa2cvTTM4d1J6aHVmUHl5S1NX?=
- =?utf-8?B?S3dYRmpOcW53eHBReU9mUWFuWHdZc1FvajhocmlJS2lJZEVSOFA0eFo0NHV6?=
- =?utf-8?B?NVgrbS9PU1N5QzVhOGhlVmdta2pLeEplTXpOa1dCS0EzMTNUbmkxM0VERFJZ?=
- =?utf-8?B?WHNUM3hZWUhVS25aQXVvYVJkeGdUYTNvNVJWMGFtUXM1VkpZdjZUNlh2R0RQ?=
- =?utf-8?B?ZTg5SDlhMTlSSVZSdEJXdjlJaVdwRG13NWw5TXRjOEtabmx3Y0lWV0tRVFJF?=
- =?utf-8?B?U0xINWNiTzBFYUZXcGpuaGNoS3UrekJWTmxvZkIyMFQ0bEVvcVFGc0M4ZWxH?=
- =?utf-8?B?YW9kQXRnV3pxa1hJbGVacTlPay94Qm1saTk0RnRtdkF2NzBxT2kwOWJuTDA1?=
- =?utf-8?B?OXgweDJoTkRCMEFkZkRRY2dyNEF4cnBSTytxYTZBcUpYWkFjUUFxTzFrWjlz?=
- =?utf-8?B?VnpzVE9sZURqaTMxTkY0ZTFRSlE5YjltRytYSlRvcTYxV05BRDB3VEgweWcy?=
- =?utf-8?B?S09vOU5QS0RtWmNxTlEydUc5LzBvaGxkamkyeFJRUS9meTY4WmNKbDd4cWh3?=
- =?utf-8?B?YUl5SGMrZktzSzdVRU1TY3dES2taMStFQXBMM3U3RWxPZk5XN2FmL0RwZ0dK?=
- =?utf-8?B?eEJqKzNONVNQdlVmc0xpNUhySnhqRlo3bk9qcGU2U0Y1eUZzTkpxYzFyekdj?=
- =?utf-8?B?Z0dDZm5za2owOHZWV1FXVC9kZEE5K2NkN3pzbTQ3Z1B2aHQ3cWFxR1U3dkZ1?=
- =?utf-8?B?QjJHa3RzZDlPU3ovbXZuR1JMdFNlckpMUnEwbHJoRmE0SzZ1elZ6OHBiVFZ5?=
- =?utf-8?B?TjBNclZqbDlNcWxBOThyNlE1NFhNQXRUZDlZTGNacFdVaUU3a254aDV2dXU5?=
- =?utf-8?B?ZGk2dlYzT01PUG13WVBIM2RQaVFGd0NmWEJ0N0U4WmFQT3Y3NGdMWUxLNWVa?=
- =?utf-8?B?Y2tpaTMyelNEY1diU0w3RWliMEgyWk9XVThiTmNHaFBXRW81eEptZk1ZNDky?=
- =?utf-8?B?NUJqYmRDUDcwT0thNWI2NVBnL1B4bTlwVXRWYXNxVGhOQnJNczlRMk9RNklI?=
- =?utf-8?B?TnNzdVN0bC8rOEdsNWZ5WlkyRkNDbkl0VDl0MHdrb2ZCdFY2N29xVVg0Zyty?=
- =?utf-8?B?aHQ1Ly9YeGRlTVM3TU9kSmd0bnRkZURZSXMvWlVDVXNsNmtWNWVEL0hLUDBT?=
- =?utf-8?Q?XEYSLaKHNcwKdsYS70Uw06AEVSd0/rxF39nlM7d?=
-X-OriginatorOrg: sct-15-20-8534-20-msonline-outlook-2ef4d.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: 553e713a-7ecf-408c-ede3-08dde60f9334
-X-MS-Exchange-CrossTenant-AuthSource: AM7P189MB1009.EURP189.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Aug 2025 08:47:53.1472
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PR3P189MB0876
+Content-Disposition: inline
+In-Reply-To: <20250827143501.1646163-1-pbrobinson@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250828_014806_292888_B950D4F2 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20250828_025949_694490_E938E3CA 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,58 +69,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Hide,
-
-> Currently, analog sound is not output from the audio jack.
-> This patch allows you to select analog headphones in alsamixer.
-> Works with kernel 6.16.1, but not 6.17-rc1.
-> 
-> Points of concern:
-> 6.16.1 kernel with ubuntu 25.04 Setting -> Sound -> Output Device
->  I select Speakers Built-in Audio, the sound will be output from the audio jack.
-> 
-> Changes since v1:
-> - As pointed out by Jimmy, the file to be modified has been changed
->   from rk3588-orangepi-5.dtsi to rk3588-orangepi-5-plus.dts.
-> 
-> Signed-off-by: Hide Hako <opi5plus@bcc.bai.ne.jp>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> index 121e4d1c3..44bb15951 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> @@ -78,6 +78,7 @@ &analog_sound {
->  	pinctrl-0 = <&hp_detect>;
->  	simple-audio-card,aux-devs = <&speaker_amp>, <&headphone_amp>;
->  	simple-audio-card,hp-det-gpios = <&gpio1 RK_PD3 GPIO_ACTIVE_LOW>;
-I recommend rebasing on the latest next since my fix [1] was applied.
-I also recommend testing it with that patch, for me that fixed the 
-headphone detection and enabled audio playback. The microphone is not 
-working yet though.
-
-Link: 
-https://lore.kernel.org/all/20250823-orangepi5-v1-1-ae77dd0e06d7@hotmail.com/ 
-[1]
-
-> +	simple-audio-card,pin-switches = "Speaker", "Headphones";
->  	simple-audio-card,widgets =
->  		"Microphone", "Onboard Microphone",
->  		"Microphone", "Microphone Jack",
-> -- 
-> 2.48.1
-
-Kind regards,
-Maud
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBBdWcgMjcsIDIwMjUgYXQgMDM6MzQ6NThQTSArMDEwMCwgUGV0ZXIgUm9iaW5zb24g
+d3JvdGU6Cj4gQXMgZG9jdW1lbnRlZCBpbiB0aGUgUGluZXBob25lUHJvLVNjaGVtYXRpYy1WMS4w
+LTIwMjExMTI3LnBkZiwKPiBwYWdlIDExLCB0aGUgU1BJIEZsYXNoJ3MgVkNDIHBpbiBpcyBjb25u
+ZWN0ZWQgdG8gVkNDXzFWOCBwb3dlcgo+IHNvdXJjZS4gVGhpcyBmaXhlcyB0aGUgZm9sbG93aW5n
+IHdhcm5pbmc6Cj4gCj4gICBzcGktbm9yIHNwaTEuMDogc3VwcGx5IHZjYyBub3QgZm91bmQsIHVz
+aW5nIGR1bW15IHJlZ3VsYXRvcgo+IAo+IFNpZ25lZC1vZmYtYnk6IFBldGVyIFJvYmluc29uIDxw
+YnJvYmluc29uQGdtYWlsLmNvbT4KClJldmlld2VkLWJ5OiBPbmTFmWVqIEppcm1hbiA8bWVnaUB4
+ZmYuY3o+CgpUaGFuayB5b3UsCglvLgoKPiAtLS0KPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
+Y2hpcC9yazMzOTktcGluZXBob25lLXByby5kdHMgfCAxICsKPiAgMSBmaWxlIGNoYW5nZWQsIDEg
+aW5zZXJ0aW9uKCspCj4gCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
+aXAvcmszMzk5LXBpbmVwaG9uZS1wcm8uZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
+cC9yazMzOTktcGluZXBob25lLXByby5kdHMKPiBpbmRleCBiZTkwZTA0OWEzMDJjLi4yNGU0MzY1
+YTJlNTg4IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5
+LXBpbmVwaG9uZS1wcm8uZHRzCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azMzOTktcGluZXBob25lLXByby5kdHMKPiBAQCAtNzcyLDYgKzc3Miw3IEBAIGZsYXNoQDAgewo+
+ICAJCWNvbXBhdGlibGUgPSAiamVkZWMsc3BpLW5vciI7Cj4gIAkJcmVnID0gPDA+Owo+ICAJCXNw
+aS1tYXgtZnJlcXVlbmN5ID0gPDEwMDAwMDAwPjsKPiArCQl2Y2Mtc3VwcGx5ID0gPCZ2Y2NfMXY4
+PjsKPiAgCX07Cj4gIH07Cj4gIAo+IC0tIAo+IDIuNTEuMAo+IAoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
