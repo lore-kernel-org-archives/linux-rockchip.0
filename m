@@ -4,87 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39BC9CA0FF9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Aug 2025 19:36:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB372CA0FF0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Aug 2025 19:36:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2RMHioMzwy/C+eozTjokV5UI/mBYXw3BYJ3aGZXQAKc=; b=ggjgOiJeG7ZjYV
-	n8lHRiJe3WjqvaChddoIki8cqgZuKV+YJd0v3PDqWPCM3vch2BdNclyNjcOJ1zM5eYl4IOBnLvvxi
-	vyMYSl4YgBWeca7ajHjwnw9mNkW3Eai/RsfOx/Do2PmBoqo4ViIUFSa+ajdgkOQDoadsTr/IW/D/Q
-	UsoeFjfr4cHVy1yp5hlBYc5niFpAu6A//o8MiBSeKRtFSK6YI50HlxqWbo+IfbMzBeZX0VK2WK3bq
-	729M4pbHiqJXwBeRgP5KhAIPFb0vzj8IuJ3MQpASzO0qncD3dtjf9MW1waFgFXGc5E4ZfapGK7BjS
-	PDt2itgqkU8jegpbJQ+w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r+CofXBTouSq2dnmwzbB4rD0tptaQamOHEuVOixXH9A=; b=UhNO/prMJU75vNLxsBIaMvg1EP
+	/V4/H8R8QMJDc0f37psGz8sswBQpQEGhVHfUnLSeuZn7Zg72U7KBM8xtyYw+qjF/OaOsJiohTyIwC
+	hlc45wJiZq9+OhIhWFxVHsj6rfMZwCkbCDKeLb1mkRwlQtZOAkvhXG4SpHAopyyy1lR9TknEMTww5
+	E/MPLXnQEijC464t5FJehs0bn2nK6eFYqAeVLBUB+R5rbR2bU5pfjatpdkdo5+MIjsksXdZCRgYXf
+	COTvZ88BKkpO9p1+NzDBeSq35oRzc8baifNeIf4Z3f5OVPTJvgavKbEL0BH4mBYLeLECOO82SI9TP
+	jEgFSoZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us4tN-00000006l2w-1vfS;
-	Fri, 29 Aug 2025 19:36:09 +0000
-Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
+	id 1us4to-00000006lfb-0rKS;
+	Fri, 29 Aug 2025 19:36:36 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us1DB-00000006EVE-1PcF
-	for linux-rockchip@lists.infradead.org;
-	Fri, 29 Aug 2025 15:40:22 +0000
-Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-7f889d176c2so277665485a.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 29 Aug 2025 08:40:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1756482020; x=1757086820; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=vMllst7gcBdZpXi7zdiPGvGRd+qrzm4OkoKr77sAH60=;
-        b=frtE3WzRPir046AXoIPi5CQLh/ULmoA77buvNsgOBhx9phfSbKMRq9LuC58sJs1I6a
-         +jj7J9qfNQgKLtJYk+IN6gntx4waA4EYS2lVaLSl9FFpsuPEbl/hiDGjY7F8YihH0KHq
-         8M89vTDDNisWILOU/moVAVJpyzCwErslR+PQNjd8IEkbrXN3HSFtEAc2VmfbnwN0CDoI
-         GW/UQYHrlIxLJ8ExoXt3VRqc8IY5VsM9ij4v9RbYiueimiULH5nIsMdCGgGQ8c0sHwNI
-         d4b1Imn+kCWB1XRs/gpOGlM5P9TPkPU82MfPWa8+/p5YH8XfebhgKiDzzXlQL+WMRERy
-         sQTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756482020; x=1757086820;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vMllst7gcBdZpXi7zdiPGvGRd+qrzm4OkoKr77sAH60=;
-        b=FRcD+/VIFPuXGqWL8bxx7am9Eoh8itwas/M7pXvZPmDAdcpMbtWkMjGU/6AK5clzS2
-         3z2fkFwDGlKWarnlxTxQkHNFPnBfbo1YFs03ufKm+wQeIG6m5GGr7KkEdL+w0iDEfoDD
-         xdz/bnXE0PUTRon0BR1d3wwSQmTdM2JO8wp8TOpNbUetqVu+soGzTXjkQd8TOUy2+ZP8
-         R2GmbrlmkqenO/Kfd6CGaFKn7LcDRK+4eSFJlK4kFZWuXouVLraFvhEXRW9p7xQuq/6t
-         6BK/DlY4VW/z5tBRBrUa5D3dgMDlfnUj+91VLut3WiAvCVX8PYaIc49e5796nj0GuXzb
-         h66A==
-X-Forwarded-Encrypted: i=1; AJvYcCW2oYmVKFDocb5m9+s+AiYCFjGPV+JmfQuE9xaOJC189ytCTmeoGCjy+QS5kjTnzY0kqMkZt0XaAfTaEnhqEw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx+xNqAX9JxyCVlc/hHzv4Rqp19JFls5GfoDcGTlpjlPX50/A0m
-	8LH9SMcwCkYuvKbl/k19DttX0S/61fGCbDyLh4/X7oefA8f6M6YKFbwM9JWLGOiNKNKbg8WuGzw
-	gY9U3Xa8VaSgatUNesdm0yXNQK0IaNk8aaomESSHhTA==
-X-Gm-Gg: ASbGncuqEE1Fa836rbLDg+HXm8Uq77HXbYR6cqMvjInYF1VgNv9zLFKFnwD5kv4tS1k
-	s2OYEbS/bksi9Qhmbkw68xH2JU/+/b81Paz1LnJpziz4A/QzHBau3vLO87rZISeT7DBUA1jJ5Lp
-	FbRYRHhuOe74QKJ3k1a6LLvODSV0FsclrjUZaxHN3zVzaqf7ukQwoS6lomx/v4Pu6LSO9PvbllU
-	P3WtnVEk2Zy7huJ
-X-Google-Smtp-Source: AGHT+IE8Uc8yE6e7x+T9rqx7j4SzBv64YwjT0y2LqCPYIhx7HTc0mU0MQAVdWTXexDU/wbuTY+TnRdDvA85/7NRQ3wc=
-X-Received: by 2002:a05:620a:a08c:b0:7e9:f81f:ce8a with SMTP id
- af79cd13be357-7ea11095a39mr2507020285a.76.1756482020300; Fri, 29 Aug 2025
- 08:40:20 -0700 (PDT)
+	id 1us1t9-00000006NsY-10oq;
+	Fri, 29 Aug 2025 16:23:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:References:
+	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=yFN1EQEjRbUyL6L3NwzgEy/E1VDAcLoyMHEC0+8jWsU=; b=JuDcK8SW5PeAbEkMVoIN7Z++aI
+	YdcHkknpVyODevOkmgSlbcSfJ8pv3E5NqDwsEwnA6AoDkSj/IcYbX9LauoG33eUzbKcIzaasBVJDF
+	+u6kNoDbGqPKRgsQMWRbj/FexYVCS50c8jeKwtV1ITmg4MOl6mNPIvI9xFA4JrKQMA+tyNizKJbfu
+	QuQS68TvPCmBsF3bu2uE46u7vjeQ/hvzGBjaHyxCWc/1gylwOut7niqY9HeDxelHh7j4DJAhuahYC
+	Zc21AobyYmD7bMak4T0nA1CZgveFePBm2hRXpHLJVZpsmNXrBOLzWfPAAtyIzEohtHuDCwnvbcfWM
+	vb+va86w==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1us1t5-00000003E1q-1YaI;
+	Fri, 29 Aug 2025 16:23:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756484613;
+	bh=yFN1EQEjRbUyL6L3NwzgEy/E1VDAcLoyMHEC0+8jWsU=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=ARTQEDl4e6cM5xGS8Pafvs6+Llf0SyXoean8jS5+AcWHRp/1iNxjV8I12YtWSthw5
+	 TK1vGObU9Pwkmmm/NPpkRsqrdi7azBqIaJu6NWCzGipFBP1vHjWZjCVKcfxYYpbwH/
+	 I5+G6h8wAr1oUd9A+r2km7ZzCJD9vh/QplWGB61je9eW2m/SmClL0XvdmoPEFJVQKq
+	 aiun6rkDnnonpm56lLBSyQv3J5CYXoXPYOCjy6Kghenih/8ZQxmLeU1dmXu3+uTA2u
+	 Nq4cJ+BH4ni5uwq9ZKB6gZjInQqTQ6PvyeqGGn1WFYerWADkIRo+hYClHgGnI0+rDP
+	 qfHDjppqdJMaA==
+Received: from [IPv6:2606:6d00:11:5a76::5ac] (unknown [IPv6:2606:6d00:11:5a76::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C405917E10F3;
+	Fri, 29 Aug 2025 18:23:31 +0200 (CEST)
+Message-ID: <a216e7e218d874cf64b53f6eba2fc74fc551d2fe.camel@collabora.com>
+Subject: Re: [PATCH v7 4/6] media: verisilicon: AV1: Restore IOMMU context
+ before decoding a frame
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Jason Gunthorpe <jgg@ziepe.ca>, Benjamin Gaignard
+	 <benjamin.gaignard@collabora.com>
+Cc: joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
+ 	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+ p.zabel@pengutronix.de, 	mchehab@kernel.org, iommu@lists.linux.dev,
+ devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, 	linux-media@vger.kernel.org
+Date: Fri, 29 Aug 2025 12:23:29 -0400
+In-Reply-To: <20250826124155.GD1899851@ziepe.ca>
+References: <20250825153450.150071-1-benjamin.gaignard@collabora.com>
+	 <20250825153450.150071-5-benjamin.gaignard@collabora.com>
+	 <20250825170531.GA1899851@ziepe.ca>
+	 <01c327e8353bb5b986ef6fb1e7311437659aea4a.camel@collabora.com>
+	 <20250825183122.GB1899851@ziepe.ca>
+	 <441df5ff-8ed4-45ed-8a52-b542c6e7d38c@collabora.com>
+	 <20250826124155.GD1899851@ziepe.ca>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-References: <20250825-rk3588-10bpc-v2-0-955622d16985@collabora.com>
-In-Reply-To: <20250825-rk3588-10bpc-v2-0-955622d16985@collabora.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Fri, 29 Aug 2025 17:40:08 +0200
-X-Gm-Features: Ac12FXwMRvICk8YV3mQ4_G0eTMWJVkBD72BsJ-WaKgZKQMAHDd1L4Y9QuXJV1oE
-Message-ID: <CAPj87rNgW5-1YzurL-sFJF2SsGFmENF9JD+82cqHAYLfa67LZA@mail.gmail.com>
-Subject: Re: [PATCH v2 0/5] High color depth support for RK3576/RK3588 HDMI output
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, kernel@collabora.com, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250829_084021_375548_6C137656 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20250829_172339_585426_39E41502 
+X-CRM114-Status: GOOD (  34.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,31 +108,153 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6548151934558398453=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cristian,
 
-On Mon, 25 Aug 2025 at 12:08, Cristian Ciocaltea
-<cristian.ciocaltea@collabora.com> wrote:
-> Since both Rockchip RK3576 and RK3588 SoCs are capable of handling 10
-> bpc color depth HDMI output and we've already landed the required HDPTX
-> PHY driver changes to support the setup, let's add the missing bits and
-> pieces to VOP2, DW HDMI QP encoder and bridge library.
->
-> Please note this conflicts with the HDMI CEC series [1], hence I added
-> that as a b4-managed dependency.
+--===============6548151934558398453==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-DNMiMpnxu0upmlGb0Ub2"
 
-Thanks, no comments on this one, but having not read the PHY changes
-at all, the series is:
-Acked-by: Daniel Stone <daniels@collabora.com>
 
-Cheers,
-Daniel
+--=-DNMiMpnxu0upmlGb0Ub2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Le mardi 26 ao=C3=BBt 2025 =C3=A0 09:41 -0300, Jason Gunthorpe a =C3=A9crit=
+=C2=A0:
+> On Tue, Aug 26, 2025 at 11:52:37AM +0200, Benjamin Gaignard wrote:
+> >=20
+> > Le 25/08/2025 =C3=A0 20:31, Jason Gunthorpe a =C3=A9crit=C2=A0:
+> > > On Mon, Aug 25, 2025 at 01:50:16PM -0400, Nicolas Dufresne wrote:
+> > >=20
+> > > > Jason, the point is that the iommu and the VPU are not separate dev=
+ices, which
+> > > > comes with side effects. On RKVDec side, the iommu configuration ge=
+t resets
+> > > > whenever a decoding error leads to a VPU "self reset". I can't reme=
+mber who from
+> > > > the iommu subsystem suggested that, but the empty domain method was=
+ agreed to be
+> > > IDK, that seems really goofy too me an defiantly needs to be
+> > > extensively documented this is restoring the default with some lore
+> > > link of the original suggestion.
+> > >=20
+> > > > the least invasive way to workaround that issue. I believe Detlev t=
+ried multiple
+> > > > time to add APIs for that before the discussion lead to this path.
+> > > You mean this:
+> > >=20
+> > > https://lore.kernel.org/linux-iommu/20250318152049.14781-1-detlev.cas=
+anova@collabora.com/
+> > >=20
+> > > Which came back with the same remark I would give:
+> > >=20
+> > > =C2=A0 Please have some kind of proper reset notifier mechanism - in =
+fact
+> > > =C2=A0 with runtime PM could you not already invoke a suspend/resume =
+cycle
+> > > =C2=A0 via the device links?
+> >=20
+> > when doing parallel decode suspend/resume are not invoked.
+>=20
+> It was a proposal for an error recovery path.
+>=20
+> > > Or another reasonable option:
+> > >=20
+> > > =C2=A0=C2=A0 Or at worst just export a public interface for the other=
+ driver to
+> > > =C2=A0=C2=A0 invoke rk_iommu_resume() directly.
+> > >=20
+> > > Sigh.
+> >=20
+> > An other solution which is working is to call iommu_flush_iotlb_all()
+> > before decoding each frame.
+>=20
+> That was already proposed and shot down, it makes no sense at all use
+> to use flushing to reset the registers because the HW weirdly lost
+> them, and flushing should never happen outside mapping contexts.
+>=20
+> If the HW is really resetting the iommu registers after every frame
+> that is really just painfully broken, and makes me wonder if it really
+> should be an iommu subsystem driver at all if it is so tightly coupled
+> to the computing HW. :\
+>=20
+> Like we wouldn't try to put a GPU MMU into the iommu subsystem though
+> they do fairly similar things.
+
+I didn't mention, but this is obviously close to the same IOMMU wrapped ins=
+ide
+etnaviv (same company making it). Note that for media driver, drivers in th=
+e
+iommu subsystem are very convenient, they just work usually (except when th=
+ey
+don't like with codecs). I'm pretty sure rkmmu is also used by Panfrost, so=
+ I
+suppose not all GPU IOMMU lives in GPU drivers (I could be wrong). Its one
+instance per block, but the same programming interface. Note that we do hav=
+e an
+in-driver iommu implementation in the RGA2 driver.
+
+If we can agree on solutions for this problem, which seems slightly differe=
+nt on
+RK compared to VSI IOMMU, it will be quite beneficial to not have to overri=
+de
+all the media allocation ops, and re-implement rkmmu, vsimmu in every drive=
+r
+needing this block. The VSI mmu could be used similarly to how the rkmmu is
+used, meaning we'd have to copy its implementation in every driver. If we c=
+ould
+find out more accuratly how this is suppose to work it would be great, I fe=
+el we
+don't really understand what is going on yet. Once that done, we can port r=
+kvdec
+driver with the unified solution.
+
+The empty domain approach was used since there was no solution that came ou=
+t
+over a year, and users these days expect concurrent decoding to work. So ye=
+s,
+its not all pretty, but its the best we found until this type of hardware
+behaviour gets an API for that is commonly agreed.
+
+Main question is shall we block on merging the VSI IOMMU driver for that re=
+ason
+? Its there anything in the IOMMU driver that still needs more work ?
+
+cheers,
+Nicolas
+
+p.s. RK means Rockchip, VSI means Verisilicon, the company behind Vivante G=
+PU
+
+--=-DNMiMpnxu0upmlGb0Ub2
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaLHUAQAKCRDZQZRRKWBy
+9JkWAQCjhKw0H+/fIxtEIGqR/i3mzCXIn2jiB22S5Z1/SsXLjgEAnopTxM8L88l+
+NUbl5VA35McqgA+aGhShXzST98zO8wY=
+=Uy0P
+-----END PGP SIGNATURE-----
+
+--=-DNMiMpnxu0upmlGb0Ub2--
+
+
+--===============6548151934558398453==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6548151934558398453==--
+
