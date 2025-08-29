@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98291CA1000
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Aug 2025 19:54:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB121CA1003
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Aug 2025 19:54:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PqTQzHLZOSI9kTXMQ8ADwjYLunUNmDg2k+LJ6V45tvc=; b=OpzdSDCKTVfkVs
-	YCnc51vTVIRScxMmcAjzpa46UMFiB+qh5D+i7Dd3GIeDN78QQ23s16pOQahbGvd+HBEwNH3votIoJ
-	Ccx1Eq7Oa4et6CJXpidzn/mWTdjrnhhoJSylT26XhOzkdAZignhudYvUcH8k25G2h8zzDRm+wVcIU
-	Bvfbp+FIaXItN7De4TtpAaTAz3nAXbe8nI5fUMH0M/HAvYL2St+hNeDGx40KRuzhVAjIK5srwuD9+
-	cTL4oV0BBKMRxsA45CMJB03HQO8UsR5CogK9i0GpGUWoRQi5IHZc0pnYJRWHuo4MSPo4Fccs6PtDm
-	raNrup616ZSxNubKdljQ==;
+	List-Owner; bh=XFONCoIuDoRGtb/n844AaqRBwWClEl7ZtJ5SfE2NkTA=; b=gBjvT9i3k/V0mC
+	dc0pT+mN69rqqJ8MfPUri/Km5GWClLwU0g6/3ty8W3Dk+M90Vi5v/gKbveBHXeGtydzNuIFWTr3mu
+	QUlHEtZp64sxp/ZN34W6p4U+s/CKmCM6rmrgGWxFPUPg6QpTc57gkB6BgG9e969kQe+qve0WGA4HM
+	VYQ64vWjvHcnx0fajLOlO2f9TmKe5O6CGumD+SmNZ2jGEmXzTEcwlX+LUGYLCjg52A1Vee6ux7y5u
+	eMphTPK9V4fNjhUdgDFGZnG3mYfcQASc42ZdxCvGG2a12C/S68ydbXfErmWc22gbrF1k6Kl0z74Up
+	10BkT2b9vEky7jEwyErw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us5Ao-00000006oNy-2xb2;
-	Fri, 29 Aug 2025 19:54:10 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1us5Ap-00000006oP5-3TST;
+	Fri, 29 Aug 2025 19:54:11 +0000
+Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us0lF-000000069ka-0OeI
+	id 1us0q3-00000006AP5-1pbF
 	for linux-rockchip@lists.infradead.org;
-	Fri, 29 Aug 2025 15:11:30 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-77201f3d389so2352077b3a.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 29 Aug 2025 08:11:28 -0700 (PDT)
+	Fri, 29 Aug 2025 15:16:28 +0000
+Received: by mail-qk1-x72a.google.com with SMTP id af79cd13be357-7f777836c94so205857685a.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 29 Aug 2025 08:16:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1756480288; x=1757085088; darn=lists.infradead.org;
+        d=fooishbar.org; s=google; t=1756480586; x=1757085386; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=MKVIGNn1cEq2YWpF5MnDqFEUCjnk9rekqsdebgbty2M=;
-        b=Xe36mc8rUF0XSY+C7sJA7SsdtKXfiIZmj2eXV7cVtxrGJN8DDIVuvaG8wyPP6nhFwi
-         pFjktLtSE9p62L85KHnJV2aCbjoh9v4XEpEFaeHQCKmD9tg40kUGeMuYHs2g/xg50nWS
-         jSUhlRfdnZPVpXgrEx8eq/hrgLrmSgCAuSRCbJBoh9qVbffncIgPuN0bKO0e9Sp6uF3p
-         IDnqYeljF6fKRwRZOzF5ngry9/qQ+MAZB1fpS0H2Gtt1tKmKM0B0eYWDpu28mUdaezCU
-         lxJsIIa1pXrcoputW5CjMmfhpm9uzNzrwTRnmC8imyKdAPg9HFSZfrMSZsY8qE1Kv+7x
-         U1iQ==
+        bh=lOUf78kJC5CeFRX+36nx9b9SoyYDtPWwiSrTZqImx4M=;
+        b=cxSRhGLzpUG6jN7tBcvV3gY+1ehjxH1HYcbQIeLAfB+pu+t+U/Ssaoes/4Nyhyj8NN
+         eT6gaQjSewK+8EvQixp3Z//CXzZwYMU3K/i+W9hp+J0Qbf/r4gnWCafAUbgLXhMCkHz0
+         u7XzyWavGVS77go5wdVpoubL0XOwVI7M4F3EmXgabWrQYQq49nrQTeEur+irtxX28D9/
+         6KTe95CT9demDmYFhdUBC4sq/LqX/GxECpOUjwoeLLhgiAwpcfon0CFTQR0O6weneKnQ
+         TEScbsZxOPEMEEgH9tIU8F/ygeBLWScTg0oAUTlr+0sicMnqhruYm9yd3bFmun+2lr0w
+         EN3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756480288; x=1757085088;
+        d=1e100.net; s=20230601; t=1756480586; x=1757085386;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=MKVIGNn1cEq2YWpF5MnDqFEUCjnk9rekqsdebgbty2M=;
-        b=XkZgNWNa0IwlgRjpnucU9sPOGRHrrCqWaQVMfUjS+0EdSQshxwBeKgFf/a8vPrTcF9
-         7W2OSZGbm61mFTa6yLIF13WVmac+tbKqCt3A/JgpbA3HeDC1ZaNKeUVOBiX7nxNbvQur
-         ZS28oGhFsPY29QMmnuos8O7vAQV1GYcXLA7P3s2wfbh6ginCCnjb/tgvPQz0v6UaPGfk
-         qUBz4/b1I6DbvVBpjeKoGynJeCnk3ES4Y8RcX1eOMx0FCYrknU6aLvS9gwrXkAa1nk+0
-         Zu8P2tCh/iaY/e3RAm1KKBcc46+hO7AO5hRPpWalURMgql+3wNcra1QNx6mkuRRqXkqd
-         mTPQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUAM7DhiBtfIv4yhPJxvjDokHzRs2dFdQC8HbGBnwMNMCVJNvLzQjAkIllyRuu7R14JLFqcnuBCZtwPmVv/NA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxjxRdFEvXTxuy4as7W6iTqcuawLSBPJQIbAd6XSoo3sIe4eSMu
-	fnQdwRipMlA1iaQN65qDCo9HsV883Ej4A574SA7qYjEdnKOA4kV5F/pR3J6WUGuGBcqDbR+CQH/
-	/3DUkPYY7B9hVTfRxc5AqGuImmqZSWe2LP+atXYCAPQ==
-X-Gm-Gg: ASbGncu1RYBrxS2GuK9f290+AgXBdG6onyKbxBOJcny9W7btd4QnL77r6HlwUF9uESI
-	N25VsittkMDCD2KekfNf6Mq6mDnoDcKcBnS9ujHzyngjUhk7bYK9dUL+HrctDUMqDaw5ex1FMFg
-	pfsFXsI0kZKGXcLwTI9FBBiL0YE9vKLX5A2YGmqnGoZEhVAamOXHhxiOm8u3xnKfEolMCudcIoW
-	YJmHpRwHqicLrIa
-X-Google-Smtp-Source: AGHT+IHGuK+XPEJZnoxSJC5I7lDP0ZoQ+n66AiaBsrF0OgVB4dkv+81+YUciDWeRwKYQ7j4CfvTN3OcksYb1HiKXD3Q=
-X-Received: by 2002:a17:903:b0d:b0:246:d70e:ea82 with SMTP id
- d9443c01a7336-246d70eee46mr278790365ad.5.1756480288279; Fri, 29 Aug 2025
- 08:11:28 -0700 (PDT)
+        bh=lOUf78kJC5CeFRX+36nx9b9SoyYDtPWwiSrTZqImx4M=;
+        b=eM37b1VHOXxzUAPOEPMhB4P1nhQjvwdrmk4rGxlFcSPO7uZvYgsK/UP5HPGgLkiACN
+         MbqKBhho7PIBdcbB6dsOT8pXLO/i/r4QqvE7lUjIdmvp3SxQfHwUPwmwNMCDiiLHBa9y
+         FNmSgGAt0ZuztWrZ21xnVs3JBpGR3wFzr4EOCVmwhM1/CegYgw0o7XUwACdAVzJWUPze
+         Z/tQL+Rpm2eOnrHRjzRUGVzuqNYUNp0O84hPhvM8U8TLhRfsmuWaveksWZz15avwbb11
+         /rdJX/MQEDD7n80pW9wj7dVos030ooKYDVUuFgioEVXniVAOPDdW+/Bvpz5+nw7Cx5UU
+         XJeg==
+X-Forwarded-Encrypted: i=1; AJvYcCXBU1TgBEkNXCtBy+0IOPPZaMFWKfhCTSLr5AXF2n+zayWGqhnmXh6FCx+qcT4Be9ftQT/hr2CPrOtiPuGwEQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzHoV3cci+EaoyiCTgk69ZrrVO1YOrrrwG8UbmXXKWAm9PzRkFG
+	dxhYbVHtuEmswx5DspW4/75DjR11qKXrhXicX5y/RuS0aL4Ak1ZARZKcn7rOuqKJ0lNL40+HKlm
+	5VTgh9RZFUE/wrF0XrkrO6cOJVeHQGS7nmvw6n+uSQg==
+X-Gm-Gg: ASbGnctjzxBeEp9LGFXd+SrV58GPI41xxK6U0MlyjtrzYgmjQFnYWZVru2hn+EMuIg3
+	dJrn0r3ta/nlwl/iXc2pduleC4zeb9liwjcShjVg8XDoXzBT/GdTJP9T51x/pj+01MyY5blcZa0
+	gj5byCrw6JB7WFaFIBTxzuocL7mSShzWVPKcKY9J8EDaUny2lqUuebuuAGjukb7srf2Nn1lrDPp
+	/YArg==
+X-Google-Smtp-Source: AGHT+IGnzlI20hD81QuCUxmiLx/CLn49uqNE3sl8frDh4fjPDY8YZMBAvQbF0rOj2AAQybUTZBlLQymUJBEgeOnVx3g=
+X-Received: by 2002:a05:620a:4053:b0:7f4:5aba:d966 with SMTP id
+ af79cd13be357-7f45abadb98mr1590732385a.60.1756480586040; Fri, 29 Aug 2025
+ 08:16:26 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250825-rk3588-hdmi-cec-v3-0-95324fb22592@collabora.com> <20250825-rk3588-hdmi-cec-v3-4-95324fb22592@collabora.com>
-In-Reply-To: <20250825-rk3588-hdmi-cec-v3-4-95324fb22592@collabora.com>
+References: <20250825-rk3588-hdmi-cec-v3-0-95324fb22592@collabora.com> <20250825-rk3588-hdmi-cec-v3-1-95324fb22592@collabora.com>
+In-Reply-To: <20250825-rk3588-hdmi-cec-v3-1-95324fb22592@collabora.com>
 From: Daniel Stone <daniel@fooishbar.org>
-Date: Fri, 29 Aug 2025 17:11:16 +0200
-X-Gm-Features: Ac12FXw0jSvkKD9n-NKvt8cWwlJ3T6SlQZFX3ax5d_8FYdRiZJRd202BjgA0Vpg
-Message-ID: <CAPj87rNf3JHveEbtBB-DpmpobDG-kE5nOeNPUaVW-xn70V1jTQ@mail.gmail.com>
-Subject: Re: [PATCH v3 4/6] drm/rockchip: dw_hdmi_qp: Provide CEC IRQ in dw_hdmi_qp_plat_data
+Date: Fri, 29 Aug 2025 17:16:14 +0200
+X-Gm-Features: Ac12FXzpMvL7DIJopMIso2mzGRacTGimE8ocHlW5RhJ-2PuaDc4LbG8M9GuvEHk
+Message-ID: <CAPj87rN7gHj2jyAa20hJXHscauupUcEzYxfgH8-9ykuVcETOpQ@mail.gmail.com>
+Subject: Re: [PATCH v3 1/6] drm/bridge: dw-hdmi-qp: Add CEC support
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
 	Andy Yan <andy.yan@rock-chips.com>, 
@@ -83,10 +83,11 @@ Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@snte
 	Jernej Skrabec <jernej.skrabec@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, 
 	Will Deacon <will@kernel.org>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+	linux-kernel@vger.kernel.org, Algea Cao <algea.cao@rock-chips.com>, 
+	Derek Foreman <derek.foreman@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250829_081129_135666_2A563080 
-X-CRM114-Status: UNSURE (   6.70  )
+X-CRM114-CacheID: sfid-20250829_081627_479788_CFA049B5 
+X-CRM114-Status: UNSURE (   9.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,12 +105,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Cristian,
+
 On Mon, 25 Aug 2025 at 10:57, Cristian Ciocaltea
 <cristian.ciocaltea@collabora.com> wrote:
-> In order to support the CEC interface of the DesignWare HDMI QP IP
-> block, setup platform data to include the required IRQ number.
 
-Reviewed-by: Daniel Stone <daniels@collabora.com>
+> +static int dw_hdmi_qp_cec_init(struct drm_bridge *bridge,
+> +                              struct drm_connector *connector)
+> +{
+> +       struct dw_hdmi_qp *hdmi = dw_hdmi_qp_from_bridge(bridge);
+> +       struct dw_hdmi_qp_cec *cec = hdmi->cec;
+> +       int ret;
+> +
+> +       if (cec->irq < 0) {
+> +               dev_err(hdmi->dev, "Invalid cec irq: %d\n", cec->irq);
+> +               return -EINVAL;
+> +       }
+
+There is a bisect break here until patch 4/6 as nothing provides the
+CEC IRQ, so the whole connector init will fail.
+
+You should either plumb the IRQ through first, or just make it
+optional to retain compatibility.
+
+Cheers,
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
