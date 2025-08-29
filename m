@@ -4,143 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87F47CA0FF0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Aug 2025 12:55:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E9CBCA0FF9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Aug 2025 15:43:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GrwpBwtQf0XviJrGwPrcX4+owuRl4mvsxfrQBg6wpLU=; b=Nuhh3Lm+Ucz8Dt
-	kxw9LBjuCn3A8+/I3CUHAZSDoOzYxBRYGMOh8xFwG1+5zrgSGEw1TkWYrIfRNCztj2zPxhWWhHse9
-	qkT4gWmpgTeCcv/mFHZZdaIDqQAHhdwiZKegQ2hID4+fuprm4fmclCRaQg/HDSPWHnFJLQq0CmUPF
-	LXzvwsra6vuLuiqt+0H7hPtxN58KKwgPEKt+mQ8AlMKWbzfUhuL9e+W6oKMKhHc40ehW+eAsdpERF
-	KoTz8alHdYiFRfqOPLtQTNb28G5uL1xLF/ZF3jwmNbAjthOkV9MSuFZ7JZRUECNnHVh4nQXzlnYnN
-	algvzR89SbaQdH5Er18g==;
+	List-Owner; bh=jKZxEoNCre7XpZxgh7ZBMGK6pkFDTd2QHWVocxGvWzo=; b=v2iUS6orlFP9XD
+	qOZpMzTVWvZPcPo4j+B5dCOEJC6WSW613J+hL/jennzIKTdABg0sR/w2tqS+8N+nxEaQYvZHhDtQT
+	boe2MaKWQ9r48bW/VQV7SD1LIQYws7Mdp3gzOHDdVnvbIYfisQgEZIKBt9AEPexeZaSqVLAizWcIR
+	scc5OA8IqZl65vTmk7vpZTc8wdevRJM62kcBX+EqavnaOikiOR3yZB7xbwxM1gQj6c+85D+BQH9QE
+	51eEqguhkZSBVT/GryNERrCUr1V/l57rmMccVqhKRFsHNkDTeNPNOSMqL/b+7fS+M+UxyQjSzr/qe
+	dDq1Bp8QDCOekpXpoMEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uryd6-00000005ipf-2zN4;
-	Fri, 29 Aug 2025 12:54:56 +0000
-Received: from mail-centralindiaazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c408::1] helo=PNYPR01CU001.outbound.protection.outlook.com)
+	id 1us1G7-00000006FF4-3PRe;
+	Fri, 29 Aug 2025 15:43:23 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1urw8N-00000005HcK-1DR2;
-	Fri, 29 Aug 2025 10:15:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=eVWWeax+LNUjZTv5KaVlDbgBp6Ey8/7jLNeIuxuAA7z6hlanLjrX7dOraBU3WdliJYSR27ttUhV1wp+KOUkuU6724BRor8HolzFmUHUvJ+CRBh2nJf2/6DkCTMbZ2jWcwEHsdMLlPZfN+LVVaGjgi7Dgncgp92PHf97S8iVoAgWif2rrBfdf71WKfyk5JwnHUOQgYdoutgQBV6bzxvS4pJG5Cn8MS0At0nDQ9u7IRQkP5T7geexckPdpB6J4DJH3V+A9CI5oOnm9h2ptYAe4yeq5TZ760lJCy5B7v2o6inU4a6ht8sS0P44xJdkrZ9971auw5a/Uv6U4uRaFZx9HVw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=g6Ll8cjgUfdMP5ve7bSzTNYipB0xfy3kyhbRcvSyYKo=;
- b=OWIPELIkbKwE2ARl4LSG+sr91ZZBKirQ9gx7vi0dmL05uOfWfOZDl//mY1TD42JVnR/ypCKHBAfDZ4UwBlQ3Ie4HC+jYQGZF/nBIsAYE7jcGgVJBvqgxsFmlk1vnJkaYFJ7qyRVBQMTJMYailoA0RWTaMzQF1xW8px7nHkvXwm2FD1yugddSMQ5imz0MZ2Poa2f+crkKck8vWf2UbBy2foP25zxYJhJU/seZKuaGaV7lKMUss0r8eT/xi5p0JSir8sYVt/dIEBo/Dyo3x3vUSYI6/ImJIYeLkoQMjCwZH+bCUsVVfXbHa+xnTuOoaotsAEUjW/4J91UCk2F6ddTgWw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=siliconsignals.io; dmarc=pass action=none
- header.from=siliconsignals.io; dkim=pass header.d=siliconsignals.io; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=siliconsignals.io;
-Received: from PN3P287MB1829.INDP287.PROD.OUTLOOK.COM (2603:1096:c01:199::7)
- by PN2P287MB2121.INDP287.PROD.OUTLOOK.COM (2603:1096:c01:1c4::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9073.16; Fri, 29 Aug
- 2025 10:14:45 +0000
-Received: from PN3P287MB1829.INDP287.PROD.OUTLOOK.COM
- ([fe80::58ec:81a0:9454:689f]) by PN3P287MB1829.INDP287.PROD.OUTLOOK.COM
- ([fe80::58ec:81a0:9454:689f%5]) with mapi id 15.20.9052.019; Fri, 29 Aug 2025
- 10:14:44 +0000
-From: Tarang Raval <tarang.raval@siliconsignals.io>
-To: laurent.pinchart@ideasonboard.com
-Cc: Tarang Raval <tarang.raval@siliconsignals.io>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	id 1urxR9-00000005VOp-2zaC;
+	Fri, 29 Aug 2025 11:38:32 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-3c854b6459fso1520288f8f.3;
+        Fri, 29 Aug 2025 04:38:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1756467510; x=1757072310; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=WalOz8RKKxxgzpgOrvxEvhq9BVJ+Sxe5eWkisRQONQU=;
+        b=nWgh6M0J+Q7zcBocIlAsvyCfuR3m4Ze1fhEdoGyrGU3XiI7LHQLvx0vI42J3GpBYx2
+         KrEz6DV15LQZPkQjXKZNDoOxlQ+aefueITd72G5oziF9XtLDDjepMXFqkMQeJytklPRO
+         a5H6z3pbFrdTUALsE8+Zm0RRNI7A8ByiEVd7kGqUhla0wKE7DgFG6RSNzxxsNUzsUrR5
+         vxRbSM0U3x6keHundOsjLasBemFU22NGsda3u+TM54l7rh/kWWSxONAefNXzsO47OKva
+         AhbtVs099vVmObwXcDoWEnKleLtk14uUMiCOIJvp0WSBJsn7Nue5YiYkcudt7v6BKAGq
+         Ep8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756467510; x=1757072310;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=WalOz8RKKxxgzpgOrvxEvhq9BVJ+Sxe5eWkisRQONQU=;
+        b=dUj3yxr6pAVsSvjkL18Jqywa04iC9W0e+2EVplKZOrfeW5pH13Oy391YRbVbrWd+yP
+         2pcLtqGVuZkQx1CZ5d1LAcEFasix9mLxy0pP561wPe51iKKI0U8Hph/iYuWZyG+vIY8o
+         JGQKaKSzmWseyXfipMsz5GOWISAJUYmzCsq+z1ESQPskRuhqyA4B2l/mrkvGvyIM95lt
+         YJIZEdYTGphlOrKLoLapv/UOdgWRssG5H0x/9g5q60Ii4D654u8oEzps3nRcZvJ9i+jZ
+         qoV/60Pz3byvX4hOhRPYbXcd23+Erm7n0Gz2IIw9PLesGMQJLYIhKKgCCd3HMtODWaEi
+         u74Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXMJHG6Om8aHjpVQsxRWlubAcQq6Vp2R2GXi3xLe/x6DE0SsuTuwvMSroSEPlvVNRL0rjUDcaOQBxmepk6WDQ4=@lists.infradead.org, AJvYcCXgMt/YcWPyeY13HTzMif/86dY0LR3ClRVZHl99CSzOpC3CFeH7y/x0wCDyMJrks+IdbIJ/UqIqkCsEBNttSV21@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyq2IsxEGddJ90A9LrPgGsKxRDzPGp2aLLWQA5hhSJRLW3vGhtY
+	kd9bL1BO6YQ1qlFfJ1kfm8vqt0Z1DRgGiFW6Pn3elgnowjGwosn/YZPz
+X-Gm-Gg: ASbGncsL5zWajwy3i1uRVYBzJKsDHJsrlnERbQk0Q8Y5Cd4XRkoDTySjhWT/pBWyTy5
+	o7B/PiS1XMXUscOtq/3BcxE7W4C37fJrg7PmVm5N0LhNJJJEuR485Ik/LhLpZJjvKZE9uJHIsek
+	Mhm0giUVzxCsRUTKzDn+NVCcIQo9QQn8HDftMbSsw6ZuhFYw+o1MjVOjYo+P9LflmclVjxXdIma
+	VriR+wmExincqatlyKuDuUCfzucRbAfMZ7RZjBybsl2ioU/jLaVV+dRg7UthcuM1rKLQoCGHlPU
+	RJp2YoLHKHSOrY1jm0k2TKeTEyEmcgIROghIAsIDB69blgsVV8H6UnwXwJV77DYiBii+Ugt2Sp4
+	d4PqeKp3FqSWmBusQQSXMedaF5sQEfQHmxkceiJQryUHvCsyDZgDX4jRnl9fPEK+n6j+7Pp28Nj
+	gg0jhsK3WcP6OMqyQNBbD9MyJ26I12YwNOHR/c0IeCNu1tUR9L0YAlIDqWXhwoKIg=
+X-Google-Smtp-Source: AGHT+IFz5++0a2Ytw2U05mb8xEeZQEb3Km/PeFew6jY1NCh0K74stclFlzmeU6Bnti9FVxL5VY+dlQ==
+X-Received: by 2002:a05:6000:4184:b0:3cc:19d3:8d78 with SMTP id ffacd0b85a97d-3cc19d39431mr7708668f8f.7.1756467509533;
+        Fri, 29 Aug 2025 04:38:29 -0700 (PDT)
+Received: from cypher.home.roving-it.com (7.9.7.f.b.1.3.0.b.8.f.0.9.e.0.0.1.8.6.2.1.1.b.f.0.b.8.0.1.0.0.2.ip6.arpa. [2001:8b0:fb11:2681:e9:f8b:31b:f797])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3d0c344f6e3sm1874327f8f.35.2025.08.29.04.38.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 29 Aug 2025 04:38:28 -0700 (PDT)
+From: Peter Robinson <pbrobinson@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
+	Dragan Simic <dsimic@manjaro.org>,
+	Ondrej Jirman <megi@xff.cz>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] media: rkisp1: Fix enum_framesizes accepting invalid pixel formats
-Date: Fri, 29 Aug 2025 15:44:24 +0530
-Message-Id: <20250829101425.95442-1-tarang.raval@siliconsignals.io>
-X-Mailer: git-send-email 2.34.1
-X-ClientProxiedBy: PN4P287CA0034.INDP287.PROD.OUTLOOK.COM
- (2603:1096:c01:26f::9) To PN3P287MB1829.INDP287.PROD.OUTLOOK.COM
- (2603:1096:c01:199::7)
+	linux-rockchip@lists.infradead.org
+Cc: Peter Robinson <pbrobinson@gmail.com>
+Subject: [PATCH v2] arm64: dts: rockchip: Further describe the WiFi for the Pinephone Pro
+Date: Fri, 29 Aug 2025 12:38:24 +0100
+Message-ID: <20250829113826.2029755-1-pbrobinson@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PN3P287MB1829:EE_|PN2P287MB2121:EE_
-X-MS-Office365-Filtering-Correlation-Id: f54f8de3-6eb7-47ef-37db-08dde6e4e056
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|376014|1800799024|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Lqk67NXa03KdX79nZxy/ZsZaoOZlEZLc9VkyQvKsulZvaiCa4qHlijU5r+K9?=
- =?us-ascii?Q?DbEE2huGos7ZFrAICEc4hfn6P9yvPcXpqtuZ60bJPepdw4KKVuehAA7s8NpZ?=
- =?us-ascii?Q?UyKP44rrEhAVXD2PyyPF83NAmzDESM8JZwPggIJNn1lm+czPZFCEv1iuQndX?=
- =?us-ascii?Q?gdtLZsl2ILZZNcizUzLuaNYyTY2BzmYVz0oGP+EXfIQb6f5UtfWeraumui7A?=
- =?us-ascii?Q?16LKAUzlYc0nf231scwJTDkp91Q4tJwYVibUHlSeJpLJgSLRINUL3HmcDQCr?=
- =?us-ascii?Q?yLB7Vf2IFm3pf8IoDg41x7BOorvZC+nd5IFCwX2WixyIgDy8TOd2KIS+iMDN?=
- =?us-ascii?Q?5ScxTD4KIcM/mWR7rsbsqoAeD7iRoXnn17gLUAzFh3OPE2rL6LBx3Ixkf2ks?=
- =?us-ascii?Q?kLsdbu5p6QZoVKCUZ8T1k2KXPiG59CGtfanf+esP6KeqJaZASMv3mWUmj2RM?=
- =?us-ascii?Q?Wkzn59RY9zDGDdXCQBxSzSViu2c/YQJJ+CVP9CG6j8pCDaqQCaG+AACKr0Gb?=
- =?us-ascii?Q?TDgKKnm+kc9Ig2mJh9X5rlYOA/X78YobuvbPpyYxckF5t8l8qJTwZafajLpL?=
- =?us-ascii?Q?rzWirl1iDUrEsxD8SA7Fb3CV9VyaCyegrPVYJdsJAO8C9plNypx6paE3gbBm?=
- =?us-ascii?Q?4drgNNqx7UW1kbZw611TYa0WNBNtX5/N/A9sncJKsR1WBX+XxBvHlkOQ0ZuX?=
- =?us-ascii?Q?B7URPtedSksIM0rNiz+lzxLs+EhjTLTyFg6+L4OqYxAUQ/wXsdcLpCI5Bnas?=
- =?us-ascii?Q?YimMk9UG7Vsn9OFJQkSN2DEKWZyH/eqmKu2DmgmEGiIoIpy/CcGC2OOczuNe?=
- =?us-ascii?Q?2Ng26YwAODR//Ui7fQ6zrazvTKyz2He19ukCc0Ienmw2gODdOOgMsQXIL8Oc?=
- =?us-ascii?Q?WQPha92YpiTSoBnAZpwAPizyG2QRc6u2zxMVWZWQ+ZggpzWQaR9HkcSpp2WU?=
- =?us-ascii?Q?JELEIgJnKt0/1iRtBj9AXJvx53tEVVCxEB3Vlzd6IzKZ+YzbssxZllF6CiNk?=
- =?us-ascii?Q?L0toebC49HLnFGrCKdsNzfK7Wj1rpOmGlTfsnQtAxkrInIPZBS4yKIScbuWf?=
- =?us-ascii?Q?tWdhFpT/i7nTzFBG5Fj9FaVxeAAcRzUKIyM5tLe6yyqldyV6cO343V7HmBuf?=
- =?us-ascii?Q?uRe5A1NVx/MnULafr119ggZeTo8ac45ruKk4YqomcHQHCkgA9YMtMLwazqA9?=
- =?us-ascii?Q?saCbwupNP5So3UZkYIsO4XNZlSlkqa8cJRW1AV4sYISF9p5XOgIBgcheIAhI?=
- =?us-ascii?Q?XOGqdQ7d/Z88NZCMRsn6XEb0wPgVkDD4U95OfQNeSiEPNyRoAfZN0iSK4kET?=
- =?us-ascii?Q?mKST4UZWP6c3P7OPkxvZNNUR/Bo6NB7VJd/ImqoAep0Evnlqj31W53UV7igL?=
- =?us-ascii?Q?5Ck4Iu33qFwuDrAYteKib7qUqDao4JIs7SL6N11Z4W/5WReMIfGsPZcR609t?=
- =?us-ascii?Q?4YpMQZqwShdRqZ4AUfto/zCUNZFu3lSIVWFlAkNi1hEYPZ4yhTsyzw=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PN3P287MB1829.INDP287.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(376014)(1800799024)(38350700014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?rlw12LPPute6TzWWGQ053ECOxVcTGmq2wQfeL2pXeF3Kz9T4JnW1fGpSSFcr?=
- =?us-ascii?Q?k8moMTNymo7TwZCcVt7svUYob6L/ojIxm4sYbJCcXq77mN/vGqO9fwqKpcUP?=
- =?us-ascii?Q?EIGtwIZFKM0JUS43aEBzBFsk72iaAwmz7fm7tzfF+fUB/LJbZsvPQTPs8tU7?=
- =?us-ascii?Q?4Q0vspWmjxhfIZDABqj4i9CSS0tDFyXd4isKc1539ji+TIK7TvQDRhQXiRfg?=
- =?us-ascii?Q?AZDlLRh8jxolzA15Xpwsmhnhfy2YuVe/8SfAPcJNQ0PTLdksylMRt19ff7/n?=
- =?us-ascii?Q?+1Ubk4mdVo4rEYMPz06xSBxNQIXKbWP3GCn6jRQXY8T4Lare/dCXodqVLgg4?=
- =?us-ascii?Q?EeVsXf2sNUuSVpQDyjOTfjv15fTxP710Sgz6MwvnLWTXeqoQdknYlff7qr1E?=
- =?us-ascii?Q?8ALHt05JB9CU2oy5UXf4CJWMJ2CzA+rEJ2Dt4ZmYEAlBQVk6uwJzyOKKhSAs?=
- =?us-ascii?Q?7ahLJLXC09/nQnBMfaZ/4ZUyPKtQ5lYbuWMeQP38AGzGtok/e10j+uAMr7wP?=
- =?us-ascii?Q?iLJJHWdv6uWBgNPfJGLFf7Jn71i59CbrW3n/ONOmy+LNaGIsnpksJUWW3clk?=
- =?us-ascii?Q?8Pyjku/MPqfh/MmR86J+Eg/MtaRRGxcLzvooF0i22Gb1fXWI5IonWLcaeKyQ?=
- =?us-ascii?Q?v3HzhRh7HmSdZKtiP8/NHT9sY1VzwpTBcsc4INNY3+puBGC+pSqfdB0tdDwQ?=
- =?us-ascii?Q?JEw+u7yPaBL8nYGuNFHMDDq0TCFS/sBPT0QGXBpDw2P/Sp3YuBjnM4OdlS7n?=
- =?us-ascii?Q?0CUj1VH7nKImirtZoSn1PCk0YJn3e6yQpUwtyGWEVSAiiAadS4k4xlDeAMic?=
- =?us-ascii?Q?TkZLHj9Z+uxTwugYB34qOdvz/D3nmDImPO5N+cVsxO/TFqP6/NpvRKAQ+AJb?=
- =?us-ascii?Q?E8xWEBC2s/++D3IdOODSi+7WnXct+Hr+xdKNZ4kjU47i8eVLP1AZZjE/JiQ9?=
- =?us-ascii?Q?FjnrrhF0KYFe/Tpx1e/MD1D7+9WQmiewcgRiEG5/yxPD4pC/85mFyv/OB3oe?=
- =?us-ascii?Q?H3SodfgEZPdx1rGLrchQoiRKnnMwxmGNKkEhgFUZyDE5+Z0diDwTvoMAdXFY?=
- =?us-ascii?Q?reudVQfg8ez3zn9Ldn3zSXb7yUxw66BMahw1j/uF4RQCCVvO/wBG8KY1fz6F?=
- =?us-ascii?Q?UAPFddc3HRNBRitYFD8N4llWWI2yPIY4/97u1IY0a5wO+AM9eFuWOkiIVDQp?=
- =?us-ascii?Q?yjwMR2yDWpPnlXtzwWV81bKCb9AongRUBn9nMswejk+o8cJl7IAViSwEhm//?=
- =?us-ascii?Q?+O1IKlvnFBeSslqDWTbxMG+tXD/dydXPQh2eJFNBwinDecfr9cWJvleVgIuI?=
- =?us-ascii?Q?iCFJDAYXDc+C5D8IkjpSwJGNgpsTSHDcvn/ARupFXSJ9wEH9k6zQL5FflQe5?=
- =?us-ascii?Q?Fgr+idiJHXOOg6qA9dycerQTVVnA8VDzDi3zjboGJz4B/Py2JgXufGj3/25i?=
- =?us-ascii?Q?4na/4rIGThkcOajFGGPuPxychT9w05zD/wq5no9++sNTLpYzzG0hse8erAdO?=
- =?us-ascii?Q?dCXHOnoejq/7jlz5vUEGkmRdoW7hI4d/HDLv3GuVJUAH3hDssLpG5fj266Yd?=
- =?us-ascii?Q?bmTjyDOLQ3AXKAvcLRvRnkhV5NQTGOPsFSBVb7BoeQO5RqXA4gOIMV8kAlC0?=
- =?us-ascii?Q?CQ=3D=3D?=
-X-OriginatorOrg: siliconsignals.io
-X-MS-Exchange-CrossTenant-Network-Message-Id: f54f8de3-6eb7-47ef-37db-08dde6e4e056
-X-MS-Exchange-CrossTenant-AuthSource: PN3P287MB1829.INDP287.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Aug 2025 10:14:44.8499
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 7ec5089e-a433-4bd1-a638-82ee62e21d37
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +9ryCb6KOhJzywsNukLxVhW5P+jN9vQEVmBty/UdOnjXALv7kTeCcwc1zuim7IbJ/pmWbKIf9ouXEOFbVbEQRe2ibTAfi2A1e8B97+D0BGg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PN2P287MB2121
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250829_031504_225709_25CB867C 
-X-CRM114-Status: UNSURE (   9.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250829_043831_752258_704FB7E8 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,39 +104,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Reject unsupported pixel formats in rkisp1_enum_framesizes() to
-fix v4l2-compliance failure.
+Update the wake-up pin and associated interupt details for the
+Pinephone Pro WiFi module. Details obtained from the published
+PinephonePro-Schematic-V1.0-20211127.pdf page 19.
 
-v4l2-compliance test failure:
-
-fail: ../utils/v4l2-compliance/v4l2-test-formats.cpp(403): Accepted framesize for invalid format
-test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: FAIL
-
-Tested on: Debix i.MX8MP Model A
-Kernel version: v6.17-rc3
-v4l2-compliance: 1.31.0-5387
-
-Signed-off-by: Tarang Raval <tarang.raval@siliconsignals.io>
+Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 3 +++
- 1 file changed, 3 insertions(+)
+v2:
+- Update commit
+- Drop alias
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 6dcefd144d5a..107937b77153 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -1383,6 +1383,9 @@ static int rkisp1_enum_framesizes(struct file *file, void *fh,
+ .../boot/dts/rockchip/rk3399-pinephone-pro.dts | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+index 6f97e57f36f55..24e4365a2e588 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+@@ -689,6 +689,12 @@ vcc1v8_codec_en: vcc1v8-codec-en {
+ 		};
  	};
- 	struct rkisp1_capture *cap = video_drvdata(file);
  
-+	if (!rkisp1_find_fmt_cfg(cap, fsize->pixel_format))
-+		return -EINVAL;
++	wifi {
++		wifi_host_wake_l: wifi-host-wake-l {
++			rockchip,pins = <4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
 +
- 	if (fsize->index != 0)
- 		return -EINVAL;
+ 	wireless-bluetooth {
+ 		bt_wake_pin: bt-wake-pin {
+ 			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -715,7 +721,19 @@ &sdio0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+ 	sd-uhs-sdr104;
++	#address-cells = <1>;
++	#size-cells = <0>;
+ 	status = "okay";
++
++	brcmf: wifi@1 {
++		reg = <1>;
++		compatible = "brcm,bcm4329-fmac";
++		interrupt-parent = <&gpio4>;
++		interrupts = <RK_PD0 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "host-wake";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_host_wake_l>;
++	};
+ };
  
+ &pwm0 {
 -- 
-2.34.1
+2.51.0
 
 
 _______________________________________________
