@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F5EECA1002
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Aug 2025 19:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6BD2CA0FF9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Aug 2025 19:54:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oH84g0UUrGh9UcyrayCMX1RyX+O0KLDNnoK6MagJndY=; b=I2Gs1XorwP+7hm
-	AcZvgbWVBeMW+QXudicLlx7/nWcuI84ymer7T469GXpqBQvvO/mH/0C7QUFWrfLHWfB2DGnSn85q1
-	36F82EU/hmRQT3igxj0hAaZo3xuol+4+UZqT4RzNNUCKnhFBMbJ0sF6ynjWlSOcxF3vEh4wx1OCNt
-	Fh5jHmxLggbLPF8h0+bVmD7QI2fVFzpsgW3peHnGB99UbjnKa+W34KOHKp9txXXZBNF5//AG+OKnh
-	TDgxRI3Xd+XgQy26DIA8wBy/Bgmqfzu4wvbEXLNNsrr2z929PAdO5zutivTFtAf5mmuEQhlkgxyAV
-	zIQXxMXrezgYJDpVxVKw==;
+	List-Owner; bh=Vsa53TDE/TAYwlu4CSDLUcgsPDQLhMlKZm2AgUnY4SM=; b=ovtQZij0Te0Z/V
+	U0X1Vh3nt0Pb8CQlDWW6ZtPMbBVTasxuFEb/qtpeMixLBjqePIx3nzWxZqytcz61hNgqbmoMGMwIu
+	AQyAPigQJ8DDSmWXsBGE1YxuDgk62YZFtxuSkwC3h17ytIFyIs9st4x/uq3EnxCC7z002U5bywqFc
+	XqucMc8kQiiFIwKNjNJhc2rMDSk+fXNFtIzCcFp0MOlCso4Xkbl2Bq9YRAzGFJ145WIqIRcWtDVDf
+	f4sc36M6Lt2gtkKHZYKpISdS1LUqGDUvMeOUWbml/pJLpA0JAbNDgKSDI8L8rfpEVzfTIKU7HL2Ql
+	2V9JwLWkwaBFC8kLqODw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us5An-00000006oMY-3M54;
-	Fri, 29 Aug 2025 19:54:09 +0000
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+	id 1us5Aq-00000006oQ2-2VkY;
+	Fri, 29 Aug 2025 19:54:12 +0000
+Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us0ju-000000069Tv-156v
+	id 1us0s9-00000006Ab1-1xHA
 	for linux-rockchip@lists.infradead.org;
-	Fri, 29 Aug 2025 15:10:08 +0000
-Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-7f6d8fcd106so304501085a.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 29 Aug 2025 08:10:05 -0700 (PDT)
+	Fri, 29 Aug 2025 15:18:38 +0000
+Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-7fac8fdea9fso159350985a.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 29 Aug 2025 08:18:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1756480204; x=1757085004; darn=lists.infradead.org;
+        d=fooishbar.org; s=google; t=1756480716; x=1757085516; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=EGLIvrEeA6aZSH5bbWcCyh35lvNtwwlGEu4excYVUnY=;
-        b=pLLpBzmI9+IoMu1DqJrFPLKjDBvHe1hHr8gTIK+JXMTmZB9t61Or4KQRq/ddMcd48c
-         MdtlVPL+WeH2ILCy9uIfMKkAE8CtdxdUAgY2+UI9zNR/hF/8q/pDrfISYBnhoo85UJpc
-         cjxA6WL5khG/m1lrAq5rPwXBiAdNyoVZkgrSoIfZSUXGzpRHVGoSaOvj8ZHwALw2oj3t
-         sYbIVVGG3NNxH1ZgGg5jYEYbMueZyEL/wwieLhv6R2TV9BurkgzDHBCJntAh8suS75Fu
-         Tsideg4pDkyJVPdxp0+JR14+n6UbhXIerlYPRq35Pwhpujbj14WYGB8h+D+TC4oCp7Nr
-         lwLg==
+        bh=ghrhxwoqKMCN5VgWcIThzYZeVniKtHuv8o+iU1wCEl0=;
+        b=CoFanu4S+a+emL1gzy92D88S8EEU9835pU+Wriy99Q+uZvTgmKe9CQg/IYg+MC3Hp+
+         9odWKoUXck1Z6onB+CA35yv6fmkxjWzKE/t8A80rJwf8IiqPNoOYxMCTKE/5Xbsoy2Es
+         T1lxDDbBxEyWP/6y0Q3Pop7Tp8Wp/mX34b7EsjCqkxCr4j6yMyC9glyFtLDyrI819Tw8
+         o/hX/g+OzaoGsWDnffaKzkq60AYPReEuQVszcs9J+7iLBweNoGw7cXuw++DfzGvMNDLl
+         DP/enwxG9kWDnGVdcE0M6GisHyAYMCUWK/dMweQVE6yz9QIXOMVt67G+uO3lKUZko+qh
+         4obQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756480204; x=1757085004;
+        d=1e100.net; s=20230601; t=1756480716; x=1757085516;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=EGLIvrEeA6aZSH5bbWcCyh35lvNtwwlGEu4excYVUnY=;
-        b=opfZ844Xl30MXnNLQOUrtRKrIRaxEyr/Yz+L3JZ7as6Bzgp+vR5pYgdowdz/YzmGqf
-         EGGr1ZYSLU2x191Yn51fzPu4MC2MG95pxIO4d5ZUxNAgF/suSFHiiiC5PgvGvUwjxkd1
-         MoO6zVrRqY4aRDNsqek3n31IPVs3HLNzNbecljSGQdKFhH7uyZk4WcCXmSn/tVTpu9+m
-         xdZchMeZuLFbTUPPNP8u5FO+WuEdLB5uekZ7RsgSVr5EJoJezBRm8msCgzuTwqxklRBj
-         EUchLIG1wELXt0CfT7h6WWPbkjIcio/TrKsv4GBRe1DDFJ0HWuneD7etxIP/LTS3WqHP
-         /rkA==
-X-Forwarded-Encrypted: i=1; AJvYcCWHf+xYEf1q+AWwfjSiLoOaM52LSjaSAV05mAF2HNSdOPfDI2ja87ImD8BCWCBgY2Unil8oBlaMgwVk9EAsLg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxRZKB+pkBCHvkmzqYxi6txKreFGYDXZW9c6pvkA04gxGSAbdX2
-	okHIDNKAMKAzXQEDMI4SU4FVcBxwCNnDynJtNK0Vl7dXSiIvxE9IgauVz877OuRGCxH/YANcYv4
-	avGawmHUzlJHNIhARUICGcUaavk819pfs00IFFHeDzw==
-X-Gm-Gg: ASbGncuCGgxlSSOW2qSYoPzwDb+hrTLy/jQ0wZpTW7XwAmYT0KE+znw8lWzVSFg5+5m
-	Q06svaJqSi0GW/K03K91Sxtz+wLfswYtkXd9zSYK5LtHFKWPrwOtLlqy0pHNEC7MEOkcf+obDYe
-	xAMHFOve1GuvFmCxEHZTDYXuneVePvduVzbC5SoHoWNLRNJLJKOjUPEeagHsAKfzDEXHnQsif69
-	qGARA==
-X-Google-Smtp-Source: AGHT+IGKh7Y20GWjms5CEWqUFYK6Fhl4aSsCjrhVa2muuLuQNwyCT8KtW05eeJgqP4jwNECHf4vjyNzCIEKa9V1tI+Y=
-X-Received: by 2002:a05:620a:269b:b0:7f9:98ca:af1f with SMTP id
- af79cd13be357-7f998cac79emr862285085a.32.1756480204505; Fri, 29 Aug 2025
- 08:10:04 -0700 (PDT)
+        bh=ghrhxwoqKMCN5VgWcIThzYZeVniKtHuv8o+iU1wCEl0=;
+        b=Mnv+072t7Yt1RYY0uced8eIy3Oe+xOXPUTuDrSmLZLRkGN7JFZBxHnR2plQstgkdi8
+         /08wxzKmm3cTp5UERcSjnbDivBjunu+c3lc14tezgAxw1NFsVTEKXjkxqSJ/aeJafKPR
+         HhwNjcqCrqOOqJQK6IF+kkrozImk/dy6vHuczIux69rfsFQqXH4X8q2U7y1qxqItvmsf
+         M/MkoPTId02KxDxo/C2jlQ/JovCi4VUrsKGXIS/O1TlUY/UKy33HKVzOyDZPb2ehehaJ
+         Q6uRazXZUWOKbxzaZTwf9y8C6QXSr7K5ymr14xvCONSIkDq1j+gSg5FFsC2eyuG3dSTh
+         LkEA==
+X-Forwarded-Encrypted: i=1; AJvYcCWyhZlzrfVwk9QSofIB42zVockURl8rVF7DpPgUsEQrtbYzvk4kPJCl828vNxSiOzv5oEICTefghT3cs1mPkQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxWFF9lRPfs5BEfb42EthQZvxl+pRQ1Vk//2Ncxa0hPZOsZcOmt
+	0gBvpa12/uPO7tXUDACJB+23+zvC8Gf9HNdiaQftTH0nE+NjiTbOpoUxFLqDdla/CTtdjjZEIf2
+	SOj9Qym7cpiyKMKHw9A2nzOB1h9MVAIjm9WveAiVUwg==
+X-Gm-Gg: ASbGncvKOcXVQz+keTVJ+MWfAH2AwvnRNLTlnnvGrWO/jon8Uw6qeOwYUnlXISzzFgN
+	8wxduVdLLpXMcJDG5Q/zMPthzPg704d0YGM6xC/ikqluwED33sYssndhXXnm+UnDwRPFpxYCUA3
+	lG5qKFUJL4nsy3nA2pU3IAYzL2whBIKACVi8qlrqzznD/fW7PcDhOFm4s4JgcuB/7UWVW7qUZUA
+	3bjG1MKptF+rECn
+X-Google-Smtp-Source: AGHT+IGmPttzEK19ZD3UTDCY1FnzsKcijNSUsN6pQPrVL+2gsomLPlupJ17X2EjGDAqx5GLvtjHyN5i9KgoNezf9kFI=
+X-Received: by 2002:a05:620a:2888:b0:7e8:1d4b:b00e with SMTP id
+ af79cd13be357-7ea10f73af4mr2964339785a.30.1756480716220; Fri, 29 Aug 2025
+ 08:18:36 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250825-rk3588-hdmi-cec-v3-0-95324fb22592@collabora.com> <20250825-rk3588-hdmi-cec-v3-3-95324fb22592@collabora.com>
-In-Reply-To: <20250825-rk3588-hdmi-cec-v3-3-95324fb22592@collabora.com>
+References: <20250825-rk3588-hdmi-cec-v3-0-95324fb22592@collabora.com> <20250825-rk3588-hdmi-cec-v3-5-95324fb22592@collabora.com>
+In-Reply-To: <20250825-rk3588-hdmi-cec-v3-5-95324fb22592@collabora.com>
 From: Daniel Stone <daniel@fooishbar.org>
-Date: Fri, 29 Aug 2025 17:09:53 +0200
-X-Gm-Features: Ac12FXxjT2DMgVXZUD7stQTdp-evPmAyNIHAST4h_-TfcQ_juOKoIsGqjkI2p6g
-Message-ID: <CAPj87rPhhhhEHrPqAcKNtWwAtCQRANp_=8sQtg3urqf5wcrmsA@mail.gmail.com>
-Subject: Re: [PATCH v3 3/6] drm/rockchip: dw_hdmi_qp: Improve error handling
- with dev_err_probe()
+Date: Fri, 29 Aug 2025 17:18:23 +0200
+X-Gm-Features: Ac12FXxmGn_rShnoeRaqJ2HPo1b9mmmJuCbdWBYqIMqhSsoU1twbnPqkg976p5g
+Message-ID: <CAPj87rO1NKnApMkw75CmAXS6_ARpFDiofgwiqH_uwfrB6BFcUA@mail.gmail.com>
+Subject: Re: [PATCH v3 5/6] drm/rockchip: dw_hdmi_qp: Provide ref clock rate
+ in dw_hdmi_qp_plat_data
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
 	Andy Yan <andy.yan@rock-chips.com>, 
@@ -86,8 +86,8 @@ Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@snte
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
 	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250829_081006_449032_229C2C2B 
-X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-CacheID: sfid-20250829_081837_502285_4AB5A9ED 
+X-CRM114-Status: UNSURE (   8.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,12 +107,12 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 On Mon, 25 Aug 2025 at 10:57, Cristian Ciocaltea
 <cristian.ciocaltea@collabora.com> wrote:
-> The error handling in dw_hdmi_qp_rockchip_bind() is quite inconsistent,
-> i.e. in some cases the error code is not included in the message, while
-> in some other cases there is no check for -EPROBE_DEFER.
+> In order to support correct initialization of the timer base in the HDMI
+> QP IP block, setup platform data to include the required reference clock
+> rate.
 >
-> Since this is part of the probe path, address the aforementioned issues
-> by switching to dev_err_probe(), which also reduces the code a bit.
+> While at it, ensure plat_data is zero-initialized in
+> dw_hdmi_qp_rockchip_bind().
 
 Reviewed-by: Daniel Stone <daniels@collabora.com>
 
