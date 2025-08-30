@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C7F7CA0FFD
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 21:38:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70BD6CA0EFF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 22:24:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:Cc:References:Message-Id
+	:Date:Subject:Mime-Version:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uDMYqytR2dBbMMd/657Fufg9WyjsuDWOBFlqHqkkjkg=; b=WRklwjeB5uXqKH
-	rBiFpvRbC77KUJOrhYv+1bE0hpnTrmTYctOcZ0iNDNUYPBAUB1h3oEIL+iKdgy1OK9aLRr/rYBQrd
-	VTRJvXyVrJ+jKPAg73kBVx9DUAe2OsIL36a+TYSd0IV1RGOIVCsyuZBQtRVwVGD08IBsBWUAbb3n/
-	QnShT0mFhmQndXnDScSCCrT/Gks8RhwZjuFaiIWqRMAAyO+Ot+0Ccpldn8QLJ1gfRTSj6GgSE+bOm
-	z4P4VALaLDcYWJc9eUxBaI5fsMzylJr4EI8hqxtocXUndU4BVbSWznSfqL6OqHNZw9qpGUwDJgoob
-	9lYqMUMaYH+aZpHlRrsw==;
+	List-Owner; bh=kF9yXzZeS433FLaLVkLJqWOKvNB+V38g/WnWMFGAL7o=; b=tPVJU1cy77apDb
+	0jqDaxMP2+TkM+HTKN2AqLQOGQc/AjtXeoQMIvhgGISjPiwQeqVQtu4GZxOGl0w5bTv+CuwBPvP70
+	5XmGngf2Z76MhpDwljdTENwo/G9U2nHPUKDMqA10cZwdypCzCIwV01YMKwT76xLTFOlBOqPHlEhtN
+	XOheNGGVbpiWSaAd9yN05+rZHp7FNRs0YGbQvCj6vJ/bHq/6op0XOl6nou0hQFsOQFcWuciQKlcko
+	8JHpU92yMUjThtoUZ2w72xjDfJVB0G9ylYbQvQHLvTGf3zMrGLLVGcvO+NjRJt6Fp8vzbh+R0SkNZ
+	Gw6ZnaZidaoX9wGFlePw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usTGw-00000008STK-1r8u;
-	Sat, 30 Aug 2025 21:38:06 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1usTzJ-00000008UKW-2W6k;
+	Sat, 30 Aug 2025 22:23:57 +0000
+Received: from chumsalmon.baetis.net ([2001:19f0:5:5b58:5400:5ff:fe17:97e8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usT9k-00000008S9C-1cwo;
-	Sat, 30 Aug 2025 21:30:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=1Baiur+XsL6xJjFj12NhEXn8Az4xq+GU7LaN0fj/cCo=; b=1GcTLIcVFiP+2ZlfyKuDE8pWvD
-	Qv4pCZ+hjFDmzYM25qbASxwFYJcbBJYNEo2K/+RaAsTk2+YdFcWnQV0rvm6zdHTP/aHY4f+HYMcvj
-	GDVVki5uYt5WAlcfVVUMIpud8vffMJIyYJ+GgxSAOhaTtBmFIgZt+T401xNxrJfPlnVM=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1usT9g-006c6E-5c; Sat, 30 Aug 2025 23:30:36 +0200
-Date: Sat, 30 Aug 2025 23:30:36 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Erik Beck <xunil@tahomasoft.com>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add HINLINK H68K
-Message-ID: <021c2e76-cbde-4a2e-a165-a61223cdff93@lunn.ch>
-References: <20250818100009.170202-1-amadeus@jmu.edu.cn>
- <20250818100009.170202-4-amadeus@jmu.edu.cn>
- <20250830171409.592c1f63.xunil@tahomasoft.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250830171409.592c1f63.xunil@tahomasoft.com>
+	id 1usTwV-00000008U3Y-0EoA;
+	Sat, 30 Aug 2025 22:21:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tahomasoft.com;
+	s=default; t=1756592461;
+	bh=7k6q+f86ghK/n5B2VunwMH6m8MBXQ8m4bSBSm/fUtbo=;
+	h=From:Subject:Date:References:Cc:In-Reply-To:To:From;
+	b=hwKdG4Z/bj7zMZIaxP+nL9Fm2QP6YdbTrxIg5YsgAXPLzNhhlbb1AfXosHe0tDz+b
+	 p9D87AZO+rS8K6n78LaIvLa1MLTeufK+GEAFGi5fV8q8IIkpe64Lnfwml3IDpArcUH
+	 Bty9g3c156i8nJAHu+8UoZp/cPWSjjIlyh9nF7UnoEtjSdS7rp6UD6c343X/6vgnSa
+	 9hZbdJU4sM3GhhHvU4LGt3ysGab5TpqWvvTmnW652+JmTm3FUNw5SQlxArvHOMQzRG
+	 DGdMwYPBW1IRlnjbiOC/xGYu7XcJyyVeuHQA8lXJvVMoF3LxpiEDq5zIsiUA+tqSjH
+	 fZUMZ6K3P68CA==
+Received: from smtpclient.apple (unknown [IPv6:2600:1000:b0ec:e674:574:f959:86e5:7770])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by chumsalmon.baetis.net (Postfix) with ESMTPSA id 547F427E468;
+	Sat, 30 Aug 2025 22:21:01 +0000 (UTC)
+From: Erik Beck <xunil@tahomasoft.com>
+Mime-Version: 1.0 (1.0)
+Subject: Re: [PATCH 0/4] arm64: dts: rockchip: Add HINLINK H66K/H68K
+Date: Sat, 30 Aug 2025 18:20:50 -0400
+Message-Id: <AAEEDECA-1419-487E-B018-E0590ED532D1@tahomasoft.com>
+References: <2803b3d8-332e-4ada-a28f-eeba8285b7ec@lunn.ch>
+Cc: Heiko Stuebner <heiko@sntech.de>, Chukun Pan <amadeus@jmu.edu.cn>,
+ Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+In-Reply-To: <2803b3d8-332e-4ada-a28f-eeba8285b7ec@lunn.ch>
+To: Andrew Lunn <andrew@lunn.ch>
+X-Mailer: iPhone Mail (22G100)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250830_143040_442145_EF2884A0 
-X-CRM114-Status: UNSURE (   7.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250830_152103_293253_68A7B0B2 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,43 +70,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> > +&gmac0 {
-> > +	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
-> > +	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>;
-> > +	assigned-clock-rates = <0>, <125000000>;
-> > +	clock_in_out = "output";
-> > +	phy-handle = <&rgmii_phy0>;
-> > +	phy-mode = "rgmii-id";
-> 
-> Please change phy-mode here to "rgmii". This change will yield an ethernet
-> speed throughput change of a factor of 100+. 
-
-Rockchip by default do bad things with RGMII delays.
-
-  tx_delay:
-    description: Delay value for TXD timing.
-    $ref: /schemas/types.yaml#/definitions/uint32
-    minimum: 0
-    maximum: 0x7F
-    default: 0x30
-
-  rx_delay:
-    description: Delay value for RXD timing.
-    $ref: /schemas/types.yaml#/definitions/uint32
-    minimum: 0
-    maximum: 0x7F
-    default: 0x10
-
-Try setting both of these to 0. And then use 'rgmii-id'.
-
-	Andrew
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cgo+IE9uIEF1ZyAzMCwgMjAyNSwgYXQgMTc6MzAsIEFuZHJldyBMdW5uIDxhbmRyZXdAbHVubi5j
+aD4gd3JvdGU6Cj4gCj4g77u/Cj4+IAo+PiBBcyBJIHdvcmtlZCBvbiBteSBkdHMsIEkgZGlzY292
+ZXJlZCB0aGF0IHRoZSAxR2IgZXRoZXJuZXQgcG9ydHMsIHVzaW5nIGFuCj4+IFJUTDgyMTEsIGRv
+bid0IHN1cHBvcnQgcmdtaWktaWQgbW9kZTsgb25seSByZ21paS4KPj4gKGh0dHBzOi8vd3d3LnJl
+YWx0ZWsuY29tL1Byb2R1Y3QvSW5kZXg/aWQ9Mzk3NiZjYXRlX2lkPTc4NikuCj4gCj4gV2hpY2gg
+ZXhhY3QgUlRMODIxMSBkb2VzIHRoZSBib2FyZCB1c2U/IFlvdSBsaW5rIHRvIGluZm9ybWF0aW9u
+IGZvcgo+IHRoZSBSVEw4MjExRkQoSSktQ0csIHdoaWNoIGkgYXNzdW1lIGlzIHN1cHBvcnRlZCBp
+biBMaW51eCBhcyBSVEw4MjExRi4KClRoYW5rcyBBbmRyZXc7IEl0IGlzbid0IGNsZWFyIHRvIG1l
+IHdoaWNoIHNwZWNpZmljIHZhcmlhdGlvbiBpdCBoYXMuIEknbGwgdGFrZSBhbm90aGVyIGxvb2sg
+YXQgdGhlIGJvb3QgbG9ncyBhbmQgc2VlLiBUaGUgc2lsa3NjcmVlbiBvbiB0aGUgY2hpcHMgYXJl
+IGZhaW50LCBidXQgd2lsbCBsb29rIHRoZXJlIHRvby4KPiAKPiBodHRwczovL2VsaXhpci5ib290
+bGluLmNvbS9saW51eC92Ni4xNi4zL3NvdXJjZS9kcml2ZXJzL25ldC9waHkvcmVhbHRlay9yZWFs
+dGVrX21haW4uYyNMNTE5Cj4gCj4gVGhpcyBpbmRpY2F0ZXMgaXQgc3VwcG9ydHMgYWxsIGZvdXIg
+UkdNSUkgbW9kZXMuIEFuZCBpbiBnZW5lcmFsLCBhbGwKPiBQSFkgZHJpdmVycyBpbiBMaW51eCBm
+b3IgUkdNSUkgUEhZcyBzdXBwb3J0IGFsbCBmb3VyIFJHTUlJIG1vZGVzLgo+IAo+PiBDaGFuZ2lu
+ZyB0aGlzIG1ha2VzIGEgaHVnZSBkaWZmZXJlbmNlIGluIHRoZSBldGhlcm5ldCB0aHJvdWdocHV0
+IHNwZWVkLiBXaXRoCj4+IHJnbWlpLWlkIG1vZGUgc3BlY2lmaWVkLCB0aHJvdWdocHV0IGlzIGFi
+b3V0IDYuNSBNYnMuIENoYW5naW5nIHRoaXMgdG8gcmdtaWkKPj4gbW9kZSBpbmNyZWFzZXMgdGhy
+b3VnaHB1dCB0byBhYm91dCA5NjAgTWJzLgo+IAo+IEhlcmUgaXMgc29tZSBtb3JlIGluZm9ybWF0
+aW9uIGFib3V0IHRoYXQgdGhlIGZvdXIgUkdNSUkgbW9kZXMgbWVhbiwKPiBhbmQgaG93IHlvdSBz
+aG91bGQgdXNlIHRoZW0gaW4gTGludXg6Cj4gCj4gaHR0cHM6Ly9lbGl4aXIuYm9vdGxpbi5jb20v
+bGludXgvdjYuMTYuMy9zb3VyY2UvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25l
+dC9ldGhlcm5ldC1jb250cm9sbGVyLnlhbWwjTDI2NAo+IAo+ICAgIEFuZHJldwoKVGhhbmsgeW91
+IQo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4g
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
