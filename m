@@ -4,99 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E037CA0EFF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 12:12:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAF6ACA0FFD
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 12:18:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hEgsTsz9+eJ2VyH14nrgBkbSxJaEgU2WfGqYPsPToDo=; b=nXZIXJNUAnRhp+
-	YBxDFUhX/oe0uroYIwP0VC3drmA6L7rxmdHrqzmo/cDvtqufBONIPM73mm74TVfYSJESFbT8TCTMk
-	rIAGvLpWikuNyoYVxdUvFoFQcA2vx2QrY51S6PiCq1nnh0XYwI9CWGdKGZ8hh1/Fy6sE8nJVfIg4f
-	uqzJVWG7KcnV+fDX8aWDy8GGDDcK1rLuDmrvBxP4UYB4OPfH0ggrl0z92dJcw+eHykigLih6hRHJM
-	6ODXmVhFrF3oOCmJxpRHYgn2cot8pVnDhDc5oYCXgQVXKilYK5ZdlBDTq2ff6dPMM2mcugUsb7A7F
-	qNqgzZ7zfqVjgOXNf2zg==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:
+	Subject:To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FDsNlNyOZ9T0bplgV4sWfclrCsBnObQJ+tmoPj2GmNk=; b=E++bhWxUyX11eK
+	Faa5htHDywqdQoyhkdyzjecYLYwrD/sf7du+92rYnA308cimHiyrbByEjwH9bUF9DKNOasIBeM+VN
+	cfEs1eA2ejGBIyft224FWZWipW+Z3m1ssl4NLZx/52+AGLheS1odMtnX2eBe4OQ7bOq+yN/RHRZTd
+	/iynRskpsR3+zNebPBKUkTQK8EM33ffOUbVhbaptTwFUe04uzX6AOsLGdj260Hjw77hsD8DuhwqyT
+	MhgDjwnnZZ6KdWDJmUyTZsjoLAc2VhjyEPuYECeY66FsPah+kZB7k52rR27915uOjpLEk8JneadBg
+	9s0oPD72g/GX9D7IPzVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usKRd-00000007qzV-2Oml;
-	Sat, 30 Aug 2025 12:12:33 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1usKWr-00000007rDi-2kOq;
+	Sat, 30 Aug 2025 12:17:57 +0000
+Received: from mx2.inter.hu ([88.99.86.175])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usKOs-00000007qs6-0dLQ;
-	Sat, 30 Aug 2025 12:09:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1756555782; x=1788091782;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=8P4WrA/SJEy/L79/DSQB7imWaic2ObRv8kUO/ujofXI=;
-  b=ZCDtJ/2f7GM4II5l3N5WVqAMIrs2U/nTff+YlawjNxXyBpWjTKyX53Ob
-   jpsSkYqUalz33sqZkh9pkJgSzZQYue3Ve6r4kizcxzn98R0ZmI2ZUDThA
-   n/NJCd4wBYWvICzDco4IQIPksPO0JqUmX58ovV3a/cvq2pJawC8onO1ZS
-   cHo+R89yWOmlIljUA0GfHy5nYyB5ryg9gt100FGGEp2QpI1QUP/IWO8N1
-   4n9AuruBLSKG1qcWligJt9d8Se0aqb88O3CCQMC694wbaQ30ZZ4dyLvED
-   NkLfLMcw6kFVo2rlUKpsRnwvarPoyCw6sbCnKtixBriZvpIV9S66GNL7h
-   A==;
-X-CSE-ConnectionGUID: pRwcHcqIR3yDP5RO32ztzg==
-X-CSE-MsgGUID: Tyv5QrKZTPKZsdaQNxUl3A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11537"; a="58020654"
-X-IronPort-AV: E=Sophos;i="6.18,225,1751266800"; 
-   d="scan'208";a="58020654"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Aug 2025 05:09:36 -0700
-X-CSE-ConnectionGUID: cxMSSuYbTdiZoHRafIE+eQ==
-X-CSE-MsgGUID: yliCIGqCQUeXg95YXH3hEQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,225,1751266800"; 
-   d="scan'208";a="170151300"
-Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
-  by orviesa009.jf.intel.com with ESMTP; 30 Aug 2025 05:09:28 -0700
-Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1usKON-000VLN-2J;
-	Sat, 30 Aug 2025 12:09:13 +0000
-Date: Sat, 30 Aug 2025 20:08:13 +0800
-From: kernel test robot <lkp@intel.com>
-To: Dmitry Baryshkov <lumag@kernel.org>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
-	Samuel Holland <samuel@sholland.org>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?iso-8859-1?Q?Ma=EDra?= Canal <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	Liu Ying <victor.liu@nxp.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Abhinav Kumar <abhinav.kumar@linux.dev>,
-	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 07/11] drm/rockchip: rk3066: declare supported
- infoframes
-Message-ID: <202508301909.DvZIl8j0-lkp@intel.com>
-References: <20250830-drm-limit-infoframes-v3-7-32fcbec4634e@oss.qualcomm.com>
+	id 1usKWp-00000007rDO-33BI
+	for linux-rockchip@lists.infradead.org;
+	Sat, 30 Aug 2025 12:17:56 +0000
+Received: from mx2.inter.hu (localhost [127.0.0.1])
+	by mx2.inter.hu (Postfix) with ESMTP id 46D64182876
+	for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 14:05:51 +0200 (CEST)
+Received: from [45.138.16.152] (unknown [45.138.16.152])
+	(Authenticated sender: vecseii@martonyi.hu)
+	by mx2.inter.hu (Postfix) with ESMTPSA id 840CC1BAACD
+	for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 13:48:59 +0200 (CEST)
+From: vecseii@martonyi.hu
+To: linux-rockchip@lists.infradead.org
+Subject: xls
+Date: 30 Aug 2025 04:48:59 -0700
+Message-ID: <20250830044859.6D84A00968E6C096@martonyi.hu>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250830-drm-limit-infoframes-v3-7-32fcbec4634e@oss.qualcomm.com>
+X-Virus-Scanned: ClamAV using ClamSMTP
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250830_050942_194705_16C61EFE 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20250830_051755_919037_FEB63C19 
+X-CRM114-Status: UNSURE (   0.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,112 +56,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: info.superenalotto@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-kernel test robot noticed the following build errors:
-
-[auto build test ERROR on f4028ef65dc4fe9010bcc017597fe0fea6479097]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Dmitry-Baryshkov/drm-connector-let-drivers-declare-infoframes-as-unsupported/20250830-082533
-base:   f4028ef65dc4fe9010bcc017597fe0fea6479097
-patch link:    https://lore.kernel.org/r/20250830-drm-limit-infoframes-v3-7-32fcbec4634e%40oss.qualcomm.com
-patch subject: [PATCH v3 07/11] drm/rockchip: rk3066: declare supported infoframes
-config: i386-buildonly-randconfig-002-20250830 (https://download.01.org/0day-ci/archive/20250830/202508301909.DvZIl8j0-lkp@intel.com/config)
-compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250830/202508301909.DvZIl8j0-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202508301909.DvZIl8j0-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/gpu/drm/rockchip/rk3066_hdmi.c:699:15: error: no member named 'supported_infoframes' in 'struct drm_bridge'; did you mean 'supported_formats'?
-     699 |         hdmi->bridge.supported_infoframes = DRM_CONNECTOR_INFOFRAME_AVI;
-         |                      ^~~~~~~~~~~~~~~~~~~~
-         |                      supported_formats
-   include/drm/drm_bridge.h:1199:15: note: 'supported_formats' declared here
-    1199 |         unsigned int supported_formats;
-         |                      ^
-   1 error generated.
-
-
-vim +699 drivers/gpu/drm/rockchip/rk3066_hdmi.c
-
-   666	
-   667	static int
-   668	rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
-   669	{
-   670		struct drm_encoder *encoder = &hdmi->encoder.encoder;
-   671		struct device *dev = hdmi->dev;
-   672		int ret;
-   673	
-   674		encoder->possible_crtcs =
-   675			drm_of_find_possible_crtcs(drm, dev->of_node);
-   676	
-   677		/*
-   678		 * If we failed to find the CRTC(s) which this encoder is
-   679		 * supposed to be connected to, it's because the CRTC has
-   680		 * not been registered yet.  Defer probing, and hope that
-   681		 * the required CRTC is added later.
-   682		 */
-   683		if (encoder->possible_crtcs == 0)
-   684			return -EPROBE_DEFER;
-   685	
-   686		drm_encoder_helper_add(encoder, &rk3066_hdmi_encoder_helper_funcs);
-   687		drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
-   688	
-   689		hdmi->bridge.driver_private = hdmi;
-   690		hdmi->bridge.funcs = &rk3066_hdmi_bridge_funcs;
-   691		hdmi->bridge.ops = DRM_BRIDGE_OP_DETECT |
-   692				   DRM_BRIDGE_OP_EDID |
-   693				   DRM_BRIDGE_OP_HDMI |
-   694				   DRM_BRIDGE_OP_HPD;
-   695		hdmi->bridge.of_node = hdmi->dev->of_node;
-   696		hdmi->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
-   697		hdmi->bridge.vendor = "Rockchip";
-   698		hdmi->bridge.product = "RK3066 HDMI";
- > 699		hdmi->bridge.supported_infoframes = DRM_CONNECTOR_INFOFRAME_AVI;
-   700	
-   701		hdmi->bridge.ddc = rk3066_hdmi_i2c_adapter(hdmi);
-   702		if (IS_ERR(hdmi->bridge.ddc))
-   703			return PTR_ERR(hdmi->bridge.ddc);
-   704	
-   705		if (IS_ERR(hdmi->bridge.ddc))
-   706			return PTR_ERR(hdmi->bridge.ddc);
-   707	
-   708		ret = devm_drm_bridge_add(dev, &hdmi->bridge);
-   709		if (ret)
-   710			return ret;
-   711	
-   712		ret = drm_bridge_attach(encoder, &hdmi->bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-   713		if (ret)
-   714			return ret;
-   715	
-   716		hdmi->connector = drm_bridge_connector_init(drm, encoder);
-   717		if (IS_ERR(hdmi->connector)) {
-   718			ret = PTR_ERR(hdmi->connector);
-   719			dev_err(hdmi->dev, "failed to init bridge connector: %d\n", ret);
-   720			return ret;
-   721		}
-   722	
-   723		drm_connector_attach_encoder(hdmi->connector, encoder);
-   724	
-   725		return 0;
-   726	}
-   727	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+V2lyIGZyZXVlbiB1bnMsIElobmVuIG1pdHRlaWxlbiB6dSBrw7ZubmVuLCBkYXNzIFNpZSB6dSBk
+ZW4gCkdld2lubmVybiBkZXIgasO8bmdzdGVuIFN1cGVyRW5hbG90dG8tWmllaHVuZyBpbiBadXNh
+bW1lbmFyYmVpdCAKbWl0IExvdHRvMjQsIEV1cm9NaWxsaW9ucyB1bmQgUG93ZXJiYWxsIGdlaMO2
+cmVuLiBTaWUgaGFiZW4gZWluZW4gCmVpbm1hbGlnZW4gR2V3aW5uIHZvbiDigqwzLjg1MC4wMDAg
+IGluIGRlciB6d2VpdGVuIEdld2lubmtsYXNzZSAKZ2V3b25uZW4uIFVtIElocmVuIEdld2lubiBh
+Ynp1d2lja2Vsbiwgc2VuZGVuIFNpZSB1bnMgYml0dGUgCmZvbGdlbmRlIEluZm9ybWF0aW9uZW4g
+cGVyIEUtTWFpbDoKClZvbGxzdMOkbmRpZ2VyIE5hbWU6IExhbmQ6IFdvaG5hZHJlc3NlOiBBbHRl
+cjogR2VzY2hsZWNodDogQmVydWY6IApIYW5keW51bW1lcjogV2hhdHNBcHAtTnVtbWVyLgoKSW0g
+TmFtZW4gZGVyIE9ubGluZS1Mb3R0ZXJpZWFidGVpbHVuZ2VuIFN1cGVyRW5hbG90dG8sIApFdXJv
+TWlsbGlvbnMgdW5kIFBvd2VyYmFsbCBncmF0dWxpZXJlbiB3aXIgSWhuZW4gaGVyemxpY2ggenUg
+CklocmVtIEdld2lubi4KCk1pdCBmcmV1bmRsaWNoZW4gR3LDvMOfZW4KCkZyYXUgS2F0aGVyaW5l
+IEZlZGVyaWNvCkxlaXRlcmluIE9ubGluZS1aYWhsdW5nZW4gLyBWYWxpZGllcnVuZ3NtYW5hZ2Vy
+aW4KQ29kZS1OYWNocmljaHQ6IDczN0dIUzk4CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
