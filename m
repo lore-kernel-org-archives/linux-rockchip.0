@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F5C1CA0FFE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 00:53:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B23C2CA0FF9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 00:53:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w1Dc6yWEzY8Iax5+/skN67E+1dTyfAVvLqEdREmQHTI=; b=b3+/2VmgcXV6E+
-	babr7jTv0srLqG7NsxzPGwpNCbHDFBVaEeJaJgiyd6H3uyjTyyv67CKGBqc+v13H/LRJpXLzV46N4
-	ea5kqECJQC2tes01nu8OcDQBIQmtL6ARWGtos4x8ViB5xhuCtGhRNTRhNXY+/V3qEoa6WI8wit16K
-	ENyhzTezFEEgNkhwkSnfFVhI8l4eBV6yg1Xahlztb4s+et6eH8D5g3y/1pZYoIX+V/fy3U0q4Z5i3
-	RB/SOa8PR8pwUwaElxY/Aw6EXAGqdef79vpR0U3iKylhY3iSvh9rwcsOAW7Yka/W42px9AqAJNYrO
-	1aMBSd5EvV+7C9UtRVEQ==;
+	List-Owner; bh=mTIYK6HfbOlzWyxZUISrBxue25OSZTRW6GPPeuEigoc=; b=LHAfnY2LPzngCa
+	LuBIeclPL6R9XOi+rjJwWV0raLPNRtFi/tSr2Rao3cqKE78vwH/9Pdf1oq8WZxJq4dYbVG3XaYzGS
+	POFg5UV59NO04s6q9Rx6UCQZRHTBXOLwEVAqSR/pj4k0CD7nd2Mh/ADQ6oWfHSmOcFYJ8AJm8pi8k
+	BfsbNP4c3GVwFlN6UuamiDY19CSEy53TO6h5w12osL+zVDD4lba/E50SWimRBZZS4gZPyP+EQCghH
+	MQp4b1eH0Wfo81GVkxaeF8Ae9SmaXhkWyXiAxsWzBCoFmsGYz5DDeIWwPLSgySnIlM40yWdf/aDNL
+	dgkhlpigLdliP/DA4PpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us9pz-00000007EKA-0uMm;
-	Sat, 30 Aug 2025 00:52:59 +0000
+	id 1us9q5-00000007ERv-3IlX;
+	Sat, 30 Aug 2025 00:53:05 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us9N6-000000074VD-0xP9
+	id 1us9N8-000000074WA-2Ne4
 	for linux-rockchip@lists.infradead.org;
-	Sat, 30 Aug 2025 00:23:09 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57TMqA24001839
-	for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 00:23:07 GMT
+	Sat, 30 Aug 2025 00:23:11 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57TM5N4Z027187
+	for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 00:23:10 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	EC24O8coXPxIicmmvFhXHG7RuMMbE2/IeNTru9ezMlw=; b=DCtz4gtJxTkhOa/5
-	bgoi8G8kCfWOYQZKf1bnpFYsbO7z1XE+zqrSI8B1k5OLYGFCp92I5Syd9vprgipI
-	WapoLgN84xInkHmir17aYOfrY2PnHdsalVYFR0FtH3CtFLu3tZuIfJ5qGPRHbyTV
-	ISI+UZF5EnPNhifJjO3IO7DokPGK7/gx3+t0htTE1Rl2NG9zKd5dfwrNTdjIcdTV
-	KxrfBkuz0j1e9CMYXZWifYtN2BCfmwAlv4CVWPEZLbAc82r8Gwtn5GR0DfNiHsLW
-	wt8l93QTnd4VVRgCZxA74sRRDpCo46WJfwQQUOxKeUhTBmqpi+0psjJBjcnNfJG2
-	VDn1zg==
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48se1746gh-1
+	kH4F789rUONV5RVLnN6XvDn+O4ndP150jopdWJYF18w=; b=J8RJnxQxY1g0eIZ8
+	/FBRGycO0rITrdKwWJ2S3286wyH/UtHL/qJPywhIqyETlcPSEAXpowmFi6rxoEQe
+	3vLGyyAJ6k16VizOAchCacy14vPS4vUkmKeqr/txCyCkZLkUhwBn6kMEfPVx3K9g
+	O1CRDMDsV77AYPdJh7PgZLZevPotTaL2KaL+igVME/DSyuQy9YC9t4wUQB5axnnQ
+	iEDnb2DlL7r5P2pJHZv6xZZUx9XrfLO3UVSVnWMuPVHQRBDcJPZle2pI9KmVBTrD
+	N31iHHHn+6mh6zUnHQ23oMHfxq+yNqSK4YBAogvzGX5Z/kicoqtRbsI0KE+6nwN4
+	AV8lCg==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48q5umna5f-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 00:23:07 +0000 (GMT)
-Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-4b2f9e8dca6so57547351cf.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 29 Aug 2025 17:23:07 -0700 (PDT)
+	for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 00:23:09 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-4b30d6ed3a4so27093501cf.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 29 Aug 2025 17:23:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756513386; x=1757118186;
+        d=1e100.net; s=20230601; t=1756513385; x=1757118185;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=EC24O8coXPxIicmmvFhXHG7RuMMbE2/IeNTru9ezMlw=;
-        b=Er5wzT+6FtzI/mItEqOpSbh4RYiJG8fiamvGE3VHyBFaewhuIwrZLJDAX4xJHiRzjm
-         E4tqc/5EPa7MriObzxEFKa+pKnTOmcoW+en/Xbv0zKant5Q7rGdizyUAcTErh/o8nrR+
-         f+eSXZ3EakBw0hw5WdKqCg7jInVCILoqfPq0wzb3hJxI8DlG6G2sFY7oOc4sDy4VpOLp
-         KYR4Ze18x9DpuZ5RSqTtcdF6XeoCJJ68AX9kNaL0ONOZnnDtL9gzFuONrFmgg/dyuxqs
-         aQEH96gQTNktrZ/FopYaUoe37deGGbj3gZRIoBSNUWNhv0Nacuk/0TuVqBK2yNzHpXvT
-         Rt4w==
-X-Forwarded-Encrypted: i=1; AJvYcCVF68M9L/fB5HB50LLk90UnM+rHJnaL1E5LgwQ1U0iSaDahplzl0yVEejoxAmppLiHMG3+bVa93dgIyMtg+0g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxGd1NvPEzsfm/0VWjNCBRNMkO/NJ8h9pgq8wWNInXeWZAftrb6
-	jjhOB2DZHnaI+oFh3gCMXlsJFn5LOT28qievPO9HoUwDs9JKDCDiMpc/6CEF4XsgF4cvShhclez
-	njxKXCY/XBQ1uFKStew65MJdukpLSzZVFy/z4IUUI4MJ1CaoMRNY8gSa+V79Pn//KI8ze924Tsg
-	4=
-X-Gm-Gg: ASbGnct+R/XwkIEf8iW9iKZZLplR5vRlzZ5XII8pKA4AjbtBitUcRfpXEdtllf1yJKc
-	jSXYaPpy9JCBOq4FgotMFnbYM9lceaa75+NGwoPvpIhPUUJt7buTFzNGgUcDqfTJe1h9eIc6dET
-	+l95lZEl5wAzVR4fCGAUgVd67ZuriqOFPc3ozaYseUIwIU4hSl3z6qj8mI0EmFhfOYxSywIWPzJ
-	IDvQS8oDvPvghb0yQHoH0pn6l75dIOLWq2qwXv3yynReUKfB1VJM2a4TerpGVH5vTzMH8M1BC9a
-	hFJZm0EXH+NeT/I+wJeYgECpiGw3iNjZRmDfZOJuFSp0VVz7ITPShkxGjjvzxOvIpb4/ZjoXker
-	kpwu6JJG9YotWFqwVY4/wIlhT6wo1wnbqaJsJfzjWJJ1juCCnflPO
-X-Received: by 2002:ac8:5884:0:b0:4b0:aa5b:7c6d with SMTP id d75a77b69052e-4b31d8450b2mr7951241cf.16.1756513386131;
-        Fri, 29 Aug 2025 17:23:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGJMWSIAIjCYp1lT9McTj9bQ133h50tPHm6nwV01Yh4DnXv2EmLSxcQOP/1n5kMYt9GTSTzJA==
-X-Received: by 2002:ac8:5884:0:b0:4b0:aa5b:7c6d with SMTP id d75a77b69052e-4b31d8450b2mr7950821cf.16.1756513385504;
-        Fri, 29 Aug 2025 17:23:05 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55f676dc52esm1019907e87.8.2025.08.29.17.23.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        bh=kH4F789rUONV5RVLnN6XvDn+O4ndP150jopdWJYF18w=;
+        b=jhGjlrhP8s0QuQiJU1AdLI9Hnx1NFWSAOkWaalO6h141/TlJA7gbbORks4ykeqmHrh
+         7XgLtDnEINDelY1d3d9T5ghr3auvHJ+Vmn7jVa9q4HjlWjj69X0GXYdouY64jnw5pYIS
+         Q763rZ0xcpI11N6bSUr4bmnN87d1AIC8dusl/lFWvJivwscP3+9TSBJQot6DFu8AaeKI
+         Zet4AL7qegyY3MwYNmJRS/Hm4ox2VfQ2L6GPC7itccE3B6RmQnmfBQkHoXdnb2XFRbLs
+         MNlxufJE7uwbGGg63DlqJhiGS/IW28Mgw7T/nUC+9V7g4Iby33IGEePFe0RJEhjAidcc
+         OqHQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUudVY1ncMwYZtL591P8wBD3vj3ifiSCI7cMMg4ZyLM7PbCIL7cCIbrVunBE7OSmW8fwbct71C+yjjcbcqCdQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yykd0K2uyop2hSZ4p/K5eol6q4u2VWDu1aDL2musmEKEGuL8ixr
+	yZIsV4wqaMJoqEgyFj5OOMYTbW6oBVEcj9k+WlrZozVHkPrd8eTD/MGybMCRy3JRtc/MVvx0Zp/
+	QIpbM2PBOzRJO5JChSgWB8QJxtExKooinQldmD1jSKwZ+BreJWfAh2vi2fjd9A9NQxtl1NhmS0y
+	c=
+X-Gm-Gg: ASbGnctTE0ggk5GPdSGQXCCKL4ikj5onbFX4J8mSbN4d2ppZaxlvCjPKUutF1589ZdI
+	PjwSyJpfJ15wZDn+FXHecCy+WyWS9Qe7Ro4FK88DkSncCJRokMtJ7Dzr0vVQC83vTaOWi8e8gP5
+	knHEwioqp3AZXq8RY1ERB9FTZZ64IslGrbESnTVftpOFvMe3hs+6W4SCxwNgS/lg2BN4c8kov5f
+	tFTvVkTSfTPIK0PCrGPwC27Zk0V/1BaXnucp98lHnvRYnwzBb1cLDWLpgpOspcnOm40W604f81g
+	AlRzG2fiCH3U219HsyNkYlvOw8bUInRbXSBLivFLe7kXIBtfRuTjpfJCYBXgaTrS1CRJ7ih7c7G
+	IYlW5wPeZTdZWdsrL3xwbWjJ5Ugf5NyKxMYWVtGF4sbSi+s1Ba0+j
+X-Received: by 2002:a05:622a:4c8:b0:4af:2267:ef66 with SMTP id d75a77b69052e-4b31d873df2mr6591521cf.18.1756513384878;
         Fri, 29 Aug 2025 17:23:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFA4NK5l7LhihpNUoDzqT2vumCNfJdqQs5yfFPqsO8l4doHfbc/t3ai6Yj0eCsazsEatXRCMQ==
+X-Received: by 2002:a05:622a:4c8:b0:4af:2267:ef66 with SMTP id d75a77b69052e-4b31d873df2mr6590911cf.18.1756513383995;
+        Fri, 29 Aug 2025 17:23:03 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55f676dc52esm1019907e87.8.2025.08.29.17.23.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 29 Aug 2025 17:23:03 -0700 (PDT)
 From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Date: Sat, 30 Aug 2025 03:22:58 +0300
-Subject: [PATCH v3 02/11] drm/bridge: adv7511: declare supported infoframes
+Date: Sat, 30 Aug 2025 03:22:57 +0300
+Subject: [PATCH v3 01/11] drm/connector: let drivers declare infoframes as
+ unsupported
 MIME-Version: 1.0
-Message-Id: <20250830-drm-limit-infoframes-v3-2-32fcbec4634e@oss.qualcomm.com>
+Message-Id: <20250830-drm-limit-infoframes-v3-1-32fcbec4634e@oss.qualcomm.com>
 References: <20250830-drm-limit-infoframes-v3-0-32fcbec4634e@oss.qualcomm.com>
 In-Reply-To: <20250830-drm-limit-infoframes-v3-0-32fcbec4634e@oss.qualcomm.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
@@ -114,42 +115,42 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
         linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
         linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1675;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=25217;
  i=dmitry.baryshkov@oss.qualcomm.com; h=from:subject:message-id;
- bh=q7eYf8+3RQX7ESv2tHgdRnLYQ1j/MZwxzLEz7NwM9XM=;
- b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBoskRjIMzK+I5pUhzNv/gzIuu0qrnQQAgGGLA/8
- sqWoDGr3RmJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCaLJEYwAKCRCLPIo+Aiko
- 1X46B/4ttG1//Uf3yzHz2UVvm8cP5B96gro5PvEoK3vjNCYja8hOZmVu6v9GW5CkmnOb+3jEy/A
- F3O2JkCE9qbaSinFwCxDG2IviHDn3R2MSLm0Oz38JU3THj1JqiqN9tkLVzqGWianYbVicOFDWLw
- ffgaoAshYzXH5V7xc09KzxsPqxBXnlpZraDTgrv8ahuF/tN7ra1jWUyA/Xa06DhQLj0cQZ/mOdT
- NVO7QobdWHWByEfRjFJEbZhhBnXbOVtNPRvwF3NyvPQcEcFZGp+KzxZI3EoIkBu34mYwHoNE+d9
- BT4naoD0RmK4tSKFUCczE4M+TIsdHkuH61/HLPB/sDlW+nSz
+ bh=voT7aMvCokvd0wqw9VJDsY1XcFoLXNViHe0msR8SNbI=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBoskRjA+KjllDkq4LzZoGJXoyU3RPblozDvrzcr
+ QSLBvuSFVGJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCaLJEYwAKCRCLPIo+Aiko
+ 1UkvB/0Zq3aMNM3YpNCSl3kbPFf7aqRpOVw71YcbkyLlmTJKJrJIdtmkIZ6O0MIvnsd8RNWtHTs
+ CMxcLoLtETlX0MjEq5nFPWj8fIZK36AXTYyhuZ8zFMOZIbAIeA/r1lKTtd7/NQnjV2DkOVZvk7/
+ lVqyaK6R3hEGuThIkU9gFrIarOjA7uE+opFrDSlWr3qNCSF2H8Bz5vEdvEVeCATV54O9dKMFelw
+ nTbvPFc59ASgWwKXFVXkrUuTkbvHmIisX+HtkBOXz4WlXH1yt8uABj2bPwjcEuX8XI6XR7KIWGk
+ LzPOXx5ma0EuXkC15nzQS+QLeRTjuQgrFJmLCQx2I0SVRAWI
 X-Developer-Key: i=dmitry.baryshkov@oss.qualcomm.com; a=openpgp;
  fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
-X-Proofpoint-GUID: tQ7btg19UPBQC2KB35u-zvaU26eUXWiB
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODI2MDEyMCBTYWx0ZWRfX8T1LHI/w+Etr
- zgcRufxR0J0OOhQtl/Alb95ybQmFmrNrfEg1tOJfvGAffu4Z6N85AFgL1+ZRUpYOPpUjG3Vw9lx
- NfNnwzZl13RXPmnaiVbdRk5sad35SE8J+YQMjly+qpGWWzr/KlQq3Vv62jEV00YNuKMrmaF1O9p
- IAB4nz/wiS6EgJjRbqkwaKlGZ4X7/3xUqGfuYQikb84fJLKmp2mPTHBF8t+mrElpBvnILoJkQSJ
- XcxgdTpwujDNlsbx+J9quH2DdTf3Q1cJix/JxRoJzFmln4UcOv6IBFwR0GBudZLtSdKpG/+gVKo
- BkaqOUpcz5KviHsORkyXo3kKjO9lZhPy528SOjJ+MdXgXGmqC8dFmPTw9JvWdt+a4VqTSGJHi0z
- dGl2ckJU
-X-Proofpoint-ORIG-GUID: tQ7btg19UPBQC2KB35u-zvaU26eUXWiB
-X-Authority-Analysis: v=2.4 cv=CNYqXQrD c=1 sm=1 tr=0 ts=68b2446b cx=c_pps
- a=JbAStetqSzwMeJznSMzCyw==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
- a=2OwXVqhp2XgA:10 a=8AirrxEcAAAA:8 a=EUspDBNiAAAA:8 a=4euzTov2hVyL0VtTdw4A:9
- a=QEXdDO2ut3YA:10 a=uxP6HrT_eTzRwkO_Te1X:22 a=ST-jHhOKWsTCqRlWije3:22
+X-Authority-Analysis: v=2.4 cv=VtIjA/2n c=1 sm=1 tr=0 ts=68b2446e cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
+ a=2OwXVqhp2XgA:10 a=8AirrxEcAAAA:8 a=EUspDBNiAAAA:8 a=qxzRNHnKRX2O3p43D1oA:9
+ a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22 a=ST-jHhOKWsTCqRlWije3:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODIzMDAzMiBTYWx0ZWRfX//jJy7CZ6Gu1
+ CE+WCLbl7XNzHipx4ZAf3ZKzXtbNKVk5WY0uViKjHOvWd7rZ3YrCffUBTunRr1wugbrDPzJGK1f
+ 42wLFFyNbX2W1n/XEmjxZ5PU0F0tXW/EstYNX7CzyrxSr5J4dBeT/fKs+Qk6kDpC4Tgi1TBSs27
+ S5Zc1+pPPCqza5zRDeKeOSr3+G78zMChWlKGCD6C6tFw5NVQhWqq7VhJifK/bV96KLpsYN08anU
+ okfnos4GsZejcgQV8Ts/SI5iIpuPC+QI7QTVKiARyeJ4moLT0pFadH128hmQ0EF0zzkwos5ksV/
+ zbgR7VU3XIHVZE6Paks6+qq8isyTC81BQo/lzpNDuoVzy6QYhHdxTmVUyhjOmWzRNrTH6xxYoUr
+ QpLVRoJF
+X-Proofpoint-GUID: nWvQXbNWwNz95ow9wOOI5TiykC8dauYg
+X-Proofpoint-ORIG-GUID: nWvQXbNWwNz95ow9wOOI5TiykC8dauYg
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-08-29_07,2025-08-28_01,2025-03-28_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 impostorscore=0 priorityscore=1501 adultscore=0 spamscore=0
- phishscore=0 suspectscore=0 bulkscore=0 malwarescore=0 classifier=typeunknown
+ clxscore=1015 phishscore=0 priorityscore=1501 impostorscore=0 bulkscore=0
+ suspectscore=0 malwarescore=0 adultscore=0 spamscore=0 classifier=typeunknown
  authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2507300000 definitions=main-2508260120
+ engine=8.19.0-2507300000 definitions=main-2508230032
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250829_172308_288679_78E532A6 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20250829_172310_634631_CCACF467 
+X-CRM114-Status: GOOD (  20.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,50 +167,656 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Declare which infoframes are supported via the .hdmi_write_infoframe()
-interface. Audio infoframe is handled separately.
+Currently DRM framework expects that the HDMI connector driver supports
+all infoframe types: it generates the data as required and calls into
+the driver to program all of them, letting the driver to soft-fail if
+the infoframe is unsupported. This has a major drawback on userspace
+API: the framework also registers debugfs files for all Infoframe types,
+possibly surprising the users when infoframe is visible in the debugfs
+file, but it is not visible on the wire.
 
-Reviewed-by: Liu Ying <victor.liu@nxp.com>
+Let drivers declare that they support only a subset of infoframes,
+creating a more consistent interface.
+
+Acked-by: Liu Ying <victor.liu@nxp.com>
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 ---
- drivers/gpu/drm/bridge/adv7511/adv7511_drv.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/display/drm_bridge_connector.c     |  7 +++
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c    | 53 ++++++++++++++++++++--
+ drivers/gpu/drm/drm_connector.c                    |  7 +++
+ drivers/gpu/drm/drm_debugfs.c                      | 16 +++++--
+ drivers/gpu/drm/rockchip/inno_hdmi.c               |  6 ++-
+ drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |  4 +-
+ drivers/gpu/drm/tests/drm_connector_test.c         | 49 ++++++++++++++++++++
+ drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c |  9 ++++
+ drivers/gpu/drm/vc4/vc4_hdmi.c                     |  6 +++
+ include/drm/drm_bridge.h                           | 14 ++++++
+ include/drm/drm_connector.h                        | 39 ++++++++++++++++
+ 11 files changed, 197 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c b/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
-index 26f8ef4824235a9a85b57a9a3a816fe26a59e45c..fe30567b56b4f600683f0545ed270665e692b12c 100644
---- a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
-+++ b/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
-@@ -904,7 +904,7 @@ static int adv7511_bridge_hdmi_clear_infoframe(struct drm_bridge *bridge,
- 		break;
- 	default:
- 		drm_dbg_driver(adv7511->bridge.dev, "Unsupported HDMI InfoFrame %x\n", type);
--		break;
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index 091c5335355a2b6c70dd823df69ce060fd56c4f9..944fb497ca339ddd63c132c2df0888011cc0487f 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -786,6 +786,13 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+ 					       &drm_bridge_connector_hdmi_funcs,
+ 					       connector_type, ddc,
+ 					       supported_formats,
++					       bridge->software_infoframes ? :
++					       DRM_CONNECTOR_INFOFRAME_AUDIO |
++					       DRM_CONNECTOR_INFOFRAME_AVI |
++					       DRM_CONNECTOR_INFOFRAME_DRM |
++					       DRM_CONNECTOR_INFOFRAME_SPD |
++					       DRM_CONNECTOR_INFOFRAME_VENDOR,
++					       bridge->autogenerated_infoframes,
+ 					       max_bpc);
+ 		if (ret)
+ 			return ERR_PTR(ret);
+diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+index a561f124be99a0cd4259dbacf5f5f6651ff8a0ea..182ef9075e2f6cee1bc9b52b07e336e3f28f94b8 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+@@ -687,6 +687,9 @@ static int hdmi_generate_avi_infoframe(const struct drm_connector *connector,
+ 
+ 	infoframe->set = false;
+ 
++	if (!drm_hdmi_connector_software_infoframe(connector, HDMI_INFOFRAME_TYPE_AVI))
++		return 0;
++
+ 	ret = drm_hdmi_avi_infoframe_from_display_mode(frame, connector, mode);
+ 	if (ret)
+ 		return ret;
+@@ -718,6 +721,9 @@ static int hdmi_generate_spd_infoframe(const struct drm_connector *connector,
+ 
+ 	infoframe->set = false;
+ 
++	if (!drm_hdmi_connector_software_infoframe(connector, HDMI_INFOFRAME_TYPE_SPD))
++		return 0;
++
+ 	ret = hdmi_spd_infoframe_init(frame,
+ 				      connector->hdmi.vendor,
+ 				      connector->hdmi.product);
+@@ -742,6 +748,9 @@ static int hdmi_generate_hdr_infoframe(const struct drm_connector *connector,
+ 
+ 	infoframe->set = false;
+ 
++	if (!drm_hdmi_connector_software_infoframe(connector, HDMI_INFOFRAME_TYPE_DRM))
++		return 0;
++
+ 	if (connector->max_bpc < 10)
+ 		return 0;
+ 
+@@ -771,6 +780,9 @@ static int hdmi_generate_hdmi_vendor_infoframe(const struct drm_connector *conne
+ 
+ 	infoframe->set = false;
+ 
++	if (!drm_hdmi_connector_software_infoframe(connector, HDMI_INFOFRAME_TYPE_VENDOR))
++		return 0;
++
+ 	if (!info->has_hdmi_infoframe)
+ 		return 0;
+ 
+@@ -898,13 +910,23 @@ static int clear_device_infoframe(struct drm_connector *connector,
+ 	struct drm_device *dev = connector->dev;
+ 	int ret;
+ 
+-	drm_dbg_kms(dev, "Clearing infoframe type 0x%x\n", type);
+-
+ 	if (!funcs || !funcs->clear_infoframe) {
+ 		drm_dbg_kms(dev, "Function not implemented, bailing.\n");
+ 		return 0;
+ 	}
+ 
++	if (!drm_hdmi_connector_autogenerated_infoframe(connector, type)) {
++		drm_dbg_kms(dev, "Infoframe 0x%02x not managed by DRM, bailing.\n", type);
++		return 0;
++	}
++
++	if (!drm_hdmi_connector_software_infoframe(connector, type)) {
++		drm_dbg_kms(dev, "Infoframe 0x%02x not supported, bailing.\n", type);
++		return 0;
++	}
++
++	drm_dbg_kms(dev, "Clearing infoframe type 0x%02x\n", type);
++
+ 	ret = funcs->clear_infoframe(connector, type);
+ 	if (ret) {
+ 		drm_dbg_kms(dev, "Call failed: %d\n", ret);
+@@ -930,23 +952,34 @@ static int write_device_infoframe(struct drm_connector *connector,
+ 				  union hdmi_infoframe *frame)
+ {
+ 	const struct drm_connector_hdmi_funcs *funcs = connector->hdmi.funcs;
++	enum hdmi_infoframe_type type = frame->any.type;
+ 	struct drm_device *dev = connector->dev;
+ 	u8 buffer[HDMI_INFOFRAME_SIZE(MAX)];
+ 	int ret;
+ 	int len;
+ 
+-	drm_dbg_kms(dev, "Writing infoframe type %x\n", frame->any.type);
+-
+ 	if (!funcs || !funcs->write_infoframe) {
+ 		drm_dbg_kms(dev, "Function not implemented, bailing.\n");
+ 		return -EINVAL;
+ 	}
+ 
++	if (!drm_hdmi_connector_autogenerated_infoframe(connector, type)) {
++		drm_dbg_kms(dev, "Infoframe 0x%02x not managed by DRM, bailing.\n", type);
++		return 0;
++	}
++
++	if (!drm_hdmi_connector_software_infoframe(connector, type)) {
++		drm_dbg_kms(dev, "Infoframe 0x%02x not supported, bailing.\n", type);
++		return 0;
++	}
++
++	drm_dbg_kms(dev, "Writing infoframe type 0x%02x\n", type);
++
+ 	len = hdmi_infoframe_pack(frame, buffer, sizeof(buffer));
+ 	if (len < 0)
+ 		return len;
+ 
+-	ret = funcs->write_infoframe(connector, frame->any.type, buffer, len);
++	ret = funcs->write_infoframe(connector, type, buffer, len);
+ 	if (ret) {
+ 		drm_dbg_kms(dev, "Call failed: %d\n", ret);
+ 		return ret;
+@@ -1067,6 +1100,11 @@ drm_atomic_helper_connector_hdmi_update_audio_infoframe(struct drm_connector *co
+ 	struct drm_display_info *info = &connector->display_info;
+ 	int ret;
+ 
++	if (!drm_hdmi_connector_software_infoframe(connector, HDMI_INFOFRAME_TYPE_AUDIO)) {
++		drm_warn_once(connector->dev, "Audio Infoframe not supported, bailing.\n");
++		return -EOPNOTSUPP;
++	}
++
+ 	if (!info->is_hdmi)
+ 		return 0;
+ 
+@@ -1102,6 +1140,11 @@ drm_atomic_helper_connector_hdmi_clear_audio_infoframe(struct drm_connector *con
+ 	struct drm_display_info *info = &connector->display_info;
+ 	int ret;
+ 
++	if (!drm_hdmi_connector_software_infoframe(connector, HDMI_INFOFRAME_TYPE_AUDIO)) {
++		drm_warn_once(connector->dev, "Audio Infoframe not supported, bailing.\n");
++		return -EOPNOTSUPP;
++	}
++
+ 	if (!info->is_hdmi)
+ 		return 0;
+ 
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index 272d6254ea4784e97ca894ec4d463beebf9fdbf0..f031e8f8df57da15bb0f8fe21fd62f02a1576ebe 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -553,6 +553,8 @@ EXPORT_SYMBOL(drmm_connector_init);
+  * @connector_type: user visible type of the connector
+  * @ddc: optional pointer to the associated ddc adapter
+  * @supported_formats: Bitmask of @hdmi_colorspace listing supported output formats
++ * @software_infoframes: Bitmask of @DRM_CONNECTOR_INFOFRAME listing Infoframes generated by DRM core
++ * @autogenerated_infoframes: Bitmask of @DRM_CONNECTOR_INFOFRAME listing Infoframes generated in hardware
+  * @max_bpc: Maximum bits per char the HDMI connector supports
+  *
+  * Initialises a preallocated HDMI connector. Connectors can be
+@@ -576,6 +578,8 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+ 			     int connector_type,
+ 			     struct i2c_adapter *ddc,
+ 			     unsigned long supported_formats,
++			     unsigned long software_infoframes,
++			     unsigned long autogenerated_infoframes,
+ 			     unsigned int max_bpc)
+ {
+ 	int ret;
+@@ -623,6 +627,9 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+ 
+ 	connector->hdmi.funcs = hdmi_funcs;
+ 
++	connector->hdmi.software_infoframes = software_infoframes;
++	connector->hdmi.autogenerated_infoframes = autogenerated_infoframes;
++
+ 	return 0;
+ }
+ EXPORT_SYMBOL(drmm_connector_hdmi_init);
+diff --git a/drivers/gpu/drm/drm_debugfs.c b/drivers/gpu/drm/drm_debugfs.c
+index 365cf337529fa2a88b69516d57360d212419c126..03e4ae81352bb7ffb3cf45219a96e7959eafe365 100644
+--- a/drivers/gpu/drm/drm_debugfs.c
++++ b/drivers/gpu/drm/drm_debugfs.c
+@@ -672,6 +672,9 @@ static int create_hdmi_audio_infoframe_file(struct drm_connector *connector,
+ {
+ 	struct dentry *file;
+ 
++	if (!drm_hdmi_connector_software_infoframe(connector, HDMI_INFOFRAME_TYPE_AUDIO))
++		return 0;
++
+ 	file = debugfs_create_file("audio", 0400, parent, connector, &audio_infoframe_fops);
+ 	if (IS_ERR(file))
+ 		return PTR_ERR(file);
+@@ -679,7 +682,7 @@ static int create_hdmi_audio_infoframe_file(struct drm_connector *connector,
+ 	return 0;
+ }
+ 
+-#define DEFINE_INFOFRAME_FILE(_f) \
++#define DEFINE_INFOFRAME_FILE(_f, _F) \
+ static ssize_t _f##_read_infoframe(struct file *filp, \
+ 				   char __user *ubuf, \
+ 				   size_t count,      \
+@@ -726,6 +729,9 @@ static int create_hdmi_## _f ## _infoframe_file(struct drm_connector *connector,
+ { \
+ 	struct dentry *file; \
+ 	\
++	if (!drm_hdmi_connector_software_infoframe(connector, HDMI_INFOFRAME_TYPE_ ## _F)) \
++		return 0; \
++	\
+ 	file = debugfs_create_file(#_f, 0400, parent, connector, &_f ## _infoframe_fops); \
+ 	if (IS_ERR(file)) \
+ 		return PTR_ERR(file); \
+@@ -733,10 +739,10 @@ static int create_hdmi_## _f ## _infoframe_file(struct drm_connector *connector,
+ 	return 0; \
+ }
+ 
+-DEFINE_INFOFRAME_FILE(avi);
+-DEFINE_INFOFRAME_FILE(hdmi);
+-DEFINE_INFOFRAME_FILE(hdr_drm);
+-DEFINE_INFOFRAME_FILE(spd);
++DEFINE_INFOFRAME_FILE(avi, AVI);
++DEFINE_INFOFRAME_FILE(hdmi, VENDOR);
++DEFINE_INFOFRAME_FILE(hdr_drm, DRM);
++DEFINE_INFOFRAME_FILE(spd, SPD);
+ 
+ static int create_hdmi_infoframe_files(struct drm_connector *connector,
+ 				       struct dentry *parent)
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+index 1ab3ad4bde9ea7305021186ea221d2ff9057fdbb..9957615b407cd959928b9c9d116d3955a7924e61 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi.c
++++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+@@ -645,7 +645,7 @@ static int inno_hdmi_disable_frame(struct drm_connector *connector,
+ 	if (type != HDMI_INFOFRAME_TYPE_AVI) {
+ 		drm_err(connector->dev,
+ 			"Unsupported infoframe type: %u\n", type);
+-		return 0;
 +		return -EOPNOTSUPP;
  	}
  
- 	return 0;
-@@ -938,7 +938,7 @@ static int adv7511_bridge_hdmi_write_infoframe(struct drm_bridge *bridge,
- 		break;
- 	default:
- 		drm_dbg_driver(adv7511->bridge.dev, "Unsupported HDMI InfoFrame %x\n", type);
--		break;
+ 	hdmi_writeb(hdmi, HDMI_CONTROL_PACKET_BUF_INDEX, INFOFRAME_AVI);
+@@ -663,7 +663,7 @@ static int inno_hdmi_upload_frame(struct drm_connector *connector,
+ 	if (type != HDMI_INFOFRAME_TYPE_AVI) {
+ 		drm_err(connector->dev,
+ 			"Unsupported infoframe type: %u\n", type);
+-		return 0;
 +		return -EOPNOTSUPP;
  	}
  
- 	return 0;
-@@ -1299,6 +1299,12 @@ static int adv7511_probe(struct i2c_client *i2c)
+ 	inno_hdmi_disable_frame(connector, type);
+@@ -1065,6 +1065,8 @@ static int inno_hdmi_register(struct drm_device *drm, struct inno_hdmi *hdmi)
+ 				 DRM_MODE_CONNECTOR_HDMIA,
+ 				 hdmi->ddc,
+ 				 BIT(HDMI_COLORSPACE_RGB),
++				 DRM_CONNECTOR_INFOFRAME_AVI,
++				 0,
+ 				 8);
  
- 	adv7511->bridge.vendor = "Analog";
- 	adv7511->bridge.product = adv7511->info->name;
-+	adv7511->bridge.software_infoframes =
-+		DRM_CONNECTOR_INFOFRAME_AVI |
-+		DRM_CONNECTOR_INFOFRAME_SPD |
-+		DRM_CONNECTOR_INFOFRAME_VENDOR;
-+	adv7511->bridge.autogenerated_infoframes =
-+		DRM_CONNECTOR_INFOFRAME_AUDIO;
+ 	drm_connector_attach_encoder(&hdmi->connector, encoder);
+diff --git a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
+index ab0938ba61f7d75dd0bec473807a04a20e1cffbd..a01f837a0a7b4685a6fd9db9908890cd423ff197 100644
+--- a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
++++ b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
+@@ -50,7 +50,7 @@ static int sun4i_hdmi_write_infoframe(struct drm_connector *connector,
+ 	if (type != HDMI_INFOFRAME_TYPE_AVI) {
+ 		drm_err(connector->dev,
+ 			"Unsupported infoframe type: %u\n", type);
+-		return 0;
++		return -EOPNOTSUPP;
+ 	}
  
- #ifdef CONFIG_DRM_I2C_ADV7511_AUDIO
- 	adv7511->bridge.ops |= DRM_BRIDGE_OP_HDMI_AUDIO;
+ 	for (i = 0; i < len; i++)
+@@ -640,6 +640,8 @@ static int sun4i_hdmi_bind(struct device *dev, struct device *master,
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       hdmi->ddc_i2c,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_INFOFRAME_AVI,
++				       0,
+ 				       8);
+ 	if (ret) {
+ 		dev_err(dev,
+diff --git a/drivers/gpu/drm/tests/drm_connector_test.c b/drivers/gpu/drm/tests/drm_connector_test.c
+index 22e2d959eb31459f9981fef488228904d67cb6f9..1b42a9fad8715b496ad14ba589bb9721b2075ad9 100644
+--- a/drivers/gpu/drm/tests/drm_connector_test.c
++++ b/drivers/gpu/drm/tests/drm_connector_test.c
+@@ -641,6 +641,13 @@ static struct kunit_suite drm_connector_dynamic_register_test_suite = {
+ 	.test_cases = drm_connector_dynamic_register_tests,
+ };
+ 
++#define DRM_CONNECTOR_ALL_INFOFRAMES \
++	(DRM_CONNECTOR_INFOFRAME_AUDIO | \
++	 DRM_CONNECTOR_INFOFRAME_AVI | \
++	 DRM_CONNECTOR_INFOFRAME_DRM | \
++	 DRM_CONNECTOR_INFOFRAME_SPD | \
++	 DRM_CONNECTOR_INFOFRAME_VENDOR)
++
+ /*
+  * Test that the registration of a bog standard connector works as
+  * expected and doesn't report any error.
+@@ -657,6 +664,8 @@ static void drm_test_connector_hdmi_init_valid(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+ }
+@@ -677,6 +686,8 @@ static void drm_test_connector_hdmi_init_null_ddc(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       NULL,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+ }
+@@ -697,6 +708,8 @@ static void drm_test_connector_hdmi_init_null_vendor(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_LT(test, ret, 0);
+ }
+@@ -717,6 +730,8 @@ static void drm_test_connector_hdmi_init_null_product(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_LT(test, ret, 0);
+ }
+@@ -743,6 +758,8 @@ static void drm_test_connector_hdmi_init_product_valid(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+ 	KUNIT_EXPECT_MEMEQ(test,
+@@ -776,6 +793,8 @@ static void drm_test_connector_hdmi_init_product_length_exact(struct kunit *test
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+ 	KUNIT_EXPECT_MEMEQ(test,
+@@ -803,6 +822,8 @@ static void drm_test_connector_hdmi_init_product_length_too_long(struct kunit *t
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_LT(test, ret, 0);
+ }
+@@ -829,6 +850,8 @@ static void drm_test_connector_hdmi_init_vendor_valid(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+ 	KUNIT_EXPECT_MEMEQ(test,
+@@ -861,6 +884,8 @@ static void drm_test_connector_hdmi_init_vendor_length_exact(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+ 	KUNIT_EXPECT_MEMEQ(test,
+@@ -888,6 +913,8 @@ static void drm_test_connector_hdmi_init_vendor_length_too_long(struct kunit *te
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_LT(test, ret, 0);
+ }
+@@ -908,6 +935,8 @@ static void drm_test_connector_hdmi_init_bpc_invalid(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       9);
+ 	KUNIT_EXPECT_LT(test, ret, 0);
+ }
+@@ -928,6 +957,8 @@ static void drm_test_connector_hdmi_init_bpc_null(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       0);
+ 	KUNIT_EXPECT_LT(test, ret, 0);
+ }
+@@ -953,6 +984,8 @@ static void drm_test_connector_hdmi_init_bpc_8(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+ 
+@@ -994,6 +1027,8 @@ static void drm_test_connector_hdmi_init_bpc_10(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       10);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+ 
+@@ -1035,6 +1070,8 @@ static void drm_test_connector_hdmi_init_bpc_12(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       12);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+ 
+@@ -1071,6 +1108,8 @@ static void drm_test_connector_hdmi_init_formats_empty(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       0,
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_LT(test, ret, 0);
+ }
+@@ -1091,6 +1130,8 @@ static void drm_test_connector_hdmi_init_formats_no_rgb(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_YUV422),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_LT(test, ret, 0);
+ }
+@@ -1149,6 +1190,8 @@ static void drm_test_connector_hdmi_init_formats_yuv420_allowed(struct kunit *te
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       params->supported_formats,
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_EQ(test, ret, params->expected_result);
+ }
+@@ -1170,6 +1213,8 @@ static void drm_test_connector_hdmi_init_type_valid(struct kunit *test)
+ 				       connector_type,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+ }
+@@ -1205,6 +1250,8 @@ static void drm_test_connector_hdmi_init_type_invalid(struct kunit *test)
+ 				       connector_type,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_LT(test, ret, 0);
+ }
+@@ -1482,6 +1529,8 @@ static void drm_test_drm_connector_attach_broadcast_rgb_property_hdmi_connector(
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc,
+ 				       BIT(HDMI_COLORSPACE_RGB),
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       8);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+ 
+diff --git a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
+index 8bd412735000cb18e66aeca21433b2ebbefe2b44..c41c1cd875ba1c58610480a468cc3c36c48624dc 100644
+--- a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
++++ b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
+@@ -138,6 +138,13 @@ static const struct drm_connector_funcs dummy_connector_funcs = {
+ 	.reset			= dummy_hdmi_connector_reset,
+ };
+ 
++#define DRM_CONNECTOR_ALL_INFOFRAMES \
++	(DRM_CONNECTOR_INFOFRAME_AUDIO | \
++	 DRM_CONNECTOR_INFOFRAME_AVI | \
++	 DRM_CONNECTOR_INFOFRAME_DRM | \
++	 DRM_CONNECTOR_INFOFRAME_SPD | \
++	 DRM_CONNECTOR_INFOFRAME_VENDOR)
++
+ static
+ struct drm_atomic_helper_connector_hdmi_priv *
+ __connector_hdmi_init(struct kunit *test,
+@@ -192,6 +199,8 @@ __connector_hdmi_init(struct kunit *test,
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       NULL,
+ 				       formats,
++				       DRM_CONNECTOR_ALL_INFOFRAMES,
++				       0,
+ 				       max_bpc);
+ 	KUNIT_ASSERT_EQ(test, ret, 0);
+ 
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+index 07c91b450f93ab9e795d040d6f60f485ac71cfe8..856830482c31f708455b358921544fe82640f04d 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+@@ -556,6 +556,12 @@ static int vc4_hdmi_connector_init(struct drm_device *dev,
+ 				       BIT(HDMI_COLORSPACE_RGB) |
+ 				       BIT(HDMI_COLORSPACE_YUV422) |
+ 				       BIT(HDMI_COLORSPACE_YUV444),
++				       DRM_CONNECTOR_INFOFRAME_AUDIO |
++				       DRM_CONNECTOR_INFOFRAME_AVI |
++				       DRM_CONNECTOR_INFOFRAME_DRM |
++				       DRM_CONNECTOR_INFOFRAME_SPD |
++				       DRM_CONNECTOR_INFOFRAME_VENDOR,
++				       0,
+ 				       max_bpc);
+ 	if (ret)
+ 		return ret;
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 8d9d4fd078e72977677fd992d725261232754e3e..71e64818a93d803067097532f9025418d7ab25b9 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -1205,6 +1205,20 @@ struct drm_bridge {
+ 	 */
+ 	unsigned int max_bpc;
+ 
++	/**
++	 * @software_infoframes: Bitmask of DRM_CONNECTOR_INFOFRAME values,
++	 * listing InfoFrames to be generated by the DRM core. This is only
++	 * relevant if @DRM_BRIDGE_OP_HDMI is set.
++	 */
++	unsigned int software_infoframes;
++
++	/**
++	 * @autogenerated_infoframes: Bitmask of DRM_CONNECTOR_INFOFRAME values,
++	 * listing InfoFrames generated by the hardware. This is only
++	 * relevant if @DRM_BRIDGE_OP_HDMI is set.
++	 */
++	unsigned int autogenerated_infoframes;
++
+ 	/**
+ 	 * @hdmi_cec_dev: device to be used as a containing device for CEC
+ 	 * functions.
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index 8f34f4b8183d83dccd3e820a444fbf74fb6c16f2..e18e748036ec2618e885fca392a175d632120f98 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -1839,6 +1839,21 @@ struct drm_connector_hdmi {
+ 	 */
+ 	unsigned long supported_formats;
+ 
++	/**
++	 * @software_infoframes: Bitmask of infoframe types supported by the
++	 * controller and generated AS IS by the software.
++	 * See @DRM_CONNECTOR_INFOFRAME and
++	 * @drm_connector_hdmi_funcs.write_infoframe().
++	 */
++	unsigned long software_infoframes;
++
++	/**
++	 * @autogenerated_infoframes: Bitmask of infoframe types supported by
++	 * the controller and either autogenerated by the controller or written
++	 * in non-opaque format. See @DRM_CONNECTOR_INFOFRAME.
++	 */
++	unsigned long autogenerated_infoframes;
++
+ 	/**
+ 	 * @funcs: HDMI connector Control Functions
+ 	 */
+@@ -2336,6 +2351,8 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+ 			     int connector_type,
+ 			     struct i2c_adapter *ddc,
+ 			     unsigned long supported_formats,
++			     unsigned long software_infoframes,
++			     unsigned long autogenerated_infoframes,
+ 			     unsigned int max_bpc);
+ void drm_connector_attach_edid_property(struct drm_connector *connector);
+ int drm_connector_register(struct drm_connector *connector);
+@@ -2488,6 +2505,28 @@ void drm_connector_attach_privacy_screen_provider(
+ 	struct drm_connector *connector, struct drm_privacy_screen *priv);
+ void drm_connector_update_privacy_screen(const struct drm_connector_state *connector_state);
+ 
++#define DRM_CONNECTOR_INFOFRAME(type)		((type) > 0x80 ? BIT((type) - 0x80) : 0)
++
++#define DRM_CONNECTOR_INFOFRAME_AUDIO	DRM_CONNECTOR_INFOFRAME(HDMI_INFOFRAME_TYPE_AUDIO)
++#define DRM_CONNECTOR_INFOFRAME_AVI	DRM_CONNECTOR_INFOFRAME(HDMI_INFOFRAME_TYPE_AVI)
++#define DRM_CONNECTOR_INFOFRAME_DRM	DRM_CONNECTOR_INFOFRAME(HDMI_INFOFRAME_TYPE_DRM)
++#define DRM_CONNECTOR_INFOFRAME_SPD	DRM_CONNECTOR_INFOFRAME(HDMI_INFOFRAME_TYPE_SPD)
++#define DRM_CONNECTOR_INFOFRAME_VENDOR	DRM_CONNECTOR_INFOFRAME(HDMI_INFOFRAME_TYPE_VENDOR)
++
++static inline bool
++drm_hdmi_connector_software_infoframe(const struct drm_connector *connector,
++				      enum hdmi_infoframe_type type)
++{
++	return connector->hdmi.software_infoframes & DRM_CONNECTOR_INFOFRAME(type);
++}
++
++static inline bool
++drm_hdmi_connector_autogenerated_infoframe(const struct drm_connector *connector,
++					   enum hdmi_infoframe_type type)
++{
++	return connector->hdmi.autogenerated_infoframes & DRM_CONNECTOR_INFOFRAME(type);
++}
++
+ /**
+  * struct drm_tile_group - Tile group metadata
+  * @refcount: reference count
 
 -- 
 2.47.2
