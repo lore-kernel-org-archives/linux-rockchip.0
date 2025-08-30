@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEBDECA0FFE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 07:38:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D011CA0FFE
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 07:39:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IELK7qa0spJLNO9m9i4+qZyVljnDpzpy/BD3YE+/A7U=; b=JxA/tlPLvKXqnb
-	O5XY0/tW3lYQ8quJDgNk7fKEhqzk7D/0kejXGZKGTBhSoPVoq86Vnx6A+jECapoSgyFJzcZXXn95E
-	79WzvXoJqrEKoV/qEsc3IW5UW9vgSgWqeX2NERozHHNij45Y2r8LNrCtqc8Eji7P9mDFOPLM5ENyT
-	yXeut8zdbKNaHMUenQdfQ+/pHSGxsEt+X8JUxuD76ShP6SWdwskhDbiX6RpvG9K4enhSW1i/09EiZ
-	jEJgy3S5e2tXzSoYV07gq+fyTwbMyW7uQOWqusjLPmNZqMoRZlzFKBywhntQzEMcesXIy7wsJwGgP
-	r0mOp26FyT0Was57WLGg==;
+	List-Owner; bh=uNdQY5EwK+RGAbAcMg78A/3IpIWH+kPkuPZEQKr9anE=; b=aZktSIPrL4Zx2Y
+	5WUhfraXUFFfV75YrZ8kmpxHBFPmztZas048m/aoZ9cHh+G57KV50bIWQHJ77jgHbr9h1ilOCzkls
+	6mfgqnq/ufAE/5r7abD+R9QUXcoTlHTYOuNs156frq3/XAuJtNsmBODP2uVO3/Ml1x0xHLT+fe2Vu
+	ECCeNOWGtxJzueH1u2owaZBS3i2yHaD8CxdnSn3Yrb41KLm/EiOoFBAUEEebyokuSqcGuE4wWktcb
+	CtfTXqHbk5lmBgdGeM+Ww2Nrt7QKGv48/U2jpOeKjjEIcOyC7onLmWayOljoi9H18CjW0RLZCJrWQ
+	g74sEVGvn11KdtPptKOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usGAg-00000007YK9-2qrt;
-	Sat, 30 Aug 2025 07:38:46 +0000
-Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e])
+	id 1usGB7-00000007YPC-0H2r;
+	Sat, 30 Aug 2025 07:39:13 +0000
+Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usG6h-00000007Y1H-14Nm
+	id 1usGB4-00000007YO1-1TI0
 	for linux-rockchip@lists.infradead.org;
-	Sat, 30 Aug 2025 07:34:40 +0000
-Received: by mail-qt1-x82e.google.com with SMTP id d75a77b69052e-4b30d24f686so20991201cf.1
-        for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 00:34:39 -0700 (PDT)
+	Sat, 30 Aug 2025 07:39:11 +0000
+Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-7fdddb25854so97166285a.3
+        for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 00:39:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1756539278; x=1757144078; darn=lists.infradead.org;
+        d=fooishbar.org; s=google; t=1756539547; x=1757144347; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=/XKolNdOG4rWtnm/Z1Xm//IS1jzblLqTcVqQ5IMS/rM=;
-        b=C6zs1IfcKu1LNpuLh2VNR+mUQmvk/l3pM6x3bNJSqdtq04gEBT1bYRXlLJyFU7xXY0
-         YBCQxEUcU0eomc2+/qdK8Jr8rRFZ+ZxDvsKaoz5ZKLihPow/a/dh4K2KX1RbbGBTDP9W
-         W4qPcyUCDpn42qu69dmd08VmveqyQqn+8Jh8ntjO4ZpYG44uduzYUS52BHDSLm6ADZ4G
-         GXpBvYfRXG2ONacyRMiznnM/WYIPT0mqaBLR+nKv+r9a0P7YCCAlI1d0JRxBc1YYoBRW
-         iMFOfKr8bP2OnzSwG94Lo0Ob2XncmXKw348oL3CmACMb7t4z/7wqgHdjI1opBGGIArFf
-         p/5Q==
+        bh=7fzjqNbnl1FH7mVwqP6ExvQ8qLgU7/T3+Fqhp2L/qAI=;
+        b=RHmojvI+WRLNAjEMQaz/OgwUK7ulgS6CJIjoW+VTwb6i/ESNRwdnhqsn+eihGjihrV
+         cGet7NXTxaCzLoA9bB+MbUuEOxkzd1qtE/ezgbpklyIB6ffmf1HWl0U2tvHwEAU+wvBc
+         hCZWkt5M8ciVJ/1LYiI7PlhC6mLVsHDqvHTi1NI63SwfHBZ+Y2tzTV9rsF48UwEUmhkB
+         GWqFFGVYa6h0CzSMm0Mxlm2ImgZ0oFM2x/lp1AkhfEDMtF77Lto5LevLbkpEnZgebBz0
+         JjzuOBPjkGZqteItBgdEdNcO9dz46Ov2jMvxmDPKIz3irFAvwn6jTkR7lOMMeNHI9waq
+         Go8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756539278; x=1757144078;
+        d=1e100.net; s=20230601; t=1756539547; x=1757144347;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=/XKolNdOG4rWtnm/Z1Xm//IS1jzblLqTcVqQ5IMS/rM=;
-        b=lnY1TWBnwEfnRdrk/qvMc+o1s/zRXwD5nAUay/E07sisDfsxB7q7lvAgG9yCltG9PK
-         3F6FePOMvg9MpCVqwqqVX0/dBXjPp7wTaENc7E7rGMFxJ6/2DFx9WxEvCfXUC+xkUdmO
-         DWhuNqvtrJXiHa47aW1qR6k+M9+gVBhrSEo+IFuXS6e1L/1/hFdsKaBWTpTCWYT7nOTo
-         mL6+CW+z+Nw3MyMrYIVHgbRsKyS+mwNNwkh8T/fJa7trVU9IbD3dEIZmhb0UEOOsSWiv
-         fZa+oRtVx7Mc7/9MFb3g+huCu4SGwDmS6FgpUnIn235dUwI1CeuzYpdjz8dxxQqf9eg/
-         Qz1A==
-X-Forwarded-Encrypted: i=1; AJvYcCXXZLki6NzVEZgAaY8j1ZIt4Vh8DXBSAULCtsS4dxbjo1IpElAtJWd6PBPTpYoL3nAHckTCOx5iDyTAqpy5jw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzrgj+DvG8M1gm9pDJD0wvm0GKZwfk0jGJWHMJ63QKy1oRk1AaP
-	6WJOprAnuk7L21dGea/q/8KofJiobEQQUfx9/9V+/Uk4pyT1Zn5j9mRB7IHeFoXWmmOFCMcd4z/
-	ApmCo5eTktSrnWG0uHxH8j+HxvkVld37zNd3FRdPoWw==
-X-Gm-Gg: ASbGncue2zlRw3b9wB6314rK8p4Jkepplh0xENDpTe0tQr3WQPlYJ+tZXOEDq005Ucp
-	qOluUOmsFz1O0lCticfV3c79JLSFOqo+OIHAq2i3ybyrabtg1Yn3YHk6mBL/AA8OYWhudvUZY45
-	SBAtSSN5C1bMgW/5a90EtDFqJi60Q7bwXDeRVKBhCnQODznhlkpocCcDBgamgw4PlfzSUSOWSg8
-	vev4g==
-X-Google-Smtp-Source: AGHT+IF+RtT0nHcRaStCokPpIqIxLujpZpjFFgu9P7ssG1Dbp9cdTPQGJvkbcXDD3qNhvrdS/Kj2NXgLvHLELse+VQw=
-X-Received: by 2002:a05:622a:4116:b0:4b2:ec43:3de4 with SMTP id
- d75a77b69052e-4b31dcb27f5mr15037901cf.75.1756539278311; Sat, 30 Aug 2025
- 00:34:38 -0700 (PDT)
+        bh=7fzjqNbnl1FH7mVwqP6ExvQ8qLgU7/T3+Fqhp2L/qAI=;
+        b=MXlKB4AgzO/TozhUz2AkK7M+0l1f2cQ/Y0Nlt9CdqldJ05VeHhwGNYxXWQm+jS2mD4
+         C7FvZCtPi+3d8bKWkDBO1ws74Yn6CX+jZ4l8OAA5KB3WF3lXdJN8ZFkgIgA3UOOIhz+A
+         j24VOU/OXuKSwQuLRPN9hIfdrhYX3nnk6SmrNEhp/9GasxTlpM02JX3tvw+ho8rRizjk
+         TfbNaWOj9L1tUHdAczDDaIacrMIIoYlCwfgspNFJf53R9S4NoiqJ8X8XdJtSgSBhX8DO
+         aVwy1RTzoRNqVyI/aDZarFF3lj0SjMaMWpI3e2jweEWNevxSi8kygGMwWr2YflgAgKnJ
+         WIgg==
+X-Forwarded-Encrypted: i=1; AJvYcCX7QLsAqmQMo8VOXjKlX0732BTyLus3uZO4hM0gJD44sYBV9SnOJk+wOhJFhh6Rg38Lw2EIDufq2E790YeEGw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwagaJuOGH5B4LT1b0Zz/igVO/rp5zxZRzWGJGGi1UnMankeZCr
+	SFdlMYqPR+WorwNlpEWaoRrT1ggpMwGZXtsadYERUkPxeMls8YNA7hJ/bNvEQIgIyO0leJzEacw
+	ZZb/6equvbMwUTSzkA3QAi3LeHE0xdMVdH6JG3o5C7Q==
+X-Gm-Gg: ASbGncs1ZInZgZMvkSIZdyV/G2swKJegs38B5/gxlXUIBjeN2WDaxUD0qM2FKSUshbG
+	R8cMQa635SEkLBwP6jL1oBDZ2hmV7DzrVLp7E1dRlcn07krcFyGtjAoGHPPI+fzx/wwyy+tL+pg
+	0aUuOibNDQUkL+1KDsnpngVxi/rmOYbxIRy3hcUmsNW8pmRZb5ULhH591sXWraBpbv8Lob6VHdQ
+	ZKWzRL8AlPfk1gV
+X-Google-Smtp-Source: AGHT+IGcdIb5Bh5zrCRPBVL3fLoDcfNzuR05JRese/yFeQ6WZnki9GRGlAQtC8Gf4B7czjKl7GD5FNu5efT2Tyeq4FE=
+X-Received: by 2002:a05:620a:3194:b0:7e9:f820:2b72 with SMTP id
+ af79cd13be357-7ff2c51b1dfmr138787485a.72.1756539547138; Sat, 30 Aug 2025
+ 00:39:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250830-drm-limit-infoframes-v3-0-32fcbec4634e@oss.qualcomm.com> <20250830-drm-limit-infoframes-v3-9-32fcbec4634e@oss.qualcomm.com>
-In-Reply-To: <20250830-drm-limit-infoframes-v3-9-32fcbec4634e@oss.qualcomm.com>
+References: <20250830-drm-limit-infoframes-v3-0-32fcbec4634e@oss.qualcomm.com> <CAPj87rNDtfEYV88Ue0bFXJwQop-zy++Ty7uQ9XfrQ2TbAijeRg@mail.gmail.com>
+In-Reply-To: <CAPj87rNDtfEYV88Ue0bFXJwQop-zy++Ty7uQ9XfrQ2TbAijeRg@mail.gmail.com>
 From: Daniel Stone <daniel@fooishbar.org>
-Date: Sat, 30 Aug 2025 09:34:26 +0200
-X-Gm-Features: Ac12FXz1p7iZOdEEQR_vXRtXiF18jyko9t937NCSmf3jeVcnUDmrfFo9HX_W5zM
-Message-ID: <CAPj87rNMr-2ZeZ2Pqb5qG4Z-xtUyOVxbY635pw_PDEjVpd5-OQ@mail.gmail.com>
-Subject: Re: [PATCH v3 09/11] drm/connector: verify that HDMI connectors
- support necessary InfoFrames
+Date: Sat, 30 Aug 2025 09:38:55 +0200
+X-Gm-Features: Ac12FXzM9U8oA3u3fX5rkC_Acspb1Bpg3nyPrRsz__oJ7apEVkNTDxD29-I5hyE
+Message-ID: <CAPj87rNz7PPqZ7P4JSKdnizFaEoaBMf2VFBYbpVn3VNt1giU0w@mail.gmail.com>
+Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per driver capabilities
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
 	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
@@ -92,9 +91,8 @@ Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@lina
 	linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
 	freedreno@lists.freedesktop.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250830_003439_299238_77327284 
-X-CRM114-Status: UNSURE (   6.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250830_003910_391819_468D47FC 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,12 +109,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 30 Aug 2025 at 02:23, Dmitry Baryshkov
-<dmitry.baryshkov@oss.qualcomm.com> wrote:
-> +       if (!(supported_infoframes & DRM_CONNECTOR_INFOFRAME_VENDOR))
-> +               drm_info(dev, "HDMI conneector with no support for Vendor-Specific InfoFrame\n");
+On Sat, 30 Aug 2025 at 09:30, Daniel Stone <daniel@fooishbar.org> wrote:
+> On Sat, 30 Aug 2025 at 02:23, Dmitry Baryshkov
+> <dmitry.baryshkov@oss.qualcomm.com> wrote:
+> > It's not uncommon for the particular device to support only a subset of
+> > HDMI InfoFrames. It's not a big problem for the kernel, since we adopted
+> > a model of ignoring the unsupported Infoframes, but it's a bigger
+> > problem for the userspace: we end up having files in debugfs which do
+> > mot match what is being sent on the wire.
+> >
+> > Sort that out, making sure that all interfaces are consistent.
+>
+> Thanks for the series, it's a really good cleanup.
 
-'conneector'
+FWIW, the rest of the series is:
+Acked-by: Daniel Stone <daniels@collabora.com>
 
 _______________________________________________
 Linux-rockchip mailing list
