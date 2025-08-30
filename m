@@ -4,95 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D011CA0FFE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 07:39:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA62DCA0FFD
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 11:54:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uNdQY5EwK+RGAbAcMg78A/3IpIWH+kPkuPZEQKr9anE=; b=aZktSIPrL4Zx2Y
-	5WUhfraXUFFfV75YrZ8kmpxHBFPmztZas048m/aoZ9cHh+G57KV50bIWQHJ77jgHbr9h1ilOCzkls
-	6mfgqnq/ufAE/5r7abD+R9QUXcoTlHTYOuNs156frq3/XAuJtNsmBODP2uVO3/Ml1x0xHLT+fe2Vu
-	ECCeNOWGtxJzueH1u2owaZBS3i2yHaD8CxdnSn3Yrb41KLm/EiOoFBAUEEebyokuSqcGuE4wWktcb
-	CtfTXqHbk5lmBgdGeM+Ww2Nrt7QKGv48/U2jpOeKjjEIcOyC7onLmWayOljoi9H18CjW0RLZCJrWQ
-	g74sEVGvn11KdtPptKOw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QRKYkatL9ARPiJ4v26eNxad7612nv5CI/NTnjjMiO3I=; b=cmp+8nxmVOl03+
+	PNy/rT/z4PhrIA5nHcTOhDMxJfCyZqHh2/62XFepvVyxr0ywA13NhPj42Dy+UHNVbfeZX6c/EAv/9
+	GY27QUakMzupEgggs/DHHs+CjoeGw03PB7wpuxfqpBjevQIWeF7rfACSzKIIUZQNfzND1E3lH5Clr
+	ylGxGQKH4b5xO3WQAg7bF1XVizLA+aVbnu5U/BftTSkzDxuAw+FlAeYk8O/vuprdFX1PiXGZalrfL
+	lysaWKnNLc2Ck5xJeF8qj9Rq+0CnHtMLHYdXHcZNDqS9AW0DYdP2p5NybHqZkXSgHj7sYrZevzYhb
+	mR8DCCYxsM5tUKgKwgLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usGB7-00000007YPC-0H2r;
-	Sat, 30 Aug 2025 07:39:13 +0000
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+	id 1usKAB-00000007py4-0X6R;
+	Sat, 30 Aug 2025 11:54:31 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usGB4-00000007YO1-1TI0
-	for linux-rockchip@lists.infradead.org;
-	Sat, 30 Aug 2025 07:39:11 +0000
-Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-7fdddb25854so97166285a.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 00:39:10 -0700 (PDT)
+	id 1usK7R-00000007pqn-1Xcr;
+	Sat, 30 Aug 2025 11:51:42 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-3cbb3ff70a0so1779730f8f.2;
+        Sat, 30 Aug 2025 04:51:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1756539547; x=1757144347; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=7fzjqNbnl1FH7mVwqP6ExvQ8qLgU7/T3+Fqhp2L/qAI=;
-        b=RHmojvI+WRLNAjEMQaz/OgwUK7ulgS6CJIjoW+VTwb6i/ESNRwdnhqsn+eihGjihrV
-         cGet7NXTxaCzLoA9bB+MbUuEOxkzd1qtE/ezgbpklyIB6ffmf1HWl0U2tvHwEAU+wvBc
-         hCZWkt5M8ciVJ/1LYiI7PlhC6mLVsHDqvHTi1NI63SwfHBZ+Y2tzTV9rsF48UwEUmhkB
-         GWqFFGVYa6h0CzSMm0Mxlm2ImgZ0oFM2x/lp1AkhfEDMtF77Lto5LevLbkpEnZgebBz0
-         JjzuOBPjkGZqteItBgdEdNcO9dz46Ov2jMvxmDPKIz3irFAvwn6jTkR7lOMMeNHI9waq
-         Go8w==
+        d=gmail.com; s=20230601; t=1756554699; x=1757159499; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=GokYqYG+lmT2oxJ+O2O4SIepQEUsvS6Oqvc1Ps5nstE=;
+        b=Imk7RHZznvnV2+nuY/X+Hst8A/IGzSmADayxEnr5N6ZyS7TnPtSGd+qv2t90OrxD7/
+         KNtm0QffEYyl+t4njYGPC8biO8c9mTNeD6ImMtw3w/rcXtL/z/eEtZZHL2HxtquSjDRr
+         TQIMN2z9riC2LohPDaJDhWgGSH8CTljvGwrx6wSZ13ql7fbkz9LqtbwLgs2LD6OAFCMK
+         8t61t0iIRldASo5TiJbJ8wMS83h03yhhcBkWvGSGFHHJi3/79wruFQvIHbpGvKjpAP9I
+         g8v435QD3XuJM9w/d0DK8UKZvVNXNw6V4MmWwMwmakoKGIbPNRuIyEwbsBYIWhn8g3l+
+         Ij5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756539547; x=1757144347;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1756554699; x=1757159499;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=7fzjqNbnl1FH7mVwqP6ExvQ8qLgU7/T3+Fqhp2L/qAI=;
-        b=MXlKB4AgzO/TozhUz2AkK7M+0l1f2cQ/Y0Nlt9CdqldJ05VeHhwGNYxXWQm+jS2mD4
-         C7FvZCtPi+3d8bKWkDBO1ws74Yn6CX+jZ4l8OAA5KB3WF3lXdJN8ZFkgIgA3UOOIhz+A
-         j24VOU/OXuKSwQuLRPN9hIfdrhYX3nnk6SmrNEhp/9GasxTlpM02JX3tvw+ho8rRizjk
-         TfbNaWOj9L1tUHdAczDDaIacrMIIoYlCwfgspNFJf53R9S4NoiqJ8X8XdJtSgSBhX8DO
-         aVwy1RTzoRNqVyI/aDZarFF3lj0SjMaMWpI3e2jweEWNevxSi8kygGMwWr2YflgAgKnJ
-         WIgg==
-X-Forwarded-Encrypted: i=1; AJvYcCX7QLsAqmQMo8VOXjKlX0732BTyLus3uZO4hM0gJD44sYBV9SnOJk+wOhJFhh6Rg38Lw2EIDufq2E790YeEGw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwagaJuOGH5B4LT1b0Zz/igVO/rp5zxZRzWGJGGi1UnMankeZCr
-	SFdlMYqPR+WorwNlpEWaoRrT1ggpMwGZXtsadYERUkPxeMls8YNA7hJ/bNvEQIgIyO0leJzEacw
-	ZZb/6equvbMwUTSzkA3QAi3LeHE0xdMVdH6JG3o5C7Q==
-X-Gm-Gg: ASbGncs1ZInZgZMvkSIZdyV/G2swKJegs38B5/gxlXUIBjeN2WDaxUD0qM2FKSUshbG
-	R8cMQa635SEkLBwP6jL1oBDZ2hmV7DzrVLp7E1dRlcn07krcFyGtjAoGHPPI+fzx/wwyy+tL+pg
-	0aUuOibNDQUkL+1KDsnpngVxi/rmOYbxIRy3hcUmsNW8pmRZb5ULhH591sXWraBpbv8Lob6VHdQ
-	ZKWzRL8AlPfk1gV
-X-Google-Smtp-Source: AGHT+IGcdIb5Bh5zrCRPBVL3fLoDcfNzuR05JRese/yFeQ6WZnki9GRGlAQtC8Gf4B7czjKl7GD5FNu5efT2Tyeq4FE=
-X-Received: by 2002:a05:620a:3194:b0:7e9:f820:2b72 with SMTP id
- af79cd13be357-7ff2c51b1dfmr138787485a.72.1756539547138; Sat, 30 Aug 2025
- 00:39:07 -0700 (PDT)
+        bh=GokYqYG+lmT2oxJ+O2O4SIepQEUsvS6Oqvc1Ps5nstE=;
+        b=kV9OXWfwR3wBQfBrBmDjYSsSnlbcb5J6OGlGKNj/f0s1a5S1jhdxqginEf97cIR+B6
+         4PaG0GLhskX+Dcm+/APzpXkTr0Xs82giA1n6NGIQE9372uL7QdZ91DIKDkYFBpHw5nxd
+         /kQJWsmZQA2deaBpKjQeII9gQzXV5ftuHLcJf+ZCMmmSgXCF/8qdjRQwAA0X3oqVhIEw
+         AmfPiwVXwyo3Xnru84M5RDpg6dFt3QdkXKEZlgLd1wQ86bU9TJxwvz6En88oe4Ymtgf/
+         1yafxvhFcFvEQr/aqp8RlYbM4aZRIvdxbXMAnYsQFcyOZY3KHBvHZWCx8guiWGCMu9UE
+         7b1w==
+X-Forwarded-Encrypted: i=1; AJvYcCVc3YZRFwyuljGAoGyg3ZRg6cAyk3AfhBU/TNNCmKoGLMt4q9EMxVeAewK3XzIpdGvw4KiWAf4szDuxQiK/0fr6@lists.infradead.org, AJvYcCXSPPjY2ngYXpF/WilzUvU0AR82WpXOagbvLCqWthOEl6MNhdE0MyNrM6X23GNWiS6PcAtmibEt9OxlQfDH6Ak=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy+b8eAZf0qk2hrB1yxJqmFxqT7wVwT8B0Fb2qiD7BzMwIUpQEf
+	xstpvY1ijed8pLToJ/JYEtR8M0IXYjyq289LI3y4vW3bGvR19miSSVTo
+X-Gm-Gg: ASbGnctPY63TGpbzmubMkJK25otSlT1bihxavbvwA1Bh2Q2E7f6ovfW2dL0phNUnkfR
+	n1Z8mhcwvRL5Z4O6+9f0NSe++s6mDiVCKakK9d6pKRbg4Ep/pqP1ByMVMotfAOZXVhe5lNTbWBT
+	jhnCKawtgxeMhaXumSHW4rjxRa9HwefHo/cyppcY9FrGfp+4BbE00Xq4ZaTtV6zILtQleKRZxsg
+	OrzBrjwZmFyrEN4FUy8L7vWB5YOwxji3ZwK0ESH6dkkO5ZOnjxU8JJqvCi5+1XCoafd6isgVBOJ
+	if4QDPDiq4Prk5MROAxIeg/LKqFzpUMtm5cpoRyNxTHLFdrViIl6zAKHqrCrbqx39+s6e7nTZxX
+	dlJvbYCjzvgUdPqG0IkNF821AoeucFYCyut8Hwg==
+X-Google-Smtp-Source: AGHT+IHyb14KPLvEBP1uzF4N+Mv+SwihHqssUNY/21QMVDEC/beh+sytji1kJH6KwbNaJwZlIJr5gg==
+X-Received: by 2002:a5d:5d10:0:b0:3d0:ebf6:90d2 with SMTP id ffacd0b85a97d-3d1e01d5561mr910309f8f.43.1756554699143;
+        Sat, 30 Aug 2025 04:51:39 -0700 (PDT)
+Received: from toolbox.. ([87.200.95.144])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45b732671b7sm68161555e9.3.2025.08.30.04.51.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 30 Aug 2025 04:51:38 -0700 (PDT)
+From: Christian Hewitt <christianshewitt@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Alex Bee <knaerzche@gmail.com>
+Subject: [PATCH 1/2] arm64: dts: rockchip: add GPU powerdomain, opps, and cooling to rk3328
+Date: Sat, 30 Aug 2025 11:51:34 +0000
+Message-Id: <20250830115135.3549305-1-christianshewitt@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20250830-drm-limit-infoframes-v3-0-32fcbec4634e@oss.qualcomm.com> <CAPj87rNDtfEYV88Ue0bFXJwQop-zy++Ty7uQ9XfrQ2TbAijeRg@mail.gmail.com>
-In-Reply-To: <CAPj87rNDtfEYV88Ue0bFXJwQop-zy++Ty7uQ9XfrQ2TbAijeRg@mail.gmail.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Sat, 30 Aug 2025 09:38:55 +0200
-X-Gm-Features: Ac12FXzM9U8oA3u3fX5rkC_Acspb1Bpg3nyPrRsz__oJ7apEVkNTDxD29-I5hyE
-Message-ID: <CAPj87rNz7PPqZ7P4JSKdnizFaEoaBMf2VFBYbpVn3VNt1giU0w@mail.gmail.com>
-Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per driver capabilities
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?UTF-8?B?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Liu Ying <victor.liu@nxp.com>, 
-	Rob Clark <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, 
-	Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jessica.zhang@oss.qualcomm.com>, 
-	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
-	freedreno@lists.freedesktop.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250830_003910_391819_468D47FC 
-X-CRM114-Status: GOOD (  14.73  )
+X-CRM114-CacheID: sfid-20250830_045141_413129_18942FBE 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,21 +101,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 30 Aug 2025 at 09:30, Daniel Stone <daniel@fooishbar.org> wrote:
-> On Sat, 30 Aug 2025 at 02:23, Dmitry Baryshkov
-> <dmitry.baryshkov@oss.qualcomm.com> wrote:
-> > It's not uncommon for the particular device to support only a subset of
-> > HDMI InfoFrames. It's not a big problem for the kernel, since we adopted
-> > a model of ignoring the unsupported Infoframes, but it's a bigger
-> > problem for the userspace: we end up having files in debugfs which do
-> > mot match what is being sent on the wire.
-> >
-> > Sort that out, making sure that all interfaces are consistent.
->
-> Thanks for the series, it's a really good cleanup.
+From: Alex Bee <knaerzche@gmail.com>
 
-FWIW, the rest of the series is:
-Acked-by: Daniel Stone <daniels@collabora.com>
+Add GPU powerdomain, opp-table, and cooling map nodes for the Mali
+GPU on the RK3328 SoC. Opp-table frequencies are sourced from the
+Rockchip Linux v4.4 vendor kernel while voltages have been derived
+from practical use and support work: keeping voltage above 1075mV
+and disabling the 500MHz opp-point avoids instability and crashes.
+
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
+---
+These changes have been in-use with Armbian and LibreELEC for many
+years without issue. Investigations into crashing (esp. with rkvdec
+running) have led to voltage tweaks and dropping 500MHz. Changes
+cannot be justified in technical detail, but are field proven over
+a large number of users, boards, and cheap power supplies.
+
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 39 +++++++++++++++++++++++-
+ 1 file changed, 38 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 7d992c3c01ce..b99c78ecc4a9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -331,6 +331,11 @@ power: power-controller {
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+ 
++			power-domain@RK3328_PD_GPU {
++				reg = <RK3328_PD_GPU>;
++				clocks = <&cru ACLK_GPU>;
++				#power-domain-cells = <0>;
++			};
+ 			power-domain@RK3328_PD_HEVC {
+ 				reg = <RK3328_PD_HEVC>;
+ 				clocks = <&cru SCLK_VENC_CORE>;
+@@ -570,9 +575,13 @@ map0 {
+ 							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 					contribution = <4096>;
+ 				};
++				map1 {
++					trip = <&target>;
++					cooling-device = <&gpu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++					contribution = <4096>;
++				};
+ 			};
+ 		};
+-
+ 	};
+ 
+ 	tsadc: tsadc@ff250000 {
+@@ -651,7 +660,35 @@ gpu: gpu@ff300000 {
+ 				  "ppmmu1";
+ 		clocks = <&cru ACLK_GPU>, <&cru ACLK_GPU>;
+ 		clock-names = "bus", "core";
++		operating-points-v2 = <&gpu_opp_table>;
++		power-domains = <&power RK3328_PD_GPU>;
+ 		resets = <&cru SRST_GPU_A>;
++		#cooling-cells = <2>;
++	};
++
++	gpu_opp_table: gpu-opp-table {
++		compatible = "operating-points-v2";
++		opp-200000000 {
++			opp-hz = /bits/ 64 <200000000>;
++			opp-microvolt = <1075000>;
++		};
++
++		opp-300000000 {
++			opp-hz = /bits/ 64 <300000000>;
++			opp-microvolt = <1075000>;
++		};
++
++		opp-400000000 {
++			opp-hz = /bits/ 64 <400000000>;
++			opp-microvolt = <1075000>;
++		};
++
++		opp-500000000 {
++			/* causes stability issues */
++			opp-hz = /bits/ 64 <500000000>;
++			opp-microvolt = <1150000>;
++			status = "disabled";
++		};
+ 	};
+ 
+ 	h265e_mmu: iommu@ff330200 {
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
