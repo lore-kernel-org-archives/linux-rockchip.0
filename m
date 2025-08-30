@@ -4,153 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC5A7CA0FF0
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 00:59:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DADE6CA0EFF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Aug 2025 07:30:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nZQLcQkS2k/zC0UCKWxIPSDeABOyLOaKMElh0MGtrWo=; b=Ec3FQbKoAOTggL
-	dVVErKKPv8/InajOMm7SigxzYEPDiTVg9/R5Q1ZJGOi/ZbFOMDTZH14VnzKSi9APslcw4ux/YUOPl
-	9YocmYX410x1bTo/FpMyVFg1mihaLeOpJYesSqr+gxUtbeJSOw/SBaHujl/dhYxotXOx9thQeMxZ9
-	HBpuTEV1IM94Rzkz3JNdgNRZUitFibKylmMvdb2ctE3TcSb+W0jFTrkPXZhQpuy65iZv1CweFrHAP
-	RCGlSX8vsEC2GUqoKWT2wLItJH7gAnRpFwXCqofkkB0sePgaNLq2s6/K+MTnXzMSH1Hc0vIxmUIa6
-	JQRvsznYhNd2tu/1NJLg==;
+	List-Owner; bh=VWPDvvn35WLXYTBeAPzPjnKawKWZaohOQBJax+2xqA0=; b=cFpLZzSddB7KiH
+	ytnOO//vk9WSB8gjhMjDcCDVifpdGCWeyljJWd9zuEC2abvrWpVc74CihuOYyZrFADpRTJMsHIlCn
+	SmDT+dpubRTS+0HUtKbhvs5ftCDo9M44VJlirU8hPhE2AH8szUUJDq/83Tz+IO7n+0xN+tcovOVnH
+	Ycuq7RYu0vuM/xbQRibr3kh6GUVhEUi68HbjthfT3KW/YpyACV+sl5UnHZ+HrREM9s0f0Bcj2kS41
+	0tyQ23XVkNREwJm1J+YXQGqHRTcog2nf0WrsjB0EY/k1r0yN8ktApnYr0ImFsajPXRXdzG8B9bVyd
+	/S3xfM9y2DJCeYMdVcOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us9wX-00000007GRB-3qkN;
-	Sat, 30 Aug 2025 00:59:45 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1usG2T-00000007XV3-1j7Q;
+	Sat, 30 Aug 2025 07:30:17 +0000
+Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1us9NN-000000074h0-30dL
+	id 1usG2P-00000007XU5-3nDZ
 	for linux-rockchip@lists.infradead.org;
-	Sat, 30 Aug 2025 00:23:27 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57TMGJo3023081
-	for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 00:23:25 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	tMGCzwi7iMqpBSIwuiogi39ZPNmDZ+NlaUaBUi0ePrI=; b=Q+5mmYj+n/VSVLYh
-	QoJEjJoCvH+Des/LL/ULV2D2nLttafyPPr2QA4sl2XtTaYHJCq4T+bPQyVJ7CsSl
-	sSIV7foFigiuEhSUTP84O9+acizE7obyfGN6k/EJXvjRHRa4ypkFCbTpjHaiezd5
-	5/bZ1AL/17zWQfZl/v2+oBXPoChXDOnv+u0eoZuBSqp6g/dxVhNIrzxuMXhbbJl6
-	fTzqNL9CiDglo0WwZ8bP60aHCVi1zi9fSMFc+4MZh2Fou+OjxvYFhw5cWxX++xa6
-	1zwL/DRLfGpnoltZyvB8GSnx6Nt1crfT9tXJyRD4u4fCaxdXUwXxTe4NEg+ftutX
-	1IayYA==
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48tbpgpvma-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 00:23:24 +0000 (GMT)
-Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-4b2d09814efso44525231cf.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 29 Aug 2025 17:23:24 -0700 (PDT)
+	Sat, 30 Aug 2025 07:30:15 +0000
+Received: by mail-qt1-x82e.google.com with SMTP id d75a77b69052e-4b2fa418ef3so27715811cf.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 30 Aug 2025 00:30:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar.org; s=google; t=1756539012; x=1757143812; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=u5ZG8/bv7fEyY7/sBaZXohrNcXIrZPRq+HcTim4TiEo=;
+        b=WYOkHE841+SPv/KecEk0DxrSIRjbo6HAFQpHD0PnOmiTc6wH21tqYsQBW9QWHZrzsz
+         9/SsDEGLFl7/h++9WaO1iwFMxcBSAr3159hbQFO1raSn8jJT1ScnmHgEw0OC9+gSpiMy
+         TiC6gzkB146/7htrEvLlzF/xN6DUVvVcpmMuh+qP+SysbWNqTfMz6VtAH5J5i9cJfRxI
+         XIoaphtWUWlKlnu+k2dHy4bKUgOyrhLO7vKh9NT+dwAE1/AiVdNnkBwOMSCxb3UQiL+k
+         Bw2EvrXas4g/vWaT+AtT6yXkUei3hm/z88pHPPd6rldH9qdBajrFYo+Btc17/jZj+j+x
+         TK2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756513404; x=1757118204;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=tMGCzwi7iMqpBSIwuiogi39ZPNmDZ+NlaUaBUi0ePrI=;
-        b=o35Vrjm+Xq38NPDCDvRltVGaifEfuAG/Cr9o+DEEAmmsl3hUaR3Jy1430jUvlGChaz
-         41PtOxu9o/VE0nMIgDdMlXDYcD9EL8vMyOl4105IJcT/qrcuQcWRDGfS+UACLEjky7Hw
-         fBg+JTHfG7ZJ6CvlNMvhRn3izJgpMk7ArqzPsbX/dw3dJmerVPMV8IF2OW1bw7oggqB8
-         8xfRHt7bX3W4BgCg7yQXUOEtJkoQTHg4LniA/Y6i2w6ecuWLeoVlVgeigN6BzAiN5OSQ
-         xGnTo0r8FlJnjAgNMTjUyNLu4TDOmCAjcjWPA7QybuU7/AnlI5cHiJgVIzanR6MxGnz5
-         jtqQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXnozn5w7QSzkbv0fX7U6lbEPtjjg2GGtY4ZIVWNxGTldhn3lLW+TyA+LDaP4Qj/BRzrqpqD+4zWkM2FkbXQg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz0nKRNK2QhHsVC9ZJ9X9My/hqSV0vQSc0DPCrV9otvL2wAk0RV
-	GX2NPcbaKy3ExTuz7DXxUVkRbyNfIPIZT2kQ3ML7HIHG7IQcmHqlaPkGVyogf0/Y4eXONBpF4Kf
-	qBUPeVbCJmut8Z7sR4Y3wrqyD+3X53BvPazp2RtNI9Z09DI+0RNDZSKDWMgl/IZKLo/xfHKoLNI
-	A=
-X-Gm-Gg: ASbGncsws2u3j7Z1d9aWA7fKjNeex/2vWwqTc7z0TwSzwSd9/msuZFUorFCFm1tvvJI
-	ZPbUHmu2P3EVZJav1a+Icz/U0Txen2OxVcaI/S9ReG+qryqsSjPvndNDclWyf/lvRjFRkzMrT8C
-	2IZi5EVWEtChCu4T9kqPIwWGNmpsEqjZo/El2i1ZYSlhdF3ENXKmXr+Pmd82HBEifDRm2FFtOa1
-	b4ztKbDH1xyxKfwgo9nwuw11pMHSUps5I/8RSTUvMUWI6am0nENpvd65ROtm1QasjvzcgbjwMQJ
-	jr5xJXPBXzAgqkR9IH0QTLUx3Wy2pJnpzDNBqQwyQr1l4+e2RT0rhaVeD1rh8UMRN2Xq4Z3W9mH
-	YwhJjAO2Lg5audtwTdnhiqRpFGoc7PoUC9kAbYvSkUNG/cCEMoroV
-X-Received: by 2002:ac8:7dd0:0:b0:4b2:8ac4:ef8e with SMTP id d75a77b69052e-4b31dca7d9bmr6262361cf.73.1756513403708;
-        Fri, 29 Aug 2025 17:23:23 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHQbp4HnJW53TtgpH4goLIxU1betKvFXJivt7Yk4w2HXWAhfhSte/bjtbH3ZPMA/GFEM5dqMA==
-X-Received: by 2002:ac8:7dd0:0:b0:4b2:8ac4:ef8e with SMTP id d75a77b69052e-4b31dca7d9bmr6262001cf.73.1756513403243;
-        Fri, 29 Aug 2025 17:23:23 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55f676dc52esm1019907e87.8.2025.08.29.17.23.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 Aug 2025 17:23:22 -0700 (PDT)
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Date: Sat, 30 Aug 2025 03:23:07 +0300
-Subject: [PATCH v3 11/11] drm/bridge: lontium-lt9611uxc: switch to HDMI
- audio helpers
+        d=1e100.net; s=20230601; t=1756539012; x=1757143812;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=u5ZG8/bv7fEyY7/sBaZXohrNcXIrZPRq+HcTim4TiEo=;
+        b=lQXGBrSDKaNsh8zvUfo3fqVRS3N4xMv9SXsOj3qRHp7vwIZSJMbLeD3m0J4vno5NPu
+         3wH+qxks3edN0tNx7nMVhh51fZZHWD9Vhjxxyovhvz1HJculp4gH/WIEBHX6bCTU8Lwt
+         cYBKCoijN9fhhI3xqnTaBTTnDvBP31Pqy83pZJp+FRstK2LZfAFPBXJRgDoLvoHj7Amh
+         Yx21dc77TUzUWFe8tK5NFufEXCPGrxcPCmKlJCItZBs8iZhPYeIu/374DNCxbvJ7Nddq
+         oyk3DAG7HM/LIqRyBOAYc+qaxv0iLo9ZA8ZJj6gDMdexI56E5/tbzcU2jYvuf3esQi5k
+         4bjw==
+X-Forwarded-Encrypted: i=1; AJvYcCWsByRazfkFoPlMUwR5CcRkdQRhC22Q8R1yjqpOkx4HTfTUXbw3U75QB7JFurK9N6f8UmM8aLnrUtS6QsMrRA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwKdawuIbquCbsETUI1FrOlnI7hd2T7vSqNxWqZTeKhAYzSj/CH
+	uLS9jk3e4iwHevXDts98F85FAXbUX/4b63YGt2PIUKGgLJAs9fYf00PH5MAiMswTbOGUciNHFGJ
+	IXTaVWVC7FOG22dP5HZxD5dbio+UQBNeBn0jgh/e9GA==
+X-Gm-Gg: ASbGncszkoistHJR95efyA8/2W8e5Na+NO/OOm3UabsAxlF4x6SyIqO1faAWmTwCE0X
+	MWwO0fxjVkO0uXiHd5j/5bFk3vea6M3zkKaQUduGYFh61ntsDSbRSBCJSWf8Wxl/WUCuAbG39sG
+	8R0rFUU0LzgxKWqa23SZd9xZWDaDNGa4aT+N0IMS99vqQOMdNmDdz0EBTOrGjvSL0Y9LKddTmzV
+	nqwoXl8NvMUI5cO
+X-Google-Smtp-Source: AGHT+IEoXuFZJwCV9cwGNvRYz37SGk7fTBsYXDUKkjm0VNio3cHCVlLucdjG7nkDJhE227CIqVsjn4jhHmK64RhHXes=
+X-Received: by 2002:ac8:5a12:0:b0:4b2:d607:16cb with SMTP id
+ d75a77b69052e-4b31d855a89mr14707801cf.22.1756539012519; Sat, 30 Aug 2025
+ 00:30:12 -0700 (PDT)
 MIME-Version: 1.0
-Message-Id: <20250830-drm-limit-infoframes-v3-11-32fcbec4634e@oss.qualcomm.com>
 References: <20250830-drm-limit-infoframes-v3-0-32fcbec4634e@oss.qualcomm.com>
 In-Reply-To: <20250830-drm-limit-infoframes-v3-0-32fcbec4634e@oss.qualcomm.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Robert Foss <rfoss@kernel.org>,
-        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-        Jonas Karlman <jonas@kwiboo.se>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Sandy Huang <hjc@rock-chips.com>,
-        =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
-        Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
-        Samuel Holland <samuel@sholland.org>,
-        Dave Stevenson <dave.stevenson@raspberrypi.com>,
-        =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
-        Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-        Liu Ying <victor.liu@nxp.com>,
-        Rob Clark <robin.clark@oss.qualcomm.com>,
-        Dmitry Baryshkov <lumag@kernel.org>,
-        Abhinav Kumar <abhinav.kumar@linux.dev>,
-        Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
-        Sean Paul <sean@poorly.run>,
-        Marijn Suijten <marijn.suijten@somainline.org>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6539;
- i=dmitry.baryshkov@oss.qualcomm.com; h=from:subject:message-id;
- bh=VIOVx9ZFQcN8aP7U3+DXeUs0Ba2NJyVyJ0ONqbKAcgU=;
- b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBoskRk4mO/Wae/aVjMwFDeIGRIwNht1W8+SnIgW
- mGWDw77GSyJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCaLJEZAAKCRCLPIo+Aiko
- 1aiuB/wLjBle4c8EUZFBkZrH+ITKfuu9NiqqEEnbh20zp5cP/q6DGCXvqn7JiotAYk/2OWe+TgZ
- wibQ6J9oaQdsYHdWszWTqJ+VckceGts93XDX83DH6MjkZl+U8ZmQazE2GM4X8phxTGZUpwrsT7Z
- PDXS9mKbl+23uOJ1Os8+rhOL1tKuMqFeIZEo+ChO/XJwS8pxmNET5bhSBFls35KXWLrGYP9NYV4
- J5+ZfT8+UntW/s1gQvPQB3LefV4pCOhcu9Kw9AWBxi2ScS9jJ0Zzh3XvewVtxknFkFz6JndPqqP
- ZQ0mPlZZl8Gb4f76AWhB8eGhy2KizaEN1C0CmHbU7wwbx3+Q
-X-Developer-Key: i=dmitry.baryshkov@oss.qualcomm.com; a=openpgp;
- fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
-X-Proofpoint-GUID: Jy5VV9imnh7p9S09kHmR41eDd5paiWlL
-X-Proofpoint-ORIG-GUID: Jy5VV9imnh7p9S09kHmR41eDd5paiWlL
-X-Authority-Analysis: v=2.4 cv=G7gcE8k5 c=1 sm=1 tr=0 ts=68b2447c cx=c_pps
- a=JbAStetqSzwMeJznSMzCyw==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
- a=2OwXVqhp2XgA:10 a=EUspDBNiAAAA:8 a=l1vpWyVUGYkh7_PGMaYA:9 a=QEXdDO2ut3YA:10
- a=uxP6HrT_eTzRwkO_Te1X:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODI3MDE5OSBTYWx0ZWRfX/D6Jdx1dfEjK
- m9RCrrxiRf0JVWF8URXVcezaUjnpuyCNNShjasBCvCAHN5QHiO47RimSowAyMMiKxqlT6NxxaQD
- iPwVAruqjqAe1Lza3rt1LxwghbkzpPwdtfiZ7M8IG6LJGEUrxzGWrl6sT7lu5cxu73bLUYgKWDe
- plnwY+zLgaPIroHxJkmfbHQpxlbsGan0aJD3QzYT6vep0KEFebMFGzIaL3MPNDnENbzp6HVPcyz
- x3UiyYsoX3duaBCKSbh9qXGhVHBEdBvd2VICRFcEmtYdfCH24i9hjd/gGh2zzlu3QpRUsjaMMtI
- e/AlxlcI1B1qsAUohdGK+DAv/kSqUU2B5QTedinJH9nhrs9LNovh9regwv6kO4h556oPhro6vyf
- wtHsJ6GE
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-08-29_07,2025-08-28_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 phishscore=0 priorityscore=1501 adultscore=0 impostorscore=0
- bulkscore=0 suspectscore=0 clxscore=1015 spamscore=0 classifier=typeunknown
- authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2507300000 definitions=main-2508270199
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Sat, 30 Aug 2025 09:30:01 +0200
+X-Gm-Features: Ac12FXwherP7pCCw1eIolUuD4CaoGI8lRnTYIDVTJZ8XE8BvqysFq5xqSgK9g3A
+Message-ID: <CAPj87rNDtfEYV88Ue0bFXJwQop-zy++Ty7uQ9XfrQ2TbAijeRg@mail.gmail.com>
+Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per driver capabilities
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	=?UTF-8?B?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Liu Ying <victor.liu@nxp.com>, 
+	Rob Clark <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, 
+	Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jessica.zhang@oss.qualcomm.com>, 
+	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
+	freedreno@lists.freedesktop.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250829_172325_882847_2C02A9BA 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20250830_003014_554373_B49E92EF 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,221 +109,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-While LT9611UXC is a DSI-to-HDMI bridge, it implements all HDMI-related
-functions internally, in the firmware. Implement DRM_BRIDGE_OP_HDMI and
-DRM_BRIDGE_OP_HDMI_AUDIO by providing necessary stubs, streamlining HDMI
-and HDMI audio plumbing (which includes plugged notifications and ELD
-handling).
+Hi Dmitry,
 
-Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
----
- drivers/gpu/drm/bridge/lontium-lt9611uxc.c | 130 ++++++++++++-----------------
- 1 file changed, 54 insertions(+), 76 deletions(-)
+On Sat, 30 Aug 2025 at 02:23, Dmitry Baryshkov
+<dmitry.baryshkov@oss.qualcomm.com> wrote:
+> It's not uncommon for the particular device to support only a subset of
+> HDMI InfoFrames. It's not a big problem for the kernel, since we adopted
+> a model of ignoring the unsupported Infoframes, but it's a bigger
+> problem for the userspace: we end up having files in debugfs which do
+> mot match what is being sent on the wire.
+>
+> Sort that out, making sure that all interfaces are consistent.
 
-diff --git a/drivers/gpu/drm/bridge/lontium-lt9611uxc.c b/drivers/gpu/drm/bridge/lontium-lt9611uxc.c
-index 38fb8776c0f441ae433c60a7680aaa6501a8956e..df4661986423a871c006af2a36d85d8103935f93 100644
---- a/drivers/gpu/drm/bridge/lontium-lt9611uxc.c
-+++ b/drivers/gpu/drm/bridge/lontium-lt9611uxc.c
-@@ -17,8 +17,6 @@
- #include <linux/wait.h>
- #include <linux/workqueue.h>
- 
--#include <sound/hdmi-codec.h>
--
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_bridge.h>
- #include <drm/drm_edid.h>
-@@ -27,6 +25,8 @@
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- 
-+#include <drm/display/drm_hdmi_audio_helper.h>
-+
- #define EDID_BLOCK_SIZE	128
- #define EDID_NUM_BLOCKS	2
- 
-@@ -48,7 +48,6 @@ struct lt9611uxc {
- 	struct device_node *dsi1_node;
- 	struct mipi_dsi_device *dsi0;
- 	struct mipi_dsi_device *dsi1;
--	struct platform_device *audio_pdev;
- 
- 	struct gpio_desc *reset_gpio;
- 	struct gpio_desc *enable_gpio;
-@@ -429,12 +428,50 @@ static const struct drm_edid *lt9611uxc_bridge_edid_read(struct drm_bridge *brid
- 	return drm_edid_read_custom(connector, lt9611uxc_get_edid_block, lt9611uxc);
- }
- 
-+static int lt9611uxc_hdmi_clear_infoframe(struct drm_bridge *bridge,
-+					 enum hdmi_infoframe_type type)
-+{
-+	/* LT9611UXC managed infoframes in the firmware, provide an empty stub */
-+	return 0;
-+}
-+
-+static int lt9611uxc_hdmi_write_infoframe(struct drm_bridge *bridge,
-+					  enum hdmi_infoframe_type type,
-+					  const u8 *buffer, size_t len)
-+{
-+	/* LT9611UXC managed infoframes in the firmware, provide an empty stub */
-+	return 0;
-+}
-+
-+static int lt9611uxc_hdmi_audio_prepare(struct drm_bridge *bridge,
-+					struct drm_connector *connector,
-+					struct hdmi_codec_daifmt *fmt,
-+					struct hdmi_codec_params *hparms)
-+{
-+	/*
-+	 * LT9611UXC will automatically detect rate and sample size, so no need
-+	 * to setup anything here.
-+	 */
-+	return 0;
-+}
-+
-+static void lt9611uxc_hdmi_audio_shutdown(struct drm_bridge *bridge,
-+					  struct drm_connector *connector)
-+{
-+}
-+
- static const struct drm_bridge_funcs lt9611uxc_bridge_funcs = {
- 	.attach = lt9611uxc_bridge_attach,
- 	.mode_valid = lt9611uxc_bridge_mode_valid,
- 	.mode_set = lt9611uxc_bridge_mode_set,
- 	.detect = lt9611uxc_bridge_detect,
- 	.edid_read = lt9611uxc_bridge_edid_read,
-+
-+	.hdmi_write_infoframe = lt9611uxc_hdmi_write_infoframe,
-+	.hdmi_clear_infoframe = lt9611uxc_hdmi_clear_infoframe,
-+
-+	.hdmi_audio_prepare = lt9611uxc_hdmi_audio_prepare,
-+	.hdmi_audio_shutdown = lt9611uxc_hdmi_audio_shutdown,
- };
- 
- static int lt9611uxc_parse_dt(struct device *dev,
-@@ -508,73 +545,6 @@ static int lt9611uxc_read_version(struct lt9611uxc *lt9611uxc)
- 	return ret < 0 ? ret : rev;
- }
- 
--static int lt9611uxc_hdmi_hw_params(struct device *dev, void *data,
--				    struct hdmi_codec_daifmt *fmt,
--				    struct hdmi_codec_params *hparms)
--{
--	/*
--	 * LT9611UXC will automatically detect rate and sample size, so no need
--	 * to setup anything here.
--	 */
--	return 0;
--}
--
--static void lt9611uxc_audio_shutdown(struct device *dev, void *data)
--{
--}
--
--static int lt9611uxc_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
--					 struct device_node *endpoint,
--					 void *data)
--{
--	struct of_endpoint of_ep;
--	int ret;
--
--	ret = of_graph_parse_endpoint(endpoint, &of_ep);
--	if (ret < 0)
--		return ret;
--
--	/*
--	 * HDMI sound should be located as reg = <2>
--	 * Then, it is sound port 0
--	 */
--	if (of_ep.port == 2)
--		return 0;
--
--	return -EINVAL;
--}
--
--static const struct hdmi_codec_ops lt9611uxc_codec_ops = {
--	.hw_params	= lt9611uxc_hdmi_hw_params,
--	.audio_shutdown = lt9611uxc_audio_shutdown,
--	.get_dai_id	= lt9611uxc_hdmi_i2s_get_dai_id,
--};
--
--static int lt9611uxc_audio_init(struct device *dev, struct lt9611uxc *lt9611uxc)
--{
--	struct hdmi_codec_pdata codec_data = {
--		.ops = &lt9611uxc_codec_ops,
--		.max_i2s_channels = 2,
--		.i2s = 1,
--		.data = lt9611uxc,
--	};
--
--	lt9611uxc->audio_pdev =
--		platform_device_register_data(dev, HDMI_CODEC_DRV_NAME,
--					      PLATFORM_DEVID_AUTO,
--					      &codec_data, sizeof(codec_data));
--
--	return PTR_ERR_OR_ZERO(lt9611uxc->audio_pdev);
--}
--
--static void lt9611uxc_audio_exit(struct lt9611uxc *lt9611uxc)
--{
--	if (lt9611uxc->audio_pdev) {
--		platform_device_unregister(lt9611uxc->audio_pdev);
--		lt9611uxc->audio_pdev = NULL;
--	}
--}
--
- #define LT9611UXC_FW_PAGE_SIZE 32
- static void lt9611uxc_firmware_write_page(struct lt9611uxc *lt9611uxc, u16 addr, const u8 *buf)
- {
-@@ -858,11 +828,24 @@ static int lt9611uxc_probe(struct i2c_client *client)
- 	i2c_set_clientdata(client, lt9611uxc);
- 
- 	lt9611uxc->bridge.of_node = client->dev.of_node;
--	lt9611uxc->bridge.ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID;
-+	lt9611uxc->bridge.ops = DRM_BRIDGE_OP_DETECT |
-+		DRM_BRIDGE_OP_EDID |
-+		DRM_BRIDGE_OP_HDMI |
-+		DRM_BRIDGE_OP_HDMI_AUDIO;
- 	if (lt9611uxc->hpd_supported)
- 		lt9611uxc->bridge.ops |= DRM_BRIDGE_OP_HPD;
- 	lt9611uxc->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
- 
-+	lt9611uxc->bridge.vendor = "Lontium";
-+	lt9611uxc->bridge.product = "LT9611UXC";
-+	lt9611uxc->bridge.autogenerated_infoframes =
-+		DRM_CONNECTOR_INFOFRAME_AUDIO |
-+		DRM_CONNECTOR_INFOFRAME_AVI;
-+
-+	lt9611uxc->bridge.hdmi_audio_dev = dev;
-+	lt9611uxc->bridge.hdmi_audio_max_i2s_playback_channels = 2;
-+	lt9611uxc->bridge.hdmi_audio_dai_port = 2;
-+
- 	drm_bridge_add(&lt9611uxc->bridge);
- 
- 	/* Attach primary DSI */
-@@ -881,10 +864,6 @@ static int lt9611uxc_probe(struct i2c_client *client)
- 		}
- 	}
- 
--	ret = lt9611uxc_audio_init(dev, lt9611uxc);
--	if (ret)
--		goto err_remove_bridge;
--
- 	return 0;
- 
- err_remove_bridge:
-@@ -908,7 +887,6 @@ static void lt9611uxc_remove(struct i2c_client *client)
- 
- 	free_irq(client->irq, lt9611uxc);
- 	cancel_work_sync(&lt9611uxc->work);
--	lt9611uxc_audio_exit(lt9611uxc);
- 	drm_bridge_remove(&lt9611uxc->bridge);
- 
- 	mutex_destroy(&lt9611uxc->ocm_lock);
+Thanks for the series, it's a really good cleanup.
 
--- 
-2.47.2
+I know that dw-hdmi-qp can support _any_ infoframe, by manually
+packing it into the two GHDMI banks. So the supported set there is
+'all of the currently well-known ones, plus any two others, but only
+two and not more'. I wonder if that has any effect on the interface
+you were thinking about for userspace?
 
+Cheers,
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
