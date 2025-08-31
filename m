@@ -4,65 +4,156 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 134DECA0FE8
-	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Aug 2025 16:46:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B7ABCA0FE8
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Aug 2025 23:33:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lOUctY/ejyOemJLcTcutbbqke4zDEni/DEhZuRL6Jpw=; b=BIm5FVhuTCVu0Z
-	3o+GGbFre2lCGXRmbrYGmDa/h6H2RVXot9oKAkCCiStjZo1ZKq9ikjWGXle8njw5YKF5fDKxTBsNm
-	z3m0L8FoJXxsAKXKk8CeWRaUIJZ46gP7241C+5AtD3YT4a7x5woO9XKnk4TgIQ82n+npw1FWig5CO
-	Q66ud1Y6xqhjsnhQwzrgwrfObnE2YvRn6RiFLGW1+7xolJSBmOaLghWCmnVM3WSRJL5FLfPN3fCkZ
-	zq2yCmMjRamoJeicE3s1xwLXAh/LXeHUpC6ZUj/HuUkey49YP/9RBudOZI0H0yuPrtUXHgffNPZaB
-	NrdGO3eRBtr9H5X0D0bg==;
+	List-Owner; bh=Muo7N02BQ6aCslXprinmKffqyu6qKWLee63K/QofH5g=; b=DYRCa5WZTmtrBw
+	tDJNZ5lI/UsQef7KoZ3Zbu7yszsoW8W1G3jJwxklSzo9GEC6YTTQj856VCFUmbcN2GkOk8uZLwTaN
+	cph65JOmJo2sHUtkY5T4xKIN54qfpBoZL8Y5FpMLyatkkxxk9cKXf8Ngi9a9c/cypCCayarQCSZEE
+	TkiyPkXwpBOohmY0JlhSwsaT25yWo8HeCSTbQ72AW4dsALJEdGtxu1qOVaDQNXpFlEwBC8XPH4a3h
+	Ocll48GN6DPRVR+gbeshKIz7LVa4qw2zJbyADCiMMNaby69N8CAfQt+FviBz5HpFzrMa4u9zEukCg
+	j6iEBwPsrJ0m05vwg5Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uslCH-0000000ARRT-2lXY;
-	Sun, 31 Aug 2025 16:46:29 +0000
-Received: from chumsalmon.baetis.net ([2001:19f0:5:5b58:5400:5ff:fe17:97e8])
+	id 1usrXa-0000000Aodl-42CO;
+	Sun, 31 Aug 2025 23:32:54 +0000
+Received: from mail-dm6nam12on2060e.outbound.protection.outlook.com ([2a01:111:f403:2417::60e] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uskuQ-0000000APUj-2n5b;
-	Sun, 31 Aug 2025 16:28:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tahomasoft.com;
-	s=default; t=1756657681;
-	bh=km3tbpN//K2LqZ5w/q8z3aHPduBCDAIAHCWXQX8jtQU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=NZWuSW8IZr6ng9kOG5DGqmjxkcdybPU1UzTTsUIAyaUM2Ty7JHpqg/9tbea/rZN8J
-	 zeGyLf9PP9jQAF+JTnXsdus9o+l5xx9CYB4OI5vATSDgFCoSDs9HwwUXR9h2g/gsIR
-	 JNdg5AeNHF2V6K3n5Ar/s73PBKYijWpE9TQIKOXNpCg8JT9Co6LnMmBq0bwkobBiqA
-	 jpEbCyFls+s7IGN6RBf50ugjibhncSu/UiKWhg2l0uB175MiKKF9eeKLyG97B/jOLw
-	 hpmPWNOnjmOCPHyYRsSP6kjzDctS3eiuouRltP/zxtZiWg7b8pUY7lbmOPw2zBKMXX
-	 3ofup6Ir6O0pg==
-Received: from WahpenayoPeak.tahoma.link (unknown [IPv6:2600:4040:50be:5a04:7b87:89ea:8410:bae3])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by chumsalmon.baetis.net (Postfix) with ESMTPSA id D8FBD27E468;
-	Sun, 31 Aug 2025 16:28:00 +0000 (UTC)
-Date: Sun, 31 Aug 2025 12:28:00 -0400
-From: Erik Beck <xunil@tahomasoft.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>, Rob
- Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add HINLINK H68K
-Message-ID: <20250831122800.330c9ab3.xunil@tahomasoft.com>
-In-Reply-To: <6238650e-7a3c-4dd9-adad-cd2a5e925500@lunn.ch>
-References: <021c2e76-cbde-4a2e-a165-a61223cdff93@lunn.ch>
-	<5285B176-5178-4F6F-8FB6-B898AC0EC939@tahomasoft.com>
-	<20250831104839.7b71f2fc.xunil@tahomasoft.com>
-	<6238650e-7a3c-4dd9-adad-cd2a5e925500@lunn.ch>
-Organization: Tahoma Soft
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-pc-linux-gnu)
+	id 1usrXW-0000000AoZZ-45Vr;
+	Sun, 31 Aug 2025 23:32:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Fdyh+YDBlrDAfpBObUOSTI+cj0k8Ck84UZiyhzdBke5XObp/+rLyheHKwTJjJOirsHSuj66rryGbKsoKCRHTQAtIrZeoY4V/pwuBnZ4+wMVaniwY/l75Xg9LtWaX5/kPsKsN1S+clwibF2pXc0PQVbvGib3nLkLvqeGu8FMgaokIwTPduOfJncrVA3wfcPqBoxgWDTE7offAzMOvsOqLKgJPVHRXuiD2H4cPt5s7rCse4NPyn1aC7GsZw9ly9UseFg4ehv+vWq+ZOomJYO+moLUXCaTr/4JPVyTEZinb5bsDV/cESNQH8UBoQBP6GveP9AuTOFk7Vwcrxma9pQV9ew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=++4zNiHar61MvfKvDki/q1sHSNo+h62pZZu+KLBPtdc=;
+ b=WUAUo3QWkvsu8fbEG30XiQmAJSbz6ZouSpDZWA7KbsbbsTDx0smMZlMyuqqYxTMBcvjvSz90lB0R7D77X6LUqpGouABSfYqD+Kg/9lh8dd9DOnzGzHRCdtEXG2neLQ31CFsTeADGYFg2KOYxzrC0hh3irx73jqVFPdG1+nwNiZbgwnlb9Lt2TdQ3WpLa5Nhn/TbZaTM1Uf35qYw94yfMkl2Ailt2+f5UIPdk6vVV8R3XHbM5t6CkDNCr5HEaW/zEjpNCrkgcRgxgI+WRYivNLA0KS+XxTeq3HUYxt1rT89/wB2KEiyUUdoFs/fpmcziefd4zleMD2KzHhgJgmA9I1Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=8bytes.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=++4zNiHar61MvfKvDki/q1sHSNo+h62pZZu+KLBPtdc=;
+ b=IWERACGHg8sqWYAN2cMTrvjuB5VRN5op/YqIVh5yNllaEwM8iK9zuWf9TA0MKAQLP4yB56kMWtMlAfX/IARj/eSY03Zb4wepBh7CAEOYa43MgaAG5yJrfgvCwpOVRLfduf3uozCUcZ7CfwPcBKIGkEVfn8ghIqvBurvH5hT5k0eVSZWIF2s+F51vZUlNGPiYmdMwa2OSVlS1Zh4PR+jamZwFuotukyHxx6FM+e5LEjp9Z5WwsCFQtqwl0OUmgg/Yf0Ln34Q/a+lPgoNcKvb+400p71JmTZ+4jbmVAjavafOS9XTTZ1DJPrjGAc4typCneIej3ecWSZldASK+65bhhA==
+Received: from DS7P222CA0027.NAMP222.PROD.OUTLOOK.COM (2603:10b6:8:2e::35) by
+ SJ2PR12MB9114.namprd12.prod.outlook.com (2603:10b6:a03:567::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9073.25; Sun, 31 Aug
+ 2025 23:32:41 +0000
+Received: from DS3PEPF0000C37E.namprd04.prod.outlook.com
+ (2603:10b6:8:2e:cafe::5a) by DS7P222CA0027.outlook.office365.com
+ (2603:10b6:8:2e::35) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9073.26 via Frontend Transport; Sun,
+ 31 Aug 2025 23:32:41 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ DS3PEPF0000C37E.mail.protection.outlook.com (10.167.23.8) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9094.14 via Frontend Transport; Sun, 31 Aug 2025 23:32:41 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Sun, 31 Aug
+ 2025 16:32:28 -0700
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Sun, 31 Aug
+ 2025 16:32:28 -0700
+Received: from Asurada-Nvidia.nvidia.com (10.127.8.14) by mail.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server id 15.2.1544.14 via Frontend
+ Transport; Sun, 31 Aug 2025 16:32:24 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: <joro@8bytes.org>, <jgg@nvidia.com>, <bhelgaas@google.com>
+CC: <suravee.suthikulpanit@amd.com>, <will@kernel.org>,
+	<robin.murphy@arm.com>, <sven@kernel.org>, <j@jannau.net>,
+	<alyssa@rosenzweig.io>, <neal@gompa.dev>, <robin.clark@oss.qualcomm.com>,
+	<m.szyprowski@samsung.com>, <krzk@kernel.org>, <alim.akhtar@samsung.com>,
+	<dwmw2@infradead.org>, <baolu.lu@linux.intel.com>, <kevin.tian@intel.com>,
+	<yong.wu@mediatek.com>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <tjeznach@rivosinc.com>,
+	<paul.walmsley@sifive.com>, <palmer@dabbelt.com>, <aou@eecs.berkeley.edu>,
+	<alex@ghiti.fr>, <heiko@sntech.de>, <schnelle@linux.ibm.com>,
+	<mjrosato@linux.ibm.com>, <gerald.schaefer@linux.ibm.com>,
+	<orsonzhai@gmail.com>, <baolin.wang@linux.alibaba.com>,
+	<zhang.lyra@gmail.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
+	<samuel@sholland.org>, <jean-philippe@linaro.org>, <rafael@kernel.org>,
+	<lenb@kernel.org>, <yi.l.liu@intel.com>, <cwabbott0@gmail.com>,
+	<quic_pbrahma@quicinc.com>, <iommu@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <asahi@lists.linux.dev>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-samsung-soc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-riscv@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-s390@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
+	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux.dev>,
+	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
+	<patches@lists.linux.dev>, <vsethi@nvidia.com>, <helgaas@kernel.org>,
+	<etzhao1900@gmail.com>
+Subject: [PATCH v4 2/7] iommu: Lock group->mutex in iommu_deferred_attach()
+Date: Sun, 31 Aug 2025 16:31:54 -0700
+Message-ID: <9b9199e03c87c3cf8152cf93dc403a95c883811b.1756682135.git.nicolinc@nvidia.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1756682135.git.nicolinc@nvidia.com>
+References: <cover.1756682135.git.nicolinc@nvidia.com>
 MIME-Version: 1.0
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS3PEPF0000C37E:EE_|SJ2PR12MB9114:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0f80da3e-5828-4417-9dab-08dde8e6ade1
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|1800799024|376014|36860700013|82310400026;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?xc/kY8mnb0+InFbZzniWLWupmEfNxWs9A0a+f6d64i1HveYYBS5de8lfD/1G?=
+ =?us-ascii?Q?QChygISbx7U0IK7GfRwtPl6nrcBvIozHj2CnnhZwugx9mVUSJbiZToU99Lr1?=
+ =?us-ascii?Q?Ci3QGTg1krLqGisih2NYjoWNGbgud9Mk6kVIeqvVLYAaNR84HEdQOU3OGYns?=
+ =?us-ascii?Q?bjV0tVAhCOWA0aGTFPr4y0CSKoxU+WVlSv2MvuSK5H4haaV0oO5kGPxNxkP4?=
+ =?us-ascii?Q?SIQFWSFzjbIJ8d4h4tsT2FMUnOcZbFnQBipYyKkMrP0R6uAGe6gvXS15nrPj?=
+ =?us-ascii?Q?hDgVxZvZnmUlKRyPpTTmnEJR1ZjzwruudklrMwRS814MDROrn2DSWgrvrVDi?=
+ =?us-ascii?Q?Wc9/FMA26zNrAtXQ59Z73sOrrSnlt0laIYP67j49nvyJGzkbpMygOsQYx1XC?=
+ =?us-ascii?Q?QAMDa6gnNKvR8+DmDAC6tJZbON7tn93Ttj4RUBH85/6jUm5avgzTbaJV339B?=
+ =?us-ascii?Q?Es2yUziit7UmCRiiCVThJKdxyRfA/8oZGdX4x2DGY7VqGVCLonLex3IxKcy3?=
+ =?us-ascii?Q?VRKZ2oFck9S3fDKt+yzXe3Yr3cXl6NOnanorywuqM3EGkkeZH0bhj+KQAYRs?=
+ =?us-ascii?Q?jSFzCjGvOfas4VaZCOKBaPmrZQ8aXgUrTIaphqN3SHMKTk8zkzk/mDBml17C?=
+ =?us-ascii?Q?Bxp347sY1evjt/2Y+dg/SLqWp+fyn3upKubS4Psqkn3GBaQT6YSDqne67GyP?=
+ =?us-ascii?Q?aLu3g2kpcq5oR+Zk5g5pOo7fu2+uQJDRxHe1oOz6WxJbA5uCGkfpO7dcmz9K?=
+ =?us-ascii?Q?StopJeCNn0QniSG4ywFKCBU8MCX8EEC3OIvSDd02q10zENj6rVj6sVKET/Tf?=
+ =?us-ascii?Q?r4K9NvrNYYKspFeJGidGbfpRO90QzZH8B2Y5j0hQvqhfmR7IyMU8aqOhqQrG?=
+ =?us-ascii?Q?xlFP1tGrXvRQ2kctRQ7tx0II5TPH/Yiu+948/jiwmOmMHocj+QkG030o95mw?=
+ =?us-ascii?Q?ZQgKeHQ4kdl+VcsSAwKl91XenC5gD8YVVw7BMci3Q913kmn+RMLhrMlexKxV?=
+ =?us-ascii?Q?mTnzOE4W7BzbL6NE2VatE9x/AtInl17RxfhJbwAj8+Fo5ePJm+jZn+HemAvx?=
+ =?us-ascii?Q?0U6b3Ok0emqypEhhh0WElQwOzd4G84RI4UTtZCzzSmOZ5Y2IXhicls6Lk0s9?=
+ =?us-ascii?Q?sGU/nX2jNW5XxNpghLl+0v6iM87CmlBYcvk2Z12vCy6QiijiLNNv0VReb1NN?=
+ =?us-ascii?Q?rBjTyZL15OSeH1ZZfqIrQbmeYuuHCKE+rsPno4JenZA6xaW3yf0+sfKNidKH?=
+ =?us-ascii?Q?/CoyKhTTiJp0DG8FY7ABXwZViX+84umoski8IxF/sqxiRr0esKsrMhkiQahf?=
+ =?us-ascii?Q?KR2DWeOigbZBXo9h/rM7VBVI4SA96bJlRnBRqQtjIVY8iupmHNGkeKN9aA2n?=
+ =?us-ascii?Q?Zx5hZAEimtB9O9jqmLJEVxLrqQUTgAhTowvMsKElOtXJhE8V1ToJ4vtvRroe?=
+ =?us-ascii?Q?49L3zwkjYtAh8p1oAt+2cOB2ogO27JtW66L10aPgiZl8xdvLuDz7DDplhiGY?=
+ =?us-ascii?Q?tPh1rP5e2vrnz185uPqCFdzoOo+LgRZQOz8y?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230040)(7416014)(1800799024)(376014)(36860700013)(82310400026);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Aug 2025 23:32:41.2709
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0f80da3e-5828-4417-9dab-08dde8e6ade1
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: DS3PEPF0000C37E.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB9114
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250831_092802_837601_668B6E49 
-X-CRM114-Status: GOOD (  23.27  )
+X-CRM114-CacheID: sfid-20250831_163251_010919_A08FADFD 
+X-CRM114-Status: GOOD (  15.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,65 +170,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 31 Aug 2025 17:53:19 +0200
-Andrew Lunn <andrew@lunn.ch> wrote:
+The iommu_deferred_attach() function invokes __iommu_attach_device() while
+not holding the group->mutex, like other __iommu_attach_device() callers.
 
-> > > > Rockchip by default do bad things with RGMII delays.
-> > > > 
-> > > >  tx_delay:
-> > > >    description: Delay value for TXD timing.
-> > > >    $ref: /schemas/types.yaml#/definitions/uint32
-> > > >    minimum: 0
-> > > >    maximum: 0x7F
-> > > >    default: 0x30
-> > > > 
-> > > >  rx_delay:
-> > > >    description: Delay value for RXD timing.
-> > > >    $ref: /schemas/types.yaml#/definitions/uint32
-> > > >    minimum: 0
-> > > >    maximum: 0x7F
-> > > >    default: 0x10
-> > > > 
-> > > > Try setting both of these to 0. And then use 'rgmii-id'.
-> > > > 
-> > > >    Andrew    
-> > Setting both gmac0 and gmac1 to phy-mode=rgmii-id with tx/rx delay set to
-> > <0x0> yields about a 7x improvement from ~6 Mbs (with phy-mode=rgmii-id
-> > and tx/rx delay unset) to about 43 Mbps, which is still well below the
-> > ~950 Mbs with phy-mode=rgmii and tx/rx delay unset.  
-> 
-> You need to split the problem into two. Rx delays and Tx delays. Use
-> something like iperf in UDP mode, to send a stream of UDP packets, or
-> receive a stream of UDP packets. TCP is bad for this sort of testing
-> because Rx and Tx are interconnected due to flow control and
-> retransmissions.
-> 
-> Try small values of rx_delay to see if you can improve the Rx
-> performance. Try small values to tx_delay, to see if you can improve
-> the Tx performance.
-> 
-OK, thanks. 
+Though there is no pratical bug being triggered so far, it would be better
+to apply the same locking to this __iommu_attach_device(), since the IOMMU
+drivers nowaday are more aware of the group->mutex -- some of them use the
+iommu_group_mutex_assert() function that could be potentially in the path
+of an attach_dev callback function invoked by the __iommu_attach_device().
 
-Just so I am clear, the units are tenths of nanoseconds? So <0x02> is .2
-nanoseconds?
+The iommu_deferred_attach() will soon need to verify a new flag stored in
+the struct group_device. To iterate the gdev list, the group->mutex should
+be held for this matter too.
 
+So, grab the mutex to guard __iommu_attach_device() like other callers.
 
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+---
+ drivers/iommu/iommu.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-> One problem we have with rx_delay and tx_delay is that they are
-> magic. We have no idea what they mean. The RGMII standard says there
-> should be a 2ns delay between data and clock. A poorly designed board
-> could mean the MAC/PHY pair needs to insert say 1.8ns or 2.2ns, not
-> 2ns as defined by the RGMiI standard. Rockchip also seem to encourage
-> using rx_delay and tx_delay, so i would not be surprised to find
-> Rockchip boards are often poorly designed and don't follow the RGMII
-> standard.
-> 
-> rx_delay/tx_delay can probably insert 0.2ns of delay, but it probably
-> cannot insert -0.2ns of delay. So it could be, you cannot improve
-> it. If that is the case, we need to consider another solution.
-> 
->    Andrew
-> 
+diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+index 060ebe330ee16..1e0116bce0762 100644
+--- a/drivers/iommu/iommu.c
++++ b/drivers/iommu/iommu.c
+@@ -2144,10 +2144,17 @@ EXPORT_SYMBOL_GPL(iommu_attach_device);
+ 
+ int iommu_deferred_attach(struct device *dev, struct iommu_domain *domain)
+ {
+-	if (dev->iommu && dev->iommu->attach_deferred)
+-		return __iommu_attach_device(domain, dev);
++	/*
++	 * This is called on the dma mapping fast path so avoid locking. This is
++	 * racy, but we have an expectation that the driver will setup its DMAs
++	 * inside probe while being single threaded to avoid racing.
++	 */
++	if (!dev->iommu || !dev->iommu->attach_deferred)
++		return 0;
+ 
+-	return 0;
++	guard(mutex)(&dev->iommu_group->mutex);
++
++	return __iommu_attach_device(domain, dev);
+ }
+ 
+ void iommu_detach_device(struct iommu_domain *domain, struct device *dev)
+-- 
+2.43.0
 
 
 _______________________________________________
