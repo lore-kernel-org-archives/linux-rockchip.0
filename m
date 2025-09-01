@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F083CA1002
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 00:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C714CA100C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 00:53:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NG0fVkYUFuZA2gTZQ/UymRfxeLP9CFrHVhsS59DTqjY=; b=ZQCG3PkmFDi/Av
-	CsXIzzaXeBMR4jzgTspHYwMXfpbDLLX0DQVc07eDtakY0mLZIGCC2yvhHkiLSw9AuZCnNWDpYj1m+
-	7rZ0FRVC1San+YH7x+pcawPJKk0SBZ0n/tzYt3zH5vFLNoOFizeH4DWmedM32rqPAvJTc+W/GDVDZ
-	zqSP9YqGCOJLKziqQ2WwYiNMoVMi6hjKTQN7KySmjDaUJafijeYKBCpsyE5JUVbUa1g/BvYBe1njn
-	kXbRo19c7PHX6bLLafi9TKju9724MwBny2rIbUmFXrtd/d4UAsYQnO+6tNA4FBUdQgRNM+ju8aX9N
-	lU195apetSybNTZiAi1Q==;
+	List-Owner; bh=vJvOXIIxWYR1gQmSpr2Mzo/1TcPubfWpGx3Y8A7YyKU=; b=RRXqiXhmTiZQ9k
+	6iuP1FEqqLmCdU+aZouP3abXSosf9a6A7iOuQq5U/HqG2UJmy2YZgoFznTgxQcKlKILHFFdNHv/O9
+	uSqfbu6Oa5ldDSXCSLX/b1RLL4l5OLRnkq7YiOoSmywmJp7vhbd16dcuIexrQMZb0i9kzVNNbSO+d
+	drH61vppiy5mmspIicLbeR0TOPnNT73zbpUmpNDeWyYsqr9ag2nY0aWVT8s52vXUTCWLO8ZLvTckl
+	lfjt2Shjr4RN2mJCkNGXeB/lEw/R4gSZAgc6AdaQgyJQB5Ukpmt55e5tWe8IlfjKiPZT+T+cnQ5T1
+	eDWiFmzTvK9ouudkDrgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utFGk-0000000EZF0-2o7Y;
-	Tue, 02 Sep 2025 00:53:06 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1utFGm-0000000EZIW-3Oxc;
+	Tue, 02 Sep 2025 00:53:08 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utBez-0000000DttR-42QH;
+	id 1utBez-0000000DttD-42Xy;
 	Mon, 01 Sep 2025 21:01:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1A652451DF;
+	by sea.source.kernel.org (Postfix) with ESMTP id 064D3451CC;
 	Mon,  1 Sep 2025 21:01:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id EA3BFC116B1;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id D3B51C4CEFE;
 	Mon,  1 Sep 2025 21:01:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756760513;
-	bh=Gc8hKhZmvez+1R7qBtxkfGOQDqE59bJ02H/Yc1b0Phs=;
+	s=k20201202; t=1756760512;
+	bh=wzR4Qs8i+nZbzUbJH0z7ZvWkf0jeanCfOT0T/c8WVY0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=SJMuyCskelQfVc3zUjKQg18B8fejhiYYVgzVVu7Rg66NpinGhIHgVT17//kcu8cL3
-	 74bhTAgwVZCXVzDxM7+XhB7AeOe2CfDCXPKXZALJLydAhnOprfWPNgSaeeKeqrhGlY
-	 pQYDhUcmKvHEjwQrzLr+zHzTRahxebuO1lW2iqMhivNgxfnjJw5TNdPo41WfHaOLx1
-	 8RWuXWfvGKu+dUODLSfnreJ1/p3lq9QeHt0ZUg9Emt+c6OnTzMzhvAlUeJ6qQH4QPG
-	 SwtB5vhU/3OuNlIEQcX98dz9NqadXA3Lx9cHARWIBm3cJEt2sXbBLj11Vog0Mzn8Nw
-	 vIuxPV9S1LKPA==
+	b=KrgHM3SeV6URt8G9/vWzTXxnVaHDOEDBGUPwCbk7K1eEHgAgdOerbADZGKoiSS6RL
+	 ZptWcoQffh2gYydUz7q9XmrChuVYEZiw0p1WmgXOjI1fd5pubZFShhklnpGV8/JNxt
+	 D3y/eXTCuGtQDrEdLkzW7mLoMvcPAitpcsf8ezg+vTRRDBMcSXD3SbFA/6GCHMd0/x
+	 dGexMiigs+HM2hgJN3711Iy3gQvRNKp+VHs6R87Ojc5xrtxCALry2iW9Dp0kVzReXr
+	 tCViXTT02Xfk0VDLstipWaaWHVTAtTLNNa3isN0lmBNU4afHDhzRXNdDaOAJERCDf1
+	 PAjSfTf+9Er8w==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E0B50CA1005;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C0C16CA1007;
 	Mon,  1 Sep 2025 21:01:52 +0000 (UTC)
 From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Mon, 01 Sep 2025 22:47:47 +0200
-Subject: [PATCH v3 6/7] phy: rockchip: phy-rockchip-inno-csidphy: add
- support for rk3588 variant
+Date: Mon, 01 Sep 2025 22:47:45 +0200
+Subject: [PATCH v3 4/7] phy: rockchip: phy-rockchip-inno-csidphy: allow
+ writes to grf register 0
 MIME-Version: 1.0
-Message-Id: <20250616-rk3588-csi-dphy-v3-6-a5ccd5f1f438@collabora.com>
+Message-Id: <20250616-rk3588-csi-dphy-v3-4-a5ccd5f1f438@collabora.com>
 References: <20250616-rk3588-csi-dphy-v3-0-a5ccd5f1f438@collabora.com>
 In-Reply-To: <20250616-rk3588-csi-dphy-v3-0-a5ccd5f1f438@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -68,19 +68,19 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-phy@lists.infradead.org, 
  Michael Riesch <michael.riesch@collabora.com>
 X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1756759662; l=2783;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1756759662; l=1635;
  i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=yeQXRqZNa57y0uWiIJSkXVpQ6zTLhd7z989yNwE9ju8=;
- b=axGHdEEOobUeI3zoNKyi3w/BvIeQnc8c0vieQuJvuILqmfq0hDhf2j9lz4n1HHC+mpZpcMGlQ
- sfnI99iovo6Aet9/dP2floam3L5KHcJtMU5lA8hHcrkYTxJ+rk2qwrA
+ bh=l+DL7hvrQb52Alb7OjVyKnZ7Z6pkTmglNXwtSvoPg4M=;
+ b=VBFa5PVV+22ZkBz4mEv89SE3mpULD6Gqp49UwNptsIWrtomhKNQUoNYSe2JnT756e/eyHOWH6
+ Vftcu8BdJF/Dil2nAXwnqCv++Sxfomn8BmTNbQv4p96wHKkSqjH2reL
 X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
  pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
 X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
  with auth_id=371
 X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250901_140154_102103_547FB031 
-X-CRM114-Status: GOOD (  12.96  )
+X-CRM114-CacheID: sfid-20250901_140154_089958_DE09A37E 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,84 +100,45 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Michael Riesch <michael.riesch@collabora.com>
 
-The Rockchip RK3588 MIPI CSI-2 DPHY can be supported using the existing
-phy-rockchip-inno-csidphy driver, the notable differences being
- - the control bits in the GRF
- - the additional reset line
-Add support for this variant.
+The driver for the Rockchip MIPI CSI-2 DPHY uses GRF register offset
+value 0 to sort out undefined registers. However, the RK3588 CSIDPHY GRF
+this offset is perfectly fine (in fact, register 0 is the only one in
+this register file).
+Introduce a boolean variable to indicate valid registers and allow writes
+to register 0.
 
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-csidphy.c | 28 ++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-inno-csidphy.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
-index 6c4ddcd7e5de..c79fb53d8ee5 100644
+index 2ab99e1d47eb..75533d071025 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
-@@ -30,6 +30,8 @@
- #define RK3568_GRF_VI_CON0		0x0340
- #define RK3568_GRF_VI_CON1		0x0344
- 
-+#define RK3588_CSIDPHY_GRF_CON0		0x0000
-+
- /* PHY */
- #define CSIDPHY_CTRL_LANE_ENABLE		0x00
- #define CSIDPHY_CTRL_LANE_ENABLE_CK		BIT(6)
-@@ -117,6 +119,12 @@ static const struct dphy_reg rk3568_grf_dphy_regs[] = {
- 	[GRF_DPHY_CSIPHY_CLKLANE_EN] = PHY_REG(RK3568_GRF_VI_CON0, 1, 8),
+@@ -87,10 +87,11 @@ struct dphy_reg {
+ 	u32 offset;
+ 	u32 mask;
+ 	u32 shift;
++	u8 valid;
  };
  
-+static const struct dphy_reg rk3588_grf_dphy_regs[] = {
-+	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK3588_CSIDPHY_GRF_CON0, 4, 0),
-+	[GRF_DPHY_CSIPHY_DATALANE_EN] = PHY_REG(RK3588_CSIDPHY_GRF_CON0, 4, 4),
-+	[GRF_DPHY_CSIPHY_CLKLANE_EN] = PHY_REG(RK3588_CSIDPHY_GRF_CON0, 1, 8),
-+};
-+
- struct hsfreq_range {
- 	u32 range_h;
- 	u8 cfg_bit;
-@@ -183,6 +191,11 @@ static const char *const rk3368_reset_names[] = {
- 	"apb"
- };
+ #define PHY_REG(_offset, _width, _shift) \
+-	{ .offset = _offset, .mask = BIT(_width) - 1, .shift = _shift, }
++	{ .offset = _offset, .mask = BIT(_width) - 1, .shift = _shift, .valid = 1, }
  
-+static const char *const rk3588_reset_names[] = {
-+	"apb",
-+	"phy"
-+};
-+
- static void rockchip_inno_csidphy_ths_settle(struct rockchip_inno_csidphy *priv,
- 					     int hsfreq, int offset)
- {
-@@ -390,6 +403,17 @@ static const struct dphy_drv_data rk3568_mipidphy_drv_data = {
- 	.resets_num = ARRAY_SIZE(rk3368_reset_names),
- };
+ static const struct dphy_reg rk1808_grf_dphy_regs[] = {
+ 	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK1808_GRF_PD_VI_CON_OFFSET, 4, 0),
+@@ -145,7 +146,7 @@ static inline void write_grf_reg(struct rockchip_inno_csidphy *priv,
+ 	const struct dphy_drv_data *drv_data = priv->drv_data;
+ 	const struct dphy_reg *reg = &drv_data->grf_regs[index];
  
-+static const struct dphy_drv_data rk3588_mipidphy_drv_data = {
-+	.pwrctl_offset = -1,
-+	.ths_settle_offset = RK3568_CSIDPHY_CLK_WR_THS_SETTLE,
-+	.calib_offset = RK3568_CSIDPHY_CLK_CALIB_EN,
-+	.hsfreq_ranges = rk1808_mipidphy_hsfreq_ranges,
-+	.num_hsfreq_ranges = ARRAY_SIZE(rk1808_mipidphy_hsfreq_ranges),
-+	.grf_regs = rk3588_grf_dphy_regs,
-+	.resets = rk3588_reset_names,
-+	.resets_num = ARRAY_SIZE(rk3588_reset_names),
-+};
-+
- static const struct of_device_id rockchip_inno_csidphy_match_id[] = {
- 	{
- 		.compatible = "rockchip,px30-csi-dphy",
-@@ -411,6 +435,10 @@ static const struct of_device_id rockchip_inno_csidphy_match_id[] = {
- 		.compatible = "rockchip,rk3568-csi-dphy",
- 		.data = &rk3568_mipidphy_drv_data,
- 	},
-+	{
-+		.compatible = "rockchip,rk3588-csi-dphy",
-+		.data = &rk3588_mipidphy_drv_data,
-+	},
- 	{}
- };
- MODULE_DEVICE_TABLE(of, rockchip_inno_csidphy_match_id);
+-	if (reg->offset)
++	if (reg->valid)
+ 		regmap_write(priv->grf, reg->offset,
+ 			     HIWORD_UPDATE(value, reg->mask, reg->shift));
+ }
 
 -- 
 2.39.5
